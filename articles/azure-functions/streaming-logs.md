@@ -3,13 +3,13 @@ title: Azure Functions で実行ログをストリーミングする
 description: スペースを含めて 115 - 145 文字。 この要約は、検索結果に表示されます。
 ms.date: 9/1/2020
 ms.topic: how-to
-ms.custom: contperfq2
-ms.openlocfilehash: 61756afb5111da3d5573e967a6ca13f25354aef5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: contperfq2, devx-track-azurecli
+ms.openlocfilehash: 68b9d567fe0f2959c809a25c3669b9529cf093b8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216098"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832881"
 ---
 # <a name="enable-streaming-execution-logs-in-azure-functions"></a>Azure Functions で実行ログのストリーミングを有効にする
 
@@ -17,9 +17,9 @@ ms.locfileid: "92216098"
 
 関数実行によって生成されているログ ファイルのストリームを表示する方法は 2 つあります。
 
-* **組み込みのログ ストリーミング** : App Service プラットフォームでは、アプリケーション ログ ファイルのストリームを表示できます。 これは、 [ローカル開発](functions-develop-local.md)中に関数をデバッグするときや、ポータル内の **[テスト]** タブを使用するときに見られる出力と同等です。 すべてのログベース情報が表示されます。 詳しくは、[ログのストリーミング](../app-service/troubleshoot-diagnostic-logs.md#stream-logs)に関する記事をご覧ください。 このストリーミング方法でサポートされるインスタンスは 1 つだけです。従量課金プランの Linux 上で実行されているアプリでは、この方法を使用できません。
+* **組み込みのログ ストリーミング**: App Service プラットフォームでは、アプリケーション ログ ファイルのストリームを表示できます。 これは、[ローカル開発](functions-develop-local.md)中に関数をデバッグするときや、ポータル内の **[テスト]** タブを使用するときに見られる出力と同等です。 すべてのログベース情報が表示されます。 詳しくは、[ログのストリーミング](../app-service/troubleshoot-diagnostic-logs.md#stream-logs)に関する記事をご覧ください。 このストリーミング方法でサポートされるインスタンスは 1 つだけです。従量課金プランの Linux 上で実行されているアプリでは、この方法を使用できません。
 
-* **Live Metrics Stream** : 関数アプリが [Application Insights に接続されている](configure-monitoring.md#enable-application-insights-integration)場合、 [Live Metrics Stream](../azure-monitor/app/live-stream.md) を使用して Azure portal 内でログ データやその他のメトリックをほぼリアルタイムで表示できます。 この方法は、複数のインスタンス上または従量課金プランの Linux 上で実行されている関数を監視する場合に使用します。 このメソッドでは、[サンプリングされたデータ](configure-monitoring.md#configure-sampling)が使用されます。
+* **Live Metrics Stream**: 関数アプリが [Application Insights に接続されている](configure-monitoring.md#enable-application-insights-integration)場合、[Live Metrics Stream](../azure-monitor/app/live-stream.md) を使用して Azure portal 内でログ データやその他のメトリックをほぼリアルタイムで表示できます。 この方法は、複数のインスタンス上または従量課金プランの Linux 上で実行されている関数を監視する場合に使用します。 このメソッドでは、[サンプリングされたデータ](configure-monitoring.md#configure-sampling)が使用されます。
 
 ログ ストリームは、ポータル内とほとんどのローカル開発環境内の両方で表示できます。 
 

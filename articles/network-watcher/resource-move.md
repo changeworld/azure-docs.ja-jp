@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2020
 ms.author: damendo
-ms.openlocfilehash: 97349071fee6a95623e5b5efdc0c9818cfe7b811
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84764e73ec5b4ada8c204147def310326a3c7bdd
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87388338"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948427"
 ---
 # <a name="moving-azure-network-watcher-resources-across-regions"></a>Azure Network Watcher リソースのリージョン間での移動
 
@@ -29,5 +29,5 @@ Network Watcher リソースは、Network Watcher のバックエンドサービ
 現在、リージョン間でのリソースの移動は、`*networkWatcher*` リソース タイプの子リソースではサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
-* [Network Watcher の概要](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)に関するページを読む
-* [Network Watcher のよくある質問](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions)に関するページを確認する
+* [Network Watcher の概要](./network-watcher-monitoring-overview.md)に関するページを読む
+* [Network Watcher のよくある質問](./frequently-asked-questions.md)に関するページを確認する

@@ -7,18 +7,19 @@ author: saghorpa
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0967c5e354c3b0e433753cf89d830dc2101741af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b34a7665770308b45732711f5d8328eb1d0a785f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91363122"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965070"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>STONITH を使用した SUSE での高可用性のセットアップ
 このドキュメントでは、STONITH デバイスを使って SUSE オペレーティング システムに高可用性をセットアップする詳しい手順について説明します。
@@ -71,11 +72,11 @@ STONITH を使ってエンド ツー エンドの HA をセットアップする
 iqn.1996-04.de.suse:01:<Tenant><Location><SID><NodeNumber> 
 ```
 
-Microsoft のサービス管理チームがこの文字列を提供します。 **両方**のノードでファイルを修正します。ただし、ノード番号はノードごとに異なります。
+Microsoft のサービス管理チームがこの文字列を提供します。 **両方** のノードでファイルを修正します。ただし、ノード番号はノードごとに異なります。
 
 ![ノードの InitiatorName 値を含む initiatorname ファイルを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/initiatorname.png)
 
-1.2 */etc/iscsi/iscsid.conf* を次のように変更します。*node.session.timeo.replacement_timeout=5* および *node.startup = automatic* を設定します。 **両方**のノードでファイルを修正します。
+1.2 */etc/iscsi/iscsid.conf* を次のように変更します。*node.session.timeo.replacement_timeout=5* および *node.startup = automatic* を設定します。 **両方** のノードでファイルを修正します。
 
 1.3 discovery コマンドを実行します。4 つのセッションが表示されます。 両方のノードで実行します。
 
@@ -85,7 +86,7 @@ iscsiadm -m discovery -t st -p <IP address provided by Service Management>:3260
 
 ![iscsiadm discovery コマンドの結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/iSCSIadmDiscovery.png)
 
-1.4 コマンドを実行して iSCSI デバイスにログインします。4 つのセッションが表示されます。 **両方**のノードで実行します。
+1.4 コマンドを実行して iSCSI デバイスにログインします。4 つのセッションが表示されます。 **両方** のノードで実行します。
 
 ```
 iscsiadm -m node -l
@@ -109,14 +110,14 @@ rescan-scsi-bus.sh
 
 ## <a name="2---initialize-the-sbd-device"></a>2. SBD デバイスを初期化する
 
-2.1 **両方**のノードで SBD デバイスを初期化します
+2.1 **両方** のノードで SBD デバイスを初期化します
 
 ```
 sbd -d <SBD Device Name> create
 ```
 ![sbd create コマンドの結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/sbdcreate.png)
 
-2.2 デバイスに書き込まれた内容を確認します。 **両方**のノードで行います
+2.2 デバイスに書き込まれた内容を確認します。 **両方** のノードで行います
 
 ```
 sbd -d <SBD Device Name> dump
@@ -125,7 +126,7 @@ sbd -d <SBD Device Name> dump
 ## <a name="3---configuring-the-cluster"></a>3. クラスターを構成する
 このセクションでは、SUSE HA クラスターをセットアップする手順について説明します。
 ### <a name="31-package-installation"></a>3.1 パッケージのインストール
-3.1.1   ha_sles および SAPHanaSR-doc パターンがインストールされていることを確認します。 インストールされていない場合はインストールします。 **両方**のノードにインストールしてください。
+3.1.1   ha_sles および SAPHanaSR-doc パターンがインストールされていることを確認します。 インストールされていない場合はインストールします。 **両方** のノードにインストールしてください。
 ```
 zypper in -t pattern ha_sles
 zypper in SAPHanaSR SAPHanaSR-doc
@@ -134,7 +135,7 @@ zypper in SAPHanaSR SAPHanaSR-doc
 ![SAPHanaSR-doc コマンドの結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3.2 クラスターのセットアップ
-3.2.1   *ha-cluster-init* コマンドまたは yast2 ウィザードを使って、クラスターをセットアップできます。 この例では、yast2 ウィザードを使用します。 このステップは、**プライマリ ノードのみ**で実行します。
+3.2.1   *ha-cluster-init* コマンドまたは yast2 ウィザードを使って、クラスターをセットアップできます。 この例では、yast2 ウィザードを使用します。 このステップは、**プライマリ ノードのみ** で実行します。
 
 [yast2] > [High Availability]\(高可用性) > [Cluster]\(クラスター\) の順に選択します ![[High Availability]\(高可用性) と [Cluster]\(クラスター\) が選択された YaST コントロール センターを示すスクリーンショット。 ](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
 ![[Install]\(インストール\) と [Cancel]\(キャンセル\) オプションが表示されたダイアログ ボックスを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
@@ -171,55 +172,55 @@ Csync2 で IP アドレスと事前共有キーを使って認証が実行され
 ## <a name="4---setting-up-the-softdog-watchdog"></a>4. Softdog ウォッチドッグを設定する
 このセクションでは、ウォッチドッグ (softdog) の構成について説明します。
 
-4.1 次の行を、**両方**のノードの */etc/init.d/boot.local* に追加します。
+4.1 次の行を、**両方** のノードの */etc/init.d/boot.local* に追加します。
 ```
 modprobe softdog
 ```
 ![softdog 行が追加された boot ファイルを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/modprobe-softdog.png)
 
-4.2 **両方**のノードの */etc/sysconfig/sbd* ファイルを次のように更新します。
+4.2 **両方** のノードの */etc/sysconfig/sbd* ファイルを次のように更新します。
 ```
 SBD_DEVICE="<SBD Device Name>"
 ```
 ![SBD_DEVICE 値が追加された sbd ファイルを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/sbd-device.png)
 
-4.3 **両方**のノードで次のコマンドを実行してカーネル モジュールを読み込みます
+4.3 **両方** のノードで次のコマンドを実行してカーネル モジュールを読み込みます
 ```
 modprobe softdog
 ```
 ![modprobe softdog コマンドが表示されたコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/modprobe-softdog-command.png)
 
-4.4 **両方**のノードで次のようにして、softdog が実行されていることを確認します。
+4.4 **両方** のノードで次のようにして、softdog が実行されていることを確認します。
 ```
 lsmod | grep dog
 ```
 ![lsmod コマンドの実行結果が表示されたコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/lsmod-grep-dog.png)
 
-4.5 **両方**のノードで SBD デバイスを起動します
+4.5 **両方** のノードで SBD デバイスを起動します
 ```
 /usr/share/sbd/sbd.sh start
 ```
 ![start コマンドが表示されたコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/sbd-sh-start.png)
 
-4.6 **両方**のノードで SBD デーモンをテストします。 **両方**のノードで構成した後は、2 つのエントリが表示されます
+4.6 **両方** のノードで SBD デーモンをテストします。 **両方** のノードで構成した後は、2 つのエントリが表示されます
 ```
 sbd -d <SBD Device Name> list
 ```
 ![2 つのエントリが表示されたコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/sbd-list.png)
 
-4.7 **一方**のノードにテスト メッセージを送信します
+4.7 **一方** のノードにテスト メッセージを送信します
 ```
 sbd  -d <SBD Device Name> message <node2> <message>
 ```
 ![2 つのエントリが表示されたコンソール ウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/sbd-list.png)
 
-4.8 **2 番目**のノード (node2) で、メッセージの状態を確認できます
+4.8 **2 番目** のノード (node2) で、メッセージの状態を確認できます
 ```
 sbd  -d <SBD Device Name> list
 ```
 ![他のメンバーのテスト値を表示するメンバーの 1 つを含むコンソールウィンドウの部分を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/sbd-list-message.png)
 
-4.9 sbd の構成を適用するには、 */etc/sysconfig/sbd* ファイルを次のように更新します。 **両方**のノードでファイルを更新します
+4.9 sbd の構成を適用するには、 */etc/sysconfig/sbd* ファイルを次のように更新します。 **両方** のノードでファイルを更新します
 ```
 SBD_DEVICE=" <SBD Device Name>" 
 SBD_WATCHDOG="yes" 
@@ -248,14 +249,14 @@ ha-cluster-join
 ## <a name="6---validating-the-cluster"></a>6. クラスターの検証
 
 ### <a name="61-start-the-cluster-service"></a>6.1 クラスター サービスを開始する
-確認し、必要に応じて**両方**のノードでクラスターを初めて開始します。
+確認し、必要に応じて **両方** のノードでクラスターを初めて開始します。
 ```
 systemctl status pacemaker
 systemctl start pacemaker
 ```
 ![pacemaker の状態が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/systemctl-status-pacemaker.png)
 ### <a name="62-monitor-the-status"></a>6.2 状態を監視する
-*crm_mon* コマンドを実行し、**両方**のノードがオンラインであることを確認します。 クラスターの**どのノード**で実行してもかまいません
+*crm_mon* コマンドを実行し、**両方** のノードがオンラインであることを確認します。 クラスターの **どのノード** で実行してもかまいません
 ```
 crm_mon
 ```
@@ -264,7 +265,7 @@ hawk にログインして、クラスターの状態 *https://\<node IP>:7630* 
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7.クラスターのプロパティとリソースを構成する 
 このセクションでは、クラスター リソースを構成する手順について説明します。
-この例では、次のリソースをセットアップします。残りは、SUSE HA のガイドを参考にして (必要に応じて) 構成できます。 この構成は、**1 つのノード**だけで実行します。 プライマリ ノードで行います。
+この例では、次のリソースをセットアップします。残りは、SUSE HA のガイドを参考にして (必要に応じて) 構成できます。 この構成は、**1 つのノード** だけで実行します。 プライマリ ノードで行います。
 
 - クラスターのブートストラップ
 - STONITH デバイス

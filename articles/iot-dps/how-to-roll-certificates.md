@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: fbcb3656bc824e2fd352f92314652bd04167b4d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf8b1e04e11dee4e636826430838a467fe034e3f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531408"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951130"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>デバイスの X.509 証明書を展開する方法
 
@@ -51,7 +51,7 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
 新しいリーフ証明書がデバイスに展開されると、接続に新しい証明書が使用されるため、IoT ハブに接続できなくなります。 IoT ハブは、古い証明書を持つデバイスのみを認識します。 デバイスの接続の試行結果は、「未承認」の接続エラーになります。 このエラーを解決するには、デバイスが新しいリーフ証明書に対応するように、デバイスの登録エントリを更新する必要があります。 その後プロビジョニング サービスは、デバイスが再プロビジョニングされるときに、必要に応じて IoT Hub のデバイス レジストリ情報を更新できます。 
 
-この接続エラーに対する例外として、プロビジョニング サービスでデバイスの[登録グループ](concepts-service.md#enrollment-group)を作成している場合のシナリオが考えられます。 このケースで、デバイスの証明書の信頼チェーンにルートまたは中間証明書を展開していない場合、デバイスは新しい証明書が登録グループで定義された信頼チェーンの一部である場合に認識されます。 このシナリオがセキュリティ違反に対する反応として発生する場合は、少なくとも、グループ内の違反と見なされる特定のデバイス証明書を禁止する必要があります。 詳しくは、「[登録グループ内の特定のデバイスを禁止する](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#disallow-specific-devices-in-an-enrollment-group)」をご覧ください。
+この接続エラーに対する例外として、プロビジョニング サービスでデバイスの[登録グループ](concepts-service.md#enrollment-group)を作成している場合のシナリオが考えられます。 このケースで、デバイスの証明書の信頼チェーンにルートまたは中間証明書を展開していない場合、デバイスは新しい証明書が登録グループで定義された信頼チェーンの一部である場合に認識されます。 このシナリオがセキュリティ違反に対する反応として発生する場合は、少なくとも、グループ内の違反と見なされる特定のデバイス証明書を禁止する必要があります。 詳しくは、「[登録グループ内の特定のデバイスを禁止する](./how-to-revoke-device-access-portal.md#disallow-specific-devices-in-an-enrollment-group)」をご覧ください。
 
 展開された証明書の登録エントリの更新は、 **[登録を管理します]** ページで行われます。 そのページにアクセスするには、次の手順に従います。
 

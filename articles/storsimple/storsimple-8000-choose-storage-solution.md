@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 903342230b28f8e4fbdcdfd93543e5a0aa54975e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6f5bb1c2716acbbac8d3e776eb9beda045fd881
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88183277"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968742"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>StorSimple を、Azure File Sync および Data Box Edge データ転送オプションと比較する 
 
@@ -20,9 +20,9 @@ ms.locfileid: "88183277"
  
 このドキュメントでは、Azure へのオンプレミス データ転送オプションの概要を示し、Data Box Edge、Azure File Sync およびStorSimple 8000 シリーズを比較します。
 
-- **[Data Box Edge](/azure/databox-online/data-box-edge-overview)** – Data Box Edge は、Azure との間でデータを移動し、アップロード中にデータを前処理するための AI 対応の Edge コンピューティング機能を備えた、オンプレミスのネットワーク デバイスです。 Data Box Gateway は、同じデータ転送機能を備えた、デバイスの仮想バージョンです。
-- **[Azure File Sync](/azure/storage/files/storage-sync-files-deployment-guide)** – Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま、Azure Files 内の組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 Azure File Sync の一般提供は、2018 年前半に発表されました。
-- **[StorSimple](/azure/storsimple/storsimple-overview)** – StorSimple は、Azure ストレージとの緊密な統合により、1 つのソリューションでプライマリ ストレージ、データ保護、アーカイブ、ディザスター リカバリーのためのストレージ インフラストラクチャの統合を支援するハイブリッド デバイスです。 StorSimple の製品ライフ サイクルは、[こちら](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)でご覧いただけます。
+- **[Data Box Edge](../databox-online/azure-stack-edge-overview.md)** – Data Box Edge は、Azure との間でデータを移動し、アップロード中にデータを前処理するための AI 対応の Edge コンピューティング機能を備えた、オンプレミスのネットワーク デバイスです。 Data Box Gateway は、同じデータ転送機能を備えた、デバイスの仮想バージョンです。
+- **[Azure File Sync](../storage/files/storage-sync-files-deployment-guide.md)** – Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま、Azure Files 内の組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 Azure File Sync の一般提供は、2018 年前半に発表されました。
+- **[StorSimple](./storsimple-overview.md)** – StorSimple は、Azure ストレージとの緊密な統合により、1 つのソリューションでプライマリ ストレージ、データ保護、アーカイブ、ディザスター リカバリーのためのストレージ インフラストラクチャの統合を支援するハイブリッド デバイスです。 StorSimple の製品ライフ サイクルは、[こちら](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)でご覧いただけます。
 
 ## <a name="comparison-summary"></a>比較の概要
 
@@ -39,5 +39,5 @@ ms.locfileid: "88183277"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Data Box Edge](/azure/databox-online/data-box-edge-overview) と [Azure Data Box Gateway](/azure/databox-online/data-box-gateway-overview) について学習する
-- [Azure File Sync](/azure/storage/files/storage-sync-files-deployment-guide) について学習する
+- [Azure Data Box Edge](../databox-online/azure-stack-edge-overview.md) と [Azure Data Box Gateway](../databox-online/data-box-gateway-overview.md) について学習する
+- [Azure File Sync](../storage/files/storage-sync-files-deployment-guide.md) について学習する

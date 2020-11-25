@@ -4,19 +4,19 @@ description: コードから Azure SQL Database にアクセスするための�
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1 , devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: d88fa0e096557169a956a2ba33f72448676785e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d264ee022d2833b092948ac0d1f3fef537bea943
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444676"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841326"
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-azure-sql-database-from-code"></a>コードから Azure SQL Database にアクセスするアプリケーションを認証するための必要な値を取得する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

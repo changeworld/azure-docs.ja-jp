@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: radeltch
-ms.openlocfilehash: 4c444cb84f215ba4f42c14eb64f1d2f441e4280d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e906e6c86d615852191e2fd65a2b1a58695ed34
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598292"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968555"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Azure の Red Hat Enterprise Linux に Pacemaker をセットアップする
 
@@ -169,7 +170,7 @@ ms.locfileid: "91598292"
 
    次のコマンドを実行し、ノードを認証してクラスターを作成します。 トークンを 30000 に設定してメモリ保持メンテナンスを可能にします。 詳細については、[Linux のこの記事][virtual-machines-linux-maintenance]を参照してください。  
    
-   **RHEL 7. x**でクラスターを構築する場合は、次のコマンドを使用します。  
+   **RHEL 7. x** でクラスターを構築する場合は、次のコマンドを使用します。  
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
    sudo pcs cluster start --all
@@ -234,8 +235,8 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
    サインオン URL は使用されず、任意の有効な URL を指定することができます
 1. [Certificates and Secrets]\(証明書とシークレット\) を選択し、[New client secret]\(新しいクライアント シークレット\) をクリックします
 1. 新しいキーの説明を入力し、[Never expires]\(有効期限なし\) を選択して [追加] をクリックします
-1. ノードを値に設定します。 この値は、サービス プリンシパルの**パスワード**として使用します
-1. [概要] を選択します。 アプリケーション ID をメモしておきます。 これは、サービス プリンシパルのユーザー名 (下記の手順の**ログイン ID**) として使用します
+1. ノードを値に設定します。 この値は、サービス プリンシパルの **パスワード** として使用します
+1. [概要] を選択します。 アプリケーション ID をメモしておきます。 これは、サービス プリンシパルのユーザー名 (下記の手順の **ログイン ID**) として使用します
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** フェンス エージェントのカスタム ロールを作成する
 

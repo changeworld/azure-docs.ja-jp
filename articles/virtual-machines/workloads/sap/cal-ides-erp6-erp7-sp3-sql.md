@@ -3,16 +3,17 @@ title: Azure に SAP ERP 6.0 向け SAP IDES EHP7 SP3 をデプロイする | Mi
 description: Azure に SAP ERP 6.0 向け SAP IDES EHP7 SP3 をデプロイする
 author: hermanndms
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 09/16/2016
 ms.author: hermannd
 ms.reviewer: cynthn
-ms.openlocfilehash: 2e1c20ba5549a1d9660b6e30fafa040d545a6a37
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: dc0c1744c2943d33d516de4ed9d28893541773ad
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993432"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957879"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Azure に SAP ERP 6.0 向け SAP IDES EHP7 SP3 をデプロイする
 この記事では、SAP Cloud Appliance Library (SAP CAL) 3.0 を使用して、SQL Server および Windows オペレーティング システムで実行されている SAP IDES システムを Azure にデプロイする方法について説明します。 手順をスクリーンショットに示します。 別のソリューションをデプロイするには、同じ手順に従います。
@@ -52,7 +53,7 @@ SAP CAL にサインインすると、通常は **[Solutions]\(ソリューシ�
 
     ![スクリーンショットには、S A P CAL アカウントが示されています。](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
-1. Azure Portal で見つかった Azure の**サブスクリプション ID** を入力します。 
+1. Azure Portal で見つかった Azure の **サブスクリプション ID** を入力します。 
 
     ![SAP CAL のサブスクリプション ID](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
@@ -66,7 +67,7 @@ SAP CAL にサインインすると、通常は **[Solutions]\(ソリューシ�
 
 1. **[Accept]\(受け入れる\)** をクリックします。 承認が成功した場合は、SAP CAL アカウントの定義が再び表示されます。 短い時間が経過すると、承認プロセスが成功したことを示すメッセージが表示されます。
 
-1. ユーザーに新しく作成した SAP CAL アカウントを割り当てるには、右のテキスト ボックスに**ユーザー ID** を入力し、 **[Add]\(追加\)** をクリックします。 
+1. ユーザーに新しく作成した SAP CAL アカウントを割り当てるには、右のテキスト ボックスに **ユーザー ID** を入力し、 **[Add]\(追加\)** をクリックします。 
 
     ![アカウントからユーザーへの関連付け](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic8a.PNG)
 
@@ -89,11 +90,11 @@ SAP CAL にサインインすると、通常は **[Solutions]\(ソリューシ�
 
 1. **[Basic Mode: Create Instance]\(基本モード: インスタンスの作成\)** ページでは、次のことを行う必要があります。
 
-    a. インスタンスの**名前**を入力します。
+    a. インスタンスの **名前** を入力します。
 
-    b. Azure の**リージョン**を選択します。 複数の Azure リージョンが提供されるには、SAP CAL のサブスクリプションが必要な場合があります。
+    b. Azure の **リージョン** を選択します。 複数の Azure リージョンが提供されるには、SAP CAL のサブスクリプションが必要な場合があります。
 
-    c.  ソリューションのマスター **パスワード**を、次のように入力します。
+    c.  ソリューションのマスター **パスワード** を、次のように入力します。
 
     ![SAP CAL の基本モード: インスタンスの作成](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 

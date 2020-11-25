@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 9d1759e5b809bc40e63fb6024fb7f107ad347da6
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ee7cc1c81bd35bf2b51c712c3a60a046435ee700
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094137"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951285"
 ---
 # <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Azure の SAP BusinessObjects BI プラットフォームの計画および実装ガイド
 
@@ -137,7 +138,7 @@ BI プラットフォームには、[SAP 製品の可用性マトリックス](h
 
 - MaxDB
 
-このドキュメントでは、 **Windows で Azure SQL Database と共に SAP BOBI プラットフォームを** 、および **Linux で Azure Database for MySQL と共に SAP BOBI プラットフォームを** デプロイするためのガイドラインを示します。 これは、Azure で SAP BusinessObjects BI プラットフォームを実行するための推奨される方法でもあります。
+このドキュメントでは、**Windows で Azure SQL Database と共に SAP BOBI プラットフォームを**、および **Linux で Azure Database for MySQL と共に SAP BOBI プラットフォームを** デプロイするためのガイドラインを示します。 これは、Azure で SAP BusinessObjects BI プラットフォームを実行するための推奨される方法でもあります。
 
 ## <a name="sizing"></a>サイズ変更
 

@@ -3,16 +3,17 @@ title: Azure ExpressRoute を Oracle Cloud Infrastructure と接続する | Micr
 description: Azure ExpressRoute を Oracle Cloud Infrastructure (OCI) FastConnect と接続して、クロスクラウド Oracle アプリケーション ソリューションを使用できるようにします
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 03/16/2020
 ms.author: rogardle
 ms.reviewer: cynthn
-ms.openlocfilehash: e932bf7381e1246f4b489e7d564cf5486c3ec635
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 2717ba307cac82465e0c5df996ef3b668af5e7d4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996219"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963710"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Azure と Oracle Cloud Infrastructure 間の直接相互接続をセットアップする  
 
@@ -43,7 +44,7 @@ ms.locfileid: "91996219"
     * Azure ExpressRoute 回路では細かい帯域幅のオプションが提供されていますが、FastConnect では 1、2、5、または 10 Gbps がサポートされます。 したがって、ExpressRoute で、これらの一致する帯域幅のオプションの中からいずれかを選択することをお勧めします。
 
     ![ExpressRoute 回線を作成する](media/configure-azure-oci-networking/exr-create-new.png)
-1. ExpressRoute の**サービス キー**を書き留めてください。 FastConnect 回路を構成しているときに、このキーを指定する必要があります。
+1. ExpressRoute の **サービス キー** を書き留めてください。 FastConnect 回路を構成しているときに、このキーを指定する必要があります。
 
     ![ExpressRoute のサービス キー](media/configure-azure-oci-networking/exr-service-key.png)
 

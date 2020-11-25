@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
-ms.openlocfilehash: 95386f36340aca470769c920e40bbb70e09d34fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67d3fafb9b4b93ae52bdb09d673bf65cad30b816
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80397883"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966158"
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>StorSimple Virtual Array Update 0.2 および 0.1 のリリース ノート
 ## <a name="overview"></a>概要
@@ -83,5 +83,4 @@ Update 0.1 には、次のバグ修正と機能強化が含まれています。
 | **14.** |ファイル サーバー* |フォルダー内のファイルが代替データ ストリーム (ADS) に関連付けられている場合、ADS のバックアップまたは復元には、障害復旧、複製、および項目レベルの回復が使用されません。 | |
 
 ## <a name="next-step"></a>次のステップ
-[更新プログラムをインストールします](storsimple-ova-install-update-01.md) 。
-
+[更新プログラムをインストールします](./storsimple-virtual-array-install-update-06.md) 。

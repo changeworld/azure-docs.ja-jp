@@ -9,18 +9,18 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 939c36cd62dab4362232aef0da8701b34a88c6ff
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 96e10bc19d59b60824a908c67816a21ca80326d0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202958"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832808"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Azure Communication Services に対する認証
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-この記事では、" *アクセス キー* " と " *ユーザー アクセス トークン* " を使用してクライアントを Azure Communication Services に対して認証する方法について説明します。 クライアントと Azure Communication Services とのやり取りはすべて認証される必要があります。
+この記事では、"*アクセス キー*" と "*ユーザー アクセス トークン*" を使用してクライアントを Azure Communication Services に対して認証する方法について説明します。 クライアントと Azure Communication Services とのやり取りはすべて認証される必要があります。
 
 次の表に、Azure Communication Services クライアント ライブラリでサポートされる認証オプションを示します。
 
@@ -72,11 +72,11 @@ Authorization: "HMAC-SHA256 SignedHeaders=date;host;x-ms-content-sha256&Signatur
 
 ユーザー アクセス トークンを使用すると、クライアント アプリケーションが Azure Communication Services に対して直接認証を行うことができます。 そのためには、管理クライアント ライブラリを使用してアプリケーション ユーザーを認証しユーザー アクセス トークンを発行する、信頼できるサービスを設定する必要があります。 アーキテクチャに関する考慮事項の詳細については、[クライアントとサーバーのアーキテクチャ](./client-and-server-architecture.md)の概念説明ドキュメントを参照してください。
 
-`CommunicationClientCredential` クラスには、クライアント ライブラリにユーザー アクセス トークンの資格情報を提供し、そのライフサイクルを管理するためのロジックが含まれます。
+`CommunicationUserCredential` クラスには、クライアント ライブラリにユーザー アクセス トークンの資格情報を提供し、そのライフサイクルを管理するためのロジックが含まれます。
 
 ### <a name="initialize-the-client-libraries"></a>クライアント ライブラリを初期化する
 
-ユーザー アクセス トークン認証を必要とする Azure Communication Services クライアント ライブラリを初期化するには、まず `CommunicationClientCredential` クラスのインスタンスを作成し、それを使用して API クライアントを初期化します。
+ユーザー アクセス トークン認証を必要とする Azure Communication Services クライアント ライブラリを初期化するには、まず `CommunicationUserCredential` クラスのインスタンスを作成し、それを使用して API クライアントを初期化します。
 
 次のスニペットは、ユーザー アクセス トークンを使用してチャット クライアント ライブラリを初期化する方法を示しています。
 

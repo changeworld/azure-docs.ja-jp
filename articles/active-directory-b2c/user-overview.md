@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bb13b350dfecf70e5f3a45755f6f77069a855c6c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f7a4d0852edded516b7fbe42f15abfe160e44cd3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363846"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952796"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー アカウントの概要
 
@@ -36,43 +36,43 @@ Azure Active Directory B2C (Azure AD B2C) には、作成できるアカウン�
 
 新しい職場アカウントを追加する場合は、次の構成設定を考慮する必要があります。
 
-- **[名前]** と **[ユーザー名]** - **[名前]** プロパティには、ユーザーの姓名が含まれます。 **[ユーザー名]** は、ユーザーがサインインするために入力する識別子です。 ユーザー名には、完全なドメインが含まれます。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名 *your-domain.onmicrosoft.com* 、または検証済みの非フェデレーション [カスタム ドメイン](../active-directory/fundamentals/add-custom-domain.md)名 ( *contoso.com* など) のいずれかである必要があります。
+- **[名前]** と **[ユーザー名]** - **[名前]** プロパティには、ユーザーの姓名が含まれます。 **[ユーザー名]** は、ユーザーがサインインするために入力する識別子です。 ユーザー名には、完全なドメインが含まれます。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名 *your-domain.onmicrosoft.com*、または検証済みの非フェデレーション [カスタム ドメイン](../active-directory/fundamentals/add-custom-domain.md)名 (*contoso.com* など) のいずれかである必要があります。
 - **プロファイル** - アカウントは、ユーザー データのプロファイルを使用して設定されます。 姓、名、役職、および部署名を入力できます。 プロファイルは、アカウントの作成後に編集できます。
 - **グループ** - グループを使用して管理タスクを実行します。たとえば、複数のユーザーやデバイスにライセンスまたはアクセス許可を一度に割り当てることができます。 新しいアカウントを、テナントの既存の[グループ](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)に配置できます。
 - **ディレクトリ ロール** - ユーザー アカウントが所有する、テナントのリソースへのアクセス レベルを指定する必要があります。 次のアクセス許可レベルを使用できます。
 
     - **ユーザー** - ユーザーは、割り当てられたリソースにアクセスできますが、テナントのリソースの大半を管理できません。
     - **グローバル管理者** - グローバル管理者は、テナントのすべてのリソースに対するフル コントロールの権限を持ちます。
-    - **制限付き管理者** - ユーザーの管理ロールまたはロールを選択します。 選択できるロールの詳細については、「[Azure Active Directory の管理者ロールの割り当て](../active-directory/roles/permissions-reference.md)」を参照してください。
+    - **制限付き管理者**- ユーザーの管理ロールまたはロールを選択します。 選択できるロールの詳細については、「[Azure Active Directory の管理者ロールの割り当て](../active-directory/roles/permissions-reference.md)」を参照してください。
 
 ### <a name="create-a-work-account"></a>職場アカウントを作成する
 
 次の情報を使用して、新しい職場アカウントを作成できます。
 
 - [Azure Portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
-- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
+- [Microsoft Graph](/graph/api/user-post-users?view=graph-rest-1.0)
 
 ### <a name="update-a-user-profile"></a>ユーザー アカウントを更新する
 
 次の情報を使用して、ユーザーのプロファイルを更新できます。
 
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
-- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
+- [Microsoft Graph](/graph/api/user-update?view=graph-rest-1.0)
 
 ### <a name="reset-a-password-for-a-user"></a>ユーザーのパスワードをリセットする
 
 次の情報を使用して、ユーザーのパスワードをリセットできます。
 
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
-- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
+- [Microsoft Graph](/graph/api/user-update?view=graph-rest-1.0)
 
 ## <a name="guest-user"></a>ゲスト ユーザー
 
-外部ユーザーをゲスト ユーザーとしてテナントに招待できます。 ゲスト ユーザーを Azure AD B2C テナントに招待する一般的なシナリオは、管理責任を共有することです。 ゲスト アカウントの使用例は、「[Azure Active Directory B2B コラボレーション ユーザーのプロパティ](../active-directory/b2b/user-properties.md)」を参照してください。
+外部ユーザーをゲスト ユーザーとしてテナントに招待できます。 ゲスト ユーザーを Azure AD B2C テナントに招待する一般的なシナリオは、管理責任を共有することです。 ゲスト アカウントの使用例は、「[Azure Active Directory B2B コラボレーション ユーザーのプロパティ](../active-directory/external-identities/user-properties.md)」を参照してください。
 
-ゲスト ユーザーをテナントに招待するときは、受信者の電子メール アドレスと、招待であることを説明するメッセージを指定します。 ユーザーは招待リンクによって同意ページに移動します。そのページで、 **[作業開始]** ボタンを選択し、アクセス許可を受け取ったことを確認します。 受信トレイが電子メール アドレスにアタッチされていない場合、ユーザーは、招待資格情報を使用して Microsoft ページに移動することで、同意ページに移動できます。 その後、ユーザーは、電子メール内のリンクのクリックと同じ方法で招待を受け入れます。 (例: `https://myapps.microsoft.com/B2CTENANTNAME`)。
+ゲスト ユーザーをテナントに招待するときは、受信者の電子メール アドレスと、招待であることを説明するメッセージを指定します。 ユーザーは招待リンクによって同意ページに移動します。そのページで、**[作業開始]** ボタンを選択し、アクセス許可を受け取ったことを確認します。 受信トレイが電子メール アドレスにアタッチされていない場合、ユーザーは、招待資格情報を使用して Microsoft ページに移動することで、同意ページに移動できます。 その後、ユーザーは、電子メール内のリンクのクリックと同じ方法で招待を受け入れます。 (例: `https://myapps.microsoft.com/B2CTENANTNAME`)。
 
-ゲスト ユーザーは、[Microsoft Graph API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-beta) を使用して招待することもできます。
+ゲスト ユーザーは、[Microsoft Graph API](/graph/api/invitation-post?view=graph-rest-beta) を使用して招待することもできます。
 
 ## <a name="consumer-user"></a>コンシューマー ユーザー
 

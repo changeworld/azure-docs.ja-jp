@@ -8,16 +8,16 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
-ms.openlocfilehash: 3cbab09c6b50abb590cfe9f2720713a8fa547aa7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d68314aab636180ff17e330c49c9859b8851b06
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75646474"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950688"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service のトラブルシューティング
 
-IoT デバイスの接続の問題は、構成証明のエラーや登録のエラーなど、考えられる障害点が多数あるため、トラブルシューティングが難しい場合があります。この記事では、[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) でデバイスの接続の問題を検出してトラブルシューティングする方法についてのガイダンスを取り上げます。
+IoT デバイスの接続の問題は、構成証明のエラーや登録のエラーなど、考えられる障害点が多数あるため、トラブルシューティングが難しい場合があります。この記事では、[Azure Monitor](../azure-monitor/overview.md) でデバイスの接続の問題を検出してトラブルシューティングする方法についてのガイダンスを取り上げます。
 
 ## <a name="using-azure-monitor-to-view-metrics-and-set-up-alerts"></a>Azure Monitor を使用してメトリックを確認したりアラートを設定したりする
 
@@ -81,5 +81,5 @@ IoT デバイスの接続の問題は、構成証明のエラーや登録のエ�
 | 401 | 承認トークンを検証できません (有効期限が切れている、要求の URI に該当しない、など)。 また、このエラー コードは、TPM 構成証明フローの過程でデバイスに返されます。 | 401 権限がありません|
 | 404 | Device Provisioning Service インスタンスまたはリソース (登録など) が存在しません。 |404 見つかりません |
 | 412 | 要求の ETag が、RFC7232 のとおりに、既存のリソースの ETag と一致しません。 | 412 前提条件が満たされていません |
-| 429 | サービスによって操作がスロットルされています。 サービスの具体的な制限については、「[IoT Hub Device Provisioning Service の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits)」を参照してください。 | 429 要求が多すぎます |
+| 429 | サービスによって操作がスロットルされています。 サービスの具体的な制限については、「[IoT Hub Device Provisioning Service の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits)」を参照してください。 | 429 要求が多すぎます |
 | 500 | An internal error occurred. | 500 内部サーバー エラー|

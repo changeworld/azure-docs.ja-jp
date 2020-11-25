@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 8406074933489e53e9235a8a6a05b68f1dd42a85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 184616058cb2a86025eb75b4923e374ab42ebf05
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259138"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953561"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Saviynt と Azure Active Directory B2C を構成するチュートリアル
 
@@ -36,7 +36,7 @@ ms.locfileid: "91259138"
 
 - Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 
-- [Azure AD B2C テナント](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。 テナントは Azure サブスクリプションにリンクされています。
+- [Azure AD B2C テナント](./tutorial-create-tenant.md)。 テナントは Azure サブスクリプションにリンクされています。
 
 - Saviynt の[サブスクリプション](https://saviynt.com/contact-us/)
 
@@ -48,7 +48,7 @@ Saviynt 統合には、次のコンポーネントが含まれています。
 
 - [Saviynt](https://saviynt.com/integrations/azure-ad/for-b2c/) - Azure AD B2C ユーザーのユーザー ライフサイクル管理とアクセス ガバナンスのためのきめ細かい委任管理機能を提供する ID ガバナンス プラットフォーム。  
 
-- [Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) - この API には、Saviynt で Azure AD B2C ユーザーと Azure AD B2C でのアクセスを管理するためのインターフェイスが用意されています。
+- [Microsoft Graph API](/graph/use-the-api) - この API には、Saviynt で Azure AD B2C ユーザーと Azure AD B2C でのアクセスを管理するためのインターフェイスが用意されています。
 
 次のアーキテクチャの図に、この実装を示します。
 
@@ -69,7 +69,7 @@ Saviynt 統合には、次のコンポーネントが含まれています。
 
 1. Saviynt アカウントを作成するには、[Saviynt](https://saviynt.com/contact-us/) にお問い合わせください
 
-2. 代理管理ポリシーを作成し、さまざまな役割を持つ[代理管理者](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-concept-delegation)としてユーザーを割り当てます。
+2. 代理管理ポリシーを作成し、さまざまな役割を持つ[代理管理者](../active-directory/users-groups-roles/roles-concept-delegation.md)としてユーザーを割り当てます。
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>Azure AD B2C と Saviynt を構成する
 
@@ -113,7 +113,7 @@ Saviynt 統合には、次のコンポーネントが含まれています。
 以下の手順では、Saviynt で Azure AD B2C 内のユーザー削除操作を実行できるようにする方法について説明します。
 
 >[!NOTE]
->[管理者ロールにサービス プリンシパルへのアクセスを許可する前に、リスクを評価します。](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
+>[管理者ロールにサービス プリンシパルへのアクセスを許可する前に、リスクを評価します。](../active-directory/develop/app-objects-and-service-principals.md)
 
 1. 最新バージョンの MSOnline PowerShell モジュールを Windows ワークステーションまたはサーバーにインストールします。
 
@@ -133,8 +133,8 @@ Saviynt アプリケーション テナントを参照し、ユーザーのラ�
 
 追加情報については、次の記事を参照してください。
 
-- [Azure AD B2C のカスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)
 
-- [Web API アプリケーションを作成する](https://docs.microsoft.com/azure/active-directory-b2c/add-web-api-application)
+- [Web API アプリケーションを作成する](./add-web-api-application.md)

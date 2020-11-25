@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: rohink
-ms.openlocfilehash: a27c4519024d6d3d2f3852534619b5f8c2bb5e43
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 85b681cbeb1b06784529e321c9e907ab2bdecb73
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489610"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954649"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS メトリックとアラート
 Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 この記事では、Azure DNS サービスのメトリックとアラートについて説明します。
@@ -47,7 +47,7 @@ Azure DNS 内の *クエリ量* メトリックは、Azure DNS によって受�
 *図: Azure DNS のクエリ量メトリック*
 
 ### <a name="record-set-count"></a>レコード セット数
-*レコード セット数* メトリックは、DNS ゾーンの Azure DNS 内にあるレコード セットの数を示します。 ゾーン内で定義されているすべてのレコード セットが集計されます。 測定単位はレコード セット数で、すべてのレコードセットの最大数が集計されます。 このメトリックを表示するには、Azure Portal の **[監視]** タブから **メトリックス エクスプローラー エクスペリエンス (プレビュー)** を選択します。 **[リソース]** ドロップダウン リストから DNS ゾーンを選択し、 **レコード セット数** メトリックを選択してから、 **[集計]** として **[最大数]** を選択します。 メトリックス エクスプローラー エクスペリエンスおよびグラフ作成機能の詳細については、「[Azure Monitor メトリックス エクスプローラー](../azure-monitor/platform/metrics-charts.md)」を参照してください。 
+*レコード セット数* メトリックは、DNS ゾーンの Azure DNS 内にあるレコード セットの数を示します。 ゾーン内で定義されているすべてのレコード セットが集計されます。 測定単位はレコード セット数で、すべてのレコードセットの最大数が集計されます。 このメトリックを表示するには、Azure Portal の **[監視]** タブから **メトリックス エクスプローラー エクスペリエンス (プレビュー)** を選択します。 **[リソース]** ドロップダウン リストから DNS ゾーンを選択し、**レコード セット数** メトリックを選択してから、 **[集計]** として **[最大数]** を選択します。 メトリックス エクスプローラー エクスペリエンスおよびグラフ作成機能の詳細については、「[Azure Monitor メトリックス エクスプローラー](../azure-monitor/platform/metrics-charts.md)」を参照してください。 
 
 ![レコード セット数](./media/dns-alerts-metrics/dns-metrics-record-set-count.png)
 
@@ -62,7 +62,7 @@ Azure DNS の *レコード セットの容量使用率* メトリックは、DN
 *図: Azure DNS の レコード セット容量使用率メトリック*
 
 ## <a name="alerts-in-azure-dns"></a>Azure DNS のアラート
-Azure Monitor には、使用可能なメトリックの値を基準にアラートを送信する機能があります。 新しいアラート構成エクスペリエンスで DNS メトリックを使用できます。 [Azure Monitor アラート ドキュメント](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)で詳しく説明されているとおり、リソースとして DNS ゾーンを選択し、メトリック信号の種類やアラートのロジック、 **期間** や **頻度** などのパラメーターを構成できます。 さらに、アラート条件に一致した場合の[アクション グループ](../azure-monitor/platform/action-groups.md)を定義すれば、選択したアクションを通してアラートを送信することもできます。 Azure Monitor メトリックのアラートを構成する方法の詳細については、[Azure Monitor を使用してアラートを作成、表示、管理する](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)を参照してください。 
+Azure Monitor には、使用可能なメトリックの値を基準にアラートを送信する機能があります。 新しいアラート構成エクスペリエンスで DNS メトリックを使用できます。 [Azure Monitor アラート ドキュメント](../azure-monitor/platform/alerts-metric.md)で詳しく説明されているとおり、リソースとして DNS ゾーンを選択し、メトリック信号の種類やアラートのロジック、**期間** や **頻度** などのパラメーターを構成できます。 さらに、アラート条件に一致した場合の[アクション グループ](../azure-monitor/platform/action-groups.md)を定義すれば、選択したアクションを通してアラートを送信することもできます。 Azure Monitor メトリックのアラートを構成する方法の詳細については、[Azure Monitor を使用してアラートを作成、表示、管理する](../azure-monitor/platform/alerts-metric.md)を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure DNS](dns-overview.md) の詳細を学習する。

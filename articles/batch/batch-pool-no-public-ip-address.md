@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: fcc0538dfef1581a244ae5fd9a3515be3470026c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09a5632f969117e69e68bbe0df2bfbab9a8a102b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850933"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842137"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>パブリック IP アドレスのない Azure Batch プールを作成する
 
@@ -34,7 +34,7 @@ Azure Batch プールを作成する場合は、パブリック IP アドレス�
 - **Azure VNet**。 [仮想ネットワーク](batch-virtual-network.md)内にプールを作成する場合は、次の要件と構成に従ってください。 1 つまたは複数のサブネットを持つ VNet を前もって用意するために、Azure Portal、Azure PowerShell、Azure コマンド ライン インターフェイス (CLI)、その他の方法を利用できます。
   - VNET が存在するサブスクリプションとリージョンは、プールの作成に使用する Batch アカウントと同じである必要があります。
   - プールに指定されたサブネットには、プールの対象となる VM 数 (つまり、プールの `targetDedicatedNodes` および `targetLowPriorityNodes` プロパティの合計) に対応できる十分な未割り当て IP アドレスが必要です。 サブネットの未割り当て IP アドレスが十分でない場合、プールによってコンピューティング ノードが部分的に割り当てられ、サイズ変更エラーが発生します。
-  - プライベート リンク サービスとエンドポイントのネットワーク ポリシーを無効にする必要があります。 これを行うには Azure CLI を使用します: ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
+  - プライベート リンク サービスとエンドポイントのネットワーク ポリシーを無効にする必要があります。 これを行うには Azure CLI を使用します: ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --resouce-group <resourcegroup> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
 
 > [!IMPORTANT]
 > 100 の専用ノードまたは優先順位の低いノードごとに、プライベート リンク サービスが 1 つおよびロード バランサーが 1 つ、Batch によって割り当てられます。 これらのリソースは、サブスクリプションの[リソース クォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)によって制限されます。 大規模なプールでは、これらの 1 つまたは複数のリソースについて、[クォータの引き上げの要求](batch-quota-limit.md#increase-a-quota)が必要になる場合があります。 また、Batch によって作成されたリソースにはリソース ロックを適用しないでください。そうしないと、プールの削除やゼロへのサイズ変更など、ユーザーが開始した操作の結果として、リソースのクリーンアップが妨げられるからです。

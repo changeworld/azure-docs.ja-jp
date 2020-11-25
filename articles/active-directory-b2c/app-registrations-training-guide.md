@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3e1d76c5ef1f003fe9e01b866343ef7de7ab4166
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 16b5814835ec5cad6b66087fee37676155196339
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92214925"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952082"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の新しいアプリの登録エクスペリエンス
 
@@ -39,15 +39,15 @@ Azure AD B2C のアプリの登録エクスペリエンスは、すべての Azu
 
 ## <a name="key-new-features"></a>主要な新機能
 
--   **統合されたアプリの一覧** には、Azure AD B2C と Azure AD で認証されているすべてのアプリケーションが、アクセスしやすいよう 1 か所に表示されます。 さらに、 **作成日** の日付、 **証明書とシークレット** の状態、検索バーなどの、Azure AD アプリケーションで既に利用可能な機能を利用できます。
+-   **統合されたアプリの一覧** には、Azure AD B2C と Azure AD で認証されているすべてのアプリケーションが、アクセスしやすいよう 1 か所に表示されます。 さらに、**作成日** の日付、**証明書とシークレット** の状態、検索バーなどの、Azure AD アプリケーションで既に利用可能な機能を利用できます。
 
 -   **統合されたアプリの登録** により、顧客向けのアプリであるか Microsoft Graph にアクセスするアプリであるかにかかわらず、アプリをすばやく登録できます。
 
-- **エンドポイント** ウィンドウを使用すると、シナリオに関連するエンドポイント (OpenID Connect の構成、SAML メタデータ、Microsoft Graph API、 [OAuth 2.0 ユーザー フロー エンドポイント](tokens-overview.md#endpoints)を含む) をすばやく特定できます。
+- **エンドポイント** ウィンドウを使用すると、シナリオに関連するエンドポイント (OpenID Connect の構成、SAML メタデータ、Microsoft Graph API、[OAuth 2.0 ユーザー フロー エンドポイント](tokens-overview.md#endpoints)を含む) をすばやく特定できます。
 
 - **API のアクセス許可** および **API の公開** によって、より広範なスコープ、アクセス許可、および同意の管理が提供されます。 また、MS Graph と Azure AD Graph のアクセス許可をアプリに割り当てられるようになりました。
 
--   Azure AD B2C で認証するアプリに対して、 **所有者** および **マニフェスト** を使用できるようになりました。 [マニフェスト エディターを使用](../active-directory/develop/reference-app-manifest.md)して、登録の所有者を追加したり、アプリケーションのプロパティを直接編集したりすることができます。
+-   Azure AD B2C で認証するアプリに対して、**所有者** および **マニフェスト** を使用できるようになりました。 [マニフェスト エディターを使用](../active-directory/develop/reference-app-manifest.md)して、登録の所有者を追加したり、アプリケーションのプロパティを直接編集したりすることができます。
 
 
 ## <a name="new-supported-account-types"></a>新たにサポートされているアカウントの種類
@@ -73,7 +73,7 @@ Azure AD B2C のアプリの登録エクスペリエンスは、すべての Azu
 ## <a name="admin-consent-and-offline_accessopenid-scopes"></a>管理者の同意と offline_access+openid スコープ
 <!-- Azure AD B2C doesn't support user consent. That is, when a user signs into an application, the user doesn't see a screen requesting consent for the application permissions. All permissions have to be granted through admin consent.  -->
 
-Azure AD B2C を使用してユーザーをアプリにサインインできるようにするには、 **openid** スコープが必要です。 ユーザーに更新トークンを発行するには、 **offline_access** スコープが必要です。 これらのスコープは以前に追加されており、管理者の同意が既定で付与されています。 **[openid と offline_access アクセス許可に対して管理者の同意を付与します]** オプションを確実に選択することにより、作成プロセス中にこれらのスコープに対するアクセス許可を簡単に追加できるようになりました。 それ以外の場合、Microsoft Graph のアクセス許可は、管理者の同意とともに既存のアプリの **[API のアクセス許可]** 設定で追加できます。
+Azure AD B2C を使用してユーザーをアプリにサインインできるようにするには、**openid** スコープが必要です。 ユーザーに更新トークンを発行するには、**offline_access** スコープが必要です。 これらのスコープは以前に追加されており、管理者の同意が既定で付与されています。 **[openid と offline_access アクセス許可に対して管理者の同意を付与します]** オプションを確実に選択することにより、作成プロセス中にこれらのスコープに対するアクセス許可を簡単に追加できるようになりました。 それ以外の場合、Microsoft Graph のアクセス許可は、管理者の同意とともに既存のアプリの **[API のアクセス許可]** 設定で追加できます。
 
 [アクセス許可と同意](../active-directory/develop/v2-permissions-and-consent.md)についてご確認ください。
 
@@ -97,8 +97,8 @@ Azure AD B2C を使用してユーザーをアプリにサインインできる�
 ## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Azure AD B2C テナントに適用されない機能
 次の Azure AD アプリの登録機能は、Azure AD B2C テナントに適用されないか、テナントで利用できません。
 - **ロールと管理者** - 現在、Azure AD B2C では使用できません。
-- **ブランド** - UI や UX のカスタマイズは、 **会社のブランド** エクスペリエンスまたはユーザー フローの一部として構成されます。 [Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする](customize-ui-overview.md)方法を参照してください。
-- **発行元ドメインの検証** - アプリは、検証済みのドメインではない *onmicrosoft.com* に登録されます。 また、発行元ドメインは主にユーザーの同意を与えるために使用され、ユーザー認証のために Azure AD B2C アプリに適用されるものではありません。 [発行元ドメインの詳細についてご確認ください](https://docs.microsoft.com/azure/active-directory/develop/howto-configure-publisher-domain)。
+- **ブランド** - UI や UX のカスタマイズは、**会社のブランド** エクスペリエンスまたはユーザー フローの一部として構成されます。 [Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする](customize-ui-overview.md)方法を参照してください。
+- **発行元ドメインの検証** - アプリは、検証済みのドメインではない *onmicrosoft.com* に登録されます。 また、発行元ドメインは主にユーザーの同意を与えるために使用され、ユーザー認証のために Azure AD B2C アプリに適用されるものではありません。 [発行元ドメインの詳細についてご確認ください](../active-directory/develop/howto-configure-publisher-domain.md)。
 - **トークン構成** - トークンは、アプリではなくユーザー フローの一部として構成されます。
 - **クイックスタート** エクスペリエンスは現在、Azure AD B2C テナントでは使用できません。
 <!-- - The **Integration assistant** blade is currently not available for Azure AD B2C tenants. -->

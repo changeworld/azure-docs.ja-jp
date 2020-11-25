@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
-ms.openlocfilehash: baa035269f4a5b2f39263264f23183b308264ead
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 090797549cc61aa27945114e5ef8b666226b66e2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513950"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956995"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>StorSimple デバイス コントローラーを管理する
 
@@ -71,7 +71,7 @@ Azure ポータルからデバイス コントローラーを管理するには�
 StorSimple デバイスの単一のコントローラーを StorSimple 用 Windows PowerShell でシャットダウンまたは再起動するには、次の手順を実行します。
 
 1. リモート コンピューターからシリアル コンソールまたは Telnet セッション経由でデバイスにアクセスします。 コントローラー 0 またはコントローラー 1 に接続するには、「[PuTTY を使用してデバイスのシリアル コンソールに接続する](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)」の手順に従います。
-2. シリアル コンソール メニューで、オプション 1 を選択し、 **フル アクセスでログイン**します。
+2. シリアル コンソール メニューで、オプション 1 を選択し、 **フル アクセスでログイン** します。
 3. バナー メッセージで、接続先のコントローラーがどれであるか (コントローラー 0 またはコントローラー 1)、また、それがアクティブ コントローラーであるかパッシブ (スタンバイ) コントローラーであるかを書き留めます。
    
    * 単一のコントローラーをシャットダウンするには、プロンプトで次のように入力します。
@@ -112,12 +112,12 @@ Microsoft Azure StorSimple デバイスを出荷時の設定にリセットす�
 
 ### <a name="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple"></a>StorSimple 用 Windows PowerShell でデバイスを既定の設定にリセットするには
 1. シリアル コンソールを使ってデバイスにアクセスします。 **アクティブ** コントローラーに接続されていることをバナー メッセージで確認してください。
-2. シリアル コンソール メニューで、オプション 1 を選択し、 **フル アクセスでログイン**します。
+2. シリアル コンソール メニューで、オプション 1 を選択し、 **フル アクセスでログイン** します。
 3. プロンプトで次のコマンドを入力して、クラスター全体をリセットし、すべてのデータ、メタデータ、コントローラー設定を削除します。
    
     `Reset-HcsFactoryDefault`
    
-    代わりに、1 つのコントローラーだけをリセットするには、`-scope` パラメーターを指定して [Reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) コマンドレットを使用します。
+    代わりに、1 つのコントローラーだけをリセットするには、`-scope` パラメーターを指定して [Reset-HcsFactoryDefault](/previous-versions/windows/powershell-scripting/dn688132(v=wps.630)) コマンドレットを使用します。
    
     システムが何度か再起動されます。 リセットが正常に完了すると、その旨通知されます。 このプロセスの所要時間はシステムのモデルによって異なります。8100 デバイスの場合は 45 ～ 60 分、8600 の場合は 60 ～ 90 分かかります。
    
@@ -161,4 +161,3 @@ Microsoft Azure StorSimple デバイスを出荷時の設定にリセットす�
 ## <a name="next-steps"></a>次のステップ
 * このチュートリアルで紹介した手順では解決できないような問題が StorSimple デバイス コントローラーで発生した場合は、 [Microsoft サポートにお問い合わせ](storsimple-8000-contact-microsoft-support.md)ください。
 * StorSimple デバイス マネージャー サービスの使用の詳細については、「[Use the StorSimple Device Manager service to administer your StorSimple device](storsimple-8000-manager-service-administration.md)」(StorSimple デバイス マネージャーを使用して StorSimple デバイスを管理する) を参照してください。
-

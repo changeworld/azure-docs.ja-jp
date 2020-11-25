@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/15/2016
 ms.author: alkohli
-ms.openlocfilehash: f56c36f18379449409f4989eab9510da1f686d0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8301b45fe778bd3df7fc665db2662ba81d3e644f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80397800"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966107"
 ---
 # <a name="storsimple-virtual-array-update-03-release-notes"></a>StorSimple Virtual Array Update 0.3 のリリース ノート
 ## <a name="overview"></a>概要
@@ -27,7 +27,7 @@ ms.locfileid: "80397800"
 
 リリース ノートは継続的に更新されます。対応策を必要とする重大な問題が見つかった場合は、それらの問題が追加されます。 StorSimple Virtual Array をデプロイする前に、リリース ノートに含まれる情報を十分に確認してください。
 
-Update 0.3 はバージョン **10.0.10288.0**に対応しています。
+Update 0.3 はバージョン **10.0.10288.0** に対応しています。
 
 > [!NOTE]
 > 更新プログラムは中断を伴い、デバイスを再起動します。 I/O が進行中である場合は、デバイスにダウンタイムが発生します。
@@ -66,11 +66,10 @@ Update 0.3 は主にバグ修正ビルドです。 このバージョンでは�
 | **14.** |ファイル サーバー |フォルダー内のファイルが代替データ ストリーム (ADS) に関連付けられている場合、ADS のバックアップまたは復元には、障害復旧、複製、および項目レベルの回復が使用されません。 | |
 
 ## <a name="next-step"></a>次のステップ
-[Update 0.3 をインストール](storsimple-ova-install-update-01.md) します。
+[Update 0.3 をインストール](./storsimple-virtual-array-install-update-06.md) します。
 
 ## <a name="references"></a>References
 以前のリリース ノートをお探しですか。 参照先: 
 
 * [StorSimple Virtual Array Update 0.1 および 0.2 のリリース ノート](storsimple-ova-update-01-release-notes.md)
-* [StorSimple Virtual Array 一般公開リリース ノート](storsimple-ova-pp-release-notes.md)
-
+* [StorSimple Virtual Array 一般公開リリース ノート](./storsimple-virtual-array-update-06-release-notes.md)

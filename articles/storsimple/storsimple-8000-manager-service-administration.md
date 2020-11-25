@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
-ms.openlocfilehash: c8d8e3b9058b753dc2a6da35878449c94399225e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69a36f38cc76693f596b45d4df6e232bc01584d5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85508046"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967977"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理
 
@@ -65,7 +65,7 @@ StorSimple デバイス マネージャー サービスは Microsoft Azure で�
 | アクセス制御レコードについて</br>アクセス制御レコードの作成</br>アクセス制御レコードの編集</br>アクセス制御レコードの削除 |[アクセス制御レコードを管理する](storsimple-8000-manage-acrs.md) |
 | ジョブの詳細を表示する</br>ジョブを取り消す |[ジョブを管理する](storsimple-8000-manage-jobs-u2.md) |
 | アラート通知を受け取る</br>Manage alerts</br>アラートを確認する |[StorSimple アラートを表示および管理する](storsimple-8000-manage-alerts.md) |
-| 監視グラフを作成する |[StorSimple デバイスを監視する](storsimple-monitor-device.md) |
+| 監視グラフを作成する |[StorSimple デバイスを監視する](./storsimple-8000-monitor-device.md) |
 | ボリューム コンテナーを追加する</br>ボリューム コンテナーを変更する</br>ボリューム コンテナーを削除する |[ボリューム コンテナーを管理する](storsimple-8000-manage-volume-containers.md) |
 | ボリュームを追加する</br>ボリュームを変更する</br>ボリュームをオフラインにする</br>ボリュームを削除する</br>ボリュームを監視する |[ボリュームを管理する](storsimple-8000-manage-volumes-u2.md) |
 | デバイスの設定の変更</br>時刻の設定の変更</br>DNS.md 設定の変更</br>ネットワーク インターフェイスを構成する |[StorSimple デバイスのデバイス構成を変更する](storsimple-8000-modify-device-config.md) |
@@ -73,7 +73,7 @@ StorSimple デバイス マネージャー サービスは Microsoft Azure で�
 | デバイス管理者のパスワードを変更する</br>StorSimple Snapshot Manager のパスワードを変更する |[StorSimple のパスワードを変更する](storsimple-8000-change-passwords.md) |
 | リモート管理の構成 |[StorSimple デバイスにリモート接続する](storsimple-8000-remote-connect.md) |
 | アラート設定の構成 |[StorSimple アラートを表示および管理する](storsimple-8000-manage-alerts.md) |
-| StorSimple デバイスの CHAP の構成 |[StorSimple デバイスの CHAP を構成する](storsimple-configure-chap.md) |
+| StorSimple デバイスの CHAP の構成 |[StorSimple デバイスの CHAP を構成する](./storsimple-8000-configure-chap.md) |
 | バックアップ ポリシーを追加する</br>スケジュールの追加または変更</br>バックアップ ポリシーの削除</br>手動バックアップの取得</br>複数のボリュームとスケジュールによるカスタム バックアップ ポリシーの作成 |[バックアップ ポリシーを管理する](storsimple-8000-manage-backup-policies-u2.md) |
 | デバイス コントローラーを停止する</br>デバイス コントローラーを再起動する</br>デバイス コントローラーをシャット ダウンする</br>デバイスを工場出荷時の既定値にリセットする</br>(これらはオンプレミスのデバイスのみに適用されます) |[StorSimple デバイス コントローラーを管理する](storsimple-8000-manage-device-controller.md) |
 | StorSimple のハードウェア コンポーネントについて学習する</br>ハードウェアの状態を監視する</br>(これらはオンプレミスのデバイスのみに適用されます) |[ハードウェア コンポーネントを監視する](storsimple-8000-monitor-hardware-status.md) |
@@ -88,4 +88,3 @@ StorSimple デバイスの日常的な操作または StorSimple デバイスの
 * [StorSimple 監視インジケーター LED の使用](storsimple-monitoring-indicators.md)
 
 問題を解決できず、サービス要求の作成が必要な場合は、｢ [Microsoft サポートに問い合わせる](storsimple-8000-contact-microsoft-support.md)」を参照してください。
-

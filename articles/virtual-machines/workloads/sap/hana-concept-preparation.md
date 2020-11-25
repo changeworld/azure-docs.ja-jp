@@ -7,18 +7,19 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 89da6935d85628b5ce4ff762ad31d3f280682921
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7f0782738a8aa57b2bc0b87e1378972e3fa5d31c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424250"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967858"
 ---
 # <a name="disaster-recovery-principles"></a>ディザスター リカバリーの原則
 
@@ -76,8 +77,8 @@ HANA L インスタンスでは、さまざまな Azure リージョンの HANA 
 >レプリケートされた SAP HANA データベースをディザスター リカバリー サイトで一貫した状態に復元する必要がないため、/hana/log ボリュームはレプリケートされません。
 
 次に、障害発生時に目標とする RTO と RPO に合わせて、ストレージ スナップショット バックアップ スケジュールをセットアップまたは調整します。 目標復旧時点を最小限に抑えるために、HANA L インスタンス サービスでは次のレプリケーション間隔を設定します。
-- 結合スナップショット (スナップショットの種類は **hana** ) の対象となるボリュームについては、ディザスター リカバリー サイトの同等のストレージ ボリューム ターゲットに 15 分ごとにレプリケートされるように設定します。
-- トランザクション ログ バックアップ ボリューム (スナップショットの種類は **logs** ) については、ディザスター リカバリー サイトの同等のストレージ ボリューム ターゲットに 3 分ごとにレプリケートされるように設定します。
+- 結合スナップショット (スナップショットの種類は **hana**) の対象となるボリュームについては、ディザスター リカバリー サイトの同等のストレージ ボリューム ターゲットに 15 分ごとにレプリケートされるように設定します。
+- トランザクション ログ バックアップ ボリューム (スナップショットの種類は **logs**) については、ディザスター リカバリー サイトの同等のストレージ ボリューム ターゲットに 3 分ごとにレプリケートされるように設定します。
 
 目標復旧時点を最小限に抑えるには、次のようにセットアップします。
 - 種類が **hana** のストレージ スナップショット (「手順 7:スナップショットを実行する」を参照) を 30 分から 1 時間ごとに実行する。

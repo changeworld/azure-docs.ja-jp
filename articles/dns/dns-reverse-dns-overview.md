@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: bf3da62e989f0e029efdc8e9c70f5f45e0ddd765
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8af9549efc3e8dab54f55dd404346d87201dee2c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76932306"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965614"
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>逆引き DNS と Azure でのサポートの概要
 
@@ -38,7 +38,7 @@ ms.locfileid: "76932306"
 組織は、IP アドレス ブロックが割り当てられている場合、対応する ARPA ゾーンを管理する権利も取得します。 Azure によって使用される IP アドレス ブロックに対応する ARPA ゾーンは、Microsoft によってホスト、管理されます。 ISP は、ユーザー独自の IP アドレスの ARPA ゾーンをホストする場合もあれば、ユーザーが自身で選んだ DNS サービス (Azure DNS など) で ARPA ゾーンをホストできるようにする場合もあります。
 
 > [!NOTE]
-> DNS の前方参照と DNS の逆引き参照は、別々の並列した DNS 階層に実装されます。 "www.contoso.com" の逆引き参照は "contoso.com" ゾーンでホスト**されません**。代わりに、対応する IP アドレス ブロックの ARPA ゾーンでホストされます。 IPv4 と IPv6 のアドレス ブロックには、異なるゾーンが使われます。
+> DNS の前方参照と DNS の逆引き参照は、別々の並列した DNS 階層に実装されます。 "www.contoso.com" の逆引き参照は "contoso.com" ゾーンでホスト **されません**。代わりに、対応する IP アドレス ブロックの ARPA ゾーンでホストされます。 IPv4 と IPv6 のアドレス ブロックには、異なるゾーンが使われます。
 
 ### <a name="ipv4"></a>IPv4
 
@@ -89,7 +89,7 @@ IP アドレス "192.0.2.129" の逆引き参照では、"129.2.0.192.in-addr.ar
 
 IPv6 の逆引き参照ゾーンの名前は、`<IPv6 network prefix in reverse order>.ip6.arpa` という形式にする必要があります。
 
-次に例を示します。 IP アドレスが 2001:db8:1000:abdc::/64 プレフィックス内にあるホストのレコードをホストする逆引きゾーンを作成するとき、ゾーン名は、アドレスのネットワーク プレフィックス (2001:db8:abdc::) を分離することによって作成されます。 次に、IPv6 アドレス プレフィックスを短くするために[ゼロ圧縮](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx)が使用われていた場合は (2001:0db8:abdc:0000::)、IPv6 ネットワーク プレフィックスを展開することによって削除します。 プレフィックスの各 16 進数の間の区切り記号としてピリオドを使って順序を反転させて、順序が逆のネットワーク プレフィックス (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) を作成し、サフィックス `.ip6.arpa` を追加します。
+次に例を示します。 IP アドレスが 2001:db8:1000:abdc::/64 プレフィックス内にあるホストのレコードをホストする逆引きゾーンを作成するとき、ゾーン名は、アドレスのネットワーク プレフィックス (2001:db8:abdc::) を分離することによって作成されます。 次に、IPv6 アドレス プレフィックスを短くするために[ゼロ圧縮](/previous-versions/windows/it-pro/windows-server-2003/cc781672(v=ws.10))が使用われていた場合は (2001:0db8:abdc:0000::)、IPv6 ネットワーク プレフィックスを展開することによって削除します。 プレフィックスの各 16 進数の間の区切り記号としてピリオドを使って順序を反転させて、順序が逆のネットワーク プレフィックス (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) を作成し、サフィックス `.ip6.arpa` を追加します。
 
 
 |ネットワーク プレフィックス  |展開して順序を逆にしたネットワーク プレフィックス |標準のサフィックス |逆引きゾーン名  |
@@ -114,4 +114,3 @@ IPv4 と IPv6 の両方で、Azure DNS を使って、[逆引き参照ゾーン�
 [Azure DNS で ISP によって割り当てられた IP アドレス範囲の逆引き参照ゾーンをホストする](dns-reverse-dns-for-azure-services.md)方法を学習してください。
 <br>
 [Azure サービスの逆引き DNS レコードを管理する](dns-reverse-dns-for-azure-services.md)方法を学習してください。
-

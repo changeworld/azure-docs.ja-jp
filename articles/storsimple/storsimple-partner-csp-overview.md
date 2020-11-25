@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 358399426798ac20897d207c93a8874357e8b781
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c96dcc2bae03b1bd05fb3d1512dba757f180eed8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88182002"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964917"
 ---
 # <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>クラウド ソリューション プロバイダー プログラムの StorSimple とは。
 
@@ -30,7 +30,7 @@ Microsoft Azure StorSimple とは、確かなハイブリッド クラウド ス
 
 Cloud Solutions Provider (CSP) の StorSimple Virtual Array を用いることで、パートナーはこの機会を利用できます。 パートナーは、Microsoft のクラウド サービスの直接プロビジョニング、課金、サポートを利用しながら、エンド ツー エンドの顧客ライフサイクルを所有できます。 要するに、パートナーは顧客へのサービスと共に StorSimple を今すぐ処理できます。
 
-CSP の StorSimple の詳細については、[Azure CSPの概要](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)のページをご覧ください。
+CSP の StorSimple の詳細については、[Azure CSPの概要](/azure/cloud-solution-provider/overview/azure-csp-overview)のページをご覧ください。
 
 課金、料金、インセンティブ、CSP 内のサポートの詳細については、[CSP の StorSimple についてよく寄せられる質問](storsimple-partner-csp-faq.md)に関するページをご覧ください。 
 

@@ -5,14 +5,15 @@ author: sameeksha91
 ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.date: 08/17/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 4b0e54c434f68a8a26f49b6ba0c1010e93d36ad6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c3b3848e4e4f7b0445f882265dbe66bb10b48833
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739899"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968589"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Azure portal を使用して SAP ソリューション向け Azure Monitor をデプロイする
 
@@ -52,7 +53,7 @@ Azure portal (https://portal.azure.com) にサインインする
 
 3. HANA サーバーのプライベート IP を入力します。
 
-4. 使用するデータベース テナントの名前を入力します。 任意のテナントを選択できますが、 **SYSTEMDB** を使用すると、さまざまな監視領域が有効になるため、これを使用することをお勧めします。 
+4. 使用するデータベース テナントの名前を入力します。 任意のテナントを選択できますが、**SYSTEMDB** を使用すると、さまざまな監視領域が有効になるため、これを使用することをお勧めします。 
 
 5. HANA データベースに関連付けられている SQL ポート番号を入力します。 ポート番号は、 **[3]**  +  **[instance#]**  +  **[13]** の形式で入力する必要があります (例: 30013)。 
 

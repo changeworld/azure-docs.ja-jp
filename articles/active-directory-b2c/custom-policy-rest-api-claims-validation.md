@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30273c0103d8a0fde12b1b7c6f66d16dd4ea84cb
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 761bc4db7760ef5e84e3fc3c8a5deea5d4508f51
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089521"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951929"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>チュートリアル:ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する
 
@@ -65,13 +65,13 @@ ID 開発者は、Azure Active Directory B2C (Azure AD B2C) の基盤となる I
 }
 ```
 
-REST API エンドポイントの設定は、この記事では扱っていません。 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) のサンプルを作成しました。 Azure 関数の完全なコードは、[GitHub](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function) から入手できます。
+REST API エンドポイントの設定は、この記事では扱っていません。 [Azure Functions](../azure-functions/functions-reference.md) のサンプルを作成しました。 Azure 関数の完全なコードは、[GitHub](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function) から入手できます。
 
 ## <a name="define-claims"></a>要求を定義する
 
 要求は、Azure AD B2C ポリシーの実行時に、データの一時的なストレージとなります。 要求は、[claims schema](claimsschema.md) セクションで宣言できます。 
 
-1. お使いのポリシーの拡張ファイルを開きます。 たとえば、 <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>です。
+1. お使いのポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>です。
 1. [BuildingBlocks](buildingblocks.md) 要素を検索します。 要素が存在しない場合は追加します。
 1. [ClaimsSchema](claimsschema.md) 要素を見つけます。 要素が存在しない場合は追加します。
 1. 次の要求を **ClaimsSchema** 要素に追加します。  
@@ -135,10 +135,10 @@ REST API エンドポイントの設定は、この記事では扱っていま�
 
 REST API をデプロイした後、`REST-ValidateProfile` 技術プロファイルのメタデータを、次のような独自の REST API を反映させるように設定します。
 
-- **ServiceUrl** : REST API エンドポイントの URL を設定します。
-- **SendClaimsIn** : RESTful クレーム プロバイダーへの入力要求の送信方法を指定します。
-- **AuthenticationType** : RESTful 要求プロバイダーにより実行されている認証の種類を設定します。 
-- **AllowInsecureAuthInProduction** : 運用環境では、このメタデータを必ず `true` に設定してください。
+- **ServiceUrl**: REST API エンドポイントの URL を設定します。
+- **SendClaimsIn**: RESTful クレーム プロバイダーへの入力要求の送信方法を指定します。
+- **AuthenticationType**: RESTful 要求プロバイダーにより実行されている認証の種類を設定します。 
+- **AllowInsecureAuthInProduction**: 運用環境では、このメタデータを必ず `true` に設定してください。
     
 詳細な構成については、[RESTful 技術プロファイルのメタデータ](restful-technical-profile.md#metadata)に関する記事を参照してください。
 
@@ -233,7 +233,7 @@ REST API をデプロイした後、`REST-ValidateProfile` 技術プロファイ
 1. ご利用の Azure AD テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターをクリックして、ご利用の Azure AD テナントを含むディレクトリを選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
 1. **[Identity Experience Framework]** を選択します。
-1. **[カスタム ポリシーのアップロード]** を選択し、変更した次のポリシー ファイルをアップロードします。 *TrustFrameworkExtensions.xml* 、および *SignUpOrSignin.xml* 。 
+1. **[カスタム ポリシーのアップロード]** を選択し、変更した次のポリシー ファイルをアップロードします。*TrustFrameworkExtensions.xml*、および *SignUpOrSignin.xml*。 
 1. アップロードしたサインアップまたはサインイン ポリシーを選択し、 **[今すぐ実行]** ボタンをクリックします。
 1. メール アドレスを使用してサインアップできることを確認します。
 1. **[Sign-up now]\(今すぐサインアップ\)** リンクをクリックします。

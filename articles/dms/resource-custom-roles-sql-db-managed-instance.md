@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: e950e34a1965e309d226c42bf4b3128cbe3bf3c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dad02735228bb639981bf3f053a74f29d1944e5a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291505"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961483"
 ---
 # <a name="custom-roles-for-sql-server-to-azure-sql-managed-instance-online-migrations"></a>SQL Server から Azure SQL Managed Instance へオンライン移行するためのカスタム ロール
 
@@ -32,7 +32,7 @@ Azure Database Migration Service では、Azure サービスとの対話にア�
 > [!NOTE]
 > SQL Managed Instance の新しいコードが Azure にデプロイされると、最後のカスタム ロールの要件は最終的に削除される可能性があります。
 
-**アプリ ID のカスタム ロール**。 このロールは、Azure Database Migration Service の*リソース* レベルまたは*リソース グループ* レベルでの移行に必要です (アプリ ID の詳細については、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」の記事を参照してください)。
+**アプリ ID のカスタム ロール**。 このロールは、Azure Database Migration Service の *リソース* レベルまたは *リソース グループ* レベルでの移行に必要です (アプリ ID の詳細については、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md)」の記事を参照してください)。
 
 ```json
 {
@@ -83,7 +83,7 @@ Azure Database Migration Service では、Azure サービスとの対話にア�
 
 上記の json は 3 つのテキスト ファイルに保存する必要があり、AzureRM、AZ PowerShell コマンドレット、または Azure CLI を使用し、**New-AzureRmRoleDefinition (AzureRM)** または **New-AzRoleDefinition (AZ)** を使用してロールを作成できます。
 
-詳細については、「[Azure カスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)」を参照してください。
+詳細については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。
 
 これらのカスタム ロールを作成した後は、ロールの割り当てをユーザーに追加し、アプリ ID を適切なリソースまたはリソース グループに追加する必要があります。
 

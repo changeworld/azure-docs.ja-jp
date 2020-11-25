@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 888e2287c869200434e198204881d5bd5014f87d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 29db2214ddabeb6df2aa937c4ccd1f9938143969
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363863"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949447"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Azure PowerShell を使用して Azure AD B2C のカスタム ポリシーを管理する
 
@@ -31,7 +31,7 @@ Azure PowerShell には、Azure AD B2C テナントに対するコマンド ラ�
 
 * [Azure AD B2C テナント](tutorial-create-tenant.md)、および [B2C IEF ポリシー管理者](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)ロールを持つディレクトリー内のユーザーの資格情報
 * テナントにアップロード済みの[カスタム ポリシー](custom-policy-get-started.md)
-* [Azure AD PowerShell for Graph **プレビュー モジュール**](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+* [Azure AD PowerShell for Graph **プレビュー モジュール**](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
 
 ## <a name="connect-powershell-session-to-b2c-tenant"></a>PowerShell セッションを B2C テナントに接続する
 
@@ -191,15 +191,15 @@ Message: Validation failed: 1 validation error(s) found in policy "B2C_1A_SIGNUP
 ...
 ```
 
-カスタム ポリシーのトラブルシューティングの詳細については、「[Azure AD B2C のカスタム ポリシーと Identity Experience Framework のトラブルシューティング](active-directory-b2c-guide-troubleshooting-custom.md)」を参照してください。
+カスタム ポリシーのトラブルシューティングの詳細については、「[Azure AD B2C のカスタム ポリシーと Identity Experience Framework のトラブルシューティング](./troubleshoot-custom-policies.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 PowerShell を使用して、継続的インテグレーション/継続的デリバリー (CI/CD) パイプラインの一環としてカスタム ポリシーをデプロイする方法の詳細については、[Azure DevOps パイプラインからのカスタム ポリシーのデプロ](deploy-custom-policies-devops.md)に関するページをご覧ください。
 
 <!-- LINKS - External -->
-[Connect-AzureAD]: https://docs.microsoft.com/powershell/module/azuread/get-azureadmstrustframeworkpolicy
-[Get-AzureADMSTrustFrameworkPolicy]: https://docs.microsoft.com/powershell/module/azuread/get-azureadmstrustframeworkpolicy
-[New-AzureADMSTrustFrameworkPolicy]: https://docs.microsoft.com/powershell/module/azuread/new-azureadmstrustframeworkpolicy
-[Remove-AzureADMSTrustFrameworkPolicy]: https://docs.microsoft.com/powershell/module/azuread/remove-azureadmstrustframeworkpolicy
-[Set-AzureADMSTrustFrameworkPolicy]: https://docs.microsoft.com/powershell/module/azuread/set-azureadmstrustframeworkpolicy
+[Connect-AzureAD]: /powershell/module/azuread/get-azureadmstrustframeworkpolicy
+[Get-AzureADMSTrustFrameworkPolicy]: /powershell/module/azuread/get-azureadmstrustframeworkpolicy
+[New-AzureADMSTrustFrameworkPolicy]: /powershell/module/azuread/new-azureadmstrustframeworkpolicy
+[Remove-AzureADMSTrustFrameworkPolicy]: /powershell/module/azuread/remove-azureadmstrustframeworkpolicy
+[Set-AzureADMSTrustFrameworkPolicy]: /powershell/module/azuread/set-azureadmstrustframeworkpolicy

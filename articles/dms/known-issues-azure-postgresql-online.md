@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 14722f46f06351504583da7231179d206f7a3c26
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: db2f6e95153610e0a1b79cf5d30cea3c917333d3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893732"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962571"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>PostgreSQL から Azure DB for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -96,13 +96,13 @@ AWS RDS PostgreSQL から Azure Database for PostgreSQL へのオンライン移
 - **Error**: The Default value of column '{column}' in table '{table}' in database '{database}' is different on source and target servers.\(データベース '{database}' のテーブル '{table}' にある列 '{column}' の既定値が、ソース サーバーとターゲット サーバーで異なります。\) It's '{value on source}' on source and '{value on target}' on target.\(ソースでは '{value on source}'、ターゲットでは '{value on target}' です。\)
 
   **制限事項**:このエラーは、列スキーマの既定値がソース データベースとターゲット データベースで異なる場合に発生します。
-  **回避策**:ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)をご覧ください。
+  **回避策**:ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](./tutorial-postgresql-azure-postgresql-online.md#migrate-the-sample-schema)をご覧ください。
 
 - **Error**: ターゲット データベース '{database}' には '{number of tables}' 個のテーブルが含まれていますが、ソース データベース '{database}' に含まれるテーブルは '{number of tables}' 個です。 ソース データベースとターゲット データベースのテーブル数は同じでなければなりません。
 
   **制限事項**:このエラーは、ソース データベースとターゲット データベースのテーブル数が異なる場合に発生します。
 
-  **回避策**:ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)をご覧ください。
+  **回避策**:ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](./tutorial-postgresql-azure-postgresql-online.md#migrate-the-sample-schema)をご覧ください。
 
 - **エラー:** ソース データベース {database} が空です。
 
@@ -113,7 +113,7 @@ AWS RDS PostgreSQL から Azure Database for PostgreSQL へのオンライン移
 - **エラー:** ターゲット データベース {database} が空です。 スキーマを移行してください。
 
   **制限事項**:このエラーは、ターゲット データベースにスキーマがない場合に発生します。 ターゲットのスキーマがソースのスキーマと一致していることを確認してください。
-  **回避策**:ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)をご覧ください。
+  **回避策**:ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](./tutorial-postgresql-azure-postgresql-online.md#migrate-the-sample-schema)をご覧ください。
 
 ## <a name="other-limitations"></a>その他の制限事項
 

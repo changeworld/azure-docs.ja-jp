@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4a9323cc92567d681ee8c73a62e0b89c17c22b1e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a5fcbf80850fd9de77e6f9a431afea6d48cb14d1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647615"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949413"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Microsoft Graph を使用して Azure AD B2C ユーザー アカウントを管理する
 
@@ -35,13 +35,13 @@ Microsoft Graph を使用すると、Microsoft Graph API で作成、読み取�
 
 ## <a name="user-management-microsoft-graph-operations"></a>Microsoft Graph のユーザー管理操作
 
-[Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/user) では次のユーザー管理操作を使用できます。
+[Microsoft Graph API](/graph/api/resources/user) では次のユーザー管理操作を使用できます。
 
-- [ユーザーの一覧の取得](https://docs.microsoft.com/graph/api/user-list)
-- [ユーザーの作成](https://docs.microsoft.com/graph/api/user-post-users)
-- [ユーザーの取得](https://docs.microsoft.com/graph/api/user-get)
-- [ユーザーの更新](https://docs.microsoft.com/graph/api/user-update)
-- [ユーザーの削除](https://docs.microsoft.com/graph/api/user-delete)
+- [ユーザーの一覧の取得](/graph/api/user-list)
+- [ユーザーの作成](/graph/api/user-post-users)
+- [ユーザーの取得](/graph/api/user-get)
+- [ユーザーの更新](/graph/api/user-update)
+- [ユーザーの削除](/graph/api/user-delete)
 
 ## <a name="user-properties"></a>ユーザー プロパティ
 
@@ -125,7 +125,7 @@ Microsoft Graph API では、拡張属性を使用したユーザーの作成と
 
 ## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>コード サンプル:プログラムによってユーザー アカウントを管理する方法
 
-このコード サンプルは、[Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview) を使用して Microsoft Graph API と対話する .NET Core コンソール アプリケーションです。 このコードは、API を呼び出して、Azure AD B2C テナント内のユーザーをプログラムで管理する方法を示しています。
+このコード サンプルは、[Microsoft Graph SDK](/graph/sdks/sdks-overview) を使用して Microsoft Graph API と対話する .NET Core コンソール アプリケーションです。 このコードは、API を呼び出して、Azure AD B2C テナント内のユーザーをプログラムで管理する方法を示しています。
 [サンプル アーカイブ (*.zip) をダウンロード](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip)するか、GitHub の[リポジトリを参照する](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management)か、リポジトリを複製することができます。
 
 ```cmd
@@ -152,7 +152,7 @@ git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-ma
 
 ### <a name="code-discussion"></a>コードの説明
 
-このサンプル コードでは、Microsoft Graph にアクセスする高品質かつ効率的で回復性があるアプリケーションを簡単に構築できるように設計されている、[Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview) を使用します。
+このサンプル コードでは、Microsoft Graph にアクセスする高品質かつ効率的で回復性があるアプリケーションを簡単に構築できるように設計されている、[Microsoft Graph SDK](/graph/sdks/sdks-overview) を使用します。
 
 Microsoft Graph API への要求には、認証のためのアクセス トークンが必要になります。 このソリューションでは、Microsoft Graph SDK で使用する Microsoft Authentication Library (MSAL) の認証シナリオベースのラッパーを提供する、 [Microsoft.Graph.Auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet パッケージを使用します。
 
@@ -203,7 +203,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[Microsoft Graph SDK を使用した API 呼び出し](https://docs.microsoft.com/graph/sdks/create-requests)に関する記事には、Microsoft Graph から情報を読み書きする方法、`$select` を使用して返されるプロパティを制御する方法、カスタム クエリ パラメーターを指定する方法、`$filter` および `$orderBy` のクエリ パラメーターを使用する方法に関する情報が含まれています。
+[Microsoft Graph SDK を使用した API 呼び出し](/graph/sdks/create-requests)に関する記事には、Microsoft Graph から情報を読み書きする方法、`$select` を使用して返されるプロパティを制御する方法、カスタム クエリ パラメーターを指定する方法、`$filter` および `$orderBy` のクエリ パラメーターを使用する方法に関する情報が含まれています。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -211,5 +211,5 @@ Azure AD B2C リソースでサポートされている Microsoft Graph API 操�
 
 <!-- LINK -->
 
-[graph-objectIdentity]: https://docs.microsoft.com/graph/api/resources/objectidentity
+[graph-objectIdentity]: /graph/api/resources/objectidentity
 [graph-user]: (https://docs.microsoft.com/graph/api/resources/user)

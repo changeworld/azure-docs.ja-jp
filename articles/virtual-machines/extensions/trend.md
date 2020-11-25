@@ -4,16 +4,17 @@ description: この記事では、Azure でクラシック デプロイ モデ�
 author: axayjo
 tags: azure-service-management
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: bed1d567aa48a11c01ae952e6a4a2028e260e6e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d6d80287d05517933f066d5e49fa31e78a48943
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288519"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966381"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法
 
@@ -44,7 +45,7 @@ Trend Micro のオンプレミスのソリューション用サブスクリプ�
 
    ![Deep Security Agent の識別][2]
 
-3. 拡張機能の**テナント ID**と**テナント アクティべーション パスワード**を入力します。 必要に応じて、**セキュリティ ポリシー識別子**を入力できます。 次に、 **[OK]** をクリックして、クライアントを追加します。
+3. 拡張機能の **テナント ID** と **テナント アクティべーション パスワード** を入力します。 必要に応じて、**セキュリティ ポリシー識別子** を入力できます。 次に、 **[OK]** をクリックして、クライアントを追加します。
 
    ![拡張機能の詳細提示][3]
 
@@ -65,7 +66,7 @@ write-host $vm.VM.ProvisionGuestAgent
 
 クラウド サービスや仮想マシンの名前がわからない場合は、**Get-AzureVM** を実行します。現在のサブスクリプションのすべての仮想マシンの情報が表示されます。
 
-**write-host** コマンドによって **True** が返された場合は、VM エージェントがインストールされています。 **False**が返された場合は、Azure ブログの [VM エージェントと拡張機能に関する記事のパート 2](https://go.microsoft.com/fwlink/p/?LinkId=403947)で、手順とダウンロード用リンクをご確認ください。
+**write-host** コマンドによって **True** が返された場合は、VM エージェントがインストールされています。 **False** が返された場合は、Azure ブログの [VM エージェントと拡張機能に関する記事のパート 2](https://go.microsoft.com/fwlink/p/?LinkId=403947)で、手順とダウンロード用リンクをご確認ください。
 
 VM エージェントがインストールされている場合は、次のコマンドを実行します。
 

@@ -3,27 +3,27 @@ title: HBv2 シリーズ VM の概要 - Azure Virtual Machines | Microsoft Docs
 description: Azure での HBv2 シリーズ VM のサイズについて説明します。
 services: virtual-machines
 author: vermagit
-manager: gwallace
 tags: azure-resource-manager
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 48366f205ed8eb2d179bdc39c8da3d673f066a69
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: be66f29881250843f70ba85b8ef7c80ae8b31aa6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332590"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966940"
 ---
 # <a name="hbv2-series-virtual-machine-overview"></a>HBv2 シリーズの仮想マシンの概要 
 
  
 AMD EPYC でハイパフォーマンス コンピューティング (HPC) アプリケーションのパフォーマンスを最大化するには、綿密なアプローチによるメモリの局所性とプロセスの配置が必要です。 以下、AMD EPYC アーキテクチャと、Azure での HPC アプリケーション向けのその実装について概説します。 物理 NUMA ドメインを指して **pNUMA** という用語を、また仮想化 NUMA ドメインを指して **vNUMA** を使用します。 
 
-物理的には、[HBv2 シリーズ](../../hbv2-series.md) サーバーは 2 * 64 コアの EPYC 7742 CPU であり、物理コアは合計 128 個です。 これらの 128 コアは 32 の pNUMA ドメイン (ソケットあたり 16) に分割されます。それぞれは 4 コアであり、AMD によって **コア コンプレックス** (または **CCX** ) という名前が付けられています。 各 CCX には独自の L 3 キャッシュがあり、OS はこれによって pNUMA/vNUMA 境界を認識します。 4 つの隣接する CCX によって、2 チャンネルの物理的な DRAM へのアクセスが共有されます。 
+物理的には、[HBv2 シリーズ](../../hbv2-series.md) サーバーは 2 * 64 コアの EPYC 7742 CPU であり、物理コアは合計 128 個です。 これらの 128 コアは 32 の pNUMA ドメイン (ソケットあたり 16) に分割されます。それぞれは 4 コアであり、AMD によって **コア コンプレックス** (または **CCX**) という名前が付けられています。 各 CCX には独自の L 3 キャッシュがあり、OS はこれによって pNUMA/vNUMA 境界を認識します。 4 つの隣接する CCX によって、2 チャンネルの物理的な DRAM へのアクセスが共有されます。 
 
 Azure ハイパーバイザーが VM に干渉せずに動作する余地を確保するために、物理 pNUMA ドメイン 0 および 16 (各 CPU ソケットの最初の CCX) を予約しています。 残りの 30 の pNUMA ドメインはすべて VM に割り当てられ、その時点で vNUMA になります。 そのため、VM では以下が認識されます。
 

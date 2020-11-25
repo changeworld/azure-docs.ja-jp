@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2d3f04777983d24d5219c55c5309b7d12c214594
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 2d0157f3e7ab0ef373235fcc6e188f9caa36eff4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070692"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833301"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Automation 用の Azure セキュリティ ベースライン
 
@@ -76,7 +76,7 @@ NSG ルールとユーザー定義ルートはプライベート エンドポイ
 
 **ガイダンス**:Azure Automation には現在、プライベート ネットワークの仮想ネットワーク統合として Hybrid Runbook Worker のサポートを超えるものはありません。 Hybrid Runbook Worker なしですぐに使用できるサービスを使用している場合、この制御は適用されません。
 
-Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合は、Hybrid Runbook Worker をホストしている仮想ネットワークで分散型サービス拒否 (DDoS) Standard 保護を有効にして、DDoS 攻撃から保護します。 Azure Security Center の統合された脅威インテリジェンスを使用することにより、既知の悪意のある IP アドレスとの通信を拒否できます。 各 Virtual Network セグメントの Azure Firewall を構成して、脅威インテリジェンスを有効にし、悪意のあるネットワーク トラフィックに対して**警告して拒否**するように構成します。
+Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合は、Hybrid Runbook Worker をホストしている仮想ネットワークで分散型サービス拒否 (DDoS) Standard 保護を有効にして、DDoS 攻撃から保護します。 Azure Security Center の統合された脅威インテリジェンスを使用することにより、既知の悪意のある IP アドレスとの通信を拒否できます。 各 Virtual Network セグメントの Azure Firewall を構成して、脅威インテリジェンスを有効にし、悪意のあるネットワーク トラフィックに対して **警告して拒否** するように構成します。
 
 Azure Security Center の Just In Time ネットワーク アクセスを使用すると、限られた期間について、承認された IP アドレスへの Windows 仮想マシンの公開を制限できます。 また、実際のトラフィックと脅威インテリジェンスに基づいてポートとソース IP を制限するために、NSG 構成に Azure Security Center のアダプティブ ネットワーク強化の推奨事項を使用します。
 
@@ -1040,7 +1040,7 @@ Hybrid Runbook Worker 機能を使用する場合は、任意のクラウドま�
 
 * [マネージド ID で Runbook 認証を使用する](./automation-hrw-run-runbooks.md#runbook-auth-managed-identities)
 
-* [キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md)
+* [キー コンテナーを作成する方法](../key-vault/general/quick-create-portal.md)
 
 * [Key Vault に対して認証を行う方法](../key-vault/general/authentication.md)
 

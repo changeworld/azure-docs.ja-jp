@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 6d16d878b0cf7a73c87b5d6e9263a24c4dfb4383
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8db4d4ae56a5a0ee0c92de5d9822614a3270b1c5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84738143"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948682"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートから NSG フロー ログを構成する
 
@@ -31,15 +31,15 @@ ms.locfileid: "84738143"
 > - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 
-[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) は、[インフラストラクチャをコードとして](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code)管理する、強力な Azure ネイティブな方法です。
+[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) は、[インフラストラクチャをコードとして](/azure/devops/learn/what-is-infrastructure-as-code)管理する、強力な Azure ネイティブな方法です。
 
-この記事では、Azure Resource Manager テンプレートと Azure PowerShell を使用して、プログラムで [NSG フロー ログ](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)を有効にする方法について説明します。 まず、NSG フロー ログ オブジェクトのプロパティの概要と、いくつかのサンプル テンプレートを提供します。 次に、ローカルの PowerShell インスタンスを使用してテンプレートをデプロイします。
+この記事では、Azure Resource Manager テンプレートと Azure PowerShell を使用して、プログラムで [NSG フロー ログ](./network-watcher-nsg-flow-logging-overview.md)を有効にする方法について説明します。 まず、NSG フロー ログ オブジェクトのプロパティの概要と、いくつかのサンプル テンプレートを提供します。 次に、ローカルの PowerShell インスタンスを使用してテンプレートをデプロイします。
 
 
 ## <a name="nsg-flow-logs-object"></a>NSG フロー ログ オブジェクト
 
 すべてのパラメーターを持つ NSG フロー ログ オブジェクトを以下に示します。
-プロパティの完全な概要については、[NSG フロー ログのテンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters)を参照してください。
+プロパティの完全な概要については、[NSG フロー ログのテンプレート リファレンス](/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters)を参照してください。
 
 ```json
 {
@@ -76,8 +76,8 @@ Microsoft.Network/networkWatchers/flowLogs リソースを作成するには、�
 
 Azure Resource Manager テンプレートを初めて使用する場合は、以下のリンクから詳細を確認できます。
 
-* [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell#deploy-local-template)
-* [チュートリアル:初めての Azure Resource Manager テンプレートを作成およびデプロイする](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-powershell)
+* [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
+* [チュートリアル:初めての Azure Resource Manager テンプレートを作成およびデプロイする](../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-powershell)
 
 
 NSG フロー ログを設定するための完全なテンプレートの 2 つの例を次に示します。
@@ -172,14 +172,14 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 
 ## <a name="verifying-your-deployment"></a>デプロイの確認
 
-デプロイが成功したかどうかを確認するには、いくつかの方法があります。 PowerShell コンソールの "ProvisioningState" が "Succeeded" と表示されます。 また、変更内容を確認するには、[NSG フロー ログのポータル ページ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)を参照してください。 デプロイに問題がある場合は、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors)」を参照してください。
+デプロイが成功したかどうかを確認するには、いくつかの方法があります。 PowerShell コンソールの "ProvisioningState" が "Succeeded" と表示されます。 また、変更内容を確認するには、[NSG フロー ログのポータル ページ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)を参照してください。 デプロイに問題がある場合は、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../azure-resource-manager/templates/common-deployment-errors.md)」を参照してください。
 
 ## <a name="deleting-your-resource"></a>リソースの削除
-Azure では、"完全" デプロイ モードによってリソースを削除できます。 フロー ログ リソースを削除するには、削除するリソースを含めずに、完全モードでデプロイを指定します。 [完全デプロイ モード](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes#complete-mode)の詳細をお読みください
+Azure では、"完全" デプロイ モードによってリソースを削除できます。 フロー ログ リソースを削除するには、削除するリソースを含めずに、完全モードでデプロイを指定します。 [完全デプロイ モード](../azure-resource-manager/templates/deployment-modes.md#complete-mode)の詳細をお読みください
 
 ## <a name="next-steps"></a>次のステップ
 
 以下を使用して、NSG フロー データを視覚化する方法について学習します。
 * [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 * [オープン ソース ツール](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
-* [Azure Traffic Analytics](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Azure Traffic Analytics](./traffic-analytics.md)

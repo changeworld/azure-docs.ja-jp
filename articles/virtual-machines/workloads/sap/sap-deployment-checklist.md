@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e80332b172eeb4c49ae068e1781ffcaf1657f13
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ac75ab31f8c9cdd9405115db4f5c35d28707e29f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978222"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950365"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト
 
@@ -106,8 +107,8 @@ ms.locfileid: "91978222"
         - SAP サポート ノート、SAP HANA ハードウェア ディレクトリ、SAP PAM にあるリソースをもう一度確認します。 Azure でサポートされている VM、それらの VM の種類でサポートされている OS リリース、サポートされている SAP および DBMS のリリースに変更がないことを確認します。
         - もう一度、Azure にデプロイするアプリケーションおよびインフラストラクチャのサイズを検証します。 既存のアプリケーションを移行するのであれば、多くの場合、使用しているインフラストラクチャと [SAP ベンチマーク Web ページ](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd)から必要な SAPS を取得し、それを [SAP サポート ノート #1928533](https://launchpad.support.sap.com/#/notes/1928533) に記載されている SAPS 番号と比較することができます。 また、[SAP 評価に関するこの記事](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAPS-ratings-on-Azure-VMs-8211-where-to-look-and-where-you-can/ba-p/368208)に注意してください。
         - 計画フェーズで選択した種類の VM の最大ストレージ スループットとネットワーク スループットに関して、Azure VM のサイズ設定を評価およびテストします。 手順については、こちらを参照してください:
-           -  「[Azure の Windows 仮想マシンのサイズ](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」。 サイズ設定では*キャッシュされていないディスクの最大スループット*を検討することが重要です。
-           -  [Azure の Linux 仮想マシンのサイズ](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 サイズ設定では*キャッシュされていないディスクの最大スループット*を検討することが重要です。
+           -  「[Azure の Windows 仮想マシンのサイズ](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」。 サイズ設定では *キャッシュされていないディスクの最大スループット* を検討することが重要です。
+           -  [Azure の Linux 仮想マシンのサイズ](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 サイズ設定では *キャッシュされていないディスクの最大スループット* を検討することが重要です。
    2. ストレージ。
         - ドキュメント「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」を確認してください。
         - SAP アプリケーション レイヤーを表す VM や、さほどパフォーマンスが要求されない DBMS デプロイには、最小要件として [Azure Standard SSD ストレージ](../../disks-types.md#standard-ssd)を使用します。

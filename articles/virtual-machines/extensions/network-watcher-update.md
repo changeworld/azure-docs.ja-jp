@@ -8,16 +8,17 @@ manager: balar
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
-ms.openlocfilehash: 23520a0249e22b3f81c7f7c598ef10d8c3acb550
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: c427a206e0422e66cb526a29a462d8b6bdf6818e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900190"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965937"
 ---
 # <a name="update-the-network-watcher-extension-to-the-latest-version"></a>Network Watcher 拡張機能を最新バージョンに更新する
 
@@ -82,7 +83,8 @@ Get-AzVM -ResourceGroupName "SampleRG" -Name "Sample-VM" -Status
 Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentLinux"
 
 #Windows command
-Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows"
+Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "NetworkWatcherAgentWindows" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -ForceRerun "True"
+
 ```
 
 それでもうまくいかない場合。 次の手順に従って、拡張機能を削除してからもう一度インストールします。 これにより、最新バージョンが自動的に追加されます。
@@ -143,4 +145,4 @@ Network Watcher 拡張機能の自動アップグレードが true に設定さ�
 
 ## <a name="support"></a>サポート
 
-この記事のいずれかについてさらにヘルプが必要な場合は、[Linux](./network-watcher-linux.md) または [Windows](./network-watcher-windows.md) 向けの Network Watcher 拡張機能のドキュメントを参照してください。 また、[MSDN の Azure と Stack Overflow のフォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることもできます。 または、Azure サポート インシデントを送信してください。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、 **[サポートの要求]** をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
+この記事のいずれかについてさらにヘルプが必要な場合は、[Linux](./network-watcher-linux.md) または [Windows](./network-watcher-windows.md) 向けの Network Watcher 拡張機能のドキュメントを参照してください。 また、[MSDN の Azure と Stack Overflow のフォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることもできます。 または、Azure サポート インシデントを送信してください。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、 **[サポートの要求]** をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 219e2b77a0f6f30307c43f006fcdd3828d3c8fbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d78051c1a5af82a986152c8244d25b68dd65d552
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87021377"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968844"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Azure での StorSimple Cloud Appliance のデプロイと管理 (Update 3 以降)
 
@@ -47,7 +47,7 @@ StorSimple Cloud Appliance は、Standard 8010 (以前の 1100) と Premium 8020
 | **最大容量** |30 TB |64 TB |
 | **Azure VM** |Standard_A3 (4 コア、7 GB メモリ)| Standard_DS3 (4 コア、14 GB メモリ)|
 | **利用可能なリージョン** |すべての Azure リージョン |Premium Storage と DS3 Azure VM をサポートする Azure リージョン<br></br>[こちらの表](https://azure.microsoft.com/regions/services/)を参照し、該当するリージョンで **「Virtual Machines」の「DS シリーズ」** と **「Storage」の「Disk Storage」** の両方が利用できるかどうかを確認してください。 |
-| **ストレージの種類** |Azure Standard Storage をローカル ディスクとして使用<br></br> [Standard Storage アカウントの作成](../storage/common/storage-create-storage-account.md)方法を参照 |Azure Premium Storage をローカル ディスクとして使用<sup>2</sup> <br></br> |
+| **ストレージの種類** |Azure Standard Storage をローカル ディスクとして使用<br></br> [Standard Storage アカウントの作成](../storage/common/storage-account-create.md)方法を参照 |Azure Premium Storage をローカル ディスクとして使用<sup>2</sup> <br></br> |
 | **ワークロードのガイダンス** |バックアップからファイルを項目レベルで取得 |クラウドの開発とテストのシナリオ <br></br>短い待ち時間と高いパフォーマンスが求められるワークロード<br></br>障害復旧のためのセカンダリ デバイス |
 
 <sup>1</sup> *以前は 1100 と呼ばれていました*。
@@ -96,7 +96,7 @@ StorSimple Cloud Appliance と StorSimple 物理デバイスの主な相違点�
 クラウド アプライアンスを作成する前に、StorSimple デバイス マネージャー サービスに対して次の更新作業を行います。
 
 * クラウド アプライアンスのホスト サーバーとなる VM の[アクセス制御レコード](storsimple-8000-manage-acrs.md)を追加します。
-* クラウド アプライアンスと同じリージョンにある[ストレージ アカウント](storsimple-8000-manage-storage-accounts.md#add-a-storage-account)を使用します。 ストレージ アカウントが異なるリージョンに存在すると、十分なパフォーマンスが得られない可能性があります。 クラウド アプライアンスでは、Standard Storage アカウントまたは Premium Storage アカウントを使用できます。 詳細については、[Standard Storage アカウント](../storage/common/storage-create-storage-account.md)の作成方法を参照してください。
+* クラウド アプライアンスと同じリージョンにある[ストレージ アカウント](storsimple-8000-manage-storage-accounts.md#add-a-storage-account)を使用します。 ストレージ アカウントが異なるリージョンに存在すると、十分なパフォーマンスが得られない可能性があります。 クラウド アプライアンスでは、Standard Storage アカウントまたは Premium Storage アカウントを使用できます。 詳細については、[Standard Storage アカウント](../storage/common/storage-account-create.md)の作成方法を参照してください。
 * クラウド アプライアンスの作成には、データに使用するストレージ アカウントとは異なるストレージ アカウントを使用します。 同じストレージ アカウントを使用すると、十分なパフォーマンスが得られない可能性があります。
 
 作業を開始する前に、次の情報を確認してください。
@@ -267,7 +267,7 @@ DR の前提条件:
 ## <a name="troubleshoot-internet-connectivity-errors"></a>インターネット接続エラーのトラブルシューティング
 クラウド アプライアンスを作成する際、インターネットに接続されていないと作成手順は失敗します。 インターネット接続エラーのトラブルシューティングを行うには、Azure Portal で次の手順を実行します。
 
-1. [Azure portal で Windows 仮想マシンを作成します](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)。 この仮想マシンでは、クラウド アプライアンスで使用されているのと同じストレージ アカウント、VNet、およびサブネットを使用してください。 同じストレージ アカウント、VNet、およびサブネットを使用している既存の Windows Server ホストが Azure にある場合は、インターネット接続のトラブルシューティングにも使用できます。
+1. [Azure portal で Windows 仮想マシンを作成します](../virtual-machines/windows/quick-create-portal.md)。 この仮想マシンでは、クラウド アプライアンスで使用されているのと同じストレージ アカウント、VNet、およびサブネットを使用してください。 同じストレージ アカウント、VNet、およびサブネットを使用している既存の Windows Server ホストが Azure にある場合は、インターネット接続のトラブルシューティングにも使用できます。
 2. 前の手順で作成した仮想マシンにリモート ログインします。
 3. 仮想マシン内でコマンド ウィンドウを開きます (Win + R キーを押し、「 `cmd`」と入力します)。
 4. プロンプトで次のコマンドを実行します。

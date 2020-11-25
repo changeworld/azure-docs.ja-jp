@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: adb9bf48800062d2cc6976a88ec48c1993858dec
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 18979ba8cbc4e68bf79275059c6c1c976578c407
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089538"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953374"
 ---
 # <a name="secure-your-restful-services"></a>お使いの RESTful サービスを保護する 
 
@@ -49,7 +49,7 @@ HTTP 基本認証を使用して REST API の技術プロファイルを構成�
 1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
 1. **[オプション]** には **[手動]** を選択します。
-1. **[名前]** に「 **RestApiUsername** 」と入力します。
+1. **[名前]** に「**RestApiUsername**」と入力します。
     プレフィックス *B2C_1A_* が自動的に追加される場合があります。
 1. **[秘密]** ボックスに、REST API ユーザー名を入力します。
 1. **[キー使用法]** には **[暗号化]** を選択します。
@@ -57,7 +57,7 @@ HTTP 基本認証を使用して REST API の技術プロファイルを構成�
 1. **[ポリシー キー]** を再度選択します。
 1. **[追加]** を選択します。
 1. **[オプション]** には **[手動]** を選択します。
-1. **[名前]** に「 **RestApiPassword** 」と入力します。
+1. **[名前]** に「**RestApiPassword**」と入力します。
     プレフィックス *B2C_1A_* が自動的に追加される場合があります。
 1. **[秘密]** ボックスに、REST API パスワードを入力します。
 1. **[キー使用法]** には **[暗号化]** を選択します。
@@ -111,7 +111,7 @@ HTTP 基本認証を使用して構成された RESTful 技術プロファイル
 
 ### <a name="prepare-a-self-signed-certificate-optional"></a>自己署名証明書を準備する (省略可能)
 
-非運用環境では、証明書をまだ持っていない場合は、自己署名証明書を使用できます。 Windows では、PowerShell の [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) コマンドレットを使用して証明書を生成できます。
+非運用環境では、証明書をまだ持っていない場合は、自己署名証明書を使用できます。 Windows では、PowerShell の [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) コマンドレットを使用して証明書を生成できます。
 
 1. この PowerShell コマンドを実行して、自己署名証明書を生成します。 アプリケーションと Azure AD B2C のテナント名に合わせて `-Subject` 引数を変更します。 また、証明書に別の有効期限を指定するように `-NotAfter` 日付を調整することもできます。
     ```powershell
@@ -138,7 +138,7 @@ HTTP 基本認証を使用して構成された RESTful 技術プロファイル
 1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
 1. **[オプション]** ボックスで、 **[アップロード]** を選択します。
-1. **[名前]** ボックスに「 **RestApiClientCertificate** 」と入力します。
+1. **[名前]** ボックスに「**RestApiClientCertificate**」と入力します。
     プレフィックス *B2C_1A_* が自動的に追加されます。
 1. **[ファイルのアップロード]** ボックスで、秘密キーを備えた証明書の .pfx ファイルを選択します。
 1. **[パスワード]** ボックスに、証明書のパスワードを入力します。
@@ -196,8 +196,8 @@ Authorization: Bearer <token>
 
 ベアラー トークンは、不透明な文字列です。 これは、JWT アクセス トークン、または REST API が Azure AD B2C によって Authorization ヘッダーで送信されることを想定する任意の文字列です。 Azure AD B2C では、次の種類がサポートされています。
 
-- **ベアラー トークン** 。 ベアラー トークンを Restful 技術プロファイルで送信できるようにするには、ポリシーでベアラー トークンを取得してから、それを RESTful 技術プロファイルで使用する必要があります。  
-- **静的ベアラー トークン** 。 REST API が長期アクセス トークンを発行する場合に、このアプローチを使用します。 静的ベアラー トークンを使用するには、ポリシー キーを作成し、RESTful 技術プロファイルからポリシー キーへの参照を作成します。 
+- **ベアラー トークン**。 ベアラー トークンを Restful 技術プロファイルで送信できるようにするには、ポリシーでベアラー トークンを取得してから、それを RESTful 技術プロファイルで使用する必要があります。  
+- **静的ベアラー トークン**。 REST API が長期アクセス トークンを発行する場合に、このアプローチを使用します。 静的ベアラー トークンを使用するには、ポリシー キーを作成し、RESTful 技術プロファイルからポリシー キーへの参照を作成します。 
 
 
 ## <a name="using-oauth2-bearer"></a>OAuth2 ベアラーの使用  
@@ -208,7 +208,7 @@ Authorization: Bearer <token>
 
 要求は、Azure AD B2C ポリシーの実行時に、データの一時的なストレージとなります。 [要求スキーマ](claimsschema.md)は、要求を宣言する場所です。 アクセス トークンは、後で使用するために、要求に格納する必要があります。 
 
-1. お使いのポリシーの拡張ファイルを開きます。 たとえば、 <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>です。
+1. お使いのポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>です。
 1. [BuildingBlocks](buildingblocks.md) 要素を検索します。 要素が存在しない場合は追加します。
 1. [ClaimsSchema](claimsschema.md) 要素を見つけます。 要素が存在しない場合は追加します。
 1. 次の要求を **ClaimsSchema** 要素に追加します。  
@@ -230,9 +230,9 @@ Authorization: Bearer <token>
 
 ### <a name="acquiring-an-access-token"></a>アクセス トークンの取得 
 
-アクセス トークンは、[フェデレーション ID プロバイダーから](idp-pass-through-custom.md)取得する方法、アクセス トークンを返す REST API を呼び出す方法、[ROPC フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)を使用する方法、または[クライアント資格情報フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)を使用する方法のいずれかで取得できます。  
+アクセス トークンは、[フェデレーション ID プロバイダーから](idp-pass-through-custom.md)取得する方法、アクセス トークンを返す REST API を呼び出す方法、[ROPC フロー](../active-directory/develop/v2-oauth-ropc.md)を使用する方法、または[クライアント資格情報フロー](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)を使用する方法のいずれかで取得できます。  
 
-次の例では、REST API の技術プロファイルを使用し、HTTP 基本認証として渡されたクライアント資格情報を使用して Azure AD トークン エンドポイントに要求を行います。 Azure AD でこれを構成するには、「[Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)」をご覧ください。 お使いの ID プロバイダーとのインターフェイスを提供するようにこれを変更する必要があることがあります。 
+次の例では、REST API の技術プロファイルを使用し、HTTP 基本認証として渡されたクライアント資格情報を使用して Azure AD トークン エンドポイントに要求を行います。 Azure AD でこれを構成するには、「[Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)」をご覧ください。 お使いの ID プロバイダーとのインターフェイスを提供するようにこれを変更する必要があることがあります。 
 
 ServiceUrl で、your-tenant-name を Azure AD テナントの名前に置き換えます。 使用可能なすべてのオプションについては、[RESTful 技術プロファイル](restful-technical-profile.md)のリファレンスを参照してください。
 
@@ -264,14 +264,14 @@ ServiceUrl で、your-tenant-name を Azure AD テナントの名前に置き換
 
 カスタム ポリシーでベアラー トークン認証をサポートするには、REST API の技術プロファイルを次のように変更します。
 
-1. 作業ディレクトリで、 *TrustFrameworkExtensions.xml* 拡張ポリシー ファイルを開きます。
+1. 作業ディレクトリで、*TrustFrameworkExtensions.xml* 拡張ポリシー ファイルを開きます。
 1. `Id="REST-API-SignUp"` を含む `<TechnicalProfile>` ノードを探します。
 1. `<Metadata>` 要素を見つけます。
-1. 次のように、 *AuthenticationType* を *Bearer* に変更します。
+1. 次のように、*AuthenticationType* を *Bearer* に変更します。
     ```xml
     <Item Key="AuthenticationType">Bearer</Item>
     ```
-1. 次のように、 *UseClaimAsBearerToken* を *bearerToken* に変更または追加します。 *bearerToken* は、ベアラー トークンの取得元になる要求の名前 (`SecureREST-AccessToken` からの出力要求) です。
+1. 次のように、*UseClaimAsBearerToken* を *bearerToken* に変更または追加します。 *bearerToken* は、ベアラー トークンの取得元になる要求の名前 (`SecureREST-AccessToken` からの出力要求) です。
 
     ```xml
     <Item Key="UseClaimAsBearerToken">bearerToken</Item>
@@ -367,4 +367,4 @@ OAuth2 ベアラー トークンを使用して REST API の技術プロファ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- IEF のリファレンスで [Restful 技術プロファイル](restful-technical-profile.md)要素についてさらに学習します。 
+- IEF のリファレンスで [Restful 技術プロファイル](restful-technical-profile.md)要素についてさらに学習します。

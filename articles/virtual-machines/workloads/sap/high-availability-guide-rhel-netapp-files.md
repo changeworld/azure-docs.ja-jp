@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/22/2020
 ms.author: radeltch
-ms.openlocfilehash: 040220bfac2a3ac1ef54965ba9be35755b9b787b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0c5ebd3f7989458a0966fdc792cd3a8a9ea94acc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487621"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965274"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines の高可用性
 
@@ -182,14 +183,14 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    1. フロントエンド IP アドレスを作成します
       1. ASCS の IP アドレス 192.168.14.9
          1. ロード バランサーを開き、[フロントエンド IP プール] を選択して [追加] をクリックします
-         1. 新規のフロントエンド IP プールの名前を入力します (例: **frontend.QAS.ASCS** )
-         1. [割り当て] を [静的] に設定し、IP アドレスを入力します (例: **192.168.14.9** )
+         1. 新規のフロントエンド IP プールの名前を入力します (例: **frontend.QAS.ASCS**)
+         1. [割り当て] を [静的] に設定し、IP アドレスを入力します (例: **192.168.14.9**)
          1. [OK] をクリックします
       1. ASCS ERS の IP アドレス 192.168.14.10
-         * 上記の "a" 以下の手順を繰り返して、ERS の IP アドレスを作成します (例: **192.168.14.10** および **frontend.QAS.ERS** )
+         * 上記の "a" 以下の手順を繰り返して、ERS の IP アドレスを作成します (例: **192.168.14.10** および **frontend.QAS.ERS**)
    1. バックエンド プールの作成
       1. ロード バランサーを開き、[バックエンド プール] を選択して [追加] をクリックします
-      1. 新規のバックエンド プールの名前を入力します (例: **backend.QAS** )
+      1. 新規のバックエンド プールの名前を入力します (例: **backend.QAS**)
       1. [仮想マシンの追加] をクリックします。
       1. 仮想マシンを選択します。 
       1. (A)SCS クラスターの仮想マシンとその IP アドレスを選択します。
@@ -197,33 +198,33 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    1. 正常性プローブを作成します
       1. ASCS のポート 620 **00**
          1. ロード バランサーを開き、[正常性プローブ] を選択して [追加] をクリックします
-         1. 新しい正常性プローブの名前を入力します (例: **health.QAS.ASCS** )
+         1. 新しい正常性プローブの名前を入力します (例: **health.QAS.ASCS**)
          1. プロトコルに TCP、ポートに 620 **00** を選択し、[間隔] は 5、[異常] のしきい値は 2 のままにしておきます
          1. [OK] をクリックします
       1. ASCS ERS のポート 621 **01**
-            * 上記の "c" 以下の手順を繰り返して、ERS の正常性プローブを作成します (例: 621 **01** および **health.QAS.ERS** )
+            * 上記の "c" 以下の手順を繰り返して、ERS の正常性プローブを作成します (例: 621 **01** および **health.QAS.ERS**)
    1. 負荷分散規則
       1. ASCS の負荷分散規則
          1. ロード バランサーを開き、負荷分散規則を選択して [追加] をクリックします
-         1. 新しいロード バランサー規則の名前を入力します (例: **lb.QAS.ASCS** )
-         1. 前に作成した ASCS 用のフロントエンド IP アドレス、バックエンド プール、および正常性プローブを選択します (例: **frontend.QAS.ASCS** 、 **backend.QAS** 、 **health.QAS.ASCS** )
+         1. 新しいロード バランサー規則の名前を入力します (例: **lb.QAS.ASCS**)
+         1. 前に作成した ASCS 用のフロントエンド IP アドレス、バックエンド プール、および正常性プローブを選択します (例: **frontend.QAS.ASCS**、**backend.QAS**、**health.QAS.ASCS**)
          1. **[HA ポート]** を選択します
          1. アイドル タイムアウトを 30 分に増やします
          1. **Floating IP を有効にします**
          1. [OK] をクリックします
-         * 上記の手順を繰り返して、ERS の負荷分散規則を作成します (例: **lb.QAS.ERS** )
+         * 上記の手順を繰り返して、ERS の負荷分散規則を作成します (例: **lb.QAS.ERS**)
 1. または、シナリオに基本的なロード バランサー (内部) が必要な場合は、次の手順に従ってください。  
    1. フロントエンド IP アドレスを作成します
       1. ASCS の IP アドレス 192.168.14.9
          1. ロード バランサーを開き、[フロントエンド IP プール] を選択して [追加] をクリックします
-         1. 新規のフロントエンド IP プールの名前を入力します (例: **frontend.QAS.ASCS** )
-         1. [割り当て] を [静的] に設定し、IP アドレスを入力します (例: **192.168.14.9** )
+         1. 新規のフロントエンド IP プールの名前を入力します (例: **frontend.QAS.ASCS**)
+         1. [割り当て] を [静的] に設定し、IP アドレスを入力します (例: **192.168.14.9**)
          1. [OK] をクリックします
       1. ASCS ERS の IP アドレス 192.168.14.10
-         * 上記の "a" 以下の手順を繰り返して、ERS の IP アドレスを作成します (例: **192.168.14.10** および **frontend.QAS.ERS** )
+         * 上記の "a" 以下の手順を繰り返して、ERS の IP アドレスを作成します (例: **192.168.14.10** および **frontend.QAS.ERS**)
    1. バックエンド プールの作成
       1. ロード バランサーを開き、[バックエンド プール] を選択して [追加] をクリックします
-      1. 新規のバックエンド プールの名前を入力します (例: **backend.QAS** )
+      1. 新規のバックエンド プールの名前を入力します (例: **backend.QAS**)
       1. [仮想マシンの追加] をクリックします。
       1. 前に作成した ASCS 用の可用性セットを選択します 
       1. (A)SCS クラスターの仮想マシンを選択します
@@ -231,24 +232,24 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    1. 正常性プローブを作成します
       1. ASCS のポート 620 **00**
          1. ロード バランサーを開き、[正常性プローブ] を選択して [追加] をクリックします
-         1. 新しい正常性プローブの名前を入力します (例: **health.QAS.ASCS** )
+         1. 新しい正常性プローブの名前を入力します (例: **health.QAS.ASCS**)
          1. プロトコルに TCP、ポートに 620 **00** を選択し、[間隔] は 5、[異常] のしきい値は 2 のままにしておきます
          1. [OK] をクリックします
       1. ASCS ERS のポート 621 **01**
-            * 上記の "c" 以下の手順を繰り返して、ERS の正常性プローブを作成します (例: 621 **01** および **health.QAS.ERS** )
+            * 上記の "c" 以下の手順を繰り返して、ERS の正常性プローブを作成します (例: 621 **01** および **health.QAS.ERS**)
    1. 負荷分散規則
       1. ASCS の 32 **00** TCP
          1. ロード バランサーを開き、負荷分散規則を選択して [追加] をクリックします
-         1. 新しいロード バランサー規則の名前を入力します (例: **lb.QAS.ASCS.3200** )
-         1. 前に作成した ASCS 用のフロントエンド IP アドレス、バックエンド プール、および正常性プローブを選択します (例: **frontend.QAS.ASCS** )
-         1. プロトコルは **TCP** のままにし、ポートに「 **3200** 」を入力します
+         1. 新しいロード バランサー規則の名前を入力します (例: **lb.QAS.ASCS.3200**)
+         1. 前に作成した ASCS 用のフロントエンド IP アドレス、バックエンド プール、および正常性プローブを選択します (例: **frontend.QAS.ASCS**)
+         1. プロトコルは **TCP** のままにし、ポートに「**3200**」を入力します
          1. アイドル タイムアウトを 30 分に増やします
          1. **Floating IP を有効にします**
          1. [OK] をクリックします
       1. ASCS の追加のポート
-         * ASCS のポート 36 **00** 、39 **00** 、81 **00** 、5 **00** 13、5 **00** 14、5 **00** 16 と TCP に対して上記の手順を繰り返します
+         * ASCS のポート 36 **00**、39 **00**、81 **00**、5 **00** 13、5 **00** 14、5 **00** 16 と TCP に対して上記の手順を繰り返します
       1. ASCS ERS の追加のポート
-         * ASCS ERS のポート 32 **01** 、33 **01** 、5 **01** 13、5 **01** 14、5 **01** 16 と TCP に対して上記の "d" 以下の手順を繰り返します
+         * ASCS ERS のポート 32 **01**、33 **01**、5 **01** 13、5 **01** 14、5 **01** 16 と TCP に対して上記の "d" 以下の手順を繰り返します
 
       > [!IMPORTANT]
       > フローティング IP は、負荷分散シナリオの NIC セカンダリ IP 構成ではサポートされていません。 詳細については、[Azure Load Balancer の制限事項](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)に関する記事を参照してください。 VM に追加の IP アドレスが必要な場合は、2 つ目の NIC をデプロイします。  
@@ -278,7 +279,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** `nfs4_disable_idmapping` を確認します。 これは、 **Y** に設定されている必要があります。`nfs4_disable_idmapping` が配置されるディレクトリ構造を作成するには、mount コマンドを実行します。 アクセスがカーネル/ドライバー用に予約されるため、/sys/modules の下に手動でディレクトリを作成することはできなくなります。  
+4. **[A]** `nfs4_disable_idmapping` を確認します。 これは、**Y** に設定されている必要があります。`nfs4_disable_idmapping` が配置されるディレクトリ構造を作成するには、mount コマンドを実行します。 アクセスがカーネル/ドライバー用に予約されるため、/sys/modules の下に手動でディレクトリを作成することはできなくなります。  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -507,7 +508,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=<virtual_hostname>
    ```
 
-   インストールで /usr/sap/ **QAS** /ASCS **00** へのサブフォルダーの作成に失敗する場合は、ASCS **00** フォルダーの所有者とグループを設定し、もう一度試してください。
+   インストールで /usr/sap/**QAS**/ASCS **00** へのサブフォルダーの作成に失敗する場合は、ASCS **00** フォルダーの所有者とグループを設定し、もう一度試してください。
 
    ```
    sudo chown qasadm /usr/sap/QAS/ASCS00
@@ -574,7 +575,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=<virtual_hostname>
    ```
 
-   インストールで /usr/sap/ **QAS** /ERS **01** へのサブフォルダーの作成に失敗する場合は、ERS **01** フォルダーの所有者とグループを設定し、もう一度試してください。
+   インストールで /usr/sap/**QAS**/ERS **01** へのサブフォルダーの作成に失敗する場合は、ERS **01** フォルダーの所有者とグループを設定し、もう一度試してください。
 
    ```
    sudo chown qaadm /usr/sap/QAS/ERS01
@@ -945,7 +946,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
      DATABASE: QAS
    ```
 
-   出力には、既定のエントリの IP アドレスがロード バランサーの IP アドレスではなく仮想マシンを指していることが示されます。 このエントリは、ロード バランサーの仮想ホスト名を指すように変更する必要があります。 同じポート (上の出力内の **30313** ) とデータベース名 (上の出力内の **QAS** ) を必ず使用してください。
+   出力には、既定のエントリの IP アドレスがロード バランサーの IP アドレスではなく仮想マシンを指していることが示されます。 このエントリは、ロード バランサーの仮想ホスト名を指すように変更する必要があります。 同じポート (上の出力内の **30313**) とデータベース名 (上の出力内の **QAS**) を必ず使用してください。
 
    ```
    su - qasadm

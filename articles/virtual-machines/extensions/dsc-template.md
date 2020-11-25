@@ -8,17 +8,18 @@ tags: azure-resource-manager
 keywords: dsc
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: dc73b5b9f05d24de206b25095ea7eaf93f035298
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e38fcd069fa6a3e8582dcd96b2bd0b4074986de7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511162"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955805"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能
 
@@ -391,9 +392,9 @@ Only possible values are … and 'latest' (WmfVersion は '{0}' です。指定�
 
 "Invalid configurationArguments type {0} (無効な configurationArguments の型 {0})"
 
-**問題点**:*ConfigurationArguments* プロパティが**ハッシュ テーブル** オブジェクトに解決できません。
+**問題点**:*ConfigurationArguments* プロパティが **ハッシュ テーブル** オブジェクトに解決できません。
 
-**解決策**:*ConfigurationArguments* プロパティを**ハッシュ テーブル**にしてください。
+**解決策**:*ConfigurationArguments* プロパティを **ハッシュ テーブル** にしてください。
 前の例に示されている形式に従います。 引用符、コンマ、および中かっこに注意します。
 
 ### <a name="duplicate-configurationarguments"></a>ConfigurationArguments の重複

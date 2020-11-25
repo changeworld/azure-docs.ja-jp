@@ -3,16 +3,17 @@ title: SAP ソリューション向け Azure Monitor の概要とアーキテク
 description: この記事では、SAP ソリューション向け Azure Monitor に関してよく寄せられる質問に対する回答を示します
 author: rdeltcheva
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: d9730324b2557c8f0bb203f7badbd00e0e7e704e
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 5bb40ec930731b58d457500d83b66c7a187b44d8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994262"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957437"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>SAP ソリューション向け Azure Monitor (プレビュー)
 
@@ -21,9 +22,9 @@ ms.locfileid: "91994262"
 SAP ソリューション向け Azure Monitor は、Azure で SAP ランドスケープを実行しているお客様向けの Azure ネイティブの監視製品です。 製品は、[SAP on Azure Virtual Machines](./hana-get-started.md) と [SAP on Azure Large Instances](./hana-overview-architecture.md) の両方で動作します。
 SAP ソリューション向け Azure Monitor を使用するお客様は、Azure インフラストラクチャとデータベースからの利用統計情報を 1 か所で収集し、迅速なトラブルシューティングのために利用統計情報を視覚的に関連付けることができます。
 
-SAP ソリューション向け Azure Monitor は、Azure Marketplace を通じて提供されます。 シンプルで直感的なセットアップ エクスペリエンスが提供されており、SAP ソリューション向け Azure Monitor 用のリソース (**SAP Monitor リソース**と呼ばれます) をわずか数回のクリックでデプロイできます。
+SAP ソリューション向け Azure Monitor は、Azure Marketplace を通じて提供されます。 シンプルで直感的なセットアップ エクスペリエンスが提供されており、SAP ソリューション向け Azure Monitor 用のリソース (**SAP Monitor リソース** と呼ばれます) をわずか数回のクリックでデプロイできます。
 
-お客様は、コンポーネントに対応する**プロバイダー**を追加することにより、Azure Virtual Machines、高可用性クラスター、SAP HANA データベースなど、SAP ランドスケープのさまざまなコンポーネントを監視できます。
+お客様は、コンポーネントに対応する **プロバイダー** を追加することにより、Azure Virtual Machines、高可用性クラスター、SAP HANA データベースなど、SAP ランドスケープのさまざまなコンポーネントを監視できます。
 
 サポートされているインフラストラクチャ:
 

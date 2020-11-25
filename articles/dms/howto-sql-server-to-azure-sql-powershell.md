@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: a2d0ff6810326f7f375595e8dcebbe81b55055ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87505557653e70aab7f1392aeea8dbdf505327e0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330351"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962758"
 ---
 # <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>Azure PowerShell を使用して SQL Server データベースを Azure SQL Database に移行する
 
@@ -36,28 +36,28 @@ ms.locfileid: "91330351"
 これらの手順を完了するには、以下が必要です。
 
 * [SQL Server 2016 以上](https://www.microsoft.com/sql-server/sql-server-downloads) (任意のエディション)
-* TCP/IP プロトコルを有効にする (SQL Server Express のインストールでは既定で無効になっています)。 [サーバー ネットワーク プロトコルの有効化または無効化](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)に関する記事の説明に従って、TCP/IP プロトコルを有効にする。
-* [データベース エンジン アクセス用の Windows Firewall](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) の構成。
-* Azure SQL データベース インスタンス。 Azure SQL Database インスタンスを作成するには、[Azure portal での Azure SQL Database の作成](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)に関する記事に従ってください。
+* TCP/IP プロトコルを有効にする (SQL Server Express のインストールでは既定で無効になっています)。 [サーバー ネットワーク プロトコルの有効化または無効化](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)に関する記事の説明に従って、TCP/IP プロトコルを有効にする。
+* [データベース エンジン アクセス用の Windows Firewall](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) の構成。
+* Azure SQL データベース インスタンス。 Azure SQL Database インスタンスを作成するには、[Azure portal での Azure SQL Database の作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事に従ってください。
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 以降。
-* Azure Resource Manager デプロイ モデルを使用した Microsoft Azure 仮想ネットワークの作成。これにより、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用してオンプレミス ソース サーバーへのサイト間接続が Microsoft Azure Database Migration Service に提供されます。
-* [SQL Server の移行評価の実行](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)に関する記事に従って、Data Migration Assistant を使用して、オンプレミスのデータベースおよびスキーマの移行の評価を完了させる
-* [Install-Module PowerShell](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1) コマンドレットを使用して、PowerShell ギャラリーから Az.DataMigration モジュールをダウンロードしてインストールする: [管理者として実行] を使用して PowerShell コマンド ウィンドウを開いていること確認してください。
-* ソースの SQL Server インスタンスへの接続に使用される資格情報に、[CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) アクセス許可を含める。
+* Azure Resource Manager デプロイ モデルを使用した Microsoft Azure 仮想ネットワークの作成。これにより、[ExpressRoute](../expressroute/expressroute-introduction.md) または [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用してオンプレミス ソース サーバーへのサイト間接続が Microsoft Azure Database Migration Service に提供されます。
+* [SQL Server の移行評価の実行](/sql/dma/dma-assesssqlonprem)に関する記事に従って、Data Migration Assistant を使用して、オンプレミスのデータベースおよびスキーマの移行の評価を完了させる
+* [Install-Module PowerShell](/powershell/module/powershellget/Install-Module?view=powershell-5.1) コマンドレットを使用して、PowerShell ギャラリーから Az.DataMigration モジュールをダウンロードしてインストールする: [管理者として実行] を使用して PowerShell コマンド ウィンドウを開いていること確認してください。
+* ソースの SQL Server インスタンスへの接続に使用される資格情報に、[CONTROL SERVER](/sql/t-sql/statements/grant-server-permissions-transact-sql) アクセス許可を含める。
 * ターゲットの Azure SQL DB インスタンスへの接続に使用される資格情報に、ターゲットの Azure SQL Database に対する CONTROL DATABASE アクセス許可が含まれていることを確認する。
 * Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="log-in-to-your-microsoft-azure-subscription"></a>Microsoft Azure サブスクリプションにログインする
 
-「[Azure PowerShell でのログイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)」にある手順に従い、PowerShell を使用して Azure サブスクリプションにサインインします。
+「[Azure PowerShell でのログイン](/powershell/azure/authenticate-azureps)」にある手順に従い、PowerShell を使用して Azure サブスクリプションにサインインします。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンを作成する前に、リソース グループを作成する必要があります。
 
-[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) コマンドを使用してリソース グループを作成します。
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドを使用してリソース グループを作成します。
 
-次の例では、*myResourceGroup* という名前のリソース グループを*米国東部*リージョンに作成します。
+次の例では、*myResourceGroup* という名前のリソース グループを *米国東部* リージョンに作成します。
 
 ```powershell
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
@@ -67,11 +67,11 @@ New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 
 新しい Azure Database Migration Service インスタンスを作成するには、`New-AzDataMigrationService` コマンドレットを使用します。 このコマンドレットでは、次のパラメーターが必要です。
 
-* *Azure リソース グループ名*。 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) コマンドを使用して前述の Azure リソース グループを作成し、パラメーターとしてその名前を指定できます。
+* *Azure リソース グループ名*。 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドを使用して前述の Azure リソース グループを作成し、パラメーターとしてその名前を指定できます。
 * *サービス名*。 Azure Database Migration Service に使用する一意のサービス名に対応する文字列。 
 * *場所*。 サービスの場所を指定します。 米国西部や東南アジアなど、Azure データ センターの場所を指定してください。
 * *SKU*。 このパラメーターは、DMS SKU 名に対応します。 現在サポートされている SKU 名は *GeneralPurpose_4vCores* です。
-* *仮想サブネット識別子*。 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) コマンドレットを使用して、サブネットを作成できます。 
+* *仮想サブネット識別子*。 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) コマンドレットを使用して、サブネットを作成できます。 
 
 次の例では、*MyVNET* という仮想ネットワークと *MySubnet* というサブネットを使用して、"*米国東部*" リージョンにあるリソース グループ *MyDMSResourceGroup* に *MyDMS* という名前のサービスを作成します。
 
@@ -131,7 +131,7 @@ $dbList = @($dbInfo1)
 
 ### <a name="create-a-project-object"></a>プロジェクト オブジェクトを作成する
 
-最後に、`New-AzDataMigrationProject` を使用し、以前に作成したソースとターゲットの接続と、移行するデータベースの一覧を追加することで、*MyDMSProject* という名前の Azure Database Migration プロジェクトを*米国東部*で作成できます。
+最後に、`New-AzDataMigrationProject` を使用し、以前に作成したソースとターゲットの接続と、移行するデータベースの一覧を追加することで、*MyDMSProject* という名前の Azure Database Migration プロジェクトを *米国東部* で作成できます。
 
 ```powershell
 $project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `
@@ -151,7 +151,7 @@ $project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `
 
 ### <a name="create-credential-parameters-for-source-and-target"></a>ソースとターゲットの資格情報パラメーターを作成する
 
-接続のセキュリティ資格情報は [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) オブジェクトとして作成できます。
+接続のセキュリティ資格情報は [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) オブジェクトとして作成できます。
 
 次の例は、ソースとターゲットの両方の接続用の *PSCredential* オブジェクトを作成し、パスワードを文字列変数 *$sourcePassword* および *$targetPassword* として提供する方法を示しています。
 
@@ -195,8 +195,8 @@ $selectedDbs = New-AzDmsSelectedDB -MigrateSqlServerSqlDb -Name AdventureWorks20
 * *TaskName*。 作成するタスクの名前。 
 * *SourceConnection*。 ソース SQL Server 接続を表す AzDmsConnInfo オブジェクト。
 * *TargetConnection*。 ターゲット Azure SQL Database 接続を表す AzDmsConnInfo オブジェクト。
-* *SourceCred*。 ソース サーバーに接続するための [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) オブジェクト。
-* *TargetCred*。 ターゲット サーバーに接続するための [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) オブジェクト。
+* *SourceCred*。 ソース サーバーに接続するための [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) オブジェクト。
+* *TargetCred*。 ターゲット サーバーに接続するための [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) オブジェクト。
 * *SelectedDatabase*。 ソースとターゲット データベースのマッピングを表す AzDataMigrationSelectedDB オブジェクト。
 * *SchemaValidation*。 (省略可能、スイッチ パラメーター) 移行の後、ソースとターゲットの間でスキーマ情報の比較を実行します。
 * *DataIntegrityValidation*。 (省略可能、スイッチ パラメーター) 移行の後、ソースとターゲットの間でチェックサム ベースのデータ整合性検証を実行します。

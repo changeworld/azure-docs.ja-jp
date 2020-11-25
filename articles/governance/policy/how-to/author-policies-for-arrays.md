@@ -3,12 +3,12 @@ title: リソースの配列プロパティのポリシーを作成する
 description: Azure Policy 定義ルールを使用して、配列パラメーターおよび配列の言語式を処理し、[*] エイリアスを評価し、要素を付加する方法について説明します。
 ms.date: 10/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 92339a6da4fd2061d66935cc8d04428c69822862
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 60044d4a599c14088ea923a6a14cb46543646995
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323220"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920459"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure リソースの配列プロパティのポリシーを作成する
 
@@ -17,7 +17,7 @@ ms.locfileid: "93323220"
 - 複数のオプションを提供する、[定義パラメーター](../concepts/definition-structure.md#parameters)の型
 - **in** または **notIn** の条件を使用した [ポリシー ルール](../concepts/definition-structure.md#policy-rule)の一部
 - [\[\*\] エイリアス](../concepts/definition-structure.md#understanding-the--alias)を評価して以下を評価するポリシー ルールの一部。
-  - **None** 、 **Any** 、または **All** などのシナリオ
+  - **None**、**Any**、または **All** などのシナリオ
   - **count** を使用した複雑なシナリオ
 - 既存の配列を置き換えたり追加する [append 効果](../concepts/effects.md#append)において
 
@@ -44,9 +44,9 @@ ms.locfileid: "93323220"
 }
 ```
 
-**type** が _string_ だったので、ポリシーの割り当て時には 1 つの値しか設定できません。 このポリシーが割り当てられると、スコープ内のリソースは、単一の Azure リージョン内でのみ許可されます。 ほとんどのポリシー定義は、 _eastus2_ 、 _eastus_ 、 _westus2_ を許可するなど、承認済みのオプションの一覧を許可する必要があります。
+**type** が _string_ だったので、ポリシーの割り当て時には 1 つの値しか設定できません。 このポリシーが割り当てられると、スコープ内のリソースは、単一の Azure リージョン内でのみ許可されます。 ほとんどのポリシー定義は、_eastus2_、_eastus_、_westus2_ を許可するなど、承認済みのオプションの一覧を許可する必要があります。
 
-複数のオプションを許可するポリシー定義を作成するには、 _array_ **type** を使用します。 同じポリシーは、次のように書き換えることができます。
+複数のオプションを許可するポリシー定義を作成するには、_array_ **type** を使用します。 同じポリシーは、次のように書き換えることができます。
 
 ```json
 "parameters": {
@@ -75,7 +75,7 @@ ms.locfileid: "93323220"
 
 ### <a name="pass-values-to-a-parameter-array-during-assignment"></a>割り当て中にパラメーター配列に値を渡す
 
-Azure portal からポリシーを割り当てるときに、 **type** _array_ のパラメーターは単一のテキストボックスとして表示されます。 ヒントには「値を区切るには ; を使用してください (例: ロンドン;New York)」と示されます。 _eastus2_ 、 _eastus_ 、および _westus2_ の許可されている場所の値をパラメーターに渡すには、次の文字列を使用します。
+Azure portal からポリシーを割り当てるときに、**type** _array_ のパラメーターは単一のテキストボックスとして表示されます。 ヒントには「値を区切るには ; を使用してください (例: ロンドン;New York)」と示されます。 _eastus2_、_eastus_、および _westus2_ の許可されている場所の値をパラメーターに渡すには、次の文字列を使用します。
 
 `eastus2;eastus;westus2`
 
@@ -95,9 +95,9 @@ Azure portal からポリシーを割り当てるときに、 **type** _array_ �
 
 各 SDK でこの文字列を使用するには、次のコマンドを使用します。
 
-- Azure CLI:コマンド [az policy assignment create](/cli/azure/policy/assignment#az-policy-assignment-create) とパラメーター **params**
+- Azure CLI:コマンド [az policy assignment create](/cli/azure/policy/assignment#az_policy_assignment_create) とパラメーター **params**
 - Azure PowerShell:コマンドレット [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) とパラメーター **PolicyParameter**
-- REST API:要求本文の一部としての _PUT_ [作成](/rest/api/resources/policyassignments/create)操作において、 **properties.parameters** プロパティの値として
+- REST API:要求本文の一部としての _PUT_ [作成](/rest/api/resources/policyassignments/create)操作において、**properties.parameters** プロパティの値として
 
 ## <a name="array-conditions"></a>配列条件
 
@@ -201,7 +201,7 @@ Azure portal からこのポリシー定義を作成しようとすると、次�
 
 #### <a name="referencing-the-array-members-collection"></a>配列メンバー コレクションの参照
 
-`[*]` 構文を使用するエイリアスは、 **配列プロパティから選択されたプロパティ値のコレクション** を表します。これは、配列プロパティ自体の選択とは異なります。 `Microsoft.Test/resourceType/stringArray[*]` の場合、`stringArray` のすべてのメンバーを含むコレクションが返されます。 前述のように、`field` 条件では、選択したすべてのリソース プロパティが条件を満たしているかどうかが確認されるため、次の条件が true になるのは、`stringArray` のメンバーの **すべて** が「"value"」 と等しい場合のみです。
+`[*]` 構文を使用するエイリアスは、**配列プロパティから選択されたプロパティ値のコレクション** を表します。これは、配列プロパティ自体の選択とは異なります。 `Microsoft.Test/resourceType/stringArray[*]` の場合、`stringArray` のすべてのメンバーを含むコレクションが返されます。 前述のように、`field` 条件では、選択したすべてのリソース プロパティが条件を満たしているかどうかが確認されるため、次の条件が true になるのは、`stringArray` のメンバーの **すべて** が「"value"」 と等しい場合のみです。
 
 ```json
 {
@@ -311,7 +311,7 @@ Azure portal からこのポリシー定義を作成しようとすると、次�
 }
 ```
 
-`count` の累乗が `where` 条件に含まれます。 これが指定されている場合、Azure Policy は配列メンバーを列挙し、それぞれを条件に対して評価し、`true` に評価された配列メンバーの数をカウントします。 具体的には、`where` 条件の評価の各反復で、Azure Policy は 1 つの配列メンバー * **i** _ を選択し、 _* * *_i_*_ が配列の唯一のメンバーであるかのように_* `where` 条件に対してリソース コンテンツを評価します。 各反復で使用できる配列メンバーを 1 つだけにすると、個々の配列メンバーに複雑な条件を適用する方法を使用できます。
+`count` の累乗が `where` 条件に含まれます。 これが指定されている場合、Azure Policy は配列メンバーを列挙し、それぞれを条件に対して評価し、`true` に評価された配列メンバーの数をカウントします。 具体的には、`where` 条件の評価の各反復で、Azure Policy は 1 つの配列メンバー ***i** _ を選択し、 _* **_i_*_ が配列の唯一のメンバーであるかのように_* `where` 条件に対してリソース コンテンツを評価します。 各反復で使用できる配列メンバーを 1 つだけにすると、個々の配列メンバーに複雑な条件を適用する方法を使用できます。
 
 例:
 ```json
@@ -424,7 +424,7 @@ Azure portal からこのポリシー定義を作成しようとすると、次�
 1. 配列エイリアスを参照する `field()` 関数は、選択された値を含む配列を返します。
 1. カウントされた配列エイリアスを `where` 条件内で参照すると、現在の反復で評価される配列メンバーから選択された 1 つの値を含むコレクションが返されます。
 
-この動作は、カウントされた配列メンバーを `where` 条件内の `field()` 関数で参照すると、 **1 つのメンバーを含む配列が返される** ことを意味します。 これは直観的ではないかもしれませんが、配列エイリアスは、選択されたプロパティのコレクションを必ず返すという考えと一致しています。 次に例を示します。
+この動作は、カウントされた配列メンバーを `where` 条件内の `field()` 関数で参照すると、**1 つのメンバーを含む配列が返される** ことを意味します。 これは直観的ではないかもしれませんが、配列エイリアスは、選択されたプロパティのコレクションを必ず返すという考えと一致しています。 次に例を示します。
 
 ```json
 {

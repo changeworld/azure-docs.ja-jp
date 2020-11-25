@@ -7,22 +7,22 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 10/6/2018
 ms.author: rohink
-ms.openlocfilehash: 111d94db1cbec658daabfb1a4c38c8160d6f50b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22ceba69ecf865d906021068a39a9d273b842ca2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84696833"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965733"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Azure ポータルを使用した DNS レコードとレコード セットの管理
 
 この記事では、Azure ポータルを使用して DNS ゾーンのレコード セットとレコードを管理する方法について説明します。
 
-DNS レコード セットと個々の DNS レコードの違いを理解することは重要です。 レコード セットとは、1 つのゾーン内にある同じ名前、同じ種類のレコードのコレクションです。 詳細については、「 [Azure ポータルを使用した DNS レコード セットとレコードの作成](dns-getstarted-create-recordset-portal.md)」を参照してください。
+DNS レコード セットと個々の DNS レコードの違いを理解することは重要です。 レコード セットとは、1 つのゾーン内にある同じ名前、同じ種類のレコードのコレクションです。 詳細については、「 [Azure ポータルを使用した DNS レコード セットとレコードの作成](./dns-getstarted-portal.md)」を参照してください。
 
 ## <a name="create-a-new-record-set-and-record"></a>新しいレコード セットとレコードを作成する
 
-Azure ポータルでレコード セットを作成する方法については、 [Azure ポータルを使用した DNS レコードの作成に関するページ](dns-getstarted-create-recordset-portal.md)を参照してください。
+Azure ポータルでレコード セットを作成する方法については、 [Azure ポータルを使用した DNS レコードの作成に関するページ](./dns-getstarted-portal.md)を参照してください。
 
 ## <a name="view-a-record-set"></a>レコード セットを表示する
 

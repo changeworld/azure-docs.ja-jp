@@ -7,13 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: c5346858aa119f11ef34916b24c70c966286ab86
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 91ef218abc51cbdf079fd9e1baa8eb2b907087df
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089045"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954207"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Azure Spring Cloud に関する一般的な問題のトラブルシューティング
 
@@ -21,7 +20,6 @@ ms.locfileid: "92089045"
 
 ## <a name="availability-performance-and-application-issues"></a>可用性、パフォーマンス、アプリケーションの問題
 
-::: zone pivot="programming-language-java"
 ### <a name="my-application-cant-start-for-example-the-endpoint-cant-be-connected-or-it-returns-a-502-after-a-few-retries"></a>アプリケーションを起動できない (エンドポイントに接続できない、数回の再試行の後に 502 が返されるなど)
 
 Azure Log Analytics にログをエクスポートしてください。 Spring アプリケーション ログのテーブルの名前は *AppPlatformLogsforSpring* です。 詳しくは、「[診断設定でログとメトリックを分析する](diagnostic-services.md)」をご覧ください。
@@ -69,7 +67,6 @@ Azure Log Analytics にログをエクスポートしてください。 Spring �
 
 
 Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/get-started-portal.md)」をご覧ください。
-::: zone-end
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>アプリケーションで高い CPU 使用率またはメモリ使用率が発生する
 
@@ -81,7 +78,7 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 
 1. **[メトリック]** に移動し、 **[サービス CPU 使用率]** または **[Service Memory Used]\(サービス メモリ使用量\)** を選択します。
 2. 監視するアプリケーションを指定するには、**App=** フィルターを追加します。
-3. **インスタンス**ごとにメトリックを分割します。
+3. **インスタンス** ごとにメトリックを分割します。
 
 "*すべてのインスタンス*" で CPU またはメモリの使用率が高くなっている場合は、アプリケーションをスケールアウトするか、CPU またはメモリの使用量をスケールアップする必要があります。 詳細については、[Azure Spring Cloud でアプリケーションをスケーリングする](spring-cloud-tutorial-scale-manual.md)」をご覧ください。
 
@@ -93,7 +90,6 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 
 Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/get-started-portal.md)」をご覧ください。 [Kusto クエリ言語](/azure/kusto/query/)を使用して、ログのクエリを実行します。
 
-::: zone pivot="programming-language-java"
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Spring アプリケーションを Azure Spring Cloud にデプロイするためのチェックリスト
 
 アプリケーションをオンボードする前に、次の条件を満たしていることを確認します。
@@ -105,7 +101,6 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 * JVM パラメーターに適切な値が設定されている。
 * 埋め込まれている "_構成サーバー_" および "_Spring サービス レジストリ_" サービスを無効にするか、アプリケーション パッケージから削除することをお勧めします。
 * いずれかの Azure リソースを "_サービス バインド_" によってバインドする場合は、ターゲット リソースが稼働していることを確認します。
-::: zone-end
 
 ## <a name="configuration-and-management"></a>構成と管理
 
@@ -124,7 +119,6 @@ Resource Manager テンプレートを使用して Azure Spring Cloud サービ�
 
 Azure Spring Cloud サービス インスタンスの名前が `azureapps.io` の下のサブドメイン名を要求するために使用されるため、名前が既存のものと競合する場合、設定は失敗します。 アクティビティ ログで詳細を確認できる場合があります。
 
-::: zone pivot="programming-language-java"
 ### <a name="i-cant-deploy-a-net-core-app"></a>.NET Core アプリをデプロイできない
 
 Azure portal または Resource Manager テンプレートを使用して .NET Core Steeltoe アプリの *.zip* ファイルをアップロードすることはできません。
@@ -132,9 +126,7 @@ Azure portal または Resource Manager テンプレートを使用して .NET C
 [Azure CLI](/cli/azure/get-started-with-azure-cli) を使用してアプリケーション パッケージをデプロイすると、Azure CLI によってデプロイの進行状況が定期的にポーリングされ、最後にデプロイの結果が表示されます。
 
 アプリケーションが正しい *.zip* ファイル形式でパッケージ化されていることを確認してください。 正しくパッケージ化されていないと、プロセスの応答が停止するか、エラー メッセージが表示されます。
-::: zone-end
 
-::: zone pivot="programming-language-java"
 ### <a name="i-cant-deploy-a-jar-package"></a>JAR パッケージをデプロイできない
 
 Azure portal または Resource Manager テンプレートを使用して、Java アーカイブ ファイル (JAR) やソース パッケージをアップロードすることはできません。
@@ -232,7 +224,6 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 ```
 
 アプリケーション ログをストレージ アカウントにアーカイブすることはできても、Azure Log Analytics に送信できない場合は、[ワークスペースが正しく設定されている](../azure-monitor/learn/quick-create-workspace.md)かどうかを確認します。 Free レベルの Azure Log Analytics を使用している場合は、[Free レベルではサービス レベル アグリーメント (SLA) が提供されない](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/)ことに注意してください。
-::: zone-end
 
 ## <a name="next-steps"></a>次の手順
 

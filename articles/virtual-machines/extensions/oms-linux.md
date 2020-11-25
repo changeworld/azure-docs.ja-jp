@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: c7bbf210-7d71-4a37-ba47-9c74567a9ea6
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: fc9c5e1f5922543ea14b13e3e5b424190dbbfb7a
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cb1e2337d5a5214c4e748e5b0f45f223b8bcb445
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892198"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967994"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Linux 用の Log Analytics 仮想マシン拡張機能
 
@@ -176,7 +177,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 
 ## <a name="azure-cli-deployment"></a>Azure CLI でのデプロイ
 
-Azure CLI を使用して、Log Analytics Agent VM 拡張機能を既存の仮想マシンにデプロイすることができます。 下の *myWorkspaceKey* 値をワークスペース キーに、 *myWorkspaceId* 値をワークスペース ID に置き換えます。 これらの値は、 *[詳細設定]* の下にある Azure portal の Log Analytics ワークスペースにあります。 
+Azure CLI を使用して、Log Analytics Agent VM 拡張機能を既存の仮想マシンにデプロイすることができます。 下の *myWorkspaceKey* 値をワークスペース キーに、*myWorkspaceId* 値をワークスペース ID に置き換えます。 これらの値は、 *[詳細設定]* の下にある Azure portal の Log Analytics ワークスペースにあります。 
 
 ```azurecli
 az vm extension set \

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 02294d4832224f1c94a4c586f3dcc455255bfbbf
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 30348d7ca12ded2d1f4b0522a7cabeadf0553a07
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670099"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953357"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のポリシー キーの概要
 
@@ -28,13 +28,13 @@ Azure Active Directory B2C (Azure AD B2C) は、シークレットと証明書�
  この記事では、Azure AD B2C によって使用されるポリシーキーについて理解しておく必要がある事項について説明します。
 
 > [!NOTE]
-> 現時点では、ポリシー キーの構成は[カスタム ポリシー](active-directory-b2c-get-started-custom.md)のみに制限されています。
+> 現時点では、ポリシー キーの構成は[カスタム ポリシー](./custom-policy-get-started.md)のみに制限されています。
 
-Azure portal の **[ポリシー キー]** メニューで、サービス間の信頼を確立するためのシークレットと証明書を構成できます。 キーは、対称または非対称にすることができます。 " *対称* " 暗号化 (秘密キー暗号化) では、データの暗号化と復号化の両方に共有シークレットが使用されます。 " *非対称* " 暗号化 (公開キー暗号化) は、キーのペアを使用する暗号化システムであり、証明書利用者アプリケーションと共有される公開キーと、Azure AD B2C のみが認識する秘密キーで構成されます。
+Azure portal の **[ポリシー キー]** メニューで、サービス間の信頼を確立するためのシークレットと証明書を構成できます。 キーは、対称または非対称にすることができます。 "*対称*" 暗号化 (秘密キー暗号化) では、データの暗号化と復号化の両方に共有シークレットが使用されます。 "*非対称*" 暗号化 (公開キー暗号化) は、キーのペアを使用する暗号化システムであり、証明書利用者アプリケーションと共有される公開キーと、Azure AD B2C のみが認識する秘密キーで構成されます。
 
 ## <a name="policy-keyset-and-keys"></a>ポリシー キーセットとキー
 
-Azure AD B2C のポリシー キーの最上位レベル リソースは、 **キーセット** コンテナーです。 各キーセットには、少なくとも 1 つの **キー** が含まれます。 キーには次の属性があります。
+Azure AD B2C のポリシー キーの最上位レベル リソースは、**キーセット** コンテナーです。 各キーセットには、少なくとも 1 つの **キー** が含まれます。 キーには次の属性があります。
 
 | 属性 |  必須 | 注釈 |
 | --- | --- |--- |
@@ -58,16 +58,16 @@ PKI 標準に従って、キーのアクティブ化と有効期限の値を設�
 
 Azure AD B2C キーセットに複数のキーがある場合は、次の条件に基づいて、一度にアクティブになるキーは 1 つだけです。
 
-- キーのアクティブ化は、 **アクティブ化の日付** に基づきます。
+- キーのアクティブ化は、**アクティブ化の日付** に基づきます。
   - キーは、アクティブ化の日付により昇順で並べ替えられます。 アクティブ化の日付がさらに後になるキーは一覧の下の方に表示されます。 アクティブ化の日付がないキーは、一覧の最下部に配置されます。
   - 現在の日付と時刻がキーのアクティブ化の日付よりも大きい場合、Azure AD B2C はそのキーをアクティブ化し、前のアクティブ キーの使用を停止します。
-- 現在のキーの有効期限が切れ、キー コンテナーに、" *期間の開始時刻* " と " *有効期限* " 時刻が有効な新しいキーが含まれる場合、その新しいキーが自動的にアクティブになります。
-- 現在のキーの有効期限が切れ、キー コンテナーに、" *期間の開始時刻* " と " *有効期限* " 時刻が有効な新しいキーが含まれて " *いない* " 場合、Azure AD B2C は、有効期限が切れたキーを使用できなくなります。 Azure AD B2C により、カスタム ポリシーの依存コンポーネント内でエラー メッセージが生成されます。 この問題を回避するために、セーフティ ネットとしてアクティブ化と有効期限の日付がない既定キーを作成できます。
-- キーが [JwtIssuer 技術プロファイル](https://docs.microsoft.com/azure/active-directory-b2c/jwt-issuer-technical-profile)で参照されている場合、OpenId Connect の既知の構成エンドポイントのキーのエンドポイント (JWKS URI) には、キー コンテナーで構成されているキーが反映されます。 OIDC ライブラリを使用するアプリケーションは、正しいキーを使用してトークンを検証するために、このメタデータを自動的に取得します。 詳細については、最新のトークン署名キーを常に自動的に取得する、[Microsoft Authentication Library](https://docs.microsoft.com/azure/active-directory/develop/msal-b2c-overview) の使用方法に関するページを参照してください。
+- 現在のキーの有効期限が切れ、キー コンテナーに、"*期間の開始時刻*" と "*有効期限*" 時刻が有効な新しいキーが含まれる場合、その新しいキーが自動的にアクティブになります。
+- 現在のキーの有効期限が切れ、キー コンテナーに、"*期間の開始時刻*" と "*有効期限*" 時刻が有効な新しいキーが含まれて "*いない*" 場合、Azure AD B2C は、有効期限が切れたキーを使用できなくなります。 Azure AD B2C により、カスタム ポリシーの依存コンポーネント内でエラー メッセージが生成されます。 この問題を回避するために、セーフティ ネットとしてアクティブ化と有効期限の日付がない既定キーを作成できます。
+- キーが [JwtIssuer 技術プロファイル](./jwt-issuer-technical-profile.md)で参照されている場合、OpenId Connect の既知の構成エンドポイントのキーのエンドポイント (JWKS URI) には、キー コンテナーで構成されているキーが反映されます。 OIDC ライブラリを使用するアプリケーションは、正しいキーを使用してトークンを検証するために、このメタデータを自動的に取得します。 詳細については、最新のトークン署名キーを常に自動的に取得する、[Microsoft Authentication Library](../active-directory/develop/msal-b2c-overview.md) の使用方法に関するページを参照してください。
 
 ## <a name="policy-key-management"></a>ポリシー キーの管理
 
-キー コンテナー内の現在のアクティブ キーを取得するには、Microsoft Graph API の [getActiveKey](https://docs.microsoft.com/graph/api/trustframeworkkeyset-getactivekey) エンドポイントを使用します。
+キー コンテナー内の現在のアクティブ キーを取得するには、Microsoft Graph API の [getActiveKey](/graph/api/trustframeworkkeyset-getactivekey) エンドポイントを使用します。
 
 署名キーと暗号化キーを追加または削除するには、次のようにします。
 
@@ -89,10 +89,3 @@ Azure AD B2C キーセットに複数のキーがある場合は、次の条件�
 ## <a name="next-steps"></a>次の手順
 
 - Microsoft Graph を使用して[キーセット](microsoft-graph-operations.md#trust-framework-policy-keyset)と[ポリシー キー](microsoft-graph-operations.md#trust-framework-policy-key)のデプロイを自動化する方法を学習します。
-
-
-
-
-
-
-

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: c753e9a18f9869e1bf11aa437fb60484f2553e17
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9bec7ffe28fbcdafd365f9867ebecaee5d2647e5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259256"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953689"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して LexisNexis を構成するためのチュートリアル
 
@@ -33,7 +33,7 @@ ms.locfileid: "91259256"
 
 - Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 
-- お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。
+- お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](./tutorial-create-tenant.md)。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -73,14 +73,14 @@ ThreatMetrix 統合には、次のコンポーネントが含まれています�
 
 ### <a name="part-1---deploy-the-api"></a>パート 1 - API をデプロイする
 
-提供された [API コード](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/Api)を Azure サービスにデプロイします。 このコードは、次の[手順](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)に従って、Visual Studio から発行することができます。
+提供された [API コード](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/Api)を Azure サービスにデプロイします。 このコードは、次の[手順](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)に従って、Visual Studio から発行することができます。
 
 >[!NOTE]
 >必要な設定で Azure AD を構成するには、デプロイされたサービスの URL が必要です。
 
 ### <a name="part-2---configure-the-api"></a>パート 2 - API を構成する
 
-アプリケーション設定は、[Azure の App Service で構成](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)できます。  この方法では、リポジトリにチェックインせずに、安全に設定を構成できます。 REST API に次の設定を指定する必要があります。
+アプリケーション設定は、[Azure の App Service で構成](../app-service/configure-common.md#configure-app-settings)できます。  この方法では、リポジトリにチェックインせずに、安全に設定を構成できます。 REST API に次の設定を指定する必要があります。
 
 | アプリケーションの設定 | source | Notes |
 | :-------- | :------------| :-----------|
@@ -95,13 +95,13 @@ ThreatMetrix 統合には、次のコンポーネントが含まれています�
 
 このソリューションでは、Azure AD B2C によって読み込まれるカスタム UI テンプレートを使用します。 これらの UI テンプレートによってプロファイルが行われ、それが ThreatMetrix サービスに直接送信されます。
 
-こちらの[手順](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#custom-page-content-walkthrough)を参照して、含まれている [UI ファイル](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template)を BLOB ストレージ アカウントにデプロイします。 この手順には、BLOB ストレージ アカウントの設定、CORS の構成、パブリック アクセスの有効化が含まれます。
+こちらの[手順](./custom-policy-ui-customization.md#custom-page-content-walkthrough)を参照して、含まれている [UI ファイル](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template)を BLOB ストレージ アカウントにデプロイします。 この手順には、BLOB ストレージ アカウントの設定、CORS の構成、パブリック アクセスの有効化が含まれます。
 
 UI は、[オーシャン ブルー テンプレート](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template/ocean_blue)に基づいています。 UI 内のすべてのリンクは、デプロイされた場所を参照するように更新する必要があります。 UI フォルダーで、 https://yourblobstorage/blobcontainer を見つけてデプロイした場所に置き換えます。
 
 ### <a name="part-4---create-api-policy-keys"></a>パート 4 - API ポリシー キーを作成する
 
-この[ドキュメント](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api#add-rest-api-username-and-password-policy-keys)を参照して、2 つのポリシー キー (API ユーザー名用に 1 つと、前に定義した API パスワード用に 1 つ) を作成します。
+この[ドキュメント](./secure-rest-api.md#add-rest-api-username-and-password-policy-keys)を参照して、2 つのポリシー キー (API ユーザー名用に 1 つと、前に定義した API パスワード用に 1 つ) を作成します。
 
 このサンプル ポリシーでは、次のキー名を使用します。
 
@@ -122,7 +122,7 @@ UI は、[オーシャン ブルー テンプレート](https://github.com/azure
 
 ### <a name="part-7---configure-the-azure-ad-b2c-policy"></a>パート 7 - Azure AD B2C ポリシーを構成する
 
-この[ドキュメント](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack)を参照して、[Local Accounts スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)をダウンロードし、Azure AD B2C テナント用に[ポリシー](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/policy)を構成します。
+この[ドキュメント](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack)を参照して、[Local Accounts スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)をダウンロードし、Azure AD B2C テナント用に[ポリシー](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/policy)を構成します。
 
 >[!NOTE]
 >お使いの特定のテナントに関連付けるため、提供されているポリシーを更新してください。
@@ -131,7 +131,7 @@ UI は、[オーシャン ブルー テンプレート](https://github.com/azure
 
 1. Azure AD B2C テナントを開き、[ポリシー] の下にある **[ユーザー フロー]** を選択します。
 
-2. 以前に作成した**ユーザー フロー**を選択します。
+2. 以前に作成した **ユーザー フロー** を選択します。
 
 3. **[ユーザー フローを実行します]** を選択し、設定を選択します。
 
@@ -153,6 +153,6 @@ UI は、[オーシャン ブルー テンプレート](https://github.com/azure
 
 追加情報については、次の記事を参照してください。
 
-- [Azure AD B2C のカスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)

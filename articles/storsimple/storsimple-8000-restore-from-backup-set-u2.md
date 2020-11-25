@@ -10,12 +10,12 @@ ms.devlang: NA
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: e9033caf903967432b713afa00a509bd2d966d8b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ff70df225b5ed27960c96889d409d7005f0fbcc4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972018"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950734"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>バックアップ セットからの StorSimple ボリュームの復元
 
@@ -63,7 +63,7 @@ Update 4 では、Windows PowerShell コマンドレットを使用して、実�
 
 * `Set-HcsRehydrationJob` - このコマンドレットを使用すると、リハイドレートの実行中に、リハイドレート ジョブを一時停止、停止、再開できます。
 
-リハイドレート コマンドレットの詳細については、[StorSimple 用 Windows PowerShell コマンドレット リファレンス](https://technet.microsoft.com/library/dn688168.aspx)をご覧ください。
+リハイドレート コマンドレットの詳細については、[StorSimple 用 Windows PowerShell コマンドレット リファレンス](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps)をご覧ください。
 
 自動リハイドレートでは、一般に一時的な読み取りパフォーマンスが高くなることが予想されます。 実際の向上の度合いは、アクセス パターン、データの変化、データの種類などのさまざまな要素に左右されます。 
 
@@ -137,4 +137,3 @@ Update 4 では、Windows PowerShell コマンドレットを使用して、実�
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple ボリュームを管理する](storsimple-8000-manage-volumes-u2.md)方法について説明します。
 * [StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを管理する](storsimple-8000-manager-service-administration.md)方法について説明します。
-

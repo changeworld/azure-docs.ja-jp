@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: c82acb66266fd36e5b7155adbfa5bd5ade1b765c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e1c45b99138a05ef78976b90f65f57304e676ff
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291989"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962775"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-with-powershell--azure-database-migration-service"></a>PowerShell と Azure Database Migration Service を使用して SQL Server から SQL Managed Instance に移行する
 
@@ -40,30 +40,30 @@ ms.locfileid: "91291989"
 これらの手順を完了するには、以下が必要です。
 
 * [SQL Server 2016 以上](https://www.microsoft.com/sql-server/sql-server-downloads) (任意のエディション)。
-* **AdventureWorks2016** データベースのローカル コピー ([こちら](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017)からダウンロードできます)。
-* TCP/IP プロトコルを有効にする (SQL Server Express のインストールでは既定で無効になっています)。 [サーバー ネットワーク プロトコルの有効化または無効化](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)に関する記事の説明に従って、TCP/IP プロトコルを有効にする。
-* [データベース エンジン アクセス用の Windows Firewall](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) の構成。
+* **AdventureWorks2016** データベースのローカル コピー ([こちら](/sql/samples/adventureworks-install-configure?view=sql-server-2017)からダウンロードできます)。
+* TCP/IP プロトコルを有効にする (SQL Server Express のインストールでは既定で無効になっています)。 [サーバー ネットワーク プロトコルの有効化または無効化](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)に関する記事の説明に従って、TCP/IP プロトコルを有効にする。
+* [データベース エンジン アクセス用の Windows Firewall](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) の構成。
 * Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
-* SQL マネージド インスタンス。 [SQL マネージド インスタンスの作成](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)に関する記事にある詳しい手順に従って、SQL マネージド インスタンスを作成できます。
+* SQL マネージド インスタンス。 [SQL マネージド インスタンスの作成](../azure-sql/managed-instance/instance-create-quickstart.md)に関する記事にある詳しい手順に従って、SQL マネージド インスタンスを作成できます。
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 以降をダウンロードしてインストールする。
-* [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用してオンプレミス ソース サーバーへのサイト間接続を Azure Database Migration Service に提供する、Azure Resource Manager デプロイ モデルを使用して作成された Microsoft Azure 仮想ネットワーク。
-* [SQL Server の移行評価の実行](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)に関する記事で説明されているように、Data Migration Assistant を使用してオンプレミスのデータベースおよびスキーマの移行の評価を完了していること。
-* `Az.DataMigration` モジュール (バージョン 0.7.2 以降) を PowerShell ギャラリーからダウンロードし、[Install-Module PowerShell cmdlet](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1) コマンドレットを使用してインストールする。
-* ソースの SQL Server インスタンスへの接続に使用される資格情報に、[CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) アクセス許可が含まれていることを確認する。
+* [ExpressRoute](../expressroute/expressroute-introduction.md) または [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用してオンプレミス ソース サーバーへのサイト間接続を Azure Database Migration Service に提供する、Azure Resource Manager デプロイ モデルを使用して作成された Microsoft Azure 仮想ネットワーク。
+* [SQL Server の移行評価の実行](/sql/dma/dma-assesssqlonprem)に関する記事で説明されているように、Data Migration Assistant を使用してオンプレミスのデータベースおよびスキーマの移行の評価を完了していること。
+* `Az.DataMigration` モジュール (バージョン 0.7.2 以降) を PowerShell ギャラリーからダウンロードし、[Install-Module PowerShell cmdlet](/powershell/module/powershellget/Install-Module?view=powershell-5.1) コマンドレットを使用してインストールする。
+* ソースの SQL Server インスタンスへの接続に使用される資格情報に、[CONTROL SERVER](/sql/t-sql/statements/grant-server-permissions-transact-sql) アクセス許可が含まれていることを確認する。
 * ターゲットの SQL マネージド インスタンスへの接続に使用される資格情報に、ターゲットの SQL マネージド インスタンス データベースに対する CONTROL DATABASE アクセス許可が含まれていることを確認する。
 
     > [!IMPORTANT]
-    > オンライン移行の場合は、Azure Active Directory の資格情報を既に設定してある必要があります。 詳細については、[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルを使用して作成する方法](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)に関する記事を参照してください。
+    > オンライン移行の場合は、Azure Active Directory の資格情報を既に設定してある必要があります。 詳細については、[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルを使用して作成する方法](../active-directory/develop/howto-create-service-principal-portal.md)に関する記事を参照してください。
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Microsoft Azure サブスクリプションにサインインする
 
-PowerShell を使用して Azure サブスクリプションにサインインします。 詳細については、「[Azure PowerShell を使用してサインインする](https://docs.microsoft.com/powershell/azure/authenticate-azureps)」を参照してください。
+PowerShell を使用して Azure サブスクリプションにサインインします。 詳細については、「[Azure PowerShell を使用してサインインする](/powershell/azure/authenticate-azureps)」を参照してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-[`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) コマンドを使用してリソース グループを作成します。
+[`New-AzResourceGroup`](/powershell/module/az.resources/new-azresourcegroup) コマンドを使用してリソース グループを作成します。
 
 次の例では、*myResourceGroup* という名前のリソース グループを "*米国東部*" リージョンに作成します。
 
@@ -76,11 +76,11 @@ New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 新しい Azure Database Migration Service インスタンスを作成するには、`New-AzDataMigrationService` コマンドレットを使用します。
 このコマンドレットでは、次のパラメーターが必要です。
 
-* *Azure リソース グループ名*。 [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) コマンドを使用して前述の Azure リソース グループを作成し、パラメーターとしてその名前を指定できます。
+* *Azure リソース グループ名*。 [`New-AzResourceGroup`](/powershell/module/az.resources/new-azresourcegroup) コマンドを使用して前述の Azure リソース グループを作成し、パラメーターとしてその名前を指定できます。
 * *サービス名*。 Azure Database Migration Service に使用する一意のサービス名に対応する文字列。
 * *場所*。 サービスの場所を指定します。 米国西部や東南アジアなど、Azure データ センターの場所を指定してください。
 * *SKU*。 このパラメーターは、DMS SKU 名に対応します。 現在サポートされている SKU 名は、*Basic_1vCore*、*Basic_2vCores*、*GeneralPurpose_4vCores* です。
-* *仮想サブネット識別子*。 [`New-AzVirtualNetworkSubnetConfig`](https://docs.microsoft.com//powershell/module/az.network/new-azvirtualnetworksubnetconfig) コマンドレットを使用して、サブネットを作成できます。
+* *仮想サブネット識別子*。 [`New-AzVirtualNetworkSubnetConfig`](//powershell/module/az.network/new-azvirtualnetworksubnetconfig) コマンドレットを使用して、サブネットを作成できます。
 
 次の例では、*MyVNET* という仮想ネットワークと *MySubnet* というサブネットを使用して、"*米国東部*" リージョンにあるリソース グループ *MyDMSResourceGroup* に *MyDMS* という名前のサービスを作成します。
 
@@ -161,7 +161,7 @@ $project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `
 
 ### <a name="create-credential-parameters-for-source-and-target"></a>ソースとターゲットの資格情報パラメーターを作成する
 
-接続のセキュリティ資格情報を [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) オブジェクトとして作成します。
+接続のセキュリティ資格情報を [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) オブジェクトとして作成します。
 
 次の例では、ソースとターゲットの両方の接続用の *PSCredential* オブジェクトを作成し、パスワードを文字列変数 *$sourcePassword* および *$targetPassword* として指定します。
 
@@ -226,7 +226,7 @@ $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%
 ```
 
 > [!NOTE]
-> Azure Database Migration Service では、アカウント レベルの SAS トークンの使用はサポートされません。 ストレージ アカウント コンテナーには SAS URI を使用する必要があります。 [Blob コンテナーの SAS URI を取得する方法について説明します](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)。
+> Azure Database Migration Service では、アカウント レベルの SAS トークンの使用はサポートされません。 ストレージ アカウント コンテナーには SAS URI を使用する必要があります。 [Blob コンテナーの SAS URI を取得する方法について説明します](../vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)。
 
 ### <a name="additional-configuration-requirements"></a>追加の構成要件
 
@@ -290,8 +290,8 @@ $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%
 * *TaskName*。 作成するタスクの名前。 
 * *SourceConnection*。 ソース SQL Server 接続を表す AzDmsConnInfo オブジェクト。
 * *TargetConnection*。 ターゲットの Azure SQL マネージド インスタンスの接続を表す AzDmsConnInfo オブジェクト。
-* *SourceCred*。 ソース サーバーに接続するための [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) オブジェクト。
-* *TargetCred*。 ターゲット サーバーに接続するための [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) オブジェクト。
+* *SourceCred*。 ソース サーバーに接続するための [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) オブジェクト。
+* *TargetCred*。 ターゲット サーバーに接続するための [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) オブジェクト。
 * *SelectedDatabase*。 ソースとターゲット データベースのマッピングを表す AzDataMigrationSelectedDB オブジェクト。
 * *BackupFileShare*。 Azure Database Migration Service がソース データベース バックアップを移行できるローカル ネットワーク共有を表すファイル共有オブジェクト。
 * *BackupBlobSasUri*。 バックアップ ファイルのアップロード先ストレージ アカウント コンテナーへのアクセスを、Azure Database Migration Service に提供する SAS URI。 BLOB コンテナーの SAS URI を取得する方法を確認してください。
@@ -422,4 +422,4 @@ Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 
 ## <a name="next-steps"></a>次のステップ
 
-「[Azure Database Migration Service とは](https://docs.microsoft.com/azure/dms/dms-overview)」の記事で、Azure Database Migration Service の詳細を確認します。
+「[Azure Database Migration Service とは](./dms-overview.md)」の記事で、Azure Database Migration Service の詳細を確認します。

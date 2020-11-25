@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: d4d21ac0fc0f218b9168adfad3e1b2ec42092b42
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a6b62e9c894c25b2c3cd064524881ae5db51ec5a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544751"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968538"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続
 
@@ -90,11 +91,11 @@ VM からの発信呼び出しにアクセスできるパブリック エンド�
 ### <a name="deployment-steps"></a>デプロイメントの手順
 
 1. Load Balancer の作成  
-   1. [Azure portal](https://portal.azure.com) で、[すべてのリソース]、[追加] の順にクリックして、 **Load Balancer** を検索します  
+   1. [Azure portal](https://portal.azure.com) で、[すべてのリソース]、[追加] の順にクリックして、**Load Balancer** を検索します  
    1. **[作成]** をクリックします。 
-   1. ロード バランサーの名前を「 **MyPublicILB** 」に設定します  
+   1. ロード バランサーの名前を「**MyPublicILB**」に設定します  
    1. 種類として **[パブリック]** を選択し、SKU として **[Standard]** を選択します  
-   1. **[パブリック IP アドレスの作成]** を選択し、名前として「 **MyPublicILBFrondEndIP** 」と指定します  
+   1. **[パブリック IP アドレスの作成]** を選択し、名前として「**MyPublicILBFrondEndIP**」と指定します  
    1. [可用性ゾーン] として、 **[ゾーン冗長]** を選択します  
    1. [確認と作成] をクリックして、[作成] をクリックします  
 2. バックエンドプール **MyBackendPoolOfPublicILB** を作成し、VM を追加します。  
@@ -110,7 +111,7 @@ VM からの発信呼び出しにアクセスできるパブリック エンド�
    1. [ネットワーク セキュリティ グループ] に移動します
    1. [送信セキュリティ規則] をクリックします
    1. **インターネット** へのすべての送信アクセスを **拒否する** 規則を追加します。
-   1. すべてのインターネット アクセスを拒否する規則の優先順位より低い優先順位での、 **AzureCloud** に対するアクセスを **許可する** 規則を追加します。
+   1. すべてのインターネット アクセスを拒否する規則の優先順位より低い優先順位での、**AzureCloud** に対するアクセスを **許可する** 規則を追加します。
 
 
    送信セキュリティ規則は次のようになります。 
@@ -144,17 +145,17 @@ Azure Firewall をデプロイする方法について詳しくは、[Azure Fire
 1. デプロイ手順では、仮想ネットワークとサブネットが VM に対して既に定義されているものとします。  
 2. VM と Standard ロード バランサーがデプロイされているのと同じ仮想ネットワークに、サブネット **AzureFirewallSubnet** を作成します。  
    1. Azure portal で仮想ネットワークに移動します。[すべてのリソース] をクリックし、[仮想ネットワーク] を探してクリックして、[サブネット] を選択します。  
-   1. [サブネットの追加] をクリックします。 名前として「 **AzureFirewallSubnet** 」と入力します。 適切なアドレス範囲を入力します。 保存します。  
+   1. [サブネットの追加] をクリックします。 名前として「**AzureFirewallSubnet**」と入力します。 適切なアドレス範囲を入力します。 保存します。  
 3. Azure Firewall を作成します。  
    1. Azure portal で [すべてのリソース] を選択し、[追加]、[ファイアウォール]、[作成] の順にクリックします。 [リソース グループ] を選択します (仮想ネットワークと同じリソース グループを選択します)。  
-   1. Azure Firewall リソースの名前を入力します。 たとえば、 **MyAzureFirewall** などとします。  
+   1. Azure Firewall リソースの名前を入力します。 たとえば、**MyAzureFirewall** などとします。  
    1. [リージョン] を選択し、VM がデプロイされている可用性ゾーンに合わせて、少なくとも 2 つの可用性ゾーンを選択します。  
    1. SAP VM と Azure Standard Load Balancer がデプロイされている仮想ネットワークを選択します。  
-   1. パブリック IP アドレス: [作成] をクリックし、名前を入力します。 たとえば、 **MyFirewallPublicIP** です。  
+   1. パブリック IP アドレス: [作成] をクリックし、名前を入力します。 たとえば、**MyFirewallPublicIP** です。  
 4. 指定したパブリック エンドポイントへの送信接続を許可する Azure ファイアウォール規則を作成します。 例では、Azure 管理 API パブリック エンドポイントへのアクセスを許可する方法が示されています。  
    1. [ルール]、[ネットワーク ルール コレクション] を選択し、[ネットワーク ルール コレクションの追加] をクリックします。  
-   1. 名前:「 **MyOutboundRule** 」と入力し、優先順位を入力し、 **許可** アクションを選択します。  
-   1. サービス: **ToAzureAPI** という名前を指定します。  プロトコル: **[すべて]** を選択します。 送信元アドレス: VM と Standard Load Balancer がデプロイされているサブネットの範囲を入力します (例: **11.97.0.0/24** )。 宛先ポート: 「<b>*</b>」と入力します。  
+   1. 名前:「**MyOutboundRule**」と入力し、優先順位を入力し、**許可** アクションを選択します。  
+   1. サービス:**ToAzureAPI** という名前を指定します。  プロトコル: **[すべて]** を選択します。 送信元アドレス: VM と Standard Load Balancer がデプロイされているサブネットの範囲を入力します (例: **11.97.0.0/24**)。 宛先ポート: 「<b>*</b>」と入力します。  
    1. 保存
    1. Azure Firewall にまだいる間に、[概要] を選択します。 Azure Firewall のプライベート IP アドレスを記録します。  
 5. Azure Firewall へのルートを作成します  
@@ -166,7 +167,7 @@ Azure Firewall をデプロイする方法について詳しくは、[Azure Fire
 
 6. VM のサブネットから **MyAzureFirewall** のプライベート IP アドレスへのユーザー定義ルートを作成します。
    1. [ルート テーブル] で、[ルート] をクリックします。 [追加] を選択します。 
-   1. ルート名: ToMyAzureFirewall、アドレス プレフィックス: **0.0.0.0/0** 。 次ホップの種類: 仮想アプライアンスを選択します。 次ホップ アドレス: 構成したファイアウォールのプライベート IP アドレスを入力します: **11.97.1.4** 。  
+   1. ルート名: ToMyAzureFirewall、アドレス プレフィックス: **0.0.0.0/0**。 次ホップの種類: 仮想アプライアンスを選択します。 次ホップ アドレス: 構成したファイアウォールのプライベート IP アドレスを入力します: **11.97.1.4**。  
    1. 保存
 
 ## <a name="using-proxy-for-pacemaker-calls-to-azure-management-api"></a>Azure 管理 API への Pacemaker 呼び出しに対するプロキシの使用

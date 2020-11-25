@@ -7,18 +7,19 @@ author: saghorpa
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6454903a7c37da30e317e29c126109b39b14efbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1daba0819e0164602ae78ece87421834f36fb09a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83660584"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967824"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>ディザスター リカバリーのフェールオーバー手順
 
@@ -42,7 +43,7 @@ DR サイトにフェールオーバーするときは、2 つのケースを考
 実際のレプリケーション リレーションシップに影響を与えずに、DR フェールオーバーをテストすることもできます。 テスト フェールオーバーを実行するには、[SAP HANA on Azure 用の Microsoft スナップショット ツールに関するページ](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf)の「Perform a test DR failover - azure_hana_test_dr_failover (テスト DR フェールオーバーの実行 - azure_hana_test_dr_failover)」の手順に従います。 
 
 >[!IMPORTANT]
->**フェールオーバー テスト**のプロセスによって DR サイト内に作成したインスタンス上では、運用トランザクションは実行 "*しないでください*"。 azure_hana_test_dr_failover コマンドでは、プライマリ サイトへのリレーションシップを持たない一連のボリュームが作成されます。 そのため、プライマリ サイトに同期することは*できません*。 
+>**フェールオーバー テスト** のプロセスによって DR サイト内に作成したインスタンス上では、運用トランザクションは実行 "*しないでください*"。 azure_hana_test_dr_failover コマンドでは、プライマリ サイトへのリレーションシップを持たない一連のボリュームが作成されます。 そのため、プライマリ サイトに同期することは *できません*。 
 
 複数の SAP HANA インスタンスをテストする場合は、スクリプトを複数回実行します。 要求されたら、フェールオーバーをテストするインスタンスの SAP HANA SID を入力します。 
 

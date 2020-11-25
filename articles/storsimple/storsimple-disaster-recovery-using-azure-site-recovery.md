@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 30a5f92e0092d3e20db25b519fec46e6018dd543
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6d98f1a1dfb575f4af8b666d173f9354b5eeac6b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168020"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966243"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>StorSimple でホストされたファイル共有向けの Azure Site Recovery を使用した自動ディザスター リカバリー ソリューション
 
@@ -44,7 +44,7 @@ StorSimple ストレージでホストされているファイル共有向けに
    - Azure StorSimple Manager に登録されたオンプレミスの StorSimple ストレージ デバイス
    - Azure StorSimple Manager で作成した StorSimple Cloud Appliance。 アプライアンスは、シャットダウン状態でも保持されます。
    - StorSimple ストレージ デバイスで構成されたボリュームでホストされているファイル共有
-   - [Azure Site Recovery Services コンテナー](../site-recovery/site-recovery-vmm-to-vmm.md)
+   - [Azure Site Recovery Services コンテナー](/azure/storsimple/hyper-v-vmm-disaster-recovery)
 
 さらに、Azure が復旧サイトに設定されている場合は、 [Azure Virtual Machines 準備状況評価ツール](https://azure.microsoft.com/downloads/vm-readiness-assessment/) を VM で実行し、Azure VM および Azure Site Recovery サービスと互換性があることを確認してください。
 
@@ -94,7 +94,7 @@ Active Directory と DNS を実行するコンピューターを保護してデ�
 1. **[次へ]** をクリックします。
 1. **[契約の条項]** をクリックして、 **[次へ]** をクリックします。
 1. **[完了]** をクリックします。
-1. StorSimple ストレージで分割されたボリュームを使用して、ファイル共有を作成します。 詳細については、「 [StorSimple Manager サービスを使用してボリュームを管理する](storsimple-manage-volumes.md)」を参照してください。
+1. StorSimple ストレージで分割されたボリュームを使用して、ファイル共有を作成します。 詳細については、「 [StorSimple Manager サービスを使用してボリュームを管理する](./index.yml)」を参照してください。
    
    1. オンプレミスの VM で、Windows キー + Q キーを押して **iSCSI** を検索します。
    1. **[iSCSI イニシエーター]** を選択 します。
@@ -112,7 +112,7 @@ Active Directory と DNS を実行するコンピューターを保護してデ�
    1. ファイル サービスおよびストレージ サービス ロールを使用して、これらのボリュームでファイル共有を作成します。
 
 #### <a name="to-create-and-prepare-an-azure-site-recovery-vault"></a>Azure Site Recovery コンテナーを作成および準備するには
-ファイル サーバー VM を保護する前に Azure Site Recovery で作業を開始するには、「 [Azure Site Recovery を利用し、オンプレミス Hyper-V 仮想マシンと Azure (VMM なし) の間で複製する](../site-recovery/site-recovery-hyper-v-site-to-azure.md) 」を参照してください。
+ファイル サーバー VM を保護する前に Azure Site Recovery で作業を開始するには、「 [Azure Site Recovery を利用し、オンプレミス Hyper-V 仮想マシンと Azure (VMM なし) の間で複製する](/azure/storsimple/hyper-v-azure-tutorial) 」を参照してください。
 
 #### <a name="to-enable-protection"></a>保護を有効にするには
 1. Azure Site Recovery を使用して保護したいオンプレミスの VM から iSCSI ターゲットを切断します。
@@ -124,7 +124,7 @@ Active Directory と DNS を実行するコンピューターを保護してデ�
    > [!NOTE]
    > この場合、ファイル共有が一時的に使用できなくなります。
    
-1. Azure Site Recovery ポータルから、ファイル サーバー VM の[仮想マシンの保護を有効にします](../site-recovery/site-recovery-hyper-v-site-to-azure.md)。
+1. Azure Site Recovery ポータルから、ファイル サーバー VM の[仮想マシンの保護を有効にします](/azure/storsimple/hyper-v-azure-tutorial)。
 1. 最初の同期の開始時に、ターゲットに再接続できます。 iSCSI イニシエーターに移動して StorSimple デバイスを選択し、 **[接続]** をクリックします。
 1. 同期の完了後に VM のステータスが **[保護済み]** になっていれば、その VM を選択してから **[構成]** タブをクリックし、設定に合わせて VM のネットワークを更新します (これはフェールオーバーされた VM を含むネットワークです)。 ネットワークが表示されないときは、同期が実行中ということです。
 
@@ -170,17 +170,17 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
    
 1. オートメーション アカウントで、 **[変数]** &gt; **[変数の追加]** とクリックし、次の変数を追加します。 これらの資産を暗号化することもできます。 これらの変数は、復旧計画によって異なります。 次の手順で作成する復旧計画の名前が TestPlan の場合、変数は TestPlan-StorSimRegKey や TestPlan-AzureSubscriptionName などになります。
 
-   - **BaseUrl** : Azure Cloud の Resource Manager URL。 **Get-AzEnvironment | Select-Object Name, ResourceManagerUrl** コマンドレットを使用して取得します。
-   - _RecoveryPlanName_ **-ResourceGroupName** : StorSimple リソースを含む Resource Manager グループ。
-   - _RecoveryPlanName_ **-ManagerName** : StorSimple デバイスを含む StorSimple リソース。
-   - _RecoveryPlanName_ **-DeviceName** : フェールオーバーする必要のある StorSimple デバイス。
-   - _RecoveryPlanName_ **-DeviceIpAddress** : デバイスの IP アドレス (StorSimple デバイス マネージャー セクション &gt; **[設定]** &gt; **[ネットワーク]** &gt; **[DNS 設定]** グループの下の **[デバイス]** タブで見つかります)。
-   - _RecoveryPlanName_ **-VolumeContainers** : フェールオーバーする必要があるデバイスのボリューム コンテナーの、コンマで区切られた文字列 (例: volcon1、volcon2、volcon3)。
-   - _RecoveryPlanName_ **-TargetDeviceName** : フェールオーバーされるコンテナーが含まれる StorSimple Cloud Appliance。
-   - _RecoveryPlanName_ **-TargetDeviceIpAddress** : ターゲット デバイスの IP アドレス (これは、 **[仮想マシン]** セクション &gt; **[設定]** グループ &gt; **[ネットワーキング]** タブで見つかります)。
-   - _RecoveryPlanName_ **-StorageAccountName** : (フェールオーバーされた VM で実行する必要がある) スクリプトが格納されるストレージ アカウント名。 スクリプトを一時的に格納する領域があれば、どのストレージ アカウントでも使用できます。
-   - _RecoveryPlanName_ **-StorageAccountKey** : 上記のストレージ アカウントのアクセス キー。
-   - _RecoveryPlanName_ **-VMGUIDS** : VM が保護されたら、Azure Site Recovery はフェールオーバーされた VM の詳細が識別できる一意の ID を、すべての VM に割り当てます。 VMGUID を取得するには、 **[Recovery Services]** タブを選択して、 **[保護された項目]** &gt; **[保護グループ]** &gt; **[マシン]** &gt; **[プロパティ]** をクリックします。 VM が複数ある場合は、コンマ区切りの文字列として GUID を追加します。
+   - **BaseUrl**: Azure Cloud の Resource Manager URL。 **Get-AzEnvironment | Select-Object Name, ResourceManagerUrl** コマンドレットを使用して取得します。
+   - _RecoveryPlanName_ **-ResourceGroupName**: StorSimple リソースを含む Resource Manager グループ。
+   - _RecoveryPlanName_ **-ManagerName**: StorSimple デバイスを含む StorSimple リソース。
+   - _RecoveryPlanName_ **-DeviceName**: フェールオーバーする必要のある StorSimple デバイス。
+   - _RecoveryPlanName_ **-DeviceIpAddress**: デバイスの IP アドレス (StorSimple デバイス マネージャー セクション &gt; **[設定]** &gt; **[ネットワーク]** &gt; **[DNS 設定]** グループの下の **[デバイス]** タブで見つかります)。
+   - _RecoveryPlanName_ **-VolumeContainers**: フェールオーバーする必要があるデバイスのボリューム コンテナーの、コンマで区切られた文字列 (例: volcon1、volcon2、volcon3)。
+   - _RecoveryPlanName_ **-TargetDeviceName**: フェールオーバーされるコンテナーが含まれる StorSimple Cloud Appliance。
+   - _RecoveryPlanName_ **-TargetDeviceIpAddress**: ターゲット デバイスの IP アドレス (これは、 **[仮想マシン]** セクション &gt; **[設定]** グループ &gt; **[ネットワーキング]** タブで見つかります)。
+   - _RecoveryPlanName_ **-StorageAccountName**: (フェールオーバーされた VM で実行する必要がある) スクリプトが格納されるストレージ アカウント名。 スクリプトを一時的に格納する領域があれば、どのストレージ アカウントでも使用できます。
+   - _RecoveryPlanName_ **-StorageAccountKey**: 上記のストレージ アカウントのアクセス キー。
+   - _RecoveryPlanName_ **-VMGUIDS**: VM が保護されたら、Azure Site Recovery はフェールオーバーされた VM の詳細が識別できる一意の ID を、すべての VM に割り当てます。 VMGUID を取得するには、 **[Recovery Services]** タブを選択して、 **[保護された項目]** &gt; **[保護グループ]** &gt; **[マシン]** &gt; **[プロパティ]** をクリックします。 VM が複数ある場合は、コンマ区切りの文字列として GUID を追加します。
 
      たとえば、復旧計画の名前が fileServerpredayRP である場合、すべての資産を追加し終えたら **[変数]** 、 **[接続]** および **[証明書]** タブは次のように表示されます。
 

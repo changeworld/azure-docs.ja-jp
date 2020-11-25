@@ -3,19 +3,19 @@ title: HBv2 シリーズの VM サイズのパフォーマンス
 description: Azure での HBv2 シリーズの VM サイズのパフォーマンス テスト結果について説明します。
 services: virtual-machines
 author: vermagit
-manager: gwallace
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 96c70936d6025ad5c1686f5ebae054d01ae05d07
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b782f3d435b7b3737de09b7a12d0fb17aa5f1edc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332600"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963319"
 ---
 # <a name="hbv2-series-virtual-machine-sizes"></a>HBv2 シリーズの仮想マシンのサイズ
 
@@ -52,7 +52,7 @@ OSU マイクロベンチマーク スイートからの MPI 帯域幅テスト�
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ``` 
 
-:::image type="content" source="./media/bandwidth-hbv2.png" alt-text="Azure HB の MPI 待機時間。":::
+:::image type="content" source="./media/bandwidth-hbv2.png" alt-text="Azure HB の MPI 帯域幅。":::
 
 
 ## <a name="mellanox-perftest"></a>Mellanox Perftest

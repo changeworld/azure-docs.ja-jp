@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, devx-track-azurecli
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: ce80c6bbd3e4a5154e80317c3918776c771e67fb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0bbf70016dc9b93120b3158e8954c336095ea211
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318209"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832689"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Azure Machine Learning コンピューティング クラスターの作成
 
@@ -44,7 +44,7 @@ Azure Machine Learning コンピューティング クラスターは、シン�
 
 ## <a name="limitations"></a>制限事項
 
-* ワークスペースから **同じコンピューティングに対して複数のアタッチメントを同時に作成することは避けてください** 。 たとえば、2 つの異なる名前を使用して 1 つのコンピューティング クラスターをワークスペースにアタッチすることが該当します。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
+* ワークスペースから **同じコンピューティングに対して複数のアタッチメントを同時に作成することは避けてください**。 たとえば、2 つの異なる名前を使用して 1 つのコンピューティング クラスターをワークスペースにアタッチすることが該当します。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
 
     クラスター構成設定を変更するためなど、コンピューティング先を再アタッチする場合は、既存のアタッチメントを先に削除する必要があります。
 
@@ -52,7 +52,7 @@ Azure Machine Learning コンピューティング クラスターは、シン�
 
 * Azure Machine Learning コンピューティングには、割り当て可能なコア数などの既定の制限があります。 詳細については、「[Azure リソースのクォータの管理と要求](how-to-manage-quotas.md)」を参照してください。
 
-* Azure では、リソースに " _ロック_ " を設定して、削除できないようにしたり、読み取り専用にしたりすることができます。 __ワークスペースが含まれているリソース グループにリソース ロックを適用しないでください。__ ワークスペースが含まれているリソース グループにロックを適用すると、Azure ML コンピューティング クラスターのスケーリング操作ができなくなります。 リソースのロックの詳細については、「[リソースのロックによる予期せぬ変更の防止](../azure-resource-manager/management/lock-resources.md)」を参照してください。
+* Azure では、リソースに "_ロック_" を設定して、削除できないようにしたり、読み取り専用にしたりすることができます。 __ワークスペースが含まれているリソース グループにリソース ロックを適用しないでください。__ ワークスペースが含まれているリソース グループにロックを適用すると、Azure ML コンピューティング クラスターのスケーリング操作ができなくなります。 リソースのロックの詳細については、「[リソースのロックによる予期せぬ変更の防止](../azure-resource-manager/management/lock-resources.md)」を参照してください。
 
 > [!TIP]
 > 必要なコア数に十分に対応するクォータを備えている限り、クラスターは一般に、最大で 100 ノードまでスケールアップすることができます。 既定では、たとえば、MPI ジョブをサポートするために、クラスターは、そのノード間でノード間通信を有効にした状態でセットアップされます。 ただし、[サポート チケットを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)し、ご利用のサブスクリプション、ワークスペース、またはノード間通信を無効にする特定のクラスターをリストに登録することを要求するだけで、ご利用のクラスターを数千のノードにスケーリングすることができます。 
@@ -60,7 +60,7 @@ Azure Machine Learning コンピューティング クラスターは、シン�
 
 ## <a name="create"></a>作成
 
-**推定所要時間** : 約 5 分です。
+**推定所要時間**: 約 5 分です。
 
 Azure Machine Learning コンピューティングは、複数回の実行で再利用できます。 コンピューティングは、ワークスペース内の他のユーザーと共有することができ、複数回の実行の間で保持されます。この場合、送信された実行の回数およびクラスター上で設定された max_nodes に基づいてノードは自動的にスケールアップまたはスケールダウンされます。 min_nodes 設定では、使用可能な最小ノード数が制御されます。
 
@@ -72,10 +72,10 @@ Azure Machine Learning コンピューティングは、複数回の実行で再
     
 # <a name="python"></a>[Python](#tab/python)
 
-Python で永続的な Azure Machine Learning コンピューティング リソースを作成するには、 **vm_size** および **max_nodes** プロパティを指定します。 その後、Azure Machine Learning では他のプロパティに対してスマート既定値が使用されます。 
+Python で永続的な Azure Machine Learning コンピューティング リソースを作成するには、**vm_size** および **max_nodes** プロパティを指定します。 その後、Azure Machine Learning では他のプロパティに対してスマート既定値が使用されます。 
     
-* **vm_size** :Azure Machine Learning コンピューティングによって作成されるノードの VM ファミリ。
-* **max_nodes** :Azure Machine Learning コンピューティングでジョブを実行中に自動スケールアップする最大ノード数。
+* **vm_size**:Azure Machine Learning コンピューティングによって作成されるノードの VM ファミリ。
+* **max_nodes**:Azure Machine Learning コンピューティングでジョブを実行中に自動スケールアップする最大ノード数。
 
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]

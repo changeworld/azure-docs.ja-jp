@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/30/2019
-ms.openlocfilehash: 896254a5577dad1bdcf474b963b9544029a4c81a
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 11/16/2020
+ms.openlocfilehash: 8f0d10b6ed69cd31249447b59114c590bdbeb078
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040112"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832366"
 ---
 # <a name="window-transformation-in-mapping-data-flow"></a>マッピング データ フローでのウィンドウ変換
 
@@ -22,6 +22,8 @@ ms.locfileid: "93040112"
 ウィンドウ変換では、データ ストリームに含まれる列のウィンドウ ベースの集計を定義します。 式ビルダーで、データまたは時間ウィンドウに基づくさまざまな種類の集計 (SQL OVER 句の LEAD、LAG、NTILE、CUMEDIST、RANK など) を定義できます。 これらの集計を含む新しいフィールドが出力に生成されます。 省略可能な group-by フィールドを含めることもできます。
 
 ![メニューから選択された [ウィンドウ化] を示しているスクリーンショット。](media/data-flow/windows1.png "ウィンドウ 1")
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4IAVu]
 
 ## <a name="over"></a>Over
 ウィンドウ変換のために列データのパーティション分割を設定します。 SQL では Over 句の ```Partition By``` がこれに相当します。 パーティション分割に使用する計算または式を作成する場合は、列名にポインターを合わせて、[計算列] を選択します。

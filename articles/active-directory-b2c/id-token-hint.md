@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 708ec35524f25314ca568944b738ba2cdf60d55c
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 79a99d9f0ca117d8f47d56d76399210a72b91bb7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132076"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951657"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで ID トークン ヒントの技術プロファイルを定義する
 
@@ -59,7 +59,7 @@ id_token_hint は、有効な JWT トークンである必要があります。 
 
 ## <a name="protocol"></a>Protocol
 
-**Protocol** 要素の **Name** 属性は `None` に設定する必要があります。 たとえば、 **IdTokenHint_ExtractClaims** 技術プロファイルのプロトコルは `None` です。
+**Protocol** 要素の **Name** 属性は `None` に設定する必要があります。 たとえば、**IdTokenHint_ExtractClaims** 技術プロファイルのプロトコルは `None` です。
 
 ```xml
 <TechnicalProfile Id="IdTokenHint_ExtractClaims">
@@ -97,7 +97,7 @@ id_token_hint は、有効な JWT トークンである必要があります。 
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 
-対称キーを使用する場合、 **CryptographicKeys** 要素には次の属性が含まれます。
+対称キーを使用する場合、**CryptographicKeys** 要素には次の属性が含まれます。
 
 | 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
@@ -189,7 +189,7 @@ $newClientSecret
 
 #### <a name="step-1-prepare-a-self-signed-certificate"></a>手順 1. 自己署名証明書を準備する
 
-証明書がまだない場合、このハウツー ガイドでは自己署名証明書を使用できます。 Windows では、PowerShell の [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) コマンドレットを使用して証明書を生成できます。
+証明書がまだない場合、このハウツー ガイドでは自己署名証明書を使用できます。 Windows では、PowerShell の [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) コマンドレットを使用して証明書を生成できます。
 
 この PowerShell コマンドを実行して、自己署名証明書を生成します。 アプリケーションと Azure AD B2C のテナント名に合わせて `-Subject` 引数を変更します。 また、証明書に別の有効期限を指定するように `-NotAfter` 日付を調整することもできます。
 

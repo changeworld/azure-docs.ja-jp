@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: ae87771e8a557ad7cb58c9cad9231784606cdd74
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 25f4ae0dbfd7827a36dede6a889c342ea490e273
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426537"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948478"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics についてよく寄せられる質問
 
@@ -56,9 +56,9 @@ Traffic Analytics では、次の前提条件が必要です。
 
 2. **Select-AzSubscription** を使用して、必要なサブスクリプションを選択します。 
 
-3. 指定したユーザーに割り当てられているすべてのロールを一覧表示するには、 **Get-AzRoleAssignment -SignInName [ユーザーの電子メール アドレス] -IncludeClassicAdministrators** を使用します。 
+3. 指定したユーザーに割り当てられているすべてのロールを一覧表示するには、**Get-AzRoleAssignment -SignInName [ユーザーの電子メール アドレス] -IncludeClassicAdministrators** を使用します。 
 
-出力が表示されない場合は、各サブスクリプション管理者に連絡して、コマンドを実行するアクセス権を取得してください。 詳細については、「[Azure PowerShell を使用して Azure ロールの割り当てを追加または削除する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)」を参照してください。
+出力が表示されない場合は、各サブスクリプション管理者に連絡して、コマンドを実行するアクセス権を取得してください。 詳細については、「[Azure PowerShell を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-powershell.md)」を参照してください。
 
 
 ## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>Traffic Analytics はどの Azure リージョンで使用できますか?
@@ -126,7 +126,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 ## <a name="can-i-use-an-existing-workspace"></a>既存のワークスペースを使用できますか?
 
-はい。 既存のワークスペースを選択する場合は、それが新しいクエリ言語に移行されていることを確認してください。 そのワークスペースのアップグレードを望まない場合は、新しいワークスペースを作成する必要があります。 新しいクエリ言語の詳細については、[新しいログ検索への Azure Monitor ログのアップグレード](../log-analytics/log-analytics-log-search-upgrade.md)に関するページをご覧ください。
+はい。 既存のワークスペースを選択する場合は、それが新しいクエリ言語に移行されていることを確認してください。 そのワークスペースのアップグレードを望まない場合は、新しいワークスペースを作成する必要があります。 新しいクエリ言語の詳細については、[新しいログ検索への Azure Monitor ログのアップグレード](../azure-monitor/log-query/log-query-overview.md)に関するページをご覧ください。
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>自分の Azure Storage アカウントと自分の Log Analytics ワークスペースをそれぞれ別のサブスクリプションに置くことができますか?
 
@@ -176,7 +176,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>PowerShell または Azure Resource Manager テンプレートまたはクライアントを使用してトラフィック分析を構成できますか?
 
-バージョン 6.2.1 以降の Windows PowerShell を使用してトラフィック分析を構成できます。 Set コマンドレットを使用して特定の NSG のフロー ログとトラフィック分析を構成するには、[Set-AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) を参照してください。 特定の NSG のフロー ログとトラフィック分析状態を取得するには、[Get-AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus) を参照してください。
+バージョン 6.2.1 以降の Windows PowerShell を使用してトラフィック分析を構成できます。 Set コマンドレットを使用して特定の NSG のフロー ログとトラフィック分析を構成するには、[Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) を参照してください。 特定の NSG のフロー ログとトラフィック分析状態を取得するには、[Get-AzNetworkWatcherFlowLogStatus](/powershell/module/az.network/get-aznetworkwatcherflowlogstatus) を参照してください。
 
 現在、Azure Resource Manager テンプレートを使用してトラフィック分析を構成することはできません。
 
@@ -250,7 +250,7 @@ Traffic Analytics は従量制です。 測定は、サービスによるフロ�
 
 ## <a name="how-frequently-does-traffic-analytics-process-data"></a>Traffic Analytics ではデータがどのような頻度に処理されますか?
 
-Traffic Analytics のスキーマとデータ集計に関するドキュメントの「[データ集計](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation)」セクションを参照してください。
+Traffic Analytics のスキーマとデータ集計に関するドキュメントの「[データ集計](./traffic-analytics-schema.md#data-aggregation)」セクションを参照してください。
 
 ## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Traffic Analytics では悪意のある IP であるかどうかがどのように判断されますか? 
 
@@ -262,7 +262,7 @@ Traffic Analytics には、アラートに対する組み込みのサポート�
 - Traffic Analytics では Log Analytics への短縮リンクを使用することができます。 
 - [こちらで説明するスキーマ](traffic-analytics-schema.md)を使用して、ご自分のクエリを記述します。 
 - [新しいアラート ルール] をクリックして、アラートを作成します。
-- [ログ アラートのドキュメント](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)を参照して、アラートを作成します。
+- [ログ アラートのドキュメント](../azure-monitor/platform/alerts-log.md)を参照して、アラートを作成します。
 
 ## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>受信するオンプレミス トラフィックが多い VM を確認するにはどうすればよいですか?
 
@@ -333,8 +333,8 @@ destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_
 
 geo マップ ページには主に次の 2 つのセクションがあります。
     
-- **バナー** : geo マップの上部のバナーには、トラフィック分布フィルター (たとえば、デプロイ、国/地域からのトラフィック、悪意のある、など) を選択するボタンがあります。 ボタンを選択すると、それに対応するフィルターがマップに適用されます。 たとえば、[アクティブ] ボタンを選択すると、マップでデプロイ内のアクティブなデータセンターが強調表示されます。
-- **マップ** : バナーの下にある [マップ] セクションには、Azure のデータセンターや各国/リージョンのトラフィック分布が表示されます。
+- **バナー**: geo マップの上部のバナーには、トラフィック分布フィルター (たとえば、デプロイ、国/地域からのトラフィック、悪意のある、など) を選択するボタンがあります。 ボタンを選択すると、それに対応するフィルターがマップに適用されます。 たとえば、[アクティブ] ボタンを選択すると、マップでデプロイ内のアクティブなデータセンターが強調表示されます。
+- **マップ**: バナーの下にある [マップ] セクションには、Azure のデータセンターや各国/リージョンのトラフィック分布が表示されます。
     
 ### <a name="keyboard-navigation-on-the-banner"></a>バナーでのキーボード ナビゲーション
     
@@ -345,7 +345,7 @@ geo マップ ページには主に次の 2 つのセクションがあります
         
 ### <a name="keyboard-navigation-on-the-map"></a>マップでのキーボード ナビゲーション
     
-- バナーでフィルターを選択してから `Ctrl+F6` を押すと、マップ ビューで強調されたノードの 1 つ ( **Azure データセンター** または **国/リージョン** ) にフォーカスが移動します。
+- バナーでフィルターを選択してから `Ctrl+F6` を押すと、マップ ビューで強調されたノードの 1 つ (**Azure データセンター** または **国/リージョン**) にフォーカスが移動します。
 - マップ内の他の強調表示されたノードに移動するには、前方移動に `Tab` キーまたは `Right arrow` キーを使用します。 後方移動には、`Shift+Tab` キーまたは `Left arrow` キーを使用します。
 - マップ内で強調表示されたノードを選択するには、`Enter` キーまたは `Down arrow` キーを使用します。
 - そのようなノードを選択すると、そのノードの **[Information Tool Box]\(情報ツール ボックス\)** にフォーカスが移動します。 既定では、 **[Information Tool Box]\(情報ツール ボックス\)** の [閉じる] ボタンにフォーカスが移動します。 **[ボックス]** ビュー内で移動する際は、前方には `Right arrow` キー、後方には `Left arrow` キーを使用します。 `Enter` を押すと、 **[Information Tool Box]\(情報ツール ボックス\)** でフォーカスがあるボタンを選択したのと同じ効果があります。
@@ -363,8 +363,8 @@ geo マップ ページには主に次の 2 つのセクションがあります
 
 仮想ネットワーク トポロジ ページには、主に 2 つのセクションがあります。
     
-- **バナー** : 仮想ネットワーク トポロジの上部バナーには、トラフィック分布フィルター (たとえば、接続された仮想ネットワーク、切断された仮想ネットワーク、パブリック IP など) を選択するボタンがあります。 ボタンを選択すると、それに対応するフィルターがトポロジに適用されます。 たとえば、[アクティブ] ボタンを選択すると、マップでデプロイ内のアクティブな仮想ネットワークが強調表示されます。
-- **トポロジ** :バナーの下の [トポロジ] セクションには、仮想ネットワーク全体でのトラフィック分布が表示されます。
+- **バナー**: 仮想ネットワーク トポロジの上部バナーには、トラフィック分布フィルター (たとえば、接続された仮想ネットワーク、切断された仮想ネットワーク、パブリック IP など) を選択するボタンがあります。 ボタンを選択すると、それに対応するフィルターがトポロジに適用されます。 たとえば、[アクティブ] ボタンを選択すると、マップでデプロイ内のアクティブな仮想ネットワークが強調表示されます。
+- **トポロジ**:バナーの下の [トポロジ] セクションには、仮想ネットワーク全体でのトラフィック分布が表示されます。
     
 ### <a name="keyboard-navigation-on-the-banner"></a>バナーでのキーボード ナビゲーション
     
@@ -375,7 +375,7 @@ geo マップ ページには主に次の 2 つのセクションがあります
         
 ### <a name="keyboard-navigation-on-the-topology"></a>トポロジでのキーボード ナビゲーション
     
-- バナーでフィルターを選択してから `Ctrl+F6` を押すと、トポロジ ビューで強調されたノードの 1 つ ( **VNet** ) にフォーカスが移動します。
+- バナーでフィルターを選択してから `Ctrl+F6` を押すと、トポロジ ビューで強調されたノードの 1 つ (**VNet**) にフォーカスが移動します。
 - トポロジ ビュー内の他の強調表示されたノードに移動するには、`Shift+Right arrow` キーを使用して前方に移動します。 
 - 強調表示されたノードの **[Information Tool Box]\(情報ツール ボックス\)** にフォーカスが移動します。 既定では、 **[Information Tool Box]\(情報ツール ボックス\)** の **[詳細]** ボタンにフォーカスが移動します。 **[ボックス]** ビュー内で移動する場合、前方には `Right arrow` キー、後方には `Left arrow` キーを使用します。 `Enter` を押すと、 **[Information Tool Box]\(情報ツール ボックス\)** でフォーカスがあるボタンを選択したのと同じ効果があります。
 - このようなノードを選択する際は、`Shift+Left arrow` キーを押して、すべての接続に 1 つずつアクセスできます。 フォーカスはその接続の **[Information Tool Box]\(情報ツール ボックス\)** に移動します。 いずれの時点でも、`Shift+Right arrow` を再度押して、フォーカスをノードに戻すことができます。
@@ -385,8 +385,8 @@ geo マップ ページには主に次の 2 つのセクションがあります
 
 仮想サブネットワーク トポロジ ページには、主に 2 つのセクションがあります。
     
-- **バナー** : 仮想サブネット ネットワーク トポロジの上部のバナーには、トラフィック分布フィルター (たとえば、アクティブ、中、ゲートウェイのサブネットなど) を選択するボタンがあります。 ボタンを選択すると、それに対応するフィルターがトポロジに適用されます。 たとえば、[アクティブ] ボタンを選択すると、マップでデプロイ内のアクティブな仮想サブネットワークが強調表示されます。
-- **トポロジ** :バナーの下の [トポロジ] セクションには、仮想サブネットワーク全体でのトラフィック分布が表示されます。
+- **バナー**: 仮想サブネット ネットワーク トポロジの上部のバナーには、トラフィック分布フィルター (たとえば、アクティブ、中、ゲートウェイのサブネットなど) を選択するボタンがあります。 ボタンを選択すると、それに対応するフィルターがトポロジに適用されます。 たとえば、[アクティブ] ボタンを選択すると、マップでデプロイ内のアクティブな仮想サブネットワークが強調表示されます。
+- **トポロジ**:バナーの下の [トポロジ] セクションには、仮想サブネットワーク全体でのトラフィック分布が表示されます。
     
 ### <a name="keyboard-navigation-on-the-banner"></a>バナーでのキーボード ナビゲーション
     
@@ -397,7 +397,7 @@ geo マップ ページには主に次の 2 つのセクションがあります
         
 ### <a name="keyboard-navigation-on-the-topology"></a>トポロジでのキーボード ナビゲーション
     
-- バナーでフィルターを選択してから `Ctrl+F6` を押すと、トポロジ ビューで強調されたノードの 1 つ ( **サブネット** ) にフォーカスが移動します。
+- バナーでフィルターを選択してから `Ctrl+F6` を押すと、トポロジ ビューで強調されたノードの 1 つ (**サブネット**) にフォーカスが移動します。
 - トポロジ ビュー内の他の強調表示されたノードに移動するには、`Shift+Right arrow` キーを使用して前方に移動します。 
 - 強調表示されたノードの **[Information Tool Box]\(情報ツール ボックス\)** にフォーカスが移動します。 既定では、 **[Information Tool Box]\(情報ツール ボックス\)** の **[詳細]** ボタンにフォーカスが移動します。 **[ボックス]** ビュー内で移動する際は、前方には `Right arrow` キー、後方には `Left arrow` キーを使用します。 `Enter` を押すと、 **[Information Tool Box]\(情報ツール ボックス\)** でフォーカスがあるボタンを選択したのと同じ効果があります。
-- このようなノードを選択する際は、`Shift+Left arrow` キーを押して、すべての接続に 1 つずつアクセスできます。 フォーカスはその接続の **[Information Tool Box]\(情報ツール ボックス\)** に移動します。 いずれの時点でも、`Shift+Right arrow` を再度押して、フォーカスをノードに戻すことができます。    
+- このようなノードを選択する際は、`Shift+Left arrow` キーを押して、すべての接続に 1 つずつアクセスできます。 フォーカスはその接続の **[Information Tool Box]\(情報ツール ボックス\)** に移動します。 いずれの時点でも、`Shift+Right arrow` を再度押して、フォーカスをノードに戻すことができます。

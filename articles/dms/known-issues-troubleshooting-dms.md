@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: f0ec9d2a3794ea910339b4d329bb28f23c5a76b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4baca7f261aa7544b54992a5e1ddf620794774f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297360"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962282"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Azure Database Migration Service の一般的な問題やエラーのトラブルシューティング
 
@@ -25,7 +25,7 @@ ms.locfileid: "91297360"
 > [!NOTE]
 > バイアスフリーなコミュニケーション
 >
-> Microsoft は、多様性を尊重する環境をサポートします。 この記事には、_スレーブ_という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
+> Microsoft は、多様性を尊重する環境をサポートします。 この記事には、_スレーブ_ という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
 >
 
 ## <a name="migration-activity-in-queued-state"></a>キューに入った状態の移行アクティビティ
@@ -54,7 +54,7 @@ Azure Database Migration Service を使用して MySQL から Azure Database for
 
 | 原因         | 解決方法 |
 | ------------- | ------------- |
-| このエラーは、移行を行っているユーザーに ReplicationAdmin ロール、または REPLICATION CLIENT、REPLICATION REPLICA、SUPER (MySQL 5.6.6 より前のバージョン) の特権がない場合に発生することがあります。<br><br><br><br><br><br><br><br><br><br><br><br><br> | ユーザー アカウントの[前提条件の特権](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites)が Azure Database for MySQL インスタンスで正確に構成されていることを確認してください。 たとえば、必要な特権を持つ "migrateuser" という名前のユーザーを作成するには、次の手順に従います。<br>1.CREATE USER migrateuser@'%' IDENTIFIED BY 'secret'; <br>2."secret" で特定された "migrateuser'@'%'" に、db_name.* のすべての権限を付与します; //他のデータベースにもアクセス権を付与するには、この手順を繰り返します <br>3. *.* でレプリケーション スレーブを付与します to 'migrateuser'@'%' identified by 'secret';<br>4. *.* でレプリケーション クライアントを付与します to 'migrateuser'@'%' identified by 'secret';<br>5.権限をフラッシュします |
+| このエラーは、移行を行っているユーザーに ReplicationAdmin ロール、または REPLICATION CLIENT、REPLICATION REPLICA、SUPER (MySQL 5.6.6 より前のバージョン) の特権がない場合に発生することがあります。<br><br><br><br><br><br><br><br><br><br><br><br><br> | ユーザー アカウントの[前提条件の特権](./tutorial-mysql-azure-mysql-online.md#prerequisites)が Azure Database for MySQL インスタンスで正確に構成されていることを確認してください。 たとえば、必要な特権を持つ "migrateuser" という名前のユーザーを作成するには、次の手順に従います。<br>1.CREATE USER migrateuser@'%' IDENTIFIED BY 'secret'; <br>2."secret" で特定された "migrateuser'@'%'" に、db_name.* のすべての権限を付与します; //他のデータベースにもアクセス権を付与するには、この手順を繰り返します <br>3. *.* でレプリケーション スレーブを付与します to 'migrateuser'@'%' identified by 'secret';<br>4. *.* でレプリケーション クライアントを付与します to 'migrateuser'@'%' identified by 'secret';<br>5.権限をフラッシュします |
 
 ## <a name="error-when-attempting-to-stop-azure-database-migration-service"></a>Azure Database Migration Service を停止しようとしたときのエラー
 
@@ -84,7 +84,7 @@ SQL Server から Azure SQL Managed Instance へのオンライン移行を実�
 
 | 原因         | 解決方法    |
 | ------------- | ------------- |
-| このエラーは、SQL Server から SQL Managed Instance へのオンライン移行に使用されているアプリケーション プリンシパルに、サブスクリプションに対する共同作成アクセス許可がないことを示しています。 現在、マネージド インスタンスを使用した特定の API 呼び出しでは、復元操作のために、サブスクリプションに対するこのアクセス許可が必要です。 <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | エラー メッセージから取得できる `-ObjectId` を指定して `Get-AzureADServicePrincipal` PowerShell コマンドレットを使用すると、使用されているアプリケーション ID の表示名が表示されます。<br><br> このアプリケーションに対するアクセス許可を確認し、それがサブスクリプション レベルで[共同作成者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)を持っていることを確認してください。 <br><br> Azure Database Migration Service のエンジニアリング チームは、サブスクリプションの現在の共同作成者ロールから必要とされるアクセスを制限するように取り組んでいます。 共同作成者ロールの使用を許可しないビジネス要件がある場合は、Azure サポートに追加の支援を要請してください。 |
+| このエラーは、SQL Server から SQL Managed Instance へのオンライン移行に使用されているアプリケーション プリンシパルに、サブスクリプションに対する共同作成アクセス許可がないことを示しています。 現在、マネージド インスタンスを使用した特定の API 呼び出しでは、復元操作のために、サブスクリプションに対するこのアクセス許可が必要です。 <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | エラー メッセージから取得できる `-ObjectId` を指定して `Get-AzureADServicePrincipal` PowerShell コマンドレットを使用すると、使用されているアプリケーション ID の表示名が表示されます。<br><br> このアプリケーションに対するアクセス許可を確認し、それがサブスクリプション レベルで[共同作成者ロール](../role-based-access-control/built-in-roles.md#contributor)を持っていることを確認してください。 <br><br> Azure Database Migration Service のエンジニアリング チームは、サブスクリプションの現在の共同作成者ロールから必要とされるアクセスを制限するように取り組んでいます。 共同作成者ロールの使用を許可しないビジネス要件がある場合は、Azure サポートに追加の支援を要請してください。 |
 
 ## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>Azure Database Migration Service に関連付けられた NIC を削除するときのエラー
 
@@ -102,7 +102,7 @@ Azure Database Migration Service プロジェクト ウィザードでソース�
 
 | 原因         | 解決方法    |
 | ------------- | ------------- |
-| [ExpressRoute](https://azure.microsoft.com/services/expressroute/) を使用している場合、Azure Database Migration Service では、そのサービスに関連付けられた仮想ネットワーク サブネット上に次の 3 つのサービス エンドポイントをプロビジョニングする[必要があります](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online)。<br> -- サービス バス エンドポイント<br> -- ストレージ エンドポイント<br> -- ターゲット データベース エンドポイント (SQL エンドポイント、Cosmos DB エンドポイントなど)<br><br><br><br><br> | ソースと Azure Database Migration Service の間の ExpressRoute 接続に必要なサービス エンドポイントを[有効](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online)にします。 <br><br><br><br><br><br><br><br> |
+| [ExpressRoute](https://azure.microsoft.com/services/expressroute/) を使用している場合、Azure Database Migration Service では、そのサービスに関連付けられた仮想ネットワーク サブネット上に次の 3 つのサービス エンドポイントをプロビジョニングする[必要があります](./tutorial-sql-server-azure-sql-online.md)。<br> -- サービス バス エンドポイント<br> -- ストレージ エンドポイント<br> -- ターゲット データベース エンドポイント (SQL エンドポイント、Cosmos DB エンドポイントなど)<br><br><br><br><br> | ソースと Azure Database Migration Service の間の ExpressRoute 接続に必要なサービス エンドポイントを[有効](./tutorial-sql-server-azure-sql-online.md)にします。 <br><br><br><br><br><br><br><br> |
 
 ## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>MySQL データベースを Azure DB for MySQL に移行するときのロック待機タイムアウト エラー
 
@@ -126,13 +126,13 @@ Azure Database Migration Service を、名前付きインスタンスまたは�
 
 ## <a name="additional-known-issues"></a>その他の既知の問題
 
-* [Azure SQL Database へのオンライン移行に関する既知の問題と移行の制限事項](https://docs.microsoft.com/azure/dms/known-issues-azure-sql-online)
-* [Azure Database for MySQL へのオンライン移行に関する既知の問題と移行の制限事項](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
-* [Azure Database for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
+* [Azure SQL Database へのオンライン移行に関する既知の問題と移行の制限事項](./known-issues-azure-sql-online.md)
+* [Azure Database for MySQL へのオンライン移行に関する既知の問題と移行の制限事項](./known-issues-azure-mysql-online.md)
+* [Azure Database for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項](./known-issues-azure-postgresql-online.md)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Database Migration Service PowerShell](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration) に関する記事を確認する。
-* 「[Azure portal を使用して Azure Database for MySQL のサーバー パラメーターを構成する方法](https://docs.microsoft.com/azure/mysql/howto-server-parameters)」を確認する。
-* 「[Azure Database Migration Service を使用するための前提条件の概要](https://docs.microsoft.com/azure/dms/pre-reqs)」を確認する。
-* 「[Azure Database Migration Service の使用に関する FAQ](https://docs.microsoft.com/azure/dms/faq)」を確認する。
+* [Azure Database Migration Service PowerShell](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration) に関する記事を確認する。
+* 「[Azure portal を使用して Azure Database for MySQL のサーバー パラメーターを構成する方法](../mysql/howto-server-parameters.md)」を確認する。
+* 「[Azure Database Migration Service を使用するための前提条件の概要](./pre-reqs.md)」を確認する。
+* 「[Azure Database Migration Service の使用に関する FAQ](./faq.md)」を確認する。

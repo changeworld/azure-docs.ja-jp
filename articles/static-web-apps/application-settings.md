@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.custom: devx-track-js
-ms.openlocfilehash: c89ccee430d374d9aee58326627ff800f737324b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 00502c97e3fc06972c27cedf565d77b52f558795
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250030"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844814"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Azure Static Web Apps (プレビュー) のアプリケーション設定を構成する
 
@@ -61,7 +61,7 @@ JavaScript フレームワークまたはライブラリで環境変数を使用
 
 ## <a name="about-api-app-settings"></a>API アプリケーション設定
 
-Azure Static Web Apps の API は Azure Functions の機能を利用しています。これにより、 _local.settings.json_ ファイルでアプリケーション設定を定義できます。 このファイルは、構成の `Values` プロパティでアプリケーション設定を定義します。
+Azure Static Web Apps の API は Azure Functions の機能を利用しています。これにより、_local.settings.json_ ファイルでアプリケーション設定を定義できます。 このファイルは、構成の `Values` プロパティでアプリケーション設定を定義します。
 
 次のサンプル _local.settings.json_ は、`DATABASE_CONNECTION_STRING` の値を追加する方法を示しています。
 
@@ -116,7 +116,7 @@ Azure portal には、アプリケーション設定を作成、更新、およ�
 
 `az rest` コマンドを使用すると、設定を Azure に一括アップロードできます。 このコマンドは、`properties` という親プロパティで JSON オブジェクトとしてアプリケーション設定を受け入れます。
 
-適切な値を使用して JSON ファイルを作成する方法として最も簡単なのは、 _local.settings.json_ ファイルの変更バージョンを作成することです。
+適切な値を使用して JSON ファイルを作成する方法として最も簡単なのは、_local.settings.json_ ファイルの変更バージョンを作成することです。
 
 1. 機密データを含む新しいファイルが公開されないようにするには、 _.gitignore_ ファイルに次のエントリを追加します。
 
@@ -124,7 +124,7 @@ Azure portal には、アプリケーション設定を作成、更新、およ�
    local.settings*.json
    ```
 
-2. 次に、 _local.settings.json_ ファイルのコピーを作成して、 _local.settings.properties.json_ という名前を付けます。
+2. 次に、_local.settings.json_ ファイルのコピーを作成して、_local.settings.properties.json_ という名前を付けます。
 
 3. この新しいファイル内で、アプリケーション設定を除く他のすべてのデータをファイルから削除し、名前を `Values` から `properties` に変更します。
 

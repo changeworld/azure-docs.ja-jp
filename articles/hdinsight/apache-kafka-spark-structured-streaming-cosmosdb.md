@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 11/18/2019
-ms.openlocfilehash: 20045ce914a340ac36e4df8cbd0df38e872a1d38
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 387eb4f4c73b2103a7461c0d06c4d0e0562ec9db
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487332"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842466"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Kafka と Azure Cosmos DB で Apache Spark 構造化ストリーミングを使用する
 
@@ -69,7 +69,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
     |サブスクリプション|Azure サブスクリプションを選択します。|
     |Resource group|グループを作成するか、または既存のグループを選択します。 このグループに HDInsight クラスターが含まれます。|
     |Cosmos DB Account Name (Cosmos DB アカウント名)|この値が、Cosmos DB アカウントの名前として使用されます。 名前に含めることができるのは、英小文字、数字、ハイフン (-) のみです。 長さは 3 文字から 31 文字でなければなりません。|
-    |Base Cluster Name (ベース クラスター名)|この値は、Spark クラスターと Kafka クラスターのベース名として使用されます。 たとえば、「 **myhdi** 」と入力すると、 __spark-myhdi__ という名前の Spark クラスターと、 **kafka-myhdi** という名前の Kafka クラスターが作成されます。|
+    |Base Cluster Name (ベース クラスター名)|この値は、Spark クラスターと Kafka クラスターのベース名として使用されます。 たとえば、「**myhdi**」と入力すると、__spark-myhdi__ という名前の Spark クラスターと、**kafka-myhdi** という名前の Kafka クラスターが作成されます。|
     |クラスターのバージョン|HDInsight クラスターのバージョン。 この例は HDInsight 3.6 でテストされており、その他の種類のクラスターでは機能しないことがあります。|
     |[Cluster Login User Name]\(クラスター ログイン ユーザー名\)|Spark クラスターと Kafka クラスターの管理者のユーザー名。|
     |[クラスター ログイン パスワード]|Spark クラスターと Kafka クラスターの管理者のユーザー パスワード。|
@@ -142,19 +142,19 @@ az cosmosdb keys list --name $name --resource-group $resourceGroupName --type ke
 
     プロンプトが表示されたら、クラスターの作成時に使用したログイン (管理者) パスワードを入力します。
 
-2. ページの右上隅の __[アップロード]__ ボタンを使用して、 __Stream-taxi-data-to-kafka.ipynb__ ファイルをクラスターにアップロードします。 __[開く]__ を選択して、アップロードを開始します。
+2. ページの右上隅の __[アップロード]__ ボタンを使用して、__Stream-taxi-data-to-kafka.ipynb__ ファイルをクラスターにアップロードします。 __[開く]__ を選択して、アップロードを開始します。
 
 3. ノートブックの一覧で __Stream-taxi-data-to-kafka.ipynb__ エントリを検索し、横にある __[アップロード]__ ボタンを選択します。
 
-4. 手順 1. ～ 3. を繰り返して、 __Stream-data-from-Kafka-to-Cosmos-DB.ipynb__ ノートブックを読み込みます。
+4. 手順 1. ～ 3. を繰り返して、__Stream-data-from-Kafka-to-Cosmos-DB.ipynb__ ノートブックを読み込みます。
 
 ## <a name="load-taxi-data-into-kafka"></a>タクシー データを Kafka に読み込む
 
-ファイルをアップロードした後、 __Stream-taxi-data-to-kafka.ipynb__ エントリを選択してノートブックを開きます。 ノートブックの手順に従って Kafka にデータを読み込みます。
+ファイルをアップロードした後、__Stream-taxi-data-to-kafka.ipynb__ エントリを選択してノートブックを開きます。 ノートブックの手順に従って Kafka にデータを読み込みます。
 
 ## <a name="process-taxi-data-using-spark-structured-streaming"></a>Spark 構造化ストリーミングを使用してタクシー データを処理する
 
-[Jupyter Notebook](https://jupyter.org/) のホーム ページから、 __Stream-data-from-Kafka-to-Cosmos-DB.ipynb__ エントリを選択します。 ノートブックの手順に従い、Spark 構造化ストリーミングを使って Kafka から Azure Cosmos DB にデータをストリーミングします。
+[Jupyter Notebook](https://jupyter.org/) のホーム ページから、__Stream-data-from-Kafka-to-Cosmos-DB.ipynb__ エントリを選択します。 ノートブックの手順に従い、Spark 構造化ストリーミングを使って Kafka から Azure Cosmos DB にデータをストリーミングします。
 
 ## <a name="next-steps"></a>次のステップ
 

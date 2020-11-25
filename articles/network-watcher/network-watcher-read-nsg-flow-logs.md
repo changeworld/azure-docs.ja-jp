@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: damendo
-ms.openlocfilehash: 18023f5a5b36dd971080d7a62fdd44698a205bb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f9b9e91cda93a986fdaaf0f53d8987544e783a2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272537"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966464"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG フロー ログの読み取り
 
 PowerShell で NSG フロー ログのエントリを読み取る方法を説明します。
 
-NSG フロー ログは[ブロック BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) のストレージ アカウントに保存されます。 ブロック BLOB は小規模なブロックで構成されます。 各ログは、1 時間ごとに生成される個別のブロック BLOB です。 新しいログが 1 時間ごとに生成され、ログは最新データを保持した新しいエントリで数分ごとに更新されます。 この記事では、フロー ログの一部を読み取る方法を説明します。
+NSG フロー ログは[ブロック BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) のストレージ アカウントに保存されます。 ブロック BLOB は小規模なブロックで構成されます。 各ログは、1 時間ごとに生成される個別のブロック BLOB です。 新しいログが 1 時間ごとに生成され、ログは最新データを保持した新しいエントリで数分ごとに更新されます。 この記事では、フロー ログの一部を読み取る方法を説明します。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -37,7 +37,7 @@ NSG フロー ログは[ブロック BLOB](https://docs.microsoft.com/rest/api/s
 
 ## <a name="retrieve-the-block-list"></a>ブロック一覧の取得
 
-次の PowerShell は、NSG フロー ログの BLOB を取得するクエリを実行し、[CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) ブロック BLOB 内のブロックを一覧表示するために必要な変数を設定します。 スクリプトを更新して、使用している環境で有効な値を格納するようにします。
+次の PowerShell は、NSG フロー ログの BLOB を取得するクエリを実行し、[CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) ブロック BLOB 内のブロックを一覧表示するために必要な変数を設定します。 スクリプトを更新して、使用している環境で有効な値を格納するようにします。
 
 ```powershell
 function Get-NSGFlowLogCloudBlockBlob {
@@ -189,6 +189,6 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
 
 [Elastic Stack の使用](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)、[Grafana の使用](network-watcher-nsg-grafana.md)、[Graylog の使用](network-watcher-analyze-nsg-flow-logs-graylog.md)に関する記事を参照し、NSG フロー ログの表示方法の詳細を理解します。 BLOB を直接使用して各種のログ分析コンシューマーを出力するためのオープン ソースの Azure 関数アプローチについては、[Azure Network Watcher NSG Flow Logs Connector](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector) に関するページを参照してください。
 
-[Azure Traffic Analytics](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) を使用して、トラフィック フローに関する分析情報を得ることができます。 Traffic Analytics は [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) を使用して、トラフィック フローをクエリ可能にします。
+[Azure Traffic Analytics](./traffic-analytics.md) を使用して、トラフィック フローに関する分析情報を得ることができます。 Traffic Analytics は [Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) を使用して、トラフィック フローをクエリ可能にします。
 
 BLOB ストレージの詳細については、[Azure Functions における Blob Storage のバインディング](../azure-functions/functions-bindings-storage-blob.md)に関するページを参照してください。

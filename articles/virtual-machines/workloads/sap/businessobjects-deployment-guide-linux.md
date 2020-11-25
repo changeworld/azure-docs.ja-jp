@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 1f15a3b4d8f51ec79fffce09bc006942d08096a6
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 17b978d3f4faebd3870868bceeea4572288ecb07
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427464"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965359"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure の Linux 向け SAP BusinessObjects BI プラットフォーム デプロイ ガイド
 
@@ -84,7 +85,7 @@ Azure NetApp Files をデプロイする前に、「[Azure NetApp Files に登�
 
 3. [Azure NetApp Files の容量プールの設定](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)に関するページの手順に従って、Azure NetApp Files の容量プールを設定します。
 
-   - この記事で示されている SAP BI プラットフォーム アーキテクチャには、 *Premium* サービス レベルで 1 つの Azure NetApp Files 容量プールが使用されています。 Azure の SAP BI ファイル リポジトリ サーバーには、Azure NetApp Files *Premium* または *Ultra* [サービス レベル](../../../azure-netapp-files/azure-netapp-files-service-levels.md)を使用することをお勧めします。
+   - この記事で示されている SAP BI プラットフォーム アーキテクチャには、*Premium* サービス レベルで 1 つの Azure NetApp Files 容量プールが使用されています。 Azure の SAP BI ファイル リポジトリ サーバーには、Azure NetApp Files *Premium* または *Ultra* [サービス レベル](../../../azure-netapp-files/azure-netapp-files-service-levels.md)を使用することをお勧めします。
 
 4. 「[サブネットを Azure NetApp Files に委任する](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)」の手順に従って、サブネットを Azure NetApp Files に委任します。
 
@@ -196,7 +197,7 @@ SAP BOBI プラットフォーム ファイル リポジトリ サーバー用�
 
    **NFS ドメイン設定の確認**
 
-   ドメインが既定の Azure NetApp Files ドメイン (つまり、 **defaultv4iddomain.com** ) として構成され、マッピングが **nobody** に設定されていることを確認します。
+   ドメインが既定の Azure NetApp Files ドメイン (つまり、**defaultv4iddomain.com**) として構成され、マッピングが **nobody** に設定されていることを確認します。
 
    ```bash
    sudo cat /etc/idmapd.conf
@@ -210,9 +211,9 @@ SAP BOBI プラットフォーム ファイル リポジトリ サーバー用�
 
    > [!Important]
    >
-   > Azure NetApp Files の既定のドメイン構成 ( **defaultv4iddomain.com** ) と一致するように、VM 上の /etc/idmapd.conf に NFS ドメインを設定していることを確認します。 NFS クライアント (つまり、VM) と NFS サーバー (つまり、Azure NetApp 構成) のドメイン構成が一致しない場合、VM にマウントされている Azure NetApp ボリューム上のファイルのアクセス許可は nobody と表示されます。
+   > Azure NetApp Files の既定のドメイン構成 (**defaultv4iddomain.com**) と一致するように、VM 上の /etc/idmapd.conf に NFS ドメインを設定していることを確認します。 NFS クライアント (つまり、VM) と NFS サーバー (つまり、Azure NetApp 構成) のドメイン構成が一致しない場合、VM にマウントされている Azure NetApp ボリューム上のファイルのアクセス許可は nobody と表示されます。
 
-   `nfs4_disable_idmapping` を確認します。 これは、 **Y** に設定されている必要があります。`nfs4_disable_idmapping` が配置されるディレクトリ構造を作成するには、mount コマンドを実行します。 アクセスがカーネル/ドライバー用に予約されるため、/sys/modules の下に手動でディレクトリを作成することはできなくなります。
+   `nfs4_disable_idmapping` を確認します。 これは、**Y** に設定されている必要があります。`nfs4_disable_idmapping` が配置されるディレクトリ構造を作成するには、mount コマンドを実行します。 アクセスがカーネル/ドライバー用に予約されるため、/sys/modules の下に手動でディレクトリを作成することはできなくなります。
 
    ```bash
    # Check nfs4_disable_idmapping
@@ -397,13 +398,13 @@ SAP BOBI アプリケーション サーバーからデータベースへのア�
 
 **[A]** :この手順はすべてのホストに適用されます。
 
-1. **[A]** Linux のフレーバー (SLES または RHEL) に基づいて、カーネル パラメーターを設定し、必要なライブラリをインストールする必要があります。 「 [Business Intelligence プラットフォーム インストール ガイド (UNIX)](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US)」の「 **システム要件** 」のセクションを参照してください。
+1. **[A]** Linux のフレーバー (SLES または RHEL) に基づいて、カーネル パラメーターを設定し、必要なライブラリをインストールする必要があります。 「[Business Intelligence プラットフォーム インストール ガイド (UNIX)](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US)」の「**システム要件**」のセクションを参照してください。
 
 2. **[A]** コンピューターのタイム ゾーンが確実に正しく設定されているようにします。 インストール ガイドの[「追加の UNIX および Linux 要件」のセクション](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US/46b143336e041014910aba7db0e91070.html)を参照してください。
 
-3. **[A]** ソフトウェアのバックグラウンド プロセスを実行できるユーザー アカウント ( **bl1** adm) とグループ (sap sys) を作成します。 このアカウントを使用してインストールを実行し、ソフトウェアを実行します。 このアカウントにルート特権は必要ありません。
+3. **[A]** ソフトウェアのバックグラウンド プロセスを実行できるユーザー アカウント (**bl1** adm) とグループ (sap sys) を作成します。 このアカウントを使用してインストールを実行し、ソフトウェアを実行します。 このアカウントにルート特権は必要ありません。
 
-4. **[A]** ユーザー アカウント ( **bl1** adm) 環境を、サポートされている UTF-8 ロケールを使用するように設定し、コンソール ソフトウェアにより UTF-8 文字セットが確実にサポートされているようにします。 オペレーティング システムで正しいロケールが使用されるようにするには、( **bl1** adm) ユーザー環境で、LC_ALL および LANG 環境変数を優先ロケールに設定します。
+4. **[A]** ユーザー アカウント (**bl1** adm) 環境を、サポートされている UTF-8 ロケールを使用するように設定し、コンソール ソフトウェアにより UTF-8 文字セットが確実にサポートされているようにします。 オペレーティング システムで正しいロケールが使用されるようにするには、(**bl1** adm) ユーザー環境で、LC_ALL および LANG 環境変数を優先ロケールに設定します。
 
    ```bash
    # This configuration is for bash shell. If you are using any other shell for sidadm, kindly set environment variable accordingly.
@@ -413,7 +414,7 @@ SAP BOBI アプリケーション サーバーからデータベースへのア�
    export LC_ALL=en_US.utf8
    ```
 
-5. **[A]** ユーザー アカウント ( **bl1** adm) を構成します。
+5. **[A]** ユーザー アカウント (**bl1** adm) を構成します。
 
    ```bash
    # Set ulimit for bl1adm to unlimited
@@ -453,7 +454,7 @@ LANG=en_US.utf8
 LC_ALL=en_US.utf8
 ```
 
-SAP BusinessObjects BI プラットフォームのメディアに移動し、 **bl1** adm ユーザーで以下のコマンドを実行します。
+SAP BusinessObjects BI プラットフォームのメディアに移動し、**bl1** adm ユーザーで以下のコマンドを実行します。
 
 ```bash
 ./setup.sh -InstallDir /usr/sap/BL1

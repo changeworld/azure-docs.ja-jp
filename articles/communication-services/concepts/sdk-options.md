@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: c294079663630e71581f08227fbdb9ae4640cab5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f26f3e6e80bf854ff4f57503aa43de2558f07a1e
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102427"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888557"
 ---
 # <a name="client-libraries-and-rest-apis"></a>クライアント ライブラリと REST API
 
@@ -50,7 +50,7 @@ Azure Resource Manager、Administration、および SMS クライアント ラ�
 | リファレンス ドキュメント     | [docs](https://azure.github.io/azure-sdk-for-js/communication.html)         | [docs](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [docs](http://azure.github.io/azure-sdk-for-java/communication.html)     | (Obj-C) ✔️     | ✔️            | -                              |
 ## <a name="rest-apis"></a>REST API
 
-Communication Services API は、他の Azure REST API と共に [docs.microsoft.com](https://docs.microsoft.com/rest/api/azure/) に記載されています。 このドキュメントでは、HTTP メッセージを構成する方法と、Postman を使用するためのガイダンスが提供されます。 このドキュメントは [GitHub](https://github.com/Azure/azure-rest-api-specs) の Swagger 形式でも提供されています。
+Communication Services API は、他の Azure REST API と共に [docs.microsoft.com](/rest/api/azure/) に記載されています。 このドキュメントでは、HTTP メッセージを構成する方法と、Postman を使用するためのガイダンスが提供されます。 このドキュメントは [GitHub](https://github.com/Azure/azure-rest-api-specs) の Swagger 形式でも提供されています。
 
 ## <a name="additional-support-details"></a>その他のサポートの詳細
 
@@ -81,7 +81,7 @@ Calling を除き、Communication Services パッケージは、以下に示す�
 ## <a name="api-stability-expectations"></a>API の安定性に関する想定 
 
 > [!IMPORTANT]
-> このセクションでは、**安定**とマークされている REST API およびクライアント ライブラリに関するガイダンスを提供します。 プレリリース、プレビュー、またはベータとマークされている API は、**予告なしに**変更されたり非推奨になったりする場合があります。 現在、Azure Communication Services は**パブリック プレビュー段階**にあり、API はそのようにマークされています。
+> このセクションでは、**安定** とマークされている REST API およびクライアント ライブラリに関するガイダンスを提供します。 プレリリース、プレビュー、またはベータとマークされている API は、**予告なしに** 変更されたり非推奨になったりする場合があります。 現在、Azure Communication Services は **パブリック プレビュー段階** にあり、API はそのようにマークされています。
 
 将来的に、Communication Services クライアント ライブラリのバージョンが廃止される可能性があります。また、REST API とリリースされたクライアント ライブラリに対して破壊的変更が加えられる可能性があります。 Azure Communication Services は、サービス バージョンの廃止に関して、"*通常は*" 次の 2 つのサポート ポリシーに従います。
 

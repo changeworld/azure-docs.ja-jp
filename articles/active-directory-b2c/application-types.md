@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2f99c5b9362380690badce832c3dd540137d35ac
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 07897823a3ba3b83e240e8e8dc005ea13b036fce
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215406"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952048"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Active Directory B2C で使用できるアプリケーションの種類
  
@@ -24,8 +24,8 @@ Azure Active Directory B2C (Azure AD B2C) では、さまざまな最新アプ�
 
 Azure AD B2C を使用しているすべてのアプリケーションは、[Azure portal](https://portal.azure.com/) を使用して [Azure AD B2C テナント](tutorial-create-tenant.md)に登録する必要があります。 アプリケーション登録プロセスでは、次のような値が収集されて割り当てられます。
 
-* アプリケーションを一意に識別する **アプリケーション ID** 。
-* 応答をアプリケーションにリダイレクトして戻すために使用できる **応答 URL** 。
+* アプリケーションを一意に識別する **アプリケーション ID**。
+* 応答をアプリケーションにリダイレクトして戻すために使用できる **応答 URL**。
 
 Azure AD B2C に送信される各要求では、Azure AD B2C の動作を制御する **ユーザー フロー** (組み込みのポリシー) または **カスタム ポリシー** が指定されます。 どちらのポリシーの種類でも、高度にカスタマイズ可能な一連のユーザー エクスペリエンスを作成できます。
 
@@ -91,7 +91,7 @@ Azure AD B2C により、シングルページ アプリケーションでユー
 ![シングルページ アプリケーション認証](./media/tutorial-single-page-app/active-directory-oauth-code-spa.png)
 
 ### <a name="implicit-grant-flow"></a>暗黙的な許可のフロー
-- [OAuth 2.0 暗黙的フロー](implicit-flow-single-page-application.md)。 [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core) のような一部のフレームワークでは、暗黙的な許可フローのみがサポートされます。 暗黙的な許可フローでは、 **ID** と **アクセス** トークンを取得することがアプリケーションに許可されます。 認証コード フロートは異なり、暗黙的な許可フローでは **更新トークン** が返されません。 
+- [OAuth 2.0 暗黙的フロー](implicit-flow-single-page-application.md)。 [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core) のような一部のフレームワークでは、暗黙的な許可フローのみがサポートされます。 暗黙的な許可フローでは、**ID** と **アクセス** トークンを取得することがアプリケーションに許可されます。 認証コード フロートは異なり、暗黙的な許可フローでは **更新トークン** が返されません。 
 
 この認証フローには、Electron や React-Native などのクロスプラットフォーム JavaScript フレームワークを使用するアプリケーション シナリオは含まれません。 それらのシナリオでは、ネイティブ プラットフォームと対話するための追加の機能が必要になります。
 
@@ -141,7 +141,7 @@ Azure AD B2C を使用して Web API をセキュリティ保護する方法の�
 
 OAuth 2.0 クライアント資格情報付与フローは現在 Azure AD B2C 認証サービスによって直接サポートされていませんが、Azure AD B2C テナント内のアプリケーション向けに Azure AD と Microsoft ID プラットフォーム/トークンエンド ポイントを使用して、クライアント資格情報フローを設定できます。 Azure AD B2C テナントは、Azure AD のエンタープライズ テナントと同じいくつかの機能を持っています。
 
-クライアント資格情報フローを設定するには、「[Azure Active Directory v2.0 と OAuth 2.0 クライアント資格情報フロー](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-client-creds)」を参照してください。 認証に成功した結果として、書式設定されたトークンを受信し、「[Azure AD トークン リファレンス](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)」で説明されているように Azure AD でそれを使用することができます。
+クライアント資格情報フローを設定するには、「[Azure Active Directory v2.0 と OAuth 2.0 クライアント資格情報フロー](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)」を参照してください。 認証に成功した結果として、書式設定されたトークンを受信し、「[Azure AD トークン リファレンス](../active-directory/develop/id-tokens.md)」で説明されているように Azure AD でそれを使用することができます。
 
 管理アプリケーションの登録手順については、[Microsoft Graph を使用した Azure AD B2C の管理](microsoft-graph-get-started.md)に関する記事をご覧ください。
 
@@ -155,7 +155,7 @@ OAuth 2.0 クライアント資格情報付与フローは現在 Azure AD B2C �
 
 Azure AD B2C アプリケーションは、次の方法で編集しないでください。
 
-- 他のアプリケーション管理ポータル ( [アプリケーション登録ポータル](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)など)。
+- 他のアプリケーション管理ポータル ([アプリケーション登録ポータル](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)など)
 - Graph API または PowerShell の使用。
 
 Azure portal の外部で Azure AD B2C アプリケーションを編集すると、アプリケーションにエラーが発生し、Azure AD B2C で使用できなくなります。 この場合は、アプリケーションを削除して、もう一度作成してください。

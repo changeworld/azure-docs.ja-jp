@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: alkohli
-ms.openlocfilehash: a33e01d68a31585e216faa51ac8af193d86c6123
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 639efab3a9eaef400b3fbe3d0b134d02f458b865
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90053278"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966294"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>SharePoint 用 StorSimple アダプターをインストールして構成する
 ## <a name="overview"></a>概要
@@ -53,7 +53,7 @@ RBS の Microsoft Azure StorSimple 実装には、次の利点があります。
 BLOB コンテンツをファイル システムに移動すると、さらにコストの節約や利点があります。 たとえば、RBS を使用すると、コストの高い層 1 ストレージの必要性が軽減されます。また、コンテンツ データベースのサイズが小さくなるため、RBS により SharePoint サーバー ファームで必要なデータベース数を減らすことができます。 ただし、データベース サイズの制限や RBS 以外のコンテンツの量など、他の要因がストレージの要件に影響する可能性もあります。 RBS を使用する場合のコストと利点の詳細については、「[RBS を計画する (SharePoint Foundation 2010)][4]」と [SharePoint 2013 での RBS の使用の決定][5]に関する記事を参照してください。
 
 ### <a name="capacity-and-performance-limits"></a>容量とパフォーマンスに関する制限事項
-SharePoint ソリューションで RBS を使用することを検討する前に、SharePoint Server 2010 と SharePoint Server 2013 でテストされたパフォーマンスと容量に関する制限事項と、その制限事項と許容可能なパフォーマンスとの関連について注意する必要があります。 詳細については、「 [ソフトウェアの境界と制限 (SharePoint 2013)](https://technet.microsoft.com/library/cc262787.aspx)」を参照してください。
+SharePoint ソリューションで RBS を使用することを検討する前に、SharePoint Server 2010 と SharePoint Server 2013 でテストされたパフォーマンスと容量に関する制限事項と、その制限事項と許容可能なパフォーマンスとの関連について注意する必要があります。 詳細については、「 [ソフトウェアの境界と制限 (SharePoint 2013)](/SharePoint/install/software-boundaries-and-limits-0)」を参照してください。
 
 RBS を構成する前に、次の点を確認してください。
 
@@ -226,7 +226,7 @@ SharePoint 用 StorSimple アダプター ソフトウェアをアンインス�
 4. **[StorSimple アダプターの構成]** ページで、外部 Blob Storage から削除する各コンテンツ データベースの下にある **[無効化]** をクリックします。 
 5. SharePoint からオブジェクトを削除し、再度アップロードします。
 
-または、SharePoint に用意されている Microsoft `RBS Migrate()` PowerShell コマンドレットを使用することもできます。 詳細については、「 [コンテンツをリモート BLOB ストレージ (RBS) 内または RBS 外に移行する (SharePoint Foundation 2010)](https://technet.microsoft.com/library/ff628255.aspx)」を参照してください。
+または、SharePoint に用意されている Microsoft `RBS Migrate()` PowerShell コマンドレットを使用することもできます。 詳細については、「 [コンテンツをリモート BLOB ストレージ (RBS) 内または RBS 外に移行する (SharePoint Foundation 2010)](/previous-versions/office/sharepoint-foundation-2010/ff628255(v=office.14))」を参照してください。
 
 BLOB をコンテンツ データベースに戻したら、次の手順に進みます: 「[アダプターのアンインストール](#uninstall-the-adapter)」
 
@@ -258,8 +258,8 @@ BLOB を SQL Server コンテンツ データベースに戻したら、次の�
 
 <!--Reference links-->
 [1]: https://www.microsoft.com/download/details.aspx?id=44073
-[2]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
-[3]: https://technet.microsoft.com/library/ff628583(v=office.14).aspx
-[4]: https://technet.microsoft.com/library/ff628569(v=office.14).aspx
-[5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
-[8]: https://technet.microsoft.com/library/ff943565.aspx
+[2]: /SharePoint/administration/rbs-planning
+[3]: /previous-versions/office/sharepoint-server-2010/ff628583(v=office.14)
+[4]: /previous-versions/office/sharepoint-foundation-2010/ff628569(v=office.14)
+[5]: /SharePoint/administration/rbs-planning
+[8]: /SharePoint/administration/maintain-rbs

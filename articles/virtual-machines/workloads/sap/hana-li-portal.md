@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 887adb3e8b0a5f0410fc9a7732e2220049b7ba6c
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 550e22ac861b92994f2695594d09fc2935d273d1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927194"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967756"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Azure portal を介した Azure HANA L インスタンスの制御
 このドキュメントでは、[HANA Large Instances](./hana-overview-architecture.md) が [Azure portal](https://portal.azure.com) で提供される方法、および自動的にデプロイされる HANA Large Instance ユニットについて Azure portal で実行できるアクティビティについて説明します。 Azure portal での HANA Large Instances の表示は、HANA Large Instances 用の Azure リソース プロバイダー (現在はパブリック プレビュー) によって提供されます
@@ -106,7 +107,7 @@ HANA Large Instance ユニットの概要だけでなく、特定のユニット
 
 記録される主要なアクティビティの 1 つは、ユニットの再起動です。 表示されるデータには、アクティビティの状態、アクティビティがトリガーされたときのタイムスタンプ、アクティビティをトリガーしたサブスクリプション ID、アクティビティをトリガーした Azure ユーザーが含まれます。 
 
-記録される別のアクティビティは、Azure メタ データでのユニットに対する変更です。 開始された再起動以外に、 **Write HANAInstances** のアクティビティを確認できます。 この種のアクティビティでは、HANA Large Instance ユニット自体への変更は行われませんが、Azure でのユニットのメタ データに変更が文書化されます。 一覧表示されるケースでは、タグを追加および削除しました (次のセクションを参照)。
+記録される別のアクティビティは、Azure メタ データでのユニットに対する変更です。 開始された再起動以外に、**Write HANAInstances** のアクティビティを確認できます。 この種のアクティビティでは、HANA Large Instance ユニット自体への変更は行われませんが、Azure でのユニットのメタ データに変更が文書化されます。 一覧表示されるケースでは、タグを追加および削除しました (次のセクションを参照)。
 
 ## <a name="add-and-delete-an-azure-tag-to-a-hana-large-instance-unit"></a>HANA Large Instance ユニットの Azure タグを追加および削除する
 別に、HANA Large Instance ユニットに[タグ](../../../azure-resource-manager/management/tag-resources.md)を追加する可能性があります。 タグを割り当てる方法は、VM へのタグの割り当てと同じです。 VM と同様に、タグは Azure メタ データ内に存在し、HANA Large Instances では、VM に対するタグと同じ制限があります。

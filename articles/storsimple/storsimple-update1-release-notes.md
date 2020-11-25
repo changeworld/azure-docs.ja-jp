@@ -15,19 +15,19 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17e20048c4cb4de2be6fe36be100b472f0b8ee73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a5ba4b27ae19999237edb75c50db36ef57a10f1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89459965"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956689"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイス Update 1.2 リリース ノート
 
 ## <a name="overview"></a>概要
 次のリリース ノートでは、StorSimple 8000 シリーズの Update 1.2 の新機能について説明し、未解決の重要な問題を示します。 また、このリリースに含まれる StorSimple のソフトウェア、ドライバー、およびディスク ファームウェアの更新プログラムの一覧も含まれています。 
 
-Update 1.2 は、Release (GA)、Update 0.1、Update 0.2、または Update 0.3 ソフトウェアを搭載するすべての StorSimple デバイスに適用できます。 Update 1 または Update 1.1 を搭載するデバイスには Update 1.2 を使用できません。 デバイスが Release (GA) を搭載している場合のこの更新プログラムのインストールについては、 [Microsoft のサポートに問い合わせ](storsimple-contact-microsoft-support.md) てください。
+Update 1.2 は、Release (GA)、Update 0.1、Update 0.2、または Update 0.3 ソフトウェアを搭載するすべての StorSimple デバイスに適用できます。 Update 1 または Update 1.1 を搭載するデバイスには Update 1.2 を使用できません。 デバイスが Release (GA) を搭載している場合のこの更新プログラムのインストールについては、 [Microsoft のサポートに問い合わせ](./storsimple-8000-contact-microsoft-support.md) てください。
 
 次の表では、Update 1、1.1、1.2 に対応するデバイス ソフトウェアのバージョンを示します。
 
@@ -37,11 +37,11 @@ Update 1.2 は、Release (GA)、Update 0.1、Update 0.2、または Update 0.3 �
 | Update 1.1 |6.3.9600.17521 |
 | Update 1.0 |6.3.9600.17491 |
 
-StorSimple ソリューションの更新プログラムをデプロイする前に、リリース ノートに含まれる情報を確認してください。 詳細については、「 [StorSimple デバイスへの Update 1.2 のインストール](storsimple-install-update-1.md)」をご覧ください。 
+StorSimple ソリューションの更新プログラムをデプロイする前に、リリース ノートに含まれる情報を確認してください。 詳細については、「 [StorSimple デバイスへの Update 1.2 のインストール](./storsimple-8000-install-update-5.md)」をご覧ください。 
 
 > [!IMPORTANT]
 > * この更新プログラムをインストールするには、(Windows の更新プログラムを含めて) 約 5 ～ 10 時間がかかります。 
-> * Update 1.2 には、ソフトウェア、LSI ドライバー、ディスク ファームウェアの更新が含まれます。 インストール方法については、「 [StorSimple デバイスへの Update 1.2 のインストール](storsimple-install-update-1.md)」をご覧ください。
+> * Update 1.2 には、ソフトウェア、LSI ドライバー、ディスク ファームウェアの更新が含まれます。 インストール方法については、「 [StorSimple デバイスへの Update 1.2 のインストール](./storsimple-8000-install-update-5.md)」をご覧ください。
 > * 新しいリリースについては、更新プログラムの公開を段階的に行うため、更新プログラムが即座に表示されない場合があります。 これらの更新プログラムは間もなく利用可能になるため、数日後にもう一度更新プログラムの有無を確認してください。
 > 
 > 
@@ -55,11 +55,11 @@ StorSimple ソリューションの更新プログラムをデプロイする前
   * **8000 シリーズ アプライアンスの機能強化**。StorSimple Manager サービスを通じた複数のアプライアンスの効率的な一元管理、高性能のハードウェアと最新のファームウェア、仮想アプライアンス、データ モビリティ、将来的なロードマップの機能などがあります。
     
     StorSimple 5000/7000 シリーズから 8000 シリーズ デバイスに移行する方法の詳細については、 [移行ガイド](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b) を参照してください。 
-* **Azure Government Portal での可用性** – StorSimple が Azure Government Portal で使用できるようになりました。 [Azure Government Portal で StorSimple デバイスをデプロイする](storsimple-deployment-walkthrough-gov.md)方法に関するページをご覧ください。
+* **Azure Government Portal での可用性** – StorSimple が Azure Government Portal で使用できるようになりました。 [Azure Government Portal で StorSimple デバイスをデプロイする](./index.yml)方法に関するページをご覧ください。
 * **他のクラウド サービス プロバイダーのサポート** – サポートされているその他のクラウド サービス プロバイダーは、Amazon S3、Amazon S3 with RRS、HP、OpenStack (ベータ) です。
-* **最新の Storage API への更新** – 今回のリリースでは、StorSimple が最新の Azure Storage サービス API に更新されています。 Update 1 より前のソフトウェア バージョン (Release、0.1、0.2、0.3) を実行している StorSimple 8000 シリーズ デバイスには、2009 年 7 月 17 日よりも古い Azure Storage サービス API のバージョンが使用されます。 更新された [Storage サービスのバージョンの削除に関するお知らせ](https://docs.microsoft.com/archive/blogs/windowsazurestorage/microsoft-azure-storage-service-version-removal-update-extension-to-2016)に記載のとおり、これらの API は 2016 年 8 月 1 日で非推奨となります。 つまり、2016 年 8 月 1 日までに、StorSimple 8000 シリーズ Update 1 を適用する必要があります。 期日までに Update 1.0 を適用しないと、StorSimple デバイスが正常に機能しなくなります。
+* **最新の Storage API への更新** – 今回のリリースでは、StorSimple が最新の Azure Storage サービス API に更新されています。 Update 1 より前のソフトウェア バージョン (Release、0.1、0.2、0.3) を実行している StorSimple 8000 シリーズ デバイスには、2009 年 7 月 17 日よりも古い Azure Storage サービス API のバージョンが使用されます。 更新された [Storage サービスのバージョンの削除に関するお知らせ](/archive/blogs/windowsazurestorage/microsoft-azure-storage-service-version-removal-update-extension-to-2016)に記載のとおり、これらの API は 2016 年 8 月 1 日で非推奨となります。 つまり、2016 年 8 月 1 日までに、StorSimple 8000 シリーズ Update 1 を適用する必要があります。 期日までに Update 1.0 を適用しないと、StorSimple デバイスが正常に機能しなくなります。
 * **ゾーン冗長ストレージ (ZRS) のサポート** – Storage API を最新バージョンにアップグレードすると、StorSimple 8000 シリーズで、ローカル冗長ストレージ (LRS) と地理冗長ストレージ (GRS) に加えて、ゾーン冗長ストレージ (ZRS) もサポートできるようになります。 ZRS の詳細については、 [Azure Storage の冗長オプションに関する記事](../storage/common/storage-redundancy.md) を参照してください。
-* **初回デプロイと更新プログラムのエクスペリエンスの強化** – 今回のリリースでは、インストールと更新プログラムのプロセスが強化されています。 セットアップ ウィザードからのインストールが強化され、ネットワーク構成とファイアウォール設定が正しくない場合、ユーザーにフィードバックが提供されます。 デバイスのネットワークのトラブルシューティングに役立つ、診断用のコマンドレットが追加されています。 トラブルシューティングに使用する新しい診断用コマンドレットの詳細については、 [デプロイのトラブルシューティングに関する記事](storsimple-troubleshoot-deployment.md) を参照してください。
+* **初回デプロイと更新プログラムのエクスペリエンスの強化** – 今回のリリースでは、インストールと更新プログラムのプロセスが強化されています。 セットアップ ウィザードからのインストールが強化され、ネットワーク構成とファイアウォール設定が正しくない場合、ユーザーにフィードバックが提供されます。 デバイスのネットワークのトラブルシューティングに役立つ、診断用のコマンドレットが追加されています。 トラブルシューティングに使用する新しい診断用コマンドレットの詳細については、 [デプロイのトラブルシューティングに関する記事](./storsimple-8000-troubleshoot-deployment.md) を参照してください。
 
 ## <a name="issues-fixed-in-update-12"></a>Update 1.2 で修正された問題
 次の表は、Update 1.2、1.1、1 で修正された問題の概要を示しています。    
@@ -89,7 +89,7 @@ StorSimple ソリューションの更新プログラムをデプロイする前
 | 3 |ストレージ アカウント |Storage サービスを使用したストレージ アカウントの削除は、サポートされていないシナリオです。 これにより、ユーザー データを取得できなくなります。 |はい |はい | |
 | 4 |デバイスのフェールオーバー |同じソース デバイスのボリューム コンテナーについて、複数のフェールオーバーを異なるターゲット デバイスに対して実行することはサポートされません。 1 つの障害発生デバイスから複数のデバイスにデバイスのフェールオーバーを行うと、フェールオーバーされた最初のデバイス上のボリューム コンテナーがデータの所有権を失います。 このようなフェールオーバーが発生した後、これらのボリューム コンテナーを Azure クラシック ポータルで表示するとその表示や動作が変わります。 | |はい |いいえ |
 | 5 |インストール |SharePoint 用 StorSimple アダプターのインストール中にインストールを正常に完了するためには、デバイスの IP を指定する必要があります。 | |はい |いいえ |
-| 6 |Web プロキシ |Web プロキシ構成で指定プロトコルとして HTTPS を使用している場合、デバイスとサービス間の通信が影響を受け、デバイスがオフラインになります。 プロセスでサポート パッケージも生成され、デバイスで大量のリソースが使用されます。 |Web プロキシ URL で指定プロトコルとして HTTP を使用していることを確認してください。 詳細については、「 [デバイスの Web プロキシの構成](storsimple-configure-web-proxy.md)」を参照してください。 |はい |いいえ |
+| 6 |Web プロキシ |Web プロキシ構成で指定プロトコルとして HTTPS を使用している場合、デバイスとサービス間の通信が影響を受け、デバイスがオフラインになります。 プロセスでサポート パッケージも生成され、デバイスで大量のリソースが使用されます。 |Web プロキシ URL で指定プロトコルとして HTTP を使用していることを確認してください。 詳細については、「 [デバイスの Web プロキシの構成](./storsimple-8000-configure-web-proxy.md)」を参照してください。 |はい |いいえ |
 | 7 |Web プロキシ |登録されたデバイスで Web プロキシを構成して有効にする場合は、デバイス上でアクティブなコントローラーを再起動する必要があります。 | |はい |いいえ |
 | 8 |クラウドの長い待機時間と高い I/O ワークロード |StorSimple デバイスで、非常に長いクラウドの待機時間 (秒単位) や高い I/O ワークロードの組み合わせが発生した場合、デバイス ボリュームはパフォーマンスが低下した状態になり、I/O は "デバイスの準備未完了" エラーで失敗します。 |デバイス コントローラーを手動で再起動するか、デバイスのフェールオーバーを実行して、この状況から復旧する必要があります。 |はい |いいえ |
 | 9 |Azure PowerShell |新しい **VolumeContainer** オブジェクトを作成できるように、StorSimple のコマンドレット **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** を使用して最初のオブジェクトを選択すると、コマンドレットからすべてのオブジェクトが返されます。 |次のように、コマンドレットをかっこで囲みます: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |はい |はい |
@@ -112,5 +112,4 @@ Update 1 より前のバージョンを実行している物理デバイスに�
 この更新プログラムは、仮想デバイスには適用できません。 新しい仮想デバイスを作成する必要があります。 
 
 ## <a name="next-steps"></a>次のステップ
-* [デバイスに Update 1.2 をインストールします](storsimple-install-update-1.md)。
-
+* [デバイスに Update 1.2 をインストールします](./storsimple-8000-install-update-5.md)。

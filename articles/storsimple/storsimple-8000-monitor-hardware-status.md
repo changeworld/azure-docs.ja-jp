@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 8faf4ca8e27b280a60750d5f349ab0282ed593bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b750659bf22e856ee8ad7368e3fea64dd7245df
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86999498"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960361"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>StorSimple デバイス マネージャー サービスを使用してハードウェア コンポーネントと状態を監視する
 
@@ -74,7 +74,7 @@ ms.locfileid: "86999498"
 
    ![[コントローラー 1 コンポーネント] 項目が選択されていることを示すスクリーンショット。 隣接するブレードで、クラスター ノードがエラー状態になっている。](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
 
-4. **正常** な状態にないコンポーネントを見つけた場合は、Microsoft サポートにお問い合わせください。 デバイスでアラートが有効になっている場合は、電子メール アラートを受信します。 障害が発生したハードウェア コンポーネントを交換する必要がある場合は、「 [StorSimple のハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」をご覧ください。
+4. **正常** な状態にないコンポーネントを見つけた場合は、Microsoft サポートにお問い合わせください。 デバイスでアラートが有効になっている場合は、電子メール アラートを受信します。 障害が発生したハードウェア コンポーネントを交換する必要がある場合は、「 [StorSimple のハードウェア コンポーネントの交換](./storsimple-8000-hardware-component-replacement.md)」をご覧ください。
 
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>StorSimple デバイスの主エンクロージャのコンポーネントの一覧
 次の表では、オンプレミスの StorSimple デバイスの主エンクロージャ (8100 と 8600 の両方に存在します) に含まれる物理コンポーネントと論理コンポーネントについて説明します。
@@ -146,6 +146,5 @@ ms.locfileid: "86999498"
 ## <a name="next-steps"></a>次のステップ
 * StorSimple デバイス マネージャー サービスを使用してデバイスを管理する方法については、[StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)を参照してください。
 * 機能低下または障害の状態のデバイス コンポーネントのトラブルシューティングが必要な場合は、「 [StorSimple モニタリング インジケーター](storsimple-monitoring-indicators.md)」をご覧ください。
-* 障害が発生したハードウェア コンポーネントを交換するには、「 [StorSimple のハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」をご覧ください。
+* 障害が発生したハードウェア コンポーネントを交換するには、「 [StorSimple のハードウェア コンポーネントの交換](./storsimple-8000-hardware-component-replacement.md)」をご覧ください。
 * デバイスの問題が解決しない場合は、 [Microsoft サポートにお問い合わせください](storsimple-8000-contact-microsoft-support.md)。
-

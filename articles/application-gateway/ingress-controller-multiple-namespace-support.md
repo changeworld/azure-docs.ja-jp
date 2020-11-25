@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: cffc15974bf5a016a4584f5c5f3dcc8a185c9824
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: c13c4410852d97f0bf4548578f40a5cc560804d7
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397333"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874595"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Application Gateway イングレス コントローラーを使用して AKS クラスターでの複数の名前空間のサポートを有効にする
 
@@ -40,7 +40,7 @@ AGIC のバージョン 0.7 では、`default` 名前空間が Helm 構成内の
 ## <a name="conflicting-configurations"></a>競合する構成
 複数の名前空間が設定された[イングレス リソース](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)では、単一の Application Gateway に対して競合する構成を作成するように、AGIC に指示することができます (たとえば、同じドメインを要求する 2 つのイングレス)。
 
-階層の最上位では、 **リスナー** (IP アドレス、ポート、およびホスト) と **ルーティング規則** (バインディング リスナー、バックエンド プール、および HTTP 設定) は、複数の名前空間/イングレスによって作成および共有することができます。
+階層の最上位では、**リスナー** (IP アドレス、ポート、およびホスト) と **ルーティング規則** (バインディング リスナー、バックエンド プール、および HTTP 設定) は、複数の名前空間/イングレスによって作成および共有することができます。
 
 一方、パス、バックエンド プール、HTTP 設定、および TLS 証明書は、1 つの名前空間のみによって作成され、重複は削除されます。
 
@@ -147,7 +147,7 @@ AGIC では既定で、いずれかの名前空間内の注釈付きのイング
     #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
     
     ################################################################################
-    # Specify if the cluster is RBAC enabled or not
+    # Specify if the cluster is Kubernetes RBAC enabled or not
     rbac:
         enabled: false # true/false
     

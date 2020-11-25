@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
-ms.openlocfilehash: 62f4a06ec729d896dc11a290bc7a5ccc7c321683
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b363d90d05e95b017c3a655b57dbabc3712a155
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984067"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965546"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Network Watcher と Graylog を使用した Azure のネットワーク セキュリティ グループ フロー ログの管理と分析
 
@@ -40,7 +40,7 @@ Network Watcher を使用して、ネットワーク セキュリティ グル�
 
 ### <a name="enable-network-security-group-flow-logging"></a>ネットワーク セキュリティ グループ フロー ログを有効にする
 
-このシナリオでは、アカウント内の少なくとも 1 つのネットワーク セキュリティ グループで、ネットワーク セキュリティ グループ フロー ログが有効になっている必要があります。 ネットワーク セキュリティ グループ フロー ログを有効にする手順については、「 [ネットワーク セキュリティ グループのフローのログ記録の概要](network-watcher-nsg-flow-logging-overview.md)」という記事を参照してください。
+このシナリオでは、アカウント内の少なくとも 1 つのネットワーク セキュリティ グループで、ネットワーク セキュリティ グループ フロー ログが有効になっている必要があります。 ネットワーク セキュリティ グループ フロー ログを有効にする手順については、「[ネットワーク セキュリティ グループのフローのログ記録の概要](network-watcher-nsg-flow-logging-overview.md)」をご覧ください。
 
 ### <a name="setting-up-graylog"></a>Graylog をセットアップする
 
@@ -53,7 +53,7 @@ Network Watcher を使用して、ネットワーク セキュリティ グル�
 
 Graylog は、プラットフォームと基本設定に応じて、さまざまな方法でインストールできます。 使用可能なインストール方法の一覧については、Graylog の公式[ドキュメント](https://docs.graylog.org/en/2.2/pages/installation.html)を参照してください。 Graylog サーバー アプリケーションは、Linux ディストリビューションで実行されます。前提条件は次のとおりです。
 
--  Java SE 8 以降 - [Azul Azure JDK のドキュメント](https://aka.ms/azure-jdks)
+-  Java SE 8 以降 - [Azul Azure JDK のドキュメント](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 -  Elastic Search 2.x (2.1.0 以降) - [Elasticsearch のインストール ドキュメント](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
 -  MongoDB 2.4 移行 - [MongoDB のインストール ドキュメント](https://docs.mongodb.com/manual/administration/install-on-linux/)
 
@@ -246,4 +246,4 @@ Network Watcher を Graylog と統合することで、ネットワーク セキ
 
 ## <a name="next-steps"></a>次のステップ
 
- [Power BI を使用したネットワーク セキュリティ グループ フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-power-bi.md)に関する記事を参照して、Power BI でネットワーク セキュリティ グループ フロー ログを視覚化する方法を確認します。
+[Power BI を使用したネットワーク セキュリティ グループ フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-power-bi.md)に関する記事を参照して、Power BI でネットワーク セキュリティ グループ フロー ログを視覚化する方法を確認します。

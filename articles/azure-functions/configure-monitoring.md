@@ -3,13 +3,13 @@ title: Azure Functions の監視を構成する
 description: 監視のために関数アプリを Application Insights に接続する方法と、データ収集を構成する方法について説明します。
 ms.date: 8/31/2020
 ms.topic: how-to
-ms.custom: contperfq2
-ms.openlocfilehash: 50705eeedf9c985a053600a8c0b27c823231e9a3
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: contperfq2, devx-track-azurecli
+ms.openlocfilehash: f5b1b00c534abf1e7f82d2aca69dd4763b40d5ad
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217186"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833080"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Azure Functions の監視を構成する方法
 
@@ -45,7 +45,7 @@ Azure Functions のロガーでは、すべてのログに *カテゴリ* があ
 | ----- | ----- | ----- |
 | **`Function`** | **traces**| ユーザーが生成したログ。任意のログ レベルとすることができます。 関数からのログへの書き込みの詳細については、「[ログへの書き込み](functions-monitoring.md#writing-to-logs)」を参照してください。 | 
 | **`Host.Aggregator`** | **customMetrics** | これらのランタイム生成ログには、[構成可能な](#configure-the-aggregator)期間の関数呼び出しの回数と平均回数が記録されます。 既定の期間は、30 秒か 1,000 回のどちらか早い方です。 例としては、実行回数、成功率、時間などがあります。 これらすべてのログは `Information` レベルで書き込まれます。 `Warning` 以上でフィルターすると、このデータは表示されなくなります。 |
-| **`Host.Executor`** | **traces** | 特定の関数の実行について、 **Function started** および **Function completed** ログを含みます。 正常に実行された場合、これらのログは `Information` レベルとなります。 例外は `Error` レベルで記録されます。 また、キュー メッセージが[有害キュー](functions-bindings-storage-queue-trigger.md#poison-messages)に送信されたといったような場合には、ランタイムによって `Warning` レベルのログも作成されます。  |
+| **`Host.Executor`** | **traces** | 特定の関数の実行について、**Function started** および **Function completed** ログを含みます。 正常に実行された場合、これらのログは `Information` レベルとなります。 例外は `Error` レベルで記録されます。 また、キュー メッセージが[有害キュー](functions-bindings-storage-queue-trigger.md#poison-messages)に送信されたといったような場合には、ランタイムによって `Warning` レベルのログも作成されます。  |
 | **`Host.Results`** | **requests** | これらのランタイム生成ログから、関数の成功または失敗を確認できます。 これらすべてのログは `Information` レベルで書き込まれます。 `Warning` 以上でフィルターすると、このデータは表示されなくなります。 |
 
 ---
@@ -172,7 +172,7 @@ Application Insights には、負荷がピークのときに、完了した実�
 ```
 
 
-特定の種類のテレメトリをサンプリングから除外することができます。 この例では、`Request` および `Exception` 型のデータがサンプリングから除外されます。 これにより、" *すべての* " 関数実行 (要求) と例外が確実にログされる一方、他の種類のテレメトリはサンプリング対象のままとなります。 
+特定の種類のテレメトリをサンプリングから除外することができます。 この例では、`Request` および `Exception` 型のデータがサンプリングから除外されます。 これにより、"*すべての*" 関数実行 (要求) と例外が確実にログされる一方、他の種類のテレメトリはサンプリング対象のままとなります。 
 
 # <a name="v1x"></a>[v1.x](#tab/v1)  
 
@@ -228,7 +228,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 ## <a name="enable-application-insights-integration"></a>Application Insights との統合を有効にする
 
-関数アプリでデータを Application Insights に送信するには、Application Insights リソースのインストルメンテーション キーについて知っておく必要があります。 キーは、 **APPINSIGHTS_INSTRUMENTATIONKEY** という名前のアプリ設定に指定されている必要があります。
+関数アプリでデータを Application Insights に送信するには、Application Insights リソースのインストルメンテーション キーについて知っておく必要があります。 キーは、**APPINSIGHTS_INSTRUMENTATIONKEY** という名前のアプリ設定に指定されている必要があります。
 
 [Azure portal](functions-create-first-azure-function.md) で、または [Azure Functions Core Tools](functions-create-first-azure-function-azure-cli.md) を使用してコマンド ラインから、あるいは [Visual Studio Code](functions-create-first-function-vs-code.md) を使用して関数アプリを作成すると、Application Insights 統合が既定で有効になります。 Application Insights リソースは関数アプリと同じ名前を持ち、同じリージョンまたは最も近いリージョンのどちらかで作成されます。
 
@@ -245,7 +245,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 ご利用の関数アプリで Application Insights リソースが作成されていない場合は、次の手順を使用してリソースを作成します。 その後、関数アプリの[アプリケーション設定](functions-how-to-use-azure-function-app-settings.md#settings)として、そのリソースからインストルメンテーション キーを追加できます。
 
-1. [Azure portal](https://portal.azure.com) で、 **関数アプリ** を検索して選択してから、対象の関数アプリを選択します。 
+1. [Azure portal](https://portal.azure.com) で、**関数アプリ** を検索して選択してから、対象の関数アプリを選択します。 
 
 1. ウィンドウの上部にある **[Application Insights が構成されていません]** バナーを選択します。 このバナーが表示されない場合は、アプリで既に Application Insights が有効になっている可能性があります。
 
@@ -258,7 +258,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
     | **新しいリソース名** | 一意のアプリ名 | 関数アプリと同じ名前を使用するのが最も簡単です。この名前は、サブスクリプション内で一意である必要があります。 | 
     | **場所** | 西ヨーロッパ | 可能であれば、お使いの関数アプリと同じ[リージョン](https://azure.microsoft.com/regions/)、または近隣のリージョンを使用してください。 |
 
-    :::image type="content" source="media/configure-monitoring/ai-general.png" alt-text="ポータルから Application Insights を有効にする":::。
+    :::image type="content" source="media/configure-monitoring/ai-general.png" alt-text="Application Insights リソースを作成します":::。
 
 1. **[適用]** を選択します。 
 
@@ -273,7 +273,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 Application Insights を有効にする場合は、Azure Storage を使用する組み込みログを無効にします。 組み込みログは軽量のワークロードには便利ですが、高負荷の実稼働環境での使用には向きません。 実稼働環境の監視には、Application Insights をお勧めします。 組み込みログを実稼働環境で使用すると、Azure Storage での調整のためにログ レコードが不完全になる場合があります。
 
-組み込みログを無効にするには、`AzureWebJobsDashboard` アプリ設定を削除します。 Azure Portal でアプリ設定を削除する方法については、 [関数アプリの管理方法](functions-how-to-use-azure-function-app-settings.md#settings)に関するページで「 **アプリケーションの設定** 」セクションを参照してください。 アプリ設定を削除する前に、同じ関数アプリの既存の関数によって、Azure Storage のトリガーまたはバインドにその設定が使用されていないことを確認してください。
+組み込みログを無効にするには、`AzureWebJobsDashboard` アプリ設定を削除します。 Azure Portal でアプリ設定を削除する方法については、[関数アプリの管理方法](functions-how-to-use-azure-function-app-settings.md#settings)に関するページで「**アプリケーションの設定**」セクションを参照してください。 アプリ設定を削除する前に、同じ関数アプリの既存の関数によって、Azure Storage のトリガーまたはバインドにその設定が使用されていないことを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,12 +3,12 @@ title: プログラムによるポリシーの作成
 description: この記事では、Azure CLI、Azure PowerShell、および REST API を使用して、Azure Policy のポリシーをプログラムで作成して管理する方法について説明します。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 2bf2b1864331fd785ecdd70be4af79be01f1e5e0
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 86c1b60608780cba4d8ae27e3c82ace458f09a26
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491802"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920017"
 ---
 # <a name="programmatically-create-policies"></a>プログラムによるポリシーの作成
 
@@ -69,7 +69,7 @@ ms.locfileid: "94491802"
    New-AzPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
    ```
 
-   このコマンドは、 _Audit Storage Accounts Open to Public Networks_ という名前のポリシー定義を作成します。
+   このコマンドは、_Audit Storage Accounts Open to Public Networks_ という名前のポリシー定義を作成します。
    使用できるその他のパラメーターの詳細については、「[New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition)」を参照してください。
 
    場所のパラメーターを指定せずに呼び出す場合、`New-AzPolicyDefinition` は、既定により、セッション コンテキストの選択されたサブスクリプションにポリシー定義を保存することになります。 定義を別の場所に保存するには、次のパラメーターを使用します。
@@ -202,8 +202,8 @@ Resource Manager PowerShell モジュールを使用したリソース ポリシ
    az policy definition create --name 'audit-storage-accounts-open-to-public-networks' --display-name 'Audit Storage Accounts Open to Public Networks' --description 'This policy ensures that storage accounts with exposures to public networks are audited.' --rules '<path to json file>' --mode All
    ```
 
-   このコマンドは、 _Audit Storage Accounts Open to Public Networks_ という名前のポリシー定義を作成します。
-   使用できるその他のパラメーターの詳細については、「[az policy definition create](/cli/azure/policy/definition#az-policy-definition-create)」を参照してください。
+   このコマンドは、_Audit Storage Accounts Open to Public Networks_ という名前のポリシー定義を作成します。
+   使用できるその他のパラメーターの詳細については、「[az policy definition create](/cli/azure/policy/definition#az_policy_definition_create)」を参照してください。
 
    場所のパラメーターを指定せずに呼び出す場合、`az policy definition creation` は、既定により、セッション コンテキストの選択されたサブスクリプションにポリシー定義を保存することになります。 定義を別の場所に保存するには、次のパラメーターを使用します。
 

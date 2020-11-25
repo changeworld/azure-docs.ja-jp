@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: d7c7cf335336cc552adaf5d9490bc58d64b0cdc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2395e3c6f2026bc1024de38122bc20959fdcf9b7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515441"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967093"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array を管理する
 ![セットアップ プロセス フロー](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
@@ -34,7 +34,7 @@ ms.locfileid: "85515441"
 * StorSimple デバイス マネージャー サービスでの StorSimple Virtual Array の管理
 
 > [!NOTE]
-> StorSimple 8000 シリーズ デバイスで使用可能な管理オプションを確認するには、「 [StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
+> StorSimple 8000 シリーズ デバイスで使用可能な管理オプションを確認するには、「 [StorSimple Manager サービスを使用した StorSimple デバイスの管理](./storsimple-8000-manager-service-administration.md)」を参照してください。
 > 
 > 
 
@@ -78,4 +78,3 @@ StorSimple デバイス マネージャー サービスは Microsoft Azure で�
 
 ## <a name="next-steps"></a>次のステップ
 Web UI とその使用方法については、「 [StorSimple Web UI を使用した StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)」をご覧ください。
-

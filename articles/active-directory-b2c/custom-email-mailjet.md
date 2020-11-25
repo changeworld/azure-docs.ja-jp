@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6f2608dafb77aeba98f188ec04f78649656ef969
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: b74de2bdf1f6239f1006c820579a336946939421
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089657"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949583"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Mailjet を使用するカスタム メール確認
 
 Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し、自分のアプリケーションに新規登録したユーザーにカスタマイズしたメールを送信します。 [DisplayControls](display-controls.md) (現在プレビュー段階)、およびサードパーティの電子メール プロバイダーである Mailjet を使用することで、独自の電子メール テンプレートや *From:* のアドレスと件名を使用できるだけでなく、ローカライズやカスタムのワンタイム パスワード (OTP) 設定をサポートできます。
 
-カスタム メール確認では、[Mailjet](https://Mailjet.com)、[SendGrid](custom-email.md)、または [SparkPost](https://sparkpost.com) といったサードパーティの電子メール プロバイダー、カスタム REST API、あるいは任意の HTTP ベースの電子メール プロバイダー (独自のものも含む) を使用する必要があります。 この記事では、Mailjet を使用するソリューションの設定について説明します。
+カスタム メール確認では、[Mailjet](https://Mailjet.com)、[SendGrid](./custom-email-sendgrid.md)、または [SparkPost](https://sparkpost.com) といったサードパーティの電子メール プロバイダー、カスタム REST API、あるいは任意の HTTP ベースの電子メール プロバイダー (独自のものも含む) を使用する必要があります。 この記事では、Mailjet を使用するソリューションの設定について説明します。
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -32,7 +32,7 @@ Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し�
 
 1. [Mailjet アカウントの作成](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/)に関するページの設定手順に従います。
 1. 電子メールを送信できるようにするには、送信者のメール アドレスまたはドメインを[登録して確認](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/#how-to-configure-mailjet-for-use)します。
-2. [API キーの管理ページ](https://app.mailjet.com/account/api_keys)に移動します。 後の手順で使用するために、 **API キー** と **シークレット キー** を記録しておきます。 どちらのキーも、アカウントの作成時に自動的に生成されます。  
+2. [API キーの管理ページ](https://app.mailjet.com/account/api_keys)に移動します。 後の手順で使用するために、**API キー** と **シークレット キー** を記録しておきます。 どちらのキーも、アカウントの作成時に自動的に生成されます。  
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>Azure AD B2C ポリシー キーの作成
 
@@ -59,7 +59,7 @@ Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し�
 
 Mailjet アカウントを作成し、Mailjet API キーを Azure AD B2C ポリシー キーに格納したら、Mailjet の[動的トランザクション テンプレート](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)を作成します。
 
-1. Mailjet サイトで、 [トランザクション テンプレート](https://app.mailjet.com/templates/transactional) ページを開き、 **[Create a new template]\(新しいテンプレートを作成する\)** を選択します。
+1. Mailjet サイトで、[トランザクション テンプレート](https://app.mailjet.com/templates/transactional) ページを開き、 **[Create a new template]\(新しいテンプレートを作成する\)** を選択します。
 1. **[By coding it in HTML]\(HTML でコーディング\)** を選択してから、 **[Code from scratch]\(最初からコーディング\)** を選びます。
 1. 「`Verification email`」のような一意のテンプレート名を入力し、 **[作成]** を選択します。
 1. HTML エディターに次の HTML テンプレートを貼り付けるか、独自のテンプレートを貼り付けます。 `{{var:otp:""}}` パラメーターと `{{var:email:""}}` パラメーターは、ワンタイム パスワード値とユーザー電子メール アドレスで動的に置換されます。

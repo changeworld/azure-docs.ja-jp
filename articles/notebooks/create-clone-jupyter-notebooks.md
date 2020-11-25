@@ -3,18 +3,18 @@ title: Jupyter ノートブックを作成および複製する - Azure Notebook
 description: Azure Notebooks プレビュー プロジェクトでは、別のソースから新規作成または複製できるノートブックや関連するファイルのコレクションを管理できます。
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.openlocfilehash: 4a51f9b12ca24d16858b41357627ff26d233357f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e5930178b7951ff5f701228cee4ea7cb5f0e6da
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86181500"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844388"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Azure Notebooks プレビューでプロジェクトを作成および複製する
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Azure Notebooks では、Jupyter ノートブックや関連するファイルが*プロジェクト*と呼ばれる論理グループに整理されます。 まずコンテナーとしてプロジェクトを作成すると、他のプロジェクト ファイルと並列して 1 つのフォルダー内に 1 つ以上のノートブックが作成または複製されます (このプロセスについては[チュートリアル](tutorial-create-run-jupyter-notebook.md)で説明されています)。
+Azure Notebooks では、Jupyter ノートブックや関連するファイルが *プロジェクト* と呼ばれる論理グループに整理されます。 まずコンテナーとしてプロジェクトを作成すると、他のプロジェクト ファイルと並列して 1 つのフォルダー内に 1 つ以上のノートブックが作成または複製されます (このプロセスについては[チュートリアル](tutorial-create-run-jupyter-notebook.md)で説明されています)。
 
 プロジェクトでは、カスタム設定手順やパッケージのインストールなど、ノートブックを実行するサーバーに影響を与えるメタデータやその他の構成設定も保持されます。 詳細については、「[Manage and configure projects](configure-manage-azure-notebooks-projects.md)」(プロジェクトの管理と構成) を参照してください。
 
@@ -138,4 +138,4 @@ GitHub からリポジトリをインポートすると、その履歴もイン�
 - [方法: スライド ショーの表示](present-jupyter-notebooks-slideshow.md)
 - [方法: データ ファイルの操作](work-with-project-data-files.md)
 - [方法: データ リソースへのアクセス](access-data-resources-jupyter-notebooks.md)
-- [方法: Azure Machine Learning の使用](use-machine-learning-services-jupyter-notebooks.md)
+- [方法: Azure Machine Learning の使用](../machine-learning/samples-notebooks.md)

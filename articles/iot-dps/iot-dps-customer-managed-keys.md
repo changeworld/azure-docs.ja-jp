@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: menchi
-ms.openlocfilehash: e9b5a549d550f117e080fc64193fbe29658f401d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d22a01bab81fc330484e7715a65c89a1cfd7802c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85298227"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967178"
 ---
 # <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-device-provisioning-service"></a>Device Provisioning Service でのカスタマー マネージド キーを使用した保存データの暗号化
 
@@ -26,6 +26,6 @@ Device Provisioning Service (DPS) では、Bring Your Own Key (BYOK) とも呼�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Device Provisioning Service の詳細を確認する](https://docs.microsoft.com/azure/iot-dps/)
+* [Device Provisioning Service の詳細を確認する](./index.yml)
 
-* [Azure Key Vault の詳細を確認する](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Azure Key Vault の詳細を確認する](../key-vault/general/overview.md)

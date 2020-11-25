@@ -2,17 +2,18 @@
 title: Azure Kubernetes Service で Oracle WebLogic Server を実行するためのソリューションとは
 description: Azure Kubernetes Service で Oracle WebLogic Server を実行する方法について説明します。
 author: rezar
-ms.service: container-service
+ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 10/28/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: ff7b9b0bfcdc0c06eae14ecfdccabf9e337d3649
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: a57d5a00fad9a17e01b96ebdf395fb7a4b857935
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186681"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968691"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-the-azure-kubernetes-service"></a>Azure Kubernetes Service で Oracle WebLogic Server を実行するためのソリューションとは
 
@@ -34,9 +35,9 @@ Oracle と Microsoft は、AKS 上の WebLogic Server を認定するだけで�
 
 現在、このガイダンスでは、Docker イメージの外部にドメインをデプロイし、Oracle の標準の Docker イメージを使用することを前提としています。 Docker イメージの内部で実際のドメインのカスタム イメージを有効にするためのガイダンスを追加する予定です。 Azure Virtual Machines 上の Oracle WebLogic Server ソリューションをミラーリングする Marketplace オファリングによって、今後さらなる使いやすさと Azure サービス統合が実現可能になります。
 
-" _これらのソリューションはライセンス持ち込み型です_ "。 ここでは、Oracle で既に適切なライセンスを取得していること、および Azure でオファーを実行するための適切なライセンスをお持ちであることを前提としています。
+"_これらのソリューションはライセンス持ち込み型です_"。 ここでは、Oracle で既に適切なライセンスを取得していること、および Azure でオファーを実行するための適切なライセンスをお持ちであることを前提としています。
 
-" _これらのソリューションを開発しているエンジニアリング チームと密接に連携しながら移行シナリオに取り組むことに関心がある場合は、[こちらの簡単なアンケート](https://aka.ms/wls-on-azure-survey)に記入し、連絡先情報を入力してください_ "。 プログラム マネージャー、アーキテクト、エンジニアからすぐに連絡があり、密接なコラボレーションが開始されます。 移行シナリオで共同作業を行う機会は、ソリューションの初期開発が進められている間は無料です。
+"_これらのソリューションを開発しているエンジニアリング チームと密接に連携しながら移行シナリオに取り組むことに関心がある場合は、[こちらの簡単なアンケート](https://aka.ms/wls-on-azure-survey)に記入し、連絡先情報を入力してください_"。 プログラム マネージャー、アーキテクト、エンジニアからすぐに連絡があり、密接なコラボレーションが開始されます。 移行シナリオで共同作業を行う機会は、ソリューションの初期開発が進められている間は無料です。
 
 ## <a name="deployment-architectures"></a>デプロイ アーキテクチャ
 

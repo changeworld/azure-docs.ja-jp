@@ -3,12 +3,12 @@ title: Azure Monitor for containers からのログ アラート | Microsoft Doc
 description: この記事では、Azure Monitor for containers からのメモリおよび CPU の使用率に対するカスタム ログ アラートを作成する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: ddf898978bdaf51cb81a95c3209855c51212280f
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: e9b0e01ca4c0ccb24d0d1b04a4d17ec06db253b6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995253"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966253"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Azure Monitor for containers からログ アラートを作成する方法
 
@@ -210,11 +210,11 @@ KubeNodeInventory
 次のクエリでは、すべてのフェーズに基づくポッド フェーズ数が返されます:*Failed*、*Pending*、*Unknown*、*Running*、または *Succeeded*。  
 
 ```kusto
-let endDateTime = now();
-    let startDateTime = ago(1h);
-    let trendBinSize = 1m;
-    let clusterName = '<your-cluster-name>';
-    KubePodInventory
+let endDateTime = now(); 
+let startDateTime = ago(1h);
+let trendBinSize = 1m;
+let clusterName = '<your-cluster-name>';
+KubePodInventory
     | where TimeGenerated < endDateTime
     | where TimeGenerated >= startDateTime
     | where ClusterName == clusterName
@@ -224,13 +224,13 @@ let endDateTime = now();
         KubePodInventory
         | where TimeGenerated < endDateTime
         | where TimeGenerated >= startDateTime
-        | distinct ClusterName, Computer, PodUid, TimeGenerated, PodStatus
+        | summarize PodStatus=any(PodStatus) by TimeGenerated, PodUid, ClusterId
         | summarize TotalCount = count(),
                     PendingCount = sumif(1, PodStatus =~ 'Pending'),
                     RunningCount = sumif(1, PodStatus =~ 'Running'),
                     SucceededCount = sumif(1, PodStatus =~ 'Succeeded'),
                     FailedCount = sumif(1, PodStatus =~ 'Failed')
-                 by ClusterName, bin(TimeGenerated, trendBinSize)
+                by ClusterName, bin(TimeGenerated, trendBinSize)
     ) on ClusterName, TimeGenerated
     | extend UnknownCount = TotalCount - PendingCount - RunningCount - SucceededCount - FailedCount
     | project TimeGenerated,
@@ -285,10 +285,10 @@ InsightsMetrics
 2. Azure portal で、 **[Log Analytics ワークスペース]** を検索して選択します。
 3. Log Analytics ワークスペースの一覧で、コンテナーの Azure Monitor をサポートしているワークスペースを選択します。 
 4. 左側のウィンドウで、 **[ログ]** を選択し、Azure Monitor ログの ページを開きます。 このページを使用して、Azure ログ クエリを記述し、実行することができます。
-5. **[ログ]** ページで、前述の[クエリ](#resource-utilization-log-search-queries)の1つを **[検索クエリ]** のフィールドに貼り付け、 **[実行]** を選択して結果を検証します。 この手順を実行しない場合、 **[+ 新しいアラート]** オプションを選択することはできません。
+5. **[ログ]** ページで、前述の [クエリ](#resource-utilization-log-search-queries)の1つを **[検索クエリ]** のフィールドに貼り付け、 **[実行]** を選択して結果を検証します。 この手順を実行しない場合、 **[+ 新しいアラート]** オプションを選択することはできません。
 6. **[+ 新しいアラート]** を選択してログアラートを作成します。
 7. **[条件]** セクションで、事前定義済みのカスタム ログ条件の **[Whenever the Custom log search is \<logic undefined>]\(カスタム ログ検索が <ロジックが定義されていません> であるときは常に\)** を選択します。 シグナルの種類として **[custom log search]\(カスタム ログ検索\)** が自動的に選択されます。これは、Azure Monitor のログ ページで直接アラート ルールを作成しているためです。  
-8. 前述の[クエリ](#resource-utilization-log-search-queries)のいずれかを **[検索クエリ]** フィールドに貼り付けます。
+8. 前述の [クエリ](#resource-utilization-log-search-queries)のいずれかを **[検索クエリ]** フィールドに貼り付けます。
 9. 次のようにアラートを構成します。
 
     1. **[基準]** ドロップダウン リストで **[メトリック測定]** を選択します。 メトリック測定では、クエリの対象となったオブジェクトのうち、指定したしきい値を上回っている値の各オブジェクトについて、アラートが生成されます。
@@ -300,7 +300,7 @@ InsightsMetrics
 10. **[完了]** を選択して、アラート ルールを完成させます。
 11. **[アラート ルール名]** フィールドに名前を入力します。 アラートの詳細情報を提供する **[説明]** を指定します。 提供されるオプションの中から、適切な重大度レベルを選択します。
 12. アラート ルールをすぐにアクティブにするには、 **[ルールの作成時に有効にする]** の既定値をそのまま使用します。
-13. 既存の**アクション グループ**を選択するか、新しいグループを作成します。 この手順により、アラートがトリガーされるたびに同じアクションが実行されます。 お客様の IT または DevOps オペレーション チームでのインシデントの管理方法に基づいて構成してください。
+13. 既存の **アクション グループ** を選択するか、新しいグループを作成します。 この手順により、アラートがトリガーされるたびに同じアクションが実行されます。 お客様の IT または DevOps オペレーション チームでのインシデントの管理方法に基づいて構成してください。
 14. **[アラート ルールの作成]** を選択してアラート ルールを完成させます。 すぐに実行が開始されます。
 
 ## <a name="next-steps"></a>次のステップ

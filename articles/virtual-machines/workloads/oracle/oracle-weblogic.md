@@ -3,16 +3,17 @@ title: Azure Virtual Machines で Oracle WebLogic Server を実行するため�
 description: Microsoft Azure Virtual Machines で Oracle WebLogic Server を実行する方法について説明します。
 author: rezar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: d8639214773a4444876b2a89dda5dd831b8c36ce
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 51f0e68b3e07a157a5222a4374f9e1b74ef7e403
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927292"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968708"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Azure Virtual Machines で Oracle WebLogic Server を実行するためのソリューションとは
 
@@ -28,7 +29,7 @@ Azure WLS ソリューションは、ほとんどの定型操作を自動化す�
 
 さまざまなシナリオに対応できるよう、[管理サーバーがない単一ノード](https://portal.azure.com/#create/oracle.20191001-arm-oraclelinux-wls20191001-arm-oraclelinux-wls)、[管理サーバーがある単一ノード](https://portal.azure.com/#create/oracle.20191009-arm-oraclelinux-wls-admin20191009-arm-oraclelinux-wls-admin)、[クラスター](https://portal.azure.com/#create/oracle.20191007-arm-oraclelinux-wls-cluster20191007-arm-oraclelinux-wls-cluster)、[動的クラスター](https://portal.azure.com/#create/oracle.20191021-arm-oraclelinux-wls-dynamic-cluster20191021-arm-oraclelinux-wls-dynamic-cluster)の 4 つのオファーが用意されています。 これらのオファーは無料で使用できます。 これらのオファーの説明とリンクは以下のとおりです。
 
-_これらのオファーはライセンス持ち込み型です_ 。 ここでは、Oracle で既に適切なライセンスを取得していること、および Azure でオファーを実行するための適切なライセンスをお持ちであることを前提としています。
+_これらのオファーはライセンス持ち込み型です_。 ここでは、Oracle で既に適切なライセンスを取得していること、および Azure でオファーを実行するための適切なライセンスをお持ちであることを前提としています。
 
 このオファーでは、基本イメージ (WebLogic Server 14 や JDK 11 on Oracle Linux 7.6 など) を使用して、さまざまなオペレーティング システム、Java、および WLS バージョンをサポートしています。 これらの基本イメージは、Azure で単独で使用することもできます。 基本イメージは、カスタマイズされた複雑な Azure デプロイを必要とする顧客に適しています。 現在の基本イメージ セットは、[こちら](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=WebLogic%20Server%20Base%20Image&page=1)から入手できます。
 

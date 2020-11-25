@@ -6,25 +6,25 @@ manager: andneil
 ms.author: getroyer
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 291f1ac093568f50ad6146b70fa1ef69263b7b5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d65a39c1a1d302e565b59db1644af2c08befb6b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85830310"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843164"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine を使用する
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-既定では、プロジェクトは**無料のコンピューティング** レベルで実行しますが、このレベルは不正使用を回避するために、4 GB のメモリと 1 GB のデータに制限されています。 これらの制限をバイパスするには、Azure サブスクリプションでプロビジョニングした別の仮想マシンを使用します。 この目的での最適な選択肢は、**Data Science Virtual Machine for Linux (Ubuntu)** イメージを使用する Azure Data Science Virtual Machine (DSVM) です。 この DSVM では、Azure Notebooks に必要なすべてが事前構成されており、Azure Notebooks の **[実行]** ドロップダウン リストに自動的に表示されます。
+既定では、プロジェクトは **無料のコンピューティング** レベルで実行しますが、このレベルは不正使用を回避するために、4 GB のメモリと 1 GB のデータに制限されています。 これらの制限をバイパスするには、Azure サブスクリプションでプロビジョニングした別の仮想マシンを使用します。 この目的での最適な選択肢は、**Data Science Virtual Machine for Linux (Ubuntu)** イメージを使用する Azure Data Science Virtual Machine (DSVM) です。 この DSVM では、Azure Notebooks に必要なすべてが事前構成されており、Azure Notebooks の **[実行]** ドロップダウン リストに自動的に表示されます。
 
 > [!Note]
 > Azure Notebooks は、Linux Ubuntu イメージを使用して作成された DSVM でのみサポートされています。 Azure Notebooks は、Windows 2012、Windows 2016、Linux CentOS イメージではサポートされていません。
 
 ## <a name="create-a-dsvm-instance"></a>DSVM インスタンスを作成する
 
-新しい DSVM インスタンスを作成するには、[Ubuntu Data Science VM の作成](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)に関するページの指示に従います。 価格を含む詳細については、「[Data Science Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)」を参照してください。
+新しい DSVM インスタンスを作成するには、[Ubuntu Data Science VM の作成](../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md)に関するページの指示に従います。 価格を含む詳細については、「[Data Science Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)」を参照してください。
 
 ## <a name="connect-to-the-dsvm"></a>DSVM に接続する
 
@@ -63,9 +63,9 @@ VM でプロジェクトが実行されると、ファイルは Jupyter サー�
 
 1. [Azure portal](https://portal.azure.com) で仮想マシンに移動します。
 1. 左側の余白の **[サポート + トラブルシューティング]** で、 **[パスワードのリセット]** を選択します。
-1. 新しい**ユーザー名**を入力します。 JupyterHub で使用するには、ユーザー名を小文字にする必要があります。 パスワードを入力します。 次に、 **[更新]** を選択します。 (既存のユーザー名には影響ありません。)
+1. 新しい **ユーザー名** を入力します。 JupyterHub で使用するには、ユーザー名を小文字にする必要があります。 パスワードを入力します。 次に、 **[更新]** を選択します。 (既存のユーザー名には影響ありません。)
 1. 他のユーザーに対し、前の手順を繰り返します。
 
 ## <a name="next-steps"></a>次のステップ
 
-DSVM の詳細については、[Azure Data Science Virtual Machines の概要](/azure/machine-learning/data-science-virtual-machine/overview)に関するページをご覧ください。
+DSVM の詳細については、[Azure Data Science Virtual Machines の概要](../machine-learning/data-science-virtual-machine/overview.md)に関するページをご覧ください。

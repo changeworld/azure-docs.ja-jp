@@ -3,13 +3,13 @@ title: 専用プールを使用してタスクを実行する - タスク
 description: Azure Container Registry タスクを実行するための専用コンピューティング プールをレジストリに設定します。
 ms.topic: article
 ms.date: 10/12/2020
-ms.custom: references_regions
-ms.openlocfilehash: 86c539c3b34ca0e54d65f15c4d9d01a99f9b31c6
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 94956af14aad2b62e6455f443329bcd3232095c0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997144"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844916"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>専用エージェント プールで ACR タスクを実行する
 
@@ -19,7 +19,7 @@ ms.locfileid: "91997144"
 
 - **仮想ネットワーク サポート** - エージェント プールを Azure VNet に割り当てます。コンテナー レジストリ、キー コンテナー、またはストレージなど、VNet のリソースへのアクセスを提供します。
 - **必要に応じた拡大縮小** - 大量の計算処理能力を要求するタスクのためにエージェント プールでインスタンスの数を増やしたり、ゼロに縮小したりします。 課金はプール割り当てに基づきます。 詳細については、[価格](https://azure.microsoft.com/pricing/details/container-registry/)のページを参照してください。
-- **柔軟なオプション** - タスク ワークロードのニーズに合わせ、さまざまな[プール レベル](#pool-tiers)やスケール オプションから選択します。
+- **柔軟なオプション** - タスク ワークロードのニーズに合わせ、さまざまな [プール レベル](#pool-tiers)やスケール オプションから選択します。
 - **Azure 管理** - タスク プールには Azure によってパッチが適用され、保守管理されます。割当が予約され、個々の VM を保守管理する必要がありません。
 
 この機能は、**Premium** コンテナー レジストリ サービス レベルで使用できます。 レジストリ サービスのレベルと制限については、「[Azure Container Registry SKU][acr-tiers]」をご覧ください。

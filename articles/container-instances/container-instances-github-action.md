@@ -3,13 +3,13 @@ title: GitHub アクションによるコンテナー インスタンスのデ�
 description: コンテナー イメージを構築し、Azure Container Instances にプッシュおよびデプロイする手順を自動化する GitHub アクションを構成します
 ms.topic: article
 ms.date: 08/20/2020
-ms.custom: github-actions-azure
-ms.openlocfilehash: c01075bcb64aa9b91869daba2e995957da74daf4
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.custom: github-actions-azure, devx-track-azurecli
+ms.openlocfilehash: 221ecbe5fbe2cdea4105362c43a5765bcc298d46
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019190"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843657"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>GitHub アクションを構成してコンテナー インスタンスを作成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "92019190"
 
 * **GitHub アカウント** - まだお持ちでない場合は、 https://github.com でアカウントを作成します。
 * **Azure CLI** - Azure Cloud Shell または Azure CLI のローカル インストールを使用して、Azure CLI の手順を実行できます。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
-* **Azure コンテナー レジストリ** - ない場合は、 [Azure CLI](../container-registry/container-registry-get-started-azure-cli.md)、 [Azure portal](../container-registry/container-registry-get-started-portal.md)、またはその他の方法を使用して Basic レベルで Azure コンテナー レジストリを作成します。 デプロイに使用されるリソース グループをメモしておきます。これは、GitHub ワークフローに使用されます。
+* **Azure コンテナー レジストリ** - ない場合は、[Azure CLI](../container-registry/container-registry-get-started-azure-cli.md)、[Azure portal](../container-registry/container-registry-get-started-portal.md)、またはその他の方法を使用して Basic レベルで Azure コンテナー レジストリを作成します。 デプロイに使用されるリソース グループをメモしておきます。これは、GitHub ワークフローに使用されます。
 
 ## <a name="set-up-repo"></a>リポジトリの設定
 
@@ -179,7 +179,7 @@ jobs:
 
 ワークフローの各手順の状態と結果の表示については、[ワークフロー実行の管理](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run)に関するページを参照してください。 ワークフローが完了しない場合は、[ログの表示とエラーの診断](https://docs.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures)に関するページを参照してください。
 
-ワークフローが正常に完了したら、 [az container show][az-container-show] コマンドを実行して、 *aci-sampleapp* という名前のコンテナー インスタンスの情報を取得します。 リソース グループの名前は自分のものに置き換えてください。 
+ワークフローが正常に完了したら、[az container show][az-container-show] コマンドを実行して、*aci-sampleapp* という名前のコンテナー インスタンスの情報を取得します。 リソース グループの名前は自分のものに置き換えてください。 
 
 ```azurecli
 az container show \
@@ -237,7 +237,7 @@ az container app up \
 
 ### <a name="command-progress"></a>コマンドの進行状況
 
-* プロンプトが表示されたら、GitHub 資格情報を入力するか、 *repo* および *user* スコープを持つ [GitHub 個人用アクセス トークン](https://help.github.com/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) (PAT) を入力して、GitHub アカウントで認証します。 GitHub 資格情報を入力した場合、コマンドによって PAT が作成されます。 追加のプロンプトに従って、ワークフローを構成します。
+* プロンプトが表示されたら、GitHub 資格情報を入力するか、*repo* および *user* スコープを持つ [GitHub 個人用アクセス トークン](https://help.github.com/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) (PAT) を入力して、GitHub アカウントで認証します。 GitHub 資格情報を入力した場合、コマンドによって PAT が作成されます。 追加のプロンプトに従って、ワークフローを構成します。
 
 * このコマンドは、ワークフローのリポジトリ シークレットを作成します。
 
@@ -262,7 +262,7 @@ Your app is deployed at:  http://acr-build-helloworld-node.eastus.azurecontainer
 
 ### <a name="validate-workflow"></a>ワークフローを検証する
 
-ワークフローは、GitHub リポジトリのベース名 (この場合は *acr-build-helloworld-node* ) を使用して Azure コンテナー インスタンスをデプロイします。 ワークフローが正常に完了したら、 [az container show][az-container-show] コマンドを実行して、 *acr-build-helloworld-node* という名前のコンテナー インスタンスの情報を取得します。 リソース グループの名前は自分のものに置き換えてください。 
+ワークフローは、GitHub リポジトリのベース名 (この場合は *acr-build-helloworld-node*) を使用して Azure コンテナー インスタンスをデプロイします。 ワークフローが正常に完了したら、[az container show][az-container-show] コマンドを実行して、*acr-build-helloworld-node* という名前のコンテナー インスタンスの情報を取得します。 リソース グループの名前は自分のものに置き換えてください。 
 
 ```azurecli
 az container show \

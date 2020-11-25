@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 02/22/2018
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 07f72d54c0d62748196302ed1b77ea750dede8ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: a32a5a04c5c71cc06d60f3d2f21946f5361a2afd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080456"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843249"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Azure VM スケール セット VM のインスタンス ID を理解する
 この記事では、スケール セットのインスタンス ID と、さまざまな使用方法について説明します。
@@ -60,7 +60,7 @@ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
 このように、"instanceId" プロパティは単純な 10 進数です。 インスタンス ID は、古いインスタンスが削除されると、新しいインスタンス用に再利用されることがあります。
 
 >[!NOTE]
-> インスタンス ID がスケール セット内の VM にどのように割り当てられるかは**一定ではありません**。 番号が順次増分しているように見える場合もありますが、常にそうとは限りません。 インスタンス ID が VM に特定の方法で割り当てられると推測しないでください。
+> インスタンス ID がスケール セット内の VM にどのように割り当てられるかは **一定ではありません**。 番号が順次増分しているように見える場合もありますが、常にそうとは限りません。 インスタンス ID が VM に特定の方法で割り当てられると推測しないでください。
 
 ## <a name="scale-set-vm-names"></a>スケール セット VM の名前
 

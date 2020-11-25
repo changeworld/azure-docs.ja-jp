@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: d90b18094a26830ee6909251d46837eff95a812a
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: f1409a931195d236b2729e629e4603c606137593
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998591"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959783"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>仮想ネットワーク向けの Azure IoT Hub Device Provisioning Service (DPS) サポート
 
@@ -38,7 +38,7 @@ DPS が VNET で構成されているほとんどのシナリオでは、IoT Hub
 
 接続を制限するための一般的な方法としては、[DPS IP フィルター規則](./iot-dps-ip-filtering.md)と[プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用した仮想ネットワーク (VNET) があります。 この記事の目的は、プライベート エンドポイントを使用した DPS の VNET アプローチについて説明することです。 
 
-オンプレミス ネットワークで動作するデバイスは、[仮想プライベートネットワーク (VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) または [ExpressRoute](https://azure.microsoft.com/services/expressroute/) プライベート ピアリングを使用して Azure の VNET に接続し、プライベート エンドポイントを介して DPS リソースにアクセスできます。 
+オンプレミス ネットワークで動作するデバイスは、[仮想プライベートネットワーク (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) または [ExpressRoute](https://azure.microsoft.com/services/expressroute/) プライベート ピアリングを使用して Azure の VNET に接続し、プライベート エンドポイントを介して DPS リソースにアクセスできます。 
 
 プライベート エンドポイントは、Azure リソースにアクセス可能な、顧客所有の VNET 内に割り当てられたプライベート IP アドレスです。 DPS リソース向けのプライベート エンドポイントがあると、VNET 内で動作するデバイスが、パブリック エンドポイントへのトラフィックを許可することなく、DPS リソースによるプロビジョニングを要求できるようになります。
 
@@ -51,7 +51,7 @@ DPS が VNET で構成されているほとんどのシナリオでは、IoT Hub
 
 * プライベート エンドポイントが作成されるサブネットを持つ Azure VNET をプロビジョニング済みである。 詳細については、[Azure CLI を使用した仮想ネットワークの作成](../virtual-network/quick-create-cli.md)に関するページを参照してください。
 
-* オンプレミス ネットワークの内部で動作するデバイスの場合は、[仮想プライベート ネットワーク (VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)、または Azure VNET への [ExpressRoute](https://azure.microsoft.com/services/expressroute/) プライベート ピアリングを設定します。
+* オンプレミス ネットワークの内部で動作するデバイスの場合は、[仮想プライベート ネットワーク (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md)、または Azure VNET への [ExpressRoute](https://azure.microsoft.com/services/expressroute/) プライベート ピアリングを設定します。
 
 ## <a name="private-endpoint-limitations"></a>プライベート エンドポイントの制限事項
 
@@ -73,7 +73,7 @@ DPS が VNET で構成されているほとんどのシナリオでは、IoT Hub
 
     ![DPS 向けに新しいプライベート エンドポイントを作成する](./media/virtual-network-support/networking-tab-add-private-endpoint.png)
 
-2. _プライベート エンドポイントの作成_の基本ページで、次の表に記載されている情報を入力します。
+2. _プライベート エンドポイントの作成_ の基本ページで、次の表に記載されている情報を入力します。
 
     ![プライベート エンドポイントの作成の基本](./media/virtual-network-support/create-private-endpoint-basics.png)
 
@@ -86,7 +86,7 @@ DPS が VNET で構成されているほとんどのシナリオでは、IoT Hub
 
     ページの下部の **[次へ:リソース]** をクリックし、プライベート エンドポイントがポイントするリソースを構成します。
 
-3. _プライベート エンドポイント リソースの作成_ページで、次の表に記載されている情報を入力します。
+3. _プライベート エンドポイント リソースの作成_ ページで、次の表に記載されている情報を入力します。
 
     ![プライベート エンドポイントの作成のリソース](./media/virtual-network-support/create-private-endpoint-resource.png)
 
@@ -98,12 +98,12 @@ DPS が VNET で構成されているほとんどのシナリオでは、IoT Hub
     | **ターゲット サブリソース** | **iotDps** を選択します。 |
 
     > [!TIP]
-    > **リソース ID またはエイリアス設定による Azure リソースへの接続**についての情報は、この記事の[プライベート エンドポイントを要求する](#request-a-private-endpoint)セクションで説明しています。
+    > **リソース ID またはエイリアス設定による Azure リソースへの接続** についての情報は、この記事の [プライベート エンドポイントを要求する](#request-a-private-endpoint)セクションで説明しています。
 
 
     ページの下部の **[次へ:構成]** をクリックして、プライベート エンドポイントの VNET を構成します。
 
-4. _プライベート エンドポイントの構成の作成_ページで、プライベート エンドポイントの作成先となる仮想ネットワークとサブネットを指定します。
+4. _プライベート エンドポイントの構成の作成_ ページで、プライベート エンドポイントの作成先となる仮想ネットワークとサブネットを指定します。
  
     ページの下部の **[次へ:タグ]** をクリックし、必要に応じて、リソースのタグを指定します。
 
@@ -123,7 +123,7 @@ DPS が VNET で構成されているほとんどのシナリオでは、IoT Hub
     > [!CAUTION]
     > リソース ID にはサブスクリプション ID が含まれていることに注意してください。 
 
-2. リソース ID を取得したら、上記の[プライベート エンドポイントを設定する](#set-up-a-private-endpoint)のステップから_プライベート エンドポイントリソースを作成する_ページのステップ 3 までに従います。 **[リソース ID またはエイリアスを使って Azure リソースに接続します]** をクリックし、次の表に示す情報を入力します。 
+2. リソース ID を取得したら、上記の [プライベート エンドポイントを設定する](#set-up-a-private-endpoint)のステップから _プライベート エンドポイントリソースを作成する_ ページのステップ 3 までに従います。 **[リソース ID またはエイリアスを使って Azure リソースに接続します]** をクリックし、次の表に示す情報を入力します。 
 
     | フィールド | 値 |
     | :---- | :-----|
@@ -133,13 +133,13 @@ DPS が VNET で構成されているほとんどのシナリオでは、IoT Hub
 
     ページの下部の **[次へ:構成]** をクリックして、プライベート エンドポイントの VNET を構成します。
 
-3. _プライベート エンドポイントの構成の作成_ページで、プライベート エンドポイントの作成先となる仮想ネットワークとサブネットを指定します。
+3. _プライベート エンドポイントの構成の作成_ ページで、プライベート エンドポイントの作成先となる仮想ネットワークとサブネットを指定します。
  
     ページの下部の **[次へ:タグ]** をクリックし、必要に応じて、リソースのタグを指定します。
 
 4. **[確認および作成]** 、引き続き **[作成]** をクリックして、プライベート エンドポイント 要求を作成します。
 
-5. DPS 所有者は、[DPS ネットワーク] タブの **[プライベートエンドポイント接続]** 一覧でプライベート エンドポイント要求を確認できます。そのページで、所有者は次に示すように、プライベート エンドポイント要求の**承認**または**拒否**ができます。
+5. DPS 所有者は、[DPS ネットワーク] タブの **[プライベートエンドポイント接続]** 一覧でプライベート エンドポイント要求を確認できます。そのページで、所有者は次に示すように、プライベート エンドポイント要求の **承認** または **拒否** ができます。
 
     ![DPS の承認](./media/virtual-network-support/approve-dps-private-endpoint.png)
 
@@ -154,5 +154,5 @@ DPS が VNET で構成されているほとんどのシナリオでは、IoT Hub
 
 DPS セキュリティ機能の詳細について、下記のリンク使用してください。
 
-* [Security](concepts-security.md)
+* [Security](./concepts-service.md#attestation-mechanism)
 * [TLS 1.2 のサポート](tls-support.md)

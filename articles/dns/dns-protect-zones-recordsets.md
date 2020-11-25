@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
-ms.openlocfilehash: 52cb1f144608202739dc46f2053950b38d810631
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 8163fcb3b349e298bc89f06523e3e784bdc4ed49
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330157"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965674"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS ゾーンとレコードを保護する方法
 
@@ -65,7 +65,7 @@ az role assignment create \
 
 Azure RBAC のルールは、サブスクリプション、リソース グループ、または個々のリソースに適用できます。 このリソースは、個々の DNS ゾーンまたは個々のレコード セットのいずれかになります。
 
-たとえば、リソース グループ *myResourceGroup* には、ゾーン *contoso.com* とサブゾーン *customers.contoso.com* が含まれています。 顧客アカウントごとに CNAME レコードが作成されています。 これらの CNAME レコードの管理に使用する管理者アカウントに、 *customers.contoso.com* ゾーンにレコードを作成できるアクセス許可を割り当てます。 このアカウントでは *customers.contoso.com* のみを管理できます。
+たとえば、リソース グループ *myResourceGroup* には、ゾーン *contoso.com* とサブゾーン *customers.contoso.com* が含まれています。 顧客アカウントごとに CNAME レコードが作成されています。 これらの CNAME レコードの管理に使用する管理者アカウントに、*customers.contoso.com* ゾーンにレコードを作成できるアクセス許可を割り当てます。 このアカウントでは *customers.contoso.com* のみを管理できます。
 
 ゾーン レベルの Azure RBAC アクセス許可は、Azure portal から付与できます。  ゾーンの **[アクセス制御 (IAM)]** を開き、 **[追加]** 、 **[DNS Zone Contributor\(DNS ゾーン共同作成者\)]** ロールの順に選択し、アクセス許可の付与が必要なユーザーまたはグループを選択します。
 
@@ -192,7 +192,7 @@ az role create -inputfile <file path>
 
 Azure Resource Manager は、別のタイプのセキュリティ制御をサポートしています。それはリソースをロックする機能です。 リソース ロックはリソースに適用され、すべてのユーザーおよびロールが対象になります。 詳細については、[「Azure Resource Manager によるリソースのロック」](../azure-resource-manager/management/lock-resources.md)を参照してください。
 
-リソースのロックは 2 種類あります｡ **CanNotDelete** と **ReadOnly** です。 これらは、プライベート DNS ゾーンまたは個別のレコード セットのいずれかに適用できます。 以降のセクションでは、一般的なシナリオをいくつか紹介し、そのシナリオにリソース ロックを使用して対応する方法について説明します。
+リソースのロックは 2 種類あります｡**CanNotDelete** と **ReadOnly** です。 これらは、プライベート DNS ゾーンまたは個別のレコード セットのいずれかに適用できます。 以降のセクションでは、一般的なシナリオをいくつか紹介し、そのシナリオにリソース ロックを使用して対応する方法について説明します。
 
 ### <a name="protecting-against-all-changes"></a>あらゆる変更に対する保護
 
@@ -202,7 +202,7 @@ Azure Resource Manager は、別のタイプのセキュリティ制御をサポ
 
 ![Azure Portal を使用したゾーン レベルのリソース ロック](./media/dns-protect-zones-recordsets/locks1.png)
 
-ゾーン レベルのリソース ロックは、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock?view=latest) を使用して作成することもできます。
+ゾーン レベルのリソース ロックは、[Azure PowerShell](/powershell/module/az.resources/new-azresourcelock?view=latest) を使用して作成することもできます。
 
 ```azurepowershell
 # Lock a DNS zone
@@ -216,7 +216,7 @@ $rsg = "<resource group name>"
 New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-また、同じ目的を果たせるコマンドを [Azure CLI から実行する](https://docs.microsoft.com/cli/azure/lock?view=azure-cli-latest#az-lock-create)こともできます。
+また、同じ目的を果たせるコマンドを [Azure CLI から実行する](/cli/azure/lock?view=azure-cli-latest#az-lock-create)こともできます。
 
 ```azurecli
 # Lock a DNS zone

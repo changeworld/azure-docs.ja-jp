@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 060a52b61dcd43fe0d05b2a8ef594c0ab9f2cc9e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847280"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954054"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 シリーズ Update 4 リリース ノート
 
@@ -47,7 +47,7 @@ Update 4 では、主に次の機能強化とバグ修正が行われていま�
 
     Update 4 で実装された新しい機能では、DR が行われる前のデバイスの使用中、頻繁にアクセスされるデータが追跡され、ヒートマップが作成されます (使用頻度の高いデータ チャンクはヒート値が高く、使用頻度の低いチャンクはヒート値が低い)。 StorSimple は、DR 後にこのヒートマップを使用して、クラウドからデータを自動的に復元してリハイドレートします。 
 
-    すべての復元はヒートマップ ベースで実行されるようになりました。 ヒートマップ ベースの復元ジョブとリハイドレート ジョブを照会したり取り消したりする方法の詳細については、[Windows PowerShell for StorSimple コマンドレット リファレンス](https://technet.microsoft.com/library/dn688168.aspx)を参照してください。
+    すべての復元はヒートマップ ベースで実行されるようになりました。 ヒートマップ ベースの復元ジョブとリハイドレート ジョブを照会したり取り消したりする方法の詳細については、[Windows PowerShell for StorSimple コマンドレット リファレンス](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps)を参照してください。
 
 * **StorSimple 診断ツール** – Update 4 では StorSimple 診断ツールがリリースされており、システム、ネットワーク、パフォーマンス、ハードウェア コンポーネントの正常性に関する問題を簡単に診断してトラブルシューティングできます。 このツールの実行には Windows PowerShell for StorSimple を使用します。 詳しくは、[StorSimple 診断ツールを使用したトラブルシューティング](storsimple-8000-diagnostics.md)に関する記事をご覧ください。
 
@@ -59,7 +59,7 @@ Update 4 では、主に次の機能強化とバグ修正が行われていま�
 
 * **ディスク障害のアラート** - このリリースでは、ディスク障害の兆候をユーザーに知らせるアラートが新しく追加されました。 このアラートが発生した場合は、Microsoft サポートに連絡して、交換ディスクを発送してもらってください。 詳しくは、[StorSimple デバイスでのハードウェアのアラート](storsimple-8000-manage-alerts.md#hardware-alerts)に関するページをご覧ください。
 
-* **コントローラー交換に関する変更** - このリリースでは、ユーザーがコントローラー交換処理の状態を照会するためのコマンドレットが追加されました。 詳細については、[コントローラー交換の状態を照会するコマンドレット](https://technet.microsoft.com/library/dn688168.aspx)に関するページを参照してください。
+* **コントローラー交換に関する変更** - このリリースでは、ユーザーがコントローラー交換処理の状態を照会するためのコマンドレットが追加されました。 詳細については、[コントローラー交換の状態を照会するコマンドレット](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps)に関するページを参照してください。
 
 
 ## <a name="issues-fixed-in-update-4"></a>Update 4 で修正された問題
@@ -82,7 +82,7 @@ Update 4 では、新しい問題は見つかっていません。 以前のリ�
 
 ## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-update-4"></a>Update 4 のシリアル接続 SCSI (SAS) コントローラーおよびファームウェアの更新プログラム
 
-このリリースには、SAS コントローラー、LSI ドライバー、ファームウェアの更新プログラムが含まれています。 これらの更新プログラムをインストールする方法の詳細については、StorSimple デバイスへの [Update 4 のインストール](storsimple-install-update-4.md)に関する記事をご覧ください。
+このリリースには、SAS コントローラー、LSI ドライバー、ファームウェアの更新プログラムが含まれています。 これらの更新プログラムをインストールする方法の詳細については、StorSimple デバイスへの [Update 4 のインストール](./storsimple-8000-install-update-4.md)に関する記事をご覧ください。
 
 ## <a name="virtual-device-updates-in-update-4"></a>Update 4 での仮想デバイスの更新プログラム
 
@@ -90,5 +90,4 @@ Update 4 では、新しい問題は見つかっていません。 以前のリ�
 
 ## <a name="next-step"></a>次のステップ
 
-StorSimple デバイスに [Update 4 をインストールする](storsimple-install-update-4.md)方法を確認します。
-
+StorSimple デバイスに [Update 4 をインストールする](./storsimple-8000-install-update-4.md)方法を確認します。

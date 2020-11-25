@@ -11,16 +11,16 @@ ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 416e2c767b5afd40fea38e6f75fcd3f01440b49a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edff5354d0565bd32cd0332b4aa0f215c2980d73
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89255349"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949787"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の課金モデル
 
-Azure Active Directory B2C (Azure AD B2C) の価格は、1 か月間に認証アクティビティを行った一意のユーザーの数である、月間アクティブ ユーザー数 (MAU) に基づいています。 この課金モデルは、Azure AD B2C テナントと [Azure AD ゲスト ユーザー コラボレーション (B2B)](https://docs.microsoft.com/azure/active-directory/external-identities/external-identities-pricing) の両方に適用されます。 MAU の課金は、無料レベルと柔軟で予測可能な価格を提供することによってコストを削減するのに役立ちます。 この記事では、MAU の課金、サブスクリプションへの Azure AD B2C テナントのリンク、および価格レベルの変更について説明します。
+Azure Active Directory B2C (Azure AD B2C) の価格は、1 か月間に認証アクティビティを行った一意のユーザーの数である、月間アクティブ ユーザー数 (MAU) に基づいています。 この課金モデルは、Azure AD B2C テナントと [Azure AD ゲスト ユーザー コラボレーション (B2B)](../active-directory/external-identities/external-identities-pricing.md) の両方に適用されます。 MAU の課金は、無料レベルと柔軟で予測可能な価格を提供することによってコストを削減するのに役立ちます。 この記事では、MAU の課金、サブスクリプションへの Azure AD B2C テナントのリンク、および価格レベルの変更について説明します。
 
 > [!IMPORTANT]
 > この記事には価格の詳細は含まれていません。 使用量の課金と価格の最新情報については、「[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)」を参照してください。
@@ -39,13 +39,13 @@ MAU の課金を利用するには、Azure AD B2C テナントを Azure サブ�
 
 ## <a name="about-the-monthly-active-users-mau-billing-model"></a>月間アクティブ ユーザー数 (MAU) の課金モデルについて
 
-MAU の課金は、**2019 年 11 月 1 日**に Azure AD B2C テナントに対して実施されました。 その日以降に作成され、サブスクリプションにリンクされた Azure AD B2C テナントは、MAU 単位で課金されてきました。 サブスクリプションにリンクされていない Azure AD B2C テナントがある場合は、ここで作成する必要があります。 2019 年 11 月 1 日より前にサブスクリプションにリンクされていた既存の Azure AD B2C テナントがある場合は、月間アクティブ ユーザー数 (MAU) の課金モデルにアップグレードすることをお勧めしますが、認証ごとの課金モデルをそのまま継続することもできます。
+MAU の課金は、**2019 年 11 月 1 日** に Azure AD B2C テナントに対して実施されました。 その日以降に作成され、サブスクリプションにリンクされた Azure AD B2C テナントは、MAU 単位で課金されてきました。 サブスクリプションにリンクされていない Azure AD B2C テナントがある場合は、ここで作成する必要があります。 2019 年 11 月 1 日より前にサブスクリプションにリンクされていた既存の Azure AD B2C テナントがある場合は、月間アクティブ ユーザー数 (MAU) の課金モデルにアップグレードすることをお勧めしますが、認証ごとの課金モデルをそのまま継続することもできます。
   
 また、Azure AD B2C テナントは、使用する機能に基づいて、適切な Azure 価格レベルにリンクされている必要があります。 Premium 機能には、Azure AD B2C [Premium P1 または P2 価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)が必要です。 新しい機能を使用するときに、価格レベルのアップグレードが必要になることがあります。 たとえば、条件付きアクセスでは、テナントに対して Azure AD B2C Premium P2 価格レベルを選択する必要があります。
 
 ## <a name="link-an-azure-ad-b2c-tenant-to-a-subscription"></a>Azure AD B2C テナントをサブスクリプションにリンクする
 
-Azure Active Directory B2C (Azure AD B2C) の使用料金は、Azure サブスクリプションに課金されます。 ターゲットの Azure サブスクリプション内に Azure AD B2C *リソース*を作成して、Azure AD B2C テナントを Azure サブスクリプションに明示的にリンクする必要があります。 1 つの Azure サブスクリプションで、仮想マシン、ストレージ アカウント、Logic Apps などの他の Azure リソースと共に、複数の Azure AD B2C リソースを作成できます。 サブスクリプション内のすべてのリソースを表示するには、サブスクリプションが関連付けられている Azure Active Directory (Azure AD) テナントに移動します。
+Azure Active Directory B2C (Azure AD B2C) の使用料金は、Azure サブスクリプションに課金されます。 ターゲットの Azure サブスクリプション内に Azure AD B2C *リソース* を作成して、Azure AD B2C テナントを Azure サブスクリプションに明示的にリンクする必要があります。 1 つの Azure サブスクリプションで、仮想マシン、ストレージ アカウント、Logic Apps などの他の Azure リソースと共に、複数の Azure AD B2C リソースを作成できます。 サブスクリプション内のすべてのリソースを表示するには、サブスクリプションが関連付けられている Azure Active Directory (Azure AD) テナントに移動します。
 
 Azure AD B2C テナントにリンクされているサブスクリプションは、追加の Azure AD B2C リソースを含む Azure AD B2C の使用や他の Azure リソースの課金に使用できます。 これは、Azure AD B2C テナント内における他の Azure ライセンス ベース サービスまたは Office 365 ライセンスの追加には使用できません。
 
@@ -80,7 +80,7 @@ Azure AD B2C テナントについてこれらの手順を完了すると、Azur
 
 1. Azure portal にサインインします。
 
-2. 上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択してから、Azure B2C テナントのリンク先の Azure サブスクリプションが含まれるディレクトリを選択します (Azure AD B2C テナント自体を選択*しないでください*)。
+2. 上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択してから、Azure B2C テナントのリンク先の Azure サブスクリプションが含まれるディレクトリを選択します (Azure AD B2C テナント自体を選択 *しないでください*)。
 
 3. ポータルの上部にある検索ボックスに、Azure AD B2C テナントの名前を入力します。 次に、 **[リソース]** の下の検索結果からテナントを選択します。
 
@@ -94,7 +94,7 @@ Azure AD B2C テナントについてこれらの手順を完了すると、Azur
 
 ## <a name="switch-to-mau-billing-pre-november-2019-azure-ad-b2c-tenants"></a>MAU の課金に切り替える (2019 年 11 月より前の Azure AD B2C テナント)
 
-**2019 年 11 月 1 日**より前に Azure AD B2C テナントをサブスクリプションにリンクした場合は、以前の認証ごとの課金モデルが使用されています。 月間アクティブ ユーザー数 (MAU) の課金モデルにアップグレードすることをお勧めします。 課金オプションは、Azure AD B2C リソースで構成されます。
+**2019 年 11 月 1 日** より前に Azure AD B2C テナントをサブスクリプションにリンクした場合は、以前の認証ごとの課金モデルが使用されています。 月間アクティブ ユーザー数 (MAU) の課金モデルにアップグレードすることをお勧めします。 課金オプションは、Azure AD B2C リソースで構成されます。
 
 月間アクティブ ユーザー (MAU) の課金への切り替えは、**元に戻すことができません**。 Azure AD B2C リソースを MAU ベースの課金モデルに変換した後に、そのリソースを認証ごとの課金モデルに戻すことはできません。
 
@@ -177,11 +177,11 @@ Azure AD B2C テナントなどの Azure リソースを別のサブスクリプ
 
 ### <a name="move-by-unlinking-and-relinking"></a>リンク解除と再リンクによる移動
 
-ソースと宛先のサブスクリプションが異なる Azure Active Directory テナントに関連付けられている場合は、上記の Azure Resource Manager を使用した移動を行うことはできません。 ただし、Azure AD B2C テナントをソースのサブスクリプションからリンク解除して、宛先のサブスクリプションに再リンクする方法でも同じ結果を得ることができます。 削除するオブジェクトが Azure AD B2C テナント自体ではなく、*課金リンク*のみであるため、この方法は安全です。 ユーザー、アプリ、ユーザー フローなどはどれも影響を受けません。
+ソースと宛先のサブスクリプションが異なる Azure Active Directory テナントに関連付けられている場合は、上記の Azure Resource Manager を使用した移動を行うことはできません。 ただし、Azure AD B2C テナントをソースのサブスクリプションからリンク解除して、宛先のサブスクリプションに再リンクする方法でも同じ結果を得ることができます。 削除するオブジェクトが Azure AD B2C テナント自体ではなく、*課金リンク* のみであるため、この方法は安全です。 ユーザー、アプリ、ユーザー フローなどはどれも影響を受けません。
 
-1. Azure AD B2C ディレクトリ自体で、宛先の Azure AD テナント (宛先の Azure サブスクリプションがリンクされているテナント) から[ゲスト ユーザーを招待](user-overview.md#guest-user)し、このユーザーに Azure AD B2C の**グローバル管理者**ロールがあることを確認します。
-1. 上記の「[Azure AD B2C テナント リソースを管理する](#manage-your-azure-ad-b2c-tenant-resources)」セクションで説明したように、ソースの Azure サブスクリプション内の Azure AD B2C を表す *Azure リソース*に移動します。 実際の Azure AD B2C テナントに切り替えないでください。
-1. **[概要]** ページで、 **[削除]** ボタンを選択します。 これによって、関連する Azure AD B2C テナントのユーザーやアプリケーションが削除されることは*ありません*。 ソースのサブスクリプションから課金リンクが削除されるだけです。
+1. Azure AD B2C ディレクトリ自体で、宛先の Azure AD テナント (宛先の Azure サブスクリプションがリンクされているテナント) から [ゲスト ユーザーを招待](user-overview.md#guest-user)し、このユーザーに Azure AD B2C の **グローバル管理者** ロールがあることを確認します。
+1. 上記の「[Azure AD B2C テナント リソースを管理する](#manage-your-azure-ad-b2c-tenant-resources)」セクションで説明したように、ソースの Azure サブスクリプション内の Azure AD B2C を表す *Azure リソース* に移動します。 実際の Azure AD B2C テナントに切り替えないでください。
+1. **[概要]** ページで、 **[削除]** ボタンを選択します。 これによって、関連する Azure AD B2C テナントのユーザーやアプリケーションが削除されることは *ありません*。 ソースのサブスクリプションから課金リンクが削除されるだけです。
 1. 手順 1 で管理者として Azure AD B2C に追加されたユーザー アカウントを使用して Azure portal にサインインします。 次に、宛先の Azure サブスクリプション (宛先の Azure Active Directory テナントにリンクされているもの) に移動します。 
 1. 上記の「[リンクを作成する](#create-the-link)」手順に従って、宛先のサブスクリプション内に課金リンクを再確立します。
 1. これで、Azure AD B2C リソースが宛先の Azure サブスクリプション (ターゲットの Azure Active Directory にリンクされているもの) に移動され、今後はこのサブスクリプションを通じて課金されるようになります。

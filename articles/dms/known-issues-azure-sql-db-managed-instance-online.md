@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 6393624cb4520ccd28dff41dd97746873bc13f59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d5c79a141dbe1310762dc90b447fe78848ac10d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330300"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962486"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-managed-instance"></a>Azure SQL Managed Instance へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -31,7 +31,7 @@ ms.locfileid: "91330300"
 
     Azure Database Migration Service では、バックアップと復元の方法を使用して、ご使用のオンプレミスのデータベースを SQL Managed Instance に移行します。 Azure Database Migration Service は、チェックサムを使用して作成されたバックアップのみをサポートします。
 
-    [バックアップ中または復元中にバックアップ チェックサムを有効または無効にする (SQL Server)](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)
+    [バックアップ中または復元中にバックアップ チェックサムを有効または無効にする (SQL Server)](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)
 
     > [!NOTE]
     > 圧縮を使用してデータベースのバックアップを実行する場合、明示的に無効にしない限り、チェックサムは既定の動作です。

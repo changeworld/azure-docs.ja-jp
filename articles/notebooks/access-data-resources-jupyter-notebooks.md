@@ -4,12 +4,12 @@ description: Jupyter Notebook からファイル、REST API、データベース
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.custom: devx-track-python
-ms.openlocfilehash: b2254e6d966ca3281cd9c8b0771cb77fb6dede33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a833ff914c1ee53f024147371977ac1caa3800dc
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87846617"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842874"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>ノートブックでクラウド データにアクセスする
 
@@ -46,7 +46,7 @@ if response.status_code == 200:
 
 pyodbc または pymssql ライブラリを利用して、SQL Database または SQL Managed Instance のデータベースにアクセスできます。
 
-[Python を使用した Azure SQL データベースに対するクエリ](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)に関するクイックスタートには、AdventureWorks のデータが格納された SQL Database のデータベースを作成する方法と、そのデータにクエリを実行する方法が示されています。 この記事のサンプルのノートブックには同じコードがあります。
+[Python を使用した Azure SQL データベースに対するクエリ](../azure-sql/database/connect-query-python.md)に関するクイックスタートには、AdventureWorks のデータが格納された SQL Database のデータベースを作成する方法と、そのデータにクエリを実行する方法が示されています。 この記事のサンプルのノートブックには同じコードがあります。
 
 ## <a name="azure-storage"></a>Azure Storage
 
@@ -61,11 +61,11 @@ Azure Storage では、データの種類と、必要なアクセス方法に応
 
 Azure Cosmos DB では、JSON ドキュメント用に完全にインデックス付けされた NoSQL ストアが提供されています。 次の記事では、Python から Cosmos DB を使用するさまざまな方法が示されています。
 
-- [Python で SQL API アプリを作成する](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
-- [Azure Cosmos DB の MongoDB 用 API による Flask アプリの構築](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
-- [Python と Gremlin API を使用してグラフ データベースを作成する](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
-- [Python と Azure Cosmos DB で Cassandra アプリを構築する](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
-- [Python と Azure Cosmos DB で Table API アプリを構築する](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
+- [Python で SQL API アプリを作成する](../cosmos-db/create-sql-api-python.md)
+- [Azure Cosmos DB の MongoDB 用 API による Flask アプリの構築](../cosmos-db/create-mongodb-flask.md)
+- [Python と Gremlin API を使用してグラフ データベースを作成する](../cosmos-db/create-graph-python.md)
+- [Python と Azure Cosmos DB で Cassandra アプリを構築する](../cosmos-db/create-cassandra-python.md)
+- [Python と Azure Cosmos DB で Table API アプリを構築する](../cosmos-db/table-storage-how-to-use-python.md)
 
 Cosmos DB を使用するときは、[azure-cosmosdb-table](https://pypi.org/project/azure-cosmosdb-table/) ライブラリを使用できます。
 
@@ -73,9 +73,9 @@ Cosmos DB を使用するときは、[azure-cosmosdb-table](https://pypi.org/pro
 
 Azure で使用できるデータベースが他にもいくつか提供されています。 以下の記事では、Python からそれらのデータベースにアクセスするためのガイダンスが示されています。
 
-- [Azure Database for PostgreSQL:Python を使って接続とデータの照会を行う](https://docs.microsoft.com/azure/postgresql/connect-python)
-- [クイック スタート: Python で Azure Redis Cache を使用する](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
-- [Azure Database for MySQL:Python を使って接続とデータの照会を行う](https://docs.microsoft.com/azure/mysql/connect-python)
+- [Azure Database for PostgreSQL:Python を使って接続とデータの照会を行う](../postgresql/connect-python.md)
+- [クイック スタート: Python で Azure Redis Cache を使用する](../azure-cache-for-redis/cache-python-get-started.md)
+- [Azure Database for MySQL:Python を使って接続とデータの照会を行う](../mysql/connect-python.md)
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
   - [Azure Data Factory のコピー ウィザード](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 

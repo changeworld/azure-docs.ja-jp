@@ -5,17 +5,18 @@ services: virtual-machines-windows
 manager: carmonm
 author: bobbytreed
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: 0bb1e4cb9b24c9b46f623e1604930367b82a47eb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8d11ff6eaab8ed6a13c3c2aa1b712cc57e7825ea
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973820"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960973"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
@@ -112,7 +113,7 @@ GitHub または Azure Storage などからスクリプトを外部でダウン�
 ```
 
 > [!NOTE]
-> managedIdentity プロパティ を storageAccountName プロパティまたは storageAccountKey プロパティと組み合わせて使用することは**できません**
+> managedIdentity プロパティ を storageAccountName プロパティまたは storageAccountKey プロパティと組み合わせて使用することは **できません**
 
 > [!NOTE]
 > 1 つの時点で VM にインストールできる拡張機能のバージョンは 1 つだけです。同じ VM は失敗するので、同じ Resource Manager テンプレートにはカスタム スクリプトを 2 回指定します。
@@ -159,7 +160,7 @@ GitHub または Azure Storage などからスクリプトを外部でダウン�
 
 ####  <a name="property-managedidentity"></a>プロパティ: managedIdentity
 > [!NOTE]
-> このプロパティは、保護された設定でのみ指定する**必要があります**。
+> このプロパティは、保護された設定でのみ指定する **必要があります**。
 
 CustomScript (バージョン 1.10 以降) では、"fileUris" 設定で指定された URL からファイルをダウンロードするための[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) ベースの RBAC がサポートされています。 これにより、ユーザーが SAS トークンやストレージ アカウント キーなどのシークレットを渡さなくとも、CustomScript で Azure Storage プライベート BLOB またはコンテナーにアクセスできるようになります。
 
@@ -197,7 +198,7 @@ CustomScript (バージョン 1.10 以降) では、"fileUris" 設定で指定�
 > ```
 
 > [!NOTE]
-> managedIdentity プロパティ を storageAccountName プロパティまたは storageAccountKey プロパティと組み合わせて使用することは**できません**
+> managedIdentity プロパティ を storageAccountName プロパティまたは storageAccountKey プロパティと組み合わせて使用することは **できません**
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 

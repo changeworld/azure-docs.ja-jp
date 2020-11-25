@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f52111fbbbd90f3d2f39f538c4bf1a2672cd504b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 73c381624b69acb6fe7a6296a3153160812818bf
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961240"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886415"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで SAML トークン発行者用の技術プロファイルを定義する
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) は、各認証フローを処理す�
 
 ## <a name="protocol"></a>Protocol
 
-**Protocol** 要素の **Name** 属性は `None` に設定する必要があります。 **OutputTokenFormat** 要素を `SAML2` に設定します。
+**Protocol** 要素の **Name** 属性は `SAML2` に設定する必要があります。 **OutputTokenFormat** 要素を `SAML2` に設定します。
 
 次の例は、`Saml2AssertionIssuer` 用の技術プロファイルを示しています。
 

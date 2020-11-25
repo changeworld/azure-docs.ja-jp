@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 52c07861fcd3db5f9a53c4bd6730f89925b11ae6
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: e41be54ce2017b303543a2e53eabbecb3ddc2978
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348952"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843334"
 ---
 # <a name="monitoring-azure-queue-storage"></a>Azure Queue storage の監視
 
@@ -509,7 +509,7 @@ Queue storage サービス自体による要求 (ログの作成や削除など)
 
 ### <a name="accessing-logs-in-an-event-hub"></a>イベント ハブのログにアクセスする
 
-イベント ハブに送信されたログはファイルとして保存されませんが、イベント ハブでログ情報が受信されたことを確認することはできます。 Azure portal でイベント ハブに移動し、 **受信メッセージ** の数がゼロより大きいことを確認します。
+イベント ハブに送信されたログはファイルとして保存されませんが、イベント ハブでログ情報が受信されたことを確認することはできます。 Azure portal でイベント ハブに移動し、**受信メッセージ** の数がゼロより大きいことを確認します。
 
 ![監査ログ](media/monitor-queue-storage/event-hub-log.png)
 
@@ -528,7 +528,7 @@ Azure Monitor ログ クエリを使用して、Log Analytics ワークスペー
 Queue storage の監視に役立つ、 **[ログ検索]** バーに入力できるクエリをいくつか紹介します。 これらのクエリは[新しい言語](../../azure-monitor/log-query/log-query-overview.md)で使用できます。
 
 > [!IMPORTANT]
-> ストレージ アカウント リソース グループ メニューから **[ログ]** を選択すると、クエリのスコープが現在のリソース グループに設定された状態で Log Analytics が開きます。 つまり、ログ クエリには、そのリソース グループのデータのみが含まれます。 他のリソースのデータや他の Azure サービスのデータを含むクエリを実行する場合は、 **Azure Monitor** のメニューから **[ログ]** を選択します。 詳細については、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](../../azure-monitor/log-query/scope.md)」を参照してください。
+> ストレージ アカウント リソース グループ メニューから **[ログ]** を選択すると、クエリのスコープが現在のリソース グループに設定された状態で Log Analytics が開きます。 つまり、ログ クエリには、そのリソース グループのデータのみが含まれます。 他のリソースのデータや他の Azure サービスのデータを含むクエリを実行する場合は、**Azure Monitor** のメニューから **[ログ]** を選択します。 詳細については、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](../../azure-monitor/log-query/scope.md)」を参照してください。
 
 これらのクエリを使用すると、Azure Storage アカウントの監視に役立ちます。
 

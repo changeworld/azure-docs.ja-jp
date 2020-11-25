@@ -9,17 +9,18 @@ editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 52f5d0ec-8f75-49e7-9e15-88d46b420e63
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 283eb9b9cbdc03813cf7c765c9ef3be5965919eb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 129897d3288a900803efbfba8abf86c276077fa8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978341"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966073"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 
@@ -231,11 +232,11 @@ VM 拡張機能の実行時には、資格情報、ストレージ アカウン�
 
 #### <a name="agent-updates"></a>エージェントの更新プログラム
 
-Linux VM エージェントには、分離できない 1 つのパッケージに*プロビジョニング エージェント コード*と*拡張機能処理コード*が含まれています。 Azure 上で cloud-init を使用してプロビジョニングを行いたい場合、*プロビジョニング エージェント*を無効化できます。 これを行うには、「[cloud-init を使用する](../linux/using-cloud-init.md)」を参照してください。
+Linux VM エージェントには、分離できない 1 つのパッケージに *プロビジョニング エージェント コード* と *拡張機能処理コード* が含まれています。 Azure 上で cloud-init を使用してプロビジョニングを行いたい場合、*プロビジョニング エージェント* を無効化できます。 これを行うには、「[cloud-init を使用する](../linux/using-cloud-init.md)」を参照してください。
 
-エージェントのサポートされているバージョンでは自動更新を使用できます。 更新可能な唯一のコードは*拡張機能処理コード*であり、プロビジョニング コードではありません。 *プロビジョニング エージェント コードは*一度だけ実行されるコードです。
+エージェントのサポートされているバージョンでは自動更新を使用できます。 更新可能な唯一のコードは *拡張機能処理コード* であり、プロビジョニング コードではありません。 *プロビジョニング エージェント コードは* 一度だけ実行されるコードです。
 
-*拡張機能処理コード*は、Azure ファブリックとの通信を担い、インストール、ステータスのレポート、個々の拡張機能の更新と削除などの VM 拡張機能の操作を処理します。 更新プログラムには、*拡張機能処理コード*に対するセキュリティ修正プログラム、バグ修正プログラム、および拡張機能が含まれます。
+*拡張機能処理コード* は、Azure ファブリックとの通信を担い、インストール、ステータスのレポート、個々の拡張機能の更新と削除などの VM 拡張機能の操作を処理します。 更新プログラムには、*拡張機能処理コード* に対するセキュリティ修正プログラム、バグ修正プログラム、および拡張機能が含まれます。
 
 エージェントがインストールされると、親デーモンが作成されます。 この親はその後、拡張機能の処理に使用される子プロセスを生成します。 エージェントの更新プログラムがある場合、更新プログラムがダウンロードされ、親は子プロセスを停止し、アップグレードし、再起動します。 更新プログラムに問題がある場合、親プロセスは前の子のバージョンにロール バックします。
 

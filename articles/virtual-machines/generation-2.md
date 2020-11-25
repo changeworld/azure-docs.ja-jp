@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
-ms.openlocfilehash: 7234c02d387e2fbf21a7f6002e44f84deb851133
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0aedcc3be4cb319dc24990507d85756bd77777e4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977597"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963829"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -101,7 +101,8 @@ Azure では現在、オンプレミスの Hyper-V が第 2 世代 VM に対し�
 | Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | バックアップ/復元                    | :heavy_check_mark: | :heavy_check_mark: |
 | 共有イメージ ギャラリー              | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Disk Encryption             | :heavy_check_mark: | :x:                |
+| [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | :x:                |
+| [サーバー側暗号化](disk-encryption.md)            | :heavy_check_mark: | :heavy_check_mark: |
 
 ## <a name="creating-a-generation-2-vm"></a>第 2 世代 VM の作成
 
@@ -185,7 +186,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 
 * **OS ディスク サイズを増やすにはどうすればよいですか?**  
 
-  第 2 世代 VM の新規のものとして、2 TiB を超える OS ディスクがあります。 既定では、第 2 世代 VM の OS ディスクは 2 TiB 未満です。 ディスク サイズは、4 TiB の推奨される最大サイズまで増やすことができます。 OS ディスク サイズを増やすには、Azure CLI または Azure portal を使用します。 プログラムでディスクを拡張する方法については、[Windows](./windows/expand-os-disk.md) または [Linux](./linux/resize-os-disk-gpt-partition.md) の**ディスクのサイズ変更**に関するページを参照してください。
+  第 2 世代 VM の新規のものとして、2 TiB を超える OS ディスクがあります。 既定では、第 2 世代 VM の OS ディスクは 2 TiB 未満です。 ディスク サイズは、4 TiB の推奨される最大サイズまで増やすことができます。 OS ディスク サイズを増やすには、Azure CLI または Azure portal を使用します。 プログラムでディスクを拡張する方法については、[Windows](./windows/expand-os-disk.md) または [Linux](./linux/resize-os-disk-gpt-partition.md) の **ディスクのサイズ変更** に関するページを参照してください。
 
   Azure portal から OS ディスク サイズを増やすには:
 

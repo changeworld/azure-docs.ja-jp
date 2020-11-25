@@ -5,12 +5,12 @@ ms.date: 10/21/2020
 ms.topic: conceptual
 description: Azure Dev Spaces から Bridge to Kubernetes への移行プロセスについて説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Bridge to Kubernetes
-ms.openlocfilehash: 7a7642d986d8490c5d0dc3c413e658b21b010798
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d48814df30c17f9b51d8642efa0960a26bbd24f4
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895258"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888523"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Bridge to Kubernetes への移行
 
@@ -85,7 +85,7 @@ Bridge to Kubernetes には、それぞれのデプロイ方法には関係な�
 1. Visual Studio を使用している場合は、Visual Studio IDE をバージョン 16.7 以上に更新し、[Visual Studio Marketplace][vs-marketplace] から Bridge to Kubernetes 拡張機能をインストールします。 Visual Studio Code を使用している場合は、[Bridge to Kubernetes 拡張機能][vsc-marketplace]をインストールします。
 1. Azure portal または [Azure Dev Spaces CLI][azds-delete] を使用して Azure Dev Spaces コントローラーを無効にします。
 1. [Azure Cloud Shell](https://shell.azure.com) を使用します。 または、bash がインストールされている Mac、Linux、または Windows では、bash シェル プロンプトを開きます。 コマンド ライン環境で次のツールが使用可能であることを確認します。Azure CLI、docker、kubectl、curl、tar、gunzip。
-1. コンテナー レジストリを作成するか、既存のものを使用します。 Azure でコンテナー レジストリを作成するには、[Azure Container Registry](../container-registry/index.yml) を使用するか、[Docker Hub](https://hub.docker.com/) を使用します。 Azure Cloud Shell を使用する場合、Docker イメージをホストするために使用できるのは Azure Container Registry だけです。
+1. コンテナー レジストリを作成するか、既存のものを使用します。 Azure でコンテナー レジストリを作成するには、[Azure Container Registry](https://azure.microsoft.com/services/container-registry/) を使用するか、[Docker Hub](https://hub.docker.com/) を使用します。 Azure Cloud Shell を使用する場合、Docker イメージをホストするために使用できるのは Azure Container Registry だけです。
 1. 移行スクリプトを実行して、Azure Dev Spaces アセットを Bridge to Kubernetes アセットに変換します。 このスクリプトは、Bridge to Kubernetes と互換性のある新しいイメージを作成し、指定されたレジストリにアップロードした後、[Helm](https://helm.sh) を使用して、そのイメージでクラスターを更新します。 リソース グループ、AKS クラスターの名前、およびコンテナー レジストリを指定する必要があります。 次に示すように、他のコマンド ライン オプションもあります。
 
    ```azure-cli

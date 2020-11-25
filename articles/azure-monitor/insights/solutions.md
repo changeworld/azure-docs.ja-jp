@@ -6,13 +6,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c64e01253652ea3b49ad6221f161bb78f499b6ed
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: c38fa77951aaeb5559dc2030f1401a896d7c238d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150528"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841922"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor での監視ソリューション
 
@@ -20,7 +20,7 @@ Azure Monitor の監視ソリューションでは、特定の Azure アプリ�
 
 ## <a name="use-monitoring-solutions"></a>監視ソリューションの使用
 
-Azure Monitor のソリューションの **[概要]** ページには、Log Analytics ワークスペースにインストールされているソリューション別にタイルが表示されます。 このページを開くには、 [Azure portal](https://ms.portal.azure.com) で **Azure Monitor** に移動します。 **[Insights]** メニューの下では、 **[詳細]** を選択して **Insights Hub** を開き、 **[Log Analytics ワークスペース]** をクリックします。
+Azure Monitor のソリューションの **[概要]** ページには、Log Analytics ワークスペースにインストールされているソリューション別にタイルが表示されます。 このページを開くには、[Azure portal](https://ms.portal.azure.com) で **Azure Monitor** に移動します。 **[Insights]** メニューの下では、 **[詳細]** を選択して **Insights Hub** を開き、 **[Log Analytics ワークスペース]** をクリックします。
 
 [![Insights Hub](media/solutions/insights-hub.png)](media/solutions/insights-hub.png#lightbox)
 
@@ -29,7 +29,7 @@ Azure Monitor のソリューションの **[概要]** ページには、Log Ana
 
 [![スクリーンショットには、[ソリューション] が選択され、[ソリューション] ウィンドウにソリューションが表示された Azure portal メニューが示されています。](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
-監視ソリューションには、複数の種類の Azure リソースが含まれる可能性があり、ソリューションに含まれる任意のリソースは、他のリソースと同様に表示できます。 たとえば、ソリューションに含まれるすべてのログ クエリは、 [クエリ エクスプローラー](../log-query/get-started-portal.md#load-queries)の **[ソリューション クエリ]** に一覧表示されます。 [ログ クエリ](../log-query/log-query-overview.md)でアドホック分析を実行するときにこれらのクエリを使用できます。
+監視ソリューションには、複数の種類の Azure リソースが含まれる可能性があり、ソリューションに含まれる任意のリソースは、他のリソースと同様に表示できます。 たとえば、ソリューションに含まれるすべてのログ クエリは、[クエリ エクスプローラー](../log-query/get-started-portal.md#load-queries)の **[ソリューション クエリ]** に一覧表示されます。[ログ クエリ](../log-query/log-query-overview.md)でアドホック分析を実行するときにこれらのクエリを使用できます。
 
 ## <a name="list-installed-monitoring-solutions"></a>インストールされている監視ソリューションを一覧表示する
 

@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: SAP
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 217d5b060ca1b7d32cd334049db9b7c68b7949a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a02c30423ab3c6de87eac7d34b5f0004e54a8d5d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87065084"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957811"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Azure デプロイでサポートされている SAP ソフトウェア
 この記事では、Azure デプロイでサポートされている SAP ソフトウェアと、必要なオペレーティング システム リリースまたは DBMS リリースを確認する方法について説明します。
@@ -95,7 +96,7 @@ SAP HANA を実行するために、SAP には、NetWeaver または他の SAP �
 > "S" という文字で始まるユニットが [HANA Large Instances](./hana-overview-architecture.md) のユニットです。 
 
 > [!NOTE]
-> SAP には、SAP HANA メジャー リリースに依存する特定の認定がありません。 一般的な意見とは対照的に、[HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)の**認定シナリオ**の欄には、**HANA メジャーまたはマイナー リリースの認定に関する記述がありません**。 特定のユニットの認定オペレーティング システムが HANA 1.0 リリースでもサポートされている限り、一覧にあるユニットはすべて HANA 1.0 と HANA 2.0 で使用できると想定する必要があります。 
+> SAP には、SAP HANA メジャー リリースに依存する特定の認定がありません。 一般的な意見とは対照的に、[HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)の **認定シナリオ** の欄には、**HANA メジャーまたはマイナー リリースの認定に関する記述がありません**。 特定のユニットの認定オペレーティング システムが HANA 1.0 リリースでもサポートされている限り、一覧にあるユニットはすべて HANA 1.0 と HANA 2.0 で使用できると想定する必要があります。 
 
 SAP HANA の使用については、一般的な NetWeaver の場合とは異なる最小 OS リリースが適用される場合があります。 サポートされているオペレーティング システムはユニットごとに異なる場合があるため、個別に確認する必要があります。 そのためには、各ユニットをクリックします。 詳細が表示されます。 表示された詳細の 1 つとして、この特定のユニットでサポートされている各種オペレーティング システムがあります。
 

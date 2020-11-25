@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: cf17ab2b-8d7e-4078-b6df-955c6d5071c2
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 3c3dac8c8798b9c56b746a2e4e232f43ef967ebe
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 24d1992db5f1826045fdb47397e44dc2e2fbdaf9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960305"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962163"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Linux 仮想マシンで Azure カスタム スクリプト拡張機能 v2 を使用する
 カスタム スクリプト拡張機能バージョン 2 は、スクリプトをダウンロードし、Azure 仮想マシン上で実行します。 この拡張機能は、展開後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。 スクリプトは、Azure Storage や他のアクセス可能なインターネットの場所からダウンロードできます。または、実行時に拡張機能に提供することもできます。 
@@ -108,7 +109,7 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 ```
 
 >[!NOTE]
-> managedIdentity プロパティ を storageAccountName プロパティまたは storageAccountKey プロパティと組み合わせて使用することは**できません**
+> managedIdentity プロパティ を storageAccountName プロパティまたは storageAccountKey プロパティと組み合わせて使用することは **できません**
 
 ### <a name="property-values"></a>プロパティ値
 
@@ -131,8 +132,8 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 * `apiVersion`:最新の apiVersion は、[リソース エクスプローラー](https://resources.azure.com/)を使用するか、Azure CLI から次のコマンドを使用して見つけることができます`az provider list -o json`
 * `skipDos2Unix`: (省略可能、ブール値) スクリプトベースのファイル URL またはスクリプトの dos2unix 変換を省略します。
 * `timestamp` (省略可能、32 ビットの整数) このフィールドは、このフィールドの値を変更することによりスクリプトの再実行をトリガーする場合のみ使用します。  任意の整数値が使用できますが、前の値と異なる必要があります。
-* `commandToExecute`: (スクリプトが設定されていない場合は**必須**、文字列)  スクリプトの実行のエントリ ポイント。 コマンドにパスワードなどの機密情報が含まれている場合は、代わりにこのフィールドを使用します。
-* `script`: (commandToExecute が設定されていない場合は**必須**、文字列) /bin/sh によって実行される、base64 でエンコードされた (または GZip 圧縮された) スクリプト。
+* `commandToExecute`: (スクリプトが設定されていない場合は **必須**、文字列)  スクリプトの実行のエントリ ポイント。 コマンドにパスワードなどの機密情報が含まれている場合は、代わりにこのフィールドを使用します。
+* `script`: (commandToExecute が設定されていない場合は **必須**、文字列) /bin/sh によって実行される、base64 でエンコードされた (または GZip 圧縮された) スクリプト。
 * `fileUris`: (省略可能、文字列の配列) ファイルをダウンロードする URL。
 * `storageAccountName`: (省略可能、文字列) ストレージ アカウントの名前。 ストレージの資格情報を指定する場合は、すべての `fileUris` が Azure BLOB の URL である必要があります。
 * `storageAccountKey`: (省略可能、文字列) ストレージ アカウントのアクセス キー
@@ -152,7 +153,7 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 
 #### <a name="property-skipdos2unix"></a>プロパティ: skipDos2Unix
 
-既定値は false で、dos2unix 変換が**実行されます**。
+既定値は false で、dos2unix 変換が **実行されます**。
 
 前のバージョンの CustomScript、Microsoft.OSTCExtensions.CustomScriptForLinux では、`\r\n` を `\n` に変換することによって DOS ファイルが UNIX ファイルに自動的に変換されます。 この変換がまだ存在し、既定ではオンに設定されています。 この変換は、fileUris からダウンロードされた、または、次の条件のいずれかに基づいてスクリプトが設定されたすべてのファイルに適用されます。
 
@@ -173,7 +174,7 @@ dos2unix 変換は、skipDos2Unix を true に設定することで省略でき�
 
 CustomScript では、ユーザー定義のスクリプトの実行がサポートされています。 commandToExecute と fileUris を 1 つの設定に結合するスクリプト設定。 Azure ストレージまたは GitHub gist からダウンロードするファイルを設定する代わりに、設定としてスクリプトをエンコードできます。 スクリプトは、commandToExecute と fileUris を置き換えるために使用できます。
 
-スクリプトは、base64 エンコードする**必要があります**。  スクリプトは**必要に応じて** GZip 圧縮できます。 スクリプトの設定は、パブリックまたは保護された設定で使用できます。 スクリプト パラメーターのデータの最大サイズは、256 KB です。 このサイズを超えるスクリプトは実行されません。
+スクリプトは、base64 エンコードする **必要があります**。  スクリプトは **必要に応じて** GZip 圧縮できます。 スクリプトの設定は、パブリックまたは保護された設定で使用できます。 スクリプト パラメーターのデータの最大サイズは、256 KB です。 このサイズを超えるスクリプトは実行されません。
 
 たとえば、/script.sh/ ファイルに次のスクリプトが保存されているとします。
 
@@ -212,7 +213,7 @@ CustomScript では、次のアルゴリズムを使用して、スクリプト�
 
 ####  <a name="property-managedidentity"></a>プロパティ: managedIdentity
 > [!NOTE]
-> このプロパティは、保護された設定でのみ指定する**必要があります**。
+> このプロパティは、保護された設定でのみ指定する **必要があります**。
 
 CustomScript (バージョン 2.1 以降) では、"fileUris" 設定で指定された URL からファイルをダウンロードするための[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) がサポートされています。 これにより、ユーザーが SAS トークンやストレージ アカウント キーなどのシークレットを渡さなくとも、CustomScript で Azure Storage プライベート BLOB またはコンテナーにアクセスできるようになります。
 
@@ -250,7 +251,7 @@ CustomScript (バージョン 2.1 以降) では、"fileUris" 設定で指定さ
 > ```
 
 > [!NOTE]
-> managedIdentity プロパティ を storageAccountName プロパティまたは storageAccountKey プロパティと組み合わせて使用することは**できません**
+> managedIdentity プロパティ を storageAccountName プロパティまたは storageAccountKey プロパティと組み合わせて使用することは **できません**
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用すると、Azure Resource Manager テンプレートのデプロイ時にカスタム スクリプト拡張機能を実行できます。 カスタム スクリプト拡張機能を含むサンプル テンプレートは、[GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux) で入手できます。

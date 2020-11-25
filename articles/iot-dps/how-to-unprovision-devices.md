@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 5683d40e9565068c6cd79eedb08b036eab2c54cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37099b551e004ebfc702dce37c2a1499aa46ff10
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531391"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950729"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法 
 
@@ -25,7 +25,7 @@ ms.locfileid: "90531391"
    - デバイスの登録を抹消する方法については、次を参照してください。 [Azure IoT Hub Device Provisioning サービスからの登録を抹消する方法](how-to-revoke-device-access-portal.md)です。
    - いずれかのプロビジョニング サービス SDK を使用してプログラムでデバイスの登録を抹消する方法については、[サービス SDK を使用したデバイスの登録の管理](how-to-manage-enrollments-sdks.md)に関する記事をご覧ください。
 
-2. 将来の通信とデータ転送を防ぐために、IoT Hub からデバイスの登録を解除します。 デバイスがプロビジョニングされた IoT Hub の ID レジストリで、もう一度一時的にデバイスのエントリを無効化するか、または永続的に削除します。 無効化についての詳細は[デバイスの無効化](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices)を参照してください。 IoT Hub リソースについては、[Azure Portal](https://portal.azure.com)の「デバイスの管理/IoT デバイス」を参照してください。
+2. 将来の通信とデータ転送を防ぐために、IoT Hub からデバイスの登録を解除します。 デバイスがプロビジョニングされた IoT Hub の ID レジストリで、もう一度一時的にデバイスのエントリを無効化するか、または永続的に削除します。 無効化についての詳細は[デバイスの無効化](../iot-hub/iot-hub-devguide-identity-registry.md#disable-devices)を参照してください。 IoT Hub リソースについては、[Azure Portal](https://portal.azure.com)の「デバイスの管理/IoT デバイス」を参照してください。
 
 デバイスをプロビジョニング解除するための実際の手順は、デバイスが使用している構成証明メカニズムと、プロビジョニング サービスで適用される登録エントリによって異なります。 次のセクションでは、登録と構成証明の種類に基づいて、プロセスの概要を説明します。
 
@@ -63,4 +63,4 @@ X.509 構成証明では、登録グループを使用してデバイスをプ�
 
 - 登録グループから 1 つのデバイスだけをプロビジョニング解除するには、次の手順を実行します。
   1. リーフ (デバイス) 証明書に対して無効化された個別登録を作成します。 これにより、そのデバイスのプロビジョニング サービスへのアクセスが取り消されますが、チェーン内に登録グループの署名証明書を持つ他のデバイスは引き続きアクセスを許可されます。 デバイスに対して無効化された個別登録を削除しないでください。 削除した場合、登録グループを使用してそのデバイスを再登録することが可能になります。 
-  2. その登録グループのプロビジョニング済みデバイスの一覧を使用して、デバイスがどの IoT Hub に対してプロビジョニングされているかを確認し、そのハブの ID レジストリからデバイスを無効化または削除します。 
+  2. その登録グループのプロビジョニング済みデバイスの一覧を使用して、デバイスがどの IoT Hub に対してプロビジョニングされているかを確認し、そのハブの ID レジストリからデバイスを無効化または削除します。

@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 21d4af6985dbe246e60fe95f8f03de7f8aa0501b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1383db44922a044f5e51075b6e1feafa70c78009
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314064"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958761"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする 
 
@@ -435,7 +436,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-5. **[A]** SAP HANA グループとユーザーを手動で作成します。 グループ sapsys とユーザー **hn1**adm の ID は、オンボード時に指定したものと同じ ID に設定する必要があります。 (この例では、ID は **1001** に設定されています)。ID が正しく設定されていない場合、ボリュームにアクセスすることはできません。 グループ sapsys とユーザー アカウント **hn1**adm と sapadm の ID は、すべての仮想マシンで同じである必要があります。  
+5. **[A]** SAP HANA グループとユーザーを手動で作成します。 グループ sapsys とユーザー **hn1** adm の ID は、オンボード時に指定したものと同じ ID に設定する必要があります。 (この例では、ID は **1001** に設定されています)。ID が正しく設定されていない場合、ボリュームにアクセスすることはできません。 グループ sapsys とユーザー アカウント **hn1** adm と sapadm の ID は、すべての仮想マシンで同じである必要があります。  
 
     <pre><code>
     # Create user group 
@@ -533,7 +534,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     sudo zypper install libgcc_s1 libstdc++6 libatomic1 
     </code></pre>
 
-4. **[2]、[3]** SAP HANA の `data` と `log` のディレクトリの所有権を **hn1**adm に変更します。   
+4. **[2]、[3]** SAP HANA の `data` と `log` のディレクトリの所有権を **hn1** adm に変更します。   
 
     <pre><code>
     # Execute as root
@@ -657,7 +658,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
 
 1. SAP HANA ワーカー ノードでノード クラッシュをシミュレートします。 次の操作を行います。 
 
-   a. ノード クラッシュをシミュレートする前に、**hn1**adm として次のコマンドを実行して環境の状態をキャプチャします。  
+   a. ノード クラッシュをシミュレートする前に、**hn1** adm として次のコマンドを実行して環境の状態をキャプチャします。  
 
    <pre><code>
     # Check the landscape status
@@ -712,7 +713,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
 
 2. 次のようにして、ネーム サーバーを強制終了します。
 
-   a. テストの前に、**hn1**adm として次のコマンドを実行し、環境の状態を確認します。  
+   a. テストの前に、**hn1** adm として次のコマンドを実行し、環境の状態を確認します。  
 
    <pre><code>
     #Landscape status 
@@ -734,7 +735,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     hanadb3, 3, 50313, 50314, 0.3, HDB|HDB_STANDBY, GRAY
    </code></pre>
 
-   b. アクティブなマスター ノード (この場合は **hanadb1**) で **hn1**adm として次のコマンドを実行します。  
+   b. アクティブなマスター ノード (この場合は **hanadb1**) で **hn1** adm として次のコマンドを実行します。  
 
     <pre><code>
         hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB kill
@@ -768,7 +769,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB start
    </code></pre>
 
-   **hanadb1**で SAP HANA が起動されると、次のような状態になります。  
+   **hanadb1** で SAP HANA が起動されると、次のような状態になります。  
 
    <pre><code>
     # Check the instance status

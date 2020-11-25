@@ -3,16 +3,16 @@ title: Azure Monitor の Log Analytics ワークスペースのデータ エク�
 description: Log Analytics のデータ エクスポートを使用すると、選択したテーブルのデータを収集する際に Log Analytics ワークスペースから Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。
 ms.subservice: logs
 ms.topic: conceptual
-ms.custom: references_regions
+ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 19d464f0148572f30ecd0c3ab1dcee7bd0315b87
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 1813da8a8a812eeded235d71c351ec352c42707c
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427804"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920085"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
 Azure Monitor で Log Analytics ワークスペースのデータ エクスポートを使用すると、Log Analytics ワークスペースで選択したテーブルのデータを収集する際に Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。 この記事では、この機能の詳細と、ワークスペースでデータ エクスポートを構成する手順について説明します。
@@ -117,7 +117,11 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 ### <a name="create-or-update-data-export-rule"></a>データ エクスポート ルールを作成または更新する
 データ エクスポート ルールでは、あるテーブル セットについて 1 つのエクスポート先にエクスポートするデータを定義します。 ルールはエクスポート先ごとに作成できます。
 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ワークスペース内のテーブルを表示するには、次の CLI コマンドを使用します。 必要なテーブルをコピーして、データ エクスポート ルールに含めることができます。
+
 ```azurecli
 az monitor log-analytics workspace table list -resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
 ```
@@ -133,6 +137,8 @@ CLI を使用してイベント ハブに対するデータ エクスポート �
 ```azurecli
 az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesId
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 REST API を使用してデータ エクスポート ルールを作成するには、次の要求を使用します。 この要求では、ベアラー トークン承認とコンテンツ タイプ application/json を使用する必要があります。
 
@@ -193,26 +199,38 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
   }
 }
 ```
+---
 
 ## <a name="view-data-export-configuration"></a>データ エクスポートの構成を表示する
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 CLI を使用してデータ エクスポート ルールの構成を表示するには、次のコマンドを使用します。
 
 ```azurecli
 az monitor log-analytics workspace data-export show --resource-group resourceGroupName --workspace-name workspaceName --name ruleName
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 REST API を使用してデータ エクスポート ルールの構成を表示するには、次の要求を使用します。 この要求では、ベアラー トークン承認を使用する必要があります。
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports/<data-export-name>?api-version=2020-08-01
 ```
+---
 
 ## <a name="disable-an-export-rule"></a>エクスポート ルールを無効にする
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 テストの実行中など、データを一定期間保持する必要がないときにエクスポートを停止できるように、エクスポート ルールを無効にすることができます。 CLI を使用してデータ エクスポート ルールを無効にするには、次のコマンドを使用します。
 
 ```azurecli
 az monitor log-analytics workspace data-export update --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --enable false
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 REST API を使用してデータ エクスポート ルールを無効にするには、次の要求を使用します。 この要求では、ベアラー トークン承認を使用する必要があります。
 
@@ -234,32 +252,45 @@ Content-type: application/json
     }
 }
 ```
+---
 
 ## <a name="delete-an-export-rule"></a>エクスポート ルールを削除する
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 CLI を使用してデータ エクスポート ルールを削除するには、次のコマンドを使用します。
 
 ```azurecli
 az monitor log-analytics workspace data-export delete --resource-group resourceGroupName --workspace-name workspaceName --name ruleName
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 REST API を使用してデータ エクスポート ルールを削除するには、次の要求を使用します。 この要求では、ベアラー トークン承認を使用する必要があります。
 
 ```rest
 DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports/<data-export-name>?api-version=2020-08-01
 ```
+---
 
 ## <a name="view-all-data-export-rules-in-a-workspace"></a>ワークスペース内のすべてのデータ エクスポート ルールを表示する
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 CLI を使用してワークスペース内のすべてのデータ エクスポート ルールを表示するには、次のコマンドを使用します。
 
 ```azurecli
 az monitor log-analytics workspace data-export list --resource-group resourceGroupName --workspace-name workspaceName
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 REST API を使用してワークスペース内のすべてのデータ エクスポート ルールを表示するには、次の要求を使用します。 この要求では、ベアラー トークン承認を使用する必要があります。
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports?api-version=2020-08-01
 ```
+---
 
 ## <a name="unsupported-tables"></a>サポート対象外のテーブル
 サポート対象外のテーブルがデータ エクスポート ルールに含まれている場合、構成は成功しますが、そのテーブルのデータはエクスポートされません。 そのテーブルが後でサポートされるようになると、その時点でテーブルのデータがエクスポートされます。

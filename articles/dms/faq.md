@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: b8f570c2cd5f3939bab0df0c4fefe1becc3c81da
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: bf6e61ef3dfb1c50166cf17168b4deeb21e958d7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893443"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962911"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Azure Database Migration Service の使用に関する FAQ。
 
@@ -32,7 +32,7 @@ Azure Database Migration Service は、複数のデータベース ソースか�
 * スムーズな移行を実現するための継続的な投資。
 
 **Q.Azure Database Migration Service では、現在、どのソースとターゲットのペアがサポートされていますか。**
-このサービスは現在、さまざまなソースとターゲットのペアや移行シナリオをサポートしています。 利用可能な移行シナリオごとの状態の完全な一覧については、記事「[Azure Database Migration Service によってサポートされる移行シナリオの状態](https://docs.microsoft.com/azure/dms/resource-scenario-status)」をご覧ください。
+このサービスは現在、さまざまなソースとターゲットのペアや移行シナリオをサポートしています。 利用可能な移行シナリオごとの状態の完全な一覧については、記事「[Azure Database Migration Service によってサポートされる移行シナリオの状態](./resource-scenario-status.md)」をご覧ください。
 
 その他の移行シナリオはプレビュー段階にあり、入手するには DMS プレビュー サイト経由で申請を送信する必要があります。 プレビュー段階にあるシナリオの完全な一覧、およびこれらのオファリングのいずれかに参加するためのサインアップについては、[DMS プレビュー サイト](https://aka.ms/dms-preview/)を参照してください。
 
@@ -40,7 +40,7 @@ Azure Database Migration Service は、複数のデータベース ソースか�
 SQL Server から移行する場合、Azure Database Migration Service でサポートされているソースは SQL Server 2005 から SQL Server 2019 までです。
 
 **Q:Azure Database Migration Service を使用する場合、オフライン移行とオンライン移行の違いは何ですか。**
-Azure Database Migration Service は、オフライン移行およびオンライン移行を行うことができます。 *オフライン*移行では、アプリケーションのダウンタイムが、移行の開始時に開始されます。 *オンライン*移行では、ダウンタイムが移行の最後の切り替え時だけに限定されます。 オフライン移行をテストして、ダウンタイムが許容可能かどうかを判断することをお勧めします。許容できない場合は、オンライン移行を行います。
+Azure Database Migration Service は、オフライン移行およびオンライン移行を行うことができます。 *オフライン* 移行では、アプリケーションのダウンタイムが、移行の開始時に開始されます。 *オンライン* 移行では、ダウンタイムが移行の最後の切り替え時だけに限定されます。 オフライン移行をテストして、ダウンタイムが許容可能かどうかを判断することをお勧めします。許容できない場合は、オンライン移行を行います。
 
 > [!NOTE]
 > Azure Database Migration Service を使用してオンライン移行を実行するには、Premium 価格レベルに基づいてインスタンスを作成する必要があります。 詳しくは、Azure Database Migration Service の[価格](https://azure.microsoft.com/pricing/details/database-migration/)に関するページをご覧ください。
@@ -58,11 +58,11 @@ Azure Migrate は、オンプレミスの仮想マシンから Azure IaaS への
 
 サポートされているすべての移行シナリオで共通の、Azure Database Migration Service の前提条件は、次のとおりです。
 
-* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。
-* 仮想ネットワークのネットワーク セキュリティ グループの規則によって 443、53、5671-5672、9350-9354、445、12000 の通信ポートがブロックされていないことを確認します。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)に関する記事を参照してください。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成します。これで、[ExpressRoute](../expressroute/expressroute-introduction.md) または [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。
+* 仮想ネットワークのネットワーク セキュリティ グループの規則によって 443、53、5671-5672、9350-9354、445、12000 の通信ポートがブロックされていないことを確認します。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](../virtual-network/virtual-network-vnet-plan-design-arm.md)に関する記事を参照してください。
 * ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
 
-Azure Database Migration Service を使用して特定の移行シナリオを試すために必要なすべての前提条件の一覧については、docs.microsoft.com にある Azure Database Migration Service [ドキュメント](https://docs.microsoft.com/azure/dms/dms-overview)の関連チュートリアルを参照してください。
+Azure Database Migration Service を使用して特定の移行シナリオを試すために必要なすべての前提条件の一覧については、docs.microsoft.com にある Azure Database Migration Service [ドキュメント](./dms-overview.md)の関連チュートリアルを参照してください。
 
 **Q.移行のソース データベースへのアクセスに使用されるファイアウォール規則の許可リストを作成するために、Azure Database Migration Service の IP アドレスを調べるには、どうすればよいですか。**
 Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。 サービスの IP アドレスは動的ですが、ExpressRoute を使用している場合、このアドレスは企業ネットワークによってプライベートに割り当てられます。 適切な IP アドレスを特定する最も簡単な方法は、プロビジョニングされた Azure Database Migration Service リソースと同じリソース グループを検索して、関連付けられているネットワーク インターフェイスを見つけることです。 通常、ネットワーク インターフェイス リソースの名前は、NIC 接頭辞で始まり、一意の文字と数字のシーケンスが続きます (NIC-jj6tnztnmarpsskr82rbndyp など)。 このネットワーク インターフェイス リソースを選択すると、Azure Portal のリソースの概要のページに、許可リストに含める必要がある IP アドレスが表示されます。
@@ -86,7 +86,7 @@ SQL Server エラー ログに対して次のクエリを実行して、SQL Serv
 ```
 
 **Q.Microsoft Azure Virtual Network をセットアップするにはどうすればよいですか。**
-仮想ネットワークのセットアップ手順を説明する複数の Microsoft チュートリアルがありますが、公式ドキュメントは [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) に関する記事に掲載されています。
+仮想ネットワークのセットアップ手順を説明する複数の Microsoft チュートリアルがありますが、公式ドキュメントは [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) に関する記事に掲載されています。
 
 ## <a name="usage"></a>使用法
 
@@ -96,7 +96,7 @@ SQL Server エラー ログに対して次のクエリを実行して、SQL Serv
 1. ターゲット データベースを作成します。
 2. ソース データベースを評価します。
     * 同種移行を行う場合は、[DMA](https://www.microsoft.com/download/details.aspx?id=53595) を使用して既存のデータベースを評価します。
-    * 異種移行 (競合ソースから) を行う場合は、[SSMA](https://aka.ms/get-ssma) を使用して既存のデータベースを評価します。 SSMA は、データベース オブジェクトを変換してスキーマをターゲット プラットフォームに移行する場合にも使用します。
+    * 異種移行 (競合ソースから) を行う場合は、[SSMA](/sql/ssma/sql-server-migration-assistant) を使用して既存のデータベースを評価します。 SSMA は、データベース オブジェクトを変換してスキーマをターゲット プラットフォームに移行する場合にも使用します。
 3. Azure Database Migration Service のインスタンスを作成する。
 4. ソース データベース、ターゲット データベース、および移行するテーブルを指定する移行プロジェクトを作成します。
 5. 完全読み込みを開始します。

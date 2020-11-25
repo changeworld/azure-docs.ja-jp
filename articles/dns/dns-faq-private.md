@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: 9d183f2da7b916b1547fa1f81aa877b1b5488b41
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 24f2ca238288854b99160a25c3d4dcedf8ce3368
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308437"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952388"
 ---
 # <a name="azure-private-dns-faq"></a>Azure プライベート DNS に関する FAQ
 
@@ -34,7 +34,7 @@ Azure での他の内部 DNS オプションの詳細については、「[VM �
 
 ## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>複数の仮想ネットワークの解決に同じプライベート ゾーンを使用できますか?
 
-はい。 プライベート DNS ゾーンは、数千の仮想ネットワークにリンクすることができます。 詳しくは、「[Azure DNS の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)」を参照してください。
+はい。 プライベート DNS ゾーンは、数千の仮想ネットワークにリンクすることができます。 詳しくは、「[Azure DNS の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits)」を参照してください。
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>別のサブスクリプションに属している仮想ネットワークをプライベート ゾーンにリンクできますか。
 
@@ -75,11 +75,11 @@ Azure DHCP サービスでは、プライベート DNS ゾーンを登録する�
 ## <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>リンクされた仮想ネットワーク内の仮想マシンの DNS サフィックスは、そのプライベート ゾーンの DNS サフィックスに変更されますか。
 
 いいえ。 リンクされた仮想ネットワーク内の仮想マシン上の DNS サフィックスは、Azure 提供の既定のサフィックス ("*.internal.cloudapp.net") のままです。 仮想マシン上のこの DNS サフィックスをプライベート ゾーンの DNS サフィックスに手動で変更できます。
-このサフィックスを変更する方法のガイダンスについては、「[動的 DNS を使用して独自の DNS サーバーでホスト名を登録する](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-ddns#windows-clients)」を参照してください。
+このサフィックスを変更する方法のガイダンスについては、「[動的 DNS を使用して独自の DNS サーバーでホスト名を登録する](../virtual-network/virtual-networks-name-resolution-ddns.md#windows-clients)」を参照してください。
 
 ## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>Azure DNS プライベート ゾーンの使用制限とは何ですか。
 
-Azure DNS プライベート ゾーンの使用制限の詳細については、「[Azure DNS の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)」を参照してください。
+Azure DNS プライベート ゾーンの使用制限の詳細については、「[Azure DNS の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits)」を参照してください。
 
 ## <a name="why-dont-my-existing-private-dns-zones-show-up-in-new-portal-experience"></a>既存のプライベート DNS ゾーンが新しいポータル エクスペリエンスに表示されないのはなぜですか。
 

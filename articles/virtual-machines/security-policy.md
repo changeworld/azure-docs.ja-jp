@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 06d71713075b401c876edd87f0ec884bcb252589
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 83d291ae72e79ec3600015fac07ee4ab80fe5df4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977750"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843555"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Azure で仮想マシンをセキュリティで保護し、ポリシーを使用する
 
@@ -39,7 +39,7 @@ Azure マネージド ディスクは、データをクラウドに永続化す�
 
 暗号化はマネージド ディスクのパフォーマンスに影響しません。 暗号化に追加コストはかかりません。
 
-プラットフォーム マネージド キーを利用してお使いのマネージド ディスクを暗号化することも、お使いの独自のキーを使用して暗号化を管理することもできます。 独自のキーを使用して暗号化を管理する場合は、マネージド ディスク内のすべてのデータの暗号化と暗号化解除に使用する*カスタマー マネージド キー*を指定できます。 
+プラットフォーム マネージド キーを利用してお使いのマネージド ディスクを暗号化することも、お使いの独自のキーを使用して暗号化を管理することもできます。 独自のキーを使用して暗号化を管理する場合は、マネージド ディスク内のすべてのデータの暗号化と暗号化解除に使用する *カスタマー マネージド キー* を指定できます。 
 
 サーバー側の暗号化の詳細については、[Windows](windows/disk-encryption.md) または [Linux](linux/disk-encryption.md) の記事を参照してください。
 
@@ -67,7 +67,7 @@ VM に接続するときは、公開キー暗号化を使用して、より安�
 
 社内の [Windows VM](./windows/policy.md) と [Linux VM](./linux/policy.md) には、[Azure ポリシー](../governance/policy/overview.md)を使って必要な動作を定義することができます。 ポリシーを使用すると、さまざまな習慣や規則を企業全体に適用できます。 望ましい行動を強制することによって、組織の成功に貢献しつつ、リスクを軽減することができます。
 
-## <a name="role-based-access-control"></a>ロールベースのアクセス制御
+## <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 
 [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) を使用すると、チーム内の職務を分離し、VM 上のユーザーに自分の職務を実行するために必要な量のアクセスのみを付与できます。 すべてのユーザーに VM への無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。 VM のアクセス制御は、[Azure Portal](../role-based-access-control/role-assignments-portal.md) で構成できるほか、[Azure CLI](/cli/azure/role) または [Azure PowerShell](../role-based-access-control/role-assignments-powershell.md) を使って構成することもできます。
 

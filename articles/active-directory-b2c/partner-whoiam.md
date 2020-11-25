@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 718ccbaa57ffe9f4ebaf4e8df448b602ba8cc3fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1b2c7513562e951e1098cf327780387ddf6a495
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89293152"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953544"
 ---
 # <a name="tutorial-for-configuring-whoiam-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して WhoIAM を構成するためのチュートリアル
 
@@ -30,7 +30,7 @@ BRIMS は、お使いの環境にデプロイされるアプリとサービス�
 
 - Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 
-- お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。
+- お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](./tutorial-create-tenant.md)。
 
 - WhoIAM [試用版アカウント](https://www.whoiam.ai/contact-us/)。
 
@@ -72,7 +72,7 @@ WhoIAM 統合には、次のコンポーネントが含まれています。
 
     - [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/):設定を格納および取得するために使用されます。
 
-    - [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview#:~:text=Application%20Insights%2C%20a%20feature%20of%20Azure%20Monitor%2C%20is,professionals.%20Use%20it%20to%20monitor%20your%20live%20applications) (省略可能):API と管理ポータルの両方にログインするために使用されます。
+    - [Application Insights](../azure-monitor/app/app-insights-overview.md) (省略可能):API と管理ポータルの両方にログインするために使用されます。
 
 3. BRIMS API と BRIMS 管理ポータルを Azure 環境にデプロイします。
 
@@ -102,6 +102,6 @@ WhoIAM の BRIMS の詳細については、[製品ドキュメント](https://w
 
 追加情報については、次の記事を参照してください。
 
-- [Azure AD B2C のカスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 4e5becdd026b0a1c9e848b183ebeee5833654461
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3a8881b9fe44727caf07b3cc0d5ee19f0444e98
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259273"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953663"
 ---
 # <a name="tutorial-for-configuring-jumio-with-azure-active-directory-b2c"></a>Jumio と Azure Active Directory B2C を構成するチュートリアル
 
@@ -28,7 +28,7 @@ ms.locfileid: "91259273"
 
 - Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 
-- お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。
+- お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](./tutorial-create-tenant.md)。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -65,7 +65,7 @@ Jumio アカウントを作成したら、そのアカウントを使用して A
 
 ### <a name="deploy-the-api"></a>API をデプロイする
 
-提供された [API コード](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/API/Jumio.Api)を Azure サービスにデプロイします。 このコードは、[これらの手順](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)に従って、Visual Studio から発行することができます。
+提供された [API コード](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/API/Jumio.Api)を Azure サービスにデプロイします。 このコードは、[これらの手順](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)に従って、Visual Studio から発行することができます。
 
 >[!NOTE]
 >必要な設定で Azure AD を構成するには、デプロイされたサービスの URL が必要です。
@@ -85,7 +85,7 @@ Jumio アカウントを作成したら、そのアカウントを使用して A
 
    これで、証明書は ``{your-local-path}`` に指定された場所にエクスポートされます。
 
-3. [この記事](https://docs.microsoft.com/azure/app-service/configure-ssl-certificate#upload-a-private-certificate)の手順に従って、証明書を Azure App Service にインポートします。
+3. [この記事](../app-service/configure-ssl-certificate.md#upload-a-private-certificate)の手順に従って、証明書を Azure App Service にインポートします。
 
 ### <a name="create-a-signingencryption-key"></a>署名キーと暗号化キーを作成する
 
@@ -102,7 +102,7 @@ Jumio アカウントを作成したら、そのアカウントを使用して A
 
 ### <a name="configure-the-api"></a>API を構成する
 
-[Azure App Service でアプリケーション設定を構成する](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)ことができます。 この方法では、設定をリポジトリにチェックインすることなく、安全に構成できます。 REST API に次の設定を指定する必要があります。
+[Azure App Service でアプリケーション設定を構成する](../app-service/configure-common.md#configure-app-settings)ことができます。 この方法では、設定をリポジトリにチェックインすることなく、安全に構成できます。 REST API に次の設定を指定する必要があります。
 
 | アプリケーションの設定 | source | Notes |
 | :-------- | :------------| :-----------|
@@ -118,7 +118,7 @@ Jumio アカウントを作成したら、そのアカウントを使用して A
 
 ### <a name="deploy-the-ui"></a>UI をデプロイする
 
-1. [ストレージ アカウントで BLOB ストレージ コンテナー](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)を設定します。
+1. [ストレージ アカウントで BLOB ストレージ コンテナー](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)を設定します。
 
 2. UI ファイルを [UI フォルダー](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/UI)からお使いの BLOB コンテナーに格納します。
 
@@ -139,7 +139,7 @@ Jumio アカウントを作成したら、そのアカウントを使用して A
 
 1. ポリシー フォルダーの [Azure AD B2C ポリシー](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/Policies)に移動します。
 
-2. [この記事](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack)に従って、[LocalAccounts スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)をダウンロードします。
+2. [この記事](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack)に従って、[LocalAccounts スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)をダウンロードします。
 
 3. Azure AD B2C テナントのポリシーを構成します。
 
@@ -168,6 +168,6 @@ Jumio アカウントを作成したら、そのアカウントを使用して A
 
 追加情報については、次の記事を参照してください。
 
-- [Azure AD B2C のカスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)

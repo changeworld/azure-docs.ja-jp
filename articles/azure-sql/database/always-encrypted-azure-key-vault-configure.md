@@ -5,19 +5,19 @@ keywords: データの暗号化, 暗号化キー, クラウドの暗号化
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 11/02/2020
-ms.openlocfilehash: 45aca00adab8ef5b33a376af34642261c5e73255
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 257abf03994c7006b1c3789174f550515dcd309a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321620"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841463"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Azure Key Vault を使用した Always Encrypted の構成 
 
@@ -49,13 +49,13 @@ Always Encrypted を使用するようデータベースを構成したら、Vis
 
 ## <a name="enable-client-application-access"></a>クライアント アプリケーションへのアクセスを有効にする
 
-Azure Active Directory (Azure AD) アプリケーションを設定し、アプリケーションを認証するために必要な " *アプリケーション ID* " と " *キー* " をコピーして、クライアント アプリケーションから SQL Database 内のデータベースにアクセスできるようにする必要があります。
+Azure Active Directory (Azure AD) アプリケーションを設定し、アプリケーションを認証するために必要な "*アプリケーション ID*" と "*キー*" をコピーして、クライアント アプリケーションから SQL Database 内のデータベースにアクセスできるようにする必要があります。
 
-" *アプリケーション ID* " と " *キー* " を取得するには、 [リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルの作成](../../active-directory/develop/howto-create-service-principal-portal.md)に関するページの手順に従ってください。
+"*アプリケーション ID*" と "*キー*" を取得するには、[リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルの作成](../../active-directory/develop/howto-create-service-principal-portal.md)に関するページの手順に従ってください。
 
 ## <a name="create-a-key-vault-to-store-your-keys"></a>キーを格納する Key Vault を作成する
 
-これで、クライアント アプリの構成が完了したので、アプリケーション ID の Key Vault を作成し、ユーザーおよびアプリケーションが資格情報コンテナーの機密情報 (Always Encrypted キー) にアクセスすることを許可するアクセス ポリシーを構成できます。 新しい列のマスター キーを作成したり、SQL Server Management Studio で暗号化を設定したりするには、 *create* *get* *list* *sign* *verify* *wrapKey* 、および *unwrapKey* 権限が必要です。
+これで、クライアント アプリの構成が完了したので、アプリケーション ID の Key Vault を作成し、ユーザーおよびアプリケーションが資格情報コンテナーの機密情報 (Always Encrypted キー) にアクセスすることを許可するアクセス ポリシーを構成できます。 新しい列のマスター キーを作成したり、SQL Server Management Studio で暗号化を設定したりするには、*create* *get* *list* *sign* *verify* *wrapKey*、および *unwrapKey* 権限が必要です。
 
 次のスクリプトを実行して、Key Vault をすばやく作成できます。 これらのコマンドの詳細、およびキー コンテナーの作成と構成の詳細については、「[Azure Key Vault とは](../../key-vault/general/overview.md)」をご覧ください。
 
@@ -197,7 +197,7 @@ SSMS でキーが生成されていることを確認するには、 **[Clinic]*
 
 ## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>暗号化されたデータを扱うクライアント アプリケーションを作成する
 
-Always Encrypted を設定したので、暗号化された列に対して、 *inserts* や *selects* を実行するアプリケーションを構築できます。  
+Always Encrypted を設定したので、暗号化された列に対して、*inserts* や *selects* を実行するアプリケーションを構築できます。  
 
 > [!IMPORTANT]
 > Always Encrypted 列を構成したサーバーにプレーンテキスト データを渡す場合は、 [SqlParameter](/dotnet/api/system.data.sqlclient.sqlparameter) オブジェクトを使用する必要があります。 SqlParameter オブジェクトを使用せずにリテラル値を渡すと、例外が発生します。
@@ -217,7 +217,7 @@ Always Encrypted を設定したので、暗号化された列に対して、 *i
 
 このセクションでは、データベース接続文字列で Always Encrypted を有効にする方法を説明します。
 
-Always Encrypted を有効にするには、接続文字列に **Column Encryption Setting** キーワードを追加し、 **Enabled** に設定します。
+Always Encrypted を有効にするには、接続文字列に **Column Encryption Setting** キーワードを追加し、**Enabled** に設定します。
 
 接続文字列で直接設定することも、 [SqlConnectionStringBuilder](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder)を使用して設定することもできます。 **SqlConnectionStringBuilder** を使用する方法については、次のセクションでサンプル アプリケーションを使って説明します。
 
@@ -576,13 +576,13 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
    ![暗号化された列にプレーンテキスト データが含まれていないことを示すスクリーンショット。](./media/always-encrypted-azure-key-vault-configure/ssms-encrypted.png)
 
-プレーンテキスト データにアクセスする SSMS を使用するには、まず、ユーザーが Azure Key Vault への適切なアクセス許可、 *get* 、 *unwrapKey* 、および *verify* を持っていることを確認する必要があります。 詳細については、「[列マスター キーを作成して保存する (Always Encrypted)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted)」を参照してください。
+プレーンテキスト データにアクセスする SSMS を使用するには、まず、ユーザーが Azure Key Vault への適切なアクセス許可、*get*、*unwrapKey*、および *verify* を持っていることを確認する必要があります。 詳細については、「[列マスター キーを作成して保存する (Always Encrypted)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted)」を参照してください。
 
 次に、接続中に *Column Encryption Setting=enabled* パラメーターを追加します。
 
 1. SSMS の **オブジェクト エクスプローラー** でサーバーを右クリックし、 **[切断]** を選択します。
 2. **[接続]**  >  **[データベース エンジン]** の順にクリックして **[サーバーへの接続]** ウィンドウを開き、 **[オプション]** をクリックします。
-3. **[追加の接続パラメーター]** をクリックし、「 **Column Encryption Setting=enabled** 」と入力します。
+3. **[追加の接続パラメーター]** をクリックし、「**Column Encryption Setting=enabled**」と入力します。
 
     ![[追加の修正パラメーター] タブが表示されているスクリーンショット。](./media/always-encrypted-azure-key-vault-configure/ssms-connection-parameter.png)
 

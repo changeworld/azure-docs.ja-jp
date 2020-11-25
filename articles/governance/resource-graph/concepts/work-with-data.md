@@ -3,13 +3,13 @@ title: 大規模なデータ セットを処理する
 description: Azure Resource Graph の操作中に大きなデータ セット内のレコードを取得、書式設定、ページング、およびスキップする方法について説明します。
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.custom: devx-track-csharp
-ms.openlocfilehash: ee552908696aa652931bf3555391adcfec0fc6d3
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 6054d2cd2cf012c21f451ece87db672897fa0398
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578497"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843351"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>大規模な Azure リソース データ セットの処理
 
@@ -38,10 +38,10 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 
 "_最も制限の厳しい_" コントロールが選択されます。 たとえば、クエリに含まれる **top** または **limit** 演算子で指定されているレコード数が **First** より多い場合、返される最大レコード数は **First** と等しくなります。 同様に、**top** または **limit** が **First** より小さい場合は、返されるレコード セットは **top** または **limit** で構成されている小さい方の値になります。
 
-**First** の最大許容値は現在 _5000_ であり、これは、結果の _1000_ 件のレコードを一度に[ページング](#paging-results)することで実現されます。
+**First** の最大許容値は現在 _5000_ であり、これは、結果の _1000_ 件のレコードを一度に [ページング](#paging-results)することで実現されます。
 
 > [!IMPORTANT]
-> **First** が _1000_ 件を超えるレコード数になるように構成されている場合、改ページ位置の自動修正が機能するためには、**id** フィールドをクエリに**反映する**する必要があります。 これがクエリに含まれていない場合、応答は[改ページ](#paging-results)されず、結果は _1000_ レコードに制限されます。
+> **First** が _1000_ 件を超えるレコード数になるように構成されている場合、改ページ位置の自動修正が機能するためには、**id** フィールドをクエリに **反映する** する必要があります。 これがクエリに含まれていない場合、応答は [改ページ](#paging-results)されず、結果は _1000_ レコードに制限されます。
 
 ## <a name="skipping-records"></a>レコードのスキップ
 
@@ -69,7 +69,7 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 
  ページングが無効になっているか、`id` 列がないためにページングを使用できない場合、または使用可能なリソースがクエリで要求されている量に満たない場合、**resultTruncated** は **true** です。 **resultTruncated** が **true** のときは、 **$skipToken** プロパティは設定されません。
 
-次の例では、Azure CLI および Azure PowerShell で、最初の 3000 個のレコードを**スキップ**し、これらのスキップされたレコードの後の**最初の** 1000 個のレコードを返す方法を示します。
+次の例では、Azure CLI および Azure PowerShell で、最初の 3000 個のレコードを **スキップ** し、これらのスキップされたレコードの後の **最初の** 1000 個のレコードを返す方法を示します。
 
 ```azurecli-interactive
 az graph query -q "Resources | project id, name | order by id asc" --first 1000 --skip 3000
@@ -80,7 +80,7 @@ Search-AzGraph -Query "Resources | project id, name | order by id asc" -First 10
 ```
 
 > [!IMPORTANT]
-> 改ページ位置の自動修正が機能するためには、**id** フィールドをクエリに**反映する**必要があります。 それがクエリにないと、応答には **$skipToken** が含まれません。
+> 改ページ位置の自動修正が機能するためには、**id** フィールドをクエリに **反映する** 必要があります。 それがクエリにないと、応答には **$skipToken** が含まれません。
 
 例については、REST API のドキュメントの「[Next page query (次のページのクエリ)](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources#next-page-query)」をご覧ください。
 

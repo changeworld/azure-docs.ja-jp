@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 12725c28c3e128317301bc51f9ce93f76021cc2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 249667dfa8c0491027f0244d4aa5e49d19399ab0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291369"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955040"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-managed-instance-online-using-dms"></a>チュートリアル:DMS を使用して RDS SQL Server を Azure SQL Database または Azure SQL マネージド インスタンスにオンラインで移行する
 
-Azure Database Migration Service を使用すれば、RDS SQL Server インスタンスから [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) または [Azure SQL マネージド インスタンス](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)に最小限のダウンタイムでデータベースを移行できます。 このチュートリアルでは、Azure Database Migration Service を使用して、SQL Server 2012 (以降) の RDS SQL Server インスタンスに復元された **Adventureworks2012** データベースを SQL Database または SQL マネージド インスタンスに移行します。
+Azure Database Migration Service を使用すれば、RDS SQL Server インスタンスから [Azure SQL Database](/azure/sql-database/) または [Azure SQL マネージド インスタンス](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)に最小限のダウンタイムでデータベースを移行できます。 このチュートリアルでは、Azure Database Migration Service を使用して、SQL Server 2012 (以降) の RDS SQL Server インスタンスに復元された **Adventureworks2012** データベースを SQL Database または SQL マネージド インスタンスに移行します。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -48,12 +48,12 @@ Azure Database Migration Service を使用すれば、RDS SQL Server インス�
 このチュートリアルを完了するには、以下を実行する必要があります。
 
 * [RDS SQL Server データベース](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.SQLServer.html)を作成します。
-* [Azure portal で Azure SQL Database のデータベースを作成](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)するか、または [SQL Managed Instance でデータベースを作成](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)してから、**AdventureWorks2012** という名前の空のデータベースを作成します。 
+* [Azure portal で Azure SQL Database のデータベースを作成](../azure-sql/database/single-database-create-quickstart.md)するか、または [SQL Managed Instance でデータベースを作成](../azure-sql/managed-instance/instance-create-quickstart.md)してから、**AdventureWorks2012** という名前の空のデータベースを作成します。 
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) v3.3 以降をダウンロードしてインストールします。
-* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成します。 SQL マネージド インスタンスに移行する場合は、SQL マネージド インスタンスに使用されるのと同じ仮想ネットワーク内の異なるサブネットに DMS インスタンスを作成します。  または、DMS に異なる仮想ネットワークを使用する場合、2 つの仮想ネットワーク間に仮想ネットワーク ピアリングを作成する必要があります。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成します。 SQL マネージド インスタンスに移行する場合は、SQL マネージド インスタンスに使用されるのと同じ仮想ネットワーク内の異なるサブネットに DMS インスタンスを作成します。  または、DMS に異なる仮想ネットワークを使用する場合、2 つの仮想ネットワーク間に仮想ネットワーク ピアリングを作成する必要があります。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](../virtual-network/index.yml)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
 
     > [!NOTE]
-    > 仮想ネットワークのセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用する場合は、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を追加してください。
+    > 仮想ネットワークのセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用する場合は、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を追加してください。
     >
     > * ターゲット データベース エンドポイント (SQL エンドポイント、Cosmos DB エンドポイントなど)
     > * ストレージ エンドポイント
@@ -61,10 +61,10 @@ Azure Database Migration Service を使用すれば、RDS SQL Server インス�
     >
     > Azure Database Migration Service にはインターネット接続がないため、この構成が必要となります。 
 
-* 仮想ネットワークのネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への以下のインバウンド通信ポートが確実にブロックされないようにします。443、53、9354、445、12000。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)に関する記事を参照してください。
-* [データベース エンジン アクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
+* 仮想ネットワークのネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への以下のインバウンド通信ポートが確実にブロックされないようにします。443、53、9354、445、12000。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](../virtual-network/virtual-network-vnet-plan-design-arm.md)に関する記事を参照してください。
+* [データベース エンジン アクセスのために Windows ファイアウォール](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
 * Azure Database Migration Service がソースの SQL Server にアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 1433 が使用されます。
-* SQL Database の場合は、サーバー レベルの[ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service からターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用する仮想ネットワークのサブネット範囲を指定します。
+* SQL Database の場合は、サーバー レベルの[ファイアウォール規則](../azure-sql/database/firewall-configure.md)を作成して、Azure Database Migration Service からターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用する仮想ネットワークのサブネット範囲を指定します。
 * ソース RDS SQL Server インスタンスへの接続に使用される資格情報が、"Processadmin" サーバー ロールのメンバーであり、移行対象のすべてのデータベースで "db_owner" データベース ロールのメンバーであるアカウントに、関連付けられていることを確認します。
 * ターゲットのデータベースへの接続に使用される資格情報に、SQL Database 内のターゲットのデータベースに対する CONTROL DATABASE アクセス許可を確実に含め、SQL Managed Instance に移行する場合は、sysadmin ロールのメンバーを確実に含めます。
 * ソース RDS SQL Server のバージョンは SQL Server 2012 以降である必要があります。 SQL Server インスタンスが実行されているバージョンを確認する方法については、「[バージョン、エディション、および SQL Server の更新プログラム レベルとそのコンポーネントを確認する方法](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an)」の記事を参照してください。
@@ -94,7 +94,7 @@ Azure Database Migration Service を使用すれば、RDS SQL Server インス�
     select * from sys.triggers
     DISABLE TRIGGER (Transact-SQL)
     ```
-    詳細については、記事「[DISABLE TRIGGER (Transact-SQL) ](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017)」を参照してください。
+    詳細については、記事「[DISABLE TRIGGER (Transact-SQL) ](/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017)」を参照してください。
 
 ## <a name="migrate-the-sample-schema"></a>サンプル スキーマを移行する
 スキーマを移行するには、DMA を使用します。
@@ -171,7 +171,7 @@ Azure Database Migration Service を使用すれば、RDS SQL Server インス�
 
     この仮想ネットワークによって、Azure Database Migration Service に、ソースの SQL Server とターゲットの SQL Database または SQL Managed Instance へのアクセスが提供されます。
 
-    Azure portal で仮想ネットワークを作成する方法の詳細については、「[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/DMSVnet)」を参照してください。
+    Azure portal で仮想ネットワークを作成する方法の詳細については、「[Azure portal を使用した仮想ネットワークの作成](../virtual-network/quick-create-portal.md)」を参照してください。
 
 6. 価格レベルを選択します。このオンライン移行では、Premium 価格レベルを必ず選択します。
 
@@ -274,7 +274,7 @@ Azure Database Migration Service を使用すれば、RDS SQL Server インス�
 
 1. 移行アクティビティ画面で、移行の **[状態]** が **[実行中]** になるまで **[最新の情報に更新]** を選択して表示を更新します。
 
-2. 特定のデータベースを選択して、**データ全体の読み込み**操作と**増分データ同期**操作の移行状態を取得します。
+2. 特定のデータベースを選択して、**データ全体の読み込み** 操作と **増分データ同期** 操作の移行状態を取得します。
 
     ![アクティビティの状態 - 進行中](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-activity-in-progress.png)
 
@@ -295,6 +295,6 @@ Azure Database Migration Service を使用すれば、RDS SQL Server インス�
 ## <a name="next-steps"></a>次のステップ
 
 * Azure へのオンライン移行を実行する場合の既知の問題と制限事項については、[オンライン移行に伴う既知の問題と回避策](known-issues-azure-sql-online.md)に関する記事を参照してください。
-* Database Migration Service については、[Database Migration Service の概要](https://docs.microsoft.com/azure/dms/dms-overview)に関する記事を参照してください。
-* SQL Database については、[SQL Database サービスの概要](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)に関する記事を参照してください。
-* SQL Managed Instance については、[SQL Managed Instance とは](https://docs.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview)に関する記事を参照してください。
+* Database Migration Service については、[Database Migration Service の概要](./dms-overview.md)に関する記事を参照してください。
+* SQL Database については、[SQL Database サービスの概要](../azure-sql/database/sql-database-paas-overview.md)に関する記事を参照してください。
+* SQL Managed Instance については、[SQL Managed Instance とは](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)に関する記事を参照してください。

@@ -3,16 +3,17 @@ title: HB シリーズ VM の概要 - Azure Virtual Machines | Microsoft Docs
 description: Azure での HB シリーズ VM サイズのプレビューサポートについて説明します。
 author: vermagit
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: d11ec99d10d74956c43c24145abbd291d9e2d2a9
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 1e37f13bc6e819079c63c583a1eeda12af5e213c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996237"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965461"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>HB シリーズ仮想マシンの概要
 

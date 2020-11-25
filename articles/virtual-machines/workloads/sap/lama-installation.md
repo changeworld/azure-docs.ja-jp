@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: be7cfef5c7121d918c375dae216d293d9d56526b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: e3f541e28f47bb6456b441811d23baa9e020fde7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890481"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959154"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Azure 用の SAP LaMa コネクタ
 
@@ -447,7 +448,7 @@ SWPM を実行し、 *[ASCS Instance Host Name]\(ASCS インスタンス ホス�
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-db -n 255.255.255.128
 ```
 
-SQL Server 仮想マシンで SWPM のデータベース インスタンスのインストールを実行します。 SAPINST_USE_HOSTNAME= *as1-db* を使用して、SQL Server への接続に使用するホスト名をオーバーライドします。 Azure Resource Manager テンプレートを使用して仮想マシンをデプロイした場合は、データベース データ ファイルに使用するディレクトリを *C:\sql\data* 、データベース ログ ファイルに使用するディレクトリを *C:\sql\log* に設定してください。
+SQL Server 仮想マシンで SWPM のデータベース インスタンスのインストールを実行します。 SAPINST_USE_HOSTNAME=*as1-db* を使用して、SQL Server への接続に使用するホスト名をオーバーライドします。 Azure Resource Manager テンプレートを使用して仮想マシンをデプロイした場合は、データベース データ ファイルに使用するディレクトリを *C:\sql\data*、データベース ログ ファイルに使用するディレクトリを *C:\sql\log* に設定してください。
 
 ユーザー *NT AUTHORITY\SYSTEM* が SQL Server にアクセスできること、およびサーバー ロール *sysadmin* が割り当てられていることを確認します。 詳しくは、SAP Note [1877727] および [2562184] をご覧ください。
 

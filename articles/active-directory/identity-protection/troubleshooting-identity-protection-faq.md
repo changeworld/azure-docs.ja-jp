@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec45ce7634b7bc0a8f38f354112cdc2e172f1e17
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 58f0ffa8bd43a8428603334b6c89fa1cf36315b5
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288369"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987339"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory Identity Protection についてよく寄せられる質問
 
@@ -37,7 +37,7 @@ Azure AD Identity Protection のお客様であれば、[危険なユーザー](
 
 ## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>サインインがブロックされたのに、Identity Protection でリスクの検出が生成されなかったのはなぜですか?
 サインインはいくつかの理由でブロックされる可能性があります。 Identity Protection を使用すると、認証要求で正しい資格情報が使用されたときのリスクの検出だけが生成されることに注意してください。 ユーザーが正しくない資格情報を使用した場合は、不正なアクターによって正しい資格情報が使用されているのでない限り、資格情報の侵害のリスクがないため、Identity Protection によってフラグは設定されません。 ユーザーがサインインをブロックされても Identity Protection の検出が生成されない場合に可能性がある理由としては、次のようなものがあります。
-* IP アドレスからの悪意のあるアクティビティのため、 **IP がブロックされる可能性があります** 。 IP ブロック メッセージを見ても、資格情報が正しかったかどうかはわかりません。 IP がブロックされていて、正しい資格情報が使用されていない場合、Identity Protection の検出は生成されません。
+* IP アドレスからの悪意のあるアクティビティのため、**IP がブロックされる可能性があります**。 IP ブロック メッセージを見ても、資格情報が正しかったかどうかはわかりません。 IP がブロックされていて、正しい資格情報が使用されていない場合、Identity Protection の検出は生成されません。
 * **[スマート ロックアウト](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)** により、複数回失敗した後でアカウントのサインインがブロックされることがあります
 * リスク レベル以外の条件を使用して認証要求をブロックする **条件付きアクセス ポリシー** が適用されている可能性があります
 
@@ -95,6 +95,4 @@ IP の地理的位置情報のマッピングについては、業界全体の�
 
 集計リスク スコアが高であるのは、サインインの他の特徴、またはそのサインインに対して複数の検出が行われたという事実に基づく可能性があります。 逆に、サインインに関連付けられている検出のリスクが「高」の場合でも、サインインのサインイン リスク (集計) が「中」になることがあります。 
 
-### <a name="why-is-the-detection-which-is-linked-to-a-risky-sign-in-have-a-different-risk-level-than-the-sign-in-risk-level-real-time"></a>危険なサインインにリンクされている検出のリスク レベルがサインインのリスク レベル (リアルタイム) と異なります。なぜでしょうか。 
 
-最近、リアルタイム サインイン リスクの計算方法を強化しました。 リスク検出レベルとサインインのリスク レベルの間で観察される不一致はその変更の結果です。 リアルタイム サインイン リスクはポリシー適用中に使用される値であることにご留意ください。 
