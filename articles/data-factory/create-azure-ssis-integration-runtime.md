@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 55083da596f15409ed460e498438f9eaea10dfa8
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: effa0d3ba9f7098b691605bfbd76bff9ea3d5e66
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633231"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023433"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory で Azure-SSIS 統合ランタイムを作成する
 
@@ -43,7 +43,7 @@ Azure-SSIS IR のプロビジョニング後は、使い慣れたツールを使
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure サブスクリプション** 。 まだサブスクリプションをお持ちでない場合は、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)アカウントを作成できます。
+- **Azure サブスクリプション**。 まだサブスクリプションをお持ちでない場合は、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)アカウントを作成できます。
 
 - **Azure SQL Database サーバーまたは SQL Managed Instance (オプション)** 。 まだデータベース サーバーまたはマネージド インスタンスをお持ちでない場合は、あらかじめ Azure portal でデータベース サーバーを作成しておいてください。 その後、Data Factory によって、このデータベース サーバーに SSISDB インスタンスが作成されます。 
 
@@ -120,7 +120,7 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
    4. **[ノード サイズ]** で、統合ランタイム クラスター内のノードのサイズを選択します。 サポートされているノード サイズのみが表示されます。 コンピューティングやメモリを大量に使用するパッケージを多数実行する場合は、大きなノード サイズを選択します (スケールアップ)。
    > [!NOTE]
-   > [コンピューティングの分離](../azure-government/azure-secure-isolation-guidance.md#compute-isolation)を必要とする場合は、 **Standard_E64i_v3** ノード サイズを選択してください。 このノード サイズは、物理ホスト全体を消費し、特定のワークロード (米国国防総省の影響レベル 5 (IL5) のワークロードなど) で必要とされる分離レベルを提供する分離された仮想マシンを表します。
+   > [コンピューティングの分離](../azure-government/azure-secure-isolation-guidance.md#compute-isolation)を必要とする場合は、**Standard_E64i_v3** ノード サイズを選択してください。 このノード サイズは、物理ホスト全体を消費し、特定のワークロード (米国国防総省の影響レベル 5 (IL5) のワークロードなど) で必要とされる分離レベルを提供する分離された仮想マシンを表します。
    
    5. **[Node Number]\(ノード数\)** で、統合ランタイム クラスター内のノードの数を選択します。 サポートされているノード数のみが表示されます。 多くのパッケージを並列で実行する場合は、ノード数が多い大規模なクラスターを選択します (スケールアウト)。
 
@@ -166,6 +166,9 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
 **[テスト接続]** を選択し (該当する場合)、成功したら **[次へ]** を選択します。
 
+> [!NOTE]
+   > Azure SQL Database サーバーを使用して SSISDB をホストする場合、データは既定でバックアップ用に geo 冗長ストレージに格納されます。 他のリージョンでデータをレプリケートしたくない場合は、「[PowerShell を使用してバックアップ ストレージの冗長性を構成する](https://docs.microsoft.com/azure/azure-sql/database/automated-backups-overview?tabs=single-database#configure-backup-storage-redundancy-by-using-powershell)」の手順に従ってください。
+   
 ##### <a name="creating-azure-ssis-ir-package-stores"></a>Azure-SSIS IR パッケージ ストアを作成する
 
 **[Integration runtime setup]\(統合ランタイムのセットアップ\)** ペインの **[デプロイ設定]** ページで、MSDB、ファイル システム、または Azure Files (パッケージ デプロイ モデル) にデプロイされたパッケージを Azure-SSIS IR パッケージ ストアで管理したい場合は、 **[Create package stores to manage your packages that are deployed into file system/Azure Files/SQL Server database (MSDB) hosted by Azure SQL Managed Instance]\(パッケージ ストアを作成して、Azure SQL Managed Instance をホストとする SQL Server データベース (MSDB)、Azure Files、ファイル システムにデプロイされたパッケージを管理する\)** チェック ボックスをオンにします。
@@ -183,7 +186,7 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
    1. **[Package store linked service]\(パッケージ ストアのリンクされたサービス\)** で、パッケージのデプロイ先のファイル システム、Azure Files、Azure SQL Managed Instance へのアクセス情報を格納する既存のリンクされたサービスを選択するか、 **[New]\(新規\)** を選択して新たに作成します。 **[New Linked Service]\(新しいリンクされたサービス\)** ペインで、次の手順を実行します。
    
       > [!NOTE]
-      > **Azure File Storage** か **File System** にリンクされているサービスを利用し、Azure Files にアクセスできます。 **Azure File Storage** にリンクされているサービスを使用する場合、Azure-SSIS IR パッケージ ストアでは現在のところ、( **アカウント キー** でも **SAS URI** でもなく) **基本** 認証方法のみがサポートされています。 **Azure File Storage** にリンクされているサービスで **基本** 認証を使用するには、お使いのブラウザーで ADF ポータル URL に `?feature.upgradeAzureFileStorage=false` を追加できます。 あるいは、 **File System** にリンクされているサービスを代わりに使用し、Azure Files にアクセスできます。 
+      > **Azure File Storage** か **File System** にリンクされているサービスを利用し、Azure Files にアクセスできます。 **Azure File Storage** にリンクされているサービスを使用する場合、Azure-SSIS IR パッケージ ストアでは現在のところ、(**アカウント キー** でも **SAS URI** でもなく) **基本** 認証方法のみがサポートされています。 **Azure File Storage** にリンクされているサービスで **基本** 認証を使用するには、お使いのブラウザーで ADF ポータル URL に `?feature.upgradeAzureFileStorage=false` を追加できます。 あるいは、**File System** にリンクされているサービスを代わりに使用し、Azure Files にアクセスできます。 
 
       ![リンクされたサービスのデプロイ設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
 
@@ -199,7 +202,7 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
 
          1. **[Account selection method]\(アカウントの選択方法\)** で、 **[From Azure subscription]\(Azure サブスクリプションから\)** または **[Enter manually]\(手動で入力\)** を選択します。
          
-         1. **[From Azure subscription]\(Azure サブスクリプションから\)** を選択した場合は、適切な **Azure サブスクリプション** 、 **ストレージ アカウント名** 、 **ファイル共有** を選択します。
+         1. **[From Azure subscription]\(Azure サブスクリプションから\)** を選択した場合は、適切な **Azure サブスクリプション**、**ストレージ アカウント名**、**ファイル共有** を選択します。
             
          1. **[Enter manually]\(手動で入力\)** を選択した場合は、 **[ホスト]** に「`\\<storage account name>.file.core.windows.net\<file share name>`」を、 **[ユーザー名]** に「`Azure\<storage account name>`」を、 **[パスワード]** に「`<storage account key>`」を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
 

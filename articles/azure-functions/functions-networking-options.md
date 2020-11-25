@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: 691fbf3be4e39a724a8a290c3ec147a679013cba
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: bed76a6f3a17332f9a1e411ff1d4efb52703f3e1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413090"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020998"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -30,18 +30,36 @@ ms.locfileid: "94413090"
 
 [!INCLUDE [functions-networking-features](../../includes/functions-networking-features.md)]
 
-## <a name="inbound-ip-restrictions"></a>受信 IP の制限
+## <a name="inbound-access-restrictions"></a>受信アクセス制限
 
-IP 制限を使用すると、アプリへのアクセスを許可または拒否される IP アドレスの優先順位付きリストを定義できます。 このリストには、IPv4 アドレスと IPv6 アドレスを含めることができます。 1 つ以上のエントリがある場合、リストの最後にあるものは暗黙的に "すべて拒否" になります。 IP 制限は、すべての関数ホスティング オプションで有効です。
+アクセス制限を使用すると、アプリへのアクセスを許可または拒否される IP アドレスの優先順位付きリストを定義できます。 この一覧には、IPv4 と IPv6 のアドレス、または[サービス エンドポイント](#use-service-endpoints)を使用する特定の仮想ネットワーク サブネットを含めることができます。 1 つ以上のエントリがある場合、リストの最後にあるものは暗黙的に "すべて拒否" になります。 IP 制限は、すべての関数ホスティング オプションで有効です。
+
+アクセス制限は、[Premium](functions-premium-plan.md)、[従量課金](functions-scale.md#consumption-plan)、[App Service](functions-scale.md#app-service-plan) で利用できます。
 
 > [!NOTE]
-> ネットワーク制限が適用されている場合、ポータル エディターを使用できるのは、仮想ネットワーク内から、または Azure portal へのアクセスに使用しているコンピューターの IP アドレスを [信頼できる宛先のリスト] に入れている場合のみになります。 ただし、 **[プラットフォーム機能]** タブの機能にはすべてのコンピューターから引き続きアクセスできます。
+> ネットワーク制限が適用されると、仮想ネットワーク内からか、または Azure portal へのアクセスに使用しているコンピューターの IP アドレスを [信頼された宛先のリスト] に入れている場合にのみ、デプロイを行うことができます。 ただし、ポータルを使用して関数を管理することもできます。
 
 詳細については、「[Azure App Service の静的なアクセス制限](../app-service/app-service-ip-restrictions.md)」を参照してください。
 
-## <a name="private-site-access"></a>プライベート サイトへのアクセス
+### <a name="use-service-endpoints"></a>サービス エンドポイントの使用
+
+サービス エンドポイントを使用することで、選択した Azure 仮想ネットワーク サブネットへのアクセスを制限できます。 特定のサブネットへのアクセスを制限するには、種類が **仮想ネットワーク** である制限規則を作成します。 その後、アクセスを許可または拒否するサブスクリプション、仮想ネットワーク、およびサブネットを選択できます。 
+
+選択したサブネットのサービス エンドポイントが Microsoft.Web でまだ有効になっていない場合は、自動的に有効になります。ただし、 **[見つからない Microsoft.Web サービス エンドポイントを無視する]** チェック ボックスをオンにしていない場合に限ります。 サービス エンドポイントをアプリで有効にしてサブネットでは有効にしないというシナリオは、主としてサブネット上でそれらを有効にするためのアクセス許可があるかどうかに依存します。 
+
+サブネット上でサービス エンドポイントを有効にするために他のユーザーが必要な場合は、 **[見つからない Microsoft.Web サービス エンドポイントを無視する]** チェック ボックスをオンにします。 アプリは、サービス エンドポイントが後からサブネット上で有効にされることを想定して構成されます。 
+
+![種類として仮想ネットワークが選択された [IP 制限の追加] ウィンドウのスクリーンショット。](../app-service/media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
+
+App Service Environment で実行されているアプリへのアクセスを制限するために、サービス エンドポイントを使うことはできません。 アプリが App Service Environment 内にあるときは、IP アクセス規則を適用することでアプリへのアクセスを制御できます。 
+
+サービス エンドポイントを設定する方法については、[Azure Functions のプライベート サイト アクセスの設定](functions-create-private-site-access.md)に関するページ参照してください。
+
+## <a name="private-endpoint-connections"></a>プライベート エンドポイント接続
 
 [!INCLUDE [functions-private-site-access](../../includes/functions-private-site-access.md)]
+
+ストレージやサービス バスなどのプライベート エンドポイント接続を持つその他のサービスを呼び出すには、必ず[プライベート エンドポイントへの送信呼び出し](#private-endpoints)を行うようにアプリを構成してください。
 
 ## <a name="virtual-network-integration"></a>仮想ネットワークの統合
 
@@ -79,8 +97,8 @@ Azure Functions の仮想ネットワーク統合では、App Service Web アプ
 1. 別のストレージ アカウントを作成または構成します。  これがサービス エンドポイントで保護され、関数に接続されるストレージ アカウントになります。
 1. セキュリティで保護されたストレージ アカウントに[ファイル共有を作成](../storage/files/storage-how-to-create-file-share.md#create-file-share)します。
 1. ストレージ アカウントのサービス エンドポイントまたはプライベート エンドポイントを有効にします。  
-    * サービス エンドポイントを使用する場合は、必ず関数アプリ専用のサブネットを有効にしてください。
-    * プライベート エンドポイントを使用している場合は、DNS レコードを作成し、[プライベート エンドポイントを使用](#azure-dns-private-zones)するようにアプリを構成する必要があります。  ストレージ アカウントには、`file` と `blob` のサブリソース用のプライベート エンドポイントが必要です。  Durable Functions のような特定の機能を使用する場合は、プライベート エンドポイント接続を介して `queue` と `table` にアクセスできる必要もあります。
+    * プライベート エンドポイント接続を使用する場合、ストレージ アカウントには、`file` と `blob` のサブリソース用のプライベート エンドポイントが必要です。  Durable Functions のような特定の機能を使用する場合は、プライベート エンドポイント接続を介して `queue` と `table` にアクセスできる必要もあります。
+    * サービス エンドポイントを使用する場合は、ストレージ アカウントに対して関数アプリ専用のサブネットを有効にします。
 1. (省略可能) 関数アプリのストレージ アカウントから、セキュリティで保護されたストレージ アカウントとファイル共有に、ファイルと BLOB の内容をコピーします。
 1. このストレージ アカウントの接続文字列をコピーします。
 1. 関数アプリの **[構成]** の下の **[アプリケーションの設定]** を次のように更新します。
@@ -88,6 +106,9 @@ Azure Functions の仮想ネットワーク統合では、App Service Web アプ
     - `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` をセキュリティで保護されたストレージ アカウントの接続文字列にします。
     - `WEBSITE_CONTENTSHARE` をセキュリティで保護されたストレージ アカウントで作成されたファイル共有の名前にします。
     - 名前が `WEBSITE_CONTENTOVERVNET` で値が `1` の新しい設定を作成します。
+    - ストレージ アカウントでプライベート エンドポイント接続が使用されている場合は、次の設定を確認または追加します。
+        - `WEBSITE_VNET_ROUTE_ALL` (値 `1`)
+        - `WEBSITE_DNS_SERVER` (値 `168.63.129.16`) 
 1. アプリケーションの設定を保存します。  
 
 関数アプリが再起動され、セキュリティで保護されたストレージ アカウントに接続されるようになります。
