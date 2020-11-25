@@ -9,11 +9,11 @@ ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
 ms.openlocfilehash: 8df24b44d648343c46532eed443717f444bd0058
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397792"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95975648"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -138,7 +138,7 @@ v2 SKU を使用するデプロイのほとんどは、プロビジョニング�
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Application Gateway アフィニティ Cookie は SameSite 属性をサポートしていますか?
 はい。[Chromium ブラウザー](https://www.chromium.org/Home) [v80 の更新](https://chromiumdash.appspot.com/schedule) で、SameSite 属性のない HTTP Cookie を SameSite=Lax として扱うことが必須になりました。 これは、サードパーティのコンテキストでは、Application Gateway アフィニティ Cookie がブラウザーによって送信されないことを意味します。 
 
-このシナリオをサポートするために、Application Gateway では、既存の *ApplicationGatewayAffinity* Cookie に加えて、 *ApplicationGatewayAffinityCORS* という別の同一の Cookie が挿入されます。  これらの Cookie は似ていますが、 *ApplicationGatewayAffinityCORS* Cookie には、次の 2 つの属性が追加されています。 *SameSite=None; Secure* です。 これらの属性は、クロスオリジン要求でも固定セッションを維持します。 詳細については、「[Cookie ベースのアフィニティ](configuration-http-settings.md#cookie-based-affinity)」セクションを参照してください。
+このシナリオをサポートするために、Application Gateway では、既存の *ApplicationGatewayAffinity* Cookie に加えて、*ApplicationGatewayAffinityCORS* という別の同一の Cookie が挿入されます。  これらの Cookie は似ていますが、*ApplicationGatewayAffinityCORS* Cookie には、次の 2 つの属性が追加されています。*SameSite=None; Secure* です。 これらの属性は、クロスオリジン要求でも固定セッションを維持します。 詳細については、「[Cookie ベースのアフィニティ](configuration-http-settings.md#cookie-based-affinity)」セクションを参照してください。
 
 ## <a name="performance"></a>パフォーマンス
 
@@ -350,7 +350,7 @@ Application Gateway は、認証証明書を 100 件までサポートしてい�
 * [バグ 1649951](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)
 * [バグ 1650910](https://bugzilla.mozilla.org/show_bug.cgi?id=1650910)
 
-業界のコンプライアンス要件に従って、CA ベンダーは非準拠の CA の失効と準拠 CA の発行を開始しました。お客様の証明書を再発行する必要があります。 Microsoft は、Azure サービスへの潜在的な影響を最小限に抑えるために、これらのベンダーと密接に連携しています。 **ただし、BYOC ("Bring Your Own Certificate") シナリオで使用される証明書は、今もなお予期せずに失効するリスクがあります。**
+業界のコンプライアンス要件に従って、CA ベンダーは非準拠の CA の失効と準拠 CA の発行を開始しました。お客様の証明書を再発行する必要があります。 Microsoft は、Azure サービスへの潜在的な影響を最小限に抑えるために、これらのベンダーと密接に連携しています。**ただし、BYOC ("Bring Your Own Certificate") シナリオで使用される証明書は、今もなお予期せずに失効するリスクがあります。**
 
 アプリケーションによって使用されている証明書が失効しているかどうかを確認するには、[DigiCert の発表](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement)と [Certificate Revocation Tracker](https://misissued.com/#revoked) を参照してください。 証明書が失効している場合、または失効する場合は、アプリケーションで使用されている CA ベンダーから新しい証明書を要求する必要があります。 証明書が予期せず失効していることが原因でアプリケーションの可用性が中断されないようにする場合、または失効した証明書を更新する場合は、BYOC をサポートするさまざまな Azure サービスの修復リンクについて、Azure の最新情報に関する投稿を参照してください。 https://azure.microsoft.com/updates/certificateauthorityrevocation/
 
@@ -434,9 +434,9 @@ Helm 経由でデプロイされる AGIC と、AKS アドオンとしてデプ�
 
 Application Gateway では、次の 3 つのログを利用できます。 
 
-* **ApplicationGatewayAccessLog** :このアクセス ログには、アプリケーション ゲートウェイ フロントエンドに送信された要求がそれぞれ記録されます。 データには、呼び出し元の IP、要求された URL、応答の待ち時間、リターン コード、入出力バイトが含まれます。アプリケーション ゲートウェイ 1 つごとに 1 つのレコードが含まれます。
-* **ApplicationGatewayPerformanceLog** :このパフォーマンス ログには、各アプリケーション ゲートウェイのパフォーマンスが記録されます。 情報には、バイト単位のスループット、処理された要求の総数、失敗した要求の数、正常および異常なバックエンド インスタンスの数などが含まれます。
-* **ApplicationGatewayFirewallLog** :このファイアウォール ログには、WAF を構成してあるアプリケーション ゲートウェイについて、検出モードまたは防止モードを通じてログが作成された要求が記録されます。
+* **ApplicationGatewayAccessLog**:このアクセス ログには、アプリケーション ゲートウェイ フロントエンドに送信された要求がそれぞれ記録されます。 データには、呼び出し元の IP、要求された URL、応答の待ち時間、リターン コード、入出力バイトが含まれます。アプリケーション ゲートウェイ 1 つごとに 1 つのレコードが含まれます。
+* **ApplicationGatewayPerformanceLog**:このパフォーマンス ログには、各アプリケーション ゲートウェイのパフォーマンスが記録されます。 情報には、バイト単位のスループット、処理された要求の総数、失敗した要求の数、正常および異常なバックエンド インスタンスの数などが含まれます。
+* **ApplicationGatewayFirewallLog**:このファイアウォール ログには、WAF を構成してあるアプリケーション ゲートウェイについて、検出モードまたは防止モードを通じてログが作成された要求が記録されます。
 
 すべてのログが 60 秒ごとに収集されます。 詳細については、「[Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](application-gateway-diagnostics.md)」を参照してください。
 

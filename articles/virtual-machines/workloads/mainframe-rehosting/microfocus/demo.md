@@ -7,11 +7,11 @@ ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 7fb72b9a7d0d655f99d1e5cf194f7c6f26976a37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86508051"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95976195"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Azure で Micro Focus Enterprise Developer 4.0 用の Micro Focus CICS BankDemo を設定する
 
@@ -106,7 +106,7 @@ Enterprise Developer 4.0 を VM にインストールしたら、それに付属
 
 ## <a name="create-the-bankdemo-database-and-all-its-objects"></a>BankDemo データベースとそのすべてのオブジェクトを作成する
 
-1. **Windows エクスプローラー**を開き、**C:\\Users\\Public\\Documents\\Micro Focus\\Enterprise Developer\\Samples\\Mainframe\\CICS\\DotNet\\BankDemo\\SQL** に移動します。
+1. **Windows エクスプローラー** を開き、**C:\\Users\\Public\\Documents\\Micro Focus\\Enterprise Developer\\Samples\\Mainframe\\CICS\\DotNet\\BankDemo\\SQL** に移動します。
 
 2. **BankDemoCreateAll.SQL** ファイルの内容をクリップボードにコピーします。
 
@@ -141,7 +141,7 @@ Enterprise Developer 4.0 を VM にインストールしたら、それに付属
     > [!NOTE]
     > BankDemo プロジェクトでは、このデモでは使用されない HCOSS (Host Compatibility Option for SQL Server) が使用されます。
 
-5. **ソリューション エクスプローラー**で、**BankDemo2** プロジェクトを右クリックし、 **[ビルド]** を選択します。
+5. **ソリューション エクスプローラー** で、**BankDemo2** プロジェクトを右クリックし、 **[ビルド]** を選択します。
 
     > [!NOTE]
     > ソリューション レベルでビルドするとエラーが発生します (HCOSS が構成されていないため)。
@@ -212,7 +212,7 @@ Enterprise Developer 4.0 を VM にインストールしたら、それに付属
 > [!NOTE]
 > 最初の手順は重要です。このリージョンでは、先ほど作成した XA リソース定義を使用するように設定する必要があります。
 
-1. **[Regions Container]\(リージョン コンテナー\)** の下の **[BANKDEMO CICS Region]\(BANKDEMO CICS リージョン\)** に移動し、 **[Actions]\(アクション\)** ウィンドウから **[Edit Region Startup File]\(リージョン スタートアップ ファイルの編集\)** を選択します。 SQL プロパティまで下へスクロールし、**XA リソース名**として「**bankdemo**」と入力するか、省略記号を使用して選択します。
+1. **[Regions Container]\(リージョン コンテナー\)** の下の **[BANKDEMO CICS Region]\(BANKDEMO CICS リージョン\)** に移動し、 **[Actions]\(アクション\)** ウィンドウから **[Edit Region Startup File]\(リージョン スタートアップ ファイルの編集\)** を選択します。 SQL プロパティまで下へスクロールし、**XA リソース名** として「**bankdemo**」と入力するか、省略記号を使用して選択します。
 
 2. **[Save]\(保存\)** をクリックして変更を保存します。
 
