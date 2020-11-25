@@ -9,11 +9,11 @@ manager: gwallace
 description: Azure DevOps と Azure Dev Spaces を使用して、継続的インテグレーション/継続的配置を設定する方法について学習します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
 ms.openlocfilehash: de409aa060034c9ba0faaaa56ce21f904b02cdac
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960390"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017782"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Azure Dev Spaces と共に CI/CD を使用する
 
@@ -34,7 +34,7 @@ ms.locfileid: "91960390"
 * [お使いの Azure コンテナー レジストリからプルするように AKS クラスターを承認する](../../aks/cluster-container-registry-integration.md)
 
 ## <a name="download-sample-code"></a>サンプル コードのダウンロード
-時間を節約するために、サンプル コードの GitHub リポジトリのフォークを作成しましょう。 https://github.com/Azure/dev-spaces ) に移動して、 **[フォーク]** を選択します。 フォーク プロセスが完了すると、リポジトリのフォーク済みバージョンがローカルに**複製**されます。 既定で _master_ ブランチがチェックアウトされますが、_azds_updates_ ブランチに時間を節約するためのいくつかの変更を組み入れてあり、フォーク時にこのブランチも転送されているはずです。 _azds_updates_ ブランチには、Dev Spaces チュートリアルのセクション内で手動実行するように示されている更新プログラムと、CI/CD システムのデプロイを効率化するために事前作成されたいくつかの YAML および JSON ファイルが含まれています。 `git checkout -b azds_updates origin/azds_updates` のようなコマンドを使用して、ローカル リポジトリに _azds_updates_ ブランチをチェックアウトできます。
+時間を節約するために、サンプル コードの GitHub リポジトリのフォークを作成しましょう。 https://github.com/Azure/dev-spaces ) に移動して、 **[フォーク]** を選択します。 フォーク プロセスが完了すると、リポジトリのフォーク済みバージョンがローカルに **複製** されます。 既定で _master_ ブランチがチェックアウトされますが、_azds_updates_ ブランチに時間を節約するためのいくつかの変更を組み入れてあり、フォーク時にこのブランチも転送されているはずです。 _azds_updates_ ブランチには、Dev Spaces チュートリアルのセクション内で手動実行するように示されている更新プログラムと、CI/CD システムのデプロイを効率化するために事前作成されたいくつかの YAML および JSON ファイルが含まれています。 `git checkout -b azds_updates origin/azds_updates` のようなコマンドを使用して、ローカル リポジトリに _azds_updates_ ブランチをチェックアウトできます。
 
 ## <a name="dev-spaces-setup"></a>Dev Spaces の設定
 `azds space select` コマンドを使用して、_dev_ という新しい空間を作成します。 _dev_ 空間は、コードの変更をプッシュするために、CI/CD パイプラインによって使用されます。 また、_dev_ に基づく "_子空間_" を作成するためにも使用されます。
@@ -76,7 +76,7 @@ _azds_updates_ ブランチには、*mywebapi* および *webfrontend* に必要
 
 このファイルからパイプラインを作成するには:
 1. DevOps プロジェクトのメイン ページ上で、[パイプライン] > [ビルド] の順に移動します。
-1. **新しい**ビルド パイプラインを作成するオプションを選択します。
+1. **新しい** ビルド パイプラインを作成するオプションを選択します。
 1. ソースとして **[GitHub]** を選択し、必要に応じて自分の GitHub アカウントを使って承認して、_dev-spaces_ のサンプル アプリケーション リポジトリのフォーク済みバージョンから _azds_updates_ ブランチを選択します。
 1. テンプレートとして、 **[コードとしての構成]** または **[YAML]** を選択します。
 1. この時点で、ビルド パイプラインの構成ページが表示されています。 前述したように、 **[...]** ボタンを使用して **[YAML ファイル パス]** の言語固有パスに移動します。 たとえば、「 `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml` 」のように入力します。
