@@ -8,11 +8,11 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 64b8956c47cbdbf31bb8253dac0c1e1f12833bf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86171773"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001050"
 ---
 # <a name="advanced-filtering"></a>高度なフィルター処理
 Event Grid では、json ペイロードの任意のプロパティに対してフィルターを指定できます。 これらのフィルターは一連の `AND` 条件としてモデル化されており、外側の各条件には省略可能な内側の `OR` 条件があります。 `AND` 条件ごとに、次の値を指定します。

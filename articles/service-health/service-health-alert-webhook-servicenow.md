@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.custom: devx-track-js
 ms.openlocfilehash: f120e9d950cc349d0331a476dbfbfe9d7e599f0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307570"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000642"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>ServiceNow で webhook を使用して Azure サービス正常性アラートを構成する
 
@@ -154,7 +154,7 @@ ms.locfileid: "91307570"
 
     a. **[アクションの種類]:** *webhook*
 
-    b. **[詳細]:** 先ほど保存した ServiceNow の**統合 URL**。
+    b. **[詳細]:** 先ほど保存した ServiceNow の **統合 URL**。
 
     c. **[名前]:** Webhook の名前、別名、または識別子。
 
@@ -171,7 +171,7 @@ ms.locfileid: "91307570"
 
     a. **[アクションの種類]:** *webhook*
 
-    b. **[詳細]:** 先ほど保存した ServiceNow の**統合 URL**。
+    b. **[詳細]:** 先ほど保存した ServiceNow の **統合 URL**。
 
     c. **[名前]:** Webhook の名前、別名、または識別子。
 

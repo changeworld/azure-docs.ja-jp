@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
 ms.openlocfilehash: f4cad2b658547d56d00efdd5e1496110f8e4a5e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284015"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999581"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して FTP ファイルを作成、監視、および管理する
 
@@ -29,13 +29,13 @@ FTP サーバーからの応答を取得するトリガーを使用し、その�
 
 * FTP コネクタは明示的 FTP over TLS/SSL のみをサポートし、暗黙的 FTPS とは互換性がありません。
 
-* 既定では、FTP アクションは *50 MB 以下*のファイルの読み取りまたは書き込みが可能です。 50 MB を超えるファイルを処理するために、FTP アクションでは、[メッセージのチャンク](../logic-apps/logic-apps-handle-large-messages.md)がサポートされています。 **ファイルのコンテンツの取得**アクションでは、暗黙的にチャンクが使用されます。
+* 既定では、FTP アクションは *50 MB 以下* のファイルの読み取りまたは書き込みが可能です。 50 MB を超えるファイルを処理するために、FTP アクションでは、[メッセージのチャンク](../logic-apps/logic-apps-handle-large-messages.md)がサポートされています。 **ファイルのコンテンツの取得** アクションでは、暗黙的にチャンクが使用されます。
 
 * FTP トリガーではチャンクはサポートされていません。 ファイルのコンテンツを要求すると、トリガーによって 50 MB 以下のファイルのみが選択されます。 50 MB より大きいファイルを取得するには、次のパターンに従います。
 
   * **[When a file is added or modified (properties only)]\(ファイルの追加または変更時 (プロパティのみ)\)** などのファイルのプロパティが返される FTP トリガーを使用します。
 
-  * FTP トリガーの **ファイルのコンテンツの取得**アクションに従います。これにより、暗黙的にチャンクを使用してファイル全体が読み取られます。
+  * FTP トリガーの **ファイルのコンテンツの取得** アクションに従います。これにより、暗黙的にチャンクを使用してファイル全体が読み取られます。
 
 * オンプレミスの FTP サーバーがある場合は、オンプレミスのデータ ゲートウェイを使用せずにオンプレミスのデータ ソースにアクセスできるようにするために、[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成するか、または [Azure App Service ハイブリッド接続](../app-service/app-service-hybrid-connections.md)を使用することを検討してください。
 
@@ -57,7 +57,7 @@ FTP トリガーは、FTP ファイル システムをポーリングし、前�
 
 * FTP ホスト サーバー アドレスとアカウントの資格情報
 
-  FTP コネクタでは、FTP サーバーがインターネットからアクセス可能であり、かつ*パッシブ* モードで動作するように設定されている必要があります。 資格情報があることで、ロジック アプリは接続を作成し、FTP アカウントにアクセスすることができます。
+  FTP コネクタでは、FTP サーバーがインターネットからアクセス可能であり、かつ *パッシブ* モードで動作するように設定されている必要があります。 資格情報があることで、ロジック アプリは接続を作成し、FTP アカウントにアクセスすることができます。
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 

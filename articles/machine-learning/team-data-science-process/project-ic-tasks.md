@@ -11,15 +11,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4ecb5fef9c9b14bde72de29a45e29d7e16131bd1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321924"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000999"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Team Data Science Process での個々の共同作成者のタスク
 
-このトピックでは、 [Team Data Science Process](overview.md) (TDSP) でプロジェクトを設定するために *個々の共同作成者* が完了するタスクについて説明します。 目的は TDSP を標準とするチーム コラボレーション環境で作業することです。 TDSP は、コラボレーションとチーム学習の向上を支援するように設計されています。 TDSP を標準とするデータ サイエンス チーム メンバーの役割とそれに関連したタスクの概要については、「[Team Data Science Process での役割とタスク](roles-tasks.md)」をご覧ください。
+このトピックでは、[Team Data Science Process](overview.md) (TDSP) でプロジェクトを設定するために *個々の共同作成者* が完了するタスクについて説明します。 目的は TDSP を標準とするチーム コラボレーション環境で作業することです。 TDSP は、コラボレーションとチーム学習の向上を支援するように設計されています。 TDSP を標準とするデータ サイエンス チーム メンバーの役割とそれに関連したタスクの概要については、「[Team Data Science Process での役割とタスク](roles-tasks.md)」をご覧ください。
 
 次の図は、プロジェクトの個々の共同作成者 (データ サイエンティスト) がチーム環境を設定するために完了するタスクを示しています。 TDSP でデータ サイエンス プロジェクトを実行する手順については、「[データ サイエンス プロジェクトの実行](./agile-development.md)」を参照してください。 
 
@@ -47,15 +47,15 @@ ms.locfileid: "93321924"
 - Azure サブスクリプション。
 - コンピューターにインストールされた Git。 DSVM を使用している場合、Git は事前にインストールされています。 それ以外の場合は、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)をご覧ください。
 - DSVM を使用する場合は、Azure で作成して構成された Windows または Linux の DSVM。 詳細と手順については、[Data Science Virtual Machine ドキュメント](../data-science-virtual-machine/index.yml)を参照してください。
-- Windows DSVM の場合、[Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) をコンピューターにインストールしておきます。 *README.md* ファイルを下にスクロールして **[Download and Install]** セクションを見つけ、 **最新のインストーラー** を選択します。 インストーラー ページから *.exe* インストーラーをダウンロードして実行します。 
-- Linux DSVM の場合は、DSVM で設定されて Azure DevOps に追加された SSH 公開キー。 詳細と手順については、 [プラットフォームとツールの付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成** に関するセクションをご覧ください。 
+- Windows DSVM の場合、[Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) をコンピューターにインストールしておきます。 *README.md* ファイルを下にスクロールして **[Download and Install]** セクションを見つけ、**最新のインストーラー** を選択します。 インストーラー ページから *.exe* インストーラーをダウンロードして実行します。 
+- Linux DSVM の場合は、DSVM で設定されて Azure DevOps に追加された SSH 公開キー。 詳細と手順については、[プラットフォームとツールの付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成** に関するセクションをご覧ください。 
 - DSVM にマウントする必要がある Azure ファイル ストレージの Azure ファイル ストレージ情報 
 
 ## <a name="clone-repositories"></a>リポジトリのクローン
 
 リポジトリをローカルで操作し、共有チームとプロジェクトのリポジトリに変更内容をプッシュするには、まず、ローカル コンピューターにリポジトリをコピーまたは *クローン* します。 
 
-1. Azure DevOps で、 *https:\//\<server name>/\<organization name>/\<team name>* (例: **https:\//dev.azure.com/DataScienceUnit/MyTeam** ) にあるチームのプロジェクトまとめページに移動します。
+1. Azure DevOps で、*https:\//\<server name>/\<organization name>/\<team name>* (例: **https:\//dev.azure.com/DataScienceUnit/MyTeam**) にあるチームのプロジェクトまとめページに移動します。
    
 1. 左側のナビゲーションで **[リポジトリ]** を選択し、ページの上部で、クローンするリポジトリを選択します。
    
@@ -67,14 +67,14 @@ ms.locfileid: "93321924"
    
 1. ローカル コンピューターまたは DSVM で、次のディレクトリを作成します。
    
-   - Windows の場合: **C:\GitRepos**
+   - Windows の場合:**C:\GitRepos**
    - Linux の場合: **$home/GitRepos**
    
 1. 作成したディレクトリに移動します。
    
 1. Git Bash の場合、クローンするリポジトリごとにコマンド `git clone <clone URL>` を実行します。 
    
-   たとえば、 **TeamUtilities** リポジトリをローカル コンピューターの *MyTeam* ディレクトリにクローンするには、次のコマンドを使用します。 
+   たとえば、**TeamUtilities** リポジトリをローカル コンピューターの *MyTeam* ディレクトリにクローンするには、次のコマンドを使用します。 
    
    **HTTPS 接続:**
    

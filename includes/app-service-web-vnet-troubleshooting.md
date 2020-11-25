@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
 ms.openlocfilehash: cec44bbabdb7d528c30a8d3396b819f2eb3c5386
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93235893"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999447"
 ---
 機能は簡単にセットアップできますが、問題が発生しないという意味ではありません。 目的のエンドポイントへのアクセスに関して問題が発生した場合は、アプリのコンソールからの接続をテストするために、いくつかのユーティリティを利用できます。 利用できるコンソールが 2 つあります。 1 つは Kudu コンソールで、もう 1 つは Azure portal 内のコンソールです。 アプリから Kudu コンソールにアクセスするには、 **[ツール]**  >  **[Kudu]** の順に移動します。 [サイト名].scm.azurewebsites.net で Kudo コンソールにアクセスすることもできます。 Web サイトが読み込まれたら、 **[デバッグ コンソール]** タブに移動します。お使いのアプリから Azure portal によってホストされたコンソールにアクセスするには、 **[ツール]**  >  **[コンソール]** の順に移動します。
 
 #### <a name="tools"></a>ツール
-ネイティブ Windows アプリでは、 **ping** 、 **nslookup** 、 **tracert** の各ツールは、セキュリティの制約により、コンソールから使用することはできません ( [カスタム Windows コンテナー](../articles/app-service/quickstart-custom-container.md)で動作します)。 それを補うために、2 つの独立したツールが追加されています。 DNS 機能をテストするために、 **nameresolver.exe** という名前のツールを追加しました。 の構文は次のとおりです。
+ネイティブ Windows アプリでは、**ping**、**nslookup**、**tracert** の各ツールは、セキュリティの制約により、コンソールから使用することはできません ([カスタム Windows コンテナー](../articles/app-service/quickstart-custom-container.md)で動作します)。 それを補うために、2 つの独立したツールが追加されています。 DNS 機能をテストするために、**nameresolver.exe** という名前のツールを追加しました。 の構文は次のとおりです。
 
 ```console
 nameresolver.exe hostname [optional: DNS Server]
@@ -74,7 +74,7 @@ tcpping.exe hostname [optional: port]
 test-netconnection hostname [optional: -Port]
 ```
 
-* VM 上でアプリケーションを起動し、 **tcpping** を使用して、アプリのコンソールからそのホストとポートへのアクセスをテストします。
+* VM 上でアプリケーションを起動し、**tcpping** を使用して、アプリのコンソールからそのホストとポートへのアクセスをテストします。
 
 #### <a name="on-premises-resources"></a>オンプレミスのリソース ####
 

@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: 3b52cea1d440506caf5b8244c9643719edd8755c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704269"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999248"
 ---
 # <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>Azure portal からの Azure Database for PostgreSQL - Single Server ログの構成とアクセス
 
@@ -37,7 +37,7 @@ Azure portal から [Azure Database for PostgreSQL のログ](concepts-server-lo
 
    パラメーターを変更した後、 **[保存]** を選択します。 または、変更を破棄することができます。 
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="[サーバー ログ] オプションのスクリーンショット":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="サーバー パラメーターのオプションのスクリーンショット":::
 
 **[サーバー パラメーター]** ページを閉じると、ログの一覧に戻ることができます。
 
@@ -50,18 +50,18 @@ Azure portal から [Azure Database for PostgreSQL のログ](concepts-server-lo
 
 3. サイドバーの **[監視]** セクションの下で、 **[サーバー ログ]** を選択します。 ページに、ログ ファイルの一覧が表示されます。
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/4-server-logs-list.png" alt-text="[サーバー ログ] オプションのスクリーンショット":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/4-server-logs-list.png" alt-text="ログの一覧が強調して示されている [サーバーログ] ページのスクリーンショット":::
 
    > [!TIP]
    > ログの名前付け規則は、**postgresql-yyyy-mm-dd_hh0000.log** です。 ファイル名に使用されている日時は、ログが発行された日時です。 ログ ファイルのローテーションは、1 時間ごとか 100 MB ごとのどちらか早い方のタイミングで行われます。
 
 4. 必要に応じて、検索ボックスを使用して、日付と時刻に基づいて特定のログをすばやく絞り込みます。 検索はログの名前に対して行われます。
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/5-search.png" alt-text="[サーバー ログ] オプションのスクリーンショット":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/5-search.png" alt-text="検索ボックスと結果が強調表示されている [サーバーログ] ページのスクリーンショット":::
 
 5. 個々のログ ファイルをダウンロードするには、表の行で各ログ ファイルの横にある下向き矢印アイコンを選択します。
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/6-download.png" alt-text="[サーバー ログ] オプションのスクリーンショット":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/6-download.png" alt-text="下矢印アイコンが強調して示されている [サーバーログ] ページのスクリーンショット":::
 
 ## <a name="next-steps"></a>次のステップ
 - [CLI のアクセス サーバー ログ](howto-configure-server-logs-using-cli.md)に関するページを参照して、プログラムでログをダウンロードする方法について学習します。

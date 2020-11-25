@@ -7,22 +7,22 @@ ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 580c378df5fc3912aa540b5d85adf99bc42605e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f50c84212e62fae378d9d95e8990e084c82bb99a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511944"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000370"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>Azure IoT DPS の IP 接続フィルターを使用する
 
-セキュリティは IoT ソリューションの重要な 1 つの側面です。 場合によっては、セキュリティ構成の一部として、デバイスが接続できる IP アドレスを明示的に指定する必要があります。 Azure IoT Hub Device Provisioning Service (DPS) の *IP フィルター*機能を使用すると、特定の IPv4 アドレスからのトラフィックを拒否または許可するための規則を構成できます。
+セキュリティは IoT ソリューションの重要な 1 つの側面です。 場合によっては、セキュリティ構成の一部として、デバイスが接続できる IP アドレスを明示的に指定する必要があります。 Azure IoT Hub Device Provisioning Service (DPS) の *IP フィルター* 機能を使用すると、特定の IPv4 アドレスからのトラフィックを拒否または許可するための規則を構成できます。
 
 ## <a name="when-to-use"></a>使用する場合
 
 特定の IP アドレスから DPS エンドポイントへの接続をブロックすると有用な特定のユース ケースには、次の 2 つがあります。
 
-* DPS が指定された範囲の IP アドレスからのトラフィックのみを受信し、それ以外のトラフィックをすべて拒否する必要がある場合。 たとえば、DPS を [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) と共に使用して、DPS と使用しているデバイスとの間にプライベート接続を作成する場合が該当します。
+* DPS が指定された範囲の IP アドレスからのトラフィックのみを受信し、それ以外のトラフィックをすべて拒否する必要がある場合。 たとえば、DPS を [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) と共に使用して、DPS と使用しているデバイスとの間にプライベート接続を作成する場合が該当します。
 
 * DPS の管理者によって疑わしいと識別された IP アドレスからのトラフィックを拒否する必要がある場合。
 
@@ -48,7 +48,7 @@ IP フィルター規則を追加するには、 **[+ IP フィルター規則�
 
 ![[IP フィルター規則の追加] を選択した後](./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png)
 
-* IP フィルター規則の**名前**を指定します。 これは、一意であり、長さが最大 128 文字の、大文字と小文字を区別しない英数字の文字列である必要があります。 ASCII 7 ビット英数字と `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` のみを使用できます。
+* IP フィルター規則の **名前** を指定します。 これは、一意であり、長さが最大 128 文字の、大文字と小文字を区別しない英数字の文字列である必要があります。 ASCII 7 ビット英数字と `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` のみを使用できます。
 
 * 1 つの IPv4 アドレスか、または CIDR 表記法で記述した IP アドレス ブロックを指定します。 たとえば、CIDR 表記 192.168.100.0/22 は、192.168.100.0 ～ 192.168.103.255 までの 1,024 個の IPv4 アドレスを表します。
 
@@ -74,7 +74,7 @@ IP フィルター規則を削除するには、その行のごみ箱アイコ�
 
 ## <a name="update-ip-filter-rules-in-code"></a>コード内の IP フィルター規則を更新する
 
-Azure リソース プロバイダーの REST エンドポイントを使用して、DPS IP フィルターを取得および変更できます。 [createorupdate メソッド](https://docs.microsoft.com/rest/api/iot-dps/iotdpsresource/createorupdate)の `properties.ipFilterRules` を参照してください。
+Azure リソース プロバイダーの REST エンドポイントを使用して、DPS IP フィルターを取得および変更できます。 [createorupdate メソッド](/rest/api/iot-dps/iotdpsresource/createorupdate)の `properties.ipFilterRules` を参照してください。
 
 DPS IP フィルター規則の更新は、現在 Azure CLI または Azure PowerShell ではサポートされていませんが、Azure Resource Manager テンプレートを使用して実行できます。 Resource Manager テンプレートの使用方法については、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)に関する記事をご覧ください。 以下のテンプレートの例では、DPS IP フィルター規則を作成、編集、削除する方法を示しています。
 

@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: shsha
 ms.openlocfilehash: 6f2f6aa4380fcf6909957118bf682275350ce68c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86261208"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000268"
 ---
 # <a name="runtocompletion"></a>RunToCompletion
 
-Service Fabric バージョン 7.1 以降では、[コンテナー][containers-introduction-link]と[ゲスト実行可能ファイル][guest-executables-introduction-link] アプリケーション用の **RunToCompletion** セマンティクスがサポートされています。 これらのセマンティクスにより、常に実行され続けるアプリケーションやサービスに対し、タスクを完了して終了するアプリケーションやサービスが可能になります。
+Service Fabric バージョン 7.1 以降では、[コンテナー][containers-introduction-link]と [ゲスト実行可能ファイル][guest-executables-introduction-link] アプリケーション用の **RunToCompletion** セマンティクスがサポートされています。 これらのセマンティクスにより、常に実行され続けるアプリケーションやサービスに対し、タスクを完了して終了するアプリケーションやサービスが可能になります。
 
 この記事を読み進める前に、[Service Fabric のアプリケーション モデル][application-model-link]と [Service Fabric のホスティング モデル][hosting-model-link]を十分に理解しておくことをお勧めします。
 
@@ -34,7 +34,7 @@ RunToCompletion セマンティクスは、[ServiceManifest のインポート][
 ```
 **ExecutionPolicy** では、次の 2 つの属性を使用できます。
 * **種類:** 現在、この属性で許可されている唯一の値は **RunToCompletion** です。
-* **Restart:** この属性では、エラー発生時に、ServicePackage を構成する CodePackage に適用される再起動ポリシーを指定します。 CodePackage が **0 以外の終了コード**で終了すると、失敗したと見なされます。 この属性に使用できる値は **OnFailure** と **Never** であり、既定値は **OnFailure** です。
+* **Restart:** この属性では、エラー発生時に、ServicePackage を構成する CodePackage に適用される再起動ポリシーを指定します。 CodePackage が **0 以外の終了コード** で終了すると、失敗したと見なされます。 この属性に使用できる値は **OnFailure** と **Never** であり、既定値は **OnFailure** です。
 
 再起動ポリシーが **OnFailure** に設定されていて、いずれかの CodePackage が失敗した場合 **(0 以外の終了コード)** は、再起動され、繰り返し発生するエラー間でバックオフが発生します。 再起動ポリシーが **Never** に設定されていて、いずれかの CodePackage が失敗した場合、DeployedServicePackage のデプロイ状態は **Failed** としてマークされますが、他の CodePackage は実行の継続が許可されます。 ServicePackage を構成するすべての CodePackage が実行されて正常に完了した場合 **(終了コード 0)** 、DeployedServicePackage のデプロイ状態は **RanToCompletion** としてマークされます。 
 

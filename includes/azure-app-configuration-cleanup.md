@@ -9,11 +9,11 @@ ms.date: 1/31/2020
 ms.author: lcozzens
 ms.custom: include file
 ms.openlocfilehash: 751613e7b3b2252b62dff2c3e1adad83bdc8c393
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88638969"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001476"
 ---
 この記事で作成したリソースを引き続き試用しない場合は、ここで作成したリソース グループを削除して課金されないようにしてください。
 

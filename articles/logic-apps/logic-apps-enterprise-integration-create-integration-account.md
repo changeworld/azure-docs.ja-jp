@@ -9,11 +9,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.openlocfilehash: 191832ab227e854b40938183e335c1b6ea52199c
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347847"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000057"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Azure Logic Apps で B2B エンタープライズ統合用の統合アカウントを作成および管理する
 
@@ -63,7 +63,7 @@ ms.locfileid: "93347847"
    | **サブスクリプション** | はい | <*Azure サブスクリプション名*> | Azure サブスクリプションの名前 |
    | **リソース グループ** | はい | <*Azure-resource-group-name*> | 関連するリソースを整理するために使用する [Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前。 この例では、"FabrikamIntegration-RG" という名前の新しいリソース グループを作成します。 |
    | **価格レベル** | はい | <*pricing-level*> | 統合アカウントの価格レベル。後で変更できます。 この例では **[Free]** を選択します。 詳細については、以下のトピックを参照してください。 <p>- [Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/) |
-   | **場所** | はい | <*Azure-region*> | 統合アカウント メタデータの保存先となるリージョン。 ロジック アプリと同じ場所を選択するか、統合アカウントと同じ場所でロジック アプリを作成します。 この例では、[米国西部] を使用します。 <p>**注** : [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 内で統合アカウントを作成するには、その ISE を場所として選択します。 詳細については、「[ISE で統合アカウントを作成する](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)」を参照してください。 |
+   | **場所** | はい | <*Azure-region*> | 統合アカウント メタデータの保存先となるリージョン。 ロジック アプリと同じ場所を選択するか、統合アカウントと同じ場所でロジック アプリを作成します。 この例では、[米国西部] を使用します。 <p>**注**:[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 内で統合アカウントを作成するには、その ISE を場所として選択します。 詳細については、「[ISE で統合アカウントを作成する](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)」を参照してください。 |
    | **Log Analytics** | いいえ | Off、On | この例では、 **[Off]** の設定のままにします。 |
    |||||
 
@@ -241,7 +241,7 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
    ![Azure Cloud Shell を開く](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. コマンド プロンプトで、 [**az resource** コマンド](/cli/azure/resource#az-resource-update)を入力し、`skuName` を目的のレベルに設定します。
+1. コマンド プロンプトで、[**az resource** コマンド](/cli/azure/resource#az-resource-update)を入力し、`skuName` を目的のレベルに設定します。
 
    ```azurecli
    az resource update --resource-group <resourceGroupName> --resource-type Microsoft.Logic/integrationAccounts --name <integrationAccountName> --subscription <AzureSubscriptionID> --set sku.name=<skuName>
@@ -293,7 +293,7 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
    ![変更を保存するために [Put] を選択](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-save-changes.png)
 
-1. Azure portal で、ご利用のロジック アプリを探して選択します。 アプリの **ワークフロー設定** で、 **統合アカウント** プロパティが空になっていることを確認します。
+1. Azure portal で、ご利用のロジック アプリを探して選択します。 アプリの **ワークフロー設定** で、**統合アカウント** プロパティが空になっていることを確認します。
 
    ![統合アカウントがリンクされていないことを確認](./media/logic-apps-enterprise-integration-create-integration-account/unlinked-account.png)
 

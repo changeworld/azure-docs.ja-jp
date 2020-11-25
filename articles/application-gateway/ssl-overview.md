@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: victorh
 ms.openlocfilehash: c39401289ffc6f27c292168adaa15c5163a3967b
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93396925"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001288"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Application Gateway での TLS 終了とエンド ツー エンド TLS の概要
 
@@ -148,7 +148,7 @@ HTTPS の正常性プローブに対しては、Application Gateway v1 SKU で�
 ---
 シナリオ | v1 | v2 |
 | --- | --- | --- |
-| TLS ハンドシェイク中の FQDN としての SNI (server_name) ヘッダー | バックエンド プールから FQDN として設定されます。 [RFC 6066](https://tools.ietf.org/html/rfc6066) に従い、リテラルな IPv4 および IPv6 アドレスは、SNI ホスト名では許可されていません。 <br> **注:** バックエンド プールでの FQDN は、バックエンド サーバーの IP アドレス (パブリックまたはプライベート) に DNS 解決される必要があります | SNI ヘッダー (server_name) は、HTTP 設定からホスト名として設定されます。そうでない場合は、 *PickHostnameFromBackendAddress* オプションが選択されているか、ホスト名が指定されていないと、バックエンド プールの構成に FQDN として設定されます
+| TLS ハンドシェイク中の FQDN としての SNI (server_name) ヘッダー | バックエンド プールから FQDN として設定されます。 [RFC 6066](https://tools.ietf.org/html/rfc6066) に従い、リテラルな IPv4 および IPv6 アドレスは、SNI ホスト名では許可されていません。 <br> **注:** バックエンド プールでの FQDN は、バックエンド サーバーの IP アドレス (パブリックまたはプライベート) に DNS 解決される必要があります | SNI ヘッダー (server_name) は、HTTP 設定からホスト名として設定されます。そうでない場合は、*PickHostnameFromBackendAddress* オプションが選択されているか、ホスト名が指定されていないと、バックエンド プールの構成に FQDN として設定されます
 | バックエンド プール アドレスが IP アドレスであるか、またはホスト名が HTTP 設定に設定されていない場合 | バックエンド プール エントリが FQDN でない場合、[RFC 6066](https://tools.ietf.org/html/rfc6066) に従って SNI は設定されません | SNI はクライアントによって入力された FQDN からホスト名として設定されます。また、バックエンド証明書の CN が、このホスト名と一致している必要があります。
 
 ## <a name="next-steps"></a>次のステップ

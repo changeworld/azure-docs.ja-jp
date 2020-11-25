@@ -8,17 +8,17 @@ ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
 ms.openlocfilehash: 64ccc9c91d9ead567035b1f7f35e0a0088b6200b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124188"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001478"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>クイック スタート:Spring Boot アプリに機能フラグを追加する
 
 このクイックスタートでは、Azure App Configuration を Spring Boot Web アプリに組み込み、機能管理のエンドツーエンド実装を作成します。 App Configuration サービスを使用し、すべての機能フラグを一箇所に格納し、その状態を制御できます。
 
-Spring Boot 機能管理ライブラリは、包括的な機能フラグのサポートにより、フレームワークを拡張します。 これらのライブラリは、Azure のライブラリには一切依存 **しません** 。 また、Spring Boot 構成プロバイダーを介して、App Configuration とシームレスに統合されます。
+Spring Boot 機能管理ライブラリは、包括的な機能フラグのサポートにより、フレームワークを拡張します。 これらのライブラリは、Azure のライブラリには一切依存 **しません**。 また、Spring Boot 構成プロバイダーを介して、App Configuration とシームレスに統合されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -131,7 +131,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
     }
     ```
 
-1. アプリのパッケージ ディレクトリに、 *MessageProperties.java* という名前の新しい Java ファイルを作成します。
+1. アプリのパッケージ ディレクトリに、*MessageProperties.java* という名前の新しい Java ファイルを作成します。
 
     ```java
     package com.example.demo;
@@ -154,7 +154,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
     }
     ```
 
-1. アプリのパッケージ ディレクトリに、 *HelloController.java* という名前の新しい Java ファイルを作成します。
+1. アプリのパッケージ ディレクトリに、*HelloController.java* という名前の新しい Java ファイルを作成します。
 
     ```java
     package com.example.demo;
@@ -185,7 +185,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
     }
     ```
 
-1. アプリの templates ディレクトリに、 *welcome.html* という名前の新しい HTML ファイルを作成します。
+1. アプリの templates ディレクトリに、*welcome.html* という名前の新しい HTML ファイルを作成します。
 
     ```html
     <!DOCTYPE html>

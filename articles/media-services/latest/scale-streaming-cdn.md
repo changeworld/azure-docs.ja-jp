@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 6bdf6015ca5633c77280111a55055a7394cee5bd
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057656"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001373"
 ---
 # <a name="stream-content-with-cdn-integration"></a>CDN 統合を使用してコンテンツをストリーミングする
 
@@ -54,11 +54,11 @@ CDN を使うと、コーデックごと、ストリーミング プロトコル
 
 CDN が有効になった状態でストリーミング エンドポイントがプロビジョニングされた後、ストリーミング エンドポイントを CDN エンドポイントにマップするために DNS の更新が実行される前に、Media Services には定義された待機時間が存在します。
 
-後で CDN を有効/無効にする場合は、ストリーミング エンドポイントを**停止**状態にする必要があります。 ストリーミング エンドポイントが開始されると、Azure CDN 統合が有効になり、すべての CDN POP で変更がアクティブになるまでに、最大で 4 時間かかる場合があります。 ただし、ストリーミング エンドポイントを開始し、そのストリーミング エンドポイントからの中断なしでストリーミングすることができます。 統合が完了すると、ストリームは CDN から配信されます。 プロビジョニング期間中、ストリーミング エンドポイントは**開始中**の状態になり、パフォーマンスが低下する可能性があります。
+後で CDN を有効/無効にする場合は、ストリーミング エンドポイントを **停止** 状態にする必要があります。 ストリーミング エンドポイントが開始されると、Azure CDN 統合が有効になり、すべての CDN POP で変更がアクティブになるまでに、最大で 4 時間かかる場合があります。 ただし、ストリーミング エンドポイントを開始し、そのストリーミング エンドポイントからの中断なしでストリーミングすることができます。 統合が完了すると、ストリームは CDN から配信されます。 プロビジョニング期間中、ストリーミング エンドポイントは **開始中** の状態になり、パフォーマンスが低下する可能性があります。
 
 Standard ストリーミング エンドポイントは作成されるとき、既定では Standard Verizon で構成されます。 REST API を使用して、Premium Verizon または Standard Akamai プロバイダーを構成することができます。
 
-Azure CDN との Azure Media Services 統合は、Standard ストリーミング エンドポイント用の **Azure CDN from Verizon** で実装されます。 Premium ストリーミング エンドポイントは、すべての **Azure CDN 価格レベルとプロバイダー**を使用して構成できます。
+Azure CDN との Azure Media Services 統合は、Standard ストリーミング エンドポイント用の **Azure CDN from Verizon** で実装されます。 Premium ストリーミング エンドポイントは、すべての **Azure CDN 価格レベルとプロバイダー** を使用して構成できます。
 
 > [!NOTE]
 > Azure CDN の詳細については、[CDN の概要](../../cdn/cdn-overview.md)を参照してください。

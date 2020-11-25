@@ -9,11 +9,11 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
 ms.openlocfilehash: c920c9b3b28df7f5bf3bf169ef88ab967f23649e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085379"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001322"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する
 
@@ -84,8 +84,8 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
 3. 新しいアプリで次の 3 つの値を更新してから、 **[Continue]\(続行\)** を選択します。
 
-   - **説明** :アプリのわかりやすい名前を入力します。
-   - **[Bundle ID]\(バンドル ID\)** : [アプリ ディストリビューション ガイド](https://help.apple.com/xcode/mac/current/#/dev91fe7130a)の説明のとおりに、 **<組織 ID>.<製品名>** の形式のバンドル ID を入力します。 < **組織 ID** > と < **製品名** > の値は Xcode プロジェクトを作成する際に使用する組織 ID と製品名に一致させる必要があります。 次のスクリーンショットでは、 **NotificationHubs** という値が組織 ID として使用され、 **GetStarted** という値が製品名として使用されています。 Xcode で正しい発行プロファイルが使用されるように、 **[Bundle Identifier]\(バンドル識別子\)** の値はご自分の Xcode プロジェクトの値と一致させるようにしてください。
+   - **説明**:アプリのわかりやすい名前を入力します。
+   - **[Bundle ID]\(バンドル ID\)** : [アプリ ディストリビューション ガイド](https://help.apple.com/xcode/mac/current/#/dev91fe7130a)の説明のとおりに、 **<組織 ID>.<製品名>** の形式のバンドル ID を入力します。 <**組織 ID**> と <**製品名**> の値は Xcode プロジェクトを作成する際に使用する組織 ID と製品名に一致させる必要があります。 次のスクリーンショットでは、**NotificationHubs** という値が組織 ID として使用され、**GetStarted** という値が製品名として使用されています。 Xcode で正しい発行プロファイルが使用されるように、 **[Bundle Identifier]\(バンドル識別子\)** の値はご自分の Xcode プロジェクトの値と一致させるようにしてください。
 
       :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="アプリ ID を登録する":::
 
@@ -160,7 +160,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
 1. 次の情報をメモしておきます。
 
-   - **アプリ ID プレフィックス** ( **チーム ID** )
+   - **アプリ ID プレフィックス** (**チーム ID**)
    - **バンドル ID**
 
 2. **[Certificates, Identifiers & Profiles]\(証明書、識別子、およびプロファイル\)** に戻って **[Keys]\(キー\)** をクリックします。 **APNS** 用に構成されたキーが既にある場合は、作成直後にダウンロードした .p8 証明書を再利用できます。 その場合、手順 3. ～ 5. は無視できます。
@@ -193,7 +193,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 - **チーム ID** (手順 1. を参照)
 - **バンドル ID** (手順 1. を参照)
 - **キー ID** (手順 7. を参照)
-- **トークン値** (.p8 キー値、手順 8 を参照)
+- **トークン値**(.p8 キー値、手順 8 を参照)
 
 ## <a name="create-a-provisioning-profile"></a>プロビジョニング プロファイルを作成する
 
@@ -209,7 +209,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
 4. **[Select certificates]\(証明書の選択\)** ウィンドウで、コード署名に使用する開発証明書を選択し、 **[Continue]\(続行\)** を選択します。 この証明書は、作成したプッシュ証明書ではありません。 存在しない場合は、作成する必要があります。 証明書が存在する場合は、次の手順に進みます。 開発証明書が存在しない場合に証明書を作成するには:
 
-   1. " **No Certificates are available (利用可能な証明書がありません)** " と表示されたら、 **[Create Certificate]\(証明書の作成\)** を選択します。
+   1. "**No Certificates are available (利用可能な証明書がありません)** " と表示されたら、 **[Create Certificate]\(証明書の作成\)** を選択します。
    2. **[Software]\(ソフトウェア\)** セクションで、 **[Apple Development]\(Apple 開発\)** を選択します。 その後 **[続行]** を選択します。
    3. **[Create a New Certificate]\(新しい証明書の作成\)** 画面で、 **[Choose File]\(ファイルの選択\)** を選択します。
    4. 先ほど作成した **証明書署名要求** 証明書を参照して選択し、 **[Open]\(開く\)** を選択します。
@@ -236,7 +236,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-2. 左側のメニューで **[すべてのサービス]** を選択し、 **[モバイル]** セクションの **[Notification Hubs]** を選択します。 サービス名の横にある星のアイコンを選択して、左側のメニューにある **[お気に入り]** セクションにサービスを追加します。 **Notification Hubs** を **[お気に入り]** に追加し、それを選択します。
+2. 左側のメニューで **[すべてのサービス]** を選択し、**[モバイル]** セクションの **[Notification Hubs]** を選択します。 サービス名の横にある星のアイコンを選択して、左側のメニューにある **[お気に入り]** セクションにサービスを追加します。 **Notification Hubs** を **[お気に入り]** に追加し、それを選択します。
 
    :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Azure Portal":::
 
@@ -254,7 +254,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
    :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="プロパティを設定する":::
 
-5. **[通知]** (ベルのアイコン) を選択し、 **[リソースに移動]** を選択します。 **[Notification Hubs]** ページの一覧を最新の情報に更新して、お使いの通知ハブを選択することもできます。
+5. **[通知]** (ベルのアイコン) を選択し、**[リソースに移動]** を選択します。 **[Notification Hubs]** ページの一覧を最新の情報に更新して、お使いの通知ハブを選択することもできます。
 
    :::image type="content" source="media/ios-sdk-get-started/image21.png" alt-text="ポータルの通知":::
 
@@ -267,7 +267,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
 ## <a name="configure-the-notification-hub-with-apns-information"></a>APNS 情報を利用して通知ハブを構成する
 
-**[Notification Services]** で **[Apple (APNS)]** を選択し、先ほど「 [Notification Hubs の証明書を作成する](#create-a-certificate-for-notification-hubs)」セクションで選択した方法に応じて適切な手順に従います。
+**[Notification Services]** で **[Apple (APNS)]** を選択し、先ほど「[Notification Hubs の証明書を作成する](#create-a-certificate-for-notification-hubs)」セクションで選択した方法に応じて適切な手順に従います。
 
 > [!NOTE]
 > **[アプリケーション モード]** の **[Production] (運用)** は、ストアからアプリを購入したユーザーにプッシュ通知を送信する場合にのみ使用します。

@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: ef9322c17a20ab5bfcf348649a1272dd4f301c5c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284477"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000676"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Azure HDInsight でのスクリプト アクションのトラブルシューティング
 
@@ -35,7 +35,7 @@ Apache Ambari Web UI を使用すると、スクリプト アクションによ�
 
     ![Apache Ambari スクリプト アクションの操作](./media/troubleshoot-script-action/ambari-script-action.png)
 
-    **STDOUT** と **STDERR** の出力を表示するには、 **run\customscriptaction** エントリを選択してリンクをたどります。 この出力結果はスクリプトの実行時に生成され、有益な情報が含まれていることがあります。
+    **STDOUT** と **STDERR** の出力を表示するには、**run\customscriptaction** エントリを選択してリンクをたどります。 この出力結果はスクリプトの実行時に生成され、有益な情報が含まれていることがあります。
 
 ### <a name="default-storage-account"></a>既定のストレージ アカウント
 
@@ -45,21 +45,21 @@ Apache Ambari Web UI を使用すると、スクリプト アクションによ�
 
     ![スクリプト アクション ログ](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
 
-    このディレクトリの下で、 **ヘッド ノード** 、 **ワーカー ノード** 、および **zookeeper ノード** ごとにログが整理されています。 次の例を参照してください。
+    このディレクトリの下で、**ヘッド ノード**、**ワーカー ノード**、および **zookeeper ノード** ごとにログが整理されています。 次の例を参照してください。
 
-    * **ヘッド ノード** : `<ACTIVE-HEADNODE-NAME>.cloudapp.net`
+    * **ヘッド ノード**: `<ACTIVE-HEADNODE-NAME>.cloudapp.net`
 
-    * **ワーカー ノード** : `<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
+    * **ワーカー ノード**: `<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
 
-    * **Zookeeper ノード** : `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
+    * **Zookeeper ノード**: `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
-* 対応するホストのすべての **stdout** と **stderr** が、ストレージ アカウントにアップロードされます。 各スクリプト アクションに対して、 **output-\*.txt** と **errors-\*.txt** が 1 つずつあります。 **output-*.txt** ファイルには、ホストで実行されたスクリプトの URI に関する情報が含まれます。 次のテキストはこの情報の例です。
+* 対応するホストのすべての **stdout** と **stderr** が、ストレージ アカウントにアップロードされます。 各スクリプト アクションに対して、**output-\*.txt** と **errors-\*.txt** が 1 つずつあります。 **output-*.txt** ファイルには、ホストで実行されたスクリプトの URI に関する情報が含まれます。 次のテキストはこの情報の例です。
 
     ```output
     'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
     ```
 
-* 同じ名前のスクリプト アクション クラスターを繰り返し作成できます。 そのような場合は、 **DATE** フォルダー名に基づいて適切なログを識別できます。 たとえば、異なる日付で作成されるクラスターのフォルダー構造 **mycluster** は、ログ エントリには次のように表示されます。
+* 同じ名前のスクリプト アクション クラスターを繰り返し作成できます。 そのような場合は、**DATE** フォルダー名に基づいて適切なログを識別できます。 たとえば、異なる日付で作成されるクラスターのフォルダー構造 **mycluster** は、ログ エントリには次のように表示されます。
 
     `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04` `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
 
@@ -75,7 +75,7 @@ Linux ベースの HDInsight クラスターでは、Ambari ウォッチドッ�
 
 ## <a name="cant-import-name-blobservice"></a>名前 BlobService をインポートできない
 
-__現象__ 。 スクリプト操作が失敗します。 Ambari で操作を表示すると、次のエラーに似たテキストが表示されます。
+__現象__。 スクリプト操作が失敗します。 Ambari で操作を表示すると、次のエラーに似たテキストが表示されます。
 
 ```
 Traceback (most recent call list):
@@ -84,9 +84,9 @@ Traceback (most recent call list):
 ImportError: cannot import name BlobService
 ```
 
-__原因__ 。 このエラーは、HDInsight クラスターに含まれている Python Azure Storage クライアントをアップグレードする場合に発生します。 HDInsight は、Azure Storage クライアント 0.20.0 を予期しています。
+__原因__。 このエラーは、HDInsight クラスターに含まれている Python Azure Storage クライアントをアップグレードする場合に発生します。 HDInsight は、Azure Storage クライアント 0.20.0 を予期しています。
 
-__解決策__ 。 このエラーを解決するには、`ssh` を使用して各クラスター ノードを手動で接続します。 次のコマンドを実行して、ストレージ クライアントの正しいバージョンを再インストールします。
+__解決策__。 このエラーを解決するには、`ssh` を使用して各クラスター ノードを手動で接続します。 次のコマンドを実行して、ストレージ クライアントの正しいバージョンを再インストールします。
 
 ```bash
 sudo pip install azure-storage==0.20.0

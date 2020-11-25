@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
 ms.openlocfilehash: 255e4085e24ee7520c603f8a00b3e46c23367a77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442005"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000829"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>データベースから制御テーブルを使用して差分コピーを行う
 
@@ -92,15 +92,15 @@ ms.locfileid: "89442005"
             END
     ```
     
-4. **[データベースからの差分コピー]** テンプレートに移動します。 データのコピー元となるソース データベースへの**新しい**接続を作成します。
+4. **[データベースからの差分コピー]** テンプレートに移動します。 データのコピー元となるソース データベースへの **新しい** 接続を作成します。
 
     ![ソース テーブルへの新しい接続の作成](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable4.png)
 
-5. データのコピー先となるコピー先データ ストアへの**新しい**接続を作成します。
+5. データのコピー先となるコピー先データ ストアへの **新しい** 接続を作成します。
 
     ![宛先テーブルへの新しい接続の作成](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable5.png)
 
-6. 手順 2 と 3 で作成した外部制御テーブルとストアド プロシージャへの**新しい**接続を作成します。
+6. 手順 2 と 3 で作成した外部制御テーブルとストアド プロシージャへの **新しい** 接続を作成します。
 
     ![制御テーブル データ ストアへの新しい接続の作成](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
 

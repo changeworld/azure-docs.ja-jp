@@ -8,11 +8,11 @@ ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: ad1bec66edaa3fcc6049f4911684f6e6d6c3e366
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369405"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999190"
 ---
 # <a name="troubleshoot-the-process-server"></a>プロセス サーバーのトラブルシューティング
 
@@ -85,7 +85,7 @@ Microsoft Azure Recovery Services エージェント (obengine) 以外のすべ�
 1. プロセス サーバー VM が稼働していることを確認します。
 2. 次のログでエラーを確認します。
 
-    C:\ProgramData\ASR\home\svsystems\eventmanager *.log  C\ProgramData\ASR\home\svsystems\monitor_protection* .log
+    C:\ProgramData\ASR\home\svsystems\eventmanager *.log  C\ProgramData\ASR\home\svsystems\monitor_protection*.log
 
 ## <a name="check-connectivity-and-replication"></a>接続とレプリケーションの確認
 
@@ -200,7 +200,7 @@ telnet が成功してもプロセス サーバーに到達できないことが
 ## <a name="step-10-check-the-process-server-connection-to-azure-public-ip-address"></a>手順 10: プロセス サーバーの Azure パブリック IP アドレスへの接続の確認
 
 1. プロセス サーバーで、 **%programfiles%\Microsoft Azure Recovery Services Agent\Temp** から最新の CBEngineCurr.errlog ファイルを開きます。
-2. このファイル内で、 **443** または **connection attempt failed** という文字列を検索します。
+2. このファイル内で、**443** または **connection attempt failed** という文字列を検索します。
 
   ![Temp フォルダー内のエラー ログ](./media/vmware-physical-azure-troubleshoot-process-server/logdetails1.png)
 

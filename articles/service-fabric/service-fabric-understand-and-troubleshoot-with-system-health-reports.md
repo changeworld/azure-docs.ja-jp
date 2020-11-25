@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
 ms.openlocfilehash: 8e60ac5065c2f9543a641daf4f62299c00c61fc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260192"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000659"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>システム正常性レポートを使用したトラブルシューティング
 Azure Service Fabric コンポーネントは、追加の設定なしで、クラスター内のすべてのエンティティについてのシステム正常性レポートを提供します。 [正常性ストア](service-fabric-health-introduction.md#health-store) は、システム レポートに基づいてエンティティを作成および削除します。 さらに、エンティティの相互作用をキャプチャする階層で、それらを編成します。
@@ -389,7 +389,7 @@ HealthEvents          :
 * **プロパティ**: **ReplicaConstraintViolation** で始まります。
 
 ## <a name="replica-system-health-reports"></a>レプリカ システム正常性レポート
-**System.RA**は、Reconfiguration Agent コンポーネントを表し、レプリカの状態を管理する権限です。
+**System.RA** は、Reconfiguration Agent コンポーネントを表し、レプリカの状態を管理する権限です。
 
 ### <a name="state"></a>State
 System.RA は、レプリカが作成されていると OK を報告します。

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: fce4da9cc9577bc9805289473d3df7647b1b0934
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670929"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000472"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>リモート監視ソリューションを Azure Data Lake Store と統合する
 
@@ -83,9 +83,9 @@ IoT Hub から Azure Data Lake Store にデータをストリーミングする 
 
     ![入力を追加する](./media/iot-accelerators-integrate-data-lake/stream-analytics-add-input.png)
 
-1. [新しい入力] タブで、 **IoT Hub** の入力のエイリアスを入力します。
+1. [新しい入力] タブで、**IoT Hub** の入力のエイリアスを入力します。
 
-1. [コンシューマー グループ]\: ドロップダウンから、先ほど作成したコンシューマー グループを選択します。 ここでは、 **streamanalyticsjob** を使用しています。
+1. [コンシューマー グループ]\: ドロップダウンから、先ほど作成したコンシューマー グループを選択します。 ここでは、**streamanalyticsjob** を使用しています。
 
     ![入力の選択](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-input.png)
 
