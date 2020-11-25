@@ -12,11 +12,11 @@ ms.date: 04/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 21f16a0b9c8b3b603735520d5dcdbf61601e1480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706484"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994827"
 ---
 # <a name="no-users-are-being-provisioned"></a>ユーザーがプロビジョニングされていない 
 >[!NOTE]
@@ -24,9 +24,9 @@ ms.locfileid: "90706484"
 >
 アプリケーションで自動プロビジョニングが構成された後 (アプリに接続するために Azure AD に提供されたアプリの資格情報が有効であることの確認を含む)、そのアプリに対してユーザーまたはグループ、あるいはその両方がプロビジョニングされます。 プロビジョニングは、次のものによって決定されます。
 
--   どのユーザーとグループがアプリケーションに**割り当てられている**か。 入れ子になったグループまたは Microsoft 365 グループのプロビジョニングはサポートされていません。 割り当ての詳細については、「[Azure Active Directory プレビューでエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)」を参照してください。
--   **属性マッピング**が有効になっているかどうか、および有効な属性を Azure AD からアプリに同期するように構成されているかどうか。 属性マッピングの詳細については、「[Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ](customize-application-attributes.md)」を参照してください。
--   特定の属性値に基づいてユーザーをフィルター処理する**スコープ フィルター**が存在するかどうか。 スコープ フィルターの詳細については、「[スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)」を参照してください。
+-   どのユーザーとグループがアプリケーションに **割り当てられている** か。 入れ子になったグループまたは Microsoft 365 グループのプロビジョニングはサポートされていません。 割り当ての詳細については、「[Azure Active Directory プレビューでエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)」を参照してください。
+-   **属性マッピング** が有効になっているかどうか、および有効な属性を Azure AD からアプリに同期するように構成されているかどうか。 属性マッピングの詳細については、「[Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ](customize-application-attributes.md)」を参照してください。
+-   特定の属性値に基づいてユーザーをフィルター処理する **スコープ フィルター** が存在するかどうか。 スコープ フィルターの詳細については、「[スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)」を参照してください。
   
   
 ユーザーがプロビジョニングされていないことがわかった場合は、Azure AD の[プロビジョニング ログ (プレビュー)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) を調べてください。 特定のユーザーのログ エントリを検索します。
@@ -42,7 +42,7 @@ Azure portal で、 **[Azure Active Directory]** &gt; **[エンタープライ�
 - [ユーザーを割り当てたにもかかわらず、ユーザーがスキップされておりプロビジョニングされていないとプロビジョニング ログに表示される](#provisioning-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>プロビジョニング サービスが開始されない
-Azure Portal の **[Azure Active Directory] &gt; [Enterprise Apps (エンタープライズ アプリ)] &gt; \[アプリケーション名\] &gt; [プロビジョニング]** セクションで、 **[Provisioning Status (プロビジョニングの状態)]** を**オン**にしているとします。 しかし、その後再読み込みしても、他の状態の詳細がページに表示されません。サービスは実行されていますが、初回サイクルがまだ完了していない可能性があります。 前述の**プロビジョニング ログ (プレビュー)** を確認し、サービスによって実行されている操作と、エラーの有無を判断します。
+Azure Portal の **[Azure Active Directory] &gt; [Enterprise Apps (エンタープライズ アプリ)] &gt; \[アプリケーション名\] &gt; [プロビジョニング]** セクションで、 **[Provisioning Status (プロビジョニングの状態)]** を **オン** にしているとします。 しかし、その後再読み込みしても、他の状態の詳細がページに表示されません。サービスは実行されていますが、初回サイクルがまだ完了していない可能性があります。 前述の **プロビジョニング ログ (プレビュー)** を確認し、サービスによって実行されている操作と、エラーの有無を判断します。
 
 >[!NOTE]
 >初回サイクルには 20 分から数時間かかることがあります。この時間は Azure AD のディレクトリ サイズと、プロビジョニングの対象となるユーザーの数によって異なります。 初回サイクル後の両方のシステムの状態を表すウォーターマークがプロビジョニング サービスに保存されるため、初回サイクルの後の後続の同期はより速くなります。 初回サイクルにより、以降の同期のパフォーマンスが向上します。

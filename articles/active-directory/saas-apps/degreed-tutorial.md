@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 96f2c96e7770ec7acc690a1d057fef16db5b88ed
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675964"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994436"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-degreed"></a>チュートリアル: Azure Active Directory と Degreed の統合
 
@@ -44,9 +44,9 @@ Degreed と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Degreed では、 **SP** Initiated SSO がサポートされます
+* Degreed では、**SP** Initiated SSO がサポートされます
 
-* Degreed では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* Degreed では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 * Degreed を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
@@ -58,12 +58,12 @@ Azure AD への Degreed の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Degreed** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Degreed**」と入力します。
 1. 結果のパネルから **[Degreed]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Degreed で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Degreed で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Degreed 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Degreed で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -119,7 +119,7 @@ Degreed で Azure AD のシングル サインオンを構成してテストす�
 1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** フィールドに「 **B.Simon** 」と入力します。  
+   1. **[名前]** フィールドに「**B.Simon**」と入力します。  
    1. **[ユーザー名]** フィールドに「`<username>@<companydomain>.<extension>`」と入力します。 (例: `B.Simon@contoso.com`)。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **［作成］** を選択します

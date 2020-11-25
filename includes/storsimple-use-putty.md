@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a5c62c67cd401c043352b06e6e6070a7fc0f1296
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67181213"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995432"
 ---
 #### <a name="to-connect-through-the-serial-console"></a>シリアル コンソールを使用して接続するには
 1. シリアル ケーブルをデバイスに接続します (直接、または USB シリアル アダプターを使用)。
-2. **コントロール パネル**を開き、 **[デバイス マネージャー]** を開きます。
+2. **コントロール パネル** を開き、 **[デバイス マネージャー]** を開きます。
 3. 次の図に示すように COM ポートを確認します。
    
      ![シリアル コンソールを使用した接続](./media/storsimple-use-putty/HCS_ConnectingDeviceS-include.png)

@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/31/2020
 ms.openlocfilehash: 1f83f13564a64a0d9d8a5e0144ca95af6a769d6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76904990"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995048"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Azure Logic Apps でのワークフローの問題のトラブルシューティングと診断
 
@@ -27,7 +27,7 @@ ms.locfileid: "76904990"
 
    ![トリガーステータスおよび履歴の表示](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
 
-1. トリガー入力をチェックして、期待どおりに表示されることを確認します。 **入力リンク**で、**入力**ペインを表示するリンクを選択します。
+1. トリガー入力をチェックして、期待どおりに表示されることを確認します。 **入力リンク** で、**入力** ペインを表示するリンクを選択します。
 
    トリガー入力には、トリガーがワークフローの開始を要求するデータが含まれます。 これらの入力を確認すると、トリガー入力が正しいかどうか、およびワークフローを続行できるように条件が満たされたかどうかを判断するのに役立ちます。
 
@@ -35,7 +35,7 @@ ms.locfileid: "76904990"
 
    ![トリガー入力のエラーを確認する](./media/logic-apps-diagnosing-failures/review-trigger-inputs-for-errors.png)
 
-1. トリガー出力がある場合は、それをチェックして、期待したとおりに表示されているか確認します。 **出力リンク**で、**出力**ペインを表示するリンクを選択します。
+1. トリガー出力がある場合は、それをチェックして、期待したとおりに表示されているか確認します。 **出力リンク** で、**出力** ペインを表示するリンクを選択します。
 
    トリガー出力には、トリガーがワークフローの次のステップに渡すデータが含まれます。 これらの出力を確認すると、ワークフローの次のステップに渡される値が正しい値か期待値かを判断するのに役立ちます。次に例を示します。
 

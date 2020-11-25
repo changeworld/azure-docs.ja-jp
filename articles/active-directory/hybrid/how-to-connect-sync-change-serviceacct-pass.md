@@ -18,18 +18,18 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4dcc7ed6076c3bac723d709f50f1b3ab2ce8f58
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319930"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996561"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>ADSync サービス アカウントのパスワードの変更
 ADSync サービス アカウントのパスワードを変更すると、暗号化キーを破棄し、ADSync サービス アカウントのパスワードを再初期化するまで、同期サービスを正常に開始できなくなります。 
 
 Azure AD Connect は同期サービスの一部として、暗号化キーを使用して AD DS コネクタ アカウントと ADSync サービス アカウントのパスワードを保存します。  これらのアカウントは、データベースへの保存前に暗号化されます。 
 
-暗号化キーは、[Windows データ保護 (DPAPI)](/previous-versions/ms995355(v=msdn.10)) を使用して保護されています。 DPAPI では、**ADSync サービス アカウント**を使用して暗号化キーを保護します。 
+暗号化キーは、[Windows データ保護 (DPAPI)](/previous-versions/ms995355(v=msdn.10)) を使用して保護されています。 DPAPI では、**ADSync サービス アカウント** を使用して暗号化キーを保護します。 
 
 サービス アカウントのパスワードを変更する必要がある場合は、「[ADSync サービス アカウントの暗号化キーの破棄](#abandoning-the-adsync-service-account-encryption-key)」の手順に従って変更します。  この手順は、なんらかの理由で暗号化キーを破棄する必要がある場合にも使用してください。
 
@@ -40,13 +40,13 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
 
 
 - Windows サービス コントロール マネージャーで同期サービスを開始しようとすると、"**ローカル コンピューターの Microsoft Azure AD Sync サービスを開始できませんでした。** **エラー 1069:ログオンに失敗したため、サービスを開始できませんでした**" というエラーが表示されます。
-- Windows イベント ビューアーでは、システム イベント ログに**イベント ID 7038** のエラーと、"**現在構成されているパスワードでは、次のエラーにより ADSync サービスにログオンできませんでした:ユーザー名またはパスワードが正しくありません**" というメッセージが記録されます。
+- Windows イベント ビューアーでは、システム イベント ログに **イベント ID 7038** のエラーと、"**現在構成されているパスワードでは、次のエラーにより ADSync サービスにログオンできませんでした:ユーザー名またはパスワードが正しくありません**" というメッセージが記録されます。
 
 次に、特定の条件下では、パスワードを更新すると同期サービスで DPAPI を使用して暗号化キーを取得できなくなります。 暗号化キーがないと、同期サービスはオンプレミスの AD および Azure AD と同期するために必要なパスワードの暗号化を解除できません。
 次のようなエラーが表示されます。
 
 - Windows サービス コントロール マネージャーで同期サービスを開始しようとすると、暗号化キーを取得できないため、"<strong>ローカル コンピューターで Microsoft Azure AD Sync サービスを開始できませんでした。詳細情報はシステム イベント ログを参照してください。これが Microsoft 以外のサービスである場合は、サービス ベンダーに問い合わせてください。その際、サービス固有のエラー コードが -21451857952 であることを伝えてください</strong>" というエラーが表示され失敗します。
-- Windows イベント ビューアーでは、アプリケーション イベント ログに**イベント ID 6028** のエラーと、 *"The server encryption key cannot be accessed."* (サーバー暗号化キーにアクセスできませんでした) というエラー メッセージが記録されます。
+- Windows イベント ビューアーでは、アプリケーション イベント ログに **イベント ID 6028** のエラーと、 *"The server encryption key cannot be accessed."* (サーバー暗号化キーにアクセスできませんでした) というエラー メッセージが記録されます。
 
 これらのエラーが表示されないようにするために、パスワードの変更時には「[ADSync サービス アカウントの暗号化キーの破棄](#abandoning-the-adsync-service-account-encryption-key)」の手順に従ってください。
  

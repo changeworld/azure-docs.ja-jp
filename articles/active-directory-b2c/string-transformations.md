@@ -12,11 +12,11 @@ ms.date: 11/03/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 4e74c33a18baff3e1cb39328ce265f16975ef1b5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322156"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994844"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
@@ -34,12 +34,12 @@ ms.locfileid: "93322156"
 | InputClaim | inputClaim2 | string | 比較する 2 番目の要求の種類。 |
 | InputParameter | stringComparison | string | 文字列比較で、次のいずれかの値です。序数、OrdinalIgnoreCase。 |
 
-**AssertStringClaimsAreEqual** 要求変換は常に、 [セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される [検証技術プロファイル](validation-technical-profile.md) (つまり [DisplayConrtol](display-controls.md)) から実行されます。 ユーザーに表示されるエラー メッセージは、セルフアサート技術プロファイルの `UserMessageIfClaimsTransformationStringsAreNotEqual` メタデータによって制御されます。 エラー メッセージは、[ローカライズ](localization-string-ids.md#claims-transformations-error-messages)できます。
+**AssertStringClaimsAreEqual** 要求変換は常に、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される [検証技術プロファイル](validation-technical-profile.md) (つまり [DisplayConrtol](display-controls.md)) から実行されます。 ユーザーに表示されるエラー メッセージは、セルフアサート技術プロファイルの `UserMessageIfClaimsTransformationStringsAreNotEqual` メタデータによって制御されます。 エラー メッセージは、[ローカライズ](localization-string-ids.md#claims-transformations-error-messages)できます。
 
 
 ![AssertStringClaimsAreEqual の実行](./media/string-transformations/assert-execution.png)
 
-この要求変換を使用して、2 つの ClaimTypes が同じ値を持っていることを確認できます。 そうでない場合は、エラー メッセージがスローされます。 次の例では、 **strongAuthenticationEmailAddress** ClaimType が **email** ClaimType と等しいことを確認します。 そうでない場合は、エラー メッセージがスローされます。
+この要求変換を使用して、2 つの ClaimTypes が同じ値を持っていることを確認できます。 そうでない場合は、エラー メッセージがスローされます。 次の例では、**strongAuthenticationEmailAddress** ClaimType が **email** ClaimType と等しいことを確認します。 そうでない場合は、エラー メッセージがスローされます。
 
 ```xml
 <ClaimsTransformation Id="AssertEmailAndStrongAuthenticationEmailAddressAreEqual" TransformationMethod="AssertStringClaimsAreEqual">
@@ -54,7 +54,7 @@ ms.locfileid: "93322156"
 ```
 
 
-**login-NonInteractive** 検証技術プロファイルは、 **AssertEmailAndStrongAuthenticationEmailAddressAreEqual** 要求変換を呼び出します。
+**login-NonInteractive** 検証技術プロファイルは、**AssertEmailAndStrongAuthenticationEmailAddressAreEqual** 要求変換を呼び出します。
 ```xml
 <TechnicalProfile Id="login-NonInteractive">
   ...
@@ -80,10 +80,10 @@ ms.locfileid: "93322156"
 ### <a name="example"></a>例
 
 - 入力要求:
-  - **inputClaim1** : someone@contoso.com
-  - **inputClaim2** : someone@outlook.com
+  - **inputClaim1**: someone@contoso.com
+  - **inputClaim2**: someone@outlook.com
 - 入力パラメーター:
-  - **stringComparison** :  ordinalIgnoreCase
+  - **stringComparison**:  ordinalIgnoreCase
 - 結果:エラーがスローされます
 
 ## <a name="changecase"></a>ChangeCase
@@ -115,11 +115,11 @@ ms.locfileid: "93322156"
 ### <a name="example"></a>例
 
 - 入力要求:
-  - **email** : SomeOne@contoso.com
+  - **email**: SomeOne@contoso.com
 - 入力パラメーター:
-    - **toCase** :LOWER
+    - **toCase**:LOWER
 - 出力要求:
-  - **email** : someone@contoso.com
+  - **email**: someone@contoso.com
 
 ## <a name="createstringclaim"></a>CreateStringClaim
 
@@ -146,9 +146,9 @@ ms.locfileid: "93322156"
 ### <a name="example"></a>例
 
 - 入力パラメーター:
-    - **value** :Contoso terms of service...
+    - **value**:Contoso terms of service...
 - 出力要求:
-    - **createdClaim** :TOS ClaimType には「Contoso サービス利用規約...」の値が含まれています。
+    - **createdClaim**:TOS ClaimType には「Contoso サービス利用規約...」の値が含まれています。
 
 ## <a name="compareclaims"></a>CompareClaims
 
@@ -183,13 +183,13 @@ ms.locfileid: "93322156"
 ### <a name="example"></a>例
 
 - 入力要求:
-  - **inputClaim1** : someone@contoso.com
-  - **inputClaim2** : someone@outlook.com
+  - **inputClaim1**: someone@contoso.com
+  - **inputClaim2**: someone@outlook.com
 - 入力パラメーター:
-    - **operator** :NOT EQUAL
-    - **ignoreCase** : true
+    - **operator**:NOT EQUAL
+    - **ignoreCase**: true
 - 出力要求:
-    - **outputClaim** : true
+    - **outputClaim**: true
 
 ## <a name="compareclaimtovalue"></a>CompareClaimToValue
 
@@ -223,13 +223,13 @@ ms.locfileid: "93322156"
 
 ### <a name="example"></a>例
 - 入力要求:
-    - **inputClaim1** : v1
+    - **inputClaim1**: v1
 - 入力パラメーター:
-    - **compareTo** :V1
-    - **operator** :EQUAL
-    - **ignoreCase** :  true
+    - **compareTo**:V1
+    - **operator**:EQUAL
+    - **ignoreCase**:  true
 - 出力要求:
-    - **outputClaim** : true
+    - **outputClaim**: true
 
 ## <a name="createrandomstring"></a>CreateRandomString
 
@@ -259,9 +259,9 @@ ms.locfileid: "93322156"
 ### <a name="example"></a>例
 
 - 入力パラメーター:
-    - **randomGeneratorType** :GUID
+    - **randomGeneratorType**:GUID
 - 出力要求:
-    - **outputClaim** : bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
+    - **outputClaim**: bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
 
 次の例では、0 ~ 1000 の範囲の整数のランダムな値を生成します。 値は OTP_{ランダム値} に書式設定されます。
 
@@ -282,12 +282,12 @@ ms.locfileid: "93322156"
 ### <a name="example"></a>例
 
 - 入力パラメーター:
-    - **randomGeneratorType** :INTEGER
-    - **maximumNumber** :1000
-    - **stringFormat** :OTP_{0}
-    - **base64** : false
+    - **randomGeneratorType**:INTEGER
+    - **maximumNumber**:1000
+    - **stringFormat**:OTP_{0}
+    - **base64**: false
 - 出力要求:
-    - **outputClaim** :OTP_853
+    - **outputClaim**:OTP_853
 
 
 ## <a name="formatstringclaim"></a>FormatStringClaim
@@ -300,7 +300,7 @@ ms.locfileid: "93322156"
 | InputParameter | stringFormat | string | {0} パラメーターを含む文字列の形式。 この入力パラメーターは、[文字列要求変換式](string-transformations.md#string-claim-transformations-expressions)をサポートします。  |
 | OutputClaim | outputClaim | string | この要求変換が呼び出された後に生成される ClaimType。 |
 
-この要求変換を使用して 1 つのパラメーター {0} を持つ任意の文字列の書式を設定します。 次の例では、 **userPrincipalName** を作成します。 `Facebook-OAUTH` などのすべてのソーシャル ID プロバイダーの技術プロファイルは、 **CreateUserPrincipalName** を呼び出して **userPrincipalName** を生成します。
+この要求変換を使用して 1 つのパラメーター {0} を持つ任意の文字列の書式を設定します。 次の例では、**userPrincipalName** を作成します。 `Facebook-OAUTH` などのすべてのソーシャル ID プロバイダーの技術プロファイルは、**CreateUserPrincipalName** を呼び出して **userPrincipalName** を生成します。
 
 ```xml
 <ClaimsTransformation Id="CreateUserPrincipalName" TransformationMethod="FormatStringClaim">
@@ -319,11 +319,11 @@ ms.locfileid: "93322156"
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **inputClaim** :5164db16-3eee-4629-bfda-dcc3326790e9
+    - **inputClaim**:5164db16-3eee-4629-bfda-dcc3326790e9
 - 入力パラメーター:
-    - **stringFormat** :  cpim_{0}@{RelyingPartyTenantId}
+    - **stringFormat**:  cpim_{0}@{RelyingPartyTenantId}
 - 出力要求:
-  - **outputClaim** : cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
+  - **outputClaim**: cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
 
 ## <a name="formatstringmultipleclaims"></a>FormatStringMultipleClaims
 
@@ -356,12 +356,12 @@ ms.locfileid: "93322156"
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **inputClaim1** :Joe
-    - **inputClaim2** :Fernando
+    - **inputClaim1**:Joe
+    - **inputClaim2**:Fernando
 - 入力パラメーター:
-    - **stringFormat** : {0} {1}
+    - **stringFormat**: {0} {1}
 - 出力要求:
-    - **outputClaim** :Joe Fernando
+    - **outputClaim**:Joe Fernando
 
 ## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation
 
@@ -427,10 +427,10 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 ### <a name="example"></a>例
 
 - 出力要求:
-  - **subject** : Contoso アカウントの電子メール確認コード
-  - **message** :アカウントの確認が完了しました!
-  - **codeIntro** :お客様のコード
-  - **signature** :ご利用ありがとうございます
+  - **subject**: Contoso アカウントの電子メール確認コード
+  - **message**:アカウントの確認が完了しました!
+  - **codeIntro**:お客様のコード
+  - **signature**:ご利用ありがとうございます
 
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
@@ -472,9 +472,9 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **mapFromClaim** :B2C_V1_90001
+    - **mapFromClaim**:B2C_V1_90001
 - 出力要求:
-    - **restrictionValueClaim** :マイナーであるのでサインインできません。
+    - **restrictionValueClaim**:マイナーであるのでサインインできません。
 
 ## <a name="lookupvalue"></a>LookupValue
 
@@ -509,16 +509,16 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **inputParameterId** : test.com
+    - **inputParameterId**: test.com
 - 入力パラメーター:
-    - **contoso.com** :13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
-    - **microsoft.com** :0213308f-17cb-4398-b97e-01da7bd4804e
-    - **test.com** : c7026f88-4299-4cdb-965d-3f166464b8a9
-    - **errorOnFailedLookup** : false
+    - **contoso.com**:13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **microsoft.com**:0213308f-17cb-4398-b97e-01da7bd4804e
+    - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **errorOnFailedLookup**: false
 - 出力要求:
-    - **outputClaim** :    c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **outputClaim**:    c7026f88-4299-4cdb-965d-3f166464b8a9
 
-`errorOnFailedLookup` 入力パラメーターが `true` に設定されると、 **LookupValue** 要求変換は常に、 [セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される [検証技術プロファイル](validation-technical-profile.md) (つまり [DisplayConrtol](display-controls.md)) から実行されます。 ユーザーに表示されるエラー メッセージは、セルフアサート技術プロファイルの `LookupNotFound` メタデータによって制御されます。
+`errorOnFailedLookup` 入力パラメーターが `true` に設定されると、**LookupValue** 要求変換は常に、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される [検証技術プロファイル](validation-technical-profile.md) (つまり [DisplayConrtol](display-controls.md)) から実行されます。 ユーザーに表示されるエラー メッセージは、セルフアサート技術プロファイルの `LookupNotFound` メタデータによって制御されます。
 
 ![AssertStringClaimsAreEqual の実行](./media/string-transformations/assert-execution.png)
 
@@ -544,12 +544,12 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **inputParameterId** : live.com
+    - **inputParameterId**: live.com
 - 入力パラメーター:
-    - **contoso.com** :13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
-    - **microsoft.com** :0213308f-17cb-4398-b97e-01da7bd4804e
-    - **test.com** : c7026f88-4299-4cdb-965d-3f166464b8a9
-    - **errorOnFailedLookup** : true
+    - **contoso.com**:13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **microsoft.com**:0213308f-17cb-4398-b97e-01da7bd4804e
+    - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **errorOnFailedLookup**: true
 - エラー:
     - 一連の入力パラメーターの ID に入力要求値との一致が見つかりませんでした。また、errorOnFailedLookup は true になっています。
 
@@ -573,9 +573,9 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 ```
 
 - 入力要求:
-    - **outputClaim** :Welcome to Contoso App. この Web サイトを継続して参照および使用する場合には、次の使用条件に従い、制約を受けることに同意していただくものとします。
+    - **outputClaim**:Welcome to Contoso App. この Web サイトを継続して参照および使用する場合には、次の使用条件に従い、制約を受けることに同意していただくものとします。
 - 出力要求:
-    - **outputClaim** :NULL
+    - **outputClaim**:NULL
 
 ## <a name="parsedomain"></a>ParseDomain
 
@@ -586,7 +586,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 | InputClaim | emailAddress | string | 電子メール アドレスが含まれている ClaimType。 |
 | OutputClaim | domain | string | この要求変換が呼び出された後に生成される ClaimType - ドメイン。 |
 
-この要求変換は、ユーザーの @ 記号の後のドメイン名を解析するために使用します。 次の要求変換は、 **email** 要求からドメイン名を解析する方法を示しています。
+この要求変換は、ユーザーの @ 記号の後のドメイン名を解析するために使用します。 次の要求変換は、**email** 要求からドメイン名を解析する方法を示しています。
 
 ```xml
 <ClaimsTransformation Id="SetDomainName" TransformationMethod="ParseDomain">
@@ -602,9 +602,9 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 ### <a name="example"></a>例
 
 - 入力要求:
-  - **emailAddress** : joe@outlook.com
+  - **emailAddress**: joe@outlook.com
 - 出力要求:
-    - **domain** : outlook.com
+    - **domain**: outlook.com
 
 ## <a name="setclaimsifregexmatch"></a>SetClaimsIfRegexMatch
 
@@ -641,13 +641,13 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 ```
 
 - 入力要求:
-    - **claimToMatch** :"64854114520"
+    - **claimToMatch**:"64854114520"
 - 入力パラメーター:
-    - **matchTo** : "^[0-9]{4,16}$"
-    - **outputClaimIfMatched** :  "isPhone"
+    - **matchTo**: "^[0-9]{4,16}$"
+    - **outputClaimIfMatched**:  "isPhone"
 - 出力要求:
-    - **outputClaim** : "isPhone"
-    - **regexCompareResultClaim** : true
+    - **outputClaim**: "isPhone"
+    - **regexCompareResultClaim**: true
 
 ### <a name="example-2"></a>例 2
 
@@ -672,15 +672,15 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 ```
 
 - 入力要求:
-    - **claimToMatch** : "emily@contoso.com"
+    - **claimToMatch**: "emily@contoso.com"
 - 入力パラメーター:
-    - **matchTo** : `(?&lt;mailAlias&gt;.*)@(.*)$`
-    - **outputClaimIfMatched** :  "isEmail"
-    - **extractGroups** : true
+    - **matchTo**: `(?&lt;mailAlias&gt;.*)@(.*)$`
+    - **outputClaimIfMatched**:  "isEmail"
+    - **extractGroups**: true
 - 出力要求:
-    - **outputClaim** : "isEmail"
-    - **regexCompareResultClaim** : true
-    - **mailAlias** : emily
+    - **outputClaim**: "isEmail"
+    - **regexCompareResultClaim**: true
+    - **mailAlias**: emily
     
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
@@ -720,16 +720,16 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **inputClaim** : v1
+    - **inputClaim**: v1
 - 入力パラメーター:
-    - **matchTo** :V1
-    - **stringComparison** : ordinalIgnoreCase
-    - **stringMatchMsg** :B2C_V1_90005
-    - **stringMatchMsgCode** :TOS は v2 にアップグレードされます
+    - **matchTo**:V1
+    - **stringComparison**: ordinalIgnoreCase
+    - **stringMatchMsg**:B2C_V1_90005
+    - **stringMatchMsgCode**:TOS は v2 にアップグレードされます
 - 出力要求:
-    - **outputClaim1** :B2C_V1_90005
-    - **outputClaim2** :TOS は v2 にアップグレードされます
-    - **stringCompareResultClaim** : true
+    - **outputClaim1**:B2C_V1_90005
+    - **outputClaim2**:TOS は v2 にアップグレードされます
+    - **stringCompareResultClaim**: true
 
 ## <a name="setclaimsifstringsmatch"></a>SetClaimsIfStringsMatch
 
@@ -766,14 +766,14 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **claimToMatch** :Minor
+    - **claimToMatch**:Minor
 - 入力パラメーター:
-    - **matchTo** :Minor
-    - **stringComparison** : ordinalIgnoreCase
-    - **outputClaimIfMatched** :B2C_V1_90001
+    - **matchTo**:Minor
+    - **stringComparison**: ordinalIgnoreCase
+    - **outputClaimIfMatched**:B2C_V1_90001
 - 出力要求:
-    - **isMinorResponseCode** :B2C_V1_90001
-    - **isMinor** : true
+    - **isMinorResponseCode**:B2C_V1_90001
+    - **isMinor**: true
 
 
 ## <a name="stringcontains"></a>StringContains
@@ -807,12 +807,12 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **inputClaim** :"Admin, Approver, Editor"
+    - **inputClaim**:"Admin, Approver, Editor"
 - 入力パラメーター:
-    - **contains** : "admin,"
-    - **ignoreCase** : true
+    - **contains**: "admin,"
+    - **ignoreCase**: true
 - 出力要求:
-    - **outputClaim** : true
+    - **outputClaim**: true
 
 ## <a name="stringsubstring"></a>StringSubstring
 
@@ -845,12 +845,12 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **inputClaim** : "+1644114520"
+    - **inputClaim**: "+1644114520"
 - 入力パラメーター:
-    - **startIndex** : 0
-    - **length** : 2
+    - **startIndex**: 0
+    - **length**: 2
 - 出力要求:
-    - **outputClaim** : "+1"
+    - **outputClaim**: "+1"
 
 ## <a name="stringreplace"></a>StringReplace
 
@@ -883,12 +883,12 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **inputClaim** : "+164-411-452-054"
+    - **inputClaim**: "+164-411-452-054"
 - 入力パラメーター:
-    - **oldValue** : "-"
-    - **newValue** :  ""
+    - **oldValue**: "-"
+    - **newValue**:  ""
 - 出力要求:
-    - **outputClaim** : "+164411452054"
+    - **outputClaim**: "+164411452054"
 
 ## <a name="stringjoin"></a>StringJoin
 
@@ -919,11 +919,11 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 ### <a name="example"></a>例
 
 - 入力要求:
-  - **inputClaim** : [ "Admin", "Author", "Reader" ]
+  - **inputClaim**: [ "Admin", "Author", "Reader" ]
 - 入力パラメーター:
-  - **delimiter** : ","
+  - **delimiter**: ","
 - 出力要求:
-  - **outputClaim** :"Admin,Author,Reader"
+  - **outputClaim**:"Admin,Author,Reader"
 
 
 ## <a name="stringsplit"></a>StringSplit
@@ -955,11 +955,11 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 ### <a name="example"></a>例
 
 - 入力要求:
-  - **inputClaim** :"Admin,Author,Reader"
+  - **inputClaim**:"Admin,Author,Reader"
 - 入力パラメーター:
-  - **delimiter** : ","
+  - **delimiter**: ","
 - 出力要求:
-  - **outputClaim** : [ "Admin", "Author", "Reader" ]
+  - **outputClaim**: [ "Admin", "Author", "Reader" ]
 
 ## <a name="string-claim-transformations-expressions"></a>文字列要求変換式
 Azure AD B2C のカスタム ポリシーにおける要求変換式は、テナント ID と技術プロファイル ID についてのコンテキスト情報を提供します。

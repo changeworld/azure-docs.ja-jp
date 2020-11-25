@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 06/04/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 87337cf22bdb388c5873a2811bb9913c3e7f4d4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019778"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994963"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Active Directory ID を使用して Azure Cognitive Search の結果をトリミングするためのセキュリティ フィルター
 
@@ -43,7 +43,7 @@ Azure Cognitive Search のインデックスには、ドキュメントに対す
 
 このステップでは、ユーザー アカウントとグループ アカウントのサインインを受け付けるために、アプリケーションを AAD と統合します。 組織の AAD 管理者ではない場合は、以下の手順を実行するために[新しいテナントを作成する](../active-directory/develop/quickstart-create-new-tenant.md)ことが必要な場合があります。
 
-1. [ **[アプリケーション登録ポータル]** ](https://apps.dev.microsoft.com) >   **[Converged app]\(集中型アプリ\)**  >  **[Add an app]\(アプリの追加\)** に移動します。
+1. [ **[アプリケーション登録ポータル]**](https://apps.dev.microsoft.com) >   **[Converged app]\(集中型アプリ\)**  >  **[Add an app]\(アプリの追加\)** に移動します。
 2. アプリケーションの名前を入力して、 **[作成]** をクリックします。 
 3. [マイ アプリケーション] ページで、新しく登録したアプリケーションを選びます。
 4. アプリケーション登録ページの **[プラットフォーム]**  >  **[プラットフォームの追加]** で、 **[Web API]** を選びます。

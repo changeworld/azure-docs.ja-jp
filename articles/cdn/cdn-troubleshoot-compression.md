@@ -15,11 +15,11 @@ ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: f49af1488a0c044639a72fc2ea52ba0a47727a24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89433672"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996153"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>CDN ファイルの圧縮のトラブルシューティング
 この記事では、 [CDN ファイルの圧縮](cdn-improve-performance.md)に関する問題のトラブルシューティングについて説明します。
@@ -99,7 +99,7 @@ ms.locfileid: "89433672"
 ブラウザーの開発者ツールを使用して、応答ヘッダーを確認し、ファイルが要求されているリージョンでキャッシュされていることを確認します。
 
 * **Server** 応答ヘッダーを確認します。  この応答ヘッダーの形式は、次の例に示すとおり **プラットフォーム (POP/サーバー ID)** である必要があります。
-* **X-Cache** 応答ヘッダーを確認します。  ヘッダーによって **HIT**が読み取られる必要があります。  
+* **X-Cache** 応答ヘッダーを確認します。  ヘッダーによって **HIT** が読み取られる必要があります。  
 
 ![CDN 応答ヘッダー](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
 

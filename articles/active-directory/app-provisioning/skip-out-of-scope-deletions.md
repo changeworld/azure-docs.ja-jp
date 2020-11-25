@@ -12,25 +12,25 @@ ms.date: 12/10/2019
 ms.author: kenwith
 ms.reviewer: celested
 ms.openlocfilehash: f459a804b4c375eea17cbc22ded2f41f808c1b82
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041164"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995371"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>スコープ外に出るユーザー アカウントの削除をスキップする
 
 既定では、Azure AD プロビジョニング エンジンは、スコープ外に出るユーザーを論理的に削除または無効化します。 ただし、Workday to AD User Inbound Provisioning などの特定のシナリオでは、この動作が予期されていない場合があり、この既定の動作をオーバーライドしたいことがあります。  
 
-この記事では、Microsoft Graph API と Microsoft Graph API エクスプローラーを使用して、スコープ外に出るアカウントの処理を制御するフラグ * **SkipOutOfScopeDeletions** _ を設定する方法について説明します。 _ * **SkipOutOfScopeDeletions** _ が 0 (false) に設定されている場合、スコープ外に出たアカウントはターゲットで無効になります。
-_ * **SkipOutOfScopeDeletions** _ が 1 (true) に設定されている場合、スコープ外に出たアカウントはターゲットで無効になりません。 このフラグは、"プロビジョニング アプリ" のレベルで設定され、Graph API を使用して構成できます。 
+この記事では、Microsoft Graph API と Microsoft Graph API エクスプローラーを使用して、スコープ外に出るアカウントの処理を制御するフラグ ***SkipOutOfScopeDeletions** _ を設定する方法について説明します。 _ ***SkipOutOfScopeDeletions** _ が 0 (false) に設定されている場合、スコープ外に出たアカウントはターゲットで無効になります。
+_ ***SkipOutOfScopeDeletions** _ が 1 (true) に設定されている場合、スコープ外に出たアカウントはターゲットで無効になりません。 このフラグは、"プロビジョニング アプリ" のレベルで設定され、Graph API を使用して構成できます。 
 
 この構成は *Workday to Active Directory User Provisioning* アプリで広く使用されているため、次の手順には Workday アプリケーションのスクリーンショットが含まれています。 ただし、この構成は *他のすべてのアプリ* (ServiceNow、Salesforce、Dropbox など) でも使用できます。
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>手順 1:プロビジョニング アプリのサービス プリンシパル ID (オブジェクト ID) を取得します
 
-1. [Azure portal](https://portal.azure.com) を起動し、プロビジョニング アプリケーションの [プロパティ] セクションに移動します。 たとえば、" *Workday to AD User Provisioning アプリケーション* " のマッピングをエクスポートする場合は、そのアプリの [プロパティ] セクションに移動します。 
-1. プロビジョニング アプリの [プロパティ] セクションで、" *オブジェクト ID* " フィールドに関連付けられている GUID 値をコピーします。 この値はアプリの **ServicePrincipalId** とも呼ばれ、Graph Explorer の操作で使用されます。
+1. [Azure portal](https://portal.azure.com) を起動し、プロビジョニング アプリケーションの [プロパティ] セクションに移動します。 たとえば、"*Workday to AD User Provisioning アプリケーション*" のマッピングをエクスポートする場合は、そのアプリの [プロパティ] セクションに移動します。 
+1. プロビジョニング アプリの [プロパティ] セクションで、"*オブジェクト ID*" フィールドに関連付けられている GUID 値をコピーします。 この値はアプリの **ServicePrincipalId** とも呼ばれ、Graph Explorer の操作で使用されます。
 
    ![Workday アプリのサービス プリンシパル ID](./media/skip-out-of-scope-deletions/wd_export_01.png)
 
@@ -45,7 +45,7 @@ _ * **SkipOutOfScopeDeletions** _ が 1 (true) に設定されている場合、
 
 ## <a name="step-3-get-existing-app-credentials-and-connectivity-details"></a>手順 3:既存のアプリの資格情報と接続の詳細を取得します
 
-Microsoft Graph Explorer で、[servicePrincipalId] を「 [手順 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)」から抽出した **ServicePrincipalId** に置き換え、次の GET クエリを実行します。
+Microsoft Graph Explorer で、[servicePrincipalId] を「[手順 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)」から抽出した **ServicePrincipalId** に置き換え、次の GET クエリを実行します。
 
 ```http
    GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
@@ -68,9 +68,9 @@ Microsoft Graph Explorer で、[servicePrincipalId] を「 [手順 1](#step-1-re
 
 ## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>手順 4:SkipOutOfScopeDeletions フラグを使用して、シークレット エンドポイントを更新します
 
-Graph エクスプローラーで下のコマンドを実行して、* *_SkipOutOfScopeDeletions_* _ フラグを使用してシークレット エンドポイントを更新します。 
+Graph エクスプローラーで下のコマンドを実行して、**_SkipOutOfScopeDeletions_* _ フラグを使用してシークレット エンドポイントを更新します。 
 
-下の URL で、[servicePrincipalId] を [手順 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id) で抽出した _ *ServicePrincipalId* * に置き換えます。 
+下の URL で、[servicePrincipalId] を [手順 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id) で抽出した _ *ServicePrincipalId** に置き換えます。 
 
 ```http
    PUT https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets

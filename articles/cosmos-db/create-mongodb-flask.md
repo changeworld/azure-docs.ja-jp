@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: devx-track-python
 ms.openlocfilehash: 58f22a335f4c619a6348e9e127e60f5a79f658b2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099659"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994558"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API を使用して Python アプリをビルドする
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -100,7 +100,7 @@ ms.locfileid: "93099659"
 
 3. 次に、Mac を使用している場合は、`set FLASK_APP=app.py`、PowerShell エディターの `$env:FLASK_APP = app.py`、または `export FLASK_APP=app.py` を使用して Flask アプリの環境変数を設定します。 
 
-4. `flask run` を使用してアプリを実行し、 *http:\//127.0.0.1:5000/* を参照します。
+4. `flask run` を使用してアプリを実行し、*http:\//127.0.0.1:5000/* を参照します。
 
 5. タスクを追加および削除し、それらがコレクションで追加および変更されたことを確認します。
 
@@ -118,11 +118,11 @@ ms.locfileid: "93099659"
 
 2. ルート ディレクトリ内の *app.py* ファイルを開きます。
 
-3. (コピー ボタンを使用して) ポータルから **ユーザー名** の値をコピーし、 *app.py* ファイル内の **name** の値に設定します。
+3. (コピー ボタンを使用して) ポータルから **ユーザー名** の値をコピーし、*app.py* ファイル内の **name** の値に設定します。
 
 4. 次に、ポータルから **接続文字列** の値をコピーし、それを *app.py* ファイル内の **MongoClient** の値に設定します。
 
-5. 最後に、ポータルから **パスワード** の値をコピーし、 *app.py* ファイル内の **password** の値に設定します。
+5. 最後に、ポータルから **パスワード** の値をコピーし、*app.py* ファイル内の **password** の値に設定します。
 
 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 これまでと同じ方法で実行できます。
 

@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 726507fa6ea0651b23d46424bda669a2d8ad41e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979900"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996646"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理でアクセス パッケージへのアクセスを要求する
 
@@ -113,7 +113,7 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 ## <a name="cancel-a-request"></a>要求を取り消す
 
-アクセス要求を送信し、要求がまだ**承認待ち**状態の場合、要求を取り消すことができます。
+アクセス要求を送信し、要求がまだ **承認待ち** 状態の場合、要求を取り消すことができます。
 
 **事前に必要なロール:** 要求元
 
@@ -121,7 +121,7 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 1. 取り消す要求の **[表示]** リンクをクリックします。
 
-1. 要求がまだ**承認待ち**状態の場合は、**[要求の取り消し]** をクリックして要求を取り消すことができます。
+1. 要求がまだ **承認待ち** 状態の場合は、**[要求の取り消し]** をクリックして要求を取り消すことができます。
 
     ![マイ アクセス ポータル - [要求の取り消し]](./media/entitlement-management-request-access/my-access-cancel-request.png)
 

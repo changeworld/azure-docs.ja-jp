@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 732362ef7099e93697320d8e47180c1207e8cb32
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92453860"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995898"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>チュートリアル:Azure Active Directory と Everbridge の統合
 
@@ -60,7 +60,7 @@ Azure Marketplace から Everbridge を追加するには、次の手順に従�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Everbridge** 」と入力します。 結果パネルで **[Everbridge]** を選択し、 **[追加]** を選択します。
+4. 検索ボックスに「**Everbridge**」と入力します。 結果パネルで **[Everbridge]** を選択し、 **[追加]** を選択します。
 
      ![結果リスト内の Everbridge](common/search-new-app.png)
 
@@ -186,7 +186,7 @@ Azure portal で Britta Simon というテスト ユーザーを作成するに�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** ボックスに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** ボックスに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば BrittaSimon@contoso.com です。
 

@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: lyhughes
-ms.openlocfilehash: 320d92ef0ad6d02dbe7c31b883eb7f73472378ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56a1d5aab2f665f9c5bd8f6fa322f35e55483c7b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667811"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995235"
 ---
 # <a name="upcoming-changes-to-json-flattening-and-escaping-rules-for-new-environments"></a>新しい環境での JSON フラット化とエスケープ規則に関する今後の変更
 
@@ -44,17 +44,17 @@ Azure Time Series Insights Gen2 環境では、特定の一連の名前付け規
 
 新しいデプロイでは、新しい取り込み規則を使用する必要があります。 たとえば、お使いの TS ID が `telemetry_tagId` である場合は、Azure Resource Manager テンプレートまたは自動展開スクリプトをすべて更新して、`telemetry.tagId` を環境の TS ID として構成する必要があります。 入れ子になった JSON のイベント ソースのタイムスタンプでも、この変更を行う必要があります。
 
-### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>ペイロードに入れ子になった JSON または特殊文字が含まれており、[時系列モデル](.\time-series-insights-update-tsm.md)変数式の作成が自動化されている場合:
+### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>ペイロードに入れ子になった JSON または特殊文字が含まれており、[時系列モデル](./concepts-model-overview.md)変数式の作成が自動化されている場合:
 
-新しい取り込み規則が使用されるよう、[TypesBatchPut](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput) を実行するお使いのクライアント コードを更新します。 たとえば、前の `"value": {"tsx": "$event.series_value.Double"}` の[タイム シリーズ式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)を、次のいずれかのオプションに更新します。
+新しい取り込み規則が使用されるよう、[TypesBatchPut](/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput) を実行するお使いのクライアント コードを更新します。 たとえば、前の `"value": {"tsx": "$event.series_value.Double"}` の[タイム シリーズ式](/rest/api/time-series-insights/reference-time-series-expression-syntax)を、次のいずれかのオプションに更新します。
 
 * `"value": {"tsx": "$event.series.value.Double"}`
 * `"value": {"tsx": "$event['series']['value'].Double"}`
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Time Series Insights Gen2 のストレージとイングレス](./time-series-insights-update-storage-ingress.md)に関するページをご覧ください。
+* [Azure Time Series Insights Gen2 のストレージとイングレス](./concepts-ingestion-overview.md)に関するページをご覧ください。
 
 * [タイム シリーズ クエリ API](./concepts-query-overview.md) を使用してお使いのデータをクエリする方法をご覧ください。
 
-* [新しいタイム シリーズ式の構文](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)の詳細をご覧ください。
+* [新しいタイム シリーズ式の構文](/rest/api/time-series-insights/reference-time-series-expression-syntax)の詳細をご覧ください。

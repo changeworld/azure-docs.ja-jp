@@ -4,11 +4,11 @@ description: この記事では、Azure portal を使用して、Azure Blob Stor
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: e80e2243c93ab38187646256f567d6ab73c40100
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308505"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995065"
 ---
 # <a name="subscribe-to-events-through-portal"></a>ポータルを使用したイベントのサブスクライブ
 
@@ -54,7 +54,7 @@ ms.locfileid: "91308505"
 
 ## <a name="create-subscription-on-resource"></a>リソースでのサブスクリプションの作成
 
-一部のイベント ソースでは、そのリソースのポータル インターフェイスを介してイベント サブスクリプションを作成できます。 イベント ソースを選択し、左側のウィンドウで**イベント**を探します。
+一部のイベント ソースでは、そのリソースのポータル インターフェイスを介してイベント サブスクリプションを作成できます。 イベント ソースを選択し、左側のウィンドウで **イベント** を探します。
 
 ![サブスクリプションの詳細の指定](./media/subscribe-through-portal/resource-events.png)
 

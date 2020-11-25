@@ -13,11 +13,11 @@ ms.workload: identity
 ms.date: 08/14/2020
 ms.author: jmprieur
 ms.openlocfilehash: 42102f38959911388cefcc141d949e59f24a2c31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89436471"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996010"
 ---
 ## <a name="add-a-client-secret-or-certificate"></a>クライアント シークレットまたは証明書を追加する
 
@@ -38,5 +38,5 @@ ms.locfileid: "89436471"
 
 GitHub の [active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)コード サンプルは、アプリケーションの登録時にシークレットまたは証明書を登録する方法を示しています。
 
-- PowerShell を使用して**クライアント シークレット**を追加する方法の詳細については、[AppCreationScripts/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190) を参照してください。
-- PowerShell を使用して**資格情報**を追加する方法の詳細については、[AppCreationScripts-withCert/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178) を参照してください。
+- PowerShell を使用して **クライアント シークレット** を追加する方法の詳細については、[AppCreationScripts/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190) を参照してください。
+- PowerShell を使用して **資格情報** を追加する方法の詳細については、[AppCreationScripts-withCert/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178) を参照してください。

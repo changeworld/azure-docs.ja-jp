@@ -9,11 +9,11 @@ ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: 1883ffdff20bbbef8efec1440854f01a21a281dc
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045722"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994521"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio 2019 を使用して Azure IoT Edge 用のモジュールを開発してデバッグする
 
@@ -32,7 +32,7 @@ Azure IoT Edge Tools for Visual Studio の利点は次のとおりです。
 
 この記事では、Windows を実行しているコンピューターまたは仮想マシンを開発用マシンとして使用していることを前提としています。 Windows コンピューターでは、Windows または Linux のいずれかのモジュールを開発できます。 Windows モジュールを開発するには、バージョン 1809/ビルド 17763 以降を実行している Windows コンピューターを使用します。 Linux モジュールを開発するには、[Docker Desktop の要件](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)を満たす Windows コンピューターを使用します。
 
-この記事ではメインの開発ツールとして Visual Studio 2019 を使うため、Visual Studio をインストールします。 Visual Studio 2019 のインストールには、必ず **Azure の開発**と **C++ によるデスクトップ開発**のワークロードを含めてください。 [Visual Studio 2019 を変更](/visualstudio/install/modify-visual-studio?view=vs-2019)して、必須のワークロードを追加することができます。
+この記事ではメインの開発ツールとして Visual Studio 2019 を使うため、Visual Studio をインストールします。 Visual Studio 2019 のインストールには、必ず **Azure の開発** と **C++ によるデスクトップ開発** のワークロードを含めてください。 [Visual Studio 2019 を変更](/visualstudio/install/modify-visual-studio?view=vs-2019)して、必須のワークロードを追加することができます。
 
 Visual Studio 2019 の準備ができたら、次のツールとコンポーネントも必要になります。
 
@@ -49,7 +49,7 @@ Visual Studio 2019 の準備ができたら、次のツールとコンポーネ�
    pip install --upgrade iotedgehubdev
    ```
 
-- リポジトリを複製して Vcpkg ライブラリ マネージャをインストールしてから、Windows 用の **azure-iot-sdk-c パッケージ**をインストールします。
+- リポジトリを複製して Vcpkg ライブラリ マネージャをインストールしてから、Windows 用の **azure-iot-sdk-c パッケージ** をインストールします。
 
   ```cmd
   git clone https://github.com/Microsoft/vcpkg
@@ -135,7 +135,7 @@ C# モジュールの場合、**IotEdgeModule1** プロジェクトは .NET Core
 
 通常は、複数のモジュールを含むソリューション全体の中で実行する前に、各モジュールをテストしてデバッグします。
 
-1. **ソリューション エクスプローラー**で **[IotEdgeModule1]** を右クリックし、コンテキスト メニューから **[スタートアップ プロジェクトに設定]** を選択します。
+1. **ソリューション エクスプローラー** で **[IotEdgeModule1]** を右クリックし、コンテキスト メニューから **[スタートアップ プロジェクトに設定]** を選択します。
 
    ![スタートアップ プロジェクトを設定する](./media/how-to-visual-studio-develop-csharp-module/module-start-up-project.png)
 
@@ -166,7 +166,7 @@ C# モジュールの場合、**IotEdgeModule1** プロジェクトは .NET Core
 
 1 つのモジュールの開発が完了したら、複数のモジュールを含むソリューション全体を実行してデバッグします。
 
-1. **ソリューション エクスプローラー**で **[AzureIoTEdgeApp1]** を右クリックし、 **[追加]**  >  **[New IoT Edge Module]\(新しい IoT Edge モジュール\)** の順に選択して、ソリューションに 2 つ目のモジュールを追加します。 2 つ目のモジュールの既定の名前は **IotEdgeModule2** で、別のパイプ モジュールとして機能します。
+1. **ソリューション エクスプローラー** で **[AzureIoTEdgeApp1]** を右クリックし、 **[追加]**  >  **[New IoT Edge Module]\(新しい IoT Edge モジュール\)** の順に選択して、ソリューションに 2 つ目のモジュールを追加します。 2 つ目のモジュールの既定の名前は **IotEdgeModule2** で、別のパイプ モジュールとして機能します。
 
 1. `deployment.template.json` ファイルを開くと、**IotEdgeModule2** が **modules** セクションに追加されていることがわかります。 **routes** セクションを次の内容に置き換えます。 モジュール名をカスタマイズしている場合は、これらの名前を一致するように必ず更新してください。
 
@@ -216,7 +216,7 @@ C# モジュールの場合、**IotEdgeModule1** プロジェクトは .NET Core
           }
     ```
 
-1. **ソリューション エクスプローラー**で **AzureIoTEdgeApp1** を右クリックし、 **[Build and Push IoT Edge Modules]\(IoT Edge モジュールをビルドしてプッシュする\)** を選択して、各モジュールの Docker イメージをビルドしてプッシュします。
+1. **ソリューション エクスプローラー** で **AzureIoTEdgeApp1** を右クリックし、 **[Build and Push IoT Edge Modules]\(IoT Edge モジュールをビルドしてプッシュする\)** を選択して、各モジュールの Docker イメージをビルドしてプッシュします。
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ
 

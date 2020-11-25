@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e6185c4bde71285fc163cae2af46f64ba052195
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366209"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994759"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>条件付きアクセス:すべてのユーザーに対して MFA を必須にする
 
@@ -60,7 +60,7 @@ Microsoft の ID セキュリティ責任者、Alex Weinert は彼のブログ�
 
 ### <a name="named-locations"></a>ネームド ロケーション
 
-組織では、条件付きアクセス ポリシーに「 **ネームド ロケーション** 」と呼ばれる既知のネットワークの場所を組み込むことができます。 こうしたネームド ロケーションには、メイン オフィスの場所のような信頼できる IPv4 ネットワークを含めることができます。 ネームド ロケーションの構成の詳細については、「[Azure Active Directory 条件付きアクセスの場所の条件の概要](location-condition.md)」の記事を参照してください。
+組織では、条件付きアクセス ポリシーに「**ネームド ロケーション**」と呼ばれる既知のネットワークの場所を組み込むことができます。 こうしたネームド ロケーションには、メイン オフィスの場所のような信頼できる IPv4 ネットワークを含めることができます。 ネームド ロケーションの構成の詳細については、「[Azure Active Directory 条件付きアクセスの場所の条件の概要](location-condition.md)」の記事を参照してください。
 
 上記のポリシーの例では、組織は自社のネットワークからクラウド アプリにアクセスする場合に多要素認証を必要としないことを選択できます。 この場合、次の構成をポリシーに追加できます。
 
