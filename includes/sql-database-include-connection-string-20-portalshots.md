@@ -10,12 +10,12 @@ ms.custom: develop apps
 ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
-ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b06004143d4a1ec5a2808e21b1f78833e410c195
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67181255"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95560305"
 ---
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Azure ポータルから接続文字列を取得する
 [Azure Portal](https://portal.azure.com/) を使って、クライアント プログラムが Azure SQL Database と対話するために必要な接続文字列を取得します。
@@ -38,7 +38,7 @@ ms.locfileid: "67181255"
 
 8. 特定の形式の接続文字列情報を、クライアント プログラム コードに貼り付けます。
 
-詳しくは、「[接続文字列と構成ファイル](https://msdn.microsoft.com/library/ms254494.aspx)」をご覧ください。
+詳しくは、「[接続文字列と構成ファイル](/dotnet/framework/data/adonet/connection-strings-and-configuration-files)」をご覧ください。
 
 <!-- Image references. -->
 

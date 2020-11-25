@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 1e5253d617c87d5869cebc817da6d265ebfdfa7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45a7a146dd929408b50a0045fe2598726ee05505
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77539469"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544311"
 ---
 # <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Azure Private Link 接続に関する問題のトラブルシューティング
 
@@ -37,7 +37,7 @@ Private Link で使用できる接続シナリオを次に示します。
 
 ## <a name="deployment-troubleshooting"></a>デプロイのトラブルシューティング
 
-プライベート リンク サービス用に選択したサブネットからソース IP アドレスを選択できない場合のトラブルシューティングについては、[プライベート リンク サービスのネットワーク ポリシーの無効化](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy)に関する情報を参照してください。
+プライベート リンク サービス用に選択したサブネットからソース IP アドレスを選択できない場合のトラブルシューティングについては、[プライベート リンク サービスのネットワーク ポリシーの無効化](./disable-private-link-service-network-policy.md)に関する情報を参照してください。
 
 ソース IP アドレスの選択元のサブネットに対して **privateLinkServiceNetworkPolicies** 設定が無効になっていることを確認してください。
 
@@ -70,7 +70,7 @@ Private Link で使用できる接続シナリオを次に示します。
      - 両方の側が承認されたら、接続を再試行します。
 
     e. **[概要]** タブで **[別名]** を確認し、 **[プロパティ]** タブで **[リソース ID]** を確認します。
-     - その**別名**と**リソース ID** の情報が、このサービスへのプライベート エンドポイントを作成するために使用している**別名**と**リソース ID** と一致することを確認します。
+     - その **別名** と **リソース ID** の情報が、このサービスへのプライベート エンドポイントを作成するために使用している **別名** と **リソース ID** と一致することを確認します。
 
        ![別名の情報を確認する](./media/private-link-tsg/pls-overview-pane-alias.png)
 
@@ -87,9 +87,9 @@ Private Link で使用できる接続シナリオを次に示します。
        ![ロード バランサーの情報を確認する](./media/private-link-tsg/pls-overview-pane-ilb.png)
 
      - ロード バランサーの設定が期待どおりに構成されていることを確認します。
-       - **フロントエンド IP 構成**を確認します。
-       - **バックエンド プール**を確認します。
-       - **負荷分散規則**を確認します。
+       - **フロントエンド IP 構成** を確認します。
+       - **バックエンド プール** を確認します。
+       - **負荷分散規則** を確認します。
 
        ![ロード バランサーのプロパティを確認する](./media/private-link-tsg/pls-ilb-properties.png)
 
@@ -99,7 +99,7 @@ Private Link で使用できる接続シナリオを次に示します。
        - 負荷分散規則に従ってバックエンド プールへの接続が行われる場合、ロード バランサーは動作しています。
        - また、Azure Monitor を使用してロード バランサーのメトリックを確認し、データがロード バランサーを介して流れているかどうかを確認することもできます。
 
-1. [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) を使用して、データが流れているかどうか確認します。
+1. [Azure Monitor](../azure-monitor/overview.md) を使用して、データが流れているかどうか確認します。
 
     a. プライベート リンク サービス リソースで、 **[Metrics]\(メトリック\)** を選択します。
      - **[入力バイト数]** または **[出力バイト数]** を選択します。
@@ -111,5 +111,5 @@ Private Link で使用できる接続シナリオを次に示します。
 
 ## <a name="next-steps"></a>次のステップ
 
- * [Private Link サービスを作成する (CLI)](https://docs.microsoft.com/azure/private-link/create-private-link-service-cli)
+ * [Private Link サービスを作成する (CLI)](./create-private-link-service-cli.md)
  * [Azure プライベート エンドポイントのトラブルシューティング ガイド](troubleshoot-private-endpoint-connectivity.md)

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 8ae9f96b42c0eb36a9380589780d141711c7ae4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c99d57ddd86ecff71c35ad6c0f2c2561e279b4b0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88034734"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912809"
 ---
 # <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>パフォーマンスをチューニングする: Spark、HDInsight & Azure Data Lake Storage Gen2
 
@@ -23,9 +23,9 @@ Spark のパフォーマンスをチューニングするときは、クラス�
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Azure Data Lake Storage Gen2 アカウント**。 アカウントの作成手順については、[クイック スタート:Azure Data Lake Storage Gen2 ストレージ アカウントを作成する](data-lake-storage-quickstart-create-account.md)」を参照してください。
-* Data Lake Storage Gen2 アカウントにアクセスできる **Azure HDInsight クラスター**。 「[Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)」 (Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する) を参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
-* **Data Lake Storage Gen2 で実行中の Spark クラスター**。  詳細については、[HDInsight Spark クラスターを使用した Data Lake Storage Gen2 のデータの分析](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)に関するページを参照してください。
+* **Azure Data Lake Storage Gen2 アカウント**。 アカウントの作成手順については、[クイック スタート:Azure Data Lake Storage Gen2 ストレージ アカウントを作成する](../common/storage-account-create.md)」を参照してください。
+* Data Lake Storage Gen2 アカウントにアクセスできる **Azure HDInsight クラスター**。 「[Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)」 (Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する) を参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
+* **Data Lake Storage Gen2 で実行中の Spark クラスター**。  詳細については、[HDInsight Spark クラスターを使用した Data Lake Storage Gen2 のデータの分析](../../hdinsight/spark/apache-spark-use-with-data-lake-store.md)に関するページを参照してください。
 * **Data Lake Storage Gen2 のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、[Data Lake Storage Gen2 のパフォーマンス チューニング ガイダンス](data-lake-storage-performance-tuning-guidance.md)を参照してください。 
 
 ## <a name="parameters"></a>パラメーター
@@ -38,7 +38,7 @@ Spark ジョブを実行するときは、以下が Data Lake Storage Gen2 の�
 
 * **Executor-cores** - 各 Executor に割り当てられるコアの数。                     
 
-**Num-executors**Num-executors では並列で実行できるタスクの最大数を設定します。  並列で実行できるタスクの実際の数は、メモリと、クラスターで利用できる CPU リソースによって制限されます。
+**Num-executors** Num-executors では並列で実行できるタスクの最大数を設定します。  並列で実行できるタスクの実際の数は、メモリと、クラスターで利用できる CPU リソースによって制限されます。
 
 **Executor-memory** 各 Executor に割り当てられるメモリの量です。  各 Executor に必要なメモリは、ジョブによって異なります。  複雑な操作では、多くのメモリが必要です。  読み取りと書き込みのような単純な操作では、必要なメモリは少なくなります。  Ambari で各 Executor のメモリの量を表示できます。  Ambari で Spark に移動し、[Configs]\(構成) タブを表示します。  
 
@@ -124,4 +124,3 @@ executor-cores = 4
 - num-executors = Min (メモリの制約, CPU の制約)
 - num-executors = Min (16, 16)
 - num-executors = 16
-

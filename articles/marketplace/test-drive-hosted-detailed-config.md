@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 11/06/2020
-ms.openlocfilehash: 0765c05e08dda782c084775fb83b22a52558fa0d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 9e8aecfe8b16d8af755d3f4c3c71b875d4e8ec40
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491615"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95751251"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>ホストされた体験版の詳細な構成
 
@@ -29,7 +29,7 @@ ms.locfileid: "94491615"
 
     - **[体験版の種類]** – **[Microsoft Hosted (Dynamics 365 for Customer Engagement & PowerApps)]\(Microsoft ホスト (Dynamics 365 for Customer Engagement & PowerApps)\)** を選択します。 これは、体験版ユーザーのプロビジョニングとプロビジョニング解除を行うサービスが Microsoft によってホストされて管理されることを示します。
 
-5. [こちらの説明](https://github.com/Microsoft/AppSource/blob/master/Microsoft%20Hosted%20Test%20Drive/Setup-your-Azure-subscription-for-Dynamics365-Microsoft-Hosted-Test-Drives.md)に従って、テナントで体験版ユーザーをプロビジョニングおよびプロビジョニング解除するためのアクセス許可を Microsoft AppSource に付与します。 この手順では、以下で説明する **Azure AD アプリ ID** と **Azure AD アプリ キー** の値を生成します。
+5. [こちらの説明](https://docs.microsoft.com/azure/marketplace/test-drive-azure-subscription-setup)に従って、テナントで体験版ユーザーをプロビジョニングおよびプロビジョニング解除するためのアクセス許可を Microsoft AppSource に付与します。 この手順では、以下で説明する **Azure AD アプリ ID** と **Azure AD アプリ キー** の値を生成します。
 6. **[Test drive technical configuration]\(体験版の技術的構成\)** ページで以下のフィールドを設定します。
 
     [![体験版の技術的構成ページ。](media/test-drive/technical-config-details.png)](media/test-drive/technical-config-details.png#lightbox)

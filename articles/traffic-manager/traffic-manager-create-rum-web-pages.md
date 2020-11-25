@@ -14,11 +14,11 @@ ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
 ms.openlocfilehash: 8606e89a40e9cfd2c0f55df2c65532928c0d11f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401301"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972591"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Web ページを使用して Azure Traffic Manager に Real User Measurements を送信する方法
 
@@ -26,7 +26,7 @@ Real User Measurements (RUM) キーを取得し、生成されたコードを We
 
 ## <a name="obtain-a-real-user-measurements-key"></a>Real User Measurements キーの取得
 
-測定値を取得し、クライアント アプリケーションから Traffic Manager に送信すると、その測定値は、**Real User Measurements (RUM) キー**と呼ばれる一意の文字列を使用して、サービスによって識別されます。 RUM キーを取得するには、Azure Portal、REST API、PowerShell、または Azure CLI を使用します。
+測定値を取得し、クライアント アプリケーションから Traffic Manager に送信すると、その測定値は、**Real User Measurements (RUM) キー** と呼ばれる一意の文字列を使用して、サービスによって識別されます。 RUM キーを取得するには、Azure Portal、REST API、PowerShell、または Azure CLI を使用します。
 
 Azure Portal を使用して RUM キーを取得するには:
 1. ブラウザーから Azure Portal にサインインします。 まだアカウントを持っていない場合は、1 か月間の無料試用版にサインアップできます。

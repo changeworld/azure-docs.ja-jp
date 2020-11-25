@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 10/02/2020
-ms.openlocfilehash: 7de4dc21391f7dbd817c56ce51606a808cf9e3c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50f203357d29d450f5b34593952f611f025b14ff
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665815"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556633"
 ---
 1. [Azure portal](https://ms.portal.azure.com/) で、 **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[新規登録]** を選択します。
 
@@ -22,7 +22,7 @@ ms.locfileid: "91665815"
 
     アプリを登録すると、ここにそのアプリが表示されます。
 
-1. アプリケーションの名前を指定し、 **[この組織のディレクトリ内のアカウントのみ]** を選択して、この API にアクセスできる **[サポートされているアカウントの種類]** を指定します。 [パブリック クライアント アプリ](https://docs.microsoft.com/azure/active-directory/develop/msal-client-application-configuration#redirect-uri)を作成している場合は、有効なリダイレクト URI を追加して**登録**します。
+1. アプリケーションの名前を指定し、 **[この組織のディレクトリ内のアカウントのみ]** を選択して、この API にアクセスできる **[サポートされているアカウントの種類]** を指定します。 [パブリック クライアント アプリ](../articles/active-directory/develop/msal-client-application-configuration.md#redirect-uri)を作成している場合は、有効なリダイレクト URI を追加して **登録** します。
 
    [![Azure Active Directory にアプリケーションを作成する](media/time-series-insights-aad-registration/active-directory-registration.png)](media/time-series-insights-aad-registration/active-directory-registration.png#lightbox)
 
@@ -36,7 +36,7 @@ ms.locfileid: "91665815"
 
     1. **[+ プラットフォームを追加]** を選択して、 **[リダイレクト URI]** を追加し、 **[アクセス トークン]** を構成します。
 
-    1. **[はい]** または **[いいえ]** を選択して、アプリが**パブリック クライアント**であるかどうかを指定します。
+    1. **[はい]** または **[いいえ]** を選択して、アプリが **パブリック クライアント** であるかどうかを指定します。
 
     1. サポートされているアカウントとテナントを確認します。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 909d64d3d32e8b9a314f7afb06b9c0121f624cec
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 32f8ab3f7e222108bec4ec81b14c113705370096
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358485"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913064"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -41,21 +41,21 @@ BLOB API と Data Lake Storage Gen2 API では、同じデータを処理でき�
 
 このセクションでは、BLOB API と Data Lake Storage Gen2 API を使用して同じデータを操作する場合の問題と制限事項について説明します。
 
-* BLOB API と Data Lake Storage API を使用して、ファイルの同じインスタンスに書き込むことはできません。 Data Lake Storage Gen2 API を使用してファイルに書き込むと、そのファイルのブロックは、[Get Block List](https://docs.microsoft.com/rest/api/storageservices/get-block-list) BLOB API への呼び出しで認識されなくなります。 唯一の例外は、上書きする場合です。 いずれかの API を使用して、ファイルまたは BLOB を上書きできます。
+* BLOB API と Data Lake Storage API を使用して、ファイルの同じインスタンスに書き込むことはできません。 Data Lake Storage Gen2 API を使用してファイルに書き込むと、そのファイルのブロックは、[Get Block List](/rest/api/storageservices/get-block-list) BLOB API への呼び出しで認識されなくなります。 唯一の例外は、上書きする場合です。 いずれかの API を使用して、ファイルまたは BLOB を上書きできます。
 
-* 区切り記号を指定せずに [List Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 操作を使用した場合、結果にはディレクトリと BLOB の両方が含まれます。 区切り記号を使用する場合は、スラッシュ (`/`) のみを使用してください。 サポートされている区切り記号はこれだけです。
+* 区切り記号を指定せずに [List Blobs](/rest/api/storageservices/list-blobs) 操作を使用した場合、結果にはディレクトリと BLOB の両方が含まれます。 区切り記号を使用する場合は、スラッシュ (`/`) のみを使用してください。 サポートされている区切り記号はこれだけです。
 
-* [Delete Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API を使用してディレクトリを削除した場合、そのディレクトリは空の場合にのみ削除されます。 これは、Blob API を使用してディレクトリを再帰的に削除することはできないことを意味します。
+* [Delete Blob](/rest/api/storageservices/delete-blob) API を使用してディレクトリを削除した場合、そのディレクトリは空の場合にのみ削除されます。 これは、Blob API を使用してディレクトリを再帰的に削除することはできないことを意味します。
 
 次の BLOB REST API はサポートされていません。
 
-* [Put Blob (Page)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Put Page](https://docs.microsoft.com/rest/api/storageservices/put-page)
-* [Get Page Ranges](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
-* [Incremental Copy Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
-* [Put Page from URL](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [Append Block](https://docs.microsoft.com/rest/api/storageservices/append-block)
-* [Append Block from URL](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
+* [Put Blob (Page)](/rest/api/storageservices/put-blob)
+* [Put Page](/rest/api/storageservices/put-page)
+* [Get Page Ranges](/rest/api/storageservices/get-page-ranges)
+* [Incremental Copy Blob](/rest/api/storageservices/incremental-copy-blob)
+* [Put Page from URL](/rest/api/storageservices/put-page-from-url)
+* [Append Block](/rest/api/storageservices/append-block)
+* [Append Block from URL](/rest/api/storageservices/append-block-from-url)
 
 
 アンマネージド VM ディスクは、階層型名前空間があるアカウントではサポートされていません。 ストレージ アカウントで階層型名前空間を有効にする場合は、階層型名前空間機能が有効ではないストレージ アカウントにアンマネージド VM ディスクを配置してください。
@@ -70,7 +70,7 @@ BLOB API と Data Lake Storage Gen2 API では、同じデータを処理でき�
 
 ## <a name="azcopy"></a>AzCopy
 
-AzCopy の最新バージョン ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)) のみを使用してください。 AzCopy の以前のバージョン (AzCopy v8.1 など) はサポートされていません。
+AzCopy の最新バージョン ([AzCopy v10](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)) のみを使用してください。 AzCopy の以前のバージョン (AzCopy v8.1 など) はサポートされていません。
 
 <a id="storage-explorer"></a>
 
@@ -92,7 +92,7 @@ REST API を使用して動作するサード パーティ製アプリケーシ�
 
 ## <a name="access-control-lists-acl-and-anonymous-read-access"></a>アクセス制御リスト (ACL) と匿名読み取りアクセス
 
-コンテナーへの[匿名読み取りアクセス](storage-manage-access-to-resources.md)が許可されている場合、そのコンテナーやコンテナーに含まれているファイルには ACL は作用しません。
+コンテナーへの[匿名読み取りアクセス](./anonymous-read-access-configure.md)が許可されている場合、そのコンテナーやコンテナーに含まれているファイルには ACL は作用しません。
 
 ## <a name="diagnostic-logs"></a>診断ログ
 

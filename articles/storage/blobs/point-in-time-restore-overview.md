@@ -10,12 +10,12 @@ ms.date: 09/22/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: aed3116976d57df81da399495fd9da3722ba770a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ca09e41e6d5b83f14d2dfee4107135585b7e945a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960679"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908797"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>ブロック BLOB のポイントインタイム リストア
 
@@ -49,7 +49,7 @@ Azure Storage では、要求された復元ポイント (UTC 時刻で指定) �
 
 ポイントインタイム リストアを有効にするには、ポイントインタイム リストアで次の Azure Storage 機能が有効になっている必要があります。
 
-- [論理的な削除](soft-delete-overview.md)
+- [論理的な削除](./soft-delete-blob-overview.md)
 - [変更フィード](storage-blob-change-feed.md)
 - [BLOB のバージョン管理](versioning-overview.md)
 
@@ -63,7 +63,7 @@ Azure Storage では、要求された復元ポイント (UTC 時刻で指定) �
 
 ### <a name="permissions-for-point-in-time-restore"></a>ポイントインタイム リストアのアクセス許可
 
-復元操作を開始するには、クライアントはストレージ アカウントのすべてのコンテナーに対する書き込みアクセス許可を持っている必要があります。 Azure Active Directory (Azure AD) で復元操作を承認するアクセス許可を付与するには、ストレージ アカウント、リソースグループ、またはサブスクリプションのレベルでセキュリティ プリンシパルに**ストレージ アカウント共同作成者**ロールを割り当てます。
+復元操作を開始するには、クライアントはストレージ アカウントのすべてのコンテナーに対する書き込みアクセス許可を持っている必要があります。 Azure Active Directory (Azure AD) で復元操作を承認するアクセス許可を付与するには、ストレージ アカウント、リソースグループ、またはサブスクリプションのレベルでセキュリティ プリンシパルに **ストレージ アカウント共同作成者** ロールを割り当てます。
 
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
 
@@ -92,5 +92,5 @@ Azure Storage では、要求された復元ポイント (UTC 時刻で指定) �
 
 - [ブロック BLOB データに対してポイントインタイム リストアを実行する](point-in-time-restore-manage.md)
 - [Azure Blob Storage の変更フィードのサポート](storage-blob-change-feed.md)
-- [BLOB の論理的な削除を有効にする](soft-delete-enable.md)
+- [BLOB の論理的な削除を有効にする](./soft-delete-blob-enable.md)
 - [BLOB のバージョン管理を有効にして管理する](versioning-enable.md)

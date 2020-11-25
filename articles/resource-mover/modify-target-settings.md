@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: ca22def6bc152d03c3992ed7e94ac2b5ccf179e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27e7c899f0d22789c10541fc98a0d2c63a7843ec
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604480"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95533057"
 ---
 # <a name="modify-target-settings"></a>ターゲット設定の変更
 
@@ -41,8 +41,8 @@ Azure VM と関連リソースを移動するときに、ターゲット設定�
 **VM の SKU** | ターゲット VM に使用される [VM の種類](https://azure.microsoft.com/pricing/details/virtual-machines/series/) (ターゲット リージョンで利用可能)。<br/><br/> 選択したターゲット VM は、ソース VM より小さくすることはできません。
 **ネットワーク リソース** | 仮想ネットワーク (Vnet) のオプション/ネットワーク セキュリティ グループ/ネットワーク インターフェイス:<br/><br/> - ターゲット リージョンに同じ名前で新しいリソースを作成します。<br/><br/> - ターゲット リージョンに別の名前で新しいリソースを作成します。<br/><br/> - ターゲット リージョンの既存のネットワーク リソースを使用します。<br/><br/> 新しいターゲット リソースを作成すると、変更した設定を除いて、ソース リソースと同じ設定が割り当てられます。
 **パブリック IP アドレス名** | 名前を指定します。
-**パブリック IP アドレスの SKU** | [SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) を指定します。
-**パブリック IP アドレスのゾーン** | 標準パブリック IP アドレスの[ゾーン](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#standard)を指定します。<br/><br/> ゾーン冗長にする場合は、「**Zone redundant**」と入力します。
+**パブリック IP アドレスの SKU** | [SKU](../virtual-network/public-ip-addresses.md#sku) を指定します。
+**パブリック IP アドレスのゾーン** | 標準パブリック IP アドレスの[ゾーン](../virtual-network/public-ip-addresses.md#standard)を指定します。<br/><br/> ゾーン冗長にする場合は、「**Zone redundant**」と入力します。
 **ロード バランサー名** | 名前を指定します。
 **ロード バランサーの SKU** | Basic または Standard。 Standard を使用することをお勧めします。
 **ロード バランサーのゾーン** | ロード バランサーのゾーンを指定します。 <br/><br/> ゾーン冗長にする場合は、「**Zone redundant**」と入力します。
@@ -63,7 +63,7 @@ Azure VM と関連リソースを移動するときに、ターゲット設定�
 
 1. **[複数のリージョン間]** ページ > **[ターゲットの構成]** 列で、リソース エントリのリンクをクリックします。
 2. **[構成設定]** で、ターゲット リージョンに新しい VM を作成できます。
-3. 新しい可用性ゾーン、可用性セット、または SKU をターゲット VM に割り当てます。 **可用性ゾーン**と **SKU**。
+3. 新しい可用性ゾーン、可用性セット、または SKU をターゲット VM に割り当てます。 **可用性ゾーン** と **SKU**。
 
 変更は、編集しているリソースに対してのみ行われます。 依存リソースはすべて、個別に更新する必要があります。
 

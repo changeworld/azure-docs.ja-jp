@@ -4,14 +4,14 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 8b919608dfc562d8db77619d5215a6828a53a4aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7af6962c3343cd9d3e35e96d88650aa6a42c6b3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67181117"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95560422"
 ---
-1. リモート デスクトップを使用して仮想マシンに接続している状態で、**構成マネージャー**を検索します。
+1. リモート デスクトップを使用して仮想マシンに接続している状態で、**構成マネージャー** を検索します。
 
     ![SSCM を開く](./media/virtual-machines-sql-server-connection-tcp-protocol/sql-server-configuration-manager.png)
 
@@ -27,4 +27,4 @@ ms.locfileid: "67181117"
 
 1. SQL Server 構成マネージャーを閉じます。
 
-SQL Server データベース エンジン用のプロトコルを有効にする方法の詳細については、「 [サーバー ネットワーク プロトコルの有効化または無効化](https://msdn.microsoft.com/library/ms191294.aspx)」を参照してください。
+SQL Server データベース エンジン用のプロトコルを有効にする方法の詳細については、「 [サーバー ネットワーク プロトコルの有効化または無効化](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol)」を参照してください。

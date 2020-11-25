@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b670ec3cee2ebd1cc98ea2e04fb2b0dfd90e4e1a
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 900021e258bb96c0d0c83ef182262515449ad5df
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594217"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912588"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能
 
@@ -31,7 +31,7 @@ Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能を次
 |クール アクセス層|一般公開|サポートされていません|[Azure BLOB Storage: ホット、クール、アーカイブ アクセス層](storage-blob-storage-tiers.md)|
 |events|一般公開|一般公開|[Blob Storage のイベント処理](storage-blob-event-overview.md)|
 |メトリック (クラシック)|一般公開|一般公開|[Azure Storage Analytics のメトリック (クラシック)](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Azure Monitor のメトリック|一般公開|プレビュー|[Azure Monitor の Azure Storage メトリック](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Monitor のメトリック|一般公開|プレビュー|[Azure Monitor の Azure Storage メトリック](./monitor-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |BLOB ストレージの PowerShell コマンド|一般公開|一般公開|[クイック スタート: PowerShell を使用して BLOB をアップロード、ダウンロード、および一覧表示する](storage-quickstart-blobs-powershell.md)|
 |BLOB ストレージの Azure CLI コマンド|一般公開|一般公開|[クイック スタート: Azure CLI を使用して BLOB を作成、ダウンロード、一覧表示する](storage-quickstart-blobs-cli.md)|
 |BLOB ストレージ API|一般公開|一般公開|[クイック スタート: .NET 用 Azure Blob Storage クライアント ライブラリ v12](storage-quickstart-blobs-dotnet.md)<br>[クイック スタート: Java v12 SDK で BLOB を管理する](storage-quickstart-blobs-java.md)<br>[クイック スタート: Python v12 SDK で BLOB を管理する](storage-quickstart-blobs-python.md)<br>[クイック スタート: Node.js の JavaScript v12 SDK を使用して BLOB を管理する](storage-quickstart-blobs-nodejs.md)|
@@ -39,12 +39,12 @@ Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能を次
 |アーカイブ アクセス層|一般公開|サポートされていません|[Azure BLOB Storage: ホット、クール、アーカイブ アクセス層](storage-blob-storage-tiers.md)|
 |ライフサイクル管理ポリシー (階層化)|一般公開|まだサポートされていません|[Azure Blob Storage のライフサイクルの管理](storage-lifecycle-management-concepts.md)|
 |ライフサイクル管理ポリシー (BLOB の削除)|一般公開|一般公開|[Azure Blob Storage のライフサイクルの管理](storage-lifecycle-management-concepts.md)|
-|Azure Monitor へのログイン|プレビュー |プレビュー|[Azure Storage の監視](../common/monitor-storage.md)|
+|Azure Monitor へのログイン|プレビュー |プレビュー|[Azure Storage の監視](./monitor-blob-storage.md)|
 |スナップショット|プレビュー|プレビュー|[BLOB のスナップショット](snapshots-overview.md)|
 |静的な Web サイト|プレビュー|プレビュー|[Azure Storage での静的な Web サイトのホスティング](storage-blob-static-website.md)|
 |不変ストレージ|プレビュー|プレビュー|[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](storage-blob-immutable-storage.md)|
 |コンテナーの論理的な削除|プレビュー|プレビュー|[コンテナーの論理的な削除 (プレビュー)](soft-delete-container-overview.md)|
-|BLOB の論理的な削除|まだサポートされていません|まだサポートされていません|[BLOB の論理的な削除](storage-blob-soft-delete.md)|
+|BLOB の論理的な削除|まだサポートされていません|まだサポートされていません|[BLOB の論理的な削除](./soft-delete-blob-overview.md)|
 |blobfuse|一般公開|一般公開|[blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法](storage-how-to-mount-container-linux.md)|
 |アカウントのフェールオーバー|まだサポートされていません|まだサポートされていません|[ディザスター リカバリーとアカウントのフェールオーバー](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |BLOB コンテナーの ACL|サポートされていません<div role="complementary" aria-labelledby="blob-container-ACL"><sup>1</sup></div>|サポートされていません<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|この表の下に記載されている、関連する注意事項を参照してください。|

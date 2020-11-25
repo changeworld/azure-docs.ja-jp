@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 85499839992f872896153e360507d7d1ba7fea38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4db85357ee970d13d6b4fcce195cae66932bed18
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037203"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912792"
 ---
 # <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>パフォーマンスをチューニングする: Storm、HDInsight、および Azure Data Lake Storage Gen2
 
@@ -22,9 +22,9 @@ Azure Storm トポロジのパフォーマンスを調整する際に考慮す�
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Azure Data Lake Storage Gen2 アカウント**。 アカウントの作成手順については、[クイック スタート:分析用ストレージ アカウントの作成](data-lake-storage-quickstart-create-account.md)に関するページをご覧ください。
-* Data Lake Storage Gen2 アカウントにアクセスできる **Azure HDInsight クラスター**。 「[Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)」 (Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する) を参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
-* **Data Lake Storage Gen2 上で Storm クラスターを実行している**。 詳細については、[HDInsight での Storm](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview) に関する記事を参照してください。
+* **Azure Data Lake Storage Gen2 アカウント**。 アカウントの作成手順については、[クイック スタート:分析用ストレージ アカウントの作成](../common/storage-account-create.md)に関するページをご覧ください。
+* Data Lake Storage Gen2 アカウントにアクセスできる **Azure HDInsight クラスター**。 「[Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)」 (Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する) を参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
+* **Data Lake Storage Gen2 上で Storm クラスターを実行している**。 詳細については、[HDInsight での Storm](../../hdinsight/storm/apache-storm-overview.md) に関する記事を参照してください。
 * **Data Lake Storage Gen2 のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、[Data Lake Storage Gen2 のパフォーマンス チューニング ガイダンス](data-lake-storage-performance-tuning-guidance.md)を参照してください。   
 
 ## <a name="tune-the-parallelism-of-the-topology"></a>トポロジの並列処理のチューニング
@@ -114,6 +114,6 @@ Data Lake Storage Gen2 によって提供される帯域幅の制限に達した
 2. ワーカー ノード (/var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log の直下) の Storm トポロジ ログで、Data Lake Storage Gen2 調整の例外を監視します。
 
 ## <a name="next-steps"></a>次のステップ
-Storm におけるその他のパフォーマンスのチューニングについては、[こちらのブログ](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)を参照してください。
+Storm におけるその他のパフォーマンスのチューニングについては、[こちらのブログ](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)を参照してください。
 
 実行できる他のサンプルについては、[GitHub のこちらのサンプル](https://github.com/hdinsight/storm-performance-automation)を参照してください。

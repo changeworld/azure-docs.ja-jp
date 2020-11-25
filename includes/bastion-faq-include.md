@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5d14068f6be4717f74e4917d6fccf1082cd0efd3
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 48a7912b1a6375111b6f9af1496cbbd41966202c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331760"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95560655"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>利用可能なリージョン
 
@@ -89,7 +89,7 @@ Azure Bastion と Azure Firewall/ネットワーク仮想アプライアンス (
 
 ### <a name="how-do-i-handle-deployment-failures"></a><a name="udr"></a>デプロイ エラーはどのように処理しますか?
 
-エラー メッセージを確認し、必要に応じて [Azure portal 内でサポート リクエストを送信](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)してください。 [Azure サブスクリプションの制限、クォータ、制約](../articles/azure-resource-manager/management/azure-subscription-service-limits.md)によって、デプロイ エラーが発生する可能性があります。 特に、サブスクリプションごとに許可されるパブリック IP アドレスの数に対する制限が発生する可能性があります。これは、Azure Bastion のデプロイが失敗する原因となります。
+エラー メッセージを確認し、必要に応じて [Azure portal 内でサポート リクエストを送信](../articles/azure-portal/supportability/how-to-create-azure-support-request.md)してください。 [Azure サブスクリプションの制限、クォータ、制約](../articles/azure-resource-manager/management/azure-subscription-service-limits.md)によって、デプロイ エラーが発生する可能性があります。 特に、サブスクリプションごとに許可されるパブリック IP アドレスの数に対する制限が発生する可能性があります。これは、Azure Bastion のデプロイが失敗する原因となります。
 
 ### <a name="how-do-i-incorporate-azure-bastion-in-my-disaster-recovery-plan"></a><a name="dr"></a>ディザスター リカバリー プランに対し、どのようにして Azure Bastion を組み込めばよいでしょうか?
 

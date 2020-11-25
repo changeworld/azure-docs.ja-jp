@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 09206b8189f03a37f8bd7d073238609a3f1bd3ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7419e8667f07eec03e860634c7b3fddcac0e186b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816101"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95901555"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>ネットワーク ファイル システム (NFS) 3.0 プロトコル (プレビュー) を使用して Blob Storage をマウントする
 
@@ -71,7 +71,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 
 ## <a name="step-3-create-an-azure-virtual-network-vnet"></a>手順 3:Azure 仮想ネットワーク (VNet) を作成する
 
-ストレージ アカウントは VNet 内に含まれている必要があります。 VNet を使用すると、クライアントをストレージ アカウントに安全に接続できます。 VNet とその作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)を参照してください。
+ストレージ アカウントは VNet 内に含まれている必要があります。 VNet を使用すると、クライアントをストレージ アカウントに安全に接続できます。 VNet とその作成方法の詳細については、[Virtual Network のドキュメント](../../virtual-network/index.yml)を参照してください。
 
 > [!NOTE]
 > 同じ VNet 内のクライアントは、アカウントにコンテナーをマウントできます。 オンプレミス ネットワークで実行されているクライアントからコンテナーをマウントすることもできますが、そのためにはまずオンプレミス ネットワークを VNet に接続する必要があります。 詳細については「[サポートされているネットワーク接続](network-file-system-protocol-support.md#supported-network-connections)」を参照してください。
@@ -84,7 +84,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 
 ## <a name="step-5-create-and-configure-a-storage-account"></a>手順 5:ストレージ アカウントの作成と構成
 
-NFS 3.0 を使用してコンテナーをマウントするには、その機能をサブスクリプションに登録した**後に**ストレージ アカウントを作成する必要があります。 機能を登録する前に存在していたアカウントを有効にすることはできません。 
+NFS 3.0 を使用してコンテナーをマウントするには、その機能をサブスクリプションに登録した **後に** ストレージ アカウントを作成する必要があります。 機能を登録する前に存在していたアカウントを有効にすることはできません。 
 
 この機能のプレビュー リリースでは、NFS 3.0 プロトコルは [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md) アカウントでのみサポートされています。
 
@@ -113,7 +113,7 @@ NFS 3.0 を使用してコンテナーをマウントするには、その機能
 |[AzCopy](../common/storage-use-azcopy-blobs.md#create-a-container)|[Java](data-lake-storage-directory-file-acl-java.md#create-a-container)|
 |[PowerShell](data-lake-storage-directory-file-acl-powershell.md#create-a-container)|[Python](data-lake-storage-directory-file-acl-python.md#create-a-container)|
 |[Azure CLI](data-lake-storage-directory-file-acl-cli.md#create-a-container)|[JavaScript](data-lake-storage-directory-file-acl-javascript.md)|
-||[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
+||[REST](/rest/api/storageservices/create-container)|
 
 ## <a name="step-7-mount-the-container"></a>手順 7:コンテナーをマウントする
 
@@ -144,7 +144,7 @@ Windows または Linux システムにディレクトリを作成してから�
 
    ![Network File System のクライアントの機能](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
 
-2. [mount](https://docs.microsoft.com/windows-server/administration/windows-commands/mount) コマンドを使用して、コンテナーをマウントします。
+2. [mount](/windows-server/administration/windows-commands/mount) コマンドを使用して、コンテナーをマウントします。
 
    ```
    mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *
@@ -175,10 +175,3 @@ Windows または Linux システムにディレクトリを作成してから�
 ## <a name="see-also"></a>関連項目
 
 [Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート (プレビュー)](network-file-system-protocol-support.md)
-
-
-
-
-
-
-

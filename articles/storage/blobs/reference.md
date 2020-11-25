@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: b8e4cada8ac2570fa32d55e35cbcdb214d5b5188
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04eca391fd02e18d4faed5e4f435e44e5675c4bd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018158"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912282"
 ---
 # <a name="azure-blob-storage-reference"></a>Azure Blob Storage リファレンス
 
@@ -25,8 +25,8 @@ Azure Blob Storage API リファレンス、ライブラリ パッケージ、re
 
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [.NET 用 Azure Blob Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage.blobs-readme) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [クイック スタート: .NET 用 Azure Blob Storage クライアント ライブラリ v12](/azure/storage/blobs/storage-quickstart-blobs-dotnet) |
-| 11.x | [Microsoft.Azure.Storage.Blob 名前空間](/dotnet/api/microsoft.azure.storage.blob) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [クイック スタート: .NET 用 Azure Blob Storage クライアント ライブラリ v11](/azure/storage/blobs/storage-quickstart-blobs-dotnet-legacy) |
+| 12.x | [.NET 用 Azure Blob Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage.blobs-readme) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [クイック スタート: .NET 用 Azure Blob Storage クライアント ライブラリ v12](./storage-quickstart-blobs-dotnet.md) |
+| 11.x | [Microsoft.Azure.Storage.Blob 名前空間](/dotnet/api/microsoft.azure.storage.blob) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [クイック スタート: .NET 用 Azure Blob Storage クライアント ライブラリ v11](./storage-quickstart-blobs-dotnet-legacy.md) |
 
 ### <a name="storage-management"></a>記憶域の管理
 
@@ -50,8 +50,8 @@ Azure Blob Storage API リファレンス、ライブラリ パッケージ、re
 
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [Azure Storage - Blob](/java/api/overview/azure/storage-blob-readme) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob) | [クイック スタート: Java v12 SDK で BLOB を管理する](/azure/storage/blobs/storage-quickstart-blobs-java) |
-| 8.x | [com.microsoft.azure.storage.blob](/java/api/com.microsoft.azure.storage.blob) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [クイック スタート: Java v8 SDK で BLOB を管理する](/azure/storage/blobs/storage-quickstart-blobs-java-legacy) |
+| 12.x | [Azure Storage - Blob](/java/api/overview/azure/storage-blob-readme) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob) | [クイック スタート: Java v12 SDK で BLOB を管理する](./storage-quickstart-blobs-java.md) |
+| 8.x | [com.microsoft.azure.storage.blob](/java/api/com.microsoft.azure.storage.blob) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [クイック スタート: Java v8 SDK で BLOB を管理する](./storage-quickstart-blobs-java-legacy.md) |
 
 ### <a name="storage-management"></a>記憶域の管理
 
@@ -67,8 +67,8 @@ Azure Blob Storage API リファレンス、ライブラリ パッケージ、re
 
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [Python 用 Azure Storage クライアント ライブラリ v12](/azure/developer/python/sdk/storage/overview) | [パッケージ (PyPI)](https://pypi.org/project/azure-storage-blob/) | [クイック スタート: Python v12 SDK で BLOB を管理する](/azure/storage/blobs/storage-quickstart-blobs-python) |
-| 2.x | [Python 用 Azure Storage クライアント ライブラリ v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [パッケージ (PyPI)](https://pypi.org/project/azure-storage-blob/2.1.0/) | [クイック スタート: Python v2.1 SDK で BLOB を管理する](/azure/storage/blobs/storage-quickstart-blobs-python-legacy) |
+| 12.x | [Python 用 Azure Storage クライアント ライブラリ v12](/azure/developer/python/sdk/storage/overview) | [パッケージ (PyPI)](https://pypi.org/project/azure-storage-blob/) | [クイック スタート: Python v12 SDK で BLOB を管理する](./storage-quickstart-blobs-python.md) |
+| 2.x | [Python 用 Azure Storage クライアント ライブラリ v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [パッケージ (PyPI)](https://pypi.org/project/azure-storage-blob/2.1.0/) | [クイック スタート: Python v2.1 SDK で BLOB を管理する](./storage-quickstart-blobs-python-legacy.md) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript クライアント ライブラリ
 
@@ -76,8 +76,8 @@ Azure Blob Storage API リファレンス、ライブラリ パッケージ、re
 
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [JavaScript 用 Azure Storage Blob クライアント ライブラリ](/javascript/api/overview/azure/storage-blob-readme) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/storage-blob) | [クイック スタート: Node.js の JavaScript v12 SDK を使用して BLOB を管理する](/azure/storage/blobs/storage-quickstart-blobs-nodejs) <br/> [クイック スタート: ブラウザーで JavaScript v12 SDK を使用して BLOB を管理する](/azure/storage/blobs/quickstart-blobs-javascript-browser) |
-| 10.x | [@azure/storage-blob](/javascript/api/@azure/storage-blob/?view=azure-node-legacy&preserve-view=true) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0) | [クイック スタート: Node.js で JavaScript v10 SDK を使用して BLOB を管理する](/azure/storage/blobs/storage-quickstart-blobs-nodejs-legacy) <br/> [クイック スタート: ブラウザーで JavaScript v10 SDK を使用して BLOB を管理する](/azure/storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy)|
+| 12.x | [JavaScript 用 Azure Storage Blob クライアント ライブラリ](/javascript/api/overview/azure/storage-blob-readme) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/storage-blob) | [クイック スタート: Node.js の JavaScript v12 SDK を使用して BLOB を管理する](./storage-quickstart-blobs-nodejs.md) <br/> [クイック スタート: ブラウザーで JavaScript v12 SDK を使用して BLOB を管理する](./quickstart-blobs-javascript-browser.md) |
+| 10.x | [@azure/storage-blob](/javascript/api/@azure/storage-blob/?view=azure-node-legacy&preserve-view=true) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0) | [クイック スタート: Node.js で JavaScript v10 SDK を使用して BLOB を管理する](./storage-quickstart-blobs-nodejs-legacy.md) <br/> [クイック スタート: ブラウザーで JavaScript v10 SDK を使用して BLOB を管理する](./storage-quickstart-blobs-javascript-client-libraries-legacy.md)|
 
 ## <a name="rest-apis"></a>REST API
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: a2eafd6bb34b897f3492ddcffd6841f0fabc4ca7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28609ad27330ae4ea5ea7c0d02d5a61181fbe0df
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73034548"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95561238"
 ---
 システムを設計する際は、そのシステムに対する脅威のリスクを把握し、設計と構築時にそれに応じた適切な防御措置を講じることが重要となります。 重要なことは、最初からセキュリティを考慮に入れて製品を設計することです。攻撃者がどのような方法でシステムに侵入しうるかを把握しておけば、適切な軽減策を初期段階から講じることができるためです。
 
@@ -72,7 +72,7 @@ Microsoft は以前から、自社製品に脅威モデルを採用すると共�
 
 * 外部エンティティ。システムと接する要素のうちアプリケーションの管理下にないもの (ユーザー、衛星伝送など)。
 
-アーキテクチャ図の要素はいずれも、さまざまな脅威の影響を受けます。この記事では、それらの頭文字を取って STRIDE と読んでいます。 STRIDE の各要素の詳細については、「[Threat Modeling Again, STRIDE (STRIDE に基づく脅威のモデル化)](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/)」を参照してください。
+アーキテクチャ図の要素はいずれも、さまざまな脅威の影響を受けます。この記事では、それらの頭文字を取って STRIDE と読んでいます。 STRIDE の各要素の詳細については、「[Threat Modeling Again, STRIDE (STRIDE に基づく脅威のモデル化)](/archive/blogs/larryosterman/threat-modeling-again-stride)」を参照してください。
 
 アプリケーション図を構成する各要素が、STRIDE で表されるそれぞれ異なった脅威にさらされます。
 

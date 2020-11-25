@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: e6a0ded137162328fd446b65ddb4a15fa6f1db88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 137aca7c6c857ee6e833c359b710e1c1848d15ed
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67181388"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558230"
 ---
 ## <a name="deleting-personal-information"></a>個人情報の削除
 
@@ -37,7 +37,7 @@ ms.locfileid: "67181388"
 
 個人の連絡先情報は、以下の方法で削除することができます。
 
-- ジョブと共に保存されているデータは、ジョブが削除されると削除されます。 ユーザーは手動でジョブを削除できます。また、完了したジョブは 90 日後に自動的に削除されます。 REST API または Azure Portal を使用して手動でジョブを削除できます。 Azure Portal でジョブを削除するには、インポート/エクスポート ジョブに移動し、コマンド バーから *[削除]* をクリックします。 REST API を介してインポート/エクスポート ジョブを削除する方法については、[インポート/エクスポート ジョブの削除](../articles/storage/common/storage-import-export-cancelling-and-deleting-jobs.md)に関する記事を参照してください。
+- ジョブと共に保存されているデータは、ジョブが削除されると削除されます。 ユーザーは手動でジョブを削除できます。また、完了したジョブは 90 日後に自動的に削除されます。 REST API または Azure Portal を使用して手動でジョブを削除できます。 Azure Portal でジョブを削除するには、インポート/エクスポート ジョブに移動し、コマンド バーから *[削除]* をクリックします。 REST API を介してインポート/エクスポート ジョブを削除する方法については、[インポート/エクスポート ジョブの削除](/previous-versions/azure/storage/common/storage-import-export-cancelling-and-deleting-jobs)に関する記事を参照してください。
 
 - ポータル設定に保存されている連絡先情報は、ポータル設定を削除して削除することができます。 ポータル設定を削除するには、次の手順を実行します。
   - [Azure portal](https://portal.azure.com) にサインインする

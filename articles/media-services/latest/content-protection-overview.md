@@ -16,11 +16,11 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 5d6530cf7b8d8611ff23a3517112cb0aa7442d6d
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91595990"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95971175"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Media Services 動的暗号化を使用してコンテンツを保護する
 
@@ -177,7 +177,7 @@ MPEG-DASH プロトコルでは、次のコンテナー形式と暗号化スキ�
 
 ## <a name="controlling-content-access"></a>コンテンツ アクセスの制御
 
-コンテンツ キー ポリシーを構成することで、コンテンツにアクセスできるユーザーを制御できます。 Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 キーをクライアント (プレーヤー) に配信するには、クライアントがポリシーの要件を満たしている必要があります。 コンテンツ キー ポリシーは、*オープン*または*トークン*の制限を持つことができます。
+コンテンツ キー ポリシーを構成することで、コンテンツにアクセスできるユーザーを制御できます。 Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 キーをクライアント (プレーヤー) に配信するには、クライアントがポリシーの要件を満たしている必要があります。 コンテンツ キー ポリシーは、*オープン* または *トークン* の制限を持つことができます。
 
 オープンの制限のコンテンツ キー ポリシーは、承認を必要としないすべてのユーザーにライセンスを発行するときに使用できます。 たとえば、収益が広告ベースで、サブスクリプションベースではない場合です。  
 
@@ -192,7 +192,7 @@ Azure AD を STS として使用することも、[カスタム STS](#using-a-cu
 
 ### <a name="token-replay-prevention"></a>トークン再生の防止
 
-*トークン再生の防止*機能を使用すると、Media Services のユーザーは、同じトークンを使用してキーまたはライセンスを要求できる回数に制限を設定できます。 ユーザーは `urn:microsoft:azure:mediaservices:maxuses` の種類の要求をトークンに追加できます。この値は、トークンを使用してライセンスまたはキーを取得できる回数です。 キー配信に対して同じトークンを使用する後続のすべての要求では、"許可されていません" 応答が返されます。 [DRM サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)で、要求を追加する方法を参照してください。
+*トークン再生の防止* 機能を使用すると、Media Services のユーザーは、同じトークンを使用してキーまたはライセンスを要求できる回数に制限を設定できます。 ユーザーは `urn:microsoft:azure:mediaservices:maxuses` の種類の要求をトークンに追加できます。この値は、トークンを使用してライセンスまたはキーを取得できる回数です。 キー配信に対して同じトークンを使用する後続のすべての要求では、"許可されていません" 応答が返されます。 [DRM サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)で、要求を追加する方法を参照してください。
  
 #### <a name="considerations"></a>考慮事項
 

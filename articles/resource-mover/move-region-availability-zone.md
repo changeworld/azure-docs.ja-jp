@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: 315ea9b683ccd583f5c29c7527013f0d924336f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88006fb354af2673496c6476090d7f73c8a005e6
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061880"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543002"
 ---
 # <a name="move-azure-vms-to-an-availability-zone-in-another-region"></a>Azure VM を別のリージョン内の可用性ゾーンに移動する
 
@@ -32,10 +32,10 @@ VM を同じリージョン内の別の可用性ゾーンに移動する場合�
 
 ## <a name="prerequisites"></a>前提条件
 
-- 移動するリソースが配置されているサブスクリプション上の*所有者*アクセス権。
+- 移動するリソースが配置されているサブスクリプション上の *所有者* アクセス権。
     - Azure サブスクリプションの特定のソースと宛先のマッピングに対してリソースを初めて追加すると、Resource Mover では、そのサブスクリプションによって信頼される[システム割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (以前の Managed Service Identify (MSI)) を作成します。
     - ID を作成し、必要なロール (ソース サブスクリプションの共同作成者またはユーザー アクセス管理者) に割り当てるには、リソースを追加するのに使用するアカウントに、サブスクリプションに対する "*所有者*" 権限が必要です。 Azure ロールの詳細については、[こちらを参照してください](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)。
-- このサブスクリプションには、ターゲット リージョン内にソース リソースを作成するための十分なクォータが必要です。 存在しない場合は、追加の制限を要求してください。 [詳細については、こちらを参照してください](/azure/azure-resource-manager/management/azure-subscription-service-limits)。
+- このサブスクリプションには、ターゲット リージョン内にソース リソースを作成するための十分なクォータが必要です。 存在しない場合は、追加の制限を要求してください。 [詳細については、こちらを参照してください](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 - VM の移動先となるターゲット リージョンに関連付する料金と課金を確認します。 [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用すると便利です。
     
 

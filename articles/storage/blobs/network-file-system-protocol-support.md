@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 41ad20de6b7a800ff1f97a7ff371c8e0012fed27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78455659d76d259c626745c93770428c25042b2d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88166979"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908814"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート (プレビュー)
 
@@ -64,13 +64,13 @@ Blob Storage では、ネットワーク ファイル システム (NFS) 3.0 プ
 
   このピアリングされた VNet へのアクセスを許可するようにストレージ アカウントを構成する必要があります。 詳細については、「[仮想ネットワークからアクセスの許可](../common/storage-network-security.md#grant-access-from-a-virtual-network)」を参照してください。
 
-- [VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)または [ExpressRoute ゲートウェイ](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager)を使用して、プライマリ VNet に接続されているオンプレミス ネットワーク。 
+- [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md)または [ExpressRoute ゲートウェイ](../../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)を使用して、プライマリ VNet に接続されているオンプレミス ネットワーク。 
 
   詳細については、「[オンプレミスのネットワークからのアクセスの構成](../common/storage-network-security.md#configuring-access-from-on-premises-networks)」を参照してください。
 
 - ピアリングされたネットワークに接続されているオンプレミス ネットワーク。
 
-  これを行うには、[VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)または [ExpressRoute ゲートウェイ](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager)を[ゲートウェイ転送](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/vnet-peering#gateway-transit)と共に使用します。 
+  これを行うには、[VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md)または [ExpressRoute ゲートウェイ](../../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)を[ゲートウェイ転送](/azure/architecture/reference-architectures/hybrid-networking/vnet-peering#gateway-transit)と共に使用します。 
 
 > [!IMPORTANT]
 > オンプレミスのネットワークから接続している場合は、クライアントがポート 111 および 2048 を介した発信を許可していることを確認します。 NFS 3.0 プロトコルでは、これらのポートが使用されます。
@@ -114,8 +114,3 @@ Blob Storage では、ネットワーク ファイル システム (NFS) 3.0 プ
 ## <a name="next-steps"></a>次のステップ
 
 開始するには、「[ネットワーク ファイル システム (NFS) 3.0 プロトコル (プレビュー) を使用して Blob Storage をマウントする](network-file-system-protocol-support-how-to.md)」を参照してください。
-
-
-
-
-

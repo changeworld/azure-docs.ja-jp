@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: fdeddfb0a09151ea010d4e95a2954200dd9371dc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c77001707eda7c208ad19a014a1f0cff2b85b25d
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791428"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736478"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure の SQL データ同期とは
 
@@ -81,7 +81,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 | | データ同期 | トランザクション レプリケーション |
 |---|---|---|
 | **長所** | - アクティブ/アクティブのサポート<br/>- オンプレミスと Azure SQL Database 間で双方向 | - 待ち時間の短縮<br/>- トランザクションの整合性<br/>- 移行後に既存のトポロジの再利用 <br/>\- Azure SQL Managed Instance のサポート |
-| **短所** | - 同期の最小間隔が 5 分<br/>- トランザクションの整合性なし<br/>- パフォーマンスへの影響が大きい | - Azure SQL Database からは発行できない <br/>- 高いメンテナンス コスト |
+| **短所** | - トランザクションの整合性なし<br/>- パフォーマンスへの影響が大きい | - Azure SQL Database からは発行できない <br/>- 高いメンテナンス コスト |
 
 ## <a name="get-started"></a>はじめに 
 
@@ -166,7 +166,6 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 | 同期グループ内のテーブル数                                          | 500                    | 複数の同期グループを作成する |
 | 同期グループ内のテーブルの列数                              | 1000                   |                             |
 | テーブルでのデータ行のサイズ                                        | 24 Mb                  |                             |
-| 同期の最小間隔                                 | 5 分              |                             |
 
 > [!NOTE]
 > 同期グループが 1 つだけの場合は、 1 つの同期グループで最大 30 個のエンドポイントを持つことができます。 同期グループが 2 つ以上ある場合は、すべての同期グループでのエンドポイントの合計数が最大 30 個に制限されます。 データベースが複数の同期グループに属している場合、それは 1 つではなく、複数のエンドポイントとしてカウントされます。
@@ -175,8 +174,8 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 同期グループが確立されるときに、データ同期サービスはハブ データベースに接続する必要があります。 同期グループを確立する時点で、Azure SQL サーバーの `Firewalls and virtual networks` 設定は次のように構成されている必要があります。
 
- * *[Deny public network access]\(パブリック ネットワーク アクセスの拒否\)* は、" *オフ* " に設定する必要があります。
- * *[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]* は、" *はい* " に設定する必要があります。または、 [[IP addresses used by Data Sync service]\(データ同期サービスによって使用される IP アドレス\)](network-access-controls-overview.md#data-sync) に IP 規則を作成する必要があります。
+ * *[Deny public network access]\(パブリック ネットワーク アクセスの拒否\)* は、"*オフ*" に設定する必要があります。
+ * *[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]* は、"*はい*" に設定する必要があります。または、[[IP addresses used by Data Sync service]\(データ同期サービスによって使用される IP アドレス\)](network-access-controls-overview.md#data-sync) に IP 規則を作成する必要があります。
 
 同期グループが作成され、プロビジョニングされたら、これらの設定を無効にできます。 同期エージェントは、ハブ データベースに直接接続します。また、サーバーの[ファイアウォール IP 規則](firewall-configure.md)または[プライベート エンドポイント](private-endpoint-overview.md)を使用して、エージェントにハブ サーバーへのアクセスを許可できます。
 

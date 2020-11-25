@@ -10,24 +10,24 @@ ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e2138fc03fcdb614daef2051b7fc1a840e421658
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: eaa34da7dbdf8d315cf60d84cf15ef428f4c7900
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359733"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913353"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>PowerShell を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
 
 この記事では、PowerShell を使用して、階層型名前空間 (HNS) が有効なストレージ アカウントでディレクトリ、ファイル、アクセス許可を作成および管理する方法について説明します。 
 
-[リファレンス](https://docs.microsoft.com/powershell/module/Az.Storage/) | [Gen1 から Gen2 へのマッピング](#gen1-gen2-map) | [フィードバックの送信](https://github.com/Azure/azure-powershell/issues)
+[リファレンス](/powershell/module/Az.Storage/) | [Gen1 から Gen2 へのマッピング](#gen1-gen2-map) | [フィードバックの送信](https://github.com/Azure/azure-powershell/issues)
 
 ## <a name="prerequisites"></a>前提条件
 
 > [!div class="checklist"]
 > * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-> * 階層型名前空間 (HNS) が有効になっているストレージ アカウント。 作成するには、[こちら](data-lake-storage-quickstart-create-account.md)の手順に従います。
+> * 階層型名前空間 (HNS) が有効になっているストレージ アカウント。 作成するには、[こちら](../common/storage-account-create.md)の手順に従います。
 > * .NET Framework は 4.7.2 以降がインストールされていること。 「[.NET Framework のダウンロード](https://dotnet.microsoft.com/download/dotnet-framework)」を参照してください。
 > * PowerShell バージョン `5.1` 以降。
 
@@ -39,7 +39,7 @@ ms.locfileid: "93359733"
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   お使いの PowerShell のバージョンをアップグレードするには、「[既存の Windows PowerShell をアップグレードする](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)」を参照してください。
+   お使いの PowerShell のバージョンをアップグレードするには、「[既存の Windows PowerShell をアップグレードする](/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)」を参照してください。
     
 2. **Az.Storage** モジュールをインストールします。
 
@@ -47,7 +47,7 @@ ms.locfileid: "93359733"
    Install-Module Az.Storage -Repository PSGallery -Force  
    ```
 
-   PowerShell モジュールのインストール方法の詳細については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)」を参照してください。
+   PowerShell モジュールのインストール方法の詳細については、「[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)」を参照してください。
 
 ## <a name="connect-to-the-account"></a>アカウントに接続する
 
@@ -271,13 +271,13 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 ディレクトリとファイルのアクセス許可を取得、設定、更新できます。
 
 > [!NOTE]
-> Azure Active Directory (Azure AD) を使用してコマンドを承認している場合は、セキュリティ プリンシパルに [Storage BLOB データ所有者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)が割り当てられていることを確認してください。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)」を参照してください。
+> Azure Active Directory (Azure AD) を使用してコマンドを承認している場合は、セキュリティ プリンシパルに [Storage BLOB データ所有者ロール](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)が割り当てられていることを確認してください。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](./data-lake-storage-access-control.md)」を参照してください。
 
 ### <a name="get-an-acl"></a>ACL を取得する
 
 `Get-AzDataLakeGen2Item` コマンドレットを使用して、ディレクトリまたはファイルの ACL を取得します。
 
-この例では、 **コンテナー** のルート ディレクトリの ACL を取得し、その ACL をコンソールに出力します。
+この例では、**コンテナー** のルート ディレクトリの ACL を取得し、その ACL をコンソールに出力します。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -285,7 +285,7 @@ $filesystem = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName
 $filesystem.ACL
 ```
 
-この例では、 **ディレクトリ** の ACL を取得し、その ACL をコンソールに出力します。
+この例では、**ディレクトリ** の ACL を取得し、その ACL をコンソールに出力します。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -294,7 +294,7 @@ $dir = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $d
 $dir.ACL
 ```
 
-この例では、 **ファイル** の ACL を取得し、その ACL をコンソールに出力します。
+この例では、**ファイル** の ACL を取得し、その ACL をコンソールに出力します。
 
 ```powershell
 $filePath = "my-directory/upload.txt"

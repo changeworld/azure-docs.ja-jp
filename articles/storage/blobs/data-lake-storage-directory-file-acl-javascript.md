@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-js
-ms.openlocfilehash: 882a12838d13f511262486ff3adf332da32599c1
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: a929fcbc87a1ce11b226e9def46354c24a151a0c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131532"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913370"
 ---
 # <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>JavaScript を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
 
@@ -26,7 +26,7 @@ ms.locfileid: "92131532"
 
 > [!div class="checklist"]
 > * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-> * 階層型名前空間 (HNS) が有効になっているストレージ アカウント。 作成するには、[こちら](data-lake-storage-quickstart-create-account.md)の手順に従います。
+> * 階層型名前空間 (HNS) が有効になっているストレージ アカウント。 作成するには、[こちら](../common/storage-account-create.md)の手順に従います。
 > * このパッケージを Node.js アプリケーションで使用する予定の場合、Node.js 8.0.0 以降が必要です。
 
 ## <a name="set-up-your-project"></a>プロジェクトの設定
@@ -93,7 +93,7 @@ function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantI
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
-コンテナーは、ファイルのファイル システムとして機能します。 これは、 **FileSystemClient** インスタンスを取得し、次に **FileSystemClient.Create** メソッドを呼び出すことで作成できます。
+コンテナーは、ファイルのファイル システムとして機能します。 これは、**FileSystemClient** インスタンスを取得し、次に **FileSystemClient.Create** メソッドを呼び出すことで作成できます。
 
 この例では、`my-file-system` という名前のコンテナーを作成します。 
 
@@ -111,7 +111,7 @@ async function CreateFileSystem(datalakeServiceClient) {
 
 ## <a name="create-a-directory"></a>ディレクトリを作成する
 
-ディレクトリ参照は、 **DirectoryClient** インスタンスを取得し、次に **DirectoryClient.create** メソッドを呼び出すことによって作成します。
+ディレクトリ参照は、**DirectoryClient** インスタンスを取得し、次に **DirectoryClient.create** メソッドを呼び出すことによって作成します。
 
 この例では、`my-directory` という名前のディレクトリをコンテナーに追加します。 
 
@@ -170,7 +170,7 @@ async function DeleteDirectory(fileSystemClient) {
 
 ## <a name="upload-a-file-to-a-directory"></a>ファイルをディレクトリにアップロードする
 
-まず、ファイルを読み取ります。 この例では、Node.js `fs` モジュールを使用しています。 次に、 **FileClient** インスタンスを作成してから **FileClient.create** メソッドを呼び出して、ターゲット ディレクトリ内にファイル参照を作成します。 **FileClient.append** メソッドを呼び出して、ファイルをアップロードします。 **FileClient.flush** メソッドを呼び出して、アップロードの完了を確認します。
+まず、ファイルを読み取ります。 この例では、Node.js `fs` モジュールを使用しています。 次に、**FileClient** インスタンスを作成してから **FileClient.create** メソッドを呼び出して、ターゲット ディレクトリ内にファイル参照を作成します。 **FileClient.append** メソッドを呼び出して、ファイルをアップロードします。 **FileClient.flush** メソッドを呼び出して、アップロードの完了を確認します。
 
 この例では、`my-directory` という名前のディレクトリにテキスト ファイルをアップロードします。
 
@@ -258,14 +258,14 @@ async function ListFilesInDirectory(fileSystemClient) {
 ディレクトリとファイルのアクセス許可を取得、設定、更新できます。
 
 > [!NOTE]
-> Azure Active Directory (Azure AD) を使用してアクセスを承認している場合は、セキュリティ プリンシパルに [Storage BLOB データ所有者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)が割り当てられていることを確認してください。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)」を参照してください。
+> Azure Active Directory (Azure AD) を使用してアクセスを承認している場合は、セキュリティ プリンシパルに [Storage BLOB データ所有者ロール](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)が割り当てられていることを確認してください。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](./data-lake-storage-access-control.md)」を参照してください。
 
 ### <a name="manage-a-directory-acl"></a>ディレクトリ ACL を管理する
 
 この例では、`my-directory` という名前のディレクトリの ACL を取得して設定します。 この例では、所有ユーザーには読み取り、書き込み、実行のアクセス許可を付与し、所有グループには読み取りと実行のアクセス許可のみを付与し、他のすべてのユーザーには読み取りアクセスを付与します。
 
 > [!NOTE]
-> アプリケーションが Azure Active Directory (Azure AD) を使用してアクセスを承認している場合は、アクセスを承認するためにアプリケーションで使用されているセキュリティ プリンシパルに、[ストレージ BLOB データ所有者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)が割り当てられていることを確認します。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)」を参照してください。
+> アプリケーションが Azure Active Directory (Azure AD) を使用してアクセスを承認している場合は、アクセスを承認するためにアプリケーションで使用されているセキュリティ プリンシパルに、[ストレージ BLOB データ所有者ロール](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)が割り当てられていることを確認します。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](./data-lake-storage-access-control.md)」を参照してください。
 
 ```javascript
 async function ManageDirectoryACLs(fileSystemClient) {
@@ -314,14 +314,14 @@ async function ManageDirectoryACLs(fileSystemClient) {
 }
 ```
 
-また、コンテナのルート ディレクトリの ACL を取得して設定することもできます。 ルート ディレクトリを取得するには、 **DataLakeFileSystemClient.getDirectoryClient** メソッドに空の文字列 (`/`) を渡します。
+また、コンテナのルート ディレクトリの ACL を取得して設定することもできます。 ルート ディレクトリを取得するには、**DataLakeFileSystemClient.getDirectoryClient** メソッドに空の文字列 (`/`) を渡します。
 
 ### <a name="manage-a-file-acl"></a>ファイル ACL を管理する
 
 この例では、`upload-file.txt` という名前のファイルの ACL を取得して設定します。 この例では、所有ユーザーには読み取り、書き込み、実行のアクセス許可を付与し、所有グループには読み取りと実行のアクセス許可のみを付与し、他のすべてのユーザーには読み取りアクセスを付与します。
 
 > [!NOTE]
-> アプリケーションが Azure Active Directory (Azure AD) を使用してアクセスを承認している場合は、アクセスを承認するためにアプリケーションで使用されているセキュリティ プリンシパルに、[ストレージ BLOB データ所有者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)が割り当てられていることを確認します。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)」を参照してください。
+> アプリケーションが Azure Active Directory (Azure AD) を使用してアクセスを承認している場合は、アクセスを承認するためにアプリケーションで使用されているセキュリティ プリンシパルに、[ストレージ BLOB データ所有者ロール](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)が割り当てられていることを確認します。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](./data-lake-storage-access-control.md)」を参照してください。
 
 ```javascript
 async function ManageFileACLs(fileSystemClient) {

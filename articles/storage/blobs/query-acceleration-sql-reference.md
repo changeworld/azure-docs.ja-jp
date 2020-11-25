@@ -10,12 +10,12 @@ ms.date: 09/09/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: affddf7367f58107106ae07a07b8baedac73e251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2eda67e377a3b61e696e732b916d788c00a18eae
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659562"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908780"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>クエリ アクセラレーション SQL 言語リファレンス
 
@@ -63,7 +63,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 |timestamp|特定の時点。                           |
 |BOOLEAN  |true または false                             |
 
-CSV 形式のデータから値を読み取ると、すべての値が文字列として読み取られます。  文字列値は、キャスト式を使用して他の型に変換される場合があります。  値は、コンテキストに応じて、暗黙的に他の型にキャストされる場合があります。 詳細については、「[データ型の優先順位 (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql)」を参照してください。
+CSV 形式のデータから値を読み取ると、すべての値が文字列として読み取られます。  文字列値は、キャスト式を使用して他の型に変換される場合があります。  値は、コンテキストに応じて、暗黙的に他の型にキャストされる場合があります。 詳細については、「[データ型の優先順位 (Transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql)」を参照してください。
 
 ## <a name="expressions"></a>式
 
@@ -79,34 +79,34 @@ JSON 形式のデータ、またはヘッダー行を含む CSV 形式のデー�
 
 |演算子|説明|
 |--|--|
-|[=](https://docs.microsoft.com/sql/t-sql/language-elements/equals-transact-sql)    |2 つの式の等価性を比較します (比較演算子)。|
-|[!=](https://docs.microsoft.com/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |一方の式がもう一方の式と等しくないかどうかをテストします (比較演算子)。|
-|[<>](https://docs.microsoft.com/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |2 つの式を比較して "等しくない" かどうかを判定します (比較演算子)。|
-|[<](https://docs.microsoft.com/sql/t-sql/language-elements/less-than-transact-sql)    |2 つの式を比較して "より小さい" かどうかを判定します (比較演算子)。|
-|[<=](https://docs.microsoft.com/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |2 つの式を比較して "以下" であるかどうかを判定します (比較演算子)。|
-|[>](https://docs.microsoft.com/sql/t-sql/language-elements/greater-than-transact-sql)    |2 つの式を比較して "より大きい" かどうかを判定します (比較演算子)。 |
-|[>=](https://docs.microsoft.com/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |2 つの式を比較して "以上" であるかどうかを判定します (比較演算子)。|
-|[+](https://docs.microsoft.com/sql/t-sql/language-elements/add-transact-sql)    |2 つの値を加算します。 この加算算術演算子を使用して、日付に日数を加算することもできます。|
-|[-](https://docs.microsoft.com/sql/t-sql/language-elements/subtract-transact-sql)    |2 つの値で減算を行います (算術減算演算子)。 |
-|[/](https://docs.microsoft.com/sql/t-sql/language-elements/divide-transact-sql)    |1 つの値を別の値で除算します (算術除算演算子)。|
-|[*](https://docs.microsoft.com/sql/t-sql/language-elements/multiply-transact-sql)    |2 つの式を乗算します (算術乗算演算子)。|
-|[%](https://docs.microsoft.com/sql/t-sql/language-elements/modulo-transact-sql)    |ある値を別の値で除算した結果の余りを返します。|
-|[AND](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-and-transact-sql)    |2 つの整数値の間でビットごとの論理積演算を実行します。|
-|[OR](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Transact-SQL ステートメントの中で、バイナリ式に変換された 2 つの指定される整数値に対して、ビットごとの論理和演算を実行します。|
-|[NOT](https://docs.microsoft.com/sql/t-sql/language-elements/not-transact-sql)    |ブール値を否定します。|
-|[CAST](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)    |あるデータ型の式を別のデータ型に変換します。|
-|[BETWEEN](https://docs.microsoft.com/sql/t-sql/language-elements/between-transact-sql)    |テスト範囲を指定します。|
-|[IN](https://docs.microsoft.com/sql/t-sql/language-elements/in-transact-sql)    |指定された値が、サブクエリまたは一覧内の値と一致するかどうかを判断します。|
-|[NULLIF](https://docs.microsoft.com/sql/t-sql/language-elements/nullif-transact-sql)    |指定された 2 つの式が等しい場合に NULL 値を返します。|
-|[COALESCE](https://docs.microsoft.com/sql/t-sql/language-elements/coalesce-transact-sql)    |引数を順番に評価し、NULL と評価されない最初の式の現在の値を返します。|
+|[=](/sql/t-sql/language-elements/equals-transact-sql)    |2 つの式の等価性を比較します (比較演算子)。|
+|[!=](/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |一方の式がもう一方の式と等しくないかどうかをテストします (比較演算子)。|
+|[<>](/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |2 つの式を比較して "等しくない" かどうかを判定します (比較演算子)。|
+|[<](/sql/t-sql/language-elements/less-than-transact-sql)    |2 つの式を比較して "より小さい" かどうかを判定します (比較演算子)。|
+|[<=](/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |2 つの式を比較して "以下" であるかどうかを判定します (比較演算子)。|
+|[>](/sql/t-sql/language-elements/greater-than-transact-sql)    |2 つの式を比較して "より大きい" かどうかを判定します (比較演算子)。 |
+|[>=](/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |2 つの式を比較して "以上" であるかどうかを判定します (比較演算子)。|
+|[+](/sql/t-sql/language-elements/add-transact-sql)    |2 つの値を加算します。 この加算算術演算子を使用して、日付に日数を加算することもできます。|
+|[-](/sql/t-sql/language-elements/subtract-transact-sql)    |2 つの値で減算を行います (算術減算演算子)。 |
+|[/](/sql/t-sql/language-elements/divide-transact-sql)    |1 つの値を別の値で除算します (算術除算演算子)。|
+|[*](/sql/t-sql/language-elements/multiply-transact-sql)    |2 つの式を乗算します (算術乗算演算子)。|
+|[%](/sql/t-sql/language-elements/modulo-transact-sql)    |ある値を別の値で除算した結果の余りを返します。|
+|[AND](/sql/t-sql/language-elements/bitwise-and-transact-sql)    |2 つの整数値の間でビットごとの論理積演算を実行します。|
+|[OR](/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Transact-SQL ステートメントの中で、バイナリ式に変換された 2 つの指定される整数値に対して、ビットごとの論理和演算を実行します。|
+|[NOT](/sql/t-sql/language-elements/not-transact-sql)    |ブール値を否定します。|
+|[CAST](/sql/t-sql/functions/cast-and-convert-transact-sql)    |あるデータ型の式を別のデータ型に変換します。|
+|[BETWEEN](/sql/t-sql/language-elements/between-transact-sql)    |テスト範囲を指定します。|
+|[IN](/sql/t-sql/language-elements/in-transact-sql)    |指定された値が、サブクエリまたは一覧内の値と一致するかどうかを判断します。|
+|[NULLIF](/sql/t-sql/language-elements/nullif-transact-sql)    |指定された 2 つの式が等しい場合に NULL 値を返します。|
+|[COALESCE](/sql/t-sql/language-elements/coalesce-transact-sql)    |引数を順番に評価し、NULL と評価されない最初の式の現在の値を返します。|
 
-演算子の左右のデータ型が異なる場合は、こちらで指定されている規則に従って自動変換が実行されます: 「[データ型の優先順位 (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql)」。
+演算子の左右のデータ型が異なる場合は、こちらで指定されている規則に従って自動変換が実行されます: 「[データ型の優先順位 (Transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql)」。
 
 クエリ アクセラレーション SQL 言語では、その記事で説明されているデータ型のごく一部のみがサポートされています。  この記事の「[データ型](#data-types)」セクションを参照してください。
 
 ### <a name="casts"></a>キャスト
 
-クエリ アクセラレーション SQL 言語では、こちらの規則に従って CAST 演算子がサポートされています: 「[データ型の変換 (データベース エンジン)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-conversion-database-engine)」。  
+クエリ アクセラレーション SQL 言語では、こちらの規則に従って CAST 演算子がサポートされています: 「[データ型の変換 (データベース エンジン)](/sql/t-sql/data-types/data-type-conversion-database-engine)」。  
 
 クエリ アクセラレーション SQL 言語では、その記事で説明されているデータ型の一部のみがサポートされています。  この記事の「[データ型](#data-types)」セクションを参照してください。
 
@@ -118,10 +118,10 @@ JSON 形式のデータ、またはヘッダー行を含む CSV 形式のデー�
 |--|--|
 |CHAR_LENGTH    | 文字列式のデータ型が文字である場合は、文字列式の文字の長さを返します。それ以外の場合は、文字列式の長さをバイト単位 (ビット数を 8 で割った数より小さい最小の整数) で返します (この関数は CHARACTER_LENGTH 関数と同じです)。|
 |CHARACTER_LENGTH    |文字列式のデータ型が文字である場合は、文字列式の文字の長さを返します。それ以外の場合は、文字列式の長さをバイト単位 (ビット数を 8 で割った数より小さい最小の整数) で返します (この関数は CHAR_LENGTH 関数と同じです)。|
-|[LOWER](https://docs.microsoft.com/sql/t-sql/functions/lower-transact-sql)    |大文字のデータが小文字に変換された状態の文字式を返します。|
-|[UPPER](https://docs.microsoft.com/sql/t-sql/functions/upper-transact-sql)    |小文字データを大文字に変換して文字式を返します。|
-|[SUBSTRING](https://docs.microsoft.com/sql/t-sql/functions/substring-transact-sql)    |SQL Server で、文字、バイナリ、テキスト、またはイメージ型の式の一部を返します。|
-|[TRIM](https://docs.microsoft.com/sql/t-sql/functions/trim-transact-sql)    |文字列の先頭と末尾にあるスペース文字 (32) または他の指定した文字を削除します。|
+|[LOWER](/sql/t-sql/functions/lower-transact-sql)    |大文字のデータが小文字に変換された状態の文字式を返します。|
+|[UPPER](/sql/t-sql/functions/upper-transact-sql)    |小文字データを大文字に変換して文字式を返します。|
+|[SUBSTRING](/sql/t-sql/functions/substring-transact-sql)    |SQL Server で、文字、バイナリ、テキスト、またはイメージ型の式の一部を返します。|
+|[TRIM](/sql/t-sql/functions/trim-transact-sql)    |文字列の先頭と末尾にあるスペース文字 (32) または他の指定した文字を削除します。|
 |LEADING    |説明|
 |TRAILING    |説明|
 
@@ -340,4 +340,3 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 - [Azure Data Lake Storage のクエリ アクセラレーション](data-lake-storage-query-acceleration.md)
 - [Azure Data Lake Storage のクエリ アクセラレーションを使用してデータをフィルター処理する](data-lake-storage-query-acceleration-how-to.md)
-

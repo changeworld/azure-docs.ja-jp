@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5558a57812414f6f1bb1be053a089af98533155a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 39c1972eba84f4f1990c87112c5801c386849640
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288341"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545960"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure ページ BLOB の概要
 
@@ -27,11 +27,11 @@ Azure のページ BLOB の重要な機能は、その REST インターフェ�
 
 ## <a name="restrictions"></a>制限
 
-ページ BLOB で使用できるのは、 **ホット** アクセス層のみであり、 **クール** または **アーカイブ** 層を使用することはできません。 アクセス層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md)」を参照してください。
+ページ BLOB で使用できるのは、**ホット** アクセス層のみであり、**クール** または **アーカイブ** 層を使用することはできません。 アクセス層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md)」を参照してください。
 
 ## <a name="sample-use-cases"></a>サンプル ユース ケース
 
-ページ BLOB のいくつかのユース ケースについて、Azure IaaS ディスクから説明します。 Azure のページ BLOB は、Azure IaaS の仮想ディスクのプラットフォームのバックボーンです。 Azure の OS とデータ ディスクは両方とも仮想ディスクとして実装され、そこでデータは Azure Storage プラットフォームで永続化され、その後、パフォーマンスを最大にするために仮想マシンに配信されます。 Azure ディスクは HYPER-V [VHD 形式](https://technet.microsoft.com/library/dd979539.aspx)で永続化され、Azure Storage に[ページ BLOB](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) として格納されます。 ページ BLOB は、Azure IaaS VM の仮想ディスクを使用するだけでなく、現時点で SQL データの格納のためにページ BLOB を使用している Azure SQL DB サービスなどの PaaS と DBaaS のシナリオも実現して、データベースの高速でランダムな読み取り/書き込み操作を可能にします。 もう 1 つの例として、コラボレーション用のビデオ編集アプリケーションの共有メディアへのアクセスに PaaS サービスを使用している場合は、ページ BLOB によってメディア内のランダムな場所への高速アクセスが可能になります。 また、複数のユーザーが同じメディアを高速かつ効率的に編集したりマージしたりできるようにもなります。 
+ページ BLOB のいくつかのユース ケースについて、Azure IaaS ディスクから説明します。 Azure のページ BLOB は、Azure IaaS の仮想ディスクのプラットフォームのバックボーンです。 Azure の OS とデータ ディスクは両方とも仮想ディスクとして実装され、そこでデータは Azure Storage プラットフォームで永続化され、その後、パフォーマンスを最大にするために仮想マシンに配信されます。 Azure ディスクは HYPER-V [VHD 形式](/previous-versions/windows/it-pro/windows-7/dd979539(v=ws.10))で永続化され、Azure Storage に[ページ BLOB](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) として格納されます。 ページ BLOB は、Azure IaaS VM の仮想ディスクを使用するだけでなく、現時点で SQL データの格納のためにページ BLOB を使用している Azure SQL DB サービスなどの PaaS と DBaaS のシナリオも実現して、データベースの高速でランダムな読み取り/書き込み操作を可能にします。 もう 1 つの例として、コラボレーション用のビデオ編集アプリケーションの共有メディアへのアクセスに PaaS サービスを使用している場合は、ページ BLOB によってメディア内のランダムな場所への高速アクセスが可能になります。 また、複数のユーザーが同じメディアを高速かつ効率的に編集したりマージしたりできるようにもなります。 
 
 Azure Site Recovery、Azure Backup のようなファースト パーティの Microsoft サービスと、多くのサード パーティの開発者は、ページ BLOB の REST インターフェイスを使用して、業界をリードするイノベーションを実装しています。 Azure に実装されている固有のシナリオの一部を、次に示します。 
 
@@ -47,7 +47,7 @@ Azure Site Recovery、Azure Backup のようなファースト パーティの M
 
 ### <a name="rest-api"></a>REST API
 
-[ページ BLOB を使用した開発](storage-dotnet-how-to-use-blobs.md)の概要については、次のドキュメントを参照してください。 例として、.NET 用ストレージ クライアント ライブラリを使用してページ BLOB にアクセスする方法について見てみましょう。 
+[ページ BLOB を使用した開発](./storage-quickstart-blobs-dotnet.md)の概要については、次のドキュメントを参照してください。 例として、.NET 用ストレージ クライアント ライブラリを使用してページ BLOB にアクセスする方法について見てみましょう。 
 
 次の図は、アカウント、コンテナー、およびページ BLOB の全体的な関係を示しています。
 
@@ -63,7 +63,7 @@ Azure Site Recovery、Azure Backup のようなファースト パーティの M
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
-ページ BLOB を作成するには、まず、次の例で示すように、 **StorageCredentialsAccountAndKey** オブジェクトと共に **CloudBlobClient** オブジェクトを作成します (ストレージ アカウント (図 1 の *pbaccount* ) の BLOB ストレージにアクセスするためのベース URI を使用します)。 この例では、 **CloudBlobContainer** オブジェクトへの参照の作成と、まだ存在していない場合のコンテナー ( *testvhds* ) の作成を示しています。 次に、 **CloudBlobContainer** オブジェクトを使用して、アクセスするページ BLOB の名前 (os4.vhd) を指定することで、 **CloudPageBlob** オブジェクトへの参照を作成します。 ページ BLOB を作成するには、[CloudPageBlob.Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create) を呼び出し、作成する BLOB の最大サイズを渡します。 *blobSize* は 512 バイトの倍数にする必要があります。
+ページ BLOB を作成するには、まず、次の例で示すように、**StorageCredentialsAccountAndKey** オブジェクトと共に **CloudBlobClient** オブジェクトを作成します (ストレージ アカウント (図 1 の *pbaccount*) の BLOB ストレージにアクセスするためのベース URI を使用します)。 この例では、**CloudBlobContainer** オブジェクトへの参照の作成と、まだ存在していない場合のコンテナー (*testvhds*) の作成を示しています。 次に、**CloudBlobContainer** オブジェクトを使用して、アクセスするページ BLOB の名前 (os4.vhd) を指定することで、**CloudPageBlob** オブジェクトへの参照を作成します。 ページ BLOB を作成するには、[CloudPageBlob.Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create) を呼び出し、作成する BLOB の最大サイズを渡します。 *blobSize* は 512 バイトの倍数にする必要があります。
 
 ```csharp
 using Microsoft.Azure;

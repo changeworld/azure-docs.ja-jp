@@ -3,12 +3,12 @@ title: Azure VMware Solution 上に Horizon をデプロイする
 description: Azure VMware Solution 上に VMware Horizon をデプロイする方法について説明します。
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: fb5e5b4c5f5da4c140f8d3575b963545f3a57db8
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 6d5d8e12e358e2289128af9840660be18f5f217a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423105"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537443"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Azure VMware Solution 上に Horizon をデプロイする 
 
@@ -139,22 +139,6 @@ Azure VMware Solution で実行されているホスト上の Horizon のサイ�
 #### <a name="power-worker-workloads"></a>パワー ワーカー ワークロード
 
 :::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-power.png" alt-text="VMware Horizon の Login VSI のパワー ワーカー ワークロードの一般的な VDI プロファイルの表" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-power.png" border="false":::
-
-### <a name="azure-vmware-solution-host-instance"></a>Azure VMware Solution のホスト インスタンス
-
-* PowerEdge R640 サーバー - DSS 制限付き
-
-* 36 コア \@2.3 GHz
-
-* 576 GB RAM
-
-* HBA330 12 Gbps SAS HBA コントローラー (非 RAID)
-
-* 1.92 TB SSD SATA ミックス使用 6 Gbps 512 2.5 インチ ホット プラグ AG ドライブ、3 DWPD、10512 TBW
-
-* Intel 1.6 TB、NVMe、ミックス使用 Express Flash、2.5 SFF ドライブ、U.2、P4600 キャリア付き
-
-* 2 vSAN ディスク グループ:1.6 x 4 (1.92 TB)
 
 ### <a name="horizon-sizing-inputs"></a>Horizon のサイズ設定の入力
 

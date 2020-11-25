@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 7700f1c92aecab76dbc347814b7b161bc3d822a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 338332eb90fda9afe7655f9f2ad19ed726419b6c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67181231"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556208"
 ---
 ### <a name="to-configure-and-register-the-device"></a>デバイスを構成して登録するには
 1. StorSimple デバイスのシリアル コンソールで Windows PowerShell インターフェイス にアクセスします。 方法については、「 [PuTTY を使用してデバイスのシリアル コンソールに接続する](../articles/storsimple/storsimple-8000-deployment-walkthrough-gov-u2.md#use-putty-to-connect-to-the-device-serial-console) 」を参照してください。 **必ず手順を正確に実行してください。そうしないと、コンソールにアクセスできません。**
@@ -25,7 +25,7 @@ ms.locfileid: "67181231"
    > [!IMPORTANT]
    > これらの構成手順は、デバイスのアクティブ コントローラーで実行する必要があります。 シリアル コンソール メニューでは、バナー メッセージにコントローラーの状態が示されます。 アクティブ コントローラーに接続されていない場合は、切断してアクティブ コントローラーに接続します。
    
-   1. コマンド プロンプトにパスワードを入力します。 デバイスの既定のパスワードは **Password1**です。
+   1. コマンド プロンプトにパスワードを入力します。 デバイスの既定のパスワードは **Password1** です。
    2. 次のコマンドを入力します。
       
         `Invoke-HcsSetupWizard`
@@ -43,7 +43,7 @@ ms.locfileid: "67181231"
    4. 必要に応じて、Web プロキシ サーバーを構成します。
       
       > [!IMPORTANT]
-      > Web プロキシの構成は省略可能ですが、Web プロキシを使用する場合は、ここでのみ構成できることに注意してください。 詳細については、「 [デバイスの Web プロキシの構成](../articles/storsimple/storsimple-configure-web-proxy.md)」を参照してください。
+      > Web プロキシの構成は省略可能ですが、Web プロキシを使用する場合は、ここでのみ構成できることに注意してください。 詳細については、「 [デバイスの Web プロキシの構成](../articles/storsimple/storsimple-8000-configure-web-proxy.md)」を参照してください。
      
 6. Ctrl キーを押しながら C キーを押してセットアップ ウィザードを終了します。
 8. 次のコマンドレットを実行して、デバイスが Microsoft Azure Government ポータルを示すように設定します (デバイスは既定でパブリックの Microsoft Azure クラシック ポータルを示します)。 これにより、両方のコントローラーが再起動されます。 2 つの PuTTY セッションを使用して両方のコントローラーに同時に接続して、各コント ローラーが再起動されるのを確認できるようにすることをお勧めします。
@@ -73,7 +73,7 @@ ms.locfileid: "67181231"
     > [!IMPORTANT]
     > シリアル コンソール ウィンドウからテキストをコピーするには、単にテキストを選択します。 その状態で、クリップボードまたは任意のテキスト エディターに貼り付けることができます。
     > 
-    > サービス データ暗号化キーをコピーするときには、**Ctrl キーを押しながら C キー**を押さないでください。 **Ctrl キーを押しながら C キー**を押すと、セットアップ ウィザードが終了します。 その場合、デバイスの管理者パスワードは変更されず、デバイスは既定のパスワードに戻ります。
+    > サービス データ暗号化キーをコピーするときには、**Ctrl キーを押しながら C キー** を押さないでください。 **Ctrl キーを押しながら C キー** を押すと、セットアップ ウィザードが終了します。 その場合、デバイスの管理者パスワードは変更されず、デバイスは既定のパスワードに戻ります。
     
 14. シリアル コンソールを終了します。
 15. Azure Government ポータルに戻り、次の手順を実行します。
@@ -86,4 +86,3 @@ ms.locfileid: "67181231"
         数分待ってもデバイスがまだオフラインである場合は、「[StorSimple デバイスのネットワーク要件](../articles/storsimple/storsimple-8000-system-requirements.md)」で説明されているとおりにファイアウォール ネットワークが構成されていることを確認する必要があります。
        
         ポート 9354 は Service Bus によって StorSimple デバイス マネージャー のサービスとデバイス間の通信に使用されているため、このポートが送信用に開かれていることを確認してください。
-

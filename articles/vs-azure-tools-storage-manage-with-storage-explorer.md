@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: 9922601d67393d103b95da7286d8db71d913434a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be9b2d9a31d4affc9615f5d2f4b2585b7533a0f6
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235247"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545909"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer の概要
 
@@ -61,7 +61,7 @@ Storage Explorer は、 *.tar.gz* ダウンロードとして入手すること�
 
 *.tar.gz* のインストールは他のディストリビューションでも機能する可能性がありますが、正式にサポートされているのは、こちらの一覧に表示されているものだけです。
 
-Linux での Storage Explorer のインストールの詳細については、「Azure Storage Explorer トラブルシューティング ガイド」の「[Linux の依存関係](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting#linux-dependencies)」を参照してください。
+Linux での Storage Explorer のインストールの詳細については、「Azure Storage Explorer トラブルシューティング ガイド」の「[Linux の依存関係](./storage/common/storage-explorer-troubleshooting.md#linux-dependencies)」を参照してください。
 
 ---
 
@@ -79,7 +79,7 @@ Storage Explorer には、ストレージ アカウントに対する接続方�
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 > [!NOTE]
-> サインインした後にリソースにフルにアクセスするには、Storage Explorer で管理 (Azure Resource Manager) とデータ レイヤーの両方のアクセス許可が必要です。 つまり、ストレージ アカウント、アカウント内のコンテナー、およびコンテナー内のデータへのアクセスを提供する Azure Active Directory (Azure AD) のアクセス許可が必要です。 データ レイヤーのみのアクセス許可がある場合は、[Azure AD を使用してリソースを追加する](#add-a-resource-via-azure-ad)ことを検討してください。 Storage Explorer で必要とされる具体的なアクセス許可の詳細については、「[Azure Storage Explorer トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting#rbac-permissions-issues)」を参照してください。
+> サインインした後にリソースにフルにアクセスするには、Storage Explorer で管理 (Azure Resource Manager) とデータ レイヤーの両方のアクセス許可が必要です。 つまり、ストレージ アカウント、アカウント内のコンテナー、およびコンテナー内のデータへのアクセスを提供する Azure Active Directory (Azure AD) のアクセス許可が必要です。 データ レイヤーのみのアクセス許可がある場合は、[Azure AD を使用してリソースを追加する](#add-a-resource-via-azure-ad)ことを検討してください。 Storage Explorer で必要とされる具体的なアクセス許可の詳細については、「[Azure Storage Explorer トラブルシューティング ガイド](./storage/common/storage-explorer-troubleshooting.md#azure-rbac-permissions-issues)」を参照してください。
 
 1. Storage Explorer で、 **[表示]**  >  **[アカウント管理]** を選択するか、 **[アカウントの管理]** ボタンを選択します。
 
@@ -106,8 +106,8 @@ Storage Explorer には、ストレージ アカウントに対する接続方�
 Storage Explorer でリソースにアタッチする方法は複数あります。
 
 * [Azure AD 経由でリソースを追加する](#add-a-resource-via-azure-ad)。 データ レイヤーのみのアクセス許可を持っている場合は、このオプションを使用して、BLOB コンテナーまたは Azure Data Lake Storage Gen2 BLOB ストレージ コンテナーを追加します。
-* [接続文字列を使用する](#use-a-connection-string)。 ストレージ アカウントへの接続文字列がある場合は、このオプションを使用します。 Storage Explorer では、キーと [Shared Access Signature](storage/common/storage-dotnet-shared-access-signature-part-1.md) 接続文字列の両方がサポートされています。
-* [Shared Access Signature URI を使用する](#use-a-shared-access-signature-uri)。 BLOB コンテナー、ファイル共有、キュー、またはテーブルへの [Shared Access Signature URI](storage/common/storage-dotnet-shared-access-signature-part-1.md) がある場合は、それを使用してリソースにアタッチします。 Shared Access Signature URI を取得するには、[Storage Explorer](#generate-a-sas-in-storage-explorer) または [Azure portal](https://portal.azure.com) のいずれかを使用できます。
+* [接続文字列を使用する](#use-a-connection-string)。 ストレージ アカウントへの接続文字列がある場合は、このオプションを使用します。 Storage Explorer では、キーと [Shared Access Signature](./storage/common/storage-sas-overview.md) 接続文字列の両方がサポートされています。
+* [Shared Access Signature URI を使用する](#use-a-shared-access-signature-uri)。 BLOB コンテナー、ファイル共有、キュー、またはテーブルへの [Shared Access Signature URI](./storage/common/storage-sas-overview.md) がある場合は、それを使用してリソースにアタッチします。 Shared Access Signature URI を取得するには、[Storage Explorer](#generate-a-sas-in-storage-explorer) または [Azure portal](https://portal.azure.com) のいずれかを使用できます。
 * [名前とキーを使用する](#use-a-name-and-key)。 ストレージ アカウントへのいずれかのアカウント キーがわかっている場合は、このオプションを使用してすばやく接続することができます。 [Azure portal](https://portal.azure.com) で、 **[設定]**  >  **[アクセス キー]** を選択して、ストレージ アカウント ページでお使いのキーを探します。
 * [ローカル エミュレーターにアタッチする](#attach-to-a-local-emulator)。 使用可能な Azure Storage エミュレーターのいずれかを使用している場合は、このオプションを使用して簡単にエミュレーターに接続することができます。
 * [接続文字列を使って Azure Cosmos DB アカウントに接続する](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string)。 CosmosDB インスタンスへの接続文字列がある場合は、このオプションを使用します。
@@ -131,7 +131,7 @@ Storage Explorer でリソースにアタッチする方法は複数あります
 
 1. **[接続の概要]** を見直し、すべての情報が正しいことを確認します。 正しい場合は、 **[接続]** を選択します。 正しくない場合は、 **[戻る]** を選択して前のページに戻り、間違った情報を修正します。
 
-接続が正常に追加されると、接続を表すノードにリソース ツリーが移動します。 リソースは、 **[Local & Attached]\(ローカルで接続済み\)**  >  **[ストレージ アカウント]**  >  **[(アタッチされたコンテナー)]**  >  **[BLOB コンテナー]** の下に表示されます。 Storage Explorer で接続を追加できなかった場合、または接続を正常に追加した後に自分のデータにアクセスできない場合は、「[Azure Storage Explorer トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)」を参照してください。
+接続が正常に追加されると、接続を表すノードにリソース ツリーが移動します。 リソースは、 **[Local & Attached]\(ローカルで接続済み\)**  >  **[ストレージ アカウント]**  >  **[(アタッチされたコンテナー)]**  >  **[BLOB コンテナー]** の下に表示されます。 Storage Explorer で接続を追加できなかった場合、または接続を正常に追加した後に自分のデータにアクセスできない場合は、「[Azure Storage Explorer トラブルシューティング ガイド](./storage/common/storage-explorer-troubleshooting.md)」を参照してください。
 
 #### <a name="use-a-connection-string"></a>接続文字列を使用する
 
@@ -145,7 +145,7 @@ Storage Explorer でリソースにアタッチする方法は複数あります
 
 1. **[接続の概要]** を見直し、すべての情報が正しいことを確認します。 正しい場合は、 **[接続]** を選択します。 正しくない場合は、 **[戻る]** を選択して前のページに戻り、間違った情報を修正します。
 
-接続が正常に追加されると、接続を表すノードにリソース ツリーが移動します。 リソースは、 **[Local & Attached]\(ローカルで接続済み\)**  >  **[ストレージ アカウント]** の下に表示されます。 Storage Explorer で接続を追加できなかった場合、または接続を正常に追加した後に自分のデータにアクセスできない場合は、「[Azure Storage Explorer トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)」を参照してください。
+接続が正常に追加されると、接続を表すノードにリソース ツリーが移動します。 リソースは、 **[Local & Attached]\(ローカルで接続済み\)**  >  **[ストレージ アカウント]** の下に表示されます。 Storage Explorer で接続を追加できなかった場合、または接続を正常に追加した後に自分のデータにアクセスできない場合は、「[Azure Storage Explorer トラブルシューティング ガイド](./storage/common/storage-explorer-troubleshooting.md)」を参照してください。
 
 #### <a name="use-a-shared-access-signature-uri"></a>Shared Access Signature URI を使用する
 
@@ -159,7 +159,7 @@ Storage Explorer でリソースにアタッチする方法は複数あります
 
 1. **[接続の概要]** を見直し、すべての情報が正しいことを確認します。 正しい場合は、 **[接続]** を選択します。 正しくない場合は、 **[戻る]** を選択して前のページに戻り、間違った情報を修正します。
 
-接続が正常に追加されると、接続を表すノードにリソース ツリーが移動します。 リソースは、 **[Local & Attached]\(ローカルで接続済み\)**  >  **[ストレージ アカウント]**  >  **[(アタッチされたコンテナー)]**  > *アタッチしたコンテナーの種類のサービス ノード*の下に表示されます。 Storage Explorer で接続を追加できなかった場合は、「[Azure Storage Explorer トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)」を参照してください。 接続を正常に追加した後に自分のデータにアクセスできない場合は、トラブルシューティング ガイドを参照してください。
+接続が正常に追加されると、接続を表すノードにリソース ツリーが移動します。 リソースは、 **[Local & Attached]\(ローカルで接続済み\)**  >  **[ストレージ アカウント]**  >  **[(アタッチされたコンテナー)]**  > *アタッチしたコンテナーの種類のサービス ノード* の下に表示されます。 Storage Explorer で接続を追加できなかった場合は、「[Azure Storage Explorer トラブルシューティング ガイド](./storage/common/storage-explorer-troubleshooting.md)」を参照してください。 接続を正常に追加した後に自分のデータにアクセスできない場合は、トラブルシューティング ガイドを参照してください。
 
 #### <a name="use-a-name-and-key"></a>名前とキーを使用する
 
@@ -173,11 +173,11 @@ Storage Explorer でリソースにアタッチする方法は複数あります
 
 1. ストレージ アカウント名とそのいずれかのアクセス キーを入力します。
 
-1. 使用する**ストレージ ドメイン**を選択して、 **[次へ]** を選択します。
+1. 使用する **ストレージ ドメイン** を選択して、 **[次へ]** を選択します。
 
 1. **[接続の概要]** を見直し、すべての情報が正しいことを確認します。 正しい場合は、 **[接続]** を選択します。 正しくない場合は、 **[戻る]** を選択して前のページに戻り、間違った情報を修正します。
 
-接続が正常に追加されると、接続を表すノードにリソース ツリーが移動します。 リソースは、 **[Local & Attached]\(ローカルで接続済み\)**  >  **[ストレージ アカウント]** の下に表示されます。 Storage Explorer で接続を追加できなかった場合、または接続を正常に追加した後に自分のデータにアクセスできない場合は、「[Azure Storage Explorer トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)」を参照してください。
+接続が正常に追加されると、接続を表すノードにリソース ツリーが移動します。 リソースは、 **[Local & Attached]\(ローカルで接続済み\)**  >  **[ストレージ アカウント]** の下に表示されます。 Storage Explorer で接続を追加できなかった場合、または接続を正常に追加した後に自分のデータにアクセスできない場合は、「[Azure Storage Explorer トラブルシューティング ガイド](./storage/common/storage-explorer-troubleshooting.md)」を参照してください。
 
 #### <a name="attach-to-a-local-emulator"></a>ローカル エミュレーターにアタッチする
 
@@ -186,7 +186,7 @@ Storage Explorer でリソースにアタッチする方法は複数あります
 * [Azure ストレージ エミュレーター](storage/common/storage-use-emulator.md) (Windows のみ)
 * [Azurite](https://github.com/azure/azurite) (Windows、macOS、または Linux)
 
-エミュレーターが既定のポートでリッスンしている場合は、**エミュレーター - 既定のポート** ノードを使用して、エミュレーターにアクセスできます。 **[Local & Attached]\(ローカルで接続済み\)**  >  **[ストレージ アカウント]** の下で、**エミュレーター - 既定のポート**を探します。
+エミュレーターが既定のポートでリッスンしている場合は、**エミュレーター - 既定のポート** ノードを使用して、エミュレーターにアクセスできます。 **[Local & Attached]\(ローカルで接続済み\)**  >  **[ストレージ アカウント]** の下で、**エミュレーター - 既定のポート** を探します。
 
 接続に別の名前を使用する場合、またはエミュレーターが既定のポートで実行されていない場合は、次の手順に従います。
 
@@ -205,7 +205,7 @@ Storage Explorer でリソースにアタッチする方法は複数あります
 
 1. **[接続の概要]** を見直し、すべての情報が正しいことを確認します。 正しい場合は、 **[接続]** を選択します。 正しくない場合は、 **[戻る]** を選択して前のページに戻り、間違った情報を修正します。
 
-接続が正常に追加されると、接続を表すノードにリソース ツリーが移動します。 ノードは、 **[Local & Attached]\(ローカルで接続済み\)**  >  **[ストレージ アカウント]** の下に表示されます。 Storage Explorer で接続を追加できなかった場合、または接続を正常に追加した後に自分のデータにアクセスできない場合は、「[Azure Storage Explorer トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)」を参照してください。
+接続が正常に追加されると、接続を表すノードにリソース ツリーが移動します。 ノードは、 **[Local & Attached]\(ローカルで接続済み\)**  >  **[ストレージ アカウント]** の下に表示されます。 Storage Explorer で接続を追加できなかった場合、または接続を正常に追加した後に自分のデータにアクセスできない場合は、「[Azure Storage Explorer トラブルシューティング ガイド](./storage/common/storage-explorer-troubleshooting.md)」を参照してください。
 
 #### <a name="connect-to-an-azure-cosmos-db-account-by-using-a-connection-string"></a>接続文字列を使って Azure Cosmos DB アカウントに接続する
 
@@ -215,7 +215,7 @@ Azure サブスクリプションを使って Azure Cosmos DB アカウントを
 
     ![接続文字列によって Azure Cosmos DB に接続する][21]
 
-1. Azure Cosmos DB API を選択し、**接続文字列**のデータを入力し、 **[OK]** を選択して、Azure Cosmos DB アカウントに接続します。 接続文字列を取得する方法については、「[Azure Cosmos アカウントの管理](https://docs.microsoft.com/azure/cosmos-db/manage-account)」を参照してください。
+1. Azure Cosmos DB API を選択し、**接続文字列** のデータを入力し、 **[OK]** を選択して、Azure Cosmos DB アカウントに接続します。 接続文字列を取得する方法については、「[Azure Cosmos アカウントの管理](./cosmos-db/how-to-manage-database-account.md)」を参照してください。
 
     ![接続文字列][22]
 
@@ -247,7 +247,7 @@ Azure サブスクリプションを使って Azure Cosmos DB アカウントを
 
     ![Shared Access Signature の取得][15]
 
-1. **接続文字列**または生**クエリ文字列**のいずれかをクリップボードにコピーします。
+1. **接続文字列** または生 **クエリ文字列** のいずれかをクリップボードにコピーします。
 
 ### <a name="service-level-shared-access-signature"></a>サービス レベルの Shared Access Signature
 

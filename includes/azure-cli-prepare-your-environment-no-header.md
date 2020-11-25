@@ -5,14 +5,14 @@ author: dbradish-microsoft
 ms.author: dbradish
 manager: barbkess
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a462f27befbe226496f0ffebd3f57c7058664c38
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: fc18ddcb44a016348baed79ada273416e159aed5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93354005"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95971518"
 ---
-- Bash 環境で [Azure Cloud Shell](/azure/cloud-shell/quickstart) を使用します。
+- Bash 環境で [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart) を使用します。
 
    [![埋め込みの起動](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell を起動する")](https://shell.azure.com)   
 - 必要に応じて、Azure CLI を[インストール](/cli/azure/install-azure-cli)して、CLI リファレンス コマンドを実行します。

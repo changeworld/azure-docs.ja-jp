@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 828b5c34aaccf2a53aa197f921a8ef02d46821ae
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2350177373bc99907c437d814d8f01193f18f3fd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280472"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95895725"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>ブロック BLOB データに対してポイントインタイム リストアを実行する
 
@@ -29,7 +29,7 @@ ms.locfileid: "91280472"
 
 ポイントインタイム リストアを有効にして構成する前に、ストレージ アカウントに対してその前提条件 (論理的な削除、変更フィード、および BLOB のバージョン管理) を有効にします。 これらの各機能を有効にする方法の詳細については、次の記事を参照してください。
 
-- [BLOB の論理的な削除を有効にする](soft-delete-enable.md)
+- [BLOB の論理的な削除を有効にする](./soft-delete-blob-enable.md)
 - [変更フィードを有効または無効にする](storage-blob-change-feed.md#enable-and-disable-the-change-feed)
 - [BLOB のバージョン管理を有効にして管理する](versioning-enable.md)
 
@@ -122,7 +122,7 @@ Azure portal を使用してストレージ アカウント内のすべてのコ
 1. チェックボックスをオンにして続行することを確認します。
 1. **[復元]** を選択して復元操作を開始します。
 
-    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="Azure portal でポイントインタイム リストアを構成する方法を示すスクリーンショット":::
+    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="指定された復元ポイントにすべてのコンテナーを復元する方法を示すスクリーンショット":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -169,14 +169,14 @@ Azure portal を使用して 1 つまたは複数のコンテナー内の BLOB �
 1. 復元する範囲を指定します。 コンテナー名と BLOB プレフィックスを区切るには、スラッシュ (/) を使用します。
 1. 既定では、 **[選択したコンテナーを復元する]** ペインにより、コンテナー内のすべての BLOB を含む範囲が指定されます。 コンテナー全体を復元しない場合は、この範囲を削除します。 次の画像に既定の範囲が示されています。
 
-    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="Azure portal でポイントインタイム リストアを構成する方法を示すスクリーンショット":::
+    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="カスタム範囲を指定する前に削除する既定の BLOB 範囲を示すスクリーンショット":::
 
 1. チェックボックスをオンにして続行することを確認します。
 1. **[復元]** を選択して復元操作を開始します。
 
 次の画像は、一連の範囲に対する復元操作を示しています。
 
-:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="Azure portal でポイントインタイム リストアを構成する方法を示すスクリーンショット":::
+:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="1 つまたは複数のコンテナー内の BLOB の範囲を復元する方法を示すスクリーンショット":::
 
 画像に示されている復元操作では、次の操作を実行します。
 
@@ -248,6 +248,6 @@ $restoreOperation.Parameters.BlobRanges
 ## <a name="next-steps"></a>次の手順
 
 - [ブロック BLOB のポイントインタイム リストア](point-in-time-restore-overview.md)
-- [論理的な削除](soft-delete-overview.md)
+- [論理的な削除](./soft-delete-blob-overview.md)
 - [変更フィード](storage-blob-change-feed.md)
 - [BLOB のバージョン管理](versioning-overview.md)

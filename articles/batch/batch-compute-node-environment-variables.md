@@ -3,12 +3,12 @@ title: タスク ランタイム環境変数
 description: タスク実行の環境変数に関するガイダンスと Azure Batch 解析のリファレンスです。
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 6b8ade312146802ede6e12181a082a8fcd3842fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2cab5011eb04586dc361bf1cec9c1f162d70117
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85960913"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95538531"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch ランタイム環境変数
 
@@ -18,21 +18,21 @@ Batch での環境変数の使用に関する詳細については、「[タス�
 
 ## <a name="environment-variable-visibility"></a>環境変数の可視性
 
-これらの環境変数は、**タスク ユーザー**のコンテキスト、つまりタスクが実行されるノードのユーザー アカウントだけで表示されます。 リモート デスクトップ プロトコル (RDP) や Secure Shell (SSH) を介してコンピューティング ノードに*リモート接続*して環境変数を一覧表示しようとしても、それらは "[表示されません](./error-handling.md#connect-to-compute-nodes)"。 これは、リモート接続に使用されるユーザー アカウントが、タスクで使用されるアカウントと異なることが原因です。
+これらの環境変数は、**タスク ユーザー** のコンテキスト、つまりタスクが実行されるノードのユーザー アカウントだけで表示されます。 リモート デスクトップ プロトコル (RDP) や Secure Shell (SSH) を介してコンピューティング ノードに *リモート接続* して環境変数を一覧表示しようとしても、それらは "[表示されません](./error-handling.md#connect-to-compute-nodes)"。 これは、リモート接続に使用されるユーザー アカウントが、タスクで使用されるアカウントと異なることが原因です。
 
 環境変数の現在の値を取得するには、Windows コンピューティング ノード上で`cmd.exe`を、またはLinux ノード上で`/bin/sh`を起動します。
 
 `cmd /c set <ENV_VARIABLE_NAME>`
 
-`/bin/sh printenv <ENV_VARIABLE_NAME>`
+`/bin/sh -c "printenv <ENV_VARIABLE_NAME>"`
 
 ## <a name="command-line-expansion-of-environment-variables"></a>環境変数のコマンドライン拡張
 
-コンピューティング ノード上のタスクによって実行されるコマンドラインは、シェルの下では実行されません。 そのため、これらのコマンド ラインは、環境変数の展開 (これには `PATH` が含まれる) など、シェルの機能をネイティブに利用することはできません。 このような機能を利用するためには、コマンド ラインで**シェルを呼び出す**必要があります。 たとえば、`cmd.exe` を Windows コンピューティング ノードで起動するか、または `/bin/sh` をLinux ノードで起動します。
+コンピューティング ノード上のタスクによって実行されるコマンドラインは、シェルの下では実行されません。 そのため、これらのコマンド ラインは、環境変数の展開 (これには `PATH` が含まれる) など、シェルの機能をネイティブに利用することはできません。 このような機能を利用するためには、コマンド ラインで **シェルを呼び出す** 必要があります。 たとえば、`cmd.exe` を Windows コンピューティング ノードで起動するか、または `/bin/sh` をLinux ノードで起動します。
 
 `cmd /c MyTaskApplication.exe %MY_ENV_VAR%`
 
-`/bin/sh -c MyTaskApplication $MY_ENV_VAR`
+`/bin/sh -c "MyTaskApplication $MY_ENV_VAR"`
 
 ## <a name="environment-variables"></a>環境変数
 

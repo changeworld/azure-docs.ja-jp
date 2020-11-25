@@ -12,12 +12,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: 19372b30a5e56738230216777897c08b07a0a86a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49203195bf7746d0bff1b9543d1641f69ab23359
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86170702"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542679"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Ruby で音声および SMS 機能に Twilio を使用する方法
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。
@@ -48,7 +48,7 @@ TwiML は、通話または SMS をどのように処理するかを Twilio に�
 すべての TwiML ドキュメントには、 `<Response>` がルート要素として存在します。 ここから、Twilio 動詞を使用してアプリケーションの動作を定義します。
 
 ### <a name="twiml-verbs"></a><a id="Verbs"></a>TwiML 動詞
-Twilio 動詞は、何を **実行する**かを Twilio に通知する XML タグです。 たとえば、 **&lt;Say&gt;** 動詞は、メッセージを音声で返すことを Twilio に指示します。 
+Twilio 動詞は、何を **実行する** かを Twilio に通知する XML タグです。 たとえば、 **&lt;Say&gt;** 動詞は、メッセージを音声で返すことを Twilio に指示します。 
 
 Twilio 動詞の一覧を次に示します。
 
@@ -206,4 +206,4 @@ end
 [twilio_support]: https://www.twilio.com/help/contact
 [twilio_quickstarts]: https://www.twilio.com/docs/quickstart
 [sinatra]: http://www.sinatrarb.com/
-[azure_vm_setup]: https://docs.microsoft.com/azure/virtual-machines/linux/classic/ruby-rails-web-app
+[azure_vm_setup]: /previous-versions/azure/virtual-machines/linux/classic/ruby-rails-web-app

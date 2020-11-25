@@ -9,12 +9,12 @@ ms.date: 09/09/2020
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: b7f566f85ebdb6b481797823cba78aa968747e9f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b02f5a7c390c5594a7c5692798a0691c8d9a42d0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746424"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912775"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Azure Data Lake Storage のクエリ アクセラレーションを使用してデータをフィルター処理する
 
@@ -26,7 +26,7 @@ ms.locfileid: "92746424"
 
 - Azure Storage にアクセスするには、Azure サブスクリプションが必要です。 まだサブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-- **汎用 v2** ストレージ アカウント。 「[ストレージ アカウントを作成する](../common/storage-quickstart-create-account.md)」を参照してください。
+- **汎用 v2** ストレージ アカウント。 「[ストレージ アカウントを作成する](../common/storage-account-create.md)」を参照してください。
 
 - タブを選択すると、SDK 固有の前提条件が表示されます。
 
@@ -92,7 +92,7 @@ ms.locfileid: "92746424"
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を開きます。または、Azure CLI をローカルに[インストール](https://docs.microsoft.com/cli/azure/install-azure-cli)した場合は、Windows PowerShell などのコマンド コンソール アプリケーションを開きます。
+1. [Azure Cloud Shell](../../cloud-shell/overview.md) を開きます。または、Azure CLI をローカルに[インストール](/cli/azure/install-azure-cli)した場合は、Windows PowerShell などのコマンド コンソール アプリケーションを開きます。
 
 2. 自分の ID が複数のサブスクリプションに関連付けられている場合は、アクティブなサブスクリプションをストレージ アカウントのサブスクリプションに設定します。
 
@@ -328,7 +328,7 @@ Get-QueryCsv $ctx $container $blob "SELECT * FROM BlobStorage WHERE _3 = 'Heming
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-非同期メソッド `BlobQuickQueryClient.QueryAsync` は、クエリをクエリ アクセラレーション API に送信し、その結果を [Stream](https://docs.microsoft.com/dotnet/api/system.io.stream) オブジェクトとしてアプリケーションにストリーミングで戻します。
+非同期メソッド `BlobQuickQueryClient.QueryAsync` は、クエリをクエリ アクセラレーション API に送信し、その結果を [Stream](/dotnet/api/system.io.stream) オブジェクトとしてアプリケーションにストリーミングで戻します。
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.custom: devx-track-java
-ms.openlocfilehash: f2f30230418637b53826bd314e395e760db7087f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 053c120b7a1a6c50c16ff419a9e64666d83dc59a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87306016"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542492"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>Java で音声および SMS 機能に Twilio を使用する方法
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。
@@ -217,9 +217,9 @@ Azure の Java での Twilio の使用の詳細については、「[Azure 上�
 
 [twilio_java]: https://github.com/twilio/twilio-java
 [twilio_api_service]: https://api.twilio.com
-[add_ca_cert]: java-add-certificate-ca-store.md
+[add_ca_cert]: /azure/developer/java/sdk/java-sdk-add-certificate-ca-store
 [howto_phonecall_java]: partner-twilio-java-phone-call-example.md
-[misc_role_config_settings]: https://msdn.microsoft.com/library/windowsazure/hh690945.aspx
+[misc_role_config_settings]: /previous-versions/azure/hh690945(v=azure.100)
 [twimlet_message_url]: https://twimlets.com/message
 [twimlet_message_url_hello_world]: https://twimlets.com/message?Message%5B0%5D=Hello%20World%21
 [twilio_rest_making_calls]: https://www.twilio.com/docs/api/rest/making-calls

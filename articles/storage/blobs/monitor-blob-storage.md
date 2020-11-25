@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: cdd5a8b518a374340af35d5f866d51d016e5ac79
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 7918361826eac10822b8b155d6b47dd89011f683
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745194"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908933"
 ---
 # <a name="monitoring-azure-blob-storage"></a>Azure Blob Storage の監視
 
@@ -46,7 +46,7 @@ Azure Blob Storage では、他の Azure リソースと同じ種類の監視デ
 
 Azure Blob Storage によって作成されるメトリックとログの詳細については、[Azure Blob Storage 監視データのリファレンス](monitor-blob-storage-reference.md)に関するページを参照してください。
 
-Azure Monitor のメトリックとログでは、Azure Resource Manager ストレージ アカウントのみがサポートされています。 Azure Monitor では、従来のストレージ アカウントはサポートされていません。 従来のストレージ アカウントでメトリックまたはログを使用する場合、Azure Resource Manager ストレージ アカウントに移行する必要があります。 [Azure Resource Manager への移行](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview)に関するページを参照してください。
+Azure Monitor のメトリックとログでは、Azure Resource Manager ストレージ アカウントのみがサポートされています。 Azure Monitor では、従来のストレージ アカウントはサポートされていません。 従来のストレージ アカウントでメトリックまたはログを使用する場合、Azure Resource Manager ストレージ アカウントに移行する必要があります。 [Azure Resource Manager への移行](../../virtual-machines/migration-classic-resource-manager-overview.md)に関するページを参照してください。
 
 必要に応じて、従来のメトリックとログの使用を続けることができます。 実際に、従来のメトリックとログを Azure Monitor のメトリックとログと並行して使用できます。 このサポートは、Azure Storage で従来のメトリックとログのサービスが終了するまで引き続き提供されます。
 
@@ -109,7 +109,7 @@ Azure Monitor のメトリックとログでは、Azure Resource Manager スト�
 2. **[ストレージ アカウント]** ドロップダウン リストで、ログのアーカイブ先とするストレージ アカウントを選択し、 **[OK]** ボタンをクリックして、 **[保存]** ボタンをクリックします。
 
    > [!NOTE]
-   > ストレージ アカウントをエクスポート先として選択する前に、[Azure リソース ログのアーカイブ](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage)に関するページを参照して、ストレージ アカウントに関する前提条件を理解してください。
+   > ストレージ アカウントをエクスポート先として選択する前に、[Azure リソース ログのアーカイブ](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)に関するページを参照して、ストレージ アカウントに関する前提条件を理解してください。
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>ログを Azure Event Hubs にストリーミングする
 
@@ -145,7 +145,7 @@ Azure Monitor のメトリックとログでは、Azure Resource Manager スト�
 
 #### <a name="archive-logs-to-a-storage-account"></a>ログをストレージ アカウントにアーカイブする
 
-`StorageAccountId` パラメーターを指定した [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell コマンドレットを使用して、ログを有効にします。
+`StorageAccountId` パラメーターを指定した [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell コマンドレットを使用して、ログを有効にします。
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
@@ -159,11 +159,11 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccoun
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default -StorageAccountId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount -Enabled $true -Category StorageWrite,StorageDelete`
 
-各パラメーターの説明については、[Azure PowerShell を使用した Azure リソース ログのアーカイブ](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-azure-powershell)に関するページを参照してください。
+各パラメーターの説明については、[Azure PowerShell を使用した Azure リソース ログのアーカイブ](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)に関するページを参照してください。
 
 #### <a name="stream-logs-to-an-event-hub"></a>イベント ハブにログをストリーム配信する
 
-`EventHubAuthorizationRuleId` パラメーターを指定した [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell コマンドレットを使用して、ログを有効にします。
+`EventHubAuthorizationRuleId` パラメーターを指定した [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell コマンドレットを使用して、ログを有効にします。
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
@@ -173,11 +173,11 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAutho
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default -EventHubAuthorizationRuleId /subscriptions/20884142-a14v3-4234-5450-08b10c09f4/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey -Enabled $true -Category StorageDelete`
 
-各パラメーターの説明については、[PowerShell コマンドレットを使用した Event Hubs へのデータのストリーム配信](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-powershell-cmdlets)に関するページを参照してください。
+各パラメーターの説明については、[PowerShell コマンドレットを使用した Event Hubs へのデータのストリーム配信](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)に関するページを参照してください。
 
 #### <a name="send-logs-to-log-analytics"></a>ログを Log Analytics に送信する
 
-`WorkspaceId` パラメーターを指定した [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell コマンドレットを使用して、ログを有効にします。
+`WorkspaceId` パラメーターを指定した [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell コマンドレットを使用して、ログを有効にします。
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
@@ -187,11 +187,11 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default -WorkspaceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace -Enabled $true -Category StorageDelete`
 
-詳しくは、[Azure Monitor の Log Analytics ワークスペースへの Azure リソース ログのストリーム配信](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store)に関するページを参照してください。
+詳しくは、[Azure Monitor の Log Analytics ワークスペースへの Azure リソース ログのストリーム配信](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)に関するページを参照してください。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. まず、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を開きます。または、Azure CLI をローカルに[インストール](https://docs.microsoft.com/cli/azure/install-azure-cli)した場合は、Windows PowerShell などのコマンド コンソール アプリケーションを開きます。
+1. まず、[Azure Cloud Shell](../../cloud-shell/overview.md) を開きます。または、Azure CLI をローカルに[インストール](/cli/azure/install-azure-cli)した場合は、Windows PowerShell などのコマンド コンソール アプリケーションを開きます。
 
 2. 自分の ID が複数のサブスクリプションに関連付けられている場合は、アクティブなサブスクリプションを、ログを有効にするストレージ アカウントのサブスクリプションに設定します。
 
@@ -203,7 +203,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <
 
 #### <a name="archive-logs-to-a-storage-account"></a>ログをストレージ アカウントにアーカイブする
 
-[az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) コマンドを使用してログを有効にします。
+[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) コマンドを使用してログを有効にします。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
@@ -217,11 +217,11 @@ az monitor diagnostic-settings create --name <setting-name> --storage-account <s
 
 `az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
 
-各パラメーターの説明については、[Azure CLI を使用したリソース ログのアーカイブ](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-the-azure-cli)に関するページを参照してください。
+各パラメーターの説明については、[Azure CLI を使用したリソース ログのアーカイブ](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)に関するページを参照してください。
 
 #### <a name="stream-logs-to-an-event-hub"></a>イベント ハブにログをストリーム配信する
 
-[az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) コマンドを使用してログを有効にします。
+[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) コマンドを使用してログを有効にします。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --event-hub <event-hub-name> --event-hub-rule <event-hub-namespace-and-key-name> --resource <storage-account-resource-id> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
@@ -231,11 +231,11 @@ az monitor diagnostic-settings create --name <setting-name> --event-hub <event-h
 
 `az monitor diagnostic-settings create --name setting1 --event-hub myeventhub --event-hub-rule /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --logs '[{"category": StorageDelete, "enabled": true }]'`
 
-各パラメーターの説明については、[Azure CLI を使用した Event Hubs へのデータのストリーム配信](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-azure-cli)に関するページを参照してください。
+各パラメーターの説明については、[Azure CLI を使用した Event Hubs へのデータのストリーム配信](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)に関するページを参照してください。
 
 #### <a name="send-logs-to-log-analytics"></a>ログを Log Analytics に送信する
 
-[az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) コマンドを使用してログを有効にします。
+[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) コマンドを使用してログを有効にします。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --workspace <log-analytics-workspace-resource-id> --resource <storage-account-resource-id> --logs '[{"category": <category name>, "enabled": true "retentionPolicy": {"days": <days>, "enabled": <retention-bool}}]'
@@ -245,11 +245,11 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 
 `az monitor diagnostic-settings create --name setting1 --workspace /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --logs '[{"category": StorageDelete, "enabled": true ]'`
 
- 詳しくは、[Azure Monitor の Log Analytics ワークスペースへの Azure リソース ログのストリーム配信](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store)に関するページを参照してください。
+ 詳しくは、[Azure Monitor の Log Analytics ワークスペースへの Azure リソース ログのストリーム配信](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)に関するページを参照してください。
 
 ### <a name="template"></a>[テンプレート](#tab/template)
 
-診断設定を作成する Azure Resource Manager テンプレートを表示するには、「[Azure Storage の診断設定](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage)」を参照してください。
+診断設定を作成する Azure Resource Manager テンプレートを表示するには、「[Azure Storage の診断設定](../../azure-monitor/samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage)」を参照してください。
 
 ---
 
@@ -272,7 +272,7 @@ Azure Blob Storage のメトリックは、次の名前空間にあります。
 - Microsoft.Storage/storageAccounts
 - Microsoft.Storage/storageAccounts/blobServices
 
-(Azure Blob Storage を含む) すべての Azure Monitor サポート メトリックの一覧については、[Azure Monitor でサポートされるメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)に関するページを参照してください。
+(Azure Blob Storage を含む) すべての Azure Monitor サポート メトリックの一覧については、[Azure Monitor でサポートされるメトリック](../../azure-monitor/platform/metrics-supported.md)に関するページを参照してください。
 
 
 ### <a name="accessing-metrics"></a>メトリックにアクセスする
@@ -286,7 +286,7 @@ Azure Monitor には、メトリックの定義と値を読み取るための [.
  
 これらの例では、`<resource-ID>` プレースホルダーをストレージ アカウント全体または BLOB ストレージ サービスのリソース ID に置き換えます。 これらのリソース ID は、Azure portal 上のストレージ アカウントの **[プロパティ]** ページで確認できます。
 
-`<subscription-ID>` 変数をご自身のサブスクリプションの ID に置き換えます。 `<tenant-ID>`、`<application-ID>`、および `<AccessKey>` の値を取得する方法のガイダンスについては、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/)」をご覧ください。 
+`<subscription-ID>` 変数をご自身のサブスクリプションの ID に置き換えます。 `<tenant-ID>`、`<application-ID>`、および `<AccessKey>` の値を取得する方法のガイダンスについては、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../../active-directory/develop/howto-create-service-principal-portal.md)」をご覧ください。 
 
 #### <a name="list-the-account-level-metric-definition"></a>アカウント レベルのメトリック定義を一覧表示する
 
@@ -424,7 +424,7 @@ Azure Monitor には、メトリックの定義と値を読み取るための [.
 
 #### <a name="list-the-metric-definition"></a>メトリック定義の一覧表示
 
-ストレージ アカウントまたは BLOB ストレージ サービスのメトリック定義を一覧表示できます。 [Get-AzMetricDefinition](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition) コマンドレットを使用します。
+ストレージ アカウントまたは BLOB ストレージ サービスのメトリック定義を一覧表示できます。 [Get-AzMetricDefinition](/powershell/module/az.monitor/get-azmetricdefinition) コマンドレットを使用します。
 
 この例では、`<resource-ID>` プレースホルダーをストレージ アカウント全体のリソース ID または BLOB ストレージ サービスのリソース ID に置き換えます。  これらのリソース ID は、Azure portal 上のストレージ アカウントの **[プロパティ]** ページで確認できます。
 
@@ -435,7 +435,7 @@ Azure Monitor には、メトリックの定義と値を読み取るための [.
 
 #### <a name="reading-metric-values"></a>メトリック値を読み取る
 
-ストレージ アカウントまたは BLOB ストレージ サービスのアカウントレベルのメトリック値を読み取ることができます。 [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric) コマンドレットを使用します。
+ストレージ アカウントまたは BLOB ストレージ サービスのアカウントレベルのメトリック値を読み取ることができます。 [Get-AzMetric](/powershell/module/Az.Monitor/Get-AzMetric) コマンドレットを使用します。
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -446,7 +446,7 @@ Azure Monitor には、メトリックの定義と値を読み取るための [.
 
 #### <a name="list-the-account-level-metric-definition"></a>アカウント レベルのメトリック定義を一覧表示する
 
-ストレージ アカウントまたは BLOB ストレージ サービスのメトリック定義を一覧表示できます。 [az monitor metrics list-definitions](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) コマンドを使用します。
+ストレージ アカウントまたは BLOB ストレージ サービスのメトリック定義を一覧表示できます。 [az monitor metrics list-definitions](/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) コマンドを使用します。
  
 この例では、`<resource-ID>` プレースホルダーをストレージ アカウント全体のリソース ID または BLOB ストレージ サービスのリソース ID に置き換えます。 これらのリソース ID は、Azure portal 上のストレージ アカウントの **[プロパティ]** ページで確認できます。
 
@@ -456,7 +456,7 @@ Azure Monitor には、メトリックの定義と値を読み取るための [.
 
 #### <a name="read-account-level-metric-values"></a>アカウント レベルのメトリック値を読み取る
 
-ストレージ アカウントまたは BLOB ストレージ サービスのメトリック値を読み取ることができます。 [az monitor metrics list](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list) コマンドを使用します。
+ストレージ アカウントまたは BLOB ストレージ サービスのメトリック値を読み取ることができます。 [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) コマンドを使用します。
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
@@ -512,26 +512,26 @@ BLOB ストレージ サービスそのものによる要求 (ログの作成や
 
 ### <a name="accessing-logs-in-an-event-hub"></a>イベント ハブのログにアクセスする
 
-イベント ハブに送信されたログはファイルとして保存されませんが、イベント ハブでログ情報が受信されたことを確認することはできます。 Azure portal でイベント ハブに移動し、 **受信メッセージ** の数がゼロより大きいことを確認します。 
+イベント ハブに送信されたログはファイルとして保存されませんが、イベント ハブでログ情報が受信されたことを確認することはできます。 Azure portal でイベント ハブに移動し、**受信メッセージ** の数がゼロより大きいことを確認します。 
 
 ![監査ログ](media/monitor-blob-storage/event-hub-log.png)
 
-イベント ハブに送信されるログ データのアクセスと読み取りには、セキュリティ情報とイベント管理のツールと監視ツールを使用します。 詳細については、[イベント ハブに送信された監視データを処理する方法](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub)に関するページを参照してください。
+イベント ハブに送信されるログ データのアクセスと読み取りには、セキュリティ情報とイベント管理のツールと監視ツールを使用します。 詳細については、[イベント ハブに送信された監視データを処理する方法](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)に関するページを参照してください。
 
 ### <a name="accessing-logs-in-a-log-analytics-workspace"></a>Log Analytics ワークスペースのログにアクセスする
 
 Azure Monitor ログ クエリを使用して、Log Analytics ワークスペースに送信されたログにアクセスできます。
 
-詳細については、「[Azure Monitor で Log Analytics の使用を開始する](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)」を参照してください。
+詳細については、「[Azure Monitor で Log Analytics の使用を開始する](../../azure-monitor/log-query/log-analytics-tutorial.md)」を参照してください。
 
 データは **StorageBlobLog** テーブルに格納されます。 Data Lake Storage Gen2 のログは、専用テーブルに表示されません。 この理由は Data Lake Storage Gen2 がサービスではないためです。 これは、お使いのストレージ アカウントで有効にできる機能のセットです。 これらの機能を有効にしている場合、ログは StorageBlobLogs テーブルに引き続き表示されます。 
 
 #### <a name="sample-kusto-queries"></a>サンプル Kusto クエリ
 
-**[ログ検索]** バーに入力して BLOB ストレージの監視に利用できるクエリを紹介します。 これらのクエリは[新しい言語](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)で使用できます。
+**[ログ検索]** バーに入力して BLOB ストレージの監視に利用できるクエリを紹介します。 これらのクエリは[新しい言語](../../azure-monitor/log-query/log-query-overview.md)で使用できます。
 
 > [!IMPORTANT]
-> ストレージ アカウント リソース グループ メニューから **[ログ]** を選択すると、クエリのスコープが現在のリソース グループに設定された状態で Log Analytics が開きます。 つまり、ログ クエリには、そのリソース グループのデータのみが含まれます。 他のリソースのデータや他の Azure サービスのデータを含むクエリを実行する場合は、 **Azure Monitor** のメニューから **[ログ]** を選択します。 詳細については、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](/azure/azure-monitor/log-query/scope/)」を参照してください。
+> ストレージ アカウント リソース グループ メニューから **[ログ]** を選択すると、クエリのスコープが現在のリソース グループに設定された状態で Log Analytics が開きます。 つまり、ログ クエリには、そのリソース グループのデータのみが含まれます。 他のリソースのデータや他の Azure サービスのデータを含むクエリを実行する場合は、**Azure Monitor** のメニューから **[ログ]** を選択します。 詳細については、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](../../azure-monitor/log-query/scope.md)」を参照してください。
 
 これらのクエリを使用すると、Azure Storage アカウントの監視に役立ちます。
 

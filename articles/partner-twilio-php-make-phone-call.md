@@ -12,12 +12,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: e75b5a265ba85813581e39a548d897ea57a33da6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef0642b26898249d78f5103e8a8f80198887bed9
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88080560"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542526"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Azure 上の PHP アプリケーションで Twilio を使用して通話する方法
 次の例では、Azure でホストされる PHP Web ページから Twilio を使用して通話する方法を示しています。 次のスクリーンショットに示すように、作成されたアプリケーションは通話に関する値の入力をユーザーに求めます。
@@ -29,7 +29,7 @@ ms.locfileid: "88080560"
 1. [Twilio Console][twilio_console] で Twilio アカウントと認証トークンを取得します。 Twilio を利用し始める前に、[https://www.twilio.com/pricing][twilio_pricing] で価格を検討します。 [https://www.twilio.com/try-twilio][try_twilio] で試用アカウントにサインアップできます。
 2. [PHP 用 Twilio ライブラリ](https://github.com/twilio/twilio-php) を入手するか、PEAR パッケージとしてインストールします。 詳細については、 [readme ファイル](https://github.com/twilio/twilio-php/blob/master/README.md)をご覧ください。
 3. Azure SDK for PHP をインストールします。 
-<!-- For an overview of the SDK and instructions on installing it, see [Set up the Azure SDK for PHP](app-service-web/web-sites-php-mysql-deploy-use-git.md) -->
+<!-- For an overview of the SDK and instructions on installing it, see [Set up the Azure SDK for PHP](./app-service/quickstart-php.md) -->
 
 ## <a name="create-a-web-form-for-making-a-call"></a>通話用の Web フォームの作成
 次の HTML コードは、通話用のユーザー データを取得する Web ページ (**callform.html**) の作成方法を示しています。
@@ -129,8 +129,8 @@ Twilio の詳細については、[https://www.twilio.com/docs][twilio_docs] を
 [twilio_api_service]: https://api.twilio.com
 [build_php_azure_app]: http://azurephp.interoperabilitybridges.com/articles/build-and-deploy-a-windows-azure-php-application
 [howto_twilio_voice_sms_php]: partner-twilio-php-how-to-use-voice-sms.md
-[howto_blob_storage_php]: https://azure.microsoft.com/documentation/articles/storage-php-how-to-use-blobs/
-[howto_sql_azure_php]: https://azure.microsoft.com/documentation/articles/sql-database-php-how-to-use/
+[howto_blob_storage_php]: ./storage/blobs/storage-quickstart-blobs-php.md
+[howto_sql_azure_php]: ./azure-sql/database/connect-query-content-reference-guide.md
 [twilio_call_properties]: https://www.twilio.com/docs/api/rest/call#instance-properties
 [twilio_docs_security]: https://www.twilio.com/docs/security
 [twilio_docs]: https://www.twilio.com/docs

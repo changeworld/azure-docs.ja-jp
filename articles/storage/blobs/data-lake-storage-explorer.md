@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 214cdbd5ad30ad096cb6c9d1442936eefb2b2054
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e46bb87788de27916860720284087643db7153dc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674866"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913404"
 ---
 # <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
 
@@ -23,7 +23,7 @@ ms.locfileid: "92674866"
 
 > [!div class="checklist"]
 > * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-> * 階層型名前空間 (HNS) が有効になっているストレージ アカウント。 作成するには、[こちら](data-lake-storage-quickstart-create-account.md)の手順に従います。
+> * 階層型名前空間 (HNS) が有効になっているストレージ アカウント。 作成するには、[こちら](../common/storage-account-create.md)の手順に従います。
 > * ローカル コンピューターにインストールされた Azure Storage Explorer。 Windows、Macintosh、または Linux 用の Azure Storage Explorer をインストールする方法については、「[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)」をご覧ください。
 
 ## <a name="sign-in-to-storage-explorer"></a>Storage Explorer にサインインする
@@ -46,13 +46,13 @@ Storage Explorer を初めて起動すると、 **[Microsoft Azure Storage Explo
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
-コンテナーには、ディレクトリとファイルが保持されます。 作成するには、前の手順で作成したストレージ アカウントを展開します。 **[BLOB コンテナー]** を選択し、 **[BLOB コンテナーの作成]** を右クリックして選択します。 コンテナーの名前を入力します。 コンテナーの名前付けに関する規則と制限の一覧については、「[コンテナーを作成する](storage-quickstart-blobs-dotnet.md#create-a-container)」セクションを参照してください。 完了したら、 **Enter** キーを押してコンテナーを作成します。 コンテナーは、正常に作成されると、選択されたストレージ アカウントの **[BLOB コンテナー]** フォルダーの下に表示されます。
+コンテナーには、ディレクトリとファイルが保持されます。 作成するには、前の手順で作成したストレージ アカウントを展開します。 **[BLOB コンテナー]** を選択し、 **[BLOB コンテナーの作成]** を右クリックして選択します。 コンテナーの名前を入力します。 コンテナーの名前付けに関する規則と制限の一覧については、「[コンテナーを作成する](storage-quickstart-blobs-dotnet.md#create-a-container)」セクションを参照してください。 完了したら、**Enter** キーを押してコンテナーを作成します。 コンテナーは、正常に作成されると、選択されたストレージ アカウントの **[BLOB コンテナー]** フォルダーの下に表示されます。
 
 ![Microsoft Azure Storage Explorer - コンテナーの作成](media/data-lake-storage-explorer/creating-a-filesystem.png)
 
 ## <a name="create-a-directory"></a>ディレクトリを作成する
 
-ディレクトリを作成するには、前の手順で作成したコンテナーを選択します。 コンテナーのリボンで、 **[新しいフォルダー]** ボタンを選択します。 ディレクトリの名前を入力します。 完了したら、 **Enter** キーを押してディレクトリを作成します。 ディレクトリが正常に作成されると、エディター ウィンドウに表示されます。
+ディレクトリを作成するには、前の手順で作成したコンテナーを選択します。 コンテナーのリボンで、 **[新しいフォルダー]** ボタンを選択します。 ディレクトリの名前を入力します。 完了したら、**Enter** キーを押してディレクトリを作成します。 ディレクトリが正常に作成されると、エディター ウィンドウに表示されます。
 
 ![Microsoft Azure Storage Explorer - ディレクトリの作成](media/data-lake-storage-explorer/creating-a-directory.png)
 
@@ -95,11 +95,11 @@ Storage Explorer を初めて起動すると、 **[Microsoft Azure Storage Explo
 
 割り当てることができるアクセス許可には、アクセス ACL と既定の ACL という 2 つのカテゴリがあります。
 
-* **アクセス** :アクセス ACL はオブジェクトへのアクセスを制御します。 ファイルとディレクトリの両方がアクセス ACL を持っています。
+* **アクセス**:アクセス ACL はオブジェクトへのアクセスを制御します。 ファイルとディレクトリの両方がアクセス ACL を持っています。
 
-* **既定** :ディレクトリに関連付けられた ACL のテンプレートです。この ACL によって、そのディレクトリの下に作成されるすべての子項目のアクセス ACL が決まります。 ファイルには既定の ACL がありません。
+* **既定**:ディレクトリに関連付けられた ACL のテンプレートです。この ACL によって、そのディレクトリの下に作成されるすべての子項目のアクセス ACL が決まります。 ファイルには既定の ACL がありません。
 
-これらの両方のカテゴリ内には、ファイルまたはディレクトリに割り当てることができるアクセス許可が 3 つあります。 **読み取り** 、 **書き込み** 、 **実行** です。
+これらの両方のカテゴリ内には、ファイルまたはディレクトリに割り当てることができるアクセス許可が 3 つあります。**読み取り**、**書き込み**、**実行** です。
 
 >[!NOTE]
 > ここで選択しても、ディレクトリ内に現在ある項目に対してアクセス許可は設定されません。 ファイルが既に存在する場合は、個々の項目に移動して、アクセス許可を手動で設定する必要があります。
@@ -111,4 +111,4 @@ Storage Explorer を初めて起動すると、 **[Microsoft Azure Storage Explo
 Data Lake Storage Gen2 のアクセス制御リストについて説明します。
 
 > [!div class="nextstepaction"]
-> [Azure Data Lake Storage Gen2 のアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+> [Azure Data Lake Storage Gen2 のアクセス制御](./data-lake-storage-access-control.md)

@@ -3,12 +3,12 @@ title: Azure Service Bus のメッセージング - キュー、トピック、�
 description: この記事では、Azure Service Bus メッセージング エンティティ (キュー、トピック、サブスクリプション) の概要について説明します。
 ms.topic: article
 ms.date: 11/04/2020
-ms.openlocfilehash: 7c1d22605e841eac42f2b47aab38777a622bfb90
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 54b6a1fd2d4e8e5ef5bb6522374646257213e4b4
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359427"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95791602"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus のキュー、トピック、サブスクリプション
 Azure Service Bus は、信頼性の高いメッセージ キュー機能や永続的なパブリッシュ/サブスクライブ メッセージング機能など、クラウドベースのメッセージ指向ミドルウェアの一連のテクノロジをサポートしています。 これらのブローカー メッセージング機能は、分離されたメッセージング機能と考えることができ、Service Bus メッセージング ワークロードを使用するパブリッシュ/サブスクライブ、一時的な切り離し、負荷分散のシナリオをサポートしています。 分離型通信には多くの利点があります。 たとえば、クライアントとサーバーを必要に応じて接続し、非同期に操作を実行できます。
@@ -23,7 +23,7 @@ Service Bus のメッセージング機能の中核を形成するメッセー�
 キューを使用してメッセージ プロデューサーとメッセージ コンシューマーの間を仲介すると、必然的にコンポーネント間の結び付きは緩くなります。 プロデューサーとコンシューマーは相互に認識しないため、プロデューサーに影響することなく、コンシューマーをアップグレードできます。
 
 ### <a name="create-queues"></a>キューの作成
-キューは、[Azure portal](service-bus-quickstart-portal.md)、[PowerShell](service-bus-quickstart-powershell.md)、[CLI](service-bus-quickstart-cli.md)、または [Resource Manager テンプレート](service-bus-resource-manager-namespace-queue.md)を使用して作成できます。 次に、[C#](service-bus-dotnet-get-started-with-queues.md)、[Java](service-bus-java-how-to-use-queues.md)、[Python](service-bus-python-how-to-use-queues.md)、[JavaScript](service-bus-nodejs-how-to-use-queues-new-package.md)、[PHP](service-bus-php-how-to-use-queues.md)、および [Ruby](service-bus-ruby-how-to-use-queues.md) で記述されたクライアントを使用して、メッセージを送受信します。 
+キューは、[Azure portal](service-bus-quickstart-portal.md)、[PowerShell](service-bus-quickstart-powershell.md)、[CLI](service-bus-quickstart-cli.md)、または [Resource Manager テンプレート](service-bus-resource-manager-namespace-queue.md)を使用して作成できます。 次に、[C#](service-bus-dotnet-get-started-with-queues.md)、[Java](service-bus-java-how-to-use-queues.md)、[Python](service-bus-python-how-to-use-queues.md)、[JavaScript](service-bus-nodejs-how-to-use-queues.md)、[PHP](service-bus-php-how-to-use-queues.md)、および [Ruby](service-bus-ruby-how-to-use-queues.md) で記述されたクライアントを使用して、メッセージを送受信します。 
 
 ### <a name="receive-modes"></a>受信モード
 Service Bus がメッセージを受信する 2 つの異なるモードを指定できます。**ReceiveAndDelete** または **PeekLock** です。 [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) モードでは、Service Bus はコンシューマーからの要求を受信すると、メッセージを読み取り中としてマークしてコンシューマー アプリケーションに返します。 このモードは最もシンプルなモデルです。 これは障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このシナリオを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus がメッセージを読み取り中としてマークすると、アプリケーションは再起動時にメッセージの消費を開始します。 クラッシュ前に読み取られたメッセージは見逃してしまいます。
@@ -46,7 +46,7 @@ Service Bus がメッセージを受信する 2 つの異なるモードを指�
 キューのメッセージ送信機能はそのままトピックに相当し、メッセージ受信機能はサブスクリプションに相当します。 特に、この機能は、サブスクリプションでは、競合コンシューマー、一時的な切り離し、負荷平滑化、負荷分散など、キューに関してこのセクションで既に説明したのと同じパターンがサポートされることを意味します。
 
 ### <a name="create-topics-and-subscriptions"></a>トピックとサブスクリプションを作成する
-トピックの作成は、前のセクションで説明したキューの作成と似ています。 トピックとサブスクリプションは、[Azure portal](service-bus-quickstart-topics-subscriptions-portal.md)、[PowerShell](service-bus-quickstart-powershell.md)、[CLI](service-bus-tutorial-topics-subscriptions-cli.md)、または [Resource Manager テンプレート](service-bus-resource-manager-namespace-topic.md)を使用して作成できます。 次に、[C#](service-bus-dotnet-how-to-use-topics-subscriptions.md)、[Java](service-bus-java-how-to-use-topics-subscriptions.md)、[Python](service-bus-python-how-to-use-topics-subscriptions.md)、[JavaScript](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)、[PHP](service-bus-php-how-to-use-topics-subscriptions.md)、および [Ruby](service-bus-ruby-how-to-use-topics-subscriptions.md) で記述されたクライアントを使用して、メッセージをトピックに送信し、メッセージをサブスクリプションから受信します。 
+トピックの作成は、前のセクションで説明したキューの作成と似ています。 トピックとサブスクリプションは、[Azure portal](service-bus-quickstart-topics-subscriptions-portal.md)、[PowerShell](service-bus-quickstart-powershell.md)、[CLI](service-bus-tutorial-topics-subscriptions-cli.md)、または [Resource Manager テンプレート](service-bus-resource-manager-namespace-topic.md)を使用して作成できます。 次に、[C#](service-bus-dotnet-how-to-use-topics-subscriptions.md)、[Java](service-bus-java-how-to-use-topics-subscriptions.md)、[Python](service-bus-python-how-to-use-topics-subscriptions.md)、[JavaScript](service-bus-nodejs-how-to-use-topics-subscriptions.md)、[PHP](service-bus-php-how-to-use-topics-subscriptions.md)、および [Ruby](service-bus-ruby-how-to-use-topics-subscriptions.md) で記述されたクライアントを使用して、メッセージをトピックに送信し、メッセージをサブスクリプションから受信します。 
 
 ### <a name="rules-and-actions"></a>ルールとアクション
 多くのシナリオでは、特性のあるメッセージは、異なる方法で処理する必要があります。 この処理を実現するために、目的のプロパティを持つメッセージを検索し、該当するプロパティに特定の変更を行うようにサブスクリプションを構成できます。 Service Bus のサブスクリプションには、トピックに送信されたすべてのメッセージが表示されますが、仮想サブスクリプション キューにコピーできるのは、これらのメッセージの一部のみです。 このフィルター処理を行うには、サブスクリプション フィルターを使用します。 このような変更は、"**フィルター アクション**" と呼ばれます。 サブスクリプションの作成時に、メッセージのプロパティを操作するフィルター式を指定できます。 プロパティには、システム プロパティ (**Label** など) とカスタム アプリケーション プロパティ (**StoreName** など) の両方を指定できます。この場合、SQL フィルター式は省略可能です。 SQL フィルター式を指定しない場合は、サブスクリプションで定義されている任意のフィルター アクションが、そのサブスクリプションのすべてのメッセージに対して実行されます。

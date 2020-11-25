@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: a50f85e76f16f1e5ba8823adb1ea1aa02157fcee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e58137dd680ff9a2be2bd657f0969304b526873f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88032562"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913115"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Azure Data Box を使用してオンプレミスの HDFS ストアから Azure Storage に移行する
 
@@ -37,9 +37,9 @@ Data Box デバイスを使用することにより、Hadoop クラスターの�
 
 * [Azure Data Box デバイス](https://azure.microsoft.com/services/storage/databox/)。
 
-  * [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) または [Data Box Heavy を注文します](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered)。 
+  * [Data Box](../../databox/data-box-deploy-ordered.md) または [Data Box Heavy を注文します](../../databox/data-box-heavy-deploy-ordered.md)。 
 
-  * オンプレミス ネットワークに [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) または [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) をケーブル接続します。
+  * オンプレミス ネットワークに [Data Box](../../databox/data-box-deploy-set-up.md) または [Data Box Heavy](../../databox/data-box-heavy-deploy-set-up.md) をケーブル接続します。
 
 準備ができている場合、始めましょう。
 
@@ -59,7 +59,7 @@ Data Box デバイスを使用することにより、Hadoop クラスターの�
 
 2. [ストレージ アカウントへのアクセスとデータのアップロード] ダイアログで **[Blob service エンドポイント]** と **[ストレージ アカウント キー]** をコピーします。 Blob service エンドポイントから、`https://` と末尾のスラッシュを省略します。
 
-    ここでは、エンドポイントは `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/` になります。 使用する URI のホスト部分は `mystorageaccount.blob.mydataboxno.microsoftdatabox.com` です。 たとえば、[HTTP 経由の REST への接続](/azure/databox/data-box-deploy-copy-data-via-rest)の方法を参照してください。 
+    ここでは、エンドポイントは `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/` になります。 使用する URI のホスト部分は `mystorageaccount.blob.mydataboxno.microsoftdatabox.com` です。 たとえば、[HTTP 経由の REST への接続](../../databox/data-box-deploy-copy-data-via-rest.md)の方法を参照してください。 
 
      ![[ストレージ アカウントへのアクセスとデータのアップロード] ダイアログ](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
@@ -161,7 +161,7 @@ Data Box デバイスを使用することにより、Hadoop クラスターの�
 
 これらの手順に従って、Data Box デバイスを準備し、Microsoft に送付します。
 
-1. まず [Data Box または Data Box Heavy 上で発送準備を行います](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest)。
+1. まず [Data Box または Data Box Heavy 上で発送準備を行います](../../databox/data-box-deploy-copy-data-via-rest.md)。
 
 2. デバイスの準備が完了した後は、BOM ファイルをダウンロードします。 後からこれらの BOM またはマニフェスト ファイルを使用して、データが Azure にアップロードされたことを確認します。
 
@@ -169,9 +169,9 @@ Data Box デバイスを使用することにより、Hadoop クラスターの�
 
 4. UPS で集荷のスケジュールを設定します。
 
-    * Data Box デバイスの場合は、[Data Box の送付](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)に関するページを参照してください。
+    * Data Box デバイスの場合は、[Data Box の送付](../../databox/data-box-deploy-picked-up.md)に関するページを参照してください。
 
-    * Data Box Heavy デバイスの場合は、[Data Box Heavy の送付](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)に関するページを参照してください。
+    * Data Box Heavy デバイスの場合は、[Data Box Heavy の送付](../../databox/data-box-heavy-deploy-picked-up.md)に関するページを参照してください。
 
 5. Microsoft がデバイスを受け取ると、データ センター ネットワークに接続され、デバイスを注文したときに指定したストレージ アカウントにデータがアップロードされます。 すべてのデータが Azure にアップロードされたことを BOM ファイルに対して確認します。 
 
@@ -184,11 +184,11 @@ Azure Storage アカウントに既にデータがあります。 次に、フ�
 
 ### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Azure Data Lake Storage Gen2 アカウントのサービス プリンシパルを作成します。
 
-「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
+「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../../active-directory/develop/howto-create-service-principal-portal.md)」のガイダンスに従って、サービス プリンシパルを作成します。
 
-* 記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)」セクションの手順を実行するときに、必ず**ストレージ BLOB データ共同作成者**ロールをサービス プリンシパルに割り当ててください。
+* 記事の「[アプリケーションをロールに割り当てる](../../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)」セクションの手順を実行するときに、必ず **ストレージ BLOB データ共同作成者** ロールをサービス プリンシパルに割り当ててください。
 
-* 記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を実行するときは、アプリケーション ID、クライアント シークレット値をテキスト ファイルに保存します。 これらはすぐに必要になります。
+* 記事の「[サインインするための値を取得する](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)」セクションの手順を実行するときは、アプリケーション ID、クライアント シークレット値をテキスト ファイルに保存します。 これらはすぐに必要になります。
 
 ### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>それらのアクセス許可を使用してコピーされたファイルの一覧を生成する
 

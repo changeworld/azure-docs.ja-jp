@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
-ms.openlocfilehash: ffdf31d375d41d77b8b06112c83c1f3a0e1e15e5
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 7bbdf7961a934245b71829b7b50fc62c5b069d6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358883"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913285"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Python を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
 
@@ -26,7 +26,7 @@ ms.locfileid: "93358883"
 
 > [!div class="checklist"]
 > * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-> * 階層型名前空間 (HNS) が有効になっているストレージ アカウント。 作成するには、[こちら](data-lake-storage-quickstart-create-account.md)の手順に従います。
+> * 階層型名前空間 (HNS) が有効になっているストレージ アカウント。 作成するには、[こちら](../common/storage-account-create.md)の手順に従います。
 
 ## <a name="set-up-your-project"></a>プロジェクトの設定
 
@@ -167,7 +167,7 @@ def delete_directory():
 
 ## <a name="upload-a-file-to-a-directory"></a>ファイルをディレクトリにアップロードする 
 
-まず、 **DataLakeFileClient** クラスのインスタンスを作成して、ターゲット ディレクトリにファイル参照を作成します。 **DataLakeFileClient.append_data** メソッドを呼び出して、ファイルをアップロードします。 **DataLakeFileClient.flush_data** メソッドを呼び出して、アップロードの完了を確認してください。
+まず、**DataLakeFileClient** クラスのインスタンスを作成して、ターゲット ディレクトリにファイル参照を作成します。 **DataLakeFileClient.append_data** メソッドを呼び出して、ファイルをアップロードします。 **DataLakeFileClient.flush_data** メソッドを呼び出して、アップロードの完了を確認してください。
 
 この例では、`my-directory` という名前のディレクトリにテキスト ファイルをアップロードします。   
 
@@ -197,7 +197,7 @@ def upload_file_to_directory():
 
 ## <a name="upload-a-large-file-to-a-directory"></a>大きなファイルをディレクトリにアップロードする
 
-**DataLakeFileClient.upload_data** メソッドを使用して大きなファイルをアップロードします。 **DataLakeFileClient.append_data** メソッドを複数回呼び出す必要はありません。
+**DataLakeFileClient.upload_data** メソッドを使用して大きなファイルをアップロードします。**DataLakeFileClient.append_data** メソッドを複数回呼び出す必要はありません。
 
 ```python
 def upload_file_to_directory_bulk():
@@ -271,14 +271,14 @@ def list_directory_contents():
 ディレクトリとファイルのアクセス許可を取得、設定、更新できます。
 
 > [!NOTE]
-> Azure Active Directory (Azure AD) を使用してアクセスを認可している場合は、セキュリティ プリンシパルに [Storage BLOB データ所有者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)が割り当てられていることを確認してください。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)」を参照してください。
+> Azure Active Directory (Azure AD) を使用してアクセスを認可している場合は、セキュリティ プリンシパルに [Storage BLOB データ所有者ロール](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)が割り当てられていることを確認してください。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](./data-lake-storage-access-control.md)」を参照してください。
 
 ### <a name="manage-directory-acls"></a>ディレクトリ ACL を管理する
 
-**DataLakeDirectoryClient.get_access_control** メソッドを呼び出してディレクトリのアクセス制御リスト (ACL) を取得し、 **DataLakeDirectoryClient.set_access_control** メソッドを呼び出して ACL を設定します。
+**DataLakeDirectoryClient.get_access_control** メソッドを呼び出してディレクトリのアクセス制御リスト (ACL) を取得し、**DataLakeDirectoryClient.set_access_control** メソッドを呼び出して ACL を設定します。
 
 > [!NOTE]
-> アプリケーションが Azure Active Directory (Azure AD) を使用してアクセスを承認する場合は、アプリケーションがアクセスを承認するために使用するセキュリティ プリンシパルが、[ストレージ BLOB データ所有者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)に割り当てられていることを確認します。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)」を参照してください。
+> アプリケーションが Azure Active Directory (Azure AD) を使用してアクセスを承認する場合は、アプリケーションがアクセスを承認するために使用するセキュリティ プリンシパルが、[ストレージ BLOB データ所有者ロール](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)に割り当てられていることを確認します。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](./data-lake-storage-access-control.md)」を参照してください。
 
 この例では、`my-directory` という名前のディレクトリの ACL を取得して設定します。 `rwxr-xrw-` 文字列により、所有ユーザーには読み取り、書き込み、および実行のアクセス許可が、所有グループには読み取りと実行のアクセス許可のみが、他のすべてのユーザーに読み取りと書き込みのアクセス許可が付与されます。
 
@@ -305,14 +305,14 @@ def manage_directory_permissions():
      print(e) 
 ```
 
-また、コンテナーのルート ディレクトリの ACL を取得して設定することもできます。 ルート ディレクトリを取得するには、 **FileSystemClient._get_root_directory_client** メソッドを呼び出します。
+また、コンテナーのルート ディレクトリの ACL を取得して設定することもできます。 ルート ディレクトリを取得するには、**FileSystemClient._get_root_directory_client** メソッドを呼び出します。
 
 ### <a name="manage-file-permissions"></a>ファイルのアクセス許可を管理する
 
-**DataLakeFileClient.get_access_control** メソッドを呼び出してファイルのアクセス制御リスト (ACL) を取得し、 **DataLakeFileClient.set_access_control** メソッドを呼び出して ACL を設定します。
+**DataLakeFileClient.get_access_control** メソッドを呼び出してファイルのアクセス制御リスト (ACL) を取得し、**DataLakeFileClient.set_access_control** メソッドを呼び出して ACL を設定します。
 
 > [!NOTE]
-> アプリケーションが Azure Active Directory (Azure AD) を使用してアクセスを承認する場合は、アプリケーションがアクセスを承認するために使用するセキュリティ プリンシパルが、[ストレージ BLOB データ所有者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)に割り当てられていることを確認します。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)」を参照してください。
+> アプリケーションが Azure Active Directory (Azure AD) を使用してアクセスを承認する場合は、アプリケーションがアクセスを承認するために使用するセキュリティ プリンシパルが、[ストレージ BLOB データ所有者ロール](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)に割り当てられていることを確認します。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](./data-lake-storage-access-control.md)」を参照してください。
 
 この例では、`my-file.txt` という名前のファイルの ACL を取得して設定します。 `rwxr-xrw-` 文字列により、所有ユーザーには読み取り、書き込み、および実行のアクセス許可が、所有グループには読み取りと実行のアクセス許可のみが、他のすべてのユーザーに読み取りと書き込みのアクセス許可が付与されます。
 

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: 3236e0a95c6a4b4f57ac38ed067011c3d6848b5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 176f12a0a06a5bcae601463e30189bc139d3531f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89670096"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543852"
 ---
 # <a name="move-resources-across-regions-in-powershell"></a>PowerShell でリソースをリージョン間で移動する
 
@@ -25,7 +25,7 @@ Azure Resource Mover で PowerShell を使用して Azure リソースを別の�
 
 ## <a name="before-you-start"></a>開始する前に
 
-- お使いの Azure サブスクリプションが Resource Mover にアクセスできる必要があります。また、そのサブスクリプションに対する[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)または[ユーザー アクセス管理者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator)のアクセス許可を持っている必要があります。
+- お使いの Azure サブスクリプションが Resource Mover にアクセスできる必要があります。また、そのサブスクリプションに対する[所有者](../role-based-access-control/built-in-roles.md#owner)または[ユーザー アクセス管理者](../role-based-access-control/built-in-roles.md#user-access-administrator)のアクセス許可を持っている必要があります。
 - 変更やアップグレードは Resource Mover で追跡されないため、リソースの移動を始める前に、リソースに対して必要な変更を行ってください。
 - 現在、PowerShell を使用してリソースを移動するときにターゲット リージョンの設定を編集することはできません。 これらの設定は、ポータルで直接変更してください。
 - 別のリージョンに移動するための準備として、リソースを移動コレクションに追加すると、移動に関するメタデータが、その目的のために作成されたリソース グループ内に格納されます。 現在、このリソース グループが存在できるのは、米国東部 2 または北ヨーロッパ リージョンです。 Azure リソースは、これらのリージョンのいずれかに存在するメタデータを使用して、あらゆるパブリック リージョン間で移動できます。

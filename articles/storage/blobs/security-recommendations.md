@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 363281d064d4abe7475c034e6d6592d90af1f9b9
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 64799013d8d71e63300a8b48e5ca5b0d4d02c634
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927942"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95808032"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>BLOB ストレージのセキュリティに関する推奨事項
 
 この記事には、BLOB ストレージのセキュリティに関する推奨事項が含まれています。 これらの推奨事項を実装することにより、共有責任モデルに記載されたセキュリティに関する義務を果たすのに役立ちます。 サービス プロバイダーとしての責任を果たすための Microsoft の取り組みについて詳しくは、「[クラウド コンピューティングについての共有責任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225366/1/Shared%20Responsibility%20for%20Cloud%20Computing-2019-10-25.pdf)」を参照してください。
 
-この記事に記載されているいくつかの推奨事項は、Azure Security Center によって自動的に監視できます。 Azure Security Center は、Azure のリソースを保護するための防御の最前線です。 Azure Security Center については、「[Azure Security Center とは](../../security-center/security-center-intro.md)」を参照してください。
+この記事に記載されているいくつかの推奨事項は、Azure Security Center によって自動的に監視できます。 Azure Security Center は、Azure のリソースを保護するための防御の最前線です。 Azure Security Center については、「[Azure Security Center とは](../../security-center/security-center-introduction.md)」を参照してください。
 
 Azure Security Center では、Azure リソースのセキュリティの状態が定期的に分析されて、潜在的なセキュリティ脆弱性が特定されます。 その後、それらに対処する方法の推奨事項を提供します。 Azure Security Center の推奨事項の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項](../../security-center/security-center-recommendations.md)」を参照してください。
 
@@ -29,10 +29,10 @@ Azure Security Center では、Azure リソースのセキュリティの状態�
 
 | 推奨 | 説明 | Security Center |
 |-|----|--|
-| Azure Resource Manager デプロイ モデルを使用する | 重要なセキュリティ強化のために、Azure Resource Manager デプロイ モデルを使用して新しいストレージ アカウントを作成します。これには、Azure ロールベースの優れたアクセス制御 (Azure RBAC) と監査、Resource Manager ベースのデプロイとガバナンス、マネージド ID へのアクセス、シークレットのための Azure Key Vault へのアクセス、Azure Storage データおよびリソースにアクセスするための Azure AD に基づく認証と承認などが含まれます。 可能であれば、クラシック デプロイ モデルを使用する既存のストレージ アカウントを移行して、Azure Resource Manager を使用するようにします。 Azure Resource Manager の詳細については、「[Azure Resource Manager の概要](/azure/azure-resource-manager/resource-group-overview)」を参照してください。 | - |
-| すべてのストレージ アカウントに Azure Defender を有効にする | Azure Defender for Azure Storage では、ストレージ アカウントに対する通常と異なる潜在的に有害なアクセスの試行すなわちストレージ アカウントの悪用を検出するセキュリティ インテリジェンス レイヤーが追加されます。 アクティビティに異常が発生すると、Azure Security Center でセキュリティ アラートがトリガーされます。さらに、これらのアラートは、不審なアクティビティの詳細と、脅威の調査や修復の方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。 詳細については、[Azure Defender for Azure Storage の構成](../common/azure-defender-storage-configure.md)に関するページを参照してください。 | [はい](../../security-center/security-center-sql-service-recommendations.md) |
-| BLOB データの論理的な削除を有効にする | 論理的な削除を有効にすると、BLOB データが削除された後でも復旧することができます。 論理的な削除の詳細については、「[Azure Storage Blob の論理的な削除](storage-blob-soft-delete.md)」を参照してください。 | - |
-| ストレージ アカウントをロックして誤削除を防止する | 管理者は、サブスクリプション、リソース グループ、またはリソースをロックし、組織の他のユーザーが誤って重要なリソースを削除または変更することを防止しなければならない場合があります。「[リソースのロックによる予期せぬ変更の防止](/azure/azure-resource-manager/management/lock-resources)」を参照してください。
+| Azure Resource Manager デプロイ モデルを使用する | 重要なセキュリティ強化のために、Azure Resource Manager デプロイ モデルを使用して新しいストレージ アカウントを作成します。これには、Azure ロールベースの優れたアクセス制御 (Azure RBAC) と監査、Resource Manager ベースのデプロイとガバナンス、マネージド ID へのアクセス、シークレットのための Azure Key Vault へのアクセス、Azure Storage データおよびリソースにアクセスするための Azure AD に基づく認証と承認などが含まれます。 可能であれば、クラシック デプロイ モデルを使用する既存のストレージ アカウントを移行して、Azure Resource Manager を使用するようにします。 Azure Resource Manager の詳細については、「[Azure Resource Manager の概要](../../azure-resource-manager/management/overview.md)」を参照してください。 | - |
+| すべてのストレージ アカウントに Azure Defender を有効にする | Azure Defender for Azure Storage では、ストレージ アカウントに対する通常と異なる潜在的に有害なアクセスの試行すなわちストレージ アカウントの悪用を検出するセキュリティ インテリジェンス レイヤーが追加されます。 アクティビティに異常が発生すると、Azure Security Center でセキュリティ アラートがトリガーされます。さらに、これらのアラートは、不審なアクティビティの詳細と、脅威の調査や修復の方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。 詳細については、[Azure Defender for Azure Storage の構成](../common/azure-defender-storage-configure.md)に関するページを参照してください。 | [はい](../../security-center/security-center-remediate-recommendations.md) |
+| BLOB データの論理的な削除を有効にする | 論理的な削除を有効にすると、BLOB データが削除された後でも復旧することができます。 論理的な削除の詳細については、「[Azure Storage Blob の論理的な削除](./soft-delete-blob-overview.md)」を参照してください。 | - |
+| ストレージ アカウントをロックして誤削除を防止する | 管理者は、サブスクリプション、リソース グループ、またはリソースをロックし、組織の他のユーザーが誤って重要なリソースを削除または変更することを防止しなければならない場合があります。「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/management/lock-resources.md)」を参照してください。
 | ビジネスに不可欠なデータを不変 BLOB に保存する | BLOB データを WORM (Write Once, Read Many) 状態で保存するように、訴訟ホールドと時間ベースの保持ポリシーを構成します。 保持期間中は、不変の状態で保存された BLOB を読み取ることはできますが、変更や削除を行うことはできません。 詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](storage-blob-immutable-storage.md)」を参照してください。 | - |
 | Shared Access Signature (SAS) トークンを HTTPS 接続のみに制限する | クライアントが SAS トークンを使用して BLOB データにアクセスするときに HTTPS を要求することで、盗聴のリスクを最小限に抑えることができます。 詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../common/storage-sas-overview.md)」を参照してください。 | - |
 
@@ -56,12 +56,12 @@ Azure Security Center では、Azure リソースのセキュリティの状態�
 | 推奨 | 説明 | Security Center |
 |-|----|--|
 | ストレージ アカウントに必要な最小バージョンのトランスポート層セキュリティ (TLS) を構成します。  | Azure Storage アカウントに対して TLS の最小バージョンを構成することによって、クライアントで、より安全なバージョンの TLS を使用してそのアカウントに対して要求を行うことを義務付けます。 詳細については、[ストレージ アカウントに必要な最小バージョンのトランスポート層セキュリティ (TLS) を構成する](../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)方法に関する記事を参照してください| - |
-| すべてのストレージ アカウントで **[安全な転送が必須]** オプションを有効にする | **[安全な転送が必須]** オプションを有効にすると、ストレージ アカウントに対して行われるすべての要求が、セキュリティで保護された接続を経由して実行される必要があります。 HTTP 経由で行われた要求はすべて失敗します。 詳細については、「[Azure Storage で安全な転送が必要](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。 | [はい](../../security-center/security-center-sql-service-recommendations.md) |
+| すべてのストレージ アカウントで **[安全な転送が必須]** オプションを有効にする | **[安全な転送が必須]** オプションを有効にすると、ストレージ アカウントに対して行われるすべての要求が、セキュリティで保護された接続を経由して実行される必要があります。 HTTP 経由で行われた要求はすべて失敗します。 詳細については、「[Azure Storage で安全な転送が必要](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。 | [はい](../../security-center/security-center-remediate-recommendations.md) |
 | ファイアウォール規則を有効にする | ストレージ アカウントへのアクセスを、Azure 仮想ネットワーク (VNet) 内の指定した IP アドレス、IP 範囲、またはサブネットのリストから発信された要求に制限するように、ファイアウォール規則を構成します。 ファイアウォール規則の構成の詳細については、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。 | - |
 | 信頼された Microsoft サービスによるストレージ アカウントへのアクセスを許可する | ストレージ アカウントのファイアウォール規則を有効にすると、Azure 仮想ネットワーク (VNet) 内で動作しているサービス、または許可されたパブリック IP アドレスから送信された要求でない限り、データに対して受信した要求は既定でブロックされます。 ブロックされる要求には、他の Azure サービスからの要求、Azure portal からの要求、ログおよびメトリック サービスからの要求などが含まれます。 例外を追加して、信頼された Microsoft サービスがストレージ アカウントにアクセスできるようにすることによって、他の Azure サービスからの要求を許可できます。 信頼された Microsoft サービスの例外の追加の詳細については、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。| - |
-| プライベート エンドポイントを使用する | プライベート エンドポイントによって、Azure 仮想ネットワーク (VNet) からストレージ アカウントにプライベート IP アドレスが割り当てられます。 これにより、VNet とストレージ アカウントの間のすべてのトラフィックがプライベート リンクで保護されます。 プライベート エンドポイントの詳細については、「[Azure プライベート エンドポイントを使用して非公開でストレージ アカウントに接続する](../../private-link/create-private-endpoint-storage-portal.md)」を参照してください。 | - |
+| プライベート エンドポイントを使用する | プライベート エンドポイントによって、Azure 仮想ネットワーク (VNet) からストレージ アカウントにプライベート IP アドレスが割り当てられます。 これにより、VNet とストレージ アカウントの間のすべてのトラフィックがプライベート リンクで保護されます。 プライベート エンドポイントの詳細については、「[Azure プライベート エンドポイントを使用して非公開でストレージ アカウントに接続する](../../private-link/tutorial-private-endpoint-storage-portal.md)」を参照してください。 | - |
 | VNet サービス タグを使用する | サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。 Azure Storage でサポートされるサービス タグの詳細については、[Azure サービス タグの概要](../../virtual-network/service-tags-overview.md)に関する記事を参照してください。 サービス タグを使用してアウトバウンド ネットワーク ルールを作成する方法を示すチュートリアルについては、[PaaS リソースへのアクセスの制限](../../virtual-network/tutorial-restrict-network-access-to-resources.md)に関するページを参照してください。 | - |
-| 特定のネットワークへのネットワーク アクセスを制限する | アクセスを必要とするクライアントをホストしているネットワークへのネットワーク アクセスを制限すると、リソースがネットワーク攻撃にさらされる危険性が軽減されます。 | [はい](../../security-center/security-center-sql-service-recommendations.md) |
+| 特定のネットワークへのネットワーク アクセスを制限する | アクセスを必要とするクライアントをホストしているネットワークへのネットワーク アクセスを制限すると、リソースがネットワーク攻撃にさらされる危険性が軽減されます。 | [はい](../../security-center/security-center-remediate-recommendations.md) |
 | ネットワーク ルーティング設定の構成 | Azure ストレージ アカウントに対してネットワークのルーティング優先設定を構成し、Microsoft グローバル ネットワークまたはインターネット ルーティングを使用して、インターネット経由でクライアントからアカウントにネットワーク トラフィックをルーティングする方法を指定することができます。「[Azure Storage に対してネットワークのルーティング優先設定を構成する](../common/network-routing-preference.md)」を参照してください。 | - |
 
 ## <a name="loggingmonitoring"></a>ログ記録または監視
@@ -69,9 +69,9 @@ Azure Security Center では、Azure リソースのセキュリティの状態�
 | 推奨 | 説明 | Security Center |
 |-|----|--|
 | 要求がどのように承認されたかを追跡する | Azure Storage のログ記録を有効にして、Azure Storage に対する各要求がどのように承認されたかを追跡します。 このログでは、OAuth 2.0 トークン、共有キー、または共有アクセス署名 (SAS) を使用して、要求が匿名で行われたかどうかが示されます。 詳細については、[Azure Monitor を使用した Azure Blob storage の監視](monitor-blob-storage.md)、または[クラシックな監視を使用した Azure Storage Analytics のログ記録](../common/storage-analytics-logging.md)に関する各記事を参照してください。 | - |
-| Azure Monitor でアラートを設定する | ログ アラートにより、ユーザーは Log Analytics クエリを使用して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。「[Azure Monitor でのログ アラート](/azure/azure-monitor/platform/alerts-unified-log)」を参照してください。 | - |
+| Azure Monitor でアラートを設定する | ログ アラートにより、ユーザーは Log Analytics クエリを使用して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。「[Azure Monitor でのログ アラート](../../azure-monitor/platform/alerts-unified-log.md)」を参照してください。 | - |
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure のセキュリティのドキュメント](https://docs.microsoft.com//azure/security/)
-- [安全な開発に関するドキュメント](https://docs.microsoft.com/azure/security/develop/)。
+- [Azure のセキュリティのドキュメント](../../security/index.yml)
+- [安全な開発に関するドキュメント](../../security/develop/index.yml)。

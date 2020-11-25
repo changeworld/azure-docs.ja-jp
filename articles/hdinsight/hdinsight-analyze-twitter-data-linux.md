@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: fe511ed2d6b724c1215f9986c9d6c50aae076935
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533293"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95971911"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>HDInsight で Apache Hive と Apache Hadoop を使用して Twitter データを分析する
 
@@ -32,7 +32,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
 2. **[Create New App]** を選択します。
 
-3. **名前** 、 **説明** 、 **Web サイト** を入力します。 **[Website]** フィールドの URL を構成することができます。 次のテーブルは使用する値のサンプルを示しています。
+3. **名前**、**説明**、**Web サイト** を入力します。 **[Website]** フィールドの URL を構成することができます。 次のテーブルは使用する値のサンプルを示しています。
 
    | フィールド | 値 |
    |--- |--- |
@@ -50,11 +50,11 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
 8. ページの右上隅にある **[Test OAuth]** を選択します。
 
-9. **コンシューマー キー** 、 **コンシューマー シークレット** 、 **アクセス トークン** 、 **アクセス トークン シークレット** を書き留めます。
+9. **コンシューマー キー**、**コンシューマー シークレット**、**アクセス トークン**、**アクセス トークン シークレット** を書き留めます。
 
 ### <a name="download-tweets"></a>ツイートをダウンロードする
 
-次の Python コードは、Twitter から 10,000 個のツイートをダウンロードし、 **tweets.txt** いう名前のファイルに保存します。
+次の Python コードは、Twitter から 10,000 個のツイートをダウンロードし、**tweets.txt** いう名前のファイルに保存します。
 
 > [!NOTE]  
 > Python が既にインストールされているので、次の手順は HDInsight クラスターで実行します。
@@ -78,7 +78,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
    pip install tweepy progressbar pyOpenSSL requests[security]
    ```
 
-1. 次のコマンドを使用して、 **gettweets.py** という名前のファイルを作成します。
+1. 次のコマンドを使用して、**gettweets.py** という名前のファイルを作成します。
 
    ```bash
    nano gettweets.py
@@ -143,7 +143,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
     > [!TIP]  
     > よく使われているキーワードを追跡するには、最後の行のトピック フィルターを調整してください。 スクリプトの実行時によく使用されているキーワードを使用すると、高速にデータをキャプチャできます。
 
-1. **Ctrl + X** キーを押した後、 **Y** キーを押してファイルを保存します。
+1. **Ctrl + X** キーを押した後、**Y** キーを押してファイルを保存します。
 
 1. 次のコマンドを使用してファイルを実行し、ツイートをダウンロードします。
 
@@ -283,7 +283,7 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
    WHERE (length(json_response) > 500);
    ```
 
-1. **Ctrl + X** キーを押した後、 **Y** キーを押してファイルを保存します。
+1. **Ctrl + X** キーを押した後、**Y** キーを押してファイルを保存します。
 
 1. 次のコマンドを使用して、ファイルに含まれている HiveQL を実行します。
 
@@ -291,7 +291,7 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
    beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i twitter.hql
    ```
 
-    このコマンドは、 **twitter.hql** ファイルを実行します。 クエリが完了すると、`jdbc:hive2//localhost:10001/>` プロンプトが表示されます。
+    このコマンドは、**twitter.hql** ファイルを実行します。 クエリが完了すると、`jdbc:hive2//localhost:10001/>` プロンプトが表示されます。
 
 1. Beeline プロンプトで次のクエリを使用して、データがインポートされたことを確認します。
 
@@ -306,7 +306,7 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
     このクエリでは、メッセージ テキストに **Azure** という単語が含まれた最大 10 個のツイートが返されます。
 
     > [!NOTE]  
-    > `gettweets.py` スクリプトのフィルターを変更した場合は、 **Azure** を、使用したフィルターのいずれかで置き換えてください。
+    > `gettweets.py` スクリプトのフィルターを変更した場合は、**Azure** を、使用したフィルターのいずれかで置き換えてください。
 
 ## <a name="next-steps"></a>次のステップ
 

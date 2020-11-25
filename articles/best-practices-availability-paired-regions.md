@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: barbkess
 ms.custom: references_regions
-ms.openlocfilehash: b720d9dd824018d885ccc9860ee9fd8a90a46051
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d42eabe3afeb738b0cbb011881678839fe0ba2d7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84194329"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95539058"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>ビジネス継続性とディザスター リカバリー (BCDR):Azure のペアになっているリージョン
 
@@ -43,7 +43,7 @@ Azure 地域とは、少なくとも 1 つの Azure リージョンを含む、�
 
 ## <a name="must-i-use-azure-regional-pairs"></a>Azure リージョン ペアは必ず使用する必要があるのですか?
 
-いいえ。 お客様は Azure サービスを活用して、Azure のリージョン ペアに依存することなく、回復力のあるサービスを設計できます。  ただし、リージョン ペアの間で事業継続とディザスター リカバリー (BCDR) を構成して、[分離](./security/fundamentals/isolation-choices.md)を活用し、[可用性](./availability-zones/az-overview.md)を向上させることをお勧めします。 複数のアクティブなリージョンをサポートするアプリケーションでは、可能な場合はリージョン ペアの両方のリージョンを使用することをお勧めします。 これにより、アプリケーションの最適な可用性が保証され、災害発生時の復旧時間が最小になります。 可能な限り、[最大の回復性](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)と[ディザスター リカバリー](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)の容易さを実現するようにアプリケーションを設計してください。
+いいえ。 お客様は Azure サービスを活用して、Azure のリージョン ペアに依存することなく、回復力のあるサービスを設計できます。  ただし、リージョン ペアの間で事業継続とディザスター リカバリー (BCDR) を構成して、[分離](./security/fundamentals/isolation-choices.md)を活用し、[可用性](./availability-zones/az-overview.md)を向上させることをお勧めします。 複数のアクティブなリージョンをサポートするアプリケーションでは、可能な場合はリージョン ペアの両方のリージョンを使用することをお勧めします。 これにより、アプリケーションの最適な可用性が保証され、災害発生時の復旧時間が最小になります。 可能な限り、[最大の回復性](/azure/architecture/framework/resiliency/overview)と[ディザスター リカバリー](/azure/architecture/framework/resiliency/backup-and-recovery)の容易さを実現するようにアプリケーションを設計してください。
 
 ## <a name="azure-regional-pairs"></a>Azure リージョン ペア
 
@@ -94,9 +94,9 @@ Azure 地域とは、少なくとも 1 つの Azure リージョンを含む、�
 
 1. **Azure Compute (IaaS)** – 災害発生中に別のリージョンでリソースを確実に使用できるように、追加のコンピューティング リソースを事前にプロビジョニングする必要があります。 詳細については、「[Azure の回復性技術ガイダンス](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md)」をご覧ください。 
 
-2. **Azure Storage** - マネージド ディスクを使用している場合は、Azure Backup を使用した [リージョン間のバックアップ](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines)、および Azure Site Recovery を使用したリージョン間での [VM のレプリケーション](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)について確認してください。 ストレージ アカウントを使用している場合は、Azure Storage アカウントの作成時に、geo 冗長ストレージ (GRS) が既定で構成されます。 GRS を使用すると、データはプライマリ リージョン内で 3 回、ペア リージョンで 3 回、自動的にレプリケートされます。 詳細については、「 [Azure Storage 冗長オプション](storage/common/storage-redundancy.md)」をご覧ください。
+2. **Azure Storage** - マネージド ディスクを使用している場合は、Azure Backup を使用した [リージョン間のバックアップ](/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines)、および Azure Site Recovery を使用したリージョン間での [VM のレプリケーション](./site-recovery/azure-to-azure-tutorial-enable-replication.md)について確認してください。 ストレージ アカウントを使用している場合は、Azure Storage アカウントの作成時に、geo 冗長ストレージ (GRS) が既定で構成されます。 GRS を使用すると、データはプライマリ リージョン内で 3 回、ペア リージョンで 3 回、自動的にレプリケートされます。 詳細については、「 [Azure Storage 冗長オプション](storage/common/storage-redundancy.md)」をご覧ください。
 
-3. **Azure SQL Database** – Azure SQL Database geo レプリケーションを使用すると、世界中の任意のリージョンへのトランザクションの非同期レプリケーションを構成できます。ただし、ほとんどのディザスター リカバリー シナリオでは、これらのリソースをペア リージョン内にデプロイすることをお勧めします。 詳細については、「[Azure SQL Database の geo レプリケーション](sql-database/sql-database-geo-replication-overview.md)」を参照してください。
+3. **Azure SQL Database** – Azure SQL Database geo レプリケーションを使用すると、世界中の任意のリージョンへのトランザクションの非同期レプリケーションを構成できます。ただし、ほとんどのディザスター リカバリー シナリオでは、これらのリソースをペア リージョン内にデプロイすることをお勧めします。 詳細については、「[Azure SQL Database の geo レプリケーション](./azure-sql/database/auto-failover-group-overview.md)」を参照してください。
 
 4. **Azure Resource Manager** - Resource Manager では本質的に、リージョン全体のコンポーネントが論理的に切り離されています。 つまり、1 つのリージョンで論理的な障害が発生しても、他のリージョンが影響を受ける可能性はそれほど高くありません。
 

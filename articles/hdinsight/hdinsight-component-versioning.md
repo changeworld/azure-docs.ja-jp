@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
-ms.openlocfilehash: 282f13c89c527b096573b67b5d539de821e89032
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 82297b81ebe99301574e99ef438cc81c711dbeff
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900799"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95533686"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Azure HDInsight で使用可能な Apache コンポーネントおよびバージョン
 
@@ -32,7 +32,7 @@ HDInsight クラスター バージョンに対応するコンポーネントの
 |------------------------|---------------|-----------------------------|
 | Apache Hadoop と YARN | 3.1.1         | 2.7.3                       |
 | Apache Tez             | 0.9.1         | 0.7.0                       |
-| Apache Pig             | 0.16.0        | 0.16.0                      |
+| Apache Pig             | 0.16.1        | 0.16.0                      |
 | Apache Hive            | 3.1.0         | 1.2.1 (ESP Interactive Query では 2.1.0) |
 | Apache Tez Hive2       | -             | 0.8.4                       |
 | Apache Ranger          | 1.1.0         | 0.7.0                       |
@@ -119,12 +119,12 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight クラスター バージョンのサービス レベル アグリーメント
 
-サービス レベル アグリーメントは、" _サポート ウィンドウ_ " として定義されます。 サポート ウィンドウとは、HDInsight のバージョンが Microsoft カスタマー サービスおよびサポートによってサポートされる期間です。 バージョンの " _サポート有効期限_ " が過ぎている場合、HDInsight クラスターはサポート ウィンドウ外となります。 HDInsight バージョン X のサポート有効期限は (新しい X+1 バージョンが利用可能になった後)、次の日付のうち、遅い方です。
+サービス レベル アグリーメントは、"_サポート ウィンドウ_" として定義されます。 サポート ウィンドウとは、HDInsight のバージョンが Microsoft カスタマー サービスおよびサポートによってサポートされる期間です。 バージョンの "_サポート有効期限_" が過ぎている場合、HDInsight クラスターはサポート ウィンドウ外となります。 HDInsight バージョン X のサポート有効期限は (新しい X+1 バージョンが利用可能になった後)、次の日付のうち、遅い方です。
 
 - **数式 1:** HDInsight クラスター バージョン X がリリースされた日に 180 日を加える。
 - **数式 2:** HDInsight クラスター バージョン X+1 が Azure portal で使用可能になった日付に 90 日を加える。
 
-" _提供終了日_ " とは、その日を過ぎると HDInsight でクラスター バージョンを作成できなくなる日付です。 2017 年 7 月 31 日以降は、提供終了日より後に HDInsight クラスターのサイズを変更できません。
+"_提供終了日_" とは、その日を過ぎると HDInsight でクラスター バージョンを作成できなくなる日付です。 2017 年 7 月 31 日以降は、提供終了日より後に HDInsight クラスターのサイズを変更できません。
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>クラスターの既定のノード構成と仮想マシン サイズ
 
