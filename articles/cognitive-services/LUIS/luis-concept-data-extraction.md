@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 9bcc3d08fa29109cf4178f8eb0c3efe661323ef0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6f01354bb5aa2b78d3c9962bac49be39dd2c81f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541783"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025995"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>意図とエンティティが含まれる発話テキストからデータを抽出する
 LUIS を使用すると、ユーザーの自然言語での発話から情報を取得できます。 この情報は、アクションを実行するために、プログラム、アプリケーション、またはチャットボットで使用できるような方法で抽出されます。 以降のセクションで、JSON の例を使用して、意図とエンティティから返されるデータについて説明します。
@@ -30,10 +30,10 @@ LUIS により、公開されている[エンドポイント](luis-glossary.md#e
 
 `appID` は、LUIS アプリの **[設定]** ページで確認できます。また、LUIS アプリの編集時に URL の一部 (`/apps/` の後) として確認できます。 `subscription-key` は、アプリの照会に使用するエンドポイント キーです。 LUIS を学習している間は無料のオーサリング/スターター キーを使用できますが、エンドポイント キーを、[想定される LUIS の使用法](luis-limits.md#key-limits)をサポートするキーに変更することが重要です。 `timezoneOffset` の単位は分です。
 
-**HTTPS 応答**には、ステージングまたは運用エンドポイントの現在公開されているモデルに基づいて LUIS によって判別できるすべての意図およびエンティティの情報が含まれています。 エンドポイント URL は [LUIS](luis-reference-regions.md) Web サイトの **[Manage]\(管理\)** セクションの **[Keys and endpoints]\(キーとエンドポイント\)** ページにあります。
+**HTTPS 応答** には、ステージングまたは運用エンドポイントの現在公開されているモデルに基づいて LUIS によって判別できるすべての意図およびエンティティの情報が含まれています。 エンドポイント URL は [LUIS](luis-reference-regions.md) Web サイトの **[Manage]\(管理\)** セクションの **[Keys and endpoints]\(キーとエンドポイント\)** ページにあります。
 
 ## <a name="data-from-intents"></a>意図からのデータ
-プライマリ データは、最上位スコアの**意図の名前**です。 エンドポイントの応答は次のとおりです。
+プライマリ データは、最上位スコアの **意図の名前** です。 エンドポイントの応答は次のとおりです。
 
 #### <a name="v2-prediction-endpoint-response"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
@@ -205,7 +205,7 @@ querystring パラメーター `show-all-intents=true` を設定します。 エ
 
 発話内の 1 つの単語またはフレーズは、複数のエンティティと一致する可能性があります。 その場合、一致するエンティティごとにそのスコアが返されます。
 
-すべてのエンティティが、エンドポイントから応答の**エンティティ**配列で返されます
+すべてのエンティティが、エンドポイントから応答の **エンティティ** 配列で返されます
 
 ## <a name="tokenized-entity-returned"></a>返されるトークン化されたエンティティ
 
@@ -232,9 +232,9 @@ LUIS での [トークンのサポート](luis-language-support.md#tokenization)
 
 ### <a name="names-of-people"></a>人の名前
 
-人の名前は、言語およびカルチャに応じて、幾分ある種の形式を持つことがあります。 事前構築済みの **[personName](luis-reference-prebuilt-person.md)** エンティティ、または氏名の[ロール](luis-concept-roles.md)が含まれる **[簡易エンティティ](luis-concept-entity-types.md#simple-entity)** のどちらかを使用します。
+人の名前は、言語およびカルチャに応じて、幾分ある種の形式を持つことがあります。 事前構築済みの **[personName](luis-reference-prebuilt-person.md)** エンティティ、または氏名のロールが含まれる **[簡易エンティティ](luis-concept-entity-types.md)** のどちらかを使用します。
 
-簡易エンティティを使用する場合は、必ず発話のさまざまな部分に姓と名を使用している例を提供してください。また、None 意図を含むあらゆる意図にわたるさまざまな長さの発話で、姓と名を使用している例を提供してください。 エンドポイントの発話を定期的に[確認](luis-how-to-review-endoint-utt.md)して、適切に予測されていないすべての名前にラベルを付けます。
+簡易エンティティを使用する場合は、必ず発話のさまざまな部分に姓と名を使用している例を提供してください。また、None 意図を含むあらゆる意図にわたるさまざまな長さの発話で、姓と名を使用している例を提供してください。 エンドポイントの発話を定期的に[確認](./luis-how-to-review-endpoint-utterances.md)して、適切に予測されていないすべての名前にラベルを付けます。
 
 ### <a name="names-of-places"></a>場所の名前
 
@@ -242,17 +242,17 @@ LUIS での [トークンのサポート](luis-language-support.md#tokenization)
 
 ### <a name="new-and-emerging-names"></a>新しい名前
 
-一部のアプリでは、製品や企業などの新しい名前を検索できる必要があります。 これらの種類の名前は、最も困難な種類のデータ抽出です。 **[簡易エンティティ](luis-concept-entity-types.md#simple-entity)** から始めて、[フレーズ リスト](luis-concept-feature.md)を追加します。 エンドポイントの発話を定期的に[確認](luis-how-to-review-endoint-utt.md)して、適切に予測されていないすべての名前にラベルを付けます。
+一部のアプリでは、製品や企業などの新しい名前を検索できる必要があります。 これらの種類の名前は、最も困難な種類のデータ抽出です。 **[簡易エンティティ](luis-concept-entity-types.md#simple-entity)** から始めて、[フレーズ リスト](luis-concept-feature.md)を追加します。 エンドポイントの発話を定期的に[確認](./luis-how-to-review-endpoint-utterances.md)して、適切に予測されていないすべての名前にラベルを付けます。
 
 ## <a name="patternany-entity-data"></a>Pattern.any エンティティ データ
 
 [Pattern.any](reference-entity-pattern-any.md) は、エンティティの開始位置と終了位置を示すためにパターンのテンプレート発話でのみ使用される、可変長プレースホルダーです。 パターンが適用されるためには、パターンで使用されるエンティティが必要です。
 
 ## <a name="sentiment-analysis"></a>センチメント分析
-[公開](luis-how-to-publish-app.md#sentiment-analysis)中にセンチメント分析が構成されている場合、LUIS の json 応答にはセンチメント分析が含まれます。 センチメント分析の詳細については、[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) のドキュメントを参照してください。
+[公開](luis-how-to-publish-app.md#sentiment-analysis)中にセンチメント分析が構成されている場合、LUIS の json 応答にはセンチメント分析が含まれます。 センチメント分析の詳細については、[Text Analytics](../text-analytics/index.yml) のドキュメントを参照してください。
 
 ## <a name="key-phrase-extraction-entity-data"></a>キー フレーズ抽出エンティティ データ
-[キー フレーズ抽出エンティティ](luis-reference-prebuilt-keyphrase.md)では、[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) によって提供される、発話内のキー フレーズを返します。
+[キー フレーズ抽出エンティティ](luis-reference-prebuilt-keyphrase.md)では、[Text Analytics](../text-analytics/index.yml) によって提供される、発話内のキー フレーズを返します。
 
 ## <a name="data-matching-multiple-entities"></a>複数のエンティティに一致するデータ
 

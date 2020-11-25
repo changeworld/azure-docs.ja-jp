@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 2b0bb997ecea55d25748152bab7bb6963d67657f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8c7e21b0784aacc85bd02e3c1702e1a710e76ab
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357643"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021883"
 ---
 # <a name="what-is-direct-line-speech"></a>Direct Line Speech とは
 
@@ -37,9 +37,9 @@ Direct Line Speech を使用して簡単な音声アシスタントを作成す�
 
 | クイック スタート | プラットフォーム | API リファレンス |
 |------------|----------|---------------|
-| C#、UWP | Windows | [[参照]](https://aka.ms/csspeech/csharpref) |
-| Java | Windows、macOS、Linux | [[参照]](https://aka.ms/csspeech/javaref) |
-| Java | Android | [[参照]](https://aka.ms/csspeech/javaref) |
+| C#、UWP | Windows | [[参照]](/dotnet/api/microsoft.cognitiveservices.speech) |
+| Java | Windows、macOS、Linux | [[参照]](/java/api/com.microsoft.cognitiveservices.speech) |
+| Java | Android | [[参照]](/java/api/com.microsoft.cognitiveservices.speech) |
 
 ## <a name="sample-code"></a>サンプル コード
 
@@ -50,21 +50,21 @@ Direct Line Speech を使用して簡単な音声アシスタントを作成す�
 
 ## <a name="customization"></a>カスタマイズ
 
-音声サービスを使用して構築された音声アシスタントでは、[音声変換](speech-to-text.md)、[テキスト読み上げ](text-to-speech.md)、および[カスタム キーワードの選択](speech-devices-sdk-create-kws.md)に利用できるさまざまなカスタム オプションを使用できます。
+音声サービスを使用して構築された音声アシスタントでは、[音声変換](speech-to-text.md)、[テキスト読み上げ](text-to-speech.md)、および[カスタム キーワードの選択](./custom-keyword-basics.md)に利用できるさまざまなカスタム オプションを使用できます。
 
 > [!NOTE]
-> カスタマイズのオプションは、言語やロケールによって異なります ([サポートされる言語](supported-languages.md)に関するページを参照してください)。
+> カスタマイズのオプションは、言語やロケールによって異なります ([サポートされる言語](./language-support.md)に関するページを参照してください)。
 
-Direct Line Speech と音声アシスタントのための関連する機能は、[仮想アシスタント ソリューションとエンタープライズ テンプレート](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)に最適な補足機能です。 Direct Line Speech は任意の互換性のあるボットで機能しますが、これらのリソースは、高品質の会話エクスペリエンスだけでなく、すぐに開始できる一般的なサポート スキルおよびモデルに再利用できるベースラインとして役立ちます。
+Direct Line Speech と音声アシスタントのための関連する機能は、[仮想アシスタント ソリューションとエンタープライズ テンプレート](/azure/bot-service/bot-builder-enterprise-template-overview)に最適な補足機能です。 Direct Line Speech は任意の互換性のあるボットで機能しますが、これらのリソースは、高品質の会話エクスペリエンスだけでなく、すぐに開始できる一般的なサポート スキルおよびモデルに再利用できるベースラインとして役立ちます。
 
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
-* [Speech SDK](speech-sdk-reference.md)
-* [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+* [Speech SDK](./speech-sdk.md)
+* [Azure Bot Service](/azure/bot-service/?view=azure-bot-service-4.0)
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Speech サービスのサブスクリプション キーを無料で取得する](overview.md#try-the-speech-service-for-free)
 * [Speech SDK を取得する](speech-sdk.md)
-* [基本ボットの作成とデプロイ](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+* [基本ボットの作成とデプロイ](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 * [仮想アシスタント ソリューションとエンタープライズ テンプレートの入手](https://github.com/Microsoft/AI)

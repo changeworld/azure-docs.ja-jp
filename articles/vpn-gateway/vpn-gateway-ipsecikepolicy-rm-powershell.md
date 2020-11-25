@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 6039eeed2e1bcb348920be986e72089164c614ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96931d2dd94a8a31021ebe62caaefc54f643b007
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89392652"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649264"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN または VNet-to-VNet 接続の IPsec/IKE ポリシーを構成する
 
@@ -34,9 +34,8 @@ IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさま�
 
 > [!IMPORTANT]
 > 1. IPsec/IKE ポリシーは、次のゲートウェイ SKU でのみ機能する点に注意してください。
->    * ***VpnGw1、VpnGw2、VpnGw3*** (ルート ベース)
->    * ***Standard*** および ***HighPerformance*** (ルート ベース)
-> 2. ある特定の接続に対して指定できるポリシーの組み合わせは ***1 つ***だけです。
+>    * ***VpnGw1、VpnGw2、VpnGw3** _ (ルートベース) _ ***Standard** _ および _*_HighPerformance_*_ (ルートベース)
+> 2. _*_1_*_ つのポリシーの組み合わせだけが、ある特定の接続に対して指定できます。
 > 3. IKE (メイン モード) と IPsec (クイック モード) の両方について、すべてのアルゴリズムとパラメーターを指定する必要があります。 ポリシーを部分的に指定することはできません。
 > 4. オンプレミスの VPN デバイスでポリシーがサポートされることを、VPN デバイス ベンダーの仕様で確認してください。 ポリシーに対応していない場合、S2S または VNet-to-VNet 接続を確立することはできません。
 
@@ -56,7 +55,7 @@ IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさま�
 
 以下の表は、サポートされている暗号アルゴリズムと、ユーザーが構成できるキーの強度を一覧にしたものです。
 
-| **IPsec/IKEv2**  | **[オプション]**    |
+| _ *IPsec/IKEv2**  | **[オプション]**    |
 | ---  | --- 
 | IKEv2 暗号化 | AES256、AES192、AES128、DES3、DES  
 | IKEv2 整合性  | SHA384、SHA256、SHA1、MD5  |
@@ -120,7 +119,7 @@ S2S VPN 接続を作成するための詳細な手順については、[S2S VPN 
 * Azure サブスクリプションを持っていることを確認します。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 * Azure Resource Manager PowerShell コマンドレットをインストールします。 PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell の概要](/powershell/azure/)」を参照してください。
 
-### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a><a name="createvnet1"></a>手順 1 - 仮想ネットワーク、VPN ゲートウェイ、およびローカル ネットワーク ゲートウェイを作成する
+### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a><a name="createvnet1"></a>手順1 - 仮想ネットワーク、VPN ゲートウェイ、およびローカル ネットワーク ゲートウェイを作成する
 
 #### <a name="1-declare-your-variables"></a>1.変数を宣言する
 
@@ -153,7 +152,7 @@ $LNGIP6        = "131.107.72.22"
 
 #### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2.サブスクリプションに接続して新しいリソース グループを作成する
 
-リソース マネージャー コマンドレットを使用するように PowerShell モードを切り替えてください。 詳細については、「 [リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
+リソース マネージャー コマンドレットを使用するように PowerShell モードを切り替えてください。 詳細については、「 [リソース マネージャーでの Windows PowerShell の使用](../azure-resource-manager/management/manage-resources-powershell.md)」を参照してください。
 
 PowerShell コンソールを開き、アカウントに接続します。 接続するには、次のサンプルを参照してください。
 
@@ -216,7 +215,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG
 > 接続に IPsec/IKE ポリシーを指定すると、Azure VPN ゲートウェイは、その特定の接続に対して指定された暗号アルゴリズムとキーの強度を使用する IPsec/IKE 提案のみを送受信します。 接続するオンプレミスの VPN デバイスが、ポリシーの完全な組み合わせを使用するか受け入れることを確認する必要があります。それ以外の場合、S2S VPN トンネルは確立されません。
 
 
-## <a name="part-4---create-a-new-vnet-to-vnet-connection-with-ipsecike-policy"></a><a name ="vnet2vnet"></a>パート 4 - IPsec/IKE ポリシーを使用して新しい VNet-to-VNet 接続を作成する
+## <a name="part-4---create-a-new-vnet-to-vnet-connection-with-ipsecike-policy"></a><a name ="vnet2vnet"></a>パート 4: IPsec/IKE ポリシーを使用して新しい VNet-to-VNet 接続を作成する
 
 IPsec/IKE ポリシーを使用した VNet-to-VNet 接続の作成手順は、S2S VPN 接続の作成手順に似ています。 以下のサンプル スクリプトは、次の図に示す接続を作成します。
 
@@ -277,7 +276,7 @@ S2S VPN 接続と同じように、IPsec/IKE ポリシーを作成し、新し�
 
 次のサンプル スクリプトは、次のアルゴリズムとパラメーターを使用して別の IPsec/IKE ポリシーを作成します。
 * IKEv2:AES128、SHA1、DHGroup14
-* IPsec:GCMAES128、GCMAES128、PFS14、SA の有効期間 14,400 秒および 102,400,000 KB
+* IPsec: GCMAES128、GCMAES128、PFS14、SA の有効期間 14,400 秒および 102,400,000 KB
 
 ```powershell
 $ipsecpolicy2 = New-AzIpsecPolicy -IkeEncryption AES128 -IkeIntegrity SHA1 -DhGroup DHGroup14 -IpsecEncryption GCMAES128 -IpsecIntegrity GCMAES128 -PfsGroup PFS14 -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000

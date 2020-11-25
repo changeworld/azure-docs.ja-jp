@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: fcfefb2b6cd5c23e9b77d7d27413d1ff6d775bfe
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7b691dc408c65b2152c60276dbea826042ecb0d8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89321621"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95095884"
 ---
-[リファレンスのドキュメント](https://docs.microsoft.com/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices) | [パッケージ (NPM)](https://www.npmjs.com/package/@azure/arm-cognitiveservices) | [サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
+[リファレンスのドキュメント](/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices) | [パッケージ (NPM)](https://www.npmjs.com/package/@azure/arm-cognitiveservices) | [サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -118,7 +118,7 @@ node index.js
 
 ## <a name="see-also"></a>関連項目
 
-* [Azure Management SDK のリファレンス ドキュメント](https://docs.microsoft.com/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest)
-* [Azure Cognitive Services とは](../../Welcome.md)
+* [Azure Management SDK のリファレンス ドキュメント](/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest)
+* [Azure Cognitive Services とは](../../what-are-cognitive-services.md)
 * [Azure Cognitive Services に対する要求の認証](../../authentication.md)
 * [Azure portal を使用して新しいリソースを作成する](../../cognitive-services-apis-create-account.md)

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/03/2020
 ms.author: aahi
-ms.openlocfilehash: 3f2611c9535b9721cccadf35e56bdd21a3020257
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 2c2ebe9b419100163ae55c1be85dd1464904e841
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677433"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94978633"
 ---
 ### <a name="container-repositories-and-images"></a>コンテナーのリポジトリとイメージ
 
@@ -89,9 +89,8 @@ Microsoft コンテナー レジストリ (MCR) からは、Cognitive Services �
 |--|--|--|
 | [Computer Vision](../../Computer-vision/computer-vision-how-to-install-containers.md) | Read v2.0 | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
 | [Computer Vision](../../Computer-vision/computer-vision-how-to-install-containers.md) | v3.1 の読み取り | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
-| [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container) | 空間分析 | `mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis` |
+| [Computer Vision](../../computer-vision/spatial-analysis-container.md) | 空間分析 | `mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis` |
 | [Speech Service API](../../speech-service/speech-container-howto.md?tab=ctts) | カスタム テキスト読み上げ | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech` |
 | [Speech Service API](../../speech-service/speech-container-howto.md?tab=lid) | 言語検出 | `mcr.microsoft.com/azure-cognitive-services/speechservices/language-detection` |
 | [Speech Service API](../../speech-service/speech-container-howto.md?tab=ntts) | Neural Text-to-speech | `mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech` |
 | [Text Analytics for Health](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=health) | Text Analytics for Health | `containerpreview.azurecr.io/microsoft/cognitive-services-healthcare` |
-

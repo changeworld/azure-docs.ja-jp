@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 06d5196e612bcf20e11f17634b32db028cd5bc88
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 3033be3a793c318135f8150b86114b6fee55fac7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378093"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655200"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>自分のサービス向けに Spring Cloud Config Server インスタンスを設定する
 
@@ -133,13 +133,25 @@ SSH を使用するプライベート Git リポジトリを設定するため�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-1. Azure Spring Cloud の **[概要]** ページに移動します。
+2. Azure Spring Cloud の **[概要]** ページに移動します。
 
-1. 構成するサービスを選択します。
+3. 左側のナビゲーション ウィンドウで **[Config Server]** を選択します。
 
-1. サービス ページの左ペインで、 **[設定]** の **[Config Server]** タブを選択します。
+4. **[既定のリポジトリ]** セクションで **[URI]** を "https://github.com/Azure-Samples/piggymetrics-config" に設定します。
 
-![[Config Server] ウィンドウ](media/spring-cloud-tutorial-config-server/portal-config-server.png)
+5. **[検証]** をクリックします。
+
+    ![Config server への移動](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+
+6. 検証が完了したら、 **[適用]** をクリックして変更を保存します。
+
+    ![構成サーバーの検証](media/spring-cloud-quickstart-launch-app-portal/validate-complete.png)
+
+7. 構成の更新には数分かかることがあります。
+ 
+    ![構成サーバーの更新](media/spring-cloud-quickstart-launch-app-portal/updating-config.png) 
+
+8. 構成が完了すると、通知が届きます。
 
 ### <a name="enter-repository-information-directly-to-the-azure-portal"></a>リポジトリの情報を Azure portal に直接入力する
 

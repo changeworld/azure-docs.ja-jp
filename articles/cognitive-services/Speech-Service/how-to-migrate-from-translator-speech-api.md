@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: d6b1085d51d7345b233087986127cbc97c0597e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fb03721baa80e77a5fd387600a272e6b1cfc7d3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362063"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013641"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Translator Speech API から Speech Service に移行する
 
@@ -37,7 +37,7 @@ ms.locfileid: "91362063"
 | 1 つの要求での複数言語への翻訳 | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | SDK が使用可能                                    | :heavy_minus_sign:                                              | :heavy_check_mark:                 | 使用できる SDK については､[Speech Service のドキュメント](index.yml)をご覧ください。                                                                                                                                                    |
 | WebSocket 接続                            | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| 言語 API                                     | :heavy_check_mark:                                              | :heavy_minus_sign:                 | Speech サービスは、[Translator の言語リファレンス](../translator-speech/languages-reference.md)記事に記載された同じ言語範囲をサポートしています。 |
+| 言語 API                                     | :heavy_check_mark:                                              | :heavy_minus_sign:                 | Speech サービスは、[Translator の言語リファレンス]()記事に記載された同じ言語範囲をサポートしています。 |
 | 不適切な表現のフィルターとマーカー                       | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 入力として .WAV/PCM                                 | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 入力としてその他のファイルの種類                         | :heavy_minus_sign:                                              | :heavy_minus_sign:                 |                                                                                                                                                                                                                                                                                    |
@@ -62,9 +62,9 @@ Translator Speech API を使用しているアプリケーションを開発中�
 ## <a name="next-steps"></a>次のステップ
 
 * [Speech Service を無料で試す](overview.md#try-the-speech-service-for-free)
-* [クイック スタート: UWP アプリで Speech SDK を使用して音声を認識する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
+* [クイック スタート: UWP アプリで Speech SDK を使用して音声を認識する](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=uwp)
 
 ## <a name="see-also"></a>関連項目
 
 * [Speech Service とは](overview.md)
-* [Speech Service と Speech SDK のドキュメント](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg)
+* [Speech Service と Speech SDK のドキュメント](./speech-devices-sdk-quickstart.md?pivots=platform-android)

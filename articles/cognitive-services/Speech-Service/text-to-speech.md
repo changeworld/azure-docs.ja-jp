@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: テキスト読み上げ
-ms.openlocfilehash: 5d60279a2e3cb6aa7226f518783d53a1a38ddaa8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af0c9338cb9661402c3a76bab55f34b01304c7b6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357456"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024519"
 ---
 # <a name="what-is-text-to-speech"></a>テキスト読み上げの概要
 
@@ -31,7 +31,7 @@ ms.locfileid: "91357456"
 
 ## <a name="core-features"></a>コア機能
 
-* 音声合成 - [Speech SDK](quickstarts/text-to-speech-audio-file.md) または [REST API](rest-text-to-speech.md) を使用して、標準音声、ニューラル音声、またはカスタム音声を使ってテキストを音声に変換します。
+* 音声合成 - [Speech SDK](./get-started-text-to-speech.md) または [REST API](rest-text-to-speech.md) を使用して、標準音声、ニューラル音声、またはカスタム音声を使ってテキストを音声に変換します。
 
 * 長い音声の非同期合成 - [Long Audio API](long-audio-api.md) を使用して、10 分以上のテキスト読み上げファイル (オーディオ ブックや講義など) を非同期に合成します。 Speech SDK または Speech-to-Text REST API を使用して実行される合成とは異なり、応答はリアルタイムで返されません。 要求が非同期に送信され、応答がポーリングされること、および合成音声がサービスから利用可能になったときにダウンロードされることを想定しています。 カスタム ニューラル音声のみがサポートされています。
 

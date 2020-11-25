@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: a5760db2d6e453d631680d6154e6d9a03ce55cd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59cf250a9db5a1f6759495c1b5a3c48cb07cde15
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541341"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018788"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 の予測エンドポイントの変更
 
@@ -60,7 +60,7 @@ Bot Framework、Bing Spell Check V7 を使用する場合、または LUIS ア�
 
 ### <a name="bing-spell-check"></a>Bing Spell Check
 
-この API は V3 予測エンドポイントではサポートされていません。スペル修正には引き続き V2 API 予測エンドポイントを使用してください。 V3 API を使用していてスペル修正が必要な場合は、LUIS API にテキストを送信する前に、クライアント アプリケーションで [Bing Spell Check](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/overview) API を呼び出し、テキストを正しいスペルに変更します。
+この API は V3 予測エンドポイントではサポートされていません。スペル修正には引き続き V2 API 予測エンドポイントを使用してください。 V3 API を使用していてスペル修正が必要な場合は、LUIS API にテキストを送信する前に、クライアント アプリケーションで [Bing Spell Check](../bing-spell-check/overview.md) API を呼び出し、テキストを正しいスペルに変更します。
 
 ## <a name="bot-framework-and-azure-bot-service-client-applications"></a>Bot Framework と Azure Bot Service クライアント アプリケーション
 
@@ -154,7 +154,7 @@ const score = intents[topIntentName];
 応答の JSON スキーマの変更により、次のことが可能になります。
 
 * 元の発話 `query` と返される予測 `prediction` との違いが明確になります。
-* 予測されたデータへのプログラムによるアクセスが容易になります。 V2 で配列全体を列挙していたのとは異なり、意図とエンティティの両方の値に**名前指定**によってアクセスできます。 エンティティ ロールの予測では、ロール名が返されます (アプリ全体で一意であるため)。
+* 予測されたデータへのプログラムによるアクセスが容易になります。 V2 で配列全体を列挙していたのとは異なり、意図とエンティティの両方の値に **名前指定** によってアクセスできます。 エンティティ ロールの予測では、ロール名が返されます (アプリ全体で一意であるため)。
 * データ型は (特定できる場合は) 維持されます。 数値が文字列として返されることがなくなります。
 * 最も優先度の高い予測情報と追加のメタデータが区別され、`$instance` オブジェクトに返されます。
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 95cb4aa5827190abf125669f2423c808cf8c92a5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9c4410cb2b9550bc111da96204ada15313867fb1
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368935"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95238090"
 ---
 # <a name="customize-your-text-translations"></a>テキスト変換をカスタマイズする
 
@@ -38,28 +38,6 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 適切な種類と量のトレーニング データがあれば、Custom Translator を使用することで、5 から 10 の間あるいはそれ以上の BLEU ポイントの翻訳品質を期待できることも珍しくありません。
 
 使用可能なデータに基づくカスタマイズのさまざまなレベルについて詳しくは、「[Custom Translator User Guide](./custom-translator/overview.md)」(Custom Translator ユーザー ガイド) をご覧ください。
-
-
-## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
-
-> [!NOTE]
-> 従来の Microsoft Translator Hub は、2019 年 5 月 17 日をもって廃止されます。 [重要な移行情報と日付を確認してください](https://www.microsoft.com/translator/business/hub/)。  
-
-## <a name="custom-translator-versus-hub"></a>Custom Translator と Hub
-
-| 特徴量 | ハブ | Custom Translator |
-| ------- | :-: | :---------------: |
-|カスタマイズ機能の状態    | 一般公開    | 一般公開 |
-| Text API バージョン    | V2 のみ    | V3 のみ |
-| SMT のカスタマイズ    | はい    | いいえ |
-| NMT のカスタマイズ    | いいえ    | はい |
-| 新しい統合 Speech Services のカスタマイズ    | いいえ    | ○ |
-| [トレースなし](https://www.aka.ms/notrace) | はい    | [はい] |
-
-## <a name="collaborative-translations-framework"></a>コラボレーション翻訳フレームワーク
-
-> [!NOTE]
-> 2018 年 2 月 1 日の時点で、AddTranslation() と AddTranslationArray() は Translator v2.0 では使用できなくなっています。 これらのメソッドは失敗し、何も書き込まれません。 Translator v3.0 では、これらのメソッドはサポートされません。
 
 ## <a name="next-steps"></a>次のステップ
 

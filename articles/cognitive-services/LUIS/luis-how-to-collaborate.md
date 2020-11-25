@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
-ms.openlocfilehash: 30b4256b37dc3329801a730192e25f7c24a45594
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60b100e1100b8a4925a967f8b7265f1612e5beb7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540909"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018907"
 ---
 # <a name="add-contributors-to-your-app"></a>アプリに共同作成者を追加する
 
@@ -24,7 +24,7 @@ ms.locfileid: "91540909"
 
 ## <a name="add-contributor-to-azure-authoring-resource"></a>Azure オーサリング リソースに共同作成者を追加する
 
-次の手順は、**移行済み**のすべてのユーザーが Azure オーサリング リソースを使用できるようにする場合を対象としています。
+次の手順は、**移行済み** のすべてのユーザーが Azure オーサリング リソースを使用できるようにする場合を対象としています。
 
 LUIS オーサリング エクスペリエンスが LUIS ポータルの **[管理] -> [Azure リソース]** ページのオーサリング リソースに関連付けられている場合は、移行済みです。
 
@@ -43,7 +43,7 @@ LUIS オーサリング エクスペリエンスが LUIS ポータルの **[管�
 
 ## <a name="add-collaborator-to-luis-app"></a>LUIS アプリにコラボレーターを追加する
 
-次の手順は、**移行されていない**すべてのユーザーが Azure オーサリング リソースを使用できるようにする場合を対象としています。
+次の手順は、**移行されていない** すべてのユーザーが Azure オーサリング リソースを使用できるようにする場合を対象としています。
 
 LUIS オーサリング エクスペリエンスが LUIS ポータルの **[管理] -> [Azure リソース]** ページのオーサリング リソースに関連付けられていない場合は、移行されていません。
 
@@ -66,7 +66,7 @@ LUIS アプリに共同作成者/コラボレーターを追加する場合は�
 
 ### <a name="azure-active-directory-resources"></a>Azure Active Directory リソース
 
-組織で [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD) を使用する場合、Language Understanding (LUIS) には、ユーザーが LUIS を使用するときのユーザー アクセスに関する情報に対するアクセス許可が必要です。 LUIS に必要なリソースはごくわずかです。
+組織で [Azure Active Directory](../../active-directory/index.yml) (Azure AD) を使用する場合、Language Understanding (LUIS) には、ユーザーが LUIS を使用するときのユーザー アクセスに関する情報に対するアクセス許可が必要です。 LUIS に必要なリソースはごくわずかです。
 
 以下に関する管理者の同意など、管理者の同意があるか、管理者の同意が不要のアカウントでサインアップしようとしたときに、詳細な説明が表示されます。
 
@@ -87,7 +87,7 @@ LUIS では、Azure Active Directory (Azure AD) の標準的な同意フロー�
 
 テナント管理者が、特定のユーザーのみに LUIS を使わせたい場合は、いくつかの可能性のあるソリューションがあります。
 * "管理者の同意" を付与します (Azure AD のすべてのユーザーに同意する) が、エンタープライズ アプリケーションのプロパティの下の [ユーザーの割り当てが必要ですか] を [はい] に設定し、最後に目的のユーザーのみをアプリケーションに割り当て/追加します。 この方法では、管理者はアプリに "管理者の同意" を与えますが、それにアクセスできるユーザーを制御できます。
-* 2 つ目の解決策は、[Azure AD の ID を使用して Microsoft Graph で管理 API にアクセス](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview)し、特定のユーザーそれぞれに同意することです。
+* 2 つ目の解決策は、[Azure AD の ID を使用して Microsoft Graph で管理 API にアクセス](/graph/azuread-identity-access-management-concept-overview)し、特定のユーザーそれぞれに同意することです。
 
 Azure Active Directory ユーザーと同意の詳細を確認します。
 * [ご利用のアプリを特定のユーザー セットに制限する](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)

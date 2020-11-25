@@ -1,20 +1,20 @@
 ---
 title: 粗い再局在化
 description: 粗い再局在化を使用して、近くにあるアンカーを見つける方法について説明します。
-author: bucurb
-manager: dacoghl
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: bobuc
-ms.date: 09/18/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 02f5c570b7400266ac648eaa257fb76d26819a40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a65b2ca4ba9f1912adeaf60df123bcd3c8833bd
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89003186"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95496904"
 ---
 # <a name="coarse-relocalization"></a>粗い再局在化
 
@@ -639,7 +639,7 @@ cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
 
 一般に、コンシューマー グレードの GPS デバイスはかなり不正確です。 [ZandenGen と Barbeau (2011)][6] による調査では、補助 GPS (A-GPS) を使用した携帯電話の精度の中央値が約 7 メートルであることが報告されています。これは無視するには大きすぎる値です。 これらの測定エラーを考慮するため、サービスではアンカーが GPS 空間での確率分布として扱われます。 そのため、アンカーは、実際の不明な GPS 位置を含む可能性が最も高い (つまり、95% の信頼度) 空間の領域になりました。
 
-GPS を使用してクエリを実行する場合も、同じ理由が適用されます。 デバイスは、実際の不明な GPS 位置を中心とする別の空間信頼領域として表されます。 近くのアンカーの検出は、次の図に示すように、デバイスの信頼領域に*十分近い*信頼領域のアンカーを単純に見つけることと解釈されます。
+GPS を使用してクエリを実行する場合も、同じ理由が適用されます。 デバイスは、実際の不明な GPS 位置を中心とする別の空間信頼領域として表されます。 近くのアンカーの検出は、次の図に示すように、デバイスの信頼領域に *十分近い* 信頼領域のアンカーを単純に見つけることと解釈されます。
 
 ![GPS を使用したアンカー候補の選択](media/coarse-reloc-gps-separation-distance.png)
 

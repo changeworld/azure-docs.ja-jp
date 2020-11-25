@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: v-erkel
-ms.openlocfilehash: 19950ca215abbac3a56bdb901448c9d92ad369be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 067b12d4dcfd5ba2b730204ef680b900d79f1b72
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613053"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648074"
 ---
 # <a name="manage-your-cache"></a>キャッシュを管理する
 
@@ -25,12 +25,12 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 
 ページの上部のボタンは、キャッシュを管理する助けになります。
 
-* **[開始]** と [ **[停止]** ](#stop-the-cache) - キャッシュ操作を再開または中断します
-* [ **[フラッシュ]** ](#flush-cached-data) - 変更されたデータをストレージ ターゲットに書き込みます
-* [ **[フラッシュ]** ](#upgrade-cache-software) - キャッシュ ソフトウェアを更新します
-* [ **[診断の収集]** ](#collect-diagnostics) - デバッグ情報をアップロードします
+* **[開始]** と [ **[停止]**](#stop-the-cache) - キャッシュ操作を再開または中断します
+* [ **[フラッシュ]**](#flush-cached-data) - 変更されたデータをストレージ ターゲットに書き込みます
+* [ **[フラッシュ]**](#upgrade-cache-software) - キャッシュ ソフトウェアを更新します
+* [ **[診断の収集]**](#collect-diagnostics) - デバッグ情報をアップロードします
 * **[最新の情報に更新]** - 概要ページを再読み込みします
-* [ **[削除]** ](#delete-the-cache) - キャッシュを完全に破棄します
+* [ **[削除]**](#delete-the-cache) - キャッシュを完全に破棄します
 
 これらのオプションの詳細については、以下をご覧ください。
 
@@ -58,7 +58,7 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
 [az hpc-cache stop](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-stop) コマンドを使用して、一時的にキャッシュを一時停止します。 このアクションが有効になるのは、キャッシュの状態が **[正常]** または **[低下]** の場合のみです。
 
@@ -113,7 +113,7 @@ $ az hpc-cache start --name doc-cache0629
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
 [az hpc-cache flush](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-flush) を使用して、すべての変更されたデータをキャッシュからストレージ ターゲットに書き込むよう強制します。
 
@@ -161,7 +161,7 @@ $
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
 Azure CLI では、キャッシュの状態レポートの最後に新しいソフトウェア情報が含まれています。 (確認するには、[az hpc-cache show](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-show) を使用します。)メッセージで "upgradeStatus" という文字列を探します。
 
@@ -225,7 +225,7 @@ Microsoft Service and Support に要請された場合は、このコントロ�
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
 キャッシュを完全に削除するには、Azure CLI コマンド [az hpc-cache delete](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-delete) を使用します。
 

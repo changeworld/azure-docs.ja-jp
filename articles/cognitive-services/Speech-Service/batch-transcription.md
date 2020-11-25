@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f89dd6b7926baf6c1c64cff81e8b613461a3e925
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: b9ed43019e7af0cb810c3e0fc849281a458a43e1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345501"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023635"
 ---
 # <a name="how-to-use-batch-transcription"></a>バッチ文字起こしの使用方法
 
@@ -46,7 +46,7 @@ Speech Service の他の機能と同様に、[使用開始ガイド](overview.md
 >[!NOTE]
 > バッチ文字起こしを使用するには、音声サービスの Standard サブスクリプション (S0) が必要です。 Free サブスクリプション キー (F0) は機能しません。 詳細については、[価格と制限](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)に関するページを参照してください。
 
-モデルをカスタマイズする予定がある場合は、[音響のカスタマイズ](how-to-customize-acoustic-models.md)と[言語のカスタマイズ](how-to-customize-language-model.md)の手順に従ってください。 作成されたモデルをバッチ文字起こしで使用するには、モデルの場所が必要です。 モデルの詳細 (`self` プロパティ) を調べると、モデルの場所を取得できます。 デプロイされたカスタム エンドポイントは、バッチ文字起こしサービスには " *必要ありません* "。
+モデルをカスタマイズする予定がある場合は、[音響のカスタマイズ](./how-to-custom-speech-train-model.md)と[言語のカスタマイズ](./how-to-custom-speech-train-model.md)の手順に従ってください。 作成されたモデルをバッチ文字起こしで使用するには、モデルの場所が必要です。 モデルの詳細 (`self` プロパティ) を調べると、モデルの場所を取得できます。 デプロイされたカスタム エンドポイントは、バッチ文字起こしサービスには "*必要ありません*"。
 
 >[!NOTE]
 > REST API の一部として、バッチ文字起こしには[クォータと制限](speech-services-quotas-and-limits.md#batch-transcription)のセットがあり、これらはレビューすることをお勧めします。 大量のオーディオ ファイルを効率的に文字起こしするためのバッチ文字起こし機能を最大限に活用するには、要求ごとに常に複数のファイルを送信するか、または文字起こしするオーディオ ファイルを含む Blob Storage コンテナーを指定することをお勧めします。 このサービスにより、ターンアラウンド時間を短縮しながらファイルの文字起こしが同時に行われます。 1 つの要求での複数ファイルの使用は非常に単純で簡単です。「[構成](#configuration)」セクションを参照してください。 
@@ -177,12 +177,12 @@ Speech Service の他の機能と同様に、[使用開始ガイド](overview.md
       `destinationContainerUrl`
    :::column-end:::
    :::column span="2":::
-      Azure の書き込み可能なコンテナーに対する[サービス アドホック SAS](../../storage/common/storage-sas-overview.md) のオプションの URL。 結果はこのコンテナーに格納されます。 保存されているアクセス ポリシーによる SAS は **サポートされていません** 。 指定しない場合、Microsoft では、Microsoft が管理するストレージ コンテナーに結果を格納します。 [文字起こしの削除](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)を呼び出して文字起こしを削除すると、結果データも削除されます。
+      Azure の書き込み可能なコンテナーに対する[サービス アドホック SAS](../../storage/common/storage-sas-overview.md) のオプションの URL。 結果はこのコンテナーに格納されます。 保存されているアクセス ポリシーによる SAS は **サポートされていません**。 指定しない場合、Microsoft では、Microsoft が管理するストレージ コンテナーに結果を格納します。 [文字起こしの削除](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)を呼び出して文字起こしを削除すると、結果データも削除されます。
 :::row-end:::
 
 ### <a name="storage"></a>ストレージ
 
-バッチ文字起こしでは、公開されているインターネット URI からオーディオを読み取ることができます、また、[Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) で SAS URI を使用してオーディオを読み取ったり、文字起こしを書き込んだりできます。
+バッチ文字起こしでは、公開されているインターネット URI からオーディオを読み取ることができます、また、[Azure Blob Storage](../../storage/blobs/storage-blobs-overview.md) で SAS URI を使用してオーディオを読み取ったり、文字起こしを書き込んだりできます。
 
 ## <a name="batch-transcription-result"></a>バッチ文字起こしの結果
 

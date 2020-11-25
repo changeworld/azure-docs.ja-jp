@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: b305be693f59b65a62570f656a0132f4f03cf099
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42a9caff0433808734ee853cbad90a2088bf4e1e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541800"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019247"
 ---
 # <a name="convert-data-format-of-utterances"></a>発話のデータ形式を変換する
 LUIS では、予測の前に、次のユーザーの発話の変換を提供します。
@@ -26,7 +26,7 @@ LUIS では、予測の前に、次のユーザーの発話の変換を提供し
 音声テキスト変換は、LUIS との統合として提供されます。
 
 ### <a name="intent-conversion-concepts"></a>意図変換の概念
-LUIS の音声テキスト変換を使用すると、音声の発話をエンドポイントに送信し、LUIS の予測応答を受け取ることができます。 このプロセスは、[音声](https://docs.microsoft.com/azure/cognitive-services/Speech)サービスと LUIS の統合です。 音声意図判定の詳細については、[チュートリアル](../speech-service/how-to-recognize-intents-from-speech-csharp.md)で確認してください。
+LUIS の音声テキスト変換を使用すると、音声の発話をエンドポイントに送信し、LUIS の予測応答を受け取ることができます。 このプロセスは、[音声](/azure/cognitive-services/Speech)サービスと LUIS の統合です。 音声意図判定の詳細については、[チュートリアル](../speech-service/how-to-recognize-intents-from-speech-csharp.md)で確認してください。
 
 ### <a name="key-requirements"></a>主な要件
 この統合のために **Bing Speech API** キーを作成する必要はありません。 この統合には、Azure portal で作成された **Language Understanding** キーが使用されます。 LUIS スターター キーは使用しないでください。
@@ -41,4 +41,3 @@ LUIS の音声テキスト変換を使用すると、音声の発話をエンド
 
 > [!div class="nextstepaction"]
 > [データの抽出](luis-concept-data-extraction.md)
-

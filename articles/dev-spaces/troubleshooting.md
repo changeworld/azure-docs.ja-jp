@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces を有効にして使用するときに発生する一般的な問題をトラブルシューティングおよび解決する方法について説明します
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 42551443fb5af1bd3f783c33f708b231eea68907
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a30ae2d78d682427cf53c8f98b0ca70b441d72e1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364169"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636811"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces のトラブルシューティング
 
@@ -26,7 +26,7 @@ Azure Dev Spaces の使用時に問題が発生した場合は、[Azure Dev Spac
 
 Visual Studio の場合、`MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` 環境変数を 1 に設定します。 環境変数を有効にするために Visual Studio を再起動してください。 有効になると、詳細なログが `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` ディレクトリに書き込まれます。
 
-CLI では、`--verbose` スイッチを使用してコマンド実行中に詳細な情報を出力できます。 `%TEMP%\Azure Dev Spaces`でより詳しいログを参照することもできます。 Mac では、ターミナル ウィンドウから `echo $TMPDIR` を実行することで、 *TEMP* ディレクトリを見つけることができます。 Linux コンピューターでは、通常、 *TEMP* ディレクトリは `/tmp` です。 また、[Azure CLI 構成ファイル](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)でログ記録が有効になっていることを確認します。
+CLI では、`--verbose` スイッチを使用してコマンド実行中に詳細な情報を出力できます。 `%TEMP%\Azure Dev Spaces`でより詳しいログを参照することもできます。 Mac では、ターミナル ウィンドウから `echo $TMPDIR` を実行することで、*TEMP* ディレクトリを見つけることができます。 Linux コンピューターでは、通常、*TEMP* ディレクトリは `/tmp` です。 また、[Azure CLI 構成ファイル](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)でログ記録が有効になっていることを確認します。
 
 Azure Dev Spaces は、単一のインスタンス (ポッド) のデバッグでもきわめて効果的に機能します。 `azds.yaml` ファイルには、Kubernetes がサービスに対して実行するポッドの数を示す設定である *replicaCount* が含まれています。 *replicaCount* を変更して特定のサービスに対して複数のポッドを実行するようにアプリを設定すると、デバッガは (アルファベット順にリストされている場合) 最初のポッドに接続されます。 元のポッドがリサイクルされた場合、デバッガは別のポッドに接続されます。これにより、予期しない動作が発生する可能性があります。
 
@@ -74,7 +74,7 @@ azds controller create --name my-controller --target-name MyAKS --resource-group
 
 ポッドをスケジュールする *準備完了* 状態のテイントされていないノードが見つからなかったため、Azure Dev Spaces で AKS クラスターにコントローラーを作成できませんでした。 Azure Dev Spaces では、容認を指定せずにポッドをスケジュールするための、少なくとも 1 つの *準備完了* 状態の Linux ノードが必要です。
 
-この問題を解決するには、少なくとも 1 つの Linux ノードで容認を指定せずに確実にポッドをスケジュールできるように、AKS クラスターで[テイント構成を更新](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations)します。 また、容認を指定せずポッドをスケジュールできる少なくとも 1 つの Linux ノードが、 *準備完了* 状態であることも確認します。 ノードが *準備完了* 状態に達するのに時間がかかっている場合は、ノードの再起動を試みることができます。
+この問題を解決するには、少なくとも 1 つの Linux ノードで容認を指定せずに確実にポッドをスケジュールできるように、AKS クラスターで[テイント構成を更新](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations)します。 また、容認を指定せずポッドをスケジュールできる少なくとも 1 つの Linux ノードが、*準備完了* 状態であることも確認します。 ノードが *準備完了* 状態に達するのに時間がかかっている場合は、ノードの再起動を試みることができます。
 
 ### <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>az aks use-dev-spaces の実行時のエラー "Azure Dev Spaces CLI not installed properly (Azure Dev Spaces CLI が正しくインストールされていません)"
 
@@ -224,7 +224,7 @@ Visual Studio で次の操作を行います。
 
 ### <a name="rerunning-a-service-after-controller-re-creation"></a>コントローラーの再作成後のサービスの再実行
 
-このクラスターに関連付けられた Azure Dev Spaces を削除してから再作成した後、サービスを再実行しようとすると、" *Service cannot be started (サービスを開始できません)* " エラーが発生します。 このような状況では、詳細出力に次のテキストが含まれます。
+このクラスターに関連付けられた Azure Dev Spaces を削除してから再作成した後、サービスを再実行しようとすると、"*Service cannot be started (サービスを開始できません)* " エラーが発生します。 このような状況では、詳細出力に次のテキストが含まれます。
 
 ```output
 Installing Helm chart...
@@ -240,7 +240,7 @@ Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already ex
 
 ### <a name="error-service-cannot-be-started-when-using-multi-stage-dockerfiles"></a>エラー "サービスを開始できません。" (マルチステージの Dockerfile の使用時)
 
-マルチステージの Dockerfile を使用すると、" *Service cannot be started (サービスを開始できません)* " エラーが発生します。 このような状況では、詳細出力に次のテキストが含まれます。
+マルチステージの Dockerfile を使用すると、"*Service cannot be started (サービスを開始できません)* " エラーが発生します。 このような状況では、詳細出力に次のテキストが含まれます。
 
 ```cmd
 $ azds up -v
@@ -261,24 +261,24 @@ Service cannot be started.
 
 [Azure Dev Spaces を使用して AKS クラスターを開発マシンに接続する](https://code.visualstudio.com/docs/containers/bridge-to-kubernetes)と、開発マシンと AKS クラスターの間でネットワーク トラフィックが転送されないという問題が発生する可能性があります。
 
-開発マシンを AKS クラスターに接続すると、Azure Dev Spaces は開発マシンの `hosts` ファイルを変更することによって、お使いの AKS クラスターと開発マシンの間でネットワーク トラフィックを転送します。 Azure Dev Spaces は、ホスト名として置き換える Kubernetes サービスのアドレスを使用して、`hosts` にエントリを作成します。 このエントリは、開発マシンと AKS クラスターの間でネットワーク トラフィックを転送するために、ポート フォワーディングと共に使用されます。 開発マシン上のサービスが、置き換える Kubernetes サービスのポートと競合する場合、Azure Dev Spaces は Kubernetes サービスのネットワーク トラフィックを転送できません。 たとえば、 *Windows BranchCache* サービスは通常 *0.0.0.0:80* にバインドされます。これにより、すべてのローカル IP でポート 80 の競合が発生します。
+開発マシンを AKS クラスターに接続すると、Azure Dev Spaces は開発マシンの `hosts` ファイルを変更することによって、お使いの AKS クラスターと開発マシンの間でネットワーク トラフィックを転送します。 Azure Dev Spaces は、ホスト名として置き換える Kubernetes サービスのアドレスを使用して、`hosts` にエントリを作成します。 このエントリは、開発マシンと AKS クラスターの間でネットワーク トラフィックを転送するために、ポート フォワーディングと共に使用されます。 開発マシン上のサービスが、置き換える Kubernetes サービスのポートと競合する場合、Azure Dev Spaces は Kubernetes サービスのネットワーク トラフィックを転送できません。 たとえば、*Windows BranchCache* サービスは通常 *0.0.0.0:80* にバインドされます。これにより、すべてのローカル IP でポート 80 の競合が発生します。
 
 この問題を解決するには、置き換えようとしている Kubernetes サービスのポートと競合する、あらゆるサービスやプロセスを停止する必要があります。 *netstat* などのツールを使用して、開発マシン上のどのサービスまたはプロセスが競合しているかを調べることができます。
 
-たとえば、 *Windows BranchCache* サービスを停止および無効にするには、次のようにします。
+たとえば、*Windows BranchCache* サービスを停止および無効にするには、次のようにします。
 * コマンド プロンプトで `services.msc` を実行します。
 * *[BranchCache]* を右クリックし、 *[プロパティ]* を選択します。
 * *[停止]* をクリックします。
 * 必要に応じて、 *[スタートアップの種類]* を *[無効]* に設定して無効にすることができます。
-* [ *OK* ] をクリックします。
+* [*OK*] をクリックします。
 
 ### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>エラー "割り当てられた状態で pod:azds/azds-webhook-deployment-\<id\>の AzureAssignedIdentity が見つかりませんでした"
 
-[マネージド ID](../aks/use-managed-identity.md) および [ポッド マネージ ID](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) がインストールされている AKS クラスターで、Azure Dev Spaces を使用してサービスを実行すると、" *グラフのインストール* " ステップ後にプロセスが応答しなくなることがあります。 *azds* 名前空間で *azds-injector-webhook* を調べると、このエラーが表示されることがあります。
+[マネージド ID](../aks/use-managed-identity.md) および [ポッド マネージ ID](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) がインストールされている AKS クラスターで、Azure Dev Spaces を使用してサービスを実行すると、"*グラフのインストール*" ステップ後にプロセスが応答しなくなることがあります。 *azds* 名前空間で *azds-injector-webhook* を調べると、このエラーが表示されることがあります。
 
 Azure Dev Spaces がクラスターで実行するサービスは、クラスターのマネージド ID を利用して、クラスター外の Azure Dev Spaces バックエンド サービスと通信します。 ポッド マネージド ID がインストールされている場合、ネットワーク ルールはクラスターのノードで構成され、マネージド ID 資格情報の呼び出しはすべて、[クラスターにインストールされた Node Managed Identity (NMI) デーモンセット](https://github.com/Azure/aad-pod-identity#node-managed-identity)にリダイレクトされます。 この NMI デーモンセットは呼び出し元のポッドを識別し、要求されたマネージド ID にアクセスできるようポッドに適切なラベルが付けられていることを確認します。 Azure Dev Spaces は、クラスターにポッド マネージド ID がインストールされているかどうか検出できず、Azure Dev Spaces サービスがクラスターのマネージド ID にアクセスするために必要な構成を実行できません。 Azure Dev Spaces サービスはクラスターのマネージド ID にアクセスするように構成されていないため、NMI デーモンセットではマネージド ID の Azure AD トークンを取得できず、Azure Dev Spaces バックエンド サービスと通信できません。
 
-この問題を修正するには、 *azds-injector-webhook* で [AzurePodIdentityException](https://azure.github.io/aad-pod-identity/docs/configure/application_exception) を適用し、Azure Dev Spaces でインストルメント化されたポッドを更新してマネージド ID にアクセスできるようにします。
+この問題を修正するには、*azds-injector-webhook* で [AzurePodIdentityException](https://azure.github.io/aad-pod-identity/docs/configure/application_exception) を適用し、Azure Dev Spaces でインストルメント化されたポッドを更新してマネージド ID にアクセスできるようにします。
 
 *webhookException.yaml* という名前のファイルを作成し、以下の YAML 定義をコピーします。
 
@@ -293,7 +293,7 @@ spec:
     azds.io/uses-cluster-identity: "true"
 ```
 
-上記のファイルによって、 *azds-injector-webhook* の *AzurePodIdentityException* オブジェクトが作成されます。 このオブジェクトをデプロイするには、`kubectl` を使用します。
+上記のファイルによって、*azds-injector-webhook* の *AzurePodIdentityException* オブジェクトが作成されます。 このオブジェクトをデプロイするには、`kubectl` を使用します。
 
 ```cmd
 kubectl apply -f webhookException.yaml
@@ -312,7 +312,7 @@ spec:
     azds.io/instrumented: "true"
 ```
 
-また、 *AzureIdentity* および *AzureIdentityBinding* オブジェクトを作成し、Azure Dev Spaces によってインストルメント化されたスペースで実行中のワークロードのポッド ラベルを更新して、AKS クラスターによって作成されたマネージド ID にアクセスできるようにすることもできます。
+また、*AzureIdentity* および *AzureIdentityBinding* オブジェクトを作成し、Azure Dev Spaces によってインストルメント化されたスペースで実行中のワークロードのポッド ラベルを更新して、AKS クラスターによって作成されたマネージド ID にアクセスできるようにすることもできます。
 
 マネージド ID の詳細を一覧表示するには、AKS クラスターで以下のコマンドを実行してください。
 
@@ -329,7 +329,7 @@ az aks show -g <resourcegroup> -n <cluster> -o json --query "{clientId: identity
 }
 ```
 
-*AzureIdentity* オブジェクトを作成するには、 *clusteridentity.yaml* という名前のファイルを作成し、前のコマンドで得たマネージド ID の詳細で更新された以下の YAML 定義を使用します。
+*AzureIdentity* オブジェクトを作成するには、*clusteridentity.yaml* という名前のファイルを作成し、前のコマンドで得たマネージド ID の詳細で更新された以下の YAML 定義を使用します。
 
 ```yaml
 apiVersion: "aadpodidentity.k8s.io/v1"
@@ -342,7 +342,7 @@ spec:
   ClientID: <clientId>
 ```
 
-*AzureIdentityBinding* オブジェクトを作成するには、 *clusteridentitybinding.yaml* という名前のファイルを作成し、以下の YAML 定義を使用します。
+*AzureIdentityBinding* オブジェクトを作成するには、*clusteridentitybinding.yaml* という名前のファイルを作成し、以下の YAML 定義を使用します。
 
 ```yaml
 apiVersion: "aadpodidentity.k8s.io/v1"
@@ -361,7 +361,7 @@ kubectl apply -f clusteridentity.yaml
 kubectl apply -f clusteridentitybinding.yaml
 ```
 
-*AzureIdentity* および *AzureIdentityBinding* オブジェクトのデプロイ後、 *aadpodidbinding: my-label-value* ラベルを持つワークロードはクラスターのマネージド ID にアクセスできるようになります。 このラベルを追加し、開発領域で実行中のワークロードをすべて再度デプロイします。 次に例を示します。
+*AzureIdentity* および *AzureIdentityBinding* オブジェクトのデプロイ後、*aadpodidbinding: my-label-value* ラベルを持つワークロードはクラスターのマネージド ID にアクセスできるようになります。 このラベルを追加し、開発領域で実行中のワークロードをすべて再度デプロイします。 次に例を示します。
 
 ```yaml
 apiVersion: apps/v1
@@ -424,7 +424,7 @@ Visual Studio Code デバッガーを実行しているときに、このエラ�
 
 ### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Node.js アプリケーションにデバッグを接続するとエラー "Internal watch failed: watch ENOSPC" が発生する
 
-デバッガーで接続しようとしている Node.js アプリケーションでポッドを実行しているノードが *fs.inotify.max_user_watches* 値を超えるとこのエラーが発生します。 場合によっては、 [*fs.inotify.max_user_watches* の既定値が小さすぎて、デバッガーのポッドへの直接の接続を処理できない可能性があります](https://github.com/Azure/AKS/issues/772)。
+デバッガーで接続しようとしている Node.js アプリケーションでポッドを実行しているノードが *fs.inotify.max_user_watches* 値を超えるとこのエラーが発生します。 場合によっては、[*fs.inotify.max_user_watches* の既定値が小さすぎて、デバッガーのポッドへの直接の接続を処理できない可能性があります](https://github.com/Azure/AKS/issues/772)。
 
 この問題の一時的な対処法として、クラスター内の各ノード上で *fs.inotify.max_user_watches* の値を増やし、そのノードを再起動して変更を有効にしてください。
 
@@ -445,7 +445,7 @@ Visual Studio Code デバッガーを実行しているときに、このエラ�
 
 ### <a name="authorization-error-microsoftdevspacesregisteraction"></a>承認エラー "Microsoft.DevSpaces/register/action"
 
-Azure Dev Spaces を管理するには、お使いの Azure サブスクリプション内に " *所有者* " または " *共同作成者* " アクセス権が必要です。 Dev Spaces を管理しようとしたが、関連付けられている Azure サブスクリプションに " *所有者* " アクセス権も " *共同作成者* " アクセス権もない場合、承認エラーが表示されることがあります。 次に例を示します。
+Azure Dev Spaces を管理するには、お使いの Azure サブスクリプション内に "*所有者*" または "*共同作成者*" アクセス権が必要です。 Dev Spaces を管理しようとしたが、関連付けられている Azure サブスクリプションに "*所有者*" アクセス権も "*共同作成者*" アクセス権もない場合、承認エラーが表示されることがあります。 次に例を示します。
 
 ```output
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.
@@ -459,7 +459,7 @@ az provider register --namespace Microsoft.DevSpaces
 
 ### <a name="new-pods-arent-starting"></a>新しいポッドが開始しない
 
-Kubernetes の初期化子は、クラスター内の *cluster-admin* ロールに対する RBAC 権限の変更により、新しいポッドに PodSpec を適用できません。 ポッドに関連付けられているサービス アカウントが存在しないなど、新しいポッドに無効な PodSpec が含まれている可能性もあります。 初期化子の問題により *[保留中]* の状態になっているポッドを確認するには、`kubectl get pods` コマンドを使用します。
+Kubernetes の初期化子は、クラスター内の *cluster-admin* ロールに対する Kubernetes RBAC 権限の変更により、新しいポッドに PodSpec を適用できません。 ポッドに関連付けられているサービス アカウントが存在しないなど、新しいポッドに無効な PodSpec が含まれている可能性もあります。 初期化子の問題により *[保留中]* の状態になっているポッドを確認するには、`kubectl get pods` コマンドを使用します。
 
 ```bash
 kubectl get pods --all-namespaces --include-uninitialized
@@ -467,7 +467,7 @@ kubectl get pods --all-namespaces --include-uninitialized
 
 この問題は、クラスター内の *すべての名前空間* (Azure Dev Spaces が無効な名前空間を含む) のポッドに影響を与える可能性があります。
 
-この問題を解決するには、 [Dev Spaces CLI を最新バージョンに更新](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools)して、Azure Dev Spaces コントローラーから *azds InitializerConfiguration* を削除します。
+この問題を解決するには、[Dev Spaces CLI を最新バージョンに更新](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools)して、Azure Dev Spaces コントローラーから *azds InitializerConfiguration* を削除します。
 
 ```azurecli
 az aks get-credentials --resource-group <resource group name> --name <cluster name>
@@ -488,9 +488,9 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 
 コントローラーを再インストールしたら、ポッドを再デプロイします。
 
-### <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Dev Spaces コントローラーと API を呼び出すための RBAC 権限が正しくない
+### <a name="incorrect-azure-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Dev Spaces コントローラーと API を呼び出すための Azure RBAC 権限が正しくない
 
-Azure Dev Spaces コントローラーにアクセスするユーザーは、AKS クラスター上の管理者用の *kubeconfig* を読み取るためのアクセス権を持っている必要があります。 たとえば、この権限は、[組み込みの Azure Kubernetes Service クラスター管理者ロール](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)で利用できます。 また、Azure Dev Spaces コントローラーにアクセスするユーザーには、コントローラーの " *共同作成者* " または " *所有者* " の Azure ロールも設定されている必要があります。 AKS クラスターに対するユーザーの権限の更新に関する詳細は、[こちら](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group)で確認できます。
+Azure Dev Spaces コントローラーにアクセスするユーザーは、AKS クラスター上の管理者用の *kubeconfig* を読み取るためのアクセス権を持っている必要があります。 たとえば、この権限は、[組み込みの Azure Kubernetes Service クラスター管理者ロール](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)で利用できます。 また、Azure Dev Spaces コントローラーにアクセスするユーザーには、コントローラーの "*共同作成者*" または "*所有者*" の Azure ロールも設定されている必要があります。 AKS クラスターに対するユーザーの権限の更新に関する詳細は、[こちら](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group)で確認できます。
 
 コントローラーに対するユーザーの Azure ロールを更新するには、次のことを行います。
 
@@ -504,11 +504,11 @@ Azure Dev Spaces コントローラーにアクセスするユーザーは、AKS
     * *[ロール]* で、 *[共同作成者]* または *[所有者]* を選択します。
     * *[アクセスの割り当て先]* で *[Azure AD のユーザー、グループ、サービス プリンシパル]* を選択します。
     * *[選択]* で、権限を付与するユーザーを検索します。
-1. [ *保存* ] をクリックします。
+1. [*保存*] をクリックします。
 
 ### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Dev Spaces サービスに関連付けられたパブリック URL で DNS の名前解決が失敗します。
 
-`azds prep` コマンドで `--enable-ingress` スイッチを指定するか、Visual Studio で `Publicly Accessible` チェック ボックスをオンにすることで、サービスのパブリック URL エンドポイントを構成できます。 Dev Spaces でサービスを実行すると、パブリック DNS 名が自動的に登録されます。 この DNS 名が登録されていない場合は、パブリック URL に接続するときに、Web ブラウザーに " *Page cannot be displayed (ページを表示できません)* " または " *Site cannot be reached (サイトに到達できません)* " エラーが表示されます。
+`azds prep` コマンドで `--enable-ingress` スイッチを指定するか、Visual Studio で `Publicly Accessible` チェック ボックスをオンにすることで、サービスのパブリック URL エンドポイントを構成できます。 Dev Spaces でサービスを実行すると、パブリック DNS 名が自動的に登録されます。 この DNS 名が登録されていない場合は、パブリック URL に接続するときに、Web ブラウザーに "*Page cannot be displayed (ページを表示できません)* " または "*Site cannot be reached (サイトに到達できません)* " エラーが表示されます。
 
 この問題を解決するには、次の手順に従います。
 
@@ -518,8 +518,8 @@ Azure Dev Spaces コントローラーにアクセスするユーザーは、AKS
   azds list-uris
   ```
 
-* URL が " *保留中* " の状態にある場合、まだ Dev Spaces が DNS の登録が完了するのを待っている状態です。 登録が完了するまでに数分かかることがあります。 また、Dev Spaces は各サービスの localhost トンネルを開き、これを DNS の登録を待っている間に使用できます。
-* URL の " *保留中* " 状態が 5 分を超える場合、パブリック エンドポイントを作成する外部 DNS ポッド、またはパブリック エンドポイントを取得する nginx イングレス コントローラー ポッドに問題がある可能性があります。 次のコマンドを使用して、それらのポッドを削除し、AKS で自動的に再作成してください。
+* URL が "*保留中*" の状態にある場合、まだ Dev Spaces が DNS の登録が完了するのを待っている状態です。 登録が完了するまでに数分かかることがあります。 また、Dev Spaces は各サービスの localhost トンネルを開き、これを DNS の登録を待っている間に使用できます。
+* URL の "*保留中*" 状態が 5 分を超える場合、パブリック エンドポイントを作成する外部 DNS ポッド、またはパブリック エンドポイントを取得する nginx イングレス コントローラー ポッドに問題がある可能性があります。 次のコマンドを使用して、それらのポッドを削除し、AKS で自動的に再作成してください。
   ```console
   kubectl delete pod -n kube-system -l app=addon-http-application-routing-external-dns
   kubectl delete pod -n kube-system -l app=addon-http-application-routing-nginx-ingress
@@ -530,7 +530,7 @@ Azure Dev Spaces コントローラーにアクセスするユーザーは、AKS
 このエラーは、サービスへのアクセスを試みたときに発生する場合があります。 たとえば、ブラウザーでサービスの URL にアクセスしたときです。 このエラーは、コンテナーのポートが使用できないことを意味します。 その理由としては次のことが考えられます。
 
 * コンテナーがまだビルドとデプロイの処理中です。 `azds up` を実行またはデバッガーを起動した後、コンテナーが正常にデプロイされる前にコンテナーにアクセスしようとした場合、この問題が発生する可能性があります。
-* _Dockerfile_ 、Helm チャート、およびポートを開くサーバー コード間でポート構成が整合していません。
+* _Dockerfile_、Helm チャート、およびポートを開くサーバー コード間でポート構成が整合していません。
 
 この問題を解決するには、次の手順に従います。
 
@@ -594,7 +594,7 @@ kubectl -n my-namespace delete pod --all
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>エラー "Could not find the cluster \<cluster\> in subscription \<subscriptionId\>" (サブスクリプション subscriptionId にクラスター cluster が見つかりませんでした)
 
-kubeconfig ファイルが、Azure Dev Spaces クライアント側ツールで使用しようとしているものとは異なるクラスターまたはサブスクリプションを対象としている場合に、このエラーが表示されることがあります。 Azure Dev Spaces クライアント側ツールは、 *kubectl* の動作をレプリケートし、 [1 つ以上の kubeconfig ファイル](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)を使用して、クラスターを選択して通信します。
+kubeconfig ファイルが、Azure Dev Spaces クライアント側ツールで使用しようとしているものとは異なるクラスターまたはサブスクリプションを対象としている場合に、このエラーが表示されることがあります。 Azure Dev Spaces クライアント側ツールは、*kubectl* の動作をレプリケートし、[1 つ以上の kubeconfig ファイル](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)を使用して、クラスターを選択して通信します。
 
 この問題を解決するには、次の手順に従います。
 

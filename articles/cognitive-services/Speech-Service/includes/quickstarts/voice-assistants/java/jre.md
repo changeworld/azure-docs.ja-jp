@@ -4,21 +4,21 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: 38e6bae69710dc9e1dbc8789ee9ccb636193c7f7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8ee14b94977b3152e0aab853fa3919a739d0dfdd
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80671448"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95097695"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、必ず次のことを行ってください。
 
 > [!div class="checklist"]
-> * [Azure Speech リソースを作成する](~/articles/cognitive-services/speech-service/get-started.md)
+> * [Azure Speech リソースを作成する](../../../../overview.md#try-the-speech-service-for-free)
 > * [ご自分の開発環境を設定し、空のプロジェクトを作成する](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
-> * [Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)に接続されたボットを作成する
+> * [Direct Line Speech チャネル](/azure/bot-service/bot-service-channel-connect-directlinespeech)に接続されたボットを作成する
 > * オーディオ キャプチャ用のマイクにアクセスできることを確認する
 
   > [!NOTE]
@@ -115,7 +115,7 @@ ms.locfileid: "80671448"
 
 1. `main` メソッドでは、最初に `DialogServiceConfig` を構成し、それを使用して `DialogServiceConnector` インスタンスを作成します。 このインスタンスは、Direct Line Speech チャネルに接続してボットと対話します。 `AudioConfig` インスタンスは、音声入力のソースを指定するためにも使用されます。 この例では、`AudioConfig.fromDefaultMicrophoneInput()` により既定のマイクが使用されます。
 
-   - 文字列 `YourSubscriptionKey` をサブスクリプション キーに置き換えます。サブスクリプション キーは、[こちらの Web サイト](~/articles/cognitive-services/speech-service/get-started.md)から入手できます。
+   - 文字列 `YourSubscriptionKey` をサブスクリプション キーに置き換えます。サブスクリプション キーは、[こちらの Web サイト](../../../../overview.md#try-the-speech-service-for-free)から入手できます。
    - 文字列 `YourServiceRegion` を、自分のサブスクリプションに関連付けられている[リージョン](~/articles/cognitive-services/speech-service/regions.md)に置き換えます。
 
    > [!NOTE]

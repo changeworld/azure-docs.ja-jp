@@ -5,18 +5,18 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 0fae0172467bb4499c2710c49553d9134a32fa9b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c9ed54f11cade20af67a1c9bfe948b03e9d7b0d3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135984"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95096139"
 ---
-このクイックスタートでは、Speech Devices SDK for Windows を使用して音声対応製品を構築するか、またはそれを[会話の文字起こし](../conversation-transcription-service.md)デバイスとして使用する方法について説明します。 会話の文字起こしには [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) のみがサポートされています。 その他の音声の用途には、マイク配列ジオメトリを提供する直線的なマイク配列がサポートされています。
+このクイックスタートでは、Speech Devices SDK for Windows を使用して音声対応製品を構築するか、またはそれを[会話の文字起こし](../conversation-transcription.md)デバイスとして使用する方法について説明します。 会話の文字起こしには [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) のみがサポートされています。 その他の音声の用途には、マイク配列ジオメトリを提供する直線的なマイク配列がサポートされています。
 
 アプリケーションは、Speech SDK パッケージと、64 ビット Windows 上の Eclipse Java IDE (v4) で構築されます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
 
-このガイドでは、Speech サービス リソースがある [Azure Cognitive Services](../get-started.md) アカウントが必要になります。
+このガイドでは、Speech サービス リソースがある [Azure Cognitive Services](../overview.md#try-the-speech-service-for-free) アカウントが必要になります。
 
 [サンプル アプリケーション](https://aka.ms/sdsdk-download-JRE)のソース コードは Speech Devices SDK に付属しています。 [GitHub で入手する](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)こともできます。
 
@@ -29,14 +29,14 @@ ms.locfileid: "93135984"
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) または [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) のみ。
 * [Microsoft Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
-* Speech サービス用の Azure サブスクリプション キー。 [無料で 1 つ取得します](../get-started.md)。
+* Speech サービス用の Azure サブスクリプション キー。 [無料で 1 つ取得します](../overview.md#try-the-speech-service-for-free)。
 * Java 用の [Speech Devices SDK](https://aka.ms/sdsdk-download-JRE) の最新バージョンをダウンロードし、.zip を作業ディレクトリに解凍します。
    > [!NOTE]
    > このクイックスタートでは、アプリが C:\SDSDK\JRE-Sample-Release に抽出されることを前提としています
 
 会話の文字起こしは、現時点では、"centralus" および "eastasia" リージョンで "en-US" と "zh-CN" 言語のみに対応しています。 会話の文字起こしを使用するには、それらのいずれかのリージョンの Speech キーが必要です。
 
-意図の使用を計画している場合は、[Language Understanding サービス (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) サブスクリプションが必要になります。 LUIS と意図認識の詳細については、 「[LUIS、C# を使って音声から意図を認識する](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)」 を参照してください。 [サンプル LUIS モデル](https://aka.ms/sdsdk-luis)は、このアプリで使用できます。
+意図の使用を計画している場合は、[Language Understanding サービス (LUIS)](../../luis/luis-how-to-azure-subscription.md) サブスクリプションが必要になります。 LUIS と意図認識の詳細については、 「[LUIS、C# を使って音声から意図を認識する](../how-to-recognize-intents-from-speech-csharp.md)」 を参照してください。 [サンプル LUIS モデル](https://aka.ms/sdsdk-luis)は、このアプリで使用できます。
 
 ## <a name="create-and-configure-the-project"></a>プロジェクトの作成と構成
 
@@ -79,7 +79,7 @@ ms.locfileid: "93135984"
     </dependencies>
    ```
 
-1. **Windows-x64** の内容を Java プロジェクトの場所 ( **C:\SDSDK\JRE-Sample-Release** など) にコピーします。
+1. **Windows-x64** の内容を Java プロジェクトの場所 (**C:\SDSDK\JRE-Sample-Release** など) にコピーします。
 
 1. `kws.table`、`participants.properties`、`Microsoft.CognitiveServices.Speech.extension.pma.dll` をプロジェクト フォルダー **target\classes** にコピーします。
 
@@ -108,7 +108,7 @@ ms.locfileid: "93135984"
 1. 既定のキーワード (keyword) は "Computer" です。 用意されている別のキーワード ("Machine"、"Assistant" など) を試すこともできます。 これらの代替キーワード用のリソース ファイルは、Speech Devices SDK の keyword フォルダーにあります。 たとえば、`C:\SDSDK\JRE-Sample-Release\keyword\Computer` には、キーワード "Computer" で使用されるファイルが含まれています。
 
     > [!TIP]
-    > [カスタム キーワードを作成する](../speech-devices-sdk-create-kws.md)こともできます。
+    > [カスタム キーワードを作成する](../custom-keyword-basics.md)こともできます。
 
     新しいキーワードを使用するには、`FunctionsList.java` 内の次の行を更新し、そのキーワードをアプリにコピーします。 たとえば、キーワード パッケージ `machine.zip` からキーワード "Machine" を使用するには:
 
@@ -129,7 +129,7 @@ ms.locfileid: "93135984"
 
    ![サンプルの Speech Devices SDK アプリケーションとオプションのスクリーンショット。](../media/speech-devices-sdk/java-sample-app-windows.png)
 
-1. 新しい **会話の文字起こし** のデモをお試しください。 **[Session]\(セッション\)**  >  **[Start]\(開始\)** で文字起こしを開始します。 既定では、すべてのユーザーがゲストになります。 ただし、参加者の声紋がある場合は、プロジェクト フォルダー **target/classes** 内のファイル `participants.properties` に入れることができます。 声紋を生成するには、[会話の文字起こし (SDK)](../how-to-use-conversation-transcription-service.md) に関するページを参照してください。
+1. 新しい **会話の文字起こし** のデモをお試しください。 **[Session]\(セッション\)**  >  **[Start]\(開始\)** で文字起こしを開始します。 既定では、すべてのユーザーがゲストになります。 ただし、参加者の声紋がある場合は、プロジェクト フォルダー **target/classes** 内のファイル `participants.properties` に入れることができます。 声紋を生成するには、[会話の文字起こし (SDK)](../how-to-use-conversation-transcription.md) に関するページを参照してください。
 
    ![デモの会話の文字起こしアプリケーションのスクリーンショット。](../media/speech-devices-sdk/cts-sample-app-windows.png)
 

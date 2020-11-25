@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: sausin
-ms.openlocfilehash: 8c7cb1e9f39b1de7897da29467a607953b42bb24
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 77ade17803a35491712ec6df70aed9eb7b4883eb
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565740"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025876"
 ---
 # <a name="export-custom-commands-application-as-a-remote-skill"></a>Custom Commands アプリケーションをリモートのスキルとしてエクスポートする
 
@@ -23,9 +23,9 @@ ms.locfileid: "94565740"
 
 ## <a name="prerequisites"></a>前提条件
 > [!div class="checklist"]
-> * [Bot Framework スキルに関する理解](https://aka.ms/speech/cc-skill-overview)
+> * [Bot Framework スキルに関する理解](/azure/bot-service/skills-conceptual)
 > * [スキル マニフェストに関する理解](https://aka.ms/speech/cc-skill-manifest)
-> * [Bot Framework ボットからのスキルの呼び出し方法](https://aka.ms/speech/cc-skill-consumer)
+> * [Bot Framework ボットからのスキルの呼び出し方法](/azure/bot-service/skills-about-skill-consumers)
 > * 既存の Custom Commands アプリケーション。 Custom Commands アプリケーションがない場合は、「[クイックスタート: カスタム コマンドを使用して音声アシスタントを作成する](quickstart-custom-commands-application.md)」を参照して試してみてください。
 
 ## <a name="custom-commands-as-remote-skills"></a>リモートのスキルとしての Custom Commands

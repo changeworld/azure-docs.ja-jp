@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: a591a8d0df751c071a17b1d77febdb3607a1b53d
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f7c6c3f9c3f468c7b55baf2b0cc45c094d693de5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555772"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018652"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>作成と公開のリージョンと関連付けられているキー
 
@@ -27,7 +27,7 @@ ms.locfileid: "94555772"
 |[au.luis.ai][au.luis.ai] |オーストラリア| `australiaeast`|
 |[eu.luis.ai][eu.luis.ai] |ヨーロッパ|`westeurope`|
 
-オーサリング リージョンには、[ペア フェールオーバー リージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)があります。
+オーサリング リージョンには、[ペア フェールオーバー リージョン](../../best-practices-availability-paired-regions.md)があります。
 
 <a name="regions-and-azure-resources"></a>
 
@@ -102,7 +102,7 @@ ms.locfileid: "94555772"
 
 各リージョンには、フェールオーバー先のセカンダリ リージョンがあります。 ヨーロッパではヨーロッパ内でフェールオーバーし、オーストラリアではオーストラリア内でフェールオーバーします。
 
-オーサリング リージョンには、[ペア フェールオーバー リージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)があります。
+オーサリング リージョンには、[ペア フェールオーバー リージョン](../../best-practices-availability-paired-regions.md)があります。
 
 ## <a name="next-steps"></a>次のステップ
 

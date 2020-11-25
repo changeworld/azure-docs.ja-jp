@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 12693fb11556380e62df277be093ce20c02ff372
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: fd7499bd5e216f2a625d87ea13996da851a1889e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018034"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019213"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Language Understanding (LUIS) Cognitive Services でのデータの格納と削除
 LUIS では、キーによって指定された領域に対応する Azure のデータ ストアに、データが暗号化されて格納されます。 このデータは 30 日間保存されます。 
@@ -26,8 +26,8 @@ LUIS では、キーによって指定された領域に対応する Azure の�
 
 発話は 2 つの異なる場所に格納できます。 
 
-* 発話は**作成プロセス**中に作成され、意図に格納されます。 意図内の発話は、LUIS アプリの成功に必要です。 アプリが発行され、エンドポイントでクエリが受け取られると、エンドポイント要求のクエリ文字列 `log=false` によって、エンドポイントの発話が格納されるかどうかが決定されます。 格納されたエンドポイントは、 **[エンドポイントの発言の確認]** セクション内の、ポータルの **[ビルド]** セクションにあるアクティブ ラーニング発話の一部になります。 
-* **エンドポイントの発話を確認**し、発話を意図に追加すると、その発話は確認されるべきエンドポイントの発話の一部として格納されなくなります。 これはアプリの意図に追加されます。 
+* 発話は **作成プロセス** 中に作成され、意図に格納されます。 意図内の発話は、LUIS アプリの成功に必要です。 アプリが発行され、エンドポイントでクエリが受け取られると、エンドポイント要求のクエリ文字列 `log=false` によって、エンドポイントの発話が格納されるかどうかが決定されます。 格納されたエンドポイントは、 **[エンドポイントの発言の確認]** セクション内の、ポータルの **[ビルド]** セクションにあるアクティブ ラーニング発話の一部になります。 
+* **エンドポイントの発話を確認** し、発話を意図に追加すると、その発話は確認されるべきエンドポイントの発話の一部として格納されなくなります。 これはアプリの意図に追加されます。 
 
 <a name="utterances-in-an-intent"></a>
 
@@ -55,14 +55,14 @@ LUIS では、キーによって指定された領域に対応する Azure の�
 アカウントの削除は、 **[設定]** ページで実行できます。 右上部のナビゲーション バーにあるアカウント名を選択して、 **[設定]** ページに移動します。
 
 ## <a name="delete-an-authoring-resource"></a>作成リソースを削除する
-[作成リソースに移行した](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring)場合、Azure portal からリソース自体を削除すると、そのリソースに関連付けられているすべてのアプリケーションは、発話例とログと共に削除されます。 データは 90 日間保持された後、完全に削除されます。    
+[作成リソースに移行した](./luis-migration-authoring.md)場合、Azure portal からリソース自体を削除すると、そのリソースに関連付けられているすべてのアプリケーションは、発話例とログと共に削除されます。 データは 90 日間保持された後、完全に削除されます。    
 
 リソースを削除するには、[Azure portal](https://ms.portal.azure.com/#home) に移動し、LUIS 作成リソースを選択します。 **[概要]** タブに移動し、ページの上部にある **[削除]** ボタンをクリックします。 次に、リソースが削除されたことを確認します。 
 
 ## <a name="data-inactivity-as-an-expired-subscription"></a>有効期限が切れたサブスクリプションでの非アクティブなデータ
 データの保有と削除の目的で、非アクティブの LUIS アプリは、"_Microsoft の裁量_" で有効期限が切れたサブスクリプションとして扱われることがあります。 過去 90 日間に次の条件を満たすアプリは、非アクティブと見なされます。 
 
-* 呼び出しが行われて**いない**
+* 呼び出しが行われて **いない**
 * 変更されていない
 * 最新のキーが割り当てられていない
 * ユーザーがサインインしていない

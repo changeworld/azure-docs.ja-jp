@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: de0065abaf5669859e864186fc9a3fb88219414b
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f82ea154d5949f4d229ac76e7a7ce2a89d15ac13
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555823"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025669"
 ---
 # <a name="cicd-for-custom-speech"></a>Custom Speech の CI/CD
 
 トレーニングおよびテスト データに更新を適用するときに、Custom Speech モデルの継続的な改善が可能になるように、自動トレーニング、テスト、リリース管理を実装します。 CI/CD ワークフローを効果的に実装することで、確実に最高のパフォーマンスの Custom Speech モデルのエンドポイントを常に使用できるようになります。
 
-[継続的インテグレーション](https://docs.microsoft.com/azure/devops/learn/what-is-continuous-integration) (CI) は、共有リポジトリで更新を頻繁にコミットし、それに対して自動ビルドを実行するエンジニアリング手法です。 Custom Speech の CI ワークフローでは、データ ソースから新しいモデルがトレーニングされ、新しいモデルに対して自動テストが実行されて、確実に以前のモデルよりも優れたパフォーマンスを発揮するようにします。
+[継続的インテグレーション](/azure/devops/learn/what-is-continuous-integration) (CI) は、共有リポジトリで更新を頻繁にコミットし、それに対して自動ビルドを実行するエンジニアリング手法です。 Custom Speech の CI ワークフローでは、データ ソースから新しいモデルがトレーニングされ、新しいモデルに対して自動テストが実行されて、確実に以前のモデルよりも優れたパフォーマンスを発揮するようにします。
 
-[継続的デリバリー](https://docs.microsoft.com/azure/devops/learn/what-is-continuous-delivery) (CD) では、CI プロセスからモデルが受け取られ、改善された Custom Speech モデルごとにエンドポイントが作成されます。 CD を使用すると、エンドポイントをソリューションに簡単に統合できます。
+[継続的デリバリー](/azure/devops/learn/what-is-continuous-delivery) (CD) では、CI プロセスからモデルが受け取られ、改善された Custom Speech モデルごとにエンドポイントが作成されます。 CD を使用すると、エンドポイントをソリューションに簡単に統合できます。
 
 カスタム CI/CD ソリューションも使用できますが、堅牢で事前に構築されたソリューションの場合は、GitHub Actions を使用して CI/CD ワークフローを実行する [Speech DevOps テンプレート リポジトリ](https://github.com/Azure-Samples/Speech-Service-DevOps-Template)をお使いください。
 
@@ -73,7 +73,7 @@ CI/CD ワークフローの主な目的は、トレーニング データを使�
 
 Custom Speech の CI/CD 自動化ワークフローには、次のツールを使用します。
 
-- [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。Azure サービス プリンシパルの認証を作成し、Azure サブスクリプションのクエリを実行し、Azure BLOB にテスト結果を格納するために使用します。
+- [Azure CLI](/cli/azure/?view=azure-cli-latest)。Azure サービス プリンシパルの認証を作成し、Azure サブスクリプションのクエリを実行し、Azure BLOB にテスト結果を格納するために使用します。
 - [Azure Speech CLI](spx-overview.md)。コマンド ラインまたは自動ワークフローから音声サービスを操作するために使用します。
 
 ## <a name="devops-solution-for-custom-speech-using-github-actions"></a>GitHub Actions を使用する Custom Speech 用の DevOps ソリューション

@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターの設定を変更する
 description: この記事では、カスタマイズ可能な Fabric の設定と Fabric アップグレード ポリシーについて説明します。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: fbd6c9503e409473a87c58202eb88d77716441f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a83d24b4badd78750756a3cb4564b1e53fd30593
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89055122"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648227"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -243,7 +243,7 @@ ms.locfileid: "89055122"
 |QuorumLossWaitDuration | 時間 (秒単位)、既定値は MaxValue |静的|timespan を秒単位で指定します。 FaultAnalysisService の QuorumLossWaitDuration。 |
 |ReplicaDropWaitDurationInSeconds|int、既定値は 600|静的|このパラメーターは、データ損失 API が呼び出されたときに使用されます。 レプリカの削除がシステムで内部的に呼び出された後、レプリカが削除されるまでのシステムの待機時間を制御します。 |
 |ReplicaRestartWaitDuration |時間 (秒単位)、既定値は 60 分|静的|timespan を秒単位で指定します。 FaultAnalysisService の ReplicaRestartWaitDuration。 |
-|StandByReplicaKeepDuration| 時間 (秒単位)、既定値は (60*24*7) 分 |静的|timespan を秒単位で指定します。 FaultAnalysisService の StandByReplicaKeepDuration。 |
+|StandByReplicaKeepDuration| 時間 (秒単位)、既定値は (60 *24* 7) 分 |静的|timespan を秒単位で指定します。 FaultAnalysisService の StandByReplicaKeepDuration。 |
 |StoredActionCleanupIntervalInSeconds | int、既定値は 3600 |静的|ストアをクリーンアップする頻度。 終了状態のアクションと、少なくとも CompletedActionKeepDurationInSeconds で指定された期間よりも前に完了したアクションだけが削除されます。 |
 |StoredChaosEventCleanupIntervalInSeconds | int、既定値は 3600 |静的|クリーンアップのためにストアを監査する頻度。イベント数が 30000 を超えると、クリーンアップが開始されます。 |
 |TargetReplicaSetSize |int、既定値は 0 |静的|NOT_PLATFORM_UNIX_START FaultAnalysisService の TargetReplicaSetSize。 |
@@ -423,14 +423,14 @@ ms.locfileid: "89055122"
 |AzureStorageMaxConnections | int、既定値は 5000 |動的|Azure Storage へのコンカレント接続の最大数。 |
 |AzureStorageMaxWorkerThreads | int、既定値は 25 |動的|並列 worker スレッドの最大数。 |
 |AzureStorageOperationTimeout | 時間 (秒単位)、既定値は 6000 |動的|timespan を秒単位で指定します。 xstore 操作が完了するまでのタイムアウト。 |
-|CleanupApplicationPackageOnProvisionSuccess|ブール値、既定値は FALSE |動的|成功したプロビジョニングでアプリケーション パッケージの自動クリーンアップを有効または無効にします。
-
-*ベスト プラクティスは `true` を使用することです。* | |CleanupUnusedApplicationTypes|ブール値、既定値は FALSE |動的|この構成は、有効になっている場合、未使用のアプリケーションの種類のバージョンを自動的に登録解除し、最新の 3 つの未使用のバージョンをスキップすることにより、イメージ ストアによって占有されているディスク領域を削除できるようにします。 自動クリーンアップはその特定のアプリケーションの種類のプロビジョニングが成功した後にトリガーされるだけでなく、すべてのアプリケーションの種類で、1 日に 1 回定期的に実行されます。 スキップする未使用のバージョンの数は、パラメーター "MaxUnusedAppTypeVersionsToKeep" を使用して構成できます。 
-
-*ベスト プラクティスは `true` を使用することです。*
-| |DisableChecksumValidation | ブール値、既定値は FALSE |静的| この構成により、アプリケーションのプロビジョニング中のチェックサムの検証を有効または無効にすることができます。 | |DisableServerSideCopy | ブール値、既定値は FALSE |静的|この構成は、アプリケーションのプロビジョニング中の ImageStore でのアプリケーション パッケージのサーバー側のコピーを有効または無効にします。 | |ImageCachingEnabled | ブール値、既定値は true |静的|この構成により、キャッシュを有効または無効にすることができます。 | |ImageStoreConnectionString |SecureString |静的|ImageStore のルートへの接続文字列。 | |ImageStoreMinimumTransferBPS | int、既定値は 1024 |動的|クラスターと ImageStore の間の最小転送速度。 この値を使用して、外部 ImageStore にアクセスするときのタイムアウトを決定します。 クラスターが外部 ImageStore からダウンロードする際により多くの時間を確保できるように、クラスターと ImageStore 間の待機時間が長い場合にのみ、この値を変更します。 | |MaxUnusedAppTypeVersionsToKeep | int、既定値は 3 |動的|この構成は、クリーンアップのためにスキップされる未使用のアプリケーションの種類のバージョンの数を定義します。 このパラメーターは、パラメーター CleanupUnusedApplicationTypes が有効になっている場合にのみ適用できます。
-
-*一般的なベスト プラクティスは既定値 (`3`) を使用することです。* |
+|CleanupApplicationPackageOnProvisionSuccess|ブール値、既定値は FALSE |動的|成功したプロビジョニングでアプリケーション パッケージの自動クリーンアップを有効または無効にします。<br/> *ベスト プラクティスは `true` を使用することです。*
+|CleanupUnusedApplicationTypes|ブール値、既定値は FALSE |動的|この構成が有効な場合は、未使用のアプリケーションの種類のバージョンが自動的に登録解除され、直近の未使用の 3 バージョンがスキップされるため、イメージ ストアが占有するディスク領域が削減されます。 自動クリーンアップはその特定のアプリケーションの種類のプロビジョニングが成功した後にトリガーされるだけでなく、すべてのアプリケーションの種類で、1 日に 1 回定期的に実行されます。 スキップする未使用のバージョンの数は、パラメーター "MaxUnusedAppTypeVersionsToKeep" を使用して構成できます。 <br/> *ベスト プラクティスは `true` を使用することです。*
+|DisableChecksumValidation | ブール値、既定値は false |静的| この構成により、アプリケーションのプロビジョニング時におけるチェックサムの検証を有効または無効にすることができます。 |
+|DisableServerSideCopy | ブール値、既定値は false |静的|この構成により、アプリケーションのプロビジョニング時における、ImageStore でのアプリケーション パッケージのサーバー側のコピーを有効または無効にできます。 |
+|ImageCachingEnabled | ブール値、既定値は true |静的|この構成により、キャッシュを有効または無効にすることができます。 |
+|ImageStoreConnectionString |SecureString |静的|ImageStore のルートへの接続文字列。 |
+|ImageStoreMinimumTransferBPS | int、既定値は 1024 |動的|クラスターと ImageStore 間の最小転送速度。 この値を使用して、外部 ImageStore にアクセスするときのタイムアウトを決定します。 クラスターが外部 ImageStore からダウンロードする際により多くの時間を確保できるように、クラスターと ImageStore 間の待機時間が長い場合にのみ、この値を変更します。 |
+|MaxUnusedAppTypeVersionsToKeep | int、既定値は 3 |動的|この構成により、クリーンアップでスキップされる未使用のアプリケーションの種類のバージョンの数が定義されます。 このパラメーターは、パラメーター CleanupUnusedApplicationTypes が有効になっている場合にのみ適用できます。 <br/>*一般的なベスト プラクティスは既定値 (`3`) を使用することです。1 未満の値は有効ではありません。*|
 
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds
@@ -890,7 +890,7 @@ ms.locfileid: "89055122"
 |PlacementConstraints | string、既定値は "" |静的| UpgradeOrchestrationService の PlacementConstraints。 |
 |QuorumLossWaitDuration | 時間 (秒単位)、既定値は MaxValue |静的| timespan を秒単位で指定します。 UpgradeOrchestrationService の QuorumLossWaitDuration。 |
 |ReplicaRestartWaitDuration | 時間 (秒単位)、既定値は 60 分|静的| timespan を秒単位で指定します。 UpgradeOrchestrationService の ReplicaRestartWaitDuration。 |
-|StandByReplicaKeepDuration | 時間 (秒単位)、既定値は 60*24*7 分 |静的| timespan を秒単位で指定します。 UpgradeOrchestrationService の StandByReplicaKeepDuration。 |
+|StandByReplicaKeepDuration | 時間 (秒単位)、既定値は 60 *24* 7 分 |静的| timespan を秒単位で指定します。 UpgradeOrchestrationService の StandByReplicaKeepDuration。 |
 |TargetReplicaSetSize |int、既定値は 0 |静的 |UpgradeOrchestrationService の TargetReplicaSetSize。 |
 |UpgradeApprovalRequired | ブール値、既定値は false | 静的|コードのアップグレードを続行する前に管理者の承認を必須にするための設定。 |
 

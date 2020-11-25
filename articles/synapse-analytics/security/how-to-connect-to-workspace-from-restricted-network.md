@@ -1,5 +1,5 @@
 ---
-title: 制限付きネットワークから Synapse Studio ワークスペース リソースに接続する
+title: 制限されたネットワークから Azure Synapse Analytics Studio のワークスペース リソースに接続する
 description: この記事では、制限付きネットワークから Azure Synapse Studio ワークスペース リソースに接続する方法について説明します。
 author: xujxu
 ms.service: synapse-analytics
@@ -8,112 +8,119 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: f2d8953ccae1057d7a7aa2d786fb7b641b3f6284
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 7cff2d8245095489fbba3b7af24b416885995e4d
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392512"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637134"
 ---
-# <a name="connect-to-synapse-studio-workspace-resources-from-a-restricted-network"></a>制限付きネットワークから Synapse Studio ワークスペース リソースに接続する
+# <a name="connect-to-workspace-resources-from-a-restricted-network"></a>制限されたネットワークからのワークスペース リソースへの接続
 
-この記事の対象読者は、会社の制限付きネットワークを管理している会社の IT 管理者です。 IT 管理者は、この制限付きネットワーク内の Azure Synapse Studio とワークステーションの間のネットワーク接続を有効にしようとしています。
-
-この記事では、制限付きのネットワーク環境から Azure Synapse ワークスペースに接続する方法について説明します。 
+あなたは組織の制限付きネットワークを管理している IT 管理者であるとします。 Azure Synapse Analytics Studio と、この制限されたネットワーク内のワークステーションとの間のネットワーク接続を有効にします。 この記事では、その方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
-* **Azure Synapse ワークスペース**:Synapse Studio をお持ちでない場合は、Azure Synapse Analytics から Synapse ワークスペースを作成します。 ワークスペース名は、次の手順 4 で必要になります。
-* **制限付きネットワーク**:制限付きネットワークは、会社の IT 管理者によって管理されています。IT 管理者は、ネットワーク ポリシーを構成するアクセス許可を持っています。 仮想ネットワーク名とそのサブネットは、次の手順 3 で必要になります。
+* **Azure Synapse Analytics ワークスペース**:これは、Azure Synapse Analytics から作成できます。 手順 4 ではワークスペース名が必要です。
+* **制限付きネットワーク**:IT 管理者は、組織の制限されたネットワークを維持し、ネットワーク ポリシーを構成するアクセス許可を持っています。 手順 3 では、仮想ネットワーク名とサブネットが必要です。
 
 
 ## <a name="step-1-add-network-outbound-security-rules-to-the-restricted-network"></a>手順 1:制限付きネットワークにネットワーク アウトバウンド セキュリティ規則を追加する
 
-4 つのサービス タグを持つ 4 つのネットワーク アウトバウンド セキュリティ規則を追加する必要があります。 [サービス タグの概要](/azure/virtual-network/service-tags-overview.md)について確認してください。 
+4 つのサービス タグを持つ 4 つのネットワーク アウトバウンド セキュリティ規則を追加する必要があります。 
 * AzureResourceManager
 * AzureFrontDoor.Frontend
 * AzureActiveDirectory
-* AzureMonitor (省略可能。 この種類の規則は、データを Microsoft に共有する場合にのみ追加してください。)
+* AzureMonitor (この種類のルールはオプションです。 データを Microsoft と共有する場合にのみ追加してください)。
 
-以下のような **Azure Resource Manager** アウトバウンド規則。 他の 3 つのルールを作成するときは、 **[宛先サービス タグ]** の値を、ドロップダウンの選択リストからサービス タグ名 **[AzureFrontDoor.Frontend]** 、 **[AzureActiveDirectory]** 、 **[AzureMonitor]** に置き換えます。
+次のスクリーンショットは、Azure Resource Manager アウトバウンド規則の詳細を示しています。
 
-![AzureResourceManager](./media/how-to-connect-to-workspace-from-restricted-network/arm-servicetag.png)
+![Azure Resource Manager サービス タグの詳細のスクリーンショット。](./media/how-to-connect-to-workspace-from-restricted-network/arm-servicetag.png)
 
+他の 3 つのルールを作成する場合は、**宛先サービス タグ** の値をリストから **AzureFrontDoor**、**AzureActiveDirectory**、または **AzureMonitor** に置き換えます。
 
-## <a name="step-2-create-azure-synapse-analytics-private-link-hubs"></a>手順 2:Azure Synapse Analytics (プライベート リンク ハブ) を作成する
+詳細については、[サービス タグの概要](/azure/virtual-network/service-tags-overview.md)に関するページを参照してください。
 
-Azure portal から Azure Synapse Analytics (プライベート リンク ハブ) を作成する必要があります。 Azure portal を通じて「**Azure Synapse Analytics (プライベート リンク ハブ)** 」を検索し、必要なフィールドに入力して作成します。 
+## <a name="step-2-create-private-link-hubs"></a>手順 2:プライベート リンク ハブの作成
 
-> [!Note]
-> リージョンは、Synapse ワークスペースと同じ場所である必要があります。
-
-![Synapse Analytics プライベート リンク ハブの作成](./media/how-to-connect-to-workspace-from-restricted-network/private-links.png)
-
-## <a name="step-3-create-private-endpoint-for-synapse-studio-gateway"></a>手順 3:Synapse Studio ゲートウェイ用のプライベート エンドポイントを作成する
-
-Synapse Studio ゲートウェイにアクセスするには、Azure portal からプライベート エンドポイントを作成する必要があります。 Azure portal を通じて「**Private Link**」を検索します。 **[Private Link センター]** で **[プライベート エンドポイントの作成]** を選択し、必要なフィールドに入力して作成します。 
+次に、Azure portal からプライベート リンク ハブを作成します。 ポータルでこれを見つけるには *Azure Synapse Analytics (プライベート リンク ハブ)* を検索し、必要な情報を入力して作成します。 
 
 > [!Note]
-> リージョンは、Synapse ワークスペースと同じ場所である必要があります。
+> **[リージョン]** の値が、Azure Synapse Analytics ワークスペースと同じであることを確認します。
 
-![Synapse Studio 用のプライベート エンドポイントの作成 1](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-1.png)
+![Synapse プライベート リンク ハブの作成のスクリーンショット。](./media/how-to-connect-to-workspace-from-restricted-network/private-links.png)
 
-次の **[リソース]** タブで、上記の手順 2 で作成したプライベート リンク ハブを選択します。
+## <a name="step-3-create-a-private-endpoint-for-your-gateway"></a>手順 3:ゲートウェイのプライベート エンドポイントの作成
 
-![Synapse Studio 用のプライベート エンドポイントの作成 2](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-2.png)
+Azure Synapse Analytics Studio ゲートウェイにアクセスするには、Azure portal からプライベート エンドポイントを作成する必要があります。 ポータルでこれを見つけるには、*Private Link* を検索します。 **Private Link センター** で、 **[プライベート エンドポイントの作成]** を選択し、作成するために必要な情報を入力します。 
 
-次の **[構成]** タブで、 
-* **[仮想ネットワーク]** に使用する制限付き仮想ネットワーク名を選択します。
-* **[サブネット]** に制限付き仮想ネットワークのサブネットを選択します。 
-* **[プライベート DNS ゾーンと統合する]** で、 **[はい]** を選択します。
+> [!Note]
+> **[リージョン]** の値が、Azure Synapse Analytics ワークスペースと同じであることを確認します。
 
-![Synapse Studio 用のプライベート エンドポイントの作成 3](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-3.png)
+![[プライベート エンドポイントの作成] の [基本] タブのスクリーンショット。](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-1.png)
 
-プライベート リンク エンドポイントが作成されたら、Synapse Studio Web ツールのサインイン ページにアクセスできます。 ただし、次の手順を完了するまでは、Synapse ワークスペース内のリソースにはアクセスできません。
+**[リソース]** タブで、手順 2 で作成したプライベート リンク ハブを選択します。
 
-## <a name="step-4-create-private-endpoints-for-synapse-studio-workspace-resource"></a>手順 4:Synapse Studio ワークスペース リソース用のプライベート エンドポイントを作成する
+![[プライベート エンドポイントの作成] の [リソース] タブのスクリーンショット。](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-2.png)
 
-Synapse Studio ワークスペース リソース内のリソースにアクセスするには、 **[対象サブリソース]** に種類が **[Dev]** のプライベート リンク エンドポイントを少なくとも 1 つ、アクセスする Synapse Studio ワークスペース内のリソースに応じて、種類が **[Sql]** または **[SqlOnDemand]** の 2 つのオプションのプライベート リンク エンドポイントを作成する必要があります。 この Synapse Studio ワークスペース用のプライベート リンク エンドポイントの作成は、上記のエンドポイントの作成と似ています。  
+**[構成]** タブに移動します。 
+* **[仮想ネットワーク]** に、制限された仮想ネットワーク名を選択します。
+* **[サブネット]** に、制限付き仮想ネットワークのサブネットを選択します。 
+* **[プライベート DNS ゾーンと統合する]** に、 **[はい]** を選択します。
 
-**[リソース]** タブにある以下の領域に注目してください。
-* **[リソースの種類]** には、 **[Microsoft.Synapse/workspaces]\(Microsoft.Synapse/ワークスペース\)** を選択します。
-* **[リソース]** には、前に自身で作成した **ワークスペース名** を選択します。
-* **[対象サブリソース]** で、エンドポイントの種類を選択します。
+![[プライベート エンドポイントの作成] の [構成] タブのスクリーンショット。](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-3.png)
+
+プライベート リンク エンドポイントが作成された後、Azure Synapse Analytics Studio の Web ツールのサインイン ページにアクセスできます。 ただし、ワークスペース内のリソースにはまだアクセスできません。 そのためには、次の手順を完了する必要があります。
+
+## <a name="step-4-create-private-endpoints-for-your-workspace-resource"></a>手順 4:ワークスペース リソースのプライベート エンドポイントの作成
+
+Azure Synapse Analytics Studio ワークスペース リソース内のリソースにアクセスするには、次のものを作成する必要があります。
+
+- **Dev** 型の **ターゲット サブリソース** を持つ少なくとも 1 つのプライベート リンク エンドポイント。
+- アクセスするワークスペースのリソースに応じて、その他の 2 つの **Sql** または **SqlOnDemand** の型の省略可能なプライベート リンク エンドポイント。
+
+これらの作成は、前の手順でエンドポイントを作成する方法と似ています。  
+
+**[リソース]** タブで、次の操作を実行します。
+
+* **[リソースの種類]** に、 **[Microsoft.Synapse/workspaces]** を選択します。
+* **[リソース]** に、前に作成したワークスペース名を選択します。
+* **[対象サブリソース]** に、エンドポイントの種類を選択します。
   * **[Sql]** は、SQL プールで SQL クエリを実行するためのものです。
   * **[SqlOnDemand]** は、SQL に組み込まれているクエリを実行するためのものです。
-  * **[Dev]** は、Synapse Studio ワークスペース内のその他すべてにアクセスするためのものです。 少なくともこの種類のプライベート リンク エンドポイントを作成する必要があります。
+  * **[Dev]** は、Azure Synapse Analytics Studio ワークスペース内の他のすべてのユーザーにアクセスするためのものです。 少なくともこの種類のプライベート リンク エンドポイントを 1 つ作成する必要があります。
 
-![Synapse Studio ワークスペース用のプライベート エンドポイントの作成](./media/how-to-connect-to-workspace-from-restricted-network/plinks-endpoint-ws-1.png)
+![プライベート エンドポイントの作成、[リソース] タブ、ワークスペースのスクリーンショット。](./media/how-to-connect-to-workspace-from-restricted-network/plinks-endpoint-ws-1.png)
 
 
-## <a name="step-5-create-private-endpoints-for-synapse-studio-workspace-linked-storage"></a>手順 5: Synapse Studio ワークスペースのリンクされたストレージ用のプライベート エンドポイントを作成する
+## <a name="step-5-create-private-endpoints-for-workspace-linked-storage"></a>手順 5:ワークスペースのリンクされたストレージに対するプライベート エンドポイントの作成
 
-Synapse Studio ワークスペースでストレージ エクスプローラーを使用してリンクされたストレージにアクセスするには、上記の手順 3 に似た手順で 1 つのプライベート エンドポイントを作成する必要があります。 
+Azure Synapse Analytics Studio ワークスペースのストレージ エクスプローラーを使用してリンクされたストレージにアクセスするには、1 つのプライベート エンドポイントを作成する必要があります。 この手順は、手順 3 と似ています。 
 
-**[リソース]** タブにある以下の領域に注目してください。
+**[リソース]** タブで、次の操作を実行します。
 * **[リソースの種類]** には、 **[Microsoft.Synapse/storageAccounts]** を選択します。
-* **[リソース]** には、前に自身で作成した **ワークスペース名** を選択します。
-* **[対象サブリソース]** で、エンドポイントの種類を選択します。
+* **[リソース]** に、前に作成したストレージ アカウント名を選択します。
+* **[対象サブリソース]** に、エンドポイントの種類を選択します。
   * **[BLOB]** は Azure Blob Storage 用です。
   * **[DFS]** は Azure Data Lake Storage Gen2 用です。
 
-![Synapse Studio ワークスペースのリンクされたストレージ用のプライベート エンドポイントの作成](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-storage.png)
+![プライベート エンドポイントの作成の [リソース] タブのストレージのスクリーンショット。](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-storage.png)
 
-これで、vNet 内の Synapse Studio ワークスペースでストレージ エクスプローラーから、リンクされたストレージ リソースにアクセスできるようになりました。
+これで、リンクされたストレージ リソースにアクセスできるようになりました。 仮想ネットワーク内の Azure Synapse Analytics Studio ワークスペースで、ストレージ エクスプローラーを使用して、リンクされたストレージ リソースにアクセスできます。
 
-以下に示すように、ワークスペースの作成中に **[Enable managed virtual network]\(マネージド仮想ネットワークの有効化\)** がワークスペースで表示され、
+次のスクリーンショットに示すように、ワークスペースのマネージド仮想ネットワークを有効にすることができます。
 
-![Synapse Studio ワークスペースのリンクされたストレージのプライベート エンドポイントの作成 1](./media/how-to-connect-to-workspace-from-restricted-network/ws-network-config.png)
+![[マネージド仮想ネットワークの有効化] オプションが強調表示されている [Synapse ワークスペースを作成する] のスクリーンショット。](./media/how-to-connect-to-workspace-from-restricted-network/ws-network-config.png)
 
-特定のストレージ アカウントで、リンクされたストレージ リソースに Notebook からアクセスする場合は、Synapse Studio で "**マネージド プライベート エンドポイント**" を追加する必要があります。 **[ストレージ アカウント名]** には Notebook からアクセスする必要のあるものを指定します。 詳細な手順については、「[データ ソースへのマネージド プライベート エンドポイントを作成する](./how-to-create-managed-private-endpoints.md)」を参照してください。
+ノートブックが特定のストレージ アカウントの元にあるリンクされたストレージ リソースにアクセスできるようにするには、Azure Synapse Analytics Studio でマネージド プライベート エンドポイントを追加します。 [ストレージ アカウント名] には、ノートブックからアクセスする必要のあるものを指定します。 詳細については、「[データ ソースへのマネージド プライベート エンドポイントを作成する](./how-to-create-managed-private-endpoints.md)」を参照してください。
 
-このエンドポイントを作成すると、 **[承認状態]** が **[保留]** になるので、Azure portal のこのストレージ アカウントの **[プライベート エンドポイント接続]** タブで、このストレージ アカウントの所有者に承認を依頼する必要があります。 承認されると、このストレージ アカウントで、リンクされたストレージ リソースに Notebook からアクセスできるようになります。
+このエンドポイントを作成すると、承認状態に **[保留中]** の状態が表示されます。 このストレージ アカウントの所有者からの承認を要求するには、Azure portal 内のこのストレージ アカウントの **[プライベート エンドポイント接続]** タブで行います。 承認されると、このストレージ アカウントで、リンクされたストレージ リソースにノートブックからアクセスできるようになります。
 
-これで、すべてが設定されました。 Synapse Studio ワークスペースのリソースにアクセスできます。
+これで、すべてが設定されました。 Azure Synapse Analytics Studio ワークスペース リソースにアクセスできます。
 
 ## <a name="next-steps"></a>次のステップ
 
-[マネージド ワークスペースの Virtual Network](./synapse-workspace-managed-vnet.md) の詳細を学習する
+[マネージド ワークスペースの仮想ネットワーク](./synapse-workspace-managed-vnet.md)の詳細を参照してください。
 
-[マネージド プライベート エンドポイント](./synapse-workspace-managed-private-endpoints.md)の詳細を学習する
+[マネージド プライベート エンドポイント](./synapse-workspace-managed-private-endpoints.md)の詳細を参照してください。

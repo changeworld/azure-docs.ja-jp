@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 49922599adb30e6c631f29b4831fda60cc000a40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa3a6d16b79800043bdcd3f183dd86fa278dd1a9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360125"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026029"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Speech SDK を使用してクライアント アプリケーションと統合する
 
@@ -35,15 +35,15 @@ ms.locfileid: "91360125"
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) またはそれ以降。 このガイドは、Visual Studio 2019 に基づいています。
 > * Speech Services 用の Azure サブスクリプション キー。 [無料で入手する](overview.md#try-the-speech-service-for-free)か、[Azure portal](https://portal.azure.com) で作成します
-> * [デバイスを開発用に有効にする](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
+> * [デバイスを開発用に有効にする](/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="step-1-publish-custom-commands-application"></a>手順 1:カスタム コマンド アプリケーションを発行する
 
 1. 前に作成したカスタム コマンド アプリケーションを開きます
 1. **[設定]** 、 **[LUIS リソース]** に移動します
-1. **予測リソース**が割り当てられていない場合は、クエリ予測キーを選択するか、新しいキーを作成します
+1. **予測リソース** が割り当てられていない場合は、クエリ予測キーを選択するか、新しいキーを作成します
 
-    クエリ予測キーはアプリケーションを公開する前に常に必要です。 LUIS リソースの詳細については、「[LUIS リソースを作成する](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription)」を参照してください
+    クエリ予測キーはアプリケーションを公開する前に常に必要です。 LUIS リソースの詳細については、「[LUIS リソースを作成する](../luis/luis-how-to-azure-subscription.md)」を参照してください
 
 1. 編集コマンドに戻り、 **[発行]** を選択します
 
@@ -65,7 +65,7 @@ ms.locfileid: "91360125"
 
 次の XAML コードを追加してアプリケーションのユーザー インターフェイスを作成します。
 
-1. **ソリューション エクスプローラー**で、`MainPage.xaml` を開きます
+1. **ソリューション エクスプローラー** で、`MainPage.xaml` を開きます
 
 1. デザイナーの XAML ビューで、内容全体を次のコード スニペットに置き換えます。
 
@@ -129,7 +129,7 @@ ms.locfileid: "91360125"
 
 次のようにしてコードビハインドのソースを追加します。
 
-1. **ソリューション エクスプローラー**で、コードビハインドのソース ファイル `MainPage.xaml.cs` を開きます (`MainPage.xaml` にグループ化されています)
+1. **ソリューション エクスプローラー** で、コードビハインドのソース ファイル `MainPage.xaml.cs` を開きます (`MainPage.xaml` にグループ化されています)
 
 1. ファイルの内容を次のコードに置き換えます。 
 

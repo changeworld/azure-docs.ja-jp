@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: v-demjoh
 keywords: 意図認識
-ms.openlocfilehash: 0d718459e0fd0ea410232d3a165b560aa8c59cd1
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 215b25e440b8cad76e0656e47d32b184edf4ac66
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174622"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018703"
 ---
 # <a name="what-is-intent-recognition"></a>意図認識とは
 
@@ -29,7 +29,7 @@ ms.locfileid: "92174622"
 
 * LUIS は音声から意図を認識するために Speech サービスと統合しています。 Speech サービスのサブスクリプションは不要で、LUIS だけでかまいません。
 * 音声意図認識は、SDK と統合されています。 Speech Service では LUIS キーを利用できます。
-* Speech SDK を使用した意図認識は、[LUIS によってサポートされるリージョンのサブセットで提供](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#intent-recognition)されています。
+* Speech SDK を使用した意図認識は、[LUIS によってサポートされるリージョンのサブセットで提供](./regions.md#intent-recognition)されています。
 
 ## <a name="get-started"></a>はじめに
 
@@ -39,8 +39,8 @@ ms.locfileid: "92174622"
 
 意図認識のサンプル コードについては、次を参照してください。
 
-* [クイック スタート:事前構築済みの Home Automation アプリを使用する](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)
-* [C# 用の Speech SDK を使用して音声の意図を認識する](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)
+* [クイック スタート:事前構築済みの Home Automation アプリを使用する](../luis/luis-get-started-create-app.md)
+* [C# 用の Speech SDK を使用して音声の意図を認識する](./how-to-recognize-intents-from-speech-csharp.md)
 * [C# の Unity を使用した意図認識およびその他の Speech サービス](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/speechrecognizer)
 * [Python 用 Speech SDK を使用して意図を認識する](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)
 * [Windows で C++ 用 Speech SDK を使用した意図認識およびその他の Speech サービス](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/windows/console)
@@ -49,7 +49,7 @@ ms.locfileid: "92174622"
 
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
-* [Speech SDK](speech-sdk-reference.md)
+* [Speech SDK](./speech-sdk.md)
 
 ## <a name="next-steps"></a>次のステップ
 

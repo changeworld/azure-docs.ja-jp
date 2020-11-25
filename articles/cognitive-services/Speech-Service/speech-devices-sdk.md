@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 560c156c8e2c3d69c099b2ad573fa0d214f3f80b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0309329b37436022dc88f8951853c4bb09a2c080
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355076"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015275"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>Speech Devices SDK とは
 
@@ -29,9 +29,9 @@ Speech Devices SDK は、次の場合に役立ちます。
 
 Speech Devices SDK は、[Speech SDK](speech-sdk.md) を利用しています。 デバイスのマイク配列と共に高度な音声処理アルゴリズムを使用して、[Speech サービス](overview.md)に音声を送信します。 ノイズの抑制、エコー キャンセレーション、ビームフォーミング、残響除去によって、正確な遠距離[音声認識](speech-to-text.md)が提供されます。
 
-また、Speech Devices SDK を使用して、独自の[カスタマイズされたキーワード](speech-devices-sdk-create-kws.md)を備えたアンビエント デバイスを構築することもできます。 カスタム キーワードによって、ブランドに固有のユーザー操作を開始するキューが提供されます。
+また、Speech Devices SDK を使用して、独自の[カスタマイズされたキーワード](./custom-keyword-basics.md)を備えたアンビエント デバイスを構築することもできます。 カスタム キーワードによって、ブランドに固有のユーザー操作を開始するキューが提供されます。
 
-Speech Devices SDK を使用すると、[音声アシスタント](https://aka.ms/bots/speech/va)、ドライブスルー注文システム、[会話の文字起こし](conversation-transcription-service.md)、スマート スピーカーなど、さまざまな音声対応シナリオが可能になります。 ユーザーへのテキストでの応答、既定の音声または[カスタム音声](how-to-customize-voice-font.md)での応答、検索結果の提供、他の言語への[翻訳](speech-translation.md)などを行うことができます。 皆様の開発の成果を楽しみにしております。
+Speech Devices SDK を使用すると、[音声アシスタント](./voice-assistants.md)、ドライブスルー注文システム、[会話の文字起こし](./conversation-transcription.md)、スマート スピーカーなど、さまざまな音声対応シナリオが可能になります。 ユーザーへのテキストでの応答、既定の音声または[カスタム音声](./how-to-custom-voice-create-voice.md)での応答、検索結果の提供、他の言語への[翻訳](speech-translation.md)などを行うことができます。 皆様の開発の成果を楽しみにしております。
 
 ## <a name="get-the-speech-devices-sdk"></a>Speech Devices SDK を取得する
 

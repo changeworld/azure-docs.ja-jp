@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 272367d5311952b45c73febe0e05b1ec2d225261
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ae164b1300119481e495e647dd491beafdd5241
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88056688"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025080"
 ---
 # <a name="get-started-with-custom-voice"></a>Custom Voice の概要
 
@@ -42,7 +42,7 @@ Custom Voice を開始する前に、Azure アカウントと音声サービス�
 ニューラル音声のカスタマイズ機能は、現在、パブリック プレビュー段階にあり、一部のお客様に限定されています。 使用を開始するには、この[申請フォーム](https://go.microsoft.com/fwlink/?linkid=2108737)に入力してください。
 
 > [!NOTE]
-> 信頼のおける AI の設計に対するマイクロソフトの取り組みの一環として、個人および社会の権利を保護し、人とコンピューターとの透明性のあるやり取りを促進することを目的としています。 このため、カスタム ニューラル音声は、すべてのお客様が一般に利用できるわけではありません。 このテクノロジにアクセスできるのは、アプリケーションの審査を受け、弊社の倫理原則に沿ってアプリケーションを使用することを確約した場合のみです。 アプリケーションの制限プロセスの詳細については、[こちら](https://aka.ms/custom-neural-gating-overview)を参照してください。
+> 信頼のおける AI の設計に対するマイクロソフトの取り組みの一環として、個人および社会の権利を保護し、人とコンピューターとの透明性のあるやり取りを促進することを目的としています。 このため、カスタム ニューラル音声は、すべてのお客様が一般に利用できるわけではありません。 このテクノロジにアクセスできるのは、アプリケーションの審査を受け、弊社の倫理原則に沿ってアプリケーションを使用することを確約した場合のみです。 アプリケーションの制限プロセスの詳細については、[こちら](./concepts-gating-overview.md)を参照してください。
 
 ## <a name="set-up-your-azure-account"></a>Azure アカウントの設定
 

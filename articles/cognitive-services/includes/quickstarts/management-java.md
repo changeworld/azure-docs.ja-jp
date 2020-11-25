@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/01/2020
 ms.author: pafarley
-ms.openlocfilehash: 346854d5990ac6861bd4eb93914bb1745b90bfa5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a7fc96127d4449cfe0333ba81532d3c5c4ec19fe
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89321601"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95098430"
 ---
-[リファレンス ドキュメント](https://docs.microsoft.com/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/mgmt-v2017_04_18/src/main/java/com/microsoft/azure/management/cognitiveservices/v2017_04_18) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-mgmt-cognitiveservices)
+[リファレンス ドキュメント](/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/mgmt-v2017_04_18/src/main/java/com/microsoft/azure/management/cognitiveservices/v2017_04_18) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-mgmt-cognitiveservices)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -126,7 +126,7 @@ Azure アカウントのすべてのリソース (すべてのリソース グ�
 
 ## <a name="see-also"></a>関連項目
 
-* [Azure Management SDK のリファレンス ドキュメント](https://docs.microsoft.com/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable)
-* [Azure Cognitive Services とは](../../Welcome.md)
+* [Azure Management SDK のリファレンス ドキュメント](/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable)
+* [Azure Cognitive Services とは](../../what-are-cognitive-services.md)
 * [Azure Cognitive Services に対する要求の認証](../../authentication.md)
 * [Azure portal を使用して新しいリソースを作成する](../../cognitive-services-apis-create-account.md)

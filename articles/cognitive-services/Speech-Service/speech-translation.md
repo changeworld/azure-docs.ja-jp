@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: 音声翻訳
-ms.openlocfilehash: e54659b0d4504def272d3de40d5e953d98404a8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36c2943d7cd5ce2c5c7c4a8501dc0033aa8c9cbc
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630072"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015207"
 ---
 # <a name="what-is-speech-translation"></a>音声翻訳とは何か
 
@@ -48,13 +48,13 @@ Speech SDK のサンプル コードは、GitHub 上で入手できます。 こ
 
 ## <a name="migration-guides"></a>移行ガイド
 
-アプリケーション、ツール、または製品で [Translator Speech API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview) をご使用の方に向けて、Speech Service への移行に役立つガイドを作成しました。
+アプリケーション、ツール、または製品で [Translator Speech API](./how-to-migrate-from-translator-speech-api.md) をご使用の方に向けて、Speech Service への移行に役立つガイドを作成しました。
 
 * [Translator Speech API から Speech Service に移行する](how-to-migrate-from-translator-speech-api.md)
 
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
-* [Speech SDK](speech-sdk-reference.md)
+* [Speech SDK](./speech-sdk.md)
 * [Speech Devices SDK](speech-devices-sdk.md)
 * [REST API: 音声テキスト変換](rest-speech-to-text.md)
 * [REST API: テキスト読み上げ](rest-text-to-speech.md)

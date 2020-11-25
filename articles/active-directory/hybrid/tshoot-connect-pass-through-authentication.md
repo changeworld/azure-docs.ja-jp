@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a602405065a41cb26b2ae5303d12c45ed21616f
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 224ccaeace91288171db42d2b8b8cf8c21a352e0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91741195"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652520"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証のトラブルシューティング
 
@@ -34,7 +34,7 @@ ms.locfileid: "91741195"
 
 ### <a name="check-status-of-the-feature-and-authentication-agents"></a>機能と認証エージェントの状態を確認する
 
-テナントでパススルー認証機能がまだ**有効**であること、および認証エージェントの状態が**アクティブ**であり、**非アクティブ**ではないことを確認します。 機能の状態は、[Azure Active Directory 管理センター](https://aad.portal.azure.com/)の **[Azure AD Connect]** ブレードで確認できます。
+テナントでパススルー認証機能がまだ **有効** であること、および認証エージェントの状態が **アクティブ** であり、**非アクティブ** ではないことを確認します。 機能の状態は、[Azure Active Directory 管理センター](https://aad.portal.azure.com/)の **[Azure AD Connect]** ブレードで確認できます。
 
 ![Azure Active Directory 管理センター - [Azure AD Connect] ブレード](./media/tshoot-connect-pass-through-authentication/pta7.png)
 
@@ -156,6 +156,8 @@ Azure AD Connect がインストールされているサーバーが、[こち�
 認証エージェントに関するエラーの場合、サーバーでイベント ビューアー アプリケーションを開き、**アプリケーションとサービス ログ\Microsoft\AzureAdConnect\AuthenticationAgent\Admin** の下を調べます。
 
 詳細な分析を取得するには、"セッション" ログを有効にします (このオプションを表示するにはイベント ビューアー アプリケーション内で右クリックします)。 通常の操作中に、このログを有効にして認証エージェントを実行しないでください。これはトラブルシューティングにのみ使用します。 ログの内容は、ログを再度無効にした後にのみ表示されます。
+
+PTA エージェントのイベント マニフェストについては、[ここ](https://msazure.visualstudio.com/One/_git/AD-AppProxy?path=%2Fsrc%2FProduct%2FMUC%2FPTADiagnosticsResource%2FPTADiagnosticsResource%2FPTAConnectorDiagnosticsResource%2FPTAConnectorEventManifest.man&_a=contents&version=GBmaster)を参照してください。
 
 ### <a name="detailed-trace-logs"></a>詳細なトレース ログ
 

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: v-jawe
 ms.custom: references_regions
-ms.openlocfilehash: 0fd13437ecd494eebf79fa80ed210a0663864104
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 3a32946e10e8a81394b54fc44e4c92e8625e7ad6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875460"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015474"
 ---
 このクイックスタートでは、Speech SDK を使用した Speaker Recognition の基本的な設計パターンについて学習します。これには次のものが含まれます。
 
@@ -29,9 +29,9 @@ Speech Recognition の概念の概要については、[概要](../../../speaker
 
 ## <a name="text-dependent-verification"></a>テキスト依存の認証
 
-Speaker Verification では、話者が既知の、または**登録されている**音声と一致することを確認します。 最初の手順では、音声プロファイルを**登録**し、サービスで今後の音声サンプルと比較できるようにします。 この例では、**テキスト依存**の戦略を使用してプロファイルを登録します。その場合、登録と認証の両方に使用する特定のパスフレーズが必要になります。 サポートされるパスフレーズの一覧については、[リファレンス ドキュメント](https://docs.microsoft.com/rest/api/speakerrecognition/)を参照してください。
+Speaker Verification では、話者が既知の、または **登録されている** 音声と一致することを確認します。 最初の手順では、音声プロファイルを **登録** し、サービスで今後の音声サンプルと比較できるようにします。 この例では、**テキスト依存** の戦略を使用してプロファイルを登録します。その場合、登録と認証の両方に使用する特定のパスフレーズが必要になります。 サポートされるパスフレーズの一覧については、[リファレンス ドキュメント](/rest/api/speakerrecognition/)を参照してください。
 
-まず、[音声プロファイルを作成](https://docs.microsoft.com/rest/api/speakerrecognition/verification/textdependent/createprofile)します。 この記事の各 curl コマンドに、Speech Service のサブスクリプション キーとリージョンを挿入する必要があります。
+まず、[音声プロファイルを作成](/rest/api/speakerrecognition/verification/textdependent/createprofile)します。 この記事の各 curl コマンドに、Speech Service のサブスクリプション キーとリージョンを挿入する必要があります。
 
 :::code language="curl" source="~/cognitive-services-quickstart-code/curl/speech/speaker-recognition.sh" id="tdv_create_profile":::
 
@@ -45,7 +45,7 @@ Speaker Verification では、話者が既知の、または**登録されてい
 
 :::code language="json" source="~/cognitive-services-quickstart-code/curl/speech/speaker-recognition.sh" id="tdv_create_profile_response":::
 
-次に、[音声プロファイルを登録](https://docs.microsoft.com/rest/api/speakerrecognition/verification/textdependent/createenrollment)します。 `--data-binary` パラメーター値には、サポートされているパスフレーズのいずれか (たとえば、"my voice is my passport, verify me") が含まれている、お使いのコンピューター上のオーディオ ファイルを指定します。 このようなオーディオ ファイルは、[Windows ボイス レコーダー](https://www.microsoft.com/p/windows-voice-recorder/9wzdncrfhwkn?activetab=pivot:overviewtab)などのアプリを使用して録音できます。また、[テキスト読み上げ](https://docs.microsoft.com/azure/cognitive-services/speech-service/index-text-to-speech)を使用して生成することもできます。
+次に、[音声プロファイルを登録](/rest/api/speakerrecognition/verification/textdependent/createenrollment)します。 `--data-binary` パラメーター値には、サポートされているパスフレーズのいずれか (たとえば、"my voice is my passport, verify me") が含まれている、お使いのコンピューター上のオーディオ ファイルを指定します。 このようなオーディオ ファイルは、[Windows ボイス レコーダー](https://www.microsoft.com/p/windows-voice-recorder/9wzdncrfhwkn?activetab=pivot:overviewtab)などのアプリを使用して録音できます。また、[テキスト読み上げ](../../../index-text-to-speech.yml)を使用して生成することもできます。
 
 :::code language="curl" source="~/cognitive-services-quickstart-code/curl/speech/speaker-recognition.sh" id="tdv_enroll":::
 
@@ -59,7 +59,7 @@ Speaker Verification では、話者が既知の、または**登録されてい
 
 :::code language="json" source="~/cognitive-services-quickstart-code/curl/speech/speaker-recognition.sh" id="tdv_enroll_response_2":::
 
-これで、[音声プロファイルに対してオーディオ サンプルを認証する](https://docs.microsoft.com/rest/api/speakerrecognition/verification/textdependent/verifyprofile)準備が整いました。 このオーディオ サンプルには、音声プロファイルの登録に使用したサンプルと同じパスフレーズが含まれている必要があります。
+これで、[音声プロファイルに対してオーディオ サンプルを認証する](/rest/api/speakerrecognition/verification/textdependent/verifyprofile)準備が整いました。 このオーディオ サンプルには、音声プロファイルの登録に使用したサンプルと同じパスフレーズが含まれている必要があります。
 
 :::code language="curl" source="~/cognitive-services-quickstart-code/curl/speech/speaker-recognition.sh" id="tdv_verify":::
 
@@ -69,7 +69,7 @@ Speaker Verification では、話者が既知の、または**登録されてい
 
 `Accept` は、パスフレーズが一致し、認証が成功したことを意味します。 また、応答には、0.0 から 1.0 の範囲の類似性スコアも含まれています。
 
-終了するには、[音声プロファイルを削除](https://docs.microsoft.com/rest/api/speakerrecognition/verification/textdependent/deleteprofile)します。
+終了するには、[音声プロファイルを削除](/rest/api/speakerrecognition/verification/textdependent/deleteprofile)します。
 
 :::code language="curl" source="~/cognitive-services-quickstart-code/curl/speech/speaker-recognition.sh" id="tdv_delete_profile":::
 
@@ -77,12 +77,12 @@ Speaker Verification では、話者が既知の、または**登録されてい
 
 ## <a name="text-independent-verification"></a>テキストに依存しない認証
 
-**テキストに依存する**認証とは対照的に、**テキストに依存しない**認証は次のようになります。
+**テキストに依存する** 認証とは対照的に、**テキストに依存しない** 認証は次のようになります。
 
 * 特定のパスフレーズを読み上げる必要はなく、何を話してもかまいません
 * 3 つのオーディオ サンプルは必要ありませんが、合計 20 秒のオーディオが "*必要*" になります
 
-まず、[テキストに依存しない認証プロファイルを作成](https://docs.microsoft.com/rest/api/speakerrecognition/verification/textindependent/createprofile)します。
+まず、[テキストに依存しない認証プロファイルを作成](/rest/api/speakerrecognition/verification/textindependent/createprofile)します。
 
 :::code language="curl" source="~/cognitive-services-quickstart-code/curl/speech/speaker-recognition.sh" id="tiv_create_profile":::
 
@@ -90,7 +90,7 @@ Speaker Verification では、話者が既知の、または**登録されてい
 
 :::code language="json" source="~/cognitive-services-quickstart-code/curl/speech/speaker-recognition.sh" id="tiv_create_profile_response":::
 
-次に、[音声プロファイルを登録](https://docs.microsoft.com/rest/api/speakerrecognition/verification/textindependent/createenrollment)します。 ここでも、3 つのオーディオ サンプルを送信するのではなく、合計 20 秒のオーディオを含むオーディオ サンプルを送信する必要があります。
+次に、[音声プロファイルを登録](/rest/api/speakerrecognition/verification/textindependent/createenrollment)します。 ここでも、3 つのオーディオ サンプルを送信するのではなく、合計 20 秒のオーディオを含むオーディオ サンプルを送信する必要があります。
 
 :::code language="curl" source="~/cognitive-services-quickstart-code/curl/speech/speaker-recognition.sh" id="tiv_enroll":::
 
@@ -98,7 +98,7 @@ Speaker Verification では、話者が既知の、または**登録されてい
 
 :::code language="json" source="~/cognitive-services-quickstart-code/curl/speech/speaker-recognition.sh" id="tiv_enroll_response":::
 
-これで、[音声プロファイルに対してオーディオ サンプルを認証する](https://docs.microsoft.com/rest/api/speakerrecognition/verification/textindependent/verifyprofile)準備が整いました。 繰り返しますが、このオーディオ サンプルにパスフレーズを含める必要はありません。 合計で少なくとも 4 秒のオーディオが含まれていれば、任意の音声を含めることができます。
+これで、[音声プロファイルに対してオーディオ サンプルを認証する](/rest/api/speakerrecognition/verification/textindependent/verifyprofile)準備が整いました。 繰り返しますが、このオーディオ サンプルにパスフレーズを含める必要はありません。 合計で少なくとも 4 秒のオーディオが含まれていれば、任意の音声を含めることができます。
 
 :::code language="curl" source="~/cognitive-services-quickstart-code/curl/speech/speaker-recognition.sh" id="tiv_verify":::
 
@@ -108,7 +108,7 @@ Speaker Verification では、話者が既知の、または**登録されてい
 
 `Accept` は、認証が成功したことを意味します。 また、応答には、0.0 から 1.0 の範囲の類似性スコアも含まれています。
 
-終了するには、[音声プロファイルを削除](https://docs.microsoft.com/rest/api/speakerrecognition/verification/textindependent/deleteprofile)します。
+終了するには、[音声プロファイルを削除](/rest/api/speakerrecognition/verification/textindependent/deleteprofile)します。
 
 :::code language="curl" source="~/cognitive-services-quickstart-code/curl/speech/speaker-recognition.sh" id="tiv_delete_profile":::
 
@@ -116,9 +116,9 @@ Speaker Verification では、話者が既知の、または**登録されてい
 
 ## <a name="speaker-identification"></a>話者識別
 
-話者識別を使用して、登録されている音声の特定のグループの**誰**が話しているのかを判別します。 このプロセスは**テキストに依存しない認証**とよく似ています。主な違いは、1 つのプロファイルに対して認証するのではなく、一度に複数の音声プロファイルに対して認証できることです。
+話者識別を使用して、登録されている音声の特定のグループの **誰** が話しているのかを判別します。 このプロセスは **テキストに依存しない認証** とよく似ています。主な違いは、1 つのプロファイルに対して認証するのではなく、一度に複数の音声プロファイルに対して認証できることです。
 
-まず、[テキストに依存しない識別プロファイルを作成](https://docs.microsoft.com/rest/api/speakerrecognition/identification/textindependent/createprofile)します。
+まず、[テキストに依存しない識別プロファイルを作成](/rest/api/speakerrecognition/identification/textindependent/createprofile)します。
 
 :::code language="curl" source="~/cognitive-services-quickstart-code/curl/speech/speaker-recognition.sh" id="tii_create_profile":::
 
@@ -126,7 +126,7 @@ Speaker Verification では、話者が既知の、または**登録されてい
 
 :::code language="json" source="~/cognitive-services-quickstart-code/curl/speech/speaker-recognition.sh" id="tii_create_profile_response":::
 
-次に、[音声プロファイルを登録](https://docs.microsoft.com/rest/api/speakerrecognition/identification/textindependent/createenrollment)します。 ここでも、合計 20 秒のオーディオを含むオーディオ サンプルを送信する必要があります。 これらのサンプルにパスフレーズを含める必要はありません。
+次に、[音声プロファイルを登録](/rest/api/speakerrecognition/identification/textindependent/createenrollment)します。 ここでも、合計 20 秒のオーディオを含むオーディオ サンプルを送信する必要があります。 これらのサンプルにパスフレーズを含める必要はありません。
 
 :::code language="curl" source="~/cognitive-services-quickstart-code/curl/speech/speaker-recognition.sh" id="tii_enroll":::
 
@@ -134,7 +134,7 @@ Speaker Verification では、話者が既知の、または**登録されてい
 
 :::code language="json" source="~/cognitive-services-quickstart-code/curl/speech/speaker-recognition.sh" id="tii_enroll_response_2":::
 
-これで、[音声プロファイルを使用してオーディオ サンプルを識別する](https://docs.microsoft.com/rest/api/speakerrecognition/identification/textindependent/identifysinglespeaker)準備が整いました。 識別コマンドは、使用可能な音声プロファイル ID のコンマ区切りリストを受け取ります。 この場合は、先ほど作成した音声プロファイルの ID を渡すだけです。 ただし、必要に応じて、複数の音声プロファイルの ID を渡すことができます。この場合、各音声プロファイルは、異なる音声のオーディオ サンプルに登録されています。
+これで、[音声プロファイルを使用してオーディオ サンプルを識別する](/rest/api/speakerrecognition/identification/textindependent/identifysinglespeaker)準備が整いました。 識別コマンドは、使用可能な音声プロファイル ID のコンマ区切りリストを受け取ります。 この場合は、先ほど作成した音声プロファイルの ID を渡すだけです。 ただし、必要に応じて、複数の音声プロファイルの ID を渡すことができます。この場合、各音声プロファイルは、異なる音声のオーディオ サンプルに登録されています。
 
 :::code language="curl" source="~/cognitive-services-quickstart-code/curl/speech/speaker-recognition.sh" id="tii_identify":::
 
@@ -144,7 +144,7 @@ Speaker Verification では、話者が既知の、または**登録されてい
 
 この応答には、送信したオーディオ サンプルに最も合致する音声プロファイルの ID が含まれています。 また、類似性の順でランク付けされた、候補となる音声プロファイルのリストも含まれています。
 
-終了するには、[音声プロファイルを削除](https://docs.microsoft.com/rest/api/speakerrecognition/identification/textindependent/deleteprofile)します。
+終了するには、[音声プロファイルを削除](/rest/api/speakerrecognition/identification/textindependent/deleteprofile)します。
 
 :::code language="curl" source="~/cognitive-services-quickstart-code/curl/speech/speaker-recognition.sh" id="tii_delete_profile":::
 

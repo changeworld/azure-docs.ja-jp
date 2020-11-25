@@ -1,19 +1,19 @@
 ---
 title: アンカーのリレーションシップとウェイファインディング
 description: アンカーのリレーションシップの背後にある概念モデルについて説明します。 空間内のアンカーを接続する方法、および近隣 API を使用してウェイファインディング シナリオを実現する方法について説明します。
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 13c85dff40e266287d893d9e45b32a66a33f027e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c321eae9451715077aa50d163b62b51ec88ce1a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83006015"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95496887"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Azure Spatial Anchors でのアンカーのリレーションシップとウェイファインディング
 
@@ -32,7 +32,7 @@ ms.locfileid: "83006015"
 
 ## <a name="set-up-way-finding"></a>ウェイファインディングを設定する
 
-アンカー間の視線方向と距離を使用して案内を提供するアプリは、*ウェイファインディング*を使用しています。 ウェイファインディングは、道案内ナビゲーションとは異なります。 道案内ナビゲーションでは、ユーザーは壁の回りを、ドアを通って、さらにフロア間を案内されます。 ウェイファインディングでは、ユーザーは目的地の大まかな方向に関するヒントが与えられます。 ただし、その空間の推測または知識も、ユーザーが目的地への構造を通って移動するのに役立ちます。
+アンカー間の視線方向と距離を使用して案内を提供するアプリは、*ウェイファインディング* を使用しています。 ウェイファインディングは、道案内ナビゲーションとは異なります。 道案内ナビゲーションでは、ユーザーは壁の回りを、ドアを通って、さらにフロア間を案内されます。 ウェイファインディングでは、ユーザーは目的地の大まかな方向に関するヒントが与えられます。 ただし、その空間の推測または知識も、ユーザーが目的地への構造を通って移動するのに役立ちます。
 
 ウェイファインディング エクスペリエンスを構築するには、まずそのエクスペリエンス用に空間を準備し、ユーザーが操作するアプリを開発します。 その概念的な手順を次に示します。
 

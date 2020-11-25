@@ -5,14 +5,14 @@ services: front-door
 author: duongau
 ms.service: frontdoor
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 11/13/2020
 ms.author: duau
-ms.openlocfilehash: 44813a7662420ab4dedcd0bf99cc1eec7e9d9d2d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 55eefe7a7490df050aa7ebc2bb41fbadcc8d8279
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819073"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646340"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>フロント ドアにルート ドメインまたは頂点ドメインをオンボードする
 Azure Front Door では、CNAME レコードを使用して、カスタム ドメインのオンボードに対するドメインの所有権が検証されます。 Front Door によって、Front Door プロファイルに関連付けられているフロントエンド IP アドレスが公開されることはありません。 そのため、頂点ドメインは、Azure Front Door にオンボードするのが目的の場合は、IP アドレスにマップすることはできません。
@@ -34,15 +34,15 @@ Azure portal を使って、頂点ドメインをお使いのフロント ドア
 
 1. ゾーンの頂点のレコードを作成または編集します。
 
-1. レコードの**種類**として *A* を選択し、 **[Alias record set]\(エイリアス レコード セット\)** で *[はい]* を選択します。 **[Alias type]\(エイリアスの種類\)** は *[Azure resource]\(Azure リソース\)* に設定する必要があります。
+1. レコードの **種類** として *A* を選択し、 **[Alias record set]\(エイリアス レコード セット\)** で *[はい]* を選択します。 **[Alias type]\(エイリアスの種類\)** は *[Azure resource]\(Azure リソース\)* に設定する必要があります。
 
 1. Front Door プロファイルをホストする Azure サブスクリプションを選択します。 次に、 **[Azure リソース]** ドロップダウンから Front Door リソースを選択します。
 
 1. **[OK]** を選択して変更を送信します。
 
-    :::image type="content" source="./media/front-door-apex-domain/front-door-apex-alias-record.png" alt-text="ゾーンの頂点に対するエイリアス レコード&quot;:::
+    :::image type="content" source="./media/front-door-apex-domain/front-door-apex-alias-record.png" alt-text="ゾーンの頂点に対するエイリアス レコード":::
 
-1. 上のステップでは、Front Door リソースを指定するゾーンの頂点のレコードと、Front Door プロファイルへのドメインのオンボードに使用される &quot;afdverify" (例: `afdverify.contosonews.com`) をマップする CNAME レコードが作成されます。
+1. 上のステップでは、Front Door リソースを指定するゾーンの頂点のレコードと、Front Door プロファイルへのドメインのオンボードに使用される "afdverify" (例: `afdverify.contosonews.com`) をマップする CNAME レコードが作成されます。
 
 ## <a name="onboard-the-custom-domain-on-your-front-door"></a>カスタム ドメインをフロント ドアにオンボードする
 
@@ -54,9 +54,7 @@ Azure portal を使って、頂点ドメインをお使いのフロント ドア
 
 1. **[保存]** を選択して、変更を送信します。
 
-   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-domain.png" alt-text="ゾーンの頂点に対するエイリアス レコード&quot;:::
-
-1. 上のステップでは、Front Door リソースを指定するゾーンの頂点のレコードと、Front Door プロファイルへのドメインのオンボードに使用される &quot;afdverify":::
+   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-domain.png" alt-text="[カスタム ドメイン] メニュー":::
 
 ## <a name="enable-https-on-your-custom-domain"></a>カスタム ドメインで HTTPS を有効にする
 
@@ -64,16 +62,14 @@ Azure portal を使って、頂点ドメインをお使いのフロント ドア
 
 1. **[証明書の管理の種類]** で、 *[Use my own certificate]\(独自の証明書を使用する\)* を選択します。
 
-   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-custom-domain.png" alt-text="ゾーンの頂点に対するエイリアス レコード&quot;:::
-
-1. 上のステップでは、Front Door リソースを指定するゾーンの頂点のレコードと、Front Door プロファイルへのドメインのオンボードに使用される &quot;afdverify":::    
+   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-custom-domain.png" alt-text="カスタムドメインの HTTPS 設定":::    
 
    > [!WARNING]
    > Front Door 管理の証明書の管理の種類は、頂点ドメインまたはルート ドメインに対しては現在はサポートされていません。 Front Door に対する頂点ドメインまたはルート ドメインで HTTPS を有効にするために使用できる唯一のオプションは、Azure Key Vault でホストされている独自のカスタム TLS/SSL 証明書を使用することです。
 
 1. 次のステップに進む前に、UI で説明されているように、Front Door がご自分のキー コンテナーにアクセスするための適切なアクセス許可を設定したことを確認します。
 
-1. 現在のサブスクリプションから **Key Vault アカウント**を選択し、適切な証明書にマップするための適切な**シークレット**と**シークレットのバージョン**を選択します。
+1. 現在のサブスクリプションから **Key Vault アカウント** を選択し、適切な証明書にマップするための適切な **シークレット** と **シークレットのバージョン** を選択します。
 
 1. **[更新]** を選択して選択内容を保存し、 **[保存]** を選択します。
 

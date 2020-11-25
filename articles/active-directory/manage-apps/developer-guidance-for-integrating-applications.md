@@ -12,22 +12,22 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b24bd190eac9cb6c29ceab6eb597d8d1c48f2ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de16c947c59f5a0111b9325dbefe7daf1268fb40
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605092"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649162"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Azure Active Directory 用の基幹業務アプリをの開発する
 このガイドでは、Active Directory/Microsoft 365 のグローバル管理者を対象に、Azure Active Directory (AD) 用の基幹業務 (LoB) アプリケーションの開発の概要について説明します。
 
 ## <a name="overview"></a>概要
-Azure AD と統合されるアプリケーションを構築すると、組織内のユーザーは Microsoft 365 でシングル サインオンできます。 アプリケーションを Azure AD と統合すると、アプリケーションの認証ポリシーを管理できます。 条件付きアクセスと多要素認証 (MFA) によってアプリを保護する方法については、「[アクセス ルールの構成](../conditional-access/app-based-mfa.md)」を参照してください。
+Azure AD と統合されるアプリケーションを構築すると、組織内のユーザーは Microsoft 365 でシングル サインオンできます。 アプリケーションを Azure AD と統合すると、アプリケーションの認証ポリシーを管理できます。 条件付きアクセスと多要素認証 (MFA) によってアプリを保護する方法については、「[アクセス ルールの構成](../authentication/tutorial-enable-azure-mfa.md)」を参照してください。
 
 Azure Active Directory を使用するようにアプリケーションを登録します。 アプリケーションを登録することで、開発者が Azure AD を使用してユーザーを認証し、電子メール、カレンダー、ドキュメントなどのユーザー リソースへのアクセスを要求できます。
 
-ディレクトリ内の (ゲスト以外の) すべてのメンバーがアプリケーションを登録できます。これは*アプリケーション オブジェクトの作成*とも呼ばれます。
+ディレクトリ内の (ゲスト以外の) すべてのメンバーがアプリケーションを登録できます。これは *アプリケーション オブジェクトの作成* とも呼ばれます。 アプリケーションを登録できない場合は、ディレクトリのグローバル管理者によって、この機能が制限されていることを意味します。アプリケーションを登録するための[適切な権限を取得](../roles/delegate-app-roles.md#assign-built-in-application-admin-roles)するには、これらの管理者に連絡する必要がある場合があります。 ユーザーを制限する方法の詳細については、[「Azure Active Directory でアプリ登録のアクセス許可を委任する](../roles/delegate-app-roles.md#restrict-who-can-create-applications)」を参照してください。
 
 アプリケーションを登録すると、ユーザーは次の操作を実行できます。
 
@@ -55,14 +55,14 @@ Azure Active Directory を使用するようにアプリケーションを登録
 * 既定のユーザー同意エクスペリエンスを抑制する
 
 ## <a name="configure-access-rules"></a>アクセス規則を構成する
-SaaS アプリに対してアプリケーションごとのアクセス規則を構成します。 たとえば、MFA を必須とするか、信頼されたネットワークでのみユーザーのアクセスを許可することができます。 この詳細については、 [アクセス規則の構成](../conditional-access/app-based-mfa.md)に関するドキュメントをご覧ください。
+SaaS アプリに対してアプリケーションごとのアクセス規則を構成します。 たとえば、MFA を必須とするか、信頼されたネットワークでのみユーザーのアクセスを許可することができます。 この詳細については、 [アクセス規則の構成](../authentication/tutorial-enable-azure-mfa.md)に関するドキュメントをご覧ください。
 
 ## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>ユーザー割り当てを必要とするようにアプリを構成し、ユーザーを割り当てる
 既定では、ユーザーは割り当てなしにアプリケーションにアクセスできます。 ただし、アプリケーションがロールを公開している場合、またはアプリケーションをユーザーのマイ アプリに表示する場合は、ユーザー割り当てが必要です。
 
 Azure AD Premium または Enterprise Mobility Suite (EMS) のサブスクライバーの場合は、グループを使用することを強くお勧めします。 グループをアプリケーションに割り当てると、グループの所有者に継続的にアクセスの管理を委任できます。 自分でグループを作成するか、グループ管理機能を使用して組織の責任者にグループの作成を依頼できます。
 
-[ユーザーとグループをアプリに割り当てる](methods-for-assigning-users-and-groups.md)  
+[ユーザーとグループをアプリに割り当てる](./assign-user-or-group-access-portal.md)  
 
 
 ## <a name="suppress-user-consent"></a>ユーザーの同意を抑制する
@@ -70,9 +70,8 @@ Azure AD Premium または Enterprise Mobility Suite (EMS) のサブスクライ
 
 信頼できるアプリケーションの場合は、組織の代理としてアプリケーションに同意することでユーザー エクスペリエンスを簡略化できます。
 
-ユーザーの同意と Azure での同意エクスペリエンスの詳細については、「 [Azure Active Directory とアプリケーションの統合](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)」を参照してください。
+ユーザーの同意と Azure での同意エクスペリエンスの詳細については、「 [Azure Active Directory とアプリケーションの統合](../develop/quickstart-register-app.md)」を参照してください。
 
 ## <a name="related-articles"></a>関連記事
 * [Azure AD アプリケーション プロキシを使用してオンプレミス アプリケーションへの安全なリモート アクセスを有効にする](application-proxy.md)
 * [Azure AD を使用したアプリへのアクセスの管理](what-is-access-management.md)
-

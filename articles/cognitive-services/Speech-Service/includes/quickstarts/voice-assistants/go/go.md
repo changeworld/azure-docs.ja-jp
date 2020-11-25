@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/25/2020
 ms.author: trrwilson
-ms.openlocfilehash: b05e63dc549fdf1fec4485e27086bb32251b41d8
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c37637ba1cb5154bbd56f7fd22bbbca62b8c3438
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93136122"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95096365"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -18,7 +18,7 @@ ms.locfileid: "93136122"
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../overview.md#try-the-speech-service-for-free)
 > * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md)
-> * [Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)に接続されたボットを作成する
+> * [Direct Line Speech チャネル](/azure/bot-service/bot-service-channel-connect-directlinespeech)に接続されたボットを作成する
 > * オーディオ キャプチャ用のマイクにアクセスできることを確認する
 >
   > [!NOTE]
@@ -102,13 +102,13 @@ func main() {
 - 左側の **[Keys and Endpoint]\(キーとエンドポイント\)** に、利用可能なサブスクリプション キーが 2 つあります
     - そのどちらか一方で `YOUR_SUBSCRIPTION_KEY` の値を置き換えます
 - 左側の **[概要]** で、リージョンをメモし、それをリージョン識別子にマッピングします
-    - `YOUR_BOT_REGION` の置換値としてリージョン識別子を使用します ( **米国西部** の場合は `"westus"` など)
+    - `YOUR_BOT_REGION` の置換値としてリージョン識別子を使用します (**米国西部** の場合は `"westus"` など)
 
    > [!NOTE]
    > [音声アシスタントをサポートしているリージョンの一覧](~/articles/cognitive-services/speech-service/regions.md#voice-assistants)を参照し、ご使用のリソースがそれらのリージョンのいずれかにデプロイされていることを確認します。
 
    > [!NOTE]
-   > ご自分のボットの構成の詳細については、[Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)に関する Bot Framework のドキュメントを参照してください。
+   > ご自分のボットの構成の詳細については、[Direct Line Speech チャネル](/azure/bot-service/bot-service-channel-connect-directlinespeech)に関する Bot Framework のドキュメントを参照してください。
 
 ## <a name="code-explanation"></a>コードの説明
 音声構成オブジェクトを作成するには、Speech のサブスクリプション キーとリージョンが必要です。 音声認識エンジン オブジェクトをインスタンス化するには、この構成オブジェクトが必要です。

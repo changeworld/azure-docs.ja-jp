@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 01d50f6228d63801f62ae933a8367f842d89ef97
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 46bcdac41497eea91b5af0c512a7118e33d5d7c3
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071372"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638905"
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 
@@ -156,7 +156,7 @@ ms.locfileid: "92071372"
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
 ```xml
-<forward-request timeout="time in seconds" follow-redirects="false | true" buffer-request-body="false | true" fail-on-error-status-code="false | true"/>
+<forward-request timeout="time in seconds" follow-redirects="false | true" buffer-request-body="false | true" buffer-response="true | false" fail-on-error-status-code="false | true"/>
 ```
 
 ### <a name="examples"></a>例
@@ -255,6 +255,7 @@ ms.locfileid: "92071372"
 | timeout="整数"                             | バックエンド サービスによって返される HTTP 応答ヘッダーを待機する秒単位の時間。この時間を過ぎると、タイムアウト エラーが発生します。 最小値は 0 秒です。 この時間を過ぎると基盤となるネットワーク インフラストラクチャによってアイドル接続がドロップされる可能性があるため、240 秒より大きい値は受け入れられません。 | いいえ       | なし    |
 | follow-redirects="false &#124; true"          | バックエンド サービスからのリダイレクトについて、その後にゲートウェイが続くか、それとも呼び出し元に返されるかを指定します。                                                                                                                                                                                                    | いいえ       | false   |
 | buffer-request-body="false &#124; true"       | "true" に設定した場合、要求がバッファーされ、[再試行](api-management-advanced-policies.md#Retry)で再利用されます。                                                                                                                                                                                               | いいえ       | false   |
+| buffer-response="false &#124; true" | チャンクされた応答の処理に影響します。 "false" に設定すると、バックエンドから受け取った各チャンクが即時に呼び出し元に返されます。 "true" に設定すると、チャンクがバッファーされます (ストリームの末尾が検出されない場合は 8 KB)。その後にのみ、呼び出し元に返されます。 | いいえ | true |
 | fail-on-error-status-code="false &#124; true" | true に設定すると、400 から 599 まで (両端の値を含む) の範囲の応答コードについて、[on-error](api-management-error-handling-policies.md) セクションがトリガーされます。                                                                                                                                                                      | いいえ       | false   |
 
 ### <a name="usage"></a>使用法
@@ -469,9 +470,9 @@ status code and media type. If no example or schema found, the content is empty.
 | first-fast-retry | `true` に設定した場合、最初の再試行がすぐに実行されます。                                                                                  | No       | `false` |
 
 > [!NOTE]
-> `interval` のみを指定した場合、再試行は**固定**間隔で実行されます。
-> `interval` と `delta` のみを指定した場合、**線形**間隔の再試行アルゴリズムが使用されます。この場合の再試行間の待機時間は、次の式に従って計算されます: `interval + (count - 1)*delta`。
-> `interval`、`max-interval`、および `delta` を指定した場合、**指数**間隔の再試行アルゴリズムが適用されます。この場合の再試行間の待機時間は、次の式に従って `interval` の値から値 `max-interval` まで指数的に大きくなります: `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`。
+> `interval` のみを指定した場合、再試行は **固定** 間隔で実行されます。
+> `interval` と `delta` のみを指定した場合、**線形** 間隔の再試行アルゴリズムが使用されます。この場合の再試行間の待機時間は、次の式に従って計算されます: `interval + (count - 1)*delta`。
+> `interval`、`max-interval`、および `delta` を指定した場合、**指数** 間隔の再試行アルゴリズムが適用されます。この場合の再試行間の待機時間は、次の式に従って `interval` の値から値 `max-interval` まで指数的に大きくなります: `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`。
 
 ### <a name="usage"></a>使用
 
@@ -679,7 +680,7 @@ status code and media type. If no example or schema found, the content is empty.
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | mode="文字列"                   | これが新しい要求であるか現在の要求のコピーであるかを判定します。 送信モードでの mode=copy の場合、要求本文は初期化されません。                                                                                                                                                                                                                                                                                                                                                                                                                                                                | No       | 新規      |
 | response-variable-name="文字列" | 応答オブジェクトを受信するコンテキスト変数の名前。 この変数が存在しない場合は、ポリシーの正常な実行時に作成され、[`context.Variable`](api-management-policy-expressions.md#ContextVariables) コレクション経由でアクセス可能になります。                                                                                                                                                                                                                                                                                                                          | はい      | 該当なし      |
-| timeout="整数"               | URL の呼び出しが失敗するまでのタイムアウト間隔 (秒単位)。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | No       | 60       |
+| timeout="整数"               | URL の呼び出しが失敗するまでのタイムアウト間隔 (秒単位)。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | いいえ       | 60       |
 | ignore-error                    | true に設定され、要求の結果がエラーになった場合:<br /><br /> - response-variable-name が指定されている場合、null 値が格納されます。<br />- response-variable-name が指定されていない場合、context.Request は更新されません。                                                                                                                                                                                                                                                                                                                                                                                   | いいえ       | false    |
 | name                            | 設定するヘッダーの名前を指定します。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | はい      | 該当なし      |
 | exists-action                   | 対象のヘッダーが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> - override - 既存のヘッダーの値を置き換えます。<br />- skip - 既存のヘッダーの値を置き換えません。<br />- append - 既存のヘッダーの値に値を追加します。<br />- delete - 要求からヘッダーを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってヘッダーが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。 | いいえ       | override |

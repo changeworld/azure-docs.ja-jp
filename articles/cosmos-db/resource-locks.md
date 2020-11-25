@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5243419d8e2c4780708e9bdee0d57f2734fe78b2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1c8c766208132aec115e1fbeb15af3a057c3de3e
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341962"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636709"
 ---
 # <a name="prevent-azure-cosmos-db-resources-from-being-deleted-or-changed"></a>Azure Cosmos DB リソースが削除または変更されないようにする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "93341962"
 
 親スコープでロックを適用すると、そのスコープ内のすべてのリソースは同じロックを継承します。 後で追加するリソースも、親からロックを継承します。 継承されるロックの中で最も制限の厳しいロックが優先されます。
 
-ロールベースのアクセス制御とは異なり、管理ロックを使用すると、すべてのユーザーとロールに対して制限を適用することができます。 Azure Cosmos DB の RBAC の詳細については、「[Azure Cosmos DB のロールベースのアクセス制御](role-based-access-control.md)」を参照してください。
+Azure ロールベースのアクセス制御とは異なり、管理ロックを使用すると、すべてのユーザーとロールに対して制限を適用することができます。 Azure Cosmos DB の Azure RBAC の詳細については、「[Azure Cosmos DB の Azure ロールベースのアクセス制御](role-based-access-control.md)」を参照してください。
 
 Resource Manager のロックは、管理ウィンドウで実行され、https://management.azure.com に送信される操作で構成される操作のみに適用されます。 ロックは、リソースが独自の機能を実行する方法を制限しません。 リソースの変更は制限されますが、リソースの操作は制限されません。 たとえば、Azure Cosmos コンテナーに ReadOnly ロックを設定すると、コンテナーの削除または変更を実行できなくなります。 コンテナー内のデータの作成、更新、または削除は実行できます。 データのトランザクションは https://management.azure.com に送信されないため、これらの操作は許可されます。
 

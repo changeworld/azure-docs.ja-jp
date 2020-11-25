@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 4c3b5674fe039a89eb97b915d13b5d472a6a0568
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96b9754908f437ccf81e002e9e9dd17af0bab4e3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316394"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019077"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>LUIS アプリに対して良い発話を理解する
 
@@ -29,7 +29,7 @@ ms.locfileid: "91316394"
 
 ## <a name="how-to-choose-varied-utterances"></a>さまざまな発話を選択する方法
 
-LUIS モデルに[発話の例を追加する](luis-how-to-add-example-utterances.md)ことによって初めて開始する場合、念頭に置いておくべきいくつかの原則を次に示します。
+LUIS モデルに[発話の例を追加する](./luis-how-to-add-entities.md)ことによって初めて開始する場合、念頭に置いておくべきいくつかの原則を次に示します。
 
 ### <a name="utterances-arent-always-well-formed"></a>発話は常に正しい形式になっているわけではない
 
@@ -111,7 +111,7 @@ LUIS ポータルでバージョンを複製すると、バージョン設定は
 
 ### <a name="ignoring-words-and-punctuation"></a>単語と句読点を無視する
 
-パターン内の特定の語や句読点を無視する場合は、 [パターン](luis-concept-patterns.md#pattern-syntax)使用時に大かっこ `[]` の _ignore_ 構文を指定します。
+パターン内の特定の語や句読点を無視する場合は、[パターン](luis-concept-patterns.md#pattern-syntax)使用時に大かっこ `[]` の _ignore_ 構文を指定します。
 
 <a name="training-utterances"></a>
 
@@ -147,5 +147,4 @@ LUIS ポータルでバージョンを複製すると、バージョン設定は
 
 
 ## <a name="next-steps"></a>次のステップ
-ユーザーの発話を理解するための LUIS アプリのトレーニングについては、「[発話の例を追加する](luis-how-to-add-example-utterances.md)」を参照してください。
-
+ユーザーの発話を理解するための LUIS アプリのトレーニングについては、「[発話の例を追加する](./luis-how-to-add-entities.md)」を参照してください。

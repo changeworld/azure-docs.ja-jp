@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: cf85b0ea658ae6459644dd710630a30f78ad99aa
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b3e1c4b8dec0e62bb2a77939a36e38b61837033a
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339395"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638854"
 ---
 # <a name="statistics-in-synapse-sql"></a>Synapse SQL の統計
 
@@ -74,7 +74,7 @@ SET AUTO_CREATE_STATISTICS ON
 > [!NOTE]
 > 統計の作成は、各ユーザー コンテキスト内の [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) にログ記録されます。
 
-自動統計が作成されると､ _WA_Sys_ <16 進 8 桁の列 ID>_<16 進 8 桁のテーブル ID> の形式でログ記録されます。 作成済みの統計は、[DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) コマンドを実行して表示できます。
+自動統計が作成されると､_WA_Sys_<16 進 8 桁の列 ID>_<16 進 8 桁のテーブル ID> の形式でログ記録されます。 作成済みの統計は、[DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) コマンドを実行して表示できます。
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -99,9 +99,9 @@ table_name は、表示する統計が格納されているテーブルの名前
 
 ### <a name="determine-last-statistics-update"></a>統計の最終更新日を特定する
 
-クエリのトラブルシューティングを行うときに最初に尋ねる質問の 1 つが、「 **統計は最新の状態ですか** 」というものです。
+クエリのトラブルシューティングを行うときに最初に尋ねる質問の 1 つが、「**統計は最新の状態ですか**」というものです。
 
-この質問は、データの経過時間で答えられるものではありません。 基になるデータに重要な変更がない場合は、最新の統計オブジェクトが古い可能性があります。 行数が大幅に変わった場合や、列の値の分布に大きな変化が起きた場合は、" *その後で* " 統計を更新する必要があります。
+この質問は、データの経過時間で答えられるものではありません。 基になるデータに重要な変更がない場合は、最新の統計オブジェクトが古い可能性があります。 行数が大幅に変わった場合や、列の値の分布に大きな変化が起きた場合は、"*その後で*" 統計を更新する必要があります。
 
 前回の統計が更新されてからテーブル内のデータが変更されたかどうかを判断するために利用できる動的管理ビューはありません。 統計情報の経過期間がわかると、全体像の一部を把握できます。 
 
@@ -245,7 +245,7 @@ CREATE STATISTICS stats_col1
 > [!NOTE]
 > クエリ結果の行数の推定に使用されるヒストグラムは、統計オブジェクト定義に示されている最初の列にのみ使用できます。
 
-次の例では、ヒストグラムは *product\_category* で使用されます。 列間の統計は、 *product\_category* と *product\_sub_category* で計算されます。
+次の例では、ヒストグラムは *product\_category* で使用されます。 列間の統計は、*product\_category* と *product\_sub_category* で計算されます。
 
 ```sql
 CREATE STATISTICS stats_2cols
@@ -602,9 +602,9 @@ SELECT ステートメントによって統計の自動作成がトリガーさ�
 > [!NOTE]
 > Parquet ファイルについては、統計の自動再作成が有効になっています。 CSV ファイルについては、CSV ファイルの統計の自動作成がサポートされるまでは、統計を手動で削除して作成する必要があります。 統計を削除および作成する方法については、以下の例を確認してください。
 
-クエリのトラブルシューティングを行うときに最初に尋ねる質問の 1 つが、「 **統計は最新の状態ですか** 」というものです。
+クエリのトラブルシューティングを行うときに最初に尋ねる質問の 1 つが、「**統計は最新の状態ですか**」というものです。
 
-行数が大幅に変わった場合や、列の値の分布で重大な変更があった場合は、" *その後で* " 統計を更新する必要があります。
+行数が大幅に変わった場合や、列の値の分布で重大な変更があった場合は、"*その後で*" 統計を更新する必要があります。
 
 > [!NOTE]
 > 列の値の分布に重要な変更がある場合は、最後に更新された時刻に関係なく統計を更新する必要があります。
@@ -812,6 +812,74 @@ DROP STATISTICS census_external_table.sState
 CREATE STATISTICS sState
     on census_external_table (STATENAME)
     WITH FULLSCAN, NORECOMPUTE
+```
+
+### <a name="statistics-metadata"></a>統計のメタデータ
+
+統計に関する情報を確認する際に使用できるシステム ビューとシステム関数がいくつかあります。 たとえば、統計オブジェクトが古くなっているかどうかは、STATS_DATE() 関数を使用して判別できます。 STATS_DATE() を使用すると、統計が最後に作成または更新された日時を確認できます。
+
+> [!NOTE]
+> 統計メタデータは、外部テーブルの列に対してのみ使用できます。 統計メタデータは、OPENROWSET 列では使用できません。
+
+#### <a name="catalog-views-for-statistics"></a>統計のカタログ ビュー
+
+次のシステム ビューは、統計に関する情報を提供します。
+
+| カタログ ビュー                                                 | 説明                                                  |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 列ごとに 1 行。                                     |
+| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | データベース内のオブジェクトごとに 1 行。                     |
+| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | データベースのスキーマごとに 1 行。                     |
+| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 統計オブジェクトごとに 1 行。                          |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 統計オブジェクトの列ごとに 1 行。 sys.columns にリンク。 |
+| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | テーブル (外部テーブルを含む) ごとに 1 行。           |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | データ型ごとに 1 行。                                  |
+
+#### <a name="system-functions-for-statistics"></a>統計のシステム関数
+
+次のシステム関数は統計の操作に役立ちます。
+
+| システム関数                                              | 説明                                  |
+| :----------------------------------------------------------- | :------------------------------------------- |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 統計オブジェクトの最終更新日。 |
+
+#### <a name="combine-statistics-columns-and-functions-into-one-view"></a>1 つのビューへの統計列と関数の統合
+
+このビューには、統計に関連する列と、STATS_DATE() 関数の結果が一緒に表示されます。
+
+```sql
+CREATE VIEW dbo.vstats_columns
+AS
+SELECT
+        sm.[name]                           AS [schema_name]
+,       tb.[name]                           AS [table_name]
+,       st.[name]                           AS [stats_name]
+,       st.[filter_definition]              AS [stats_filter_definition]
+,       st.[has_filter]                     AS [stats_is_filtered]
+,       STATS_DATE(st.[object_id],st.[stats_id])
+                                            AS [stats_last_updated_date]
+,       co.[name]                           AS [stats_column_name]
+,       ty.[name]                           AS [column_type]
+,       co.[max_length]                     AS [column_max_length]
+,       co.[precision]                      AS [column_precision]
+,       co.[scale]                          AS [column_scale]
+,       co.[is_nullable]                    AS [column_is_nullable]
+,       co.[collation_name]                 AS [column_collation_name]
+,       QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])
+                                            AS two_part_name
+,       QUOTENAME(DB_NAME())+'.'+QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])
+                                            AS three_part_name
+FROM    sys.objects                         AS ob
+JOIN    sys.stats           AS st ON    ob.[object_id]      = st.[object_id]
+JOIN    sys.stats_columns   AS sc ON    st.[stats_id]       = sc.[stats_id]
+                            AND         st.[object_id]      = sc.[object_id]
+JOIN    sys.columns         AS co ON    sc.[column_id]      = co.[column_id]
+                            AND         sc.[object_id]      = co.[object_id]
+JOIN    sys.types           AS ty ON    co.[user_type_id]   = ty.[user_type_id]
+JOIN    sys.tables          AS tb ON    co.[object_id]      = tb.[object_id]
+JOIN    sys.schemas         AS sm ON    tb.[schema_id]      = sm.[schema_id]
+WHERE   st.[user_created] = 1
+;
 ```
 
 ## <a name="next-steps"></a>次のステップ

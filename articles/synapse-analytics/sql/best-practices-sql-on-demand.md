@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6fd0ba19739b75e72541ac84d6b1696ab2819dee
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ddf9d689316d3c95c322aa3a967af53621a2e00f
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317422"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638871"
 ---
 # <a name="best-practices-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プール (プレビュー) のベスト プラクティス
 
@@ -60,9 +60,9 @@ ms.locfileid: "93317422"
 
 - 可能な最大値に対応する最小のデータ サイズを使用します。
   - 文字値の最大長が 30 文字の場合は、長さが 30 の文字データ型を使用します。
-  - すべての文字列値が固定サイズの場合は、 **char** または **nchar** を使用します。 それ以外の場合は、 **varchar** または **nvarchar** を使用します。
-  - 整数列の最大値が 500 の場合は、 **smallint** を使用します。この値に対応する最小のデータ型であるためです。 整数のデータ型の範囲は、[この記事で](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=azure-sqldw-latest&preserve-view=true)ご確認いただけます。
-- 可能であれば、 **nvarchar** と **nchar** ではなく、 **varchar** と **char** を使用します。
+  - すべての文字列値が固定サイズの場合は、**char** または **nchar** を使用します。 それ以外の場合は、**varchar** または **nvarchar** を使用します。
+  - 整数列の最大値が 500 の場合は、**smallint** を使用します。この値に対応する最小のデータ型であるためです。 整数のデータ型の範囲は、[この記事で](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=azure-sqldw-latest&preserve-view=true)ご確認いただけます。
+- 可能であれば、**nvarchar** と **nchar** ではなく、**varchar** と **char** を使用します。
 - 可能であれば、整数ベースのデータ型を使用します。 SORT、JOIN、および GROUP BY 操作は、文字データよりも整数で速く完了します。
 - スキーマ推論を使用している場合は、「[推論されたデータ型を確認する](#check-inferred-data-types)」をご確認ください。
 
@@ -127,13 +127,17 @@ FROM
 
 CSV ファイルに対してクエリを実行するときに、パフォーマンス最適化パーサーを使用できます。 詳細については、[PARSER_VERSION](develop-openrowset.md) に関する記事を参照してください。
 
+## <a name="manually-create-statistics-for-csv-files"></a>CSV ファイルの統計を手動で作成する
+
+サーバーレス SQL プールでは、統計に基づいて最適なクエリ実行プランを生成します。 必要時に、Parquet ファイルの列に対して統計が自動的に作成されます。 現時点では、CSV ファイルの列に対して統計は自動的には作成されず、クエリで使用する列 (特に、DISTINCT、JOIN、WHERE、ORDER BY、GROUP BY で使用される列) については、統計を手動で作成する必要があります。 詳細については、[サーバーレス SQL プールの統計情報](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview)に関するトピックを確認してください。
+
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>CETAS を使用してクエリのパフォーマンスと結合を強化する
 
 [CETAS](develop-tables-cetas.md) は、サーバーレス SQL プールで利用できる最も重要な機能の 1 つです。 CETAS は、外部テーブルのメタデータを作成し、SELECT クエリの結果をストレージ アカウント内の一連のファイルにエクスポートする並列操作です。
 
 CETAS を使用して、結合された参照テーブルなど、クエリの頻繁に使用される部分を新しいファイル セットに格納できます。 次に、複数のクエリで共通の結合を繰り返す代わりに、この単一の外部テーブルに結合することができます。
 
-CETAS によって Parquet ファイルが生成されると、最初のクエリがこの外部テーブルを対象とするときに統計が自動的に作成され、結果としてパフォーマンスが向上します。
+CETAS によって Parquet ファイルが生成されると、最初のクエリがこの外部テーブルを対象としたときに、統計が自動的に作成されます。その結果、CETAS を使用して生成されたテーブルを対象とするクエリのパフォーマンスが向上します。
 
 ## <a name="azure-ad-pass-through-performance"></a>Azure AD パススルー パフォーマンス
 

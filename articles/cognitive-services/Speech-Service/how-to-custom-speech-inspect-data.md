@@ -10,17 +10,17 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: erhopf
-ms.openlocfilehash: c55d69e99715a0c646c4e836df06cf105f9770bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a3ff2a1f92cabb61f58d70b732738e613afa7cd9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319124"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025635"
 ---
 # <a name="inspect-custom-speech-data"></a>Custom Speech データを検査する
 
 > [!NOTE]
-> このページは、「[Prepare test data for Custom Speech (Custom Speech 用のテスト データを準備する)](how-to-custom-speech-test-data.md)」を読んでおり、検査用のデータセットをアップロードしていることを前提としています。
+> このページは、「[Prepare test data for Custom Speech (Custom Speech 用のテスト データを準備する)](./how-to-custom-speech-test-and-train.md)」を読んでおり、検査用のデータセットをアップロードしていることを前提としています。
 
 Custom Speech には、オーディオ データを対応する認識結果と比較することによって、モデルの認識品質を視覚的に検査するツールがあります。 [Custom Speech ポータル](https://speech.microsoft.com/customspeech)から、アップロードされたオーディオを再生し、提供された認識結果が正しいかどうかを判断できます。 このツールは、Microsoft のベースライン音声テキスト変換モデルの品質検査、トレーニング済みのカスタム モデルの検査、2 つのモデルでの文字起こしの比較に役立ちます。
 
@@ -104,4 +104,4 @@ Custom Speech には、オーディオ データを対応する認識結果と�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [Custom Speech 用のテスト データを準備する](how-to-custom-speech-test-data.md)
+- [Custom Speech 用のテスト データを準備する](./how-to-custom-speech-test-and-train.md)

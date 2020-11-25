@@ -10,17 +10,17 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: 7df082cd5044f142d8d5900ec1fff6c182262bd9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 348277d42c543bc45cf98bfeaf7ea8313afe8f6f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425114"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021985"
 ---
 # <a name="disclosure-design-patterns"></a>設計パターンを開示する
 合成音声エクスペリエンスの適切な[開示レベル](concepts-disclosure-guidelines.md#disclosure-assessment)が決定されたので、考えられる設計パターンについて検討するよい機会です。
 ## <a name="overview"></a>概要
-合成音声エクスペリエンスに適用できる、さまざまな開示の設計パターンがあります。 開示評価の結果が "高開示" であった場合、 [**明示的開示**](#explicit-disclosure)、つまり、合成音声の出自をありのままに伝えることをお勧めします。 [**暗黙的開示**](#implicit-disclosure)には、要求される開示レベルの高低に関係なく、音声エクスペリエンスを向上させる合図と対話パターンが含まれます。
+合成音声エクスペリエンスに適用できる、さまざまな開示の設計パターンがあります。 開示評価の結果が "高開示" であった場合、[**明示的開示**](#explicit-disclosure)、つまり、合成音声の出自をありのままに伝えることをお勧めします。 [**暗黙的開示**](#implicit-disclosure)には、要求される開示レベルの高低に関係なく、音声エクスペリエンスを向上させる合図と対話パターンが含まれます。
 ![さまざまな開示パターン](media/responsible-ai/disclosure-patterns/affordances.png)
 
 
@@ -241,17 +241,17 @@ Recommendations
 
 ## <a name="additional-resources"></a>その他のリソース
 - [Microsoft Bot ガイドライン](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
-- [Cortana 設計ガイドライン](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
-- [Microsoft Windows UWP 音声認識設計ガイドライン](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
-- [Microsoft Windows 複合現実音声コマンド ガイドライン](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
+- [Cortana 設計ガイドライン](/cortana/voice-commands/voicecommand-design-guidelines)
+- [Microsoft Windows UWP 音声認識設計ガイドライン](/windows/uwp/design/input/speech-interactions)
+- [Microsoft Windows 複合現実音声コマンド ガイドライン](/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
 
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
-* [ボイス タレント向けの開示](https://aka.ms/disclosure-voice-talent)
+* [ボイス タレント向けの開示](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [合成音声テクノロジの責任あるデプロイのためのガイドライン](concepts-guidelines-responsible-deployment-synthetic.md)
 * [規制の概要](concepts-gating-overview.md)
 * [開示する方法](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ボイス タレント向けの開示](https://aka.ms/disclosure-voice-talent)
+* [ボイス タレント向けの開示](/legal/cognitive-services/speech-service/disclosure-voice-talent)

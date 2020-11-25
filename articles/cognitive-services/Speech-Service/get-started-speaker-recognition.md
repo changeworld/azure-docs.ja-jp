@@ -13,12 +13,12 @@ ms.author: trbye
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-twenty-five
 keywords: Speaker Recognition, 音声生物測定学
-ms.openlocfilehash: b831dfb0ff7989e52fcc2a1ab62ddb6f2e22a5e2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 57c7ad220ada89e5848cf49b7fb68547bc7ad1cb
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166337"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015485"
 ---
 # <a name="get-started-with-speaker-recognition"></a>Speaker Recognition の使用を開始する
 
@@ -40,6 +40,6 @@ ms.locfileid: "92166337"
 
 ## <a name="next-steps"></a>次のステップ
 
-* クラスと関数の詳細について、Speaker Recognition の[リファレンス ドキュメント](https://docs.microsoft.com/rest/api/speakerrecognition/)を参照する。
+* クラスと関数の詳細について、Speaker Recognition の[リファレンス ドキュメント](/rest/api/speakerrecognition/)を参照する。
 
 * GitHub で [C#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/speaker-recognition) および [C++](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp/windows/speaker-recognition) のサンプルを参照する。

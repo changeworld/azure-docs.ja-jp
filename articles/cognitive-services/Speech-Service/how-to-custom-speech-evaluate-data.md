@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: affbf57fcda5ff9fb56e148c2fa8769e7aa775e6
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: b8b3a0aa6d9790dbb5900eac2d79074f44a749d2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555806"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025652"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>Custom Speech の精度の評価と向上
 
@@ -136,5 +136,5 @@ WER の構成要素 (挿入エラー、削除エラー、および置換エラ�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [データを準備してテストする](how-to-custom-speech-test-data.md)
+* [データを準備してテストする](./how-to-custom-speech-test-and-train.md)
 * [データを検査する](how-to-custom-speech-inspect-data.md)

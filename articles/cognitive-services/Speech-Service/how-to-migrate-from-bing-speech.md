@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: 81c4c26f252cdd9eb302a7f8f362c8bf52e48629
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 4b7950759914724234ec89e6eaee13b48e735ec9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825599"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024315"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Speech から Speech Service に移行する
 
@@ -28,7 +28,7 @@ ms.locfileid: "91825599"
 * [音声テキスト変換](speech-to-text.md)
 * [カスタム音声テキスト変換](https://cris.ai)
 * [テキスト読み上げ](text-to-speech.md)
-* [カスタム テキスト音声読み上げ](how-to-customize-voice-font.md)
+* [カスタム テキスト音声読み上げ](./how-to-custom-voice-create-voice.md)
 * [音声翻訳](speech-translation.md) ([テキスト翻訳](../translator/translator-info-overview.md)は含まれません)
 
 [Speech SDK](speech-sdk.md) は Bing Speech クライアント ライブラリの機能を代替するものですが､使用している API は異なります｡
@@ -63,7 +63,7 @@ Speech Service では､トランザクション ベースではなく時間ベ�
 
 Bing Speech API を使用しているアプリケーションを開発中の場合､あるいはそうしたアプリケーションを運用している場合は､できるかぎり速やかに Speech Service を使用するように更新することをお勧めします｡ 使用できる SDK やサンプル コード､チュートリアルについては､[Speech Service](index.yml) のドキュメントをご覧ください。
 
-Speech Service の [REST API](rest-apis.md) Bing Speech の API 互換性があります｡ 現在 Bing Speech REST API をご利用の場合は、REST エンドポイントのみを変更し、Speech Service サブスクリプション キーに切り替えるだけで済みます。
+Speech Service の [REST API](./overview.md#reference-docs) Bing Speech の API 互換性があります｡ 現在 Bing Speech REST API をご利用の場合は、REST エンドポイントのみを変更し、Speech Service サブスクリプション キーに切り替えるだけで済みます。
 
 ただし、特定のプログラミング言語で Bing Speech クライアント ライブラリを使用している場合、[Speech SDK](speech-sdk.md) に移行するには、API が異なるため、アプリケーションそのものを変更する必要があります。 Speech SDK により、新しい機能を利用できる一方でコードを簡略化できるようになります。 Speech SDK は、さまざまなプログラミング言語で使用できます。 どのプラットフォームの API も似ており､マルチプラットフォーム開発が容易になります｡
 
@@ -72,14 +72,14 @@ Speech Service では、グローバル エンドポイントは提供されま�
 Speech SDK を使ってみる
 
 1. [Speech SDK](speech-sdk.md) をダウンロードします｡
-1. Speech Service [クイック スタート ガイド](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)と[チュートリアル](how-to-recognize-intents-from-speech-csharp.md)に従って作業します。 また、[コード サンプル](samples.md)を見て、新しい API に関する経験を得ます。
+1. Speech Service [クイック スタート ガイド](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet)と[チュートリアル](how-to-recognize-intents-from-speech-csharp.md)に従って作業します。 また、[コード サンプル](./speech-sdk.md#sample-source-code)を見て、新しい API に関する経験を得ます。
 1. Speech Service を使用するようにアプリケーションを更新します。
 
 ## <a name="support"></a>サポート
 
 Bing Speech のお客様は[サポート チケット](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を開いて､カスタマー サービスに問い合わせることをお勧めします｡ サポートで[テクニカル サポート プラン](https://azure.microsoft.com/support/plans/)が必要な場合もお問い合わせください。
 
-Speech Service､SDK､および API サポートについては､Speech Service の[サポート ページ](support.md)をご覧ください｡
+Speech Service､SDK､および API サポートについては､Speech Service の[サポート ページ](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext)をご覧ください｡
 
 ## <a name="next-steps"></a>次のステップ
 

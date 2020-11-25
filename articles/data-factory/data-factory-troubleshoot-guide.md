@@ -5,15 +5,15 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/01/2020
+ms.date: 11/16/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 6f16e4b1f9728ae8d9cb36ab442603083e83eb92
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: c9dd39ffa68d8261f5c5d301d4c351c52b3f27c1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331381"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654594"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory のトラブルシューティング
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -1008,7 +1008,16 @@ ms.locfileid: "94331381"
 ## <a name="general"></a>全般
 
 ### <a name="activity-stuck-issue"></a>アクティビティの停止に関する問題
+
 アクティビティが通常の実行時間を大幅に超えて実行され、ほとんど進行していない場合、そのアクティビティは停止している可能性があります。 取り消しを試みた後、再試行して問題が解決するかどうかを確認できます。 コピー アクティビティの場合は、パフォーマンスの監視とトラブルシューティングの詳細について「[コピーアクティビティのパフォーマンスのトラブルシューティング](copy-activity-performance-troubleshooting.md)」を参照してください。データ フローの場合は、[マッピング データ フローのパフォーマンスとチューニング ガイド](concepts-data-flow-performance.md)に関するページをご覧ください。
+
+### <a name="payload-is-too-large"></a>ペイロードが大きすぎます
+
+**エラー メッセージ:** `The payload including configurations on activity/dataSet/linked service is too large. Please check if you have settings with very large value and try to reduce its size.`
+
+**原因:** 各アクティビティの実行のペイロードには、アクティビティの構成、関連付けられているデータセットとリンクされたサービスの構成 (ある場合)、アクティビティの種類ごとに生成されるシステム プロパティの一部が含まれます。 このようなペイロード サイズの制限は、「[Data Factory の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits)」の項で説明されているように 896 KB です。
+
+**推奨事項:** アップストリーム アクティビティの出力または外部から 1 つ以上の大きなパラメーター値を渡す場合、特に制御フロー内のアクティビティ間で実際のデータを渡す場合、この制限に達する可能性があります。 大きなパラメーター値のサイズを減らせるかどうかを確認するか、パイプライン ロジックを調整して、アクティビティ間で値が渡されずにアクティビティ内で処理されるようにしてください。
 
 ## <a name="next-steps"></a>次のステップ
 

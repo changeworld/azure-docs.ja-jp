@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 0fe5b1350fdcf53eeda11f6de430d8d02a24fdbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c0b399f84e793d9e762c89dbbd1901bb5a95f26
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397761"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024332"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>音声テキスト変換についてよく寄せられる質問
 
-疑問点への回答がこのよく寄せられる質問で見つからない場合は、[その他のサポート オプション](support.md)を確認してください。
+疑問点への回答がこのよく寄せられる質問で見つからない場合は、[その他のサポート オプション](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext)を確認してください。
 
 ## <a name="general"></a>全般
 
@@ -29,7 +29,7 @@ ms.locfileid: "91397761"
 
 **Q:ベースライン モデルの使用はどこから開始できますか。**
 
-**A**: 最初に、[サブスクリプション キー](overview.md#try-the-speech-service-for-free)を取得します。 事前にデプロイされたベースライン モデルに対して REST 呼び出しを実行する方法については、「[REST API](rest-apis.md)」を参照してください。 WebSocket を使用する場合は、[SDK](speech-sdk.md) をダウンロードしてください。
+**A**: 最初に、[サブスクリプション キー](overview.md#try-the-speech-service-for-free)を取得します。 事前にデプロイされたベースライン モデルに対して REST 呼び出しを実行する方法については、「[REST API](./overview.md#reference-docs)」を参照してください。 WebSocket を使用する場合は、[SDK](speech-sdk.md) をダウンロードしてください。
 
 **Q:カスタム音声モデルを常にビルドする必要はありますか。**
 
@@ -156,7 +156,7 @@ ms.locfileid: "91397761"
 
 **Q:テナント モデルに含まれている情報と、その作成方法を教えてください。**
 
-**A:** テナント モデルは、組織内の誰でも見ることができる[パブリック グループ](https://support.microsoft.com/office/learn-about-microsoft-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)のメールとドキュメントを使用して構築されます。
+**A:** テナント モデルは、組織内の誰でも見ることができる [パブリック グループ](https://support.microsoft.com/office/learn-about-microsoft-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)のメールとドキュメントを使用して構築されます。
 
 **Q:テナント モデルでは、どのような音声エクスペリエンスが向上しますか。**
 

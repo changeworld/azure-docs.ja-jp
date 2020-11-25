@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 10/13/2020
-ms.openlocfilehash: 60151e97c64a3d61044e4b82299573ee59951d46
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2048079a9b1eb5234d03c6fe57073228bd892d53
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128204"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019162"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>クイック スタート:事前構築済みの Home Automation アプリを使用する
 
@@ -64,7 +64,7 @@ ms.locfileid: "93128204"
     > [!div class="mx-imgBorder"]
     > [![HomeAutomation.TurnOff 意図のスクリーンショット](media/luis-quickstart-new-app/home-automation-turnoff.png "HomeAutomation.TurnOff 意図のスクリーンショット")](media/luis-quickstart-new-app/home-automation-turnoff.png)
 
-1. アプリのエンティティを表示する場合は、 **[エンティティ]** を選択します。 いずれかのエンティティ ( **HomeAutomation.DeviceName** など) をクリックすると、それに関連付けられている値の一覧が表示されます。 
+1. アプリのエンティティを表示する場合は、 **[エンティティ]** を選択します。 いずれかのエンティティ (**HomeAutomation.DeviceName** など) をクリックすると、それに関連付けられている値の一覧が表示されます。 
  
     :::image type="content" source="media/luis-quickstart-new-app/entities-page.png" alt-text="画像の代替テキスト" lightbox="media/luis-quickstart-new-app/entities-page.png":::
 
@@ -77,9 +77,9 @@ ms.locfileid: "93128204"
 
 1. 右上のナビゲーションから **[テスト]** を選択します。
 
-1. 対話型のテスト ウィンドウに `Turn off the lights` などのテスト発話を入力し、Enter キーを押します。 たとえば、" *Turn off the lights (照明を消して)* " など。
+1. 対話型のテスト ウィンドウに `Turn off the lights` などのテスト発話を入力し、Enter キーを押します。 たとえば、"*Turn off the lights (照明を消して)* " など。
 
-    この例では、 **HomeAutomation.TurnOff** に対する最もスコアの高い意図として `Turn off the lights` が正しく識別されています。
+    この例では、**HomeAutomation.TurnOff** に対する最もスコアの高い意図として `Turn off the lights` が正しく識別されています。
 
     ![発話が強調表示されたテスト パネルのスクリーンショット](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
 
@@ -120,7 +120,7 @@ ms.locfileid: "93128204"
     |`verbose=true`|
     |`show-all-intents=true`|
 
-3. ブラウザーのアドレス バーで、URL の最後に移動し、 _クエリ_ 値に「`turn off the living room light`」と入力して Enter キーを押します。
+3. ブラウザーのアドレス バーで、URL の最後に移動し、_クエリ_ 値に「`turn off the living room light`」と入力して Enter キーを押します。
 
     ```json
     {
@@ -223,4 +223,4 @@ ms.locfileid: "93128204"
 エンドポイントはコードから呼び出すことができます。
 
 > [!div class="nextstepaction"]
-> [コードを使って LUIS エンドポイントを呼び出す](luis-get-started-cs-get-intent.md)
+> [コードを使って LUIS エンドポイントを呼び出す](./luis-get-started-get-intent-from-rest.md)

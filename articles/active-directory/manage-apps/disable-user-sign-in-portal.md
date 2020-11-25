@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c6fc9a4716f1427257b3bbf18e5fa653567e141
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c208da657d30d4a0f5b6f171693c5c6abc2b358b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763382"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649182"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリのユーザー サインインを無効にする
 
@@ -31,15 +31,15 @@ Azure Active Directory (Azure AD) で、ユーザーがサインインできな�
 
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 1. **[すべてのサービス]** を選択し、テキスト ボックスに「**Azure Active Directory**」と入力して、**Enter** キーを押します。
-1. **[Azure Active Directory** -  ***directoryname]*** ウィンドウ (管理対象のディレクトリの Azure AD ウィンドウ) で、 **[エンタープライズ アプリケーション]** を選択します。
+1. **[Azure Active Directory** -  **_directoryname]_ *_ ウィンドウ (管理対象のディレクトリの Azure AD ウィンドウ) で、_* [エンタープライズ アプリケーション]** を選択します。
 1. **[エンタープライズ アプリケーション - すべてのアプリケーション]** ウィンドウには、管理できるアプリのリストが表示されます。 アプリを選択します。
-1. [***appname***] ウィンドウ (選択したアプリの名前がタイトルに含まれるページ) で、 **[プロパティ]** を選択します。
-1. [***appname*** - **プロパティ**] ウィンドウで、**[ユーザーのサインインが有効になっていますか?]** の **[いいえ]** を選択します。
+1. **_[appname]_ *ウィンドウ (選択したアプリの名前がタイトルに含まれるページ) で、_* [プロパティ]** を選択します。
+1. **_[appname_ *_* プロパティ]** ウィンドウで、 **[ユーザーのサインインが有効になっていますか?]** の **[いいえ]** を選択します。
 1. **[保存]** をクリックします。
 
 ## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>Azure AD PowerShell を使用して、一覧にないアプリを無効にする
 
-Enterprise アプリの一覧に表示されていないアプリの AppId が分かっている場合 (たとえば、アプリを削除したか、アプリが Microsoft によって事前承認されているためにサービスプリンシパルがまだ作成されていないため)、アプリのサービス プリンシパルを手動で作成してから、[AzureAD PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azuread/New-AzureADServicePrincipal?view=azureadps-2.0)を使用して無効にすることができます。
+Enterprise アプリの一覧に表示されていないアプリの AppId が分かっている場合 (たとえば、アプリを削除したか、アプリが Microsoft によって事前承認されているためにサービスプリンシパルがまだ作成されていないため)、アプリのサービス プリンシパルを手動で作成してから、[AzureAD PowerShell コマンドレット](/powershell/module/azuread/New-AzureADServicePrincipal?view=azureadps-2.0)を使用して無効にすることができます。
 
 ```PowerShell
 # The AppId of the app to be disabled
@@ -60,5 +60,5 @@ if ($servicePrincipal) {
 
 * [自分のグループをすべて表示する](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](assign-user-or-group-access-portal.md)
-* [エンタープライズ アプリケーションからユーザーまたはグループの割り当てを削除する](remove-user-or-group-access-portal.md)
-* [エンタープライズ アプリケーションの名前またはロゴを変更する](change-name-or-logo-portal.md)
+* [エンタープライズ アプリケーションからユーザーまたはグループの割り当てを削除する](./assign-user-or-group-access-portal.md)
+* [エンタープライズ アプリケーションの名前またはロゴを変更する](./add-application-portal-configure.md)

@@ -1,25 +1,25 @@
 ---
 title: C++/WinRT HoloLens アプリケーション用の Azure Spatial Anchors をインストールする
 description: Azure Spatial Anchors を使用するために C++/WinRT HoloLens プロジェクトを構成します
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 43d5c1ae03c359dcbef21f8e7ba3205bc6ab0004
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 69134ef87d90fe69de2d9e4e9222e90f65edc785
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096115"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95506998"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-cwinrt-hololens-project"></a>C++/WinRT HoloLens プロジェクトでの Azure Spatial Anchors の構成
 
 ## <a name="requirements"></a>必要条件
 
-* **ユニバーサル Windows プラットフォーム開発**ワークロードがインストールされた [Visual Studio 2019](https://www.visualstudio.com/downloads/) と **Windows 10 SDK (10.0.18362.0 以降)** コンポーネント。
+* **ユニバーサル Windows プラットフォーム開発** ワークロードがインストールされた [Visual Studio 2019](https://www.visualstudio.com/downloads/) と **Windows 10 SDK (10.0.18362.0 以降)** コンポーネント。
 
 ## <a name="configuring-a-project"></a>プロジェクトの構成
 

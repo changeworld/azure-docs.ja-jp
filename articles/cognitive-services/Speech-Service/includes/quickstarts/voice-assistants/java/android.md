@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: fbfc6bf9c50257c2683522913503bf9b29450d94
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bc27c73fbf9e827ce9a95c8aaaddc82ffb0aec53
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86226444"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95096653"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、必ず次のことを行ってください。
 
 > [!div class="checklist"]
-> * [Azure Speech リソースを作成する](~/articles/cognitive-services/speech-service/get-started.md)
+> * [Azure Speech リソースを作成する](../../../../overview.md#try-the-speech-service-for-free)
 > * [ご自分の開発環境を設定し、空のプロジェクトを作成する](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
-> * [Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)に接続されたボットを作成する
+> * [Direct Line Speech チャネル](/azure/bot-service/bot-service-channel-connect-directlinespeech)に接続されたボットを作成する
 > * オーディオ キャプチャ用のマイクにアクセスできることを確認する
 
   > [!NOTE]
@@ -272,4 +272,3 @@ ms.locfileid: "86226444"
 ## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [footer](./footer.md)]
-

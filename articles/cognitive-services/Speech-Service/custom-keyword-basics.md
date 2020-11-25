@@ -12,12 +12,12 @@ ms.date: 11/03/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 zone_pivot_groups: keyword-quickstart
-ms.openlocfilehash: 2d15da55c0bab42571d2a9660156a780c5d27881
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 49ac70b6881085f48c8bc3a12e31e4a1aa220c6a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305898"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021951"
 ---
 # <a name="get-started-with-custom-keyword"></a>Custom Keyword の概要
 
@@ -35,7 +35,7 @@ ms.locfileid: "93305898"
 > カスタム キーワード モデルと、生成される `.table` ファイルは、Speech Studio で **のみ** 作成できます。
 > SDK または REST 呼び出しを使用してカスタム キーワードを作成することはできません。
 
-1. [Speech Studio](https://aka.ms/sdsdk-speechportal)に移動して **サインイン** します。音声サブスクリプションをまだ持っていない場合は、 [ **[サブスクリプションを作成する]**](https://go.microsoft.com/fwlink/?linkid=2086754) を選択します。
+1. [Speech Studio](https://aka.ms/sdsdk-speechportal)に移動して **サインイン** します。音声サブスクリプションをまだ持っていない場合は、[ **[サブスクリプションを作成する]**](https://go.microsoft.com/fwlink/?linkid=2086754) を選択します。
 
 1. [[カスタム キーワード]](https://aka.ms/sdsdk-wakewordportal) ページで **[新しいプロジェクト]** を作成します。 
 
@@ -49,7 +49,7 @@ ms.locfileid: "93305898"
 
 1. 新しいキーワード モデルを作成するには、 **[モデルのトレーニング]** をクリックします。
 
-1. モデルの **[名前]** 、 **[説明]** (省略可能)、および任意の **[キーワード]** を入力し、 **[次へ]** をクリックします。 効果的なキーワードを選択する方法については、[ガイドライン](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword)を参照してください。
+1. モデルの **[名前]** 、 **[説明]** (省略可能)、および任意の **[キーワード]** を入力し、 **[次へ]** をクリックします。 効果的なキーワードを選択する方法については、[ガイドライン](./custom-keyword-overview.md#choose-an-effective-keyword)を参照してください。
 
     ![キーワードを入力する](media/custom-keyword/custom-kws-portal-new-model.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "93305898"
 
     ![キーワードを確認する](media/custom-keyword/custom-kws-portal-download-model.png)
 
-1. ダウンロードしたファイルは `.zip` アーカイブです。 アーカイブを抽出すると、`.table` 拡張子を持つファイルが表示されます。 これは、次のセクションの SDK で使用するファイルであるため、パスをメモしておいてください。 ファイル名にはキーワード名が反映されます。たとえば、 **Activate device** というキーワードのファイル名は `Activate_device.table` になります。
+1. ダウンロードしたファイルは `.zip` アーカイブです。 アーカイブを抽出すると、`.table` 拡張子を持つファイルが表示されます。 これは、次のセクションの SDK で使用するファイルであるため、パスをメモしておいてください。 ファイル名にはキーワード名が反映されます。たとえば、**Activate device** というキーワードのファイル名は `Activate_device.table` になります。
 
 ## <a name="use-a-keyword-model-with-the-sdk"></a>SDK でのキーワード モデルの使用
 
@@ -79,4 +79,4 @@ ms.locfileid: "93305898"
 
 ## <a name="next-steps"></a>次のステップ
 
-カスタム キーワードを [Speech Devices SDK クイックスタート](https://aka.ms/sdsdk-quickstart)でテストする。
+カスタム キーワードを [Speech Devices SDK クイックスタート](./speech-devices-sdk-quickstart.md?pivots=platform-android)でテストする。

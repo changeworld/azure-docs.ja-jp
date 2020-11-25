@@ -10,16 +10,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: f247465c7e2c0a212df2821ebc7165d3ee5b15f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ddaed181d017e3167694a9d7edf53c7c09fd5e9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80876659"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968521"
 ---
 # <a name="deploy-and-run-container-on-azure-container-instance"></a>Azure コンテナー インスタンスにコンテナーをデプロイして実行する
 
-次の手順に従えば、Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/) を使用してクラウド内の Azure Cognitive Services アプリケーションを簡単にスケーリングすることができます。 コンテナー化により、インフラストラクチャを管理することにではなく、アプリケーションの構築に集中することができます。 コンテナーの使用方法の詳細については、「[機能とメリット](../cognitive-services-container-support.md#features-and-benefits)」を参照してください。
+次の手順に従えば、Azure [Container Instances](../../container-instances/index.yml) を使用してクラウド内の Azure Cognitive Services アプリケーションを簡単にスケーリングすることができます。 コンテナー化により、インフラストラクチャを管理することにではなく、アプリケーションの構築に集中することができます。 コンテナーの使用方法の詳細については、「[機能とメリット](../cognitive-services-container-support.md#features-and-benefits)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

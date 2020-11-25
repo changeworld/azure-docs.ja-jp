@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 34c0703ee7c335ca904a21bcce6ed44abc6dc13f
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 9193da2f3841bb94aa395399c31d7fe826c395e0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555789"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025601"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Custom Speech モデルのトレーニングとデプロイ
 
@@ -33,7 +33,7 @@ ms.locfileid: "94555789"
 
 ## <a name="train-and-evaluate-a-model"></a>モデルのトレーニングと評価
 
-モデルをトレーニングする最初の手順は、トレーニング データのアップロードです。 "人間" とラベルが付いた文字起こしと関連テキスト (発話と発音) を準備する手順については、[データの準備とテスト](how-to-custom-speech-test-data.md)に関する記事を参照してください。 トレーニング データをアップロードしたら、次の手順に従ってモデルのトレーニングを開始します。
+モデルをトレーニングする最初の手順は、トレーニング データのアップロードです。 "人間" とラベルが付いた文字起こしと関連テキスト (発話と発音) を準備する手順については、[データの準備とテスト](./how-to-custom-speech-test-and-train.md)に関する記事を参照してください。 トレーニング データをアップロードしたら、次の手順に従ってモデルのトレーニングを開始します。
 
 1. [Custom Speech ポータル](https://speech.microsoft.com/customspeech)にサインインします。
 2. **[音声テキスト変換]、[Custom Speech]、[<プロジェクト名>]、[トレーニング]** の順に移動します。
@@ -77,6 +77,6 @@ Custom Speech モデルの精度の評価と向上については、[方法](how
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [データを準備してテストする](how-to-custom-speech-test-data.md)
+- [データを準備してテストする](./how-to-custom-speech-test-and-train.md)
 - [データを検査する](how-to-custom-speech-inspect-data.md)
 - [データを評価する](how-to-custom-speech-evaluate-data.md)

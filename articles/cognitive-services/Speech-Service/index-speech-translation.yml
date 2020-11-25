@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/13/2020
   ms.author: trbye
-  ms.openlocfilehash: 4b9e79bfca206c014ba16e1ac39a9ddb04559e13
-  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.openlocfilehash: a54153dc8fc7f3b5ea2f86b3bf03f469aa56cdb3
+  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92756972"
+  ms.lasthandoff: 11/21/2020
+  ms.locfileid: "95015425"
 landingContent:
 - title: 音声翻訳について
   linkLists:
@@ -25,7 +25,7 @@ landingContent:
     - text: 音声翻訳とは何か
       url: speech-translation.md
     - text: 音声翻訳の基本
-      url: speech-translation-basics.md
+      url: ./get-started-speech-translation.md
     - text: Speech CLI を使用して、コードを書かずに音声を翻訳する
       url: spx-overview.md
   - linkListType: quickstart
@@ -37,7 +37,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: 音声をリアルタイムで翻訳する
-      url: https://docs.microsoft.com/learn/modules/convert-speech-to-text
+      url: /learn/modules/convert-speech-to-text
   - linkListType: tutorial
     links:
     - text: REST API を使用してテキストを翻訳して合成する

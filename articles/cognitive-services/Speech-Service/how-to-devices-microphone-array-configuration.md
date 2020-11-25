@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: wellsi
-ms.openlocfilehash: a2652bed6c8e7dec0a6fe8f9471793c3873646bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf0580c96f5bf78f0444b2bb39088f2a417fd658
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82781746"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025063"
 ---
 # <a name="how-to-configure-a-microphone-array"></a>マイク配列を構成する方法
 
-この記事では、[マイク配列](https://aka.ms/sdsdk-microphone)を構成する方法について説明します。 これには、動作する角度の設定と、Speech Devices SDK に使用するマイクを選択する方法が含まれます。
+この記事では、[マイク配列](./speech-devices-sdk-microphone.md)を構成する方法について説明します。 これには、動作する角度の設定と、Speech Devices SDK に使用するマイクを選択する方法が含まれます。
 
-Speech Devices SDK は、[Microsoft のガイドライン](https://aka.ms/sdsdk-microphone)に従って設計されたマイク配列で最適に動作します。 マイク配列の構成は、オペレーティング システムによって提供されるか、次のいずれかの方法で提供されます。
+Speech Devices SDK は、[Microsoft のガイドライン](./speech-devices-sdk-microphone.md)に従って設計されたマイク配列で最適に動作します。 マイク配列の構成は、オペレーティング システムによって提供されるか、次のいずれかの方法で提供されます。
 
 元々、マイク配列は Speech Devices SDK でサポートされており、固定された一連の構成から選択することができました。
 
@@ -49,7 +49,7 @@ Linux では、マイクのジオメトリ情報を指定する必要があり�
 Speech Devices SDK の Microsoft Audio Stack では、16 KHz の整数倍のサンプル レートのダウン サンプリングのみがサポートされています。 さらに、サポートされている形式は32 ビット IEEE リトル エンディアン float 型、32 ビット リトル エンディアン符号付き int 型、24 ビット リトル エンディアン符号付き int 型、16 ビット リトル エンディアン符号付き int、8 ビット符号付き int 型です。
 
 ## <a name="android"></a>Android
-現在、Speech Devices SDK でサポートされているのは [Roobo v1](speech-devices-sdk-android-quickstart.md) のみです。 動作は以前のリリースと同じですが、`MicArrayGeometryConfigFile` プロパティを使用して、ビームフォーミング範囲が含まれている JSON ファイルを指定できるようになりました。
+現在、Speech Devices SDK でサポートされているのは [Roobo v1](./speech-devices-sdk-quickstart.md?pivots=platform-android%253fpivots%253dplatform-android) のみです。 動作は以前のリリースと同じですが、`MicArrayGeometryConfigFile` プロパティを使用して、ビームフォーミング範囲が含まれている JSON ファイルを指定できるようになりました。
 
 ## <a name="microphone-array-configuration-json"></a>マイク配列の構成 JSON
 

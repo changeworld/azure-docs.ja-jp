@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/18/2020
-ms.openlocfilehash: fcc803e87b2efd3e94b90eb17258ab3bb156359f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2dd06a7b4c8e6296cda747d17fd3d5be5db0af6b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541436"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018890"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>LUIS ポータルでの新しい LUIS アプリの作成
 LUIS アプリを作成するにはいくつかの方法があります。 LUIS ポータル内または LUIS オーサリング [API](developer-reference-resource.md) を使用して LUIS アプリを作成できます。
@@ -24,7 +24,7 @@ LUIS アプリを作成するにはいくつかの方法があります。 LUIS 
 ポータルでは、新しいアプリをいくつかの方法で作成できます。
 
 * 空のアプリから始めて、意図、発話、およびエンティティを作成する。
-* 空のアプリから始めて、[事前構築済みのドメイン](luis-how-to-use-prebuilt-domains.md)を追加する。
+* 空のアプリから始めて、[事前構築済みのドメイン](./howto-add-prebuilt-models.md)を追加する。
 * 意図、発話、およびエンティティが既に格納されている `.lu` または `.json` ファイルから LUIS アプリをインポートする。
 
 ## <a name="using-the-authoring-apis"></a>オーサリング API を使用する
@@ -75,4 +75,4 @@ LUIS アプリを作成するにはいくつかの方法があります。 LUIS 
 
 ## <a name="next-steps"></a>次のステップ
 
-アプリ デザインに意図検出が含まれている場合、[新しい意図を作成](luis-how-to-add-intents.md)し、サンプル発話を追加します。 アプリ デザインがデータ抽出のみの場合、None 意図にサンプル発話を追加し、[エンティティを作成](luis-how-to-add-example-utterances.md)し、そのエンティティでサンプル発話にラベルを付けます。
+アプリ デザインに意図検出が含まれている場合、[新しい意図を作成](luis-how-to-add-intents.md)し、サンプル発話を追加します。 アプリ デザインがデータ抽出のみの場合、None 意図にサンプル発話を追加し、[エンティティを作成](./luis-how-to-add-entities.md)し、そのエンティティでサンプル発話にラベルを付けます。

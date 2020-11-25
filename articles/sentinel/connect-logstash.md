@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 7fe47289dcc6b6d6af4d13b36b5c3b1dae3baaf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 247abafd7abec38e43794b76268ee52538aee508
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89663398"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655682"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Logstash を使用して Azure Sentinel にデータ ソースを接続する
 
 > [!IMPORTANT]
 > Logstash 出力プラグインを使用したデータ インジェストは、現在パブリック プレビューの段階にあります。 この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-**Logstash データ収集エンジン**用の Azure Sentinel の新しい出力プラグインを使用することで、Logstash 経由で任意の種類のログを Azure Sentinel の Log Analytics ワークスペースに直接送信できるようになりました。 ログは、出力プラグインを使用して定義するカスタム テーブルに送信されます。
+**Logstash データ収集エンジン** 用の Azure Sentinel の新しい出力プラグインを使用することで、Logstash 経由で任意の種類のログを Azure Sentinel の Log Analytics ワークスペースに直接送信できるようになりました。 ログは、出力プラグインを使用して定義するカスタム テーブルに送信されます。
 
 Logstash データ収集エンジンの操作の詳細については、[Logstash の概要](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html)に関するページをご覧ください。
 
@@ -48,8 +48,8 @@ Logstash エンジンは、次の 3 つのコンポーネントで構成され�
 
 Logstash 用の Azure Sentinel 出力プラグインは、Log Analytics HTTP データ コレクター REST API を使用して、JSON 形式のデータを Log Analytics ワークスペースに送信します。 データはカスタム ログに取り込まれます。
 
-- [Log Analytics REST API ](https://docs.microsoft.com/rest/api/loganalytics/create-request)の詳細を確認します。
-- [カスタム ログ](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-custom-logs)の詳細を確認します。
+- [Log Analytics REST API ](/rest/api/loganalytics/create-request)の詳細を確認します。
+- [カスタム ログ](../azure-monitor/platform/data-sources-custom-logs.md)の詳細を確認します。
 
 ## <a name="deploy-the-azure-sentinel-output-plugin-in-logstash"></a>Logstash での Azure Sentinel 出力プラグインのデプロイ
 
@@ -57,7 +57,7 @@ Logstash 用の Azure Sentinel 出力プラグインは、Log Analytics HTTP デ
 
 Azure Sentinel 出力プラグインは、Logstash コレクションで使用できます。
 
-- Logstash の[プラグインの操作](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html)に関するドキュメントに記載されている手順に従って、***microsoft-logstash-output-azure-loganalytics*** プラグインをインストールします。
+- Logstash の [プラグインの操作](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html)に関するドキュメントに記載されている手順に従って、*_microsoft-logstash-output-azure-loganalytics_* _ プラグインをインストールします。
    
 - Logstash システムがインターネットにアクセスできない場合は、Logstash の[オフライン プラグイン管理](https://www.elastic.co/guide/en/logstash/current/offline-plugins.html)に関するドキュメントに記載されている手順に従って、オフライン プラグイン パックを準備して使用します。 (この場合、インターネットにアクセスできる別の Logstash システムを構築する必要があります)。
 
@@ -67,7 +67,7 @@ Logstash の[構成ファイルの構造](https://www.elastic.co/guide/en/logsta
 
 | フィールド名 | データ型 | 説明 |
 |----------------|---------------|-----------------|
-| `workspace_id` | string | ワークスペース ID GUID を入力します。 * |
+| `workspace_id` | string | ワークスペース ID GUID を入力します。 _ |
 | `workspace_key` | string | ワークスペースの主キー GUID を入力します。 * |
 | `custom_log_table_name` | string | ログが取り込まれるテーブルの名前を設定します。 構成できるのは、出力プラグインごとに 1 つのテーブル名だけです。 ログ テーブルは、Azure Sentinel の **[ログ]** の下の **[カスタム ログ]** カテゴリの **[テーブル]** に `_CL` サフィックス付きで表示されます。 |
 | `endpoint` | string | 省略可能なフィールド。 既定では、これは Log Analytics エンドポイントです。 代替エンドポイントを設定するには、このフィールドを使用します。 |
@@ -162,7 +162,7 @@ Logstash の[構成ファイルの構造](https://www.elastic.co/guide/en/logsta
 
 1. テーブルのレコードを表示するには、テーブル名をスキーマとして使用して、テーブルに対してクエリを実行します。
 
-   :::image type="content" source="./media/connect-logstash/logstash-custom-logs-query.png" alt-text="ログの一時退避カスタム ログのスクリーンショット。":::
+   :::image type="content" source="./media/connect-logstash/logstash-custom-logs-query.png" alt-text="ログの一時退避カスタム ログ クエリのスクリーンショット。":::
 
 ## <a name="monitor-output-plugin-audit-logs"></a>出力プラグインの監査ログを監視する
 

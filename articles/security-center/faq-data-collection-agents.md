@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/25/2020
+ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 315183040515110a6a21afcd00e12d1b12313170
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 2ea9fdcb11bd88755c0972fa166d1d94068ce60e
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341840"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638816"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>FAQ - データ収集、エージェント、およびワークスペースに関する質問
 
@@ -109,24 +109,28 @@ Security Center によって収集されたデータを保存する既存の Log
 
 既存の Log Analytics ワークスペースを選択するには、次の手順に従います。
 
-1. **[セキュリティ ポリシー - データ収集]** で、 **[Use another workspace]\(別のワークスペースを使用する\)** を選択します。
+1. Security Center のメニューから、 **[価格と設定]** を選択します。
+1. 関連するサブスクリプションを選択します。
+1. **[自動プロビジョニング]** ページを開きます。
+1. Log Analytics エージェントの場合は、 **[構成の編集]** を選択します。 
 
-    ![別のワークスペースを使用する][4]
+    :::image type="content" source="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png" alt-text="自動デプロイの使用時に使用する Log Analytics エージェントの構成" lightbox="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png":::
 
-1. プルダウン メニューから、収集したデータを保存するワークスペースを選択します。
+1. **[Connect Azure VMs to a different workspace]\(Azure VM の別のワークスペースへの接続\)** を選択し、既存のワークスペースを選択します。
 
-    > [!NOTE]
-    > プルダウン メニューには、Azure サブスクリプション内の、アクセスできるワークスペースだけが表示されます。
+    :::image type="content" source="./media/security-center-enable-data-collection/choose-workspace.png" alt-text="Log Analytics エージェントに対してレポート先の既定のワークスペース以外のワークスペースを選択する" lightbox="./media/security-center-enable-data-collection/choose-workspace.png":::
+
+    > [!TIP]
+    > このリストには、アクセス権を持っており、Azure サブスクリプション内にあるワークスペースのみが含められます。
 
 1. **[保存]** を選択します。 監視対象の VM を再構成するかどうかをたずねられます。
 
-    - 新しいワークスペース設定を**新しい VM にのみ適用**する場合は、 **[いいえ]** を選択します。 新しいワークスペース設定は、エージェントの新しいインストール (Log Analytics エージェントがインストールされていない、新たに検出された VM) にのみ適用されます。
-    - 新しいワークスペース設定を**すべての VM に適用**する場合は、 **[はい]** を選択します。 この場合、Security Center によって作成されたワークスペースに接続されているすべての VM が、新しいターゲット ワークスペースに再接続されます。
+    - 新しいワークスペース設定を **新しい VM にのみ適用** する場合は、 **[いいえ]** を選択します。 新しいワークスペース設定は、エージェントの新しいインストール (Log Analytics エージェントがインストールされていない、新たに検出された VM) にのみ適用されます。
+    - 新しいワークスペース設定を **すべての VM に適用** する場合は、 **[はい]** を選択します。 この場合、Security Center によって作成されたワークスペースに接続されているすべての VM が、新しいターゲット ワークスペースに再接続されます。
 
     > [!NOTE]
     > **[はい]** を選択した場合、すべての VM が新しいターゲット ワークスペースに再接続されるまで、Security Center によって作成されたワークスペースを削除しないでください。 ワークスペースの削除が早すぎると、この操作は失敗します。
 
-    - 操作を取り消すには、 **[キャンセル]** を選択します。
 
 ## <a name="what-if-the-log-analytics-agent-was-already-installed-as-an-extension-on-the-vm"></a>Log Analytics エージェントが拡張機能として VM に既にインストールされている場合はどうなりますか?<a name="mmaextensioninstalled"></a>
 
@@ -162,14 +166,19 @@ Microsoft Monitoring Extension を削除すると、Security Center は VM か�
 
 ## <a name="how-do-i-stop-the-automatic-agent-installation-and-workspace-creation"></a>自動的なエージェントのインストールとワークスペースの作成をオプトアウトするにはどうすればよいですか?
 
-セキュリティ ポリシーでサブスクリプションの自動プロビジョニングを無効にすることはできますが、これは推奨されません。 自動プロビジョニングを無効にすると、Security Center の推奨事項とアラートが制限されます。 自動プロビジョニングを無効にするには、次の手順に従います。
+セキュリティ ポリシーでサブスクリプションの自動プロビジョニングを無効にすることはできますが、これは推奨されません。 自動プロビジョニングを無効にすると、Security Center のレコメンデーションとアラートが制限されます。 自動プロビジョニングを無効にするには、次の手順に従います。
 
-1. サブスクリプションで Azure Defender が有効になっている場合は、そのサブスクリプションのセキュリティ ポリシーを開き、 **[Azure Defender off]\(Azure Defender オフ\)** を選択します。
+1. Security Center のメニューから、 **[価格と設定]** を選択します。
+1. 関連するサブスクリプションを選択します。
+1. サブスクリプションで Azure Defender が有効になっている場合は、**Azure Defender プラン** を開き、 **[Azure Defender off]\(Azure Defender をオフ\)** を選択します。
 
     :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Azure Defender を有効または無効にする":::
 
-1. 次に、 **[セキュリティ ポリシー - データ収集]** ページで **[オフ]** を選択して自動プロビジョニングを無効にします。
-   ![データ収集][2]
+1. **[自動プロビジョニング]** ページから、ペンを選択して **[セキュリティ ポリシー - データ収集]** ページで自動プロビジョニングを無効にします。
+
+    :::image type="content" source="./media/security-center-enable-data-collection/agent-toggles.png" alt-text="Log Analytics エージェントの自動デプロイを有効にする":::
+
+1. **[保存]** を選択します。
 
 
 ## <a name="should-i-opt-out-of-the-automatic-agent-installation-and-workspace-creation"></a>自動的なエージェントのインストールとワークスペースの作成をオプトアウトすべきでしょうか?
@@ -232,13 +241,11 @@ Log Analytics エージェントは手動で削除できます。 ただし、Se
 
 有効にした後で無効にする必要がある場合は、次のようにします。
 
-1. [Azure portal](https://portal.azure.com) で **Security Center** を開いて、 **[セキュリティ ポリシー]** を選択します。
+1. [Azure portal](https://portal.azure.com) から、**Security Center** を開いて、 **[Pricing and settings]\(価格と設定\)** を選択します。
 
 1. 自動プロビジョニングを無効にするサブスクリプションを選択します。
 
-    **[Security policy - Data collection]\(セキュリティ ポリシー - データ収集\)** が開きます。
-
-1. **[自動プロビジョニング]** で **[オフ]** を選びます。
+1. **[自動プロビジョニング]** で、Log Analytics エージェントの切り替えをオフにします。
 
 
 ## <a name="how-do-i-enable-data-collection"></a>データ収集を有効にするにはどうしたらよいですか。

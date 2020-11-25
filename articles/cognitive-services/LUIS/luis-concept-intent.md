@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: cf138248e878b21531df2035dfeda1b90162ea99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf5ab7361c84fb787366c7c361829e52362fe427
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536105"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025910"
 ---
 # <a name="intents-in-your-luis-app"></a>LUIS アプリにおける意図
 
@@ -32,7 +32,7 @@ ms.locfileid: "91536105"
 すべてのアプリケーションに事前定義済みの意図 "[None](#none-intent)" が付属します。これは、代替として使用できる意図です。
 
 ## <a name="prebuilt-domains-provide-intents"></a>事前構築済みドメインによる意図の提供
-ユーザーが定義する意図だけでなく、いずれかの[事前構築済みドメイン](luis-how-to-use-prebuilt-domains.md)から事前構築済みの意図を使用できます。
+ユーザーが定義する意図だけでなく、いずれかの[事前構築済みドメイン](./howto-add-prebuilt-models.md)から事前構築済みの意図を使用できます。
 
 ## <a name="return-all-intents-scores"></a>すべての意図のスコアを返す
 発話は 1 つの意図に割り当てます。 LUIS では、エンドポイントで発話が受信されると、既定ではそのエンドポイントから発話の最上位の意図が返されます。
@@ -59,7 +59,7 @@ ms.locfileid: "91536105"
 
 ## <a name="prebuilt-domain-intents"></a>事前構築済みドメインの意図
 
-[事前構築済みのドメイン](luis-how-to-use-prebuilt-domains.md)は、発話を伴う意図を提供します。
+[事前構築済みのドメイン](./howto-add-prebuilt-models.md)は、発話を伴う意図を提供します。
 
 ## <a name="none-intent"></a>None 意図
 
@@ -70,7 +70,7 @@ ms.locfileid: "91536105"
 発話が None 意図として予測されると、クライアント アプリケーションはさらに質問を重ねたり、有意義な選択ができるようにユーザーを方向付けるメニューを提供したりすることができます。
 
 ## <a name="negative-intentions"></a>負の意図
-"自動車が**ほしい**" と "自動車が**ほしくない**" など、負と正の意図を判断する必要がある場合、2 つの意図 (正と負を 1 つずつ) を作成し、それぞれに適した発話を追加できます。 または、1 つの意図を作成して、正と負の 2 つの異なる用語をエンティティとしてマークすることもできます。
+"自動車が **ほしい**" と "自動車が **ほしくない**" など、負と正の意図を判断する必要がある場合、2 つの意図 (正と負を 1 つずつ) を作成し、それぞれに適した発話を追加できます。 または、1 つの意図を作成して、正と負の 2 つの異なる用語をエンティティとしてマークすることもできます。
 
 ## <a name="intents-and-patterns"></a>意図とパターン
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec8e40c0908855cd06d647bdd9121106e3553c11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c0bd21f55fee4d8487826deae23093ede293c8c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88918912"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021815"
 ---
 # <a name="test-your-custom-commands-application"></a>カスタム コマンド アプリケーションをテストする
 
@@ -49,11 +49,10 @@ Speech SDK を使用してユニバーサル Windows プラットフォーム (U
 - [方法: Web エンドポイントを設定する](./how-to-custom-commands-setup-web-endpoints.md)
 
 その他のプログラミング言語およびプラットフォームの場合:
-- [Speech SDK のプログラミング言語、プラットフォーム、シナリオの容量](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk)
+- [Speech SDK のプログラミング言語、プラットフォーム、シナリオの容量](./speech-sdk.md)
 - [音声アシスタントのサンプル コード](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [GitHub 上のサンプルを参照してください](https://aka.ms/speech/cc-samples)
-

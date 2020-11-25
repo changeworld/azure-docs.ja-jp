@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 80f0d29de6b3013ad02ed1a5d34bebdf81a8766b
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 9d1b6e20bf2decfe051e79e073736f71181260fa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91628215"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014545"
 ---
 # <a name="spatial-analysis-operations"></a>空間分析操作
 
@@ -39,7 +39,7 @@ ms.locfileid: "91628215"
 | cognitiveservices.vision.spatialanalysis-personcrossingpolygon.debug | 人がカメラの視野内の指定されたラインを越えた時点を追跡します。 <br> 人がゾーンを越えると、_personLineEvent_ イベントを生成し、方向情報を提供します。 |
 | cognitiveservices.vision.spatialanalysis-persondistance.debug | 人が距離ルールに違反した時点を追跡します。 <br> 各距離違反が発生した場所で _personDistanceEvent_ を定期的に生成します。 |
 
-空間分析は、[Live Video Analytics](https://aka.ms/lva-spatial-analysis) でビデオ AI モジュールとして実行することもできます。 
+空間分析は、[Live Video Analytics](../../media-services/live-video-analytics-edge/spatial-analysis-tutorial.md) でビデオ AI モジュールとして実行することもできます。 
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
@@ -638,8 +638,8 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 
 空間分析の検出またはイベントをアプリケーションに統合できます。 検討すべきいくつかの方法を次に示します。 
 
-* 選択したプログラミング言語の Azure Event Hub SDK を使用して、Azure IoT Hub エンドポイントに接続し、イベントを受信します。 詳細については、「[デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin)」をご覧ください。 
-* イベントを他のエンドポイントに送信したり、イベントをデータ ストレージに保存したりするには、Azure IoT Hub の**メッセージ ルーティング**を設定します。 詳細については、[IoT Hub メッセージ ルーティング](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)に関する記事をご覧ください。 
+* 選択したプログラミング言語の Azure Event Hub SDK を使用して、Azure IoT Hub エンドポイントに接続し、イベントを受信します。 詳細については、「[デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る](../../iot-hub/iot-hub-devguide-messages-read-builtin.md)」をご覧ください。 
+* イベントを他のエンドポイントに送信したり、イベントをデータ ストレージに保存したりするには、Azure IoT Hub の **メッセージ ルーティング** を設定します。 詳細については、[IoT Hub メッセージ ルーティング](../../iot-hub/iot-hub-devguide-messages-d2c.md)に関する記事をご覧ください。 
 * 到着したイベントをリアルタイムで処理し、視覚化を作成する Azure Stream Analytics ジョブを設定します。 
 
 ## <a name="deploying-spatial-analysis-operations-at-scale-multiple-cameras"></a>空間分析操作を大規模に展開する (複数のカメラ)

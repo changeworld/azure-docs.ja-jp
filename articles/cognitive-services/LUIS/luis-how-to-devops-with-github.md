@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
 ms.author: anwigley
-ms.openlocfilehash: 6df65040277ac61cca5fb4bf7fce5b5a7b2f3afe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b733e90b69be4e2bd458be5486564747ed4cca78
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84783662"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018873"
 ---
 # <a name="apply-devops-to-luis-app-development-using-github-actions"></a>GitHub Actions を使用して LUIS アプリ開発に DevOps を適用する
 
@@ -27,11 +27,11 @@ LUIS の DevOps およびソフトウェア エンジニアリングのベスト
 [LUIS DevOps テンプレート リポジトリ](https://github.com/Azure-Samples/LUIS-DevOps-Template)では、次を行う方法を説明しています。
 
 * **テンプレート リポジトリの複製** - テンプレートを独自の GitHub リポジトリにコピーします。
-* **LUIS リソースの構成** - 継続的インテグレーション ワークフローによって使用される [LUIS 作成と予測リソースを Azure](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription#create-resources-in-azure-cli) で作成します。
-* **CI/CD ワークフローの構成** - CI/CD ワークフローのパラメーターを構成し、 [GitHub シークレット](https://help.github.com/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)に保存します。
+* **LUIS リソースの構成** - 継続的インテグレーション ワークフローによって使用される [LUIS 作成と予測リソースを Azure](./luis-how-to-azure-subscription.md) で作成します。
+* **CI/CD ワークフローの構成** - CI/CD ワークフローのパラメーターを構成し、[GitHub シークレット](https://help.github.com/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)に保存します。
 * **["開発者の内部ループ"](https://mitchdenny.com/the-inner-loop/) の手順の確認** - 開発者は、開発ブランチで作業している間にサンプル LUIS アプリのアップデートを行い、アップデートをテストした後、変更を提案してレビューの承認を求めるためのプル要求を出します。
 * **CI/CD ワークフローの実行** - [継続的インテグレーション ワークフローを実行し、GitHub アクションを使用して LUIS アプリをビルドしてテスト](luis-concept-devops-automation.md)します。
-* **自動テストの実行** - アプリの品質を評価するために、 [LUIS アプリの自動バッチ テスト](luis-concept-devops-testing.md)を実行します。
+* **自動テストの実行** - アプリの品質を評価するために、[LUIS アプリの自動バッチ テスト](luis-concept-devops-testing.md)を実行します。
 * **LUIS アプリの展開** - [継続的デリバリー (CD) ジョブ](luis-concept-devops-automation.md#continuous-delivery-cd)を実行して、LUIS アプリを公開します。
 * **独自のプロジェクトでリポジトリを使用する** - 独自の LUIS アプリケーションでリポジトリを使用する方法について説明します。
 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: e4c56700e75eb5bc7e5e7faec073fe7157e5df88
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1ef317ee3917172d0de204adafe5d5bf21a2a9ac
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976370"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014511"
 ---
 # <a name="whats-new-in-computer-vision"></a>Computer Vision の新機能
 
@@ -80,7 +80,7 @@ Read API のバージョン3.0 では、印刷されたテキストまたは手�
 * 抽出された各単語の信頼度スコア
 * 言語パラメーターの追加によるスペイン語および英語のサポート
 
-3\.0 API の使用を開始するには、[テキストの抽出に関するクイックスタート](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text?tabs=version-3)に従ってください。
+3\.0 API の使用を開始するには、[テキストの抽出に関するクイックスタート](./quickstarts/csharp-hand-text.md?tabs=version-3)に従ってください。
 
 ## <a name="cognitive-service-updates"></a>Cognitive Services の更新プログラム
 

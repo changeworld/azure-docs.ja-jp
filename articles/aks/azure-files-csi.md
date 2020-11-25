@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 556aec071ccb59a0223bc07d134f3427755117f3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b29f4034b12ce43e6c051e454601f196365469f3
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745794"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636982"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) で Azure Files の Container Storage Interface (CSI) ドライバーを使用する (プレビュー)
 
@@ -35,11 +35,11 @@ Kubernetes ボリュームの詳細については、[AKS でのアプリケー�
 
 ストレージ クラスを使用して、Azure Files 共有を作成する方法を定義します。 ストレージ アカウントは、ストレージ クラスと共に使用して Azure Files 共有を保持するために、[ノード リソース グループ][node-resource-group]内に自動的に作成されます。 *skuName* には、次のいずれかの [Azure Storage の冗長性 SKU][storage-skus] を選択します。
 
-* **Standard_LRS** :標準のローカル冗長ストレージ
-* **Standard_GRS** :標準の geo 冗長ストレージ
-* **Standard_ZRS** :標準のゾーン冗長ストレージ
-* **Standard_RAGRS** :標準の読み取りアクセス geo 冗長ストレージ
-* **Premium_LRS** :Premium ローカル冗長ストレージ
+* **Standard_LRS**:標準のローカル冗長ストレージ
+* **Standard_GRS**:標準の geo 冗長ストレージ
+* **Standard_ZRS**:標準のゾーン冗長ストレージ
+* **Standard_RAGRS**:標準の読み取りアクセス geo 冗長ストレージ
+* **Premium_LRS**:Premium ローカル冗長ストレージ
 
 > [!NOTE]
 > Azure Files は Azure Premium Storage をサポートしています。 Premium ファイル共有の最小サイズは 100 GB です。
@@ -76,7 +76,7 @@ total 29
 
 既定のストレージ クラスは最も一般的なシナリオに適合しますが、すべてに適合するわけではありません。 場合によっては、独自のストレージ クラスを独自のパラメーターを使用してカスタマイズすることもできます。 たとえば、次のマニフェストを使用して、ファイル共有の `mountOptions` を構成します。
 
-Kubernetes でマウントされたファイル共有の場合、 *fileMode* と *dirMode* の既定値は *0777* です。 ストレージ クラス オブジェクトでは、さまざまなマウント オプションを指定できます。
+Kubernetes でマウントされたファイル共有の場合、*fileMode* と *dirMode* の既定値は *0777* です。 ストレージ クラス オブジェクトでは、さまざまなマウント オプションを指定できます。
 
 `azure-file-sc.yaml` という名前のファイルを作成し、次のマニフェストの例を貼り付けます。
 
@@ -218,7 +218,7 @@ az feature register --namespace "Microsoft.Storage" --name "AllowNfsFileShares"
 az feature list -o table --query "[?contains(name, 'Microsoft.Storage/AllowNfsFileShares')].{Name:name,State:properties.state}"
 ```
 
-準備ができたら、 [az provider register][az-provider-register] コマンドを使用して、 *Microsoft.Storage* リソース プロバイダーの登録を更新します。
+準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.Storage* リソース プロバイダーの登録を更新します。
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Storage
@@ -229,7 +229,7 @@ az provider register --namespace Microsoft.Storage
 NFS 共有をサポートするために、次の構成で [`Premium_LRS` Azure ストレージ アカウントを作成](../storage/files/storage-how-to-create-premium-fileshare.md)します。
 - アカウントの種類: FileStorage
 - 安全な転送が必須 (HTTPS トラフィックのみを有効にする): false
-- [ファイアウォールと仮想ネットワーク] でお使いのエージェント ノードの仮想ネットワークを選択する
+- [ファイアウォールと仮想ネットワーク] でお使いのエージェント ノードの仮想ネットワークを選択します。そのため、MC_ リソース グループにストレージ アカウントを作成することが適している場合があります。
 
 ### <a name="create-nfs-file-share-storage-class"></a>NFS ファイル共有のストレージ クラスを作成する
 
@@ -239,7 +239,7 @@ NFS 共有をサポートするために、次の構成で [`Premium_LRS` Azure 
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: azurefile-csi
+  name: azurefile-csi-nfs
 provisioner: file.csi.azure.com
 parameters:
   resourceGroup: EXISTING_RESOURCE_GROUP_NAME  # optional, required only when storage account is not in the same resource group as your agent nodes
@@ -275,6 +275,10 @@ Filesystem      Size  Used Avail Use% Mounted on
 accountname.file.core.windows.net:/accountname/pvc-fa72ec43-ae64-42e4-a8a2-556606f5da38  100G     0  100G   0% /mnt/azurefile
 ...
 ```
+
+>[!NOTE]
+> NFS ファイル共有は Premium アカウントにあるため、ファイル共有の最小サイズは 100 GB であることに注意してください。 ストレージ サイズが小さい PVC を作成すると、「ファイル共有を作成できませんでした...サイズ (5)...」というエラーが発生する場合があります。
+
 
 ## <a name="windows-containers"></a>Windows コンテナー
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: eace63effdbd62d8f08395aa16683627b475a963
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 698a1d52af6c2472d6c025851ead1a0b6a6dff82
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86232527"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015343"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Speech Devices SDK のマイク配列の推奨事項
 
@@ -97,7 +97,7 @@ Microsoft Audio Stack で使用するために、次の配列のジオメトリ�
 | Sampling Clock (サンプリング クロック)      | オーディオ デバイスに、低ドリフトによるジッターとドロップ アウトがないこと |
 | Record Capability (記録機能)   | デバイスが別々のチャネルの未加工のストリームを同時に記録できること |
 | USB                 | すべての USB オーディオ入力デバイスは、[USB Audio Devices Rev3 の仕様](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement)に従って記述子を設定する必要がある |
-| Microphone Geometry (マイクのジオメトリ) | ドライバーは[マイク配列ジオメトリ記述子](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry)を正しく実装する必要がある |
+| Microphone Geometry (マイクのジオメトリ) | ドライバーは[マイク配列ジオメトリ記述子](/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry)を正しく実装する必要がある |
 | Discoverability (探索可能性)     | デバイスには、検出できないまたは制御不能なハードウェア、ファームウェア、またはサード パーティ製のソフトウェア ベースのデバイス間の非線形オーディオ処理アルゴリズムを含めない |
 | Capture Format (キャプチャ形式)      | キャプチャ形式では、16 kHz の最小サンプリング レートと推奨される 24 ビット深度を使用する必要がある |
 

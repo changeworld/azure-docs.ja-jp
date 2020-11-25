@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 4eb2835bd09e6548149ee90cb7232bf230de0300
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 73887515eea344e920455e3c24f3eae3d5ad515a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538752"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013753"
 ---
 # <a name="optical-character-recognition-ocr"></a>光学式文字認識 (OCR)
 
@@ -138,7 +138,7 @@ Read API の [Read 呼び出し](https://westcentralus.dev.cognitive.microsoft.c
 ## <a name="supported-languages-for-print-text"></a>印刷テキストでサポートされている言語
 [Read API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) の印刷テキストの抽出でサポートされている言語は、英語、スペイン語、ドイツ語、フランス語、イタリア語、ポルトガル語、オランダ語です。
 
-OCR でサポートされている言語の完全な一覧については、[サポートされている言語](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr)に関する記事をご覧ください。
+OCR でサポートされている言語の完全な一覧については、[サポートされている言語](./language-support.md#optical-character-recognition-ocr)に関する記事をご覧ください。
 
 ### <a name="read-32-preview-adds-simplified-chinese-and-japanese"></a>Read 3.2 プレビューで追加された簡体字中国語と日本語
 [Read 3.2 API パブリック プレビュー](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005)では、簡体字中国語と日本語のサポートが追加されています。 お客様のシナリオでさらに多くの言語をサポートする必要がある場合は、「[OCR API](#ocr-api)」セクションを参照してください。 
@@ -150,7 +150,7 @@ OCR でサポートされている言語の完全な一覧については、[サ
 [Read 3.x REST API](./QuickStarts/CSharp-hand-text.md) は、統合が簡単で、すぐに生産性を上げることができるため、ほとんどのお客様にとって推奨される選択肢です。 Azure と Computer Vision サービスがスケール、パフォーマンス、データ セキュリティ、コンプライアンスのニーズに対応する一方で、お客様は顧客のニーズを満たすことに集中できます。
 
 ## <a name="deploy-on-premise-with-docker-containers"></a>Docker コンテナーを使用したオンプレミスのデプロイ
-[Read Docker コンテナー (プレビュー)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers) を使用すると、独自のローカル環境に新しい OCR 機能をデプロイできます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。
+[Read Docker コンテナー (プレビュー)](./computer-vision-how-to-install-containers.md) を使用すると、独自のローカル環境に新しい OCR 機能をデプロイできます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。
 
 ## <a name="example-outputs"></a>出力例
 
@@ -186,7 +186,7 @@ Read API は、一般に混合言語ドキュメントと呼ばれる、複数�
 
 ## <a name="ocr-api"></a>OCR API
 
-[OCR API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) では、古い認識モデルが使用されており、画像のみがサポートされ、同期的に実行されて、検出されたテキストは直ちに返されます。 [OCR でサポートされている言語](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr)と Read API に関する記事をご覧ください。
+[OCR API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) では、古い認識モデルが使用されており、画像のみがサポートされ、同期的に実行されて、検出されたテキストは直ちに返されます。 [OCR でサポートされている言語](./language-support.md#optical-character-recognition-ocr)と Read API に関する記事をご覧ください。
 
 ## <a name="data-privacy-and-security"></a>データのプライバシーとセキュリティ
 

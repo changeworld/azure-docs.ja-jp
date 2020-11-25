@@ -4,12 +4,12 @@ description: Azure Monitor のパートナーと、そのパートナーとの�
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: b56b2386422d9f7f2fa598ff804a2206bf4b4d83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d603e130d4e65667edb34121a4c89b7b0e02b819
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460095"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636743"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor パートナーとの統合
 
@@ -46,6 +46,16 @@ AppDynamics アプリケーション パフォーマンス管理 (APM) により
 Azure Monitor のアラートで JIRA チケットを作成できます。
 
 [Azure Monitor の Atlassian ドキュメント](https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/)
+
+## <a name="bmc-helix"></a>BMC Helix
+
+![BMC Helix ロゴ](./media/partners/BMCHelix.png)
+
+BMC Helix は、自律的なエンタープライズ サービスと運用 SaaS プラットフォームです。 360 度のインテリジェンスとの統合により、企業は予測的に検出、監視、サービス、修復、最適化を行い、IT および基幹業務のためのオムニチャネル エクスペリエンスを提供できます。
+さらに、BMC Helix は、ITSM と IT 運用管理 (ITOM) をシームレスに統合することにより、IT およびビジネス ユーザーが、IT サイロを排除し、データ主導のビジネス上の意思決定を行い、業界トップレベルのカスタマー エクスペリエンスを提供できるようにします。
+お客様は、選択したクラウド デプロイ (パブリック、プライベート、またはハイブリッド) を使用して、BMC Helix プラットフォームをデプロイできます。 さらに、お客様は、業界をリードするプロバイダーから利用できる AI/ML ソリューションを選択できます。
+
+[BMC Helix の詳細情報](https://www.bmc.com/it-solutions/bmc-helix.html?vu=helix)
 
 ## <a name="botmetric"></a>Botmetric
 
@@ -300,6 +310,7 @@ Sumo Logic は、セキュリティで保護されたクラウド ネイティ�
 Turbonomic は、パフォーマンス、コスト、コンプライアンスを同時に、かつリアルタイムで最適化し、ハイブリッド クラウドのワークロード自動化を実現するプラットフォームです。 Turbonomic を利用し、アプリケーションの SLA と IaaS および PaaS レイヤーのコンピューティング、ストレージ、ネットワーク全体に必要なリソースを常に確保できるように Azure 環境を継続的に最適化することで、組織は Azure 環境に柔軟に対応できます。 組織はパフォーマンスとコンプライアンスの両方を確保しながら、移行をシミュレートし、ワークロードを適切にスケーリングし、データセンター リソースを廃止して予定どおりに予算内で確実に Azure に移行できます。 Turbonomic は API 主導型で、エージェントレスの VM として Azure とオンプレミスのどちらでも実行できます。
 
 [Turbonomic の概要](https://turbonomic.com/)
+
 
 ## <a name="next-steps"></a>次のステップ
 

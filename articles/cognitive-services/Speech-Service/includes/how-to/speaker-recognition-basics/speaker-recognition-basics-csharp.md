@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: v-jawe
 ms.custom: references_regions
-ms.openlocfilehash: 5be99ba09032020abf777c80307e347658a6e037
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 2b5a34e8f3e7132a16ad3683b846d57e9ece2cb6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470937"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015471"
 ---
 このクイックスタートでは、Speech SDK を使用した Speaker Recognition の基本的な設計パターンについて学習します。これには次のものが含まれます。
 
@@ -25,7 +25,7 @@ Speech Recognition の概念の概要については、[概要](../../../speaker
 この記事は、Azure アカウントと Speech Service サブスクリプションをお持ちであることを前提としています。 アカウントとサブスクリプションをお持ちでない場合は、[Speech Service を無料でお試しください](../../../overview.md#try-the-speech-service-for-free)。
 
 > [!IMPORTANT]
-> 現在、Speaker Recognition は、`westus` リージョンで作成された Azure Speech リソース " *のみ* " でサポートされています。
+> 現在、Speaker Recognition は、`westus` リージョンで作成された Azure Speech リソース "*のみ*" でサポートされています。
 
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
@@ -51,7 +51,7 @@ using Microsoft.CognitiveServices.Speech.Audio;
 
 ## <a name="create-a-speech-configuration"></a>音声構成を作成する
 
-Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true) を作成する必要があります。 この例では、サブスクリプション キーとリージョンを使用して [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true) を作成します。 また、この記事の残りの部分で使用する、基本的な定型コードをいくつか作成します。これを変更して、さまざまなカスタマイズを行います。
+Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet) を作成する必要があります。 この例では、サブスクリプション キーとリージョンを使用して [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet) を作成します。 また、この記事の残りの部分で使用する、基本的な定型コードをいくつか作成します。これを変更して、さまざまなカスタマイズを行います。
 
 リージョンが `westus` に設定されていることに注意してください。これは、それがサービスでサポートされている唯一のリージョンであるためです。
 
@@ -70,7 +70,7 @@ public class Program
 
 ## <a name="text-dependent-verification"></a>テキスト依存の認証
 
-Speaker Verification では、話者が既知の、または **登録されている** 音声と一致することを確認します。 最初の手順では、音声プロファイルを **登録** し、サービスで今後の音声サンプルと比較できるようにします。 この例では、 **テキスト依存** の戦略を使用してプロファイルを登録します。その場合、登録と認証の両方に使用する特定のパスフレーズが必要になります。 サポートされているパスフレーズのリストについては、[リファレンス ドキュメント](https://docs.microsoft.com/rest/api/speakerrecognition/)を参照してください。
+Speaker Verification では、話者が既知の、または **登録されている** 音声と一致することを確認します。 最初の手順では、音声プロファイルを **登録** し、サービスで今後の音声サンプルと比較できるようにします。 この例では、**テキスト依存** の戦略を使用してプロファイルを登録します。その場合、登録と認証の両方に使用する特定のパスフレーズが必要になります。 サポートされているパスフレーズのリストについては、[リファレンス ドキュメント](/rest/api/speakerrecognition/)を参照してください。
 
 まず、`Program` クラスに次の関数を作成して、音声プロファイルを登録します。
 
@@ -127,7 +127,7 @@ public static async Task SpeakerVerify(SpeechConfig config, VoiceProfile profile
 
 この関数では、先ほど作成した `VoiceProfile` オブジェクトを渡して、認証対象のモデルを初期化します。 次に、`await speakerRecognizer.RecognizeOnceAsync(model)` で、パスフレーズをもう一度読み上げるように求められますが、今度は音声プロファイルに対して認証が行われ、0.0 から 1.0 の範囲の類似性スコアが返されます。 `result` オブジェクトでは、パスフレーズが一致するかどうかに基づいて、`Accept` や `Reject` も返されます。
 
-次に、`Main()` 関数を変更し、作成した新しい関数を呼び出します。 さらに、関数呼び出しを介して参照渡しするために、`Dictionary<string, string>` を作成することに注意してください。 その理由は、サービスでは、作成された `VoiceProfile` で人間が判読できる名前を格納できず、プライバシー上の目的で ID 番号のみが格納されるためです。 `VerificationEnroll` 関数では、このディクショナリに、テキスト名と共に、新しく作成された ID を使用してエントリを追加します。 人間が判読できる名前を表示する必要があるアプリケーション開発シナリオでは、 **サービスで格納できないどこかにこのマッピングを格納する必要があります** 。
+次に、`Main()` 関数を変更し、作成した新しい関数を呼び出します。 さらに、関数呼び出しを介して参照渡しするために、`Dictionary<string, string>` を作成することに注意してください。 その理由は、サービスでは、作成された `VoiceProfile` で人間が判読できる名前を格納できず、プライバシー上の目的で ID 番号のみが格納されるためです。 `VerificationEnroll` 関数では、このディクショナリに、テキスト名と共に、新しく作成された ID を使用してエントリを追加します。 人間が判読できる名前を表示する必要があるアプリケーション開発シナリオでは、**サービスで格納できないどこかにこのマッピングを格納する必要があります**。
 
 ```csharp
 static async Task Main(string[] args)
@@ -144,7 +144,7 @@ static async Task Main(string[] args)
 }
 ```
 
-スクリプトを実行すると、登録のために 3 回、さらに認証のために 1 回、 *My voice is my passport, verify me* というフレーズを読み上げるように求められます。 その結果、類似性スコアが返されます。これを使用して、認証用に独自のカスタムしきい値を作成することができます。
+スクリプトを実行すると、登録のために 3 回、さらに認証のために 1 回、*My voice is my passport, verify me* というフレーズを読み上げるように求められます。 その結果、類似性スコアが返されます。これを使用して、認証用に独自のカスタムしきい値を作成することができます。
 
 ```shell
 Enrolling profile id 87-2cef-4dff-995b-dcefb64e203f.
@@ -163,12 +163,12 @@ Verified voice profile for speaker Your Name, score is 0.915581
 
 ## <a name="text-independent-verification"></a>テキストに依存しない認証
 
-**テキストに依存する** 認証とは対照的に、 **テキストに依存しない** 認証は次のようになります。
+**テキストに依存する** 認証とは対照的に、**テキストに依存しない** 認証は次のようになります。
 
 * 特定のパスフレーズを読み上げる必要はなく、何と話しかけてもかまいません
-* 3 つのオーディオ サンプルは必要ありませんが、合計 20 秒のオーディオが " *必要* " になります
+* 3 つのオーディオ サンプルは必要ありませんが、合計 20 秒のオーディオが "*必要*" になります
 
-`VerificationEnroll` 関数にいくつかの単純な変更を加え、 **テキストに依存しない** 認証に切り替えます。 まず、認証の種類を `VoiceProfileType.TextIndependentVerification` に変更します。 次に、`result.RemainingEnrollmentsSpeechLength` を追跡するために `while` ループを変更します。その場合、20 秒のオーディオがキャプチャされるまで引き続き話しかけるように求められます。
+`VerificationEnroll` 関数にいくつかの単純な変更を加え、**テキストに依存しない** 認証に切り替えます。 まず、認証の種類を `VoiceProfileType.TextIndependentVerification` に変更します。 次に、`result.RemainingEnrollmentsSpeechLength` を追跡するために `while` ループを変更します。その場合、20 秒のオーディオがキャプチャされるまで引き続き話しかけるように求められます。
 
 ```csharp
 public static async Task VerificationEnroll(SpeechConfig config, Dictionary<string, string> profileMapping)
@@ -303,7 +303,7 @@ static async Task Main(string[] args)
 }
 ```
 
-スクリプトを実行すると、最初のプロファイル用の音声サンプルを登録するために話しかけるように求められます。 登録が完了した後、`profileNames` リストの各名前に対して、このプロセスを繰り返すように求められます。 各登録が完了した後、 **誰か** に話しかけてもらうように求められ、サービスでは登録されている音声プロファイルの中からその誰かを識別しようとします。
+スクリプトを実行すると、最初のプロファイル用の音声サンプルを登録するために話しかけるように求められます。 登録が完了した後、`profileNames` リストの各名前に対して、このプロセスを繰り返すように求められます。 各登録が完了した後、**誰か** に話しかけてもらうように求められ、サービスでは登録されている音声プロファイルの中からその誰かを識別しようとします。
 
 この例では、最も近い一致のみが返され、これは類似性スコアですが、`SpeakerIdentification` 関数に `string json = result.Properties.GetProperty(PropertyId.SpeechServiceResponse_JsonResult)` を追加することで、上位 5 つの類似性スコアを含む完全な応答を得ることができます。
 

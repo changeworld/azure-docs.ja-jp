@@ -9,12 +9,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.service: cognitive-services
-ms.openlocfilehash: c2802f1b41ed2842e12c808a8c380ebd646ffa03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2401c032f0fc90024e0049fad5f696b8a184544
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540933"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018941"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>ユーザーの発話意図を判断する意図を追加する
 
@@ -24,7 +24,7 @@ LUIS ポータル上で、上部のナビゲーション バーの **[ビルド]
 
 ## <a name="add-an-intent-to-your-app"></a>アプリに意図を追加する
 
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の **サブスクリプション** と **作成リソース** を選択して、その作成リソースに割り当てられているアプリを表示します。
 1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
 1. **[意図]** ページで、 **[+ 作成]** を選択します。
 1. **[Create new intent]\(意図の新規作成\)** ダイアログ ボックスで、意図の名前 (例: `ModifyOrder`) を入力し、 **[完了]** を選択します。
@@ -81,4 +81,4 @@ LUIS ポータル上で、上部のナビゲーション バーの **[ビルド]
 
 ## <a name="next-steps"></a>次のステップ
 
-[発話の例](luis-how-to-add-example-utterances.md)にエンティティを追加する方法について学習する。
+[発話の例](./luis-how-to-add-entities.md)にエンティティを追加する方法について学習する。

@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: f06fda777cbebd8034ac4fd9254a4bd172d011a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89ddbca7a216421aad7240890a697f861d14fd1f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88661505"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026354"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>テキスト読み上げについてよく寄せられる質問
 
-疑問点への回答がこのよく寄せられる質問で見つからない場合は、[その他のサポート オプション](support.md)を確認してください。
+疑問点への回答がこのよく寄せられる質問で見つからない場合は、[その他のサポート オプション](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext)を確認してください。
 
 ## <a name="general"></a>全般
 
@@ -29,11 +29,11 @@ ms.locfileid: "88661505"
 
 **Q:標準音声モデルを使用する場合は、どこから開始すればよいですか。**
 
-**A**: 45 以上の言語の 80 を超える標準音声モデルが HTTP 要求経由で使用できます。 最初に、[サブスクリプション キー](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)を取得します。 展開済みの音声モデルに REST 呼び出しを実行するには、「[REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)」を参照してください。
+**A**: 45 以上の言語の 80 を超える標準音声モデルが HTTP 要求経由で使用できます。 最初に、[サブスクリプション キー](./overview.md#try-the-speech-service-for-free)を取得します。 展開済みの音声モデルに REST 呼び出しを実行するには、「[REST API](./overview.md#reference-docs)」を参照してください。
 
 **Q:カスタム音声モデルを使用する場合、API は標準音声と同じですか。**
 
-**A**: カスタム音声モデルを作成し、デプロイした場合、使用しているモデルに固有のエンドポイントを得られます。 その音声を使用してアプリで話すには、HTTP 要求でそのエンドポイントを指定する必要があります。 カスタム エンドポイントにも、テキスト読み上げサービスの REST API で使用可能な同じ機能が用意されています。 「[カスタム エンドポイントを作成して使用する](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-voice-endpoint)」方法を参照してください。
+**A**: カスタム音声モデルを作成し、デプロイした場合、使用しているモデルに固有のエンドポイントを得られます。 その音声を使用してアプリで話すには、HTTP 要求でそのエンドポイントを指定する必要があります。 カスタム エンドポイントにも、テキスト読み上げサービスの REST API で使用可能な同じ機能が用意されています。 「[カスタム エンドポイントを作成して使用する](./how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint)」方法を参照してください。
 
 **Q:カスタム音声モデルの作成には、自分でトレーニング データを準備する必要がありますか。**
 
@@ -41,7 +41,7 @@ ms.locfileid: "88661505"
 
 カスタマイズされた音声モデルを作成するには、音声データのコレクションが必要です。 このコレクションは、一連の音声録音のオーディオ ファイルと、文字起こしされた各オーディオ ファイルのテキスト ファイルで構成されます。 デジタル音声の結果は、トレーニング データの品質に大きく依存します。 良質のテキスト読み上げ音声を生成するには、高品質のスタンド マイクを使用して静かな部屋で録音を行うことが重要です。 一定の音量、話す速さ、ピッチ、さらには話の表現方法における一貫性までもが、優れたデジタル音声の構築に不可欠です。 音声は、録音スタジオで録音することを強くお勧めします。
 
-現時点では、オンライン録音のサポートは提供しておらず、推奨している録音スタジオもありません。 形式に関する要件については、[録音および文字起こしを準備する方法](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-create-voice)を参照してください。
+現時点では、オンライン録音のサポートは提供しておらず、推奨している録音スタジオもありません。 形式に関する要件については、[録音および文字起こしを準備する方法](./how-to-custom-voice-create-voice.md)を参照してください。
 
 **Q:カスタム音声トレーニングのために音声データを録音するには、どのようなスクリプトを使用すればよいですか。**
 

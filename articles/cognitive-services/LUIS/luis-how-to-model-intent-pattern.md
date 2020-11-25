@@ -9,22 +9,22 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.openlocfilehash: 914ca77b18d0469c3ea926848be4c60aab04c9c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5e1cc5cdda921e63315c2904d560b7ad3939776
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539106"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018856"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>パターンを追加して予測精度を改善する方法
-LUIS アプリでエンドポイント発話を受信したら、単語の順序と選択を示す[パターン](luis-concept-patterns.md)を使用して、発話の予測精度を改善します。 パターンでは、特定の[構文](luis-concept-patterns.md#pattern-syntax)を使用して、[エンティティ](luis-concept-entity-types.md)、エンティティの[ロール](luis-concept-roles.md)、およびオプションのテキストの場所を示します。
+LUIS アプリでエンドポイント発話を受信したら、単語の順序と選択を示す[パターン](luis-concept-patterns.md)を使用して、発話の予測精度を改善します。 パターンでは、特定の[構文](luis-concept-patterns.md#pattern-syntax)を使用して、[エンティティ](luis-concept-entity-types.md)、エンティティの[ロール](./luis-concept-entity-types.md)、およびオプションのテキストの場所を示します。
 
 > [!CAUTION]
 > パターンには、機械学習エンティティの親のみが含まれ、サブエンティティは含まれません。
 
 ## <a name="add-template-utterance-using-correct-syntax"></a>正しい構文を使用してテンプレート発話を追加する
 
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の **サブスクリプション** と **作成リソース** を選択して、その作成リソースに割り当てられているアプリを表示します。
 1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
 1. 左側のパネルの **[アプリのパフォーマンスを向上させる]** で **[パターン]** を選択します。
 
@@ -35,7 +35,7 @@ LUIS アプリでエンドポイント発話を受信したら、単語の順序
     > [!div class="mx-imgBorder"]
     > ![パターンのエンティティのスクリーンショット](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
-    ご自身のエンティティに[ロール](luis-concept-roles.md)が含まれる場合、エンティティ名の後ろにコロンを 1 つ付けて`:`ロールを指定します (`{Location:Origin}` など)。 エンティティのロールの一覧が表示されます。 ロールを選択し、Enter キーを押します。
+    ご自身のエンティティに[ロール](./luis-concept-entity-types.md)が含まれる場合、エンティティ名の後ろにコロンを 1 つ付けて`:`ロールを指定します (`{Location:Origin}` など)。 エンティティのロールの一覧が表示されます。 ロールを選択し、Enter キーを押します。
 
     > [!div class="mx-imgBorder"]
     > ![ロールを含むエンティティのスクリーンショット](./media/luis-how-to-model-intent-pattern/patterns-4.png)
@@ -49,7 +49,7 @@ LUIS アプリでエンドポイント発話を受信したら、単語の順序
 
 [Pattern.any](luis-concept-entity-types.md) エンティティは[パターン](luis-how-to-model-intent-pattern.md)でのみ有効であり、意図のサンプル発話では無効です。 このエンティティ タイプは、可変長のエンティティの終わりや単語の選択を LUIS が見つけやすくします。 このエンティティがパターンで使用されることにより、発話テンプレート内でエンティティの終わりがどこにあるかを LUIS が認識します。
 
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の **サブスクリプション** と **作成リソース** を選択して、その作成リソースに割り当てられているアプリを表示します。
 1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
 1. **[ビルド]** セクションの左側にあるパネルで **[エンティティ]** を選択し、 **[+ 作成]** を選択します。
 
@@ -61,7 +61,7 @@ LUIS アプリでエンドポイント発話を受信したら、単語の順序
 
 エンティティのパターンを追加する場合、[Intent details] (意図の詳細) ページからパターンを作成するのが _最も簡単な_ 方法です。 これにより、構文が発話の例と一致することが保証されます。
 
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の **サブスクリプション** と **作成リソース** を選択して、その作成リソースに割り当てられているアプリを表示します。
 1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
 1. **[Intents]\(意図\)** 一覧ページで、テンプレート発話の作成元となる発話の例の意図名を選択します。
 1. [Intent details] (意図の詳細) ページで、テンプレート発話として使用する発話の例の行を選択し、コンテキスト ツール バーから **[+ Add as pattern]\(+ パターンとして追加\)** を選択します。

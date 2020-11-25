@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 0e2406cd35fb2d4dd99da4f5139a9f0f80697912
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e50d7aba5cc5b3d5d620d844cc9ad169ad8b3bf6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566250"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025893"
 ---
 # <a name="set-up-web-endpoints"></a>Web エンドポイントを設定する
 
@@ -49,10 +49,10 @@ ms.locfileid: "94566250"
    | ヘッダー | キー: アプリ、値: applicationId の最初の 8 桁を取得します | 要求ヘッダーに含めるヘッダー パラメーター。|
 
     > [!NOTE]
-    > - [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) を使用して作成された Web エンドポイントの例。テレビとファンのデバイス状態を保存するデータベースと結合されます
+    > - [Azure Functions](../../azure-functions/index.yml) を使用して作成された Web エンドポイントの例。テレビとファンのデバイス状態を保存するデータベースと結合されます
     > - 提案されたヘッダーは、エンドポイントの例にのみ必要です
     > - ヘッダーの値が例のエンドポイントで一意になるよう、applicationId の最初の 8 桁を取得します
-    > - 現実には、Web エンドポイントを、ご利用のデバイスを管理する [IOT ハブ](https://docs.microsoft.com/azure/iot-hub/about-iot-hub)のエンドポイントとすることができます。
+    > - 現実には、Web エンドポイントを、ご利用のデバイスを管理する [IOT ハブ](../../iot-hub/about-iot-hub.md)のエンドポイントとすることができます。
 
 1. **[保存]** をクリックします。
 

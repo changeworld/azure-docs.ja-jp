@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 089476980ff3e8b2d3b72cb2d229934cf7850c03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f67a36ac4ccb27d7b955158b7e4a9cf4f5185d0
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899250"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636920"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスでの Kubernetes
 
@@ -67,7 +67,7 @@ Kubernetes ネットワークを使用すると、ご利用の Kubernetes ネッ
 
 ## <a name="access-monitoring"></a>アクセス、監視
 
-ご利用の Azure Stack Edge Pro デバイス上の Kubernetes クラスターに対してロールベースのアクセス制御 (RBAC) を行うことができます。 詳細については、[Azure Stack Edge Pro デバイス上の Kubernetes クラスターに対するロールベースのアクセス制御](azure-stack-edge-gpu-kubernetes-rbac.md)に関するページを参照してください。
+ご利用の Azure Stack Edge Pro デバイス上の Kubernetes クラスターに対して Kubernetes ロールベースのアクセス制御 (Kubernetes RBAC) を行うことができます。 詳細については、「[Azure Stack Edge Pro GPU デバイスでの Kubernetes ロールベースのアクセス制御](azure-stack-edge-gpu-kubernetes-rbac.md)」を参照してください。
 
 また、Kubernetes ダッシュボードを介して、クラスターとリソースの正常性を監視することもできます。 コンテナーのログも利用できます。 詳細については、[Kubernetes ダッシュボードを使用して Azure Stack Edge Pro デバイス上の Kubernetes クラスターの正常性の監視](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)に関するページを参照してください。
 

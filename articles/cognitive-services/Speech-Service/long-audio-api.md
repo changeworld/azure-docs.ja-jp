@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: trbye
-ms.openlocfilehash: be38d3e78108a15c9f7875a15156e0eeba5a6211
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a538deb3b7da19261e1bc2b7c0d29f35315f786
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167761"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015415"
 ---
 # <a name="long-audio-api-preview"></a>Long Audio API (プレビュー)
 
@@ -27,7 +27,7 @@ Long Audio API のその他の利点は次のとおりです。
 * リアルタイム バッチ モードによる音声合成は行われないため、音声エンドポイントをデプロイする必要はありません。
 
 > [!NOTE]
-> Long Audio API で、[パブリック ニューラル音声](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)と[カスタム ニューラル音声](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices)の両方がサポートされるようになりました。
+> Long Audio API で、[パブリック ニューラル音声](./language-support.md#neural-voices)と[カスタム ニューラル音声](./how-to-custom-voice.md#custom-neural-voices)の両方がサポートされるようになりました。
 
 ## <a name="workflow"></a>ワークフロー
 
@@ -44,7 +44,7 @@ Long Audio API のその他の利点は次のとおりです。
 * プレーンテキスト (.txt) または SSML テキスト (.txt) のいずれかである
 * [バイト オーダー マーク (BOM) 付きの UTF-8](https://www.w3.org/International/questions/qa-utf8-bom.en#bom) としてエンコードされている
 * 単一のファイルであり、zip ではない
-* プレーンテキストの場合は 400 文字以上、または SSML テキストの場合は 400 文字以上の[課金対象文字](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech#pricing-note)を含み、1 万段落未満である
+* プレーンテキストの場合は 400 文字以上、または SSML テキストの場合は 400 文字以上の[課金対象文字](./text-to-speech.md#pricing-note)を含み、1 万段落未満である
   * プレーンテキストの場合は、**Enter/Return** を押すことで各段落が区切られます - [プレーンテキストの入力例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt)を参照してください
   * SSML テキストの場合、SSML の各要素は段落と見なされます。 SSML の要素は、異なる段落で区切る必要があります - [SSML テキスト入力の例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)を参照してください
 > [!NOTE]
@@ -114,7 +114,7 @@ Name: Microsoft Server Speech Text to Speech Voice (zh-CN, xxx), Description: xx
 プレーンテキストまたは SSML テキストで入力テキスト ファイルを準備してから、次のコードを `voice_synthesis_client.py` に追加します。
 
 > [!NOTE]
-> "concatenateResult" はオプション パラメーターです。 このパラメーターを設定しなかった場合、オーディオ出力が段落ごとに生成されます。 このパラメーターを設定することで、複数の音声を 1 つの出力に連結することもできます。 既定では、オーディオ出力は riff-16khz-16bit-mono-pcm に設定されています。 サポートされているオーディオ出力の詳細については、「[音声出力形式](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats)」を参照してください。
+> "concatenateResult" はオプション パラメーターです。 このパラメーターを設定しなかった場合、オーディオ出力が段落ごとに生成されます。 このパラメーターを設定することで、複数の音声を 1 つの出力に連結することもできます。 既定では、オーディオ出力は riff-16khz-16bit-mono-pcm に設定されています。 サポートされているオーディオ出力の詳細については、「[音声出力形式](#audio-output-formats)」を参照してください。
 
 ```python
 parser.add_argument('--submit', action="store_true", default=False, help='submit a synthesis request')
@@ -278,7 +278,7 @@ ID : xxx , Name : xxx : Succeeded
 |        | 404 | 音声合成定義内に宣言されたモデルが見つかりません: {modelID}。 | {modelID} が正しいことを確認してください。 |
 |        | 429 | アクティブな音声合成の制限を超えています。 いくつかの要求が完了するまでお待ちください。 | サーバーでは、Azure アカウントごとに最大 120 個の要求を実行およびキューに登録できます。 いくつかの要求が完了するまで、新しい要求を送信しないでお待ちください。 |
 | All       | 429 | 要求が多すぎます。 | クライアントでは、Azure アカウントごとに 1 秒あたり最大 5 個の要求をサーバーに送信することが許可されています。 1 秒あたりの要求の数を減らしてください |
-| 削除    | 400 | その音声合成タスクはまだ使用中です。 | 削除できるのは、**完了した**要求、または**失敗した要求**のみです。 |
+| 削除    | 400 | その音声合成タスクはまだ使用中です。 | 削除できるのは、**完了した** 要求、または **失敗した要求** のみです。 |
 | GetByID   | 404 | 指定されたエンティティが見つかりません。 | 合成 ID が正しいことを確認してください。 |
 
 ## <a name="regions-and-endpoints"></a>リージョンとエンドポイント

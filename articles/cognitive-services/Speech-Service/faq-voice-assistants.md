@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 8480299c2c889a243150028ac9651f4b62656aec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d399507499a320116ff1c732a1ffc0ad84b5731
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74110345"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015444"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>音声アシスタントについてよく寄せられる質問
 
-疑問点への回答がこのドキュメントで見つからない場合は、[その他のサポート オプション](support.md)を確認してください。
+疑問点への回答がこのドキュメントで見つからない場合は、[その他のサポート オプション](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext)を確認してください。
 
 ## <a name="general"></a>全般
 
@@ -35,9 +35,9 @@ ms.locfileid: "74110345"
 
 **A:** カスタム コマンド (プレビュー) アプリケーションまたは基本的な Bot Framework ボットの作成から始めるのが最適な方法です。
 
-- [カスタム コマンド (プレビュー) アプリケーションを作成する](quickstart-custom-speech-commands-create-new.md)
-- [基本的な Bot Framework ボットを作成する](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-- [ボットを Direct Line Speech チャネルに接続する](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [カスタム コマンド (プレビュー) アプリケーションを作成する](./quickstart-custom-commands-application.md)
+- [基本的な Bot Framework ボットを作成する](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [ボットを Direct Line Speech チャネルに接続する](/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>デバッグ
 
@@ -62,7 +62,7 @@ ms.locfileid: "74110345"
 **A:** このエラーは、アシスタントと音声アシスタント サービスの間の通信の問題を示しています。
 
 - カスタム コマンド (プレビュー) の場合は、カスタム コマンド (プレビュー) アプリケーションが発行されていることを確認します
-- Direct Line Speech の場合、[Direct Line Speech チャネルにボットを接続し](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)、(関連する Web ソケット サポートと共に) [ストリーミング プロトコル サポートをボットに追加し](https://aka.ms/botframework/addstreamingprotocolsupport)ていることを確認してから、ボットがチャネルからの受信要求に応答していることを確認します。
+- Direct Line Speech の場合、[Direct Line Speech チャネルにボットを接続し](/azure/bot-service/bot-service-channel-connect-directlinespeech)、(関連する Web ソケット サポートと共に) [ストリーミング プロトコル サポートをボットに追加し](/azure/bot-service/directline-speech-bot)ていることを確認してから、ボットがチャネルからの受信要求に応答していることを確認します。
 
 **Q:このコードがまだ動作しないか、`DialogServiceConnector` を使用すると別のエラーが発生するか、あるいはこの両方が発生します。どうすればよいですか。**
 

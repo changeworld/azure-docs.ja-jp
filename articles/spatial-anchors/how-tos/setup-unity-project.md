@@ -1,19 +1,19 @@
 ---
 title: Unity 向けの Azure Spatial Anchors をインストールする
 description: Azure Spatial Anchors を使用するように Unity プロジェクトを構成する
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 09/29/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: da983719dc66656aa28cab4aea0bae558c2a7162
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2330310b0bf4e165af71208477db128650a787cf
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530420"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95496947"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Unity プロジェクトでの Azure Spatial Anchors の構成
 
@@ -55,7 +55,7 @@ Unity 用の Azure Spatial Anchors は、現在、Unity Package Manager (UPM) �
 #### <a name="android-only-configure-the-maintemplategradle-file"></a>Android のみ:mainTemplate.gradle ファイルを構成する
 
 1. **[Edit]\(編集\)**  >  **[Project Settings]\(プロジェクト設定\)**  >  **[Player]\(プレーヤー\)** の順に移動します。
-2. **[プレーヤー設定]** の **[インスペクター] パネル**で、**Android** アイコンを選択します。
+2. **[プレーヤー設定]** の **[インスペクター] パネル** で、**Android** アイコンを選択します。
 3. **[ビルド]** セクションで、 **[カスタム メイン Gradle テンプレート]** チェックボックスをオンにして、`Assets\Plugins\Android\mainTemplate.gradle` でカスタム Gradle テンプレートを生成します。
 4. `mainTemplate.gradle` ファイルをテキスト エディターで開きます。
 5. `dependencies` セクションに、次の依存関係を貼り付けます。

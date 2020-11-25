@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: 6ebc1831b990b540bcb9a3856c380c28142af536
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 2f03746a6a5afc388db2beeff84b3ab4cbd393b5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357115"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014596"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>空間分析コンテナー (プレビュー) をインストールして実行する
 
@@ -34,7 +34,7 @@ ms.locfileid: "94357115"
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack Edge デバイス](#tab/azure-stack-edge)
 
-Azure Stack Edge は、サービスとしてのハードウェア ソリューションであり、ネットワーク データ転送機能を備えた AI 対応のエッジ コンピューティング デバイスです。 準備とセットアップの詳細な手順については、[Azure Stack Edge のドキュメント](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep)を参照してください。
+Azure Stack Edge は、サービスとしてのハードウェア ソリューションであり、ネットワーク データ転送機能を備えた AI 対応のエッジ コンピューティング デバイスです。 準備とセットアップの詳細な手順については、[Azure Stack Edge のドキュメント](../../databox-online/azure-stack-edge-deploy-prep.md)を参照してください。
 
 #### <a name="desktop-machine"></a>[デスクトップ コンピューター](#tab/desktop-machine)
 
@@ -59,7 +59,7 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
 * [NVIDIA グラフィックス ドライバー](https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html)と [NVIDIA CUDA Toolkit](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
 * [NVIDIA MPS](https://docs.nvidia.com/deploy/pdf/CUDA_Multi_Process_Service_Overview.pdf) (マルチプロセス サービス) の構成。
 * [Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-engine---community-1) と [NVIDIA-Docker2](https://github.com/NVIDIA/nvidia-docker) 
-* [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) ランタイム。
+* [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) ランタイム。
 
 ---
 
@@ -93,9 +93,9 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
  
 空間分析によって、AI ソリューションを実行するのに Azure Stack Edge のコンピューティング機能が使用されます。 コンピューティング機能を有効にするには、次のことを確認してください。 
 
-* Azure Stack Edge デバイスの[接続とアクティブ化](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate)が済んでいること。 
+* Azure Stack Edge デバイスの[接続とアクティブ化](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)が済んでいること。 
 * デバイスにアクセスするために、PowerShell 5.0 以降を実行している Windows クライアント システムにアクセスできること。  
-* Kubernetes クラスターをデプロイするには、 [Azure portal](https://portal.azure.com/) で **ローカル UI** を使用して Azure Stack Edge デバイスを構成する必要があります。 
+* Kubernetes クラスターをデプロイするには、[Azure portal](https://portal.azure.com/) で **ローカル UI** を使用して Azure Stack Edge デバイスを構成する必要があります。 
   1. Azure Stack Edge デバイスでコンピューティング機能を有効にします。 コンピューティングを有効にするには、デバイスの Web インターフェイスで **[コンピューティング]** ページに移動します。 
   2. コンピューティングを有効にする対象のネットワーク インターフェイスを選択してから、 **[有効にする]** をクリックします。 これにより、そのネットワーク インターフェイス上のデバイスに仮想スイッチが作成されます。
   3. Kubernetes テスト ノードの IP アドレスと Kubernetes 外部サービスの IP アドレスは空白のままにします。
@@ -117,7 +117,7 @@ Edge デバイスで Edge コンピューティング ロールが設定され�
 
 > [!NOTE]
 > * 現時点では、IoT Edge デバイスでサポートされているのは Linux プラットフォームのみです。 Azure Stack Edge デバイスのトラブルシューティングについては、[ロギングとトラブルシューティング](spatial-analysis-logging.md)の記事を参照してください。
-> * プロキシサーバー経由で通信するように IoT Edge デバイスを構成する方法の詳細については、「[IoT Edge デバイスを構成してプロキシ サーバー経由で通信する](https://docs.microsoft.com/azure/iot-edge/how-to-configure-proxy-support#azure-portal)」を参照してください
+> * プロキシサーバー経由で通信するように IoT Edge デバイスを構成する方法の詳細については、「[IoT Edge デバイスを構成してプロキシ サーバー経由で通信する](../../iot-edge/how-to-configure-proxy-support.md#azure-portal)」を参照してください
 
 ###  <a name="enable-mps-on-azure-stack-edge"></a>Azure Stack Edge での MPS を有効にする 
 
@@ -129,7 +129,7 @@ Edge デバイスで Edge コンピューティング ロールが設定され�
     winrm quickconfig
     ```
     
-    ファイアウォールの例外に関する警告が表示された場合は、ネットワーク接続の種類を確認し、[Windows リモート管理](https://docs.microsoft.com/windows/win32/winrm/installation-and-configuration-for-windows-remote-management)のドキュメントを参照してください。
+    ファイアウォールの例外に関する警告が表示された場合は、ネットワーク接続の種類を確認し、[Windows リモート管理](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management)のドキュメントを参照してください。
 
 3. デバイスの IP アドレスに変数を割り当てます。 
     
@@ -246,7 +246,7 @@ sudo systemctl --now enable nvidia-mps.service
 
 ## <a name="configure-azure-iot-edge-on-the-host-computer"></a>ホスト コンピューター上で Azure IoT Edge を構成する
 
-ホスト コンピューターに空間分析コンテナーをデプロイするには、Standard (S1) または Free (F0) 価格レベルを使用して、[Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) サービスのインスタンスを作成します。 使用するホスト コンピューターが Azure Stack Edge である場合は、Azure Stack Edge リソースに使用しているのと同じサブスクリプションとリソース グループを使用します。
+ホスト コンピューターに空間分析コンテナーをデプロイするには、Standard (S1) または Free (F0) 価格レベルを使用して、[Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) サービスのインスタンスを作成します。 使用するホスト コンピューターが Azure Stack Edge である場合は、Azure Stack Edge リソースに使用しているのと同じサブスクリプションとリソース グループを使用します。
 
 Azure CLI を使用して Azure IoT Hub のインスタンスを作成します。 必要に応じて、パラメーターを置き換えます。 または、[Azure portal](https://portal.azure.com/) 上で Azure IoT ハブを作成することもできます。
 
@@ -261,7 +261,7 @@ az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-reso
 az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-ホスト コンピューターが Azure Stack Edge デバイスでない場合は、[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) バージョン 1.0.9 をインストールする必要があります。 次の手順に従って、正しいバージョンをダウンロードします。
+ホスト コンピューターが Azure Stack Edge デバイスでない場合は、[Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) バージョン 1.0.9 をインストールする必要があります。 次の手順に従って、正しいバージョンをダウンロードします。
 
 Ubuntu Server 18.04:
 ```bash
@@ -292,7 +292,7 @@ sudo apt-get update
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-次に、[接続文字列](https://docs.microsoft.com/azure/iot-edge/how-to-register-device#register-in-the-azure-portal)を使用して、ホスト コンピューターを IoT Edge デバイスとして IoT Hub インスタンスに登録します。
+次に、[接続文字列](../../iot-edge/how-to-manual-provision-symmetric-key.md?view=iotedge-2018-06)を使用して、ホスト コンピューターを IoT Edge デバイスとして IoT Hub インスタンスに登録します。
 
 IoT Edge デバイスを Azure IoT ハブに接続する必要があります。 先ほど作成した IoT Edge デバイスから接続文字列をコピーする必要があります。 または、Azure CLI で以下のコマンドを実行することもできます。
 
@@ -306,7 +306,7 @@ az iot hub device-identity show-connection-string --device-id my-edge-device --h
 sudo systemctl restart iotedge
 ```
 
-[Azure portal](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal) または [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) から、空間分析コンテナーを IoT モジュールとしてホスト コンピューターにデプロイします。 ポータルを使用している場合は、イメージの URI を Azure Container Registry の場所に設定します。 
+[Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) または [Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md) から、空間分析コンテナーを IoT モジュールとしてホスト コンピューターにデプロイします。 ポータルを使用している場合は、イメージの URI を Azure Container Registry の場所に設定します。 
 
 Azure CLI を使用して、以下の手順に従ってコンテナーをデプロイします。
 
@@ -335,7 +335,7 @@ Azure CLI を使用して、以下の手順に従ってコンテナーをデプ�
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
 
-独自の設定と操作の選択によって [Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)または[デスクトップ コンピューター](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)用の配置マニフェストを更新したら、以下の [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) コマンドを使用して、コンテナーを IoT Edge モジュールとしてホスト コンピューターにデプロイできます。
+独自の設定と操作の選択によって [Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)または[デスクトップ コンピューター](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)用の配置マニフェストを更新したら、以下の [Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md) コマンドを使用して、コンテナーを IoT Edge モジュールとしてホスト コンピューターにデプロイできます。
 
 ```azurecli
 az login
@@ -350,7 +350,7 @@ az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge devic
 | `--target-condition` | ホスト コンピューターの IoT Edge デバイス名。 |
 | `-–subscription` | サブスクリプションの ID または名前。 |
 
-このコマンドを実行すると、デプロイが開始されます。 Azure portal で Azure IoT Hub インスタンスのページに移動して、デプロイの状態を確認します。 デバイスへのコンテナー イメージのダウンロードが終了して実行が開始するまで、状態は " *417 – デバイスのデプロイ構造が設定されていません* " と表示されることがあります。
+このコマンドを実行すると、デプロイが開始されます。 Azure portal で Azure IoT Hub インスタンスのページに移動して、デプロイの状態を確認します。 デバイスへのコンテナー イメージのダウンロードが終了して実行が開始するまで、状態は "*417 – デバイスのデプロイ構造が設定されていません*" と表示されることがあります。
 
 ## <a name="validate-that-the-deployment-is-successful"></a>デプロイが成功したことを検証する
 
@@ -358,7 +358,7 @@ az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge devic
 
 ![デプロイの検証の例](./media/spatial-analysis/deployment-verification.png)
 
-デプロイが完了し、コンテナーが実行中になると、 **ホスト コンピューター** から Azure IoT ハブへのイベント送信が始まります。 `.debug` バージョンの操作を使用した場合は、配置マニフェストで構成した各カメラのビジュアライザー ウィンドウが表示されます。 これで、監視する回線とゾーンを配置マニフェストで定義し、指示に従って再度デプロイすることができます。 
+デプロイが完了し、コンテナーが実行中になると、**ホスト コンピューター** から Azure IoT ハブへのイベント送信が始まります。 `.debug` バージョンの操作を使用した場合は、配置マニフェストで構成した各カメラのビジュアライザー ウィンドウが表示されます。 これで、監視する回線とゾーンを配置マニフェストで定義し、指示に従って再度デプロイすることができます。 
 
 ## <a name="configure-the-operations-performed-by-spatial-analysis"></a>空間分析で実行される操作を構成する
 
@@ -366,14 +366,14 @@ az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge devic
 
 ## <a name="redeploy-or-delete-the-deployment"></a>再デプロイする、またはデプロイを削除する
 
-デプロイを更新する必要がある場合は、以前のデプロイが正常にデプロイされていることを確認することや、完了していない IoT Edge デバイスのデプロイを削除することが必要になります。 そうしないと、それらのデプロイが続行され、システムが正しくない状態のままになります。 Azure portal か、[Azure CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment) を使用することができます。
+デプロイを更新する必要がある場合は、以前のデプロイが正常にデプロイされていることを確認することや、完了していない IoT Edge デバイスのデプロイを削除することが必要になります。 そうしないと、それらのデプロイが続行され、システムが正しくない状態のままになります。 Azure portal か、[Azure CLI](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment) を使用することができます。
 
 ## <a name="use-the-output-generated-by-the-container"></a>コンテナーによって生成された出力を使用する
 
 コンテナーによって生成された出力の使用を開始する場合は、次の記事を参照してください。
 
-*   選択したプログラミング言語の Azure Event Hub SDK を使用して、Azure IoT Hub エンドポイントに接続し、イベントを受信します。 詳細については、「[デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin)」を参照してください。 
-*   イベントを他のエンドポイントに送信したり、イベントを Azure Blob Storage に保存したりするには、Azure IoT ハブにメッセージ ルーティングを設定します。詳細については、[IoT Hub メッセージ ルーティング](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)に関するページを参照してください。 
+*   選択したプログラミング言語の Azure Event Hub SDK を使用して、Azure IoT Hub エンドポイントに接続し、イベントを受信します。 詳細については、「[デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る](../../iot-hub/iot-hub-devguide-messages-read-builtin.md)」を参照してください。 
+*   イベントを他のエンドポイントに送信したり、イベントを Azure Blob Storage に保存したりするには、Azure IoT ハブにメッセージ ルーティングを設定します。詳細については、[IoT Hub メッセージ ルーティング](../../iot-hub/iot-hub-devguide-messages-d2c.md)に関するページを参照してください。 
 
 ## <a name="running-spatial-analysis-with-a-recorded-video-file"></a>記録されたビデオ ファイルを使用して空間分析を実行する
 
@@ -381,7 +381,7 @@ az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge devic
     1. **[安全な転送が必須]** を **[無効]** に変更
     2. **[Allow Blob public access]\(BLOB パブリック アクセスを許可する\)** を **[有効]** に変更
 
-**[コンテナー]** セクションに移動し、新しいコンテナーを作成するか、既存のものを使用します。 次に、ビデオ ファイルをコンテナーにアップロードします。 アップロードしたファイルのファイル設定を展開し、 **[SAS の生成]** を選択します。 **[有効期限]** は、テスト期間に対応できる長さに設定してください。 **[許可されるプロトコル]** を *[HTTP]* に設定します ( *HTTPS* はサポートされていません)。
+**[コンテナー]** セクションに移動し、新しいコンテナーを作成するか、既存のものを使用します。 次に、ビデオ ファイルをコンテナーにアップロードします。 アップロードしたファイルのファイル設定を展開し、 **[SAS の生成]** を選択します。 **[有効期限]** は、テスト期間に対応できる長さに設定してください。 **[許可されるプロトコル]** を *[HTTP]* に設定します (*HTTPS* はサポートされていません)。
 
 **[SAS トークンおよび URL を生成]** をクリックし、BLOB SAS の URL をコピーします。 先頭の `https` を `http` に置き換え、ビデオ再生をサポートするブラウザーで URL をテストします。
 

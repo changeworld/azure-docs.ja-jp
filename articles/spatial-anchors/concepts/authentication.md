@@ -1,20 +1,20 @@
 ---
 title: 認証と権限承認
 description: アプリまたはサービスの Azure Spatial Anchors に対する認証のさまざまな実行方法と、Spatial Anchors へのアクセスを制限する必要がある制御レベルについて説明します。
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 10/08/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a3d88c8d5d42e3dec2142df1ede7a9ee50898e92
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 0166a3b6031f9e1d364a37db99be5bc5a65267df
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242349"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95484612"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure Spatial Anchors に対する認証と承認
 
@@ -195,7 +195,7 @@ Azure AD アクセス トークンは、[MSAL](../../active-directory/develop/ms
 >[!NOTE]
 > GitHub で入手できるサービス サンプルを使用できます。
 
-1.    自分の Azure AD アプリケーションのアプリケーション ID、アプリケーション シークレット、およびリダイレクト URI を、MSAL の **client ID** 、 **secret** 、および **RedirectUri** の各パラメーターとして使用することを確認します。
+1.    自分の Azure AD アプリケーションのアプリケーション ID、アプリケーション シークレット、およびリダイレクト URI を、MSAL の **client ID**、**secret**、および **RedirectUri** の各パラメーターとして使用することを確認します。
 2.    自分の Azure AD テナント ID に対する tenant ID を、MSAL の **authority** パラメーターに設定します。
 3.    トークン要求で **[スコープ]** を **"`https://sts.<account-domain>//.default`"** に設定します。`<account-domain>` は Azure Spatial Anchors アカウントの **アカウント ドメイン** に置換されます。 米国東部 2 アカウント ドメインの Azure Spatial Anchors アカウントのスコープ例は **"`https://sts.mixedreality.azure.com//.default`"** です。
 
@@ -266,9 +266,9 @@ configuration.AccessToken(LR"(MyAccessToken)");
 
 アプリケーション、サービス、またはサービスの Azure AD ユーザーに付与されるアクセスのレベルを制御するために、必要に応じて、ご使用の Azure Spatial Anchors アカウントに次の既存のロールを割り当てることができます。
 
-- **Spatial Anchors アカウント所有者** 。 このロールが割り当てられているアプリケーションまたはユーザーは、空間アンカーの作成、それらのクエリ、およびそれらの削除を実行できます。 アカウント キーを使用してアカウントを認証すると、認証されたプリンシパルに Spatial Anchors アカウント所有者ロールが割り当てられます。
-- **Spatial Anchors アカウント共同作成者** 。 このロールが割り当てられているアプリケーションまたはユーザーは、空間アンカーの作成とそれらのクエリを実行できますが、それらを削除することはできません。
-- **Spatial Anchors アカウント閲覧者** 。 このロールが割り当てられているアプリケーションまたはユーザーは、空間アンカーのクエリのみを実行できます。 新規作成、既存のものの削除、またはそれらのメタデータの更新を行うことはできません。 このロールは、通常は、一部のユーザーが環境をキュレートし、他のユーザーは環境に既に配置されているアンカーの呼び戻しのみを実行できる環境で使用されます。
+- **Spatial Anchors アカウント所有者**。 このロールが割り当てられているアプリケーションまたはユーザーは、空間アンカーの作成、それらのクエリ、およびそれらの削除を実行できます。 アカウント キーを使用してアカウントを認証すると、認証されたプリンシパルに Spatial Anchors アカウント所有者ロールが割り当てられます。
+- **Spatial Anchors アカウント共同作成者**。 このロールが割り当てられているアプリケーションまたはユーザーは、空間アンカーの作成とそれらのクエリを実行できますが、それらを削除することはできません。
+- **Spatial Anchors アカウント閲覧者**。 このロールが割り当てられているアプリケーションまたはユーザーは、空間アンカーのクエリのみを実行できます。 新規作成、既存のものの削除、またはそれらのメタデータの更新を行うことはできません。 このロールは、通常は、一部のユーザーが環境をキュレートし、他のユーザーは環境に既に配置されているアンカーの呼び戻しのみを実行できる環境で使用されます。
 
 ## <a name="next-steps"></a>次の手順
 

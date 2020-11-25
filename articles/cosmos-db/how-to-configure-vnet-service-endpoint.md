@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2bbdbc7a0ed71634522bd68dbf0807264a409525
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1d63d21f4c49e3c7aef035208477ac9fc79f2e51
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101733"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637185"
 ---
 # <a name="configure-access-to-azure-cosmos-db-from-virtual-networks-vnet"></a>仮想ネットワーク (VNet) からの Azure Cosmos DB へのアクセスを構成する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -322,7 +322,7 @@ Azure Cosmos DB アカウントを移行するには、IP ファイアウォー�
 
 ### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Azure Cosmos アカウントに対して仮想ネットワーク サービス エンドポイントと IP アクセス制御ポリシーの両方を指定できますか。 
 
-Azure Cosmos アカウントに対して、仮想ネットワーク サービス エンドポイントと IP アクセス制御ポリシー (ファイアウォールと呼ばれます) の両方を有効にすることができます。 この 2 つの機能は補完的であり、組み合わせることで Azure Cosmos アカウントの分離とセキュリティを達成できます。 IP ファイアウォールを使用すると、確実に静的 IP からアカウントにアクセスできます。 
+Azure Cosmos アカウントに対して、仮想ネットワーク サービス エンドポイントと IP アクセス制御ポリシー (ファイアウォールとも呼ばれます) の両方を有効にすることができます。 この 2 つの機能は補完的であり、組み合わせることで Azure Cosmos アカウントの分離とセキュリティを達成できます。 IP ファイアウォールを使用すると、確実に静的 IP からアカウントにアクセスできます。 
 
 ### <a name="how-do-i-limit-access-to-subnet-within-a-virtual-network"></a>仮想ネットワーク内のサブネットへのアクセスを制限するにはどうすればよいですか。 
 
@@ -336,7 +336,7 @@ IP ファイアウォールまたは仮想ネットワークのアクセス規�
 
 Azure Cosmos DB 用のサービス エンドポイントがサブネット上で有効になると、アカウントに到達するトラフィックのソースが、パブリック IP から、仮想ネットワークとサブネットに切り替わります。 IP ベースのファイアウォールのみが Azure Cosmos アカウントに設定されている場合、サービスで有効なサブネットからのトラフィックは IP ファイアウォール規則と一致しなくなるため、拒否されるようになります。 IP ベースのファイアウォールから仮想ネットワーク ベースのアクセス制御にシームレスに移行するための手順を実行してください。
 
-### <a name="are-additional-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>Azure Cosmos アカウントと VNET サービス エンドポイントの組み合わせには、追加の RBAC アクセス許可が必要ですか。
+### <a name="are-additional-azure-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>Azure Cosmos アカウントと VNET サービス エンドポイントの組み合わせには、追加の Azure RBAC アクセス許可が必要ですか。
 
 VNet サービス エンドポイントを Azure Cosmos アカウントに追加した後、アカウント設定を変更する場合、自分の Azure Cosmos アカウントで構成されているすべての VNET について、`Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` アクションの権限が必要になります。 このアクセス許可が必要になるのは、あらゆるプロパティを評価する前に、リソース (データベースや仮想ネットワーク リソースなど) へのアクセス権限が認証プロセスで検証されるためです。
  

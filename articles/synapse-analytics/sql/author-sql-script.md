@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 3618ba28403882ee1f949a2bbc97e586674b3772
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3f3009799889bd6b118f586676e22338d821d37c
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317524"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635291"
 ---
 # <a name="using-sql-scripts-in-azure-synapse-studio-preview"></a>Azure Synapse Studio (プレビュー) での SQL スクリプトの使用
 
@@ -73,6 +73,18 @@ SQL スクリプトを使用してストレージ アカウント内の Parquet 
 SQL データベースのノードを右クリックして、使用可能なジェスチャを調べます。
  
 ![新しいスクリプト データベース](media/author-sql-script/new-script-database.png)
+
+## <a name="create-folders-and-move-sql-scripts-into-a-folder"></a>フォルダーを作成し、SQL スクリプトをフォルダーに移動する
+
+[開発]、[SQL スクリプト] の [アクション] メニューから、[新しいフォルダー] を選択します。 次に、ポップアップ ウィンドウに新しいフォルダーの名前を入力します。 
+
+> [!div class="mx-imgBorder"] 
+> ![newsqlscript](./media/author-sql-script/new-sql-script-create-folder.png)
+
+SQL スクリプトをフォルダーに移動するには、SQL スクリプトを選択し、[アクション] メニューの [移動] を選択します。 次に、新しいウィンドウで目的のフォルダーを検索し、SQL スクリプトを選択済みフォルダーに移動します。SQL スクリプトをすばやくドラッグしてフォルダーにドロップすることもできます。  
+
+> [!div class="mx-imgBorder"] 
+> ![newsqlscript](./media/author-sql-script/new-sql-script-move-folder.png)
 
 ## <a name="next-steps"></a>次のステップ
 

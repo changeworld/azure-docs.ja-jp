@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/19/2020
   ms.author: trbye
-  ms.openlocfilehash: e8ffb5469f8aa2997a6e94b0a3836e7d954e9c07
-  ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+  ms.openlocfilehash: dc82146235db449bdfea9e72bda1a70f53a102d5
+  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/12/2020
-  ms.locfileid: "94555901"
+  ms.lasthandoff: 11/21/2020
+  ms.locfileid: "95015429"
 landingContent:
 - title: 音声テキスト変換について
   linkLists:
@@ -39,7 +39,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 音声認識モードを選択する
-      url: how-to-choose-recognition-mode.md
+      url: ./get-started-speech-to-text.md
     - text: 音声認識のソース言語を変更する
       url: how-to-specify-source-language.md
     - text: Custom Speech を使用して精度を向上させる

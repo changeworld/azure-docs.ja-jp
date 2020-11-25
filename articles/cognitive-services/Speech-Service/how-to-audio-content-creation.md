@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: 5685a2553b95308a1c18c3e490737338f609b594
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 7d4d1acac591bfe6ce40efcf6166357d43718363
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330939"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024961"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Audio Content Creation ツールを使用して合成を向上させる
 
@@ -33,13 +33,13 @@ Audio Content Creation は無料のツールですが、使用する Azure Speec
 
 ### <a name="step-1---create-an-azure-account"></a>手順 1 - Azure アカウントを作成する
 
-Audio Content Creation を使用するには、[Microsoft アカウント](https://account.microsoft.com/account)と [Azure アカウント](https://azure.microsoft.com/free/ai/)が必要です。 これらの手順に従って、[アカウントを設定](get-started.md#new-resource)します。 
+Audio Content Creation を使用するには、[Microsoft アカウント](https://account.microsoft.com/account)と [Azure アカウント](https://azure.microsoft.com/free/ai/)が必要です。 これらの手順に従って、[アカウントを設定](./overview.md#try-the-speech-service-for-free)します。 
 
 [Azure portal](https://portal.azure.com/) は、Azure アカウントを管理するための一元的な場所です。 音声リソースを作成し、製品アクセスを管理し、単純な Web アプリから複雑なクラウド デプロイまで、あらゆるものを監視できます。 
 
 ### <a name="step-2---create-a-speech-resource"></a>手順 2 - 音声リソースを作成する
 
-Azure アカウントにサインアップしたら、Speech サービスにアクセスするために、Azure アカウントで音声リソースを作成する必要があります。 [音声リソースを作成する方法](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview#create-the-azure-resource)についての説明をご覧ください。 
+Azure アカウントにサインアップしたら、Speech サービスにアクセスするために、Azure アカウントで音声リソースを作成する必要があります。 [音声リソースを作成する方法](./overview.md#create-the-azure-resource)についての説明をご覧ください。 
 
 新しい音声リソースを展開するまでに少し時間がかかります。 デプロイが完了したら、Audio Content Creation の使用を開始できます。 
 
@@ -63,7 +63,7 @@ Azure アカウントにサインアップしたら、Speech サービスにア�
 2. プレーン テキストまたは SSML スクリプトを使用して、[音声チューニング ファイルを作成](#create-an-audio-tuning-file)します。 Audio Content Creation にコンテンツを入力するか、アップロードします。
 3. スクリプトの内容の音声と言語を選択します。 Audio Content Creation には、すべての [Microsoft テキスト読み上げ音声](language-support.md#text-to-speech)が含まれています。 標準、ニューラル、または独自のカスタム音声を使用できます。
    >[!NOTE]
-   > カスタム ニューラル音声には、ゲート アクセスを使用できます。これにより、自然な音声と同じような高品位の音声を作成できます。 詳細については、[ゲート プロセス](https://aka.ms/ignite2019/speech/ethics)に関するページを参照してください。
+   > カスタム ニューラル音声には、ゲート アクセスを使用できます。これにより、自然な音声と同じような高品位の音声を作成できます。 詳細については、[ゲート プロセス](./text-to-speech.md)に関するページを参照してください。
 
 4. **[play]\(再生\)** アイコン (三角形) をクリックして、既定の合成出力をプレビューします。 次に、発音、切れ目、高低、速さ、抑揚、音声スタイルなどを調整して、出力を改善します。 オプションの完全な一覧については、「[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md)」を参照してください。 次の[ビデオ](https://www.youtube.com/watch?v=O1wIJ7mts_w)で、Audio Content Creation を使用して音声出力を微調整する方法を示します。 
 5. [チューニングした音声を保存してエクスポートします](#export-tuned-audio)。 チューニング トラックをシステムに保存すると、作業を続行して出力を反復処理することができます。 出力に問題がなければ、エクスポート機能を使用して音声作成タスクを作成できます。 エクスポート タスクの状態を監視し、ご使用のアプリや製品で使用するための出力をダウンロードすることができます。
@@ -160,7 +160,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 ## <a name="see-also"></a>関連項目
 
-* [Long Audio API](https://aka.ms/long-audio-api)
+* [Long Audio API](./long-audio-api.md)
 
 ## <a name="next-steps"></a>次のステップ
 

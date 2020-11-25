@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: 4bad3227e08c0fbe0d280967e45bbef9d477e1b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d4b968d0d5e091d72cf718d58b11ade68ddf8c6
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569137"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637090"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Azure Security Center の修復レコメンデーション
 
@@ -38,11 +38,18 @@ ms.locfileid: "89569137"
 
 ## <a name="quick-fix-remediation"></a>クイック修復のレコメンデーション<a name="one-click"></a>
 
-クイック修復を使用すると、複数のリソースに関するレコメンデーションを迅速に修復できます。 これは、特定のレコメンデーションにのみ使用できます。 クイック修復によって修復が簡単になり、セキュリティ スコアをすばやく向上させ、環境内のセキュリティを強化することができます。
+クイック修復によって修復が簡単になり、セキュリティ スコアをすばやく向上させ、環境内のセキュリティを強化することができます。
+
+クイック修復を使用すると、複数のリソースに関するレコメンデーションを迅速に修復できます。 
+
+> [!TIP]
+> クイック修復は、特定のレコメンデーションにのみ使用できます。 クイック修正オプションがあるレコメンデーションを確認するには、レコメンデーションの一覧の一番上にある専用フィルターを使用します。
+> 
+> :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="レコメンデーション リストの上にあるフィルターを使用して、クイック修正オプションがあるレコメンデーションを見つける":::
 
 クイック修復レコメンデーションを実装するには、次の手順に従います。
 
-1. **クイック修復**ラベルを含むレコメンデーションの一覧から レコメンデーションをクリックします。
+1. **クイック修復** ラベルを含むレコメンデーションの一覧から レコメンデーションをクリックします。
 
     [![クイック修復を選択します](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png)](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png#lightbox)。
 
@@ -65,7 +72,7 @@ ms.locfileid: "89569137"
 
 1. 完了すると、修復が成功したかどうかを知らせる通知が表示されます。
 
-## <a name="quick-fix-remediation-logging-in-the-activity-log"></a>アクティビティ ログでのクイック修復のログ <a name="activity-log"></a>
+## <a name="quick-fix-remediation-logging-in-the-activity-log"></a>アクティビティ ログでのクイック修復のログ<a name="activity-log"></a>
 
 修復操作では、テンプレートのデプロイまたは REST PATCH API の呼び出しを使用して、リソースに構成を適用します。 これらの操作は、[Azure のアクティビティ ログ](../azure-resource-manager/management/view-activity-logs.md)に記録されます。
 

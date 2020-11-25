@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: 24d4dd4d0caa49b9514bf19f707ea87b0b071a79
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 9b9390b498f28fc8f9029f1c11805b970aaca73d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357098"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014562"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>方法:人数カウント Web アプリをデプロイする
 
@@ -31,7 +31,7 @@ ms.locfileid: "94357098"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/cognitive-services/)
-* Azure IoT Edge デプロイの構成と [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) の基礎知識
+* Azure IoT Edge デプロイの構成と [Azure IoT Hub](../../iot-hub/index.yml) の基礎知識
 * 構成済みの[ホスト コンピューター](spatial-analysis-container.md)
 
 ## <a name="deploy-the-spatial-analysis-container"></a>空間分析コンテナーをデプロイする
@@ -65,7 +65,7 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 
 Azure CLI を使用して、空間分析コンテナーを IoT モジュールとしてホスト コンピューターにデプロイします。 デプロイ プロセスには、デプロイに必要なコンテナー、変数、構成の概要を示す配置マニフェスト ファイルが必要です。 GitHub には、[Azure Stack Edge に固有の配置マニフェスト](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/)の例と [Azure Stack Edge 以外に固有の配置マニフェスト](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)の例があります。これらには、*spatial-analysis* コンテナーの基本的なデプロイ構成が含まれています。 
 
-または、Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT Hub で操作を実行できます。 詳細については、「[Visual Studio Code から Azure IoT Edge モジュールをデプロイする](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-vscode)」を参照してください。
+または、Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT Hub で操作を実行できます。 詳細については、「[Visual Studio Code から Azure IoT Edge モジュールをデプロイする](../../iot-edge/how-to-deploy-modules-vscode.md)」を参照してください。
 
 > [!NOTE] 
 > *spatial-analysis-telegraf* および *spatial-analysis-diagnostics* コンテナーはオプションです。 これらは、*DeploymentManifest.json* ファイルから削除することもできます。 詳細については、[テレメトリとトラブルシューティング](./spatial-analysis-logging.md)に関する記事をご覧ください。 GitHub には、[Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)用と別の [デスクトップ コンピューター](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)用の 2 つのサンプル *DeploymentManifest.json* ファイルがあります

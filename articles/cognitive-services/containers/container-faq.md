@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 3d35a1f6913d0b657956489d0e57836a05f9eb1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 188a348b497a485be0a8091b50a3f2c11b6493c0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90900043"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960752"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure Cognitive Services コンテナーについてよくあるご質問 (FAQ)
 
@@ -22,7 +22,7 @@ ms.locfileid: "90900043"
 
 **Q:何を利用できますか。**
 
-**A:** Azure Cognitive Services コンテナーを使用すると、開発者は Azure で利用できるものと同じインテリジェントな API を使用できますが、それに加えてコンテナー化の[利点](../cognitive-services-container-support.md#features-and-benefits)があります。 一部のコンテナーは、ゲート プレビューとして使用できます。この場合、アプリケーションへのアクセスが必要になることがあります。 他のコンテナーは、ゲートなしプレビューとして公開されているか、一般提供されています。 コンテナーの詳細な一覧と使用可能性については、「[Azure Cognitive Services でのコンテナーの使用可能性](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)」を参照してください。 [Docker Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services) でコンテナーを確認することもできます。
+**A:** Azure Cognitive Services コンテナーを使用すると、開発者は Azure で利用できるものと同じインテリジェントな API を使用できますが、それに加えてコンテナー化の [利点](../cognitive-services-container-support.md#features-and-benefits)があります。 一部のコンテナーは、ゲート プレビューとして使用できます。この場合、アプリケーションへのアクセスが必要になることがあります。 他のコンテナーは、ゲートなしプレビューとして公開されているか、一般提供されています。 コンテナーの詳細な一覧と使用可能性については、「[Azure Cognitive Services でのコンテナーの使用可能性](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)」を参照してください。 [Docker Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services) でコンテナーを確認することもできます。
 
 **Q:Cognitive Services のクラウドとコンテナーには違いがありますか。**
 
@@ -50,9 +50,9 @@ Cognitive Services コンテナーのリソース構成はお客様が管理し�
 
 **A:** "ソブリン クラウド" という用語になじみのない人もいるので、その定義から始めましょう。
 
-> "ソブリン クラウド" は [Azure Government](../../azure-government/documentation-government-welcome.md) クラウド、[Azure Germany](../../germany/germany-welcome.md) クラウド、[Azure China 21Vianet](https://docs.microsoft.com/azure/china/overview-operations) クラウドからなります。
+> "ソブリン クラウド" は [Azure Government](../../azure-government/documentation-government-welcome.md) クラウド、[Azure Germany](../../germany/germany-welcome.md) クラウド、[Azure China 21Vianet](/azure/china/overview-operations) クラウドからなります。
 
-残念ながら、Cognitive Services コンテナーはソブリン クラウドでネイティブ サポートされて*いません*。 それらのクラウドでコンテナーを実行することはできますが、パブリック クラウドからプルされます。パブリック エンドポイントに使用状況データを送信する必要があります。
+残念ながら、Cognitive Services コンテナーはソブリン クラウドでネイティブ サポートされて *いません*。 それらのクラウドでコンテナーを実行することはできますが、パブリック クラウドからプルされます。パブリック エンドポイントに使用状況データを送信する必要があります。
 
 ### <a name="versioning"></a>バージョン管理
 
@@ -80,7 +80,7 @@ OpenShift を使用してコンテナーをテストすることはありませ�
 
 **Q:製品フィードバックや機能推奨はどのような方法で提供しますか?**
 
-**A:** お客様には公の場で[懸念を表明する](https://cognitive.uservoice.com/)ことと、同じ問題を投稿した他のユーザーに賛成票を投じることをお勧めしています。 User Voice ツールは、製品フィードバックと機能推奨の両方にご利用いただけます。
+**A:** お客様には公の場で [懸念を表明する](https://cognitive.uservoice.com/)ことと、同じ問題を投稿した他のユーザーに賛成票を投じることをお勧めしています。 User Voice ツールは、製品フィードバックと機能推奨の両方にご利用いただけます。
 
 **Q:Cognitive Services コンテナーからどのようなステータス メッセージとエラーが返されますか。**
 
@@ -140,11 +140,11 @@ OpenShift を使用してコンテナーをテストすることはありませ�
  
 **Q:インターネット接続が失われると、Cognitive Services コンテナーはどうなりますか?**
 
-**A:** Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行の*ライセンスが許可されません*。 お客様は、コンテナーが計測サービスと常時通信するようにする必要があります。
+**A:** Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行の *ライセンスが許可されません*。 お客様は、コンテナーが計測サービスと常時通信するようにする必要があります。
 
 **Q:Azure に接続されていない状態でどのくらいの時間、コンテナーを運用できますか?**
 
-**A:** Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行の*ライセンスが許可されません*。 お客様は、コンテナーが計測サービスと常時通信するようにする必要があります。
+**A:** Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行の *ライセンスが許可されません*。 お客様は、コンテナーが計測サービスと常時通信するようにする必要があります。
  
 **Q:これらのコンテナーを実行するために現在必要なハードウェアは何ですか?**
 

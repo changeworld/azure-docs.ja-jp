@@ -9,12 +9,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: ce6561652801d52e5600ddc63e573070281da3f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2dcfff005eaaac034f5fed13b6d4d18e20d2afae
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078131"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018975"
 ---
 # <a name="language-understanding-service-encryption-of-data-at-rest"></a>Language Understanding サービスでの保存データの暗号化
 
@@ -32,7 +32,7 @@ ms.locfileid: "89078131"
 
 ユーザー独自のキーを使用してサブスクリプションを管理するためのオプションもあります。 カスタマー マネージド キー (CMK、Bring Your Own Key (BYOK) とも呼ばれます) を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます。 また、データを保護するために使われる暗号化キーを監査することもできます。
 
-カスタマー マネージド キーを格納するには、Azure Key Vault を使用する必要があります。 独自のキーを作成してキー コンテナーに格納することも、Azure Key Vault API を使ってキーを生成することもできます。 Cognitive Services リソースとキー コンテナーは、同じリージョンの同じ Azure Active Directory (Azure AD) テナント内に存在する必要がありますが、サブスクリプションは異なっていてもかまいません。 Azure Key Vault の詳細については、「[Azure Key Vault とは](https://docs.microsoft.com/azure/key-vault/key-vault-overview)」をご覧ください。
+カスタマー マネージド キーを格納するには、Azure Key Vault を使用する必要があります。 独自のキーを作成してキー コンテナーに格納することも、Azure Key Vault API を使ってキーを生成することもできます。 Cognitive Services リソースとキー コンテナーは、同じリージョンの同じ Azure Active Directory (Azure AD) テナント内に存在する必要がありますが、サブスクリプションは異なっていてもかまいません。 Azure Key Vault の詳細については、「[Azure Key Vault とは](../../key-vault/general/overview.md)」をご覧ください。
 
 ### <a name="customer-managed-keys-for-language-understanding"></a>Language Understanding 用のカスタマー マネージド キー
 
@@ -44,7 +44,7 @@ ms.locfileid: "89078131"
 
 既存のアプリケーションまたは以前に作成したアプリケーションで E0 レベルを使用する場合、いくつかの制限があります。
 
-* E0 リソースへの移行はブロックされます。 ユーザーは、アプリを F0 リソースに移行することだけができます。 既存のリソースを F0 に移行した後は、E0 レベルで新しいリソースを作成できます。 詳しくは、[こちらの移行](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring)に関する記事をご覧ください。  
+* E0 リソースへの移行はブロックされます。 ユーザーは、アプリを F0 リソースに移行することだけができます。 既存のリソースを F0 に移行した後は、E0 レベルで新しいリソースを作成できます。 詳しくは、[こちらの移行](./luis-migration-authoring.md)に関する記事をご覧ください。  
 * E0 リソースへの、または E0 リソースからのアプリケーションの移動はブロックされます。 この制限を回避するには、既存のアプリケーションをエクスポートし、E0 リソースとしてインポートします。
 * Bing Spell Check 機能はサポートされていません。
 * アプリケーションが E0 の場合、エンド ユーザーのトラフィックのログ記録は無効になります。
@@ -59,19 +59,19 @@ Cognitive Services の暗号化のために Azure Key Vault でカスタマー �
 
 - [Azure portal から Cognitive Services の暗号化用に Key Vault でカスタマー マネージド キーを構成する](../Encryption/cognitive-services-encryption-keys-portal.md)
 
-カスタマー マネージド キーを有効にすると、システムによって割り当てられるマネージド ID (Azure AD の機能) も有効になります。 システム割り当てのマネージド ID が有効になると、このリソースは Azure Active Directory に登録されます。 登録された後、マネージド ID には、カスタマー マネージド キーのセットアップ時に選択されたキー コンテナーへのアクセス権が付与されます。 詳しくは、[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) に関する記事をご覧ください。
+カスタマー マネージド キーを有効にすると、システムによって割り当てられるマネージド ID (Azure AD の機能) も有効になります。 システム割り当てのマネージド ID が有効になると、このリソースは Azure Active Directory に登録されます。 登録された後、マネージド ID には、カスタマー マネージド キーのセットアップ時に選択されたキー コンテナーへのアクセス権が付与されます。 詳しくは、[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に関する記事をご覧ください。
 
 > [!IMPORTANT]
 > システム割り当てのマネージド ID を無効にすると、キー コンテナーへのアクセスは削除され、カスタマー キーで暗号化されたデータにはアクセスできなくなります。 このデータに依存する機能はすべて動作しなくなります。
 
 > [!IMPORTANT]
-> マネージド ID は現在、クロスディレクトリ シナリオをサポートしていません。 Azure portal でカスタマー マネージド キーを構成すると、内部でマネージド ID が自動的に割り当てられます。 その後、サブスクリプション、リソース グループ、またはリソースを 1 つの Azure AD ディレクトリから別のディレクトリに移動した場合、そのリソースに関連付けられているマネージド ID は新しいテナントに転送されないため、カスタマー マネージド キーが機能しなくなることがあります。 詳細については、「[Azure リソース用マネージド ID に関する FAQ と既知の問題](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)」の中の「**Azure AD ディレクトリ間のサブスクリプションの転送**」を参照してください。  
+> マネージド ID は現在、クロスディレクトリ シナリオをサポートしていません。 Azure portal でカスタマー マネージド キーを構成すると、内部でマネージド ID が自動的に割り当てられます。 その後、サブスクリプション、リソース グループ、またはリソースを 1 つの Azure AD ディレクトリから別のディレクトリに移動した場合、そのリソースに関連付けられているマネージド ID は新しいテナントに転送されないため、カスタマー マネージド キーが機能しなくなることがあります。 詳細については、「[Azure リソース用マネージド ID に関する FAQ と既知の問題](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)」の中の「**Azure AD ディレクトリ間のサブスクリプションの転送**」を参照してください。  
 
 ### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault にカスタマー マネージド キーを格納する
 
 カスタマー マネージド キーを有効にするには、Azure キー コンテナーを使用してキーを格納する必要があります。 Key Vault で **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** の両方のプロパティを有効にする必要があります。
 
-Cognitive Services の暗号化では、サイズが 2048 の RSA キーのみがサポートされています。 キーの詳細については、「[Azure Key Vault のキー、シークレット、証明書について](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys)」の「**Key Vault のキー**」を参照してください。
+Cognitive Services の暗号化では、サイズが 2048 の RSA キーのみがサポートされています。 キーの詳細については、「[Azure Key Vault のキー、シークレット、証明書について](../../key-vault/general/about-keys-secrets-certificates.md)」の「**Key Vault のキー**」を参照してください。
 
 ### <a name="rotate-customer-managed-keys"></a>カスタマー マネージド キーをローテーションする
 
@@ -81,9 +81,9 @@ Azure Key Vault のカスタマー マネージド キーは、お使いのコ�
 
 ### <a name="revoke-access-to-customer-managed-keys"></a>カスタマー マネージド キーへのアクセス権を取り消す
 
-カスタマー マネージド キーへのアクセス権を取り消すには、PowerShell または Azure CLI を使用します。 詳細については、[Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault//) に関する記事、または [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault) に関する記事を参照してください。 アクセス権を取り消すと、Cognitive Services で暗号化キーにアクセスできなくなるため、Cognitive Services リソース内のすべてのデータへのアクセスが事実上ブロックされます。
+カスタマー マネージド キーへのアクセス権を取り消すには、PowerShell または Azure CLI を使用します。 詳細については、[Azure Key Vault PowerShell](/powershell/module/az.keyvault//) に関する記事、または [Azure Key Vault CLI](/cli/azure/keyvault) に関する記事を参照してください。 アクセス権を取り消すと、Cognitive Services で暗号化キーにアクセスできなくなるため、Cognitive Services リソース内のすべてのデータへのアクセスが事実上ブロックされます。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [LUIS サービス カスタマー マネージド キー要求フォーム](https://aka.ms/cogsvc-cmk)
-* [Azure Key Vault の詳細を確認する](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Azure Key Vault の詳細を確認する](../../key-vault/general/overview.md)

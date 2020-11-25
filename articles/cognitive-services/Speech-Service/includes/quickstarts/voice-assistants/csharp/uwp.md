@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e2d43290946969643b10d2ecad2f076df208a5d0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ea7ea08fc07a895bc038b27701d7038a5f76c26f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88925424"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95096520"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、必ず次のことを行ってください。
 
 > [!div class="checklist"]
-> * [Azure Speech リソースを作成する](~/articles/cognitive-services/speech-service/get-started.md)
+> * [Azure Speech リソースを作成する](../../../../overview.md#try-the-speech-service-for-free)
 > * [ご自分の開発環境を設定し、空のプロジェクトを作成する](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
-> * [Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)に接続されたボットを作成する
+> * [Direct Line Speech チャネル](/azure/bot-service/bot-service-channel-connect-directlinespeech)に接続されたボットを作成する
 > * オーディオ キャプチャ用のマイクにアクセスできることを確認する
 > 
   > [!NOTE]
@@ -33,7 +33,7 @@ ms.locfileid: "88925424"
 
 このプロジェクトのスケルトンとして機能するコードを追加しましょう。
 
-1. **ソリューション エクスプローラー**で、`MainPage.xaml` を開きます。
+1. **ソリューション エクスプローラー** で、`MainPage.xaml` を開きます。
 
 1. デザイナーの XAML ビューで、内容全体を、基本的なユーザー インターフェイスを定義する次のコード スニペットに置き換えます。
 
@@ -84,7 +84,7 @@ ms.locfileid: "88925424"
 
 デザイン ビューが更新されてアプリケーションのユーザー インターフェイスが表示されます。
 
-1. **ソリューション エクスプローラー**で、コードビハインドのソース ファイル `MainPage.xaml.cs` を開きます (`MainPage.xaml` にグループ化されています)。このファイルの内容を次に置き換えます。これには次のものが含まれます。
+1. **ソリューション エクスプローラー** で、コードビハインドのソース ファイル `MainPage.xaml.cs` を開きます (`MainPage.xaml` にグループ化されています)。このファイルの内容を次に置き換えます。これには次のものが含まれます。
 
 - `Speech` 名前空間と `Speech.Dialog` 名前空間の `using` ステートメント
 - ボタン ハンドラーに接続された、マイクへのアクセスを確実にするための簡単な実装
@@ -277,7 +277,7 @@ ms.locfileid: "88925424"
    > [音声アシスタントをサポートしているリージョンの一覧](~/articles/cognitive-services/speech-service/regions.md#voice-assistants)を参照し、ご使用のリソースがそれらのリージョンのいずれかにデプロイされていることを確認します。
 
    > [!NOTE]
-   > ご自分のボットの構成の詳細については、[Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)に関する Bot Framework のドキュメントを参照してください。
+   > ご自分のボットの構成の詳細については、[Direct Line Speech チャネル](/azure/bot-service/bot-service-channel-connect-directlinespeech)に関する Bot Framework のドキュメントを参照してください。
 
 1. `YourSpeechSubscriptionKey` と `YourServiceRegion` の各文字列を、ご自分の音声サブスクリプションと[リージョン](~/articles/cognitive-services/speech-service/regions.md)の独自の値に置き換えます
 
