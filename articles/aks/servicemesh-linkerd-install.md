@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 419b61527b68299c82dec4f2f5da6b0220859cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5b2ec220bbf14a79247ed2c78a0e84f4717fae3
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77593731"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684238"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Linkerd をインストールする
 
@@ -35,7 +35,7 @@ ms.locfileid: "77593731"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事で詳しく説明する手順では、AKS クラスターを作成済みで (Kubernetes `1.13`以上、RBAC を有効にする)、そのクラスターとの `kubectl` 接続が確立されていることを前提としています。 いずれかの項目でヘルプが必要な場合、[AKS クイック スタート][aks-quickstart]を参照してください。
+この記事で詳しく説明する手順では、AKS クラスターを (Kubernetes `1.13` 以降で Kubernetes RBAC を有効にして) 作成済みであり、そのクラスターとの `kubectl` 接続が確立されていることを前提としています。 いずれかの項目でヘルプが必要な場合、[AKS クイック スタート][aks-quickstart]を参照してください。
 
 すべての Linkerd ポッドを Linux ノードで実行するようにスケジュールする必要があります。このセットアップは以下で詳しく説明するインストール方法の既定値であり、追加の構成は必要ありません。
 

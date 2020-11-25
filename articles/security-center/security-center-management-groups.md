@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
 ms.openlocfilehash: 7252a6ccd77212f75f5db54e5f3fcad7aa2df50a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339732"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013804"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Azure Security Center に対するテナント全体の可視性を確保する
 この記事では、Azure Active Directory テナントにリンクされているすべての Azure サブスクリプションにセキュリティ ポリシーを適用することで、組織の大規模なセキュリティ体制を管理する方法について説明します。
@@ -72,7 +72,7 @@ Azure Active Directory テナント管理者には、Azure サブスクリプシ
 
    ![Azure AD のプロパティ - スクリーンショット](./media/security-center-management-groups/aad-properties.png)
 
-3. **Azure リソースのアクセス管理**の下でスイッチを **[はい]** に設定します。
+3. **Azure リソースのアクセス管理** の下でスイッチを **[はい]** に設定します。
 
    ![Azure リソースのアクセス管理 - スクリーンショット](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
 
@@ -88,7 +88,7 @@ Azure Active Directory テナント管理者には、Azure サブスクリプシ
 
 
 ### <a name="assign-azure-roles-to-users"></a>Azure ロールをユーザーに割り当てる
-すべてのサブスクリプションを把握するには、テナント管理者は、自身を含め、テナント全体の表示を許可するユーザーに、適切な Azure ロールをルート管理グループ レベルで割り当てる必要があります。 割り当てることが推奨されるロールは、**セキュリティ管理者**または**セキュリティ閲覧者**です。 一般に、セキュリティ管理者ロールはルート レベルでポリシーを適用するために必要であり、テナント レベルの可視性を提供するのであればセキュリティ閲覧者で十分です。 これらのロールによって付与されるアクセス許可について詳しくは、[セキュリティ管理者組み込みロールの説明](../role-based-access-control/built-in-roles.md#security-admin)または[セキュリティ閲覧者組み込みロールの説明](../role-based-access-control/built-in-roles.md#security-reader)に関するページをご覧ください。
+すべてのサブスクリプションを把握するには、テナント管理者は、自身を含め、テナント全体の表示を許可するユーザーに、適切な Azure ロールをルート管理グループ レベルで割り当てる必要があります。 割り当てることが推奨されるロールは、**セキュリティ管理者** または **セキュリティ閲覧者** です。 一般に、セキュリティ管理者ロールはルート レベルでポリシーを適用するために必要であり、テナント レベルの可視性を提供するのであればセキュリティ閲覧者で十分です。 これらのロールによって付与されるアクセス許可について詳しくは、[セキュリティ管理者組み込みロールの説明](../role-based-access-control/built-in-roles.md#security-admin)または[セキュリティ閲覧者組み込みロールの説明](../role-based-access-control/built-in-roles.md#security-reader)に関するページをご覧ください。
 
 
 #### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>Azure portal を使用してユーザーに Azure ロールを割り当てる: 
@@ -161,7 +161,7 @@ Azure ロールがユーザーに割り当てられたら、テナント管理�
 
 2. ナビゲーション リストで **[Azure Active Directory]** 、 **[プロパティ]** の順にクリックします。
 
-3. **Azure リソースのアクセス管理**の下で、スイッチを **[いいえ]** に設定します。
+3. **Azure リソースのアクセス管理** の下で、スイッチを **[いいえ]** に設定します。
 
 4. **[保存]** をクリックして設定を保存します。
 

@@ -8,16 +8,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: 429d0b9c3a118061d713484a7db3aca376a24d04
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: aaf716b4ac4c49f1d852e917ba818a10ecb541c4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873185"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628035"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>チュートリアル:認証に Microsoft ID プラットフォームを使用する Blazor Server アプリを作成する
 
-Blazor サーバーでは、ASP.NET Core アプリでサーバー上の Razor コンポーネントをホストするためのサポートが提供されます。 このチュートリアルでは、Microsoft ID プラットフォームを使用して Blazor Server アプリで認証を実装し、Microsoft Graph からデータを取得する方法について説明します。
+Blazor サーバーでは、ASP.NET Core アプリでサーバー上の Razor コンポーネントをホストするためのサポートが提供されます。 このチュートリアルでは、Microsoft ID プラットフォームを使用し、Azure Active Directory (Azure AD) にアプリを登録することで、Blazor Server アプリで認証を実装し、Microsoft Graph からデータを取得する方法について説明します。
+
+[Blazor WASM](tutorial-blazor-webassembly.md) のチュートリアルも用意されています。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -43,8 +45,8 @@ Blazor サーバーでは、ASP.NET Core アプリでサーバー上の Razor �
 最後に、アプリが保護された API (この場合 Microsoft Graph) を呼び出すので、その API を呼び出すためのアクセス トークンを要求するときに、その ID を確認するためにクライアント シークレットが必要になります。
 
 1. 同じアプリの登録内で、 **[管理]** の下にある **[証明書 & シークレット]** を選択します。
-2. 有効期限がない**新しいクライアント シークレット**を作成します。
-3. 次の手順で使用するため、そのシークレットの**値**を書き留めておきます。 このウィンドウから移動すると、もう一度アクセスすることはできません。 ただし、必要に応じて再作成することはできます。
+2. 有効期限がない **新しいクライアント シークレット** を作成します。
+3. 次の手順で使用するため、そのシークレットの **値** を書き留めておきます。 このウィンドウから移動すると、もう一度アクセスすることはできません。 ただし、必要に応じて再作成することはできます。
 
 ## <a name="create-the-app-using-the-net-cli"></a>.NET CLI を使用してアプリを作成する
 

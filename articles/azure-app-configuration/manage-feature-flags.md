@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: dd816ebcf2a40e6a0b7febcc3fe5c1006dac20bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e35c408d2e0ec2954ffdcbbce47f98ac49b16b8
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88209945"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554701"
 ---
 # <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>チュートリアル:Azure App Configuration で機能フラグを管理する
 
-すべての機能フラグを Azure App Configuration に保存して、1 つの場所から管理できます。 App Configuration には、機能フラグ専用に設計された、**機能マネージャー**と呼ばれるポータル UI があります。 さらに、App Configuration は .NET Core 機能フラグのデータ スキーマをネイティブにサポートしています。
+すべての機能フラグを Azure App Configuration に保存して、1 つの場所から管理できます。 App Configuration には、機能フラグ専用に設計された、**機能マネージャー** と呼ばれるポータル UI があります。 さらに、App Configuration は .NET Core 機能フラグのデータ スキーマをネイティブにサポートしています。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -56,6 +56,7 @@ Azure portal 内の App Configuration 用の機能マネージャーは、お使
     |---|---|
     | Microsoft.Percentage | {"Value":0 - 100 パーセント} |
     | Microsoft.TimeWindow | {"Start":UTC 時間, "End":UTC 時間} |
+    | Microsoft.Targeting | { "Audience": ユーザー、グループ、ロールアウトの割合を定義する JSON BLOB。 [こちらの設定ファイル](https://github.com/microsoft/FeatureManagement-Dotnet/blob/master/examples/FeatureFlagDemo/appsettings.json)の `EnabledFor` 要素の下の例を参照してください}
 
     ![機能フラグのフィルター](./media/azure-app-configuration-feature-flag-filter.png)
 
@@ -65,7 +66,7 @@ Azure portal 内の App Configuration 用の機能マネージャーは、お使
 
 1. **[Feature Manager]\(機能マネージャー\)** を選択します。
 
-1. 変更する機能フラグの右側にある省略記号 ( **...** ) を選択し、次に **[編集]** を選択します。
+1. 変更する機能フラグの右側にある省略記号 (**...**) を選択し、次に **[編集]** を選択します。
 
 1. 機能フラグの新しい状態を設定します。
 

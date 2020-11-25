@@ -1,6 +1,6 @@
 ---
 title: Azure Machine Learning スタジオとは
-description: Azure Machine Learning スタジオは、Azure Machine Learning ワークスペース用の Web ポータルです。 このスタジオでは、包括的なデータ サイエンス プラットフォームを作成するために、コードなしのエクスペリエンスとコードファースト エクスペリエンスを組み合わせています。
+description: スタジオは、Azure Machine Learning ワークスペース用の Web ポータルです。 このスタジオでは、包括的なデータ サイエンス プラットフォームのために、コードなしのエクスペリエンスとコードファースト エクスペリエンスを組み合わせています。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 345c925d3b1350dfc2ea69d65d8d14688c6930b9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 018a0e3a244d1f0e36ce638d646ab05861c10e38
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310170"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565910"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning スタジオとは
 
@@ -72,9 +72,9 @@ ms.locfileid: "93310170"
 
 **Azure Machine Learning** は、完全なデータ サイエンス プラットフォームを提供する、独立した最新のサービスです。 コード ファースト エクスペリエンスと少量コード エクスペリエンスの両方がサポートされています。
 
-**Azure Machine Learning スタジオ** は Azure Machine Learning " *内の* " Web ポータルであり、プロジェクト作成とアセット管理のための少量のコードおよびコードなしのオプションが用意されています。 
+**Azure Machine Learning スタジオ** は Azure Machine Learning "*内の*" Web ポータルであり、プロジェクト作成とアセット管理のための少量のコードおよびコードなしのオプションが用意されています。 
 
-新しく使い始める方には、最新の各種データ サイエンス ツールのために、ML Studio (classic) ではなく、 **Azure Machine Learning** を選択することをお勧めします。
+新しく使い始める方には、最新の各種データ サイエンス ツールのために、ML Studio (classic) ではなく、**Azure Machine Learning** を選択することをお勧めします。
 
 ### <a name="feature-comparison"></a>機能の比較
 
@@ -103,3 +103,4 @@ ms.locfileid: "93310170"
   + [コンピューティング インスタンスで Jupyter Notebook を使用してモデルのトレーニングとデプロイを行う](tutorial-1st-experiment-sdk-setup.md)
   + [自動化された機械学習を使用して、モデルをトレーニングおよびデプロイする](tutorial-first-experiment-automated-ml.md)  
   + [デザイナーを使用して、モデルをトレーニングおよびデプロイする](tutorial-designer-automobile-price-train-score.md)
+  + [セキュリティで保護された仮想ネットワークでスタジオを使用する](how-to-enable-studio-virtual-network.md)

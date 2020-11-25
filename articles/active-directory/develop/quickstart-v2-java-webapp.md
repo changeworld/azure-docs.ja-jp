@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: f00a935815b64f7c2c06dd33130c1a950582e5c3
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: e93c0c6bb689980cab1b41e529c491cdf3920260
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743490"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591718"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する
 
-このクイックスタートでは、Java Web アプリを Microsoft ID プラットフォームと統合する方法を説明します。 お使いのアプリによって、ユーザーがサインインされ、Microsoft Graph API を呼び出すためのアクセス トークンが取得されて、Microsoft Graph API への要求が行われます。
+このクイックスタートでは、Java Web アプリケーションでユーザーをサインインし、Microsoft Graph API を呼び出す方法を示すコード サンプルをダウンロードして実行します。 Azure Active Directory (Azure AD) 組織のユーザーはアプリケーションにサインインできます。
 
-このクイックスタートを完了すると、アプリケーションは、個人用の Microsoft アカウント (outlook.com、live.com など) と、Azure Active Directory を使用する会社や組織の職場または学校アカウントのサインインを受け入れるようになります。 (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
+ 図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -57,7 +57,7 @@ ms.locfileid: "91743490"
 >    - **[登録]** を選択します。
 > 1. **[概要]** ページで、アプリケーションの **[アプリケーション (クライアント) ID]** と **[ディレクトリ (テナント) ID]** の値を見つけます。 後のためにこれらの値をコピーします。
 > 1. メニューから **[認証]** を選択し、次の情報を追加します。
->    - **Web** プラットフォーム構成を追加します。  これらの `https://localhost:8443/msal4jsample/secure/aad` と `https://localhost:8443/msal4jsample/graph/me` を**リダイレクト URI** として追加します。
+>    - **Web** プラットフォーム構成を追加します。  これらの `https://localhost:8443/msal4jsample/secure/aad` と `https://localhost:8443/msal4jsample/graph/me` を **リダイレクト URI** として追加します。
 >    - **[保存]** を選択します。
 > 1. メニューから **[証明書とシークレット]** を選択し、 **[クライアント シークレット]** セクションで **[新しいクライアント シークレット]** をクリックします。
 >
@@ -99,7 +99,7 @@ ms.locfileid: "91743490"
 >   ```
 >   生成されたキーストア ファイルを "resources" フォルダーに配置します。
 
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [コード サンプルをダウンロードします](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -110,7 +110,7 @@ ms.locfileid: "91743490"
 > #### <a name="step-3-configure-the-code-sample"></a>手順 3:コード サンプルの構成
 > 1. ZIP ファイルをローカル フォルダーに展開します。
 > 1. 統合開発環境を使用する場合は、その IDE でサンプルを開きます (オプション)。
-> 1. application.properties ファイルを開きます。これは、src/main/resources/ フォルダーにあり、フィールド *aad. clientId*、*aad. authority*、および *aad.secretKey* の値を **アプリケーション ID**、**テナント ID**、および**クライアント シークレット**のそれぞれの値で置き換えます。
+> 1. application.properties ファイルを開きます。これは、src/main/resources/ フォルダーにあり、フィールド *aad. clientId*、*aad. authority*、および *aad.secretKey* の値を **アプリケーション ID**、**テナント ID**、および **クライアント シークレット** のそれぞれの値で置き換えます。
 >
 >    ```file
 >    aad.clientId=Enter_the_Application_Id_here
@@ -124,7 +124,7 @@ ms.locfileid: "91743490"
 >
 > - `Enter_the_Application_Id_here` - 登録したアプリケーションのアプリケーション ID。
 > - `Enter_the_Client_Secret_Here` - 登録済みアプリケーション用に **[証明書とシークレット]** で作成した **[クライアント シークレット]** です。
-> - `Enter_the_Tenant_Info_Here` - 登録したアプリケーションの**ディレクトリ (テナント) ID** 値です。
+> - `Enter_the_Tenant_Info_Here` - 登録したアプリケーションの **ディレクトリ (テナント) ID** 値です。
 > 1. localhost で https を使用するには、server.ssl.key プロパティを入力します。 自己署名証明書を生成するには、keytool ユーティリティ (JRE に含まれています) を使用します。
 >
 >  ```
@@ -253,7 +253,7 @@ import com.microsoft.aad.msal4j.*;
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Microsoft ID プラットフォームでユーザーをサインインさせる Web アプリの構築に関する詳しい解説が必要であれば、複数のパートから構成されるシナリオ シリーズにお進みください。
 

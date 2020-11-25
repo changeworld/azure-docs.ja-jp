@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 2c280b8241819155f32942a399caa7f916db3827
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6503955c69b8ca64678efbc0c01cea7f78509f8d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257743"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592721"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>クイック スタート:トークンを取得し、Python コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
 
-このチュートリアルでは、アプリの ID を使用してアクセス トークンを取得した後、Microsoft Graph API を呼び出して、ディレクトリ内の[ユーザーの一覧](/graph/api/user-list)を表示する Python アプリケーションを記述します。 このシナリオは、オペレーターがいない無人のジョブや、ユーザーの ID ではなくアプリケーション ID を使用して実行する必要がある Windows サービスがある状況で役立ちます。
+このクイックスタートでは、Python アプリケーションでアプリの ID を使ってアクセス トークンを取得して、Microsoft Graph API を呼び出し、ディレクトリ内の[ユーザーの一覧](/graph/api/user-list)を表示する方法を示すコード サンプルをダウンロードして実行します。 このコード サンプルでは、ユーザーの ID ではなく、アプリケーション ID を使用して、無人のジョブまたは Windows サービスを実行する方法を示します。 
 
 > [!div renderon="docs"]
 > ![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
@@ -80,7 +80,7 @@ ms.locfileid: "91257743"
 > [!div renderon="docs"]
 > [Python デーモン プロジェクトをダウンロードする](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [コード サンプルをダウンロードします](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -101,12 +101,12 @@ ms.locfileid: "91257743"
 >    "secret": "Enter_the_Client_Secret_Here"
 >    ```
 >    各値の説明:
->    - `Enter_the_Application_Id_Here` - 登録したアプリケーションの**アプリケーション (クライアント) ID**。
->    - `Enter_the_Tenant_Id_Here` - この値を**テナント ID** または**テナント名** (例: contoso.microsoft.com) に置き換えます。
+>    - `Enter_the_Application_Id_Here` - 登録したアプリケーションの **アプリケーション (クライアント) ID**。
+>    - `Enter_the_Tenant_Id_Here` - この値を **テナント ID** または **テナント名** (例: contoso.microsoft.com) に置き換えます。
 >    - `Enter_the_Client_Secret_Here` - この値を手順 1 で作成されたクライアント シークレットに置き換えます。
 >
 > > [!TIP]
-> > **アプリケーション (クライアント) ID** と**ディレクトリ (テナント) ID** の値を見つけるには、Azure portal 上でアプリの **[概要]** ページに移動します。 新しいキーを生成するには、 **[証明書とシークレット]** ページに移動します。
+> > **アプリケーション (クライアント) ID** と **ディレクトリ (テナント) ID** の値を見つけるには、Azure portal 上でアプリの **[概要]** ページに移動します。 新しいキーを生成するには、 **[証明書とシークレット]** ページに移動します。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-admin-consent"></a>手順 3:管理者の同意
@@ -136,8 +136,8 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 
 > [!div renderon="docs"]
 >> 各値の説明:
->> * `Enter_the_Tenant_Id_Here` - この値を**テナント ID** または**テナント名** (例: contoso.microsoft.com) に置き換えます。
->> * `Enter_the_Application_Id_Here` - 登録したアプリケーションの**アプリケーション (クライアント) ID**。
+>> * `Enter_the_Tenant_Id_Here` - この値を **テナント ID** または **テナント名** (例: contoso.microsoft.com) に置き換えます。
+>> * `Enter_the_Application_Id_Here` - 登録したアプリケーションの **アプリケーション (クライアント) ID**。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-4-run-the-application"></a>手順 4:アプリケーションの実行
@@ -160,7 +160,7 @@ python confidential_client_secret_sample.py parameters.json
 コンソール出力には、Azure AD ディレクトリ内のユーザーの一覧を表すいくつかの Json フラグメントが表示されます。
 
 > [!IMPORTANT]
-> このクイック スタート アプリケーションは、クライアント シークレットを使用して、それ自体を機密クライアントとして識別します。 クライアント シークレットはプロジェクト ファイルにプレーン テキストとして追加されるため、セキュリティ上の理由から、アプリケーションを運用アプリケーションと見なす前に、クライアント シークレットの代わりに証明書を使用することをお勧めします。 証明書の使用方法の詳細については、このサンプルと同じ GitHub リポジトリの 2 つ目のフォルダー **2-Call-MsGraph-WithCertificate** にある[これらの手順](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/README.md)を参照してください
+> このクイック スタート アプリケーションは、クライアント シークレットを使用して、それ自体を機密クライアントとして識別します。 クライアント シークレットはプロジェクト ファイルにプレーン テキストとして追加されるため、セキュリティ上の理由から、アプリケーションを運用アプリケーションと見なす前に、クライアント シークレットの代わりに証明書を使用することをお勧めします。 証明書の使用方法の詳細については、このサンプルと同じ GitHub リポジトリの 2 つ目のフォルダー **2-Call-MsGraph-WithCertificate** にある [これらの手順](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/README.md)を参照してください
 
 ## <a name="more-information"></a>詳細情報
 

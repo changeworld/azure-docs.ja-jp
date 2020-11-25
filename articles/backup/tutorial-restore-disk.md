@@ -4,12 +4,12 @@ description: Azure でバックアップおよび Recovery Services を使用し
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 2d8ce7ab6d5a3ab244d0292ffe52847f18ea8795
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 45e171e064cbd8be5418e20784e6034830d27fe9
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746749"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566675"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Azure CLI を使用した VM の復元
 
@@ -23,13 +23,11 @@ Azure Backup では、geo 冗長 Recovery コンテナーに保存される復�
 
 PowerShell を使用してディスクを復元し、回復した VM を作成する方法については、[PowerShell による Azure VM のバックアップと復元](backup-azure-vms-automation.md#restore-an-azure-vm)に関するページを参照してください。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.18 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+ - このチュートリアルには、Azure CLI のバージョン 2.0.18 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
-## <a name="prerequisites"></a>前提条件
-
-このチュートリアルでは、Azure Backup で保護されている Linux VM が必要です。 誤って削除した VM の復旧プロセスをシミュレートするには、復旧ポイントのディスクから VM を作成します。 Azure Backup で保護されている Linux VM が必要な場合は、「[Back up a virtual machine in Azure with the CLI](quick-backup-vm-cli.md)」 (CLI による Azure での仮想マシンのバックアップ) を参照してください。
+ - このチュートリアルでは、Azure Backup で保護されている Linux VM が必要です。 誤って削除した VM の復旧プロセスをシミュレートするには、復旧ポイントのディスクから VM を作成します。 Azure Backup で保護されている Linux VM が必要な場合は、「[Back up a virtual machine in Azure with the CLI](quick-backup-vm-cli.md)」 (CLI による Azure での仮想マシンのバックアップ) を参照してください。
 
 ## <a name="backup-overview"></a>Backup の概要
 
@@ -88,7 +86,7 @@ az backup recoverypoint list \
     ```
 
     > [!WARNING]
-    > _ *target-resource-group* * を指定しないと、マネージド ディスクは、指定したストレージ アカウントにアンマネージド ディスクとして復元されます。 ディスク全体の復元にかかる時間は、指定したストレージ アカウントに依存するため、これは復元時間に大きく影響します。 target-resource-group パラメーターが指定されている場合にのみ、インスタント リストアのベネフィットが得られます。 マネージド ディスクをアンマネージドとして復元する場合は、次に示すように、 **target-resource-group** パラメーターを指定せず、 **restore-as-unmanaged-disk** パラメーターを代わりに指定してください。 このパラメーターは、az 3.4.0 以降で利用できます。
+    > _ *target-resource-group** を指定しないと、マネージド ディスクは、指定したストレージ アカウントにアンマネージド ディスクとして復元されます。 ディスク全体の復元にかかる時間は、指定したストレージ アカウントに依存するため、これは復元時間に大きく影響します。 target-resource-group パラメーターが指定されている場合にのみ、インスタント リストアのベネフィットが得られます。 マネージド ディスクをアンマネージドとして復元する場合は、次に示すように、**target-resource-group** パラメーターを指定せず、**restore-as-unmanaged-disk** パラメーターを代わりに指定してください。 このパラメーターは、az 3.4.0 以降で利用できます。
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -101,7 +99,7 @@ az backup recoverypoint list \
     --restore-as-unmanaged-disk
     ```
 
-これにより、マネージド ディスクがアンマネージド ディスクとして指定のストレージ アカウントに復元され、"インスタント" リストア機能は利用されなくなります。 CLI の将来のバージョンでは、 **target-resource-group** パラメーターまたは **restore-as-unmanaged-disk** パラメーターのどちらかを指定することが必須となります。
+これにより、マネージド ディスクがアンマネージド ディスクとして指定のストレージ アカウントに復元され、"インスタント" リストア機能は利用されなくなります。 CLI の将来のバージョンでは、**target-resource-group** パラメーターまたは **restore-as-unmanaged-disk** パラメーターのどちらかを指定することが必須となります。
 
 ### <a name="unmanaged-disks-restore"></a>アンマネージド ディスクの復元
 

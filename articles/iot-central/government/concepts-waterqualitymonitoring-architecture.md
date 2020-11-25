@@ -7,18 +7,18 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 2afe53ade9106fa5e1ebb9ec43492a86bd9fc213
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1c4cc7f5440aca27be085c238179cd0ab20b226a
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127320"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874051"
 ---
 # <a name="water-quality-monitoring-reference-architecture"></a>水質監視の参照アーキテクチャ 
 
 
 
-水質監視ソリューションは、**Azure IoT Central アプリ テンプレート**を使って、IoT アプリケーションのキック スターターとして構築できます。 この記事では、エンドツーエンド ソリューションを構築するための高度な参照アーキテクチャのガイダンスを提供します。 
+水質監視ソリューションは、**Azure IoT Central アプリ テンプレート** を使って、IoT アプリケーションのキック スターターとして構築できます。 この記事では、エンドツーエンド ソリューションを構築するための高度な参照アーキテクチャのガイダンスを提供します。 
 
 
 ![水質監視アーキテクチャ](./media/concepts-waterqualitymonitoring-architecture/concepts-waterqualitymonitoring-architecture1.png)
@@ -41,10 +41,10 @@ ms.locfileid: "92127320"
 Azure IoT Central は、IoT ソリューションを迅速に起動して実行できる IoT アプリ プラットフォームです。 サードパーティのサービスを使用して、ソリューションをブランド化、カスタマイズ、統合することができます。
 スマート ウォーター デバイスを IoT Central に接続すると、デバイス コマンドと制御、監視とアラート、RBAC が組み込まれたユーザー インターフェイス、構成可能な分析情報ダッシュボード、拡張オプションが得られます。 
 
-## <a name="extensibility-and-integrations"></a>拡張性と統合 
+## <a name="extensibility-and-integrations"></a>拡張性と統合
 IoT Central で IoT アプリケーションを拡張し、必要に応じて次のことを行うことができます。
 * 高度な分析 (たとえば、IoT Central アプリケーションからの継続的なデータ エクスポートを使用した機械学習モデルのトレーニングなど) のために IoT データを変換して統合する
-* Microsoft Flow または IoT Central アプリケーションの Webhook を使用してアクションをトリガーし、他のシステムのワークフローを自動化する
+* Power Automate または IoT Central アプリケーションの Webhook を使用してアクションをトリガーし、他のシステムのワークフローを自動化する
 * IoT Central API を使用して IoT Central で IoT アプリケーションにプログラムでアクセスする
 
 ## <a name="business-applications"></a>ビジネス アプリケーション 

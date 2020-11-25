@@ -15,24 +15,22 @@ ms.workload: infrastructure-services
 ms.date: 06/11/2020
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7d4467e557105100fc32940c05fa349722689867
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ec054d55432ad2680314b4ff91a067d37b629d4
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88054376"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734330"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>チュートリアル:Azure CLI を使用した NAT ゲートウェイの作成と、NAT サービスのテスト
 
 このチュートリアルでは、Azure 内の仮想マシンにアウトバウンド接続を提供する NAT ゲートウェイを作成します。 NAT ゲートウェイをテストするために、ソースと宛先の仮想マシンをデプロイします。 パブリック IP アドレスへの送信接続を行って、NAT ゲートウェイをテストします。 それらの接続は、送信元から送信先の仮想マシンに対して確立されます。 このチュートリアルでは、わかりやすくするために、同じリソース グループ内の 2 つの異なる仮想ネットワークにソースと宛先をデプロイしています。
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-このチュートリアルは、Azure Cloud Shell を使用して行うことができます。また、それぞれのコマンドをローカルで実行してもかまいません。  Azure Cloud Shell を使用したことがない場合は、[今すぐサインイン](https://shell.azure.com)してください。
-
-これらのコマンドをローカルで実行する場合は、CLI をインストールする必要があります。  このチュートリアルでは、Azure CLI バージョン 2.0.71 以降のバージョンが実行されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
-
+- この記事では、Azure CLI のバージョン 2.0.71 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 

@@ -6,14 +6,14 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: overview
-ms.date: 08/03/2020
+ms.date: 11/13/2020
 ms.author: matjazl
-ms.openlocfilehash: 12635979d90dcc4be5b45bf7d64ceb602119faf7
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 3bb168cf3f642d22096c54b3f35c7833afaff769
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394766"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635145"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>Azure API for FHIR とは&reg;
 
@@ -84,7 +84,7 @@ FHIR API シリーズを使わない、FHIR サーバーの拡張やカスタマ
 
 ## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT Connector for FHIR (プレビュー)
 
-Azure IoT Connector for FHIR* は、Azure API for FHIR のオプション機能の 1 つであり、Internet of Medical Things (IoMT) デバイスからデータを取り込むことができます。 Internet of Medical Things とは、ネットワーク上の他の医療 IT システムとの間で健康とウェルネスのデータをキャプチャして交換する IoT デバイスのカテゴリです。 IoMT デバイスの例としては、フィットネスおよび医療用ウェアラブル、監視センサー、アクティビティ トラッカー、ポイント オブ ケア キオスク、スマート ピルなどがあります。 Azure IoT Connector for FHIR の機能を使用すると、IoMT データをスケーラブルかつ安全で、規制に準拠した方法で Azure API for FHIR に取り込むためのサービスをすばやく設定できます。
+Azure IoT Connector for FHIR&#174; (高速ヘルスケア相互運用性リソース)* は、Azure API for FHIR のオプション機能であり、Internet of Medical Things (IoMT) デバイスからデータを取り込むことができます。 Internet of Medical Things とは、ネットワーク上の他の医療 IT システムとの間で健康とウェルネスのデータをキャプチャして交換する IoT デバイスのカテゴリです。 IoMT デバイスの例としては、フィットネスおよび医療用ウェアラブル、監視センサー、アクティビティ トラッカー、ポイント オブ ケア キオスク、スマート ピルなどがあります。 Azure IoT Connector for FHIR の機能を使用すると、IoMT データをスケーラブルかつ安全で、規制に準拠した方法で Azure API for FHIR に取り込むためのサービスをすばやく設定できます。
 
 Azure IoT Connector for FHIR を使用すると、IoMT デバイスによって送信される JSON ベースのあらゆるメッセージを受け入れることができます。 このデータは、まず適切な FHIR ベースの [Observation](https://www.hl7.org/fhir/observation.html) リソースに変換され、その後 Azure API for FHIR に保存されます。 データ変換ロジックは、メッセージ スキーマと FHIR の要件に基づいて構成するマッピング テンプレートのペアによって定義されます。 デバイス データは、Azure IoT Connector for FHIR に直接プッシュすることも、他の Azure IoT ソリューション ([Azure IoT Hub](../iot-hub/index.yml) および [Azure IoT Central](../iot-central/index.yml)) と連携してシームレスに使用することもできます。 Azure IoT Connector for FHIR によって、セキュリティで保護されたデータ パイプラインが提供される一方で、Azure IoT ソリューションが物理デバイスのプロビジョニングとメンテナンスに対応できるようになります。
 
@@ -108,6 +108,4 @@ Azure IoT Connector for FHIR の機能を試すには、Azure portal を使用�
 >[!div class="nextstepaction"]
 >[Azure IoT Connector for FHIR をデプロイする](iot-fhir-portal-quickstart.md)
 
-*Azure portal では、Azure IoT Connector for FHIR は IoT Connector (プレビュー) と呼ばれています。
-
-FHIR は HL7 の登録商標であり、HL7 の許可を得て使用しています。
+*Azure portal では、Azure IoT Connector for FHIR は IoT Connector (プレビュー) と呼ばれています。 FHIR は HL7 の登録商標であり、HL7 の許可を得て使用しています。 

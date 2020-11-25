@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fbfc4619e8af86a89b82f32ff3bc9a39c92b355a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1c1dd2ba5eb6ee61a0f8cf151649441cbc783166
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784866"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553531"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Azure での SQL Server 2008 および SQL Server 2008 R2 のサポート延長
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,14 +40,14 @@ SQL Server 2008 をご使用のお客様は、ご自分でインストールす�
 Azure Marketplace からデプロイされたイメージには、SQL IaaS 拡張機能が事前インストールされています。 SQL IaaS 拡張機能は、柔軟性のあるライセンスと自動化された修正の要件です。 ご自分でインストールした VM をデプロイするお客様は、SQL IaaS 拡張機能を手動でインストールする必要があります。 SQL IaaS 拡張機能は Windows Server 2008 ではサポートされていません。
 
 > [!NOTE]
-> SQL Server の **[作成]** ブレードと **[管理]** ブレードでは Azure portal で SQL Server 2008 R2 イメージを操作しますが、次の機能は " _サポートされません_ ": 自動バックアップ、Azure Key Vault の統合、R Services、およびストレージの構成。
+> SQL Server の **[作成]** ブレードと **[管理]** ブレードでは Azure portal で SQL Server 2008 R2 イメージを操作しますが、次の機能は "_サポートされません_": 自動バックアップ、Azure Key Vault の統合、R Services、およびストレージの構成。
 
 ## <a name="licensing"></a>ライセンス
 従量課金制の SQL Server 2008 R2 のデプロイは、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)に変換できます。
 
-ソフトウェア アシュアランス (SA) ベースのライセンスを従量課金制に変換する場合、お客様は SQL VM [リソースプロバイダー](sql-vm-resource-provider-register.md)に登録する必要があります。 登録後、SQL ライセンスの種類が Azure ハイブリッド特典と従量課金制の間で交換可能になります。
+ソフトウェア アシュアランス (SA) ベースのライセンスを従量課金制に変換する場合、お客様は [SQL IaaS Agent 拡張機能](sql-agent-extension-manually-register-single-vm.md)に登録する必要があります。 登録後、SQL ライセンスの種類が Azure ハイブリッド特典と従量課金制の間で交換可能になります。
 
-Azure VM にご自分でインストールした SQL Server 2008 または SQL Server 2008 R2 のインスタンスは、SQL VM リソースプロバイダーに登録して、ライセンスの種類を従量課金制に変換することができます。
+Azure VM にご自分でインストールした SQL Server 2008 または SQL Server 2008 R2 のインスタンスは、SQL IaaS Agent 拡張機能に登録して、ライセンスの種類を従量課金制に変換することができます。
 
 ## <a name="migration"></a>移行
 バックアップと復元を手動で行う方法で Azure VM に EOS SQL Server インスタンスを移行することができます。 これは、オンプレミスから Azure VM への最も一般的な移行方法です。
@@ -66,12 +66,13 @@ SQL Server には、回復を保証するために、アプリ整合性のある
 
 Azure VM 上の EOS SQL Server のディザスター リカバリー ソリューションは次のとおりです。
 
-- **SQL Server のバックアップ** :Azure Backup を使用して、15 分の RPO と特定の時点への復旧で、ランサムウェアや偶発的な削除や破損から EOS SQL Server 2008 および 2008 R2 を保護できます。 詳細については、[こちらの記事](../../../backup/sql-support-matrix.md#scenario-support)を参照してください。
-- **ログ配布** :継続的な復元によって別のゾーンまたは Azure リージョンにログ配布のレプリカを作成して、RTO を短縮することができます。 ログ配布は、お客様が手動で構成する必要があります。
-- **Azure Site Recovery** :Azure Site Recovery のレプリケーションによって、ゾーンとリージョン間で VM をレプリケートできます。 SQL Server には、障害の発生時に回復を保証するために、アプリ整合性スナップショットが必要です。 Azure Site Recovery は、EOS SQL Server のディザスター リカバリーで最小 1 時間の RPO と、2 時間 (+ SQL Server の復旧時間) の RTO を実現します。
+- **SQL Server のバックアップ**:Azure Backup を使用して、15 分の RPO と特定の時点への復旧で、ランサムウェアや偶発的な削除や破損から EOS SQL Server 2008 および 2008 R2 を保護できます。 詳細については、[こちらの記事](../../../backup/sql-support-matrix.md#scenario-support)を参照してください。
+- **ログ配布**:継続的な復元によって別のゾーンまたは Azure リージョンにログ配布のレプリカを作成して、RTO を短縮することができます。 ログ配布は、お客様が手動で構成する必要があります。
+- **Azure Site Recovery**:Azure Site Recovery のレプリケーションによって、ゾーンとリージョン間で VM をレプリケートできます。 SQL Server には、障害の発生時に回復を保証するために、アプリ整合性スナップショットが必要です。 Azure Site Recovery は、EOS SQL Server のディザスター リカバリーで最小 1 時間の RPO と、2 時間 (+ SQL Server の復旧時間) の RTO を実現します。
 
 ## <a name="security-patching"></a>セキュリティ修正
-SQL Server VM の延長セキュリティ更新プログラムは、SQL Server VM が SQL VM [リソースプロバイダー](sql-vm-resource-provider-register.md)に登録された後、Microsoft Update チャンネルを通じて配信されます。 パッチは、手動または自動でダウンロードできます。
+
+SQL Server VM の延長セキュリティ更新プログラムは、SQL Server VM が [SQL IaaS Agent 拡張機能](sql-agent-extension-manually-register-single-vm.md)に登録された後、Microsoft Update チャンネルを通じて配信されます。 パッチは、手動または自動でダウンロードできます。
 
 *[自動修正]* は、既定で有効になります。 自動修正を有効にすると、Azure は SQL Server とオペレーティング システムに修正プログラムを自動的に適用します。 SQL Server IaaS 拡張機能がインストールされている場合は、メンテナンス期間の曜日、時刻、および期間を指定できます。 Azure は、修正プログラムの適用をこのメンテナンス ウィンドウで実行します。 メンテナンス ウィンドウのスケジュールでは、VM のロケールが時刻に使用されます。 詳細については、[Azure Virtual Machines での SQL Server の自動修正](automated-patching.md)に関するページを参照してください。
 

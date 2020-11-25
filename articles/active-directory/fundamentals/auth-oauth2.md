@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory を使用した OAuth 2.0 認証
-description: この認証パターンの実現に関するアーキテクチャのガイダンス
+description: Azure Active Directory を使用した OAUTH 2.0 認証の実現に関するアーキテクチャ ガイダンス。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea22c4e5b363eaa3ecc2a736dfef714666310062
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: daf40a2ced3f753619e9c4723dbe78cd7e51ff21
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113971"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577908"
 ---
 # <a name="oauth-20-authentication-with-azure-active-directory"></a>Azure Active Directory を使用した OAuth 2.0 認証
 
@@ -36,11 +36,11 @@ OAuth 2.0 は、OpenID Connect (OIDC) に直接関連しています。 OIDC は
 
 * **[ユーザー]** :Web アプリケーション (アプリ) からサービスを要求します。 一般に、ユーザーはデータを所有し、そのデータまたはリソースへのアクセスをクライアントに許可する権限を持つリソース所有者です。 
 
-* **Web ブラウザー** :ユーザーが操作する Web ブラウザーは、OAuth クライアントです。 
+* **Web ブラウザー**:ユーザーが操作する Web ブラウザーは、OAuth クライアントです。 
 
-* **Web アプリ** :Web アプリ (またはリソース サーバー) は、リソースまたはデータが存在する場所です。 承認サーバーを信頼し、OAuth クライアントを安全に認証、承認します。 
+* **Web アプリ**:Web アプリ (またはリソース サーバー) は、リソースまたはデータが存在する場所です。 承認サーバーを信頼し、OAuth クライアントを安全に認証、承認します。 
 
-* **Azure AD** :Azure AD は、ID プロバイダー (IdP) とも呼ばれる承認サーバーです。 ユーザーの情報、アクセス、および信頼関係に関するすべての処理が安全に行われます。 リソースへのアクセスの許可および取り消しを行うトークンを発行する責任があります。
+* **Azure AD**:Azure AD は、ID プロバイダー (IdP) とも呼ばれる承認サーバーです。 ユーザーの情報、アクセス、および信頼関係に関するすべての処理が安全に行われます。 リソースへのアクセスの許可および取り消しを行うトークンを発行する責任があります。
 
 ## <a name="implement-oauth-20-with-azure-ad"></a>Azure AD を使用して OAuth 2.0 を実装する
 

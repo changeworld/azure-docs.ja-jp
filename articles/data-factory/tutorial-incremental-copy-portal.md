@@ -1,6 +1,6 @@
 ---
 title: Azure portal を使用してテーブルを増分コピーする
-description: このチュートリアルでは、Azure SQL Database 内のテーブルから Azure BLOB ストレージに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。
+description: このチュートリアルでは、Azure SQL Database 内のテーブルから Azure Blob Storage に差分データを読み込むパイプラインを使用して Azure データ ファクトリを作成します。
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: 6567651f76ff19a8105158b243de7582256e0375
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 6dba148f0cde81905bc66f7750ff5e04edc948aa
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320916"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566395"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、Azure SQL Database 内のテーブルから Azure BLOB ストレージに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。
+このチュートリアルでは、Azure SQL Database 内のテーブルから Azure Blob Storage に差分データを読み込むパイプラインを使用して Azure データ ファクトリを作成します。
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -69,7 +69,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * **Azure Storage**。 シンク データ ストアとして使用する BLOB ストレージです。 Azure ストレージ アカウントがない場合の作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」を参照してください。 adftutorial という名前のコンテナーを作成します。 
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>SQL データベースにデータ ソース テーブルを作成する
-1. SQL Server Management Studio を開きます。 **サーバー エクスプローラー**で目的のデータベースを右クリックし、 **[新しいクエリ]** を選択します。
+1. SQL Server Management Studio を開きます。 **サーバー エクスプローラー** で目的のデータベースを右クリックし、 **[新しいクエリ]** を選択します。
 
 2. SQL データベースに対して次の SQL コマンドを実行し、`data_source_table` という名前のテーブルをデータ ソース ストアとして作成します。
 
@@ -153,23 +153,23 @@ END
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-2. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。
+2. 左側のメニューで、 **[リソースの作成]**  >  **[統合]**  >  **[Data Factory]** を選択します。
 
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 3. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFIncCopyTutorialDF**」と入力します。
 
-   Azure データ ファクトリの名前は **グローバルに一意**にする必要があります。 赤い感嘆符と次のエラーが表示される場合は、データ ファクトリの名前を変更して (yournameADFIncCopyTutorialDF など)、作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
+   Azure Data Factory の名前は、**グローバルに一意** にする必要があります。 赤い感嘆符と次のエラーが表示される場合は、データ ファクトリの名前を変更して (yournameADFIncCopyTutorialDF など)、作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
 
     *データ ファクトリ名 "ADFIncCopyTutorialDF" は利用できません*
-4. データ ファクトリを作成する Azure **サブスクリプション**を選択します。
+4. データ ファクトリを作成する Azure **サブスクリプション** を選択します。
 5. **[リソース グループ]** について、次の手順のいずれかを行います。
 
       - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
       - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
         リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
-6. **バージョン**として **[V2]** を選択します。
+6. **バージョン** として **[V2]** を選択します。
 7. データ ファクトリの **場所** を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database、Azure SQL Managed Instance など) とコンピューティング (HDInsight など) は他のリージョンに配置できます。
 8. **Create** をクリックしてください。      
 9. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
@@ -180,7 +180,7 @@ END
 ## <a name="create-a-pipeline"></a>パイプラインを作成する
 このチュートリアルでは、2 つのルックアップ アクティビティ、1 つのコピー アクティビティ、そして 1 つのストアド プロシージャ アクティビティを 1 つに連結したパイプラインを作成します。
 
-1. Data Factory UI の**開始**ページで **[Create pipeline]\(パイプラインの作成\)** タイルをクリックします。
+1. Data Factory UI の **開始** ページで **[Create pipeline]\(パイプラインの作成\)** タイルをクリックします。
 
    ![Data Factory UI の開始ページ](./media/doc-common-process/get-started-page.png)    
 3. [全般] パネルの **[プロパティ]** で、 **[名前]** に「**IncrementalCopyPipeline**」を指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。
@@ -229,7 +229,7 @@ END
     ![2 つ目の検索アクティビティ - クエリ](./media/tutorial-incremental-copy-portal/query-for-new-watermark.png)
 19. **[アクティビティ]** ツールボックスで **[Move & Transform]\(移動と変換\)** を展開し、[アクティビティ] ツールボックスから **[コピー]** アクティビティをドラッグ アンド ドロップして、名前を「**IncrementalCopyActivity**」に設定します。
 
-20. 検索アクティビティにアタッチされている**緑のボタン**をコピー アクティビティにドラッグして、**両方の検索アクティビティをコピー アクティビティに接続**します。 コピー アクティビティの境界線の色が青に変わったら、マウス ボタンを離します。
+20. 検索アクティビティにアタッチされている **緑のボタン** をコピー アクティビティにドラッグして、**両方の検索アクティビティをコピー アクティビティに接続** します。 コピー アクティビティの境界線の色が青に変わったら、マウス ボタンを離します。
 
     ![検索アクティビティのコピー アクティビティへの接続](./media/tutorial-incremental-copy-portal/connection-lookups-to-copy.png)
 21. **[コピー アクティビティ]** を選択し、 **[プロパティ]** ウィンドウにアクティビティのプロパティが表示されることを確認します。
@@ -259,10 +259,10 @@ END
 27. **[プロパティの設定]** ウィンドウで、 **[リンクされたサービス]** に **[AzureStorageLinkedService]** が選択されていることを確認します。 **[完了]** を選択します。
 28. SinkDataset の **[接続]** タブに移動して、次の手順を実行します。
     1. **[ファイル パス]** フィールドに「**adftutorial/incrementalcopy**」と入力します。 **adftutorial** は BLOB コンテナー名であり、**incrementalcopy** はフォルダー名です。 このスニペットは、BLOB ストレージに adftutorial という名前の BLOB コンテナーがあることを前提としています。 このコンテナーが存在しない場合は作成するか、既存のコンテナーの名前を設定してください。 Azure Data Factory は、出力フォルダー **incrementalcopy** が存在しない場合は、自動的に作成します。 **[ファイル パス]** の **[参照]** ボタンを使用して、BLOB コンテナー内のフォルダーに移動することもできます。
-    2. **[ファイル パス]** フィールドの**ファイル**部分で **[動的なコンテンツの追加 [Alt+P]]** を選択し、表示されたウィンドウで「`@CONCAT('Incremental-', pipeline().RunId, '.txt')`」と入力します。 **[完了]** を選択します。 ファイル名は、式を使用して動的に生成されます。 各パイプラインの実行には、一意の ID があります。 コピー アクティビティは、実行 ID を使用して、ファイル名を生成します。
+    2. **[ファイル パス]** フィールドの **ファイル** 部分で **[動的なコンテンツの追加 [Alt+P]]** を選択し、表示されたウィンドウで「`@CONCAT('Incremental-', pipeline().RunId, '.txt')`」と入力します。 **[完了]** を選択します。 ファイル名は、式を使用して動的に生成されます。 各パイプラインの実行には、一意の ID があります。 コピー アクティビティは、実行 ID を使用して、ファイル名を生成します。
 
 28. 上部のパイプライン タブをクリックするか、左側のツリー ビューでパイプラインの名前をクリックして、**パイプライン** エディターに切り替えます。
-29. **[アクティビティ]** ツールボックスで **[General]\(一般\)** を展開し、 **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグ アンド ドロップします。 **[コピー]** アクティビティの緑 (成功) の出力を **[ストアド プロシージャ]** アクティビティに**接続**します。
+29. **[アクティビティ]** ツールボックスで **[General]\(一般\)** を展開し、 **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグ アンド ドロップします。 **[コピー]** アクティビティの緑 (成功) の出力を **[ストアド プロシージャ]** アクティビティに **接続** します。
 
 24. パイプライン デザイナーで **[ストアド プロシージャ アクティビティ]** を選択し、その名前を **StoredProceduretoWriteWatermarkActivity** に変更します。
 

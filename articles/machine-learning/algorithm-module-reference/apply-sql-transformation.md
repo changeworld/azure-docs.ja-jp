@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2019
-ms.openlocfilehash: 9a195497b4376633bd3c767d7d0ea029109fdf9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/12/2020
+ms.openlocfilehash: c66fbe59fd5b2660d02bfca285f78666d64569fe
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76314540"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555602"
 ---
 # <a name="apply-sql-transformation"></a>SQL 変換の適用
 
@@ -29,11 +29,26 @@ Apply SQL Transformation (SQL 変換の適用) モジュールを使用すると
 -   SQL クエリ ステートメントを実行してデータをフィルター処理または変更し、クエリ結果をデータ テーブルとして返す。  
 
 > [!IMPORTANT]
-> このモジュールで使用される SQL エンジンは **SQLite** です。 SQLite 構文の詳細については、「[SQLite によって認識される SQL](https://www.sqlite.org/index.html)」を参照してください。  
+> このモジュールで使用される SQL エンジンは **SQLite** です。 SQLite 構文の詳細については、「[SQLite によって認識される SQL](https://www.sqlite.org/index.html)」を参照してください。
+> このモジュールは、メモリ DB 内にある SQLite にデータをバンプします。そのため、このモジュールの実行には多くのメモリが必要となり、`Out of memory` エラーが発生する可能性があります。 お使いのコンピューターに十分な RAM があることを確認してください。
 
 ## <a name="how-to-configure-apply-sql-transformation"></a>Apply SQL Transformation (SQL 変換の適用) を構成する方法  
 
 このモジュールは、最大 3 つのデータセットを入力として受け取ることができます。 各入力ポートに接続されているデータセットを参照する場合は、`t1`、`t2`、`t3` の名前を使用する必要があります。 テーブル番号は、入力ポートのインデックスを示しています。  
+
+2 つのテーブルを結合する方法を示すサンプル コードを次に示します。 t1 と t2 は、**Apply SQL Transformation** の左と中央の入力ポートに接続された 2 つのデータセットです。
+
+```sql
+SELECT t1.*
+    , t3.Average_Rating
+FROM t1 join
+    (SELECT placeID
+        , AVG(rating) AS Average_Rating
+    FROM t2
+    GROUP BY placeID
+    ) as t3
+on t1.placeID = t3.placeID
+```
   
 残りのパラメーターは、SQLite 構文を使用する SQL クエリです。 **SQL スクリプト** テキスト ボックスに複数の行を入力する場合は、セミコロンを使用して各ステートメントを終了します。 そうしないと、改行はスペースに変換されます。  
 

@@ -13,12 +13,12 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 997e867798922975757a588ef50248f0d09a96e0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 801a9a112615bd6220b5f273b51ed39248ebcd45
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789847"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556473"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Azure VM での SQL Server エディションのインプレース変更
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ SQL Server のエディションが内部で SQL Server VM に変更された後
 SQL Server のエディションのインプレース変更を行うには、以下のものが必要です。 
 
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)。
-- [SQL VM リソース プロバイダー](sql-vm-resource-provider-register.md)に登録された [Windows 上の SQL Server VM](./create-sql-vm-portal.md)。
+- [SQL IaaS Agent 拡張機能](sql-agent-extension-manually-register-single-vm.md)に登録された [Windows 上の SQL Server VM](./create-sql-vm-portal.md)。
 - SQL Server の **目的のエディション** が収められたセットアップ メディア。 [ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)をお持ちのお客様は、[ボリューム ライセンス サービス センター](https://www.microsoft.com/Licensing/servicecenter/default.aspx)からインストール メディアを入手できます。 ソフトウェア アシュアランスをお持ちでないお客様は、目的のエディション (通常、`C:\SQLServerFull` にある) を含む Azure Marketplace の SQL Server VM イメージから、セットアップ メディアを使用できます。 
 
 
@@ -75,7 +75,7 @@ SQL Server のエディションをダウングレードした後、Azure portal
 
 ## <a name="change-edition-in-portal"></a>ポータルでエディションを変更する 
 
-インストール メディアを使用して SQL Server のエディションを変更し、[SQL VM リソース プロバイダー](sql-vm-resource-provider-register.md)に SQL Server VM を登録した後、Azure portal を使用して、課金のために SQL Server VM のエディション プロパティを変更できます。 これを行うには、次のステップに従います。 
+インストール メディアを使用して SQL Server のエディションを変更し、[SQL IaaS Agent 拡張機能](sql-agent-extension-manually-register-single-vm.md)に SQL Server VM を登録した後、Azure portal を使用して、課金のために SQL Server VM のエディション プロパティを変更できます。 これを行うには、次のステップに従います。 
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 
 1. SQL Server の仮想マシン リソースに移動します。 
@@ -91,7 +91,7 @@ SQL Server のエディションをダウングレードした後、Azure portal
 
 - SQL Server VM のエディション プロパティは、すべての SQL Server 仮想マシン用にインストールされている SQL Server インスタンスのエディションと一致する必要があります。これには、従量課金制とライセンス持ち込みの両方のライセンスの種類が含まれます。
 - SQL Server VM リソースを削除した場合は、イメージのハード コーディングされたエディション設定に戻ります。
-- エディションを変更する機能は、SQL VM リソース プロバイダーの機能です。 Azure portal を介して Azure Marketplace イメージをデプロイすると、SQL Server VM がリソース プロバイダーに自動的に登録されます。 ただし、SQL Server を自分でインストールするお客様は、手動で [SQL Server VM を登録](sql-vm-resource-provider-register.md)する必要があります。
+- エディションを変更する機能は、SQL IaaS Agent 拡張機能の機能です。 Azure portal を介して Azure Marketplace イメージをデプロイすると、SQL Server VM が SQL IaaS Agent 拡張機能に自動的に登録されます。 ただし、SQL Server を自分でインストールするお客様は、手動で [SQL Server VM を登録](sql-agent-extension-manually-register-single-vm.md)する必要があります。
 - SQL Server VM を可用性セットに追加するには、VM を再作成する必要があります。 可用性セットに追加されたすべての VM は既定のエディションに戻るので、エディションをもう一度変更する必要があります。
 
 ## <a name="next-steps"></a>次のステップ

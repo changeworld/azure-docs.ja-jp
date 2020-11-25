@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 9b90d13d6f4fa5a33bff38aaa66728a5d0f3d70f
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 01f9ee1ad134c14150d16569fd57e658b160784c
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289941"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556320"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>記憶域スペース ダイレクトで FCI を作成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -217,7 +217,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 ## <a name="register-with-the-sql-vm-rp"></a>SQL VM RP への登録
 
-ポータルから SQL Server VM を管理するには、それを[軽量管理モード](sql-vm-resource-provider-register.md#lightweight-management-mode)で SQL VM リソース プロバイダー (RP) に登録します。現時点では、FCI と Azure VM 上の SQL Server でサポートされている唯一のモードです。 
+ポータルから SQL Server VM を管理するには、それを[軽量管理モード](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode)で SQL IaaS Agent 拡張機能 (RP) に登録します。このモードは、現時点では、FCI と Azure VM 上の SQL Server でサポートされている唯一のモードです。 
 
 
 PowerShell を使用して軽量モードで SQL Server VM を登録します。  
@@ -239,7 +239,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 - Azure Virtual Machines では、CSV および [Standard Load Balancer](../../../load-balancer/load-balancer-overview.md) 上のストレージを備えた Windows Server 2019 で、 Microsoft 分散トランザクション コーディネーター (MSDTC) がサポートされています。
 - NTFS でフォーマットされたディスクとして接続されているディスクは、ストレージがクラスターに追加されるときに、ディスク適格性オプションがオフにされている場合にのみ、記憶域スペース ダイレクトで使用できます。 
-- [軽量管理モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)での SQL VM リソース プロバイダーへの登録のみがサポートされています。
+- [軽量管理モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)での SQL IaaS Agent 拡張機能への登録のみがサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
 

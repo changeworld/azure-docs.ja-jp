@@ -1,22 +1,22 @@
 ---
 title: 変更されないようにリソースをロックする
-description: 重要な Azure リソースの更新または削除をユーザーに禁止するには、すべてのユーザーとロールを対象にロックを適用します。
+description: Azure リソースの更新または削除をユーザーに禁止するには、すべてのユーザーとロールを対象にロックを適用します。
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 57b4fecd0293c714dfd910ae2ad4866397646ce8
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: f1073d8c4a6902ea00a9b4098ef87bc411b3e6c0
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340143"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555670"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>リソースのロックによる予期せぬ変更の防止
 
 管理者は、サブスクリプション、リソース グループ、またはリソースをロックし、組織の他のユーザーが誤って重要なリソースを削除したり変更したりするのを防止しなければならないことがあります。 ロック レベルは **CanNotDelete** または **ReadOnly** に設定できます。 ポータルでは、これらのロックはそれぞれ **[削除]** と **[読み取り専用]** と表示されます。
 
 * **CanNotDelete** は、正規ユーザーはリソースの読み取りと変更を実行できますが、削除は実行できないことを示します。
-* **ReadOnly** は、正規ユーザーはリソースの読み取りを実行できますが、リソースの更新は実行できないことを示します。 このロックの適用は、すべての正規ユーザーのアクセス許可を、 **閲覧者** ロールによって与えられるアクセス許可に制限することに似ています。
+* **ReadOnly** は、正規ユーザーはリソースの読み取りを実行できますが、リソースの更新は実行できないことを示します。 このロックの適用は、すべての正規ユーザーのアクセス許可を、**閲覧者** ロールによって与えられるアクセス許可に制限することに似ています。
 
 ## <a name="how-locks-are-applied"></a>ロックが適用されるしくみ
 
@@ -34,17 +34,17 @@ Resource Manager のロックは、管理ウィンドウで実行され、`https
 
 * 読み取り専用ロックを **App Service** リソースに設定すると、Visual Studio のサーバー エクスプローラーの操作には書き込みアクセスが必要となるため、Visual Studio のサーバー エクスプローラーはリソース用のファイルを表示できなくなります。
 
-* 読み取り専用ロックを、 **仮想マシン** を含む **リソース グループ** に設定すると、どのユーザーも仮想マシンを起動したり、再起動したりできなくなります。 これらの操作では、POST 要求が必要です。
+* 読み取り専用ロックを、**仮想マシン** を含む **リソース グループ** に設定すると、どのユーザーも仮想マシンを起動したり、再起動したりできなくなります。 これらの操作では、POST 要求が必要です。
 
 * 削除不可ロックを **リソース グループ** に設定すると、Azure Resource Manager が履歴内の [デプロイを自動的に削除](../templates/deployment-history-deletions.md)できなくなります。 履歴内のデプロイが 800 に達した場合、デプロイは失敗します。
 
 * **Azure Backup サービス** によって作成された **リソース グループ** に削除不可のロックを設定した場合、バックアップは失敗するようになります。 このサービスでは、最大 18 個の復元ポイントがサポートされています。 ロックされている場合、バックアップ サービスは復元ポイントをクリーンアップできません。 詳細については、「[よく寄せられる質問 - Azure VM のバックアップ](../../backup/backup-azure-vm-backup-faq.md)」を参照してください。
 
-* **サブスクリプション** に読み取り専用ロックを設定すると、 **Azure Advisor** が正常に機能しなくなります。 Advisor は、クエリの結果を格納できません。
+* **サブスクリプション** に読み取り専用ロックを設定すると、**Azure Advisor** が正常に機能しなくなります。 Advisor は、クエリの結果を格納できません。
 
 ## <a name="who-can-create-or-delete-locks"></a>誰がロックを作成または削除できるか
 
-管理ロックを作成または削除するには、`Microsoft.Authorization/*` または `Microsoft.Authorization/locks/*` アクションにアクセスできる必要があります。 組み込みロールのうち、 **所有者** と **ユーザー アクセス管理者** にのみこれらのアクションが許可されています。
+管理ロックを作成または削除するには、`Microsoft.Authorization/*` または `Microsoft.Authorization/locks/*` アクションにアクセスできる必要があります。 組み込みロールのうち、**所有者** と **ユーザー アクセス管理者** にのみこれらのアクションが許可されています。
 
 ## <a name="managed-applications-and-locks"></a>Managed Applications とロック
 
@@ -74,19 +74,91 @@ Azure Databricks などの一部の Azure サービスでは、[マネージド 
 
 ### <a name="arm-template"></a>ARM テンプレート
 
-ロックをデプロイするために Resource Manager テンプレートを使用する場合は、ロックの範囲に応じて名前と型に異なる値を使用します。
+Azure Resource Manager テンプレート (ARM テンプレート) を使用してロックをデプロイする場合は、ロックのスコープとデプロイのスコープに注意する必要があります。 リソース グループやサブスクリプションのロックなど、デプロイ スコープでロックを適用する場合、スコープ プロパティを設定しないでください。 デプロイ スコープ内のリソースをロックする場合は、スコープ プロパティを設定します。
 
-ロックを **リソース** に適用するときには、次の形式を使用します。
+次のテンプレートは、デプロイ先のリソース グループにロックを適用します。 ロックのスコープがデプロイのスコープと一致するため、ロック リソースにスコープ プロパティがないことに注意してください。 このテンプレートは、リソース グループ レベルでデプロイされます。
 
-* 名前 - `{resourceName}/Microsoft.Authorization/{lockName}`
-* 種類 - `{resourceProviderNamespace}/{resourceType}/providers/locks`
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {  
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Authorization/locks",
+            "apiVersion": "2016-09-01",
+            "name": "rgLock",
+            "properties": {
+                "level": "CanNotDelete",
+                "notes": "Resource Group should not be deleted."
+            }
+        }
+    ]
+}
+```
 
-**リソース グループ** または **サブスクリプション** にロックを適用するときには、次の形式を使用します。
+リソース グループを作成してロックするには、サブスクリプション レベルで次のテンプレートをデプロイします。
 
-* 名前 - `{lockName}`
-* 種類 - `Microsoft.Authorization/locks`
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "rgName": {
+            "type": "string"
+        },
+        "rgLocation": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "2019-10-01",
+            "name": "[parameters('rgName')]",
+            "location": "[parameters('rgLocation')]",
+            "properties": {}
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "lockDeployment",
+            "resourceGroup": "[parameters('rgName')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Resources/resourceGroups/', parameters('rgName'))]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Authorization/locks",
+                            "apiVersion": "2016-09-01",
+                            "name": "rgLock",
+                            "properties": {
+                                "level": "CanNotDelete",
+                                "notes": "Resource group and its resources should not be deleted."
+                            }
+                        }
+                    ],
+                    "outputs": {}
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
 
-次の例では、App Service プラン、Web サイト、および Web サイトに対するロックを作成するテンプレートを示します。 ロックのリソースの種類は、ロック対象リソースのリソースの種類と **/providers/locks** です。 ロックの名前は、リソース名に **/Microsoft.Authorization/** とロックの名前を連結して作成されます。
+リソース グループ内の **リソース** にロックを適用する場合は、スコープ プロパティを追加します。 スコープを、ロックするリソースの名前に設定します。
+
+次の例では、App Service プラン、Web サイト、および Web サイトに対するロックを作成するテンプレートを示します。 ロックのスコープは、Web サイトに設定されます。
 
 ```json
 {
@@ -95,6 +167,10 @@ Azure Databricks などの一部の Azure サービスでは、[マネージド 
   "parameters": {
     "hostingPlanName": {
       "type": "string"
+    },
+    "location": {
+        "type": "string",
+        "defaultValue": "[resourceGroup().location]"
     }
   },
   "variables": {
@@ -103,9 +179,9 @@ Azure Databricks などの一部の Azure サービスでは、[マネージド 
   "resources": [
     {
       "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2019-08-01",
+      "apiVersion": "2020-06-01",
       "name": "[parameters('hostingPlanName')]",
-      "location": "[resourceGroup().location]",
+      "location": "[parameters('location')]",
       "sku": {
         "tier": "Free",
         "name": "f1",
@@ -117,9 +193,9 @@ Azure Databricks などの一部の Azure サービスでは、[マネージド 
     },
     {
       "type": "Microsoft.Web/sites",
-      "apiVersion": "2019-08-01",
+      "apiVersion": "2020-06-01",
       "name": "[variables('siteName')]",
-      "location": "[resourceGroup().location]",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
       ],
@@ -128,9 +204,10 @@ Azure Databricks などの一部の Azure サービスでは、[マネージド 
       }
     },
     {
-      "type": "Microsoft.Web/sites/providers/locks",
+      "type": "Microsoft.Authorization/locks",
       "apiVersion": "2016-09-01",
-      "name": "[concat(variables('siteName'), '/Microsoft.Authorization/siteLock')]",
+      "name": "siteLock",
+      "scope": "[concat('Microsoft.Web/sites/', variables('siteName'))]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/sites', variables('siteName'))]"
       ],
@@ -142,8 +219,6 @@ Azure Databricks などの一部の Azure サービスでは、[マネージド 
   ]
 }
 ```
-
-リソース グループに対するロックの設定の例は、「[Create a resource group and lock it (リソース グループの作成とロック)](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment)」を参照してください。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -237,7 +312,7 @@ az lock delete --ids $lockid
 PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 ```
 
-スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 lock-name には、ロックの名前を指定できます。 api-version には、 **2016-09-01** を使用します。
+スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 lock-name には、ロックの名前を指定できます。 api-version には、**2016-09-01** を使用します。
 
 要求に、ロックのプロパティを指定する JSON オブジェクトを含めます。
 

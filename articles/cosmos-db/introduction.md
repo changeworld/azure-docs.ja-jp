@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2020
-ms.openlocfilehash: eb2212d618d45187779b328c7ba164bbacc980a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 012df825f38d292d0b0549701ad90334e3e30bb0
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088691"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637015"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -55,7 +55,7 @@ Azure サブスクリプション、課金、契約がなくても [Azure Cosmos
 - Azure Cosmos DB は、業界をリードする可用性を含む [SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) の包括的なスイートを全世界で提供します。
 - 自動データ レプリケーションにより、任意の Azure リージョンにデータを簡単に分散できます。 厳密な整合性を使用した場合は、マルチリージョン書き込みまたは RPO 0 でゼロのダウンタイムが実現されます。
 - 自己管理型のキーにより、エンタープライズグレードの保存時の暗号化が提供されます。
-- ロールベースのアクセス制御により、データが安全に保たれ、微調整されたコントロールが提供されます。
+- Azure ロールベースのアクセス制御により、データが保護され、微調整された制御が提供されます。
 
 ### <a name="fully-managed-and-cost-effective"></a>フル マネージドかつ高いコスト効果
 

@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - CLI を使用して仮想マシンを管理する
-description: このチュートリアルでは、Azure CLI を使用して、RBAC、ポリシー、ロック、およびタグを適用することによって Azure 仮想マシンを管理する方法について説明します。
+description: このチュートリアルでは、Azure CLI を使用して、Azure RBAC、ポリシー、ロック、およびタグを適用することによって Azure 仮想マシンを管理する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 867349a321f2909d8e568be7e482a5517ddb50b9
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 565315ad78a2994f44973c4fdcd4519ab9e03ea8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517956"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831788"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>チュートリアル:Azure CLI を使用した Linux 仮想マシンの管理方法の説明
 
@@ -41,7 +41,7 @@ az group create --name myResourceGroup --location "East US"
 
 現在、リソース グループは空です。
 
-## <a name="role-based-access-control"></a>ロールベースのアクセス制御
+## <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 
 組織のユーザーがこれらのリソースへの適切なアクセス レベルを持つようにします。 ユーザーに無制限のアクセス権を許可したくはありませんが、ユーザーが自分の作業を実行できるようにすることも必要です。 [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を使うと、あるスコープで特定のアクションを実行するアクセス許可を持つユーザーを管理することができます。
 

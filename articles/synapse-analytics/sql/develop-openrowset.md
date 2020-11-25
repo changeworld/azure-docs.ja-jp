@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b08e834233e1ce12392d940cb0ccc0bef7e96158
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 20003a91726e5ccee7f73d85b7c9a9389801e0ad
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337748"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701757"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プール (プレビュー) を使う際の OPENROWSET の使用方法
 
@@ -84,7 +84,7 @@ OPENROWSET
     FORMAT = 'CSV'
     [ <bulk_options> ] }  
 )  
-WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })  
+WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })  
 [AS] table_alias(column_alias,...n)
  
 <bulk_options> ::=  
@@ -156,7 +156,7 @@ WITH 句を使用すると、ファイルから読み取る列を指定できま
     > Parquet ファイル内の列名では大文字と小文字が区別されます。 大文字と小文字の区別が Parquet ファイル内の列名と異なる列名を指定すると、その列に対して NULL 値が返されます。
 
 
-column_name = 出力列の名前。 指定した場合、この名前はソース ファイル内の列名をオーバーライドします。
+column_name = 出力列の名前。 指定した場合、ソース ファイル内の列名および JSON パスに指定された列名 (存在する場合) は、この名前によってオーバーライドされます。 json_path を指定しなかった場合、"$.column_name" として自動的に追加されます。 動作については、json_path 引数をチェックしてください。
 
 column_type = 出力列のデータ型。 ここでは、暗黙的なデータ型の変換が行われます。
 
@@ -170,6 +170,11 @@ WITH (
     --[population] bigint
 )
 ```
+
+json_path = 列または入れ子になったプロパティへの [JSON パス式](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15)。 既定の[パス モード](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15#PATHMODE)は lax です。
+
+> [!NOTE]
+> 厳格モードでは、指定されたパスが存在しない場合、エラーが発生してクエリが失敗します。 lax モードでは、クエリが成功し、JSON パス式が NULL に評価されます。
 
 **\<bulk_options>**
 
@@ -359,6 +364,32 @@ WITH (
     [stateName] VARCHAR (50),
     [population] bigint
 ) AS [r]
+```
+
+### <a name="specify-columns-using-json-paths"></a>JSON パスを使用して列を指定する
+
+WITH 句で [JSON パス式](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15)を使用する例を次に示します。lax パス モードと厳格モードの違いについても説明しています。 
+
+```sql
+SELECT 
+    TOP 1 *
+FROM  
+    OPENROWSET(
+        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        FORMAT='PARQUET'
+    )
+WITH (
+    --lax path mode samples
+    [stateName] VARCHAR (50), -- this one works as column name casing is valid - it targets the same column as the next one
+    [stateName_explicit_path] VARCHAR (50) '$.stateName', -- this one works as column name casing is valid
+    [COUNTYNAME] VARCHAR (50), -- STATEname column will contain NULLs only because of wrong casing - it targets the same column as the next one
+    [countyName_explicit_path] VARCHAR (50) '$.COUNTYNAME', -- STATEname column will contain NULLS only because of wrong casing and default path mode being lax
+
+    --strict path mode samples
+    [population] bigint 'strict $.population' -- this one works as column name casing is valid
+    --,[population2] bigint 'strict $.POPULATION' -- this one fails because of wrong casing and strict path mode
+)
+AS [r]
 ```
 
 ## <a name="next-steps"></a>次のステップ

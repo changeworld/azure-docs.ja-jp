@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: a85c1326501a362371d3bc961f5c5ae448e8d22e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9129d0cb44aea9b85c5569d4d939c0904c398c07
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790085"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556524"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>PowerShell または Az CLI を使用して Azure VM で SQL Server の可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +35,7 @@ Always On 可用性グループを構成するには、次の前提条件を満�
 
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)。
 - ドメイン コントローラーを含むリソース グループ。 
-- [SQL VM リソースプロバイダーに登録](sql-vm-resource-provider-register.md)されているのと " *同じ* " 可用性セットまたは " *異なる* " 可用性ゾーンにある、1 つ以上のドメイン参加済みの、 [SQL Server 2016 (またはそれ以降の) Enterprise エディションを実行している Azure の VM](./create-sql-vm-portal.md)。  
+- [SQL IaaS Agent 拡張機能に登録](sql-agent-extension-manually-register-single-vm.md)されているのと "*同じ*" 可用性セットまたは "*異なる*" 可用性ゾーンにある、1 つ以上のドメイン参加済みの、[SQL Server 2016 (またはそれ以降の) Enterprise エディションを実行している Azure の VM](./create-sql-vm-portal.md)。  
 - 最新バージョンの [PowerShell](/powershell/scripting/install/installing-powershell) または [Azure CLI](/cli/azure/install-azure-cli)。 
 - 2 つの使用可能な (どのエンティティでも使用されていない) IP アドレス。 1 つは内部ロード バランサー用です。 もう 1 つは、可用性グループと同じサブネット内の可用性グループ リスナー用です。 既存のロード バランサーを使用している場合は、使用可能な IP アドレスが可用性グループ リスナー用に 1 つだけ必要です。 
 
@@ -202,7 +202,7 @@ Microsoft によってフェールオーバー クラスターがサポートさ
 [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio)、[PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell)、[Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql) のいずれかを使用して、通常どおりに可用性グループを手動で作成します。 
 
 >[!IMPORTANT]
-> この時点では、リスナーを作成 " *しないでください* "。これは、以降のセクションで Azure CLI を使用して行います。  
+> この時点では、リスナーを作成 "*しないでください*"。これは、以降のセクションで Azure CLI を使用して行います。  
 
 ## <a name="create-internal-load-balancer"></a>内部ロード バランサーを作成する
 
@@ -246,7 +246,7 @@ New-AzLoadBalancer -name sqlILB -ResourceGroupName <resource group name> `
 
 可用性グループを手動で作成したら、[az sql vm ag-listener](/cli/azure/sql/vm/group/ag-listener#az-sql-vm-group-ag-listener-create) を使用してリスナーを作成できます。 
 
-" *サブネット リソース ID* " は、仮想ネットワーク リソースのリソース ID に追加された `/subnets/<subnetname>` の値です。 サブネット リソース ID を識別するには、次の操作を行います。
+"*サブネット リソース ID*" は、仮想ネットワーク リソースのリソース ID に追加された `/subnets/<subnetname>` の値です。 サブネット リソース ID を識別するには、次の操作を行います。
    1. [Azure portal](https://portal.azure.com) で、ご利用のリソース グループに移動します。 
    1. 仮想ネットワーク リソースを選択します。 
    1. **[設定]** ウィンドウで **[プロパティ]** を選択します。 
@@ -423,9 +423,9 @@ Azure でホストされている SQL Server VM に可用性グループをデ�
 ---
 
 ## <a name="remove-listener"></a>リスナーを削除する
-Azure CLI で構成された可用性グループ リスナーを後で削除する必要が生じた場合は、SQL VM リソースプロバイダーを使用する必要があります。 リスナーは SQL VM リソースプロバイダーを介して登録されるため、SQL Server Management Studio を使用して削除するだけでは十分ではありません。 
+Azure CLI で構成された可用性グループ リスナーを後で削除する必要が生じた場合は、SQL IaaS Agent 拡張機能を使用する必要があります。 リスナーは SQL IaaS Agent 拡張機能を介して登録されるため、SQL Server Management Studio を使用して削除するだけでは十分ではありません。 
 
-最適な方法は、Azure CLI で次のコード スニペットを使用して、SQL VM リソースプロバイダーを通じて削除することです。 そうすることで、SQL VM リソースプロバイダーから可用性グループ リスナー メタデータが削除されます。 また、可用性グループから物理的にリスナーが削除されます。 
+最適な方法は、Azure CLI で次のコード スニペットを使用して、SQL IaaS Agent 拡張機能を通じて削除することです。 このようにすることで、SQL IaaS Agent 拡張機能から可用性グループ リスナー メタデータが削除されます。 また、可用性グループから物理的にリスナーが削除されます。 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -451,7 +451,7 @@ Remove-AzAvailabilityGroupListener -Name <Listener> `
 
 ## <a name="remove-cluster"></a>クラスターの削除
 
-クラスターからすべてのノードを削除して破棄し、SQL VM リソース プロバイダーからクラスター メタデータを削除します。 これは Azure CLI か PowerShell を使用して実行できます。 
+クラスターからすべてのノードを削除して破棄し、SQL IaaS Agent 拡張機能からクラスター メタデータを削除します。 これは Azure CLI か PowerShell を使用して実行できます。 
 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -468,7 +468,7 @@ az sql vm remove-from-group --name <VM2 name>  --resource-group <resource group 
 
 これらがクラスター内にある VM のすべてであった場合、クラスターは破棄されます。 削除された SQL Server VM とは別に、クラスター内に他の VM がある場合、他の VM は削除されず、クラスターは破棄されません。 
 
-次に、SQL VM リソース プロバイダーからクラスターのメタデータを削除します。 
+次に、SQL IaaS Agent 拡張機能からクラスターのメタデータを削除します。 
 
 ```azurecli-interactive
 # Remove the cluster from the SQL VM RP metadata
@@ -497,7 +497,7 @@ $sqlvm = Get-AzSqlVM -Name <VM Name> -ResourceGroupName <Resource Group Name>
 
 これらがクラスター内にある VM のすべてであった場合、クラスターは破棄されます。 削除された SQL Server VM とは別に、クラスター内に他の VM がある場合、他の VM は削除されず、クラスターは破棄されません。 
 
-次に、SQL VM リソース プロバイダーからクラスターのメタデータを削除します。 
+次に、SQL IaaS Agent 拡張機能からクラスターのメタデータを削除します。 
 
 ```powershell-interactive
 # Remove the cluster metadata

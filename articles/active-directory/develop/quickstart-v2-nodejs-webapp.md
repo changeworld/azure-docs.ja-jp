@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 34baa054104a6cf2c78864cc2827b16c1eedb084
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5cde4b539262c9e20bbcf2e7dd8c8e9de38035c3
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613307"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594251"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>クイック スタート:OpenID Connect を使用したサインインを Node.js Web アプリに追加する
 
-このクイックスタートでは、Node.js と Express を使用して構築された Web アプリケーションで OpenID Connect 認証を設定する方法について説明します。 サンプルは、任意のプラットフォームで動作するように設計されています。
+このクイックスタートでは、Node.js と Express を使用して構築された Web アプリケーションで OpenID Connect 認証を設定する方法を示すコード サンプルをダウンロードして実行します。 サンプルは、任意のプラットフォームで動作するように設計されています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,7 +51,7 @@ ms.locfileid: "91613307"
 1. アプリのページの一覧から **[認証]** を選択します。
     - **[リダイレクト URI]** セクションで、コンボボックスの **[Web]** を選択し、リダイレクト URI の「`http://localhost:3000/auth/openid/return`」を入力します。
     - **[詳細設定]** セクションの **[ログアウト URL]** を「`https://localhost:3000`」に設定します。
-    - このサンプルでは、ユーザーのサインインに[暗黙的な許可のフロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow)が有効になっている必要があるため、 **[詳細設定] > [暗黙の付与]** セクションで、 **[ID トークン]** をチェックします。
+    - このサンプルでは、ユーザーのサインインに [暗黙的な許可のフロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow)が有効になっている必要があるため、 **[詳細設定] > [暗黙の付与]** セクションで、 **[ID トークン]** をチェックします。
 
 1. **[保存]** を選択します。
 

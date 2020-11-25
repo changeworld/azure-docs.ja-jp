@@ -6,15 +6,15 @@ ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 11/11/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 3222c934998febe79c36121ca816f949b78d374e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: dc725839d018c281dc784f5f83b256e62d70884d
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411560"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635417"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure エンタープライズ転送
 
@@ -60,7 +60,7 @@ ms.locfileid: "94411560"
 エンタープライズ登録全体を別の登録に転送するよう要求すると、次の操作が行われます。
 
 - すべての EA 部署管理者を含め、すべての Azure サービス、サブスクリプション、アカウント、部署、加入契約の構造全体が、転送先の新しい加入契約に転送されます。
-- 登録の状態は " _転送済み_ " に設定されます。 転送済み登録は、過去の使用状況レポートを作成する目的にのみ使用できます。
+- 登録の状態は "_転送済み_" に設定されます。 転送済み登録は、過去の使用状況レポートを作成する目的にのみ使用できます。
 - 転送済みの登録には、ロールやサブスクリプションを追加することができません。 転送済みの状態では、登録に対して使用量を追加することができません。
 - 契約に残っている Azure 前払い残高は、将来の期間を含めて失われます。
 -    転送元の加入契約で RI が購入されている場合、RI の購入料金は元の加入契約に残りますが、すべての RI の特典は、新しい加入契約で使用できるように転送されます。
@@ -98,9 +98,9 @@ Azure 前払いは、登録間で転送を行うことはできません。 Azur
 
 従量課金制料金の個々のサブスクリプションにエンタープライズ サブスクリプションを譲渡するには、Azure エンタープライズ ポータルで新しいサポート リクエストを作成する必要があります。 サポート リクエストを作成するには、 **[ヘルプとサポート]** 領域の **[+ 新しいサポート リクエスト]** を選択します。
 
-## <a name="change-account-owner"></a>アカウント所有者を変更する
+## <a name="change-azure-subscription-or-account-ownership"></a>Azure サブスクリプションまたはアカウントの所有権を変更する
 
-Azure EA Portal では、アカウント所有者間でサブスクリプションを転送できます。 詳細については、「[Change account owner (アカウント所有者を変更する)](ea-portal-administration.md#change-account-owner)」を参照してください。
+Azure EA Portal では、アカウント所有者間でサブスクリプションを転送できます。 詳細については、「[Azure サブスクリプションまたはアカウントの所有権を変更する](ea-portal-administration.md#change-azure-subscription-or-account-ownership)」をご覧ください。
 
 ## <a name="subscription-transfer-effects"></a>サブスクリプションを転送した場合の影響
 
@@ -112,7 +112,7 @@ Azure EA Portal では、アカウント所有者間でサブスクリプショ�
 2. 表示するサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を選択します。
 3. **[ロールの割り当て]** を選択します。 [ロールの割り当て] ページに、サブスクリプションに対する RBAC アクセス権が付与されているすべてのユーザーが一覧表示されます。
 
-別の Azure AD テナント内のアカウントにサブスクリプションを転送した場合は、リソースを管理するための [RBAC](../../role-based-access-control/overview.md) が付与されていたユーザー、グループ、サービス プリンシパルはすべて、そのアクセス権を " _失います_ "。 RBAC アクセス権がなくなっても、サブスクリプションへのアクセスは、次のようなセキュリティ メカニズムを通じて使用できる場合があります。
+別の Azure AD テナント内のアカウントにサブスクリプションを転送した場合は、リソースを管理するための [RBAC](../../role-based-access-control/overview.md) が付与されていたユーザー、グループ、サービス プリンシパルはすべて、そのアクセス権を "_失います_"。 RBAC アクセス権がなくなっても、サブスクリプションへのアクセスは、次のようなセキュリティ メカニズムを通じて使用できる場合があります。
 
 - サブスクリプションのリソースに対する管理者権限をユーザーに付与する管理証明書。 詳細については、「[Azure の管理証明書の作成とアップロード](../../cloud-services/cloud-services-certs-create.md)」をご覧ください。
 - Storage などのサービス用のアクセス キー。 詳細については、「[Azure ストレージ アカウントの概要](../../storage/common/storage-account-overview.md)」を参照してください。

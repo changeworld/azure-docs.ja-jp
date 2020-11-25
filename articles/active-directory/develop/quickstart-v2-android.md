@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: e8f60a3f39e770c1b09668a6d76e025b07ebbd6d
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: e0f3cd034838d5a9ccb1a5ccdc2567933b2e1dd6
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893511"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562204"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>クイック スタート:Android アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 
-このクイックスタートでは、コード サンプルを使用して、Android アプリケーションから Microsoft ID プラットフォームを使用することによって個人、仕事、または学校のアカウントへのサインイン、アクセス トークンの取得、Microsoft Graph API の呼び出しを行う方法を示します。 (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
+このクイックスタートでは、Android アプリケーションでユーザーをサインインし、アクセス トークンを取得して Microsoft Graph API を呼び出す方法を示すコード サンプルをダウンロードして実行します。 
+
+図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
 
 アプリケーションは、Microsoft ID プラットフォームがアプリケーションにトークンを提供できるように、Azure Active Directory 内のアプリ オブジェクトによって表現される必要があります。
 
@@ -49,7 +51,7 @@ ms.locfileid: "91893511"
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる
 > アプリのプロパティの値を使用してプロジェクトを構成したら、実行する準備は完了です。
-> このサンプル アプリは、**単一アカウント モード**画面で開始します。 既定のスコープである **user.read** は既定で指定されます。これは、Microsoft Graph API 呼び出し時にご自分のプロファイル データを読み取るときに使用します。 Microsoft Graph API 呼び出しの URL は、既定で指定されます。 このどちらも必要に応じて変更できます。
+> このサンプル アプリは、**単一アカウント モード** 画面で開始します。 既定のスコープである **user.read** は既定で指定されます。これは、Microsoft Graph API 呼び出し時にご自分のプロファイル データを読み取るときに使用します。 Microsoft Graph API 呼び出しの URL は、既定で指定されます。 このどちらも必要に応じて変更できます。
 >
 > ![単一および複数アカウントの使用状況を示す MSAL サンプル アプリ](./media/quickstart-v2-android/quickstart-sample-app.png)
 >
@@ -75,7 +77,7 @@ ms.locfileid: "91893511"
 >
 > Android Studio の **[available devices]\(使用可能なデバイス\)** ドロップダウンからエミュレーターまたは物理デバイスを選択し、アプリを実行します。
 >
-> このサンプル アプリは、**単一アカウント モード**画面で開始します。 既定のスコープである **user.read** は既定で指定されます。これは、Microsoft Graph API 呼び出し時にご自分のプロファイル データを読み取るときに使用します。 Microsoft Graph API 呼び出しの URL は、既定で指定されます。 このどちらも必要に応じて変更できます。
+> このサンプル アプリは、**単一アカウント モード** 画面で開始します。 既定のスコープである **user.read** は既定で指定されます。これは、Microsoft Graph API 呼び出し時にご自分のプロファイル データを読み取るときに使用します。 Microsoft Graph API 呼び出しの URL は、既定で指定されます。 このどちらも必要に応じて変更できます。
 >
 > ![単一および複数アカウントの使用状況を示す MSAL サンプル アプリ](./media/quickstart-v2-android/quickstart-sample-app.png)
 >

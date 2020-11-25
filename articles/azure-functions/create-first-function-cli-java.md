@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
-ms.openlocfilehash: 449f0a59cc8428ce8e19535d5cf0417bf4cf7ad0
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 5c8993bdf892ceb7d9886d0d2b97063dedec720c
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424979"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635553"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に Java 関数を作成する
 
@@ -163,11 +163,23 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
 > [!TIP]
 > Windows ではなく Linux で実行される関数アプリを作成するには、pom.xml ファイルの `runtime.os` 要素を `windows` から `linux` に変更します。 従量課金プランでの Linux の実行は、[これらのリージョン](https://github.com/Azure/azure-functions-host/wiki/Linux-Consumption-Regions)でサポートされています。 Linux 上で実行されるアプリと Windows 上で実行されるアプリを同じリソース グループに含めることはできません。
 
-1. デプロイする前に、[az login](/cli/azure/authenticate-azure-cli) Azure CLI コマンドを使用して、対象の Azure サブスクリプションにサインインします。 
+1. デプロイする前に、Azure CLI または Azure PowerShell を使用して、Azure サブスクリプションにサインインします。 
 
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     ```azurecli
     az login
     ```
+
+    [az login](/cli/azure/reference-index#az-login) コマンドで Azure アカウントにサインインします。
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
+    ```azurepowershell
+    Connect-AzAccount
+    ```
+
+    [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットで Azure アカウントにサインインします。
+
+    ---
 
 1. 次のコマンドを使用して、対象のプロジェクトを新しい関数アプリにデプロイします。
 

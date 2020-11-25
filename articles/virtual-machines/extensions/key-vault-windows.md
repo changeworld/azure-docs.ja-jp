@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f06c5f2b2938505380ea668a7c4113015c852b1d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 7c5c536b95360c536998a5de87e9307918b15630
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913961"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685989"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows 用の Key Vault 仮想マシン拡張機能
 
@@ -27,7 +27,7 @@ Key Vault VM 拡張機能では、以下のバージョンの Windows がサポ�
 - Windows Server 2016
 - Windows Server 2012
 
-Key Vault VM 拡張機能は、Azure で使用するために、Windows Server 2019 Core インストールを使用してアップロードされ、特殊化されたイメージに変換されたカスタムローカル VM でもサポートされています。
+Key Vault VM 拡張機能は、Azure で使用するために、Windows Server 2019 Core インストールを使用してアップロードされ、特殊化されたイメージに変換されたカスタム ローカル VM でもサポートされています。
 
 ### <a name="supported-certificate-content-types"></a>サポートされている証明書の内容の種類
 
@@ -81,7 +81,7 @@ Key Vault VM 拡張機能は、Azure で使用するために、Windows Server 2
 > これは、`/secrets` のパスでは秘密キーを含む完全な証明書が返されるのに対し、`/certificates` のパスでは返されないためです。 証明書について詳しくは、次の記事をご覧ください: 「[Key Vault 証明書](../../key-vault/general/about-keys-secrets-certificates.md)」
 
 > [!IMPORTANT]
-> "authenticationSettings" プロパティは、 **ユーザー割り当て ID** を使用する VM の場合にのみ **必須** です。
+> "authenticationSettings" プロパティは、**ユーザー割り当て ID** を使用する VM の場合にのみ **必須** です。
 > Key Vault への認証に使用する ID を指定します。
 
 

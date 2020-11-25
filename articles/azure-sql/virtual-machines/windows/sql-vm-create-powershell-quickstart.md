@@ -13,12 +13,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fcb6d4da3d9b044cf722c6333f61a0f8d38f1956
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a4c8f0c636e254c4afc2d6cd83a744939096233a
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91598019"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553626"
 ---
 # <a name="quickstart-create-sql-server-on-a-windows-virtual-machine-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Windows 仮想マシンに SQL Server を作成する
 
@@ -150,9 +150,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="register-with-sql-vm-rp"></a>SQL VM RP への登録 
 
-ポータル統合および SQL VM の機能を利用するには、[SQL VM リソースプロバイダー](sql-vm-resource-provider-register.md)に登録する必要があります。
+ポータル統合および SQL VM の機能を利用するには、[SQL IaaS Agent 拡張機能](sql-agent-extension-manually-register-single-vm.md)に登録する必要があります。
 
-すべての機能を利用するには、フル モードでリソースプロバイダーに登録する必要があります。 ただし、そのようにすると SQL Server サービスが再起動されるので、最初は軽量モードで登録しておき、メンテナンス期間中にフル モードにアップグレードする方法が推奨されます。 
+すべての機能を利用するには、フル モードで拡張機能に登録する必要があります。 ただし、そのようにすると SQL Server サービスが再起動されるので、最初は軽量モードで登録しておき、メンテナンス期間中にフル モードにアップグレードする方法が推奨されます。 
 
 まず、SQL Server VM を軽量モードで登録します。 
 
@@ -171,7 +171,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 # Get the existing Compute VM
 $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
       
-# Register with SQL VM resource provider in full mode
+# Register with SQL IaaS Agent extension in full mode
 Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
 ```
 

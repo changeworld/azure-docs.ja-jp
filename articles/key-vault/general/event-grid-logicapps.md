@@ -11,11 +11,11 @@ ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 9c522d870a25b3df34ab6a0cf1c1e944a6462685
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284481"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013991"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Logic Apps を使用して Key Vault シークレットの状態変更に関するメールを受け取る
 
@@ -36,12 +36,12 @@ Azure Key Vault と Azure Event Grid の統合の概要については、「[Azu
 
 Azure Event Grid サブスクリプションを作成するには、次の手順に従います。
 
-1. Azure portal で、キー コンテナーに移動し、 **[イベント] > [はじめに]** を選択して **[Logic Apps]** をクリックします
+1. Azure portal で、キー コンテナーに移動し、**[イベント] > [はじめに]** を選択して **[Logic Apps]** をクリックします
 
     
     ![Key Vault - [イベント] ページ](../media/eventgrid-logicapps-kvsubs.png)
 
-1. **Logic Apps デザイナー** で接続を検証し、 **[続行]** をクリックします。 
+1. **Logic Apps デザイナー** で接続を検証し、**[続行]** をクリックします。 
  
     ![Logic Apps デザイナー - 接続](../media/eventgrid-logicappdesigner1.png)
 
@@ -53,35 +53,35 @@ Azure Event Grid サブスクリプションを作成するには、次の手順
     ![Logic Apps デザイナー - イベント ハンドラー](../media/eventgrid-logicappdesigner2.png)
 
 1. **[+ 新しいステップ]** を選択します。[アクションを選択してください] ウィンドウが開きます。
-1. **[電子メール]** を検索します。 電子メール プロバイダーに基づいて、一致するコネクタを検索して選択します。 このチュートリアルでは、 **Office 365 Outlook** を使います。 他のメール プロバイダーの手順も同様です。
+1. **[電子メール]** を検索します。 電子メール プロバイダーに基づいて、一致するコネクタを検索して選択します。 このチュートリアルでは、**Office 365 Outlook** を使います。 他のメール プロバイダーの手順も同様です。
 1. **[メールの送信 (V2)]** アクションを選択します。
 
    ![Logic Apps デザイナー - メールの送信](../media/eventgrid-logicappdesigner3.png)
 
 1. メール テンプレートを作成します。
     - **To:** 通知メールを受信するメール アドレスを入力します。 このチュートリアルでは、テストの目的でアクセスできる電子メール アカウントを使用します。
-    - **[件名]** と **[本文]** : メールのテキストを記述します。 イベント データに基づく動的なコンテンツを挿入するには、セレクター ツールから JSON プロパティを選択します。 イベントのデータを取得するには、`@{triggerBody()?['Data']}` を使用します。
+    - **[件名]** と **[本文]**: メールのテキストを記述します。 イベント データに基づく動的なコンテンツを挿入するには、セレクター ツールから JSON プロパティを選択します。 イベントのデータを取得するには、`@{triggerBody()?['Data']}` を使用します。
 
     メール テンプレートは次の例のようになります。
 
     ![Logic Apps デザイナー - メールの本文](../media/eventgrid-logicappdesigner4.png)
 
 8. **[名前を付けて保存]** をクリックします。
-9. 新しいロジック アプリの **[名前]** を入力し、 **[作成]** をクリックします。
+9. 新しいロジック アプリの **[名前]** を入力し、**[作成]** をクリックします。
     
     ![Logic Apps デザイナー - 作成](../media/eventgrid-logicappdesigner5.png)
 
 ## <a name="test-and-verify"></a>テストして検証する
 
-1.  Azure portal でキー コンテナーにアクセスし、 **[イベント] > [イベント サブスクリプション]** を選択します。  新しいサブスクリプションが作成されたことを確認します。
+1.  Azure portal でキー コンテナーにアクセスし、**[イベント] > [イベント サブスクリプション]** を選択します。  新しいサブスクリプションが作成されたことを確認します。
     
     ![Logic Apps デザイナー - テストと検証](../media/eventgrid-logicapps-kvnewsubs.png)
 
-1.  キー コンテナーにアクセスして **[シークレット]** を選択し、 **[Generate/Import]\(生成/インポート\)** を選択します。 テスト用に新しいシークレットを作成し、キーに名前を付け、残りのパラメーターは既定の設定のままにします。
+1.  キー コンテナーにアクセスして **[シークレット]** を選択し、**[Generate/Import]\(生成/インポート\)** を選択します。 テスト用に新しいシークレットを作成し、キーに名前を付け、残りのパラメーターは既定の設定のままにします。
 
     ![キー コンテナー - シークレットの作成](../media/eventgrid-logicapps-kv-create-secret.png)
 
-1. **[シークレットの作成]** 画面で、任意の名前と任意の値を指定し、 **[作成]** を選択します。
+1. **[シークレットの作成]** 画面で、任意の名前と任意の値を指定し、**[作成]** を選択します。
 
 シークレットが作成されると、構成したアドレスでメールを受信します。
 

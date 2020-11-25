@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) ロード バランサーで静的 IP アドレスを使用する方法を説明します｡
 services: container-service
 ms.topic: article
-ms.date: 03/09/2020
-ms.openlocfilehash: 3055b5d32055d0ed0e3870f16f6af95407a68cd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/14/2020
+ms.openlocfilehash: 22fd099633556fa9ddce575c2ac238b4950667cb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243938"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651891"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Azure Kubernetes Service (AKS) ロード バランサーで静的パブリック IP アドレスと DNS ラベルを使用する
 
@@ -22,7 +22,7 @@ ms.locfileid: "86243938"
 
 この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
-また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
 この記事では、*Standard* SKU IP を *Standard* SKU ロード バランサーと共に使用する方法について説明します。 詳しくは、「[Azure における IP アドレスの種類と割り当て方法][ip-sku]」をご覧ください。
 
@@ -73,6 +73,9 @@ az role assignment create \
 ```
 
 または、サービス プリンシパルの代わりに、システム割り当てマネージド ID をアクセス許可のために使用できます。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。
+
+> [!IMPORTANT]
+> 送信 IP をカスタマイズした場合は、クラスター ID に、送信パブリック IP とこの受信パブリック IP の両方に対するアクセス許可があることを確認します。
 
 静的パブリック IP アドレスを使用して *LoadBalancer* サービスを作成するには､YAML マニフェストに `loadBalancerIP` プロパティと静的パブリック IP の値を追加します｡ `load-balancer-service.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 以前の手順で作成した独自のパブリック IP アドレスを指定します。 次の例では、*myResourceGroup* という名前のリソース グループに注釈も設定されます。 次の独自のリソース グループ名を指定します。
 
@@ -130,7 +133,7 @@ Kubernetes のサービス マニフェストの *loadBalancerIP* プロパテ�
 kubectl describe service azure-load-balancer
 ```
 
-Kubernetes サービス リソースに関する情報が表示されます。 次の出力例の最後にある *イベント*は、*ユーザー指定の IP アドレスが見つからなかった*ことを示しています。 こうしたシナリオでは、ノードのリソース グループに静的パブリック IP アドレスを作成したこと、または Kubernetes のサービス マニフェストに指定されている IP アドレスが正しいことを確認します。
+Kubernetes サービス リソースに関する情報が表示されます。 次の出力例の最後にある *イベント* は、*ユーザー指定の IP アドレスが見つからなかった* ことを示しています。 こうしたシナリオでは、ノードのリソース グループに静的パブリック IP アドレスを作成したこと、または Kubernetes のサービス マニフェストに指定されている IP アドレスが正しいことを確認します。
 
 ```
 Name:                     azure-load-balancer

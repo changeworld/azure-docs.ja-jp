@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01751caba2b14f899588deba083a8c59c41d13ba
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 92ac495381f63e01d64c9a3d02777dca37ebb343
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964011"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837993"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Azure Active Directory 認証とは
 
 ID プラットフォームの主な機能の 1 つとして、ユーザーがデバイス、アプリケーション、またはサービスにサインインする際の資格情報の確認、つまり "*認証*" があります。 Azure Active Directory (Azure AD) での認証は、ユーザー名とパスワードの確認だけではありません。 セキュリティを強化し、ヘルプ デスクによるサポートのニーズを軽減するために、Azure AD の認証には、次の構成要素が含まれています。
 
 * セルフサービス パスワード リセット
-* Azure Multi-Factor Authentication
+* Azure AD Multi-Factor Authentication
 * パスワードの変更をオンプレミス環境に書き戻すためのハイブリッド統合
 * パスワード保護ポリシーをオンプレミス環境に適用するためのハイブリッド統合
 * パスワードレスの認証
@@ -32,7 +32,7 @@ ID プラットフォームの主な機能の 1 つとして、ユーザーが�
 
 Azure AD は、ユーザーの ID を保護し、サインイン エクスペリエンスを簡略化するのに役立ちます。 セルフサービス パスワード リセットなどの機能により、ユーザーは任意のデバイスから Web ブラウザーを使用して自分のパスワードを更新または変更することができます。 この機能が特に役立つのは、ユーザーがパスワードを忘れた場合やアカウントがロックされた場合です。 ヘルプデスクや管理者の対応を待つことなく、ユーザーは自分自身のブロックを解除し、作業を継続することができます。
 
-Azure Multi-Factor Authentication を使用すると、ユーザーは、サインイン時の認証形式を追加で選択できます (通話、モバイル アプリ通知など)。 この機能によって、ハードウェア トークンなど、単一の固定された形式のセカンダリ認証の必要性が低減します。 追加の認証形式をユーザーが有していなければ、別の方法を選んで作業を継続することができます。
+Azure AD Multi-Factor Authentication を使用すると、ユーザーは、サインイン時の認証形式を追加で選択できます (通話、モバイル アプリ通知など)。 この機能によって、ハードウェア トークンなど、単一の固定された形式のセカンダリ認証の必要性が低減します。 追加の認証形式をユーザーが有していなければ、別の方法を選んで作業を継続することができます。
 
 ![サインイン画面で使用されている認証方法](media/concept-authentication-methods/overview-login.png)
 
@@ -50,7 +50,7 @@ Azure Multi-Factor Authentication を使用すると、ユーザーは、サイ�
 
 ユーザーがセルフサービス パスワード リセットを使用して自分のパスワードを更新またはリセットすると、そのパスワードは、オンプレミスの Active Directory 環境に書き戻すこともできます。 パスワード ライトバックのおかげで、ユーザーは、更新された資格情報をすぐに、オンプレミスのデバイスやアプリケーションで使用できるようになります。
 
-## <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
+## <a name="azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication
 
 多要素認証は、携帯電話にコードを入力する、指紋スキャンを行うなど、サインイン プロセス中に追加で本人確認できるものをユーザーに求めるプロセスです。
 
@@ -58,13 +58,13 @@ Azure Multi-Factor Authentication を使用すると、ユーザーは、サイ�
 
 ![さまざまな形式の多要素認証の概念図](./media/concept-mfa-howitworks/methods.png)
 
-Azure Multi-Factor Authentication は、次の認証方法のうち 2 つ以上を要求することで機能します。
+Azure AD Multi-Factor Authentication は、次の認証方法のうち 2 つ以上を要求することで機能します。
 
 * ユーザーが知っているもの (通常はパスワード)。
 * ユーザーが持っているもの (携帯電話やハードウェア キーのように、簡単には複製できない信頼できるデバイスなど)。
 * ユーザー自身 (指紋スキャンや顔面認識などの生体認証)。
 
-オンボーディング エクスペリエンスを簡略化するために、セルフサービス パスワード リセットと Azure Multi-Factor Authentication の両方にユーザー自身が 1 回のステップで登録できるようになっています。 どのような形式のセカンダリ認証を使用できるかは、管理者が定義できます。 Azure Multi-Factor Authentication は、ユーザーがセルフサービス パスワード リセットを実行してさらにそのプロセスのセキュリティを高める際に義務付けることもできます。
+オンボーディング エクスペリエンスを簡略化するために、セルフサービス パスワード リセットと Azure AD Multi-Factor Authentication の両方にユーザー自身が 1 回のステップで登録できるようになっています。 どのような形式のセカンダリ認証を使用できるかは、管理者が定義できます。 Azure AD Multi-Factor Authentication は、ユーザーがセルフサービス パスワード リセットを実行する場合に、さらにそのプロセスのセキュリティを高めるために義務付けることもできます。
 
 ## <a name="password-protection"></a>パスワード保護
 
@@ -76,7 +76,7 @@ Azure Multi-Factor Authentication は、次の認証方法のうち 2 つ以上�
 
 ## <a name="passwordless-authentication"></a>パスワードレスの認証
 
-多くの環境が最終的に目指しているのは、サインイン イベントの過程でパスワードの使用をなくすことです。 Azure パスワード保護や Azure Multi-Factor Authentication などの機能はセキュリティの強化に役立ちますが、ユーザー名とパスワードは、流出やブルート フォース攻撃の標的になりうる脆弱な認証形式であることに変わりありません。
+多くの環境が最終的に目指しているのは、サインイン イベントの過程でパスワードの使用をなくすことです。 Azure パスワード保護や Azure AD Multi-Factor Authentication などの機能はセキュリティの強化に役立ちますが、ユーザー名とパスワードは、流出やブルート フォース攻撃の標的になりうる脆弱な認証形式であることに変わりありません。
 
 ![パスワードレスに至るまでの認証プロセスでのセキュリティと利便性の関係](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
@@ -86,11 +86,11 @@ Azure Multi-Factor Authentication は、次の認証方法のうち 2 つ以上�
 
 ## <a name="next-steps"></a>次のステップ
 
-最初に、[セルフサービス パスワード リセット (SSPR) のチュートリアル][tutorial-sspr]と [Azure Multi-Factor Authentication][tutorial-azure-mfa] に関するページを参照してください。
+最初に、[セルフサービス パスワード リセット (SSPR) のチュートリアル][tutorial-sspr]と [Azure AD Multi-Factor Authentication][tutorial-azure-mfa] に関するページを参照してください。
 
 セルフサービス パスワード リセットの概念の詳細については、[Azure AD のセルフサービス パスワード リセットのしくみ][concept-sspr]に関するページを参照してください。
 
-多要素認証の概念の詳細については、[Azure Multi-Factor Authentication のしくみ][concept-mfa]に関するページを参照してください。
+多要素認証の概念の詳細については、[Azure AD Multi-Factor Authentication のしくみ][concept-mfa]に関するページを参照してください。
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

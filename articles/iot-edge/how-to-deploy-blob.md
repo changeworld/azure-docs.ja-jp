@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
 ms.openlocfilehash: 12f0af5f051d02945eeb9b1f7d4bfc50ef98f281
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027637"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014688"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>IoT Edge モジュール上の Azure Blob Storage を自分のデバイスにデプロイする
 
@@ -40,17 +40,17 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
 
 ### <a name="configure-a-deployment-manifest"></a>配置マニフェストを構成する
 
-配置マニフェストは、デプロイするモジュール、モジュール間でのデータ フロー、およびモジュール ツインの目的のプロパティを記述した JSON ドキュメントです。 Azure portal には、配置マニフェストを作成する手順を示すウィザードがあります。 タブには次の3つの手順が構成されています: **モジュール** 、 **ルート** 、および **レビューと作成** を行います。
+配置マニフェストは、デプロイするモジュール、モジュール間でのデータ フロー、およびモジュール ツインの目的のプロパティを記述した JSON ドキュメントです。 Azure portal には、配置マニフェストを作成する手順を示すウィザードがあります。 タブには次の3つの手順が構成されています:**モジュール**、**ルート**、および **レビューと作成** を行います。
 
 #### <a name="add-modules"></a>モジュールを追加する
 
-1. ページの **[IoT Edge モジュール]** セクションで、 **[追加]** ドロップダウンをクリックし、 **IoT Edge モジュール** を選択して、 **[IoT Edge モジュールの追加]** ページを表示します。
+1. ページの **[IoT Edge モジュール]** セクションで、 **[追加]** ドロップダウンをクリックし、**IoT Edge モジュール** を選択して、 **[IoT Edge モジュールの追加]** ページを表示します。
 
 2. **モジュールの設定** タブで、モジュール名を入力し、コンテナー イメージ URI を指定します:
 
    例 :
   
-   - **IoT Edge モジュールの名前** : `azureblobstorageoniotedge`
+   - **IoT Edge モジュールの名前**: `azureblobstorageoniotedge`
    - **[イメージの URI]** : `mcr.microsoft.com/azure-blob-storage:latest`
 
    ![スクリーンショットには、[I o T Edge モジュールの追加] ページの [モジュールの設定] タブが示されています。](./media/how-to-deploy-blob/addmodule-tab1.png)
@@ -137,11 +137,11 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
 
 #### <a name="specify-routes"></a>ルートを指定する
 
-既定のルートをそのまま保持して、[ **次へ] を選択します:[確認と作成]** で、[レビュー] セクションに進みます。
+既定のルートをそのまま保持して、[**次へ] を選択します:[確認と作成]** で、[レビュー] セクションに進みます。
 
 #### <a name="review-deployment"></a>デプロイを確認する
 
-確認のセクションには、前述の 2 つのセクションの選択項目に基づいて作成された JSON 配置マニフェストが表示されます。 追加しなかった 2 つのモジュール ( **$edgeAgent** および **$edgeHub** ) もあります。 これらの 2 つのモジュールは、[IoT Edge ランタイム](iot-edge-runtime.md)を構成し、すべてのデプロイの既定値として使用されます。
+確認のセクションには、前述の 2 つのセクションの選択項目に基づいて作成された JSON 配置マニフェストが表示されます。 追加しなかった 2 つのモジュール ( **$edgeAgent** および **$edgeHub**) もあります。 これらの 2 つのモジュールは、[IoT Edge ランタイム](iot-edge-runtime.md)を構成し、すべてのデプロイの既定値として使用されます。
 
 デプロイ情報を確認し、 **[作成]** を選択します。
 
@@ -160,7 +160,7 @@ Azure IoT Edge では、エッジ ソリューションの開発に役立つ、V
 
 1. **[ビュー]**  >  **[コマンド パレット]** を選択します。
 
-1. コマンド パレットで、 **Azure IoT Edge:New IoT Edge solution** コマンドを入力して実行します。
+1. コマンド パレットで、**Azure IoT Edge:New IoT Edge solution** コマンドを入力して実行します。
 
    ![新しい IoT Edge ソリューションを実行する](./media/how-to-develop-csharp-module/new-solution.png)
 
@@ -176,9 +176,9 @@ Azure IoT Edge では、エッジ ソリューションの開発に役立つ、V
 
    Visual Studio Code は、指定された情報を取得し、IoT Edge ソリューションを作成して、それを新しいウィンドウに読み込みます。 ソリューション テンプレートによって、ご自分の BLOB ストレージ モジュール イメージを含む配置マニフェストのテンプレートが作成されますが、モジュールの作成オプションを構成する必要があります。
 
-1. 新しいソリューション ワークスペースで *deployment.template.json* を開いて、 **modules** セクションを見つけます。 次の構成の変更を行います。
+1. 新しいソリューション ワークスペースで *deployment.template.json* を開いて、**modules** セクションを見つけます。 次の構成の変更を行います。
 
-   1. このデプロイに必要ないときは、 **SimulatedTemperatureSensor** モジュールを削除します。
+   1. このデプロイに必要ないときは、**SimulatedTemperatureSensor** モジュールを削除します。
 
    1. 次のコードをコピーして、`createOptions` フィールドに貼り付けます。
 
@@ -247,7 +247,7 @@ Azure IoT Edge では、エッジ ソリューションの開発に役立つ、V
 
 1. **[deployment.template.json]** を右クリックして、 **[Generate IoT Edge deployment manifest]\(IoT Edge 配置マニフェストの生成\)** を選択します。
 
-1. Visual Studio Code では、 *deployment.template.json* で指定した情報が取得され、それを使用して新しい配置マニフェスト ファイルが作成されます。 配置マニフェストは、ご利用のソリューション ワークスペース内の新しい **config** フォルダーに作成されます。 そのファイルが用意されたら、「[Visual Studio Code から Azure IoT Edge モジュールをデプロイする](how-to-deploy-modules-vscode.md)」または [Azure CLI 2.0 を使用した Azure IoT Edge モジュールのデプロイ](how-to-deploy-modules-cli.md)に関するページの手順に従うことができます。
+1. Visual Studio Code では、*deployment.template.json* で指定した情報が取得され、それを使用して新しい配置マニフェスト ファイルが作成されます。 配置マニフェストは、ご利用のソリューション ワークスペース内の新しい **config** フォルダーに作成されます。 そのファイルが用意されたら、「[Visual Studio Code から Azure IoT Edge モジュールをデプロイする](how-to-deploy-modules-vscode.md)」または [Azure CLI 2.0 を使用した Azure IoT Edge モジュールのデプロイ](how-to-deploy-modules-cli.md)に関するページの手順に従うことができます。
 
 ## <a name="deploy-multiple-module-instances"></a>複数のモジュール インスタンスのデプロイ
 

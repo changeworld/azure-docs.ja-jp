@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 10/13/2020
+ms.date: 11/11/2020
 ms.author: sngun
-ms.openlocfilehash: c1af35b754362a230e77c7a3326de8ddb8a09d62
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a149f0b331a77462aa53b948fedf25dd1331969e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082999"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683626"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Azure Cosmos DB での Gremlin グラフのサポートと、TinkerPop 機能との互換性
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -32,6 +32,7 @@ Azure Cosmos DB Graph エンジンは [Apache TinkerPop](https://tinkerpop.apach
 | [Node.js](https://www.npmjs.com/package/gremlin) | [GitHub の Gremlin-JavaScript](https://github.com/apache/tinkerpop/tree/master/gremlin-javascript) | [Node.js を使用してグラフを作成する](create-graph-nodejs.md) | 3.3.4 以降 |
 | [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [GitHub の Gremlin-Python](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Python を使用してグラフを作成する](create-graph-python.md) | 3.2.7 |
 | [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Github の Gremlin-PHP](https://github.com/PommeVerte/gremlin-php) | [PHP を使用してグラフを作成する](create-graph-php.md) | 3.1.0 |
+| [Go Lang](https://github.com/supplyon/gremcos/) | [Go Lang](https://github.com/supplyon/gremcos/) | | このライブラリは、外部の共同作成者によって作成されています。 Azure Cosmos DB チームは、このライブラリのサポートやメンテナンスを一切提供していません。 |
 | [Gremlin コンソール](https://tinkerpop.apache.org/downloads.html) | [TinkerPop ドキュメント](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Gremlin コンソールを使用してグラフを作成する](create-graph-gremlin-console.md) | 3.2.0 以降 |
 
 ## <a name="supported-graph-objects"></a>サポートされているグラフ オブジェクト
@@ -51,7 +52,7 @@ TinkerPop は、さまざまなグラフ テクノロジに対応する標準で
 
 ## <a name="gremlin-wire-format"></a>Gremlin のワイヤ形式
 
-Azure Cosmos DB では、Gremlin の操作から結果を返すときに JSON 形式を使用します。 Azure Cosmos DB では現在、JSON 形式がサポートされています。 たとえば、次のスニペットは、Azure Cosmos DB から " *クライアントに返される* " JSON による頂点の表現を示しています。
+Azure Cosmos DB では、Gremlin の操作から結果を返すときに JSON 形式を使用します。 Azure Cosmos DB では現在、JSON 形式がサポートされています。 たとえば、次のスニペットは、Azure Cosmos DB から "*クライアントに返される*" JSON による頂点の表現を示しています。
 
 ```json
   {
@@ -168,7 +169,7 @@ Azure Cosmos DB によって提供された書き込みに最適化されたエ�
 
 ## <a name="behavior-differences"></a>動作の違い
 
-* Azure Cosmos DB Graph エンジンでは "* **幅優先** _" トラバーサルが実行されますが、TinkerPop Gremlin では深さ優先になります。 この動作により、Cosmos DB のように水平方向にスケーラブルなシステムでのパフォーマンスが向上します。
+* Azure Cosmos DB Graph エンジンでは "***幅優先** _" トラバーサルが実行されますが、TinkerPop Gremlin では深さ優先になります。 この動作により、Cosmos DB のように水平方向にスケーラブルなシステムでのパフォーマンスが向上します。
 
 ## <a name="unsupported-features"></a>サポートされていない機能
 
@@ -178,13 +179,13 @@ _ * **`property(set, 'xyz', 1)`** _ set カーディナリティは現在サポ�
 
 "_ * **`match()` ステップ** _" は、現在利用できません。 このステップでは、宣言型のクエリ機能が提供されます。
 
-頂点または辺の "_ * **プロパティとしてのオブジェクト** _" はサポートされていません。 プロパティには、プリミティブ型または配列のみを指定できます。
+頂点または辺の "_ ***プロパティとしてのオブジェクト** _" はサポートされていません。 プロパティには、プリミティブ型または配列のみを指定できます。
 
-"_ * **配列プロパティによる並べ替え** _" (`order().by(<array property>)`) はサポートされていません。 プリミティブ型での並べ替えのみがサポートされています。
+"_ ***配列プロパティによる並べ替え** _" (`order().by(<array property>)`) はサポートされていません。 プリミティブ型での並べ替えのみがサポートされています。
 
-"_ * **非プリミティブ JSON 型** _" はサポートされていません。 `string` 型、`number` 型、または `true`/`false` 型を使用してください。 `null` 値はサポートされていません。 
+"_ ***非プリミティブ JSON 型** _" はサポートされていません。 `string` 型、`number` 型、または `true`/`false` 型を使用してください。 `null` 値はサポートされていません。 
 
-_ * **GraphSONv3** _ シリアライザーは現在サポートされていません。 接続構成で `GraphSONv2` シリアライザー、リーダー、およびライター クラスを使用してください。 Azure Cosmos DB Gremlin API によって返される結果は、GraphSON 形式と同じ形式ではありません。 
+_ ***GraphSONv3** _ シリアライザーは現在サポートされていません。 接続構成で `GraphSONv2` シリアライザー、リーダー、およびライター クラスを使用してください。 Azure Cosmos DB Gremlin API によって返される結果は、GraphSON 形式と同じ形式ではありません。 
 
 _ **ラムダ式と関数** は現在サポートされていません。 これには、`.map{<expression>}`、`.by{<expression>}`、および `.filter{<expression>}` 関数が含まれます。 詳細について、および Gremlin の手順を使用してこれらを書き換える方法については、[ラムダ式に関する注意事項](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas)に関する記事を参照してください。
 
@@ -192,7 +193,7 @@ _ **ラムダ式と関数** は現在サポートされていません。 これ
 
 ## <a name="known-limitations"></a>既知の制限事項
 
-_ **トラバーサル中の `.V()` ステップによる Gremlin クエリのインデックス使用率** :現時点では、トラバーサルの最初の `.V()` 呼び出しのみによって、アタッチされているフィルターまたは述語を解決するために、インデックスが利用されます。 後続の呼び出しでは、インデックスが参照されないため、クエリの待機時間とコストが増加する可能性があります。
+_ **トラバーサル中の `.V()` ステップによる Gremlin クエリのインデックス使用率**:現時点では、トラバーサルの最初の `.V()` 呼び出しのみによって、アタッチされているフィルターまたは述語を解決するために、インデックスが利用されます。 後続の呼び出しでは、インデックスが参照されないため、クエリの待機時間とコストが増加する可能性があります。
     
     Assuming default indexing, a typical read Gremlin query that starts with the `.V()` step would use parameters in its attached filtering steps, such as `.has()` or `.where()` to optimize the cost and performance of the query. For example:
 

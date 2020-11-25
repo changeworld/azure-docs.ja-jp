@@ -4,12 +4,12 @@ description: クイック スタート:Azure Event Grid と Azure CLI を使用�
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e2c017b95493000b3c206aa7b2398bbf7ef464ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4de7aa1c111b5b21a27b155474ae10f78feba083
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87497343"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566318"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>クイック スタート:Azure CLI と Event Grid を使ってカスタム イベントを Azure Queue Storage にルーティングする
 
@@ -17,12 +17,11 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 Az
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Azure portal で Cloud Shell を使用する代わりに、ローカル コンピューターで Azure CLI または Azure PowerShell を使用している場合は、Azure CLI と Azure PowerShell が以下のバージョンであることを確認してください。 
+- この記事では、Azure CLI のバージョン 2.0.56 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
-- Azure CLI バージョン 2.0.56 以降。 Azure CLI の最新バージョンをインストールする手順については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。 
-- Azure PowerShell バージョン 1.1.0 以降。 [Azure のダウンロード - コマンド ライン ツール](https://azure.microsoft.com/downloads/)に関するページから Windows マシンに、Azure PowerShell の最新バージョンをダウンロードします。 
+- Azure portal で Cloud Shell を使用する代わりに、ローカル マシンで Azure PowerShell を使用している場合は、Azure PowerShell がバージョン 1.1.0 以降であることを確認してください。 [Azure のダウンロード - コマンド ライン ツール](https://azure.microsoft.com/downloads/)に関するページから Windows マシンに、Azure PowerShell の最新バージョンをダウンロードします。 
 
 この記事では、Azure CLI を使用するためのコマンドについて説明します。 
 

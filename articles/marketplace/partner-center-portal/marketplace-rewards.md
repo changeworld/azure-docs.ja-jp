@@ -8,12 +8,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 4d307b2a16262645919423ef89c0d87636639bf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b99ec4158b1df5ab558026c05b9ec1024fb0722e
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378714"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94742575"
 ---
 # <a name="marketplace-rewards"></a>Marketplace 報酬
 
@@ -21,7 +21,7 @@ Marketplace 報酬によって、認識アクティビティから始めて最�
 
 プログラムでは正のフィードバック ループが作成されます。成長の各段階でのベネフィットは、次の段階に進むのに役立ち、パートナーは、Microsoft の現場と協力し、コマーシャル マーケットプレースをプラットフォームとして利用することで Microsoft のチャネルを通して、Microsoft の顧客に対するビジネスを拡大できます。
 
-ベネフィットは、オファーが[リスト、試用版、トランザクション](../determine-your-listing-type.md#choose-a-listing-option)のいずれであるかによって異なります。
+ベネフィットは、オファーが[問い合わせ、無料試用版、トランザクション](../determine-your-listing-type.md) のいずれであるかによって異なります。
 
 パートナーがオファーを発行すると、資格に基づいて、報酬チームのメンバーから連絡があります。
 

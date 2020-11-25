@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 79fa480e0cca590446a0251f43c45b2e04c97cd5
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359342"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013158"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Smartsheet を構成する
 
@@ -91,13 +91,13 @@ Azure AD アプリケーション ギャラリーから Smartsheet を追加し�
 
 Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当て、ユーザーまたはグループの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、以下の[手順](../manage-apps/assign-user-or-group-access-portal.md)を使用して、ユーザーとグループをアプリケーションに割り当てることができます。 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)で説明されているスコープ フィルターを使用できます。 
 
-* Smartsheet にユーザーとグループを割り当てるときは、 **既定のアクセス** 以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](../develop/howto-add-app-roles-in-azure-ad-apps.md)してロールを追加することができます。 
+* Smartsheet にユーザーとグループを割り当てるときは、**既定のアクセス** 以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](../develop/howto-add-app-roles-in-azure-ad-apps.md)してロールを追加することができます。 
 
 * Smartsheet と Azure AD の間でユーザー ロールの割り当てを一致させるために、Smartsheet ユーザー一覧全体に設定されているものと同じロールの割り当てを利用することをお勧めします。 Smartsheet からこのユーザー一覧を取得するには、 **[Account Admin]\(アカウント管理\) > [User Management]\(ユーザー管理\) > [More Actions]\(その他の操作\) > [Download User List (csv)]\(ユーザー一覧のダウンロード (csv)\)** に移動します。
 
 * アプリの一部の機能にアクセスするには、Smartsheet でユーザーが複数のロールを持つ必要があります。 Smartsheet のユーザーの種類とアクセス許可の詳細については、「[User Types and Permissions (ユーザーの種類とアクセス許可)](https://help.smartsheet.com/learning-track/shared-users/user-types-and-permissions)」を参照してください。
 
-*  Smartsheet でユーザーに複数のロールを割り当てられている場合、ユーザーが Smartsheet オブジェクトへのアクセスを完全に失うことがないように、これらのロールの割り当てを Azure AD で確実に複製する **必要があります** 。 Smartsheet 内の一意の各ロールは、Azure AD 内で別のグループに割り当てる **必要があります** 。 次に、ユーザーを目的のロールに対応する各グループに追加する **必要があります** 。 
+*  Smartsheet でユーザーに複数のロールを割り当てられている場合、ユーザーが Smartsheet オブジェクトへのアクセスを完全に失うことがないように、これらのロールの割り当てを Azure AD で確実に複製する **必要があります**。 Smartsheet 内の一意の各ロールは、Azure AD 内で別のグループに割り当てる **必要があります**。 次に、ユーザーを目的のロールに対応する各グループに追加する **必要があります**。 
 
 * 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、これを制御するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)を指定できます。 
 

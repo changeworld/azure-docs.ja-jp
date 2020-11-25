@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: business-intelligence
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: c5c41b98d52a4b8182fb162c3bfa9a08c0df5e15
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: b72d083216b7cd0ae7a588bfd721d8981829bfc7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171849"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844369"
 ---
 # <a name="visualize-data-with-power-bi"></a>Power BI でデータを視覚化する
 
@@ -37,13 +37,9 @@ Power BI ワークスペースを Azure Synapse ワークスペースにリン�
 ### <a name="link-your-azure-synapse-workspace-to-your-new-power-bi-workspace"></a>Azure Synapse ワークスペースを新しい Power BI ワークスペースにリンクする
 
 1. Synapse Studio で、 **[管理]**  >  **[リンクされたサービス]** に移動します。
-1. **[新規]**  >  **[Power BI アカウントに接続する]** を選択して、次のフィールドを選択します。
-
-    |設定 | 推奨値 | 
-    |---|---|
-    |**名前**|**NYCTaxiWorkspace1**|
-    |**ワークスペース名**|**NYCTaxiWorkspace1**|
-
+1. **[新規]**  >  **[Power BI アカウントに接続する]** の順に選択します
+1. **[名前]** を **NYCTaxiWorkspace1** に設定します
+1. **[ワークスペース名]** を **NYCTaxiWorkspace1** に設定します
 1. **［作成］** を選択します
 
 ### <a name="create-a-power-bi-dataset-that-uses-data-in-your-azure-synapse-workspace"></a>Azure Synapse ワークスペース内のデータを使用する Power BI データセットを作成する
@@ -59,7 +55,7 @@ Power BI ワークスペースを Azure Synapse ワークスペースにリン�
 1. **[ナビゲーター]** ダイアログ ボックスが開いたら、**PassengerCountStats** テーブルをチェックし、 **[読み込み]** を選択します。
 1. **[接続の設定]** ダイアログ ボックスが表示されたら、 **[DirectQuery]**  >  **[OK]** をクリックします。
 1. 左側の **[レポート]** ボタンを選択します。
-1. レポートに**折れ線グラフ**を追加します。
+1. レポートに **折れ線グラフ** を追加します。
     1. **[PassengerCount]** 列を **[視覚化]**  >  **[軸]** にドラッグします。
     1. **SumTripDistance** 列と **AvgTripDistance** 列を **[視覚化]**  >  **[値]** にドラッグします。
 1. **[ホーム]** タブで **[発行]** を選択します。
@@ -70,7 +66,7 @@ Power BI ワークスペースを Azure Synapse ワークスペースにリン�
 
 ### <a name="configure-authentication-for-your-dataset"></a>データセットの認証を構成する
 
-1. [powerbi.microsoft.com](https://powerbi.microsoft.com/) を開き、**サインイン**します。
+1. [powerbi.microsoft.com](https://powerbi.microsoft.com/) を開き、**サインイン** します。
 1. 左側の **[ワークスペース]** で、**NYCTaxiWorkspace1** ワークスペースを選択します。
 1. ワークスペース内で、**Passenger Analysis** というデータセットと **Passenger Analysis** というレポートを探します。
 1. **PassengerAnalysis** データセットにマウス ポインターを合わせ、省略記号 (...) ボタンを選択して、 **[設定]** を選択します。
@@ -86,11 +82,7 @@ Power BI ワークスペースを Azure Synapse ワークスペースにリン�
     * **[NYCTaxiWorkspace1]**  >  **[Power BI レポート]** に、**PassengerAnalysis** という新しいレポートが表示されます。
 1. **PassengerAnalysis** レポートを選択します。 レポートが開き、Synapse Studio 内で直接レポートを編集することができます。
 
-## <a name="monitor-activities"></a>モニター活動
 
-1. Synapse Studio で **[監視]** ハブに移動します。
-1. この場所には、ワークスペースで発生したすべてのアクティビティの履歴と、現在アクティブになっているアクティビティが表示されます。
-1. **[パイプラインの実行]** 、 **[Apache Spark applications]\(Apache Spark アプリケーション\)** 、 **[SQL requests]\(SQL 要求\)** を調べ、ワークスペースで既に実行した内容を確認します。
 
 ## <a name="next-steps"></a>次のステップ
 

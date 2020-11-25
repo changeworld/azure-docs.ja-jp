@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ee3029de9826aee17dc76d0e69f08b3c1068423b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847154"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014503"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>VMware インフラストラクチャ上の VM テンプレートを使用して Azure に仮想マシンを作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "85847154"
 
 1. **[すべてのサービス]** を選択します。
 
-2. **CloudSimple 仮想マシン**を検索します。
+2. **CloudSimple 仮想マシン** を検索します。
 
 3. **[追加]** をクリックします。
 
@@ -86,7 +86,7 @@ ms.locfileid: "85847154"
 
 1. **[すべてのサービス]** を選択します。
 
-2. **CloudSimple 仮想マシン**を検索します。
+2. **CloudSimple 仮想マシン** を検索します。
 
 3. プライベート クラウドが作成された場所を選択します。
 

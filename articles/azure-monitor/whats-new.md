@@ -5,17 +5,72 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 07/08/2020
-ms.openlocfilehash: 6ed00931e8cca1febac0b9b72b53eeb7e81042ea
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.date: 11/11/2020
+ms.openlocfilehash: 18222573956f5ff3e9c617602902374b114328da
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94487994"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555619"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 
 この記事では、Azure Monitor に関して新たに執筆された記事または大幅に更新された記事を一覧で紹介しています。 毎月第 1 週目に更新され、前月から更新された記事が掲載されます。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="general"></a>全般
+- [Azure Monitor API の提供終了](platform/operationalinsights-api-retirement.md) - 新しい記事。
+
+### <a name="agents"></a>エージェント
+- [Azure Monitor によって監視される内容](monitor-reference.md) - エージェントに関するセクションを追加しました。
+
+### <a name="alerts"></a>警告
+- [Azure portal でのアクション グループの作成および管理](platform/action-groups.md) - サービス タグに関するセクションを追加しました。
+- [メトリック アラート用の Resource Manager テンプレート サンプル](samples/resource-manager-alerts-metric.md) - コンテンツの一致パラメーターとテストの場所を追加しました。
+- [Azure メトリック アラートのトラブルシューティング](platform/alerts-troubleshoot-metric.md) - ルールの構成に関するベスト プラクティスを追加しました。
+
+### <a name="application-insights"></a>Application Insights
+- [Application Insights JavaScript SDK の Angular プラグイン](app/javascript-angular-plugin.md) - 新しい記事。
+- [ASP.NET Core アプリケーション用の Azure Application Insights](app/asp-net-core.md) - ILogger ログに関する FAQ を追加しました。
+- [Azure Application Insights を使用して ASP.NET に監視を構成する](app/asp-net.md) - 記事を改訂しました。
+- [Azure Application Insights のログベースのメトリックと事前に集計されたメトリック](app/pre-aggregated-metrics-log-metrics.md) - 事前に集計されたメトリックを含むテーブルを追加しました。
+- [任意の Web サイトの可用性と応答性を監視する](app/monitor-web-app-availability.md) - 位置情報の作成タグに関するセクションを追加しました。
+- [任意の場所の Java アプリケーションを監視する - Azure Monitor Application Insights](app/java-standalone-config.md) - 構成例を追加しました。
+- [任意の場所の Java アプリケーションを監視する - Azure Monitor Application Insights](app/java-standalone-telemetry-processors.md) - 新しい記事。
+- [Azure Monitor でアプリケーション変更分析を使用して Web アプリの問題を見つける](app/change-analysis.md) - 仮想マシンとアクティビティ ログに関するセクションを追加しました。
+  
+### <a name="autoscale"></a>自動スケール
+- [Azure での自動スケーリングの使用](platform/autoscale-get-started.md) - 別のリージョンへの自動スケーリングの移動に関するセクションを追加しました。
+
+### <a name="containers"></a>コンテナー
+- [Azure Monitor for containers で PV の監視を構成する](insights/container-insights-persistent-volumes.md) - 新しい記事。
+- [Azure Monitor for containers エージェントを管理する方法](insights/container-insights-manage-agent.md) - Azure Arc 対応 Kubernetes クラスターのサポートを追加しました。
+- [Azure Monitor for containers のメトリック アラート](insights/container-insights-metric-alerts.md) - Azure Arc 対応 Kubernetes クラスターのサポートを追加しました。
+
+### <a name="insights-and-solutions"></a>分析情報とソリューション
+- [IT Service Management Connector - Azure Monitor のセキュア エクスポート](platform/it-service-management-connector-secure-webhook-connections.md) - ServiceNow に関するセクションを追加しました。
+
+### <a name="logs"></a>ログ
+- [ロジック アプリを使用して Log Analytics ワークスペースから Azure ストレージにデータをアーカイブする](platform/logs-export-logic-app.md) - 新しい記事。
+- [Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)](platform/logs-data-export.md) - イベント ハブを対象とした REST 要求のサンプル本文を追加しました。
+- [Azure Monitor ログで使用量とコストを管理する](platform/manage-cost-storage.md) - Azure Monitor ログと Azure Security Center の課金の関係に関する情報を追加しました。 ノードごとの価格レベルを使用する場合のノード数のクエリを追加しました。 
+- [Azure Monitor で Log Analytics ワークスペースの正常性を監視する](platform/monitor-workspace.md) - 新しい記事。
+- [Azure Data Explorer を使用して Azure Monitor のデータのクエリを実行する (プレビュー)](platform/azure-data-explorer-monitor-proxy.md) - 新しい記事。
+- [Azure Data Explorer を使用して Azure Monitor からエクスポートされたデータのクエリを実行する (プレビュー)](platform/azure-data-explorer-query-storage.md) - 新しい記事。
+
+### <a name="networks"></a>ネットワーク
+- [Azure Monitor for Networks プレビュー](insights/network-insights-overview.md) - トラブルシューティングのセクションを追加しました。 接続に関するセクションを追加しました。
+
+### <a name="platform-logs"></a>プラットフォーム ログ
+- [Azure アクティビティ ログのイベント スキーマ](platform/activity-log-schema.md) - 重大度レベルの説明を追加しました。
+
+### <a name="virtual-machines"></a>仮想マシン
+- [Azure Monitor for VMs での変更分析](insights/vminsights-change-analysis.md) - 新しい記事。
+- [Azure Monitor for VMs の有効化の概要](insights/vminsights-enable-overview.md) - サポートされているリージョンを追加しました。
+- [メトリックのために Azure Monitor for containers を更新する方法](insights/container-insights-update-metrics.md) - Azure Arc 対応 Kubernetes クラスターのサポートを追加しました。
+
+
 
 ## <a name="september-2020"></a>2020 年 9 月
 

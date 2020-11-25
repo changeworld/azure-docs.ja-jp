@@ -1,5 +1,5 @@
 ---
-title: Dv2 および Dsv2 シリーズ - Azure Virtual Machines
+title: Dv2 および DSv2 シリーズ - Azure Virtual Machines
 description: Dv2 と Dsv2 シリーズ VM の仕様。
 author: joelpelley
 ms.service: virtual-machines
@@ -7,16 +7,16 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 785e72a47d68bf368e160b1f3bf2a6d762d1f100
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: b1bd2e0360b064a71dd91241d40513d8c37447bb
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91649696"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635638"
 ---
 # <a name="dv2-and-dsv2-series"></a>Dv2 および DSv2 シリーズ
 
-オリジナルの D シリーズの後継である Dv2 および Dsv2 シリーズは、より強力な CPU と最適な CPU 対メモリ構成を備えているため、ほとんどの運用環境のワークロードに適しています。 Dv2 シリーズは D シリーズよりも、およそ 35% 高速です。 Dv2 シリーズは、Intel Turbo Boost Technology 2.0 を備えた Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell)、または Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) プロセッサ上で実行されます。 Dv2 シリーズのメモリ構成とディスク構成は D シリーズと同じです。
+オリジナルの D シリーズの後継である Dv2 および DSv2 シリーズは、より処理能力の高い CPU と最適な CPU 対メモリ構成を備えているため、ほとんどの運用環境のワークロードに適しています。 Dv2 シリーズは D シリーズよりも、およそ 35% 高速です。 Dv2 シリーズは、Intel Turbo Boost Technology 2.0 を備えた Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell)、または Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) プロセッサ上で実行されます。 Dv2 シリーズのメモリ構成とディスク構成は D シリーズと同じです。
 
 ## <a name="dv2-series"></a>Dv2 シリーズ
 

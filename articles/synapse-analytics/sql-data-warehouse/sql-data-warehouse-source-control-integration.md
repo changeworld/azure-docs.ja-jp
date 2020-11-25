@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 4751f3cf213098873b0c53b15df82f57d155787a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 766837cacb4ef2acf874c2872b347b6d35633faa
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313301"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700999"
 ---
 # <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールを対象としたソース管理の統合
 
@@ -53,7 +53,7 @@ Visual Studio を使用したプロジェクトの接続の詳細については
 
 ## <a name="create-and-connect-your-project"></a>プロジェクトを作成して接続する
 
-1. Visual Studio で、 **ローカルの複製されたリポジトリ** に、ディレクトリとローカル Git リポジトリの両方を含む新しい SQL Server データベース プロジェクトを作成します。
+1. Visual Studio で、**ローカルの複製されたリポジトリ** に、ディレクトリとローカル Git リポジトリの両方を含む新しい SQL Server データベース プロジェクトを作成します。
 
    ![新しいプロジェクトの作成](./media/sql-data-warehouse-source-control-integration/5-create-new-project.png "新しいプロジェクトの作成")  
 
@@ -85,7 +85,7 @@ Visual Studio を使用したプロジェクトの接続の詳細については
 
    ![確認](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "変更を確認する")
 
-4. ( **省略可能** ) SSDT を使用し、Schema Compare を使用してターゲット データ ウェアハウスへの変更を更新し、Azure Repo リポジトリおよびローカル リポジトリ内のオブジェクト定義に確実にデータ ウェアハウスが反映されるようにします。
+4. (**省略可能**) SSDT を使用し、Schema Compare を使用してターゲット データ ウェアハウスへの変更を更新し、Azure Repo リポジトリおよびローカル リポジトリ内のオブジェクト定義に確実にデータ ウェアハウスが反映されるようにします。
 
 ## <a name="next-steps"></a>次のステップ
 

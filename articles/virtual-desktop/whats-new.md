@@ -3,17 +3,17 @@ title: Windows Virtual Desktop の最新情報 - Azure
 description: Windows Virtual Desktop の新機能と製品の更新プログラム。
 author: Heidilohr
 ms.topic: overview
-ms.date: 10/01/2020
+ms.date: 11/11/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: 0191d6ad74a9b6349f5d1724f9483607dce2d926
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c82312b40955b392243bf616ee991c0108a13fb5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91630016"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537392"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows Virtual Desktop の最新情報
 
@@ -25,6 +25,48 @@ Windows Virtual Desktop は定期的に更新されます。 この記事では�
 - バグの修正
 
 この記事は毎月更新されます。 こちらを頻繁に確認して、新しい更新プログラムに関する最新情報を入手してください。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+2020 年 10 月における変更点は次のとおりです。
+
+### <a name="improved-performance"></a>パフォーマンスの向上
+
+- 次の Azure 地域での接続の待ち時間を短縮することで、パフォーマンスを最適化しました。
+    - スイス
+    - カナダ
+
+[エクスペリエンス予測ツール](https://azure.microsoft.com/services/virtual-desktop/assessment/)を使用して、これらの地域のユーザー エクスペリエンス品質を見積もることができるようになりました。
+
+### <a name="azure-government-cloud-availability"></a>Azure Government クラウドの提供
+
+Azure Government クラウドの一般提供が開始されました。 詳細については、[ブログ記事](https://azure.microsoft.com/updates/windows-virtual-desktop-is-now-generally-available-in-the-azure-government-cloud/)をご覧ください。
+
+### <a name="windows-virtual-desktop-azure-portal-updates"></a>Windows Virtual Desktop Azure portal の更新
+
+Windows Virtual Desktop Azure portal が更新されました。
+
+- ユーザーが [セッション] タブを開くことができなくなる resourceID エラーを修正しました。
+- [セッション ホスト] タブの UI を合理化しました。
+- RDP のプロパティの [既定値]、[ユーザビリティ]、[既定値に戻す] の各設定を修正しました。
+- すべてのタブで "削除" 機能に一貫性を持たせました。
+- ポータルで、"アプリの追加" ワークフローのアプリ名が検証されるようになりました。
+- セッション ホストのエクスポート データが列に配置されない問題を修正しました。
+- ポータルでユーザー セッションを取得できない問題を修正しました。
+- 仮想マシンが別のリソース グループに作成されたときに発生するセッション ホストの取得の問題を修正しました。
+- アクティブなセッションと切断されたセッションの両方を一覧表示するように [セッション ホスト] タブを更新しました。
+- [アプリケーション] タブにページが含まれるようになりました。
+- [アプリケーションの一覧] タブに、"コマンド ラインが必要" というテキストが正しく表示されない問題を修正しました。
+- ドイツ語版の Shared Image Gallery を使用しているときに、ポータルでホスト プールまたは仮想マシンをデプロイできない問題を修正しました。
+
+### <a name="client-updates-for-october-2020"></a>2020 年 10 月のクライアント更新
+
+クライアントの新しいバージョンがリリースされました。 詳細については、次の記事を参照してください。
+
+- [Windows](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)
+- [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
+
+他のクライアントの詳細については、「[クライアント更新](#client-updates)」をご覧ください。
 
 ## <a name="september-2020"></a>2020 年 9 月
 
@@ -68,7 +110,7 @@ Windows Virtual Desktop は定期的に更新されます。 この記事では�
 
 - Azure Advisor が Windows Virtual Desktop の一部になりました。 Azure portal から Windows Virtual Desktop にアクセスすると、お使いの Windows Virtual Desktop 環境を最適化するための推奨事項を確認できます。 [Azure Advisor](azure-advisor.md) の詳細情報。
 
-- Azure CLI で Windows Virtual Desktop (`az desktopvirtualization`) がサポートされ、Windows Virtual Desktop のデプロイを自動化できるようになりました。 拡張コマンドの一覧については、「[desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest)」をご覧ください。
+- Azure CLI で Windows Virtual Desktop (`az desktopvirtualization`) がサポートされ、Windows Virtual Desktop のデプロイを自動化できるようになりました。 拡張コマンドの一覧については、「[desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest&preserve-view=true)」をご覧ください。
 
 - Windows Virtual Desktop の Azure Resource Manager インターフェイスとの完全な互換性が確保されるようにデプロイ テンプレートが更新されました。 このテンプレートは [GitHub](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates) で見つけることができます。
 
@@ -140,7 +182,7 @@ Windows Virtual Desktop が Azure Resource Manager と統合されました。 �
 
 このモジュールをインストールするには、「[Windows Virtual Desktop 用 PowerShell モジュールを設定する](powershell-module.md)」の手順に従ってください。
 
-また、使用可能なコマンドの一覧は、[AzWvd PowerShell リファレンス](/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization)で確認できます。
+また、使用可能なコマンドの一覧は、[AzWvd PowerShell リファレンス](/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization&preserve-view=true)で確認できます。
 
 新機能の詳細については、[こちらのブログ記事](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245)を確認してください。
 

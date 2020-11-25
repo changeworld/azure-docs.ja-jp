@@ -1,6 +1,6 @@
 ---
-title: コピー アクティビティを使用して SQL プールにデータを読み込むクイックスタート
-description: Azure Synapse Analytics を使用して SQL プールにデータを読み込む
+title: 'クイックスタート: コピー アクティビティを使用してデータを専用 SQL プールに読み込む'
+description: Azure Synapse Analytics のパイプライン コピー アクティビティを使用して、データを専用の SQL プールに読み込みます。
 services: synapse-analytics
 ms.author: jingwang
 author: linda33wj
@@ -10,32 +10,32 @@ ms.service: synapse-analytics
 ms.topic: quickstart
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 12b5530ccf154220b11f9d1286d629caf2209475
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 542fde3ac951bf60d999361dc114491515fb9528
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280797"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94735247"
 ---
-# <a name="quickstart-load-data-into-sql-pool-using-copy-activity"></a>クイックスタート: コピー アクティビティを使用して SQL プールにデータを読み込む
+# <a name="quickstart-load-data-into-dedicated-sql-pool-using-the-copy-activity"></a>クイックスタート: コピー アクティビティを使用してデータを専用 SQL プールに読み込む
 
-Azure Synapse Analytics には、データの取り込み、変換、モデル化、分析に役立つさまざまな分析エンジンが用意されています。 SQL プールには、T-SQL ベースのコンピューティングとストレージの機能が用意されています。 お使いの Synapse ワークスペースに SQL プールを作成した後、データを読み込み、モデル化し、処理し、提供して、分析情報を迅速に得ることができます。
+Azure Synapse Analytics には、データの取り込み、変換、モデル化、分析に役立つさまざまな分析エンジンが用意されています。 専用 SQL プールには、T-SQL ベースのコンピューティングとストレージの機能が用意されています。 お使いの Synapse ワークスペースに専用 SQL プールを作成した後、データを読み込み、モデル化し、処理し、提供して、分析情報を迅速に得ることができます。
 
-このクイックスタートでは、" *Azure SQL Database から Azure Synapse Analytics にデータを読み込む* " 方法について説明します。 その他の種類のデータ ストアからデータをコピーする場合も、同様の手順で実行できます。 また、他のソースとシンクとの間で行われるデータのコピーにも同様のフローが適用されます。
+このクイックスタートでは、"*Azure SQL Database から Azure Synapse Analytics にデータを読み込む*" 方法について説明します。 その他の種類のデータ ストアからデータをコピーする場合も、同様の手順で実行できます。 この同様のフローが、他のソースとシンクのデータのコピーにも適用されます。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 * Azure Synapse ワークスペース:「[クイックスタート: Synapse ワークスペースを作成する](quickstart-create-workspace.md)」の手順に従い、Azure portal を使用して Synapse ワークスペースを作成します。
 * Azure SQL Database:このチュートリアルでは、Azure SQL Database 内に Adventure Works LT サンプル データセットからのデータをコピーします。 SQL Database 内にこのサンプル データベースを作成するには、[Azure SQL Database でのサンプル データベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事の手順に従います。 同様の手順に従うことによって、その他のデータ ストアも使用できます。
-* Azure ストレージ アカウント:Azure Storage は、コピー操作の " *ステージング* " 領域として使用されます。 Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」の手順をご覧ください。
-* Azure Synapse Analytics:SQL プールを "シンク" データ ストアとして使用します。 Azure Synapse Analytics インスタンスをお持ちでない場合、SQL プールを作成する手順については、[SQL プールの作成](quickstart-create-sql-pool-portal.md)に関するページを参照してください。
+* Azure ストレージ アカウント:Azure Storage は、コピー操作の "*ステージング*" 領域として使用されます。 Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」の手順をご覧ください。
+* Azure Synapse Analytics:専用 SQL プールを "シンク" データ ストアとして使用します。 Azure Synapse Analytics インスタンスをお持ちでない場合、[専用 SQL プールの作成](quickstart-create-sql-pool-portal.md)に関するページでその作成手順を参照してください。
 
 ### <a name="navigate-to-the-synapse-studio"></a>Synapse Studio に移動する
 
-Azure Synapse ワークスペースが作成された後、Synapse Studio を開く方法は 2 つあります。
+Synapse ワークスペースが作成された後、Synapse Studio を開くには、次の 2 つの方法があります。
 
-* [Azure portal](https://ms.portal.azure.com/#home) で Synapse ワークスペースを開きます。 [概要] セクションの上部にある **[Synapse Studio の起動]** を選択します。
+* [Azure portal](https://ms.portal.azure.com/#home) で Synapse ワークスペースを開きます。 [はじめに] の下の [Synapse Studio を開く] カードで、 **[開く]** を選択します。
 * [Azure Synapse Analytics](https://web.azuresynapse.net/) を開き、ワークスペースにサインインします。
 
 このクイックスタートでは、例として "adftest2020" という名前のワークスペースを使用します。 自動的に Synapse Studio のホーム ページに移動します。
@@ -44,7 +44,7 @@ Azure Synapse ワークスペースが作成された後、Synapse Studio を開
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 
-Azure Synapse Analytics で、リンクされたサービスとは、他のサービスへの接続情報を定義した場所です。 このセクションでは、2 種類のリンクされたサービスを作成します。Azure SQL Database のリンクされたサービスと Azure Data Lake Storage Gen2 のリンクされたサービスです。
+Azure Synapse Analytics で、リンクされたサービスとは、他のサービスへの接続情報を定義した場所です。 このセクションでは、2 種類のリンクされたサービスを作成します。Azure SQL Database のリンクされたサービスと Azure Data Lake Storage Gen2 (ADLS Gen2) のリンクされたサービスです。
 
 1. Synapse Studio のホーム ページで、左側のナビゲーションから **[管理]** タブを選択します。
 1. [外部接続] で、 [リンクされたサービス] を選択します。
@@ -66,7 +66,7 @@ Azure Synapse Analytics で、リンクされたサービスとは、他のサ�
  
 ## <a name="create-a-pipeline"></a>パイプラインを作成する
 
-パイプラインには、一連のアクティビティを実行するための論理フローが含まれています。 このセクションでは、Azure SQL Database から SQL プールにデータを取り込むコピー アクティビティを含んだパイプラインを作成します。
+パイプラインには、一連のアクティビティを実行するための論理フローが含まれています。 このセクションでは、Azure SQL Database から専用 SQL プールにデータを取り込むコピー アクティビティを含んだパイプラインを作成します。
 
 1. **[統合]** タブに移動します。パイプライン ヘッダーの横にあるプラス符号のアイコンを選択し、[パイプライン] を選択します。
 
@@ -83,8 +83,8 @@ Azure Synapse Analytics で、リンクされたサービスとは、他のサ�
 
    ![ソース データセットのプロパティを設定する](media/quickstart-copy-activity-load-sql-pool/source-dataset-properties.png)
 1. 完了したら、 **[OK]** を選択します。
-1. [コピー アクティビティ] を選択し、[シンク] タブに移動します。 **[新規]** を選択して、新しいシンク データセットを作成します。
-1. データ ストアとして **[SQL Analytics pool]\(SQL Analytics プール\)** を選択し、 **[続行]** を選択します。
+1. コピー アクティビティを選択し、[シンク] タブに移動します。 **[新規]** を選択して、新しいシンク データセットを作成します。
+1. データ ストアとして **[Azure Synapse dedicated SQL pool]\(Azure Synapse 専用 SQL プール\)** を選択し、 **[続行]** を選択します。
 1. **[プロパティの設定]** ペインで、前の手順で作成した SQL Analytics プールを選択します。 既存のテーブルに書き込む場合は、 *[テーブル名]* のドロップダウンからテーブルを選択します。 それ以外の場合は、[編集] チェック ボックスをオンにし、新しいテーブル名を入力します。 完了したら、 **[OK]** を選択します。
 1. シンク データセットの設定について、[テーブル オプション] フィールドで **[テーブルの自動作成]** を有効にします。
 
@@ -122,7 +122,7 @@ Azure Synapse Analytics で、リンクされたサービスとは、他のサ�
    ![アクティビティの詳細](media/quickstart-copy-activity-load-sql-pool/activity-details.png)
 
 1. パイプラインの実行ビューに戻るには、上部の **[すべてのパイプラインの実行]** リンクを選択します。 **[最新の情報に更新]** を選択して、一覧を更新します。
-1. データが SQL プールに正しく書き込まれていることを確認します。
+1. データが専用 SQL プールに正しく書き込まれていることを確認します。
 
 
 ## <a name="next-steps"></a>次のステップ

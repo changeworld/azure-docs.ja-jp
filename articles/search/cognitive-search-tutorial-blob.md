@@ -7,28 +7,34 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 07/15/2020
-ms.openlocfilehash: 84defa0704c44bb0ed4564195725f7dd1c42312c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 11/17/2020
+ms.openlocfilehash: 21f0d141567f17c470732088c6a93a2ae7ed3c67
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788062"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738052"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル:REST と AI を使用して Azure Blob から検索可能なコンテンツを生成する
 
-Azure Blob Storage に非構造化テキストまたは画像がある場合、[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)で情報を抽出し、フルテキスト検索やナレッジ マイニングのシナリオに役立つ新しいコンテンツを作成することができます。 パイプラインでは画像を処理できますが、この REST チュートリアルではテキストに焦点を当て、言語検出と自然言語処理を適用して、クエリ、ファセット、フィルターで活用できる新しいフィールドを作成します。
+Azure BLOB ストレージに非構造化テキストまたは画像がある場合、[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)で情報を抽出し、フルテキスト検索やナレッジ マイニングのシナリオに役立つ BLOB から新しいコンテンツを作成することができます。 パイプラインでは画像を処理できますが、この REST チュートリアルではテキストに焦点を当て、言語検出と自然言語処理を適用して、クエリ、ファセット、フィルターで活用できる新しいフィールドを作成します。
 
 このチュートリアルでは、Postman と [Search REST API](/rest/api/searchservice/) を使用して次のタスクを実行します。
 
 > [!div class="checklist"]
-> * まずは、Azure Blob Storage で、PDF、HTML、DOCX、PPTX などのドキュメント全体 (非構造化テキスト) から始める。
-> * テキストの抽出、言語の検出、エンティティの認識、キー フレーズの検出を行うパイプラインを定義する。
-> * 出力 (生コンテンツと、パイプラインで生成された名前と値のペア) を格納するためのインデックスを定義する。
-> * 変換と分析を開始し、インデックスを作成して読み込むパイプラインを実行する。
+> * サービスと Postman コレクションを設定する。
+> * テキストの抽出、言語の検出、エンティティの認識、およびキー フレーズの検出を行うエンリッチメント パイプラインを作成する。
+> * 出力 (生コンテンツと、パイプラインで生成された名前と値のペア) を格納するためのインデックスを作成する。
+> * 変換と分析、およびインデックスへのデータの読み込みを行うパイプラインを実行する。
 > * フルテキスト検索と豊富なクエリ構文を使用して結果を探索する。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+
+## <a name="overview"></a>概要
+
+このチュートリアルでは、C# および Azure Cognitive Search REST API を使用して、データ ソース、インデックス、インデクサー、およびスキルセットを作成します。 まず、Azure Blob Storage 内の PDF、HTML、DOCX、PPTX などのドキュメント全体 (非構造化テキスト) から始めます。次に、スキルセットを通じてそれらを実行して、コンテンツ ファイル内のエンティティ、キー フレーズ、およびその他のテキストを抽出します。
+
+このスキルセットでは、Cognitive Services APIs に基づく組み込みのスキルを使用します。 パイプラインのステップには、テキストの言語検出、キー フレーズの抽出、エンティティ認識 (組織) が含まれます。 新しい情報は、クエリ、ファセット、およびフィルターで使用できる新しいフィールドに格納されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,6 +50,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. こちらの [OneDrive フォルダー](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)を開き、左上隅の **[ダウンロード]** をクリックして、コンピューターにファイルをコピーします。 
 
 1. ZIP ファイルを右クリックし、 **[すべて展開]** を選択します。 さまざまな種類のファイルが 14 個あります。 この演習では、7 個を使用します。
+
+オプションとして、このチュートリアルのソース コードと Postman コレクション ファイルもダウンロードできます。 ソース コードは、[https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Tutorial](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Tutorial) にあります。
 
 ## <a name="1---create-services"></a>1 - サービスを作成する
 
@@ -61,13 +69,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [基本] タブでは、次の項目が必要です。 それ以外のすべてのものには、既定値をそのまま使用します。
 
-   + **リソース グループ** 。 既存のものを選択するか、新しいものを作成します。ただし、すべてのサービスに同じグループを使用して、それらをまとめて管理できるようにします。
+   + **リソース グループ**。 既存のものを選択するか、新しいものを作成します。ただし、すべてのサービスに同じグループを使用して、それらをまとめて管理できるようにします。
 
-   + **ストレージ アカウント名** 。 同じ種類のリソースが複数存在することになると考えられる場合は、名前を使用して、種類とリージョンを基に区別が付くようにします (たとえば、 *blobstoragewestus* )。 
+   + **ストレージ アカウント名**。 同じ種類のリソースが複数存在することになると考えられる場合は、名前を使用して、種類とリージョンを基に区別が付くようにします (たとえば、*blobstoragewestus*)。 
 
-   + **場所** 。 可能であれば、Azure Cognitive Search と Cognitive Services に使用するのと同じ場所を選択します。 1 つの場所であれば、帯域幅の料金がかかりません。
+   + **場所**。 可能であれば、Azure Cognitive Search と Cognitive Services に使用するのと同じ場所を選択します。 1 つの場所であれば、帯域幅の料金がかかりません。
 
-   + **アカウントの種類** 。 既定値の *[StorageV2 (general purpose v2)]\(StorageV2 (汎用 v2)\)* を選択します。
+   + **アカウントの種類**。 既定値の *[StorageV2 (general purpose v2)]\(StorageV2 (汎用 v2)\)* を選択します。
 
 1. **[確認および作成]** をクリックしてサービスを作成します。
 
@@ -75,7 +83,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[BLOB]** サービスをクリックします。
 
-1. **[+ コンテナー]** をクリックしてコンテナーを作成し、 *cog-search-demo* という名前を付けます。
+1. **[+ コンテナー]** をクリックしてコンテナーを作成し、*cog-search-demo* という名前を付けます。
 
 1. *[cog-search-demo]* を選択し、 **[アップロード]** をクリックして、ダウンロード ファイルを保存したフォルダーを開きます。 画像以外のすべてのファイルを選択します。 7 個のファイルがあるはずです。 **[OK]** をクリックしてアップロードします。
 
@@ -107,7 +115,7 @@ AI エンリッチメントは、自然言語と画像の処理のための Text
 
 Azure Blob Storage と同様に、アクセス キーを収集してください。 さらに、要求の構築を始めるときに、各要求の認証に使用されるエンドポイントと管理者 API キーを指定する必要があります。
 
-### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Azure Cognitive Search のための管理者 API キーと URL を取得する
+### <a name="copy-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Azure Cognitive Search のための管理者 API キーと URL をコピーする
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、自分の検索サービスの **[概要]** ページで、自分の検索サービスの名前を確認します。 エンドポイント URL を見ることで、自分のサービス名を確かめることができます。 エンドポイント URL が `https://mydemo.search.windows.net` だったら、自分のサービス名は `mydemo` になります。
 
@@ -121,17 +129,17 @@ Azure Blob Storage と同様に、アクセス キーを収集してください
 
 ## <a name="2---set-up-postman"></a>2 - Postman を設定する
 
-Postman を開始し、HTTP 要求を設定します。 このツールに慣れていない場合は、[Postman を使用して Azure Cognitive Search REST API を調べる方法](search-get-started-postman.md)に関するページを参照してください。
+Postman を開始し、HTTP 要求を設定します。 このツールに慣れていない場合は、[Azure Cognitive Search REST API を調べる方法](search-get-started-rest.md)に関するページを参照してください。
 
-このチュートリアルで使用した要求メソッドは **POST** 、 **PUT** 、 **GET** です。 これらのメソッドを使用して、検索サービスに対して 4 つの API 呼び出しを行い、データ ソース、スキルセット、インデックス、およびインデクサーを作成します。
+このチュートリアルで使用した要求メソッドは **POST**、**PUT**、**GET** です。 これらのメソッドを使用して、検索サービスに対して 4 つの API 呼び出しを行い、データ ソース、スキルセット、インデックス、およびインデクサーを作成します。
 
 ヘッダーで "Content-type" を `application/json` に設定し、`api-key` に自分の Azure Cognitive Search サービスの管理者 API キーを設定します。 ヘッダーを設定したら、この演習の各要求でそれらを使用できます。
 
-  ![Postman の要求 URL とヘッダー](media/search-get-started-postman/postman-url.png "Postman の要求 URL とヘッダー")
+  ![Postman の要求 URL とヘッダー](media/search-get-started-rest/postman-url.png "Postman の要求 URL とヘッダー")
 
 ## <a name="3---create-the-pipeline"></a>3 - パイプラインを作成する
 
-Azure Cognitive Search では、AI 処理はインデックス作成 (またはデータ インジェスト) 中に行われます。 チュートリアルのこの部分では、データ ソース、インデックス定義、スキルセット、インデクサーという 4 つのオブジェクトを作成します。 
+Azure Cognitive Search では、エンリッチメントはインデックス作成 (またはデータ インジェスト) 中に行われます。 チュートリアルのこの部分では、データ ソース、インデックス定義、スキルセット、インデクサーという 4 つのオブジェクトを作成します。 
 
 ### <a name="step-1-create-a-data-source"></a>手順 1:データ ソースを作成する
 
@@ -350,7 +358,7 @@ Azure Cognitive Search では、AI 処理はインデックス作成 (または�
 
     ```json
     {
-      "name":"cog-search-demo-idxr",    
+      "name":"cog-search-demo-idxr",
       "dataSourceName" : "cog-search-demo-ds",
       "targetIndexName" : "cog-search-demo-idx",
       "skillsetName" : "cog-search-demo-ss",
@@ -437,7 +445,7 @@ Azure Cognitive Search では、AI 処理はインデックス作成 (または�
 
 1. 応答を調べて、インデクサーが実行されているかどうかを確認するか、エラーと警告の情報を確認します。  
 
-Free レベルを使用している場合は、次のメッセージが表示されます: "Could not extract content or metadata from your document. Truncated extracted text to '32768' characters." (ドキュメントからコンテンツまたはメタデータを抽出できませんでした。抽出されたテキストが '32768' 文字に切り詰められました。) このメッセージが表示されるのは、Free レベルでの BLOB のインデックス作成には、[文字の抽出に 32K の制限](search-limits-quotas-capacity.md#indexer-limits)があるためです。 より上位のレベルでは、このデータ セットに対してこのメッセージは表示されません。 
+Free レベルを使用している場合は、次のメッセージが表示されます: "Could not extract content or metadata from your document.  Truncated extracted text to '32768' characters." (ドキュメントからコンテンツまたはメタデータを抽出できませんでした。抽出されたテキストが '32768' 文字に切り詰められました。) このメッセージが表示されるのは、Free レベルでの BLOB のインデックス作成には、[文字の抽出に 32K の制限](search-limits-quotas-capacity.md#indexer-limits)があるためです。 より上位のレベルでは、このデータ セットに対してこのメッセージは表示されません。 
 
 > [!NOTE]
 > 警告は一部のシナリオで一般的であり、必ずしも問題を示すとは限りません。 たとえば、BLOB コンテナーに画像ファイルが含まれていて、パイプラインで画像を処理しない場合、画像が処理されなかったことを示す警告が表示されます。
@@ -498,7 +506,7 @@ Free レベルを使用している場合は、次のメッセージが表示さ
 
 ![検索オブジェクトを削除する](./media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png "ポータル内で検索オブジェクトを削除する")
 
-または、 **DELETE** を使用して、各オブジェクトの URL を指定します。 次のコマンドは、インデクサーを削除します。
+または、**DELETE** を使用して、各オブジェクトの URL を指定します。 次のコマンドは、インデクサーを削除します。
 
 ```http
 DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr?api-version=2020-06-30

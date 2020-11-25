@@ -1,21 +1,21 @@
 ---
 title: チュートリアル:デザイナーを使用して ML モデルをデプロイする
 titleSuffix: Azure Machine Learning
-description: このチュートリアルでは、Azure Machine Learning デザイナーで予測分析ソリューションを構築する方法について説明します。 ドラッグ アンド ドロップ モジュールを使用して、機械学習モデルのトレーニング、スコア付け、およびデプロイを行います。
+description: Azure Machine Learning デザイナーで予測分析ソリューションを構築します。 ドラッグ アンド ドロップ モジュールを使用して、機械学習モデルのトレーニング、スコア付け、デプロイを行います。
 author: peterclu
 ms.author: peterlu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 06/28/2020
+ms.date: 11/13/2020
 ms.custom: designer
-ms.openlocfilehash: 95e5b3ac568cfa370fd1e49fad990b681aef46d9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 5a5d166e36b2870ceb081c1c6d2635e01ab43a4d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311515"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592551"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>チュートリアル:デザイナーで機械学習モデルをデプロイする
 
@@ -56,7 +56,7 @@ ms.locfileid: "92311515"
     * **[Web Service Input]\(Web サービスの入力\)** モジュールと **[Web Service Output]\(Web サービスの出力\)** モジュールが追加されます。 ユーザー データがパイプラインに入力される位置と、データが返される位置が、これらのモジュールによって示されます。
 
     > [!NOTE]
-    > 既定では、 **Web サービスの入力** としては、予測パイプラインの作成に使用されたトレーニング データと同じデータ スキーマが期待されます。 このシナリオでは、価格がスキーマに含まれます。 ただし、価格は予測の間に要因としては使用されません。
+    > 既定では、**Web サービスの入力** としては、予測パイプラインの作成に使用されたトレーニング データと同じデータ スキーマが期待されます。 このシナリオでは、価格がスキーマに含まれます。 ただし、価格は予測の間に要因としては使用されません。
     >
 
 1. **[送信]** を選択し、パート 1 で使用したものと同じコンピューティング先と実験を使用します。
@@ -77,7 +77,7 @@ ms.locfileid: "92311515"
    
 1. 推論クラスター ウィンドウで、新しい Kubernetes サービスを構成します。
 
-1. **[Compute name]\(コンピューティング名\)** に「 *aks-compute* 」と入力します。
+1. **[Compute name]\(コンピューティング名\)** に「*aks-compute*」と入力します。
     
 1. **[Region]\(リージョン\)** には、使用できる近くのリージョンを選択します。
 
@@ -99,7 +99,7 @@ AKS サービスのプロビジョニングが完了したら、リアルタイ�
 
 1. **[デプロイ]** を選択します。
     
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="パイプラインの作成ボタンへのアクセス方法を示すスクリーンショット":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="新しいリアルタイム エンドポイントの設定方法を示すスクリーンショット":::
 
     デプロイが完了すると、キャンバスの上に成功通知が表示されます。 これには数分かかる可能性があります。
 
@@ -112,6 +112,8 @@ AKS サービスのプロビジョニングが完了したら、リアルタイ�
 1. **[詳細]** タブでは、REST URI、状態、タグなどの詳細情報を確認できます。
 
 1. **[Consume]\(使用\)** タブでは、セキュリティ キーを検索し、認証方法を設定できます。
+
+1. **[デプロイ ログ]** タブで、リアルタイム エンドポイントの詳細なデプロイ ログを確認できます。 
 
 Web サービスの使用方法の詳細については、[Web サービスとしてデプロイされたモデルの使用](how-to-consume-web-service.md)に関するページを参照してください
 

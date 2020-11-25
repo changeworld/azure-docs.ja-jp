@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: b3505f8bf31c2e700ce1cc57e106c33a13e0aa9b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: fc44dd6cf91d687f47afadf1c3378956d838bc9d
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737172"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579506"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>チュートリアル:マネージド ID を使用して Key Vault を Azure Spring Cloud アプリに接続する
 
@@ -77,6 +77,8 @@ Key Vault への適切なアクセス権をアプリに付与するには、`az 
 ```azurecli
 az keyvault set-policy --name "<your-keyvault-name>" --object-id ${SERVICE_IDENTITY} --secret-permissions set get list
 ```
+> [!NOTE]
+> システム割り当てマネージド ID が無効になったら、`az keyvault delete-policy --name "<your-keyvault-name>" --object-id ${SERVICE_IDENTITY}` を使用してアプリのアクセス権を削除します。
 
 ## <a name="build-a-sample-spring-boot-app-with-spring-boot-starter"></a>Spring Boot スターターを使用してサンプルの Spring Boot アプリをビルドする
 このアプリは、Azure Key Vault からシークレットを取得するためのアクセス権を持つことになります。 次のスターター アプリを使用します: [Azure Key Vault Secrets Spring ブート スターター](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets)。  Azure Key Vault は、Spring **PropertySource** のインスタンスとして追加されます。  Azure Key Vault に格納されているシークレットは、ファイル内のプロパティなどの外部化された構成プロパティと同様に、簡単にアクセスして使用できます。 

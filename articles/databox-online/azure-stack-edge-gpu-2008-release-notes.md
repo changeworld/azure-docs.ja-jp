@@ -1,6 +1,6 @@
 ---
 title: Azure Stack Edge Pro Preview のリリース ノート | Microsoft Docs
-description: 一般提供リリースを実行している Azure Stack Edge Pro の重大な未解決の問題と解決策について説明します。
+description: プレビュー リリースが実行されている Azure Stack Edge Pro の重大な未解決の問題と解決策について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: d166b0a4c4b69f03d7dba9d997d7d07fbd81ef41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfb20b3bf9db9e02ed9820232f1f252379660dca
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893977"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579274"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-preview-release-notes"></a>GPU 搭載の Azure Stack Edge Pro Preview のリリース ノート
 

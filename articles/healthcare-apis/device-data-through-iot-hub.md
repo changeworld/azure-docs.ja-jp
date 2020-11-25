@@ -6,18 +6,18 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: tutorial
-ms.date: 08/03/2020
+ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: ee286540d4fd740c5e7c1f8bd693fddd625eeae2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 6c364cf84bada2a951ef3f224ea836885f0e3c1e
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398149"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636318"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>チュートリアル:Azure IoT Hub を通じてデバイス データを受信する
 
-Azure IoT Connector for FHIR* を使用すると、Internet of Medical Things (IoMT) デバイスから Azure API for FHIR にデータを取り込むことができます。 [Azure portal を使用した Azure IoT Connector for FHIR (プレビュー) のデプロイ](iot-fhir-portal-quickstart.md)に関するクイックスタートには、Azure IoT Central で管理されているデバイスから Azure IoT Connector for FHIR に[テレメトリを送信](iot-fhir-portal-quickstart.md#connect-your-devices-to-iot)する例が示されています。 Azure IoT Connector for FHIR は、Azure IoT Hub を介してプロビジョニングおよび管理されているデバイスでも使用できます。 このチュートリアルでは、Azure IoT Hub から Azure IoT Connector for FHIR に接続し、デバイス データをルーティングする手順について説明します。
+Azure IoT Connector for FHIR&#174; (高速ヘルスケア相互運用性リソース)* を使用すると、Internet of Medical Things (IoMT) デバイスから Azure API for FHIR にデータを取り込むことができます。 [Azure portal を使用した Azure IoT Connector for FHIR (プレビュー) のデプロイ](iot-fhir-portal-quickstart.md)に関するクイックスタートには、Azure IoT Central で管理されているデバイスから Azure IoT Connector for FHIR に[テレメトリを送信](iot-fhir-portal-quickstart.md#connect-your-devices-to-iot)する例が示されています。 Azure IoT Connector for FHIR は、Azure IoT Hub を介してプロビジョニングおよび管理されているデバイスでも使用できます。 このチュートリアルでは、Azure IoT Hub から Azure IoT Connector for FHIR に接続し、デバイス データをルーティングする手順について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -113,6 +113,4 @@ Azure IoT Connector for FHIR 内のさまざまなデータ フロー ステー�
 >[!div class="nextstepaction"]
 >[Azure IoT Connector for FHIR のマッピング テンプレート](iot-mapping-templates.md)
 
-*Azure portal では、Azure IoT Connector for FHIR は IoT Connector (プレビュー) と呼ばれています。
-
-FHIR は HL7 の登録商標であり、HL7 の許可を得て使用しています。
+*Azure portal では、Azure IoT Connector for FHIR は IoT Connector (プレビュー) と呼ばれています。 FHIR は HL7 の登録商標であり、HL7 の許可を得て使用しています。

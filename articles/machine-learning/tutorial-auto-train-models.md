@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 811f1c27af660d388ecb875741c073591bd25f7f
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 4f6e194f04789fbcaf24d69965dfa8ac61b20a38
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358611"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886330"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>チュートリアル:自動機械学習を使用してタクシー料金を予測する
 
@@ -39,7 +39,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * まだ Azure Machine Learning ワークスペースとノートブック仮想マシンがない場合は、[セットアップのチュートリアル](tutorial-1st-experiment-sdk-setup.md)を済ませておいてください。
 * セットアップのチュートリアルを完了したら、同じノートブック サーバーを使用して、*tutorials/regression-automl-nyc-taxi-data/regression-automated-ml.ipynb* ノートブックを開きます。
 
-独自の[ローカル環境](how-to-configure-environment.md#local)で実行したい場合は、このチュートリアルを [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) で入手することもできます。 `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` を実行して必要なパッケージを取得してください。
+独自の[ローカル環境](how-to-configure-environment.md#local)で実行したい場合は、このチュートリアルを [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) で入手することもできます。 必要なパッケージを取得するには、 
+* [完全な `automl` クライアントをインストール](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)します。
+* `pip install azureml-opendatasets azureml-widgets` を実行して必要なパッケージを取得してください。
 
 ## <a name="download-and-prepare-data"></a>データのダウンロードと準備
 

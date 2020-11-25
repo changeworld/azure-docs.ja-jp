@@ -16,26 +16,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 68ccd21af585d853592ab8cce24f251d810a4160
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 773cf5cc6755a4f094eb676992364eea07a795ea
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90889196"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654662"
 ---
 # <a name="what-is-azure-sentinel"></a>Azure Sentinel とは
 
-Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ型の**セキュリティ情報イベント管理 (SIEM)** および**セキュリティ オーケストレーション自動応答 (SOAR)** ソリューションです。 Azure Sentinel は、高度なセキュリティ分析と脅威インテリジェンスを企業全体で実現し、アラートの検出、脅威の可視性、予防的な捜索、および脅威への対応のための 1 つのソリューションを提供します。 
+Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ型の **セキュリティ情報イベント管理 (SIEM)** および **セキュリティ オーケストレーション自動応答 (SOAR)** ソリューションです。 Azure Sentinel は、高度なセキュリティ分析と脅威インテリジェンスを企業全体で実現し、アラートの検出、脅威の可視性、予防的な捜索、および脅威への対応のための 1 つのソリューションを提供します。 
 
 Azure Sentinel を使用すると、ますます巧妙化する攻撃、増加するアラート、解決までに長い期間がかかることに伴うストレスを軽減し、企業全体を俯瞰的に見ることができます。
 
-- **クラウドの規模でデータを収集**します。オンプレミスと複数のクラウド内の両方ですべてのユーザー、デバイス、アプリケーション、インフラストラクチャにわたって収集します。 
+- **クラウドの規模でデータを収集** します。オンプレミスと複数のクラウド内の両方ですべてのユーザー、デバイス、アプリケーション、インフラストラクチャにわたって収集します。 
 
-- **以前に検出されなかった脅威を検出**します。Microsoft の 分析と類を見ない脅威インテリジェンスを使用して、誤判定を最小限に抑えます。 
+- **以前に検出されなかった脅威を検出** します。Microsoft の 分析と類を見ない脅威インテリジェンスを使用して、誤判定を最小限に抑えます。 
 
-- **人工知能を使用して脅威を調査**します。Microsoft の長年にわたるサイバー セキュリティ業務を活用しながら、大規模に疑わしいアクティビティを捜索します。 
+- **人工知能を使用して脅威を調査** します。Microsoft の長年にわたるサイバー セキュリティ業務を活用しながら、大規模に疑わしいアクティビティを捜索します。 
 
-- **インシデントに迅速に対応**します。一般的なタスクの組み込みのオーケストレーションとオートメーションを使用します。
+- **インシデントに迅速に対応** します。一般的なタスクの組み込みのオーケストレーションとオートメーションを使用します。
 
 ![Azure Sentinel のコア機能](./media/overview/core-capabilities.png)
 
@@ -51,20 +51,20 @@ Azure Sentinel をオンボードするには、まず[セキュリティ ソー
 
 ## <a name="workbooks"></a>Workbooks
 
-Azure Sentinel に [データソースを接続](quickstart-onboard.md) した後、Azure Sentinel と Azure Monitor ブックの統合を使用してデータを監視できます。これにより、多用途のカスタム ブックを作成できます。 ブックの表示は Azure Sentinel では異なりますが、[Azure Monitor ブックを使用して対話型レポートを作成する](../azure-monitor/platform/workbooks-overview.md)方法を確認すると役立つ場合があります。 Azure Sentinel を使用すると、データ全体に対してカスタム ブックを作成できます。また、用意されている組み込みのブック テンプレートを使用してデータ ソースに接続すると、すぐにデータ全体の分析情報をすばやく得ることもできます。
+Azure Sentinel に[データ ソースを接続](quickstart-onboard.md)したら、Azure Sentinel と Azure Monitor ブックの統合を使用してデータを監視できます。これにより、多用途のカスタム ブックを作成できます。 ブックの表示は Azure Sentinel では異なりますが、[Azure Monitor ブックを使用して対話型レポートを作成する](../azure-monitor/platform/workbooks-overview.md)方法を確認すると役立つ場合があります。 Azure Sentinel を使用すると、データ全体に対してカスタム ブックを作成できます。また、用意されている組み込みのブック テンプレートを使用してデータ ソースに接続すると、すぐにデータ全体の分析情報をすばやく得ることもできます。
 
 ![ダッシュボード](./media/tutorial-monitor-data/access-workbooks.png)
 
 ## <a name="analytics"></a>Analytics
 
-ノイズを減らし、確認および調査する必要があるアラートの数を最小限に抑えるために、Azure Sentinel は[分析を使用してアラートをインシデントに関連付けます](tutorial-detect-threats-built-in.md)。 **インシデント**は、調査して解決できる対応可能な脅威をまとめた、関連するアラートのグループです。 組み込みの相関関係ルールをそのまま使用するか、独自のルールを作成する際の出発点として使用します。 Azure Sentinel には、ネットワークの動作をマップし、リソース全体の異常を探すための機械学習ルールも用意されています。 これらの分析では、さまざまなエンティティに関する信頼度の低いアラートを組み合わせて信頼度の高いセキュリティ インシデントにすることで、点を結び付けます。
+ノイズを減らし、確認および調査する必要があるアラートの数を最小限に抑えるために、Azure Sentinel は[分析を使用してアラートをインシデントに関連付けます](tutorial-detect-threats-built-in.md)。 **インシデント** は、調査して解決できる対応可能な脅威をまとめた、関連するアラートのグループです。 組み込みの相関関係ルールをそのまま使用するか、独自のルールを作成する際の出発点として使用します。 Azure Sentinel には、ネットワークの動作をマップし、リソース全体の異常を探すための機械学習ルールも用意されています。 これらの分析では、さまざまなエンティティに関する信頼度の低いアラートを組み合わせて信頼度の高いセキュリティ インシデントにすることで、点を結び付けます。
 
 ![インシデント](./media/tutorial-investigate-cases/incident-severity.png)
 
 
 ## <a name="security-automation--orchestration"></a>セキュリティのオートメーションとオーケストレーション
 
-一般的なタスクを自動化し、Azure サービスおよび既存のツールと統合する[プレイブックを使用してセキュリティ オーケストレーションを簡略化](tutorial-respond-threats-playbook.md)します。 Azure Logic Apps を基に構築された Azure Sentinel のオートメーションおよびオーケストレーション ソリューションは、新しいテクノロジや脅威が発生したときにスケーラブルなオートメーションを可能にする高度に拡張可能なアーキテクチャを備えています。 Azure Logic Apps を使用してプレイブックを作成する際は、成長を続けている組み込みプレイブックのギャラリーから選択できます。 これらには、Azure Functions などのサービス用に [200 以上のコネクタ](https://docs.microsoft.com/azure/connectors/apis-list)が含まれます。 コネクタを使用すると、コード、ServiceNow、Jira、Zendesk、HTTP 要求、Microsoft Teams、Slack、Windows Defender ATP、および Cloud App Security に任意のカスタム ロジックを適用できます。
+一般的なタスクを自動化し、Azure サービスおよび既存のツールと統合する[プレイブックを使用してセキュリティ オーケストレーションを簡略化](tutorial-respond-threats-playbook.md)します。 Azure Logic Apps を基に構築された Azure Sentinel のオートメーションおよびオーケストレーション ソリューションは、新しいテクノロジや脅威が発生したときにスケーラブルなオートメーションを可能にする高度に拡張可能なアーキテクチャを備えています。 Azure Logic Apps を使用してプレイブックを作成する際は、成長を続けている組み込みプレイブックのギャラリーから選択できます。 これらには、Azure Functions などのサービス用に [200 以上のコネクタ](../connectors/apis-list.md)が含まれます。 コネクタを使用すると、コード、ServiceNow、Jira、Zendesk、HTTP 要求、Microsoft Teams、Slack、Windows Defender ATP、および Cloud App Security に任意のカスタム ロジックを適用できます。
 
 たとえば、ServiceNow チケット発行システムを使用している場合は、提供されているツールを使用して、Azure Logic Apps を使用してワークフローを自動化し、特定のイベントが検出されるたびに ServiceNow でチケットを開くことができます。
 

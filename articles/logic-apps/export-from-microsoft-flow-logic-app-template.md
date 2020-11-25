@@ -7,11 +7,11 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.openlocfilehash: 1c2f0a2c54be7adbc7b8babd596f18e08c67a024
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91269558"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014416"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Power Automate からフローをエクスポートして Azure Logic Apps にデプロイする
 
@@ -80,7 +80,7 @@ ms.locfileid: "91269558"
 
       ![テンプレートの入力パラメーターを指定する](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
 
-   1. 完了したら、必要な Azure リソースの作成とそれに応じた Azure サブスクリプションへの課金に関する**使用条件**を確認します。
+   1. 完了したら、必要な Azure リソースの作成とそれに応じた Azure サブスクリプションへの課金に関する **使用条件** を確認します。
 
    1. 準備ができたら、 **[上記の使用条件に同意する]**  >  **[購入]** の順に選択します。
 
@@ -148,7 +148,7 @@ ms.locfileid: "91269558"
 
 1. ソリューション エクスプローラーで、プロジェクトのショートカット メニューを開き、 **[デプロイ]**  >  **[新規作成]** の順に選択します。 メッセージに従って Azure アカウントでサインインします。
 
-1. メッセージが表示されたら、Azure サブスクリプション、Azure リソース グループ、および、デプロイに使用するその他の設定 (テンプレートのパラメーター値を渡すために使用する[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)など) を確認して、 **[デプロイ]** を選択します。
+1. メッセージが表示されたら、Azure サブスクリプション、Azure リソース グループ、および、デプロイに使用するその他の設定 (テンプレートのパラメーター値を渡すために使用する [パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)など) を確認して、 **[デプロイ]** を選択します。
 
    ![デプロイの設定を確認する](./media/export-from-microsoft-flow-logic-app-template/confirm-azure-subscription-resource-group-deployment.png)
 

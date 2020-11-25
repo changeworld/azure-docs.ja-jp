@@ -7,12 +7,12 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2471a19cf795d969644cb92e23b7a2926f2ee1a9
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: a5d66e43485ec66b6297ef11ed382e8fb82b7cb3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372610"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96014578"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>コンテナー レジストリ用の Azure Defender を使用してイメージの脆弱性をスキャンする
 
@@ -22,17 +22,7 @@ ms.locfileid: "94372610"
 
 スキャナーから Security Center に脆弱性が報告されると、その結果と関連情報が推奨事項として Security Center によって表示されます。 さらに、結果には関連情報 (修復の手順、関連する CVE、CVES スコアなど) も含まれています。 1 つまたは複数のサブスクリプション、あるいは特定のレジストリで識別された脆弱性を表示することができます。
 
-## <a name="availability"></a>可用性
-
-|側面|詳細|
-|----|:----|
-|リリース状態:|一般提供 (GA)|
-|価格:|**コンテナー レジストリ用の Azure Defender** の課金については、 [価格に関するページ](security-center-pricing.md)をご覧ください。|
-|サポートされているレジストリとイメージ:|シェル アクセスによってパブリック インターネットからアクセス可能な ACR レジストリ内の Linux イメージ|
-|サポートされていないレジストリとイメージ:|Windows イメージ<br>"プライベート" レジストリ<br>Azure Private Link などのファイアウォール、サービス エンドポイント、またはプライベート エンドポイントによってアクセスが制限されたレジストリ<br>[Docker スクラッチ](https://hub.docker.com/_/scratch/)のようなスーパー ミニマリスト イメージ、またはアプリケーションとそのランタイム依存関係のみが含まれ、パッケージ マネージャー、シェル、または OS は含まれない "ディストリビューションレス" イメージ。|
-|必要なロールとアクセス許可:|**セキュリティ閲覧者** と [Azure Container Registry 閲覧者ロール](../container-registry/container-registry-roles.md)|
-|クラウド:|![はい](./media/icons/yes-icon.png) 商用クラウド<br>![はい](./media/icons/yes-icon.png) US Gov - 現在、プッシュ時のスキャン機能のみがサポートされています。 詳細については、「[イメージはどのような場合にスキャンされますか](defender-for-container-registries-introduction.md#when-are-images-scanned)」を参照<br>![いいえ](./media/icons/no-icon.png) China Gov、その他の Gov|
-|||
+[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 
 
 ## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>Azure コンテナー レジストリでイメージの脆弱性を識別する 
@@ -63,7 +53,7 @@ Azure Resource Manager ベースの Azure Container Registry に格納されて�
 
 ## <a name="view-and-remediate-findings"></a>結果の表示と修復
 
-1. 結果を表示するために、 **[推奨事項]** ページへ移動します。 問題が見つかった場合は、 **Azure Container Registry イメージの脆弱性を修復する必要があります** という推奨事項が表示されます。
+1. 結果を表示するために、 **[推奨事項]** ページへ移動します。 問題が見つかった場合は、**Azure Container Registry イメージの脆弱性を修復する必要があります** という推奨事項が表示されます。
 
     ![問題を修復するための推奨事項 ](media/monitor-container-security/acr-finding.png)
 

@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: a85656909df5538f9f57e05d79ae768623d7eba6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c8f11f17c9e110509dcbcda291194f9b8d928c50
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289617"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658963"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Key Vault での CSR の作成とマージ
 
@@ -25,7 +25,15 @@ Azure Key Vault を使用すると、任意の証明機関によって発行さ�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="adding-certificate-in-key-vault-issued-by-a-non-trusted-ca"></a>信頼されていない CA によって発行された証明書を Key Vault に追加する
+## <a name="adding-certificate-in-key-vault-issued-by-partnered-ca"></a>提携 CA によって発行された証明書を Key Vault に追加する
+Key Vault は、証明書の作成を簡素化するために、次の 2 つの証明機関と提携しています。 
+
+|プロバイダー|証明書の種類|構成のセットアップ  
+|--------------|----------------------|------------------|  
+|DigiCert|Key Vault は、DigiCert による OV または EV SSL 証明書を提供します。| [統合ガイド](./how-to-integrate-certificate-authority.md)
+|GlobalSign|Key Vault は、GlobalSign による OV または EV SSL 証明書を提供します。| [統合ガイド](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
+
+## <a name="adding-certificate-in-key-vault-issued-by-non-partnered-ca"></a>非提携 CA によって発行された証明書を Key Vault に追加する
 
 次の手順を実行すると、Key Vault と提携していない証明機関から証明書を作成できます (たとえば、GoDaddy は信頼されたキー コンテナー CA ではありません)。 
 

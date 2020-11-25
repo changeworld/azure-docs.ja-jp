@@ -12,15 +12,18 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperfq1
-ms.openlocfilehash: e621d50280adcccb8dbd82f4ceb0de7956e98e4b
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: d356674819304897aef353d161ddf236e19db1f5
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576967"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592245"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>クイック スタート:ASP.NET Web アプリに Microsoft ID プラットフォーム サインインを追加する
-このクイックスタートでは、ASP.NET Web アプリで、(hotmail.com、outlook.com などの) 個人アカウント、また職場や学校のアカウントを任意の Azure Active Directory (Azure AD) インスタンスからサインインさせる方法を、コード サンプルを使用して学びます。  (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
+
+このクイックスタートでは、ASP.NET Web アプリで Azure Active Directory (Azure AD) 組織のユーザーをサインインする方法を示すコード サンプルをダウンロードして実行します。 
+
+図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
 > [!div renderon="docs"]
 > ## <a name="prerequisites"></a>前提条件
 >
@@ -69,9 +72,9 @@ ms.locfileid: "91576967"
 > [!div renderon="docs"]
 > [Visual Studio 2019 ソリューションのダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
-> [!div renderon="portal"]
+> [!div renderon="portal" class="sxs-lookup"]
 > Visual Studio 2019 を使用してプロジェクトを実行します。
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [コード サンプルをダウンロードします](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -95,13 +98,13 @@ ms.locfileid: "91576967"
 >    各値の説明:
 > - `Enter_the_Application_Id_here` - 登録したアプリケーションのアプリケーション ID。
 > - `Enter_the_Tenant_Info_Here` - 以下のいずれかのオプション。
->   - アプリケーションでサポートされるのが **[所属する組織のみ]** である場合、この値を**テナント ID** または**テナント名** (例: contoso.onmicrosoft.com) に置き換えます
+>   - アプリケーションでサポートされるのが **[所属する組織のみ]** である場合、この値を **テナント ID** または **テナント名** (例: contoso.onmicrosoft.com) に置き換えます
 >   - アプリケーションで **[任意の組織のディレクトリ内のアカウント]** がサポートされる場合は、この値を `organizations` に置き換えます。
 >   - アプリケーションで **[すべての Microsoft アカウント ユーザー]** がサポートされる場合は、この値を `common` に置き換えます。
 >
 > > [!TIP]
 > > - *[アプリケーション ID]* 、 *[ディレクトリ (テナント) ID]* 、 *[サポートされているアカウントの種類]* の値を見つけるには、 **[概要]** ページに移動します。
-> > - **Web.config** 内の `redirectUri` の値と、Azure AD でアプリ登録用に定義された**リダイレクト URI** が確実に対応するようにします (対応していない場合、アプリ登録の **[認証]** メニューに移動し、**リダイレクト URI** を一致するように更新します)。
+> > - **Web.config** 内の `redirectUri` の値と、Azure AD でアプリ登録用に定義された **リダイレクト URI** が確実に対応するようにします (対応していない場合、アプリ登録の **[認証]** メニューに移動し、**リダイレクト URI** を一致するように更新します)。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
@@ -116,7 +119,7 @@ ms.locfileid: "91576967"
 
 ### <a name="owin-middleware-nuget-packages"></a>OWIN ミドルウェア NuGet パッケージ
 
-ASP.NET で OpenID Connect を使用して Cookie ベースの認証を行うために、OWIN Middleware パッケージを使用して認証パイプラインをセットアップできます。 これらのパッケージは、Visual Studio の**パッケージ マネージャー コンソール**で次のコマンドを実行してインストールできます。
+ASP.NET で OpenID Connect を使用して Cookie ベースの認証を行うために、OWIN Middleware パッケージを使用して認証パイプラインをセットアップできます。 これらのパッケージは、Visual Studio の **パッケージ マネージャー コンソール** で次のコマンドを実行してインストールできます。
 
 ```powershell
 Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -200,7 +203,7 @@ public void SignIn()
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>コントローラーまたはコントローラーのメソッドを保護する
 
-`[Authorize]` 属性を使用して、コントローラーまたはコントローラー アクションを保護できます。 この属性は、認証されたユーザーにしかコントローラー内のアクションへのアクセスを許可しない、つまり、`[Authorize]` 属性によって装飾されたアクションまたはコントローラーのいずれかに*未認証*ユーザーがアクセスしようとしたときに認証チャレンジを自動的に発生させることによって、コントローラーまたはアクションへのアクセスを制限します。
+`[Authorize]` 属性を使用して、コントローラーまたはコントローラー アクションを保護できます。 この属性は、認証されたユーザーにしかコントローラー内のアクションへのアクセスを許可しない、つまり、`[Authorize]` 属性によって装飾されたアクションまたはコントローラーのいずれかに *未認証* ユーザーがアクセスしようとしたときに認証チャレンジを自動的に発生させることによって、コントローラーまたはアクションへのアクセスを制限します。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

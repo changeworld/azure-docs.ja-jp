@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fe4c22042c31d55575320d9c3823783902700f9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7a42e3592eee0bc6f905a83e9b1845746dbfd91
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87494776"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566871"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>Azure App Configuration ストアへのインポート
 
@@ -23,9 +23,9 @@ ms.locfileid: "87494776"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Azure CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールとアップグレードについては、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
+ - このチュートリアルには、Azure CLI のバージョン 2.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -42,7 +42,7 @@ az appconfig kv import --name myTestAppConfigStore --source file --path ~/Import
 
 このスクリプトでは、次のコマンドを使用して App Configuration ストアへのインポートを実行します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [az appconfig kv import](/cli/azure/appconfig/kv#az-appconfig-kv-import) | App Configuration ストア リソースへのインポートを行います。 |
 

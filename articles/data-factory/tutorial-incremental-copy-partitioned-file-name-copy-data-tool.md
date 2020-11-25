@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 6/10/2020
-ms.openlocfilehash: 3a46c2024269affc06d18806aa186fb8b0feaafe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: ae66bb025f2a49a79120fe86e0de7c4a3ccf26ca
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533759"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555381"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>データのコピー ツールを使用することにより、パーティション分割されたファイル名に基づく新しいファイルを増分コピーする
 
@@ -56,7 +56,7 @@ ms.locfileid: "91533759"
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-1. 左側のメニューで、 **[リソースの作成]**  >  **[データ + 分析]**  >  **[Data Factory]** の順に選択します。
+1. 左側のメニューで、 **[リソースの作成]**  >  **[統合]**  >  **[Data Factory]** を選択します。
 
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "91533759"
    ![[新しいデータ ファクトリ] のエラー メッセージ](./media/doc-common-process/name-not-available-error.png)
 
    データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
-3. 新しいデータ ファクトリの作成先となる Azure **サブスクリプション**を選択します。
+3. 新しいデータ ファクトリの作成先となる Azure **サブスクリプション** を選択します。
 4. **[リソース グループ]** で、次の手順のいずれかを行います。
 
     a. **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
@@ -99,7 +99,7 @@ ms.locfileid: "91533759"
 
     c. **[Trigger type]\(トリガーの種類\)** で、 **[Tumbling Window]\(タンブリング ウィンドウ\)** を選択します。
 
-    d. **[Recurrence]\(繰り返し\)** で、**1 時間**と指定します。
+    d. **[Recurrence]\(繰り返し\)** で、**1 時間** と指定します。
 
     e. **[次へ]** を選択します。
 

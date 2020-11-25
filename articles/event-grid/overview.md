@@ -3,12 +3,12 @@ title: Azure Event Grid とは
 description: Azure Event Grid を使用してソースからハンドラーにイベント データを送信します。 イベント ベースのアプリケーションを構築し、Azure サービスと統合します。
 ms.topic: overview
 ms.date: 09/24/2020
-ms.openlocfilehash: 73d218058c5f95d8c2d2324f1a0e1e77b24f1364
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a4f614a22fdfa7d2272c70751f56f19145a10fa6
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326502"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576684"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid とは
 
@@ -78,7 +78,7 @@ Azure Event Grid の主要な特長を次に示します。
 * **ファンアウト** - 複数のエンドポイントを同じイベントにサブスクライブし、必要な数の場所にイベントのコピーを送信できます。
 * **信頼性** - 指数バックオフによる 24 時間の再試行で、確実にイベントが配信されるようにします。
 * **イベントごとの支払** - Event Grid の使用量に対して料金を支払います。
-* **高スループット** - 1 秒あたり数百万イベントをサポートして、Event Grid での大量ワークロードを作成できます。
+* **高スループット** - Event Grid で大量のワークロードを作成できます。
 * **組み込みイベント** - リソース定義の組み込みイベントにより、迅速に開始および実行できます。
 * **カスタム イベント** - Event Grid ルートを使用し、フィルター処理を行い、信頼性の高い方法でアプリにカスタム イベントを配信します。
 

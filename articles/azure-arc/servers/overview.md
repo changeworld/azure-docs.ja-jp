@@ -2,14 +2,14 @@
 title: Azure Arc 対応サーバーの概要
 description: Azure Arc 対応サーバーを使用して、Azure の外部でホストされているサーバーを Azure リソースと同じように管理する方法について説明します。
 keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新管理, 変更追跡, インベントリ, Runbook, Python, グラフィカル, ハイブリッド
-ms.date: 11/04/2020
+ms.date: 11/12/2020
 ms.topic: overview
-ms.openlocfilehash: b9d38b2395d922e3e2a7daec654cd73de7267ee1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 2df970f7c94f1e306243aba1480ee7023b8f76c1
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360583"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578724"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーとは
 
@@ -44,7 +44,16 @@ Azure の外部でホストされているハイブリッド マシンでこの�
 
 Azure Arc 対応サーバーでサポートされているリージョンの確定的な一覧については、[リージョン別の Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)に関するページを参照してください。
 
-ほとんどの場合、インストール スクリプトを作成するときに選択する場所は、マシンの場所に最も近い Azure リージョンにする必要があります。 保存データは、指定したリージョンを含む Azure geography 内に格納されます。データ所在地に関する要件がある場合は、これがリージョンの選択に影響する可能性もあります。 マシンが接続されている Azure リージョンが障害の影響を受ける場合、接続されたマシンは影響を受けませんが、Azure を使用した管理操作を完了できない可能性があります。 リージョンの障害が発生したときに地理的に冗長なサービスをサポートする複数の場所がある場合は、各場所のマシンを別の Azure リージョンに接続することをお勧めします。
+ほとんどの場合、インストール スクリプトを作成するときに選択する場所は、マシンの場所に最も近い Azure リージョンにする必要があります。 保存データは、指定したリージョンを含む Azure 地域内に保存されます。データ所在地の要件がある場合は、これがリージョンの選択に影響する可能性もあります。 マシンが接続されている Azure リージョンが障害の影響を受ける場合、接続されたマシンは影響を受けませんが、Azure を使用した管理操作を完了できない可能性があります。 リージョンの障害が発生したときに地理的に冗長なサービスをサポートする複数の場所がある場合は、各場所のマシンを別の Azure リージョンに接続することをお勧めします。
+
+接続されているマシンに関する次のメタデータ情報が収集され、Azure Arc マシン リソースが構成されているリージョンに保存されます。
+
+- オペレーティング システムの名前とバージョン
+- コンピューター名
+- コンピューターの完全修飾ドメイン名 (FQDN)
+- Connected Machine エージェントのバージョン
+
+たとえば、マシンが米国東部リージョンの Azure Arc に登録されている場合、このデータは米国リージョンに保存されます。
 
 ### <a name="agent-status"></a>エージェントの状態
 

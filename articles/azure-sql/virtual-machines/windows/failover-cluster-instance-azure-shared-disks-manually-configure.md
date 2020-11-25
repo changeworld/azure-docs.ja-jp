@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: c78899bff39f37c63c7db0eeb12690ab2a90cac4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: df50583e650d3d44e702c0f7d1596f2a733a4445
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285376"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556388"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Azure 共有ディスクを使用して FCI を作成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "93285376"
 
 
 ## <a name="add-azure-shared-disk"></a>Azure 共有ディスクを追加する
-共有ディスク機能を有効にしてマネージド Premium SSD ディスクをデプロイします。 `maxShares` に設定し、 **クラスター ノードの数に合わせる** と、全 FCI ノード間でディスクが共有可能になります。 
+共有ディスク機能を有効にしてマネージド Premium SSD ディスクをデプロイします。 `maxShares` に設定し、**クラスター ノードの数に合わせる** と、全 FCI ノード間でディスクが共有可能になります。 
 
 次の手順に従って、Azure 共有ディスクを追加します。 
 
@@ -197,7 +197,7 @@ FCI データ ディレクトリは、Azure 共有ディスク上に存在する
 
 ## <a name="register-with-the-sql-vm-rp"></a>SQL VM RP への登録
 
-ポータルから SQL Server VM を管理するには、それを[軽量管理モード](sql-vm-resource-provider-register.md#lightweight-management-mode)で SQL VM リソース プロバイダー (RP) に登録します。現時点では、FCI と Azure VM 上の SQL Server でサポートされている唯一のモードです。 
+ポータルから SQL Server VM を管理するには、それを[軽量管理モード](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode)で SQL IaaS Agent 拡張機能 (RP) に登録します。このモードは、現時点では、FCI と Azure VM 上の SQL Server でサポートされている唯一のモードです。 
 
 
 PowerShell を使用して軽量モードで SQL Server VM を登録します。  
@@ -217,7 +217,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="limitations"></a>制限事項
 
-- [軽量管理モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)での SQL VM リソース プロバイダーへの登録のみがサポートされています。
+- [軽量管理モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)での SQL IaaS Agent 拡張機能への登録のみがサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,12 +3,12 @@ title: スタンドアロン Service Fabric クラスターの概要
 description: Service Fabric クラスターは Windows Server または Linux で実行されます。つまり、Windows Server または Linux を実行できる任意の場所に Service Fabric アプリケーションをデプロイしてホストできます。
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: c57d1ef6db295400ad986adadb804fb942a723e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3162a3d02510ce8efab6c5bcac0f1fdd2b2539b
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841069"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684000"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Service Fabric スタンドアロン クラスターの概要
 
@@ -43,10 +43,10 @@ Windows スタンドアロン クラスターでは、Windows セキュリティ
 
 詳細については、「[クライアントとノードの間のセキュリティ](service-fabric-cluster-security.md#client-to-node-security)」を参照してください。
 
-### <a name="role-based-access-control-rbac"></a>ロール ベースのアクセス制御 (RBAC)
+### <a name="service-fabric-role-based-access-control"></a>Service Fabric のロールベースのアクセス制御
 Service Fabric では、ユーザーの各グループに対して特定のクラスター操作へのアクセスを制限するアクセス制御もサポートしています。 その結果、クラスターのセキュリティが強化されます。 クラスターに接続するクライアント用に、2 種類のアクセス制御 (管理者ロールとユーザー ロール) がサポートされています。  
 
-詳細については、「[ロールベースのアクセス制御 (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)」を参照してください。
+詳細については、「[Service Fabric のロールベースのアクセス制御](service-fabric-cluster-security.md#service-fabric-role-based-access-control)」を参照してください。
 
 ## <a name="scaling"></a>Scaling
 

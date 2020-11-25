@@ -3,12 +3,12 @@ title: '[Azure にデプロイ] ボタン'
 description: Azure Resource Manager テンプレートを GitHub リポジトリからデプロイするためのボタンを使用する。
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 7d002508f6b2402f8cff40fb0369896080ecbbad
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 25ec5fd7a0c5b356097412ab6f1765cb0886522a
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490901"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555265"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>デプロイ ボタンを使用して GitHub リポジトリからテンプレートをデプロイする
 
@@ -19,11 +19,15 @@ ms.locfileid: "94490901"
 * [resource groups](deploy-to-resource-group.md)
 * [subscriptions](deploy-to-subscription.md)
 * [管理グループ](deploy-to-management-group.md)
-* [テナント](deploy-to-tenant.md)
+* [tenants](deploy-to-tenant.md)
 
 ## <a name="use-common-image"></a>一般的なイメージを使用する
 
 Web ページまたはリポジトリにボタンを追加するには、次の画像を使用します。
+
+```markdown
+![Deploy to Azure](https://aka.ms/deploytoazurebutton)
+```
 
 ```html
 <img src="https://aka.ms/deploytoazurebutton"/>
@@ -48,6 +52,7 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 次に、URL を URL エンコードされた値に変換します。 オンライン エンコーダーを使用するか、コマンドを実行できます。 次の PowerShell の例は、値を URL エンコードする方法を示しています。
 
 ```powershell
+$url = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 [uri]::EscapeDataString($url)
 ```
 
@@ -70,6 +75,8 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 ```
 
 リンクの完全な URL が表示されます。
+
+通常は、パブリック リポジトリでテンプレートをホストします。 プライベート リポジトリを使用する場合は、テンプレートの生コンテンツにアクセスするためのトークンを含める必要があります。 GitHub によって生成されるトークンは、短時間のみ有効です。 リンクを頻繁に更新する必要があります。
 
 GitHub リポジトリの代わりに [Azure Repos と共に Git](/azure/devops/repos/git/) を使用する場合でも、[Azure にデプロイ] ボタンを使用できます。 リポジトリがパブリックであることを確認します。 テンプレートを取得するには [Items 操作](/rest/api/azure/devops/git/items/get)を使用します。 要求は次の形式にする必要があります。
 

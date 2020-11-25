@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 11/04/2020
 ms.author: memildin
 ms.openlocfilehash: 0a487f778693e87e680033edd0d80c55d1a85f66
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348629"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013787"
 ---
 # <a name="sql-information-protection-policy-in-azure-security-center"></a>Azure Security Center 上の SQL 情報保護ポリシー
  
@@ -70,7 +70,7 @@ Security Center の **[価格と設定]** ページで、 **[SQL information pro
 
 Security Center の推奨事項である "SQL データベースの機密データを分類する必要があります" を使用して、データベースのデータ検出と分類ページを表示します。 ここには、分類が推奨される情報が含まれていることが検出された列も表示されます。
 
-1. Security Center の **[推奨事項]** ページで、" **SQL データベースの機密データを分類する必要があります** " という推奨事項を検索します。
+1. Security Center の **[推奨事項]** ページで、"**SQL データベースの機密データを分類する必要があります**" という推奨事項を検索します。
 
     :::image type="content" source="./media/security-center-info-protection-policy/sql-sensitive-data-recommendation.png" alt-text="SQL 情報保護ポリシーへのアクセスを提供する推奨事項の検索":::
 

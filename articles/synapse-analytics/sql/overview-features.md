@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 03995166df5d40f7f8be7054aed0727be254ed73
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: cdb6fa5e1721d023edc93307ca146d1599bac219
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376895"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579047"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Azure Synapse SQL でサポートされる Transact-SQL 機能
 
@@ -32,7 +32,7 @@ Synapse SQL の消費モデルでは、さまざまなデータベース オブ�
 | **ビュー** | [はい](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 ビューでは、専用モデルで使用可能な[クエリ言語要素](#query-language)を使用できます。 | [はい](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 ビューでは、サーバーレス モデルで使用可能な[クエリ言語要素](#query-language)を使用できます。 |
 | **スキーマ** | [はい](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | [はい](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |
 | **一時テーブル** | [はい](../sql-data-warehouse/sql-data-warehouse-tables-temporary.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | いいえ |
-| **手順** | [はい](/sql/t-sql/statements/create-procedure-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | いいえ |
+| **手順** | [はい](/sql/t-sql/statements/create-procedure-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | はい |
 | **関数** | [はい](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | はい。インライン テーブル値関数のみです。 |
 | **トリガー** | いいえ | いいえ |
 | **外部テーブル** | [はい](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 サポートされる[データ形式](#data-formats)をご確認ください。 | [はい](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 サポートされる[データ形式](#data-formats)をご確認ください。 |
@@ -43,6 +43,7 @@ Synapse SQL の消費モデルでは、さまざまなデータベース オブ�
 | **[テーブルのパーティション](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                     | はい | いいえ |
 | **[統計](develop-tables-statistics.md)**            | はい | はい |
 | **[ワークロード管理、リソース クラス、コンカレンシー制御](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | はい    | いいえ |
+| **[ワークロード管理、リソース クラス、コンカレンシー制御](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | はい。スケールアップおよびスケールダウン アクションを使用。 | はい。[Azure portal または T-SQL プロシージャ](https://docs.microsoft.com/azure/synapse-analytics/sql/data-processed#cost-control)を使用。 |
 
 ## <a name="query-language"></a>クエリ言語
 
@@ -77,7 +78,7 @@ Synapse SQL では、組み込みのセキュリティ機能を使用し、デ�
 | --- | --- | --- |
 | **ログイン** | なし (データベースでサポートされるのは包含ユーザーのみ) | はい |
 | **ユーザー** |  なし (データベースでサポートされるのは包含ユーザーのみ) | はい |
-| **[包含ユーザー](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)** | はい。 **注:** 制限のない管理者になれる Azure AD ユーザーは 1 人だけです | はい |
+| **[包含ユーザー](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)** | はい。 **注:** 制限のない管理者になれる Azure AD ユーザーは 1 人だけです | いいえ |
 | **SQL ユーザー名とパスワードによる認証**| はい | はい |
 | **Azure Active Directory (Azure AD) 認証**| はい。Azure AD ユーザー | はい。Azure AD ログインとユーザー |
 | **Storage の Azure Active Directory (Azure AD) パススルー認証** | はい | はい |
@@ -91,7 +92,7 @@ Synapse SQL では、組み込みのセキュリティ機能を使用し、デ�
 | **アクセス許可 - [サーバーレベル](/sql/relational-databases/security/authentication-access/server-level-roles)** | いいえ | はい。sysadmin とその他のサーバーロールがサポートされています |
 | **アクセス許可 - [列レベルのセキュリティ](/azure/synapse-analytics/sql-data-warehouse/column-level-security?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | はい | はい |
 | **ロールまたはグループ** | はい (データベース スコープ) | はい (サーバーとデータベースの両方のスコープ) |
-| **セキュリティと ID の関数** | 一部の Transact-SQL セキュリティ関数および演算子: `CURRENT_USER`、`HAS_DBACCESS`、`IS_MEMBER`、`IS_ROLEMEMBER`、`SESSION_USER`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME`、`EXECUTE AS`、`OPEN/CLOSE MASTER KEY` | 一部の Transact-SQL セキュリティ関数および演算子: `CURRENT_USER`、`HAS_DBACCESS`、`HAS_PERMS_BY_NAME`、`IS_MEMBER', 'IS_ROLEMEMBER`、`IS_SRVROLEMEMBER`、`SESSION_USER`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME`、`EXECUTE AS`、`REVERT`。 セキュリティ関数は、外部データのクエリを実行するために使用できません (クエリで使用できる変数に結果を格納します)。  |
+| **セキュリティと ID の関数** | 一部の Transact-SQL セキュリティ関数および演算子: `CURRENT_USER`、`HAS_DBACCESS`、`IS_MEMBER`、`IS_ROLEMEMBER`、`SESSION_USER`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME`、`EXECUTE AS`、`OPEN/CLOSE MASTER KEY` | 一部の Transact-SQL セキュリティ関数および演算子: `CURRENT_USER`、`HAS_DBACCESS`、`HAS_PERMS_BY_NAME`、`IS_MEMBER', 'IS_ROLEMEMBER`、`IS_SRVROLEMEMBER`、`SESSION_USER`、`SESSION_CONTEXT`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME`、`EXECUTE AS`、`REVERT`。 セキュリティ関数は、外部データのクエリを実行するために使用できません (クエリで使用できる変数に結果を格納します)。  |
 | **DATABASE SCOPED CREDENTIAL** | はい | はい |
 | **サーバー スコープの資格情報** | いいえ | はい |
 | **行レベルのセキュリティ** | [はい](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&view=sql-server-ver15) | いいえ |
@@ -131,7 +132,12 @@ Synapse SQL では、組み込みのセキュリティ機能を使用し、デ�
 | **内部ストレージ** | はい | いいえ |
 | **Azure Data Lake v2** | はい | はい |
 | **Azure Blob Storage** | はい | はい |
-| **Azure CosmosDB 分析ストレージ** | いいえ | はい。[Synapse Link](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) を使用 ([限定的なプレビュー](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#limitations)) |
+| **Azure SQL (リモート)** | いいえ | いいえ |
+| **Azure CosmosDB トランザクション ストレージ** | いいえ | いいえ |
+| **Azure CosmosDB 分析ストレージ** | いいえ | はい。[Synapse Link (プレビュー)](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) を使用 ([限定的なプレビュー](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#limitations)) |
+| **Apache Spark テーブル (ワークスペース内)** | いいえ | [メタデータ同期](develop-storage-files-spark-tables.md)を使用した PARQUET テーブルのみ |
+| **Apache Spark テーブル (リモート)** | いいえ | いいえ |
+| **Databricks テーブル (リモート)** | いいえ | いいえ |
 
 ## <a name="data-formats"></a>データ形式
 

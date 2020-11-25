@@ -6,20 +6,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/28/2020
+ms.date: 11/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 517b006b013bddbe4e7e7a3d44be74dfa36cc154
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: c7b186aa1a6f63b1bc3e9dbefa5001faac967762
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042594"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556166"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>ネイティブ Azure 証明書認証の P2S 構成のための VPN クライアント構成ファイルを作成およびインストールする
 
 VPN クライアント構成ファイルは、ZIP ファイルに含まれています。 構成ファイルでは、Windows、Mac IKEv2 VPN、Linux のネイティブ クライアントが、ネイティブ Azure 証明書認証を使用するポイント対サイト接続を介して仮想ネットワークに接続するために必要な設定を提供します。
 
-クライアント構成ファイルは、仮想ネットワークの VPN 構成に固有です。 VPN プロトコルの種類や認証の種類など、VPN クライアント構成ファイルの生成後にポイント対サイト VPN 構成に対する変更があった場合は、ユーザー デバイス用に新しい VPN クライアント構成ファイルを生成してください。 
+クライアント構成ファイルは、仮想ネットワークの VPN 構成に固有です。 VPN プロトコルの種類や認証の種類など、VPN クライアント構成ファイルの生成後にポイント対サイト VPN 構成に対する変更があった場合は、ユーザー デバイス用に新しい VPN クライアント構成ファイルを生成してください。
 
 * ポイント対サイト接続について詳しくは、「[ポイント対サイト VPN について](point-to-site-about.md)」を参照してください。
 * OpenVPN の取扱説明については、[P2S 向け OpenVPN を構成する](vpn-gateway-howto-openvpn.md)方法に関するページと [OpenVPN クライアントを構成する](vpn-gateway-howto-openvpn-clients.md)方法に関するページを参照してください。
@@ -34,20 +34,19 @@ VPN クライアント構成ファイルは、ZIP ファイルに含まれてい
 
 PowerShell または Azure Portal を使用してクライアント構成ファイルを生成することができます。 どちらの方法でも、同じ zip ファイルが返されます。 そのファイルを解凍して、次のフォルダーを表示します。
 
-  * **WindowsAmd64** および **WindowsX86** 。Windows の 32 ビットと 64 ビットのインストーラー パッケージがそれぞれに含まれています。 **WindowsAmd64** インストーラー パッケージは、Amd だけでなく、サポートされている 64 ビットの Windows クライアントを対象としています。
-  * **Generic** 。これには、独自の VPN クライアント構成の作成に使用される全般的な情報が含まれています。 Generic フォルダーが提供されるのは、IKEv2 または SSTP+IKEv2 がゲートウェイ上で構成された場合です。 構成されているのが SSTP のみの場合、Generic フォルダーは存在しません。
+* **WindowsAmd64** および **WindowsX86**。Windows の 32 ビットと 64 ビットのインストーラー パッケージがそれぞれに含まれています。 **WindowsAmd64** インストーラー パッケージは、Amd だけでなく、サポートされている 64 ビットの Windows クライアントを対象としています。
+* **Generic**。これには、独自の VPN クライアント構成の作成に使用される全般的な情報が含まれています。 Generic フォルダーが提供されるのは、IKEv2 または SSTP+IKEv2 がゲートウェイ上で構成された場合です。 構成されているのが SSTP のみの場合、Generic フォルダーは存在しません。
 
 ### <a name="generate-files-using-the-azure-portal"></a><a name="zipportal"></a>Azure Portal を使用してルールを生成する
 
 1. Azure Portal で、接続する仮想ネットワークの仮想ネットワーク ゲートウェイに移動します。
-2. 仮想ネットワーク ゲートウェイ ページで、 **[ポイント対サイトの構成]** をクリックします。
+1. 仮想ネットワーク ゲートウェイ ページで、 **[ポイント対サイトの構成]** を選択します。
 
-   ![クライアント ポータルをダウンロードする](./media/point-to-site-vpn-client-configuration-azure-cert/client-configuration-portal.png)
-3. [ポイント対サイトの構成] ページの上部で **[VPN クライアントのダウンロード]** をクリックします。 クライアント構成パッケージが生成されるまでに数分かかります。
-4. お使いのブラウザーは、クライアント構成の zip ファイルが使用可能なことを示します。 ゲートウェイと同じ名前が付いています。 そのファイルを解凍して、フォルダーを表示します。
+   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/download-client.png" alt-text="VPN クライアントをダウンロードする":::
+1. [ポイント対サイトの構成] ページの上部で **[VPN クライアントのダウンロード]** を選択します。 クライアント構成パッケージが生成されるまでに数分かかります。
+1. お使いのブラウザーは、クライアント構成の zip ファイルが使用可能なことを示します。 ゲートウェイと同じ名前が付いています。 そのファイルを解凍して、フォルダーを表示します。
 
 ### <a name="generate-files-using-powershell"></a><a name="zipps"></a>PowerShell を使用してファイルを生成する
-
 
 1. VPN クライアント構成ファイルを生成する際、"-AuthenticationMethod" の値は "EapTls" です。 次のコマンドを使用して、VPN クライアント構成ファイルを生成します。
 
@@ -56,7 +55,8 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 
    $profile.VPNProfileSASUrl
    ```
-2. ブラウザーに URL をコピーして、zip ファイルをダウンロードし、ファイルを解凍してフォルダーを表示します。
+
+1. ブラウザーに URL をコピーして、zip ファイルをダウンロードし、ファイルを解凍してフォルダーを表示します。
 
 ## <a name="windows"></a><a name="installwin"></a>Windows
 
@@ -66,46 +66,47 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 
  Azure に接続するすべての Mac で、ネイティブの IKEv2 VPN クライアントを手動で構成する必要があります。 Azure では、ネイティブの Azure 証明書の認証用の mobileconfig ファイルは提供されません。 **Generic** には、構成に必要な情報がすべて揃っています。 ダウンロードに、Generic フォルダーが表示されない場合は、IKEv2 がトンネルの種類として選択されていない可能性があります。 VPN Gateway Basic SKU は IKEv2 をサポートしていないことに注意してください。 IKEv2 を選択したら、もう一度 zip ファイルを生成して、Generic フォルダーを取得します。<br>Generic フォルダーには、次のファイルが含まれています。
 
-* **VpnSettings.xml** 。サーバー アドレスやトンネルの種類など、重要な設定が含まれています。 
-* **VpnServerRoot.cer** 。P2S 接続の設定中に Azure VPN ゲートウェイを検証するために必要なルート証明書が含まれています。
+* **VpnSettings.xml**。サーバー アドレスやトンネルの種類など、重要な設定が含まれています。 
+* **VpnServerRoot.cer**。P2S 接続の設定中に Azure VPN ゲートウェイを検証するために必要なルート証明書が含まれています。
 
 証明書認証用に Mac 上でネイティブ VPN クライアントを構成するには、次の手順を実行してください。 Azure に接続するすべての Mac でこれらの手順を完了する必要があります。
 
-1. **VpnServerRoot** ルート証明書を Mac にインポートします。 これを行うには、ファイルを Mac にコピーしてダブルクリックします。 **[追加]** をクリックしてインポートします。
+1. **VpnServerRoot** ルート証明書を Mac にインポートします。 これを行うには、ファイルを Mac にコピーしてダブルクリックします。 **[追加]** を選択してインポートします。
 
-   ![証明書の追加](./media/point-to-site-vpn-client-configuration-azure-cert/addcert.png)
+   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/add-certificate.png" alt-text="[証明書] ページを示すスクリーンショット":::
   
     >[!NOTE]
     >証明書をダブルクリックしても、 **[追加]** ダイアログが表示されない場合がありますが、証明書は正しいストアにインストールされています。 証明書のカテゴリの下にあるログイン キーチェーンで証明書を確認できます。
     >
   
-2. P2S 設定を構成したときに、Azure にアップロードしたルート証明書によって発行されたクライアント証明書が、インストール済みであることを確認します。 これは、前の手順でインストールした VPNServerRoot とは異なります。 クライアント証明書は認証に使用され、必須です。 証明書の生成の詳細については、「[証明書の生成](vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert)」をご覧ください。 クライアント証明書のインストール方法については、[クライアント証明書のインストール](point-to-site-how-to-vpn-client-install-azure-cert.md)に関するページをご覧ください。
-3. **[ネットワーク]** ダイアログを開き、 **[ネットワーク環境設定]** で **[+]** をクリックして、Azure 仮想ネットワークへの P2S 接続用に新しい VPN クライアント接続プロファイルを作成します。
+1. P2S 設定を構成したときに、Azure にアップロードしたルート証明書によって発行されたクライアント証明書が、インストール済みであることを確認します。 これは、前の手順でインストールした VPNServerRoot とは異なります。 クライアント証明書は認証に使用され、必須です。 証明書の生成の詳細については、「[証明書の生成](vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert)」をご覧ください。 クライアント証明書のインストール方法については、[クライアント証明書のインストール](point-to-site-how-to-vpn-client-install-azure-cert.md)に関するページをご覧ください。
+1. **[ネットワーク]** ダイアログを開き、 **[ネットワーク環境設定]** で **[+]** を選択して、Azure 仮想ネットワークへの P2S 接続用に新しい VPN クライアント接続プロファイルを作成します。
 
-   **[インターフェイス]** の値は "VPN"、 **[VPN タイプ]** の値は "IKEv2" です。 **[サービス名]** フィールドにプロファイルの名前を指定し、 **[作成]** をクリックして VPN クライアント接続プロファイルを作成します。
+   **[インターフェイス]** の値は "VPN"、 **[VPN タイプ]** の値は "IKEv2" です。 **[サービス名]** フィールドにプロファイルの名前を指定し、 **[作成]** を選択して VPN クライアント接続プロファイルを作成します。
 
-   ![スクリーンショットには [ネットワーク] ウィンドウが表示され、インターフェイス、VPN の種類の選択、サービス名の入力オプションが表示されています。](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
-4. **Generic** フォルダーの **VpnSettings.xml** ファイルから、 **VpnServer** タグの値をコピーします。 この値をプロファイルの **[サーバー アドレス]** フィールドと **[リモート ID]** フィールドに貼り付けます。
+   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/network.png" alt-text="スクリーンショットには [ネットワーク] ウィンドウが表示され、インターフェイス、VPN の種類の選択、サービス名の入力オプションが表示されています":::
+1. **Generic** フォルダーの **VpnSettings.xml** ファイルから、**VpnServer** タグの値をコピーします。 この値をプロファイルの **[サーバー アドレス]** フィールドと **[リモート ID]** フィールドに貼り付けます。
 
-   ![サーバー情報](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
-5. **[認証設定]** をクリックし、 **[証明書]** を選択します。   **Catalina** の場合は、 **[None]\(なし\)** をクリックし、 **[certificate]\(証明書\)** をクリックします。
+   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/server.png" alt-text="サーバー情報を示すスクリーンショット。":::
+1. **[認証設定]** を選択し、 **[証明書]** を選択します。 **Catalina** の場合は、 **[なし]** を選択し、 **[証明書]** を選択します。
 
-   ![認証設定](./media/point-to-site-vpn-client-configuration-azure-cert/authsettings.png)
+   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/authentication-settings.png" alt-text="認証設定を示すスクリーンショット。":::
 
-   * Catalina の場合は、 **[None]\(なし\)** を選択し、 **[Certificate]\(証明書\)** を選択します。 正しい証明書を **選択** してください。
+   Catalina の場合は、 **[None]\(なし\)** を選択し、 **[Certificate]\(証明書\)** を選択します。 正しい証明書を **選択** してください。
    
-   ![スクリーンショットには [ネットワーク] ウィンドウが表示され、[認証設定] に [なし] が選択され、[証明書] が選択されています。](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
+   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png" alt-text="スクリーンショットには [ネットワーク] ウィンドウが表示され、[認証設定] に [なし] が選択され、[証明書] が選択されています。":::
 
-6. **[選択]** をクリックして、 認証に使用するクライアント証明書を選択します。 これは、手順 2 でインストールした証明書です。
+1. **[選択]** をクリックして、 認証に使用するクライアント証明書を選択します。 これは、手順 2 でインストールした証明書です。
 
-   ![スクリーンショットには [ネットワーク] ウィンドウに [認証設定] が表示され、ここで証明書を選択できます。](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
-7. **[Choose An Identity]\(ID の選択\)** では、選択できる証明書の一覧が表示されます。 適切な証明書を選択し、 **[続ける]** をクリックします。
+   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png" alt-text="スクリーンショットには [ネットワーク] ウィンドウに [認証設定] が表示され、ここで証明書を選択できます。":::
+1. **[Choose An Identity]\(ID の選択\)** では、選択できる証明書の一覧が表示されます。 適切な証明書を選択し、 **[続ける]** を選択します。
 
-   ![[Choose An Identity]\(ID の選択\) ダイアログ ボックスのスクリーンショット。適切な証明書を選択できます。](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
-8. **[ローカル ID]** フィールドに、(手順 6 の) 証明書の名前を指定します。 この例では、"ikev2Client.com" です。 次に、 **[適用]** ボタンをクリックして変更を保存します。
+   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/identity.png" alt-text="[Choose An Identity]\(ID の選択\) ダイアログ ボックスのスクリーンショット。適切な証明書を選択できます。":::
 
-   ![apply](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
-9. **[ネットワーク]** ダイアログで、 **[適用]** をクリックしてすべての変更を保存します。 次に、 **[接続]** をクリックして、Azure 仮想ネットワークへの P2S 接続を開始します。
+1. **[ローカル ID]** フィールドに、(手順 6 の) 証明書の名前を指定します。 この例では `ikev2Client.com` です。 次に、 **[適用]** を選択して変更を保存します。
+
+   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/apply-connect.png" alt-text="[適用] を示すスクリーンショット。":::
+1. **[ネットワーク]** ダイアログで、 **[適用]** を選択して、すべての変更を保存します。 次に、 **[接続]** を選択して、Azure 仮想ネットワークへの P2S 接続を開始します。
 
 ## <a name="linux-strongswan-gui"></a><a name="linuxgui"></a>Linux (strongSwan GUI)
 
@@ -128,23 +129,28 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
    ```
    sudo apt install network-manager-strongswan
    ```
-2. **[Settings]\(設定\)** 、 **[Network]\(ネットワーク\)** の順に選択します。
+1. **[Settings]\(設定\)** 、 **[Network]\(ネットワーク\)** の順に選択します。 **+** ボタンを選択して、新しい接続を作成します。
 
-   ![接続を編集する](./media/point-to-site-vpn-client-configuration-azure-cert/editconnections.png)
-3. **+** ボタンをクリックして、新しい接続を作成します。
+   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/edit-connections.png" alt-text="[ネットワーク接続] ページを示すスクリーンショット。":::
 
-   ![接続を追加する](./media/point-to-site-vpn-client-configuration-azure-cert/addconnection.png)
-4. メニューから **[IPsec/IKEv2 (strongswan)]** を選び、ダブルクリックします。 この手順で使用する接続の名前を変更できます。
+1. メニューから **[IPsec/IKEv2 (strongswan)]** を選び、ダブルクリックします。
 
-   ![接続の種類を選ぶ](./media/point-to-site-vpn-client-configuration-azure-cert/choosetype.png)
-5. ダウンロード クライアント構成ファイルに含まれる **Generic** フォルダーから **VpnSettings.xml** ファイルを開きます。 **VpnServer** というタグを検索して、"azuregateway" で始まり ".cloudapp.net" で終わる名前をコピーします。
+   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/add-connection.png" alt-text="[VPN の追加] ページを示すスクリーンショット。":::
 
-   ![名前をコピーする](./media/point-to-site-vpn-client-configuration-azure-cert/vpnserver.png)
-6. この名前を、 **[ゲートウェイ]** セクションの、新しい VPN 接続の **[アドレス]** フィールドに貼り付けます。 次に、 **[証明書]** フィールドの最後のフォルダー アイコンを選択して、 **Generic** フォルダーに移動し、 **VpnServerRoot** ファイルを選択します。
-7. 接続の **[クライアント]** セクションの **[認証]** で、 **[Certificate/private key]\(証明書/秘密キー\)** を選びます。 **[証明書]** と **[秘密キー]** で、前に作成した証明書および秘密キーを選びます。 **[オプション]** で、 **[Request an inner IP address]\(内部 IP アドレスを要求する\)** をオンにします。 **[追加]** をクリックします。
+1. **[VPN の追加]** ページで、VPN 接続の名前を追加します。
 
-   ![内部 IP アドレスを要求する](./media/point-to-site-vpn-client-configuration-azure-cert/turnon.png)
-8. 接続を **[On]\(オン\)** にします。
+   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/choose-type.png" alt-text="接続の種類の選択を示すスクリーンショット。":::
+1. ダウンロード クライアント構成ファイルに含まれる **Generic** フォルダーから **VpnSettings.xml** ファイルを開きます。 **VpnServer** というタグを検索して、"azuregateway" で始まり ".cloudapp.net" で終わる名前をコピーします。
+
+   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/vpn-server.png" alt-text="データのコピーを示すスクリーンショット。":::
+1. この名前を、 **[ゲートウェイ]** セクションの、新しい VPN 接続の **[アドレス]** フィールドに貼り付けます。 次に、 **[証明書]** フィールドの最後のフォルダー アイコンを選択して、**Generic** フォルダーに移動し、**VpnServerRoot** ファイルを選択します。
+1. 接続の **[クライアント]** セクションの **[認証]** で、 **[Certificate/private key]\(証明書/秘密キー\)** を選びます。 **[証明書]** と **[秘密キー]** で、前に作成した証明書および秘密キーを選びます。 **[オプション]** で、 **[Request an inner IP address]\(内部 IP アドレスを要求する\)** をオンにします。 その後、 **[追加]** を選択します。
+
+   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/ip-request.png" alt-text="[内部 IP アドレスを要求する] を示すスクリーンショット。":::
+
+1. 接続を **[On]\(オン\)** にします。
+
+   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/turn-on.png" alt-text="コピーを示すスクリーンショット。":::
 
 ## <a name="linux-strongswan-cli"></a><a name="linuxinstallcli"></a>Linux (strongSwan CLI)
 
@@ -161,11 +167,11 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 ### <a name="install-and-configure"></a>インストールと構成
 
 1. Azure portal から VPNClient パッケージをダウンロードします。
-2. ファイルを抽出します。
-3. VpnServerRoot.cer を **Generic** フォルダーから /etc/ipsec.d/cacerts にコピーするか移動します。
-4. cp client.p12 を /etc/ipsec.d/private/ にコピーするか移動します。 このファイルは、Azure VPN Gateway のクライアント証明書です。
-5. VpnSettings.xml ファイルを開き、`<VpnServer>` の値をコピーします。 次の手順でこの値を使用します。
-6. 以下のサンプルの値を調整し、/etc/ipsec.conf 構成にこのサンプルを追加します。
+1. ファイルを展開します。
+1. **VpnServerRoot.cer** を **Generic** フォルダーから **/etc/ipsec.d/cacerts** にコピーするか移動します。
+1. **cp client.p12** を **/etc/ipsec.d/private/** にコピーするか移動します。 このファイルは、VPN ゲートウェイのクライアント証明書です。
+1. **VpnSettings.xml** ファイルを開き、`<VpnServer>` の値をコピーします。 次の手順でこの値を使用します。
+1. 下のサンプルの値を調整し、 **/etc/ipsec.conf** 構成にこのサンプルを追加します。
   
    ```
    conn azure
@@ -181,13 +187,13 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
          leftsourceip=%config
          auto=add
    ```
-6. 次のコードを */etc/ipsec.secrets* に追加します。
+1. 次の値を **/etc/ipsec.secrets** に追加します。
 
    ```
    : P12 client.p12 'password' # key filename inside /etc/ipsec.d/private directory
    ```
 
-7. 次のコマンドを実行します。
+1. 次のコマンドを実行します。
 
    ```
    # ipsec restart
@@ -196,9 +202,7 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[P2S 構成を完了する](vpn-gateway-howto-point-to-site-rm-ps.md)ための記事に戻ります。
+作業元の記事に戻り、P2S の構成を完了します。
 
-P2S 接続のトラブルシューティングを行うには、次の記事を参照してください。
-
-  * [Azure ポイント対サイト接続のトラブルシューティング](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
-  * [macOS X VPN クライアントからの VPN 接続のトラブルシューティング](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
+* [PowerShell の構成手順](vpn-gateway-howto-point-to-site-rm-ps.md)。
+* [Azure portal の構成手順](vpn-gateway-howto-point-to-site-resource-manager-portal.md)。

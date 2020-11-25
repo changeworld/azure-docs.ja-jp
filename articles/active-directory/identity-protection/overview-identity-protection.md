@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ed8d645c5bedf6df087fa9c948415c6a1df24e9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 74cc5bb2b434e757e090bac45202704eb934a522
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783183"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835749"
 ---
 # <a name="what-is-identity-protection"></a>Identity Protection とは
 
@@ -39,9 +39,9 @@ Microsoft の ID セキュリティと保護チームを主導する Alex Weiner
 >
 > 昨年の Ignite では、ID システムが受ける上位 3 つの攻撃について説明しました。 これらの攻撃の最近のボリュームは次のとおりです
 >   
->   - **侵害のリプレイ** :2018 年 5 月に 46 億件の攻撃を検出
->   - **パスワード スプレー** :2018 年 4 月に 35 万件
->   - **フィッシング** :これは正確に定量化するのは困難ですが、2018 年 3 月には 2,300 万件のリスクイベントがあり、その多くはフィッシング関連です
+>   - **侵害のリプレイ**:2018 年 5 月に 46 億件の攻撃を検出
+>   - **パスワード スプレー**:2018 年 4 月に 35 万件
+>   - **フィッシング**:これは正確に定量化するのは困難ですが、2018 年 3 月には 2,300 万件のリスクイベントがあり、その多くはフィッシング関連です
 
 ## <a name="risk-detection-and-remediation"></a>リスクの検出と修復
 
@@ -59,7 +59,7 @@ Identity Protection は、次の分類のリスクを識別します。
 
 これらのリスクとその計算方法の詳細については、「[リスクとは](concept-identity-protection-risks.md)」を説明する記事を参照してください。
 
-リスクシグナルは、Azure Multi-Factor Authentication の実行、セルフサービス パスワード リセットを使用したパスワードのリセット、管理者がアクションを実行するまでのブロックなど、修復作業をトリガーすることができます。
+リスク シグナルは、Azure AD Multi-Factor Authentication の実行、セルフサービス パスワード リセットを使用したパスワードのリセット、管理者がアクションを実行するまでのブロックなど、修復作業をトリガーすることができます。
 
 ## <a name="risk-investigation"></a>リスクの調査
 

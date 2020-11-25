@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: amikuma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: e223b5ae072a323ad56ed396c06580fea9b8b7ab
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 52e6c70b76b83c73059dc887eaefe8403befac13
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335249"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594234"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>クイックスタート: 認証コード フローを使用して Node.js Web アプリ内でユーザーをサインインさせ、アクセス トークンを取得する
 
-このクイックスタートでは、Node.js Web アプリで認証コード フローを使用して、個人アカウント、職場アカウント、学校アカウントのユーザーをサインインさせる方法を示すコード サンプルを実行します。 このコード サンプルでは、Web API (この場合は Microsoft Graph API) を呼び出すためのアクセス トークンを取得する方法も示しています。 図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
+このクイックスタートでは、Node.js Web アプリで承認コード フローを使用してユーザーをサインインする方法を示すコード サンプルをダウンロードして実行します。 このコード サンプルでは、Microsoft Graph API を呼び出すためのアクセス トークンを取得する方法も示します。 
+
+図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
 
 このクイックスタートでは、承認コード フローで Node.js 用 Microsoft Authentication Library (MSAL Node) を使用します。
 
@@ -65,7 +67,7 @@ ms.locfileid: "94335249"
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-node-app"></a>手順 3:Node アプリの構成
 >
-> プロジェクトを展開します。 *ms-identity-node-main* フォルダーを開き、 *index.js* ファイルを開きます。
+> プロジェクトを展開します。*ms-identity-node-main* フォルダーを開き、*index.js* ファイルを開きます。
 > `clientID` に **[アプリケーション (クライアント) ID]** の値を設定します。
 > `clientSecret` に **[クライアント シークレット]** の **値** を設定します。
 >
@@ -102,7 +104,7 @@ ms.locfileid: "94335249"
 > ```
 >
 > > [!TIP]
-> > **[アプリケーション (クライアント) ID]** の値を見つけるには、Azure portal でアプリ登録の **[概要]** ページに移動します。 **[証明書とシークレット]** の下に移動して、 **クライアント シークレット** を取得するか、新しく生成します。
+> > **[アプリケーション (クライアント) ID]** の値を見つけるには、Azure portal でアプリ登録の **[概要]** ページに移動します。 **[証明書とシークレット]** の下に移動して、**クライアント シークレット** を取得するか、新しく生成します。
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる

@@ -9,11 +9,11 @@ ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: 54612bee5715cdb78141a8aacfa5d24c814269d1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312397"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014722"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>ワークスペースのマネージド ID にアクセス許可を付与する (プレビュー)
 
@@ -44,19 +44,19 @@ Azure portal を使用して Azure Synapse ワークスペースが作成され�
 
 ![ADLS Gen2 ストレージ アカウントの詳細の入力](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-2.png)
 
-ワークスペース作成者が ADLS Gen2 ストレージ アカウントの **所有者** でもある場合、Azure Synapse では、" *ストレージ BLOB データ共同作成者* " ロールをマネージド ID に割り当てます。 入力したストレージ アカウントの詳細の下に、次のメッセージが表示されます。
+ワークスペース作成者が ADLS Gen2 ストレージ アカウントの **所有者** でもある場合、Azure Synapse では、"*ストレージ BLOB データ共同作成者*" ロールをマネージド ID に割り当てます。 入力したストレージ アカウントの詳細の下に、次のメッセージが表示されます。
 
 ![ストレージ BLOB データ共同作成者の割り当てに成功](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-3.png)
 
-ワークスペース作成者が ADLS Gen2 ストレージ アカウントの所有者でない場合、Azure Synapse では、 *ストレージ BLOB データ共同作成者* ロールをマネージド ID に割り当てません。 ストレージ アカウントの詳細の下に表示されるメッセージは、 *ストレージ BLOB データ共同作成者* ロールをマネージド ID に付与するための十分なアクセス許可がないことをワークスペース作成者に通知します。
+ワークスペース作成者が ADLS Gen2 ストレージ アカウントの所有者でない場合、Azure Synapse では、*ストレージ BLOB データ共同作成者* ロールをマネージド ID に割り当てません。 ストレージ アカウントの詳細の下に表示されるメッセージは、*ストレージ BLOB データ共同作成者* ロールをマネージド ID に付与するための十分なアクセス許可がないことをワークスペース作成者に通知します。
 
 ![ストレージ BLOB データ共同作成者の割り当てに失敗](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-4.png)
 
-メッセージに示されているように、 *ストレージ BLOB データ共同作成者* がマネージド ID に割り当てられていない限り、Spark プールを作成することはできません。
+メッセージに示されているように、*ストレージ BLOB データ共同作成者* がマネージド ID に割り当てられていない限り、Spark プールを作成することはできません。
 
 ### <a name="grant-permissions-to-managed-identity-after-workspace-creation"></a>ワークスペースの作成後にマネージド ID にアクセス許可を付与する
 
-ワークスペースの作成中に、" *ストレージ BLOB データ共同作成者* " をマネージド ID に割り当てていない場合は、ADLS Gen2 ストレージ アカウントの **所有者** が手動でそのロールを ID に割り当てます。 次の手順は、手動での割り当てを行う場合に役立ちます。
+ワークスペースの作成中に、"*ストレージ BLOB データ共同作成者*" をマネージド ID に割り当てていない場合は、ADLS Gen2 ストレージ アカウントの **所有者** が手動でそのロールを ID に割り当てます。 次の手順は、手動での割り当てを行う場合に役立ちます。
 
 #### <a name="step-1-navigate-to-the-adls-gen2-storage-account-in-azure-portal"></a>手順 1:Azure portal で ADLS Gen2 ストレージ アカウントに移動する
 
@@ -69,7 +69,7 @@ Azure portal で、ADLS Gen2 ストレージ アカウントを開き、左側�
 ![ADLS Gen2 ストレージ アカウントのコンテナー](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-7.png)
 
 
-それと同じコンテナーまたはファイルシステムを選択して、 *ストレージ BLOB データ共同作成者* ロールをマネージド ID に付与します。
+それと同じコンテナーまたはファイルシステムを選択して、*ストレージ BLOB データ共同作成者* ロールをマネージド ID に付与します。
 ![選択する必要があるコンテナーまたはファイル システムを示すスクリーンショット。](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
 
 #### <a name="step-3-navigate-to-access-control"></a>手順 3:アクセス制御に移動する
@@ -114,7 +114,7 @@ Azure portal で、ADLS Gen2 ストレージ アカウントを開き、左側�
 
 ![ロールの割り当てを確認する](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-14.png)
 
-**[ストレージ BLOB データ共同作成者]** セクションの下に、 *ストレージ BLOB データ共同作成者* ロールが割り当てられているマネージド ID が表示されているのを確認できます。 
+**[ストレージ BLOB データ共同作成者]** セクションの下に、*ストレージ BLOB データ共同作成者* ロールが割り当てられているマネージド ID が表示されているのを確認できます。 
 ![ADLS Gen2 ストレージ アカウントのコンテナーの選択](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-15.png)
 
 ## <a name="next-steps"></a>次のステップ

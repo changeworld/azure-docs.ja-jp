@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:Visual Studio Code 拡張機能 (プレビュー) を設定する
 titleSuffix: Azure Machine Learning
-description: Visual Studio Code の Azure Machine Learning 拡張機能を設定する方法について説明します。
+description: Visual Studio Code の Azure Machine Learning 拡張機能を使用して、トレーニング スクリプトをインストールして実行する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 07/09/2020
-ms.openlocfilehash: 48fb2ce3672634af202500ccb256e7730933fff8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/16/2020
+ms.openlocfilehash: f485c12bf82dde798a77175a3fab4d76488150c3
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86199758"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701203"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension-preview"></a>Visual Studio Code の Azure Machine Learning (プレビュー) 拡張機能を設定する
 
@@ -36,7 +36,7 @@ Visual Studio Code の Azure Machine Learning 拡張機能を使用して、ス�
 ## <a name="install-the-extension"></a>拡張機能をインストールする
 
 1. Visual Studio Code を開きます。
-1. **アクティビティ バー**の**拡張機能**アイコンを選択して、拡張機能ビューを開きます。
+1. **アクティビティ バー** の **拡張機能** アイコンを選択して、拡張機能ビューを開きます。
 1. 拡張機能ビューで、「Azure Machine Learning」を検索します。
 1. **[インストール]** を選択します。
 
@@ -46,7 +46,7 @@ Visual Studio Code の Azure Machine Learning 拡張機能を使用して、ス�
 > [!NOTE]
 > または、[インストーラーを直接ダウンロード](https://aka.ms/vscodetoolsforai)して、Visual Studio Marketplace 経由で Azure Machine Learning 拡張機能をインストールすることもできます。 
 
-このチュートリアルの残りの手順は、拡張機能の**バージョン 0.6.8** を使用してテストされています。
+このチュートリアルの残りの手順は、拡張機能の **バージョン 0.6.8** を使用してテストされています。
 
 ## <a name="sign-in-to-your-azure-account"></a>Azure アカウントにサインインする
 
@@ -62,7 +62,7 @@ Azure でリソースをプロビジョニングし、ワークロードを実�
 1. [VS Code Tools for AI リポジトリ](https://github.com/microsoft/vscode-tools-for-ai/archive/master.zip)をダウンロードし、お使いのコンピューターの任意の場所に解凍します。
 1. Visual Studio Code で `mnist-vscode-docs-sample` ディレクトリを開きます。
 1. アクティビティ バーの **Azure** アイコンを選択します。
-1. Azure Machine Learning ビューの上部にある**実験の実行**アイコンを選択します。
+1. Azure Machine Learning ビューの上部にある **実験の実行** アイコンを選択します。
 
     > [!div class="mx-imgBorder"]
     > ![実験の実行](./media/tutorial-setup-vscode-extension/run-experiment.PNG)
@@ -73,7 +73,7 @@ Azure でリソースをプロビジョニングし、ワークロードを実�
     > 既存の Azure Machine Learning リソースがプロビジョニング済みである場合は、[VS Code で実験を実行する方法についてのガイド](./how-to-manage-resources-vscode.md#run-experiment)を参照してください。
 
     1. Azure サブスクリプションを選択します。
-    1. 環境の一覧から **Conda の依存関係ファイル**を選択します。
+    1. 環境の一覧から **Conda の依存関係ファイル** を選択します。
     1. **Enter** キーを押して、Conda の依存関係ファイルを参照します。 このファイルには、スクリプトの実行に必要な依存関係が含まれています。 このケースの依存関係ファイルは、`mnist-vscode-docs-sample` ディレクトリにある `env.yml` ファイルです。
     1. **Enter** キーを押して、トレーニング スクリプト ファイルを参照します。 これは、手書き数字の画像を分類する機械学習モデルのコードを含むファイルです。 この場合、モデルをトレーニングするためのスクリプトは、`mnist-vscode-docs-sample` ディレクトリ内にある `train.py` ファイルです。
 

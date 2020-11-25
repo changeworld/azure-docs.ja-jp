@@ -7,12 +7,12 @@ ms.reviewer: dsindona
 ms.service: marketplace
 ms.topic: overview
 ms.date: 10/15/2020
-ms.openlocfilehash: 0b0f290a5f560fa8f6db109422c8790ecef9698e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a559c8613af97251ea6e85ef2a16121a89ffb6ad
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107047"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94739770"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースとは何ですか?
 
@@ -24,7 +24,7 @@ Microsoft コマーシャル マーケットプレースは、ISV (独立系ソ�
 
 Microsoft コマーシャル マーケットプレースには、[Microsoft AppSource](https://appsource.microsoft.com/) と [Azure Marketplace](https://azuremarketplace.microsoft.com/) の 2 つのオンライン ストアがあります。 Microsoft AppSource にはビジネス ソリューションが、Azure Marketplace には IT ソリューションが掲載されます。 コマーシャル マーケットプレースのソフトウェアとサービスが、Microsoft 365、Dynamics 365、Microsoft Power Platform、Azure などの Microsoft の製品に含まれている場合もあります。 Microsoft のオンライン ストアと製品内エクスペリエンスが、毎月何百万という潜在顧客を呼び込んでいます。 それぞれのオンライン ストアで異なるシナリオが提供されているため、皆様のソリューションまたはサービスを、それを必要とする顧客に確実に届けることができます。
 
-パートナー センターでコマーシャル マーケットプレース オファーを作成すると、オファーの種類やカテゴリなど、選択したオプションに応じて、どちらか一方または両方のオンライン ストアにそのオファーが登録されます。 まれに、オファーが両方のオンライン ストアのユーザーに関係することがありますが、その場合は両方に表示されます。 詳細については、[オンライン ストアの選択](determine-your-listing-type.md#selecting-an-online-store)に関するセクションおよび「[Microsoft AppSource と Azure Marketplace のバイヤー ガイド](https://aka.ms/MarketplaceBuyerGuide)」を参照してください。
+パートナー センターでコマーシャル マーケットプレース オファーを作成すると、オファーの種類やカテゴリなど、選択したオプションに応じて、どちらか一方または両方のオンライン ストアにそのオファーが登録されます。 まれに、オファーが両方のオンライン ストアのユーザーに関係することがありますが、その場合は両方に表示されます。 詳細については、「[オンライン ストアごとのリスト オプションと価格オプション](determine-your-listing-type.md#listing-and-pricing-options-by-online-store)」および「[A Buyer's Guide to Microsoft AppSource and Azure Marketplace (Microsoft AppSource および Azure Marketplace の購入者ガイド)](https://aka.ms/MarketplaceBuyerGuide)」を参照してください。
 
 ### <a name="microsoft-appsource"></a>Microsoft AppSource
 
@@ -38,11 +38,11 @@ Microsoft コマーシャル マーケットプレースには、[Microsoft AppS
 
 AppSource プランには、Microsoft 365、Dynamics 365、Power Platform、Azure からアクセスすることもできます。 次の例は、AppSource アドインに Power BI の **[ファイル]** メニューからアクセスする方法を示したものです。
 
-:::image type="content" source="media/overview/power-bi.png" alt-text="Microsoft AppSource のオファー登録情報ページの画像。"::: 
+:::image type="content" source="media/overview/power-bi.png" alt-text="AppSource 内の Power BI ビジュアルに Power BI の [ファイル] メニューからアクセスする方法"::: 
 
 このオプションを選択すると、ユーザーが Power BI アドインをその名前やカテゴリで検索できるウィンドウが開きます。 
 
-:::image type="content" source="media/overview/power-bi-apps.png" alt-text="Microsoft AppSource のオファー登録情報ページの画像。"::: 
+:::image type="content" source="media/overview/power-bi-apps.png" alt-text="Power BI 内から AppSource のアドインを一覧表示する"::: 
 
 ### <a name="azure-marketplace"></a>Azure Marketplace
 
@@ -50,17 +50,17 @@ AppSource プランには、Microsoft 365、Dynamics 365、Power Platform、Azur
 
 以下に示したのは、Azure Marketplace のオファー登録情報ページの例です。
 
-:::image type="content" source="media/overview/example-marketplace.png" alt-text="Microsoft AppSource のオファー登録情報ページの画像。"::: 
+:::image type="content" source="media/overview/example-marketplace.png" alt-text="Azure Marketplace のオファー登録情報ページの画像。"::: 
 
 #### <a name="azure-marketplace-in-the-azure-portal"></a>Azure portal における Azure Marketplace
 
-Azure ユーザーは、 [Azure portal](https://portal.azure.com/) の **[リソースの作成]** オプションから、Azure Marketplace ソリューションを探してデプロイすることができます。
+Azure ユーザーは、[Azure portal](https://portal.azure.com/) の **[リソースの作成]** オプションから、Azure Marketplace ソリューションを探してデプロイすることができます。
 
-:::image type="content" source="media/overview/create-resource.png" alt-text="Microsoft AppSource のオファー登録情報ページの画像。"::: 
+:::image type="content" source="media/overview/create-resource.png" alt-text="Azure portal の [リソースの作成] オプションの画像"::: 
 
 このオプションを選択すると、Azure portal に Azure Marketplace が表示され、名前やカテゴリでソリューションを検索することができます。
 
-:::image type="content" source="media/overview/search-portal.png" alt-text="Microsoft AppSource のオファー登録情報ページの画像。"::: 
+:::image type="content" source="media/overview/search-portal.png" alt-text="Azure portal 内の Azure Marketplace の検索オプションを示す画像"::: 
 
 ## <a name="benefits-of-selling-with-microsoft"></a>Microsoft との共同販売の利点
 

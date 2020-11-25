@@ -2,13 +2,13 @@
 title: Azure Lab Services のクラスルーム ラボの使用設定を構成する
 description: ラボの学生数の構成、学生のラボへの登録、学生が VM を使用できる時間数の制御などを行う方法について説明します。
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 742fcd2b504bce7ad2257edd559e4b66a9172d24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/11/2020
+ms.openlocfilehash: d3100f1a7e67e3b0d403375de02cb3daf5fcfb31
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399671"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555721"
 ---
 # <a name="add-and-manage-lab-users"></a>ラボ ユーザーを追加および管理する
 
@@ -41,7 +41,9 @@ ms.locfileid: "91399671"
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>CSV ファイルをアップロードしてユーザーを追加する
 
-ユーザーのメール アドレスを含む CSV ファイルをアップロードしてユーザーを追加することもできます。
+ユーザーのメール アドレスを含む CSV ファイルをアップロードしてユーザーを追加することもできます。 
+
+CSV テキスト ファイルは、コンマ区切り (CSV) の表形式データ (数値とテキスト) を格納するために使用されます。 CSV ファイルは、(スプレッドシートなどの) 列フィールドに情報を格納するのではなく、コンマで区切られた情報を格納します。 CSV ファイル内の各行には、同じ数のコンマ区切りの "フィールド" があります。 Excel を使用すると、簡単に CSV ファイルを作成および編集できます。
 
 1. Microsoft Excel で、学生のメール アドレスを 1 列で列挙する CSV ファイルを作成します。
 
@@ -91,11 +93,11 @@ ms.locfileid: "91399671"
 
 1. **[ユーザー]** ウィンドウの一覧から、1 人または複数の学生を選択します。 
 
-1. 選択した学生の行で、**封筒**アイコンを選択するか、ツールバーの **[招待]** を選択します。 
+1. 選択した学生の行で、**封筒** アイコンを選択するか、ツールバーの **[招待]** を選択します。 
 
     ![選択したユーザーを招待する](./media/how-to-configure-student-usage/invite-selected-users.png)
 
-1. **[Send invitation by email]\(メールで招待を送信する\)** ウィンドウで、オプションの**メッセージ**を入力し、 **[送信]** を選択します。 
+1. **[Send invitation by email]\(メールで招待を送信する\)** ウィンドウで、オプションの **メッセージ** を入力し、 **[送信]** を選択します。 
 
     ![選択したユーザーに電子メールを送信する](./media/how-to-configure-student-usage/send-invitation-to-selected-users.png)
 
@@ -172,6 +174,7 @@ ms.locfileid: "91399671"
 - GitHub アカウント。 このアカウントは、Microsoft アカウントとリンクされている必要があります。
 
 ### <a name="use-a-non-microsoft-email-account"></a>Microsoft 以外のメール アカウントを使用する
+
 学生は、Microsoft 以外のメール アカウントを使用して、クラスルーム ラボに登録してサインインすることができます。  ただし、登録を行うには、最初に、Microsoft 以外のメール アドレスにリンクされている Microsoft アカウントを作成する必要があります。
 
 多くの学生は既に、Microsoft 以外のメール アドレスにリンクされた Microsoft アカウントを持っていることがあります。 たとえば学生は、Office、Skype、OneDrive、Windows などの Microsoft の他の製品やサービスで自分のメール アドレスを使用したことがある場合は、既に Microsoft アカウントを持っています。  
@@ -186,6 +189,7 @@ ms.locfileid: "91399671"
 > 学生がクラスルーム ラボにサインインするときに、Microsoft アカウントを作成するオプションは表示されません。 このため、Microsoft 以外のアカウントを使用している学生に送信する、クラスルーム ラボの登録メールには、このサインアップ リンク http://signup.live.com を含めることが推奨されます。
 
 ### <a name="use-a-github-account"></a>GitHub アカウントを使用する
+
 学生は、既存の GitHub アカウントを使用して、クラスルーム ラボに登録してサインインすることもできます。 学生が GitHub アカウントにリンクされている Microsoft アカウントを既に持っている場合は、前のセクションで示したように、サインインしてパスワードを入力できます。 
 
 GitHub アカウントをまだ Microsoft アカウントにリンクしていない場合は、以下の操作を実行できます。
@@ -209,6 +213,7 @@ GitHub アカウントをまだ Microsoft アカウントにリンクしてい�
 
 
 ## <a name="next-steps"></a>次のステップ
+
 次の記事をご覧ください。
 
 - 管理者の場合:[ラボ アカウントを作成および管理する](how-to-manage-lab-accounts.md)

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: b07c53d048d60b555c33cacf42557f5da26552cc
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/09/2020
+ms.openlocfilehash: 065cfe6695d7651d3cda49ad32428127633b834c
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637481"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555449"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Azure portal を使用して、SQL Server にある複数のテーブルから Azure SQL Database のデータベースにデータを増分読み込みする
 
@@ -42,15 +42,15 @@ ms.locfileid: "92637481"
 ## <a name="overview"></a>概要
 このソリューションを作成するための重要な手順を次に示します。 
 
-1. **基準値列を選択する** 。
+1. **基準値列を選択する**。
     
     ソース データ ストアのテーブルごとに、いずれか 1 つの列を選択します。この列は、実行ごとに新しいレコードまたは更新されたレコードを特定する目的で使用されます。 通常、行が作成または更新されたときに常にデータが増える列を選択します (last_modify_time、ID など)。 この列の最大値が基準値として使用されます。
 
-1. **基準値を格納するためのデータ ストアを準備する** 。   
+1. **基準値を格納するためのデータ ストアを準備する**。   
     
     このチュートリアルでは、SQL データベースに基準値を格納します。
 
-1. **次のアクティビティを含んだパイプラインを作成する** 。 
+1. **次のアクティビティを含んだパイプラインを作成する**。 
     
     a. パイプラインにパラメーターとして渡された一連のソース テーブル名を反復処理する ForEach アクティビティを作成する。 このアクティビティが、ソース テーブルごとに次のアクティビティを呼び出して各テーブルの差分読み込みを実行します。
 
@@ -68,8 +68,8 @@ ms.locfileid: "92637481"
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="prerequisites"></a>前提条件
-* **SQL Server** 。 このチュートリアルでは、SQL Server データベースをソース データ ストアとして使用します。 
-* **Azure SQL データベース** 。 シンク データ ストアとして Azure SQL Database のデータベースを使用します。 SQL Database のデータベースがない場合の作成手順については、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。 
+* **SQL Server**。 このチュートリアルでは、SQL Server データベースをソース データ ストアとして使用します。 
+* **Azure SQL データベース**。 シンク データ ストアとして Azure SQL Database のデータベースを使用します。 SQL Database のデータベースがない場合の作成手順については、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>SQL Server データベースにソース テーブルを作成する
 
@@ -235,12 +235,12 @@ END
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-1. Web ブラウザー ( **Microsoft Edge** または **Google Chrome** ) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-2. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。 
+1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
+2. 左側のメニューで、 **[リソースの作成]**  >  **[統合]**  >  **[Data Factory]** を選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-3. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「 **ADFMultiIncCopyTutorialDF** 」と入力します。 
+3. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFMultiIncCopyTutorialDF**」と入力します。 
  
    Azure データ ファクトリの名前は **グローバルに一意** にする必要があります。 赤い感嘆符と次のエラーが表示される場合は、データ ファクトリの名前を変更して (yournameADFIncCopyTutorialDF など)、作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
   
@@ -274,7 +274,7 @@ END
 1. **[Integration Runtime Setup]\(統合ランタイムの設定\)** ウィンドウで、 **[Perform data movement and dispatch activities to external computes]\(データの移動を実行し、アクティビティを外部コンピューティングにディスパッチする\)** を選択し、 **[続行]** をクリックします。 
 
 1. **[Self-Hosted]\(セルフホスト\)** を選択し、 **[続行]** をクリックします。 
-1. **[名前]** に「 **MySelfHostedIR** 」と入力し、 **[作成]** をクリックします。 
+1. **[名前]** に「**MySelfHostedIR**」と入力し、 **[作成]** をクリックします。 
 
 1. **[Option 1: Express setup]\(オプション 1: 高速セットアップ\)** セクションの **[Click here to launch the express setup for this computer]\(このコンピューターで高速セットアップを起動するにはここをクリック\)** をクリックします。 
 
@@ -300,7 +300,7 @@ END
 
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。
 
-    1. **[名前]** に「 **SqlServerLinkedService** 」と入力します。 
+    1. **[名前]** に「**SqlServerLinkedService**」と入力します。 
     1. **[Connect via integration runtime]\(統合ランタイム経由で接続\)** で **[MySelfHostedIR]** を選択します。 これは **重要な** 手順です。 既定の統合ランタイムでは、オンプレミスのデータ ストアに接続できません。 そこで、前に作成したセルフホステッド統合ランタイムを使用します。 
     1. **[サーバー名]** に、SQL Server データベースを保持するサーバーの名前を入力します。
     1. **[データベース名]** に、SQL Server にソース データを含むデータベースの名前を入力します。 テーブルを作成してこのデータベースにデータを挿入する作業は、既に前提条件の一部として行っています。 
@@ -317,7 +317,7 @@ END
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure SQL Database]** を選択し、 **[続行]** をクリックします。 
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。
 
-    1. **[名前]** に「 **AzureSqlDatabaseLinkedService** 」と入力します。 
+    1. **[名前]** に「**AzureSqlDatabaseLinkedService**」と入力します。 
     1. **[サーバー名]** で、ドロップダウン リストからサーバーの名前を選択します。 
     1. **[データベース名]** で、前提条件の一部として customer_table と project_table を作成したデータベースを選択します。 
     1. **[ユーザー名]** に、データベースにアクセスするユーザーの名前を入力します。 
@@ -338,7 +338,7 @@ END
 
 1. **[新しいデータセット]** ウィンドウで、 **[SQL Server]** を選択し、 **[続行]** をクリックします。 
 
-1. データセットを設定するために、Web ブラウザーで新しいタブが開かれます。 さらに、ツリー ビューにデータセットが表示されます。 下部にあるプロパティ ウィンドウの **[全般]** タブで、 **[名前]** に「 **SourceDataset** 」と入力します。 
+1. データセットを設定するために、Web ブラウザーで新しいタブが開かれます。 さらに、ツリー ビューにデータセットが表示されます。 下部にあるプロパティ ウィンドウの **[全般]** タブで、 **[名前]** に「**SourceDataset**」と入力します。 
 
 1. プロパティ ウィンドウの **[接続]** タブに切り替えて、 **[リンクされたサービス]** で **[SqlServerLinkedService]** を選択します。 ここではテーブルを選択しません。 このパイプライン内のコピー アクティビティは、テーブル全体を読み込むことはせずに、SQL クエリを使用してデータを読み込みます。
 
@@ -350,12 +350,12 @@ END
 
 1. **[新しいデータセット]** ウィンドウで **[Azure SQL Database]** を選択し、 **[続行]** をクリックします。 
 
-1. データセットを設定するために、Web ブラウザーで新しいタブが開かれます。 さらに、ツリー ビューにデータセットが表示されます。 下部にあるプロパティ ウィンドウの **[全般]** タブで、 **[名前]** に「 **SinkDataset** 」と入力します。
+1. データセットを設定するために、Web ブラウザーで新しいタブが開かれます。 さらに、ツリー ビューにデータセットが表示されます。 下部にあるプロパティ ウィンドウの **[全般]** タブで、 **[名前]** に「**SinkDataset**」と入力します。
 
 1. プロパティ ウィンドウの **[ソース]** タブに切り替え、以下の手順を実行します。 
 
     1. **[Create/update parameters]\(パラメーターの作成/更新\)** セクションで、 **[新規]** をクリックします。 
-    1. **[名前]** に「 **SinkTableName** 」と入力し、 **[type]\(型\)** として **[文字列]** を指定します。 このデータセットは、 **SinkTableName** をパラメーターとして受け取ります。 SinkTableName パラメーターは、実行時にパイプラインによって動的に設定されます。 パイプライン内の ForEach アクティビティは、一連のテーブル名を反復処理しながら、各イテレーションの中でこのデータセットにテーブル名を渡します。
+    1. **[名前]** に「**SinkTableName**」と入力し、 **[type]\(型\)** として **[文字列]** を指定します。 このデータセットは、**SinkTableName** をパラメーターとして受け取ります。 SinkTableName パラメーターは、実行時にパイプラインによって動的に設定されます。 パイプライン内の ForEach アクティビティは、一連のテーブル名を反復処理しながら、各イテレーションの中でこのデータセットにテーブル名を渡します。
    
         ![シンク データセット - プロパティ](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
 1. プロパティ ウィンドウの **[接続]** タブに切り替えて、 **[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。 **[テーブル]** プロパティで、 **[動的なコンテンツの追加]** をクリックします。   
@@ -373,7 +373,7 @@ END
 
 1. **[新しいデータセット]** ウィンドウで **[Azure SQL Database]** を選択し、 **[続行]** をクリックします。 
 
-1. 下部にあるプロパティ ウィンドウの **[全般]** タブで、 **[名前]** に「 **WatermarkDataset** 」と入力します。
+1. 下部にあるプロパティ ウィンドウの **[全般]** タブで、 **[名前]** に「**WatermarkDataset**」と入力します。
 1. **[接続]** タブに切り替えて、次の手順を実行します。 
 
     1. **[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。
@@ -396,15 +396,15 @@ END
 
 1. 左ウィンドウで **[+]\(プラス記号\)** をクリックし、 **[パイプライン]** をクリックします。
 
-1. [全般] パネルの **[プロパティ]** で、 **[名前]** に「 **IncrementalCopyPipeline** 」を指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。  
+1. [全般] パネルの **[プロパティ]** で、 **[名前]** に「**IncrementalCopyPipeline**」を指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。  
 
 1. **[パラメーター]** タブで、次の手順を実行します。 
 
     1. **[+ 新規]** をクリックします。 
-    1. **[名前]** に、パラメーター名として「 **tableList** 」と入力します。 
+    1. **[名前]** に、パラメーター名として「**tableList**」と入力します。 
     1. パラメーターの **[型]** として **[配列]** を選択します。
 
-1. **[アクティビティ]** ツール ボックスで **[Iteration & Conditionals]\(繰り返しと条件\)** を展開し、パイプライン デザイナー画面に **[ForEach]** アクティビティをドラッグ アンド ドロップします。 **プロパティ** ウィンドウの **[全般]** タブで、「 **IterateSQLTables** 」と入力します。 
+1. **[アクティビティ]** ツール ボックスで **[Iteration & Conditionals]\(繰り返しと条件\)** を展開し、パイプライン デザイナー画面に **[ForEach]** アクティビティをドラッグ アンド ドロップします。 **プロパティ** ウィンドウの **[全般]** タブで、「**IterateSQLTables**」と入力します。 
 
 1. **[設定]** タブに切り替えて、 **[項目]** に「`@pipeline().parameters.tableList`」と入力します。 ForEach アクティビティは、一連のテーブルを反復処理しながら、増分コピー操作を実行します。 
 
@@ -412,7 +412,7 @@ END
 
 1. パイプラインの **ForEach** アクティビティが選択されていない場合はこれを選択します。 **[編集] (鉛筆アイコン)** ボタンをクリックします。
 
-1. **[アクティビティ]** ツールボックスで **[General]\(一般\)** を展開し、パイプライン デザイナー画面に **[検索]** アクティビティをドラッグ アンド ドロップし、 **[名前]** に「 **LookupOldWaterMarkActivity** 」を入力します。
+1. **[アクティビティ]** ツールボックスで **[General]\(一般\)** を展開し、パイプライン デザイナー画面に **[検索]** アクティビティをドラッグ アンド ドロップし、 **[名前]** に「**LookupOldWaterMarkActivity**」を入力します。
 
 1. **プロパティ** ウィンドウで **[設定]** タブに切り替え、以下の手順を実行します。 
 
@@ -425,7 +425,7 @@ END
         ```
 
         ![最初の検索アクティビティ - 設定](./media/tutorial-incremental-copy-multiple-tables-portal/first-lookup-settings.png)
-1. **[アクティビティ]** ツールボックスから **検索** アクティビティをドラッグアンドドロップし、 **[名前]** に「 **LookupNewWaterMarkActivity** 」と入力します。
+1. **[アクティビティ]** ツールボックスから **検索** アクティビティをドラッグアンドドロップし、 **[名前]** に「**LookupNewWaterMarkActivity**」と入力します。
         
 1. **[設定]** タブに切り替えます。
 
@@ -438,9 +438,9 @@ END
         ```
     
         ![2 つ目の検索アクティビティ - 設定](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
-1. **[アクティビティ]** ツールボックスから **コピー** アクティビティをドラッグアンドドロップし、 **[名前]** に「 **IncrementalCopyActivity** 」と入力します。 
+1. **[アクティビティ]** ツールボックスから **コピー** アクティビティをドラッグアンドドロップし、 **[名前]** に「**IncrementalCopyActivity**」と入力します。 
 
-1. 1 つずつ、 **検索** アクティビティを **コピー** アクティビティに接続します。 接続するには、 **検索** アクティビティの横の **緑** のボックスをドラッグして **コピー** アクティビティにドロップします。 コピー アクティビティの境界線の色が **青** に変わったら、マウス ボタンを離します。
+1. 1 つずつ、**検索** アクティビティを **コピー** アクティビティに接続します。 接続するには、**検索** アクティビティの横の **緑** のボックスをドラッグして **コピー** アクティビティにドロップします。 コピー アクティビティの境界線の色が **青** に変わったら、マウス ボタンを離します。
 
     ![検索アクティビティをコピー アクティビティに接続する](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
 1. パイプラインの **コピー** アクティビティを選択します。 **プロパティ** ウィンドウで **[ソース]** タブに切り替えます。 
@@ -466,7 +466,7 @@ END
         ![コピー アクティビティ - パラメーター](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグ アンド ドロップします。 **コピー** アクティビティを **ストアド プロシージャ** アクティビティに接続します。 
 
-1. パイプラインの **ストアド プロシージャ** アクティビティを選択します。 **プロパティ** ウィンドウの **[全般]** タブで、 **[名前]** に「 **StoredProceduretoWriteWatermarkActivity** 」と入力します。 
+1. パイプラインの **ストアド プロシージャ** アクティビティを選択します。**プロパティ** ウィンドウの **[全般]** タブで、 **[名前]** に「**StoredProceduretoWriteWatermarkActivity**」と入力します。 
 
 1. **[SQL アカウント]** タブに切り替えて、 **[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。
 
@@ -641,7 +641,7 @@ PersonID    Name    LastModifytime
 5           Anny    2017-09-05 08:06:00.000
 ```
 
-**PersonID** 3 を見ると、 **Name** と **LastModifytime** が新しい値であることがわかります。 
+**PersonID** 3 を見ると、**Name** と **LastModifytime** が新しい値であることがわかります。 
 
 **クエリ**
 

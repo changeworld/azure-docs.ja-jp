@@ -3,25 +3,25 @@ title: Azure 以外のマシンを Azure Security Center に接続する
 description: Azure 以外のマシンを Azure Security Center に接続する方法について説明します
 author: memildin
 ms.author: memildin
-ms.date: 10/01/2020
+ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 8fa72dcd857977474cf76eada500214bf8129aca
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 572c657dd44db73b1401c72f0750fe8e000985ac
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340871"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734356"
 ---
-#  <a name="connect-your-non-azure-machines-to-security-center"></a>Azure 以外のマシンを Security Center に接続する
+# <a name="connect-your-non-azure-machines-to-security-center"></a>Azure 以外のマシンを Security Center に接続する
 
-Security Center では、Azure 以外のコンピューターのセキュリティの状況を監視できますが、最初にそれらを Azure に接続する必要があります。 
+Security Center では、Azure 以外のコンピューターのセキュリティの状況を監視できますが、最初にそれらを Azure に接続する必要があります。
 
 Azure 以外のコンピューターは、次のいずれかの方法で接続できます。
 
-- Azure Arc の使用 (**推奨**)
+- Azure Arc 対応サーバーを使用する (**推奨**)
 - Azure portal の Security Center のページから ( **[作業の開始]** と **[インベントリ]** )
 
 このページではそれぞれについて説明します。
@@ -30,21 +30,21 @@ Azure 以外のコンピューターは、次のいずれかの方法で接続�
 
 ## <a name="add-non-azure-machines-with-azure-arc"></a>Azure Arc を使用して Azure 以外のマシンを追加する
 
-Azure 以外のマシンを Azure Security Center に追加する方法として推奨されるのが Azure Arc です。
+Azure Arc 対応サーバーは、Azure 以外のマシンを Azure Security Center に追加する方法として推奨されます。
 
-Azure Arc が有効になっているマシンは Azure リソースになり、他の Azure リソースのような推奨事項と共に、Security Center に表示されます。 
+Azure Arc 対応サーバーがあるマシンは Azure リソースになり、他の Azure リソースのような推奨事項と共に、Security Center に表示されます。
 
-さらに、Azure Arc には、マシンでポリシーを有効するオプション、Log Analytics エージェントを拡張機能としてデプロイするオプション、他の Azure サービスを使用してデプロイを簡素化するオプションなど、強化された機能が用意されています。 利点の概要については、「[サポートされるシナリオ](../azure-arc/servers/overview.md#supported-scenarios)」を参照してください。
+さらに、Azure Arc 対応サーバーには、マシンでゲスト構成ポリシーを有効にするオプション、Log Analytics エージェントを拡張機能としてデプロイするオプション、他の Azure サービスを使用してデプロイを簡素化するオプションなど、強化された機能が用意されています。 利点の概要については、「[サポートされるシナリオ](../azure-arc/servers/overview.md#supported-scenarios)」を参照してください。
+
+[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)についての詳細を参照してください。
 
 **Azure Arc をデプロイするには:**
 
 - マシン 1 台の場合は、「[クイック スタート:Azure Arc 対応サーバーにハイブリッド マシンを接続する」](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)の手順に従います。
-- Azure Arc を大規模にデプロイするには、「[ハイブリッド マシンを大規模に Azure に接続する](../azure-arc/servers/onboard-service-principal.md)」を参照してください
-
-[Azure Arc](../azure-arc/servers/overview.md) の詳細情報を参照してください。
+- 複数のマシンを大規模に Arc 対応サーバーに接続するには、「[ハイブリッド マシンを大規模に Azure に接続する](../azure-arc/servers/onboard-service-principal.md)」を参照してください
 
 > [!TIP]
-> AWS マシンをオンボードしようとしている場合、Security Center の AWS 用コネクタにより、Azure Arc のデプロイは自動的かつ透過的に処理されます。 詳細については、「[Azure Security Center への AWS アカウントの接続](quickstart-onboard-aws.md)」を参照してください。
+> AWS で実行されているマシンをオンボードしようとしている場合、Security Center の AWS 用コネクタにより、Azure Arc のデプロイは自動的かつ透過的に処理されます。 詳細については、「[Azure Security Center への AWS アカウントの接続](quickstart-onboard-aws.md)」を参照してください。
 
 ::: zone-end
 
@@ -62,11 +62,11 @@ Azure Arc が有効になっているマシンは Azure リソースになり、
     > [!TIP]
     > **[インベントリ]** ページの **[非 Azure サーバーの追加]** から、マシンを追加するページを開くこともできます。
     > 
-    > :::image type="content" source="./media/security-center-onboarding/onboard-inventory.png" alt-text="[作業の開始] ページの [作業の開始] タブ":::
+    > :::image type="content" source="./media/security-center-onboarding/onboard-inventory.png" alt-text="資産インベントリのページから Azure 以外のマシンを追加する":::
 
     Log Analytics ワークスペースの一覧が表示されます。 該当する場合、一覧には、自動プロビジョニングが有効になっているときに Security Center によって作成された既定のワークスペースが含まれます。 このワークスペースまたは使用する別のワークスペースを選択します。
 
-    コンピューターを既存のワークスペースに追加することも、新しいワークスペースを作成することもできます。 
+    コンピューターを既存のワークスペースに追加することも、新しいワークスペースを作成することもできます。
 
 1. 必要に応じて、新しいワークスペースを作成するには、 **[新しいワークスペースの作成]** を選択します。
 
@@ -79,10 +79,11 @@ Azure Arc が有効になっているマシンは Azure リソースになり、
     - [Linux マシンのオンボード](#onboard-your-linux-machines)
     - [Windows マシンのオンボード](#onboard-your-windows-machines)
 
-
 ### <a name="onboard-your-azure-stack-vms"></a>Azure Stack VM のオンボード
+
 Azure Stack VM を追加するには、 **[エージェント管理]** ページに情報が必要です。また、Azure Stack 上で実行されている仮想マシンで、**Azure Monitor, Update and Configuration Management** という仮想マシンの拡張機能を構成する必要があります。
-1. **[エージェント管理]** ページで、**ワークスペース ID** および**主キー**をメモ帳にコピーします。
+
+1. **[エージェント管理]** ページで、**ワークスペース ID** および **主キー** をメモ帳にコピーします。
 1. **Azure Stack** ポータルにログインし、 **[仮想マシン]** ページを開きます。
 1. Security Center で保護する仮想マシンを選択します。
     >[!TIP]
@@ -92,45 +93,47 @@ Azure Stack VM を追加するには、 **[エージェント管理]** ページ
 1. **Azure Monitor, Update and Configuration Management** 拡張機能を選択し、 **[作成]** を選択します。 **[拡張機能のインストール]** 構成ページが開きます。
     >[!NOTE]
     > **Azure Monitor, Update and Configuration Management** 拡張機能が Marketplace に一覧表示されていない場合は、該当の Azure Stack オペレーターに連絡して使用可能にしてください。
-1. **[拡張機能のインストール]** 構成ページに、前の手順でメモ帳にコピーしておいた**ワークスペース ID** と**ワークスペース キー (主キー)** を貼り付けます。
-1. 構成が完了したら、 **[OK]** を選択します。 拡張機能の状態は、**プロビジョニング成功**として表示されます。 Security Center に仮想マシンが表示されるまでに、最大で 1 時間かかる場合があります。
-
+1. **[拡張機能のインストール]** 構成ページに、前の手順でメモ帳にコピーしておいた **ワークスペース ID** と **ワークスペース キー (主キー)** を貼り付けます。
+1. 構成が完了したら、 **[OK]** を選択します。 拡張機能の状態は、**プロビジョニング成功** として表示されます。 Security Center に仮想マシンが表示されるまでに、最大で 1 時間かかる場合があります。
 
 ### <a name="onboard-your-linux-machines"></a>Linux マシンのオンボード
+
 Linux マシンを追加するには、 **[エージェント管理]** ページの WGET コマンドが必要です。
+
 1. **[エージェント管理]** ページで、**WGET** コマンドをメモ帳にコピーします。 このファイルを、Linux コンピューターからアクセスできる場所に保存します。
 1. お使いの Linux コンピューターで、WGET コマンドを使用してファイルを開きます。 コンテンツ全体を選択してコピーし、ターミナル コンソールに貼り付けます。
 1. インストールの完了後、*omsagent* がインストールされていることを検証するには、*pgrep* コマンドを実行します。 コマンドによって、*omsagent* PID が返されます。
     エージェントのログは、 */var/opt/microsoft/omsagent/\<workspace id>/log/* にあります。Security Center に新しい Linux マシンが表示されるまでに、最大で 30 分かかる場合があります。
 
-
 ### <a name="onboard-your-windows-machines"></a>Windows マシンのオンボード
+
 Windows マシンを追加するには、 **[エージェント管理]** ページの情報が必要です。また、適切なエージェント ファイル (32/64 ビット) をダウンロードする必要があります。
 1. ご使用のコンピューターのプロセッサの種類に適用できる **[Windows エージェントのダウンロード]** リンクを選択してセットアップ ファイルをダウンロードします。
-1. **[エージェント管理]** ページで、**ワークスペース ID** および**主キー**をメモ帳にコピーします。
+1. **[エージェント管理]** ページで、**ワークスペース ID** および **主キー** をメモ帳にコピーします。
 1. ダウンロードしたセットアップ ファイルをセットアップ先のコンピューターにコピーし、実行します。
 1. インストール ウィザードの指示に従います ( **[次へ]** 、 **[同意する]** 、 **[次へ]** 、 **[次へ]** )。
-    1. **[Azure Log Analytics]** ページで、メモ帳にコピーした**ワークスペース ID** と**ワークスペース キー (主キー)** を貼り付けます。
+    1. **[Azure Log Analytics]** ページで、メモ帳にコピーした **ワークスペース ID** と **ワークスペース キー (主キー)** を貼り付けます。
     1. コンピューターが Azure Government クラウド内の Log Analytics ワークスペースに報告する必要がある場合は、 **[Azure クラウド]** ドロップダウン リストから **[Azure US Government]** を選択します。
     1. コンピューターがプロキシ サーバーを介して Log Analytics サービスと通信する必要がある場合は、 **[詳細]** を選択し、プロキシ サーバーの URL とポート番号を指定します。
     1. すべての構成設定を入力したら、 **[次へ]** を選択します。
     1. **[インストールの準備完了]** ページで、適用する設定を確認し、 **[インストール]** を選択します。
     1. **[構成は正常に終了しました]** ページで **[完了]** を選択します。
 
-完了すると、**コントロール パネル**に **Log Analytics エージェント**が表示されます。 構成を検証して、エージェントが接続されていることを確認できます。
+完了すると、**コントロール パネル** に **Microsoft Monitoring Agent** が表示されます。 構成を検証して、エージェントが接続されていることを確認できます。
 
 エージェントのインストールと構成の詳細については、[Windows コンピューターの接続](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard)に関するページをご覧ください。
 
 ::: zone-end
 
 ## <a name="verifying"></a>確認中
+
 おめでとうございます。 これで Azure と Azure 以外のマシンを 1 か所で確認できるようになりました。 [資産インベントリ](asset-inventory.md) ページを開いて、関連するリソースの種類にフィルターを適用します。 以下のアイコンで種類が区別されます。
 
   ![Azure 以外のマシンを表す ASC アイコン](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Azure 以外のマシン
 
   ![Azure のマシンを表す ASC アイコン](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
 
-  ![Azure Arc のマシンを表す ASC アイコン](./media/quick-onboard-linux-computer/arc-enabled-machine-icon.png) Azure Arc 対応マシン
+  ![Azure Arc サーバーの ASC アイコン](./media/quick-onboard-linux-computer/arc-enabled-machine-icon.png) Azure Arc 対応サーバー
 
 ## <a name="next-steps"></a>次の手順
 

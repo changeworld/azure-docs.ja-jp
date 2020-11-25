@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: da6d02e620c33610770c71f0c0e3ae68e70ee317
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 36ba593a1d8cd2e50293eaf77dc9ec864245df4c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397050"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566590"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>チュートリアル:Azure CLI を使用して URL パスベースのリダイレクトのあるアプリケーション ゲートウェイを作成する
 
@@ -34,19 +34,17 @@ ms.locfileid: "93397050"
 
 必要に応じて、[Azure PowerShell](tutorial-url-redirect-powershell.md) を使ってこのチュートリアルの手順を完了できます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>前提条件 
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+ - このチュートリアルには、Azure CLI のバージョン 2.0.4 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [az group create](/cli/azure/group) を使用してリソース グループを作成します。
 
-次の例では、 *myResourceGroupAG* という名前のリソース グループを *eastus* に作成します。
+次の例では、*myResourceGroupAG* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -54,7 +52,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する 
 
-[az network vnet create](/cli/azure/network/vnet) を使用して、 *myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、 [az network vnet subnet create](/cli/azure/network/vnet/subnet) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/network/public-ip) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
+[az network vnet create](/cli/azure/network/vnet) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/network/public-ip) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -78,7 +76,7 @@ az network public-ip create \
   --sku Standard
 ```
 
-## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
+## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイを作成する
 
 [az network application-gateway create](/cli/azure/network/application-gateway) を使用して、myAppGateway という名前のアプリケーション ゲートウェイを作成します。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myPublicIPAddress* に割り当てます。
 
@@ -103,13 +101,13 @@ az network application-gateway create \
 - *appGatewayBackendPool* - アプリケーション ゲートウェイには、少なくとも 1 つのバックエンド アドレス プールが必要です。
 - *appGatewayBackendHttpSettings* - 通信に使用するポート 80 と HTTP プロトコルを指定します。
 - *appGatewayHttpListener* - *appGatewayBackendPool* に関連付けられている既定のリスナー。
-- *appGatewayFrontendIP* - *myAGPublicIPAddress* を *appGatewayHttpListener* に割り当てます。
+- *appGatewayFrontendIP* -*myAGPublicIPAddress* を *appGatewayHttpListener* に割り当てます。
 - *rule1* - *appGatewayHttpListener* に関連付けられている既定のルーティング規則。
 
 
 ### <a name="add-backend-pools-and-ports"></a>バックエンド プールとポートの追加
 
-*imagesBackendPool* および *videoBackendPool* という名前のバックエンド アドレス プールをアプリケーション ゲートウェイに追加するには、 [az network application-gateway address-pool create](/cli/azure/network/application-gateway/address-pool) を使用します。 プールのフロントエンド ポートは、[az network application-gateway frontend-port create](/cli/azure/network/application-gateway/frontend-port) を使用して追加します。 
+*imagesBackendPool* および *videoBackendPool* という名前のバックエンド アドレス プールをアプリケーション ゲートウェイに追加するには、[az network application-gateway address-pool create](/cli/azure/network/application-gateway/address-pool) を使用します。 プールのフロントエンド ポートは、[az network application-gateway frontend-port create](/cli/azure/network/application-gateway/frontend-port) を使用して追加します。 
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -160,7 +158,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-default-url-path-map"></a>既定の URL パス マップを追加する
 
-URL パス マップにより、特定の URL が特定のバックエンド プールに確実にルーティングされます。 [az network application-gateway url-path-map create](/cli/azure/network/application-gateway/url-path-map) と [az network application-gateway url-path-map rule create](/cli/azure/network/application-gateway/url-path-map/rule) を使用して、 *imagePathRule* および *videoPathRule* という名前の URI パス マップを作成します。
+URL パス マップにより、特定の URL が特定のバックエンド プールに確実にルーティングされます。 [az network application-gateway url-path-map create](/cli/azure/network/application-gateway/url-path-map) と [az network application-gateway url-path-map rule create](/cli/azure/network/application-gateway/url-path-map/rule) を使用して、*imagePathRule* および *videoPathRule* という名前の URI パス マップを作成します。
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
@@ -212,7 +210,7 @@ az network application-gateway url-path-map create \
 
 ### <a name="add-routing-rules"></a>ルーティング規則の追加
 
-ルーティング規則によって、URL パス マップが作成したリスナーに関連付けられます。 [az network application-gateway rule create](/cli/azure/network/application-gateway/rule) を使用して、 *defaultRule* と *redirectedRule* という名前の規則を追加することができます。
+ルーティング規則によって、URL パス マップが作成したリスナーに関連付けられます。 [az network application-gateway rule create](/cli/azure/network/application-gateway/rule) を使用して、*defaultRule* と *redirectedRule* という名前の規則を追加することができます。
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -236,7 +234,7 @@ az network application-gateway rule create \
 
 ## <a name="create-virtual-machine-scale-sets"></a>仮想マシン スケール セットの作成
 
-この例では、作成した 3 つのバックエンド プールをサポートする 3 つの仮想マシン スケール セットを作成します。 作成するスケール セットの名前は、 *myvmss1* 、 *myvmss2* 、および *myvmss3* です。 各スケール セットには、NGINX をインストールする 2 つの仮想マシン インスタンスが含まれています。
+この例では、作成した 3 つのバックエンド プールをサポートする 3 つの仮想マシン スケール セットを作成します。 作成するスケール セットの名前は、*myvmss1*、*myvmss2*、および *myvmss3* です。 各スケール セットには、NGINX をインストールする 2 つの仮想マシン インスタンスが含まれています。
 
 ```azurecli-interactive
 for i in `seq 1 3`; do

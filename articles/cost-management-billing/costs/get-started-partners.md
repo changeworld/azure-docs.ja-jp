@@ -3,18 +3,18 @@ title: パートナー向け Azure Cost Management の利用を開始する
 description: この記事では、パートナーが Azure Cost Management の機能を使用する方法と、パートナーの顧客のために Cost Management アクセスを有効にする方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/04/2020
+ms.date: 11/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 0076c70f64ec5cea8b92cb2b9ed27de05406316d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: d2b90db18a31fff4190be4f84625ad52fcaae578
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827584"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657314"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>パートナー向け Azure Cost Management の利用を開始する
 
@@ -53,7 +53,7 @@ Azure portal で Azure Cost Management を有効にするには、(顧客に代�
 
 Azure Cost Management には、課金アカウントまたはサブスクリプションへの読み取りアクセスが必要です。
 
-課金アカウントでの Azure Cost Management へのアクセスの有効化と割り当ての詳細については、「[ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」を参照してください。 **全体管理者**ロールと**管理エージェント** ロールは、課金アカウントのコストを管理できます。
+課金アカウントでの Azure Cost Management へのアクセスの有効化と割り当ての詳細については、「[ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」を参照してください。 **全体管理者** ロールと **管理エージェント** ロールは、課金アカウントのコストを管理できます。
 
 サブスクリプション スコープで Azure Cost Management にアクセスする場合、サブスクリプションに対して Azure RBAC アクセス権を持つユーザーは、小売 (従量課金制) レートでコストを表示できます。 ただし、[顧客テナントのコスト可視性ポリシー](#enable-the-policy-to-view-azure-usage-charges)が有効になっている必要があります。 サポートされているアカウントの種類の完全な一覧については、「[Cost Management のデータを理解する](understand-cost-mgt-data.md)」を参照してください。
 
@@ -112,7 +112,7 @@ Azure Cost Management には、課金アカウントまたはサブスクリプ�
 
 ## <a name="partner-access-to-billing-scopes-in-cost-management"></a>Cost Management での課金スコープへのパートナー アクセス
 
-**グローバル管理者**および**管理エージェント**のロールを持つユーザーのみが、パートナーの Azure テナントで直接、課金アカウント、課金プロファイル、顧客のコストを管理および表示できます。 パートナー センターのロールの詳細については、「[ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」を参照してください。
+**グローバル管理者** および **管理エージェント** のロールを持つユーザーのみが、パートナーの Azure テナントで直接、課金アカウント、課金プロファイル、顧客のコストを管理および表示できます。 パートナー センターのロールの詳細については、「[ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」を参照してください。
 
 ## <a name="enable-cost-management-for-customer-tenant-subscriptions"></a>顧客テナントのサブスクリプションのコスト管理ができるようにする
 
@@ -126,7 +126,7 @@ Azure Cost Management には、課金アカウントまたはサブスクリプ�
 
 ポリシーを表示および更新するには、**管理エージェント** グループのメンバーである必要があります。 次の情報を使用して、顧客が Azure 使用料金を表示できるポリシーを有効にします。
 
-Azure portal で、パートナー テナントにサインインし、 **[Cost Management + Billing]\(コスト管理と課金\)** を選択します。 [課金スコープ] 領域内で、関連する課金スコープを選択し、 **[顧客]** を選択します。 顧客の一覧は課金アカウントに関連付けられています。
+Azure portal で、"*パートナー テナント*" にサインインし、 **[Cost Management + Billing]** を選択します。 [課金スコープ] 領域内で、関連する課金スコープを選択し、 **[顧客]** を選択します。 顧客の一覧は課金アカウントに関連付けられています。 *誤って顧客テナントにサインインした場合、 **[顧客]** 一覧は表示されません。*
 
 顧客の一覧で、コストの表示を許可する顧客を選択します。
 
@@ -134,7 +134,7 @@ Azure portal で、パートナー テナントにサインインし、 **[Cost 
 
 **[設定]** で、 **[ポリシー]** を選択します。
 
-選択した顧客のサブスクリプションに関連付けられている **Azure 使用**料金について、現在のコスト可視性ポリシーが表示されます。
+選択した顧客のサブスクリプションに関連付けられている **Azure 使用** 料金について、現在のコスト可視性ポリシーが表示されます。
 ![従量課金制の料金を表示することを顧客に許可するポリシー](./media/get-started-partners/cost-management-billing-policies.png)
 
 ポリシーが **[いいえ]** に設定されている場合、顧客に関連付けられているサブスクリプション ユーザーに対して Azure Cost Management は使用できません。 パートナーによって有効化されていない限り、コスト可視性ポリシーはすべてのサブスクリプション ユーザーに対して既定で無効になっています。
@@ -188,7 +188,7 @@ Azure RBAC スコープの予約インスタンスの償却ビューおよび実
 | costCenter | サブスクリプションに関連付けられているコスト センター。 | 該当なし |
 | billingPeriodStartDate | 請求書に示されている請求期間の開始日。 | 該当なし |
 | billingPeriodEndDate | 請求書に示されている請求期間の終了日。 | 該当なし |
-| servicePeriodStartDate | 料金についてサービス使用量の評価が行われた評価期間の開始日。 Azure サービスの料金は、評価期間に対して決定されます。 | パートナー センターの ChargeStartDate。 請求サイクルの開始日。ただし、前の請求サイクルからの以前に請求されていない潜在的な使用状況データの日付を提示する場合を除く。 この時間は常に、1 日の開始時刻である 0:00 です。 |
+| servicePeriodStartDate | 料金についてサービス使用量の評価が行われた評価期間の開始日。 Azure サービスの料金は、評価期間に対して決定されます。 | パートナー センターの ChargeStartDate。  請求サイクルの開始日。ただし、前の請求サイクルからの以前に請求されていない潜在的な使用状況データの日付を提示する場合を除く。 この時間は常に、1 日の開始時刻である 0:00 です。 |
 | servicePeriodEndDate | 料金についてサービス使用量の評価が行われた期間の終了日。 Azure サービスの料金は、評価期間に基づいて決定されます。 | 該当なし |
 | date | Azure の消費データについては、評価された使用日が表示されます。 予約済みインスタンスについては、購入日が表示されます。 定期的な料金と、Marketplace やサポートなどの 1 回限りの料金については、購入日が表示されます。 | 該当なし |
 | productID | 消費または購入によって料金が発生した製品の識別子。 これは、パートナー センターに示されている、productID と SKuID の連結キーです。 | 製品の ID。 |

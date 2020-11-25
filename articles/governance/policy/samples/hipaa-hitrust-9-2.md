@@ -1,29 +1,29 @@
 ---
 title: HIPAA HITRUST 9.2 に関する規制コンプライアンスの詳細
 description: HIPAA HITRUST 9.2 規制コンプライアンスの組み込みイニシアチブの詳細。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 499ecccd6d9a98b69e9e36f72fbf87d65d242f6d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: c177abaea8dd6d38814e39aef7cdfd63981a6856
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310646"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694261"
 ---
 # <a name="details-of-the-hipaa-hitrust-92-regulatory-compliance-built-in-initiative"></a>HIPAA HITRUST 9.2 規制コンプライアンスの組み込みイニシアチブの詳細
 
-この記事では、Azure Policy 規制コンプライアンスの組み込みイニシアチブの定義が、HIPAA HITRUST 9.2 の**コンプライアンス ドメイン**と**コントロール**にどのように対応するのかを、詳しく説明します。
+この記事では、Azure Policy 規制コンプライアンスの組み込みイニシアチブの定義が、HIPAA HITRUST 9.2 の **コンプライアンス ドメイン** と **コントロール** にどのように対応するのかを、詳しく説明します。
 このコンプライアンス標準の詳細については、[HIPAA HITRUST 9.2](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html) に関するページを参照してください。 "_所有権_" については、[Azure Policy のポリシー定義](../concepts/definition-structure.md#type)に関するページと、「[クラウドにおける共同責任](../../../security/fundamentals/shared-responsibility.md)」を参照してください。
 
-次のマッピングは、**HIPAA HITRUST 9.2** コントロールに対するものです。 右側のナビゲーションを使用すると、特定の**コンプライアンス ドメイン**に直接移動します。 コントロールの多くは、[Azure Policy](../overview.md) のイニシアチブ定義で実装されています。 完全なイニシアチブ定義を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。
+次のマッピングは、**HIPAA HITRUST 9.2** コントロールに対するものです。 右側のナビゲーションを使用すると、特定の **コンプライアンス ドメイン** に直接移動します。 コントロールの多くは、[Azure Policy](../overview.md) のイニシアチブ定義で実装されています。 完全なイニシアチブ定義を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。
 次に、**HITRUST/HIPAA** 規制コンプライアンスの組み込みイニシアチブ定義を見つけて選択します。
 
 この組み込みイニシアチブは、[HIPAA HITRUST 9.2 ブループリント サンプル](../../blueprints/samples/hipaa-hitrust-9-2.md)の一部としてデプロイされます。
 
 > [!IMPORTANT]
 > 以下の各コントロールは、1 つ以上の [Azure Policy](../overview.md) 定義に関連します。
-> これらのポリシーは、コントロールに対する[コンプライアンスの評価](../how-to/get-compliance-data.md)に役立つ場合があります。ただし、多くの場合、コントロールと 1 つ以上のポリシーとの間には、一対一での一致、または完全な一致はありません。 そのため、Azure Policy での**準拠**では、ポリシー定義自体のみが示されています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス標準に対するコンプライアンス ドメイン、コントロール、Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json)に関するページを参照してください。
+> これらのポリシーは、コントロールに対する[コンプライアンスの評価](../how-to/get-compliance-data.md)に役立つ場合があります。ただし、多くの場合、コントロールと 1 つ以上のポリシーとの間には、一対一での一致、または完全な一致はありません。 そのため、Azure Policy での **準拠** では、ポリシー定義自体のみが示されています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス標準に対するコンプライアンス ドメイン、コントロール、Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json)に関するページを参照してください。
 
 ## <a name="privilege-management"></a>特権管理
 
@@ -86,7 +86,7 @@ ms.locfileid: "92310646"
 
 ### <a name="the-organization-facilitates-information-sharing-by-enabling-authorized-users-to-determine-a-business-partners-access-when-discretion-is-allowed-as-defined-by-the-organization-and-by-employing-manual-processes-or-automated-mechanisms-to-assist-users-in-making-information-sharingcollaboration-decisions"></a>組織は、承認されたユーザーが組織によって定義された裁量に従ってビジネス パートナーのアクセスを決定できるようにし、ユーザーによる情報共有やコラボレーションの決定を支援するための手動プロセスや自動メカニズムを導入することで、情報の共有を促進します。
 
-**[ID]** :1149.01c2System.9 - 01.c **所有権**: 適用外
+**[ID]** :1149.01c2System.9 - 01.c **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -94,7 +94,7 @@ ms.locfileid: "92310646"
 
 ### <a name="the-access-control-system-for-the-system-components-storing-processing-or-transmitting-covered-information-is-set-with-a-default-quotdeny-allquot-setting"></a>カバーされる情報を格納、処理、または転送するシステム コンポーネントのアクセス制御システムは、既定の &quot;すべて拒否&quot; の設定を使用して設定されます。
 
-**[ID]** :1150.01c2System.10 - 01.c **所有権**: 適用外
+**[ID]** :1150.01c2System.10 - 01.c **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -144,7 +144,7 @@ ms.locfileid: "92310646"
 
 ### <a name="remote-access-by-vendors-and-business-partners-eg-for-remote-maintenance-is-disableddeactivated-when-not-in-use"></a>ベンダーおよびビジネス パートナーによるリモート アクセス (リモート メンテナンスなど) は、使用されていないときに無効化または非アクティブ化されます。
 
-**[ID]** :1117.01j1Organizational.23 - 01.j **所有権**: 適用外
+**[ID]** :1117.01j1Organizational.23 - 01.j **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -160,7 +160,7 @@ ms.locfileid: "92310646"
 
 ### <a name="network-equipment-is-checked-for-unanticipated-dial-up-capabilities"></a>ネットワーク機器で、予期しないダイヤルアップ機能がチェックされます。
 
-**[ID]** :1119.01j2Organizational.3 - 01.j **所有権**: 適用外
+**[ID]** :1119.01j2Organizational.3 - 01.j **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -176,7 +176,7 @@ ms.locfileid: "92310646"
 
 ### <a name="if-encryption-is-not-used-for-dial-up-connections-the-cio-or-hisher-designated-representative-provides-specific-written-authorization"></a>ダイヤルアップ接続に暗号化が使用されない場合、CIO または CIO によって指定された担当者が、特定の書面による承認を提供します。
 
-**[ID]** :1173.01j1Organizational.6 - 01.j **所有権**: 適用外
+**[ID]** :1173.01j1Organizational.6 - 01.j **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -184,7 +184,7 @@ ms.locfileid: "92310646"
 
 ### <a name="the-organization-protects-wireless-access-to-systems-containing-sensitive-information-by-authenticating-both-users-and-devices"></a>組織は、ユーザーとデバイスの両方を認証することにより、機密情報が含まれているシステムへのワイヤレス アクセスを保護します。
 
-**[ID]** :1174.01j1Organizational.7 - 01.j **所有権**: 適用外
+**[ID]** :1174.01j1Organizational.7 - 01.j **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -200,7 +200,7 @@ ms.locfileid: "92310646"
 
 ### <a name="the-organization-requires-a-callback-capability-with-re-authentication-to-verify-dial-up-connections-from-authorized-locations"></a>組織では、承認された場所からのダイヤルアップ接続を検証するため、再認証を伴うコールバック機能が必要です。
 
-**[ID]** :1176.01j2Organizational.5 - 01.j **所有権**: 適用外
+**[ID]** :1176.01j2Organizational.5 - 01.j **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -322,7 +322,7 @@ ms.locfileid: "92310646"
 
 ### <a name="networks-are-segregated-from-production-level-networks-when-migrating-physical-servers-applications-or-data-to-virtualized-servers"></a>物理サーバー、アプリケーション、またはデータを仮想化されたサーバーに移行するとき、ネットワークは運用レベルのネットワークから分離されます。
 
-**[ID]** :0894.01m2Organizational.7 - 01.m **所有権**: 適用外
+**[ID]** :0894.01m2Organizational.7 - 01.m **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -459,7 +459,7 @@ ms.locfileid: "92310646"
 
 ### <a name="non-organizational-users-all-information-system-users-other-than-organizational-users-such-as-patients-customers-contractors-or-foreign-nationals-or-processes-acting-on-behalf-of-non-organizational-users-determined-to-need-access-to-information-residing-on-the-organizations-information-systems-are-uniquely-identified-and-authenticated"></a>組織の情報システム上に存在する情報へのアクセスが必要であると判断された、組織以外のユーザー (患者、顧客、請負業者、外国人などの、組織のユーザー以外のすべての情報システム ユーザー)、または組織以外のユーザーの代理として機能するプロセスは、一意に識別されて認証されます。
 
-**[ID]** :11110.01q1Organizational.6 - 01.q **所有権**: 適用外
+**[ID]** :11110.01q1Organizational.6 - 01.q **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -483,7 +483,7 @@ ms.locfileid: "92310646"
 
 ### <a name="the-organization-requires-that-electronic-signatures-unique-to-one-individual-cannot-be-reused-by-or-reassigned-to-anyone-else"></a>組織では、1 人の個人に固有の電子署名を、他のユーザーが再利用したり、他のユーザーに割り当て直したりできないことを要求します。
 
-**[ID]** :11208.01q1Organizational.8 - 01.q **所有権**: 適用外
+**[ID]** :11208.01q1Organizational.8 - 01.q **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -491,7 +491,7 @@ ms.locfileid: "92310646"
 
 ### <a name="electronic-signatures-and-handwritten-signatures-executed-to-electronic-records-shall-be-linked-to-their-respective-electronic-records"></a>電子記録に対して実行される電子署名および手書き署名は、それぞれの電子記録にリンクされている必要があります。
 
-**[ID]** :11210.01q2Organizational.10 - 01.q **所有権**: 適用外
+**[ID]** :11210.01q2Organizational.10 - 01.q **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -499,7 +499,7 @@ ms.locfileid: "92310646"
 
 ### <a name="signed-electronic-records-shall-contain-information-associated-with-the-signing-in-human-readable-format"></a>署名された電子記録には、人が判読できる形式の署名に関連付けられた情報が含まれている必要があります。
 
-**[ID]** :11211.01q2Organizational.11 - 01.q **所有権**: 適用外
+**[ID]** :11211.01q2Organizational.11 - 01.q **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -541,7 +541,7 @@ ms.locfileid: "92310646"
 
 ### <a name="remote-access-connections-between-the-organization-and-external-parties-are-encrypted"></a>組織と外部パーティ間のリモート アクセス接続が暗号化されます。
 
-**[ID]** :1402.05i1Organizational.45 - 05.i **所有権**: 適用外
+**[ID]** :1402.05i1Organizational.45 - 05.i **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -591,7 +591,7 @@ ms.locfileid: "92310646"
 
 ### <a name="a-secure-audit-record-is-created-for-all-activities-on-the-system-create-read-update-delete-involving-covered-information"></a>対象となる情報を含むシステムでのすべてのアクティビティ (作成、読み取り、更新、削除) に対して、セキュリティで保護された監査レコードを作成します。
 
-**[ID]** :1202.09aa1System.1 - 09.aa **所有権**: 適用外
+**[ID]** :1202.09aa1System.1 - 09.aa **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -658,7 +658,7 @@ ms.locfileid: "92310646"
 
 ### <a name="all-disclosures-of-covered-information-within-or-outside-of-the-organization-are-logged-including-type-of-disclosure-datetime-of-the-event-recipient-and-sender"></a>組織内または組織外の対象となる情報のすべての開示が、開示の種類、イベントの日時、受信者、送信者と共に記録されます。
 
-**[ID]** :1210.09aa3System.3 - 09.aa **所有権**: 適用外
+**[ID]** :1210.09aa3System.3 - 09.aa **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -667,7 +667,7 @@ ms.locfileid: "92310646"
 
 ### <a name="the-organization-verifies-every-ninety-90-days-for-each-extract-of-covered-information-recorded-that-the-data-is-erased-or-its-use-is-still-required"></a>組織は、90 日ごとに、記録された対象情報の各抽出で、データが消去されていること、またはその使用が依然として必要であることを検証します。
 
-**[ID]** :1211.09aa3System.4 - 09.aa **所有権**: 適用外
+**[ID]** :1211.09aa3System.4 - 09.aa **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -891,7 +891,7 @@ ms.locfileid: "92310646"
 
 ### <a name="when-the-backup-service-is-delivered-by-the-third-party-the-service-level-agreement-includes-the-detailed-protections-to-control-confidentiality-integrity-and-availability-of-the-backup-information"></a>バックアップ サービスがサードパーティによって提供されるときは、サービス レベル アグリーメントに、バックアップ情報の機密性、整合性、可用性を制御するための詳細な保護を含めます。
 
-**[ID]** :1620.09l1Organizational.8 - 09.l **所有権**: 適用外
+**[ID]** :1620.09l1Organizational.8 - 09.l **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -915,7 +915,7 @@ ms.locfileid: "92310646"
 
 ### <a name="covered-information-is-backed-up-in-an-encrypted-format-to-ensure-confidentiality"></a>機密性を保証するため、対象となる情報を暗号化された形式でバックアップします。
 
-**[ID]** :1623.09l2Organizational.4 - 09.l **所有権**: 適用外
+**[ID]** :1623.09l2Organizational.4 - 09.l **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -939,7 +939,7 @@ ms.locfileid: "92310646"
 
 ### <a name="the-organization-ensures-a-current-retrievable-copy-of-covered-information-is-available-before-movement-of-servers"></a>組織は、対象となる情報の現在の取得可能なコピーが利用可能であることを、サーバーを移動する前に確認します。
 
-**[ID]** :1626.09l3Organizational.5 - 09.l **所有権**: 適用外
+**[ID]** :1626.09l3Organizational.5 - 09.l **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -955,7 +955,7 @@ ms.locfileid: "92310646"
 
 ### <a name="workforce-members-roles-and-responsibilities-in-the-data-backup-process-are-identified-and-communicated-to-the-workforce-in-particular-bring-your-own-device-byod-users-are-required-to-perform-backups-of-organizational-andor-client-data-on-their-devices"></a>データ バックアップ プロセスにおける従業員メンバーの役割と責任を明らかにし、従業員に伝えます。特に、Bring Your Own Device (BYOD) ユーザーは、自分のデバイス上にある組織やクライアントのデータのバックアップを実行する必要があります。
 
-**[ID]** :1699.09l1Organizational.10 - 09.l **所有権**: 適用外
+**[ID]** :1699.09l1Organizational.10 - 09.l **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1009,7 +1009,7 @@ ms.locfileid: "92310646"
 
 ### <a name="the-organization-builds-a-firewall-configuration-that-restricts-connections-between-un-trusted-networks-and-any-system-components-in-the-covered-information-environment-and-any-changes-to-the-firewall-configuration-are-updated-in-the-network-diagram"></a>組織は、信頼されていないネットワークと、対象の情報環境のシステム コンポーネントとの間の接続を制限する、ファイアウォール構成を構築します。ファイアウォールの構成に対する変更は、ネットワーク図でも更新します。
 
-**[ID]** :0863.09m2Organizational.910 - 09.m **所有権**: 適用外
+**[ID]** :0863.09m2Organizational.910 - 09.m **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1017,7 +1017,7 @@ ms.locfileid: "92310646"
 
 ### <a name="usage-restrictions-and-implementation-guidance-are-formally-defined-for-voip-including-the-authorization-and-monitoring-of-the-service"></a>サービスの承認と監視を含め、VoIP に対する使用制限と実装ガイダンスを正式に定義します。
 
-**[ID]** :0864.09m2Organizational.12 - 09.m **所有権**: 適用外
+**[ID]** :0864.09m2Organizational.12 - 09.m **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1025,7 +1025,7 @@ ms.locfileid: "92310646"
 
 ### <a name="the-organization-i-authorizes-connections-from-the-information-system-to-other-information-systems-outside-of-the-organization-through-the-use-of-interconnection-security-agreements-or-other-formal-agreement-ii-documents-each-connection-the-interface-characteristics-security-requirements-and-the-nature-of-the-information-communicated-iii-employs-a-deny-all-permit-by-exception-policy-for-allowing-connections-from-the-information-system-to-other-information-systems-outside-of-the-organization-and-iv-applies-a-default-deny-rule-that-drops-all-traffic-via-host-based-firewalls-or-port-filtering-tools-on-its-endpoints-workstations-servers-etc-except-those-services-and-ports-that-are-explicitly-allowed"></a>組織は、(i) 相互接続セキュリティ契約またはその他の正式な契約を使用して、情報システムから組織外の他の情報システムへの接続を承認し、(ii) 各接続、インターフェイスの特性、セキュリティ要件、伝達される情報の性質を文書化し、(iii) "すべて拒否、例外的に許可" ポリシーを使用して情報システムから組織外の他の情報システムへの接続を許可し、(iv) 明示的に許可されているサービスとポートを除き、ホスト ベースのファイアウォールまたはエンドポイント (ワークステーション、サーバーなど) のポート フィルター ツールを経由するすべてのトラフィックを削除する "既定で拒否" 規則を適用します。
 
-**[ID]** :0865.09m2Organizational.13 - 09.m **所有権**: 適用外
+**[ID]** :0865.09m2Organizational.13 - 09.m **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1041,7 +1041,7 @@ ms.locfileid: "92310646"
 
 ### <a name="wireless-access-points-are-placed-in-secure-areas-and-shut-down-when-not-in-use-eg-nights-weekends"></a>ワイヤレス アクセス ポイントをセキュリティで保護された領域に配置し、使用されていないとき (夜間、週末など) はシャットダウンします。
 
-**[ID]** :0867.09m3Organizational.17 - 09.m **所有権**: 適用外
+**[ID]** :0867.09m3Organizational.17 - 09.m **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1049,7 +1049,7 @@ ms.locfileid: "92310646"
 
 ### <a name="the-organization-builds-a-firewall-configuration-to-restrict-inbound-and-outbound-traffic-to-that-which-is-necessary-for-the-covered-data-environment"></a>組織では、対象のデータ環境に必要な範囲で受信トラフィックと送信トラフィックを制限するファイアウォール構成を構築します。
 
-**[ID]** :0868.09m3Organizational.18 - 09.m **所有権**: 適用外
+**[ID]** :0868.09m3Organizational.18 - 09.m **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1108,7 +1108,7 @@ ms.locfileid: "92310646"
 
 ### <a name="the-organization-reviews-and-updates-the-interconnection-security-agreements-on-an-ongoing-basis-verifying-enforcement-of-security-requirements"></a>組織では、セキュリティ要件の適用を検証し、継続的に相互接続セキュリティ契約を見直して更新します。
 
-**[ID]** :0885.09n2Organizational.3 - 09.n **所有権**: 適用外
+**[ID]** :0885.09n2Organizational.3 - 09.n **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1132,7 +1132,7 @@ ms.locfileid: "92310646"
 
 ### <a name="the-contract-with-the-externaloutsourced-service-provider-includes-the-specification-that-the-service-provider-is-responsible-for-the-protection-of-covered-information-shared"></a>外部またはアウトソーシング サービスのプロバイダーとのコントラクトには、サービス プロバイダーが保護を担当する、対象となる共有情報の明細が含まれています。
 
-**[ID]** :0888.09n2Organizational.6 - 09.n **所有権**: 適用外
+**[ID]** :0888.09n2Organizational.6 - 09.n **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1142,7 +1142,7 @@ ms.locfileid: "92310646"
 
 ### <a name="the-organization-based-on-the-data-classification-level-registers-media-including-laptops-prior-to-use-places-reasonable-restrictions-on-how-such-media-be-used-and-provides-an-appropriate-level-of-physical-and-logical-protection-including-encryption-for-media-containing-covered-information-until-properly-destroyed-or-sanitized"></a>組織は、データ分類レベルに基づいて、使用前にメディア (ラップトップなど) を登録し、そのようなメディアの使用方法に適切な制限を設け、適切に破棄またはサニタイズされるまで対象情報が格納されているメディアに対して適切なレベルの物理的および論理的保護 (暗号化など) を提供します。
 
-**[ID]** :0301.09o1Organizational.123 - 09.o **所有権**: 適用外
+**[ID]** :0301.09o1Organizational.123 - 09.o **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1150,7 +1150,7 @@ ms.locfileid: "92310646"
 
 ### <a name="the-organization-protects-and-controls-media-containing-sensitive-information-during-transport-outside-of-controlled-areas"></a>組織は、制御された領域の外部での転送の間に、機密情報を含むメディアを保護および制御します。
 
-**[ID]** :0302.09o2Organizational.1 - 09.o **所有権**: 適用外
+**[ID]** :0302.09o2Organizational.1 - 09.o **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1158,7 +1158,7 @@ ms.locfileid: "92310646"
 
 ### <a name="digital-and-non-digital-media-requiring-restricted-use-and-the-specific-safeguards-used-to-restrict-their-use-are-identified"></a>制限された使用を必要とするデジタルおよび非デジタル メディアと、その使用を制限するために使用される特定の安全対策を明らかにします。
 
-**[ID]** :0303.09o2Organizational.2 - 09.o **所有権**: 適用外
+**[ID]** :0303.09o2Organizational.2 - 09.o **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1166,7 +1166,7 @@ ms.locfileid: "92310646"
 
 ### <a name="the-organization-restricts-the-use-of-writable-removable-media-and-personally-owned-removable-media-in-organizational-systems"></a>組織は、組織のシステムでの書き込み可能なリムーバブル メディアと個人所有のリムーバブル メディアの使用を制限します。
 
-**[ID]** :0304.09o3Organizational.1 - 09.o **所有権**: 適用外
+**[ID]** :0304.09o3Organizational.1 - 09.o **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1234,7 +1234,7 @@ ms.locfileid: "92310646"
 
 ### <a name="the-organization-limits-the-use-of-organization-controlled-portable-storage-media-by-authorized-individuals-on-external-information-systems"></a>組織は、外部情報システム上の承認された個人による組織管理のポータブル ストレージ メディアの使用を制限します。
 
-**[ID]** :0915.09s2Organizational.2 - 09.s **所有権**: 適用外
+**[ID]** :0915.09s2Organizational.2 - 09.s **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1242,7 +1242,7 @@ ms.locfileid: "92310646"
 
 ### <a name="the-information-system-prohibits-remote-activation-of-collaborative-computing-devices-and-provides-an-explicit-indication-of-use-to-users-physically-present-at-the-devices"></a>情報システムでは、コラボレーション コンピューティング デバイスのリモート アクティブ化を禁止し、デバイスに物理的に存在するユーザーに対して、使用していることを明示的に示します。
 
-**[ID]** :0916.09s2Organizational.4 - 09.s **所有権**: 適用外
+**[ID]** :0916.09s2Organizational.4 - 09.s **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1268,7 +1268,7 @@ ms.locfileid: "92310646"
 
 ### <a name="data-involved-in-electronic-commerce-and-online-transactions-is-checked-to-determine-if-it-contains-covered-information"></a>電子商取引とオンライン取引に関連するデータをチェックし、対象となる情報が含まれているかどうかを確認します。
 
-**[ID]** :0943.09y1Organizational.1 - 09.y **所有権**: 適用外
+**[ID]** :0943.09y1Organizational.1 - 09.y **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1276,7 +1276,7 @@ ms.locfileid: "92310646"
 
 ### <a name="protocols-used-to-communicate-between-all-involved-parties-are-secured-using-cryptographic-techniques-eg-ssl"></a>関係するすべてのパーティ間の通信に使用されるプロトコルを、暗号化手法 (SSL など) を使用してセキュリティで保護します。
 
-**[ID]** :0945.09y1Organizational.3 - 09.y **所有権**: 適用外
+**[ID]** :0945.09y1Organizational.3 - 09.y **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1284,7 +1284,7 @@ ms.locfileid: "92310646"
 
 ### <a name="the-organization-requires-the-use-of-encryption-between-and-the-use-of-electronic-signatures-by-each-of-the-parties-involved-in-the-transaction"></a>組織では、トランザクションに関係する各パーティの間で暗号化を使用し、各パーティで電子署名を使用することを要求します。
 
-**[ID]** :0946.09y2Organizational.14 - 09.y **所有権**: 適用外
+**[ID]** :0946.09y2Organizational.14 - 09.y **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1292,7 +1292,7 @@ ms.locfileid: "92310646"
 
 ### <a name="the-organization-ensures-the-storage-of-the-transaction-details-are-located-outside-of-any-publicly-accessible-environments-eg-on-a-storage-platform-existing-on-the-organizations-intranet-and-not-retained-and-exposed-on-a-storage-medium-directly-accessible-from-the-internet"></a>組織では、トランザクションの詳細のストレージがパブリック アクセスできる環境の外部に配置され (たとえば、組織のイントラネット上に存在するストレージ プラットフォーム上)、インターネットから直接アクセスできるストレージ メディアで保持および公開されないようにします。
 
-**[ID]** :0947.09y2Organizational.2 - 09.y **所有権**: 適用外
+**[ID]** :0947.09y2Organizational.2 - 09.y **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1300,7 +1300,7 @@ ms.locfileid: "92310646"
 
 ### <a name="where-a-trusted-authority-is-used-eg-for-the-purposes-of-issuing-and-maintaining-digital-signatures-andor-digital-certificates-security-is-integrated-and-embedded-throughout-the-entire-end-to-end-certificatesignature-management-process"></a>信頼できる機関を使用する場合 (デジタル署名やデジタル証明書を発行および管理するために)、エンド ツー エンドの証明書および署名管理プロセス全体にわたってセキュリティを統合し、埋め込みます。
 
-**[ID]** :0948.09y2Organizational.3 - 09.y **所有権**: 適用外
+**[ID]** :0948.09y2Organizational.3 - 09.y **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1308,7 +1308,7 @@ ms.locfileid: "92310646"
 
 ### <a name="the-protocols-used-for-communications-are-enhanced-to-address-any-new-vulnerability-and-the-updated-versions-of-the-protocols-are-adopted-as-soon-as-possible"></a>通信に使用されるプロトコルは、新しい脆弱性に対応するように強化し、プロトコルのバージョンが更新されたらできるだけ早く採用します。
 
-**[ID]** :0949.09y2Organizational.5 - 09.y **所有権**: 適用外
+**[ID]** :0949.09y2Organizational.5 - 09.y **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1392,7 +1392,7 @@ ms.locfileid: "92310646"
 
 ### <a name="where-development-is-outsourced-change-control-procedures-to-address-security-are-included-in-the-contracts-and-specifically-require-the-developer-to-track-security-flaws-and-flaw-resolution-within-the-system-component-or-service-and-report-findings-to-organization-defined-personnel-or-roles"></a>開発をアウトソーシングする場合は、セキュリティに対処するための変更管理手順が契約に含まれており、システム、コンポーネント、またはサービスでセキュリティの欠陥および欠陥の解決を追跡し、組織で定義されている担当者または役割に対して結果を報告するよう、開発者に明示的に要求されています。
 
-**[ID]** :0640.10k2Organizational.1012 - 10.k **所有権**: 適用外
+**[ID]** :0640.10k2Organizational.1012 - 10.k **所有権**:Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1442,7 +1442,7 @@ ms.locfileid: "92310646"
 |[コンテナーのセキュリティ構成の脆弱性を修復する必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe8cbc669-f12d-49eb-93e7-9273119e9933) |Docker がインストールされているマシンのセキュリティ構成の脆弱性を監査し、Azure Security Center で推奨事項として表示します。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ContainerBenchmark_Audit.json) |
 |[使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe1e5fd5d-3e4c-4ce1-8661-7d1873ae6b15) |構成ベースラインを満たしていないサーバーが、推奨設定として Azure Security Center で監視されます |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_OSVulnerabilities_Audit.json) |
 |[仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3c735d8a-a4ba-4a3a-b7cf-db7754cf57f4) |攻撃から保護するため、お使いの仮想マシン スケール セットの OS 脆弱性を監査します。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VmssOSVulnerabilities_Audit.json) |
-|[SQL データベースの脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffeedbf84-6b99-488c-acc2-71c829aa5ffc) |脆弱性評価スキャン結果と、データベースの脆弱性を修正する方法についての推奨事項を監視します。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SQLDbVulnerabilities_Audit.json) |
+|[SQL データベースの脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffeedbf84-6b99-488c-acc2-71c829aa5ffc) |脆弱性評価スキャン結果と、データベースの脆弱性を修正する方法についての推奨事項を監視します。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SQLDbVulnerabilities_Audit.json) |
 |[脆弱性評価ソリューションによって脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F760a85ff-6162-42b3-8d70-698e268f648c) |脆弱性評価ソリューションによって検出された脆弱性と、脆弱性評価ソリューションを使用していない VM を、推奨設定として Azure Security Center で監視します。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VMVulnerabilities_Audit.json) |
 |[SQL Managed Instance で脆弱性評価を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1b7aa243-30e4-4c9e-bca8-d0d3022b634a) |定期的な脆弱性評価スキャンが有効になっていない各 SQL Managed Instance を監査します。 脆弱性評価は、潜在的なデータベースの脆弱性を検出、追跡、および修正するのに役立ちます。 |AuditIfNotExists、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/VulnerabilityAssessmentOnManagedInstance_Audit.json) |
 |[脆弱性評価を SQL サーバー上で有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fef2a8f2a-b3d9-49cd-a8a8-9a3aaaf647d9) |定期的な脆弱性評価スキャンが有効になっていない Azure SQL サーバーを監査します。 脆弱性評価は、潜在的なデータベースの脆弱性を検出、追跡、および修正するのに役立ちます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/VulnerabilityAssessmentOnServer_Audit.json) |
@@ -1502,7 +1502,7 @@ ms.locfileid: "92310646"
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[SQL データベースの脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffeedbf84-6b99-488c-acc2-71c829aa5ffc) |脆弱性評価スキャン結果と、データベースの脆弱性を修正する方法についての推奨事項を監視します。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SQLDbVulnerabilities_Audit.json) |
+|[SQL データベースの脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffeedbf84-6b99-488c-acc2-71c829aa5ffc) |脆弱性評価スキャン結果と、データベースの脆弱性を修正する方法についての推奨事項を監視します。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SQLDbVulnerabilities_Audit.json) |
 
 ### <a name="vulnerability-scanning-tools-include-the-capability-to-readily-update-the-information-system-vulnerabilities-scanned"></a>脆弱性スキャン ツールには、キャン対象の情報システムの脆弱性を速やかに更新する機能が含まれています。
 
@@ -1544,7 +1544,7 @@ ms.locfileid: "92310646"
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[キー コンテナー オブジェクトが回復可能でなければならない](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |このポリシーは、キー コンテナー オブジェクトが回復可能でないかどうかを監査します。 論理的な削除機能は、DELETE 操作の後でもオブジェクトが削除されているように見せながら特定の保持期間 (90 日間) の間リソースを実際に保持するのに役立ちます。 "消去保護" が有効な場合、削除状態のコンテナーまたはオブジェクトは、90 日間の保持期間が経過するまで消去できません。 これらのコンテナーとオブジェクトはまだ回復可能で、お客様のアイテム保持ポリシーに確実に従うことができます。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
+|[キー コンテナーで消去保護が有効になっている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |悪意でキー コンテナーが削除されると、データが完全に失われる可能性があります。 組織内の悪意のある内部関係者が、キー コンテナーの削除と消去のアクセスを取得できる可能性もあります。 消去保護では、論理的に削除されたキー コンテナーに必須の保有期間を適用することによって、内部関係者の攻撃から組織を保護します。 組織や Microsoft の内部にいるどのユーザーも、論理的な削除の保有期間中にキー コンテナーを消去することはできなくなります。 |Audit、Deny、Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
 
 ### <a name="business-impact-analysis-are-used-to-evaluate-the-consequences-of-disasters-security-failures-loss-of-service-and-service-availability"></a>ビジネスへの影響分析は、災害、セキュリティ エラー、サービスの損失、サービスの可用性の結果を評価するために使用されます。
 

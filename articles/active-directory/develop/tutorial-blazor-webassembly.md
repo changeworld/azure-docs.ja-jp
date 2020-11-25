@@ -1,23 +1,25 @@
 ---
 title: チュートリアル - Blazor WebAssembly アプリでユーザーのサインインを行い、保護された API を呼び出す
 titleSuffix: Microsoft identity platform
-description: このチュートリアルでは、Blazor WebAssembly アプリで Microsoft ID プラットフォームを使用して、ユーザーのサインインと保護された API の呼び出しを行います。
+description: このチュートリアルでは、Blazor WebAssembly (WASM) アプリで Microsoft ID プラットフォームを使用して、ユーザーをサインインし、保護された API を呼び出します。
 author: knicholasa
 ms.author: nichola
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: ba3607c522191644ec0cc63db118de285d297c48
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: f967b10d729c9c5486bbca9b643f48aaf558687c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221512"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628069"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>チュートリアル:Blazor WebAssembly アプリでユーザーのサインインを行い、保護された API を呼び出す
 
-[Blazor WebAssembly](/aspnet/core/blazor#blazor-webassembly) は、.NET で対話型のクライアント側 Web アプリを構築するためのシングルページ アプリ フレームワークです。 このチュートリアルでは、[Microsoft ID プラットフォーム](https://docs.microsoft.com/azure/active-directory/develop/)を使用して、ユーザーのサインインを行い、保護された API からデータを取得する Blazor WebAssembly (Blazor WASM) アプリを作成します。
+Blazor WebAssembly (WASM) は、.NET で対話型のクライアント側 Web アプリを構築するためのシングルページ アプリ フレームワークです。 このチュートリアルでは、Microsoft ID プラットフォームを使用し、Azure Active Directory (Azure AD) にアプリを登録することで、Blazor WASM アプリで認証を実装し、Microsoft Graph からデータを取得する方法について説明します。
+
+[Blazor Server のチュートリアル](tutorial-blazor-server.md)も用意されています。 
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -85,7 +87,7 @@ Microsoft ID プラットフォームを使用して Azure AD でのログイン
 1. Azure portal の **[アプリの登録]** でアプリを選択します。
 1. **[管理]** の下にある **[API のアクセス許可]** を選択します。
 1. **[アクセス許可の追加]**  >  **[Microsoft Graph]** を選択します。
-1. **[委任されたアクセス許可]** を選択し、 **Mail.Read** アクセス許可を検索して選択します。
+1. **[委任されたアクセス許可]** を選択し、**Mail.Read** アクセス許可を検索して選択します。
 1. **[アクセス許可の追加]** を選択します.
 
 次に、netstandard2.1 **ItemGroup** にあるプロジェクトの *.csproj* ファイルに以下を追加します。 これにより、次の手順でカスタム HttpClient を作成できるようになります。
@@ -115,7 +117,7 @@ public class GraphAPIAuthorizationMessageHandler : AuthorizationMessageHandler
 }
 ```
 
-次に、 *Program.cs* の `Main` メソッドの内容を次のコードで置き換えます。 このコードでは新しい `GraphAPIAuthorizationMessageHandler` を利用し、ユーザーが初めてサインインしたときにアプリが要求する既定のスコープとして `User.Read` と `Mail.Read` を追加します。
+次に、*Program.cs* の `Main` メソッドの内容を次のコードで置き換えます。 このコードでは新しい `GraphAPIAuthorizationMessageHandler` を利用し、ユーザーが初めてサインインしたときにアプリが要求する既定のスコープとして `User.Read` と `Mail.Read` を追加します。
 
 ```csharp
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -137,7 +139,7 @@ builder.Services.AddMsalAuthentication(options =>
 await builder.Build().RunAsync();
 ```
 
-最後に、 *FetchData.razor* ページの内容を次のコードで置き換えます。 このコードにより、Microsoft Graph API からユーザーの電子メール データがフェッチされ、一覧として表示されます。 `OnInitializedAsync` では、適切なアクセス トークンを使用する新しい `HttpClient` が作成され、Microsoft Graph API への要求を行うために使用されます。
+最後に、*FetchData.razor* ページの内容を次のコードで置き換えます。 このコードにより、Microsoft Graph API からユーザーの電子メール データがフェッチされ、一覧として表示されます。 `OnInitializedAsync` では、適切なアクセス トークンを使用する新しい `HttpClient` が作成され、Microsoft Graph API への要求を行うために使用されます。
 
 ```c#
 @page "/fetchdata"
@@ -239,5 +241,5 @@ else
 
 ## <a name="next-steps"></a>次の手順
 
-- [Microsoft ID プラットフォームのベスト プラクティスと推奨事項](./identity-platform-integration-checklist.md)
-- [ASP.NET Core Blazor の概要](/aspnet/core/blazor)
+> [!div class="nextstepaction"]
+> [Microsoft ID プラットフォームのベスト プラクティスと推奨事項](./identity-platform-integration-checklist.md)

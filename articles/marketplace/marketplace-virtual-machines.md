@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: a14ccb74e6f0ac2454255d609662706cb53ede31
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 433875e52e77a8992197b47fe0424cd0b7e9f50c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129594"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628290"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>仮想マシンのオファーを計画する方法
 
@@ -100,7 +100,7 @@ VM オファーで使用可能なライセンス オプションは次のとお�
 
 イメージと価格をプライベート プランとして発行することで、VM の検出とデプロイを特定の顧客に限定できます。 プライベート プランとすることで、公開元が近しい顧客に排他的なオファーを作成し、カスタマイズされたソフトウェアと条件を提供できるようになります。 条件をカスタマイズすることによって､公開元は特別な価格と条件によるフィールド主導の取引､さらには限定的なソフトウェア リリースの利用などのさまざまなシナリオにスポットライトを当てることができます。 プライベート プランにより、限られた顧客に具体的な価格や製品を提供できます。
 
-詳細については、「[コマーシャル マーケットプレース オファーのプランと価格](plans-pricing.md)」と「[Azure Marketplace のプライベート オファー](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace)」を参照してください。
+詳細については、「[コマーシャル マーケットプレース オファーのプランと価格](plans-pricing.md)」および「[Microsoft コマーシャル マーケットプレースでのプライベート オファー](private-offers.md)」を参照してください。
 
 ## <a name="test-drives"></a>体験版
 
@@ -129,7 +129,7 @@ CRM の接続は、オファーの作成時または作成後にいつでも追�
 パートナー センターでオファーを作成するときに、 **[CSP を通じた再販]** タブが表示されます。このオプションを使用すると、Microsoft クラウド ソリューション プロバイダー (CSP) プログラムに参加しているパートナーは、バンドルされたオファーの一部として VM を再販できます。 すべてのライセンス持ち込み (BYOL) プランは、自動的にこのプログラムにオプトインされます。 BYOL 以外のプランをオプトインすることもできます。 詳細については、「[クラウド ソリューション プロバイダー プログラム](cloud-solution-providers.md)」を参照してください。 
 
 > [!NOTE]
-> クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。 Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「 [**クラウド ソリューション プロバイダー**](./cloud-solution-providers.md)」を参照してください。
+> クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。 Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[**クラウド ソリューション プロバイダー**](./cloud-solution-providers.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

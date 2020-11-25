@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 11/03/2020
 ms.custom: generated
-ms.openlocfilehash: 701c901cb9b85aeaf329846c13e6ed051ea52e63
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a48a13fa18025254ee31344868d10181ae87c65e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288498"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685479"
 ---
 # <a name="azure-built-in-roles"></a>Azure 組み込みロール
 
@@ -63,17 +63,17 @@ ms.locfileid: "93288498"
 > | [Reader and Data Access](#reader-and-data-access) | すべてを表示することができますが、ストレージ アカウントや含まれるリソースの削除や作成はできません。 ストレージ アカウント キーへのアクセスを使用して、ストレージ アカウントに含まれるすべてのデータへの読み取り/書き込みアクセスも許可されます。 | c12c1c16-33a1-487b-954d-41c89c60f349 |
 > | [Storage Account Contributor](#storage-account-contributor) | ストレージ アカウントの管理を許可します。 アカウント キーへのアクセスを提供します。これを使用して、共有キー認証を使用してデータにアクセスすることができます。 | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | [ストレージ アカウント キー オペレーターのサービス ロール](#storage-account-key-operator-service-role) | ストレージ アカウント アクセス キーを一覧表示および再生成できます。 | 81a9662b-bebf-436f-a333-f67b29880f12 |
-> | [ストレージ BLOB データ共同作成者](#storage-blob-data-contributor) | Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
-> | [ストレージ BLOB データ所有者](#storage-blob-data-owner) | Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を提供します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
-> | [ストレージ BLOB データ閲覧者](#storage-blob-data-reader) | Azure Storage コンテナーと BLOB の読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
-> | [Storage Blob デリゲータ](#storage-blob-delegator) | Azure AD 資格情報で署名されたコンテナーまたは BLOB 用の共有アクセス署名を作成するために使用できるユーザー委任キーを取得します。 詳細については、「[ユーザー委任 SAS を作成する](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)」を参照してください。 | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
+> | [ストレージ BLOB データ共同作成者](#storage-blob-data-contributor) | Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
+> | [ストレージ BLOB データ所有者](#storage-blob-data-owner) | Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を提供します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
+> | [ストレージ BLOB データ閲覧者](#storage-blob-data-reader) | Azure Storage コンテナーと BLOB の読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
+> | [Storage Blob デリゲータ](#storage-blob-delegator) | Azure AD 資格情報で署名されたコンテナーまたは BLOB 用の共有アクセス署名を作成するために使用できるユーザー委任キーを取得します。 詳細については、「[ユーザー委任 SAS を作成する](/rest/api/storageservices/create-user-delegation-sas)」を参照してください。 | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
 > | [記憶域ファイル データの SMB 共有の共同作成者](#storage-file-data-smb-share-contributor) | Azure ファイル共有のファイルまたはディレクトリに対する読み取り、書き込み、削除のアクセス権を許可します。 このロールに相当する機能は Windows ファイル サーバーに組み込まれていません。 | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
 > | [記憶域ファイル データの SMB 共有の管理者特権共同作成者](#storage-file-data-smb-share-elevated-contributor) | Azure ファイル共有のファイルまたはディレクトリに対する ACL の読み取り、書き込み、削除、変更を許可します。 このロールは、Windows ファイル サーバーでのファイル共有 ACL の変更に相当します。 | a7264617-510b-434b-a828-9731dc254ea7 |
 > | [ストレージ ファイル データの SMB 共有の閲覧者](#storage-file-data-smb-share-reader) | Azure ファイル共有のファイルまたはディレクトリに対する読み取りアクセスを許可します。 このロールは、Windows ファイル サーバーでのファイル共有 ACL の読み取りに相当します。 | aba4ae5f-2193-4029-9191-0cb91df5e314 |
-> | [ストレージ キュー データ共同作成者共同作成者](#storage-queue-data-contributor) | Azure Storage キューおよびキュー メッセージの読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
-> | [ストレージ キュー データのメッセージ プロセッサ](#storage-queue-data-message-processor) | Azure Storage キューからのメッセージのピーク、取得、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
-> | [ストレージ キュー データ メッセージ送信者](#storage-queue-data-message-sender) | Azure Storage キューにメッセージを追加します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
-> | [ストレージ キュー データ閲覧者](#storage-queue-data-reader) | Azure Storage キューおよびキュー メッセージの読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | 19e7f393-937e-4f77-808e-94535e297925 |
+> | [ストレージ キュー データ共同作成者共同作成者](#storage-queue-data-contributor) | Azure Storage キューおよびキュー メッセージの読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
+> | [ストレージ キュー データのメッセージ プロセッサ](#storage-queue-data-message-processor) | Azure Storage キューからのメッセージのピーク、取得、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
+> | [ストレージ キュー データ メッセージ送信者](#storage-queue-data-message-sender) | Azure Storage キューにメッセージを追加します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
+> | [ストレージ キュー データ閲覧者](#storage-queue-data-reader) | Azure Storage キューおよびキュー メッセージの読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **Web** |  |  |
 > | [Azure Maps データ閲覧者](#azure-maps-data-reader) | Azure Maps アカウントからマップ関連データを読み取るためのアクセス権を付与します。 | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | [Search Service Contributor](#search-service-contributor) | Search サービスを管理できます。ただし、それらへのアクセスは含まれません。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
@@ -180,9 +180,9 @@ ms.locfileid: "93288498"
 > | **監視** |  |  |
 > | [Application Insights Component Contributor](#application-insights-component-contributor) | Application Insights コンポーネントを管理できます | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Application Insights スナップショット デバッガーで収集されたデバック スナップショットの表示とダウンロードを実行できるアクセス許可をユーザーに与えます。 これらのアクセス許可は、[所有者](#owner)ロールまたは[共同作成者](#contributor)ロールには含まれないことに注意してください。 ユーザーに Application Insights スナップショット デバッガー ロールを与える場合は、そのロールをユーザーに直接付与する必要があります。 このロールは、カスタム ロールに追加されるときに認識されません。 | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
-> | [Monitoring Contributor](#monitoring-contributor) | すべての監視データを読み取り、監視設定を編集できます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)も参照してください。 | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
+> | [Monitoring Contributor](#monitoring-contributor) | すべての監視データを読み取り、監視設定を編集できます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
 > | [監視メトリック パブリッシャー](#monitoring-metrics-publisher) | Azure リソースに対するメトリックの公開を有効にします | 3913510d-42f4-4e42-8a64-420c390055eb |
-> | [Monitoring Reader](#monitoring-reader) | すべての監視データ (メトリック、ログなど) を読み取ることができます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)も参照してください。 | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
+> | [Monitoring Reader](#monitoring-reader) | すべての監視データ (メトリック、ログなど) を読み取ることができます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | [Workbook Contributor](#workbook-contributor) | 共有ブックを保存できます。 | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
 > | [Workbook Reader](#workbook-reader) | ブックの読み取りが可能です。 | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
 > | **管理 + ガバナンス** |  |  |
@@ -238,9 +238,9 @@ ms.locfileid: "93288498"
 > | [Microsoft.Blueprint](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/write | 任意のブループリント割り当てを作成または更新します |
 > | [Microsoft.Blueprint](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/delete | 任意のブループリント割り当てを削除します |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -281,11 +281,11 @@ Azure RBAC でロールを割り当てる権限を含め、すべてのリソー
 > | --- | --- |
 > | * | あらゆる種類のリソースの作成と管理 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -320,11 +320,11 @@ Azure RBAC でロールを割り当てる権限を含め、すべてのリソー
 > | --- | --- |
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -361,11 +361,11 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/* | 承認の管理 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -421,11 +421,11 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -480,12 +480,12 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/read | ネットワーク インターフェイスの定義を取得します。  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/*/read |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/login/action | 仮想マシンに通常のユーザーとしてログインします。 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/loginAsAdmin/action | Windows 管理者または Linux のルート ユーザーの権限で仮想マシンにログインします。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -567,11 +567,11 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -650,11 +650,11 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/read | ネットワーク インターフェイスの定義を取得します。  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/*/read |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/login/action | 仮想マシンに通常のユーザーとしてログインします。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -705,11 +705,11 @@ CDN エンドポイントを管理できますが、アクセス権を他のユ�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -758,11 +758,11 @@ CDN エンドポイントを表示できますが、変更はできません。
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -811,11 +811,11 @@ CDN プロファイルとそのエンドポイントを管理できますが、�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -864,11 +864,11 @@ CDN プロファイルとそのエンドポイントを表示できますが、�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -916,11 +916,11 @@ CDN プロファイルとそのエンドポイントを表示できますが、�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -967,11 +967,11 @@ Azure DNS の DNS ゾーンとレコード セットを管理できますが、�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -1018,11 +1018,11 @@ Azure DNS の DNS ゾーンとレコード セットを管理できますが、�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -1072,11 +1072,11 @@ Azure DNS の DNS ゾーンとレコード セットを管理できますが、�
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/join/action | 仮想ネットワークに参加します。 警告不可能です。 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -1126,11 +1126,11 @@ Traffic Manager プロファイルを管理できますが、それにアクセ�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -1193,13 +1193,13 @@ Avere vFXT クラスターを作成および管理できます。 [詳細情報]
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/resources/read | リソース グループのリソースを取得します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/delete | BLOB を削除した結果を返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/write | BLOB の書き込みの結果を返します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -1267,13 +1267,13 @@ Avere vFXT クラスターを作成および管理できます。 [詳細情報]
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/read | コンテナーの一覧を返します |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/write | BLOB コンテナーのプット結果を返します |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/delete | BLOB を削除した結果を返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/write | BLOB の書き込みの結果を返します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -1362,11 +1362,11 @@ Avere vFXT クラスターを作成および管理できます。 [詳細情報]
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/read | すべてのバックアップ保護の意図を一覧表示します |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -1496,11 +1496,11 @@ Avere vFXT クラスターを作成および管理できます。 [詳細情報]
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/read | すべてのバックアップ保護の意図を一覧表示します |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -1627,11 +1627,11 @@ Avere vFXT クラスターを作成および管理できます。 [詳細情報]
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupValidateFeatures/action | 機能を検証します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -1709,11 +1709,11 @@ Avere vFXT クラスターを作成および管理できます。 [詳細情報]
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -1755,11 +1755,11 @@ Avere vFXT クラスターを作成および管理できます。 [詳細情報]
 > | [Microsoft.ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/listkeys/action | ストレージ アカウントのアクセス キーを一覧表示します。 |
 > | [Microsoft.ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/regeneratekey/action | ストレージ アカウントの既存のアクセス キーを再生成します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -1800,11 +1800,11 @@ Data Box サービスですべてを管理できます (他のユーザーに対
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | [Microsoft.Databox](resource-provider-operations.md#microsoftdatabox)/* |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -1853,11 +1853,11 @@ Data Box サービスを管理できます (注文の作成または注文の詳
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -1923,9 +1923,9 @@ Data Box サービスを管理できます (注文の作成または注文の詳
 > | [Microsoft.DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/computePolicies/Write | コンピューティング ポリシーを作成または更新します。 |
 > | [Microsoft.DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/computePolicies/Delete | コンピューティング ポリシーを削除します。 |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -1984,11 +1984,11 @@ Data Box サービスを管理できます (注文の作成または注文の詳
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/ListAccountSas/action | 指定されたストレージ アカウントのアカウント SAS トークンを返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2033,11 +2033,11 @@ Data Box サービスを管理できます (注文の作成または注文の詳
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/* | ストレージ アカウントの作成と管理 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2081,11 +2081,11 @@ Data Box サービスを管理できます (注文の作成または注文の詳
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/listkeys/action | 指定されたストレージ アカウントのアクセス キーを返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/regeneratekey/action | 指定されたストレージ アカウントのアクセス キーを再生成します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2114,7 +2114,7 @@ Data Box サービスを管理できます (注文の作成または注文の詳
 
 ### <a name="storage-blob-data-contributor"></a>ストレージ BLOB データ共同作成者
 
-Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
+Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -2124,14 +2124,14 @@ Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/write | コンテナーのメタデータまたはプロパティを変更します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/action | Blob service 用のユーザー委任キーを返します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/delete | BLOB を削除する |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/move/action | パス間で BLOB を移動します |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/write | BLOB に書き込みます。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2167,7 +2167,7 @@ Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を
 
 ### <a name="storage-blob-data-owner"></a>ストレージ BLOB データ所有者
 
-Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を提供します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
+Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を提供します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -2175,11 +2175,11 @@ Azure Storage Blob コンテナーとデータに対するフル アクセス (P
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/* | コンテナーのフル アクセス許可。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/action | Blob service 用のユーザー委任キーを返します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/* | BLOB のフル アクセス許可。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2210,7 +2210,7 @@ Azure Storage Blob コンテナーとデータに対するフル アクセス (P
 
 ### <a name="storage-blob-data-reader"></a>ストレージ BLOB データ閲覧者
 
-Azure Storage コンテナーと BLOB の読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
+Azure Storage コンテナーと BLOB の読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -2218,11 +2218,11 @@ Azure Storage コンテナーと BLOB の読み取りと一覧表示を行いま
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/read | コンテナーまたはコンテナーの一覧を返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/action | Blob service 用のユーザー委任キーを返します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2253,18 +2253,18 @@ Azure Storage コンテナーと BLOB の読み取りと一覧表示を行いま
 
 ### <a name="storage-blob-delegator"></a>Storage Blob デリゲータ
 
-Azure AD 資格情報で署名されたコンテナーまたは BLOB 用の共有アクセス署名を作成するために使用できるユーザー委任キーを取得します。 詳細については、「[ユーザー委任 SAS を作成する](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)」を参照してください。 [詳細情報](https://docs.microsoft.com/rest/api/storageservices/get-user-delegation-key)
+Azure AD 資格情報で署名されたコンテナーまたは BLOB 用の共有アクセス署名を作成するために使用できるユーザー委任キーを取得します。 詳細については、「[ユーザー委任 SAS を作成する](/rest/api/storageservices/create-user-delegation-sas)」を参照してください。 [詳細情報](/rest/api/storageservices/get-user-delegation-key)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/action | Blob service 用のユーザー委任キーを返します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2297,15 +2297,15 @@ Azure ファイル共有のファイルまたはディレクトリに対する�
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/read | ファイル/フォルダーまたはファイル/フォルダーの一覧を返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/write | ファイルの書き込みまたはフォルダーの作成の結果を返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/delete | ファイル/フォルダーの削除の結果を返します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2340,16 +2340,16 @@ Azure ファイル共有のファイルまたはディレクトリに対する A
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/read | ファイル/フォルダーまたはファイル/フォルダーの一覧を返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/write | ファイルの書き込みまたはフォルダーの作成の結果を返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/delete | ファイル/フォルダーの削除の結果を返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/modifypermissions/action | ファイル/フォルダーに対するアクセス許可の変更の結果を返します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2385,13 +2385,13 @@ Azure ファイル共有のファイルまたはディレクトリに対する�
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/read | ファイル/フォルダーまたはファイル/フォルダーの一覧を返します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2419,7 +2419,7 @@ Azure ファイル共有のファイルまたはディレクトリに対する�
 
 ### <a name="storage-queue-data-contributor"></a>ストレージ キュー データ共同作成者
 
-Azure Storage キューおよびキュー メッセージの読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
+Azure Storage キューおよびキュー メッセージの読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -2428,13 +2428,13 @@ Azure Storage キューおよびキュー メッセージの読み取り、書�
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/read | キューまたはキューの一覧を返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/write | キューのメタデータまたはプロパティを変更します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/delete | 1 つまたは複数のメッセージをキューから削除します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/read | 1 つまたは複数のメッセージをキューからピークまたは取得します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/write | メッセージをキューに追加します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2468,19 +2468,19 @@ Azure Storage キューおよびキュー メッセージの読み取り、書�
 
 ### <a name="storage-queue-data-message-processor"></a>ストレージ キュー データのメッセージ プロセッサ
 
-Azure Storage キューからのメッセージのピーク、取得、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
+Azure Storage キューからのメッセージのピーク、取得、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/read | メッセージをピークします。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/process/action | メッセージを取得および削除します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2509,18 +2509,18 @@ Azure Storage キューからのメッセージのピーク、取得、削除を
 
 ### <a name="storage-queue-data-message-sender"></a>ストレージ キュー データ メッセージ送信者
 
-Azure Storage キューにメッセージを追加します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
+Azure Storage キューにメッセージを追加します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/add/action | メッセージをキューに追加します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2548,18 +2548,18 @@ Azure Storage キューにメッセージを追加します。 特定のデー�
 
 ### <a name="storage-queue-data-reader"></a>ストレージ キュー データ閲覧者
 
-Azure Storage キューおよびキュー メッセージの読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
+Azure Storage キューおよびキュー メッセージの読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 [詳細情報](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/read | キューまたはキューの一覧を返します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/read | 1 つまたは複数のメッセージをキューからピークまたは取得します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2597,13 +2597,13 @@ Azure Maps アカウントからマップ関連データを読み取るための
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/read |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2644,11 +2644,11 @@ Search サービスを管理できます。ただし、それらへのアクセ�
 > | [Microsoft.Search](resource-provider-operations.md#microsoftsearch)/searchServices/* | 検索サービスの作成と管理 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2693,11 +2693,11 @@ SignalR サービス アクセス キーを読み取ります
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2734,14 +2734,14 @@ AAD の認証オプションを使用して、アプリ サーバーが SignalR 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/accessKey/action | ClientToken に署名するための一時的な AccessKey を生成します。 |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/serverConnection/write | サーバー接続を開始します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2782,11 +2782,11 @@ SignalR のサービス リソースの作成、読み取り、更新、削除�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2824,13 +2824,13 @@ AAD の認証オプションを使用して、アプリがサーバーレス モ
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/clientToken/action | クライアント接続を開始するための ClientToken を生成します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2863,9 +2863,9 @@ Azure SignalR Service REST API へのフル アクセス
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/hub/send/action | ハブ内のすべてのクライアント接続にメッセージをブロードキャストします。 |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/send/action | メッセージをグループにブロードキャストします。 |
@@ -2878,7 +2878,7 @@ Azure SignalR Service REST API へのフル アクセス
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/read | ユーザーの存在を確認します。 |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/write |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2920,15 +2920,15 @@ Azure SignalR Service REST API への読み取り専用アクセス
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/read | グループの存在、またはグループ内のユーザーの存在を確認します。 |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/read | クライアント接続の存在を確認します。 |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/read | ユーザーの存在を確認します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -2972,11 +2972,11 @@ Web サイトの Web プランを管理できます。ただし、それらへ�
 > | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/serverFarms/* | サーバー ファームの作成と管理 |
 > | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/hostingEnvironments/Join/Action | App Service Environment に参加します |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -3029,11 +3029,11 @@ Web サイト (Web プランではない) を管理できます。ただし、�
 > | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/serverFarms/read | App Service プランのプロパティを取得します。 |
 > | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/sites/* | Web サイトの作成と管理 (サイト作成では、関連付けられた App Service プランに対する書き込みアクセス許可も必要です) |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -3082,11 +3082,11 @@ acr の削除 [詳細](../container-registry/container-registry-roles.md)
 > | --- | --- |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/artifacts/delete | コンテナー レジストリの成果物を削除します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -3121,11 +3121,11 @@ acr イメージ署名者 [詳細](../container-registry/container-registry-role
 > | --- | --- |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/sign/write | コンテナー レジストリのコンテンツの信頼メタデータをプッシュ/プルします。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -3160,11 +3160,11 @@ acr のプル [詳細](../container-registry/container-registry-roles.md)
 > | --- | --- |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/pull/read | コンテナー レジストリからイメージをプルまたは取得します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -3200,11 +3200,11 @@ acr のプッシュ [詳細](../container-registry/container-registry-roles.md)
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/pull/read | コンテナー レジストリからイメージをプルまたは取得します。 |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/push/write | コンテナー レジストリにイメージをプッシュするか書き込みます。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -3240,11 +3240,11 @@ ACR 検査データ閲覧者
 > | --- | --- |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantine/read | コンテナー レジストリから検疫済みのイメージをプルまたは取得します |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -3280,11 +3280,11 @@ ACR 検査データ作成者
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantine/read | コンテナー レジストリから検疫済みのイメージをプルまたは取得します |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantine/write | 検疫済みイメージの検疫状態を書き込むか変更します |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -3322,11 +3322,11 @@ ACR 検査データ作成者
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/accessProfiles/listCredential/action | 資格情報の一覧の取得を使用し、ロール名を指定してマネージド クラスターのアクセス プロファイルを取得します。 |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/read | マネージド クラスターを取得します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -3364,11 +3364,11 @@ ACR 検査データ作成者
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 管理対象クラスターの clusterUser 資格情報を一覧表示します。 |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/read | マネージド クラスターを取得します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -3406,11 +3406,11 @@ Azure Kubernetes Service クラスターへの読み取りおよび書き込み�
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/write | 新しいマネージド クラスターを作成するか、既存のものを更新します。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -3454,7 +3454,7 @@ Azure Kubernetes Service クラスターへの読み取りおよび書き込み�
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 管理対象クラスターの clusterUser 資格情報を一覧表示します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/* |  |
 > | **NotDataActions** |  |
@@ -3517,11 +3517,11 @@ Azure Kubernetes Service クラスターへの読み取りおよび書き込み�
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 管理対象クラスターの clusterUser 資格情報を一覧表示します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/* |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -3571,7 +3571,7 @@ Azure Kubernetes Service クラスターへの読み取りおよび書き込み�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/controllerrevisions/read | controllerrevisions を読み取ります |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/daemonsets/read | デーモンセットを読み取ります |
@@ -3603,7 +3603,7 @@ Azure Kubernetes Service クラスターへの読み取りおよび書き込み�
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/serviceaccounts/read | serviceaccounts を読み取ります |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/services/read | サービスを読み取ります |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -3680,7 +3680,7 @@ Azure Kubernetes Service クラスターへの読み取りおよび書き込み�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/controllerrevisions/read | controllerrevisions を読み取ります |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/daemonsets/* |  |
@@ -3713,7 +3713,7 @@ Azure Kubernetes Service クラスターへの読み取りおよび書き込み�
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/serviceaccounts/* |  |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/services/* |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -3794,11 +3794,11 @@ Cosmos DB アカウントのデータを読み取ることができます。 Azu
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -3851,9 +3851,9 @@ Azure Cosmos DB アカウントを管理することができます。ただし�
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/listKeys/* |  |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/listConnectionStrings/* |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -3901,11 +3901,11 @@ Cosmos DB データベースまたはアカウントのコンテナーの復元�
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/backup/action | バックアップを構成するための要求を送信します |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/restore/action | 復元要求を送信します |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -3948,11 +3948,11 @@ Azure Cosmos DB アカウントを管理できます。 Azure Cosmos DB は以�
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/joinViaServiceEndpoint/action | ストレージ アカウントや SQL Database などのリソースをサブネットに結合します。 警告不可能です。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -4001,11 +4001,11 @@ Redis Caches を管理できます。ただし、それらへのアクセスは�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -4080,9 +4080,9 @@ SQL データベースを管理できます。ただし、それらへのアク�
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/vulnerabilityAssessments/* |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -4167,9 +4167,9 @@ SQL マネージド インスタンスと必要なネットワーク構成を管
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/azureADOnlyAuthentications/delete | 特定のマネージド サーバーの Azure Active Directory のみの認証オブジェクトを削除します |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/azureADOnlyAuthentications/write | 特定のマネージド サーバーの Azure Active Directory のみの認証オブジェクトを追加または更新します |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -4214,7 +4214,7 @@ SQL マネージド インスタンスと必要なネットワーク構成を管
 
 ### <a name="sql-security-manager"></a>SQL Security Manager
 
-SQL サーバーとデータベースのセキュリティ関連のポリシーを管理できます。ただし、それらへのアクセスは管理できません。 [詳細情報](../sql-database/sql-database-advanced-data-security.md)
+SQL サーバーとデータベースのセキュリティ関連のポリシーを管理できます。ただし、それらへのアクセスは管理できません。 [詳細情報](../azure-sql/database/azure-defender-for-sql.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -4264,11 +4264,11 @@ SQL サーバーとデータベースのセキュリティ関連のポリシー�
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/read | マネージド インスタンスの一覧を返すか、指定されたマネージド インスタンスのプロパティを取得します。 |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/azureADOnlyAuthentications/* |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -4339,7 +4339,7 @@ SQL サーバーとデータベースのセキュリティ関連のポリシー�
 
 ### <a name="sql-server-contributor"></a>SQL Server Contributor
 
-SQL サーバーとデータベースを管理できます。ただし、それらへのアクセスや、それらのセキュリティ関連ポリシーは管理できません。 [詳細情報](../sql-database/sql-database-aad-authentication-configure.md)
+SQL サーバーとデータベースを管理できます。ただし、それらへのアクセスや、それらのセキュリティ関連ポリシーは管理できません。 [詳細情報](../azure-sql/database/authentication-aad-configure.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -4383,9 +4383,9 @@ SQL サーバーとデータベースを管理できます。ただし、それ�
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/azureADOnlyAuthentications/delete | 特定のサーバーの Azure Active Directory のみの認証オブジェクトを削除します |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/azureADOnlyAuthentications/write | 特定のサーバーの Azure Active Directory 認証オブジェクトのみを追加または更新します |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -4460,11 +4460,11 @@ Azure Event Hubs リソースへのフル アクセスを許可します。 [詳
 > | --- | --- |
 > | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/* |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/* |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -4501,11 +4501,11 @@ Azure Event Hubs リソースへの受信アクセスを許可します。 [詳�
 > | --- | --- |
 > | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/*/eventhubs/consumergroups/read |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/*/receive/action |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -4542,11 +4542,11 @@ Azure Event Hubs リソースへの送信アクセスを許可します。 [詳�
 > | --- | --- |
 > | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/*/eventhubs/read |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/*/send/action |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -4591,11 +4591,11 @@ Azure Event Hubs リソースへの送信アクセスを許可します。 [詳�
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/write | eventSubscription を作成または更新します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -4641,11 +4641,11 @@ Azure Event Hubs リソースへの送信アクセスを許可します。 [詳�
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | Log Analytics のデータの表示 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/purge/action | ワークスペースから指定されたデータを削除します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -4691,11 +4691,11 @@ HDInsight クラスター構成の読み取りと変更を実行できます。 
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -4740,11 +4740,11 @@ HDInsight Enterprise セキュリティ パッケージに必要なドメイン 
 > | [Microsoft.AAD](resource-provider-operations.md#microsoftaad)/domainServices/*/read |  |
 > | [Microsoft.AAD](resource-provider-operations.md#microsoftaad)/domainServices/oucontainer/* |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -4794,11 +4794,11 @@ Log Analytics 共同作成者は、すべての監視データを読み取り、
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/listKeys/action | 指定されたストレージ アカウントのアクセス キーを返します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -4851,9 +4851,9 @@ Log Analytics Reader は、すべての監視データの表示と検索、お�
 > | **NotActions** |  |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/sharedKeys/read | ワークスペースの共有キーを取得します。 これらのキーを使用して、Microsoft Operational Insights エージェントをワークスペースに接続します。 |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -4893,11 +4893,11 @@ Schema Registry グループおよびスキーマの読み取り、書き込み�
 > | --- | --- |
 > | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/namespaces/schemagroups/* |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/namespaces/schemas/* |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -4934,11 +4934,11 @@ Schema Registry グループおよびスキーマの読み取りと一覧表示�
 > | --- | --- |
 > | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/namespaces/schemagroups/read | SchemaGroup リソースの説明の一覧を取得します |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/namespaces/schemas/read | スキーマを取得する |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -4978,11 +4978,11 @@ Schema Registry グループおよびスキーマの読み取りと一覧表示�
 > | --- | --- |
 > | [Microsoft.Blockchain](resource-provider-operations.md#microsoftblockchain)/blockchainMembers/transactionNodes/read | 既存のブロックチェーン メンバーのトランザクション ノードを取得または一覧表示します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.Blockchain](resource-provider-operations.md#microsoftblockchain)/blockchainMembers/transactionNodes/connect/action | ブロックチェーン メンバーのトランザクション ノードに接続します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -5038,11 +5038,11 @@ Cognitive Services のキーの作成、読み取り、更新、削除、管理�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -5091,13 +5091,13 @@ Cognitive Services データを読み取ります。
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/*/read |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -5144,11 +5144,11 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/* |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -5198,9 +5198,9 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/convert/action | 資産の変換を開始します |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/convert/read | 資産の変換プロパティを取得します |
@@ -5211,7 +5211,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/render/read | セッションに接続します |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/diagnostic/read | Remote Rendering インスペクターに接続します |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -5251,9 +5251,9 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/managesessions/read | セッションのプロパティを取得します |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/managesessions/action | セッションを開始します |
@@ -5261,7 +5261,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/render/read | セッションに接続します |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/diagnostic/read | Remote Rendering インスペクターに接続します |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -5298,9 +5298,9 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/create/action | 空間アンカーを作成します。 |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/discovery/read | 近くにある空間アンカーを検出します。 |
@@ -5309,7 +5309,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/submitdiag/read | Azure Spatial Anchors サービスの品質を改善するために診断データを送信します。 |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/write | 空間アンカーのプロパティを更新します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -5347,9 +5347,9 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/create/action | 空間アンカーを作成します。 |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/delete | 空間アンカーを削除します。 |
@@ -5359,7 +5359,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/submitdiag/read | Azure Spatial Anchors サービスの品質を改善するために診断データを送信します。 |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/write | 空間アンカーのプロパティを更新します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -5398,16 +5398,16 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/discovery/read | 近くにある空間アンカーを検出します。 |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/properties/read | 空間アンカーのプロパティを取得します。 |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/query/read | 空間アンカーを探します。 |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/submitdiag/read | Azure Spatial Anchors サービスの品質を改善するために診断データを送信します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -5454,11 +5454,11 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -5515,9 +5515,9 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 > | **NotActions** |  |
 > | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/users/keys/read | ユーザーに関連付けられたキーを取得します |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -5577,9 +5577,9 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 > | **NotActions** |  |
 > | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/users/keys/read | ユーザーに関連付けられたキーを取得します |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -5621,15 +5621,15 @@ App Configuration データへのフル アクセスを許可します。 [詳�
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.AppConfiguration](resource-provider-operations.md#microsoftappconfiguration)/configurationStores/*/read |  |
 > | [Microsoft.AppConfiguration](resource-provider-operations.md#microsoftappconfiguration)/configurationStores/*/write |  |
 > | [Microsoft.AppConfiguration](resource-provider-operations.md#microsoftappconfiguration)/configurationStores/*/delete |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -5664,13 +5664,13 @@ App Configuration データへの読み取りアクセスを許可します。 [
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.AppConfiguration](resource-provider-operations.md#microsoftappconfiguration)/configurationStores/*/read |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -5705,11 +5705,11 @@ Azure Service Bus リソースへのフル アクセスを許可します。 [�
 > | --- | --- |
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/* |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/* |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -5748,11 +5748,11 @@ Azure Service Bus リソースへの受信アクセスを許可します。 [詳
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/read |  |
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/subscriptions/read |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/receive/action |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -5793,11 +5793,11 @@ Azure Service Bus リソースへの送信アクセスを許可します。 [詳
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/read |  |
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/subscriptions/read |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/send/action |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -5839,11 +5839,11 @@ Azure Stack の登録を管理できます。
 > | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/read | Azure Stack Marketplace の製品のプロパティを取得します |
 > | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/read | Azure Stack の登録のプロパティを取得します |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -5889,11 +5889,11 @@ EventGrid のイベント サブスクリプション操作を管理できます
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -5941,11 +5941,11 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/locations/topicTypes/eventSubscriptions/read | リージョンのイベント サブスクリプションを topictype ごとに一覧表示します |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -5983,13 +5983,13 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | Microsoft.HealthcareApis/services/fhir/resources/* |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -6022,14 +6022,14 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | Microsoft.HealthcareApis/services/fhir/resources/read | FHIR リソースを読み取ります (検索とバージョン管理された履歴を含みます)。  |
 > | Microsoft.HealthcareApis/services/fhir/resources/export/action | エクスポート操作 ($export)。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -6063,13 +6063,13 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | Microsoft.HealthcareApis/services/fhir/resources/read | FHIR リソースを読み取ります (検索とバージョン管理された履歴を含みます)。  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -6102,9 +6102,9 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | Microsoft.HealthcareApis/services/fhir/resources/* |  |
 > | **NotDataActions** |  |
@@ -6147,11 +6147,11 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/integrationServiceEnvironments/* |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -6191,11 +6191,11 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 > | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/integrationServiceEnvironments/read | 統合サービス環境を読み取ります。 |
 > | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/integrationServiceEnvironments/join/action | 統合サービス環境に参加します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -6239,11 +6239,11 @@ Intelligent Systems のアカウントを管理できます。ただし、それ
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -6304,11 +6304,11 @@ Intelligent Systems のアカウントを管理できます。ただし、それ
 > | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/serverFarms/read | App Service プランのプロパティを取得します。 |
 > | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/sites/functions/listSecrets/action | 関数のシークレットを一覧表示します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -6379,11 +6379,11 @@ Intelligent Systems のアカウントを管理できます。ただし、それ
 > | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/customApis/*/read | カスタム API を読み取ります。 |
 > | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/serverFarms/read | App Service プランのプロパティを取得します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -6444,11 +6444,11 @@ Intelligent Systems のアカウントを管理できます。ただし、それ
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -6496,11 +6496,11 @@ Intelligent Systems のアカウントを管理できます。ただし、それ
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -6557,11 +6557,11 @@ Azure Sentinel 共同作成者です。[詳細](../sentinel/roles.md)
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -6626,11 +6626,11 @@ Azure Sentinel 閲覧者です。[詳細](../sentinel/roles.md)
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -6705,11 +6705,11 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -6776,11 +6776,11 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | Microsoft.KeyVault リソース プロバイダーで使用できる操作を一覧表示します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/* |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -6835,12 +6835,12 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | Microsoft.KeyVault リソース プロバイダーで使用できる操作を一覧表示します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/certificatecas/* |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/certificates/* |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -6896,9 +6896,9 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/hsmPools/* |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/managedHsms/* |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -6951,11 +6951,11 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | Microsoft.KeyVault リソース プロバイダーで使用できる操作を一覧表示します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/* |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -6999,15 +6999,15 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/read | 指定された資格情報コンテナー内のキーを一覧表示するか、キーのプロパティおよび公開マテリアルを読み取ります。 非対称キーの場合、この操作では公開キーを公開し、署名の暗号化や検証などの公開キー アルゴリズムを実行する機能が含まれます。 秘密キーと対称キーが公開されることはありません。 |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | Key Vault キーを使用して対称キーをラップします。 Key Vault キーが非対称の場合は、この操作を読み取りアクセス権で実行できることに注意してください。 |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/unwrap/action | Key Vault キーを使用して対称キーのラップを解除します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -7042,9 +7042,9 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/read | 指定された資格情報コンテナー内のキーを一覧表示するか、キーのプロパティおよび公開マテリアルを読み取ります。 非対称キーの場合、この操作では公開キーを公開し、署名の暗号化や検証などの公開キー アルゴリズムを実行する機能が含まれます。 秘密キーと対称キーが公開されることはありません。 |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/update/action | 特定のキーに関連付けられている、指定された属性を更新します。 |
@@ -7056,7 +7056,7 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/sign/action | キーでハッシュに署名します。 |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/verify/action | ハッシュを確認します。 キーが非対称の場合は、この操作を読み取りアクセス権を持つプリンシパルで実行できることに注意してください。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -7108,12 +7108,12 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | Microsoft.KeyVault リソース プロバイダーで使用できる操作を一覧表示します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/secrets/readMetadata/action | シークレットの値ではなく、プロパティを一覧表示または表示します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -7169,11 +7169,11 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | Microsoft.KeyVault リソース プロバイダーで使用できる操作を一覧表示します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/secrets/* |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -7217,14 +7217,14 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/secrets/getSecret/action | シークレットの値を取得します。 |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/secrets/readMetadata/action | シークレットの値ではなく、プロパティを一覧表示または表示します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -7271,11 +7271,11 @@ Security Center の表示および更新のアクセス許可。 セキュリテ
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/* | セキュリティ コンポーネントおよびポリシーの作成と管理 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -7321,11 +7321,11 @@ Security Center の表示および更新のアクセス許可。 セキュリテ
 > | --- | --- |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/assessments/write | サブスクリプションで利用可能なセキュリティ評価を作成または更新します |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -7369,11 +7369,11 @@ Security Center の表示および更新のアクセス許可。 セキュリテ
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/* | セキュリティ コンポーネントおよびポリシーの作成と管理 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -7424,11 +7424,11 @@ Security Center の表示アクセス許可。 推奨事項、警告、セキュ
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/*/read |  |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -7506,9 +7506,9 @@ Azure DevTest Labs で仮想マシンの接続、起動、再起動、シャッ�
 > | **NotActions** |  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/vmSizes/read | 仮想マシンを更新する際に使用できるサイズを一覧表示します。 |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -7582,11 +7582,11 @@ Azure ラボ アカウントに新しいラボを作成できます。 [詳細�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -7638,11 +7638,11 @@ Application Insights コンポーネントを管理できます。[詳細](../az
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -7690,11 +7690,11 @@ Application Insights スナップショット デバッガーで収集された�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -7727,7 +7727,7 @@ Application Insights スナップショット デバッガーで収集された�
 
 ### <a name="monitoring-contributor"></a>Monitoring Contributor
 
-すべての監視データを読み取り、監視設定を編集できます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)も参照してください。 [詳細情報](../azure-monitor/platform/roles-permissions-security.md)
+すべての監視データを読み取り、監視設定を編集できます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 [詳細情報](../azure-monitor/platform/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -7760,17 +7760,16 @@ Application Insights スナップショット デバッガーで収集された�
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/sharedKeys/action | ワークスペースの共有キーを取得します。 これらのキーを使用して、Microsoft Operational Insights エージェントをワークスペースに接続します。 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/storageinsightconfigs/* | Log Analytics ストレージ インサイト構成の読み取り/書き込み/削除を行います。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
-> | [Microsoft.WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/monitors/* |  |
-> | [Microsoft.WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/notificationSettings/* |  |
+> | [Microsoft.WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/monitors/* | ゲスト VM の正常性モニターに関する情報を取得します。  |
 > | [Microsoft.AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/smartDetectorAlertRules/* |  |
 > | [Microsoft.AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/actionRules/* |  |
 > | [Microsoft.AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/smartGroups/* |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -7812,7 +7811,6 @@ Application Insights スナップショット デバッガーで収集された�
         "Microsoft.OperationalInsights/workspaces/storageinsightconfigs/*",
         "Microsoft.Support/*",
         "Microsoft.WorkloadMonitor/monitors/*",
-        "Microsoft.WorkloadMonitor/notificationSettings/*",
         "Microsoft.AlertsManagement/smartDetectorAlertRules/*",
         "Microsoft.AlertsManagement/actionRules/*",
         "Microsoft.AlertsManagement/smartGroups/*"
@@ -7839,11 +7837,11 @@ Azure リソースに対するメトリックの公開を有効にします。[�
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/Metrics/Write | メトリックを書き込みます。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -7875,7 +7873,7 @@ Azure リソースに対するメトリックの公開を有効にします。[�
 
 ### <a name="monitoring-reader"></a>Monitoring Reader
 
-すべての監視データ (メトリック、ログなど) を読み取ることができます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)も参照してください。 [詳細情報](../azure-monitor/platform/roles-permissions-security.md)
+すべての監視データ (メトリック、ログなど) を読み取ることができます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 [詳細情報](../azure-monitor/platform/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -7884,11 +7882,11 @@ Azure リソースに対するメトリックの公開を有効にします。[�
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/search/action | 検索クエリを実行します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -7927,11 +7925,11 @@ Azure リソースに対するメトリックの公開を有効にします。[�
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/delete | ブックを削除します |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/read | ブックを読み取ります |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -7968,11 +7966,11 @@ Azure リソースに対するメトリックの公開を有効にします。[�
 > | --- | --- |
 > | [microsoft.insights](resource-provider-operations.md#microsoftinsights)/workbooks/read | ブックを読み取ります |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -8022,11 +8020,11 @@ Automation Runbook を使用してジョブを作成および管理します。 
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -8093,11 +8091,11 @@ Automation オペレーターは、ジョブを開始、停止、中断、およ
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -8157,11 +8155,11 @@ Runbook のジョブを作成する方法については、Runbook のプロパ�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -8203,11 +8201,11 @@ Azure Connected Machine をオンボードできます。 [詳細情報](../azur
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | Azure Arc マシンが書き込まれます |
 > | [Microsoft.GuestConfiguration](resource-provider-operations.md#microsoftguestconfiguration)/guestConfigurationAssignments/read | ゲスト構成の割り当てを取得します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -8249,11 +8247,11 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/write | Azure Arc 拡張機能をインストールまたは更新されます |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/*/read |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -8299,11 +8297,11 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 > | [Microsoft.CostManagement](resource-provider-operations.md#microsoftcostmanagement)/*/read |  |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -8348,11 +8346,11 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -8395,11 +8393,11 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -8446,11 +8444,11 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 > | [Microsoft.Advisor](resource-provider-operations.md#microsoftadvisor)/recommendations/read | 推奨事項を読み取ります。 |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -8501,11 +8499,11 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 > | [Microsoft.Advisor](resource-provider-operations.md#microsoftadvisor)/recommendations/read | 推奨事項を読み取ります。 |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -8549,11 +8547,11 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/settings/write | 管理グループ階層の設定が作成または更新されます。 |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/settings/delete | 管理グループ階層の設定が削除されます。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -8597,11 +8595,11 @@ connectedClusters リソースを作成するため、あらゆるユーザー�
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/read | connectedClusters を読み取ります |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -8648,11 +8646,11 @@ connectedClusters リソースを作成するため、あらゆるユーザー�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/* |  |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -8693,11 +8691,11 @@ connectedClusters リソースを作成するため、あらゆるユーザー�
 > | [Microsoft.Solutions](resource-provider-operations.md#microsoftsolutions)/applications/read | アプリケーションの一覧を取得します。 |
 > | [Microsoft.Solutions](resource-provider-operations.md#microsoftsolutions)/*/action |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -8736,11 +8734,11 @@ connectedClusters リソースを作成するため、あらゆるユーザー�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
 > | [Microsoft.Solutions](resource-provider-operations.md#microsoftsolutions)/jitRequests/* |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -8779,11 +8777,11 @@ connectedClusters リソースを作成するため、あらゆるユーザー�
 > | [Microsoft.ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/registrationAssignments/delete | マネージド サービスの登録割り当てを削除します。 |
 > | [Microsoft.ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/operationStatuses/read | リソースの操作の状態を読み取ります。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -8825,11 +8823,11 @@ connectedClusters リソースを作成するため、あらゆるユーザー�
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/write | 管理グループを作成または更新します。 |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/subscriptions/read | 指定された管理グループのサブスクリプションを一覧表示します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -8870,11 +8868,11 @@ connectedClusters リソースを作成するため、あらゆるユーザー�
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/subscriptions/read | 指定された管理グループのサブスクリプションを一覧表示します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -8916,11 +8914,11 @@ New Relic Application Performance Management のアカウントとアプリケ�
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | NewRelic.APM/accounts/* |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -8964,12 +8962,12 @@ New Relic Application Performance Management のアカウントとアプリケ�
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyexemptions/read | ポリシー適用除外についての情報を取得します。 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/read | ポリシー セットの定義に関する情報を取得します。 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.PolicyInsights](resource-provider-operations.md#microsoftpolicyinsights)/checkDataPolicyCompliance/action | 指定されたコンポーネントのコンプライアンス状態をデータ ポリシーと照合します。 |
 > | [Microsoft.PolicyInsights](resource-provider-operations.md#microsoftpolicyinsights)/policyEvents/logDataEvents/action | リソース コンポーネントのポリシー イベントをログに記録します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -9016,11 +9014,11 @@ New Relic Application Performance Management のアカウントとアプリケ�
 > | [Microsoft.PolicyInsights](resource-provider-operations.md#microsoftpolicyinsights)/* |  |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -9088,11 +9086,11 @@ New Relic Application Performance Management のアカウントとアプリケ�
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationOperationStatus/read | コンテナー レプリケーション操作の状態を読み取ります |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -9211,11 +9209,11 @@ New Relic Application Performance Management のアカウントとアプリケ�
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -9337,11 +9335,11 @@ Site Recovery の状態を表示できますが、その他の管理操作は実
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/vaultTokens/read | "コンテナー トークン" 操作を使用すると、コンテナー レベルのバックエンド操作のコンテナー トークンを取得できます。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -9408,11 +9406,11 @@ Site Recovery の状態を表示できますが、その他の管理操作は実
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -9456,11 +9454,11 @@ Site Recovery の状態を表示できますが、その他の管理操作は実
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/tags/* |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -9503,9 +9501,9 @@ Digital Twins データプレーンのフル アクセス ロール [詳細情�
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/eventroutes/* | 任意のイベント ルートの読み取り、削除、作成、更新 |
 > | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/* | 任意のデジタル ツインの読み取り、作成、更新、削除 |
@@ -9514,7 +9512,7 @@ Digital Twins データプレーンのフル アクセス ロール [詳細情�
 > | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/models/* | 任意のモデルの読み取り、作成、更新、削除 |
 > | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/query/* | 任意のデジタル ツイン グラフのクエリ |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -9552,9 +9550,9 @@ Digital Twins データプレーン プロパティの読み取り専用ロー�
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/read | 任意のデジタル ツインの読み取り |
 > | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/relationships/read | 任意のデジタル ツイン関係の読み取り |
@@ -9562,7 +9560,7 @@ Digital Twins データプレーン プロパティの読み取り専用ロー�
 > | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/models/read | 任意のモデルの読み取り |
 > | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/query/action | 任意のデジタル ツイン グラフのクエリ |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -9607,11 +9605,11 @@ BizTalk Services を管理できます。ただし、それらへのアクセス
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -9650,13 +9648,13 @@ BizTalk Services を管理できます。ただし、それらへのアクセス
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | Microsoft.DesktopVirtualization/applicationGroups/useApplications/action | ApplicationGroup を使用します。 |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {
@@ -9697,11 +9695,11 @@ BizTalk Services を管理できます。ただし、それらへのアクセス
 > | [Microsoft.Scheduler](resource-provider-operations.md#microsoftscheduler)/jobcollections/* | ジョブ コレクションの作成と管理 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
-> | " *なし* " |  |
+> | "*なし*" |  |
 
 ```json
 {

@@ -12,16 +12,16 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 4179807b349504d1ac0932f8d0816603f83afae4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 643e3bcd50258e2b5e7f52646f231485f950d677
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613426"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515547"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>クイック スタート:Angular シングルページ アプリケーションでユーザーをサインインさせてアクセス トークンを取得する
 
-このクイックスタートでは、コード サンプルを使用して、Angular シングルページ アプリケーション (SPA) で個人用 Microsoft アカウント、職場アカウント、学校アカウントのユーザーをサインインさせる方法について学習します。 Angular SPA では、Microsoft Graph API または任意の Web API を呼び出すためのアクセス トークンを取得することもできます。
+このクイックスタートでは、Angular シングルページ アプリケーション (SPA) でユーザーをサインインし、Microsoft Graph を呼び出す方法を示すコード サンプルをダウンロードして実行します。 このコード サンプルでは、Microsoft Graph API または任意の Web API を呼び出すためのアクセス トークンを取得する方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 

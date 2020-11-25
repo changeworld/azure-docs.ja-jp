@@ -11,23 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: 55db5cf62e2e4ba2844a47ad405afa88349dc8fd
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 3591bfe046fa1c3e1e55aa49a0ae3ad698bc57b3
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634914"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593673"
 ---
-#  <a name="data-consistency-verification-in-copy-activity-preview"></a>コピー アクティビティでのデータ整合性の検証 (プレビュー)
+#  <a name="data-consistency-verification-in-copy-activity"></a>コピー アクティビティでのデータ整合性の検証
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-ソース ストアからコピー先ストアにデータを移動するとき、Azure Data Factory コピー アクティビティでは、データがソース ストアからコピー先ストアに正常にコピーされただけでなく、ソース ストアとコピー先ストアの間の整合性も確保されていることを確認するための、追加のデータ整合性検証を行うことができます。 データの移動中に整合性のないファイルが検出されたら、コピー アクティビティを中止するか、またはフォールト トレランス設定を有効にして整合性のないファイルをスキップすることで、その他のデータをコピーし続けることができます。 スキップされたファイル名を取得するには、コピー アクティビティでセッション ログ設定を有効にします。 
-
-> [!IMPORTANT]
-> この機能は現在プレビュー段階にあり、次のような制限があります (これらの制限については現在対応中です)。
->- コピー アクティビティのセッション ログ設定で、スキップされた整合性のないファイルのログの記録を有効にした場合、コピー アクティビティが失敗した際のログ ファイルの完全性が 100% 保証されることはありません。
->- 現状では、セッション ログには整合性のないファイルのみが含まれ、正常にコピーされたファイルはログに記録されません。
+ソース ストアからコピー先ストアにデータを移動するとき、Azure Data Factory コピー アクティビティでは、データがソース ストアからコピー先ストアに正常にコピーされただけでなく、ソース ストアとコピー先ストアの間の整合性も確保されていることを確認するための、追加のデータ整合性検証を行うことができます。 データの移動中に整合性のないファイルが検出されたら、コピー アクティビティを中止するか、またはフォールト トレランス設定を有効にして整合性のないファイルをスキップすることで、その他のデータをコピーし続けることができます。 スキップされたファイル名を取得するには、コピー アクティビティでセッション ログ設定を有効にします。 詳細については、「[コピー アクティビティのセッション ログ](copy-activity-log.md)」を参照してください。
 
 ## <a name="supported-data-stores-and-scenarios"></a>サポートされているデータ ストアおよびシナリオ
 
@@ -60,13 +55,20 @@ ms.locfileid: "92634914"
     "skipErrorFile": { 
         "dataInconsistency": true 
     }, 
-    "logStorageSettings": { 
-        "linkedServiceName": { 
-            "referenceName": "ADLSGen2_storage", 
-            "type": "LinkedServiceReference" 
-        }, 
-        "path": "/sessionlog/" 
-} 
+    "logSettings": {
+        "enableCopyActivityLog": true,
+        "copyActivityLogSettings": {
+            "logLevel": "Warning",
+            "enableReliableLogging": false
+        },
+        "logLocationSettings": {
+            "linkedServiceName": {
+               "referenceName": "ADLSGen2",
+               "type": "LinkedServiceReference"
+            },
+            "path": "sessionlog/"
+        }
+    }
 } 
 ```
 
@@ -74,7 +76,7 @@ ms.locfileid: "92634914"
 -------- | ----------- | -------------- | -------- 
 validateDataConsistency | バイナリ ファイルのコピー時にこのプロパティに true を設定した場合、ソース ストアとコピー先ストアの間でのデータ整合性を確保するために、ソース ストアからコピー先ストアにコピーされた各バイナリ ファイルのファイル サイズ、lastModifiedDate、および MD5 チェックサムがコピー アクティビティにより確認されます。 表形式データをコピーする場合、コピー元から読み取られた行の合計数が、コピー先にコピーされた行の数とスキップされた互換性のない行の数の合計と同じになるように、ジョブの完了後にコピー アクティビティにより合計行数が確認されます。 このオプションを有効にすると、コピーのパフォーマンスが影響を受けることに注意してください。  | True<br/>False (既定値) | いいえ
 dataInconsistency | 整合性のないファイルをスキップするかどうかを指定する、skipErrorFile プロパティ バッグ内のキーと値のペアの 1 つです。 <br/> -True: 整合性のないファイルをスキップして、残りの部分をコピーします。<br/> - False: 整合性のないファイルが見つかった場合、コピー アクティビティを中止します。<br/>このプロパティは、バイナリ ファイルをコピーしていて validateDataConsistency を True に設定した場合にのみ有効であることに注意してください。  | True<br/>False (既定値) | いいえ
-logStorageSettings | スキップされたファイルをセッション ログでログに記録できるようにするために指定できるプロパティのグループです。 | | いいえ
+logSettings | スキップされたファイルをセッション ログでログに記録できるようにするために指定できるプロパティのグループです。 | | いいえ
 linkedServiceName | セッション ログ ファイルを格納するための、[Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) のリンクされたサービスです。 | `AzureBlobStorage` または `AzureBlobFS` 型のリンクされたサービスの名前。これは、ログ ファイルを格納するために使用するインスタンスを示します。 | いいえ
 path | ログ ファイルのパス。 | ログ ファイルを格納するパスを指定します。 パスを指定しないと、サービスによってコンテナーが作成されます。 | いいえ
 
@@ -95,7 +97,7 @@ path | ログ ファイルのパス。 | ログ ファイルを格納するパ�
             "filesWritten": 1, 
             "filesSkipped": 2, 
             "throughput": 297,
-            "logPath": "https://myblobstorage.blob.core.windows.net//myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
+            "logFilePath": "myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
             "dataConsistencyVerification": 
            { 
                 "VerificationResult": "Verified", 
@@ -107,14 +109,14 @@ path | ログ ファイルのパス。 | ログ ファイルを格納するパ�
 データ整合性の検証の詳細は、"dataConsistencyVerification プロパティ" から確認できます。
 
 **VerificationResult** の値: 
--   **Verified** :コピーしたデータは、ソース ストアとコピー先ストアとの間で整合性があることが確認されています。 
--   **NotVerified** :コピー アクティビティで validateDataConsistency が有効になっていないため、コピーしたデータの整合性が検証されていません。 
--   **Unsupported** :この特定のコピー ペアでは、データの整合性の確認がサポートされていないため、コピーしたデータの整合性が検証されていません。 
+-   **Verified**:コピーしたデータは、ソース ストアとコピー先ストアとの間で整合性があることが確認されています。 
+-   **NotVerified**:コピー アクティビティで validateDataConsistency が有効になっていないため、コピーしたデータの整合性が検証されていません。 
+-   **Unsupported**:この特定のコピー ペアでは、データの整合性の確認がサポートされていないため、コピーしたデータの整合性が検証されていません。 
 
 **InconsistentData** の値: 
--   **Found** :ADF のコピー アクティビティで、整合性のないデータが検出されました。 
--   **Skipped** :ADF のコピー アクティビティで、整合性のないデータが検出され、スキップされました。 
--   **None** :ADF のコピー アクティビティで、整合性のないデータは検出されませんでした。 ソース ストアとコピー先ストアの間でデータの整合性があることが確認されたか、またはコピー アクティビティで validateDataConsistency を無効にしたためである可能性があります。 
+-   **Found**:ADF のコピー アクティビティで、整合性のないデータが検出されました。 
+-   **Skipped**:ADF のコピー アクティビティで、整合性のないデータが検出され、スキップされました。 
+-   **None**:ADF のコピー アクティビティで、整合性のないデータは検出されませんでした。 ソース ストアとコピー先ストアの間でデータの整合性があることが確認されたか、またはコピー アクティビティで validateDataConsistency を無効にしたためである可能性があります。 
 
 ### <a name="session-log-from-copy-activity"></a>コピー アクティビティからのセッション ログ
 

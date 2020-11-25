@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3559b3724d14be6aade07c4884190afce30c0715
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 97b34d85e4628c0ef01dd02d3a9be85da7f8291e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306858"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685615"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プール (プレビュー) を使用して Parquet ファイルのクエリを実行する
 
@@ -35,7 +35,12 @@ from openrowset(
     format = 'parquet') as rows
 ```
 
-このファイルにアクセスできることを確認してください。 ファイルが SAS キーまたはカスタム Azure ID で保護されている場合は、[SQL ログインのためのサーバーレベルの資格情報](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)を設定する必要があります。
+このファイルにアクセスできることを確認します。 ファイルが SAS キーまたはカスタム Azure ID で保護されている場合は、[SQL ログインのためのサーバーレベルの資格情報](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)を設定する必要があります。
+
+> [!IMPORTANT]
+> PARQUET ファイル内の文字列値が UTF-8 エンコードを使用してエンコードされているため、必ず何らかの UTF-8 データベース照合順序 (`Latin1_General_100_CI_AS_SC_UTF8` など) を使用するようにしてください。
+> PARQUET ファイル内のテキスト エンコードと照合順序が一致しないと、予期しない変換エラーが発生する可能性があります。
+> 現在のデータベースの既定の照合順序は、`alter database current collate Latin1_General_100_CI_AI_SC_UTF8` という T-SQL ステートメントを使用して簡単変更できます。
 
 ### <a name="data-source-usage"></a>データ ソースの使用状況
 
@@ -68,11 +73,17 @@ from openrowset(
     ) with ( date_rep date, cases int, geo_id varchar(6) ) as rows
 ```
 
+> [!IMPORTANT]
+> 必ず `WITH` 句の文字列の列すべてに対して何らかの UTF-8 照合順序 (`Latin1_General_100_CI_AS_SC_UTF8` など) を明示的に指定するようにしてください。または、データベース レベルで何らかの UTF-8 照合順序を設定してください。
+> ファイル内のテキスト エンコードと文字列の列の照合順序が一致しないと、予期しない変換エラーが発生する可能性があります。
+> 現在のデータベースの既定の照合順序は、`alter database current collate Latin1_General_100_CI_AI_SC_UTF8` という T-SQL ステートメントを使用して簡単変更できます。
+> `geo_id varchar(6) collate Latin1_General_100_CI_AI_SC_UTF8` という定義を使用して、列の型に照合順序を簡単に設定できます。
+
 次のセクションでは、さまざまな種類の PARQUET ファイルに対してクエリを実行する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-最初の手順は、 [NYC Yellow Taxi](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) ストレージ アカウントを参照するデータソースで **データベースを作成** することです。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、これらのサンプルで使用されるデータ ソース、データベース スコープの資格情報、および外部ファイル形式が作成されます。
+最初の手順は、[NYC Yellow Taxi](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) ストレージ アカウントを参照するデータソースで **データベースを作成** することです。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、これらのサンプルで使用されるデータ ソース、データベース スコープの資格情報、および外部ファイル形式が作成されます。
 
 ## <a name="dataset"></a>データセット
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbbf1a6aebf54c7928fe0636262055f37d7f93bd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 59de3123dc991d0314cd9046d83712d17da53d9f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966544"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837823"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>チュートリアル:Azure Active Directory のセルフサービス パスワード リセットを使用して、ユーザーが自分のアカウントのロック解除またはパスワードのリセットを実行できるようにする
 
@@ -149,4 +149,4 @@ SSPR を有効にして構成したら、前のセクションで選択したグ
 > * ユーザーとして SSPR プロセスをテストする
 
 > [!div class="nextstepaction"]
-> [Azure Multi-Factor Authentication を有効にする](./tutorial-enable-azure-mfa.md)
+> [Azure AD の Multi-Factor Authentication を有効にする](./tutorial-enable-azure-mfa.md)

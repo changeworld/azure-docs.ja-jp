@@ -7,13 +7,13 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/07/2019
-ms.openlocfilehash: 0119d134861b54ac14c6fe22b638ab459344c5ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2019
+ms.openlocfilehash: fa516f577254f827a6437697df82010bd9b631ee
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569881"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555912"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>マッピング データ フローを使用してデータを変換する
 
@@ -34,7 +34,7 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 
 ## <a name="prerequisites"></a>前提条件
 * **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
-* **Azure ストレージ アカウント**。 ADLS ストレージを、*ソース*と*シンク*のデータ ストアとして使用します。 ストレージ アカウントがない場合の作成手順については、[Azure のストレージ アカウントの作成](../storage/common/storage-account-create.md)に関するページを参照してください。
+* **Azure ストレージ アカウント**。 ADLS ストレージを、*ソース* と *シンク* のデータ ストアとして使用します。 ストレージ アカウントがない場合の作成手順については、[Azure のストレージ アカウントの作成](../storage/common/storage-account-create.md)に関するページを参照してください。
 
 このチュートリアルで変換するファイルは MoviesDB です。このファイルは、[こちら](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)にあります。 GitHub からファイルを取得するには、コンテンツを任意のテキスト エディターにコピーして、.csv ファイルとしてローカルに保存します。 ファイルをご自分のストレージ アカウントにアップロードするには、[Azure portal を使用した BLOB のアップロード](../storage/blobs/storage-quickstart-blobs-portal.md)に関するページを参照してください。 例では、'sample-data' という名前のコンテナーを参照しています。
 
@@ -43,16 +43,16 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 この手順では、データ ファクトリを作成し、Data Factory UX を開いて、データ ファクトリにパイプラインを作成します。
 
 1. **Microsoft Edge** または **Google Chrome** を開きます。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-2. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。
+2. 左側のメニューで、 **[リソースの作成]**  >  **[統合]**  >  **[Data Factory]** を選択します。
 
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 3. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。
 
-   Azure データ ファクトリの名前は *グローバルに一意*にする必要があります。 データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 (yournameADFTutorialDataFactory など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関するページを参照してください。
+   Azure データ ファクトリの名前は *グローバルに一意* にする必要があります。 データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 (yournameADFTutorialDataFactory など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関するページを参照してください。
 
      ![新しいデータ ファクトリ](./media/doc-common-process/name-not-available-error.png)
-4. データ ファクトリを作成する Azure **サブスクリプション**を選択します。
+4. データ ファクトリを作成する Azure **サブスクリプション** を選択します。
 5. **[リソース グループ]** で、次の手順のいずれかを行います。
 
     a. **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
@@ -74,7 +74,7 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 
    ![パイプラインの作成](./media/doc-common-process/get-started-page.png)
 
-1. パイプラインの **[全般]** タブで、パイプラインの**名前**として「**TransformMovies**」と入力します。
+1. パイプラインの **[全般]** タブで、パイプラインの **名前** として「**TransformMovies**」と入力します。
 1. ファクトリの上部のバーで、 **[Data Flow のデバッグ]** スライダーをオンにスライドします。 デバッグ モードを使用すると、ライブ Spark クラスターに対する変換ロジックの対話型テストが可能になります。 Data Flow クラスターのウォームアップには 5 から 7 分かかるため、ユーザーが Data Flow の開発を計画している場合は、最初にデバッグを有効にすることをお勧めします。 詳細については、[デバッグ モード](concepts-data-flow-debug-mode.md)に関するページを参照してください。
 
     ![Data Flow アクティビティ](media/tutorial-data-flow/dataflow1.png)
@@ -113,7 +113,7 @@ Data Flow を作成すると、データ フロー キャンバスが自動的�
 1. デバッグ クラスターが起動している場合は、ソース変換の **[Data Preview]\(データのプレビュー\)** タブに移動し、 **[更新]** をクリックして、データのスナップショットを取得します。 データ プレビューを使用すると、変換が正しく構成されていることを確認できます。
 
     ![データをプレビューして変換が正しく構成されていることを確認できる場所を示すスクリーンショット。](media/tutorial-data-flow/dataflow4.png)
-1. データ フロー キャンバスでソース ノードの横にあるプラス アイコンをクリックして、新しい変換を追加します。 最初に追加する変換は、**フィルター**です。
+1. データ フロー キャンバスでソース ノードの横にあるプラス アイコンをクリックして、新しい変換を追加します。 最初に追加する変換は、**フィルター** です。
 
     ![データ フロー キャンバス](media/tutorial-data-flow/dataflow5.png)
 1. フィルター変換に **FilterYears** という名前を付けます。 **[フィルター適用]** の横にある式ボックスをクリックして、式ビルダーを開きます。 ここでフィルター条件を指定します。
@@ -135,7 +135,7 @@ Data Flow を作成すると、データ フロー キャンバスが自動的�
 
     式の操作が完了したら、 **[Save and Finish]\(保存して終了する\)** をクリックします。
 
-1. フィルターが正しく機能していることを確認するには、**データ プレビュー**をフェッチします。
+1. フィルターが正しく機能していることを確認するには、**データ プレビュー** をフェッチします。
 
     ![フェッチした [データのプレビュー] を示すスクリーンショット。](media/tutorial-data-flow/filter3.png)
 1. 次に追加する変換は、 **[Schema modifier]\(スキーマ修飾子\)** の下にある **[集計]** 変換です。

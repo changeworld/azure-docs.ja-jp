@@ -6,23 +6,28 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 11/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7f71cacee86edd5b3f054f0996893c2148c626eb
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4c1284c13d1516ac4061319287adb64ab7e14ff5
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422673"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579472"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
 サービス内の新機能について説明します。 このページをブックマークして、常にサービスの最新情報を確認してください。
 
+## <a name="november-2020"></a>2020 年 11 月
+
+|機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | カテゴリ | 説明 | 可用性  |
+|------------------------------|----------|-------------|---------------|
+|[インデクサー、データ ソース、スキルセットに対するカスタマー マネージド キー暗号化](search-security-manage-encryption-keys.md) | Security | この追加により、検索サービスによって作成および管理される資産の全範囲にわたって、カスタマー マネージド暗号化が拡張されます。 CMK のサポートにより、Microsoft が実行および管理する基本暗号化に暗号化レイヤーが追加されます。 | REST api-version=2020-06-30 を使用して一般提供 |  
+
 ## <a name="september-2020"></a>2020 年 9 月
 
 Azure Active Directory に検索サービスの ID を作成した後、Azure RBAC のアクセス許可を使用して、その ID に、Azure データ ソースへの読み取り専用アクセス許可を与えます。 IP 規則が選択できない場合は、必要に応じて、[信頼されたサービスの例外](search-indexer-howto-access-trusted-service-exception.md)機能を選択してください。
-
 
 |機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | カテゴリ | 説明 | 可用性  |
 |------------------------------|----------|-------------|---------------|

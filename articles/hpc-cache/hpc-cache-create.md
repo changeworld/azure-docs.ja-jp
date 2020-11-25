@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 867cfa1321106c24354b29ea803a4fb914a6778d
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 77bd5e3b7a258ef83e5de4ec645ea70578fb9dfb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341382"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657093"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC キャッシュを作成する
 
@@ -81,7 +81,7 @@ Azure HPC Cache では、キャッシュ ヒット率を最大限に高めるた
 
 ## <a name="add-resource-tags-optional"></a>リソース タグを追加する (省略可)
 
-**[タグ]** ページでは、お使いの Azure HPC キャッシュ インスタンスに[リソース タグ](../azure-resource-manager/management/tag-resources.md)を追加できます。
+**[タグ]** ページでは、お使いの Azure HPC キャッシュ インスタンスに [リソース タグ](../azure-resource-manager/management/tag-resources.md)を追加できます。
 
 ## <a name="finish-creating-the-cache"></a>キャッシュの作成を完了する
 
@@ -96,13 +96,13 @@ Azure HPC Cache では、キャッシュ ヒット率を最大限に高めるた
 ![Azure portal における Azure HPC Cache インスタンスのスクリーンショット](media/hpc-cache-new-overview.png)
 
 > [!NOTE]
-> キャッシュでカスタマー マネージド暗号化キーを使用する場合は、デプロイの状態が完了に変更される前に、リソースの一覧にそのキャッシュが表示されることがあります。 キャッシュの状態が **[Waiting for key]\(キーの待機中\)** になるとすぐに、それに対してキー コンテナーの使用を[承認する](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)ことができます。
+> キャッシュでカスタマー マネージド暗号化キーを使用する場合は、デプロイの状態が完了に変更される前に、リソースの一覧にそのキャッシュが表示されることがあります。 キャッシュの状態が **[Waiting for key]\(キーの待機中\)** になるとすぐに、それに対してキー コンテナーの使用を [承認する](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)ことができます。
 
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ## <a name="create-the-cache-with-azure-cli"></a>Azure CLI でキャッシュを作成する
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
 > [!NOTE]
 > Azure CLI では、現在のところ、カスタマー マネージド暗号化キーを使用したキャッシュの作成はサポートされていません。 Azure portal を使用します。
@@ -133,10 +133,10 @@ nets/<cache_subnet_name>"``
   | キャッシュ サイズ | Standard_2G | Standard_4G | Standard_8G |
   |------------|-------------|-------------|-------------|
   | 3,072 GB    | 可         | no          | no          |
-  | 6144 GB    | 可         | 可         | no          |
+  | 6144 GB    | 可         | はい         | no          |
   | 12288 GB   | 可         | 可         | 可         |
-  | 24576 GB   | Ｘ          | はい         | 可         |
-  | 49152 GB   | Ｘ          | Ｘ          | 可         |
+  | 24576 GB   | Ｘ          | 可         | 可         |
+  | 49152 GB   | Ｘ          | no          | 可         |
 
   料金、スループット、およびワークフローに応じてキャッシュのサイズを適切に設定する方法については、ポータルの指示タブにある「**キャッシュ容量を設定する**」セクションを参照してください。
 
@@ -235,8 +235,8 @@ nets/<cache_subnet_name>"`
 
   | キャッシュ サイズ | Standard_2G | Standard_4G | Standard_8G |
   |------------|-------------|-------------|-------------|
-  | 3,072 GB    | 可         | no          | Ｘ          |
-  | 6144 GB    | 可         | はい         | no          |
+  | 3,072 GB    | 可         | Ｘ          | no          |
+  | 6144 GB    | はい         | はい         | no          |
   | 12,288 GB   | はい         | はい         | はい         |
   | 24,576 GB   | no          | はい         | はい         |
   | 49,152 GB   | no          | no          | 可         |

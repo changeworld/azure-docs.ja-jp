@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 991471f43c92b12073062db1e4e5fdb32fb4b0f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c386652ed0b026c29cb202274daba9ee6deb4cf0
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87494793"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566872"
 ---
 # <a name="export-from-an-azure-app-configuration-store"></a>Azure App Configuration ストアからのエクスポート
 
@@ -23,9 +23,9 @@ ms.locfileid: "87494793"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+ - このチュートリアルには、Azure CLI のバージョン 2.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -42,7 +42,7 @@ az appconfig kv export --name myTestAppConfigStore --file ~/Export.json
 
 このスクリプトでは、次のコマンドを使用して App Configuration ストアからのエクスポートを実行します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [az appconfig kv export](/cli/azure/appconfig/kv#az-appconfig-kv-export) | App Configuration ストア リソースからのエクスポートを行います。 |
 

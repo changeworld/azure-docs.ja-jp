@@ -12,17 +12,17 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7cabae837656611813d44017ce2e1112f06066ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669605"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013294"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
 IoT Edge ソリューションを開発環境から運用環境に移行する準備ができたら、それが継続的なパフォーマンスのために構成されていることを確認します。
 
-この記事で提供される情報はすべて同等であるとは限りません。 優先順位を付けやすくするために、各セクションの始めに、作業を**重要** (運用環境に移行する前に完了すること) および**有用** (知っておくと便利なこと) という 2 つのセクションに分けたリストが示されています。
+この記事で提供される情報はすべて同等であるとは限りません。 優先順位を付けやすくするために、各セクションの始めに、作業を **重要** (運用環境に移行する前に完了すること) および **有用** (知っておくと便利なこと) という 2 つのセクションに分けたリストが示されています。
 
 ## <a name="device-configuration"></a>デバイス構成
 
@@ -215,7 +215,7 @@ Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウ�
 
 これら 3 つのいずれの場合も、DNS 名は \*.azure-devices.net というパターンと一致します。
 
-さらに、**コンテナー エンジン**では、HTTPS 経由でコンテナー レジストリを呼び出します。 IoT Edge ランタイムのコンテナー イメージを取得する場合、DNS 名は mcr.microsoft.com となります。 コンテナー エンジンは、デプロイで構成されているその他のレジストリに接続されます。
+さらに、**コンテナー エンジン** では、HTTPS 経由でコンテナー レジストリを呼び出します。 IoT Edge ランタイムのコンテナー イメージを取得する場合、DNS 名は mcr.microsoft.com となります。 コンテナー エンジンは、デプロイで構成されているその他のレジストリに接続されます。
 
 このチェックリストを使用して、ファイアウォール規則を開始できます。
 
@@ -231,7 +231,7 @@ Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウ�
 これらのファイアウォール規則の一部は Azure Container Registry から継承されます。 詳細については、「[ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する](../container-registry/container-registry-firewall-access-rules.md)」を参照してください。
 
 > [!NOTE]
-> REST エンドポイントとデータ エンドポイント間に一貫性のある FQDN を提供するために、**2020 年 6 月 15 日**以降、Microsoft Container Registry データ エンドポイントは `*.cdn.mscr.io` から `*.data.mcr.microsoft.com` に変更されます  
+> REST エンドポイントとデータ エンドポイント間に一貫性のある FQDN を提供するために、**2020 年 6 月 15 日** 以降、Microsoft Container Registry データ エンドポイントは `*.cdn.mscr.io` から `*.data.mcr.microsoft.com` に変更されます  
 > 詳細については、[Microsoft Container Registry クライアント ファイアウォール規則の構成](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)に関する記事を参照してください
 
 パブリック コンテナー レジストリへのアクセスを許可するようにファイアウォールを構成しない場合は、「[プライベート レジストリにランタイム コンテナーを格納する](#store-runtime-containers-in-your-private-registry)」で説明されているように、イメージをプライベート コンテナー レジストリに格納することができます。

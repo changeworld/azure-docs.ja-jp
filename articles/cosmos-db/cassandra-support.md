@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: ae4281350efc96fab6c4e2898cbcddf83bf29cd8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ecf4229c95ff9103cd27fd161fdd19c9e7a0f76b
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073122"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636964"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -86,17 +86,24 @@ Azure Cosmos DB の Cassandra API では、次の CQL 関数がサポートさ�
 | writetime | はい |
 | キャスト | いいえ |
 
-\* Cassandra API は、プロジェクション/セレクターとしてトークンをサポートし、where 句の左辺でのみ token(pk) を許可します。 たとえば、`WHERE token(pk) > 1024` はサポートされますが、`WHERE token(pk) > token(100)` はサポートされません。
+> [!NOTE]
+> \* Cassandra API は、プロジェクション/セレクターとしてトークンをサポートし、where 句の左辺でのみ token(pk) を許可します。 たとえば、`WHERE token(pk) > 1024` はサポートされていますが、`WHERE token(pk) > token(100)` はサポートされて **いません**。
+
 
 
 集計関数:
 
 |コマンド  |サポートされています |
 |---------|---------|
-| min | はい |
-| max | はい |
 | avg | はい |
 | count | はい |
+| min | はい |
+| max | はい |
+| Sum | はい |
+
+> [!NOTE]
+> 集計関数は通常の列では機能しますが、クラスタリング列での集計はサポートされて **いません**。
+
 
 BLOB 変換関数:
  
@@ -260,7 +267,7 @@ Azure Cosmos DB の Cassandra API では、読み取り操作の一貫性を選�
 
 ## <a name="permission-and-role-management"></a>アクセス許可とロールの管理
 
-Azure Cosmos DB は、プロビジョニングのためのロールベースのアクセス制御 (RBAC)、キーのローテーション、メトリックの表示、[Azure portal](https://portal.azure.com) から取得できる読み書きおよび読み取り専用のパスワードおよびキーをサポートしています。 Azure Cosmos DB では、CRUD アクティビティのためのロールはサポートされていません。
+Azure Cosmos DB では、プロビジョニングのための Azure ロールベースのアクセス制御 (Azure RBAC)、キーのローテーション、メトリックの表示、[Azure portal](https://portal.azure.com) から取得できる読み書きおよび読み取り専用のパスワードとキーがサポートされています。 Azure Cosmos DB では、CRUD アクティビティのためのロールはサポートされていません。
 
 ## <a name="keyspace-and-table-options"></a>キースペースとテーブルのオプション
 

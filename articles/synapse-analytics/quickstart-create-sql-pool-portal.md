@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2230784eedd044acd95b3087793ba664b544f76a
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: b558e34d3f5d224515eee669dfa7b8f2c6bbb3cd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505072"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541013"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-preview-using-the-azure-portal"></a>クイックスタート: Azure portal を使用して専用 SQL プール (プレビュー) を作成する
 
@@ -73,7 +73,6 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 8. プロビジョニングが完了した後にワークスペースに戻ると、新しく作成された専用 SQL プールの新しいエントリが表示されます。
  ![SQL プールの作成フロー - リソースのプロビジョニング。](media/quickstart-create-sql-pool/create-sql-pool-studio-27.png)
-
 
 
 専用 SQL プールが作成されると、データの読み込み、ストリームの処理、レイクからの読み取りなどのために、ワークスペースで使用できるようになります。

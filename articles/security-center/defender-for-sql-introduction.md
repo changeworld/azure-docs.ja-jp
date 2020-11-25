@@ -3,17 +3,17 @@ title: Azure Defender for SQL - 利点と機能
 description: Azure Defender for SQL の利点と機能について説明します。
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 11/17/2020
 ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 220f9fffd6c0f9b959230964a9ec79f4e209bd54
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: b4f046339c027a5ae66f7f7510d8d2b311abd6df
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372541"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693462"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Azure Defender for SQL の概要
 
@@ -24,8 +24,8 @@ Azure Defender for SQL には、Azure Security Center の[データ セキュリ
 |側面|詳細|
 |----|:----|
 |リリース状態:|**Azure Defender for Azure SQL database servers** - 一般提供 (GA)<br>**Azure Defender for SQL servers on machines** - プレビュー<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
-|価格:|**Azure Defender for SQL** を構成する 2 つのプランの課金については、 [価格に関するページ](security-center-pricing.md)をご覧ください。|
-|保護される SQL のバージョン:|Azure SQL データベース <br>Azure SQL Managed Instance<br>Azure Synapse Analytics (旧称 SQL DW)<br>SQL Server (サポートされているすべてのバージョン)|
+|価格:|**Azure Defender for SQL** を構成する 2 つのプランの課金については、[価格に関するページ](security-center-pricing.md)をご覧ください。|
+|保護される SQL のバージョン:|Azure SQL データベース <br>Azure SQL Managed Instance<br>Azure Synapse の専用 SQL プール (旧称 SQL DW)<br>SQL Server (サポートされているすべてのバージョン)|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov|
 |||
 
@@ -36,7 +36,7 @@ Azure Defender for SQL には、Azure Security Center の[データ セキュリ
 - **Azure Defender for Azure SQL database servers** では、以下を保護します。
   - [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md)
   - [Azure SQL Managed Instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)
-  - [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+  - [Azure Synapse の専用 SQL プール](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse)
 
 - **Azure Defender for SQL servers on machines (プレビュー)** では、Azure ネイティブの SQL Server の保護を拡張してハイブリッド環境を完全にサポートし、Azure、他のクラウド環境、さらにはオンプレミスのマシンでホストされている SQL Server (サポートされているすべてのバージョン) を保護します。
 

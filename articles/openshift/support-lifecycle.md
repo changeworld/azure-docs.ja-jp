@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: c066931cece60d14767b86254020ea5ba4bad1be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b563fac9044dccd832aa42c0193eed24cad26754
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88854511"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737916"
 ---
 # <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 のサポート ライフサイクル
 
@@ -97,12 +97,10 @@ Azure Red Hat OpenShift SRE チームは、事前に通知することなく、�
 
 |OCP のバージョン|アップストリームのリリース|Azure Red Hat OpenShift の一般提供|有効期限切れ|
 |-|-|-|-|
-|4.3|2020 年 2 月|2020 年 5 月|2020 年 8 月|
-|4.4.|2020 年 5 月|2020 年 8 月|4.6 一般公開|
-|4.5|2020 年 7 月|2020 年 10 月|4.7 一般公開
-|4.6|*2020 年第 4 四半期初旬|*2020 年第 4 四半期下旬|4.8 一般公開|
-
-\* _アップストリームのリリース日の確定が保留中です。_
+|4.3|2020 年 1 月|2020 年 4 月| 2020 年 8 月|
+|4.4.|2020 年 5 月|2020 年 7 月|4.6 一般公開|
+|4.5|2020 年 7 月| 2020 年 11 月|4.7 一般公開
+|4.6|2020 年 10 月| 2020 年 12 月|4.8 一般公開|
 
 ## <a name="faq"></a>よく寄せられる質問
 

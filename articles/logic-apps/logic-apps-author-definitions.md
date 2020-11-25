@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
 ms.openlocfilehash: 9163071237041d7c8510a644c573e3763434bb0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87060665"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014399"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>Azure Logic Apps でロジック アプリ ワークフロー定義の JSON を作成、編集、拡張する
 
@@ -67,7 +67,7 @@ Visual Studio では、Azure Portal から直接デプロイされているか�
 
 通常、デプロイのライフサイクルには、開発、テスト、ステージング、運用の異なる環境があります。 ハードコーディングせずにロジック アプリ全体にわたって再利用したい値や、デプロイ ニーズによって異なる値がある場合は、ワークフロー定義のための [Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)を作成できます。それにより、ロジック アプリ デプロイも自動化できます。
 
-これらの値を*パラメーター化する*次の一般的な手順に従うか、または代わりにこれらの値のパラメーターを定義して使用します。 その後、これらの値をテンプレートに渡す個別のパラメーター ファイルで値を指定できます。 それにより、ロジック アプリを更新して再デプロイしなくても、これらの値をより簡単に変更できます。 詳細については、[概要: Automate deployment for logic apps with Azure Resource Manager templates](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)」 (概要: Azure Resource Manager テンプレートを使用してロジック アプリのデプロイを自動化する) を参照してください。
+これらの値を *パラメーター化する* 次の一般的な手順に従うか、または代わりにこれらの値のパラメーターを定義して使用します。 その後、これらの値をテンプレートに渡す個別のパラメーター ファイルで値を指定できます。 それにより、ロジック アプリを更新して再デプロイしなくても、これらの値をより簡単に変更できます。 詳細については、[概要: Automate deployment for logic apps with Azure Resource Manager templates](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)」 (概要: Azure Resource Manager テンプレートを使用してロジック アプリのデプロイを自動化する) を参照してください。
 
 1. テンプレートで、それぞれ、デプロイ時と実行時に使用する値を受け入れるためのテンプレート パラメーターとワークフロー定義パラメーターを定義します。
 

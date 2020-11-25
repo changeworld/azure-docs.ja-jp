@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: 3cc4bdc0fabd9d1e209634a88bed1bf063db917c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aea5f0428fe55c0dae3734e196008cbc26a974b9
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597876"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576223"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault の可用性と冗長性
 
@@ -23,7 +23,7 @@ Azure Key Vault には複数層の冗長性が備わっています。そのた�
 > [!NOTE]
 > このガイドは、コンテナーに適用されます。 Managed HSM プールでは、別の高可用性とディザスター リカバリーのモデルが使用されます。 詳細については、[Managed HSM のディザスター リカバリー ガイド](../managed-hsm/disaster-recovery-guide.md)を参照してください。
 
-キー コンテナーのコンテンツは、キーとシークレットの高い持続性を維持するために、リージョン内と、同じ地域内の 150 マイル (約 241 km) 以上離れたセカンダリ リージョンにレプリケートされます。 特定のリージョン ペアの詳細については、「[Azure のペアになっているリージョン](../../best-practices-availability-paired-regions.md)」ドキュメントを参照してください。
+キー コンテナーのコンテンツは、キーとシークレットの高い持続性を維持するために、リージョン内と、同じ地域内の 150 マイル (約 241 km) 以上離れたセカンダリ リージョンにレプリケートされます。 特定のリージョン ペアの詳細については、[Azure のペアになっているリージョン](../../best-practices-availability-paired-regions.md)に関する記事をご覧ください。 ペアになっているリージョン モデルの例外はブラジル南部であり、データをブラジル南部内に常駐させておくオプションだけが許可されます。 ブラジル南部では、ローカル冗長ストレージ (LRS) を使用して、1 つの場所またはリージョン内でデータを 3 回レプリケートします。   
 
 Key Vault サービス内の個々のコンポーネントで障害が発生した場合、リージョン内の代替コンポーネントが要求を処理し、機能が低下しないようにします。 このプロセスを開始するために、いずれの操作も行う必要はありません。これは自動的に実行され、ユーザーに透過的になります。
 

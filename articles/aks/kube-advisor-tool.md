@@ -7,12 +7,12 @@ author: seanmck
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 2b0078f1aff3ef81ee270f67de0fffddec3abab9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7730146f30487eb5d20f0d3138e9e5ba799daa99
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86255253"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681518"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>クラスターでの Kubernetes のベスト プラクティスを確認する
 
@@ -29,7 +29,7 @@ kube-advisor ツールは、PodSpecs for Windows アプリケーションおよ�
 
 ## <a name="running-kube-advisor"></a>kube-advisor の実行
 
-[ロールベースのアクセス制御 (RBAC)](./azure-ad-integration-cli.md) 用に構成されたクラスターでこのツールを実行するには、次のコマンドを使用します。 最初のコマンドにより、Kubernetes サービス アカウントが作成されます。 2 番目のコマンドでは、そのサービス アカウントを使用して、ツールがポッドで実行されます。また、そのポッドは、終了後に削除されるように構成されます。 
+[Kubernetes ロールベースのアクセス制御 (Kubernetes RBAC)](./azure-ad-integration-cli.md) 用に構成されたクラスターでこのツールを実行するには、次のコマンドを使用します。 最初のコマンドにより、Kubernetes サービス アカウントが作成されます。 2 番目のコマンドでは、そのサービス アカウントを使用して、ツールがポッドで実行されます。また、そのポッドは、終了後に削除されるように構成されます。 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
@@ -37,7 +37,7 @@ kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never --overrides="{ \"apiVersion\": \"v1\", \"spec\": { \"serviceAccountName\": \"kube-advisor\" } }" --namespace default
 ```
 
-RBAC を使用していない場合は、次のようにコマンドを実行できます。
+Kubernetes RBAC を使用していない場合は、次のようにコマンドを実行できます。
 
 ```bash
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never
@@ -59,13 +59,13 @@ Kubernetes では、[ポッド仕様でのリソースの要求と制限][kube-c
 
 ## <a name="cleaning-up"></a>クリーンアップしています
 
-お使いのクラスターで RBAC が有効になっている場合は、ツールを実行した後に次のコマンドを使用して、`ClusterRoleBinding` をクリーンアップできます。
+お使いのクラスターで Kubernetes RBAC が有効になっている場合は、ツールを実行した後に次のコマンドを使用して、`ClusterRoleBinding` をクリーンアップできます。
 
 ```bash
 kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
 ```
 
-RBAC が有効になっていないクラスターに対してツールを実行している場合、クリーンアップは不要です。
+Kubernetes RBAC が有効になっていないクラスターに対してツールを実行している場合、クリーンアップは不要です。
 
 ## <a name="next-steps"></a>次のステップ
 

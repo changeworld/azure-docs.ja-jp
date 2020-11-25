@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60f82a3197366081c66c4b7a1fe9c4ebe7762c94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce5658fb79a893e0aca9d78faf090a886a2ee591
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628700"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651466"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>チュートリアル:単一のフォレストを単一の Azure AD テナントに統合する
 
@@ -43,6 +43,7 @@ ms.locfileid: "91628700"
      | --- | --- |
      | **80** | TLS/SSL 証明書を検証する際に証明書失効リスト (CRL) をダウンロードします |
      | **443** | サービスを使用したすべての送信方向の通信を処理する |
+     | **8082** | インストールに必要|
      | **8080** (省略可能) | ポート 443 が使用できない場合、エージェントは、ポート 8080 経由で 10 分おきにその状態をレポートします。 この状態は Azure AD ポータルに表示されます。 |
      
      ご利用のファイアウォールが送信元ユーザーに応じて規則を適用している場合は、ネットワーク サービスとして実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。
@@ -55,25 +56,25 @@ ms.locfileid: "91628700"
 2. クラウド専用の全体管理者資格情報を使用して Azure portal にサインインします。
 3. 左側の **[Azure Active Directory]** を選択して **[Azure AD Connect]** をクリックし、中央の **[プロビジョニングの管理 (プレビュー)]** を選択します。
 
-   ![Azure portal](media/how-to-install/install6.png)
+   ![Azure portal](media/how-to-install/install-6.png)
 
 4. **[エージェントのダウンロード]** をクリックします。
 5. Azure AD Connect プロビジョニング エージェントを実行します。
-6. スプラッシュ スクリーンでライセンス条項に**同意**し、 **[インストール]** をクリックします。
+6. スプラッシュ スクリーンでライセンス条項に **同意** し、 **[インストール]** をクリックします。
 
-   !["Microsoft Azure A D Connect Provisioning Agent Package" のスプラッシュ スクリーンを示すスクリーンショット。](media/how-to-install/install1.png)
+   !["Microsoft Azure A D Connect Provisioning Agent Package" のスプラッシュ スクリーンを示すスクリーンショット。](media/how-to-install/install-1.png)
 
 7. この操作が完了すると、構成ウィザードが起動します。  Azure AD 全体管理者アカウントでサインインします。  IE セキュリティ強化を有効にしている場合はサインインがブロックされることに注意してください。  その場合はインストールを終了して、サーバー マネージャーで IE セキュリティ強化を無効にし、 **[AAD Connect Provisioning Agent Wizard]\(AAD Connect プロビジョニング エージェント ウィザード\)** をクリックしてインストールを再開します。
 8. **[Connect Active Directory]\(Active Directory の接続\)** 画面で **[ディレクトリの追加]** をクリックし、Active Directory ドメイン管理者アカウントを使用してサインインします。  注:ドメイン管理者アカウントに、パスワード変更要件は設定しないでください。 パスワードが期限切れになった場合や変更された場合は、新しい資格情報でエージェントを再構成する必要があります。 この操作によってオンプレミス ディレクトリが追加されます。  **[次へ]** をクリックします。
 
-   ![[Active Directory の接続] 画面のスクリーンショット。](media/how-to-install/install3.png)
+   ![[Active Directory の接続] 画面のスクリーンショット。](media/how-to-install/install-3.png)
 
 9. **[構成が完了しました]** 画面で、 **[Confirm]\(確認\)** をクリックします。  この操作によって、エージェントが登録されて再起動されます。
 
-   ![[構成が完了しました] という画面を示すスクリーンショット。](media/how-to-install/install4.png)
+   ![[構成が完了しました] という画面を示すスクリーンショット。](media/how-to-install/install-4a.png)
 
 10. この操作が完了すると、次の通知が表示されます。 **"Your agent configuration was successfully verified. (エージェントの構成が正常に検証されました。)"**  **[終了]** をクリックします。</br>
-![[ようこそ] 画面](media/how-to-install/install5.png)</br>
+![[ようこそ] 画面](media/how-to-install/install-5.png)</br>
 11. まだ最初のスプラッシュ スクリーンが表示されている場合は、 **[閉じる]** をクリックします。
 
 
@@ -85,13 +86,13 @@ ms.locfileid: "91628700"
 
 1. Azure portal にサインインします。
 2. 左側の **[Azure Active Directory]** を選択して **[Azure AD Connect]** をクリックし、中央の **[プロビジョニングの管理 (プレビュー)]** を選択します。</br>
-![Azure Portal](media/how-to-install/install6.png)</br>
+![Azure Portal](media/how-to-install/install-6.png)</br>
 
 3.  **[Azure AD のプロビジョニング (プレビュー)]** 画面で **[すべてのエージェントの確認]** をクリックします。
-![Azure AD のプロビジョニング](media/how-to-install/install7.png)</br>
+![Azure AD のプロビジョニング](media/how-to-install/install-7.png)</br>
  
 4. **[On-premises provisioning agents]\(オンプレミス プロビジョニング エージェント\)** 画面に、インストールしたエージェントが表示されます。  該当するエージェントが存在し、 **[アクティブ]** としてマークされていることを確認します。
-![プロビジョニング エージェント](media/how-to-install/verify1.png)</br>
+![プロビジョニング エージェント](media/how-to-install/verify-1.png)</br>
 
 ### <a name="on-the-local-server"></a>ローカル サーバーの場合
 エージェントが実行されていることを確認するには、次の手順に従います。
@@ -99,7 +100,7 @@ ms.locfileid: "91628700"
 1.  管理者アカウントでサーバーにログオンします。
 2.  **[サービス]** を開きます。これには、そこに直接移動するか、スタート ボタンをクリックし、[ファイル名を指定して実行] で「Services.msc」と入力します。
 3.  **[サービス]** に **[Microsoft Azure AD Connect Agent Updater]** と **[Microsoft Azure AD Connect Provisioning Agent]** が存在し、その状態が **[実行中]** になっていることを確認します。
-![サービス](media/how-to-troubleshoot/troubleshoot1.png)
+![サービス](media/how-to-install/troubleshoot-1.png)
 
 ## <a name="configure-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect クラウド プロビジョニングを構成する
  プロビジョニングを構成するには、次の手順に従います。
@@ -111,7 +112,7 @@ ms.locfileid: "91628700"
 ![[プロビジョニングの管理 (プレビュー)] リンクのスクリーンショット。](media/how-to-configure/manage1.png)
 5.  **[新しい構成]** をクリックします。
 ![[新しい構成] リンクを強調表示した [Azure AD のプロビジョニング (プレビュー)] 画面のスクリーンショット。](media/tutorial-single-forest/configure1.png)
-7.  構成画面で、**通知用メール アドレス**を入力し、セレクターを **[有効]** に移動して、 **[保存]** をクリックします。
+7.  構成画面で、**通知用メール アドレス** を入力し、セレクターを **[有効]** に移動して、 **[保存]** をクリックします。
 ![メール アドレスの入力を終え、[有効にする] を選択した状態の [構成] 画面のスクリーンショット。](media/how-to-configure/configure2.png)
 1.  構成の状態が **[正常]** になります。
 ![ステータスが [正常] と表示された状態の [Azure AD のプロビジョニング (プレビュー)] 画面のスクリーンショット。](media/how-to-configure/manage4.png)
@@ -124,13 +125,12 @@ ms.locfileid: "91628700"
 2. 左側の **[Azure Active Directory]** を選択します。
 3. **[管理]** にある **[ユーザー]** を選択します。
 4. テナントに新しいユーザーが表示されていることを確認します。</br>
-![同期](media/tutorial-single-forest/synchronize1.png)</br>
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>いずれかのユーザーでサインインをテストする
 
 1. [https://myapps.microsoft.com](https://myapps.microsoft.com) に移動します。
 2. 新しいテナントで作成されたユーザー アカウントを使用してサインインします。  user@domain.onmicrosoft.com の形式を使用してサインインする必要があります。 ユーザーがオンプレミスでのサインインに使用するのと同じパスワードを使用します。</br>
-   ![確認](media/tutorial-single-forest/verify1.png)</br>
+   ![確認](media/tutorial-single-forest/verify-1.png)</br>
 
 これでハイブリッド ID 環境を正常に設定できました。この環境は、Azure で提供されるサービスをテストしたり理解したりするために使用できます。
 

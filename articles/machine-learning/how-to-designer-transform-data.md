@@ -1,7 +1,7 @@
 ---
 title: デザイナーでデータを変換する
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning デザイナーでデータを変換して、独自のデータセットを作成する方法について説明します。
+description: Azure Machine Learning デザイナーでデータをインポートおよび変換して、独自のデータセットを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: f08d0f1be166630d9cf4b0b9236d78228fd78aae
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: be2921f88ad2ecf88c555daf8385f1bd6733e836
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312799"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554017"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーでデータを変換する
 
@@ -74,7 +74,7 @@ ms.locfileid: "93312799"
 
 1. キャンバスの右側にあるモジュールの詳細ウィンドウで **[Splitting mode]\(分割モード\)** を **[正規表現]** に設定します。
 
-1. **正規表現** : `\"native-country" United-States` を入力します。
+1. **正規表現**: `\"native-country" United-States` を入力します。
 
     **正規表現** モードでは、1 つの列に値があるかどうかがテストされます。 Split Data モジュールの詳細については、関連する[アルゴリズム モジュールのリファレンス ページ](algorithm-module-reference/split-data.md)を参照してください。
 
@@ -85,7 +85,7 @@ ms.locfileid: "93312799"
 
 ## <a name="save-the-datasets"></a>データセットの保存
 
-データを分割するようにパイプラインを設定したので、データセットを保持する場所を指定する必要があります。 この例では、 **Export Data** モジュールを使用して、データセットをデータストアに保存します。 データストアの詳細については、「[Azure Storage サービスに接続する](how-to-access-data.md)」を参照してください
+データを分割するようにパイプラインを設定したので、データセットを保持する場所を指定する必要があります。 この例では、**Export Data** モジュールを使用して、データセットをデータストアに保存します。 データストアの詳細については、「[Azure Storage サービスに接続する](how-to-access-data.md)」を参照してください
 
 1. キャンバスの左側にあるモジュール パレットで **[Data Input and Output]\(データの入力と出力\)** セクションを展開し、 **[Export Data]** モジュールを見つけます。
 
@@ -97,7 +97,7 @@ ms.locfileid: "93312799"
 
     ![Export Data モジュールの接続方法を示すスクリーンショット](media/how-to-designer-transform-data/export-data-pipeline.png)。
 
-1. **[Split Data]** モジュールの最も " *左* " のポートに接続されている **[Export Data]** モジュールを選択します。
+1. **[Split Data]** モジュールの最も "*左*" のポートに接続されている **[Export Data]** モジュールを選択します。
 
     **Split Data** モジュールでは、出力ポートの順序が重要です。 最初の出力ポートには、正規表現が true である行が含まれます。 今回のケースでは、最初のポートには米国ベースの収入の行が含まれ、2 番目のポートには米国以外のベースの収入の行が含まれます。
 
@@ -105,28 +105,28 @@ ms.locfileid: "93312799"
     
     **Datastore type (データストアの種類)** :Azure Blob Storage
 
-    **データストア** :既存のデータストアを選択するか、[New datastore]\(新しいデータストア\) を選択して、ここで作成します。
+    **データストア**:既存のデータストアを選択するか、[New datastore]\(新しいデータストア\) を選択して、ここで作成します。
 
-    **パス** : `/data/us-income`
+    **パス**: `/data/us-income`
 
-    **ファイル形式** : csv
+    **ファイル形式**: csv
 
     > [!NOTE]
     > この記事では、現在の Azure Machine Learning ワークスペースに登録されているデータストアにアクセスできることを前提としています。 データストアのセットアップ方法の手順については、「[Azure Storage サービスに接続する](how-to-connect-data-ui.md#create-datastores)」を参照してください。
 
     データストアがない場合は、ここで作成できます。 例として、この記事では、ワークスペースに関連付けられている既定の BLOB ストレージ アカウントにデータセットを保存します。 これにより、データセットは `data` という新しいフォルダーの `azureml` コンテナーに保存されます。
 
-1.  **[Split Data]** モジュールの最も " *右* " のポートに接続されている **[Export Data]** モジュールを選択します。
+1.  **[Split Data]** モジュールの最も "*右*" のポートに接続されている **[Export Data]** モジュールを選択します。
 
 1. キャンバスの右側にあるモジュールの詳細ウィンドウで、次のオプションを設定します。
     
     **Datastore type (データストアの種類)** :Azure Blob Storage
 
-    **データストア** :上記と同じデータストアを選択します
+    **データストア**:上記と同じデータストアを選択します
 
-    **パス** : `/data/non-us-income`
+    **パス**: `/data/non-us-income`
 
-    **ファイル形式** : csv
+    **ファイル形式**: csv
 
 1. **[Split Data]** の左側のポートに接続されている **[Export Data]** モジュールに **[パス]** `/data/us-income` があることを確認します。
 
@@ -152,7 +152,7 @@ ms.locfileid: "93312799"
 
 ## <a name="view-results"></a>結果の表示
 
-パイプラインの実行が完了したら、Azure portal の BLOB ストレージに移動して結果を表示できます。 データが正常に分割されたことを確認するために、 **Split Data** モジュールの中間結果を表示することもできます。
+パイプラインの実行が完了したら、Azure portal の BLOB ストレージに移動して結果を表示できます。 データが正常に分割されたことを確認するために、**Split Data** モジュールの中間結果を表示することもできます。
 
 1. **[Split Data]\(データの分割\)** モジュールを選択します。
 

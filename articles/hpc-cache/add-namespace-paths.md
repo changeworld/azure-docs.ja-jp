@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 090e3f93d025fe87ad5b89a98193574595f3d632
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a39b6973767b72e69a82750ab8d0d487c733eda0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614510"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657110"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>集約された名前空間を設定する
 
@@ -57,7 +57,7 @@ Azure portal から **[名前空間]** 設定ページを読み込みます。 �
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
 Azure CLI を使用する場合は、ストレージ ターゲットを作成するときに名前空間パスを追加する必要があります。 詳細については、「[新しい Azure Blob Storage ターゲットを追加する](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-azure-blob-storage-target)」を参照してください。
 
@@ -119,7 +119,7 @@ Azure portal から **[名前空間]** 設定ページを読み込みます。 �
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
 Azure CLI を使用する場合は、ストレージ ターゲットを作成するときに少なくとも 1 つの名前空間パスを追加する必要があります。 詳細については、「[新しい NFS ストレージ ターゲットを追加する](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target)」を参照してください。
 

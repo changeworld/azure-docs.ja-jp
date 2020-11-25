@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 297b34fd9981308ece52545ac5878eaa144f4829
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 28d912153b52580727e0fb5086e0a7ae55e8b545
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824405"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560929"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>クイック スタート:ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す
 
-このクイックスタートには、ユニバーサル Windows プラットフォーム (UWP) アプリケーションから個人用アカウントや職場または学校アカウントを持つユーザーのサインイン、アクセス トークンの取得、Microsoft Graph API の呼び出しを行う方法を示すコード サンプルが使用されています。 図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
+このクイックスタートでは、ユニバーサル Windows プラットフォーム (UWP) アプリケーションでユーザーをサインインし、アクセス トークンを取得して Microsoft Graph API を呼び出す方法を示すコード サンプルをダウンロードして実行します。 
+
+図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
 
 > [!div renderon="docs"]
 > ## <a name="prerequisites"></a>前提条件
@@ -52,7 +54,7 @@ ms.locfileid: "91824405"
 > 1. **[アプリケーションの登録]** で、以下のアプリケーションの登録情報を入力します。
 >      - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `UWP-App-calling-MsGraph`)。
 >      - **[サポートされているアカウントの種類]** セクションで、 **[Accounts in any organizational directory and personal Microsoft accounts (for example, Skype, Xbox, Outlook.com)]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント (例: Skype、Xbox、Outlook.com)\)** を選択します。
-> 1. **[登録]** を選択してアプリケーションを作成し、後の手順で使用する**アプリケーション (クライアント) ID** を記録します。
+> 1. **[登録]** を選択してアプリケーションを作成し、後の手順で使用する **アプリケーション (クライアント) ID** を記録します。
 > 1. **[管理]** で、 **[認証]** を選択します。
 > 1. **[プラットフォームを追加]**  >  **[モバイル アプリケーションとデスクトップ アプリケーション]** を選択します。
 > 1. **[リダイレクト URI]** で `https://login.microsoftonline.com/common/oauth2/nativeclient` を選択します。
@@ -90,7 +92,7 @@ ms.locfileid: "91824405"
 >
 > 1. .zip アーカイブを、ドライブのルートに近いローカル フォルダーに抽出します。 たとえば、**C:\Azure-Samples** に抽出します。
 > 1. Visual Studio でプロジェクトを開きます。 **[ユニバーサル Windows プラットフォーム開発]** ワークロードをインストールします。また、SDK コンポーネントのインストールを求められた場合は、個々のコンポーネントをインストールします。
-> 1. *MainPage.Xaml.cs* で、`ClientId` 変数の値を、先ほど登録したアプリケーションの**アプリケーション (クライアント) ID** に変更します。
+> 1. *MainPage.Xaml.cs* で、`ClientId` 変数の値を、先ほど登録したアプリケーションの **アプリケーション (クライアント) ID** に変更します。
 >
 >    ```csharp
 >    private const string ClientId = "Enter_the_Application_Id_here";
@@ -98,7 +100,7 @@ ms.locfileid: "91824405"
 >
 >    **アプリケーション (クライアント) ID** は、Azure portal のアプリの **[概要]** ペインで確認できます ( **[Azure Active Directory]**  >  **[アプリの登録]**  >  *[<実際のアプリの登録>]* )。
 > 1. パッケージに使用する新しい自己署名テスト証明書を作成して選択します。
->     1. **ソリューション エクスプローラー**で、*Package.appxmanifest* ファイルをダブルクリックします。
+>     1. **ソリューション エクスプローラー** で、*Package.appxmanifest* ファイルをダブルクリックします。
 >     1. **[パッケージ]**  >  **[証明書の選択]**  >  **[作成]** を選択します。
 >     1. パスワードを入力し、 **[OK]** を選択します。
 >     1. **[ファイルから選択]** を選択し、先ほど作成した *Native_UWP_V2_TemporaryKey.pfx* ファイルを選択して、 **[OK]** を選択します。
@@ -113,7 +115,7 @@ ms.locfileid: "91824405"
 1. Visual Studio ツールバーで、適切なプラットフォーム (おそらく ARM ではなく、**x64** または **x86**) を選択します。 ターゲット デバイスが *[デバイス]* から *[ローカル コンピューター]* に変わります。
 1. **[デバッグ]**  >  **[デバッグなしで開始]** を選択します。
     
-    **開発者モード**を有効にするよう求められた場合は、まず開発者モードを有効にしたうえで、 **[デバッグなしで開始]** を再度選択し、アプリを起動してください。
+    **開発者モード** を有効にするよう求められた場合は、まず開発者モードを有効にしたうえで、 **[デバッグなしで開始]** を再度選択し、アプリを起動してください。
 
 アプリのウィンドウが表示されたら、 **[Call Microsoft Graph API]\(Microsoft Graph API を呼び出す\)** ボタンを選択し、資格情報を入力して、アプリケーションから要求されたアクセス許可に同意してください。 成功した場合、Microsoft Graph API を呼び出すことによって取得したデータとトークン情報が表示されます。
 
@@ -146,7 +148,7 @@ PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
                                                     .Build();
 ```
 
-`ClientId` の値は、Azure portal で登録したアプリの**アプリケーション (クライアント) ID** です。 この値は、Azure portal のアプリの **[概要]** ページで確認できます。
+`ClientId` の値は、Azure portal で登録したアプリの **アプリケーション (クライアント) ID** です。 この値は、Azure portal のアプリの **[概要]** ページで確認できます。
 
 ### <a name="requesting-tokens"></a>トークンの要求
 

@@ -7,12 +7,12 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: b57303a1c9fdba2bea8637bef6c148622087a8d3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9d0dd8ee1b99ddd2abf4fad154c70315a3d33c83
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789779"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556422"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して SQL Server VM を作成する
 
@@ -45,36 +45,36 @@ SQL Server VM ARM テンプレートには、次のものが必要です。
 - [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups): ネットワーク セキュリティ グループを作成します。 
 - [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces): ネットワーク インターフェイスを構成します。 
 - [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): Azure に仮想マシンを作成します。 
-- [Microsoft.SqlVirtualMachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines): 仮想マシンを SQL VM リソース プロバイダーに登録します。 
+- [Microsoft.SqlVirtualMachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines): 仮想マシンを SQL IaaS Agent 拡張機能に登録します。 
 
 その他の Azure VM 上の SQL Server のテンプレートについては、[クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine&pageNumber=1&sort=Popular)をご覧ください。
 
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートでは、目的の SQL Server バージョンがインストールされており、SQL VM リソース プロバイダーに登録されている仮想マシンが作成されます。 
+1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートでは、目的の SQL Server バージョンがインストールされており、SQL IaaS Agent 拡張機能に登録されている仮想マシンが作成されます。 
 
    [![Azure へのデプロイ](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
 
 2. 次の値を選択または入力します。
 
-    * **サブスクリプション** :Azure サブスクリプションを選択します。
+    * **サブスクリプション**:Azure サブスクリプションを選択します。
     * **[リソース グループ]** :SQL Server VM 用に準備されたリソース グループ。 
     * **[リージョン]** :リージョンを選択します。  たとえば **[米国中部]** です。
     * **[仮想マシン名]** : SQL Server 仮想マシンの名前を入力します。 
-    * **仮想マシンのサイズ** : ドロップダウンから、ご利用の仮想マシンに適したサイズを選びます。
+    * **仮想マシンのサイズ**: ドロップダウンから、ご利用の仮想マシンに適したサイズを選びます。
     * **Existing Virtual Network Name (既存の仮想ネットワーク名)** : SQL Server VM 用に準備された仮想ネットワークの名前を入力します。 
     * **Existing Vnet Resource Group (既存の VNet リソース グループ)** : 仮想ネットワークが準備されたリソース グループを入力します。 
-    * **既存のサブネットの名前** : 準備したサブネットの名前。 
-    * **イメージ プラン** : ビジネス ニーズに最も適した SQL Server と Windows Server イメージを選択します。 
+    * **既存のサブネットの名前**: 準備したサブネットの名前。 
+    * **イメージ プラン**: ビジネス ニーズに最も適した SQL Server と Windows Server イメージを選択します。 
     * **SQL Sku (SQL SKU)** : ビジネス ニーズに最も適した SQL Server SKU のエディションを選択します。 
-    * **管理ユーザー名** : 仮想マシンの管理者のユーザー名。 
-    * **管理パスワード** : VM 管理者アカウントによって使用されるパスワード。 
+    * **管理ユーザー名**: 仮想マシンの管理者のユーザー名。 
+    * **管理パスワード**: VM 管理者アカウントによって使用されるパスワード。 
     * **Storage Workload Type (ストレージ ワークロードの種類)** : ビジネスに最適なワークロードのストレージの種類。 
     * **Sql Data Disks Count (SQL データ ディスクの数)** : SQL Server でデータ ファイルに使用されるディスクの数。  
-    * **データ パス** : SQL Server データ ファイルのパス。 
+    * **データ パス**: SQL Server データ ファイルのパス。 
     * **Sql Log Disks Count\(SQL ログ ディスクの数\)** : SQL Server でログ ファイルに使用されるディスクの数。 
-    * **ログ パス** : SQL Server ログ ファイルのパス。 
+    * **ログ パス**: SQL Server ログ ファイルのパス。 
     * **[場所]** :すべてのリソースの場所。この値は、既定値の `[resourceGroup().location]` のままにしておく必要があります。 
 
 3. **[Review + create]\(レビュー + 作成\)** を選択します。 SQL Server VM が正常にデプロイされた後、通知が表示されます。

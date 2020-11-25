@@ -6,15 +6,15 @@ author: kevinvngo
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: quickstart
-ms.date: 05/06/2020
+ms.date: 11/16/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2a4740699d70601591645aa0d3183531a6687be6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3b32e7a1df0dbbf4d43a73f1e3e409a904ab88a3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324928"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660085"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>クイックスタート:Synapse SQL を使用したデータの一括読み込み
 
@@ -39,7 +39,8 @@ Synapse Studio 内の次の領域を右クリックするだけで、専用 SQL 
 
 ### <a name="steps"></a>手順
 
-1. [Source storage location]\(ソース ストレージの場所\) パネルで、ストレージ アカウントと、読み込み元のファイルまたはフォルダーを選択します。![ソースの場所の選択](./sql/media/bulk-load/bulk-load-source-location.png)
+1. [Source storage location]\(ソース ストレージの場所\) パネルで、ストレージ アカウントと、読み込み元のファイルまたはフォルダーを選択します。 ウィザードによって自動的に Parquet ファイルの検出が試行されます。 Parquet ファイルの種類が確認できない場合は、区切りテキスト (CSV) が既定で使用されます。 
+   ![ソースの場所の選択](./sql/media/bulk-load/bulk-load-source-location.png)
 
 2. 拒否された行 (エラー ファイル) の書き込み先のストレージ アカウントを含め、ファイル形式設定を選択します。 現時点では、CSV ファイルと Parquet ファイルのみがサポートされています。
 
@@ -47,9 +48,14 @@ Synapse Studio 内の次の領域を右クリックするだけで、専用 SQL 
 
 3. [データのプレビュー] を選択すると、COPY ステートメントによってファイルがどのように解析されるかを確認できるため、ファイル形式設定を構成する際の参考にすることができます。 ファイル形式設定を変更するたびに [データのプレビュー] を選択して、更新された設定で COPY ステートメントによってファイルがどのように解析されるかを確認します。![データのプレビュー](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
 
+> [!NOTE]  
+>
+> - 複数文字のフィールド ターミネータを使用したデータのプレビューは、一括読み込みウィザードではサポートされません。 複数文字のフィールド ターミネータが指定された場合は、1 列内でデータがプレビューされます。 
+> - COPY ステートメントでは、複数文字の行ターミネータを指定できますが、一括読み込みウィザードではサポートされません。指定した場合はエラーがスローされます。
+
 4. 読み込みに使用する専用 SQL プールを選択します (既存のテーブルへの読み込みか、新しいテーブルへの読み込みか)。![ターゲットの場所の選択](./sql/media/bulk-load/bulk-load-target-location.png)
 
-5. [列マッピングの構成] を選択して、列マッピングが適切であることを確認します。 新しいテーブルの場合、ターゲット列のデータ型を更新するには、列マッピングを構成することが非常に重要です。![列マッピングの構成](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
+5. [列マッピングの構成] を選択して、列マッピングが適切であることを確認します。 [Infer column names]\(列名の推測\) が有効になっている場合は、列名が自動的に検出されます。 新しいテーブルの場合、ターゲット列のデータ型を更新するには、列マッピングを構成することが非常に重要です。![列マッピングの構成](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
 
 6. [スクリプトを開く] を選択すると、COPY ステートメントを使用してデータ レイクから読み込むための T-SQL スクリプトが生成されます。![SQL スクリプトを開く](./sql/media/bulk-load/bulk-load-target-final-script.png)
 

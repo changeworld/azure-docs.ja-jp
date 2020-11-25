@@ -13,21 +13,19 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: ec0ab4601e15129ecd8917e0e750a3e1661dc558
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: b7ec6ab8b52d9d43d898f481a2f36310e5c0897d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530699"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561082"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Apple デバイス用の Microsoft Enterprise SSO プラグイン (プレビュー)
 
-> [!NOTE]
-> この機能はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>[!IMPORTANT]
+> この機能[!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
-*Apple デバイス用の Microsoft Enterprise SSO プラグイン*では、Apple の [Enterprise Single Sign-On](https://developer.apple.com/documentation/authenticationservices) 機能がサポートされているすべてのアプリケーションでの Azure Active Directory (Azure AD) アカウントに対するシングル サインオン (SSO) が提供されます。 Microsoft は Apple と密接に連携してこのプラグインを開発し、アプリケーションの使いやすさを向上させ、Apple と Microsoft が提供できる最適な保護を提供しています。
+*Apple デバイス用の Microsoft Enterprise SSO プラグイン* では、Apple の [Enterprise Single Sign-On](https://developer.apple.com/documentation/authenticationservices) 機能がサポートされているすべてのアプリケーションでの Azure Active Directory (Azure AD) アカウントに対するシングル サインオン (SSO) が提供されます。 Microsoft は Apple と密接に連携してこのプラグインを開発し、アプリケーションの使いやすさを向上させ、Apple と Microsoft が提供できる最適な保護を提供しています。
 
 Enterprise SSO プラグインのこのパブリック プレビュー リリースは、iOS デバイスでのみ使用でき、特定の Microsoft アプリケーションで配布されます。
 

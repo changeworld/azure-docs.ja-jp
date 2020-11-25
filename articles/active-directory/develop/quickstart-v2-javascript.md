@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 1f5281ead3c0487b6052859df3b33fa6ddaaf45a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f2a01c4e4d364494d271fa676bca5bfac2677395
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613324"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592749"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>クイック スタート:JavaScript SPA 内でユーザーをサインインさせ、アクセス トークンを取得する
 
-このクイックスタートでは、コード サンプルを使用して、JavaScript シングルページ アプリケーション (SPA) で個人アカウント、職場アカウント、学校アカウントのユーザーをサインインさせる方法について学習します。 JavaScript SPA では、Microsoft Graph API または任意の Web API を呼び出すためのアクセス トークンを取得することもできます。 図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
+このクイックスタートでは、JavaScript シングルページ アプリケーション (SPA) でユーザーをサインインし、Microsoft Graph を呼び出す方法を示すコード サンプルをダウンロードして実行します。 このコード サンプルでは、Microsoft Graph API または任意の Web API を呼び出すためのアクセス トークンを取得する方法も示します。
+
+図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,7 +58,7 @@ ms.locfileid: "91613324"
 > 1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
 > 1. **[登録]** を選択します。 後で使用するために、アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を書き留めます。
 > 1. このクイック スタートでは、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。 登録済みのアプリケーションの左側のウィンドウで、 **[認証]** を選択します。
-> 1. **[プラットフォーム構成]** で **[プラットフォームを追加]** を選択します。 左側のパネルが開きます。 そこで、**Web アプリケーション**のリージョンを選択します。
+> 1. **[プラットフォーム構成]** で **[プラットフォームを追加]** を選択します。 左側のパネルが開きます。 そこで、**Web アプリケーション** のリージョンを選択します。
 > 1. 引き続き左側で、 **[リダイレクト URI]** の値を `http://localhost:3000/` に設定します。 次に、 **[アクセス トークン]** と **[ID トークン]** を選択します。
 > 1. **[構成]** をクリックします。
 
@@ -74,10 +76,10 @@ ms.locfileid: "91613324"
 > [!div renderon="docs"]
 > Node.js を使用して Web サーバーでプロジェクトを実行するために、[コア プロジェクト ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)します。
 
-> [!div renderon="portal"]
+> [!div renderon="portal" class="sxs-lookup"]
 > Node.js を使用して Web サーバーでプロジェクトを実行する
 
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [コード サンプルをダウンロードします](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
 
 > [!div renderon="docs"]
@@ -102,17 +104,17 @@ ms.locfileid: "91613324"
 >
 >```
 
-> [!div renderon="portal"]
+> [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
 >
 > 各値の説明:
-> - *\<Enter_the_Application_Id_Here>* は、登録したアプリケーションの**アプリケーション (クライアント) ID** です。
-> - *\<Enter_the_Cloud_Instance_Id_Here>* は、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、単に「 *https://login.microsoftonline.com* 」と入力します。 **各国**のクラウド (中国など) の場合は、「[各国のクラウド](./authentication-national-cloud.md)」を参照してください。
+> - *\<Enter_the_Application_Id_Here>* は、登録したアプリケーションの **アプリケーション (クライアント) ID** です。
+> - *\<Enter_the_Cloud_Instance_Id_Here>* は、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、単に「 *https://login.microsoftonline.com* 」と入力します。 **各国** のクラウド (中国など) の場合は、「[各国のクラウド](./authentication-national-cloud.md)」を参照してください。
 > - *\<Enter_the_Tenant_info_here>* には、次のオプションのいずれかを設定します。
->    - アプリケーションで "*この組織のディレクトリ内のアカウントのみ*" がサポートされる場合は、この値を**テナント ID** または**テナント名** (例: *contoso.microsoft.com*) に置き換えます。
+>    - アプリケーションで "*この組織のディレクトリ内のアカウントのみ*" がサポートされる場合は、この値を **テナント ID** または **テナント名** (例: *contoso.microsoft.com*) に置き換えます。
 >    - アプリケーションで "*任意の組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を **organizations** に置き換えます。
 >    - アプリケーションで "*任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント*" がサポートされる場合は、この値を **common** に置き換えます。 "*個人用の Microsoft アカウントのみ*" にサポートを制限するには、この値を **consumers** に置き換えます。
 >

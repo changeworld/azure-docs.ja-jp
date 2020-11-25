@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 45a6843c5ce55dca7ff72731752f3c1f24a5db6b
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 40929a165e7a3afbbc92a472c352172723745040
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216659"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533193"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>クイック スタート:承認コード フローを使用して JavaScript SPA 内でユーザーをサインインさせ、アクセス トークンを取得する
 
-このクイック スタートでは、JavaScript シングルページ アプリケーション (SPA) で認証コード フローを使用して、個人アカウント、職場アカウント、学校アカウントのユーザーをサインインさせる方法を示すコード サンプルを実行します。 このコード サンプルでは、Web API (この場合は Microsoft Graph API) を呼び出すためのアクセス トークンを取得する方法も示しています。 図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
+このクイックスタートでは、承認コード フローを使用して、JavaScript シングルページ アプリケーション (SPA) でユーザーをサインインし、Microsoft Graph を呼び出す方法を示すコード サンプルをダウンロードして実行します。 このコード サンプルでは、Microsoft Graph API または任意の Web API を呼び出すためのアクセス トークンを取得する方法を示します。 
+
+図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
 
 このクイック スタートでは、承認コード フローで MSAL.js 2.0 を使用します。 暗黙的なフローで MSAL.js 1.0 を使用する同様のクイック スタートについては、[クイック スタート: JavaScript シングルページ アプリ内でのユーザーのサインイン](./quickstart-v2-javascript.md)に関するページを参照してください。
 
@@ -109,10 +111,10 @@ ms.locfileid: "92216659"
 >
 > 以下の説明に従って、`msalConfig` セクションの値を変更します。
 >
-> - `Enter_the_Application_Id_Here` は、登録したアプリケーションの**アプリケーション (クライアント) ID** です。
-> - `Enter_the_Cloud_Instance_Id_Here` は、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、「`https://login.microsoftonline.com/`」と入力します。 **各国**のクラウド (中国など) の場合は、「[各国のクラウド](authentication-national-cloud.md)」を参照してください。
+> - `Enter_the_Application_Id_Here` は、登録したアプリケーションの **アプリケーション (クライアント) ID** です。
+> - `Enter_the_Cloud_Instance_Id_Here` は、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、「`https://login.microsoftonline.com/`」と入力します。 **各国** のクラウド (中国など) の場合は、「[各国のクラウド](authentication-national-cloud.md)」を参照してください。
 > - `Enter_the_Tenant_info_here` には、次のいずれかが設定されます。
->   - お使いのアプリケーションで "*この組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を**テナント ID** または**テナント名**に置き換えます。 たとえば、「 `contoso.microsoft.com` 」のように入力します。
+>   - お使いのアプリケーションで "*この組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を **テナント ID** または **テナント名** に置き換えます。 たとえば、「 `contoso.microsoft.com` 」のように入力します。
 >   - アプリケーションで "*任意の組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を `organizations` に置き換えます。
 >   - アプリケーションにおいて "*任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント*" をサポートする場合は、この値を `common` に置き換えます。 **このクイック スタートでは**、`common` を使用します。
 >   - "*個人用の Microsoft アカウントのみ*" にサポートを制限するには、この値を `consumers` に置き換えます。
@@ -200,4 +202,4 @@ npm install @azure/msal-browser
 このクイック スタートで使用されるアプリケーションの構築に関する詳細なステップ バイ ステップ ガイドについては、次のチュートリアルを参照してください。
 
 > [!div class="nextstepaction"]
-> [サインインして MS Graph を呼び出すチュートリアル >](./tutorial-v2-javascript-auth-code.md)
+> [サインインして MS Graph を呼び出すチュートリアル](./tutorial-v2-javascript-auth-code.md)

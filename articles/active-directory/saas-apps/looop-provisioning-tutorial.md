@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 889972f7d94ab960354982275d45bdc5d5726d6e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 528003ac482da6f254bf437321c70c389d23844b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356826"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835036"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>チュートリアル:Looop を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -81,7 +81,7 @@ Azure AD で自動ユーザー プロビジョニング用に Looop を構成す
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Looop** 」と入力し、結果パネルで **[Looop]** を選択します。 
+4. 検索ボックスに「**Looop**」と入力し、結果パネルで **[Looop]** を選択します。 
 
     ![結果一覧の Looop](common/search-new-app.png)
 
@@ -119,7 +119,7 @@ Azure AD で自動ユーザー プロビジョニング用に Looop を構成す
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://<organisation_domain>.looop.co/scim/v2`」と入力します。 たとえば、「 `https://demo.looop.co/scim/v2` 」のように指定します。 前の手順で Looop から取得して保存した値を **[シークレット トークン]** に入力します。 **[テスト接続]** をクリックして、Azure AD から Looop への接続を確保します。 接続できない場合は、使用中の Looop アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://<organisation_domain>.looop.co/scim/v2`」と入力します。 たとえば、「 `https://demo.looop.co/scim/v2` 」のように入力します。 前の手順で Looop から取得して保存した値を **[シークレット トークン]** に入力します。 **[テスト接続]** をクリックして、Azure AD から Looop への接続を確保します。 接続できない場合は、使用中の Looop アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -135,7 +135,23 @@ Azure AD で自動ユーザー プロビジョニング用に Looop を構成す
 
 9. **[属性マッピング]** セクションで、Azure AD から Looop に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Looop のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Looop ユーザー属性](media/looop-provisioning-tutorial/userattributes.png)
+   |属性|Type|フィルター処理のサポート|
+   |---|---|---|
+   |userName|String|&check;|
+   |active|Boolean|
+   |emails[type eq "work"].value|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |externalId|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:area|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:custom_1|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:custom_2|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:custom_3|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:department|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:employee_id|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:location|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:position|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:startAt|String|
 
 10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to Meta Networks Connector]\(Azure Active Directory グループを Meta Networks Connector に同期する\)** を選択します。
 
@@ -143,7 +159,12 @@ Azure AD で自動ユーザー プロビジョニング用に Looop を構成す
 
 11. **[属性マッピング]** セクションで、Azure AD から Meta Networks Connector に同期されるグループ属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新操作で Meta Networks Connector のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Looop グループ属性](media/looop-provisioning-tutorial/groupattributes.png)
+    |属性|Type|フィルター処理のサポート|
+    |---|---|---|
+    |displayName|String|&check;|
+    |members|リファレンス|
+    |externalId|String|
+
 
 10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 

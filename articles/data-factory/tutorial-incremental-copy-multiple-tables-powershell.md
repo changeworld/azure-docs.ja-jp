@@ -1,6 +1,6 @@
 ---
 title: PowerShell を使用して複数のテーブルを増分コピーする
-description: このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database に差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。
+description: このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database に差分データを読み込むパイプラインを使用して Azure データ ファクトリを作成します。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: be98ff2a31e3216088fb9197fab477d9b1088f26
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 54dea3ba7bbc3339b7b044b476c321fd95138ac2
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634098"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566420"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>PowerShell を使用して SQL Server にある複数のテーブルから Azure SQL Database にデータを増分読み込みする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database に差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。    
+このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database に差分データを読み込むパイプラインを使用して Azure データ ファクトリを作成します。    
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -42,15 +42,15 @@ ms.locfileid: "92634098"
 ## <a name="overview"></a>概要
 このソリューションを作成するための重要な手順を次に示します。 
 
-1. **基準値列を選択する** 。
+1. **基準値列を選択する**。
 
     ソース データ ストアのテーブルごとに、いずれか 1 つの列を選択します。この列は、実行ごとに新しいレコードまたは更新されたレコードを特定する目的で使用されます。 通常、行が作成または更新されたときに常にデータが増える列を選択します (last_modify_time、ID など)。 この列の最大値が基準値として使用されます。
 
-2. **基準値を格納するためのデータ ストアを準備する** 。
+2. **基準値を格納するためのデータ ストアを準備する**。
 
     このチュートリアルでは、SQL データベースに基準値を格納します。
 
-3. **次のアクティビティを含んだパイプラインを作成する** 。
+3. **次のアクティビティを含んだパイプラインを作成する**。
     
     a. パイプラインにパラメーターとして渡された一連のソース テーブル名を反復処理する ForEach アクティビティを作成する。 このアクティビティが、ソース テーブルごとに次のアクティビティを呼び出して各テーブルの差分読み込みを実行します。
 
@@ -69,8 +69,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **SQL Server** 。 このチュートリアルでは、SQL Server データベースをソース データ ストアとして使用します。 
-* **Azure SQL データベース** 。 シンク データ ストアとして Azure SQL Database のデータベースを使用します。 SQL データベースがない場合の作成手順については、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。 
+* **SQL Server**。 このチュートリアルでは、SQL Server データベースをソース データ ストアとして使用します。 
+* **Azure SQL データベース**。 シンク データ ストアとして Azure SQL Database のデータベースを使用します。 SQL データベースがない場合の作成手順については、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>SQL Server データベースにソース テーブルを作成する
 
@@ -283,7 +283,7 @@ END
 
 * Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、共同作成者または所有者ロールのメンバーであるか、Azure サブスクリプションの管理者である必要があります。
 
-* 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。 [リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、SQL Database、SQL Managed Instance など) とコンピューティング (Azure HDInsight など) は他のリージョンに配置できます。
+* 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、SQL Database、SQL Managed Instance など) とコンピューティング (Azure HDInsight など) は他のリージョンに配置できます。
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 
@@ -357,7 +357,7 @@ END
     Set-Location 'C:\ADFTutorials\IncCopyMultiTableTutorial'
     ```
 
-3. **Set-AzDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス AzureStorageLinkedService を作成します。 次の例では、 *ResourceGroupName* パラメーターと *DataFactoryName* パラメーターの値を渡しています。 
+3. **Set-AzDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス AzureStorageLinkedService を作成します。 次の例では、*ResourceGroupName* パラメーターと *DataFactoryName* パラメーターの値を渡しています。 
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerLinkedService" -File ".\SqlServerLinkedService.json"
@@ -814,7 +814,7 @@ END
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. **[すべてのサービス]** を選択し、キーワード " *データ ファクトリ* " で検索して、 **[データ ファクトリ]** を選択します。 
+2. **[すべてのサービス]** を選択し、キーワード "*データ ファクトリ*" で検索して、 **[データ ファクトリ]** を選択します。 
 
 3. データ ファクトリの一覧から **目的のデータ ファクトリ** を探して選択し、[データ ファクトリ] ページを開きます。 
 
@@ -823,7 +823,7 @@ END
 5. **[始めましょう]** ページで、左側の **[監視]** を選択します。 
 ![Azure Data Factory の [始めましょう] ページを示すスクリーンショット。](media/doc-common-process/get-started-page-monitor-button.png)    
 
-6. すべてのパイプラインの実行とその状態を確認できます。 次の例では、パイプラインの実行が、 **成功** 状態であることに注目してください。 パイプラインに渡されたパラメーターを確認するには、 **[パラメーター]** 列のリンクを選択します。 エラーが発生した場合は、 **[エラー]** 列にリンクが表示されます。
+6. すべてのパイプラインの実行とその状態を確認できます。 次の例では、パイプラインの実行が、**成功** 状態であることに注目してください。 パイプラインに渡されたパラメーターを確認するには、 **[パラメーター]** 列のリンクを選択します。 エラーが発生した場合は、 **[エラー]** 列にリンクが表示されます。
 
     ![パイプラインを含むデータ ファクトリのパイプライン実行を示すスクリーンショット。](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
 7. **[アクション]** 列のリンクを選択すると、そのパイプラインに関するすべてのアクティビティの実行が表示されます。 
@@ -934,7 +934,7 @@ PersonID    Name    LastModifytime
 5           Anny    2017-09-05 08:06:00.000
 ```
 
-**PersonID** 3 を見ると、 **Name** と **LastModifytime** が新しい値であることがわかります。 
+**PersonID** 3 を見ると、**Name** と **LastModifytime** が新しい値であることがわかります。 
 
 **クエリ**
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/16/2020
+ms.date: 11/17/2020
 ms.author: b-juche
-ms.openlocfilehash: 3aaa5d2bc6fdbda0d1db212539c719aa65cae61b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fbb9b054433905d41d0171ab08b4647618be466
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708510"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94745685"
 ---
 # <a name="troubleshoot-cross-region-replication"></a>リージョン間レプリケーションのトラブルシューティング
 
@@ -50,6 +50,7 @@ ms.locfileid: "90708510"
 |-|-|
 |     `Replication   cannot be deleted, mirror state needs to be in status: Broken before deleting`    |     レプリケーションが解除されているか、または初期化されずにアイドル状態になっている (初期化に失敗した) かを確認します。    |
 |     `Cannot delete   source replication`    |     ソース側からのレプリケーションの削除は許可されていません。 ターゲット側からレプリケーションを削除していることを確認します。    |
+| `Volume with replication cannot be deleted`  |  ボリュームを削除する前に、レプリケーションを削除します。 「[レプリケーションの削除](cross-region-replication-delete.md)」を参照してください。 この操作では、ボリュームのレプリケーションを削除する前にピアリングを中断する必要があります。 
 
 ## <a name="errors-resyncing-volume"></a>ボリュームの再同期中に発生するエラー
 

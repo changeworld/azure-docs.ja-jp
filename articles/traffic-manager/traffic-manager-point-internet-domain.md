@@ -11,11 +11,11 @@ ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: duau
 ms.openlocfilehash: 93a8076f12b8f006d600cbd32ce39169f4b47c67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89392597"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014331"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>会社のインターネット ドメインで Azure Traffic Manager ドメインが参照されるようにする
 
@@ -28,7 +28,7 @@ Traffic Manager プロファイルを作成すると、Azure では、そのプ�
 これで、*www\.contoso.com* へのすべてのトラフィック要求が *contoso.trafficmanager.net* にリダイレクトされるようになります。
 
 > [!IMPORTANT]
-> *contoso.com*などの第 2 レベル ドメインで、Traffic Manager ドメインを参照させることはできません。 DNS プロトコルの標準では、第 2 レベル ドメイン名の CNAME レコードは許可されません。
+> *contoso.com* などの第 2 レベル ドメインで、Traffic Manager ドメインを参照させることはできません。 DNS プロトコルの標準では、第 2 レベル ドメイン名の CNAME レコードは許可されません。
 
 ## <a name="next-steps"></a>次のステップ
 

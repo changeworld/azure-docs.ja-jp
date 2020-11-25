@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f71703dcb6afb5ce7610bf1c5374de1cc98816b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12e9bec0c560f1b068b07a1b6afe218a112e439f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606792"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553079"
 ---
 自己署名ルート証明書を作成した後、ルート証明書の (秘密キーではなく) 公開キーの .cer ファイルをエクスポートします。 後でこのファイルを Azure にアップロードします。 次の手順で、自己署名ルート証明書の .cer ファイルをエクスポートしてください。
 
-1. 証明書から .cer ファイルを取得するには、 **[ユーザー証明書の管理]** を開きます。 自己署名ルート証明書を探して右クリックします (通常は 'Current User\Personal\Certificates' にあります)。 **[すべてのタスク]** 、 **[エクスポート]** の順にクリックします。 **証明書のエクスポート ウィザード**が開きます。 Current User\Personal\Certificates に証明書が見つからない場合は、誤って "Certificates - Current User" ではなく "Certificates - Local Computer" を開いている可能性があります。 PowerShell を使用して現在のユーザー スコープで証明書マネージャーを開きたい場合は、コンソール ウィンドウで「*certmgr*」と入力します。
+1. 証明書から .cer ファイルを取得するには、 **[ユーザー証明書の管理]** を開きます。 自己署名ルート証明書を探して右クリックします (通常は 'Current User\Personal\Certificates' にあります)。 **[すべてのタスク]** 、 **[エクスポート]** の順にクリックします。 **証明書のエクスポート ウィザード** が開きます。 Current User\Personal\Certificates に証明書が見つからない場合は、誤って "Certificates - Current User" ではなく "Certificates - Local Computer" を開いている可能性があります。 PowerShell を使用して現在のユーザー スコープで証明書マネージャーを開きたい場合は、コンソール ウィンドウで「*certmgr*」と入力します。
 
-   ![証明書が選択されている現在のユーザーの [証明書] ウィンドウと、[すべてのタスク]、[エクスポート] が選択されているコンテキスト メニューを示すスクリーンショット。](./media/vpn-gateway-certificates-export-public-key-include/export.png)
+   ![証明書が選択されている現在のユーザーの [証明書] ウィンドウと、[すべてのタスク] で [エクスポート] が選択されているコンテキスト メニューを示すスクリーンショット。](./media/vpn-gateway-certificates-export-public-key-include/export.png)
 2. ウィザードで **[次へ]** をクリックします。
 
    ![証明書をエクスポートします。](./media/vpn-gateway-certificates-export-public-key-include/exportwizard.png)
@@ -34,7 +34,7 @@ ms.locfileid: "90606792"
    ![[ファイル名] テキスト ボックスと [参照] オプションが表示されている証明書のエクスポート ウィザードを示すスクリーンショット。](./media/vpn-gateway-certificates-export-public-key-include/browse.png)
 6. **[完了]** をクリックして、証明書をエクスポートします。
 
-   ![選択された設定が表示されている証明書のエクスポート ウィザードの最終ページを示すスクリーンショット。](./media/vpn-gateway-certificates-export-public-key-include/finish.png)
+   ![選択された設定が表示されている証明書のエクスポート ウィザードを示すスクリーンショット。](./media/vpn-gateway-certificates-export-public-key-include/finish.png)
 7. 証明書が正常にエクスポートされました。
 
    ![エクスポートが成功したことを示すメッセージを示すスクリーンショット。](./media/vpn-gateway-certificates-export-public-key-include/success.png)

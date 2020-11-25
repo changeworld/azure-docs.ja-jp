@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 78b9d3f30ebc8f74433f04c4474121682c4a3f36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5f87e693d2592f830ec785f2163c232915544d1
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542021"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561133"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Azure portal を使用して、変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、Azure SQL Database のソース データベースから**変更追跡**情報に基づく差分データを Azure Blob Storage に読み込むパイプラインを使用して Azure Data Factory を作成します。  
+このチュートリアルでは、Azure SQL Database のソース データベースから **変更追跡** 情報に基づく差分データを Azure Blob Storage に読み込むパイプラインを使用して Azure Data Factory を作成します。  
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -50,7 +50,7 @@ ms.locfileid: "91542021"
     3. ソース データベースから Azure Blob Storage にフル データを読み込みます。
 2. **スケジュールに従って差分データの増分読み込みを実行する** (データの初回読み込み後に定期的に実行)。
     1. 新旧の SYS_CHANGE_VERSION 値を取得します。
-    3. 差分データを読み込みます。これは、**sys.change_tracking_tables** から得られる変更済みの行 (2 つの SYS_CHANGE_VERSION 値の間にある行) の主キーと**ソース テーブル**内のデータとを結合した後、その差分データをターゲットに移動することによって行います。
+    3. 差分データを読み込みます。これは、**sys.change_tracking_tables** から得られる変更済みの行 (2 つの SYS_CHANGE_VERSION 値の間にある行) の主キーと **ソース テーブル** 内のデータとを結合した後、その差分データをターゲットに移動することによって行います。
     4. 次回の差分読み込みに備えて SYS_CHANGE_VERSION を更新します。
 
 ## <a name="high-level-solution"></a>ソリューションの概略
@@ -60,9 +60,9 @@ ms.locfileid: "91542021"
 
     ![データ全体の読み込み](media/tutorial-incremental-copy-change-tracking-feature-portal/full-load-flow-diagram.png)
 1.  **増分読み込み:** 次のアクティビティを含んだパイプラインを作成して定期的に実行します。
-    1. **2 つのルックアップ アクティビティ**を作成します。これらのアクティビティによって Azure SQL Database から新旧の SYS_CHANGE_VERSION を取得してコピー アクティビティに渡すことになります。
-    2. 2 つの SYS_CHANGE_VERSION 値の間に存在する挿入/更新/削除されたデータを Azure SQL Database から Azure Blob Storage にコピーする**コピー アクティビティを 1 つ**作成します。
-    3. 次回のパイプライン実行に備えて SYS_CHANGE_VERSION の値を更新する**ストアド プロシージャ アクティビティを 1 つ**作成します。
+    1. **2 つのルックアップ アクティビティ** を作成します。これらのアクティビティによって Azure SQL Database から新旧の SYS_CHANGE_VERSION を取得してコピー アクティビティに渡すことになります。
+    2. 2 つの SYS_CHANGE_VERSION 値の間に存在する挿入/更新/削除されたデータを Azure SQL Database から Azure Blob Storage にコピーする **コピー アクティビティを 1 つ** 作成します。
+    3. 次回のパイプライン実行に備えて SYS_CHANGE_VERSION の値を更新する **ストアド プロシージャ アクティビティを 1 つ** 作成します。
 
     ![増分読み込みのフロー図](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-load-flow-diagram.png)
 
@@ -76,7 +76,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="create-a-data-source-table-in-azure-sql-database"></a>Azure SQL Database にデータ ソース テーブルを作成する
 
 1. **SQL Server Management Studio** を起動し、SQL Database に接続します。
-2. **サーバー エクスプローラー**で目的の**データベース**を右クリックして **[新しいクエリ]** を選択します。
+2. **サーバー エクスプローラー** で目的の **データベース** を右クリックして **[新しいクエリ]** を選択します。
 3. データベースに対して次の SQL コマンドを実行し、`data_source_table` という名前のテーブルをソース データ ストアとして作成します。  
 
     ```sql
@@ -164,17 +164,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
      ![[新しいデータ ファクトリ] ページ](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-azure-data-factory.png)
 
-   Azure データ ファクトリの名前は **グローバルに一意**にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialDataFactory など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
+   Azure Data Factory の名前は、**グローバルに一意** にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialDataFactory など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
 
    *データ ファクトリ名 "ADFTutorialDataFactory" は利用できません*
-3. データ ファクトリを作成する Azure **サブスクリプション**を選択します。
+3. データ ファクトリを作成する Azure **サブスクリプション** を選択します。
 4. **[リソース グループ]** について、次の手順のいずれかを行います。
 
       - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
       - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
         リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
-4. **バージョン**として **[V2 (プレビュー)]** を選択します。
+4. **バージョン** として **[V2 (プレビュー)]** を選択します。
 5. データ ファクトリの **場所** を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 6. **[ダッシュボードにピン留めする]** をオンにします。     
 7. **Create** をクリックしてください。      
@@ -185,7 +185,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![データ ファクトリのホーム ページ](./media/tutorial-incremental-copy-change-tracking-feature-portal/data-factory-home-page.png)
 10. **[Author & Monitor]\(作成と監視\)** タイルをクリックして、別のタブで Azure Data Factory ユーザー インターフェイス (UI) を起動します。
-11. **開始**ページで、次の図に示すように、左パネルの **[編集]** タブに切り替えます。
+11. **開始** ページで、次の図に示すように、左パネルの **[編集]** タブに切り替えます。
 
     ![[Create pipeline]\(パイプラインの作成\) ボタン](./media/tutorial-incremental-copy-change-tracking-feature-portal/get-started-page.png)
 
@@ -264,8 +264,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 4. プロパティ ウィンドウで **[接続]** タブに切り替え、以下の手順を実行します。
 
     1. **[リンクされたサービス]** で **[AzureStorageLinkedService]** を選択します。
-    2. **filePath** の**フォルダー**部分として「**adftutorial/incchgtracking**」と入力します。
-    3. **filePath** の**ファイル**部分として「 **\@CONCAT('Incremental-', pipeline().RunId, '.txt')** 」と入力します。  
+    2. **filePath** の **フォルダー** 部分として「**adftutorial/incchgtracking**」と入力します。
+    3. **filePath** の **ファイル** 部分として「 **\@CONCAT('Incremental-', pipeline().RunId, '.txt')** 」と入力します。  
 
        ![シンク データセット - 接続](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
 
@@ -358,7 +358,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 ```
 
 ## <a name="create-a-pipeline-for-the-delta-copy"></a>差分コピーのパイプラインを作成する
-この手順では、次のアクティビティを含んだパイプラインを作成して定期的に実行します。 **ルックアップ アクティビティ**は、Azure SQL Database から新旧の SYS_CHANGE_VERSION を取得してコピー アクティビティに渡します。 **コピー アクティビティ**は、2 つの SYS_CHANGE_VERSION 値の間に存在する挿入/更新/削除されたデータを Azure SQL Database から Azure Blob Storage にコピーします。 **ストアド プロシージャ アクティビティ**は、次回のパイプライン実行に備えて SYS_CHANGE_VERSION の値を更新します。
+この手順では、次のアクティビティを含んだパイプラインを作成して定期的に実行します。 **ルックアップ アクティビティ** は、Azure SQL Database から新旧の SYS_CHANGE_VERSION を取得してコピー アクティビティに渡します。 **コピー アクティビティ** は、2 つの SYS_CHANGE_VERSION 値の間に存在する挿入/更新/削除されたデータを Azure SQL Database から Azure Blob Storage にコピーします。 **ストアド プロシージャ アクティビティ** は、次回のパイプライン実行に備えて SYS_CHANGE_VERSION の値を更新します。
 
 1. Data Factory の UI で、 **[編集]** タブに切り替えます。左ウィンドウで **[+]\(プラス記号\)** をクリックし、 **[パイプライン]** をクリックします。
 
@@ -403,7 +403,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 9. **[シンク]** タブに切り替えて、 **[Sink Dataset]\(シンク データセット\)** フィールドで **[SinkDataset]** を選択します。
 
     ![コピー アクティビティ - シンクの設定](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-sink-settings.png)
-10. 1 つずつ、**両方の検索アクティビティをコピー アクティビティに接続**します。 **[検索]** アクティビティにアタッチされている**緑**のボタンを **[コピー]** アクティビティにドラッグします。
+10. 1 つずつ、**両方の検索アクティビティをコピー アクティビティに接続** します。 **[検索]** アクティビティにアタッチされている **緑** のボタンを **[コピー]** アクティビティにドラッグします。
 
     ![検索アクティビティとコピー アクティビティを接続する](./media/tutorial-incremental-copy-change-tracking-feature-portal/connect-lookup-and-copy.png)
 11. **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグ アンド ドロップします。 アクティビティの名前を「**StoredProceduretoUpdateChangeTrackingActivity**」に設定します。 このアクティビティは、**table_store_ChangeTracking_version** テーブル内の変更追跡バージョンを更新します。
@@ -424,7 +424,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
         | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} |
 
         ![ストアド プロシージャ アクティビティ - パラメーター](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-parameters.png)
-14. **コピー アクティビティをストアド プロシージャ アクティビティに接続します**。 コピー アクティビティにアタッチされている**緑**のボタンをストアド プロシージャ アクティビティにドラッグ アンド ドロップします。
+14. **コピー アクティビティをストアド プロシージャ アクティビティに接続します**。 コピー アクティビティにアタッチされている **緑** のボタンをストアド プロシージャ アクティビティにドラッグ アンド ドロップします。
 
     ![コピー アクティビティとストアド プロシージャ アクティビティを接続する](./media/tutorial-incremental-copy-change-tracking-feature-portal/connect-copy-stored-procedure.png)
 15. ツール バーの **[検証]** をクリックします。 検証エラーがないことを確認します。 **[>>]** をクリックして、 **[Pipeline Validation Report]\(パイプライン検証レポート\)** ウィンドウを閉じます。

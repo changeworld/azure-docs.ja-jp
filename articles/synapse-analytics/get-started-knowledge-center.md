@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 09/15/2020
-ms.openlocfilehash: 461fabd0dd9948e8967ac61919f77e3e23a981b9
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.date: 11/16/2020
+ms.openlocfilehash: 57213e228359fd6c201d501d3bb75f7267054277
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331959"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685428"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Synapse Knowledge Center を探索する
 
@@ -25,7 +25,7 @@ ms.locfileid: "94331959"
 
 Synapse Studio で Knowledge Center を検索するには、次の 2 つの方法があります。
 
-  1. ホーム ハブで、[便利なリンク] の下にある **[Knowledge Center]** という最初のリンクをクリックします。
+  1. ページ右上付近にある [Home]\(ホーム\) ハブの **[Learn]\(詳細\)** をクリックします。
   2. 上部のメニュー バーで、 **[?]** 、 **[Knowledge Center]** の順にクリックします。
 
 いずれかの方法を選択して、 **[Knowledge Center]** を開きます。

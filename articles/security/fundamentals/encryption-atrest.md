@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Data Encryption-at-Rest | Microsoft Docs
-description: この記事では、Microsoft Azure の保存データの暗号化の概要、全体的な機能、および一般的な考慮事項について説明します。
+title: 保存時の Azure データの暗号化 - Azure セキュリティ
+description: この記事では、保存時の Azure データの暗号化の概要、全体的な機能、および一般的な考慮事項について説明します。
 services: security
 documentationcenter: na
 author: msmbaldwin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dafc55656be2d8ef2c0f52d633c7db7eeee83534
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: c9a68661a89f53c5aa27bdd046b5bc09a47db400
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412784"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556626"
 ---
 # <a name="azure-data-encryption-at-rest"></a>保存時の Azure データの暗号化
 
@@ -128,7 +128,7 @@ IaaS アプリケーションでは、可能な限り、Azure Disk Encryption �
 
 Azure SQL Database は現在、Microsoft が管理するサービス側とクライアント側の暗号化のシナリオで、保存時の暗号化をサポートしています。
 
-サーバー側の暗号化は Transparent Data Encryption と呼ばれる SQL 機能を通して提供されています。 Azure SQL Database ユーザーが有効化すると、TDE キーは自動的に作成および管理されます。 保存時の暗号化は、データベース レベルおよびサーバー レベルで有効にすることができます。 2017 年 6 月の時点で [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) は、新しく作成されたデータベースで既定で有効に設定されています。 Azure SQL Database は、Azure Key Vault での RSA 2048 ビット ユーザー管理キーをサポートしています。 詳細については、[Azure SQL Database と Azure SQL Data Warehouse での Bring Your Own Key (BYOK) のサポートによる Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current) に関するページを参照してください。
+サーバー側の暗号化は Transparent Data Encryption と呼ばれる SQL 機能を通して提供されています。 Azure SQL Database ユーザーが有効化すると、TDE キーは自動的に作成および管理されます。 保存時の暗号化は、データベース レベルおよびサーバー レベルで有効にすることができます。 2017 年 6 月の時点で [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) は、新しく作成されたデータベースで既定で有効に設定されています。 Azure SQL Database は、Azure Key Vault での RSA 2048 ビット ユーザー管理キーをサポートしています。 詳細については、[Azure SQL Database と Azure SQL Data Warehouse での Bring Your Own Key (BYOK) のサポートによる Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql) に関するページを参照してください。
 
 Azure SQL Database データのクライアント側の暗号化は、[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 機能を通してサポートされています。 Always Encrypted では、クライアントによって作成、保存されたキーが使用されます。 ユーザーは、Windows 証明書ストア、Azure Key Vault、またはローカルのハードウェア セキュリティ モジュール (HSM) にマスター キーを格納できます。 SQL ユーザーは、SQL Server Management Studio を使用して、どの列で何を使用して暗号化するかを選択できます。
 
@@ -140,3 +140,4 @@ Azure サービス内で保存される顧客データの保護は、Microsoft �
 
 - 「[データ暗号化モデル](encryption-models.md)」を参照して、サービス管理キーとカスタマー マネージド キーの詳細について確認します。
 - データの暗号化に付随する脅威を軽減するため、Azure でどのように[二重暗号化](double-encryption.md)が使用されているかを確認します。
+- ハードウェアとファームウェアの構築、統合、運用化、および修復のパイプラインを通過するホストの[プラットフォームの整合性とセキュリティ](platform.md)を確保するために Microsoft が何を行っているか確認します。

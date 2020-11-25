@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 5da31d45e068f414c8afa38bcb46cdf1f790a9e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a061cf493fba99c518448acd9c4bf4bd5949eb98
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843279"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831828"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>2 セットの認証資格情報を使用したリソースを対象にシークレットのローテーションを自動化する
 
@@ -67,8 +67,6 @@ akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAcc
 ```
 
 ## <a name="create-and-deploy-storage-account-key-rotation-function"></a>ストレージ アカウント キーのローテーション関数を作成してデプロイする
-> [!IMPORTANT]
-> 次のテンプレートでは、Key Vault、Azure Storage アカウント、Azure 関数が、同じリソース グループに含まれる必要があります。
 
 次に、システムマネージド ID を使用して関数アプリとその他の必須コンポーネントを作成し、ストレージ アカウント キーのローテーション関数をデプロイします。
 
@@ -85,13 +83,15 @@ akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAcc
    [![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
 
 1. **[リソース グループ]** 一覧から **[akvrotation]** を選択します。
-1. ローテーションするアクセス キーがあるストレージ アカウントの名前を **[ストレージ アカウント名]** に入力します。
-1. **[Key Vault 名]** に、Key Vault の名前を入力します。
-1. **[関数アプリ名]** に関数アプリの名前を入力します。
-1. **[シークレット名]** に、アクセス キーが格納されるシークレットの名前を入力します。
-1. **[Repo Url]\(リポジトリの URL\)** に、関数コードがある GitHub の場所 ( **https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell.git** ) を入力します。
+1. **[Storage Account RG]\(ストレージ アカウント RG\)** で、自分のストレージ アカウントがあるリソース グループの名前を入力します。 キー ローテーション機能をデプロイするのと同じリソース グループに、ストレージ アカウントが既にある場合は、既定値の **[resourceGroup().name]** のままにしてください。
+1. **[ストレージ アカウント名]** で、ストレージ アカウント名と、ローテーションするアクセス キーを入力します。
+1. **[Key Vault RG]\(キー コンテナー RG\)** で、自分のキー コンテナーがあるリソース グループの名前を入力します。 キー ローテーション機能をデプロイするのと同じリソース グループに、キー コンテナーが既にある場合は、既定値の **[resourceGroup().name]** のままにしてください。
+1. **[キー コンテナー名]** で、キー コンテナー名を入力します。
+1. **[関数アプリ名]** で、関数アプリの名前を入力します。
+1. **[シークレット名]** で、アクセス キーが格納されるシークレットの名前を入力します。
+1. **[Repo Url]\(リポジトリの URL\)** で、関数コードがある GitHub の場所 ( **https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell.git** ) を入力します。
 1. **[確認および作成]** を選択します。
-1. **[作成]**
+1. **［作成］** を選択します
 
    ![最初のストレージ アカウントを確認して作成します](../media/secrets/rotation-dual/dual-rotation-2.png)
 

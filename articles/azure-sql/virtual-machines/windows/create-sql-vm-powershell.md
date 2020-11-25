@@ -15,12 +15,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6bf17f85892691fe930d3d4b1e12846da8f9dc58
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c49f8b2732a1b62760cec69626d56751971e6a44
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789813"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556439"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>Azure PowerShell を使用して Azure Virtual Machines 上の SQL Server をプロビジョニングする方法
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="configure-your-subscription"></a>サブスクリプションの構成
 
-1. PowerShell を開き、 **Connect-AzAccount** コマンドを実行することで、Azure アカウントへのアクセスを確立します。
+1. PowerShell を開き、**Connect-AzAccount** コマンドを実行することで、Azure アカウントへのアクセスを確立します。
 
    ```powershell
    Connect-AzAccount
@@ -135,7 +135,7 @@ $OSDiskName = $VMName + "OSDisk"
    Get-AzVMImageSku -Location $Location -Publisher 'MicrosoftSQLServer' -Offer $OfferName | Select Skus
    ```
 
-1. このチュートリアルでは、SQL Server 2017 Developer エディション ( **SQLDEV** ) を使用します。 Developer エディションはテストと開発のために無料でライセンスされます。VM を実行するコストのみを支払います。
+1. このチュートリアルでは、SQL Server 2017 Developer エディション (**SQLDEV**) を使用します。 Developer エディションはテストと開発のために無料でライセンスされます。VM を実行するコストのみを支払います。
 
    ```powershell
    $Sku = "SQLDEV"
@@ -367,12 +367,17 @@ New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualM
 
 ## <a name="install-the-sql-iaas-agent"></a>SQL Iaas Agent のインストール
 
-SQL Server 仮想マシンでは、[SQL Server IaaS エージェントの拡張機能](sql-server-iaas-agent-extension-automate-management.md)を使用して自動管理機能をサポートします。 エージェントを新しい VM にインストールし、リソース プロバイダーに登録するには、仮想マシンが作成された後に、[New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) コマンドを実行します。 SQL Server VM のライセンスの種類を指定し、[[Azure ハイブリッド特典]](https://azure.microsoft.com/pricing/hybrid-benefit/) を使用して従量課金制またはライセンス持ち込みを選択します。 ライセンスの詳細については、「[ライセンス モデル](licensing-model-azure-hybrid-benefit-ahb-change.md)」を参照してください。 
+SQL Server 仮想マシンでは、[SQL Server IaaS エージェントの拡張機能](sql-server-iaas-agent-extension-automate-management.md)を使用して自動管理機能をサポートします。 拡張機能に SQL Server を登録するには、仮想マシンが作成された後に、[New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) コマンドを実行します。 SQL Server VM のライセンスの種類を指定し、[[Azure ハイブリッド特典]](https://azure.microsoft.com/pricing/hybrid-benefit/) を使用して従量課金制またはライセンス持ち込みを選択します。 ライセンスの詳細については、「[ライセンス モデル](licensing-model-azure-hybrid-benefit-ahb-change.md)」を参照してください。 
 
 
    ```powershell
    New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
    ```
+
+拡張機能に登録する方法は 3 つあります。 
+- [サブスクリプション内の現在の VM および今後の VM をすべて自動登録する場合](sql-agent-extension-automatic-registration-all-vms.md)
+- [単一の VM を手動で](sql-agent-extension-manually-register-single-vm.md)
+- [複数の VM を一括で手動で](sql-agent-extension-manually-register-vms-bulk.md)
 
 
 ## <a name="stop-or-remove-a-vm"></a>VM の停止または削除
@@ -387,7 +392,7 @@ Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName
 
 ## <a name="example-script"></a>サンプル スクリプト
 
-このチュートリアルで使用した PowerShell スクリプト全体は、次のようになっています。 使用する Azure サブスクリプションは、 **Connect-AzAccount** コマンドと **Select-AzSubscription** コマンドによって既に設定されていることを前提とします。
+このチュートリアルで使用した PowerShell スクリプト全体は、次のようになっています。 使用する Azure サブスクリプションは、**Connect-AzAccount** コマンドと **Select-AzSubscription** コマンドによって既に設定されていることを前提とします。
 
 ```powershell
 # Variables

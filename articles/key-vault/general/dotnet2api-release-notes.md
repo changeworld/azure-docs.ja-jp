@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
 ms.openlocfilehash: 018570019b306dced76760fefa4441ee7d86ad2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88189830"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013957"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2.0 - リリース ノートおよび移行ガイド
-次の情報は、C# および .NET 対応の Azure Key Vault ライブラリ 2.0 バージョンに移行するのに役立ちます。  以前のバージョン用に記述されたアプリは、最新バージョンをサポートするように更新する必要があります。  これらの変更では、**Key Vault 証明書**など、改善後の新機能を完全にサポートする必要があります。
+次の情報は、C# および .NET 対応の Azure Key Vault ライブラリ 2.0 バージョンに移行するのに役立ちます。  以前のバージョン用に記述されたアプリは、最新バージョンをサポートするように更新する必要があります。  これらの変更では、**Key Vault 証明書** など、改善後の新機能を完全にサポートする必要があります。
 
 ## <a name="key-vault-certificates"></a>Key Vault 証明書
 
@@ -38,11 +38,11 @@ Key Vault 証明書では x509 証明書を管理し、次の動作をサポー�
 
 ## <a name="namespaces"></a>名前空間
 
-* **モデル**の名前空間は、**Microsoft.Azure.KeyVault** から **Microsoft.Azure.KeyVault.Models** に変更されます。
+* **モデル** の名前空間は、**Microsoft.Azure.KeyVault** から **Microsoft.Azure.KeyVault.Models** に変更されます。
 * **Microsoft.Azure.KeyVault.Internal** 名前空間は削除されます。
 * 次の Azure SDK 依存関係の名前空間は、以下を含みます。 
 
-    - **Hyak.Common** は現在、**Microsoft.Rest**です。
+    - **Hyak.Common** は現在、**Microsoft.Rest** です。
     - **Hyak.Common.Internals** は現在、**Microsoft.Rest.Serialization** です。
 
 ## <a name="type-changes"></a>型の変更

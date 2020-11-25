@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 10f78167b9c3f557fa16061cfac8aad080519415
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 7a7a3669c5462adba3828bb1fd6c2fc9c4b3213c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397129"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566165"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>チュートリアル:Azure CLI を介して、既存の Application Gateway を使用して既存の AKS クラスターで Application Gateway イングレス コントローラー アドオンを有効にする (プレビュー)
 
@@ -29,42 +29,29 @@ Azure CLI を使用して、[Azure Kubernetes Services (AKS)](https://azure.micr
 > * AKS クラスターで AGIC をイングレスに使用してサンプル アプリケーションをデプロイする
 > * アプリケーションが Application Gateway を介して到達可能であることを確認する
 
-## <a name="prerequisites"></a>前提条件
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+ - このチュートリアルには、Azure CLI のバージョン 2.0.4 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+ - 次の例に示すように、[az feature register](https://docs.microsoft.com/cli/azure/feature#az-feature-register) コマンドを使用して、*AKS-IngressApplicationGatewayAddon* 機能フラグを登録します。この操作は、アドオンのプレビュー期間はサブスクリプションごとに 1 回だけ行う必要があります。
+     ```azurecli-interactive
+     az feature register --name AKS-IngressApplicationGatewayAddon --namespace microsoft.containerservice
+     ```
+    状態が [登録済み] と表示されるまでに数分かかる場合があります。 登録状態を確認するには、[az feature list](https://docs.microsoft.com/cli/azure/feature#az-feature-register) コマンドを使用します。
+     ```azurecli-interactive
+     az feature list -o table --query "[?contains(name, 'microsoft.containerservice/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
+     ```
 
-次の例に示すように、 [az feature register](/cli/azure/feature#az-feature-register) コマンドを使用して、 *AKS-IngressApplicationGatewayAddon* 機能フラグを登録します。この操作は、アドオンのプレビュー期間はサブスクリプションごとに 1 回だけ行う必要があります。
-```azurecli-interactive
-az feature register --name AKS-IngressApplicationGatewayAddon --namespace microsoft.containerservice
-```
-
-状態が [登録済み] と表示されるまでに数分かかる場合があります。 登録状態を確認するには、[az feature list](/cli/azure/feature#az-feature-register) コマンドを使用します。
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'microsoft.containerservice/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
-```
-
-準備ができたら、[az provider register](/cli/azure/provider#az-provider-register) コマンドを使用して、Microsoft.ContainerService リソース プロバイダーの登録を更新します。
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-このチュートリアルの aks-preview 拡張機能をインストールまたは更新してください。これには、次の Azure CLI コマンドを使用します
-```azurecli-interactive
-az extension add --name aks-preview
-az extension list
-```
-```azurecli-interactive
-az extension update --name aks-preview
-az extension list
-```
+ - 準備ができたら、[az provider register](https://docs.microsoft.com/cli/azure/provider#az-provider-register) コマンドを使用して、Microsoft.ContainerService リソース プロバイダーの登録を更新します。
+    ```azurecli-interactive
+    az provider register --namespace Microsoft.ContainerService
+    ```
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-Azure で、関連するリソースをリソース グループに割り当てます。 [az group create](/cli/azure/group#az-group-create) を使用してリソース グループを作成します。 次の例では、 *myResourceGroup* という名前のリソース グループを *canadacentral* の場所 (リージョン) に作成します。 
+Azure で、関連するリソースをリソース グループに割り当てます。 [az group create](/cli/azure/group#az-group-create) を使用してリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *canadacentral* の場所 (リージョン) に作成します。 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location canadacentral
@@ -74,7 +61,7 @@ az group create --name myResourceGroup --location canadacentral
 
 ここでは、新しい AKS クラスターをデプロイして、AGIC アドオンを有効にする既存の AKS クラスターがあることをシミュレートします。  
 
-次の例では、作成したリソース グループ *myResourceGroup* で [Azure CNI](../aks/concepts-network.md#azure-cni-advanced-networking) および [マネージド ID](../aks/use-managed-identity.md) を使用して、 *myCluster* という名前の新しい AKS クラスターをデプロイします。    
+次の例では、作成したリソース グループ *myResourceGroup* で [Azure CNI](../aks/concepts-network.md#azure-cni-advanced-networking) および [マネージド ID](../aks/use-managed-identity.md) を使用して、*myCluster* という名前の新しい AKS クラスターをデプロイします。    
 
 ```azurecli-interactive
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity 
@@ -84,7 +71,7 @@ az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-ma
 
 ## <a name="deploy-a-new-application-gateway"></a>新しい Application Gateway のデプロイ 
 
-ここでは、 *myCluster* という AKS クラスターへのトラフィックの負荷分散に使用する既存の Application Gateway があることをシミュレートするため、新しい Application Gateway をデプロイします。 Application Gateway の名前は *myApplicationGateway* になりますが、最初に、 *myPublicIp* という名前のパブリック IP リソースと、アドレス空間が 11.0.0.0/8 の *myVnet* という名前の新しい仮想ネットワークと、アドレス空間が 11.1.0.0/16 の *mySubnet* というサブネットを作成し、 *myPublicIp* を使用して Application Gateway を *mySubnet* にデプロイする必要があります。 
+ここでは、*myCluster* という AKS クラスターへのトラフィックの負荷分散に使用する既存の Application Gateway があることをシミュレートするため、新しい Application Gateway をデプロイします。 Application Gateway の名前は *myApplicationGateway* になりますが、最初に、*myPublicIp* という名前のパブリック IP リソースと、アドレス空間が 11.0.0.0/8 の *myVnet* という名前の新しい仮想ネットワークと、アドレス空間が 11.1.0.0/16 の *mySubnet* というサブネットを作成し、*myPublicIp* を使用して Application Gateway を *mySubnet* にデプロイする必要があります。 
 
 AKS クラスターと Application Gateway を別の仮想ネットワークで使用する場合、2 つの仮想ネットワークのアドレス空間が重複しないようにする必要があります。 AKS クラスターがデプロイする既定のアドレス空間は 10.0.0.0/8 であるため、Application Gateway 仮想ネットワークのアドレス プレフィックスを 11.0.0.0/8 に設定します。 
 
@@ -95,7 +82,7 @@ az network application-gateway create -n myApplicationGateway -l canadacentral -
 ```
 
 > [!NOTE]
-> Application Gateway イングレス コントローラー (AGIC) アドオンは、Application Gateway v2 SKU (Standard および WAF) **のみ** をサポートし、Application Gateway v1 SKU はサポート **しません** 。 
+> Application Gateway イングレス コントローラー (AGIC) アドオンは、Application Gateway v2 SKU (Standard および WAF) **のみ** をサポートし、Application Gateway v1 SKU はサポート **しません**。 
 
 ## <a name="enable-the-agic-add-on-in-existing-aks-cluster-with-existing-application-gateway"></a>既存の Application Gateway を使用して、既存の AKS クラスターで AGIC アドオンを有効にする 
 

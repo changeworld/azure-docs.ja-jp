@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/09/2020
-ms.openlocfilehash: 8abcbc74506599e7896ad6d41b9444e946172283
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/12/2020
+ms.openlocfilehash: 1489ce74da2ecff5212feb5a1a2e3c9151b73424
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324902"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555585"
 ---
 # <a name="convert-to-image-directory"></a>イメージ ディレクトリへの変換
 
@@ -47,14 +47,15 @@ ms.locfileid: "93324902"
     
     ![イメージのサンプル データセット](./media/module/image-sample-dataset.png)
 
-    スコアリングの場合、イメージ データセットのフォルダーには、未分類のイメージのみを含める必要があります。
+    > [!NOTE]
+    > 推論の場合、イメージ データセットのフォルダーには、未分類のイメージのみを含める必要があります。
 
-1. イメージ ディレクトリ モジュールへの変換の入力は **ファイル データセット** でなければならないため、 [イメージ データセットはファイル データセットとしてワークスペースに登録します。](../how-to-create-register-datasets.md)
+1. イメージ ディレクトリ モジュールへの変換の入力は **ファイル データセット** でなければならないため、[イメージ データセットはファイル データセットとしてワークスペースに登録します。](../how-to-create-register-datasets.md)
 
 1. 登録されているイメージ データセットをキャンバスに追加します。 登録されているデータセットは、キャンバスの左側にあるモジュール一覧の **データセット** カテゴリで確認できます。 現在、デザイナーでは、イメージデータセットの視覚化はサポートされていません。
 
     > [!WARNING]
-    > **データのインポート** モジュールの出力型は DataFrame Directory であるため、 **データのインポート** モジュールを使用して画像データセットをインポートすることは **できません** 。
+    > **データのインポート** モジュールの出力型は DataFrame Directory であるため、**データのインポート** モジュールを使用して画像データセットをインポートすることは **できません**。
 
 1. **イメージ ディレクトリへの変換** モジュールをキャンバスに追加します。 このモジュールは、モジュール一覧の [Computer Vision/Image Data Transformation]\(Computer Vision/イメージ データ変換\) カテゴリにあります。 これをイメージ データセットに接続します。
     

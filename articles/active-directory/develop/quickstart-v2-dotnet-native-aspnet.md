@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 786f566b121d5f0d5d64e7b8b269c7cdfab9e4a6
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 6874794dcf33d77d0b03f2a5713bdf42a40d6891
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825068"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560912"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す
 
-このクイックスタートでは、認証されたユーザーのみがアクセスできるように Web API を公開し、保護します。 この記事では、個人用アカウント (outlook.com、live.com など) および、Microsoft ID プラットフォームと統合されたすべての会社や組織の職場または学校アカウントによって発行されたトークンを受け入れることができるように ASP.NET Web API を公開する方法について説明します。
+このクイックスタートでは、リソースへのアクセスを承認されたアカウントだけに制限して、ASP.NET Web API を保護する方法を示すコード サンプルをダウンロードして実行します。 このサンプルでは、個人用 Microsoft アカウントと Azure Active Directory (Azure AD) 組織のアカウントの承認がサポートされています。
 
 また、この記事では、Windows Presentation Foundation (WPF) アプリを使用して、Web API にアクセスするためのアクセス トークンを要求するデモンストレーションを行います。
 
@@ -81,7 +81,7 @@ ms.locfileid: "91825068"
 
 1. Visual Studio でソリューションを開き、TodoListService プロジェクトのルートの下にある *Web.config* ファイルを開きます。
 
-1. `ida:ClientId` パラメーターの値を、**アプリの登録**ポータルで登録したアプリケーションのクライアント ID (アプリケーション ID) に置き換えます。
+1. `ida:ClientId` パラメーターの値を、**アプリの登録** ポータルで登録したアプリケーションのクライアント ID (アプリケーション ID) に置き換えます。
 
 ### <a name="add-the-new-scope-to-the-appconfig-file"></a>新しいスコープを app.config ファイルに追加する
 
@@ -96,7 +96,7 @@ ms.locfileid: "91825068"
 
 ## <a name="register-the-todolistclient-client-app"></a>TodoListClient クライアント アプリを登録する
 
-このセクションでは、Azure portal の**アプリの登録**で TodoListClient アプリを登録し、TodoListClient プロジェクトでコードを設定します。 クライアントとサーバーが*同じアプリケーション*と見なされる場合は、手順 2 で登録したアプリケーションを再利用できます。 ユーザーが Microsoft の個人用アカウントでサインインできるようにするには、同じアプリケーションを使用します。
+このセクションでは、Azure portal の **アプリの登録** で TodoListClient アプリを登録し、TodoListClient プロジェクトでコードを設定します。 クライアントとサーバーが *同じアプリケーション* と見なされる場合は、手順 2 で登録したアプリケーションを再利用できます。 ユーザーが Microsoft の個人用アカウントでサインインできるようにするには、同じアプリケーションを使用します。
 
 ### <a name="register-the-app"></a>アプリを登録する
 
@@ -135,7 +135,7 @@ ms.locfileid: "91825068"
 
 次の手順を実行して、TodoListClient プロジェクトを構成します。
 
-1. **アプリの登録**ポータルの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値をコピーします。
+1. **アプリの登録** ポータルの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値をコピーします。
 
 1. TodoListClient プロジェクトのルート フォルダーで *app.config* ファイルを開き、アプリケーション ID の値を `ida:ClientId` パラメーターに貼り付けます。
 
@@ -155,7 +155,7 @@ ms.locfileid: "91825068"
 
 他のディレクトリのユーザーが Web API にアクセスできるようにする方法の 1 つとして、Web API にアクセスするクライアント アプリケーションを事前承認する方法があります。 これを行うには、クライアント アプリからのアプリケーション ID を Web API の事前承認済みアプリケーションのリストに追加します。 事前承認されたクライアントを追加すると、ユーザーは同意しなくても Web API にアクセスできるようになります。 次の手順を実行して、クライアント アプリを事前承認します。
 
-1. **アプリの登録**ポータルで、TodoListService アプリのプロパティを開きます。
+1. **アプリの登録** ポータルで、TodoListService アプリのプロパティを開きます。
 1. **[API の公開]** セクションの **[承認済みのクライアント アプリケーション]** で **[クライアント アプリケーションの追加]** を選択します。
 1. **[クライアント ID]** ボックスに、TodoListClient アプリのアプリケーション ID を貼り付けます。
 1. **[承認済みのスコープ]** セクションで、`api://<Application ID>/access_as_user` Web API のスコープを選択します。
@@ -174,7 +174,7 @@ ms.locfileid: "91825068"
 
 ### <a name="option-1-limit-access-to-a-single-organization-single-tenant"></a>オプション 1: 単一の組織へのアクセスを制限する (シングル テナント)
 
-単一の Azure AD テナントに属するユーザー アカウント (そのテナントの*ゲスト アカウント*を含む) に、アプリケーションへのサインイン アクセスを制限できます。 このシナリオは、*基幹業務アプリケーション*に共通です。
+単一の Azure AD テナントに属するユーザー アカウント (そのテナントの *ゲスト アカウント* を含む) に、アプリケーションへのサインイン アクセスを制限できます。 このシナリオは、*基幹業務アプリケーション* に共通です。
 
 1. *App_Start\Startup.Auth* ファイルを開き、`OpenIdConnectSecurityTokenProvider` に渡されたメタデータの値を `"https://login.microsoftonline.com/{Tenant ID}/v2.0/.well-known/openid-configuration"` に変更します。 `contoso.onmicrosoft.com` などのテナント名を使用することもできます。
 2. 同じファイルで、`TokenValidationParameters` の `ValidIssuer` プロパティを `"https://sts.windows.net/{Tenant ID}/"` に設定し、`ValidateIssuer` 引数を `true` に設定します。

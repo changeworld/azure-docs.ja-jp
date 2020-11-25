@@ -5,24 +5,24 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 10/15/2020
-ms.openlocfilehash: c13b71858915ab262ab3e0e99ab8c482d19160ea
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/12/2020
+ms.openlocfilehash: 87d6ca8ee69ca49cf52b61e6beddb56721658afa
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318505"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593741"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics からのデータの共有と受信
 
 [!INCLUDE[appliesto-sql](includes/appliesto-sql.md)]
 
-Azure データ共有では、スナップショットベースの共有 Azure SQL Database と Azure Synapse Analytics (旧称 Azure SQL DW) がサポートされています。 この記事では、これらのソースからデータを共有および受信する方法について説明します。
+Azure Data Share は、Azure SQL Database と Azure Synapse Analytics のスナップショット ベースの共有をサポートしています。 この記事では、これらのソースからデータを共有および受信する方法について説明します。
 
-Azure Data Share では、Azure SQL Database および Azure Synapse Analytics (旧称 Azure SQL DW) からのテーブルまたはビューの共有がサポートされています。 データ コンシューマーは、データを Azure Data Lake Storage Gen2 または Azure Blob Storage に csv または parquet ファイルとして受け入れたり、Azure SQL Database と Azure Synapse Analytics にテーブルとして受け入れたりすることができます。
+Azure Data Share は、Azure SQL Database と Azure Synapse Analytics (旧称 Azure SQL DW) からのテーブルとビュー両方の共有、および Azure Synapse Analytics (ワークスペース) 専用 SQL プールからのテーブルの共有をサポートしています。 Azure Synapse Analytics (ワークスペース) サーバーレス SQL プールからの共有は、現在サポートされていません。 データ コンシューマーは、データを Azure Data Lake Storage Gen2 または Azure Blob Storage に csv または parquet ファイルとして受け入れたり、Azure SQL Database と Azure Synapse Analytics にテーブルとして受け入れたりすることができます。
 
 データを Azure Data Lake Store Gen2 または Azure Blob Storage に受け入れると、完全なスナップショットによってターゲット ファイル (存在する場合) の内容が上書きされます。
-データがテーブルに受け入れられるときにターゲット テーブルがまだ存在しない場合は、Azure Data Share によってソース スキーマで SQL テーブルが作成されます。 同じ名前を持つターゲット テーブルが既に存在する場合、それは削除され、最新の完全なスナップショットで上書きされます。 増分スナップショットは現在はサポートされていません。
+データが SQL テーブルに受け入れられるときにターゲット テーブルがまだ存在しない場合は、Azure Data Share によって、ソース スキーマを使用して SQL テーブルが作成されます。 同じ名前を持つターゲット テーブルが既に存在する場合、それは削除され、最新の完全なスナップショットで上書きされます。 増分スナップショットは現在はサポートされていません。
 
 ## <a name="share-data"></a>データの共有
 
@@ -33,12 +33,15 @@ Azure Data Share では、Azure SQL Database および Azure Synapse Analytics (
 * Data Share リソースの作成用とは異なる Azure サブスクリプションにソース Azure データ ストアが存在する場合、Azure データ ストアがあるサブスクリプションで [Microsoft.DataShare リソースプロバイダー](concepts-roles-permissions.md#resource-provider-registration)を登録してください。 
 
 ### <a name="prerequisites-for-sql-source"></a>SQL ソースの前提条件
-SQL ソースからデータを共有するための前提条件の一覧を次に示します。 [ステップ バイ ステップのデモ](https://youtu.be/hIE-TjJD8Dc)に従って、前提条件を構成することもできます。
+SQL ソースからデータを共有するための前提条件の一覧を次に示します。 
 
-* 共有するテーブルとビューを含む Azure SQL Database または Azure Synapse Analytics (旧称 SQL Data Warehouse)。
-* SQL サーバー上のデータベースに書き込む権限。これは、 *Microsoft.Sql/servers/databases/write* に含まれています。 この権限は、投稿者ロール内に存在します。
-* データ共有からデータ ウェアハウスにアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
-    1. Azure portal で、SQL サーバーに移動し、自分自身を Azure Active Directory 管理者に設定します。
+#### <a name="prerequisites-for-sharing-from-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW) から共有するための前提条件
+[ステップ バイ ステップのデモ](https://youtu.be/hIE-TjJD8Dc)に従って、前提条件を構成できます。
+
+* 共有するテーブルとビューを含む Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW)。
+* SQL サーバー上のデータベースに書き込む権限。これは、*Microsoft.Sql/servers/databases/write* に含まれています。 このアクセス許可は、**共同作成者** ロール内に存在します。
+* Data Share リソースのマネージド ID がデータベースにアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
+    1. Azure portal で、SQL サーバーに移動し、自分自身を **Azure Active Directory 管理者** に設定します。
     1. [クエリ エディター](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory)、または Azure Active Directory 認証を使用する SQL Server Management Studio を使用して Azure SQL Database/Data Warehouse に接続します。 
     1. 次のスクリプトを実行し、Data Share リソースのマネージド ID を db_datareader として追加します。 SQL Server 認証ではなく Active Directory を使用して接続する必要があります。 
     
@@ -48,11 +51,32 @@ SQL ソースからデータを共有するための前提条件の一覧を次�
         ```                   
        *<share_acc_name>* は、Data Share リソースの名前であることに注意してください。 Data Share リソースをまだ作成していない場合は、後でこの前提条件に戻ってくることが可能です。  
 
-* 共有するテーブルまたはビューに移動して選択するための "db_datareader" アクセス権を持つ Azure SQL Database ユーザー。 
+* 共有するテーブルまたはビューに移動して選択するための **"db_datareader"** アクセス権を持つ Azure SQL Database ユーザー。 
 
 * SQL Server ファイアウォール アクセス。 この操作を行うには、以下の手順を実行します。 
-    1. Azure portal の SQL サーバーで、 *[ファイアウォールと仮想ネットワーク]* に移動します。
+    1. Azure portal で SQL サーバーに移動します。 左側のナビゲーションから *[ファイアウォールと仮想ネットワーク]* を選択します。
     1. **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** で *[はい]* をクリックします。
+    1. **[+クライアント IP の追加]** をクリックします。 クライアントの IP アドレスは変わることがあります。 次回 Azure portal から SQL データを共有するときにも、このプロセスを繰り返すことが必要になる場合もあります。 IP 範囲を追加することもできます。
+    1. **[保存]** をクリックします。 
+
+#### <a name="prerequisites-for-sharing-from-azure-synapse-analytics-workspace-sql-pool"></a>Azure Synapse Analytics (ワークスペース) の SQL プールから共有するための前提条件
+
+* 共有するテーブルを含む Azure Synapse Analytics (ワークスペース) の専用 SQL プール。 ビューの共有は現在サポートされていません。 サーバーレス SQL プールからの共有は、現在サポートされていません。
+* Synapse ワークスペースの SQL プールに対する書き込みアクセス許可。これは、*Microsoft.Synapse/workspaces/sqlPools/write* にあります。 このアクセス許可は、**共同作成者** ロール内に存在します。
+* Data Share リソースのマネージド ID が Synapse ワークスペースの SQL プールにアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
+    1. Azure portal で Synapse ワークスペースに移動します。 左側のナビゲーションから SQL Active Directory 管理者を選択し、自分自身を **Azure Active Directory 管理者** に設定します。
+    1. Synapse Studio を開き、左側のナビゲーションから *[管理]* を選択します。 [セキュリティ] で *[アクセス制御]* を選択します。 **SQL 管理者** または **ワークスペース管理者** ロールを自分に割り当てます。
+    1. Synapse Studio で、左側のナビゲーションから *[開発]* を選択します。 SQL プールで次のスクリプトを実行して、Data Share リソースのマネージド ID を db_datareader として追加します。 
+    
+        ```sql
+        create user "<share_acct_name>" from external provider;     
+        exec sp_addrolemember db_datareader, "<share_acct_name>"; 
+        ```                   
+       *<share_acc_name>* は、Data Share リソースの名前であることに注意してください。 Data Share リソースをまだ作成していない場合は、後でこの前提条件に戻ってくることが可能です。  
+
+* Synapse ワークスペースのファイアウォール アクセス。 この操作を行うには、以下の手順を実行します。 
+    1. Azure portal で Synapse ワークスペースに移動します。 左側のナビゲーションから *[ファイアウォール]* を選択します。
+    1. *[Azure サービスおよびリソースに、このワークスペースへのアクセスを許可する]* で **[オン]** をクリックします。
     1. **[+クライアント IP の追加]** をクリックします。 クライアントの IP アドレスは変わることがあります。 次回 Azure portal から SQL データを共有するときにも、このプロセスを繰り返すことが必要になる場合もあります。 IP 範囲を追加することもできます。
     1. **[保存]** をクリックします。 
 
@@ -108,11 +132,11 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
     ![AddDatasets](./media/add-datasets.png "データセットを追加する")    
 
-1. ご利用の SQL サーバーを選択し、資格情報を入力し、 **[次へ]** を選択して共有したいオブジェクトに移動し、[データセットの追加] を選択します。 
+1. ご利用の SQL サーバーまたは Synapse ワークスペースを選択し、資格情報を入力するよう求められたら入力し、 **[次へ]** を選択して共有したいオブジェクトに移動し、[データセットの追加] を選択します。 Azure SQL Database と Azure Synapse Analytics (旧称 Azure SQL DW) からのテーブルとビュー、または Azure Synapse Analytics (ワークスペース) 専用 SQL プールからのテーブルを選択できます。 
 
     ![SelectDatasets](./media/select-datasets-sql.png "データセットを選択する")    
 
-1. [Recipients]\(受信者\) タブで、[+ Add Recipient]\(+ 受信者の追加\) を選択して、データ コンシューマーのメール アドレスを入力します。 
+1. [Recipients]\(受信者\) タブで、[+ Add Recipient]\(+ 受信者の追加\) を選択して、データ コンシューマーのメール アドレスを入力します。 このメール アドレスは、受信者の Azure ログイン メールである必要があります。
 
     ![AddRecipients](./media/add-recipient.png "受信者の追加") 
 
@@ -145,15 +169,19 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 Azure Storage へのデータを受信することを選択する場合、前提条件の一覧を以下に示します。
 
 * Azure Storage アカウント: [Azure Storage アカウント](../storage/common/storage-account-create.md)をまだお持ちでない場合は、作成できます。 
-* ストレージ アカウントに書き込む権限。これは、 *Microsoft.Storage/storageAccounts/write* に含まれています。 この権限は、投稿者ロール内に存在します。 
-* ストレージ アカウントにロールの割り当てを追加する権限。これは、 *Microsoft.Authorization/role assignments/write* に含まれています。 この権限は、所有者ロール内に存在します。  
+* ストレージ アカウントに書き込む権限。これは、*Microsoft.Storage/storageAccounts/write* に含まれています。 このアクセス許可は、**共同作成者** ロール内に存在します。 
+* Data Share リソースのマネージド ID のロール割り当てをストレージ アカウントに追加する権限。これは、*Microsoft.Authorization/role assignments/write* に含まれています。 このアクセス許可は、**所有者** ロール内に存在します。  
 
 ### <a name="prerequisites-for-sql-target"></a>SQL ターゲットの前提条件
-Azure SQL Database、Azure Synapse Analytics へのデータを受信することを選択した場合、前提条件の一覧を以下に示します。 [ステップ バイ ステップのデモ](https://youtu.be/aeGISgK1xro)に従って、前提条件を構成することもできます。
+Azure SQL Database、Azure Synapse Analytics へのデータを受信することを選択した場合、前提条件の一覧を以下に示します。 
 
-* SQL サーバー上のデータベースに書き込む権限。これは、 *Microsoft.Sql/servers/databases/write* に含まれています。 この権限は、投稿者ロール内に存在します。 
-* データ共有リソースのマネージド ID が Azure SQL Database または Azure Synapse Analytics にアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
-    1. Azure portal で、SQL サーバーに移動し、自分自身を Azure Active Directory 管理者に設定します。
+#### <a name="prerequisites-for-receiving-data-into-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW) にデータを受信するための前提条件
+[ステップ バイ ステップのデモ](https://youtu.be/aeGISgK1xro)に従って、前提条件を構成できます。
+
+* Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW)。
+* SQL サーバー上のデータベースに書き込む権限。これは、*Microsoft.Sql/servers/databases/write* に含まれています。 このアクセス許可は、**共同作成者** ロール内に存在します。 
+* Data Share リソースのマネージド ID が Azure SQL Database または Azure Synapse Analytics にアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
+    1. Azure portal で、SQL サーバーに移動し、自分自身を **Azure Active Directory 管理者** に設定します。
     1. [クエリ エディター](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory)、または Azure Active Directory 認証を使用する SQL Server Management Studio を使用して Azure SQL Database/Data Warehouse に接続します。 
     1. 次のスクリプトを実行し、Data Share のマネージド ID を "db_datareader、db_datawriter、db_ddladmin" として追加します。 SQL Server 認証ではなく Active Directory を使用して接続する必要があります。 
 
@@ -170,6 +198,29 @@ Azure SQL Database、Azure Synapse Analytics へのデータを受信するこ�
     1. **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** で *[はい]* をクリックします。
     1. **[+クライアント IP の追加]** をクリックします。 クライアントの IP アドレスは変わることがあります。 次回 Azure portal から SQL データを共有するときにも、このプロセスを繰り返すことが必要になる場合もあります。 IP 範囲を追加することもできます。
     1. **[保存]** をクリックします。 
+ 
+#### <a name="prerequisites-for-receiving-data-into-azure-synapse-analytics-workspace-sql-pool"></a>Azure Synapse Analytics (ワークスペース) の SQL プールにデータを受信するための前提条件
+
+* Azure Synapse Analytics (ワークスペース) の専用 SQL プール。 サーバーレス SQL プールへのデータの受信は、現在サポートされていません。
+* Synapse ワークスペースの SQL プールに対する書き込みアクセス許可。これは、*Microsoft.Synapse/workspaces/sqlPools/write* にあります。 このアクセス許可は、**共同作成者** ロール内に存在します。
+* Data Share リソースのマネージド ID が Synapse ワークスペースの SQL プールにアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
+    1. Azure portal で Synapse ワークスペースに移動します。 左側のナビゲーションから SQL Active Directory 管理者を選択し、自分自身を **Azure Active Directory 管理者** に設定します。
+    1. Synapse Studio を開き、左側のナビゲーションから *[管理]* を選択します。 [セキュリティ] で *[アクセス制御]* を選択します。 **SQL 管理者** または **ワークスペース管理者** ロールを自分に割り当てます。
+    1. Synapse Studio で、左側のナビゲーションから *[開発]* を選択します。 SQL プールで次のスクリプトを実行して、Data Share リソースのマネージド ID を "db_datareader、db_datawriter、db_ddladmin" として追加します。 
+    
+        ```sql
+        create user "<share_acc_name>" from external provider; 
+        exec sp_addrolemember db_datareader, "<share_acc_name>"; 
+        exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
+        exec sp_addrolemember db_ddladmin, "<share_acc_name>";
+        ```                   
+       *<share_acc_name>* は、Data Share リソースの名前であることに注意してください。 Data Share リソースをまだ作成していない場合は、後でこの前提条件に戻ってくることが可能です。  
+
+* Synapse ワークスペースのファイアウォール アクセス。 この操作を行うには、以下の手順を実行します。 
+    1. Azure portal で Synapse ワークスペースに移動します。 左側のナビゲーションから *[ファイアウォール]* を選択します。
+    1. *[Azure サービスおよびリソースに、このワークスペースへのアクセスを許可する]* で **[オン]** をクリックします。
+    1. **[+クライアント IP の追加]** をクリックします。 クライアントの IP アドレスは変わることがあります。 次回 Azure portal から SQL データを共有するときにも、このプロセスを繰り返すことが必要になる場合もあります。 IP 範囲を追加することもできます。
+    1. **[保存]** をクリックします。 
 
 ### <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -179,7 +230,7 @@ Azure SQL Database、Azure Synapse Analytics へのデータを受信するこ�
 
 1. 招待は、メールから開くことができるほか、Azure portal から直接開くこともできます。 
 
-   招待をメールから開くには、受信トレイでデータ プロバイダーからの招待を確認します。 招待は Microsoft Azure からで、件名は " **<yourdataprovider@domain.com> からの Azure Data Share の招待** " になっています。 **[招待を表示]** をクリックして、Azure で招待を確認します。 
+   招待をメールから開くには、受信トレイでデータ プロバイダーからの招待を確認します。 招待は Microsoft Azure からで、件名は " **<yourdataprovider@domain.com> からの Azure Data Share の招待**" になっています。 **[招待を表示]** をクリックして、Azure で招待を確認します。 
 
    Azure portal から直接招待を開くには、Azure portal で **[データ共有への招待]** を検索します。 Data Share の招待が一覧表示されます。
 
@@ -204,7 +255,7 @@ Azure SQL Database、Azure Synapse Analytics へのデータを受信するこ�
 
    これにより、Data Share アカウントに、受信した共有が表示されます。 
 
-   招待を受け入れたくない場合は、 *[拒否]* を選択します。 
+   招待を受け入れたくない場合は、*[拒否]* を選択します。 
 
 ### <a name="configure-received-share"></a>受信した共有を構成する
 データを受信する場所を構成するには、次の手順に従います。
@@ -228,7 +279,7 @@ Azure SQL Database、Azure Synapse Analytics へのデータを受信するこ�
 
    ![スナップショットのトリガー](./media/trigger-snapshot.png "スナップショットのトリガー") 
 
-1. 最終実行状態が " *成功* " の場合、ターゲット データ ストアに移動して、受信したデータを表示します。 **[データセット]** を選択して、ターゲット パスのリンクをクリックしてください。 
+1. 最終実行状態が "*成功*" の場合、ターゲット データ ストアに移動して、受信したデータを表示します。 **[データセット]** を選択して、ターゲット パスのリンクをクリックしてください。 
 
    ![コンシューマー データセット](./media/consumer-datasets.png "コンシューマー データセットのマッピング") 
 
@@ -251,7 +302,7 @@ SQL ソースからデータを共有するとき、スナップショットの�
 | Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
-| image |Byte[] |
+| イメージ |Byte[] |
 | INT |Int32 |
 | money |Decimal |
 | nchar |String, Char[] |
@@ -290,7 +341,7 @@ SQL スナップショットのパフォーマンスは、さまざまな要因�
 * ソースとターゲットのデータ ストアの場所。 
 
 ## <a name="troubleshoot-sql-snapshot-failure"></a>SQL スナップショット エラーのトラブルシューティング
-スナップショット エラーの最も一般的な原因は、Data Share にソースまたはターゲットのデータ ストアへのアクセス許可がないことです。 ソースまたはターゲットの SQL データ ストアへのアクセス許可を Data Share に付与するには、Azure Active Directory 認証を使用して SQL データベースに接続するときに、提供された SQL スクリプトを実行する必要があります。 その他の SQL スナップショット エラーをトラブルシューティングするには、[スナップショット エラーのトラブルシューティング](data-share-troubleshoot.md#snapshot-failed)に関する記事を参照してください。
+スナップショット エラーの最も一般的な原因は、Data Share にソースまたはターゲットのデータ ストアへのアクセス許可がないことです。 ソースまたはターゲットの Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW) へのアクセス許可を Data Share に付与するには、Azure Active Directory 認証を使用して SQL データベースに接続するときに、提供された SQL スクリプトを実行する必要があります。 その他の SQL スナップショット エラーをトラブルシューティングするには、[スナップショット エラーのトラブルシューティング](data-share-troubleshoot.md#snapshot-failed)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Share サービスを使用して SQL ソースからデータを共有および受信する方法について学習しました。 他のデータ ソースからの共有の詳細については、[サポートされているデータ ストア](supported-data-stores.md)に関するページに進んでください。

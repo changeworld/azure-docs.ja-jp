@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 80b0c357bbad79a31d8b7153248b73c1231629c8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 98d2b4ed4b0d3cef2cde156dc05ebb314edff365
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145045"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592262"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>クイック スタート:ASP.NET Core Web アプリに Microsoft サインインを追加する
 
-このクイックスタートでは、ASP.NET Core Web アプリで、(hotmail.com、outlook.com などの) 個人アカウント、また職場や学校のアカウントを任意の Azure Active Directory (Azure AD) インスタンスからサインインさせる方法を、コード サンプルを使用して学びます。 (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
+このクイックスタートでは、ASP.NET Core Web アプリで Azure Active Directory (Azure AD) 組織のユーザーをサインインする方法を示すコード サンプルをダウンロードして実行します。  
+
+図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
 
 > [!div renderon="docs"]
 > ## <a name="prerequisites"></a>前提条件
@@ -86,7 +88,7 @@ ms.locfileid: "92145045"
 > > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-aspnet-core-project"></a>手順 3:ASP.NET Core プロジェクトの構成
-> 1. .zip アーカイブを、ドライブのルート付近にあるローカル フォルダーに抽出します。 たとえば、 *C:\Azure-Samples* に抽出します。
+> 1. .zip アーカイブを、ドライブのルート付近にあるローカル フォルダーに抽出します。 たとえば、*C:\Azure-Samples* に抽出します。
 > 1. Visual Studio 2019 でソリューションを開きます。
 > 1. *appsettings.json* ファイルを開き、次のように変更します。
 >
@@ -95,13 +97,13 @@ ms.locfileid: "92145045"
 >    "TenantId": "common",
 >    ```
 >
->    - `Enter_the_Application_Id_here` を、Azure portal で登録したアプリケーションの **アプリケーション (クライアント) ID** に置き換えます。 " **アプリケーション (クライアント) ID** " は、アプリの **[概要]** ページで確認できます。
+>    - `Enter_the_Application_Id_here` を、Azure portal で登録したアプリケーションの **アプリケーション (クライアント) ID** に置き換えます。 "**アプリケーション (クライアント) ID**" は、アプリの **[概要]** ページで確認できます。
 >    - `common` を、次のいずれかに置き換えます。
 >       - アプリケーションで **[この組織のディレクトリ内のアカウントのみ]** がサポートされている場合は、この値を **ディレクトリ (テナント) ID** (GUID) または **テナント名** (例: `contoso.onmicrosoft.com`) に置き換えます。 **ディレクトリ (テナント) ID** は、アプリの **[概要]** ページで確認できます。
 >       - アプリケーションで **[任意の組織のディレクトリ内のアカウント]** がサポートされる場合は、この値を `organizations` に置き換えます。
 >       - アプリケーションで **[すべての Microsoft アカウント ユーザー]** がサポートされている場合は、この値を `common` のままにします。
 >
-> このクイックスタートでは、 *appsettings.json* ファイル内のその他の値は変更しないでください。
+> このクイックスタートでは、*appsettings.json* ファイル内のその他の値は変更しないでください。
 >
 > #### <a name="step-4-build-and-run-the-application"></a>手順 4: アプリケーションをビルドして実行する
 >
@@ -113,7 +115,7 @@ ms.locfileid: "92145045"
 >
 > 要求されたアクセス許可に同意すると、Azure Active Directory の資格情報を使用して正常にログインしたことがアプリに表示されます。
 >
-> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="アプリが > ユーザーから要求しているアクセス許可を示す同意ダイアログ":::
+> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="実行中の Web アプリとサインインしたユーザーが表示されている Web ブラウザー":::
 
 ## <a name="more-information"></a>詳細情報
 
@@ -146,13 +148,13 @@ ms.locfileid: "92145045"
 
 `AddAuthentication()` メソッドは、ブラウザーのシナリオで使用される Cookie ベースの認証を追加し、OpenID Connect へのチャレンジを設定するようにサービスを構成します。
 
-`.AddMicrosoftIdentityWebApp` を含む行によって、Microsoft ID プラットフォーム認証がアプリケーションに追加されます。 その後、 *appsettings.json* 構成ファイルの `AzureAD` セクションの情報に基づいて、Microsoft ID プラットフォーム エンドポイントを使用してサインインするように構成されます。
+`.AddMicrosoftIdentityWebApp` を含む行によって、Microsoft ID プラットフォーム認証がアプリケーションに追加されます。 その後、*appsettings.json* 構成ファイルの `AzureAD` セクションの情報に基づいて、Microsoft ID プラットフォーム エンドポイントを使用してサインインするように構成されます。
 
 | *appsettings.json* のキー | 説明                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `ClientId`             | Azure portal に登録されているアプリケーションの **アプリケーション (クライアント) ID** 。                                                                                       |
+| `ClientId`             | Azure portal に登録されているアプリケーションの **アプリケーション (クライアント) ID**。                                                                                       |
 | `Instance`             | ユーザーが認証するためのセキュリティ トークン サービス (STS) エンドポイント。 通常、この値は、Azure パブリック クラウドを示す `https://login.microsoftonline.com/` です。 |
-| `TenantId`             | テナントの名前またはテナント ID (GUID)。職場または学校アカウントあるいは Microsoft 個人アカウントを使用してユーザーをサインインする場合は *common* 。                             |
+| `TenantId`             | テナントの名前またはテナント ID (GUID)。職場または学校アカウントあるいは Microsoft 個人アカウントを使用してユーザーをサインインする場合は *common*。                             |
 
 `Configure()` メソッドには、`app.UseAuthentication()` と `app.UseAuthorization()` という 2 つの重要なメソッドが含まれており、それらの名前付き機能を有効にします。 また、`Configure()` メソッドで、少なくとも 1 つの `endpoints.MapControllerRoute()` 呼び出し (または `endpoints.MapControllers()` 呼び出し) に、Microsoft Identity Web のルートを登録する必要があります。
 

@@ -13,18 +13,18 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: b171688fa4dbff8d05b3ba03e4e4bd29028983be
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 1b15330d368a93ac4ba176df129df212a259f3e2
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016146"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561898"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>クイック スタート:iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph API を呼び出す
 
-このクイック スタートには、ネイティブの iOS または macOS アプリケーションで Microsoft ID プラットフォームを使用して個人や仕事、学校のアカウントへのサインイン、アクセス トークンの取得、および Microsoft Graph API の呼び出しを行う方法を示すコード サンプルが含まれています。
+このクイックスタートでは、ネイティブの iOS または macOS アプリケーションでユーザーをサインインし、アクセス トークンを取得して Microsoft Graph API を呼び出す方法を示すコード サンプルをダウンロードして実行します。
 
-このクイック スタートは、iOS アプリと macOS アプリの両方に適用されます。 一部の手順は、iOS アプリにのみ必要です。 それらの手順では、iOS のみが対象であることが示されています。
+このクイックスタートは、iOS アプリと macOS アプリの両方に適用されます。 一部の手順は iOS アプリにのみ必要であり、そのように示されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -62,9 +62,9 @@ ms.locfileid: "92016146"
 >      - このページの他の設定はスキップします。
 >      - [`Register`] を選択します。
 > 1. **[管理]** セクションで、[`Authentication`] > [`Add Platform`] > [`iOS`] を選択します。
->      - アプリケーションの***バンドル ID*** を入力します。 バンドル ID は、アプリケーションを一意に識別する一意の文字列 (例: `com.<yourname>.identitysample.MSALMacOS`) にすぎません。 使用する値を書き留めておきます。
+>      - アプリケーションの "**_バンドル識別子_* _" を入力します。 バンドル ID は、アプリケーションを一意に識別する一意の文字列 (例: `com.<yourname>.identitysample.MSALMacOS`) にすぎません。 使用する値を書き留めておきます。
 >      - iOS の構成は macOS アプリケーションにも適用できることに注意してください。
-> 1. `Configure` を選択し、このクイック スタートでの後の手順のために "***MSAL 構成***" の詳細を保存しておきます。
+> 1. `Configure` を選択し、このクイックスタートでの後の手順のために "_*_MSAL 構成_*_" の詳細を保存しておきます。
 > [!div renderon="portal" class="sxs-lookup"]
 >
 > #### <a name="step-1-configure-your-application"></a>手順 1:アプリケーションの作成
@@ -101,7 +101,7 @@ ms.locfileid: "92016146"
 >#### <a name="step-4-configure-your-project"></a>手順 4:プロジェクトを構成する
 > 上のオプション 1 を選択した場合は、以下の手順を省略できます。
 > 1. zip ファイルを解凍し、XCode でプロジェクトを開きます。
-> 1. **ViewController.swift** を編集し、'let kClientID' で始まる行を次のコード スニペットに置き換えます。 `kClientID` の値を、このクイック スタートの前の手順でポータルにアプリを登録したときに保存したクライアント ID に必ず更新してください。
+> 1. _ *ViewController.swift** を編集し、"let kClientID" で始まる行を次のコード スニペットに置き換えます。 `kClientID` の値を、このクイック スタートの前の手順でポータルにアプリを登録したときに保存したクライアント ID に必ず更新してください。
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
@@ -115,9 +115,9 @@ ms.locfileid: "92016146"
 >     let kGraphEndpoint = "https://graph.microsoft.de/"
 >     let kAuthority = "https://login.microsoftonline.de/common"
 >     ```
-> 1. プロジェクトの設定を開きます。 **[ID]** セクションに、ポータルに入力した**バンドル ID** を入力します。
+> 1. プロジェクトの設定を開きます。 **[ID]** セクションに、ポータルに入力した **バンドル ID** を入力します。
 > 1. **Info.plist** を右クリックし、 **[形式を指定して開く]**  >  **[ソース コード]** を選択します。
-> 1. dict ルート ノードの下の `Enter_the_bundle_Id_Here` を、ポータルで使用した "***バンドル ID***" に置き換えます。
+> 1. dict ルート ノードの下の `Enter_the_bundle_Id_Here` を、ポータルで使用した "**_バンドル ID_* _" に置き換えます。
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -179,7 +179,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 
 > |各値の説明: | 説明 |
 > |---------|---------|
-> | `clientId` | *portal.azure.com* に登録されているアプリケーションの Application ID |
+> | `clientId` | _portal.azure.com* に登録されているアプリケーションの Application ID |
 > | `authority` | Microsoft ID プラットフォーム エンドポイント。 ほとんどの場合、これは `https://login.microsoftonline.com/common` になります |
 > | `redirectUri` | アプリケーションのリダイレクト URI。 'nil' を渡すと、既定値またはカスタムのリダイレクト URI を使用できます。 |
 
@@ -213,7 +213,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
     }
  ```
 
-最後に、アプリでは、`LSApplicationQueriesSchemes` エントリが ***Info.plist*** に `CFBundleURLTypes` と並んで存在している必要があります。 サンプルにはこれが含まれています。
+最後に、アプリでは、`LSApplicationQueriesSchemes` エントリが ***Info.plist** _ に `CFBundleURLTypes` と並んで存在している必要があります。 サンプルにはこれが含まれています。
 
    ```xml
    <key>LSApplicationQueriesSchemes</key>
@@ -231,7 +231,7 @@ MSAL には、トークンの取得に使用する 2 つのメソッド `acquire
 
 状況によっては、ユーザーが Microsoft ID プラットフォームと対話する必要があります。 このような場合、エンド ユーザーは自分のアカウントを選択する、自分の資格情報を入力する、またはアプリのアクセス許可に同意することを要求される可能性があります。 たとえば、次のように入力します。
 
-* ユーザーが初めてアプリケーションにサインインした場合
+ユーザーがアプリケーションに初めてサインインした場合
 * ユーザーが自分のパスワードをリセットした場合、ユーザーは自分の資格情報を入力する必要がある
 * アプリケーションがリソースへのアクセスを初めて要求している場合
 * MFA またはその他の条件付きアクセス ポリシーが必要な場合
@@ -274,4 +274,3 @@ Microsoft ID プラットフォームからアクセス トークンを取得し
 
 > [!div class="nextstepaction"]
 > [チュートリアル: iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph を呼び出す](tutorial-v2-ios.md)
-

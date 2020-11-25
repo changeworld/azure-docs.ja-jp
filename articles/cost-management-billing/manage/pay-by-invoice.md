@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 11/16/2020
 ms.author: banders
 ms.custom: contentperfq2
-ms.openlocfilehash: df95305d1b014579ca6294a9015ac7879d8ce0b3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 9311a22575c328e0412398f6b63af84c35ac3c32
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670433"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652911"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure サブスクリプションの請求書による支払い
 
@@ -72,7 +72,7 @@ ms.locfileid: "92670433"
 
 6. 連絡先情報と優先連絡方法を確認し、 **[作成]** を選択します。
 
-必要とするクレジット総額によっては与信審査が必要になることがあります。この場合は、カスタマー サポートから与信審査申込書をお送りします。
+必要とするクレジット総額によっては与信審査が必要になることがあります。この場合は、カスタマー サポートから与信審査申込書をお送りします。 会社の監査済み財務諸表の提出をお願いする場合があります。 財務情報が提供されていない場合や、必要な与信限度額を裏付ける十分な情報がない場合は、与信審査要求を承認するために、保証金またはスタンドバイ信用状を求める場合があります。
 
 ## <a name="switch-to-invoice-pay-checkwire-transfer"></a>請求書支払い (小切手/電信送金) に切り替える
 
@@ -82,7 +82,7 @@ Microsoft Online Services Program アカウントの場合は、Azure サブス�
 
 ### <a name="switch-azure-subscription-to-checkwire-transfer"></a>Azure サブスクリプションを小切手/電信送金に切り替える
 
-Azure サブスクリプションを請求書支払い (小切手/電信送金) に切り替えるには、次の手順に従います。 *請求書支払い (小切手/電信送金) に切り替えた後にクレジット カードに戻すことはできません* 。
+Azure サブスクリプションを請求書支払い (小切手/電信送金) に切り替えるには、次の手順に従います。 *請求書支払い (小切手/電信送金) に切り替えた後にクレジット カードに戻すことはできません*。
 
 1. Azure portal にアクセスし、アカウント管理者としてサインインします。 **[コストの管理と請求]** を検索して選択します。
 

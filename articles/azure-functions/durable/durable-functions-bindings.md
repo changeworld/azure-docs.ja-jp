@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 899bc3fdc94b8232acd3edf3e0cbab3c481ff8f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081850"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013729"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions のバインド (Azure Functions)
 
@@ -540,7 +540,7 @@ Visual Studio を使用する場合は、`DurableClientAttribute` .NET 属性を
 シグナルを送信する前にターゲット エンティティを作成する必要はありません。エンティティの状態は、シグナルを処理するエンティティ関数内で作成できます。
 
 > [!NOTE]
-> クライアントから送信された "シグナル" は、単にエンキューされ、後で非同期的に処理されることを理解しておくことが重要です。 特に、`SignalEntityAsync` は、通常、エンティティが操作を開始する前に戻ります。戻り値を取得したり、例外を監視したりすることはできません。 より強力な保証が必要な場合 (ワークフローの場合など)、*オーケストレーター関数*を使用する必要があります。これにより、エンティティ操作の完了を待機し、戻り値を処理して例外を監視することができます。
+> クライアントから送信された "シグナル" は、単にエンキューされ、後で非同期的に処理されることを理解しておくことが重要です。 特に、`SignalEntityAsync` は、通常、エンティティが操作を開始する前に戻ります。戻り値を取得したり、例外を監視したりすることはできません。 より強力な保証が必要な場合 (ワークフローの場合など)、*オーケストレーター関数* を使用する必要があります。これにより、エンティティ操作の完了を待機し、戻り値を処理して例外を監視することができます。
 
 ### <a name="example-client-signals-entity-directly---c"></a>例: クライアントがエンティティにシグナル通知を直接出す - C#
 

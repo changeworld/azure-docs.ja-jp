@@ -1,7 +1,7 @@
 ---
 title: Azure Functions アプリに ML モデルをデプロイする (プレビュー)
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning を使用して Azure Functions アプリにモデルをデプロイする方法について説明します。
+description: Azure Machine Learning を使用して、モデルを Web サービスとしてパッケージ化し、Azure Functions アプリにデプロイする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python, devx-track-azurecli
-ms.openlocfilehash: 5e5ab4e3c9332d0daa1acf32edeeba2423c97ac3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d17967c24fbbb127c1d3eaee5acd5b78c3e3b902
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324590"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630347"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Azure Functions に機械学習モデルをデプロイする (プレビュー)
 
@@ -47,7 +47,7 @@ Azure Machine Learning を使用すると、トレーニング済みの機械学
 
 デプロイを行う前に、モデルを Web サービスとして実行するために必要なものを定義する必要があります。 次の一覧で、デプロイするために必要となる中心的な項目について説明します。
 
-* __エントリ スクリプト__ 。 このスクリプトは、要求を受け入れ、モデルを使用してその要求にスコアを付け、その結果を返します。
+* __エントリ スクリプト__。 このスクリプトは、要求を受け入れ、モデルを使用してその要求にスコアを付け、その結果を返します。
 
     > [!IMPORTANT]
     > エントリ スクリプトはモデルに固有のものです。受信要求データの形式、モデルで想定されるデータの形式、およびクライアントに返されるデータの形式を理解しておく必要があります。
@@ -58,9 +58,9 @@ Azure Machine Learning を使用すると、トレーニング済みの機械学
 
 エントリ スクリプトの詳細については、[スコアリング コードの定義](./how-to-deploy-and-where.md#define-an-entry-script)に関する記事を参照してください。
 
-* **依存関係** 。エントリ スクリプトまたはモデルを実行するために必要なヘルパー スクリプトや Python/Conda パッケージなど。
+* **依存関係**。エントリ スクリプトまたはモデルを実行するために必要なヘルパー スクリプトや Python/Conda パッケージなど。
 
-これらのエンティティは、 __推論構成__ にカプセル化されます。 推論構成では、エントリ スクリプトとその他の依存関係が参照されます。
+これらのエンティティは、__推論構成__ にカプセル化されます。 推論構成では、エントリ スクリプトとその他の依存関係が参照されます。
 
 > [!IMPORTANT]
 > Azure Functions で使用するための推論構成を作成する際は、[環境](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py)オブジェクトを使用する必要があります。 カスタム環境を定義する場合は、バージョン 1.0.45 以降の azureml-defaults を pip 依存関係として追加する必要があることに注意してください。 このパッケージには、Web サービスとしてモデルをホストするために必要な機能が含まれています。 次の例で、環境オブジェクトを作成し、推論構成でそれを使用する方法を示します。
@@ -153,7 +153,7 @@ print(blob.location)
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    この例では、 _Linux Basic_ 価格レベル (`--sku B1`) が使用されます。
+    この例では、_Linux Basic_ 価格レベル (`--sku B1`) が使用されます。
 
     > [!IMPORTANT]
     > Azure Machine Learning によって作成されたイメージでは Linux が使用されるため、`--is-linux` パラメーターを使用する必要があります。

@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:バッチ スコアリング用の ML パイプライン
 titleSuffix: Azure Machine Learning
-description: このチュートリアルでは、画像分類モデルでバッチ スコアリングを実行するための機械学習パイプラインを作成します。 Azure Machine Learning を使用すると、インフラストラクチャと自動化ではなく、機械学習に専念できます。
+description: このチュートリアルでは、バッチ スコアリングを実行するための機械学習パイプラインを作成します。 インフラストラクチャと自動化ではなく、機械学習に専念できます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
 ms.custom: contperfq4, devx-track-python
-ms.openlocfilehash: f7d1cffb44914535fe218980c750270ebba14445
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8748d6e155eb84cf948966d768dda1a992207f7e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309449"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629633"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>チュートリアル:バッチ スコアリング用の Azure Machine Learning パイプラインを作成する
 
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="prerequisites"></a>前提条件
 
 * Azure Machine Learning ワークスペースまたはノートブック仮想マシンがまだない場合は、[セットアップのチュートリアルのパート 1](tutorial-1st-experiment-sdk-setup.md) を済ませておいてください。
-* セットアップのチュートリアルが完了したら、同じノートブック サーバーを使用して、 *tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb* ノートブックを開きます。
+* セットアップのチュートリアルが完了したら、同じノートブック サーバーを使用して、*tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb* ノートブックを開きます。
 
 独自の[ローカル環境](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials)でセットアップのチュートリアルを実行したい場合は、[GitHub](how-to-configure-environment.md#local) 上のチュートリアルを利用できます。 `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` を実行して必要なパッケージを取得してください。
 
@@ -84,9 +84,9 @@ def_data_store = ws.get_default_datastore()
 > [!Important]
 > このチュートリアルのバッチ スコアリングの例で使用するパイプライン ステップは 1 つだけです。 複数のステップを使用したユースケースでは、標準的なフローにこれらのステップが含まれます。
 >
-> 1. `Dataset` オブジェクトを " *入力* " に使用して生データを取り込み、なんらかの変換を実行した後、`PipelineData` オブジェクトを " *出力* " します。
+> 1. `Dataset` オブジェクトを "*入力*" に使用して生データを取り込み、なんらかの変換を実行した後、`PipelineData` オブジェクトを "*出力*" します。
 >
-> 2. 前のステップの `PipelineData` " *出力オブジェクト* " を " *入力オブジェクト* " として使用します。 後続のステップに対して処理を繰り返します。
+> 2. 前のステップの `PipelineData` "*出力オブジェクト*" を "*入力オブジェクト*" として使用します。 後続のステップに対して処理を繰り返します。
 
 このシナリオでは、入力画像と分類ラベル (y 検定値) の両方について、データストアのディレクトリに対応する `Dataset` オブジェクトを作成します。 バッチ スコアリングの出力データ用の `PipelineData` オブジェクトも作成します。
 
@@ -140,7 +140,7 @@ model = Model.register(model_path="models/inception_v3.ckpt",
 
 ## <a name="create-and-attach-the-remote-compute-target"></a>リモートのコンピューティング先を作成してアタッチする
 
-機械学習パイプラインは、ローカルで実行することができないので、クラウド リソース (" *リモート コンピューティング先* ") で実行します。 リモート コンピューティング先は、実験や機械学習のワークフローを実行する再利用可能な仮想コンピューティング環境です。 
+機械学習パイプラインは、ローカルで実行することができないので、クラウド リソース ("*リモート コンピューティング先*") で実行します。 リモート コンピューティング先は、実験や機械学習のワークフローを実行する再利用可能な仮想コンピューティング環境です。 
 
 次のコードを実行して GPU 対応のコンピューティング先 [`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?preserve-view=true&view=azure-ml-py) を作成し、自分のワークスペースにアタッチします。 コンピューティング先の詳細については、[概念に関する記事](./concept-compute-target.md)を参照してください。
 
@@ -305,9 +305,9 @@ parallel_run_config = ParallelRunConfig(
 * 入力データと出力データ、カスタム パラメーター
 * ステップ中に実行するスクリプトまたは SDK ロジックへの参照
 
-親クラスである [`PipelineStep`](/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?preserve-view=true&view=azure-ml-py) は、複数のクラスによって継承されています。 クラスを選択し、特定のフレームワークまたはスタックを使用してステップを作成できます。 この例では `ParallelRunStep` クラスを使用し、カスタム Python スクリプトを使ってステップのロジックを定義します。 スクリプトの引数がステップへの入力またはステップからの出力である場合、引数を " *2 か所* " で定義する必要があります。1 つは `arguments` 配列、" *もう 1 つ* " は `input` または `output` パラメーターです。 
+親クラスである [`PipelineStep`](/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?preserve-view=true&view=azure-ml-py) は、複数のクラスによって継承されています。 クラスを選択し、特定のフレームワークまたはスタックを使用してステップを作成できます。 この例では `ParallelRunStep` クラスを使用し、カスタム Python スクリプトを使ってステップのロジックを定義します。 スクリプトの引数がステップへの入力またはステップからの出力である場合、引数を "*2 か所*" で定義する必要があります。1 つは `arguments` 配列、"*もう 1 つ*" は `input` または `output` パラメーターです。 
 
-複数のステップが存在するシナリオでは、`outputs` 配列のオブジェクト参照が後続のパイプライン ステップの " *入力* " として使用できるようになります。
+複数のステップが存在するシナリオでは、`outputs` 配列のオブジェクト参照が後続のパイプライン ステップの "*入力*" として使用できるようになります。
 
 ```python
 from azureml.pipeline.steps import ParallelRunStep
@@ -338,7 +338,7 @@ batch_score_step = ParallelRunStep(
 次に、`Experiment.submit()` 関数を使用して、実行するパイプラインを送信します。 パイプラインの作成プロセス中は、`wait_for_completion` 関数からログが出力されます。 ログを使用して、最新の進行状況を確認することができます。
 
 > [!IMPORTANT]
-> パイプラインの初回実行には約 " *15 分* " かかります。 依存関係をすべてダウンロードする必要があるほか、Docker イメージの作成と Python 環境のプロビジョニングおよび作成が行われます。 パイプラインを再度実行する際は、それらのリソースが作成されるのではなく再利用されるので、時間が大幅に短縮されます。 ただし、パイプラインの総実行時間は、実際のスクリプトのワークロードと、各パイプライン ステップで実行される処理によって異なります。
+> パイプラインの初回実行には約 "*15 分*" かかります。 依存関係をすべてダウンロードする必要があるほか、Docker イメージの作成と Python 環境のプロビジョニングおよび作成が行われます。 パイプラインを再度実行する際は、それらのリソースが作成されるのではなく再利用されるので、時間が大幅に短縮されます。 ただし、パイプラインの総実行時間は、実際のスクリプトのワークロードと、各パイプライン ステップで実行される処理によって異なります。
 
 ```python
 from azureml.core import Experiment
@@ -386,7 +386,7 @@ published_pipeline
 
 REST エンドポイントからパイプラインを実行するには、OAuth2 ベアラータイプの認証ヘッダーが必要です。 以下の例では説明のために対話型認証を使用していますが、自動化された認証 (ヘッドレス認証) を必要とする運用環境のシナリオではほとんどの場合、[この記事の説明](how-to-setup-authentication.md)にあるようにサービス プリンシパル認証を使用します。
 
-サービス プリンシパル認証では、 *Azure Active Directory* に " *アプリの登録* " を作成する必要があります。 まず、クライアント シークレットを生成したうえで、ご自分の機械学習ワークスペースへの " *ロール アクセス* " をサービス プリンシパルに付与します。 認証フローは、[`ServicePrincipalAuthentication`](/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?preserve-view=true&view=azure-ml-py) クラスを使用して管理します。 
+サービス プリンシパル認証では、*Azure Active Directory* に "*アプリの登録*" を作成する必要があります。 まず、クライアント シークレットを生成したうえで、ご自分の機械学習ワークスペースへの "*ロール アクセス*" をサービス プリンシパルに付与します。 認証フローは、[`ServicePrincipalAuthentication`](/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?preserve-view=true&view=azure-ml-py) クラスを使用して管理します。 
 
 [`InteractiveLoginAuthentication`](/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?preserve-view=true&view=azure-ml-py) と `ServicePrincipalAuthentication` は、どちらも `AbstractAuthentication` を継承します。 どちらの場合も同じように [`get_authentication_header()`](/python/api/azureml-core/azureml.core.authentication.abstractauthentication?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-authentication-header--) 関数を使用してヘッダーをフェッチします。
 

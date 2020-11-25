@@ -3,12 +3,12 @@ title: Azure VMware Solution のデプロイの計画
 description: この記事では、Azure VMware Solution のデプロイ ワークフローの概要について説明します。  最終的な結果として、仮想マシン (VM) の作成と移行に向けて環境の準備が整います。
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 9b6d04e1e7a60bf812ca2b1e370c5075d306c432
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 08a15e6f8cad4068415cec3353544829f2218fb0
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287054"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888982"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware Solution のデプロイの計画
 
@@ -38,6 +38,9 @@ Azure VMware Solution のデプロイ先リージョンを特定します。  �
 ## <a name="resource-name"></a>リソース名
 
 デプロイ時に使用するリソース名を定義します。  リソース名はわかりやすく説明的な名前であり、その中で Azure VMware Solution プライベート クラウドにタイトルを付けます。
+
+>[!IMPORTANT]
+>名前は 40 文字を超えてはいけません。 名前がこの制限を超えていると、プライベート クラウドで使用するパブリック IP アドレスを作成できません。 
 
 ## <a name="size-hosts"></a>サイズ ホスト
 
@@ -89,14 +92,6 @@ L2 ネットワークの拡張だけを計画している場合でも、環境�
 
 - オンプレミスからネットワークを拡張する予定の場合、これらのネットワークはオンプレミスの VMware 環境内の [vSphere Distributed Switch (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) に接続する必要があります。  
 - 拡張したいネットワークが [vSphere Standard Switch](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html) 上で機能している場合、それらは拡張できません。
-
-## <a name="expressroute-global-reach-peering-network"></a>ExpressRoute Global Reach ピアリング ネットワーク
-
-ExpressRoute Global Reach ピアリングのために必要な `/29` CIDR ネットワーク アドレス ブロックを特定します。 作成されるどの IP セグメントも、Azure VMware Solution とオンプレミスのフットプリント全体で一意である必要があることに注意してください。 このセグメント内の IP は、ExpressRoute Global Reach 接続の両端で、Azure VMware Solution の ExpressRoute 回線をオンプレミスの ExpressRoute 回線に接続するために使用されます。 
-
-**例:** 10.1.0.0/29
-
-:::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="特定する - ExpressRoute Global Reach ピアリング ネットワーク" border="false":::
 
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure VMware Solution を接続するための Azure Virtual Network
 

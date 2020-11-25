@@ -10,11 +10,11 @@ ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
 ms.openlocfilehash: 6fb7b7c2e9022b6b629a039a48bb559b36393f79
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94334994"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013855"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>リファレンス: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -67,7 +67,7 @@ MXNet は、効率性と柔軟性の両方のために設計されたディー�
 
 DIGITS として知られる NVIDIA ディープ ラーニング GPU トレーニング システムは、一般的なディープ ラーニング タスクを簡略化するシステムです。 そうしたタスクには、データの管理や、GPU システムでのニュートラル ネットワークの設計とトレーニング、リアル タイムでのパフォーマンスの監視と高度な視覚化が挙げられます。
 
-DIGITS は、" *digits (ディジッツ)* " というサービスとして利用できます。 サービスを開始するには、`http://localhost:5000` を参照します。
+DIGITS は、"*digits (ディジッツ)* " というサービスとして利用できます。 サービスを開始するには、`http://localhost:5000` を参照します。
 
 また DIGITS は、Conda root 環境に Python モジュールとしてインストールされます。
 
@@ -81,7 +81,7 @@ Theano は、Python のための効率的な数値計算用ライブラリです
 
 ### <a name="torch"></a>Torch
 
-Torch は、機械学習アルゴリズムを幅広くサポートする科学コンピューティング フレームワークです。 /dsvm/tools/torch で入手でき、 **th** 対話型セッションと LuaRocks パッケージ マネージャーはコマンド ラインで利用できます。 サンプルは、/dsvm/samples/torch で入手できます。
+Torch は、機械学習アルゴリズムを幅広くサポートする科学コンピューティング フレームワークです。 /dsvm/tools/torch で入手でき、**th** 対話型セッションと LuaRocks パッケージ マネージャーはコマンド ラインで利用できます。 サンプルは、/dsvm/samples/torch で入手できます。
 
 また PyTorch も ルート Anaconda 環境で使用できます。 サンプルは、/dsvm/samples/pytorch にあります。
 
@@ -91,9 +91,9 @@ R は、データ分析と機械学習に最もよく使われる言語の 1 つ
 
 Machine Learning Server は R モデルのスケーリングと運用化を Web サービスにもたらします。 R プログラムは、RStudio、vi、Emacs などの既定のエディターのいずれかで編集できます。 Emacs エディターを使用する場合、これはプレインストールされています。 Emacs ESS (Emacs Speaks Statistics) パッケージは、Emacs エディター内での R ファイルに対する作業を簡略化します。
 
-R コンソールを開くには、シェルで「 **R** 」と入力します。 このコマンドを入力すると、対話型環境に移動します。 R プログラムを開発するには、通常、Emacs や vi などのエディターを使用し、R 内でスクリプトを実行します。RStudio をインストールすると、完全なグラフィカル IDE で R プログラムを開発できます。
+R コンソールを開くには、シェルで「**R**」と入力します。 このコマンドを入力すると、対話型環境に移動します。 R プログラムを開発するには、通常、Emacs や vi などのエディターを使用し、R 内でスクリプトを実行します。RStudio をインストールすると、完全なグラフィカル IDE で R プログラムを開発できます。
 
-必要な場合に備えて、[上位 20 の R パッケージ](https://www.kdnuggets.com/2015/06/top-20-r-packages.html)をインストールするための R スクリプトも用意されています。 このスクリプトを実行するには、R の対話型インターフェイスに入る必要があります。 前述のように、シェルで「 **R** 」と入力することによって、このインターフェイスを開くことができます。  
+必要な場合に備えて、[上位 20 の R パッケージ](https://www.kdnuggets.com/2015/06/top-20-r-packages.html)をインストールするための R スクリプトも用意されています。 このスクリプトを実行するには、R の対話型インターフェイスに入る必要があります。 前述のように、シェルで「**R**」と入力することによって、このインターフェイスを開くことができます。  
 
 ## <a name="python"></a>Python
 
@@ -111,7 +111,7 @@ source activate root
 source activate py35
 ```
 
-Python の対話型セッションを呼び出すには、シェルで「 **python** 」と入力します。 
+Python の対話型セッションを呼び出すには、シェルで「**python**」と入力します。 
 
 Conda または pip を使用して追加の Python ライブラリをインストールします。 pip の場合、既定値が必要ないときは、最初に正しい環境をアクティブにします。
 
@@ -132,13 +132,13 @@ Conda の場合は、常に環境名 (py35 または root) を指定する必要
 conda install <package> -n py35
 ```
 
-グラフィカル インターフェイスを使用している場合や X11 転送を設定している場合は、「 **pycharm** 」と入力して PyCharm Python IDE を開きます。 既定のテキスト エディターを使用できます。 また、Anaconda Python ディストリビューションにバンドルされている Spyder (Python IDE) を使用することもできます。 Spyder を使用するには、グラフィカル デスクトップまたは X11 転送が必要です。 グラフィカル デスクトップには Spyder へのショートカットがあります。
+グラフィカル インターフェイスを使用している場合や X11 転送を設定している場合は、「**pycharm**」と入力して PyCharm Python IDE を開きます。 既定のテキスト エディターを使用できます。 また、Anaconda Python ディストリビューションにバンドルされている Spyder (Python IDE) を使用することもできます。 Spyder を使用するには、グラフィカル デスクトップまたは X11 転送が必要です。 グラフィカル デスクトップには Spyder へのショートカットがあります。
 
 ## <a name="jupyter-notebook"></a>Jupyter Notebook
 
 Anaconda ディストリビューションは、コードと分析を共有するための環境である Jupyter Notebook にも付属しています。 Jupyter Notebook には JupyterHub からアクセスします。 ローカルの Linux ユーザー名とパスワードを使用してサインインします。
 
-Jupyter Notebook サーバーは、Python 2、Python 3、R カーネルであらかじめ構成されています。 ブラウザーを開いて Notebook サーバーにアクセスするには、 **Jupyter Notebook** デスクトップ アイコンを使用します。 SSH または X2Go クライアント経由で VM を使用している場合は、`https://localhost:8000/` で Jupyter Notebook サーバーにアクセスすることもできます。
+Jupyter Notebook サーバーは、Python 2、Python 3、R カーネルであらかじめ構成されています。 ブラウザーを開いて Notebook サーバーにアクセスするには、**Jupyter Notebook** デスクトップ アイコンを使用します。 SSH または X2Go クライアント経由で VM を使用している場合は、`https://localhost:8000/` で Jupyter Notebook サーバーにアクセスすることもできます。
 
 > [!NOTE]
 > 証明書の警告が表示されても続行してください。
@@ -206,11 +206,11 @@ LaTex は、texlive パッケージによって、[AUCTeX](https://www.gnu.org/s
 
 SQL Server の ODBC ドライバー パッケージには、次の 2 つのコマンド ライン ツールも付属しています。
 
-- **bcp** :bcp ツールでは、Microsoft SQL Server のインスタンスと、ユーザーが指定した形式のデータ ファイルとの間でデータを一括コピーします。 bcp ツールを使用して、SQL Server テーブルに多数の新しい行をインポートしたり、テーブルからデータ ファイルにデータをエクスポートしたりできます。 テーブルにデータをインポートするには、そのテーブル用に作成されたフォーマット ファイルを使用する必要があります。 または、テーブルの構造を把握し、さらに、その列に有効なデータの種類を把握する必要があります。
+- **bcp**:bcp ツールでは、Microsoft SQL Server のインスタンスと、ユーザーが指定した形式のデータ ファイルとの間でデータを一括コピーします。 bcp ツールを使用して、SQL Server テーブルに多数の新しい行をインポートしたり、テーブルからデータ ファイルにデータをエクスポートしたりできます。 テーブルにデータをインポートするには、そのテーブル用に作成されたフォーマット ファイルを使用する必要があります。 または、テーブルの構造を把握し、さらに、その列に有効なデータの種類を把握する必要があります。
 
   詳細については、「 [bcp による接続](/sql/connect/odbc/linux-mac/connecting-with-bcp)」をご覧ください。
 
-- **sqlcmd** :sqlcmd ツールを使用して Transact-SQL ステートメントを入力できます。 または、コマンド プロンプトからシステム プロシージャやスクリプト ファイルを入力することもできます。 このツールは ODBC を使用して、Transact-SQL バッチを実行します。
+- **sqlcmd**:sqlcmd ツールを使用して Transact-SQL ステートメントを入力できます。 または、コマンド プロンプトからシステム プロシージャやスクリプト ファイルを入力することもできます。 このツールは ODBC を使用して、Transact-SQL バッチを実行します。
 
   詳細については、「 [sqlcmd による接続](/sql/connect/odbc/linux-mac/connecting-with-sqlcmd)」をご覧ください。
 
@@ -228,13 +228,13 @@ R と Python には、データベースにアクセスするためのライブ�
 
 VM には、次の Azure ツールがインストールされています。
 
-* **Azure CLI** :Azure のコマンド ライン インターフェイスから、シェル コマンドを通じて Azure リソースを作成したり管理したりできます。 Azure のツールを開くには、「 **azure help** 」と入力します。 詳細については、 [Azure CLI ドキュメント ページ](/cli/azure/get-started-with-az-cli2)をご覧ください。
-* **Azure Storage Explorer** : Azure Storage Explorer は、Azure ストレージ アカウントに保存されているオブジェクトを参照したり、Azure BLOB との間でデータをアップロードまたはダウンロードしたりするために使用できるグラフィカル ツールです。 ストレージ エクスプローラーには、デスクトップのショートカット アイコンからアクセスできます。 シェル プロンプトから「 **StorageExplorer** 」と入力して開くこともできます。 X2Go クライアントからサインインしているか、X11 転送を設定済みである必要があります。
-* **Azure のライブラリ** : プレインストールされているライブラリの一部を次に示します。
+* **Azure CLI**:Azure のコマンド ライン インターフェイスから、シェル コマンドを通じて Azure リソースを作成したり管理したりできます。 Azure のツールを開くには、「**azure help**」と入力します。 詳細については、 [Azure CLI ドキュメント ページ](/cli/azure/get-started-with-az-cli2)をご覧ください。
+* **Azure Storage Explorer**: Azure Storage Explorer は、Azure ストレージ アカウントに保存されているオブジェクトを参照したり、Azure BLOB との間でデータをアップロードまたはダウンロードしたりするために使用できるグラフィカル ツールです。 ストレージ エクスプローラーには、デスクトップのショートカット アイコンからアクセスできます。 シェル プロンプトから「**StorageExplorer**」と入力して開くこともできます。 X2Go クライアントからサインインしているか、X11 転送を設定済みである必要があります。
+* **Azure のライブラリ**: プレインストールされているライブラリの一部を次に示します。
   
-  * **Python** : Python の Azure 関連ライブラリには、 *azure* 、 *azureml* 、 *pydocumentdb* 、 *pyodbc* があります。 最初の 3 つのライブラリを使用すると、Azure Storage サービス、Azure Machine Learning、Azure Cosmos DB (Azure の NoSQL データベース) にアクセスできます。 4 番目のライブラリである pyodbc を (Microsoft ODBC Driver for SQL Server と共に) では、ODBC インターフェイスを使用して、Python から SQL Server、Azure SQL Database、Azure Synapse Analytics にアクセスできます。 すべてのライブラリを一覧表示するには、「 **pip list** 」と入力します。 このコマンドは、必ず Python 2.7 と 3.5 の両方の環境で実行してください。
-  * **R** :R の Azure 関連ライブラリは、AzureML と RODBC です。
-  * **Java** : Azure Java ライブラリのリストは、VM の /dsvm/sdk/AzureSDKJava ディレクトリにあります。 主要なライブラリは、Azure Storage と管理 API、Azure Cosmos DB、SQL Server の JDBC ドライバーです。  
+  * **Python**: Python の Azure 関連ライブラリには、*azure*、*azureml*、*pydocumentdb*、*pyodbc* があります。 最初の 3 つのライブラリを使用すると、Azure Storage サービス、Azure Machine Learning、Azure Cosmos DB (Azure の NoSQL データベース) にアクセスできます。 4 番目のライブラリである pyodbc を (Microsoft ODBC Driver for SQL Server と共に) では、ODBC インターフェイスを使用して、Python から SQL Server、Azure SQL Database、Azure Synapse Analytics にアクセスできます。 すべてのライブラリを一覧表示するには、「 **pip list** 」と入力します。 このコマンドは、必ず Python 2.7 と 3.5 の両方の環境で実行してください。
+  * **R**:R の Azure 関連ライブラリは、AzureML と RODBC です。
+  * **Java**: Azure Java ライブラリのリストは、VM の /dsvm/sdk/AzureSDKJava ディレクトリにあります。 主要なライブラリは、Azure Storage と管理 API、Azure Cosmos DB、SQL Server の JDBC ドライバーです。  
 
 [Azure ポータル](https://portal.azure.com) には、プレインストールされている Firefox ブラウザーからアクセスできます。 Azure ポータルでは、Azure リソースを作成、管理、監視できます。
 
@@ -246,7 +246,7 @@ Azure Machine Learning Studio にサインインしたら、実験キャンバ�
 
 作成した機械学習モデルを Web サービス インターフェイスにラップすることで、モデルを運用可能な状態にすることができます。 機械学習モデルを運用可能な状態にすると、任意の言語で記述されたクライアントで、機械学習モデルから予測を呼び出すことができます。 詳細については、[Machine Learning のドキュメント](https://azure.microsoft.com/documentation/services/machine-learning/)をご覧ください。
 
-VM で R または Python を使ってモデルを作成し、Azure Machine Learning の運用環境にデプロイすることもできます。 この機能を有効にするために、R ( **AzureML** ) と Python ( **azureml** ) にライブラリがインストールされています。
+VM で R または Python を使ってモデルを作成し、Azure Machine Learning の運用環境にデプロイすることもできます。 この機能を有効にするために、R (**AzureML**) と Python (**azureml**) にライブラリがインストールされています。
 
 > [!NOTE]
 > これらの手順は、Windows バージョンの Data Science Virtual Machine 向けに書かれたものです。 ただし、これらに記載されている Azure Machine Learning へのモデルのデプロイに関する情報は Linux VM にも適用されます。
@@ -255,12 +255,12 @@ VM で R または Python を使ってモデルを作成し、Azure Machine Lear
 
 VM には、プリコンパイルされてローカルにプレインストールされた機械学習ツールとアルゴリズムが備わっています。 これには以下が含まれます。
 
-* **Vowpal Wabbit** : 高速オンライン学習アルゴリズム。
-* **xgboost** : 最適化されたブースト ツリー アルゴリズムを提供するツール。
-* **Rattle** : データ探索とモデリングに役立つ R ベースのグラフィカル ツール。
-* **Python** : Anaconda Python には、Scikit-learn などのライブラリと機械学習アルゴリズムがバンドルされています。 その他のライブラリは、 `pip install` を使用してインストールできます。
-* **LightGBM** : デシジョン ツリー アルゴリズムに基づく、高速で分散型の高パフォーマンスな勾配ブースティング フレームワーク。
-* **R** :R 向けに、機械学習関数の豊富なライブラリが用意されています。プレインストールされているライブラリには、lm、glm、randomForest、rpart などがあります。 その他のライブラリは、次のコマンドを使用してインストールできます。
+* **Vowpal Wabbit**: 高速オンライン学習アルゴリズム。
+* **xgboost**: 最適化されたブースト ツリー アルゴリズムを提供するツール。
+* **Rattle**: データ探索とモデリングに役立つ R ベースのグラフィカル ツール。
+* **Python**: Anaconda Python には、Scikit-learn などのライブラリと機械学習アルゴリズムがバンドルされています。 その他のライブラリは、 `pip install` を使用してインストールできます。
+* **LightGBM**: デシジョン ツリー アルゴリズムに基づく、高速で分散型の高パフォーマンスな勾配ブースティング フレームワーク。
+* **R**:R 向けに、機械学習関数の豊富なライブラリが用意されています。プレインストールされているライブラリには、lm、glm、randomForest、rpart などがあります。 その他のライブラリは、次のコマンドを使用してインストールできます。
 
     ```r
     install.packages(<lib name>)
@@ -286,7 +286,7 @@ vw house_dataset
 
 xgboost は、ブースト (ツリー) アルゴリズム向けに設計および最適化されたライブラリです。 このライブラリの目的は、コンピューターの計算能力の限界を超えて、スケーラブルで移植できる正確で大規模なツリー ブーストを提供することです。
 
-コマンド ラインおよび R ライブラリとして提供されています。 R でこのライブラリを使用するには、(シェルで「 **R** 」と入力して) 対話型の R セッションを開始し、ライブラリを読み込みます。
+コマンド ラインおよび R ライブラリとして提供されています。 R でこのライブラリを使用するには、(シェルで「**R**」と入力して) 対話型の R セッションを開始し、ライブラリを読み込みます。
 
 R プロンプトで実行できる簡単な例を次に示します。
 
@@ -316,9 +316,9 @@ xgboost の詳細については、[xgboost ドキュメント ページ](https:
 
 ### <a name="rattle"></a>Rattle
 
-Rattle ( **R** **A** nalytical **T** ool **T** o **L** earn **E** asily) では、GUI ベースのデータ探索とモデリングを使用します。 Rattle では、データの統計の概要を視覚的に表示し、簡単にモデル化できるようにデータを変換します。データから教師なしと教師ありの両方のモデルを作成し、モデルのパフォーマンスをグラフィカルに表示して、新しいデータセットをスコア付けします。 また、UI での操作をレプリケートする R コードを生成することもできます。生成したコードは、R で直接実行することや、詳細な分析の開始点として使用することができます。
+Rattle (**R** **A** nalytical **T** ool **T** o **L** earn **E** asily) では、GUI ベースのデータ探索とモデリングを使用します。 Rattle では、データの統計の概要を視覚的に表示し、簡単にモデル化できるようにデータを変換します。データから教師なしと教師ありの両方のモデルを作成し、モデルのパフォーマンスをグラフィカルに表示して、新しいデータセットをスコア付けします。 また、UI での操作をレプリケートする R コードを生成することもできます。生成したコードは、R で直接実行することや、詳細な分析の開始点として使用することができます。
 
-Rattle を実行するには、グラフィカル デスクトップのサインイン セッションに入っている必要があります。 ターミナルで「 **R** 」と入力して、R 環境を開きます。 R プロンプトで、次のコマンドを入力します。
+Rattle を実行するには、グラフィカル デスクトップのサインイン セッションに入っている必要があります。 ターミナルで「**R**」と入力して、R 環境を開きます。 R プロンプトで、次のコマンドを入力します。
 
 ```R
 library(rattle)

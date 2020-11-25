@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 2f7d102ad6bf2aba2056456acfe6207a0b0643ba
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0da4127960450a13b64ec23908b4a4fd4c69bd7e
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357982"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542016"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python でのトレーニングの実行の開始、監視、およびキャンセル
 
@@ -29,6 +29,10 @@ ms.locfileid: "93357982"
 * 実行のキャンセルまたは失敗。
 * 子実行の作成。
 * 実行のタグ付けおよび検索。
+
+> [!TIP]
+> Azure Machine Learning service および関連する Azure サービスの監視の詳細については、[Azure Machine Learning を監視する方法](monitor-azure-machine-learning.md)に関する記事を参照してください。
+> Web サービスまたは IoT Edge モジュールとしてデプロイされたモデルの監視の詳細については、[モデル データの収集](how-to-enable-data-collection.md)および [Application Insights での監視](how-to-enable-app-insights.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

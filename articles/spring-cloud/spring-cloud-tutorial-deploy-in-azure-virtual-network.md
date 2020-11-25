@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: e0fc50647e926ea919f70b888f3efc303713fe1e
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6e2df9168b880e565ea9b70c82c2c0c1b55b4db8
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631191"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737245"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>チュートリアル:Azure 仮想ネットワークに Azure Spring Cloud をデプロイする (VNet インジェクション)
 
@@ -27,17 +27,18 @@ ms.locfileid: "92631191"
 * Azure Spring Cloud の送受信ネットワーク通信を制御するための顧客への権限付与
 
 ## <a name="prerequisites"></a>前提条件
-[Azure portal でのリソース プロバイダーの登録](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)に関する記事の手順に従って、または次の az CLI コマンドを実行することによって、Azure Spring Cloud リソース プロバイダー `Microsoft.AppPlatform` を登録する必要があります。
+[Azure portal でのリソース プロバイダーの登録](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)に関するセクションの手順に従うか、以下の az CLI コマンドを実行して、Azure Spring Cloud リソース プロバイダー *Microsoft.AppPlatform* および *Microsoft.ContainerService* を登録する必要があります。
 
 ```azurecli
 az provider register --namespace Microsoft.AppPlatform
+az provider register --namespace Microsoft.ContainerService
 ```
 ## <a name="virtual-network-requirements"></a>仮想ネットワークの要件
 Azure Spring Cloud サービス インスタンスのデプロイ先となる仮想ネットワークは、以下の要件を満たす必要があります。
 
 * **[場所]** :仮想ネットワークは、Azure Spring Cloud サービス インスタンスと同じ場所に存在する必要があります。
-* **サブスクリプション** :仮想ネットワークは、Azure Spring Cloud サービス インスタンスと同じサブスクリプションに存在する必要があります。
-* **サブネット** :仮想ネットワークには、Azure Spring Cloud サービス インスタンス専用の 2 つのサブネットが含まれている必要があります。 
+* **サブスクリプション**:仮想ネットワークは、Azure Spring Cloud サービス インスタンスと同じサブスクリプションに存在する必要があります。
+* **サブネット**:仮想ネットワークには、Azure Spring Cloud サービス インスタンス専用の 2 つのサブネットが含まれている必要があります。 
     * サービス ランタイム用に 1 つ
     * Spring Boot マイクロサービス アプリケーション用に 1 つ。 
     * これらのサブネットと Azure Spring Cloud サービス インスタンスの間には一対一のリレーションシップがあります。 デプロイするサービス インスタンスごとに新しいサブネットを使用する必要があります。また、各サブネットに含めることができるサービス インスタンスは 1 つだけです。
@@ -57,16 +58,16 @@ Azure Spring Cloud サービス インスタンスをホストする仮想ネッ
     |-----------------|--------------------------------------------------|
     |サブスクリプション     |サブスクリプションを選択します。                         |
     |Resource group   |リソース グループを選択するか、新しく作成します。  |
-    |名前             |「 *azure-spring-cloud-vnet* 」と入力します                   |
+    |名前             |「*azure-spring-cloud-vnet*」と入力します                   |
     |場所         |**[米国東部]** を選択します。                                |
 
 1. **[次へ: IP アドレス >]** をクリックします。 
  
 1. [IPv4 アドレス空間] に、「10.1.0.0/16」と入力します。
 
-1. **[サブネットの追加]** を選択し、 **[サブネット名]** に「 *service-runtime-subnet* 」、 **[サブネットのアドレス範囲]** に「10.1.0.0/24」と入力します。 **[追加]** をクリックします。
+1. **[サブネットの追加]** を選択し、 **[サブネット名]** に「*service-runtime-subnet*」、 **[サブネットのアドレス範囲]** に「10.1.0.0/24」と入力します。 **[追加]** をクリックします。
 
-1. **[サブネットの追加]** を再び選択し、 **サブネット名** と **サブネット アドレス範囲** を入力します (たとえば、 *apps-subnet* と 10.1.1.0/24)。  **[追加]** をクリックします。
+1. **[サブネットの追加]** を再び選択し、**サブネット名** と **サブネット アドレス範囲** を入力します (たとえば、*apps-subnet* と 10.1.1.0/24)。  **[追加]** をクリックします。
 
 1. **[Review + create]\(レビュー + 作成\)** をクリックします。 残りの部分は既定値のままにし、 **[作成]** をクリックします。
 
@@ -83,9 +84,9 @@ Azure Spring Cloud サービス インスタンスをホストする仮想ネッ
     |設定  |値                                             |
     |---------|--------------------------------------------------|
     |Role     |**[所有者]** を選択します                                  |
-    |Select   |「 *Azure Spring Cloud リソース プロバイダー* 」と入力します      |
+    |Select   |「*Azure Spring Cloud リソース プロバイダー*」と入力します      |
 
-    次に、[ *Azure Spring Cloud リソース プロバイダー* ] を選択し、 **[保存]** をクリックします。
+    次に、[*Azure Spring Cloud リソース プロバイダー*] を選択し、 **[保存]** をクリックします。
 
     ![Azure Spring Cloud リソース プロバイダーを V-net に付与する](./media/spring-cloud-v-net-injection/grant-azure-spring-cloud-resource-provider-to-vnet.png)
 
@@ -116,16 +117,16 @@ az role assignment create \
 
 1. 仮想ネットワークと同じリソース グループおよびリージョンを選択します。
 
-1. **[サービスの詳細]** の下にある **[名前]** で、[ *azure-spring-cloud-vnet* ] を選択します。
+1. **[サービスの詳細]** の下にある **[名前]** で、[*azure-spring-cloud-vnet*] を選択します。
 
 1. **[ネットワーク]** タブを選択し、次のように選択します。
 
     |設定                                |値                                             |
     |---------------------------------------|--------------------------------------------------|
     |Deploy in your own virtual network (自分の仮想ネットワーク内にデプロイする)     |**[はい]** を選択します                                    |
-    |仮想ネットワーク                        |[ *azure-spring-cloud-vnet* ] を選択します                  |
-    |Service runtime subnet (サービス ランタイム サブネット)                 |[ *service-runtime-subnet* ] を選択します                   |
-    |Spring Boot microservice apps subnet (Spring Boot マイクロサービス アプリ サブネット)   |[ *apps-subnet* ] を選択します                              |
+    |仮想ネットワーク                        |[*azure-spring-cloud-vnet*] を選択します                  |
+    |Service runtime subnet (サービス ランタイム サブネット)                 |[*service-runtime-subnet*] を選択します                   |
+    |Spring Boot microservice apps subnet (Spring Boot マイクロサービス アプリ サブネット)   |[*apps-subnet*] を選択します                              |
 
     ![作成の [ネットワーク] タブ](./media/spring-cloud-v-net-injection/creation-blade-networking-tab.png)
 

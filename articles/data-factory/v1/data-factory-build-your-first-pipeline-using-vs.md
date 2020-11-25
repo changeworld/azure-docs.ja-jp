@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: 65309bbd70a6fda2bf725ce96cc5595cd9b55083
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db93262a0f5c6bd75f8c5611c7f33de085e05a82
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569066"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564890"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>チュートリアル: データ ファクトリを Visual Studio で作成する
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -74,12 +74,12 @@ ms.locfileid: "91569066"
 2. **[新しいプロジェクト]** ダイアログ ボックスで、 **[DataFactory]** テンプレートを選択し、 **[Empty Data Factory Project (空の Data Factory プロジェクト)]** をクリックします。   
 
     ![[新しいプロジェクト] ダイアログ ボックス](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
-3. プロジェクトの**名前**、**場所**、**ソリューション**の名前を入力し、 **[OK]** をクリックします。
+3. プロジェクトの **名前**、**場所**、**ソリューション** の名前を入力し、 **[OK]** をクリックします。
 
     ![ソリューション エクスプローラー](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
 
 ### <a name="create-linked-services"></a>リンクされたサービスを作成します
-この手順では、リンクされたサービスを 2 つ作成します。**Azure Storage** と**オンデマンド HDInsight** です。 
+この手順では、リンクされたサービスを 2 つ作成します。**Azure Storage** と **オンデマンド HDInsight** です。 
 
 Azure Storage のリンクされたサービスは、接続情報を提供することで、Azure ストレージ アカウントをデータ ファクトリにリンクします。 Data Factory サービスは、リンクされたサービスの設定から接続文字列を使用して、実行時に Azure ストレージに接続します。 このストレージは、パイプラインの入力データと出力データのほか、Hive アクティビティで使用する Hive スクリプト ファイルを保持します。 
 
@@ -97,7 +97,7 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
 4. **AzureStorageLinkedService1.json** ファイルを保存します。
 
 #### <a name="create-azure-hdinsight-linked-service"></a>Azure HDInsight のリンクされたサービスを作成する
-1. **ソリューション エクスプローラー**の **[リンクされたサービス]** を右クリックして、 **[追加]** をポイントし、 **[新しい項目]** をクリックします。
+1. **ソリューション エクスプローラー** の **[リンクされたサービス]** を右クリックして、 **[追加]** をポイントし、 **[新しい項目]** をクリックします。
 2. **[HDInsight のオンデマンドのリンクされたサービス]** を選択し、 **[追加]** をクリックします。
 3. **JSON** を次の JSON に置き換えます。
 
@@ -126,7 +126,7 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
     linkedServiceName | HDInsight Hadoop クラスターによって生成されるログを保存するために使用されるストレージ アカウントを指定します。 
 
     > [!IMPORTANT]
-    > HDInsight クラスターは、JSON (linkedServiceName) で指定した BLOB ストレージに**既定のコンテナー**を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (timeToLive) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成されます。 クラスターは、処理が終了すると自動的に削除されます。
+    > HDInsight クラスターは、JSON (linkedServiceName) で指定した BLOB ストレージに **既定のコンテナー** を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (timeToLive) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成されます。 クラスターは、処理が終了すると自動的に削除されます。
     > 
     > 処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf<yourdatafactoryname>-<linkedservicename>-datetimestamp` 形式になります。 Azure Blob Storage 内のコンテナーを削除するには、 [Microsoft Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用します。
 
@@ -137,7 +137,7 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
 この手順では、Hive 処理の入力データと出力データを表すデータセットを作成します。 これらのデータセットは、このチュートリアルで前に作成した **AzureStorageLinkedService1** を参照します。 このリンクされたサービスは Azure ストレージ アカウントを指し、データセットは入力データと出力データを保持するストレージのコンテナー、フォルダー、ファイル名を指定します。   
 
 #### <a name="create-input-dataset"></a>入力データセットの作成
-1. **ソリューション エクスプローラー**の **[テーブル]** を右クリックし、 **[追加]** をポイントして、 **[新しい項目]** をクリックします。
+1. **ソリューション エクスプローラー** の **[テーブル]** を右クリックし、 **[追加]** をポイントして、 **[新しい項目]** をクリックします。
 2. 一覧から **[Azure BLOB]** を選択し、ファイルの名前を **InputDataSet.json** に変更して、 **[追加]** をクリックします。
 3. エディターで **JSON** を次の JSON スニペットに置き換えます。
 
@@ -182,7 +182,7 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
 #### <a name="create-output-dataset"></a>出力データセットの作成
 次に、Azure Blob Storage に格納される出力データを表す出力データセットを作成します。
 
-1. **ソリューション エクスプローラー**の **[テーブル]** を右クリックし、 **[追加]** をポイントして、 **[新しい項目]** をクリックします。
+1. **ソリューション エクスプローラー** の **[テーブル]** を右クリックし、 **[追加]** をポイントして、 **[新しい項目]** をクリックします。
 2. 一覧から **[Azure BLOB]** を選択し、ファイルの名前を **OutputDataset.json** に変更して、 **[追加]** をクリックします。
 3. エディターで **JSON** を次の JSON に置き換えます。
     
@@ -214,9 +214,9 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
 4. **OutputDataset.json** ファイルを保存します。
 
 ### <a name="create-pipeline"></a>パイプラインの作成
-ここまでで、Azure Storage のリンクされたサービス、入力データセット、出力データセットを作成しました。 次は、**HDInsightHive** アクティビティを含むパイプラインを作成します。 Hive アクティビティの**入力**は **AzureBlobInput** に設定されており、**出力**は **AzureBlobOutput** に設定されています。 入力データセットのスライスは 1 か月ごと (frequency: Month、interval: 1) に入手でき、出力スライスも 1 か月ごとに生成されます。 
+ここまでで、Azure Storage のリンクされたサービス、入力データセット、出力データセットを作成しました。 次は、**HDInsightHive** アクティビティを含むパイプラインを作成します。 Hive アクティビティの **入力** は **AzureBlobInput** に設定されており、**出力** は **AzureBlobOutput** に設定されています。 入力データセットのスライスは 1 か月ごと (frequency: Month、interval: 1) に入手でき、出力スライスも 1 か月ごとに生成されます。 
 
-1. **ソリューション エクスプローラー**の **[パイプライン]** を右クリックし、 **[追加]** をポイントして、 **[新しい項目]** をクリックします
+1. **ソリューション エクスプローラー** の **[パイプライン]** を右クリックし、 **[追加]** をポイントして、 **[新しい項目]** をクリックします
 2. 一覧から **[Hive 変換パイプライン]** を選択し、 **[追加]** をクリックします。
 3. **JSON** を次のスニペットに置き換えます。
 
@@ -362,11 +362,11 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
     ![Open pipeline view](./media/data-factory-build-your-first-pipeline-using-vs/open-pipeline-view.png)
 
     前のビューに戻るには、上部にある階層リンク メニューの **[データ ファクトリ]** をクリックします。
-6. **ダイアグラム ビュー**で、**AzureBlobInput** データセットをダブルクリックします。 スライスの状態が **[準備完了]** であることを確認します。 スライスの状態が [準備完了] と表示されるまでに数分かかる場合があります。 しばらく待っても準備完了にならない場合は、入力ファイル (input.log) が適切なコンテナー (`adfgetstarted`) とフォルダー (`inputdata`) に配置されているかどうかを確認してください。 また、入力データセットの **external** プロパティが **true** に設定されていることを確認します。 
+6. **ダイアグラム ビュー** で、**AzureBlobInput** データセットをダブルクリックします。 スライスの状態が **[準備完了]** であることを確認します。 スライスの状態が [準備完了] と表示されるまでに数分かかる場合があります。 しばらく待っても準備完了にならない場合は、入力ファイル (input.log) が適切なコンテナー (`adfgetstarted`) とフォルダー (`inputdata`) に配置されているかどうかを確認してください。 また、入力データセットの **external** プロパティが **true** に設定されていることを確認します。 
 
    ![Input slice in ready state](./media/data-factory-build-your-first-pipeline-using-vs/input-slice-ready.png)
 7. **[X]** をクリックして、 **[AzureBlobInput]** ブレードを閉じます。
-8. **ダイアグラム ビュー**で、**AzureBlobOutput** データセットをダブルクリックします。 現在処理中のスライスが表示されます。
+8. **ダイアグラム ビュー** で、**AzureBlobOutput** データセットをダブルクリックします。 現在処理中のスライスが表示されます。
 
    ![AzureBlobOutput データセットが強調表示されたスクリーンショット。](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
 9. 処理が完了すると、スライスの状態に **[準備完了]** が表示されます。
@@ -375,7 +375,7 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
    > オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかります (約 20 分)。 そのため、パイプラインによるスライスの処理に **約 30 分** かかると想定してください。  
    
     ![データセット](./media/data-factory-build-your-first-pipeline-using-vs/dataset-slice-ready.png)    
-10. スライスが**準備完了**状態になったら、BLOB ストレージの `adfgetstarted` コンテナー内にある `partitioneddata` フォルダーで出力データを調べます。  
+10. スライスが **準備完了** 状態になったら、BLOB ストレージの `adfgetstarted` コンテナー内にある `partitioneddata` フォルダーで出力データを調べます。  
 
     ![output data](./media/data-factory-build-your-first-pipeline-using-vs/three-ouptut-files.png)
 11. スライスをクリックすると、 **[データ スライス]** ブレードに詳細が表示されます。
@@ -398,7 +398,7 @@ Azure ポータルを使用して、このチュートリアルで作成した�
 2. 監視と管理アプリケーションが表示されます。 パイプラインの開始時刻 (2016 年 4 月 1 日午前 12:00) と終了時刻 (2016 年 4 月 2 日午前 12:00) と一致するように、 **[開始時刻]** と **[終了時刻]** を変更し、 **[適用]** をクリックします。
 
     ![Monitor & Manage App](./media/data-factory-build-your-first-pipeline-using-vs/monitor-and-manage-app.png)
-3. アクティビティ ウィンドウの詳細を確認するには、 **[Activity Windows (アクティビティ ウィンドウ)] の一覧**でアクティビティ ウィンドウを選択し、詳細を確認します。
+3. アクティビティ ウィンドウの詳細を確認するには、 **[Activity Windows (アクティビティ ウィンドウ)] の一覧** でアクティビティ ウィンドウを選択し、詳細を確認します。
     ![アクティビティ ウィンドウの詳細](./media/data-factory-build-your-first-pipeline-using-vs/activity-window-details.png)
 
 > [!IMPORTANT]
@@ -406,11 +406,11 @@ Azure ポータルを使用して、このチュートリアルで作成した�
 
 ### <a name="additional-notes"></a>その他のメモ
 - データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインには、1 つまたは複数のアクティビティを含めることができます。 たとえば、コピー元からコピー先のデータ ストアにデータをコピーするコピー アクティビティや、Hive スクリプトを実行して入力データを変換する HDInsight Hive アクティビティなどを含めることができます。 コピー アクティビティでサポートされているすべてのソースとシンクについては、 [サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に関する記事を参照してください。 Data Factory でサポートされているコンピューティング サービスの一覧については、「 [コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md) 」を参照してください。
-- リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。 コピー アクティビティでサポートされているすべてのソースとシンクについては、 [サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に関する記事を参照してください。 Data Factory でサポートされているコンピューティング サービスと、そのコンピューティング サービス上で実行できる[変換アクティビティ](data-factory-data-transformation-activities.md)の一覧については、[コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md)に関する記事を参照してください。
+- リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure データ ファクトリにリンクします。 コピー アクティビティでサポートされているすべてのソースとシンクについては、 [サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に関する記事を参照してください。 Data Factory でサポートされているコンピューティング サービスと、そのコンピューティング サービス上で実行できる[変換アクティビティ](data-factory-data-transformation-activities.md)の一覧については、[コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md)に関する記事を参照してください。
 - Azure Storage のリンクされたサービスの定義に使用する JSON プロパティの詳細については、[Azure Blob との間でのデータの移動](data-factory-azure-blob-connector.md#azure-storage-linked-service)に関する記事を参照してください。
 - オンデマンド HDInsight クラスターの代わりに、独自の HDInsight クラスターを使用できます。 コピー アクティビティでサポートされているすべてのソースとシンクについては、 [Compute Linked Services](data-factory-compute-linked-services.md) に関するセクションを参照してください。
 -  Data Factory は、上記の JSON で **Linux ベース** の HDInsight クラスターを自動的に作成します。 詳細については、 [オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) に関するセクションを参照してください。
-- HDInsight クラスターは、JSON (linkedServiceName) で指定した BLOB ストレージに**既定のコンテナー**を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (timeToLive) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成されます。 クラスターは、処理が終了すると自動的に削除されます。
+- HDInsight クラスターは、JSON (linkedServiceName) で指定した BLOB ストレージに **既定のコンテナー** を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (timeToLive) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成されます。 クラスターは、処理が終了すると自動的に削除されます。
     
     処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 形式になります。 Azure Blob Storage 内のコンテナーを削除するには、 [Microsoft Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用します。
 - 現在、スケジュールは出力データセットによって開始されるため、アクティビティが出力を生成しない場合でも、出力データセットを作成する必要があります。 アクティビティが入力を受け取らない場合は、入力データセットの作成を省略できます。 
@@ -419,7 +419,7 @@ Azure ポータルを使用して、このチュートリアルで作成した�
 
 ## <a name="use-server-explorer-to-view-data-factories"></a>サーバー エクスプローラーを使用して Data Factory を表示する
 1. **Visual Studio** のメニューで **[ビュー]** をクリックし、 **[サーバー エクスプローラー]** をクリックします。
-2. [サーバー エクスプローラー] ウィンドウで、 **[Azure]** 、 **[Data Factory]** の順に展開します。 **[Visual Studio にサインイン]** が表示されたら、Azure サブスクリプションに関連付けられている**アカウント**を入力し、 **[続行]** をクリックします。 **パスワード**を入力し、 **[サインイン]** をクリックします。 Visual Studio は、サブスクリプション内のすべての Azure データ ファクトリに関する情報を取得しようとします。 **[Data Factory Task List (Data Factory タスク リスト)]** ウィンドウで、この操作のステータスを確認します。
+2. [サーバー エクスプローラー] ウィンドウで、 **[Azure]** 、 **[Data Factory]** の順に展開します。 **[Visual Studio にサインイン]** が表示されたら、Azure サブスクリプションに関連付けられている **アカウント** を入力し、 **[続行]** をクリックします。 **パスワード** を入力し、 **[サインイン]** をクリックします。 Visual Studio は、サブスクリプション内のすべての Azure データ ファクトリに関する情報を取得しようとします。 **[Data Factory Task List (Data Factory タスク リスト)]** ウィンドウで、この操作のステータスを確認します。
 
     ![[サーバー エクスプローラー]](./media/data-factory-build-your-first-pipeline-using-vs/server-explorer.png)
 3. データ ファクトリを右クリックし、 **[Data Factory を新しいプロジェクトにエクスポートする]** を選択して、既存のデータ ファクトリに基づいて Visual Studio プロジェクトを作成します。
@@ -455,7 +455,7 @@ Azure Storage のリンクされたサービスに関して次のような JSON 
 環境ごとに次の手順を実行して構成ファイルを追加します。   
 
 1. Visual Studio ソリューションで Data Factory プロジェクトを右クリックし、 **[追加]** をポイントして、 **[新しい項目]** をクリックします。
-2. 左側にあるインストールされたテンプレートの一覧で **[構成]** を選択し、 **[構成ファイル]** を選択して、構成ファイルの**名前**を入力し、 **[追加]** をクリックします。
+2. 左側にあるインストールされたテンプレートの一覧で **[構成]** を選択し、 **[構成ファイル]** を選択して、構成ファイルの **名前** を入力し、 **[追加]** をクリックします。
 
     ![Add configuration file](./media/data-factory-build-your-first-pipeline-using-vs/add-config-file.png)
 3. 次の形式で構成パラメーターとその値を追加します。
@@ -536,7 +536,7 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 3. **[Publish Items (項目の発行)]** ページのドロップダウン リストに、 **[Select Deployment Config (デプロイ構成の選択)]** フィールドで使用できる構成が表示されます。
 
     ![Select config file](./media/data-factory-build-your-first-pipeline-using-vs/select-config-file.png)
-4. 使用する**構成ファイル**を選択し、 **[次へ]** をクリックします。
+4. 使用する **構成ファイル** を選択し、 **[次へ]** をクリックします。
 5. JSON ファイルの名前が **[概要]** ページに表示されていることを確認し、 **[次へ]** をクリックします。
 6. デプロイ操作が終了したら、 **[完了]** をクリックします。
 
@@ -548,12 +548,12 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 ## <a name="summary"></a>まとめ
 このチュートリアルでは、HDInsight Hadoop クラスター上で Hive スクリプトを実行してデータを処理するために、Azure データ ファクトリを作成しました。 以下の手順を実行するために、Azure ポータルで Data Factory エディターを使用しました。  
 
-1. Azure **データ ファクトリ**を作成しました。
-2. 次の 2 つの **リンクされたサービス**を作成しました。
+1. Azure **データ ファクトリ** を作成しました。
+2. 次の 2 つの **リンクされたサービス** を作成しました。
    1. **Azure Storage** のリンクされたサービス。
    2. **Azure HDInsight** オンデマンドのリンクされたサービス。 Azure Data Factory は、入力データを処理し、出力データを生成するために、HDInsight Hadoop クラスターをジャストインタイムで作成します。
-3. パイプラインの HDInsight Hive アクティビティ向けの入出力データを記述する 2 つの **データセット**を作成しました。
-4. **HDInsight Hive** アクティビティを持つ**パイプライン**を作成しました。  
+3. パイプラインの HDInsight Hive アクティビティ向けの入出力データを記述する 2 つの **データセット** を作成しました。
+4. **HDInsight Hive** アクティビティを持つ **パイプライン** を作成しました。  
 
 ## <a name="next-steps"></a>次の手順
 この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「 [チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。

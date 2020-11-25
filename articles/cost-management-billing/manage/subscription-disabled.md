@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 11/17/2020
 ms.author: banders
-ms.openlocfilehash: 550be6c10402398b62af307281660b93981a0df3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cad3082981bcfc699bc230badf44e2ffc2e1bed3
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308964"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744427"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>無効な Azure サブスクリプションを再度有効にする
 
@@ -54,6 +54,10 @@ Azure の課金アクティビティの監視および管理については、�
     ![右側のウィンドウに [再度有効にする] リンクが表示されているスクリーンショット。](./media/subscription-disabled/reactivate-sub.png)
 
 その他のサブスクリプションの種類については、[サポートに連絡して](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)、サブスクリプションを再度有効にしてもらいます。
+
+## <a name="after-reactivation"></a>再度有効にした後
+
+サブスクリプションを再度有効にした後、リソースの作成または管理に遅延が発生する可能性があります。 遅延が 30 分を超えた場合は、[Azure の課金サポート](https://go.microsoft.com/fwlink/?linkid=2083458)にお問い合わせください。 ほとんどの Azure リソースは自動的に再開され、対処は必要ありません。 しかし、Azure サービス リソースを確認し、自動的に再開されていないものは再起動することをお勧めします。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 

@@ -1,30 +1,31 @@
 ---
-title: 機能フィルターを使用してユーザーのサブセットに対して機能を有効にする
+title: 機能フィルターを使用して条件付き機能フラグを有効にする
 titleSuffix: Azure App Configuration
-description: 機能フィルターを使用してユーザーのサブセットに対して機能を有効にする方法を説明します
+description: 機能フィルターを使用して条件付き機能フラグを有効にする方法について説明します。
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 author: lisaguthrie
 ms.author: lcozzens
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 5b2eb942581f6e4163012b0f767d04c02689bb7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af8df66e02dc9316311f36dec60374a7c4e649b8
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88206758"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554745"
 ---
-# <a name="use-feature-filters-to-enable-a-feature-for-a-subset-of-users"></a>機能フィルターを使用してユーザーのサブセットに対して機能を有効にする
+# <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>機能フィルターを使用して条件付き機能フラグを有効にする
 
 機能フラグを使用すると、アプリケーションの機能をアクティブ化または非アクティブ化することができます。 単純な機能フラグは、オンまたはオフのいずれかです。 アプリケーションは常に同じように動作します。 たとえば、機能フラグを使用して新しい機能をロールアウトします。 機能フラグを有効にすると、すべてのユーザーに新しい機能が表示されます。 機能フラグを無効にすると、新しい機能は表示されなくなります。
 
 これに対し、"_条件付き機能フラグ_" を使用すると、機能フラグを動的に有効または無効にすることができます。 機能フラグの条件によっては、アプリケーションの動作が異なる場合があります。 最初に、ユーザーの小さなサブセットに新しい機能を表示するとします。 条件付き機能フラグを使用すると、一部のユーザーに対しては機能フラグを有効にし、他のユーザーに対しては無効にすることができます。 "_機能フィルター_" では、評価のたびに機能フラグの状態が判断されます。
 
-`Microsoft.FeatureManagement` ライブラリには、次の 2 つの機能フィルターがあります。
+`Microsoft.FeatureManagement` ライブラリには、3 つの機能フィルターがあります。
 
 - `PercentageFilter` では、パーセンテージに基づいて機能フラグが有効にされます。
 - `TimeWindowFilter` では、指定した時間帯に機能フラグが有効にされます。
+- `TargetingFilter` では、指定したユーザーとグループに対して機能フラグが有効にされます。
 
 また、[Microsoft.FeatureManagement.IFeatureFilter インターフェイス](/dotnet/api/microsoft.featuremanagement.ifeaturefilter)を実装する独自の機能フィルターを作成することもできます。
 
@@ -84,9 +85,9 @@ public void ConfigureServices(IServiceCollection services)
 この機能フラグの効果を確認するには、アプリケーションを起動し、ブラウザーの **[更新]** ボタンを何回かクリックします。 約 50% の時間は、ツール バーに *Beta* と表示されます。 要求のサブセットに対する *Beta* 機能は `PercentageFilter` によって非アクティブ化されるため、残りの時間は表示されません。 次のビデオでは、この動作を示します。
 
 > [!div class="mx-imgBorder"]
-> ![PercentageFilter の動作](./media/feature-flags-percentagefilter.gif)
+> ![TargetingFilter の動作](./media/feature-flags-percentagefilter.gif)
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [機能管理の概要](./concept-feature-management.md)
+> [対象ユーザーに対して機能の段階的なロールアウトを有効にする](./howto-targetingfilter-aspnet-core.md)

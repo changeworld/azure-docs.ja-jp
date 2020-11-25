@@ -3,18 +3,18 @@ title: Azure EA Portal の管理
 description: この記事では、Azure EA Portal で管理者が行う一般的なタスクについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 10/27/2020
+ms.date: 11/13/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperfq1
-ms.openlocfilehash: e83af5baa4ca38a8e81dffa8bb81ab3da64e1e95
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: edcc94050880544a6c2de54ff27f833f1c60f99f
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411041"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683647"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA Portal の管理
 
@@ -135,28 +135,20 @@ ms.locfileid: "94411041"
    状態は、 **[保留中]** から **[開始日/終了日]** に変わるはずです。 開始日/終了日は、ユーザーが最初にサインインした日付と契約終了日です。
 1. Azure エンタープライズ ポータルに初めてサインインするときに **警告** メッセージが表示されるときは、アカウント所有者は、 **[続行]** を選択してアカウントをアクティブ化する必要があります。
 
-## <a name="change-account-owner"></a>アカウント所有者を変更する
+## <a name="change-azure-subscription-or-account-ownership"></a>Azure サブスクリプションまたはアカウントの所有権を変更する
 
-エンタープライズ管理者は、Azure エンタープライズ ポータルを使用して、加入契約のサブスクリプション アカウント所有権を譲渡できます。 このアクションでは、ソース ユーザー アカウントのすべてのサブスクリプションが、ターゲット ユーザー アカウントに転送されます。
+エンタープライズ管理者は、Azure Enterprise portal を使用して、加入契約に含まれるサブスクリプション (選択されたサブスクリプションまたはすべてのサブスクリプション) のアカウント所有権を譲渡できます。
 
-アカウントを転送するときは、次の重要な情報に注意してください。
+サブスクリプションまたはアカウント所有権の譲渡が完了すると、Microsoft によってアカウント所有者が更新されます。
 
-- 次のような転送を行うことができます。
-  - 職場または学校アカウントから、別の職場または学校アカウントに。
-  - Microsoft アカウントから、職場または学校アカウントに。
-  - Microsoft アカウントから、別の Microsoft アカウントに。
+所有権の譲渡を行う前に、次の Azure ロールベースのアクセス制御 (Azure RBAC) について理解してください。
 
-    ターゲット アカウントは、転送の有効なターゲットとなる有効な Azure コマース アカウントである必要があります。 新しいアカウントの場合は、Azure エンタープライズ ポータルにサインインするときに、Azure コマース アカウントを作成するよう求められます。 既存のアカウントの場合は、最初に新しい Azure サブスクリプションを作成してから、アカウントが対象となるようにする必要があります。
-
-- 職場または学校アカウントから Microsoft アカウントに転送することはできません。
-
-- サブスクリプションの転送が完了すると、Microsoft によってアカウント所有者が更新されます。
-
-ロールベースのアクセス制御 (RBAC) の以下のポリシーを理解してください。
-
-- 同じテナント内の 2 つの組織 ID 間でサブスクリプション転送を行う場合は、RBAC ポリシーと既存のサービス管理者および共同管理者ロールが保持されます。
-- その他のサブスクリプション譲渡では、RBAC ポリシーとロールの割り当てが失われます。
+- 同じテナント内の 2 つの組織 ID 間でサブスクリプションまたはアカウント所有権の譲渡を行う場合は、Azure RBAC ポリシーと既存のサービス管理者ロールおよび共同管理者ロールが保持されます。
+- 異なるテナント間で行うサブスクリプションまたはアカウント所有権の譲渡では、Azure RBAC ポリシーとロールの割り当てが失われます。
 - ポリシーと管理者ロールが、異なるディレクトリ間で転送されることはありません。 サービス管理者は、ターゲット アカウントの所有者に更新されます。
+- テナント間でサブスクリプションを譲渡する際に、RBAC ポリシーやロールの割り当てが失われるのを防ぐために、 **[Move the subscriptions to the recipient’s Azure AD tenant]\(受け取り側の Azure AD テナントにサブスクリプションを移動する\)** チェック ボックスは必ず **オフ** のままにしてください。 そうすることで、現在の Azure AD テナントにあるサービス、RBAC ロール、ポリシーは維持され、アカウントの課金所有権だけが譲渡されます。  
+    :::image type="content" source="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="サブスクリプションを Azure AD テナントに移動するためのチェック ボックスがオフになっている画像" lightbox="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
+
 
 アカウント所有者を変更する前に:
 
@@ -168,26 +160,25 @@ ms.locfileid: "94411041"
 1. Azure エンタープライズ ポータルにサインインします。
 1. 左側のナビゲーション領域で、 **[管理]** を選択します。
 1. **[アカウント]** タブを選択し、アカウントをポイントします。
-1. 右側のアカウント所有者変更アイコンを選択します。 人に似たアイコンです。
-1. 対象のアカウントを選択し、 **[次へ]** を選択します。
+1. 右側のアカウント所有者変更アイコンを選択します。 人に似たアイコンです。  
+    ![アカウント所有者の変更記号を示す画像](./media/ea-portal-administration/create-ea-create-sub-transfer-account-ownership-of-sub.png)
+1. 譲渡先のアカウントを選択し、 **[次へ]** を選択します。
+1. Azure AD テナント間でアカウント所有権を譲渡したい場合は、 **[Move the subscriptions to the recipient's Azure AD tenant]\(受け取り側の Azure AD テナントにサブスクリプションを移動する\)** チェック ボックスをオンにします。  
+    :::image type="content" source="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="サブスクリプションを Azure AD テナントに移動するためのチェック ボックスがオンになっている画像" lightbox="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
 1. 転送を確認し、 **[送信]** を選択します。
-
-![アカウント所有者の変更記号を示す画像](./media/ea-portal-administration/create-ea-create-sub-transfer-account-ownership-of-sub.png)
 
 単一のサブスクリプションのアカウント所有権を転送するには:
 
 1. Azure エンタープライズ ポータルにサインインします。
 1. 左側のナビゲーション領域で、 **[管理]** を選択します。
 1. **[アカウント]** タブを選択し、アカウントをポイントします。
-1. 右側にあるサブスクリプション譲渡アイコンを選択します。 ページに似たアイコンです。
-1. 対象のサブスクリプションを選択し、 **[次へ]** を選択します。
+1. 右側にあるサブスクリプション譲渡アイコンを選択します。 ページに似たアイコンです。  
+    ![サブスクリプションの転送記号を示す画像](./media/ea-portal-administration/ea-transfer-subscriptions.png)
+1. サブスクリプションの譲渡先のアカウントを選択し、 **[次へ]** を選択します。
+1. Azure AD テナント間でサブスクリプションの所有権を譲渡したい場合は、 **[Move the subscriptions to the recipient's Azure AD tenant]\(譲渡される側の Azure AD テナントにサブスクリプションを移動する\)** チェック ボックスをオンにします。  
+    :::image type="content" source="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="サブスクリプションを Azure AD テナントに移動するためのチェック ボックスがオンになっている画像" lightbox="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
 1. 転送を確認してから、 **[送信]** を選択します。
 
-![サブスクリプションの転送記号を示す画像](./media/ea-portal-administration/ea-transfer-subscriptions.png)
-
-Azure エンタープライズ ポータルでのユーザー管理については、次のビデオをご覧ください。
-
-> [!VIDEO https://www.youtube.com/embed/621jVkvmwm8]
 
 ## <a name="associate-an-account-to-a-department"></a>アカウントを部門に関連付ける
 

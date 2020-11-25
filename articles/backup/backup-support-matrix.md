@@ -4,12 +4,12 @@ description: Azure Backup サービスのサポート設定と制限事項の概
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: ee37e994c9e72c3d3c98455360dc68746f49d278
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ae2eb97f214204b813564b6373c4e9dc176f483c
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743133"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555438"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -25,7 +25,7 @@ ms.locfileid: "92743133"
 
 ## <a name="vault-support"></a>コンテナーのサポート
 
-Azure Backup では、Recovery Services コンテナーを使用して、バックアップを調整および管理しています。 また、コンテナーを使用してバックアップ データを格納しています。
+Azure Backup は Recovery Services コンテナーを使用して、各種のワークロード (Azure VM、Azure VM の SQL、Azure VM の SAP HANA、Azure ファイル共有、および Azure Backup エージェント、Azure Backup Server、および System Center DPM を使用したオンプレミスのワークロード) を調整および管理します。 また、Recovery Services コンテナーを使用して、これらのワークロードのバックアップ データを格納します。
 
 次の表では、Recovery Services コンテナーの機能について説明します。
 

@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 37a17105be0b6754bbdfd935c6c17933314114d4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: eee711917a732bfc24b10db82c75786fd9734b57
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289600"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555687"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -70,10 +70,20 @@ Azure App Service のために (それが提供されているリージョンで
 
 | マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | プレビュー | 使用不可 | 使用不可 | 使用不可 | 
+| システム割り当て済み | プレビュー | 使用不可 | 使用不可 | 使用不可 |
 | ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
 Azure Arc 対応 Kubernetes では、現在、[システムによって割り当てられた ID がサポートされています](../../azure-arc/kubernetes/connect-cluster.md#azure-arc-agents-for-kubernetes)。 マネージド サービス ID 証明書は、すべての Azure Arc 対応 Kubernetes エージェントによって Azure との通信のために使用されています。
+
+### <a name="azure-automanage"></a>Azure Automanage
+
+| マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| システム割り当て済み | プレビュー | 使用不可 | 使用不可 | 使用不可 |
+| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
+
+サブスクリプションを新しいテナントに移動した場合は、次のドキュメントを参照してマネージド ID を再構成します。
+* [切断された Automanage アカウントの修復](../../automanage/repair-automanage-account.md)
 
 ### <a name="azure-blueprints"></a>Azure Blueprint
 
@@ -151,7 +161,7 @@ Azure Data Factory V2 のために (それが提供されているリージョ�
 
 
 
-### <a name="azure-event-grid"></a>Azure Event Grid 
+### <a name="azure-event-grid"></a>Azure Event Grid
 
 マネージド ID の種類 |すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -202,7 +212,7 @@ Azure Data Factory V2 のために (それが提供されているリージョ�
 
 | マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | 使用不可 | 
+| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | 使用不可 |
 | ユーザー割り当て済み | プレビュー | 使用不可 | 使用不可 | 使用不可 |
 
 
@@ -222,7 +232,7 @@ Azure Logic Apps のために (それが提供されているリージョンで)
 - [Azure Portal](../../logic-apps/create-managed-service-identity.md#enable-system-assigned-identity-in-azure-portal)
 - [Azure Resource Manager テンプレート](../../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 
-### <a name="azure-machine-learning"></a>Azure Machine Learning 
+### <a name="azure-machine-learning"></a>Azure Machine Learning
 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -264,7 +274,7 @@ Azure Policy のために (それが提供されているリージョンで) マ
 
 | マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | ![利用可能][check] | 利用不可 | 利用不可 | 利用不可 | 
+| システム割り当て済み | ![利用可能][check] | 利用不可 | 利用不可 | 利用不可 |
 | ユーザー割り当て済み | 利用不可 | 利用不可 | 利用不可 | 利用不可 |
 
 
@@ -298,7 +308,7 @@ Azure Virtual Machine Scale Sets のために (それが提供されているリ
 
 | マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | プレビュー | プレビュー | 
+| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | プレビュー | プレビュー |
 | ユーザー割り当て済み | ![利用可能][check] | ![利用可能][check] | プレビュー | プレビュー |
 
 Azure Virtual Machines のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
@@ -315,7 +325,7 @@ Azure Virtual Machines のために (それが提供されているリージョ�
 
 | マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | 利用不可 | 利用不可 | 利用不可 | 利用不可 | 
+| システム割り当て済み | 利用不可 | 利用不可 | 利用不可 | 利用不可 |
 | ユーザー割り当て済み | [サポートされているリージョンで利用可能](../../virtual-machines/windows/image-builder-overview.md#regions) | 利用不可 | 利用不可 | 利用不可 |
 
 Azure VM Image Builder のために (それが提供されているリージョンで) マネージド ID を構成する方法については、[Image Builder の概要](../../virtual-machines/windows/image-builder-overview.md#permissions)に関するページを参照してください。

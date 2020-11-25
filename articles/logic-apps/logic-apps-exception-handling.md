@@ -9,11 +9,11 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84704524"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014739"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Azure Logic Apps におけるエラーと例外の処理
 
@@ -267,7 +267,7 @@ ms.locfileid: "84704524"
 
 [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) 関数を使用すると、スコープ内のすべてのアクションの結果に関するコンテキストが得られます。 `result()` 関数は、単一のパラメーター (スコープの名前) を受け取り、そのスコープ内のアクションの結果をすべて含む配列を返します。 これらのアクションのオブジェクトには、`actions()` オブジェクトと同じ属性 (アクションの開始時刻、終了時刻、状態、入力、相関 ID、出力など) が含まれます。 `@result()` 式と `runAfter` プロパティを組み合わせるだけで、スコープ内で失敗したすべてのアクションのコンテキストを受け取ることができます。
 
-スコープ内の `Failed` となったアクションごとにアクションを実行し、失敗したアクションに到達するまで結果の配列をフィルター処理するには、`@result()` 式を [ **[配列のフィルター処理]** ](logic-apps-perform-data-operations.md#filter-array-action) アクションと [**For each**](../logic-apps/logic-apps-control-flow-loops.md) ループと組み合わせて使用します。 抽出した結果の配列を `For_each` ループに渡すことで、それぞれのエラーに対してアクションを実行することができます。
+スコープ内の `Failed` となったアクションごとにアクションを実行し、失敗したアクションに到達するまで結果の配列をフィルター処理するには、`@result()` 式を [ **[配列のフィルター処理]**](logic-apps-perform-data-operations.md#filter-array-action) アクションと [**For each**](../logic-apps/logic-apps-control-flow-loops.md) ループと組み合わせて使用します。 抽出した結果の配列を `For_each` ループに渡すことで、それぞれのエラーに対してアクションを実行することができます。
 
 次の例では、"My_Scope" というスコープ内で失敗したすべてのアクションの応答本文を含む HTTP POST 要求が送信されます (詳細については例の後に記載)。
 

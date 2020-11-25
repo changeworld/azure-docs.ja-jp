@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/06/2017
 ms.custom: devx-track-js
 ms.openlocfilehash: dfd1fe9db54925bc17a53a7686fa34d5ea53cd5a
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614106"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013600"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Azure Service Fabric での Node.js アプリケーションのホスト
 
@@ -25,7 +25,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ## <a name="create-the-service"></a>サービスの作成
 
-Visual Studio を**管理者**として起動します。
+Visual Studio を **管理者** として起動します。
 
 `CTRL`+`SHIFT`+`N` キーを押して、プロジェクトを作成します。
 

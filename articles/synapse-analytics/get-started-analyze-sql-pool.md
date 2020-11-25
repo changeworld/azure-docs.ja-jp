@@ -9,22 +9,22 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: c46adf9e9f5c1b2e74c1098ebf137c4556bfc58d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.date: 11/17/2020
+ms.openlocfilehash: ae7b15bf2e2efd72184110a105f68815516569ab
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147566"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843912"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>専用の SQL プールを使用してデータを分析する
 
 Azure Synapse Analytics には、専用 SQL プールを使用してデータを分析する機能が用意されています。 このチュートリアルでは、NYC タクシーのデータを使用して、専用 SQL プールの機能を探索します。
 
-## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>NYC タクシー データを SQLDB1 に読み込む
+## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>NYC タクシー データを SQLPOOL1 に読み込む
 
 1. Synapse Studio で **[開発]** ハブに移動し、新しい SQL スクリプトを作成します
-1. スクリプトの [接続先] セクションで、プール "SQLDB1" (このチュートリアルの[ステップ 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) で作成したプール) を選択します。
+1. スクリプトの [接続先] セクションで、プール "SQLPOOL1" (このチュートリアルの[ステップ 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) で作成したプール) を選択します。
 1. 次のコードを入力します。
     ```
     CREATE TABLE [dbo].[Trip]
@@ -71,15 +71,15 @@ Azure Synapse Analytics には、専用 SQL プールを使用してデータを
     )
     OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
     ```
-1. このスクリプトの実行には約 1 分かかります。 200 万行の NYC タクシー データを **dbo.Trip** というテーブルに読み込みます
+1. このスクリプトは、約 60 秒で終了します。 200 万行の NYC タクシー データを **dbo.Trip** というテーブルに読み込みます
 
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>専用 SQL プール内の NYC タクシーのデータを探索する
 
 1. Synapse Studio で、 **[データ]** ハブに移動します。
-1. **[SQLDB1]**  >  **[テーブル]** に移動します。 複数のテーブルが読み込まれていることがわかります。
+1. **[SQLPOOL1]**  >  **[テーブル]** の順に移動します。 複数のテーブルが読み込まれていることがわかります。
 1. **dbo.Trip** テーブルを右クリックし、 **[New SQL Script]\(新しい SQL スクリプト\)**  >  **[Select TOP 100 Rows]\(上位 100 行の選択\)** を選択します。
 1. 新しい SQL スクリプトが作成されて実行されるまで待ちます。
-1. SQL スクリプトの上部にある **[接続先]** が自動的に **SQLDB1** という SQL プールに注目します。
+1. SQL スクリプトの上部の **Connect to** が自動的に **SQLPOOL1** という SQL プールに設定されることに注意してください。
 1. SQL スクリプトのテキストをこのコードで置き換えて実行します。
 
     ```sql

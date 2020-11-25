@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: 8a84c9979bdfac1165d44d03572567ab1ea7ab1f
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: ef7f7ba659d874d4514c45e9391912f3027e2265
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995350"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592058"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
@@ -262,6 +262,13 @@ SQL データベース/Azure Synapse Analytics にデータをコピーすると
 ## <a name="fault-tolerance"></a>フォールト トレランス
 
 既定では、ソース データ行がシンク データ行と互換性がない場合、コピー アクティビティでデータのコピーが停止され、エラーが返されます。 コピーを成功させるには、互換性のない行をスキップし、ログに記録し、互換性のあるデータのみをコピーするようにコピー アクティビティを構成します。 詳細については、[コピー アクティビティのフォールト トレランス](copy-activity-fault-tolerance.md)に関する記事を参照してください。
+
+## <a name="data-consistency-verification"></a>データ整合性の検証
+
+ソース ストアからコピー先ストアにデータを移動するとき、Azure Data Factory コピー アクティビティでは、データがソース ストアからコピー先ストアに正常にコピーされただけでなく、ソース ストアとコピー先ストアの間の整合性も確保されていることを確認するための、追加のデータ整合性検証を行うことができます。 データの移動中に整合性のないファイルが検出されたら、コピー アクティビティを中止するか、またはフォールト トレランス設定を有効にして整合性のないファイルをスキップすることで、その他のデータをコピーし続けることができます。 スキップされたファイル名を取得するには、コピー アクティビティでセッション ログ設定を有効にします。 詳細については、「[コピー アクティビティでのデータ整合性の検証](copy-activity-data-consistency.md)」を参照してください。
+
+## <a name="session-log"></a>セッション ログ
+コピーされたファイル名をログに記録できます。これにより、コピー アクティビティのセッション ログを確認することで、データがコピー元からコピー先ストアに正常にコピーされたことだけでなく、コピー元とコピー先ストアの間で一貫していることも確認できます。 詳細については、「[コピー アクティビティのセッション ログ](copy-activity-log.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 次のクイック スタート、チュートリアル、およびサンプルを参照してください。

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: f501b9f4215b9eeb48aa8bc80d492d55cf940404
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c88aea6aff942cdcf5cbc022df8f07cfe0d4cce
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397387"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701281"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>チュートリアル:Azure Storage に格納されている JSON BLOB のインデックスを REST で作成する
 
@@ -76,11 +76,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. コンテナーが作成されたら、コンテナーを開いてコマンド バーの **[アップロード]** を選択します。
 
-   :::image type="content" source="media/search-semi-structured-data/upload-command-bar.png" alt-text="ストレージ アカウントの作成" border="false":::
+   :::image type="content" source="media/search-semi-structured-data/upload-command-bar.png" alt-text="コマンド バーの [アップロード]" border="false":::
 
 1. サンプル ファイルを含むフォルダーに移動します。 すべてを選択し、 **[アップロード]** をクリックします。
 
-   :::image type="content" source="media/search-semi-structured-data/clinicalupload.png" alt-text="ストレージ アカウントの作成" border="false":::
+   :::image type="content" source="media/search-semi-structured-data/clinicalupload.png" alt-text="ファイルをアップロードする" border="false":::
 
 アップロードが完了したら、データ コンテナー内の独自のサブフォルダーにファイルが表示されます。
 
@@ -98,19 +98,19 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
-:::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="ストレージ アカウントの作成" border="false":::
+:::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="HTTP エンドポイントとアクセス キーを取得する" border="false":::
 
 すべての要求では、サービスに送信されるすべての要求に API キーが必要です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
 ## <a name="2---set-up-postman"></a>2 - Postman を設定する
 
-Postman を開始し、HTTP 要求を設定します。 このツールに慣れていない場合は、[Postman を使用して Azure Cognitive Search REST API を調べる方法](search-get-started-postman.md)に関するページを参照してください。
+Postman を開始し、HTTP 要求を設定します。 このツールに慣れていない場合は、[Azure Cognitive Search REST API を調べる方法](search-get-started-rest.md)に関するページを参照してください。
 
 このチュートリアルで使用する各呼び出しの要求メソッドは **POST** と **GET** です。 検索サービスに対して 3 つの API 呼び出しを行い、データ ソース、インデックス、およびインデクサーを作成します。 データ ソースには、ストレージ アカウントと JSON データへのポインターが含まれています。 データを読み込むときに、検索サービスは接続を行います。
 
 ヘッダーで "Content-type" を `application/json` に設定し、`api-key` に自分の Azure Cognitive Search サービスの管理者 API キーを設定します。 ヘッダーを設定したら、この演習の各要求でそれらを使用できます。
 
-  :::image type="content" source="media/search-get-started-postman/postman-url.png" alt-text="ストレージ アカウントの作成" border="false":::
+  :::image type="content" source="media/search-get-started-rest/postman-url.png" alt-text="Postman の要求 URL とヘッダー" border="false":::
 
 URI では API バージョンを指定する必要があり、各呼び出しで **201 Created** が返される必要があります。 JSON 配列の使用を目的として一般公開が開始されている API バージョンは、`2020-06-30` です。
 
@@ -315,11 +315,11 @@ URI では API バージョンを指定する必要があり、各呼び出し�
 
 1. 結果を制限してフィールドを絞り込むために、`$select` クエリ パラメーターを追加します (`https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2020-06-30&$count=true`)。  このクエリでは 100 件のドキュメントが一致しますが、Azure Cognitive Search から結果として返されるのは、既定では 50 件のみです。
 
-   :::image type="content" source="media/search-semi-structured-data/lastquery.png" alt-text="ストレージ アカウントの作成" border="false":::
+   :::image type="content" source="media/search-semi-structured-data/lastquery.png" alt-text="パラメーター化クエリ" border="false":::
 
 1. より複雑なクエリの例として `$filter=MinimumAge ge 30 and MaximumAge lt 75` があります。このクエリは、MinimumAge パラメーターが 30 以上および MaximumAge パラメーターが 75 未満の結果のみ返します。 `$select` 式は `$filter` 式に置き換えてください。
 
-   :::image type="content" source="media/search-semi-structured-data/metadatashort.png" alt-text="ストレージ アカウントの作成" border="false":::
+   :::image type="content" source="media/search-semi-structured-data/metadatashort.png" alt-text="半構造化検索" border="false":::
 
 論理演算子 (and、or、not) と比較演算子 (eq、ne、gt、lt、ge、le) を使用することもできます。 文字列比較では大文字と小文字が区別されます。 詳細と例については、[簡単なクエリを作成する](search-query-simple-examples.md)方法に関するページを参照してください。
 

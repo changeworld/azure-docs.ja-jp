@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 375dff1dacc949dd4373bbf26908feb504750224
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: c0333f9faeae99ee83beda381f77f4f95b0a9192
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372343"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636122"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -37,7 +37,8 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 
 - [Azure セキュリティ ベンチマークのカバレッジを広げるために追加された、29 個のプレビュー推奨事項](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
 - [Security Center の法令遵守ダッシュボードに追加された NIST SP 800 171 R2](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
-
+- [推奨事項の一覧にフィルターを追加](#recommendations-list-now-includes-filters)
+- [自動プロビジョニング エクスペリエンスの向上と拡張](#auto-provisioning-experience-improved-and-expanded)
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>Azure セキュリティ ベンチマークのカバレッジを広げるために追加された、29 個のプレビュー推奨事項
 
@@ -78,6 +79,30 @@ NIST SP 800-171 R2 標準が、Azure Security Center の法令遵守ダッシュ
 このコンプライアンス標準の詳細については、[NIST SP 800-171 R2](https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final) に関するページを参照してください。
 
 
+### <a name="recommendations-list-now-includes-filters"></a>推奨事項の一覧にフィルターを追加
+
+さまざまな条件に従って、セキュリティに関する推奨事項の一覧をフィルター処理できるようになりました。 次の例では、以下の条件を満たす推奨事項を表示するように、推奨事項の一覧がフィルター処理されています。
+
+- **一般提供** されている (つまり、プレビューではない)
+- **ストレージ アカウント** を対象とする
+- **クイック修正** による修復をサポートしている
+
+:::image type="content" source="media/release-notes/recommendations-filters.png" alt-text="推奨事項の一覧のフィルター":::
+
+
+### <a name="auto-provisioning-experience-improved-and-expanded"></a>自動プロビジョニング エクスペリエンスの向上と拡張
+
+自動プロビジョニング機能は、Security Center の保護によるメリットが得られるように、必要な拡張機能を新規および既存の Azure VM にインストールすることで管理オーバーヘッドの削減を支援します。 
+
+Azure Security Center の拡大に伴って、より多くの拡張機能が開発されています。Security Center では、リソースの種類の大規模な一覧を監視できます。 自動プロビジョニング ツールが拡張され、Azure Policy の機能を活用して、追加の拡張機能とリソースの種類がサポートされるようになりました。
+
+次の自動プロビジョニングを構成できるようになりました。
+
+- Log Analytics エージェント
+- (新) Kubernetes 用の Azure Policy アドオン
+- (新) Microsoft Dependency Agent
+
+詳細については、「[Azure Security Center からのエージェントと拡張機能の自動プロビジョニング](security-center-enable-data-collection.md)」をご覧ください。
 
 ## <a name="october-2020"></a>2020 年 10 月
 

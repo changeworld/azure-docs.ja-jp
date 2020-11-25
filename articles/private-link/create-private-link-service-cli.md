@@ -7,19 +7,20 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 2cfc746d883b565fe7a082a316ce314f385225df
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 87fe02aed19ae7e5858715748a2b4c4da87a07b3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358176"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658572"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Azure CLI を使用してプライベート リンク サービスを作成する
 この記事では、Azure CLI を使用して Azure 上でプライベート リンク サービスを作成する方法を示します。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-代わりに、Azure CLI をローカルにインストールして使用する場合、このクイックスタートでは、最新の Azure CLI バージョンを使用する必要があります。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードについては、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」をご覧ください。
+- この記事には、Azure CLI の最新バージョンが必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
+
 ## <a name="create-a-private-link-service"></a>Private Link サービスを作成する
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -78,7 +79,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 ```
 ### <a name="create-backend-servers"></a>バックエンド サーバーの作成
 
-この例では、仮想マシンの作成については説明しません。 「[Azure CLI を使用して VM の負荷を分散する内部ロード バランサーを作成する](../load-balancer/load-balancer-get-started-ilb-arm-cli.md#create-servers-for-the-backend-address-pool)」の手順に従って、ロード バランサー用のバックエンド サーバーとして使用される 2 つの仮想マシンを作成できます。 
+この例では、仮想マシンの作成については説明しません。 「[クイックスタート: Azure CLI を使用して VM の負荷を分散する内部ロード バランサーを作成する](/load-balancer/quickstart-load-balancer-standard-internal-cli#create-backend-servers)」の手順に従って、ロード バランサー用のバックエンド サーバーとして使用される 2 つの仮想マシンを作成できます。 
 
 
 ### <a name="disable-private-link-service-network-policies-on-subnet"></a>サブネット上で Private Link サービス ネットワーク ポリシーを無効にする 

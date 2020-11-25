@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 63abbc739849a201275995c81a28ede9f9c84b5a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eaac8bdf828d2dd9a8e2dfae0b1b2b5985d1951d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613341"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592704"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>クイック スタート: Python Web アプリに Microsoft でサインインを追加する
 
-このクイックスタートでは、Python Web アプリを Microsoft ID プラットフォームと統合する方法を説明します。 お使いのアプリによって、ユーザーがサインインされ、Microsoft Graph API を呼び出すためのアクセス トークンが取得されて、Microsoft Graph API への要求が行われます。
+このクイックスタートでは、Python Web アプリケーションでユーザーをサインインし、アクセス トークンを取得して Microsoft Graph API を呼び出す方法を示すコード サンプルをダウンロードして実行します。 個人用 Microsoft アカウントまたは Azure Active Directory (Azure AD) 組織のアカウントを持つユーザーは、アプリケーションにサインインできます。
 
-このガイドを完了すると、アプリケーションは、個人用の Microsoft アカウント (outlook.com、live.com など) と、Azure Active Directory を使用する会社や組織の職場または学校アカウントのサインインを受け入れるようになります。 (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
+図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -120,7 +120,7 @@ ms.locfileid: "91613341"
 >
 > - `Enter_the_Application_Id_here` - 登録したアプリケーションのアプリケーション ID。
 > - `Enter_the_Client_Secret_Here` - 登録済みアプリケーション用に **[証明書とシークレット]** で作成した **[クライアント シークレット]** です。
-> - `Enter_the_Tenant_Name_Here` - 登録したアプリケーションの**ディレクトリ (テナント) ID** 値です。
+> - `Enter_the_Tenant_Name_Here` - 登録したアプリケーションの **ディレクトリ (テナント) ID** 値です。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-run-the-code-sample"></a>手順 3:コード サンプルの実行

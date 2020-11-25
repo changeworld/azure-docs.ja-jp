@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: how-to
-ms.date: 10/29/2020
+ms.date: 11/13/2020
 ms.author: jasteppe
-ms.openlocfilehash: 9a4e2c4dfe8a9de28688afe0dd036cecb7ce2b39
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 79a7b18986f4bed503cd5493a7d74325a13fe535
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381220"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630517"
 ---
 # <a name="display-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>Azure IoT Connector for FHIR (プレビュー) のメトリックを表示および構成する 
 
@@ -41,6 +41,9 @@ ms.locfileid: "94381220"
    :::image type="content" source="media/iot-metrics-display/iot-metrics-select-time.png" alt-text="'コネクタ 1' の '1 時間' の期間の折れ線グラフが表示されている、[IoT Connector] ペインのスクリーンショット。" lightbox="media/iot-metrics-display/iot-metrics-select-time.png"::: 
  
 ## <a name="metric-types-for-azure-iot-connector-for-fhir-preview"></a>Azure IoT Connector for FHIR (プレビュー) のメトリックの種類 
+
+> [!TIP]
+> Azure IoT Connector for FHIR のデータ フローについては、「[Azure IoT Connector for FHIR (プレビュー) のデータ フロー](./iot-data-flow.md)」と「[Azure IoT Connector for FHIR (プレビュー) のトラブルシューティング ガイド](./iot-troubleshoot-guide.md)」を参照して、エラー メッセージと修正の詳細を確認してください。
 
 表示できる IoT Connector のメトリックを次の表に示します。
 

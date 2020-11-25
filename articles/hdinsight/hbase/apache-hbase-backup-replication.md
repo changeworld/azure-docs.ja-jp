@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: fdd43a017e584a07d61d41e1af06d30db2f30ac7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3ed55387034a383e402d027fd5cab60c4a59c23c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542779"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657042"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>HDInsight で Apache HBase と Apache Phoenix に対するバックアップとレプリケーションを設定する
 
@@ -173,7 +173,7 @@ curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterNam
 
 ## <a name="snapshots"></a>スナップショット
 
-[スナップショット](https://hbase.apache.org/book.html#ops.snapshots)を使用すると、HBase データストア内に特定の時点のデータ バックアップを作成できます。 スナップショットは、最小限のオーバーヘッドで、数秒以内に完了します。これは、スナップショット操作が、事実上、そのインスタンスのストレージ内にあるすべてのファイルの名前をキャプチャするメタデータ操作であるからです。 スナップショットの時点では、実際のデータはコピーされません。 スナップショットは、HDFS に保存されているデータの不変的な性質を利用します。ここでは、更新、削除、挿入すべてが新しいデータとして表されます。 スナップショットは、同じクラスター上に復元 (" *複製* ") することも、別のクラスターにエクスポートすることもできます。
+[スナップショット](https://hbase.apache.org/book.html#ops.snapshots)を使用すると、HBase データストア内に特定の時点のデータ バックアップを作成できます。 スナップショットは、最小限のオーバーヘッドで、数秒以内に完了します。これは、スナップショット操作が、事実上、そのインスタンスのストレージ内にあるすべてのファイルの名前をキャプチャするメタデータ操作であるからです。 スナップショットの時点では、実際のデータはコピーされません。 スナップショットは、HDFS に保存されているデータの不変的な性質を利用します。ここでは、更新、削除、挿入すべてが新しいデータとして表されます。 スナップショットは、同じクラスター上に復元 ("*複製*") することも、別のクラスターにエクスポートすることもできます。
 
 スナップショットを作成するには、HDInsight HBase クラスターのヘッド ノードに SSH で接続し、`hbase` シェルを起動します。
 
@@ -217,6 +217,12 @@ hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -cop
 
 ```console
 hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.myaccount.blob.core.windows.net=mykey -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
+```
+
+宛先クラスターが ADLS Gen 2 クラスターの場合は、ADLS Gen 2 で使用される構成に合うように前のコマンドを変更してください。
+
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.<account_name>.dfs.core.windows.net=<key> -Dfs.azure.account.auth.type.<account_name>.dfs.core.windows.net=SharedKey -Dfs.azure.always.use.https.<account_name>.dfs.core.windows.net=false -Dfs.azure.account.keyprovider.<account_name>.dfs.core.windows.net=org.apache.hadoop.fs.azurebfs.services.SimpleKeyProvider -snapshot 'Snapshot1' -copy-to 'abfs://<container>@<account_name>.dfs.core.windows.net/hbase'
 ```
 
 スナップショットがエクスポートされたら、エクスポート先クラスターのヘッド ノードに SSH で接続し、前に説明したように `restore_snapshot` コマンドを使用してスナップショットを復元します。

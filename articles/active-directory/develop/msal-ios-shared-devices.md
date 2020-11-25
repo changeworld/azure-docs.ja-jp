@@ -13,19 +13,17 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 949ddae903a53957f62b89a01ce477edb92917c1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a97e14bcb68629f5f175a4913146187949af08be
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365913"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561065"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>iOS デバイスの共有デバイス モード
 
-> [!NOTE]
-> この機能はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>[!IMPORTANT]
+> この機能[!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 小売店員、航空機乗組員、フィールド サービス ワーカーなどの Firstline Worker (現場の最前線で働く従業員) は多くの場合、共有モバイル デバイスを使用して作業を行います。 これらの共有デバイスでは、ユーザーが意図的か否かにかかわらず、パスワードや PIN を共有して、共有デバイス上の顧客データやビジネス データにアクセスする場合に、セキュリティ上のリスクをもたらす可能性があります。
 
@@ -43,7 +41,7 @@ ms.locfileid: "92365913"
 
 1. **デバイス管理者** は、組織内のデバイスを管理するために Microsoft Intune のようなモバイル デバイス管理 (MDM) プロバイダーを使用して、デバイスの共有を準備します。 MDM は、デバイスに Microsoft Authenticator アプリをプッシュし、デバイスのプロファイルの更新を通じて、各デバイスの "共有モード" をオンにします。 この共有モード設定は、デバイスでサポートされているアプリの動作を変更するものです。 MDM プロバイダーからのこの構成によって、デバイスの共有デバイス モードを設定し、共有デバイス モードで必要とされる [Apple デバイス用の Microsoft Enterprise SSO プラグイン](apple-sso-plugin.md)を有効にします。
 
-1. **[パブリック プレビュー中にのみ必要]** [クラウド デバイス管理者](../roles/permissions-reference.md#cloud-device-administrator) ロールを持つユーザーは、 [Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)を起動し、デバイスを組織に参加させる必要があります。
+1. **[パブリック プレビュー中にのみ必要]** [クラウド デバイス管理者](../roles/permissions-reference.md#cloud-device-administrator) ロールを持つユーザーは、[Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)を起動し、デバイスを組織に参加させる必要があります。
 
     Azure portal で組織ロールのメンバーシップを構成するには: **[Azure Active Directory]**  >  **[ロールと管理者]**  >  **[クラウド デバイス管理者]**
 
@@ -59,9 +57,9 @@ ms.locfileid: "92365913"
 1. Intune 構成ポータルで、デバイスに次の構成で [Apple デバイス用の Microsoft Enterprise SSO プラグイン](apple-sso-plugin.md)を有効にするように指示します。
 
     - **[種類]** :リダイレクト
-    - **拡張 ID** : com.microsoft.azureauthenticator.ssoextension
-    - **チーム ID** : (iOS ではこのフィールドは必要ありません)
-    - **URL** :   
+    - **拡張 ID**: com.microsoft.azureauthenticator.ssoextension
+    - **チーム ID**: (iOS ではこのフィールドは必要ありません)
+    - **URL**:   
         - `https://login.microsoftonline.com`
         - `https://login.microsoft.com`
         - `https://sts.windows.net`
@@ -71,7 +69,7 @@ ms.locfileid: "92365913"
         - `https://login.microsoftonline.us`
         - `https://login.usgovcloudapi.net`
         - `https://login-us.microsoftonline.com`
-    - **構成する追加データ** :
+    - **構成する追加データ**:
       - キー: sharedDeviceMode
       - 型: Boolean
       - 値: true

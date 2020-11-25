@@ -14,12 +14,12 @@ ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 131deabfbd29e4d55a3f34252e3ba68261872ca0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ae89091eb57eade39f8b7581fc5df7ad449e8590
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785495"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553558"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>Azure Site Recovery を使用して Azure 内の別のリージョンに SQL Server VM を移動する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ SQL Server VM を別のリージョンに移動するには、次の手順を実
 - ソース リージョンからターゲット リージョンへの移動が[サポートされている](../../../site-recovery/azure-to-azure-support-matrix.md#region-support)ことを確認します。  
 - [シナリオのアーキテクチャとコンポーネント](../../../site-recovery/azure-to-azure-architecture.md)、および[サポートの制限事項と要件](../../../site-recovery/azure-to-azure-support-matrix.md)を確認します。 
 - アカウントのアクセス許可を確認する。 自分で無料の Azure アカウントを作成した場合、自分がそのサブスクリプションの管理者になっています。 サブスクリプションの管理者でなければ、管理者に協力を求め、必要なアクセス許可を割り当てます。 VM のレプリケーションを有効にし、Azure Site Recovery を使用してデータをコピーするには、次のものが必要です。 
-    - VM を作成するためのアクセス許可。 " *仮想マシン共同作成者* " 組み込みロールには次のアクセス許可が与えられています。 
+    - VM を作成するためのアクセス許可。 "*仮想マシン共同作成者*" 組み込みロールには次のアクセス許可が与えられています。 
         - 選択したリソース グループ内に VM を作成するためのアクセス許可。 
         - 選択した仮想ネットワーク内に VM を作成するためのアクセス許可。 
         - 選択したストレージ アカウントに書き込むためのアクセス許可。 
@@ -131,7 +131,7 @@ SQL Server VM を別のリージョンに移動するには、次の手順を実
 1. フェールオーバー プロセスは、前のセクションでフェールオーバー テストを監視していたときに表示したのと同じ **[Site Recovery ジョブ]** ページから監視できます。 
 1. ジョブが完了したら、予想どおりに SQL Server VM がターゲット リージョンに表示されることを確認します。 
 1. コンテナーに戻り、 **[レプリケートされたアイテム]** を選択し、SQL Server VM を選択し、 **[コミット]** を選択して、ターゲット リージョンへの移動プロセスを終了します。 コミット ジョブが完了するまでお待ちください。 
-1. SQL Server VM を SQL VM リソース プロバイダーに登録して、Azure portal での **SQL 仮想マシン** の管理容易性、およびリソース プロバイダーに関連した機能を有効にします。 詳細については、[SQL Server VM の SQL VM リソース プロバイダーへの登録](sql-vm-resource-provider-register.md)に関する記事をご覧ください。 
+1. SQL Server VM を SQL IaaS Agent 拡張機能に登録して、Azure portal での **SQL 仮想マシン** の管理容易性、および拡張機能に関連した機能を有効にします。 詳細については、[SQL Server VM の SQL IaaS Agent 拡張機能への登録](sql-agent-extension-manually-register-single-vm.md)に関する記事を参照してください。 
 
   > [!WARNING]
   > SQL Server のデータの整合性は、アプリ整合性スナップショットでのみ保証されます。 **処理された最新の** スナップショットは、SQL Server のフェールオーバーには使用できません。これは、クラッシュ復旧スナップショットは、SQL Server のデータの整合性を保証できないためです。 

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-csharp
 - devx-track-azurecli
-ms.openlocfilehash: 036629bd72f8219c2d7b1877dd1672291ed3d98a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: b87408669dbb9268d6e3cd47b410b888ef1a19c2
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424980"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637151"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>クイックスタート: Azure でコマンド ラインから C# 関数を作成する
 
@@ -28,6 +28,8 @@ ms.locfileid: "93424980"
 開始する前に、次の項目を用意する必要があります。
 
 + アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+
++ [.NET Core SDK 3.1](https://www.microsoft.com/net/download)
 
 + [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.x。
 
@@ -49,6 +51,8 @@ ms.locfileid: "93424980"
 
 + `az login` を実行して Azure にサインインし、アクティブなサブスクリプションを確認します。
 
++ `dotnet --list-sdks` を実行して、.NET Core SDK バージョン 3.1.x がインストールされていることを確認します。
+
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 + ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 3.x であることを確認します。
@@ -56,6 +60,8 @@ ms.locfileid: "93424980"
 + `(Get-Module -ListAvailable Az).Version` を実行し、バージョン 5.0 以降であることを確認します。 
 
 + `Connect-AzAccount` を実行して Azure にサインインし、アクティブなサブスクリプションを確認します。
+
++ `dotnet --list-sdks` を実行して、.NET Core SDK バージョン 3.1.x がインストールされていることを確認します。
 
 ---
 

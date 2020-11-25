@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/15/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d6f72231e84650a17850932979b43c21dd045f30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e73f11ec178c067941ee33e02f37c96605460ee0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069325"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658589"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する
 
@@ -28,7 +28,7 @@ Azure サブネットから外に向かうアウトバウンド ネットワー�
 
 このチュートリアルでは、デプロイしやすいように、2 つのサブネットを含む簡単な VNet を 1 つ作成します。
 
-運用環境のデプロイでは、[ハブとスポーク モデル](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)を採用して、独自の VNet にファイアウォールを配置することをお勧めします。 ワークロード サーバーは、1 つ以上のサブネットを含む同じリージョンのピアリングされた VNet に配置されます。
+運用環境のデプロイでは、[ハブとスポーク モデル](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)を採用して、独自の VNet にファイアウォールを配置することをお勧めします。 ワークロード サーバーは、1 つ以上のサブネットを含む同じリージョンのピアリングされた VNet に配置されます。
 
 * **AzureFirewallSubnet** - このサブネットにファイアウォールが存在します。
 * **Workload-SN** - このサブネットにはワークロード サーバーがあります。 このサブネットのネットワーク トラフィックは、ファイアウォールを通過します。
@@ -226,8 +226,8 @@ Azure Firewall には、既定で許可されるインフラストラクチャ F
 5. **[ルール]** の **[名前]** に「**rdp-nat**」と入力します。
 6. **[プロトコル]** で **[TCP]** を選択します。
 7. **[Source type]\(送信元の種類\)** で、 **[IP アドレス]** を選択します。
-8. **[送信元]** に「 **\*** 」と入力します。
-9. **[宛先アドレス]** に、ファイアウォールのパブリック IP アドレスを入力します。
+8. **[送信元]** に「* *\** _」と入力します。
+9. _*[宛先アドレス]** に、ファイアウォールのパブリック IP アドレスを入力します。
 10. **[宛先ポート]** に「**3389**」と入力します。
 11. **[変換されたアドレス]** に、**Srv-work** のプライベート IP アドレスを入力します。
 12. **[Translated port] (変換されたポート)** に「**3389**」と入力します。
@@ -272,4 +272,4 @@ Azure Firewall には、既定で許可されるインフラストラクチャ F
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Azure Firewall のログを監視する](./tutorial-diagnostics.md)
+> [チュートリアル:Azure Firewall のログを監視する](./firewall-diagnostics.md)

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 17b2ab53c0154a29f9084f9dd999a53bcf477b72
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b684123068889e422080605fb9c50ef9aed0cb76
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075128"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630160"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Windows での Azure Files に関する問題のトラブルシューティング (SMB)
 
@@ -30,14 +30,14 @@ ms.locfileid: "93075128"
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>原因 1:通信チャネルが暗号化されていない
 
-通信チャネルが暗号化されていない場合や、接続の試行が Azure ファイル共有と同じデータセンターから行われていない場合、セキュリティ上の理由により、Azure ファイル共有への接続がブロックされます。 ストレージ アカウントで [[安全な転送が必須]](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) 設定が有効になっている場合は、同じデータセンター内の暗号化されていない接続もブロックされる可能性があります。 ユーザーのクライアント OS が SMB 暗号化をサポートしている場合に限り、暗号化された通信チャネルを利用できます。
+通信チャネルが暗号化されていない場合や、接続の試行が Azure ファイル共有と同じデータセンターから行われていない場合、セキュリティ上の理由により、Azure ファイル共有への接続がブロックされます。 ストレージ アカウントで [[安全な転送が必須]](../common/storage-require-secure-transfer.md) 設定が有効になっている場合は、同じデータセンター内の暗号化されていない接続もブロックされる可能性があります。 ユーザーのクライアント OS が SMB 暗号化をサポートしている場合に限り、暗号化された通信チャネルを利用できます。
 
 Windows 8 以降および Windows Server 2012 以降の OS であれば、暗号化をサポートしている SMB 3.0 を含む要求をネゴシエートできます。
 
 ### <a name="solution-for-cause-1"></a>原因 1 の解決策
 
 1. SMB 暗号化 (Windows 8、Windows Server 2012、またはそれ以降) をサポートするクライアントから接続するか、Azure ファイル共有に使用されている Azure ストレージ アカウントと同じデータ センターにある仮想マシンから接続します。
-2. クライアントが SMB 暗号化をサポートしていない場合、ストレージ アカウントで [[安全な転送が必須]](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) 設定が無効になっていることを確認します。
+2. クライアントが SMB 暗号化をサポートしていない場合、ストレージ アカウントで [[安全な転送が必須]](../common/storage-require-secure-transfer.md) 設定が無効になっていることを確認します。
 
 ### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因 2:ストレージ アカウントに対して仮想ネットワークまたはファイアウォール ルールが有効になっている 
 
@@ -45,7 +45,7 @@ Windows 8 以降および Windows Server 2012 以降の OS であれば、暗号
 
 ### <a name="solution-for-cause-2"></a>原因 2 の解決策
 
-ストレージ アカウントに対して仮想ネットワークまたはファイアウォール ルールが適切に構成されていることを確認します。 仮想ネットワークまたはファイアウォール ルールが問題の原因となっているかどうかをテストするには、ストレージ アカウントの設定を一時的に **[Allow access from all networks]\(すべてのネットワークからのアクセスを許可する\)** に変更する必要があります。 詳細については、[「Azure Storage ファイアウォールおよび仮想ネットワークを構成する」](https://docs.microsoft.com/azure/storage/common/storage-network-security)を参照してください。
+ストレージ アカウントに対して仮想ネットワークまたはファイアウォール ルールが適切に構成されていることを確認します。 仮想ネットワークまたはファイアウォール ルールが問題の原因となっているかどうかをテストするには、ストレージ アカウントの設定を一時的に **[Allow access from all networks]\(すべてのネットワークからのアクセスを許可する\)** に変更する必要があります。 詳細については、[「Azure Storage ファイアウォールおよび仮想ネットワークを構成する」](../common/storage-network-security.md)を参照してください。
 
 ### <a name="cause-3-share-level-permissions-are-incorrect-when-using-identity-based-authentication"></a>原因 3:ID ベースの認証を利用するとき、共有レベルのアクセス許可が正しくない
 
@@ -55,10 +55,10 @@ Windows 8 以降および Windows Server 2012 以降の OS であれば、暗号
 
 アクセス許可が正しく構成されていることを確認します。
 
-- **Active Directory (AD)** : 「 [ID に共有レベルのアクセス許可を割り当てる](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions)」を参照してください。
+- **Active Directory (AD)** : 「[ID に共有レベルのアクセス許可を割り当てる](./storage-files-identity-ad-ds-assign-permissions.md)」を参照してください。
 
     共有レベルのアクセス許可の割り当ては、Azure AD Connect を使用して Active Directory (AD) から Azure Active Directory (Azure AD) に同期されたグループおよびユーザーに対してサポートされています。  共有レベルのアクセス許可が割り当てられているグループとユーザーが、サポートされていない "クラウド専用" グループではないことを確認します。
-- **Azure Active Directory Domain Services (Azure AD DS)** : 「 [ID にアクセス許可を割り当てる](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity)」を参照してください。
+- **Azure Active Directory Domain Services (Azure AD DS)** : 「[ID にアクセス許可を割り当てる](./storage-files-identity-auth-active-directory-domain-service-enable.md?tabs=azure-portal#assign-access-permissions-to-an-identity)」を参照してください。
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>Azure ファイル共有をマウントまたはマウント解除するときに、エラー 53、エラー 67、またはエラー 87 が発生する
@@ -111,7 +111,7 @@ TcpTestSucceeded : True
 ### <a name="solution-for-cause-1"></a>原因 1 の解決策
 
 #### <a name="solution-1---use-azure-file-sync"></a>ソリューション 1 - Azure File Sync を使用する
-Azure File Sync により、オンプレミスの Windows Server を Azure ファイル共有の高速キャッシュに変えることができます。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 Azure File Sync は、ポート 443 上で動作するため、ポート 445 がブロックされているクライアントから Azure Files にアクセスするための回避策として使用できます。 [Azure File Sync を設定する方法を確認してください](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers)。
+Azure File Sync により、オンプレミスの Windows Server を Azure ファイル共有の高速キャッシュに変えることができます。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 Azure File Sync は、ポート 443 上で動作するため、ポート 445 がブロックされているクライアントから Azure Files にアクセスするための回避策として使用できます。 [Azure File Sync を設定する方法を確認してください](./storage-sync-files-extend-servers.md)。
 
 #### <a name="solution-2---use-vpn"></a>ソリューション 2 - VPN を使用する
 特定のストレージ アカウントへの VPN を設定すると、トラフィックは、インターネット経由ではなく安全なトンネル経由で送信されます。 Windows から Azure Files にアクセスするための [VPN の設定手順](storage-files-configure-p2s-vpn-windows.md)に従ってください。
@@ -120,7 +120,7 @@ Azure File Sync により、オンプレミスの Windows Server を Azure フ�
 IT 部門または ISP と連携して、ポート 445 の送信方向の通信を [Azure の IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に解放します。
 
 #### <a name="solution-4---use-rest-api-based-tools-like-storage-explorerpowershell"></a>ソリューション 4 - REST API ベースのツール (Storage Explorer や  Powershell など) を使用する
-Azure Files は、SMB だけでなく、REST もサポートしています。 REST アクセスは、ポート 443 (標準の tcp) 上で動作します。 REST API を使用して作成された、豊富な UI エクスペリエンスを可能にするさまざまなツールがあります。 [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) もその 1 つです。 [Storage Explorer をダウンロードしてインストールし](https://azure.microsoft.com/features/storage-explorer/)、Azure Files でサポートされるファイル共有に接続します。 同じく REST API を使用する [PowerShell](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-powershell) を使用することもできます。
+Azure Files は、SMB だけでなく、REST もサポートしています。 REST アクセスは、ポート 443 (標準の tcp) 上で動作します。 REST API を使用して作成された、豊富な UI エクスペリエンスを可能にするさまざまなツールがあります。 [Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows) もその 1 つです。 [Storage Explorer をダウンロードしてインストールし](https://azure.microsoft.com/features/storage-explorer/)、Azure Files でサポートされるファイル共有に接続します。 同じく REST API を使用する [PowerShell](./storage-how-to-use-files-powershell.md) を使用することもできます。
 
 ### <a name="cause-2-ntlmv1-is-enabled"></a>原因 2:NTLMv1 が有効になっている
 
@@ -130,11 +130,11 @@ Azure Files は、SMB だけでなく、REST もサポートしています。 R
 
 **HKLM\SYSTEM\CurrentControlSet\Control\Lsa > LmCompatibilityLevel**
 
-詳細については、TechNet のトピック「[LmCompatibilityLevel](https://technet.microsoft.com/library/cc960646.aspx)」を参照してください。
+詳細については、TechNet のトピック「[LmCompatibilityLevel](/previous-versions/windows/it-pro/windows-2000-server/cc960646(v=technet.10))」を参照してください。
 
 ### <a name="solution-for-cause-2"></a>原因 2 の解決策
 
-次のレジストリ サブキーで、 **LmCompatibilityLevel** の値を既定値である 3 に戻します。
+次のレジストリ サブキーで、**LmCompatibilityLevel** の値を既定値である 3 に戻します。
 
   **HKLM\SYSTEM\CurrentControlSet\Control\Lsa**
 
@@ -143,18 +143,18 @@ Azure Files は、SMB だけでなく、REST もサポートしています。 R
 
 ### <a name="cause"></a>原因
 
-エラー 1816 は、Azure ファイル共有上のファイルまたはディレクトリに対して許可されている、同時に開くことのできるハンドルの上限に達したときに発生します。 詳細については、「[Azure Files のスケール ターゲット](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets)」をご覧ください。
+エラー 1816 は、Azure ファイル共有上のファイルまたはディレクトリに対して許可されている、同時に開くことのできるハンドルの上限に達したときに発生します。 詳細については、「[Azure Files のスケール ターゲット](./storage-files-scale-targets.md#azure-files-scale-targets)」をご覧ください。
 
 ### <a name="solution"></a>解決策
 
-ハンドルをいくつか閉じて、同時に開いているハンドルの数を減らしてから、再試行します。 詳細については、「[Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」を参照してください。
+ハンドルをいくつか閉じて、同時に開いているハンドルの数を減らしてから、再試行します。 詳細については、「[Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../blobs/storage-performance-checklist.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)」を参照してください。
 
-ファイル共有、ディレクトリ、またはファイルの開いているハンドルを表示するには、[Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell コマンドレットを使用します。  
+ファイル共有、ディレクトリ、またはファイルの開いているハンドルを表示するには、[Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) PowerShell コマンドレットを使用します。  
 
-ファイル共有、ディレクトリ、またはファイルの開いているハンドルを閉じるには、[Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell コマンドレットを使用します。
+ファイル共有、ディレクトリ、またはファイルの開いているハンドルを閉じるには、[Close-AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle) PowerShell コマンドレットを使用します。
 
 > [!Note]  
-> Get-AzStorageFileHandle および Close-AzStorageFileHandle コマンドレットは、Az PowerShell モジュールのバージョン 2.4 以降に含まれています。 最新の Az PowerShell モジュールをインストールするには、「[Install the Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)」(Azure PowerShell モジュールのインストール) を参照してください。
+> Get-AzStorageFileHandle および Close-AzStorageFileHandle コマンドレットは、Az PowerShell モジュールのバージョン 2.4 以降に含まれています。 最新の Az PowerShell モジュールをインストールするには、「[Install the Azure PowerShell module](/powershell/azure/install-az-ps)」(Azure PowerShell モジュールのインストール) を参照してください。
 
 <a id="noaaccessfailureportal"></a>
 ## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Azure ファイル共有にアクセスするか、Azure ファイル共有を削除しようとしたときのエラー "アクセスなし"  
@@ -167,13 +167,13 @@ Azure Files は、SMB だけでなく、REST もサポートしています。 R
 
 ### <a name="solution-for-cause-1"></a>原因 1 の解決策
 
-ストレージ アカウントに対して仮想ネットワークまたはファイアウォール ルールが適切に構成されていることを確認します。 仮想ネットワークまたはファイアウォール ルールが問題の原因となっているかどうかをテストするには、ストレージ アカウントの設定を一時的に **[Allow access from all networks]\(すべてのネットワークからのアクセスを許可する\)** に変更する必要があります。 詳細については、[「Azure Storage ファイアウォールおよび仮想ネットワークを構成する」](https://docs.microsoft.com/azure/storage/common/storage-network-security)を参照してください。
+ストレージ アカウントに対して仮想ネットワークまたはファイアウォール ルールが適切に構成されていることを確認します。 仮想ネットワークまたはファイアウォール ルールが問題の原因となっているかどうかをテストするには、ストレージ アカウントの設定を一時的に **[Allow access from all networks]\(すべてのネットワークからのアクセスを許可する\)** に変更する必要があります。 詳細については、[「Azure Storage ファイアウォールおよび仮想ネットワークを構成する」](../common/storage-network-security.md)を参照してください。
 
 ### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>原因 2:現在のユーザー アカウントには、ストレージ アカウントへのアクセス権がありません
 
 ### <a name="solution-for-cause-2"></a>原因 2 の解決策
 
-Azure ファイル共有が置かれたストレージ アカウントを参照して、 **[アクセス制御 (IAM)]** をクリックし、ユーザー アカウントにストレージ アカウントへのアクセス権があることを確認します。 詳しくは、[ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントをセキュリティで保護する方法](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)に関するページをご覧ください。
+Azure ファイル共有が置かれたストレージ アカウントを参照して、 **[アクセス制御 (IAM)]** をクリックし、ユーザー アカウントにストレージ アカウントへのアクセス権があることを確認します。 詳しくは、[ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントをセキュリティで保護する方法](../blobs/security-recommendations.md#data-protection)に関するページをご覧ください。
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Azure ファイル共有のファイルまたはディレクトリを削除できない
@@ -199,15 +199,15 @@ FileREST プロトコルはステートレス プロトコルであるため、�
 この問題の解決策は、問題が孤立したファイル ハンドルまたはリースによって発生しているかどうかによって異なります。 
 
 ### <a name="cause-1"></a>原因 1
-ファイル ハンドルが原因で、ファイルまたはディレクトリの変更または削除が妨げられています。 [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell コマンドレットを使用して、開いているハンドルを表示できます。 
+ファイル ハンドルが原因で、ファイルまたはディレクトリの変更または削除が妨げられています。 [Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) PowerShell コマンドレットを使用して、開いているハンドルを表示できます。 
 
 すべての SMB クライアントがファイルまたはディレクトリの開いているハンドルを閉じていても、問題が引き続き発生する場合は、ファイル ハンドルを強制的に閉じることができます。
 
 ### <a name="solution-1"></a>解決策 1
-ファイル ハンドルを強制的に閉じるには、[Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell コマンドレットを使用します。 
+ファイル ハンドルを強制的に閉じるには、[Close-AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle) PowerShell コマンドレットを使用します。 
 
 > [!Note]  
-> Get-AzStorageFileHandle および Close-AzStorageFileHandle コマンドレットは、Az PowerShell モジュールのバージョン 2.4 以降に含まれています。 最新の Az PowerShell モジュールをインストールするには、「[Install the Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)」(Azure PowerShell モジュールのインストール) を参照してください。
+> Get-AzStorageFileHandle および Close-AzStorageFileHandle コマンドレットは、Az PowerShell モジュールのバージョン 2.4 以降に含まれています。 最新の Az PowerShell モジュールをインストールするには、「[Install the Azure PowerShell module](/powershell/azure/install-az-ps)」(Azure PowerShell モジュールのインストール) を参照してください。
 
 ### <a name="cause-2"></a>原因 2
 ファイルのリースのために、ファイルを変更または削除できません。 ファイルにファイル リースがあるかどうかを次の PowerShell で確認できます。これには、`<resource-group>`、`<storage-account>`、`<file-share>`、`<path-to-file>` を環境に適した値に置き換えます。
@@ -262,8 +262,8 @@ Azure のファイル サービスにファイルを転送しようとした場�
 - 特定の最小 I/O サイズ要件がない場合は、最適なパフォーマンスを得るために I/O サイズとして 1 MiB を使用することをお勧めします。
 -   書き込みによって大きくなるファイルの最終サイズがわかっており、まだ書き込まれていないファイル末尾にゼロが含まれていてもソフトウェアに互換性の問題がない場合は、書き込みごとにサイズを増やすのではなく、事前にファイル サイズを設定します。
 -   次のように適切なコピー方法を使用します。
-    -   2 つのファイル共有間の転送には、[AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) を使用します。
-    -   オンプレミス コンピューター上のファイル共有間では、[Robocopy](/azure/storage/files/storage-files-deployment-guide#robocopy) を使用します。
+    -   2 つのファイル共有間の転送には、[AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) を使用します。
+    -   オンプレミス コンピューター上のファイル共有間では、[Robocopy](./storage-files-deployment-guide.md#robocopy) を使用します。
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Windows 8.1 または Windows Server 2012 R2 に関する考慮事項
 
@@ -290,7 +290,7 @@ Windows 8.1 または Windows Server 2012 R2 を実行しているクライア�
 既定では、Windows エクスプローラーは管理者として実行されません。 管理コマンド プロンプトから net use を実行すると、ネットワーク ドライブを管理者としてマップすることになります。 マップされたドライブはユーザー主体であるため、異なるユーザー アカウントでドライブがマップされている場合、ログインしているユーザー アカウントにドライブが表示されません。
 
 ### <a name="solution"></a>解決策
-管理者以外のコマンド ラインから共有をマウントします。 そのほか、 [この TechNet の記事](https://technet.microsoft.com/library/ee844140.aspx)に従って **EnableLinkedConnections** レジストリ値を構成する方法もあります。
+管理者以外のコマンド ラインから共有をマウントします。 そのほか、[この TechNet の記事](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee844140(v=ws.10))に従って **EnableLinkedConnections** レジストリ値を構成する方法もあります。
 
 <a id="netuse"></a>
 ## <a name="net-use-command-fails-if-the-storage-account-contains-a-forward-slash"></a>ストレージ アカウントにスラッシュが含まれている場合に、net use コマンドが失敗する
@@ -363,7 +363,7 @@ net use コマンドは、スラッシュ (/) をコマンド ライン オプ�
 
 ### <a name="solution"></a>解決策
 
-この問題を解決するには、 **DirectoryCacheEntrySizeMax** レジストリ値を、クライアント コンピューターでより大規模なディレクトリ一覧のキャッシュが可能になるように調整します。
+この問題を解決するには、**DirectoryCacheEntrySizeMax** レジストリ値を、クライアント コンピューターでより大規模なディレクトリ一覧のキャッシュが可能になるように調整します。
 
 - 場所:HKLM\System\CCS\Services\Lanmanworkstation\Parameters
 - 値の名前:DirectoryCacheEntrySizeMax 
@@ -376,20 +376,20 @@ net use コマンドは、スラッシュ (/) をコマンド ライン オプ�
 
 ### <a name="cause"></a>原因
 
-関連するサブスクリプションの Azure AD テナント上で [Azure AD Domain Services (Azure AD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) が作成されていない場合、ストレージ アカウント上で [Azure Files に対して Azure Active Directory Domain Service (Azure AD DS) 認証を有効](storage-files-identity-auth-active-directory-domain-service-enable.md)にしようとすると、AadDsTenantNotFound エラーが発生します。  
+関連するサブスクリプションの Azure AD テナント上で [Azure AD Domain Services (Azure AD DS)](../../active-directory-domain-services/overview.md) が作成されていない場合、ストレージ アカウント上で [Azure Files に対して Azure Active Directory Domain Service (Azure AD DS) 認証を有効](storage-files-identity-auth-active-directory-domain-service-enable.md)にしようとすると、AadDsTenantNotFound エラーが発生します。  
 
 ### <a name="solution"></a>解決策
 
-ストレージ アカウントがデプロイされているサブスクリプションの Azure AD テナント上で Azure AD DS を有効にします。 マネージド ドメインを作成するには、Azure AD テナントの管理者特権が必要です。 Azure AD テナントの管理者でない場合は、管理者に連絡し、[Azure portal を使用した Azure Active Directory Domain Services の有効化](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)に関する記事に書かれている手順を実行します。
+ストレージ アカウントがデプロイされているサブスクリプションの Azure AD テナント上で Azure AD DS を有効にします。 マネージド ドメインを作成するには、Azure AD テナントの管理者特権が必要です。 Azure AD テナントの管理者でない場合は、管理者に連絡し、[Azure Active Directory Domain Services のマネージド ドメインを作成して構成する](../../active-directory-domain-services/tutorial-create-instance.md)ためのステップバイステップ ガイダンスに従ってください。
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
 ## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>AD 資格情報を使用して Azure Files をマウントできない 
 
 ### <a name="self-diagnostics-steps"></a>自己診断の手順
-最初に、[Azure Files AD 認証を有効にする](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable)ための 4 つのステップをすべて実行していることを確認します。
+最初に、[Azure Files AD 認証を有効にする](./storage-files-identity-auth-active-directory-enable.md)ための 4 つのステップをすべて実行していることを確認します。
 
-次に、[ストレージ アカウント キーを使用して Azure ファイル共有をマウント](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)してみます。 マウントできない場合は、[AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) をダウンロードして、クライアントの実行環境を検証し、自己修正に関する規範的なガイダンスが提供される、Azure Files のアクセス エラーの原因となる互換性のないクライアント構成を検出し、診断トレースを収集します。
+次に、[ストレージ アカウント キーを使用して Azure ファイル共有をマウント](./storage-how-to-use-files-windows.md)してみます。 マウントできない場合は、[AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) をダウンロードして、クライアントの実行環境を検証し、自己修正に関する規範的なガイダンスが提供される、Azure Files のアクセス エラーの原因となる互換性のないクライアント構成を検出し、診断トレースを収集します。
 
 その後、Debug-AzStorageAccountAuth コマンドレットを実行し、ログオンした AD ユーザーで AD の構成に対する一連の基本的なチェックを実行します。 このコマンドレットは、[AzFilesHybrid バージョン 0.1.2 以降](https://github.com/Azure-Samples/azure-files-samples/releases)でサポートされています。 このコマンドレットは、対象のストレージ アカウントに対する所有者アクセス許可を持っている AD ユーザーで実行する必要があります。  
 ```PowerShell
@@ -399,13 +399,13 @@ $StorageAccountName = "<storage-account-name-here>"
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
 ```
 コマンドレットでは、以下のチェックが順番に実行されて、障害に関するガイダンスが提供されます。
-1. CheckADObjectPasswordIsCorrect: ストレージ アカウントを表す AD ID に対して構成されているパスワードが、ストレージ アカウントの kerb1 キー、または kerb2 キーのパスワードと確実に一致しているようにします。 パスワードが正しくない場合、[Update-AzStorageAccountADObjectPassword](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-update-password) を実行してパスワードをリセットできます。 
+1. CheckADObjectPasswordIsCorrect: ストレージ アカウントを表す AD ID に対して構成されているパスワードが、ストレージ アカウントの kerb1 キー、または kerb2 キーのパスワードと確実に一致しているようにします。 パスワードが正しくない場合、[Update-AzStorageAccountADObjectPassword](./storage-files-identity-ad-ds-update-password.md) を実行してパスワードをリセットできます。 
 2. CheckADObject: ストレージ アカウントを表すオブジェクトが Active Directory にあり、正しい SPN (サービス プリンシパル名) を持っていることを確認します。 SPN が正しくセットアップされていない場合、デバッグ コマンドレットで返される Set-AD コマンドレットを実行して SPN を構成してください。
-3. CheckDomainJoined: クライアント コンピューターが AD にドメイン参加していることを検証します。 クライアント コンピューターが AD にドメイン参加していない場合、ドメイン参加方法についてはこちらの[記事](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK)を参照してください。
+3. CheckDomainJoined: クライアント コンピューターが AD にドメイン参加していることを検証します。 クライアント コンピューターが AD にドメイン参加していない場合、ドメイン参加方法についてはこちらの[記事](/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK)を参照してください。
 4. CheckPort445Connectivity: SMB 接続に対してポート 445 が開いていることを確認します。 必要なポートが開いていない場合、Azure Files の接続問題について、トラブルシューティング ツール [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) を参照してください。
 5. CheckSidHasAadUser: ログオンしている AD ユーザーが Azure AD と同期されていることを確認します。 特定の AD ユーザーが Azure AD に同期されているかどうかを調べる場合は、入力パラメーターに -UserName と -Domain を指定します。 
 6. CheckGetKerberosTicket: ストレージ アカウントに接続するための Kerberos チケットの取得を試みます。 有効な Kerberos トークンがない場合、klist get cifs/storage-account-name.file.core.windows.net コマンドレットを実行し、エラー コードを調べ、チケット取得失敗の根本原因を探ります。
-7. CheckStorageAccountDomainJoined: AD 認証が有効になっており、アカウントの AD プロパティが設定されているかどうかを確認します。 有効になっていない場合、[こちら](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable)の指示を参照し、Azure Files で AD DS 認証を有効にします。 
+7. CheckStorageAccountDomainJoined: AD 認証が有効になっており、アカウントの AD プロパティが設定されているかどうかを確認します。 有効になっていない場合、[こちら](./storage-files-identity-ad-ds-enable.md)の指示を参照し、Azure Files で AD DS 認証を有効にします。 
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Windows エクスプローラーでディレクトリまたはファイル レベルのアクセス許可 (Windows ACL) を構成できない
 
@@ -417,7 +417,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 ### <a name="solution"></a>解決策
 
-回避策として、[icacls tool](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) を使用してディレクトリまたはファイル レベルのアクセス許可を構成することをお勧めします。 
+回避策として、[icacls tool](/windows-server/administration/windows-commands/icacls) を使用してディレクトリまたはファイル レベルのアクセス許可を構成することをお勧めします。 
 
 ## <a name="errors-when-running-join-azstorageaccountforauth-cmdlet"></a>Join-AzStorageAccountForAuth コマンドレットの実行中にエラーが発生した
 
@@ -431,7 +431,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 ## <a name="azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption"></a>Azure Files オンプレミス AD DS 認証による AES 256 Kerberos 暗号化のサポート
 
-[AzFilesHybrid module v0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases) を使用した Azure Files オンプレミス AD DS 認証に対する AES 256 Kerberos 暗号化のサポートを導入しました。 v0.2.2 より前のモジュール バージョンで AD DS 認証を有効にしている場合は、最新の AzFilesHybrid モジュール (v0.2.2+) をダウンロードし、以下の PowerShell を実行する必要があります。 ストレージ アカウントで AD DS 認証をまだ有効にしていない場合は、この有効化の[ガイダンス](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable#option-one-recommended-use-azfileshybrid-powershell-module)に従って有効にすることができます。 
+[AzFilesHybrid module v0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases) を使用した Azure Files オンプレミス AD DS 認証に対する AES 256 Kerberos 暗号化のサポートを導入しました。 v0.2.2 より前のモジュール バージョンで AD DS 認証を有効にしている場合は、最新の AzFilesHybrid モジュール (v0.2.2+) をダウンロードし、以下の PowerShell を実行する必要があります。 ストレージ アカウントで AD DS 認証をまだ有効にしていない場合は、この有効化の[ガイダンス](./storage-files-identity-ad-ds-enable.md#option-one-recommended-use-azfileshybrid-powershell-module)に従って有効にすることができます。 
 
 ```PowerShell
 $ResourceGroupName = "<resource-group-name-here>"

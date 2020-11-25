@@ -16,31 +16,28 @@ ms.workload: infrastructure-services
 ms.date: 10/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 454dc3ddd03be319c23df67231ea2ab08b95c52b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c66ecceea770ec32e907a9bdc21fff29cf6aa453
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544921"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698514"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>クイック スタート:Azure CLI を使用して VM の負荷を分散するパブリック ロード バランサーを作成する
 
 Azure CLI を使用してパブリック ロード バランサーと 3 つの仮想マシンを作成することにより、Azure Load Balancer の使用を開始します。
 
-## <a name="prerequisites"></a>前提条件
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- ローカルにインストールされた Azure CLI または Azure Cloud Shell
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
-
-CLI をローカルにインストールして使用する場合、このクイックスタートでは Azure CLI バージョン 2.0.28 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+- このクイックスタートには、Azure CLI のバージョン 2.0.28 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-[az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) を使用して、次のようにリソース グループを作成します。
+[az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) を使用して、次のようにリソース グループを作成します。
 
 * 名前は **CreatePubLBQS-rg** にします。 
 * 場所は **eastus** にします。
@@ -63,7 +60,7 @@ VM をデプロイしてロード バランサーをテストする前に、サ�
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-[az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt) を使用して、次のように仮想ネットワークを作成します。
+[az network vnet create](/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt) を使用して、次のように仮想ネットワークを作成します。
 
 * 名前は **myVNet** にします。
 * アドレス プレフィックスは **10.1.0.0/16** にします。
@@ -86,7 +83,7 @@ VM をデプロイしてロード バランサーをテストする前に、サ�
 
 Standard ロード バランサーの場合、バックエンドが扱う VM には、ネットワーク セキュリティ グループに属しているネットワーク インターフェイスが必要です。 
 
-[az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) を使用して、次のようにネットワーク セキュリティ グループを作成します。
+[az network nsg create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) を使用して、次のようにネットワーク セキュリティ グループを作成します。
 
 * 名前は **myNSG** にします。
 * 作成先のリソース グループは **CreatePubLBQS-rg** とします。
@@ -99,7 +96,7 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 
 ### <a name="create-a-network-security-group-rule"></a>ネットワーク セキュリティ グループ規則を作成する
 
-[az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) を使用して、次のようにネットワーク セキュリティ グループの規則を作成します。
+[az network nsg rule create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) を使用して、次のようにネットワーク セキュリティ グループの規則を作成します。
 
 * 名前は **myNSGRuleHTTP** にします。
 * ネットワーク セキュリティ グループは、前の手順で作成した **myNSG** にします。
@@ -129,7 +126,7 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 
 ### <a name="create-network-interfaces-for-the-virtual-machines"></a>仮想マシンのネットワーク インターフェイスを作成する
 
-[az network nic create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) を使用して、次のように 3 つのネットワーク インターフェイスを作成します。
+[az network nic create](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) を使用して、次のように 3 つのネットワーク インターフェイスを作成します。
 
 #### <a name="vm1"></a>VM1
 
@@ -236,7 +233,7 @@ runcmd:
 ```
 ### <a name="create-virtual-machines"></a>仮想マシンを作成する
 
-[az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) を使用して、次のように仮想マシンを作成します。
+[az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) を使用して、次のように仮想マシンを作成します。
 
 #### <a name="vm1"></a>VM1
 * 名前は **myVM1** にします。
@@ -303,7 +300,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 インターネット上の Web アプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 
 
-[az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) を使用して、以下のことを行います。
+[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) を使用して、以下のことを行います。
 
 * **myPublicIP** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します。
 * 作成先のリソース グループは **CreatePubLBQS-rg** とします。
@@ -336,7 +333,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ### <a name="create-the-load-balancer-resource"></a>ロード バランサーのリソースを作成する
 
-[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create) を使用して、次のようにパブリック ロード バランサーを作成します。
+[az network lb create](/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create) を使用して、次のようにパブリック ロード バランサーを作成します。
 
 * 名前は **myLoadBalancer** にします。
 * フロントエンド プールの名前は **myFrontEnd** にします。
@@ -359,7 +356,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 プローブ チェックが失敗した仮想マシンは、ロード バランサーから削除されます。 障害が解決されると、仮想マシンがロード バランサーに再び追加されます。
 
-[az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create) を使用して、次のように正常性プローブを作成します。
+[az network lb probe create](/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create) を使用して、次のように正常性プローブを作成します。
 
 * 仮想マシンの正常性を監視します。
 * 名前は **myHealthProbe** にします。
@@ -383,7 +380,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 * トラフィックを受信するためのバックエンド IP プール。
 * 必要な発信元ポートと宛先ポート。 
 
-[az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) を使用して、次のようにロード バランサー規則を作成します。
+[az network lb rule create](/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) を使用して、次のようにロード バランサー規則を作成します。
 
 * 名前は **myHTTPRule** にします
 * フロントエンド プール **myFrontEnd** で **ポート 80** をリッスンします。
@@ -412,7 +409,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 ```
 ### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>仮想マシンをロード バランサー バックエンド プールに追加する
 
-[az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add) を使用して、次のように仮想マシンをバックエンド プールに追加します。
+[az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add) を使用して、次のように仮想マシンをバックエンド プールに追加します。
 
 #### <a name="vm1"></a>VM1
 * バックエンド アドレス プールは **myBackEndPool** にします。
@@ -466,11 +463,11 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ### <a name="create-outbound-public-ip-address-or-public-ip-prefix"></a>アウトバウンド パブリック IP アドレスまたはパブリック IP プレフィックスを作成します。
 
-[az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) を使用して、アウトバウンド接続用の 1 つの IP を作成します。  
+[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) を使用して、アウトバウンド接続用の 1 つの IP を作成します。  
 
-[az network public-ip prefix create](https://docs.microsoft.com/cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-create) を使用して、アウトバウンド接続用のパブリック IP プレフィックスを作成します。
+[az network public-ip prefix create](/cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-create) を使用して、アウトバウンド接続用のパブリック IP プレフィックスを作成します。
 
-アウトバウンド NAT とアウトバウンド接続のスケーリングの詳細については、「[複数の IP アドレスでアウトバウンド NAT をスケーリングする](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scale)」を参照してください。
+アウトバウンド NAT とアウトバウンド接続のスケーリングの詳細については、「[複数の IP アドレスでアウトバウンド NAT をスケーリングする](load-balancer-outbound-connections.md)」を参照してください。
 
 #### <a name="public-ip"></a>パブリック IP
 
@@ -517,7 +514,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ### <a name="create-outbound-frontend-ip-configuration"></a>アウトバウンド フロントエンド IP 構成を作成する
 
-[az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create) を使用して、次のように新しいフロントエンド IP 構成を作成します。
+[az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create) を使用して、次のように新しいフロントエンド IP 構成を作成します。
 
 前の手順での決定に基づいて、パブリック IP またはパブリック IP プレフィックスのコマンドを選択します。
 
@@ -553,7 +550,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ### <a name="create-outbound-pool"></a>送信プールを作成する
 
-[az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create) を使用して、次のように新しいアウトバウンド プールを作成します。
+[az network lb address-pool create](/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create) を使用して、次のように新しいアウトバウンド プールを作成します。
 
 * 名前は **myBackEndPoolOutbound** にします。
 * 作成先のリソース グループは **CreatePubLBQS-rg** とします。
@@ -567,7 +564,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 ```
 ### <a name="create-outbound-rule"></a>アウトバウンド規則の作成
 
-[az network lb outbound-rule create](https://docs.microsoft.com/cli/azure/network/lb/outbound-rule?view=azure-cli-latest#az-network-lb-outbound-rule-create) を使用して、次のようにアウトバウンド バックエンド プールの新しいアウトバウンド規則を作成します。
+[az network lb outbound-rule create](/cli/azure/network/lb/outbound-rule?view=azure-cli-latest#az-network-lb-outbound-rule-create) を使用して、次のようにアウトバウンド バックエンド プールの新しいアウトバウンド規則を作成します。
 
 * 名前は **myOutboundRule** にします。
 * 作成先のリソース グループは **CreatePubLBQS-rg** とします。
@@ -591,7 +588,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 ```
 ### <a name="add-virtual-machines-to-outbound-pool"></a>仮想マシンをアウトバウンド プールに追加する
 
-[az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add) を使用して、次のように仮想マシンをアウトバウンド プールに追加します。
+[az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add) を使用して、次のように仮想マシンをアウトバウンド プールに追加します。
 
 
 #### <a name="vm1"></a>VM1
@@ -650,7 +647,7 @@ VM をデプロイしてロード バランサーをテストする前に、サ�
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-[az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt) を使用して、次のように仮想ネットワークを作成します。
+[az network vnet create](/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt) を使用して、次のように仮想ネットワークを作成します。
 
 * 名前は **myVNet** にします。
 * アドレス プレフィックスは **10.1.0.0/16** にします。
@@ -673,7 +670,7 @@ VM をデプロイしてロード バランサーをテストする前に、サ�
 
 Standard ロード バランサーの場合、バックエンドが扱う VM には、ネットワーク セキュリティ グループに属しているネットワーク インターフェイスが必要です。 
 
-[az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) を使用して、次のようにネットワーク セキュリティ グループを作成します。
+[az network nsg create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) を使用して、次のようにネットワーク セキュリティ グループを作成します。
 
 * 名前は **myNSG** にします。
 * 作成先のリソース グループは **CreatePubLBQS-rg** とします。
@@ -686,7 +683,7 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 
 ### <a name="create-a-network-security-group-rule"></a>ネットワーク セキュリティ グループ規則を作成する
 
-[az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) を使用して、次のようにネットワーク セキュリティ グループの規則を作成します。
+[az network nsg rule create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) を使用して、次のようにネットワーク セキュリティ グループの規則を作成します。
 
 * 名前は **myNSGRuleHTTP** にします。
 * ネットワーク セキュリティ グループは、前の手順で作成した **myNSG** にします。
@@ -716,7 +713,7 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 
 ### <a name="create-network-interfaces-for-the-virtual-machines"></a>仮想マシンのネットワーク インターフェイスを作成する
 
-[az network nic create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) を使用して、次のように 3 つのネットワーク インターフェイスを作成します。
+[az network nic create](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) を使用して、次のように 3 つのネットワーク インターフェイスを作成します。
 
 #### <a name="vm1"></a>VM1
 
@@ -828,7 +825,7 @@ runcmd:
 ```
 ### <a name="create-availability-set-for-virtual-machines"></a>仮想マシンの可用性セットを作成する
 
-[az vm availability-set create](https://docs.microsoft.com/cli/azure/vm/availability-set?view=azure-cli-latest#az-vm-availability-set-create) を使用して、次のように可用性セットを作成します。
+[az vm availability-set create](/cli/azure/vm/availability-set?view=azure-cli-latest#az-vm-availability-set-create) を使用して、次のように可用性セットを作成します。
 
 * 名前は **myAvSet** にします。
 * 作成先のリソース グループは **CreatePubLBQS-rg** とします。
@@ -844,7 +841,7 @@ runcmd:
 
 ### <a name="create-virtual-machines"></a>仮想マシンを作成する
 
-[az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) を使用して、次のように仮想マシンを作成します。
+[az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) を使用して、次のように仮想マシンを作成します。
 
 #### <a name="vm1"></a>VM1
 * 名前は **myVM1** にします。
@@ -911,7 +908,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 インターネット上の Web アプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 
 
-[az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) を使用して、以下のことを行います。
+[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) を使用して、以下のことを行います。
 
 * **myPublicIP** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します。
 * 作成先のリソース グループは **CreatePubLBQS-rg** とします。
@@ -934,7 +931,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ### <a name="create-the-load-balancer-resource"></a>ロード バランサーのリソースを作成する
 
-[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create) を使用して、次のようにパブリック ロード バランサーを作成します。
+[az network lb create](/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create) を使用して、次のようにパブリック ロード バランサーを作成します。
 
 * 名前は **myLoadBalancer** にします。
 * フロントエンド プールの名前は **myFrontEnd** にします。
@@ -957,7 +954,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 プローブ チェックが失敗した仮想マシンは、ロード バランサーから削除されます。 障害が解決されると、仮想マシンがロード バランサーに再び追加されます。
 
-[az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create) を使用して、次のように正常性プローブを作成します。
+[az network lb probe create](/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create) を使用して、次のように正常性プローブを作成します。
 
 * 仮想マシンの正常性を監視します。
 * 名前は **myHealthProbe** にします。
@@ -981,7 +978,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 * トラフィックを受信するためのバックエンド IP プール。
 * 必要な発信元ポートと宛先ポート。 
 
-[az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) を使用して、次のようにロード バランサー規則を作成します。
+[az network lb rule create](/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) を使用して、次のようにロード バランサー規則を作成します。
 
 * 名前は **myHTTPRule** にします
 * フロントエンド プール **myFrontEnd** で **ポート 80** をリッスンします。
@@ -1006,7 +1003,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>仮想マシンをロード バランサー バックエンド プールに追加する
 
-[az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add) を使用して、次のように仮想マシンをバックエンド プールに追加します。
+[az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add) を使用して、次のように仮想マシンをバックエンド プールに追加します。
 
 
 #### <a name="vm1"></a>VM1
@@ -1057,7 +1054,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ## <a name="test-the-load-balancer"></a>ロード バランサーをテストする
 
-ロード バランサーのパブリック IP アドレスを取得するには、[az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-show) を使用します。 
+ロード バランサーのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-show) を使用します。 
 
 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
 
@@ -1072,7 +1069,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-必要がなくなったら、[az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) コマンドを使用して、リソース グループ、ロード バランサー、およびすべての関連リソースを削除します。
+必要がなくなったら、[az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) コマンドを使用して、リソース グループ、ロード バランサー、およびすべての関連リソースを削除します。
 
 ```azurecli-interactive
   az group delete \

@@ -6,14 +6,14 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/22/2020
+ms.date: 11/17/2020
 ms.author: banders
-ms.openlocfilehash: 69d6544485e356741634749dd91ba6485cfbb31c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7cbb628f6af286141fb1c7b330117ded33142c4f
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460684"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744240"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>サブスクライバーと CSP の間で Azure サブスクリプションを譲渡する
 
@@ -25,7 +25,7 @@ ms.locfileid: "92460684"
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>EA サブスクリプションを CSP パートナーに譲渡する
 
-[Azure Expert マネージド サービス プロバイダー (MSP)](https://partner.microsoft.com/membership/azure-expert-msp) として認定されている CSP 直接請求パートナーは、ダイレクト Enterprise Agreement (EA) を使用している顧客に対して Azure サブスクリプションの譲渡を要求できます。 サブスクリプションの譲渡は、Microsoft 顧客契約 (MCA) に同意し、Azure プランを購入した顧客に対してのみ許可されます。
+[Azure Expert マネージド サービス プロバイダー (MSP)](https://partner.microsoft.com/membership/azure-expert-msp) として認定されている CSP 直接請求パートナーは、ダイレクト Enterprise Agreement (EA) を使用している顧客に対して Azure サブスクリプションの譲渡を要求できます。 サブスクリプションの譲渡は、Microsoft 顧客契約 (MCA) に同意し、CSP プログラム付きの Azure プランを購入した顧客に対してのみ許可されます。
 
 要求が承認されると、CSP は顧客に対して結合された請求書を提供できます。 CSP のサブスクリプション譲渡の詳細については、「[MPA アカウントに Azure サブスクリプションの課金所有権を取得する](mpa-request-ownership.md)」を参照してください。
 

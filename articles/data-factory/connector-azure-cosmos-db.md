@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
 ms.openlocfilehash: bb9f2673eb080ee2919297fcbb5199f99d176bce
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635849"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013685"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cosmos DB (SQL API) のデータをコピーおよび変換する
 
@@ -65,7 +65,7 @@ Azure Cosmos DB (SQL API) のリンクされたサービスでは、次のプロ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | **type** プロパティは **CosmosDb** に設定する必要があります。 | はい |
-| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。<br />**注** :後の例で示すように、接続文字列でデータベース情報を指定する必要があります。 <br/> アカウント キーを Azure Key Vault に格納して、接続文字列から `accountKey` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 |はい |
+| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。<br />**注**:後の例で示すように、接続文字列でデータベース情報を指定する必要があります。 <br/> アカウント キーを Azure Key Vault に格納して、接続文字列から `accountKey` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 |はい |
 | connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 このプロパティを指定しないと、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 **例**
@@ -120,7 +120,7 @@ Azure Cosmos DB (SQL API) データセットでは、次のプロパティがサ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの **type** プロパティは、 **CosmosDbSqlApiCollection** に設定する必要があります. |はい |
+| type | データセットの **type** プロパティは、**CosmosDbSqlApiCollection** に設定する必要があります. |はい |
 | collectionName |Azure Cosmos DB ドキュメント コレクションの名前です。 |はい |
 
 "DocumentDbCollection" 型のデータセットを使用する場合、コピーおよび検索のアクティビティの下位互換性のためにそのままサポートされています。Data Flow ではサポートされていません。 今後は新しいモデルを使用することをお勧めします。
@@ -209,15 +209,15 @@ Azure Cosmos DB (SQL API) にデータをコピーするには、コピー ア�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの **type** プロパティは **CosmosDbSqlApiSink** に設定する必要があります。 |はい |
-| writeBehavior |Azure Cosmos DB にデータを書き込む方法を示します。 使用可能な値は、 **Insert** 、 **Upsert** です。<br/><br/>**upsert** の動作は、同じ ID を持つドキュメントが既に存在する場合に、そのドキュメントを置き換えることです。それ以外の場合はドキュメントを挿入します。<br /><br />**注** :元のドキュメントまたは列のマッピングで ID が指定されていない場合、Data Factory によってドキュメントの ID が自動的に生成されます。 つまり、 **upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ<br />(既定値は **insert** です) |
-| writeBatchSize | Data Factory では、[Azure Cosmos DB Bulk Executor ライブラリ](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)を使用して Azure Cosmos DB にデータが書き込まれます。 **writeBatchSize** プロパティにより、ADF でライブラリに提供されるドキュメントのサイズが制御されます。 パフォーマンスを向上させるには **writeBatchSize** の値を大きくしてみて、ドキュメントのサイズが大きい場合は値を小さくしてみます。以下のヒントをご覧ください。 |いいえ<br />(既定値は **10,000** ) |
+| writeBehavior |Azure Cosmos DB にデータを書き込む方法を示します。 使用可能な値は、**Insert**、**Upsert** です。<br/><br/>**upsert** の動作は、同じ ID を持つドキュメントが既に存在する場合に、そのドキュメントを置き換えることです。それ以外の場合はドキュメントを挿入します。<br /><br />**注**:元のドキュメントまたは列のマッピングで ID が指定されていない場合、Data Factory によってドキュメントの ID が自動的に生成されます。 つまり、**upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ<br />(既定値は **insert** です) |
+| writeBatchSize | Data Factory では、[Azure Cosmos DB Bulk Executor ライブラリ](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)を使用して Azure Cosmos DB にデータが書き込まれます。 **writeBatchSize** プロパティにより、ADF でライブラリに提供されるドキュメントのサイズが制御されます。 パフォーマンスを向上させるには **writeBatchSize** の値を大きくしてみて、ドキュメントのサイズが大きい場合は値を小さくしてみます。以下のヒントをご覧ください。 |いいえ<br />(既定値は **10,000**) |
 | disableMetricsCollection | Data Factory では、コピーのパフォーマンスの最適化と推奨のために、Cosmos DB RU などのメトリックが収集されます。 この動作に不安がある場合は、`true` を指定してオフにします。 | いいえ (既定値は `false`) |
 
 >[!TIP]
 >JSON ドキュメントをそのままインポートするには、「[JSON ドキュメントのインポートとエクスポート](#import-and-export-json-documents)」セクションを参照してください。表形式のデータからコピーするには、「[リレーショナル データベースから Cosmos DB への移行](#migrate-from-relational-database-to-cosmos-db)」を参照してください。
 
 >[!TIP]
->Cosmos DB では、1 つの要求のサイズは 2 MB に制限されます。 式は、"要求サイズ = 1 つのドキュメント サイズ * バッチ書き込みサイズ" です。 " **要求のサイズが大きすぎる** " というエラーが発生する場合は、コピー シンクの構成で **`writeBatchSize` の値を小さくします** 。
+>Cosmos DB では、1 つの要求のサイズは 2 MB に制限されます。 式は、"要求サイズ = 1 つのドキュメント サイズ * バッチ書き込みサイズ" です。 "**要求のサイズが大きすぎる**" というエラーが発生する場合は、コピー シンクの構成で **`writeBatchSize` の値を小さくします**。
 
 "DocumentDbCollectionSink" 型のソースを使用する場合、下位互換性のためにそのままサポートされます。 Cosmos DB からデータをコピーする豊富な機能を提供する新しいモデルを使用することをお勧めします。
 
@@ -269,7 +269,7 @@ Azure Cosmos DB に固有の設定は、ソース変換の **[Source Options]\(�
 
 **ページ サイズ:** クエリ結果のページあたりのドキュメント数。 既定値は "-1" で、サービスの動的ページが最大 1000 個使用されます。
 
-**スループット** : このデータ フローの各実行について、CosmosDB コレクションの読み取り操作時に適用したい RU 数に対するオプションの値を設定します。 最小は 400 です。
+**スループット**: このデータ フローの各実行について、CosmosDB コレクションの読み取り操作時に適用したい RU 数に対するオプションの値を設定します。 最小は 400 です。
 
 **Preferred regions (優先リージョン):** このプロセスの優先読み取りリージョンを選択します。
 
@@ -295,11 +295,11 @@ Azure Cosmos DB に固有の設定は、シンク変換の **[設定]** タブ�
 * なし: コレクションに対してアクションは実行されません。
 * 再作成: コレクションは削除され、再作成されます
 
-**Batch size** : 各バケットに書き込まれる行数を制御します。 バッチ サイズを大きくすると、圧縮とメモリの最適化が向上しますが、データをキャッシュする際にメモリ不足の例外が発生するリスクがあります。
+**Batch size**: 各バケットに書き込まれる行数を制御します。 バッチ サイズを大きくすると、圧縮とメモリの最適化が向上しますが、データをキャッシュする際にメモリ不足の例外が発生するリスクがあります。
 
 **パーティション キー:** コレクションのパーティション キーを表す文字列を入力します。 例: ```/movies/title```
 
-**スループット** : このデータ フローの実行ごとに CosmosDB コレクションに適用する RU の数のオプション値を設定します。 最小は 400 です。
+**スループット**: このデータ フローの実行ごとに CosmosDB コレクションに適用する RU の数のオプション値を設定します。 最小は 400 です。
 
 **Write throughput budget (書き込みスループット予算)** : 一括インジェスト Spark ジョブに割り当てる RU の数を表す整数です。 この数は、コレクションに割り当てられる合計スループットには含まれません。
 

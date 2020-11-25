@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 09/08/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 55e47b09ac4a6256a125a75c8a0f856e867e7c0e
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 0802f09cfb03f837fb7080620da776e79b37c9ed
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337789"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845086"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>クイック スタート:Azure Spring Cloud の構成サーバーを設定する
 
@@ -57,9 +57,19 @@ Azure Spring Cloud 構成サーバーは、分散システムのための一元�
 
 2. **[既定のリポジトリ]** セクションで **[URI]** を "https://github.com/Azure-Samples/piggymetrics-config" に設定します。
 
-3. **[適用]** を選択して変更を保存します。
+3. **[検証]** をクリックします。
 
-    ![ASC ポータルのスクリーンショット](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+    ![構成サーバーへの移動](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+
+4. 検証が完了したら、 **[適用]** をクリックして変更内容を保存します。
+
+    ![構成サーバーの検証](media/spring-cloud-quickstart-launch-app-portal/validate-complete.png)
+
+5. 構成の更新に数分かかる場合があります。
+ 
+    ![構成サーバーの更新](media/spring-cloud-quickstart-launch-app-portal/updating-config.png) 
+
+6. 構成が完了すると、通知が届きます。
 
 #### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 

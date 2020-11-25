@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 544509a8c90c9273b748591509b1fa86510d71c3
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421738"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013821"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure Cognitive Search でのテキスト処理のためのアナライザー
 

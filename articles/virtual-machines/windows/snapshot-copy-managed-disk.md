@@ -10,11 +10,11 @@ ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: c0fddca70ca09f0a3abb3c84672e20a42551ecd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322315"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014314"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-powershell"></a>ポータルまたは PowerShell を使用してスナップショットを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "89322315"
 3. **スナップショット** ウィンドウで、 **[作成]** を選択します。 **[スナップショットの作成]** ウィンドウが表示されます。
 4. スナップショットの **[名前]** を入力します。
 5. 既存の[リソース グループ](../../azure-resource-manager/management/overview.md#resource-groups)を選択するか、新しいリソース グループの名前を入力します。 
-6. Azure データセンターの**場所**を選択します。  
+6. Azure データセンターの **場所** を選択します。  
 7. **[ソース ディスク]** で、スナップショットを作成するマネージド ディスクを選びます。
 8. スナップショットの保存に使う **[アカウントの種類]** を選びます。 スナップショットを高パフォーマンスのディスクに保存する必要がある場合を除き、 **[Standard_HDD]** を選択します。
 9. **作成** を選択します。

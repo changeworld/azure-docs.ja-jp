@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
 ms.openlocfilehash: 1da86e36cf20dc15152aea74be6c43a4cb43d3b4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539770"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014246"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Azure HDInsight でクラスター パフォーマンスを監視する
 
@@ -25,7 +25,7 @@ HDInsight クラスターの正常性とパフォーマンスを監視するこ�
 
 Hadoop クラスターでは、クラスターの負荷がすべてのノードに均等に分散している場合に、最適なパフォーマンスが発揮されます。 これにより、個々のノードの RAM、CPU、またはディスク リソースによって制限されることなく、実行するタスクの処理が可能になります。
 
-クラスターのノードとその負荷の概要を把握するには、 [Ambari Web UI](hdinsight-hadoop-manage-ambari.md) にサインインし、 **[Hosts]** タブを選択します。ホストの一覧が完全修飾ドメイン名で表示されます。 各ホストの動作状態は、色付きの正常性インジケーターで示されます。
+クラスターのノードとその負荷の概要を把握するには、[Ambari Web UI](hdinsight-hadoop-manage-ambari.md) にサインインし、 **[Hosts]** タブを選択します。ホストの一覧が完全修飾ドメイン名で表示されます。 各ホストの動作状態は、色付きの正常性インジケーターで示されます。
 
 | Color | 説明 |
 | --- | --- |
@@ -72,7 +72,7 @@ ResourceManager UI の左側のメニューから **[Scheduler]** を選択し�
 
 ## <a name="storage-throttling"></a>ストレージの調整
 
-クラスターのパフォーマンスのボトルネックはストレージ レベルで生じる可能性があります。 この種類のボトルネックは、多くの場合、入力/出力 (IO) 操作の *ブロック* が原因です。この問題は、実行中のタスクから送信される IO が、ストレージ サービスで処理できる量を超えるときに発生します。 このブロックによって、現在の IO 処理が完了するまで処理を待機する IO 要求のキューが作成されます。 このブロックは、 *ストレージ調整* が原因です。このストレージ調整は物理的な制限ではなく、サービス レベル アグリーメント (SLA) でストレージ サービスから課せられる制限です。 この制限によって、単一のクライアントまたはテナントがサービスを独占することができないように確保されます。 SLA は、Azure Storage の IO 数/秒 (IOPS) を制限します。詳細については、[Standard ストレージ アカウントのスケーラビリティおよびパフォーマンスのターゲット](../storage/common/scalability-targets-standard-account.md)に関するページを参照してください。
+クラスターのパフォーマンスのボトルネックはストレージ レベルで生じる可能性があります。 この種類のボトルネックは、多くの場合、入力/出力 (IO) 操作の *ブロック* が原因です。この問題は、実行中のタスクから送信される IO が、ストレージ サービスで処理できる量を超えるときに発生します。 このブロックによって、現在の IO 処理が完了するまで処理を待機する IO 要求のキューが作成されます。 このブロックは、*ストレージ調整* が原因です。このストレージ調整は物理的な制限ではなく、サービス レベル アグリーメント (SLA) でストレージ サービスから課せられる制限です。 この制限によって、単一のクライアントまたはテナントがサービスを独占することができないように確保されます。 SLA は、Azure Storage の IO 数/秒 (IOPS) を制限します。詳細については、[Standard ストレージ アカウントのスケーラビリティおよびパフォーマンスのターゲット](../storage/common/scalability-targets-standard-account.md)に関するページを参照してください。
 
 Azure Storage を使用している場合、ストレージに関連する問題の監視の詳細については、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](../storage/common/storage-monitoring-diagnosing-troubleshooting.md)」を参照してください。
 

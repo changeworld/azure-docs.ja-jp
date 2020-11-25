@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: 424d5a7ade04c2b72a0bc8ec379a6fad09216f39
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 11/09/2020
+ms.openlocfilehash: ca9ca495f2b3449b5aeb933bbd8d312fc9341fd9
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042692"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554120"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen2 にデータを読み込む
 
@@ -29,7 +29,7 @@ Azure Data Factory (ADF) は、フル マネージドのクラウドベース �
 
 Azure Data Factory では、スケール アウトしたマネージド データ移動ソリューションを提供しています。 ADF のスケールアウト アーキテクチャにより、高スループットでデータを取り込むことができます。 詳しくは、[コピー アクティビティのパフォーマンス](copy-activity-performance.md)に関する記事をご覧ください。
 
-この記事では、Data Factory のデータのコピー ツールを使用して " _アマゾン ウェブ サービスの S3 サービス_ " から _Azure Data Lake Storage Gen2_ にデータを読み込む方法を示します。 その他の種類のデータ ストアからデータをコピーする場合も、同様の手順で実行できます。
+この記事では、Data Factory のデータのコピー ツールを使用して "_アマゾン ウェブ サービスの S3 サービス_" から _Azure Data Lake Storage Gen2_ にデータを読み込む方法を示します。 その他の種類のデータ ストアからデータをコピーする場合も、同様の手順で実行できます。
 
 >[!TIP]
 >Azure Data Lake Storage Gen1 から Gen2 へのデータのコピーについては、[こちらのチュートリアル](load-azure-data-lake-storage-gen2-from-gen1.md)を参照してください。
@@ -42,16 +42,16 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-1. 左側のメニューで、 **[リソースの作成]**  >  **[データ + 分析]**  >  **[Data Factory]** の順に選択します。
+1. 左側のメニューで、 **[リソースの作成]**  >  **[統合]**  >  **[Data Factory]** を選択します。
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 2. **[新しいデータ ファクトリ]** ページで、次のフィールドの値を指定します。
  
-    * **Name** :Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 *YourDataFactoryName* は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、 _**yourname**_**ADFTutorialDataFactory** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
-    * **サブスクリプション** :データ ファクトリを作成する Azure サブスクリプションを選択します。 
-    * **リソース グループ** :ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
-    * **バージョン** : **[V2]** を選択します。
+    * **Name**:Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 *YourDataFactoryName* は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、_**yourname**_**ADFTutorialDataFactory** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
+    * **サブスクリプション**:データ ファクトリを作成する Azure サブスクリプションを選択します。 
+    * **リソース グループ**:ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
+    * **バージョン**: **[V2]** を選択します。
     * **[場所]** :データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 
 
 3. **［作成］** を選択します
@@ -66,7 +66,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 1. **[Get started]\(開始\)** ページで、 **[データのコピー]** タイルを選択してデータのコピー ツールを起動します。
 
-2. **[プロパティ]** ページで、 **[タスク名]** フィールドに「 **CopyFromAmazonS3ToADLS** 」と指定し、 **[次へ]** を選択します。
+2. **[プロパティ]** ページで、 **[タスク名]** フィールドに「**CopyFromAmazonS3ToADLS**」と指定し、 **[次へ]** を選択します。
 
     ![[プロパティ] ページ](./media/load-azure-data-lake-storage-gen2/copy-data-tool-properties-page.png)
 3. **[ソース データ ストア]** ページで、 **[新しい接続の作成]** をクリックします。 コネクタ ギャラリーから **[Amazon S3]** を選択し、 **[続行]** を選択します。
@@ -101,7 +101,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
         ![Azure Data Lake Storage Gen2 アカウントを指定する](./media/load-azure-data-lake-storage-gen2/specify-azure-data-lake-storage.png)
 
-9. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、出力フォルダー名として「 **copyfroms3** 」と入力し、 **[次へ]** を選択します。 対応する ADLS Gen2 ファイル システムとサブ フォルダーが存在しない場合は、コピー中に ADF によって作成されます。
+9. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、出力フォルダー名として「**copyfroms3**」と入力し、 **[次へ]** を選択します。 対応する ADLS Gen2 ファイル システムとサブ フォルダーが存在しない場合は、コピー中に ADF によって作成されます。
 
     ![入力したフォルダーのパスを示すスクリーンショット。](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
 

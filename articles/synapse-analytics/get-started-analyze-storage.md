@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 2a22174fb23a4f0f7bebd58e276a6778e986ce9e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fabfdce72202f79e2ac5bad08d124df7ce2de542
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322922"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592585"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>ストレージ アカウント内のデータを分析する
 
@@ -36,16 +36,16 @@ ms.locfileid: "93322922"
 %%pyspark
 df = spark.sql("SELECT * FROM nyctaxi.passengercountstats")
 df = df.repartition(1) # This ensure we'll get a single file during write()
-df.write.mode("overwrite").csv("/NYCTaxi/PassengerCountStats.csv")
-df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
+df.write.mode("overwrite").csv("/NYCTaxi/PassengerCountStats_csvformat")
+df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 ```
 
 ### <a name="analyze-data-in-a-storage-account"></a>ストレージ アカウント内のデータを分析する
 
 1. Synapse Studio の **[データ]** ハブに移動し、 **[Linked]\(リンク済み\)** を選択します。
 1. **[ストレージ アカウント]**  >  **[myworkspace (プライマリ - contosolake)]** に移動します。
-1. **[users (プライマリ)]** を選択します。 **NYCTaxi** フォルダーが表示されます。 その中に、**PassengerCountStats.csv** と **PassengerCountStats.parquet** という 2 つのフォルダーが表示されます。
-1. **PassengerCountStats.parquet** フォルダーを開きます。 内部に、`part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` のような名前の parquet ファイルがあります。
+1. **[users (プライマリ)]** を選択します。 **NYCTaxi** フォルダーが表示されます。 その中に、**PassengerCountStats_csvformat** および **PassengerCountStats_parquetformat** という 2 つのフォルダーが表示されます。
+1. **PassengerCountStats_parquetformat** フォルダーを開きます。 内部に、`part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` のような名前の parquet ファイルがあります。
 1. **.parquet** を右クリックし、 **[新しいノートブック]** を選択します。 次のようなセルを含んだノートブックが作成されます。
 
     ```py

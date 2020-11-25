@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
 ms.openlocfilehash: 8eb163c95fb1426ebae8956d50f6d8f6aec6fd7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612084"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013651"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>複数のワークスペースとアプリにまたがるログ クエリを Azure Monitor で実行する
 
@@ -109,7 +109,7 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 ## <a name="using-cross-resource-query-for-multiple-resources"></a>複数のリソースにクロスリソース クエリを使用する
 クロスリソース クエリを使用して、複数の Log Analytics ワークスペースおよび Application Insights リソースのデータを関連付ける場合、クエリは複雑になり、維持管理が困難になる可能性があります。 [Azure Monitor ログ クエリの関数](functions.md)を利用して、クエリ リソースの範囲設定からクエリ ロジックを分離する必要があります。こうすることで、クエリ構造が簡素化されます。 次の例は、複数の Application Insights リソースを監視し、アプリケーション名別に失敗した要求の数を視覚化する方法を示しています。 
 
-Application Insights リソースの範囲を参照する次のようなクエリを作成します。 `withsource= SourceApp` コマンドで、ログを送信したアプリケーション名を指定する列を追加します。 エイリアス _applicationsScoping_ を使用して[関数としてクエリを保存します](functions.md#create-a-function)。
+Application Insights リソースの範囲を参照する次のようなクエリを作成します。 `withsource= SourceApp` コマンドで、ログを送信したアプリケーション名を指定する列を追加します。 エイリアス _applicationsScoping_ を使用して [関数としてクエリを保存します](functions.md#create-a-function)。
 
 ```Kusto
 // crossResource function that scopes my Application Insights resources
