@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 7c1bfa618ea0ddddd7666698bc4fffa3ced5079d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7d07dda7741aa075b8d853a8d06d3d3218ca901a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323075"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563819"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスとは
 
@@ -84,7 +84,7 @@ SSH を必要としないリモート サーバーとしてコンピューティ
 |ONNX パッケージ|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
 |Azure Machine Learning の Python と R SDK のサンプル||
 
-Python パッケージはすべて、 **Python 3.6 - AzureML** 環境にインストールされます。  
+Python パッケージはすべて、**Python 3.6 - AzureML** 環境にインストールされます。  
 
 ## <a name="accessing-files"></a>ファイルにアクセスする
 
@@ -110,7 +110,7 @@ Azure Machine Learning Studio 内のご利用のワークスペースで、 **[�
 
 * [コンピューティング インスタンスを作成する](#create)。 
 * コンピューティング インスタンス タブを更新する。
-* コンピューティング インスタンスを開始、停止、再起動する。  インスタンスは、実行されるたびに支払いが発生します。 コンピューティング インスタンスを使用していないときは、コストを削減するために、コンピューティング インスタンスを停止します。 コンピューティング インスタンスを停止すると、そのインスタンスは解放されます。 その後、必要なときにもう一度開始します。
+* コンピューティング インスタンスを開始、停止、再起動する。  インスタンスは、実行されるたびに支払いが発生します。 コンピューティング インスタンスを使用していないときは、コストを削減するために、コンピューティング インスタンスを停止します。 コンピューティング インスタンスを停止すると、そのインスタンスは解放されます。 その後、必要なときにもう一度開始します。 コンピューティング インスタンスを停止すると、コンピューティング時間の課金は停止しますが、ディスク、パブリック IP、および Standard Load Balancer に対しては引き続き課金されます。
 * コンピューティング インスタンスを削除する。
 * インスタンス化されたコンピューティングのリストをフィルター処理して、作成したもののみを表示する。
 

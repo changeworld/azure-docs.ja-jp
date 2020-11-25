@@ -1,7 +1,7 @@
 ---
 title: Machine Learning Web サービス エンドポイントからのデータを監視および収集する
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning でデプロイされた Web サービスを Azure Application Insights を使用して監視します
+description: Azure Kubernetes Service (AKS) または Azure Container Instances (ACI) で Web サービス エンドポイントにデプロイされたモデルからデータを収集する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 1f02c9b080b87b4fbffcd1870dd139b9d32de0c7
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 5d49a88b89f9e2f4e2c2e6fa8ef18a01c803e3f7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357673"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536593"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML Web サービス エンドポイントからのデータを監視および収集する
 
@@ -182,7 +182,7 @@ Azure Application Insights では、Azure Machine Learning ワークスペース
 
     [![監視の [概要] タブ](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
-1. score.py ファイルからログに記録された情報を表示するには、 __traces__ テーブルを参照してください。 次のクエリは、 __input__ 値が記録されたログを検索しています。
+1. score.py ファイルからログに記録された情報を表示するには、__traces__ テーブルを参照してください。 次のクエリは、__input__ 値が記録されたログを検索しています。
 
     ```kusto
     traces

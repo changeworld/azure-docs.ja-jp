@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 5b28cfcf064e8e876d239ab13507279934dba500
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: ab998756f219cd7bc155f98c2d29454be8018825
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90528595"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968215"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>クイック スタート: 対称キーを使用してシミュレートされたデバイスをプロビジョニングする
 
@@ -36,7 +36,7 @@ ms.locfileid: "90528595"
 
 Windows 開発環境の前提条件は次のとおりです。 Linux または macOS については、SDK ドキュメントの「[開発環境を準備する](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)」の該当するセクションを参照してください。
 
-* [C++ によるデスクトップ開発](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
+* [C++ によるデスクトップ開発](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
 
 * [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
@@ -50,7 +50,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 1. [CMake ビルド システム](https://cmake.org/download/)をダウンロードします。
 
-    `CMake` のインストールを開始する**前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
+    `CMake` のインストールを開始する **前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
 
     以前のバージョンの CMake ビルド システムでは、この記事で使用されているソリューション ファイルを生成できません。 新しいバージョンの CMake を使用してください。
 
@@ -79,7 +79,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
     
-    `cmake` で C++ コンパイラが見つからない場合は、上記のコマンドの実行中にビルド エラーが発生している可能性があります。 これが発生した場合は、[Visual Studio コマンド プロンプト](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)でこのコマンドを実行してください。 
+    `cmake` で C++ コンパイラが見つからない場合は、上記のコマンドの実行中にビルド エラーが発生している可能性があります。 これが発生した場合は、[Visual Studio コマンド プロンプト](/dotnet/framework/tools/developer-command-prompt-for-vs)でこのコマンドを実行してください。 
 
     ビルドが成功すると、最後のいくつかの出力行は次のようになります。
 
@@ -105,7 +105,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 3. **[登録の追加]** パネルで次の情報を入力して、**[保存]** を押します。
 
-   - **メカニズム:** ID 構成証明の*メカニズム*として **[対称キー]** を選択します。
+   - **メカニズム:** ID 構成証明の *メカニズム* として **[対称キー]** を選択します。
 
    - **[キーの自動生成]**: このボックスをオンにします。
 
@@ -115,9 +115,9 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
      ![ポータルで対称キーの構成証明に対する個々の登録を追加する](./media/quick-create-simulated-device-symm-key/create-individual-enrollment.png)
 
-4. 登録を保存したら、**主キー**と**セカンダリ キー**が生成され、登録エントリに追加されます。 対称キーのデバイス登録は、*[個々の登録]* タブの *[登録 ID]* 列に **symm-key-device-007** と表示されます。 
+4. 登録を保存したら、**主キー** と **セカンダリ キー** が生成され、登録エントリに追加されます。 対称キーのデバイス登録は、*[個々の登録]* タブの *[登録 ID]* 列に **symm-key-device-007** と表示されます。 
 
-    登録を開き、生成された**主キー**の値をコピーします。
+    登録を開き、生成された **主キー** の値をコピーします。
 
 
 
@@ -143,7 +143,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 3. Visual Studio の "*ソリューション エクスプローラー*" ウィンドウで、**Provision\_Samples** フォルダーに移動します。 **prov\_dev\_client\_sample** という名前のサンプル プロジェクトを展開します。 **Source Files** を展開し、**prov\_dev\_client\_sample.c** を開きます。
 
-4. 定数 `id_scope` を探し、以前にコピーした **ID スコープ**の値で置き換えます。 
+4. 定数 `id_scope` を探し、以前にコピーした **ID スコープ** の値で置き換えます。 
 
     ```c
     static const char* id_scope = "0ne00002193";
@@ -194,7 +194,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
     Press enter key to exit:
     ```
 
-9. ポータルで、シミュレートされたデバイスが割り当てられた IoT ハブに移動し、 **[IoT デバイス]** タブを選択します。シミュレートされたデバイスがハブに正常にプロビジョニングされると、そのデバイス ID は、**有効**な*状態*で **[IoT デバイス]** ブレードに表示されます。 場合によっては、一番上にある **[最新の情報に更新]** を押す必要があります。 
+9. ポータルで、シミュレートされたデバイスが割り当てられた IoT ハブに移動し、 **[IoT デバイス]** タブを選択します。シミュレートされたデバイスがハブに正常にプロビジョニングされると、そのデバイス ID は、**有効** な *状態* で **[IoT デバイス]** ブレードに表示されます。 場合によっては、一番上にある **[最新の情報に更新]** を押す必要があります。 
 
     ![IoT ハブに登録されたデバイス](./media/quick-create-simulated-device-symm-key/hub-registration.png) 
 

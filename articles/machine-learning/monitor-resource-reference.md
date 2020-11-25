@@ -1,6 +1,6 @@
 ---
 title: Azure Machine Learning データの監視のリファレンス | Microsoft Docs
-description: Azure Machine Learning を監視する際に必要となる重要なリファレンス資料。 Azure Machine Learning 用に収集され、かつ Azure Monitor で利用できるデータとリソースについて説明します。 Azure Monitor を使用すると、ご利用の Azure Machine Learning ワークスペースに関するデータを収集して表示できるほか、メトリックの表示、アラートの設定、ログ データの分析も行うことができます。
+description: Azure Machine Learning の監視に関するリファレンス ドキュメント。 Azure Monitor で収集して利用できるデータとリソースについて説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2020
-ms.openlocfilehash: be8d6ca79a43ddd2bd709390dd476cb9dcfa7b29
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bab74a1db04bb557aa6604fe76c05ba3d087f8c0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323945"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540792"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Azure Machine Learning データの監視のリファレンス
 

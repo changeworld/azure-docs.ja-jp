@@ -3,19 +3,19 @@ title: Connected Machine Windows エージェントの概要
 description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、使用可能な Azure Arc 対応サーバー エージェントの詳細な概要を提供します。
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: f1f74ff12d007553c0c0c9b16f56a27371618bbb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8a66f99f535013b8aac52fdee43b91a8c734b10a
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370170"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577585"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの概要
 
 Azure Arc 対応サーバー Connected Machine エージェントを使用すると、企業ネットワークまたは他のクラウド プロバイダー上の Azure の外部でホストされている Windows および Linux コンピューターを管理できます。 この記事では、エージェント、システムとネットワークの要件、およびさまざまなデプロイ方法の概要の詳細を示します。
 
 >[!NOTE]
->2020 年 9 月の Azure Arc 対応サーバーの一般リリース以降では、Azure Connected Machine エージェント (バージョン 1.0 以前のエージェント) のプレリリース バージョンはすべて、 **2021 年 2 月 2 日** までに **非推奨** となります。  プレリリースされたエージェントが Azure Arc 対応サーバー サービスと通信できなくなる前に、この期間にバージョン 1.0 以降にアップグレードすることができます。
+>2020 年 9 月の Azure Arc 対応サーバーの一般リリース以降では、Azure Connected Machine エージェント (バージョン 1.0 以前のエージェント) のプレリリース バージョンはすべて、**2021 年 2 月 2 日** までに **非推奨** となります。  プレリリースされたエージェントが Azure Arc 対応サーバー サービスと通信できなくなる前に、この期間にバージョン 1.0 以降にアップグレードすることができます。
 
 ## <a name="agent-component-details"></a>エージェント コンポーネントの詳細
 
@@ -58,9 +58,9 @@ Azure Connected Machine エージェントでは、次のバージョンの Wind
 
 ### <a name="required-permissions"></a>必要なアクセス許可
 
-* マシンをオンボードするには、 **Azure Connected Machine のオンボード** ロールのメンバーである必要があります。
+* マシンをオンボードするには、**Azure Connected Machine のオンボード** ロールのメンバーである必要があります。
 
-* マシンの読み取り、変更、再オンボード、および削除を行うには、 **Azure Connected Machine のリソース管理者** ロールのメンバーである必要があります。 
+* マシンの読み取り、変更、および削除を行うには、**Azure Connected Machine のリソース管理者** ロールのメンバーである必要があります。 
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure サブスクリプションとサービスの制限
 
@@ -68,7 +68,7 @@ Azure Arc 対応サーバーでコンピューターを構成する前に、Azur
 
 ### <a name="transport-layer-security-12-protocol"></a>トランスポート層セキュリティ 1.2 プロトコル
 
-Azure に転送中のデータのセキュリティを確保するには、トランスポート層セキュリティ (TLS) 1.2 を使用するようにマシンを構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、 **推奨されていません** 。
+Azure に転送中のデータのセキュリティを確保するには、トランスポート層セキュリティ (TLS) 1.2 を使用するようにマシンを構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。
 
 |プラットフォーム/言語 | サポート | 詳細情報 |
 | --- | --- | --- |
@@ -107,7 +107,7 @@ URL:
 
 各サービス タグ/リージョンの IP アドレスの一覧については、「[Azure IP 範囲とサービス タグ – パブリック クラウド](https://www.microsoft.com/download/details.aspx?id=56519)」という JSON ファイルを参照してください。 Microsoft では、各 Azure サービスとそれが使用する IP 範囲を含む更新プログラムを毎週発行しています。 詳細については、「[サービス タグ](../../virtual-network/network-security-groups-overview.md#service-tags)」を参照してください。
 
-前の表に記載した URL は、サービス タグの IP アドレス範囲情報とは別に必要となります。現在、ほとんどのサービスにはサービス タグの登録がないためです。 結果として IP アドレスが変更される可能性があります。 ファイアウォール構成に IP アドレス範囲が必要な場合は、 **AzureCloud** サービス タグを使用して、すべての Azure サービスへのアクセスを許可してください。 これらの URL のセキュリティ監視または検査を無効にせず、他のインターネット トラフィックと同様に許可してください。
+前の表に記載した URL は、サービス タグの IP アドレス範囲情報とは別に必要となります。現在、ほとんどのサービスにはサービス タグの登録がないためです。 結果として IP アドレスが変更される可能性があります。 ファイアウォール構成に IP アドレス範囲が必要な場合は、**AzureCloud** サービス タグを使用して、すべての Azure サービスへのアクセスを許可してください。 これらの URL のセキュリティ監視または検査を無効にせず、他のインターネット トラフィックと同様に許可してください。
 
 ### <a name="register-azure-resource-providers"></a>Azure リソースプロバイダーを登録する
 

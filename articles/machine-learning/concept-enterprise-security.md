@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: 2234b1507e6e0fdb0b668fc18a7c8533e3ea7cc1
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: fb1f1d098970927ba04c840e77ec0a0b8d76ca02
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441785"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561320"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Azure Machine Learning のエンタープライズ セキュリティとガバナンス
 
@@ -105,7 +105,13 @@ Azure Machine Learning では、すべてのワークスペース リージョ�
 
 Azure Machine Learning リソースへの物理的なアクセスを制限するには、Azure Virtual Network (VNet) を使用します。 VNet を使用すると、パブリック インターネットから部分的または完全に分離されたネットワーク環境を作成できます。 これにより、ソリューションの攻撃面が減るだけでなく、データ窃盗の危険性も減少します。
 
-詳細については、「[仮想ネットワークの分離とプライバシーの概要](how-to-network-security-overview.md)」を参照してください。
+詳細については、以下のドキュメントをご覧ください。
+
+* [仮想ネットワークの分離とプライバシーの概要](how-to-network-security-overview.md)
+* [ワークスペース リソースの保護](how-to-secure-workspace-vnet.md)
+* [トレーニング環境の保護](how-to-secure-training-vnet.md)
+* [推論環境の保護](how-to-secure-inferencing-vnet.md)
+* [セキュリティで保護された仮想ネットワークでスタジオを使用する](how-to-enable-studio-virtual-network.md)
 
 <a id="encryption-at-rest"></a><a id="azure-blob-storage"></a>
 
@@ -123,10 +129,11 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 
 Azure Machine Learning には、ロールと監視対象に応じて、いくつかの監視シナリオがあります。
 
-| Role | 使用する監視方法 |
-| ---- | ----- |
-| Admin、DevOps、MLOps | [Azure Monitor メトリック](#azure-monitor)、[アクティビティ ログ](#activity-log)、[脆弱性スキャン](#vulnerability-scanning) |
-| Data Scientist、MLOps | [実行を監視する](#monitor-runs) |
+| Role | 使用する監視方法 | Description |
+| ---- | ----- | ----- |
+| Admin、DevOps、MLOps | [Azure Monitor メトリック](#azure-monitor)、[アクティビティ ログ](#activity-log)、[脆弱性スキャン](#vulnerability-scanning) | サービス レベル情報 |
+| Data Scientist、MLOps | [実行を監視する](#monitor-runs) | トレーニングの実行中にログに記録される情報 |
+| MLOps | [モデル データの収集](how-to-enable-data-collection.md)、[Application Insights による監視](how-to-enable-app-insights.md) | Web サービスまたは IoT Edge モジュールとしてデプロイされたモデルによってログされた情報|
 
 ### <a name="monitor-runs"></a>実行を監視する
 

@@ -1,6 +1,6 @@
 ---
 title: Microsoft ID プラットフォームのアプリケーションの種類 | Azure
-description: Microsoft ID プラットフォーム (v2.0) エンドポイントでサポートされているアプリの種類とシナリオです。
+description: Microsoft ID プラットフォーム エンドポイントでサポートされているアプリの種類とシナリオです。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,27 +8,27 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 11/13/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
-ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: d04dd0ec7c6d3166e2170001d6ff341d203c0d6b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.custom: aaddev, fasttrack-edit, contperfq2
+ms.openlocfilehash: 4c72d1b4b78c0b7ca9e7fa1f6468beb6fdd4b247
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103154"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628086"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft ID プラットフォームのアプリケーションの種類
 
-Microsoft ID プラットフォーム (v2.0) エンドポイントでは、さまざまな最新アプリ アーキテクチャ向けの認証がサポートされています。そのいずれも、業界標準のプロトコルである [OAuth 2.0 または OpenID Connect](active-directory-v2-protocols.md) に基づいています。 この記事では、使用する言語やプラットフォームを問わず、Microsoft ID プラットフォームを使用して作成できるアプリの種類について説明します。 情報は、[コードを詳しく確認する](v2-overview.md#getting-started)前に大まかなシナリオを理解するうえで役立ちます。
+Microsoft ID プラットフォーム エンドポイントでは、さまざまな最新アプリ アーキテクチャ向けの認証がサポートされています。そのいずれも、業界標準のプロトコルである [OAuth 2.0 または OpenID Connect](active-directory-v2-protocols.md) に基づいています。 この記事では、使用する言語やプラットフォームを問わず、Microsoft ID プラットフォームを使用して作成できるアプリの種類について説明します。 情報は、[アプリケーションのシナリオ](authentication-flows-app-scenarios.md#application-scenarios)でコードを詳しく確認する前に大まかなシナリオを理解するうえで役立ちます。
 
 ## <a name="the-basics"></a>基本
 
 Microsoft ID プラットフォーム エンドポイントを使う各アプリを、Azure portal の[アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083908)で登録する必要があります。 アプリの登録プロセスでは、次の値が収集され、対象のアプリに割り当てられます。
 
 * アプリを一意に識別する **アプリケーション (クライアント) ID**
-* 応答をアプリにリダイレクトして戻すために使用できる **リダイレクト URI** 。
+* 応答をアプリにリダイレクトして戻すために使用できる **リダイレクト URI**。
 * 他にいくつかのシナリオ固有の値 (サポートされているアカウントの種類など)
 
 詳細については、[アプリの登録](quickstart-register-app.md)方法を参照してください。
@@ -81,10 +81,9 @@ Web サーバー アプリにおけるサインイン認証フローは、主に
 
 Microsoft ID プラットフォーム エンドポイントから受け取った公開署名キーを使用して ID トークンを検証することにより、ユーザーの ID を確認することができます。 以降のページ要求でユーザーを識別するために使用できるセッション Cookie が設定されます。
 
-このシナリオを実際に確認するには、[Microsoft ID プラットフォームの使用の開始](v2-overview.md#getting-started)に関するセクションの、いずれかの Web アプリ サインインのコード サンプルを試してください。
+このシナリオの実際の動作を確認するには、[ユーザーをサインインさせる Web アプリのシナリオ](scenario-web-app-sign-user-overview.md)に関するページでコード サンプルをお試しください。
 
 Web サーバー アプリは、単純なサインインを実行するだけでなく、REST API をはじめとする他の Web サービスにアクセスすることが必要な場合があります。 この場合、Web サーバー アプリは、OpenID Connect と OAuth 2.0 を組み合わせたフローに関与します。その際使用されるのが [OAuth 2.0 承認コード フロー](v2-oauth2-auth-code-flow.md)です。 このシナリオの詳細については、[Web アプリと Web API の使用の開始](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIDConnect-DotNet)に関する記事を参照してください。
-
 
 ## <a name="web-apis"></a>Web API
 
@@ -106,7 +105,7 @@ Web API では、すべての種類のアプリ (Web サーバー アプリ、�
 
 ![Web API の認証フロー](./media/v2-app-types/convergence-scenarios-webapi.svg)
 
-OAuth2 アクセス トークンを使用して Web API をセキュリティで保護する方法については、[Microsoft ID プラットフォームの使用の開始](v2-overview.md#getting-started)に関するセクションの Web API コード サンプルを確認してください。
+OAuth2 アクセス トークンを使用して Web API をセキュリティ保護する方法については、[保護された Web API のシナリオ](scenario-protected-web-api-overview.md)に関するページの Web API コード サンプルを確認してください。
 
 多くの場合、Web API は Microsoft ID プラットフォームで保護されているその他のダウンストリーム Web API に、送信要求を行う必要もあります。 そのために、Web API では **代理** フローを利用できます。それにより、Web API は受信アクセス トークンを、送信要求で使用される別のアクセス トークンに交換できます。 詳しくは、「[Microsoft ID プラットフォームと OAuth 2.0 On-Behalf-Of フロー](v2-oauth2-on-behalf-of-flow.md)」をご覧ください。
 

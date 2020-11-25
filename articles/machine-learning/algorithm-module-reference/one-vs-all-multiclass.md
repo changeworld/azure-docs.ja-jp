@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/16/2019
-ms.openlocfilehash: 23077d7d6b476bcca0812dcff8660376568f7dd9
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.date: 11/13/2020
+ms.openlocfilehash: 4dfe284a00052cbd1915d62355e1d7772f3712ab
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376334"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591871"
 ---
 # <a name="one-vs-all-multiclass"></a>One-vs-All Multiclass
 
@@ -31,6 +31,8 @@ ms.locfileid: "94376334"
 このモジュールでは、実質的に、個々のモデルのアンサンブルが作成され、結果がマージされて、すべてのクラスを予測する単一のモデルが作成されます。 任意の二項分類子を one-versus-all モデルの基礎として使用できます。  
 
 たとえば、[2 クラス サポート ベクター マシン](two-class-support-vector-machine.md) モデルを構成し、それを One-vs-All Multiclass モジュールへの入力として提供するとします。 モジュールにより、出力クラスのすべてのメンバーに対して 2 クラス サポート ベクター マシン モデルが作成されます。 その後、one-versus-all 法を適用してすべてのクラスの結果が結合されます。  
+
+このモジュールでは sklearn の OneVsRestClassifier が使用されます。詳細については、[こちら](https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsRestClassifier.html)を参照してください。
 
 ## <a name="how-to-configure-the-one-vs-all-multiclass-classifier"></a>One-vs-All Multiclass 分類子を構成する方法  
 

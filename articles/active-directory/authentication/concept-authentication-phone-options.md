@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 11/13/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45851015dd5a845497fb2d09bf1f9fffb9e35a06
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 65c8baa101df5e24780e5e68b5a21b86985608a6
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377753"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628120"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory の認証方法 - 電話オプション
 
@@ -23,7 +23,7 @@ ms.locfileid: "93377753"
 
 また、ユーザーは、Azure Multi-Factor Authentication またはセルフサービス パスワード リセット (SSPR) で使用される認証のセカンダリ形式として、携帯電話または会社電話を使用して自身を確認することもできます。
 
-正常に動作させるには、電話番号の形式が " *+<国コード> <電話番号>* " (例: *+1 4251234567* ) になっている必要があります。
+正常に動作させるには、電話番号の形式が " *+<国コード> <電話番号>* " (例: *+1 4251234567*) になっている必要があります。
 
 > [!NOTE]
 > 国/地域番号と電話番号の間にスペースを入れる必要があります。
@@ -32,9 +32,9 @@ ms.locfileid: "93377753"
 
 ## <a name="mobile-phone-verification"></a>携帯電話の確認
 
-Azure Multi-Factor Authentication または SSPR の場合、ユーザーは、サインイン インターフェイスに入力する確認コードを含むテキスト メッセージを受信するか、定義された PIN コードを入力するように求めるメッセージを表示する電話番号を受信するかを選択できます。
+Azure Multi-Factor Authentication または SSPR の場合、ユーザーは、サインイン インターフェイスに入力する確認コードを含むテキスト メッセージを受信するか、電話を受けるか選択できます。
 
-ユーザーが、携帯電話番号をディレクトリに表示したくなく、それでもパスワードのリセットにその番号を使いたい場合は、管理者がその電話番号をディレクトリに設定しないようにする必要があります。 一方、ユーザーは、 [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) の統合されたセキュリティ除法登録で **[認証用電話]** 属性を設定する必要があります。 管理者はこの情報をユーザーのプロファイルで確認できますが、他の場所には公開されません。
+ユーザーが、携帯電話番号をディレクトリに表示したくなく、それでもパスワードのリセットにその番号を使いたい場合は、管理者がその電話番号をディレクトリに設定しないようにする必要があります。 一方、ユーザーは、[https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) の統合されたセキュリティ除法登録で **[認証用電話]** 属性を設定する必要があります。 管理者はこの情報をユーザーのプロファイルで確認できますが、他の場所には公開されません。
 
 :::image type="content" source="media/concept-authentication-methods/user-authentication-methods.png" alt-text="電話番号が設定された認証方法を示す Azure portal のスクリーンショット":::
 
@@ -46,22 +46,24 @@ SSPR または Azure Multi-Factor Authentication でテキスト メッセージ
 
 ### <a name="phone-call-verification"></a>音声通話の確認
 
-SSPR または Azure Multi-Factor Authentication で音声通話の確認を使用すると、ユーザーが登録した電話番号に対して自動音声通話が行われます。 サインイン プロセスを完了するには、ユーザーはテンキーで PIN 番号とそれに続いて # を入力するように求められます。
+SSPR または Azure Multi-Factor Authentication で音声通話の確認を使用すると、ユーザーが登録した電話番号に対して自動音声通話が行われます。 サインイン プロセスを完了するには、ユーザーはテンキーで # を入力するように求められます。
 
 ## <a name="office-phone-verification"></a>会社電話の確認
 
-SSPR または Azure Multi-Factor Authentication で音声通話の確認を使用すると、ユーザーが登録した電話番号に対して自動音声通話が行われます。 サインイン プロセスを完了するには、ユーザーはテンキーで PIN 番号とそれに続いて # を入力するように求められます。
+SSPR または Azure Multi-Factor Authentication で音声通話の確認を使用すると、ユーザーが登録した電話番号に対して自動音声通話が行われます。 サインイン プロセスを完了するには、ユーザーはテンキーで # を入力するように求められます。
 
 ## <a name="troubleshooting-phone-options"></a>電話オプションのトラブルシューティング
 
 Azure AD の電話認証で問題が発生した場合は、次のトラブルシューティングの手順を確認してください。
 
+* サインイン中の [You've hit our limit on verification calls]\(確認呼び出しの上限に達しました\) エラー メッセージまたは [You've hit our limit on text verification codes]\(テキスト確認コードの上限に達しました\) エラー メッセージ
+   * Microsoft Authenticator アプリまたは確認コードを使用して認証を完了するか、後でもう一度お試しください。
 * 1 つのデバイスで発信者 ID がブロックされる。
    * デバイスで構成されているすべてのブロック済み番号を確認します。
 * 電話番号が間違っているか、国/地域コードが正しくない。または、個人の電話番号と勤務先の電話番号を混同している。
    * ユーザー オブジェクトおよび構成されている認証方法をトラブルシューティングします。 正しい電話番号が登録されていることを確認します。
 * 間違った PIN の入力。
-   * ユーザーが自分のアカウントに登録されている正しい PIN を使用していることを確認します。
+   * ユーザーが自分のアカウントに登録されている正しい PIN を使用していることを確認します (MFA サーバー ユーザーのみ)。
 * ボイスメールへの通話の転送。
    * ユーザーの電話の電源が入っていて、ユーザーがいる場所でサービスを利用できることを確認するか、または別の方法を使います。
 * ユーザーがブロックされている

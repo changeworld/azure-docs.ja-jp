@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: a4a338a4d13715ba1ff7cb30c011757d5050ba05
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 85577a428f803e31aa33468496d7efca77933835
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100071"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579313"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Azure Blob Storage アクセス層の自動化によるコストの最適化
 
@@ -91,7 +91,7 @@ Azure portal を通じてポリシーを追加するには、2つの方法があ
    > [!IMPORTANT]
    > 最終アクセス時刻追跡プレビューは、非運用環境のみで使用されます。 運用環境のサービス レベル契約(SLA) は現在使用できません。
    
-   **最終アクセス日時** オプションを使用するために、Azure portal の **ライフサイクル管理** ページで **アクセス追跡有効** を選択します。 **[最終アクセス日時]** オプションの詳細については、「 [最終アクセス日付に基づいてデータを移動させる (プレビュー)](#move-data-based-on-last-accessed-date-preview)」を参照してください。
+   **最終アクセス日時** オプションを使用するために、Azure portal の **ライフサイクル管理** ページで **アクセス追跡有効** を選択します。 **[最終アクセス日時]** オプションの詳細については、「[最終アクセス日付に基づいてデータを移動させる (プレビュー)](#move-data-based-on-last-accessed-date-preview)」を参照してください。
 
 1. **[詳細]** ページで **[フィルターを使用して BLOB を制限する]** を選択した場合は、 **[フィルター セット]** を選択して省略可能なフィルターを追加します。 次の例では、"log" で始まる *mylifecyclecontainer* コンテナー内の BLOB に対してフィルター処理を行います。
 
@@ -322,7 +322,7 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 | blobIndexMatch | 照合する BLOB インデックス タグ キーと値条件で構成されるディクショナリ値の配列。 各ルールには、最大 10 個の BLOB インデックス タグ条件を定義できます。 たとえば、ルールとして `https://myaccount.blob.core.windows.net/` の下にあるすべての BLOB を `Project = Contoso` に一致させたい場合、blobIndexMatch は `{"name": "Project","op": "==","value": "Contoso"}` になります。 | blobIndexMatch を定義していない場合、ルールはストレージ アカウント内のすべての BLOB に適用されます。 | いいえ |
 
 > [!NOTE]
-> BLOB インデックスはパブリック プレビュー中であり、 **カナダ中部** 、 **カナダ東部** 、 **フランス中部** 、および **フランス南部** リージョンで利用できます。 この機能と既知の問題と制限の詳細については、「[BLOB インデックスを使用して Azure Blob Storage でデータを管理および検索する (プレビュー)](storage-manage-find-blobs.md)」を参照してください。
+> BLOB インデックスはパブリック プレビュー中であり、**カナダ中部**、**カナダ東部**、**フランス中部**、および **フランス南部** リージョンで利用できます。 この機能と既知の問題と制限の詳細については、「[BLOB インデックスを使用して Azure Blob Storage でデータを管理および検索する (プレビュー)](storage-manage-find-blobs.md)」を参照してください。
 
 ### <a name="rule-actions"></a>ルールのアクション
 
@@ -439,7 +439,7 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 
 ストレージ アカウントが汎用 v1 アカウントの場合は、Azure portal を使用して、汎用 v2 アカウントにアップグレードします。
 
-階層型名前空間が Azure Data Lake Storage Gen2 で使用可能になっているストレージ アカウントはまだサポートされていません。
+階層型名前空間が Azure Data Lake Storage Gen2 で使用可能になっているストレージ アカウントがサポートされるようになりました。
 
 #### <a name="pricing-and-billing"></a>価格と課金
 

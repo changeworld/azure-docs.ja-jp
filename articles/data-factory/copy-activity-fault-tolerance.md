@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: caec9b802bb347333dd861ebe499f72249d75aa2
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e64f4ab31aed5c4c3e70ef10faf2049027525014
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634779"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593649"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティのフォールト トレランス
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -27,7 +27,7 @@ ms.locfileid: "92634779"
 
 ソース ストアからコピー先ストアにデータをコピーする際、データ移動中のエラーによる中断を防ぐために、Azure Data Factory のコピー アクティビティによって特定のレベルのフォールト トレランスが提供されます。 たとえば、ソース ストアからコピー先ストアに数百万の行をコピーしているとします。コピー先のデータベースには主キーが作成されていますが、ソース データベースには主キーが定義されていません。 ソースからコピー先への重複する行のコピーが発生した場合、コピー先のデータベースで PK 違反のエラーが発生します。 このとき、コピー アクティビティには、このようなエラーを処理する方法が 2 つ用意されています。 
 - エラーが発生したら直ちに、コピー アクティビティを中止できます。 
-- フォールト トレランスを有効にして、互換性のないデータをスキップすることで、残りの部分を引き続きコピーできます。 たとえば今回の場合であれば、重複する行をスキップします。 また、コピー アクティビティ内のセッション ログを有効にすることで、スキップされたデータをログに記録することもできます。 
+- フォールト トレランスを有効にして、互換性のないデータをスキップすることで、残りの部分を引き続きコピーできます。 たとえば今回の場合であれば、重複する行をスキップします。 また、コピー アクティビティ内のセッション ログを有効にすることで、スキップされたデータをログに記録することもできます。 詳細については、「[コピー アクティビティのセッション ログ](copy-activity-log.md)」を参照してください。
 
 ## <a name="copying-binary-files"></a>バイナリ ファイルのコピー 
 
@@ -61,13 +61,20 @@ ADF では、バイナリ ファイルをコピーするときに、次のフォ
         "dataInconsistency": true 
     }, 
     "validateDataConsistency": true, 
-    "logStorageSettings": { 
-        "linkedServiceName": { 
-            "referenceName": "ADLSGen2", 
-            "type": "LinkedServiceReference" 
-            }, 
-        "path": "sessionlog/" 
-     } 
+    "logSettings": {
+        "enableCopyActivityLog": true,
+        "copyActivityLogSettings": {            
+            "logLevel": "Warning",
+            "enableReliableLogging": false
+        },
+        "logLocationSettings": {
+            "linkedServiceName": {
+               "referenceName": "ADLSGen2",
+               "type": "LinkedServiceReference"
+            },
+            "path": "sessionlog/"
+        }
+    }
 } 
 ```
 プロパティ | 説明 | 使用できる値 | 必須
@@ -76,7 +83,7 @@ skipErrorFile | データの移動中にスキップするエラーの種類を�
 fileMissing | ADF によりコピーされるのと同時に、他のアプリケーションによって削除されているファイルをスキップするかどうかを指定する、skipErrorFile プロパティ バッグ内のキーと値のペアの 1 つ。 <br/> -True: 他のアプリケーションによって削除されているファイルをスキップして、残りの部分をコピーします。 <br/> - False: データ移動中にソース ストアからいずれかのファイルが削除された場合、コピー アクティビティを中止します。 <br/>このプロパティは既定で true に設定されていることに注意してください。 | True (既定値) <br/>False | いいえ
 fileForbidden | ファイルまたはフォルダーの ACL により、ADF で構成されている接続よりも高いアクセス許可レベルが要求されているときに、その特定のファイルをスキップするかどうかを指定する、skipErrorFile プロパティ バッグ内のキーと値のペアの 1 つ。 <br/> -True: そのファイルをスキップして、残りの部分をコピーします。 <br/> - False: フォルダーまたはファイルに対してアクセス許可の問題が発生した場合に、コピー アクティビティを中止します。 | True <br/>False (既定値) | いいえ
 dataInconsistency | ソース ストアとコピー先ストアの間で整合性のないデータをスキップするかどうかを指定する、skipErrorFile プロパティ バッグ内のキーと値のペアの 1 つ。 <br/> -True: 整合性のないデータをスキップして、残りの部分をコピーします。 <br/> -False: 整合性のないデータが見つかった場合、コピー アクティビティを中止します。 <br/>このプロパティは、validateDataConsistency を True に設定した場合にのみ有効であることに注意してください。 | True <br/>False (既定値) | いいえ
-logStorageSettings  | スキップされたオブジェクト名をログに記録するときに指定できるプロパティのグループ。 | &nbsp; | いいえ
+logSettings  | スキップされたオブジェクト名をログに記録するときに指定できるプロパティのグループ。 | &nbsp; | いいえ
 linkedServiceName | セッション ログ ファイルを格納するための、[Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) のリンクされたサービスです。 | `AzureBlobStorage` または `AzureBlobFS` 型のリンクされたサービスの名前。これは、ログ ファイルを格納するために使用するインスタンスを示します。 | いいえ
 path | ログ ファイルのパス。 | ログ ファイルの格納に使用するパスを指定します。 パスを指定しないと、サービスによってコンテナーが作成されます。 | いいえ
 
@@ -108,7 +115,7 @@ path | ログ ファイルのパス。 | ログ ファイルの格納に使用�
             "filesWritten": 1, 
             "filesSkipped": 2, 
             "throughput": 297,
-            "logPath": "https://myblobstorage.blob.core.windows.net//myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
+            "logFilePath": "myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
             "dataConsistencyVerification": 
            { 
                 "VerificationResult": "Verified", 
@@ -146,15 +153,15 @@ Timestamp,Level,OperationName,OperationItem,Message
 ### <a name="supported-scenarios"></a>サポートされるシナリオ
 コピー アクティビティでは、互換性のない表形式データを検出、スキップ、およびログ記録するための 3 つのシナリオがサポートされます。
 
-- **ソース データの型とシンクのネイティブ型の間の非互換性** 。 
+- **ソース データの型とシンクのネイティブ型の間の非互換性**。 
 
     次に例を示します。Blob Storage 内の CSV ファイルから、INT 型の 3 つの列を含むスキーマ定義を持つ SQL データベースにデータをコピーします。 数値データを含む CSV ファイルの行 (123,456,789 など) はシンク ストアに正常にコピーされます。 ただし、数値以外を含む行 (123,456, abc など) は互換性のない行として検出され、スキップされます。
 
-- **ソースとシンクの間での列数の不一致** 。
+- **ソースとシンクの間での列数の不一致**。
 
     次に例を示します。Blob Storage 内の CSV ファイルから、6 つの列を含むスキーマ定義を持つ SQL データベースにデータをコピーします。 6 つの列を含む CSV ファイルの行が、シンク ストアに正常にコピーされます。 含まれる列の数が 6 を超える CSV ファイルの行は、互換性のないものとして検出され、スキップされます。
 
-- **SQL Server/Azure SQL Database/Azure Cosmos DB への書き込み時の主キー違反** 。
+- **SQL Server/Azure SQL Database/Azure Cosmos DB への書き込み時の主キー違反**。
 
     次に例を示します。データを SQL サーバーから SQL データベースにコピーします。 シンクの SQL データベースでは主キーが定義されていますが、ソースの SQL サーバーではそのような主キーは定義されていません。 ソースに存在する重複している行は、シンクにはコピーできません。 コピー アクティビティでは、ソース データの最初の行のみがシンクにコピーされます。 それ以降のソース行に重複している主キーの値が含まれている場合、互換性のないものとして検出され、スキップされます。
 
@@ -175,12 +182,19 @@ Timestamp,Level,OperationName,OperationItem,Message
         "type": "AzureSqlSink" 
     }, 
     "enableSkipIncompatibleRow": true, 
-    "logStorageSettings": { 
-    "linkedServiceName": { 
-        "referenceName": "ADLSGen2", 
-        "type": "LinkedServiceReference" 
-        }, 
-    "path": "sessionlog/" 
+    "logSettings": {
+        "enableCopyActivityLog": true,
+        "copyActivityLogSettings": {            
+            "logLevel": "Warning",
+            "enableReliableLogging": false
+        },
+        "logLocationSettings": {
+            "linkedServiceName": {
+               "referenceName": "ADLSGen2",
+               "type": "LinkedServiceReference"
+            },
+            "path": "sessionlog/"
+        }
     } 
 }, 
 ```
@@ -188,7 +202,7 @@ Timestamp,Level,OperationName,OperationItem,Message
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | コピー中に互換性のない行をスキップするかどうかを指定します。 | True<br/>False (既定値) | いいえ
-logStorageSettings | 互換性のない行をログに記録するときに指定できるプロパティのグループ。 | &nbsp; | いいえ
+logSettings | 互換性のない行をログに記録するときに指定できるプロパティのグループ。 | &nbsp; | いいえ
 linkedServiceName | スキップされた行を含むログを格納する [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) のリンクされたサービス。 | `AzureBlobStorage` または `AzureBlobFS` 型のリンクされたサービスの名前。これは、ログ ファイルを格納するために使用するインスタンスを示します。 | いいえ
 path | スキップされた行を含むログ ファイルのパス。 | 互換性のないデータをログに記録するパスを指定します。 パスを指定しないと、サービスによってコンテナーが作成されます。 | いいえ
 
@@ -203,7 +217,7 @@ path | スキップされた行を含むログ ファイルのパス。 | 互換
             "rowsSkipped": 2,
             "copyDuration": 16,
             "throughput": 0.01,
-            "logPath": "https://myblobstorage.blob.core.windows.net//myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
+            "logFilePath": "myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
             "errors": []
         },
 

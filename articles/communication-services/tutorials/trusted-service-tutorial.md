@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: cffe2ef77f2b832c55ef17823163cd6580f31504
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d4fdef6406bfa2e64456f14778cc136735070656
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90945287"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886640"
 ---
 # <a name="build-a-trusted-authentication-service-using-azure-functions"></a>Azure Functions を使用して、信頼できる認証サービスを構築する
 
@@ -24,7 +24,7 @@ ms.locfileid: "90945287"
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Communication Services サブスクリプションをクリーンアップして解除したい場合は、リソースまたはリソース グループを削除できます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。 [Azure Communication Service のリソースのクリーンアップ](../quickstarts/create-communication-resource.md#clean-up-resources)と [Azure Functions のリソースのクリーンアップ](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?#clean-up-resources)に関する詳細を確認できます。
+Communication Services サブスクリプションをクリーンアップして解除したい場合は、リソースまたはリソース グループを削除できます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。 [Azure Communication Service のリソースのクリーンアップ](../quickstarts/create-communication-resource.md#clean-up-resources)と [Azure Functions のリソースのクリーンアップ](../../azure-functions/create-first-function-vs-code-csharp.md#clean-up-resources)に関する詳細を確認できます。
 
 ## <a name="next-steps"></a>次の手順
 

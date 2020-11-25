@@ -11,12 +11,12 @@ ms.date: 09/17/2020
 ms.author: gopalv
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 2225ef42d8862935e5cd682a3c11a7ce687babab
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5b05891500ae5fd66e5ec2381066ccd1d26aa7ec
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325573"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578061"
 ---
 # <a name="advanced-entry-script-authoring"></a>高度なエントリ スクリプトの作成
 
@@ -28,7 +28,10 @@ ms.locfileid: "93325573"
 
 ## <a name="automatically-generate-a-swagger-schema"></a>Swagger スキーマを自動生成する
 
-Web サービスのスキーマを自動生成するには、定義された型オブジェクトのいずれかのコンストラクターに入力や出力のサンプルを指定します。 型とサンプルはスキーマを自動作成するために使用されます。 その後、Azure Machine Learning によって、デプロイ中に、Web サービスの [OpenAPI](https://swagger.io/docs/specification/about/) (Swagger) 仕様が作成されます。
+Web サービスのスキーマを自動生成するには、定義された型オブジェクトのいずれかのコンストラクターに入力や出力のサンプルを指定します。 型とサンプルはスキーマを自動作成するために使用されます。 その後、Azure Machine Learning によって、デプロイ中に、Web サービスの [OpenAPI](https://swagger.io/docs/specification/about/) (Swagger) 仕様が作成されます。 
+
+> [!WARNING]
+> サンプルの入力または出力に、機密データまたはプライベート データを使用しないでください。 AML でホストされる推論の Swagger ページで、サンプル データが公開されてしまいます。 
 
 現在サポートされている型は次のとおりです。
 

@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: f4d2a5e10db77e9ec9d06e3bcc73552bda280152
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fe5279725a3d01001b44074eca8656e88d778cab
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323942"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968164"
 ---
 # <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>クイック スタート:IoT Hub Device Provisioning Service 対応の Node.js device SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングする
 
@@ -76,7 +76,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
     npm install
     ```
 
-3. 独自の _certificate-name_ を使用してスクリプトを実行し、"_リーフ_" X.509 証明書を作成します。 リーフ証明書の共通名は[登録 ID](https://docs.microsoft.com/azure/iot-dps/concepts-device#registration-id) になるため、必ず小文字の英数字とハイフンのみを使用してください。
+3. 独自の _certificate-name_ を使用してスクリプトを実行し、"_リーフ_" X.509 証明書を作成します。 リーフ証明書の共通名は[登録 ID](./concepts-service.md#registration-id) になるため、必ず小文字の英数字とハイフンのみを使用してください。
 
     ```cmd/sh
     node create_test_cert.js device {certificate-name}
@@ -101,7 +101,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 ## <a name="simulate-the-device"></a>デバイスをシミュレートする
 
-[Azure IoT Hub Node.js device SDK](https://github.com/Azure/azure-iot-sdk-node) を使用すれば、デバイスを簡単にシミュレートできます。 詳細については、[デバイスの概念](https://docs.microsoft.com/azure/iot-dps/concepts-device)に関するページを参照してください。
+[Azure IoT Hub Node.js device SDK](https://github.com/Azure/azure-iot-sdk-node) を使用すれば、デバイスを簡単にシミュレートできます。 詳細については、[デバイスの概念](./concepts-service.md)に関するページを参照してください。
 
 1. Azure portal で、Device Provisioning サービスの **[概要]** ブレードを選択し、 **_[グローバル デバイス エンドポイント]_** と **_[ID スコープ]_** の値を書き留めます。
 
@@ -122,10 +122,10 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
     ```
 
 4. **register\_x509.js** ファイルを編集します。 次の変更を行った後に、ファイルを保存します。
-    - `provisioning host` を、上記の**手順 1** で書き留めた " **_グローバル デバイス エンドポイント_** " に置き換えます。
-    - `id scope` を、上記の**手順 1** で書き留めた " **_ID スコープ_** " に置き換えます。 
+    - `provisioning host` を、上記の **手順 1** で書き留めた " **_グローバル デバイス エンドポイント_** " に置き換えます。
+    - `id scope` を、上記の **手順 1** で書き留めた " **_ID スコープ_** " に置き換えます。 
     - `registration id` を、前のセクションで書き留めた " **_登録 ID_** " に置き換えます。
-    - `cert filename` と `key filename` を、上記の**手順 2** でコピーしたファイルに置き換えます。 
+    - `cert filename` と `key filename` を、上記の **手順 2** でコピーしたファイルに置き換えます。 
 
 5. スクリプトを実行し、デバイスが正常にプロビジョニングされたことを確認します。
 

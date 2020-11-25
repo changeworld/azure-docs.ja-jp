@@ -1,7 +1,7 @@
 ---
 title: コストの計画と管理
 titleSuffix: Azure Machine Learning
-description: Azure portal のコスト分析を使用して、Azure Machine Learning のコストを計画および管理します。 機械学習モデルを構築するときは、コストを下げるためのコスト節約に関するヒントをさらに学習します。
+description: Azure portal のコスト分析を使用して、Azure Machine Learning のコストを計画および管理します。 ML モデルを構築する場合のコストを削減するための、さらなるコスト節約のヒントについて説明します。
 author: sdgilley
 ms.author: sgilley
 ms.custom: subject-cost-optimization
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: e8554bf4385c7ddad540b8ba807988618fe80b53
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a0e0f61da52ce00fb2eb4b4a7d95ab74082f9472
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322982"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541710"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning のコストを計画して管理する
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: b385d6dfb5beba481ad92403d69f5d0988f3bce3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 86db8c88fae7a5fd1ec4828d8936c6cb8172a61c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786430"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564567"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>クラスター構成のベスト プラクティス (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,6 +30,10 @@ Azure Virtual Machines (VM) 上の SQL Server を使用して高可用性とデ�
 ## <a name="networking"></a>ネットワーク
 
 サーバー (クラスター ノード) ごとに 1 つの NIC と、1 つのサブネットを使用します。 Azure ネットワークは物理的な冗長を備えているので、Azure 仮想マシンのゲスト クラスターに NIC とサブネットを追加する必要はありません。 クラスター検証レポートには、ノードは 1 つのネットワーク上でのみ到達可能であることを警告するメッセージが表示されます。 Azure 仮想マシンのゲスト フェールオーバー クラスターでは、この警告を無視できます。
+
+### <a name="tuning-failover-cluster-network-thresholds"></a>フェールオーバー クラスター ネットワークのしきい値の調整
+
+SQL Server AlwaysOn を使用して Azure VM で Windows フェールオーバー クラスター ノードを実行する場合は、クラスター設定をより緩やかな監視状態に変更することをお勧めします。  これにより、クラスターの安定性と信頼性が大幅に向上します。  この詳細については、「[IaaS と SQL AlwaysOn - フェールオーバー クラスター ネットワークのしきい値の調整](/windows-server/troubleshoot/iaas-sql-failover-cluser)」を参照してください。
 
 ## <a name="quorum"></a>Quorum
 
@@ -56,7 +60,7 @@ Azure 共有ディスクをディスク監視として構成します。
 開始するには、[ディスク監視の構成](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)に関する記事をご覧ください。
 
 
-**サポートされる OS** :All   
+**サポートされる OS**:All   
 
 
 ### <a name="cloud-witness"></a>クラウド監視
@@ -66,7 +70,7 @@ Azure 共有ディスクをディスク監視として構成します。
 開始するには、[クラウド監視の構成](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp)に関する記事をご覧ください。
 
 
-**サポートされる OS** :Windows Server 2016 以降   
+**サポートされる OS**:Windows Server 2016 以降   
 
 
 ### <a name="file-share-witness"></a>ファイル共有監視
@@ -78,7 +82,7 @@ Azure ファイル共有を使用する予定の場合は、[Premium ファイ�
 開始するには、[ファイル共有監視の構成](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)に関する記事をご覧ください。
 
 
-**サポートされる OS** :Windows Server 2012 以降   
+**サポートされる OS**:Windows Server 2012 以降   
 
 ## <a name="connectivity"></a>接続
 
@@ -104,9 +108,9 @@ Azure では仮想 IP アクセス ポイントの動作が異なるため、FCI
 
 まず、[フェールオーバー クラスター インスタンス](failover-cluster-instance-vnn-azure-load-balancer-configure.md)または[可用性グループ](availability-group-vnn-azure-load-balancer-configure.md)用に Azure Load Balancer を構成する方法について説明します。
 
-**サポートされる OS** :All   
-**サポートされる SQL バージョン** :All   
-**サポートされる HADR ソリューション** :フェールオーバー クラスター インスタンス、可用性グループ   
+**サポートされる OS**:All   
+**サポートされる SQL バージョン**:All   
+**サポートされる HADR ソリューション**:フェールオーバー クラスター インスタンス、可用性グループ   
 
 
 ### <a name="distributed-network-name-dnn"></a>分散ネットワーク名 (DNN)
@@ -124,9 +128,9 @@ DNN を使用すると、ほとんどの SQL Server 機能は FCI と可用性�
 
 まず、[フェールオーバー クラスター インスタンス](failover-cluster-instance-distributed-network-name-dnn-configure.md)または[可用性グループ](availability-group-distributed-network-name-dnn-listener-configure.md)用に分散ネットワーク名リソースを構成する方法について説明します。
 
-**サポートされる OS** :Windows Server 2016 以降   
-**サポートされる SQL バージョン** :SQL Server 2019 CU2 (FCI) と SQL Server 2019 CU8 (AG)   
-**サポートされる HADR ソリューション** :フェールオーバー クラスター インスタンス、可用性グループ   
+**サポートされる OS**:Windows Server 2016 以降   
+**サポートされる SQL バージョン**:SQL Server 2019 CU2 (FCI) と SQL Server 2019 CU8 (AG)   
+**サポートされる HADR ソリューション**:フェールオーバー クラスター インスタンス、可用性グループ   
 
 
 ## <a name="limitations"></a>制限事項

@@ -3,12 +3,12 @@ title: クイック スタート:Azure CLI を使用してブループリント�
 description: このクイックスタートでは、Azure Blueprints と Azure CLI を使用して、成果物を作成、定義、デプロイします。
 ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 790e23897a24ea06565572163b8226af88e0bb7c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 88ccd3fe6271a79d201007954e7997b68d2dc69b
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057962"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920561"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>クイック スタート:Azure CLI で Azure Blueprint を定義して割り当てる
 
@@ -116,7 +116,7 @@ Azure CLI でブループリントの定義と割り当てを管理できるよ�
 
      > [!NOTE]
      > ブループリントの定義をインポートするときは、_blueprint.json_ というファイル名を使用します。
-     > このファイル名は [az blueprint import](/cli/azure/ext/blueprint/blueprint#ext-blueprint-az-blueprint-import) を呼び出すときに使用されます。
+     > このファイル名は [az blueprint import](/cli/azure/ext/blueprint/blueprint#ext_blueprint_az_blueprint_import) を呼び出すときに使用されます。
 
      既定では、ブループリント オブジェクトが既定のサブスクリプションに作成されます。 管理グループを指定するには、**managementgroup** パラメーターを使用します。 サブスクリプションを指定するには、**subscription** パラメーターを使用します。
 
@@ -276,7 +276,7 @@ Azure CLI でブループリントの定義と割り当てを管理できるよ�
         --resource-group-art 'storageRG'
      ```
 
-1. リソース グループにロールの割り当てを追加します。 前のロール割り当てエントリと同様に、次の例では、**所有者**ロールに対する定義識別子を使用し、ブループリントとは異なるパラメーターを提供します。 この例では、GUID が `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` の "_所有者_" 組み込みロールを使用しています。
+1. リソース グループにロールの割り当てを追加します。 前のロール割り当てエントリと同様に、次の例では、**所有者** ロールに対する定義識別子を使用し、ブループリントとは異なるパラメーターを提供します。 この例では、GUID が `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` の "_所有者_" 組み込みロールを使用しています。
 
    ```azurecli-interactive
    az blueprint artifact role create \

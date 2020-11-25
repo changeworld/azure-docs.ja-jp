@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory を使用したリモート デスクトップ ゲートウェイ サービス
-description: この認証パターンの実現に関するアーキテクチャ ガイダンス
+description: Azure Active Directory を使用したリモート デスクトップ ゲートウェイ サービスの取得に関するアーキテクチャ ガイダンス。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff099d41970ad4d78d5c6035a60f448f29ab24b1
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 57466cccb71444d5711a9221c324a107757c5e82
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113968"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576797"
 ---
 # <a name="remote-desktop-gateway-services"></a>リモート デスクトップ ゲートウェイ サービス
 
@@ -34,13 +34,13 @@ ms.locfileid: "92113968"
 
 * **[ユーザー]** :アプリケーション プロキシによって提供される RDS にアクセスします。
 
-* **Web ブラウザー** : アプリケーションの外部 URL にアクセスするためにユーザーが操作するコンポーネントです。
+* **Web ブラウザー**: アプリケーションの外部 URL にアクセスするためにユーザーが操作するコンポーネントです。
 
-* **Azure AD** :ユーザーを認証します。 
+* **Azure AD**:ユーザーを認証します。 
 
-* **アプリケーション プロキシ サービス** : ユーザーから RDS に要求を転送するリバース プロキシとして機能します。 アプリケーション プロキシは、任意の条件付きアクセス ポリシーを適用することもできます。 
+* **アプリケーション プロキシ サービス**: ユーザーから RDS に要求を転送するリバース プロキシとして機能します。 アプリケーション プロキシは、任意の条件付きアクセス ポリシーを適用することもできます。 
 
-* **リモート デスクトップ サービス** : セキュリティで保護されたモバイルおよびリモートでのデスクトップ アクセスを提供し、エンド ユーザーがアプリケーションとデスクトップをクラウドから実行できるようにして、個々の仮想化アプリケーションのプラットフォームとして機能します。 
+* **リモート デスクトップ サービス**: セキュリティで保護されたモバイルおよびリモートでのデスクトップ アクセスを提供し、エンド ユーザーがアプリケーションとデスクトップをクラウドから実行できるようにして、個々の仮想化アプリケーションのプラットフォームとして機能します。 
 
 ## <a name="implement-remote-desktop-gateway-services-with-azure-ad"></a>Azure AD を使用したリモート デスクトップ ゲートウェイ サービスを実装する
 

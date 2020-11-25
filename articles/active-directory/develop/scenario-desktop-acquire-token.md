@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/18/2020
+ms.date: 11/04/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8608da33c747f76452a0106e4e2737849e06a75c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: cdda14bb579fc94414f9da89b8b1f1aa04ec3bf5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443230"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628103"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API を呼び出すデスクトップ アプリ:トークンを取得する
 
@@ -183,7 +183,7 @@ Android では、示されているように `.WithParentActivityOrWindow` を�
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-UI は対話型であるため、重要です。 `AcquireTokenInteractive` には、特定の省略可能なパラメーターが 1 つあり、それをサポートするプラットフォームに対して親 UI を指定できます。 デスクトップ アプリケーションで使用する場合、`.WithParentActivityOrWindow` の型はプラットフォームによって異なります。 または、サインイン ダイアログが画面のどこに表示されるかを制御したくない場合は、省略可能な親ウィンドウ パラメーターを省略してウィンドウを作成することができます。 これは、呼び出しを他のバックエンド サービスに渡すために使用され、ユーザーの操作にウィンドウを必要としないコマンド ライン ベースのアプリケーションに適用できます。 
+UI は対話型であるため、重要です。 `AcquireTokenInteractive` には、特定の省略可能なパラメーターが 1 つあり、それをサポートするプラットフォームに対して親 UI を指定できます。 デスクトップ アプリケーションで使用する場合、`.WithParentActivityOrWindow` の型はプラットフォームによって異なります。 または、サインイン ダイアログが画面のどこに表示されるかを制御したくない場合は、省略可能な親ウィンドウ パラメーターを省略してウィンドウを作成することができます。 これは、呼び出しを他のバックエンド サービスに渡すために使用され、ユーザーの操作にウィンドウを必要としないコマンド ライン ベースのアプリケーションに適用できます。
 
 ```csharp
 // net45
@@ -278,7 +278,7 @@ MSAL.NET チームでは、この拡張メカニズムを使用するように U
 
 ##### <a name="provide-a-great-experience-with-systemwebviewoptions"></a>SystemWebViewOptions を使用して優れたエクスペリエンスを提供する
 
-MSAL.NET 4.1 [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) から、以下を指定できます。
+MSAL.NET 4.1 [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions) から、以下を指定できます。
 
 - システム Web ブラウザーでのサインインあるいは同意エラーの場合に、(`BrowserRedirectError`) に移動する URI または (`HtmlMessageError`) を表示する HTML フラグメント。
 - サインインあるいは同意が成功した場合に、(`BrowserRedirectSuccess`) に移動する URI または (`HtmlMessageSuccess`) を表示する HTML フラグメント。
@@ -304,7 +304,7 @@ var result = app.AcquireTokenInteractive(scopes)
 
 #### <a name="other-optional-parameters"></a>その他の省略可能なパラメーター
 
-`AcquireTokenInteractive` のその他すべての省略可能なパラメーターについては、[AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods) に関する記事を参照してください。
+`AcquireTokenInteractive` のその他すべての省略可能なパラメーターについては、[AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder#methods) に関する記事を参照してください。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -532,7 +532,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-AcquireTokenByIntegratedWindowsAuthentication で使用可能な修飾子の一覧については、[AcquireTokenByIntegratedWindowsAuthParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods) に関する記事を参照してください。
+AcquireTokenByIntegratedWindowsAuthentication で使用可能な修飾子の一覧については、[AcquireTokenByIntegratedWindowsAuthParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder#methods) に関する記事を参照してください。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -832,7 +832,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-`AcquireTokenByUsernamePassword` に適用できるすべての修飾子の詳細については、[AcquireTokenByUsernamePasswordParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods) に関する記事を参照してください。
+`AcquireTokenByUsernamePassword` に適用できるすべての修飾子の詳細については、[AcquireTokenByUsernamePasswordParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder#methods) に関する記事を参照してください。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -1387,6 +1387,10 @@ namespace CommonCacheMsalV3
  }
 }
 ```
+
+## <a name="advanced-accessing-the-users-cached-tokens-in-background-apps-and-services"></a>(上級) バックグラウンドのアプリやサービスで、キャッシュされたユーザーのトークンにアクセスする
+
+[!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

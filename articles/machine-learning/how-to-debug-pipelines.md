@@ -1,7 +1,7 @@
 ---
 title: ML パイプラインのデバッグとトラブルシューティング
 titleSuffix: Azure Machine Learning
-description: Python で Azure Machine Learning パイプラインをデバッグする パイプラインの開発における陥りやすい落とし穴と、リモートからの実行前および実行中にスクリプトをデバッグするためのヒントについて説明します。
+description: Python で Azure Machine Learning パイプラインをデバッグする 陥りやすい落とし穴と、リモートからの実行前および実行中にスクリプトをデバッグするためのヒントについて説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python, contperfq2
-ms.openlocfilehash: 80bc5034e6e192c1b493a65e61b94ae1b785a430
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 13897f9881a8f505f0053443a218cf744d8edf8b
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325598"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630109"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>機械学習パイプラインのデバッグとトラブルシューティング
 
@@ -36,7 +36,7 @@ ms.locfileid: "93325598"
 
 ## <a name="troubleshooting-parallelrunstep"></a>`ParallelRunStep` のトラブルシューティング 
 
-`ParallelRunStep` スクリプトには、2 つの関数が " *含まれている必要があります* "。
+`ParallelRunStep` スクリプトには、2 つの関数が "*含まれている必要があります*"。
 - `init()`:この関数は、後で推論するためのコストのかかる準備、または一般的な準備を行うときに使用します。 たとえば、これを使って、モデルをグローバル オブジェクトに読み込みます。 この関数は、プロセスの開始時に 1 回だけ呼び出されます。
 -  `run(mini_batch)`:この関数は、`mini_batch` インスタンスごとに実行されます。
     -  `mini_batch`: `ParallelRunStep` は run メソッドを呼び出して、そのメソッドに、リストまたは Pandas `DataFrame` のいずれかを引数として渡します。 mini_batch のエントリはそれぞれ、ファイル パス (入力が `FileDataset` の場合) または Pandas `DataFrame` (入力が `TabularDataset` の場合) になります。
@@ -216,7 +216,7 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning デザイナー
 
-デザイナーで作成されたパイプラインの場合、作成ページまたはパイプラインの実行の詳細ページで、 **70_driver_log** ファイルが確認できます。
+デザイナーで作成されたパイプラインの場合、作成ページまたはパイプラインの実行の詳細ページで、**70_driver_log** ファイルが確認できます。
 
 ### <a name="enable-logging-for-real-time-endpoints"></a>リアルタイム エンドポイントのログ記録を有効にする
 

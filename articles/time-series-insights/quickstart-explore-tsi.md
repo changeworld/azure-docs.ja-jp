@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 10/02/2020
-ms.openlocfilehash: 9cd1a6059360c948229a1da00780cd6cb40b7f35
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3956f8d91793367f7200d2f349a8713aff3d2f59
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91666536"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016226"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>クイック スタート:Azure Time Series Insights Gen2 デモ環境を探索する
 
@@ -127,9 +127,9 @@ Azure Time Series Insights Gen2 とセンサー テレメトリを使用して�
 独自の Azure Time Series Insights Gen2 環境を作成する準備ができました。 開始するには:
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights Gen2 環境の計画](time-series-insights-update-plan.md)
+> [Azure Time Series Insights Gen2 環境の計画](./how-to-plan-your-environment.md)
 
 デモとその機能の使用方法を説明します。
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights Gen2 エクスプローラー](time-series-insights-update-explorer.md)
+> [Azure Time Series Insights Gen2 エクスプローラー](./concepts-ux-panels.md)

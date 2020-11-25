@@ -1,20 +1,20 @@
 ---
 title: 信頼できる機械学習とは (プレビュー)
 titleSuffix: Azure Machine Learning
-description: 信頼できる機械学習とはどのようなものか、および Azure Machine Learning でそれを使用する方法について説明します
+description: 信頼できる機械学習とはどのようなものか、および Azure Machine Learning でそれを使用してモデルを理解し、データを保護し、モデルのライフサイクルを管理する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 08/05/2020
-ms.openlocfilehash: f2ece76ef3594cadfa1fcda89259ee18eb1f9084
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/16/2020
+ms.openlocfilehash: ff85ed669fb7c3ac43e322eb747c537a30801920
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324848"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701434"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>信頼できる機械学習とは (プレビュー)
 

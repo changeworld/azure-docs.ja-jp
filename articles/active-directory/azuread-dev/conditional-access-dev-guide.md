@@ -13,16 +13,19 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1075cce9b9e3bc3267756bba84691788293fa8d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 378dab95d8fb3519bb2fc5c934a760e051a18d29
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116303"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575885"
 ---
 # <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Azure Active Directory の条件付きアクセス機能についての開発者ガイド
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
+
+> [!NOTE]
+> この記事の Microsoft ID プラットフォーム バージョンについては、「[Azure Active Directory の条件付きアクセスについての開発者ガイド](/azure/active-directory/develop/v2-conditional-access-dev-guide)」を参照してください。
 
 Azure Active Directory (Azure AD) の条件付きアクセス機能では、アプリをセキュリティで保護し、サービスを保護するために使用できる方法の 1 つを提供します。 条件付きアクセスを使用することで、開発者やエンタープライズのお客様は、次のようなさまざまな方法でサービスを保護できます。
 
@@ -40,7 +43,7 @@ Azure AD のアプリをビルドしている開発者のために、この記�
 
 ### <a name="app-types-impacted"></a>アプリの種類が影響を受ける
 
-最も一般的なケースは、条件付きアクセスによってアプリの動作が変更されない、または開発者からの変更を必要としない場合です。 アプリが間接的、またはサイレントでサービスに対するトークンを要求する特定の場合のみ、アプリで条件付きアクセス "チャレンジ" を処理するためにコードを変更する必要があります。 これは、対話型のサインインを要求するだけで実行できる場合があります。
+最も一般的なケースは、条件付きアクセスによってアプリの動作が変更されない、または開発者からの変更を必要としない場合です。  アプリが間接的、またはサイレントでサービスに対するトークンを要求する特定の場合のみ、アプリで条件付きアクセス "チャレンジ" を処理するためにコードを変更する必要があります。  これは、対話型のサインインを要求するだけで実行できる場合があります。
 
 具体的には、次のシナリオでは、条件付きアクセス "チャレンジ" を処理するために、コードが必要になります。
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 32748a996e0622c4b75d887aebf8a1805c5368bd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 67b2dacb9debae1990d51be8ca47c76b7342cf67
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319070"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660119"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Azure Machine Learning でソフトウェア環境を作成して使用する
 
@@ -83,7 +83,7 @@ for env in envs:
 ```
 
 > [!WARNING]
->  独自の環境名の先頭には、 _AzureML_ プレフィックスを付加しないでください。 このプレフィックスは、選別された環境用に予約されています。
+>  独自の環境名の先頭には、_AzureML_ プレフィックスを付加しないでください。 このプレフィックスは、選別された環境用に予約されています。
 
 ### <a name="use-conda-dependencies-or-pip-requirements-files"></a>Conda の依存関係または PIP 要件ファイルを使用する
 
@@ -95,7 +95,7 @@ myenv = Environment.from_conda_specification(name = "myenv",
                                              file_path = "path-to-conda-specification-file")
 
 # From a pip requirements file
-myenv = Environment.from_pip_requirements(name = "myenv"
+myenv = Environment.from_pip_requirements(name = "myenv",
                                           file_path = "path-to-pip-requirements-file")                                          
 ```
 
@@ -110,11 +110,11 @@ Azure Machine Learning `Environment` クラスの [`DockerSection`](/python/api/
 myenv.docker.enabled = True
 ```
 
-既定では、新しくビルドされた Docker イメージは、ワークスペースに関連付けられているコンテナー レジストリに表示されます。  リポジトリ名の形式は *azureml/azureml_\<uuid\>* です。 名前の一意識別子 ( *uuid* ) の部分は、環境構成から計算されたハッシュに対応します。 この対応により、サービスでは、特定の環境のイメージが既に存在していて再利用できるかどうかを判断できます。
+既定では、新しくビルドされた Docker イメージは、ワークスペースに関連付けられているコンテナー レジストリに表示されます。  リポジトリ名の形式は *azureml/azureml_\<uuid\>* です。 名前の一意識別子 (*uuid*) の部分は、環境構成から計算されたハッシュに対応します。 この対応により、サービスでは、特定の環境のイメージが既に存在していて再利用できるかどうかを判断できます。
 
 #### <a name="use-a-prebuilt-docker-image"></a>構築済みの Docker イメージを使用する
 
-このサービスでは既定で、Ubuntu Linux ベースの[基本イメージ](https://github.com/Azure/AzureML-Containers)のいずれかが自動的に使用されます。具体的には `azureml.core.environment.DEFAULT_CPU_IMAGE` によって定義されているものです。 その後、与えられた Azure ML 環境によって定義される特定の Python パッケージがあればそれがインストールされます。 [カスタム Docker 基本イメージ](./how-to-deploy-custom-docker-image.md#create-a-custom-base-image)を使用することも可能です。
+このサービスでは既定で、Ubuntu Linux ベースの[基本イメージ](https://github.com/Azure/AzureML-Containers)のいずれかが自動的に使用されます。具体的には `azureml.core.environment.DEFAULT_CPU_IMAGE` によって定義されているものです。 その後、与えられた Azure ML 環境によって定義される特定の Python パッケージがあればそれがインストールされます。 その他の Azure ML CPU と GPU の基本イメージは、コンテナー [リポジトリ](https://github.com/Azure/AzureML-Containers)で入手できます。 [カスタム Docker 基本イメージ](./how-to-deploy-custom-docker-image.md#create-a-custom-base-image)を使用することも可能です。
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults
@@ -261,7 +261,7 @@ myenv.environment_variables = {"MESSAGE":"Hello from Azure Machine Learning"}
 ```
 
 >[!IMPORTANT]
-> 別の実行に同じ環境定義を使用する場合、Azure Machine Learning service では、自分の環境にキャッシュされているイメージが再利用されます。 ```numpy``` など、固定されていないパッケージの依存関係を持つ環境を作成すると、その環境では、" _環境の作成時_ " にインストールされたパッケージのバージョンが引き続き使用されます。 また、一致した定義を持つ将来の環境では、古いバージョンが使用され続けます。 詳細については、「[環境のビルド、キャッシュ、再利用](./concept-environments.md#environment-building-caching-and-reuse)」を参照してください。
+> 別の実行に同じ環境定義を使用する場合、Azure Machine Learning service では、自分の環境にキャッシュされているイメージが再利用されます。 ```numpy``` など、固定されていないパッケージの依存関係を持つ環境を作成すると、その環境では、"_環境の作成時_" にインストールされたパッケージのバージョンが引き続き使用されます。 また、一致した定義を持つ将来の環境では、古いバージョンが使用され続けます。 詳細については、「[環境のビルド、キャッシュ、再利用](./concept-environments.md#environment-building-caching-and-reuse)」を参照してください。
 
 ### <a name="private-python-packages"></a>非公開の Python パッケージ
 

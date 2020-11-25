@@ -1,7 +1,7 @@
 ---
 title: ML パイプラインを作成して実行する
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning SDK for Python で機械学習パイプラインを作成して実行します。 機械学習 (ML) のフェーズをつなぎ合わせるワークフローを作成して管理するには、ML パイプラインを使用します。 これらのフェーズとしては、データ保護、モデルのトレーニング、モデル デプロイ、推論/スコアリングなどがあります。
+description: 機械学習パイプラインを作成して実行し、機械学習 (ML) フェーズをつなげるワークフローを作成して管理します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 76369d3bc3ed152bf9e0b13f7bf4b4386a974c33
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 452904e18a0910c2dd4781ca978042e0cdd4996d
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322097"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630126"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK で機械学習パイプラインを作成して管理する
 
@@ -110,7 +110,7 @@ output_data1 = PipelineData(
 ## <a name="set-up-a-compute-target"></a>コンピューティング ターゲットを設定する
 
 
-Azure Machine Learning での " __コンピューティング__ " (または " __コンピューティング先__ ") という用語は、機械学習パイプラインで計算ステップを実行するマシンまたはクラスターのことです。   コンピューティング先の完全な一覧については、[モデルのトレーニング用のコンピューティング先](concept-compute-target.md#train)に関するセクションを参照してください。コンピューティング先を作成してワークスペースにアタッチする方法については、[コンピューティング先の作成](how-to-create-attach-compute-studio.md)に関するページを参照してください。   コンピューティング先を作成またはアタッチするプロセスは、モデルをトレーニングするときも、パイプラインのステップを実行するときも同じです。 コンピューティング先を作成してアタッチした後、[パイプラインのステップ](#steps)では `ComputeTarget` オブジェクトを使用します。
+Azure Machine Learning での "__コンピューティング__" (または "__コンピューティング先__") という用語は、機械学習パイプラインで計算ステップを実行するマシンまたはクラスターのことです。   コンピューティング先の完全な一覧については、[モデルのトレーニング用のコンピューティング先](concept-compute-target.md#train)に関するセクションを参照してください。コンピューティング先を作成してワークスペースにアタッチする方法については、[コンピューティング先の作成](how-to-create-attach-compute-studio.md)に関するページを参照してください。   コンピューティング先を作成またはアタッチするプロセスは、モデルをトレーニングするときも、パイプラインのステップを実行するときも同じです。 コンピューティング先を作成してアタッチした後、[パイプラインのステップ](#steps)では `ComputeTarget` オブジェクトを使用します。
 
 > [!IMPORTANT]
 > コンピューティング先での管理操作の実行は、リモート ジョブの内部からはサポートされていません。 機械学習パイプラインはリモート ジョブとして送信されるため、パイプラインの内部からはコンピューティング先での管理操作を使用しないでください。
@@ -230,7 +230,7 @@ train_step = PythonScriptStep(
 )
 ```
 
-上記のコードは、データの準備のステップの場合とよく似ています。 トレーニングのコードは、データの準備のコードとは別のディレクトリにあります。 データの準備のステップの `PipelineData` 出力である `output_data1` は、トレーニング ステップへの " _入力_ " として使用されます。 新しい `PipelineData` オブジェクトである `training_results` が作成され、これによって、その後の比較またはデプロイのステップの結果が保持されます。 
+上記のコードは、データの準備のステップの場合とよく似ています。 トレーニングのコードは、データの準備のコードとは別のディレクトリにあります。 データの準備のステップの `PipelineData` 出力である `output_data1` は、トレーニング ステップへの "_入力_" として使用されます。 新しい `PipelineData` オブジェクトである `training_results` が作成され、これによって、その後の比較またはデプロイのステップの結果が保持されます。 
 
 
 > [!TIP]
@@ -305,8 +305,8 @@ ws = Run.get_context().experiment.workspace
 ## <a name="caching--reuse"></a>キャッシュと再利用  
 
 パイプラインの動作を最適化およびカスタマイズするためには、キャッシュと再利用に関連するいくつかのことを実行できます。 たとえば、次のようなことを選択できます。
-+ [ステップ定義](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py)中に `allow_reuse=False` を設定して、 **既定のステップ実行出力の再利用をオフにします** 。 共同環境でパイプラインを使用する際は再利用が鍵となります。不要な再実行を除去することで機敏性が提供されるからです。 ただし、再利用しないことも選択できます。
-+ `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)` を使用して、 **1 回の実行で全ステップの出力の再生成を強制します** 。
++ [ステップ定義](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py)中に `allow_reuse=False` を設定して、**既定のステップ実行出力の再利用をオフにします**。 共同環境でパイプラインを使用する際は再利用が鍵となります。不要な再実行を除去することで機敏性が提供されるからです。 ただし、再利用しないことも選択できます。
++ `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)` を使用して、**1 回の実行で全ステップの出力の再生成を強制します**。
 
 既定では、ステップの `allow_reuse` が有効になり、ステップの定義に指定されている `source_directory` がハッシュ化されます。 したがって、ある特定のステップのスクリプトが同じ場合 (`script_name`、inputs、およびパラメーター)、` source_directory` では他に何か変更されることはなく、前のステップ実行の出力が再利用されて、ジョブはコンピューティングに送信されず、代わりに、前の実行の結果が次のステップで即時使用可能になります。
 

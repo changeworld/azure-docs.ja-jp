@@ -4,12 +4,12 @@ description: Azure Functions のネットワークについてよく寄せられ
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.reviewer: glenga
-ms.openlocfilehash: d07484943f8ba85cc8e46737f3ef85b6e25d5187
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e8a992aac95b6c2688cb45aa980bf0b01883a53
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538060"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578231"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Azure Functions のネットワークについてよく寄せられる質問
 
@@ -31,11 +31,9 @@ Azure portal エディターから実行中の関数に直接アクセスする�
 
 ## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>仮想ネットワークに対して自分の関数アプリを制限するにはどうすればよいですか?
 
-[サービス エンドポイント](./functions-networking-options.md#private-site-access)を使用して、関数アプリの**受信**トラフィックを仮想ネットワークに制限できます。 この構成により、関数アプリでインターネットに送信呼び出しを行うこともできます。
+[サービス エンドポイント](./functions-networking-options.md#use-service-endpoints)を使用して、関数アプリの **受信** トラフィックを仮想ネットワークに制限できます。 この構成により、関数アプリでインターネットに送信呼び出しを行うこともできます。
 
-すべてのトラフィックが仮想ネットワークを経由するように関数を完全に制限するための唯一の方法は、内部で負荷分散された App Service Environment を使用することです。 このオプションにより、仮想ネットワーク内の専用インフラストラクチャにサイトがデプロイされ、すべてのトリガーとトラフィックが仮想ネットワークを介して送信されます。 
-
-App Service Environment の使用の詳細については、まず「[App Service Environment で内部ロード バランサーを作成して使用する](../app-service/environment/create-ilb-ase.md)」の記事から参照してください。
+すべてのトラフィックが仮想ネットワークを通過するように関数を完全に制限するには、送信仮想ネットワーク統合または App Service Environment で[プライベート エンドポイント](./functions-networking-options.md#private-endpoint-connections)を使用することができます。
 
 ## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>関数アプリから仮想ネットワーク内のリソースにアクセスするにはどうすればいいですか?
 
@@ -47,7 +45,7 @@ App Service Environment の使用の詳細については、まず「[App Servic
 
 ## <a name="how-can-i-trigger-a-function-from-a-resource-in-a-virtual-network"></a>仮想ネットワーク内のリソースから関数をトリガーするにはどうすればよいですか?
 
-[サービス エンドポイント](./functions-networking-options.md#private-site-access)を使用して、仮想ネットワークから HTTP トリガを呼び出せるようにできます。 
+[サービス エンドポイント](./functions-networking-options.md#use-service-endpoints)または[プライベート エンドポイント接続](./functions-networking-options.md#private-endpoint-connections)を使用して、仮想ネットワークから HTTP トリガーを呼び出されるようにすることができます。 
 
 Premium プラン、App Service プラン、または App Service Environment に関数アプリをデプロイすることによって、仮想ネットワーク内の他のすべてのリソースから関数をトリガーすることもできます。 詳細については、「[仮想ネットワーク トリガー (非 HTTP)](./functions-networking-options.md#virtual-network-triggers-non-http)」を参照してください。
 

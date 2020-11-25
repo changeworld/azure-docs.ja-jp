@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: f034cd07b481f9d72cb3f753b30e1779bf672ac2
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: a8180088e5a0db613d5f04106fe102f58594bf72
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491938"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655053"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud に関する FAQ
 
@@ -94,9 +94,24 @@ Azure Spring Cloud は、Spring Cloud アプリケーションのログとメト
 
 はい。
 
+### <a name="how-many-outbound-public-ip-addresses-does-an-azure-spring-cloud-instance-have"></a>Azure Spring Cloud インスタンスには、送信パブリック IP アドレスはいくつありますか?
+
+送信パブリック IP アドレスの数は、レベルやその他の要因によって異なる場合があります。 
+
+| Azure Spring Cloud インスタンスの種類 | 送信パブリック IP アドレスの既定の数 |
+| -------------------------------- | ---------------------------------------------- |
+| Basic レベルのインスタンス             | 1                                              |
+| Standard レベルのインスタンス          | 2                                              |
+| VNet インジェクション インスタンス         | 1                                              |
+
+
+### <a name="can-i-increase-the-number-of-outbound-public-ip-addresses"></a>送信パブリック IP アドレスの数を増やすことはできますか?
+
+はい。[サポート チケット](https://azure.microsoft.com/support/faq/)を開いて、より多くの送信パブリック IP アドレスを要求することができます。
+
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>Azure Spring Cloud サービス インスタンスを削除または移動すると、その拡張機能リソースも削除または移動されますか?
 
-拡張リソースが所有するリソース プロバイダーのロジックによって異なります。 `Microsoft.AppPlatform` インスタンスの拡張リソースは同じ名前空間に属していないため、動作はリソース プロバイダーによって異なります。 たとえば、削除または移動操作は、 **診断設定** リソースにカスケードされません。 新しい Azure Spring Cloud インスタンスが、削除されたものと同じリソース ID でプロビジョニングされる場合、または以前の Azure Spring Cloud インスタンスが戻った場合は、以前の **診断設定** リソースが引き続きそれを拡張します。
+拡張リソースが所有するリソース プロバイダーのロジックによって異なります。 `Microsoft.AppPlatform` インスタンスの拡張リソースは同じ名前空間に属していないため、動作はリソース プロバイダーによって異なります。 たとえば、削除または移動操作は、**診断設定** リソースにカスケードされません。 新しい Azure Spring Cloud インスタンスが、削除されたものと同じリソース ID でプロビジョニングされる場合、または以前の Azure Spring Cloud インスタンスが戻った場合は、以前の **診断設定** リソースが引き続きそれを拡張します。
 
 Azure CLI を使用して、Spring Cloud の診断設定を削除できます。
 

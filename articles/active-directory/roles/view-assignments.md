@@ -1,6 +1,6 @@
 ---
-title: Azure AD portal でカスタム ロールの割り当てを表示する |Microsoft Docs
-description: Azure AD 管理センターで Azure AD 管理者ロールのメンバーを表示して管理できるようになりました。
+title: Azure Active Directory portal でカスタム ロールの割り当てを表示する |Microsoft Docs
+description: Azure Active Directory 管理センターで Azure Active Directory 管理者ロールのメンバーを表示して管理できるようになりました。
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccb158548f52059b780fd71bf19788ba200aa7c4
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: f9f7c6ec0917adbca5b44feee1ec285f4337ac4c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505582"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579030"
 ---
 # <a name="view-custom-role-assignments-using-azure-active-directory"></a>Azure Active Directory でカスタム ロールの割り当てを表示する
 

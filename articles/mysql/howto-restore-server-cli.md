@@ -1,32 +1,33 @@
 ---
 title: バックアップと復元 - Azure CLI - Azure Database for MySQL
 description: Azure CLI を使用して Azure Database for MySQL サーバーをバックアップおよび復元する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2116b5be4c5d40076aae10ecc2e81d73e7806e6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee06eed1b8f54877d01a8b316c015938038879cf
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89419505"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535403"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL サーバーのバックアップと復元を行う方法
 
 Azure Database for MySQL サーバーは、復元機能が有効になるように、バックアップが定期的に行われます。 この機能を使用して、新しいサーバー上で、サーバーとそのすべてのデータベースを過去の特定の時点に復元できます。
 
 ## <a name="prerequisites"></a>前提条件
-このハウツー ガイドを完了するには、次が必要です。
-- [Azure Database for MySQL サーバーとデータベース](quickstart-create-mysql-server-database-using-azure-cli.md)
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+この手順を実行するには、以下が必要です。
 
-> [!IMPORTANT]
-> このガイドで説明する方法では、Azure CLI バージョン 2.0 以降を使う必要があります。 バージョンを確認するには、Azure CLI コマンド プロンプトで「`az --version`」と入力します。 インストールまたはアップグレードする必要には、「[Azure CLI のインストール]( /cli/azure/install-azure-cli)」をご覧ください。
+- [Azure Database for MySQL サーバーとデータベース](quickstart-create-mysql-server-database-using-azure-cli.md)が必要です。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- この記事では、Azure CLI のバージョン 2.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="set-backup-configuration"></a>バックアップ構成の設定
 
@@ -67,9 +68,9 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 
 `az mysql server restore` コマンドには、次のパラメーターが必要です。
 
-| 設定 | 推奨値 | 説明  |
+| 設定 | 推奨値 | 説明  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
+| resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
 | name | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
 | restore-point-in-time | 2018-03-13T13:59:00Z | 復元する特定の時点を選択します。 この日付と時刻は、ソース サーバーのバックアップ保有期間内でなければなりません。 ISO8601 の日時形式を使います。 たとえば、`2018-03-13T05:59:00-08:00` など自身のローカル タイム ゾーンを使用できます。 また、`2018-03-13T13:59:00Z` など UTC Zulu 形式も使用できます。 |
 | source-server | mydemoserver | 復元元のソース サーバーの名前または ID。 |
@@ -102,7 +103,7 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 ```azurecli-interactive
 az mysql server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen5_8 
 ```
-このコマンドは、*myresourcegroup* に属する *mydemoserver-georestored* という名前の新しいサーバーを米国東部に作成します。 これは、8 個の仮想コアを備えた General Purpose Gen 5 サーバーです。 サーバーは *mydemoserver* の地理冗長バックアップ (これもリソース グループ*myresourcegroup* に含まれます) から作成されます
+このコマンドは、*myresourcegroup* に属する *mydemoserver-georestored* という名前の新しいサーバーを米国東部に作成します。 これは、8 個の仮想コアを備えた General Purpose Gen 5 サーバーです。 サーバーは *mydemoserver* の地理冗長バックアップ (これもリソース グループ *myresourcegroup* に含まれます) から作成されます
 
 既存のサーバーとは異なるリソース グループに新しいサーバーを作成する場合は、`--source-server` パラメーターで、次の例のようにサーバー名を修飾します。
 
@@ -113,7 +114,7 @@ az mysql server georestore --resource-group newresourcegroup --name mydemoserver
 
 `az mysql server georestore` コマンドには、次のパラメーターが必要です。
 
-| 設定 | 推奨値 | 説明  |
+| 設定 | 推奨値 | 説明  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | 新しいサーバーが属するリソース グループの名前。|
 |name | mydemoserver-georestored | 新しいサーバーの名前。 |

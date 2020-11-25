@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0e661cb3c3bafa92a060b0fdfd899aa152b46a5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3bd6f298ad2bb01503492b52c2d50dec82ec0ca5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977461"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534049"
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>StorSimple Virtual Array に更新プログラムをインストールする - Azure Portal
 
@@ -55,7 +55,7 @@ ms.locfileid: "91977461"
 
 3. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号を入力します。 Update 0.3 については、「**3182061**」を入力して、 **[検索]** をクリックします。
    
-    **StorSimple Virtual Array Update 0.3**など、修正プログラムの一覧が表示されます。
+    **StorSimple Virtual Array Update 0.3** など、修正プログラムの一覧が表示されます。
    
     ![カタログの検索](./media/storsimple-virtual-array-install-update/download1.png)
 
@@ -77,26 +77,26 @@ ms.locfileid: "91977461"
 
 1. ローカル Web UI で、 **[メンテナンス]**  >  **[ソフトウェア更新プログラム]** に移動します。
    
-    ![デバイスの更新 1](./media/storsimple-virtual-array-install-update/update1m.png)
+    ![[メンテナンス] メニューから [ソフトウェア更新プログラム] が選択されていることを示すスクリーンショット。](./media/storsimple-virtual-array-install-update/update1m.png)
 
 2. **[Update file path (更新プログラムのファイル パス)]** に、更新プログラムまたは修正プログラムのファイル名を入力します。 更新プログラムまたは修正プログラムのインストール ファイルがネットワーク共有にある場合は、ファイルを参照することもできます。 **[Apply]** をクリックします。
    
-    ![デバイスの更新 2](./media/storsimple-virtual-array-install-update/update2m.png)
+    ![[ソフトウェア更新プログラム] ページの [ファイル パスの更新] テキスト ボックスを示すスクリーンショット。](./media/storsimple-virtual-array-install-update/update2m.png)
 
 3. 警告が表示されます。 これは単一ノード デバイスであることから、更新プログラムが適用された後にデバイスが再起動され、ダウンタイムが発生します。 チェック マーク アイコンをクリックします。
    
-   ![デバイスの更新 3](./media/storsimple-virtual-array-install-update/update3m.png)
+   ![ダウンタイムを警告するダイアログ ボックスを示すスクリーンショット。](./media/storsimple-virtual-array-install-update/update3m.png)
 
 4. 更新プログラムが開始します。 デバイスが正常に更新されると、再起動されます。 この期間は、ローカル UI にはアクセスできません。
    
-    ![デバイスの更新 4](./media/storsimple-virtual-array-install-update/update5m.png)
+    ![更新の成功メッセージを示すスクリーンショット。](./media/storsimple-virtual-array-install-update/update5m.png)
 
 5. 再起動が完了したら、 **サインイン** ページが表示されます。 デバイス ソフトウェアが更新されたことを確認するには、ローカル Web UI で、 **[メンテナンス]**  >  **[ソフトウェア更新プログラム]** に移動します。 表示されるソフトウェアのバージョンは、Update 0.3 では **10.0.0.0.0.10288.0** です。
    
    > [!NOTE]
    > ローカル Web UI と Azure Portal では、ソフトウェアのバージョンの表示方法が少し異なります。 たとえば、同じバージョンの場合、ローカル Web UI では **10.0.0.0.0.10288** と表示され、Azure Portal では **10.0.10288.0** と表示されます。
    
-    ![デバイスの更新 5](./media/storsimple-virtual-array-install-update/update6m.png)
+    ![現在のソフトウェアのバージョンが表示された [ソフトウェア更新プログラム] ページを示すスクリーンショット。](./media/storsimple-virtual-array-install-update/update6m.png)
 
 ## <a name="use-the-azure-portal"></a>Azure ポータルの使用
 

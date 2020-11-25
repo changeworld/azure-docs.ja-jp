@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d99295fbb355b3efa22a64c9adc04311508e474
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: b2ad38e518fa4b924992355990ea3eb06a338ebe
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517565"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693160"
 ---
 # <a name="security-frame-authorization--mitigations"></a>セキュリティ フレーム:承認 | 対応策 
 | 製品/サービス | [アーティクル] |
@@ -32,11 +32,11 @@ ms.locfileid: "94517565"
 | **IoT クラウド ゲートウェイ** | <ul><li>[最小権限のトークンを使用してクラウド ゲートウェイに接続する](#cloud-least-privileged)</li></ul> |
 | **Azure Event Hub** | <ul><li>[送信専用のアクセス許可 SAS キーを使用してデバイス トークンを生成する](#sendonly-sas)</li><li>[Event Hub への直接アクセスを提供するアクセス トークンは使用しない](#access-tokens-hub)</li><li>[必要最小限のアクセス許可が付与されている SAS キーを使用して Event Hub に接続する](#sas-minimum-permissions)</li></ul> |
 | **Azure Document DB** | <ul><li>[可能な限りリソース トークンを使用して Azure Cosmos DB に接続する](#resource-docdb)</li></ul> |
-| **Azure の信頼の境界** | <ul><li>[RBAC を使用して Azure サブスクリプションへのアクセスをきめ細かく管理する](#grained-rbac)</li></ul> |
-| **Service Fabric の信頼の境界** | <ul><li>[RBAC を使用してクラスター操作へのクライアントのアクセスを制限する](#cluster-rbac)</li></ul> |
+| **Azure の信頼の境界** | <ul><li>[Azure RBAC を使用して Azure サブスクリプションへのアクセスをきめ細かく管理する](#grained-rbac)</li></ul> |
+| **Service Fabric の信頼の境界** | <ul><li>[Azure RBAC を使用してクラスター操作へのクライアントのアクセスを制限する](#cluster-rbac)</li></ul> |
 | **Dynamics CRM** | <ul><li>[必要に応じて、セキュリティのモデリングを実行し、フィールド レベルのセキュリティを使用する](#modeling-field)</li></ul> |
 | **Dynamics CRM ポータル** | <ul><li>[ポータルのセキュリティ モデルとその他の CRM が異なることを念頭に置きながら、ポータル アカウントのセキュリティ モデルを実行する](#portal-security)</li></ul> |
-| **Azure ストレージ** | <ul><li>[Azure Table Storage のエンティティの範囲で詳細なアクセス許可を付与する](#permission-entities)</li><li>[Azure Resource Manager を使用して、Azure ストレージ アカウントに対するロールベースのアクセス制御 (RBAC) を有効にする](#rbac-azure-manager)</li></ul> |
+| **Azure ストレージ** | <ul><li>[Azure Table Storage のエンティティの範囲で詳細なアクセス許可を付与する](#permission-entities)</li><li>[Azure Resource Manager を使用して、Azure ストレージ アカウントへの Azure のロールベースのアクセス制御 (Azure RBAC) を有効にする](#rbac-azure-manager)</li></ul> |
 | **モバイル クライアント** | <ul><li>[暗黙的な脱獄または root 化検出を実装する](#rooting-detection)</li></ul> |
 | **WCF** | <ul><li>[WCF での脆弱なクラス参照](#weak-class-wcf)</li><li>[WCF - 承認コントロールを実装する](#wcf-authz)</li></ul> |
 | **Web API** | <ul><li>[ASP.NET Web API で適切な承認メカニズムを実装する](#authz-aspnet)</li></ul> |
@@ -229,7 +229,7 @@ WHERE userID=:id < - session var
 | **参照**              | 該当なし  |
 | **手順** | リソース トークンは、Azure Cosmos DB アクセス許可のリソースに関連付けられていて、データベースのユーザーと、ユーザーが持つ特定の Azure Cosmos DB アプリケーションのリソース (コレクション、ドキュメントなど) へのアクセス許可の間のリレーションシップをキャプチャします。 クライアントにマスター キーや読み取り専用キーを知らせたくない場合、たとえば、クライアントがモバイル クライアント、デスクトップ クライアントなどのエンド ユーザー アプリケーションの場合は、常にリソース トークンを使用して Azure Cosmos DB にアクセスします。マスター キーや読み取り専用キーは、こうしたキーを安全に格納できるバックエンド アプリケーションから使用してください。|
 
-## <a name="enable-fine-grained-access-management-to-azure-subscription-using-rbac"></a><a id="grained-rbac"></a>RBAC を使用して Azure サブスクリプションへのアクセスをきめ細かく管理する
+## <a name="enable-fine-grained-access-management-to-azure-subscription-using-azure-rbac"></a><a id="grained-rbac"></a>Azure RBAC を使用して Azure サブスクリプションへのアクセスをきめ細かく管理する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -237,10 +237,10 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../../role-based-access-control/role-assignments-portal.md)  |
-| **手順** | Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 RBAC を使用すると、職務に必要な範囲のアクセス権だけをユーザーに付与することができます。|
+| **参照**              | [Azure でのロールの割り当てを追加または削除して、Azure サブスクリプション リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)  |
+| **手順** | Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 Azure RBAC を使用すると、職務に必要な範囲のアクセス権だけをユーザーに付与することができます。|
 
-## <a name="restrict-clients-access-to-cluster-operations-using-rbac"></a><a id="cluster-rbac"></a>RBAC を使用してクラスター操作へのクライアントのアクセスを制限する
+## <a name="restrict-clients-access-to-cluster-operations-using-service-fabric-rbac"></a><a id="cluster-rbac"></a>Service Fabric RBAC を使用してクラスター操作へのクライアントのアクセスを制限する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -248,7 +248,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 環境 - Azure |
-| **参照**              | [ロール ベースのアクセス制御 (Service Fabric クライアント用)](../../service-fabric/service-fabric-cluster-security-roles.md) |
+| **参照**              | [Service Fabric のロールベースのアクセス制御 (Service Fabric クライアント用)](../../service-fabric/service-fabric-cluster-security-roles.md) |
 | **手順** | <p>Azure Service Fabric では、Service Fabric クラスターに接続されるクライアントのために、管理者用とユーザー用の 2 つの異なるアクセス コントロールの種類がサポートされています。 アクセス制御を使用すると、クラスター管理者は、ユーザーのグループごとに特定のクラスター操作へのアクセスを制限して、クラスターのセキュリティを強化できます。</p><p>管理者には、管理機能へのフル アクセス権 (読み取り/書き込み機能など) があります。 ユーザーには、既定で管理機能 (クエリ機能など) と、アプリケーションとサービスを解決する機能への読み取りアクセス権のみがあります。</p><p>クラスターの作成時に、2 つのクライアント ロール (管理者とクライアント) を指定し、それぞれに個別の証明書を設定します。</p>|
 
 ## <a name="perform-security-modeling-and-use-field-level-security-where-required"></a><a id="modeling-field"></a>必要に応じて、セキュリティのモデリングを実行し、フィールド レベルのセキュリティを使用する
@@ -284,7 +284,7 @@ WHERE userID=:id < - session var
 | **参照**              | [SAS を使用して Azure ストレージ アカウントのオブジェクトへのアクセスを委任する方法](../../storage/blobs/security-recommendations.md#identity-and-access-management) |
 | **手順** | ビジネス シナリオによっては、さまざまな関係者に対応した機密データ (さまざまな国/地域に関連する機密データなど) を、Azure Table Storage に格納しなければならないことがあります。 このような場合は、パーティションと行キー範囲を指定することで SAS 署名を構成し、ユーザーが、国/地域固有のデータにアクセスできるようにします。| 
 
-## <a name="enable-role-based-access-control-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>Azure Resource Manager を使用して、Azure ストレージ アカウントに対するロールベースのアクセス制御 (RBAC) を有効にする
+## <a name="enable-azure-role-based-access-control-azure-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>Azure Resource Manager を使用して、Azure ストレージ アカウントへの Azure のロールベースのアクセス制御 (Azure RBAC) を有効にする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -292,7 +292,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントをセキュリティで保護する方法](../../storage/blobs/security-recommendations.md) |
+| **参照**              | [Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、ストレージ アカウントをセキュリティで保護する方法](../../storage/blobs/security-recommendations.md) |
 | **手順** | <p>新しいストレージ アカウントを作成するときに、クラシックまたは Azure Resource Manager のデプロイ モデルを選択します。 Azure にリソースを作成するクラシック モデルでは、サブスクリプション (つまりストレージ アカウント) に対するオールオアナッシング形式のアクセス権のみを許可します。</p><p>Azure Resource Manager モデルでは、Azure Active Directory を使用して、リソース グループにストレージ アカウントを追加し、特定のストレージ アカウントの管理プレーンに対するアクセス権を制御します。 たとえば、ストレージ アカウント キーへのアクセス権を特定のユーザーに付与し、他のユーザーはそのストレージ アカウントに関する情報を読み取ることはできても、ストレージ アカウント キーにはアクセスでないようにすることができます。</p>|
 
 ## <a name="implement-implicit-jailbreak-or-rooting-detection"></a><a id="rooting-detection"></a>暗黙的な脱獄または root 化検出を実装する

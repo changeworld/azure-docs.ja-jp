@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc 対応のクラスター構成に対して GitOps を使用する (プレビュー)
 keywords: GitOps、Kubernetes、K8s、Azure、Arc、Azure Kubernetes Service、コンテナー
-ms.openlocfilehash: 1a8839c2463494ba0e165bf9e1a5d22245fac8df
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ce6c754c308d2979db9b1b8eb36e7858e8a91c3c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371258"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659796"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Arc 対応 Kubernetes クラスターに対して GitOps を使用して構成をデプロイする (プレビュー)
 
@@ -99,7 +99,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 | シナリオ | Format | 説明 |
 | ------------- | ------------- | ------------- |
 | パブリック Git リポジトリ | http[s]://server/repo.git or git://server/repo.git   | パブリック Git リポジトリ  |
-| プライベート Git リポジトリ – SSH – Flux で作成されたキー | ssh://[user@]server/repo.git or [user@]server:repo.git | Flux によって生成される公開キーは、Git サービス プロバイダー上のユーザー アカウントまたはリポジトリに追加する必要があります。 詳細については、 [こちら](#apply-configuration-from-a-private-git-repository) |
+| プライベート Git リポジトリ – SSH – Flux で作成されたキー | ssh://[user@]server/repo.git or [user@]server:repo.git | Flux によって生成される公開キーは、Git サービス プロバイダー上のユーザー アカウントに追加する必要があります。 デプロイ キーがユーザー アカウントではなくリポジトリに追加された場合は、`user@` の代わりに `git@` を使用します。 詳細については、 [こちら](#apply-configuration-from-a-private-git-repository) |
 
 これらのシナリオは Flux でサポートされていますが、sourceControlConfiguration ではまだサポートされていません。
 
@@ -113,15 +113,15 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 構成の作成をカスタマイズするために、いくつかの追加パラメーターを次に示します。
 
-`--enable-helm-operator`: *省略可能* : Helm グラフの配置のサポートを有効にするように切り替えます。
+`--enable-helm-operator`:*省略可能*: Helm グラフの配置のサポートを有効にするように切り替えます。
 
-`--helm-operator-chart-values`: *省略可能* : Helm 演算子 (有効な場合) のグラフの値。  たとえば、'--set helm.versions=v3' です。
+`--helm-operator-chart-values`:*省略可能*: Helm 演算子 (有効な場合) のグラフの値。  たとえば、'--set helm.versions=v3' です。
 
-`--helm-operator-chart-version`: *省略可能* : Helm 演算子 (有効な場合) のグラフのバージョン。 既定値は'0.6.0'。
+`--helm-operator-chart-version`:*省略可能*: Helm 演算子 (有効な場合) のグラフのバージョン。 既定値は'0.6.0'。
 
-`--operator-namespace`: *省略可能* : オペレーターの名前空間の名前。 既定値: 'default'
+`--operator-namespace`:*省略可能*: オペレーターの名前空間の名前。 既定値: 'default'
 
-`--operator-params`: *省略可能* : オペレーターのパラメーター。 単一引用符で囲む必要があります。 たとえば、```--operator-params='--git-readonly --git-path=releases' ``` のように指定します。
+`--operator-params`:*省略可能*: オペレーターのパラメーター。 単一引用符で囲む必要があります。 たとえば、```--operator-params='--git-readonly --git-path=releases' ``` のように指定します。
 
 --operator-params でサポートされているオプション
 
@@ -222,16 +222,26 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 3. プライベート Git リポジトリを使用する構成を選択します。
 4. 開いたコンテキスト ウィンドウで、ウィンドウの下部にある **[リポジトリの公開キー]** をコピーします。
 
-**公開キーをデプロイ キーとして git リポジトリに追加する**
+GitHub を使用している場合は、次の 2 つのオプションのいずれかを使用します。
+
+**オプション 1: 自分のユーザー アカウントに公開キーを追加する**
+
+1. GitHub を開き、ページの右上隅にあるプロファイル アイコンをクリックします。
+2. **[設定]** をクリックします。
+3. **[SSH and GPG keys]\(SSH と GPG キー\)** をクリックします
+4. **[New SSH key]\(新しい SSH キー\)** をクリックします
+5. [タイトル] を入力します
+6. 公開キーを貼り付けます (囲んでいる引用符は除きます)
+7. **[Add SSH key]\(SSH キーの追加\)** をクリックします
+
+**オプション 2: 公開キーをデプロイ キーとして git リポジトリに追加する**
 
 1. GitHub を開き、リポジトリに移動して、 **[設定]** 、 **[Deploy keys]\(デプロイ キー\)** の順に移動します
 2. **[Add deploy key]\(デプロイ キーの追加\)** をクリックします
 3. [タイトル] を入力します
 4. **[Allow write access]\(書き込みアクセスを許可する\)** をオンにします
 5. 公開キーを貼り付けます (囲んでいる引用符は除きます)
-6. **[Add key]\(キーの追加\)** をクリックします
-
-これらのキーを管理する方法の詳細については、GitHub のドキュメントを参照してください。
+6. **[キーの追加]** をクリックします
 
 **Azure DevOps リポジトリを使用している場合は SSH キーにキーを追加する**
 

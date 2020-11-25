@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 08/17/2020
-ms.openlocfilehash: d4925b8ecb7768f1f49b2c971f7234d58339c056
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 03a6e927a074067e85f1a3adca38cae386d1af38
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92481110"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026218"
 ---
 # <a name="quickstart-create-a-hyperscale-citus-server-group-in-the-azure-portal"></a>クイックスタート: Azure portal で Hyperscale (Citus) サーバー グループを作成する
 
@@ -139,4 +139,4 @@ SELECT gu.login, count(*)
 このクイック スタートでは、Hyperscale (Citus) サーバー グループのプロビジョニング方法を学習しました。 そのサーバー グループに psql で接続し、スキーマを作成して、データを分散しました。
 
 - チュートリアルに従って[スケーラブルなマルチテナント アプリケーションを構築する](./tutorial-design-database-hyperscale-multi-tenant.md)
-- サーバー グループに最適な[初期サイズ](howto-hyperscale-scaling.md#picking-initial-size)を決定する
+- サーバー グループに最適な[初期サイズ](howto-hyperscale-scale-initial.md)を決定する

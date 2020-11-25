@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 7c5aa7e5189b4c89636fdb38e8fd365208148900
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fb6f9f598ef68911a9017dde504a032672dc55a3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094644"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966583"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>クイック スタート:Java を使用して X.509 デバイスを Device Provisioning Service に登録する
 
@@ -51,7 +51,7 @@ ms.locfileid: "93094644"
 
     1. 次のように、ポータルからプロビジョニング サービスの `[Provisioning Connection String]` を追加します。
         1. [Azure Portal](https://portal.azure.com) でプロビジョニング サービスに移動します。 
-        2. **[共有アクセス ポリシー]** を開き、 *EnrollmentWrite* アクセス許可を持つポリシーを選択します。
+        2. **[共有アクセス ポリシー]** を開き、*EnrollmentWrite* アクセス許可を持つポリシーを選択します。
         3. **主キーの接続文字列** をコピーします。 
 
             ![ポータルからプロビジョニング接続文字列を取得する](./media/quick-enroll-device-x509-java/provisioning-string.png)  
@@ -98,7 +98,7 @@ ms.locfileid: "93094644"
             "-----END CERTIFICATE-----\n";
             ```
 
-        9. " *確認コード* " の入力を求められたら、コマンド ウィンドウを閉じるか、「 **n** 」と入力します。 
+        9. "*確認コード*" の入力を求められたら、コマンド ウィンドウを閉じるか、「**n**」と入力します。 
  
     3. 必要に応じて、サンプル コードでプロビジョニング サービスを構成することができます。
         - この構成をサンプルに追加するには、次の手順を実行します。
@@ -107,16 +107,16 @@ ms.locfileid: "93094644"
                 ```Java
                 private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.net";
                 ```
-            2. *DEVICE_ID* パラメーターにフレンドリ名を割り当て、 *PROVISIONING_STATUS* を既定の *ENABLED* 値のままにします。 
+            2. *DEVICE_ID* パラメーターにフレンドリ名を割り当て、*PROVISIONING_STATUS* を既定の *ENABLED* 値のままにします。 
 
-        - または、プロビジョニング サービスを構成しない場合は、 _ServiceEnrollmentGroupSample.java_ ファイル内の次のステートメントをコメント アウトするか削除します。
+        - または、プロビジョニング サービスを構成しない場合は、_ServiceEnrollmentGroupSample.java_ ファイル内の次のステートメントをコメント アウトするか削除します。
 
             ```Java
             enrollmentGroup.setIotHubHostName(IOTHUB_HOST_NAME);                // Optional parameter.
             enrollmentGroup.setProvisioningStatus(ProvisioningStatus.ENABLED);  // Optional parameter.
             ```
 
-    4. サンプル コードの内容を確認します。 このコードは、X.509 デバイスのグループ登録を作成、更新、照会、および削除します。 ポータルで登録が成功したことを確認するには、 _ServiceEnrollmentGroupSample.java_ ファイルの末尾にある次のコード行を一時的にコメント アウトします。
+    4. サンプル コードの内容を確認します。 このコードは、X.509 デバイスのグループ登録を作成、更新、照会、および削除します。 ポータルで登録が成功したことを確認するには、_ServiceEnrollmentGroupSample.java_ ファイルの末尾にある次のコード行を一時的にコメント アウトします。
 
         ```Java
         // ************************************** Delete info of enrollmentGroup ***************************************
@@ -163,7 +163,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 ## <a name="modifications-to-enroll-a-single-x509-device"></a>1 つの X.509 デバイスを登録する場合の変更
 
-1 つの X.509 デバイスを登録するには、「 [Enroll TPM device to IoT Hub Device Provisioning Service using Java service SDK](quick-enroll-device-tpm-java.md#javasample)」(Java Service SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する) で使用した *個々の登録* のサンプル コードを次のように変更します。
+1 つの X.509 デバイスを登録するには、「[Enroll TPM device to IoT Hub Device Provisioning Service using Java service SDK](quick-enroll-device-tpm-java.md#javasample)」(Java Service SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する) で使用した *個々の登録* のサンプル コードを次のように変更します。
 
 1. X.509 クライアント証明書の *共通名* をクリップボードにコピーします。 [前のサンプル コード セクション](#javasample)で説明したように _X.509 証明書ジェネレーター_ を使用する場合は、証明書の _共通名_ を入力するか、既定の **microsoftriotcore** を使用します。 この **共通名** を *REGISTRATION_ID* 変数の値として使用します。 
 
@@ -190,12 +190,12 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
             "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
             "-----END CERTIFICATE-----\n";
     ```
-3. X.509 クライアント証明書を使用するように、 **main** 関数の行 `Attestation attestation = new TpmAttestation(TPM_ENDORSEMENT_KEY);` を次のように置き換えます。
+3. X.509 クライアント証明書を使用するように、**main** 関数の行 `Attestation attestation = new TpmAttestation(TPM_ENDORSEMENT_KEY);` を次のように置き換えます。
     ```Java
     Attestation attestation = X509Attestation.createFromClientCertificates(PUBLIC_KEY_CERTIFICATE_STRING);
     ```
 
-4. 「 [Build and run the sample code for individual enrollment](quick-enroll-device-tpm-java.md#runjavasample)」(個々の登録のサンプル コードをビルドして実行する) の手順に従って、 *個々の登録* のサンプル ファイルを保存し、ビルドして実行します。
+4. 「[Build and run the sample code for individual enrollment](quick-enroll-device-tpm-java.md#runjavasample)」(個々の登録のサンプル コードをビルドして実行する) の手順に従って、*個々の登録* のサンプル ファイルを保存し、ビルドして実行します。
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
@@ -203,7 +203,7 @@ Java サービスのサンプルを調べる予定の場合は、このクイッ
 
 1. マシンに表示されている Java サンプルの出力ウィンドウを閉じます。
 1. マシンの _X509 証明書ジェネレーター_ のウィンドウを閉じます。
-1. Azure portal で Device Provisioning Service に移動し、 **[登録を管理します]** 、 **[登録グループ]** タブの順に選択します。このクイックスタートを使用して登録した X.509 デバイスの " *グループ名* " の隣にあるチェック ボックスをオンにして、ペイン上部にある **[削除]** を押します。  
+1. Azure portal で Device Provisioning Service に移動し、 **[登録を管理します]** 、 **[登録グループ]** タブの順に選択します。このクイックスタートを使用して登録した X.509 デバイスの "*グループ名*" の隣にあるチェック ボックスをオンにして、ペイン上部にある **[削除]** を押します。  
 
 ## <a name="next-steps"></a>次のステップ
 このクイックスタートでは、シミュレートされた X.509 デバイスのグループを Device Provisioning Service に登録しました。 Device Provisioning に関する理解をさらに深めるには、Azure Portal における Device Provisioning Service の設定に関するチュートリアルに進んでください。 

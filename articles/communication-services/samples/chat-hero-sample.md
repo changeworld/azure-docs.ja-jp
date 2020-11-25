@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8349654650ff0c85fb7c9c1af6ab5dabc4f5c3ac
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: fc757e1310369c48de24c0cc9253c668ca27495c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677414"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888574"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>グループ チャットのヒーロー サンプルを使ってみる
 
@@ -44,17 +44,17 @@ Azure Communication Services の **グループ チャットのヒーロー サ�
 
 [Start a Chat]\(チャットを開始\) ボタンを押すと、Web アプリケーションは、サーバー側アプリケーションからユーザー アクセス トークンをフェッチします。 このトークンは、クライアント アプリを Azure Communication Services に接続するために使用されます。 トークンが取得されると、チャットで自分を表す名前と絵文字を指定するように求められます。 
 
-:::image type="content" source="./media/chat/pre-chat.png" alt-text="サンプル アプリケーションのランディング ページを示すスクリーンショット。":::
+:::image type="content" source="./media/chat/pre-chat.png" alt-text="アプリケーションのチャット前の画面を示すスクリーンショット。":::
 
 表示名と絵文字を構成すると、チャット セッションに参加できるようになります。 これで、コア チャット エクスペリエンスを提供するメインのチャット キャンバスが表示されます。
 
-:::image type="content" source="./media/chat/main-app.png" alt-text="サンプル アプリケーションのランディング ページを示すスクリーンショット。":::
+:::image type="content" source="./media/chat/main-app.png" alt-text="サンプル アプリケーションのメイン画面を示すスクリーンショット。":::
 
 メイン チャット画面のコンポーネント:
 
-- **メイン チャット領域** : これは、ユーザーがメッセージを送受信できるコア チャット エクスペリエンスです。 メッセージを送信するには、入力領域を使用して Enter キーを押します (または、[送信] ボタンを使用します)。 受信されたチャット メッセージは、適切な名前と絵文字を使って送信者によって分類されます。 チャット領域には、次の 2 種類の通知が表示されます。1) ユーザーが入力中の入力通知と、2) メッセージの送信済みと既読の通知。
-- **ヘッダー** :ここには、チャット スレッドのタイトルと、参加者と設定のサイド バーを切り替えるためのコントロール、およびチャット セッションを終了するための退出ボタンがユーザーに表示されます。
-- **サイド バー** : ヘッダーでコントロールを使用して切り替えると、ここに参加者と設定情報が表示されます。 参加者のサイド バーには、チャットの参加者の一覧と、チャット セッションに参加者を招待するためのリンクが含まれています。 設定のサイド バーでは、チャット スレッドのタイトルを構成できます。 
+- **メイン チャット領域**: これは、ユーザーがメッセージを送受信できるコア チャット エクスペリエンスです。 メッセージを送信するには、入力領域を使用して Enter キーを押します (または、[送信] ボタンを使用します)。 受信されたチャット メッセージは、適切な名前と絵文字を使って送信者によって分類されます。 チャット領域には、次の 2 種類の通知が表示されます。1) ユーザーが入力中の入力通知と、2) メッセージの送信済みと既読の通知。
+- **ヘッダー**:ここには、チャット スレッドのタイトルと、参加者と設定のサイド バーを切り替えるためのコントロール、およびチャット セッションを終了するための退出ボタンがユーザーに表示されます。
+- **サイド バー**: ヘッダーでコントロールを使用して切り替えると、ここに参加者と設定情報が表示されます。 参加者のサイド バーには、チャットの参加者の一覧と、チャット セッションに参加者を招待するためのリンクが含まれています。 設定のサイド バーでは、チャット スレッドのタイトルを構成できます。 
 
 以下で、サンプルを設定するための前提条件と手順について詳しく説明します。
 
@@ -118,4 +118,4 @@ Communication Services サブスクリプションをクリーンアップして
 - [Redux](https://redux.js.org/) - クライアント側の状態管理
 - [FluentUI](https://aka.ms/fluent-ui) - Microsoft が提供する UI ライブラリ
 - [React](https://reactjs.org/) - ユーザー インターフェイスを構築するためのライブラリ
-- [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) - Web アプリケーションを構築するためのフレームワーク
+- [ASP.NET Core](/aspnet/core/introduction-to-aspnet-core?preserve-view=true&view=aspnetcore-3.1) - Web アプリケーションを構築するためのフレームワーク

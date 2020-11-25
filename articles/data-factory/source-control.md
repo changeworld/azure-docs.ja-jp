@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 523f28cdd32c5176160587a8531aa66c0621d5a7
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 37982d1c28d445d40fa9d53a2a1eb076fbbf7f2f
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330691"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566709"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -54,7 +54,7 @@ Git 統合が作成作業にもたらす利点をいくつか下の一覧にま�
 
 ## <a name="connect-to-a-git-repository"></a>Git リポジトリに接続する
 
-Azure Repos と GitHub の両方で Git リポジトリをデータ ファクトリに接続するには、4 つの方法があります。 Git リポジトリに接続した後、 [管理ハブ](author-management-hub.md)の **[ソース管理]** セクションにある **[Git 構成]** で構成を表示し、管理することができます。
+Azure Repos と GitHub の両方で Git リポジトリをデータ ファクトリに接続するには、4 つの方法があります。 Git リポジトリに接続した後、[管理ハブ](author-management-hub.md)の **[ソース管理]** セクションにある **[Git 構成]** で構成を表示し、管理することができます。
 
 ### <a name="configuration-method-1-home-page"></a>構成方法 1:ホーム ページ
 
@@ -203,7 +203,7 @@ GitHub 組織に接続するには、Azure Data Factory のアクセス許可を
 
 ## <a name="version-control"></a>バージョン コントロール
 
-開発者は、バージョン コントロール ( _ソース管理_ とも呼ばれます) システムを使うことで、コードの共同作業を行い、コード ベースに対して行われた変更を追跡することができます。 ソース管理は、複数の開発者で行うプロジェクトに不可欠なツールです。
+開発者は、バージョン コントロール (_ソース管理_ とも呼ばれます) システムを使うことで、コードの共同作業を行い、コード ベースに対して行われた変更を追跡することができます。 ソース管理は、複数の開発者で行うプロジェクトに不可欠なツールです。
 
 ### <a name="creating-feature-branches"></a>機能ブランチの作成
 
@@ -241,7 +241,7 @@ Azure Data Factory に指定できる公開ブランチは一度に 1 つとな�
 ![発行ブランチが正しいことを確認する](media/author-visually/configure-publish-branch.png)
 
 > [!IMPORTANT]
-> マスター ブランチは Data Factory サービスに展開されているものを代表しているわけではありません。 マスター ブランチを Data Factory サービスに手動で発行する " *必要があります* "。
+> マスター ブランチは Data Factory サービスに展開されているものを代表しているわけではありません。 マスター ブランチを Data Factory サービスに手動で発行する "*必要があります*"。
 
 ## <a name="best-practices-for-git-integration"></a>Git 統合のベスト プラクティス
 
@@ -250,7 +250,7 @@ Azure Data Factory に指定できる公開ブランチは一度に 1 つとな�
 通常、Data Factory を更新するアクセス許可をすべてのチーム メンバーには付与することはありません。 次のアクセス許可の設定をお勧めします。
 
 *   Data Factory に対する読み取りアクセス許可は、チーム メンバー全員に必要です。
-*   Data Factory への発行は、一部の選ばれたメンバーにのみ許可するようにします。 そのためには、Data Factory がある **リソース グループ** で、 **Data Factory 共同作成者** ロールを持つ必要があります。 アクセス許可の詳細については、「[Azure Data Factory のロールとアクセス許可](concepts-roles-permissions.md)」を参照してください。
+*   Data Factory への発行は、一部の選ばれたメンバーにのみ許可するようにします。 そのためには、Data Factory がある **リソース グループ** で、**Data Factory 共同作成者** ロールを持つ必要があります。 アクセス許可の詳細については、「[Azure Data Factory のロールとアクセス許可](concepts-roles-permissions.md)」を参照してください。
 
 コラボレーション ブランチへの直接チェックインは許可しないことをお勧めします。 この制限は、すべてのチェックインが「[機能ブランチの作成](source-control.md#creating-feature-branches)」に記載されている pull request のレビュー プロセスを通過するため、バグを防ぐのに役立ちます。
 

@@ -11,15 +11,14 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: b4dc222ed0fc350b680d2696c1faa16d44b84a02
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 496a38e43c7bd624c42f5c7a43ad9cf16f85d166
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358339"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579574"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>実験でデータセットをバージョン管理して追跡する
-
 
 この記事では、再現性のために Azure Machine Learning データセットをバージョン管理する方法について説明します。 データセットのバージョン管理は、将来の実験のために特定のバージョンのデータセットを適用できるように、データの状態をブックマークする方法です。
 
@@ -82,7 +81,7 @@ titanic_ds = Dataset.get_by_name(workspace = workspace,
 データセットのバージョンを作成するときには、ワークスペースでデータの余分なコピーを作成 *しない* ようにします。 データセットはストレージ サービス内のデータへの参照であるため、あるのはストレージ サービスによって管理される単一のデータ ソースです。
 
 >[!IMPORTANT]
-> データセットによって参照されるデータが上書きまたは削除された場合、特定バージョンのデータセットを呼び出しても変更は元に戻され *ません* 。
+> データセットによって参照されるデータが上書きまたは削除された場合、特定バージョンのデータセットを呼び出しても変更は元に戻され *ません*。
 
 データセットからデータを読み込むときは常に、データセットによって参照された現在のデータ コンテンツが読み込まれます。 データセットの各バージョンが再現可能であることを確認する場合、データセットのバージョンによって参照されるデータ コンテンツは変更しないことをお勧めします。 新しいデータが到着したら、新しいデータ ファイルを別個のデータ フォルダーに保存してから、新しいデータセット バージョンを作成し、その新しいフォルダーのデータを含めます。
 
@@ -116,11 +115,11 @@ dataset2.register(workspace = workspace,
 
 <a name="pipeline"></a>
 
-## <a name="version-a-pipeline-output-dataset"></a>パイプライン出力データセットをバージョン管理する
+## <a name="version-an-ml-pipeline-output-dataset"></a>ML パイプライン出力データセットをバージョン管理する
 
-データセットは、Machine Learning の各パイプライン ステップの入力および出力として使用できます。 パイプラインを再実行すると、各パイプライン ステップの出力は新しいデータセット バージョンとして登録されます。
+データセットは、[ML の各パイプライン](concept-ml-pipelines.md) ステップの入力および出力として使用できます。 パイプラインを再実行すると、各パイプライン ステップの出力は新しいデータセット バージョンとして登録されます。
 
-パイプラインを再実行するたびに、Machine Learning パイプラインによって、各ステップの出力が新しいフォルダーに格納されるので、バージョン管理された出力データセットは再現可能となります。 パイプラインのデータセットについては[こちら](how-to-create-your-first-pipeline.md#steps)をご覧ください。
+パイプラインを再実行するたびに、ML パイプラインによって、各ステップの出力が新しいフォルダーに格納されます。 この動作により、バージョン管理された出力データセットを再現できます。 パイプラインのデータセットについては[こちら](how-to-create-your-first-pipeline.md#steps)をご覧ください。
 
 ```Python
 from azureml.core import Dataset
@@ -154,9 +153,36 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 <a name="track"></a>
 
-## <a name="track-datasets-in-experiments"></a>実験のデータセットを追跡する
+## <a name="track-datas-in-your-experiments"></a>実験のデータの追跡
 
-各機械学習の実験ごとに、実験 `Run` オブジェクトを介して、入力として使用されるデータセットを簡単に追跡できます。
+Azure Machine Learning を使用すると、入力と出力のデータセットとして実験全体のデータが追跡されます。  
+
+データが **入力データセット** として追跡されるシナリオを次に示します。 
+
+* 実験の実行を送信するときに、`ScriptRunConfig` オブジェクトの `inputs` または `arguments` のいずれかのパラメーターを使用して `DatasetConsumptionConfig` オブジェクトとして。 
+
+* get_by_name() または get_by_id() のようなメソッドがスクリプトで呼び出される場合。 このシナリオでは、ワークスペースに登録したときにデータセットに割り当てられた名前が表示されます。 
+
+データが **出力データセット** として追跡されるシナリオを次に示します。  
+
+* 実験の実行を送信するときに、`outputs` または `arguments` のいずれかのパラメーターを使用して `OutputFileDatasetConfig` オブジェクトを渡す。 `OutputFileDatasetConfig` オブジェクトを使用して、パイプライン ステップ間でデータを保持することもできます。 [ML パイプラインのステップ間でのデータの移動](how-to-move-data-in-out-of-pipelines.md)に関するページを参照してください。
+    > [!TIP]
+    > [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) は、いつでも変更される可能性がある[試験的](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental)なプレビュー機能を含むパブリック プレビュー クラスです。
+
+* スクリプトにデータセットを登録する。 このシナリオでは、ワークスペースに登録したときにデータセットに割り当てられた名前が表示されます。 次の例では、`training_ds` が表示される名前です。
+
+    ```Python
+   training_ds = unregistered_ds.register(workspace = workspace,
+                                     name = 'training_ds',
+                                     description = 'training data'
+                                     )
+    ```
+
+* スクリプトに登録されていないデータセットを使用して子の実行を送信します。 これにより、匿名で保存されたデータセットが生成されます。
+
+### <a name="trace-datasets-in-experiment-runs"></a>実験の実行でのデータセットのトレース
+
+Machine Learning の実験ごとに、実験 `Run` オブジェクトを使用して、入力として使用されるデータセットを簡単に追跡できます。
 
 次のコードでは、[`get_details()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-details--) メソッドを使用して、実験の実行でどの入力データセットが使用されたかを追跡します。
 
@@ -169,7 +195,7 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-また、 https://ml.azure.com/ を使用して、実験から `input_datasets` を見つけることもできます。 
+また、[Azure Machine Learning スタジオ]()を使用して、実験から `input_datasets` を見つけることもできます。 
 
 次の図は、Azure Machine Learning Studio で実験の入力データセットを探す場所を示しています。 この例では、 **[実験]** ペインに移動し、実験 `keras-mnist` の特定の実行について **[プロパティ]** タブを開きます。
 
@@ -183,7 +209,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-登録後は、Python を使用してデータセットに登録されたモデルのリストを表示できます。 https://ml.azure.com/ に進む方法もあります。
+登録後は、Python を使用してデータセットに登録されたモデルのリストを表示できます。[スタジオ](https://ml.azure.com/)に進む方法もあります。
 
 次のビューは、 **[資産]** の下の **[データセット]** ペインからのものです。 データセットを選択して、 **[モデル]** タブを選択し、そのデータセットで登録されたモデルのリストを表示します。 
 

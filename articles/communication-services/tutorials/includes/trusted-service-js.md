@@ -8,12 +8,12 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: d4ef8baa123f805d380b14fa24abff65903cb41d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: daf2d675bbbee324769b6e1e8d8d34587d37c72f
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90945255"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886625"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +37,7 @@ ms.locfileid: "90945255"
 
 ### <a name="azure-functions-set-up"></a>Azure Functions の設定
 
-最初に Azure Functions の基本構造を設定します。 設定のステップ バイ ステップの手順については、以下を参照してください。[Visual Studio Code を使用して関数を作成する](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript)
+最初に Azure Functions の基本構造を設定します。 設定のステップ バイ ステップの手順については、以下を参照してください。[Visual Studio Code を使用して関数を作成する](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript)
 
 Azure Functions には、次の構成が必要です。
 
@@ -46,7 +46,7 @@ Azure Functions には、次の構成が必要です。
 - 認可レベル:匿名 (別の認可モデルを使用する場合は、後で切り替えることができます)
 - 関数名:ユーザー定義
 
-上記の構成を使用して [Azure Functions の手順](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript)を実行すると、Visual Studio Code に Azure Functions のプロジェクトがあり、そこに関数自体を含む `index.js` ファイルがあるはずです。 このファイル内のコードは以下のようになっているはずです。
+上記の構成を使用して [Azure Functions の手順](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript)を実行すると、Visual Studio Code に Azure Functions のプロジェクトがあり、そこに関数自体を含む `index.js` ファイルがあるはずです。 このファイル内のコードは以下のようになっているはずです。
 
 ```javascript
 
@@ -128,15 +128,15 @@ module.exports = async function (context, req) {
 
 ## <a name="test-the-azure-function"></a>Azure Functions をテストする
 
-`F5` を使用して Azure Functions をローカルで実行します。 これにより、Azure Functions がローカルで初期化され、`http://localhost:7071/api/FUNCTION_NAME` によってアクセスできるようになります。 [ローカルでの実行](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript#run-the-function-locally)に関する追加のドキュメントを確認してください
+`F5` を使用して Azure Functions をローカルで実行します。 これにより、Azure Functions がローカルで初期化され、`http://localhost:7071/api/FUNCTION_NAME` によってアクセスできるようになります。 [ローカルでの実行](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#run-the-function-locally)に関する追加のドキュメントを確認してください
 
 お使いのブラウザーで URL を開くと、Communication のユーザー ID、トークン、トークンの有効期限を含む応答本文が表示されます。
 
-:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="信頼できるサービスのアーキテクチャの図":::
+:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="作成された Azure Functions の応答例を示すスクリーンショット。":::
 
 ## <a name="deploy-the-function-to-azure"></a>関数を Azure にデプロイする
 
-Azure 関数をデプロイするには、[ステップ バイ ステップの手順](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript#sign-in-to-azure)に従います。
+Azure 関数をデプロイするには、[ステップ バイ ステップの手順](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#sign-in-to-azure)に従います。
 
 一般的に、次のことを行う必要があります。
 1. Visual Studio から Azure にサインインする
@@ -151,4 +151,4 @@ URL `http://<function-appn-ame>.azurewebsites.net/api/<function-name>` を使用
 
 URL を見つけるには、Visual Studio Code で関数を右クリックし、関数の URL をコピーします。
 
-詳細については、[Azure 関数の実行](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript#run-the-function-in-azure)に関するページを参照してください。
+詳細については、[Azure 関数の実行](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#run-the-function-in-azure)に関するページを参照してください。

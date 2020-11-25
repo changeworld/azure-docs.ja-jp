@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3b32e7a1df0dbbf4d43a73f1e3e409a904ab88a3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8d70a45b89142f6f9c6990fdbb4b79751c82275f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660085"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237478"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>クイックスタート:Synapse SQL を使用したデータの一括読み込み
 
@@ -39,7 +39,8 @@ Synapse Studio 内の次の領域を右クリックするだけで、専用 SQL 
 
 ### <a name="steps"></a>手順
 
-1. [Source storage location]\(ソース ストレージの場所\) パネルで、ストレージ アカウントと、読み込み元のファイルまたはフォルダーを選択します。 ウィザードによって自動的に Parquet ファイルの検出が試行されます。 Parquet ファイルの種類が確認できない場合は、区切りテキスト (CSV) が既定で使用されます。 
+1. [Source storage location]\(ソース ストレージの場所\) パネルで、ストレージ アカウントと、読み込み元のファイルまたはフォルダーを選択します。 ウィザードによって自動的に Parquet ファイルの検出が試行されます。 Parquet ファイルの種類が確認できない場合は、区切りテキスト (CSV) が既定で使用されます。
+
    ![ソースの場所の選択](./sql/media/bulk-load/bulk-load-source-location.png)
 
 2. 拒否された行 (エラー ファイル) の書き込み先のストレージ アカウントを含め、ファイル形式設定を選択します。 現時点では、CSV ファイルと Parquet ファイルのみがサポートされています。

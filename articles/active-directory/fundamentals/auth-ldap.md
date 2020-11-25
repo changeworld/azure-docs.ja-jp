@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory による LDAP 認証
-description: この認証パターンの実現に関するアーキテクチャ ガイダンス
+description: Azure Active Directory を使用した LDAP 認証の取得に関するアーキテクチャ ガイダンス。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a70cb4754d98f4573670860c510692a7a2d134c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d5314758acecae2a9d68f2405fc1c3d2196950b4
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113979"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577058"
 ---
 # <a name="ldap-authentication-with-azure-active-directory"></a>Azure Active Directory による LDAP 認証
 
@@ -42,21 +42,21 @@ ms.locfileid: "92113979"
 
 * **[ユーザー]** :LDAP に依存するアプリケーションにブラウザーを介してアクセスします。
 
-* **Web ブラウザー** : アプリケーションの外部 URL にアクセスするためにユーザーが操作するインターフェイスです。
+* **Web ブラウザー**: アプリケーションの外部 URL にアクセスするためにユーザーが操作するインターフェイスです。
 
 * **[仮想ネットワーク]** : レガシ アプリケーションで LDAP サービスを使用するために経由する Azure 内のプライベート ネットワーク。 
 
-* **レガシ アプリケーション** : LDAP を Azure の仮想ネットワークにデプロイする必要があるアプリケーションまたはサーバー ワークロード、あるいはネットワーク ルートを介して AD DS インスタンス IP を可視化できるアプリケーションまたはサーバー ワークロード。 
+* **レガシ アプリケーション**: LDAP を Azure の仮想ネットワークにデプロイする必要があるアプリケーションまたはサーバー ワークロード、あるいはネットワーク ルートを介して AD DS インスタンス IP を可視化できるアプリケーションまたはサーバー ワークロード。 
 
-* **Azure AD** :Azure AD Connect を経由して、組織のオンプレミス ディレクトリから ID 情報を同期します。
+* **Azure AD**:Azure AD Connect を経由して、組織のオンプレミス ディレクトリから ID 情報を同期します。
 
 * **Azure AD Domain Services (AD DS)** : Azure AD からの一方向の同期を実行して、集中管理された一連のユーザー、グループ、および資格情報へのアクセスを提供します。 AD DS インスタンスは仮想ネットワークに割り当てられます。 AD DS に割り当てられた仮想ネットワークに接続される Azure 内のアプリケーション、サービス、および VM では、共通の AD DS 機能 (LDAP、ドメイン参加、グループ ポリシー、Kerberos、NTLM 認証など) を使用することができます。
    > [!NOTE]
    >  組織がパスワード ハッシュを同期できない環境、またはユーザーがスマート カードを使用してサインインする環境では、AD DS でリソース フォレストを使用することをお勧めします。 
 
-* **Azure AD Connect** :オンプレミスの ID 情報を Microsoft Azure AD に同期するためのツール。 デプロイ ウィザードおよびガイド付きエクスペリエンスを使用すると、Active Directory から Azure AD への同期やサインオンなど、接続に必要な前提条件とコンポーネントを容易に構成できます。 
+* **Azure AD Connect**:オンプレミスの ID 情報を Microsoft Azure AD に同期するためのツール。 デプロイ ウィザードおよびガイド付きエクスペリエンスを使用すると、Active Directory から Azure AD への同期やサインオンなど、接続に必要な前提条件とコンポーネントを容易に構成できます。 
 
-* **Active Directory** : [ユーザーやアカウント情報などのオンプレミスの ID 情報](https://www.dnsstuff.com/active-directory-service-accounts)、およびパスワードなどのセキュリティ情報を格納するディレクトリ サービス。
+* **Active Directory**: [ユーザーやアカウント情報などのオンプレミスの ID 情報](https://www.dnsstuff.com/active-directory-service-accounts)、およびパスワードなどのセキュリティ情報を格納するディレクトリ サービス。
 
 ## <a name="implement-ldap-authentication-with-azure-ad"></a>Azure AD による LDAP 認証を実装する
 

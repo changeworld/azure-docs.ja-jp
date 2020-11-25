@@ -9,12 +9,12 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e6fc3441fac5fe037e9a268d26012761d1fece70
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8faa6533ba4dc7fad61c045278c5504c5f78d900
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92463199"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888965"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Web 通話サンプルの概要
 
@@ -37,7 +37,7 @@ Web 通話サンプルは、Communication Services の Web 通話クライアン
 
 :::image type="content" source="./media/web-calling-tutorial-page-1.png" alt-text="Web 通話のチュートリアル 1" lightbox="./media/web-calling-tutorial-page-1.png":::
 
-:::image type="content" source="./media/web-calling-tutorial-page-2.png" alt-text="Web 通話のチュートリアル 1" lightbox="./media/web-calling-tutorial-page-2.png":::
+:::image type="content" source="./media/web-calling-tutorial-page-2.png" alt-text="Web 通話のチュートリアル 2" lightbox="./media/web-calling-tutorial-page-2.png":::
 
 
 ## <a name="user-provisioning-and-sdk-initialization"></a>ユーザーのプロビジョニングと SDK の初期化 
@@ -52,29 +52,29 @@ Web 通話サンプルは、Communication Services の Web 通話クライアン
 
 SDK が初期化されると、次のように表示されます。
 
-:::image type="content" source="./media/user-provisioning.png" alt-text="Web 通話のチュートリアル 1" lightbox="./media/user-provisioning.png":::
+:::image type="content" source="./media/user-provisioning.png" alt-text="ユーザー プロビジョニング" lightbox="./media/user-provisioning.png":::
 
 これで、Communication Services リソースを使用して電話をかける準備ができました。
 
 ## <a name="placing-and-receiving-calls"></a>通話の発信と受信
 
-Communication Services の Web 通話 SDK により、 **1 対 1** 、 **1 対 N** 、および **グループ** 通話が可能になります。
+Communication Services の Web 通話 SDK により、**1 対 1**、**1 対 N**、および **グループ** 通話が可能になります。
 
 1 対 1 または 1 対 N の発信通話では、コンマ区切り値を使用して、通話先となる Communication Services のユーザー ID を複数指定できます。 また、コンマ区切り値を使用して、通話先となる従来の (PSTN) 電話番号を指定することもできます。 
 
 PSTN 電話番号に電話をかける際は、代替の発信者番号を指定してください。 発信通話を行うには、[Place call]\(通話\) ボタンをクリックします。
 
-:::image type="content" source="./media/place-a-call.png" alt-text="Web 通話のチュートリアル 1" lightbox="./media/place-a-call.png":::
+:::image type="content" source="./media/place-a-call.png" alt-text="通話を行う" lightbox="./media/place-a-call.png":::
 
 グループ通話に参加するには、その通話を識別する GUID を入力し、[Join group]\(グループへの参加\) ボタンをクリックします。
 
-:::image type="content" source="./media/join-a-group-call.png" alt-text="Web 通話のチュートリアル 1" lightbox="./media/join-a-group-call.png":::
+:::image type="content" source="./media/join-a-group-call.png" alt-text="グループ通話に参加する" lightbox="./media/join-a-group-call.png":::
 
 [Show code]\(コードの表示\) ボタンをクリックすると、通話の発信、通話の受信、およびグループ通話への参加のためのサンプル コードが表示されます。
 
 実際の通話は次のようになります。
 
-:::image type="content" source="./media/group-call.png" alt-text="Web 通話のチュートリアル 1" lightbox="./media/group-call.png":::
+:::image type="content" source="./media/group-call.png" alt-text="グループ通話" lightbox="./media/group-call.png":::
 
 このサンプルには、次の機能のためのコード スニペットも用意されています。
 
@@ -95,7 +95,7 @@ PSTN 電話番号に電話をかける際は、代替の発信者番号を指定
 
 - [Calling クライアント ライブラリ](../quickstarts/voice-video-calling/calling-client-samples.md)について理解する
 - [通話のしくみ](../concepts/voice-video-calling/about-call-types.md)の詳細について確認する
-- [API リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js)を確認する
+- [API リファレンス ドキュメント](/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js)を確認する
 
 ## <a name="additional-reading"></a>その他の情報
 
@@ -103,4 +103,4 @@ PSTN 電話番号に電話をかける際は、代替の発信者番号を指定
 - [Redux](https://redux.js.org/) - クライアント側の状態管理
 - [FluentUI](https://aka.ms/fluent-ui) - Microsoft が提供する UI ライブラリ
 - [React](https://reactjs.org/) - ユーザー インターフェイスを構築するためのライブラリ
-- [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) - Web アプリケーションを構築するためのフレームワーク
+- [ASP.NET Core](/aspnet/core/introduction-to-aspnet-core?preserve-view=true&view=aspnetcore-3.1) - Web アプリケーションを構築するためのフレームワーク

@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: a8b5ec48b64341ad9eabd087d7ee20bb703198c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c09f741b37e06010a0bfbab40317980793240e29
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816237"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683507"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift に関する FAQ
 
@@ -186,13 +186,13 @@ oc adm policy \
 
 ### <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>マスター/インフラストラクチャ/アプリ ノードでは、どの UNIX 権限 (IaaS 内) を使用できますか?
 
-4\.x クラスターの場合、ノード アクセスはクラスター管理者ロールを介して利用できます。 詳細については、[RBAC の概要](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html)に関するページを参照してください。
+4\.x クラスターの場合、ノード アクセスはクラスター管理者ロールを介して利用できます。 詳細については、[Kubernetes RBAC の概要](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html)に関するページを参照してください。
 
 3\.11 クラスターの場合、ノード アクセスは禁止されています。
 
 ### <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>私たちには、どの OCP 権限がありますか? クラスター管理者ですか? プロジェクト管理者ですか?
 
-4\.x クラスターの場合、クラスター管理者ロールを使用できます。 詳細については、[RBAC の概要](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html)に関するページを参照してください。
+4\.x クラスターの場合、クラスター管理者ロールを使用できます。 詳細については、[Kubernetes RBAC の概要](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html)に関するページを参照してください。
 
 3\.11 クラスターの場合、詳細については[クラスター管理の概要](https://docs.openshift.com/aro/admin_guide/index.html)を参照してください。
 

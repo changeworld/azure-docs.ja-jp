@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb585e2ccf8c8ed071b5156961adf48d4e4b108d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2472183673e5f06f5664a306a69d14c2eaf5f82d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309780"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949770"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Azure AD B2C で Identity Protection と条件付きアクセスを設定する
 
@@ -26,7 +26,7 @@ Identity Protection は、ご自分の Azure AD B2C テナントに継続的な�
 ## <a name="prerequisites"></a>前提条件
 
 - 対象の Azure AD B2C テナントが [Azure AD サブスクリプションにリンクされている](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription)必要があります。
-- サインインとユーザーのリスクベースの条件付きアクセスを使用するには、Azure AD B2C Premium P2 が必要です。 必要に応じて、[Azure AD B2C の価格レベルを Premium P2 に変更](https://aka.ms/exid-pricing-tier)してください。 
+- サインインとユーザーのリスクベースの条件付きアクセスを使用するには、Azure AD B2C Premium P2 が必要です。 必要に応じて、[Azure AD B2C の価格レベルを Premium P2 に変更](./billing.md)してください。 
 - 対象の B2C テナントで Identity Protection と条件付きアクセスを管理するには、全体管理者の役割またはセキュリティ管理者の役割が割り当てられているアカウントが必要です。
 - 対象のテナントでこれらの機能を使用するには、最初に Azure AD B2C Premium P2 価格レベルに切り替える必要があります。
 
@@ -132,7 +132,7 @@ Identity Protection のリスク検出に基づいて条件付きアクセス �
 
 4. **[活動]** で、 **[監査ログ]** を選択します。
 
-5. **[カテゴリ]** を **[B2C]** に設定し、 **[アクティビティのリソースの種類]** を **[IdentityProtection]** に設定することで、監査ログをフィルター処理します。 次に、 **[適用]** を選択します。
+5. **[カテゴリ]** を **[B2C]** に設定し、 **[アクティビティのリソースの種類]** を **[IdentityProtection]** に設定することで、監査ログをフィルター処理します。 次に、**[適用]** を選択します。
 
 6. 最大で過去 7 日間の監査アクティビティを確認します。 次の種類のアクティビティが含まれています。
 

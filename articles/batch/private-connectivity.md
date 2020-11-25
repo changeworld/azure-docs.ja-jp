@@ -4,12 +4,12 @@ description: プライベート エンドポイントを使用して、Azure Bat
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: f797dbda7888eb8ea9f5c76e3b527fb98d896ee4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 38d92d787a8d01dd3f87e1cdcacd336982c8c910
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669017"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579557"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Azure Batch アカウントでプライベート エンドポイントを使用する
 
@@ -35,15 +35,27 @@ Azure portal を使用してプライベート Batch アカウントを作成す
    :::image type="content" source="media/private-connectivity/private-endpoint-connections.png" alt-text="プライベート エンドポイント接続":::
 5. **[基本]** ペインで、サブスクリプション、リソース グループ、プライベート エンドポイント リソース名、リージョンの詳細を入力または選択して、 **[次へ: リソース]** を選択します。
 6. **[リソース]** ペインで、 **[リソースの種類]** を **Microsoft.Batch/batchAccounts** に設定します。 アクセスするプライベート Batch アカウントを選択し、 **[次へ: 構成]** を選択します。
-   :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="プライベート エンドポイント接続" というメッセージが表示されたら、 **[作成]** を選択します。
+   :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="[プライベート エンドポイントの作成 - リソース] ペイン":::
+7. **[構成]** ペインで、次の情報を入力または選択します。
+   - **仮想ネットワーク**:仮想ネットワークを選択します。
+   - **サブネット**:サブネットを選択します。
+   - **プライベート DNS ゾーンと統合する**:  **[はい]** を選択します。 プライベート エンドポイントに非公開で接続するには、DNS レコードが必要です。 プライベート エンドポイントとプライベート DNS ゾーンを統合することをお勧めします。 また、独自の DNS サーバーを使用したり、仮想マシン上のホスト ファイルを使用して DNS レコードを作成したりすることもできます。
+   - **プライベート DNS ゾーン**: privatelink.\<region\>.batch.azure.com を選択します。 プライベート DNS ゾーンは自動的に決定されます。 Azure portal を使用して変更することはできません。
+8. **[確認と作成]** を選択し、Azure で構成が検証されるまで待ちます。
+9. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。
 
-プライベート エンドポイントがプロビジョニングされたら、プライベート エンドポイントを使用して、同じ仮想ネットワーク内の VM から Batch アカウントにアクセスできます。 Azure portal から IP アドレスを表示するには、次のようにします。
+プライベート エンドポイントがプロビジョニングされたら、プライベート エンドポイントを使用して、同じ仮想ネットワーク内の VM から Batch アカウントにアクセスできます。
+
+> [!IMPORTANT]
+> プライベート エンドポイントがプロビジョニングされている仮想ネットワークの外部で操作を実行すると、Azure portal に "AuthorizationFailure" というメッセージが表示されます。
+
+Azure portal から IP アドレスを表示するには、次のようにします。
 
 1. **[すべてのリソース]** を選択します。
 2. 先ほど作成したプライベート エンドポイントを検索します。
 3. **[概要]** タブを選択して、DNS の設定と IP アドレスを表示します。
 
-:::image type="content" source="media/private-connectivity/access-private.png" alt-text="プライベート エンドポイント接続":::
+:::image type="content" source="media/private-connectivity/access-private.png" alt-text="プライベート エンドポイントの DNS 設定と IP アドレス":::
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 

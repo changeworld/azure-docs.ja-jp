@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 48884e6faa5f26f027c772b44d5f960979a40d1d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: beede74134affeb3ee0d4bdd20d5da3b4c5e6eda
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447510"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566624"
 ---
 # <a name="red-hat-enterprise-linux-in-place-upgrades"></a>インプレース アップグレードの Red Hat Enterprise Linux
 
@@ -22,10 +22,12 @@ ms.locfileid: "94447510"
 > Red Hat Enterprise Linux プランの SQL Server では、Azure でのインプレース アップグレードはサポートされていません。
 
 ## <a name="what-to-expect-during-the-upgrade"></a>アップグレード中の予期される動作
-アップグレード中にシステムが数回再起動しますが、これは正常です。 最後の再起動により、VM が RHEL 8 最新のマイナー リリースにアップグレードされます。
+アップグレード中にシステムが数回再起動しますが、これは正常です。 最後の再起動により、VM が RHEL 8 最新のマイナー リリースにアップグレードされます。 
+
+アップグレード プロセスには 20 分から数時間かかることがあります。これは、VM サイズやシステムにインストールされているパッケージの数など、いくつかの要因によって異なります。
 
 ## <a name="preparations-for-the-upgrade"></a>アップグレードの準備
-インプレース アップグレードは、お客様がシステムを次のメジャー バージョンにアップグレードできるようにするための、Red Hat と Azure によって公式に推奨される方法です。 ここでアップグレードを実行する前に、次の点に注意して考慮してください。 
+インプレース アップグレードは、お客様がシステムを次のメジャー バージョンにアップグレードできるようにするための、Red Hat と Azure によって公式に推奨されている方法です。 ここでアップグレードを実行する前に、次の点に注意して考慮してください。 
 
 >[!Important] 
 > アップグレードを実行する前に、イメージのスナップショットを作成してください。
@@ -39,6 +41,12 @@ ms.locfileid: "94447510"
     ```bash
     leapp preupgrade --no-rhsm
     ```
+* シリアル コンソールが確実に機能することで、アップグレード プロセス中の監視が可能になります。
+
+* `/etc/ssh/sshd_config` で SSH ルート アクセスを有効にします
+    1. `/etc/ssh/sshd_config` ファイルを開きます
+    1. '#PermitRootLogin yes' を検索します
+    1. '#' を削除してコメントを解除します
 
 ## <a name="steps-for-performing-the-upgrade"></a>アップグレードの実行手順
 
@@ -46,7 +54,7 @@ ms.locfileid: "94447510"
 
 1. yum update を実行して、最新のクライアント パッケージを取得します。
     ```bash
-    yum update
+    yum update -y
     ```
 
 1. leapp-client-package をインストールします。
@@ -58,35 +66,66 @@ ms.locfileid: "94447510"
     1. ファイルをダウンロードします。
     1. 次のコマンドを使用して、内容を抽出し、ファイルを削除します。
     ```bash
-     tar -xzf leapp-data12.tar.gz -C /etc/leapp/files && rm leapp-data12.tar.gz
+    tar -xzf leapp-data12.tar.gz -C /etc/leapp/files && rm leapp-data12.tar.gz
     ```
-    
-
 
 1. 'Leapp' に 'answers' ファイルを追加します。
     ```bash
     leapp answer --section remove_pam_pkcs11_module_check.confirm=True --add
-    ```
-    
-1. /etc/ssh/sshd_config で PermitRootLogin を有効にします
-    1. ファイル /etc/ssh/sshd_config を開きます
-    1. '#PermitRootLogin yes' を検索します
-    1. '#' を削除してコメントを解除します
-
-
+    ``` 
 
 1. 'Leapp' アップグレードを実行します。
     ```bash
     leapp upgrade --no-rhsm
     ```
+1.  `leapp upgrade` コマンドが正常に完了したら、手動でシステムを再起動してプロセスを完了します。 システムは数回再起動され、その間は使用できなくなります。 シリアル コンソールを使用してプロセスを監視します。
+
+1.  アップグレードが正常に完了したことを確認します。
+    ```bash
+    uname -a && cat /etc/redhat-release
+    ```
+
+1. アップグレードが完了したら、root ssh アクセスを削除します。
+    1. `/etc/ssh/sshd_config` ファイルを開きます
+    1. '#PermitRootLogin yes' を検索します
+    1. コメントに '#' を追加します
+
 1. sshd サービスを再起動して、変更を反映させます
     ```bash
     systemctl restart sshd
     ```
-1. 再度 /etc/ssh/sshd_config で PermitRootLogin をコメントアウトします
-    1. ファイル /etc/ssh/sshd_config を開きます
-    1. '#PermitRootLogin yes' を検索します
-    1. コメントに '#' を追加します
+
+## <a name="common-issues"></a>一般的な問題
+これらは、`leapp preupgrade` または `leapp upgrade` のいずれかのプロセスが失敗するおそれがある一般的なインスタンスの一部です。
+
+**エラー:次の無効なプラグイン パターンに一致するものが見つかりませんでした**
+```plaintext
+STDERR:
+No matches found for the following disabled plugin patterns: subscription-manager
+Warning: Packages marked by Leapp for upgrade not found in repositories metadata: gpg-pubkey
+```
+**解決策**\
+ファイル `/etc/yum/pluginconf.d/subscription-manager.conf` を編集し、enabled を `enabled=0` に変更して、subscription-manager プラグインを無効にします。
+
+これは、PAYG VM に使用されていない subscription-manager yum プラグインが有効になっていることが原因で発生します。
+
+**エラー:ルートを使用したリモート ログインで発生するおそれのある問題** `leapp preupgrade` は次のエラーで失敗する場合があります。
+```structured-text
+============================================================
+                     UPGRADE INHIBITED
+============================================================
+
+Upgrade has been inhibited due to the following problems:
+    1. Inhibitor: Possible problems with remote login using root account
+Consult the pre-upgrade report for details and possible remediation.
+
+============================================================
+                     UPGRADE INHIBITED
+============================================================
+```
+**解決策**\
+`/etc/sshd_conf` でルート アクセスを有効にします。
+これは、「[アップグレードの準備](#preparations-for-the-upgrade)」セクションのとおりに `/etc/sshd_conf` で root ssh アクセスを有効にしていないことが原因で発生します。 
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure の Red Hat イメージ](./redhat-images.md)の詳細を確認します。

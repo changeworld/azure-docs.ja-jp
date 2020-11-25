@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: b48adfdfda4b3e120b2246e67a70000d25c25f3a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 04edf2eeb231ff1444c732840def2b78b1373e79
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737080"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565927"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>App Configuration ストアを自動的にバックアップする
 
@@ -37,14 +37,17 @@ App Configuration ストアのバックアップの目的は、さまざまな A
 
 このチュートリアルでは、セカンダリ ストアを `centralus` リージョンに作成し、他のすべてのリソースを `westus` リージョンに作成します。
 
-## <a name="prerequisites"></a>前提条件
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)].
 
-- Azure のサブスクリプション。 [無料で作成できます](https://azure.microsoft.com/free/)。 
+## <a name="prerequisites"></a>前提条件 
+
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs) と Azure 開発ワークロード。
-- [.NET Core SDK](https://dotnet.microsoft.com/download)。
-- 最新バージョンの Azure CLI (2.3.1 以降)。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI を使用している場合は、最初に `az login` を使用してサインインする必要があります。 必要に応じて、Azure Cloud Shell を使用することもできます。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+- [.NET Core SDK](https://dotnet.microsoft.com/download)。
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- このチュートリアルには、Azure CLI のバージョン 2.3.1 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -213,7 +216,7 @@ az role assignment create \
 az appconfig kv set --name $primaryAppConfigName --key Foo --value Bar --yes
 ```
 
-イベントをトリガーしました。 しばらくすると、Event Grid によってイベント通知がキューに送信されます。 *次にスケジュールされた関数の実行後* 、セカンダリ ストアの構成設定を表示して、プライマリ ストアからの更新されたキー値が含まれているかどうかを確認します。
+イベントをトリガーしました。 しばらくすると、Event Grid によってイベント通知がキューに送信されます。 *次にスケジュールされた関数の実行後*、セカンダリ ストアの構成設定を表示して、プライマリ ストアからの更新されたキー値が含まれているかどうかを確認します。
 
 > [!NOTE]
 > スケジュールされたタイマー トリガーを待たずに、テスト中およびトラブルシューティング中に[関数を手動でトリガーする](../azure-functions/functions-manually-run-non-http.md)ことができます。
@@ -241,7 +244,7 @@ az appconfig kv show --name $secondaryAppConfigName --key Foo
 
 セカンダリ ストアに新しい設定が表示されない場合は、次の処理を行います。
 
-- プライマリ ストアで設定を作成した *後に* 、バックアップ関数がトリガーされたことを確認します。
+- プライマリ ストアで設定を作成した *後に*、バックアップ関数がトリガーされたことを確認します。
 - Event Grid によって時間内にキューにイベント通知が送信されなかった可能性があります。 プライマリ ストアからのイベント通知がキューにまだ含まれているかどうかを確認します。 存在する場合は、バックアップ関数を再びトリガーします。
 - エラーまたは警告がないか [Azure Functions のログ](../azure-functions/functions-create-scheduled-function.md#test-the-function)を確認します。
 - [Azure portal](../azure-functions/functions-how-to-use-azure-function-app-settings.md#get-started-in-the-azure-portal) を使用して、Azure 関数アプリに、Azure Functions で読み取ろうとしているアプリケーション設定の正しい値が含まれていることを確実にします。

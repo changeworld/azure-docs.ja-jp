@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 2f47ded22209a9d53510c7d0a2f8270096161354
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c5ad53c0040009e9ed1f28072540b46ce7b0b9a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86244134"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683921"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Consul をインストールして使用する
 
@@ -33,7 +33,7 @@ ms.locfileid: "86244134"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事で詳しく説明する手順では、AKS クラスターを作成済みで (Kubernetes `1.13`以上、RBAC を有効にする)、そのクラスターとの `kubectl` 接続が確立されていることを前提としています。 いずれかの項目でヘルプが必要な場合、[AKS クイック スタート][aks-quickstart]を参照してください。 クラスターの Linux ノード プールに少なくとも 3 つのノードがあることを確認します。
+この記事で詳しく説明する手順では、AKS クラスターを (Kubernetes `1.13` 以降で Kubernetes RBAC を有効にして) 作成済みであり、そのクラスターとの `kubectl` 接続が確立されていることを前提としています。 いずれかの項目でヘルプが必要な場合、[AKS クイック スタート][aks-quickstart]を参照してください。 クラスターの Linux ノード プールに少なくとも 3 つのノードがあることを確認します。
 
 これらの手順に従い Consul をインストールするには [Helm][helm] が必要です。 クラスターに最新の安定バージョンを正しくインストールし、構成しておくことをお勧めします。 Helm のインストールでヘルプが必要な場合は、[AKS Helm インストール ガイド][helm-install]をご覧ください。 Linux ノード上で実行するようにすべての Consul ポッドをスケジュールすることも必要です。
 

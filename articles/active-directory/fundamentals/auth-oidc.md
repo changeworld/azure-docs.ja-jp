@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory を使用した OpenID Connect 認証
-description: この認証パターンの実現に関するアーキテクチャのガイダンス
+description: Azure Active Directory を使用した OpenID Connect 認証の取得に関するアーキテクチャ ガイダンス。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6f2ad3b5e86eebfc2d6f1f42f8a2ab0520144b5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f38da0dd2dc2adc8049e2b307c861651a55ed700
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113970"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576990"
 ---
 # <a name="openid-connect-authentication-with-azure-active-directory"></a>Azure Active Directory を使用した OpenID Connect 認証
 
@@ -40,11 +40,11 @@ OIDC の設計目標は、"簡単なことは簡単に、複雑なことも可�
 
 * **[ユーザー]** :アプリケーションからサービスを要求します。
 
-* **信頼されたエージェント** :ユーザーが操作するコンポーネントです。 通常、信頼されたエージェントは Web ブラウザーです。
+* **信頼されたエージェント**:ユーザーが操作するコンポーネントです。 通常、信頼されたエージェントは Web ブラウザーです。
 
-* **アプリケーション** :アプリケーション (またはリソース サーバー) は、リソースまたはデータが存在する場所です。 ID プロバイダーが信頼され、信頼されたエージェントが安全に認証、認可されます。 
+* **アプリケーション**:アプリケーション (またはリソース サーバー) は、リソースまたはデータが存在する場所です。 ID プロバイダーが信頼され、信頼されたエージェントが安全に認証、認可されます。 
 
-* **Azure AD** :OIDC プロバイダーは、ID プロバイダーと呼ばれることもあります。ユーザーの情報とそのアクセス、そしてフロー内の当事者間の信頼関係に関するすべてのことは、OIDC プロバイダーによって安全に管理されます。 ここで、ユーザーの ID が認証され、リソースへのアクセス許可と取り消しが行われ、トークンが発行されます。 
+* **Azure AD**:OIDC プロバイダーは、ID プロバイダーと呼ばれることもあります。ユーザーの情報とそのアクセス、そしてフロー内の当事者間の信頼関係に関するすべてのことは、OIDC プロバイダーによって安全に管理されます。 ここで、ユーザーの ID が認証され、リソースへのアクセス許可と取り消しが行われ、トークンが発行されます。 
 
 ## <a name="implement-oidc-with-azure-ad"></a>Azure AD を使用して OIDC を実装する
 

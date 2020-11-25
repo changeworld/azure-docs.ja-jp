@@ -5,23 +5,21 @@ description: .NET クライアント ライブラリを使用して Azure Storag
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/06/2019
+ms.date: 11/12/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 17f18f84ac1c1738f8c248bb0071c748e15dacf3
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 0fd693573858df095b62a7a7917563141ac19c5b
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090932"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579336"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>.NET を使用してストレージ アカウントの種類と SKU 名を取得する
 
 この記事では、[.NET 用 Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage)を使用して、BLOB の Azure Storage アカウントの種類と SKU 名を取得する方法について説明します。
-
-アカウント情報は、バージョン 2018-03-28 以降のサービス バージョンで使用できます。
 
 ## <a name="about-account-type-and-sku-name"></a>アカウントの種類と SKU 名の概要
 
@@ -31,9 +29,17 @@ ms.locfileid: "92090932"
 
 ## <a name="retrieve-account-information"></a>アカウント情報を取得する
 
-BLOB に関連付けられているストレージ アカウントの種類と SKU 名を取得するには、[GetAccountProperties](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountproperties) または [GetAccountPropertiesAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountpropertiesasync) メソッドを呼び出します。
-
 次のコード例では、読み取り専用のアカウントプロパティを取得して表示します。
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+BLOB に関連付けられているストレージ アカウントの種類と SKU 名を取得するには、[GetAccountInfo](/dotnet/api/azure.storage.blobs.blobserviceclient.getaccountinfo) メソッド、または [GetAccountInfoAsync](/dotnet/api/azure.storage.blobs.blobserviceclient.getaccountinfoasync) メソッドを呼び出します。
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Account.cs" id="Snippet_GetAccountInfo":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+BLOB に関連付けられているストレージ アカウントの種類と SKU 名を取得するには、[GetAccountProperties](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountproperties) または [GetAccountPropertiesAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountpropertiesasync) メソッドを呼び出します。
 
 ```csharp
 private static async Task GetAccountInfoAsync(CloudBlob blob)
@@ -58,6 +64,8 @@ private static async Task GetAccountInfoAsync(CloudBlob blob)
     }
 }
 ```
+
+---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory による Kerberos の制約付き委任
-description: この認証パターンの実現に関するアーキテクチャ ガイダンス
+description: Azure Active Directory を使用した Kerberos の制約付き委任の取得に関するアーキテクチャ ガイダンス。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77f90cd7aa8d972226a8f134eaa7b3abfe7bea66
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 62c8f230ca2b2d0db1170cde9b24f9e4819889bb
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113989"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577126"
 ---
 # <a name="windows-authentication---kerberos-constrained-delegation-with-azure-active-directory"></a>Windows 認証 - Azure Active Directory による Kerberos の制約付き委任
 
@@ -38,17 +38,17 @@ Azure Active Directory アプリケーション プロキシによって、ア�
 
 * **[ユーザー]** : アプリケーション プロキシによって処理されるレガシ アプリケーションにアクセスします。
 
-* **Web ブラウザー** : アプリケーションの外部 URL にアクセスするためにユーザーが操作するコンポーネントです。
+* **Web ブラウザー**: アプリケーションの外部 URL にアクセスするためにユーザーが操作するコンポーネントです。
 
-* **Azure AD** : ユーザーを認証します。 
+* **Azure AD**: ユーザーを認証します。 
 
-* **アプリケーション プロキシ サービス** : リバース プロキシとして機能して、ユーザーからオンプレミスのアプリケーションに要求を送信します。 Azure AD にあります。 アプリケーション プロキシは、任意の条件付きアクセス ポリシーを適用することもできます。
+* **アプリケーション プロキシ サービス**: リバース プロキシとして機能して、ユーザーからオンプレミスのアプリケーションに要求を送信します。 Azure AD にあります。 アプリケーション プロキシは、任意の条件付きアクセス ポリシーを適用することもできます。
 
-* **アプリケーション プロキシ コネクタ** : アプリケーションへの接続を提供するために、Windows サーバーにオンプレミスでインストールされます。 Azure AD に応答を返します。 Active Directory との KCD ネゴシエーションを実行します。このときに、ユーザーの代理でアプリケーションに対する Kerberos トークンを取得します。
+* **アプリケーション プロキシ コネクタ**: アプリケーションへの接続を提供するために、Windows サーバーにオンプレミスでインストールされます。 Azure AD に応答を返します。 Active Directory との KCD ネゴシエーションを実行します。このときに、ユーザーの代理でアプリケーションに対する Kerberos トークンを取得します。
 
-* **Active Directory** : アプリケーション用の Kerberos トークンをアプリケーション プロキシ コネクタに送信します。
+* **Active Directory**: アプリケーション用の Kerberos トークンをアプリケーション プロキシ コネクタに送信します。
 
-* **レガシ アプリケーション** : アプリケーション プロキシからユーザー要求を受け取るアプリケーションです。 レガシ アプリケーションから、アプリケーション プロキシ コネクタに応答が返されます。
+* **レガシ アプリケーション**: アプリケーション プロキシからユーザー要求を受け取るアプリケーションです。 レガシ アプリケーションから、アプリケーション プロキシ コネクタに応答が返されます。
 
 ## <a name="implement-windows-authentication-kcd-with-azure-ad"></a>Azure AD による Windows 認証 (KCD) を実装する
 

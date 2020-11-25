@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 11/09/2020
-ms.openlocfilehash: de83be26e3cb7105303528e10fb50b7ecc438472
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: a133cdb72e304a254305833b9ae6e8a7ebe30ab3
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447475"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540010"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの暗号化
 
@@ -53,7 +53,7 @@ Azure BLOB ストレージに格納されるデータに独自のキーを使用
 
 ### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Azure Machine Learning では、Azure Cosmos DB インスタンスにメトリックとメタデータが格納されます。 このインスタンスは、Azure Machine Learning によって管理される Microsoft サブスクリプションに関連付けられています。 Azure Cosmos DB に格納されているすべてのデータは、Microsoft によって管理されるキーを使用して保存時に暗号化されます。
+Azure Machine Learning では、メトリックとメタデータは Azure Cosmos DB インスタンスに格納されます。 このインスタンスは、Azure Machine Learning によって管理される Microsoft サブスクリプションに関連付けられています。 Azure Cosmos DB に格納されているすべてのデータは、Microsoft によって管理されるキーを使用して保存時に暗号化されます。
 
 独自の (カスタマーマネージド) キーを使用して Azure Cosmos DB インスタンスを暗号化する場合は、ワークスペースで使用する専用の Cosmos DB インスタンスを作成できます。 実行履歴情報などのデータを、Microsoft サブスクリプションでホストされているマルチテナント Cosmos DB インスタンスの外部に格納する場合は、この方法をお勧めします。 
 

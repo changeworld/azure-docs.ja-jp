@@ -12,12 +12,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 467cbe91f4e516dc6facd2d30c38da1483308b77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b563e8ca93487a123f97f0bbb86624dc3be2db0
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316972"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556290"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>Azure portal を使用して Azure 内の SQL Server VM を管理する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "91316972"
 ## <a name="remarks"></a>解説
 
 - [**SQL 仮想マシン**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) リソースを使用して Azure 内の SQL Server VM を表示および管理することをお勧めします。 ただし、現在、**SQL 仮想マシン** リソースは、[サポート終了](sql-server-2008-extend-end-of-support.md)の SQL Server VM の管理をサポートしていません。 サポート終了の SQL Server VM 用の設定を管理するには、代わりに、非推奨の [[SQL Server の構成] タブ](#access-the-sql-server-configuration-tab)を使用してください。 
-- **SQL 仮想マシン** リソースは、[SQL VM リソースプロバイダーに登録](sql-vm-resource-provider-register.md)されている SQL Server VM でのみ使用できます。 
+- **SQL 仮想マシン** リソースは、[SQL IaaS Agent 拡張機能に登録](sql-agent-extension-manually-register-single-vm.md)されている SQL Server VM でのみ使用できます。 
 
 
 ## <a name="access-the-sql-virtual-machines-resource"></a>SQL 仮想マシン リソースへのアクセス
@@ -57,7 +57,7 @@ ms.locfileid: "91316972"
 > **SQL 仮想マシン** リソースは専用の SQL Server 設定用のリソースです。 **[仮想マシン]** ボックスで VM の名前を選択し、その VM (ただし、SQL Server に限定されません) に固有の設定を開きます。 
 
 ## <a name="access-the-sql-server-configuration-tab"></a>[SQL Server の構成] タブへのアクセス
-**[SQL Server の構成]** タブは非推奨になりました。 現時点では、これが[サポート終了](sql-server-2008-extend-end-of-support.md)の SQL Server VM や [SQL VM リソースプロバイダーに登録](sql-vm-resource-provider-register.md)されていない SQL Server VM を管理する唯一の方法です。
+**[SQL Server の構成]** タブは非推奨になりました。 現時点では、これが[サポート終了](sql-server-2008-extend-end-of-support.md)の SQL Server VM や [SQL IaaS Agent 拡張機能に登録](sql-agent-extension-manually-register-single-vm.md)されていない SQL Server VM を管理する唯一の方法です。
 
 非推奨の **[SQL Server の構成]** タブにアクセスするには、**仮想マシン** リソースに移動します。 次の手順に従います。
 

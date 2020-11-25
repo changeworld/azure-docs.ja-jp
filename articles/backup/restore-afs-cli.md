@@ -3,12 +3,12 @@ title: Azure CLI を使用して Azure ファイル共有を復元する
 description: Recovery Services コンテナー内のバックアップされた Azure ファイル共有を、Azure CLI を使用して復元する方法について説明します
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.openlocfilehash: be744fdb79f442eaf0ef632952d9c0b9e709d908
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a025de7bfb9db037b2008d69be7782feabb482f3
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325013"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562323"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Azure CLI を使用して Azure ファイル共有を復元する
 
@@ -23,20 +23,20 @@ Azure CLI では、Azure リソースを管理するための、Azure のコマ�
 >[!NOTE]
 > Azure Backup では、Azure CLI を使用した、元の場所または別の場所への複数のファイルやフォルダーの復元が、サポートされるようになりました。 詳しくは、このドキュメントの「[複数のファイルまたはフォルダーを元の場所または別の場所に復元する](#restore-multiple-files-or-folders-to-original-or-alternate-location)」セクションをご覧ください。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-CLI をローカルにインストールして使用する場合は、Azure CLI バージョン 2.0.18 以降を使用する必要があります。 CLI のバージョンを調べるには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
-
 ## <a name="prerequisites"></a>前提条件
 
 この記事では、Azure Backup によってバックアップされた Azure ファイル共有が既にあることを前提としています。 ない場合は、「[CLI を使用して Azure ファイル共有をバックアップする](backup-afs-cli.md)」を参照して、ファイル共有のバックアップを構成してください。 この記事では、次のリソースを使用します。
 
-| ファイル共有  | ストレージ アカウント | リージョン | 詳細                                                      |
-| ----------- | --------------- | ------ | ------------------------------------------------------------ |
-| *azurefiles*  | *afsaccount*      | EastUS | Azure Backup を使用してバックアップされた元のソース                 |
-| *azurefiles1* | *afaccount1*      | EastUS | 別の場所への復旧に使用される復元先のソース |
+| ファイル共有 | ストレージ アカウント | リージョン | 詳細 |
+|---|---|---|---|
+| *azurefiles* | *afsaccount* | EastUS | Azure Backup を使用してバックアップされた元のソース |
+| *azurefiles1* | *afaccount1* | EastUS | 別の場所への復旧に使用される復元先のソース |
 
 似た構造のファイル共有を使用して、この記事で説明されているさまざまな種類の復元を試すことができます。
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+ - このチュートリアルには、Azure CLI のバージョン 2.0.18 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="fetch-recovery-points-for-the-azure-file-share"></a>Azure ファイル共有の復旧ポイントをフェッチする
 
@@ -80,7 +80,7 @@ Name                Time                        Consistency
 
 ### <a name="restore-a-full-share-to-the-original-location"></a>完全な共有を元の場所に復元する
 
-元の場所に復元する場合、ターゲット関連のパラメーターを指定する必要はありません。 **競合の解決**のみ指定する必要があります。
+元の場所に復元する場合、ターゲット関連のパラメーターを指定する必要はありません。 **競合の解決** のみ指定する必要があります。
 
 次の例では、復元モードを *originallocation* に設定して [az backup restore restore-azurefileshare](/cli/azure/backup/restore#az-backup-restore-restore-azurefileshare) コマンドレットを使用し、*azurefiles* ファイル共有を元の場所に復元します。 「[Azure ファイル共有の復旧ポイントをフェッチする](#fetch-recovery-points-for-the-azure-file-share)」で取得した復旧ポイント: 932883129628959823 を使用します。
 
@@ -176,7 +176,7 @@ df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 
 ## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>複数のファイルまたはフォルダーを元の場所または別の場所に復元する
 
-複数の項目の復元を実行するには、**source-file-path** パラメーターに、復元するすべてのファイルまたはフォルダーのパスを**スペースで区切った**値を渡します。
+複数の項目の復元を実行するには、**source-file-path** パラメーターに、復元するすべてのファイルまたはフォルダーのパスを **スペースで区切った** 値を渡します。
 
 次の例では、*Restore.txt* ファイルと *AFS testing Report.docx* ファイルを元の場所に復元します。
 

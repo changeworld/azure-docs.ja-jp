@@ -5,17 +5,17 @@ ms.author: mikben
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 0559a9b763d273579373bb57922606f14ff6e6db
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: ab13e02c9154dbfc1bd28872f1bd6f993019a604
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94573938"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94915319"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 - 実用的な [Communication Services 通話アプリ](../getting-started-with-calling.md)。
-- [Teams のデプロイ](https://docs.microsoft.com/deployoffice/teams-install)。
+- [Teams のデプロイ](/deployoffice/teams-install)。
 
 ## <a name="enable-teams-interoperability"></a>Teams の相互運用性を有効にする
 
@@ -98,7 +98,7 @@ meetingButton.addEventListener("click", () => {
 
 ## <a name="get-the-meeting-context"></a>会議のコンテキストを取得する
 
-Teams のコンテキストは、Graph API を使用して取得できます。 この点については、[Graph のドキュメント](https://docs.microsoft.com/graph/api/onlinemeeting-createorget?view=graph-rest-beta&tabs=http)で詳しく説明されています。
+Teams のコンテキストは、Graph API を使用して取得できます。 この点については、[Graph のドキュメント](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta)で詳しく説明されています。
 
 必要な会議情報は、会議の招待状自体にある **[Join Meeting]\(会議に参加\)** の URL から取得することもできます。
 
@@ -115,4 +115,3 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 :::image type="content" source="../media/javascript/calling-javascript-app.png" alt-text="完成した JavaScript アプリケーションのスクリーンショット。":::
 
 Communication Services アプリケーション内から Teams の会議に参加するには、Teams のコンテキストをテキスト ボックスに挿入し、 *[Join Teams Meeting]\(Teams の会議に参加\)* を押します。
-

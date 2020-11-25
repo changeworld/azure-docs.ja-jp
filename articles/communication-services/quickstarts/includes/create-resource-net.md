@@ -4,18 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 258908ed1118b0463e8c824cd8c699fb460dfff2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9a9f8fdda1bc853057f3eb858e85b938357397cd
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90945934"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886116"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/dotnet/)。
 - お使いのオペレーティング システムの最新バージョンの [.NET Core クライアント ライブラリ](https://dotnet.microsoft.com/download/dotnet-core)。
-- [.NET Identity クライアント ライブラリ](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet)の最新バージョンを取得します。
+- [.NET Identity クライアント ライブラリ](/dotnet/api/azure.identity?view=azure-dotnet)の最新バージョンを取得します。
 - [.NET 管理クライアント ライブラリ](../../concepts/sdk-options.md)の最新バージョンを取得します。
 
 ## <a name="installing-the-client-library"></a>クライアント ライブラリのインストール
@@ -44,13 +44,13 @@ Azure Communication Services と通信するには、まず Azure に対して�
 
 ### <a name="option-1-managed-identity"></a>オプション 1: マネージド ID
 
-コードが Azure のサービスとして実行されている場合、最も簡単な認証方法は、Azure からマネージド ID を取得することです。 [マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) の詳細を確認してください。
+コードが Azure のサービスとして実行されている場合、最も簡単な認証方法は、Azure からマネージド ID を取得することです。 [マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) の詳細を確認してください。
 
-[マネージド ID がサポートされる Azure サービス](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
+[マネージド ID がサポートされる Azure サービス](../../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
-[App Service と Azure Functions でマネージド ID を使用する方法](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)
+[App Service と Azure Functions でマネージド ID を使用する方法](../../../app-service/overview-managed-identity.md?tabs=dotnet)
 
-#### <a name="system-assigned-managed-identity"></a>[システム割り当てマネージド ID](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)
+#### <a name="system-assigned-managed-identity"></a>[システム割り当てマネージド ID](../../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)
 
 ```csharp
 using Azure.Identity;
@@ -62,7 +62,7 @@ var subscriptionId = "AZURE_SUBSCRIPTION_ID";
 var acsClient = new CommunicationManagementClient(subscriptionId, new ManagedIdentityCredential());
 ```
 
-#### <a name="user-assigned-managed-identity"></a>[ユーザー割り当てマネージド ID](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity)
+#### <a name="user-assigned-managed-identity"></a>[ユーザー割り当てマネージド ID](../../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-user-assigned-identity)
 
 作成したマネージド ID の ClientId は、明示的に `ManagedIdentityCredential` に渡す必要があります。
 
@@ -79,7 +79,7 @@ var acsClient = new CommunicationManagementClient(subscriptionId, managedIdentit
 
 ### <a name="option-2-service-principal"></a>オプション 2:サービス プリンシパル
 
-マネージド ID を使用する代わりに、自分で管理するサービス プリンシパルを使用して Azure に対する認証を行うことができます。 詳細については、[Azure Active Directory でのサービス プリンシパルの作成と管理](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)に関するドキュメントを参照してください。
+マネージド ID を使用する代わりに、自分で管理するサービス プリンシパルを使用して Azure に対する認証を行うことができます。 詳細については、[Azure Active Directory でのサービス プリンシパルの作成と管理](../../../active-directory/develop/howto-create-service-principal-portal.md)に関するドキュメントを参照してください。
 
 サービス プリンシパルを作成したら、それに関する次の情報を Azure portal から収集する必要があります。
 
@@ -121,7 +121,7 @@ var communicationServiceClient = new CommunicationManagementClient(subscriptionI
 
 次の各例では、Communication Services リソースを既存のリソース グループに割り当てます。
 
-リソース グループを作成する必要がある場合は、 [Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) または [Azure Resource Manager クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md)を使用して実行できます。
+リソース グループを作成する必要がある場合は、 [Azure portal](../../../azure-resource-manager/management/manage-resource-groups-portal.md) または [Azure Resource Manager クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md)を使用して実行できます。
 
 ### <a name="create-and-manage-a-communication-services-resource"></a>Communication Services リソースを作成して管理する
 

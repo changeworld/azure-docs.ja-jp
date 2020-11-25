@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory との LDAP 同期
-description: この同期パターンの実現に関するアーキテクチャ ガイダンス
+description: Azure Active Directory を使用した LDAP 同期の取得に関するアーキテクチャ ガイダンス。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a14149551c0fb33906ab7d1a00b387026d827911
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: e617d7ccc14e65c18eb86877b1c7fb1aeef74cd0
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113953"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578894"
 ---
 # <a name="ldap-synchronization-with-azure-active-directory"></a>Azure Active Directory との LDAP 同期
 
@@ -36,19 +36,19 @@ Azure Active Directory (Azure AD) によって、LDAP 同期を Azure AD Connect
 
 * **[ユーザー]** :ユーザーとパスワードの並べ替えで DAP v3 ディレクトリの使用に依存するアプリケーションにアクセスします。
 
-* **Web ブラウザー** :アプリケーションの外部 URL にアクセスするためにユーザーが操作するコンポーネントです。
+* **Web ブラウザー**:アプリケーションの外部 URL にアクセスするためにユーザーが操作するコンポーネントです。
 
-* **Web アプリ** :LDAP v3 ディレクトリに依存しているアプリケーションです。
+* **Web アプリ**:LDAP v3 ディレクトリに依存しているアプリケーションです。
 
-* **Azure AD** :Azure AD は、Azure AD Connect 経由で組織のオンプレミス LDAP ディレクトリから ID 情報 (ユーザー、グループ、パスワード) を同期します。 
+* **Azure AD**:Azure AD は、Azure AD Connect 経由で組織のオンプレミス LDAP ディレクトリから ID 情報 (ユーザー、グループ、パスワード) を同期します。 
 
-* **Azure AD Connect** : オンプレミスの ID インフラストラクチャを Microsoft Azure AD に接続するためのツールです。 ウィザードとガイド付きエクスペリエンスは、接続に必要な前提条件とコンポーネントをデプロイおよび構成するのに役立ちます。 
+* **Azure AD Connect**: オンプレミスの ID インフラストラクチャを Microsoft Azure AD に接続するためのツールです。 ウィザードとガイド付きエクスペリエンスは、接続に必要な前提条件とコンポーネントをデプロイおよび構成するのに役立ちます。 
 
-* **カスタム コネクタ** :Generic LDAP コネクタを使用すると、Azure AD Connect 同期サービスを LDAP v3 サーバーと統合することができます。 Azure AD Connect 上にあります。
+* **カスタム コネクタ**:Generic LDAP コネクタを使用すると、Azure AD Connect 同期サービスを LDAP v3 サーバーと統合することができます。 Azure AD Connect 上にあります。
 
-* **Active Directory** : Active Directory は、ほとんどの Windows Server オペレーティング システムに含まれているディレクトリ サービスです。 Active Directory ディレクトリ サービスを実行するサーバーは、ドメイン コントローラーと呼ばれ、Windows ドメイン内のすべてのユーザーとコンピューターを認証および認可します。
+* **Active Directory**: Active Directory は、ほとんどの Windows Server オペレーティング システムに含まれているディレクトリ サービスです。 Active Directory ディレクトリ サービスを実行するサーバーは、ドメイン コントローラーと呼ばれ、Windows ドメイン内のすべてのユーザーとコンピューターを認証および認可します。
 
-* **LDAP v3 サーバー** :ディレクトリ サービス認証に使用される会社のユーザーとパスワードを格納する LDAP プロトコルに準拠したディレクトリです。
+* **LDAP v3 サーバー**:ディレクトリ サービス認証に使用される会社のユーザーとパスワードを格納する LDAP プロトコルに準拠したディレクトリです。
 
 ## <a name="implement-ldap-synchronization-with-azure-ad"></a>Azure AD との LDAP 同期を実装する
 

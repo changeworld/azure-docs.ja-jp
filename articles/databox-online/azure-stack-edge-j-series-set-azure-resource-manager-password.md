@@ -1,6 +1,6 @@
 ---
 title: Azure Stack Edge Pro GPU デバイスに Azure Resource Manager パスワードを設定する
-description: Azure PowerShell を使用して、Azure Stack Edge Pro GPU 上で実行されている Azure Resource Manager に接続する方法について説明します。
+description: Azure PowerShell を使用した、Azure Stack Edge Pro GPU での Azure Resource Manager パスワードの設定について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: df5fea8101834dae089ab97354c438363321a707
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 915146cd17b90272daea4ce57f5243baf1d49cb3
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904479"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578792"
 ---
 # <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスに Azure Resource Manager パスワードを設定する
 

@@ -6,18 +6,18 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 3cae648e3c2bddbafec555621d97575a007cfeb4
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 310be095af10f5ed5860c4f627caa0373be55835
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394868"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629667"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>Azure IoT Connector for FHIR (プレビュー) のデータ フロー
 
-この記事では、Azure IoT Connector for FHIR* のデータ フローの概要について説明します。 デバイス データを FHIR ベースの [Observation](https://www.hl7.org/fhir/observation.html) リソースに変換する、Azure IoT Connector for FHIR 内のさまざまなデータ処理段階について説明します。
+この記事では、Azure IoT Connector for Fast Healthcare Interoperability Resources (FHIR&#174;)* のデータ フローの概要について説明します。 デバイス データを FHIR ベースの [Observation](https://www.hl7.org/fhir/observation.html) リソースに変換する、Azure IoT Connector for FHIR 内のさまざまなデータ処理段階について説明します。
 
 ![Azure IoT Connector for FHIR のデータ フロー](media/concepts-iot-data-flow/iot-connector-data-flow.png)
 
@@ -64,6 +64,4 @@ ms.locfileid: "93394868"
 >[!div class="nextstepaction"]
 >[Azure IoT Connector for FHIR のマッピング テンプレート](iot-mapping-templates.md)
 
-*Azure portal では、Azure IoT Connector for FHIR は IoT コネクタ (プレビュー) と呼ばれています。
-
-FHIR は HL7 の登録商標であり、HL7 の許可を得て使用しています。
+*Azure portal では、Azure IoT Connector for FHIR は IoT Connector (プレビュー) と呼ばれています。 FHIR は HL7 の登録商標であり、HL7 の許可を得て使用しています。 

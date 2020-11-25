@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory とのディレクトリ同期
-description: この同期パターンの実現に関するアーキテクチャ ガイダンス
+description: Azure Active Directory を使用したディレクトリ同期の取得に関するアーキテクチャ ガイダンス。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 862d17948cb09c18f9372f8b8b981e5efa6be71b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: c340f973193f9c46735423c86112816003fecfcd
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113957"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578911"
 ---
 # <a name="directory-synchronization"></a>ディレクトリ同期
 
@@ -42,15 +42,15 @@ ms.locfileid: "92113957"
 
 * **[ユーザー]** :Azure AD を使用して、アプリケーションにアクセスします。
 
-* **Web ブラウザー** : アプリケーションの外部 URL にアクセスするためにユーザーが操作するコンポーネントです。
+* **Web ブラウザー**: アプリケーションの外部 URL にアクセスするためにユーザーが操作するコンポーネントです。
 
-* **アプリケーション** :認証と承認を目的とした Azure AD の使用に依存する Web アプリ。
+* **アプリケーション**:認証と承認を目的とした Azure AD の使用に依存する Web アプリ。
 
-* **Azure AD** :Azure AD Connect を経由して、組織のオンプレミス ディレクトリから ID 情報を同期します。 
+* **Azure AD**:Azure AD Connect を経由して、組織のオンプレミス ディレクトリから ID 情報を同期します。 
 
-* **Azure AD Connect** :オンプレミスの ID インフラストラクチャを Microsoft Azure AD に接続するためのツール。 ウィザード エクスペリエンスとガイド付きエクスペリエンスを使用すると、Active Directory から Azure AD への同期やサインオンなど、接続に必要な前提条件とコンポーネントを容易にデプロイおよび構成できます。 
+* **Azure AD Connect**:オンプレミスの ID インフラストラクチャを Microsoft Azure AD に接続するためのツール。 ウィザード エクスペリエンスとガイド付きエクスペリエンスを使用すると、Active Directory から Azure AD への同期やサインオンなど、接続に必要な前提条件とコンポーネントを容易にデプロイおよび構成できます。 
 
-* **Active Directory** : Active Directory は、ほとんどの Windows Server オペレーティング システムに含まれているディレクトリ サービスです。 Active Directory Domain Services (AD DS) が実行されているサーバーは、ドメイン コントローラーと呼ばれます。 これらによって、ドメイン内のすべてのユーザーとコンピューターが認証および承認されます。
+* **Active Directory**: Active Directory は、ほとんどの Windows Server オペレーティング システムに含まれているディレクトリ サービスです。 Active Directory Domain Services (AD DS) が実行されているサーバーは、ドメイン コントローラーと呼ばれます。 これらによって、ドメイン内のすべてのユーザーとコンピューターが認証および承認されます。
 
 ## <a name="implement-directory-synchronization-with-azure-ad"></a>Azure AD とのディレクトリ同期を実装する
 

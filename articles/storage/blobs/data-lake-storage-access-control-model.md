@@ -5,14 +5,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 11/10/2020
 ms.author: normesta
-ms.openlocfilehash: 099d79e63795a88a66ef1ec65aa1bfd97037191e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: a5cdeba654440e666bc79df361b3f90db8a73b0a
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92134106"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578650"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御モデル
 
@@ -43,11 +43,11 @@ Azure RBAC を使用すると、ロールの割り当てを使用して、"[セ�
 | [ストレージ BLOB データ共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) | BLOB ストレージ コンテナーと BLOB への読み取り、書き込み、削除アクセス。 このアクセスでは、セキュリティ プリンシパルが項目の所有権を設定することが許可されませんが、セキュリティ プリンシパルが所有している項目の ACL を変更することはできます。 |
 | [ストレージ BLOB データ閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) | BLOB ストレージ コンテナーと BLOB を読み取り、一覧表示します。 |
 
-[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)、[共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)、[閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)、[ストレージ アカウント共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)などのロールでは、セキュリティ プリンシパルがストレージ アカウントを管理することが許可されますが、そのアカウント内のデータにアクセスすることはできません。 ただし、これらのロール ( **閲覧者** を除く) では、データにアクセスするためにさまざまなクライアント ツールで使用できるストレージ キーへのアクセス権を取得できます。
+[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)、[共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)、[閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)、[ストレージ アカウント共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)などのロールでは、セキュリティ プリンシパルがストレージ アカウントを管理することが許可されますが、そのアカウント内のデータにアクセスすることはできません。 ただし、これらのロール (**閲覧者** を除く) では、データにアクセスするためにさまざまなクライアント ツールで使用できるストレージ キーへのアクセス権を取得できます。
 
 ## <a name="access-control-lists-acls"></a>アクセス制御リスト (ACL)
 
-ACL を使用すると、ディレクトリやファイルに "粒度の細かい" アクセス レベルを適用できます。 " *ACL* " は、一連の " *ACL エントリ* " を含むアクセス許可の構成体です。 各 ACL エントリでは、セキュリティ プリンシパルとアクセス レベルが関連付けられます。  詳細については、[Azure Data Lake Storage Gen2 でのアクセス制御リスト (ACL)](data-lake-storage-access-control.md) に関するページを参照してください。
+ACL を使用すると、ディレクトリやファイルに "粒度の細かい" アクセス レベルを適用できます。 "*ACL*" は、一連の "*ACL エントリ*" を含むアクセス許可の構成体です。 各 ACL エントリでは、セキュリティ プリンシパルとアクセス レベルが関連付けられます。  詳細については、[Azure Data Lake Storage Gen2 でのアクセス制御リスト (ACL)](data-lake-storage-access-control.md) に関するページを参照してください。
 
 ## <a name="how-permissions-are-evaluated"></a>権限を評価する方法
 
@@ -62,7 +62,7 @@ ACL を使用すると、ディレクトリやファイルに "粒度の細か�
 > [!div class="mx-imgBorder"]
 > ![Data Lake Storage のアクセス許可フロー](./media/control-access-permissions-data-lake-storage/data-lake-storage-permissions-flow.png)
 
-アクセス許可がシステムで評価される方法が原因で、ACL を使用して、ロールの割り当てによって既に付与されているアクセスを **制限する** ことが **できません** 。 これは、Azure RBAC ロールの割り当てが最初に評価され、その割り当てで十分なアクセス許可が付与されている場合は、ACL が無視されるためです。 
+アクセス許可がシステムで評価される方法が原因で、ACL を使用して、ロールの割り当てによって既に付与されているアクセスを **制限する** ことが **できません**。 これは、Azure RBAC ロールの割り当てが最初に評価され、その割り当てで十分なアクセス許可が付与されている場合は、ACL が無視されるためです。 
 
 次の図は、ディレクトリの内容の一覧表示、ファイルの読み取り、ファイルの書き込みという 3 つの一般的な操作に対するアクセス許可フローを示しています。
 
@@ -71,7 +71,7 @@ ACL を使用すると、ディレクトリやファイルに "粒度の細か�
 
 ## <a name="permissions-table-combining-azure-rbac-and-acl"></a>アクセス許可の表:Azure RBAC と ACL の組み合わせ
 
-次の表は、セキュリティ プリンシパルが **[操作]** 列に示されている操作を実行できるように、Azure RBAC ロールと ACL エントリを組み合わせる方法を示しています。 この表は、架空のディレクトリ階層の各レベルを表す列を示しています。 コンテナーのルート ディレクトリ (`/`)、 **Oregon** という名前のサブディレクトリ、 **Portland** という名前の Oregon ディレクトリのサブディレクトリ、および **Data.txt** という名前の Portland ディレクトリのテキスト ファイルの列があります。 これらの列には、アクセス許可を付与するために必要な ACL エントリが[短い形式](data-lake-storage-access-control.md#short-forms-for-permissions)で表示されます。 操作を実行するために ACL エントリが必要ない場合は、列に **該当なし** ( _適用できません_ ) と表示されます。
+次の表は、セキュリティ プリンシパルが **[操作]** 列に示されている操作を実行できるように、Azure RBAC ロールと ACL エントリを組み合わせる方法を示しています。 この表は、架空のディレクトリ階層の各レベルを表す列を示しています。 コンテナーのルート ディレクトリ (`/`)、**Oregon** という名前のサブディレクトリ、**Portland** という名前の Oregon ディレクトリのサブディレクトリ、および **Data.txt** という名前の Portland ディレクトリのテキスト ファイルの列があります。 これらの列には、アクセス許可を付与するために必要な ACL エントリが[短い形式](data-lake-storage-access-control.md#short-forms-for-permissions)で表示されます。 操作を実行するために ACL エントリが必要ない場合は、列に **該当なし** (_適用できません_) と表示されます。
 
 |    操作             | 割り当てられた RBAC ロール               |    /        | Oregon/     | Portland/ | Data.txt |             
 |--------------------------|----------------------------------|-------------|-------------|-----------|----------|

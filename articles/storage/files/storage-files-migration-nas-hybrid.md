@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: fd8e845734169bcd73fa0e087c30c0f2fd6ef4f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d8d19256dfca21cc805c2689557099a6785f76b
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85510307"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629208"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Azure File Sync を使用してネットワーク接続ストレージ (NAS) からハイブリッド クラウド デプロイに移行する
 
@@ -208,13 +208,13 @@ Windows Server フォルダーに共有を作成し、必要に応じて、そ�
 これらの複数のコピーを並行して実行することができます。 一度に 1 つの Azure ファイル共有のスコープを処理することをお勧めします。
 
 > [!WARNING]
-> NAS から Windows Server にすべてのデータを移動したら、移行は完了です。Azure portal で***すべての***同期グループに戻り、クラウドを使った階層化ボリュームの空き領域の割合の値を、キャッシュの使用に適したもの (20% など) に調整します。 
+> NAS から Windows Server にすべてのデータを移動したら、移行は完了です。Azure portal で "**すべて**" の同期グループに戻り、クラウドを使った階層化ボリュームの空き領域をキャッシュ利用率に見合った値に、たとえば、20% に調整します。 
 
 クラウドを使った階層化ボリュームの空き領域ポリシーはボリューム レベルで動作し、複数のサーバー エンドポイントがそこから同期する可能性があります。 1 つのサーバー エンドポイントでも空き領域を調整し忘れた場合、同期では最も制限の厳しい規則が引き続き適用され、99% の空きディスク領域が確保されて、ローカル キャッシュが期待どおりに実行されなくなります。 アクセス頻度の低いアーカイブ データのみが含まれるボリューム用の名前空間のみを使用し、残りのストレージ領域を他のシナリオ用に確保することを目的としている場合を除きます。
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-最も可能性の高い問題は、Windows Server 側で "*ボリュームがいっぱい*" になったために RoboCopy コマンドが失敗することです。 クラウドを使った階層化は 1 時間ごとに動作し、同期されたローカル環境の Windows Server ディスクから内容が退避されます。 目標は、ボリュームの空き領域を 99% にすることです。
+発生する可能性が最も高い問題は、Windows Server 側で "ボリュームがいっぱいになり" RoboCopy コマンドに失敗するという問題です。 クラウドを使った階層化は 1 時間ごとに動作し、同期されたローカル環境の Windows Server ディスクから内容が退避されます。 目標は、ボリュームの空き領域を 99% にすることです。
 
 同期を進行させ、クラウドを使った階層化にディスク領域を解放させます。 これは、Windows Server のエクスプローラーで確認できます。
 
@@ -226,6 +226,6 @@ Azure File Sync の問題のトラブルシューティングについては、�
 
 Azure ファイル共有と Azure File Sync については、さらに知るべきことがあります。以下の記事は、詳細なオプション、ベスト プラクティス、およびトラブルシューティングのヘルプを理解するのに役立ちます。 これらの記事は、それぞれに対応する [Azure ファイル共有のドキュメント](storage-files-introduction.md)にリンクしています。
 
-* [AFS の概要](https://aka.ms/AFS)
+* [AFS の概要](./storage-sync-files-planning.md)
 * [AFS デプロイ ガイド](storage-files-deployment-guide.md)
 * [AFS のトラブルシューティング](storage-sync-files-troubleshoot.md)

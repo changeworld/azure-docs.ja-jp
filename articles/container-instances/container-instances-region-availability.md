@@ -4,12 +4,12 @@ description: さまざまな Azure リージョンにある Azure Container Inst
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: e4fbf1023863f9f4c46e6bd2266f72ff2f7d7adc
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2a833c93c80d932305f47b6e292e5e5df4d0cb95
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395871"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576616"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure リージョンの Azure Container Instances のリソースの可用性
 
@@ -55,6 +55,9 @@ ms.locfileid: "93395871"
 
 次の最大リソースは、[GPU リソース](container-instances-gpu.md) (プレビュー) を使用してデプロイされたコンテナー グループで使用できます。
 
+> [!IMPORTANT]
+> 現時点では、GPU リソースを使用したデプロイは、Azure 仮想ネットワークのデプロイではサポートされておらず、Linux コンテナー グループでのみ使用できます。
+
 | GPU SKU | GPU 数 | Max CPU (最大 CPU) | 最大メモリ (GB) | ストレージ (GB) |
 | --- | --- | --- | --- | --- |
 | K80 | 1 | 6 | 56 | 50 |
@@ -67,6 +70,9 @@ ms.locfileid: "93395871"
 ## <a name="windows-container-groups"></a>Windows コンテナー グループ
 
 次のリージョンと最大リソースは、[サポートされているかプレビュー](container-instances-faq.md#what-windows-base-os-images-are-supported)の Windows Server コンテナーを含むコンテナー グループで使用できます。
+
+> [!IMPORTANT]
+> 現時点では、Windows コンテナー グループを使用したデプロイは、Azure 仮想ネットワークのデプロイではサポートされていません。
 
 ###  <a name="windows-server-2016"></a>Windows Server 2016
 

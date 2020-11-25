@@ -6,18 +6,18 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: troubleshooting
-ms.date: 09/16/2020
+ms.date: 11/13/2020
 ms.author: jasteppe
-ms.openlocfilehash: a843ee15d4e7c67bcf69609067d70f592b9b50d6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 403b6656a47f56508682dcda2438a85d513fbfb1
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394222"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630500"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Azure IoT Connector for FHIR (プレビュー) のトラブルシューティング ガイド
 
-この記事では、一般的な Azure IoT Connector for FHIR* のエラー メッセージと状態をトラブルシューティングする手順について説明します。  
+この記事では、一般的な Azure IoT Connector for FHIR&#174; (高速ヘルスケア相互運用性リソース)* のエラー メッセージと状態をトラブルシューティングする手順について説明します。  
 
 また、Azure IoT Connector for FHIR 変換マッピング JSON (例: デバイスと FHIR) のコピーを作成する方法について学習します。  
 
@@ -68,7 +68,7 @@ Azure portal 外での編集とアーカイブに、変換マッピング JSON �
 |アカウントが存在しません。|API|Azure IoT Connector for FHIR を追加しようとしています。Azure API for FHIR リソースは存在しません。|Azure API for FHIR リソースを作成してから、操作を再試行します。|
 |Azure API for FHIR リソースの FHIR バージョンが、IoT コネクタでサポートされていません。|API|互換性のないバージョンの Azure API for FHIR リソースで、Azure IoT Connector for FHIR を使用しようとしています。|新しい Azure API for FHIR リソース (バージョン R4) を作成するか、既存の Azure API for FHIR リソース (バージョン R4) を使用します。
 
-##  <a name="why-is-my-azure-iot-connector-for-fhir-preview-data-not-showing-up-in-azure-api-for-fhir"></a>Azure API for FHIR に Azure IoT Connector for FHIR (プレビュー) データが表示されないのはなぜですか?
+## <a name="why-is-my-azure-iot-connector-for-fhir-preview-data-not-showing-up-in-azure-api-for-fhir"></a>Azure API for FHIR に Azure IoT Connector for FHIR (プレビュー) データが表示されないのはなぜですか?
 
 |潜在的な問題|修正|
 |----------------|-----|
@@ -82,7 +82,74 @@ Azure portal 外での編集とアーカイブに、変換マッピング JSON �
 
 \* [クイックスタート: Azure portal を使用する Azure IoT コネクタ (プレビュー) のデプロイ](iot-fhir-portal-quickstart.md#create-new-azure-iot-connector-for-fhir-preview)に関するページを参照し、Azure IoT Connector for FHIR の解決の種類 (例: 参照または作成) の機能説明を確認してください。
 
+## <a name="use-metrics-to-troubleshoot-issues-in-azure-iot-connector-for-fhir-preview"></a>メトリックを使用して Azure IoT Connector for FHIR (プレビュー) の問題のトラブルシューティングを行う
+
+データ フロー プロセスに関する分析情報を得るための複数のメトリックが Azure IoT Connector for FHIR によって生成されます。 サポートされているメトリックの 1 つは、"*エラー合計*" と呼ばれます。これは、Azure IoT Connector for FHIR の 1 つのインスタンス内で発生したすべてのエラーの数を示します。
+
+各エラーは、関連するさまざまなプロパティと共にログに記録されます。 すべてのプロパティが、エラーに関するさまざまな側面を提供します。これは、問題の特定とトラブルシューティングに役立ちます。 このセクションでは、"*エラー合計*" のメトリックで各エラーについて取得されるさまざまなプロパティの一覧と、これらのプロパティに使用できる値を示します。
+
+> [!NOTE]
+> [Azure IoT Connector for FHIR (プレビュー) のメトリックに関するページ](iot-metrics-display.md)の説明に従って、Azure IoT Connector for FHIR (プレビュー) の "*エラー合計*" のメトリックに移動できます。
+
+"*エラー合計*" グラフをクリックし、 *[フィルターの追加]* ボタンをクリックして、次に示すいずれかのプロパティを使用してエラー メトリックを詳細に分析します。
+
+### <a name="the-operation-performed-by-the-azure-iot-connector-for-fhir-preview"></a>Azure IoT Connector for FHIR (プレビュー) によって実行される操作
+
+このプロパティは、エラー発生時に IoT コネクタで実行中の操作を表します。 通常、操作はデバイス メッセージ処理中のデータ フロー ステージを表します。 このプロパティの可能な値の一覧を次に示します。
+
+> [!NOTE]
+> Azure IoT Connector for FHIR (プレビュー) でのデータ フローのさまざまなステージについて詳しくは、[こちら](iot-data-flow.md)を参照してください。
+
+|データ フロー ステージ|Description|
+|---------------|-----------|
+|セットアップ|IoT コネクタのインスタンスの設定に固有の操作|
+|正規化|デバイス データが正規化されるデータ フロー ステージ|
+|グループ化|正規化されたデータがグループ化されるデータ フローステージ|
+|FHIRConversion|正規化されてグループ化されたデータが FHIR リソースに変換されるデータ フロー ステージ|
+|Unknown|エラーが発生した場合、操作の種類は不明です|
+
+### <a name="the-severity-of-the-error"></a>エラーの重大度
+
+このプロパティは、発生したエラーの重大度を表します。 このプロパティの可能な値の一覧を次に示します。
+
+|重大度|説明|
+|---------------|-----------|
+|警告|データ フロー プロセスにはいくつかの軽微な問題が存在しますが、デバイス メッセージの処理は停止しません|
+|エラー|特定のデバイス メッセージの処理でエラーが発生し、他のメッセージは想定どおりに実行が継続される可能性があります|
+|Critical|IoT コネクタにシステム レベルの問題がいくつか存在し、メッセージは処理されないと想定されます|
+
+### <a name="the-type-of-the-error"></a>エラーの種類
+
+このプロパティは、特定のエラーのカテゴリを示します。これは基本的に、種類が類似したエラーの論理的なグループを表します。 このプロパティの可能な値の一覧を次に示します。
+
+|エラーの種類|Description|
+|----------|-----------|
+|DeviceTemplateError|デバイス マッピング テンプレートに関連したエラー|
+|DeviceMessageError|特定のデバイス メッセージの処理中に発生したエラー|
+|FHIRTemplateError|FHIR マッピング テンプレートに関連したエラー|
+|FHIRConversionError|メッセージを FHIR リソースに変換中に発生したエラー|
+|FHIRResourceError|IoT コネクタによって参照されている FHIR サーバー内の既存のリソースに関連したエラー|
+|FHIRServerError|FHIR サーバーとの通信中に発生するエラー|
+|GeneralError|その他のエラーの種類すべて|
+
+### <a name="the-name-of-the-error"></a>エラーの名前
+
+このプロパティは、特定のエラーの名前を示します。 すべてのエラー名、それらの説明、関連するエラーの種類、重大度、データ フロー ステージの一覧を次に示します。
+
+|エラー名|Description|エラーの種類|エラーの重大度|データ フロー ステージ|
+|----------|-----------|-------------|--------------|------------------|
+|MultipleResourceFoundException|デバイス メッセージ内に存在する個々の ID に対して FHIR サーバーで患者またはデバイスのリソースが複数見つかったときに、エラーが発生しました|FHIRResourceError|エラー|FHIRConversion|
+|TemplateNotFoundException|IoT コネクタのインスタンスにデバイスまたは FHIR マッピング テンプレートが構成されていません|DeviceTemplateError、FHIRTemplateError|Critical|正規化、FHIRConversion|
+|CorrelationIdNotDefinedException|デバイス マッピング テンプレートに相関 ID が指定されていません。 CorrelationIdNotDefinedException は、FHIR Observation で相関 ID を使用してデバイスの測定値をグループ化する必要があるが、それが正しく構成されていない場合にのみ発生する条件付きエラーです|DeviceMessageError|エラー|正規化|
+|PatientDeviceMismatchException|このエラーは、FHIR サーバー上のデバイス リソースから患者リソースへの参照があり、それがメッセージ内に存在する患者 ID と一致しない場合に発生します|FHIRResourceError|エラー|FHIRConversionError|
+|PatientNotFoundException|デバイス メッセージ内に存在するデバイス ID に関連付けられた Device FHIR リソースによって参照されている Patient FHIR リソースはありません。 このエラーは、IoT コネクタ インスタンスに "*検索*" という解決の種類が構成されている場合にのみ発生することに注意してください|FHIRConversionError|エラー|FHIRConversion|
+|DeviceNotFoundException|デバイス メッセージ内に存在するデバイス ID に関連付けられたデバイス リソースが FHIR サーバー上に存在しません|DeviceMessageError|エラー|正規化|
+|PatientIdentityNotDefinedException|このエラーは、デバイス メッセージの患者 ID を解析する式がデバイス マッピング テンプレートに構成されていないか、デバイス メッセージ内に患者 ID が存在しない場合に発生します。 このエラーは、IoT コネクタの解決の種類が "*作成*" に設定されている場合にのみ発生することに注意してください|DeviceTemplateError|Critical|正規化|
+|DeviceIdentityNotDefinedException|このエラーは、デバイス メッセージのデバイス ID を解析する式がデバイス マッピング テンプレートに構成されていないか、デバイス メッセージ内にデバイス ID が存在しない場合に発生します|DeviceTemplateError|Critical|正規化|
+|NotSupportedException|サポートされていない形式のデバイス メッセージを受信したときにエラーが発生しました|DeviceMessageError|エラー|正規化|
+
 ## <a name="creating-copies-of-the-azure-iot-connector-for-fhir-preview-conversion-mapping-json"></a>Azure IoT Connector for FHIR (プレビュー) 変換マッピング JSON のコピーの作成
+
 Azure IoT Connector for FHIR マッピング ファイルのコピーは、Azure portal Web サイト外での編集とアーカイブに役立ちます。
 
 トラブルシューティングに役立つように、サポート チケットを開くときにマッピング ファイルのコピーを Azure テクニカル サポートに提供する必要があります。
@@ -124,6 +191,4 @@ Azure IoT Connector for FHIR についてよく寄せられる質問を確認し
 >[!div class="nextstepaction"]
 >[Azure IoT Connector for FHIR についてよく寄せられる質問](fhir-faq.md)
 
-*Azure portal では、Azure IoT Connector for FHIR は IoT Connector (プレビュー) と呼ばれています。
-
-FHIR は HL7 の登録商標であり、HL7 の許可を得て使用しています。
+*Azure portal では、Azure IoT Connector for FHIR は IoT Connector (プレビュー) と呼ばれています。 FHIR は HL7 の登録商標であり、HL7 の許可を得て使用しています。

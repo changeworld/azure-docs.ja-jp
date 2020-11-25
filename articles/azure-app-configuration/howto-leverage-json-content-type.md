@@ -10,12 +10,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
-ms.openlocfilehash: 725beb50e55852e35ee4434539ff158f082059df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee262c0eb2431085e71d8ee0035bcdab9833d1cf
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88121947"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565774"
 ---
 # <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>コンテンツ タイプを利用して App Configuration に JSON キー値を格納する
 
@@ -53,7 +53,7 @@ App Configuration では、キー値のコンテンツ タイプとして JSON �
 - {"ObjectSetting":{"Targeting":{"Default":true,"Level":"Information"}}}
 
 > [!NOTE]
-> この記事の残りの部分では、有効な JSON コンテンツ タイプと有効な JSON 値がある App Configuration のキー値はすべて、**JSON キー値**と呼ばれます。 
+> この記事の残りの部分では、有効な JSON コンテンツ タイプと有効な JSON 値がある App Configuration のキー値はすべて、**JSON キー値** と呼ばれます。 
 
 このチュートリアルでは、次の方法について説明します。
 > [!div class="checklist"]
@@ -63,13 +63,11 @@ App Configuration では、キー値のコンテンツ タイプとして JSON �
 > * アプリケーションで JSON キー値を使用する。
 
 
-## <a name="prerequisites"></a>前提条件
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)。
-- 最新バージョンの Azure CLI (2.10.0 以降)。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI を使用している場合は、最初に `az login` を使用してサインインする必要があります。 Azure Cloud Shell を使用することもできます。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
+- このチュートリアルには、Azure CLI のバージョン 2.10.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-an-app-configuration-store"></a>App Configuration ストアを作成する
 

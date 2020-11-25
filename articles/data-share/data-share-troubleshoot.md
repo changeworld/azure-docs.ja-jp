@@ -7,12 +7,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 10/15/2020
-ms.openlocfilehash: a323dec66a3077784ff85deadd4f12086648fb3a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e29c640494a18bb3be2125a5b53b4f943521fe6c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220460"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579149"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Azure Data Share での一般的な問題のトラブルシューティング 
 
@@ -31,7 +31,7 @@ ms.locfileid: "92220460"
     1. Azure portal で、 **[サブスクリプション]** に移動します。
     1. Azure Data Share リソースの作成に使用するサブスクリプションを選択します
     1. **[リソース プロバイダー]** をクリックします
-    1. 「 **Microsoft.DataShare** 」を検索します
+    1. 「**Microsoft.DataShare**」を検索します
     1. **[登録]** をクリックします。 
 
     これらの手順を完了するには、Azure サブスクリプションに対する [Azure 共同作成者ロール](../role-based-access-control/built-in-roles.md#contributor)が必要です。 
@@ -52,11 +52,11 @@ ms.locfileid: "92220460"
 
 "選択された 1 つ以上のリソースに対する書き込みアクセス許可を Azure Data Share アカウントに追加できませんでした"
 
-新しい共有の作成時、またはデータセットのマップ時に上記のエラーのいずれかが発生した場合、その原因としては、Azure データ ストアに対するアクセス許可が不足していることが考えられます。 必要なアクセス許可については、[ロールと要件](concepts-roles-permissions.md)に関する記事をご覧ください。 
+新しい共有の作成、データセットの追加、またはデータセットのマップを行うときに上記のエラーのいずれかが発生した場合、その原因としては、Azure データ ストアへのアクセス許可が不足していることが考えられます。 必要なアクセス許可については、[ロールと要件](concepts-roles-permissions.md)に関する記事をご覧ください。 
 
-Azure データ ストアからデータを共有または受信するためには、書き込みアクセス許可が必要です。これは通常、共同作成者ロールにあります。 
+Azure データ ストアからデータを共有または受信するためには、書き込みアクセス許可が必要です。これは通常、**共同作成者** ロールにあります。 
 
-初めて Azure データ ストアからデータを共有または受信する場合は、" *Microsoft.Authorization/ロールの割り当て/書き込み* " のアクセス許可も必要です。これは通常、所有者ロールにあります。 自分で Azure データ ストア リソースを作成した場合でも、自動的に自分がそのリソースの所有者になることはありません。 適切なアクセス許可を使用すると、Azure Data Share サービスによって、データ共有リソースのマネージド ID に、データ ストアへのアクセス権が自動的に付与されます。 このプロセスは、有効になるまでに数分かかる場合があります。 この遅延のためにエラーが発生する場合は、数分後にもう一度やり直してください。
+初めて Azure データ ストアからデータを共有または受信する場合は、"*Microsoft.Authorization、ロールの割り当て、書き込み*" のアクセス許可も必要です。これは通常、**所有者** ロールにあります。 自分で Azure データ ストア リソースを作成した場合でも、自動的に自分がそのリソースの所有者になることはありません。 適切なアクセス許可を使用すると、Azure Data Share サービスによって、データ共有リソースのマネージド ID に、データ ストアへのアクセス権が自動的に付与されます。 このプロセスは、有効になるまでに数分かかる場合があります。 この遅延のためにエラーが発生する場合は、数分後にもう一度やり直してください。
 
 SQL ベースの共有には、追加のアクセス許可が必要です。 前提条件の詳細な一覧については、[SQL ソースからの共有](how-to-share-from-sql.md)に関するページを参照してください。
 
@@ -69,7 +69,7 @@ SQL ベースの共有には、追加のアクセス許可が必要です。 前
 
 SQL ソースの場合、スナップショットの失敗のその他の原因は次のとおりです。 
 
-* Data Share のアクセス許可を付与するソースまたはターゲットの SQL スクリプトが実行されないか、Azure Active Directory 認証ではなく SQL 認証を使用して実行されています。  
+* Data Share のアクセス許可を付与するソースまたはターゲットの SQL スクリプトは実行されません。 または、Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW) の場合は、Azure Active Directory 認証ではなく、SQL 認証を使用して実行されます。  
 * ソースまたはターゲットの SQL データ ストアが一時停止されています。
 * スナップショット プロセスまたはターゲット データ ストアで SQL データ型がサポートされていません。 詳細については、[SQL ソースからの共有](how-to-share-from-sql.md#supported-data-types)に関するページを参照してください。
 * ソースまたはターゲットの SQL データ ストアが他のプロセスによってロックされています。 Azure Data Share は、ソースとターゲットの SQL データ ストアにロックを適用しません。 ただし、ソースとターゲットの SQL データ ストアに対する既存のロックによって、スナップショットの失敗が発生します。

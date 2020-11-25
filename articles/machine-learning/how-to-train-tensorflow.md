@@ -1,7 +1,7 @@
 ---
 title: TensorFlow モデルのトレーニングとデプロイ
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning を使用して、大規模な TensorFlow トレーニング スクリプトを実行する方法について説明します。
+description: Azure Machine Learning でエラスティック クラウド コンピューティング リソースを使用して、TensorFlow のトレーニング ジョブをスケールアウトする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 5c1c6af5f8304fd9093aa0351078b84d3f4d0b5d
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 9b8d48139e6cbabfbc5bf63f85d2d03c64d7efd9
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360753"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542288"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して大規模な TensorFlow モデルをトレーニングする
 
@@ -32,7 +32,7 @@ TensorFlow モデルを一から開発する場合でも、[既存のモデル](
  - Azure Machine Learning コンピューティング インスタンス - ダウンロードやインストールは必要なし
 
      - 「[チュートリアル: 環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
-    - ノートブック サーバー上のディープ ラーニングの samples フォルダーで、 **how-to-use-azureml > ml-frameworks > tensorflow > train-hyperparameter-tune-deploy-with-tensorflow** とディレクトリを移動して、完成した展開済みノートブックを見つけます。 
+    - ノートブック サーバー上のディープ ラーニングの samples フォルダーで、**how-to-use-azureml > ml-frameworks > tensorflow > train-hyperparameter-tune-deploy-with-tensorflow** とディレクトリを移動して、完成した展開済みノートブックを見つけます。 
  
  - 独自の Jupyter Notebook サーバー
 
@@ -229,13 +229,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>実行実施中の動作
 実行は、以下の段階を経て実施されます。
 
-- **準備** :Docker イメージは、定義されている環境に従って作成されます。 イメージはワークスペースのコンテナー レジストリにアップロードされ、後で実行するためにキャッシュされます。 ログは実行履歴にもストリーミングされ、進行状況を監視するために表示することができます。 代わりに、キュレーションされた環境が指定されている場合は、そのキュレーションされた環境を補足するキャッシュ済みのイメージが使用されます。
+- **準備**:Docker イメージは、定義されている環境に従って作成されます。 イメージはワークスペースのコンテナー レジストリにアップロードされ、後で実行するためにキャッシュされます。 ログは実行履歴にもストリーミングされ、進行状況を監視するために表示することができます。 代わりに、キュレーションされた環境が指定されている場合は、そのキュレーションされた環境を補足するキャッシュ済みのイメージが使用されます。
 
-- **拡大縮小** :Batch AI クラスターでの実行に現在使用可能な数より多くのノードが必要な場合、クラスターはスケールアップを試みます。
+- **拡大縮小**:Batch AI クラスターでの実行に現在使用可能な数より多くのノードが必要な場合、クラスターはスケールアップを試みます。
 
 - **[実行中]** : スクリプト フォルダー内のすべてのスクリプトがコンピューティング先にアップロードされ、データ ストアがマウントまたはコピーされて、`script` が実行されます。 stdout からの出力と **./logs** フォルダーが実行履歴にストリーミングされるので、実行の監視のために使用できます。
 
-- **後処理** :実行の **./outputs** フォルダーが実行履歴にコピーされます。
+- **後処理**:実行の **./outputs** フォルダーが実行履歴にコピーされます。
 
 ## <a name="register-or-download-a-model"></a>モデルを登録またはダウンロードする
 

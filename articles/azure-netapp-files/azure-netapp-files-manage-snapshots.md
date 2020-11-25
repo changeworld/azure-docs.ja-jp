@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 11/12/2020
 ms.author: b-juche
-ms.openlocfilehash: e578e377e322e6b6a23f0990ca1fa0285a4ec87d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: c64bc8bf265a8e3cc3c490827bdbd79661e3528a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491649"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591755"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files を使用して、スナップショットを管理する
 
@@ -144,6 +144,17 @@ Azure NetApp Files では、オンデマンドのスナップショットの作�
 
     ![スナップショット ポリシーの削除の確認](../media/azure-netapp-files/snapshot-policy-delete-confirm.png) 
 
+## <a name="edit-the-hide-snapshot-path-option"></a>[スナップショット パスを非表示にする] オプションを編集する
+[スナップショット パスを非表示にする] オプションを使用して、ボリュームのスナップショット パスを表示するかどうかを制御します。 [NFS](azure-netapp-files-create-volumes.md#create-an-nfs-volume) または [SMB](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) のボリュームの作成中に、スナップショット パスを非表示にするかどうかを指定することができます。 その後、必要に応じて、[スナップショット パスを非表示にする] オプションを編集できます。  
+
+> [!NOTE]
+> リージョン間レプリケーションの[ターゲット ボリューム](cross-region-replication-create-peering.md#create-the-data-replication-volume-the-destination-volume)に対しては、[スナップショット パスを非表示にする] オプションが既定で有効になっており、この設定を変更することはできません。 
+
+1. ボリュームの [スナップショット パスを非表示にする] オプションの設定を表示するには、ボリュームを選択します。 **[スナップショット パスを非表示にする]** フィールドに、オプションが有効になっているかどうかが表示されます。   
+    ![[スナップショット パスを非表示にする] フィールドを示すスクリーンショット。](../media/azure-netapp-files/hide-snapshot-path-field.png) 
+2. [スナップショット パスを非表示にする] オプションを編集するには、ボリュームのページで **[編集]** をクリックし、必要に応じて **[スナップショット パスを非表示にする]** オプションを変更します。   
+    ![ボリューム スナップショットの [編集] オプションを示しているスクリーンショット。](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>スナップショットから新しいボリュームを復元する
 
 現時点では、スナップショットから復元できるのは、新しいボリュームに限られています。 
@@ -173,11 +184,7 @@ Azure NetApp Files では、オンデマンドのスナップショットの作�
 
 マウントされたボリュームには、クライアントからアクセス可能な `.snapshot` (NFS クライアントの場合) または`~snapshot` (SMB クライアントの場合) という名前のスナップショットディレクトリが含まれています。 スナップショット ディレクトリには、ボリュームのスナップショットに対応するサブディレクトリが含まれています。 各サブディレクトリには、スナップショットのファイルが含まれます。 ファイルを誤って削除または上書きした場合、ファイルをスナップショットのサブディレクトリから読み取り/書き込みディレクトリにコピーすることで、ファイルを親の読み取り/書き込みディレクトリに復元できます。 
 
-ボリュームの作成時に [スナップショット パスを非表示にする] チェックボックスをオンにした場合、スナップショット ディレクトリは非表示になります。 ボリュームを選択することで、ボリュームの [スナップショット パスの非表示] 状態を表できます。 ボリュームのページで **[編集]** をクリックすることで、[スナップショット パスを非表示にする] オプションを編集できます。  
-
-リージョン間レプリケーションのターゲット ボリュームに対しては、[スナップショット パスを非表示にする] が既定で有効になっており、この設定を変更することはできません。
-
-![ボリュームのスナップショット オプションを編集する](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+スナップショット ディレクトリが表示されない場合は、[スナップショット パスを非表示にする] オプションが現在有効になっているため、非表示になっている可能性があります。 [[スナップショット パスを非表示にする]](#edit-the-hide-snapshot-path-option) オプションを編集して無効にすることができます。  
 
 ### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Linux NFS クライアントを使用してファイルを復元する 
 

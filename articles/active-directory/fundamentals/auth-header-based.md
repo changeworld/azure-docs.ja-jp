@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory を使用したヘッダーベースの認証
-description: この認証パターンの実現に関するアーキテクチャのガイダンス
+description: Azure Active Directory を使用したヘッダーベースの認証の取得に関するアーキテクチャ ガイダンス。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f364e4e14dd1b7c60cb81f06051d9dedd94396a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: bb54410fb314376b68d7297a3452f0990762343d
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113986"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577160"
 ---
 # <a name="header-based-authentication-with-azure-active-directory"></a>Azure Active Directory を使用したヘッダーベースの認証
 
@@ -36,15 +36,15 @@ ms.locfileid: "92113986"
 
 * **[ユーザー]** :アプリケーション プロキシで提供されるレガシ アプリケーションにアクセスします。
 
-* **Web ブラウザー** :アプリケーションの外部 URL にアクセスするためにユーザーが操作するコンポーネントです。
+* **Web ブラウザー**:アプリケーションの外部 URL にアクセスするためにユーザーが操作するコンポーネントです。
 
-* **Azure AD** :ユーザーを認証します。 
+* **Azure AD**:ユーザーを認証します。 
 
-* **アプリケーション プロキシ サービス** :ユーザーからオンプレミスのアプリケーションに要求を送信するためのリバース プロキシとして機能します。 Azure AD に格納され、条件付きアクセス ポリシーを適用することもできます。
+* **アプリケーション プロキシ サービス**:ユーザーからオンプレミスのアプリケーションに要求を送信するためのリバース プロキシとして機能します。 Azure AD に格納され、条件付きアクセス ポリシーを適用することもできます。
 
-* **アプリケーション プロキシ コネクタ** :アプリケーションへの接続を提供するために、Windows サーバーにオンプレミスでインストールされます。 送信接続のみが使用されます。 Azure AD への応答を返します。
+* **アプリケーション プロキシ コネクタ**:アプリケーションへの接続を提供するために、Windows サーバーにオンプレミスでインストールされます。 送信接続のみが使用されます。 Azure AD への応答を返します。
 
-* **レガシ アプリケーション** :アプリケーション プロキシからのユーザー要求を受信するアプリケーションです。 セッションを設定し、応答を返すために必要な HTTP ヘッダーがレガシ アプリケーションで受信されます。 
+* **レガシ アプリケーション**:アプリケーション プロキシからのユーザー要求を受信するアプリケーションです。 セッションを設定し、応答を返すために必要な HTTP ヘッダーがレガシ アプリケーションで受信されます。 
 
 ## <a name="implement-header-based-authentication-with-azure-ad"></a>Azure AD を使用したヘッダーベースの認証を実装する
 

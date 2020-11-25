@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 67c701946eedf85176b3d14b09d3e723c4c74285
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: e661b99e3c5028f40ea69ddedc22c7ee2895acec
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072120"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888727"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Azure Communication Services でのイベント処理
 
@@ -22,13 +22,13 @@ ms.locfileid: "92072120"
 
 Azure Communication Services は [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) と統合され、信頼性が高く、スケーラブルで安全な方法でリアルタイムのイベント通知を配信します。 この記事の目的は、ご利用のアプリケーションを構成して Communication Services イベントをリッスンできるようにすることです。 たとえば、Communication Services リソースに関連付けられている電話番号で SMS メッセージを受信するたびに、データベースを更新し、作業項目を作成し、プッシュ通知を配信したい場合があります。
 
-Azure Event Grid は、発行 - サブスクライブ モデルを使用する、フル マネージドのイベント ルーティング サービスです。 Event Grid には、[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) や [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview) のような Azure サービスのサポートが組み込まれています。 また、Webhook を使用することで、Azure 以外のサービスにイベント アラートを配信することもできます。 Event Grid がサポートするイベント ハンドラーの完全な一覧については、「[Azure Event Grid の概要](https://docs.microsoft.com/azure/event-grid/overview)」をご覧ください。
+Azure Event Grid は、発行 - サブスクライブ モデルを使用する、フル マネージドのイベント ルーティング サービスです。 Event Grid には、[Azure Functions](../../azure-functions/functions-overview.md) や [Azure Logic Apps](../../azure-functions/functions-overview.md) のような Azure サービスのサポートが組み込まれています。 また、Webhook を使用することで、Azure 以外のサービスにイベント アラートを配信することもできます。 Event Grid がサポートするイベント ハンドラーの完全な一覧については、「[Azure Event Grid の概要](../../event-grid/overview.md)」をご覧ください。
 
 :::image type="content" source="https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png" alt-text="Azure Event Grid のイベント モデルを示す図。":::
 
 ## <a name="events-types"></a>イベントの種類
 
-Event Grid は、[イベント サブスクリプション](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions)を使って、イベント メッセージをサブスクライバーにルーティングします。 
+Event Grid は、[イベント サブスクリプション](../../event-grid/concepts.md#event-subscriptions)を使って、イベント メッセージをサブスクライバーにルーティングします。 
 
 Azure Communication Services から出力されるイベントの種類は次のとおりです。
 
@@ -50,7 +50,7 @@ Azure portal または Azure CLI を使用して、Communication Services リソ
 
 ## <a name="event-subjects"></a>イベントの件名
 
-すべての Communication Services イベントの `subject` フィールドは、イベントの対象となるユーザー、電話番号、またはエンティティを識別します。 単純な [Event Grid のフィルター処理](https://docs.microsoft.com/azure/event-grid/event-filtering)を可能にするために、共通プレフィックスが使用されます。
+すべての Communication Services イベントの `subject` フィールドは、イベントの対象となるユーザー、電話番号、またはエンティティを識別します。 単純な [Event Grid のフィルター処理](../../event-grid/event-filtering.md)を可能にするために、共通プレフィックスが使用されます。
 
 | 件名のプレフィックス                              | Communication Service エンティティ |
 | ------------------------------------------- | ---------------------------- |
@@ -351,6 +351,6 @@ Azure portal または Azure CLI を使用して、Communication Services リソ
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Event Grid の概要については、[Event Grid の紹介](https://docs.microsoft.com/azure/event-grid/overview)に関する記事を参照してください。
-* Azure Event Grid の概念の概要については、[Event Grid の概念](https://docs.microsoft.com/azure/event-grid/concepts)に関する記事を参照してください。
-* Azure Event Grid のシステム トピックの概要については、「[Azure Event Grid でのシステム トピック](https://docs.microsoft.com/azure/event-grid/system-topics)」を参照してください。
+* Azure Event Grid の概要については、[Event Grid の紹介](../../event-grid/overview.md)に関する記事を参照してください。
+* Azure Event Grid の概念の概要については、[Event Grid の概念](../../event-grid/concepts.md)に関する記事を参照してください。
+* Azure Event Grid のシステム トピックの概要については、「[Azure Event Grid でのシステム トピック](../../event-grid/system-topics.md)」を参照してください。

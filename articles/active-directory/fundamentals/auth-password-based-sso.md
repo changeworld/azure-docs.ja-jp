@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory を使用したパスワードベースの認証
-description: この認証パターンの実現に関するアーキテクチャのガイダンス
+description: Azure Active Directory を使用したパスワードベースの認証の取得に関するアーキテクチャ ガイダンス。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f05bf8f5f7ec4907c2cd61ff48e3438dfa1e097a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 74815976036abafc56f97e622351a1018fe30504
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113969"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576934"
 ---
 # <a name="password-based-authentication-with-azure-active-directory"></a>Azure Active Directory を使用したパスワードベースの認証
 
@@ -37,11 +37,11 @@ ms.locfileid: "92113969"
 
 * **[ユーザー]** :フォームベースのアプリケーションにマイ アプリからアクセスするか、サイトに直接アクセスしてアクセスします。 
 
-* **Web ブラウザー** :アプリケーションの外部 URL にアクセスするためにユーザーが操作するコンポーネントです。 ユーザーは MyApps 拡張機能を使用して、フォームベースのアプリケーションにアクセスします。 
+* **Web ブラウザー**:アプリケーションの外部 URL にアクセスするためにユーザーが操作するコンポーネントです。 ユーザーは MyApps 拡張機能を使用して、フォームベースのアプリケーションにアクセスします。 
 
-* **MyApps 拡張機能** :構成されたパスワードベースの SSO アプリケーションを識別し、サインイン フォームに資格情報を入力します。 MyApps 拡張機能は、Web ブラウザーにインストールされます。 
+* **MyApps 拡張機能**:構成されたパスワードベースの SSO アプリケーションを識別し、サインイン フォームに資格情報を入力します。 MyApps 拡張機能は、Web ブラウザーにインストールされます。 
 
-* **Azure AD** :ユーザーを認証します。
+* **Azure AD**:ユーザーを認証します。
 
 ## <a name="implement-password-based-sso-with-azure-ad"></a>Azure AD を使用してパスワードベースの SSO を実装する
 

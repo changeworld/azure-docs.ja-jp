@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: fa0416db440e6433829b8077b6988eeaa6a596ad
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8fdbb42d06f26849d14e093c340c6d2457ee6ec9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667063"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020097"
 ---
 # <a name="what-is-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 とは
 
@@ -83,8 +83,8 @@ Azure Time Series Insights Gen2 には、データ処理、ストレージ (デ�
 | IoT 規模の時系列データに対応する多層ストレージ | データを取り込むための共有データ処理パイプラインを使うと、ウォーム ストアとコールド ストアの両方にデータを取り込むことができます。 対話型クエリにはウォーム ストアを使用し、大量のデータを保存するにはコールド ストアを使用します。 ハイ パフォーマンスのアセットベースのクエリを利用する方法の詳細については、[クエリ](./concepts-query-overview.md)に関する記事を参照してください。 |
 | 未加工のテレメトリをコンテキスト化してアセット ベースの分析情報を生成する時系列モデル | タイム シリーズ モデルを使うと、時系列データのインスタンス、階層、型、および変数を作成できます。 タイム シリーズ モデルの詳細については、「[タイム シリーズ モデル](./concepts-model-overview.md)」を参照してください。  |
 | 他のデータ ソリューションとの円滑で連続的な統合 | Azure Time Series Insights Gen2 のコールド ストアのデータは、オープンソースの Apache Parquet ファイルに[格納](./concepts-storage.md)されます。 これにより、ビジネス インテリジェンス、高度な機械学習、および予測分析を含むシナリオで、他のデータ ソリューション (ファースト パーティまたはサード パーティ) とのデータ統合が可能になります。 |
-| ほぼリアルタイムのデータ探索 | [Azure Time Series Insights Gen2 エクスプローラー](./time-series-insights-update-explorer.md)のユーザー エクスペリエンスは、取り込みのパイプライン経由ですべてのデータ ストリーミングの視覚化を提供しています。 イベント ソースを接続すると、イベント データの表示、調査、クエリを行うことができるようになります。 これにより、デバイスが想定どおりにデータを出力しているかどうかを検証できます。 IoT アセットの正常性、生産性、全体的な有効性を監視することもできます。 |
-| 拡張性と統合 | Power BI Connector の統合は、Time Series Explorer のユーザー エクスペリエンスで**エクスポート** オプションを介して使用でき、ユーザー エクスペリエンスで作成した時系列クエリを Power BI デスクトップに直接エクスポートし、その時系列グラフを他の BI 分析と共に表示できます。 これにより、IoT の時系列などのさまざまなデータ ソースからの分析が 1 つのウィンドウに表示されるので、Power BI に投資した産業用 IoT 企業が新しいクラスのシナリオを実現できるようになります。 |
+| ほぼリアルタイムのデータ探索 | [Azure Time Series Insights Gen2 エクスプローラー](./concepts-ux-panels.md)のユーザー エクスペリエンスは、取り込みのパイプライン経由ですべてのデータ ストリーミングの視覚化を提供しています。 イベント ソースを接続すると、イベント データの表示、調査、クエリを行うことができるようになります。 これにより、デバイスが想定どおりにデータを出力しているかどうかを検証できます。 IoT アセットの正常性、生産性、全体的な有効性を監視することもできます。 |
+| 拡張性と統合 | Power BI Connector の統合は、Time Series Explorer のユーザー エクスペリエンスで **エクスポート** オプションを介して使用でき、ユーザー エクスペリエンスで作成した時系列クエリを Power BI デスクトップに直接エクスポートし、その時系列グラフを他の BI 分析と共に表示できます。 これにより、IoT の時系列などのさまざまなデータ ソースからの分析が 1 つのウィンドウに表示されるので、Power BI に投資した産業用 IoT 企業が新しいクラスのシナリオを実現できるようになります。 |
 | Azure Time Series Insights Gen2 プラットフォーム上に構築されたカスタム アプリケーション | Azure Time Series Insights Gen2 では、[JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) がサポートされています。 SDK では、豊富なコントロールとクエリへの簡単なアクセスが提供されます。 SDK を使用し、ビジネス ニーズに合わせて、Azure Time Series Insights Gen2 上にカスタム IoT アプリケーションを構築します。 また、Azure Time Series Insights Gen2 の [Query API](./concepts-query-overview.md) を直接使用して、カスタム IoT アプリケーションへのデータを生成できます。 |
 
 ## <a name="next-steps"></a>次のステップ
@@ -92,9 +92,9 @@ Azure Time Series Insights Gen2 には、データ処理、ストレージ (デ�
 Azure Time Series Insights Gen2 の概要:
 
 > [!div class="nextstepaction"]
-> [クイックスタート ガイド](./time-series-insights-update-quickstart.md)
+> [クイックスタート ガイド](./quickstart-explore-tsi.md)
 
 ユース ケースの学習:
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights Gen2 のユース ケース](./time-series-insights-update-use-cases.md)
+> [Azure Time Series Insights Gen2 のユース ケース](./overview-use-cases.md)

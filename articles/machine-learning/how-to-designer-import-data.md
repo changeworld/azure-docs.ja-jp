@@ -1,27 +1,27 @@
 ---
 title: デザイナーにデータをインポートする
 titleSuffix: Azure Machine Learning
-description: さまざまなデータ ソースから Azure Machine Learning デザイナーにデータをインポートする方法について説明します。
+description: Azure Machine Learning データセットとデータのインポート モジュールを使用して Azure Machine Learning デザイナーにデータをインポートする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2020
+ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 15fca48327c46480546764be1b2ab40c1635e874
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5569b625b8f0c4ba890c0cd5b1700ca6fe83d968
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985598"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591990"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーにデータをインポートする
 
 この記事では、デザイナーに独自のデータをインポートして、カスタム ソリューションを作成する方法について説明します。 デザイナーにデータをインポートするには、次の 2 つの方法があります。 
 
-* **Azure Machine Learning データセット** - Azure Machine Learning に[データセット](concept-data.md#datasets)を登録して、データを管理するのに役立つ高度な機能を有効にします。
+* **Azure Machine Learning データセット** - Azure Machine Learning に [データセット](concept-data.md#datasets)を登録して、データを管理するのに役立つ高度な機能を有効にします。
 * **データのインポート モジュール** - [データのインポート](algorithm-module-reference/import-data.md) モジュールを使用して、オンライン データ ソースから直接データにアクセスします。
 
 [!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
@@ -42,17 +42,19 @@ Microsoft では、[データセット](concept-data.md#datasets) 使用して�
 
     ![データセットの登録オプションに移動する方法を示すスクリーンショット](media/how-to-designer-import-data/register-dataset-designer.png)
 
-モジュールの出力データが表形式である場合は、出力を**ファイル データセット**として登録するか、または**表形式データセット**として登録するかを選択する必要があります。
+モジュールの出力データが表形式である場合は、出力を **ファイル データセット** として登録するか、または **表形式データセット** として登録するかを選択する必要があります。
 
- - **ファイル データセット**は、モジュールの出力フォルダーをファイル データセットとして登録します。 出力フォルダーには、デザイナーが内部で使用するデータ ファイルとメタファイルが含まれています。 登録されたデータセットをデザイナーで引き続き使用する場合は、このオプションを選択します。 
+ - **ファイル データセット** は、モジュールの出力フォルダーをファイル データセットとして登録します。 出力フォルダーには、デザイナーが内部で使用するデータ ファイルとメタファイルが含まれています。 登録されたデータセットをデザイナーで引き続き使用する場合は、このオプションを選択します。 
 
- - **表形式データセット**は、モジュールの出力データ ファイルのみを表形式のデータセットとして登録します。 この形式は、Automated Machine Learning や Python SDK など、他のツールで簡単に使用できます。 登録されたデータセットをデザイナーの外部で使用する場合は、このオプションを選択します。  
+ - **表形式データセット** は、モジュールの出力データ ファイルのみを表形式のデータセットとして登録します。 この形式は、Automated Machine Learning や Python SDK など、他のツールで簡単に使用できます。 登録されたデータセットをデザイナーの外部で使用する場合は、このオプションを選択します。  
 
 
 
 ### <a name="use-a-dataset"></a>データセットを使用する
 
 登録したデータセットは、 **[データセット]** にあるモジュール パレットからアクセスできます。 データセットを使用するには、パイプライン キャンバスにドラッグ アンド ドロップします。 次に、データセットの出力ポートをキャンバス内の他のモジュールに接続します。 
+
+ファイル データセットを登録すると、データセットの出力ポートの種類は **AnyDirectory** になります。 表形式のデータセットを登録すると、データセットの出力ポートの種類は **DataFrameDirectory** になります。 データセットの出力ポートをデザイナーの他のモジュールに接続する場合は、データセットとモジュールのポートの種類を調整する必要があることにご注意ください。
 
 ![デザイナー パレットに保存されているデータセットの場所を示すスクリーンショット](media/how-to-designer-import-data/use-datasets-designer.png)
 

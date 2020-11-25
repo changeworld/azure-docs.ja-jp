@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 799c46ad2715e1edd3d2fba24a8350fd2608d3d8
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: c872c2a2799eee3ae9e39653b0046b70ca5d7e8b
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233935"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887537"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Group Calling Hero Sample を使ってみる
 
@@ -50,9 +50,9 @@ Azure Communication Services の **Group Calling Hero Sample** は、Communicati
 
 通話のメイン画面のコンポーネントは以下のとおりです。
 
-1. **メディア ギャラリー** : 参加者が表示されるメイン領域。 参加者のカメラが有効になっている場合は、そのビデオ フィードがここに表示されます。 各参加者の表示名とビデオ ストリーム (ある場合) がタイル表示されます。
-2. **ヘッダー** :ここには通話のメイン コントロールがあり、設定と参加者のサイド バーの切り替え、ビデオとマイクのオン/オフ切り替え、画面の共有、通話の終了を行えます。
-3. **サイド バー** : ヘッダーのコントロールを使用して、参加者と設定情報の表示を切り替えます。 このコンポーネントは、右上隅にある 'X' を使用して閉じることができます。 参加者のサイド バーには参加者の一覧と、チャットするユーザーをさらに招待するためのリンクが表示されます。 [設定] サイドバーでは、マイクとカメラの設定を構成できます。
+1. **メディア ギャラリー**: 参加者が表示されるメイン領域。 参加者のカメラが有効になっている場合は、そのビデオ フィードがここに表示されます。 各参加者の表示名とビデオ ストリーム (ある場合) がタイル表示されます。
+2. **ヘッダー**:ここには通話のメイン コントロールがあり、設定と参加者のサイド バーの切り替え、ビデオとマイクのオン/オフ切り替え、画面の共有、通話の終了を行えます。
+3. **サイド バー**: ヘッダーのコントロールを使用して、参加者と設定情報の表示を切り替えます。 このコンポーネントは、右上隅にある 'X' を使用して閉じることができます。 参加者のサイド バーには参加者の一覧と、チャットするユーザーをさらに招待するためのリンクが表示されます。 [設定] サイドバーでは、マイクとカメラの設定を構成できます。
 
 以下で、サンプルを設定するための前提条件と手順について詳しく説明します。
 
@@ -116,4 +116,4 @@ Communication Services サブスクリプションをクリーンアップして
 - [Redux](https://redux.js.org/) - クライアント側の状態管理
 - [FluentUI](https://aka.ms/fluent-ui) - Microsoft が提供する UI ライブラリ
 - [React](https://reactjs.org/) - ユーザー インターフェイスを構築するためのライブラリ
-- [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) - Web アプリケーションを構築するためのフレームワーク
+- [ASP.NET Core](/aspnet/core/introduction-to-aspnet-core?preserve-view=true&view=aspnetcore-3.1) - Web アプリケーションを構築するためのフレームワーク

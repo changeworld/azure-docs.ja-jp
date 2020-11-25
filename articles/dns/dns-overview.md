@@ -6,18 +6,18 @@ ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
 ms.author: rohink
-ms.openlocfilehash: d59f166897674e9dcff8086b8f5c906605155ee3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5df2c2f686a1993dcd25d5391d5b553f2b42d937
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87924276"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965648"
 ---
 # <a name="what-is-azure-dns"></a>Azure DNS とは
 
 Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 
-Azure DNS を使用してドメイン名を購入することはできません。 年会費をお支払いになると、[App Service のドメイン](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain#buy-the-domain)またはサードパーティのドメイン名レジストラーを使用して、ドメイン名を購入できます。 購入したドメインは、Azure DNS でホストし、レコードを管理できます。 詳細については、「[Azure DNS へのドメインの委任](dns-domain-delegation.md)」を参照してください。
+Azure DNS を使用してドメイン名を購入することはできません。 年会費をお支払いになると、[App Service のドメイン](../app-service/manage-custom-dns-buy-domain.md#buy-the-domain)またはサードパーティのドメイン名レジストラーを使用して、ドメイン名を購入できます。 購入したドメインは、Azure DNS でホストし、レコードを管理できます。 詳細については、「[Azure DNS へのドメインの委任](dns-domain-delegation.md)」を参照してください。
 
 Azure DNS には、次の機能が含まれています。
 
@@ -29,11 +29,11 @@ Azure DNS 内の DNS ドメインは、DNS ネーム サーバーから成る Az
 
  Azure DNS は、Azure Resource Manager に基づいており、次のような機能が利用できます。
 
-* [Azure ロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview): 組織の特定のアクションにアクセスできるユーザーを制御できます。
+* [Azure ロールベースのアクセス制御 (Azure RBAC)](../azure-resource-manager/management/overview.md): 組織の特定のアクションにアクセスできるユーザーを制御できます。
 
-* [アクティビティ ログ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview): 組織のユーザーどのようにリソースを変更したかを監視したり、トラブルシューティング時にエラーを見つけたりできます。
+* [アクティビティ ログ](../azure-resource-manager/management/overview.md): 組織のユーザーどのようにリソースを変更したかを監視したり、トラブルシューティング時にエラーを見つけたりできます。
 
-* [リソースのロック](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources): サブスクリプション、リソース グループ、またはリソースをロックできます。 ロックすることによって、組織内の他のユーザーが重要なリソースを誤って削除したり変更したりするのを防ぎます。
+* [リソースのロック](../azure-resource-manager/management/lock-resources.md): サブスクリプション、リソース グループ、またはリソースをロックできます。 ロックすることによって、組織内の他のユーザーが重要なリソースを誤って削除したり変更したりするのを防ぎます。
 
 詳細については、「[DNS ゾーンとレコードを保護する方法](dns-protect-zones-recordsets.md)」を参照してください。 
 
@@ -67,6 +67,6 @@ Azure DNS では、エイリアス レコード セットをサポートしま�
 
 * DNS ゾーンとレコードについて学びます ([DNS ゾーンとレコードの概要](dns-zones-records.md)に関するページを参照)。
 
-* Azure DNS 内にゾーンを作成する方法を学びます ([DNS ゾーンの作成](./dns-getstarted-create-dnszone-portal.md)に関するページを参照)。
+* Azure DNS 内にゾーンを作成する方法を学びます ([DNS ゾーンの作成](./dns-getstarted-portal.md)に関するページを参照)。
 
 * Azure DNS に関してよく寄せられる質問については、「[Azure DNS に関する FAQ](dns-faq.md)」を参照してください。

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/16/2019
-ms.openlocfilehash: 1c08ba51b815386783c3412e9238d2e96da03ff9
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.date: 11/13/2020
+ms.openlocfilehash: 92ef5b372113d0d226335b8ec464a75a5a684bc3
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94377045"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592908"
 ---
 # <a name="one-vs-one-multiclass"></a>One-vs-One Multiclass
 
@@ -31,6 +31,8 @@ ms.locfileid: "94377045"
 このモジュールでは、実質的に、個々のモデルのアンサンブルが作成され、結果がマージされて、すべてのクラスを予測する単一のモデルが作成されます。 任意の二項分類子を one-versus-one モデルの基礎として使用できます。  
 
 たとえば、[2 クラス サポート ベクター マシン](two-class-support-vector-machine.md) モデルを構成し、それを One-vs-One Multiclass モジュールへの入力として提供するとします。 モジュールにより、出力クラスのすべてのメンバーに対して 2 クラス サポート ベクター マシン モデルが作成されます。 その後、one-versus-one 法を適用して、すべてのクラスの結果が結合されます。  
+
+このモジュールでは sklearn の OneVsOneClassifier が使用されます。詳細については、[こちら](https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsOneClassifier.html)を参照してください。
 
 ## <a name="how-to-configure-the-one-vs-one-multiclass-classifier"></a>One-vs-One Multiclass 分類子を構成する方法  
 

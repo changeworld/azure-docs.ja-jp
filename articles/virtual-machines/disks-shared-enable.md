@@ -8,22 +8,18 @@ ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 1efd4baf80c9ba30b1d1ea35390386bc4e7659d3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 661d4ba575eafa4e261a1c92c1112a259b95eac7
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747789"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683593"
 ---
 # <a name="enable-shared-disk"></a>共有ディスクを有効にする
 
 この記事では、Azure マネージド ディスクに対して共有ディスク機能を有効にする方法について説明します。 Azure 共有ディスクは、マネージド ディスクを複数の仮想マシン (VM) に同時に接続できるようにする Azure マネージド ディスクの新機能です。 マネージド ディスクを複数の VM に接続すると、新規にデプロイするか、既存のクラスター化されたアプリケーションを Azure に移行することができます。 
 
-共有ディスクが有効になっているマネージド ディスクの概念的な情報については、次を参照してください。
-
-* Linux の場合:[Azure 共有ディスク](linux/disks-shared.md)
-
-* Windows の場合:[Azure 共有ディスク](windows/disks-shared.md)
+共有ディスクが有効になっているマネージド ディスクの概念的な情報については、[Azure 共有ディスク](disks-shared.md)に関する記事を参照してください。
 
 ## <a name="limitations"></a>制限事項
 

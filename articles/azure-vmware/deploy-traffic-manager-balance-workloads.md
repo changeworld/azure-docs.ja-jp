@@ -3,12 +3,12 @@ title: Azure VMware Solution (AVS) ワークロードを分散するために Tr
 description: Traffic Manager を Azure VMware Solution (AVS) と統合して、異なるリージョンにある複数のエンドポイント間でアプリケーションのワークロードを分散する方法について説明します。
 ms.topic: how-to
 ms.date: 08/14/2020
-ms.openlocfilehash: d461cc444c60e1907a34a08c68139446301c133c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 076d9c77d68df3d8acb7b531b3dfbea40fb3cedd
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579278"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593138"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-avs-workloads"></a>Azure VMware Solution (AVS) ワークロードを分散するために Traffic Manager をデプロイする
 
@@ -30,7 +30,7 @@ Azure Traffic Manager は、世界中の Azure リージョン間でサービス
 
 2 つの AVS プライベート クラウド リージョン、米国西部と西ヨーロッパ、およびオンプレミス サーバー (米国東部) 間の仮想ネットワーク経由の接続では、ExpressRoute ゲートウェイが使用されます。   
 
-![AVS を使用した Traffic Manager 統合](media/traffic-manager/traffic-manager-topology.png)
+![Traffic Manager と Azure VMware Solution との統合アーキテクチャの図](media/traffic-manager/traffic-manager-topology.png)
  
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,15 +55,15 @@ Azure Traffic Manager は、世界中の Azure リージョン間でサービス
     - AVS-GW-EUS (オンプレミス)
     - AVS-GW-WEU
 
-    :::image type="content" source="media/traffic-manager/app-gateways-list-1.png" alt-text="アプリケーション ゲートウェイの一覧。" lightbox="media/traffic-manager/app-gateways-list-1.png":::
+    :::image type="content" source="media/traffic-manager/app-gateways-list-1.png" alt-text="構成済みのアプリケーション ゲートウェイの一覧を示す [アプリケーション ゲートウェイ] ページのスクリーンショット。" lightbox="media/traffic-manager/app-gateways-list-1.png":::
 
 2. 以前にデプロイしたアプリケーション ゲートウェイのいずれかを選択します。 アプリケーション ゲートウェイのさまざまな情報を示すウィンドウが開きます。 いずれかのバックエンド プールの構成を確認するには、 **[バックエンド プール]** を選択します。
 
-   :::image type="content" source="media/traffic-manager/backend-pool-config.png" alt-text="アプリケーション ゲートウェイの一覧。" lightbox="media/traffic-manager/backend-pool-config.png":::
+   :::image type="content" source="media/traffic-manager/backend-pool-config.png" alt-text="選択されたアプリケーション ゲートウェイの詳細を示す [アプリケーション ゲートウェイ] ページのスクリーンショット。" lightbox="media/traffic-manager/backend-pool-config.png":::
  
 3. この例では、1 つの仮想マシン バックエンド プール メンバーが、IP アドレスが 172.29.1.10 の Web サーバーとして構成されています。
  
-    :::image type="content" source="media/traffic-manager/backend-pool-ip-address.png" alt-text="アプリケーション ゲートウェイの一覧。":::
+    :::image type="content" source="media/traffic-manager/backend-pool-ip-address.png" alt-text="ターゲット IP アドレスが強調表示されている [バックエンド プールの編集] ページのスクリーンショット。":::
 
     同様に、他のアプリケーション ゲートウェイとバックエンド プール メンバーの構成を確認できます。 
 
@@ -75,15 +75,15 @@ NSX-T Manager で作成されたネットワーク セグメントは、vCenter 
 
 1. 構成されているセグメントを表示するには、 **[セグメント]** を選択します。 この例では、Contoso-segment1 が Contoso-T01 ゲートウェイ (第 1 層のフレキシブル ルーター) に接続されていることがわかります。
 
-    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="アプリケーション ゲートウェイの一覧。":::    
+    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="NSX-T Manager のセグメント プロファイルを示すスクリーンショット。":::    
 
 2. **[Tier-1 Gateways]\(第 1 層ゲートウェイ\)** を選択して、リンクされたセグメントの数を含む第 1 層ゲートウェイの一覧を表示します。 Contoso-T01 にリンクされているセグメントを選択します。 第 01 層ルーターで構成されている論理インターフェイスを示すウィンドウが開きます。 これは、セグメントに接続されているバックエンド プール メンバー仮想マシンへのゲートウェイとして機能します。
 
-   :::image type="content" source="media/traffic-manager/nsx-t-segment-linked-2.png" alt-text="アプリケーション ゲートウェイの一覧。":::    
+   :::image type="content" source="media/traffic-manager/nsx-t-segment-linked-2.png" alt-text="選択されたセグメントのゲートウェイ アドレスを示すスクリーンショット。":::    
 
 3. VM vSphere クライアントで、仮想マシンを選択して詳細を表示します。 その IP アドレスは、前のセクションの手順 3 で確認したもの (172.29.1.10) と一致します。
 
-    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="アプリケーション ゲートウェイの一覧。":::    
+    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="VSphere クライアントの VM の詳細を示すスクリーンショット。":::    
 
 4. 仮想マシンを選択し、 **[アクション] > [設定の編集]** の順に選択して、NSX-T セグメントへの接続を確認します。
 
@@ -99,29 +99,23 @@ NSX-T Manager で作成されたネットワーク セグメントは、vCenter 
 
 1. 検索結果のウィンドウから Traffic Manager プロファイルを選択し、 **[エンドポイント]** を選択してから、 **[+ 追加]** をクリックします。
 
-2. 次の必要な詳細を入力します。種類、名前、完全修飾ドメイン名 (FQDN) または IP、および重み (このシナリオでは、各エンドポイントに 1 の重みを割り当てます)。 **[追加]** を選択します。
-
-   :::image type="content" source="media/traffic-manager/traffic-manager-profile.png" alt-text="アプリケーション ゲートウェイの一覧。":::  
- 
-   これにより、外部エンドポイントが作成されます。 モニターの状態は、 **[オンライン]** である必要があります。 
-
-   同じ手順を繰り返して、外部エンドポイントをもう 2 つ (別のリージョンに 1 つとオンプレミスに 1 つ) を作成します。 作成すると、3 つすべてが Traffic Manager プロファイルに表示され、3 つすべての状態が **[オンライン]** と表示されるはずです。
+2. 次の必要な詳細を入力します。種類、名前、完全修飾ドメイン名 (FQDN) または IP、および重み (このシナリオでは、各エンドポイントに 1 の重みを割り当てます)。 **[追加]** を選択します。 これにより、外部エンドポイントが作成されます。 モニターの状態は、 **[オンライン]** である必要があります。 同じ手順を繰り返して、外部エンドポイントをもう 2 つ (別のリージョンに 1 つとオンプレミスに 1 つ) を作成します。 作成すると、3 つすべてが Traffic Manager プロファイルに表示され、3 つすべての状態が **[オンライン]** と表示されるはずです。
 
 3. **[概要]** を選択します。 **[DNS 名]** の下にある URL をコピーします。
 
-   :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="アプリケーション ゲートウェイの一覧。"::: 
+   :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="DNS 名が強調表示されている Traffic Manager エンドポイントの概要を示すスクリーンショット。"::: 
 
 4. DNS 名の URL をブラウザーに貼り付けます。 次のスクリーンショットは、西ヨーロッパ リージョンへのトラフィックを示しています。
 
-   :::image type="content" source="media/traffic-manager/traffic-to-west-europe.png" alt-text="アプリケーション ゲートウェイの一覧。"::: 
+   :::image type="content" source="media/traffic-manager/traffic-to-west-europe.png" alt-text="西ヨーロッパへルーティングされたトラフィックを示すブラウザー ウィンドウのスクリーンショット。"::: 
 
 5. ブラウザーを更新します。 次のスクリーンショットは、米国西部リージョンにあるバックエンド プール メンバーの別のセットを指しているトラフィックを示しています。
 
-   :::image type="content" source="media/traffic-manager/traffic-to-west-us.png" alt-text="アプリケーション ゲートウェイの一覧。"::: 
+   :::image type="content" source="media/traffic-manager/traffic-to-west-us.png" alt-text="米国西部へルーティングされたトラフィックを示すブラウザー ウィンドウのスクリーンショット。"::: 
 
 6. ブラウザーを、最新の情報に再度更新します。 次のスクリーンショットは、オンプレミスのバックエンド プール メンバーの最後のセットを指しているトラフィックを示しています。
 
-   :::image type="content" source="media/traffic-manager/traffic-to-on-premises.png" alt-text="アプリケーション ゲートウェイの一覧。":::
+   :::image type="content" source="media/traffic-manager/traffic-to-on-premises.png" alt-text="オンプレミスへルーティングされたトラフィックを示すブラウザー ウィンドウのスクリーンショット。":::
 
 ## <a name="next-steps"></a>次のステップ
 

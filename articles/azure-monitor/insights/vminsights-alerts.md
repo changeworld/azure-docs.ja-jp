@@ -5,16 +5,19 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/23/2020
-ms.openlocfilehash: be469ab3b05c54ebc5afa6bd6d129efd8d4ba692
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/10/2020
+ms.openlocfilehash: f582f0dc7547a607351fcfc4ff9d39e8c5a077df
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254807"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686179"
 ---
 # <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>Azure Monitor for VMs からのアラートを作成する方法
 [Azure Monitor のアラート](../platform/alerts-overview.md)では、監視データの興味深いデータやパターンを事前に通知します。 Azure Monitor for VMs には事前に構成されたアラート ルールは含まれませんが、収集されるデータに基づいて独自のものを作成することができます。 この記事では、サンプル クエリのセットを含む、アラート ルールの作成に関するガイダンスを提供します。
+
+> [!IMPORTANT]
+> この記事で説明するアラートは、Azure Monitor for VMs によって収集されたデータからのログ クエリに基づいています。 これは、現在パブリック プレビュー中の機能である [Azure Monitor for VM ゲストの正常性](vminsights-health-overview.md)によって作成されたアラートとは異なります。 この機能は近日中に一般公開され、アラートに関するガイダンスが統合されます。
 
 
 ## <a name="alert-rule-types"></a>アラート ルールの種類
@@ -31,7 +34,7 @@ Azure Monitor には、次の 2 種類のログ アラートがあります。
 
 まず、「[Azure Monitor を使用してログ アラートを作成、表示、管理する](../platform/alerts-log.md)」の手順に従って、新しいアラート ルールを作成します。 **[リソース]** については、サブスクリプションで Azure Monitor VMs によって使用される Log Analytics ワークスペースを選択します。 ログ アラート ルールのターゲット リソースは常に Log Analytics ワークスペースであるため、ログ クエリには特定の仮想マシンまたは仮想マシン スケール セットのフィルターを含める必要があります。 
 
-アラート ルールの **[条件]** については、[以下のセクション](#sample-alert-queries)のクエリのいずれかを、**検索クエリ**として使用します。 クエリでは、*AggregatedValue* という数値プロパティを返す必要があります。 しきい値を超える仮想マシンごとに個別のアラートを作成できるように、コンピューター別にデータをまとめる必要があります。
+アラート ルールの **[条件]** については、[以下のセクション](#sample-alert-queries)のクエリのいずれかを、**検索クエリ** として使用します。 クエリでは、*AggregatedValue* という数値プロパティを返す必要があります。 しきい値を超える仮想マシンごとに個別のアラートを作成できるように、コンピューター別にデータをまとめる必要があります。
 
 **[アラート ロジック]** で、 **[メトリック測定]** を選択してから、 **[しきい値]** を指定します。 **[アラートをトリガーする基準]** には、アラートが作成されるまでにしきい値を超える必要がある回数を指定します。 たとえば、プロセッサでしきい値を 1 回超えてから通常の状態に戻る場合はおそらく気になりませんが、複数の連続した測定値でしきい値を超える状態が続く場合は気になります。
 

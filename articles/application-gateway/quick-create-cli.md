@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: fb577947942ffce640f91daf0050f6796f93222b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d4b6fc296ae41667d271e243e9aca9b594e4a5b6
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91311667"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886704"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>クイック スタート:Azure Application Gateway による Web トラフィックの転送 - Azure CLI
 
@@ -24,14 +24,11 @@ ms.locfileid: "91311667"
 
 また、[Azure PowerShell](quick-create-powershell.md) または [Azure portal](quick-create-portal.md) を使用してこのクイックスタートを完了することもできます。
 
-## <a name="prerequisites"></a>前提条件
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Azure CLI バージョン 2.0.4 以降](/cli/azure/install-azure-cli) (Azure CLI をローカルで実行する場合)。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-
+- この記事では、Azure CLI のバージョン 2.0.4 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-resource-group"></a>リソース グループの作成
 
@@ -165,7 +162,7 @@ Azure によってアプリケーション ゲートウェイが作成される�
 
 - **appGatewayBackendPool**: **[バックエンド プール]** ページにあります。 これは、必要なバックエンド プールを指定します。
 - **appGatewayBackendHttpSettings**: **[HTTP 設定]** ページにあります。 これは、アプリケーション ゲートウェイがポート 80 を使用すること、および通信に HTTP プロトコルを使用することを指定します。
-- **appGatewayHttpListener**: **[リスナー] ページ**にあります。 これは、**appGatewayBackendPool** に関連付けられている既定のリスナーを指定します。
+- **appGatewayHttpListener**: **[リスナー] ページ** にあります。 これは、**appGatewayBackendPool** に関連付けられている既定のリスナーを指定します。
 - **appGatewayFrontendIP**: **[フロントエンド IP 構成]** ページにあります。 これは、*myAGPublicIPAddress* を **appGatewayHttpListener** に割り当てます。
 - **rule1**: **[ルール]** ページにあります。 **appGatewayHttpListener** に関連付けられている既定のルーティング規則を指定します。
 

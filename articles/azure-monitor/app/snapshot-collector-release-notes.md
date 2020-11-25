@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: faacb78ca7f055bb8e9a469afb894bc30ee87501
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 89c13566c3710e56a4cd737d9aa03c6fb57edc93
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507399"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542730"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>Microsoft.ApplicationInsights.SnapshotCollector のリリース ノート
 
@@ -70,12 +70,12 @@ Snapshot Collector が、APPLICATIONINSIGHTS_CONNECTION_STRING 環境変数ま�
 - _試験的な機能_: スナップショット コレクション プラン: "snapshotOnFirstOccurence" を追加。 詳細については、[こちら](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe)をご覧ください。
 
 ## <a name="133"></a>[1.3.3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.3)
-- SnapshotUploader.exe がハングし、.NET Core アプリのスナップショットがアップロードされないという問題の原因になっていたバグを修正しました。
+- SnapshotUploader.exe が応答を停止し、.NET Core アプリのスナップショットがアップロードされないという問題の原因になっていたバグを修正しました。
 
 ## <a name="132"></a>[1.3.2](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.2)
 - _試験的な機能_: スナップショット コレクション プラン。 詳細については、[こちら](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe)をご覧ください。
 - SnapshotCollector の読み込み元の AppDomain がランタイムによってアップロードされると、処理が終了するのを待たずに、SnapshotUploader.exe が終了します。 これにより、IIS でホストされている場合のコレクターの信頼性が向上します。
-- 同じインストルメンテーション キーを使用している複数の SnapshotCollector インスタンスが同じ SnapshotUploader プロセス: ShareUploaderProcess (既定では `true`) を共有できるように構成を追加。
+- 同じインストルメンテーション キーを使用している複数の SnapshotCollector インスタンスが同じ SnapshotUploader プロセス: ShareUploaderProcess (既定値は `true`) を共有できるように構成を追加。
 - SnapshotUploader.exe が即座に終了したときに、追加のテレメトリを報告。
 - SnapshotUploader.exe がディスクへの書き込みを行うときに必要となるサポート ファイルの数を削減。
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: e5eff13c9ec672937258cf35274d2f5f7bc66f18
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: a9289fad6f7ae1030628bedcf1a62cacc0b1e23a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164246"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564482"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>FCI 用に仮想マシンを準備する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,8 +47,8 @@ ms.locfileid: "92164246"
 
 目的のクラスター構成に適した VM 可用性オプションを慎重に選択します。 
 
- - **Azure 共有ディスク**: 障害ドメインが構成され、更新ドメインが 1 に設定され、[近接配置グループ](../../../virtual-machines/windows/proximity-placement-groups-portal.md)の内部に配置された[可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)。
- - **Premium ファイル共有**: [可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)または[可用性ゾーン](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)。 VM の可用性構成として可用性ゾーンを選択した場合は、Premium ファイル共有が唯一の共有ストレージ オプションです。 
+ - **Azure 共有ディスク**: 障害ドメインが構成され、更新ドメインが 1 に設定され、[近接配置グループ](../../../virtual-machines/windows/proximity-placement-groups-portal.md)の内部に配置された [可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)。
+ - **Premium ファイル共有**: [可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)または [可用性ゾーン](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)。 VM の可用性構成として可用性ゾーンを選択した場合は、Premium ファイル共有が唯一の共有ストレージ オプションです。 
  - **記憶域スペース ダイレクト**: [可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)。
 
 >[!IMPORTANT]
@@ -58,6 +58,8 @@ ms.locfileid: "92164246"
 
 VM の可用性の構成が済むと、仮想マシンを作成する準備が整います。 SQL Server が既にインストールされている、またはインストールされていない、Azure Marketplace のイメージを使用できます。 ただし、Azure VM に SQL Server が付属するイメージを選択する場合は、フェールオーバー クラスター インスタンスを構成する前に、仮想マシンから SQL Server をアンインストールする必要があります。 
 
+### <a name="considerations"></a>考慮事項
+Azure IaaS VM ゲスト フェールオーバー クラスターでは、サーバー (クラスター ノード) ごとに 1 つの NIC、および 1 つのサブネットを推奨しています。 Azure ネットワークは物理的な冗長性を備えているので、Azure IaaS VM ゲスト クラスターで NIC とサブネットを追加する必要はありません。 クラスター検証レポートでは、1 つのネットワークでしかノードに到達できないという警告が出ますが、Azure IaaS VM ゲスト フェールオーバー クラスターではこの警告を無視しても安全です。
 
 両方の仮想マシンを配置します。
 
@@ -71,15 +73,15 @@ SQL Server がプレインストールされて[いる](sql-vm-create-portal-qui
 
 ## <a name="uninstall-sql-server"></a>SQL Server のアンインストール
 
-FCI 作成プロセスの一環として、SQL Server をクラスター化されたインスタンスとしてフェールオーバー クラスターにインストールします。 "*SQL Server のない Azure Marketplace イメージを使用して仮想マシンをデプロイした場合は、このステップを省略できます。* " SQL Server がプレインストールされたイメージをデプロイした場合は、SQL VM リソース プロバイダーから SQL Server VM の登録を解除し、SQL Server をアンインストールする必要があります。 
+FCI 作成プロセスの一環として、SQL Server をクラスター化されたインスタンスとしてフェールオーバー クラスターにインストールします。 "*SQL Server のない Azure Marketplace イメージを使用して仮想マシンをデプロイした場合は、このステップを省略できます。* " SQL Server がプレインストールされたイメージをデプロイした場合は、SQL IaaS Agent 拡張機能から SQL Server VM の登録を解除し、SQL Server をアンインストールする必要があります。 
 
-### <a name="unregister-from-the-sql-vm-resource-provider"></a>SQL VM リソース プロバイダーから登録解除する
+### <a name="unregister-from-the-sql-iaas-agent-extension"></a>SQL IaaS Agent 拡張機能からの登録解除
 
-Azure Marketplace の SQL Server VM イメージは、SQL VM リソース プロバイダーに自動的に登録されます。 プレインストールされた SQL Server インスタンスをアンインストールする前に、まず [SQL VM リソース プロバイダーから各 SQL Server VM の登録を解除する](sql-vm-resource-provider-register.md#unregister-from-rp)必要があります。 
+Azure Marketplace の SQL Server VM イメージは、SQL IaaS Agent 拡張機能に自動的に登録されます。 プレインストールされている SQL Server インスタンスをアンインストールする前に、まず [SQL IaaS Agent 拡張機能から各 SQL Server VM を登録解除する](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension)必要があります。 
 
 ### <a name="uninstall-sql-server"></a>SQL Server のアンインストール
 
-リソース プロバイダーから登録を解除した後、SQL Server をアンインストールできます。 各仮想マシンで、次の手順のようにします。 
+拡張機能から登録を解除した後、SQL Server をアンインストールできます。 各仮想マシンで、次の手順のようにします。 
 
 1. RDP を使用して仮想マシンに接続します。
 

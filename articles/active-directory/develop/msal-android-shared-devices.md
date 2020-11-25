@@ -13,19 +13,17 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: c1bf6b33176bf7942fbd76fa86ecd61b4f24e154
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: fc32b4f583aea2fa9a34ab8b235f3f99fe4def9d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366005"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562170"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Android デバイスの共有デバイス モード
 
-> [!NOTE]
-> この機能はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>[!IMPORTANT]
+> この機能 [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 現場の最前線で働く従業員 (小売店員、航空機乗組員、フィールド サービス ワーカーなど) は多くの場合、共有モバイル デバイスを使用して作業を行います。 これは、これらの従業員が共有デバイス上の顧客およびビジネス データにアクセスするためにパスワードまたは PIN 番号の共有を開始するときに問題になります。
 
@@ -44,7 +42,7 @@ ms.locfileid: "92366005"
 
 Microsoft Authentication Library SDK (MSAL) を使用して記述されたアプリケーションは、単一のアカウントまたは複数のアカウントを管理できます。 詳細については、[単一アカウント モードまたは複数アカウント モード](single-multi-account.md)に関するページを参照してください。 アプリで使用できる Microsoft ID プラットフォーム機能は、アプリケーションが単一アカウント モードまたは複数アカウント モードのどちらで実行されているかによって異なります。
 
-**共有デバイス モード アプリは、単一アカウント モードでのみ動作します** 。
+**共有デバイス モード アプリは、単一アカウント モードでのみ動作します**。
 
 > [!IMPORTANT]
 > 複数アカウント モードのみをサポートするアプリケーションは、共有デバイス上で実行できません。 従業員が、単一アカウント モードをサポートしていないアプリを読み込んだ場合、そのアプリは共有デバイス上で実行されません。

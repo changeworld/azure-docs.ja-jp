@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: d3d8908739d6dda76f4c3d44540c36b36115d6f5
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: b58119ccc1551d12dfc9b09f76f6980618ba6221
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289399"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556303"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure VM における SQL Server についてよく寄せられる質問
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -52,7 +52,7 @@ ms.locfileid: "93289399"
    
 1. **SQL Server VM の一般化された Azure Marketplace SQL Server イメージを作成し、それを使用して VM をデプロイできますか?**
 
-   はい。ただし、ポータルで SQL Server VM を管理したり、修正プログラムの自動適用や自動バックアップなどの機能を利用したりするには、[各 SQL Server VM を SQL Server VM リソース プロバイダーに登録する](sql-vm-resource-provider-register.md)必要があります。 リソース プロバイダーに登録するとき、各 SQL Server VM のライセンスの種類も指定する必要があります。
+   はい。ただし、ポータルで SQL Server VM を管理したり、修正プログラムの自動適用や自動バックアップなどの機能を利用したりするには、[各 SQL Server VM を SQL IaaS Agent 拡張機能に登録する](sql-agent-extension-manually-register-single-vm.md)必要があります。 拡張機能に登録するとき、各 SQL Server VM のライセンスの種類も指定する必要があります。
 
 1. **Azure VM で SQL Server を一般化し、それを使用して新しい VM をデプロイするにはどうすればよいですか?**
 
@@ -64,22 +64,22 @@ ms.locfileid: "93289399"
    `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
 
    > [!NOTE]
-   > カスタムの一般化されたイメージからデプロイされたものを含め、Azure VM 上の SQL Server を [SQL VM リソース プロバイダーに登録](./sql-vm-resource-provider-register.md?tabs=azure-cli%252cbash)してコンプライアンス要件を満たし、自動パッチや自動バックアップなどのオプション機能を利用します。 リソースプロバイダーでは、各 SQL Server VM の[ライセンスの種類を指定する](./licensing-model-azure-hybrid-benefit-ahb-change.md?tabs=azure-portal)こともできます。
+   > カスタムの一般化されたイメージからデプロイされたものを含め、Azure VM 上の SQL Server を [SQL IaaS Agent 拡張機能に登録](./sql-agent-extension-manually-register-single-vm.md?tabs=azure-cli%252cbash)してコンプライアンス要件を満たし、自動パッチや自動バックアップなどのオプション機能を利用します。 この拡張機能を使用すると、各 SQL Server VM の[ライセンスの種類を指定する](./licensing-model-azure-hybrid-benefit-ahb-change.md?tabs=azure-portal)こともできます。
 
 1. **独自の VHD を使用して SQL Server VM をデプロイできますか?**
 
-   はい。ただし、ポータルで SQL Server VM を管理したり、修正プログラムの自動適用や自動バックアップなどの機能を利用したりするには、[各 SQL Server VM を SQL Server VM リソース プロバイダーに登録する](sql-vm-resource-provider-register.md)必要があります。
+   はい。ただし、ポータルで SQL Server VM を管理したり、修正プログラムの自動適用や自動バックアップなどの機能を利用したりするには、[各 SQL Server VM を SQL IaaS Agent 拡張機能に登録する](sql-agent-extension-manually-register-single-vm.md)必要があります。
 
 1. **仮想マシン ギャラリーに表示されていない構成 (Windows 2008 R2 + SQL Server 2012 など) をセットアップすることはできますか?**
 
-   いいえ。 SQL Server を含む仮想マシン ギャラリー イメージでは、Azure portal または [PowerShell](create-sql-vm-powershell.md) を使用して、提供されているイメージのいずれかを選択する必要があります。 ただし、Windows VM をデプロイしたり、それに SQL Server を自己インストールしたりできます。 その後、Azure portal で SQL Server VM を管理したり、修正プログラムの自動適用や自動バックアップなどの機能を利用したりするには、[各 SQL Server VM を SQL Server VM リソース プロバイダーに登録する](sql-vm-resource-provider-register.md)必要があります。 
+   いいえ。 SQL Server を含む仮想マシン ギャラリー イメージでは、Azure portal または [PowerShell](create-sql-vm-powershell.md) を使用して、提供されているイメージのいずれかを選択する必要があります。 ただし、Windows VM をデプロイしたり、それに SQL Server を自己インストールしたりできます。 その後、Azure portal で SQL Server VM を管理したり、修正プログラムの自動適用や自動バックアップなどの機能を利用したりするには、[ご利用の SQL Server VM を SQL IaaS Agent 拡張機能に登録する](sql-agent-extension-manually-register-single-vm.md)必要があります。 
 
 
 ## <a name="creation"></a>作成
 
 1. **SQL Server で Azure 仮想マシンを作成するにはどうするのですか?**
 
-   最も簡単な方法は、SQL Server を含む仮想マシンを作成することです。 Azure にサインアップして、ポータルから SQL Server VM を作成するチュートリアルについては、[Azure portal で SQL Server 仮想マシンをプロビジョニングする方法](create-sql-vm-portal.md)に関するページをご覧ください。 秒単位の SQL Server ライセンスを使用する仮想マシン イメージを選択するか、または独自の SQL Server ライセンスを適用できるイメージを使用できます。 無料ライセンス版 (Developer または Express) を利用するかオンプレミスのライセンスを再利用して、SQL Server を VM に手動でインストールすることもできます。 ポータルで SQL Server VM を管理したり、修正プログラムの自動適用や自動バックアップなどの機能を利用したりするには、[各 SQL Server VM を SQL Server VM リソース プロバイダーに登録](sql-vm-resource-provider-register.md)してください。 現在所有しているライセンスを使用する場合は、[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)が必要です。 詳細については、「[Pricing guidance for SQL Server Azure VMs](pricing-guidance.md)」(SQL Server Azure VM の料金ガイダンス) を参照してください。
+   最も簡単な方法は、SQL Server を含む仮想マシンを作成することです。 Azure にサインアップして、ポータルから SQL Server VM を作成するチュートリアルについては、[Azure portal で SQL Server 仮想マシンをプロビジョニングする方法](create-sql-vm-portal.md)に関するページをご覧ください。 秒単位の SQL Server ライセンスを使用する仮想マシン イメージを選択するか、または独自の SQL Server ライセンスを適用できるイメージを使用できます。 無料ライセンス版 (Developer または Express) を利用するかオンプレミスのライセンスを再利用して、SQL Server を VM に手動でインストールすることもできます。 ポータルで SQL Server VM を管理したり、修正プログラムの自動適用や自動バックアップなどの機能を利用したりするには、必ず[ご利用の SQL Server VM を SQL IaaS Agent 拡張機能に登録](sql-agent-extension-manually-register-single-vm.md)してください。 現在所有しているライセンスを使用する場合は、[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)が必要です。 詳細については、「[Pricing guidance for SQL Server Azure VMs](pricing-guidance.md)」(SQL Server Azure VM の料金ガイダンス) を参照してください。
 
 1. **オンプレミス SQL Server データベースをクラウドに移行するにはどうすればよいですか?**
 
@@ -89,7 +89,7 @@ ms.locfileid: "93289399"
 
 1. **Azure VM に SQL Server のライセンス版をインストールするにはどうすればよいですか?**
 
-   これには 3 とおりの方法があります。 Enterprise Agreement (EA) のお客様の場合、[ライセンスがサポートされる仮想マシン イメージ](sql-server-on-azure-vm-iaas-what-is-overview.md#BYOL)の 1 つをプロビジョニングできます。これは、ライセンス持ち込み (BYOL) とも呼ばれます。 [ソフトウェア アシュアランス](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default)をお持ちの場合、既存の従量課金制 (PAYG) イメージで [Azure ハイブリッド特典](licensing-model-azure-hybrid-benefit-ahb-change.md)を有効にできます。 あるいは、SQL Server インストール メディアを Windows Server VM にコピーしてから、SQL Server を VM にインストールできます。 自動バックアップや修正プログラムの自動適用などの機能を利用するには、[SQL Server VM を SQL Server VM リソース プロバイダーに登録](sql-vm-resource-provider-register.md)してください。 
+   これには 3 とおりの方法があります。 Enterprise Agreement (EA) のお客様の場合、[ライセンスがサポートされる仮想マシン イメージ](sql-server-on-azure-vm-iaas-what-is-overview.md#BYOL)の 1 つをプロビジョニングできます。これは、ライセンス持ち込み (BYOL) とも呼ばれます。 [ソフトウェア アシュアランス](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default)をお持ちの場合、既存の従量課金制 (PAYG) イメージで [Azure ハイブリッド特典](licensing-model-azure-hybrid-benefit-ahb-change.md)を有効にできます。 あるいは、SQL Server インストール メディアを Windows Server VM にコピーしてから、SQL Server を VM にインストールできます。 自動バックアップや修正プログラムの自動適用などの機能を利用するには、使用する SQL Server VM を[拡張機能](sql-agent-extension-manually-register-single-vm.md)に必ず登録してください。 
 
 1. **従量課金制のギャラリー イメージから作成した VM を、現在所有している SQL Server ライセンスを使用するように変更できますか。**
 
@@ -97,15 +97,15 @@ ms.locfileid: "93289399"
 
 1. **ライセンス モデルの切り替えには、SQL Server のダウンタイムが必要ですか。**
 
-   いいえ。 [ライセンス モデルの変更](licensing-model-azure-hybrid-benefit-ahb-change.md)は、即座に有効になり、VM を再起動する必要はないため、SQL Server のダウンタイムは必要ありません。 ただし、SQL Server VM を SQL Server VM リソース プロバイダーに登録するには、 [SQL IaaS 拡張機能](sql-server-iaas-agent-extension-automate-management.md)が前提条件です。SQL IaaS 拡張機能を _完全_ モードでインストールすると、SQL Server サービスが再起動します。 そのため、SQL IaaS 拡張機能をインストールする必要がある場合、機能が制限される _軽量_ モードでインストールするか、メンテナンス期間中であれば _完全_ モードでインストールしてください。 _軽量_ モードでインストールされた SQL IaaS 拡張機能はいつでも _完全_ モードにアップグレードできますが、SQL Server サービスを再起動する必要があります。 
+   いいえ。 [ライセンス モデルの変更](licensing-model-azure-hybrid-benefit-ahb-change.md)は、即座に有効になり、VM を再起動する必要はないため、SQL Server のダウンタイムは必要ありません。 ただし、ご利用の SQL Server VM を SQL IaaS Agent 拡張機能に登録するには、[SQL IaaS 拡張機能](sql-server-iaas-agent-extension-automate-management.md)が前提条件です。SQL IaaS 拡張機能を "_完全_" モードでインストールすると、SQL Server サービスが再起動します。 そのため、SQL IaaS 拡張機能をインストールする必要がある場合、機能が制限される _軽量_ モードでインストールするか、メンテナンス期間中であれば _完全_ モードでインストールしてください。 _軽量_ モードでインストールされた SQL IaaS 拡張機能はいつでも _完全_ モードにアップグレードできますが、SQL Server サービスを再起動する必要があります。 
    
 1. **クラシック モデルを使用してデプロイされた SQL Server VM でライセンス モデルを切り替えることはできますか?**
 
-   いいえ。 クラシック VM では、ライセンス モデルの変更はサポートされていません。 VM を Azure Resource Manager モデルに移行し、SQL Server VM リソース プロバイダーに登録できます。 VM が SQL Server VM リソース プロバイダーに登録されたら、VM でライセンス モデルを変更できます。
+   いいえ。 クラシック VM では、ライセンス モデルの変更はサポートされていません。 VM を Azure Resource Manager モデルに移行し、SQL IaaS Agent 拡張機能に登録できます。 VM を SQL IaaS Agent 拡張機能に登録すると、VM 上でライセンス モデルを変更できるようになります。
 
 1. **Azure portal を利用し、同じ VM で複数のインスタンスを管理できますか?**
 
-   いいえ。 ポータル管理は、SQL Server IaaS Agent 拡張機能に依存する SQL Server VM リソース プロバイダーによって提供される機能です。 そのため、拡張機能と同じ制限がリソース プロバイダーに適用されます。 ポータルでは、正しく構成されている場合に限り、既定のインスタンスまたは名前付きインスタンスを 1 つだけ管理できます。 このような制限に関する詳細は、[SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に関するページをご覧ください。 
+   いいえ。 ポータル管理は、SQL Server IaaS Agent 拡張機能に依存する SQL IaaS Agent 拡張機能によって提供される機能です。 そのため、その拡張機能と同じ制限がこの拡張機能に適用されます。 ポータルでは、正しく構成されている場合に限り、既定のインスタンスまたは名前付きインスタンスを 1 つだけ管理できます。 このような制限に関する詳細は、[SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に関するページをご覧ください。 
 
 1. **CSP サブスクリプションで Azure ハイブリッド特典をアクティブ化できますか。**
 
@@ -135,27 +135,27 @@ ms.locfileid: "93289399"
    ソフトウェア アシュアランスと同等のサブスクリプション権限を固定した特典として提供する包括的なプログラムでは、DR 特典がサポートされます。 これには、 オープン バリュー (OV)、オープン バリュー サブスクリプション (OVS)、Enterprise Agreement (EA)、エンタープライズ契約サブスクリプション (EAS)、およびサーバーおよびクラウド加入契約 (SCE) が含まれますが、これに限定されるものではありません。 詳細については、[製品の使用条件](https://www.microsoft.com/licensing/product-licensing/products)を参照し、ライセンスの担当者またはアカウント マネージャーにお問い合わせください。 
 
    
- ## <a name="resource-provider"></a>リソース プロバイダー
+ ## <a name="extension"></a>拡張機能
 
-1. **新しい SQL Server VM リソース プロバイダーに VM を登録すると、追加のコストがかかりますか?**
+1. **新しい SQL IaaS Agent 拡張機能への VM の登録には、追加のコストがかかりますか。**
 
-   いいえ。 SQL Server VM リソース プロバイダーは、Azure VM 上で SQL Server に追加の管理機能を有効にするだけなので、追加料金は発生しません。 
+   いいえ。 SQL IaaS Agent 拡張機能は、Azure VM 上で SQL Server 用の追加の管理機能を有効にするだけのものなので、追加料金は発生しません。 
 
-1. **SQL Server VM リソース プロバイダーは、すべての顧客が使用できますか?**
+1. **SQL IaaS Agent 拡張機能はすべての顧客が利用できますか。**
  
-   はい。SQL Server VM がクラシック モデルではなく Resource Manager モデルを使用してパブリック クラウドにデプロイされた場合に限ります。 他のお客様はすべて、新しい SQL Server VM リソース プロバイダーに登録できます。 ただし、SQL Server VM で [Azure ハイブリッド特典 (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) をアクティブ化し、独自のライセンスを使用できるのは、[ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)の特典をお持ちのお客様だけです。 
+   はい。SQL Server VM がクラシック モデルではなく Resource Manager モデルを使用してパブリック クラウドにデプロイされた場合に限ります。 他の顧客はすべて、新しい SQL IaaS Agent 拡張機能に登録できます。 ただし、SQL Server VM で [Azure ハイブリッド特典 (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) をアクティブ化し、独自のライセンスを使用できるのは、[ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)の特典をお持ちのお客様だけです。 
 
-1. **VM リソースが移動または破棄されると、リソース プロバイダー ( _Microsoft.SqlVirtualMachine_ ) リソースはどうなりますか?** 
+1. **VM リソースが移動または破棄されると、拡張機能 (_Microsoft.SqlVirtualMachine_) はどうなりますか?** 
 
    Microsoft.Compute/VirtualMachine リソースが破棄または移動されると、関連付けられた Microsoft.SqlVirtualMachine リソースに、操作が非同期的にレプリケートされることが通知されます。
 
-1. **リソース プロバイダー ( _Microsoft.SqlVirtualMachine_ ) リソースが破棄されると、VM はどうなりますか?**
+1. **拡張機能 (_Microsoft.SqlVirtualMachine_) が破棄されると、VM はどうなりますか。**
 
     Microsoft.SqlVirtualMachine リソースが破棄されても、Microsoft.Compute/VirtualMachine リソースには影響しません。 ただし、ライセンスの変更により、元の既定のイメージ ソースに戻ります。 
 
-1. **自己デプロイされた SQL Server VM を SQL Server VM リソース プロバイダーに登録することはできますか?**
+1. **SQL IaaS Agent 拡張機能に自己デプロイ済みの SQL Server VM を登録することはできますか。**
 
-    はい。 独自のメディアから SQL Server をデプロイし、SQL IaaS 拡張機能をインストールした場合は、SQL IaaS 拡張機能によって提供される管理の容易性の利点を得るため、リソース プロバイダーに SQL Server VM を登録できます。    
+    はい。 独自のメディアから SQL Server をデプロイし、SQL IaaS 拡張機能をインストールした場合は、SQL IaaS 拡張機能によって提供される管理の容易性の利点を得るため、拡張機能に SQL Server VM を登録できます。    
 
 
 ## <a name="administration"></a>管理
@@ -169,7 +169,7 @@ ms.locfileid: "93289399"
 
 1. **SQL Server の既定のインスタンスをアンインストールできますか?**
 
-   はい。ただし、考慮事項がいくつかあります。 まず、VM のライセンス モデルによっては、SQL Server 関連の請求が引き続き発生することがあります。 2 つ目に、前出の回答で述べたように、[SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に依存する機能があります。 IaaS 拡張機能を削除せずに既定のインスタンスをアンインストールすると、拡張機能が既定のインスタンスを探し続けるために、イベント ログ エラーが生成される可能性があります。 これらのエラーは次の 2 つのソースから発生します: **Microsoft SQL Server Credential Management** 、 **Microsoft SQL Server IaaS Agent** 。 エラーの例を次に示します。
+   はい。ただし、考慮事項がいくつかあります。 まず、VM のライセンス モデルによっては、SQL Server 関連の請求が引き続き発生することがあります。 2 つ目に、前出の回答で述べたように、[SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に依存する機能があります。 IaaS 拡張機能を削除せずに既定のインスタンスをアンインストールすると、拡張機能が既定のインスタンスを探し続けるために、イベント ログ エラーが生成される可能性があります。 これらのエラーは次の 2 つのソースから発生します:**Microsoft SQL Server Credential Management**、**Microsoft SQL Server IaaS Agent**。 エラーの例を次に示します。
 
       SQL Server への接続を確立しているときにネットワーク関連またはインスタンス固有のエラーが発生しました。 サーバーが見つからないかアクセスできません。
 
@@ -186,12 +186,12 @@ ms.locfileid: "93289399"
    1. 必要に応じて、システム データベースを含むすべてのデータをバックアップします。 
    1. SQL IaaS 拡張機能 (存在する場合) を含めて、SQL Server を完全にアンインストールします。
    1. 無料の [SQL Express エディション](https://www.microsoft.com/sql-server/sql-server-downloads)をインストールします。
-   1. [軽量モード](sql-vm-resource-provider-register.md)で SQL VM リソース プロバイダーに登録します。
+   1. [軽量モード](sql-agent-extension-manually-register-single-vm.md)で SQL IaaS Agent 拡張機能に登録します。
    1. (省略可能) サービスのスタートアップを無効にすることで、Express SQL Server サービスを無効にします。 
 
 1. **Azure portal を利用し、同じ VM で複数のインスタンスを管理できますか?**
 
-   いいえ。 ポータル管理は、SQL Server IaaS Agent 拡張機能に依存する SQL VM リソース プロバイダーによって提供されます。 そのため、拡張機能と同じ制限がリソース プロバイダーに適用されます。 ポータルでは、正しく構成されている場合に限り、既定のインスタンスまたは名前付きインスタンスを 1 つだけ管理できます。 詳細については、[SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に関するページをご覧ください。 
+   いいえ。 ポータル管理は、SQL Server IaaS Agent 拡張機能に依存する SQL IaaS Agent 拡張機能によって提供されます。 そのため、その拡張機能と同じ制限がこの拡張機能に適用されます。 ポータルでは、正しく構成されている場合に限り、既定のインスタンスまたは名前付きインスタンスを 1 つだけ管理できます。 詳細については、[SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に関するページをご覧ください。 
 
 
 ## <a name="updating-and-patching"></a>更新プログラムと修正プログラムの適用
@@ -208,9 +208,9 @@ ms.locfileid: "93289399"
 
    仮想マシンでは、更新プログラムを適用するタイミングと方法を含めて、ホスト マシンを制御できます。 オペレーティング システムの場合、Windows 更新プログラムを手動で適用するか、または[自動修正](automated-patching.md)と呼ばれるスケジュール サービスを有効にすることができます。 自動修正では、そのカテゴリ内の SQL Server の更新を含む、重要とマークされている更新プログラムがインストールされます。 SQL Server へのその他のオプションの更新プログラムは、手動でインストールする必要があります。
 
-1. **SQL Server 2008 / 2008 R2 インスタンスを SQL Server VM リソース プロバイダーに登録した後にアップグレードできますか?**
+1. **SQL Server 2008/2008 R2 インスタンスは、SQL IaaS Agent 拡張機能に登録した後で、アップグレードできますか。**
 
-   OS が Windows Server 2008 R2 以降の場合は、可能です。 セットアップ メディアを利用し、SQL Server のバージョンやエディションをアップグレードできます。その後、 [SQL IaaS 拡張機能モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)を _エージェントなし_ から _完全_ にアップグレードできます。 アップグレードにより SQL IaaS 拡張機能のあらゆる特典を利用できるようになります。たとえば、ポータルが使いやすくなり、バックアップや修正プログラムの適用を自動化できます。 OS のバージョンが Windows Server 2008 の場合は、NoAgent モードのみがサポートされます。 
+   OS が Windows Server 2008 R2 以降の場合は、可能です。 セットアップ メディアを利用し、SQL Server のバージョンやエディションをアップグレードできます。その後、[SQL IaaS 拡張機能モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)を _エージェントなし_ から _完全_ にアップグレードできます。 アップグレードにより SQL IaaS 拡張機能のあらゆる特典を利用できるようになります。たとえば、ポータルが使いやすくなり、バックアップや修正プログラムの適用を自動化できます。 OS のバージョンが Windows Server 2008 の場合は、NoAgent モードのみがサポートされます。 
 
 1. **サポートが終了した SQL Server 2008 および SQL Server 2008 R2 インスタンスの無料の延長セキュリティ更新プログラムを取得するどうすればよいですか?**
 
@@ -225,7 +225,7 @@ ms.locfileid: "93289399"
    はい。 フェールオーバー クラスター インスタンスは、記憶域サブシステムに [Premium ファイル共有 (PFS)](failover-cluster-instance-premium-file-share-manually-configure.md) または[記憶域スペース ダイレクト (S2D)](failover-cluster-instance-storage-spaces-direct-manually-configure.md) を使用してインストールできます。 Premium ファイル共有は、多くのワークロードのニーズを満たす IOPS とスループット容量を提供します。 IO 集中型ワークロードの場合は、マネージド Premium または Ultra ディスクに基づいて記憶域スペース ダイレクトを使用することを検討してください。 または、[Azure 仮想マシンでの SQL Server の高可用性とディザスター リカバリー](business-continuity-high-availability-disaster-recovery-hadr-overview.md#azure-only-high-availability-solutions)に関する記事の説明に従って、サードパーティのクラスタリング ソリューションまたは記憶域ソリューションを使用できます。
 
    > [!IMPORTANT]
-   > 現時点では、Azure 上の SQL Server FCI では _完全な_ [SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)がサポートされていません。 FCI に参加している VM から _完全な_ 拡張機能をアンインストールし、代わりに _軽量_ モードで拡張機能をインストールすることをお勧めします。 この拡張機能では、自動バックアップ、修正プログラムの自動適用、SQL Server のポータル機能の一部などの機能に対応しています。 このような機能は、 _完全_ なエージェントのアンインストール後、SQL Server VM では動作しません。
+   > 現時点では、Azure 上の SQL Server FCI では _完全な_ [SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)がサポートされていません。 FCI に参加している VM から _完全な_ 拡張機能をアンインストールし、代わりに _軽量_ モードで拡張機能をインストールすることをお勧めします。 この拡張機能では、自動バックアップ、修正プログラムの自動適用、SQL Server のポータル機能の一部などの機能に対応しています。 このような機能は、_完全_ なエージェントのアンインストール後、SQL Server VM では動作しません。
 
 1. **SQL Server VM と SQL Database サービスの違いは何ですか?**
 
@@ -241,7 +241,7 @@ ms.locfileid: "93289399"
 
 ## <a name="resources"></a>リソース
 
-**Windows VM** :
+**Windows VM**:
 
 * [Windows VM における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM での SQL Server のプロビジョニング](create-sql-vm-portal.md)
@@ -250,7 +250,7 @@ ms.locfileid: "93289399"
 * [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](performance-guidelines-best-practices.md)
 * [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](application-patterns-development-strategies.md)
 
-**Linux VM** :
+**Linux VM**:
 
 * [Linux VM における SQL Server の概要](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [Linux VM での SQL Server のプロビジョニング](../linux/sql-vm-create-portal-quickstart.md)

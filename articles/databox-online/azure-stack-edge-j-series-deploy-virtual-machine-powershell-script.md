@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell を使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
-description: Azure PowerShell を使用して Azure Stack Edge Pro デバイスに仮想マシン (VM) を作成し、それを管理する方法について説明します。
+title: Azure PowerShell スクリプトを使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
+description: Azure PowerShell スクリプトを使用して Azure Stack Edge Pro デバイスに仮想マシン (VM) を作成して管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 5ed6de28f1e1b0545ebd675c30249e2f2b4747e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd877a91c7c082ce7845394f2636857f33b7940f
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890655"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578758"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Azure PowerShell スクリプトを使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
@@ -50,7 +50,7 @@ ms.locfileid: "90890655"
     > [!IMPORTANT]
     > エンドポイントの名前解決には、DNS サーバーの構成を変更することをお勧めします。
 
-    1. **メモ帳**を管理者として起動し (hosts ファイルを保存するには管理者特権が必要です)、`C:\Windows\System32\Drivers\etc` にある **hosts** ファイルを開きます。
+    1. **メモ帳** を管理者として起動し (hosts ファイルを保存するには管理者特権が必要です)、`C:\Windows\System32\Drivers\etc` にある **hosts** ファイルを開きます。
     
         ![エクスプローラーの hosts ファイル](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file.png)
     

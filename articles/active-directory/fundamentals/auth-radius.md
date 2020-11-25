@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory を使用した RADIUS 認証
-description: この認証パターンの実現に関するアーキテクチャのガイダンス
+description: Azure Active Directory を使用した RADIUS 認証の取得に関するアーキテクチャ ガイダンス。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff6210741d87602b4f695633b11d2641a6bb6781
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 155b359c109de948ab9b9d6862ef7507ee76f619
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114006"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576814"
 ---
 # <a name="radius-authentication-with-azure-active-directory"></a>Azure Active Directory を使用した RADIUS 認証
 
@@ -49,13 +49,13 @@ Windows NPS サーバーでは、Active Directory を照合してユーザーの
 
 * **クライアント アプリケーション (VPN クライアント)** :RADIUS クライアントに認証要求を送信します。
 
-* **RADIUS クライアント** :クライアント アプリケーションからの要求を変換し、それを NPS 拡張機能がインストールされている RADIUS サーバーに送信します。
+* **RADIUS クライアント**:クライアント アプリケーションからの要求を変換し、それを NPS 拡張機能がインストールされている RADIUS サーバーに送信します。
 
-* **RADIUS サーバー** :Active Directory に接続して、RADIUS 要求のプライマリ認証を実行します。 成功すると、要求を Azure Multi-Factor Authentication NPS 拡張機能に渡します。
+* **RADIUS サーバー**:Active Directory に接続して、RADIUS 要求のプライマリ認証を実行します。 成功すると、要求を Azure Multi-Factor Authentication NPS 拡張機能に渡します。
 
-* **NPS 拡張機能** :セカンダリ認証を行うために、Azure Multi-Factor Authentication への要求をトリガーします。 成功すると、NPS 拡張機能によって、Azure のセキュリティ トークン サービスで発行された多要素認証要求が含まれるセキュリティ トークンが RADIUS サーバーに渡され、認証要求が完了します。
+* **NPS 拡張機能**:セカンダリ認証を行うために、Azure Multi-Factor Authentication への要求をトリガーします。 成功すると、NPS 拡張機能によって、Azure のセキュリティ トークン サービスで発行された多要素認証要求が含まれるセキュリティ トークンが RADIUS サーバーに渡され、認証要求が完了します。
 
-* **Azure Multi-Factor Authentication** :Azure AD と通信してユーザーの詳細を取得し、ユーザーが構成した検証メソッドを使用してセカンダリ認証を行います。
+* **Azure Multi-Factor Authentication**:Azure AD と通信してユーザーの詳細を取得し、ユーザーが構成した検証メソッドを使用してセカンダリ認証を行います。
 
 ## <a name="implement-radius-with-azure-ad"></a>Azure AD を使用した RADIUS を実装する 
 
