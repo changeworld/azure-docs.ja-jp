@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.openlocfilehash: fe8acfd1bfd14f339a0109cab215b8a9ab65256f
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893881"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021556"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-segment"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) とセグメントの統合
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* セグメントでは、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* セグメントでは、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* セグメントでは、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* セグメントでは、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 * セグメントを構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
@@ -52,7 +52,7 @@ Azure AD へのセグメントの統合を構成するには、ギャラリー�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **セグメント** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**セグメント**」と入力します。
 1. [結果] パネルから **[セグメント]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 

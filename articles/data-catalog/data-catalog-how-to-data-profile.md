@@ -7,11 +7,11 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: b27ff631ce13d70d15a6fd2b6dd5ad5bccaf5450
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442073"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021913"
 ---
 # <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でデータ ソースをデータ プロファイリングする方法
 
@@ -19,7 +19,7 @@ ms.locfileid: "89442073"
 
 **Microsoft Azure Data Catalog** は、フル マネージドのクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。 つまり、 **Azure Data Catalog** を使用すると、ユーザーはデータ ソースを検出、理解、使用でき、組織は既存のデータからより多くの価値を引き出すことができます。 データ ソースが **Azure Data Catalog** に登録されると、そのメタデータはサービスによってコピーされてインデックスが付けられます。ただし、これで終わりではありません。
 
-**Azure Data Catalog** の**データのプロファイリング**機能は、カタログでサポートされているデータ ソースからのデータを分析し、そのデータに関する統計と情報を収集します。 データ資産のプロファイルは簡単に追加できます。 データ資産を登録する際に、データ ソース登録ツールで **[データ プロファイルを含める]** を選択してください。
+**Azure Data Catalog** の **データのプロファイリング** 機能は、カタログでサポートされているデータ ソースからのデータを分析し、そのデータに関する統計と情報を収集します。 データ資産のプロファイルは簡単に追加できます。 データ資産を登録する際に、データ ソース登録ツールで **[データ プロファイルを含める]** を選択してください。
 
 ## <a name="what-is-data-profiling"></a>データのプロファイリングとは
 

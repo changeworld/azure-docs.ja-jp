@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017, devx-track-azurecli
 ms.openlocfilehash: 067b5749332c2c41b86d22e7de60083d5f61a442
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746630"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020060"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Docker CLI を使用してプライベート Docker コンテナー レジストリに最初のイメージをプッシュする
 
@@ -24,7 +24,7 @@ ms.locfileid: "92746630"
 
 ## <a name="log-in-to-a-registry"></a>レジストリへのログイン
 
-プライベート コンテナー レジストリで[認証するさまざまな方法](container-registry-authentication.md)があります。 コマンド ラインで作業するときに推奨される方法は、Azure CLI コマンドの [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login)を使用することです。 たとえば、 *myregistry* という名前のレジストリにログインするには、次のように入力します。
+プライベート コンテナー レジストリで[認証するさまざまな方法](container-registry-authentication.md)があります。 コマンド ラインで作業するときに推奨される方法は、Azure CLI コマンドの [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login)を使用することです。 たとえば、*myregistry* という名前のレジストリにログインするには、次のように入力します。
 
 ```azurecli
 az acr login --name myregistry

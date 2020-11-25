@@ -4,11 +4,11 @@ description: この記事では、Azure Backup サービスと PowerShell を使
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: 60c9848e12de80bcafe4553a9e8f3e27e8876d41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88826499"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021386"
 ---
 # <a name="restore-azure-files-with-powershell"></a>PowerShell を使用して Azure Files を復元する
 
@@ -143,7 +143,7 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -MultipleSourceFilePa
 
 ### <a name="restore-multiple-directories"></a>複数のディレクトリを復元する
 
-次のスクリプトでは、*zrs1_restore* を復元し、ディレクトリを*復元*しようとしています。
+次のスクリプトでは、*zrs1_restore* を復元し、ディレクトリを *復元* しようとしています。
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"

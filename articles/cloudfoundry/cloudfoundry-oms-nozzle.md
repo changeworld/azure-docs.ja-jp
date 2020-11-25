@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
 ms.openlocfilehash: fde0afcd37cd464b0b87e5ccd257d4a7a684eeb0
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040762"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021590"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Cloud Foundry システム監視向けの Azure Log Analytics Nozzle のデプロイ
 
@@ -61,11 +61,11 @@ Log Analytics ワークスペースは、手動で、またはテンプレート
 1. Azure portal で Azure Marketplace でサービスの一覧を検索し、[Log Analytics] ワークスペースを選択します。
 2. **[作成]** を選択し、次の項目について選択します。
 
-   * **Log Analytics ワークスペース** :ワークスペースの名前を入力します。
-   * **サブスクリプション** :複数のサブスクリプションがある場合、CF デプロイと同じものを選択します。
+   * **Log Analytics ワークスペース**:ワークスペースの名前を入力します。
+   * **サブスクリプション**:複数のサブスクリプションがある場合、CF デプロイと同じものを選択します。
    * **[リソース グループ]** :新しいリソース グループを作成するか、CF デプロイと同じリソース グループを使用します。
    * **[場所]** :場所を入力します。
-   * **価格レベル** :完了するには **[OK]** を選択します。
+   * **価格レベル**:完了するには **[OK]** を選択します。
 
 詳細については、[Azure Monitor ログの使用](../azure-monitor/overview.md)に関するページを参照してください
 
@@ -76,13 +76,13 @@ Log Analytics ワークスペースは、手動で、またはテンプレート
 1. 検索ウィンドウに「Cloud Foundry」と入力し、[Cloud Foundry 監視ソリューション] を選択します。
 1. Cloud Foundry 監視ソリューション テンプレートのフロントページが読み込まれたら、[作成] をクリックしてテンプレート ブレードを起動します。
 1. 必要なパラメーターを入力します。
-    * **サブスクリプション** :Log Analytics ワークスペースの Azure サブスクリプションを選択します。通常は Cloud Foundry デプロイと同じです。
+    * **サブスクリプション**:Log Analytics ワークスペースの Azure サブスクリプションを選択します。通常は Cloud Foundry デプロイと同じです。
     * **[リソース グループ]** :既存のリソース グループを選択するか、Log Analytics ワークスペース用の新しいグループを作成します。
-    * **リソース グループの場所** :リソース グループの場所を選択します。
-    * **OMS_Workspace_Name** :ワークスペース名を入力します。ワークスペースが存在しない場合は、テンプレートによって新しいワークスペースが作成されます。
-    * **OMS_Workspace_Region** :ワークスペースの場所を選択します。
-    * **OMS_Workspace_Pricing_Tier** :Log Analytics ワークスペース SKU を選択します。 [料金ガイダンス](https://azure.microsoft.com/pricing/details/log-analytics/)を参考にしてください。
-    * **法律条項** :[法律条項] をクリックし、[作成] をクリックして法律条項に同意します。
+    * **リソース グループの場所**:リソース グループの場所を選択します。
+    * **OMS_Workspace_Name**:ワークスペース名を入力します。ワークスペースが存在しない場合は、テンプレートによって新しいワークスペースが作成されます。
+    * **OMS_Workspace_Region**:ワークスペースの場所を選択します。
+    * **OMS_Workspace_Pricing_Tier**:Log Analytics ワークスペース SKU を選択します。 [料金ガイダンス](https://azure.microsoft.com/pricing/details/log-analytics/)を参考にしてください。
+    * **法律条項**:[法律条項] をクリックし、[作成] をクリックして法律条項に同意します。
 1. すべてのパラメーターを指定したら、[作成] をクリックしてテンプレートをデプロイします。 デプロイが完了すると、通知タブに状態が表示されます。
 
 
@@ -183,7 +183,7 @@ Log Analytics ワークスペースを手動で作成した場合は、次の手
 
 ### <a name="1-import-the-oms-view"></a>1.OMS ビューをインポートする
 
-OMS ポータルから **[ビュー デザイナー]**  >  **[インポート]**  >  **[参照]** を参照し、omsview ファイルのいずれかを選択します。 たとえば、 *Cloud Foundry.omsview* を選択してビューを保存します。 **[概要]** ページにタイルが表示されます。 選択すると、視覚的なメトリックが表示されます。
+OMS ポータルから **[ビュー デザイナー]**  >  **[インポート]**  >  **[参照]** を参照し、omsview ファイルのいずれかを選択します。 たとえば、*Cloud Foundry.omsview* を選択してビューを保存します。 **[概要]** ページにタイルが表示されます。 選択すると、視覚的なメトリックが表示されます。
 
 **[ビュー デザイナー]** で、これらのビューをカスタマイズするか、新しいビューを作成できます。
 
@@ -201,7 +201,7 @@ OMS ポータルから **[ビュー デザイナー]**  >  **[インポート]**
 | Type=CF_ValueMetric_CL Origin_s=route_emitter Name_s=ConsulDownMode Value_d>0 | 結果の数: 0 より大きい   | Consul により、正常性の状態が定期的に出力されます。 0 はシステムが正常な状態を意味し、1 は Consul がダウンしていることをルート エミッターが検出したことを意味します。 |
 | Type=CF_CounterEvent_CL Origin_s=DopplerServer (Name_s="TruncatingBuffer.DroppedMessages" or Name_s="doppler.shedEnvelopes") Delta_d>0 | 結果の数: 0 より大きい | バック プレッシャーが原因で、メッセージの差分番号が Doppler により意図的に削除されました。 |
 | Type=CF_LogMessage_CL SourceType_s=LGR MessageType_s=ERR                      | 結果の数: 0 より大きい   | Loggregator は、ログのプロセスに関する問題を示す **LGR** を出力します。 このような問題の例として、ログ メッセージの出力が多すぎる場合などがあります。 |
-| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | 結果の数: 0 より大きい   | Nozzle は、Loggregator から低速のコンシューマー アラートを受け取ると、 **slowConsumerAlert** ValueMetric を Azure Monitor ログに送信します。 |
+| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | 結果の数: 0 より大きい   | Nozzle は、Loggregator から低速のコンシューマー アラートを受け取ると、**slowConsumerAlert** ValueMetric を Azure Monitor ログに送信します。 |
 | Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | 結果の数: 0 より大きい   | 失われたイベントの差分番号がしきい値に達した場合、Nozzle に問題が生じている可能性があることを意味します。 |
 
 ## <a name="scale"></a>スケール
@@ -211,7 +211,7 @@ Nozzle と loggregator は拡大縮小することができます。
 ### <a name="scale-the-nozzle"></a>Nozzle のスケーリング
 
 2 つ以上の Nozzle インスタンスから始めることをお勧めします。 firehose は、Nozzle のすべてのインスタンス間でワークロードを分散します。
-Nozzle が firehose のデータ トラフィックを最新の状態に保つことができるように、 **slowConsumerAlert** アラート (前のセクションの「アラート ルールの作成」を参照してください) を設定します。 アラートが発生したら、[低速な Nozzle に関するガイダンス](https://docs.pivotal.io/pivotalcf/1-11/loggregator/log-ops-guide.html#slow-noz)のセクションに従って、スケーリングが必要かどうかを判断します。
+Nozzle が firehose のデータ トラフィックを最新の状態に保つことができるように、**slowConsumerAlert** アラート (前のセクションの「アラート ルールの作成」を参照してください) を設定します。 アラートが発生したら、[低速な Nozzle に関するガイダンス](https://docs.pivotal.io/pivotalcf/1-11/loggregator/log-ops-guide.html#slow-noz)のセクションに従って、スケーリングが必要かどうかを判断します。
 Nozzle をスケールアップするには、Apps Manager または CF CLI を使用してインスタンス数を増やすか、Nozzle のメモリまたはディスク リソースを増やします。
 
 ### <a name="scale-the-loggregator"></a>loggregator のスケーリング
@@ -226,7 +226,7 @@ Nozzle を新しいバージョンに更新するには、Nozzle の新しいリ
 ### <a name="remove-the-nozzle-from-ops-manager"></a>Operations Manager から Nozzle を削除する
 
 1. Operations Manager にサインインします。
-2. " **PCF 用の Microsoft Azure Log Analytics Nozzle** " タイルを見つけます。
+2. "**PCF 用の Microsoft Azure Log Analytics Nozzle**" タイルを見つけます。
 3. ガベージ アイコンを選択して、削除を確定します。
 
 ### <a name="remove-the-nozzle-from-your-development-computer"></a>開発コンピューターから Nozzle を削除する

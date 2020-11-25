@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 627c03409b0808ff2bcdbb24e961800e944dcfc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bd79dc4935f5dfeb65d80ada544139dc88e129c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291301"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021437"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>チュートリアル:DMS を使用してオンラインで RDS PostgreSQL を Azure DB for PostgreSQL に移行する
 
-Azure Database Migration Service を使用して、RDS PostgreSQL インスタンスから [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) にデータベースを移行することができます。移行中、ソース データベースはオンラインのままになります。 つまり、アプリケーションにとって最小限のダウンタイムで移行を実現できます。 このチュートリアルでは、Azure Database Migration Service のオンライン移行アクティビティを使用して、**DVD Rental** サンプル データベースを RDS PostgreSQL 9.6 のインスタンスから Azure Database for PostgreSQL に移行します。
+Azure Database Migration Service を使用して、RDS PostgreSQL インスタンスから [Azure Database for PostgreSQL](../postgresql/index.yml) にデータベースを移行することができます。移行中、ソース データベースはオンラインのままになります。 つまり、アプリケーションにとって最小限のダウンタイムで移行を実現できます。 このチュートリアルでは、Azure Database Migration Service のオンライン移行アクティビティを使用して、**DVD Rental** サンプル データベースを RDS PostgreSQL 9.6 のインスタンスから Azure Database for PostgreSQL に移行します。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -47,17 +47,17 @@ Azure Database Migration Service を使用して、RDS PostgreSQL インスタ�
 
 このチュートリアルを完了するには、以下を実行する必要があります。
 
-* [PostgreSQL コミュニティ エディション](https://www.postgresql.org/download/) 9.5、9.6、または 10 をダウンロードしてインストールします。 ソースの PostgreSQL サーバーのバージョンが 9.5.11、9.6.7、10、またはそれ以降のバージョンである必要があります 詳しくは、「[サポートされている PostgreSQL Database バージョン](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)」の記事をご覧ください。
+* [PostgreSQL コミュニティ エディション](https://www.postgresql.org/download/) 9.5、9.6、または 10 をダウンロードしてインストールします。 ソースの PostgreSQL サーバーのバージョンが 9.5.11、9.6.7、10、またはそれ以降のバージョンである必要があります 詳しくは、「[サポートされている PostgreSQL Database バージョン](../postgresql/concepts-supported-versions.md)」の記事をご覧ください。
 
    また、ターゲットの Azure Database for PostgreSQL バージョンは、RDS PostgreSQL のバージョンと同じかそれ以降である必要があることに注意してください。 たとえば、RDS PostgreSQL 9.6 は Azure Database for PostgreSQL 9.6、10、または 11 にのみ移行でき、Azure Database for PostgreSQL 9.5 には移行できません。
 
-* [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) または [Azure Database for PostgreSQL - Hyperscale (Citus) サーバー](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)のインスタンスを作成します。 pgAdmin を使用して PostgreSQL サーバーに接続する方法の詳細については、ドキュメントのこの[セクション](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal#connect-to-the-postgresql-server-using-pgadmin)を参照してください。
-* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure Virtual Network を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。 仮想ネットワークの作成方法の詳細については、「[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)」を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
-* 仮想ネットワークのネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への以下のインバウンド通信ポートが確実にブロックされないようにします:443、53、9354、445、12000。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)に関する記事を参照してください。
-* [データベース エンジン アクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
+* [Azure Database for PostgreSQL](../postgresql/quickstart-create-server-database-portal.md) または [Azure Database for PostgreSQL - Hyperscale (Citus) サーバー](../postgresql/quickstart-create-hyperscale-portal.md)のインスタンスを作成します。 pgAdmin を使用して PostgreSQL サーバーに接続する方法の詳細については、ドキュメントのこの[セクション](../postgresql/quickstart-create-server-database-portal.md#connect-to-the-server-with-psql)を参照してください。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure Virtual Network を作成します。これで、[ExpressRoute](../expressroute/expressroute-introduction.md) または [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。 仮想ネットワークの作成方法の詳細については、「[Virtual Network のドキュメント](../virtual-network/index.yml)」を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
+* 仮想ネットワークのネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への以下のインバウンド通信ポートが確実にブロックされないようにします:443、53、9354、445、12000。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](../virtual-network/virtual-network-vnet-plan-design-arm.md)に関する記事を参照してください。
+* [データベース エンジン アクセスのために Windows ファイアウォール](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
 * Azure Database Migration Service がソース PostgreSQL サーバーにアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 5432 が使用されています。
 * ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
-* Azure Database for PostgreSQL サーバーのサーバーレベルの[ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service でターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用する仮想ネットワークのサブネット範囲を指定します。
+* Azure Database for PostgreSQL サーバーのサーバーレベルの[ファイアウォール規則](../azure-sql/database/firewall-configure.md)を作成して、Azure Database Migration Service でターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用する仮想ネットワークのサブネット範囲を指定します。
 
 ### <a name="set-up-aws-rds-postgresql-for-replication"></a>レプリケーションのために AWS RDS PostgreSQL を設定する
 
@@ -91,8 +91,8 @@ Azure Database Migration Service を使用して、RDS PostgreSQL インスタ�
 
 2. ターゲット サービスに空のデータベース (Azure Database for PostgreSQL) を作成します。 データベースの接続と作成については、次のいずれかの記事を参照してください。
 
-    * [Azure portal で Azure Database for PostgreSQL サーバーを作成する](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)
-    * [Azure portal を使用して Azure Database for PostgreSQL - Hyperscale (Citus) を作成する](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)
+    * [Azure portal で Azure Database for PostgreSQL サーバーを作成する](../postgresql/quickstart-create-server-database-portal.md)
+    * [Azure portal を使用して Azure Database for PostgreSQL - Hyperscale (Citus) を作成する](../postgresql/quickstart-create-hyperscale-portal.md)
 
 3. ターゲット サービス (Azure Database for PostgreSQL) にスキーマをインポートします。 スキーマのダンプ ファイルを復元するには、次のコマンドを実行します。
 
@@ -136,7 +136,7 @@ Azure Database Migration Service を使用して、RDS PostgreSQL インスタ�
 
 5. クエリ結果内の外部キー削除 (2 列目) を実行して、外部キーを削除します。
 
-6. データにトリガー (insert または update トリガー) が含まれている場合は、ソースからデータをレプリケートする前にターゲットでデータの整合性が適用されます。 移行時は*ターゲットの*すべてのテーブル内のトリガーを無効にし、移行の完了後にトリガーを有効にすることをお勧めします。
+6. データにトリガー (insert または update トリガー) が含まれている場合は、ソースからデータをレプリケートする前にターゲットでデータの整合性が適用されます。 移行時は *ターゲットの* すべてのテーブル内のトリガーを無効にし、移行の完了後にトリガーを有効にすることをお勧めします。
 
     ターゲット データベース内のトリガーを無効にするには、次のように指定します。
 
@@ -176,7 +176,7 @@ Azure Database Migration Service を使用して、RDS PostgreSQL インスタ�
 
     この仮想ネットワークによって、Azure Database Migration Service に、ソース PostgreSQL インスタンスとターゲット Azure Database for PostgreSQL インスタンスへのアクセスが提供されます。
 
-    Azure portal で仮想ネットワークを作成する方法の詳細については、「[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/DMSVnet)」の記事を参照してください。
+    Azure portal で仮想ネットワークを作成する方法の詳細については、「[Azure portal を使用した仮想ネットワークの作成](../virtual-network/quick-create-portal.md)」の記事を参照してください。
 
 6. 価格レベルを選択します。このオンライン移行では、Premium:4 仮想コア価格レベルを選択してください。
 
@@ -269,6 +269,6 @@ RDS PostgreSQL のオンプレミス インスタンスの Azure Database for Po
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Database Migration Service の詳細については、「[Azure Database Migration Service とは](https://docs.microsoft.com/azure/dms/dms-overview)」を参照してください。
-* Azure Database for PostgreSQL の詳細については、「[Azure Database for PostgreSQL とは](https://docs.microsoft.com/azure/postgresql/overview)」を参照してください。
+* Azure Database Migration Service の詳細については、「[Azure Database Migration Service とは](./dms-overview.md)」を参照してください。
+* Azure Database for PostgreSQL の詳細については、「[Azure Database for PostgreSQL とは](../postgresql/overview.md)」を参照してください。
 * その他の質問については、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) エイリアスにメールを送信してください。

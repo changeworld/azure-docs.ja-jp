@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/07/2020
 ms.author: glenga
 ms.openlocfilehash: a4f03223b5067d18f5d6e747b3bb630a86031b8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88689562"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020360"
 ---
 拡張機能バンドルを使用できない場合、Azure Functions Core Tools をローカルで使用し、プロジェクトで必要とされる特定の拡張機能パッケージをインストールできます。
 

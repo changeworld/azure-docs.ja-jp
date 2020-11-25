@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
 ms.openlocfilehash: 12d6beac446f8a15a41daf0dfe8ca1783c95c775
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427246"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021114"
 ---
 # <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>Azure CLI を使用して Azure AD アプリを作成し、それを Media Services API にアクセスするように構成します。
 
@@ -57,7 +57,7 @@ az role assignment create --assignee < user/app id> --role Contributor --scope <
 az role assignment create --assignee a3e068fa-f739-44e5-ba4d-ad57866e25a1 --role Contributor --scope /subscriptions/0b65e280-7917-4874-9fed-1307f2615ea2/resourceGroups/Default-AzureBatch-SouthCentralUS/providers/microsoft.media/mediaservices/sbbash
 ```
 
-この例では、 **scope** はメディア サービス アカウントの完全なリソース パスです。 しかし、 **scope** は任意のレベルに設定できます。
+この例では、**scope** はメディア サービス アカウントの完全なリソース パスです。 しかし、**scope** は任意のレベルに設定できます。
 
 たとえば、次のいずれかのレベルにすることができます。
  

@@ -4,14 +4,14 @@ description: 名前空間の自動インフレを有効にしてスループッ�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1be564472011622b71b3066495748dfdbe6cc791
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86537243"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020808"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Azure Event Hubs のスループット単位を自動的にスケールアップする
-Azure Event Hubs は、拡張性の高いデータ ストリーミング プラットフォームです。 そのため、Event Hubs の使用は、多くの場合、サービスの利用開始後に増えます。 このような使用では、Event Hubs のスケーリングとより大きな転送率の処理を行うために、事前に定義された[スループット単位](event-hubs-scalability.md#throughput-units)を増やす必要があります。 Event Hubs の**自動インフレ**機能は、使用量のニーズに合わせてスループット単位の数を増やすことで、自動的にスケールアップします。 スループット単位を増やすことで、以下の状況で必要になる調整シナリオを防ぐことができます。
+Azure Event Hubs は、拡張性の高いデータ ストリーミング プラットフォームです。 そのため、Event Hubs の使用は、多くの場合、サービスの利用開始後に増えます。 このような使用では、Event Hubs のスケーリングとより大きな転送率の処理を行うために、事前に定義された[スループット単位](event-hubs-scalability.md#throughput-units)を増やす必要があります。 Event Hubs の **自動インフレ** 機能は、使用量のニーズに合わせてスループット単位の数を増やすことで、自動的にスケールアップします。 スループット単位を増やすことで、以下の状況で必要になる調整シナリオを防ぐことができます。
 
 * データの受信レートが、設定されたスループット単位を超えている。
 * データの送信要求レートが、設定されたスループット単位を超えている。
@@ -40,7 +40,7 @@ Standard レベルの Event Hubs 名前空間の自動インフレを有効ま�
 
 
 #### <a name="enable-at-the-time-of-creation"></a>作成時に有効にする 
-自動インフレ機能は、**Event Hubs 名前空間の作成時**に有効にできます。
+自動インフレ機能は、**Event Hubs 名前空間の作成時** に有効にできます。
  
 ![イベント ハブの作成時に自動インフレを有効にする](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 
@@ -55,8 +55,8 @@ Standard レベルの Event Hubs 名前空間の自動インフレを有効ま�
 2. **[スケールの設定**] ページで、 **[有効]** のチェック ボックスをオンにします (自動スケール機能が有効になっていなかった場合)。
 
     ![[有効] を選択する](./media/event-hubs-auto-inflate/scale-settings.png)
-3. スループット ユニットの**最大**数を入力するか、スクロール バーを使用して値を設定します。 
-4. (省略可能) このページの上部でスループット ユニットの**最小**数を更新します。 
+3. スループット ユニットの **最大** 数を入力するか、スクロール バーを使用して値を設定します。 
+4. (省略可能) このページの上部でスループット ユニットの **最小** 数を更新します。 
 
 
 > [!NOTE]

@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e37cb6a0679ee2e249de4ed8fa31c40d5082ea4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324129"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020145"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Event Grid のカスタム トピック用に独自のディザスター リカバリーを構築する
 ディザスター リカバリーは、アプリケーションの機能の深刻な損失からの復旧に重点を置きます。 このチュートリアルでは、Event Grid サービスが特定のリージョンで異常な状態になった場合に復旧するためのイベント処理アーキテクチャを設定する方法について説明します。

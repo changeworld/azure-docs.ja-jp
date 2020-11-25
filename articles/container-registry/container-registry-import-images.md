@@ -4,11 +4,11 @@ description: Azure API を使用することで、Docker コマンドを実行�
 ms.topic: article
 ms.date: 09/18/2020
 ms.openlocfilehash: 3950b9fb24b80db4d9654a615521c0eb82914499
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695607"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019975"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>コンテナー レジストリにコンテナー イメージをインポートする
 

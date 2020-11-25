@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 982adf6c6d7cd825d185802321ce30a04bd2f216
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323296"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020893"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights を使用して Node.js サービスとアプリを監視する
 
@@ -139,7 +139,7 @@ appInsights.setup("<instrumentation_key>")
 IDE の組み込みの型ヒントで説明を確認するか、または [applicationinsights.ts](https://github.com/microsoft/ApplicationInsights-node.js/blob/develop/applicationinsights.ts) を参照して、これらがコントロールできる内容と省略可能なセカンダリ引数についての詳細を確認してください。
 
 > [!NOTE]
->  既定では、`setAutoCollectConsole` は `console.log` (およびその他のコンソール メソッド) の呼び出しを*除外*するように構成されています。 サポートされているサードパーティのロガー (たとえば、winston や bunyan) の呼び出しのみが収集されます。 `setAutoCollectConsole(true, true)` を使用することで、この動作を変更して `console` メソッドの呼び出しを含めることができます。
+>  既定では、`setAutoCollectConsole` は `console.log` (およびその他のコンソール メソッド) の呼び出しを *除外* するように構成されています。 サポートされているサードパーティのロガー (たとえば、winston や bunyan) の呼び出しのみが収集されます。 `setAutoCollectConsole(true, true)` を使用することで、この動作を変更して `console` メソッドの呼び出しを含めることができます。
 
 ### <a name="sampling"></a>サンプリング
 
@@ -334,7 +334,7 @@ server.on("listening", () => {
 
 ### <a name="preprocess-data-with-telemetry-processors"></a>テレメトリ プロセッサを使用したデータの前処理
 
-*テレメトリ プロセッサ*を使用して、収集されたデータを保持のために送信する前に、データ処理とフィルター処理を行うことができます。 テレメトリ プロセッサは、テレメトリ項目がクラウドに送信される前に、追加された順序で、1 つずつ呼び出されます。
+*テレメトリ プロセッサ* を使用して、収集されたデータを保持のために送信する前に、データ処理とフィルター処理を行うことができます。 テレメトリ プロセッサは、テレメトリ項目がクラウドに送信される前に、追加された順序で、1 つずつ呼び出されます。
 
 ```javascript
 public addTelemetryProcessor(telemetryProcessor: (envelope: Contracts.Envelope, context: { http.RequestOptions, http.ClientRequest, http.ClientResponse, correlationContext }) => boolean)

@@ -3,12 +3,12 @@ title: Azure Service Bus のよく寄せられる質問 (FAQ) | Microsoft Docs
 description: この記事では、Azure Service Bus に関連する、よく寄せられる質問 (FAQ) の一部の回答を示します。
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: 38745d1cc2b1961da10a0c9e9f2c90c3b7dc48a7
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: acd741101928f5a2dfd72eab1598af6e4556a3d1
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899526"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96022143"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus - よく寄せられる質問 (FAQ)
 
@@ -26,7 +26,7 @@ ms.locfileid: "92899526"
 [Service Bus キュー](service-bus-queues-topics-subscriptions.md)は、メッセージが格納されるエンティティです。 キューは、複数のアプリケーションがある場合や、互いにやり取りする必要がある分散アプリケーションの複数の部分がある場合に便利です。 キューは、複数の製品 (メッセージ) の受け取り (受信) と発送 (送信) が行われる点で、集配送センターに似ています。
 
 ### <a name="what-are-azure-service-bus-topics-and-subscriptions"></a>Service Bus トピックおよびサブスクリプションとは何ですか。
-トピックは、キューとして視覚化できます。複数のサブスクリプションを使用している場合、トピックはより多機能なメッセージング モデルになります (基本的には一対多通信ツール)。 この発行/サブスクライブ モデル (または *pub/sub* ) により、複数のサブスクリプションを持つトピックにメッセージを送信するアプリケーションで、そのメッセージが複数のアプリケーションによって受信されるように設定できます。
+トピックは、キューとして視覚化できます。複数のサブスクリプションを使用している場合、トピックはより多機能なメッセージング モデルになります (基本的には一対多通信ツール)。 この発行/サブスクライブ モデル (または *pub/sub*) により、複数のサブスクリプションを持つトピックにメッセージを送信するアプリケーションで、そのメッセージが複数のアプリケーションによって受信されるように設定できます。
 
 ### <a name="what-is-a-partitioned-entity"></a>パーティション分割されたエンティティとは何ですか。
 従来のキューまたはトピックは、単一のメッセージ ブローカーで処理されて 1 つのメッセージング ストアに格納されます。 Basic および Standard のメッセージング プランのみでサポートされている[パーティション分割されたキューまたはトピック](service-bus-partitioning.md)は、複数のメッセージ ブローカーによって処理され、複数のメッセージング ストアに格納されます。 この機能により、パーティション分割されたキューまたはトピックの全体のスループットは、単一のメッセージ ブローカーまたはメッセージング ストアのパフォーマンスによって制限されなくなりました。 また、1 つのメッセージング ストアが一時的に停止しても、パーティション分割されたキューまたはトピックは使用することができます。
@@ -53,14 +53,9 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
 
 通常、HTTPS ポートは、ポート 5671 で AMQP が使用されている場合に送信通信にも必要です。これは、クライアント SDK によって実行されるいくつかの管理操作と Azure Active Directory からのトークンの取得 (使用する場合) が HTTPS 経由で実行されるためです。 
 
-公式の Azure SDK では、通常、Service Bus に対するメッセージの送受信で AMQP プロトコルが使用されます。 WebSocket 経由の AMQP プロトコル オプションは、HTTP API と同様に、ポート TCP 443 で実行されますが、それ以外については通常の AMQP と機能的に同じです。 このオプションでは、HTTPS ポートを共有するためのトレードオフとして、追加のハンドシェイクのラウンドトリップが発生し、若干のオーバーヘッドが生じるため、初期接続の待機時間が長くなります。 このモードが選択されている場合は、通信のためには TCP ポート 443 で十分です。 次のオプションでは、通常の AMQP または AMQP WebSocket モードを選択できます。
+公式の Azure SDK では、通常、Service Bus に対するメッセージの送受信で AMQP プロトコルが使用されます。 
 
-| 言語 | オプション   |
-| -------- | ----- |
-| .NET     | [ServiceBusConnection.TransportType](/dotnet/api/microsoft.azure.servicebus.servicebusconnection.transporttype?view=azure-dotnet) プロパティが [TransportType.Amqp](/dotnet/api/microsoft.azure.servicebus.transporttype?view=azure-dotnet) または [TransportType.AmqpWebSockets](/dotnet/api/microsoft.azure.servicebus.transporttype?view=azure-dotnet) |
-| Java     | [com.microsoft.azure.servicebus.ClientSettings](/java/api/com.microsoft.azure.servicebus.clientsettings.clientsettings?view=azure-java-stable) が [com.microsoft.azure.servicebus.primitives.TransportType.AMQP](/java/api/com.microsoft.azure.servicebus.primitives.transporttype?view=azure-java-stable) または [com.microsoft.azure.servicebus.primitives.TransportType.AMQP_WEB_SOCKETS](/java/api/com.microsoft.azure.servicebus.primitives.transporttype?view=azure-java-stable) |
-| Node  | [ServiceBusClientOptions](/javascript/api/@azure/service-bus/servicebusclientoptions?view=azure-node-latest) には `webSocket` コンストラクター引数があります。 |
-| Python | [ServiceBusClient.transport_type](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-servicebus/latest/azure.servicebus.html#azure.servicebus.ServiceBusClient) が [TransportType.Amqp](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-servicebus/latest/azure.servicebus.html#azure.servicebus.TransportType) または [TransportType.AmqpOverWebSocket](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-servicebus/latest/azure.servicebus.html#azure.servicebus.TransportType) |
+[!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
 
 .NET Framework の以前の WindowsAzure.ServiceBus パッケージには、従来の "Service Bus Messaging Protocol" (SBMP) を使用するオプションがあります。これは "NetMessaging" とも呼ばれます。 このプロトコルでは、TCP ポート 9350 から 9354 が使用されます。 このパッケージの既定のモードでは、これらのポートが通信に使用できるかどうかが自動的に検出されます。そうでない場合は、ポート 443 経由での TLS を使用した WebSocket に切り替えられます。 この設定をオーバーライドきして、このモードを強制するには、[`ServiceBusEnvironment.SystemConnectivity`](/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity?view=azure-dotnet) 設定に `Https` [CConnectivityMode](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) を設定します。これは、アプリケーションにグローバルに適用されます。
 
@@ -96,7 +91,7 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
 ### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>名前空間との間でメッセージを送受信するクライアントの IP アドレスはどこで確認できますか。 
 名前空間との間でメッセージを送受信しているクライアントの IP アドレスはログに記録されません。 すべての既存クライアントの認証が失敗するようにキーを再生成し、Azure ロールベースのアクセス制御 ([Azure RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)) の設定を確認して、許可されているユーザーまたはアプリケーションのみが名前空間にアクセスできることを確認します。 
 
-**Premium** 名前空間を使用している場合は、名前空間へのアクセスを制限するには、 [IP フィルタリング](service-bus-ip-filtering.md)、 [仮想ネットワーク サービス エンドポイント](service-bus-service-endpoints.md)、 [プライベート エンドポイント](private-link-service.md)を使用します。 
+**Premium** 名前空間を使用している場合は、名前空間へのアクセスを制限するには、[IP フィルタリング](service-bus-ip-filtering.md)、[仮想ネットワーク サービス エンドポイント](service-bus-service-endpoints.md)、[プライベート エンドポイント](private-link-service.md)を使用します。 
 
 ## <a name="best-practices"></a>ベスト プラクティス
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Azure Service Bus のベスト プラクティスを教えてください。

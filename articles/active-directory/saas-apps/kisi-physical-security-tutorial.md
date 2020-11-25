@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.openlocfilehash: a65d3f24fdcc684d5a47c19497d36b091764406b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459018"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020774"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kisi-physical-security"></a>チュートリアル:Azure Active Directory のシングル サインオン (SSO) と Kisi Physical Security の統合
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Kisi Physical Security では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Kisi Physical Security では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Kisi Physical Security では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Kisi Physical Security では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 * Kisi Physical Security を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
@@ -52,7 +52,7 @@ Kisi Physical Security の Azure AD への統合を構成するには、ギャ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Kisi Physical Security** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Kisi Physical Security**」と入力します。
 1. 結果のパネルから **[Kisi Physical Security]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -86,7 +86,7 @@ Kisi Physical Security に対する Azure AD SSO を構成してテストする�
     b. **[応答 URL]** ボックスに、`https://api.kisi.io/saml/consume/<DOMAIN>` のパターンを使用して URL を入力します
 
     > [!NOTE] 
-    > `DOMAIN` は、Kisi によって組織に割り当てられる小文字の英数字識別子であり、組織の DNS ドメイン名と同じものでは **ありません** 。*
+    > `DOMAIN` は、Kisi によって組織に割り当てられる小文字の英数字識別子であり、組織の DNS ドメイン名と同じものでは **ありません**。*
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -143,7 +143,7 @@ Kisi Physical Security に対する Azure AD SSO を構成してテストする�
 
 ## <a name="configure-kisi-physical-security-sso"></a>Kisi Physical Security の SSO の構成
 
-**Kisi Physical Security** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Kisi Physical Security サポート チーム](mailto:support@getkisi.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Kisi Physical Security** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Kisi Physical Security サポート チーム](mailto:support@getkisi.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-kisi-physical-security-test-user"></a>Kisi Physical Security のテスト ユーザーの作成
 

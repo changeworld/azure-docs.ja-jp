@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 8b74e23147e4dcc6f786c1c08b8a03bd07dd0b9a
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: b5f2a86fb7c776436ea707ef293a66c033014c33
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91744034"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021080"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Azure Automation Runbook を使用して StorSimple デバイスを管理する
 
@@ -177,8 +177,8 @@ StorSimple 8000 シリーズ デバイス管理用のオートメーション �
 
 2. **[Automation アカウントの追加]** ブレードで、次の操作を実行します。
 
-   1. Automation アカウントの**名前**を指定します。
-   2. StorSimple デバイス マネージャー サービスにリンクされている**サブスクリプション**を選択します。
+   1. Automation アカウントの **名前** を指定します。
+   2. StorSimple デバイス マネージャー サービスにリンクされている **サブスクリプション** を選択します。
    3. 新しいリソース グループを作成するか、既存のリソース グループを選択します。
    4. **場所** (可能な場合は、サービスが実行されている場所と同じ場所) を選択します。
    5. **[Create Run As account]\(実行アカウントの作成\)** オプションは既定値の選択状態のままにします。
@@ -186,9 +186,9 @@ StorSimple 8000 シリーズ デバイス管理用のオートメーション �
 
        ![[Automation アカウント] ウィンドウのスクリーンショット。[サブスクリプション]、[Create Run As account]\(実行アカウントの作成\)、[作成] 2 に値が入力されます。](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
-      Automation アカウントが正常に作成されると、その旨が通知されます。 Automation アカウントの作成方法の詳細については、[実行アカウントの作成](https://docs.microsoft.com/azure/automation/automation-create-runas-account)に関するページを参照してください。
+      Automation アカウントが正常に作成されると、その旨が通知されます。 Automation アカウントの作成方法の詳細については、[実行アカウントの作成](../automation/manage-runas-account.md)に関するページを参照してください。
 
-3. 作成した Automation アカウントで StorSimple デバイス マネージャー サービスにアクセスできるようにするには、適切な権限を Automation アカウントに割り当てる必要があります。 StorSimple デバイス マネージャー サービスの **[アクセス制御]** に移動します。 **[+ 追加]** をクリックし、Azure Automation アカウントの名前を入力します。 設定を**保存**します。
+3. 作成した Automation アカウントで StorSimple デバイス マネージャー サービスにアクセスできるようにするには、適切な権限を Automation アカウントに割り当てる必要があります。 StorSimple デバイス マネージャー サービスの **[アクセス制御]** に移動します。 **[+ 追加]** をクリックし、Azure Automation アカウントの名前を入力します。 設定を **保存** します。
 
     ![add-permissions-automation-account](./media/storsimple-8000-automation-azurerm-runbook/goto-add-roles.png)
 
@@ -206,7 +206,7 @@ StorSimple 8000 シリーズ デバイス管理用のオートメーション �
 
     ![click-new-runbook](./media/storsimple-8000-automation-azurerm-runbook/verify-runbook-created.png)
 
-8. Runbook を編集し、 **[テスト ウィンドウ]** をクリックします。 StorSimple デバイス マネージャー サービスの名前、StorSimple デバイスの名前、サブスクリプションなどのパラメーターを入力します。 テストを**開始**します。 実行が完了すると、レポートが生成されます。 詳細については、[Runbook のテスト方法](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook)に関するセクションを参照してください。
+8. Runbook を編集し、 **[テスト ウィンドウ]** をクリックします。 StorSimple デバイス マネージャー サービスの名前、StorSimple デバイスの名前、サブスクリプションなどのパラメーターを入力します。 テストを **開始** します。 実行が完了すると、レポートが生成されます。 詳細については、[Runbook のテスト方法](../automation/learn/automation-tutorial-runbook-textual-powershell.md#step-3---test-the-runbook)に関するセクションを参照してください。
 
     ![[テスト] ウィンドウのスクリーンショット。パラメーター値を入力し、テストを開始できます](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
 

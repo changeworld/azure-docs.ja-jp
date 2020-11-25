@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/13/2019
 ms.openlocfilehash: 6abdb3cc6981a4fbdd52b88a75457c37709597f5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534330"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020791"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>HDInsight Spark クラスターを使用して Data Lake Storage Gen1 内のデータを分析する
 
@@ -58,7 +58,7 @@ Data Lake Storage を追加ストレージとして使用し、Azure Storage Blo
     Copy Completed. 1 file copied.
     ```
 
-    データ ファイル ( **HVAC.csv** ) が、Data Lake Storage アカウントの **/hvac** フォルダーにコピーされます。
+    データ ファイル (**HVAC.csv**) が、Data Lake Storage アカウントの **/hvac** フォルダーにコピーされます。
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>Data Lake Storage Gen1 で HDInsight Spark クラスターを使用する
 
@@ -105,7 +105,7 @@ Data Lake Storage を追加ストレージとして使用し、Azure Storage Blo
         adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
         ```
 
-     空のセルに次のコード例を貼り付けて、 **MYDATALAKESTORE** を Data Lake Storage アカウント名に置き換え、 **Shift + Enter** キーを押します。 このコード サンプルは、 **hvac** という一時テーブルにデータを登録します。
+     空のセルに次のコード例を貼り付けて、**MYDATALAKESTORE** を Data Lake Storage アカウント名に置き換え、**Shift + Enter** キーを押します。 このコード サンプルは、 **hvac** という一時テーブルにデータを登録します。
 
       ```scala
       # Load the data. The path below assumes Data Lake Storage is   default storage for the Spark cluster

@@ -11,11 +11,11 @@ ms.date: 09/24/2018
 ms.author: vikancha
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2dccfebed26c8064db697413e7417ae08d69a3ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86998980"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022041"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Windows を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする 
 

@@ -4,11 +4,11 @@ description: この記事では、Azure VM 上で実行されている SQL Serve
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: b0df22002521c8148cac1200e79aeb0ae5a60546
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146523"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021505"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>バックアップされる SQL Server データベースを管理および監視する
 
@@ -126,11 +126,11 @@ SQL Database の保護を再開するには:
 
   ![バックアップ ポリシーの変更](./media/backup-azure-sql-database/modify-backup-policy-impact.png)
 
-ポリシーの変更は、関連付けられているすべてのバックアップ項目に影響し、対応する**保護の構成**ジョブをトリガーします。
+ポリシーの変更は、関連付けられているすべてのバックアップ項目に影響し、対応する **保護の構成** ジョブをトリガーします。
 
 ### <a name="inconsistent-policy"></a>不整合なポリシー
 
-場合によっては、ポリシーの変更操作によって、一部のバックアップ項目に**不整合な**ポリシーのバージョンができてしまうことがあります。 これは、ポリシーの変更操作がトリガーされた後に、対応する**保護の構成**ジョブがバックアップ項目に対して失敗した場合に発生します。 バックアップ項目のビューには、次のように表示されます。
+場合によっては、ポリシーの変更操作によって、一部のバックアップ項目に **不整合な** ポリシーのバージョンができてしまうことがあります。 これは、ポリシーの変更操作がトリガーされた後に、対応する **保護の構成** ジョブがバックアップ項目に対して失敗した場合に発生します。 バックアップ項目のビューには、次のように表示されます。
 
   ![不整合なポリシー](./media/backup-azure-sql-database/inconsistent-policy.png)
 
@@ -158,7 +158,7 @@ SQL Database の保護を再開するには:
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>SQL Server VM で拡張を再登録する
 
-VM のワークロード拡張機能が何らかの理由で影響を受けることがあります。 そのような場合、VM 上でトリガーされるすべての操作が失敗するようになります。 そこで、場合によっては、VM で拡張を再登録する必要があります。 **再登録**操作によって、操作を続行させるために、VM にワークロード バックアップ拡張機能が再インストールされます。 このオプションは、Recovery Services コンテナーの **[バックアップ インフラストラクチャ]** にあります。
+VM のワークロード拡張機能が何らかの理由で影響を受けることがあります。 そのような場合、VM 上でトリガーされるすべての操作が失敗するようになります。 そこで、場合によっては、VM で拡張を再登録する必要があります。 **再登録** 操作によって、操作を続行させるために、VM にワークロード バックアップ拡張機能が再インストールされます。 このオプションは、Recovery Services コンテナーの **[バックアップ インフラストラクチャ]** にあります。
 
 ![バックアップ インフラストラクチャで保護されたサーバー](./media/backup-azure-sql-database/protected-servers-backup-infrastructure.png)
 

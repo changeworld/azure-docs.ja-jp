@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
-ms.openlocfilehash: 64f91263154f7e65238acdcef9d97e5f2d09aad5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9c7a2df83e9d630ce2b4635a830fb941180c758
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006026"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021838"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション
 
@@ -48,7 +48,7 @@ StorSimple では、 [ストレージ階層化](#automatic-storage-tiering) を�
 | データのモビリティ |Microsoft Azure クラウド サービスにアップロードしたデータに他のサイトからアクセスし、復旧や移行の用途に利用することができます。 また、Microsoft Azure で実行されている仮想マシン (VM) に対して、StorSimple を使用して StorSimple Cloud Appliance を構成することができます。 この VM は、仮想デバイスを使用して、保存されているデータにアクセスし、テスト目的や復旧に利用することができます。 |
 | ビジネス継続性 |StorSimple 5000 ～ 7000 シリーズのユーザーは、データを StorSimple 8000 シリーズのデバイスに移行できます。 |
 | Azure Government ポータルで入手可能 |StorSimple は、Azure Government ポータルから入手できます。 詳細については、「 [Government Portal でのオンプレミスの StorSimple デバイスのデプロイ](storsimple-8000-deployment-walkthrough-gov-u2.md)」を参照してください。 |
-| データの保護と可用性 |StorSimple 8000 シリーズでは、ローカル冗長ストレージ (LRS) と geo 冗長ストレージ (GRS) に加えて、ゾーン冗長ストレージ (ZRS) もサポートします。 ZRS の詳細については、 [Azure Storage の冗長オプションに関する記事](https://azure.microsoft.com/documentation/articles/storage-redundancy/) を参照してください。 |
+| データの保護と可用性 |StorSimple 8000 シリーズでは、ローカル冗長ストレージ (LRS) と geo 冗長ストレージ (GRS) に加えて、ゾーン冗長ストレージ (ZRS) もサポートします。 ZRS の詳細については、 [Azure Storage の冗長オプションに関する記事](../storage/common/storage-redundancy.md) を参照してください。 |
 | クリティカル アプリケーションのサポート |StorSimple を使用してローカル固定ボリュームに適したボリュームを識別し、クリティカル アプリケーションで必要なデータがクラウドに階層化されないようにすることができます。 ローカル固定ボリュームは、クラウドの待機時間や接続の問題によって影響を受けることはありません。 ローカル固定ボリュームの詳細については、「[StorSimple Device Manager サービスを使用してボリュームを管理する](storsimple-8000-manage-volumes-u2.md)」をご覧ください。 |
 | 短い待機時間と高いパフォーマンス |Azure Premium Storage の高いパフォーマンスと短い待機時間の特徴を活用するクラウド アプライアンスを作成できます。 StorSimple Premium クラウド アプライアンスの詳細については、[Azure での StorSimple Cloud Appliance のデプロイと管理](storsimple-8000-cloud-appliance-u2.md)に関する記事を参照してください。 |
 
@@ -315,4 +315,3 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 
 ## <a name="next-steps"></a>次のステップ
 [StorSimple のセキュリティ](storsimple-8000-security.md)の詳細を確認します。
-

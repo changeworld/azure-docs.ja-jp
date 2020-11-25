@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 30c0a02c2cbc11002f8e0bf0295dab91de5d0365
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323680"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020587"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Hive クエリを使用して Hadoop クラスターのデータの特徴を作成する
 このドキュメントでは、Hive クエリを使用して、Azure HDInsight Hadoop クラスターに格納されているデータの特徴を作成する方法について説明します。 これらの Hive クエリでは、埋め込みの Hive のユーザー定義関数 (UDF) を使用します。また、そのスクリプトも用意されています。
@@ -124,7 +124,7 @@ from <databasename>.<tablename>;
 ### <a name="calculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>GPS 座標のセット間の距離の計算
 このセクションで指定されたクエリは、NYC タクシー乗車データに直接適用できます。 このクエリの目的は、特徴を生成する Hive の組み込みの数学関数を適用する方法を示すことです。
 
-このクエリで使用されているフィールドは、 *pickup\_longitude* 、 *pickup\_latitude* 、 *dropoff\_longitude* 、 *dropoff\_latitude* という名前の乗車 (pickup) と降車 (dropoff) の位置を示す GPS 座標です。 pickup 座標と dropoff 座標間の直線距離を計算するクエリは次のとおりです。
+このクエリで使用されているフィールドは、*pickup\_longitude*、*pickup\_latitude*、*dropoff\_longitude*、*dropoff\_latitude* という名前の乗車 (pickup) と降車 (dropoff) の位置を示す GPS 座標です。 pickup 座標と dropoff 座標間の直線距離を計算するクエリは次のとおりです。
 
 ```hiveql
 set R=3959;
@@ -148,12 +148,12 @@ limit 10;
 
 ![ワークスペースの作成](./media/create-features-hive/atan2new.png)
 
-Hive の組み込み UDF のリストは、 <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive Wiki</a> の **組み込み関数** のセクションにあります。  
+Hive の組み込み UDF のリストは、<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive Wiki</a> の **組み込み関数** のセクションにあります。  
 
 ## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a> 高度なトピック:Hive パラメーターを調整してクエリ速度を向上させる
 Hive クラスターの既定のパラメーター設定は、Hive クエリおよびクエリが処理するデータに適していないことがあります。 このセクションでは、Hive クエリのパフォーマンスを向上させるためにユーザーが調整できるパラメーターのいくつかについて説明します。 ユーザーは、データ処理のクエリの前に、パラメーター調整クエリを追加する必要があります。
 
-1. **Java ヒープ スペース** :大規模なデータセットの結合または長いレコードの処理を伴うクエリの場合、一般的なエラーの 1 つに、 **ヒープ領域の不足** があります。 このエラーを回避するには、パラメーター *mapreduce.map.java.opts* と *mapreduce.task.io.sort.mb* を必要な値に設定します。 たとえば次のようになります。
+1. **Java ヒープ スペース**:大規模なデータセットの結合または長いレコードの処理を伴うクエリの場合、一般的なエラーの 1 つに、**ヒープ領域の不足** があります。 このエラーを回避するには、パラメーター *mapreduce.map.java.opts* と *mapreduce.task.io.sort.mb* を必要な値に設定します。 たとえば次のようになります。
    
     ```hiveql
     set mapreduce.map.java.opts=-Xmx4096m;
@@ -162,20 +162,20 @@ Hive クラスターの既定のパラメーター設定は、Hive クエリお�
 
     このパラメーターでは、Java ヒープ スペースに 4 GB のメモリが割り当てられ、より多くのメモリを割り当てることで並べ替えも効率化しています。 ヒープ スペース関連のジョブ失敗のエラーが発生する場合、これらの割り当てを試してみるとよいでしょう。
 
-1. **DFS ブロック サイズ** :このパラメーターでは、ファイル システムに保存されるデータの最小単位を設定します。 たとえば、DFS ブロック サイズが 128 MB の場合、サイズが 128 MB 以下のデータは 1 つのブロックに保存されます。 128 MB を超えるデータには、追加のブロックが割り当てられます。 
+1. **DFS ブロック サイズ**:このパラメーターでは、ファイル システムに保存されるデータの最小単位を設定します。 たとえば、DFS ブロック サイズが 128 MB の場合、サイズが 128 MB 以下のデータは 1 つのブロックに保存されます。 128 MB を超えるデータには、追加のブロックが割り当てられます。 
 2. 小さいブロック サイズを選ぶと、Hadoop に大きいオーバーヘッドが生じます。これは、名前ノードがファイルの関連ブロックを検索するために、さらに多くの要求を処理する必要があるためです。 ギガバイト (またはそれ以上) のデータを処理する場合に推奨される設定は、次のとおりです。
 
     ```hiveql
     set dfs.block.size=128m;
     ```
 
-2. **Hive で結合操作を最適化する** :マップ/縮小フレームワークでの結合操作は通常縮小フェーズで発生しますが、マップ フェーズ ("mapjoins" と呼ばれることもあります) で結合をスケジュールすることで大幅な向上を実現できる場合があります。 このオプションを次のように設定します。
+2. **Hive で結合操作を最適化する**:マップ/縮小フレームワークでの結合操作は通常縮小フェーズで発生しますが、マップ フェーズ ("mapjoins" と呼ばれることもあります) で結合をスケジュールすることで大幅な向上を実現できる場合があります。 このオプションを次のように設定します。
    
     ```hiveql
     set hive.auto.convert.join=true;
     ```
 
-3. **Hive にマッパーの数を指定する** :Hadoop ではユーザーがレジューサの数を設定できますが、マッパーの数をユーザーが設定することは、通常はできません。 Hadoop 変数 ( *mapred.min.split.size* と *mapred.max.split.size* ) を選択すると、この数をある程度制御できます。これは、各マップ タスクのサイズが次の式によって決定されるためです。
+3. **Hive にマッパーの数を指定する**:Hadoop ではユーザーがレジューサの数を設定できますが、マッパーの数をユーザーが設定することは、通常はできません。 Hadoop 変数 (*mapred.min.split.size* と *mapred.max.split.size*) を選択すると、この数をある程度制御できます。これは、各マップ タスクのサイズが次の式によって決定されるためです。
    
     ```hiveql
     num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))

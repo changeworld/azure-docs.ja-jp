@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
 ms.openlocfilehash: bcebc568db4a0d2b4b287045ba0a67c88d9b8c92
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312678"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020604"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Team Data Science Process と Azure DevOps Services を使用した Azure でのデータ サイエンス コードのテスト
 この記事では、データ サイエンス ワークフローでコードをテストするうえでの予備的ガイドラインについて取り上げます。 このようなテストにより、データ サイエンティストは、秩序立った効率的な方法で、自分のコードの品質と期待される成果をチェックすることができます。 ここでは、[UCI 成人収入データセットを使用した Team Data Science Process (TDSP) プロジェクト](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)を用います。以前、コード テストの実行方法を紹介する際に発行したものです。 
@@ -89,7 +89,7 @@ ms.locfileid: "93312678"
 
       ![予測値を確認するためのコード](./media/code-test/check_prediction_values.PNG)
 
-1. すべてのテスト関数を、 **test_funcs.py** という Python スクリプトにまとめます。
+1. すべてのテスト関数を、**test_funcs.py** という Python スクリプトにまとめます。
 
     ![テスト関数の Python スクリプト](./media/code-test/create_file_test_func.PNG)
 
@@ -134,7 +134,7 @@ ms.locfileid: "93312678"
 
     f. PowerShell の詳細で、必要な情報を入力します (PowerShell の名前やバージョンなど)。 種類には **[インライン スクリプト]** を選択してください。 
     
-    **[インライン スクリプト]** の下のボックスに、「 **python test1.py** 」と入力することができます。 Python の環境変数が正しく設定されていることを確認します。 別のバージョンまたは別のカーネルの Python が必要な場合は、そのパスを明示的に指定できます (下図参照)。 
+    **[インライン スクリプト]** の下のボックスに、「**python test1.py**」と入力することができます。 Python の環境変数が正しく設定されていることを確認します。 別のバージョンまたは別のカーネルの Python が必要な場合は、そのパスを明示的に指定できます (下図参照)。 
     
     ![PowerShell の詳細](./media/code-test/powershell_scripts.PNG)
 

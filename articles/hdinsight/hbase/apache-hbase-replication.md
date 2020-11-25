@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.openlocfilehash: 8fc5ba2280b5ad68a40f4992adc170408e80e5a6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540365"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021794"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で Apache HBase クラスターのレプリケーションを設定する
 
@@ -105,9 +105,9 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 Bind をインストールするには、2 つの DNS 仮想マシンのパブリック IP アドレスを見つける必要があります。
 
 1. [Azure Portal](https://portal.azure.com)を開きます。
-2. **[リソース グループ] > <リソース グループ名> [vnet1DNS]** を選択して、DNS 仮想マシンを開きます。  リソース グループ名は、最後の手順で作成する名前です。 既定の DNS 仮想マシン名は、 *vnet1DNS* と *vnet2NDS* です。
+2. **[リソース グループ] > <リソース グループ名> [vnet1DNS]** を選択して、DNS 仮想マシンを開きます。  リソース グループ名は、最後の手順で作成する名前です。 既定の DNS 仮想マシン名は、*vnet1DNS* と *vnet2NDS* です。
 3. **[プロパティ]** を選択して、仮想ネットワークのプロパティ ページを開きます。
-4. **[パブリック IP アドレス]** を書き留めます。さらに、 **[プライベート IP アドレス]** を確認します。  プライベート IP アドレスは、vnet1DNS では **10.1.0.4** 、vnet2DNS では **10.2.0.4** です。  
+4. **[パブリック IP アドレス]** を書き留めます。さらに、 **[プライベート IP アドレス]** を確認します。  プライベート IP アドレスは、vnet1DNS では **10.1.0.4**、vnet2DNS では **10.2.0.4** です。  
 5. 既定の (Azure で提供されている) DNS サーバーを使用して受信および送信アクセスでパッケージをダウンロードして Bind をインストールできるように、次の手順で両方の仮想ネットワークの DNS サーバーを変更します。
 
 Bind をインストールするには、次の手順に従います。
@@ -170,7 +170,7 @@ Bind をインストールするには、次の手順に従います。
     sudo nano /etc/bind/named.conf.options
     ```
 
-    ファイルを保存するには、 __Ctrl + X__ キー、 __Y__ キー、 __Enter__ キーの順に押します。
+    ファイルを保存するには、__Ctrl + X__ キー、__Y__ キー、__Enter__ キーの順に押します。
 
 4. SSH セッションでは、次のコマンドを使用します。
 
@@ -207,7 +207,7 @@ Bind をインストールするには、次の手順に従います。
     sudo nano /etc/bind/named.conf.local
     ```
 
-    ファイルを保存するには、 __Ctrl + X__ キー、 __Y__ キー、 __Enter__ キーの順に押します。
+    ファイルを保存するには、__Ctrl + X__ キー、__Y__ キー、__Enter__ キーの順に押します。
 
 6. Bind を起動するには、次のコマンドを使用します。
 
@@ -261,13 +261,13 @@ sudo service bind9 status
 
 2 つの仮想ネットワークのそれぞれに、次の構成の [Apache HBase](https://hbase.apache.org/) クラスターを作成します。
 
-- **リソース グループ名** : 仮想ネットワークの作成時と同じリソース グループ名を使用します。
-- **クラスターの種類** : HBase
-- **バージョン** : HBase 1.1.2 (HDI 3.6)
-- **場所** : 仮想ネットワークと同じ場所を使用します。  既定では、vnet1 は *[米国西部]* 、vnet2 は *[米国東部]* です。
-- **ストレージ** : クラスター用の新しいストレージ アカウントを作成します。
-- **仮想ネットワーク** (ポータルの [詳細設定]): 最後の手順で作成した vnet1 を選択します。
-- **サブネット** : テンプレートで使われる既定の名前は **subnet1** です。
+- **リソース グループ名**: 仮想ネットワークの作成時と同じリソース グループ名を使用します。
+- **クラスターの種類**: HBase
+- **バージョン**: HBase 1.1.2 (HDI 3.6)
+- **場所**: 仮想ネットワークと同じ場所を使用します。  既定では、vnet1 は *[米国西部]* 、vnet2 は *[米国東部]* です。
+- **ストレージ**: クラスター用の新しいストレージ アカウントを作成します。
+- **仮想ネットワーク**(ポータルの [詳細設定]): 最後の手順で作成した vnet1 を選択します。
+- **サブネット**: テンプレートで使われる既定の名前は **subnet1** です。
 
 環境が正しく構成されていることを確認するには、2 つのクラスター間でヘッド ノードの FQDN に ping できる必要があります。
 
@@ -275,7 +275,7 @@ sudo service bind9 status
 
 クラスターをレプリケートする場合は、レプリケートするテーブルを指定する必要があります。 このセクションでは、ソース クラスターにデータを読み込みます。 次のセクションで、2 つのクラスター間のレプリケーションを有効にします。
 
-**Contacts** テーブルを作成し、そのテーブルにいくつかデータを挿入するには、 [HDInsight の Apache HBase を使用する方法に関する Apache HBase チュートリアル](apache-hbase-tutorial-get-started-linux.md)の指示に従います。
+**Contacts** テーブルを作成し、そのテーブルにいくつかデータを挿入するには、[HDInsight の Apache HBase を使用する方法に関する Apache HBase チュートリアル](apache-hbase-tutorial-get-started-linux.md)の指示に従います。
 
 > [!NOTE]
 > カスタム名前空間からテーブルをレプリケートする場合は、宛先クラスターでも適切なカスタム名前空間が定義されていることを確認する必要があります。
@@ -293,10 +293,10 @@ sudo service bind9 status
 4. ページの上部にある **[新規で送信]** を選択します。
 5. 次の情報を選択するか入力します。
 
-   1. **名前** : 「 **Enable replication** 」と入力します。
-   2. **バッシュ スクリプト URI** : 「 **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** 」と入力します。
-   3. **ヘッド** : これが選択されていることを確認します。 他のノード タイプをオフにします。
-   4. **パラメーター** : 次のサンプル パラメーターは、すべての既存のテーブルに対するレプリケーションを有効にし、ソース クラスターからデスティネーション クラスターにすべてのデータをコピーします。
+   1. **名前**: 「**Enable replication**」と入力します。
+   2. **バッシュ スクリプト URI**: 「 **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** 」と入力します。
+   3. **ヘッド**: これが選択されていることを確認します。 他のノード タイプをオフにします。
+   4. **パラメーター**: 次のサンプル パラメーターは、すべての既存のテーブルに対するレプリケーションを有効にし、ソース クラスターからデスティネーション クラスターにすべてのデータをコピーします。
 
     `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata`
     
@@ -336,19 +336,19 @@ sudo service bind9 status
 
 いくつかの一般的な使用例とそのパラメーターの設定を次に示します。
 
-- **2 つのクラスター間ですべてのテーブルのレプリケーションを有効にする** 。 このシナリオでは、テーブルの既存のデータのコピー/移行は不要であり、Phoenix テーブルは使用しません。 次のパラメーターを使用します。
+- **2 つのクラスター間ですべてのテーブルのレプリケーションを有効にする**。 このシナリオでは、テーブルの既存のデータのコピー/移行は不要であり、Phoenix テーブルは使用しません。 次のパラメーターを使用します。
 
   `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>`
 
-- **特定のテーブルのレプリケーションを有効にする** 。 table1、table2、および table3 のレプリケーションを有効にするには、次のパラメーターを使用します。
+- **特定のテーブルのレプリケーションを有効にする**。 table1、table2、および table3 のレプリケーションを有効にするには、次のパラメーターを使用します。
 
   `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"`
 
-- **特定のテーブルのレプリケーションを有効にし、既存のデータをコピーする** 。 table1、table2、および table3 のレプリケーションを有効にするには、次のパラメーターを使用します。
+- **特定のテーブルのレプリケーションを有効にし、既存のデータをコピーする**。 table1、table2、および table3 のレプリケーションを有効にするには、次のパラメーターを使用します。
 
   `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata`
 
-- **ソースからデスティネーションに Phoenix メタデータをレプリケートして、すべてのテーブルのレプリケーションを有効にする** 。 Phoenix メタデータのレプリケーションは完璧ではありません。 慎重に使用してください。 次のパラメーターを使用します。
+- **ソースからデスティネーションに Phoenix メタデータをレプリケートして、すべてのテーブルのレプリケーションを有効にする**。 Phoenix メタデータのレプリケーションは完璧ではありません。 慎重に使用してください。 次のパラメーターを使用します。
 
   `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta`
 
@@ -368,7 +368,7 @@ sudo service bind9 status
 
 ### <a name="scenarios"></a>シナリオ
 
-- **特定のテーブル (test1、test2、および test3) の現在のタイムスタンプまでに編集されたすべての行をコピーする** :
+- **特定のテーブル (test1、test2、および test3) の現在のタイムスタンプまでに編集されたすべての行をコピーする**:
 
   `-m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow`
 
@@ -376,7 +376,7 @@ sudo service bind9 status
 
   `-m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow`
 
-- **特定のテーブルの指定した時間範囲のデータをコピーする** :
+- **特定のテーブルの指定した時間範囲のデータをコピーする**:
 
   `-m hn1 -t "table1:0:452256397;table2:14141444:452256397" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure"`
 
@@ -390,7 +390,7 @@ sudo service bind9 status
 
 ### <a name="scenarios"></a>シナリオ
 
-- **すべてのテーブルのレプリケーションを無効にする** :
+- **すべてのテーブルのレプリケーションを無効にする**:
 
   `-m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all`
 
@@ -398,7 +398,7 @@ sudo service bind9 status
 
   `--src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>`
 
-- **指定したテーブル (table1、table2、および table3) のレプリケーションを無効にする** :
+- **指定したテーブル (table1、table2、および table3) のレプリケーションを無効にする**:
 
   `-m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"`
 

@@ -14,11 +14,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 15bce219b96268124729de2f475e33fc386348a8
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631735"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021216"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>チュートリアル:Data Factory を使用した Blob Storage から SQL Database へのデータのコピー
 > [!div class="op_single_selector"]
@@ -45,10 +45,10 @@ ms.locfileid: "92631735"
 ## <a name="prerequisites-for-the-tutorial"></a>このチュートリアルの前提条件
 このチュートリアルを開始する前に、以下の前提条件を満たしている必要があります。
 
-* **Azure サブスクリプション** 。  サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/) のページを参照してください。
-* **Azure ストレージ アカウント** 。 このチュートリアルでは、BLOB ストレージを **ソース** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」をご覧ください。
-* **Azure SQL データベース** 。 このチュートリアルでは、Azure SQL Database を **コピー先** データ ストアとして使用します。 このチュートリアルで使用できるデータベースが Azure SQL Database にない場合は、[Azure SQL Database でデータベースを作成および構成する方法](../../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してデータベースを作成してください。
-* **SQL Server 2012/2014 または Visual Studio 2013** 。 サンプル データベースを作成し、結果データをデータベースに表示するには、SQL Server Management Studio または Visual Studio を使用します。  
+* **Azure サブスクリプション**。  サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/) のページを参照してください。
+* **Azure ストレージ アカウント**。 このチュートリアルでは、BLOB ストレージを **ソース** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」をご覧ください。
+* **Azure SQL データベース**。 このチュートリアルでは、Azure SQL Database を **コピー先** データ ストアとして使用します。 このチュートリアルで使用できるデータベースが Azure SQL Database にない場合は、[Azure SQL Database でデータベースを作成および構成する方法](../../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してデータベースを作成してください。
+* **SQL Server 2012/2014 または Visual Studio 2013**。 サンプル データベースを作成し、結果データをデータベースに表示するには、SQL Server Management Studio または Visual Studio を使用します。  
 
 ## <a name="collect-blob-storage-account-name-and-key"></a>BLOB ストレージ アカウントの名前とキーを収集する
 このチュートリアルを実行するには、Azure ストレージ アカウントのアカウント名とアカウント キーが必要です。 Azure ストレージ アカウントの **アカウント名** と **アカウント キー** をメモしておきます。
@@ -66,7 +66,7 @@ ms.locfileid: "92631735"
 7. **[X]** をクリックしてすべてのブレードを閉じます。
 
 ## <a name="collect-sql-server-database-user-names"></a>SQL サーバー、データベース、ユーザーの名前を収集する
-このチュートリアルを実行するには、論理 SQL サーバー名、データベース名、ユーザー名が必要です。 Azure SQL Database の **サーバー** 、 **データベース** 、 **ユーザー** の名前をメモしておきます。
+このチュートリアルを実行するには、論理 SQL サーバー名、データベース名、ユーザー名が必要です。 Azure SQL Database の **サーバー**、**データベース**、**ユーザー** の名前をメモしておきます。
 
 1. **Azure Portal** で、左側にある **[すべてのサービス]** をクリックし、 **[SQL データベース]** を選択します。
 2. **[SQL データベース]** ブレードで、このチュートリアルで使用する **データベース** を選択します。 **データベース名** をメモしておきます。  
@@ -85,7 +85,7 @@ Data Factory サービスからサーバーにアクセスできるように、�
 ## <a name="prepare-blob-storage-and-sql-database"></a>Blob Storage と SQL Database を準備する
 ここからは、次の手順を実行して、チュートリアルで使用する Azure Blob Storage と Azure SQL Database を準備します。  
 
-1. メモ帳を起動します。 次のテキストを貼り付け、 **emp.txt** という名前でハード ドライブの **C:\ADFGetStarted** フォルダーに保存します。
+1. メモ帳を起動します。 次のテキストを貼り付け、**emp.txt** という名前でハード ドライブの **C:\ADFGetStarted** フォルダーに保存します。
 
     ```
     John, Doe
@@ -107,7 +107,7 @@ Data Factory サービスからサーバーにアクセスできるように、�
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-    **SQL Server 2012/2014 がコンピューターにインストールされている場合** は、「 [SQL Server Management Studio を使用した Azure SQL Database の管理](../../azure-sql/database/single-database-manage.md)」の手順に従い、サーバーに接続して SQL スクリプトを実行します。
+    **SQL Server 2012/2014 がコンピューターにインストールされている場合** は、「[SQL Server Management Studio を使用した Azure SQL Database の管理](../../azure-sql/database/single-database-manage.md)」の手順に従い、サーバーに接続して SQL スクリプトを実行します。
 
     クライアントから論理サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、サーバーのファイアウォールを構成する必要があります。 サーバーのファイアウォールを構成する手順については、[こちらの記事](../../azure-sql/database/firewall-configure.md)を参照してください。
 

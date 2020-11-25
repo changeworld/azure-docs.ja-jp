@@ -7,11 +7,11 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 5c8c545f01eb0df53ce9677b7db6f931b4d21af9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151888"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021930"
 ---
 # <a name="how-to-connect-to-data-sources"></a>データ ソースへの接続方法
 ## <a name="introduction"></a>はじめに
@@ -47,7 +47,7 @@ Azure Data Catalog ポータルでデータ ソースの "開く" メニュー�
 
  ![SQL Server テーブルの接続情報](./media/data-catalog-how-to-connect/data-catalog-how-to-connect3.png)
 
-接続情報の詳細はデータ ソースの種類によって異なりますが、ポータルに含まれる情報を確認すれば、任意のクライアント ツールでデータ ソースに接続するために必要なすべての情報が得られます。 ユーザーは、 **Azure Data Catalog**を使用して検出したデータ ソースの接続に関する詳細をコピーすることができるので、適切なツールでデータを操作することができるようになります。
+接続情報の詳細はデータ ソースの種類によって異なりますが、ポータルに含まれる情報を確認すれば、任意のクライアント ツールでデータ ソースに接続するために必要なすべての情報が得られます。 ユーザーは、 **Azure Data Catalog** を使用して検出したデータ ソースの接続に関する詳細をコピーすることができるので、適切なツールでデータを操作することができるようになります。
 
 ## <a name="connecting-and-data-source-permissions"></a>接続とデータ ソースのアクセス許可
 **Azure Data Catalog** を使用すればデータ ソースの探索は可能ですが、データ自体へのアクセスは引き続きデータ ソースの所有者または管理者の管理下にあります。 **Azure Data Catalog** でのデータ ソースの探索で、データ ソース自体へのアクセス許可がユーザーに付与されることはありません。

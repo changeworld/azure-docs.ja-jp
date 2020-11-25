@@ -7,11 +7,11 @@ ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
 ms.openlocfilehash: 48a732e3935d78bdbf8b81fe989b59be1fbe2203
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422809"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020434"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Java と Gradle を使用して関数を作成し、Azure に発行する
 

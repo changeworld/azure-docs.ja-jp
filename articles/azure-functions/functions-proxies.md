@@ -4,11 +4,11 @@ description: Azure Functions プロキシ の使用方法の概要
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 3e08b9cf633162cc7015f47774b043cf58c115a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87385876"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020400"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作
 
@@ -26,7 +26,7 @@ ms.locfileid: "87385876"
 1. [Azure Portal] を開き、関数アプリに移動します。
 2. 左側のウィンドウで、 **[新しいプロキシ]** を選択します。
 3. プロキシの名前を指定します。
-4. **ルート テンプレート**と **HTTP メソッド**を指定して、この関数アプリで公開されるエンドポイントを構成します。 これらのパラメーターは、[HTTP トリガー]の規則に従って動作します。
+4. **ルート テンプレート** と **HTTP メソッド** を指定して、この関数アプリで公開されるエンドポイントを構成します。 これらのパラメーターは、[HTTP トリガー]の規則に従って動作します。
 5. **バックエンド URL** を他のエンドポイントに設定します。 このエンドポイントは、別の関数アプリ内の関数にすることも、他の任意の API にすることもできます。 静的な値である必要はありません。[アプリケーション設定]や[元のクライアント要求のパラメーター]を参照することもできます。
 6. **Create** をクリックしてください。
 

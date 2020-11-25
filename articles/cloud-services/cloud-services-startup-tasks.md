@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: f2417389de98f9998c189e7cbbbcdae77fbb8840
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075061"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020706"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>クラウド サービスのスタートアップ タスクを構成して実行する方法
 ロールが開始する前に、スタートアップ タスクを使用して操作を実行できます。 対象となる操作としては、コンポーネントのインストール、COM コンポーネントの登録、レジストリ キーの設定、実行時間の長いプロセスの開始などがあります。
@@ -31,7 +31,7 @@ ms.locfileid: "92075061"
 
 再起動と再起動の間に、スタートアップ タスクを何回でも実行できます。 たとえば、スタートアップ タスクはロールのリサイクルのたびに実行され、ロールのリサイクルには再起動が含まれない場合があります。 複数回実行されても問題がないように、スタートアップ タスクを作成する必要があります。
 
-スタートアップ プロセスが完了するには、スタートアップ タスクが **errorlevel** (終了コード) ゼロで終了する必要があります。 スタートアップ タスクがゼロ以外の **errorlevel**で終了すると、ロールは開始しません。
+スタートアップ プロセスが完了するには、スタートアップ タスクが **errorlevel** (終了コード) ゼロで終了する必要があります。 スタートアップ タスクがゼロ以外の **errorlevel** で終了すると、ロールは開始しません。
 
 ## <a name="role-startup-order"></a>ロールのスタートアップ順序
 Azure でのロールのスタートアップ手順を次に示します。

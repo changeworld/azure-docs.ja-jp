@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
 ms.openlocfilehash: c05db2d9ba184da89665a236994c851355cc2644
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127435"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019856"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>統合と開発に Azure Stream Analytics CI/CD NuGet パッケージを使用する 
 この記事では、Azure Stream Analytics CI/CD NuGet パッケージを使って継続的インテグレーションとデプロイのプロセスを設定する方法を説明します。
@@ -32,7 +32,7 @@ NuGet パッケージの[Microsoft.Azure.Stream Analytics.CICD](https://www.nuge
 
 ```
 
-Stream Analytics Visual Studio プロジェクトが正常にビルドされると、 **bin/[Debug/Retail]/Deploy** フォルダーに次の 2 つの Azure Resource Manager テンプレート ファイルが生成されます。 
+Stream Analytics Visual Studio プロジェクトが正常にビルドされると、**bin/[Debug/Retail]/Deploy** フォルダーに次の 2 つの Azure Resource Manager テンプレート ファイルが生成されます。 
 
 * Resource Manager テンプレート ファイル
 
@@ -45,7 +45,7 @@ Stream Analytics Visual Studio プロジェクトが正常にビルドされる�
 parameters.json ファイルの既定のパラメーターは、Visual Studio プロジェクトの設定から取得されます。 別の環境にデプロイする場合は、パラメーターを適宜置換します。
 
 > [!NOTE]
-> すべての資格情報の既定値は、null 値に設定されます。 クラウドにデプロイする前に、値を設定する " **必要があります** "。
+> すべての資格情報の既定値は、null 値に設定されます。 クラウドにデプロイする前に、値を設定する "**必要があります**"。
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
@@ -60,7 +60,7 @@ parameters.json ファイルの既定のパラメーターは、Visual Studio �
 ## <a name="command-line-tool"></a>コマンドライン ツール
 
 ### <a name="build-the-project"></a>プロジェクトのビルド
-NuGet パッケージには、 **SA.exe** というコマンドライン ツールがあります。 継続的インテグレーションと継続的デリバリーのプロセスで使用できる任意のマシンでのプロジェクトのビルドとローカル テストをサポートします。 
+NuGet パッケージには、**SA.exe** というコマンドライン ツールがあります。 継続的インテグレーションと継続的デリバリーのプロセスで使用できる任意のマシンでのプロジェクトのビルドとローカル テストをサポートします。 
 
 デプロイ ファイルは、既定では現在のディレクトリに配置されます。 次の -OutputPath パラメーターを使用して出力パスを指定できます。
 
@@ -70,7 +70,7 @@ NuGet パッケージには、 **SA.exe** というコマンドライン ツー�
 
 ### <a name="test-the-script-locally"></a>スクリプトのローカル テスト
 
-プロジェクトで Visual Studio にローカル入力ファイルを指定した場合は、 *localrun* コマンド使用して、自動化されたスクリプト テストを実行できます。 出力結果は現在のディレクトリに配置されます。
+プロジェクトで Visual Studio にローカル入力ファイルを指定した場合は、*localrun* コマンド使用して、自動化されたスクリプト テストを実行できます。 出力結果は現在のディレクトリに配置されます。
  
 ```
 localrun -Project [ProjectFullPath]

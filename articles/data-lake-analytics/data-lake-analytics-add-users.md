@@ -6,11 +6,11 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 05/24/2018
 ms.openlocfilehash: c04b1bbd62e156aeb8d3a0ebb244cfbc753dec52
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219379"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020825"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Azure portal でユーザーを追加する
 
@@ -27,7 +27,7 @@ ms.locfileid: "92219379"
 必要に応じて、入力データと出力データが保存されているフォルダーに対して "R-X" または "RWX" を付与します。
 
 
-## <a name="optionally-add-the-user-to-the-azure-data-lake-storage-gen1-role-reader-role"></a>必要に応じて、ユーザーを Azure Data Lake Storage Gen1 ロールの**閲覧者**ロールに追加します。
+## <a name="optionally-add-the-user-to-the-azure-data-lake-storage-gen1-role-reader-role"></a>必要に応じて、ユーザーを Azure Data Lake Storage Gen1 ロールの **閲覧者** ロールに追加します。
 1.  Azure Data Lake Storage Gen1 アカウントを見つけます。
 2.  **[ユーザー]** をクリックします。
 3. **[追加]** をクリックします。
