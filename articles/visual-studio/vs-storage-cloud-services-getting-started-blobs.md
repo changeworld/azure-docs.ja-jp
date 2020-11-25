@@ -13,24 +13,24 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 670aef4f6f866788ef7a1a4502de242e765f5cc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89e0d6873ebfd8f8396c36185730c57a66af0dd9
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89017653"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96007039"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Azure BLOB ストレージと Visual Studio 接続済みサービスの概要 (クラウド サービス プロジェクト)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>概要
-この記事では、Visual Studio クラウド サービス オブジェクトの **[接続済みサービスの追加]** ダイアログを使用して Azure ストレージ アカウントを作成または参照した後に、Azure BLOB ストレージの使用を開始する方法について説明します。 BLOB コンテナーへのアクセス方法や作成方法、BLOB のアップロード、一覧表示、ダウンロードなどの一般的なタスクの実行方法について説明します。 サンプルは C\#で記述され、[.NET 用 Microsoft Azure Storage クライアント ライブラリ](https://msdn.microsoft.com/library/azure/dn261237.aspx)を使用しています。
+この記事では、Visual Studio クラウド サービス オブジェクトの **[接続済みサービスの追加]** ダイアログを使用して Azure ストレージ アカウントを作成または参照した後に、Azure BLOB ストレージの使用を開始する方法について説明します。 BLOB コンテナーへのアクセス方法や作成方法、BLOB のアップロード、一覧表示、ダウンロードなどの一般的なタスクの実行方法について説明します。 サンプルは C\#で記述され、[.NET 用 Microsoft Azure Storage クライアント ライブラリ](/previous-versions/azure/dn261237(v=azure.100))を使用しています。
 
 Azure BLOB ストレージは、大量の非構造化データを格納して HTTP または HTTPS を介して世界中のどこからでもアクセスできるようにするサービスです。 1 つの BLOB は任意のサイズにできます。 BLOB として扱えるのは、画像、オーディオ ファイル、ビデオ ファイル、生データ、およびドキュメント ファイルのようなデータです。
 
 ファイルがフォルダーに格納されるのと同様に、ストレージ BLOB はコンテナーに格納されます。 ストレージを作成した後、その内部に 1 つまたは複数のコンテナーを作成します。 たとえば、"Scrapbook" という名前のストレージに、写真を格納するための "images" という名前のコンテナーと、音声ファイルを格納するための "audio" という名前のコンテナーを作成できます。 コンテナーを作成すると、個々の BLOB ファイルをコンテナーにアップロードできるようになります。
 
-* プログラムを使用して BLOB を操作する方法の詳細については、「 [.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」をご覧ください。
+* プログラムを使用して BLOB を操作する方法の詳細については、「 [.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-quickstart-blobs-dotnet.md)」をご覧ください。
 * Azure Storage の全般的な情報については、「 [Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)」をご覧ください。
 * Azure Cloud Services の全般的な情報については、「 [Cloud Services のドキュメント](https://azure.microsoft.com/documentation/services/cloud-services/)」を参照してください。
 * ASP.NET アプリケーションのプログラミングの詳細については、 [ASP.NET](https://www.asp.net)の Web サイトを参照してください。
@@ -73,7 +73,7 @@ Azure BLOB ストレージは、大量の非構造化データを格納して HT
 
 ## <a name="create-a-container-in-code"></a>コードでコンテナーを作成する
 > [!NOTE]
-> ASP.NET で Azure Storage への呼び出しを実行する API の一部は非同期です。 詳細については、 [Async および Await を使用した非同期プログラミング](https://msdn.microsoft.com/library/hh191443.aspx) に関するページをご覧ください。 次の例のコードでは、非同期のプログラミング方法を使用していることを前提としています。
+> ASP.NET で Azure Storage への呼び出しを実行する API の一部は非同期です。 詳細については、 [Async および Await を使用した非同期プログラミング](/previous-versions/hh191443(v=vs.140)) に関するページをご覧ください。 次の例のコードでは、非同期のプログラミング方法を使用していることを前提としています。
 > 
 > 
 
@@ -143,7 +143,7 @@ foreach (IListBlobItem item in container.ListBlobs(null, false))
 }
 ```
 
-前のコード例からわかるように、BLOB サービスにはコンテナー内のディレクトリの概念も含まれています。 これは、BLOB をよりフォルダーに近い構造で整理できるようにするためです。 たとえば、 **photos**というコンテナーに次のブロック BLOB があるとします。
+前のコード例からわかるように、BLOB サービスにはコンテナー内のディレクトリの概念も含まれています。 これは、BLOB をよりフォルダーに近い構造で整理できるようにするためです。 たとえば、 **photos** というコンテナーに次のブロック BLOB があるとします。
 
 ```output
 photo1.jpg
@@ -165,7 +165,7 @@ Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/
 ```
 
 
-必要に応じて、**ListBlobs** メソッドの **UseFlatBlobListing** パラメーターを **true** に設定することもできます。 これで、ディレクトリに関係なく、すべての BLOB が **CloudBlockBlob**として返されるようになります。 次に、 **ListBlobs**の呼び出しを示します。
+必要に応じて、**ListBlobs** メソッドの **UseFlatBlobListing** パラメーターを **true** に設定することもできます。 これで、ディレクトリに関係なく、すべての BLOB が **CloudBlockBlob** として返されるようになります。 次に、 **ListBlobs** の呼び出しを示します。
 
 ```csharp
 // Loop over items within the container and output the length and URI.
@@ -188,7 +188,7 @@ Block blob of length 399751: https://<accountname>.blob.core.windows.net/photos/
 Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 ```
 
-詳細については、「 [CloudBlobContainer.ListBlobs](https://msdn.microsoft.com/library/azure/dd135734.aspx)」をご覧ください。
+詳細については、「 [CloudBlobContainer.ListBlobs](/rest/api/storageservices/List-Blobs)」をご覧ください。
 
 ## <a name="download-blobs"></a>BLOB をダウンロードする
 BLOB をダウンロードするには、まず BLOB の参照を取得し、次に **DownloadToStream** メソッドを呼び出します。 次の例は、 **DownloadToStream** メソッドを使用して、ローカル ファイルに保存できるストリーム オブジェクトに BLOB の内容を転送します。
@@ -270,4 +270,3 @@ async public static Task ListBlobsSegmentedInFlatListing(CloudBlobContainer cont
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
-

@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 9afab87e0d7f0e7a9e5c05b36ace1dfc09c9aa9f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a9a90fbb2eedd6db2873d4ac2a5fea94c05c7eed
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548032"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005658"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Azure HDInsight の保存データの二重暗号化
 
@@ -71,7 +71,7 @@ Key Vault に対して認証するユーザー割り当てのマネージド ID 
 
 ### <a name="create-azure-key-vault"></a>Azure Key Vault を作成する
 
-Key Vault を作成します。 具体的な手順については、「[ Azure Key Vault の作成](../key-vault/secrets/quick-create-portal.md) 」をご参照ください。
+Key Vault を作成します。 具体的な手順については、「[ Azure Key Vault の作成](../key-vault/general/quick-create-portal.md) 」をご参照ください。
 
 HDInsight では、Azure Key Vault にのみ対応しています。 自分のキー コンテナーをお持ちの場合、Azure Key Vault に自分のキーをインポートできます。 キー コンテナーでは、 **論理的な削除** を有効にする必要があります。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../key-vault/general/about-keys-secrets-certificates.md)」をご覧ください。
 
@@ -104,7 +104,7 @@ HDInsight では、Azure Key Vault にのみ対応しています。 自分の�
     |プロパティ |説明|
     |---|---|
     |キーのアクセス許可|**取得** を選択し、 **キーのラップを解除** してから、 **キーををラップ** します。|
-    |シークレットのアクセス許可|**取得** 、 **設定** 、 **削除** を選択します。|
+    |シークレットのアクセス許可|**取得**、 **設定**、 **削除** を選択します。|
     |プリンシパルの選択|以前に作成したユーザー割り当てマネージド ID を選択します。|
 
     ![Azure Key Vault アクセス ポリシーの [プリンシパルの選択] を設定する](./media/disk-encryption/azure-portal-add-access-policy.png)
@@ -392,7 +392,7 @@ Hdinsight は、HDInsight クラスターに関連するマネージド ID を�
 
 **クラスターがキー　コンテナーまたはキーにアクセスできなくなった場合はどうなりますか。**
 
-クラスターがキーへのアクセスを失うと、Apache Ambari ポータルに警告が表示されます。 この状態では、 **キーの変更** 操作は失敗します。 キー アクセスが復元されると、Ambari の警告が消え、キーの交換などの操作を正常に実行できます。
+クラスターがキーへのアクセスを失うと、Apache Ambari ポータルに警告が表示されます。 この状態では、**キーの変更** 操作は失敗します。 キー アクセスが復元されると、Ambari の警告が消え、キーの交換などの操作を正常に実行できます。
 
 ![キー アクセス Ambari アラート](./media/disk-encryption/ambari-alert.png)
 

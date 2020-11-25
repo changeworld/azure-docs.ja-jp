@@ -4,20 +4,20 @@ description: Azure Kubernetes Service (AKS) で Kubernetes マスター ノー�
 services: container-service
 ms.topic: article
 ms.date: 10/14/2020
-ms.openlocfilehash: 82570606aee294aafe7da5ffaf581b11b6775073
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: a0e58174c38ec19d42f524b9bc94247e05296467
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899929"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682232"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Kubernetes マスター ノード ログの有効化とレビュー
 
-Azure Kubernetes Service (AKS) では、 *kube-apiserver* や *kube-controller-manager* などのマスター コンポーネントが、マネージド サービスとして提供されます。 管理者は、 *kubelet* とコンテナー ランタイムを実行するノードを作成して管理し、 マネージド Kubernetes API サーバーを通じてアプリケーションをデプロイします。 アプリケーションやサービスのトラブルシューティングを行う際には、これらのマスター コンポーネントによって生成されたログを表示する必要が生じることがあります。 この記事では、Azure Monitor ログを使用して、Kubernetes マスター コンポーネントからのログを有効にし、それらのログを照会する方法について説明します。
+Azure Kubernetes Service (AKS) では、*kube-apiserver* や *kube-controller-manager* などのマスター コンポーネントが、マネージド サービスとして提供されます。 管理者は、*kubelet* とコンテナー ランタイムを実行するノードを作成して管理し、 マネージド Kubernetes API サーバーを通じてアプリケーションをデプロイします。 アプリケーションやサービスのトラブルシューティングを行う際には、これらのマスター コンポーネントによって生成されたログを表示する必要が生じることがあります。 この記事では、Azure Monitor ログを使用して、Kubernetes マスター コンポーネントからのログを有効にし、それらのログを照会する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事では、Azure アカウントで既存の AKS クラスターが実行されていることを前提条件としています。 AKS クラスターがまだない場合は、[Azure CLI][cli-quickstart] または [Azure portal][portal-quickstart] を使用して作成します。 Azure Monitor ログは、RBAC 対応と非 RBAC 対応のどちらの AKS クラスターとでも動作します。
+この記事では、Azure アカウントで既存の AKS クラスターが実行されていることを前提条件としています。 AKS クラスターがまだない場合は、[Azure CLI][cli-quickstart] または [Azure portal][portal-quickstart] を使用して作成します。 Azure Monitor ログは、Kubernetes RBAC と、Azure RBAC 対応と非 RBAC 対応のどちらの AKS クラスターとでも動作します。
 
 ## <a name="enable-resource-logs"></a>リソース ログの有効化
 
@@ -25,22 +25,22 @@ Azure Kubernetes Service (AKS) では、 *kube-apiserver* や *kube-controller-m
 
 Azure Monitor ログの有効化と管理は、Azure portal で行います。 AKS クラスターの Kubernetes マスター コンポーネントのログ収集を有効にするには、Web ブラウザーで Azure Portal を開き、次の手順を実行します。
 
-1. AKS クラスターのリソース グループを選択します ( *myResourceGroup* など)。 個別の AKS クラスター リソースを含んだリソース グループは選択しないでください ( *MC_myResourceGroup_myAKSCluster_eastus* など)。
+1. AKS クラスターのリソース グループを選択します (*myResourceGroup* など)。 個別の AKS クラスター リソースを含んだリソース グループは選択しないでください (*MC_myResourceGroup_myAKSCluster_eastus* など)。
 1. 左側で、 **[診断設定]** を選択します。
-1. AKS クラスター ( *myAKSCluster* など) を選択し、 **[診断設定を追加する]** を選択します。
-1. 名前 ( *myAKSClusterLogs* など) を入力し、 **[Log Analytics への送信]** オプションを選択します。
+1. AKS クラスター (*myAKSCluster* など) を選択し、 **[診断設定を追加する]** を選択します。
+1. 名前 (*myAKSClusterLogs* など) を入力し、 **[Log Analytics への送信]** オプションを選択します。
 1. 既存のワークスペースを選択するか、新しいワークスペースを作成します。 ワークスペースを作成する場合は、ワークスペースの名前、リソース グループ、および場所を指定します。
-1. 使用可能なログの一覧から、有効にするログを選択します。 この例では、 *kube-audit* および *kube-audit-admin* ログを有効にします。 一般的なログには、 *kube-apiserver* 、 *kube-controller-manager* 、および *kube-scheduler* が含まれます。 Log Analytics ワークスペースが有効になった後、構成画面に戻り、収集されるログを変更することもできます。
+1. 使用可能なログの一覧から、有効にするログを選択します。 この例では、*kube-audit* および *kube-audit-admin* ログを有効にします。 一般的なログには、*kube-apiserver*、*kube-controller-manager*、および *kube-scheduler* が含まれます。 Log Analytics ワークスペースが有効になった後、構成画面に戻り、収集されるログを変更することもできます。
 1. 準備ができたら **[保存]** を選択し、選択したログの収集を有効にします。
 
 ## <a name="log-categories"></a>ログのカテゴリ
 
 Kubernetes によって書き込まれたエントリに加えて、プロジェクトの監査ログには AKS からのエントリも含まれます。
 
-監査ログは、 *kube-audit* 、 *kube-audit-admin* 、 *guard* の 3 つのカテゴリに記録されます。
+監査ログは、*kube-audit*、*kube-audit-admin*、*guard* の 3 つのカテゴリに記録されます。
 
-- *kube-audit* カテゴリには、すべての監査イベントのすべての監査ログ データが含まれており、これには *get* 、 *list* 、 *create* 、 *update* 、 *delete* 、 *patch* 、および *post* が含まれます。
-- *kube-audit-admin* カテゴリは、 *kube* ログ カテゴリのサブセットです。 *kube-audit-admin* は、 *get* および *list* の監査イベントをログから除外することで、ログの数を大幅に削減します。
+- *kube-audit* カテゴリには、すべての監査イベントのすべての監査ログ データが含まれており、これには *get*、*list*、*create*、*update*、*delete*、*patch*、および *post* が含まれます。
+- *kube-audit-admin* カテゴリは、*kube* ログ カテゴリのサブセットです。 *kube-audit-admin* は、*get* および *list* の監査イベントをログから除外することで、ログの数を大幅に削減します。
 - *guard* カテゴリはマネージド Azure AD および Azure RBAC 監査です。 マネージド Azure AD の場合: トークン入力、ユーザー情報出力。Azure RBAC の場合: アクセス レビューの入力と出力。
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>AKS クラスター上のテスト ポッドのスケジュール設定
@@ -84,7 +84,7 @@ pod/nginx created
 
 Azure portal で、AKS クラスターに移動し、左側にある **[ログ]** を選択します。 *[クエリの例]* ウィンドウが表示されている場合は閉じます。
 
-左側で、 **[ログ]** を選択します。 *kube-audit* ログを表示するには、テキスト ボックスに次のクエリを入力します。
+左側で、**[ログ]** を選択します。 *kube-audit* ログを表示するには、テキスト ボックスに次のクエリを入力します。
 
 ```
 AzureDiagnostics
@@ -92,7 +92,7 @@ AzureDiagnostics
 | project log_s
 ```
 
-おそらく、多くのログが返されます。 クエリの対象を絞り込み、前の手順で作成した NGINX ポッドに関するログを表示するには、次の例のように *where* ステートメントを追加して、 *nginx* を検索します。
+おそらく、多くのログが返されます。 クエリの対象を絞り込み、前の手順で作成した NGINX ポッドに関するログを表示するには、次の例のように *where* ステートメントを追加して、*nginx* を検索します。
 
 ```
 AzureDiagnostics
@@ -109,7 +109,7 @@ AzureDiagnostics
 | project log_s
 ```
 
-この例では、クエリは *kube-audit-admin* のすべての作成ジョブを示しています。おそらく多くの結果が返されますが、クエリの対象を絞り込み、前の手順で作成した NGINX ポッドに関するログを表示するには、次の例のように *where* ステートメントを追加して、 *nginx* を検索します。
+この例では、クエリは *kube-audit-admin* のすべての作成ジョブを示しています。おそらく多くの結果が返されますが、クエリの対象を絞り込み、前の手順で作成した NGINX ポッドに関するログを表示するには、次の例のように *where* ステートメントを追加して、*nginx* を検索します。
 
 ```
 AzureDiagnostics

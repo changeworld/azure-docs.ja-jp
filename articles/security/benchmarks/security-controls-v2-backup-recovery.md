@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c3812cef9b90a15870733441c9e830daf32e0b18
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1ed477c6cf069dbb402e5bda9c1f48f7bc208f18
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408942"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698803"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>セキュリティ コントロール V2:バックアップと回復
 
@@ -36,9 +36,9 @@ geo 冗長ストレージ オプションを有効にして、セカンダリ �
 
 - [リージョンをまたがる復元を有効にする方法](../../backup/backup-azure-arm-restore-vms.md#cross-region-restore)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [ポリシーと標準](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 
@@ -58,7 +58,7 @@ geo 冗長ストレージ オプションを有効にして、セカンダリ �
 
 Azure Backup を使用するオンプレミスのバックアップによって、指定したパスフレーズを使用した保存時の暗号化が提供されます。 通常の Azure サービスのバックアップでは、バックアップ データは Azure プラットフォーム マネージド キーを使用して自動的に暗号化されます。 バックアップに、カスタマー マネージド キーを選択することもできます。 この場合は、キー コンテナー内のこのカスタマー マネージド キーも確実にバックアップ対象にします。 
 
-バックアップおよびカスタマー マネージド キーを保護するには、Azure Backup、Azure Key Vault、またはその他のリソースでロールベースのアクセス制御を使用します。 さらに、バックアップが変更または削除される前に MFA を求める、高度なセキュリティ機能を有効にすることもできます。
+バックアップおよびカスタマー マネージド キーを保護するには、Azure Backup、Azure Key Vault、またはその他のリソースで Azure ロールベースのアクセス制御を使用します。 さらに、バックアップが変更または削除される前に MFA を求める、高度なセキュリティ機能を有効にすることもできます。
 
 - [Azure Backup のセキュリティ機能の概要](../../backup/security-overview.md)
 
@@ -68,9 +68,9 @@ Azure Backup を使用するオンプレミスのバックアップによって�
 
 - [ハイブリッド バックアップを攻撃から保護するためのセキュリティ機能](../../backup/backup-azure-security-feature.md#prevent-attacks)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -90,9 +90,9 @@ Azure Backup を使用するオンプレミスのバックアップによって�
 
 - [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インシデントの準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -108,9 +108,9 @@ Azure Backup を使用するオンプレミスのバックアップによって�
 
 - [Key Vault で論理的な削除と消去保護を有効にする方法](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 

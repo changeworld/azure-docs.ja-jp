@@ -7,18 +7,19 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5fdaa1346e4837b3bf611d964158d132dcdfeeda
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 42333a3feae19b6c3c77494f7e843cac1d9bc078
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282683"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006321"
 ---
 # <a name="backup-and-restore-of-sap-hana-on-hana-large-instances"></a>HANA Large Instances での SAP HANA のバックアップと復元
 
@@ -117,7 +118,7 @@ HANA Large Instances でストレージ スナップショットを設定する�
 1. すべての SAP HANA L インスタンス サーバーに、SAP HANA HDB クライアントをインストールします。
 1. スナップショットの作成を制御する、基になるストレージ インフラストラクチャにアクセスするために、各リージョンの最初の SAP HANA (L インスタンス) サーバーで公開キーを作成します。
 1. [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) から SAP HANA インストールの **hdbsql** の場所にスクリプトと構成ファイルをコピーします。
-1. 適切な顧客仕様での必要に応じて、 *HANABackupDetails.txt* ファイルを変更します。
+1. 適切な顧客仕様での必要に応じて、*HANABackupDetails.txt* ファイルを変更します。
 
 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) から最新のスナップショット スクリプトとドキュメントを入手してください。 前記の手順については、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」をご覧ください。
 
@@ -147,7 +148,7 @@ HANA Large Instances テナントのストレージ スナップショット イ
 
 ### <a name="step-4-create-an-sap-hana-user-account"></a>手順 4:SAP HANA ユーザー アカウントを作成する
 
-SAP HANA スナップショットの作成を開始するには、ストレージ スナップショット スクリプトで使用できるユーザー アカウントを SAP HANA に作成します。 そのために、SAP HANA Studio 内で SAP HANA ユーザー アカウントを作成します。 MDC 用の SID データベースでは " *なく* "、SYSTEMDB に、ユーザーを作成する必要があります。 単一のコンテナー環境では、ユーザーはテナント データベース内に設定されます。 このアカウントには、 **バックアップ管理** と **カタログ読み取り** という特権が必要です。 
+SAP HANA スナップショットの作成を開始するには、ストレージ スナップショット スクリプトで使用できるユーザー アカウントを SAP HANA に作成します。 そのために、SAP HANA Studio 内で SAP HANA ユーザー アカウントを作成します。 MDC 用の SID データベースでは "*なく*"、SYSTEMDB に、ユーザーを作成する必要があります。 単一のコンテナー環境では、ユーザーはテナント データベース内に設定されます。 このアカウントには、**バックアップ管理** と **カタログ読み取り** という特権が必要です。 
 
 ユーザー アカウントを設定して使用するには、[GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) の「Enable communication with SAP HANA (SAP HANA との通信を有効にする)」をご覧ください。
 
@@ -184,7 +185,7 @@ SAP HANA スナップショットの作成を開始するには、ストレー�
 
 #### <a name="test-storage-connectivity"></a>ストレージの接続をテストする
 
-次のテスト ステップでは、 *HANABackupCustomerDetails.txt* 構成ファイルに設定したデータに基づいて、ストレージへの接続を確認します。 次に、テスト スナップショットを実行します。 `azure_hana_backup`コマンドを実行する前に、このテストを実行する必要があります。 このテストのコマンドのシーケンスについては、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「Check connectivity with storage - testStorageSnapshotConnection (ストレージとの接続を確認する - testStorageSnapshotConnection)」をご覧ください。
+次のテスト ステップでは、*HANABackupCustomerDetails.txt* 構成ファイルに設定したデータに基づいて、ストレージへの接続を確認します。 次に、テスト スナップショットを実行します。 `azure_hana_backup`コマンドを実行する前に、このテストを実行する必要があります。 このテストのコマンドのシーケンスについては、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「Check connectivity with storage - testStorageSnapshotConnection (ストレージとの接続を確認する - testStorageSnapshotConnection)」をご覧ください。
 
 ストレージの仮想マシン インターフェイスに正常にサインインすると、スクリプトはフェーズ 2 に進み、テスト スナップショットが作成されます。 SAP HANA の 3 ノード スケールアウト構成の場合、次のように出力されます。
 
@@ -213,7 +214,7 @@ SAP HANA スナップショットの作成を開始するには、ストレー�
 ## <a name="snapshot-strategies"></a>スナップショット戦略
 各種スナップショットの頻度は、HANA L インスタンスのディザスター リカバリー機能を使用するかどうかによって異なります。 この機能はストレージ スナップショットに依存しているため、場合によっては、ストレージ スナップショットの頻度と実行期間について特別な推奨事項が必要になることがあります。 
 
-以下の考慮事項と推奨事項では、HANA L インスタンスが提供するディザスター リカバリー機能を " *使用しない* " ことを前提としています。 代わりに、バックアップを保持し、過去 30 日間の特定の時点への復旧を実現できるようにするための手段として、ストレージ スナップショットを使います。 スナップショットの数と領域の制限がある場合、次のような要件を考慮します。
+以下の考慮事項と推奨事項では、HANA L インスタンスが提供するディザスター リカバリー機能を "*使用しない*" ことを前提としています。 代わりに、バックアップを保持し、過去 30 日間の特定の時点への復旧を実現できるようにするための手段として、ストレージ スナップショットを使います。 スナップショットの数と領域の制限がある場合、次のような要件を考慮します。
 
 - ポイントインタイム復旧の復旧時間。
 - 使用される領域。
@@ -330,7 +331,7 @@ SAP HANA では完全なログ セグメントが自動的にバックアップ�
  >[!NOTE]
  > このスクリプトでは、1 時間以上経過したスナップショットが存在する場合にのみ、スナップショットの数が減らされます。 このスクリプトでは、作成から 1 時間経過していないスナップショットは削除されません。 これらの制限は、提供されるオプションのディザスター リカバリー機能に関連しています。
 
-バックアップ プレフィックス (構文例では **hanadaily** ) の付いた一連のスナップショットを保持する必要がなくなった場合は、保持数を **0** に設定してスクリプトを実行します。 これにより、そのラベルと一致するすべてのスナップショットが削除されます。 すべてのスナップショットを削除すると、HANA Large Instances のディザスター リカバリー機能に影響する可能性があります。
+バックアップ プレフィックス (構文例では **hanadaily**) の付いた一連のスナップショットを保持する必要がなくなった場合は、保持数を **0** に設定してスクリプトを実行します。 これにより、そのラベルと一致するすべてのスナップショットが削除されます。 すべてのスナップショットを削除すると、HANA Large Instances のディザスター リカバリー機能に影響する可能性があります。
 
 特定のスナップショットを削除するもう 1 つの方法は、スクリプト `azure_hana_snapshot_delete` を使用することです。 このスクリプトは、HANA Studio で確認できる HANA バックアップ ID またはストレージ スナップショット名自体を使用して、1 つのスナップショットまたは一連のスナップショットを削除することを目的としています。 現在、バックアップ ID は、スナップショットの種類が **hana** である作成済みのスナップショットにのみ関連付けられています。 種類が **logs** および **boot** のスナップショット バックアップでは SAP HANA スナップショットは実行されないため、これらのスナップショットのバックアップ ID はありません。 スナップショット名を入力すると、入力したスナップショット名に一致するすべてのスナップショットがさまざまなボリューム上で検索されます。 
 
@@ -338,7 +339,7 @@ SAP HANA では完全なログ セグメントが自動的にバックアップ�
 
 スクリプトについて詳しくは、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「Delete a snapshot - azure_hana_snapshot_delete (スナップショットを削除する - azure_hana_snapshot_delete)」をご覧ください。
 
-このスクリプトは、 **root** ユーザーとして実行します。
+このスクリプトは、**root** ユーザーとして実行します。
 
 >[!IMPORTANT]
 >削除しようとしているスナップショット上にのみ存在するデータがある場合、スナップショットが削除されると、そのデータが永久に失われることになります。
@@ -349,7 +350,7 @@ SAP HANA では完全なログ セグメントが自動的にバックアップ�
 <!-- hana, logs and boot are no spelling errors as Acrolinx indicates, but terms of parameter values -->
 スナップショットの種類が **hana** または **logs** の場合、ボリューム上の **.snapshot** ディレクトリにあるスナップショットに直接アクセスできます。 スナップショットごとにサブディレクトリがあります。 スナップショットの作成時点での状態で、該当のサブディレクトリから実際のディレクトリ構造に、各ファイルをコピーします。 
 
-現在のバージョンのスクリプトでは、セルフサービスのスナップショットの復元用に提供されている復元スクリプトは " *ありません* "。 スナップショットの復元は、フェールオーバー中のディザスター リカバリー サイトでのセルフサービス ディザスター リカバリー スクリプトの一部として実行できます。 既存の使用可能なスナップショットから目的のスナップショットを復元するには、サービス要求を開いて、Microsoft の運用チームに問い合わせる必要があります。
+現在のバージョンのスクリプトでは、セルフサービスのスナップショットの復元用に提供されている復元スクリプトは "*ありません*"。 スナップショットの復元は、フェールオーバー中のディザスター リカバリー サイトでのセルフサービス ディザスター リカバリー スクリプトの一部として実行できます。 既存の使用可能なスナップショットから目的のスナップショットを復元するには、サービス要求を開いて、Microsoft の運用チームに問い合わせる必要があります。
 
 >[!NOTE]
 >単一ファイルの復元は、HANA Large Instances ユニットの種類とは関係のないブート LUN のスナップショットに対しては機能しません。 **.snapshot** ディレクトリは、ブートLUN では公開されません。 
@@ -438,19 +439,19 @@ SnapCenter を SAP HANA に統合する手順は次のとおりです。
 
 1. SAP HANA のサブスクリプション ページで、 **[リソース グループ]** サブページを選択します。
 
-   :::image type="content" source="./media/snapcenter/solution-lab-subscription-resource-groups.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する" lightbox="./media/snapcenter/solution-lab-subscription-resource-groups.png":::
+   :::image type="content" source="./media/snapcenter/solution-lab-subscription-resource-groups.png" alt-text="ソリューション ラボ サブスクリプションのリソース グループ" lightbox="./media/snapcenter/solution-lab-subscription-resource-groups.png":::
 
 1. リージョン内の適切なリソース グループを選択します。
 
-   :::image type="content" source="./media/snapcenter/select-appropriate-resource-group-in-region.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する" lightbox="./media/snapcenter/select-appropriate-resource-group-in-region.png":::
+   :::image type="content" source="./media/snapcenter/select-appropriate-resource-group-in-region.png" alt-text="リージョン内の適切なリソース グループを選択する" lightbox="./media/snapcenter/select-appropriate-resource-group-in-region.png":::
 
 1. Azure ストレージ上の SAP HANA に対応する SKU エントリを選択します。
 
-   :::image type="content" source="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する" lightbox="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png":::
+   :::image type="content" source="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png" alt-text="SAP HANA に対応する SKU エントリを選択する" lightbox="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png":::
 
 1. 赤で囲まれた **[新しいサポート チケット]** リクエストを開きます。
 
-   :::image type="content" source="./media/snapcenter/open-new-support-ticket-request.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="./media/snapcenter/open-new-support-ticket-request.png" alt-text="新しいサポート チケット リクエストを開く":::
 
 1. **[基本]** タブで、チケットの次の情報を指定します。
 
@@ -468,7 +469,7 @@ SnapCenter を SAP HANA に統合する手順は次のとおりです。
    * HLI 用の SnapCenter を設定する
    * SnapCenter ユーザーの公開キー (snapcenter.pem) - 以下の公開キー作成の例を参照してください
 
-     :::image type="content" source="./media/snapcenter/new-support-request-details.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する" lightbox="./media/snapcenter/new-support-request-details.png":::
+     :::image type="content" source="./media/snapcenter/new-support-request-details.png" alt-text="[新しいサポート リクエスト] - [詳細] タブ" lightbox="./media/snapcenter/new-support-request-details.png":::
 
 1. **[確認と作成]** を選択し、サポート チケットを確認します。 
 
@@ -525,7 +526,7 @@ SnapCenter をインストールする前に、「[SAP HANA Backup/Recovery with
 
 1. SnapCenter のユーザー資格情報を構成します。 既定では、アプリケーションのインストールに使用される Windows のユーザー資格情報が設定されます。 
 
-   :::image type="content" source="media/snapcenter/installation-user-inputs-dialog.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する"::: 
+   :::image type="content" source="media/snapcenter/installation-user-inputs-dialog.png" alt-text="[Installation user inputs]\(インストールのユーザー入力\) ダイアログ"::: 
 
 1. このセッションを開始するときに、セキュリティの免除を保存します。これで GUI が起動します。
 
@@ -536,20 +537,20 @@ SnapCenter をインストールする前に、「[SAP HANA Backup/Recovery with
 
 1. SnapCenter で、 **[Storage System]\(ストレージ システム\)** を選択し、 **[+New]\(+ 新規\)** を選択します。 
 
-   :::image type="content" source="./media/snapcenter/snapcenter-storage-connections-window.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する" lightbox="./media/snapcenter/snapcenter-storage-connections-window.png":::
+   :::image type="content" source="./media/snapcenter/snapcenter-storage-connections-window.png" alt-text="SnapCenterのストレージ接続" lightbox="./media/snapcenter/snapcenter-storage-connections-window.png":::
 
    既定では、テナントごとに 1 つの SVM があります。 複数のリージョンに複数のテナントまたは HLI がある場合は、SnapCenter ですべての SVM を構成することをお勧めします。
 
 1. [Add Storage System]\(ストレージ システムの追加\) で、追加するストレージ システムの情報、SnapCenter のユーザー名とパスワードを入力し、 **[Submit]\(送信\)** を選択します。
 
-   :::image type="content" source="./media/snapcenter/new-storage-connection.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="./media/snapcenter/new-storage-connection.png" alt-text="新しいストレージ接続":::
 
    >[!NOTE]
    >既定では、テナントごとに 1 つの SVM があります。  複数のテナントがある場合は、SnapCenter のここですべての SVM を構成することをお勧めします。 
 
 1. SnapCenter で **[Hosts]\(ホスト\)** を選択し、 **[+Add]\(+ 追加\)** を選択し、HANA プラグインと HANA DB ホストを設定します。  SnapCenter の最新バージョンによって、ホスト上の HANA データベースが自動的に検出されます。
 
-   :::image type="content" source="media/snapcenter/managed-hosts-new-host.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する" lightbox="media/snapcenter/managed-hosts-new-host.png":::
+   :::image type="content" source="media/snapcenter/managed-hosts-new-host.png" alt-text="SnapCenter で、[Hosts]\(ホスト\) を選択し、[Add]\(追加\) を選択します。" lightbox="media/snapcenter/managed-hosts-new-host.png":::
 
 1. 新しいホストの情報を指定します。
    1. ホストの種類に対応するオペレーティング システムを選択します。
@@ -557,7 +558,7 @@ SnapCenter をインストールする前に、「[SAP HANA Backup/Recovery with
    1. 使用する資格情報を指定します。
    1. **[Microsoft Windows]** と **[SAP HANA]** のオプションを選択し、 **[Submit]\(送信\)** を選択します。
 
-   :::image type="content" source="media/snapcenter/add-new-host-operating-system-credentials.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/add-new-host-operating-system-credentials.png" alt-text="新しいホストの情報":::
 
    >[!IMPORTANT]
    >最初のノードをインストールする前に、SnapCenter では、ルート以外のユーザーがデータベースにプラグインをインストールできます。  ルート以外のユーザーを有効にする方法については、「[Adding a non-root user and configuring sudo privileges (ルート以外のユーザーの追加と sudo 特権の構成)](https://library.netapp.com/ecmdocs/ECMLP2590889/html/GUID-A3EEB5FC-242B-4C2C-B407-510E48A8F131.html)」を参照してください。
@@ -566,7 +567,7 @@ SnapCenter をインストールする前に、「[SAP HANA Backup/Recovery with
 
 1. プラグインがインストールされたら、SnapCenter で **[Hosts]\(ホスト\)** を選択し、 **[+Add]\(+ 追加\)** を選択して HANA ノードを追加します。
 
-   :::image type="content" source="media/snapcenter/add-hana-node.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する" lightbox="media/snapcenter/add-hana-node.png":::
+   :::image type="content" source="media/snapcenter/add-hana-node.png" alt-text="HANA ノードを追加する" lightbox="media/snapcenter/add-hana-node.png":::
 
 1. HANA ノードの情報を指定します。
    1. ホストの種類に対応するオペレーティング システムを選択します。
@@ -574,15 +575,15 @@ SnapCenter をインストールする前に、「[SAP HANA Backup/Recovery with
    1. **+** を選択して、HANA DB ホスト オペレーティング システム上で構成した資格情報を追加してから、 **[OK]** を選択します。
    1. **[SAP HANA]** を選択し、 **[Submit]\(送信\)** を選択します。
 
-   :::image type="content" source="media/snapcenter/add-hana-node-details.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/add-hana-node-details.png" alt-text="SAP HANA ノードの詳細":::
 
 1. フィンガープリントを確認し、 **[Confirm and Submit]\(確認と送信\)** を選択します。
 
-   :::image type="content" source="media/snapcenter/confirm-submit-fingerprint.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/confirm-submit-fingerprint.png" alt-text="フィンガープリントの確認と送信":::
 
 1. HANA ノードのシステム データベースで、 **[Security]\(セキュリティ\)**  >  **[Users]\(ユーザー\)**  >  **[SNAPCENTER]** を選択します。
 
-   :::image type="content" source="media/snapcenter/create-snapcenter-user-hana-system-db.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/create-snapcenter-user-hana-system-db.png" alt-text="HANA (システム データベース) で SnapCenter ユーザーを作成する":::
 
 
 
@@ -595,15 +596,15 @@ HSR を構成した場合は、システムを手動で構成する必要があ�
 
 1. SnapCenter で、 **[Resources]\(リソース\)** と **[SAN HANA]** (上部にあります) を選択し、 **[+Add SAP HANA Database]\(+ SAP HANA データベースの追加\)** (右側にあります) を選択します。
 
-   :::image type="content" source="media/snapcenter/manual-hana-setup.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する" lightbox="media/snapcenter/manual-hana-setup.png":::
+   :::image type="content" source="media/snapcenter/manual-hana-setup.png" alt-text="HANA の手動設定" lightbox="media/snapcenter/manual-hana-setup.png":::
 
 1. Linux ホスト、またはプラグインがインストールされているホスト上で構成されている HANA 管理者ユーザーのリソースの詳細を指定します。 バックアップは、Linux システム上のプラグインから管理されます。
 
-   :::image type="content" source="media/snapcenter/provide-resource-details-sap-hana-database.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/provide-resource-details-sap-hana-database.png" alt-text="Linux ホスト上に構成されている HANA 管理者ユーザーのリソースの詳細を指定します。":::
 
 1. スナップショットを作成する必要のあるデータ ボリュームを選択し、 **[Save]\(保存\)** を選択し、 **[Finish]\(完了\)** を選択します。
 
-   :::image type="content" source="media/snapcenter/provide-storage-footprint.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/provide-storage-footprint.png" alt-text="スナップショットを作成する必要のあるデータ ボリュームを選択し、[Save]\(保存\) を選択し、[Finish]\(完了\) を選択します。":::
 
 ### <a name="create-a-snapshot-policy"></a>スナップショット ポリシーを作成する
 
@@ -611,53 +612,53 @@ SnapCenter を使用して SAP HANA データベース リソースをバック�
 
 1. SnapCenter で **[Resources]\(リソース\)** を選択し、データベースを選択します。
 
-   :::image type="content" source="media/snapcenter/select-database-create-policy.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/select-database-create-policy.png" alt-text="SnapCenter で [Resources]\(リソース\) を選択し、データベースを選択します。":::
 
 1. 構成ウィザードのワークフローに従って、スナップショット スケジューラを構成します。
 
-   :::image type="content" source="media/snapcenter/follow-workflow-configuration-wizard.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する" lightbox="media/snapcenter/follow-workflow-configuration-wizard.png":::
+   :::image type="content" source="media/snapcenter/follow-workflow-configuration-wizard.png" alt-text="構成ウィザードのワークフローに従って、スナップショット スケジューラを構成します。" lightbox="media/snapcenter/follow-workflow-configuration-wizard.png":::
 
 1. 事前と事後のコマンドと特別な SSL キーを構成するためのオプションを指定します。  この例では、特別な設定を使用していません。
 
-   :::image type="content" source="media/snapcenter/configuration-options-pre-post-commands.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する" lightbox="media/snapcenter/configuration-options-pre-post-commands.png":::
+   :::image type="content" source="media/snapcenter/configuration-options-pre-post-commands.png" alt-text="事前と事後のコマンドと特別な SSL キーを構成するためのオプションを指定します。" lightbox="media/snapcenter/configuration-options-pre-post-commands.png":::
 
 1. **[Add]\(追加\)** を選択して、他の HANA データベースにも使用できるスナップショット ポリシーを作成します。 
 
-   :::image type="content" source="media/snapcenter/select-one-or-more-policies.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/select-one-or-more-policies.png" alt-text="[Add]\(追加\) を選択して、他の HANA データベースにも使用できるスナップショット ポリシーを作成します。":::
 
 1. ポリシー名と説明を入力します。
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy.png" alt-text="ポリシー名と説明を入力します。":::
 
 
 1. バックアップの種類と頻度を選択します。
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-settings.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-settings.png" alt-text="バックアップの種類と頻度を選択します。":::
 
 1. **[On demand backup retention settings]\(オンデマンドのバックアップ データ保持の設定\)** を構成します。  この例では、保持するスナップショットのコピーを 3 つに設定しています。
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-retention-settings.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-retention-settings.png" alt-text="[On demand backup retention settings]\(オンデマンド バックアップのデータ保持の設定\) を構成します。":::
 
 1. **[Hourly retention settings]\(時間単位のデータ保持の設定\)** を構成します。 
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-hourly-retention-settings.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-hourly-retention-settings.png" alt-text="[Hourly retention settings]\(時間単位のデータ保持の設定\) を構成します。":::
 
 1. SnapMirror 設定が構成されている場合は、 **[Update SnapMirror after creating a local SnapShot copy]\(ローカル SnapShot コピーの作成後に SnapMirror を更新する\)** を選択します。
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-snapmirror.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-snapmirror.png" alt-text="SnapMirror が必要な場合は、[Update SnapMirror after creating a local SnapShot copy]\(ローカル SnapShot コピーの作成後に SnapMirror を更新する\) を選択します。":::
 
 1. **[Finish]\(完了\)** を選択して、新しいバックアップ ポリシーの概要を確認します。 
 1. **[Configure Schedule]\(スケジュールの構成\)** で、 **[Add]\(追加\)** を選択します。
 
-   :::image type="content" source="media/snapcenter/configure-schedules-for-selected-policies.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/configure-schedules-for-selected-policies.png" alt-text="[Configure Schedule]\(スケジュールの構成\) で、[Add]\(追加\) を選択します。":::
 
 1. **[Start date]\(開始日\)** 、 **[Expires on]\(有効期限\)** の日付、頻度を選択します。
 
-   :::image type="content" source="media/snapcenter/add-schedules-for-policy.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/add-schedules-for-policy.png" alt-text="[Start date]\(開始日\)、[Expires on]\(有効期限\) の日付、頻度を選択します。":::
 
 1. 通知のメールの詳細を指定します。
 
-   :::image type="content" source="media/snapcenter/backup-policy-notification-settings.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/backup-policy-notification-settings.png" alt-text="通知のメールの詳細を指定します。":::
 
 1.  **[Finish]\(完了\)** を選択してバックアップ ポリシーを作成します。
 
@@ -704,11 +705,11 @@ SnapCenter を使用してデータベースを復元することができます
 
 1. SnapCenter を介してデータベース ファイルを復元します。  データベースを選択し、 **[Restore]\(復元\)** を選択します。  
 
-   :::image type="content" source="media/snapcenter/restore-database-via-snapcenter.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する" lightbox="media/snapcenter/restore-database-via-snapcenter.png":::
+   :::image type="content" source="media/snapcenter/restore-database-via-snapcenter.png" alt-text="データベースを選択し、[Restore]\(復元\) を選択します。" lightbox="media/snapcenter/restore-database-via-snapcenter.png":::
 
 1. 復元の種類を選択します。  この例では、完全なリソースを復元しています。 
 
-   :::image type="content" source="media/snapcenter/restore-database-select-restore-type.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/restore-database-select-restore-type.png" alt-text="復元の種類を選択します。":::
 
    >[!NOTE]
    >既定の設定では、ディスク上のスナップショットからローカル復元を実行するコマンドを指定する必要はありません。 
@@ -720,23 +721,23 @@ SnapCenter を使用してデータベースを復元することができます
    
    SnapCenter によってデータが元の場所に復元されるため、HANA で復元プロセスを開始できます。 また、SnapCenter ではバックアップ カタログを変更できない (データベースがダウンしている) ので、警告が表示されます。
 
-   :::image type="content" source="media/snapcenter/restore-database-job-details-warning.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/restore-database-job-details-warning.png" alt-text="SnapCenter ではバックアップ カタログを変更できないので、警告が表示されます。":::
 
 1. すべてのデータベース ファイルが復元されるので、HANA で復元プロセスを開始します。 HANA Studio の **[Systems]\(システム\)** で、システム データベースを右クリックし、 **[Backup and Recovery]\(バックアップと回復\)**  >  **[Recover System Database]\(システム データベースの回復\)** を選択します。
 
-   :::image type="content" source="media/snapcenter/hana-studio-backup-recovery.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/hana-studio-backup-recovery.png" alt-text="HANA で復元プロセスを開始します。":::
 
 1. 回復の種類を選択します。
 
-   :::image type="content" source="media/snapcenter/restore-database-select-recovery-type.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/restore-database-select-recovery-type.png" alt-text="回復の種類を選択します。":::
 
 1. バックアップ カタログの場所を選択します。
 
-   :::image type="content" source="media/snapcenter/restore-database-select-location-backup-catalog.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/restore-database-select-location-backup-catalog.png" alt-text="バックアップ カタログの場所を選択します。":::
 
 1. SAP HANA データベースを復旧するバックアップを選択します。
 
-   :::image type="content" source="media/snapcenter/restore-database-select-backup.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する":::
+   :::image type="content" source="media/snapcenter/restore-database-select-backup.png" alt-text="SAP HANA データベースを復旧するバックアップを選択します。":::
 
    データベースが復旧されると、 **[Recovery to Time]\(指定した時刻に復旧\)** と **[Recovered to Log Position]\(指定したログ位置に復旧\)** のスタンプが付いたメッセージが表示されます。
 
@@ -753,7 +754,7 @@ SnapCenter を使用してデータベースを復元することができます
 
 クローンする前に、ソース データベースと同じ HANA バージョンをインストールする必要があります。 SID と ID は異なる場合があります。 
 
-:::image type="content" source="media/snapcenter/system-cloning-diagram.png" alt-text="ユーザー ストレージ設定のサポート ケースを作成する" lightbox="media/snapcenter/system-cloning-diagram.png" border="false":::
+:::image type="content" source="media/snapcenter/system-cloning-diagram.png" alt-text="SAP HANA システムのクローン" lightbox="media/snapcenter/system-cloning-diagram.png" border="false":::
 
 1. /usr/sap/H34/HDB40 から H34 データベースの HANA データベース ユーザー ストアを作成します。
 

@@ -11,11 +11,11 @@ ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
 ms.openlocfilehash: d39e00a80ab167936a749c73867b4343e6ed9d76
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358815"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006440"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>チュートリアル:Azure AD から SAP SuccessFactors への属性の書き戻しを構成する
 このチュートリアルの目的は、Azure AD から SAP SuccessFactors Employee Central に属性を書き戻すための手順を説明することです。 
@@ -57,7 +57,7 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 ### <a name="create-an-api-permissions-role"></a>API アクセス許可ロールを作成する
 
 1. Admin Center にアクセスできるユーザーアカウントで SAP SuccessFactors にログインします。
-1. " *Manage Permission Roles* " を検索し、検索結果から **[Manage Permission Roles]\(アクセス許可ロールの管理\)** を選択します。
+1. "*Manage Permission Roles*" を検索し、検索結果から **[Manage Permission Roles]\(アクセス許可ロールの管理\)** を選択します。
 
    ![アクセス許可ロールを管理する](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
 
@@ -85,7 +85,7 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>API ユーザーのアクセス許可グループを作成する
 
-1. SuccessFactors Admin Center で、" *Manage Permission Groups* " を検索し、検索結果から **[Manage Permission Groups]\(アクセス許可グループの管理\)** を選択します。
+1. SuccessFactors Admin Center で、"*Manage Permission Groups*" を検索し、検索結果から **[Manage Permission Groups]\(アクセス許可グループの管理\)** を選択します。
 
    > [!div class="mx-imgBorder"]
    > ![アクセス許可グループを管理する](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
@@ -109,7 +109,7 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 
 ### <a name="grant-permission-role-to-the-permission-group"></a>許可グループに許可ロールを付与する
 
-1. SuccessFactors Admin Center で、" *Manage Permission Roles* " を検索し、検索結果から **[Manage Permission Roles]\(アクセス許可ロールの管理\)** を選択します。
+1. SuccessFactors Admin Center で、"*Manage Permission Roles*" を検索し、検索結果から **[Manage Permission Roles]\(アクセス許可ロールの管理\)** を選択します。
 1. **[Permission Role List]\(アクセス許可ロール一覧\)** から、API 使用アクセス許可用に作成したロールを選択します。
 1. **[Grant this role to]\(このロールに付与するアクセス許可\)** で、 **[Add]\(追加\)** ボタンをクリックします。
 1. ドロップダウン メニューから **[Permission Group]\(アクセス許可グループ\)** を選択し、 **[Select]\(選択\)** をクリックして [Groups]\(グループ\) ウィンドウを開き、先ほど作成したグループを検索して選択します。 
@@ -125,16 +125,16 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 
 ## <a name="preparing-for-successfactors-writeback"></a>SuccessFactors Writeback の準備
 
-SuccessFactors Writeback プロビジョニング アプリでは、Employee Central でメール アドレスと電話番号を設定するために、特定の " *コード* " の値が使用されます。 これらの " *コード* " の値は、属性マッピング テーブルの定数値として設定され、SuccessFactors のインスタンスごとに異なります。 このセクションでは、これらの " *コード* " 値をキャプチャする手順について説明します。
+SuccessFactors Writeback プロビジョニング アプリでは、Employee Central でメール アドレスと電話番号を設定するために、特定の "*コード*" の値が使用されます。 これらの "*コード*" の値は、属性マッピング テーブルの定数値として設定され、SuccessFactors のインスタンスごとに異なります。 このセクションでは、これらの "*コード*" 値をキャプチャする手順について説明します。
 
    > [!NOTE]
    > このセクションの手順を完了するには、SuccessFactors 管理者に協力を要請してください。 
 
 ### <a name="identify-email-and-phone-number-picklist-names"></a>メール アドレスと電話番号の候補リストの名前を識別する 
 
-SAP SuccessFactors では、" *候補リスト* " は、ユーザーが選択できるオプションの構成可能なセットです。 さまざまな種類のメール アドレスと電話番号 (例: 勤務先、個人、その他) は、候補リストを使用して表されます。 この手順では、メール アドレスと電話番号の値を格納するために、SuccessFactors テナントで構成されている候補リストを識別します。 
+SAP SuccessFactors では、"*候補リスト*" は、ユーザーが選択できるオプションの構成可能なセットです。 さまざまな種類のメール アドレスと電話番号 (例: 勤務先、個人、その他) は、候補リストを使用して表されます。 この手順では、メール アドレスと電話番号の値を格納するために、SuccessFactors テナントで構成されている候補リストを識別します。 
  
-1. SuccessFactors Admin Center で、" *Manage business configuration* " (勤務先の構成の管理) を検索します。 
+1. SuccessFactors Admin Center で、"*Manage business configuration*" (勤務先の構成の管理) を検索します。 
 
    > [!div class="mx-imgBorder"]
    > ![Manage business configuration (勤務先の構成の管理)](./media/sap-successfactors-inbound-provisioning/manage-business-config.png)
@@ -144,7 +144,7 @@ SAP SuccessFactors では、" *候補リスト* " は、ユーザーが選択で
    > [!div class="mx-imgBorder"]
    > ![メール アドレス情報の取得](./media/sap-successfactors-inbound-provisioning/get-email-info.png)
 
-1. **[email-type]** の詳細ページで、このフィールドに関連付けられている候補リストの名前を書き留めます。 既定では、 **ecEmailType** です。 ただし、テナントによって異なる場合があります。 
+1. **[email-type]** の詳細ページで、このフィールドに関連付けられている候補リストの名前を書き留めます。 既定では、**ecEmailType** です。 ただし、テナントによって異なる場合があります。 
 
    > [!div class="mx-imgBorder"]
    > ![メール アドレスの候補リストの識別](./media/sap-successfactors-inbound-provisioning/identify-email-picklist.png)
@@ -154,7 +154,7 @@ SAP SuccessFactors では、" *候補リスト* " は、ユーザーが選択で
    > [!div class="mx-imgBorder"]
    > ![電話情報の取得](./media/sap-successfactors-inbound-provisioning/get-phone-info.png)
 
-1. **[phone-type]** の詳細ページで、このフィールドに関連付けられている候補リストの名前を書き留めます。 既定では、 **ecPhoneType** です。 ただし、テナントによって異なる場合があります。 
+1. **[phone-type]** の詳細ページで、このフィールドに関連付けられている候補リストの名前を書き留めます。 既定では、**ecPhoneType** です。 ただし、テナントによって異なる場合があります。 
 
    > [!div class="mx-imgBorder"]
    > ![電話の候補リストを識別する](./media/sap-successfactors-inbound-provisioning/identify-phone-picklist.png)
@@ -271,7 +271,7 @@ SAP SuccessFactors では、" *候補リスト* " は、ユーザーが選択で
    > [!TIP]
    > 初めてプロビジョニング アプリを構成するときは、属性マッピングと式をテストして検証し、目的の結果が得られていることを確認する必要があります。 Microsoft は、Azure Active Directory の少数のテスト ユーザーを使用してマッピングをテストする場合には、 **[ソース オブジェクト スコープ]** の下のスコープ フィルターを使用するようお勧めします。 マッピングが機能していることを確認したら、フィルターを削除するか、徐々に拡張してより多くのユーザーを含めることができます。
 
-1. **ターゲットオブジェクトアクション** フィールドでは、 **更新** 操作のみがサポートされます。
+1. **ターゲットオブジェクトアクション** フィールドでは、**更新** 操作のみがサポートされます。
 
 1. **[属性マッピング]** セクションのマッピング テーブルでは、次の Azure Active Directory 属性を SuccessFactors にマップできます。 次の表では、書き戻し属性をマップする方法に関するガイダンスを示します。 
 
@@ -308,7 +308,7 @@ SAP SuccessFactors では、" *候補リスト* " は、ユーザーが選択で
    > **[SuccessFactors の属性リストを編集します]** オプションが Azure portal に表示されない場合は、URL *https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true* を使用してページにアクセスします。 
 
 1. このビューの **[API 式]** 列には、コネクタによって使用される JSON パス式が表示されます。 
-1. 環境に対応する ID 値 ( *businessPhoneType* と *cellPhoneType* ) を使用するように、勤務先電話と携帯電話の JSON パス式を更新します。 
+1. 環境に対応する ID 値 (*businessPhoneType* と *cellPhoneType*) を使用するように、勤務先電話と携帯電話の JSON パス式を更新します。 
 
     >[!div class="mx-imgBorder"]
     >![電話の JSON パスの変更](./media/sap-successfactors-inbound-provisioning/phone-json-path-change.png)
@@ -325,8 +325,8 @@ SuccessFactors プロビジョニング アプリの構成が完了すると、A
 1. **[プロビジョニング]** タブで、 **[プロビジョニングの状態]** を **[ON]** に設定します。
 
 1. **[スコープ]** を選択します。 以下のオプションのいずれかを選択できます。 
-   * **すべてのユーザーとグループを同期する** :すべてのユーザーのマップされた属性を **[マッピング]** の **[ソース オブジェクト スコープ]** に定義されているスコープ規則に従って Azure AD から SuccessFactors に書き戻す予定の場合、このオプションを使用します。 
-   * **割り当てられたユーザーとグループのみを同期する** : **[アプリケーション]** の **[管理]** の **[ユーザーとグループ]** メニュー オプションでこのアプリケーションに割り当てたユーザーのみのマップされた属性を書き戻す予定の場合、このオプションを選択します。 これらのユーザーは、 **[マッピング]** の **[ソース オブジェクト スコープ]** で定義されているスコープ規則にも制約されます。
+   * **すべてのユーザーとグループを同期する**:すべてのユーザーのマップされた属性を **[マッピング]** の **[ソース オブジェクト スコープ]** に定義されているスコープ規則に従って Azure AD から SuccessFactors に書き戻す予定の場合、このオプションを使用します。 
+   * **割り当てられたユーザーとグループのみを同期する**: **[アプリケーション]** の **[管理]** の **[ユーザーとグループ]** メニュー オプションでこのアプリケーションに割り当てたユーザーのみのマップされた属性を書き戻す予定の場合、このオプションを選択します。 これらのユーザーは、 **[マッピング]** の **[ソース オブジェクト スコープ]** で定義されているスコープ規則にも制約されます。
 
    > [!div class="mx-imgBorder"]
    > ![書き戻しのスコープを選択する](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)

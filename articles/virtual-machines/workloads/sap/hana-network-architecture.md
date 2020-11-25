@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b99e744fb949f707467286c3d79de0f4e76a49c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf9fd361dea43b1cfa6ae45710a3a7bbf4e4de03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835512"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006287"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (L インスタンス) のネットワーク アーキテクチャ
 
@@ -135,7 +136,7 @@ HANA L インスタンスと Azure の間で大量のデータを転送するた
 
 * ディザスター リカバリーのために 2 つの異なる Azure リージョンにデプロイされている HANA L インスタンス ユニットがある場合、以前は同じ一時的なルーティングの制限が適用されました。 つまり、一方のリージョン (例: 米国西部) の HANA L インスタンス ユニットの IP アドレスが、もう一方のリージョン (例: 米国東部) でデプロイされている HANA L インスタンス ユニットにルーティングされることはありませんでした。 この制限は、リージョン間の Azure ネットワーク ピアリング、または HANA L インスタンス ユニットを仮想ネットワークに接続する ExpressRoute 回線の交差接続の使用とは無関係でした。 図については、「複数のリージョンでの HANA L インスタンス ユニットの使用」の図を参照してください。 デプロイ済みのアーキテクチャにはこのような制限があったため、HANA システム レプリケーションをディザスター リカバリー機能としてすぐに使用することはできませんでした。 最近の変更については、「複数のリージョンでの HANA L インスタンス ユニットの使用」セクションを参照してください。 
 
-* SAP HANA on Azure (L インスタンス) ユニットには、お客様が HANA L インスタンスのデプロイを要求したときに提出したサーバー IP プールのアドレス範囲から IP アドレスが割り当てられます。 詳細については、「[Azure での SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 この IP アドレスには、Azure 仮想ネットワークを HANA L インスタンスに接続する回線と Azure サブスクリプションを使用してアクセスできます。 サーバー IP プールのアドレス範囲から割り当てられる IP アドレスは、ハードウェア ユニットに直接割り当てられます。 このソリューションの最初のデプロイでこの割り当てが行われるため、NAT を使用した割り当ては*行われません*。 
+* SAP HANA on Azure (L インスタンス) ユニットには、お客様が HANA L インスタンスのデプロイを要求したときに提出したサーバー IP プールのアドレス範囲から IP アドレスが割り当てられます。 詳細については、「[Azure での SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 この IP アドレスには、Azure 仮想ネットワークを HANA L インスタンスに接続する回線と Azure サブスクリプションを使用してアクセスできます。 サーバー IP プールのアドレス範囲から割り当てられる IP アドレスは、ハードウェア ユニットに直接割り当てられます。 このソリューションの最初のデプロイでこの割り当てが行われるため、NAT を使用した割り当ては *行われません*。 
 
 ### <a name="direct-routing-to-hana-large-instances"></a>HANA L インスタンスへの直接ルーティング
 
@@ -179,7 +180,7 @@ ExpressRoute Global Reach を有効にする方法の詳細については、「
 
 
 ## <a name="internet-connectivity-of-hana-large-instance"></a>HANA L インスタンスのインターネット接続
-HANA L インスタンスは、インターネットに直接接続することは*できません*。 たとえば、この制限によって、OS イメージを OS ベンダーに直接登録することができない可能性があります。 ローカルの SUSE Linux Enterprise Server Subscription Management Tool サーバーや Red Hat Enterprise Linux Subscription Manager を使用することが必要になる場合があります。
+HANA L インスタンスは、インターネットに直接接続することは *できません*。 たとえば、この制限によって、OS イメージを OS ベンダーに直接登録することができない可能性があります。 ローカルの SUSE Linux Enterprise Server Subscription Management Tool サーバーや Red Hat Enterprise Linux Subscription Manager を使用することが必要になる場合があります。
 
 ## <a name="data-encryption-between-vms-and-hana-large-instance"></a>VM と HANA L インスタンス間でのデータの暗号化
 HANA L インスタンスと VM 間で転送されるデータは暗号化されません。 ただし、HANA DBMS 側と JDBC/ODBC ベースのアプリケーションとの間でのデータ交換のみを目的としている場合は、トラフィックの暗号化を有効にすることができます。 詳細については、[SAP から提供されているこちらのドキュメント](https://help.sap.com/viewer/102d9916bf77407ea3942fef93a47da8/1.0.11/en-US/dbd3d887bb571014bf05ca887f897b99.html)をご覧ください。

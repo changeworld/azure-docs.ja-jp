@@ -2,15 +2,15 @@
 title: テンプレート スペックの概要
 description: テンプレート スペックを作成し、組織内の他のユーザーと共有する方法について説明します。
 ms.topic: conceptual
-ms.date: 10/02/2020
+ms.date: 11/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: b0dfc41bddccc6b5c5c924168044cffc0aa5e2b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83d5a210a5af538173ad0ca5e4c718363639c40a
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728473"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747402"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager テンプレート スペック (プレビュー)
 
@@ -21,7 +21,7 @@ ms.locfileid: "91728473"
 テンプレート スペックをデプロイするには、PowerShell、Azure CLI、Azure portal、REST およびその他のサポートされている SDK およびクライアントなど、標準の Azure ツールを使用します。 テンプレートの場合と同じコマンドを使用します。
 
 > [!NOTE]
-> Template Specs は現在プレビューの段階です。 使用するには、[待機リストにサインアップする](https://aka.ms/templateSpecOnboarding)必要があります。
+> Template Specs は現在プレビューの段階です。 これを使用するには、最新バージョンの PowerShell または Azure CLI をインストールする必要があります。 Azure PowerShell の場合は、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)を使用します。 Azure CLI の場合は、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
 
 ## <a name="why-use-template-specs"></a>テンプレート スペックを使用する理由は何ですか。
 
@@ -126,7 +126,7 @@ az ts show \
 
 ## <a name="deploy-template-spec"></a>テンプレート スペックをデプロイする
 
-テンプレート スペックを作成すると、そのテンプレート スペックへの**読み取り**アクセス権を持つユーザーは、それをデプロイできます。 アクセスの許可については、「[チュートリアル: Azure PowerShell を使用して Azure リソースへのアクセス権をグループに付与する](../../role-based-access-control/tutorial-role-assignments-group-powershell.md)」を参照してください。
+テンプレート スペックを作成すると、そのテンプレート スペックへの **読み取り** アクセス権を持つユーザーは、それをデプロイできます。 アクセスの許可については、「[チュートリアル: Azure PowerShell を使用して Azure リソースへのアクセス権をグループに付与する](../../role-based-access-control/tutorial-role-assignments-group-powershell.md)」を参照してください。
 
 Template Specs は、ポータル、PowerShell、Azure CLI を通じて、または大規模なテンプレートのデプロイでリンクされたテンプレートとしてデプロイできます。 組織内のユーザーは、Azure 内の任意のスコープ (リソース グループ、サブスクリプション、管理グループ、またはテナント) にテンプレート スペックをデプロイできます。
 

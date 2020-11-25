@@ -7,11 +7,11 @@ ms.date: 11/03/2017
 ms.author: bharatn
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fd8e6dd712801de49971c1ef27cea664d73a4cb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012774"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005913"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric のリバース プロキシ
 Azure Service Fabric に組み込まれたリバース プロキシは、Service Fabric クラスターで実行されているマイクロサービスが HTTP エンドポイントを持つ他のサービスを検出してそのサービスと通信するのに役立ちます。
@@ -73,7 +73,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 
     サービス インスタンス名は、大文字小文字が区別されます。 URL のサービス インスタンス名に使用されている大文字小文字が異なる場合、要求は 404 (Not Found) で失敗します。
 * **Suffix path:** 接続先となるサービスの実際の URL パスです (例: *myapi/values/add/3*)。
-* **PartitionKey:** パーティション分割されたサービスの場合、到達するパーティションの計算済みのパーティション キーです。 これはパーティション ID の GUID では*ありません*。 シングルトン パーティション構成を使用するサービスでは、このパラメーターは不要です。
+* **PartitionKey:** パーティション分割されたサービスの場合、到達するパーティションの計算済みのパーティション キーです。 これはパーティション ID の GUID では *ありません*。 シングルトン パーティション構成を使用するサービスでは、このパラメーターは不要です。
 * **PartitionKind:** サービス パーティション構成です。 これには、"Int64Range" または "Named" を指定できます。 シングルトン パーティション構成を使用するサービスでは、このパラメーターは不要です。
 * **ListenerName**: サービスのエンドポイント。{"Endpoints":{"Listener1":"Endpoint1","Listener2":"Endpoint2" ...}} の形式で指定します。 サービスが複数のエンドポイントを公開している場合、このパラメーターによって、クライアント要求の転送先となるエンドポイントを特定します。 サービスにリスナーが 1 つしかない場合、このパラメーターは省略できます。
 * **TargetReplicaSelector**: ターゲット レプリカまたはインスタンスの選択方法を指定します。
@@ -148,7 +148,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 ```
 ローカル クラスターでは、`Fabric_NodeIPOrFQDN` は既定で "localhost" に設定されます。 `-UseMachineName` パラメーターを使ってローカル クラスターを開始し、コンテナーがノードで実行されているリバース プロキシにアクセスできることを確認します。 詳しくは、「[コンテナーをデバッグするように開発者環境を構成する](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers)」をご覧ください。
 
-Docker Compose コンテナー内で実行される Service Fabric サービスには、特別な docker-compose.yml の*ポート セクション* http: または https: 構成が必要です。 詳細については、[Azure Service Fabric での Docker Compose デプロイのサポート](service-fabric-docker-compose.md)に関するページを参照してください。
+Docker Compose コンテナー内で実行される Service Fabric サービスには、特別な docker-compose.yml の *ポート セクション* http: または https: 構成が必要です。 詳細については、[Azure Service Fabric での Docker Compose デプロイのサポート](service-fabric-docker-compose.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [クラスターでのリバース プロキシの設定と構成](service-fabric-reverseproxy-setup.md)

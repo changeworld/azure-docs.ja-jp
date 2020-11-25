@@ -4,11 +4,11 @@ description: CIS Microsoft Azure Foundations Benchmark ブループリント サ
 ms.date: 10/14/2020
 ms.topic: sample
 ms.openlocfilehash: 6c09e539e192db8422b25079264b9f4e8965d994
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054612"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005607"
 ---
 # <a name="cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark ブループリント サンプル
 
@@ -16,7 +16,7 @@ CIS Microsoft Azure Foundations Benchmark ブループリント サンプルで�
 
 ## <a name="recommendation-mapping"></a>推奨マッピング
 
-[Azure Policy の推奨マッピング](../../policy/samples/cis-azure-1-1-0.md)では、このブループリントに含まれるポリシーの定義について詳しく取り上げると共に、それらの定義が CIS Microsoft Azure Foundations Benchmark v1.1.0 の**コンプライアンス ドメイン**および**コントロール**にどのようにマッピングされるかについて詳しく説明します。 リソースはアーキテクチャに割り当てられると、割り当て済みのポリシー定義に違反していないかどうかを Azure Policy によって評価されます。 詳細については、[Azure Policy](../../policy/overview.md) に関するページをご覧ください。
+[Azure Policy の推奨マッピング](../../policy/samples/cis-azure-1-1-0.md)では、このブループリントに含まれるポリシーの定義について詳しく取り上げると共に、それらの定義が CIS Microsoft Azure Foundations Benchmark v1.1.0 の **コンプライアンス ドメイン** および **コントロール** にどのようにマッピングされるかについて詳しく説明します。 リソースはアーキテクチャに割り当てられると、割り当て済みのポリシー定義に違反していないかどうかを Azure Policy によって評価されます。 詳細については、[Azure Policy](../../policy/overview.md) に関するページをご覧ください。
 
 ## <a name="deploy"></a>配置
 
@@ -24,7 +24,7 @@ Azure Blueprints CIS Microsoft Azure Foundations Benchmark ブループリント
 
 > [!div class="checklist"]
 > - サンプルから新しいブループリントを作成する
-> - サンプルのコピーを**発行済み**としてマークする
+> - サンプルのコピーを **発行済み** としてマークする
 > - ブループリントのコピーを既存のサブスクリプションに割り当てる
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free) を作成してください。
@@ -50,7 +50,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="publish-the-sample-copy"></a>サンプルのコピーを発行する
 
-環境でのブループリント サンプルのコピーの作成が完了しました。 これは**下書き**モードで作成されており、割り当ておよびデプロイの前に**発行**する必要があります。 ブループリント サンプルのコピーは環境やニーズに合わせてカスタマイズできますが、その変更によって CIS Microsoft Azure Foundations Benchmark の推奨事項との整合性が失われる可能性があります。
+環境でのブループリント サンプルのコピーの作成が完了しました。 これは **下書き** モードで作成されており、割り当ておよびデプロイの前に **発行** する必要があります。 ブループリント サンプルのコピーは環境やニーズに合わせてカスタマイズできますが、その変更によって CIS Microsoft Azure Foundations Benchmark の推奨事項との整合性が失われる可能性があります。
 
 1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
@@ -60,7 +60,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="assign-the-sample-copy"></a>サンプルのコピーを割り当てる
 
-正常に**発行**されたブループリント サンプルのコピーは、保存先の管理グループ内のサブスクリプションに割り当てることができます。 この手順では、ブループリント サンプルのコピーの各デプロイを一意にするためのパラメーターを指定します。
+正常に **発行** されたブループリント サンプルのコピーは、保存先の管理グループ内のサブスクリプションに割り当てることができます。 この手順では、ブループリント サンプルのコピーの各デプロイを一意にするためのパラメーターを指定します。
 
 1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
@@ -76,7 +76,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
      - **割り当て名**:名前は、ブループリントの名前に基づいてあらかじめ設定されています。
        必要に応じて変更することも、そのままにしておくこともできます。
      - **[場所]** :マネージド ID を作成するリージョンを選択します。 Azure Blueprint は、この管理対象 ID を使用して、割り当てられたブループリント内にすべての成果物をデプロイします。 詳細については、[Azure リソースの管理対象 ID の概要](../../../active-directory/managed-identities-azure-resources/overview.md)に関するページをご覧ください。
-     - **ブループリント定義ラベル**:ブループリント サンプルのコピーの**発行済み**バージョンを選択します。
+     - **ブループリント定義ラベル**:ブループリント サンプルのコピーの **発行済み** バージョンを選択します。
 
    - ロックの割り当て
 
@@ -93,7 +93,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. すべてのパラメーターの入力が完了したら、ページの下部にある **[割り当て]** を選択します。 ブループリントの割り当てが作成され、アーティファクトのデプロイが開始されます。 デプロイに要する時間は、約 1 時間です。 デプロイの状態を確認するには、ブループリントの割り当てを開きます。
 
 > [!WARNING]
-> Azure Blueprints サービスと、組み込まれているブループリント サンプルは、**無料**でご利用になれます。 Azure リソースは、[製品ごとに課金](https://azure.microsoft.com/pricing/)されます。 このブループリント サンプルでデプロイされるリソースの実行コストを見積もるには、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用します。
+> Azure Blueprints サービスと、組み込まれているブループリント サンプルは、**無料** でご利用になれます。 Azure リソースは、[製品ごとに課金](https://azure.microsoft.com/pricing/)されます。 このブループリント サンプルでデプロイされるリソースの実行コストを見積もるには、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用します。
 
 ### <a name="artifact-parameters-table"></a>アーティファクトのパラメーター表
 

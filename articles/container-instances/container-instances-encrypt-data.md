@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: macolso
 ms.author: macolso
-ms.openlocfilehash: d2cad98267ef1654c4f2d9ad2db75f769dbc0780
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1b73ce5c994231a1c7b2f26ad702f2ad5880ba44
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091357"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686278"
 ---
 # <a name="encrypt-deployment-data"></a>デプロイ データの暗号化
 
@@ -59,7 +59,7 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 
 ### <a name="create-a-key-vault-resource"></a>Key Vault リソースを作成する
 
-[Azure portal](../key-vault/secrets/quick-create-portal.md#create-a-vault)、[CLI](../key-vault/secrets/quick-create-cli.md)、または [PowerShell](../key-vault/secrets/quick-create-powershell.md) を使用して、Azure Key Vault を作成します。 
+[Azure portal](../key-vault/general/quick-create-portal.md)、[Azure CLI](../key-vault/general/quick-create-cli.md)、または [Azure PowerShell](../key-vault/general/quick-create-powershell.md) を使用して、Azure Key Vault を作成します。
 
 キー コンテナーのプロパティについては、次のガイドラインを使用します。 
 * 名前:一意の名前が必要です。 
@@ -84,7 +84,7 @@ ACI サービスによるキーへのアクセスを許可するための、新�
 * キーが生成されたら、キー コンテナー リソース ブレードに戻り、[設定] の下にある **[アクセス ポリシー]** をクリックします。
 * キー コンテナーの [アクセス ポリシー] ページで、 **[アクセス ポリシーの追加]** をクリックします。
 * *[キーのアクセス許可]* を、 **[取得]** と **[キーの折り返しを解除]** を含むように設定します ![キーのアクセス許可を設定する](./media/container-instances-encrypt-data/set-key-permissions.png)
-* *[プリンシパルの選択]* で、 **Azure Container Instance Service** を選択します
+* *[プリンシパルの選択]* で、**Azure Container Instance Service** を選択します
 * 下部にある **[追加]** をクリックします 
 
 アクセス ポリシーがお使いのキー コンテナーのアクセス ポリシーに表示されるようになります。

@@ -3,14 +3,14 @@ title: Azure Functions 用 JavaScript 開発者向けリファレンス
 description: JavaScript を使用して関数を開発する方法について説明します。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5b9ffdec83fb613b7df0b5a3227ca66c55e54fe9
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: d32c63332c530ec05eb9f93661a8f2a0c5d8264c
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422554"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94743322"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -107,13 +107,13 @@ JavaScript では、[バインド](functions-triggers-bindings.md)が構成さ�
 
 ### <a name="inputs"></a>入力
 Azure Functions では、入力は、トリガー入力と追加入力という 2 つのカテゴリに分けられます。 関数は、トリガーと他の入力バインド (`direction === "in"` のバインド) を 3 つの方法で読み取ることができます。
- - **_[推奨]_ 関数に渡されるパラメーターを使用します。** それらは、 *function.json* に定義されている順序で関数に渡されます。 *function.json* で定義されている `name` プロパティは、パラメーターの名前と一致する方が望ましいですが、必ずしもそうする必要はありません。
+ - **_[推奨]_ 関数に渡されるパラメーターを使用します。** それらは、*function.json* に定義されている順序で関数に渡されます。 *function.json* で定義されている `name` プロパティは、パラメーターの名前と一致する方が望ましいですが、必ずしもそうする必要はありません。
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
    
- - **[`context.bindings`](#contextbindings-property) オブジェクトのメンバーを使用します。** 各メンバーの名前は、 *function.json* で定義されている `name` プロパティによって決まります。
+ - **[`context.bindings`](#contextbindings-property) オブジェクトのメンバーを使用します。** 各メンバーの名前は、*function.json* で定義されている `name` プロパティによって決まります。
  
    ```javascript
    module.exports = async function(context) { 
@@ -134,11 +134,11 @@ Azure Functions では、入力は、トリガー入力と追加入力という 
    ```
 
 ### <a name="outputs"></a>出力
-関数は、さまざまな方法で出力 (`direction === "out"` のバインド) に書き込むことができます。 どの場合も、 *function.json* で定義されているバインドの `name` プロパティは、関数に書き込むオブジェクトのメンバーの名前に対応しています。 
+関数は、さまざまな方法で出力 (`direction === "out"` のバインド) に書き込むことができます。 どの場合も、*function.json* で定義されているバインドの `name` プロパティは、関数に書き込むオブジェクトのメンバーの名前に対応しています。 
 
 次の方法のいずれかで (これらの方法を組み合わせることはできません)、出力バインドにデータを割り当てることができます。
 
-- **_[出力が複数の場合に推奨]_ オブジェクトを返します。** 非同期関数または Promise を返す関数を使用している場合は、割り当てられた出力データを含むオブジェクトを返すことができます。 次の例の出力バインドは、 *function.json* で "httpResponse" および "queueOutput" という名前が付けられています。
+- **_[出力が複数の場合に推奨]_ オブジェクトを返します。** 非同期関数または Promise を返す関数を使用している場合は、割り当てられた出力データを含むオブジェクトを返すことができます。 次の例の出力バインドは、*function.json* で "httpResponse" および "queueOutput" という名前が付けられています。
 
   ```javascript
   module.exports = async function(context) {
@@ -294,7 +294,7 @@ context.log(message)
 
 ## <a name="write-trace-output-to-logs"></a>トレース出力をログに書き込む
 
-Functions で、`context.log` メソッドを使用してトレース出力をログとコンソールに書き込みます。 `context.log()` を呼び出すと、既定のトレース レベルである、" _情報_ " トレース レベルでログにメッセージが書き込まれます。 Functions は Azure Application Insights と統合されているため、関数アプリのログをより適切にキャプチャすることができます。 Azure Monitor の一部である Application Insights では、アプリケーション テレメトリとトレース出力の両方を収集、視覚的に表示、分析するための機能を使用できます。 詳細については、「[Azure Functions の監視](functions-monitoring.md)」を参照してください。
+Functions で、`context.log` メソッドを使用してトレース出力をログとコンソールに書き込みます。 `context.log()` を呼び出すと、既定のトレース レベルである、"_情報_" トレース レベルでログにメッセージが書き込まれます。 Functions は Azure Application Insights と統合されているため、関数アプリのログをより適切にキャプチャすることができます。 Azure Monitor の一部である Application Insights では、アプリケーション テレメトリとトレース出力の両方を収集、視覚的に表示、分析するための機能を使用できます。 詳細については、「[Azure Functions の監視](functions-monitoring.md)」を参照してください。
 
 次の例では、情報トレース レベルで呼び出し ID を含む、ログを書き込んでいます。
 
@@ -325,10 +325,10 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 
 | メソッド                 | 説明                                |
 | ---------------------- | ------------------------------------------ |
-| **error( _message_ )**   | ログにエラーレベルのイベントを書き込みます。   |
-| **warn( _message_ )**    | 警告レベルのイベントをログに書き込みます。 |
-| **info( _message_ )**    | 情報レベルのログ、またはそれ以下に書き込みます。    |
-| **verbose( _message_ )** | 詳細なレベルのログに書き込みます。           |
+| **error(_message_)**   | ログにエラーレベルのイベントを書き込みます。   |
+| **warn(_message_)**    | 警告レベルのイベントをログに書き込みます。 |
+| **info(_message_)**    | 情報レベルのログ、またはそれ以下に書き込みます。    |
+| **verbose(_message_)** | 詳細なレベルのログに書き込みます。           |
 
 次の例では、情報レベルではなく、警告トレース レベルで同じログを書き込みます。
 
@@ -358,7 +358,7 @@ Fuctions を使用して、ログまたはコンソールに書き込むため�
 }  
 ```
 
-**consoleLevel** の値は、`context.log` メソッドの名前に対応します。 コンソールへのすべてのトレース ログ記録を無効にするには、 **consoleLevel** を _off_ に設定します。 詳細については、[host.json v1.x のリファレンス](functions-host-json-v1.md)を参照してください。
+**consoleLevel** の値は、`context.log` メソッドの名前に対応します。 コンソールへのすべてのトレース ログ記録を無効にするには、**consoleLevel** を _off_ に設定します。 詳細については、[host.json v1.x のリファレンス](functions-host-json-v1.md)を参照してください。
 
 ---
 
@@ -508,12 +508,20 @@ FUNCTIONS_WORKER_PROCESS_COUNT は、要求に応じてアプリケーション�
 | Functions バージョン | Node バージョン (Windows) | Node バージョン (Linux) |
 |---|---| --- |
 | 1.x | 6.11.2 (ランタイムによりロック) | 該当なし |
-| 2.x  | ~8<br/>~10 (推奨)<br/>~12<sup>*</sup> | ~8 (推奨)<br/>~10  |
-| 3.x | ~10<br/>~12 (推奨)  | ~10<br/>~12 (推奨) |
+| 2.x  | `~8`<br/>`~10` (推奨)<br/>`~12` | `node|8`<br/>`node|10` (推奨)  |
+| 3.x | `~10`<br/>`~12` (推奨)<br/>`~14` (プレビュー)  | `node|10`<br/>`node|12` (推奨)<br/>`node|14` (プレビュー) |
 
-<sup>*</sup>Node ~12 は現在、Functions ランタイムのバージョン 2.x で許可されています。 ただし、最適なパフォーマンスを得るには、Node ~12 の Functions ランタイム バージョン 3.x を使用することをお勧めします。 
+ランタイムが使用している現在のバージョンを確認するには、任意の関数から `process.version` をログに記録します。
 
-ランタイムが使用している現在のバージョンを確認するには、上記のアプリ設定を調べるか、または任意の関数から `process.version` を出力します。 WEBSITE_NODE_DEFAULT_VERSION [アプリ設定](functions-how-to-use-azure-function-app-settings.md#settings)を、サポートされている LTS バージョン (`~10` など) に設定して、Azure のバージョンをターゲットにします。
+### <a name="setting-the-node-version"></a>Node のバージョンを設定する
+
+Windows 関数アプリの場合は、`WEBSITE_NODE_DEFAULT_VERSION` [アプリ設定](functions-how-to-use-azure-function-app-settings.md#settings)をサポートされている LTS バージョン (`~12` など) に設定して、Azure のバージョンをターゲットにします。
+
+Linux 関数アプリの場合は、次の Azure CLI コマンドを実行して、Node のバージョンを更新します。
+
+```bash
+az functionapp config set --linux-fx-version "node|12" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
+```
 
 ## <a name="dependency-management"></a>依存関係の管理
 JavaScript コードでコミュニティ ライブラリを使用するには、次の例で示すように、Azure 内の関数アプリにすべての依存関係がインストールされている必要があります。
@@ -550,26 +558,47 @@ module.exports = function(context) {
 3. `D:\home\site\wwwroot` に移動し、ページの上半分にある **wwwroot** フォルダーに package.json ファイルをドラッグします。  
     関数アプリにファイルをアップロードする方法は、他にもあります。 詳細については、「[関数アプリ ファイルを更新する方法](functions-reference.md#fileupdate)」を参照してください。 
 
-4. package.json ファイルがアップロードされたら、 **Kudu リモート実行コンソール** で `npm install` コマンドを実行します。  
+4. package.json ファイルがアップロードされたら、**Kudu リモート実行コンソール** で `npm install` コマンドを実行します。  
     この操作によって、package.json ファイルに示されているパッケージがダウンロードされ、関数アプリが再起動されます。
 
 ## <a name="environment-variables"></a>環境変数
 
-Functions では、サービス接続文字列などの[アプリ設定](functions-app-settings.md)は、実行中に環境変数として公開されます。 2 つ目と 3 つ目の `context.log()` の呼び出しで示されているように、`process.env`を使用してこれらの設定にアクセスできます。ここでは `AzureWebJobsStorage` と `WEBSITE_SITE_NAME` の環境変数をログに記録します。
+ローカル環境とクラウド環境の両方で、運用シークレット (接続文字列、キー、エンドポイント) や環境設定 (プロファイル変数など) など、独自の環境変数を関数アプリに追加します。 これらの設定には、関数コードで `process.env` を使用してアクセスします。
+
+### <a name="in-local-development-environment"></a>ローカル開発環境
+
+ローカルで実行されている場合は、関数プロジェクトに [`local.settings.json` ファイル](/functions-run-local.md?tabs=node#local-settings-file)が含まれています。このファイルに、`Values` オブジェクトの環境変数が格納されます。 
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "translatorTextEndPoint": "https://api.cognitive.microsofttranslator.com/",
+    "translatorTextKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "languageWorkers__node__arguments": "--prof"
+  }
+}
+```
+
+### <a name="in-azure-cloud-environment"></a>Azure クラウド環境
+
+Azure で実行されている場合は、関数アプリで[アプリケーション設定](functions-app-settings.md) (サービス接続文字列など) を使用し、これらの設定を実行時に環境変数として公開できます。 
+
+[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
+
+### <a name="access-environment-variables-in-code"></a>コードの環境変数にアクセスする
+
+2 つ目と 3 つ目の `context.log()` の呼び出しで示されているように、`process.env` を使用して環境変数としてアプリケーション設定にアクセスします。ここで、`AzureWebJobsStorage` と `WEBSITE_SITE_NAME` の環境変数がログに記録されます。
 
 ```javascript
 module.exports = async function (context, myTimer) {
-    var timeStamp = new Date().toISOString();
 
-    context.log('Node.js timer trigger function ran!', timeStamp);
     context.log("AzureWebJobsStorage: " + process.env["AzureWebJobsStorage"]);
     context.log("WEBSITE_SITE_NAME: " + process.env["WEBSITE_SITE_NAME"]);
 };
 ```
-
-[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
-
-ローカルで実行する場合、アプリ設定は [local.settings.json](functions-run-local.md#local-settings-file) プロジェクト ファイルから読み取られます。
 
 ## <a name="configure-function-entry-point"></a>関数のエントリ ポイントを構成する
 

@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 263a67fd8fba2c336d1ed4d91475386a8ae175dd
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359019"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005794"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Dynamic Signal を構成する
 
@@ -53,13 +53,13 @@ Azure AD で自動ユーザー プロビジョニング用に Dynamic Signal を
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Dynamic Signal** 」と入力し、結果ウィンドウで **[Dynamic Signal]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Dynamic Signal**」と入力し、結果ウィンドウで **[Dynamic Signal]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果リストの Dynamic Signal](common/search-new-app.png)
 
 ## <a name="assigning-users-to-dynamic-signal"></a>Dynamic Signal へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Dynamic Signal へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定したら、次の手順に従って、これらのユーザーやグループを Dynamic Signal に割り当てることができます。
 

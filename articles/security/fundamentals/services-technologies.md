@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 46b1cbbd620cf2de8d875927f5745e91fcf608c5
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 553cfe0c1a5e7d569c127f23a11f25f4d150b0bc
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410047"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700761"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure で利用できるセキュリティ サービスとテクノロジ
 
@@ -67,7 +67,7 @@ ms.locfileid: "94410047"
 ## <a name="identity-and-access-management"></a>ID 管理とアクセス管理
 |サービス|説明|
 |------|--------|
-| [Azure&nbsp;Role&nbsp;Based&nbsp;Access Control](../../role-based-access-control/role-assignments-portal.md)|組織内でのロールに基づき、必要なリソースのみにアクセスすることをユーザーに許可するアクセス制御機能です。  |
+| [Azure&nbsp; ロールベースの&nbsp;アクセス制御](../../role-based-access-control/role-assignments-portal.md)|組織内でのロールに基づき、必要なリソースのみにアクセスすることをユーザーに許可するアクセス制御機能です。  |
 | [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)|マルチテナントのクラウドベースのディレクトリと Azure 内で複数の ID 管理サービスをサポートするクラウド ベースの認証リポジトリです。  |
 | [Azure Active Directory B2C](../../active-directory-b2c/overview.md)|Azure ベースのアプリケーションの使用時に、顧客のサインアップ、サインイン、プロファイル管理を制御する ID 管理サービスです。   |
 | [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md)| Active Directory Domain Services のクラウドベースのマネージド バージョンです。 |

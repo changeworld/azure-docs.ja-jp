@@ -10,11 +10,11 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 07/20/2020
 ms.openlocfilehash: d50f577a7170982be004cc8957114f79675fbc6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87078620"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006100"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>Azure portal でロジック アプリを管理する
 
@@ -198,7 +198,7 @@ Azure portal で、[1 つのロジック アプリを削除する](#delete-singl
 
    ![Azure portal のロジック アプリのスクリーンショット。[開発ツール] の [バージョン] ページが選択された状態を示す。](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
 
-1. 管理するロジック アプリの**バージョン**を一覧から選択します。 検索バーに**バージョン** ID を入力すると、一覧をフィルター処理できます。
+1. 管理するロジック アプリの **バージョン** を一覧から選択します。 検索バーに **バージョン** ID を入力すると、一覧をフィルター処理できます。
 
 1. **[履歴のバージョン]** ページで、以前のバージョンの詳細が読み取り専用モードで表示されます。 Logic Apps **デザイナー** モードか、**コード ビュー** モードのどちらかを選択できます。
 

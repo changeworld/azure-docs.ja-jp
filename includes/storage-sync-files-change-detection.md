@@ -4,18 +4,18 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: rogarana
-ms.openlocfilehash: 55456a6be938411d3c08a0eaa8fdbfb0844e7129
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1387933dc82c07e73b7715d6593238ea8c993e93
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72391700"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005329"
 ---
-Azure Portal または SMB を使用して Azure ファイル共有に加えられた変更は、サーバー エンドポイントに対する変更とは異なり、検出とレプリケーションが即座に行われることはありません。 Azure Files にはまだ変更通知/ジャーナルがないため、ファイルが変更されたときに自動的に同期セッションを開始する方法はありません。 Windows Server では、Azure File Sync は [Windows USN ジャーナル](https://msdn.microsoft.com/library/windows/desktop/aa363798.aspx)を使用して、ファイルが変更されたときに同期セッションを自動的に開始します。
+Azure Portal または SMB を使用して Azure ファイル共有に加えられた変更は、サーバー エンドポイントに対する変更とは異なり、検出とレプリケーションが即座に行われることはありません。 Azure Files にはまだ変更通知/ジャーナルがないため、ファイルが変更されたときに自動的に同期セッションを開始する方法はありません。 Windows Server では、Azure File Sync は [Windows USN ジャーナル](/windows/win32/fileio/change-journals)を使用して、ファイルが変更されたときに同期セッションを自動的に開始します。
 
-Azure ファイル共有に対する変更を検出するために、Azure File Sync には、*変更検出ジョブ*と呼ばれるスケジュールされたジョブがあります。 変更検出ジョブは、ファイル共有内のすべてのファイルを列挙した後、ファイルの同期バージョンと比較します。 変更検出ジョブによってファイルが変更されていると判断された場合に、Azure File Sync は同期セッションを開始します。 変更検出ジョブは 24 時間ごとに実行されます。 変更検出ジョブは Azure ファイル共有内のすべてのファイルを列挙することで機能するため、変更の検出は、大きな名前空間のほうが小さな名前空間よりも時間がかかります。 大規模な名前空間の場合、変更されたファイルを判断するのに 24 時間ごとに 1 回より長くなる場合があります。
+Azure ファイル共有に対する変更を検出するために、Azure File Sync には、*変更検出ジョブ* と呼ばれるスケジュールされたジョブがあります。 変更検出ジョブは、ファイル共有内のすべてのファイルを列挙した後、ファイルの同期バージョンと比較します。 変更検出ジョブによってファイルが変更されていると判断された場合に、Azure File Sync は同期セッションを開始します。 変更検出ジョブは 24 時間ごとに実行されます。 変更検出ジョブは Azure ファイル共有内のすべてのファイルを列挙することで機能するため、変更の検出は、大きな名前空間のほうが小さな名前空間よりも時間がかかります。 大規模な名前空間の場合、変更されたファイルを判断するのに 24 時間ごとに 1 回より長くなる場合があります。
 
-Azure ファイル共有で変更されたファイルを直ちに同期したければ、**Invoke-AzStorageSyncChangeDetection** PowerShell コマンドレットを使用すると、Azure ファイル共有における変更の検出を手動で開始できます。 このコマンドレットは、なんらかの自動プロセスによって Azure ファイル共有に変更が加えられたり、管理者によって (ファイルやディレクトリを共有に移動するなどの) 変更が実行されたりするシナリオを意図したものです。 エンド ユーザーの変更に関しては、Azure File Sync エージェントを IaaS VM にインストールし、エンド ユーザーに IaaS VM 経由でファイル共有にアクセスしてもらうことをお勧めします。 そのようにすることで、すべての変更がすぐに他のエージェントと同期され、Invoke-AzStorageSyncChangeDetection コマンドレットを使う必要はありません。 詳細については、[Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) のドキュメントを参照してください。
+Azure ファイル共有で変更されたファイルを直ちに同期したければ、**Invoke-AzStorageSyncChangeDetection** PowerShell コマンドレットを使用すると、Azure ファイル共有における変更の検出を手動で開始できます。 このコマンドレットは、なんらかの自動プロセスによって Azure ファイル共有に変更が加えられたり、管理者によって (ファイルやディレクトリを共有に移動するなどの) 変更が実行されたりするシナリオを意図したものです。 エンド ユーザーの変更に関しては、Azure File Sync エージェントを IaaS VM にインストールし、エンド ユーザーに IaaS VM 経由でファイル共有にアクセスしてもらうことをお勧めします。 そのようにすることで、すべての変更がすぐに他のエージェントと同期され、Invoke-AzStorageSyncChangeDetection コマンドレットを使う必要はありません。 詳細については、[Invoke-AzStorageSyncChangeDetection](/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) のドキュメントを参照してください。
 
 >[!NOTE]
 >REST を使用して Azure ファイル共有に加えられた変更は、SMB の最終更新時刻を更新するものではなく、同期による変更とは見なされません。

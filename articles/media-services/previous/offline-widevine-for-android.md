@@ -16,11 +16,11 @@ ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.openlocfilehash: 4b3b2b8c39b5b2552b5ce9f508bacd1ea86b2638
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269592"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006365"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Android 用のオフラインの Widevine ストリーミング
 
@@ -71,9 +71,9 @@ Media Services で資産の Widevine 保護を構成するときは、次の 3 �
 2. ライセンス配信サービスでのコンテンツ キー配信の承認方法を指定する ContentKeyAuthorizationPolicyRestriction (オープンまたはトークン承認)
 3. DRM (Widevine) ライセンス テンプレート
 
-Widevine ライセンスの**オフライン** モードを有効にするには、[Widevine ライセンス テンプレート](media-services-widevine-license-template-overview.md)を構成する必要があります。 **policy_overrides** オブジェクトで、**can_persist** プロパティを **true** に設定します (既定値は false)。 
+Widevine ライセンスの **オフライン** モードを有効にするには、[Widevine ライセンス テンプレート](media-services-widevine-license-template-overview.md)を構成する必要があります。 **policy_overrides** オブジェクトで、**can_persist** プロパティを **true** に設定します (既定値は false)。 
 
-次のコード例では、.NET を使って Widevine ライセンスの**オフライン** モードを有効にしています。 このコードは、「[ Using PlayReady and/or Widevine Dynamic Common Encryption with .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)」(.NET で PlayReady または Widevine の動的共通暗号化を使用する) のサンプルが基になっています。 
+次のコード例では、.NET を使って Widevine ライセンスの **オフライン** モードを有効にしています。 このコードは、「[ Using PlayReady and/or Widevine Dynamic Common Encryption with .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)」(.NET で PlayReady または Widevine の動的共通暗号化を使用する) のサンプルが基になっています。 
 
 ```
 private static string ConfigureWidevineLicenseTemplateOffline(Uri keyDeliveryUrl)

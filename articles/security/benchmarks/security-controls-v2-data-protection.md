@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bde95006865a2aab2da4a5d6d27ccccc14d74d12
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 8e12a74ee689ba7b013b1c4a6881deac78680be0
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408924"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701050"
 ---
 # <a name="security-control-v2-data-protection"></a>セキュリティ コントロール V2:データ保護
 
@@ -34,9 +34,9 @@ Azure SQL Database に格納されている情報の分類とラベル付けに�
 
 - [Azure SQL Data Discovery を実装する方法](../../azure-sql/database/data-discovery-and-classification-overview.md)
 
-**責任** : 共有
+**責任**: 共有
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [アプリケーション セキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
 
@@ -50,19 +50,19 @@ Azure SQL Database に格納されている情報の分類とラベル付けに�
 |--|--|--|--|
 | DP-2 | 13.2、2.10 | SC-7、AC-4 |
 
-機密データを保護するには、Azure のロール ベースのアクセス制御 (Azure RBAC)、ネットワーク ベースのアクセス制御、(SQL などのデータベースでの暗号化など) Azure サービスの特定の制御を使用してアクセスを制限します。 
+機密データを保護するには、Azure ロール ベースのアクセス制御 (Azure RBAC)、ネットワーク ベースのアクセス制御、Azure サービスの特定の制御 (SQL を始めとするデータベースでの暗号化など) を使用してアクセスを制限します。 
 
 一貫したアクセス制御を確保するには、自分の企業のセグメント化戦略にすべての種類のアクセス制御を合わせる必要があります。 企業のセグメント化戦略では、機密またはビジネスに重要なデータやシステムの場所からも通知される必要があります。
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft では顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護します。 Microsoft では、Azure 内の顧客データが確実にセキュリティで保護されるように、データ保護コントロールおよび機能をいくつか実装しています。
 
-- [Azure のロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md)
+- [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md)
 
 - [Azure での顧客データの保護について](../fundamentals/protection-customer-data.md)
 
-**責任** : 共有
+**責任**: 共有
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [アプリケーション セキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -88,9 +88,9 @@ Azure Information Protection (AIP) には、分類およびラベル付けされ
 
 - [Azure Storage ATP を有効にする](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
 
-**責任** : 共有
+**責任**: 共有
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security) 
 
@@ -116,9 +116,9 @@ Azure Information Protection (AIP) には、分類およびラベル付けされ
 
 - [転送中の Azure データの二重暗号化](../fundamentals/double-encryption.md#data-in-transit)
 
-**責任** : 共有
+**責任**: 共有
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -146,9 +146,9 @@ Azure Information Protection (AIP) には、分類およびラベル付けされ
 
 - [Azure における保存データの二重暗号化](../fundamentals/double-encryption.md#data-at-rest)
 
-**責任** : 共有
+**責任**: 共有
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

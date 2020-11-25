@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 09/09/2020
-ms.openlocfilehash: 867f12b026a56b7cab8530ef30c4a2f2c325f6b1
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/15/2020
+ms.openlocfilehash: 48bd32569b7eb7fa09f83f81190bf96baa42fae0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637787"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659983"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>セルフホステッド IR を Azure Data Factory で Azure-SSIS IR のプロキシとして構成する
 
@@ -28,8 +28,8 @@ ms.locfileid: "92637787"
 この機能を使用すると、[Azure-SSIS IR を仮想ネットワークに参加](./join-azure-ssis-integration-runtime-virtual-network.md)させずに、オンプレミスのデータにアクセスすることができます。 この機能は、企業ネットワークの構成が複雑すぎるかポリシーの制限が厳しすぎて Azure-SSIS IR を導入できない場合に役立ちます。
 
 この機能により、必要に応じて、SSIS データ フロー タスクが 2 つのステージング タスクに分割されるようになります。 
-* **オンプレミスのステージング タスク** :このタスクでは、セルフホステッド IR 上のオンプレミスのデータ ストアに接続するデータ フロー コンポーネントが実行されます。 これは、データをオンプレミスのデータ ストアから Azure BLOB ストレージのステージング領域に、またはその逆に移動します。
-* **クラウド ステージング タスク** :このタスクでは、Azure-SSIS IR 上のオンプレミスのデータ ストアに接続しないデータ フロー コンポーネントが実行されます。 これは、データを Azure BLOB ストレージのステージング領域からクラウド データ ストアに、またはその逆に移動します。
+* **オンプレミスのステージング タスク**:このタスクでは、セルフホステッド IR 上のオンプレミスのデータ ストアに接続するデータ フロー コンポーネントが実行されます。 これは、データをオンプレミスのデータ ストアから Azure BLOB ストレージのステージング領域に、またはその逆に移動します。
+* **クラウド ステージング タスク**:このタスクでは、Azure-SSIS IR 上のオンプレミスのデータ ストアに接続しないデータ フロー コンポーネントが実行されます。 これは、データを Azure BLOB ストレージのステージング領域からクラウド データ ストアに、またはその逆に移動します。
 
 データ フロー タスクを使用してオンプレミスからクラウドにデータを移動した場合、最初と 2 番目のステージング タスクは、それぞれオンプレミスとクラウドのステージング タスクになります。 データ フロー タスクを使用してクラウドからオンプレミスにデータを移動した場合、最初と 2 番目のステージング タスクは、それぞれクラウドとオンプレミスのステージング タスクになります。 データ フロー タスクを使用してオンプレミスからオンプレミスにデータを移動した場合、最初と 2 番目のステージング タスクは、両方ともオンプレミスのステージング タスクになります。 データ フロー タスクを使用してクラウドからクラウドにデータを移動した場合、この機能は適用されません。
 
@@ -43,24 +43,34 @@ ms.locfileid: "92637787"
 
 最後に、次のように、オンプレミスのマシンまたは Azure 仮想マシン (VM) に、セルフホステッド IR の最新バージョン、および追加のドライバーとランタイムをダウンロードしてインストールします。
 - [セルフホステッド IR](https://www.microsoft.com/download/details.aspx?id=39717) の最新バージョンをダウンロードしてインストールします。
-- パッケージでオブジェクトのリンクと埋め込みデータベース (OLEBC) または Open Database Connectivity (ODBC) コネクタを使用する場合は、セルフホステッド IR がインストールされている同じコンピューターに、関連するドライバーをダウンロードしてインストールしてください (まだ行っていない場合)。  
+- パッケージでオブジェクトのリンクと埋め込みデータベース (OLE DB)、Open Database Connectivity (ODBC)、または ADO.NET コネクタを使用する場合は、セルフホステッド IR がインストールされている同じコンピューターに、関連するドライバーをダウンロードしてインストールしてください (まだ行っていない場合)。  
 
   SQL Server 用の OLEDB ドライバーの以前のバージョン (SQL Server Native Client (SQLNCLI)) を使用する場合は、[64 ビット版をダウンロードします](https://www.microsoft.com/download/details.aspx?id=50402)。  
 
   SQL Server 用の OLEDB ドライバーの最新バージョン (MSOLEDBSQL) を使用する場合は、[64 ビット版をダウンロードします](https://www.microsoft.com/download/details.aspx?id=56730)。  
   
-  PostgreSQL、MySQL、Oracle などの他のデータベース システム用の OLEDB/ODBC ドライバーを使用する場合は、それらの Web サイトから 64 ビット版をダウンロードできます。
+  PostgreSQL、MySQL、Oracle などの他のデータベース システム用の OLEDB/ODBC/ADO.NET ドライバーを使用する場合は、それらの Web サイトから 64 ビット版をダウンロードできます。
 - セルフホステッド IR がインストールされているのと同じコンピューターに、[64 ビット版の Visual C++ (VC) ランタイムをダウンロードしてインストールします](https://www.microsoft.com/download/details.aspx?id=40784) (まだ行っていない場合)。
+
+### <a name="enable-windows-authentication-for-on-premises-staging-tasks"></a>オンプレミスのステージング タスクで Windows 認証を有効にする
+
+セルフホステッド IR にあるオンプレミスのステージング タスクで Windows 認証が必要な場合は、[同じ Windows 認証を使用するように SSIS パッケージを構成します](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15)。 
+
+オンプレミスのステージング タスクは、セルフホステッド IR サービス アカウント (既定では *NT SERVICE\DIAHostService*) を使用して起動され、データ ストアには Windows 認証アカウントを使用してアクセスされます。 どちらのアカウントにも、特定のセキュリティ ポリシーが割り当てられている必要があります。 セルフホステッド IR コンピューターで、 **[ローカル セキュリティ ポリシー]**  >  **[ローカル ポリシー]**  >  **[ユーザー権利の割り当て]** を選択し、次の操作を行います。
+
+1. *[プロセスのメモリ クォータの増加]* ポリシーと *[プロセス レベル トークンの置き換え]* ポリシーをセルフホステッド IR サービス アカウントに割り当てます。 これは、既定のサービス アカウントを使用してセルフホステッド IR をインストールするときに自動的に実行されます。 そうでない場合は、手動でこれらのポリシーを割り当てます。 別のサービス アカウントを使用する場合は、同じポリシーを割り当てます。
+
+1. *[サービスとしてログオン]* ポリシーを Windows 認証アカウントに割り当てます。
 
 ## <a name="prepare-the-azure-blob-storage-linked-service-for-staging"></a>Azure Blob Storage のリンクされたサービスをステージング用に準備する
 
 Azure Blob Storage のリンクされたサービスを、Azure-SSIS IR が設定されているのと同じデータ ファクトリに作成します (まだそうしていない場合)。 これを行うには、[Azure データ ファクトリのリンクされたサービスの作成 ](./quickstart-create-data-factory-portal.md#create-a-linked-service)に関する記事を参照してください。 次のことを行ってください。
 - **[データ ソース]** で **[Azure Blob Storage]** を選択します。  
 - **統合ランタイム経由で接続** する場合は、既定の Azure IR を使用して Azure Blob Storage のアクセス資格情報を取り込むため、(Azure-SSIS IR でもセルフホステッド IR でもなく) **AutoResolveIntegrationRuntime** を選択します。
-- **[認証方法]** で、 **[アカウント キー]** 、 **[SAS URI]** 、または **[サービス プリンシパル]** を選択します。  
+- **[認証方法]** で、 **[アカウント キー]** 、 **[SAS URI]** 、 **[サービス プリンシパル]** 、または **[マネージド ID]** を選択します。  
 
-    >[!TIP]
-    >**サービス プリンシパル** 方法を選択した場合は、サービス プリンシパルに少なくとも *ストレージ BLOB データ共同作成者* のロールを付与します。 詳細については、[Azure Blob Storage コネクタ](connector-azure-blob-storage.md#linked-service-properties)に関するページを参照してください。
+>[!TIP]
+>**サービス プリンシパル** 方法を選択した場合は、サービス プリンシパルに少なくとも *ストレージ BLOB データ共同作成者* のロールを付与します。 詳細については、「[Azure Blob Storage コネクタ](connector-azure-blob-storage.md#linked-service-properties)」をご覧ください。 **[マネージド ID]** 方法を選択した場合は、Azure Blob Storage にアクセスするための適切なロールを ADF マネージド ID に付与します。 詳細については、[ADF マネージ ID による Azure Active Directory 認証を使用した Azure Blob Storage にアクセスする](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)方法に関するページをご覧ください。
 
 ![Azure Blob Storage のリンクされたサービスをステージング用に準備する](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -124,12 +134,12 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 * [Visual Studio 用の SSIS プロジェクト拡張機能をダウンロードする](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
 * [スタンドアロン インストーラーをダウンロードする](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)   
 
-オンプレミスでデータにアクセスするコンポーネントを持つデータ フロー タスクを含む新しいパッケージを設計する場合、このプロパティを有効にするには、関連する接続マネージャーの **[プロパティ]** ウィンドウでこれを " *True* " に設定します。
+オンプレミスでデータにアクセスするコンポーネントを持つデータ フロー タスクを含む新しいパッケージを設計する場合、このプロパティを有効にするには、関連する接続マネージャーの **[プロパティ]** ウィンドウでこれを "*True*" に設定します。
 
 ![ConnectByProxy プロパティを有効にする](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
 また、既存のパッケージを実行する場合も、それらを 1 つずつ手動で変更することなく、このプロパティを有効にできます。  2 つのオプションがあります。
-- **オプション A** : Azure-SSIS IR で実行する、最新の SSDT を備えたこれらのパッケージを含むプロジェクトを開いて、再構築し、再デプロイする。 その後、関連する接続マネージャーに対して *True* に設定して、このプロパティを有効にできます。 SSMS からパッケージを実行している場合、これらの接続マネージャーは、 **[パッケージの実行]** ポップアップ ウィンドウの **[接続マネージャー]** タブに表示されます。
+- **オプション A**: Azure-SSIS IR で実行する、最新の SSDT を備えたこれらのパッケージを含むプロジェクトを開いて、再構築し、再デプロイする。 その後、関連する接続マネージャーに対して *True* に設定して、このプロパティを有効にできます。 SSMS からパッケージを実行している場合、これらの接続マネージャーは、 **[パッケージの実行]** ポップアップ ウィンドウの **[接続マネージャー]** タブに表示されます。
 
   ![ConnectByProxy プロパティを有効にする 2](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
 
@@ -147,19 +157,11 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="debug-the-on-premises-and-cloud-staging-tasks"></a>オンプレミスとクラウドのステージング タスクをデバッグする
 
-セルフホステッド IR では、ランタイム ログは *C:\ProgramData\SSISTelemetry* フォルダー内にあり、オンプレミスのステージング タスクの実行ログは *C:\ProgramData\SSISTelemetry\ExecutionLog* フォルダー内にあります。  クラウドにあるステージング タスクの実行ログは、パッケージを格納した場所が SSISDB であるか否かに応じて、SSISDB 内、または指定されたロギング パスにあります。 オンプレミスのステージング タスクの一意の ID も、クラウドにあるステージング タスクの実行ログ内にあります。 
+セルフホステッド IR では、ランタイム ログは *C:\ProgramData\SSISTelemetry* フォルダー内にあり、オンプレミスのステージング タスクの実行ログは *C:\ProgramData\SSISTelemetry\ExecutionLog* フォルダー内にあります。  クラウドにあるステージング タスクの実行ログは、パッケージを格納した場所が SSISDB であるかどうかや、[Azure Monitor の統合](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#monitor-ssis-operations-with-azure-monitor)などを有効にするかどうかに応じて、SSISDB 内、指定されたロギング ファイル パス、または Azure Monitor にあります。オンプレミスのステージング タスクの一意の ID も、クラウドにあるステージング タスクの実行ログ内にあります。 
 
 ![1 番目のステージング タスクの一意の ID](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
-## <a name="use-windows-authentication-in-on-premises-staging-tasks"></a>オンプレミスのステージング タスクで Windows 認証を使用する
-
-セルフホステッド IR にあるオンプレミスのステージング タスクで Windows 認証が必要な場合は、[同じ Windows 認証を使用するように SSIS パッケージを構成します](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15)。 
-
-オンプレミスのステージング タスクは、セルフホステッド IR サービス アカウント (既定では *NT SERVICE\DIAHostService* ) を使用して起動され、データ ストアには Windows 認証アカウントを使用してアクセスされます。 どちらのアカウントにも、特定のセキュリティ ポリシーが割り当てられている必要があります。 セルフホステッド IR コンピューターで、 **[ローカル セキュリティ ポリシー]**  >  **[ローカル ポリシー]**  >  **[ユーザー権利の割り当て]** を選択し、次の操作を行います。
-
-1. *[プロセスのメモリ クォータの増加]* ポリシーと *[プロセス レベル トークンの置き換え]* ポリシーをセルフホステッド IR サービス アカウントに割り当てます。 これは、既定のサービス アカウントを使用してセルフホステッド IR をインストールするときに自動的に実行されます。 そうでない場合は、手動でこれらのポリシーを割り当てます。 別のサービス アカウントを使用する場合は、同じポリシーを割り当てます。
-
-1. *[サービスとしてログオン]* ポリシーを Windows 認証アカウントに割り当てます。
+カスタマー サポート チケットを発行した場合は、セルフホステッド IR にインストールされている **Microsoft Integration Runtime Configuration Manager** の **[診断]** タブ で **[ログの送信]** ボタンを選択して、最近の操作/実行ログを調査対象として送信できます。
 
 ## <a name="billing-for-the-on-premises-and-cloud-staging-tasks"></a>オンプレミスとクラウドのステージング タスクの請求
 
@@ -167,17 +169,37 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 Azure-SSIS IR で実行されるクラウドにあるステージング タスクは個別に課金されませんが、実行中の Azure-SSIS IR は、[Azure-SSIS IR の価格](https://azure.microsoft.com/pricing/details/data-factory/ssis/)に関する記事の指定どおりに課金されます。
 
-## <a name="enabling-tls-12"></a>TLS 1.2 の有効化
+## <a name="enable-custom3rd-party-components"></a>カスタム/サードパーティのコンポーネントを有効にする 
 
-強力な暗号化やより安全なネットワークプロトコル (TLS 1.2) を使用し、セルフホステッド IR で以前の SSL/TLS バージョンを無効にする必要がある場合は、パブリック プレビュー コンテナーの *CustomSetupScript/UserScenarios/TLS 1.2* フォルダーに置かれた、 *main.cmd* スクリプトをダウンロードして実行できます。  [Azure Storage Explorer](https://storageexplorer.com/) を使用して、次の SAS URI を入力することで、パブリック プレビュー コンテナーに接続できます。
+Azure-SSIS IR のプロキシとしてセルフホステッド IR を使用してオンプレミスのデータにアクセスするために、カスタム/サードパーティのコンポーネントを有効にするには、次の手順に従います。
+
+1. [標準/簡易カスタム セットアップ](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)を使用して、Azure-SSIS IR に SQL Server 2017 をターゲットとするカスタム/サードパーティのコンポーネントをインストールします。
+
+1. セルフホステッド IR に DTSPath レジストリ キー (`Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` と `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath`) を作成します (まだ存在しない場合)。
+ 
+1. 上記の DTSPath でセルフホステッド IR に SQL Server 2017 をターゲットとするカスタム/サードパーティのコンポーネントをインストールし、次のインストール プロセスを確認します。
+
+   1. `<DTSPath>`、`<DTSPath>/Connections`、`<DTSPath>/PipelineComponents`、`<DTSPath>/UpgradeMappings` フォルダーがまだ存在しない場合は作成します。
+   
+   1. `<DTSPath>/UpgradeMappings` フォルダーに拡張機能マッピング用に独自の XML ファイルを作成します。
+   
+   1. カスタム/サードパーティのコンポーネント アセンブリで参照されるすべてのアセンブリをグローバル アセンブリ キャッシュ (GAC) にインストールします。
+
+簡易カスタム セットアップとセルフホステッド IR を Azure-SSIS IR 用のプロキシとして使用する[サードパーティのコンポーネント](https://www.aecorsoft.com/blog/2020/11/8/using-azure-data-factory-to-bring-sap-data-to-azure-via-self-hosted-ir-and-ssis-ir)の例を次に示します。
+
+## <a name="enforce-tls-12"></a>TLS 1.2 を適用する
+
+強力な暗号化やより安全なネットワークプロトコル (TLS 1.2) を使用し、セルフホステッド IR で以前の SSL/TLS バージョンを無効にする必要がある場合は、パブリック プレビュー コンテナーの *CustomSetupScript/UserScenarios/TLS 1.2* フォルダーに置かれた、*main.cmd* スクリプトをダウンロードして実行できます。  [Azure Storage Explorer](https://storageexplorer.com/) を使用して、次の SAS URI を入力することで、パブリック プレビュー コンテナーに接続できます。
 
 `https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2020-03-25T04:00:00Z&se=2025-03-25T04:00:00Z&sv=2019-02-02&sr=c&sig=WAD3DATezJjhBCO3ezrQ7TUZ8syEUxZZtGIhhP6Pt4I%3D`
 
 ## <a name="current-limitations"></a>現在の制限
 
-- OLEDB、ODBC、フラット ファイルのソースまたは OLEDB 出力先を使用するデータ フロー タスクのみが、現在サポートされています。
-- *アカウント キー* 、 *Shared Access Signature (SAS) URI* 、または *サービス プリンシパル* の認証を使って構成された Azure Blob Storage のリンクされたサービスのみが現在サポートされています。
-- OLEDB ソースの *ParameterMapping* は現在サポートされていません。 回避策として、 *AccessMode* として *変数からの SQL コマンド* を使用し、 *式* を使用して SQL コマンドに変数やパラメーターを挿入してください。 図のように、パブリック プレビュー コンテナーの *SelfHostedIRProxy/Limitations* フォルダーに置かれた *ParameterMappingSample.dtsx* パッケージを参照してください。 Azure Storage Explorer を使用して、上の SAS URI を入力することで、パブリック プレビュー コンテナーに接続できます。
+- 現在、Hadoop/HDFS/DQS コンポーネントを除き、Azure-SSIS IR Standard Edition に組み込まれているか、事前にインストールされているデータ フロー コンポーネントのみがサポートされています。[Azure-SSIS IR に組み込まれているか、事前にインストールされているすべてのコンポーネント](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime)に関するページをご覧ください。
+- 現在、マネージド コード (.NET Framework) で記述されたカスタム/サードパーティのデータ フロー コンポーネントのみがサポートされています。ネイティブ コード (C++) で記述されたコンポーネントは、現在サポートされていません。
+- オンプレミスとクラウドの両方のステージング タスクで変数値を変更することは、現在サポートされていません。
+- オンプレミスのステージング タスクでオブジェクト型の変数値を変更しても、他のタスクには反映されません。
+- OLEDB ソースの *ParameterMapping* は現在サポートされていません。 回避策として、*AccessMode* として *変数からの SQL コマンド* を使用し、*式* を使用して SQL コマンドに変数やパラメーターを挿入してください。 図のように、パブリック プレビュー コンテナーの *SelfHostedIRProxy/Limitations* フォルダーに置かれた *ParameterMappingSample.dtsx* パッケージを参照してください。 Azure Storage Explorer を使用して、上の SAS URI を入力することで、パブリック プレビュー コンテナーに接続できます。
 
 ## <a name="next-steps"></a>次のステップ
 

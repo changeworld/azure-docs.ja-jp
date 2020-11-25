@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: a26228b33a7d90df558de2ecdf4686910e606a54
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 526947c4d2db9fd87727fdd60c33bcaa9e75c6ff
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413294"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699867"
 ---
 # <a name="azure-network-security-overview"></a>Azure のネットワーク セキュリティの概要
 
@@ -81,7 +81,7 @@ NSG はアプリケーション層検査も、認証済みのアクセス制御�
 
 #### <a name="asc-just-in-time-vm-access"></a>ASC Just In Time VM アクセス
 
-[Azure セキュリティ センター (ASC)](../../security-center/security-center-introduction.md) は、VM の NSG を管理し、適切なロール ベースのアクセス制御 ([RBAC](../../role-based-access-control/overview.md)) のアクセス許可を持つユーザーがアクセスを要求するまで、VM へのアクセスをロックします。 ユーザーが正常に承認されると、ASC は、選択されたポートに対して指定された時間にわたってアクセスできるように NSG を変更します。 時間切れになると、NSG は、前のセキュリティで保護された状態に戻ります。
+[Azure セキュリティ センター (ASC)](../../security-center/security-center-introduction.md) は、VM の NSG を管理し、適切な Azure ロール ベースのアクセス制御 ([Azure RBAC](../../role-based-access-control/overview.md)) のアクセス許可を持つユーザーがアクセスを要求するまで、VM へのアクセスをロックします。 ユーザーが正常に承認されると、ASC は、選択されたポートに対して指定された時間にわたってアクセスできるように NSG を変更します。 時間切れになると、NSG は、前のセキュリティで保護された状態に戻ります。
 
 詳細情報:
 
@@ -315,7 +315,7 @@ Azure は、Azure DNS という形で可用性とパフォーマンスの高い�
 ## <a name="azure-ddos-protection"></a>Azure の DDoS 保護
 
 分散型サービス拒否 (DDoS) 攻撃は、アプリケーションをクラウドに移行している顧客が直面する可用性とセキュリティに関する最大の関心事の一部です。 DDoS 攻撃では、アプリケーションのリソースを使い果たし、正当なユーザーがアプリケーションを使用できなくなるようにすることが試みられます。 DDoS 攻撃は、インターネット経由で一般に到達可能なすべてのエンドポイントで実行できます。
-Microsoft では、Azure Platform の一部として、 **Basic** と呼ばれる DDoS Protection を提供しています。 これは無料で提供され、一般的なネットワーク レベル攻撃の監視とリアルタイムの対応策に常に含まれています。 DDoS Protection **Basic** に含まれている保護に加え、 **Standard** オプションを有効にできます。 DDoS Protection Standard の機能には、次のものが含まれます。
+Microsoft では、Azure Platform の一部として、**Basic** と呼ばれる DDoS Protection を提供しています。 これは無料で提供され、一般的なネットワーク レベル攻撃の監視とリアルタイムの対応策に常に含まれています。 DDoS Protection **Basic** に含まれている保護に加え、**Standard** オプションを有効にできます。 DDoS Protection Standard の機能には、次のものが含まれます。
 
 * **ネイティブのプラットフォーム統合:** Azure にネイティブに統合します。 Azure Portal による構成が含まれます。 DDoS Protection Standard は、ユーザーのリソースおよびリソース構成を理解しています。
 * **ターンキー保護:** DDoS Protection Standard が有効になるとすぐに、簡略化された構成によって、仮想ネットワーク上のすべてのリソースが直ちに保護されます。 ユーザーが介入したり、ユーザーが定義したりする必要はありません。 DDoS Protection Standard では、攻撃が検出されるとすぐに自動で軽減されます。

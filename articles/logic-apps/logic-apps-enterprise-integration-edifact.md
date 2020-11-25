@@ -9,11 +9,11 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: b0df55e59bd519a816c4022f2434edfcd4460780
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570766"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006525"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の EDIFACT メッセージを交換する
 
@@ -57,7 +57,7 @@ Azure Logic Apps の EDIFACT メッセージを交換する前に、EDIFACT 契�
 
    ![[追加] の選択](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
 
-6. **[追加]** で、契約の**名前**を入力します。 **[契約タイプ]** で、 **[EDIFACT]** を選択します。 契約の**ホスト パートナー**、**ホスト ID**、**ゲスト パートナー**、および**ゲスト ID** を選択します。
+6. **[追加]** で、契約の **名前** を入力します。 **[契約タイプ]** で、 **[EDIFACT]** を選択します。 契約の **ホスト パートナー**、**ホスト ID**、**ゲスト パートナー**、および **ゲスト ID** を選択します。
 
    ![契約の詳細の指定](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 

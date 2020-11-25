@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.custom: contperfq1
 ms.date: 06/18/2020
 ms.openlocfilehash: 0e7777cba93706baea815521757b495209431ce6
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124019"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006474"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>リソース ログを使用した Azure Stream Analytics のトラブルシューティング
 
@@ -44,7 +44,7 @@ Stream Analytics には 2 種類のログがあります。
 
 2. 実行された操作の一覧を確認できます。 ジョブが失敗する原因となったすべての操作には、赤い情報バブルが表示されます。
 
-3. 操作をクリックすると、その概要ビューが表示されます。 多くの場合、ここにある情報は制限されています。 操作の詳細を表示するには、 **JSON** をクリックします。
+3. 操作をクリックすると、その概要ビューが表示されます。 多くの場合、ここにある情報は制限されています。 操作の詳細を表示するには、**JSON** をクリックします。
 
    ![Stream Analytics アクティビティ ログ操作の概要](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
 
@@ -58,7 +58,7 @@ Stream Analytics には 2 種類のログがあります。
 
 ## <a name="send-diagnostics-to-azure-monitor-logs"></a>Azure Monitor ログへの診断データの送信
 
-リソース ログをオンにして Azure Monitor ログに送信することを、強くお勧めします。 既定では、 **オフ** になっています。 オンにするには、次の手順を完了します。
+リソース ログをオンにして Azure Monitor ログに送信することを、強くお勧めします。 既定では、**オフ** になっています。 オンにするには、次の手順を完了します。
 
 1.  Log Analytics ワークスペースを作成します (まだ作成していない場合)。 対象の Stream Analytics ジョブと同じリージョン内に Log Analytics ワークスペースを用意することをお勧めします。
 
@@ -82,9 +82,9 @@ Stream Analytics には 2 種類のログがあります。
 
 Azure Stream Analytics では、次の 2 つのカテゴリのリソース ログをキャプチャします。
 
-* **作成** :ジョブ作成操作 (ジョブの作成、入出力の追加と削除、クエリの追加と更新、ジョブの開始と停止など) に関連するログ イベントを取得します。
+* **作成**:ジョブ作成操作 (ジョブの作成、入出力の追加と削除、クエリの追加と更新、ジョブの開始と停止など) に関連するログ イベントを取得します。
 
-* **実行** :ジョブの実行中に発生したイベントを取得します。
+* **実行**:ジョブの実行中に発生したイベントを取得します。
     * 接続エラー
     * データ処理エラー。次のエラーが含まれます。
         * クエリ定義に準拠していないイベント (フィールドの種類と値の不一致、フィールドの不足など)
@@ -99,10 +99,10 @@ Azure Stream Analytics では、次の 2 つのカテゴリのリソース ロ�
 ------- | -------
 time | ログのタイムスタンプ (UTC)。
 resourceId | 操作が行われたリソースの ID (大文字)。 サブスクリプション ID、リソース グループ、ジョブ名が含まれています。 例: **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**
-category | ログのカテゴリ ( **実行** または **作成** のいずれか)。
-operationName | ログに記録される操作の名前。 例: **Send Events:SQL Output write failure to mysqloutput** 。
-status | 操作の状態。 たとえば、 **失敗** または **成功** 。
-level | ログ レベル。 たとえば、 **エラー** 、 **警告** 、または **情報** 。
+category | ログのカテゴリ (**実行** または **作成** のいずれか)。
+operationName | ログに記録される操作の名前。 例: **Send Events:SQL Output write failure to mysqloutput**。
+status | 操作の状態。 たとえば、**失敗** または **成功**。
+level | ログ レベル。 たとえば、**エラー**、**警告**、または **情報**。
 properties | ログ エントリ固有の詳細。JSON 文字列としてシリアル化されています。 詳細については、この記事の次のセクションを参照してください。
 
 ### <a name="execution-log-properties-schema"></a>実行ログ プロパティのスキーマ
@@ -117,16 +117,16 @@ properties | ログ エントリ固有の詳細。JSON 文字列としてシリ�
 ------- | -------
 source | エラーが発生したジョブ入出力の名前。
 Message | エラーに関連付けられているメッセージ。
-Type | エラーの種類。 たとえば、 **DataConversionError** 、 **CsvParserError** 、または **ServiceBusPropertyColumnMissingError** 。
+Type | エラーの種類。 たとえば、**DataConversionError**、**CsvParserError**、または **ServiceBusPropertyColumnMissingError**。
 Data | エラーの原因を正確に特定するうえで役に立つデータが含まれています。 サイズに応じて切り捨てられます。
 
-データ エラーのスキーマは、 **operationName** 値に応じて次のようになります。
+データ エラーのスキーマは、**operationName** 値に応じて次のようになります。
 
 * **シリアル化イベント** はイベント読み取り操作中に発生します。 これらは、次のいずれかの理由で入力データがクエリ スキーマを満たしていない場合に発生します。
 
-   * " *イベントの (逆) シリアル化中の種類の不一致* ":エラーを引き起こしたフィールドが特定されます。
+   * "*イベントの (逆) シリアル化中の種類の不一致*":エラーを引き起こしたフィールドが特定されます。
 
-   * " *イベントを読み取ることができない。無効なシリアル化* ":エラーが発生した入力データの場所に関する情報が一覧で表示されます。 ここには、BLOB 入力の BLOB 名、オフセット、データのサンプルが含まれます。
+   * "*イベントを読み取ることができない。無効なシリアル化*":エラーが発生した入力データの場所に関する情報が一覧で表示されます。 ここには、BLOB 入力の BLOB 名、オフセット、データのサンプルが含まれます。
 
 * **送信イベント** は書き込み操作中に発生します。 エラーを引き起こしたストリーミング イベントが特定されます。
 
@@ -138,7 +138,7 @@ Data | エラーの原因を正確に特定するうえで役に立つデータ�
 -------- | --------
 エラー | (省略可能) エラー情報。 使用できる場合は通常、例外情報です。
 Message| ログ メッセージ。
-Type | メッセージの種類。 エラーの内部カテゴリにマップされます。 たとえば、 **JobValidationError** または **BlobOutputAdapterInitializationFailure** 。
+Type | メッセージの種類。 エラーの内部カテゴリにマップされます。 たとえば、**JobValidationError** または **BlobOutputAdapterInitializationFailure**。
 関連付け ID | ジョブの実行を一意に識別する GUID。 ジョブが開始されてから停止するまでに生成された実行ログ エントリすべてに、同じ **関連付け ID** の値が付けられます。
 
 ## <a name="next-steps"></a>次のステップ

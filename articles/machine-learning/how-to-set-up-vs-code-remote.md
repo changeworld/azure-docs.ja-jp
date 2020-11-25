@@ -1,7 +1,7 @@
 ---
 title: Visual Studio Code でコンピューティング インスタンスに接続する (プレビュー)
 titleSuffix: Azure Machine Learning
-description: Visual Studio Code で Azure Machine Learning コンピューティング インスタンスに接続する方法について説明します。
+description: Visual Studio Code で Azure Machine Learning コンピューティング インスタンスに接続して、対話型 Jupyter Notebook とリモート開発のワークロードを実行する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.author: jmartens
 author: j-martens
-ms.date: 09/03/2020
-ms.openlocfilehash: 6ac116b315d4a11b51b37c5b51edf35aa0676713
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/16/2020
+ms.openlocfilehash: 2abad31173992a891e908bdbb61c37e905907d69
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708375"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697580"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Visual Studio Code で Azure Machine Learning コンピューティング インスタンスに接続する (プレビュー)
 
@@ -56,7 +56,7 @@ Visual Studio Code からコンピューティング インスタンスに接続
 1. Jupyter Notebook を開き、セルを実行します。
 
 > [!IMPORTANT]
-> 接続を確立するために、セルを実行する**必要があります**。
+> 接続を確立するために、セルを実行する **必要があります**。
 
 この時点では、ご利用の Jupyter Notebook でセルを実行し続けることができます。
 

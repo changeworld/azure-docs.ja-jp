@@ -16,11 +16,11 @@ ms.date: 06/25/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c79942aad2ce450bc22aa0a0cfc32e67a667bd48
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895955"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006236"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>REST API 呼び出しを使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
@@ -78,7 +78,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    az account get-access-token
    ``` 
 
-4. Azure Cloud Shell を使用して、Azure Resource Manager REST エンドポイントを呼び出す CURL を使って仮想マシン スケール セットを作成します。 次の例では、値 `"identity":{"type":"SystemAssigned"}` からの要求本文で指定されたシステム割り当てマネージド ID を使用して、 *myResourceGroup* 内の *myVMSS* という仮想マシン スケール セットを作成します。 `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
+4. Azure Cloud Shell を使用して、Azure Resource Manager REST エンドポイントを呼び出す CURL を使って仮想マシン スケール セットを作成します。 次の例では、値 `"identity":{"type":"SystemAssigned"}` からの要求本文で指定されたシステム割り当てマネージド ID を使用して、*myResourceGroup* 内の *myVMSS* という仮想マシン スケール セットを作成します。 `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PUT -d '{"sku":{"tier":"Standard","capacity":3,"name":"Standard_D1_v2"},"location":"eastus","identity":{"type":"SystemAssigned"},"properties":{"overprovision":true,"virtualMachineProfile":{"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"createOption":"FromImage"}},"osProfile":{"computerNamePrefix":"myVMSS","adminUsername":"azureuser","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaceConfigurations":[{"name":"myVMSS","properties":{"primary":true,"enableIPForwarding":true,"ipConfigurations":[{"name":"myVMSS","properties":{"subnet":{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"}}}]}}]}},"upgradePolicy":{"mode":"Manual"}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -281,7 +281,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    az account get-access-token
    ```
 
-2. システム割り当てマネージド ID を無効にするには、Azure Resource Manager REST エンドポイントを呼び出す CURL を使用して、仮想マシン スケール セットを更新します。  次の例では、 *myVMSS* という仮想マシン スケール セットから値 `{"identity":{"type":"None"}}` によって要求本文で指定されたシステム割り当てマネージド ID を無効にします。  `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
+2. システム割り当てマネージド ID を無効にするには、Azure Resource Manager REST エンドポイントを呼び出す CURL を使用して、仮想マシン スケール セットを更新します。  次の例では、*myVMSS* という仮想マシン スケール セットから値 `{"identity":{"type":"None"}}` によって要求本文で指定されたシステム割り当てマネージド ID を無効にします。  `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
 
    > [!IMPORTANT]
    > 仮想マシン スケール セットに割り当てられている既存のユーザー割り当てマネージド ID を削除しないようにするには、次の CURL コマンドを使用してユーザー割り当てマネージド ID を一覧表示する必要があります。`curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` ユーザー割り当てマネージド ID が仮想マシン スケール セットに割り当てられている場合は、仮想マシン スケール セットでシステム割り当てマネージド ID を削除する一方でユーザー割り当てマネージド ID を保持する方法を示す手順 3 にスキップします。
@@ -339,7 +339,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 4. 次のセクション「[ユーザー割り当てマネージド ID を作成する](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity)」の手順を使用して、ユーザー割り当てマネージド ID を作成します。
 
-5. Azure Resource Manager REST エンドポイントを呼び出す CURL を使用して、仮想マシン スケール セットを作成します。 次の例では、値 `"identity":{"type":"UserAssigned"}` からの要求本文で指定されたユーザー割り当てマネージド ID `ID1` を使用して、 *myResourceGroup* リソース グループ内の *myVMSS* という仮想マシン スケール セットを作成します。 `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
+5. Azure Resource Manager REST エンドポイントを呼び出す CURL を使用して、仮想マシン スケール セットを作成します。 次の例では、値 `"identity":{"type":"UserAssigned"}` からの要求本文で指定されたユーザー割り当てマネージド ID `ID1` を使用して、*myResourceGroup* リソース グループ内の *myVMSS* という仮想マシン スケール セットを作成します。 `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
  
    **API バージョン 2018-06-01**
 
@@ -542,7 +542,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 4. 仮想マシン スケール セットにユーザー割り当てマネージド ID またはシステム割り当てマネージド ID が割り当てられていない場合は、仮想マシン スケール セットに最初のユーザー割り当てマネージド ID を割り当てるために Azure Resource Manager REST エンドポイントを呼び出す次の CURL コマンドを使用します。  ユーザー割り当てマネージド ID またはシステム割り当てマネージド ID が仮想マシン スケール セットに割り当てられている場合は、システム割り当てマネージド ID を保持しながら、仮想マシン スケール セットに複数のユーザー割り当てマネージド ID を追加する方法を示す手順 5 にスキップします。
 
-   次の例では、 *myResourceGroup* リソース グループ内の *myVMSS* という仮想マシン スケール セットに、ユーザー割り当てマネージド ID `ID1` を割り当てます。  `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
+   次の例では、*myResourceGroup* リソース グループ内の *myVMSS* という仮想マシン スケール セットに、ユーザー割り当てマネージド ID `ID1` を割り当てます。  `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
 
    **API バージョン 2018-06-01**
 

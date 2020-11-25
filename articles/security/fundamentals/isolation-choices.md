@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: fa2025fa31ac960eb6c61d03bafd582de4f0e55c
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3141d9937591467870ee4a88d16a96cbdb24a05b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410579"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696219"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 
@@ -38,7 +38,7 @@ Azure を使用すると、共有物理インフラストラクチャでアプ�
 
 ### <a name="azure-tenancy"></a>Azure テナント
 
-Azure テナント (Azure サブスクリプション) とは、"顧客/課金" の関係と、[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)での一意の[テナント](../../active-directory/develop/quickstart-create-new-tenant.md) を意味します。 Microsoft Azure でのテナント レベルの分離は、Azure Active Directory と、それによって提供される[ロールベースのコントロール](../../role-based-access-control/overview.md)を使用して実現します。 各 Azure サブスクリプションは、1 つの Azure Active Directory (AD) ディレクトリと関連付けられます。
+Azure テナント (Azure サブスクリプション) とは、"顧客/課金" の関係と、[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)での一意の[テナント](../../active-directory/develop/quickstart-create-new-tenant.md) を意味します。 Microsoft Azure でのテナント レベルの分離は、Azure Active Directory と、それによって提供される [Azure ロールベースのアクセス制御](../../role-based-access-control/overview.md)を使用して実現します。 各 Azure サブスクリプションは、1 つの Azure Active Directory (AD) ディレクトリと関連付けられます。
 
 そのディレクトリに登録されたユーザー、グループ、およびアプリケーションのみが、Azure サブスクリプションでリソースを管理できます。 このためのアクセス権は、Azure ポータル、Azure コマンドライン ツール、および Azure 管理 API を使用して割り当てることができます。 Azure AD テナントはセキュリティ境界を使用して論理的に分離されるため、悪意があるか偶発的にかにかかわらず、顧客が他のテナントにアクセスしたり侵入したりすることはできません。 Azure AD は、隔離されたネットワーク セグメント上の分離された "ベア メタル" サーバーで実行します。ここでは、ホストレベルのパケット フィルタリングと Windows Firewall によって、望ましくない接続やトラフィックがブロックされます。
 
@@ -52,7 +52,7 @@ Azure テナント (Azure サブスクリプション) とは、"顧客/課金" 
 
 - Azure AD サービスを構成するサーバーへの物理的なアクセスと Azure AD のバックエンド システムへの直接アクセスは制限されます。
 
-- Azure AD ユーザーには、物理的な資産または場所へのアクセス権はありません。したがって、後で説明する論理 RBAC ポリシー チェックを回避することはできません。
+- Azure AD ユーザーには、物理的な資産または場所へのアクセス権はありません。したがって、後で説明する論理 Azure RBAC ポリシー チェックを回避することはできません。
 
 診断と保守のニーズのため、Just-In-Time 特権昇格システムを採用している運用モデルを使用する必要があります。 Azure AD Privileged Identity Management (PIM) では、管理者候補という概念が導入されています。[管理者候補](../../active-directory/privileged-identity-management/pim-configure.md)とは、常にではなく時折特権アクセスを必要とするユーザーのことです。 このロールは、このユーザーがアクセス権を必要とするまで非アクティブ化されています。そして、ユーザーがアクティブ化プロセスを完了すると、所定の時間の間だけ有効な管理者になります。
 
@@ -80,7 +80,7 @@ Azure RBAC には、すべてのリソースの種類に適用される 3 つの
 
 Azure の残りの Azure ロールでは、特定の Azure リソースの管理が許可されます。 たとえば、仮想マシンの共同作成者ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。 その一方で、仮想マシンが接続する Azure Virtual Network またはサブネットへのアクセス権は付与されません。
 
-「[RBAC: 組み込みのロール](../../role-based-access-control/built-in-roles.md)」に、Azure で使用できる RBAC ロールが記載されています。 各組み込みロールによってユーザーに付与される操作とスコープが説明されています。 制御を強化するために独自のロールを定義する場合は、 [Azure RBAC でカスタム ロール](../../role-based-access-control/custom-roles.md)を作成する方法を参照してください。
+「[Azure 組み込みのロール](../../role-based-access-control/built-in-roles.md)」に、Azure で使用できる RBAC ロールが記載されています。 各組み込みロールによってユーザーに付与される操作とスコープが説明されています。 制御を強化するために独自のロールを定義する場合は、 [Azure RBAC でカスタム ロール](../../role-based-access-control/custom-roles.md)を作成する方法を参照してください。
 
 Azure Active Directory のその他の機能を次に示します。
 
@@ -311,7 +311,7 @@ Azure デプロイでは、複数の層でネットワークの分離を行う�
 
 ![ネットワークの分離](./media/isolation-choices/azure-isolation-fig13.png)
 
-**トラフィックの分離** : [仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)は、Azure プラットフォームでのトラフィックの分離境界となります。 ある仮想ネットワーク内の仮想マシン (VM) と別の仮想ネットワーク内の VM は、両方の仮想ネットワークを同じ顧客が作成した場合でも、直接通信することはできません。 分離は、顧客の VM と通信が仮想ネットワーク内でプライベートであることを保証する重要な特性です。
+**トラフィックの分離**: [仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)は、Azure プラットフォームでのトラフィックの分離境界となります。 ある仮想ネットワーク内の仮想マシン (VM) と別の仮想ネットワーク内の VM は、両方の仮想ネットワークを同じ顧客が作成した場合でも、直接通信することはできません。 分離は、顧客の VM と通信が仮想ネットワーク内でプライベートであることを保証する重要な特性です。
 
 [サブネット](../../virtual-network/virtual-networks-overview.md)によって、IP 範囲に基づいて仮想ネットワーク内に分離の層がさらに提供されます。 仮想ネットワーク内の IP アドレスを使用して、仮想ネットワークを組織とセキュリティ用に複数のサブネットに分割することができます。 VNet 内の (同じまたは異なる) サブネットにデプロイした VM と PaaS ロール インスタンスは、追加の構成をしなくても互いに通信できます。 また、[ネットワーク セキュリティ グループ (NSG)](../../virtual-network/virtual-networks-overview.md) を構成し、NSG のアクセス制御リスト (ACL) に構成した規則に基づいて VM インスタンスに対するネットワーク トラフィックを許可または禁止することもできます。 NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。
 

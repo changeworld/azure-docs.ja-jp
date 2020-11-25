@@ -1,25 +1,25 @@
 ---
 title: 概念 - Azure Kubernetes Services (AKS) におけるアクセスと ID
-description: Azure Kubernetes Service (AKS) におけるアクセスと ID について説明します。Azure Active Directory の統合、Kubernetes のロールベースのアクセス制御 (RBAC)、およびロールとバインドの説明が含まれています。
+description: Azure Kubernetes Service (AKS) におけるアクセスと ID について説明します。Azure Active Directory の統合、Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC)、およびロールとバインドの説明が含まれています。
 services: container-service
 ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 5013f8b7dd88340e397fd3d4d4cd93d4b911fbbb
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: ca167a2ae313c29581d40fe921a8742b9b6b61fe
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378229"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686057"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアクセスと ID オプション
 
-Kubernetes クラスターに対する認証の実行、アクセス制御と認可、セキュリティ保護には、さまざまな方法があります。 Kubernetes のロールベースのアクセス制御 (RBAC) を使用して、ユーザー、グループ、サービス アカウントに対し、必要とするリソースのみへのアクセス権を付与できます。 Azure Kubernetes Service (AKS) では、Azure Active Directory と Azure RBAC を使用して、セキュリティとアクセス許可構造をさらに強化できます。 これらの方法を使用すると、クラスターへのアクセスをセキュリティで保護し、開発者やオペレーターに必要最低限のアクセス許可のみを与えることができます。
+Kubernetes クラスターに対する認証の実行、アクセス制御と認可、セキュリティ保護には、さまざまな方法があります。 Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC) を使用して、ユーザー、グループ、サービス アカウントに対し、必要とするリソースのみへのアクセス権を付与できます。 Azure Kubernetes Service (AKS) では、Azure Active Directory と Azure RBAC を使用して、セキュリティとアクセス許可構造をさらに強化できます。 これらの方法を使用すると、クラスターへのアクセスをセキュリティで保護し、開発者やオペレーターに必要最低限のアクセス許可のみを与えることができます。
 
 この記事では、AKS で認証とアクセス許可の割り当てを行うために役立つ中心概念を紹介します。
 
-- [Kubernetes のロールベースのアクセス制御 (RBAC)](#kubernetes-role-based-access-control-rbac)
+- [Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC)](#kubernetes-role-based-access-control-kubernetes-rbac)
   - [ロールと ClusterRoles](#roles-and-clusterroles)
   - [RoleBindings と ClusterRoleBindings](#rolebindings-and-clusterrolebindings) 
   - [Kubernetes サービス アカウント](#kubernetes-service-accounts)
@@ -29,11 +29,11 @@ Kubernetes クラスターに対する認証の実行、アクセス制御と認
   - [Kubernetes 認可に対する Azure RBAC (プレビュー)](#azure-rbac-for-kubernetes-authorization-preview)
 
 
-## <a name="kubernetes-role-based-access-control-rbac"></a>Kubernetes のロールベースのアクセス制御 (RBAC)
+## <a name="kubernetes-role-based-access-control-kubernetes-rbac"></a>Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC)
 
-ユーザーが行うことのできるアクションの詳細なフィルター処理を提供するため、Kubernetes ではロールベースのアクセス制御 (RBAC) が使用されます。 この制御メカニズムを使用して、ユーザーまたはユーザー グループに対して、リソースの作成または変更、実行中のアプリケーション ワークロードのログの表示などの操作を行うアクセス許可を割り当てることができます。 これらのアクセス許可は、付与するスコープを単一の名前空間にすることも、AKS クラスター全体にすることもできます。 Kubernetes の RBAC では、アクセス許可を定義する "*ロール*" を作成し、それらのロールを "*ロールのバインド*" を使用してユーザーに割り当てます。
+ユーザーが行うことのできるアクションの詳細なフィルター処理を提供するために、Kubernetes では Kubernetes ロールベースのアクセス制御 (Kubernetes RBAC) が使用されます。 この制御メカニズムを使用して、ユーザーまたはユーザー グループに対して、リソースの作成または変更、実行中のアプリケーション ワークロードのログの表示などの操作を行うアクセス許可を割り当てることができます。 これらのアクセス許可は、付与するスコープを単一の名前空間にすることも、AKS クラスター全体にすることもできます。 Kubernetes の RBAC では、アクセス許可を定義する "*ロール*" を作成し、それらのロールを "*ロールのバインド*" を使用してユーザーに割り当てます。
 
-詳細については、[RBAC 承認の使用][kubernetes-rbac]に関するページを参照してください。
+詳細については、[Kubernetes RBAC 認可の使用][kubernetes-rbac]に関するページをご覧ください。
 
 
 ### <a name="roles-and-clusterroles"></a>ロールと ClusterRole
@@ -46,7 +46,7 @@ ClusterRole は、リソースへのアクセス許可を付与するのと同�
 
 ### <a name="rolebindings-and-clusterrolebindings"></a>RoleBinding と ClusterRoleBinding
 
-リソースへのアクセス許可を付与するロールを定義したら、*RoleBinding* を使用して、これらの Kubernetes の RBAC アクセス許可を割り当てます。 AKS クラスターが [Azure Active Directory と統合されている](#azure-active-directory-integration)場合、バインドは、クラスター内でアクションを実行するためのアクセス許可が Azure AD ユーザーにどのように付与されるかを示します。方法については、[ロールベースのアクセス制御と Azure Active Directory ID を使用したクラスター リソースへのアクセスの制限](azure-ad-rbac.md)に関する記事を参照してください。
+リソースへのアクセス許可を付与するロールを定義したら、*RoleBinding* を使用して、これらの Kubernetes の RBAC アクセス許可を割り当てます。 AKS クラスターが [Azure Active Directory と統合されている](#azure-active-directory-integration)場合、バインドは、クラスター内でアクションを実行するためのアクセス許可が Azure AD ユーザーにどのように付与されるかを示します。方法については、[Kubernetes ロールベースのアクセス制御と Azure Active Directory ID を使用したクラスター リソースへのアクセスの制限](azure-ad-rbac.md)に関する記事をご覧ください。
 
 ロールのバインドを使用して、特定の名前空間に対してロールを割り当てます。 このアプローチによって、1 つの AKS クラスターを論理的に分離でき、ユーザーは各自に割り当てられた名前空間内のアプリケーション リソースにのみアクセスが可能になります。 クラスター全体または特定の名前空間の外部のクラスター リソースにロールをバインドする必要がある場合は、代わりに *ClusterRoleBinding* を使用できます。
 
@@ -107,7 +107,7 @@ Azure の RBAC では、適用されるアクセス許可の概要を説明す�
 
 AKS クラスターを完全に運用するには、次の 2 つのレベルのアクセスが必要です。 
 1. [Azure サブスクリプションの AKS リソースへのアクセス](#azure-rbac-to-authorize-access-to-the-aks-resource)。 このプロセスでは、AKS API を使用してクラスターのスケーリングやアップグレードを制御したり、kubeconfig をプルしたりすることができます。
-2. Kubernetes API へのアクセス。 このアクセスは、[Kubernetes RBAC](#kubernetes-role-based-access-control-rbac) (従来) によって、または [Kubernetes の認可のための Azure RBAC と AKS の統合](#azure-rbac-for-kubernetes-authorization-preview)によって制御されます
+2. Kubernetes API へのアクセス。 このアクセスは、[Kubernetes RBAC](#kubernetes-role-based-access-control-kubernetes-rbac) (従来) によって、または [Kubernetes の認可のための Azure RBAC と AKS の統合](#azure-rbac-for-kubernetes-authorization-preview)によって制御されます
 
 ### <a name="azure-rbac-to-authorize-access-to-the-aks-resource"></a>AKS リソースへのアクセスを認可するための Azure RBAC
 

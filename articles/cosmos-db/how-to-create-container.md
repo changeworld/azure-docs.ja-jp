@@ -9,11 +9,11 @@ ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 302c5d6e8e523a11b8773f10bb6089e3bea09bdd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101563"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006850"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API にコンテナーを作成する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: e2c6f627c69316b8f146d3ac82b8d29801ec3902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 834e4fe8c7b3923f40a07c02c0310200db222308
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740685"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697256"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Azure Cognitive Search で簡単なクエリを作成する
 
@@ -27,7 +27,7 @@ Azure Cognitive Search では、[単純なクエリ構文](query-simple-syntax.m
 
 次の例では、[City of New York OpenData](https://nycopendata.socrata.com/) イニシアティブが提供するデータセットに基づいて利用可能なジョブで構成される NYC ジョブ検索インデックスを活用します。 このデータが最新のものであるとか、完全であるとはお考えにならないでください。 インデックスは、Microsoft が提供するサンドボックス サービス上にあります。つまり、これらのクエリを試すのに Azure サブスクリプションまたは Azure Cognitive Search は必要ありません。
 
-必要になるのは、GET で HTTP 要求を発行するための Postman または同等のツールです。 詳細については、「[クイック スタート: Postman を使用して Azure Cognitive Search REST API を調べる](search-get-started-postman.md)方法に関する記事を参照してください。
+必要になるのは、GET で HTTP 要求を発行するための Postman または同等のツールです。 詳細については、「[クイック スタート: Azure Cognitive Search の REST API を探索する](search-get-started-rest.md)」をご覧ください。
 
 ### <a name="set-the-request-header"></a>要求ヘッダーを設定する
 
@@ -43,7 +43,7 @@ Azure Cognitive Search では、[単純なクエリ構文](query-simple-syntax.m
 
 要求は、Azure Cognitive Search のエンドポイントと検索文字列を含む URL と GET コマンドを組み合わせたものです。
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Postman の要求ヘッダーの設定パラメーター" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Postman の要求ヘッダーの GET" border="false":::
 
 URL は、次の要素から構成されます。
 
@@ -97,7 +97,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 このクエリの応答は、次のスクリーンショットのようになります。
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-sample-results.png" alt-text="Postman の要求ヘッダーの設定パラメーター" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/postman-sample-results.png" alt-text="Postman の応答のサンプル" border="false":::
 
 応答の検索スコアに気付いたかもしれません。 検索がフルテキスト検索でなかった、または適用された基準がないという理由でランクがない場合は、1 の均一のスコアが発生します。 条件なしの null 検索では、任意の順序で行が返されます。 実際の基準を含めると、検索スコアは意味のある値に変化します。
 
@@ -133,7 +133,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
 
 一緒に使用した場合、フィルターが最初にインデックス全体に適用され、次にフィルター処理の結果に対して検索が実行されます。 フィルターはクエリのパフォーマンス向上に役立つ手法です。フィルターを使うと、検索クエリで処理が必要なドキュメントの数が減ります。
 
-  :::image type="content" source="media/search-query-simple-examples/filtered-query.png" alt-text="Postman の要求ヘッダーの設定パラメーター" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/filtered-query.png" alt-text="フィルター クエリの応答" border="false":::
 
 Postman で GET を使用して試す場合は、次の文字列を貼り付けることができます。
 
@@ -167,7 +167,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
       "count": "true"
     }
 ```
-  :::image type="content" source="media/search-query-simple-examples/rangefilternumeric.png" alt-text="Postman の要求ヘッダーの設定パラメーター" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/rangefilternumeric.png" alt-text="数値範囲用の範囲フィルター" border="false":::
 
 
 ```http
@@ -181,7 +181,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
     }
 ```
 
-  :::image type="content" source="media/search-query-simple-examples/rangefiltertext.png" alt-text="Postman の要求ヘッダーの設定パラメーター" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/rangefiltertext.png" alt-text="テキスト範囲用の範囲フィルター" border="false":::
 
 Postman で GET を使用して試すこともできます。
 
@@ -194,7 +194,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 ```
 
 > [!NOTE]
-> 検索アプリケーションでは値の範囲に対するファセットが一般に必要になります。 ファセット ナビゲーション構造に対するフィルターの作成に関する情報と例については、[ *「ファセット ナビゲーションを実装する方法」の「範囲に基づくフィルター」* ](search-faceted-navigation.md#filter-based-on-a-range)を参照してください。
+> 検索アプリケーションでは値の範囲に対するファセットが一般に必要になります。 ファセット ナビゲーション構造に対するフィルターの作成に関する情報と例については、[ *「ファセット ナビゲーションを実装する方法」の「範囲に基づくフィルター」*](search-faceted-navigation.md#filter-based-on-a-range)を参照してください。
 
 ## <a name="example-5-geo-search"></a>例 5:地理空間検索
 
@@ -251,14 +251,14 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
 ```
 
-  :::image type="content" source="media/search-query-simple-examples/searchmodeany.png" alt-text="Postman の要求ヘッダーの設定パラメーター" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/searchmodeany.png" alt-text="検索モード any" border="false":::
 
 searchMode を `all` に変更すると、条件に累積的な効果が適用され、より小さな結果セット (21 個のドキュメント) が返されます。これは、"fire department" という語句全体を含むドキュメントから、Metrotech Center のアドレスのジョブを除いた結果です。
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
 ```
-  :::image type="content" source="media/search-query-simple-examples/searchmodeall.png" alt-text="Postman の要求ヘッダーの設定パラメーター" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/searchmodeall.png" alt-text="検索モード all" border="false":::
 
 ## <a name="example-8-structuring-results"></a>例 8:結果の構造化
 

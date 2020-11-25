@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: ca84cb6cdd6b47976eadbc5298701a46fe677426
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547828"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007139"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Azure Marketplace への HDInsight アプリケーションの発行
 Azure HDInsight アプリケーションは、Linux ベースの HDInsight クラスターにインストールできます。 この記事では、HDInsight アプリケーションを Azure Marketplace に発行する方法について説明します。 Azure Marketplace への発行全般に関する情報については、[Azure Marketplace へのプランの発行方法](../marketplace/overview.md)に関する記事を参照してください。
 
-HDInsight アプリケーションは、" *ライセンス持ち込み (BYOL)* " モデルを使用します。 BYOL シナリオでは、アプリ ユーザーに対するアプリケーションの使用許諾はアプリケーション提供者が行います。 また、アプリ ユーザーへの課金はアプリ ユーザーが作成した Azure リソース (HDInsight クラスターとクラスターの VM/ノードなど) についてのみ行われます。 現在、アプリケーションそのものに対する課金は Azure で発生しません。
+HDInsight アプリケーションは、"*ライセンス持ち込み (BYOL)* " モデルを使用します。 BYOL シナリオでは、アプリ ユーザーに対するアプリケーションの使用許諾はアプリケーション提供者が行います。 また、アプリ ユーザーへの課金はアプリ ユーザーが作成した Azure リソース (HDInsight クラスターとクラスターの VM/ノードなど) についてのみ行われます。 現在、アプリケーションそのものに対する課金は Azure で発生しません。
 
 詳しくは、次の HDInsight アプリケーションに関連する記事を参照してください。
 
@@ -31,7 +31,7 @@ HDInsight アプリケーションは、" *ライセンス持ち込み (BYOL)* "
 さらに、開発者アカウントの登録が必要となります。 詳しくは、[Azure Marketplace へのプランの発行](../marketplace/overview.md)に関するページおよび「[Microsoft 開発者アカウントの作成](../marketplace/overview.md)」をご覧ください。
 
 ## <a name="define-the-application"></a>アプリケーションの定義
-Marketplace へのアプリケーションの発行は、2 段階の手順で実行されます。 最初に、 *createUiDef.json* ファイルを定義します。 createUiDef.json ファイルは、どのクラスターがアプリケーションと互換性があるかを示します。 次に、Azure Portal からテンプレートを発行します。 以下に createUiDef.json ファイルの例を示します。
+Marketplace へのアプリケーションの発行は、2 段階の手順で実行されます。 最初に、*createUiDef.json* ファイルを定義します。 createUiDef.json ファイルは、どのクラスターがアプリケーションと互換性があるかを示します。 次に、Azure Portal からテンプレートを発行します。 以下に createUiDef.json ファイルの例を示します。
 
 ```json
 {

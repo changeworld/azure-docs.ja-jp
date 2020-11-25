@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 6b4484b9bb235b24d2b733c329b52ab6b04be183
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519828"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006423"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Zoom の統合
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Zoom では、 **SP** Initiated SSO がサポートされます。 
-* Zoom では、 [**自動化された** ユーザー プロビジョニング](./zoom-provisioning-tutorial.md)がサポートされます。
+* Zoom では、**SP** Initiated SSO がサポートされます。 
+* Zoom では、[**自動化された** ユーザー プロビジョニング](./zoom-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="adding-zoom-from-the-gallery"></a>ギャラリーからの Zoom の追加
 
@@ -50,7 +50,7 @@ Azure AD への Zoom の統合を構成するには、ギャラリーから管�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Zoom** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Zoom**」と入力します。
 1. 結果パネルで **[Zoom]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-zoom"></a>Zoom の Azure AD シングル サインオンの構成とテスト
@@ -135,11 +135,11 @@ Zoom で Azure AD SSO を構成してテストするには、次の構成要素�
 
 1. 別の Web ブラウザー ウィンドウで、Zoom 企業サイトに管理者としてサインインします。
 
-2. [ **シングル サインオン** ] タブをクリックします。
+2. [**シングル サインオン**] タブをクリックします。
 
     ![[Single sign-on]\(シングル サインオン\) タブ](./media/zoom-tutorial/zoom-sso1.png "シングル サインオン")
 
-3. [ **セキュリティ制御** ] タブをクリックし、[ **シングル サインオン** ] 設定に移動します。
+3. [**セキュリティ制御**] タブをクリックし、[**シングル サインオン**] 設定に移動します。
 
 4. [Single Sign-On] セクションで、次の手順に従います。
 
@@ -159,7 +159,7 @@ Zoom で Azure AD SSO を構成してテストするには、次の構成要素�
 
     ![エンドポイントのコピー ボタン](./media/zoom-tutorial/endpoint1.png)
 
-    e. base-64 でエンコードされた証明書をメモ帳で開き、内容をクリップボードにコピーし、 **[Identity Provider Certificate]** ボックスに貼り付けます。
+    e. base-64 でエンコードされた証明書をメモ帳で開き、内容をクリップボードにコピーし、**[Identity Provider Certificate]** ボックスに貼り付けます。
 
     f. **[Issuer]\(発行者\)** テキストボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。 
 

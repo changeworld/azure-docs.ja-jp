@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
-ms.openlocfilehash: e583bb1b9cad79ee3e48e838d81d6a504c44f72c
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 849743dd756eff27ec0670cc39d2419c60538183
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408092"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701016"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Azure App Service を使用して PaaS の Web アプリケーションを保護するベスト プラクティス
 
@@ -33,7 +33,7 @@ PaaS (platform-as-a-service) である Azure App Service を使用すると、�
 App Service は、ID プロバイダーに対して OAuth 2.0 サービスを提供します。 OAuth 2.0 は、Web アプリケーション、デスクトップ アプリケーション、および携帯電話に特定の認証フローを提供しながら、クライアント開発者のシンプル性を実現することに焦点を当てています。 Azure AD が OAuth 2.0 を使用することにより、ユーザーはモバイル アプリケーションと Web アプリケーションへのアクセスを承認することができます。 詳細については、「 [Azure App Service での認証および認可](../../app-service/overview-authentication-authorization.md)」を参照してください。
 
 ## <a name="restrict-access-based-on-role"></a>役割に基づいてアクセスを制限する
-アクセスの制限は、データ アクセスにセキュリティ ポリシーを適用する必要がある組織にとって、絶対に欠かせないものです。 知る必要性と最低限の特権セキュリティなど、ユーザー、グループ、および特定のスコープ内のアプリケーションに権限を割り当てるには、ロールベースのアクセス制御 (RBAC) を使用できます。 アプリケーションへのアクセスをユーザーに付与する方法の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
+アクセスの制限は、データ アクセスにセキュリティ ポリシーを適用する必要がある組織にとって、絶対に欠かせないものです。 知る必要性と最低限の特権セキュリティなど、ユーザー、グループ、および特定のスコープ内のアプリケーションに権限を割り当てるには、Azure ロールベースのアクセス制御 (Azure RBAC) を使用できます。 アプリケーションへのアクセスをユーザーに付与する方法の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
 
 ## <a name="protect-your-keys"></a>キーを保護します
 サブスクリプション キーを紛失してしまえば、いかにセキュリティが優れていても関係ありません。 Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。 Key Vault を使用すると、キーとシークレット (認証キー、ストレージ アカウント キー、データ暗号化キー、PFX ファイル、パスワードなど) をハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して暗号化できます。 さらに安心感を高めたい場合には、HSM でキーのインポートや生成を行うことができます。 Key Vault を使用して、自動更新で TLS 証明書の管理することもできます。 詳細については、「[Azure Key Vault とは](../../key-vault/general/overview.md)」を参照してください。

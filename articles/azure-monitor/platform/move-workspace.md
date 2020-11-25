@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/13/2019
-ms.openlocfilehash: e80ff2c04cf71fa322bb0bf41e8132f595c0644e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 11/12/2020
+ms.openlocfilehash: 8d7fde6661a4a133f689016559f010767c662417
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372278"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699748"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics ワークスペースを別のサブスクリプションまたはリソース グループに移動する
 
@@ -29,14 +29,14 @@ ms.locfileid: "92372278"
 ```
 
 ## <a name="workspace-move-considerations"></a>ワークスペースの移動に関する考慮事項
-ワークスペースにインストールされているマネージド ソリューションは、Log Analytics ワークスペースの移動操作によって移動されます。 接続されたエージェントは接続されたままで、送信済みデータは移動後も引き続きワークスペースに保持されます。 移動操作では、ワークスペースからリンクされたサービスがあってはならないため、ワークスペースの移動を可能にするには、そのリンクに依存するソリューションを削除する必要があります。
-
-自動アカウントのリンクを解除する前に削除する必要があるソリューションには、次のものがあります。
-
-- 更新管理
-- 変更の追跡
-- 勤務時間外に VM を起動/停止する
-- Azure Security Center
+- ワークスペースにインストールされているマネージド ソリューションは、Log Analytics ワークスペースの移動操作によって移動されます。 
+- ワークスペース キー (プライマリとセカンダリの両方) は、ワークスペースの移動操作を行うと再生成されます。 Key Vault にワークスペース キーのコピーを保存する場合は、ワークスペースの移動後に生成された新しいキーで更新します。 
+- 接続されたエージェントは接続されたままで、送信済みデータは移動後も引き続きワークスペースに保持されます。 
+- 移動操作では、ワークスペースからリンクされたサービスがあってはならないため、ワークスペースの移動を可能にするには、そのリンクに依存するソリューションを削除する必要があります。 自動アカウントのリンクを解除する前に削除する必要があるソリューションには、次のものがあります。
+  - 更新管理
+  - 変更の追跡
+  - 勤務時間外に VM を起動/停止する
+  - Azure Security Center
 
 >[!IMPORTANT]
 > **Azure Sentinel のお客様**

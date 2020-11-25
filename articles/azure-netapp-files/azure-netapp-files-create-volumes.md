@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: b-juche
 ms.openlocfilehash: e88cf0c063b3ba42dadd72c19c23be8fcf919b86
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930732"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006612"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files の NFS ボリュームを作成する
 
@@ -100,7 +100,7 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMBv3、またはデュア
 
 3. **[プロトコル]** をクリックし、次のアクションを実行します。  
     * ボリュームのプロトコルの種類として **[NFS]** を選択します。   
-    * 新しいボリュームのエクスポート パスを作成する際に使用する**ファイル パス**を指定します。 ボリュームのマウントとアクセスには、このエクスポート パスが使用されます。
+    * 新しいボリュームのエクスポート パスを作成する際に使用する **ファイル パス** を指定します。 ボリュームのマウントとアクセスには、このエクスポート パスが使用されます。
 
         ファイル パス名には、文字、数字、ハイフン ("-") のみを含めることができます。 長さは 16 文字から 40 文字でなければなりません。 
 

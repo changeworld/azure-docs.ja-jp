@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 09/25/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: bed8475e5d6c7bf26003672b6cf9ce51a82384ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8959904482bda8dc26e4df626377027e1ab4bd1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91377259"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005548"
 ---
 Azure Portal で汎用 v2 ストレージ アカウントを作成するには、次の手順に従います。
 
 1. Azure portal のメニューで **[すべてのサービス]** を選択します。 リソースの一覧で「**ストレージ アカウント**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[ストレージ アカウント]** を選択します。
 1. 表示された **[ストレージ アカウント]** ウィンドウで **[追加]** を選択します。
 1. **[基本]** タブで、ストレージ アカウントを作成するサブスクリプションを選択します。
-1. **[リソース グループ]** フィールドで、目的のリソース グループを選択するか、新しいリソース グループを作成します。  Azure リソース グループの詳細については、[Azure Resource Manager の概要](../articles/azure-resource-manager/resource-group-overview.md)に関するページを参照してください。
+1. **[リソース グループ]** フィールドで、目的のリソース グループを選択するか、新しいリソース グループを作成します。  Azure リソース グループの詳細については、[Azure Resource Manager の概要](../articles/azure-resource-manager/management/overview.md)に関するページを参照してください。
 1. 次に、ストレージ アカウントの名前を入力します。 選択する名前は Azure 全体で一意である必要があります。 また、名前の長さは 3 から 24 文字とし、数字と小文字のみを使用できます。
 1. ストレージ アカウントの場所を選択するか、または既定の場所を使います。
 1. パフォーマンス レベルを選択します。 既定のレベルは *Standard* です。

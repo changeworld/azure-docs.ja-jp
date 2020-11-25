@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
 ms.openlocfilehash: 23db3457458d34852f164649137c2b20cf99238b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458439"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006015"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmus"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Litmus の統合
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Litmus では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Litmus では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 * Litmus を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-litmus-from-the-gallery"></a>ギャラリーからの Litmus の追加
@@ -50,7 +50,7 @@ Azure AD への Litmus の統合を構成するには、ギャラリーからマ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Litmus** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Litmus**」と入力します。
 1. 結果のパネルから **[Litmus]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -167,11 +167,11 @@ Litmus で Azure AD SSO を構成してテストするには、次の構成要�
 
     ![説明されている値を入力できる [Add User]\(ユーザーの追加\) セクションを示すスクリーンショット。](./media/litmus-tutorial/user-profile.png)
 
-    a. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (例: **B.Simon\@contoso.com** ) を入力します
+    a. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (例: **B.Simon\@contoso.com**) を入力します
 
-    b. **[First Name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **B** )。
+    b. **[First Name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **B**)。
 
-    c. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon** )。
+    c. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
     d. **[Create User]** をクリックします。
 

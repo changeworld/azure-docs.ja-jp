@@ -3,7 +3,7 @@ title: 既存のプレーヤーを使用したコンテンツの再生 - Azure |
 description: この記事では、コンテンツの再生に使用できる既存のプレーヤーを示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 7e9fcf89-0fb6-4fa4-96cb-666320684d69
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: d2036fa056932f9bbd2f14b4005fa54321b1a382
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/17/2020
+ms.author: inhenkel
+ms.openlocfilehash: 6085f34c46ab39012500cd42cd8392e65776f773
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095715"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94739818"
 ---
 # <a name="playing-your-content-with-existing-players"></a>既存のプレーヤーによるコンテンツの再生
 
@@ -27,7 +27,8 @@ ms.locfileid: "93095715"
 
 Azure Media Services は、スムーズ ストリーミング、HTTP ライブ ストリーミング、Mpeg-dash など、人気のある多くのストリーミング形式をサポートします。 このトピックでは、ストリームのテストに使用できる既存のプレーヤーを示します。
 
-### <a name="the-azure-portal-media-services-content-player"></a>Azure Portal Media Services コンテンツ プレーヤー
+## <a name="the-azure-portal-media-services-content-player"></a>Azure Portal Media Services コンテンツ プレーヤー
+
 **Azure** ポータルには、ビデオのテストに使用できるコンテンツ プレーヤーが用意されています。
 
 目的のビデオをクリックし ( [発行済](media-services-portal-publish.md)であることを確認します)、ポータルの下部の **[再生]** ボタンをクリックします。
@@ -35,8 +36,6 @@ Azure Media Services は、スムーズ ストリーミング、HTTP ライブ �
 いくつかの考慮事項が適用されます。
 
 * **Media Services コンテンツ プレーヤー** を既定のストリーミング エンドポイントから再生します。 既定以外のストリーミング エンドポイントから再生する場合は、別のプレーヤーを使用します たとえば、[Azure Media Player](https://aka.ms/azuremediaplayer) を使用します。
-
-![AMSPlayer][AMSPlayer]
 
 ### <a name="azure-media-player"></a>Azure Media Player
 
@@ -55,20 +54,21 @@ Azure Media Services は、スムーズ ストリーミング、HTTP ライブ �
 
 ### <a name="dash-players"></a>DASH Players
 
-"https://dashplayer.azurewebsites.net"
+[DASH プレーヤー](https://dashplayer.azurewebsites.net)
 
 [https://dashif.org](https://dashif.org)
 
 ### <a name="other"></a>その他
+
 次を使用して HLS URL をテストすることもできます。
 
 * **Safari** (iOS デバイス) または
 * **3ivx HLS Player** (Windows)
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
+
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供
-[!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-[AMSPlayer]: ./media/media-services-playback-content-with-existing-players/media-services-portal-player.png
+[!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

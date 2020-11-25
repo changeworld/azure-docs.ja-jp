@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ebf383c1a904027d3ff5a1864ea9f50e87a5fa8
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 906df01587201561fbbfea0661d0885864042925
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093295"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701315"
 ---
 # <a name="list-blobs-with-net"></a>.NET を使用して BLOB を一覧表示する
 
@@ -51,11 +51,7 @@ BLOB をコードから一覧表示する際には、Azure Storage からの結�
 
 ### <a name="manage-how-many-results-are-returned"></a>返される結果の数を管理する
 
-既定では、一覧表示操作から一度に最大 5,000 件の結果が返されますが、各一覧表示操作で返される結果の数は指定できます。 この記事の例ではその方法を示します。
-
-一覧表示操作で 5,000 個を超える BLOB が返される場合、または使用できる BLOB の数が指定した数を超える場合、Azure Storage からは BLOB の一覧と共に "*継続トークン*" が返されます。 継続トークンは、Azure Storage から次の結果セットを取得するために使用できる非透過の値です。
-
-コードでは、継続トークンの値をチェックして、それが null かどうかを確認します。 継続トークンが null の場合、結果セットは完了しています。 継続トークンが null でない場合は、一覧表示操作をもう一度呼び出し、継続トークンを渡して次の結果セットを取得し、継続トークンが null になるまでそれを繰り返します。
+既定では、一覧表示操作から一度に最大 5,000 件の結果が返されますが、各一覧表示操作で返される結果の数は指定できます。 この記事の例は、結果をページに返す方法を示しています。
 
 ### <a name="filter-results-with-a-prefix"></a>プレフィックスを使用して結果をフィルター処理する
 
@@ -63,15 +59,19 @@ BLOB の一覧をフィルター処理するには、`prefix` パラメーター
 
 ### <a name="return-metadata"></a>メタデータを返す
 
-結果と共に BLOB メタデータを返すことができます。 
+結果と共に BLOB メタデータを返すことができます。
 
 - .NET v12 SDK を使用している場合は、[BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits) 列挙型の **Metadata** 値を指定します。
 
 - .NET v11 SDK を使用している場合は、[BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) 列挙型の **Metadata** 値を指定します。 Azure Storage は、返される各 BLOB にメタデータを追加します。そのため、BLOB のメタデータを取得するために、いずれかの **FetchAttributes** メソッドをこのコンテキストで呼び出す必要はありません。
 
+### <a name="list-blob-versions-or-snapshots"></a>BLOB のバージョンまたはスナップショットをリストに表示する
+
+.NET v12 クライアント ライブラリを使用して BLOB のバージョンまたはスナップショットをリストに表示するには、 **[バージョン]** または **[スナップショット]** フィールドで [[BlobStates]](/dotnet/api/azure.storage.blobs.models.blobstates) パラメーターを指定します。 バージョンとスナップショットは、古いものから新しいものの順に列挙されます。 バージョンをリストに表示する方法の詳細については、[BLOB のバージョンをリストに表示する](versioning-enable.md#list-blob-versions)方法に関するページをご覧ください。
+
 ### <a name="flat-listing-versus-hierarchical-listing"></a>フラットな一覧表示と階層的な一覧表示
 
-Azure Storage の BLOB は、(従来のファイル システムのような) 階層的なパラダイムではなく、フラットなパラダイムで組織化されます。 ただし、フォルダー構造を模倣するために、BLOB を*仮想ディレクトリ*に組織化することができます。 仮想ディレクトリは BLOB 名の一部を形成し、区切り文字によって示されます。
+Azure Storage の BLOB は、(従来のファイル システムのような) 階層的なパラダイムではなく、フラットなパラダイムで組織化されます。 ただし、フォルダー構造を模倣するために、BLOB を *仮想ディレクトリ* に組織化することができます。 仮想ディレクトリは BLOB 名の一部を形成し、区切り文字によって示されます。
 
 BLOB を仮想ディレクトリに組織化するには、BLOB 名に区切り文字を使用します。 既定の区切り文字はスラッシュ (/) ですが、区切り文字として任意の文字を指定できます。
 
@@ -90,6 +90,10 @@ BLOB を仮想ディレクトリに組織化するには、BLOB 名に区切り�
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsFlatListing":::
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+一覧表示操作で 5,000 個を超える BLOB が返される場合、または使用できる BLOB の数が指定した数を超える場合、Azure Storage からは BLOB の一覧と共に "*継続トークン*" が返されます。 継続トークンは、Azure Storage から次の結果セットを取得するために使用できる非透過の値です。
+
+コードでは、継続トークンの値をチェックして、それが null かどうかを確認します。 継続トークンが null の場合、結果セットは完了しています。 継続トークンが null でない場合は、一覧表示操作をもう一度呼び出し、継続トークンを渡して次の結果セットを取得し、継続トークンが null になるまでそれを繰り返します。
 
 ```csharp
 private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container, int? segmentSize)

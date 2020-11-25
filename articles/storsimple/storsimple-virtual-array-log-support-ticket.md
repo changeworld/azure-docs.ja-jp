@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 57cd9b55f529bde3f6bcb0a25a95c70333f6d8dd
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130954"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005777"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して、StorSimple Virtual Array のサポート要求を記録します
 
 ## <a name="overview"></a>概要
 
-StorSimple デバイス マネージャーのサービスの概要ブレードには、 **新しいサポート要求を記録** する機能が用意されています。 この記事では、ポータル内から新しいサポート要求を記録し、そのライフサイクルを管理する方法について説明します。
+StorSimple デバイス マネージャーのサービスの概要ブレードには、**新しいサポート要求を記録** する機能が用意されています。 この記事では、ポータル内から新しいサポート要求を記録し、そのライフサイクルを管理する方法について説明します。
 
 ## <a name="new-support-request"></a>新しいサポート要求
 
@@ -41,7 +41,7 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 
     1. **[問題の種類]** ドロップダウン リストで **[技術]** を選択します。 
     
-    2. 現在の **サブスクリプション** 、 **サービス** の種類、および **リソース** (StorSimple デバイス マネージャー サービス) が自動的に選択されています。 
+    2. 現在の **サブスクリプション**、**サービス** の種類、および **リソース** (StorSimple デバイス マネージャー サービス) が自動的に選択されています。 
 
     3. 問題が発生しているサービスに登録されている 1 台以上のデバイスを指定します。
 

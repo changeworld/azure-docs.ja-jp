@@ -2,13 +2,13 @@
 title: 概念 - Azure VMware Solution プライベート クラウドの監視と修復
 description: Azure VMware Solution で Azure VMware Solution プライベート クラウド上の VMware ESXi サーバーを監視および修復する方法について説明します。
 ms.topic: conceptual
-ms.date: 09/16/2020
-ms.openlocfilehash: bee08304cd14f2aeec6995203638b5a37d9a861c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 11/18/2020
+ms.openlocfilehash: 11a3c53bff7ce7b67b677977eddb9829f336672d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91340149"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684697"
 ---
 # <a name="monitor-and-repair-azure-vmware-solution-private-clouds"></a>Azure VMware Solution プライベート クラウドの監視と修復
 
@@ -42,4 +42,10 @@ Azure VMware Solution によってテナントのプライベート クラウド
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure VMware Solution プライベート クラウドのアップグレード](concepts-upgrades.md)について学習してください。  
+以下に、詳しく確認することをお勧めするいくつかのトピックを示します。
+
+- [Azure VMware Solution プライベート クラウドのアップグレード](concepts-upgrades.md)
+- [Azure VMware Solution VM のライフサイクル管理](lifecycle-management-of-azure-vmware-solution-vms.md)
+- [Azure Security Center 統合を使用して Azure VMware Solution VM を保護する](azure-security-integration.md)
+- [Azure Backup Server を使用して Azure VMware Solution の VM をバックアップする](backup-azure-vmware-solution-virtual-machines.md)
+- [Azure VMware Solution を使用して仮想マシンのディザスター リカバリーを完了する](disaster-recovery-for-virtual-machines.md)

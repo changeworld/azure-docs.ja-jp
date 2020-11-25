@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 5d61c0f5f26bc46b9c4a5bc4a793df1e10710004
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130869"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006731"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive テーブルを作成して Azure Blob Storage からデータを読み込む
 
@@ -38,7 +38,7 @@ ms.locfileid: "93130869"
 
 * **NYC タクシー乗車データ** ファイル (12 個の Trip ファイルと 12 個の Fare ファイル) を [NYC タクシー乗車データ](https://www.andresmh.com/nyctaxitrips) します。
 * **解凍** します。
-* これらを Azure ストレージ アカウントの既定値 (または適切なコンテナー) に **アップロード** します。このようなアカウント用のオプションは、「 [Azure HDInsight クラスターで Azure Storage を使用する](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)」トピックに示されています。 ストレージ アカウントの既定のコンテナーに .csv ファイルをアップロードするプロセスについては、この [ページ](hive-walkthrough.md#upload)をご覧ください。
+* これらを Azure ストレージ アカウントの既定値 (または適切なコンテナー) に **アップロード** します。このようなアカウント用のオプションは、「[Azure HDInsight クラスターで Azure Storage を使用する](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)」トピックに示されています。 ストレージ アカウントの既定のコンテナーに .csv ファイルをアップロードするプロセスについては、この [ページ](hive-walkthrough.md#upload)をご覧ください。
 
 ## <a name="how-to-submit-hive-queries"></a><a name="submit"></a>Hive クエリを送信する方法
 Hive クエリは、以下のものを使用して送信できます。
@@ -147,7 +147,7 @@ STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line
 
 接続する必要があるフィールドと他の構成の説明を次に示します。
 
-* **\<database name\>** : 作成するデータベースの名前。 既定のデータベースを使用する場合、" *create database...* " クエリは省略してかまいません。
+* **\<database name\>** : 作成するデータベースの名前。 既定のデータベースを使用する場合、"*create database...* " クエリは省略してかまいません。
 * **\<table name\>** : 指定したデータベース内に作成するテーブルの名前。 既定のデータベースを使用する場合、テーブルは *\<table name\>* で直接参照でき、\<database name\> は不要です。
 * **\<field separator\>** : Hive テーブルにアップロードするデータ ファイルのフィールドを区切る区切り記号。
 * **\<line separator\>** : データ ファイル内の行を区切る区切り記号。

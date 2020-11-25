@@ -4,12 +4,12 @@ description: この記事では、Azure Backup を使用して Azure VM 上の S
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: 641bba6b947731e0f55bc79828101f84d5b780fd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 181d006d0d1f0e5c2f099507be493ced2ce9280b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515782"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659745"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure VM 上の SAP HANA データベースのバックアップに関するサポート マトリックス
 
@@ -30,7 +30,7 @@ Azure Backup では、Azure への SAP HANA データベースのバックアッ
 | **HANA インスタンス**         | 単一の Azure VM 上の単一の SAP HANA インスタンス – スケールアップのみ | 単一の VM 上の複数の SAP HANA インスタンス                  |
 | **HANA データベースの種類**    | 1\.x の場合は SDC (Single Database Container)、2.x の場合は MDC (Multi-Database Container) | HANA 1.x での MDC                                              |
 | **HANA データベースのサイズ**     | HANA データベースのサイズ <= 2 TB (これは HANA システムのメモリ サイズではありません)               |                                                              |
-| **バックアップの種類**           | 完全バックアップ、差分バックアップ、ログ バックアップ                          | 増分、スナップショット                                       |
+| **バックアップの種類**           | 完全バックアップ、差分バックアップ、増分バックアップ (プレビュー)、ログ バックアップ                          |  スナップショット                                       |
 | **復元の種類**          | サポートされている復元の種類については、SAP HANA ノート [1642148](https://launchpad.support.sap.com/#/notes/1642148) を参照してください |                                                              |
 | **バックアップの制限**          | SAP HANA インスタンスごとに最大 2 TB の完全バックアップ サイズ (ソフト制限)         |                                                              |
 | **特殊な構成** |                                                              | SAP HANA + Dynamic Tiering <br>  LaMa を使用した複製        |

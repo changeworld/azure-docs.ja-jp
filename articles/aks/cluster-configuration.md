@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: d93a43a44a9ccff4e7918e556b9d759e270d2f42
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 352c057a74d1be5f440041b9f13127e8730edf82
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072086"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698072"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS クラスターの構成
 
@@ -78,27 +78,28 @@ az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-gro
 
 AKS Ubuntu 16.04 イメージを使用してノード プールを作成する場合は、カスタムの `--aks-custom-headers` タグを省略できます。
 
+## <a name="container-runtime-configuration"></a>コンテナー ランタイム構成
 
-## <a name="container-runtime-configuration-preview"></a>コンテナー ランタイム構成 (プレビュー)
+コンテナー ランタイムは、ノードでコンテナーを実行し、コンテナー イメージを管理するソフトウェアです。 ランタイムにより、Linux または Windows 上でコンテナーを実行するためのシステム コールやオペレーティング システム (OS) 固有の機能の抽象化が容易になります。 Kubernetes バージョン 1.19 以降のノード プールを使用する AKS クラスターでは、コンテナー ランタイムとして `containerd` が使用されます。 Kubernetes v1.19 よりも前のノード プールを使用する AKS クラスターでは、コンテナー ランタイムとして [Moby](https://mobyproject.org/) (アップストリーム Docker) が使用されます。
 
-コンテナー ランタイムは、ノードでコンテナーを実行し、コンテナー イメージを管理するソフトウェアです。 ランタイムにより、Linux または Windows 上でコンテナーを実行するためのシステム コールやオペレーティング システム (OS) 固有の機能の抽象化が容易になります。 現在、AKS では、コンテナー ランタイムとして [Moby](https://mobyproject.org/) (アップストリームの Docker) を使用しています。 
-    
 ![Docker CRI 1](media/cluster-configuration/docker-cri.png)
 
-[`Containerd`](https://containerd.io/) は、[OCI](https://opencontainers.org/) (Open Container Initiative) 準拠のコア コンテナー ランタイムです。ノードでコンテナーを実行し、イメージを管理するために必要な最小限の機能セットを提供します。 これは、2017 年 3 月に、Cloud Native Compute Foundation (CNCF) に[寄贈](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/)されました。 AKS で現在使用されている Moby の最新バージョンでは、上記のように、`containerd` が既に利用されており、その上に構築されています。 
+[`Containerd`](https://containerd.io/) は、[OCI](https://opencontainers.org/) (Open Container Initiative) 準拠のコア コンテナー ランタイムです。ノードでコンテナーを実行し、イメージを管理するために必要な最小限の機能セットを提供します。 これは、2017 年 3 月に、Cloud Native Compute Foundation (CNCF) に[寄贈](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/)されました。 AKS で使用されている Moby の最新バージョンでは、上記のように、`containerd` が既に利用されており、その上に構築されています。
 
-containerd ベースのノードとノード プールでは、kubelet は `dockershim` と通信するのではなく、CRI (コンテナー ランタイム インターフェイス) プラグインを介して `containerd` と直接通信するので、Docker CRI 実装と比較して、フローの余分なホップが排除されます。 そのため、ポッドの起動時の待ち時間が短縮され、リソース (CPU とメモリ) 使用量が削減されます。
+`containerd` ベースのノードとノード プールでは、kubelet は `dockershim` と通信するのではなく、CRI (コンテナー ランタイム インターフェイス) プラグインを介して `containerd` と直接通信するので、Docker CRI 実装と比較して、フローの余分なホップが排除されます。 そのため、ポッドの起動時の待ち時間が短縮され、リソース (CPU とメモリ) 使用量が削減されます。
 
 AKS ノードに `containerd` を使用することで、ポッドの起動時の待ち時間が短縮され、コンテナー ランタイムによるノード リソースの使用量が減少します。 これらの改善は、kubelet が CRI プラグインを介して `containerd` と直接通信するこの新しいアーキテクチャによって実現されます。一方、Moby (Docker) アーキテクチャでは、kubelet は `containerd` に到達する前に `dockershim` および Docker エンジンと通信するため、フローの余分なホップが発生します。
 
 ![Docker CRI 2](media/cluster-configuration/containerd-cri.png)
 
-`Containerd` は、AKS のすべての GA バージョンの Kubernetes と、v1.10 より後のすべてのアップストリームの Kubernetes バージョンで動作し、Kubernetes と AKS のすべての機能をサポートします。
+`Containerd` では、AKS のすべての GA バージョンの Kubernetes と、v1.19 よりも後のすべてのアップストリームの Kubernetes バージョンで動作し、Kubernetes と AKS のすべての機能がサポートされています。
 
 > [!IMPORTANT]
-> AKS で `containerd` の一般提供が開始されたら、これが既定になり、新しいクラスターで使用できるコンテナー ランタイムの唯一のオプションになります。 Moby ノード プールおよびクラスターは、サポートされている古いバージョンのサポートが終了するまで、それらのバージョンで引き続き使用できます。 
+> Kubernetes v1.19 以降で作成されたノード プールを使用するクラスターでは、既定のコンテナー ランタイムとして `containerd` が設定されます。 サポートされている 1.19 よりも前の Kubernetes バージョンのノード プールを使用するクラスターでは、コンテナー ランライムとして `Moby` が受信されますが、ノード プールの Kubernetes バージョンが v1.19 以降に更新されると、`ContainerD` に更新されます。 `Moby` ノード プールおよびクラスターは、サポートされている古いバージョンのサポートが終了するまで、それらのバージョンで引き続き使用できます。
 > 
-> `containerd` でアップグレードしたり、新しいクラスターを作成したりする前に、このコンテナー ランタイムのノード プールでワークロードをテストすることをお勧めします。
+> 1\.19 以降でクラスターを使用する前に、`containerD` を使用する AKS ノード プールでワークロードをテストすることを強くお勧めします。
+
+次のセクションでは、Kubernetes バージョン 1.19 以降をまだ使用していないクラスター上、またはこの機能が一般提供される前に、コンテナー ランタイム構成プレビューを使用して作成されたクラスター上で `containerD` を使用することで、AKS を使用してテストする方法について説明します。
 
 ### <a name="use-containerd-as-your-container-runtime-preview"></a>コンテナー ランタイムとして `containerd` を使用する (プレビュー)
 
@@ -165,7 +166,7 @@ Moby (Docker) ランタイムを使用してノード プールを作成する�
 
 * コンテナー ランタイムとして `containerd` を使用するには、ベース OS イメージとして AKS Ubuntu 18.04 を使用する必要があります。
 * ノードに Docker ツールセットがまだ存在していても、Kubernetes ではコンテナー ランタイムとして `containerd` を使用します。 したがって、ノード上の Kubernetes で作成されたコンテナーは Moby (Docker) によって管理されないため、Docker コマンド (`docker ps` など) や Docker API を使用してコンテナーを表示したり、操作したりすることはできません。
-* `containerd` では、Kubernetes ノード上のポッド、コンテナー、コンテナー イメージの**トラブルシューティング**に、Docker CLI (`crictl ps` など) ではなく、代替 CLI として [`crictl`](https://kubernetes.io/docs/tasks/debug-application-cluster/crictl) を使用することをお勧めします。 
+* `containerd` では、Kubernetes ノード上のポッド、コンテナー、コンテナー イメージの **トラブルシューティング** に、Docker CLI (`crictl ps` など) ではなく、代替 CLI として [`crictl`](https://kubernetes.io/docs/tasks/debug-application-cluster/crictl) を使用することをお勧めします。 
    * Docker CLI の完全な機能は提供されません。 トラブルシューティングのみを目的としています。
    * `crictl` では、ポッドなどの概念が存在する、Kubernetes により適したコンテナー ビューが提供されます。
 * `Containerd` では、標準化された `cri` ログ形式を使用してログを設定します (これは、Docker の JSON ドライバーから現在取得しているものとは異なります)。 ログ ソリューションでは、([Azure Monitor for Containers](../azure-monitor/insights/container-insights-enable-new-cluster.md) のように) `cri` ログ形式をサポートする必要があります。

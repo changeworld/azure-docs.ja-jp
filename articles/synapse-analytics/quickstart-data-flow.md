@@ -1,6 +1,6 @@
 ---
-title: マッピング データ フローを使用してデータを変換するためのクイックスタート
-description: このチュートリアルでは、Azure Synapse Analytics でマッピング データ フローを使用してデータを変換するための詳細な手順を説明します
+title: 'クイックスタート: マッピング データ フローを使用してデータを変換する'
+description: このチュートリアルでは、Azure Synapse Analytics でマッピング データ フローを使用してデータを変換するための詳細な手順を説明します。
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: makromer
@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/03/2020
-ms.openlocfilehash: 0bf1611dee2b3f7f9a3059e3118ddbf08c00f886
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 207679ad5b508b687c9cad372d144839fcaa501d
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342787"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94743849"
 ---
 # <a name="quickstart-transform-data-using-mapping-data-flows"></a>クイックスタート: マッピング データ フローを使用してデータを変換する
 
-このクイックスタートでは、Azure Synapse Analytics を使い、マッピング データ フローを使用して Azure Data Lake Storage (ADLS) Gen2 ソースから ADLS Gen2 シンクにデータを変換するパイプラインを作成します。 このクイックスタートの構成パターンは、マッピング データ フローを使用してデータを変換するときに拡張することができます。
+このクイックスタートでは、Azure Synapse Analytics を使い、マッピング データ フローを使用して Azure Data Lake Storage Gen2 (ADLS Gen2) ソースから ADLS Gen2 シンクにデータを変換するパイプラインを作成します。 このクイックスタートの構成パターンは、マッピング データ フローを使用してデータを変換するときに拡張することができます。
 
 このクイックスタートでは、次の手順を実行します。
 
@@ -29,9 +29,9 @@ ms.locfileid: "93342787"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション** :Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-* **Azure Synapse ワークスペース** :「[クイックスタート:Synapse ワークスペースを作成する](quickstart-create-workspace.md)」の手順に従い、Azure portal を使用して Synapse ワークスペースを作成します。
-* **Azure ストレージ アカウント** :ADLS ストレージを、" *ソース* " と " *シンク* " のデータ ストアとして使用します。 ストレージ アカウントがない場合の作成手順については、[Azure のストレージ アカウントの作成](../storage/common/storage-account-create.md)に関するページを参照してください。
+* **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+* **Azure Synapse ワークスペース**:「[クイックスタート:Synapse ワークスペースを作成する](quickstart-create-workspace.md)」の手順に従い、Azure portal を使用して Synapse ワークスペースを作成します。
+* **Azure ストレージ アカウント**:ADLS ストレージを、"*ソース*" と "*シンク*" のデータ ストアとして使用します。 ストレージ アカウントがない場合の作成手順については、[Azure のストレージ アカウントの作成](../storage/common/storage-account-create.md)に関するページを参照してください。
 
     このチュートリアルで変換するファイルは MoviesDB です。このファイルは、[こちら](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)にあります。 GitHub からファイルを取得するには、コンテンツを任意のテキスト エディターにコピーして、.csv ファイルとしてローカルに保存します。 ファイルをご自分のストレージ アカウントにアップロードするには、[Azure portal を使用した BLOB のアップロード](../storage/blobs/storage-quickstart-blobs-portal.md)に関するページを参照してください。 例では、'sample-data' という名前のコンテナーを参照しています。
 
@@ -39,7 +39,7 @@ ms.locfileid: "93342787"
 
 Azure Synapse ワークスペースが作成された後、Synapse Studio を開く方法は 2 つあります。
 
-* [Azure portal](https://ms.portal.azure.com/#home) で Synapse ワークスペースを開きます。 [概要] セクションの上部にある **[Synapse Studio の起動]** を選択します。
+* [Azure portal](https://ms.portal.azure.com/#home) で Synapse ワークスペースを開きます。 [はじめに] の下の [Synapse Studio を開く] カードで、 **[開く]** を選択します。
 * [Azure Synapse Analytics](https://web.azuresynapse.net/) を開き、自分のワークスペースにサインインします。
 
 このクイックスタートでは、例として "adftest2020" という名前のワークスペースを使用します。 自動的に Synapse Studio のホーム ページに移動します。
@@ -54,7 +54,7 @@ Azure Synapse ワークスペースが作成された後、Synapse Studio を開
 
    ![新しいパイプラインを作成する](media/doc-common-process/new-pipeline.png)
 
-1. パイプラインの **[プロパティ]** 設定ページで、 **名前** として「 **TransformMovies** 」と入力します。
+1. パイプラインの **[プロパティ]** 設定ページで、**名前** として「**TransformMovies**」と入力します。
 
 1. *[アクティビティ]* ペインの *[Move and Transform]\(移動と変換\)* で、 **[データ フロー]** をパイプライン キャンバス上にドラッグします。
 
@@ -98,7 +98,7 @@ Data Flow を作成すると、データ フロー キャンバスが自動的�
 
     ![データのプレビュー](media/quickstart-data-flow/data-preview.png)
 
-1. データ フロー キャンバスでソース ノードの横にあるプラス アイコンをクリックして、新しい変換を追加します。 最初に追加する変換は、 **フィルター** です。
+1. データ フロー キャンバスでソース ノードの横にあるプラス アイコンをクリックして、新しい変換を追加します。 最初に追加する変換は、**フィルター** です。
 
     ![フィルターを追加する](media/quickstart-data-flow/add-filter.png)
 
@@ -120,7 +120,7 @@ Data Flow を作成すると、データ フロー キャンバスが自動的�
 
     式の操作が完了したら、 **[Save and Finish]\(保存して終了する\)** をクリックします。
 
-1. フィルターが正しく機能していることを確認するには、 **データ プレビュー** をフェッチします。
+1. フィルターが正しく機能していることを確認するには、**データ プレビュー** をフェッチします。
 
 1. 次に追加する変換は、 **[Schema modifier]\(スキーマ修飾子\)** の下にある **[集計]** 変換です。
 

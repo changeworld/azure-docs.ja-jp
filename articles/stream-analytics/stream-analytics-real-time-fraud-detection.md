@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 03/24/2020
 ms.custom: seodec18
 ms.openlocfilehash: ba216e41672e1d19e552b3f82a2ea65da7d3a435
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124579"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007088"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics の使用:リアルタイムでの不正検出
 
@@ -47,7 +47,7 @@ Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Stor
 
 ## <a name="create-an-azure-event-hubs-to-ingest-events"></a>イベントを取り込むための Azure Event Hubs を作成する
 
-データ ストリームを分析するには、Azure に " *取り込む* " 必要があります。 データを取り込む一般的な方法は、[Azure Event Hubs](../event-hubs/event-hubs-about.md) を使うことです。Azure Event Hubs は、1 秒間に数百万件のイベントを取り込み、処理して、イベント情報を格納することができます。 このチュートリアルでは、イベント ハブを作成し、呼び出しイベント ジェネレーター アプリでそのイベント ハブに呼び出しデータを送信します。
+データ ストリームを分析するには、Azure に "*取り込む*" 必要があります。 データを取り込む一般的な方法は、[Azure Event Hubs](../event-hubs/event-hubs-about.md) を使うことです。Azure Event Hubs は、1 秒間に数百万件のイベントを取り込み、処理して、イベント情報を格納することができます。 このチュートリアルでは、イベント ハブを作成し、呼び出しイベント ジェネレーター アプリでそのイベント ハブに呼び出しデータを送信します。
 
 >[!NOTE]
 >この手順についてさらに詳しくは、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」をご覧ください。 
@@ -291,7 +291,7 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
 リージョンごとに受信通話の数をカウントしたいものとします。 ストリーミング データでは、カウントのような集計関数を実行する場合、ストリームを時間単位に分割する必要があります (データ ストリーム自体は実質的にエンドレスであるため)。 これを行うには、Streaming Analytics の[ウィンドウ関数](stream-analytics-window-functions.md)を使います。 その後、そのウィンドウ内のデータを単位として処理できます。
 
-この変換では、重ならないテンポラル ウィンドウのシーケンスを使います。各ウィンドウの個別のデータ セットをグループ化して集計できます。 この種のウィンドウは、" *タンブリング ウィンドウ* " と呼ばれます。 タンブリング ウィンドウでは、発信元の国/地域を表す `SwitchNum` でグループ化された受信通話の数を取得できます。 
+この変換では、重ならないテンポラル ウィンドウのシーケンスを使います。各ウィンドウの個別のデータ セットをグループ化して集計できます。 この種のウィンドウは、"*タンブリング ウィンドウ*" と呼ばれます。 タンブリング ウィンドウでは、発信元の国/地域を表す `SwitchNum` でグループ化された受信通話の数を取得できます。 
 
 1. コード エディターでクエリを次のように変更します。
 
@@ -309,7 +309,7 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
     タンブリング ウィンドウを使うことを指定するには、`GROUP BY` 句で [TUMBLINGWINDOW](/stream-analytics-query/tumbling-window-azure-stream-analytics) 関数を使います。 この関数では、時間単位 (1 マイクロ秒から 1 日まで) とウィンドウ サイズ (単位数) を指定します。 この例では、タンブリング ウィンドウは 5 秒間隔で構成されるので、5 秒間の国/地域別の通話数が表示されます。
 
-2. もう一度 **[Test]** をクリックします。 結果では、 **WindowEnd** のタイムスタンプが 5 秒刻みになっていることに注目してください。
+2. もう一度 **[Test]** をクリックします。 結果では、**WindowEnd** のタイムスタンプが 5 秒刻みになっていることに注目してください。
 
    ![13 レコードを示す集計の Stream Analytics ジョブの出力](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-aggregation.png)
  
@@ -407,7 +407,7 @@ BLOB ストレージ内のファイルの内容を調べると、次のような
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-不正検出シナリオから続けて読むことができ、このチュートリアルで作成したリソースを使う他の記事があります。 続けて読む場合は、「 **次のステップ** 」をご覧ください。
+不正検出シナリオから続けて読むことができ、このチュートリアルで作成したリソースを使う他の記事があります。 続けて読む場合は、「**次のステップ**」をご覧ください。
 
 一方、これで終了し、作成したリソースがもう必要ない場合は、不要な Azure の料金が発生しないように削除できます。 その場合は、次のようにすることをお勧めします。
 

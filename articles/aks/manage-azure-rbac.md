@@ -1,5 +1,5 @@
 ---
-title: Azure から Kubernetes での RBAC を管理する
+title: Azure から Kubernetes での Azure RBAC を管理する
 titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) での Kubernetes 認可に対して Azure RBAC を使用する方法について説明します。
 services: container-service
@@ -7,23 +7,23 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 3f878389f22f3928bc1fc8c89b04353583326da6
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: a2a385b2be4e1005a7aabd76261b3190ecd2a506
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346045"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684221"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes 認可に Azure RBAC を使用する (プレビュー)
 
 現時点で既に、[Azure Active Directory (Azure AD) と AKS の間で統合認証](managed-aad.md)を利用できます。 この統合を有効にすると、お客様は、Kubernetes RBAC の対象として Azure AD のユーザー、グループ、またはサービス プリンシパルを使用できます。詳細については、[こちら](azure-ad-rbac.md)を参照してください。
-この機能を使用すると、Kubernetes に対するユーザーの ID と資格情報を個別に管理する必要がなくなります。 ただし、それでも Azure RBAC と Kubernetes RBAC を個別に設定および管理する必要があります。 AKS での認証、認可、RBAC の詳細については、[こちら](concepts-identity.md)を参照してください。
+この機能を使用すると、Kubernetes に対するユーザーの ID と資格情報を個別に管理する必要がなくなります。 ただし、それでも Azure RBAC と Kubernetes RBAC を個別に設定および管理する必要があります。 AKS で RBAC を使用した認証と認可の詳細については、[こちら](concepts-identity.md)をご覧ください。
 
 このドキュメントでは、Azure のリソース、AKS、Kubernetes のリソースで統一された管理とアクセス制御を可能にする新しいアプローチについて説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-Azure から Kubernetes のリソースに対する RBAC を管理する機能では、クラスター リソースの RBAC を管理するために、Azure または Kubernetes のネイティブ メカニズムのどちらを使用するかを選択できます。 有効にすると、Azure AD プリンシパルは Azure RBAC だけで検証されますが、Kubernetes の通常のユーザーとサービス アカウントは Kubernetes RBAC だけで検証されます。 AKS での認証、認可、RBAC の詳細については、[こちら](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview)を参照してください。
+Azure から Kubernetes のリソースに対する RBAC を管理する機能では、クラスター リソースの RBAC を管理するために、Azure または Kubernetes のネイティブ メカニズムのどちらを使用するかを選択できます。 有効にすると、Azure AD プリンシパルは Azure RBAC だけで検証されますが、Kubernetes の通常のユーザーとサービス アカウントは Kubernetes RBAC だけで検証されます。 AKS で RBAC を使用した認証と認可の詳細については、[こちら](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview)をご覧ください。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
@@ -49,7 +49,7 @@ az feature register --namespace "Microsoft.ContainerService" --name "EnableAzure
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureRBACPreview')].{Name:name,State:properties.state}"
 ```
 
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、 *Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
+準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -57,7 +57,7 @@ az provider register --namespace Microsoft.ContainerService
 
 #### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
-Azure RBAC を使用する AKS クラスターを作成するには、 *aks-preview* CLI 拡張機能バージョン 0.4.55 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールするか、 [az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムをインストールします。
+Azure RBAC を使用する AKS クラスターを作成するには、*aks-preview* CLI 拡張機能バージョン 0.4.55 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールするか、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムをインストールします。
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -272,7 +272,7 @@ az group delete -n MyResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-- AKS の認証、認可、RBAC の詳細については、[こちら](concepts-identity.md)を参照してください。
+- AKS の認証、認可、Kubernetes RBAC、Azure RBAC の詳細については、[こちら](concepts-identity.md)をご覧ください。
 - Azure RBAC の詳細については、[こちら](../role-based-access-control/overview.md)を参照してください。
 - Kubernetes 承認に対するカスタム Azure ロールを細かく定義するために使用できるすべてのアクションの詳細については、[こちら](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)を参照してください。
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 47ac8d0e3172645ec168d5cfe7a002d84765b864
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7f4238035a6fccb0addb9a481287b31732bd2662
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333122"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744537"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>ARM テンプレートに関してよく寄せられる質問
 
@@ -68,7 +68,7 @@ ms.locfileid: "91333122"
 
 * **ARM テンプレートにサブスクリプションを作成できますか。**
 
-  まだできませんが、今後可能になる予定です。
+  はい。詳細については、[最新の API を使用して Azure サブスクリプションをプログラムで作成する](../../cost-management-billing/manage/programmatically-create-subscription.md)方法に関するページをご覧ください。
 
 * **デプロイ前にテンプレートをテストするにはどうすればよいですか。**
 
@@ -104,9 +104,9 @@ ms.locfileid: "91333122"
 
 ## <a name="template-specs"></a>Template Specs
 
-* **Template Specs のプレビュー リリースに参加するにはどうすればよいですか。**
+* **Template Specs のプレビュー リリースの使用を開始するにはどうすればよいですか。**
 
-  テンプレート スペックを使用するには、[待機リストに参加](https://aka.ms/templateSpecsWaitlist)してください。
+  最新バージョンの PowerShell または Azure CLI をインストールします。 Azure PowerShell の場合は、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)を使用します。 Azure CLI の場合は、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
 
 * **テンプレート スペックと Azure Blueprints はどのように関連していますか。**
 
@@ -128,7 +128,7 @@ ms.locfileid: "91333122"
 
 * **カスタム スクリプト拡張機能と Desired State Configuration (DSC) は引き続き使用できますか。**
 
-  それらのオプションは変わりなく、引き続き使用できます。 デプロイ スクリプトは、VM ゲストに関連付けられていないアクションを実行するように設計されています。 VM 内のホスト オペレーティング システム上でスクリプトを実行する必要がある場合は、カスタム スクリプト拡張機能や DSC を選択することをお勧めします。 ただし、デプロイ スクリプトには、タイムアウト期間の設定などの利点があります。
+  それらのオプションは変わりなく、引き続き使用できます。 デプロイ スクリプトは、VM ゲストに関連しないアクションを実行するように設計されています。 VM 内のホスト オペレーティング システム上でスクリプトを実行する必要がある場合は、カスタム スクリプト拡張機能や DSC を選択することをお勧めします。 ただし、デプロイ スクリプトには、タイムアウト期間の設定などの利点があります。
 
 * **デプロイ スクリプトは Azure Government でサポートされていますか。**
 

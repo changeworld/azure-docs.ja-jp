@@ -7,11 +7,11 @@ ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
 ms.openlocfilehash: d5b6ecc12cee983cee0772da8b6f8f26a3b5a8ae
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890277"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008202"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>C\# で最初の Durable Functions を作成する
 
@@ -86,7 +86,7 @@ Azure Functions Core Tools は、必要に応じて Visual Studio Code により
     | リソース グループの選択 | *<一意の名前>* | 作成するリソース グループの名前 |
     | 場所を選択します。 | *リージョン* | 近くのリージョンを選択します |
 
-新しい関数を含むクラスがプロジェクトに追加されます。 また VS Code により、ストレージ アカウントの接続文字列が *local.settings.json* に追加され、 [`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) NuGet パッケージへの参照が *.csproj* プロジェクトファイルに追加されます。
+新しい関数を含むクラスがプロジェクトに追加されます。 また VS Code により、ストレージ アカウントの接続文字列が *local.settings.json* に追加され、[`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) NuGet パッケージへの参照が *.csproj* プロジェクトファイルに追加されます。
 
 新しい *HelloOrchestration.cs* ファイルを開いて内容を表示します。 この永続関数は、次のメソッドを使用した単純な関数チェーンの例です。  
 
@@ -261,7 +261,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
     }
     ```
 
-5. デバッグを停止するには、 **Shift キーを押しながら F5 キー** を押します。
+5. デバッグを停止するには、**Shift キーを押しながら F5 キー** を押します。
 
 関数がローカル コンピューター上で正常に動作することを確認した後、プロジェクトを Azure に発行します。
 

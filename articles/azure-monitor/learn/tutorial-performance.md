@@ -8,11 +8,11 @@ ms.author: lagayhar
 ms.date: 06/15/2020
 ms.custom: mvc
 ms.openlocfilehash: df7cfff7d5bf1b89f88105f79c072d1d7e731b31
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592568"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005488"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Azure Application Insights を使用してパフォーマンスに関する問題を検出して診断する
 

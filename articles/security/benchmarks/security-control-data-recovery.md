@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ee28cbffd6f047b4991d29781e0b131a44c7dfae
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 835e4f681d514bb6b92caa5ee076e3794ed59236
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409180"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698820"
 ---
 # <a name="security-control-data-recovery"></a>セキュリティ コントロールデータの復旧
 
@@ -58,7 +58,7 @@ Azure Backup 内でコンテンツのデータ復元を定期的に実行でき�
 |--|--|--|
 | 9.4 | 10.4 | Customer |
 
-オンプレミスのバックアップでは、Azure にバックアップする際に指定するパスフレーズを使用して保存時の暗号化が行われます。 Azure VM の場合、データは Storage Service Encryption (SSE) を使用して暗号化された上で保存されます。 ロールベースのアクセス制御を使用して、バックアップとカスタマー マネージド キーを保護します。  
+オンプレミスのバックアップでは、Azure にバックアップする際に指定するパスフレーズを使用して保存時の暗号化が行われます。 Azure VM の場合、データは Storage Service Encryption (SSE) を使用して暗号化された上で保存されます。 Azure ロールベースのアクセス制御を使用して、バックアップとカスタマー マネージド キーを保護します。  
 
 Key Vault で論理的な削除と消去保護を有効にして、偶発的または悪意のある削除からキーを保護します。  Azure Storage を使用してバックアップを格納した場合、BLOB または BLOB のスナップショットが削除されたときに、論理的な削除機能でデータを保存および復旧することができます。 
 

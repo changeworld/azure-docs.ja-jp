@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 7b0ea9cc1788065a92e168e41a0c293bb1f4ea9b
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 9dcb1113bb37cb0f5f65c54ae9d6ca76a88330c1
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409359"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698667"
 ---
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
 
@@ -87,7 +87,7 @@ Security Center では、仮想マシン (VM) のセキュリティ設定を可�
 - ディスク暗号化の検証。
 - ネットワークベースの攻撃。
 
-Security Center では、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) が使用されます。 この RBAC により、Azure 内のユーザー、グループ、およびサービスに割り当てることができる、[組み込みロール](../../role-based-access-control/built-in-roles.md)が提供されます。
+Security Center では、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) が使用されます。 Azure RBAC では、Azure 内のユーザー、グループ、およびサービスに割り当てることができる、[組み込みロール](../../role-based-access-control/built-in-roles.md)が提供されます。
 
 Security Center は、リソースの構成を評価して、セキュリティの問題と脆弱性を特定します。 Security Center では、リソースが属するサブスクリプションまたはリソース グループの所有者、共同作業者、閲覧者のいずれかのロールが割り当てられているときにリソースに関連した情報のみが表示されます。
 

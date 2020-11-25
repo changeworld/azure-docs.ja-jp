@@ -15,12 +15,12 @@ ms.date: 09/15/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b87af4a08c5a796d96d853ca63e50e335b9731fb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 18f0627b809f56b813052cc763e6ff961f31aa02
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362775"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697137"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>グループとアプリケーションのアクセス レビューを Azure AD アクセス レビューで作成する
 
@@ -36,6 +36,8 @@ ms.locfileid: "92362775"
 
 - Azure AD Premium P2
 - グローバル管理者またはユーザー管理者
+- (プレビュー) Microsoft 365 グループのリソース所有者は、自分が所有する Microsoft 365 グループに関するレビューを作成できます。
+- (プレビュー) Azure AD セキュリティ グループのリソース所有者は、自分が所有する Azure AD セキュリティ グループに関するレビューを作成できます。
 
 詳細については、「[License requirements ライセンスの要件](access-reviews-overview.md#license-requirements)」を参照してください。
 
@@ -88,7 +90,7 @@ ms.locfileid: "92362775"
 
     ![アクセス レビューの作成 - レビュー担当者](./media/create-access-review/reviewers.png)
 
-1. **[プログラム]** セクションで、使うプログラムを選びます。 " **既定のプログラム** " というプログラムが常に存在します。
+1. **[プログラム]** セクションで、使うプログラムを選びます。 "**既定のプログラム**" というプログラムが常に存在します。
 
     ![アクセス レビューの作成 - プログラム](./media/create-access-review/programs.png)
 
@@ -120,7 +122,7 @@ ms.locfileid: "92362775"
 組織内のリソースへのアクセス権がなくなったゲスト ユーザーを削除するためのベスト プラクティスの詳細については、「[Azure AD Identity Governance を使用してリソース アクセス権がなくなった外部ユーザーをレビューして削除する](access-reviews-external-users.md)」というタイトルの記事をご覧ください。
 
 >[!NOTE]
-> 拒否されたユーザーに適用するアクションは、事前にレビューをゲスト ユーザーに限定した場合にのみ機能します (手順 8 の「 **1 つ以上のアクセス レビューを作成する** 」セクションを参照)。
+> 拒否されたユーザーに適用するアクションは、事前にレビューをゲスト ユーザーに限定した場合にのみ機能します (手順 8 の「**1 つ以上のアクセス レビューを作成する**」セクションを参照)。
 
 ### <a name="advanced-settings"></a>詳細設定
 
@@ -137,7 +139,7 @@ ms.locfileid: "92362775"
     >[!NOTE]
     > 既定では、終了日まであと半分になった時点で、Azure AD はまだ応答していないレビュー担当者に自動的に通知が送信されます。
 
-1. (プレビュー) レビュー担当者に送信されるメールの内容は、レビュー名、リソース名、期限などのレビューの詳細に基づいて自動生成されます。追加の指示や連絡先情報などの追加情報を伝達する方法が必要な場合は、割り当てられたレビュー担当者に送信される招待メールと通知メールに含まれる、 **レビュー担当者のメールに関する追加のコンテンツ** でこれらの詳細を指定することができます。 下の強調表示されているセクションは、この情報が表示される場所です。
+1. (プレビュー) レビュー担当者に送信されるメールの内容は、レビュー名、リソース名、期限などのレビューの詳細に基づいて自動生成されます。追加の指示や連絡先情報などの追加情報を伝達する方法が必要な場合は、割り当てられたレビュー担当者に送信される招待メールと通知メールに含まれる、**レビュー担当者のメールに関する追加のコンテンツ** でこれらの詳細を指定することができます。 下の強調表示されているセクションは、この情報が表示される場所です。
 
     ![グループへのユーザー アクセスを確認する](./media/create-access-review/review-users-access-group.png)
 

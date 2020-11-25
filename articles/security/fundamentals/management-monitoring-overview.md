@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0e74b540610d3b6520f4c8e25ca2df7bf628706f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3520cbafc0e9eebfd6057fe92579a45873b25734
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410336"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698759"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure セキュリティの管理と監視の概要
 この記事では、Azure クラウド サービスと仮想マシンの管理と監視を支援するために Azure が提供するセキュリティ機能とサービスの概要を説明します。
 
-## <a name="role-based-access-control"></a>ロールベースのアクセス制御
+## <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 
-ロールベースのアクセス制御 (RBAC) は、Azure リソースのアクセス権を詳細に管理できるようにします。 RBAC を使用すると、職務に必要な範囲のアクセス権だけをユーザーに付与することができます。 RBAC は、ユーザーが組織を離れるときに、クラウド内のリソースへのアクセス権を失うようにするためにも役立ちます。
+Azure ロールベースのアクセス制御 (Azure RBAC) は、Azure リソースのアクセス権を詳細に管理できるようにします。 Azure RBAC を使用すると、職務に必要な範囲のアクセス権だけをユーザーに付与することができます。 Azure RBAC は、ユーザーが組織を離れるときに、クラウド内のリソースへのアクセス権を失うようにするためにも役立ちます。
 
 詳細情報:
 
-* [RBAC に関する Active Directory チームのブログ](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
+* [Azure RBAC に関する Active Directory チームのブログ](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
 * [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>マルウェア対策

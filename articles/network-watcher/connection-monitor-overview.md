@@ -1,6 +1,6 @@
 ---
-title: 接続モニター (プレビュー) | Microsoft Docs
-description: 接続モニター (プレビュー) を使用して分散環境でネットワーク通信を監視する方法について説明します。
+title: 接続モニター | Microsoft Docs
+description: 接続モニターを使用して分散環境でネットワーク通信を監視する方法について説明します。
 services: network-watcher
 documentationcenter: na
 author: vinynigam
@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 80934dca73d7f8a205c62a49c418828cab1820e7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5dbb8d508fe824d0264043625c988f43092f3f78
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447472"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699238"
 ---
-# <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>接続モニター (プレビュー) によるネットワーク接続の監視
+# <a name="network-connectivity-monitoring-with-connection-monitor"></a>接続モニターによるネットワーク接続の監視
 
-接続モニター (プレビュー) では、Azure Network Watcher での統合されたエンド ツー エンドの接続監視が提供されます。 接続モニター (プレビュー) の機能では、ハイブリッド デプロイと Azure クラウド デプロイがサポートされています。 Network Watcher には、Azure のデプロイに対する接続に関連したメトリックを監視、診断、表示するためのツールが用意されています。
+接続モニターを使用すると、Azure Network Watcher で、統合されたエンド ツー エンドの接続監視が提供されます。 接続モニターの機能では、ハイブリッド デプロイと Azure クラウド デプロイがサポートされています。 Network Watcher には、Azure のデプロイに対する接続に関連したメトリックを監視、診断、表示するためのツールが用意されています。
 
-接続モニター (プレビュー) の使用例を次に示します。
+以下に、接続モニターのいくつかのユース ケースを示します。
 
 - フロントエンド Web サーバー VM と、多層アプリケーション内のデータベース サーバー VM が通信している。 2 つの VM 間のネットワーク接続を確認したい。
 - 米国東部リージョンの VM から、米国中部リージョンの VM に ping を実行して、リージョン間のネットワーク待ち時間を比較したい。
@@ -34,9 +34,9 @@ ms.locfileid: "94447472"
 - ハイブリッド アプリケーションで Azure Storage エンドポイントに接続する必要がある。 オンプレミスのサイトと Azure アプリケーションは、同じ Azure Storage エンドポイントに接続する。 オンプレミス サイトの待機時間と、Azure アプリケーションの待機時間を比較したい。
 - オンプレミスのセットアップと、クラウド アプリケーションがホストされている Azure VM 間の接続を確認したい。
 
-プレビュー フェーズでは、接続モニターは 2 つの機能の長所を兼ね備えています。Network Watcher の[接続モニター](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint)機能と Network Performance Monitor (NPM) の[サービス接続モニター](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity)、[ExpressRoute 監視](https://docs.microsoft.com/azure/expressroute/how-to-npm)、および[パフォーマンス モニター](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-performance-monitor)機能です。
+接続モニターは 2 つの機能の長所を兼ね備えています。Network Watcher の[接続モニター (クラシック)](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) 機能と、Network Performance Monitor (NPM) の[サービス接続モニター](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity)、[ExpressRoute 監視](https://docs.microsoft.com/azure/expressroute/how-to-npm)、[パフォーマンス モニター](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-performance-monitor)機能です。
 
-接続モニター (プレビュー) の利点を次に示します。
+以下に、接続モニターの利点をいくつか示します。
 
 * Azure とハイブリッドの監視のニーズに対応した、統合された直感的なエクスペリエンス
 * クロス リージョン、クロス ワークスペースの接続の監視
@@ -47,7 +47,7 @@ ms.locfileid: "94447472"
 
 ![接続モニターと Azure VM、Azure 以外のホスト、エンドポイント、データ ストレージの場所との間の対話方法を示す図](./media/connection-monitor-2-preview/hero-graphic.png)
 
-接続モニター (プレビュー) を使用して監視を始めるには、次の手順のようにします。 
+監視のために接続モニターの使用を開始するには、次の手順に従います。 
 
 1. 監視エージェントをインストールします。
 1. サブスクリプションで Network Watcher を有効にします。
@@ -59,11 +59,11 @@ ms.locfileid: "94447472"
 
 ## <a name="install-monitoring-agents"></a>監視エージェントをインストールする
 
-接続モニターでは、軽量の実行可能ファイルを使用して接続チェックが実行されます。  Azure 環境とオンプレミス環境両方からの接続チェックがサポートされています。 使用する実行可能ファイルは、VM が Azure とオンプレミスのどちらでホストされているかによって異なります。
+接続モニターでは、軽量の実行可能ファイルを使用して接続チェックが実行されます。 Azure 環境とオンプレミス環境両方からの接続チェックがサポートされています。 使用する実行可能ファイルは、VM が Azure とオンプレミスのどちらでホストされているかによって異なります。
 
 ### <a name="agents-for-azure-virtual-machines"></a>Azure 仮想マシンのエージェント
 
-接続モニターにより Azure VM が監視ソースとして認識されるようにするには、Network Watcher エージェント仮想マシン拡張機能を VM にインストールします。 この拡張機能は、" *Network Watcher 拡張機能* " とも呼ばれます。 Azure 仮想マシンでは、エンドツーエンドの監視とその他の高度な機能をトリガーするために拡張機能が必要です。 
+接続モニターにより Azure VM が監視ソースとして認識されるようにするには、Network Watcher エージェント仮想マシン拡張機能を VM にインストールします。 この拡張機能は、"*Network Watcher 拡張機能*" とも呼ばれます。 Azure 仮想マシンでは、エンドツーエンドの監視とその他の高度な機能をトリガーするために拡張機能が必要です。 
 
 [VM を作成する](https://docs.microsoft.com/azure/network-watcher/connection-monitor#create-the-first-vm)ときに、Network Watcher 拡張機能をインストールできます。 また、[Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-linux) 用と [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-windows) 用の Network Watcher 拡張機能を別々に、インストール、構成、トラブルシューティングすることもできます。
 
@@ -89,19 +89,19 @@ Windows コンピューター用の Log Analytics エージェントをインス
 
 監視エージェントがインストールされている Azure VM またはオンプレミス コンピューターを、ソースにすることができます。 ターゲット エンドポイントとしては、Microsoft 365 URL、Dynamics 365 URL、カスタム URL、Azure VM リソース ID、IPv4、IPv6、FQDN、または任意のドメイン名を使用できます。
 
-### <a name="access-connection-monitor-preview"></a>接続モニター (プレビュー) にアクセスする
+### <a name="access-connection-monitor"></a>接続モニターにアクセスする
 
 1. Azure portal のホーム ページで、 **[Network Watcher]** に移動します。
-1. 左側の **[監視]** セクションで、 **[接続モニター (プレビュー)]** を選択します。
-1. 接続モニター (プレビュー) で作成されたすべての接続モニターが表示されます。 接続モニターの従来のエクスペリエンスで作成された接続モニターを表示するには、 **[接続モニター]** タブに移動します。
+1. 左側の **[監視]** セクションで、 **[接続モニター]** を選択します。
+1. 接続モニターで作成されたすべての接続モニターが表示されます。 接続モニターの従来のエクスペリエンスで作成された接続モニターを表示するには、 **[接続モニター]** タブに移動します。
     
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="接続モニター (プレビュー) で作成されたすべての接続モニターを示すスクリーンショット" lightbox="./media/connection-monitor-2-preview/cm-resource-view.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="接続モニターで作成された接続モニターを示すスクリーンショット" lightbox="./media/connection-monitor-2-preview/cm-resource-view.png":::
 
 ### <a name="create-a-connection-monitor"></a>接続モニターを作成する
 
-接続モニター (プレビュー) で作成する接続モニターでは、オンプレミスのコンピューターと Azure VM の両方をソースとして追加できます。 これらの接続モニターでは、エンドポイントへの接続も監視できます。 エンドポイントは、Azure または他の任意の URL や IP 上のどこにあってもかまいません。
+接続モニター (プレビュー) で作成できる接続モニターでは、オンプレミスのマシンと Azure VM の両方をソースとして追加できます。 これらの接続モニターでは、エンドポイントへの接続も監視できます。 エンドポイントは、Azure または他の任意の URL や IP 上のどこにあってもかまいません。
 
-接続モニター (プレビュー) には、次のエンティティが含まれています。
+接続モニターには、次のエンティティが含まれています。
 
 * **接続モニター リソース** – リージョン固有の Azure リソース。 以下のすべてのエンティティが、接続モニター リソースのプロパティです。
 * **エンドポイント** –接続チェックに含まれるソースまたはターゲット。 エンドポイントの例としては、Azure VM、オンプレミスのエージェント、URL、IP などがあります。
@@ -111,7 +111,7 @@ Windows コンピューター用の Log Analytics エージェントをインス
 
  ![テスト グループとテストの関係が定義されている接続モニターを示す図](./media/connection-monitor-2-preview/cm-tg-2.png)
 
-[Azure portal](connection-monitor-preview-create-using-portal.md) または [ARMClient](connection-monitor-preview-create-using-arm-client.md) を使用して、接続モニターのプレビューを作成できます。
+[Azure portal](connection-monitor-preview-create-using-portal.md) または [ARMClient](connection-monitor-preview-create-using-arm-client.md) を使用して、接続モニターを作成できます
 
 テスト グループに追加したすべてのソース、ターゲット、テスト構成は、個々のテストに分割されます。 ソースとターゲットの分割方法の例を次に示します。
 
@@ -151,7 +151,7 @@ Windows コンピューター用の Log Analytics エージェントをインス
 
 ### <a name="checks-in-a-test"></a>テストでのチェック
 
-テスト構成で選択したプロトコルに基づいて、接続モニター (プレビュー) により、ソースとターゲットのペアに対する一連のチェックが実行されます。 チェックは、選択したテストの頻度に従って実行されます。
+テスト構成で選択したプロトコルに基づいて、接続モニターで、ソースとターゲットのペアに対して一連のチェックが実行されます。 チェックは、選択したテストの頻度に従って実行されます。
 
 HTTP を使用した場合、サービスにより、有効な応答コードを返した HTTP 応答の数が計算されます。 有効な応答コードは、PowerShell と CLI を使用して設定できます。 その結果によって、失敗したチェックの割合が判定されます。 RTT を計算するため、サービスでは HTTP の呼び出しと応答の間の時間が測定されます。
 
@@ -164,14 +164,14 @@ TCP または ICMP を使用した場合、サービスでは、パケット損�
 * **合格** – 失敗したチェックの割合および RTT の実際の値が、指定したしきい値を超えていません。
 * **失敗** – 失敗したチェックの割合または RTT の実際の値が、指定したしきい値を超えました。 しきい値が指定されていない場合は、失敗したチェックの割合が 100 のときに、テストは失敗状態になります。
 * **警告** – 
-     * しきい値が指定され、チェックがしきい値の 80% を超えて失敗したことを接続モニター (プレビュー) が観察した場合、テストは警告としてマークされます。
-     * しきい値が指定されていない場合は、接続モニター (プレビュー) によって自動的にしきい値が割り当てられます。 そのしきい値を超えると、テストの状態は警告に変わります。 TCP テストまたは ICMP テストでのラウンド トリップ時間については、しきい値は 750 ミリ秒です。 チェック失敗の割合については、しきい値は 10% です。 
+     * しきい値が指定され、接続モニターで、しきい値の 80% を超えるチェック失敗割合が観察されると、テストは警告としてマークされます。
+     * しきい値が指定されていない場合は、接続モニターによって自動的にしきい値が割り当てられます。 そのしきい値を超えると、テストの状態は警告に変わります。 TCP テストまたは ICMP テストでのラウンド トリップ時間については、しきい値は 750 ミリ秒です。 チェック失敗の割合については、しきい値は 10% です。 
 * **不確定**  – Log Analytics ワークスペース内にデータはありません。  メトリックをチェックします。 
 * **実行されていません**  – テスト グループを無効にすることによって無効にされています。  
 
 ### <a name="data-collection-analysis-and-alerts"></a>データの収集、分析、アラート
 
-接続モニター (プレビュー) によって収集されたデータは、Log Analytics ワークスペースに格納されます。 このワークスペースは、接続モニターを作成したときに設定されています。 
+接続モニターによって収集されたデータは、Log Analytics ワークスペースに格納されます。 このワークスペースは、接続モニターを作成したときに設定されています。 
 
 監視データは Azure Monitor メトリックでも使用できます。 Log Analytics を使用すると、監視データを必要な限りいつまでも保持できます。 既定では、メトリックは Azure Monitor によって 30 日間だけ保管されます。 
 
@@ -181,7 +181,7 @@ TCP または ICMP を使用した場合、サービスでは、パケット損�
 
 監視ダッシュボードには、サブスクリプション、リージョン、タイムスタンプ、ソース、およびターゲットの種類でアクセスできる接続モニターの一覧が表示されます。
 
-Network Watcher から接続モニター (プレビュー) にアクセスし、次の方法でデータを表示できます。
+Network Watcher から接続モニターに移動したときには、以下の項目別にデータを表示できます。
 
 * **[接続モニター]** – 自分のサブスクリプション、リージョン、タイムスタンプ、ソース、ターゲットの種類に対して作成されたすべての接続モニターの一覧です。 このビューが既定値です。
 * **[テスト グループ]** – 自分のサブスクリプション、リージョン、タイムスタンプ、ソース、ターゲットの種類に対して作成されたすべてのテスト グループの一覧です。 これらのテスト グループは、接続モニターではフィルター処理されません。
@@ -197,23 +197,23 @@ Network Watcher から接続モニター (プレビュー) にアクセスし、
 * **状態ベースのフィルター** – 接続モニター、テスト グループ、またはテストの状態によるフィルターです。 下の図のボックス 2 を参照してください。
 * **アラート ベースのフィルター** – 接続モニター リソースに対して発生するアラートによるフィルターです。 下の図のボックス 3 を参照してください。
 
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="接続モニター (プレビュー) で接続モニター、テスト グループ、テストのビューをフィルター処理する方法を示すスクリーンショット" lightbox="./media/connection-monitor-2-preview/cm-view.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="接続モニターで接続モニター、テスト グループ、テストのビューをフィルター処理する方法を示すスクリーンショット" lightbox="./media/connection-monitor-2-preview/cm-view.png":::
     
-たとえば、接続モニター (プレビュー) でソース IP が 10.192.64.56 であるすべてのテストを確認するには:
+たとえば、接続モニターでソース IP が 10.192.64.56 であるすべてのテストを確認するには:
 1. ビューを **[テスト]** に変更します。
-1. 検索フィールドに、「 *10.192.64.56* 」と入力します
+1. 検索フィールドに、「*10.192.64.56*」と入力します
 1. 最上位フィルターの **[範囲]** で、 **[ソース]** を選択します。
 
-接続モニター (プレビュー) でソース IP が 10.192.64.56 である失敗したテストだけを表示するには、次のようにします。
+接続モニターでソース IP が 10.192.64.56 である失敗したテストだけを表示するには:
 1. ビューを **[テスト]** に変更します。
 1. 状態ベースのフィルターで、 **[失敗]** を選択します。
-1. 検索フィールドに、「 *10.192.64.56* 」と入力します
+1. 検索フィールドに、「*10.192.64.56*」と入力します
 1. 最上位フィルターの **[範囲]** で、 **[ソース]** を選択します。
 
-接続モニター (プレビュー) でターゲットが outlook.office365.com である失敗したテストだけを表示するには:
+接続モニターでターゲットが outlook.office365.com である失敗したテストだけを表示するには:
 1. ビューを **[テスト]** に変更します。
 1. 状態ベースのフィルターで、 **[失敗]** を選択します。
-1. 検索フィールドに、「 *outlook.office365.com* 」と入力します
+1. 検索フィールドに、「*outlook.office365.com*」と入力します
 1. 最上位フィルターの **[範囲]** で、 **[宛先]** を選択します。
   
   :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="ターゲット Outlook.Office365.com に対する失敗したテストのみを表示するようにフィルター処理されたビューを示すスクリーンショット" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
@@ -265,9 +265,9 @@ Network Watcher から接続モニター (プレビュー) にアクセスし、
 
 #### <a name="metrics-in-azure-monitor"></a>Azure Monitor のメトリック
 
-接続モニター (プレビュー) エクスペリエンスの前に作成された接続モニターでは、全部で次の 4 つメトリックを使用できます: 失敗したプローブの割合、AverageRoundtripMs、ChecksFailedPercent (プレビュー)、RoundTripTimeMs (プレビュー)。 接続モニター (プレビュー) エクスペリエンスで作成された接続モニターでは、" *(プレビュー)* " というタグが付いたメトリックに対してのみデータを使用できます。
+接続モニター エクスペリエンスの前に作成された接続モニターでは、次の 4 つのメトリックすべてを使用できます: 失敗したプローブの割合、AverageRoundtripMs、ChecksFailedPercent (プレビュー)、RoundTripTimeMs (プレビュー)。 接続モニター エクスペリエンスで作成された接続モニターでは、データを使用できるのは " *(プレビュー)* " というタグが付いたメトリックについてのみです。
 
-  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="接続モニター (プレビュー) のメトリックを示すスクリーンショット" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="接続モニターのメトリックを示すスクリーンショット" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
 メトリックを使用するときは、リソースの種類を Microsoft.Network/networkWatchers/connectionMonitors に設定します
 
@@ -282,18 +282,18 @@ Network Watcher から接続モニター (プレビュー) にアクセスし、
 
 接続モニターでメトリック アラートを作成するには、次の方法を使用します。 
 
-1. 接続モニター (プレビュー) では、接続モニターの作成時に [Azure portal を使用](connection-monitor-preview-create-using-portal.md#) 
-1. 接続モニター (プレビュー) から、ダッシュボードで [警告の構成] を使用 
+1. 接続モニターから、接続モニターの作成時に [Azure portal を使用](connection-monitor-preview-create-using-portal.md#) 
+1. 接続モニターから、ダッシュボードで [警告の構成] を使用 
 1. Azure Monitor から - Azure Monitor でアラートを作成するには: 
-    1. 接続モニター (プレビュー) で作成した接続モニター リソースを選択します。
+    1. 接続モニターで作成した接続モニター リソースを選択します。
     1. 接続モニターの信号の種類として **[メトリック]** が表示されていることを確認します。
     1. **[条件の追加]** で、 **[シグナル名]** として **[ChecksFailedPercent(Preview)]** または **[RoundTripTimeMs(Preview)]** を選択します。
     1. **[シグナルの種類]** として、 **[メトリック]** を選択します。 たとえば、 **[ChecksFailedPercent(Preview)]** を選択します。
     1. メトリックのすべてのディメンションが一覧表示されます。 ディメンション名とディメンション値を選択します。 たとえば、 **[送信元アドレス]** を選択し、接続モニターのソースの IP アドレスを入力します。
     1. **[アラート ロジック]** に、次の詳細を入力します。
-        * **[条件タイプ]** : **静的** 。
+        * **[条件タイプ]** : **静的**。
         * **[条件]** と **[しきい値]** 。
-        * **[集約粒度] と [評価の頻度]** : 接続モニター (プレビュー) で 1 分ごとにデータを更新します。
+        * **[集約粒度] と [評価の頻度]** : 接続モニターでは 1 分ごとにデータが更新されます。
     1. **[アクション]** で、アクション グループを選択します。
     1. アラートの詳細を指定します。
     1. アラート ルールを作成します。
@@ -302,7 +302,7 @@ Network Watcher から接続モニター (プレビュー) にアクセスし、
 
 ## <a name="diagnose-issues-in-your-network"></a>ネットワークの問題を診断する
 
-接続モニター (プレビュー) は、接続モニターとネットワークでの問題を診断するのに役立ちます。 ハイブリッド ネットワークの問題は、前にインストールした Log Analytics エージェントによって検出されます。 Azure の問題は、Network Watcher の拡張機能によって検出されます。 
+接続モニターは、接続モニターとネットワークでの問題を診断するのに役立ちます。 ハイブリッド ネットワークの問題は、前にインストールした Log Analytics エージェントによって検出されます。 Azure の問題は、Network Watcher の拡張機能によって検出されます。 
 
 Azure ネットワークの問題は、ネットワーク トポロジで確認できます。
 
@@ -348,5 +348,5 @@ Azure ネットワークの問題は、ネットワーク トポロジで確認�
 
 ## <a name="next-steps"></a>次の手順
     
-   * [Azure portal を使用して接続モニター (プレビュー) を作成する方法](connection-monitor-preview-create-using-portal.md)について説明する  
-   * [ARMClient を使用して接続モニター (プレビュー) を作成する方法](connection-monitor-preview-create-using-arm-client.md)について説明する  
+   * [Azure portal を使用して接続モニターを作成する方法](connection-monitor-preview-create-using-portal.md)を確認する  
+   * [ARMClient を使用して接続モニターを作成する方法](connection-monitor-preview-create-using-arm-client.md)を確認する  

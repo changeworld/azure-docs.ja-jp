@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4b61caecd67881eb08c82ea0c26522c63c3e8396
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e081acc357c1b8872dd3a25c552d4cbe9785e212
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84712056"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007071"
 ---
 # <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスの Update 3 リリース ノート
 
@@ -79,11 +79,10 @@ Update 3 では、主に次の機能強化とバグ修正が行われていま�
 | 22 |更新プログラム |Update 3 を適用すると、Azure クラシック ポータルの **[メンテナンス]** ページに Update 2 に関連するメッセージ "StorSimple 8000 series Update 2 includes the ability for Microsoft to proactively collect log information from your device when we detect potential problems" が表示されます。 このメッセージはデバイスが Update 2 に更新されることを示すため、誤解が生じます。 デバイスが Update 3 に正常に更新されると、このメッセージは表示されなくなります。 |この動作は、今後の更新で修正される予定です。 |はい |いいえ |
 
 ## <a name="controller-and-firmware-updates-in-update-3"></a>Update 3 のコントローラーとファームウェアの更新プログラム
-このリリースには、LSI ドライバーとファームウェアの更新プログラムが含まれています。 LSI ドライバーとファームウェアの更新プログラムをインストールする方法について詳しくは、StorSimple デバイス上の [Update 3 のインストール](storsimple-install-update-3.md) に関する記事をご覧ください。
+このリリースには、LSI ドライバーとファームウェアの更新プログラムが含まれています。 LSI ドライバーとファームウェアの更新プログラムをインストールする方法について詳しくは、StorSimple デバイス上の [Update 3 のインストール](./index.yml) に関する記事をご覧ください。
 
 ## <a name="virtual-device-updates-in-update-3"></a>Update 3 での仮想デバイスの更新プログラム
 この更新プログラムはStorSimple Cloud Appliance (仮想デバイスとも呼ばれます) には適用できません。 新しい仮想デバイスを作成する必要があります。 
 
 ## <a name="next-step"></a>次のステップ
-StorSimple デバイスに [Update 3 をインストールする](storsimple-install-update-3.md) 方法を確認します。
-
+StorSimple デバイスに [Update 3 をインストールする](./index.yml) 方法を確認します。

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: a0e4e0de15348f4f52d7f0f68bad728a27f6387e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 98ba7c63e057e1f6b1f37a6529b6e94e2f514d6d
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413022"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701033"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス
 この記事では、Azure 内のデータ、アプリケーション、その他の資産を保護するための運用可能な一連のベスト プラクティスについて説明します。
@@ -34,14 +34,14 @@ Azure で運用可能なセキュリティとは、ユーザーが Azure 内の�
 ## <a name="manage-and-monitor-user-passwords"></a>ユーザー パスワードの管理と監視
 次の表に、ユーザー パスワードの管理に関連するベスト プラクティスをいくつか示します。
 
-**ベスト プラクティス** : クラウドで適切なレベルのパスワード保護があることを確認します。   
-**詳細** : Microsoft ID プラットフォーム (Azure Active Directory、Active Directory、Microsoft アカウント) のユーザーを対象とした [Microsoft のパスワードのガイダンス](https://www.microsoft.com/research/publication/password-guidance/)にあるガイダンスに従います。
+**ベスト プラクティス**: クラウドで適切なレベルのパスワード保護があることを確認します。   
+**詳細**: Microsoft ID プラットフォーム (Azure Active Directory、Active Directory、Microsoft アカウント) のユーザーを対象とした [Microsoft のパスワードのガイダンス](https://www.microsoft.com/research/publication/password-guidance/)にあるガイダンスに従います。
 
-**ベスト プラクティス** : ユーザー アカウントに関連する疑わしい動作を監視します。   
-**詳細** : [危険な状態のユーザー](../../active-directory/identity-protection/overview-identity-protection.md)と [危険なサインイン](../../active-directory/identity-protection/overview-identity-protection.md)を、Azure AD セキュリティ レポートを使用して監視します。
+**ベスト プラクティス**: ユーザー アカウントに関連する疑わしい動作を監視します。   
+**詳細**: [危険な状態のユーザー](../../active-directory/identity-protection/overview-identity-protection.md)と [危険なサインイン](../../active-directory/identity-protection/overview-identity-protection.md)を、Azure AD セキュリティ レポートを使用して監視します。
 
-**ベスト プラクティス** : 危険度の高いパスワードを自動的に検出して修復します。   
-**詳細** : [Azure AD Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md) は Azure AD Premium P2 エディションの機能です。この機能を使用すると、以下を行うことができます。
+**ベスト プラクティス**: 危険度の高いパスワードを自動的に検出して修復します。   
+**詳細**: [Azure AD Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md) は Azure AD Premium P2 エディションの機能です。この機能を使用すると、以下を行うことができます。
 
 - 組織の ID に影響する潜在的な脆弱性を検出する
 - 組織の ID に関連する検出された疑わしいアクションに対する自動応答を構成する
@@ -59,25 +59,25 @@ Azure の登録ポータルで、管理者の連絡先情報にセキュリテ�
 
 管理グループの使用に関するベスト プラクティスを次にいくつか示します。
 
-**ベスト プラクティス** : ポリシーやアクセス許可などのガバナンス要素が追加されたときに、新しいサブスクリプションが確実に適用されるようにします。   
-**詳細** : ルート管理グループを使用して、すべての Azure 資産に適用される企業全体のセキュリティ要素を割り当てます。 要素の例としては、ポリシーやアクセス許可があります。
+**ベスト プラクティス**: ポリシーやアクセス許可などのガバナンス要素が追加されたときに、新しいサブスクリプションが確実に適用されるようにします。   
+**詳細**: ルート管理グループを使用して、すべての Azure 資産に適用される企業全体のセキュリティ要素を割り当てます。 要素の例としては、ポリシーやアクセス許可があります。
 
-**ベスト プラクティス** : 各セグメント内における制御とポリシーの一貫性に関するポイントを提供するため、最上位レベルの管理グループをセグメント化戦略と合わせます。   
-**詳細** : ルート管理グループの下のセグメントごとに 1 つの管理グループを作成します。 ルートの下に他の管理グループは作成しないでください。
+**ベスト プラクティス**: 各セグメント内における制御とポリシーの一貫性に関するポイントを提供するため、最上位レベルの管理グループをセグメント化戦略と合わせます。   
+**詳細**: ルート管理グループの下のセグメントごとに 1 つの管理グループを作成します。 ルートの下に他の管理グループは作成しないでください。
 
-**ベスト プラクティス** : 運用とセキュリティの両方を妨げる混乱を回避するため、管理グループの深さを制限します。   
-**詳細** : 階層は、ルートを含めて 3 レベルまでに制限します。
+**ベスト プラクティス**: 運用とセキュリティの両方を妨げる混乱を回避するため、管理グループの深さを制限します。   
+**詳細**: 階層は、ルートを含めて 3 レベルまでに制限します。
 
-**ベスト プラクティス** : ルート管理グループを使用して企業全体に適用する項目を慎重に選択します。   
-**詳細** : ルート管理グループ要素がすべてのリソースにわたって適用される明確な必要性があること、そして影響度が低いことを確実にします。
+**ベスト プラクティス**: ルート管理グループを使用して企業全体に適用する項目を慎重に選択します。   
+**詳細**: ルート管理グループ要素がすべてのリソースにわたって適用される明確な必要性があること、そして影響度が低いことを確実にします。
 
 適切な候補は次のとおりです。
 
 - 明確な事業影響のある規制要件 (たとえば、データ主権に関連する制限)
-- 慎重にレビューされた audit 効果のあるポリシーや RBAC アクセス許可割り当てなど、運用に関する潜在的なマイナスの影響がほぼない要件
+- 慎重にレビューされた audit 効果のあるポリシーや Azure RBAC アクセス許可割り当てなど、運用に関する潜在的なマイナスの影響がほぼない要件
 
-**ベスト プラクティス** : ルート管理グループに対する企業全体の変更すべてを、適用する前に慎重に計画してテストします (ポリシー、RBAC モデルなど)。   
-**詳細** : ルート管理グループ内の変更は、Azure 上のすべてのリソースに影響する可能性があります。 企業全体にわたる一貫性を確保する強力な方法が提供される一方で、エラーや不適切な使用によって実稼働運用にマイナスの影響が発生する可能性があります。 テスト ラボまたは運用パイロットで、ルート管理グループに対するすべての変更をテストします。
+**ベスト プラクティス**: ルート管理グループに対する企業全体の変更すべてを、適用する前に慎重に計画してテストします (ポリシー、Azure RBAC モデルなど)。   
+**詳細**: ルート管理グループ内の変更は、Azure 上のすべてのリソースに影響する可能性があります。 企業全体にわたる一貫性を確保する強力な方法が提供される一方で、エラーや不適切な使用によって実稼働運用にマイナスの影響が発生する可能性があります。 テスト ラボまたは運用パイロットで、ルート管理グループに対するすべての変更をテストします。
 
 ## <a name="streamline-environment-creation-with-blueprints"></a>ブループリントの使用による環境の作成の簡素化
 [Azure Blueprints](../../governance/blueprints/overview.md) サービスによってクラウド アーキテクトや中央の情報技術グループは、組織の標準、パターン、要件を実装および順守した反復可能な一連の Azure リソースを定義できます。 Azure Blueprint を使用すると、開発チームは一連の組み込みコンポーネントを使用し、組織のコンプライアンスに従ってこれらの環境を作成しているという自信を持って、新しい環境を迅速に構築して立ち上げることができます。
@@ -104,25 +104,25 @@ Security Center は、包括的な Endpoint Detection and Response (EDR) 機能�
 
 脅威に対する保護、検出、および対応に関するベスト プラクティスを次にいくつか示します。
 
-**ベスト プラクティス** : クラウドベースの SIEM を使用して SIEM ソリューションの速度とスケーラビリティを向上させます。   
-**詳細** : [Azure Sentinel](../../sentinel/overview.md) の特徴と機能を調査して、現在オンプレミスで使用しているものの機能と比較します。 Azure Sentinel が組織の SIEM の要件を満たす場合は、採用を検討します。
+**ベスト プラクティス**: クラウドベースの SIEM を使用して SIEM ソリューションの速度とスケーラビリティを向上させます。   
+**詳細**: [Azure Sentinel](../../sentinel/overview.md) の特徴と機能を調査して、現在オンプレミスで使用しているものの機能と比較します。 Azure Sentinel が組織の SIEM の要件を満たす場合は、採用を検討します。
 
-**ベスト プラクティス** : 調査に優先順位を付けることができるよう、最も重大なセキュリティの脆弱性を見つけます。   
-**詳細** : [Azure のセキュリティ スコア](../../security-center/secure-score-security-controls.md)をレビューして、Azure Security Center に組み込まれた Azure ポリシーとイニシアティブから導き出される推奨事項を確認します。 これらの推奨事項は、セキュリティ更新プログラム、エンドポイント保護、暗号化、セキュリティ構成、WAF の欠落、インターネットに接続された VM など、最大の危険への対応に役立ちます。
+**ベスト プラクティス**: 調査に優先順位を付けることができるよう、最も重大なセキュリティの脆弱性を見つけます。   
+**詳細**: [Azure のセキュリティ スコア](../../security-center/secure-score-security-controls.md)をレビューして、Azure Security Center に組み込まれた Azure ポリシーとイニシアティブから導き出される推奨事項を確認します。 これらの推奨事項は、セキュリティ更新プログラム、エンドポイント保護、暗号化、セキュリティ構成、WAF の欠落、インターネットに接続された VM など、最大の危険への対応に役立ちます。
 
 Center for Internet Security (CIS) コントロールを基にしたセキュリティ スコアにより、組織の Azure セキュリティを外部ソースに対してベンチマークすることができます。 外部検証は、チームのセキュリティ戦略を検証し強化することに役立ちます。
 
-**ベスト プラクティス** : マシン、ネットワーク、ストレージおよびデータ サービス、アプリケーションのセキュリティ体制を監視して、潜在的なセキュリティの問題を検出し優先順位を付けます。  
-**詳細** : 最も優先順位が高い項目から、Security Center の [セキュリティに関する推奨事項](../../security-center/security-center-recommendations.md)に従います。
+**ベスト プラクティス**: マシン、ネットワーク、ストレージおよびデータ サービス、アプリケーションのセキュリティ体制を監視して、潜在的なセキュリティの問題を検出し優先順位を付けます。  
+**詳細**: 最も優先順位が高い項目から、Security Center の [セキュリティに関する推奨事項](../../security-center/security-center-recommendations.md)に従います。
 
-**ベスト プラクティス** : Security Center のアラートを、セキュリティ情報およびイベント管理 (SIEM) ソリューションに統合します。   
-**詳細** : SIEM を使用している組織のほどんとは、アナリストの応答を必要とするセキュリティ アラートに関する中央情報センターとして SIEM を使用しています。 Security Center によって生成されて処理されたイベントは、Azure Monitor で利用可能なログの 1 つである Azure アクティビティ ログに発行されます。 Azure Monitor では、任意の監視データを SIEM ツールにルーティングするための統合パイプラインが提供されています。 手順については、「[SIEM、SOAR、または IT Service Management ソリューションへのアラートのストリーミング](../../security-center/export-to-siem.md)」を参照してください。 Azure Sentinel を使用している場合は、[Azure Security Center への接続](../../sentinel/connect-azure-security-center.md)に関する記事を参照してください。
+**ベスト プラクティス**: Security Center のアラートを、セキュリティ情報およびイベント管理 (SIEM) ソリューションに統合します。   
+**詳細**: SIEM を使用している組織のほどんとは、アナリストの応答を必要とするセキュリティ アラートに関する中央情報センターとして SIEM を使用しています。 Security Center によって生成されて処理されたイベントは、Azure Monitor で利用可能なログの 1 つである Azure アクティビティ ログに発行されます。 Azure Monitor では、任意の監視データを SIEM ツールにルーティングするための統合パイプラインが提供されています。 手順については、「[SIEM、SOAR、または IT Service Management ソリューションへのアラートのストリーミング](../../security-center/export-to-siem.md)」を参照してください。 Azure Sentinel を使用している場合は、[Azure Security Center への接続](../../sentinel/connect-azure-security-center.md)に関する記事を参照してください。
 
-**ベスト プラクティス** : Azure ログを SIEM に統合します。   
-**詳細** : [データの収集とエクスポートに Azure Monitor](../../azure-monitor/overview.md#integrate-and-export-data) を使用します。 この方法はセキュリティ インシデントの調査を可能にするために重要であり、オンライン ログのリテンションは制限されます。 Azure Sentinel を使用している場合、「[データ ソースの接続](../../sentinel/connect-data-sources.md)」を参照してください。
+**ベスト プラクティス**: Azure ログを SIEM に統合します。   
+**詳細**: [データの収集とエクスポートに Azure Monitor](../../azure-monitor/overview.md#integrate-and-export-data) を使用します。 この方法はセキュリティ インシデントの調査を可能にするために重要であり、オンライン ログのリテンションは制限されます。 Azure Sentinel を使用している場合、「[データ ソースの接続](../../sentinel/connect-data-sources.md)」を参照してください。
 
-**ベスト プラクティス** : Endpoint Detection and Response (EDR) 機能を攻撃の調査に統合することで、調査と検出プロセスを高速化し、誤検出を減らします。   
-**詳細** : Security Center のセキュリティ ポリシーを使用して、 [エンドポイント統合用に Microsoft Defender を有効](../../security-center/security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration)にします。 脅威の検出とインシデント対応には、Azure Sentinel の使用を検討してください。
+**ベスト プラクティス**: Endpoint Detection and Response (EDR) 機能を攻撃の調査に統合することで、調査と検出プロセスを高速化し、誤検出を減らします。   
+**詳細**: Security Center のセキュリティ ポリシーを使用して、[エンドポイント統合用に Microsoft Defender を有効](../../security-center/security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration)にします。 脅威の検出とインシデント対応には、Azure Sentinel の使用を検討してください。
 
 ## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>エンド ツー エンドのシナリオ ベースのネットワーク監視
 お客様は、仮想ネットワーク、ExpressRoute、Application Gateway、ロード バランサーなどのネットワーク リソースを組み合わせて Azure にエンド ツー エンド ネットワークを構築します。 各ネットワーク リソースは監視することができます。
@@ -131,31 +131,31 @@ Center for Internet Security (CIS) コントロールを基にしたセキュリ
 
 ネットワークの監視と使用可能なツールのベスト プラクティスを次に示します。
 
-**ベスト プラクティス** : パケット キャプチャを使ってリモート ネットワーク監視を自動化する。  
-**詳細** : Network Watcher を使用して、VM にログインすることなくネットワークの問題を監視して診断します。 アラートの設定により[パケット キャプチャ](../../network-watcher/network-watcher-alert-triggered-packet-capture.md)をトリガーし、パフォーマンスに関する情報をパケット レベルでリアルタイムに確認可能です。 問題が起きた場合には、詳細に調査してより適切に診断できます。
+**ベスト プラクティス**: パケット キャプチャを使ってリモート ネットワーク監視を自動化する。  
+**詳細**: Network Watcher を使用して、VM にログインすることなくネットワークの問題を監視して診断します。 アラートの設定により[パケット キャプチャ](../../network-watcher/network-watcher-alert-triggered-packet-capture.md)をトリガーし、パフォーマンスに関する情報をパケット レベルでリアルタイムに確認可能です。 問題が起きた場合には、詳細に調査してより適切に診断できます。
 
-**ベスト プラクティス** : フロー ログを使用して、ネットワーク トラフィックに関する分析情報を得る。  
-**詳細** : [ネットワーク セキュリティ グループのフロー ログ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)を使うと、ネットワーク トラフィックのパターンをより深く把握できます。 フロー ログの情報をもとに、コンプライアンスに関するデータを収集し、ネットワークのセキュリティ プロファイルを監査、監視できます。
+**ベスト プラクティス**: フロー ログを使用して、ネットワーク トラフィックに関する分析情報を得る。  
+**詳細**: [ネットワーク セキュリティ グループのフロー ログ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)を使うと、ネットワーク トラフィックのパターンをより深く把握できます。 フロー ログの情報をもとに、コンプライアンスに関するデータを収集し、ネットワークのセキュリティ プロファイルを監査、監視できます。
 
-**ベスト プラクティス** : VPN 接続の問題を診断する。  
-**詳細** : Network Watcher を使用して、 [VPN Gateway と接続に関する最も一般的な問題を診断します](../../network-watcher/network-watcher-diagnose-on-premises-connectivity.md)。 問題を識別するだけでなく、詳細なログを使用して、詳しい調査を行うこともできます。
+**ベスト プラクティス**: VPN 接続の問題を診断する。  
+**詳細**: Network Watcher を使用して、[VPN Gateway と接続に関する最も一般的な問題を診断します](../../network-watcher/network-watcher-diagnose-on-premises-connectivity.md)。 問題を識別するだけでなく、詳細なログを使用して、詳しい調査を行うこともできます。
 
 ## <a name="secure-deployment-by-using-proven-devops-tools"></a>実証済みの DevOps ツールによるセキュリティ保護されたデプロイ
 次の DevOps のベスト プラクティスを使用して、エンタープライズとチームが、生産性と効率性があることを確認します。
 
-**ベスト プラクティス** : サービスのビルドとデプロイを自動化する。  
-**詳細** : [コードとしてのインフラストラクチャ](/azure/devops/learn/what-is-infrastructure-as-code)は、モジュール式インフラストラクチャの構築と管理に関連する IT 担当者の日常作業の負担を軽減する、一連の技法とプラクティスです。 これにより、ソフトウェア開発者がアプリケーション コードを構築し保守するように、IT 担当者は最新のサーバー環境を構築、維持できます。
+**ベスト プラクティス**: サービスのビルドとデプロイを自動化する。  
+**詳細**: [コードとしてのインフラストラクチャ](/azure/devops/learn/what-is-infrastructure-as-code)は、モジュール式インフラストラクチャの構築と管理に関連する IT 担当者の日常作業の負担を軽減する、一連の技法とプラクティスです。 これにより、ソフトウェア開発者がアプリケーション コードを構築し保守するように、IT 担当者は最新のサーバー環境を構築、維持できます。
 
 [Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) を使用して、宣言型のテンプレートを使ってアプリケーションをプロビジョニングすることができます。 1 つのテンプレートで、複数のサービスをその依存関係と共にデプロイできます。 アプリケーション ライフサイクルの各ステージで、同じテンプレートを使用してアプリケーションを繰り返しデプロイします。
 
-**ベスト プラクティス** : Azure Web アプリまたはクラウド サービスに自動的にビルドし、デプロイする。  
-**詳細** : Azure DevOps Projects を Azure Web アプリまたはクラウド サービスに [自動的にビルドしてデプロイ](/azure/devops/pipelines/index)するように構成できます。 コードをチェックインするたびに、Azure DevOps により、Azure へビルドが実行され、バイナリが自動的にデプロイされます。 パッケージのビルド プロセスは、Visual Studio の Package コマンドに相当し、発行手順は Visual Studio の Publish コマンドに相当します。
+**ベスト プラクティス**: Azure Web アプリまたはクラウド サービスに自動的にビルドし、デプロイする。  
+**詳細**: Azure DevOps Projects を Azure Web アプリまたはクラウド サービスに [自動的にビルドしてデプロイ](/azure/devops/pipelines/index)するように構成できます。 コードをチェックインするたびに、Azure DevOps により、Azure へビルドが実行され、バイナリが自動的にデプロイされます。 パッケージのビルド プロセスは、Visual Studio の Package コマンドに相当し、発行手順は Visual Studio の Publish コマンドに相当します。
 
-**ベスト プラクティス** : リリース管理を自動化します。  
-**詳細** : [Azure Pipelines](/azure/devops/pipelines/index) は、複数の段階に分かれたデプロイを自動化し、リリース プロセスを管理するためのソリューションです。 継続的で管理されたデプロイメント パイプラインを作成し、すばやく、簡単に、頻繁にリリースできます。 Azure Pipelines を使用すると、リリース プロセスを自動化し、承認ワークフローを事前定義できます。 オンプレミスまたはクラウドに展開し、必要に応じて拡張、カスタマイズできます。
+**ベスト プラクティス**: リリース管理を自動化します。  
+**詳細**: [Azure Pipelines](/azure/devops/pipelines/index) は、複数の段階に分かれたデプロイを自動化し、リリース プロセスを管理するためのソリューションです。 継続的で管理されたデプロイメント パイプラインを作成し、すばやく、簡単に、頻繁にリリースできます。 Azure Pipelines を使用すると、リリース プロセスを自動化し、承認ワークフローを事前定義できます。 オンプレミスまたはクラウドに展開し、必要に応じて拡張、カスタマイズできます。
 
-**ベスト プラクティス** : アプリを起動する前または更新プログラムを運用環境にデプロイする前に、パフォーマンスを確認する。  
-**詳細** : 次の目的で、クラウドベースの [ロード テスト](/azure/devops/test/load-test/overview#alternatives)を実行します。
+**ベスト プラクティス**: アプリを起動する前または更新プログラムを運用環境にデプロイする前に、パフォーマンスを確認する。  
+**詳細**: 次の目的で、クラウドベースの [ロード テスト](/azure/devops/test/load-test/overview#alternatives)を実行します。
 
 - アプリのパフォーマンスの問題を見つけます。
 - デプロイの品質を向上します。
@@ -164,28 +164,28 @@ Center for Internet Security (CIS) コントロールを基にしたセキュリ
 
 [Apache JMeter](https://jmeter.apache.org/) はコミュニティの強力な支持を受けている、無料で人気のオープン ソース ツールです。
 
-**ベスト プラクティス** : アプリケーションのパフォーマンスを監視する。  
-**詳細** : [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 Application Insights を使用して、実行中の Web アプリケーションを監視します。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。
+**ベスト プラクティス**: アプリケーションのパフォーマンスを監視する。  
+**詳細**: [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 Application Insights を使用して、実行中の Web アプリケーションを監視します。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。
 
 ## <a name="mitigate-and-protect-against-ddos"></a>DDoS に対する被害軽減と保護
 分散型サービス拒否 (DDoS) は、アプリケーションのリソースを枯渇させようとする攻撃の種類です。 目的は、正当な要求を処理するアプリケーションの可用性と能力に影響を与えることです。 これらの攻撃は、いっそう高度なものになり、規模と影響も大きくなっています。 この攻撃は、インターネット経由で一般に到達可能なすべてのエンドポイントで実行できます。
 
 DDoS に対する回復性を設計しビルドするときは、さまざまな障害モードに対応した計画と設計が必要です。 Azure の DDoS 回復性のサービスをビルドするためのベスト プラクティスを次に示します。
 
-**ベスト プラクティス** : 設計と実装から、デプロイと運用まで、アプリケーションのライフ サイクル全体を通して、セキュリティを優先する必要があります。 アプリケーションには、比較的少量の要求によって大量のリソースを使用し、結果としてサービスを停止させるような、バグが含まれる可能性があります。  
-**詳細** : Microsoft Azure で実行されるサービスを保護するには、お客様は、自分のアプリケーションのアーキテクチャをよく理解し、 [ソフトウェア品質の 5 つの重要な要素](/azure/architecture/guide/pillars)に注目する必要があります。 お客様は、標準的なトラフィックの量、アプリケーションと他のアプリケーションの間の接続モデル、パブリック インターネットに公開されるサービス エンドポイントについて知っておく必要があります。
+**ベスト プラクティス**: 設計と実装から、デプロイと運用まで、アプリケーションのライフ サイクル全体を通して、セキュリティを優先する必要があります。 アプリケーションには、比較的少量の要求によって大量のリソースを使用し、結果としてサービスを停止させるような、バグが含まれる可能性があります。  
+**詳細**: Microsoft Azure で実行されるサービスを保護するには、お客様は、自分のアプリケーションのアーキテクチャをよく理解し、[ソフトウェア品質の 5 つの重要な要素](/azure/architecture/guide/pillars)に注目する必要があります。 お客様は、標準的なトラフィックの量、アプリケーションと他のアプリケーションの間の接続モデル、パブリック インターネットに公開されるサービス エンドポイントについて知っておく必要があります。
 
 アプリケーション自体を対象とするサービス拒否攻撃に対処するのに十分な回復力をアプリケーションに持たせることが、最も重要です。 Azure プラットフォームには、[セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL)](https://www.microsoft.com/sdl) からセキュリティとプライバシーが組み込まれるようになっています。 SDL は、すべての開発段階でセキュリティに対処し、Azure がいっそう安全になるように継続的に更新されることを保証します。
 
-**ベスト プラクティス** : [水平方向にスケーリングする](/azure/architecture/guide/design-principles/scale-out)ようにアプリケーションを設計し、増加した負荷の需要を満たす (特に、DDoS 攻撃の場合)。 アプリケーションがサービスの 1 つのインスタンスに依存する場合は、単一障害点が発生します。 複数のインスタンスをプロビジョニングすると、システムの回復力と拡張性が高まります。  
-**詳細** : [Azure App Service](../../app-service/overview.md) の場合は、複数のインスタンスを提供する [App Service プラン](../../app-service/overview-hosting-plans.md)を選択してください。
+**ベスト プラクティス**: [水平方向にスケーリングする](/azure/architecture/guide/design-principles/scale-out)ようにアプリケーションを設計し、増加した負荷の需要を満たす (特に、DDoS 攻撃の場合)。 アプリケーションがサービスの 1 つのインスタンスに依存する場合は、単一障害点が発生します。 複数のインスタンスをプロビジョニングすると、システムの回復力と拡張性が高まります。  
+**詳細**: [Azure App Service](../../app-service/overview.md) の場合は、複数のインスタンスを提供する [App Service プラン](../../app-service/overview-hosting-plans.md)を選択してください。
 
 Azure Cloud Services の場合は、[複数インスタンス](../../cloud-services/cloud-services-choose-me.md)を使用するように各ロールを構成してください。
 
 [Azure Virtual Machines](../../virtual-machines/windows/overview.md) の場合は、VM アーキテクチャに 1 つ以上の VM が含まれていることと、[可用性セット](../../virtual-machines/windows/tutorial-availability-sets.md)に各 VM が含まれていることを確認してください。 自動スケーリング機能には仮想マシン スケール セットを使うことをお勧めします。
 
-**ベスト プラクティス** : アプリケーションのセキュリティ防御を多層化すると、攻撃が成功する可能性が減少します。 Azure プラットフォームの組み込み機能を使って、アプリケーションのセキュリティ保護設計を実装します。  
-**詳細** : 攻撃のリスクは、アプリケーションの規模 (攻撃対象領域) と共に大きくなります。 公開されている IP アドレス空間を承認リストを使用して閉鎖し、ロード バランサー ([Azure Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) と [Azure Application Gateway](../../application-gateway/application-gateway-create-probe-portal.md)) を用いて不要にリスニングしているポートを閉じることで、攻撃対象領域を減らすことができます。
+**ベスト プラクティス**: アプリケーションのセキュリティ防御を多層化すると、攻撃が成功する可能性が減少します。 Azure プラットフォームの組み込み機能を使って、アプリケーションのセキュリティ保護設計を実装します。  
+**詳細**: 攻撃のリスクは、アプリケーションの規模 (攻撃対象領域) と共に大きくなります。 公開されている IP アドレス空間を承認リストを使用して閉鎖し、ロード バランサー ([Azure Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) と [Azure Application Gateway](../../application-gateway/application-gateway-create-probe-portal.md)) を用いて不要にリスニングしているポートを閉じることで、攻撃対象領域を減らすことができます。
 
 [ネットワーク セキュリティ グループ](../../virtual-network/network-security-groups-overview.md)も、攻撃対象領域を軽減する 1 つの手段です。 [サービス タグ](../../virtual-network/network-security-groups-overview.md#service-tags)および[アプリケーション セキュリティ グループ](../../virtual-network/network-security-groups-overview.md#application-security-groups)を使用して、セキュリティ規則作成の複雑さを軽減し、アプリケーションの構造の自然な延長としてネットワーク セキュリティを構成することができます。
 
@@ -207,16 +207,16 @@ Azure Policy を有効にして、組織の明文化されたポリシーを監�
 
 Azure Policy の採用後に従うセキュリティのベストプラクティスを次にいくつか示します。
 
-**ベスト プラクティス** : ポリシーにより、いくつかの種類の効果をサポートします。 これらについては、「[Azure Policy の定義の構造](../../governance/policy/concepts/definition-structure.md#policy-rule)」で確認できます。 **deny** 効果と **remediate** 効果によってビジネス業務にマイナスの影響がある可能性があるため、 **audit** 効果から開始して、ポリシーからのマイナスの影響のリスクを抑えます。   
-**詳細** : [audit モードでポリシーのデプロイを開始](../../governance/policy/concepts/definition-structure.md#policy-rule)し、その後 **deny** または **remediate** に進みます。 **deny** または **remediate** に移る前に、audit 効果の結果をテストしレビューします。
+**ベスト プラクティス**: ポリシーにより、いくつかの種類の効果をサポートします。 これらについては、「[Azure Policy の定義の構造](../../governance/policy/concepts/definition-structure.md#policy-rule)」で確認できます。 **deny** 効果と **remediate** 効果によってビジネス業務にマイナスの影響がある可能性があるため、**audit** 効果から開始して、ポリシーからのマイナスの影響のリスクを抑えます。   
+**詳細**: [audit モードでポリシーのデプロイを開始](../../governance/policy/concepts/definition-structure.md#policy-rule)し、その後 **deny** または **remediate** に進みます。 **deny** または **remediate** に移る前に、audit 効果の結果をテストしレビューします。
 
 詳細については、「[コンプライアンスを強制するポリシーの作成と管理](../../governance/policy/tutorials/create-and-manage.md)」を参照してください。
 
-**ベスト プラクティス** : ポリシー違反の監視を担当するロールを特定し、適切な修復アクションが確実に迅速に行われるようにします。   
-**詳細** : 割り当てられたロールに、 [Azure portal](../../governance/policy/how-to/get-compliance-data.md#portal) または [コマンド ライン](../../governance/policy/how-to/get-compliance-data.md#command-line)を使用してコンプライアンスを監視させます。
+**ベスト プラクティス**: ポリシー違反の監視を担当するロールを特定し、適切な修復アクションが確実に迅速に行われるようにします。   
+**詳細**: 割り当てられたロールに、[Azure portal](../../governance/policy/how-to/get-compliance-data.md#portal) または [コマンド ライン](../../governance/policy/how-to/get-compliance-data.md#command-line)を使用してコンプライアンスを監視させます。
 
-**ベスト プラクティス** : Azure Policy は、組織の明文化されたポリシーを技術的に表したものです。 混乱を減らし、一貫性を高めるため、すべての Azure Policy 定義を組織のポリシーにマッピングします。   
-**詳細** : [ポリシーの定義](../../governance/policy/concepts/definition-structure.md#display-name-and-description)内または [イニシアティブ定義](../../governance/policy/concepts/initiative-definition-structure.md#metadata)の説明内に組織のポリシーへの参照を追加することにより、組織のドキュメント内または Azure Policy の定義自体にマッピングをドキュメント化します。
+**ベスト プラクティス**: Azure Policy は、組織の明文化されたポリシーを技術的に表したものです。 混乱を減らし、一貫性を高めるため、すべての Azure Policy 定義を組織のポリシーにマッピングします。   
+**詳細**: [ポリシーの定義](../../governance/policy/concepts/definition-structure.md#display-name-and-description)内または [イニシアティブ定義](../../governance/policy/concepts/initiative-definition-structure.md#metadata)の説明内に組織のポリシーへの参照を追加することにより、組織のドキュメント内または Azure Policy の定義自体にマッピングをドキュメント化します。
 
 ## <a name="monitor-azure-ad-risk-reports"></a>Azure AD のリスク レポートの監視
 ほとんどのセキュリティ侵害は、攻撃者がユーザーの ID を盗むことにより環境にアクセスできるようになると発生します。 侵害された ID を検出するのは簡単な作業ではありません。 Azure AD では、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザー アカウントに関連する疑わしいアクションを検出します。 検出された疑わしいアクションはそれぞれ、[リスク検出](../../active-directory/identity-protection/overview-identity-protection.md)と呼ばれるレコードに格納されます。 リスク検出は、Azure AD のセキュリティ レポートに記録されます。 詳細については、[危険な状態のユーザー セキュリティ レポート](../../active-directory/identity-protection/overview-identity-protection.md)に関する記事、および[リスクの高いサインイン セキュリティ レポート](../../active-directory/identity-protection/overview-identity-protection.md)に関する記事をご覧ください。

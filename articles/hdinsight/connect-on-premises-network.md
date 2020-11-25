@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
 ms.openlocfilehash: 71ef902e909e552ade5174196f291630bc242ca0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543238"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005369"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>オンプレミス ネットワークへの HDInsight の接続
 
@@ -77,12 +77,12 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
     | --- | --- |
     |サブスクリプション |適切なサブスクリプションを選択します。|
     |Resource group |前に作成した仮想ネットワークが含まれているリソース グループを選択します。|
-    |仮想マシン名 | この仮想マシンを特定するフレンドリ名を入力します。 この例では、 **DNSProxy** を使用します。|
+    |仮想マシン名 | この仮想マシンを特定するフレンドリ名を入力します。 この例では、**DNSProxy** を使用します。|
     |リージョン | 前に作成した仮想ネットワークと同じリージョンを選択します。  すべてのリージョンですべての VM サイズを使用できるわけではありません。  |
     |可用性のオプション |  必要な可用性のレベルを選択します。  Azure は、アプリケーションの可用性と耐障害性を管理するためのさまざまなオプションを提供しています。  可用性ゾーンまたは可用性セット内のレプリケートされた VM を使用して、データセンターの障害やメンテナンス イベントからアプリやデータを保護するためのソリューションを設計します。 この例では、 **[インフラストラクチャ冗長は必要ありません]** を使用します。 |
     |Image | **[Ubuntu Server 18.04 LTS]** のままにしてください。 |
-    |認証の種類 | __パスワード__ または __SSH 公開キー__ :SSH アカウントの認証方法。 より安全な公開キーを使用することをお勧めします。 この例では、 **[パスワード]** を使用します。  詳細については、[Linux VM 用の SSH キーの作成と使用](../virtual-machines/linux/mac-create-ssh-keys.md)に関するドキュメントをご覧ください。|
-    |ユーザー名 |VM の管理者ユーザー名を入力します。  この例では、 **sshuser** を使用します。|
+    |認証の種類 | __パスワード__ または __SSH 公開キー__:SSH アカウントの認証方法。 より安全な公開キーを使用することをお勧めします。 この例では、 **[パスワード]** を使用します。  詳細については、[Linux VM 用の SSH キーの作成と使用](../virtual-machines/linux/mac-create-ssh-keys.md)に関するドキュメントをご覧ください。|
+    |ユーザー名 |VM の管理者ユーザー名を入力します。  この例では、**sshuser** を使用します。|
     |[パスワード] または [SSH 公開キー] | 使用可能なフィールドは、 **[認証の種類]** として選択された内容によって決定されます。  適切な値を入力します。|
     |パブリック受信ポート|**[選択したポートを許可する]** を選択します。 次に、 **[受信ポートを選択]** ボックスの一覧から **[SSH (22)]** を選択します。|
 
@@ -95,7 +95,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
     | フィールド | 値 |
     | --- | --- |
     |仮想ネットワーク | 前に作成した仮想ネットワークを選択します。|
-    |Subnet | 前に作成した仮想ネットワークの既定のサブネットを選択します。 VPN Gateway で使用されているサブネットは選択 __しないでください__ 。|
+    |Subnet | 前に作成した仮想ネットワークの既定のサブネットを選択します。 VPN Gateway で使用されているサブネットは選択 __しないでください__。|
     |パブリック IP | 自動入力されている値を使用します。  |
 
     ![HDInsight 仮想ネットワークの設定](./media/connect-on-premises-network/virtual-network-settings.png)
@@ -168,7 +168,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
     sudo nano /etc/bind/named.conf.options
     ```
 
-    ファイルを保存するには、 __Ctrl + X__ キー、 __Y__ キー、 __Enter__ キーの順に押します。
+    ファイルを保存するには、__Ctrl + X__ キー、__Y__ キー、__Enter__ キーの順に押します。
 
 4. SSH セッションでは、次のコマンドを使用します。
 
@@ -203,7 +203,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
     sudo nano /etc/bind/named.conf.local
     ```
 
-    ファイルを保存するには、 __Ctrl + X__ キー、 __Y__ キー、 __Enter__ キーの順に押します。
+    ファイルを保存するには、__Ctrl + X__ キー、__Y__ キー、__Enter__ キーの順に押します。
 
 6. Bind を起動するには、次のコマンドを使用します。
 
@@ -258,7 +258,7 @@ DNS サーバーを構成する具体的な手順については、DNS サーバ
 
 条件付き転送では、特定の DNS サフィックスの要求のみが転送されます。 この場合は、仮想ネットワークの DNS サフィックスのフォワーダーを構成する必要があります。 このサフィックスの要求は、カスタム DNS サーバーの IP アドレスに転送する必要があります。 
 
-次のテキストは、 **Bind** DNS ソフトウェアの条件付きフォワーダー構成の例です。
+次のテキストは、**Bind** DNS ソフトウェアの条件付きフォワーダー構成の例です。
 
 ```DNS Zone file
 zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
@@ -267,7 +267,7 @@ zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
 };
 ```
 
-**Windows Server 2016** での DNS の使用については、 [Add-DnsServerConditionalForwarderZone](/powershell/module/dnsserver/add-dnsserverconditionalforwarderzone) のドキュメントを参照してください。
+**Windows Server 2016** での DNS の使用については、[Add-DnsServerConditionalForwarderZone](/powershell/module/dnsserver/add-dnsserverconditionalforwarderzone) のドキュメントを参照してください。
 
 オンプレミス DNS サーバーを構成したら、オンプレミス ネットワークから `nslookup` を使用して、仮想ネットワークで名前を解決できることを確認できます。 次の例をご覧ください。 
 
@@ -288,7 +288,7 @@ nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.
 
 2. 手順 1 で識別された IP アドレスについて、その IP アドレスからの受信トラフィックを許可します。
 
-   * __NSG__ を使用している場合:IP アドレスについて、 __443__ ポートでの __受信__ トラフィックを許可します。
+   * __NSG__ を使用している場合:IP アドレスについて、__443__ ポートでの __受信__ トラフィックを許可します。
    * __UDR__ を使用している場合:IP アドレスについて、ルートの __[次ホップ]__ の種類を __[インターネット]__ に設定します。
 
 Azure PowerShell または Azure CLI を使用して NSG を作成する例については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-create-virtual-network.md#hdinsight-nsg)」を参照してください。

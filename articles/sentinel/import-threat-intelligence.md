@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
-ms.openlocfilehash: e04d7fa1f319ca3969d8acdc0235e2838bb3a88d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bde11c8e06891025be96810acf6d87952a3d8d2f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993426"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660782"
 ---
 # <a name="import-threat-intelligence-into-azure-sentinel"></a>Azure Sentinel への脅威インテリジェンスのインポート
 
@@ -31,20 +31,20 @@ Azure Sentinel のようなセキュリティ情報イベント管理 (SIEM) ソ
 
 次のアクティビティを通して脅威インテリジェンス (TI) を Azure Sentinel に統合できます。
 
-- さまざまな TI プラットフォームへの**データ コネクタ**を使用して、Azure Sentinel に[脅威インテリジェンスをインポート](./connect-threat-intelligence.md)します。
+- さまざまな TI プラットフォームへの **データ コネクタ** を使用して、Azure Sentinel に [脅威インテリジェンスをインポート](./connect-threat-intelligence.md)します。
 - インポートした脅威インテリジェンスを Azure Sentinel の **[ログ]** および新しい **[脅威インテリジェンス]** の領域に表示し、管理します。
-- 組み込みの**分析**ルール テンプレートを使用して、インポートした脅威インテリジェンスを利用したセキュリティのアラートとインシデントを生成します。
-- Azure Sentinel で、**脅威インテリジェンス ブック**を使用して、脅威インテリジェンスに関する重要な情報を視覚化します。
+- 組み込みの **分析** ルール テンプレートを使用して、インポートした脅威インテリジェンスを利用したセキュリティのアラートとインシデントを生成します。
+- Azure Sentinel で、**脅威インテリジェンス ブック** を使用して、脅威インテリジェンスに関する重要な情報を視覚化します。
 
 また、脅威インテリジェンスによって、 **[ハンティング]** や **[ノートブック]** などの他の Azure Sentinel エクスペリエンスにも有用なコンテキストが提供されます。これらのエクスペリエンスについては、この記事では取り上げていませんが、Notebooks 内での CTI の使用について書かれた、[Sentinel での Jupyter Notebooks に関する Ian Hellen によるこちらの優れたブログ記事](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239)で取り上げられています。
 
 ## <a name="azure-sentinel-data-connectors-for-threat-intelligence"></a>脅威インテリジェンス用の Azure Sentinel データ コネクタ
 
-Azure Sentinel の他のすべてのイベント データと同様に、脅威インジケーターはデータ コネクタを使用してインポートされます。 Azure Sentinel には、脅威インジケーター用に特別に用意された 2 つのデータ コネクタがあります。**脅威インテリジェンス - TAXII** と**脅威インテリジェンス プラットフォーム**です。 組織の脅威インジケーターの取得元となる場所に応じて、どちらかのデータ コネクタを単独で使用することも、両方のコネクタを一緒に使用することもできます。 各データ コネクタについて説明します。
+Azure Sentinel の他のすべてのイベント データと同様に、脅威インジケーターはデータ コネクタを使用してインポートされます。 Azure Sentinel には、脅威インジケーター用に特別に用意された 2 つのデータ コネクタがあります。**脅威インテリジェンス - TAXII** と **脅威インテリジェンス プラットフォーム** です。 組織の脅威インジケーターの取得元となる場所に応じて、どちらかのデータ コネクタを単独で使用することも、両方のコネクタを一緒に使用することもできます。 各データ コネクタについて説明します。
 
 ### <a name="adding-threat-indicators-to-azure-sentinel-with-the-threat-intelligence-platforms-data-connector"></a>脅威インテリジェンス プラットフォーム データ コネクタを使用して Azure Sentinel に脅威インジケーターを追加する
 
-多くの組織では、脅威インテリジェンス プラットフォーム (TIP) ソリューションを利用してさまざまなソースからの脅威インジケーター フィードを集約し、プラットフォーム内のデータをキュレーションしたうえで、ネットワーク デバイス、高度な脅威保護ソリューション、Azure Sentinel のような SIEM など、さまざまなセキュリティ ソリューションに適用する脅威インジケーターを選択します。 MISP、Anomali ThreatStream、ThreatConnect、Palo Alto Networks の MineMeld などの統合された TIP ソリューションを組織で利用している場合は、**脅威インテリジェンス プラットフォーム データ コネクタ**でその TIP を使用して、Azure Sentinel に脅威インジケーターをインポートできます。 これはコネクタと [Microsoft Graph Security tiIndicators API](https://docs.microsoft.com/graph/api/resources/tiindicator) の連携によって実現されるため、任意のカスタム脅威インテリジェンス プラットフォームでコネクタを使用し、tiIndicators API を利用して Azure Sentinel (および Defender ATP などの他の Microsoft セキュリティ ソリューション) にインジケーターを送信することもできます。
+多くの組織では、脅威インテリジェンス プラットフォーム (TIP) ソリューションを利用してさまざまなソースからの脅威インジケーター フィードを集約し、プラットフォーム内のデータをキュレーションしたうえで、ネットワーク デバイス、高度な脅威保護ソリューション、Azure Sentinel のような SIEM など、さまざまなセキュリティ ソリューションに適用する脅威インジケーターを選択します。 MISP、Anomali ThreatStream、ThreatConnect、EclecticIQ Platform、ThreatQ Threat Intelligence Platform、Palo Alto Networks の MineMeld などの統合された TIP ソリューションを組織で利用している場合は、**脅威インテリジェンス プラットフォーム データ コネクタ** でその TIP を使用して、Azure Sentinel に脅威インジケーターをインポートできます。 これはコネクタと [Microsoft Graph Security tiIndicators API](/graph/api/resources/tiindicator) の連携によって実現されるため、任意のカスタム脅威インテリジェンス プラットフォームでコネクタを使用し、tiIndicators API を利用して Azure Sentinel (および Defender ATP などの他の Microsoft セキュリティ ソリューション) にインジケーターを送信することもできます。
 
 :::image type="content" source="media/import-threat-intelligence/threat-intel-import-path.png" alt-text="脅威インテリジェンスのインポート パス":::
 
@@ -65,7 +65,7 @@ TIP を使用しているか、カスタム ソリューションを使用して
 - ディレクトリ (テナント) ID
 - クライアント シークレット
 
-この情報は、常に、次の 3 つの手順を含む**アプリの登録**と呼ばれるプロセスを通じて Azure Active Directory から取得されます。
+この情報は、常に、次の 3 つの手順を含む **アプリの登録** と呼ばれるプロセスを通じて Azure Active Directory から取得されます。
 - Azure Active Directory にアプリを登録する
 - アプリから Microsoft Graph tiIndicators API に接続して脅威インジケーターを送信するために必要な、アクセス許可を指定する
 - これらのアクセス許可をこのアプリケーションに付与するために、組織から同意を得る  
@@ -76,9 +76,9 @@ TIP を使用しているか、カスタム ソリューションを使用して
 
 1. メニューから **[アプリの登録]** を選択し、 **[新しい登録]** を選択します。
 
-1. アプリケーションの登録を表す名前を選択し、**シングル テナント**のラジオ ボタンを選択して、 **[登録]** を選択します。
+1. アプリケーションの登録を表す名前を選択し、**シングル テナント** のラジオ ボタンを選択して、 **[登録]** を選択します。
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-register-application.png" alt-text="脅威インテリジェンスのインポート パス":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-register-application.png" alt-text="アプリケーションを登録する":::
 
 1. 表示された画面で、 **[アプリケーション (クライアント) ID]** と **[ディレクトリ (テナント) ID]** の値をコピーします。 これらは、Azure Sentinel に脅威インジケーターを送信する TIP またはカスタム ソリューションを構成するために後で必要になる情報の最初の 2 つです。
 
@@ -96,13 +96,13 @@ TIP を使用しているか、カスタム ソリューションを使用して
 
 1. **[ThreatIndicators.ReadWrite.OwnedBy]** を選択し、 **[アクセス許可の追加]** を選択して、このアクセス許可をアプリのアクセス許可の一覧に追加します。
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-1.png" alt-text="脅威インテリジェンスのインポート パス":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-1.png" alt-text="アクセス許可を指定する":::
 
 **これらのアクセス許可を付与するために組織から同意を得る**
 
 1. アプリの [API のアクセス許可] ページで同意を与えるために、Azure Active Directory のグローバル管理者が **[<テナント名> に管理者の同意を与えます]** ボタンを選択する必要があります。 お使いのアカウントでグローバル管理者の役割をお持ちでない場合、このボタンは使用できず、この手順を実行するには、組織の全体管理者に依頼する必要があります。
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-2.png" alt-text="脅威インテリジェンスのインポート パス":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-2.png" alt-text="同意する":::
 
 1. アプリに同意が与えられると、 **[状態]** に緑色のチェックマークが表示されます。
  
@@ -114,9 +114,9 @@ TIP を使用しているか、カスタム ソリューションを使用して
 
 1. メニューから **[証明書とシークレット]** を選択し、 **[新しいクライアント シークレット]** ボタンをクリックして、アプリのシークレット (API キー) を取得します。
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-client-secret.png" alt-text="脅威インテリジェンスのインポート パス":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-client-secret.png" alt-text="クライアント シークレットの取得":::
 
-1. **[追加]** ボタンをクリックし、**必ずクライアント シークレットをコピー**してください。このページから移動すると、このシークレットを再度取得することができないためです。 TIP またはカスタム ソリューションを構成するときに、この値が必要になります。
+1. **[追加]** ボタンをクリックし、**必ずクライアント シークレットをコピー** してください。このページから移動すると、このシークレットを再度取得することができないためです。 TIP またはカスタム ソリューションを構成するときに、この値が必要になります。
 
 #### <a name="input-this-information-into-your-tip-solution-or-custom-application"></a>この情報を TIP ソリューションまたはカスタム アプリケーションに入力する
 
@@ -129,11 +129,11 @@ TIP を使用しているか、カスタム ソリューションを使用して
 
 #### <a name="enable-the-threat-intelligence-platforms-data-connector-in-azure-sentinel"></a>Azure Sentinel で脅威インテリジェンス プラットフォーム データ コネクタを有効にする
 
-統合プロセスの最後の手順は、Azure Sentinel で**脅威インテリジェンス プラットフォーム** データ コネクタを有効にすることです。 これは、TIP またはカスタム ソリューションから Microsoft Graph tiIndicators API を使用して送信された脅威インジケーターを Azure Sentinel にインポートする手順です。 これらのインジケーターは、組織のすべての Azure Sentinel ワークスペースで使用できます。 各ワークスペースについて、次の手順に従って脅威インテリジェンス プラットフォーム データ コネクタを有効にします。
+統合プロセスの最後の手順は、Azure Sentinel で **脅威インテリジェンス プラットフォーム** データ コネクタを有効にすることです。 これは、TIP またはカスタム ソリューションから Microsoft Graph tiIndicators API を使用して送信された脅威インジケーターを Azure Sentinel にインポートする手順です。 これらのインジケーターは、組織のすべての Azure Sentinel ワークスペースで使用できます。 各ワークスペースについて、次の手順に従って脅威インテリジェンス プラットフォーム データ コネクタを有効にします。
 
 1. [Azure portal](https://portal.azure.com/) を開き、**Azure Sentinel** サービスに移動します。
 
-1. TIP またはカスタム ソリューションから送信された脅威インジケーターのインポート先となる**ワークスペース**を選択します。
+1. TIP またはカスタム ソリューションから送信された脅威インジケーターのインポート先となる **ワークスペース** を選択します。
 
 1. メニューから **[データ コネクタ]** を選択し、コネクタ ギャラリーから **[脅威インテリジェンス プラットフォーム]** を選択して、 **[Open connector page]\(コネクタ ページを開く\)** ボタンをクリックします。
 
@@ -145,7 +145,7 @@ TIP を使用しているか、カスタム ソリューションを使用して
 
 脅威インテリジェンスの送信用に最も広く採用されている業界標準は、[STIX データ形式と TAXII プロトコルの組み合わせ](https://oasis-open.github.io/cti-documentation/)です。 組織が現在の STIX/TAXII バージョン (2.0 または 2.1) をサポートするソリューションから脅威インジケーターを取得している場合、**脅威インテリジェンス - TAXII** データ コネクタを使用して、脅威インジケーターを Azure Sentinel に取り込むことができます。 脅威インテリジェンス - TAXII データ コネクタを使用すると、Azure Sentinel に組み込みの TAXII クライアントで、TAXII 2.x サーバーから脅威インテリジェンスをインポートできます。
 
-:::image type="content" source="media/import-threat-intelligence/threat-intel-taxii-import-path.png" alt-text="脅威インテリジェンスのインポート パス":::
+:::image type="content" source="media/import-threat-intelligence/threat-intel-taxii-import-path.png" alt-text="TAXII のインポート パス":::
  
 TAXII サーバーから Azure Sentinel に STIX 形式の脅威インジケーターをインポートするには、次の手順に従います。
 
@@ -281,23 +281,23 @@ TAXII サーバーから Azure Sentinel に脅威インジケーターをイン�
 
 1. [Azure portal](https://portal.azure.com/) を開き、**Azure Sentinel** サービスに移動します。
 
-1. TAXII サーバーからの脅威インジケーターのインポート先となる**ワークスペース**を選択します。
+1. TAXII サーバーからの脅威インジケーターのインポート先となる **ワークスペース** を選択します。
 
 1. メニューから **[データ コネクタ]** を選択し、コネクタ ギャラリーから **[脅威インテリジェンス - TAXII]** を選択して、 **[Open connector page]\(コネクタ ページを開く\)** ボタンをクリックします。
 
-1. この TAXII サーバー コレクションの**名前**を入力し、 **[API ルート URL]** 、 **[コレクション ID]** 、 **[ユーザー名]** (必要な場合)、 **[パスワード]** (必要な場合) に入力して、 **[追加]** ボタンをクリックします。
+1. この TAXII サーバー コレクションの **名前** を入力し、 **[API ルート URL]** 、 **[コレクション ID]** 、 **[ユーザー名]** (必要な場合)、 **[パスワード]** (必要な場合) に入力して、 **[追加]** ボタンをクリックします。
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-configure-taxii-servers.png" alt-text="脅威インテリジェンスのインポート パス":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-configure-taxii-servers.png" alt-text="TAXII サーバーを構成する":::
  
 TAXII サーバーへの接続が正常に確立されたことを示す確認メッセージが表示され、同じまたは異なる TAXII サーバーから複数のコレクションに接続するために必要な回数だけ上記の手順 (4) を繰り返すことができます。
 
 ## <a name="view-your-threat-indicators-in-azure-sentinel"></a>Azure Sentinel で脅威インジケーターを表示する
 
-**脅威インテリジェンス プラットフォーム**または**脅威インテリジェンス - TAXII** データ コネクタを使用して Azure Sentinel に脅威インジケーターをインポートしたので、すべての Azure Sentinel イベント データが格納されている、 **[ログ]** の **ThreatIntelligenceIndicator** テーブルに、それらを表示できます。 このテーブルは、他の Azure Sentinel 機能 (分析やブックなど) によって実行されるクエリの基礎となります。 **ThreatIntelligenceIndicator** テーブルで脅威インジケーターを検索して表示する方法を次に示します。
+**脅威インテリジェンス プラットフォーム** または **脅威インテリジェンス - TAXII** データ コネクタを使用して Azure Sentinel に脅威インジケーターをインポートしたので、すべての Azure Sentinel イベント データが格納されている、 **[ログ]** の **ThreatIntelligenceIndicator** テーブルに、それらを表示できます。 このテーブルは、他の Azure Sentinel 機能 (分析やブックなど) によって実行されるクエリの基礎となります。 **ThreatIntelligenceIndicator** テーブルで脅威インジケーターを検索して表示する方法を次に示します。
 
 1. [Azure portal](https://portal.azure.com/) を開き、**Azure Sentinel** サービスに移動します。
 
-1. いずれかの脅威インテリジェンス データ コネクタを使用して脅威インジケーターをインポートした**ワークスペース**を選択します。
+1. いずれかの脅威インテリジェンス データ コネクタを使用して脅威インジケーターをインポートした **ワークスペース** を選択します。
 
 1. Azure Sentinel メニューの **[全般]** セクションで **[ログ]** を選択します。
 
@@ -307,7 +307,7 @@ TAXII サーバーへの接続が正常に確立されたことを示す確認�
 
 結果は、次に示す脅威インジケーターの例のようになります。
 
-:::image type="content" source="media/import-threat-intelligence/threat-intel-sample-query.png" alt-text="脅威インテリジェンスのインポート パス":::
+:::image type="content" source="media/import-threat-intelligence/threat-intel-sample-query.png" alt-text="サンプル クエリ データ":::
  
 ## <a name="manage-your-threat-indicators-in-the-new-threat-intelligence-area-of-azure-sentinel"></a>Azure Sentinel の新しい脅威インテリジェンス領域で脅威インジケーターを管理する
 
@@ -316,13 +316,13 @@ Azure Sentinel メニューからアクセスできる新しい **[脅威イン�
 
 1. [Azure portal](https://portal.azure.com/) を開き、**Azure Sentinel** サービスに移動します。
 
-1. いずれかの脅威インテリジェンス データ コネクタを使用して脅威インジケーターをインポートした**ワークスペース**を選択します。
+1. いずれかの脅威インテリジェンス データ コネクタを使用して脅威インジケーターをインポートした **ワークスペース** を選択します。
 
 1. Azure Sentinel メニューの [脅威管理] セクションで **[脅威インテリジェンス]** を選択します。
 
 1. ページの上部のメニューから **[新規追加]** ボタンを選択します。
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-add-new-indicator.png" alt-text="脅威インテリジェンスのインポート パス" lightbox="media/import-threat-intelligence/threat-intel-add-new-indicator.png":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-add-new-indicator.png" alt-text="新しい脅威インジケーターの追加" lightbox="media/import-threat-intelligence/threat-intel-add-new-indicator.png":::
 
 1. インジケーターの種類を選択し、 **[新しいインジケーター]** パネルで、赤いアスタリスク (*) が付いている必須フィールドに入力します。
 
@@ -330,7 +330,7 @@ Azure Sentinel メニューからアクセスできる新しい **[脅威イン�
 
 タグ付けは、脅威インジケーターをグループ化して見つけやすくする簡単な方法です。 通常は、特定のインシデントに関連するインジケーター、または特定の既知のアクターや既知の攻撃キャンペーンからの脅威を表すインジケーターにタグを適用することができます。 脅威インジケーターは個別にタグ付けすることも、インジケーターを複数選択してすべて一度にタグ付けすることもできます。 複数のインジケーターにインシデント ID をタグ付けする例を次に示します。 タグ付けは自由形式であるため、脅威インジケーター タグの標準的な名前付け規則を作成することをお勧めします。 各インジケーターに複数のタグを適用できます。
 
-:::image type="content" source="media/import-threat-intelligence/threat-intel-tagging-indicators.png" alt-text="脅威インテリジェンスのインポート パス" lightbox="media/import-threat-intelligence/threat-intel-tagging-indicators.png":::
+:::image type="content" source="media/import-threat-intelligence/threat-intel-tagging-indicators.png" alt-text="脅威インジケーターにタグを適用する" lightbox="media/import-threat-intelligence/threat-intel-tagging-indicators.png":::
 
 ## <a name="analytics-puts-your-threat-indicators-to-work-detecting-potential-threats"></a>分析によって脅威インジケーターでの潜在的な脅威の検出を機能させる
 
@@ -338,11 +338,11 @@ Azure Sentinel メニューからアクセスできる新しい **[脅威イン�
 
 新しい分析ルールを最初から作成することは常に可能ですが、Azure Sentinel には、Microsoft セキュリティ エンジニアが作成した組み込みのルール テンプレートのセットが用意されていて、それらをそのまま使用することも、ニーズに合わせて変更することもできます。 脅威インジケーターを使用するルール テンプレートは、すべて "**TI map**..." (TI で ... にマップする) で始まるタイトルが付いているため、簡単に特定できます。 これらのルール テンプレートはすべて同じように動作しますが、使用される脅威インジケーターの種類 (ドメイン、電子メール、ファイル ハッシュ、IP アドレス、または URL) と照合するイベントの種類が異なります。 各テンプレートには、ルールが機能するために必要なデータ ソースが一覧表示されます。そのため、必要なイベントが Azure Sentinel に既にインポートされているかどうかを一目で確認できます。
 
-これらのルール テンプレートの 1 つを示して、Azure Sentinel にインポートした脅威インジケーターを使用したセキュリティ アラートの生成ルールを有効にして構成する方法を説明します。 この例では、 **[TI map IP entity to AzureActivity]\(TI で IP エンティティを AzureActivity にマップする\)** というルール テンプレートを使用します。 このルールで、あらゆる IP アドレスの種類の脅威インジケーターとすべての Azure アクティビティ イベントを照合します。 一致が見つかると、**アラート**と、対応する**インシデント**が生成され、セキュリティ運用チームによる調査を行えるようになります。 この分析ルールは、**脅威インテリジェンス** データ コネクタ (脅威インジケーターをインポートする) の一方または両方と、**Azure アクティビティ** データ コネクタ (Azure サブスクリプション レベルのイベントをインポートする) を有効にした場合にのみ、正常に機能します。
+これらのルール テンプレートの 1 つを示して、Azure Sentinel にインポートした脅威インジケーターを使用したセキュリティ アラートの生成ルールを有効にして構成する方法を説明します。 この例では、 **[TI map IP entity to AzureActivity]\(TI で IP エンティティを AzureActivity にマップする\)** というルール テンプレートを使用します。 このルールで、あらゆる IP アドレスの種類の脅威インジケーターとすべての Azure アクティビティ イベントを照合します。 一致が見つかると、**アラート** と、対応する **インシデント** が生成され、セキュリティ運用チームによる調査を行えるようになります。 この分析ルールは、**脅威インテリジェンス** データ コネクタ (脅威インジケーターをインポートする) の一方または両方と、**Azure アクティビティ** データ コネクタ (Azure サブスクリプション レベルのイベントをインポートする) を有効にした場合にのみ、正常に機能します。
 
 1. [Azure portal](https://portal.azure.com/) を開き、**Azure Sentinel** サービスに移動します。
 
-1. **脅威インテリジェンス** データ コネクタを使用して脅威インジケーターをインポートした先、および **Azure アクティビティ** データ コネクタを使用して Azure アクティビティ データをインポートした先の**ワークスペース**を選択します。
+1. **脅威インテリジェンス** データ コネクタを使用して脅威インジケーターをインポートした先、および **Azure アクティビティ** データ コネクタを使用して Azure アクティビティ データをインポートした先の **ワークスペース** を選択します。
 
 1. Azure Sentinel メニューの **[構成]** セクションで **[分析]** を選択します。
 
@@ -350,16 +350,16 @@ Azure Sentinel メニューからアクセスできる新しい **[脅威イン�
 
 1. 次に示すように、 **[TI map IP entity to AzureActivity]\(TI で IP エンティティを AzureActivity にマップする\)** というタイトルの付いたルールに移動し、必要なすべてのデータ ソースを接続済みであることを確認します。
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-required-data-sources.png" alt-text="脅威インテリジェンスのインポート パス":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-required-data-sources.png" alt-text="必要なデータ ソース":::
 
 1. このルールを選択し、 **[ルールの作成]** ボタンを選択します。 これにより、ルールを構成するためのウィザードが開きます。 ここで設定を完了し、 **[次: ルール ロジックを設定]** ボタンを選択します。
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-create-analytics-rule.png" alt-text="脅威インテリジェンスのインポート パス":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-create-analytics-rule.png" alt-text="分析ルールの設定":::
 
 1. ウィザードのルール ロジック部分には次のものが含まれます。
     - ルールで使用されるクエリ。
 
-    - エンティティ マッピング。これはアカウント、IP アドレス、URL などのエンティティの認識方法を Azure Sentinel に指示するもので、これにより、**インシデント**および**調査**において、このルールによって生成されたセキュリティ アラートでのデータ処理方法が理解されるようになります。
+    - エンティティ マッピング。これはアカウント、IP アドレス、URL などのエンティティの認識方法を Azure Sentinel に指示するもので、これにより、**インシデント** および **調査** において、このルールによって生成されたセキュリティ アラートでのデータ処理方法が理解されるようになります。
 
     - このルールを実行するスケジュール。
 
@@ -374,7 +374,7 @@ Azure Sentinel メニューからアクセスできる新しい **[脅威イン�
 
 既定の設定をそのまま使用することも、要件に合わせて変更することもできます。 完了したら、 **[次: 自動応答 >]** を選択します。
 
-1. ウィザードのこの手順では、この分析ルールからセキュリティ アラートが生成されたときにトリガーする自動化を構成できます。 Azure Sentinel の自動化は、Azure Logic Apps によって提供される**プレイブック**を使用して行われます。 詳細については、こちらの「[チュートリアル: Azure Sentinel で脅威への自動対応を設定する](./tutorial-respond-threats-playbook.md)」を参照してください。 この例では、 **[次: レビュー]** ボタンを選択して続行します。
+1. ウィザードのこの手順では、この分析ルールからセキュリティ アラートが生成されたときにトリガーする自動化を構成できます。 Azure Sentinel の自動化は、Azure Logic Apps によって提供される **プレイブック** を使用して行われます。 詳細については、こちらの「[チュートリアル: Azure Sentinel で脅威への自動対応を設定する](./tutorial-respond-threats-playbook.md)」を参照してください。 この例では、 **[次: レビュー]** ボタンを選択して続行します。
 
 1. この最後の手順でルールの設定を検証します。 ルールを有効にする準備ができたら、 **[作成]** ボタンを選択して完了します。
 
@@ -391,13 +391,13 @@ Azure Sentinel で提供される脅威インテリジェンス ブックを見�
 
 1. [Azure portal](https://portal.azure.com/) を開き、**Azure Sentinel** サービスに移動します。
 
-1. いずれかの脅威インテリジェンス データ コネクタを使用して脅威インジケーターをインポートした**ワークスペース**を選択します。
+1. いずれかの脅威インテリジェンス データ コネクタを使用して脅威インジケーターをインポートした **ワークスペース** を選択します。
 
 1. Azure Sentinel メニューの **[脅威管理]** セクションで、 **[ブック]** を選択します。
 
 1. **[脅威インテリジェンス]** というタイトルの付いたブックに移動し、次に示すように、**ThreatIntelligenceIndicator** テーブルにデータがあることを確認します。
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-verify-data.png" alt-text="脅威インテリジェンスのインポート パス":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-verify-data.png" alt-text="データの確認":::
  
 1. **[保存]** ボタンを選択し、ブックを格納する Azure の場所を選択します。 この手順は、ブックを任意の方法で変更し、変更内容を保存する場合に必要です。
 
@@ -407,7 +407,7 @@ Azure Sentinel で提供される脅威インテリジェンス ブックを見�
 
 1. 脅威の種類別に脅威インジケーターを表す新しいグラフを追加しましょう。 ページの下部までスクロールし、[クエリの追加] を選択します。
 
-1. **Log Analytics ワークスペースのログ クエリ**のテキスト ボックスに次のテキストを追加します。
+1. **Log Analytics ワークスペースのログ クエリ** のテキスト ボックスに次のテキストを追加します。
     ```kusto
     ThreatIntelligenceIndicator
     | summarize count() by ThreatType
@@ -417,7 +417,7 @@ Azure Sentinel で提供される脅威インテリジェンス ブックを見�
 
 1. **[編集が完了しました]** ボタンを選択します。 ブックの新しいグラフが作成されました。
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-bar-chart.png" alt-text="脅威インテリジェンスのインポート パス":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-bar-chart.png" alt-text="横棒グラフ":::
 
 ブックには、Azure Sentinel のあらゆる側面に関する分析情報を提供する、強力な対話型ダッシュボードが用意されています。 ブックでは多くのことができますが、提供されるテンプレートを最適な出発点として、使い慣れてきたらテンプレートをカスタマイズしたり、さまざまなデータ ソースを組み合わせた新しいダッシュボードを作成したりできます。これにより、独自の方法でデータを視覚化できるようになります。 Azure Sentinel ブックは Azure Monitor ブックに基づいているため、広範なドキュメントが既にあり、さらに多くのテンプレートを利用できます。 [Azure Monitor ブックを使用した対話型レポートの作成](../azure-monitor/platform/workbooks-overview.md)の方法に関するこの記事から読み始めることをお勧めします。 
 

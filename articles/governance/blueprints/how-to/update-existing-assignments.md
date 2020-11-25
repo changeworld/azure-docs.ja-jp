@@ -4,11 +4,11 @@ description: Azure Blueprints でポータルから既存のブループリン�
 ms.date: 08/27/2020
 ms.topic: how-to
 ms.openlocfilehash: ddaac8110885d817bc96745965c1af7e522b1919
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651371"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007190"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>既存のブループリントの割り当てを更新する方法
 
@@ -16,7 +16,7 @@ ms.locfileid: "89651371"
 
 - [リソース ロック](../concepts/resource-locking.md)を追加または削除する
 - [動的パラメーター](../concepts/parameters.md#dynamic-parameters)の値を変更する
-- 割り当てを、ブループリントの新しい**発行済み**バージョンにアップグレードする
+- 割り当てを、ブループリントの新しい **発行済み** バージョンにアップグレードする
 
 ## <a name="updating-assignments"></a>割り当ての更新
 
@@ -28,15 +28,15 @@ ms.locfileid: "89651371"
 
    :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="[割り当ての更新] ボタンが強調表示された [ブループリント割り当て] ページのスクリーンショット。" border="false":::
 
-1. 元の割り当てからすべての値が事前入力された状態で、 **[ブループリントの割り当て]** ページが読み込まれます。 **ブループリント定義のバージョン**、**ロック割り当て**状態、およびブループリント定義に存在する任意の動的パラメーターを変更できます。 変更が完了したら、 **[割り当て]** を選択します。
+1. 元の割り当てからすべての値が事前入力された状態で、 **[ブループリントの割り当て]** ページが読み込まれます。 **ブループリント定義のバージョン**、**ロック割り当て** 状態、およびブループリント定義に存在する任意の動的パラメーターを変更できます。 変更が完了したら、 **[割り当て]** を選択します。
 
-1. 更新された割り当ての詳細ページで、新しいステータスを確認します。 この例では、割り当てに**ロック**を追加しました。
+1. 更新された割り当ての詳細ページで、新しいステータスを確認します。 この例では、割り当てに **ロック** を追加しました。
 
-   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="[割り当ての更新] ボタンが強調表示された [ブループリント割り当て] ページのスクリーンショット。" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="変更されたロック モードを示した、更新されたブループリントの割り当てのスクリーンショット。" border="false":::
 
-1. ドロップダウン リストを使用して、他の**割り当て操作**に関する詳細を確認します。 選択した割り当て操作によって、**マネージド リソース**のテーブルが更新されます。
+1. ドロップダウン リストを使用して、他の **割り当て操作** に関する詳細を確認します。 選択した割り当て操作によって、**マネージド リソース** のテーブルが更新されます。
 
-   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="[割り当ての更新] ボタンが強調表示された [ブループリント割り当て] ページのスクリーンショット。" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="割り当て操作とその状態を示した、更新されたブループリントの割り当てのスクリーンショット。" border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>割り当ての更新の規則
 

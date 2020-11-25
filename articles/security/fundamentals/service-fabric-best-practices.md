@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 93b25e65914ce603b4a969eda7fd7c048704e466
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: a7396c9a29c7d9f69dbe6a9cc5cd085c72ebafde
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410013"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700948"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric セキュリティに関するベスト プラクティス
 Azure では、アプリケーションをすばやく簡単に、高いコスト効率でデプロイできます。 運用環境にクラウド アプリケーションをデプロイする前に、アプリケーションに実装するクラスターのセキュリティ確保に関して推奨される重要なベスト プラクティスを確認しましょう。
@@ -60,7 +60,7 @@ Azure Service Fabric のセキュリティに関して推奨されるベスト �
 -   ノード間のセキュリティ: このシナリオでは、クラスター内の VM とコンピューターの間の通信をセキュリティで保護します。 この形式のセキュリティを使用した場合、クラスターへの参加が承認されているコンピューターのみが、クラスター内のアプリケーションとサービスをホストできます。
 このシナリオでは、Azure で実行するクラスターまたは Windows で実行するスタンドアロン クラスターで、[証明書セキュリティ](../../service-fabric/service-fabric-windows-cluster-x509-security.md)と [Windows セキュリティ](../../service-fabric/service-fabric-windows-cluster-windows-security.md) (Windows Server マシンの場合) のいずれかを使用できます。
 -   クライアントとノードの間のセキュリティ: このシナリオでは、Service Fabric クライアントとクラスター内の個々のノードとの間の通信をセキュリティで保護します。
--   ロールベースのアクセス制御 (RBAC): このシナリオでは、クラスターにアクセスする管理者ロールとユーザー クライアント ロールのそれぞれに別個の ID (証明書、Azure AD など) を使用します。 ロールの ID は、クラスターの作成時に指定します。
+-   Service Fabric のロールベースのアクセス制御 (Service Fabric RBAC):このシナリオでは、クラスターにアクセスする管理者ロールとユーザー クライアント ロールのそれぞれに別個の ID (証明書、Azure AD など) を使用します。 ロールの ID は、クラスターの作成時に指定します。
 
 >[!NOTE]
 >**Azure クラスターのセキュリティに関する推奨事項:** ノード間のセキュリティの場合には、クライアントと証明書の認証に Azure AD セキュリティを使用してください。
@@ -83,7 +83,7 @@ Azure Resource Manager テンプレートを使用する:
 ## <a name="use-x509-certificates"></a>X.509 証明書を使用する
 クラスターは必ず、X.509 証明書または Windows セキュリティを使ってセキュリティを確保する必要があります。 セキュリティを構成できるのはクラスターの作成時に限られます。 クラスターの作成後にセキュリティをオンにすることはできません。
 
-[クラスター証明書](../../service-fabric/service-fabric-windows-cluster-x509-security.md)を指定するには、 **ClusterCredentialType** プロパティの値を X509 に設定します。 外部接続用にサーバー証明書を指定する場合は、 **ServerCredentialType** プロパティを X509 に設定します。
+[クラスター証明書](../../service-fabric/service-fabric-windows-cluster-x509-security.md)を指定するには、**ClusterCredentialType** プロパティの値を X509 に設定します。 外部接続用にサーバー証明書を指定する場合は、**ServerCredentialType** プロパティを X509 に設定します。
 
 さらに、以下のプラクティスに従う必要があります:
 -   運用クラスターの証明書は、正しく構成された Windows Server 証明書サービスを使って作成する。 このほか、承認された証明機関 (CA) から証明書を取得してもかまいません。
@@ -99,7 +99,7 @@ Service Fabric では、アプリケーションが使用するリソースに�
 
 -   Active Directory ドメインのグループまたはユーザーを使用する: サービスの実行には、Active Directory のユーザー アカウントまたはグループ アカウントの資格情報を使用します。 Azure Active Directory ではなく、ドメイン内のオンプレミスの Active Directory を使用してください。 ドメインにあって既にアクセス許可が付与されている他のリソースにアクセスする場合には、ドメイン ユーザーまたはドメイン グループを使用します。 たとえば、ファイル共有などのリソースです。
 
--   HTTP エンドポイントと HTTPS エンドポイントにセキュリティ アクセス ポリシーを割り当てる: サービス マニフェストで HTTP を使用するエンドポイント リソースを宣言するときは、 **SecurityAccessPolicy** プロパティを指定してサービスに **RunAs** ポリシーを適用します。 HTTP エンドポイントに割り当てられているポートが、サービスを実行する RunAs ユーザー アカウントに対するアクセス制御の正確な一覧になります。 ポリシーが設定されていないと、http.sys がサービスにアクセスできず、クライアントからの呼び出しに失敗します。
+-   HTTP エンドポイントと HTTPS エンドポイントにセキュリティ アクセス ポリシーを割り当てる: サービス マニフェストで HTTP を使用するエンドポイント リソースを宣言するときは、**SecurityAccessPolicy** プロパティを指定してサービスに **RunAs** ポリシーを適用します。 HTTP エンドポイントに割り当てられているポートが、サービスを実行する RunAs ユーザー アカウントに対するアクセス制御の正確な一覧になります。 ポリシーが設定されていないと、http.sys がサービスにアクセスできず、クライアントからの呼び出しに失敗します。
 
 Service Fabric クラスターでセキュリティ ポリシーを使用する方法の詳細については、「[アプリケーションのセキュリティ ポリシーの構成](../../service-fabric/service-fabric-application-runas-security.md)」を参照してください。
 
@@ -172,7 +172,7 @@ Service Fabric では認証と暗号化に証明書を使用し、クラスタ�
 クラスターを表すアプリケーションを作成したら、Service Fabric によってサポートされるロール (読み取り専用と管理者) にユーザーを割り当てます。ロールの割り当てには、Azure Portal を使用します。
 
 >[!NOTE]
-> Service Fabric でのロールの使用に関する詳細については、「[ロール ベースのアクセス制御 (Service Fabric クライアント用)](../../service-fabric/service-fabric-cluster-security-roles.md)」を参照してください。
+> Service Fabric でのロールの使用に関する詳細については、「[Service Fabric ロール ベースのアクセス制御 (Service Fabric クライアント用)](../../service-fabric/service-fabric-cluster-security-roles.md)」を参照してください。
 
 Azure Service Fabric では、[Service Fabric クラスター](../../service-fabric/service-fabric-cluster-creation-via-arm.md)に接続されるクライアントのために、管理者用とユーザー用の 2 種類のアクセス制御がサポートされています。 クラスターの管理者はアクセス制御を使用して、さまざまなグループのユーザーに対して特定のクラスター操作へのアクセスを制限することができます。 このため、アクセス制御を使えばクラスターのセキュリティを高めることができます。
 

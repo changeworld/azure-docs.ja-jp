@@ -4,11 +4,11 @@ description: Azure Container Instances のコンテナーによる CPU やメモ
 ms.topic: article
 ms.date: 04/24/2019
 ms.openlocfilehash: b10c370b599233d00b2b4a65268f6c61a11cbd5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526699"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007258"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Azure Container Instances のコンテナー リソースを監視する
 
@@ -27,7 +27,7 @@ ms.locfileid: "90526699"
 
 Azure Monitor では、次の [Azure Container Instances 用のメトリック][supported-metrics]が提供されます。 これらのメトリックは、コンテナー グループと個々のコンテナーで使用できます。 既定では、メトリックは平均値として集計されます。
 
-* **[CPU 使用率]** - **ミリコア**単位です。 1 ミリコアは CPU コアの 1/1,000 なので、500 ミリコアは 0.5 CPU コアの使用率を表します。
+* **[CPU 使用率]** - **ミリコア** 単位です。 1 ミリコアは CPU コアの 1/1,000 なので、500 ミリコアは 0.5 CPU コアの使用率を表します。
 
 * **[メモリ使用量]** - バイト単位です。
 
@@ -78,7 +78,7 @@ Timestamp            Name       Average
 2019-04-23 23:10:00  CPU Usage  0.5
 ```
 
-コマンド内の `--metric` パラメーターの値を変更して、他の[サポートされているメトリック][supported-metrics]を取得します。 たとえば、次のコマンドを使用して、**メモリ**使用量のメトリックを取得します。 
+コマンド内の `--metric` パラメーターの値を変更して、他の[サポートされているメトリック][supported-metrics]を取得します。 たとえば、次のコマンドを使用して、**メモリ** 使用量のメトリックを取得します。 
 
 ```azurecli
 az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --output table

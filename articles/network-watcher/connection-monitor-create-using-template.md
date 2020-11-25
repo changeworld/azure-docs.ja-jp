@@ -1,7 +1,7 @@
 ---
-title: 接続モニター プレビューを作成する - ARMClient
+title: 接続モニターを作成する - ARMClient
 titleSuffix: Azure Network Watcher
-description: ARMClient を使用して接続モニター (プレビュー) を作成する方法について説明します。
+description: ARMClient を使用して接続モニターを作成する方法について説明します。
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 5a351e550cac9edcc8ce1c54fbe5c57d012ee607
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 929a2feeb53e8903d675644dcb72b422eceb2858
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447465"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699102"
 ---
-# <a name="create-a-connection-monitor-preview-using-the-armclient"></a>ARMClient を使用して接続モニター (プレビュー) を作成する
+# <a name="create-a-connection-monitor-using-the-armclient"></a>ARMClient を使用して接続モニターを作成する
 
-ARMClient を使用して接続モニター (プレビュー) を作成し、リソース間の通信を監視する方法について説明します。 これにより、ハイブリッド デプロイおよび Azure クラウド デプロイがサポートされます。
+ARMClient を使用して接続モニターを作成し、リソース間の通信を監視する方法について説明します。 これにより、ハイブリッド デプロイおよび Azure クラウド デプロイがサポートされます。
 
 ## <a name="before-you-begin"></a>開始する前に 
 
-接続モニター (プレビュー) で作成する接続モニターでは、オンプレミスのコンピューターと Azure VM の両方をソースとして追加できます。 これらの接続モニターでは、エンドポイントへの接続も監視できます。 エンドポイントは、Azure または他の任意の URL や IP 上のどこにあってもかまいません。
+接続モニター (プレビュー) で作成できる接続モニターでは、オンプレミスのマシンと Azure VM の両方をソースとして追加できます。 これらの接続モニターでは、エンドポイントへの接続も監視できます。 エンドポイントは、Azure または他の任意の URL や IP 上のどこにあってもかまいません。
 
-接続モニター (プレビュー) には、次のエンティティが含まれています。
+接続モニターには、次のエンティティが含まれています。
 
 * **接続モニター リソース** – リージョン固有の Azure リソース。 以下のすべてのエンティティが、接続モニター リソースのプロパティです。
 * **エンドポイント** –接続チェックに含まれるソースまたはターゲット。 エンドポイントの例としては、Azure VM、オンプレミスのエージェント、URL、IP などがあります。
@@ -377,12 +377,12 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
     * testFrequencySec - 指定したプロトコルとポートでソースがターゲットに ping を実行する頻度を指定します。 30 秒、1 分、5 分、15 分、30 分のいずれかを選択できます。 ソースでは、選択した値に基づいて、ターゲットへの接続がテストされます。 たとえば、30 秒を選択すると、ソースにより、少なくとも 30 秒に 1 回、ターゲットへの接続が確認されます。
     * protocol - TCP、ICMP、HTTP、または HTTPS を選択できます。 プロトコルによっては、いくつかのプロトコル固有の構成を行うことができます。
     
-        * preferHTTPS - 使用されるポートが 80 でも 443 でもないとき、HTTP 経由で HTTPS を使用するかどうかを指定します
+        * preferHTTPS - 使用されているポートが 80 と 443 のどちらでもない場合に、HTTP よりも HTTPS を優先して使用するかどうかを指定します
         * port - 任意の宛先ポートを指定します。
         * disableTraceRoute - これは、プロトコルが TCP または ICMP であるテスト構成に適用されます。 これによって、ソースでのトポロジとホップバイホップ RTT の検出が停止します。
         * method - これは、プロトコルが HTTP であるテスト構成に適用されます。 HTTP 要求メソッド (GET または POST) を選択します
         * path - URL に追加するパス パラメーターを指定します
-        * validStatusCodes - 該当するステータス コードを選択します。 応答コードがこの一覧と一致しない場合は、診断メッセージが表示されます
+        * validStatusCodes - 該当する状態コードを選択します。 応答コードがこの一覧と一致しない場合は、診断メッセージが表示されます
         * requestHeaders - 宛先に渡されるカスタム要求ヘッダー文字列を指定します
         
     * successThreshold - 以下のネットワーク パラメーターにしきい値を設定できます。

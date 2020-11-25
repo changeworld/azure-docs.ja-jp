@@ -11,11 +11,11 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: b7faec5023abe37802d8b08980f216934d70a6ac
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784356"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005549"
 ---
 # <a name="create-a-storage-account"></a>ストレージ アカウントを作成する
 
@@ -143,7 +143,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 > [!IMPORTANT]
 > [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) を使用する予定がある場合は、このパラメーターの一覧に `-EnableHierarchicalNamespace $True` を含めてください。
 
-別のレプリケーション オプションで汎用 v2 ストレージ アカウントを作成するには、 **SkuName** パラメーターを次の表の目的の値で置き換えます。
+別のレプリケーション オプションで汎用 v2 ストレージ アカウントを作成するには、**SkuName** パラメーターを次の表の目的の値で置き換えます。
 
 |レプリケーション オプション  |SkuName パラメーター  |
 |---------|---------|
@@ -186,7 +186,7 @@ az storage account create \
 > [!IMPORTANT]
 > [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) を使用する予定がある場合は、このパラメーターの一覧に `--enable-hierarchical-namespace true` を含めてください。
 
-別のレプリケーション オプションで汎用 v2 ストレージ アカウントを作成するには、 **sku** パラメーターを次の表の目的の値で置き換えます。
+別のレプリケーション オプションで汎用 v2 ストレージ アカウントを作成するには、**sku** パラメーターを次の表の目的の値で置き換えます。
 
 |レプリケーション オプション  |sku パラメーター  |
 |---------|---------|

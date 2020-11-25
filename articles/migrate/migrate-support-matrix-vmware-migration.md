@@ -4,11 +4,11 @@ description: Azure Migrate での VMware VM 移行のサポートについて説
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: 7a7713021683c394e609a302a1aa6fcb282484e5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544207"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008295"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 移行のサポートマトリックス
 
@@ -19,8 +19,8 @@ ms.locfileid: "92544207"
 
 VMware VM は、次のいくつかの方法で移行できます。
 
-- **エージェントレスの移行を使用する** :VM に何もインストールする必要なく VM を移行します。 エージェントレスで移行するには、[Azure Migrate アプライアンス](migrate-appliance.md)をデプロイします。
-- **エージェントベースの移行を使用する** :レプリケーションのために VM 上にエージェントをインストールします。 エージェントベースで移行するには、[レプリケーション アプライアンス](migrate-replication-appliance.md)をデプロイします。
+- **エージェントレスの移行を使用する**:VM に何もインストールする必要なく VM を移行します。 エージェントレスで移行するには、[Azure Migrate アプライアンス](migrate-appliance.md)をデプロイします。
+- **エージェントベースの移行を使用する**:レプリケーションのために VM 上にエージェントをインストールします。 エージェントベースで移行するには、[レプリケーション アプライアンス](migrate-replication-appliance.md)をデプロイします。
 
 [この記事](server-migrate-overview.md)を参照し、あなたが使用したい方法の詳細を確認してください。
 
@@ -41,7 +41,7 @@ VMware VM は、次のいくつかの方法で移行できます。
 --- | ---
 **VMware vCenter サーバー** | バージョン 5.5、6.0、6.5、6.7、7.0。
 **VMware vSphere ESXI ホスト** | バージョン 5.5、6.0、6.5、6.7、7.0。
-**vCenter Server のアクセス許可** | エージェントレスの移行では、[Migrate Appliance](migrate-appliance.md) を使用します。 アプライアンスには、vCenter Server で次のアクセス許可が必要です。<br/><br/> - **Datastore.Browse** :VM のログ ファイルの閲覧を許可して、スナップショットの作成と削除のトラブルシューティングを行います。<br/><br/> - **Datastore.FileManagement** :データストア ブラウザーでの読み取り、書き込み、削除、名前変更の各操作を許可して、スナップショットの作成と削除のトラブルシューティングを行います。<br/><br/> - **VirtualMachine.Config.ChangeTracking** :VM ディスクに対する変更のトラッキングの有効化/無効化を許可し、スナップショット間における変更済みのデータ ブロックをプルします。<br/><br/> - **VirtualMachine.Config.DiskLease** :VM のディスクのリース操作を許可し、VMware vSphere Virtual Disk Development Kit (VDDK) を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.DiskAccess** : (特に vSphere 6.0 以降) VDDK を使用したディスクのランダム読み取りアクセス用に VM 上のディスクを開くことを許可します。<br/><br/> - **VirtualMachine.Provisioning.DiskRandomRead** :VM 上のディスクを開くことを許可し、VDDK を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.DiskRandomAccess** : VM 上のディスクを開くことを許可し、VDDK を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.GetVmFiles** :VM に関連付けられたファイルの読み取り操作を許可し、エラーが発生した場合にログをダウンロードして、トラブルシューティングを行います。<br/><br/> - **VirtualMachine.State.\* *_:レプリケーション用に VM スナップショットの作成と管理を許可します。<br/><br/> - _* VirtualMachine.Interact.PowerOff** :Azure への移行中に VM の電源をオフにすることを許可します。
+**vCenter Server のアクセス許可** | エージェントレスの移行では、[Migrate Appliance](migrate-appliance.md) を使用します。 アプライアンスには、vCenter Server で次のアクセス許可が必要です。<br/><br/> - **Datastore.Browse**:VM のログ ファイルの閲覧を許可して、スナップショットの作成と削除のトラブルシューティングを行います。<br/><br/> - **Datastore.FileManagement**:データストア ブラウザーでの読み取り、書き込み、削除、名前変更の各操作を許可して、スナップショットの作成と削除のトラブルシューティングを行います。<br/><br/> - **VirtualMachine.Config.ChangeTracking**:VM ディスクに対する変更のトラッキングの有効化/無効化を許可し、スナップショット間における変更済みのデータ ブロックをプルします。<br/><br/> - **VirtualMachine.Config.DiskLease**:VM のディスクのリース操作を許可し、VMware vSphere Virtual Disk Development Kit (VDDK) を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.DiskAccess**: (特に vSphere 6.0 以降) VDDK を使用したディスクのランダム読み取りアクセス用に VM 上のディスクを開くことを許可します。<br/><br/> - **VirtualMachine.Provisioning.DiskRandomRead**:VM 上のディスクを開くことを許可し、VDDK を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.DiskRandomAccess**: VM 上のディスクを開くことを許可し、VDDK を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.GetVmFiles**:VM に関連付けられたファイルの読み取り操作を許可し、エラーが発生した場合にログをダウンロードして、トラブルシューティングを行います。<br/><br/> - **VirtualMachine.State.\* *_:レプリケーション用に VM スナップショットの作成と管理を許可します。<br/><br/> - _* VirtualMachine.Interact.PowerOff**:Azure への移行中に VM の電源をオフにすることを許可します。
 
 
 

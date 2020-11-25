@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 10/01/2020
+ms.date: 11/16/2020
 ms.author: alkohli
-ms.openlocfilehash: b193247fee843796da0cb2fcfc1a874b1a1b72fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00ba711661d69bbaf53ff51fb2cb833d9b1c1ae2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91660923"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660425"
 ---
 # <a name="azure-data-box-limits"></a>Azure Data Box の制限
 
@@ -28,7 +28,7 @@ Microsoft Azure Data Box をデプロイおよび運用する際には、以下�
 - Data Box には、インポートとエクスポートの両方で、最大で 5 億個のファイルを格納できます。
 - Data Box は、クラウドで最大 512 個のコンテナーまたは共有をサポートしています。 ユーザー共有内の最上位レベルのディレクトリは、クラウド内のコンテナーまたは Azure ファイル共有になります。 
 - Data Box の使用容量は、ReFS のメタデータによりスペースが消費されるため、80 TB 以下になる場合があります。
-- Data Box では、NFS 共有上で最大 5 つのクライアント接続が同時にサポートされます。 
+- Data Box では、NFS 共有上で最大 10 のクライアント接続が同時にサポートされます。
 
 ## <a name="azure-storage-limits"></a>Azure Storage の制限
 

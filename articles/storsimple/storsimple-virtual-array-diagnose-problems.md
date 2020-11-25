@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 6cb78a7042ca3acbb27f510207783b97f733cfb0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249537"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005845"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して、StorSimple Virtual Array のトラブルシューティングを行います
 ## <a name="overview"></a>概要
 
-StorSimple デバイス マネージャー サービスの概要ブレードには、**問題の診断と解決**の設定が表示され、仮想アレイで発生する可能性がある一般的な問題と、その解決方法が強調表示されています。 このチュートリアルでは、StorSimple デバイス マネージャー サービスに用意されているセルフ サービスのトラブルシューティング機能を紹介します。
+StorSimple デバイス マネージャー サービスの概要ブレードには、**問題の診断と解決** の設定が表示され、仮想アレイで発生する可能性がある一般的な問題と、その解決方法が強調表示されています。 このチュートリアルでは、StorSimple デバイス マネージャー サービスに用意されているセルフ サービスのトラブルシューティング機能を紹介します。
 
 ![問題の診断と解決](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-main.png)
 
@@ -36,7 +36,7 @@ StorSimple デバイス マネージャー サービスの概要ブレードで�
 
 1. StorSimple デバイス マネージャー サービスの概要ブレードの左ウィンドウで **[診断の問題と解決]** 設定をクリックし、一般的な問題の一覧を表示します。
 
-2. 発生している問題の症状を**展開**し、問題のトラブルシューティングに役立つ**推奨される手順**を確認します。 必要に応じて、詳細なドキュメントのリンクを確認することもできます。
+2. 発生している問題の症状を **展開** し、問題のトラブルシューティングに役立つ **推奨される手順** を確認します。 必要に応じて、詳細なドキュメントのリンクを確認することもできます。
    
     ![問題のトラブルシューティング](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-offline.png)
 
