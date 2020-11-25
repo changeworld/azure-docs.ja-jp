@@ -16,11 +16,11 @@ ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
 ms.openlocfilehash: 67b635f09cb9407279e89b5f7b8526dab3c08946
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87068526"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017612"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Azure VM の TCP/IP パフォーマンス チューニング
 
@@ -147,7 +147,7 @@ Azure の場合、TCP MSS クランプを 1,350 バイトに設定し、トン�
 
 #### <a name="latency-and-round-trip-time-effects-on-tcp"></a>TCP に対する待ち時間とラウンドトリップ時間の影響
 
-ラウンド トリップ時間は、TCP の最大スループットに直接影響します。 TCP プロトコルでは、*ウィンドウ サイズ*は、送信者が受信者から受信確認を受信する前に TCP 接続経由で送信できるトラフィックの最大量です。 TCP MSS が 1,460 に設定され、TCP ウィンドウ サイズが 65,535 に設定されている場合、送信者は受信者から受信確認を受信する前に 45 パケットを送信できます。 送信者が受信確認を取得しない場合は、データは再送信されます。 数式は次のとおりです。
+ラウンド トリップ時間は、TCP の最大スループットに直接影響します。 TCP プロトコルでは、*ウィンドウ サイズ* は、送信者が受信者から受信確認を受信する前に TCP 接続経由で送信できるトラフィックの最大量です。 TCP MSS が 1,460 に設定され、TCP ウィンドウ サイズが 65,535 に設定されている場合、送信者は受信者から受信確認を受信する前に 45 パケットを送信できます。 送信者が受信確認を取得しない場合は、データは再送信されます。 数式は次のとおりです。
 
 `TCP window size / TCP MSS = packets sent`
 
@@ -287,7 +287,7 @@ Azure の VM には多様なサイズと種類があり、パフォーマンス�
 
 Azure 仮想マシンには常に少なくとも 1 つのネットワーク インターフェイスが接続されている必要があります。 複数を接続することができます。 仮想マシンに割り当てられる帯域幅は、マシンに接続されているすべてのネットワーク インターフェイス全体の送信トラフィックの合計です。 つまり、帯域幅は仮想マシンごとに割り当てられており、マシンに接続されているネットワーク インターフェイスの数は関係ありません。
 
-VM の各サイズでサポートされる予想される送信スループットとサポートされるネットワーク インターフェイスの数については、「[Azure での Windows の VM サイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)」で詳しく説明しています。 最大スループットを表示するには、**汎用**などの種類を選択し、表示されたページにサイズ シリーズに関するセクション (たとえば、「Dv2-series」) を見つけます。 各シリーズに、"最大 NIC 数/想定ネットワーク帯域幅 (Mbps)" というタイトルの最終列でネットワーク仕様を提供する表があります。
+VM の各サイズでサポートされる予想される送信スループットとサポートされるネットワーク インターフェイスの数については、「[Azure での Windows の VM サイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)」で詳しく説明しています。 最大スループットを表示するには、**汎用** などの種類を選択し、表示されたページにサイズ シリーズに関するセクション (たとえば、「Dv2-series」) を見つけます。 各シリーズに、"最大 NIC 数/想定ネットワーク帯域幅 (Mbps)" というタイトルの最終列でネットワーク仕様を提供する表があります。
 
 このスループット制限が仮想マシンに適用されます。 スループットは、次の要因の影響を受けません。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 9210c54305427c82d5666d68573fd3af41e8cef7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e77b58f7741af42f00b2a1831157405b12fa24ff
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972189"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017408"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>暗号化スコープの作成と管理 (プレビュー)
 
@@ -179,7 +179,7 @@ az storage account encryption-scope create \
 
 Azure portal でストレージ アカウントの暗号化スコープを表示するには、ストレージ アカウントの **[Encryption Scopes]\(暗号化スコープ\)** 設定に移動します。 このウィンドウでは、暗号化スコープを有効または無効にしたり、暗号化スコープのキーを変更したりできます。
 
-:::image type="content" source="media/encryption-scope-manage/list-encryption-scopes-portal.png" alt-text="Azure portal で暗号化スコープを作成する方法を示すスクリーンショット":::
+:::image type="content" source="media/encryption-scope-manage/list-encryption-scopes-portal.png" alt-text="Azure portal の暗号化スコープの一覧を示すスクリーンショット":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -223,7 +223,7 @@ Azure portal で既定の暗号化スコープを持つコンテナーを作成�
 1. **[Encryption Scopes]\(暗号化スコープ\)** ドロップダウンで、コンテナーの既定の暗号化スコープを選択します。
 1. コンテナー内のすべての BLOB で既定の暗号化スコープを使用することを要求するには、 **[Use this encryption scope for all blobs in the container]\(コンテナー内のすべての BLOB に対してこの暗号化スコープを使用する\)** チェックボックスをオンにします。 このチェックボックスをオンにした場合、コンテナー内の個々の BLOB によって既定の暗号化スコープが上書きされることはありません。
 
-    :::image type="content" source="media/encryption-scope-manage/create-container-default-encryption-scope.png" alt-text="Azure portal で暗号化スコープを作成する方法を示すスクリーンショット":::
+    :::image type="content" source="media/encryption-scope-manage/create-container-default-encryption-scope.png" alt-text="既定の暗号化スコープが表示されているコンテナーを示すスクリーンショット":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -247,7 +247,7 @@ New-AzRmStorageContainer -ResourceGroupName $rgName `
 
 Azure CLI で既定の暗号化スコープを持つコンテナーを作成するには、[az storage container create](/cli/azure/storage/container#az-storage-container-create) コマンドを呼び出して、`--default-encryption-scope` パラメーターのスコープを指定します。 コンテナー内のすべての BLOB でコンテナーの既定のスコープが使用されるように強制するには、`--prevent-encryption-scope-override` パラメーターを `true` に設定します。
 
-次の例では、Azure AD アカウントを使用して、コンテナーの作成操作を承認します。 アカウント アクセス キーを使用することもできます。 詳細については、「[Azure CLI を使用して BLOB またはキュー データへのアクセスを承認する](../common/authorize-data-operations-cli.md)」を参照してください。
+次の例では、Azure AD アカウントを使用して、コンテナーの作成操作を承認します。 アカウント アクセス キーを使用することもできます。 詳細については、「[Azure CLI を使用して BLOB またはキュー データへのアクセスを承認する](./authorize-data-operations-cli.md)」を参照してください。
 
 ```azurecli-interactive
 az storage container create \
@@ -277,7 +277,7 @@ Azure portal を使用して暗号化スコープが指定された BLOB をア�
 1. **[Encryption Scopes]\(暗号化スコープ\)** ドロップダウン セクションを見つけます。 既定では、コンテナーの既定の暗号化スコープで BLOB が作成されます (指定されている場合)。 BLOB でデフォルトの暗号化スコープを使用するようにコンテナーで要求されている場合、このセクションは無効になります。
 1. アップロードする BLOB に別のスコープを指定するには、 **[既存のスコープを選択する]** を選択し、ドロップダウンから目的のスコープを選択します。
 
-    :::image type="content" source="media/encryption-scope-manage/upload-blob-encryption-scope.png" alt-text="Azure portal で暗号化スコープを作成する方法を示すスクリーンショット":::
+    :::image type="content" source="media/encryption-scope-manage/upload-blob-encryption-scope.png" alt-text="暗号化スコープを持つ BLOB をアップロードする方法を示すスクリーンショット":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

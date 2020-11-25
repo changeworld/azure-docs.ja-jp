@@ -4,25 +4,25 @@ description: Recovery Services コンテナーの概要です。
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.openlocfilehash: ab6b27bdc7ac9b01385ed43830d0af5900210d43
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093669"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017323"
 ---
 # <a name="recovery-services-vaults-overview"></a>Recovery Services コンテナーの概要
 
 この記事では、Recovery Services コンテナーの機能について説明します。 Recovery Services コンテナーは、データを格納する Azure のストレージ エンティティです。 データは通常、データのコピーであるか、仮想マシン (VM)、ワークロード、サーバー、ワークステーションのいずれかの構成情報です。 Recovery Services コンテナーを使用すると、IaaS VM (Linux または Windows) や Azure SQL データベースなどのさまざまな Azure サービスのバックアップ データを保持できます。 Recovery Services コンテナーは、System Center DPM、Windows Server、Azure Backup Server などをサポートします。 Recovery Services コンテナーでは、管理オーバーヘッドを最小限に抑えながら、バックアップ データを簡単に整理できます。 Recovery Services コンテナーは、Azure の Azure Resource Manager モデルに基づいていて、以下のような機能を提供します。
 
-- **強化されたバックアップ データの保護機能** :Recovery Services コンテナーの場合、Azure Backup によってクラウド バックアップを保護するセキュリティ機能が提供されます。 このセキュリティ機能により、バックアップをセキュリティで保護することができ、運用サーバーとバックアップ サーバーが侵害された場合でもデータを安全に回復できます。 [詳細情報](backup-azure-security-feature.md)
+- **強化されたバックアップ データの保護機能**:Recovery Services コンテナーの場合、Azure Backup によってクラウド バックアップを保護するセキュリティ機能が提供されます。 このセキュリティ機能により、バックアップをセキュリティで保護することができ、運用サーバーとバックアップ サーバーが侵害された場合でもデータを安全に回復できます。 [詳細情報](backup-azure-security-feature.md)
 
-- **ハイブリッド IT 環境の一元監視** :Recovery Services コンテナーの場合、 [Azure IaaS VM](backup-azure-manage-vms.md) だけでなく、 [オンプレミス資産](backup-azure-manage-windows-server.md#manage-backup-items)も中央ポータルで監視することができます。 [詳細情報](backup-azure-monitoring-built-in-monitor.md)
+- **ハイブリッド IT 環境の一元監視**:Recovery Services コンテナーの場合、[Azure IaaS VM](backup-azure-manage-vms.md) だけでなく、[オンプレミス資産](backup-azure-manage-windows-server.md#manage-backup-items)も中央ポータルで監視することができます。 [詳細情報](backup-azure-monitoring-built-in-monitor.md)
 
 - **Azure ロールベースのアクセス制御 (Azure RBAC)** : Azure RBAC を使用すると、Azure のアクセス制御を詳細に管理できます。 [Azure にはさまざまな組み込みのロールがあります](../role-based-access-control/built-in-roles.md)。また、Azure Backup には、[復旧ポイントを管理するための 3 つの組み込みのロールがあります](backup-rbac-rs-vault.md)。 Recovery Services コンテナーは、定義されたユーザー ロールのセットに対するバックアップと復元アクセスを制限する Azure RBAC と互換性があります。 [詳細情報](backup-rbac-rs-vault.md)
 
-- **論理的な削除** :論理的な削除を使用すると、悪意のあるアクターによってバックアップが削除 (またはバックアップ データが誤って削除) された場合でも、バックアップ データは追加で 14 日間保持されるので、データを失うことなくバックアップ項目を回復できます。 バックアップ データが "論理的な削除" 状態にあるこの追加の 14 日間のリテンション期間中は、お客様にコストは発生しません。 [詳細については、こちらを参照してください](backup-azure-security-feature-cloud.md)。
+- **論理的な削除**:論理的な削除を使用すると、悪意のあるアクターによってバックアップが削除 (またはバックアップ データが誤って削除) された場合でも、バックアップ データは追加で 14 日間保持されるので、データを失うことなくバックアップ項目を回復できます。 バックアップ データが "論理的な削除" 状態にあるこの追加の 14 日間のリテンション期間中は、お客様にコストは発生しません。 [詳細については、こちらを参照してください](backup-azure-security-feature-cloud.md)。
 
-- **リージョンをまたがる復元** :リージョンをまたがる復元 (CRR) を使用すると、Azure VM をセカンダリ リージョン (Azure のペアになっているリージョン) に復元できます。 プライマリ リージョンで障害が発生したと Azure で宣言された場合、当該環境のプライマリ リージョンにおける実際のダウンタイム障害を軽減するため、セカンダリ リージョンでレプリケートされたデータを、セカンダリ リージョンでの復元のために使用できます。 [詳細については、こちらを参照してください](backup-azure-arm-restore-vms.md#cross-region-restore)。
+- **リージョンをまたがる復元**:リージョンをまたがる復元 (CRR) を使用すると、Azure VM をセカンダリ リージョン (Azure のペアになっているリージョン) に復元できます。 プライマリ リージョンで障害が発生したと Azure で宣言された場合、当該環境のプライマリ リージョンにおける実際のダウンタイム障害を軽減するため、セカンダリ リージョンでレプリケートされたデータを、セカンダリ リージョンでの復元のために使用できます。 [詳細については、こちらを参照してください](backup-azure-arm-restore-vms.md#cross-region-restore)。
 
 ## <a name="storage-settings-in-the-recovery-services-vault"></a>Recovery Services コンテナーのストレージ設定
 

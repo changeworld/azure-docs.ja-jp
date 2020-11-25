@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 6ab4694159c6269f2f72d3d591147d43aef34a0a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961597"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017374"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>StorSimple デバイス マネージャー サービスを使用してバックアップ カタログを管理する
 ## <a name="overview"></a>概要
@@ -53,7 +53,7 @@ StorSimple デバイス マネージャー サービスの **[バックアップ
    
    1. 時間範囲を指定します。
    2. 適切なデバイスを選択します。
-   3. **バックアップ ポリシー**でフィルター処理して、相当するバックアップを表示します。
+   3. **バックアップ ポリシー** でフィルター処理して、相当するバックアップを表示します。
    3. [バックアップ ポリシー] ドロップダウン リストから **[すべて]** を選んで、選択したデバイスのすべてのバックアップを表示します。
    4. **[適用]** をクリックしてこのクエリを実行します。
       

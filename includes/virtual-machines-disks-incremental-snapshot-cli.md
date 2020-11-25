@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: cbd6f821326c86983ceb3ae5b90969e522c187fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bdeef537556db94338ed50fcfa6e9d88431f25a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82204437"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96016261"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -29,9 +29,9 @@ Windows では、次のコマンドを実行すると、最新版がインスト
 ```PowerShell
 Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
 ```
-Linux では、CLI のインストールは、オペレーティング システムのバージョンによって異なります。  Linux の特定のバージョンについては、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+Linux では、CLI のインストールは、オペレーティング システムのバージョンによって異なります。  Linux の特定のバージョンについては、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
-増分スナップショットを作成するには、[az snapshot create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) を使用し、`--incremental` パラメーターを指定します。
+増分スナップショットを作成するには、[az snapshot create](/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) を使用し、`--incremental` パラメーターを指定します。
 
 次の例では、増分スナップショットが作成され、`<yourDesiredSnapShotNameHere>`、`<yourResourceGroupNameHere>`、`<exampleDiskName>`、`<exampleLocation>` が独自の値に置換され、サンプルが実行されます。
 

@@ -5,11 +5,11 @@ ms.date: 09/05/2019
 ms.topic: how-to
 ms.reviewer: mmercuri
 ms.openlocfilehash: 898360d8e22803e17ff4da7d3b63f5595cad47ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254652"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015487"
 ---
 # <a name="get-information-about-your-azure-blockchain-workbench-database"></a>Azure Blockchain Workbench データベースに関する情報の取得
 
@@ -28,10 +28,10 @@ Azure Blockchain Workbench Preview データベースに関する情報の取得
 
 データベースに接続する手順は以下の通りです｡
 
-1. Azure Blockchain Workbench リソースの**所有者**アクセス許可を持つアカウントで Azure portal にサインインします。
+1. Azure Blockchain Workbench リソースの **所有者** アクセス許可を持つアカウントで Azure portal にサインインします。
 2. 左側のナビゲーション ペインで、 **[リソース グループ]** を選択します。
 3. Blockchain Workbench のデプロイにリソース グループの名前を選択します。
-4. **Type** を選択してリソース一覧を並べ替え､**SQL server** を選択します｡ 次図は並べ替えられた一覧の画面キャプチャで、"master" と、**Resource プレフィックス**が "lhgn" の 2 つのデータベースがあります。
+4. **Type** を選択してリソース一覧を並べ替え､**SQL server** を選択します｡ 次図は並べ替えられた一覧の画面キャプチャで、"master" と、**Resource プレフィックス** が "lhgn" の 2 つのデータベースがあります。
 
    ![Sorted Blockchain Workbench のリソース一覧](./media/getdb-details/sorted-workbench-resource-list.png)
 

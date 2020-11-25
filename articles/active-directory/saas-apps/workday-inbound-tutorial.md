@@ -11,11 +11,11 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.openlocfilehash: b8560c4890855683e6ebb1c05383db8aa89988c0
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359871"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017646"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -46,7 +46,7 @@ ms.locfileid: "94359871"
 
 * **2020 年 4 月 - 最新バージョンの Workday Web Services (WWS) API のサポート:** Workday は年に 2 回、3 月と 9 月に、ビジネス目標の達成と労働力需要の変化に追い付くために役立つ機能豊富なアップデートを提供します。 Workday が提供する新機能を活用していただくため、使用する WWS API バージョンを接続 URL で直接指定できるようになりました。 Workday API バージョンを指定する方法の詳細については、[Workday 接続の構成](#part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory)に関するセクションを参照してください。 
 
-* **2020 年 1 月 - AD accountExpires 属性を設定する機能:** 関数 [NumFromDate](../app-provisioning/functions-for-customizing-application-data.md#numfromdate) 使用して、 *EndContractDate* や *StatusTerminationDate* などの Workday の日付フィールドをマップできるようになりました。 
+* **2020 年 1 月 - AD accountExpires 属性を設定する機能:** 関数 [NumFromDate](../app-provisioning/functions-for-customizing-application-data.md#numfromdate) 使用して、*EndContractDate* や *StatusTerminationDate* などの Workday の日付フィールドをマップできるようになりました。 
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>このユーザー プロビジョニング ソリューションが最適な場合
 
@@ -111,7 +111,7 @@ Workday から Active Directory へのユーザー プロビジョニングを�
 
    >[!div class="mx-imgBorder"] 
    >![ユーザーの作成](./media/workday-inbound-tutorial/wd_isu_01.png "ユーザーの作成")
-2. 新しい統合システム ユーザーのユーザー名とパスワードを指定して、 **統合システム ユーザーの作成** を完了します。  
+2. 新しい統合システム ユーザーのユーザー名とパスワードを指定して、**統合システム ユーザーの作成** を完了します。  
   
    * このユーザーはプログラムを使用してログオンするため、 **[次回のサインイン時に新しいパスワードを要求する]** オプションはオフのままにしておきます。
    * **[セッション タイムアウト (分)]** は既定値の 0 のままにしておきます。これにより、ユーザーのセッションが有効期限前にタイムアウトするのを防ぎます。
@@ -141,7 +141,7 @@ Workday から Active Directory へのユーザー プロビジョニングを�
      > [!div class="mx-imgBorder"]
      >![CreateSecurity グループ](./media/workday-inbound-tutorial/wd_isu_04.png "CreateSecurity グループ")
 
-3. セキュリティ グループの作成が成功した後、セキュリティ グループにメンバーを割り当てることができるページが表示されます。 前の手順で作成した新しい統合システム ユーザーをこのセキュリティ グループに追加します。 " *制約付き* " セキュリティ グループを使用している場合は、適切な組織の範囲も選択する必要があります。
+3. セキュリティ グループの作成が成功した後、セキュリティ グループにメンバーを割り当てることができるページが表示されます。 前の手順で作成した新しい統合システム ユーザーをこのセキュリティ グループに追加します。 "*制約付き*" セキュリティ グループを使用している場合は、適切な組織の範囲も選択する必要があります。
 
    >[!div class="mx-imgBorder"]
    >![セキュリティ グループの編集](./media/workday-inbound-tutorial/wd_isu_05.png "[Edit Security Group (セキュリティ グループの編集)]")
@@ -152,7 +152,7 @@ Workday から Active Directory へのユーザー プロビジョニングを�
 
 **ドメイン セキュリティ ポリシーのアクセス許可を構成するには:**
 
-1. 検索ボックスに「 **Domain Security Configuration** 」と入力し、 **[Domain Security Configuration Report]\(ドメイン セキュリティ構成レポート)** リンクをクリックします。  
+1. 検索ボックスに「**Domain Security Configuration**」と入力し、 **[Domain Security Configuration Report]\(ドメイン セキュリティ構成レポート)** リンクをクリックします。  
    >[!div class="mx-imgBorder"]
    >![検索ボックスに "domain security configuration" (ドメイン セキュリティ構成) と表示され、結果に "Domain Security Configuration - Report" (ドメイン セキュリティ構成 - レポート) と表示されたスクリーンショット。](./media/workday-inbound-tutorial/wd_isu_06.png "ドメイン セキュリティ ポリシー")  
 2. **[Domain]\(ドメイン)** テキスト ボックスで以下のドメインを検索し、それらをフィルターに 1 つずつ追加します。  
@@ -177,11 +177,11 @@ Workday から Active Directory へのユーザー プロビジョニングを�
    >[!div class="mx-imgBorder"]
    >![ドメインのセキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_09.png "ドメイン セキュリティ ポリシー")  
 
-4. **[Edit Domain Security Policy Permissions]\(ドメイン セキュリティ ポリシー アクセス許可の編集)** ページで、 **[Integration Permissions]\(統合アクセス許可)** セクションまで下へスクロールします。 [+] 記号をクリックし、 **Get** と **Put** の統合アクセス許可を持つセキュリティ グループの一覧に統合システム グループを追加します。
+4. **[Edit Domain Security Policy Permissions]\(ドメイン セキュリティ ポリシー アクセス許可の編集)** ページで、 **[Integration Permissions]\(統合アクセス許可)** セクションまで下へスクロールします。 [+] 記号をクリックし、**Get** と **Put** の統合アクセス許可を持つセキュリティ グループの一覧に統合システム グループを追加します。
    >[!div class="mx-imgBorder"]
    >![[Integration Permissions]\(統合アクセス許可\) セクションが強調表示されていることを示すスクリーンショット。](./media/workday-inbound-tutorial/wd_isu_10.png "アクセス許可の編集")  
 
-5. [+] 記号をクリックし、 **Get** と **Put** の統合アクセス許可を持つセキュリティ グループの一覧に統合システム グループを追加します。
+5. [+] 記号をクリックし、**Get** と **Put** の統合アクセス許可を持つセキュリティ グループの一覧に統合システム グループを追加します。
 
    >[!div class="mx-imgBorder"]
    >![アクセス許可の編集](./media/workday-inbound-tutorial/wd_isu_11.png "アクセス許可の編集")  
@@ -207,7 +207,7 @@ Workday から Active Directory へのユーザー プロビジョニングを�
 
 **ビジネス プロセス セキュリティ ポリシーのアクセス許可を構成するには:**
 
-1. 検索ボックスに「 **Business Process Policy** 」と入力し、 **[Edit Business Process Security Policy]\(ビジネス プロセス セキュリティ ポリシーの編集)** タスクのリンクをクリックします。  
+1. 検索ボックスに「**Business Process Policy**」と入力し、 **[Edit Business Process Security Policy]\(ビジネス プロセス セキュリティ ポリシーの編集)** タスクのリンクをクリックします。  
 
    >[!div class="mx-imgBorder"]
    >![検索ボックスに "Business Process Policy" と表示され、[Edit Business Process Security Policy - Task]\(ビジネス プロセス セキュリティ ポリシーの編集 - タスク\) が選択されたスクリーンショット。](./media/workday-inbound-tutorial/wd_isu_12.png "ビジネス プロセスのセキュリティ ポリシー")  
@@ -251,7 +251,7 @@ Workday から Active Directory へのユーザー プロビジョニングを�
 ### <a name="permissions-required-to-configure-the-provisioning-agent-service"></a>プロビジョニング エージェント サービスを構成するために必要なアクセス許可
 次の手順を使用して、エージェント操作のプロビジョニングに使用できるサービス アカウントを設定します。 
 1.  AD ドメイン コントローラーで、 *[Active Directory ユーザーとコンピューター]* スナップインを開きます。 
-2.  新しいドメイン ユーザーを作成します (例: *provAgentAdmin* )  
+2.  新しいドメイン ユーザーを作成します (例: *provAgentAdmin*)  
 3.  OU またはドメイン名を右クリックし、 *[制御の委任]* を選択します。これにより、 *[オブジェクト制御の委任ウィザード]* が開きます。 
 
 > [!NOTE] 
@@ -382,7 +382,7 @@ Workday から Active Directory へのユーザー プロビジョニングを�
 
 1. 以下のように **[管理者の資格情報]** セクションを完了します。
 
-   * **Workday ユーザー名** – Workday 統合システム アカウントのユーザー名にテナント ドメイン名を追加して入力します。 このようになります。 **username\@tenant_name**
+   * **Workday ユーザー名** – Workday 統合システム アカウントのユーザー名にテナント ドメイン名を追加して入力します。 このようになります。**username\@tenant_name**
 
    * **Workday パスワード** - Workday 統合システム アカウントのパスワードを入力します
 
@@ -397,12 +397,12 @@ Workday から Active Directory へのユーザー プロビジョニングを�
       > [!NOTE]
      > URL にバージョン情報が指定されていない場合、アプリでは Workday Web Services (WWS) v21.1 が使用され、アプリに付属している既定の XPATH API 式の変更は必要ありません。 特定の WWS API バージョンを使用するには、URL の中にバージョン番号を指定します <br>
      > 例: `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v34.0` <br>
-     > <br> WWS API v30.0 以降を使用する場合は、プロビジョニング ジョブを有効にする前に、「 [構成の管理](#managing-your-configuration)」セクションおよび [Workday 属性のリファレンス](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)を参照して、 **[属性マッピング] -> [詳細オプション] -> [Edit attribute list for Workday]\(Workday の属性リストの編集\)** の下にある **[XPATH API 式]** を更新してください。  
+     > <br> WWS API v30.0 以降を使用する場合は、プロビジョニング ジョブを有効にする前に、「[構成の管理](#managing-your-configuration)」セクションおよび [Workday 属性のリファレンス](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)を参照して、 **[属性マッピング] -> [詳細オプション] -> [Edit attribute list for Workday]\(Workday の属性リストの編集\)** の下にある **[XPATH API 式]** を更新してください。  
 
    * **Active Directory フォレスト** - エージェントに登録されている Active Directory ドメインの "名前"。 ドロップダウンを使用して、プロビジョニングのターゲット ドメインを選択します。 通常、この値は *contoso.com* のような文字列です。
 
    * **Active Directory コンテナー -** エージェントが既定でユーザー アカウントを作成する必要のあるコンテナー DN を入力します。
-        例: *OU=Standard Users,OU=Users,DC=contoso,DC=test*
+        例:*OU=Standard Users,OU=Users,DC=contoso,DC=test*
         
      > [!NOTE]
      > この設定が適用されるのは、属性のマッピングで *parentDistinguishedName* 属性が構成されていない場合のユーザー アカウント作成のみです。 この設定は、ユーザーの検索や更新の操作には使用されません。 ドメインのサブツリー全体が、検索操作の範囲内になります。
@@ -623,7 +623,7 @@ Azure AD をハイブリッド モード (クラウドとオンプレミスの�
 
 #### <a name="how-do-i-suggest-improvements-or-request-new-features-related-to-workday-and-azure-ad-integration"></a>Workday と Azure AD の統合に関連した改善を提案したり、新しい機能を依頼したりするにはどうすればよいですか。
 
-今後のリリースや機能強化の方向性を決める上でお客様のフィードバックはとても貴重です。 どのようなフィードバックでもお待ちしております。[Azure AD のフィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory)にアイデアや改善の提案をご投稿ください。 Workday の統合に固有のフィードバックについては、カテゴリ *[SaaS アプリケーション]* を選択し、キーワード「 *Workday* 」を使用して検索すると、Workday に関連する既存のフィードバックが見つかります。
+今後のリリースや機能強化の方向性を決める上でお客様のフィードバックはとても貴重です。 どのようなフィードバックでもお待ちしております。[Azure AD のフィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory)にアイデアや改善の提案をご投稿ください。 Workday の統合に固有のフィードバックについては、カテゴリ *[SaaS アプリケーション]* を選択し、キーワード「*Workday*」を使用して検索すると、Workday に関連する既存のフィードバックが見つかります。
 
 > [!div class="mx-imgBorder"]
 > ![UserVoice SaaS アプリ](media/workday-inbound-tutorial/uservoice_saas_apps.png)
@@ -687,7 +687,7 @@ Azure AD をハイブリッド モード (クラウドとオンプレミスの�
 
 #### <a name="how-do-i-de-register-the-domain-associated-with-my-provisioning-agent"></a>プロビジョニング エージェントに関連付けられているドメインの登録を解除するにはどうすればよいですか。
 
-* Azure portal から、Azure AD テナントの " *テナント ID* " を取得します。
+* Azure portal から、Azure AD テナントの "*テナント ID*" を取得します。
 * プロビジョニング エージェントを実行している Windows サーバーにサインインします。
 * Windows 管理者として PowerShell を開きます。
 * 登録スクリプトを含むディレクトリに移動し、\[tenant ID\] パラメーターをお客様のテナント ID の値に置き換えて、次のコマンドを実行します。
@@ -771,7 +771,7 @@ Workday から AD 方向の更新操作のみを実行するには、[更新] �
 
 会社、部署、市区町村、国/地域などの属性を含むように *CN* または *displayName* を構成するためのこのような要件を処理する方法は次のとおりです。
 
-* 各 Workday 属性は、基になる XPATH API 式を使用して取得されます。これは、 **[属性マッピング] -> [Advanced Section]\(詳細セクション\) -> [Edit attribute list for Workday]\(Workday の属性リストの編集\)** で構成できます。 Workday の *PreferredFirstName* 、 *PreferredLastName* 、 *Company* 、および *SupervisoryOrganization* 属性の既定の XPATH API 式は次のとおりです。
+* 各 Workday 属性は、基になる XPATH API 式を使用して取得されます。これは、 **[属性マッピング] -> [Advanced Section]\(詳細セクション\) -> [Edit attribute list for Workday]\(Workday の属性リストの編集\)** で構成できます。 Workday の *PreferredFirstName*、*PreferredLastName*、*Company*、および *SupervisoryOrganization* 属性の既定の XPATH API 式は次のとおりです。
 
      | Workday 属性 | API XPATH 式 |
      | ----------------- | -------------------- |
@@ -782,7 +782,7 @@ Workday から AD 方向の更新操作のみを実行するには、[更新] �
   
    上記の API 式がお客様の Workday テナント構成で有効であることをお客様の Workday チームに確認してください。 必要に応じて、「[Workday のユーザー属性リストをカスタマイズする](#customizing-the-list-of-workday-user-attributes)」セクションの説明に従って編集できます。
 
-* 同様に、Workday 内に存在する国/地域情報を取得するには、 *wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference* という XPATH を使用します
+* 同様に、Workday 内に存在する国/地域情報を取得するには、*wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference* という XPATH を使用します
 
      Workday 属性リスト セクションで使用できる国/地域関連の属性が 5 つあります。
 
@@ -796,7 +796,7 @@ Workday から AD 方向の更新操作のみを実行するには、[更新] �
 
   上の API 式がお客様の Workday テナント構成で有効であることをお客様の Workday チームに確認してください。 必要に応じて、「[Workday のユーザー属性リストをカスタマイズする](#customizing-the-list-of-workday-user-attributes)」セクションの説明に従って編集できます。
 
-* 正しい属性マッピング式を構築するには、どの Workday 属性が "正式に" ユーザーの姓、名、国/地域、部署を表すかを特定します。 たとえば、属性がそれぞれ *PreferredFirstName* 、 *PreferredLastName* 、 *CountryReferenceTwoLetter* 、 *SupervisoryOrganization* であるとします。 これを使用して、 *Smith, John (Marketing-US)* のような表示名を取得するには、次のように AD の *displayName* 属性の式を構築します。
+* 正しい属性マッピング式を構築するには、どの Workday 属性が "正式に" ユーザーの姓、名、国/地域、部署を表すかを特定します。 たとえば、属性がそれぞれ *PreferredFirstName*、*PreferredLastName*、*CountryReferenceTwoLetter*、*SupervisoryOrganization* であるとします。 これを使用して、*Smith, John (Marketing-US)* のような表示名を取得するには、次のように AD の *displayName* 属性の式を構築します。
 
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
@@ -822,7 +822,7 @@ Workday から AD 方向の更新操作のみを実行するには、[更新] �
 
 #### <a name="how-can-i-use-selectuniquevalue-to-generate-unique-values-for-samaccountname-attribute"></a>SelectUniqueValue を使用して samAccountName 属性の一意の値を生成する方法を教えてください。
 
-Workday の *FirstName* 属性と *LastName* 属性の組み合わせを使用して、 *samAccountName* 属性に固有の値を生成するとします。 以下の式を基にして始めることができます。
+Workday の *FirstName* 属性と *LastName* 属性の組み合わせを使用して、*samAccountName* 属性に固有の値を生成するとします。 以下の式を基にして始めることができます。
 
 ```
 SelectUniqueValue(
@@ -832,7 +832,7 @@ SelectUniqueValue(
 )
 ```
 
-上の式は次のように機能します。ユーザーが John Smith の場合は、まず JSmith の生成が試行され、JSmith が既に存在する場合は JoSmith が生成され、それが存在する場合は JohSmith が生成されます。 また、この式では、 *samAccountName* に関連付けられている長さの制限と特殊文字の制限を満たす値が確実に生成されます。
+上の式は次のように機能します。ユーザーが John Smith の場合は、まず JSmith の生成が試行され、JSmith が既に存在する場合は JoSmith が生成され、それが存在する場合は JohSmith が生成されます。 また、この式では、*samAccountName* に関連付けられている長さの制限と特殊文字の制限を満たす値が確実に生成されます。
 
 関連項目:
 
@@ -882,13 +882,13 @@ SelectUniqueValue(
 
 ### <a name="understanding-logs-for-ad-user-account-create-operations"></a>AD ユーザー アカウントの作成操作のログの概要
 
-Workday の新規採用者 (たとえば、従業員 ID が *21023* ) が検出されると、Azure AD プロビジョニング サービスではその従業員の新しい AD ユーザー アカウントの作成が試行され、そのプロセスで次のように 4 つの監査ログ レコードが作成されます。
+Workday の新規採用者 (たとえば、従業員 ID が *21023*) が検出されると、Azure AD プロビジョニング サービスではその従業員の新しい AD ユーザー アカウントの作成が試行され、そのプロセスで次のように 4 つの監査ログ レコードが作成されます。
 
   [![監査ログ作成操作](media/workday-inbound-tutorial/wd_audit_logs_02.png)](media/workday-inbound-tutorial/wd_audit_logs_02.png#lightbox)
 
 監査ログ レコードをクリックすると、 **[アクティビティの詳細]** ページが開きます。 **[アクティビティの詳細]** ページにログ レコードの種類ごとに表示される内容は次のとおりです。
 
-* **Workday インポート** レコード:このログ レコードには、Workday から取り込んだ従業員情報が表示されます。 ログ レコードの " *追加の詳細* " セクションの情報を使用して、Workday からのデータの取り込みに関する問題を解決します。 レコードの例を、各フィールドの解釈方法についてのポインターと共に次に示します。
+* **Workday インポート** レコード:このログ レコードには、Workday から取り込んだ従業員情報が表示されます。 ログ レコードの "*追加の詳細*" セクションの情報を使用して、Workday からのデータの取り込みに関する問題を解決します。 レコードの例を、各フィールドの解釈方法についてのポインターと共に次に示します。
 
   ```JSON
   ErrorCode : None  // Use the error code captured here to troubleshoot Workday issues
@@ -897,7 +897,7 @@ Workday の新規採用者 (たとえば、従業員 ID が *21023* ) が検出�
   SourceAnchor : a071861412de4c2486eb10e5ae0834c3 // set to the WorkdayID (WID) associated with the record
   ```
 
-* **AD インポート** レコード:このログ レコードには、AD から取り込んだアカウントの情報が表示されます。 最初のユーザー作成時には AD アカウントがないため、 *[Activity Status Reason]\(アクティビティの状態の理由\)* には Active Directory にその [Matching ID ]\(照合 ID\) 属性値を持つアカウントが見つからなかったことが表示されます。 ログ レコードの " *追加の詳細* " セクションの情報を使用して、Workday からのデータの取り込みに関する問題を解決します。 レコードの例を、各フィールドの解釈方法についてのポインターと共に次に示します。
+* **AD インポート** レコード:このログ レコードには、AD から取り込んだアカウントの情報が表示されます。 最初のユーザー作成時には AD アカウントがないため、 *[Activity Status Reason]\(アクティビティの状態の理由\)* には Active Directory にその [Matching ID ]\(照合 ID\) 属性値を持つアカウントが見つからなかったことが表示されます。 ログ レコードの "*追加の詳細*" セクションの情報を使用して、Workday からのデータの取り込みに関する問題を解決します。 レコードの例を、各フィールドの解釈方法についてのポインターと共に次に示します。
 
   ```JSON
   ErrorCode : None // Use the error code captured here to troubleshoot Workday issues
@@ -905,19 +905,19 @@ Workday の新規採用者 (たとえば、従業員 ID が *21023* ) が検出�
   JoiningProperty : 21023 // Value of the Workday attribute that serves as the Matching ID
   ```
 
-  この AD インポート操作に対応するプロビジョニング エージェントのログ レコードを見つけるには、Windows イベント ビューアーのログを開き、 **[検索]** メニュー オプションを使用して、[Matching ID ]\(照合 ID\)/[結合プロパティ] 属性値 (この場合 *21023* ) を含むログ エントリを検索します。
+  この AD インポート操作に対応するプロビジョニング エージェントのログ レコードを見つけるには、Windows イベント ビューアーのログを開き、 **[検索]** メニュー オプションを使用して、[Matching ID ]\(照合 ID\)/[結合プロパティ] 属性値 (この場合 *21023*) を含むログ エントリを検索します。
 
   ![Find](media/workday-inbound-tutorial/wd_event_viewer_02.png)
 
-  " *イベント ID = 9* " のエントリを探します。これにより、AD アカウントを取得するためにエージェントで使用できる LDAP 検索フィルターが提供されます。 これが一意のユーザー エントリを取得するための適切な検索フィルターであるかどうかを確認できます。
+  "*イベント ID = 9*" のエントリを探します。これにより、AD アカウントを取得するためにエージェントで使用できる LDAP 検索フィルターが提供されます。 これが一意のユーザー エントリを取得するための適切な検索フィルターであるかどうかを確認できます。
 
   ![LDAP 検索](media/workday-inbound-tutorial/wd_event_viewer_03.png)
 
-  その直後に続く " *イベント ID = 2* " のレコードでは、返される結果がある場合は検索操作の結果がキャプチャされます。
+  その直後に続く "*イベント ID = 2*" のレコードでは、返される結果がある場合は検索操作の結果がキャプチャされます。
 
   ![LDAP の結果](media/workday-inbound-tutorial/wd_event_viewer_04.png)
 
-* **同期規則アクション** レコード:このログ レコードには、受信した Workday イベントを処理するために実行されるプロビジョニング アクションと共に、属性マッピング規則の結果と構成済みのスコープ フィルターが表示されます。 ログ レコードの " *追加の詳細* " セクションの情報を使用して、同期アクションに関する問題を解決します。 レコードの例を、各フィールドの解釈方法についてのポインターと共に次に示します。
+* **同期規則アクション** レコード:このログ レコードには、受信した Workday イベントを処理するために実行されるプロビジョニング アクションと共に、属性マッピング規則の結果と構成済みのスコープ フィルターが表示されます。 ログ レコードの "*追加の詳細*" セクションの情報を使用して、同期アクションに関する問題を解決します。 レコードの例を、各フィールドの解釈方法についてのポインターと共に次に示します。
 
   ```JSON
   ErrorCode : None // Use the error code captured here to troubleshoot sync issues
@@ -928,7 +928,7 @@ Workday の新規採用者 (たとえば、従業員 ID が *21023* ) が検出�
 
   属性マッピング式に問題がある場合、または受信 Workday データに問題がある場合 (たとえば、必須の属性値が空または null)、この段階で、失敗の詳細を示す ErrorCode を使用して失敗を確認します。
 
-* **AD エクスポート** レコード:このログ レコードには、AD アカウントの作成操作の結果と共に、プロセスで設定された属性値が表示されます。 ログ レコードの " *追加の詳細* " セクションの情報を使用して、アカウントの作成操作に関する問題を解決します。 レコードの例を、各フィールドの解釈方法についてのポインターと共に次に示します。 [追加の詳細] セクションで、"EventName" は "EntryExportAdd" に設定され、"JoiningProperty" は [Matching ID]\(照合 ID\) 属性の値に設定され、"SourceAnchor" はそのレコードに関連付けられた WorkdayID (WID) に設定され、"TargetAnchor" は新しく作成されたユーザーの AD の "ObjectGuid" 属性の値に設定されます。 
+* **AD エクスポート** レコード:このログ レコードには、AD アカウントの作成操作の結果と共に、プロセスで設定された属性値が表示されます。 ログ レコードの "*追加の詳細*" セクションの情報を使用して、アカウントの作成操作に関する問題を解決します。 レコードの例を、各フィールドの解釈方法についてのポインターと共に次に示します。 [追加の詳細] セクションで、"EventName" は "EntryExportAdd" に設定され、"JoiningProperty" は [Matching ID]\(照合 ID\) 属性の値に設定され、"SourceAnchor" はそのレコードに関連付けられた WorkdayID (WID) に設定され、"TargetAnchor" は新しく作成されたユーザーの AD の "ObjectGuid" 属性の値に設定されます。 
 
   ```JSON
   ErrorCode : None // Use the error code captured here to troubleshoot AD account creation issues
@@ -938,9 +938,9 @@ Workday の新規採用者 (たとえば、従業員 ID が *21023* ) が検出�
   TargetAnchor : 83f0156c-3222-407e-939c-56677831d525 // set to the value of the AD "objectGuid" attribute of the new user
   ```
 
-  この AD エクスポート操作に対応するプロビジョニング エージェントのログ レコードを見つけるには、Windows イベント ビューアーのログを開き、 **[検索]** メニュー オプションを使用して、[Matching ID ]\(照合 ID\)/[結合プロパティ] 属性値 (この場合 *21023* ) を含むログ エントリを検索します。  
+  この AD エクスポート操作に対応するプロビジョニング エージェントのログ レコードを見つけるには、Windows イベント ビューアーのログを開き、 **[検索]** メニュー オプションを使用して、[Matching ID ]\(照合 ID\)/[結合プロパティ] 属性値 (この場合 *21023*) を含むログ エントリを検索します。  
 
-  " *イベント ID = 2* " のエクスポート操作のタイムスタンプに対応する HTTP POST レコードを探します。 このレコードには、プロビジョニング サービスからプロビジョニング エージェントに送信された属性値が含まれます。
+  "*イベント ID = 2*" のエクスポート操作のタイムスタンプに対応する HTTP POST レコードを探します。 このレコードには、プロビジョニング サービスからプロビジョニング エージェントに送信された属性値が含まれます。
 
   :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_05.png" alt-text="'Provisioning Agent' ログで 'HTTP POST' レコードを示すスクリーンショット。" lightbox="media/workday-inbound-tutorial/wd_event_viewer_05.png":::
 
@@ -950,7 +950,7 @@ Workday の新規採用者 (たとえば、従業員 ID が *21023* ) が検出�
 
 ### <a name="understanding-logs-for-manager-update-operations"></a>マネージャーの更新操作のログの概要
 
-manager 属性は AD の参照属性です。 プロビジョニング サービスでは、ユーザー作成操作の一環として manager 属性は設定されません。 そうではなく、manager 属性は、ユーザーの AD アカウントが作成された後、" *更新* " 操作の一環として設定されます。 上の例を拡張して、従業員 ID "21451" の新規採用者が Workday でアクティブ化された、新規採用者のマネージャー ( *21023* ) が既に AD アカウントを持っているとします。 このシナリオでは、ユーザー 21451 の監査ログを検索すると、5 つのエントリが表示されます。
+manager 属性は AD の参照属性です。 プロビジョニング サービスでは、ユーザー作成操作の一環として manager 属性は設定されません。 そうではなく、manager 属性は、ユーザーの AD アカウントが作成された後、"*更新*" 操作の一環として設定されます。 上の例を拡張して、従業員 ID "21451" の新規採用者が Workday でアクティブ化された、新規採用者のマネージャー (*21023*) が既に AD アカウントを持っているとします。 このシナリオでは、ユーザー 21451 の監査ログを検索すると、5 つのエントリが表示されます。
 
   [![マネージャーの更新](media/workday-inbound-tutorial/wd_audit_logs_03.png)](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
 
@@ -983,9 +983,9 @@ manager 属性は AD の参照属性です。 プロビジョニング サービ
 
 |#|エラーのシナリオ |考えられる原因|推奨される解決方法|
 |--|---|---|---|
-|1.| 次のエラー メッセージを伴うプロビジョニング エージェントのインストール時のエラー:" *Service 'Microsoft Azure AD Connect Provisioning Agent' (AADConnectProvisioningAgent) failed to start.Verify that you have sufficient privileges to start the system. (サービス 'Microsoft Azure AD Connect Provisioning Agent' (AADConnectProvisioningAgent) を開始できませんでした。システムを起動するために十分な特権を持っていることを確認してください。)* " | 通常、このエラーはプロビジョニング エージェントをドメイン コントローラーにインストールしようとして、グループ ポリシーによってサービスが開始されない場合に発生します。  また、以前のバージョンのエージェントが実行されていて、新規インストールを開始する前にアンインストールが完了していない場合にも表示されます。| DC 以外のサーバーにプロビジョニング エージェントをインストールします。 新しいエージェントをインストールする前に、必ず以前のバージョンのエージェントをアンインストールします。|
-|2.| Windows サービス 'Microsoft Azure AD Connect Provisioning Agent' が " *開始中* " の状態で、" *実行中* " の状態に切り替わりません。 | インストールの一環で、エージェント ウィザードによってサーバー上にローカル アカウント ( **NT サービス\\AADConnectProvisioningAgent** ) が作成されます。これは、サービスの開始に使用されるログオン アカウントです。 Windows サーバー上のセキュリティ ポリシーにより、ローカル アカウントでサービスを実行できない場合は、このエラーが発生します。 | " *サービス* " コンソールを開きます。 Windows サービスの 'Microsoft Azure AD Connect Provisioning Agent' を右クリックし、ログオン タブでサービスを実行するドメイン管理者のアカウントを指定します。 サービスを再起動します。 |
-|3.| " *Active Directory の接続* " 手順で AD ドメインを使用してプロビジョニング エージェントを構成するときに、ウィザードによる AD スキーマの読み込み時間が長くかかり、最終的にタイムアウトします。 | 通常、このエラーは、ファイアウォールの問題のためにウィザードから AD ドメイン コントローラー サーバーに接続できない場合に表示されます。 | " *Active Directory の接続* " ウィザード画面で、AD ドメインの資格情報を入力するときに、" *ドメイン コントローラーの優先順位の選択* " というオプションがあります。 このオプションは、エージェント サーバーと同じサイト内にあるドメイン コントローラーを選択し、通信をブロックするファイアウォール規則がないようにするために使用します。 |
+|1.| 次のエラー メッセージを伴うプロビジョニング エージェントのインストール時のエラー:"*Service 'Microsoft Azure AD Connect Provisioning Agent' (AADConnectProvisioningAgent) failed to start.Verify that you have sufficient privileges to start the system. (サービス 'Microsoft Azure AD Connect Provisioning Agent' (AADConnectProvisioningAgent) を開始できませんでした。システムを起動するために十分な特権を持っていることを確認してください。)* " | 通常、このエラーはプロビジョニング エージェントをドメイン コントローラーにインストールしようとして、グループ ポリシーによってサービスが開始されない場合に発生します。  また、以前のバージョンのエージェントが実行されていて、新規インストールを開始する前にアンインストールが完了していない場合にも表示されます。| DC 以外のサーバーにプロビジョニング エージェントをインストールします。 新しいエージェントをインストールする前に、必ず以前のバージョンのエージェントをアンインストールします。|
+|2.| Windows サービス 'Microsoft Azure AD Connect Provisioning Agent' が "*開始中*" の状態で、"*実行中*" の状態に切り替わりません。 | インストールの一環で、エージェント ウィザードによってサーバー上にローカル アカウント (**NT サービス\\AADConnectProvisioningAgent**) が作成されます。これは、サービスの開始に使用されるログオン アカウントです。 Windows サーバー上のセキュリティ ポリシーにより、ローカル アカウントでサービスを実行できない場合は、このエラーが発生します。 | "*サービス*" コンソールを開きます。 Windows サービスの 'Microsoft Azure AD Connect Provisioning Agent' を右クリックし、ログオン タブでサービスを実行するドメイン管理者のアカウントを指定します。 サービスを再起動します。 |
+|3.| "*Active Directory の接続*" 手順で AD ドメインを使用してプロビジョニング エージェントを構成するときに、ウィザードによる AD スキーマの読み込み時間が長くかかり、最終的にタイムアウトします。 | 通常、このエラーは、ファイアウォールの問題のためにウィザードから AD ドメイン コントローラー サーバーに接続できない場合に表示されます。 | "*Active Directory の接続*" ウィザード画面で、AD ドメインの資格情報を入力するときに、"*ドメイン コントローラーの優先順位の選択*" というオプションがあります。 このオプションは、エージェント サーバーと同じサイト内にあるドメイン コントローラーを選択し、通信をブロックするファイアウォール規則がないようにするために使用します。 |
 
 #### <a name="connectivity-errors"></a>接続エラー
 
@@ -993,7 +993,7 @@ manager 属性は AD の参照属性です。 プロビジョニング サービ
 
 |#|エラーのシナリオ |考えられる原因|推奨される解決方法|
 |--|---|---|---|
-|1.| **[テスト接続]** をクリックすると、次のエラー メッセージが表示されます。" *There was an error connecting to Active Directory.Please ensure that the on-premises Provisioning Agent is running and it is configured with the correct Active Directory domain. (Active Directory への接続でエラーが発生しました。オンプレミスのプロビジョニング エージェントが実行されていて、適切な Active Directory ドメインが構成されていることを確認してください。)* " | 通常、このエラーは、プロビジョニング エージェントが実行されていない場合、または Azure AD とプロビジョニング エージェント間の通信をブロックするファイアウォールがある場合に発生します。 また、ドメインがエージェント ウィザードで構成されていない場合にもこのエラーが表示されることがあります。 | Windows サーバーで " *サービス* " コンソールを開き、エージェントが実行されていることを確認してます。 プロビジョニング エージェント ウィザードを開き、正しいドメインがエージェントに登録されていることを確認します。  |
+|1.| **[テスト接続]** をクリックすると、次のエラー メッセージが表示されます。"*There was an error connecting to Active Directory.Please ensure that the on-premises Provisioning Agent is running and it is configured with the correct Active Directory domain. (Active Directory への接続でエラーが発生しました。オンプレミスのプロビジョニング エージェントが実行されていて、適切な Active Directory ドメインが構成されていることを確認してください。)* " | 通常、このエラーは、プロビジョニング エージェントが実行されていない場合、または Azure AD とプロビジョニング エージェント間の通信をブロックするファイアウォールがある場合に発生します。 また、ドメインがエージェント ウィザードで構成されていない場合にもこのエラーが表示されることがあります。 | Windows サーバーで "*サービス*" コンソールを開き、エージェントが実行されていることを確認してます。 プロビジョニング エージェント ウィザードを開き、正しいドメインがエージェントに登録されていることを確認します。  |
 |2.| プロビジョニング ジョブが週末 (金曜から土曜) にかけて検疫状態になり、同期にエラーがあるというメール通知を受け取ります。 | このエラーの一般的な原因の 1 つは、スケジュールされている Workday のダウンタイムです。 Workday の実装テナントを使用している場合は、Workday が週末にかけて (通常は金曜日の夜から土曜日の朝まで) 実装テナントのダウンタイムがスケジュールされており、その期間中は Workday に接続できないため、Workday プロビジョニング アプリは検疫状態になる可能性があります。 Workday 実装テナントがオンラインに戻ると、通常の状態に戻ります。 ごくまれに、テナントの更新により統合システム ユーザーのパスワードが変更された場合、またはアカウントがロックまたは期限切れの状態にある場合にも、このエラーが表示されることがあります。 | Workday 管理者または統合パートナーに連絡して、ダウンタイム期間中に Workday がアラート メッセージを無視するようにダウンタイムをスケジュールし、Workday インスタンスがオンラインに戻ったら可用性を確認します。  |
 
 
@@ -1001,8 +1001,8 @@ manager 属性は AD の参照属性です。 プロビジョニング サービ
 
 |#|エラーのシナリオ |考えられる原因|推奨される解決方法|
 |--|---|---|---|
-|1.| 次のメッセージを伴う監査ログのエクスポート操作の失敗。" *Error:OperationsError-SvcErr:An operation error occurred.No superior reference has been configured for the directory service.The directory service is therefore unable to issue referrals to objects outside this forest. (エラー: OperationsError-SvcErr: 操作エラーが発生ししました。このディレクトリ サービスの上位参照は構成されていません。そのため、ディレクトリ サービスはこのフォレストの外側にあるオブジェクトへの参照を発行できません。)* " | 通常、このエラーは、" *Active Directory コンテナー* " OU が正しく設定されていない場合、または *parentDistinguishedName* に使用される式のマッピングに問題がある場合に発生します。 | " *Active Directory コンテナー* " OU パラメーターに入力ミスがないか確認します。 属性マッピングで *parentDistinguishedName* を使用している場合は、常に AD ドメイン内の既知のコンテナーに評価されるようにしてください。 生成された値を確認するには、監査ログの *Export* イベントを確認します。 |
-|2.| 次のエラー コードを伴う監査ログのエクスポート操作の失敗。" *SystemForCrossDomainIdentityManagementBadResponse* and message *Error:ConstraintViolation-AtrErr:A value in the request is invalid.A value for the attribute was not in the acceptable range of values. \nError Details:CONSTRAINT_ATT_TYPE - company (SystemForCrossDomainIdentityManagementBadResponse エラー: ConstraintViolation-AtrErr: 要求の値は無効です。属性の値は値の許容範囲に含まれていません。\nエラーの詳細: CONSTRAINT_ATT_TYPE - company)* " | このエラーは *company* 属性に固有のものですが、 *CN* のような他の属性についてもこのエラーが発生する可能性があります。 このエラーは、AD で適用されたスキーマ制約が原因で発生します。 既定では、AD の *company* や *CN* のような属性の上限は 64 文字です。 Workday に由来する値が 64 文字を超える場合は、このエラー メッセージが表示されます。 | 監査ログで *Export* イベントを確認して、エラー メッセージで報告されている属性の値を確認します。 [Mid](../app-provisioning/functions-for-customizing-application-data.md#mid) 関数を使用して Workday に由来する値を切り捨てるか、同様の長さの制約がない AD 属性にマッピングを変更することを検討してください。  |
+|1.| 次のメッセージを伴う監査ログのエクスポート操作の失敗。"*Error:OperationsError-SvcErr:An operation error occurred.No superior reference has been configured for the directory service.The directory service is therefore unable to issue referrals to objects outside this forest. (エラー: OperationsError-SvcErr: 操作エラーが発生ししました。このディレクトリ サービスの上位参照は構成されていません。そのため、ディレクトリ サービスはこのフォレストの外側にあるオブジェクトへの参照を発行できません。)* " | 通常、このエラーは、"*Active Directory コンテナー*" OU が正しく設定されていない場合、または *parentDistinguishedName* に使用される式のマッピングに問題がある場合に発生します。 | "*Active Directory コンテナー*" OU パラメーターに入力ミスがないか確認します。 属性マッピングで *parentDistinguishedName* を使用している場合は、常に AD ドメイン内の既知のコンテナーに評価されるようにしてください。 生成された値を確認するには、監査ログの *Export* イベントを確認します。 |
+|2.| 次のエラー コードを伴う監査ログのエクスポート操作の失敗。"*SystemForCrossDomainIdentityManagementBadResponse* and message *Error:ConstraintViolation-AtrErr:A value in the request is invalid.A value for the attribute was not in the acceptable range of values. \nError Details:CONSTRAINT_ATT_TYPE - company (SystemForCrossDomainIdentityManagementBadResponse エラー: ConstraintViolation-AtrErr: 要求の値は無効です。属性の値は値の許容範囲に含まれていません。\nエラーの詳細: CONSTRAINT_ATT_TYPE - company)* " | このエラーは *company* 属性に固有のものですが、*CN* のような他の属性についてもこのエラーが発生する可能性があります。 このエラーは、AD で適用されたスキーマ制約が原因で発生します。 既定では、AD の *company* や *CN* のような属性の上限は 64 文字です。 Workday に由来する値が 64 文字を超える場合は、このエラー メッセージが表示されます。 | 監査ログで *Export* イベントを確認して、エラー メッセージで報告されている属性の値を確認します。 [Mid](../app-provisioning/functions-for-customizing-application-data.md#mid) 関数を使用して Workday に由来する値を切り捨てるか、同様の長さの制約がない AD 属性にマッピングを変更することを検討してください。  |
 
 #### <a name="ad-user-account-update-errors"></a>AD ユーザー アカウントの更新エラー
 
@@ -1010,7 +1010,7 @@ AD ユーザー アカウントの更新プロセス中に、プロビジョニ�
 
 |#|エラーのシナリオ |考えられる原因|推奨される解決方法|
 |--|---|---|---|
-|1.| 同期ログのメッセージ " *EventName = EntrySynchronizationError" と "ErrorCode = EndpointUnavailable* " で監査ログ アクションが失敗しました。 | このエラーは、オンプレミスのプロビジョニング エージェントで処理エラーが発生したために、プロビジョニング サービスで Active Directory からユーザー プロファイル データを取得できない場合に発生します。 | プロビジョニング エージェントのイベント ビューアー ログで、読み取り操作に関する問題を示すエラー イベントを確認します (イベント ID 2 でフィルター)。 |
+|1.| 同期ログのメッセージ "*EventName = EntrySynchronizationError" と "ErrorCode = EndpointUnavailable*" で監査ログ アクションが失敗しました。 | このエラーは、オンプレミスのプロビジョニング エージェントで処理エラーが発生したために、プロビジョニング サービスで Active Directory からユーザー プロファイル データを取得できない場合に発生します。 | プロビジョニング エージェントのイベント ビューアー ログで、読み取り操作に関する問題を示すエラー イベントを確認します (イベント ID 2 でフィルター)。 |
 |2.| AD の特定のユーザーについて、AD の manager 属性が更新されません。 | 最も可能性が高いこのエラーの原因は、スコープ規則を使用していて、ユーザーのマネージャーがスコープに含まれていない場合です。 マネージャーの照合 ID 属性 (例: EmployeeID) がターゲット AD ドメインに見つからないか、正しい値に設定されていない場合も、この問題が発生する可能性があります。 | スコープ フィルターを確認し、スコープ内にマネージャー ユーザーを追加します。 AD でマネージャーのプロファイルを調べ、照合 ID 属性の値があることを確認します。 |
 
 ## <a name="managing-your-configuration"></a>構成の確認

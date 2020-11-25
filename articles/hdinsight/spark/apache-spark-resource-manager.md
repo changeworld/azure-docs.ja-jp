@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 5427077a4b07917c8852d0a63c815195e776b9de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085193"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017034"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight での Apache Spark クラスターのリソースの管理
 
@@ -29,7 +29,7 @@ Spark クラスターで現在実行されているアプリケーションを�
 
 1. [Azure Portal](https://portal.azure.com/) で Spark クラスターを開きます。 詳細については、「[クラスターの一覧と表示](../hdinsight-administer-use-portal-linux.md#showClusters)」を参照してください。
 
-2. **クラスター ダッシュボード**上で **[Yarn]** を選択します。 入力を求められたら、Spark クラスターの管理者資格情報を入力します。
+2. **クラスター ダッシュボード** 上で **[Yarn]** を選択します。 入力を求められたら、Spark クラスターの管理者資格情報を入力します。
 
     ![Launch YARN UI](./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png)
 

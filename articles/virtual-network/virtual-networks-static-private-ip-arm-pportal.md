@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2020
 ms.author: kumud
 ms.openlocfilehash: c8fdba59a8d31c064745c7a1904204359b386a7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84707856"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015932"
 ---
 # <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>Azure portal を使用して VM のプライベート IP アドレスを構成する
 
@@ -102,7 +102,7 @@ VM が作成されると次のメッセージが表示されます。
 
     ![IP 構成、ネットワーク インターフェイス、ネットワーク、仮想マシン、Azure portal](./media/virtual-networks-static-ip-arm-pportal/network-interface-ip-configurations.png)
 
-5. **[プライベート IP アドレスの設定]** で、**TestVNet/FrontEnd** 仮想ネットワーク/サブネットの下にある、 **[割り当て]** の値 ( **[動的]** または **[静的]** ) と **IP アドレス**を書き留めます。
+5. **[プライベート IP アドレスの設定]** で、**TestVNet/FrontEnd** 仮想ネットワーク/サブネットの下にある、 **[割り当て]** の値 ( **[動的]** または **[静的]** ) と **IP アドレス** を書き留めます。
 
     ![動的または静的割り当て、古いプライベート IP アドレス設定、IP 構成、ネットワーク インターフェイス、ネットワーク、仮想マシン、Azure portal](./media/virtual-networks-static-ip-arm-pportal/private-ip-address-settings-old.png)
 
@@ -110,7 +110,7 @@ VM が作成されると次のメッセージが表示されます。
 新しい VM に静的プライベート IP アドレスを追加するには、次のようにします。
 
 1. [IP 構成] ページで、プライベート IP アドレスの割り当てを **[静的]** に設定します。
-2. プライベート **IP アドレス**を *192.168.1.101* に変更し、 **[保存]** を選択します。
+2. プライベート **IP アドレス** を *192.168.1.101* に変更し、 **[保存]** を選択します。
    
     ![動的または静的割り当て、新しいプライベート IP アドレスの設定、IP 構成、ネットワーク インターフェイス、ネットワーク、仮想マシン、Azure portal](./media/virtual-networks-static-ip-arm-pportal/private-ip-address-settings-new.png)
 
@@ -124,9 +124,9 @@ VM から静的プライベート IP アドレスを削除するには、次の�
 
 ## <a name="set-ip-addresses-within-the-operating-system"></a>オペレーティング システム内で IP アドレスを設定する
 
-VM のオペレーティング システム内から、Azure VM に割り当てられている*プライベート* IP を静的に割り当てないでください。 [VM に多数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-portal.md)ときなど、必要な場合にのみ、プライベート IP の静的割り当てを行います。 オペレーティング システム内でプライベート IP アドレスを手動で設定する場合は、そのアドレスが、Azure の[ネットワーク インターフェイス](virtual-network-network-interface-addresses.md#change-ip-address-settings)に割り当てられているプライベート IP アドレスと一致していることを確認します。 そのようにしないと、VM への接続が失われる可能性があります。 詳細については、[プライベート IP アドレス](virtual-network-network-interface-addresses.md#private)設定に関するページを参照してください。
+VM のオペレーティング システム内から、Azure VM に割り当てられている *プライベート* IP を静的に割り当てないでください。 [VM に多数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-portal.md)ときなど、必要な場合にのみ、プライベート IP の静的割り当てを行います。 オペレーティング システム内でプライベート IP アドレスを手動で設定する場合は、そのアドレスが、Azure の[ネットワーク インターフェイス](virtual-network-network-interface-addresses.md#change-ip-address-settings)に割り当てられているプライベート IP アドレスと一致していることを確認します。 そのようにしないと、VM への接続が失われる可能性があります。 詳細については、[プライベート IP アドレス](virtual-network-network-interface-addresses.md#private)設定に関するページを参照してください。
 
-また、仮想マシンのオペレーティング システム内で、Azure の仮想マシンに割り当てられている*パブリック* IP アドレスを手動で割り当てないでください。
+また、仮想マシンのオペレーティング システム内で、Azure の仮想マシンに割り当てられている *パブリック* IP アドレスを手動で割り当てないでください。
 
 ## <a name="next-steps"></a>次のステップ
 

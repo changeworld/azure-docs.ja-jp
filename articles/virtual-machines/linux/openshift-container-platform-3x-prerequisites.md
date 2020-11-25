@@ -10,11 +10,11 @@ ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
 ms.openlocfilehash: 68bd748e890659e4b79d76e4ccab038f251a937a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87368185"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016031"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Azure に OpenShift Container Platform 3.11 をデプロイする一般的な前提条件 | Microsoft Docs
 
@@ -140,7 +140,7 @@ az ad sp create-for-rbac --name openshiftsp \
 
 SSH 秘密キー (**sshPrivateKey**)、Azure AD クライアント シークレット (**aadClientSecret**)、OpenShift 管理パスワード (**openshiftPassword**)、および Red Hat Subscription Manager パスワード、またはアクティブ化キー (**rhsmPasswordOrActivationKey**) 用のシークレットを作成する必要があります。  さらに、カスタム TLS/SSL 証明書が使用される場合は、6 つのシークレット (**routingcafile**、**routingcertfile**、**routingkeyfile**、**mastercafile**、**mastercertfile**、および **masterkeyfile**) を追加で作成する必要があります。  これらのパラメーターの詳細を説明します。
 
-テンプレートでは特定のシークレット名が参照されるため、前述の太字で示されている名前を使用する**必要があります** (大文字小文字の区別があります)。
+テンプレートでは特定のシークレット名が参照されるため、前述の太字で示されている名前を使用する **必要があります** (大文字小文字の区別があります)。
 
 ### <a name="custom-certificates"></a>カスタム証明書
 

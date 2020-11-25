@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 6fb3c9b6dbbab036ddb00edd7e1d5980bb425ebe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 881a7fc915ab986577599b85f8412fa8107f7902
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326118"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017391"
 ---
 # <a name="encryption-scopes-for-blob-storage-preview"></a>BLOB ストレージの暗号化スコープ (プレビュー)
 
@@ -52,8 +52,8 @@ Microsoft のマネージド キーまたは Azure Key Vault に格納されて�
 
 暗号化スコープがカスタマー マネージド キーで保護されている場合は、暗号化スコープを無効にするために、キー コンテナー内にある関連付けられたキーを削除することもできます。 カスタマー マネージド キーはキー コンテナー内での論理的な削除と消去保護によって保護されており、削除されたキーはそれらのプロパティによって定義されている動作に従うことにご注意ください。 詳細については、Azure Key Vault のドキュメントで次のトピックのいずれかを参照してください。
 
-- [PowerShell で論理的な削除を使用する方法](../../key-vault/general/soft-delete-powershell.md)
-- [CLI で論理的な削除を使用する方法](../../key-vault/general/soft-delete-cli.md)
+- [PowerShell で論理的な削除を使用する方法](../../key-vault/general/key-vault-recovery.md)
+- [CLI で論理的な削除を使用する方法](../../key-vault/general/key-vault-recovery.md)
 
 > [!NOTE]
 > 暗号化スコープを削除することはできません。

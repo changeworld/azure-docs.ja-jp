@@ -11,11 +11,11 @@ ms.date: 10/01/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: d1b1c27fe0136220d5a1851af4a5c24102a37da1
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288621"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015555"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault のファイアウォールと仮想ネットワークを構成する
 
@@ -71,7 +71,7 @@ Key Vault ファイアウォールを介して Azure サービス全体を許可
 > [!NOTE]
 > 構成に関する次の制限事項に注意してください。
 > * 最大で 127 個の仮想ネットワーク規則と 127 個の IPv4 ルールを指定できます。 
-> * IP ネットワーク ルールは、パブリック IP アドレスに対してのみ許可されます。 プライベート ネットワーク用に予約されている IP アドレス範囲 (RFC 1918 で定義) は、IP ルールでは許可されません。 プライベート ネットワークには、 **10.** 、 **172.16-31** 、および **192.168.** で始まるアドレスが含まれます。 
+> * IP ネットワーク ルールは、パブリック IP アドレスに対してのみ許可されます。 プライベート ネットワーク用に予約されている IP アドレス範囲 (RFC 1918 で定義) は、IP ルールでは許可されません。 プライベート ネットワークには、**10.** 、**172.16-31**、および **192.168.** で始まるアドレスが含まれます。 
 > * 現時点でサポートされているのは、IPv4 アドレスのみです。
 
 ## <a name="use-the-azure-portal"></a>Azure ポータルの使用
@@ -83,7 +83,7 @@ Azure portal を使用して Key Vault ファイアウォールと仮想ネッ�
 3. **[許可するアクセス元]** の **[選択されたネットワーク]** を選択します。
 4. 既存の仮想ネットワークをファイアウォールと仮想ネットワークの規則に追加するには、 **[+ 既存の仮想ネットワークを追加]** を選択します。
 5. 表示される新しいブレードで、このキー コンテナーへのアクセスを許可するサブスクリプション、仮想ネットワーク、サブネットを選択します。 選択する仮想ネットワークとサブネットでサービス エンドポイントが有効になっていない場合は、サービス エンドポイントを有効にする必要があることを確認して、 **[有効]** を選択します。 有効になるまでに最大 15 分かかることがあります。
-6. **[IP ネットワーク]** では、 [CIDR (Classless Inter-Domain Routing) 表記](https://tools.ietf.org/html/rfc4632)で IPv4 アドレスの範囲を入力して IPv4 アドレス範囲を追加するか、個々の IP アドレスを追加します。
+6. **[IP ネットワーク]** では、[CIDR (Classless Inter-Domain Routing) 表記](https://tools.ietf.org/html/rfc4632)で IPv4 アドレスの範囲を入力して IPv4 アドレス範囲を追加するか、個々の IP アドレスを追加します。
 7. 信頼された Microsoft サービスが Key Vault ファイアウォールをバイパスすることを許可する場合には、[はい] を選択します。 Key Vault で現在信頼されているサービスの完全な一覧については、次のリンクを参照してください。 [Azure Key Vault の信頼済みサービス](./overview-vnet-service-endpoints.md#trusted-services)
 7. **[保存]** を選択します。
 

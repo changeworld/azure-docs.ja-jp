@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: b-juche
 ms.openlocfilehash: 7eac6a40476cffe875a03de49c9c9311ffbf4d39
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016044"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017068"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Azure NetApp Files のサービス レベル
 サービス レベルは容量プールの属性の 1 つです。 サービス レベルは、容量プール内のボリュームに割り当てられたクォータに基づいて許可された、ボリュームの最大スループットによって定義および区別されます。

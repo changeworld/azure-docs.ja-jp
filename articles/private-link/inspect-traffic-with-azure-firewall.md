@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 734d52dadbb849925303febb0d3d1195bbddb0df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cbfd90ca65a1fb75c9cbe5602ac2a69741e378f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89236569"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96017238"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Azure Firewall を使用してプライベート エンドポイント宛てのトラフィックを検査する
 
@@ -38,7 +38,7 @@ Azure Firewall では、次のいずれかを使用してトラフィックを�
 プライベート エンドポイント経由で公開されるほとんどのサービスでは、HTTPS を使用します。 Azure SQL を使用する場合は、ネットワーク ルールよりもアプリケーション ルールを使用することをお勧めします。
 
 > [!NOTE]
-> SQL の FQDN のフィルター処理は、[プロキシ モード](../azure-sql/database/connectivity-architecture.md#connection-policy)のみでサポートされます (ポート 1433)。 **プロキシ** モードを使用すると、*リダイレクト*と比較して待機時間が増加する可能性があります。 リダイレクト モードを使用して構成する場合は (Azure 内から接続するクライアントの既定)、代わりにファイアウォール ネットワーク ルールで FQDN を使ってアクセスをフィルター処理できます。
+> SQL の FQDN のフィルター処理は、[プロキシ モード](../azure-sql/database/connectivity-architecture.md#connection-policy)のみでサポートされます (ポート 1433)。 **プロキシ** モードを使用すると、*リダイレクト* と比較して待機時間が増加する可能性があります。 リダイレクト モードを使用して構成する場合は (Azure 内から接続するクライアントの既定)、代わりにファイアウォール ネットワーク ルールで FQDN を使ってアクセスをフィルター処理できます。
 
 ## <a name="scenario-1-hub-and-spoke-architecture---dedicated-virtual-network-for-private-endpoints"></a>シナリオ 1:ハブとスポークのアーキテクチャ - プライベート エンドポイント専用の仮想ネットワーク
 
@@ -55,7 +55,7 @@ Azure Firewall では、次のいずれかを使用してトラフィックを�
 
 ## <a name="scenario-2-hub-and-spoke-architecture---shared-virtual-network-for-private-endpoints-and-virtual-machines"></a>シナリオ 2: ハブとスポークのアーキテクチャ - プライベート エンドポイントと仮想マシン用の共有仮想ネットワーク
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/shared-spoke.png" alt-text="プライベート エンドポイント専用の仮想ネットワーク" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/shared-spoke.png" alt-text="同じ仮想ネットワーク内のプライベート エンドポイントと仮想マシン" border="true":::
 
 このシナリオは、次の場合に実装されます。
 
@@ -78,7 +78,7 @@ Azure Firewall では、次のいずれかを使用してトラフィックを�
 
 ## <a name="scenario-3-single-virtual-network"></a>シナリオ 3: 単一の仮想ネットワーク
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="プライベート エンドポイント専用の仮想ネットワーク" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="単一の仮想ネットワーク" border="true":::
 
 実装にはいくつかの制限があります。ハブとスポークのアーキテクチャへの移行はできません。 シナリオ 2 と同じ考慮事項が適用されます。 このシナリオでは、仮想ネットワークのピアリング料金は適用されません。
 
@@ -87,7 +87,7 @@ Azure Firewall では、次のいずれかを使用してトラフィックを�
 
 ## <a name="scenario-4-on-premises-traffic-to-private-endpoints"></a>シナリオ 4: プライベート エンドポイントへのオンプレミス トラフィック
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/on-premises.png" alt-text="プライベート エンドポイント専用の仮想ネットワーク" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/on-premises.png" alt-text="プライベート エンドポイントへのオンプレミス トラフィック" border="true":::
 
 このアーキテクチャは、次のいずれかを使用してオンプレミス ネットワークとの接続を構成した場合に実装できます。 
 
@@ -106,7 +106,7 @@ Azure Firewall では、次のいずれかを使用してトラフィックを�
 * Azure サブスクリプション。
 * Log Analytics ワークスペース。  
 
-サブスクリプションにワークスペースがない場合に作成する方法については、「[Azure portal で Log Analytics ワークスペースを作成する](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)」を参照してください。
+サブスクリプションにワークスペースがない場合に作成する方法については、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)」を参照してください。
 
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
@@ -575,7 +575,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     Address: 10.2.0.4
     ```
 
-2. [SQL Server コマンドライン ツール](https://docs.microsoft.com/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-ver15#tools)をインストールします。
+2. [SQL Server コマンドライン ツール](/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-ver15#tools)をインストールします。
 
 3. 次のコマンドを実行して SQL Server に接続します。 前の手順で SQL Server を作成したときに定義したサーバー管理者とパスワードを使用します。
 
@@ -608,7 +608,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 リソースを使い終えたら、リソース グループと、それに含まれるすべてのリソースを削除します。
 
-1. ポータルの上部にある**検索**ボックスに「**myResourceGroup**」と入力し、検索結果から **myResourceGroup** を選択します。
+1. ポータルの上部にある **検索** ボックスに「**myResourceGroup**」と入力し、検索結果から **myResourceGroup** を選択します。
 
 1. **[リソース グループの削除]** を選択します。
 

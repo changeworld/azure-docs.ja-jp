@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 5a0ea8a2f07ef596cd80e9165eedb2b98dab0bfa
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0df0c12d5942179e2492bfdc932fa25d126a2426
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978715"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016874"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>StorSimple デバイス マネージャー サービスを使用してストレージ アカウント資格情報を管理する
 
@@ -55,7 +55,7 @@ StorSimple デバイス マネージャー サービス ブレードの **[構�
 StorSimple デバイスで使用できるストレージ アカウントには、次の 3 つの種類があります。
 
 * **自動生成されたストレージ アカウント** - 名前のとおり、このストレージ アカウントは、サービスが最初に作成されるときに自動的に生成されます。 このストレージ アカウントの作成方法の詳細については、「[手順 1. 新しいサービスを作成する](storsimple-8000-deployment-walkthrough-u2.md#step-1-create-a-new-service)」(「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-8000-deployment-walkthrough-u2.md)」) を参照してください。 
-* **サービス サブスクリプションのストレージ アカウント** - サービスと同じサブスクリプションに関連付けられている Azure ストレージ アカウントです。 このストレージ アカウントの作成方法の詳細については、 [Azure ストレージ アカウント](../storage/common/storage-create-storage-account.md)に関するページを参照してください。 
+* **サービス サブスクリプションのストレージ アカウント** - サービスと同じサブスクリプションに関連付けられている Azure ストレージ アカウントです。 このストレージ アカウントの作成方法の詳細については、 [Azure ストレージ アカウント](../storage/common/storage-account-create.md)に関するページを参照してください。 
 * **サービス サブスクリプションの外部のストレージ アカウント** - これらは、サービスに関連付けられていない、サービスが作成される前に存在していた可能性のある Azure ストレージ アカウントです。
 
 ## <a name="add-a-storage-account"></a>ストレージ アカウントの追加
@@ -137,7 +137,7 @@ Azure ストレージ アカウントの資格情報を追加するには、次�
 
 セキュリティ上の理由から、データ センターではキー ローテーションが必要になることがよくあります。 ストレージ アカウントは、各 Microsoft Azure サブスクリプションにつき 1 つまたは複数作成できます。 これらのアカウントへのアクセスは、各ストレージ アカウントのサブスクリプションとアクセス キーによって制御されます。 
 
-ストレージ アカウントを作成するときに、Microsoft Azure によって 2 つの 512 ビット ストレージ アクセス キーが生成されます。これらは、ストレージ アカウントにアクセスするときに認証の目的で使用されます。 2 つのストレージ アクセス キーがあると、ストレージ サービスまたはそのサービスへのアクセスを中断することなくキーを再生成できます。 現在使用されているキーは*プライマリ* キーと呼ばれ、バックアップ キーは*セカンダリ* キーと呼ばれます。 Microsoft Azure StorSimple デバイスがクラウド ストレージ サービス プロバイダーにアクセスするときは、これら 2 つのキーのどちらかを指定する必要があります。
+ストレージ アカウントを作成するときに、Microsoft Azure によって 2 つの 512 ビット ストレージ アクセス キーが生成されます。これらは、ストレージ アカウントにアクセスするときに認証の目的で使用されます。 2 つのストレージ アクセス キーがあると、ストレージ サービスまたはそのサービスへのアクセスを中断することなくキーを再生成できます。 現在使用されているキーは *プライマリ* キーと呼ばれ、バックアップ キーは *セカンダリ* キーと呼ばれます。 Microsoft Azure StorSimple デバイスがクラウド ストレージ サービス プロバイダーにアクセスするときは、これら 2 つのキーのどちらかを指定する必要があります。
 
 ## <a name="what-is-key-rotation"></a>キーのローテーションとは
 
@@ -179,4 +179,3 @@ StorSimple デバイス マネージャー サービスにこの変更を認識�
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple のセキュリティの詳細](storsimple-8000-security.md)
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)の詳細
-

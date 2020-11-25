@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: e34701640de24a4c3c13f8d10073b4392af2f28a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b18627d2806662d6d966af95d51873d5623b2393
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88183651"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015538"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>.NET SDK を使用してデータ変換を開始する
 
@@ -33,7 +33,7 @@ ms.locfileid: "88183651"
 
     - Visual Studio 2012、2013、2015、または 2017。
 
-    - Azure Powershell。 [Azure PowerShell のダウンロード](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
+    - Azure Powershell。 [Azure PowerShell のダウンロード](/powershell/azure/)。
 *   リソース グループ内で StorSimple Data Manager に正しく構成されたジョブ定義。
 *   すべての必須 dll。 この dll は [GitHub リポジトリ](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)からダウンロードします。
 *   GitHub リポジトリの [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)スクリプト。
@@ -61,18 +61,18 @@ ms.locfileid: "88183651"
 
 3. Visual Studio 2012、2013、または 2015 を使用して、C# .NET コンソール アプリケーションを作成します。
 
-    1. **Visual Studio 2012/2013/2015**を起動します。
+    1. **Visual Studio 2012/2013/2015** を起動します。
     1. **[ファイル] > [新規] > [プロジェクト]** を選択します。
 
         ![プロジェクト 1 の作成](media/storsimple-data-manager-dotnet-jobs/create-new-project-7.png)        
     2. **[インストール済み] > [テンプレート] > [Visual C#] > [コンソール アプリケーション]** の順にクリックします。
-    3. **名前**として「**DataTransformationApp**」を入力します。
-    4. **場所**として「**C:\DataTransformation**」を入力します。
+    3. **名前** として「**DataTransformationApp**」を入力します。
+    4. **場所** として「**C:\DataTransformation**」を入力します。
     6. **[OK]** をクリックしてプロジェクトを作成します。
 
         ![プロジェクト 2 の作成](media/storsimple-data-manager-dotnet-jobs/create-new-project-1.png)
 
-4. ここで、[dlls](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) フォルダーに存在するすべての dll を、作成したプロジェクトに**参照**として追加します。 dll ファイルを追加するには、次の手順を実行します。
+4. ここで、[dlls](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) フォルダーに存在するすべての dll を、作成したプロジェクトに **参照** として追加します。 dll ファイルを追加するには、次の手順を実行します。
 
    1. Visual Studio で、 **[表示] > [ソリューション エクスプ ローラー]** の順に移動します。
    2. データ変換アプリ プロジェクトの左側にある矢印をクリックします。 **[参照]** をクリックし、 **[参照の追加]** を右クリックします。
@@ -94,7 +94,7 @@ ms.locfileid: "88183651"
     using Microsoft.Internal.Dms.DmsWebJob.Contracts;
     ```
     
-6. 次のコードでは、データ変換ジョブ インスタンスを初期化します。 これを **Main メソッド**に追加します。 先ほど取得した構成パラメーターの値を置き換えます。 **リソース グループ名**と **ResourceName** の値をプラグインします。 **ResourceGroupName** は、ジョブ定義が構成された StorSimple Data Manager に関連付けられています。 **ResourceName** は、お使いの StorSimple Data Manager サービスの名前です。
+6. 次のコードでは、データ変換ジョブ インスタンスを初期化します。 これを **Main メソッド** に追加します。 先ほど取得した構成パラメーターの値を置き換えます。 **リソース グループ名** と **ResourceName** の値をプラグインします。 **ResourceGroupName** は、ジョブ定義が構成された StorSimple Data Manager に関連付けられています。 **ResourceName** は、お使いの StorSimple Data Manager サービスの名前です。
 
     ```
     // Setup the configuration parameters.
@@ -149,7 +149,7 @@ ms.locfileid: "88183651"
     };
     ```
 
-8. 初期化したら、次のコードを追加して、ジョブ定義でデータ変換ジョブをトリガーします。 適切な**ジョブ定義名**をプラグインします。
+8. 初期化したら、次のコードを追加して、ジョブ定義でデータ変換ジョブをトリガーします。 適切な **ジョブ定義名** をプラグインします。
 
     ```
     // Trigger a job, retrieve the jobId and the retry interval for polling.

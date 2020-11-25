@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0d5947f669b600b544cd7e5265e2cce8de118374
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1af80f208c72af9434d596f2c1219c08c0e3f719
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82788998"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015999"
 ---
 ## <a name="create-an-image-gallery"></a>イメージ ギャラリーを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "82788998"
 次の例では、*myGalleryRG* リソース グループに *myGallery* という名前のギャラリーを作成します。
 
 1. Azure Portal ( https://portal.azure.com ) にサインインします。
-1. 検索ボックスで**共有イメージ ギャラリー**という種類を使用して、結果で **[共有イメージ ギャラリー]** を選択します。
+1. 検索ボックスで **共有イメージ ギャラリー** という種類を使用して、結果で **[共有イメージ ギャラリー]** を選択します。
 1. **[共有イメージ ギャラリー]** ページで、 **[追加]** をクリックします。
 1. **[Shared Image Gallery の作成]** ページで、適切なサブスクリプションを選択します。
 1. **[リソース グループ]** で、 **[新規作成]** を選択し、名前として「*myGalleryRG*」を入力します。
@@ -35,7 +35,7 @@ ms.locfileid: "82788998"
 
 ## <a name="create-an-image-definition"></a>イメージ定義を作成する 
 
-イメージ定義では、イメージの論理グループを作成します。 これは、その中に作成されるイメージ バージョンに関する情報を管理するために使用されます。 イメージ定義名は、大文字または小文字、数字、ドット、ダッシュおよびピリオドで構成できます。 イメージ定義に指定できる値の詳細については、[イメージ定義](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)に関するページを参照してください。
+イメージ定義では、イメージの論理グループを作成します。 これは、その中に作成されるイメージ バージョンに関する情報を管理するために使用されます。 イメージ定義名は、大文字または小文字、数字、ドット、ダッシュおよびピリオドで構成できます。 イメージ定義に指定できる値の詳細については、[イメージ定義](../articles/virtual-machines/windows/shared-image-galleries.md#image-definitions)に関するページを参照してください。
 
 ギャラリー内でギャラリー イメージ定義を作成します。 この例では、ギャラリー イメージが *myImageDefinition* という名前になっています。
 
@@ -43,7 +43,7 @@ ms.locfileid: "82788998"
 1. **[共有イメージ ギャラリーに新しいイメージ定義を追加]** の **[リージョン]** で *[米国東部]* を選択します。
 1. **[イメージの定義名]** で、「*myImageDefinition*」と入力します。
 1. **[オペレーティング システム]** では、ソース VM に基づいて適切なオプションを選択します。  
-1. **[VM の生成]** では、ソース VM に基づいてオプションを選択します。 ほとんどの場合、これは *[Gen 1]* になります。 詳細については、[第 2 世代 VM に対するサポート](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)に関するページを参照してください。
+1. **[VM の生成]** では、ソース VM に基づいてオプションを選択します。 ほとんどの場合、これは *[Gen 1]* になります。 詳細については、[第 2 世代 VM に対するサポート](../articles/virtual-machines/generation-2.md)に関するページを参照してください。
 1. **[オペレーティング システムの状態]** では、ソース VM に基づいて適切なオプションを選択します。 詳細については、[一般化と特殊化](../articles/virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images)に関するページを参照してください。
 1. **[発行元]** では、「*myPublisher*」と入力します。 
 1. **[プラン]** では、「*myOffer*」と入力します。
@@ -104,4 +104,3 @@ ms.locfileid: "82788998"
 1. ユーザーが組織外の場合、"**このユーザーには、Microsoft で共同作業できるようにするメールが送信されます**" というメッセージが表示されます。 メール アドレスでユーザーを選択して、 **[保存]** をクリックします。
 
 ユーザーが組織外の場合は、組織に参加するための招待メールを受け取ります。 そのユーザーは招待に同意する必要があり、その後ギャラリーとリソースの一覧にイメージの定義とバージョンをすべて表示できるようになります。
-

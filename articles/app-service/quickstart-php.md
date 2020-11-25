@@ -6,11 +6,11 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 152a000939f74b1852073742e501ac66246389a5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88961438"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015889"
 ---
 # <a name="create-a-php-web-app-in-azure-app-service"></a>Azure App Service に PHP Web アプリを作成する
 
@@ -196,7 +196,7 @@ git push azure master
 
     ![Azure アプリへのポータル ナビゲーション](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
 
-    Web アプリの **[概要]** ページが表示されます。 ここでは、**参照**、**停止**、**再開**、**削除**のような基本的な管理タスクを行うことができます。
+    Web アプリの **[概要]** ページが表示されます。 ここでは、**参照**、**停止**、**再開**、**削除** のような基本的な管理タスクを行うことができます。
 
     ![Azure Portal の [App Service] ページ](media/quickstart-php/php-docs-hello-world-app-service-detail.png)
 

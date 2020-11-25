@@ -1,7 +1,7 @@
 ---
 title: 開発するモバイル アプリでシングル サインオンとアプリ保護ポリシーをサポートする | Azure
 titleSuffix: Microsoft identity platform
-description: シングル サインオンとアプリ保護ポリシーをサポートするモバイル アプリケーションのビルドの説明と概要
+description: Microsoft ID プラットフォームを使用し、Azure Active Directory と統合してシングル サインオンとアプリ保護ポリシーをサポートするモバイル アプリケーションの構築に関する説明と概要。
 services: active-directory
 author: knicholasa
 manager: CelesteDG
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 09fc29b54951d2f33acc725c734e01e3d3364ff0
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 4a9282882d23ecbdc3c03ca158ea3de5566143e7
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331608"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634856"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>開発するモバイル アプリでシングル サインオンとアプリ保護ポリシーをサポートする
 
-シングル サインオン (SSO) を使用すると、アプリのユーザーは簡単で安全なログインを実現できます。 アプリ保護ポリシー (APP) を使用すると、ユーザーのデータを安全に保つための主要なセキュリティ ポリシーをサポートできます。 これらの機能を併用することにより、ユーザーのログインとアプリのデータの管理がセキュリティで保護されます。
+シングル サインオン (SSO) は、アプリ ユーザーに簡単で安全なログインを提供する、Microsoft ID プラットフォームと Azure Active Directory の重要なオファリングです。 さらに、アプリ保護ポリシー (APP) を使用すると、ユーザーのデータを安全に保つ主要なセキュリティ ポリシーをサポートできます。 これらの機能を併用することにより、ユーザーのログインとアプリのデータの管理がセキュリティで保護されます。
 
 この記事では、SSO と APP が重要である理由について説明し、これらの機能をサポートするモバイル アプリケーションをビルドするための概略的なガイダンスを示します。 これは、電話とタブレットの両方のアプリに適用されます。 組織の Azure Active Directory テナント全体に SSO をデプロイする IT 管理者は、[シングル サインオンのデプロイを計画するためのガイダンス](../manage-apps/plan-sso-deployment.md)を確認してください。
 

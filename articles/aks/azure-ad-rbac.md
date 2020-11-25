@@ -1,20 +1,20 @@
 ---
-title: Azure AD と RBAC をクラスターに使用する
+title: Azure AD と Kubernetes RBAC をクラスターに使用する
 titleSuffix: Azure Kubernetes Service
-description: Azure Kubernetes Service (AKS) でロールベースのアクセス制御 (RBAC) を使用してクラスター リソースへのアクセスを制限するために、Azure Active Directory グループのメンバーシップを使用する方法を学習します
+description: Azure Kubernetes Service (AKS) で Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC) を使用してクラスター リソースへのアクセスを制限するために、Azure Active Directory グループのメンバーシップを使用する方法について説明します
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: 2845a091c8a89f22e8892141dd2dad26d6049447
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f49e9f6b4f5aaf58ff055043b52cfe99e3e39f19
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88006844"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684289"
 ---
-# <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Service でロールベースのアクセス制御と Azure Active Directory ID を使用してクラスター リソースへのアクセスを制限する
+# <a name="control-access-to-cluster-resources-using-kubernetes-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Service で Kubernetes のロールベースのアクセス制御と Azure Active Directory ID を使用してクラスター リソースへのアクセスを制限する
 
-Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Directory (AD) を使うように構成することができます。 この構成では、Azure AD 認証トークンを使って AKS クラスターにサインインします。 また、ユーザーの ID またはグループ メンバーシップに基づいて、クラスター リソースへのアクセスを制限するように Kubernetes のロールベースのアクセス制御 (RBAC) を構成することもできます。
+Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Directory (AD) を使うように構成することができます。 この構成では、Azure AD 認証トークンを使って AKS クラスターにサインインします。 また、ユーザーの ID またはグループ メンバーシップに基づいて、クラスター リソースへのアクセスを制限するように Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC) を構成することもできます。
 
 この記事では、AKS クラスターで Kubernetes RBAC を使用して名前空間とクラスター リソースへのアクセスを制御するために、Azure AD グループのメンバーシップを使用する方法を示します。 Azure AD でグループとユーザーの例が作成され、リソースを作成および表示するために適切な権限を付与するため AKS クラスター内に Role と RoleBinding が作成されます。
 
@@ -68,7 +68,7 @@ az role assignment create \
 OPSSRE_ID=$(az ad group create --display-name opssre --mail-nickname opssre --query objectId -o tsv)
 ```
 
-ここでも、グループのメンバーに *Azure Kubernetes Service クラスター ユーザー ロール*を付与するための Azure ロール割り当てを作成します。
+ここでも、グループのメンバーに *Azure Kubernetes Service クラスター ユーザー ロール* を付与するための Azure ロール割り当てを作成します。
 
 ```azurecli-interactive
 az role assignment create \
@@ -79,7 +79,7 @@ az role assignment create \
 
 ## <a name="create-demo-users-in-azure-ad"></a>Azure AD でデモ ユーザーを作成する
 
-このアプリケーション開発者と SRE に Azure AD で作成した 2 つのグループ例を使用して、2 つのユーザー例を作成しましょう。 この記事の最後で RBAC 統合をテストするには、これらのアカウントを使用して AKS クラスターにサインインします。
+このアプリケーション開発者と SRE に Azure AD で作成した 2 つのグループ例を使用して、2 つのユーザー例を作成しましょう。 この記事の最後で Kubernetes RBAC 統合をテストするには、これらのアカウントを使用して AKS クラスターにサインインします。
 
 [az ad user create][az-ad-user-create] コマンドを使用して、Azure AD で最初のユーザー アカウントを作成します。
 
@@ -129,7 +129,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --ad
 kubectl create namespace dev
 ```
 
-Kubernetes では、*Role* によって付与するアクセス許可が定義され、*RoleBinding* によってそれらが目的のユーザーまたはグループに適用されます。 これらの割り当ては、特定の名前空間に適用することも、クラスター全体に適用することもできます。 詳細については、[RBAC 承認の使用][rbac-authorization]に関するページを参照してください。
+Kubernetes では、*Role* によって付与するアクセス許可が定義され、*RoleBinding* によってそれらが目的のユーザーまたはグループに適用されます。 これらの割り当ては、特定の名前空間に適用することも、クラスター全体に適用することもできます。 詳細については、[Kubernetes RBAC 認可の使用][rbac-authorization]に関するページを参照してください。
 
 最初に、*dev* 名前空間に Role を作成します。 このロールにより名前空間に完全なアクセス許可が付与されます。 運用環境では、さまざまなユーザーまたはグループに対してより細かくアクセス許可を指定できます。
 
@@ -285,7 +285,7 @@ pod/nginx-dev created
 kubectl get pods --namespace dev
 ```
 
-次の出力例に示すように、NGINX ポッドは正常に*実行されています*。
+次の出力例に示すように、NGINX ポッドは正常に *実行されています*。
 
 ```console
 $ kubectl get pods --namespace dev
@@ -410,5 +410,5 @@ ID とリソース管理に関するベスト プラクティスについては�
 [az-ad-user-create]: /cli/azure/ad/user#az-ad-user-create
 [az-ad-group-member-add]: /cli/azure/ad/group/member#az-ad-group-member-add
 [az-ad-group-show]: /cli/azure/ad/group#az-ad-group-show
-[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md

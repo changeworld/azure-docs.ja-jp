@@ -8,12 +8,12 @@ ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: d7718ebbbf4f9dec3519ce46e5d0d1cdbb5a7460
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: aa1c681d4b34199456f3447bcac5587005a044ce
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745971"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96016635"
 ---
 # <a name="using-azure-ultra-disks"></a>Azure Ultra ディスクの使用
 
@@ -29,7 +29,7 @@ Azure Ultra ディスクは、Azure IaaS 仮想マシン (VM) に高スループ
 
 ### <a name="vms-using-availability-zones"></a>可用性ゾーンを使用する VM
 
-Ultra ディスクを利用するには、ご使用の可用性ゾーンを確認する必要があります。 すべてのリージョンで、Ultra ディスクに対してすべての VM サイズがサポートされるわけではありません。 ご使用のリージョン、ゾーン、および VM サイズで Ultra ディスクがサポートされているかどうかを確認するには、次のコマンドのいずれかを実行します。最初に、必ず **region** 、 **vmSize** 、および **subscription** の値を置き換えてください。
+Ultra ディスクを利用するには、ご使用の可用性ゾーンを確認する必要があります。 すべてのリージョンで、Ultra ディスクに対してすべての VM サイズがサポートされるわけではありません。 ご使用のリージョン、ゾーン、および VM サイズで Ultra ディスクがサポートされているかどうかを確認するには、次のコマンドのいずれかを実行します。最初に、必ず **region**、**vmSize**、および **subscription** の値を置き換えてください。
 
 #### <a name="cli"></a>CLI
 
@@ -155,7 +155,7 @@ VM がプロビジョニングされたら、データ ディスクをパーテ�
 - **[カスタム ディスク サイズ (GiB)]** 、 **[ディスク IOPS]** 、および **[ディスク スループット]** を任意のものに変更します。
 - 両方のブレードで **[OK]** を選択します。
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="[新しいディスクの作成] ブレードのスクリーンショット。[サイズの変更] が強調表示されています。":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="[ディスクサイズの選択] ブレードのスクリーンショット。ストレージの種類として選択された Ultra ディスクと、その他の値が強調表示されています。":::
 
 - VM のデプロイを続行します。それは、他の VM をデプロイする場合と同じになります。
 
@@ -165,18 +165,21 @@ VM がプロビジョニングされたら、データ ディスクをパーテ�
 
 Ultra ディスクを接続するには、Ultra ディスクを使用できる VM を作成する必要があります。
 
-**$vmname** 、 **$rgname** 、 **$diskname** 、 **$location** 、 **$password** 、 **$user** の各変数を、ご自身の実際の値に置き換えるか、設定します。 **$zone** を、 [この記事の最初](#determine-vm-size-and-region-availability)に取得したご自身の可用性ゾーンの値に設定します。 その後、次の CLI コマンドを実行して、Ultra 対応 VM を作成します。
+**$vmname**、 **$rgname**、 **$diskname**、 **$location**、 **$password**、 **$user** の各変数を、ご自身の実際の値に置き換えるか、設定します。 **$zone** を、[この記事の最初](#determine-vm-size-and-region-availability)に取得したご自身の可用性ゾーンの値に設定します。 その後、次の CLI コマンドを実行して、Ultra 対応 VM を作成します。
 
 ```azurecli-interactive
 az disk create --subscription $subscription -n $diskname -g $rgname --size-gb 1024 --location $location --sku UltraSSD_LRS --disk-iops-read-write 8192 --disk-mbps-read-write 400
 az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location --attach-data-disks $diskname
+
+#create an ultra disk with 512 sector size
+az disk create --subscription $subscription -n $diskname -g $rgname --size-gb 1024 --location $location --sku UltraSSD_LRS --disk-iops-read-write 8192 --disk-mbps-read-write 400 --logical-sector-size 512
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 最初に、デプロイする VM のサイズを決定します。 サポートされている VM サイズの一覧については、「[GA のスコープと制限事項](#ga-scope-and-limitations)」セクションを参照してください。
 
-Ultra ディスクを使用するには、Ultra ディスクを使用できる VM を作成する必要があります。 **$resourcegroup** 変数と **$vmName** 変数を、ご自身の実際の値に置き換えるか、設定します。 **$zone** を、 [この記事の最初](#determine-vm-size-and-region-availability)に取得したご自身の可用性ゾーンの値に設定します。 その後、次の [New-AzVm](/powershell/module/az.compute/new-azvm) コマンドを実行して、Ultra 対応 VM を作成します。
+Ultra ディスクを使用するには、Ultra ディスクを使用できる VM を作成する必要があります。 **$resourcegroup** 変数と **$vmName** 変数を、ご自身の実際の値に置き換えるか、設定します。 **$zone** を、[この記事の最初](#determine-vm-size-and-region-availability)に取得したご自身の可用性ゾーンの値に設定します。 その後、次の [New-AzVm](/powershell/module/az.compute/new-azvm) コマンドを実行して、Ultra 対応 VM を作成します。
 
 ```powershell
 New-AzVm `
@@ -222,6 +225,18 @@ $vm = Get-AzVM -ResourceGroupName $resourceGroup -Name $vmName
 $disk = Get-AzDisk -ResourceGroupName $resourceGroup -Name $diskName
 $vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $disk.Id -Lun $lun
 Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
+
+# Example for creating a disk with 512 sector size
+$diskconfig = New-AzDiskConfig `
+-Location 'EastUS2' `
+-DiskSizeGB 8 `
+-DiskIOPSReadWrite 1000 `
+-DiskMBpsReadWrite 100 `
+-LogicalSectorSize 512 `
+-AccountType UltraSSD_LRS `
+-CreateOption Empty `
+-zone $zone;
+
 ```
 
 ---
@@ -250,7 +265,7 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 - **[アカウントの種類]** を **[Ultra Disk]** に変更します。
 - **[カスタム ディスク サイズ (GiB)]** 、 **[ディスク IOPS]** 、および **[ディスク スループット]** を任意のものに変更します。
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="[新しいディスクの作成] ブレードのスクリーンショット。[サイズの変更] が強調表示されています。":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="[ディスクサイズの選択] ブレードのスクリーンショット。ストレージの種類として選択された Ultra ディスクと、その他の値が強調表示されています。":::
 
 - **[OK]** を選択し、 **[作成]** を選択します。
 - ディスクのブレードに戻ったら、 **[保存]** を選択します。

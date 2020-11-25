@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 7ba8a5ded1d83ffdf153724c5e76b27e10bccfcb
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515763"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015470"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>CLI を使用して Azure Database for MariaDB 用の Private Link を作成および管理する
 
@@ -185,7 +185,7 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
 
 6. (省略可能) 左側のメニューからデータベースを参照して、MariaDB データベースからの情報を作成または照会します
 
-8. myVM へのリモート デスクトップ接続を閉じます。
+8. myVm へのリモート デスクトップ接続を閉じます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする 
 不要になったら、az group delete を使用して、リソース グループとそのすべてのリソースを削除できます。 

@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: guybo
 ms.openlocfilehash: a80cc29f318cff8e5a4c665cd07ba1829d25d66d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373387"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016337"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>動作保証外のディストリビューションに関する情報
 
@@ -35,7 +35,7 @@ Azure で実行されているすべてのディストリビューションに�
 この記事では、Azure 上で Linux ディストリビューションを実行するための一般的なガイダンスについて、重点的に説明します。
 
 ## <a name="general-linux-installation-notes"></a>Linux のインストールに関する一般的な注記
-* Hyper-V 仮想ハード ディスク (VHDX) 形式は Azure ではサポートされていません。サポートされているのは *固定 VHD* のみです。  Hyper-V マネージャーまたは [Convert-VHD](/powershell/module/hyper-v/convert-vhd) コマンドレットを使用して、ディスクを VHD 形式に変換できます。 VirtualBox を使用する場合は、ディスクの作成時に、既定 (動的に割り当てられるサイズ) ではなく、**固定サイズ**を選択します。
+* Hyper-V 仮想ハード ディスク (VHDX) 形式は Azure ではサポートされていません。サポートされているのは *固定 VHD* のみです。  Hyper-V マネージャーまたは [Convert-VHD](/powershell/module/hyper-v/convert-vhd) コマンドレットを使用して、ディスクを VHD 形式に変換できます。 VirtualBox を使用する場合は、ディスクの作成時に、既定 (動的に割り当てられるサイズ) ではなく、**固定サイズ** を選択します。
 * Azure では、Gen1 (BIOS ブート) および Gen2 (UEFI ブート) 仮想マシンがサポートされています。
 * VHD のサイズの上限は、1,023 GB です。
 * Linux システムをインストールする場合は、Logical Volume Manager (LVM) (多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 標準パーティションを使用することにより、特に OS ディスクをトラブルシューティングのために別の同じ VM に接続する場合に、LVM 名と複製された VM の競合が回避されます。 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) をデータ ディスク上で使用できます。
@@ -157,7 +157,7 @@ Red Hat Enterprise Linux バージョン 6.0 ～ 6.3 のバリアントを実行
     ```  
     console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300
     ```
-    また、次のパラメーターがある場合、それらを*削除*することをお勧めします。
+    また、次のパラメーターがある場合、それらを *削除* することをお勧めします。
     ```  
     rhgb quiet crashkernel=auto
     ```

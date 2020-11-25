@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cb783e5da7364f38944ce31ce49a6a6529658fe3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f6d2b126cd9a0acbbbdb8d17ce7345bbf17b556
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903205"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635910"
 ---
 # <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスで kubectl を使用して Kubernetes クラスターに接続して管理する
 
@@ -44,7 +44,7 @@ Kubernetes クラスターが作成されたら、このクラスターにアク
 [!INCLUDE [Connect to admin runspace](../../includes/azure-stack-edge-gateway-connect-minishell.md)]
 
 
-## <a name="configure-cluster-access-via-rbac"></a>RBAC を使用してクラスター アクセスを構成する
+## <a name="configure-cluster-access-via-kubernetes-rbac"></a>Kubernetes RBAC を使用してクラスター アクセスを構成する
 
 Kubernetes クラスターが作成されたら、コマンドラインから *kubectl* を使用してそのクラスターにアクセスできます。 
 

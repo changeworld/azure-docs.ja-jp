@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 12/17/2019
 ms.author: raynew
 ms.openlocfilehash: 2994f68e4159c7c4aa7d82bef7a5891deb5055a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292822"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017425"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Azure にレプリケートされた物理サーバーのフェールオーバーとフェールバック
 
@@ -51,7 +51,7 @@ ms.locfileid: "87292822"
 
 3. Site Recovery でフェールオーバーをトリガーする前にそのソース マシンをシャットダウンする場合は、 **[フェールオーバーを開始する前にマシンをシャットダウンします]** を選択します。 仮にシャットダウンが失敗したとしても、フェールオーバーは続行されます。 フェールオーバーの進行状況は **[ジョブ]** ページで確認できます。
 4. Azure VM に接続する準備が完了したら、フェールオーバー後に接続して確認します。
-5. 確認が完了したら、フェールオーバーを**コミット**します。 これにより、利用可能なすべての復旧ポイントが削除されます。
+5. 確認が完了したら、フェールオーバーを **コミット** します。 これにより、利用可能なすべての復旧ポイントが削除されます。
 
 > [!WARNING]
 > 進行中のフェールオーバーを取り消さないでください。 フェールオーバーが開始する前にマシンのレプリケーションが停止します。 フェールオーバーを取り消すと、フェールオーバーは停止しますが、マシンが再びレプリケートしなくなります。

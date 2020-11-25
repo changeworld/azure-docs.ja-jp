@@ -11,16 +11,18 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5af55c16ae17b30d2079b332c236c325f3bed4df
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 25c5e6445bb5d673db1cfb755f320302a9e9c5b5
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613273"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561864"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>クイック スタート:Windows デスクトップ アプリからトークンを取得し、Microsoft Graph API を呼び出す
 
-このクイック スタートでは、個人や仕事、学校のアカウントへのサインイン、アクセス トークンの取得、Microsoft Graph API の呼び出しを実行できる Windows デスクトップ .NET (WPF) アプリケーションの作成方法を学びます。 (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
+このクイックスタートでは、Windows デスクトップ .NET (WPF) アプリケーションでユーザーをサインインし、アクセス トークンを取得して Microsoft Graph API を呼び出す方法を示すコード サンプルをダウンロードして実行します。 
+
+図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
 
 > [!div renderon="docs"]
 > ## <a name="prerequisites"></a>前提条件
@@ -70,7 +72,7 @@ ms.locfileid: "91613273"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Visual Studio 2019 を使用してプロジェクトを実行します。
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [コード サンプルをダウンロードします](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -93,11 +95,11 @@ ms.locfileid: "91613273"
 >    ```
 >
 > 各値の説明:
-> - `Enter_the_Application_Id_here` - 登録したアプリケーションの**アプリケーション (クライアント) ID**。
+> - `Enter_the_Application_Id_here` - 登録したアプリケーションの **アプリケーション (クライアント) ID**。
 > - `Enter_the_Tenant_Info_Here` - 次のいずれかのオプションに設定します。
->   - アプリケーションで**この組織のディレクトリ内のアカウント**をサポートする場合は、この値を**テナント ID** または**テナント名**に置き換えます (たとえば、contoso.microsoft.com)
+>   - アプリケーションで **この組織のディレクトリ内のアカウント** をサポートする場合は、この値を **テナント ID** または **テナント名** に置き換えます (たとえば、contoso.microsoft.com)
 >   - アプリケーションで **[任意の組織のディレクトリ内のアカウント]** がサポートされる場合は、この値を `organizations` に置き換えます。
->   - アプリケーションで**任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント**をサポートする場合は、この値を `common` に置き換えます
+>   - アプリケーションで **任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント** をサポートする場合は、この値を `common` に置き換えます
 >
 > > [!TIP]
 > > **[アプリケーション (クライアント) ID]** 、 **[ディレクトリ (テナント) ID]** 、 **[サポートされているアカウントの種類]** の値を見つけるには、Azure portal でアプリの **[概要]** ページに移動します。
