@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 19b4ac619ec3e72c787efc8e9f043f42dbd8b09b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85505156"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010301"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Azure Data Lake Storage Gen1 に対する .NET SDK を使用したサービス間認証
 > [!div class="op_single_selector"]
@@ -46,9 +46,9 @@ ms.locfileid: "85505156"
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - このチュートリアルでは、v2.2.12 を使用します。
 
         ![NuGet ソースを追加する](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "新しい Azure Data Lake アカウントの作成")
-   4. **NuGet パッケージ マネージャー**を閉じます。
+   4. **NuGet パッケージ マネージャー** を閉じます。
 
-5. **Program.cs**を開き、既存のコードを削除し、次のステートメントに置き換えて、名前空間の参照を追加します。
+5. **Program.cs** を開き、既存のコードを削除し、次のステートメントに置き換えて、名前空間の参照を追加します。
 
 ```csharp
 using System;
@@ -67,7 +67,7 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
 ## <a name="service-to-service-authentication-with-client-secret"></a>クライアント シークレットによるサービス間認証
-このスニペットを .NET クライアント アプリケーションに追加します。 プレースホルダーの値を、Azure AD の Web アプリケーション (前提条件として一覧表示) から取得した値で置き換えます。 このスニペットを使用すると、Data Lake Storage Gen1 に対し、Azure AD Web アプリケーションのクライアント シークレット/キーを使用して、**非対話形式**でアプリケーションを認証することができます。
+このスニペットを .NET クライアント アプリケーションに追加します。 プレースホルダーの値を、Azure AD の Web アプリケーション (前提条件として一覧表示) から取得した値で置き換えます。 このスニペットを使用すると、Data Lake Storage Gen1 に対し、Azure AD Web アプリケーションのクライアント シークレット/キーを使用して、**非対話形式** でアプリケーションを認証することができます。
 
 ```csharp
 private static void Main(string[] args)
@@ -88,7 +88,7 @@ private static void Main(string[] args)
 
 ## <a name="service-to-service-authentication-with-certificate"></a>証明書によるサービス間認証
 
-このスニペットを .NET クライアント アプリケーションに追加します。 プレースホルダーの値を、Azure AD の Web アプリケーション (前提条件として一覧表示) から取得した値で置き換えます。 このスニペットを使用すると、Data Lake Storage Gen1 に対し、Azure AD Web アプリケーションの証明書を使用して、**非対話形式**でアプリケーションを認証することができます。 Azure AD アプリケーションを作成する方法の手順については、[証明書を使用したサービス プリンシパルの作成](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)に関するページを参照してください。
+このスニペットを .NET クライアント アプリケーションに追加します。 プレースホルダーの値を、Azure AD の Web アプリケーション (前提条件として一覧表示) から取得した値で置き換えます。 このスニペットを使用すると、Data Lake Storage Gen1 に対し、Azure AD Web アプリケーションの証明書を使用して、**非対話形式** でアプリケーションを認証することができます。 Azure AD アプリケーションを作成する方法の手順については、[証明書を使用したサービス プリンシパルの作成](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)に関するページを参照してください。
 
 ```csharp
 private static void Main(string[] args)

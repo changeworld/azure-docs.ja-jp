@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: ad83e7ad5e1ffc03bf7c62df9b28512e19a62100
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739784"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010199"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 上での認証と承認の高度な使用方法
 
@@ -170,13 +170,13 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 
 プロバイダーのアクセス トークン ([セッション トークン](#extend-session-token-expiration-grace-period)ではなく) が期限切れになった場合は、そのトークンを再度使用する前に、ユーザーを再認証する必要があります。 アプリケーションの `/.auth/refresh` エンドポイントに `GET` 呼び出しを行って、トークンの期限切れを回避することができます。 呼び出されると、App Service は認証されたユーザーの[トークン ストア](overview-authentication-authorization.md#token-store)内のアクセス トークンを自動的に更新します。 アプリ コードによる後続のトークン要求で、更新トークンを取得します。 ただし、トークンの更新が動作するためには、トークン ストアにプロバイダーの[更新トークン](https://auth0.com/learn/refresh-tokens/)が含まれている必要があります。 更新トークンの取得方法は各プロバイダーによって文書化されていますが、次の一覧に概要を示します。
 
-- **Google** : `access_type=offline` クエリ文字列パラメーターを `/.auth/login/google` API 呼び出しに追加します。 Mobile Apps SDK を使用している場合は、`LogicAsync` オーバーロードの 1 つにパラメーターを追加できます ([Google 更新トークン](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)に関するページをご覧ください)。
-- **Facebook** : 更新トークンを提供しません。 長期間維持されるトークンの有効期限は 60 日間です ([Facebook のアクセス トークンの有効期限と延長](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)に関するページをご覧ください)。
-- **Twitter** : アクセス トークンに有効期限はありません ( [Twitter OAuth の FAQ](https://developer.twitter.com/en/docs/basics/authentication/FAQ) に関するページを参照してください)。
-- **Microsoft アカウント** : [Microsoft アカウント認証設定を構成する](configure-authentication-provider-microsoft.md)場合は、`wl.offline_access` スコープを選択します。
-- **Azure Active Directory** : [https://resources.azure.com](https://resources.azure.com) で、次の手順を実行します。
+- **Google**: `access_type=offline` クエリ文字列パラメーターを `/.auth/login/google` API 呼び出しに追加します。 Mobile Apps SDK を使用している場合は、`LogicAsync` オーバーロードの 1 つにパラメーターを追加できます ([Google 更新トークン](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)に関するページをご覧ください)。
+- **Facebook**: 更新トークンを提供しません。 長期間維持されるトークンの有効期限は 60 日間です ([Facebook のアクセス トークンの有効期限と延長](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)に関するページをご覧ください)。
+- **Twitter**: アクセス トークンに有効期限はありません ([Twitter OAuth の FAQ](https://developer.twitter.com/en/docs/basics/authentication/FAQ) に関するページを参照してください)。
+- **Microsoft アカウント**: [Microsoft アカウント認証設定を構成する](configure-authentication-provider-microsoft.md)場合は、`wl.offline_access` スコープを選択します。
+- **Azure Active Directory**: [https://resources.azure.com](https://resources.azure.com) で、次の手順を実行します。
     1. ページの上部にある **[Read/Write]** を選択します。
-    2. 左側のブラウザーで、 **subscriptions** > ** _\<subscription\_name_** > **resourceGroups** > **_ \<resource\_group\_name> _** > **providers** > **Microsoft.Web** > **sites** > **_ \<app\_name>_** > **config** > **authsettings** に移動します。 
+    2. 左側のブラウザーで、**subscriptions** > ** _\<subscription\_name_** > **resourceGroups** > **_ \<resource\_group\_name> _** > **providers** > **Microsoft.Web** > **sites** > **_ \<app\_name>_** > **config** > **authsettings** に移動します。 
     3. **[編集]** をクリックします。
     4. 次のプロパティを変更します。 _\<app\_id>_ を、アクセスするサービスの Azure Active Directory アプリケーション ID に置き換えます。
 
@@ -221,9 +221,9 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>サインイン アカウントのドメインの制限
 
-Microsoft アカウントと Azure Active Directory の両方に複数のドメインからサインインできます。 たとえば、Microsoft アカウントでは _outlook.com_ 、 _live.com_ 、 _hotmail.com_ アカウントが許可されます。 Azure AD では、サインイン アカウントに任意の数のカスタム ドメインが許可されます。 ただし、ユーザーを独自のブランドの Azure AD サインインページ (`contoso.com`など) に直接誘導することもできます。 サインイン アカウントのドメイン名を提示するには、以下の手順に従います。
+Microsoft アカウントと Azure Active Directory の両方に複数のドメインからサインインできます。 たとえば、Microsoft アカウントでは _outlook.com_、_live.com_、_hotmail.com_ アカウントが許可されます。 Azure AD では、サインイン アカウントに任意の数のカスタム ドメインが許可されます。 ただし、ユーザーを独自のブランドの Azure AD サインインページ (`contoso.com`など) に直接誘導することもできます。 サインイン アカウントのドメイン名を提示するには、以下の手順に従います。
 
-[https://resources.azure.com](https://resources.azure.com) で、 **subscriptions** > ** _\<subscription\_name_** > **resourceGroups** > **_ \<resource\_group\_name> _** > **providers** > **Microsoft.Web** > **sites** > **_ \<app\_name> _** > **config** > **authsettings** に移動します。 
+[https://resources.azure.com](https://resources.azure.com) で、**subscriptions** > ** _\<subscription\_name_** > **resourceGroups** > **_ \<resource\_group\_name> _** > **providers** > **Microsoft.Web** > **sites** > **_ \<app\_name> _** > **config** > **authsettings** に移動します。 
 
 **[Edit]** をクリックし、次のプロパティを変更し、 **[Put]** をクリックします。 _\<domain\_name>_ は使用するドメインで置き換えてください。
 
@@ -247,11 +247,11 @@ App Service は最も単純な承認ケース (つまり、認証されていな
 
 ### <a name="server-level-windows-apps-only"></a>サーバー レベル (Windows アプリのみ)
 
-Windows アプリでは、 *Web.config* ファイルを編集して IIS Web サーバーの承認動作を定義できます。 Linux アプリは、IIS を使用しないため、 *Web.config* を使用して構成することはできません。
+Windows アプリでは、*Web.config* ファイルを編集して IIS Web サーバーの承認動作を定義できます。 Linux アプリは、IIS を使用しないため、*Web.config* を使用して構成することはできません。
 
 1. `https://<app-name>.scm.azurewebsites.net/DebugConsole` に移動します
 
-1. App Service ファイルのブラウザー エクスプローラーで、 *site/wwwroot* に移動します。 *Web.config* が存在しない場合は、 **+**  >  **[新しいファイル]** を選択して作成します。 
+1. App Service ファイルのブラウザー エクスプローラーで、*site/wwwroot* に移動します。 *Web.config* が存在しない場合は、 **+**  >  **[新しいファイル]** を選択して作成します。 
 
 1. *Web.config* の鉛筆を選択して編集します。 次の構成コードを追加し、 **[保存]** をクリックします。 *Web.config* が既に存在する場合は、すべての内容を含めた `<authorization>` 要素を追加するだけです。 許可するアカウントを `<allow>` 要素に追加します。
 
@@ -272,7 +272,7 @@ Windows アプリでは、 *Web.config* ファイルを編集して IIS Web サ�
 ID プロバイダーによって特定のターンキー承認が提供される場合があります。 次に例を示します。
 
 - [Azure App Service](configure-authentication-provider-aad.md) の場合、Azure AD で直接、[エンタープライズ レベルのアクセスを管理](../active-directory/manage-apps/what-is-access-management.md)できます。 説明については、「[アプリケーションへのユーザー アクセスの削除方法](../active-directory/manage-apps/methods-for-removing-user-access.md)」をご覧ください。
-- [Google](configure-authentication-provider-google.md) の場合、特定の [組織](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations)に属する Google API プロジェクトを、その組織内のユーザーだけにアクセスを許可するように構成できます ( [Google の「 **Setting up OAuth 2.0** 」サポート ページ](https://support.google.com/cloud/answer/6158849?hl=en)をご覧ください)。
+- [Google](configure-authentication-provider-google.md) の場合、特定の [組織](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations)に属する Google API プロジェクトを、その組織内のユーザーだけにアクセスを許可するように構成できます ([Google の「**Setting up OAuth 2.0**」サポート ページ](https://support.google.com/cloud/answer/6158849?hl=en)をご覧ください)。
 
 ### <a name="application-level"></a>アプリケーション レベル
 
@@ -531,7 +531,7 @@ az webapp auth update --name <my_app_name> \
 
 `<my_app_name>` をご自分のアプリの名前に置き換えます。 また、`<my_resource_group>` をアプリのリソース グループの名前に置き換えます。 また、`<version>` を 1.x ランタイムの有効なバージョン、または最新バージョンの `~1` に置き換えます。 さまざまなランタイム バージョンのリリース ノートを [こちら] (https://github.com/Azure/app-service-announcements) ) で検索して、ピン留め先となるバージョンを特定することができます。
 
-このコマンドは、上記のコード サンプルの **[テスト]** をクリックすることで、 [Azure Cloud Shell](../cloud-shell/overview.md) から実行できます。 また、[Azure CLI をローカルに](/cli/azure/install-azure-cli)使用して、[az ログイン](/cli/azure/reference-index#az-login)を実行してサインインした後に、このコマンドを実行することもできます。
+このコマンドは、上記のコード サンプルの **[テスト]** をクリックすることで、[Azure Cloud Shell](../cloud-shell/overview.md) から実行できます。 また、[Azure CLI をローカルに](/cli/azure/install-azure-cli)使用して、[az ログイン](/cli/azure/reference-index#az-login)を実行してサインインした後に、このコマンドを実行することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

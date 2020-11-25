@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.openlocfilehash: 0b15d560e2678772cefdf3d87c047013b24ed467
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675480"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010284"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-11-token-enabled-lob-app"></a>チュートリアル: Azure Active Directory と SAML 1.1 Token enabled LOB App の統合
 
@@ -41,7 +41,7 @@ Azure AD と SAML 1.1 Token enabled LOB App の統合を構成するには、次
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* SAML 1.1 Token enabled LOB App では、 **SP** によって開始される SSO がサポートされます
+* SAML 1.1 Token enabled LOB App では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-saml-11-token-enabled-lob-app-from-the-gallery"></a>ギャラリーからの SAML 1.1 Token enabled LOB App の追加
 
@@ -61,13 +61,13 @@ Azure AD への SAML 1.1 Token enabled LOB App の統合を構成するには、
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. [検索] ボックスに「 **SAML 1.1 Token enabled LOB App** 」と入力し、結果パネルで **SAML 1.1 Token enabled LOB App** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. [検索] ボックスに「**SAML 1.1 Token enabled LOB App**」と入力し、結果パネルで **SAML 1.1 Token enabled LOB App** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの SAML 1.1 Token enabled LOB App](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、SAML 1.1 Token enabled LOB App で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、SAML 1.1 Token enabled LOB App で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと SAML 1.1 Token enabled LOB App 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 SAML 1.1 Token enabled LOB App で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -142,9 +142,9 @@ SAML 1.1 Token enabled LOB App で Azure AD シングル サインオンを構�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -159,7 +159,7 @@ SAML 1.1 Token enabled LOB App で Azure AD シングル サインオンを構�
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で「 **SAML 1.1 Token enabled LOB App** 」と入力して選択します。
+2. アプリケーションの一覧で「**SAML 1.1 Token enabled LOB App**」と入力して選択します。
 
     ![アプリケーションの一覧の [SAML 1.1 Token enabled LOB App] リンク](common/all-applications.png)
 

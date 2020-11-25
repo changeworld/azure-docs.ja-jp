@@ -4,11 +4,11 @@ description: この記事では、コンテナー用 Azure Monitor に関する�
 ms.topic: conceptual
 ms.date: 07/21/2020
 ms.openlocfilehash: 5727702ff973523ce7ab6400c1c7748e0584acbf
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890362"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010590"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>コンテナー用 Azure Monitor のトラブルシューティング
 
@@ -16,17 +16,17 @@ ms.locfileid: "92890362"
 
 ## <a name="authorization-error-during-onboarding-or-update-operation"></a>オンボードまたは更新操作中の承認エラー
 
-コンテナーに対して Azure Monitor を有効にするか、またはメトリックの収集をサポートするようにクラスターを更新しているときに、 *The client <user's Identity>' with object id '<user's objectId>' does not have authorization to perform action 'Microsoft.Authorization/roleAssignments/write' over scope* のようなエラーが表示されることがあります。
+コンテナーに対して Azure Monitor を有効にするか、またはメトリックの収集をサポートするようにクラスターを更新しているときに、*The client <user's Identity>' with object id '<user's objectId>' does not have authorization to perform action 'Microsoft.Authorization/roleAssignments/write' over scope* のようなエラーが表示されることがあります。
 
 オンボードまたは更新プロセス中に、クラスター リソースに対する **[監視メトリック パブリッシャー]** ロールの割り当ての付与が試行されます。 コンテナーに対して Azure Monitor を有効にするためのプロセス、またはメトリックの収集をサポートするための更新を開始するユーザーは、AKS クラスター リソースのスコープに対する **Microsoft.Authorization/roleAssignments/write** アクセス許可にアクセスできる必要があります。 このアクセス許可へのアクセスが付与されるのは、 **[所有者]** および **[ユーザー アクセスの管理者]** 組み込みロールのメンバーだけです。 セキュリティ ポリシーできめ細かなレベルのアクセス許可を割り当てる必要がある場合は、[カスタム ロール](../../role-based-access-control/custom-roles.md)を表示し、それを必要なユーザーに割り当てることをお勧めします。
 
 また、次の手順を実行することによって、Azure Portal からこのロールを手動で付与することもできます。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. Azure Portal の左上隅にある **[すべてのサービス]** をクリックします。 リソースの一覧で、「 **Kubernetes** 」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Azure Kubernetes]** を選択します。
+2. Azure Portal の左上隅にある **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Kubernetes**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Azure Kubernetes]** を選択します。
 3. Kubernetes クラスターの一覧から選択します。
 2. 左側のメニューから、 **[アクセス制御 (IAM)]** をクリックします。
-3. **[+ 追加]** を選択してロールの割り当てを追加し、 **[監視メトリック パブリッシャー]** ロールを選択し、 **[選択]** ボックスに「 **AKS** 」と入力して、サブスクリプションで定義されたクラスターのサービス プリンシパルに関してのみ結果をフィルター処理します。 そのクラスターに固有の一覧から選択します。
+3. **[+ 追加]** を選択してロールの割り当てを追加し、 **[監視メトリック パブリッシャー]** ロールを選択し、 **[選択]** ボックスに「**AKS**」と入力して、サブスクリプションで定義されたクラスターのサービス プリンシパルに関してのみ結果をフィルター処理します。 そのクラスターに固有の一覧から選択します。
 4. **[保存]** を選択して、ロールの割り当てを完了します。
 
 ## <a name="azure-monitor-for-containers-is-enabled-but-not-reporting-any-information"></a>コンテナー用 Azure Monitor が有効になっているが、情報がレポートされない
@@ -112,7 +112,7 @@ nodeSelector:
 
 ## <a name="non-azure-kubernetes-cluster-are-not-showing-in-azure-monitor-for-containers"></a>非 Azure Kubernetes クラスターがコンテナーの Azure Monitor に表示されない
 
-コンテナーの Azure Monitor で非 Azure Kubernetes クラスターを表示するには、この分析情報をサポートする Log Analytics ワークスペースと、コンテナーの分析情報ソリューション リソース **ContainerInsights ( *ワークスペース* )** で読み取りアクセスが必要です。
+コンテナーの Azure Monitor で非 Azure Kubernetes クラスターを表示するには、この分析情報をサポートする Log Analytics ワークスペースと、コンテナーの分析情報ソリューション リソース **ContainerInsights (*ワークスペース*)** で読み取りアクセスが必要です。
 
 ## <a name="next-steps"></a>次のステップ
 

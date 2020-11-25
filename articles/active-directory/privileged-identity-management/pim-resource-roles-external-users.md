@@ -16,11 +16,11 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f4e2e18f3bb9d1c972d805a60493897d605921e4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365529"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010641"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management でゲスト ユーザーを招待して Azure リソース ロールを割り当てる
 
@@ -127,7 +127,7 @@ Privileged Identity Management を使用すると、ゲストを招待し、Azur
 
     ![組織があなたに確認を求めるアクセス許可の一覧が含まれる、ブラウザー内の [アクセス許可の確認] ページ](./media/pim-resource-roles-external-users/invite-accept.png)
 
-1. 利用規約に同意し、サインインしたままにするかどうかを指定するように求められる場合があります。 Azure portal では、ロールの " *資格* " があっても、リソースにはまだアクセスできません。
+1. 利用規約に同意し、サインインしたままにするかどうかを指定するように求められる場合があります。 Azure portal では、ロールの "*資格*" があっても、リソースにはまだアクセスできません。
 
 1. ロールの割り当てをアクティブ化するには、ロールをアクティブ化するリンクがある電子メールを開きます。 電子メールは次のような内容です。
 

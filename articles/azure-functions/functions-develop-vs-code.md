@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
 ms.openlocfilehash: c851f5284b87f224932b027fd10ce720327639c2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167901"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010516"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions を開発する
 
@@ -64,7 +64,7 @@ Functions の拡張機能により、最初の関数と共に関数アプリ プ
 
     ![関数を作成する](./media/functions-develop-vs-code/create-function.png)
 
-1. 関数アプリ プロジェクト用のフォルダーを選択し、次に **関数プロジェクト用の言語を選択します** 。
+1. 関数アプリ プロジェクト用のフォルダーを選択し、次に **関数プロジェクト用の言語を選択します**。
 
 1. Core Tools をまだインストールしていない場合は、インストールする Core Tools の **バージョンを選択** するよう求められます。 バージョン 2.x またはそれ以降のバージョンを選択します。 
 
@@ -84,9 +84,9 @@ Functions の拡張機能により、最初の関数と共に関数アプリ プ
 
 このプロジェクト テンプレートは、選択した言語でプロジェクトを作成し、必要な依存関係をインストールします。 どの言語の場合も、新しいプロジェクトには次のファイルが含まれます。
 
-* **host.json** :Functions のホストを構成できます。 これらの設定は、関数をローカルで実行している場合と、Azure で実行している場合に適用されます。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
+* **host.json**:Functions のホストを構成できます。 これらの設定は、関数をローカルで実行している場合と、Azure で実行している場合に適用されます。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
 
-* **local.settings.json** :関数をローカルで実行するときに使用される設定を保持します。 これらの設定は、関数をローカルで実行するときにのみ使用されます。 詳細については、「[ローカル設定ファイル](#local-settings-file)」を参照してください。
+* **local.settings.json**:関数をローカルで実行するときに使用される設定を保持します。 これらの設定は、関数をローカルで実行するときにのみ使用されます。 詳細については、「[ローカル設定ファイル](#local-settings-file)」を参照してください。
 
     >[!IMPORTANT]
     >local.settings.json ファイルにはシークレットを含めることができるため、それをプロジェクト ソース管理から除外する必要があります。
@@ -141,7 +141,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 ## <a name="add-a-function-to-your-project"></a>プロジェクトに関数を追加する
 
-定義済みの Functions トリガー テンプレートのいずれかを使用して、既存のプロジェクトに新しい関数を追加できます。 新しい関数トリガーを追加するには、F1 キーを押してコマンド パレットを開き、次のコマンドを探して実行します: **Azure Functions: Create Function** 。 プロンプトに従ってトリガーの種類を選択し、そのトリガーの必要な属性を定義します。 トリガーで、サービスに接続するためのアクセス キーまたは接続文字列が必要な場合は、関数トリガーを作成する前にそれを準備しておいてください。
+定義済みの Functions トリガー テンプレートのいずれかを使用して、既存のプロジェクトに新しい関数を追加できます。 新しい関数トリガーを追加するには、F1 キーを押してコマンド パレットを開き、次のコマンドを探して実行します: **Azure Functions: Create Function**。 プロンプトに従ってトリガーの種類を選択し、そのトリガーの必要な属性を定義します。 トリガーで、サービスに接続するためのアクセス キーまたは接続文字列が必要な場合は、関数トリガーを作成する前にそれを準備しておいてください。
 
 このアクションの結果は、お使いのプロジェクトの言語によって異なります。
 
@@ -245,9 +245,9 @@ Visual Studio Code から発行するときには、[ZIP デプロイ](functions
 
     ![Function App の設定](./media/functions-develop-vs-code/function-app-publish-project.png)
 
-1. サインしていない場合は、 **Azure にサインイン** するよう求められます。 **無料の Azure アカウントを作成** することもできます。 ブラウザーからサインインしたら、Visual Studio Code に戻ります。
+1. サインしていない場合は、**Azure にサインイン** するよう求められます。 **無料の Azure アカウントを作成** することもできます。 ブラウザーからサインインしたら、Visual Studio Code に戻ります。
 
-1. 複数のサブスクリプションがある場合、関数アプリの **サブスクリプションを選択** してから、 **[+ Create New Function App in Azure... _Advanced_ ]\(+ Azure で新しい関数アプリを作成... 詳細\)** を選択します。 この _高度_ なオプションを使用すると、Azure で作成するリソースをより細かく制御できます。 
+1. 複数のサブスクリプションがある場合、関数アプリの **サブスクリプションを選択** してから、 **[+ Create New Function App in Azure... _Advanced_]\(+ Azure で新しい関数アプリを作成... 詳細\)** を選択します。 この _高度_ なオプションを使用すると、Azure で作成するリソースをより細かく制御できます。 
 
 1. プロンプトに従って、次の情報を入力します。
 
@@ -276,7 +276,7 @@ Visual Studio Code から発行するときには、[ZIP デプロイ](functions
 
 HTTP によってトリガーされる関数を呼び出すには、関数アプリにデプロイされたときの関数の URL が必要です。 この URL には、必要なすべての[関数キー](functions-bindings-http-webhook-trigger.md#authorization-keys)が含まれています。 デプロイした関数のこれらの URL を取得するには、拡張機能を使用できます。
 
-1. F1 キーを選択してコマンド パレットを開き、次のコマンドを検索して実行します: **Azure Functions: Copy Function URL** 。
+1. F1 キーを選択してコマンド パレットを開き、次のコマンドを検索して実行します: **Azure Functions: Copy Function URL**。
 
 1. プロンプトに従って、Azure で関数アプリを選択し、次に、起動する特定の HTTP トリガーを選択します。
 
@@ -305,7 +305,7 @@ Functions プロジェクトをローカルで実行するには、これらの�
 
 ### <a name="configure-the-project-to-run-locally"></a>ローカルで実行するようにプロジェクトを構成する
 
-Functions ランタイムは、HTTP と Webhook を除くすべてのトリガーの種類に対して内部で Azure Storage アカウントを使用します。 したがって、 **Values.AzureWebJobsStorage** キーを、有効な Azure Storage アカウントの接続文字列に設定する必要があります。
+Functions ランタイムは、HTTP と Webhook を除くすべてのトリガーの種類に対して内部で Azure Storage アカウントを使用します。 したがって、**Values.AzureWebJobsStorage** キーを、有効な Azure Storage アカウントの接続文字列に設定する必要があります。
 
 このセクションでは、[Visual Studio Code 用の Azure Storage 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage)を [Azure Storage Explorer](https://storageexplorer.com/) と共に使用して、ストレージ接続文字列の接続と取得を行います。
 
@@ -315,7 +315,7 @@ Functions ランタイムは、HTTP と Webhook を除くすべてのトリガ�
 
 2. プロジェクトで、local.settings.json ファイルを開き、コピーした接続文字列に **AzureWebJobsStorage** キーの値を設定します。
 
-3. 前の手順を繰り返し、関数に必要なその他のすべての接続について、 **Values** 配列に一意のキーを追加します。
+3. 前の手順を繰り返し、関数に必要なその他のすべての接続について、**Values** 配列に一意のキーを追加します。
 
 詳細については、「[ローカル設定ファイル](#local-settings-file)」を参照してください。
 
@@ -352,7 +352,7 @@ Azure の関数アプリに必要な設定を発行する最も簡単な方法�
 
 ![アプリケーション設定をアップロードする](./media/functions-develop-vs-code/upload-app-settings.png)
 
-設定を発行するには、 **Azure Functions: Upload Local Setting** コマンド (コマンド パレット) を使用することもできます。 Azure のアプリケーション設定に個々の設定を追加するには、 **Azure Functions: Add New Setting** コマンドを使用します。
+設定を発行するには、**Azure Functions: Upload Local Setting** コマンド (コマンド パレット) を使用することもできます。 Azure のアプリケーション設定に個々の設定を追加するには、**Azure Functions: Add New Setting** コマンドを使用します。
 
 > [!TIP]
 > 発行する前に local.settings.json ファイルを必ず保存してください。
@@ -415,7 +415,7 @@ Azure Functions 拡張機能には、Azure の関数アプリと対話するた�
 | **Connect to GitHub Repository** | 関数アプリを GitHub リポジトリに接続します。 |
 | **Copy Function URL** | Azure で実行されている、HTTP によってトリガーされる関数のリモート URL を取得します。 詳細については、[デプロイされた関数の URL を取得する](#get-the-url-of-the-deployed-function)ことに関するセクションを参照してください。 |
 | **Create function app in Azure** | Azure のサブスクリプションに新しいアプリを作成します。 詳細については、[Azure で新しい関数アプリを発行する](#publish-to-azure)方法に関するセクションを参照してください。        |
-| **Decrypt Settings** | [ローカル設定](#local-settings-file)を復号化します。これは、 **Azure Functions: Encrypt Settings** によって暗号化されています。  |
+| **Decrypt Settings** | [ローカル設定](#local-settings-file)を復号化します。これは、**Azure Functions: Encrypt Settings** によって暗号化されています。  |
 | **Delete Function App** | Azure のサブスクリプションから関数アプリを削除します。 App Service プランに他のアプリがない場合は、それも削除することを選択できます。 ストレージ アカウントやリソース グループなどの他のリソースは削除されません。 すべてのリソースを削除するには、代わりに[リソース グループを削除](functions-add-output-binding-storage-queue-vs-code.md#clean-up-resources)してください。 ローカル プロジェクトには影響はありません。 |
 |**Delete Function**  | Azure の関数アプリから既存の関数を削除します。 この削除はローカル プロジェクトに影響を与えないため、代わりに、関数をローカルで削除してから、[プロジェクトを再発行する](#republish-project-files)ことを検討してください。 |
 | **Delete Proxy** | Azure の関数アプリから Azure Functions プロキシを削除します。 プロキシについて詳しくは、「[Azure Functions プロキシの操作](functions-proxies.md)」をご覧ください。 |

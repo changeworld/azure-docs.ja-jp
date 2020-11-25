@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
 ms.openlocfilehash: 329c4b40f11b36de80581d4a1396813bc8de5c73
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097330"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010318"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB によるソーシャル化
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -247,7 +247,7 @@ Cosmos DB では、動的なパーティション分割をすぐに使用でき�
 
 Cosmos DB では、すべてのパーティションでクエリ ([集計](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)を含む) が透過的に実行されるので、データが拡大しても、ロジックを追加する必要はありません。
 
-トラフィックやリソースの消費量 ([RU](request-units.md) (要求ユニット) で測定) は、時間の経過と共に増加します。 ユーザー ベースが拡大すると、読み取りと書き込みの頻度が増えます。 ユーザー ベースによるコンテンツの作成や読み取りが多くなり始めます。 そのため、 **スループットを拡張する** 機能が重要です。 RU は簡単に増やすことができます。 そのためには、Azure portal で数回クリックするか [API でコマンドを発行](/rest/api/cosmos-db/replace-an-offer)します。
+トラフィックやリソースの消費量 ([RU](request-units.md) (要求ユニット) で測定) は、時間の経過と共に増加します。 ユーザー ベースが拡大すると、読み取りと書き込みの頻度が増えます。 ユーザー ベースによるコンテンツの作成や読み取りが多くなり始めます。 そのため、**スループットを拡張する** 機能が重要です。 RU は簡単に増やすことができます。 そのためには、Azure portal で数回クリックするか [API でコマンドを発行](/rest/api/cosmos-db/replace-an-offer)します。
 
 :::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="スケールアップとパーティション キーの定義":::
 

@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
 ms.openlocfilehash: ddd1a6fa2fc25add30664da5b739338e87e7e74f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547845"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010114"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>HDInsight の Apache Hadoop クラスターで空のエッジ ノードを使用する
 
@@ -67,7 +67,7 @@ HDInsight クラスターに空のエッジ ノードを追加する方法につ
 > Apache テクノロジを使用している場合、[https://apache.org](https://apache.org) にある Apache の各プロジェクト サイト (例: [Apache Hadoop](https://hadoop.apache.org/) サイト) で支援を受けられる可能性があります。
 
 > [!IMPORTANT]
-> Ubuntu イメージは、公開から 3 か月以内に、新しい HDInsight クラスターの作成のために入手できるようになります。 2019 年 1 月時点で、実行中のクラスター (エッジ ノードを含む) に修正プログラムは自動適用 **されません** 。 お客様は、スクリプトによるアクションまたはその他のメカニズムを使用して、実行中のクラスターに修正プログラムを適用する必要があります。  詳細については、「[HDInsight 用の OS の修正プログラム](./hdinsight-os-patching.md)」を参照してください。
+> Ubuntu イメージは、公開から 3 か月以内に、新しい HDInsight クラスターの作成のために入手できるようになります。 2019 年 1 月時点で、実行中のクラスター (エッジ ノードを含む) に修正プログラムは自動適用 **されません**。 お客様は、スクリプトによるアクションまたはその他のメカニズムを使用して、実行中のクラスターに修正プログラムを適用する必要があります。  詳細については、「[HDInsight 用の OS の修正プログラム](./hdinsight-os-patching.md)」を参照してください。
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>既存のクラスターにエッジ ノードを追加する
 
@@ -121,7 +121,7 @@ HDInsight クラスターに空のエッジ ノードを追加する方法につ
 
 ## <a name="add-multiple-edge-nodes"></a>複数のエッジ ノードの追加
 
-HDInsight クラスターには複数のエッジ ノードを追加できます。  複数エッジ ノード構成は、Azure Resource Manager テンプレートを使用することによってのみ行うことができます。  この記事の冒頭にあるテンプレート サンプルを参照してください。  作成するエッジ ノードの数を反映させるには、 **targetInstanceCount** を更新します。
+HDInsight クラスターには複数のエッジ ノードを追加できます。  複数エッジ ノード構成は、Azure Resource Manager テンプレートを使用することによってのみ行うことができます。  この記事の冒頭にあるテンプレート サンプルを参照してください。  作成するエッジ ノードの数を反映させるには、**targetInstanceCount** を更新します。
 
 ## <a name="access-an-edge-node"></a>エッジ ノードにアクセスする
 

@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jingwang
 ms.openlocfilehash: 7d61121b4c80b7b89ec29ade4ab1bfab91a660d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334346"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010556"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Azure Data Factory での Avro 形式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-**Avro ファイルを解析する場合や、Avro 形式にデータを書き込む場合**は、この記事に従ってください。 
+**Avro ファイルを解析する場合や、Avro 形式にデータを書き込む場合** は、この記事に従ってください。 
 
 Avro 形式は次のコネクタでサポートされています。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。
 
@@ -67,7 +67,7 @@ Azure Blob Storage の Avro データセットの例を次に示します。
 
 ### <a name="avro-as-source"></a>ソースとしての Avro
 
-コピー アクティビティの ***\*source\**** セクションでは、次のプロパティがサポートされます。
+コピー アクティビティの **_\_source\*** * セクションでは、次のプロパティがサポートされます。
 
 | プロパティ      | 説明                                                  | 必須 |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -76,12 +76,12 @@ Azure Blob Storage の Avro データセットの例を次に示します。
 
 ### <a name="avro-as-sink"></a>シンクとしての Avro
 
-コピー アクティビティの ***\* sink \**** セクションでは、次のプロパティがサポートされます。
+コピー アクティビティの **_\_sink\*** * セクションでは、次のプロパティがサポートされます。
 
 | プロパティ      | 説明                                                  | 必須 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | コピー アクティビティのソースの type プロパティを **AvroSink** に設定する必要があります。 | はい      |
-| formatSettings          | プロパティのグループ。 後の **Avro の書き込み設定**に関する表を参照してください。| いいえ      |
+| formatSettings          | プロパティのグループ。 後の **Avro の書き込み設定** に関する表を参照してください。| いいえ      |
 | storeSettings | データ ストアにデータを書き込む方法を指定するプロパティのグループ。 ファイル ベースの各コネクタには、`storeSettings` に、固有のサポートされる書き込み設定があります。 **詳細については、コネクタの記事でコピー アクティビティのプロパティに関するセクションを参照してください**。 | いいえ       |
 
 `formatSettings` でサポートされている **Avro の書き込み設定**:

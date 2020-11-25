@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 675f68a36963d19f42cb7c0c5d49ae8c4f0006f2
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103426"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010539"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>PowerShell を使用して、Azure Data Lake Storage Gen1 を既定のストレージとして使用する HDInsight クラスターを作成する
 
@@ -27,7 +27,7 @@ HDInsight で Data Lake Storage Gen1 を使用するための重要な考慮事�
 
 * 既定のストレージとしての Data Lake Storage Gen1 にアクセスできる HDInsight クラスターを作成するオプションは、HDInsight バージョン 3.5 および 3.6 で使用できます。
 
-* 既定のストレージとしての Data Lake Storage Gen1 にアクセスできる HDInsight クラスターを作成するオプションは、HDInsight Premium クラスターでは*使用できません*。
+* 既定のストレージとしての Data Lake Storage Gen1 にアクセスできる HDInsight クラスターを作成するオプションは、HDInsight Premium クラスターでは *使用できません*。
 
 PowerShell を使用して Data Lake Storage Gen1 を操作できるように HDInsight を構成するには、次の 5 つのセクションで示す手順に従います。
 
