@@ -8,11 +8,11 @@ ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 69ec25348c3056536a2e09fd889b48e1e63ea7bb
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992784"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998160"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Application Insights Profiler を使用して ASP.NET Core Azure Linux Web アプリをプロファイルする
 
@@ -117,8 +117,8 @@ ms.locfileid: "91992784"
     git remote add azure https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
     ```
 
-    * デプロイ資格情報を作成するために使用した**ユーザー名**を使用します。
-    * App Service on Linux を使用して Web アプリを作成するために使用した**アプリ名**を使用します。
+    * デプロイ資格情報を作成するために使用した **ユーザー名** を使用します。
+    * App Service on Linux を使用して Web アプリを作成するために使用した **アプリ名** を使用します。
 
 2. Azure に変更をプッシュし、プロジェクトをデプロイします。
 

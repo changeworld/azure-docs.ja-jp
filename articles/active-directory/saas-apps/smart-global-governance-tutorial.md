@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: jeedes
 ms.openlocfilehash: 5a2169db47ca5a6adcddbcc9558161370b896a62
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92509558"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997071"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smart-global-governance"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Smart Global Governance の統合
 
@@ -51,7 +51,7 @@ Azure AD への Smart Global Governance の統合を構成するには、ギャ�
 1. 左ウィンドウで、 **[Azure Active Directory]** を選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Smart Global Governance** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Smart Global Governance**」と入力します。
 1. 結果のパネルから **[Smart Global Governance]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-smart-global-governance"></a>Smart Global Governance の Azure AD SSO の構成とテスト
@@ -111,7 +111,7 @@ Smart Global Governance に対する Azure AD SSO を構成してテストする
 1. Azure portal の左ペインで、 **[Azure Active Directory]** を選択します。 **[ユーザー]** を選択し、 **[すべてのユーザー]** を選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、次の手順を実行します。
-   1. **[名前]** ボックスに「 **B.Simon** 」と入力します。  
+   1. **[名前]** ボックスに「**B.Simon**」と入力します。  
    1. **[ユーザー名]** ボックスに「\<username>@\<companydomain>.\<extension>」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
    1. **[パスワードを表示]** をオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **［作成］** を選択します
@@ -130,7 +130,7 @@ Smart Global Governance に対する Azure AD SSO を構成してテストする
 
     ![[ユーザーの追加] を選択する](common/add-assign-user.png)
 
-1. **[ユーザーとグループ]** ダイアログ ボックスで、 **ユーザー** の一覧で **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. **[ユーザーとグループ]** ダイアログ ボックスで、**ユーザー** の一覧で **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. SAML アサーションにロール値が必要な場合は、 **[ロールの選択]** ダイアログ ボックスでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
 

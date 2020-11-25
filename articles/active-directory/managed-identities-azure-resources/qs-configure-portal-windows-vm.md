@@ -16,11 +16,11 @@ ms.date: 11/10/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e35366e35fc127057020906ac6d3dfb0f207ab72
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331337"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997428"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Azure portal を使用して Azure VM で Azure リソースのマネージド ID を構成する
 

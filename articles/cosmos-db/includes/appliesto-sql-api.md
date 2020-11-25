@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 452fee4bca3748edfd563e98995331bb0808369f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93072680"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998340"
 ---
 適用対象: :::image type="icon" source="../media/applies-to/yes.png" border="false":::SQL API

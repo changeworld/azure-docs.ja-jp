@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
 ms.openlocfilehash: adc29916c6b674531d7b0e8fcdd4e151b4a17bde
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677570"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997258"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics の Alert Management ソリューション
 
@@ -73,7 +73,7 @@ Log Analytics ワークスペースに Alert Management ソリューションを
 ## <a name="log-analytics-records"></a>Log Analytics のレコード
 アラート管理ソリューションでは、 **Alert** タイプのすべてのレコードが分析されます。  Log Analytics によって生成されたアラートや、Nagios または Zabbix から収集されたアラートが直接収集されるわけではありません。
 
-アラートは System Center Operations Manager からインポートされ、タイプを **Alert** 、SourceSystem を **OpsManager** として、それぞれ対応するレコードが作成されます。  これらのレコードは、次の表に示したプロパティを持ちます。  
+アラートは System Center Operations Manager からインポートされ、タイプを **Alert**、SourceSystem を **OpsManager** として、それぞれ対応するレコードが作成されます。  これらのレコードは、次の表に示したプロパティを持ちます。  
 
 | プロパティ | 説明 |
 |:--- |:--- |

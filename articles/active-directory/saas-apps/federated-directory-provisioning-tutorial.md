@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
 ms.openlocfilehash: 8ca7654d930247f70d85cbc20fbbeb961223f05f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359801"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998364"
 ---
 # <a name="tutorial-configure-federated-directory-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Federated Directory を構成する
 
@@ -90,7 +90,7 @@ Azure AD で自動ユーザー プロビジョニング用に Federated Director
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Federated Directory** 」と入力し、結果パネルで **[Federated Directory]** を選択します。
+4. 検索ボックスに「**Federated Directory**」と入力し、結果パネルで **[Federated Directory]** を選択します。
 
     ![結果リストの Federated Directory](common/search-new-app.png)
 

@@ -13,11 +13,11 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
 ms.openlocfilehash: e43ad9dedf4212e9b30a08f0c978cb8d1a86776c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657416"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997581"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-sso-to-your-apps-with-application-proxy"></a>アプリケーション プロキシを使ったアプリへのシングル サインオン (SSO) の Kerberos の制約付き委任
 

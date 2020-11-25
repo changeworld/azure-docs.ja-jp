@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 0eb9afc179f1dd2559f0db7b212f6b3a1da15824
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790918"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998755"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Azure HDInsight で InvalidNetworkConfigurationErrorCode を使用したクラスターの作成が失敗する
 
@@ -60,7 +60,7 @@ Azure Storage と SQL には固定の IP アドレスがないため、これら
 
 * クラスターに[ネットワーク セキュリティ グループ (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md) を使用している場合。
 
-    Azure portal に移動し、クラスターがデプロイされているサブネットに関連付けられている NSG を特定します。 **[送信セキュリティ規則]** セクションで、制限なしでインターネットへの発信アクセスを許可します (ここでは、 **優先順位** の数値が小さいほど優先順位が高くなることに注意してください)。 また、 **subnets** セクションで、この NSG がクラスター サブネットに適用されているかどうかを確認します。
+    Azure portal に移動し、クラスターがデプロイされているサブネットに関連付けられている NSG を特定します。 **[送信セキュリティ規則]** セクションで、制限なしでインターネットへの発信アクセスを許可します (ここでは、**優先順位** の数値が小さいほど優先順位が高くなることに注意してください)。 また、**subnets** セクションで、この NSG がクラスター サブネットに適用されているかどうかを確認します。
 
 * クラスターで[ユーザー定義ルート (UDR)](../../virtual-network/virtual-networks-udr-overview.md) が使用されている場合。
 

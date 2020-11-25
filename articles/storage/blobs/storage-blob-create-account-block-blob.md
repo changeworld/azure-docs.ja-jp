@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 10/30/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 53033226702ea1033fe4ae94f60c62cacbae6596
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 9350f9aeff90b75a4e1362f6fa2fa1b0d07f20cf
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124970"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95997088"
 ---
 # <a name="create-a-blockblobstorage-account"></a>BlockBlobStorage アカウントを作成する
 
 BlockBlobStorage アカウントの種類を使用すると、Premium のパフォーマンス特性を持つブロック BLOB を作成できます。 この種類のストレージ アカウントは、トランザクション レートが高い、または非常に高速なアクセス時間を必要とするワークロードに最適化されています。 この記事では、Azure portal、Azure CLI、または Azure PowerShell を使用して、BlockBlobStorage カウントを作成する方法について説明します。
 
-BlockBlobStorage アカウントの詳細については、「[Azure ストレージ アカウントの概要](https://docs.microsoft.com/azure/storage/common/storage-account-overview)」を参照してください。
+BlockBlobStorage アカウントの詳細については、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -194,6 +194,6 @@ Azure CLI を使用して、ブロック BLOB アカウントを作成するに�
 
 ## <a name="next-steps"></a>次のステップ
 
-- ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](https://docs.microsoft.com/azure/storage/common/storage-account-overview)」をご覧ください。
+- ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」をご覧ください。
 
-- リソース グループの詳細については、「[Azure Resource Manager の概要](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)」を参照してください。
+- リソース グループの詳細については、「[Azure Resource Manager の概要](../../azure-resource-manager/management/overview.md)」を参照してください。

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ca5361d8500ecd4ea22a577d0a4dc7ced606eab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89275904"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997649"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect:LocalDB の 10 GB 制限からの回復方法
 Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。 Azure AD Connect と共にインストールされる既定の SQL Server 2012 Express LocalDB を使用するか、所有している完全バージョンの SQL を使用することができます。 SQL Server Express には、10 GB のサイズ制限があります。 LocalDB を使用していて、この上限に達すると、Azure AD Connect Synchronization Service は正常に開始または同期できなくなります。 この記事では、回復の手順を説明します。
@@ -29,9 +29,9 @@ Azure AD Connect には、ID データを格納する SQL Server データベー
 ## <a name="symptoms"></a>現象
 一般的には、次の 2 つの症状があります。
 
-* Azure AD Connect Synchronization Service が**実行中**でも、 *"stopped-database-disk-full"* エラーで同期が失敗する。
+* Azure AD Connect Synchronization Service が **実行中** でも、 *"stopped-database-disk-full"* エラーで同期が失敗する。
 
-* Azure AD Connect Synchronization Service が**開始できない**。 このサービスを開始しようとすると、イベント 6323 で失敗し、"*SQL Server のディスク領域が不足しているため、サーバーでエラーが発生しました。* " というエラー メッセージが表示されます。
+* Azure AD Connect Synchronization Service が **開始できない**。 このサービスを開始しようとすると、イベント 6323 で失敗し、"*SQL Server のディスク領域が不足しているため、サーバーでエラーが発生しました。* " というエラー メッセージが表示されます。
 
 ## <a name="short-term-recovery-steps"></a>短期的な回復手順
 このセクションでは、Azure AD Connect Synchronization Service が操作を再開するために必要な DB 空き領域を増やす手順について説明します。 これには次の手順が含まれます。

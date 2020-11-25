@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 67e1f1dff43939ce7ef279db57bee4b18bd12dc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45393f116149f6cf16763d2d7033f8425df235bf
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213957"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998843"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Blob Storage トリガー
 
@@ -20,6 +20,16 @@ Blob ストレージ トリガーは、新しいまたは更新された BLOB �
 Azure Blob Storage トリガーには、汎用ストレージ アカウントが必要です。 [階層的名前空間](../storage/blobs/data-lake-storage-namespace.md)を持つストレージ V2 アカウントも サポートされています。 BLOB 専用アカウントを使用する場合、またはアプリケーションに特別な必要性がある場合は、このトリガーの使用に代わる方法を検討してください。
 
 セットアップと構成の詳細については、[概要](./functions-bindings-storage-blob.md)に関するページをご覧ください。
+
+## <a name="polling"></a>ポーリング
+
+ポーリングは、ログの検査と定期的なコンテナー スキャンの実行のハイブリッドとして機能します。 BLOB は、間隔の間で使用される継続トークンを使用して、一度に 10,000 のグループ単位でスキャンされます。
+
+> [!WARNING]
+> また、[ ストレージ ログは "ベスト エフォート"](/rest/api/storageservices/About-Storage-Analytics-Logging) ベースで作成されます。 すべてのイベントがキャプチャされる保証はありません。 ある条件下では、ログが欠落する可能性があります。
+> 
+> より高速で信頼性の高い BLOB 処理が必要な場合は、BLOB 作成時に[キュー メッセージ](../storage/queues/storage-dotnet-how-to-use-queues.md)を作成することを検討してください。 次に、BLOB トリガーの代わりに[キュー トリガー](functions-bindings-storage-queue.md)を使用して BLOB を処理します。 別のオプションは、Event Grid の使用です。「[Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する](../event-grid/resize-images-on-storage-blob-upload-event.md)」のチュートリアルをご覧ください。
+>
 
 ## <a name="alternatives"></a>代替
 
@@ -382,7 +392,7 @@ module.exports = function (context, myBlob) {
 
 ## <a name="blob-receipts"></a>BLOB の配信確認メッセージ
 
-Azure Functions ランタイムでは、BLOB トリガー関数は、同一の新規または更新された BLOB について 2 回以上呼び出されることはありません。 特定の BLOB バージョンが処理されているかどうかを判断するために、*BLOB の配信確認メッセージ*が維持されます。
+Azure Functions ランタイムでは、BLOB トリガー関数は、同一の新規または更新された BLOB について 2 回以上呼び出されることはありません。 特定の BLOB バージョンが処理されているかどうかを判断するために、*BLOB の配信確認メッセージ* が維持されます。
 
 Azure Functions では、BLOB の配信確認メッセージは (アプリ設定 `AzureWebJobsStorage` で指定した) 関数アプリの Azure ストレージ アカウント内の *azure-webjobs-hosts* というコンテナーに格納されます。 BLOB の配信確認メッセージには次の情報が含まれています。
 
@@ -413,16 +423,6 @@ BLOB トリガーはキューを内部的に使用するため、関数の同時
 [従量課金プラン](functions-scale.md#how-the-consumption-and-premium-plans-work)では、1 つの仮想マシン (VM) の関数アプリのメモリが 1.5 GB に制限されています。 メモリは、同時実行される各関数インスタンスと、Functions ランタイム自体によって使用されます。 BLOB によってトリガーされる関数が BLOB 全体をメモリに読み込む場合、その関数が BLOB 用にのみ使用するメモリの最大量は 24 * 最大 BLOB サイズです。 たとえば、BLOB によってトリガーされる 3 つの関数を含む関数アプリの場合、既定の設定では、VM あたりの最大コンカレンシー数 3*24 = 72 関数呼び出しとなります。
 
 JavaScript と Java の関数では BLOB 全体がメモリに読み込まれますが、C# 関数では `string`、または `Byte[]` にバインドした場合にこれが行われます。
-
-## <a name="polling"></a>ポーリング
-
-ポーリングは、ログの検査と定期的なコンテナー スキャンの実行のハイブリッドとして機能します。 BLOB は、間隔の間で使用される継続トークンを使用して、一度に 10,000 のグループ単位でスキャンされます。
-
-> [!WARNING]
-> また、[ ストレージ ログは "ベスト エフォート"](/rest/api/storageservices/About-Storage-Analytics-Logging) ベースで作成されます。 すべてのイベントがキャプチャされる保証はありません。 ある条件下では、ログが欠落する可能性があります。
-> 
-> より高速で信頼性の高い BLOB 処理が必要な場合は、BLOB 作成時に[キュー メッセージ](../storage/queues/storage-dotnet-how-to-use-queues.md)を作成することを検討してください。 次に、BLOB トリガーの代わりに[キュー トリガー](functions-bindings-storage-queue.md)を使用して BLOB を処理します。 別のオプションは、Event Grid の使用です。「[Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する](../event-grid/resize-images-on-storage-blob-upload-event.md)」のチュートリアルをご覧ください。
->
 
 ## <a name="next-steps"></a>次のステップ
 

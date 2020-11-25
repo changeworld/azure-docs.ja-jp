@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: Zhchia
 ms.openlocfilehash: 4f230a70ae87c7c0ec9db347e7cf975c0252bb18
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357812"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998091"
 ---
 # <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Brivo Onair Identity Connector を構成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "94357812"
 
 ## <a name="assigning-users-to-brivo-onair-identity-connector"></a>Brivo Onair Identity Connector へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Brivo Onair Identity Connector へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Brivo Onair Identity Connector に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -80,7 +80,7 @@ Azure AD を使用して自動的にユーザー プロビジョニングを行�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Brivo Onair Identity Connector** 」と入力して、結果パネルから **Brivo Onair Identity Connector** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Brivo Onair Identity Connector**」と入力して、結果パネルから **Brivo Onair Identity Connector** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果リストでの Brivo Onair Identity Connector](common/search-new-app.png)
 

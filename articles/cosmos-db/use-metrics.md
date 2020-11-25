@@ -10,11 +10,11 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 243f6f26be592e2db82d8f46df3de9aafcd2078b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340469"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996986"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB のメトリックを使用した監視とデバッグ
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -57,11 +57,11 @@ Azure Cosmos DB には、スループット、ストレージ、整合性、可�
 
 ## <a name="determine-the-throughput-distribution-across-partitions"></a>パーティション全体のスループットの分散を決める
 
-適切なカーディナリティのパーティション キーを持つことは、スケーラブルなアプリケーションのために重要です。 パーティションごとに分けられたパーティション コンテナーのスループットの分散を決めるには、 [Azure Portal](https://portal.azure.com) の **[メトリック]** ブレードに移動します。 **[スループット]** タブの **[各物理パーティションによる 1 秒あたりの最大消費 RU]** グラフにストレージの内訳が表示されます。 次の図は、パーティションが左端に偏っていることでわかるように、データの分散が不適切な例です。
+適切なカーディナリティのパーティション キーを持つことは、スケーラブルなアプリケーションのために重要です。 パーティションごとに分けられたパーティション コンテナーのスループットの分散を決めるには、[Azure Portal](https://portal.azure.com) の **[メトリック]** ブレードに移動します。 **[スループット]** タブの **[各物理パーティションによる 1 秒あたりの最大消費 RU]** グラフにストレージの内訳が表示されます。 次の図は、パーティションが左端に偏っていることでわかるように、データの分散が不適切な例です。
 
 :::image type="content" source="media/use-metrics/metrics-17.png" alt-text="1 つのパーティションの使用率が高い":::
 
-スループット分散が不均一の場合、 *ホット* パーティションが発生します。また、その結果、要求が調整され、再パーティションが必要になる可能性があります。 Azure Cosmos DB でのパーティション分割の詳細については、「[Azure Cosmos DB でのパーティション分割とスケーリング](./partitioning-overview.md)」を参照してください。
+スループット分散が不均一の場合、*ホット* パーティションが発生します。また、その結果、要求が調整され、再パーティションが必要になる可能性があります。 Azure Cosmos DB でのパーティション分割の詳細については、「[Azure Cosmos DB でのパーティション分割とスケーリング](./partitioning-overview.md)」を参照してください。
 
 ## <a name="determine-the-storage-distribution-across-partitions"></a>パーティション全体のストレージの分散を決める
 

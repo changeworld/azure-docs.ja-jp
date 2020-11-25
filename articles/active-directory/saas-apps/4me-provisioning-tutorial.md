@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: jeedes
 ms.openlocfilehash: c0c428997cfba8871a29d9bfe0df0a6920a1d22f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357591"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998670"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>チュートリアル:4me を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -53,13 +53,13 @@ Azure AD での自動ユーザー プロビジョニング用に 4me を構成�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **4me** 」と入力し、結果ウィンドウで **[4me]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**4me**」と入力し、結果ウィンドウで **[4me]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の 4me](common/search-new-app.png)
 
 ## <a name="assigning-users-to-4me"></a>4me へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、4me へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを 4me に割り当てることができます。
 
@@ -102,7 +102,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![4me の設定](media/4me-provisioning-tutorial/4me01.png)
 
-    検索バーに「 **アプリ** 」と入力します。
+    検索バーに「**アプリ**」と入力します。
 
     ![4me アプリ](media/4me-provisioning-tutorial/4me02.png)
 
