@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e861182ee57a0b49d3e62a858fc97dbf0890ea3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48cde51ee9941f705aa848d121c419a8f0c9ad1a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399705"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013711"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>チュートリアル:テナント モデルを作成する (プレビュー)
 
@@ -58,7 +58,7 @@ Speech SDK でテナント モデルを使用するには、音声リソース�
 
 1. [Azure portal](https://aka.ms/azureportal) にサインインします。
 1. **[リソースの作成]** を選択します。
-1. **検索**ボックスに「**Speech**」と入力します。
+1. **検索** ボックスに「**Speech**」と入力します。
 1. 結果の一覧で、 **[Speech]** 、 **[作成]** の順に選択します。
 1. 画面の指示に従って、リソースを作成します。 次のことを確認してください。
    * **[場所]** が **[eastus]** または **[westus]** のいずれかに設定されている。
@@ -105,7 +105,7 @@ Speech SDK でテナント モデルを使用するには、音声リソース�
 
 モデルのデプロイが完了したので、Speech SDK でそれを使用できます。 このセクションでは、サンプル コードから Azure Active Directory (Azure AD) 認証を使用して Speech サービスを呼び出します。
 
-C# で Speech SDK を呼び出すために使用するコードを見てみましょう。 この例では、テナント モデルを使用して音声認識を実行します。 このガイドは、プラットフォームが既に設定されていることを前提としています。 セットアップについてご不明な点がある場合は、[C# (.NET Core) での音声認識に関するクイックスタート](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)を参照してください。
+C# で Speech SDK を呼び出すために使用するコードを見てみましょう。 この例では、テナント モデルを使用して音声認識を実行します。 このガイドは、プラットフォームが既に設定されていることを前提としています。 セットアップについてご不明な点がある場合は、[C# (.NET Core) での音声認識に関するクイックスタート](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore)を参照してください。
 
 このコードをプロジェクトにコピーします。
 

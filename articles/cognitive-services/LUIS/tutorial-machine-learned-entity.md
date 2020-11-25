@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: 1f85ba0c64db23e156f384fadcc5ca7bf84a58d4
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: aa2783abe86b90a907510dec8d7eb40162820ad5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130743"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025261"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>チュートリアル:Language Understanding (LUIS) で機械学習エンティティを使用して、ユーザーの発話から構造化データを抽出する
 
@@ -94,9 +94,9 @@ ms.locfileid: "93130743"
 
 ### <a name="improve-size-extraction-with-phrase-list"></a>語句一覧を使用してサイズの抽出を改善する
 
-1. 左側のメニューから **[エンティティ]** を選択して、 **Order** エンティティを選択します。
+1. 左側のメニューから **[エンティティ]** を選択して、**Order** エンティティを選択します。
 
-1. **[Schema and features]\(スキーマと特徴量\)** タブで、 **Size** サブエンティティを選択して、 **[+ Add feature]\(+ 特徴量の追加\)** を選択します。
+1. **[Schema and features]\(スキーマと特徴量\)** タブで、**Size** サブエンティティを選択して、 **[+ Add feature]\(+ 特徴量の追加\)** を選択します。
 
 1. ドロップダウン メニューで **[Create new phrase list]\(新しい語句一覧の作成\)** を選択します。
 
@@ -131,7 +131,7 @@ ms.locfileid: "93130743"
 
 1. エンティティの一覧から **Order** を選択します。
 
-1. **[Schema and features]\(スキーマと特徴量\)** タブで、 **Size** エンティティを選択して、 **[+ Add feature]\(+ 特徴量の追加\)** を選択します。
+1. **[Schema and features]\(スキーマと特徴量\)** タブで、**Size** エンティティを選択して、 **[+ Add feature]\(+ 特徴量の追加\)** を選択します。
 
 1. ドロップダウン リストから **[@ SizeListentity]** を選択します。
 
@@ -151,7 +151,7 @@ ms.locfileid: "93130743"
 
 1. エンティティの一覧から **Order** を選択します。
 
-1. **[Schema and features]\(スキーマと特徴量\)** タブで、 **Quantity** エンティティを選択して、 **[+ Add feature]\(+ 特徴量の追加\)** を選択します。
+1. **[Schema and features]\(スキーマと特徴量\)** タブで、**Quantity** エンティティを選択して、 **[+ Add feature]\(+ 特徴量の追加\)** を選択します。
 
 1. ドロップダウン リストから **@ number** を選択します。
 
@@ -247,7 +247,7 @@ ms.locfileid: "93130743"
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. アドレス バーで URL の末尾に移動し、 _YOUR_QUERY_HERE_ を、対話型テスト パネルで入力したクエリに置き換えます。
+1. アドレス バーで URL の末尾に移動し、_YOUR_QUERY_HERE_ を、対話型テスト パネルで入力したクエリに置き換えます。
 
     `2 small cheese pizzas for pickup`
 
@@ -297,7 +297,7 @@ ms.locfileid: "93130743"
 
 ## <a name="related-information"></a>関連情報
 
-* [チュートリアル - 意図](luis-quickstart-intents-only.md)
+* [チュートリアル - 意図](./tutorial-intents-only.md)
 * [概念 - エンティティ](luis-concept-entity-types.md)の概念情報
 * [概念 - 機能](luis-concept-feature.md)の概念情報
 * [トレーニング方法](luis-how-to-train.md)
@@ -309,4 +309,4 @@ ms.locfileid: "93130743"
 このチュートリアルでは、アプリで機械学習エンティティを使用して、ユーザーの発話の意図を見つけ、その発話から詳細を抽出します。 機械学習エンティティを使用すると、エンティティを詳細に分解できます。
 
 > [!div class="nextstepaction"]
-> [事前構築済みの KeyPhrase エンティティを追加する](luis-quickstart-intent-and-key-phrase.md)
+> [事前構築済みの KeyPhrase エンティティを追加する](./luis-reference-prebuilt-keyphrase.md)

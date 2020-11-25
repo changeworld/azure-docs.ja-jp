@@ -8,47 +8,45 @@
 - name: チュートリアル
   expanded: true
   items:
-    - name: 1 - Azure Red Hat OpenShift 4 クラスターを作成する
+    - name: 1 - ARO クラスターを作成する
       href: tutorial-create-cluster.md
-    - name: 2 - Azure Red Hat OpenShift 4 クラスターに接続する
+    - name: 2 - ARO クラスターへの接続
       href: tutorial-connect-cluster.md
-    - name: 3 - Azure Red Hat OpenShift 4 クラスターを削除する
+    - name: 3 - ARO クラスターを削除する
       href: tutorial-delete-cluster.md
 - name: 操作方法ガイド
   items:
-    - name: プライベート Azure Red Hat OpenShift 4 クラスターを作成する
-      href: howto-create-private-cluster-4x.md
-    - name: Azure Red Hat OpenShift 4 で Azure Files StorageClass を作成する
-      href: howto-create-a-storageclass.md
-    - name: Azure Red Hat OpenShift 4 クラスターのプル シークレットを更新する
-      href: howto-add-update-pull-secret.md
-    - name: Azure Red Hat OpenShift 4 クラスターの DNS 転送を構成する
-      href: dns-forwarding.md
-    - name: Azure Red Hat OpenShift 4 の組み込みのコンテナー レジストリを構成する
-      href: built-in-container-registry.md
-    - name: Azure Red Hat OpenShift 4 クラスターの Azure Active Directory 認証を構成する
+    - name: ネットワーク
+      items:
+        - name: プライベート ARO クラスターを作成する
+          href: howto-create-private-cluster-4x.md
+        - name: DNS 転送を構成する
+          href: dns-forwarding.md
+    - name: セキュリティと認証
       items:
         - name: Azure Active Directory 認証を構成する (CLI)
           href: configure-azure-ad-cli.md
         - name: Azure Active Directory 認証を構成する (ポータル)
           href: configure-azure-ad-ui.md
-    - name: Velero を使用してアプリケーションのバックアップと復元を作成する
+        - name: ARO クラスターのプル シークレットを更新する
+          href: howto-add-update-pull-secret.md
+    - name: バックアップと復元
       items:
         - name: Velero を使用してクラスター アプリケーションのバックアップを作成する
           href: howto-create-a-backup.md
         - name: Velero を使用してクラスター アプリケーションの復元を作成する
           href: howto-create-a-restore.md
-    - name: Azure Red Hat OpenShift 4 の監視とログ記録
+    - name: 監視およびログ記録
       items:
-        - name: Azure Red Hat OpenShift 4 における Azure Monitor for containers (プレビュー)
+        - name: コンテナーに対する Azure Monitor
           items:
-            - name: Azure Red Hat OpenShift 4 向けに Azure Monitor for containers を構成する (プレビュー)
+            - name: Azure Monitor for containers for ARO 4 を構成する (プレビュー)
               href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
-            - name: Azure Red Hat OpenShift 3.11 で Azure Monitor for containers を無効にする (プレビュー)
+            - name: Azure Monitor for containers for ARO 4 を無効にする (プレビュー)
               href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
-    - name: Azure Red Hat OpenShift 4 クラスター上の Open Liberty/WebSphere Liberty
+    - name: アプリケーションの開発と実行
       items:
-        - name: Azure Red Hat OpenShift 4 クラスターに Open Liberty/WebSphere Liberty アプリをデプロイする
+        - name: Open Liberty/WebSphere Liberty アプリをデプロイする
           href: howto-deploy-java-liberty-app.md
     - name: Azure Red Hat OpenShift 3.11
       items:
@@ -85,9 +83,9 @@
               href: cluster-administration-security-context-constraints.md
 - name: 概念
   items:
-    - name: Azure Red Hat OpenShift 4 クラスターのネットワーク
+    - name: ネットワーク
       href: concepts-networking.md
-    - name: Azure Red Hat OpenShift 3.11 から Azure Red Hat OpenShift 4 への移行
+    - name: ARO 3.11 から ARO 4 への移行
       href: migration.md
 - name: リファレンス
   items:
@@ -101,17 +99,15 @@
       href: openshift-faq.md
     - name: トラブルシューティング
       href: troubleshoot.md
-    - name: Azure Red Hat OpenShift 3.11 でサポートされているリソース
-      href: supported-resources.md
-    - name: Azure Red Hat OpenShift 4.3 でサポートされているリソース
+    - name: ARO 4 のサポート ポリシー
       href: support-policies-v4.md
-    - name: Azure Red Hat OpenShift 4 のサポート ライフサイクル
+    - name: ARO 4 のサポート ライフサイクル
       href: support-lifecycle.md
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Azure Red Hat OpenShift 4.3 のドキュメント
+    - name: Red Hat OpenShift 4 のドキュメント
       href: 'https://docs.openshift.com/aro/4/welcome/index.html'
-    - name: Azure Red Hat OpenShift 3.11 のドキュメント
-      href: 'https://docs.openshift.com/aro/3/welcome/index.html'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
+    - name: ARO のロードマップ
+      href: 'https://github.com/Azure/OpenShift/projects/1'

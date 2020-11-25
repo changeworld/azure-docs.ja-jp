@@ -23,6 +23,10 @@
           href: tutorial-net-virtual-machine.md
         - name: Python で仮想マシンを使用して Azure Key Vault を使用する
           href: tutorial-python-virtual-machine.md
+    - name: Azure App Service
+      items:
+        - name: .NET で Web アプリを使用して Azure Key Vault を使用する
+          href: tutorial-net-create-vault-azure-web-app.md
     - name: Azure Kubernetes Service
       items:
         - name: Azure Key Vault と Kubernetes の統合
@@ -31,8 +35,6 @@
       items:
         - name: Azure Databricks と Azure Key Vault を使用して Azure Blob Storage にアクセスする
           href: integrate-databricks-blob-storage.md
-    - name: マネージ ID と .NET を使用した Web アプリへの Key Vault の接続
-      href: tutorial-net-create-vault-azure-web-app.md
 - name: サンプル
   items:
     - name: Key Vault のコード サンプル

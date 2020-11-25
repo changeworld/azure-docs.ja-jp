@@ -260,6 +260,8 @@
       href: install-vm-agent-offline.md
     - name: Windows VM エージェントのトラブルシューティング
       href: windows-azure-guest-agent.md
+    - name: Linux VM エージェントのトラブルシューティング
+      href: linux-azure-guest-agent.md
 - name: バックアップと復元
   items:
     - name: Azure VM でのバックアップ エラーのトラブルシューティング

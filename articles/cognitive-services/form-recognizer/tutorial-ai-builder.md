@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: bb4b69902f73a22cbd2b0fd5ad97c547ceb76a5c
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 3ba08f11fb52fc0ffe3acda5e81e21b7e7629628
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912329"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95757422"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>チュートリアル:AI Builder を使用してフォーム処理アプリを作成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "92912329"
 
 ## <a name="prerequisites"></a>前提条件
 
-* データのトレーニングとテストに使用するために、同じ種類の少なくとも 5 つのフォームのセット。 トレーニング データ セットをまとめるためのヒントとオプションについては、[トレーニング データ セットの作成](./build-training-data-set.md)に関するページを参照してください。 このクイックスタートでは、 [サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2128080)の **Train** フォルダーにあるファイルを使用できます。
+* データのトレーニングとテストに使用するために、同じ種類の少なくとも 5 つのフォームのセット。 トレーニング データ セットをまとめるためのヒントとオプションについては、[トレーニング データ セットの作成](./build-training-data-set.md)に関するページを参照してください。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2128080)の **Train** フォルダーにあるファイルを使用できます。
 * Power Apps または Power Automate のライセンスについては、[ライセンス ガイド](https://go.microsoft.com/fwlink/?linkid=2085130)に関するドキュメントを参照してください。 ライセンスには、[Common Data Service](https://powerplatform.microsoft.com/common-data-service/) が含まれている必要があります。
 * AI Builder の[アドオンまたは試用版](https://go.microsoft.com/fwlink/?LinkId=2113956&clcid=0x409)。
 
@@ -89,8 +89,8 @@ ms.locfileid: "92912329"
 
     検出されたフィールドをクリックすると、次の情報が表示されます。
 
-    - **フィールド名** : 検出されたフィールドのラベルの名前。
-    - **フィールド値** : 検出されたフィールドの値。
+    - **フィールド名**: 検出されたフィールドのラベルの名前。
+    - **フィールド値**: 検出されたフィールドの値。
 
 > [!div class="mx-imgBorder"]
 > ![タグ付けのページ](./media/tutorial-ai-builder/select-fields-page.png)

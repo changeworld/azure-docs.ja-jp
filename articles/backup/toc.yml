@@ -4,6 +4,8 @@
   items:
     - name: Azure Backup の概要
       href: backup-overview.md
+    - name: Azure Backup の新着情報
+      href: whats-new.md
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/backup/'
 - name: クイックスタート
@@ -384,7 +386,7 @@
               href: backup-azure-arm-userestapi-managejobs.md
         - name: Resource Manager テンプレート
           href: backup-rm-template-samples.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: 概要
           href: security-overview.md

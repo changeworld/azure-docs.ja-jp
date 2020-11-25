@@ -6,16 +6,16 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 4d399dc9298c51906d62dabbc36650bf21f94af8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d070a03a81f70cdbf2c721cc67a3bc40c5d731fc
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542832"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018737"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>チュートリアル:Node.js で Language Understanding に対応した Web アプリ ボットを使用する
 
-Node.js を使用して、Language Understanding (LUIS) と統合されたチャット ボットを作成します。 このボットは、Azure [Web アプリ ボット](https://docs.microsoft.com/azure/bot-service/) リソースと [Bot Framework バージョン](https://github.com/Microsoft/botbuilder-dotnet) V4 で作成します。
+Node.js を使用して、Language Understanding (LUIS) と統合されたチャット ボットを作成します。 このボットは、Azure [Web アプリ ボット](/azure/bot-service/) リソースと [Bot Framework バージョン](https://github.com/Microsoft/botbuilder-dotnet) V4 で作成します。
 
 **このチュートリアルで学習する内容は次のとおりです。**
 
@@ -395,4 +395,4 @@ Web アプリ ボットのコードを開発するためには、コードをダ
 会話型ボットのある他の[サンプル](https://github.com/microsoft/botframework-solutions)を確認してください。
 
 > [!div class="nextstepaction"]
-> [カスタムの主題の領域を使用して Language Understanding アプリを作成する](luis-quickstart-intents-only.md)
+> [カスタムの主題の領域を使用して Language Understanding アプリを作成する](./tutorial-intents-only.md)

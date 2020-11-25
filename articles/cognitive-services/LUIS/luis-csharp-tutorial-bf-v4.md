@@ -6,16 +6,16 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a8d6481bdf3476f8f91c437138f4b6f1ebd1f1de
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 931fa2c10a47e5d00f8e83b31b16618b06da8a46
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058201"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019111"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>チュートリアル:C# で Language Understanding に対応した Web アプリ ボットを使用する
 
-C# を使用して、Language Understanding (LUIS) と統合されたチャット ボットを作成します。 このボットは、Azure [Web アプリ ボット](https://docs.microsoft.com/azure/bot-service/) リソースと [Bot Framework バージョン](https://github.com/Microsoft/botbuilder-dotnet) V4 で作成します。
+C# を使用して、Language Understanding (LUIS) と統合されたチャット ボットを作成します。 このボットは、Azure [Web アプリ ボット](/azure/bot-service/) リソースと [Bot Framework バージョン](https://github.com/Microsoft/botbuilder-dotnet) V4 で作成します。
 
 **このチュートリアルで学習する内容は次のとおりです。**
 
@@ -336,4 +336,4 @@ Visual Studio 2019 でボットを起動します。 ブラウザー ウィン�
 会話型ボットのある他の[サンプル](https://github.com/microsoft/botframework-solutions)を確認してください。
 
 > [!div class="nextstepaction"]
-> [カスタムの主題の領域を使用して Language Understanding アプリを作成する](luis-quickstart-intents-only.md)
+> [カスタムの主題の領域を使用して Language Understanding アプリを作成する](./tutorial-intents-only.md)

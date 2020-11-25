@@ -539,6 +539,8 @@
           href: howto-handle-samesite-cookie-changes-chrome-browser.md
         - name: Safari での ITP の処理
           href: reference-third-party-cookies-spas.md
+        - name: 継続的アクセス評価 API の使用
+          href: app-resilience-continuous-access-evaluation.md
     - name: アプリケーションの構成
       displayName: App configuration
       items:

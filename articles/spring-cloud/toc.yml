@@ -75,6 +75,8 @@
           href: spring-cloud-howto-launch-from-source.md
         - name: IntelliJ を使用してアプリを展開する
           href: spring-cloud-tutorial-intellij-deploy-apps.md
+        - name: Azure PowerShell を使用して Azure Spring Cloud をテプロイする
+          href: spring-cloud-howto-deploy-powershell.md
     - name: 構成
       items:
         - name: アプリの開始、停止、および削除

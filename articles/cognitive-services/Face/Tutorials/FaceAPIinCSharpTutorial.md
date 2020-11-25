@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 08/17/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6ff97e52d005ba1e91194b449377653317876163
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: ab251e9a156005d47a1516d23cb018fb1907ab6e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912805"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95744774"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>チュートリアル:画像内の顔データを表示する Windows Presentation Framework (WPF) アプリを作成する
 
@@ -72,15 +72,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_using)]
 
-次に、 **MainWindow** クラスに次のコードを挿入します。 このコードでは、サブスクリプション キーとエンドポイントを使用して **FaceClient** インスタンスを作成します。
+次に、**MainWindow** クラスに次のコードを挿入します。 このコードでは、サブスクリプション キーとエンドポイントを使用して **FaceClient** インスタンスを作成します。
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mainwindow_fields)]
 
-次に、 **MainWindow** コンストラクターを追加します。 ここでは、エンドポイント URL 文字列を確認した後、クライアント オブジェクトに関連付けています。
+次に、**MainWindow** コンストラクターを追加します。 ここでは、エンドポイント URL 文字列を確認した後、クライアント オブジェクトに関連付けています。
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mainwindow_constructor)]
 
-最後に、 **BrowseButton_Click** メソッドと **FacePhoto_MouseMove** メソッドをクラスに追加します。 これらのメソッドは、 *MainWindow.xaml* で宣言されているイベント ハンドラーに対応しています。 **BrowseButton_Click** メソッドは **OpenFileDialog** を作成し、ユーザーが .jpg 画像を選択できるようにします。 その後、メイン ウィンドウに画像を表示します。 **BrowseButton_Click** と **FacePhoto_MouseMove** の残りのコードについては、後の手順で挿入します。 また、`faceList` の参照にも注意してください。これは、 **DetectedFace** オブジェクトのリストです。 この参照では、アプリが実際の顔データを保存したり呼び出したりします。
+最後に、**BrowseButton_Click** メソッドと **FacePhoto_MouseMove** メソッドをクラスに追加します。 これらのメソッドは、*MainWindow.xaml* で宣言されているイベント ハンドラーに対応しています。 **BrowseButton_Click** メソッドは **OpenFileDialog** を作成し、ユーザーが .jpg 画像を選択できるようにします。 その後、メイン ウィンドウに画像を表示します。 **BrowseButton_Click** と **FacePhoto_MouseMove** の残りのコードについては、後の手順で挿入します。 また、`faceList` の参照にも注意してください。これは、**DetectedFace** オブジェクトのリストです。 この参照では、アプリが実際の顔データを保存したり呼び出したりします。
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_start)]
 
@@ -98,7 +98,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="upload-image-and-detect-faces"></a>画像をアップロードして顔を検出する
 
-このアプリでは、 **FaceClient.Face.DetectWithStreamAsync** メソッドを呼び出して顔を検出します。このメソッドは、ローカルの画像をアップロードするために [Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) REST API をラップします。
+このアプリでは、**FaceClient.Face.DetectWithStreamAsync** メソッドを呼び出して顔を検出します。このメソッドは、ローカルの画像をアップロードするために [Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) REST API をラップします。
 
 **MainWindow** クラスで **FacePhoto_MouseMove** メソッドの下に次のメソッドを挿入します。 このメソッドにより、取得する顔の属性の一覧が定義され、送信した画像ファイルが **Stream** に読み込まれます。 その後、これらのオブジェクトの両方が **DetectWithStreamAsync** メソッド呼び出しに渡されます。
 
@@ -106,7 +106,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="draw-rectangles-around-faces"></a>顔の周囲に四角形を描画する
 
-次に、画像内で検出されたそれぞれの顔の周囲に四角形を描画するコードを追加します。 **MainWindow** クラスで **BrowseButton_Click** メソッドの末尾にある `FacePhoto.Source = bitmapSource` 行の後に次のコードを挿入します。 このコードにより、 **UploadAndDetectFaces** の呼び出しから検出された顔の一覧が設定されます。 その後、それぞれの顔の周囲に四角形が描画され、変更された画像がメイン ウィンドウに表示されます。
+次に、画像内で検出されたそれぞれの顔の周囲に四角形を描画するコードを追加します。 **MainWindow** クラスで **BrowseButton_Click** メソッドの末尾にある `FacePhoto.Source = bitmapSource` 行の後に次のコードを挿入します。 このコードにより、**UploadAndDetectFaces** の呼び出しから検出された顔の一覧が設定されます。 その後、それぞれの顔の周囲に四角形が描画され、変更された画像がメイン ウィンドウに表示されます。
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_mid)]
 
