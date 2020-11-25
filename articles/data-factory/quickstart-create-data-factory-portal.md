@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 454bdaeb83e329ae059d6450b928d1286cd9552a
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 9d3c3dc3b9a83973e41bf5d7dd204316508c2cb4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555738"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96013396"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>クイック スタート:Azure Data Factory UI を使用してデータ ファクトリを作成する 
 
@@ -156,6 +156,7 @@ ms.locfileid: "94555738"
 1. [全般] パネルの **[プロパティ]** 下で、 **[名前]** に **CopyPipeline** を指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。
 
 1. **[アクティビティ]** ツールボックスで **[Move & Transform]\(移動と変換\)** を展開します。 **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[データのコピー]** アクティビティをドラッグします。 **[アクティビティ]** ツールボックスで、アクティビティを検索することもできます。 **[名前]** に「**CopyFromBlobToBlob**」と指定します。
+
    ![[データのコピー] アクティビティを作成する](./media/quickstart-create-data-factory-portal/copy-activity.png)
 
 1. コピー アクティビティの設定で **[ソース]** タブに切り替えて、 **[Source Dataset]\(ソース データセット\)** で **[InputDataset]** を選択します。
@@ -163,6 +164,7 @@ ms.locfileid: "94555738"
 1. コピー アクティビティの設定で **[シンク]** タブに切り替えて、 **[Sink Dataset]\(シンク データセット\)** で **[OutputDataset]** を選択します。
 
 1. キャンバスの上にあるパイプライン ツール バーの **[検証]** をクリックして、パイプライン設定を検証します。 パイプラインが正常に検証されたことを確認します。 検証出力を閉じるには、 **>>** (右矢印) ボタンを選択します。 
+
    ![パイプラインを検証する](./media/quickstart-create-data-factory-portal/pipeline-validate.png)
 
 ## <a name="debug-the-pipeline"></a>パイプラインのデバッグ
@@ -180,6 +182,7 @@ ms.locfileid: "94555738"
 この手順では、Azure Data Factory にエンティティ (リンクされたサービス、データセット、パイプライン) をデプロイします。 次に、パイプラインの実行を手動でトリガーします。 
 
 1. パイプラインをトリガーする前に、エンティティを Data Factory に発行する必要があります。 発行するには、上部にある **[すべて発行]** を選択します。 
+
     ![すべて発行](./media/quickstart-create-data-factory-portal/publish-all.png)
 
 1. パイプラインを手動でトリガーするには、パイプライン ツール バーの **[トリガーの追加]** を選択し、 **[Trigger Now]\(今すぐトリガー\)** を選択します。 **[Pipeline Run]\(パイプラインの実行\)** ページで **[完了]** を選択します。

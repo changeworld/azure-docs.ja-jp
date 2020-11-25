@@ -1,27 +1,27 @@
 ---
-title: Azure Marketplace での VM 認定のトラブルシューティング
-description: この記事では、Azure Marketplace 用に VM イメージをテストおよび認定する場合の一般的なトラブルシューティングのトピックについて説明します。
+title: Azure Marketplace での仮想マシン (VM) 認定のトラブルシューティング
+description: Azure Marketplace での仮想マシン (VM) イメージのテストと認定に関連する一般的な問題のトラブルシューティングを行います。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: f065b1bc98eab86542ecff73e1471e4d90cd4182
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 5124e7084a8e878e54e594424ec0926410f002ca
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339536"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682487"
 ---
-# <a name="vm-certification-troubleshooting"></a>VM 認定のトラブルシューティング
+# <a name="troubleshoot-virtual-machine-certification"></a>仮想マシンの認定に関するトラブルシューティング
 
-Azure Marketplace に仮想マシン (VM) イメージを発行する際に、Azure チームはそれを検証して、その起動可能性、セキュリティ、および Azure との互換性を確認します。 高品質テストのいずれかに不合格になると、発行が失敗し、問題を説明するエラー メッセージが表示されます。
+Azure Marketplace に仮想マシン (VM) イメージを公開する際に、Azure チームはそれを検証して、それが起動可能であること、セキュリティで保護されていること、および Azure との互換性があることを確認します。 VM イメージは、高品質のテストのいずれかに失敗した場合には公開されません。 問題を説明するエラー メッセージが表示されます。
 
 この記事では、VM イメージの発行中に発生する一般的なエラー メッセージと、関連する解決策について説明します。
 
 > [!NOTE]
-> 改善に関するご質問またはご意見につきましては、パートナー センターの[サポート](https://aka.ms/marketplacepublishersupport)までご連絡ください。
+> この記事に関する質問または改善のための提案がある場合は、[パートナー センターのサポート](https://aka.ms/marketplacepublishersupport)までご連絡ください。
 
 ## <a name="approved-base-image"></a>承認された基本イメージ
 
@@ -37,32 +37,30 @@ Azure Marketplace に仮想マシン (VM) イメージを発行する際に、Az
 > [!Note]
 > Azure Marketplace から取得していない Linux ベースのイメージを使用している場合は、最初のパーティションを 2,048 KB オフセットできます。 これにより、フォーマットされていない領域を、新しい課金情報を追加するために使用でき、Azure で Azure Marketplace への VM の公開を進めることができます。  
 
-> [!Note]
-> Marketplace から取得したものではない Linux ベースのイメージを使用している場合は、最初のパーティションを 2048 KB オフセットできます。 これにより、フォーマットされていない領域を、新しい課金情報を追加するために使用でき、Azure で Marketplace への VM の発行を進めることができます。  
-
 ## <a name="vm-extension-failure"></a>VM 拡張機能のエラー
 
 イメージによって VM 拡張機能がサポートされているかどうかを確認します。
 
-VM 拡張機能を有効にするには、次の手順を実行します。
+VM 拡張機能を有効にするには:
 
 1. Linux VM を選択します。
 1. **[診断設定]** に移動します。
 1. **ストレージ アカウント** を更新して、基本マトリックスを有効にします。
 1. **[保存]** を選択します。
 
-   ![ゲスト レベルの監視を有効にする](./media/create-vm/vm-certification-issues-solutions-1.png)
+   ![ゲストレベルの監視を有効にする方法を示すスクリーンショット。](./media/create-vm/vm-certification-issues-solutions-1.png)
 
-VM 拡張機能が正しくアクティブ化されていることを確認するには、以下を実行します。
+VM 拡張機能が正しくアクティブ化されていることを確認するには:
 
 1. VM 内で **[VM 拡張機能]** タブを選択し、 **[Linux Diagnostics 拡張機能]** の状態を確認します。
-1. 
-    * 状態が *[プロビジョニング成功]* であれば、拡張機能テスト ケースは合格しています。  
-    * 状態が *[プロビジョニング失敗]* の場合、拡張機能テスト ケースは失敗しており、書き込まれたフラグを設定する必要があります。
+1. プロビジョニング状態を確認します。
 
-      ![プロビジョニングが成功したことを示すスクリーンショット](./media/create-vm/vm-certification-issues-solutions-2.png)
+   - 状態が *[プロビジョニング成功]* であれば、拡張機能テスト ケースは合格しています。  
+   - 状態が *[プロビジョニング失敗]* の場合、拡張機能テスト ケースは失敗しており、書き込まれたフラグを設定する必要があります。
 
-      VM 拡張機能が失敗した場合は、[[Linux Diagnostic Extension を使用して、メトリックとログを監視する]](../virtual-machines/extensions/diagnostics-linux.md) を参照して有効にします。 VM 拡張機能を有効にしない場合は、サポート チームに連絡して、それを無効にするように依頼してください。
+   ![プロビジョニングが成功したことを示すスクリーンショット。](./media/create-vm/vm-certification-issues-solutions-2.png)
+
+   VM 拡張機能が失敗した場合は、[[Linux Diagnostic Extension を使用して、メトリックとログを監視する]](../virtual-machines/extensions/diagnostics-linux.md) を参照して有効にします。 VM 拡張機能を有効にしない場合は、サポート チームに連絡して、それを無効にするように依頼してください。
 
 ## <a name="vm-provisioning-issue"></a>VM のプロビジョニングの問題
 
@@ -75,7 +73,6 @@ VM 拡張機能が正しくアクティブ化されていることを確認す�
 |1|無効な仮想ハード ディスク (VHD)|VHD フッターにある指定された Cookie の値が正しくない場合、VHD は無効と見なされます。|イメージを再作成して、要求を送信します。|
 |2|無効な BLOB の種類|使用されたブロックがページの種類ではなく、BLOB の種類であるため、VM のプロビジョニングが失敗しました。|イメージを再作成して、要求を送信します。|
 |3|プロビジョニングのタイムアウト、または正しく一般化されていない|VM の一般化に問題があります。|一般化を使用してイメージを再作成し、要求を送信します。|
-|
 
 > [!NOTE]
 > VM の一般化の詳細については、以下を参照してください。
@@ -86,9 +83,10 @@ VM 拡張機能が正しくアクティブ化されていることを確認す�
 ## <a name="vhd-specifications"></a>VHD の仕様
 
 ### <a name="conectix-cookie-and-other-vhd-specifications"></a>Conectix Cookie とその他の VHD の仕様
-'conectix' 文字列は VHD 仕様の一部で、以下の VHD フッターでファイル作成者を識別する 8 バイトの 'Cookie' として定義されています。 Microsoft によって作成されたすべての vhd ファイルにこの Cookie があります。 
 
-VHD でフォーマットされた BLOB には、512 バイトのフッターが必要です。こちらが VHD フッターの形式です。
+'conectix' 文字列は VHD 仕様の一部です。 これは、ファイル作成者を識別する 8 バイトの Cookie として VHD フッターで定義されています。 Microsoft によって作成されたすべての VHD ファイルにこの Cookie があります。 
+
+VHD でフォーマットされた BLOB には、この形式の 512 バイトのフッターが必要です。
 
 |ハード ディスク フッターのフィールド|サイズ (バイト)|
 |---|---|
@@ -111,33 +109,34 @@ Saved State\(保存された状態\)|1
 
 
 ### <a name="vhd-specifications"></a>VHD の仕様
-シームレスな発行エクスペリエンスを実現するために、 **VHD が次の条件を満たしている** ことを確認してください。
-* Cookie に "conectix" という文字列が含まれていること
-* ディスクの種類が [容量固定] であること
-* VHD の仮想サイズが 20 MB 以上であること
-* VHD がアラインされていること (つまり、仮想サイズが 1 MB の倍数であること)
-* VHD BLOB の長さ = 仮想サイズ + VHD フッターの長さ (512)
 
-VHD の仕様は[こちら](https://www.microsoft.com/download/details.aspx?id=23850)からダウンロードできます。
+スムーズな公開エクスペリエンスを実現するために、VHD が次の条件を満たしていることを確認してください。
 
+- Cookie に 'conectix' という文字列が含まれている。
+- ディスクの種類が固定である。
+- VHD の仮想サイズが 20 MB 以上である。
+- VHD がアラインされている。 仮想サイズは 1 MB の倍数である必要があります。
+- VHD BLOB の長さは、仮想サイズに VHD フッターの長さ (512) を加えた値と等しくなります。
+
+VHD の仕様は[こちら](https://www.microsoft.com/download/details.aspx?id=23850)からダウンロードしてください。
 
 ## <a name="software-compliance-for-windows"></a>Windows のソフトウェア コンプライアンス
 
-ソフトウェア コンプライアンスの問題が原因で Windows イメージの要求が拒否された場合は、Azure Marketplace から関連する SQL バージョンの基本イメージを取得する代わりに、SQL Server インスタンスがインストールされた Windows イメージを作成した可能性があります。
+ソフトウェア コンプライアンスの問題が原因で Windows イメージの要求が拒否された場合は、SQL Server インスタンスがインストールされた Windows イメージを作成した可能性があります。 そうではなく、Azure Marketplace から関連する SQL Server バージョンの基本イメージを取得する必要があります。
 
-SQL Server がインストールされている独自の Windows イメージを作成しないでください。 代わりに、Azure Marketplace からの承認された SQL 基本イメージ (Enterprise/Standard/web) を使用してください。
+SQL Server がインストールされている独自の Windows イメージを作成しないでください。 Azure Marketplace からの承認された SQL Server 基本イメージ (Enterprise、Standard、Web) を使用してください。
 
 Visual Studio、または Office のライセンスされた製品をインストールしようとしている場合は、事前承認についてサポート チームにお問い合わせください。
 
 承認済みのベースの選択の詳細については、[承認済みのベースからの仮想マシンの作成](azure-vm-create-using-approved-base.md)に関する記事を参照してください。
 
-## <a name="tool-kit-test-case-execution-failed"></a>ツールキットのテスト ケースの実行に失敗した
+## <a name="toolkit-test-case-execution-failed"></a>ツールキットのテスト ケースの実行に失敗した
 
 Microsoft 認定ツールキットを使用すると、テスト ケースを実行し、VHD またはイメージに Azure 環境との互換性があることを確認できます。
 
 [Microsoft 認定ツールキット](azure-vm-image-test.md)をダウンロードします。
 
-## <a name="linux-test-cases"></a>Linux のテスト ケース
+### <a name="linux-test-cases"></a>Linux のテスト ケース
 
 ツールキットで実行される Linux のテスト ケースの一覧を次の表に示します。 テストの検証は、説明に記載されています。
 
@@ -145,7 +144,7 @@ Microsoft 認定ツールキットを使用すると、テスト ケースを実
 |---|---|---|
 |1|Bash 履歴|VM イメージを作成する前に、Bash 履歴ファイルをクリアする必要があります。|
 |2|Linux エージェントのバージョン|Azure Linux エージェント 2.2.41 以降がインストールされている必要があります。|
-|3|必須のカーネル パラメーター|次のカーネル パラメーターが設定されていることを確認します。 <br>console=ttyS0<br>earlyprintk=ttyS0<br>rootdelay=300|
+|3|必須のカーネル パラメーター|次のカーネル パラメーターが設定されていることを確認します。 <br>console=ttyS0<br>earlyprintk=ttyS0<br>rootdelay=300 |
 |4|OS ディスク上のスワップ パーティション|OS ディスクにスワップ パーティションが作成されていないことを確認します。|
 |5|OS ディスク上のルート パーティション|OS ディスクの単一のルート パーティションを作成します。|
 |6|OpenSSL のバージョン|OpenSSL のバージョンは、0.9.8 以降である必要があります。|
@@ -154,16 +153,17 @@ Microsoft 認定ツールキットを使用すると、テスト ケースを実
 |9|OS アーキテクチャ|64 ビットのオペレーティング システムのみがサポートされています。|
 |10|自動更新|Linux エージェントの自動更新が有効になっているかどうかを特定します。|
 
-### <a name="common-errors-found-while-executing-previous-test-cases"></a>前のテスト ケースの実行中に検出された一般的なエラー
+### <a name="common-test-case-errors"></a>一般的なテストケース エラー
 
-前述のテスト ケースの実行中に検出された一般的なエラーの一覧を次の表に示します。
- 
-|シナリオ|テスト ケース|エラー|解決策|
-|---|---|---|---|
-|1|Linux エージェント バージョンのテスト ケース|Linux エージェントの最小バージョンは 2.2.41 以降です。 この要件は、2020 年 5 月 1 日以降必須になりました。|Linux エージェントのバージョンを更新して、2.241 以降にしてください。 詳細については、[Linux エージェントのバージョン更新ページ](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)を参照してください。|
-|2|Bash 履歴テスト ケース|送信したイメージ内の Bash 履歴のサイズが 1 キロバイト (KB) を超えると、エラーが表示されます。 潜在的な機密情報が Bash 履歴ファイルにキャプチャされることのないように、このサイズは 1 KB に制限されています。|この問題を解決するには、動作している他の VM に VHD をマウントし、必要な変更 ( *.bash* 履歴ファイルを削除するなど) を行って、サイズを 1 KB 以下に削減します。|
-|3|必要なカーネル パラメーターのテスト ケース|このエラーは、 **console** の値が **ttyS0** に設定されていない場合に発生します。 次のコマンドを実行して確認します。<br>`cat /proc/cmdline`|**console** の値を **ttyS0** に設定し、要求を再送信します。|
-|4|ClientAlive 間隔のテスト ケース|ツールキットの結果で、このテスト ケースに対して失敗の結果が返された場合は、 **ClientAliveInterval** の値が不適切です。|**ClientAliveInterval** の値を 235 以下に設定してから、要求を再送信してください。|
+テスト ケースの実行時に発生する可能性がある一般的なエラーについては、次の表を参照してください。
+
+| シナリオ | テスト ケース | エラー | 解決策 |
+| --- | --- | --- | --- |
+| 1 | Linux エージェント バージョンのテスト ケース | Linux エージェントの最小バージョンは 2.2.41 以降です。 この要件は、2020 年 5 月 1 日以降必須になりました。 | Linux エージェントのバージョンを更新してください。 2\.241 またはそれ以降である必要があります。 詳細については、[Linux エージェントのバージョン更新ページ](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)を参照してください。 |
+| 2 | Bash 履歴テスト ケース | 送信したイメージ内の Bash 履歴のサイズが 1 キロバイト (KB) を超えていると、エラーが発生します。 Bash 履歴ファイルに潜在的な機密情報が含まれることのないようにするため、このサイズは 1 KB に制限されています。 | 別の作業用 VM に VHD をマウントし、サイズが 1 KB 以下に減少するように変更を加えて解決してください。 たとえば、`.bash` 履歴ファイルを削除します。 |
+| 3 | 必要なカーネル パラメーターのテスト ケース | このエラーは、`console` の値が `ttyS0` に設定されていない場合に発生します。 次のコマンドを実行して確認します。 <br /> `cat /proc/cmdline` | `console` の値を `ttyS0` に設定し、要求を再送信します。 |
+| 4 | ClientAlive 間隔のテスト ケース | ツールキットで、このテスト ケースに対して失敗の結果が返された場合は、`ClientAliveInterval` の値が不適切です。 | `ClientAliveInterval` の値を 235 以下に設定してから、要求を再送信してください。 |
+
 
 ### <a name="windows-test-cases"></a>Windows のテスト ケース
 
@@ -188,13 +188,12 @@ Microsoft 認定ツールキットを使用すると、テスト ケースを実
 |15|SNMP サービス|簡易ネットワーク管理プロトコル (SNMP) サービス機能は、まだサポートされていません。 アプリケーションがこの機能に依存しないようにする必要があります。|
 |16|Windows インターネット ネーム サービス|Windows インターネット ネーム サービス。 このサーバー機能はまだサポートされていません。 アプリケーションがこの機能に依存しないようにする必要があります。|
 |17|ワイヤレス LAN サービス|ワイヤレス LAN サービス。 このサーバー機能はまだサポートされていません。 アプリケーションがこの機能に依存しないようにする必要があります。|
-|
 
-前述のテスト ケースでエラーが発生した場合、解決策については、表の **[説明]** 列を参照してください。 詳細情報が必要な場合は、サポート チームにお問い合わせください。 
+前述のテスト ケースでエラーが発生した場合、解決策については、表の **[説明]** 列を参照してください。 詳細については、サポート チームにお問い合わせください。 
 
 ## <a name="data-disk-size-verification"></a>データ ディスク サイズの確認
 
-データ ディスクを使用して送信された要求のサイズが 1023 ギガバイト (GB) を超える場合、その要求は承認されません。 このルールは、Linux と Windows の両方に適用されます。
+1023 ギガバイト (GB) を超えるサイズのデータ ディスク要求は承認されません。 このルールは、Linux と Windows の両方に適用されます。
 
 1023 GB 以下のサイズで要求を再送信してください。
 
@@ -206,15 +205,13 @@ OS ディスク サイズの制限については、次のルールを参照し�
 |---|---|
 |Linux|30 GB から 1023 GB|
 |Windows|30 GB から 250 GB|
-|
 
-VM では基になるオペレーティング システムへのアクセスが許可されるため、VHD のサイズが VHD にとって十分な大きさであることを確認します。 ディスクはダウンタイムなしで展開できないため、30 GB から 50 GB のディスク サイズを使用してください。
+VM を使用すると基になるオペレーティング システムにアクセスできるため、VHD のサイズが VHD に対して十分な大きさであることを確認します。 ディスクはダウンタイムなしでは展開できません。 30 GB から 50 GB のディスク サイズを使用します。
 
 |VHD サイズ|実際の占有サイズ|解決策|
 |---|---|---|
 |> 500 テビバイト (TiB)|該当なし|例外の承認については、サポート チームにお問い合わせください。|
 |250-500 TiB|BLOB サイズとの差異が > 200 ギビバイト (GiB)|例外の承認については、サポート チームにお問い合わせください。|
-|
 
 > [!NOTE]
 > ディスク サイズを大きくすると、コストが高くなり、セットアップとレプリケーションのプロセスで遅延が発生します。 この遅延とコストのために、サポート チームでは、例外の承認に対する正当な理由を求める場合があります。
@@ -223,12 +220,9 @@ VM では基になるオペレーティング システムへのアクセスが�
 
 WannaCry ウイルスに関連する潜在的な攻撃を防ぐには、すべての Windows イメージ要求が最新の修正プログラムで更新されているようにします。
 
-OS の詳細とサポートされる最小バージョンについて Windows Server の修正プログラム適用済みバージョンを確認するには、次の表を参照してください。 
+イメージ ファイルのバージョンは、`C:\windows\system32\drivers\srv.sys` または `srv2.sys` で確認できます。
 
-イメージ ファイルのバージョンは、`C:\windows\system32\drivers\srv.sys` または `srv2.sys` から確認できます。
-
-> [!NOTE]
-> WindowsServer2019 には、必須のバージョン要件はありません。
+次の表は、修正プログラムが適用された Windows Server の最小バージョンを示しています。 
 
 |OS|Version|
 |---|---|
@@ -237,7 +231,9 @@ OS の詳細とサポートされる最小バージョンについて Windows Se
 |Windows Server 2012 R2|6.3.9600.18604|
 |Windows Server 2016|10.0.14393.953|
 |Windows Server 2019|NA|
-|
+
+> [!NOTE]
+> WindowsServer2019 には、必須のバージョン要件はありません。
 
 ## <a name="sack-vulnerability-patch-verification"></a>SACK 脆弱性修正プログラムの検証
 
@@ -295,28 +291,29 @@ Linux イメージを送信するときに、カーネル バージョンの問�
 ||stretch (security)|4.9.168-1+deb9u3|
 ||Debian GNU/Linux 10 (buster)|Debian 6.3.0-18+deb9u1|
 ||buster、sid (stretch backports)|4.19.37-5|
-|
 
 ## <a name="image-size-should-be-in-multiples-of-megabytes"></a>イメージのサイズはメガバイトの倍数である必要がある
 
 Azure 上のすべての VHD の仮想サイズは、1 メガバイト (MB) の倍数に調整されている必要があります。 VHD が推奨される仮想サイズに従っていない場合、要求が拒否される可能性があります。
 
-未フォーマットのディスクから VHD に変換するときにはガイドラインに従い、未フォーマットのディスクのサイズが 1 MB の倍数であることを確認してください。 詳細については、「[動作保証外のディストリビューションに関する情報](../virtual-machines/linux/create-upload-generic.md)」を参照してください。
+Raw ディスクから VHD に変換するときのガイドラインに従ってください。 Raw ディスクのサイズが 1 MB の倍数であることを確認します。 詳細については、「[動作保証外のディストリビューションに関する情報](../virtual-machines/linux/create-upload-generic.md)」を参照してください。
 
 ## <a name="vm-access-denied"></a>VM アクセスが拒否された
 
-VM 上でテスト ケースを実行しているときにアクセス拒否の問題が発生した場合は、テスト ケースを実行するための特権が不足していることが原因である可能性があります。
+VM でのテスト ケース実行に関する "_アクセス拒否_" の問題の原因として、十分な権限がないことが考えられます。
 
-セルフテスト ケースが実行されているアカウントに対して適切なアクセスが有効になっているかどうかを確認します。 アクセスが有効になっていない場合は、テスト ケースを実行できるようにします。 アクセスを有効にしない場合は、セルフテスト ケースの結果をサポート チームと共有することができます。
+セルフテスト ケースが実行されているアカウントに対して適切なアクセスを有効にしていることを確認します。 テスト ケースを実行するためのアクセスを有効にします (有効になっていない場合)。 アクセスを有効にしない場合は、セルフテスト ケースの結果をサポート チームと共有することができます。
 
-SSH が無効になったイメージを使用して認定プロセスの要求を送信する場合は、次の手順に従ってください。
+SSH が無効になっているイメージを使用して認定プロセスの要求を送信するには:
 
-1. イメージで Azure Toolkit を実行します。 ([最新の Toolkit](https://aka.ms/AzureCertificationTestTool) をダウンロードしてください。)
+1. イメージに対して [Azure VM を対象にした最新の認定テスト ツール](https://aka.ms/AzureCertificationTestTool)を実行します。
 
-2. [サポート チケット](https://aka.ms/marketplacepublishersupport)を作成し、Toolkit レポートを添付して、オファーの詳細 (オファー名、発行元の名前、プラン ID/SKU、バージョン) を提供します。
+2. [サポート チケット](https://aka.ms/marketplacepublishersupport)を作成します。 必ずツールキット レポートを添付し、オファーの詳細を提供してください。
+   - プラン名
+   - 発行元の名前
+   - プラン ID、SKU、バージョン
 
-3. 認定要求を再送信してください。
-
+3. 認定要求を再送信します。
 
 ## <a name="download-failure"></a>ダウンロードの失敗
     
@@ -329,108 +326,137 @@ SSH が無効になったイメージを使用して認定プロセスの要求�
 |3|無効な SAS URL|その VHD に関連付けられている SAS URL は正しくありません。|正しい SAS URL を取得してください。|
 |4|無効な署名|その VHD に関連付けられている SAS URL は正しくありません。|正しい SAS URL を取得してください。|
 |6|HTTP 条件ヘッダー|SASL URL が無効です。|正しい SAS URL を取得してください。|
-|7|無効な VHD 名|VHD 名にパーセント記号 (%) や引用符 (") などの特殊文字が含まれているかどうかを確認します。|特殊文字を削除して VHD ファイルの名前を変更します。|
-|
+|7|無効な VHD 名|VHD 名にパーセント記号 (`%`) や引用符 (`"`) などの特殊文字が含まれているかどうかを確認します。|特殊文字を削除して VHD ファイルの名前を変更します。|
 
-## <a name="first-mb-2048-kb-partition-only-for-linux"></a>最初の MB (2048 KB) パーティション (Linux の場合のみ)
+## <a name="first-mb-2048-kb-partition-linux-only"></a>最初の MB (2048 KB) パーティション (Linux のみ)
 
-VHD を送信するときに、VHD の最初の 2048 KB が空であることを確認します。 そうでない場合、要求は失敗します*。
-
->[!NOTE]
->\* Azure Marketplace から取得した Azure Windows 基本イメージの上に構築されたものなど、一部の特殊なイメージの場合、課金タグがあるかどうかを確認し、課金タグが存在し、使用可能な内部値に一致する場合は、MB パーティションを無視します。
-
-
-## <a name="steps-for-creating-first-mb-2048-kb-partition-only-for-linux-on-an-empty-vhd"></a>空の VHD に最初の MB (2048 KB) パーティション (Linux の場合のみ) を作成するための手順
-
-手順 1: 任意の種類の VM (例: Ubuntu、Cent OS など) を作成します。 必須フィールドに入力し、[Next:Disks>]\(次: ディスク>\) をクリックします。\
-![次:Disks コマンド](./media/create-vm/vm-certification-issues-solutions-15.png)
-
-手順 2:上記 VM のアンマネージド ディスクを作成します。
-![アンマネージド ディスクを作成する](./media/create-vm/vm-certification-issues-solutions-16.png)
-
-既定値を使用することも、NIC、NSG、パブリック IP などのフィールドに任意の値を指定することもできることに注意してください。
-
-手順 3:VM を作成したら、下に示すように左側にある [Disks]\(ディスク\) をクリックしてください。![[Disks]\(ディスク\) をクリックする](./media/create-vm/vm-certification-issues-solutions-17.png)
-
-手順 4:下に示すように、パーティション テーブルを作成するために、VHD をデータ ディスクとして上記の VM にアタッチしてください。
-![VHD をアタッチする](./media/create-vm/vm-certification-issues-solutions-18.png)
-
-下に示すように、[Add DataDisk]\(DataDisk の追加\) -> [Existing Blob]\(既存の BLOB\) をクリックします。VHD ストレージ アカウント -> [Container]\(コンテナー\) を参照します。[VHD] を選択し、[OK] をクリックします。\
-![VHD の選択](./media/create-vm/vm-certification-issues-solutions-19.png)
-
-VHD がデータ ディスク LUN 0 として追加されます。ディスクを追加した後、VM を再起動してください。
-
-手順 5: VM を再起動した後、Putty (またはその他のクライアント) を使用して VM にログインし、"sudo  -i" コマンドを実行してルート アクセスを取得します。
-
-![VM にログインする](./media/create-vm/vm-certification-issues-solutions-20.png)
-
-手順 6: 以下の手順に従って、VHD にパーティションを作成します。
-
-a) fdisk /dev/sdb コマンドを入力します
-
-b) 「p」と入力して、VHD の既存パーティション一覧を表示します。
-
-c) 「d」と入力して、VHD で使用可能なすべての既存パーティションを削除します (必要ない場合、この手順は省略できます) ![既存のパーティションをすべて削除する](./media/create-vm/vm-certification-issues-solutions-21.png)
-
-d) 新しいパーティションを作成するために「n」と入力し、(プライマリ パーティション) のための [p] を選択します。
-
-e) [First Sector] の値として 2048 を入力してください。[Last Sector] については、既定値が使用されるため、そのままにすることができます。すべてのデータは、2048 KB まで消去されることに注意してください。
-           
->[!NOTE]
->\* 上記のようにパーティションを作成すると、既存のデータは 2048 KB まで消去されます。そのため、上記のコマンドを実行する前に、VHD のバックアップを取っておくことをお勧めします。
-
-下のスクリーンショットを参照してください。
-![消去されたデータ](./media/create-vm/vm-certification-issues-solutions-22.png)
-
-f) 「w」を入力して、パーティションの作成を確認します。 
-
-![パーティションの作成](./media/create-vm/vm-certification-issues-solutions-23.png)
-
-g) パーティション テーブルを確認するには、n fdisk /dev/sdb コマンドを実行し、「p」を入力します。これにより、以下に示すように、2048 オフセット値を使用してパーティションが作成されていることを確認できます。 
-
- ![2048 オフセット](./media/create-vm/vm-certification-issues-solutions-24.png)
-
-手順 7: VM から VHD をデタッチし、VM を削除してください。
-
-         
-## <a name="steps-for-creating-first-mb-2048-kb-partition-only-for-linux-by-moving-the-existing-data-on-vhd"></a>VHD 上の既存のデータを移動して最初の MB (2048 KB) パーティション (Linux の場合のみ) を作成するための手順
-
-手順 1: 任意の種類の VM (例: Ubuntu、Cent OS など) を作成します。 必須フィールドに入力し、[Next:Disks>]\(次: ディスク>\) をクリックします。\
-![[Next:Disks>]\(次: ディスク>\) をクリックします。](./media/create-vm/vm-certification-issues-solutions-15.png)
-
-手順 2:上記 VM のアンマネージド ディスクを作成します。
-![アンマネージド ディスクを作成する](./media/create-vm/vm-certification-issues-solutions-16.png)
-
-既定値を使用することも、NIC、NSG、パブリック IP などのフィールドに任意の値を指定することもできることに注意してください。
-
-手順 3:VM を作成したら、下に示すように左側にある [Disks]\(ディスク\) をクリックしてください。![[Disks]\(ディスク\) をクリックする](./media/create-vm/vm-certification-issues-solutions-17.png)
-
-手順 4:下に示すように、パーティション テーブルを作成するために、VHD をデータ ディスクとして上記の VM にアタッチしてください。
-![パーティション テーブル](./media/create-vm/vm-certification-issues-solutions-18.png)
-
-下に示すように、[Add DataDisk]\(DataDisk の追加\) -> [Existing Blob]\(既存の BLOB\) をクリックします。VHD ストレージ アカウント -> [Container]\(コンテナー\) を参照します。[VHD] を選択し、[OK] をクリックします。\
-![VHD の選択](./media/create-vm/vm-certification-issues-solutions-19.png)
-
-VHD がデータ ディスク LUN 0 として追加されます。ディスクを追加した後、VM を再起動してください。
-
-手順 5: VM を再起動した後、Putty を使用して VM にログインし、"sudo  -i" コマンドを実行してルート アクセスを取得します。 \
-![再起動後にログインする](./media/create-vm/vm-certification-issues-solutions-20.png)
-
-手順 6: echo '+1M,' | sfdisk --move-data /dev/sdc -N 1 コマンドを実行します。![コマンドを実行する](./media/create-vm/vm-certification-issues-solutions-25.png)
+VHD を送信するときに、VHD の最初の 2048 KB が空であることを確認します。 そうでない場合、要求は失敗します。
 
 >[!NOTE]
->\* ディスクのサイズによっては、上記のコマンドが完了するまでに時間がかかる場合があることに注意してください。
+>Azure Marketplace から取得した Azure Windows 基本イメージの上に構築されたものなど、一部の特殊なイメージの場合、課金タグがあるかどうかが確認されます。課金タグが存在し、使用可能な内部値に一致する場合は、MB パーティションが無視されます。
 
-手順 7: VM から VHD をデタッチし、VM を削除してください。
+### <a name="create-a-first-mb-2048-kb-partition-on-an-empty-vhd"></a>空の VHD に最初の MB (2048 KB) パーティションを作成する
+
+これらの手順は Linux のみに適用されます。
+
+1. Ubuntu、Cent OS など、任意の種類の Linux VM を作成します。 必須フィールドに入力し、 **[Next: Disks >]\(次へ: ディスク >\)** をクリックします。
+
+   ![仮想マシンの作成ページを示すスクリーンショット。[Next: Disks]\(次へ: ディスク\) コマンド ボタンが強調表示されています。](./media/create-vm/vm-certification-issues-solutions-15.png)
+
+1. VM 用にアンマネージド ディスクを作成します。
+
+   既定値を使用することも、NIC、NSG、パブリック IP などのフィールドに任意の値を指定することもできます。
+
+   ![仮想マシン作成フローの [データ ディスク] ページのスクリーンショット画像。](./media/create-vm/vm-certification-issues-solutions-16.png)
+
+1. VM 作成後、左側のペインで **[ディスク]** を選択します。
+
+   ![VM 用にディスクを選択する方法を示すスクリーンショット。](./media/create-vm/vm-certification-issues-solutions-17.png)
+
+1. パーティション テーブルを作成するために、VHD をデータ ディスクとして VM にアタッチします。
+
+   1. **[Add DataDisk]\(DataDisk の追加\)**  >  **[Existing Blob]\(既存の BLOB\)** を選択します。
+
+      ![VHD にデータ ディスクを追加する方法を示すスクリーンショット。](./media/create-vm/vm-certification-issues-solutions-18.png)
+
+   1. VHD ストレージ アカウントを検索します。
+   1. **[コンテナー]** を選択し、VHD を選択します。
+   1. **[OK]** を選択します。
+
+      ![アンマネージド ディスクのアタッチ ページのスクリーンショット。](./media/create-vm/vm-certification-issues-solutions-19.png)
+
+      VHD がデータ ディスク LUN 0 として追加されます。
+
+   1. VM を再起動します。
+
+1. VM を再起動した後、Putty または別のクライアントを使用して VM にログインし、`sudo  -i` コマンドを実行してルート アクセスを取得します。
+
+   ![sudo -i コマンドを示す Putty クライアント コマンド ラインのスクリーンショット。](./media/create-vm/vm-certification-issues-solutions-20.png)
+
+1. VHD にパーティションを作成します。
+
+   1. `fdisk /dev/sdb` コマンドを入力します。
+   1. VHD の既存パーティション一覧を表示するには、「`p`」と入力します。
+   1. 「`d`」を入力して、VHD 内の使用可能なすべての既存パーティションを削除します。 この手順は必要なければスキップできます。
+
+      ![Putty クライアント コマンド ラインのスクリーンショット。既存のパーティションを削除するためのコマンドを示しています。](./media/create-vm/vm-certification-issues-solutions-21.png)
+
+   1. 新しいパーティションを作成するために「`n`」と入力し、`p` (プライマリ パーティションを表す) を選択します。
+
+   1. _first sector_ の値として「2048」を入力します。 _last sector_ は既定値のままにすることができます。
+
+      >[!IMPORTANT]
+      >既存のデータは 2048 KB まで消去されます。 新しいパーティションを作成する前に、VHD をバックアップしてください。
+
+      ![Putty クライアント コマンド ラインのスクリーンショット。消去されたデータのコマンドと出力を示しています。](./media/create-vm/vm-certification-issues-solutions-22.png)
+
+   1. 「`w`」を入力して、パーティションの作成を確認します。 
+
+      ![Putty クライアント コマンド ラインのスクリーンショット。パーティションを作成するためのコマンドを示しています。](./media/create-vm/vm-certification-issues-solutions-23.png)
+
+   1. コマンド `n fdisk /dev/sdb` を実行して「`p`」を入力することで、パーティション テーブルを検証できます。 パーティションがオフセット値 2048 で作成されていることがわかります。 
+
+      ![Putty クライアント コマンド ラインのスクリーンショット。2048 のオフセットを作成するためのコマンドを示しています。](./media/create-vm/vm-certification-issues-solutions-24.png)
+
+1. VM から VHD をデタッチし、VM を削除します。
+
+### <a name="create-a-first-mb-2048-kb-partition-by-moving-existing-data-on-vhd"></a>VHD 上の既存のデータを移動して、最初の MB (2048 KB) のパーティションを作成する
+
+これらの手順は Linux のみに適用されます。
+
+1. Ubuntu、Cent OS など、任意の種類の Linux VM を作成します。 必須フィールドに入力し、 **[Next: Disks >]\(次へ: ディスク >\)** をクリックします。
+
+   ![仮想マシンの作成ページを示すスクリーンショット。[Next: Disks]\(次へ: ディスク\) コマンド ボタンが強調表示されています。](./media/create-vm/vm-certification-issues-solutions-15.png)
+
+1. VM 用にアンマネージド ディスクを作成します。
+
+   ![仮想マシン作成フローの [データ ディスク] ページのスクリーンショット画像。](./media/create-vm/vm-certification-issues-solutions-16.png)
+
+   既定値を使用することも、NIC、NSG、パブリック IP などのフィールドに任意の値を指定することもできます。
+
+1. VM 作成後、左側のペインで **[ディスク]** を選択します。
+
+   ![VM 用にディスクを選択する方法を示すスクリーンショット。](./media/create-vm/vm-certification-issues-solutions-17.png)
+
+1. パーティション テーブルを作成するために、VHD をデータ ディスクとして VM にアタッチします。
+
+   1. パーティション テーブルを作成するために、VHD をデータ ディスクとして VM にアタッチします。
+
+   1. **[Add DataDisk]\(DataDisk の追加\)**  >  **[Existing Blob]\(既存の BLOB\)** を選択します。
+
+      ![VHD にデータ ディスクを追加する方法を示すスクリーンショット。](./media/create-vm/vm-certification-issues-solutions-18.png)
+
+   1. VHD ストレージ アカウントを検索します。
+   1. **[コンテナー]** を選択し、VHD を選択します。
+   1. **[OK]** を選択します。
+
+      ![アンマネージド ディスクのアタッチ ページのスクリーンショット。](./media/create-vm/vm-certification-issues-solutions-19.png)
+
+      VHD がデータ ディスク LUN 0 として追加されます。
+
+   1. VM を再起動します。
+
+1. Putty または別のクライアントを使用して VM にログインし、`sudo  -i` コマンドを実行してルート アクセスを取得します。
+
+   ![Putty クライアント コマンド ラインのスクリーンショット。ログインと sudo -i コマンドを示しています。](./media/create-vm/vm-certification-issues-solutions-20.png)
+
+1. コマンド `echo '+1M,' | sfdisk --move-data /dev/sdc -N 1` を実行します。
+
+   ![Putty クライアント コマンド ラインのスクリーンショット。コマンドの実行を示しています。](./media/create-vm/vm-certification-issues-solutions-25.png)
+
+   >[!NOTE]
+   >ディスクのサイズによっては、このコマンドが完了するまでに時間がかかる場合があります。
+
+1. VM から VHD をデタッチし、VM を削除します。
 
 
 ## <a name="default-credentials"></a>既定の資格情報
 
-送信された VHD と一緒に既定の資格情報が送信されていないことを必ず確認してください。 既定の資格情報を追加すると、VHD がセキュリティ上の脅威に対してより脆弱になります。 代わりに、VHD を送信するときには独自の資格情報を作成します。
+送信される VHD と共に既定の資格情報を送信しないでください。 既定の資格情報を追加すると、VHD がセキュリティ上の脅威に対してより脆弱になります。 代わりに、VHD を送信するときには独自の資格情報を作成します。
   
 ## <a name="datadisk-mapped-incorrectly"></a>DataDisk が正しくマップされていない
 
-複数のデータ ディスクを使用して要求が送信されるときに順序どおりになっていない場合、これはマッピングの問題と見なされます。 たとえば、3 つのデータ ディスクがある場合、番号付け順序は *0、1、2* である必要があります。 その他の順序は、マッピングの問題として扱われます。
+順序どおりになっていない複数のデータ ディスクを使用して要求が送信されると、マッピングの問題が発生する可能性があります。 たとえば、3 つのデータ ディスクの番号付け順序は *0、1、2* である必要があります。 その他の順序は、マッピングの問題として扱われます。
 
 データ ディスクの適切なシーケンス処理を使用して要求を再送信してください。
 
@@ -448,7 +474,7 @@ Azure Marketplace から取得したすべてのイメージを再利用する�
 
 * **Windows** の場合、`sysreptool` を使用して Windows イメージを一般化します。
 
-このツールについて詳しくは、[システムの準備 (Sysprep) の概要]( https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)に関する記事をご覧ください。
+  `sysreptool` ツールの詳細については、「[Sysprep (システム準備) の概要](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)」を参照してください。
 
 ## <a name="datadisk-errors"></a>DataDisk エラー
 
@@ -456,114 +482,119 @@ Azure Marketplace から取得したすべてのイメージを再利用する�
 
 |エラー|理由|解決策|
 |---|---|---|
-|`DataDisk- InvalidUrl:`|このエラーは、オファーが送信されたときに、論理ユニット番号 (LUN) に無効な番号が指定されていることが原因で発生する可能性があります。|データ ディスクの LUN 番号シーケンスがパートナー センターにあることを確認します。|
-|`DataDisk- NotFound:`|このエラーは、指定された SAS URL にデータ ディスクがないことが原因で発生する可能性があります。|データ ディスクが、要求に指定されている SAS URL にあることを確認します。|
-|
+|`DataDisk- InvalidUrl:`|このエラーは、オファー送信時に論理ユニット番号 (LUN) が無効なことが原因で発生する可能性があります。|データ ディスクの LUN 番号シーケンスがパートナー センターにあることを確認します。|
+|`DataDisk- NotFound:`|このエラーは、指定された SAS URL にデータ ディスクがないことが原因で発生する可能性があります。|データ ディスクが、指定されている SAS URL にあることを確認します。|
 
 ## <a name="remote-access-issue"></a>リモート アクセスの問題
 
-リモート デスクトップ プロトコル (RDP) オプションが Windows イメージに対して有効になっていない場合は、このエラーを受け取ります。 
+このエラーが発生するのは、リモート デスクトップ プロトコル (RDP) オプションが Windows イメージに対して有効になっていない場合です。
 
 送信する前に、Windows イメージに対して RDP アクセスを有効にします。
 
 ## <a name="bash-history-failed"></a>Bash 履歴が失敗した
 
-このエラーは、送信したイメージ内の Bash 履歴のサイズが 1 キロバイト (KB) を超えた場合に表示されます。 潜在的な機密情報が Bash 履歴ファイルにキャプチャされることのないように、このサイズは 1 KB に制限されています。
+このエラーは、送信したイメージ内の Bash 履歴のサイズが 1 キロバイト (KB) を超えた場合に表示されます。 潜在的な機密情報がファイルに含まれないように制限するために、サイズは 1 KB に制限されています。
 
-"Bash 履歴" を削除する手順を次に示します。
+Bash 履歴を削除するには:
 
-手順 1. VM をデプロイし、Azure portal の [実行コマンド] オプションをクリックします。
-![Azure portal の [実行コマンド]](./media/create-vm/vm-certification-issues-solutions-3.png)
+1. VM をデプロイし、Azure portal の **[実行コマンド]** オプションを選択します。
 
-手順 2. 最初のオプション [RunShellScript] を選択し、次のコマンドを実行します。
+   ![左側のペインに [実行コマンド] オプションがある Azure portal のスクリーンショット。](./media/create-vm/vm-certification-issues-solutions-3.png)
 
-コマンド: "cat /dev/null > ~/.bash_history && history -c" ![Azure portal の Bash 履歴コマンド](./media/create-vm/vm-certification-issues-solutions-4.png)
+1. 最初のオプション **[RunShellScript]** を選択し、`cat /dev/null > ~/.bash_history && history -c` コマンドを実行します。
 
-手順 3. コマンドの実行が成功したら、VM を再起動します。
+   ![Azure portal の [スクリプト コマンドの実行] ページのスクリーンショット。](./media/create-vm/vm-certification-issues-solutions-4.png)
 
-手順 4. VM を汎用化し、イメージ VHD を取得して VM を停止します。
+1. コマンドが正常に実行されたら、VM を再起動します。
 
-手順 5. 汎用化されたイメージを再送信します。
+1. VM を汎用化し、イメージ VHD を取得して VM を停止します。
 
-## <a name="requesting-exceptions-custom-templates-on-vm-images-for-selective-tests"></a>選択的なテストでの VM イメージに関する例外 (カスタム テンプレート) の要求
+1. 汎用化されたイメージを再送信します。
 
-発行元は、VM の認定時に実行されるいくつかのテストに例外を求めることができます。 例外は、発行元が要求をサポートする証拠を提出する、きわめてまれなケースで提供されます。 認定チームは、常に、例外を拒否または承認する権利を留保します。
+## <a name="request-an-exception-on-vm-images-for-select-tests"></a>一部のテストで VM イメージに例外を要求する
 
-以下のセクションでは、例外が要求される主なシナリオと、それを要求する方法について説明します。
+公開元は、VM の認定時に実行されるいくつかのテストに例外を求めることができます。 例外は、その要求をサポートする証拠を公開元が提出したときに、まれなケースで提供されます。 認定チームは、常に、例外を拒否または承認する権利を留保します。
+
+このセクションでは、公開元が例外を要求する一般的なシナリオと、その要求方法について説明します。
 
 ### <a name="scenarios-for-exception"></a>例外のシナリオ
 
-一般に、発行元が例外を求めるシナリオまたはケースには、次の 3 つがあります。
+公開元は通常、次の場合に例外を要求します。
 
-- **1 つ以上のテスト ケースに対する例外** : 発行元がパートナー センターの [サポート](https://aka.ms/marketplacepublishersupport)に問い合わせ、テスト ケースに対し例外を求めます。
+- **1 つ以上のテスト ケースの例外**。 テスト ケースの例外を要求するには、[パートナー センターのサポート](https://aka.ms/marketplacepublishersupport)に連絡してください。
 
-- **VM をロックダウンする/ルート アクセスなし** : 少数の発行元のシナリオでは、ファイアウォールなどのソフトウェアが VM にインストールされているために、VM をロックする必要があります。 この場合は、発行元は[認定テスト ツール](https://aka.ms/AzureCertificationTestTool)をダウンロードし、パートナー センターの[サポート](https://aka.ms/marketplacepublishersupport)からレポートを送信する必要があります。
+- **ロックダウンされた VM、ルート アクセスなし**。 一部の公開元には、VM にインストールされたファイアウォールなどのソフトウェアが含まれているために、その VM をロックすることが必要なシナリオがあります。 この場合は、[認定テスト ツール](https://aka.ms/AzureCertificationTestTool)をダウンロードし、[パートナー センターのサポート](https://aka.ms/marketplacepublishersupport)でレポートを送信してください。
 
-- **カスタム テンプレート** : 一部の発行元が発行する VM では、VM のデプロイにカスタム ARM テンプレートが必要です。 この場合は、認定チームが検証で同じものを使用できるように、発行元はパートナー センターの[サポート](https://aka.ms/marketplacepublishersupport)でカスタム テンプレートを提供する必要があります。
+- **カスタム テンプレート**。 一部の公開元が公開する VM イメージには、VM をデプロイするためのカスタム Azure Resource Manager (ARM) テンプレートが必要です。 この場合は、認定チームが検証で使用できるように、[パートナー センターのサポート](https://aka.ms/marketplacepublishersupport)でカスタム テンプレートを送信してください。
 
 ### <a name="information-to-provide-for-exception-scenarios"></a>例外のシナリオのために提供する情報
 
-発行元が、上記のシナリオの例外を求めるために、パートナー センターの[サポート](https://aka.ms/marketplacepublishersupport)に問い合わせる場合、次の追加情報も提供する必要があります。
+いずれかのシナリオで例外を要求するには、[パートナー センターのサポート](https://aka.ms/marketplacepublishersupport)に連絡し、次の情報を含めてください。
 
-   1. 発行元 ID – パートナー センター ポータル上の発行元 ID
-   2. オファー ID/オファー名 – 例外を要求するオファー ID/オファー名
-   3. SKU/プラン ID – 例外を要求する VM オファーのプラン ID/SKU
-   4. バージョン – 例外を要求する VM オファーのバージョン
-   5. 例外の種類 – テスト、ロックダウンされた VM、カスタム テンプレート
-   6. 要求の理由 – この例外の理由と、除外されるテストに関する情報
-   7. タイムライン - この例外の要求が終了する日付
-   8. 添付ファイル - 重要な証拠のドキュメントをすべて添付します。 ロックダウンされた VM の場合は、テスト レポートを添付します。カスタム テンプレートの場合は、添付ファイルとしてカスタム ARM テンプレートを提供します。 ロックダウンされた VM の場合のレポートや、カスタム テンプレートの場合のカスタム ARM テンプレートの添付に失敗すると、要求は拒否されます。
+- **公開元 ID**。 パートナー センター ポータルの公開元 ID を入力します。
+- **オファー ID または名前**。 オファーの ID または名前を入力します。
+- **SKU またはプラン ID**。 VM オファーのプラン ID または SKU を入力します。
+- **バージョン**。 例外を必要とする VM オファーのバージョンを入力します。
+- **例外の種類**。 テスト、ロックダウンされた VM、カスタム テンプレートから選択します。
+- **要求の理由**。 例外要求の理由と、テストの除外に関する情報を含めます。
+- **タイムライン**。 例外の終了日を入力します。
+- **添付ファイル**。 添付された重要な証拠ドキュメント:
 
-## <a name="address-a-vulnerability-or-exploit-in-a-vm-offer"></a>VM オファーの脆弱性または悪用に対処する
+  - ロックダウンされた VM の場合は、テスト レポートを添付します。
+  - カスタム テンプレートの場合は、カスタム ARM テンプレートを添付ファイルとして提供します。
 
-このセクションでは、自分の VM イメージの 1 つで脆弱性または悪用が検出された場合に、新しい VM イメージを提供する方法を説明します。 これは、Azure Marketplace に公開されている Azure Virtual Machine オファーにのみ該当します。
+  これらの添付ファイルを含めなかった場合、要求は拒否されます。
+
+## <a name="address-a-vulnerability-or-an-exploit-in-a-vm-offer"></a>VM オファーの脆弱性または悪用に対処する
+
+このセクションでは、自分の VM イメージの 1 つで脆弱性または悪用が検出された場合に、新しい VM イメージを提供する方法を説明します。 Azure Marketplace に公開される Azure VM オファーのみに適用されます。
 
 > [!NOTE]
 > プランからは最後の VM イメージを削除したり、オファーの最後のプランを販売停止にしたりすることはできません。
 
-次のいずれかの操作を行います。
+次のいずれかのアクションを実行します。
 
-- 脆弱性がある VM イメージの代わりとなる新しい VM イメージがある場合は、次の「[修正した VM イメージを提供する](#provide-a-fixed-vm-image)」を参照してください。
+- 脆弱性がある VM イメージの代わりとなる新しい VM イメージがある場合は、「[修正した VM イメージを提供する](#provide-a-fixed-vm-image)」を参照してください。
 - プラン唯一の VM イメージの代わりとなる新しい VM イメージがない場合、またはそのプランを終了させてもよい場合は、[そのプランの販売を停止](partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan)してください。
 - オファー唯一の VM イメージを置き換える予定がない場合は、[そのオファーの販売を停止](partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan)することをお勧めします。
 
 ### <a name="provide-a-fixed-vm-image"></a>修正した VM イメージを提供する
 
-脆弱性がある、または悪用された VM イメージの代わりとなる修正した VM イメージを提供する場合、次を行います。
+脆弱性がある、または悪用された VM イメージの代わりとなる修正した VM イメージを提供するには:
 
 1. セキュリティの脆弱性または悪用に対処した新しい VM イメージを提供します。
-2. セキュリティの脆弱性があるまたは悪用された VM イメージを削除します。
-3. オファーを再公開します。
+1. セキュリティの脆弱性があるまたは悪用された VM イメージを削除します。
+1. オファーを再公開します。
 
 #### <a name="provide-a-new-vm-image-to-address-the-security-vulnerability-or-exploit"></a>セキュリティの脆弱性または悪用に対処した新しい VM イメージを提供する
 
-これらの手順の完了には、追加する VM イメージの技術資産を準備する必要があります。 詳細については、[承認済みのベースを使用した仮想マシンの作成](azure-vm-create-using-approved-base.md)に関するページ、または[独自のイメージを使用した仮想マシンの作成](azure-vm-create-using-own-image.md)に関するページ、および[お使いの VM イメージの SAS URI の作成](azure-vm-get-sas-uri.md)に関するページを参照してください。
+これらの手順を完了するには、追加する VM イメージの技術資産を準備します。 詳細については、[承認済みのベースを使用した仮想マシンの作成](azure-vm-create-using-approved-base.md)または[独自のイメージを使用した仮想マシンの作成](azure-vm-create-using-own-image.md)に関するページと、[VM イメージの SAS URI の作成](azure-vm-get-sas-uri.md)に関するページを参照してください。
 
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
-2. 左側のナビゲーション メニューで、 **[商業マーケットプレース]**  >  **[概要]** の順に選択します。
-3. **[オファーのエイリアス]** 列で、オファーを選択します。
-4. **[プランの概要]** タブの **[名前]** 列で、VM を追加するプランを選択します。
-5. **[技術的な構成]** タブの **[VM イメージ]** で、 **[+ VM イメージの追加]** を選択します。
+1. 左側のペインで、 **[コマーシャル マーケットプレース]**  >  **[概要]** を選択します。
+1. **[オファーのエイリアス]** 列で、オファーを選択します。
+1. **[プランの概要]** タブの **[名前]** 列で、適切なプランを選択します。
+1. **[技術的な構成]** タブの **[VM イメージ]** で、 **[+ VM イメージの追加]** を選択します。
 
-> [!NOTE]
-> プランには一度に 1 つの VM イメージのみ追加できます。 複数の VM イメージを追加するには、最初のものをライブ公開してから、次の VM イメージを追加します。
+   > [!NOTE]
+   > プランには一度に 1 つの VM イメージのみ追加できます。 複数の VM イメージを追加するには、最初のものを公開してから、次の VM イメージを追加します。
 
-6. 表示されるボックスに、新しいディスクのバージョンと仮想マシン イメージを指定します。
-7. **[下書きの保存]** を選択します。
+1. 表示されるボックスに、新しいディスクのバージョンと仮想マシン イメージを指定します。
+1. **[下書きの保存]** を選択します。
 
-次のセクションに進み、セキュリティの脆弱性がある VM イメージを削除します。
+次に、セキュリティの脆弱性がある VM イメージを削除します。
 
 #### <a name="remove-the-vm-image-with-the-security-vulnerability-or-exploit"></a>セキュリティの脆弱性があるまたは悪用された VM イメージを削除する
 
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
-2. 左側のナビゲーション メニューで、 **[商業マーケットプレース]**  >  **[概要]** の順に選択します。
+2. 左側のペインで、 **[コマーシャル マーケットプレース]**  >  **[概要]** を選択します。
 3. **[オファーのエイリアス]** 列で、オファーを選択します。
-4. **[プランの概要]** タブの **[名前]** 列で、VM から削除するプランを選択します。
+4. **[プランの概要]** タブの **[名前]** 列で、適切なプランを選択します。
 5. **[技術的な構成]** タブの **[VM イメージ]** の下の削除する VM イメージの横で **[VM イメージの削除]** を選択します。
-6. 表示されるダイアログ ボックスで、 **[続行]** を選択します。
+6. ダイアログ ボックスで **[続行]** を選択します。
 7. **[下書きの保存]** を選択します。
 
-オファーを再公開するには、次のセクションに進みます。
+次に、オファーを再公開します。
 
 #### <a name="republish-the-offer"></a>オファーを再公開する
 
@@ -577,4 +608,4 @@ Azure Marketplace から取得したすべてのイメージを再利用する�
 
 - [VM オファーのプロパティを構成する](azure-vm-create-properties.md)
 - [マーケットプレースのアクティブな報奨](partner-center-portal/marketplace-rewards.md)
-- 改善に関するご質問またはご意見につきましては、パートナー センターの[サポート](https://aka.ms/marketplacepublishersupport)までご連絡ください。
+- 改善に関するご質問またはご意見につきましては、[パートナー センターのサポート](https://aka.ms/marketplacepublishersupport)までご連絡ください。

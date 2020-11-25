@@ -3,17 +3,17 @@ title: コマーシャル マーケットプレース パートナーと顧客�
 description: Azure Marketplace ソリューションの顧客の使用状況を追跡する方法の概要を取得します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 95ac1abc1f286330bc5e7036f01faa6cf1b22d70
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 2c2b7de65e7ac22ebe648ce98633d5ae88818324
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337901"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628392"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>コマーシャル マーケットプレース パートナーと顧客の使用状況の属性
 
@@ -74,9 +74,9 @@ GUID は、32 桁の 16 進数を含む一意の参照識別子です。 追跡�
    * パートナーは複数の GUID を登録できます。
    * パートナーは、マーケットプレース以外のソリューション テンプレートやオファーの GUID を登録できます。
 
-1. 右上にある設定の歯車アイコンを選択し、 **[開発者向け設定]** を選択します。
+1. 右上隅の **[設定]** (歯車アイコン) を選択し、 **[アカウント設定]** を選択します。
 
-1. **[アカウント設定]** ページで、 **[Add Tracking GUID]\(追跡用 GUID の追加\)** を選択します。
+1. **[組織プロファイル]** の **[ID]** で **[追跡 GUID の追加]** を選択します。
 
 1. **[GUID]** ボックスに、追跡用 GUID を入力します。 `pid-` プレフィックスは付けずに GUID だけを入力してください。 **[説明]** ボックスに、プランの名前または説明を入力します。
 
@@ -183,9 +183,10 @@ Azure PowerShell でリソースをデプロイする場合は、次の方法を
 
 Azure CLI を使用して GUID を追加するときは、**AZURE_HTTP_USER_AGENT** 環境変数を設定します。 この変数は、スクリプトのスコープ内で設定できます。 シェル スコープを対象として、この変数をグローバルに設定することもできます。
 
-```
+```powershell
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
+
 詳細については、[Azure SDK for Go](/azure/developer/go/) に関するページを参照してください。
 
 ## <a name="use-terraform"></a>Terraform を使用する
@@ -206,7 +207,6 @@ provider "azurerm" {
 
 * GUID を作成する (GUID は、オファーまたは SKU ごとに追加する必要があります)
 * Azure プロバイダーを更新し、*partner_id* の値を GUID に設定する (GUID の前に "pid-" を付けずに、実際の GUID に設定してください)
-
 
 ## <a name="verify-the-guid-deployment"></a>GUID のデプロイを確認する
 
@@ -263,11 +263,11 @@ foreach ($deployment in $deployments){
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>Resource Manager テンプレートでデプロイする場合の通知
 
-このテンプレートをデプロイすると、Microsoft は \<PARTNER> ソフトウェアのインストールを、デプロイされた Azure リソースと共に識別することができます。 Microsoft は、ソフトウェアをサポートするために使用される Azure リソースを関連付けることができます。 Microsoft はこの情報を収集し、パートナーの製品とビジネスの運用に最適なエクスペリエンスを提供します。 このデータは、Microsoft のプライバシー ポリシー (https://www.microsoft.com/trustcenter で確認できます) に沿って収集され、管理されます。
+このテンプレートをデプロイすると、Microsoft は \<PARTNER> ソフトウェアのインストールを、デプロイされた Azure リソースと共に識別することができます。 Microsoft は、ソフトウェアをサポートするために使用される Azure リソースを関連付けることができます。 Microsoft はこの情報を収集し、パートナーの製品とビジネスの運用に最適なエクスペリエンスを提供します。 このデータは、Microsoft のプライバシー ポリシー ([https://www.microsoft.com/trustcenter](https://www.microsoft.com/trustcenter) で確認できます) に沿って収集され、管理されます。
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>SDK または API でデプロイする場合の通知
 
-\<PARTNER> ソフトウェアをデプロイすると、Microsoft は \<PARTNER> ソフトウェアのインストールを、デプロイされた Azure リソースと共に識別することができます。 Microsoft は、ソフトウェアをサポートするために使用される Azure リソースを関連付けることができます。 Microsoft はこの情報を収集し、パートナーの製品とビジネスの運用に最適なエクスペリエンスを提供します。 このデータは、Microsoft のプライバシー ポリシー (https://www.microsoft.com/trustcenter で確認できます) に沿って収集され、管理されます。
+\<PARTNER> ソフトウェアをデプロイすると、Microsoft は \<PARTNER> ソフトウェアのインストールを、デプロイされた Azure リソースと共に識別することができます。 Microsoft は、ソフトウェアをサポートするために使用される Azure リソースを関連付けることができます。 Microsoft はこの情報を収集し、パートナーの製品とビジネスの運用に最適なエクスペリエンスを提供します。 このデータは、Microsoft のプライバシー ポリシー ([https://www.microsoft.com/trustcenter](https://www.microsoft.com/trustcenter) で確認できます) に沿って収集され、管理されます。
 
 ## <a name="get-support"></a>サポートを受ける
 
@@ -282,6 +282,7 @@ foreach ($deployment in $deployments){
     * 連絡先情報を入力または確認します。
     * コンサルティングの詳細は、事前に入力されている場合があります。入力されていない場合は、ドロップダウンから選択します。
     * 問題のタイトルと説明を入力します (できる限り詳細に入力します)。
+
 1. [送信] をクリックします。
 
 スクリーンショット付きの詳細な手順については、[テクニカル プリセールスおよびデプロイ サービスを使用する](https://aka.ms/TechConsultInstructions)方法に関する記事を参照してください。

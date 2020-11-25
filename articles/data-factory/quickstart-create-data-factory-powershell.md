@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
 ms.openlocfilehash: a7fcb4be47e0e1e62c190a9b089243a178df8e7a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562051"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013363"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>クイックスタート: PowerShell を使用した Azure データ ファクトリの作成
 

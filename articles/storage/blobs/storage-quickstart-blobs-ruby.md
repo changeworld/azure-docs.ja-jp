@@ -7,12 +7,12 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 8c24c5f043d17b5f0e54ca1c2c6cf41a0d3fe9bc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0bde1b7be15d49d82818f26d07c2ec633dc4526c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "68726350"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95523265"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>クイック スタート: Ruby を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -25,7 +25,7 @@ ms.locfileid: "68726350"
 次の追加の前提条件がインストールされていることを確認してください。
 
 * [Ruby](https://www.ruby-lang.org/en/downloads/)
-* [Ruby 向けの Azure Storage ライブラリ](https://docs.microsoft.com/azure/storage/blobs/storage-ruby-how-to-use-blob-storage) (rubygem パッケージを使用) 
+* [Ruby 向けの Azure Storage ライブラリ]() (rubygem パッケージを使用) 
 
     ```
     gem install azure-storage-blob
@@ -90,7 +90,7 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-9
 Cloud BLOB コンテナーを作成した後は、関心がある特定の BLOB を参照する **Block** BLOB オブジェクトを作成して、アップロード、ダウンロード、コピーなどの操作を実行できます。
 
 > [!IMPORTANT]
-> コンテナーの名前は小文字にする必要があります。 コンテナーと BLOB の名前の詳細については、「[コンテナー、BLOB、メタデータの名前付けと参照](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
+> コンテナーの名前は小文字にする必要があります。 コンテナーと BLOB の名前の詳細については、「[コンテナー、BLOB、メタデータの名前付けと参照](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
 
 このセクションでは、Azure Storage クライアントのインスタンスを設定して、BLOB サービス オブジェクトをインスタンス化し、新しいコンテナーを作成した後、BLOB がパブリックになるようにコンテナーに対するアクセス許可を設定します。 コンテナーの名前は **quickstartblobs** です。 
 
@@ -189,7 +189,7 @@ Blob Storage を使用する Ruby 開発については、以下の追加リソ�
 このクイックスタートでは、Ruby を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 Blob Storage の操作の詳細を学習するには、Blob Storage の操作方法に進みます。
 
 > [!div class="nextstepaction"]
-> [Blob Storage の操作方法](./storage-ruby-how-to-use-blob-storage.md)
+> [Blob Storage の操作方法]()
 
 
 Storage Explorer と BLOB について詳しくは、「[ストレージ エクスプローラーを使用した Azure Blob Storage リソースの管理](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。

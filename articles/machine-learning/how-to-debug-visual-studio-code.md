@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: e042fd62d99c9fdf88a144c93739bf1f3f08a78c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 12163419ad779acfa116f1dee66284623e2d45fb
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325575"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616112"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code を使用した対話型デバッグ
 
 
 
-Visual Studio Code (VS Code) および [depugpy](https://github.com/microsoft/debugpy/) を使用して Azure Machine Learning の実験、パイプライン、およびデプロイを対話形式でデバッグする方法について説明します。
+Visual Studio Code (VS Code) および [debugpy](https://github.com/microsoft/debugpy/) を使用して Azure Machine Learning の実験、パイプライン、およびデプロイを対話形式でデバッグする方法について説明します。
 
 ## <a name="run-and-debug-experiments-locally"></a>ローカルでの実験の実行とデバッグ
 
@@ -51,7 +51,7 @@ Azure Machine Learning 拡張機能を使用して、クラウドに送信する
 1. **[実験]** ノードを右クリックし、 **[実験の作成]** を選択します。 プロンプトが表示されたら、実験の名前を指定します。
 1. **[実験]** ノードを展開し、実行する実験を右クリックして、 **[実験の実行]** を選択します。
 1. 実験を実行するオプションの一覧から、 **[ローカル]** を選択します。
-1. **Windows で初めて使用する場合のみ** 。 ファイル共有を許可するように求めるメッセージが表示されたら、 **[はい]** を選択します。 ファイル共有を有効にすると、Docker では、スクリプトが格納されているディレクトリをコンテナーにマウントできます。 さらに、Docker では、実行からのログと出力をシステムの一時ディレクトリに格納することもできます。
+1. **Windows で初めて使用する場合のみ**。 ファイル共有を許可するように求めるメッセージが表示されたら、 **[はい]** を選択します。 ファイル共有を有効にすると、Docker では、スクリプトが格納されているディレクトリをコンテナーにマウントできます。 さらに、Docker では、実行からのログと出力をシステムの一時ディレクトリに格納することもできます。
 1. 実験をデバッグするには **[はい]** を選択します。 それ以外の場合は、 **[いいえ]** を選択します。 [いいえ] を選択すると、デバッガーにアタッチせずにローカルで実験が実行されます。
 1. **[新しい実行構成を作成する]** を選択して、実行構成を作成します。 実行構成によって、実行するスクリプト、依存関係、および使用されるデータセットが定義されます。 または、既存のものがある場合は、ドロップダウンから選択します。
     1. 環境を選択します。 [Azure Machine Learning のキュレーションされた環境](resource-curated-environments.md)のいずれかから選択することも、独自のものを作成することもできます。
@@ -86,10 +86,10 @@ Azure Machine Learning 拡張機能を使用して、クラウドに送信する
 
 ### <a name="prerequisites"></a>前提条件
 
-* __Azure Virtual Network__ を使用するように構成された __Azure Machine Learning ワークスペース__ 。
-* パイプライン ステップの一部として Python スクリプトを使用する __Azure Machine Learning パイプライン__ 。 たとえば、PythonScriptStep です。
-* Azure Machine Learning コンピューティング クラスター。これは __仮想ネットワーク内__ にあり、 __パイプラインによってトレーニングのために使用されます__ 。
-* __仮想ネットワーク内__ に存在する __開発環境__ 。 開発環境は、次のいずれかになります。
+* __Azure Virtual Network__ を使用するように構成された __Azure Machine Learning ワークスペース__。
+* パイプライン ステップの一部として Python スクリプトを使用する __Azure Machine Learning パイプライン__。 たとえば、PythonScriptStep です。
+* Azure Machine Learning コンピューティング クラスター。これは __仮想ネットワーク内__ にあり、__パイプラインによってトレーニングのために使用されます__。
+* __仮想ネットワーク内__ に存在する __開発環境__。 開発環境は、次のいずれかになります。
 
   * 仮想ネットワーク内の Azure 仮想マシン
   * 仮想ネットワーク内の Notebook VM のコンピューティング インスタンス

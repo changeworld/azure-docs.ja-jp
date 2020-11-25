@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: overview
 ms.date: 09/09/2020
 ms.author: raynew
-ms.openlocfilehash: 4d520f51717aa11dba55697d63852b17e0ba9cf0
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 5261904dd1ee7f280209015d8f756a055dfab57e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604497"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522948"
 ---
 # <a name="about-the-move-process"></a>移動プロセスについて
 
@@ -25,8 +25,8 @@ ms.locfileid: "90604497"
 
 **コンポーネント** | **詳細**
 --- | ---
-**Resource Mover** |  Resource Mover は、[Azure リソース プロバイダー](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)と連携して、リージョン間でのリソースの移動を調整します。 Resource Mover は、リソースの依存関係を分析し、移動プロセス中のリソースの状態を維持および管理します。 
-**移動コレクション** |  移動コレクションは [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) のオブジェクトです。<br/><br/> 移動コレクションは、サブスクリプション内のソースとターゲット リージョンのペアの組み合わせごとに、リージョンの移動プロセス中に作成されます。 このコレクションには、移動するリソースに関するメタデータと構成情報が格納されます。<br/><br/>移動コレクションに追加されたリソースは、同じサブスクリプション内に存在する必要がありますが、異なるリソース グループに存在することができます。 
+**Resource Mover** |  Resource Mover は、[Azure リソース プロバイダー](../azure-resource-manager/management/resource-providers-and-types.md)と連携して、リージョン間でのリソースの移動を調整します。 Resource Mover は、リソースの依存関係を分析し、移動プロセス中のリソースの状態を維持および管理します。 
+**移動コレクション** |  移動コレクションは [Azure Resource Manager](../azure-resource-manager/management/overview.md) のオブジェクトです。<br/><br/> 移動コレクションは、サブスクリプション内のソースとターゲット リージョンのペアの組み合わせごとに、リージョンの移動プロセス中に作成されます。 このコレクションには、移動するリソースに関するメタデータと構成情報が格納されます。<br/><br/>移動コレクションに追加されたリソースは、同じサブスクリプション内に存在する必要がありますが、異なるリソース グループに存在することができます。 
 **移動リソース** | リソースを移動コレクションに追加すると、Resource Mover によって移動リソースとして追跡されます。<br/><br/> Resource Mover は、移動コレクション内のすべての移動リソースに関する情報を保持し、ソースとターゲット リソースの間の 1 対 1 の関係を維持します。 
 **依存関係** | Resource Mover は、コレクションに追加されたリソースを検証し、移動コレクションに含まれていない依存関係がリソースにあるかどうかを確認します。<br/><br/> リソースの依存関係を特定したら、それらの依存関係を移動コレクションに追加して移動することも、ターゲット リージョンで別の既存のリソースを選択することもできます。 移動を開始する前に、すべての依存関係を解決する必要があります。 
 

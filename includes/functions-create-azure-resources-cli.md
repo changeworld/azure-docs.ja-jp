@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/18/2020
 ms.author: glenga
-ms.openlocfilehash: c26ef5b857d7295b533079a70959f0f1ef1e8206
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 29a31948c5bfc9b5fd3a31f39144d186dbfe4885
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424920"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025730"
 ---
 ## <a name="create-supporting-azure-resources-for-your-function"></a>関数用の関連 Azure リソースを作成する
 
@@ -55,7 +55,7 @@ ms.locfileid: "93424920"
     New-AzResourceGroup -Name AzureFunctionsQuickstart-rg -Location westeurope
     ```
 
-    [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドでリソース グループを作成します。 リソース グループとリソースは通常、近くのリージョンに作成します。[Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) コマンドレットから返される利用可能なリージョンを使用してください。
+    [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドでリソース グループを作成します。 リソース グループとリソースは通常、近くのリージョンに作成します。[Get-AzLocation](/powershell/module/az.resources/get-azlocation) コマンドレットから返される利用可能なリージョンを使用してください。
 
     ---
 
@@ -80,6 +80,3 @@ ms.locfileid: "93424920"
     ---
 
     前の例の `<STORAGE_NAME>` は、適宜、Azure Storage 内で一意の名前に置き換えてください。 名前は 3 文字から 24 文字とし、小文字のみを使用する必要があります。 `Standard_LRS` は汎用アカウントを指定します。これは [Functions でサポート](../articles/azure-functions/storage-considerations.md#storage-account-requirements)されています。
-    
-
-

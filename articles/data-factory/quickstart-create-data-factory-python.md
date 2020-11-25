@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019, devx-track-python
 ms.openlocfilehash: e511b8b5505f1fa8713d81d0ce959df32ef28503
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89439114"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013328"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>クイック スタート:Python を使用してデータ ファクトリとパイプラインを作成する
 
@@ -44,7 +44,7 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
 
 * [Azure Storage Explorer](https://storageexplorer.com/) (省略可)。
 
-* [Azure Active Directory のアプリケーション](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 **アプリケーション ID**、**認証キー**、**テナント ID** の値をメモしておいてください。後の手順で使用します。 同じ記事の手順に従って、このアプリケーションを**共同作成者**ロールに割り当てます。
+* [Azure Active Directory のアプリケーション](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 **アプリケーション ID**、**認証キー**、**テナント ID** の値をメモしておいてください。後の手順で使用します。 同じ記事の手順に従って、このアプリケーションを **共同作成者** ロールに割り当てます。
 
 ## <a name="create-and-upload-an-input-file"></a>入力ファイルを作成およびアップロードする
 
@@ -58,7 +58,7 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
 
 ## <a name="install-the-python-package"></a>Python パッケージをインストールする
 
-1. 管理者特権でターミナルまたはコマンド プロンプトを開きます。 
+1. 管理者特権でターミナルまたはコマンド プロンプトを開きます。 
 2. まず、Azure 管理リソースの Python パッケージをインストールします。
 
     ```python
@@ -141,7 +141,7 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-**データ ファクトリ**を作成する次のコードを **Main** メソッドに追加します。 リソース グループが既に存在する場合は、最初の `create_or_update` ステートメントをコメント アウトします。
+**データ ファクトリ** を作成する次のコードを **Main** メソッドに追加します。 リソース グループが既に存在する場合は、最初の `create_or_update` ステートメントをコメント アウトします。
 
 ```python
     # create the resource group
@@ -159,7 +159,7 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
 
 ## <a name="create-a-linked-service"></a>リンクされたサービスを作成する
 
-**Azure Storage のリンクされたサービス**を作成する次のコードを **Main** メソッドに追加します。
+**Azure Storage のリンクされたサービス** を作成する次のコードを **Main** メソッドに追加します。
 
 データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このクイックスタートでは、コピー ソースとシンク ストアの両方として、Azure Storage のリンクされたサービスを 1 つ作成するだけで済みます。このサービスは、サンプルでは "AzureStorageLinkedService" という名前です。 `<storageaccountname>` と `<storageaccountkey>` を、Azure ストレージ アカウントの名前とキーで置き換えます。
 
@@ -212,7 +212,7 @@ Azure BLOB 内のソース データを表すデータセットを定義しま�
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する
 
-**コピー アクティビティが含まれているパイプライン**を作成する次のコードを **Main** メソッドに追加します。
+**コピー アクティビティが含まれているパイプライン** を作成する次のコードを **Main** メソッドに追加します。
 
 ```python
     # Create a copy activity
@@ -233,7 +233,7 @@ Azure BLOB 内のソース データを表すデータセットを定義しま�
 
 ## <a name="create-a-pipeline-run"></a>パイプラインの実行を作成する
 
-**パイプラインの実行をトリガーする**次のコードを **Main** メソッドに追加します。
+**パイプラインの実行をトリガーする** 次のコードを **Main** メソッドに追加します。
 
 ```python
     #Create a pipeline run.

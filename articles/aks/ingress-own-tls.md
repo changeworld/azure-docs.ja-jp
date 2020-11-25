@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスターで独自の証明書
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: f8ea245444fa5e8e042644bd3f7a34ed021ccd1d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a70a1549e5c585694217b32c69ddae915c25ff71
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131039"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681484"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で HTTPS イングレス コントローラーを作成し、独自の TLS 証明書を使用する
 
@@ -38,7 +38,7 @@ ms.locfileid: "93131039"
 イングレス コントローラーも Linux ノード上でスケジュールする必要があります。 Windows Server ノードでは、イングレス コントローラーを実行しないでください。 ノード セレクターは、`--set nodeSelector` パラメーターを使用して指定され、Linux ベース ノード上で NGINX イングレス コントローラーを実行するように Kubernetes スケジューラに指示されます。
 
 > [!TIP]
-> 次の例では、 *ingress-basic* という名前のイングレス リソースの Kubernetes 名前空間が作成されます。 必要に応じて、ご自身の環境の名前空間を指定できます。 AKS クラスターが RBAC 対応でない場合は、Helm コマンドに `--set rbac.create=false` を追加してください。
+> 次の例では、*ingress-basic* という名前のイングレス リソースの Kubernetes 名前空間が作成されます。 必要に応じて、ご自身の環境の名前空間を指定できます。 AKS クラスターが Kubernetes RBAC 対応でない場合は、Helm コマンドに `--set rbac.create=false` を追加してください。
 
 > [!TIP]
 > クラスター内のコンテナーへの要求で[クライアント ソース IP の保持][client-source-ip]を有効にする場合は、Helm インストール コマンドに `--set controller.service.externalTrafficPolicy=Local` を追加します。 クライアント ソース IP が要求ヘッダーの *X-Forwarded-For* の下に格納されます。 クライアント ソース IP の保持が有効になっているイングレス コントローラーを使用する場合、TLS パススルーは機能しません。
@@ -98,7 +98,7 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 
 Kubernetes でイングレス コントローラーの TLS 証明書と秘密キーを使用できるようにするには、シークレットを作成して使用します。 シークレットは 1 回だけ定義し、前の手順で作成した証明書とキー ファイルを使用します。 その後、イングレス ルートを定義するときにこのシークレットを参照します。
 
-次の例では、 *aks-ingress-tls* という名前のシークレットを作成します。
+次の例では、*aks-ingress-tls* という名前のシークレットを作成します。
 
 ```console
 kubectl create secret tls aks-ingress-tls \
@@ -203,7 +203,7 @@ kubectl apply -f ingress-demo.yaml --namespace ingress-basic
 次の例では、アドレス `https://demo.azure.com/` へのトラフィックが `aks-helloworld` という名前のサービスにルーティングされることに注意してください。 アドレス `https://demo.azure.com/hello-world-two` へのトラフィックは、`ingress-demo` サービスにルーティングされます。 この記事では、これらのデモのホスト名を変更する必要はありません。 運用環境で使用する場合は、証明書の要求および生成プロセスの一環として指定した名前を指定します。
 
 > [!TIP]
-> 証明書の要求プロセスの間に指定されたホスト名 (CN 名) が、イングレス ルートで定義されているホストと一致しない場合、イングレス コントローラーには " *Kubernetes イングレス コントローラーの偽の証明書* " という警告が表示されます。 証明書とイングレス ルートのホスト名が一致することを確認します。
+> 証明書の要求プロセスの間に指定されたホスト名 (CN 名) が、イングレス ルートで定義されているホストと一致しない場合、イングレス コントローラーには "*Kubernetes イングレス コントローラーの偽の証明書*" という警告が表示されます。 証明書とイングレス ルートのホスト名が一致することを確認します。
 
 *ｔls* セクションは、ホスト *demo.azure.com* の *aks-ingress-tls* という名前のシークレットを使用することをイングレス ルートに伝えます。 ここでも、運用環境で使用する場合は、独自のホスト アドレスを指定します。
 
@@ -258,7 +258,7 @@ ingress.extensions/hello-world-ingress created
 
 ## <a name="test-the-ingress-configuration"></a>イングレスの構成をテストする
 
-偽の *demo.azure.com* ホストで証明書をテストするには、`curl` を使用し、 *--resolve* パラメーターを指定します。 このパラメーターを使用すると、 *demo.azure.com* という名前をイングレス コントローラーのパブリック IP アドレスにマッピングできます。 次の例で示すように、独自のイングレス コントローラーのパブリック IP アドレスを指定します。
+偽の *demo.azure.com* ホストで証明書をテストするには、`curl` を使用し、 *--resolve* パラメーターを指定します。 このパラメーターを使用すると、*demo.azure.com* という名前をイングレス コントローラーのパブリック IP アドレスにマッピングできます。 次の例で示すように、独自のイングレス コントローラーのパブリック IP アドレスを指定します。
 
 ```
 curl -v -k --resolve demo.azure.com:443:EXTERNAL_IP https://demo.azure.com
@@ -278,7 +278,7 @@ $ curl -v -k --resolve demo.azure.com:443:EXTERNAL_IP https://demo.azure.com
 [...]
 ```
 
-`curl` コマンドの *-v* パラメーターにより、受信した TLS 証明書などの詳細な情報が出力されます。 curl の出力の途中で、独自の TLS 証明書が使用されたことを確認できます。 *-k* パラメーターにより、自己署名証明書を使用している場合でも、引き続きページが読み込まれます。 次の例は、 *issuer:CN=demo.azure.com; O=aks-ingress-tls* 証明書が使用されたことを示しています。
+`curl` コマンドの *-v* パラメーターにより、受信した TLS 証明書などの詳細な情報が出力されます。 curl の出力の途中で、独自の TLS 証明書が使用されたことを確認できます。 *-k* パラメーターにより、自己署名証明書を使用している場合でも、引き続きページが読み込まれます。 次の例は、*issuer:CN=demo.azure.com; O=aks-ingress-tls* 証明書が使用されたことを示しています。
 
 ```
 [...]
@@ -325,7 +325,7 @@ kubectl delete namespace ingress-basic
 helm list --namespace ingress-basic
 ```
 
-次の出力例に示すように、 *nginx-ingress* という名前のグラフを探します。
+次の出力例に示すように、*nginx-ingress* という名前のグラフを探します。
 
 ```
 $ helm list --namespace ingress-basic

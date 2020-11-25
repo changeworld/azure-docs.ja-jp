@@ -4,11 +4,11 @@ description: クイック スタート:Azure Event Grid と Azure portal を使�
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: 592e2d6b7393da8cb55a457b022d6c2358048cfe
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87421044"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013668"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>クイック スタート:Azure portal と Event Grid を使ったカスタム イベントの Web エンドポイントへのルーティング
 
@@ -29,22 +29,26 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
     :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="&quot;Event Grid トピック&quot; を検索して選択する":::
 3. **[Event Grid トピック]** ページで、ツール バーの **[+ 追加]** を選択します。 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/add-event-grid-topic-button.png" alt-text="&quot;Event Grid トピック&quot; を検索して選択する" のみを含む独自の名前を作成します。
-    4. イベント グリッド トピックの**場所**を選択します。
+    :::image type="content" source="./media/custom-event-quickstart-portal/add-event-grid-topic-button.png" alt-text="Event Grid トピックの追加ボタン":::
+4. **[トピックの作成]** ページで、次の手順に従います。
+    1. Azure **サブスクリプション** を選択します。
+    2. 既存のリソース グループを選択するか、 **[新規作成]** を選択し、**リソース グループ** の **名前** を入力します。
+    3. カスタム トピックの一意の **名前** を指定します。 トピック名は、DNS エントリによって表されるため、一意である必要があります。 画像に示されている名前は使用しないでください。 代わりに、必ず 3 - 50 文字以内で、a - z、A - Z、0 - 9、および "-" のみを含む独自の名前を作成します。
+    4. イベント グリッド トピックの **場所** を選択します。
     5. ページ下部にある **[確認と作成]** を選択します。 
 
-        :::image type="content" source="./media/custom-event-quickstart-portal/create-custom-topic.png" alt-text="&quot;Event Grid トピック&quot; を検索して選択する":::
+        :::image type="content" source="./media/custom-event-quickstart-portal/create-custom-topic.png" alt-text="[トピックの作成] ページ":::
     6. **[トピックの作成]** ページの **[確認と作成]** タブで、 **[作成]** を選択します。 
     
-        :::image type="content" source="./media/custom-event-quickstart-portal/review-create-page.png" alt-text="&quot;Event Grid トピック&quot; を検索して選択する":::
+        :::image type="content" source="./media/custom-event-quickstart-portal/review-create-page.png" alt-text="設定を確認して作成する":::
 5. デプロイが成功したら、もう一度検索バーに「**Event Grid トピック**」と入力し、前と同じようにドロップダウン リストから **[Event Grid トピック]** を選択します。 
 6. 一覧から作成したトピックを選択します。 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="&quot;Event Grid トピック&quot; を検索して選択する":::
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="一覧からトピックを選択する":::
 
 7. 自分のトピックの **[Event Grid トピック]** ページが表示されます。 このページは開いたままにしておきます。 後ほど、このクイック スタートで使用します。 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/event-grid-topic-home-page.png" alt-text="&quot;Event Grid トピック&quot; を検索して選択する":::
+    :::image type="content" source="./media/custom-event-quickstart-portal/event-grid-topic-home-page.png" alt-text="Event Grid トピックのホーム ページ":::
 
 ## <a name="create-a-message-endpoint"></a>メッセージ エンドポイントの作成
 カスタム トピックのサブスクリプションを作成する前に、イベント メッセージのエンドポイントを作成します。 通常、エンドポイントは、イベント データに基づくアクションを実行します。 このクイック スタートを簡素化するために、イベント メッセージを表示する[構築済みの Web アプリ](https://github.com/Azure-Samples/azure-event-grid-viewer)をデプロしします。 デプロイされたソリューションには、App Service プラン、App Service Web アプリ、および GitHub からのソース コードが含まれています。
@@ -65,16 +69,16 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 
 1. 次に、カスタム トピックの **[Event Grid トピック]** ページで、ツール バーの **+ [イベント サブスクリプション]** を選択します。
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/new-event-subscription.png" alt-text="&quot;Event Grid トピック&quot; を検索して選択する":::
+    :::image type="content" source="./media/custom-event-quickstart-portal/new-event-subscription.png" alt-text="イベント サブスクリプションの追加ボタン":::
 2. **[イベント サブスクリプションの作成]** ページで、次の手順に従います。
-    1. イベント サブスクリプションの**名前**を入力します。
+    1. イベント サブスクリプションの **名前** を入力します。
     3. **[エンドポイントのタイプ]** には **[Webhook]** を選択します。 
     4. **[エンドポイントの選択]** を選択します。 
 
-        :::image type="content" source="./media/custom-event-quickstart-portal/provide-subscription-values.png" alt-text="&quot;Event Grid トピック&quot; を検索して選択する":::
+        :::image type="content" source="./media/custom-event-quickstart-portal/provide-subscription-values.png" alt-text="イベント サブスクリプションの値を指定する":::
     5. Web hook エンドポイントに対して、Web アプリの URL を入力し、ホーム ページの URL に `api/updates` を追加します。 **[選択の確認]** を選択します。
 
-        :::image type="content" source="./media/custom-event-quickstart-portal/provide-endpoint.png" alt-text="&quot;Event Grid トピック&quot; を検索して選択する":::
+        :::image type="content" source="./media/custom-event-quickstart-portal/provide-endpoint.png" alt-text="エンドポイントの URL を指定する":::
     6. 再び **[イベント サブスクリプションの作成]** ページで、 **[作成]** を選択します。
 
 3. Web アプリをもう一度表示し、その Web アプリにサブスクリプションの検証イベントが送信されたことに注目します。 目のアイコンを選択してイベント データを展開します。 Event Grid は検証イベントを送信するので、エンドポイントはイベント データを受信することを確認できます。 Web アプリには、サブスクリプションを検証するコードが含まれています。
@@ -91,16 +95,16 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 ### <a name="azure-cli"></a>Azure CLI
 1. Azure portal で、 **[Cloud Shell]** を選択します。 Cloud Shell が Web ブラウザーの下部ペインに表示されます。 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/select-cloud-shell.png" alt-text="&quot;Event Grid トピック&quot; を検索して選択する":::
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-cloud-shell.png" alt-text="Cloud Shell アイコンを選択する":::
 1. Cloud Shell ウィンドウの左上隅の **[Bash]** を選択します。 
 
     ![Cloud Shell - Bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
-1. 次のコマンドを実行して、トピックの**エンドポイント**を取得します。コマンドをコピーして貼り付けた後、コマンドを実行する前に**トピック名**と**リソース グループ名**を更新してください。 このトピック エンドポイントにサンプル イベントを発行します。 
+1. 次のコマンドを実行して、トピックの **エンドポイント** を取得します。コマンドをコピーして貼り付けた後、コマンドを実行する前に **トピック名** と **リソース グループ名** を更新してください。 このトピック エンドポイントにサンプル イベントを発行します。 
 
     ```azurecli
     endpoint=$(az eventgrid topic show --name <topic name> -g <resource group name> --query "endpoint" --output tsv)
     ```
-2. 次のコマンドを実行して、カスタム トピックの**キー**を取得します。コマンドをコピーして貼り付けた後、コマンドを実行する前に**トピック名**と**リソース グループ**名を更新してください。 これは、Event Grid トピックの主キーです。 このキーを Azure portal から取得するには、 **[Event Grid トピック]** ページの **[アクセス キー]** タブに切り替えます。 カスタム トピックにイベントを投稿できるようにするには、アクセス キーが必要です。 
+2. 次のコマンドを実行して、カスタム トピックの **キー** を取得します。コマンドをコピーして貼り付けた後、コマンドを実行する前に **トピック名** と **リソース グループ** 名を更新してください。 これは、Event Grid トピックの主キーです。 このキーを Azure portal から取得するには、 **[Event Grid トピック]** ページの **[アクセス キー]** タブに切り替えます。 カスタム トピックにイベントを投稿できるようにするには、アクセス キーが必要です。 
 
     ```azurecli
     key=$(az eventgrid topic key list --name <topic name> -g <resource group name> --query "key1" --output tsv)
@@ -121,9 +125,9 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 
 1. Azure portal で **[Cloud Shell]** を選択します (または `https://shell.azure.com/` にアクセスします)。 Cloud Shell が Web ブラウザーの下部ペインに表示されます。 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/select-cloud-shell.png" alt-text="&quot;Event Grid トピック&quot; を検索して選択する":::
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-cloud-shell.png" alt-text="Cloud Shell アイコンを選択する":::
 1. **Cloud Shell** で、Cloud Shell ウィンドウの左上隅の **[PowerShell]** を選択します。 「Azure CLI」セクションにあるサンプルの **Cloud Shell** ウィンドウの画像を参照してください。
-2. 次の変数を設定します。 コマンドをコピーして貼り付けた後、**トピック名**と**リソース グループ名**を更新してから、次のコマンドを実行します。
+2. 次の変数を設定します。 コマンドをコピーして貼り付けた後、**トピック名** と **リソース グループ名** を更新してから、次のコマンドを実行します。
 
     **[リソース グループ]** :
     ```powershell
@@ -134,7 +138,7 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
     ```powershell
     $topicName = "<topic name>"
     ```
-3. 次のコマンドを実行して、トピックの**エンドポイント**と**キー**を取得します。
+3. 次のコマンドを実行して、トピックの **エンドポイント** と **キー** を取得します。
 
     ```powershell
     $endpoint = (Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName).Endpoint
@@ -174,7 +178,7 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 ### <a name="verify-in-the-event-grid-viewer"></a>Event Grid ビューアーでの確認
 以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 Web アプリを表示して、送信したイベント確認します。
 
-:::image type="content" source="./media/custom-event-quickstart-portal/event-grid-viewer-end.png" alt-text="&quot;Event Grid トピック&quot; を検索して選択する":::
+:::image type="content" source="./media/custom-event-quickstart-portal/event-grid-viewer-end.png" alt-text="Event Grid ビューアー":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 引き続きこのイベントを使用する場合は、この記事で作成したリソースをクリーンアップしないでください。 それ以外の場合は、この記事で作成したリソースを削除してください。

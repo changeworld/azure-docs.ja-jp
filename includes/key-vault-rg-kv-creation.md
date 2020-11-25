@@ -4,14 +4,14 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 07/20/2020
 ms.author: msmbaldwin
-ms.openlocfilehash: 2917854da679816796a7f7748c3877c062995168
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccb69b4f0dc6090cc96849b09f7830c05aa77b73
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87512808"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027183"
 ---
-このクイックスタートでは、あらかじめ作成しておいた Azure キー コンテナーを使用します。 キー コンテナーは、[Azure CLI のクイックスタート](/azure/key-vault/general/quick-create-cli)、[Azure PowerShell のクイックスタート](/azure/key-vault/general/quick-create-powershell)、または [Azure portal のクイックスタート](/azure/key-vault/general/quick-create-portal)の手順に従って作成できます。 
+このクイックスタートでは、あらかじめ作成しておいた Azure キー コンテナーを使用します。 キー コンテナーは、[Azure CLI のクイックスタート](../articles/key-vault/general/quick-create-cli.md)、[Azure PowerShell のクイックスタート](../articles/key-vault/general/quick-create-powershell.md)、または [Azure portal のクイックスタート](../articles/key-vault/general/quick-create-portal.md)の手順に従って作成できます。 
 
 また、以下の Azure CLI または Azure PowerShell コマンドを実行するだけでもかまいません。
 

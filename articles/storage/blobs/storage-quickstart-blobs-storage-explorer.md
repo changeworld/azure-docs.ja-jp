@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: f920a937f4b9b51f9babd03ed0fb42dd3c7775d8
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2477107105b6dbcab96db8d44ac982554dc0c48d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217791"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543172"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>クイック スタート:Azure Storage Explorer を使用して BLOB を作成する
 
@@ -48,7 +48,7 @@ ms.locfileid: "92217791"
 
 BLOB は常にコンテナーにアップロードされます。 これにより、フォルダー内でコンピューター上のファイルを整理するように、BLOB のグループを整理できます。
 
-コンテナーを作成するには、前の手順で作成したストレージ アカウントを展開します。 **[BLOB コンテナー]** を選択し、 **[BLOB コンテナーの作成]** を右クリックして選択します。 BLOB コンテナーの名前を入力します。 BLOB コンテナーの名前付けに関する規則と制限の一覧については、[コンテナーの作成](storage-quickstart-blobs-dotnet.md#create-a-container)に関するセクションを参照してください。 完了したら、 **Enter** キーを押して BLOB コンテナーを作成します。 BLOB コンテナーは、正常に作成されると、選択されたストレージ アカウントの **[BLOB コンテナー]** フォルダーの下に表示されます。
+コンテナーを作成するには、前の手順で作成したストレージ アカウントを展開します。 **[BLOB コンテナー]** を選択し、 **[BLOB コンテナーの作成]** を右クリックして選択します。 BLOB コンテナーの名前を入力します。 BLOB コンテナーの名前付けに関する規則と制限の一覧については、[コンテナーの作成](storage-quickstart-blobs-dotnet.md#create-a-container)に関するセクションを参照してください。 完了したら、**Enter** キーを押して BLOB コンテナーを作成します。 BLOB コンテナーは、正常に作成されると、選択されたストレージ アカウントの **[BLOB コンテナー]** フォルダーの下に表示されます。
 
 ## <a name="upload-blobs-to-the-container"></a>BLOB をコンテナーにアップロードする
 
@@ -56,7 +56,7 @@ Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB を
 
 コンテナー リボンで、 **[アップロード]** を選択します。 この操作によって、フォルダーまたはファイルをアップロードするためのオプションが表示されます。
 
-アップロードするファイルまたはフォルダーを選択します。 **BLOB の種類** を選択します。 **追加** 、 **ページ** 、または **ブロック** の各 BLOB を選択できます。
+アップロードするファイルまたはフォルダーを選択します。 **BLOB の種類** を選択します。 **追加**、**ページ**、または **ブロック** の各 BLOB を選択できます。
 
 .vhd または .vhdx ファイルをアップロードする場合は、 **[.vhd/.vhdx ファイルをページ BLOB としてアップロードする (推奨)]** を選択します。
 
@@ -78,7 +78,7 @@ Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB を
 
 ## <a name="manage-snapshots"></a>スナップショットを管理する
 
-Azure Storage Explorer には、BLOB の[スナップショット](storage-blob-snapshots.md)を作成して管理する機能が用意されています。 BLOB のスナップショットを作成するには、BLOB を右クリックして **[スナップショットの作成]** を選択します。 BLOB のスナップショットを表示するには、BLOB を右クリックして **[Manage Snapshots\(スナップショットの管理\)]** を選択します。 BLOB のスナップショットの一覧が現在のタブに表示されます。
+Azure Storage Explorer には、BLOB の[スナップショット](./snapshots-overview.md)を作成して管理する機能が用意されています。 BLOB のスナップショットを作成するには、BLOB を右クリックして **[スナップショットの作成]** を選択します。 BLOB のスナップショットを表示するには、BLOB を右クリックして **[Manage Snapshots\(スナップショットの管理\)]** を選択します。 BLOB のスナップショットの一覧が現在のタブに表示されます。
 
 ![Microsoft Azure Storage Explorer の BLOB の一覧を示すスクリーンショット。](media/storage-quickstart-blobs-storage-explorer/snapshots.png)
 
@@ -96,7 +96,7 @@ Shared Access Signature (SAS) は Storage Explorer を使用して取得でき�
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、 **Azure Storage Explorer** を使用してローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 Blob Storage の操作の詳細を学習するには、Blob Storage の操作方法に進みます。
+このクイックスタートでは、**Azure Storage Explorer** を使用してローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 Blob Storage の操作の詳細を学習するには、Blob Storage の操作方法に進みます。
 
 > [!div class="nextstepaction"]
-> [Blob Storage の操作方法](storage-how-to-use-blobs-powershell.md)
+> [Blob Storage の操作方法](./storage-quickstart-blobs-powershell.md)

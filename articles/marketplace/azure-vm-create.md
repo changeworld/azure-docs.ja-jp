@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/20/2020
-ms.openlocfilehash: bfd67688ce30b62002e26cea9f7be4df1cb6e622
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2ef80d26336ddbe3c015dfcde0c5ed29b762f39b
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126449"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629718"
 ---
 # <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>Azure Marketplace で仮想マシン オファーを作成する方法
 
@@ -22,13 +22,13 @@ ms.locfileid: "93126449"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-まだ行っていない場合は、[仮想マシン オファーのプラン](marketplace-virtual-machines.md)を確認してください。 仮想マシンの技術的な要件、およびオファーを作成するときに必要となる情報と資産について説明されています。 
+まだ行っていない場合は、[仮想マシン オファーのプラン](marketplace-virtual-machines.md)を確認してください。 仮想マシンの技術的な要件、およびオファーを作成するときに必要となる情報と資産について説明されています。
 
 ## <a name="create-a-new-offer"></a>新しいオファーを作成する
 
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
 2. 左側のペインで、 **[コマーシャル マーケットプレース]**  >  **[概要]** の順に選択します。
-3. **[概要]** ページで、 **[新しいオファー]**  >  **[Azure 仮想マシン]** の順に選択します。
+3. **[概要]** ページで、 **[+ 新しいオファー]** 、 **[Azure 仮想マシン]** の順に選択します。
 
     ![左側のペインのメニュー オプションと [新しいオファー] ボタンを示すスクリーンショット。](./media/create-vm/new-offer-azure-virtual-machine.png)
 
@@ -38,12 +38,14 @@ ms.locfileid: "93126449"
 **[オファー ID]** を入力します。 これは、アカウントのオファーごとに一意の識別子です。
 
 - この ID は、Azure Marketplace オファーの Web アドレスと、Azure PowerShell および Azure CLI (該当する場合) で、顧客に表示されます。
-- 使用できるのは小文字と数字だけです。 ID にはハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。 たとえば、「 **test-offer-1** 」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
+- 使用できるのは小文字と数字だけです。 ID にはハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。 たとえば、「**test-offer-1**」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
 - **[作成]** を選択した後で、オファー ID を変更することはできません。
 
 **[オファーのエイリアス]** を入力します。 オファーのエイリアスは、パートナー センター内でオファーに使用される名前です。
 
 - この名前は、Azure Marketplace では使用されません。 これは、顧客に表示されるオファー名やその他の値とは異なります。
+
+**[作成]** を選択してオファーを生成し、続行します。 パートナー センターで **[オファーのセットアップ]** ページが開きます。
 
 ## <a name="enable-a-test-drive-optional"></a>体験版を有効にする (省略可能)
 
@@ -52,16 +54,14 @@ ms.locfileid: "93126449"
 > [!TIP]
 > 体験版は、無料試用版とは異なります。 体験版または無料試用版のいずれかまたは両方を提供できます。 これらはどちらも、ソリューションを一定期間、顧客に提供します。 ただし、体験版には、実際の実装シナリオの中で製品の主な機能や利点を体験できる実践的なセルフガイド ツアーも含まれます。
 
-**体験を有効にするには**
-1.  **[体験版]** で、 **[体験版を有効にする]** チェック ボックスをオンにします。
-1.  表示される一覧から、体験版の種類を選択します。
+体験版を有効にするには、 **[体験版を有効にする]** チェック ボックスをオンにします。 体験版は後で構成します。 体験版では CRM を構成する必要があります (次のセクションを参照してください)。
 
-## <a name="configure-lead-management"></a>リード管理の構成
+## <a name="configure-customer-leads-management"></a>潜在顧客管理の構成
 
 パートナー センターを使用してオファーをコマーシャル マーケットプレースに発行する場合、それを顧客関係管理 (CRM) システムに接続します。 これにより、自社の製品に顧客が関心を示したり、製品を使用したりした場合はすぐにその顧客の連絡先情報を受信できるようになります。 体験版を有効にする場合 (前のセクションを参照してください)、CRM への接続は必須です。 そうでない場合は、CRM への接続は任意です。
 
 1. **[潜在顧客]** で、 **[接続]** リンクを選択します。
-1. **[接続の詳細]** ダイアログ ボックスで、一覧から潜在顧客の宛先を選択します。
+1. **[接続の詳細]** ダイアログ ボックスで、潜在顧客の宛先を選択します。
 1. 表示されるフィールドに入力します。 詳細な手順については、次の記事を参照してください。
 
    - [リードを Azure テーブルに送信するようにオファーを構成する](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md#configure-your-offer-to-send-leads-to-the-azure-table)
@@ -71,15 +71,11 @@ ms.locfileid: "93126449"
    - [リードを Salesforce に送信するようにオファーを構成する](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
 
 1. 指定した構成を検証するには、 **[検証]** リンクを選択します。
-1. ダイアログ ボックスを閉じるには、 **[OK]** を選択します。
+1. **[接続]** を選択します。
 
-## <a name="resell-through-csps"></a>CSP を通して再販する
+左側のナビゲーション メニューの次のタブである **[プロパティ]** に進む前に、 **[下書きの保存]** を選択します。
 
-[クラウド ソリューション プロバイダー (CSP)](https://azure.microsoft.com/offers/ms-azr-0145p/) プログラムでパートナーがオファーを利用できるようにすることで、オファーのリーチを拡大します。 すべてのライセンス持ち込み (BYOL) プランは、自動的にこのプログラムにオプトインされます。 BYOL 以外のプランをオプトインすることもできます。
+## <a name="next-steps"></a>次のステップ
 
-**[作成]** を選択してオファーを生成し、続行します。
-
-## <a name="next-steps"></a>次の手順
-
-- [仮想マシン オファーのプロパティの構成](azure-vm-create-properties.md)
+- [仮想マシン オファーのプロパティを構成する方法](azure-vm-create-properties.md)
 - [オファーの掲載のベスト プラクティス](gtm-offer-listing-best-practices.md)

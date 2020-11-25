@@ -10,15 +10,15 @@ ms.service: virtual-machines-windows
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 08/23/2019
+ms.date: 11/16/2020
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: ac1105f1fce2ac04abfa8a809161580104952917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4891d01c59289afddb244879e042e45b7b7a1aa6
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404903"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695726"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM での BitLocker ブート エラー
 
@@ -172,11 +172,21 @@ Key Encryption Key のシナリオでは、次の手順に従います。
             [string] 
             $adTenant
             )
-    # Load ADAL Assemblies. The following script assumes that the Azure PowerShell version you installed is 1.0.0. 
-    $adal = "${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts\1.0.0\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
-    $adalforms = "${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts\1.0.0\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll"
+    # Load ADAL Assemblies
+    $adal = "${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts\$(((dir ${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts).name) | select -last 1)\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
+    $adalforms = "${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts\$(((dir ${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts).name) | select -last 1)\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll"
+    If ((Test-Path -Path $adal) -and (Test-Path -Path $adalforms)) { 
+
     [System.Reflection.Assembly]::LoadFrom($adal)
     [System.Reflection.Assembly]::LoadFrom($adalforms)
+     }
+     else
+     {
+    $adal="${env:userprofile}\Documents\WindowsPowerShell\Modules\Az.Accounts\$(((dir ${env:userprofile}\Documents\WindowsPowerShell\Modules\Az.Accounts).name) | select -last 1)\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
+    $adalforms ="${env:userprofile}\Documents\WindowsPowerShell\Modules\Az.Accounts\$(((dir ${env:userprofile}\Documents\WindowsPowerShell\Modules\Az.Agit pgit ccounts).name) | select -last 1)\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll"
+    [System.Reflection.Assembly]::LoadFrom($adal)
+    [System.Reflection.Assembly]::LoadFrom($adalforms)
+     }  
 
     # Set well-known client ID for AzurePowerShell
     $clientId = "1950a258-227b-4e31-a9cf-717495945fc2" 
@@ -205,7 +215,8 @@ Key Encryption Key のシナリオでは、次の手順に従います。
 
     #Get wrapped BEK and place it in JSON object to send to KeyVault REST API
     $keyVaultSecret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name $secretName
-    $wrappedBekSecretBase64 = $keyVaultSecret.SecretValueText
+    $bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($keyVaultSecret.SecretValue)
+    $wrappedBekSecretBase64 = [Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr)
     $jsonObject = @"
     {
     "alg": "RSA-OAEP",
@@ -236,6 +247,10 @@ Key Encryption Key のシナリオでは、次の手順に従います。
     #Convert base64 string to bytes and write to BEK file
     $bekFileBytes = [System.Convert]::FromBase64String($base64Bek);
     [System.IO.File]::WriteAllBytes($bekFilePath,$bekFileBytes)
+
+    #Delete the key from the memory
+    [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr)
+    clear-variable -name wrappedBekSecretBase64
     ```
 3. パラメーターを設定します。 このスクリプトは、KEK シークレットを処理して BEK キーを作成した後、それを復旧 VM 上のローカル フォルダーに保存します。 スクリプトの実行時にエラーが発生した場合は、「[スクリプトのトラブルシューティング](#script-troubleshooting)」セクションを参照してください。
 
@@ -283,9 +298,7 @@ Key Encryption Key のシナリオでは、次の手順に従います。
 
 **エラー:Could not load file or assembly (ファイルまたはアセンブリを読み込めませんでした)**
 
-このエラーは、ADAL アセンブリのパスが間違っているために発生します。 AZ モジュールが現在のユーザーにのみインストールされている場合は、ADAL アセンブリは `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>` に配置されます。
-
-`Az.Accounts` フォルダーを検索して正しいパスを検索することもできます。
+このエラーは、ADAL アセンブリのパスが間違っているために発生します。 `Az.Accounts` フォルダーを検索して正しいパスを検索することができます。
 
 **エラー:Get-AzKeyVaultSecret or Get-AzKeyVaultSecret is not recognized as the name of a cmdlet (Get-AzKeyVaultSecret または Get-AzKeyVaultSecret はコマンドレットの名前として認識されません)**
 

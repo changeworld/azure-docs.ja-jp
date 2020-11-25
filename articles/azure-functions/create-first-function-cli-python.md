@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: b4c14417a31f28ea5d6475b3f84ee079d990dd6b
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 0aea0425123cab4da1939e85a2cfd6071f772737
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637066"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95795750"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に Python 関数を作成する
 
@@ -239,7 +239,7 @@ HTTP トリガーの場合、この関数は、*function.json* に定義され�
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
         
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime python --runtime-version 3.8 --functions-version 3 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime python --runtime-version 3.8 --functions-version 3 --name <APP_NAME> --storage-account <STORAGE_NAME> --os-type linux
     ```
     
     [az functionapp create](/cli/azure/functionapp#az_functionapp_create) コマンドで Azure に関数アプリを作成します。 Python 3.7 または 3.6 を使用している場合は、`--runtime-version` をそれぞれ `3.7` または `3.6` に変更します。

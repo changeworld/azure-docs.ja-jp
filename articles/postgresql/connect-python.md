@@ -9,11 +9,11 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/28/2020
 ms.openlocfilehash: db94a82112f2670facd4d89178f11653c5316c36
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93331779"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998942"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:Python を使用して Azure Database for PostgreSQL - Single Server に接続し、データにクエリを実行する
 
@@ -45,7 +45,7 @@ ms.locfileid: "93331779"
 Azure Database for PostgreSQL データベースに接続するには、完全修飾サーバー名とログイン資格情報が必要です。 この情報は Azure portal から取得できます。
 
 1. [Azure portal](https://portal.azure.com/) で、ご利用の Azure Database for PostgreSQL サーバー名を検索して選択します。
-1. サーバーの **[概要]** ページで、完全修飾 **サーバー名** と **管理者ユーザー名** をコピーします。 完全修飾 **サーバー名** は常に *\<my-server-name>.postgres.database.azure.com* の形式になり、 **管理者ユーザー名** は常に *\<my-admin-username>@\<my-server-name>* の形式になります。
+1. サーバーの **[概要]** ページで、完全修飾 **サーバー名** と **管理者ユーザー名** をコピーします。 完全修飾 **サーバー名** は常に *\<my-server-name>.postgres.database.azure.com* の形式になり、**管理者ユーザー名** は常に *\<my-admin-username>@\<my-server-name>* の形式になります。
 
    また、管理者パスワードも必要です。 忘れた場合は、このページでリセットできます。
 
@@ -55,7 +55,7 @@ Azure Database for PostgreSQL データベースに接続するには、完全�
 >  次の値を置き換えます。
 >   - `<server-name>` および `<admin-username>` を、Azure portal からコピーした値に指定します。
 >   - `<admin-password>` をサーバー パスワードに指定します。
->   - `<database-name>`: サーバーの作成時に、 *postgres* という名前の既定のデータベースが自動的に作成されています。 このデータベースの名前を変更することも、SQL コマンドを使用して[新しいデータベースを作成する](https://www.postgresql.org/docs/9.0/sql-createdatabase.html)こともできます。
+>   - `<database-name>`: サーバーの作成時に、*postgres* という名前の既定のデータベースが自動的に作成されています。 このデータベースの名前を変更することも、SQL コマンドを使用して[新しいデータベースを作成する](https://www.postgresql.org/docs/9.0/sql-createdatabase.html)こともできます。
 
 ## <a name="step-1-connect-and-insert-data"></a>手順 1: データの接続と挿入
 次のコード例では、以下を使用して Azure Database for PostgreSQL データベースに接続します
@@ -126,7 +126,7 @@ for row in rows:
 [問題がある場合は、お知らせください](https://aka.ms/postgres-doc-feedback)
 
 ## <a name="step-3-update-data"></a>手順 3:データの更新
-次のコード例では、 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) と SQL **UPDATE** ステートメントを使用してデータを更新します。
+次のコード例では、[cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) と SQL **UPDATE** ステートメントを使用してデータを更新します。
 
 ```Python
 
@@ -138,7 +138,7 @@ print("Updated 1 row of data")
 [問題がある場合は、お知らせください](https://aka.ms/postgres-doc-feedback)
 
 ## <a name="step-5-delete-data"></a>手順 5: データの削除
-次のコード例では、 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) と **DELETE** SQL ステートメントを実行して、先ほど挿入した inventory 項目を削除します。
+次のコード例では、[cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) と **DELETE** SQL ステートメントを実行して、先ほど挿入した inventory 項目を削除します。
 
 ```Python
 

@@ -8,12 +8,12 @@ ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: e6f731a72308db98309d40bceb95f6108abab4eb
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: dc8df24c1ad20aa3380009fe4c0abb29e31823e8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017049"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021726"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>クイック スタート:Java v12 SDK で BLOB を管理する
 
@@ -24,7 +24,7 @@ ms.locfileid: "90017049"
 * [API リファレンス ドキュメント](/java/api/overview/azure/storage-blob-readme)
 * [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob)
 * [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob)
-* [サンプル](/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [サンプル](../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>前提条件
 

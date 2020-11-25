@@ -7,12 +7,12 @@ author: philmea
 ms.author: philmea
 ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 2b5fc349ae7d92bf36cfe9b1f3272cc1f4f7446b
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b8106c154a91d1e823a124a90f7571b7f52ae8cb
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017949"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682151"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでのジョブの作成と実行
 
@@ -38,23 +38,52 @@ Azure IoT Central を使い、接続されている大量のデバイスを、�
 
     **[保存して終了]** を選択し、 **[ジョブ]** ページの保存されているジョブの一覧にジョブを追加 ます。 後から、保存されているジョブの一覧からジョブに戻ることができます。
 
-    **[次へ]** を選択して、 **[配信オプション]** ページに移動します。 **[配信オプション]** ページでは、このジョブの配信オプションを設定できます。 **[バッチ]** および **[Cancellation threshold]\(キャンセルしきい値\)** 。
+1. **[次へ]** を選択して、 **[配信オプション]** ページに移動します。 **[配信オプション]** ページでは、このジョブの配信オプションを設定できます。 **[バッチ]** および **[Cancellation threshold]\(キャンセルしきい値\)** 。
 
     バッチを使用すると、多数のデバイスに対してジョブを分散させることができます。 ジョブは複数のバッチに分割され、各バッチにはデバイスのサブセットが含まれます。 バッチはキューに入れられ、順番に実行されます。
 
     キャンセルしきい値を使用すると、エラーの数が設定した制限を超えた場合に、ジョブを自動的にキャンセルできます。 しきい値は、ジョブ内のすべてのデバイス、または個々のバッチに適用できます。
 
-    :::image type="content" source="media/howto-run-a-job/job-wizard-delivery-options.png" alt-text="Set Light Threshold というプロパティ ジョブを作成するための選択を示すスクリーンショット":::
+    :::image type="content" source="media/howto-run-a-job/job-wizard-delivery-options.png" alt-text="ジョブ ウィザードの [配信オプション] ページのスクリーンショット":::
 
-    **[次へ]** を選択して、 **[レビュー]** ページに移動します。 **[レビュー]** ページには、ジョブ構成の詳細が表示されます。 **[実行]** を選択してジョブを送信します。
+1. **[次へ]** を選択して、 **[スケジュール]** ページに移動します。 **[スケジュール]** ページでは、今後のジョブを実行するスケジュールを有効にすることができます。
 
-    :::image type="content" source="media/howto-run-a-job/job-wizard-review.png" alt-text="Set Light Threshold というプロパティ ジョブを作成するための選択を示すスクリーンショット":::
+    スケジュールの繰り返しオプションを選択します。 次の頻度で実行するようにジョブを設定できます。
 
-1. ジョブは、*保留中*、*実行中*、*完了*のフェーズを通過します。 ジョブ実行の詳細には、結果メトリック、期間の詳細、デバイス一覧グリッドが含まれています。
+    * 1 回限り
+    * 毎日
+    * 週単位
+
+    スケジュールされたジョブの開始日時を設定します。 日付と時刻は、デバイスのローカル時刻ではなく、タイム ゾーンに固有のものです。
+
+    定期的なスケジュールを終わらせるには、次のように選択します。
+
+    * **[On this day]\(この日\)** を選択すると、スケジュールの終了日が設定されます。
+    * **[After]\(反復回数\)** を選択すると、ジョブを実行する回数が設定されます。
+
+    スケジュールされたジョブは常に、時間の経過と共にデバイス グループのメンバーシップに変化があっても、そのデバイス グループのデバイスに対して実行されます。
+
+    :::image type="content" source="media/howto-run-a-job/job-wizard-schedule.png" alt-text="ジョブ ウィザードのスケジュール オプション ページのスクリーンショット":::
+
+1. **[次へ]** を選択して、 **[レビュー]** ページに移動します。 **[レビュー]** ページには、ジョブ構成の詳細が表示されます。 **[スケジュール]** を選択し、ジョブの日程を計画します。
+
+    :::image type="content" source="media/howto-run-a-job/job-wizard-schedule-review.png" alt-text="スケジュール ジョブ ウィザードの [レビュー] ページのスクリーンショット":::
+
+1. ジョブの詳細ページには、スケジュールされたジョブに関する情報が表示されます。 スケジュールされたジョブが実行されると、ジョブ インスタンスの一覧が表示されます。 スケジュールされたジョブの実行は、**過去 30 日間** のジョブ一覧にも含まれます。
+
+    このページでは、ジョブの **スケジュールを解除** したり、スケジュール済みのジョブを **編集** したりできます。 スケジュール済みジョブの一覧からスケジュール済みジョブに戻ることができます。
+
+    :::image type="content" source="media/howto-run-a-job/job-schedule-details.png" alt-text="スケジュールされたジョブの詳細ページのスクリーンショット":::
+
+1. ジョブ ウィザードで、ジョブの日程を計画せず、直接実行することを選択できます。 次のスクリーンショットからは、すぐに実行する準備ができた、スケジュールのないジョブを確認できます。 **[実行]** を選択してジョブを実行します。
+
+    :::image type="content" source="media/howto-run-a-job/job-wizard-schedule-immediate.png" alt-text="ジョブ ウィザードの [レビュー] ページのスクリーンショット":::
+
+1. ジョブは、*保留中*、*実行中*、*完了* のフェーズを通過します。 ジョブ実行の詳細には、結果メトリック、期間の詳細、デバイス一覧グリッドが含まれています。
 
     ジョブが完了すると、 **[結果のログ]** を選択して、デバイスやその状態の値など、ジョブの詳細の CSV ファイルをダウンロードすることができます。 この情報は、トラブルシューティングに役立つことがあります。
 
-    :::image type="content" source="media/howto-run-a-job/download-details.png" alt-text="Set Light Threshold というプロパティ ジョブを作成するための選択を示すスクリーンショット":::
+    :::image type="content" source="media/howto-run-a-job/download-details.png" alt-text="デバイスの状態を示すスクリーンショット":::
 
 1. これで、 **[ジョブ]** ページの **[過去30日間]** の一覧にジョブが表示されるようになります。 このページには、現在実行中のジョブと以前実行または保存したジョブの履歴が表示されます。
 
@@ -65,23 +94,23 @@ Azure IoT Central を使い、接続されている大量のデバイスを、�
 
 実行中のジョブを停止するには、ジョブを開いて **[停止]** を選択します。 ジョブが停止されたことを反映するように、ジョブの状態が変更されます。 **[概要]** セクションには、完了、失敗、または保留中のデバイスが表示されます。
 
-:::image type="content" source="media/howto-run-a-job/manage-job.png" alt-text="Set Light Threshold というプロパティ ジョブを作成するための選択を示すスクリーンショット":::
+:::image type="content" source="media/howto-run-a-job/manage-job.png" alt-text="実行中のジョブと、ジョブを停止するためのボタンを示すスクリーンショット":::
 
 ジョブが停止状態になったら、 **[続行]** を選択してジョブの実行を再開することができます。 ジョブが再び実行されるようになったことを反映して、ジョブの状態が変更されます。 **概要** セクションは、引き続き最新の進行状況で更新されます。
 
-:::image type="content" source="media/howto-run-a-job/stopped-job.png" alt-text="Set Light Threshold というプロパティ ジョブを作成するための選択を示すスクリーンショット":::
+:::image type="content" source="media/howto-run-a-job/stopped-job.png" alt-text="停止されているジョブとジョブを続行するためのボタンを示すスクリーンショット":::
 
 ## <a name="copy-a-job"></a>ジョブをコピーする
 
 既存のジョブをコピーするには、実行されたジョブを選択します。 [ジョブの結果] ページまたは [ジョブの詳細] ページで **[コピー]** を選択します。
 
-:::image type="content" source="media/howto-run-a-job/job-details-copy.png" alt-text="Set Light Threshold というプロパティ ジョブを作成するための選択を示すスクリーンショット":::
+:::image type="content" source="media/howto-run-a-job/job-details-copy.png" alt-text="[コピー] ボタンを示すスクリーン ショット":::
 
 ジョブ構成のコピーが開き、編集することができます。また **コピー** がジョブ名に追加されます。
 
 ## <a name="view-job-status"></a>ジョブの状態を見る
 
-ジョブが作成されたら、 **[状態]** 列は、最新のジョブ ステータス メッセージで更新されます。 可能な*ジョブの状態*の値を次の表に示します。
+ジョブが作成されたら、 **[状態]** 列は、最新のジョブ ステータス メッセージで更新されます。 可能な *ジョブの状態* の値を次の表に示します。
 
 | ステータス メッセージ       | ステータスの意味                                          |
 | -------------------- | ------------------------------------------------------- |
@@ -92,7 +121,7 @@ Azure IoT Central を使い、接続されている大量のデバイスを、�
 | 停止済み              | ユーザーがこのジョブを手動で停止しました。           |
 | Canceled             | このジョブは、 **[配信オプション]** ページで設定されたしきい値を超えたため、キャンセルされました。 |
 
-ステータス メッセージには、ジョブ内のデバイスの概要が続きます。 可能な*デバイスの状態*の値を次の表に示します。
+ステータス メッセージには、ジョブ内のデバイスの概要が続きます。 可能な *デバイスの状態* の値を次の表に示します。
 
 | ステータス メッセージ       | ステータスの意味                                                     |
 | -------------------- | ------------------------------------------------------------------ |
@@ -113,13 +142,13 @@ Azure IoT Central を使い、接続されている大量のデバイスを、�
 
 **[ジョブの詳細]** ページでフィルター アイコンを選択すると、デバイスの一覧をフィルター処理できます。 **[デバイス ID]** または **[状態]** フィールドでフィルター処理できます。
 
-:::image type="content" source="media/howto-run-a-job/filter.png" alt-text="Set Light Threshold というプロパティ ジョブを作成するための選択を示すスクリーンショット":::
+:::image type="content" source="media/howto-run-a-job/filter.png" alt-text="デバイス一覧のフィルター処理の選択を示すスクリーンショット。":::
 
 ## <a name="customize-columns-in-the-device-list"></a>デバイス一覧の列をカスタマイズする
 
 列のオプション アイコンを選択して、デバイスの一覧に列を追加できます。
 
-:::image type="content" source="media/howto-run-a-job/column-options.png" alt-text="Set Light Threshold というプロパティ ジョブを作成するための選択を示すスクリーンショット":::
+:::image type="content" source="media/howto-run-a-job/column-options.png" alt-text="列オプションのアイコンを示すスクリーンショット。":::
 
 **[列のオプション]** ダイアログ ボックスを使用して、デバイスの一覧の列を選択します。 表示する列を選択し、右矢印を選択して、 **[OK]** を選択します。 使用できるすべての列を選択するには、 **[すべて選択]** を選択します。 選択した列が、デバイス一覧に表示されます。
 
@@ -129,7 +158,7 @@ Azure IoT Central を使い、接続されている大量のデバイスを、�
 
 失敗したデバイスを含むジョブは再実行することができます。 **[失敗したら再実行]** を選択します。
 
-:::image type="content" source="media/howto-run-a-job/rerun.png" alt-text="Set Light Threshold というプロパティ ジョブを作成するための選択を示すスクリーンショット":::
+:::image type="content" source="media/howto-run-a-job/rerun.png" alt-text="失敗したデバイスでジョブを再実行するためのボタンを示すスクリーンショット。":::
 
 ジョブの名前と説明を入力して、 **[ジョブの再実行]** を選択します。 失敗したデバイスで操作を再試行する新しいジョブが送信されます。
 

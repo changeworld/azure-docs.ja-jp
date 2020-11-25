@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 10/14/2020
 ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: b17480c1a2a0bd8588289627a51780999e1f311c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 29cbb2f6a7f0faf91852e520f15b779b3fe229c8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897827"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026669"
 ---
 Shared Image Gallery は、イメージに関連する構造および組織を構築できるサービスです。 共有イメージ ギャラリーでは以下のことが提供されます。
 
@@ -35,7 +35,7 @@ Shared Image Gallery は、イメージに関連する構造および組織を�
 | **イメージのソース** | これは、イメージ ギャラリーに **イメージ バージョン** を作成するために使用できるリソースです。 イメージのソースには、[一般化または特殊化された](#generalized-and-specialized-images)既存の Azure VM、マネージド イメージ、スナップショット、VHD、または別のイメージ ギャラリー内のイメージ バージョンを使用できます。 |
 | **イメージ ギャラリー** | Azure Marketplace などの **イメージ ギャラリー** は、イメージを管理して共有するためのリポジトリです。ただし、アクセス権の所有者を制御します。 |
 | **イメージ定義** | イメージ定義はギャラリー内に作成され、内部で使用するためにイメージと要件に関する情報を伝達します。 この情報には、イメージが Windows または Linux のどちらか、リリース ノート、および最小と最大のメモリ要件が含まれます。 これは、イメージの種類の定義です。 |
-| **イメージ バージョン** | **イメージ バージョン** は、ギャラリーを利用している場合に、VM の作成に使用します。 お使いの環境に必要な複数のイメージ バージョンを保持できます。 マネージド イメージのように、 **イメージ バージョン** を使用して VM を作成する場合、イメージ バージョンは VM 用の新しいディスクを作成するために使用されます。 イメージ バージョンは複数回、使用できます。 |
+| **イメージ バージョン** | **イメージ バージョン** は、ギャラリーを利用している場合に、VM の作成に使用します。 お使いの環境に必要な複数のイメージ バージョンを保持できます。 マネージド イメージのように、**イメージ バージョン** を使用して VM を作成する場合、イメージ バージョンは VM 用の新しいディスクを作成するために使用されます。 イメージ バージョンは複数回、使用できます。 |
 
 <br>
 
@@ -45,7 +45,7 @@ Shared Image Gallery は、イメージに関連する構造および組織を�
 
 イメージ定義は、イメージのバージョンの論理的なグループです。 イメージ定義では、イメージが作成された理由、対象の OS、イメージの使用に関するその他の情報などが保持されます。 イメージ定義は、特定のイメージの作成に関するすべての詳細情についてのプランのようなものです。 VM のデプロイは、イメージ定義からではなく、定義から作成されたイメージ バージョンから行います。
 
-各イメージ定義には、 **パブリッシャー** 、 **オファー** 、 **SKU** という 3 つのパラメーターがあり、これらを組み合わせて使います。 これらは、特定のイメージ定義の検索に使われます。 3 つの値のうち 1 つまたは 2 つを共有するイメージ バージョンを保有することはできますが、3 つ全部を共有するイメージ バージョンを保有することはできません。  たとえば、以下に示したのは 3 つのイメージ定義とその値です。
+各イメージ定義には、**パブリッシャー**、**オファー**、**SKU** という 3 つのパラメーターがあり、これらを組み合わせて使います。 これらは、特定のイメージ定義の検索に使われます。 3 つの値のうち 1 つまたは 2 つを共有するイメージ バージョンを保有することはできますが、3 つ全部を共有するイメージ バージョンを保有することはできません。  たとえば、以下に示したのは 3 つのイメージ定義とその値です。
 
 |イメージの定義|Publisher|プラン|Sku|
 |---|---|---|---|
@@ -71,7 +71,7 @@ Shared Image Gallery は、イメージに関連する構造および組織を�
 - タグ - イメージ定義を作成するときに、タグを追加することができます。 タグについて詳しくは、[タグを使用したリソースの整理](../articles/azure-resource-manager/management/tag-resources.md)に関する記事をご覧ください
 - vCPU とメモリの最小値と最大値の推奨 - イメージに vCPU とメモリの推奨値がある場合は、その情報をイメージ定義に添付できます。
 - 許可されないディスクの種類 - VM に対するストレージ ニーズに関する情報を提供することができます。 たとえば、イメージが Standard HDD ディスクに適さない場合は、禁止リストにそれを追加します。
-- Marketplace イメージの購入プラン情報 - `-PurchasePlanPublisher`、`-PurchasePlanName`、および `-PurchasePlanProduct`。 購入プラン情報の詳細については、[Azure Marketplace でのイメージの検索](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)に関するページおよび「[Supply Azure Marketplace purchase plan information when creating images (イメージの作成時に Azure Marketplace 購入プラン情報を指定する)](../articles/virtual-machines/marketplace-images.md)」を参照してください。
+- Marketplace イメージの購入プラン情報 - `-PurchasePlanPublisher`、`-PurchasePlanName`、および `-PurchasePlanProduct`。 購入プラン情報の詳細については、[Azure Marketplace でのイメージの検索](../articles/virtual-machines/windows/cli-ps-findimage.md)に関するページおよび「[Supply Azure Marketplace purchase plan information when creating images (イメージの作成時に Azure Marketplace 購入プラン情報を指定する)](../articles/virtual-machines/marketplace-images.md)」を参照してください。
 
 
 ## <a name="image-versions"></a>イメージ バージョン
@@ -110,7 +110,7 @@ Shared Image Gallery は、イメージに関連する構造および組織を�
 - 10 個のイメージ バージョンのレプリカ (サブスクリプション別、リージョン別)
 - イメージに接続されるディスクは、サイズが 1 TB 以下であること
 
-現在の使用量を確認する方法など、詳細については、「[制限に照らしたリソース使用量の確認](https://docs.microsoft.com/azure/networking/check-usage-against-limits)」をご覧ください。
+現在の使用量を確認する方法など、詳細については、「[制限に照らしたリソース使用量の確認](../articles/networking/check-usage-against-limits.md)」をご覧ください。
  
 ## <a name="scaling"></a>Scaling
 共有イメージ ギャラリーを使用して、Azure で保持したいイメージのレプリカ数を指定できます。 これにより、単一レプリカのオーバーロードが原因でインスタンス作成処理の機会が減少しているさまざまなレプリカに対して、VM のデプロイを拡大できるので、マルチ VM デプロイのシナリオに役立ちます。
@@ -128,7 +128,7 @@ Shared Image Gallery は、イメージに関連する構造および組織を�
 
 [Azure ゾーン冗長ストレージ (ZRS)](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) では、リージョンの可用性ゾーンのエラー発生時に復元することができます。 共有イメージ ギャラリーの一般的な可用性では、Availability Zones でリージョン内の ZRS アカウントに自分のイメージを格納することを選択できます。 
 
-また、ターゲット リージョンごとにアカウントの種類を選ぶこともできます。 既定のストレージ アカウントの種類は Standard_LRS ですが、Availability Zones でリージョンに Standard_ZRS を選ぶことができます。 [ここ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)で ZRS の利用可能なリージョンを確認します。
+また、ターゲット リージョンごとにアカウントの種類を選ぶこともできます。 既定のストレージ アカウントの種類は Standard_LRS ですが、Availability Zones でリージョンに Standard_ZRS を選ぶことができます。 [ここ](../articles/storage/common/storage-redundancy.md)で ZRS の利用可能なリージョンを確認します。
 
 ![ZRS を示すグラフィック](./media/shared-image-galleries/zrs.png)
 
@@ -183,11 +183,11 @@ Shared Image Gallery は、イメージに関連する構造および組織を�
 
 共有イメージ ギャラリーの作成は、次の SDK でサポートされます。
 
-- [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
-- [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
-- [Node.js](https://docs.microsoft.com/javascript/api/@azure/arm-compute)
-- [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
-- [Go](https://docs.microsoft.com/azure/go/)
+- [.NET](/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
+- [Java](/java/azure/?view=azure-java-stable)
+- [Node.js](/javascript/api/@azure/arm-compute)
+- [Python](/python/api/overview/azure/virtualmachines?view=azure-python)
+- [Go](/azure/go/)
 
 ## <a name="templates"></a>テンプレート
 
@@ -232,20 +232,20 @@ Shared Image Gallery は、イメージに関連する構造および組織を�
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
 ```
 
-詳細については、 [Azure CLI](../articles/virtual-machines/update-image-resources-cli.md) または [PowerShell](../articles/virtual-machines/update-image-resources-powershell.md) を使用した **ギャラリー リソースの管理** に関する記事を参照してください。
+詳細については、[Azure CLI](../articles/virtual-machines/update-image-resources-cli.md) または [PowerShell](../articles/virtual-machines/update-image-resources-powershell.md) を使用した **ギャラリー リソースの管理** に関する記事を参照してください。
 
 ### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>共有イメージ ギャラリーに既存のイメージを移動できますか?
  
 はい。 イメージの種類に基づいて、次の 3 つのシナリオが考えられます。
 
- シナリオ 1:マネージド イメージがある場合は、イメージ定義を作成して、その定義からイメージ バージョンを作成できる。 詳細については、 [Azure CLI](../articles/virtual-machines/image-version-managed-image-cli.md) または [PowerShell](../articles/virtual-machines/image-version-managed-image-powershell.md) を使用した **マネージド イメージからイメージ バージョンへの移行** に関する記事を参照してください。
+ シナリオ 1:マネージド イメージがある場合は、イメージ定義を作成して、その定義からイメージ バージョンを作成できる。 詳細については、[Azure CLI](../articles/virtual-machines/image-version-managed-image-cli.md) または [PowerShell](../articles/virtual-machines/image-version-managed-image-powershell.md) を使用した **マネージド イメージからイメージ バージョンへの移行** に関する記事を参照してください。
 
  シナリオ 2: アンマネージド イメージがある場合、そこからマネージド イメージを作成した後、イメージ定義とイメージ バージョンを作成できる。 
 
  シナリオ 3: ローカル ファイル システムに VHD がある場合、VHD をマネージド イメージにアップロードする必要がある。その後、イメージ定義とイメージ バージョンを作成できる。
 
-- VHD が Windows VM 対応の場合は、[VHD のアップロード](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)に関するページを参照してください。
-- VHD が Linux VM 対応の場合は、「[VHD をアップロードする](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)」の手順を参照してください。
+- VHD が Windows VM 対応の場合は、[VHD のアップロード](../articles/virtual-machines/windows/upload-generalized-managed.md)に関するページを参照してください。
+- VHD が Linux VM 対応の場合は、「[VHD をアップロードする](../articles/virtual-machines/linux/upload-vhd.md#option-1-upload-a-vhd)」の手順を参照してください。
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>特殊なディスクからイメージ バージョンを作成できますか?
 
@@ -310,4 +310,4 @@ CLI で共通レプリカ数を指定するには、`az sig image-version create
 
 ### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images"></a>マネージド イメージを使用して作成された仮想マシン スケール セットを、共有イメージ ギャラリーのイメージを使用するように更新できますか?
 
-はい。OS の種類、Hyper-V の世代、およびデータ ディスク レイアウトがイメージ間で一致している限り、マネージド イメージから共有イメージ ギャラリーのイメージにスケール セット イメージ参照を更新できます。 
+はい。OS の種類、Hyper-V の世代、およびデータ ディスク レイアウトがイメージ間で一致している限り、マネージド イメージから共有イメージ ギャラリーのイメージにスケール セット イメージ参照を更新できます。

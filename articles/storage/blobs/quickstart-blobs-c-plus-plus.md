@@ -7,12 +7,12 @@ ms.date: 10/21/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: ba5dfbaba49be0521e07b2460c9920664790bf1e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 246d2677c784daee4cc6b083cff04b6993ab3818
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92378994"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006491"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-c"></a>クイックスタート: C++ 用 Azure Blob Storage クライアント ライブラリ v12
 
@@ -30,14 +30,14 @@ C++ 用 Azure Blob Storage クライアント ライブラリ v12 を使用す�
 
 - [API リファレンス ドキュメント](https://azure.github.io/azure-sdk-for-cpp/storage.html)
 - [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage)
-- [サンプル](/azure/storage/common/storage-samples-c-plus-plus?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [サンプル](../common/storage-samples-c-plus-plus.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)
-- [Azure Storage アカウント](/azure/storage/common/storage-quickstart-create-account)
+- [Azure Storage アカウント](../common/storage-account-create.md)
 - [C++ コンパイラ](https://azure.github.io/azure-sdk/cpp_implementation.html#supported-platforms)
 - [CMake](https://cmake.org/)
 - [Vcpkg - C および C++ パッケージ マネージャー](https://github.com/microsoft/vcpkg/blob/master/docs/index.md)
@@ -60,7 +60,7 @@ GitHub の手順に従って、[C++ 用 Azure SDK](https://github.com/Azure/azur
 
 ### <a name="create-the-project"></a>プロジェクトを作成する
 
-Visual Studio で、 *BlobQuickstartV12* という、Windows 向けの新しい C++ コンソール アプリケーションを作成します。
+Visual Studio で、*BlobQuickstartV12* という、Windows 向けの新しい C++ コンソール アプリケーションを作成します。
 
 :::image type="content" source="./media/quickstart-blobs-c-plus-plus/vs-create-project.jpg" alt-text="新しい C++ Windows コンソール アプリを構成するための Visual Studio ダイアログ":::
 
@@ -113,7 +113,7 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 プロジェクト ディレクトリで次の操作を行います。
 
 1. Visual Studio で *BlobQuickstartV12.sln* ソリューション ファイルを開きます。
-1. Visual Studio 内で、 *BlobQuickstartV12.cpp* ソース ファイルを開きます。
+1. Visual Studio 内で、*BlobQuickstartV12.cpp* ソース ファイルを開きます。
 1. `main` 内の自動生成されたコードをすべて削除します。
 1. `#include` ステートメントを追加します
 

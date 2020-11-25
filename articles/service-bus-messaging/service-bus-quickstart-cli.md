@@ -5,12 +5,12 @@ author: spelluru
 ms.topic: quickstart
 ms.date: 08/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 201ea38c6feabbda2576d8480a9983f00d62d175
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 14892b114f3bb8a0bb6c07f7cdd01a174b931cf9
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88191263"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95810628"
 ---
 # <a name="use-the-azure-cli-to-create-a-service-bus-namespace-and-a-queue"></a>Azure CLI を使用して Service Bus 名前空間とキューを作成する
 このクイックスタートでは、Azure CLI を使用して Service Bus 名前空間とキューを作成する方法について説明します。 また、クライアント アプリケーションがキューとの間でメッセージを送受信するときに使用できる承認の資格情報を取得する方法についても説明します。 
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - [.NET](service-bus-dotnet-get-started-with-queues.md)
 - [Java](service-bus-java-how-to-use-queues.md)
-- [JavaScript](service-bus-nodejs-how-to-use-queues-new-package.md)
+- [JavaScript](service-bus-nodejs-how-to-use-queues.md)
 - [Python](service-bus-python-how-to-use-queues.md)
 - [PHP](service-bus-php-how-to-use-queues.md)
 - [Ruby](service-bus-ruby-how-to-use-queues.md)

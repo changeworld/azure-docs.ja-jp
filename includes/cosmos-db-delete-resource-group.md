@@ -6,11 +6,11 @@ ms.date: 01/22/2020
 ms.author: sngun
 ms.custom: seo-java-september2019
 ms.openlocfilehash: caefb11e3d691cea940bae5103bf918d3d31cc96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77134420"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972453"
 ---
 アプリと Azure Cosmos DB アカウントの使用を完了したら、それ以上料金がかからないように、作成した Azure リソースを削除できます。 リソースを削除するには、次の手順に従います。
 

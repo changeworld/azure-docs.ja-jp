@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 02/04/2019
+ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a50554c73958400f1f16348d3b8fb2bac88ac61b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e9811710971b411aaaed64ec0072dcf7b6b116d3
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340279"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630058"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Azure Synapse Analytics の Synapse SQL をトラブルシューティングする
 
@@ -40,9 +40,15 @@ ms.locfileid: "93340279"
 | 手動でのスクリプト作成、スクリプト作成ウィザードの使用、または SSMS を介した接続が、遅かったり、応答しなかったり、エラーが発生したりする | ユーザーがマスター データベース内に作成されているかどうかを確認してください。 また、スクリプト作成オプションで、エンジンのエディションが "Microsoft Azure Synapse Analytics Edition" と設定されており、エンジンの種類が "Microsoft Azure SQL Database" となっていることも確認してください。 |
 | SSMS でスクリプト生成に失敗する                               | [依存オブジェクトのスクリプトを生成] オプションが [True] に設定されている場合、専用 SQL プールのスクリプト生成が失敗します。 回避策として、ユーザーは手動で **[ツール]、[オプション]、[SQL Server オブジェクト エクスプローラー] の順に選択し、[Generate script for dependent objects]\(依存オブジェクトのスクリプトを生成する\) オプションを [false] に設定する** 必要があります。 |
 
-## <a name="performance"></a>パフォーマンス
+## <a name="data-ingestion-and-preparation"></a>データの取り込みと準備
 
 | 問題                                                        | 解決方法                                                   |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| CETAS を使用して空の文字列をエクスポートすると、Parquet と ORC のファイルの値が NULL になります。 NOT NULL 制約のある列から空の文字列をエクスポートする場合は、CETAS によってレコードが拒否され、エクスポートが失敗する可能性があることに注意してください。 | CETAS の SELECT ステートメントで、空の文字列または問題のある列を削除します。 |
+
+## <a name="performance"></a>パフォーマンス
+
+| 問題                                                        | 解像度                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | クエリ パフォーマンスのトラブルシューティング                            | 特定のクエリのトラブルシューティングを行う必要がある場合は、 [クエリを監視する方法](sql-data-warehouse-manage-monitor.md#monitor-query-execution)に関する記事を参照してください。 |
 | TempDB の領域に関する問題 | [TempDB の領域の使用状況を監視](sql-data-warehouse-manage-monitor.md#monitor-tempdb)します。  TempDB の領域が不足している一般的な原因は次のとおりです。<br>- クエリに割り当てられたリソースが不足しているため、データが TempDB に書き込まれます。  [ワークロード管理](resource-classes-for-workload-management.md)に関する記事を参照してください。 <br>- 統計が不足しているか、期限切れのため、データ移動が過剰になっています。  統計を作成する方法の詳細については、[テーブルの統計の管理](sql-data-warehouse-tables-statistics.md)に関する記事を参照してください。<br>- TempDB の領域はサービス レベルごとに割り当てられます。  [専用 SQL プール](sql-data-warehouse-manage-compute-overview.md#scaling-compute)をより大きな DWU 設定にスケーリングすると、TempDB の領域がさらに割り当てられます。|
@@ -54,7 +60,7 @@ ms.locfileid: "93340279"
 
 ## <a name="system-management"></a>システム管理
 
-| 問題                                                        | 解決方法                                                   |
+| 問題                                                        | 解像度                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | メッセージ 40847:サーバーが許容データベース トランザクション単位クォータ 45000 を超えることになるため、操作を実行できませんでした。 | 作成しようとしているデータベースの [DWU](what-is-a-data-warehouse-unit-dwu-cdwu.md) を減らすか、[クォータの引き上げを要求](sql-data-warehouse-get-started-create-support-ticket.md)してください。 |
 | 領域使用率の調査                              | システムの領域使用率の詳細については、 [テーブルのサイズ](sql-data-warehouse-tables-overview.md#table-size-queries) に関するトピックをご覧ください。 |
@@ -63,7 +69,7 @@ ms.locfileid: "93340279"
 
 ## <a name="differences-from-sql-database"></a>SQL Database との違い
 
-| 問題                                 | 解決方法                                                   |
+| 問題                                 | 解像度                                                   |
 | :------------------------------------ | :----------------------------------------------------------- |
 | サポートされていない SQL Database の機能     | 「 [サポートされていないテーブルの機能](sql-data-warehouse-tables-overview.md#unsupported-table-features)」をご覧ください。 |
 | サポートされていない SQL Database のデータ型   | 「 [サポートされていないデータ型](sql-data-warehouse-tables-data-types.md#identify-unsupported-data-types)」をご覧ください。        |

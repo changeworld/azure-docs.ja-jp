@@ -5,21 +5,21 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc, devx-track-azurecli
-ms.date: 10/28/2020
-ms.openlocfilehash: 0d7f455e748a52595839cc509720bf7ad5b9b617
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: mvc, devx-track-azurecli, contperfq2
+ms.date: 11/23/2020
+ms.openlocfilehash: f5b8497772a14e9613977c9cdc22025e8e58b92c
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099064"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95509474"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用してロジック アプリを作成し、管理する
 
 このクイックスタートでは、[Azure CLI Logic Apps 拡張機能](/cli/azure/ext/logic/logic) (`az logic`) を使用してロジック アプリを作成し、管理する方法について説明します。 ロジック アプリ ワークフロー定義用の JSON ファイルを使用して、コマンド ラインからロジック アプリを作成することができます。 その後、コマンド ラインから、`list`、`show` (`get`)、`update`、`delete` などの操作を実行してロジック アプリを管理できます。
 
 > [!WARNING]
-> Azure CLI Logic Apps 拡張機能は、現在、" *試験段階* " であり、" *カスタマーサポートの対象外* " です。 この CLI 拡張機能は、特に運用環境での使用を選択する場合、慎重に使用してください。
+> Azure CLI Logic Apps 拡張機能は、現在、"*試験段階*" であり、"*カスタマーサポートの対象外*" です。 この CLI 拡張機能は、特に運用環境での使用を選択する場合、慎重に使用してください。
 
 Logic Apps を初めて使用する場合は、[Azure portal](quickstart-create-first-logic-app-workflow.md)、[Visual Studio](quickstart-create-logic-apps-with-visual-studio.md)、および [Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md) を使用して初めてのロジック アプリを作成する方法も学習できます。
 
@@ -63,7 +63,7 @@ az group create --name testResourceGroup --location westus
 
 ## <a name="workflow-definition"></a>ワークフロー定義
 
-Azure CLI を使用して、[新しいロジック アプリを作成する](#create-logic-apps-from-cli)か、または[既存のロジック アプリを更新する](#update-logic-apps-from-cli)前に、ロジック アプリのワークフロー定義が必要です。 Azure portal で、 **デザイナー** ビューから **コード ビュー** に切り替えると、ロジック アプリの基になるワークフロー定義を JSON 形式で表示できます。
+Azure CLI を使用して、[新しいロジック アプリを作成する](#create-logic-apps-from-cli)か、または[既存のロジック アプリを更新する](#update-logic-apps-from-cli)前に、ロジック アプリのワークフロー定義が必要です。 Azure portal で、**デザイナー** ビューから **コード ビュー** に切り替えると、ロジック アプリの基になるワークフロー定義を JSON 形式で表示できます。
 
 コマンドを実行してロジック アプリを作成または更新する場合、ワークフロー定義は必須パラメーター (`--definition`) としてアップロードされます。 ワークフロー定義は、[ワークフロー定義言語のスキーマ](./logic-apps-workflow-definition-language.md)に従う JSON ファイルとして作成する必要があります。
 

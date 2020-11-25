@@ -10,11 +10,11 @@ ms.date: 01/22/2019
 ms.author: chrande
 ms.custom: devx-track-python
 ms.openlocfilehash: 91b04b05b810b2b0fc221943a73e81c49f7119dc
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360192"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972471"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>クイック スタート:Python と Azure portal を使用して Azure Cosmos DB にグラフ データベースを作成する
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -73,9 +73,9 @@ ms.locfileid: "93360192"
 
 ## <a name="review-the-code"></a>コードの確認
 
-この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 スニペットはすべて、 *C:\git-samples\azure-cosmos-db-graph-python-getting-started\\* フォルダーの *connect.py* ファイルからのものです。 関心がない場合は、「[接続文字列の更新](#update-your-connection-information)」に進んでください。 
+この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 スニペットはすべて、*C:\git-samples\azure-cosmos-db-graph-python-getting-started\\* フォルダーの *connect.py* ファイルからのものです。 関心がない場合は、「[接続文字列の更新](#update-your-connection-information)」に進んでください。 
 
-* Gremlin の `client` は、 *connect.py* の 104 行目で初期化されます。
+* Gremlin の `client` は、*connect.py* の 104 行目で初期化されます。
 
     ```python
     ...
@@ -171,7 +171,7 @@ ms.locfileid: "93360192"
 
 頂点とエッジが挿入されたら、データ エクスプローラーに戻り、グラフに追加された頂点を確認して、データ ポイントを追加することができます。
 
-1. Azure portal の Azure Cosmos DB アカウントで **[データ エクスプローラー]** を選択し、 **sample-graph** を展開して **[グラフ]** 、 **[フィルターの適用]** の順に選択します。 
+1. Azure portal の Azure Cosmos DB アカウントで **[データ エクスプローラー]** を選択し、**sample-graph** を展開して **[グラフ]** 、 **[フィルターの適用]** の順に選択します。 
 
    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png" alt-text="A P I から選択された [グラフ] と、[フィルターの適用] オプションを示すスクリーンショット。":::
 
@@ -183,7 +183,7 @@ ms.locfileid: "93360192"
 
    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="[New Vertex]\(新しい頂点\) ペインを示すスクリーンショット。ここで値を入力できます。":::
 
-4. 「 *person* 」というラベルを入力します。
+4. 「*person*」というラベルを入力します。
 
 5. **[プロパティの追加]** を選択して、次の各プロパティを追加します。 グラフ内の person ごとに一意のプロパティを作成できることに注目してください。 必須のキーは id のみです。
 
@@ -201,7 +201,7 @@ ms.locfileid: "93360192"
 
 7. もう一度 **[New Vertex]\(新しい頂点\)** を選択して、新しいユーザーを追加します。 
 
-8. 「 *person* 」というラベルを入力します。
+8. 「*person*」というラベルを入力します。
 
 9. **[プロパティの追加]** を選択し、次の各プロパティを追加します。
 
@@ -222,7 +222,7 @@ ms.locfileid: "93360192"
 
     :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png" alt-text="グラフ内の頂点のターゲットを変更する":::
 
-13. **[Target]\(ターゲット\)** ボックスに「 *rakesh* 」と入力し、 **[Edge label]\(辺ラベル\)** ボックスに「 *knows* 」と入力して、チェック ボックスをオンにします。
+13. **[Target]\(ターゲット\)** ボックスに「*rakesh*」と入力し、 **[Edge label]\(辺ラベル\)** ボックスに「*knows*」と入力して、チェック ボックスをオンにします。
 
     :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png" alt-text="データ エクスプローラーで ashley と rakesh との間の接続を追加する":::
 

@@ -9,11 +9,11 @@ ms.topic: include
 ms.custom: include file
 ms.date: 06/27/2019
 ms.openlocfilehash: a979cd0a4c2ee6466edebadf61e8a98b8f17c9f3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86544368"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013365"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,8 +27,8 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 データセット、リンクされたサービス、パイプライン、トリガー、および統合ランタイムを含む Data Factory の子リソースを作成および管理するには、次の要件が適用されます。
 
-- Azure portal で子リソースを作成および管理するには、リソース グループ レベル以上で **Data Factory 共同作成者**ロールに属している必要があります。
-- PowerShell または SDK を使用して子リソースを作成および管理する場合は、リソース レベル以上での**共同作成者**ロールで十分です。
+- Azure portal で子リソースを作成および管理するには、リソース グループ レベル以上で **Data Factory 共同作成者** ロールに属している必要があります。
+- PowerShell または SDK を使用して子リソースを作成および管理する場合は、リソース レベル以上での **共同作成者** ロールで十分です。
 
 ロールにユーザーを追加する方法に関するサンプル手順については、[ロールの追加](../articles/cost-management-billing/manage/add-change-subscription-administrator.md)に関する記事を参照してください。
 
@@ -63,7 +63,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 #### <a name="add-an-input-folder-and-file-for-the-blob-container"></a>BLOB コンテナーの入力フォルダーとファイルを追加する
 
-このセクションでは、作成したコンテナーに **input** という名前のフォルダーを作成し、入力フォルダーにサンプル ファイルをアップロードします。 開始する前に、**メモ帳**などのテキスト エディターを開き、次の内容を含む **emp.txt** という名前のファイルを作成します。
+このセクションでは、作成したコンテナーに **input** という名前のフォルダーを作成し、入力フォルダーにサンプル ファイルをアップロードします。 開始する前に、**メモ帳** などのテキスト エディターを開き、次の内容を含む **emp.txt** という名前のファイルを作成します。
 
 ```emp.txt
 John, Doe

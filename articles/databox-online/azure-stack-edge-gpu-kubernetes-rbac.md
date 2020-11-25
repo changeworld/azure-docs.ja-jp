@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 0880ae64520997fc6b41ba4a7e8508d927235a8a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9a9625dcf40ae7d11e1154fc89b7f04652c8ca16
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320814"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635842"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスでの Kubernetes ロールベースのアクセス制御
 
 
-Azure Stack Edge Pro デバイスで、コンピューティング ロールを構成すると、Kubernetes クラスターが作成されます。 Kubernetes のロールベースのアクセス制御 (RBAC) を使用して、お使いのデバイス上のクラスター リソースへのアクセスを制限できます。
+Azure Stack Edge Pro デバイスで、コンピューティング ロールを構成すると、Kubernetes クラスターが作成されます。 Kubernetes ロールベースのアクセス制御 (Kubernetes RBAC) を使用して、お使いのデバイス上のクラスター リソースへのアクセスを制限できます。
 
-この記事では、Kubernetes によって提供される RBAC システムの概要と、Azure Stack Edge Pro デバイスに Kubernetes RBAC を実装する方法について説明します。 
+この記事では、Kubernetes によって提供される Kubernetes RBAC システムの概要と、Azure Stack Edge Pro デバイスに Kubernetes RBAC を実装する方法について説明します。 
 
-## <a name="rbac-for-kubernetes"></a>Kubernetes の RBAC
+## <a name="kubernetes-rbac"></a>Kubernetes RBAC
 
 Kubernetes RBAC を使用すると、ユーザーまたはユーザー グループに対して、リソースの作成または変更、実行中のアプリケーション ワークロードのログの表示などの操作を行うためのアクセス許可を割り当てることができます。 これらのアクセス許可は、スコープを 1 つの名前空間に指定することも、クラスター全体に付与することもできます。 
 
@@ -68,14 +68,14 @@ Azure Stack Edge Pro デバイスには、次の名前空間があります。
 
 Kubernetes には、ロールとロール バインドの概念があります。これにより、名前空間レベルとクラスター レベルでユーザーまたはリソースにアクセス許可を付与できます。 
 
-- **Roles**:ユーザーへのアクセス許可を**ロール**として定義し、**Roles** を使用して名前空間内でアクセス許可を付与できます。 
+- **Roles**:ユーザーへのアクセス許可を **ロール** として定義し、**Roles** を使用して名前空間内でアクセス許可を付与できます。 
 - **RoleBindings**: ロールを定義したら、**RoleBindings** を使用して、特定の名前空間にロールを割り当てることができます。 
 
 この手法によって、1 つの Kubernetes クラスターを論理的に分離でき、ユーザーは自分に割り当てられた名前空間内のアプリケーション リソースのみにアクセスできます。 
 
-## <a name="rbac-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro での RBAC
+## <a name="kubernetes-rbac-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro での Kubernetes RBAC
 
-現在実装されている RBAC では、Azure Stack Edge Pro を使用すると、制限付きの PowerShell 実行空間から次の操作を実行できます。
+現在実装されている Kubernetes RBAC では、Azure Stack Edge Pro を使用すると、制限付きの PowerShell 実行空間から次の操作を実行できます。
 
 - 名前空間を作成する。  
 - 追加のユーザーを作成する。
@@ -85,9 +85,9 @@ Kubernetes には、ロールとロール バインドの概念があります�
 
 Azure Stack Edge Pro デバイスには複数のシステム名前空間があります。また、それらの名前空間にアクセスするために、`kubeconfig` ファイルを使用してユーザー名前空間を作成できます。 ユーザーはこれらの名前空間を完全に制御でき、ユーザーを作成または変更したり、ユーザーにアクセスを許可したりできます。 システム名前空間とクラスター全体のリソースに対するフル アクセス権を持っているのはクラスター管理者のみです。 `aseuser` には、システム名前空間に対する読み取り専用アクセス権が付与されています。
 
-Azure Stack Edge Pro デバイスでの RBAC の実装を示す図は次のとおりです。
+Azure Stack Edge Pro デバイスでの Kubernetes RBAC の実装を示す図は次のとおりです。
 
-![Azure Stack Edge Pro デバイスでの RBAC](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
+![Azure Stack Edge Pro デバイスでの Kubernetes RBAC](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
 
 この図では、Alice、Bob、Chuck がアクセスできるのは割り当てられたユーザー名前空間 (この場合、それぞれ `ns1`、`ns2`、`ns3`) のみです。 これらの名前空間内で、管理者アクセス権を所有しています。 その一方で、クラスター管理者は、システム名前空間とクラスター全体のリソースに対する管理者アクセス権を持っています。
 

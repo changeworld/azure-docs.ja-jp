@@ -4,12 +4,12 @@ description: Azure Site Recovery を使用したセカンダリ リージョン�
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: b73a6b8c024cfa5ed7188bbf3fed2bbb7142a2a0
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: c54c4608f04c8f98e21309ca531452ae0a34fdf2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186639"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646374"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure リージョン間での Azure VM ディザスター リカバリーに関するサポート マトリックス
 
@@ -100,12 +100,12 @@ Windows 7 (x64) with SP1 以降 | Azure VM の Mobility Service 拡張機能の�
 --- | ---
 Red Hat Enterprise Linux | 6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)、[7.8](https://support.microsoft.com/help/4564347/)、[7.9](https://support.microsoft.com/help/4578241/)、[8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)、8.1、[8.2](https://support.microsoft.com/help/4570609/)
 CentOS | 6.5、6.6、6.7、6.8、6.9、6.10 </br> 7.0、7.1、7.2、7.3、7.4、7.5、7.6、7.7、[7.8](https://support.microsoft.com/help/4564347/)、[7.9 GA 前バージョン](https://support.microsoft.com/help/4578241/)、7.9 GA バージョンは 9.37 ホット フィックス修正プログラムからサポートされています** </br> 8.0、8.1、[8.2](https://support.microsoft.com/en-us/help/4570609)
-Ubuntu 14.04 LTS Server | すべての 14.04. *x* バージョンのサポートが含まれます ( [サポートされているカーネル バージョン](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)) 
-Ubuntu 16.04 LTS Server | すべての 16.04. *x* バージョンのサポートが含まれます ( [サポートされているカーネル バージョン](#supported-ubuntu-kernel-versions-for-azure-virtual-machines))<br/><br/> パスワード ベースの認証とサインインを使用しており、cloud-init パッケージを使用してクラウド VM を構成する Ubuntu サーバーでは、(cloudinit 構成に応じて) フェールオーバー時にパスワード ベースのサインインが無効になっている場合があります。 パスワード ベースのサインインは、Azure portal で、フェールオーバーされた VM の [サポート] > [トラブルシューティング] > [設定] メニューからパスワードをリセットすることで、その仮想マシンで再度有効にできます。
-Ubuntu 18.04 LTS Server | すべての 18.04. *x* バージョンのサポートが含まれます ( [サポートされているカーネル バージョン](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)) |
-Ubuntu 20.04 LTS server | すべての 20.04. *x* バージョンのサポートが含まれます ( [サポートされているカーネル バージョン](#supported-ubuntu-kernel-versions-for-azure-virtual-machines))
-Debian 7 | すべての 7. *x* バージョンのサポートが含まれます ( [サポートされるカーネル バージョン](#supported-debian-kernel-versions-for-azure-virtual-machines))
-Debian 8 | すべての 8. *x* バージョンのサポートが含まれます ( [サポートされるカーネル バージョン](#supported-debian-kernel-versions-for-azure-virtual-machines))
+Ubuntu 14.04 LTS Server | すべての 14.04.*x* バージョンのサポートが含まれます ([サポートされているカーネル バージョン](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)) 
+Ubuntu 16.04 LTS Server | すべての 16.04.*x* バージョンのサポートが含まれます ([サポートされているカーネル バージョン](#supported-ubuntu-kernel-versions-for-azure-virtual-machines))<br/><br/> パスワード ベースの認証とサインインを使用しており、cloud-init パッケージを使用してクラウド VM を構成する Ubuntu サーバーでは、(cloudinit 構成に応じて) フェールオーバー時にパスワード ベースのサインインが無効になっている場合があります。 パスワード ベースのサインインは、Azure portal で、フェールオーバーされた VM の [サポート] > [トラブルシューティング] > [設定] メニューからパスワードをリセットすることで、その仮想マシンで再度有効にできます。
+Ubuntu 18.04 LTS Server | すべての 18.04.*x* バージョンのサポートが含まれます ([サポートされているカーネル バージョン](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)) |
+Ubuntu 20.04 LTS server | すべての 20.04.*x* バージョンのサポートが含まれます ([サポートされているカーネル バージョン](#supported-ubuntu-kernel-versions-for-azure-virtual-machines))
+Debian 7 | すべての 7. *x* バージョンのサポートが含まれます ([サポートされるカーネル バージョン](#supported-debian-kernel-versions-for-azure-virtual-machines))
+Debian 8 | すべての 8. *x* バージョンのサポートが含まれます ([サポートされるカーネル バージョン](#supported-debian-kernel-versions-for-azure-virtual-machines))
 Debian 9 | 9\.1 から 9.13 までのサポートが含まれています。 Debian 9.0 はサポートされていません。 [サポートされるカーネル バージョン](#supported-debian-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 12 | SP1、SP2、SP3、SP4、SP5 ([サポートされるカーネル バージョン](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines))
 SUSE Linux Enterprise Server 15 | 15、SP1、SP2 [(サポートされるカーネル バージョン)](#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines)
@@ -131,7 +131,7 @@ Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3�
 18.04 LTS | [9.36](https://support.microsoft.com/help/4578241/) | 4.15.0-20-generic ～ 4.15.0-112-generic </br> 4.18.0-13-generic から 4.18.0-25-generic </br> 5.0.0-15-generic ～ 5.0.0-58-generic </br> 5.3.0-19-generic ～ 5.3.0-65-generic </br> 5.4.0-37-generic ～ 5.4.0-42-generic</br> 4.15.0-1009-azure ～ 4.15.0-1092-azure </br> 4.18.0-1006-azure から 4.18.0-1025-azure </br> 5.0.0-1012-azure から 5.0.0-1036-azure </br> 5.3.0-1007-azure ～ 5.3.0-1032-azure </br> 5.4.0-1020-azure ～ 5.4.0-1022-azure </br> 5.0.0-60-generic & 5.3.0-1035-azure (9.36 ホット フィックス パッチを適用)**|
 18.04 LTS | [9.34](https://support.microsoft.com/help/4570609)、[9.35](https://support.microsoft.com/help/4573888/) | 4.15.0-20-generic から 4.15.0-108-generic </br> 4.18.0-13-generic から 4.18.0-25-generic </br> 5.0.0-15-generic から 5.0.0-52-generic </br> 5.3.0-19-generic から 5.3.0-61-generic </br> 4.15.0-1009-azure から 4.15.0-1089-azure </br> 4.18.0-1006-azure から 4.18.0-1025-azure </br> 5.0.0-1012-azure から 5.0.0-1036-azure </br> 5.3.0-1007-azure から 5.3.0-1031-azure </br> 4.15.0-109-generic、5.0.0-53-generic、5.3.0-62-generic、4.15.0-1091-azure、5.3.0-1032-azure (9.35 ホット フィックス修正プログラムを適用)**|
 |||
-20.04 LTS |[9.38](https://support.microsoft.com/help/4590304/) | 5.4.0-26-generic から 5.4.0-48 </br> -generic 5.4.0-1010-azure から 5.4.0-1026-azure </br> 5.4.0-51-generic、5.4.0-52-generic、5.8.0-23-generic、5.4.0-1031-azure から 9.38 までのホット フィックス修正プログラム**
+20.04 LTS |[9.38](https://support.microsoft.com/help/4590304/) | 5.4.0-26-generic から 5.4.0-48 </br> -generic 5.4.0-1010-azure から 5.4.0-1026-azure </br> 5.4.0-51-generic、5.4.0-52-generic、5.8.0-23-generic、5.8.0-25-generic、5.4.0-1031-azure から 9.38 までのホット フィックス修正プログラム**
 20.04 LTS |[9.37](https://support.microsoft.com/help/4582666/) | 5.4.0-26-generic から 5.4.0-45 </br> -generic 5.4.0-1010-azure から 5.4.0-1023-azure </br> 5.4.0-47-generic、5.4.0-48-generic、5.4.0-1025-azure、5.4.0-1026-azure から 9.37 までのホット フィックス修正プログラム**
 20.04 LTS |[9.36](https://support.microsoft.com/help/4578241/) | 5.4.0-26-generic ～ 5.4.0-42 </br> -generic 5.4.0-1010-azure ～ 5.4.0-1022-azure
 
@@ -146,7 +146,7 @@ Debian 7 |  [9.34](https://support.microsoft.com/help/4570609)、[9.35](https://
 Debian 8 | [9.35](https://support.microsoft.com/help/4573888/, )、[9.36](https://support.microsoft.com/help/4578241/)、[9.37](https://support.microsoft.com/help/4582666/)、[9.38](https://support.microsoft.com/help/4590304/) | 3.16.0-4-amd64 から 3.16.0-11-amd64、4.9.0-0.bpo.4-amd64 から 4.9.0-0.bpo.11-amd64 |
 Debian 8 | [9.34](https://support.microsoft.com/help/4570609) | 3.16.0-4-amd64 から 3.16.0-10-amd64、4.9.0-0.bpo.4-amd64 から 4.9.0-0.bpo.11-amd64 |
 |||
-Debian 9.1 | [9.38](https://support.microsoft.com/help/4590304/) | 4.9.0-1-amd64 から 4.9.0-13-amd64 </br> 4.19.0-0.bpo.1-amd64 から 4.19.0-0.bpo.11-amd64 </br> 4.19.0-0.bpo.1-cloud-amd64 から 4.19.0-0.bpo.11-cloud-amd64 </br> 
+Debian 9.1 | [9.38](https://support.microsoft.com/help/4590304/) | 4.9.0-1-amd64 から 4.9.0-13-amd64 </br> 4.19.0-0.bpo.1-amd64 から 4.19.0-0.bpo.11-amd64 </br> 4.19.0-0.bpo.1-cloud-amd64 から 4.19.0-0.bpo.11-cloud-amd64 </br> 4.9.0-14-amd64、4.19.0-0.bpo.12-amd64、4.19.0-0.bpo.12-cloud-amd64 から 9.38 までのホット フィックス修正プログラム**
 Debian 9.1 | [9.37](https://support.microsoft.com/help/4582666/) | 4.9.0-3-amd64 から 4.9.0-13-amd64、4.19.0-0.bpo.6-amd64 から 4.19.0-0.bpo.10-amd64、4.19.0-0.bpo.6-cloud-amd64 から 4.19.0-0.bpo.10-cloud-amd64
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Azure 仮想マシン用のサポートされる SUSE Linux Enterprise Server 12 カーネル バージョン

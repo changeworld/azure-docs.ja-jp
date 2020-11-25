@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
 ms.openlocfilehash: d564b96807574dd7a275d6959aea085ad16e9e2e
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565944"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013413"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>クイック スタート:.NET SDK を使用してデータ ファクトリとパイプラインを作成する
 

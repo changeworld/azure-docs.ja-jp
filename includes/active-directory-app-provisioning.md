@@ -1,13 +1,12 @@
 ---
-ms.openlocfilehash: 475a468977a976e2e7399c14df9329b31446d404
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c400856546142353a7294a03fce6bbff1c258cc0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135057"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558423"
 ---
-
-Azure Active Directory (Azure AD) での **アプリ プロビジョニング** という用語は、ユーザーがアクセスする必要のあるクラウド ( [SaaS](https://azure.microsoft.com/overview/what-is-saas/)) アプリケーションにおいてユーザーの ID とロールを自動的に作成することを意味します。 自動プロビジョニングには、ユーザー ID の作成に加えて、状態または役割が変化したときのユーザー ID のメンテナンスおよび削除が含まれます。 一般的なシナリオには、[Dropbox](../articles/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../articles/active-directory/saas-apps/salesforce-provisioning-tutorial.md)、[ServiceNow](../articles/active-directory/saas-apps/servicenow-provisioning-tutorial.md) などのアプリケーションへの Azure AD ユーザーのプロビジョニングが含まれます。
+Azure Active Directory (Azure AD) での **アプリ プロビジョニング** という用語は、ユーザーがアクセスする必要のあるクラウド ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) アプリケーションにおいてユーザーの ID とロールを自動的に作成することを意味します。 自動プロビジョニングには、ユーザー ID の作成に加えて、状態または役割が変化したときのユーザー ID のメンテナンスおよび削除が含まれます。 一般的なシナリオには、[Dropbox](../articles/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../articles/active-directory/saas-apps/salesforce-provisioning-tutorial.md)、[ServiceNow](../articles/active-directory/saas-apps/servicenow-provisioning-tutorial.md) などのアプリケーションへの Azure AD ユーザーのプロビジョニングが含まれます。
 
 ![プロビジョニングの概要図](./media/active-directory-app-provisioning/provisioning-overview.png)
 
@@ -46,9 +45,9 @@ Azure AD は、一般的な多くの SaaS アプリや人事管理システム�
 
    ![Salesforce のロゴ](./media/active-directory-app-provisioning/gallery-app-logos.png)
 
-   プロビジョニングのために新しいアプリケーションを要求したい場合は、[アプリケーションをアプリ ギャラリーと統合するよう要求する](../articles/active-directory/azuread-dev/howto-app-gallery-listing.md)ことができます。 ユーザー プロビジョニング要求の場合、アプリケーションには SCIM 準拠のエンドポイントが必要です。 アプリをプラットフォームに迅速にオンボードできるよう、アプリケーションのベンダーに SCIM 標準に準拠するよう要求してください。
+   プロビジョニングのために新しいアプリケーションを要求したい場合は、[アプリケーションをアプリ ギャラリーと統合するよう要求する](../articles/active-directory/develop/v2-howto-app-gallery-listing.md)ことができます。 ユーザー プロビジョニング要求の場合、アプリケーションには SCIM 準拠のエンドポイントが必要です。 アプリをプラットフォームに迅速にオンボードできるよう、アプリケーションのベンダーに SCIM 標準に準拠するよう要求してください。
 
-* **SCIM 2.0 をサポートするアプリケーション** 。 SCIM 2.0 ベースのユーザー管理 API を実装するアプリケーションを汎用的に接続する方法については、「[SCIM エンドポイントの構築とユーザー プロビジョニングの構成](../articles/active-directory/app-provisioning/use-scim-to-provision-users-and-groups.md)」を参照してください。
+* **SCIM 2.0 をサポートするアプリケーション**。 SCIM 2.0 ベースのユーザー管理 API を実装するアプリケーションを汎用的に接続する方法については、「[SCIM エンドポイントの構築とユーザー プロビジョニングの構成](../articles/active-directory/app-provisioning/use-scim-to-provision-users-and-groups.md)」を参照してください。
 
 ## <a name="what-is-system-for-cross-domain-identity-management-scim"></a>System for Cross-domain Identity Management (SCIM) とは
 
@@ -64,9 +63,9 @@ Azure AD ギャラリーのアプリケーションは、次の 2 つのプロ�
 
 * **手動** プロビジョニングとは、アプリの自動 Azure AD プロビジョニングコネクタがまだないことを意味します。 ユーザー アカウントは手動で作成する必要があります。たとえば、アプリの管理ポータルにユーザーを直接追加したり、ユーザー アカウントの詳細を含むスプレッドシートをアップロードしたりすることでこれを行います。 アプリから提供されるドキュメントを確認するか、アプリの開発者に問い合わせて、どのようなメカニズムが使用できるか判断してください。
 
-* " **自動** " とは、このアプリケーション用の Azure AD プロビジョニング コネクタが開発済みであることを意味します。 そのアプリケーションのプロビジョニングの設定に固有の設定チュートリアルに従う必要があります。 アプリのチュートリアルについては、「[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](../articles/active-directory/saas-apps/tutorial-list.md)」を参照してください。
+* "**自動**" とは、このアプリケーション用の Azure AD プロビジョニング コネクタが開発済みであることを意味します。 そのアプリケーションのプロビジョニングの設定に固有の設定チュートリアルに従う必要があります。 アプリのチュートリアルについては、「[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](../articles/active-directory/saas-apps/tutorial-list.md)」を参照してください。
 
-Azure AD ギャラリーでは、自動プロビジョニングをサポートするアプリケーションは、 **プロビジョニング** アイコンによって指定されます。 新しいギャラリー プレビュー エクスペリエンスに切り替えてこれらのアイコンを表示します ( **[アプリケーションの追加]** ページの上部にあるバナーで、 **[Click here to try out the new and improved app gallery] (改善された新しいアプリ ギャラリーを試すには、こちらをクリックしてください)** というリンクを選択します)。
+Azure AD ギャラリーでは、自動プロビジョニングをサポートするアプリケーションは、**プロビジョニング** アイコンによって指定されます。 新しいギャラリー プレビュー エクスペリエンスに切り替えてこれらのアイコンを表示します ( **[アプリケーションの追加]** ページの上部にあるバナーで、 **[Click here to try out the new and improved app gallery] (改善された新しいアプリ ギャラリーを試すには、こちらをクリックしてください)** というリンクを選択します)。
 
 ![アプリケーション ギャラリーのプロビジョニング アイコン](./media/active-directory-app-provisioning/browse-gallery.png)
 

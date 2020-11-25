@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cf072ae9544cd479aeca02d9b9fcd670b8eb5fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dbdd5153186ee47e37856637eac16d6d450cc5a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226898"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695182"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect クラウド プロビジョニングの前提条件
 この記事では、ID ソリューションとして Azure Active Directory (Azure AD) クラウド プロビジョニングを選択して使用する方法に関するガイダンスを示します。
@@ -90,6 +90,26 @@ TLS 1.2 を有効にするには、次の手順に従います。
     ```
 
 1. サーバーを再起動します。
+
+## <a name="known-limitations"></a>既知の制限事項
+既知の制限事項には、次のようなものがあります。
+
+### <a name="delta-synchronization"></a>差分同期
+
+- 差分同期のグループ スコープ フィルターは、メンバーが 1,500 を超えるとサポートしません。
+- グループ スコープ フィルターの一部として使用されているグループを削除すると、そのグループのメンバーであるユーザーが削除されません。 
+- スコープ内の OU またはグループの名前を変更すると、差分同期を実行してもユーザーが削除されません。
+
+### <a name="provisioning-logs"></a>プロビジョニング ログ
+- プロビジョニング ログを使用すると、作成操作と更新操作が明確に区別されません。  更新時に作成操作、および作成時に更新操作が表示される場合があります。
+
+### <a name="cross-domain-references"></a>クロス ドメイン参照
+- メンバー参照を持つユーザーが別のドメインに存在する場合、そのユーザーは、そのユーザーの現在のドメイン同期の一部として同期されることはありません。 
+- (例: 同期しているユーザーのマネージャーがドメイン B に存在し、そのユーザーはドメイン A に存在しています。ドメイン A とドメイン B の両方を同期している場合、それらは同期されますが、ユーザー マネージャーによって引き継がれることはありません)。
+
+### <a name="group-re-naming-or-ou-re-naming"></a>グループ名の変更または OU 名の変更
+- 特定の構成のスコープ内にある AD でグループまたは OU の名前を変更すると、クラウド プロビジョニング ジョブによって AD での名前の変更が認識されなくなります。 ジョブは検疫されず、正常な状態のままになります。
+
 
 
 ## <a name="next-steps"></a>次のステップ 
