@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
-ms.openlocfilehash: 5e048729aa1d37a63678451525f8f37612c8c464
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 548db64bd93dd561f9c69e9f594d01f4c0825db9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426750"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948342"
 ---
 # <a name="azure-role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Network Watcher 機能を使用するために必要な、Azure ロールベースのアクセス制御のアクセス許可
 
@@ -90,6 +90,7 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用すると、
 | アクション                                                              | 説明                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/topology/action                   | トポロジを取得する                                                   |
+| Microsoft.Network/networkWatchers/topology/read                     | 同上                                                  |
 
 ## <a name="reachability-report"></a>到達可能性レポート
 
@@ -107,7 +108,7 @@ Network Watcher 機能には、次のアクションも必要です。
 | Microsoft.Authorization/\*/Read                                     | Azure ロールの割り当てとポリシー定義のフェッチに使用されます          |
 | Microsoft.Resources/subscriptions/resourceGroups/Read               | サブスクリプションのすべてのリソース グループの列挙に使用されます    |
 | Microsoft.Storage/storageAccounts/Read                              | 指定したストレージ アカウントのプロパティの取得に使用されます   |
-| Microsoft.Storage/storageAccounts/listServiceSas/Action、 </br> Microsoft.Storage/storageAccounts/listAccountSas/Action、 <br> Microsoft.Storage/storageAccounts/listKeys/Action| [ストレージ アカウントへのセキュリティで保護されたアクセス](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)およびストレージ アカウントへの書き込みを有効にした、Shared Access Signature (SAS) のフェッチに使用されます |
+| Microsoft.Storage/storageAccounts/listServiceSas/Action、 </br> Microsoft.Storage/storageAccounts/listAccountSas/Action、 <br> Microsoft.Storage/storageAccounts/listKeys/Action| [ストレージ アカウントへのセキュリティで保護されたアクセス](../storage/common/storage-sas-overview.md)およびストレージ アカウントへの書き込みを有効にした、Shared Access Signature (SAS) のフェッチに使用されます |
 | Microsoft.Compute/virtualMachines/Read、 </br> Microsoft.Compute/virtualMachines/Write| VM へのログイン、パケットの取得、そのストレージ アカウントへのアップロードに使用されます|
 | Microsoft.Compute/virtualMachines/extensions/Read </br> Microsoft.Compute/virtualMachines/extensions/Write| Network Watcher 拡張機能が存在するかどうかの確認と必要に応じたインストールに使用されます |
 | Microsoft.Compute/virtualMachineScaleSets/Read、 </br> Microsoft.Compute/virtualMachineScaleSets/Write| 仮想マシンのスケール セットへのアクセス、パケットの取得、およびそのストレージ アカウントへのアップロードに使用されます|

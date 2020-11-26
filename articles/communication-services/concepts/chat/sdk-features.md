@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 3b66c962758afc28da3c6be938c13d768c4f2572
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b239cf6d253c1c2d2e36d213e92e0b218add3f8c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91666145"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94885990"
 ---
 # <a name="chat-client-library-overview"></a>Chat クライアント ライブラリの概要
 
@@ -52,7 +52,7 @@ Azure Communication Services の Chat クライアント ライブラリを使�
 | events             | Event Grid を使用して、チャット スレッドで発生しているユーザー アクティビティにサブスクライブし、カスタム通知サービスまたはビジネス ロジックを統合する     | ✔️   | ✔️  | ✔️    | ✔️  |
 | 監視        | 送信メッセージの観点から使用状況を監視する                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
 |                    | アプリによって行われた API 要求の品質と状態を監視し、ポータルを使用してアラートを構成する                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
-|その他の機能 | [Cognitive Services APIs](https://docs.microsoft.com/azure/cognitive-services/) を Chat クライアント ライブラリと共に使用して、インテリジェントな機能を有効にする - *クライアントで受信メッセージの言語翻訳とセンチメント分析を行ったり、メンバーが話している最中に音声テキスト変換を行ってメッセージを作成したりします。*                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
+|その他の機能 | [Cognitive Services APIs](../../../cognitive-services/index.yml) を Chat クライアント ライブラリと共に使用して、インテリジェントな機能を有効にする - *クライアントで受信メッセージの言語翻訳とセンチメント分析を行ったり、メンバーが話している最中に音声テキスト変換を行ってメッセージを作成したりします。*                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
 
 ## <a name="next-steps"></a>次の手順
 

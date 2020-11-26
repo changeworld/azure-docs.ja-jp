@@ -426,7 +426,5 @@
           href: sql-data-warehouse-partner-machine-learning-ai.md
         - name: システム統合
           href: sql-data-warehouse-partner-system-integration.md
-        - name: パブリック プレビュー パートナー
-          href: sql-data-warehouse-partner-launch.md
         - name: サードパーティ アプリケーションとの互換性の問題
           href: sql-data-warehouse-partner-compatibility-issues.md

@@ -1,19 +1,19 @@
 ---
 title: サポートされている Azure Resource Manager のリソースの種類
 description: Azure Resource Graph でサポートされている Azure Resource Manager のリソースの種類と変更履歴の一覧を示します。
-ms.date: 10/28/2020
+ms.date: 11/20/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: e604fe7c5e3a7f40e31f43db64bcd59ae0545ac0
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: fa5a5f5741f05e6f5f30a3d04958ba0b450a1bb7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927568"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988342"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph のテーブルとリソースの種類のリファレンス
 
-Azure Resource Graph では、 [Azure Resource Manager](../../../azure-resource-manager/management/overview.md) の次の **リソースの種類** がサポートされています。 各 **リソースの種類** は、Resource Graph の **テーブル** に含まれます。
+Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-manager/management/overview.md) の次の **リソースの種類** がサポートされています。 各 **リソースの種類** は、Resource Graph の **テーブル** に含まれます。
 
 ## <a name="advisorresources"></a>advisorresources
 
@@ -68,6 +68,7 @@ Azure Resource Graph では、 [Azure Resource Manager](../../../azure-resource-
 - microsoft.aisupercomputer/accounts/jobgroups
 - microsoft.aisupercomputer/accounts/jobgroups/jobs
 - microsoft.alertsmanagement/actionrules
+- microsoft.alertsmanagement/resourcehealthalertrules
 - microsoft.alertsmanagement/smartdetectoralertrules
 - microsoft.analysisservices/servers
 - microsoft.apimanagement/service
@@ -88,6 +89,10 @@ Azure Resource Graph では、 [Azure Resource Manager](../../../azure-resource-
 - microsoft.azconfig/configurationstores
 - microsoft.azureactivedirectory/b2cdirectories
 - microsoft.azureactivedirectory/guestusages
+- microsoft.azurearcdata/datacontrollers
+- microsoft.azurearcdata/postgresinstances
+- microsoft.azurearcdata/sqlmanagedinstances
+- microsoft.azurearcdata/sqlserverinstances
 - microsoft.azuredata/datacontrollers
 - microsoft.azuredata/hybriddatamanagers
 - microsoft.azuredata/postgresinstances
@@ -103,6 +108,7 @@ Azure Resource Graph では、 [Azure Resource Manager](../../../azure-resource-
 - microsoft.baremetal/consoleconnections
 - microsoft.baremetal/crayservers
 - microsoft.baremetal/monitoringservers
+- microsoft.baremetalinfrastructure/baremetalinstances
 - microsoft.batch/batchaccounts
 - microsoft.batchai/clusters
 - microsoft.batchai/fileservers
@@ -131,6 +137,7 @@ Azure Resource Graph では、 [Azure Resource Manager](../../../azure-resource-
 - microsoft.cloudes/accounts
 - microsoft.cloudsearch/indexes
 - microsoft.cloudtest/accounts
+- microsoft.cloudtest/hostedpools
 - microsoft.cloudtest/images
 - microsoft.cloudtest/pools
 - microsoft.codespaces/plans
@@ -177,6 +184,7 @@ Azure Resource Graph では、 [Azure Resource Manager](../../../azure-resource-
 - microsoft.containerservice/openshiftmanagedclusters
 - microsoft.contoso/clusters
 - microsoft.contoso/employees
+- microsoft.contoso/towers
 - microsoft.costmanagement/connectors
 - microsoft.customproviders/resourceproviders
 - microsoft.d365customerinsights/instances
@@ -205,6 +213,7 @@ Azure Resource Graph では、 [Azure Resource Manager](../../../azure-resource-
 - microsoft.dbforpostgresql/servers
 - microsoft.dbforpostgresql/serversv2
 - microsoft.dbforpostgresql/singleservers
+- microsoft.delegatednetwork/controller
 - microsoft.delegatednetwork/delegatedsubnets
 - microsoft.delegatednetwork/orchestratorinstances
 - microsoft.deploymentmanager/artifactsources
@@ -302,6 +311,7 @@ Azure Resource Graph では、 [Azure Resource Manager](../../../azure-resource-
 - microsoft.machinelearning/workspaces
 - microsoft.machinelearningcompute/operationalizationclusters
 - microsoft.machinelearningservices/workspaces
+- microsoft.machinelearningservices/workspaces/batchendpoints
 - microsoft.machinelearningservices/workspaces/inferenceendpoints
 - microsoft.machinelearningservices/workspaces/inferenceendpoints/deployments
 - microsoft.machinelearningservices/workspaces/onlineendpoints
@@ -316,6 +326,7 @@ Azure Resource Graph では、 [Azure Resource Manager](../../../azure-resource-
 - microsoft.managednetwork/managednetworks/managednetworkgroups
 - microsoft.managednetwork/managednetworks/managednetworkpeeringpolicies
 - microsoft.maps/accounts
+- microsoft.maps/accounts/creators
 - microsoft.maps/accounts/privateatlases
 - microsoft.marketplaceapps/classicdevservices
 - microsoft.media/mediaservices
@@ -389,6 +400,8 @@ Azure Resource Graph では、 [Azure Resource Manager](../../../azure-resource-
 - microsoft.network/serviceendpointpolicies
 - microsoft.network/trafficmanagerprofiles
 - microsoft.network/virtualhubs
+- microsoft.network/virtualhubs/bgpconnections
+- microsoft.network/virtualhubs/ipconfigurations
 - microsoft.network/virtualnetworkgateways
 - microsoft.network/virtualnetworks
 - microsoft.network/virtualnetworktaps
@@ -424,6 +437,7 @@ Azure Resource Graph では、 [Azure Resource Manager](../../../azure-resource-
 - microsoft.powerbi/workspacecollections
 - microsoft.powerbidedicated/capacities
 - microsoft.projectbabylon/accounts
+- microsoft.purview/accounts
 - microsoft.quantum/workspaces
 - microsoft.recoveryservices/vaults
 - microsoft.redhatopenshift/openshiftclusters
