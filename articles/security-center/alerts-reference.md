@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2020
+ms.date: 11/22/2020
 ms.author: memildin
-ms.openlocfilehash: 3cc64d2721f73da36fdc4fce009cccb5fdfd6b6b
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 6d001e638b00cace1dd81d9631f498a911ca19a4
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372695"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96014603"
 ---
 # <a name="security-alerts---a-reference-guide"></a>セキュリティ アラート - リファレンス ガイド
 
@@ -160,6 +160,9 @@ ms.locfileid: "94372695"
 |**Exploitation of Xorg vulnerability [seen multiple times] (Xorg の脆弱性の悪用 [複数回表示])**|%{Compromised Host} 上のホスト データの分析により、疑わしい引数を持つ Xorg のユーザーが検出されました。 攻撃者が特権エスカレーションの試行で、この手法を使用する場合があります。 この動作は、次のマシンで今日 [x] 回見られました: [マシン名]|-|Medium|
 |**Exposed Docker daemon detected (公開されている Docker デーモンが検出されました)**|マシンのログは、Docker デーモン (dockerd) が TCP ソケットを公開していることを示します。 既定では、Docker の構成は、TCP ソケットが有効である場合には暗号化または認証は使用しません。 これにより、関連するポートへのアクセス権を持つすべてのユーザーが、Docker デーモンにフル アクセスできるようになります。|-|Medium|
 |**Failed SSH brute force attack (失敗した SSH ブルート フォース攻撃)**|次の攻撃者からのブルート フォース攻撃が失敗したことが検出されました: %{Attackers}。 攻撃者は次のユーザー名を使用してホストにアクセスしようとしました: %{Accounts used on failed sign in to host attempts}。|-|Medium|
+| **Fileless Attack Behavior Detected (ファイルレス攻撃動作が検出されました)**<br>(AppServices_FilelessAttackBehaviorDetection)| 以下に指定されたプロセスのメモリには、ファイルレス攻撃で一般的に使用される動作が含まれています。<br>具体的な動作は次のとおりです: {観察された動作の一覧}                                                                                                                                                                                                                                                                                                                             | 実行                             | Medium   |
+| **Fileless Attack Technique Detected (ファイルレス攻撃手法が検出されました)**<br>(VM_FilelessAttackTechnique.Linux)| 以下に示すプロセスのメモリには、ファイルレス攻撃手法の証拠が含まれています。 ファイルレス攻撃は、攻撃者がセキュリティ ソフトウェアによる検出を回避しながらコードを実行するために使用されます。<br>具体的な動作は次のとおりです: {観察された動作の一覧}                                                                                                                                                                                                                            | 実行                             | 高     |
+| **Fileless Attack Toolkit Detected (ファイルレス攻撃ツールキットが検出されました)**<br>(VM_FilelessAttackToolkit.Linux)| 以下に示すプロセスのメモリには、ファイルレス攻撃ツールキットが含まれています: {ToolKitName}。 ファイルレス攻撃ツールキットは通常、ファイル システムに存在せず、従来のウイルス対策ソフトウェアによる検出を困難にします。<br>具体的な動作は次のとおりです: {観察された動作の一覧}                                                                                                                                                                                    | 防御回避、実行             | 高     |
 |**Hidden file execution detected (隠しファイルの実行が検出されました)**|ホスト データの分析で、%{user name} によって隠しファイルが実行されたことが示されています。 このアクティビティは、正当なアクティビティ、または侵害されたホストの兆候のいずれかである可能性があります。|-|Informational|
 |**Indicators associated with DDOS toolkit detected [seen multiple times] (DDOS ツールキットに関連付けられているインジケーターが検出されました [複数回表示])**|%{Compromised Host} 上のホスト データの分析により、マルウェアに関連付けられているツールキットの一部であるファイル名が検出されました、このマルウェアは、DDoS 攻撃を開始し、ポートとサービスを開き、感染したシステムを完全に制御することができます。 これは、正当なアクティビティである可能性もあります。 この動作は、次のマシンで今日 [x] 回見られました: [マシン名]|-|Medium|
 |**Indicators associated with DDOS toolkit detected (DDOS ツールキットに関連付けられているインジケーターが検出されました)**|%{Compromised Host} 上のホスト データの分析により、マルウェアに関連付けられているツールキットの一部であるファイル名が検出されました、このマルウェアは、DDoS 攻撃を開始し、ポートとサービスを開き、感染したシステムを完全に制御することができます。 これは、正当なアクティビティである可能性もあります。|-|Medium|
