@@ -6,11 +6,11 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 02/09/2018
 ms.openlocfilehash: e7da5454581e0e414dc832d4fcec50277f3b7f40
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221249"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019057"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Azure Data Lake Tools for Visual Studio Code の使用
 
@@ -43,7 +43,7 @@ MacOS および Linux の場合 :
 
    数秒後、 **[インストール]** ボタンが **[再度読み込む]** に変わります。
 4. **[再度読み込む]** を選択して、**Azure Data Lake Tools** 拡張機能をアクティブにします。
-5. **[ウィンドウの再読み込み]** をクリックして確認します。 **[拡張機能]** ウインドウに**Azure Data Lake Tools** が表示されます。
+5. **[ウィンドウの再読み込み]** をクリックして確認します。 **[拡張機能]** ウインドウに **Azure Data Lake Tools** が表示されます。
 
 ## <a name="activate-azure-data-lake-tools"></a>Azure Data Lake Tools をアクティブ化する
 
@@ -76,7 +76,7 @@ U-SQL を操作するには、U-SQL ファイルまたはフォルダーを開�
                  D( DepID, DepName );
    ```
 
-   OUTPUT @departments     TO "/Output/departments.csv" USING Outputters.Csv();
+   OUTPUT @departments     TO "/Output/departments.csv" USING Outputters.Csv();
 
     このスクリプトにより、いくつかのデータを含む departments.csv ファイルが /output フォルダーに作成されます。
 
@@ -252,7 +252,7 @@ Data Lake Analytics で U-SQL スクリプトをコンパイルして実行す�
 
 ### <a name="to-connect-to-azure-from-the-explorer"></a>エクスプローラーから Azure に接続するには
 
-**AZURE DATALAKE**を展開し、 **Azure へのサインイン**を選択して次の[コマンドを使用して Azure に接続する](#sign-in-by-command)の手順 3 と手順 4に従ってください。
+**AZURE DATALAKE** を展開し、 **Azure へのサインイン** を選択して次の [コマンドを使用して Azure に接続する](#sign-in-by-command)の手順 3 と手順 4に従ってください。
 
 ![エクスプ ローラーで「Azure にサインインする」の選択](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-sign-in-from-explorer.png )  
 
@@ -398,7 +398,7 @@ Azure Data Lake Store 関連コマンドを使用して次のことを実行で�
 
 ### <a name="check-storage-tasks-status"></a>ストレージ タスクの状態の確認
 
-アップロードとダウンロードの状態は、ステータス バーに表示されます。 ステータス バーを選択すると、**出力**タブに状態が表示されます。
+アップロードとダウンロードの状態は、ステータス バーに表示されます。 ステータス バーを選択すると、**出力** タブに状態が表示されます。
 
 ![ステータス バーと出力の詳細](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-status.png)
 
@@ -410,13 +410,13 @@ Azure Data Lake Store 関連コマンドを使用して次のことを実行で�
 
 ### <a name="data-lake-analytics-metadata-navigation"></a>Data Lake Analytics メタデータへのナビゲーション
 
-Azure サブスクリプションの展開。 **U-SQL データベース**ノードの下で、U SQL データベースを参照することができ、**スキーマ**、**資格情報**、**アセンブリ**、**テーブル**、および**インデックス**などのフォルダーが表示されます。
+Azure サブスクリプションの展開。 **U-SQL データベース** ノードの下で、U SQL データベースを参照することができ、**スキーマ**、**資格情報**、**アセンブリ**、**テーブル**、および **インデックス** などのフォルダーが表示されます。
 
 ### <a name="data-lake-analytics-metadata-entity-management"></a>Azure Data Lake Analytics メタデータのエンティティ
 
-**U-SQL データベース**を展開します。 データベース、スキーマ、テーブル、テーブル型、インデックス、または統計を作成するには、対応するノードを右クリックして、ショートカット メニューの**作成するスクリプト**を選択します。 開いているスクリプトページで、必要に応じてスクリプトを編集します。 その後、これを右クリックし、 **[ADL:Submit Job]** を選択して、ジョブを送信します。
+**U-SQL データベース** を展開します。 データベース、スキーマ、テーブル、テーブル型、インデックス、または統計を作成するには、対応するノードを右クリックして、ショートカット メニューの **作成するスクリプト** を選択します。 開いているスクリプトページで、必要に応じてスクリプトを編集します。 その後、これを右クリックし、 **[ADL:Submit Job]** を選択して、ジョブを送信します。
 
-アイテムの作成が完了したら、ノードを右クリックし、**最新の情報に更新**を選択してアイテムを表示します。 右クリックして **[削除]** を選択して、アイテムを削除することもできます。
+アイテムの作成が完了したら、ノードを右クリックし、**最新の情報に更新** を選択してアイテムを表示します。 右クリックして **[削除]** を選択して、アイテムを削除することもできます。
 
 ![Data Lake エクスプローラーのショートカットメニューの「作成するスクリプト」コマンド](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-code-explorer-script-create.png)
 
@@ -430,7 +430,7 @@ Azure サブスクリプションの展開。 **U-SQL データベース**ノー
 
 ## <a name="integrate-with-azure-data-lake-store-from-the-explorer"></a>エクスプローラーから Azure Data Lake Store と統合する
 
-**Data Lake Store**を参照する：
+**Data Lake Store** を参照する：
 
 - フォルダー ノードを右クリックし、ショートカット メニューの **[更新]** 、 **[削除]** 、 **[アップロード]** 、 **[フォルダーをアップロード]** 、 **[相対パスのコピー]** および **[完全パスのコピー]** コマンドを実行できます。
 
