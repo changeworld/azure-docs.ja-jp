@@ -12,12 +12,12 @@ metadata:
   ms.author: mtillman
   manager: daveba
   ms.date: 10/22/2020
-  ms.openlocfilehash: 10b16a6319f0bc458b5bae98edee39133e66acb4
-  ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+  ms.openlocfilehash: 741fe2c9cb2c4992b8c7b7b1905962b37b527917
+  ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/18/2020
-  ms.locfileid: "94835630"
+  ms.lasthandoff: 11/26/2020
+  ms.locfileid: "96180612"
 highlightedContent:
   items:
   - title: Azure AD とは
@@ -28,7 +28,7 @@ highlightedContent:
     url: ./fundamentals/whats-new.md
   - title: リモート ワーカーをセキュリティで保護する
     itemType: get-started
-    url: https://docs.microsoft.com/enterprise-mobility-security/remote-work/
+    url: /enterprise-mobility-security/remote-work/
   - title: ユーザーにロールを割り当てる
     itemType: how-to-guide
     url: ./fundamentals/active-directory-users-assign-role-azure-portal.md
@@ -101,7 +101,7 @@ conceptualContent:
     - url: ./conditional-access/overview.md
       itemType: overview
       text: 条件付きアクセスとは
-    - url: ./conditional-access/app-based-mfa.md
+    - url: ./authentication/tutorial-enable-azure-mfa.md
       itemType: quickstart
       text: 特定のアプリで MFA を必須にする
     - url: ./conditional-access/location-condition.md
@@ -126,13 +126,13 @@ conceptualContent:
       text: 詳細情報
   - title: ドメイン サービス
     links:
-    - url: ../active-directory-domain-services/active-directory-ds-overview.md
+    - url: ../active-directory-domain-services/overview.md
       itemType: overview
       text: Azure AD ドメイン サービスとは
-    - url: ../active-directory-domain-services/active-directory-ds-getting-started.md
+    - url: ../active-directory-domain-services/tutorial-create-instance.md
       itemType: quickstart
       text: Azure AD Domain Services を有効にする
-    - url: ../active-directory-domain-services/active-directory-ds-admin-guide-administer-group-policy.md
+    - url: ../active-directory-domain-services/manage-group-policy.md
       itemType: how-to-guide
       text: グループ ポリシーを管理する
     footerLink:
@@ -154,17 +154,17 @@ conceptualContent:
       text: 詳細情報
   - title: '[外部 ID]'
     links:
-    - url: ./b2b/compare-with-b2c.md
+    - url: ./external-identities/compare-with-b2c.md
       itemType: overview
       text: 外部ユーザー用のソリューションを比較する
-    - url: ../active-directory-b2c/active-directory-b2c-overview.md
+    - url: ../active-directory-b2c/overview.md
       itemType: overview
       text: コンシューマー向けにアプリを拡張する (B2C)
-    - url: ./b2b/what-is-b2b.md
+    - url: ./external-identities/what-is-b2b.md
       itemType: overview
       text: 組織外のユーザーとの共同作業 (B2B)
     footerLink:
-      url: ./b2b/index.yml
+      url: ./external-identities/index.yml
       text: 詳細情報
   - title: ハイブリッド ID
     links:
@@ -297,10 +297,10 @@ additionalContent:
   - items:
     - title: Microsoft 365
       summary: Azure AD を含む完全なソリューション、Microsoft 365 に関する情報をご覧いただけます。
-      url: https://docs.microsoft.com/microsoft-365/
+      url: /microsoft-365/
     - title: Azure AD PowerShell
       summary: Azure AD PowerShell モジュールをインストールして使用する方法を確認してください。
-      url: https://docs.microsoft.com/powershell/module/azuread/
+      url: /powershell/module/azuread/
     - title: Azure AD 用の Azure CLI コマンド
       summary: CLI リファレンスで Azure AD コマンドを確認してください。
-      url: https://docs.microsoft.com/cli/azure/ad
+      url: /cli/azure/ad

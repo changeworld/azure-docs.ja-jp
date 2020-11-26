@@ -263,7 +263,7 @@
             - name: Kerberos の制約付き委任を構成する
               href: application-proxy-back-end-kerberos-constrained-delegation-how-to.md
             - name: PingAccess を使用した構成
-              href: /azure/active-directory/manage-apps/application-proxy-ping-access-publishing-guide
+              href: ./application-proxy-ping-access-publishing-guide.md
             - name: '"この企業アプリケーションにアクセスできない" というエラー'
               href: application-proxy-sign-in-bad-gateway-timeout-error.md
             - name: アプリケーション プロキシ エージェント コネクタのインストール時の問題
