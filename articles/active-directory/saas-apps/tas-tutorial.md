@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: f2687909a7067bc135f6fcf27fce2e1694325887
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504142"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95988044"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tas"></a>チュートリアル:Azure Active Directory と TAS の統合
 
@@ -41,7 +41,7 @@ TAS と Azure AD の統合を構成するには、次のものが必要です。
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* TAS では、 **SP と IDP** によって開始される SSO がサポートされます
+* TAS では、**SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-tas-from-the-gallery"></a>ギャラリーからの TAS の追加
 
@@ -61,13 +61,13 @@ Azure AD への TAS の統合を構成するには、ギャラリーからマネ
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **TAS** 」と入力し、結果パネルで **[TAS]** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**TAS**」と入力し、結果パネルで **[TAS]** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の TAS](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、TAS で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、TAS で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと TAS 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 TAS で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -175,7 +175,7 @@ TAS で Azure AD シングル サインオンを構成するには、次の手�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。

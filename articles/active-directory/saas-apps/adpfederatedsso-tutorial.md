@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
 ms.openlocfilehash: cf6973242e81cef53625a3b1eda4f2d92e1d5ffd
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308801"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998636"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ADP の統合
 
@@ -134,7 +134,7 @@ ADP に対する Azure AD SSO を構成してテストするには、次の構�
 
 ## <a name="configure-adp-sso"></a>ADP SSO の構成
 
-**ADP** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [ADP の Web サイト](https://adpfedsso.adp.com/public/login/index.fcc)にアップロードする必要があります。
+**ADP** 側にシングル サインオンを構成するには、ダウンロードした **メタデータ XML** を [ADP の Web サイト](https://adpfedsso.adp.com/public/login/index.fcc)にアップロードする必要があります。
 
 > [!NOTE]  
 > このプロセスは数日かかることがあります。
@@ -173,7 +173,7 @@ ADP 担当者から送信される確認の電子メールを受信したら、A
 
     a. 上記の **[プロパティ]** タブ (メインの ADP アプリケーション) からコピーした、**ユーザーのアクセス URL** を貼り付けます。
                                                              
-    b. 次の 5 つのアプリは、異なる**リレー状態 URL** をサポートしています。 特定のアプリケーションの適切な**リレー状態 URL** の値を、**ユーザーのアクセス URL** に手動で追加する必要があります。
+    b. 次の 5 つのアプリは、異なる **リレー状態 URL** をサポートしています。 特定のアプリケーションの適切な **リレー状態 URL** の値を、**ユーザーのアクセス URL** に手動で追加する必要があります。
     
     * **ADP Workforce Now**
         

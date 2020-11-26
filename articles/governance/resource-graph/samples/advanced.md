@@ -4,11 +4,11 @@ description: Azure Resource Graph を使用して、列の操作、使用され�
 ms.date: 10/14/2020
 ms.topic: sample
 ms.openlocfilehash: dff4b06cc5cf4385820c7f6251efaae792d9c22d
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057146"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005403"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Resource Graph の高度なクエリのサンプル
 
@@ -255,7 +255,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.documentdb/databasea
 
 ## <a name="key-vaults-with-subscription-name"></a><a name="join"></a>サブスクリプション名を含むキー コンテナー
 
-次のクエリは、**kind** が _leftouter_である `join` の複雑な使用方法を示しています。 このクエリは、結合対象のテーブルをサブスクリプション リソースに制限し、さらに、`project` を使用して、元のフィールドである _subscriptionId_ と、_SubName_ という名前に変更された _name_ フィールドのみが含まれるように制限しています。 フィールド名を変更することにより、`join` でフィールドが _name1_  として追加されるのを防いでいます。_resources_ には、このフィールドが既に存在するためです。 元のテーブルは `where` でフィルター処理され、次の `project` には両方のテーブルの列が含まれます。 クエリの結果として、すべてのキー コンテナーが返されると共に、そのタイプと名前、そしてそれが存在するサブスクリプションの名前が表示されます。
+次のクエリは、**kind** が _leftouter_ である `join` の複雑な使用方法を示しています。 このクエリは、結合対象のテーブルをサブスクリプション リソースに制限し、さらに、`project` を使用して、元のフィールドである _subscriptionId_ と、_SubName_ という名前に変更された _name_ フィールドのみが含まれるように制限しています。 フィールド名を変更することにより、`join` でフィールドが _name1_  として追加されるのを防いでいます。_resources_ には、このフィールドが既に存在するためです。 元のテーブルは `where` でフィルター処理され、次の `project` には両方のテーブルの列が含まれます。 クエリの結果として、すべてのキー コンテナーが返されると共に、そのタイプと名前、そしてそれが存在するサブスクリプションの名前が表示されます。
 
 ```kusto
 Resources

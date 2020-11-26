@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: f2baeaf72bb77dfe9247380b8b26f3860cbfd5b0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459800"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999163"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>チュートリアル: Azure Active Directory と iQualify LMS の統合
 
@@ -41,8 +41,8 @@ iQualify LMS と Azure AD の統合を構成するには、次のものが必要
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* iQualify LMS では、 **SP と IDP** によって開始される SSO がサポートされます
-* iQualify LMS では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* iQualify LMS では、**SP と IDP** によって開始される SSO がサポートされます
+* iQualify LMS では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-iqualify-lms-from-the-gallery"></a>ギャラリーからの iQualify LMS の追加
 
@@ -62,13 +62,13 @@ Azure AD への iQualify LMS の統合を構成するには、ギャラリーか
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **iQualify LMS** 」と入力し、結果ウィンドウで **[iQualify LMS]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**iQualify LMS**」と入力し、結果ウィンドウで **[iQualify LMS]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの iQualify LMS](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、iQualify LMS で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、iQualify LMS で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと iQualify LMS 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 iQualify LMS で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -131,7 +131,7 @@ iQualify LMS で Azure AD シングル サインオンを構成するには、�
 
     ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes]\(ユーザー属性\) を示しています。](common/edit-attribute.png)
 
-7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、 **編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
     | Name | ソース属性|
     | --- | --- |
@@ -223,7 +223,7 @@ iQualify LMS で Azure AD シングル サインオンを構成するには、�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。

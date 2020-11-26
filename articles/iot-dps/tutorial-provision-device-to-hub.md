@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 93cccb1455f7a228cf40d4948cd8579610230db5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 876fd8260b64fba4d3d34a766b4259323c660b76
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526444"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968079"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>チュートリアル:Azure IoT Hub Device Provisioning Service を使用した IoT ハブへのデバイスのプロビジョニング
 
@@ -36,13 +36,13 @@ ms.locfileid: "90526444"
 この手順では、Device Provisioning Service にデバイスの一意のセキュリティ アーティファクトを追加する必要があります。 これらのセキュリティ アーティファクトは、デバイスの[構成証明メカニズム](concepts-service.md#attestation-mechanism)をベースとしています。
 
 - TPM ベースのデバイスの場合、次のものが必要となります。
-    - 各 TPM チップまたはシミュレーションに固有の "*保証キー*"。保証キーは TPM チップの製造元から取得します。  詳細については、「[TPM 保証キーとは](https://technet.microsoft.com/library/cc770443.aspx)」をご覧ください。
+    - 各 TPM チップまたはシミュレーションに固有の "*保証キー*"。保証キーは TPM チップの製造元から取得します。  詳細については、「[TPM 保証キーとは](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770443(v=ws.11))」をご覧ください。
     - 名前空間/スコープ内でデバイスを一意に識別するために使用する "*登録 ID*"。 この ID は、デバイス ID と同じである場合もあれば、異なる場合もあります。 この ID はすべてのデバイスで必須です。 TPM ベースのデバイスでは、登録 ID が TPM 自体から派生している場合があります (TPM 保証キーの SHA-256 ハッシュなど)。
 
       [![ポータルに表示された TPM の登録情報](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - X.509 ベースのデバイスの場合、次のものが必要となります。
-    - *.pem* ファイルまたは *.cer* ファイルの形式で、[X.509 チップまたはシミュレーションに発行された証明書](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)。 個別登録では、X.509 システムのデバイスごとの "*署名証明書*" を使用する必要があります。登録グループでは、"*ルート証明書*" を使用する必要があります。 
+    - *.pem* ファイルまたは *.cer* ファイルの形式で、[X.509 チップまたはシミュレーションに発行された証明書](/windows/win32/seccertenroll/about-x-509-public-key-certificates)。 個別登録では、X.509 システムのデバイスごとの "*署名証明書*" を使用する必要があります。登録グループでは、"*ルート証明書*" を使用する必要があります。 
 
       [![X.509 構成証明の個々の登録をポータルで追加](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
@@ -88,7 +88,7 @@ TPM と X.509 の両方の構成証明を使用する、シミュレートされ
 
     ![ポータルに表示されたハブへの成功した接続](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
 
-詳細については、プロビジョニング デバイス クライアントのサンプル [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c) を参照してください。 このサンプルは、TPM、X.509 証明書、対称キーを使用してシミュレートされたデバイスをプロビジョニングする方法を示しています。 サンプルの使用に関する詳細な手順については、[TPM](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device)、[X.509](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509)、および[対称キー](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-symm-key)の構成証明のクイック スタートに戻って参照してください。
+詳細については、プロビジョニング デバイス クライアントのサンプル [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c) を参照してください。 このサンプルは、TPM、X.509 証明書、対称キーを使用してシミュレートされたデバイスをプロビジョニングする方法を示しています。 サンプルの使用に関する詳細な手順については、[TPM](./quick-create-simulated-device.md)、[X.509](./quick-create-simulated-device-x509.md)、および[対称キー](./quick-create-simulated-device-symm-key.md)の構成証明のクイック スタートに戻って参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、以下の内容を学習しました。

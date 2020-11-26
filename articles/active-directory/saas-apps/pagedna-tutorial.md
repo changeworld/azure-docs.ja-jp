@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: e1ccd337851f8242526362675a11280e33584082
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92513829"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993926"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>チュートリアル:Azure Active Directory と PageDNA の統合
 
@@ -64,13 +64,13 @@ Azure AD への PageDNA の統合を構成するには、Azure Marketplace か�
 
     ![[新しいアプリケーション] オプション](common/add-new-app.png)
 
-1. 検索ボックスに「 **PageDNA** 」と入力します。 検索結果で **[PageDNA]** を選択し、 **[追加]** を選択してアプリケーションを追加します。
+1. 検索ボックスに「**PageDNA**」と入力します。 検索結果で **[PageDNA]** を選択し、 **[追加]** を選択してアプリケーションを追加します。
 
     ![結果一覧の PageDNA](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、PageDNA で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと PageDNA 内の関連ユーザーとの間にリンク関係を確立する必要があります。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、PageDNA で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと PageDNA 内の関連ユーザーとの間にリンク関係を確立する必要があります。
 
 PageDNA で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
@@ -95,7 +95,7 @@ PageDNA で Azure AD シングル サインオンを構成するには、次の�
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-1. **[SAML でシングル サインオンをセットアップします]** ウィンドウで、 **編集** (鉛筆アイコン) を選択して **[基本的な SAML 構成]** ウィンドウを開きます。
+1. **[SAML でシングル サインオンをセットアップします]** ウィンドウで、**編集** (鉛筆アイコン) を選択して **[基本的な SAML 構成]** ウィンドウを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -154,9 +154,9 @@ PageDNA 側でシングル サインオンを構成するには、ダウンロ�
 
     ![[ユーザー] ウィンドウ](common/user-properties.png)
 
-    1. **[名前]** ボックスに「 **BrittaSimon** 」と入力します。
+    1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
-    1. **[ユーザー名]** ボックスに「 **BrittaSimon\@\<yourcompanydomain>.\<extension>** 」と入力します。 たとえば、「 **BrittaSimon\@contoso.com** 」です。
+    1. **[ユーザー名]** ボックスに「**BrittaSimon\@\<yourcompanydomain>.\<extension>** 」と入力します。 たとえば、「**BrittaSimon\@contoso.com**」です。
 
     1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
 

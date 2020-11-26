@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 202a7f6b01423045fe7c72db5b42c29ae58f648d
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91739665"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013838"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用してオートコンプリートと検索候補を追加する
 
@@ -151,7 +151,7 @@ ms.locfileid: "91739665"
 
 4. ビュー スクリプトで **&fuzzy** を true に設定してから、アプリをもう一度実行します。 ここで「po」と入力します。 検索で、1 文字間違っていると推測されていることに注目してください。
  
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png" alt-text="「pa」と入力すると、2 つの検索候補が表示される" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png" alt-text="fuzzy を true に設定した状態で「pa」と入力する" border="false":::
 
     関心をお持ちであれば、あいまい検索で使用されるロジックを詳細に説明している [Azure Cognitive Search での Lucene クエリ構文](./query-lucene-syntax.md)に関するページを参照してください。
 
@@ -196,7 +196,7 @@ ms.locfileid: "91739665"
 
 1. アプリをもう一度実行すると、入力したテキストが検索候補の中で太字で表示されるはずです。 「pa」と入力してみてください。
  
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png" alt-text="「pa」と入力すると、2 つの検索候補が表示される" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png" alt-text="強調表示される「pa」の入力" border="false":::
 
    上記の強調表示のスクリプトで使用されるロジックは、絶対確実なものではありません。 同じ名前内で 2 回出現する用語を入力すると、太字の結果はうまく表示されません。 「mo」と入力してみてください。
 
@@ -255,7 +255,7 @@ ms.locfileid: "91739665"
 
 1. アプリケーションを実行します。 ドロップダウン リストに表示される選択候補が単語単位になっていることに注目してください。 "re" で始まる単語を入力してみてください。 入力される文字数が増えるにつれて、選択候補の数が減ることに注目してください。
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png" alt-text="「pa」と入力すると、2 つの検索候補が表示される" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png" alt-text="基本的なオートコンプリートを使用した入力" border="false":::
 
     現時点では、おそらく以前に実行した検索候補のスクリプトの方が、このオートコンプリート スクリプトよりも便利です。 オートコンプリートをよりユーザーフレンドリにするために、オートコンプリートを検索候補と共に使用することを検討してください。
 
@@ -451,7 +451,7 @@ ms.locfileid: "91739665"
 
 1. その後、アプリを実行します。 検索ボックスに「pa」と入力します。 "pa" を含む 2 つのホテルと共に、オートコンプリートの検索候補として "palace" が表示されていますか。
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png" alt-text="「pa」と入力すると、2 つの検索候補が表示される" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png" alt-text="インライン オートコンプリートと検索候補を使用した入力" border="false":::
 
 1. Tab キーを使用してオートコンプリートの検索候補を受け入れ、方向キーと Tab キーを使って検索候補を選択してみてください。その後、マウスとシングル クリックを使ってもう一度試してみてください。 スクリプトがこれらすべての状況を適切に処理できていることを確認します。
 

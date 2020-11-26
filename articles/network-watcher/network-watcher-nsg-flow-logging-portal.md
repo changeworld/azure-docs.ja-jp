@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 89258b05831170ff502cde80577f3a6851659bf2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 385d43e46cd3f9465c0fbf9a02eeae356f48fac4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986326"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966532"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して仮想マシンへの送受信ネットワーク トラフィックをログに記録する
 
@@ -54,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |ユーザー名| 任意のユーザー名を入力します。|
     |Password| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
     |サブスクリプション| サブスクリプションを選択します。|
-    |Resource group| **[新規作成]** を選択し、「**myResourceGroup**と入力します。|
+    |Resource group| **[新規作成]** を選択し、「**myResourceGroup** と入力します。|
     |場所| **[米国東部]** を選択します。|
 
 4. VM のサイズを選択して、 **[選択]** を選択します。
@@ -111,7 +111,7 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 
 9. 手順 3 で作成したストレージ アカウントを選択します。
    > [!NOTE]
-   > NSG フロー ログは、[階層型名前空間](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)が有効になっているストレージ アカウントでは正しく動作しません。
+   > NSG フロー ログは、[階層型名前空間](../storage/blobs/data-lake-storage-namespace.md)が有効になっているストレージ アカウントでは正しく動作しません。
 1. ポータルの左上隅の **[すべてのサービス]** を選択します。 *[フィルター]* ボックスに「**Network Watcher**」と入力します。 検索結果に **[Network Watcher]** が表示されたら、それを選択します。
 10. **[リテンション期間 (日数)]** を 5 に設定し、 **[保存]** を選択します。
 

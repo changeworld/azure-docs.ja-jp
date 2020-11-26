@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: a828f945c459142febbc2cee7a14d40a3d534435
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669217"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999860"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>チュートリアル: Azure Active Directory と SciQuest Spend Director の統合
 
@@ -41,8 +41,8 @@ SciQuest Spend Director と Azure AD の統合を構成するには、次のも�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* SciQuest Spend Director では、 **SP** Initiated SSO がサポートされます
-* SciQuest Spend Director では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* SciQuest Spend Director では、**SP** Initiated SSO がサポートされます
+* SciQuest Spend Director では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-sciquest-spend-director-from-the-gallery"></a>ギャラリーからの SciQuest Spend Director の追加
 
@@ -62,13 +62,13 @@ Azure AD への SciQuest Spend Director の統合を構成するには、ギャ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **SciQuest Spend Director** 」と入力し、結果パネルで **[SciQuest Spend Director]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**SciQuest Spend Director**」と入力し、結果パネルで **[SciQuest Spend Director]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの SciQuest Spend Director](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、SciQuest Spend Director で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、SciQuest Spend Director で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと SciQuest Spend Director 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 SciQuest Spend Director で Azure AD のシングル サインオンを構成し、テストするには、次の要素を完了する必要があります。
@@ -145,7 +145,7 @@ SciQuest Spend Director で Azure AD シングル サインオンを構成する
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。

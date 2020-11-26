@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 4392086146642e18b1fdef28a9e602bdbb5b0b18
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b138b3eb52a0bfb6dca2ec6fdf0b855223bab698
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542186"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984449"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>ラベル付けプロジェクトで画像にタグを付ける 
 
@@ -133,7 +133,7 @@ Azure では、各画像に少なくとも 1 つのタグを適用した後に�
 
 1. 作成するポリゴンのタグを選択します。
 1. **[ポリゴン領域の描画]** ツール ![[ポリゴン領域の描画] ツール](./media/how-to-label-images/polygon-tool.png) を選択するか、P キーを選択します。
-3. ポリゴンの各ポイントをクリックします。  形状が完成したら、ダブルクリックして終了します。
+1. ポリゴンの各ポイントをクリックします。  形状が完成したら、ダブルクリックして終了します。
 
     :::image type="content" source="media/how-to-label-images/polygon.gif" alt-text="猫と犬のポリゴンを作成する":::
 
@@ -158,3 +158,5 @@ Azure では、各画像に少なくとも 1 つのタグを適用した後に�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure で画像分類モデルをトレーニングする](./tutorial-train-models-with-aml.md)方法を確認します
+
+

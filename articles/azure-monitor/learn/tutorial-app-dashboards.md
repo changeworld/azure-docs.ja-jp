@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/30/2020
 ms.custom: mvc, contperfq1
-ms.openlocfilehash: 1a83385c7f384f7727a0fd10e238c6511950abfe
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 31dd33bd8805ffcc677d5f0e98e81f2fa9e91ee2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91612724"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537052"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Azure Application Insights を使ってカスタム KPI ダッシュボードを作成する
 
@@ -56,7 +56,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
    ![新しいダッシュボード](media/tutorial-app-dashboards/new-dashboard.png)
 
 3. ダッシュボードの名前を入力します。
-4. ダッシュボードに追加できるさまざまなタイルを**タイル ギャラリー**で確認します。  ギャラリーからタイルを追加するだけでなく、グラフおよびその他のビューを、Application Insights からダッシュボードに直接ピン留めできます。
+4. ダッシュボードに追加できるさまざまなタイルを **タイル ギャラリー** で確認します。  ギャラリーからタイルを追加するだけでなく、グラフおよびその他のビューを、Application Insights からダッシュボードに直接ピン留めできます。
 5. **マークダウン** タイルを見つけて、ダッシュボードにドラッグします。  このタイルには、お使いのダッシュボードへのわかりやすいテキストの追加に最適な、マークダウン記法のテキストを追加できます。 詳細については、「[Azure ダッシュボードでマークダウン タイルを使用して、カスタム コンテンツを表示する](../../azure-portal/azure-portal-markdown-tile.md)」を参照してください。
 6. タイルのプロパティにテキストを追加し、ダッシュボード キャンバス上でサイズを変更します。
 
@@ -132,7 +132,7 @@ Azure Application Insights の Logs には、Application Insights によって�
 ## <a name="share-dashboard"></a>ダッシュボードの共有
 
 1. ダッシュボードの上部にある **[共有]** を選択して、変更内容を発行します。
-2. 必要に応じて、ダッシュボードにアクセス権を持つ特定のユーザーを定義できます。 詳細については、「[ロールベースのアクセス制御を使用して Azure ダッシュボードを共有する](../../azure-portal/azure-portal-dashboard-share-access.md)」を参照してください。
+2. 必要に応じて、ダッシュボードにアクセス権を持つ特定のユーザーを定義できます。 詳細については、「[Azure ロールベースのアクセス制御を使用した Azure ダッシュボードの共有](../../azure-portal/azure-portal-dashboard-share-access.md)」を参照してください。
 3. **[発行]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ

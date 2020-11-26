@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: f8bd47a8fde700382f9789ab1c77ff35e9b1f4f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d921a968f50f64788ccbd7637bc04c8492a3f90
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86999532"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96010896"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Blob コンテナーの合計課金サイズを計算する
 
@@ -31,7 +31,7 @@ ms.locfileid: "86999532"
 
 BLOB コンテナーの合計サイズには、コンテナー自体のサイズとコンテナーの下のすべての BLOB のサイズが含まれます。
 
-次のセクションでは、BLOB コンテナーと BLOB のストレージ容量を計算する方法について説明します。 次のセクションでは Len(X) は文字列の文字数を表します。
+次のセクションでは、BLOB コンテナーと BLOB のストレージ容量を計算する方法について説明します。  次のセクションでは Len(X) は文字列の文字数を表します。
 
 ### <a name="blob-containers"></a>BLOB コンテナー
 
@@ -120,6 +120,6 @@ For-Each Signed Identifier[512 bytes]
 
 - Azure ストレージの課金の詳細については、「[Understanding Windows Azure Storage Billing (Windows Azure Storage の課金について)](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)」をご覧ください。
 
-- Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/)をご覧ください。
+- Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)をご覧ください。
 
 - その他のストレージ PowerShell サンプル スクリプトは、[Azure Storage 用 PowerShell サンプル](../blobs/storage-samples-blobs-powershell.md)に関するページにあります。

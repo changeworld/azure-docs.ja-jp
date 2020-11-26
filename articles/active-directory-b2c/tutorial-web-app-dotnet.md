@@ -11,12 +11,12 @@ ms.custom: devx-track-csharp, mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 5957ccb7bd7ff7e7acc0ed76899850bbca09ad6c
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 9c3c63b6116e02e8a742b69e90c11e182d72ab2e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91664802"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953034"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用して Web アプリケーションで認証を有効にする
 
@@ -45,7 +45,7 @@ ms.locfileid: "91664802"
 
 ### <a name="add-a-redirect-uri-reply-url"></a>リダイレクト URI (応答 URL) を追加する
 
-Azure AD B2C テナントでアプリケーションを更新するには、Microsoft の新しい統合**アプリの登録**エクスペリエンスかレガシ **アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregtraining)。
+Azure AD B2C テナントでアプリケーションを更新するには、Microsoft の新しい統合 **アプリの登録** エクスペリエンスかレガシ **アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](./app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
 
@@ -77,7 +77,7 @@ Azure AD B2C テナントでアプリケーションを更新するには、Micr
 
 ## <a name="configure-the-sample"></a>サンプルの構成
 
-このチュートリアルでは、GitHub からダウンロードできるサンプルを構成します。 このサンプルは ASP.NET を使用して簡単な To Do リストを提供します。 このサンプルでは、[Microsoft OWIN ミドルウェア コンポーネント](https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/)が使用されています。 [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip)するか、GitHub からサンプルを複製します。 サンプル ファイルは必ず、パスの長さが合計 260 文字未満のフォルダーに展開してください。
+このチュートリアルでは、GitHub からダウンロードできるサンプルを構成します。 このサンプルは ASP.NET を使用して簡単な To Do リストを提供します。 このサンプルでは、[Microsoft OWIN ミドルウェア コンポーネント](/aspnet/aspnet/overview/owin-and-katana/)が使用されています。 [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip)するか、GitHub からサンプルを複製します。 サンプル ファイルは必ず、パスの長さが合計 260 文字未満のフォルダーに展開してください。
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
@@ -85,7 +85,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 サンプル ソリューションには次の 2 つのプロジェクトが含まれています。
 
-* **TaskWebApp** - タスク一覧を作成および編集します。 このサンプルでは、**サインアップまたはサインイン**のユーザー フローを使用してユーザーのサインアップおよびサインインを実行します。
+* **TaskWebApp** - タスク一覧を作成および編集します。 このサンプルでは、**サインアップまたはサインイン** のユーザー フローを使用してユーザーのサインアップおよびサインインを実行します。
 * **TaskService** - タスク リストの作成、読み取り、更新、削除の機能をサポートします。 この API は Azure AD B2C によって保護されており、TaskWebApp によって呼び出されます。
 
 このサンプルは、ご利用のテナントに登録されているアプリケーションを使用するように変更します。これには、以前書き留めておいたアプリケーション ID とキーが含まれます。 また、作成したユーザー フローも構成します。 このサンプルでは、*Web.config* ファイルの設定として構成値を定義します。
@@ -105,7 +105,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 ## <a name="run-the-sample"></a>サンプルを実行する
 
 1. ソリューション エクスプローラーで、**TaskWebApp** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** をクリックします。
-1. **F5**キーを押します。 既定のブラウザーで、ローカルの Web サイトアドレス `https://localhost:44316/` が開かれます。
+1. **F5** キーを押します。 既定のブラウザーで、ローカルの Web サイトアドレス `https://localhost:44316/` が開かれます。
 
 ### <a name="sign-up-using-an-email-address"></a>メール アドレスを使用してサインアップする
 
@@ -119,7 +119,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 これで、アプリケーションのユーザーは各自メールアドレスを使用してサインインし、Web アプリケーションを使用できるようになりました。
 
-ただし、**To Do リスト**機能は、このシリーズの次の [Azure Active Directory B2C を使用した ASP.NET Web API の保護に関するチュートリアル](tutorial-web-api-dotnet.md)を終了するまで正しく動作しません。
+ただし、**To Do リスト** 機能は、このシリーズの次の [Azure Active Directory B2C を使用した ASP.NET Web API の保護に関するチュートリアル](tutorial-web-api-dotnet.md)を終了するまで正しく動作しません。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -130,7 +130,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 > * アプリケーションを使用するようにサンプルを構成する
 > * ユーザー フローを使用してサインアップする
 
-次のチュートリアルに進んで Web アプリケーションの **To Do リスト**機能を有効にしましょう。 ご利用の Azure AD B2C テナントに Web API アプリケーションを登録し、自分のテナントを API の認証に使用するようコード サンプルに変更を加えます。
+次のチュートリアルに進んで Web アプリケーションの **To Do リスト** 機能を有効にしましょう。 ご利用の Azure AD B2C テナントに Web API アプリケーションを登録し、自分のテナントを API の認証に使用するようコード サンプルに変更を加えます。
 
 > [!div class="nextstepaction"]
 > [チュートリアル:Azure Active Directory B2C を使用して ASP.NET Web API を保護する >](tutorial-web-api-dotnet.md)

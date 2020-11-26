@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: d43a72db385d282ee189c179254cfc270929dbbf
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8b3b6a41da6e3100739da920472d582711d1e9b1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207191"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024383"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Monitor でログ クエリの使用を開始する
 
@@ -68,7 +68,7 @@ search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
 
-このクエリで、 *SecurityEvent* テーブルの "Cryptographic" というフレーズが含まれるレコードが検索されます。 このようなレコードの中から、10 個のレコードが返され、表示されます。 `in (SecurityEvent)` の部分を省略して `search "Cryptographic"` を実行すると、 *すべての* テーブルに対して検索が実行されます。この処理には時間がかかり、効率が良くありません。
+このクエリで、*SecurityEvent* テーブルの "Cryptographic" というフレーズが含まれるレコードが検索されます。 このようなレコードの中から、10 個のレコードが返され、表示されます。 `in (SecurityEvent)` の部分を省略して `search "Cryptographic"` を実行すると、*すべての* テーブルに対して検索が実行されます。この処理には時間がかかり、効率が良くありません。
 
 > [!WARNING]
 > 検索クエリは通常、処理する必要のあるデータが増えるため、テーブル ベースのクエリより低速です。 
@@ -83,7 +83,7 @@ SecurityEvent
 
 ただし、返される結果が多すぎる場合や、処理に時間もかかる場合があります。 上記のクエリで、SecurityEvent テーブル *全体* が TimeGenerated 列で並べ替えられます。 Analytics ポータルでは、表示できるレコードの上限は 10,000 個に制限されています。 Analytics ポータルでは、表示が 10,000 レコードに制限されます。
 
-最新の 10 レコードのみを取得するには、 **top** を使用する方法が最適です。サーバー側でテーブル全体が並べ替えられてから、上位のレコードが返されます。
+最新の 10 レコードのみを取得するには、**top** を使用する方法が最適です。サーバー側でテーブル全体が並べ替えられてから、上位のレコードが返されます。
 
 ```Kusto
 SecurityEvent
@@ -98,7 +98,7 @@ SecurityEvent
 ## <a name="where-filtering-on-a-condition"></a>where: 条件に基づいてフィルター処理する
 フィルターは、その名前のとおり、特定の条件に基づいてデータをフィルター処理します。 これは、クエリ結果を関連する情報に制限する最も一般的な方法です。
 
-クエリにフィルターを追加するには、 **where** 演算子に続けて 1 つまたは複数の条件を使用します。 たとえば、次のクエリは、 _Level_ が _8_ に等しい *SecurityEvent* レコードのみを返します。
+クエリにフィルターを追加するには、**where** 演算子に続けて 1 つまたは複数の条件を使用します。 たとえば、次のクエリは、_Level_ が _8_ に等しい *SecurityEvent* レコードのみを返します。
 
 ```Kusto
 SecurityEvent
@@ -112,9 +112,9 @@ SecurityEvent
 | == | 等価性をチェックします<br>(大文字と小文字を区別します) | `Level == 8` |
 | =~ | 等価性をチェックします<br>(大文字と小文字は区別されません) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
 | !=、<> | 非等価性をチェックします<br>(両方の式は同じです) | `Level != 4` |
-| *and* 、 *or* | 条件の間に必要です| `Level == 16 or CommandLine != ""` |
+| *and*、*or* | 条件の間に必要です| `Level == 16 or CommandLine != ""` |
 
-複数の条件でフィルター処理するには、 **and** を使用します。
+複数の条件でフィルター処理するには、**and** を使用します。
 
 ```Kusto
 SecurityEvent
@@ -130,7 +130,7 @@ SecurityEvent
 ```
     
 > [!NOTE]
-> 値の型は異なる可能性があるため、正しい型に基づいて比較を実行するために型をキャストする必要があります。 たとえば、SecurityEvent *Level* 列は String 型なので、数値演算子を使用する前に、 *int* または *long* などの数値型にキャストする必要があります。`SecurityEvent | where toint(Level) >= 10`
+> 値の型は異なる可能性があるため、正しい型に基づいて比較を実行するために型をキャストする必要があります。 たとえば、SecurityEvent *Level* 列は String 型なので、数値演算子を使用する前に、*int* または *long* などの数値型にキャストする必要があります。`SecurityEvent | where toint(Level) >= 10`
 
 ## <a name="specify-a-time-range"></a>時間の範囲を指定する
 
@@ -156,7 +156,7 @@ SecurityEvent
 
 ## <a name="project-and-extend-select-and-compute-columns"></a>プロジェクトと拡張: 列の選択と計算
 
-結果に含める特定の列を選択するには、 **project** を使用します。
+結果に含める特定の列を選択するには、**project** を使用します。
 
 ```Kusto
 SecurityEvent 
@@ -168,7 +168,7 @@ SecurityEvent
 
 ![プロジェクトの結果をクエリする](media/get-started-queries/project.png)
 
-また、 **project** を使用して列の名前を変更し、新しい列を定義することもできます。 次の例では、project を使用して次の処理を行います。
+また、**project** を使用して列の名前を変更し、新しい列を定義することもできます。 次の例では、project を使用して次の処理を行います。
 
 * 元の列の *Computer* および *TimeGenerated* のみを選択します。
 * *Activity* 列を *EventDetails* として表示します。
@@ -181,7 +181,7 @@ SecurityEvent
 | project Computer, TimeGenerated, EventDetails=Activity, EventCode=substring(Activity, 0, 4)
 ```
 
-**extend** は、元の列をすべて結果セットに保存し、追加の列を定義します。 次のクエリでは、 **extend** を使用して、 *EventCode* 列が追加されています。 この列は、テーブル結果の最後に表示されない場合があることに注意してください。その場合、この列を表示するには、レコードの詳細を展開する必要があります。
+**extend** は、元の列をすべて結果セットに保存し、追加の列を定義します。 次のクエリでは、**extend** を使用して、*EventCode* 列が追加されています。 この列は、テーブル結果の最後に表示されない場合があることに注意してください。その場合、この列を表示するには、レコードの詳細を展開する必要があります。
 
 ```Kusto
 SecurityEvent
@@ -192,7 +192,7 @@ SecurityEvent
 ## <a name="summarize-aggregate-groups-of-rows"></a>summarize: 行のグループを集計する
 **summarize** を使用して、1 つまたは複数の列に従ってレコードのグループを特定し、それらのグループに集計を適用します。 **summarize** の最も一般的な用途は、各グループの結果の数を返す *count* です。
 
-次のクエリでは、過去 1 時間のすべての *Perf* レコードを確認し、 *ObjectName* でグループ化し、各グループのレコードをカウントします。 
+次のクエリでは、過去 1 時間のすべての *Perf* レコードを確認し、*ObjectName* でグループ化し、各グループのレコードをカウントします。 
 ```Kusto
 Perf
 | where TimeGenerated > ago(1h)
@@ -215,7 +215,7 @@ Perf
 | summarize avg(CounterValue) by Computer
 ```
 
-残念ながら、異なるパフォーマンス カウンターが混在するので、このクエリの結果は意味がありません。 より意味のある結果にするには、 *CounterName* と *Computer* の組み合わせごとに別に平均を計算する必要があります。
+残念ながら、異なるパフォーマンス カウンターが混在するので、このクエリの結果は意味がありません。 より意味のある結果にするには、*CounterName* と *Computer* の組み合わせごとに別に平均を計算する必要があります。
 
 ```Kusto
 Perf
@@ -226,7 +226,7 @@ Perf
 ### <a name="summarize-by-a-time-column"></a>時間列で要約する
 時間列または別の連続する値に基づいて結果をグループ化することもできます。 ただし、これらは一意の値なので、`by TimeGenerated` を要約するだけでは、時間の範囲全体に 1 ミリ秒ごとのグループが作成されます。 
 
-連続する値に基づいてグループを作成するには、 **bin** を使用して範囲を管理しやすい単位に分割することをお勧めします。 次のクエリでは、特定のコンピューター上の空きメモリ ( *[利用可能な MB]* ) を測定する *Perf* レコードを分析します。 過去 7 日間の 1 時間ごとの平均値が計算されます。
+連続する値に基づいてグループを作成するには、**bin** を使用して範囲を管理しやすい単位に分割することをお勧めします。 次のクエリでは、特定のコンピューター上の空きメモリ ( *[利用可能な MB]* ) を測定する *Perf* レコードを分析します。 過去 7 日間の 1 時間ごとの平均値が計算されます。
 
 ```Kusto
 Perf 
@@ -244,7 +244,7 @@ Perf
 
 ## <a name="next-steps"></a>次のステップ
 
-- ログ クエリでの文字列データの使用の詳細について、「[Azure Monitor ログ クエリ内の文字列を操作する](string-operations.md)」で学習します。
-- ログ クエリでのデータの集計の詳細について、「[Azure Monitor ログ クエリの高度な集計](advanced-aggregations.md)」で学習します。
-- 複数のテーブルのデータを結合する方法について、「[Azure Monitor ログ クエリでの結合](joins.md)」で学習します。
+- ログ クエリでの文字列データの使用の詳細について、「[Azure Monitor ログ クエリ内の文字列を操作する](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#string-operations)」で学習します。
+- ログ クエリでのデータの集計の詳細について、「[Azure Monitor ログ クエリの高度な集計](/azure/data-explorer/write-queries#advanced-aggregations)」で学習します。
+- 複数のテーブルのデータを結合する方法について、「[Azure Monitor ログ クエリでの結合](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins)」で学習します。
 - Kusto クエリ言語全体のドキュメントについては、[KQL 言語リファレンス](/azure/kusto/query/)を参照してください。

@@ -9,12 +9,12 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 791b50f1458ba7ee127d45ee374b5589ade588e0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 738ed3b819a62760408341184daca8a8ba555029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308203"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913676"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>チュートリアル:Databricks Delta テーブルを更新する Data Lake キャプチャ パターンを実装する
 
@@ -35,20 +35,20 @@ ms.locfileid: "93308203"
 
 * Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-* 階層型名前空間 (Azure Data Lake Storage Gen2) を持つストレージ アカウントを作成します。 このチュートリアルでは、`contosoorders` という名前のストレージ アカウントを使用します。 ユーザー アカウントに[ストレージ BLOB データ共同作成者ロール](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac)が割り当てられていることを確認します。
+* 階層型名前空間 (Azure Data Lake Storage Gen2) を持つストレージ アカウントを作成します。 このチュートリアルでは、`contosoorders` という名前のストレージ アカウントを使用します。 ユーザー アカウントに[ストレージ BLOB データ共同作成者ロール](../common/storage-auth-aad-rbac-portal.md)が割り当てられていることを確認します。
 
    「[Azure Data Lake Storage Gen2 で使用するストレージ アカウントを作成する](create-data-lake-storage-account.md)」をご覧ください。
 
-* サービス プリンシパルを作成する。 UnitTesting.Conditions.ExportTestConditionAttribute について詳しくは、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
+* サービス プリンシパルを作成する。 UnitTesting.Conditions.ExportTestConditionAttribute について詳しくは、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../../active-directory/develop/howto-create-service-principal-portal.md)」のガイダンスに従って、サービス プリンシパルを作成します。
 
   この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
 
-  :heavy_check_mark:記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)」セクションの手順を実行するときに、必ず **ストレージ BLOB データ共同作成者** ロールをサービス プリンシパルに割り当ててください。
+  :heavy_check_mark:記事の「[アプリケーションをロールに割り当てる](../../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)」セクションの手順を実行するときに、必ず **ストレージ BLOB データ共同作成者** ロールをサービス プリンシパルに割り当ててください。
 
   > [!IMPORTANT]
   > Data Lake Storage Gen2 ストレージ アカウントの範囲内のロールを割り当てるようにしてください。 親リソース グループまたはサブスクリプションにロールを割り当てることはできますが、それらのロール割り当てがストレージ アカウントに伝達されるまで、アクセス許可関連のエラーが発生します。
 
-  :heavy_check_mark:記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を行うときは、テナント ID、アプリ ID、およびパスワードの値をテキスト ファイルに貼り付けてください。 これらの値は、後で必要になります。
+  :heavy_check_mark:記事の「[サインインするための値を取得する](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)」セクションの手順を行うときは、テナント ID、アプリ ID、およびパスワードの値をテキスト ファイルに貼り付けてください。 これらの値は、後で必要になります。
 
 ## <a name="create-a-sales-order"></a>販売注文を作成する
 

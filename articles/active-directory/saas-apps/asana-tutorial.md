@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.openlocfilehash: 05c89c8628b4d4ce10ca4ba12c720b410b72601f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457726"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005148"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>チュートリアル: Azure Active Directory と Asana の統合
 
@@ -41,9 +41,9 @@ Asana と Azure AD の統合を構成するには、次のものが必要です�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Asana では、 **SP** によって開始される SSO がサポートされます
+* Asana では、**SP** によって開始される SSO がサポートされます
 
-* Asana では、 [**自動化** されたユーザー プロビジョニング](asana-provisioning-tutorial.md)がサポートされます
+* Asana では、[**自動化** されたユーザー プロビジョニング](asana-provisioning-tutorial.md)がサポートされます
 
 ## <a name="adding-asana-from-the-gallery"></a>ギャラリーからの Asana の追加
 
@@ -63,13 +63,13 @@ Azure AD への Asana の統合を構成するには、ギャラリーから管�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Asana** 」と入力し、結果ウィンドウで **[Asana]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Asana**」と入力し、結果ウィンドウで **[Asana]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Asana](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Asana を使用して Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Asana を使用して Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Asana 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Asana で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -131,7 +131,7 @@ Asana を使用して Azure AD シングル サインオンを構成するには
 
     ![[組織の設定] のシングル サインオン構成](./media/asana-tutorial/tutorial_asana_10.png)  
 
-    a. **[Sign-in page URL (サインイン ページ URL)]** ボックスに、 **ログイン URL** を貼り付けます。
+    a. **[Sign-in page URL (サインイン ページ URL)]** ボックスに、**ログイン URL** を貼り付けます。
 
     b. Azure Portal からダウンロードした証明書を右クリックし、メモ帳またはお好きなテキスト エディターを使って証明書ファイルを開きます。 証明書タイトルの内容を最初から最後までコピーし、 **[X.509 Certificate]** (X.509 証明書) ボックスに貼り付けます。
 
@@ -153,9 +153,9 @@ Asana を使用して Azure AD シングル サインオンを構成するには
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -200,7 +200,7 @@ Asana を使用して Azure AD シングル サインオンを構成するには
 
     ![Azure AD のテスト ユーザーの作成](./media/asana-tutorial/tutorial_asana_12.png)
 
-2. ユーザーの電子メール アドレス (例: **britta.simon\@contoso.com** ) をテキスト ボックスに入力し、 **[招待]** を選択します。
+2. ユーザーの電子メール アドレス (例: **britta.simon\@contoso.com**) をテキスト ボックスに入力し、 **[招待]** を選択します。
 
 3. **[Send Invite (招待の送信)]** をクリックします。 新しいユーザーの電子メール アカウントに電子メールが届きます。 ユーザーは、アカウントを作成し、確認する必要があります。
 

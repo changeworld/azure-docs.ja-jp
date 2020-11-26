@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4a017f4b71a91f580a5281468a3f2bcbf7ba31b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd82b8ac3a510d1b16b0d2f42d3e50803162a119
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531527"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959800"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>チュートリアル:Azure IoT Hub Device Provisioning Service を使用してプロビジョニングするデバイスの設定
 
@@ -38,7 +38,7 @@ ms.locfileid: "90531527"
 
 Windows 開発環境の前提条件は次のとおりです。 Linux または macOS については、SDK ドキュメントの「[開発環境を準備する](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)」の該当するセクションを参照してください。
 
-* [C++ によるデスクトップ開発](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
+* [C++ によるデスクトップ開発](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
 
 * [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
@@ -48,7 +48,7 @@ Device Provisioning Service Client SDK は、デバイス登録ソフトウェ�
 
 1. [CMake ビルド システム](https://cmake.org/download/)をダウンロードします。
 
-    `CMake` のインストールを開始する**前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
+    `CMake` のインストールを開始する **前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
 
 2. SDK の[最新リリース](https://github.com/Azure/azure-iot-sdk-c/releases/latest)のタグ名を見つけます。
 
@@ -96,7 +96,7 @@ Device Provisioning Service Client SDK は、デバイス登録ソフトウェ�
 
 物理 TPM/HSM に構成証明を使用する SDK を構築したのか X.509 証明書を使用するのかに応じて、セキュリティ アーチファクトを収集する方法は次のとおりです。
 
-- TPM デバイスの場合、デバイスに関連付けられている、TPM チップの製造元の**保証キー**を判断する必要があります。 保証キーをハッシュすることによって、TPM デバイスの一意の**登録 ID** を派生させることができます。  
+- TPM デバイスの場合、デバイスに関連付けられている、TPM チップの製造元の **保証キー** を判断する必要があります。 保証キーをハッシュすることによって、TPM デバイスの一意の **登録 ID** を派生させることができます。  
 
 - X.509 デバイスの場合、デバイスに発行された証明書を取得する必要があります。 プロビジョニング サービスでは、X.509 構成証明メカニズムを使用するデバイスのアクセスを制御する、次の 2 種類の登録エントリが公開されています。 必要な証明書は、使用する登録の種類によって異なります。
 

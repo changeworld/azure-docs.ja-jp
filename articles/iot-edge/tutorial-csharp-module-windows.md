@@ -9,12 +9,12 @@ ms.date: 08/03/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
-ms.openlocfilehash: e1e34bacb905bf48fc5f7cd44e66cf4a4326de91
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d6bc11f4f468b784b957ded954dc9a1720e89bfd
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044651"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964441"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>チュートリアル:Windows デバイス用の C# IoT Edge モジュールを開発する
 
@@ -33,9 +33,9 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>ソリューション スコープ
+## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、**Visual Studio 2019** を使用して **C#** でモジュールを開発し、それを **Windows デバイス**にデプロイする方法について説明します。 Linux デバイス用のモジュールを開発する場合は、「[Linux デバイス用の C# IoT Edge モジュールを開発する](tutorial-csharp-module.md)」を参照してください。
+このチュートリアルでは、**Visual Studio 2019** を使用して **C#** でモジュールを開発し、それを **Windows デバイス** にデプロイする方法について説明します。 Linux デバイス用のモジュールを開発する場合は、「[Linux デバイス用の C# IoT Edge モジュールを開発する](tutorial-csharp-module.md)」を参照してください。
 
 次の表を使用し、C# モジュールを開発して Windows デバイスにデプロイする際のオプションをご確認ください。
 
@@ -43,8 +43,6 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 | -- | ------------------ | ------------------ |
 | **Windows AMD64 開発** | ![VS Code で WinAMD64 用の C# モジュールを開発する](./media/tutorial-c-module/green-check.png) | ![Visual Studio で WinAMD64 用の C# モジュールを開発する](./media/tutorial-c-module/green-check.png) |
 | **Windows AMD64 デバッグ** |   | ![Visual Studio で WinAMD64 用の C# モジュールをデバッグする](./media/tutorial-c-module/green-check.png) |
-
-## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを開始する前に、開発環境を設定するための、前のチュートリアル「[Windows デバイス用の IoT Edge モジュールを開発する](tutorial-develop-for-windows.md)」を完了している必要があります。 そのチュートリアルを完了すると、既に以下の前提条件が満たされます。
 
@@ -81,7 +79,7 @@ Azure IoT Edge Tools は、Visual Studio でサポートされているすべて
    | ----- | ----- |
    | テンプレートの選択 | **[C# モジュール]** を選択します。 |
    | モジュール プロジェクト名 | ご自身のモジュールに **CSharpModule** と名前を付けます。 |
-   | Docker イメージ リポジトリ | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、モジュール プロジェクト名の値から事前に入力されています。 **localhost:5000** を、Azure Container Registry の**ログイン サーバー**の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br> 最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/csharpmodule のようになります。 |
+   | Docker イメージ リポジトリ | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、モジュール プロジェクト名の値から事前に入力されています。 **localhost:5000** を、Azure Container Registry の **ログイン サーバー** の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br> 最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/csharpmodule のようになります。 |
 
    ![ターゲット デバイス、モジュールの種類、コンテナー レジストリ用にプロジェクトを構成する](./media/tutorial-csharp-module-windows/add-application-and-module.png)
 

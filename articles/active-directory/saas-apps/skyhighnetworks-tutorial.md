@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
 ms.openlocfilehash: 456348f5492af44274a37a6400fb8d95e9bd55a4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516021"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015147"
 ---
 # <a name="tutorial-integrate-mvision-cloud-azure-ad-sso-configuration-with-azure-active-directory"></a>チュートリアル:MVISION Cloud Azure AD SSO Configuration と Azure Active Directory の統合
 
@@ -40,7 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* MVISION Cloud Azure AD SSO Configuration では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* MVISION Cloud Azure AD SSO Configuration では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 * Dropbox を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-mvision-cloud-azure-ad-sso-configuration-from-the-gallery"></a>ギャラリーからの MVISION Cloud Azure AD SSO Configuration の追加。
@@ -51,7 +51,7 @@ Azure AD への MVISION Cloud Azure AD SSO Configuration の統合を構成す�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **MVISION Cloud Azure AD SSO Configuration** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**MVISION Cloud Azure AD SSO Configuration**」と入力します。
 1. 結果のパネルから **[MVISION Cloud Azure AD SSO Configuration]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -118,7 +118,7 @@ MVISION Cloud Azure AD SSO Configuration で Azure AD SSO を構成してテス�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。

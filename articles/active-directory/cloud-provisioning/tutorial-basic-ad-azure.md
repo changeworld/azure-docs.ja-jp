@@ -11,11 +11,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ceffc928a0cf8313723ff6193d9a6a63f8465f90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266311"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994776"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>チュートリアル:Active Directory の基本的な環境
 
@@ -197,12 +197,12 @@ Active Directory 環境を作成したところで、テスト アカウント�
 次に、ユーザーをクラウドに同期できるよう、Azure AD テナントを作成する必要があります。  新しい Azure AD テナントを作成するには、以下を実行します。
 
 1. [Azure portal](https://portal.azure.com) に移動し、Azure サブスクリプションがあるアカウントを使ってサインインします。
-2. **プラス (+) アイコン**を選択し、**Azure Active Directory** を検索します。
+2. **プラス (+) アイコン** を選択し、**Azure Active Directory** を検索します。
 3. 検索結果で **[Azure Active Directory]** を選択します。
 4. **［作成］** を選択します</br>
 ![Azure portal の Azure Active Directory ページのスクリーンショット。](media/tutorial-single-forest/create1.png)</br>
-5. **組織の名前**と**初期ドメイン名**を入力します。 **[作成]** を選択します。 これにより、ディレクトリが作成されます。
-6. これが完了したら、**こちら**のリンクをクリックし、ディレクトリを管理します。
+5. **組織の名前** と **初期ドメイン名** を入力します。 **[作成]** を選択します。 これにより、ディレクトリが作成されます。
+6. これが完了したら、**こちら** のリンクをクリックし、ディレクトリを管理します。
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Azure AD でグローバル管理者を作成する
 Azure AD テナントを作成したので、次は全体管理者アカウントを作成します。  全体管理者アカウントを作成するには、以下を実行します。
@@ -218,7 +218,7 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 ## <a name="optional--additional-server-and-forest"></a>省略可能:その他のサーバーとフォレスト
 次に示すのは、追加のサーバーまたはフォレストを作成する手順を説明するオプションのセクションです。  これは、[クラウド プロビジョニングへの Azure AD Connect のパイロット](tutorial-pilot-aadc-aadccp.md)など、より高度なチュートリアルの一部で使用できます。
 
-追加のサーバーのみが必要な場合は、**仮想マシンの作成**の手順で停止し、上記で作成した既存のドメインにサーバーを参加させることができます。  
+追加のサーバーのみが必要な場合は、**仮想マシンの作成** の手順で停止し、上記で作成した既存のドメインにサーバーを参加させることができます。  
 
 ### <a name="create-a-virtual-machine"></a>仮想マシンの作成
 

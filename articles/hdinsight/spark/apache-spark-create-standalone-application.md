@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.custom: contperfq1
 ms.date: 08/21/2020
 ms.openlocfilehash: 02192f3960b8021ee32203620893620c7b96f076
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539447"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023995"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>チュートリアル:IntelliJ を使用した HDInsight での Apache Spark の Scala Maven アプリケーションの作成
 
@@ -66,8 +66,8 @@ Scala プラグインをインストールするには、次の手順を実行�
 3. メイン ウィンドウで **[Spark Project (Scala)]\(Spark プロジェクト (Scala)\)** を選択します。
 
 4. **[Build tool]\(ビルド ツール\)** ドロップダウン ボックスの一覧で、次の値のいずれかを選択します。
-      * Scala プロジェクト作成ウィザードをサポートする場合は **Maven** 。
-      * 依存関係を管理し、Scala プロジェクトをビルドする場合は **SBT** 。
+      * Scala プロジェクト作成ウィザードをサポートする場合は **Maven**。
+      * 依存関係を管理し、Scala プロジェクトをビルドする場合は **SBT**。
 
    ![IntelliJ の [New Project]\(新しいプロジェクト\) ダイアログ ボックス](./media/apache-spark-create-standalone-application/intellij-project-apache-spark.png)
 
@@ -80,7 +80,7 @@ Scala プラグインをインストールするには、次の手順を実行�
   	|プロジェクト名| 名前を入力します。|  
   	|Project&nbsp;location (プロジェクトの場所)| プロジェクトを保存する場所を入力します。|
   	|Project SDK (プロジェクト SDK)| IDEA を初めて使用するとき、このフィールドは空白です。  **[New]\(新規作成\)** を選択し、自分の JDK に移動します。|
-  	|Spark バージョン|作成ウィザードにより、Spark SDK と Scala SDK の適切なバージョンが統合されます。 Spark クラスターのバージョンが 2.0 より前の場合は、 **[Spark 1.x]** を選択します。 それ以外の場合は、 **[Spark2.x]** を選択します。 この例では、 **Spark 2.3.0 (Scala 2.11.8)** を使用します。|
+  	|Spark バージョン|作成ウィザードにより、Spark SDK と Scala SDK の適切なバージョンが統合されます。 Spark クラスターのバージョンが 2.0 より前の場合は、 **[Spark 1.x]** を選択します。 それ以外の場合は、 **[Spark2.x]** を選択します。 この例では、**Spark 2.3.0 (Scala 2.11.8)** を使用します。|
 
     ![IntelliJ IDEA Spark SDK を選択する](./media/apache-spark-create-standalone-application/hdi-scala-new-project.png)
 
@@ -117,7 +117,7 @@ Scala プラグインをインストールするには、次の手順を実行�
 
 11. プロジェクトがインポートされたら、左側のウィンドウで **[SparkSimpleApp]**  >  **[src]\(ソース\)**  >  **[test]\(テスト\)**  >  **[scala]**  >  **[com]**  >  **[microsoft]**  >  **[spark]**  >  **[example]\(例\)** の順に移動します。  **[MySpec]** を右クリックし、 **[Delete]\(削除\)** を選択します。このファイルはアプリケーションに必要ありません。  ダイアログ ボックスで **[OK]** を選択します。
   
-12. 以降の手順では、 **pom.xml** を更新して、Spark Scala アプリケーションの依存関係を定義します。 これらの依存関係が自動的にダウンロードされ解決されるように、Maven を構成する必要があります。
+12. 以降の手順では、**pom.xml** を更新して、Spark Scala アプリケーションの依存関係を定義します。 これらの依存関係が自動的にダウンロードされ解決されるように、Maven を構成する必要があります。
 
 13. **[File]\(ファイル\)** メニューの **[Settings]\(設定\)** を選択し、 **[Settings]\(設定\)** ウィンドウを開きます。
 
@@ -197,7 +197,7 @@ Scala プラグインをインストールするには、次の手順を実行�
 
         ![IntelliJ IDEA プロジェクトの構造 - モジュールから jar を作成する](./media/apache-spark-create-standalone-application/hdinsight-create-jar3.png)
 
-    6. **[Output Layout (出力レイアウト)]** タブに、Maven プロジェクトの一部として取り込まれたすべての jar が一覧表示されます。 Scala アプリケーションと直接的な依存関係がないものについては、選択し削除できます。 ここで作成するアプリケーションの場合は、最後の 1 つ ( **SparkSimpleApp compile output** ) を除き、あとはすべて削除することができます。 削除する jar を選択し、マイナス記号 ( **-** ) を選択します。
+    6. **[Output Layout (出力レイアウト)]** タブに、Maven プロジェクトの一部として取り込まれたすべての jar が一覧表示されます。 Scala アプリケーションと直接的な依存関係がないものについては、選択し削除できます。 ここで作成するアプリケーションの場合は、最後の 1 つ (**SparkSimpleApp compile output**) を除き、あとはすべて削除することができます。 削除する jar を選択し、マイナス記号 ( **-** ) を選択します。
 
         ![`IntelliJ IDEA プロジェクトの構造 - 出力を削除する`](./media/apache-spark-create-standalone-application/hdi-delete-output-jars.png)
 
@@ -211,9 +211,9 @@ Scala プラグインをインストールするには、次の手順を実行�
 
 クラスターでアプリケーションを実行するには、次のアプローチを使用できます。
 
-* クラスターに関連付けられている **Azure Storage Blob にアプリケーション jar をコピーします** 。 コピーには、 **AzCopy** コマンドライン ユーティリティを使用できます。 他にも、データのアップロードに使用できるクライアントが多数あります。 詳細については、[HDInsight での Apache Hadoop ジョブ用データのアップロード](../hdinsight-upload-data.md)に関するページを参照してください。
+* クラスターに関連付けられている **Azure Storage Blob にアプリケーション jar をコピーします**。 コピーには、**AzCopy** コマンドライン ユーティリティを使用できます。 他にも、データのアップロードに使用できるクライアントが多数あります。 詳細については、[HDInsight での Apache Hadoop ジョブ用データのアップロード](../hdinsight-upload-data.md)に関するページを参照してください。
 
-* Spark クラスターに、 **Apache Livy を使用してリモートからアプリケーション ジョブを送信** します。 HDInsight の Spark クラスターには、Spark ジョブをリモートで送信するための REST エンドポイントを公開する Livy が含まれています。 詳細については、[HDInsight の Spark クラスターで Apache Livy を使用してリモートから Apache Spark ジョブを送信する方法](apache-spark-livy-rest-interface.md)に関するページを参照してください。
+* Spark クラスターに、**Apache Livy を使用してリモートからアプリケーション ジョブを送信** します。 HDInsight の Spark クラスターには、Spark ジョブをリモートで送信するための REST エンドポイントを公開する Livy が含まれています。 詳細については、[HDInsight の Spark クラスターで Apache Livy を使用してリモートから Apache Spark ジョブを送信する方法](apache-spark-livy-rest-interface.md)に関するページを参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -221,7 +221,7 @@ Scala プラグインをインストールするには、次の手順を実行�
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-1. 上部の **検索** ボックスに「 **HDInsight** 」と入力します。
+1. 上部の **検索** ボックスに「**HDInsight**」と入力します。
 
 1. **[サービス]** の下の **[HDInsight クラスター]** を選択します。
 

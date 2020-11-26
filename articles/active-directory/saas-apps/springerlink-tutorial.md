@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: jeedes
 ms.openlocfilehash: 3c03bb91320e79d5ea54ad43802073795bfbd4cb
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896488"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008380"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-springer-link"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Springer Link の統合
 
@@ -37,7 +37,7 @@ ms.locfileid: "92896488"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Springer Link では、 **SP Initiated SSO と IDP** Initiated SSO がサポートされます
+* Springer Link では、**SP Initiated SSO と IDP** Initiated SSO がサポートされます
 
 ## <a name="adding-springer-link-from-the-gallery"></a>ギャラリーからの Springer Link の追加
 
@@ -47,7 +47,7 @@ Azure AD への Springer Link の統合を構成するには、ギャラリー�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Springer Link** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Springer Link**」と入力します。
 1. 結果のパネルから **[Springer Link]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト

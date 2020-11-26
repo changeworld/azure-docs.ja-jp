@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: e20183356655668750cb1450338d4c8af1ee2d8c
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4cab1765a387bbae61c9c242a8e7a1ca881ea1f5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951708"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966668"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>チュートリアル:Device Provisioning Service (DPS) でカスタム割り当てポリシーを使用する
 
@@ -46,7 +46,7 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
 
 * [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
-* Windows 開発環境の場合、["C++ によるデスクトップ開発"](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) のワークロードが有効になっている [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019が必要です。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
+* Windows 開発環境の場合、["C++ によるデスクトップ開発"](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) のワークロードが有効になっている [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019が必要です。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
 
 * Linux または macOS については、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) ドキュメントの「[開発環境を準備する](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)」にある適切なセクションを参照してください。
 
@@ -61,7 +61,7 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
 
 2. *[Marketplace を検索]* 検索ボックスで、「関数アプリ」と入力します。 ドロップダウン リストから **[関数アプリ]** を選択し、**[作成]** を選択します。
 
-3. **関数アプリ**の作成ページの **[基本]** タブで、新しい関数アプリに次の設定を入力し、**[確認と作成]** を選択します。
+3. **関数アプリ** の作成ページの **[基本]** タブで、新しい関数アプリに次の設定を入力し、**[確認と作成]** を選択します。
 
     **サブスクリプション**:複数のサブスクリプションがあり、目的のサブスクリプションが選択されていない場合は、使用するサブスクリプションを選択します。
 
@@ -73,7 +73,7 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
 
     **ランタイム スタック**:ドロップダウンから **[.NET Core]** を選択します。
 
-    **[リージョン]** :ご自分のリソース グループと同じリージョンを選択します。 この例では**米国西部**を使用します。
+    **[リージョン]** :ご自分のリソース グループと同じリージョンを選択します。 この例では **米国西部** を使用します。
 
     > [!NOTE]
     > 既定では、Application Insights が有効になっています。 この記事では Application Insights は必要ありませんが、カスタム割り当てで発生する問題を理解し、調査するのに役立つ場合があります。 必要に応じて、**[監視]** タブを選択し、**[Application Insights を有効にする]** を **[いいえ]** に選択することで、Application Insights を無効にすることができます。
@@ -207,7 +207,7 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
 * **contoso-toaster-007**
 * **contoso-heatpump-088**
 
-**KEY** 変数の値は、登録グループの作成後に書き留めた**主キー**に置き換えます。 下のコードで示されているキー値と出力は単なる例です。
+**KEY** 変数の値は、登録グループの作成後に書き留めた **主キー** に置き換えます。 下のコードで示されているキー値と出力は単なる例です。
 
 #### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -269,7 +269,7 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
 
 1. [CMake ビルド システム](https://cmake.org/download/)をダウンロードします。
 
-    `CMake` のインストールを開始する**前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
+    `CMake` のインストールを開始する **前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
 
 2. SDK の[最新リリース](https://github.com/Azure/azure-iot-sdk-c/releases/latest)のタグ名を見つけます。
 
@@ -296,7 +296,7 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
 
-    `cmake` で C++ コンパイラが見つからない場合は、コマンドの実行中にビルド エラーが発生している可能性があります。 これが発生した場合は、[Visual Studio コマンド プロンプト](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)でコマンドを実行してください。
+    `cmake` で C++ コンパイラが見つからない場合は、コマンドの実行中にビルド エラーが発生している可能性があります。 これが発生した場合は、[Visual Studio コマンド プロンプト](/dotnet/framework/tools/developer-command-prompt-for-vs)でコマンドを実行してください。
 
     ビルドが成功すると、最後のいくつかの出力行は次のようになります。
 
@@ -332,7 +332,7 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
 
 3. Visual Studio の "*ソリューション エクスプローラー*" ウィンドウで、**Provision\_Samples** フォルダーに移動します。 **prov\_dev\_client\_sample** という名前のサンプル プロジェクトを展開します。 **Source Files** を展開し、**prov\_dev\_client\_sample.c** を開きます。
 
-4. 定数 `id_scope` を探し、以前にコピーした **ID スコープ**の値で置き換えます。 
+4. 定数 `id_scope` を探し、以前にコピーした **ID スコープ** の値で置き換えます。 
 
     ```c
     static const char* id_scope = "0ne00002193";
@@ -347,7 +347,7 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. `main()` 関数で、`Prov_Device_Register_Device()` の呼び出しを見つけます。 その呼び出しの直前に、[`Prov_Device_Set_Provisioning_Payload()`](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) を使用する次のコード行を追加し、プロビジョニング中にカスタム JSON ペイロードを渡します。 カスタム割り当て関数に与える情報を増やすためにこれを利用できます。 登録 ID を調べる代わりに、デバイスの種類を渡す目的でこれを使用することもできます。
+6. `main()` 関数で、`Prov_Device_Register_Device()` の呼び出しを見つけます。 その呼び出しの直前に、[`Prov_Device_Set_Provisioning_Payload()`](/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) を使用する次のコード行を追加し、プロビジョニング中にカスタム JSON ペイロードを渡します。 カスタム割り当て関数に与える情報を増やすためにこれを利用できます。 登録 ID を調べる代わりに、デバイスの種類を渡す目的でこれを使用することもできます。
 
     ```c
     // An example custom payload

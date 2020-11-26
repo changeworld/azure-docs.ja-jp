@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: b247a72b5d7db9892c6a2a763b7b71dc5f972d95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7640b7a6053532360da4c908089aecfe163bd3de
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045299"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912656"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>チュートリアル:Azure HDInsight を使用してデータの抽出、変換、読み込みを行う
 
@@ -32,15 +32,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * **HDInsight 用に構成された Azure Data Lake Storage Gen2 ストレージ アカウント**
 
-    「[Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)」 (Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する) を参照してください。
+    「[Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)」 (Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する) を参照してください。
 
 * **HDInsight での Linux ベースの Hadoop クラスター**
 
-    「[クイック スタート:Azure portal を使用して Azure HDInsight で Apache Hadoop と Apache Hive を使用する](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal)」を参照してください。
+    「[クイック スタート:Azure portal を使用して Azure HDInsight で Apache Hadoop と Apache Hive を使用する](../../hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)」を参照してください。
 
-* **Azure SQL Database**:保存先データ ストアとして Azure SQL Database を使用します。 SQL Database のデータベースがない場合は、[Azure portal での Azure SQL Database のデータベースの作成](../../sql-database/sql-database-get-started.md)に関するページを参照してください。
+* **Azure SQL Database**:保存先データ ストアとして Azure SQL Database を使用します。 SQL Database のデータベースがない場合は、[Azure portal での Azure SQL Database のデータベースの作成](../../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。
 
-* **Azure CLI**:Azure CLI をインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
+* **Azure CLI**:Azure CLI をインストールしていない場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
 
 * **Secure Shell (SSH) クライアント**:詳細については、[SSH を使用した HDInsight (Hadoop) への接続](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
@@ -344,4 +344,4 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
 HDInsight でのデータ操作の詳細については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+> [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

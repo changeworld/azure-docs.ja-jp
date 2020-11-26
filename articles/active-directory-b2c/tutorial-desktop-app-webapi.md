@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8ebfbeeb4533f21bc0fa10a5fee7b88ef069c262
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eca6297a704e1ef478c09baf227cf622d6890bb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84298851"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953153"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してデスクトップ アプリから Node.js Web API へのアクセスを許可する
 
@@ -51,7 +51,7 @@ ms.locfileid: "84298851"
 
 この前提条件のチュートリアルでは、*nativeapp1* という名前のネイティブ クライアント アプリケーションを登録しました。 次の手順では、前のセクションで *webapi1* に対して公開した API のスコープをそのネイティブ アプリケーションの登録に構成します。 これにより、デスクトップ アプリケーションが Azure AD B2C から Web API がそのリソースへの範囲指定がある検証されたアクセスを提供するのに使用できるアクセス トークンを取得できるようになります。 このチュートリアルでは、後でデスクトップ アプリケーションと Web API の両方のコード サンプルを構成して実行します。
 
-アプリケーションを Azure AD B2C テナントに登録するには、Microsoft の新しい統合**アプリの登録**エクスペリエンスかレガシ **アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregtraining)。
+アプリケーションを Azure AD B2C テナントに登録するには、Microsoft の新しい統合 **アプリの登録** エクスペリエンスかレガシ **アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](./app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
 
@@ -63,7 +63,7 @@ ms.locfileid: "84298851"
 1. **[アクセス許可]** で、 **[デモ]** を展開し、前に定義したスコープを選択します。 *demo.read* や *demo.write* などです。
 1. **[アクセス許可の追加]** を選択します. 指示に従って、数分待ってから次の手順に進みます。
 1. **[<テナント名> に管理者の同意を与えます]** を選択します。
-1. 現在サインインしているお使いの管理者アカウントを選択するか、少なくとも*クラウド アプリケーション管理者* ロールが割り当てられているお使いの Azure AD B2C テナントのアカウントでサインインします。
+1. 現在サインインしているお使いの管理者アカウントを選択するか、少なくとも *クラウド アプリケーション管理者* ロールが割り当てられているお使いの Azure AD B2C テナントのアカウントでサインインします。
 1. **[Accept]\(承認\)** を選択します。
 1. **[更新]** を選択し、両方のスコープの **[状態]** に、"... に付与されました" が表示されていることを確認します。 アクセス許可が反映されるまでに数分かかる場合があります。
 
@@ -90,7 +90,7 @@ ms.locfileid: "84298851"
 1. Visual Studio で **active-directory-b2c-wpf** ソリューション (`active-directory-b2c-wpf.sln`) を開きます。
 1. **active-directory-b2c-wpf** プロジェクトの *App.xaml.cs* ファイルを開き、次の変数定義を探します。
     1. `ApiScopes` 変数の値を、**demo.read** スコープを定義したときに記録した値と置き換えます。
-    1. `ApiEndpoint` 変数の値を、ご自分のテナントで Web API (例: *webapi1*) を登録したときに記録した**リダイレクト URI** に置き換えます。
+    1. `ApiEndpoint` 変数の値を、ご自分のテナントで Web API (例: *webapi1*) を登録したときに記録した **リダイレクト URI** に置き換えます。
 
     次に例を示します。
 

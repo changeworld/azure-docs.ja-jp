@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 2bd06491b5488223b9a8eba50839a7fdf0cd61b6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 480af87519f8e11c14f009058b0f518bdfc34a1b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478543"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026269"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>チュートリアル:Azure Database for PostgreSQL - Hyperscale (Citus) を使用したリアルタイム分析ダッシュボードの設計
 
@@ -227,4 +227,4 @@ DELETE FROM http_request_1min WHERE ingest_time < now() - interval '1 month';
 このチュートリアルでは、Hyperscale (Citus) サーバー グループのプロビジョニング方法を学習しました。 そのサーバー グループに psql で接続し、スキーマを作成して、データを分散しました。 生のフォームでデータのクエリを実行すること、そのデータを定期的に集計すること、集計されたテーブルのクエリを実行すること、古いデータを期限切れにすることを学習しました。
 
 - サーバー グループの[ノードの種類](./concepts-hyperscale-nodes.md)について学習する
-- サーバー グループに最適な[初期サイズ](howto-hyperscale-scaling.md#picking-initial-size)を決定する
+- サーバー グループに最適な[初期サイズ](howto-hyperscale-scale-initial.md)を決定する

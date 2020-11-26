@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-python, devx-track-js
-ms.openlocfilehash: a4496ba46b486f183136381a51c6a523dd9e1b87
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 5c8918995675cae8e70ca9fc1efb0cf4c7cb233b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047983"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959409"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の Node.js IoT Edge モジュールを開発およびデプロイする
 
@@ -33,9 +33,9 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>ソリューション スコープ
+## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、**Visual Studio Code** を使用して **Node.js** でモジュールを開発し、それを **Linux デバイス**にデプロイする方法について説明します。 IoT Edge は、Windows デバイス用 Node.js モジュールをサポートしていません。
+このチュートリアルでは、**Visual Studio Code** を使用して **Node.js** でモジュールを開発し、それを **Linux デバイス** にデプロイする方法について説明します。 IoT Edge は、Windows デバイス用 Node.js モジュールをサポートしていません。
 
 次の表を使用し、Node.js モジュールを開発してデプロイする際のオプションをご確認ください。
 
@@ -43,8 +43,6 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![Linux AMD64 の Node.js モジュール用の VS Code を使用します](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Linux ARM32 の Node.js モジュール用の VS Code を使用します](./media/tutorial-c-module/green-check.png) |  |
-
-## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを開始する前に、前のチュートリアルを完了して、Linux コンテナー開発用の開発環境を設定しておく必要があります。[Linux デバイス用の IoT Edge モジュールを開発する](tutorial-develop-for-linux.md)。 これらのチュートリアルのいずれかを完了すると、次の前提条件が満たされます。
 
@@ -84,9 +82,9 @@ Node.js で IoT Edge モジュールを開発するには、開発用マシン�
    | ----- | ----- |
    | フォルダーの選択 | VS Code によってソリューション ファイルが作成される、開発マシン上の場所を選択します。 |
    | Provide a solution name (ソリューション名の指定) | ソリューションのためにわかりやすい名前を入力するか、既定値の **EdgeSolution** をそのまま使用します。 |
-   | Select module template (モジュール テンプレートの選択) | **Node.js モジュール**を選択します。 |
+   | Select module template (モジュール テンプレートの選択) | **Node.js モジュール** を選択します。 |
    | Provide a module name (モジュール名の指定) | ご自身のモジュール **NodeModule** に名前を付けます。 |
-   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリの**ログイン サーバー**の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br>最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/nodemodule のようになります。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリの **ログイン サーバー** の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br>最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/nodemodule のようになります。 |
 
    ![Docker イメージ リポジトリを指定する](./media/tutorial-node-module/repository.png)
 
@@ -97,7 +95,7 @@ Node.js で IoT Edge モジュールを開発するには、開発用マシン�
 IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格情報をプルし、それらを環境ファイルに取り込もうとします。 資格情報が既に含まれているかどうかを確認します。 含まれていない場合は、次のようにして追加します。
 
 1. VS Code エクスプローラーで、 **.env** ファイルを開きます。
-2. ご自身の Azure コンテナー レジストリからコピーした**ユーザー名**と**パスワード**の値を使用して、フィールドを更新します。
+2. ご自身の Azure コンテナー レジストリからコピーした **ユーザー名** と **パスワード** の値を使用して、フィールドを更新します。
 3. このファイルを保存します。
 
 ### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する

@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: b46ce20b868f8756f6ad91795a27328abcb2fbdf
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 71bfc84eb50521aef72f78b482bddda112c00c6c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044209"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964373"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の C# IoT Edge モジュールを開発する
 
@@ -33,9 +33,9 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>ソリューション スコープ
+## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、**Visual Studio Code** を使用して **C#** でモジュールを開発し、それを **Linux デバイス**にデプロイする方法について説明します。 Windows デバイス用のモジュールを開発する場合は、「[Windows デバイス用の C# IoT Edge モジュールを開発する](tutorial-csharp-module-windows.md)」を参照してください。
+このチュートリアルでは、**Visual Studio Code** を使用して **C#** でモジュールを開発し、それを **Linux デバイス** にデプロイする方法について説明します。 Windows デバイス用のモジュールを開発する場合は、「[Windows デバイス用の C# IoT Edge モジュールを開発する](tutorial-csharp-module-windows.md)」を参照してください。
 
 次の表を使用し、C# モジュールを開発して Linux にデプロイする際のオプションをご確認ください。
 
@@ -46,8 +46,6 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 >[!NOTE]
 >Linux ARM64 デバイスのサポートは、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)でご利用いただけます。 詳細については、「[Visual Studio Code で ARM64 IoT Edge モジュールを開発してデバッグする (プレビュー)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)」を参照してください。
-
-## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを開始する前に、[Linux デバイス用の IoT Edge モジュールの開発](tutorial-develop-for-linux.md)に関する前のチュートリアルを完了して、開発環境を設定する必要があります。 そのチュートリアルを完了すると、既に以下の前提条件が満たされます。
 
@@ -76,13 +74,13 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 3. コマンド パレットで、**Azure IoT Edge:New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットに表示されるメッセージに従って、ソリューションを作成します。
 
-   | フィールド | Value |
+   | フィールド | 値 |
    | ----- | ----- |
    | フォルダーの選択 | VS Code によってソリューション ファイルが作成される、開発マシン上の場所を選択します。 |
    | Provide a solution name (ソリューション名の指定) | ソリューションのためにわかりやすい名前を入力するか、既定値の **EdgeSolution** をそのまま使用します。 |
-   | Select module template (モジュール テンプレートの選択) | **C# モジュール**を選択します。 |
+   | Select module template (モジュール テンプレートの選択) | **C# モジュール** を選択します。 |
    | Provide a module name (モジュール名の指定) | ご自身のモジュールに **CSharpModule** と名前を付けます。 |
-   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリの**ログイン サーバー**の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br>最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/csharpmodule のようになります。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリの **ログイン サーバー** の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br>最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/csharpmodule のようになります。 |
 
    ![Docker イメージ リポジトリを指定する](./media/tutorial-csharp-module/repository.png)
 
@@ -93,7 +91,7 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格情報をプルし、それらを環境ファイルに取り込もうとします。 資格情報が既に含まれているかどうかを確認します。 含まれていない場合は、次のようにして追加します。
 
 1. VS Code エクスプローラーで、 **.env** ファイルを開きます。
-2. 自分の Azure コンテナー レジストリの**ユーザー名**と**パスワード**の値を使用して、フィールドを更新します。
+2. 自分の Azure コンテナー レジストリの **ユーザー名** と **パスワード** の値を使用して、フィールドを更新します。
 3. このファイルを保存します。
 
 ### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する

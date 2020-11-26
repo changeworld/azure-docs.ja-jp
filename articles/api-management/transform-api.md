@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: apimpm
 ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108135"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010233"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>チュートリアル:API を変換および保護する
 
@@ -58,21 +58,21 @@ ms.locfileid: "92108135"
 
 元の応答は、次のようになります。
 
-:::image type="content" source="media/transform-api/original-response.png" alt-text="ポータルでのポリシー":::
+:::image type="content" source="media/transform-api/original-response.png" alt-text="元の API 応答":::
 
-応答に、 **X-AspNet-Version** と **X-Powered-By** というヘッダーが含まれていることがわかります。
+応答に、**X-AspNet-Version** と **X-Powered-By** というヘッダーが含まれていることがわかります。
 
 ### <a name="set-the-transformation-policy"></a>変換ポリシーを設定する
 
 1. **[Demo Conference API]\(デモ会議 API\)**  >  **[Design]\(デザイン\)**  >  **[すべての操作]** を選択します。
 4. **[送信処理]** セクションで、コード エディター ( **</>** ) アイコンを選択します。
 
-   :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png" alt-text="ポータルでのポリシー" border="false":::
+   :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png" alt-text="送信ポリシーに移動する" border="false":::
 
 1. **&lt;outbound&gt;** 要素内にカーソルを置き、右上隅にある **[Show snippets]\(スニペットの表示\)** を選択します。
 1. 右側のウィンドウの **[変換ポリシー]** で、 **[+ HTTP ヘッダーの設定]** を 2 回クリックします (2 つのポリシー スニペットを挿入するため)。
 
-   :::image type="content" source="media/transform-api/transform-api.png" alt-text="ポータルでのポリシー":::
+   :::image type="content" source="media/transform-api/transform-api.png" alt-text="HTTP ヘッダーの設定ポリシー":::
 
 1. **\<outbound>** コードを次のように変更します。
 
@@ -81,7 +81,7 @@ ms.locfileid: "92108135"
    <set-header name="X-AspNet-Version" exists-action="delete" />
    ```
 
-   :::image type="content" source="media/transform-api/set-policy.png" alt-text="ポータルでのポリシー":::
+   :::image type="content" source="media/transform-api/set-policy.png" alt-text="HTTP ヘッダーを設定する":::
 
 1. **[保存]** を選択します。
 
@@ -98,7 +98,7 @@ ms.locfileid: "92108135"
 
     応答に、元のバックエンド URL が含まれていることがわかります。
 
-    :::image type="content" source="media/transform-api/original-response2.png" alt-text="ポータルでのポリシー":::
+    :::image type="content" source="media/transform-api/original-response2.png" alt-text="応答に含まれる元の URL":::
 
 
 ### <a name="set-the-transformation-policy"></a>変換ポリシーを設定する
@@ -117,7 +117,7 @@ ms.locfileid: "92108135"
 1.  **[受信処理]** セクションで、コード エディター ( **</>** ) アイコンを選択します。
 1.  **&lt;inbound&gt;** 要素内にカーソルを置き、右上隅にある **[Show snippets]\(スニペットの表示\)** を選択します。
 
-    :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png" alt-text="ポータルでのポリシー" border="false":::
+    :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png" alt-text="受信ポリシーを設定する" border="false":::
 
 1.  右側のウィンドウの **[アクセス制限ポリシー]** で、 **[+ Limit call rate per key]\(+ キーごとの呼び出しレートの制限\)** を選択します。
 1.  **rate-limit-by-key** コード ( **\<inbound\>** 要素内) を次のコードに変更します。
@@ -160,7 +160,7 @@ ms.locfileid: "92108135"
 
     ヘッダーが削除されたことがわかります。
 
-    :::image type="content" source="media/transform-api/final-response1.png" alt-text="ポータルでのポリシー":::
+    :::image type="content" source="media/transform-api/final-response1.png" alt-text="削除された応答ヘッダー":::
 
 ### <a name="test-the-replaced-url"></a>置換された URL をテストする
 
@@ -169,16 +169,18 @@ ms.locfileid: "92108135"
 
     URL が置換されたことがわかります。
 
-    :::image type="content" source="media/transform-api/final-response2.png" alt-text="ポータルでのポリシー":::
+    :::image type="content" source="media/transform-api/final-response2.png" alt-text="置き換えられた URL":::
 
 ### <a name="test-the-rate-limit-throttling"></a>レート制限 (調整) をテストする
 
 1. **[Demo Conference API]\(デモ会議 API)**  >  **[テスト]** を選択します。
 1. **[GetSpeakers]** 操作を選択します。 **[送信]** を 3 回続けて選択します。
 
-    要求を 3 回送信すると、" **429 要求が多すぎます** " 応答が返されます。
+    要求を 3 回送信すると、"**429 要求が多すぎます**" 応答が返されます。
 
-    :::image type="content" source="media/transform-api/test-throttling.png" alt-text="ポータルでのポリシー" 応答が返されます。
+    :::image type="content" source="media/transform-api/test-throttling.png" alt-text="要求が多すぎます":::
+
+1. 15 秒ほど待ち、 **[送信]** をもう一度選択します。 今度は "**200 OK**" 応答が返されます。
 
 ## <a name="next-steps"></a>次のステップ
 

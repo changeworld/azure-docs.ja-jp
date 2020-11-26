@@ -7,18 +7,18 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: dc86340026ec7b85afc9e5208ea8ef8c32d8bac6
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9ac616ddf1c3475f2ca3b3e8097bb74da72faa77
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421466"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95500273"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>チュートリアル:IoT プラグ アンド プレイ モジュールを接続する (C#)
 
 このチュートリアルでは、汎用の IoT プラグ アンド プレイ [モジュール](../iot-hub/iot-hub-devguide-module-twins.md)の接続方法について説明します。
 
-IoT ハブに接続するときにモデル ID を発行し、そのモデル ID によって識別される Digital Twins Definition Language (DTDL) モデルに記述されているプロパティとメソッドを実装するデバイスである場合は、IoT プラグ アンド プレイ デバイスです。 デバイスで DTDL とモデル ID がどのように使用されるかの詳細については、[IoT プラグ アンド プレイの開発者ガイド](./concepts-developer-guide-device-csharp.md)を参照してください。 モジュールでは、モデル ID と DTDL モデルを同じ方法で使用します。
+IoT ハブに接続するときにモデル ID を発行し、そのモデル ID によって識別される Digital Twins Definition Language (DTDL) モデルに記述されているプロパティとメソッドを実装するデバイスである場合は、IoT プラグ アンド プレイ デバイスです。 デバイスで DTDL とモデル ID がどのように使用されるかの詳細については、[IoT プラグ アンド プレイの開発者ガイド](./concepts-developer-guide-device.md)を参照してください。 モジュールでは、モデル ID と DTDL モデルを同じ方法で使用します。
 
 このチュートリアルでは、IoT プラグ アンド プレイ モジュールを実装する方法を示すために、サーモスタットの C# デバイス サンプルを汎用モジュールに変換する方法を示します。
 
@@ -238,4 +238,4 @@ Azure IoT エクスプローラー ツールを使用して、以下を参照で
 このチュートリアルでは、モジュールを使用する IoT プラグ アンド プレイ デバイスを IoT ハブに接続する方法を学習しました。 IoT プラグ アンド プレイ デバイス モデルの詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [IoT プラグ アンド プレイ モデリング開発者ガイド](./concepts-developer-guide-device-csharp.md)
+> [IoT プラグ アンド プレイ モデリング開発者ガイド](./concepts-developer-guide-device.md)

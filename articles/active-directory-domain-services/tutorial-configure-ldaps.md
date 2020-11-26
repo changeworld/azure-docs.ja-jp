@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: joflore
 ms.openlocfilehash: f5ebe594f1f50c7b7490e5ead8cb3fe7636f0ce7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967479"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994028"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメイン用に Secure LDAP を構成する
 
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
     * 必要に応じて、[Azure Active Directory Domain Services のマネージド ドメインを作成して構成][create-azure-ad-ds-instance]します。
 * ご利用のコンピューターにインストールされた *LDP.exe* ツール。
-    * 必要に応じて、*Active Directory Domain Services と LDAP* 用に[リモート サーバー管理ツール (RSAT)][rsat] をインストールしてください。
+    * 必要に応じて、*Active Directory Domain Services と LDAP* 用に [リモート サーバー管理ツール (RSAT)][rsat] をインストールしてください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -74,7 +74,7 @@ OpenSSL、Keytool、MakeCert、[New-SelfSignedCertificate][New-SelfSignedCertifi
 
 このチュートリアルでは、[New-SelfSignedCertificate][New-SelfSignedCertificate] コマンドレットを使用して Secure LDAP 用の自己署名証明書を作成してみましょう。
 
-**管理者**として PowerShell ウィンドウを開き、次のコマンドを実行します。 *$dnsName* 変数は、実際のマネージド ドメインで使用されている DNS 名に置き換えてください (例: *aaddscontoso.com*)。
+**管理者** として PowerShell ウィンドウを開き、次のコマンドを実行します。 *$dnsName* 変数は、実際のマネージド ドメインで使用されている DNS 名に置き換えてください (例: *aaddscontoso.com*)。
 
 ```powershell
 # Define your own DNS name used by your managed domain
@@ -107,11 +107,11 @@ Thumbprint                                Subject
 
 Secure LDAP を使用するために、ネットワーク トラフィックは、公開鍵基盤 (PKI) を使用して暗号化されます。
 
-* マネージド ドメインには**秘密**キーが適用されます。
+* マネージド ドメインには **秘密** キーが適用されます。
     * Secure LDAP トラフィックの "*暗号化を解除する*" には、この秘密キーが使用されます。 秘密キーの適用先はマネージド ドメインに限定する必要があります。クライアント コンピューターに広く秘密キーを配布しないでください。
     * 秘密キーを含んだ証明書では、 *.PFX* ファイル形式が使用されます。
     * 証明書の暗号化アルゴリズムは、*TripleDES-SHA1* である必要があります。
-* クライアント コンピューターには**公開**キーが適用されます。
+* クライアント コンピューターには **公開** キーが適用されます。
     * この公開キーは、Secure LDAP トラフィックの "*暗号化*" に使用されます。 公開キーは、クライアント コンピューターに配布することができます。
     * 秘密キーを含まない証明書には、 *.CER* ファイル形式が使用されます。
 
@@ -138,7 +138,7 @@ Secure LDAP を使用するために、ネットワーク トラフィックは�
 
     ![Microsoft 管理コンソールで証明書をエクスポートする](./media/tutorial-configure-ldaps/export-cert.png)
 
-1. **証明書のエクスポート ウィザード**で **[次へ]** を選択します。
+1. **証明書のエクスポート ウィザード** で **[次へ]** を選択します。
 1. 証明書の秘密キーをエクスポートする必要があります。 エクスポートした証明書に秘密キーが含まれていない場合、マネージド ドメインに対して Secure LDAP を有効にする操作は失敗します。
 
     **[秘密キーのエクスポート]** ページで **[はい、秘密キーをエクスポートします]** を選択し、 **[次へ]** を選択します。
@@ -162,7 +162,7 @@ LDAPS を使用してマネージド ドメインに正常に接続できるよ�
 このチュートリアルでは自己署名証明書を使用しており、先行する手順では、秘密キーを含んだ証明書を生成しました。 自己署名証明書をエクスポートし、クライアント コンピューター上の信頼された証明書ストアにインストールしましょう。
 
 1. MMC の *[証明書 (ローカル コンピューター)] > [個人] > [証明書]* ストアに戻ります。 前の手順で作成した自己署名証明書が表示されます (例: *aaddscontoso.com*)。 この証明書を右クリックし、 **[すべてのタスク] > [エクスポート]** の順に選択します。
-1. **証明書のエクスポート ウィザード**で **[次へ]** を選択します。
+1. **証明書のエクスポート ウィザード** で **[次へ]** を選択します。
 1. クライアントに秘密キーは不要であるため、 **[秘密キーのエクスポート]** ページで **[いいえ、秘密キーをエクスポートしません]** を選択し、 **[次へ]** を選択します。
 1. **[エクスポート ファイルの形式]** ページで、エクスポートした証明書のファイル形式として **[Base 64 encoded X.509 (.CER)]** を選択します。
 
@@ -175,7 +175,7 @@ LDAPS を使用してマネージド ドメインに正常に接続できるよ�
 
 1. エクスプローラーを開いて、 *.CER* 証明書ファイルの保存先を参照します (例: *C:\Users\accountname\azure-ad-ds-client.cer*)。
 1. *.CER* 証明書ファイルを右クリックし、 **[証明書のインストール]** を選択します。
-1. **証明書のインポート ウィザード**で、 *[ローカル コンピューター]* を証明書の保存先として選択し、 **[次へ]** を選択します。
+1. **証明書のインポート ウィザード** で、 *[ローカル コンピューター]* を証明書の保存先として選択し、 **[次へ]** を選択します。
 
     ![ローカル コンピューター ストアに証明書をインポートするオプションを選択する](./media/tutorial-configure-ldaps/import-cer-file.png)
 

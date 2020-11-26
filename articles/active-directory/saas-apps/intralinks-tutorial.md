@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 79270f2484cedd81f39d2c393546bd4a1bdd3392
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459919"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999826"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intralinks"></a>チュートリアル: Azure Active Directory と Intralinks の統合
 
@@ -41,7 +41,7 @@ Intralinks と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Intralinks では、 **SP** によって開始される SSO がサポートされます
+* Intralinks では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-intralinks-from-the-gallery"></a>ギャラリーからの Intralinks の追加
 
@@ -61,13 +61,13 @@ Azure AD への Intralinks の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Intralinks** 」と入力し、結果パネルで **Intralinks** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Intralinks**」と入力し、結果パネルで **Intralinks** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Intralinks](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Intralinks で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Intralinks で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Intralinks 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Intralinks で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -140,7 +140,7 @@ Intralinks で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。

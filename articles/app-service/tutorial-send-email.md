@@ -4,12 +4,12 @@ description: App Service アプリからビジネス プロセスを呼び出す
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 5aa563e55c64893d57522dd1154a64c7e90a1690
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8072a941cd89290af3e25cc63c4fccccce705df9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397438"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014664"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>チュートリアル:App Service からメールを送信したり他のビジネス プロセスを呼び出したりする
 
@@ -54,7 +54,7 @@ ms.locfileid: "91397438"
 
 ## <a name="create-the-logic-app"></a>ロジック アプリを作成する
 
-1. [Azure portal](https://portal.azure.com) で、「[ロジック アプリを作成する](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)」の手順に従って、空のロジック アプリを作成します。 **Logic Apps デザイナー**が表示されたら、このチュートリアルに戻ります。
+1. [Azure portal](https://portal.azure.com) で、「[ロジック アプリを作成する](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)」の手順に従って、空のロジック アプリを作成します。 **Logic Apps デザイナー** が表示されたら、このチュートリアルに戻ります。
 1. Logic Apps デザイナーのスプラッシュ ページで、 **[一般的なトリガーで開始する]** の **[HTTP 要求の受信時]** を選択します。
 
     ![Logic Apps Designer のスプラッシュ ページのスクリーンショット。[HTTP 要求の受信時] が強調表示されています。](./media/tutorial-send-email/receive-http-request.png)
@@ -116,7 +116,7 @@ ms.locfileid: "91397438"
 
     ![\+ 記号のスクリーンショット。[並列分岐の追加] オプションが強調表示されています。](./media/tutorial-send-email/add-http-response.png)
 
-1. 検索ボックスで**応答**を検索して、**応答**アクションを選択します。
+1. 検索ボックスで **応答** を検索して、**応答** アクションを選択します。
 
     ![検索バーのスクリーンショット。応答アクションが強調表示されています。](./media/tutorial-send-email/choose-response-action.png)
 
@@ -296,7 +296,7 @@ async with aiohttp.post('http://httpbin.org/post', data=json.dump(payload)) as r
 
 ### <a name="ruby"></a>[Ruby](#tab/ruby)
 
-Ruby では、[JSONClient](https://www.rubydoc.info/gems/httpclient/JSONClient) を使用して、HTTP Post を簡単に送信できます。 次に例を示します。
+Ruby では、JSONClient を使用して、HTTP Post を簡単に送信できます。 次に例を示します。
 
 ```ruby
 clnt = JSONClient.new

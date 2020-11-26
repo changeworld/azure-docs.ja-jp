@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e3e2c9aa42ff3189e90f57d7c6e92b2a71f46639
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9fe43125c83436f89bf93cbe975317efec2beb46
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061608"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542815"
 ---
 # <a name="tutorial-move-azure-sql-database-resources-to-another-region"></a>チュートリアル:Azure SQL Database リソースを別のリージョンに移動する
 
@@ -43,22 +43,22 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 -  移動するリソースを含むサブスクリプションに "*所有者*" アクセス権があることを確認します。
     - Azure サブスクリプションの特定のソースと宛先のペアに対してリソースを初めて追加すると、Resource Mover では、サブスクリプションによって信頼されている[システム割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (旧称: Managed Service ID (MSI)) が作成されます。
     - ID を作成し、必要なロール (ソース サブスクリプションの共同作成者またはユーザー アクセス管理者) に割り当てるには、リソースを追加するのに使用するアカウントに、サブスクリプションに対する "*所有者*" 権限が必要です。 Azure ロールの詳細については、[こちらを参照してください](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)。
-- サブスクリプションには、ターゲット リージョンで移動するリソースを作成するのに十分なクォータが必要です。 クォータがない場合は、[追加の制限](/azure/azure-resource-manager/management/azure-subscription-service-limits)を要求します。
+- サブスクリプションには、ターゲット リージョンで移動するリソースを作成するのに十分なクォータが必要です。 クォータがない場合は、[追加の制限](../azure-resource-manager/management/azure-subscription-service-limits.md)を要求します。
 - リソースの移動先となるターゲット リージョンに関連付けられている料金と課金を確認します。 [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用すると便利です。
     
 
 ## <a name="check-sql-requirements"></a>SQL の要件を確認する
 
 1. 別のリージョンへの移動でサポートされているデータベースまたはエラスティック プールの機能を[確認](support-matrix-move-region-sql.md)します。
-2. ターゲット リージョンで、各ソース サーバーに対してターゲット サーバーを作成します。 [詳細については、こちらを参照してください](/azure/azure-sql/database/active-geo-replication-security-configure#how-to-configure-logins-and-users)。
+2. ターゲット リージョンで、各ソース サーバーに対してターゲット サーバーを作成します。 [詳細については、こちらを参照してください](../azure-sql/database/active-geo-replication-security-configure.md#how-to-configure-logins-and-users)。
 4. データベースが Transparent Data Encryption (TDE) を使用して暗号化されており、Azure Key Vault で独自の暗号化キーを使用する場合は、キー コンテナーを別のリージョンに移動する[方法を参照](../key-vault/general/move-region.md)してください。
 5. SQL データ同期が有効になっている場合は、メンバー データベースの移動がサポートされています。 移動後、新しいターゲット データベースへの SQL データ同期を設定する必要があります。
-6. 移動前に、高度なデータ セキュリティ設定を削除します。 移動後、ターゲット リージョンの SQL Server レベルで[設定を構成](/azure/sql-database/sql-database-advanced-data-security)します。
-7. 監査が有効になっている場合は、移動後にポリシーが既定にリセットされます。 移動後に再度[監査を設定](/azure/sql-database/sql-database-auditing)します。
-7. ソース データベースのバックアップ保有ポリシーは、ターゲット データベースに引き継がれます。 移動後に設定を変更する方法の詳細について、[こちらを参照してください](/azure/sql-database/sql-database-long-term-backup-retention-configure )。
-8. 移動前に、サーバーレベルのファイアウォール規則を削除します。 移動中に、データベースレベルのファイアウォール規則がソース サーバーからターゲット サーバーにコピーされます。 移動後、ターゲット リージョンの SQL Server に対して[ファイアウォール規則を設定](/azure/sql-database/sql-database-server-level-firewall-rule)します。
-9. 移動前に自動チューニング設定を削除します。 移行後に再度[チューニングを設定](/azure/sql-database/sql-database-automatic-tuning-enable)します。
-10. 移動前に、データベースのアラート設定を削除します。 移動後に[リセット](/azure/sql-database/sql-database-insights-alerts-portal)します。
+6. 移動前に、高度なデータ セキュリティ設定を削除します。 移動後、ターゲット リージョンの SQL Server レベルで[設定を構成](../azure-sql/database/azure-defender-for-sql.md)します。
+7. 監査が有効になっている場合は、移動後にポリシーが既定にリセットされます。 移動後に再度[監査を設定](../azure-sql/database/auditing-overview.md)します。
+7. ソース データベースのバックアップ保有ポリシーは、ターゲット データベースに引き継がれます。 移動後に設定を変更する方法の詳細について、[こちらを参照してください](../azure-sql/database/long-term-backup-retention-configure.md)。
+8. 移動前に、サーバーレベルのファイアウォール規則を削除します。 移動中に、データベースレベルのファイアウォール規則がソース サーバーからターゲット サーバーにコピーされます。 移動後、ターゲット リージョンの SQL Server に対して[ファイアウォール規則を設定](../azure-sql/database/firewall-create-server-level-portal-quickstart.md)します。
+9. 移動前に自動チューニング設定を削除します。 移行後に再度[チューニングを設定](../azure-sql/database/automatic-tuning-enable.md)します。
+10. 移動前に、データベースのアラート設定を削除します。 移動後に[リセット](../azure-sql/database/alerts-insights-configure-portal.md)します。
     
 ## <a name="select-resources"></a>リソースを選択する
 

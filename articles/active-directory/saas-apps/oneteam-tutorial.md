@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 6db722a303cf4b5782578f58ff7afb9a9a1936b6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518553"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019091"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>チュートリアル:Azure Active Directory と Oneteam の統合
 
@@ -41,9 +41,9 @@ Oneteam と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Oneteam では、 **SP** と **IDP** によって開始される SSO がサポートされます
+* Oneteam では、**SP** と **IDP** によって開始される SSO がサポートされます
 
-* Oneteam では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* Oneteam では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-oneteam-from-the-gallery"></a>ギャラリーからの Oneteam の追加
 
@@ -63,13 +63,13 @@ Azure AD への Oneteam の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Oneteam** 」と入力し、結果パネルの **[Oneteam]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Oneteam**」と入力し、結果パネルの **[Oneteam]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果一覧の Oneteam](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Oneteam で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Oneteam で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Oneteam 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Oneteam で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -150,7 +150,7 @@ Oneteam で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: allensu
-ms.openlocfilehash: def14cec9d010104876acaf9588560722dd98884
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: a7eca29dc9390306ac6ad4e66eec75a25c2d33ff
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145669"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522160"
 ---
 # <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-portal"></a>チュートリアル - Azure プライベート エンドポイントを使用して Azure SQL サーバーに接続する - Azure portal
 
@@ -224,7 +224,7 @@ bastion ホストは、プライベート エンドポイントをテストす�
     SQL サーバー名に対応する **10.1.0.5** というプライベート IP アドレスが返されます。  このアドレスは、先ほど作成した仮想ネットワークのサブネット内に存在します。
 
 
-9. [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) を **myVM** にインストールします。
+9. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?preserve-view=true&view=sql-server-2017) を **myVM** にインストールします。
 
 10. **SQL Server Management Studio** を開きます。
 

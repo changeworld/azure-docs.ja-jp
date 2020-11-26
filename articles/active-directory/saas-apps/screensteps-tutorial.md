@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 3816239798290318404980ded388b726d8134395
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895176"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999792"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>チュートリアル:Azure Active Directory と ScreenSteps の統合
 
@@ -41,7 +41,7 @@ ScreenSteps と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* ScreenSteps では、 **SP** によって開始される SSO がサポートされます
+* ScreenSteps では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-screensteps-from-the-gallery"></a>ギャラリーからの ScreenSteps の追加
 
@@ -61,13 +61,13 @@ Azure AD への ScreenSteps の統合を構成するには、管理対象の Saa
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **ScreenSteps** 」と入力し、結果ウィンドウで **[ScreenSteps]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**ScreenSteps**」と入力し、結果ウィンドウで **[ScreenSteps]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの ScreenSteps](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、ScreenSteps で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、ScreenSteps で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと ScreenSteps 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 ScreenSteps で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -168,7 +168,7 @@ ScreenSteps で Azure AD シングル サインオンを構成するには、次
 
     g. **[シングル サインオン エンドポイントの編集]** に戻ります。
 
-    h. ScreenSteps にログインするすべてのユーザーについて、このエンドポイントを使用するには、 **[アカウントの既定値にする]** ボタンをクリックします。 または、 **[サイトに追加]** ボタンをクリックして、 **ScreenSteps** 内の特定のサイトにこのエンドポイントを使用することもできます。
+    h. ScreenSteps にログインするすべてのユーザーについて、このエンドポイントを使用するには、 **[アカウントの既定値にする]** ボタンをクリックします。 または、 **[サイトに追加]** ボタンをクリックして、**ScreenSteps** 内の特定のサイトにこのエンドポイントを使用することもできます。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -186,7 +186,7 @@ ScreenSteps で Azure AD シングル サインオンを構成するには、次
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。

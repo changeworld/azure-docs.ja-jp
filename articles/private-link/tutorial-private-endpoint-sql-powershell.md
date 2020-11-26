@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/31/2020
 ms.author: allensu
-ms.openlocfilehash: 36b952131c2050230de89064adc586c5a2851b65
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 7448e003771bea1e235d4e0776ebce3cb1beae17
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147698"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544090"
 ---
 # <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-powershell"></a>チュートリアル - Azure プライベート エンドポイントを使用して Azure SQL サーバーに接続する - Azure PowerShell
 
@@ -295,7 +295,7 @@ New-AzPrivateDnsZoneGroup @parameters4
     SQL サーバー名に対応する **10.0.0.5** というプライベート IP アドレスが返されます。  このアドレスは、先ほど作成した仮想ネットワークのサブネット内に存在します。
 
 
-10. [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) を **myVM** にインストールします。
+10. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?preserve-view=true&view=sql-server-2017) を **myVM** にインストールします。
 
 11. **SQL Server Management Studio** を開きます。
 

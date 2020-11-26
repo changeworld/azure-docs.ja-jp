@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77a8e6948b9912061801fefaa63d2f49611014aa
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6b510464145f434f761cc28ba4e1c1361f983f8b
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651704"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237393"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>既存の同期済み AD フォレストに対してクラウド プロビジョニングのパイロットを実施する 
 
@@ -126,7 +126,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 
 4. この操作が完了すると、構成ウィザードが起動します。  Azure AD 全体管理者アカウントでサインインします。
 5. **[Connect Active Directory]\(Active Directory の接続\)** 画面で **[ディレクトリの追加]** をクリックし、Active Directory 管理者アカウントを使用してサインインします。  この操作によってオンプレミス ディレクトリが追加されます。  **[次へ]** をクリックします。</br>
-![[Active Directory の接続] 画面のスクリーンショット。ディレクトリの値が入力されています。](media/how-to-install/install-3.png)</br>
+![[Active Directory の接続] 画面のスクリーンショット。ディレクトリの値が入力されています。](media/how-to-install/install-3a.png)</br>
 
 6. **[構成が完了しました]** 画面で、 **[Confirm]\(確認\)** をクリックします。  この操作によって、エージェントが登録されて再起動されます。</br>
 ![[構成が完了しました] 画面のスクリーンショット。[確認] ボタンが選択されています。](media/how-to-install/install-4a.png)</br>

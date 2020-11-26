@@ -13,11 +13,11 @@ ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: duau
 ms.openlocfilehash: e153edd807dcb119c34f60dc34e33fed510916bb
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277613"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011525"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>チュートリアル:Front Door にカスタム ドメインを追加する
 このチュートリアルでは、Front Door にカスタム ドメインを追加する方法を説明します。 アプリケーション デリバリーに Azure Front Door を使用している場合、独自のドメイン名がエンド ユーザーの要求で示されるようにしたいときは、カスタム ドメインが必要です。 見てわかるドメイン名を使用することは、顧客にとって便利であり、ブランド化の目的にも役立ちます。
@@ -33,7 +33,7 @@ Front Door を作成すると、`azurefd.net` のサブドメインである既�
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 > [!NOTE]
-> Front Door は [punycode](https://en.wikipedia.org/wiki/Punycode) 文字を持つカスタム ドメインをサポートして**いません**。 
+> Front Door は [punycode](https://en.wikipedia.org/wiki/Punycode) 文字を持つカスタム ドメインをサポートして **いません**。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ afdverify サブドメインを含む CNAME レコードを作成するには:
 
 1. [Azure portal](https://portal.azure.com/) にサインインし、カスタム ドメインにマップするフロントエンド ホストを含む Front Door を参照します。
     
-2. **Front Door デザイナー**のページで、[+] をクリックしてカスタム ドメインを追加します。
+2. **Front Door デザイナー** のページで、[+] をクリックしてカスタム ドメインを追加します。
     
 3. **[Custom domain]\(カスタム ドメイン\)** を指定します。 
 
@@ -121,7 +121,7 @@ afdverify サブドメインを含む CNAME レコードを作成するには:
    入力したカスタム ドメイン名に対する CNAME レコードが存在するかどうかが Azure によって確認されます。 CNAME が正しければ、カスタム ドメインが検証されます。
 
 >[!WARNING]
-> Front Door 内の各フロントエンド ホスト (カスタム ドメインを含む) に、既定のパス ("/\*") が関連付けられたルーティング規則があることを、確認する**必要があります**。 つまり、すべてのルーティング規則について、既定のパス ("/\*") で定義された各フロントエンド ホストに対するルーティング規則が少なくとも 1 つは存在する必要があります。 そうなっていないと、エンド ユーザーのトラフィックが正しくルーティングされない可能性があります。
+> Front Door 内の各フロントエンド ホスト (カスタム ドメインを含む) に、既定のパス ("/\*") が関連付けられたルーティング規則があることを、確認する **必要があります**。 つまり、すべてのルーティング規則について、既定のパス ("/\*") で定義された各フロントエンド ホストに対するルーティング規則が少なくとも 1 つは存在する必要があります。 そうなっていないと、エンド ユーザーのトラフィックが正しくルーティングされない可能性があります。
 
 ## <a name="verify-the-custom-domain"></a>カスタム ドメインを確認する
 

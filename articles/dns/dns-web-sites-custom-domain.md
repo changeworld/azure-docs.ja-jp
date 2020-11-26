@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: 151d5f083fe0e945b330d65095c908be93e3330f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 369c7dab174f0269797b10635882a6821ade8311
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316391"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952915"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>チュートリアル: カスタム ドメインにおける Web アプリの DNS レコードの作成 
 
@@ -49,7 +49,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * Azure DNS に DNS ゾーンを作成し、レジストラーのゾーンを Azure DNS に委任します。
 
-   1. DNS ゾーンを作成するには、「 [DNS ゾーンの作成](dns-getstarted-create-dnszone.md)」の手順に従います。
+   1. DNS ゾーンを作成するには、「 [DNS ゾーンの作成](./dns-getstarted-powershell.md)」の手順に従います。
    2. ゾーンを Azure DNS に委任するには、[DNS ドメインの委任](dns-delegate-domain-azure-dns.md)に関する記事の手順に従います。
 
 ゾーンを作成し、それを Azure DNS に委任したら、カスタム ドメインのレコードを作成できます。

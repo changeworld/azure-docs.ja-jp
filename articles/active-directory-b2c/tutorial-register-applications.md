@@ -12,12 +12,12 @@ ms.date: 04/10/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d38f10e5a4f2562825ed2374317602b0640894ae
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 84a3ef7b41b17e85c594213246211d45911ac56a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275878"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953051"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C に Web アプリケーションを登録する
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="register-a-web-application"></a>Web アプリケーションの登録
 
-Web アプリケーションを Azure AD B2C テナントに登録するには、Microsoft の新しい統合 **アプリの登録** エクスペリエンスか、以前の **アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregtraining)。
+Web アプリケーションを Azure AD B2C テナントに登録するには、Microsoft の新しい統合 **アプリの登録** エクスペリエンスか、以前の **アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](./app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
 
@@ -45,7 +45,7 @@ Web アプリケーションを Azure AD B2C テナントに登録するには�
 1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
-1. アプリケーションの **名前** を入力します。 たとえば、 *webapp1* とします。
+1. アプリケーションの **名前** を入力します。 たとえば、*webapp1* とします。
 1. **[サポートされているアカウントの種類]** で、 **[Accounts in any identity provider or organizational directory (for authenticating users with user flows)]\((ユーザー フローを使用してユーザーを認証するための) 任意の ID プロバイダーまたは組織のディレクトリのアカウント\)** を選択します。
 1. **[リダイレクト URI]** で、 **[Web]** を選択し、URL テキスト ボックスに「`https://jwt.ms`」と入力します。
 
@@ -65,7 +65,7 @@ Web アプリケーションを Azure AD B2C テナントに登録するには�
 1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリケーション (レガシ)]** を選択し、 **[追加]** を選択します。
-1. アプリケーションの名前を入力します。 たとえば、 *webapp1* とします。
+1. アプリケーションの名前を入力します。 たとえば、*webapp1* とします。
 1. **[Web アプリ/Web API を含める]** には、 **[はい]** を選択します。
 1. **[応答 URL]** には、ご使用のアプリケーションが要求したすべてのトークンを Azure AD B2C が返すエンドポイントを入力します。 たとえば、`http://localhost:5000` でローカルにリッスンするように設定します。 お使いの登録済みアプリケーションでは、いつでもリダイレクト URI を追加したり、変更したりすることができます。
 
@@ -84,16 +84,16 @@ Web アプリケーションの場合は、アプリケーション シークレ
 
 #### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
 
-1. **[Azure AD B2C - アプリの登録]** ページで、作成したアプリケーション (例: *webapp1* ) を選択します。
+1. **[Azure AD B2C - アプリの登録]** ページで、作成したアプリケーション (例: *webapp1*) を選択します。
 1. 左側のメニューで、 **[管理]** の **[証明書とシークレット]** を選択します。
 1. **[新しいクライアント シークレット]** を選択します。
-1. **[説明]** ボックスにクライアント シークレットの説明を入力します。 たとえば、 *clientsecret1* のようにします。
+1. **[説明]** ボックスにクライアント シークレットの説明を入力します。 たとえば、*clientsecret1* のようにします。
 1. **[有効期限]** で、シークレットが有効な期間を選択してから、 **[追加]** を選択します。
 1. シークレットの **値** を記録します。 アプリケーションのコード内で、この値をアプリケーション シークレットとして使用します。
 
 #### <a name="applications-legacy"></a>[アプリケーション (レガシ)](#tab/applications-legacy/)
 
-1. **[Azure AD B2C - アプリケーション]** ページで、作成したアプリケーション (例: *webapp1* ) を選択します。
+1. **[Azure AD B2C - アプリケーション]** ページで、作成したアプリケーション (例: *webapp1*) を選択します。
 1. **[キー]** を選択し、 **[キーの生成]** を選択します。
 1. **[保存]** を選択し、キーを参照します。 **アプリ キー** の値をメモしておきます。 アプリケーションのコード内で、この値をアプリケーション シークレットとして使用します。
 
