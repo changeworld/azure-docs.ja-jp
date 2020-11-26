@@ -244,7 +244,7 @@
     - name: Microsoft Graph REST API ベータ版
       href: /graph/api/resources/authenticationmethods-overview?view=graph-rest-beta
     - name: サービスの制限と制約
-      href: ../users-groups-roles/directory-service-limits-restrictions.md
+      href: ../enterprise-users/directory-service-limits-restrictions.md
 - name: リソース
   items:
     - name: Azure フィードバック フォーラム

@@ -51,7 +51,7 @@
         - name: レポートのプロビジョニング
           href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: MS Graph を使用した構成の自動化
-      href: 'https://docs.microsoft.com/graph/application-provisioning-configure-api'
+      href: /graph/application-provisioning-configure-api
     - name: アプリケーションのプロビジョニングのトラブルシューティング
       items:
         - name: 既知の問題

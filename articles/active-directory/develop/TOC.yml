@@ -490,7 +490,7 @@
         - name: 一般的なプロビジョニングのシナリオ
           href: ../app-provisioning/scim-graph-scenarios.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
         - name: MS Graph を使用した構成の自動化
-          href: ../app-provisioning/application-provisioning-configure-api.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
+          href: /graph/application-provisioning-configure-api?bc=%2fazure%2factive-directory%2fdevelop%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fdevelop%2ftoc.json
     - name: Azure portal のヘルプ記事
       items:
         - name: 独自に開発したアプリケーションのトークン有効期間の既定値
