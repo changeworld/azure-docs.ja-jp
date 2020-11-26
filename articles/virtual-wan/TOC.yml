@@ -67,6 +67,10 @@
           href: virtual-wan-ipsec.md
         - name: 複数の ISP リンク - Azure パスの選択
           href: path-selection-multiple-links.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: 価格の概念
       href: pricing-concepts.md
     - name: 仮想ハブの NVA について
@@ -131,7 +135,7 @@
               href: virtual-wan-route-table-nva-portal.md
             - name: Azure PowerShell
               href: virtual-wan-route-table-nva.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: Azure Firewall をハブにデプロイする
           href: howto-firewall.md

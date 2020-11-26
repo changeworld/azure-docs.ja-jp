@@ -11,9 +11,9 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: .NET Core
+    - name: ASP.NET Core
       href: quickstart-dotnetcore.md
-    - name: .NET Framework
+    - name: ASP.NET
       href: quickstart-dotnet-framework.md
     - name: Node.js
       href: quickstart-nodejs.md
@@ -52,9 +52,9 @@
           href: scenario-secure-app-clean-up-resources.md
     - name: アプリと DB
       items:
-        - name: .NET Core と SQL DB
+        - name: ASP.NET Core と SQL DB
           href: tutorial-dotnetcore-sqldb-app.md
-        - name: .NET Framework と SQL DB
+        - name: ASP.NET と SQL DB
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP と MySQL
           href: tutorial-php-mysql-app.md
@@ -106,7 +106,7 @@
       href: operating-system-functionality.md
     - name: デプロイのベスト プラクティス
       href: deploy-best-practices.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: Recommendations
           href: security-recommendations.md

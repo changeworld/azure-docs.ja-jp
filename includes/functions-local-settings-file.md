@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
-ms.openlocfilehash: aae89e1c6f8db2fb657ac2a43c4bce0396ab3ddd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d944d1d3e9c72471fab2435430a7d13e1770e807
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91376869"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010484"
 ---
 ## <a name="local-settings-file"></a>ローカル設定ファイル
 
@@ -46,13 +46,13 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
 | **`LocalHttpPort`** | ローカルの Functions ホストの実行時に使用される既定のポートを設定します (`func host start`と`func run`)。 `--port` コマンド ライン オプションは、この設定より優先されます。 |
 | **`CORS`** | [クロス オリジン リソース共有 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) で許可されるオリジンを定義します。 スペースなしのコンマ区切りのリストでオリジンを指定します。 ワイルドカード値 (\*) がサポートされており、これによって任意のオリジンからの要求を許可できます。 |
 | **`CORSCredentials`** |  `true` に設定すると、`withCredentials` 要求が許可されます。 |
-| **`ConnectionStrings`** | コレクション。 関数のバインディングで使用される接続文字列にこのコレクションを使用しないでください。 このコレクションは、[Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx) など、構成ファイルの `ConnectionStrings` セクションから接続文字列を取得するのが一般的なフレームワークでのみ使用されます。 このオブジェクト内の接続文字列は、[System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) のプロバイダーの種類と共に、環境に追加されます。 他のアプリ設定では、このコレクション内の項目は Azure に発行されません。 ご自分の関数アプリの設定の `Connection strings` コレクションに、これらの値を明示的に追加する必要があります。 関数コードで [`SqlConnection`](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) を作成する場合は、接続文字列の値を他の接続と共に、ポータル内の**アプリケーション設定**に格納する必要があります。 |
+| **`ConnectionStrings`** | コレクション。 関数のバインディングで使用される接続文字列にこのコレクションを使用しないでください。 このコレクションは、[Entity Framework](/ef/ef6/) など、構成ファイルの `ConnectionStrings` セクションから接続文字列を取得するのが一般的なフレームワークでのみ使用されます。 このオブジェクト内の接続文字列は、[System.Data.SqlClient](/dotnet/api/system.data.sqlclient) のプロバイダーの種類と共に、環境に追加されます。 他のアプリ設定では、このコレクション内の項目は Azure に発行されません。 ご自分の関数アプリの設定の `Connection strings` コレクションに、これらの値を明示的に追加する必要があります。 関数コードで [`SqlConnection`](/dotnet/api/system.data.sqlclient.sqlconnection) を作成する場合は、接続文字列の値を他の接続と共に、ポータル内の **アプリケーション設定** に格納する必要があります。 |
 
 次のアプリケーション設定は、ローカルでの実行時に **`Values`** 配列に含めることができます。
 
 | 設定 | 値 | 説明 |
 |-----|-----|-----|
-|**`AzureWebJobsStorage`**| ストレージ アカウント接続文字列、または<br/>`UseDevelopmentStorage=true`| Azure ストレージ アカウントの接続文字列を含みます。 HTTP 以外のトリガーを使用する場合には必須です。 詳しくは、[`AzureWebJobsStorage`] のリファレンスを参照してください。<br/>[Azure ストレージ エミュレーター](../articles/storage/common/storage-use-emulator.md)がローカルにインストールされ、[`AzureWebJobsStorage`] を `UseDevelopmentStorage=true` に設定すると、Core Tools ではエミュレーターが使用されます。 エミュレーターは開発中には便利ですが、デプロイする前に実際のストレージに接続してテストする必要があります。| 
+|**`AzureWebJobsStorage`**| ストレージ アカウント接続文字列、または<br/>`UseDevelopmentStorage=true`| Azure ストレージ アカウントの接続文字列を含みます。 HTTP 以外のトリガーを使用する場合には必須です。 詳しくは、[`AzureWebJobsStorage`] のリファレンスを参照してください。<br/>[Azure ストレージ エミュレーター](../articles/storage/common/storage-use-emulator.md)がローカルにインストールされ、[`AzureWebJobsStorage`] を `UseDevelopmentStorage=true` に設定すると、Core Tools でエミュレーターが使用されます。 エミュレーターは開発中には便利ですが、デプロイする前に実際のストレージに接続してテストする必要があります。| 
 |**`AzureWebJobs.<FUNCTION_NAME>.Disabled`**| `true`\|`false` | ローカルで実行しているときに関数を無効にするには、`"AzureWebJobs.<FUNCTION_NAME>.Disabled": "true"` をコレクションに追加します。`<FUNCTION_NAME>` は関数の名前です。 詳細については、[Azure Functions で関数を無効にする方法](../articles/azure-functions/disable-function.md#localsettingsjson)に関する記事を参照してください。 |
 |**`FUNCTIONS_WORKER_RUNTIME`** | `dotnet`<br/>`node`<br/>`java`<br/>`powershell`<br/>`python`| Functions ランタイムのターゲット言語を示します。 バージョン 2.x 以上の Functions ランタイムで必須です。 この設定は、お客様のプロジェクト用に Core Tools によって生成されます。 詳細については、[`FUNCTIONS_WORKER_RUNTIME`](../articles/azure-functions/functions-app-settings.md#functions_worker_runtime) のリファレンスを参照してください。|
 | **`FUNCTIONS_WORKER_RUNTIME_VERSION`** | `~7` |ローカルでの実行時に使用される PowerShell 7 を示します。 設定されていない場合は、PowerShell Core 6 が使用されます。 この設定は、ローカルでの実行時にのみ使用されます。 Azure で実行する場合、PowerShell ランタイムのバージョンは、`powerShellVersion` サイト構成設定によって決まります。これは、[ポータルで設定](../articles/azure-functions/functions-reference-powershell.md#changing-the-powershell-version)できます。 | 

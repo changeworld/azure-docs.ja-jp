@@ -22,6 +22,12 @@
           href: howto-create-private-cluster-4x.md
         - name: DNS 転送を構成する
           href: dns-forwarding.md
+    - name: Storage
+      items:
+        - name: Azure Files Storageclass を作成する
+          href: howto-create-a-storageclass.md
+        - name: 組み込みのコンテナー レジストリを使用する
+          href: built-in-container-registry.md
     - name: セキュリティと認証
       items:
         - name: Azure Active Directory 認証を構成する (CLI)

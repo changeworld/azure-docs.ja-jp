@@ -8,27 +8,27 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: cauribeg
 ms.custom: include file
-ms.openlocfilehash: 07a80fcd1ec62b051a660bdac696f89e3b7c42b7
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: da36cb5c5d2db20b89f80d381f48632c7528c193
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93354122"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002463"
 ---
-1. キャッシュを作成するには、 [Azure portal](https://portal.azure.com) にサインインし、 **[リソースの作成]** を選択します。
+1. キャッシュを作成するには、[Azure portal](https://portal.azure.com) にサインインし、 **[リソースの作成]** を選択します。
 
-    :::image type="content" source="media/redis-cache-create/create-resource.png" alt-text="[Azure Cache for Redis] を選択します。":::
+    :::image type="content" source="media/redis-cache-create/create-resource.png" alt-text="左側のナビゲーション ペインの [リソースの作成] が強調表示されています。":::
 
    
 1. **[新規]** ページで、 **[データベース]** を選択し、 **[Azure Cache for Redis]** を選択します。
 
-    :::image type="content" source="media/redis-cache-create/select-cache.png" alt-text="[Azure Cache for Redis] を選択します。":::
+    :::image type="content" source="media/redis-cache-create/select-cache.png" alt-text="[新規] で、 [データベース] が強調表示され、[Azure Cache for Redis] が強調表示されています。":::
    
 1. **[新規 Redis Cache]** ページで、新しいキャッシュの設定を構成します。
    
    | 設定      | 推奨値  | 説明 |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS 名** | グローバルに一意の名前を入力します。 | キャッシュ名は 1 から 63 文字の文字列で、数字、英字、ハイフンのみを使用する必要があります。 名前の先頭と末尾には数字または文字を使用する必要があり、連続するハイフンを含めることはできません。 キャッシュ インスタンスの " *ホスト名* " は、 *\<DNS name>.redis.cache.windows.net* になります。 | 
+   | **DNS 名** | グローバルに一意の名前を入力します。 | キャッシュ名は 1 から 63 文字の文字列で、数字、英字、ハイフンのみを使用する必要があります。 名前の先頭と末尾には数字または文字を使用する必要があり、連続するハイフンを含めることはできません。 キャッシュ インスタンスの "*ホスト名*" は、 *\<DNS name>.redis.cache.windows.net* になります。 | 
    | **サブスクリプション** | ドロップダウンで、ご自身のサブスクリプションを選択します。 | この新しい Azure Cache for Redis インスタンスが作成されるサブスクリプション。 | 
    | **リソース グループ** | ドロップ ダウンでリソース グループを選択するか、 **[新規作成]** を選択し、新しいリソース グループの名前を入力します。 | その中にキャッシュやその他のリソースを作成するリソース グループの名前。 すべてのアプリ リソースを 1 つのリソース グループに配置することで、それらをまとめて簡単に管理または削除できます。 | 
    | **場所** | ドロップ ダウンで場所を選択します。 | キャッシュを使用する他のサービスの近くの[リージョン](https://azure.microsoft.com/regions/)を選択します。 |
@@ -54,4 +54,4 @@ ms.locfileid: "93354122"
 
 1. 緑色の検証に成功のメッセージが表示された後、 **[作成]** を選択します。
 
-キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に " **実行中** " と表示されている場合は、キャッシュを使用する準備ができています。 
+キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に "**実行中**" と表示されている場合は、キャッシュを使用する準備ができています。 

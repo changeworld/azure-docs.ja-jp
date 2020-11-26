@@ -9,7 +9,7 @@
     - name: Azure AD へのユーザーの追加
       href: ../fundamentals/add-users-azure-active-directory.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
     - name: ユーザーへのライセンスの割り当て
-      href: /azure/active-directory/fundamentals/license-users-groups?context=%2fazure/active-directory/enterprise-users/context/ugr-context
+      href: ../fundamentals/license-users-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
     - name: グループの有効期限の設定
       href: groups-quickstart-expiration.md
     - name: グループの名前付けポリシーの設定
@@ -57,13 +57,13 @@
         - name: 非管理対象ディレクトリのアカウントを削除する
           href: users-close-account.md
         - name: ゲスト ユーザーを追加する
-          href: /azure/active-directory/b2b/what-is-b2b?context=%2fazure/active-directory/enterprise-users/context/ugr-context
+          href: ../external-identities/what-is-b2b.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: ゲスト ユーザーにロールを割り当てる
-          href: /azure/active-directory/b2b/add-guest-to-role?context=%2fazure/active-directory/enterprise-users/context/ugr-context
+          href: ../external-identities/add-guest-to-role.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: ゲスト ユーザーのアクセスを制限する
           href: users-restrict-guest-permissions.md
         - name: 動的グループとゲスト
-          href: /azure/active-directory/b2b/use-dynamic-groups?context=%2fazure/active-directory/enterprise-users/context/ugr-context
+          href: ../external-identities/use-dynamic-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
     - name: 組織を管理する
       items:
         - name: Azure AD 組織
