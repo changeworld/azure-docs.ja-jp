@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: a05f168b18f32e2b4730e5ef50624d41fb48e147
-  ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+  ms.openlocfilehash: bcba2b48fdecda311ce349f90ba43023b906bd44
+  ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/30/2020
-  ms.locfileid: "93099098"
+  ms.lasthandoff: 11/26/2020
+  ms.locfileid: "96186407"
 landingContent:
 - title: Azure Digital Twins について
   linkLists:
@@ -71,20 +71,24 @@ landingContent:
     links:
     - text: アプリ認証コードを作成する
       url: how-to-authenticate-client.md
-- title: API リファレンスを表示する
+- title: API を調べる
   linkLists:
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: /rest/api/azure-digitaltwins/
   - linkListType: how-to-guide
     links:
     - text: Azure Digital Twins の API および SDK を使用する
       url: how-to-use-apis-sdks.md
   - linkListType: how-to-guide
     links:
+    - text: Postman で要求を行う
+      url: how-to-use-postman.md
+  - linkListType: how-to-guide
+    links:
     - text: AutoRest を使用してカスタム SDK を作成する
       url: how-to-create-custom-sdks.md
-  - linkListType: reference
-    links:
-    - text: REST API
-      url: /rest/api/azure-digitaltwins/
 - title: コード サンプルを確認する
   linkLists:
   - linkListType: sample

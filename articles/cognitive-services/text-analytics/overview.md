@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/02/2020
+ms.date: 11/17/2020
 ms.author: aahi
 keywords: テキスト マイニング、感情分析、テキスト分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 6d10161609abda321ed1be9dfda0acabf2030c9e
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 14dfa6111bbda8750b175c8c9b2a96321e1af2c5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365297"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519406"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Text Analytics API とは
 
@@ -47,9 +47,18 @@ Text Analytics API は、テキスト マイニングとテキスト分析のた
 
 名前付きエンティティの認識 (NER) は、テキスト内のエンティティを、人、場所、組織、数量として[識別して分類](how-tos/text-analytics-how-to-entity-linking.md)できます。既知のエンティティも認識され、Web 上の詳細情報にリンクされます。
 
-## <a name="use-containers"></a>コンテナーの使用
+## <a name="deploy-on-premises-using-docker-containers"></a>Docker コンテナーを使用してオンプレミスにデプロイする
 
-テキストのマイニングと API の使用のためのオンプレミス ソリューションとして [Text Analytics コンテナーを使用](how-tos/text-analytics-how-to-install-containers.md)します。 これらの Docker コンテナーを使用すると、キーフレーズの抽出、言語の検出、感情の分析をデータに近い形で行うことができます。
+[Text Analytics コンテナーを使用](how-tos/text-analytics-how-to-install-containers.md)して、API 機能をオンプレミスにデプロイします。 これらの Docker コンテナーを使用すると、コンプライアンス、セキュリティ、またはその他の運用上の理由により、データにより近いところでサービスを使用できます。 Text Analytics には、次のコンテナーが用意されています。
+
+* 感情分析
+* キー フレーズ抽出 (プレビュー)
+* 言語検出 (プレビュー)
+* Text Analytics for Health (プレビュー)
+
+## <a name="asynchronous-operations"></a>非同期操作
+
+`/analyze` エンドポイントを使用すると、NER やキー フレーズ抽出などの Text Analytics API の選択した機能を[非同期に](how-tos/text-analytics-how-to-call-api.md)使用できます。
 
 ## <a name="typical-workflow"></a>一般的なワークフロー
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1648bd9a073bca696299e9ed703536db745e7edb
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: ad689c746a0f4d7232e7f61982fb8c4f735cbe34
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912839"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95737804"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>チュートリアル:ビデオとトランスクリプトのモデレーション
 
@@ -35,7 +35,7 @@ ms.locfileid: "92912839"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)の Web サイトにサインアップして、カスタム タグを作成します。 この手順に関するヘルプが必要な場合は、[タグの使用](./review-tool-user-guide/configure.md#tags)に関する記事をご覧ください。
+- [Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)の Web サイトにサインアップして、特定する機能のカスタム タグを作成します。 この手順に関するヘルプが必要な場合は、[タグの使用](./review-tool-user-guide/configure.md#tags)に関する記事をご覧ください。
 
     ![ビデオ モデレーションのカスタム タグのスクリーンショット](images/video-tutorial-custom-tags.png)
 - サンプル アプリケーションを実行するには、Azure アカウント、Azure Media Services リソース、Azure Content Moderator リソース、および Azure Active Directory の資格情報が必要です。 これらを取得する方法については、[ビデオ モデレート API](video-moderation-api.md) に関するガイドを参照してください。
@@ -57,7 +57,7 @@ ms.locfileid: "92912839"
 
 ## <a name="examine-the-main-code"></a>メイン コードを確認する
 
-ビデオ モデレーション アプリケーションに対するメイン エントリ ポイントは、`Program.cs` 内の `Program` クラスです。
+_Program.cs_ 内のクラス **Program** は、ビデオ モデレーション アプリケーションに対するメイン エントリ ポイントです。
 
 ### <a name="methods-of-program-class"></a>Program クラスのメソッド
 
@@ -116,7 +116,7 @@ ms.locfileid: "92912839"
 ネットワーク トラフィックを最小限に抑えるために、アプリケーションは、ビデオ ファイルを H.264 (MPEG-4 AVC) 形式に変換し、640 ピクセルの最大幅にスケーリングします。 H.264 コーデックは、高効率 (高圧縮率) であるため、推奨されています。 圧縮は、Visual Studio ソリューションの `Lib` フォルダーに含まれている、無料の `ffmpeg` コマンド ライン ツールを使用して実行されます。 `ffmpeg` は、もっとも一般的に使用されているビデオ ファイル形式とコーデックを含め、あらゆる形式の入力ファイルをサポートしています。
 
 > [!NOTE]
-> コマンド ライン オプションを使用してプログラムを起動するとき、モデレーションのために送信するビデオ ファイルを含むディレクトリを指定します。 このディレクトリ内のファイル名拡張子が `.mp4` であるすべてのファイルが処理されます。 その他のファイル名拡張子を処理するには、`Program.cs` 内の `Main()` メソッドを、目的の拡張子が含まれるように更新します。
+> コマンド ライン オプションを使用してプログラムを起動するとき、モデレーションのために送信するビデオ ファイルを含むディレクトリを指定します。 このディレクトリ内のファイル名拡張子が `.mp4` であるすべてのファイルが処理されます。 他のファイル名拡張子を処理するには、_Program.cs_ 内の `Main()` メソッドを、目的の拡張子が含まれるように更新します。
 
 1 つのビデオ ファイルを圧縮するコードは、`AMSComponent.cs` 内の `AmsComponent` クラスです。 この機能を担当するメソッドは `CompressVideo()` であり、これを次に示します。
 
@@ -138,7 +138,7 @@ ms.locfileid: "92912839"
 
 ## <a name="upload-and-moderate-the-video"></a>ビデオをアップロードしてモデレートする
 
-ビデオは、Content Moderation サービスによって処理される前に、Azure Media Services に保存しておく必要があります。 `Program.cs` 内の `Program` クラスに、ビデオをアップロードするために使用されるストリーミング要求を表すオブジェクトを返す短い `CreateVideoStreamingRequest()` メソッドがあります。
+ビデオは、Content Moderation サービスによって処理される前に、Azure Media Services に保存しておく必要があります。 _Program.cs_ 内の **Program** クラスには、ビデオをアップロードするために使用されるストリーミング要求を表すオブジェクトを返す短い `CreateVideoStreamingRequest()` メソッドがあります。
 
 [!code-csharp[CreateVideoStreamingRequest](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/Program.cs?range=120-133)]
 
@@ -228,7 +228,7 @@ ms.locfileid: "92912839"
 
 ## <a name="create-a-human-review"></a>人間のレビューを作成する
 
-モデレーション プロセスは、ビデオからキー フレームの一覧を、オーディオ トラックのトランスクリプトと共に返します。 次の手順は、Content Moderator レビュー ツールでの人間のモデレーター用のレビューの作成です。 `Program.cs` 内の `ProcessVideo()` メソッドに戻ると、`CreateVideoReviewInContentModerator()` メソッドへの呼び出しがあることがわかります。 このメソッドは、次に示すように、`VideoReviewAPI.cs` 内の `videoReviewApi` クラス内にあります。
+モデレーション プロセスは、ビデオからキー フレームの一覧を、オーディオ トラックのトランスクリプトと共に返します。 次の手順は、Content Moderator レビュー ツールでの人間のモデレーター用のレビューの作成です。 _Program.cs_ 内の `ProcessVideo()` メソッドに戻ると、`CreateVideoReviewInContentModerator()` メソッドへの呼び出しがあることがわかります。 このメソッドは、次に示すように、`VideoReviewAPI.cs` 内の `videoReviewApi` クラス内にあります。
 
 [!code-csharp[CreateVideoReviewInContentModerator](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=42-69)]
 
@@ -319,7 +319,7 @@ ms.locfileid: "92912839"
 
 `TextScreen()` は大きなメソッドであるため、分解してみましょう。
 
-1. 最初に、このメソッドは、トランスクリプト ファイルを 1 行づつ読み取ります。 空白行と、`NOTE` と信頼度スコアを含む行は無視されます。 ファイル内の " *キュー* " からタイムスタンプとテキスト項目を抽出します。 キューは、オーディオ トラックからのテキストを表し、開始時刻と終了時刻が含まれています。 キューは、文字列 `-->` を含むタイム スタンプ行で始まります。 1 行または複数行のテキストが続きます。
+1. 最初に、このメソッドは、トランスクリプト ファイルを 1 行づつ読み取ります。 空白行と、`NOTE` と信頼度スコアを含む行は無視されます。 ファイル内の "*キュー*" からタイムスタンプとテキスト項目を抽出します。 キューは、オーディオ トラックからのテキストを表し、開始時刻と終了時刻が含まれています。 キューは、文字列 `-->` を含むタイム スタンプ行で始まります。 1 行または複数行のテキストが続きます。
 
 1. `CaptionScreentextResult` インスタンス (`TranscriptProfanity.cs`内に定義されます) を使用して、各キューから解析された情報を保持します。  新しいタイムスタンプ行が検出されるか、テキストの最大長である 1024 文字に達すると、新しい `CaptionScreentextResult` が `csrList` に追加されます。 
 

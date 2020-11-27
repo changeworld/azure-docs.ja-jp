@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 08/14/2020
+ms.date: 11/19/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 905dde6932afb440c34bcccb563bfda98f23eb7c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: c60adb09da05ba945bcf6ccb55e71c395f064211
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363835"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965104"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Text Analytics API のデータとレートの制限
 <a name="data-limits"></a>
@@ -31,24 +31,28 @@ ms.locfileid: "94363835"
 
 | 制限 | 値 |
 |------------------------|---------------|
-| 1 つのドキュメントの最大サイズ | [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements) によって計測された 5,120 文字。 また、これは Text Analytics for Health コンテナーにも適用されます。 |
-| 要求全体の最大サイズ | 1 MB。 また、これは Text Analytics for Health コンテナーにも適用されます。 |
+| 1 つのドキュメントの最大サイズ | [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements) によって計測された 5,120 文字。 Text Analytics for Health にも適用されます。 |
+| 1 つのドキュメントの最大サイズ (`/analyze` エンドポイント)  | [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements) によって計測された 125K 文字。 Text Analytics for Health には適用されません。 |
+| 要求全体の最大サイズ | 1 MB。 Text Analytics for Health にも適用されます。 |
 
-1 回の要求で送信できるドキュメントの最大数は、使用している API のバージョンと機能によって異なります。
+1 回の要求で送信できるドキュメントの最大数は、使用している API のバージョンと機能によって異なります。 ドキュメントが最大サイズ (125K 文字) を超えている場合は、`/analyze` エンドポイントによって要求全体が拒否されます。
 
 #### <a name="version-3"></a>[Version 3](#tab/version-3)
 
-API の v3 では、次の制限が変更されています。 以下の制限を超えると、HTTP 400 エラー コードが生成されます。
+次の制限は、現在の v3 API を対象としています。 以下の制限を超えると、HTTP 400 エラー コードが生成されます。
 
 
 | 機能 | 要求あたりのドキュメントの最大数 | 
 |----------|-----------|
 | 言語検出 | 1000 |
 | 感情分析 | 10 |
+| オピニオン マイニング | 10 |
 | キー フレーズ抽出 | 10 |
 | 名前付きエンティティの認識 | 5 |
 | Entity Linking | 5 |
-| Text Analytics for Health コンテナー | 1000 |
+| Text Analytics for Health  | Web ベース API の場合は 10、コンテナーの場合は 1000 です。 |
+| 分析エンドポイント | すべての操作で 25 です。 |
+
 #### <a name="version-2"></a>[Version 2](#tab/version-2)
 
 | 機能 | 要求あたりのドキュメントの最大数 | 
@@ -68,13 +72,13 @@ API の v3 では、次の制限が変更されています。 以下の制限�
 | レベル          | 1 秒あたりの要求数 | 1 分あたりの要求数 |
 |---------------|---------------------|---------------------|
 | S/マルチサービス | 1000                | 1000                |
-| S0/F0         | 100                 | 該当なし                 |
+| S0/F0         | 100                 | 300                 |
 | S1            | 200                 | 300                 |
 | S2            | 300                 | 300                 |
 | S3            | 500                 | 500                 |
 | S4            | 1000                | 1000                |
 
-要求数は、Text Analytics の機能ごとに個別に測定されます。 たとえば、各機能に対して、利用中の価格レベルで最大数の要求を同時に送信できます。  
+要求レートは、Text Analytics の機能ごとに個別に測定されます。 各機能に対して、利用中の価格レベルで最大数の要求を同時に送信できます。 たとえば、`S` レベルを利用中で、1000 の要求を一度に送信した場合、59 秒間は別の要求を送信できなくなります。
 
 
 ## <a name="see-also"></a>関連項目

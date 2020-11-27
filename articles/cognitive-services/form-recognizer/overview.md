@@ -7,29 +7,56 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 09/21/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 自動データ処理、ドキュメント処理、自動データ入力、フォーム処理
-ms.openlocfilehash: 5243c170e1f6b5f647057b8cfafbcac9b2fb4db3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 05024b8d7f4cf76024d71a79cb1fce489d58ee70
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91318961"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519525"
 ---
 # <a name="what-is-form-recognizer"></a>Form Recognizer とは
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure Form Recognizer は、機械学習テクノロジを利用して自動データ処理ソフトウェアを構築ことを可能にするコグニティブ サービスです。 テキスト、キーと値のペア、テーブル データを特定し、form ドキュメントから抽出します。&mdash;元のファイルにおける関係を含む構造化データがこのサービスにより出力されます。 手作業による操作やデータ サイエンスに関する専門知識があまりなくても、特定のコンテンツに合わせた正確な結果がすばやく得られます。 Form Recognizer を使用して、アプリケーションへのデータ入力を自動化します。
+Azure Form Recognizer は、機械学習テクノロジを利用して自動データ処理ソフトウェアを構築ことを可能にするコグニティブ サービスです。 ドキュメントからテキスト、キーと値のペア、選択マーク、テーブル、構造を特定して抽出します。このサービスによって、元のファイル、境界ボックス、信頼度などのリレーションシップを含む構造化データが出力されます。 手作業による操作やデータ サイエンスに関する専門知識があまりなくても、特定のコンテンツに合わせた正確な結果がすばやく得られます。 Form Recognizer を使用して、アプリケーションのデータ入力を自動化し、ドキュメントの検索機能を強化します。
 
-Form Recognizer は、カスタム ドキュメント処理モデル、事前構築済みのレシートと名刺のモデル、およびレイアウト API で構成されています。 REST API またはクライアント ライブラリ SDK を使用して Form Recognizer モデルを呼び出すことにより、複雑さを軽減し、自分のワークフローやアプリケーションに統合することができます。
+Form Recognizer は、カスタム ドキュメント処理モデル、および請求書、レシート、名刺に対する事前構築済みモデル、およびレイアウト モデルで構成されています。 REST API またはクライアント ライブラリ SDK を使用して Form Recognizer モデルを呼び出すことにより、複雑さを軽減し、自分のワークフローやアプリケーションに統合することができます。
 
 Form Recognizer は、次のサービスで構成されています。
-* **[カスタム モデル](#custom-models)** - フォームからキーと値のペアおよびテーブル データを抽出します。 これらのモデルは自分が用意した独自のデータでトレーニングされるため、実際のフォームに合わせて調整されます。
-* **[事前構築済みモデル](#prebuilt-models)** - 事前構築済みモデルを使用して、一意のフォームの種類からデータを抽出します。 現在利用可能なのは、英語のレシートと名刺用の事前構築済みモデルです。
-* **[Layout API](#layout-api)** - テキストおよびテーブルの構造を、対応する境界ボックスの座標と共にドキュメントから抽出します。
+* **[Layout API](#layout-api)** - テキスト、選択マーク、およびテーブルの構造を、対応する境界ボックスの座標と共にドキュメントから抽出します。
+* **[カスタム モデル](#custom-models)** - フォームからテキスト、キーと値のペア、選択マーク、およびテーブル データを抽出します。 これらのモデルは自分が用意した独自のデータでトレーニングされるため、実際のフォームに合わせて調整されます。
+* **[事前構築済みモデル](#prebuilt-models)** - 事前構築済みモデルを使用して、一意のフォームの種類からデータを抽出します。 現在使用できるのは、次の事前構築済みモデルです。
+    * [Invoices](./concept-invoices.md)
+    * [レシート](./concept-receipts.md)
+    * [名刺](./concept-business-cards.md)
+
+
+## <a name="try-it-out"></a>試してみる
+
+Form Recognizer サービスを試してみるには、オンラインのサンプル UI ツールにアクセスしてください。
+
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)
+> [!div class="nextstepaction"]
+> [事前構築済みモデルを試す](https://fott.azurewebsites.net/)
+
+# <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1)
+> [!div class="nextstepaction"]
+> [事前構築済みモデルを試す](https://fott-preview.azurewebsites.net/)
+
+---
+
+Form Recognizer サービスを試すには、Azure サブスクリプション ([無料で作成](https://azure.microsoft.com/free/cognitive-services)) と [Form Recognizer リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) エンドポイントおよびキーが必要です。
+
+## <a name="layout-api"></a>Layout API
+
+Form Recognizer では、高精細の光学式文字認識 (OCR) とドキュメントからの高度なディープ ラーニング モデルを使用して、テキスト、選択マーク、およびテーブル構造 (テキストに関連付けられた行および列番号) を抽出できます。 詳細については、[レイアウト](./concept-layout.md)の概念ガイドを参照してください。
+
+:::image type="content" source="./media/tables-example.jpg" alt-text="テーブルの例" lightbox="./media/tables-example.jpg":::
 
 ## <a name="custom-models"></a>カスタム モデル
 
@@ -47,48 +74,57 @@ Form Recognizer は、既定では教師なし学習を使用して、フォー�
 
 ラベル付けされたデータによるモデルのトレーニングでは、ラベル付けされた指定のフォームを使用して教師あり学習を行うことで、目的とする値が抽出されます。 こちらの方が、複雑なフォームや、キーのない値を含んだフォームでも機能する性能のよいモデルが得られます。
 
-Form Recognizer は、印刷されたテキストや手書きのテキストの要素について、[Layout API](#layout-api) を使用して予想されるサイズや位置を学習します。 その後、ユーザーによって指定されたラベルを使用して、ドキュメントに含まれるキーと値の関係を学習します。 新しいモデルをトレーニングする際はまず、手動でラベル付けされた同じタイプのフォーム 5 つを使用し、そのうえで、モデルの精度を改善するために必要であれば、ラベル付けされたデータを追加することをお勧めします。
+Form Recognizer は、印刷されたテキストや手書きのテキストの要素について、[Layout API](#layout-api) を使用して予想されるサイズや位置を学習します。 その後、ユーザーによって指定されたラベルを使用して、ドキュメントに含まれるキーと値の関係を学習します。 新しいモデルをトレーニングする際はまず、手動でラベル付けされた同じタイプ (同じ構造) のフォーム 5 つを使用し、そのうえで、モデルの精度を改善するために必要であれば、ラベル付けされたデータを追加することをお勧めします。
+
+[ラベルを使用したトレーニングを開始する](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
+
+
+> [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
+
 
 ## <a name="prebuilt-models"></a>事前構築済みのモデル
 
 Form Recognizer には、固有のフォームの種類を持つ自動データ処理用の事前構築済みモデルも含まれています。
 
+### <a name="prebuilt-invoice-model"></a>事前構築済みの請求書モデル
+事前構築済みの請求書モデルでは、さまざまな形式の請求書からデータが抽出されて、構造化データが返されます。 このモデルでは、請求書 ID、顧客の詳細、仕入先の詳細、出荷先、請求先、合計金額、税金、小計などの主要な情報が抽出されます。 さらに、事前構築済みの請求書モデルは、請求書にあるすべてのテキストとテーブルを認識して返すようにトレーニングされています。 詳細については、[請求書](./concept-invoices.md)の概念ガイドを参照してください。
+
+:::image type="content" source="./media/overview-invoices.jpg" alt-text="サンプル請求書" lightbox="./media/overview-invoices.jpg":::
+
 ### <a name="prebuilt-receipt-model"></a>事前構築済みのレシート モデル
 
 事前構築済みのレシート モデルは、オーストラリア、カナダ、英国、インド、および米国のレストランやガソリン スタンド、小売店などで使用されている種類の英語のレシートを読み取るために使用されます。 このモデルでは、取引日時、販売店情報、税額、明細項目、合計金額などの主要な情報が抽出されます。 さらに、あらかじめ構築されたレシート モデルは、レシート内のすべてのテキストを認識して返すようにトレーニングされています。 詳細については、[レシート](./concept-receipts.md)の概念ガイドを参照してください。
 
-![サンプルのレシート](./media/contoso-receipt-small.png)
+:::image type="content" source="./media/overview-receipt.jpg" alt-text="サンプルのレシート" lightbox="./media/overview-receipt.jpg":::
 
 ### <a name="prebuilt-business-cards-model"></a>事前構築済みの名刺モデル
 
 名刺モデルを使用すると、個人の名前、役職、住所、電子メール、会社、電話番号などの情報を英語の名刺から抽出できます。 詳細については、[名刺](./concept-business-cards.md)の概念ガイドを参照してください。
 
-![サンプルの名刺](./media/business-card-english.jpg)
+:::image type="content" source="./media/overview-business-card.jpg" alt-text="サンプルの名刺" lightbox="./media/overview-business-card.jpg":::
 
-## <a name="layout-api"></a>Layout API
-
-Form Recognizer は、高精細の光学式文字認識 (OCR) を使用して、テキストやテーブル構造 (テキストが関連付けられた行番号と列番号) を抽出することもできます。
 
 ## <a name="get-started"></a>はじめに
 
-クイックスタートに従って、フォームからのデータの抽出を開始します。 テクノロジを学習している場合は、無料のサービスを使用することをお勧めします。 無料のページは 1 か月あたり 500 ページに制限されていることに注意してください。
+[サンプル Form Recognizer ツール](https://fott.azurewebsites.net/)を使用するか、クイックスタートに従って、フォームからのデータの抽出を開始します。 テクノロジを学習している場合は、無料のサービスを使用することをお勧めします。 無料のページは 1 か月あたり 500 ページに制限されていることに注意してください。
 
 * [クライアント ライブラリのクイックスタート](./quickstarts/client-library.md) (すべての言語、複数のシナリオ)
 * Web UI クイックスタート
   * [ラベルを使用したトレーニング - サンプル ラベル付けツール](quickstarts/label-tool.md)
 * REST クイック スタート
+ * ドキュメントからテキスト、選択マーク、およびテーブル構造を抽出する
+    * [レイアウト データを抽出する - Python](quickstarts/python-layout.md)
   * カスタム モデルをトレーニングしてフォーム データを抽出する
     * [ラベルを使用しないトレーニング - cURL](quickstarts/curl-train-extract.md)
     * [ラベルを使用しないトレーニング - Python](quickstarts/python-train-extract.md)
     * [ラベルを使用したトレーニング - Python](quickstarts/python-labeled-data.md)
+  * 請求書からデータを抽出する
+    * [請求書データを抽出する - Python](quickstarts/python-invoices.md)
   * レシートからデータを抽出する
     * [レシートのデータを抽出する - cURL](quickstarts/curl-receipts.md)
     * [レシートのデータを抽出する - Python](quickstarts/python-receipts.md)
   * 名刺からデータを抽出する
     * [名刺データを抽出する - Python](quickstarts/python-business-cards.md)
-  * テキストとテーブル構造をフォームから抽出する
-    * [レイアウト データを抽出する - Python](quickstarts/python-layout.md)
-
 
 ### <a name="review-the-rest-apis"></a>REST API を確認します
 
@@ -96,17 +132,29 @@ Form Recognizer は、高精細の光学式文字認識 (OCR) を使用して、
 
 |名前 |説明 |
 |---|---|
-| **Train Custom Model**| 同じ種類の 5 つのフォームを使用して、フォームを分析する新しいモデルをトレーニングします。 手動でラベル付けしたデータを使ってトレーニングを行うには、 _useLabelFile_ パラメーターを `true` に設定します。 |
-| **Analyze Form** |ストリームとして渡された単一のドキュメントを分析し、カスタム モデルを使用してフォームからテキスト、キーと値のペア、テーブルを抽出します。  |
-| **Analyze Receipt** |単一のレシート ドキュメントを分析し、レシート内の主要な情報とその他のテキストを抽出します。|
-| **名刺を分析する** |名刺を分析し、主要な情報とテキストを抽出します。|
-| **Analyze Layout** |フォームのレイアウトを分析してテキストとテーブル構造を抽出します。|
+| **Analyze Layout** | ストリームとして渡されたドキュメントを分析して、ドキュメントからテキスト、選択マーク、テーブル、および構造を抽出します |
+| **Train Custom Model**| 同じ種類の 5 つのフォームを使用して、フォームを分析する新しいモデルをトレーニングします。 手動でラベル付けしたデータを使ってトレーニングを行うには、_useLabelFile_ パラメーターを `true` に設定します。 |
+| **Analyze Form** |ストリームとして渡されたフォームを分析して、カスタム モデルを使用してフォームからテキスト、キーと値のペア、およびテーブルを抽出します。  |
+| **Analyze Invoice** | 請求書を分析して、主要な情報、テーブル、およびその他の請求書テキストを抽出します。|
+| **Analyze Receipt** | レシート ドキュメントを分析して、主要な情報と、レシートのその他のテキストを抽出します。|
+| **名刺を分析する** | 名刺を分析し、主要な情報とテキストを抽出します。|
 
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)
 詳しくは、[REST API のリファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)をご覧ください。 以前のバージョンの API をご利用の方は、「[新機能](./whats-new.md)」の記事で、レシートに関する最新の変更点をご確認ください。
+
+# <a name="v21"></a>[v2.1](#tab/v2-1)
+詳しくは、[REST API のリファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeWithCustomForm)をご覧ください。 以前のバージョンの API をご利用の方は、「[新機能](./whats-new.md)」の記事で、レシートに関する最新の変更点をご確認ください。
+
+---
 
 ## <a name="input-requirements"></a>入力の要件
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
+
+## <a name="deploy-on-premises-using-docker-containers"></a>Docker コンテナーを使用してオンプレミスにデプロイする
+
+[Form Recognizer コンテナー (プレビュー) を使用](form-recognizer-container-howto.md)して、API 機能をオンプレミスにデプロイします。 この Docker コンテナーを使用すると、コンプライアンス、セキュリティ、またはその他の運用上の理由により、データにより近いところでサービスを使用できます。
 
 ## <a name="data-privacy-and-security"></a>データのプライバシーとセキュリティ
 

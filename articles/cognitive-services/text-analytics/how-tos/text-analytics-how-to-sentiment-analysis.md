@@ -1,7 +1,7 @@
 ---
-title: Text Analytics REST API を使用した感情分析の実行
+title: Text Analytics REST API を使用して感情分析とオピニオン マイニングを実行する
 titleSuffix: Azure Cognitive Services
-description: この記事では、Azure Cognitive Services Text Analytics REST API でテキスト内のセンチメントを検出する方法について説明します。
+description: この記事では、Azure Cognitive Services Text Analytics API を使用して、テキスト内でセンチメントを検出し、オピニオンを汲み取る方法について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,20 +10,18 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 11/11/2020
 ms.author: aahi
-ms.openlocfilehash: 87e6ad488438ae28467f6e904fbb57f7ca5448ff
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 2c592a959dfb9d4e93f97488a9ac1b1f6683c23e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518177"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968273"
 ---
-# <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>方法:Text Analytics API を使用してセンチメントを検出する
+# <a name="how-to-sentiment-analysis-and-opinion-mining"></a>方法: 感情分析とオピニオン マイニング
 
-Text Analytics API の感情分析機能では、テキストを評価し、各文のセンチメント スコアとセンチメント ラベルを返します。 これは、ソーシャル メディア、顧客レビュー、ディスカッション フォーラムなどで肯定的および否定的センチメントを検出する際に役立ちます。 API で使用される AI モデルはサービスによって提供されるため、分析対象のコンテンツを送信するだけで済みます。
+Text Analytics API の感情分析機能には、肯定的および否定的センチメントを検出するための 2 つの方法が用意されています。 感情分析要求を送信すると、文とドキュメントのレベルでセンチメント ラベル ("negative"、"neutral"、"positive" など) と信頼度スコアが API から返されます。 また、感情分析エンドポイントを使用してオピニオン マイニング要求を送信することもできます。これにより、テキスト内のアスペクト (製品やサービスの属性など) に関連した意見に関する詳細な情報が提供されます。
 
-感情分析要求の送信後、文レベルやドキュメントレベルのセンチメント ラベル ("negative"、"neutral"、"positive" など) と信頼度スコアが API から返されます。
-
-感情分析はさまざまな言語をサポートしており、さらにプレビューで追加されます。 詳細については、[サポートされている言語](../language-support.md)に関するページを参照してください。
+API で使用される AI モデルはサービスによって提供されるため、分析対象のコンテンツを送信するだけで済みます。
 
 ## <a name="sentiment-analysis-versions-and-features"></a>感情分析のバージョンと機能
 
@@ -32,13 +30,13 @@ Text Analytics API の感情分析機能では、テキストを評価し、各�
 | 機能                                   | 感情分析 v3 | Sentiment Analysis v3.1 (プレビュー) |
 |-------------------------------------------|-----------------------|-----------------------------------|
 | 単一要求およびバッチ要求のメソッド    | X                     | X                                 |
-| センチメント スコアとラベル付け             | X                     | X                                 |
+| 感情分析のスコアとラベル付け             | X                     | X                                 |
 | Linux ベースの [Docker コンテナー](text-analytics-how-to-install-containers.md) | X  |  |
-| 意見マイニング                            |                       | X                                 |
+| オピニオン マイニング                            |                       | X                                 |
 
-## <a name="sentiment-scoring-and-labeling"></a>センチメント スコアとラベル付け
+## <a name="sentiment-analysis"></a>感情分析
 
-Sentiment Analysis v3 では、文レベルとドキュメント レベルで返されるセンチメント ラベルとそれぞれの信頼度スコアがテキストに適用されます。 
+バージョン 3.x の感情分析では、文とドキュメントのレベルで返されるセンチメント ラベルが、それぞれの信頼度スコアとともにテキストに適用されます。 
 
 ラベルは、*positive*、*negative*、および *neutral* です。 ドキュメント レベルでは、*mixed* センチメント ラベルが返されることもあります。 ドキュメントのセンチメントは、次のように決定されます。
 
@@ -51,18 +49,15 @@ Sentiment Analysis v3 では、文レベルとドキュメント レベルで返
 
 信頼度スコアは、1 から 0 の範囲で割り当てられます。 スコアが 1 に近いほど、ラベルの分類の信頼度が高いことを示し、スコアが低いほど信頼度が低いことを示します。 各ドキュメントまたは各文で、ラベル (positive、negative、neutral) に関連付けられた予測スコアは合計で 1 になります。
 
-## <a name="opinion-mining"></a>意見マイニング
+## <a name="opinion-mining"></a>オピニオン マイニング
 
-意見マイニングは、バージョン 3.1-preview.1 以降の感情分析の機能です。 この機能は、自然言語処理 (NLP) ではアスペクトベースの感情分析とも呼ばれます。テキストに含まれるアスペクト (製品やサービスの属性など) に関連した意見について、より粒度の細かい情報が得られます。
+オピニオン マイニングは、バージョン 3.1-preview.1 以降の感情分析の機能です。 この機能は、自然言語処理 (NLP) ではアスペクトベースの感情分析とも呼ばれます。テキストに含まれるアスペクト (製品やサービスの属性など) に関連した意見について、より粒度の細かい情報が得られます。
 
-たとえば、あるホテルについて "the room was great, but the staff was unfriendly (部屋はすばらしいのですが、スタッフが無愛想でした)" のようなフィードバックを利用者が残した場合、そのテキストに含まれるアスペクトと、それに関連する意見および感情が意見マイニングによって特定されます。
+たとえば、あるホテルについて "The room was great, but the staff was unfriendly (部屋はすばらしいのですが、スタッフが無愛想でした)" のようなフィードバックを利用者が残した場合、そのテキストに含まれるアスペクトと、それに関連する意見と感情がオピニオン マイニングによって特定されます。 感情分析では、否定的な感情のみが報告される可能性があります。
 
-| 特徴 | 意見    | センチメント |
-|--------|------------|-----------|
-| room   | great      | ポジティブ  |
-| staff  | unfriendly | ネガティブ  |
+:::image type="content" source="../media/how-tos/opinion-mining.png" alt-text="オピニオン マイニング例の図" lightbox="../media/how-tos/opinion-mining.png":::
 
-意見マイニングを結果として取得するには、感情分析の要求に `opinionMining=true` フラグを追加する必要があります。 感情分析の応答に意見マイニングの結果が含められます。
+オピニオン マイニングを結果に含めるには、感情分析の要求に `opinionMining=true` フラグを含める必要があります。 オピニオン マイニングの結果が感情分析の応答に含められます。
 
 ## <a name="sending-a-rest-api-request"></a>REST API 要求の送信 
 
@@ -70,9 +65,9 @@ Sentiment Analysis v3 では、文レベルとドキュメント レベルで返
 
 感情分析では、作業するテキストの分量が小さいほど、高い品質の結果が得られます。 これは、テキスト ブロックが大きい方がパフォーマンスが向上するキー フレーズ抽出とは反対です。 両方の操作から最善の結果を得るには、両方の操作に応じて入力を再構成することを検討してください。
 
-JSON ドキュメントは、次の形式である必要があります: ID、テキスト、および言語。
+JSON ドキュメントは、次の形式である必要があります: ID、テキスト、および言語。 感情分析はさまざまな言語をサポートしており、さらにプレビューで追加されます。 詳細については、[サポートされている言語](../language-support.md)に関するページを参照してください。
 
-ドキュメントのサイズは、ドキュメントごとに 5120 文字未満でなければなりません。 コレクションごとに最大 1000 個の項目 (ID) を含めることができます。 コレクションは、要求の本文で送信されます。
+ドキュメントのサイズは、ドキュメントごとに 5120 文字未満でなければなりません。 1 つのコレクションで許可されるドキュメントの最大数については、概念の下にある[データ制限](../concepts/data-limits.md?tabs=version-3)に関する記事を参照してください。 コレクションは、要求の本文で送信されます。
 
 ## <a name="structure-the-request"></a>要求を構造化する
 
@@ -80,7 +75,7 @@ POST 要求を作成します。 次のリファレンス リンクにある [Po
 
 #### <a name="version-31-preview2"></a>[バージョン 3.1-preview.2](#tab/version-3-1)
 
-[感情分析 v3.1 のリファレンス](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-2/operations/Sentiment)
+[感情分析 v3.1 のリファレンス](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
 
 #### <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
@@ -97,9 +92,13 @@ Azure 上の Text Analytics リソースまたはインスタンス化された 
 
 #### <a name="version-31-preview2"></a>[バージョン 3.1-preview.2](#tab/version-3-1)
 
+**感情分析**
+
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment`
 
-意見マイニングの結果を得るには、`opinionMining=true` パラメーターを追加する必要があります。 次に例を示します。
+**オピニオン マイニング**
+
+オピニオン マイニングの結果を得るには、`opinionMining=true` パラメーターを含める必要があります。 次に例を示します。
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment?opinionMining=true`
 
@@ -107,15 +106,19 @@ Azure 上の Text Analytics リソースまたはインスタンス化された 
 
 #### <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
+**感情分析**
+
+v3.0 では、使用できるエンドポイントは、感情分析用のみになります。
+ 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment`
 
 ---
 
 要求ヘッダーに Text Analytics API キーが含まれるように設定します。 要求本文で、この分析のために準備した JSON ドキュメントのコレクションを提供します。
 
-### <a name="example-sentiment-analysis-request"></a>感情分析要求の例 
+### <a name="example-request-for-sentiment-analysis-and-opinion-mining"></a>感情分析とオピニオン マイニングの要求の例  
 
-感情分析のために送信するコンテンツの例を次に示します。 要求の形式は、どちらのバージョンでも同じです。
+感情分析のために送信するコンテンツの例を次に示します。 要求の形式は、`v3.0` と `v3.1-preview` のどちらでも同じです。
     
 ```json
 {
@@ -138,15 +141,20 @@ Text Analytics API はステートレスです。 データはアカウントに
 
 ### <a name="view-the-results"></a>結果の確認
 
-感情分析は、ドキュメント全体およびそこに含まれるそれぞれの文について、センチメント ラベルと信頼度スコアを返します。 スコアが 1 に近いほど、ラベルの分類の信頼度が高いことを示し、スコアが低いほど信頼度が低いことを示します。 ドキュメントには複数の文が含まれる場合があり、それぞれのドキュメントまたは文の範囲内での信頼度スコアの合計は 1 になります。
-
 出力はすぐに返されます。 JSON を受け入れるアプリケーションに結果をストリーミングすることも、出力をローカル システム上のファイルに保存することもできます。 次に、データの並べ替え、検索、および操作に使用できるアプリケーション内に出力をインポートします。 多言語と絵文字のサポートにより、応答にはテキスト オフセットが含まれる場合があります。 詳細については[オフセットの処理方法](../concepts/text-offsets.md)に関するページを参照してください。
 
 #### <a name="version-31-preview2"></a>[バージョン 3.1-preview.2](#tab/version-3-1)
 
-### <a name="sentiment-analysis-v31-example-response"></a>感情分析 v3.1 の応答の例
+### <a name="sentiment-analysis-and-opinion-mining-example-response"></a>感情分析とオピニオン マイニングの応答の例
 
-Sentiment Analysis v3.1 では、「**Version 3.0**」タブに示した応答オブジェクトに加え意見マイニングが返されます。以下の応答では、"*The restaurant had great food and our waiter was friendly (レストランの食事はすばらしく、ウエーターの態度も良かった)* " という文に、"*food (食事)* " と "*waiter (ウエーター)* " の 2 つのアスペクトが存在します。 それぞれのアスペクトの `relations` プロパティには `ref` 値があり、関連する `documents`、`sentences`、`opinions` オブジェクトへの URI 参照が設定されています。
+> [!IMPORTANT]
+> 次に示すのは、API の v3.1 で提供されている、オピニオン マイニングを感情分析と共に使用するための JSON 例です。 オピニオン マイニングを要求しない場合、API 応答は **[バージョン 3.0]** タブと同じになります。  
+
+感情分析 v3.1 では、感情分析とオピニオン マイニングの両方の応答オブジェクトを返すことができます。
+  
+感情分析は、ドキュメント全体およびそこに含まれるそれぞれの文について、センチメント ラベルと信頼度スコアを返します。 スコアが 1 に近いほど、ラベルの分類の信頼度が高いことを示し、スコアが低いほど信頼度が低いことを示します。 ドキュメントには複数の文が含まれる場合があり、それぞれのドキュメントまたは文の範囲内での信頼度スコアの合計は 1 になります。
+
+オピニオン マイニングによって、テキスト内のアスペクトと、それに関連する意見と感情が検出されます。 以下の応答では、"*The restaurant had great food and our waiter was friendly (レストランの食事はすばらしく、ウエーターの態度も良かった)* " という文に、"*food (食事)* " と "*waiter (ウエーター)* " の 2 つのアスペクトが存在します。 それぞれのアスペクトの `relations` プロパティには `ref` 値があり、関連する `documents`、`sentences`、`opinions` オブジェクトへの URI 参照が設定されています。
 
 ```json
 {
@@ -240,7 +248,9 @@ Sentiment Analysis v3.1 では、「**Version 3.0**」タブに示した応答�
 
 #### <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
-### <a name="sentiment-analysis-v30-example-response"></a>感情分析 v3.0 の応答の例
+### <a name="sentiment-analysis-example-response"></a>感情分析の応答の例
+
+感情分析は、ドキュメント全体およびそこに含まれるそれぞれの文について、センチメント ラベルと信頼度スコアを返します。 スコアが 1 に近いほど、ラベルの分類の信頼度が高いことを示し、スコアが低いほど信頼度が低いことを示します。 ドキュメントには複数の文が含まれる場合があり、それぞれのドキュメントまたは文の範囲内での信頼度スコアの合計は 1 になります。
 
 感情分析 v3 からの応答には、分析された各文およびドキュメントのセンチメント ラベルとセンチメント スコアが記載されています。
 
@@ -282,9 +292,10 @@ Sentiment Analysis v3.1 では、「**Version 3.0**」タブに示した応答�
 
 この記事では、Text Analytics API を使用した感情分析の概念とワークフローについて説明しました。 要約すると:
 
-+ 感情分析が利用できる言語は限られています。
++ 感情分析とオピニオン マイニングは、選択した言語で利用可能です。
 + 要求本文内の JSON ドキュメントには、ID、テキスト、および言語のコードが含まれます。
 + POST 要求は、ユーザーのサブスクリプションで有効な、個人用に設定された[アクセス キーとエンドポイント](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)を使用して `/sentiment` エンドポイントに対して行われます。
++ オピニオン マイニングの結果を取得するには、感情分析要求で `opinionMining=true` を使用します。
 + ドキュメント ID ごとのセンチメント スコアで構成される応答出力は、JSON を受け入れるすべてのアプリにストリーミングすることができます。 たとえば、Excel や Power BI です。
 
 ## <a name="see-also"></a>関連項目
