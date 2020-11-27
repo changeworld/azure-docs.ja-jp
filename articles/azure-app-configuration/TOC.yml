@@ -70,6 +70,8 @@
       items:
         - name: Azure Pipelines を使用したプッシュ
           href: push-kv-devops-pipeline.md
+        - name: Azure Pipelines を使用したプル
+          href: pull-key-value-devops-pipeline.md
         - name: GitHub Actions を使用したプッシュ
           href: concept-github-action.md
         - name: エクスポートした構成を使用したプロジェクトのビルド

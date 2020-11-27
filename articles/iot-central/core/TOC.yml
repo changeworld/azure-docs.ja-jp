@@ -47,12 +47,8 @@
   items:
     - name: デバイスを接続して開発する
       items:
-        - name: デバイスの接続 (Node.js)
-          href: tutorial-connect-device-nodejs.md
-        - name: デバイスの接続 (Python)
-          href: tutorial-connect-device-python.md
-        - name: デバイスの接続 (Java)
-          href: tutorial-connect-device-java.md
+        - name: デバイスを作成して接続する
+          href: tutorial-connect-device.md
         - name: ゲートウェイ デバイス テンプレートの作成
           href: tutorial-define-gateway-device-type.md
         - name: IoT Edge デバイスの接続

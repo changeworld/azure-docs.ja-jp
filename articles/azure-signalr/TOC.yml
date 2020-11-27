@@ -66,6 +66,10 @@
       href: signalr-concept-authenticate-oauth.md
     - name: イベント処理
       href: signalr-concept-event-grid-integration.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
 - name: 操作方法ガイド
   items:
     - name: スケール

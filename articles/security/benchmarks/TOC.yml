@@ -105,6 +105,8 @@
       href: ../../devtest-labs/security-baseline.md
     - name: Azure Firewall のセキュリティ ベースライン
       href: ../../firewall/security-baseline.md
+    - name: Azure Firewall Manager のセキュリティ ベースライン
+      href: ../../firewall-manager/security-baseline.md
     - name: Azure Front Door のセキュリティ ベースライン
       href: ../../frontdoor/security-baseline.md
     - name: Azure Functions のセキュリティ ベースライン
@@ -185,6 +187,8 @@
       href: ../../logic-apps/security-baseline.md
     - name: Network Watcher のセキュリティベースライン
       href: ../../network-watcher/security-baseline.md
+    - name: Power BI のベースライン
+      href: /power-bi/fundamentals/security-baseline
     - name: Security Center のベースライン
       href: ../../security-center/security-baseline.md
     - name: Service Bus のベースライン
@@ -207,5 +211,7 @@
       href: ../../virtual-network/security-baseline.md
     - name: Virtual Network NAT のセキュリティ ベースライン
       href: ../../virtual-network/nat-security-baseline.md
+    - name: Virtual WAN のセキュリティ ベースライン
+      href: ../../virtual-wan/security-baseline.md
     - name: VPN Gateway のセキュリティ ベースライン
       href: ../../vpn-gateway/security-baseline.md
