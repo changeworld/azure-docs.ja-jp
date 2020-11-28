@@ -62,7 +62,7 @@
         - name: Azure Sentinel にオンボードする
           href: scenario-onboard-azure-sentinel.md
         - name: Azure Security Center にオンボードする
-          href: /security-center/quickstart-onboard-machines.md
+          href: /security-center/quickstart-onboard-machines
     - name: トラブルシューティング
       items:
         - name: エージェントの接続に関する問題
