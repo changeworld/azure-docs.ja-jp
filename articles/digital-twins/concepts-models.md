@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 12eed6aeccffe854810e9c2ddc8a5c4e59b8c312
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 0a38f9b8135fed08a95df68f108e44c34fec6325
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337935"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955329"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins のツイン モデルについて
 
@@ -224,7 +224,11 @@ DTDL によると、*Property* および *Telemetry* 属性のスキーマは、
 
 拡張インターフェイスでは、親インターフェイスの定義は変更できません。定義を追加することだけができます。 また、いずれかの親インターフェイスで既に定義されている機能を再定義することもできません (機能が同じになるように定義される場合でも)。 たとえば、親インターフェイスが `double` プロパティの *mass* を定義している場合、拡張インターフェイスに *mass* の宣言を含めることはできません (それが同様に `double` である場合でも)。
 
-## <a name="validating-models"></a>モデルの検証
+## <a name="best-practices-for-designing-models"></a>モデルの設計に関するベストプラクティス
+
+環境内のエンティティを反映するようにモデルを設計するときには、先を考えること、および設計に対する[クエリ](concepts-query-language.md)の影響を考慮することが有益です。 グラフのトラバーサルから大きな結果セットが生成されない方法で、プロパティを設計することができます。 また、1 つのクエリで回答されるリレーションシップを、単一レベルのリレーションシップとしてモデル化することもできます。
+
+### <a name="validating-models"></a>モデルの検証
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
@@ -232,7 +236,7 @@ DTDL によると、*Property* および *Telemetry* 属性のスキーマは、
 
 業界標準に基づくモデルや、RDF または OWL などの標準的なオントロジー表現を使用するモデルを使用すると、Azure Digital Twins モデルを設計する場合に充実した出発点を利用できます。 業界モデルの利用は、標準化と情報共有にも役立ちます。
 
-Azure Digital Twins で使用するモデルは、JSON-LD ベースの [**Digital Twins Definition Language (DTDL)** ](concepts-models.md) で表現する必要があります。 そのため、この記事では、既存の業界概念を DTDL セマンティクスと統合して、Azure Digital Twins で使用できるように、業界標準モデルを DTDL で表現する方法について説明します。 DTDL モデルは、その後、Azure Digital Twins 内で、モデルの信頼できるソースとして使用されます。
+Azure Digital Twins で使用するモデルは、JSON-LD ベースの [**Digital Twins Definition Language (DTDL)**](concepts-models.md) で表現する必要があります。 そのため、この記事では、既存の業界概念を DTDL セマンティクスと統合して、Azure Digital Twins で使用できるように、業界標準モデルを DTDL で表現する方法について説明します。 DTDL モデルは、その後、Azure Digital Twins 内で、モデルの信頼できるソースとして使用されます。
 
 業界標準モデルを DTDL と統合するには、状況によりますが、次の主要な 2 つのパスがあります。
 * モデルをまだ作成していない場合は、業界固有の言語を含む **既存のスターター DTDL オントロジー** に基づいて設計できます。

@@ -8,47 +8,53 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/11/2020
+ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: cabde27591159b5751435a97a909a5f6f8c3081b
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ef06faa17739153b2a04e777498e1de6e97c0646
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518228"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957097"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Text Analytics で名前付きエンティティの認識を使用する方法
 
-Text Analytics API を使用すると、構造化されていないテキストから、あいまいさを解消したエンティティの一覧を、Web 上にある詳しい情報へのリンクと共に取得することができます。 この API は、名前付きエンティティの認識 (NER) とエンティティ リンクの両方をサポートしています。
+Text Analytics API を使用すると、構造化されていないテキストから、あいまいさを解消したエンティティの一覧を、Web 上にある詳しい情報へのリンクと共に取得することができます。 この API は、いくつかのエンティティ カテゴリに対する固有表現認識 (NER)、およびエンティティ リンクの両方をサポートしています。
 
-### <a name="entity-linking"></a>Entity Linking
+## <a name="entity-linking"></a>Entity Linking
 
 エンティティ リンク設定は、テキスト内で見つかったエンティティの ID を識別してあいまいさを解消する機能です (例: "Mars" という単語が出現した場合にそれが惑星を指すのか、古代ローマの戦争の神様を指すのかを判定する)。 このプロセスで、テキスト内の認識されたエンティティをリンクするためには、適切な言語のナレッジ ベースが存在している必要があります。 エンティティ リンクには、このナレッジ ベースとして [Wikipedia](https://www.wikipedia.org/) が使用されます。
 
+## <a name="named-entity-recognition-ner"></a>名前付きエンティティの認識 (NER)
 
-### <a name="named-entity-recognition-ner"></a>名前付きエンティティの認識 (NER)
+固有表現認識 (NER) とは、人、場所、イベント、製品や組織などの事前に定義されているさまざまなテキスト形式のエンティティを、クラスまたは種類に分類する機能です。  
 
-名前付きエンティティの認識 (NER) とは、人、場所、イベント、製品や組織などの事前に定義されているさまざまなテキスト形式のエンティティを、クラスまたは種類に分類する機能です。  
+## <a name="personally-identifiable-information-pii"></a>個人を特定できる情報 (PII)
 
-## <a name="named-entity-recognition-versions-and-features"></a>名前付きエンティティの認識のバージョンと機能
+PII 機能は NER の一部であり、電話番号、メール アドレス、郵送先住所、パスポート番号など、テキスト内で個人に関連付けられている機密性の高いエンティティを識別し、編集することができます。  
+
+## <a name="named-entity-recognition-features-and-versions"></a>固有表現認識の機能とバージョン
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| 機能                                                         | NER v3.0 | NER v3.1-preview.2 |
+| 機能                                                         | NER v3.0 | NER v3.1-preview.3 |
 |-----------------------------------------------------------------|--------|----------|
 | 単一要求およびバッチ要求のメソッド                          | X      | X        |
 | 複数のカテゴリに対応する拡張されたエンティティの認識           | X      | X        |
 | エンティティ リンク設定と NER 要求の送信のためのエンドポイントが分けられました。 | X      | X        |
 | 個人 (`PII`) および医療 (`PHI`) 情報エンティティの認識        |        | X        |
+| `PII` の編集        |        | X        |
 
 詳細については、[言語サポート](../language-support.md)に関するページを参照してください。
 
-## <a name="entity-types"></a>エンティティの種類
-
 名前付きエンティティの認識 v3 では、複数の種類に対応する拡張された検出が提供されます。 現在、NER v3.0 は、[一般エンティティ カテゴリ](../named-entity-types.md)に含まれるエンティティを認識できます。
 
-固有表現認識 v3.1-preview.2 には、v3.0 の検出機能に加え、`v3.1-preview.2/entities/recognition/pii` エンドポイントを使用して個人情報 (`PII`) を検出する機能が含まれています。 オプションの `domain=phi` パラメーターを使用すると、機密性の高い医療情報 (`PHI`) を検出できます。 詳細については、[エンティティのカテゴリ](../named-entity-types.md)に関する記事と以下の「[要求エンドポイント](#request-endpoints)」セクションを参照してください。
+固有表現認識 v3.1-preview.3 には、v3.0 の検出機能と、次のものが含まれています。 
+* `v3.1-preview.3/entities/recognition/pii` エンドポイントを使用して、個人情報 (`PII`) を検出する機能。 
+* 機密性の高い医療情報 (`PHI`) を検出する省略可能な `domain=phi` パラメーター。
+* `/analyze` エンドポイントを使用した[非同期操作](text-analytics-how-to-call-api.md)。
 
+詳細については、[エンティティのカテゴリ](../named-entity-types.md)に関する記事と以下の「[要求エンドポイント](#request-endpoints)」セクションを参照してください。 
 
 ## <a name="sending-a-rest-api-request"></a>REST API 要求の送信
 
@@ -68,41 +74,41 @@ POST 要求を作成します。 次のリンクにある [Postman](text-analyti
 
 ### <a name="request-endpoints"></a>要求エンドポイント
 
-#### <a name="version-31-preview2"></a>[バージョン 3.1-preview.2](#tab/version-3-preview)
+#### <a name="version-31-preview3"></a>[バージョン 3.1-preview.3](#tab/version-3-preview)
 
-固有表現認識 `v3.1-preview.2` では、NER、PII およびエンティティ リンク設定の要求に個別のエンドポイントを使用します。 要求に応じて、次の URL 形式を使用します。
+固有表現認識 `v3.1-preview.3` では、NER、PII、およびエンティティ リンク設定の要求に対して個別のエンドポイントを使用します。 要求に応じて、次の URL 形式を使用します。
 
-エンティティ リンク設定
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/linking`
+**エンティティ リンク設定**
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/linking`
 
-[`Linking` に関する固有表現認識バージョン 3.1-preview のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesLinking)
+[`Linking` に関する固有表現認識バージョン 3.1-preview のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesLinking)
 
-NER
-* 一般的なエンティティ- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/general`
+**名前付きエンティティの認識**
+* 一般的なエンティティ- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/general`
 
-[`General` に関する固有表現認識バージョン 3.1-preview のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral)
+[`General` に関する固有表現認識バージョン 3.1-preview のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionGeneral)
 
-個人を特定できる情報 (PII)
-* 個人 (`PII`) 情報 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii`
+**個人を特定できる情報 (PII)**
+* 個人 (`PII`) 情報 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii`
 
 また、オプションの `domain=phi` パラメーターを使用すると、テキスト内の医療 (`PHI`) 情報を検出することもできます。 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii?domain=phi`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii?domain=phi`
 
-応答 JSON に `redactedText` プロパティが追加されていることに注意してください。これには、検出された PII エンティティがエンティティの各文字ごとに * で置き換えられている、変更された入力テキストが含まれます。
+`v3.1-preview.3` 以降では、JSON 応答に `redactedText` プロパティが含まれます。これには、変更された入力テキストが含まれ、検出された PII エンティティは、そのエンティティ内の各文字が `*` に置き換えられます。
 
-[`PII` に関する固有表現認識バージョン 3.1-preview のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionPii)
+[`PII` に関する固有表現認識バージョン 3.1-preview のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionPii)
 
 #### <a name="version-30"></a>[バージョン 3.0](#tab/version-3)
 
 名前付きエンティティの認識 v3 では、NER とエンティティ リンク設定の要求に別個のエンドポイントを使用します。 要求に応じて、次の URL 形式を使用します。
 
-エンティティ リンク設定
+**エンティティ リンク設定**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/linking`
 
 [`Linking` に関する固有表現認識バージョン 3.0 のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
 
-NER
+**名前付きエンティティの認識**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
 
 [`General` に関する固有表現認識バージョン 3.0 のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
@@ -113,7 +119,7 @@ NER
 
 ### <a name="example-ner-request"></a>NER 要求の例 
 
-次に示したのは、API に送信するコンテンツの例です。 要求の形式は、どちらのバージョンの API でも同じです。
+次に示す JSON は、API に送信するコンテンツの例です。 要求の形式は、どちらのバージョンの API でも同じです。
 
 ```json
 {
@@ -138,11 +144,11 @@ Text Analytics API はステートレスです。 データはアカウントに
 
 すべての POST 要求で、ID と検出されたエンティティのプロパティを含む JSON 形式の応答が返されます。
 
-出力はすぐに返されます。 結果は、JSON を受け付けるアプリケーションにストリームするか、ローカル システム上のファイルに出力を保存してから、そのファイルを、データの並べ替え、検索、および操作が可能なアプリケーションにインポートすることができます。 多言語と絵文字のサポートにより、応答にはテキスト オフセットが含まれる場合があります。 詳細については[オフセットの処理方法](../concepts/text-offsets.md)に関するページを参照してください。
+出力はすぐに返されます。 結果は、JSON を受け付けるアプリケーションにストリームするか、ローカル システム上のファイルに出力を保存してから、そのファイルを、データの並べ替え、検索、および操作が可能なアプリケーションにインポートすることができます。 多言語と絵文字のサポートにより、応答にはテキスト オフセットが含まれる場合があります。 詳細については、[テキスト オフセットの処理方法](../concepts/text-offsets.md)に関する記事を参照してください。
 
 ### <a name="example-responses"></a>応答の例
 
-バージョン 3 では、一般的な NER、PII、およびエンティティ リンク設定に別々のエンドポイントが用意されています。 両方の操作の応答を次に示します。 
+バージョン 3 には、一般的な NER、PII、およびエンティティ リンク設定に対して個別のエンドポイントが用意されています。 両方の操作の応答を次に示します。 
 
 #### <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-preview)
 

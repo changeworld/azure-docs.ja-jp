@@ -1,7 +1,7 @@
 ---
 title: クライアント アプリからコマンドを更新する
 titleSuffix: Azure Cognitive Services
-description: クライアント アプリからコマンドを更新します
+description: クライアント アプリケーションからコマンドを更新する方法について説明します。
 services: cognitive-services
 author: encorona-ms
 manager: yetian
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: encorona
-ms.openlocfilehash: 1bffb09d0f49bbd0059e8a528d67bfe215f0650d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 765bcbd0521f93bacb0799595e6fbef565d0f313
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654349"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963625"
 ---
-# <a name="update-a-command-from-the-client"></a>クライアントからコマンドを更新する
+# <a name="update-a-command-from-a-client-app"></a>クライアント アプリからコマンドを更新する
 
 この記事では、クライアント アプリケーションから実行中のコマンドを更新する方法について説明します。
 
@@ -29,7 +29,7 @@ ms.locfileid: "94654349"
 
 クライアント アプリケーションから、音声入力を使用しないで、実行中のコマンドの状態を更新する必要がある場合は、イベントを送信してコマンドを更新できます。
 
-このシナリオを説明するため、実行中のコマンド (TurnOnOff) の状態を更新するには、次のイベント アクティビティを送信できます。 
+このシナリオを説明するため、次のイベント アクティビティを送信して、実行中のコマンド (`TurnOnOff`) の状態を更新します。 
 
 ```json
 {
@@ -53,32 +53,32 @@ ms.locfileid: "94654349"
 
 | 属性 | 説明 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| **type** | アクティビティの種類は "event" で、イベントの名前は "RemoteUpdate" である必要があります。 |
-| **value** | 属性 "value" には、現在のコマンドを更新するために必要な属性が含まれています。 |
-| **updatedCommand** | 属性 "updatedCommand" にはコマンドの名前が含まれ、"updatedParameters" はパラメーターの名前と更新後の値のマップです。 |
-| **cancel** | 実行中のコマンドを取り消す必要がある場合は、属性 "cancel" を true に設定します。 |
-| **updatedGlobalParameters** | 属性 "updatedGlobalParameters" も "updatedParameters" と同じようなマップですが、グローバル パラメーターに使用されます。 |
-| **processTurn** | アクティビティの送信後にターンを処理する必要がある場合は、属性 "processTurn" を true に設定します。 |
+| **type** | アクティビティの種類は `"event"` で、イベントの名前は `"RemoteUpdate"` である必要があります。 |
+| **value** | 属性 `"value"` には、現在のコマンドを更新するために必要な属性が含まれています。 |
+| **updatedCommand** | 属性 `"updatedCommand"` には、コマンドの名前が含まれています。 この属性の中で `"updatedParameters"` は、パラメーターの名前と更新後の値を含むマップです。 |
+| **cancel** | 実行中のコマンドを取り消す必要がある場合は、属性 `"cancel"` を `true` に設定します。 |
+| **updatedGlobalParameters** | 属性 `"updatedGlobalParameters"` は `"updatedParameters"` と同じようにマップされますが、グローバル パラメーターに使用されます。 |
+| **processTurn** | アクティビティの送信後にターンを処理する必要がある場合は、属性 `"processTurn"` を `true` に設定します。 |
 
 Custom Commands ポータルで、このシナリオをテストすることができます。
 
 1. 前に作成したカスタム コマンド アプリケーションを開きます。 
-1. [トレーニング]、[テスト] の順にクリックします。
-1. "ターン" を送信します。
-1. サイド パネルを開き、[Activity editor]\(アクティビティ エディター\) をクリックします。
-1. 前のセクションで指定した RemoteCommand イベントを入力して送信します。
+1. **[トレーニング]** 、 **[テスト]** の順に選択します。
+1. `turn` を送信します。
+1. サイド パネルを開き、 **[Activity editor]\(アクティビティ エディター\)** を選択します。
+1. 前のセクションで指定した `RemoteCommand` イベントを入力して送信します。
     > [!div class="mx-imgBorder"]
-    > ![リモート コマンドの送信](media/custom-commands/send-remote-command-activity.png)
+    > ![リモート コマンドのイベントを示すスクリーンショット。](media/custom-commands/send-remote-command-activity.png)
 
-音声やテキストではなく、クライアントからのアクティビティを使用して、パラメーター "OnOff" の値が "on" に設定されていることにご注意ください。
+音声やテキストではなく、クライアントからのアクティビティを使用して、パラメーター `"OnOff"` の値が `"on"` に設定されていることに注目してください。
 
 ## <a name="update-the-catalog-of-the-parameter-for-a-command"></a>コマンドのパラメーターのカタログを更新する
 
 パラメーターの有効なオプションのリストを構成すると、パラメーターの値がアプリケーションに対してグローバルに定義されます。 
 
-この例では、SubjectDevice パラメーターに、会話に関係なくサポートされる値の固定リストが設定されます。
+この例では、`SubjectDevice` パラメーターに、会話に関係なくサポートされる値の固定リストが設定されます。
 
-会話ごとに新しいエントリをパラメーターのカタログに追加する必要がある場合は、次のアクティビティを送信できます。
+会話ごとに新しいエントリをパラメーターのカタログに追加する場合は、次のアクティビティを送信できます。
 
 ```json
 {
@@ -103,48 +103,49 @@ Custom Commands ポータルで、このシナリオをテストすることが�
   }
 }
 ```
-このアクティビティを使用して、コマンド "TurnOnOff" のパラメーター "SubjectDevice" のカタログに "stereo" のエントリを追加しました。
+このアクティビティを使用して、コマンド `"TurnOnOff"` のパラメーター `"SubjectDevice"` のカタログに `"stereo"` のエントリを追加しました。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-commands/update-catalog-with-remote-activity.png" alt-text="カタログの更新":::
+> :::image type="content" source="./media/custom-commands/update-catalog-with-remote-activity.png" alt-text="カタログの更新を示すスクリーンショット。":::
 
 いくつかの点にご注意ください。
-1. このアクティビティを送信する必要があるのは 1 回だけです (理想的には、接続を開始した直後)。
-1. このアクティビティを送信した後は、イベント ParameterCatalogsUpdated がクライアントに返送されるのを待つ必要があります。
+- このアクティビティを送信する必要があるのは 1 回だけです (理想的には、接続を開始した直後)。
+- このアクティビティを送信した後は、イベント `ParameterCatalogsUpdated` がクライアントに返送されるのを待つ必要があります。
 
-## <a name="add-additional-context-from-the-client-application"></a>クライアント アプリケーションからさらにコンテキストを追加する
+## <a name="add-more-context-from-the-client-application"></a>クライアント アプリケーションからさらにコンテキストを追加する
 
 クライアント アプリケーションから会話ごとに追加のコンテキストを設定し、後で Custom Commands アプリケーションで使用することができます。 
 
 たとえば、Custom Commands アプリケーションに接続されているデバイスの ID と名前を送信するシナリオについて考えてみます。
 
-このシナリオをテストするため、現在のアプリケーションに新しいコマンドを作成してみましょう。
-1. GetDeviceInfo という名前の新しいコマンドを作成します。
-1. 例として "get device info" という文を追加します。
-1. 完了ルール "Done" で、属性 clientContext が含まれる Send Speech Response アクションを追加します。
-    > ![コンテキストを含む Send speech response](media/custom-commands/send-speech-response-context.png)
+このシナリオをテストするために、現在のアプリケーションに新しいコマンドを作成してみましょう。
+1. `GetDeviceInfo` という名前の新しいコマンドを作成します。
+1. `get device info` のサンプル文を追加します。
+1. 完了ルール **Done** で、属性 `clientContext` が含まれる **Send speech response** アクションを追加します。
+   ![コンテキストで音声を送信するための応答を示すスクリーンショット。](media/custom-commands/send-speech-response-context.png)
 1. アプリケーションを保存し、トレーニングして、テストします。
 1. テスト ウィンドウで、クライアント コンテキストを更新するアクティビティを送信します。
-    > ```json
-    >{
-    >   "type": "event",
-    >   "name": "RemoteUpdate",
-    >   "value": {
-    >     "clientContext": {
-    >       "deviceId": "12345",
-    >       "deviceName": "My device"
-    >     },
-    >     "processTurn": false
-    >   }
-    >}
-    > ```
-1. "get device info" というテキストを送信します。
-    > ![クライアント コンテキスト アクティビティを送信する](media/custom-commands/send-client-context-activity.png)
+
+    ```json
+    {
+       "type": "event",
+       "name": "RemoteUpdate",
+       "value": {
+         "clientContext": {
+           "deviceId": "12345",
+           "deviceName": "My device"
+         },
+         "processTurn": false
+       }
+    }
+    ```
+1. テキスト `get device info` を送信します。
+   ![クライアント コンテキストを送信するためのアクティビティを示すスクリーンショット。](media/custom-commands/send-client-context-activity.png)
 
 いくつかの点にご注意ください。
-1. このアクティビティを送信する必要があるのは 1 回だけです (理想的には、接続を開始した直後)。
-1. clientContext には複合オブジェクトを使用できます。
-1. アクティビティの送信や、Web エンドポイントの呼び出しなど、音声応答で clientContext を使用できます。
+- このアクティビティを送信する必要があるのは 1 回だけです (理想的には、接続を開始した直後)。
+- `clientContext` には複合オブジェクトを使用できます。
+- アクティビティの送信や、Web エンドポイントの呼び出しなど、音声応答で `clientContext` を使用できます。
 
 ## <a name="next-steps"></a>次のステップ
 

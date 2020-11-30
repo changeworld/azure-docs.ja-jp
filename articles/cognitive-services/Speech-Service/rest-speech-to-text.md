@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 98c42a61e65935446f948e35cb08ed2893dd0b7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89e5fa180b011cbedebc25a5e5d555a2190805f8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532519"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015360"
 ---
 # <a name="speech-to-text-rest-api"></a>Speech to Text REST API
 
@@ -30,7 +30,7 @@ ms.locfileid: "91532519"
 それを超える長さの音声をアプリケーションで送信する必要がある場合は、[Speech SDK](speech-sdk.md) か、[バッチ文字起こし](batch-transcription.md)など、ファイルベースの REST API の使用を検討してください。
 
 > [!TIP]
-> Government クラウド (FairFax) エンドポイントについては、Azure Government の[ドキュメント](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure)を参照してください。
+> Government クラウド (FairFax) エンドポイントについては、Azure Government の[ドキュメント](../../azure-government/compare-azure-government-global-azure.md)を参照してください。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -90,10 +90,10 @@ REST 要求のクエリ文字列には、次のパラメーターを含めるこ
 
 発音評価の必須パラメーターと省略可能なパラメーターを次の表に示します。
 
-| パラメーター | 説明 | 必須/省略可能 |
+| パラメーター | 説明 | 必須 |
 |-----------|-------------|---------------------|
 | ReferenceText | 発音が評価されるテキスト。 | 必須 |
-| GradingSystem | スコア調整用のポイント システム。 指定できる値は、`FivePoint` と `HundredMark` です。 既定の設定は `FivePoint` です。 | 省略可能 |
+| GradingSystem | スコア調整用のポイント システム。 `FivePoint` システムによって 0 から 5 の浮動小数点スコアが付与され、`HundredMark` によって 0 から 100 の浮動小数点スコアが付与されます。 既定値:`FivePoint`。 | 省略可能 |
 | 粒度 | 評価の粒度。 指定できる値は、全文、単語、音素レベルのスコアを示す `Phoneme`、全文と単語レベルのスコアを示す `Word`、および全文レベルのみのスコアを示す `FullText` です。 既定の設定は `Phoneme` です。 | 省略可能 |
 | Dimension | 出力条件を定義します。 指定できる値は、正確性スコアのみを示す `Basic`、より多くのディメンション (全文レベルの流暢性スコアと完全性スコア、単語レベルのエラーの種類など) のスコアを示す `Comprehensive` です。 [[Response parameters]\(応答パラメーター\)](#response-parameters) を見て、さまざまなスコア ディメンションと単語エラーの種類の定義を確認します。 既定の設定は `Basic` です。 | 省略可能 |
 | EnableMiscue | 誤りの計算を有効にします。 これを有効にすると、発音された単語が参照テキストと比較され、比較に基づいて省略または挿入がマークされます。 指定できる値は、`False` と `True` です。 既定の設定は `False` です。 | 省略可能 |
@@ -307,5 +307,5 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 ## <a name="next-steps"></a>次のステップ
 
 - [無料の Azure アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください
-- [音響モデルをカスタマイズする](how-to-customize-acoustic-models.md)
-- [言語モデルをカスタマイズする](how-to-customize-language-model.md)
+- [音響モデルをカスタマイズする](./how-to-custom-speech-train-model.md)
+- [言語モデルをカスタマイズする](./how-to-custom-speech-train-model.md)

@@ -9,16 +9,45 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: c9287e9661172480292a2214b231e7e5dac9c32f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 10ae9e1356cea954435d15441d74f4f86a804578
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912245"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95893982"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Recognizer の新機能
 
 Form Recognizer サービスは、継続的に更新されます。 この記事で、機能の強化、修正、ドキュメントの更新についての最新情報を入手してください。
+
+## <a name="november-2020"></a>2020 年 11 月
+
+### <a name="new-features"></a>新機能
+
+- **新しく事前作成された請求書モデル** - 新しく事前作成された請求書モデルにより、顧客はさまざまな形式で請求書を取得し、構造化されたデータを返して、請求書の処理を自動化することができます。 強力な光学式文字認識 (OCR) 機能と、請求書を解釈するディープ ラーニング モデルを組み合わせて、英語の請求書から重要な情報を抽出します。 顧客、仕入先、請求書 ID、請求書の期限、合計、請求額、課税額、出荷先、請求先などのテキスト、テーブル、情報が抽出されます。
+
+  > [事前作成された請求書モデルの詳細情報](concept-invoices.md)
+
+  :::image type="content" source="./media/invoice-example.jpg" alt-text="請求書の例" lightbox="./media/invoice-example.jpg":::
+
+- **強化されたテーブル抽出** - Form Recognizer によって、強力な光学式文字認識 (OCR) 機能とディープ ラーニング テーブル抽出モデルを組み合わせた拡張テーブル抽出が提供されるようになりました。 Form Recognizer では、テーブル (結合された列、行、境界線を含む複雑なテーブルなど) からデータを抽出できます。 
+ 
+  :::image type="content" source="./media/tables-example.jpg" alt-text="テーブルの例" lightbox="./media/tables-example.jpg":::
+
+ 
+  > [レイアウト抽出の詳細情報](concept-layout.md)
+
+- **サポートされている新しい言語: 日本語** - `AnalyzeLayout` と `AnalyzeCustomForm` に対して、新しい言語: 日本語 (`ja`) がサポートされるようになりました。 [言語サポート](language-support.md)
+- **テキスト行のスタイルの表示 (手書き/その他) (ラテン言語のみ)** - Form Recognizer では、信頼度スコアと共に、各テキスト行が手書きスタイルであるかどうかを分類する `appearance` オブジェクトが出力されるようになりました。 この機能は、ラテン語系の言語でのみサポートされています。
+- **品質の向上** - 1 桁の抽出の改善を含め、抽出の品質が向上しました。
+- **Form Recognizer のサンプル ラベル付けツールの新しい試用機能** - Form Recognizer サンプル ラベル付けツールを使用して、事前作成された請求書、領収書、およびビジネス カード モデルと Layout API を試すことができます。 コードを記述せずにデータがどのように抽出されるかを確認してください。
+
+  > [Form Recognizer のサンプル ツールを試す](https://fott-preview.azurewebsites.net/)
+
+  ![FOTT の例](./media/ui-preview.jpg)
+  
+- **フィードバック ループ** - サンプル ラベル付けツールを使用してファイルを分析するときに、それをトレーニング セットに追加し、必要に応じてラベルを調整して、モデルを改善するためにトレーニングできるようになりました。
+- **ドキュメントの自動ラベル付け** - プロジェクト内のラベル付けされた以前のドキュメントに基づいて、追加のドキュメントが自動的にラベル付けされます。 
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -28,13 +57,13 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
 
 
 - **REST API リファレンスが利用可能** - [v2.1-preview.1 リファレンス](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)を参照してください 
-- **英語の他に新たに言語をサポート** 。次の [言語](language-support.md)がサポートされるようになりました。`Layout` および `Train Custom Model` の場合: 英語 (`en`)、簡体中国語 (`zh-Hans`)、オランダ語 (`nl`)、フランス語 (`fr`)、ドイツ語 (`de`)、イタリア語 (`it`)、ポルトガル語 (`pt`)、およびスペイン語 (`es`)。
+- **英語の他に新たに言語をサポート**。次の [言語](language-support.md)がサポートされるようになりました。`Layout` および `Train Custom Model` の場合: 英語 (`en`)、簡体中国語 (`zh-Hans`)、オランダ語 (`nl`)、フランス語 (`fr`)、ドイツ語 (`de`)、イタリア語 (`it`)、ポルトガル語 (`pt`)、およびスペイン語 (`es`)。
 - **チェックボックス、選択マークの検出** – Form Recognizer では、チェックボックスやオプション ボタンなどの選択マークの検出および抽出がサポートされています。 選択マークは `Layout` で抽出されます。また、`Train Custom Model`_ - [ラベルを使用したトレーニング]_ でラベル付けおよびトレーニングを行って、選択マーク用のキーと値のペアを抽出することもできるようになりました。 
 - **[モデルの作成]** を使用すると、1 つのモデル ID で複数のモデルを構成して呼び出すことができます。 作成済みのモデル ID を使用して分析するドキュメントが送信されると、分類ステップが最初に実行され、適切なカスタム モデルにルーティングされます。 モデルの作成は、`Train Custom Model` -  _[ラベルを使用したトレーニング]_ で使用できます。
-- **モデル名** 。管理と追跡が容易になるように、カスタム モデルにわかりやすい名前を追加します。
+- **モデル名**。管理と追跡が容易になるように、カスタム モデルにわかりやすい名前を追加します。
 - **[名刺用の新しい事前構築されたモデル](concept-business-cards.md)** 。英語の名刺内の共通のフィールドを抽出するためのものです。
 - **[事前に作成された領収書の新しいロケール](concept-receipts.md)** 。EN-US に加えて、EN-AU、EN-CA、EN-GB、EN-IN でもサポートが利用できるようになりました。
-- **品質向上** 。`Layout`、`Train Custom Model` -  _[ラベルを使用しないトレーニング]_ 、および _[ラベルを使用したトレーニング]_ が対象となります。
+- **品質向上**。`Layout`、`Train Custom Model` -  _[ラベルを使用しないトレーニング]_ 、および _[ラベルを使用したトレーニング]_ が対象となります。
 
 
 **v2.0** には、次の更新が含まれています。
@@ -53,22 +82,22 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
 
 ### <a name="new-features"></a>新機能
 
-* **v2.0 リファレンスが使用可能** [v2.0 API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)と、 [.NET](/dotnet/api/overview/azure/ai.formrecognizer-readme?view=azure-dotnet)、 [Python](/python/api/overview/azure/?view=azure-python)、 [Java](/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)、および [JavaScript](/javascript/api/overview/azure/?view=azure-node-latest) 用のアップデートされた SDK を参照できます。
-* **テーブルの機能強化と抽出の機能強化** には、精度の向上とテーブル抽出の機能強化が含まれています。特に、" _ラベルのないカスタム トレーニング_ " でテーブルのヘッダーと構造を学習する機能が追加されています。 
+* **v2.0 リファレンスが使用可能** [v2.0 API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)と、[.NET](/dotnet/api/overview/azure/ai.formrecognizer-readme?view=azure-dotnet)、[Python](/python/api/overview/azure/?view=azure-python)、[Java](/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)、および [JavaScript](/javascript/api/overview/azure/?view=azure-node-latest) 用のアップデートされた SDK を参照できます。
+* **テーブルの機能強化と抽出の機能強化** には、精度の向上とテーブル抽出の機能強化が含まれています。特に、"_ラベルのないカスタム トレーニング_" でテーブルのヘッダーと構造を学習する機能が追加されています。 
 
-* **通貨のサポート** グローバル通貨記号の検出と抽出。
-* **Azure Gov** Form Recognizer が、Azure Gov でも使用できるようになりました。
-* **強化されたセキュリティ機能** : 
-   * **Bring Your Own Key** Form Recognizer は、クラウドに永続化されたときにデータを自動的に暗号化して保護し、セキュリティとコンプライアンスに関する組織のコミットメントを満たすのに役立つようにします。 サブスクリプションでは、Microsoft が管理する暗号化キーが既定で使用されます。 ユーザー独自の暗号化キーを使用してサブスクリプションを管理することもできるようになりました。 [カスタマー マネージド キー (CMK、Bring Your Own Key (BYOK) とも呼ばれます)](./form-recognizer-encryption-of-data-at-rest.md) を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます。 また、データを保護するために使われる暗号化キーを監査することもできます。  
-   * **プライベート エンドポイント** – 仮想ネットワーク (VNet) を使用して、 [Private Link を介してデータに安全にアクセスできるようになります。](../../private-link/private-link-overview.md)
+* **通貨のサポート** - グローバル通貨記号の検出と抽出。
+* **Azure Gov** - Form Recognizer が、Azure Gov でも使用できるようになりました。
+* **強化されたセキュリティ機能**: 
+   * **Bring Your Own Key** - Form Recognizer は、クラウドに永続化されたときにデータを自動的に暗号化して保護し、セキュリティとコンプライアンスに関する組織のコミットメントを満たすのに役立つようにします。 サブスクリプションでは、Microsoft が管理する暗号化キーが既定で使用されます。 ユーザー独自の暗号化キーを使用してサブスクリプションを管理することもできるようになりました。 [カスタマー マネージド キー (Bring Your Own Key (BYOK) とも呼ばれます)](./form-recognizer-encryption-of-data-at-rest.md) を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます また、データを保護するために使われる暗号化キーを監査することもできます。  
+   * **プライベート エンドポイント** – 仮想ネットワーク (VNet) を使用して、[Private Link を介してデータに安全にアクセスできるようになります。](../../private-link/private-link-overview.md)
 
 
 ## <a name="june-2020"></a>2020 年 6 月
 
 ### <a name="new-features"></a>新機能
-* **クライアント SDK への CopyModel API の追加** クライアント SDK を使用して、サブスクリプション間でモデルをコピーできるようになりました。 この機能の全般的な情報については、[モデルのバックアップと復旧](./disaster-recovery.md)に関する記事を参照してください。
-* **Azure Active Directory の統合** 。Azure AD の資格情報を使用して、SDK で Form Recognizer クライアント オブジェクトを認証できるようになりました。
-* **SDK 固有の変更** これには、小さな機能追加と破壊的な変更の両方が含まれます。 詳細については、SDK の変更ログを参照してください。
+* **クライアント SDK への CopyModel API の追加** - クライアント SDK を使用して、サブスクリプション間でモデルをコピーできるようになりました。 この機能の全般的な情報については、[モデルのバックアップと復旧](./disaster-recovery.md)に関する記事を参照してください。
+* **Azure Active Directory の統合** - Azure AD の資格情報を使用して、SDK で Form Recognizer クライアント オブジェクトを認証できるようになりました。
+* **SDK 固有の変更** - これには、小さな機能追加と破壊的な変更の両方が含まれます。 詳細については、SDK の変更ログを参照してください。
   * [C# SDK プレビュー 3 変更ログ](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/formrecognizer/Azure.AI.FormRecognizer/CHANGELOG.md)
   * [Python SDK プレビュー 3 変更ログ](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
   * [Java SDK プレビュー 3 変更ログ](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
@@ -77,7 +106,7 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
 ## <a name="april-2020"></a>2020 年 4 月
 
 ### <a name="new-features"></a>新機能
-* **Form Recognizer API v2.0 パブリック プレビューの SDK サポート** 今月、サービス サポートが拡張され、Form Recognizer v2.0 (プレビュー) リリースのプレビュー SDK が含まれるようになりました。 以下のリンクを使用して、任意の言語で作業を開始してください。 
+* **Form Recognizer API v2.0 パブリック プレビューの SDK サポート** - 今月、サービス サポートが拡張され、Form Recognizer v2.0 (プレビュー) リリースのプレビュー SDK が含まれるようになりました。 以下のリンクを使用して、任意の言語で作業を開始してください。 
    * [.NET SDK](/dotnet/api/overview/azure/ai.formrecognizer-readme?view=azure-dotnet)
    * [Java SDK](/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)
    * [Python SDK](/python/api/overview/azure/ai-formrecognizer-readme?view=azure-python-preview)
@@ -111,9 +140,9 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
   この機能の使用方法については、[サンプル ラベル付けツール](./quickstarts/label-tool.md#specify-tag-value-types) ガイドを参照してください。
 
 
-* **テーブルの視覚化** サンプル ラベル付けツールで、ドキュメントで認識されたテーブルが表示されるようになりました。 これにより、ラベル付けおよび分析を行う前に、ドキュメントから認識されて抽出されたテーブルを表示できます。 この機能は、レイヤー オプションを使用してオンとオフを切り替えることができます。
+* **テーブルの視覚化** サンプル ラベル付けツールで、ドキュメントで認識されたテーブルが表示されるようになりました。 この機能により、ラベル付けおよび分析を行う前に、ドキュメントから認識されて抽出されたテーブルを表示できます。 この機能は、レイヤー オプションを使用してオンとオフを切り替えることができます。
 
-  テーブルが認識されて抽出される方法の例を次に示します。
+  次の図に、テーブルが認識されて抽出される方法の例を示します。
 
   > [!div class="mx-imgBorder"]
   > ![サンプル ラベル付けツールを使用したテーブルの視覚化](./media/whats-new/formre-table-viz.png)
@@ -144,7 +173,7 @@ TLS 1.2 は現在、このサービスへのすべての HTTP 要求に適用さ
 ### <a name="new-features"></a>新機能
 
 * **カスタム モデル**
-  * **ラベルを使用したトレーニング** 手動でラベル付けされたデータを使用して、カスタム モデルをトレーニングできるようになりました。 これにより、性能の高いモデルが得られ、複雑なフォームやキーのない値を含んだフォームでも機能するモデルを作成することが可能です。
+  * **ラベルを使用したトレーニング** 手動でラベル付けされたデータを使用して、カスタム モデルをトレーニングできるようになりました。 この方法より、性能の高いモデルが得られ、複雑なフォームやキーのない値を含んだフォームでも機能するモデルを作成することが可能です。
   * **非同期 API** 非同期 API 呼び出しを使用して、大規模なデータ セットおよびファイルをトレーニングして分析できます。
   * **TIFF ファイルのサポート** TIFF ドキュメントからのデータをトレーニングして、抽出できるようになりました。
   * **抽出精度の向上**
@@ -163,7 +192,7 @@ TLS 1.2 は現在、このサービスへのすべての HTTP 要求に適用さ
 
 * モデルのトレーニング プロセスが非同期になりました。 **/custom/models** API 呼び出し経由で、トレーニングを開始します。 この呼び出しでは、操作 ID が返されます。この ID を **custom/models/{modelID}** に渡すと、トレーニング結果を返すことができます。
 * キー/値の抽出は、 **/custom/models/{modelID}/analyze** API 呼び出しによって開始されるようになりました。 この呼び出しでは操作 ID が返され、それを **custom/models/{modelID}/analyzeResults/{resultID}** に渡すと、抽出結果を返すことができます。
-* トレーニング操作の操作 ID は、 **Operation-Location** ヘッダーではなく、HTTP 応答の **Location** ヘッダー内に配置されるようになりました。
+* トレーニング操作の操作 ID は、**Operation-Location** ヘッダーではなく、HTTP 応答の **Location** ヘッダー内に配置されるようになりました。
 
 ### <a name="receipt-api-changes"></a>レシート API の変更点
 

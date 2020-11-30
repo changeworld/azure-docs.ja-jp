@@ -12,12 +12,12 @@ ms.date: 09/29/2020
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-set-nineteen
-ms.openlocfilehash: 245a00acb07d1c0e769a243413fccdf64d544f5a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 1cc313daf0e76ddd14865959410b07d9bdc189d7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135467"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984923"
 ---
 # <a name="pronunciation-assessment"></a>発音評価
 
@@ -154,12 +154,12 @@ double pronunciationScore = pronunciationAssessmentResult.pronunciationScore;
 
 発音評価の構成パラメーターを次の表に示します。
 
-| パラメーター | 説明 | 必須/省略可能 |
+| パラメーター | 説明 | 必須 |
 |-----------|-------------|---------------------|
 | ReferenceText | 発音が評価されるテキスト。 | 必須 |
-| GradingSystem | スコア調整用のポイント システム。 指定できる値は、`FivePoint` と `HundredMark` です。 既定の設定は `FivePoint` です。 | 省略可能 |
-| 粒度 | 評価の粒度。 指定できる値は、全文、単語、音素レベルのスコアを示す `Phoneme`、全文と単語レベルのスコアを示す `Word`、および全文レベルのみのスコアを示す `FullText` です。 既定の設定は `Phoneme` です。 | 省略可能 |
-| EnableMiscue | 誤りの計算を有効にします。 これを有効にすると、発音された単語が参照テキストと比較され、比較に基づいて省略または挿入がマークされます。 指定できる値は、`False` と `True` です。 既定の設定は `False` です。 | 省略可能 |
+| GradingSystem | スコア調整用のポイント システム。 `FivePoint` システムによって 0 から 5 の浮動小数点スコアが付与され、`HundredMark` によって 0 から 100 の浮動小数点スコアが付与されます。 既定値:`FivePoint`。 | 省略可能 |
+| 粒度 | 評価の粒度。 指定できる値は、全文、単語、音素レベルのスコアを示す `Phoneme`、全文と単語レベルのスコアを示す `Word`、および全文レベルのみのスコアを示す `FullText` です。 既定値:`Phoneme`。 | 省略可能 |
+| EnableMiscue | 誤りの計算を有効にします。 これを有効にすると、発音された単語が参照テキストと比較され、比較に基づいて省略または挿入がマークされます。 指定できる値は、`False` と `True` です。 既定値:`False`。 | 省略可能 |
 | ScenarioId | カスタマイズされたポイント システムを示す GUID。 | 省略可能 |
 
 ### <a name="pronunciation-assessment-result-parameters"></a>発音評価の結果パラメーター

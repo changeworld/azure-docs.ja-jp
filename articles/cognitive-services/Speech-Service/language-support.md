@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 569808d8a3c84d7d5455ebcdca6d2701cc14db5c
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: a430333f57b3734e5977db5c104c8f6d37bfd3c4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685530"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949090"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -141,9 +141,9 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | ブルガリア語 (ブルガリア) | `bg-BG` | Female | `bg-BG-KalinaNeural` <sup>[新規作成]</sup> | 全般 |
 | カタルニア語 (スペイン) | `ca-ES` | Female | `ca-ES-AlbaNeural` | 全般 |
 | 中国語 (繁体字) | `zh-HK` | Female | `zh-HK-HiuGaaiNeural` | 全般 |
-| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoxiaoNeural` | 全般、複数の音声スタイルを使用可能 |
+| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoxiaoNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能 |
 | 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoyouNeural` | 子供の音声、ストーリーのナレーション向けに最適化 |
-| 中国語 (標準、簡体字) | `zh-CN` | Male   | `zh-CN-YunyangNeural` | ニュースの読み取り向けに最適化<br /> 複数の音声スタイルを使用可能 |
+| 中国語 (標準、簡体字) | `zh-CN` | Male   | `zh-CN-YunyangNeural` | ニュースの読み取り向けに最適化<br /> [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、複数の音声スタイルを使用可能 |
 | 中国語 (標準、簡体字) | `zh-CN` | Male   | `zh-CN-YunyeNeural` | ストーリーのナレーション向けに最適化 |
 | 中国語 (台湾標準中国語) | `zh-TW` | Female | `zh-TW-HsiaoYuNeural` | 全般 |
 | クロアチア語 (クロアチア) | `hr-HR` | Female | `hr-HR-GabrijelaNeural` <sup>[新規作成]</sup> | 全般 |
@@ -158,9 +158,9 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | 英語 (イギリス) | `en-GB` | Female | `en-GB-LibbyNeural` | 全般 |
 | 英語 (イギリス) | `en-GB` | Female | `en-GB-MiaNeural` | 全般 |
 | 英語 (イギリス) | `en-GB` | Male | `en-GB-RyanNeural` <sup>[新規作成]</sup> | 全般 |
-| 英語 (米国) | `en-US` | Female | `en-US-AriaNeural` | 全般、複数の音声スタイルを使用可能 |
+| 英語 (米国) | `en-US` | Female | `en-US-AriaNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能 |
 | 英語 (米国) | `en-US` | Male | `en-US-GuyNeural` | 全般 |
-| 英語 (米国) | `en-US` | Female | `en-US-JennyNeural` <sup>[新規作成]</sup> | 全般、複数の音声スタイルを使用可能 |
+| 英語 (米国) | `en-US` | Female | `en-US-JennyNeural` <sup>[新規作成]</sup> | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能 |
 | フィンランド語 (フィンランド) | `fi-FI` | Female | `fi-FI-NooraNeural` | 全般 |
 | フランス語 (カナダ) | `fr-CA` | Female | `fr-CA-SylvieNeural` | 全般 |
 | フランス語 (カナダ) | `fr-CA` | Male | `fr-CA-JeanNeural` <sup>[新規作成]</sup> | 全般 |
@@ -186,7 +186,7 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | マレー語 (マレーシア) | `ms-MY` | Female | `ms-MY-YasminNeural` <sup>[新規作成]</sup> | 全般 |
 | ノルウェー語 (ブークモール、ノルウェー) | `nb-NO` | Female | `nb-NO-IselinNeural` | 全般 |
 | ポーランド語 (ポーランド) | `pl-PL` | Female | `pl-PL-ZofiaNeural` | 全般 |
-| ポルトガル語 (ブラジル) | `pt-BR` | Female | `pt-BR-FranciscaNeural` | 全般、複数の音声スタイルを使用可能 |
+| ポルトガル語 (ブラジル) | `pt-BR` | Female | `pt-BR-FranciscaNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能 |
 | ポルトガル語 (ブラジル) | `pt-BR` | Male | `pt-BR-AntonioNeural` <sup>[新規作成]</sup> | 全般 |
 | ポルトガル語 (ポルトガル) | `pt-PT` | Female | `pt-PT-FernandaNeural` | 全般 |
 | ルーマニア語 (ルーマニア) | `ro-RO` | Female | `ro-RO-AlinaNeural` <sup>[新規作成]</sup> | 全般 |
@@ -211,11 +211,11 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 
 | Language                         | Locale  | 性別 | 音声名                             | スタイルのサポート |
 |----------------------------------|---------|--------|----------------------------------------|---------------|
-| 中国語 (標準、簡体字) | `zh-CN` | Male   | `zh-CN-YunxiNeural` <sup>[新規作成]</sup> | 全般、複数のスタイルを使用可能 |
-| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaohanNeural` <sup>[新規作成]</sup> | 全般、複数のスタイルを使用可能 |
-| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoxuanNeural` <sup>[新規作成]</sup> | 全般、複数のロールプレイとスタイルを使用可能 |
-| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaomoNeural` <sup>[新規作成]</sup> | 全般、複数のロールプレイとスタイルを使用可能 |
-| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoruiNeural` <sup>[新規作成]</sup> | 高齢者の音声、複数のスタイルを使用可能 |
+| 中国語 (標準、簡体字) | `zh-CN` | Male   | `zh-CN-YunxiNeural` <sup>[新規作成]</sup> | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数のスタイルを使用可能 |
+| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaohanNeural` <sup>[新規作成]</sup> | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数のスタイルを使用可能 |
+| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoxuanNeural` <sup>[新規作成]</sup> | 全般、複数のロールプレイと[スタイルが SSML の使用により使用可能](speech-synthesis-markup.md#adjust-speaking-styles) |
+| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaomoNeural` <sup>[新規作成]</sup> | 全般、複数のロールプレイと[スタイルが SSML の使用により使用可能](speech-synthesis-markup.md#adjust-speaking-styles) |
+| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoruiNeural` <sup>[新規作成]</sup> | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、高齢者の音声、複数のスタイルを使用可能 |
 | エストニア語 (エストニア) | `et-EE` | Female | `et-EE-AnuNeural` <sup>[新規作成]</sup> | 全般 |
 | ゲール語 (アイルランド) | `ga-IE` | Female | `ga-IE-OrlaNeural` <sup>[新規作成]</sup> | 全般 |
 | リトアニア語 (リトアニア) | `lt-LT` | Female | `lt-LT-OnaNeural` <sup>[新規作成]</sup> | 全般 |

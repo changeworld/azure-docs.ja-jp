@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: 926b79e672c14249ec7c2b053dba7eb3a31443a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 455c7d66748740ae6e2cc11c6a44bbf30c1cbced
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536047"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018839"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure リソース オーサリング キーに移行する
 
@@ -32,7 +32,7 @@ Language Understanding (LUIS) のオーサリング認証が、メール アカ�
 
 ## <a name="note-before-you-migrate"></a>移行前の注意事項
 
-* ご利用のオーサリング エクスペリエンスは、**2020 年 11 月 2 日**までに移行する必要があります。 
+* ご利用のオーサリング エクスペリエンスは、**2020 年 11 月 2 日** までに移行する必要があります。 
 * 移行は一方向のプロセスです。 移行後に元に戻すことはできません。
 * アプリケーションの所有者である場合、アプリケーションは一緒に自動的に移行されます。
 * 所有者は移行するアプリのサブセットを選択できません。また、プロセスを元に戻すことはできません。
@@ -40,7 +40,7 @@ Language Understanding (LUIS) のオーサリング認証が、メール アカ�
 * 所有者は、移行を通知するために、コラボレーターにメールを送信するよう求められます。
 * アプリケーションのコラボレーターである場合、アプリケーションは一緒に移行されません。
 * コラボレーターが移行したことを、所有者が知る方法はありません。
-* 移行によって自動的にコラボレーターが収集され、Azure オーサリング リソースに移動または追加されることはありません。 アプリの所有者が、移行後にこの手順を実行する必要があります。 この手順では、[Azure オーサリング リソースへのアクセス許可](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-collaborate)が必要です。
+* 移行によって自動的にコラボレーターが収集され、Azure オーサリング リソースに移動または追加されることはありません。 アプリの所有者が、移行後にこの手順を実行する必要があります。 この手順では、[Azure オーサリング リソースへのアクセス許可](./luis-how-to-collaborate.md)が必要です。
 * Azure リソースに割り当てられたコラボレーターがアプリケーションにアクセスするには、移行が必要です。 そうしないと、アプリケーションを作成するためのアクセス権が付与されません。
 * 移行されたユーザーをアプリケーションのコラボレーターとして追加することはできません。
 * 別のユーザーが所有するアプリケーションに割り当てられている予測キーを所有している場合、これは所有者とコラボレーターの両方の移行をブロックします。 この記事で後述する推奨事項を参照してください。
@@ -174,7 +174,7 @@ LUIS ポータルでアプリの編集を続けるために、オーサリング
 
 オーサリング リソースに[共同作成者を追加する方法](luis-how-to-collaborate.md)について説明します。 共同作成者は、そのリソースのすべてのアプリケーションにアクセスできます。
 
-**Azure portal** のオーサリング リソースの [Access Control (IAM)] ページから、そのリソースの共同作成者を追加できます。 詳細については、[共同作成者アクセスの追加](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)に関するページを参照してください。
+**Azure portal** のオーサリング リソースの [Access Control (IAM)] ページから、そのリソースの共同作成者を追加できます。 詳細については、「[アプリに共同作成者を追加する](luis-how-to-collaborate.md)」を参照してください。
 
 > [!Note]
 > LUIS アプリの所有者が移行し、Azure リソースの共同作成者としてコラボレーターを追加した場合、コラボレーターも移行しないと、アプリにアクセスできません。
@@ -229,7 +229,7 @@ LUIS ポータルでアプリの編集を続けるために、オーサリング
 * 有効なサブスクリプションに関連付けられている、適切なテナント内であることを確認します。 このツール バーのイニシャルの左側にあるアバターからテナントを切り替えることができます。![テナントを切り替えることのできるツール バー](./media/migrate-authoring-key/switch-user-tenant-2.png)
 
 既存のオーサリング リソースがあるのに、 **[既存のオーサリング リソースを使用する]** オプションを選択しても見つからない場合:
-* お客様のリソースはおそらく、サインインしているポータルとは異なる場所に作成されています。 [LUIS のオーサリング リージョンとポータル](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-authoring-regions)に関するセクションを参照してください。
+* お客様のリソースはおそらく、サインインしているポータルとは異なる場所に作成されています。 [LUIS のオーサリング リージョンとポータル](./luis-reference-regions.md#luis-authoring-regions)に関するセクションを参照してください。
 * 代わりに、LUIS ポータルから新しいリソースを作成します。
 
 **[新しいオーサリング リソースを作成する]** オプションを選択したが、"Failed retrieving user's Azure information, retry again later" (ユーザーの Azure 情報を取得できませんでした。後でもう一度やり直してください) というエラー メッセージが表示されて移行が失敗した場合:

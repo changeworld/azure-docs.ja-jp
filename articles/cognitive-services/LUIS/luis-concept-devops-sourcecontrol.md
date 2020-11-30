@@ -4,13 +4,13 @@ description: Language Understanding (LUIS) アプリをソース管理下で維�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/28/2020
-ms.openlocfilehash: 25f2c4f4698785326f80c24d3749e7585e85d5bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/18/2020
+ms.openlocfilehash: cf5c88df4e2ac6b95e99a3a78b1bf1e45bf534ed
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309508"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95535556"
 ---
 # <a name="devops-practices-for-luis"></a>LUIS の DevOps プラクティス
 
@@ -18,7 +18,7 @@ Language Understanding (LUIS) アプリを開発するソフトウェア エン�
 
 ## <a name="source-control-and-branch-strategies-for-luis"></a>LUIS のソース管理およびブランチ戦略
 
-DevOps が成功するための要因の 1 つは、[ソース管理](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)です。 ソース管理システムを使用すると、開発者はコードで共同作業したり、変更を追跡したりできます。 ブランチを使用すると、開発者は異なるバージョンのコード ベースを切り替えることができ、チームの他のメンバーとは独立して作業を行うことができます。 開発者が [pull request](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) を生成して 1 つのブランチから別のブランチへの更新を提案したとき、または変更がマージされたときに、それらを[自動ビルド](luis-concept-devops-automation.md)のトリガーにして、コードのビルドや継続的テストを実行できます。
+DevOps が成功するための要因の 1 つは、[ソース管理](/azure/devops/user-guide/source-control?view=azure-devops)です。 ソース管理システムを使用すると、開発者はコードで共同作業したり、変更を追跡したりできます。 ブランチを使用すると、開発者は異なるバージョンのコード ベースを切り替えることができ、チームの他のメンバーとは独立して作業を行うことができます。 開発者が [pull request](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) を生成して 1 つのブランチから別のブランチへの更新を提案したとき、または変更がマージされたときに、それらを[自動ビルド](luis-concept-devops-automation.md)のトリガーにして、コードのビルドや継続的テストを実行できます。
 
 このドキュメントで説明されている概念とガイダンスを使用することにより、ソース管理システムの変更を追跡しながら LUIS アプリを開発し、次のソフトウェア エンジニアリングのベスト プラクティスに従うことができます。
 
@@ -42,25 +42,25 @@ DevOps が成功するための要因の 1 つは、[ソース管理](https://do
 
 ## <a name="source-control"></a>ソース管理
 
-LUIS アプリの[アプリ スキーマ定義](https://docs.microsoft.com/azure/cognitive-services/luis/app-schema-definition)をソース コード管理システムで維持するには、アプリの [LUDown 形式 (`.lu`)](https://docs.microsoft.com/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0) 表現を使用します。 人間が判読できるので、`.lu` 形式は `.json` 形式より好まれます。これにより、PR で変更を行ってレビューするのが容易になります。
+LUIS アプリの[アプリ スキーマ定義](./app-schema-definition.md)をソース コード管理システムで維持するには、アプリの [LUDown 形式 (`.lu`)](/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0) 表現を使用します。 人間が判読できるので、`.lu` 形式は `.json` 形式より好まれます。これにより、PR で変更を行ってレビューするのが容易になります。
 
 ### <a name="save-a-luis-app-using-the-ludown-format"></a>LUDown 形式を使用して LUIS アプリを保存する
 
 LUIS アプリを `.lu` 形式で保存し、ソース管理下に置くには:
 
-- いずれか: [LUIS ポータル](https://www.luis.ai/)から `.lu` として[アプリのバージョンをエクスポート](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#other-actions)し、それをソース管理リポジトリに追加します
+- いずれか: [LUIS ポータル](https://www.luis.ai/)から `.lu` として[アプリのバージョンをエクスポート](./luis-how-to-manage-versions.md#other-actions)し、それをソース管理リポジトリに追加します
 
 - またはテキスト エディターを使用して LUIS アプリ用の `.lu` ファイルを作成し、それをソース管理リポジトリに追加します
 
 > [!TIP]
-> LUIS アプリの JSON エクスポートを使用する場合は、[BotBuilder-Tools LUIS CLI](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) を使用して、[それを LUDown に変換する](https://github.com/microsoft/botframework-cli/tree/master/packages/luis#bf-luisconvert)ことができます。 意図と発話がアルファベット順に並べ替えられるようにするには、`--sort` オプションを使用します。  
+> LUIS アプリの JSON エクスポートを使用する場合は、[それを LUDown に変換する](https://github.com/microsoft/botframework-cli/tree/master/packages/luis#bf-luisconvert)ことができます。  意図と発話がアルファベット順に並べ替えられるようにするには、`--sort` オプションを使用します。  
 > LUIS ポータルに組み込まれている **.LU** エクスポート機能により、出力は既に並べ替えられていることに注意してください。
 
 ### <a name="build-the-luis-app-from-source"></a>LUIS アプリをソースからビルドする
 
-LUIS アプリの場合、"*ソースからビルドする*" とは、[`.lu` ソースをインポートすることによって LUIS アプリの新しいバージョンを作成](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version)し、[バージョンをトレーニング](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train)して、[それを発行する](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app)ことを意味します。 これは、LUIS ポータルまたはコマンド ラインで行うことができます。
+LUIS アプリの場合、"*ソースからビルドする*" とは、[`.lu` ソースをインポートすることによって LUIS アプリの新しいバージョンを作成](./luis-how-to-manage-versions.md#import-version)し、[バージョンをトレーニング](./luis-how-to-train.md)して、[それを発行する](./luis-how-to-publish-app.md)ことを意味します。 これは、LUIS ポータルまたはコマンド ラインで行うことができます。
 
-- LUIS ポータルを使用して、ソース管理からアプリの [`.lu` バージョンをインポート](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version)し、[トレーニング](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train)して、アプリを[発行](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app)します。
+- LUIS ポータルを使用して、ソース管理からアプリの [`.lu` バージョンをインポート](./luis-how-to-manage-versions.md#import-version)し、[トレーニング](./luis-how-to-train.md)して、アプリを[発行](./luis-how-to-publish-app.md)します。
 
 - コマンド ラインまたは CI/CD ワークフローで [LUIS 用の Bot Framework コマンド ライン インターフェイス](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS)を使用して、ソース管理から LUIS アプリケーションにアプリの `.lu` バージョンを[インポート](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisversionimport)し、[トレーニング](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luistrainrun)して、アプリを[発行](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish)します。
 
@@ -72,16 +72,16 @@ LUIS アプリケーションの次の種類のファイルを、ソース管理
 
 - [単体テスト定義ファイル](luis-concept-devops-testing.md#writing-tests) (発話と予想される結果)
 
-- パフォーマンス テストに使用される[バッチ テスト ファイル](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test#batch-file-format) (発話と予想される結果)
+- パフォーマンス テストに使用される[バッチ テスト ファイル](./luis-concept-batch-test.md#batch-file-format) (発話と予想される結果)
 
-### <a name="credentialsand-keys-are-not-checked-in"></a>資格情報とキーはチェックインしない
+### <a name="credentials-and-keys-are-not-checked-in"></a>資格情報とキーはチェックインしない
 
 承認されていないユーザーに見られる可能性があるリポジトリにチェックインするファイルには、サブスクリプション キーまたはそれに類する機密性の値を含めないでください。 チェックインしてはならないキーや他の値としては、次のものがあります。
 
 - LUIS のオーサリング キーと予測キー
 - LUIS のオーサリング エンドポイントと予測エンドポイント
 - Azure サブスクリプション キー
-- アクセス トークン (自動化認証に使用される Azure [サービス プリンシパル](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest)用のトークンなど)
+- アクセス トークン (自動化認証に使用される Azure [サービス プリンシパル](/cli/azure/ad/sp?view=azure-cli-latest)用のトークンなど)
 
 #### <a name="strategies-for-securely-managing-secrets"></a>シークレットを安全に管理するための戦略
 
@@ -92,7 +92,7 @@ LUIS アプリケーションの次の種類のファイルを、ソース管理
 
 ## <a name="branching-and-merging"></a>ブランチとマージ
 
-Git のような分散バージョン コントロール システムでは、チーム メンバーが、他のユーザーと共有する開発ブランチを通じて、コード変更の発行、共有、レビュー、反復処理を柔軟に行うことができます。 チームに適した [Git ブランチ戦略](https://docs.microsoft.com/azure/devops/repos/git/git-branching-guidance)を採用します。
+Git のような分散バージョン コントロール システムでは、チーム メンバーが、他のユーザーと共有する開発ブランチを通じて、コード変更の発行、共有、レビュー、反復処理を柔軟に行うことができます。 チームに適した [Git ブランチ戦略](/azure/devops/repos/git/git-branching-guidance)を採用します。
 
 どのブランチ戦略を採用する場合でも、あらゆるものの中で重要な原則は、チーム メンバーは、他のブランチで行われている作業とは独立して、"*機能ブランチ*" 内のソリューションで作業を行うことができるということです。
 
@@ -110,7 +110,7 @@ LUIS プロジェクトでブランチでの独立した作業をサポートす
 
 1. メイン ブランチから機能ブランチを作成します (ブランチ戦略に依存し、通常はマスターまたは開発)。
 
-1. 機能ブランチでの作業をサポートするためだけに、[LUIS ポータルで新しい LUIS アプリを作成します](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-start-new-app) ("*開発ブランチ アプリ*")。
+1. 機能ブランチでの作業をサポートするためだけに、[LUIS ポータルで新しい LUIS アプリを作成します](./luis-how-to-start-new-app.md) ("*開発ブランチ アプリ*")。
 
    * ソリューションの `.lu` ソースがブランチに既に存在する場合、それはプロジェクトで前に別のブランチで行われた作業の後で保存されたものなので、`.lu` ファイルをインポートして開発ブランチの LUIS アプリを作成します。
 
@@ -120,11 +120,11 @@ LUIS プロジェクトでブランチでの独立した作業をサポートす
 
 1. 更新をテストします。開発ブランチ アプリのテストの詳細については、「[LUIS DevOps のテスト](luis-concept-devops-testing.md)」を参照してください。
 
-1. 開発ブランチ アプリのアクティブ バージョンを、[バージョン リスト](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions)から `.lu` としてエクスポートします。
+1. 開発ブランチ アプリのアクティブ バージョンを、[バージョン リスト](./luis-how-to-manage-versions.md)から `.lu` としてエクスポートします。
 
 1. 更新をチェックインし、更新のピア レビューを依頼します。 GitHub を使用している場合は、[pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) を送ります。
 
-1. 変更が承認されたら、更新をマスター ブランチにマージします。 この時点で、マスターの更新された `.lu` を使用して、"*マスター*" LUIS アプリの新しい[バージョン](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions)を作成します。 バージョン名の設定に関する考慮事項については、「[バージョン管理](#versioning)」を参照してください。
+1. 変更が承認されたら、更新をマスター ブランチにマージします。 この時点で、マスターの更新された `.lu` を使用して、"*マスター*" LUIS アプリの新しい [バージョン](./luis-how-to-manage-versions.md)を作成します。 バージョン名の設定に関する考慮事項については、「[バージョン管理](#versioning)」を参照してください。
 
 1. 機能ブランチを削除するときは、機能ブランチでの作業用に作成した開発ブランチ LUIS アプリを削除することをお勧めします。
 
@@ -144,9 +144,9 @@ LUIS プロジェクトでブランチでの独立した作業をサポートす
 
 - 前の「[開発者は独立したブランチから作業できる](#developers-can-work-from-independent-branches)」で説明したパターンに従う場合、このブランチでは固有の LUIS アプリケーションを使用して開発をサポートします。 その "開発ブランチ" LUIS アプリは、開発チームで最初に機能ブランチでの作業を始めるメンバーによって作成されます。
 
-- 開発ブランチ LUIS アプリに[チーム メンバーを共同作成者として追加します](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-collaborate)。
+- 開発ブランチ LUIS アプリに[チーム メンバーを共同作成者として追加します](./luis-how-to-collaborate.md)。
 
-- 機能ブランチでの作業が終わったら、アクティブなバージョンの開発ブランチ LUIS アプリを[バージョン リスト](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions)から `.lu` としてエクスポートした後、更新された `.lu` ファイルをリポジトリに保存し、変更をチェックインして PR します。
+- 機能ブランチでの作業が終わったら、アクティブなバージョンの開発ブランチ LUIS アプリを[バージョン リスト](./luis-how-to-manage-versions.md)から `.lu` としてエクスポートした後、更新された `.lu` ファイルをリポジトリに保存し、変更をチェックインして PR します。
 
 ### <a name="incorporating-changes-from-one-branch-to-another-with-rebase-or-merge"></a>リベースまたはマージを使用して、あるブランチから別のブランチに変更を組み込む
 
@@ -183,7 +183,7 @@ LUDown 形式の LUIS アプリは人間が判読できるものであり、レ�
 
 ## <a name="versioning"></a>バージョン管理
 
-アプリケーションは複数のコンポーネントで構成され、[Azure Bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) で実行されるボット、[QnA Maker](https://www.qnamaker.ai/)、[Azure Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview) などが含まれる場合があります。 疎結合アプリケーションの目標を達成するには、アプリケーションの各コンポーネントが個別にバージョン管理されるように、[バージョン コントロール](https://docs.microsoft.com/azure/devops/learn/git/what-is-version-control)を使用します。このようにすると、開発者はバージョン番号を見るだけで、破壊的変更や更新を検出できます。 独自のリポジトリで管理している場合は、他のコンポーネントから独立して LUIS アプリを簡単にバージョン管理できます。
+アプリケーションは複数のコンポーネントで構成され、[Azure Bot Service](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) で実行されるボット、[QnA Maker](https://www.qnamaker.ai/)、[Azure Speech Service](../speech-service/overview.md) などが含まれる場合があります。 疎結合アプリケーションの目標を達成するには、アプリケーションの各コンポーネントが個別にバージョン管理されるように、[バージョン コントロール](/azure/devops/learn/git/what-is-version-control)を使用します。このようにすると、開発者はバージョン番号を見るだけで、破壊的変更や更新を検出できます。 独自のリポジトリで管理している場合は、他のコンポーネントから独立して LUIS アプリを簡単にバージョン管理できます。
 
 マスター ブランチの LUIS アプリには、バージョン管理スキームを適用する必要があります。 LUIS アプリの `.lu` に対する更新をマスターにマージするときは、マスター ブランチ用の LUIS アプリの新しいバージョンに、その更新されたソースをインポートします。
 
@@ -195,7 +195,7 @@ LUDown 形式の LUIS アプリは人間が判読できるものであり、レ�
 
 LUIS アプリの機能に対する変更の範囲を示すためには、メジャーとマイナーのバージョンを使用できます。
 
-* メジャー バージョン: 新しい[意図](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-intent)や[エンティティ](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-entity-types)のサポートなどの重要な変更
+* メジャー バージョン: 新しい[意図](./luis-concept-intent.md)や[エンティティ](./luis-concept-entity-types.md)のサポートなどの重要な変更
 * マイナー バージョン: 重要な新しいトレーニングの後など、下位互換性のある軽微な変更
 * ビルド: 機能の変更はなく、ビルドが異なるだけ。
 

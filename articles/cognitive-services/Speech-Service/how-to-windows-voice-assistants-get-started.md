@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 4ea2f88b02738645af3f8fc32d5fdb99168a1122
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77d756bc0c7bbdfa38bb1262638ef85b051fc234
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82997278"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026490"
 ---
 # <a name="getting-started-with-voice-assistants-on-windows"></a>Windows の音声アシスタントの概要
 
@@ -25,17 +25,17 @@ ms.locfileid: "82997278"
 
 Windows 用の音声アシスタントの開発を開始するには、適切な開発環境があることを確認する必要があります。
 
-- **Visual Studio:**   [Microsoft Visual Studio 2017](https://visualstudio.microsoft.com/) Community Edition 以降をインストールする必要があります
-- **Windows のバージョン**: Windows の Windows Insider ファスト リング ビルドと Windows SDK の Windows Insider バージョンが搭載された PC。 このサンプル コードは、Windows SDK 19018 を使用する Windows Insider リリース ビルド 19025.vb_release_analog.191112-1600 で動作することが確認されています。 この特定のバージョンより後のビルドまたは SDK と互換性があります。
-- **UWP 開発ツール**: Visual Studio のユニバーサル Windows プラットフォーム開発ワークロード。 UWP アプリケーションを開発するためのマシンの準備については、UWP の「[準備](https://docs.microsoft.com/windows/uwp/get-started/get-set-up)」ページを参照してください。
+- **Visual Studio:** [Microsoft Visual Studio 2017](https://visualstudio.microsoft.com/) Community Edition 以上をインストールする必要があります
+- **Windows のバージョン**: Windows の Windows Insider ファスト リング ビルドと Windows SDK の Windows Insider バージョンが搭載された PC。  このサンプル コードは、Windows SDK 19018 を使用する Windows Insider リリース ビルド 19025.vb_release_analog.191112-1600 で動作することが確認されています。  この特定のバージョンより後のビルドまたは SDK と互換性があります。
+- **UWP 開発ツール**: Visual Studio のユニバーサル Windows プラットフォーム開発ワークロード。  UWP アプリケーションを開発するためのマシンの準備については、UWP の「[準備](/windows/uwp/get-started/get-set-up)」ページを参照してください。
 - **動作するマイクとオーディオ出力**
 
 ## <a name="obtain-resources-from-microsoft"></a>Microsoft からリソースを入手する
 
 Windows 上で完全にカスタマイズされた音声エージェントに必要なリソースには、Microsoft のリソースが必要なものがあります。 [UWP 音声アシスタント サンプル](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample)には、初期の開発とテストのためにこうしたリソースのサンプル バージョンが用意されているため、初期の開発の場合はこのセクションは不要です。
 
-- **キーワード モデル:**  音声によるアクティブ化には、.bin ファイル形式の Microsoft のキーワード モデルが必要です。 UWP 音声アシスタント サンプルで用意されている .bin ファイルは、キーワード "Contoso" でトレーニングされています。
-- **制限付きアクセス機能トークン:** ConversationalAgent API はマイク オーディオへのアクセスを提供するため、制限付きアクセス機能の制限の下で保護されています。 制限付きアクセス機能を使用するには、アプリケーションのパッケージ ID に接続された制限付きアクセス機能トークンを Microsoft から入手する必要があります。
+- **キーワード モデル:** 音声によるアクティブ化には、.bin ファイル形式の Microsoft のキーワード モデルが必要です。 UWP 音声アシスタント サンプルで用意されている .bin ファイルは、キーワード "Contoso" でトレーニングされています。
+- **制限付きアクセス機能トークン:** ConversationalAgent API はマイク オーディオへのアクセスを提供するため、制限付きアクセス機能の制限の下で保護されています。  制限付きアクセス機能を使用するには、アプリケーションのパッケージ ID に接続された制限付きアクセス機能トークンを Microsoft から入手する必要があります。
 
 ## <a name="establish-a-dialog-service"></a>ダイアログ サービスを確立する
 
@@ -48,8 +48,8 @@ Windows 上で完全にカスタマイズされた音声エージェントに必
 
 これらは、Direct Line Speech を使用して基本的なダイアログ サービスを作成するための要件です。
 
-- **Speech Services のサブスクリプション:** 音声からテキストへの変換とテキストから音声への変換のための Cognitive Speech Services のサブスクリプション。 Speech Services は、[こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)から無料で試すことができます。
-- **Bot Framework ボット:** Bot Framework バージョン 4.2 以降を使用して作成されたボットで、[Direct Line Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/direct-line-speech) にサブスクライブして音声の入出力を有効にします。 [このガイド](https://docs.microsoft.com/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk)には、"エコー ボット" を作成し、Direct Line Speech にサブスクライブするための段階的な手順が説明されています。 また、カスタマイズされたボットを作成する手順については、[こちら](https://blog.botframework.com/2018/05/07/build-a-microsoft-bot-framework-bot-with-the-bot-builder-sdk-v4/)を参照してください。そうすると、[こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk)と同じ手順に従って、"エコー ボット" ではなく新しいボットを使用して Direct Line Speech にサブスクライブすることができます。
+- **Speech Services のサブスクリプション:** 音声からテキストへの変換とテキストから音声への変換のための Cognitive Speech Services のサブスクリプション。 Speech Services は、[こちら](./overview.md#try-the-speech-service-for-free)から無料で試すことができます。
+- **Bot Framework ボット:** Bot Framework バージョン 4.2 以降を使用して作成されたボットで、[Direct Line Speech](./direct-line-speech.md) にサブスクライブして音声の入出力を有効にします。 [このガイド](./tutorial-voice-enable-your-bot-speech-sdk.md)には、"エコー ボット" を作成し、Direct Line Speech にサブスクライブするための段階的な手順が説明されています。 また、カスタマイズされたボットを作成する手順については、[こちら](https://blog.botframework.com/2018/05/07/build-a-microsoft-bot-framework-bot-with-the-bot-builder-sdk-v4/)を参照してください。そうすると、[こちら](./tutorial-voice-enable-your-bot-speech-sdk.md)と同じ手順に従って、"エコー ボット" ではなく新しいボットを使用して Direct Line Speech にサブスクライブすることができます。
 
 ## <a name="try-out-the-sample-app"></a>サンプル アプリを試す
 

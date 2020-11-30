@@ -8,23 +8,40 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: f0204f5b923cf3363d85be9642d2866436df155a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.custom: references_regions
+ms.openlocfilehash: 8743e765a050bfc4a2ba93a1b3e0344a960edb76
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369462"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966889"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Text Analytics API の新機能
 
 Text Analytics API は継続的に更新されます。 常に最新の開発情報を把握していただけるよう、この記事では新しいリリースと機能に関する情報を提供します。
 
+## <a name="november-2020"></a>2020 年 11 月
+
+* 新しい非同期 [Analyze API](how-tos/text-analytics-how-to-call-api.md?tabs=analyze) 用の Text Analytics API v3.1-preview.3 を使用する[新しいエンドポイント](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Analyze)。これにより、NER、PII、およびキー フレーズの抽出操作でバッチ処理がサポートされます。
+* バッチ処理のサポートを含む、新しい非同期 [Text Analytics for Health](how-tos/text-analytics-for-health.md) でホストされる API の Text Analytics API v3.1-preview.3 を使用する[新しいエンドポイント](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health)。
+* 上記の新機能は両方とも、`West US 2`、`East US 2`、`Central US`、`North Europe`、`West Europe` の各リージョンでのみご利用いただけます。
+* モデル バージョン `2020-04-01` 以降では、ポルトガル語 (ブラジル) `pt-BR` が[感情分析](how-tos/text-analytics-how-to-sentiment-analysis.md) v3.x でサポートされるようになりました。 これは、ポルトガル語での既存の `pt-PT` サポートに追加されます。
+* 非同期 Analyze を含む更新されたクライアント ライブラリ、および Text Analytics for Health 操作。 GitHub で例を見つけることができます。
+
+    * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
+    * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
+    * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
+
+
+> [!div class="nextstepaction"]
+> [Text Analytics API v3.1-Preview.3 の詳細情報](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Languages)
+
 ## <a name="october-2020"></a>2020 年 10 月
 
 * 感情分析 v3.x のモデル バージョン `2020-04-01` から、ヒンディー語がサポートされています。 
-* v3 言語エンドポイントのモデル バージョン `2020-09-01` では、言語検出と正確性が強化されています。
+* v3 言語エンドポイントのモデル バージョン `2020-09-01` は、言語検出が強化され、正確性が向上しています。
 * インド中部とアラブ首長国連邦北部での v3 の可用性。
 
 ## <a name="september-2020"></a>2020 年 9 月
@@ -147,7 +164,7 @@ JSON 応答に含まれる次のプロパティの名前が変更されていま
 
 ### <a name="text-analytics-api-v31-public-preview"></a>Text Analytics API v3.1 パブリック プレビュー
    * 新しい感情分析機能 - [意見マイニング](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
-   * 保護された医療情報 (`PHI`) 用の新しい[個人情報 (`PII`) ドメイン フィルター](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)。
+   * 保護された医療情報 (`PHI`) 用の新しい個人情報 (`PII`) ドメイン フィルター。
 
 > [!div class="nextstepaction"]
 > [Text Analytics API v3.1 プレビューについての詳細](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
@@ -162,7 +179,7 @@ JSON 応答に含まれる次のプロパティの名前が変更されていま
    * [JavaScript (Node.js)](./quickstarts/text-analytics-sdk.md?pivots=programming-language-javascript&tabs=version-3)
    * [Java](./quickstarts/text-analytics-sdk.md?pivots=programming-language-java&tabs=version-3)
    
-   > [!div class="nextstepaction"]
+> [!div class="nextstepaction"]
 > [Text Analytics API v3 SDK についての詳細](./quickstarts/text-analytics-sdk.md?tabs=version-3)
 
 ### <a name="named-entity-recognition-v3-public-preview"></a>名前付きエンティティの認識 v3 パブリック プレビュー
@@ -185,9 +202,6 @@ JSON 応答に含まれる次のプロパティの名前が変更されていま
     * Phone Number (米国のみ)
     * URL
     * IP アドレス
-
-> [!div class="nextstepaction"]
-> [名前付きエンティティの認識 v3 に関する詳細](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)
 
 ### <a name="october-2019"></a>2019 年 10 月
 

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 5125fff0ef8987d313c6611e4d5de08d090f2263
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 769dea079339af2c6307d9230e047a654dc3d5dd
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913196"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95492212"
 ---
 # <a name="receipt-concepts"></a>レシートの概念
 
@@ -57,6 +57,13 @@ Azure Form Recognizer では、その事前構築済みモデルの 1 つを使�
 * OCR の未加工のテキスト (レシート全体の OCR 抽出テキスト出力)
 * 値、行、単語ごとの境界ボックス
 
+## <a name="try-it-out"></a>試してみる
+
+Form Recognizer レシート サービスを試すには、オンラインのサンプル UI ツールにアクセスしてください。
+
+> [!div class="nextstepaction"]
+> [事前構築済みモデルを試す](https://fott-preview.azurewebsites.net/)
+
 ## <a name="input-requirements"></a>入力の要件
 
 [!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
@@ -64,7 +71,7 @@ Azure Form Recognizer では、その事前構築済みモデルの 1 つを使�
 ## <a name="supported-locales"></a>サポート対象のロケール 
 
 * **事前構築済みレシート v2.0** (GA) では、EN-US ロケールでのレシートがサポートされています
-* **事前構築済みレシート v2.1-preview.1** (パブリック プレビュー) では、次の EN レシート ロケールのサポートが追加されています。 
+* **事前構築済みレシート v2.1-preview.2** (パブリック プレビュー) では、次の EN レシート ロケールのサポートが追加されています。 
   * EN-AU 
   * EN-CA 
   * EN-GB 
@@ -73,12 +80,12 @@ Azure Form Recognizer では、その事前構築済みモデルの 1 つを使�
   > [!NOTE]
   > 言語の入力 
   >
-  > 事前構築済みレシート v2.1-preview.1 には、追加の英語圏市場のレシート ロケールを指定するための省略可能な要求パラメーターがあります。 オーストラリア (EN-AU)、カナダ (EN-CA)、英国 (EN-GB)、インド (EN-IN) の英語で書かれた各レシートについては、ロケールを指定して、改善された結果を得ることができます。 v2.1-preview.1 でロケールが指定されていない場合、このモデルは既定で EN-US モデルになります。
+  > 事前構築済みレシート v2.1-preview.2 には、追加の英語圏市場のレシート ロケールを指定するための省略可能な要求パラメーターがあります。 オーストラリア (EN-AU)、カナダ (EN-CA)、英国 (EN-GB)、インド (EN-IN) の英語で書かれた各レシートについては、ロケールを指定して、改善された結果を得ることができます。 v2.1-preview.2 でロケールが指定されていない場合、このモデルは既定で EN-US モデルになります。
 
 
 ## <a name="the-analyze-receipt-operation"></a>Analyze Receipt の操作
 
-[Analyze Receipt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync) では、レシートの画像または PDF を入力として受け取り、目的の値やテキストを抽出します。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用される結果 ID を含む URL です。
+[Analyze Receipt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync) では、レシートの画像または PDF を入力として受け取り、目的の値やテキストを抽出します。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用される結果 ID を含む URL です。
 
 |応答ヘッダー| 結果の URL |
 |:-----|:----|
@@ -86,7 +93,7 @@ Azure Form Recognizer では、その事前構築済みモデルの 1 つを使�
 
 ## <a name="the-get-analyze-receipt-result-operation"></a>Get Analyze Receipt Result の操作
 
-2 番目の手順では、[Get Analyze Receipt Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeReceiptResult) 操作を呼び出します。 この操作では、Analyze Receipt 操作によって作成された結果 ID を入力として受け取ります。 これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。 **succeeded** の値が返されるまで、この操作を対話形式で呼び出します。 1 秒あたりの要求数 (RPS) を超えないようにするために、間隔は 3 - 5 秒あけてください。
+2 番目の手順では、[Get Analyze Receipt Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeReceiptResult) 操作を呼び出します。 この操作では、Analyze Receipt 操作によって作成された結果 ID を入力として受け取ります。 これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。 **succeeded** の値が返されるまで、この操作を対話形式で呼び出します。 1 秒あたりの要求数 (RPS) を超えないようにするために、間隔は 3 - 5 秒あけてください。
 
 |フィールド| 型 | 設定可能な値 |
 |:-----|:----:|:----|
