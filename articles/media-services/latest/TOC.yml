@@ -45,6 +45,10 @@
           href: manage-assets-quickstart.md
         - name: ポータルを使用したコンテンツの暗号化
           href: encrypt-content-quickstart.md
+    - name: Resource Manager テンプレートを使用する
+      items:
+        - name: ARM を使用してアカウントを作成する
+          href: quickstart-arm-template-account.md
 - name: チュートリアル
   items:
     - name: .NET
