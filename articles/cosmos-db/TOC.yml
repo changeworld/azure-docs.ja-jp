@@ -1329,7 +1329,7 @@
         - name: プライベート エンドポイントからアクセスを構成する
           href: how-to-configure-private-endpoints.md
         - name: Cosmos DB アカウントに非公開で接続する
-          href: ../private-link/create-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+          href: ../private-link/tutorial-private-endpoint-cosmosdb-portal.md?bc=%2fazure%2fcosmos-db%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcosmos-db%2ftoc.json
         - name: Azure Key Vault を使用してデータにアクセスする
           href: access-secrets-from-keyvault.md
         - name: ユーザー アクセスをデータ操作のみに制限する

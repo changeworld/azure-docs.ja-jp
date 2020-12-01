@@ -122,11 +122,11 @@
 - name: リソース
   items:
     - name: Microsoft Learn でセキュリティ スキルを身に付ける
-      href: 'https://docs.microsoft.com/learn/browse/?term=securityS&terms=securityS'
+      href: /learn/browse/?term=securityS&terms=securityS
     - name: Azure Security Center のドキュメント
-      href: 'https://docs.microsoft.com/azure/security-center/'
+      href: ../security-center/index.yml
     - name: Azure のセキュリティのドキュメント
-      href: 'https://docs.microsoft.com/azure/security/'
+      href: ../security/index.yml
     - name: Stack Overflow の Azure RTOS セキュリティ モジュール
       href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
     - name: Azure IoT のセキュリティ、プライバシー、コンプライアンスのブログ

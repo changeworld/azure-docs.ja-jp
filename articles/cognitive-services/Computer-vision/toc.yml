@@ -116,19 +116,19 @@
         - name: わかりやすさに関するメモ
           items:
             - name: 空間分析の概要
-              href: /legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview?context=%252fazure%252fcognitive-services%252fComputer-vision%252fcontext%252fcontext
+              href: /legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
             - name: 特性と制限
-              href: /legal/cognitive-services/computer-vision/accuracy-and-limitations?context=%252fazure%252fcognitive-services%252fComputer-vision%252fcontext%252fcontext
+              href: /legal/cognitive-services/computer-vision/accuracy-and-limitations?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
         - name: 配置ガイドライン
           items:
             - name: AI デプロイでの責任ある使用
-              href: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=%252fazure%252fcognitive-services%252fComputer-vision%252fcontext%252fcontext
+              href: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
             - name: 開示設計のガイドライン
-              href: /legal/cognitive-services/computer-vision/disclosure-design?context=%252fazure%252fcognitive-services%252fComputer-vision%252fcontext%252fcontext
+              href: /legal/cognitive-services/computer-vision/disclosure-design?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
             - name: リサーチの分析情報
-              href: /legal/cognitive-services/computer-vision/research-insights?context=%252fazure%252fcognitive-services%252fComputer-vision%252fcontext%252fcontext
+              href: /legal/cognitive-services/computer-vision/research-insights?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
         - name: コンプライアンス、プライバシー、セキュリティ
-          href: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=%252fazure%252fcognitive-services%252fComputer-vision%252fcontext%252fcontext
+          href: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
 - name: Containers
   items:
     - name: API コンテナーの読み取り
