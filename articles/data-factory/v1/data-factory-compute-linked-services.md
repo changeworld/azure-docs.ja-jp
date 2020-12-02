@@ -3,20 +3,20 @@ title: Azure Data Factory バージョン 1 でサポートされるコンピュ
 description: Azure Data Factory パイプライン (Azure HDInsight など) でデータの変換または処理に使うことができるコンピューティング環境について説明します。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 2250a2565aa4fbab32daed54830fb701a3a2a1ac
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9f970b66bd30ef2faf705d2fb41825bb81bbb8c9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636189"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496094"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Azure Data Factory バージョン 1 でサポートされるコンピューティング環境
 > [!NOTE]
@@ -49,7 +49,7 @@ Microsoft では、HDInsight のサポートされるバージョンの一覧を
 2017 年 12 月 15 日以降:
 
 - Data Factory バージョン 1 のオンデマンド HDInsight のリンクされたサービスを使用して、Linux ベースの HDInsight バージョン 3.3 以前のクラスターを作成できなくなります。 
-- 既存の Data Factory バージョン 1 のオンデマンド HDInsight のリンクされたサービスの JSON 定義で、 [**osType** や **Version** のプロパティ](#azure-hdinsight-on-demand-linked-service)が明示的に指定されていない場合、既定値は **Version=3.1, osType=Windows** から **Version=\<latest HDI default version\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) , osType=Linux** に変更されます。
+- 既存の Data Factory バージョン 1 のオンデマンド HDInsight のリンクされたサービスの JSON 定義で、[**osType** や **Version** のプロパティ](#azure-hdinsight-on-demand-linked-service)が明示的に指定されていない場合、既定値は **Version=3.1, osType=Windows** から **Version=\<latest HDI default version\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) , osType=Linux** に変更されます。
 
 2018 年 7月 31 日以降:
 
@@ -58,7 +58,7 @@ Microsoft では、HDInsight のサポートされるバージョンの一覧を
 ### <a name="recommended-actions"></a>推奨アクション
 
 - 最新の Hadoop エコシステム コンポーネントと修正プログラムを確実に使用可能にするには、影響を受ける Data Factory バージョン 1 オンデマンド HDInsight のリンクされたサービス定義の [**osType** および **Version** プロパティ](#azure-hdinsight-on-demand-linked-service)を、新しい Linux ベースの HDInsight バージョン (HDInsight 3.6) に更新します。 
-- 2017 年 12 月 15 日より前に、影響を受けるリンクされたサービスを参照する Data Factory バージョン 1 Hive、Pig、MapReduce、および Hadoop ストリーミング アクティビティをテストします。 これが新しい **osType** と **Version** の既定値 ( **Version=3.6** 、 **osType=Linux** ) またはアップグレード後の明示的な HDInsight バージョンおよび OS タイプと互換性があることを確認します。 
+- 2017 年 12 月 15 日より前に、影響を受けるリンクされたサービスを参照する Data Factory バージョン 1 Hive、Pig、MapReduce、および Hadoop ストリーミング アクティビティをテストします。 これが新しい **osType** と **Version** の既定値 (**Version=3.6**、**osType=Linux**) またはアップグレード後の明示的な HDInsight バージョンおよび OS タイプと互換性があることを確認します。 
   互換性の詳細については、「[Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行](../../hdinsight/index.yml)」および「[HDInsight で使用可能な Hadoop コンポーネントとバージョンとは](../../hdinsight/hdinsight-component-versioning.md)」を参照してください。 
 - Data Factory バージョン 1 オンデマンド HDInsight のリンクされたサービスを引き続き使用して、Windows ベースの HDInsight クラスターを作成するには、2017 年 12 月 15 日より前に **osType** を **Windows** に明示的に設定します。 2018 年 7 月 31日より前に、Linux ベースの HDInsight クラスターに移行することをお勧めします。 
 - オンデマンド HDInsight のリンクされたサービスを使用して、Data Factory バージョン 1 DotNet カスタム アクティビティを実行している場合は、Azure Batch のリンクされたサービスを使用するように DotNet カスタム アクティビティ JSON 定義を更新します。 詳細については、[Data Factory パイプラインでのカスタム アクティビティの使用](./data-factory-use-custom-activities.md)に関する記事をご覧ください。 
@@ -81,19 +81,19 @@ Microsoft では、HDInsight のサポートされるバージョンの一覧を
 ## <a name="azure-hdinsight-on-demand-linked-service"></a>Azure HDInsight のオンデマンドのリンクされたサービス
 Data Factory では、データを処理するための Windows ベースまたは Linux ベースのオンデマンド HDInsight クラスターを自動的に作成できます。 クラスターは、そのクラスターに関連付けられているストレージ アカウントと同じリージョンに作成されます。 クラスターを作成するには、JSON **linkedServiceName** プロパティを使用します。
 
-オンデマンド HDInsight のリンクされたサービスに関する次の " *重要な* " 点に注意してください。
+オンデマンド HDInsight のリンクされたサービスに関する次の "*重要な*" 点に注意してください。
 
 * オンデマンド HDInsight クラスターは Azure サブスクリプションには表示されません。 Data Factory サービスがユーザーに代わってオンデマンド HDInsight クラスターを管理します。
 * オンデマンド HDInsight クラスターで実行されるジョブのログは、HDInsight クラスターに関連付けられているストレージ アカウントにコピーされます。 こうしたログにアクセスするには、Azure Portal で **[アクティビティ実行の詳細]** ウィンドウに移動します。 詳細については、[パイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)に関するページをご覧ください。
 * HDInsight クラスターが稼動し、ジョブを実行している時間に対してのみ課金されます。
 
 > [!IMPORTANT]
-> オンデマンド HDInsight クラスターをプロビジョニングするには、通常、" *20 分* " 以上かかります。
+> オンデマンド HDInsight クラスターをプロビジョニングするには、通常、"*20 分*" 以上かかります。
 >
 > 
 
 ### <a name="example"></a>例
-次の JSON は、Linux ベースのオンデマンド HDInsight のリンクされたサービスを定義します。 Data Factory がデータ スライスを処理するとき、" *Linux ベース* " の HDInsight クラスターが自動的に作成されます。 
+次の JSON は、Linux ベースのオンデマンド HDInsight のリンクされたサービスを定義します。 Data Factory がデータ スライスを処理するとき、"*Linux ベース*" の HDInsight クラスターが自動的に作成されます。 
 
 ```json
 {
@@ -112,7 +112,7 @@ Data Factory では、データを処理するための Windows ベースまた�
 ```
 
 > [!IMPORTANT]
-> HDInsight クラスターは、JSON **linkedServiceName** で指定した Azure Blob Storage に " *既定のコンテナー* " を作成します。 クラスターが削除されても、HDInsight はこのコンテナーを意図的に削除しません。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター ( **timeToLive** ) がある場合を除き、スライスの処理が必要になるたびに HDInsight クラスターが作成されます。 クラスターは、処理が終了すると削除されます。 
+> HDInsight クラスターは、JSON **linkedServiceName** で指定した Azure Blob Storage に "*既定のコンテナー*" を作成します。 クラスターが削除されても、HDInsight はこのコンテナーを意図的に削除しません。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスの処理が必要になるたびに HDInsight クラスターが作成されます。 クラスターは、処理が終了すると削除されます。 
 >
 > 処理されるスライスが多いほど、Blob Storage 内のコンテナーも増えます。 ジョブのトラブルシューティング用コンテナーが不要な場合は、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf<your Data Factory name>-<linked service name>-<date and time>` 形式になります。 [Microsoft Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用して、Blob Storage 内のコンテナーを削除できます。
 >
@@ -126,8 +126,8 @@ Data Factory では、データを処理するための Windows ベースまた�
 | timeToLive                   | オンデマンド HDInsight クラスターに許可されるアイドル時間です。 他のアクティブなジョブがクラスターにない場合、アクティビティの実行が完了したときに、オンデマンド HDInsight クラスターが起動状態を維持する時間を指定します。<br /><br />たとえば、アクティビティ実行に 6 分かかるときに **timeToLive** が 5 分に設定されている場合、アクティビティの実行の 6 分間の処理の後、クラスターが起動状態を 5 分間維持します。 別のアクティビティの実行が 6 分の時間枠で実行される場合、それは同じクラスターで処理されます。<br /><br />オンデマンド HDInsight クラスターの作成は高額な作業です (時間がかかる場合もあります)。 この設定を必要に応じて使用し、オンデマンド HDInsight クラスターを再利用することで、データ ファクトリのパフォーマンスを改善します。<br /><br />**timeToLive** 値を **0** に設定した場合、クラスターは、アクティビティの実行の完了直後に削除されます。 一方、高い値を設定すると、クラスターでは不必要にアイドル状態が維持され、コストの上昇を招きます。 重要なのは、ニーズに合わせて適切な値を設定することです。<br /><br />**timeToLive** 値が適切に設定されている場合、複数のパイプラインでオンデマンド HDInsight クラスターのインスタンスを共有できます。 | はい      |
 | version                      | HDInsight クラスターのバージョン。 許可されている HDInsight バージョンについては、「[サポートされる HDInsight のバージョン](../../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)」を参照してください。 この値が指定されていない場合は、[最新 HDI の既定のバージョン](../../hdinsight/hdinsight-component-versioning.md)が使用されます。 | いいえ       |
 | linkedServiceName            | データを保存し、処理するためにオンデマンド クラスターで使用される Azure Storage のリンクされたサービスです。 HDInsight クラスターは、このストレージ アカウントと同じリージョンに作成されます。<p>現時点では、Azure Data Lake Store をストレージとして使用するオンデマンド HDInsight クラスターを作成することはできません。 HDInsight 処理の結果データを Data Lake Store に保存する必要がある場合は、コピー アクティビティを使用して、Blob Storage から Data Lake Store にデータをコピーします。 </p> | はい      |
-| additionalLinkedServiceNames | HDInsight のリンクされたサービスの追加ストレージ アカウントを指定します。 ストレージ アカウントは、Data Factory によって自動的に登録されます。 こうしたストレージ アカウントは、HDInsight クラスターと同じリージョンに存在する必要があります。 HDInsight クラスターは、 **linkedServiceName** プロパティで指定されているストレージ アカウントと同じリージョンで作成されます。 | いいえ       |
-| osType                       | オペレーティング システムの種類。 使用可能な値は **Linux** と **Windows** です。 この値を指定しない場合は、 **Linux** が使用されます。  <br /><br />Linux ベースの HDInsight クラスターを使用することを強くお勧めします。 Windows 向けの HDInsight の提供終了日は 2018 年 7 月 31 日です。 | いいえ       |
+| additionalLinkedServiceNames | HDInsight のリンクされたサービスの追加ストレージ アカウントを指定します。 ストレージ アカウントは、Data Factory によって自動的に登録されます。 こうしたストレージ アカウントは、HDInsight クラスターと同じリージョンに存在する必要があります。 HDInsight クラスターは、**linkedServiceName** プロパティで指定されているストレージ アカウントと同じリージョンで作成されます。 | いいえ       |
+| osType                       | オペレーティング システムの種類。 使用可能な値は **Linux** と **Windows** です。 この値を指定しない場合は、**Linux** が使用されます。  <br /><br />Linux ベースの HDInsight クラスターを使用することを強くお勧めします。 Windows 向けの HDInsight の提供終了日は 2018 年 7 月 31 日です。 | いいえ       |
 | hcatalogLinkedServiceName    | HCatalog データベースを指定する Azure SQL のリンクされたサービスの名前。 オンデマンド HDInsight クラスターは、SQL データベースを metastore として使用して作成されます。 | いいえ       |
 
 #### <a name="example-linkedservicenames-json"></a>例:LinkedServiceNames JSON
@@ -204,7 +204,7 @@ Data Factory では、データを処理するための Windows ベースまた�
 #### <a name="specify-node-sizes"></a>ノード サイズの指定
 前のセクションで説明したプロパティに対して指定する必要がある文字列値については、[仮想マシンのサイズ](../../virtual-machines/sizes.md)に関するページをご覧ください。 値は、[仮想マシンのサイズ](../../virtual-machines/sizes.md)に関するページで参照されているコマンドレットおよび API に準拠している必要があります。 Large (既定値) データ ノードのサイズは 7 GB のメモリ容量です。 これはシナリオによっては不十分な場合があります。 
 
-D4 サイズのヘッド ノードと worker ノードを作成する場合は、 **headNodeSize** プロパティと **dataNodeSize** プロパティの値として **Standard_D4** を指定します。 
+D4 サイズのヘッド ノードと worker ノードを作成する場合は、**headNodeSize** プロパティと **dataNodeSize** プロパティの値として **Standard_D4** を指定します。 
 
 ```json
 "headNodeSize": "Standard_D4",    
@@ -232,7 +232,7 @@ D4 サイズのヘッド ノードと worker ノードを作成する場合は�
 * Azure Batch
 * Azure Machine Learning Studio (クラシック)
 * Azure Data Lake Analytics
-* Azure SQL Database、Azure Synapse Analytics (旧称 SQL Data Warehouse)、SQL Server
+* Azure SQL Database、Azure Synapse Analytics、SQL Server
 
 ## <a name="azure-hdinsight-linked-service"></a>Azure HDInsight のリンクされたサービス
 HDInsight のリンクされたサービスを作成し、独自の HDInsight クラスターを Data Factory に登録できます。
@@ -295,7 +295,7 @@ Batch サービスを初めて利用する場合:
 "accountName": "mybatchaccount.eastus"
 ```
 
-また、 **batchUri** エンドポイントを指定することもできます。 次に例を示します。
+また、**batchUri** エンドポイントを指定することもできます。 次に例を示します。
 
 ```json
 "accountName": "adfteam",
@@ -422,10 +422,10 @@ Data Lake Analytics のユーザー資格情報認証については、次のプ
 
 | ユーザー タイプ                                | 有効期限                            |
 | :--------------------------------------- | :--------------------------------------- |
-| Azure AD で管理 " *されない* " ユーザー アカウント (Hotmail、Live など) | 12 時間。                                 |
-| Azure AD で管理 " *される* " ユーザー アカウント | スライスの最後の実行から 14 日後。 <br /><br />OAuth ベースのリンクされたサービスに基づくスライスが 14 日ごとに少なくとも 1 回実行される場合は 90 日。 |
+| Azure AD で管理 "*されない*" ユーザー アカウント (Hotmail、Live など) | 12 時間。                                 |
+| Azure AD で管理 "*される*" ユーザー アカウント | スライスの最後の実行から 14 日後。 <br /><br />OAuth ベースのリンクされたサービスに基づくスライスが 14 日ごとに少なくとも 1 回実行される場合は 90 日。 |
 
-このエラーを回避または解決するには、トークンの有効期限が切れたときに、 **[承認する]** ボタンを選択して再承認します。 その後、リンクされたサービスを再デプロイします。 次のコードを使って、 **sessionId** および **authorization** プロパティの値をプログラムで生成することもできます。
+このエラーを回避または解決するには、トークンの有効期限が切れたときに、 **[承認する]** ボタンを選択して再承認します。 その後、リンクされたサービスを再デプロイします。 次のコードを使って、**sessionId** および **authorization** プロパティの値をプログラムで生成することもできます。
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||

@@ -3,20 +3,20 @@ title: Azure portal および PowerShell を使用したパイプラインの監
 description: Azure Portal および Azure PowerShell を使用して、作成した Azure Data Factory とパイプラインを監視および管理する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 4473df318f65c0e0097aed298d0be57e3bca382b
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 2a30c755bc19849ad3a821cbbc75b787a3b0bb98
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636937"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495856"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Portal および PowerShell を使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
@@ -79,7 +79,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 ### <a name="view-the-state-of-each-activity-inside-a-pipeline"></a>パイプライン内の各アクティビティの状態を表示する
 アクティビティによって生成されるデータセットのステータスを表示することにより、アクティビティの現在の状態を確認できます。
 
-**ダイアグラム** の **OutputBlobTable** をダブルクリックすると、パイプライン内のさまざまなアクティビティの実行によって生成されたすべてのスライスが表示されます。 コピー アクティビティは過去 8 時間正常に実行され、 **Ready** 状態のスライスを生成したことがわかります。  
+**ダイアグラム** の **OutputBlobTable** をダブルクリックすると、パイプライン内のさまざまなアクティビティの実行によって生成されたすべてのスライスが表示されます。 コピー アクティビティは過去 8 時間正常に実行され、**Ready** 状態のスライスを生成したことがわかります。  
 
 ![パイプラインの状態](./media/data-factory-monitor-manage-pipelines/state-of-pipeline.png)
 

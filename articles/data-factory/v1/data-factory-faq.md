@@ -3,20 +3,20 @@ title: Azure Data Factory - よく寄せられる質問
 description: Azure データ ファクトリについてよく寄せられる質問です。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: de4661bcfd7106d515480e39dc4660f44f469a3d
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 57f2beef3dc14a47480950bf9e3bdf35a1fd6ce8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631701"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495822"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory - よく寄せられる質問
 > [!NOTE]
@@ -41,7 +41,7 @@ Azure Data Factory の価格の詳細については、[Data Factory の価格�
 * HDInsight Hive アクティビティを使用する **データの変換** 方法に関するチュートリアルについては、 「[チュートリアル: 初めての Data Factory の作成 (概要)](data-factory-build-your-first-pipeline.md)」を参照してください。
 
 ### <a name="what-is-the-data-factorys-region-availability"></a>Data Factory を利用可能なリージョンはどこですか。
-Data Factory は、 **米国西部** と **北ヨーロッパ** で使用できます。 Data Factory で使用されるコンピューティング サービスとストレージ サービスは、その他のリージョンでも利用できます。 「 [サポートされているリージョン](data-factory-introduction.md#supported-regions)」を参照してください。
+Data Factory は、**米国西部** と **北ヨーロッパ** で使用できます。 Data Factory で使用されるコンピューティング サービスとストレージ サービスは、その他のリージョンでも利用できます。 「 [サポートされているリージョン](data-factory-introduction.md#supported-regions)」を参照してください。
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Data Factory/パイプライン/アクティビティ/データセットの数の制限値はいくつですか。
 詳細については、記事「 **Azure サブスクリプションとサービスの制限、クォータ、制約** 」の [Azure Data Factory の制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) に関するセクションを参照してください。
@@ -53,7 +53,7 @@ Data Factory は、 **米国西部** と **北ヨーロッパ** で使用でき�
 * **Azure PowerShell** : PowerShell を使用する Data Factory の作成に関するチュートリアルについては、 [Azure PowerShell を使用した Azure Data Factory の作成と監視](data-factory-build-your-first-pipeline-using-powershell.md) に関するページを参照してください。 Data Factory コマンドレットの包括的なドキュメントについては、MSDN ライブラリの [Data Factory コマンドレット リファレンス][adf-powershell-reference] コンテンツをご覧ください。
 * **.NET クラス ライブラリ** : Data Factory .NET SDK を使用すると、プログラムでデータ ファクトリを作成できます。 .NET SDK を使用したデータ ファクトリの作成のチュートリアルについては、 [.NET SDK を使用したデータ ファクトリの作成、監視、管理](data-factory-create-data-factories-programmatically.md) に関するページをご覧ください。 Data Factory .NET SDK の包括的なドキュメントについては、[Data Factory クラス ライブラリ リファレンス][msdn-class-library-reference]をご覧ください。
 * **REST API** : Azure Data Factory サービスで公開されている REST API を使用して、データ ファクトリを作成およびデプロイすることもできます。 Data Factory REST API の包括的なドキュメントについては、[Data Factory REST API リファレンス][msdn-rest-api-reference]をご覧ください。
-* **Azure Resource Manager テンプレート** 詳細については、「 [チュートリアル: Azure Resource Manager テンプレートを使用した初めての Azure データ ファクトリの作成](data-factory-build-your-first-pipeline-using-arm.md)」をご覧ください。
+* **Azure Resource Manager テンプレート** 詳細については、「[チュートリアル: Azure Resource Manager テンプレートを使用した初めての Azure データ ファクトリの作成](data-factory-build-your-first-pipeline-using-arm.md)」をご覧ください。
 
 ### <a name="can-i-rename-a-data-factory"></a>Data Factory の名前を変更できますか。
 いいえ。 他の Azure のリソースと同様に、Azure Data Factory の名前は変更できません。
@@ -72,7 +72,7 @@ Data Factory は、 **米国西部** と **北ヨーロッパ** で使用でき�
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
 | [Azure Machine Learning Studio (クラシック)](data-factory-compute-linked-services.md#azure-machine-learning-studio-classic-linked-service) |[スタジオ (クラシック) アクティビティ:バッチ実行とリソースの更新](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
-| [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service)、[Azure Synapse Analytics (旧称 SQL Data Warehouse)](data-factory-compute-linked-services.md#azure-synapse-analytics-linked-service)、[SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[ストアド プロシージャ](data-factory-stored-proc-activity.md) |
+| [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service)、[Azure Synapse Analytics](data-factory-compute-linked-services.md#azure-synapse-analytics-linked-service)、[SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[ストアド プロシージャ](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Azure Data Factory と SQL Server Integration Services (SSIS) はどのように違いますか。 
 MVP (Most Valued Professional) の 1 人である Reza Rad の「[Azure Data Factory vs.SSIS (Azure Data Factory とSSIS)](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS)」プレゼンテーションを参照してください。 Data Factory の最近の変更点の一部は、スライド デッキに表示されない場合があります。 Azure Data factory には、継続的に機能が追加されています。 Azure Data factory には、継続的に機能が追加されています。 これらの更新は、今年中に、マイクロソフトのデータ統合テクノロジの比較に組み込まれる予定です。   
@@ -141,7 +141,7 @@ Data Factory サービスで作成されたオンデマンド クラスターを
 ### <a name="why-are-my-input-slices-not-in-ready-state"></a>入力スライスが準備完了状態にならないのはなぜですか。
 一般的なミスとして、入力データがデータ ファクトリの外部に存在する (データ ファクトリによって生成されたものでない) ときに、入力データセットの **external** プロパティが **true** に設定されていないことが挙げられます。
 
-次の例では、 **dataset1** のみ、 **external** を true に設定する必要があります。  
+次の例では、**dataset1** のみ、**external** を true に設定する必要があります。  
 
 **DataFactory1** パイプライン 1: dataset1 -> activity1 -> dataset2 -> activity2 -> dataset3 パイプライン 2: dataset3-> activity3 -> dataset4
 
@@ -170,7 +170,7 @@ external プロパティが適切に設定されている場合は、入力デ�
 
 * 監視と管理アプリを使用して、アクティビティ ウィンドウまたはスライスを再実行します。 「 [選択したアクティビティ ウィンドウを再実行する](data-factory-monitor-manage-app.md#perform-batch-actions) 」を参照してください。   
 * Azure Portal のスライスの **[データ スライス]** ブレードで、コマンド バーの **[実行]** をクリックします。
-* スライスの状態を **Waiting** に設定して、 **Set-AzDataFactorySliceStatus** コマンドレットを実行します。   
+* スライスの状態を **Waiting** に設定して、**Set-AzDataFactorySliceStatus** コマンドレットを実行します。   
 
     ```powershell
     Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"

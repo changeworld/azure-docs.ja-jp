@@ -3,20 +3,20 @@ title: Azure Data Factory を使って予測データ パイプラインを作�
 description: Azure Data Factory と Azure Machine Learning Studio (クラシック) を使用して予測パイプラインを作成する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: ce3175a015b7a5813f62c639fdadbeea367bbc22
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 481b801d481f32ef84279be2d8bd6089670a01b1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631769"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496521"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Azure Machine Learning スタジオ (クラシック) と Azure Data Factory を使用して予測パイプラインを作成する
 
@@ -40,9 +40,9 @@ ms.locfileid: "92631769"
 ### <a name="azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック)
 [Azure Machine Learning Studio (classic)](https://azure.microsoft.com/documentation/services/machine-learning/) では、予測分析ソリューションをビルド、テスト、デプロイできます。 大まかに次の 3 つの手順で行われます。
 
-1. **トレーニング実験を作成する** 。 この手順を行うには、Azure Machine Learning スタジオ (クラシック) を使用します。 スタジオ (クラシック) は、トレーニング データを活用した予測分析モデルのトレーニングとテストに使用できる、コラボレーションと視覚化に対応した開発環境です。
-2. **トレーニング実験を予測実験に変換する** 。 既存のデータでモデルがトレーニングされ、それを使用して新しいデータをスコア付けする準備ができると、スコア付け用に実験を用意し、合理化します。
-3. **Web サービスとしてデプロイする** 。 Azure Web サービスとしてスコア付け実験を発行できます。 この Web サービスのエンドポイントを使用して、モデルにデータを送信し、モデルの予測を受信できます。
+1. **トレーニング実験を作成する**。 この手順を行うには、Azure Machine Learning スタジオ (クラシック) を使用します。 スタジオ (クラシック) は、トレーニング データを活用した予測分析モデルのトレーニングとテストに使用できる、コラボレーションと視覚化に対応した開発環境です。
+2. **トレーニング実験を予測実験に変換する**。 既存のデータでモデルがトレーニングされ、それを使用して新しいデータをスコア付けする準備ができると、スコア付け用に実験を用意し、合理化します。
+3. **Web サービスとしてデプロイする**。 Azure Web サービスとしてスコア付け実験を発行できます。 この Web サービスのエンドポイントを使用して、モデルにデータを送信し、モデルの予測を受信できます。
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 Data Factory は、データの **移動** や **変換** を調整し自動化するクラウドベースのデータ統合サービスです。 さまざまなデータ ストアからデータを取り込み、データを変換/処理して結果データをデータ ストアに発行できる Azure Data Factory を使うことで、データ統合ソリューションを作成できます。
@@ -59,7 +59,7 @@ Azure Data Factory を使用すると、公開された [Azure Machine Learning 
 1. 予測実験ではなく、トレーニング実験を Web サービスとして発行します。 前のシナリオで予測実験を Web サービスとして公開したのと同様にこの手順をスタジオ (クラシック) で行います。
 2. スタジオ (クラシック) バッチ実行アクティビティを使用して、トレーニング実験用 Web サービスを呼び出します。 基本的には、スタジオ (クラシック) バッチ実行アクティビティを使用して、トレーニング Web サービスとスコア付け Web サービスの両方を呼び出すことができます。
 
-再トレーニングを実行したら、 **Azure Machine Learning Studio (クラシック) 更新リソース アクティビティ** を使用して、スコア付け Web サービス (Web サービスとして公開した予測実験) を、新しくトレーニングを行ったモデルで更新します。 詳しくは、「[更新リソース アクティビティを使用してモデルを更新する](data-factory-azure-ml-update-resource-activity.md)」をご覧ください。
+再トレーニングを実行したら、**Azure Machine Learning Studio (クラシック) 更新リソース アクティビティ** を使用して、スコア付け Web サービス (Web サービスとして公開した予測実験) を、新しくトレーニングを行ったモデルで更新します。 詳しくは、「[更新リソース アクティビティを使用してモデルを更新する](data-factory-azure-ml-update-resource-activity.md)」をご覧ください。
 
 ## <a name="invoking-a-web-service-using-batch-execution-activity"></a>バッチ実行アクティビティを使用して Web サービスを呼び出す
 Azure Data Factory を使用してデータの移動と処理を調整した後、スタジオ (クラシック) を使用してバッチを実行します。 大まかな手順を以下に示します。
@@ -67,7 +67,7 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
 1. Azure Machine Learning スタジオ (クラシック) のリンクされたサービスを作成します。 以下の値が必要になります。
 
    1. **要求 URI** 。 要求 URI は、Web サービス ページで **[Batch 実行]** リンクをクリックするとわかります。
-   2. 発行されたスタジオ (クラシック) Web サービス用の **API キー** 。 API キーは、発行した Web サービスをクリックするとわかります。
+   2. 発行されたスタジオ (クラシック) Web サービス用の **API キー**。 API キーは、発行した Web サービスをクリックするとわかります。
    3. **AzureMLBatchExecution** アクティビティを使用します。
 
       ![Machine Learning スタジオ (クラシック) のダッシュボード](./media/data-factory-azure-ml-batch-execution-activity/AzureMLDashboard.png)
@@ -75,12 +75,12 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
       ![Batch URI](./media/data-factory-azure-ml-batch-execution-activity/batch-uri.png)
 
 ### <a name="scenario-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>シナリオ:Azure Blob Storage のデータを参照する Web サービスの入力/出力の使用を実験する
-このシナリオのスタジオ (クラシック) Web サービスでは、Azure Blob Storage 内のファイルのデータを使用して予測が作成され、Blob Storage に予測結果が保存されます。 次の JSON では、AzureMLBatchExecution アクティビティを使用する Data Factory パイプラインが定義されています。 このアクティビティは、入力としてデータセット **DecisionTreeInputBlob** を使用し、出力として **DecisionTreeResultBlob** を使用します。 **DecisionTreeInputBlob** は、 **webServiceInput** JSON プロパティを使用して Web サービスの入力として渡します。 **DecisionTreeResultBlob** は、 **webServiceOutputs** JSON プロパティを使用して Web サービスの出力として渡します。
+このシナリオのスタジオ (クラシック) Web サービスでは、Azure Blob Storage 内のファイルのデータを使用して予測が作成され、Blob Storage に予測結果が保存されます。 次の JSON では、AzureMLBatchExecution アクティビティを使用する Data Factory パイプラインが定義されています。 このアクティビティは、入力としてデータセット **DecisionTreeInputBlob** を使用し、出力として **DecisionTreeResultBlob** を使用します。 **DecisionTreeInputBlob** は、**webServiceInput** JSON プロパティを使用して Web サービスの入力として渡します。 **DecisionTreeResultBlob** は、**webServiceOutputs** JSON プロパティを使用して Web サービスの出力として渡します。
 
 > [!IMPORTANT]
-> Web サービスで複数の入力を受け取る場合は、 **webServiceInput** プロパティを使用せずに、 **webServiceInputs** プロパティを使用します。 webServiceInputs プロパティの使用例については、「 [Web サービスで複数の入力が必要である](#web-service-requires-multiple-inputs) 」のセクションを参照してください。
+> Web サービスで複数の入力を受け取る場合は、**webServiceInput** プロパティを使用せずに、**webServiceInputs** プロパティを使用します。 webServiceInputs プロパティの使用例については、「 [Web サービスで複数の入力が必要である](#web-service-requires-multiple-inputs) 」のセクションを参照してください。
 >
-> **webServiceInput**/**webServiceInputs** と **webServiceOutputs** の各プロパティ ( **typeProperties** 内) から参照されているデータセットもアクティビティの **inputs** と **outputs** に含める必要があります。
+> **webServiceInput**/**webServiceInputs** と **webServiceOutputs** の各プロパティ (**typeProperties** 内) から参照されているデータセットもアクティビティの **inputs** と **outputs** に含める必要があります。
 >
 > スタジオ (クラシック) の実験では、Web サービスの入力ポートおよび出力ポートとグローバル パラメーターには既定の名前 ("input1"、"input2") がありますが、これらはカスタマイズすることができます。 webServiceInputs、webServiceOutputs、および globalParameters の設定に使用する名前は、実験での名前と厳密に一致する必要があります。 バッチ実行のヘルプ ページでサンプルの要求のペイロードを表示して、スタジオ (クラシック) エンドポイントで必要なマッピングを確認することができます。
 >
@@ -192,7 +192,7 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
     }
     ```
 
-    csv ファイルにヘッダー行がない場合、次のエラーが表示される場合があります: **アクティビティ エラー:文字列の読み取りエラー。予期しないトークン:StartObject。パス ''、行 1、位置 1** 。
+    csv ファイルにヘッダー行がない場合、次のエラーが表示される場合があります:**アクティビティ エラー:文字列の読み取りエラー。予期しないトークン:StartObject。パス ''、行 1、位置 1**。
 3. **出力** 用の Azure Data Factory **データセット** を作成します。 この例では、パーティション分割を使用して各スライスの実行ごとに一意の出力パスを作成します。 パーティションがない場合、アクティビティはファイルを上書きします。
 
     ```JSON
@@ -234,7 +234,7 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
       }
     }
     ```
-4. 次の型の **リンクされたサービス** を作成します: **AzureMLLinkedService** 。API キーとモデルのバッチ実行 URL を入力します。
+4. 次の型の **リンクされたサービス** を作成します:**AzureMLLinkedService**。API キーとモデルのバッチ実行 URL を入力します。
 
     ```JSON
     {
@@ -301,7 +301,7 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
       }
       ```
 
-      **start** と [end](https://en.wikipedia.org/wiki/ISO_8601) の日時は、いずれも **ISO 形式** である必要があります。 次に例を示します。2014-10-14T16:32:41Z。 **start + 48 時間** " になります。 **end** プロパティの値を指定しない場合、" **start + 48 時間** " として計算されます。 パイプラインを無期限に実行する場合は、 **9999-09-09** を **end** プロパティの値として指定します。 JSON のプロパティの詳細については、 [JSON スクリプティング リファレンス](/previous-versions/azure/dn835050(v=azure.100)) を参照してください。
+      **start** と [end](https://en.wikipedia.org/wiki/ISO_8601) の日時は、いずれも **ISO 形式** である必要があります。 次に例を示します。2014-10-14T16:32:41Z。 **start + 48 時間** " になります。 **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティの値として指定します。 JSON のプロパティの詳細については、 [JSON スクリプティング リファレンス](/previous-versions/azure/dn835050(v=azure.100)) を参照してください。
 
       > [!NOTE]
       > AzureMLBatchExecution アクティビティへの入力の指定は省略可能です。
@@ -347,7 +347,7 @@ Web サービス パラメーターを使用するシナリオを見てみまし
 ### <a name="using-a-reader-module-to-read-data-from-multiple-files-in-azure-blob"></a>リーダー モジュールを使用して Azure BLOB の複数のファイルからデータを読み取る
 ビッグ データ パイプラインにアクティビティ (Pig、Hive など) を設定すると、拡張子が付いていない出力ファイルを 1 つ以上生成できます。 たとえば、外部 Hive テーブルを指定するとき、外部 Hive テーブルのデータを 000000_0 という名前で Azure BLOB ストレージに格納できます。 実験では、リーダー モジュールを使用して複数のファイルを読み取り、予測に使用できます。
 
-スタジオ (クラシック) の実験でリーダー モジュールを使用する場合は、入力として Azure BLOB を指定できます。 Azure Blob Storage 内のファイルは、HDInsight 上で実行する Pig および Hive スクリプトによって生成される出力ファイル (例:000000_0) でもかまいません。 リーダー モジュールでは、 **[Path to container, directory/blob (コンテナーへのパス、ディレクトリ/BLOB)]** を構成して (拡張子がない) ファイルを読み取ることができます。 **コンテナーへのパス** でコンテナーをポイントし、 **ディレクトリ/BLOB** では、次の画像のようにファイルが含まれるフォルダーをポイントします。 アスタリスク (\*) **は、実験の一環としてコンテナー/フォルダー内のすべてのファイル (つまり、data/aggregateddata/year=2014/month-6/\*)** を読み取るように指定します。
+スタジオ (クラシック) の実験でリーダー モジュールを使用する場合は、入力として Azure BLOB を指定できます。 Azure Blob Storage 内のファイルは、HDInsight 上で実行する Pig および Hive スクリプトによって生成される出力ファイル (例:000000_0) でもかまいません。 リーダー モジュールでは、 **[Path to container, directory/blob (コンテナーへのパス、ディレクトリ/BLOB)]** を構成して (拡張子がない) ファイルを読み取ることができます。 **コンテナーへのパス** でコンテナーをポイントし、**ディレクトリ/BLOB** では、次の画像のようにファイルが含まれるフォルダーをポイントします。 アスタリスク (\*) **は、実験の一環としてコンテナー/フォルダー内のすべてのファイル (つまり、data/aggregateddata/year=2014/month-6/\*)** を読み取るように指定します。
 
 ![Azure BLOB のプロパティ](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 
@@ -405,11 +405,11 @@ Web サービス パラメーターを使用するシナリオを見てみまし
 上の JSON の例に関する説明:
 
 * デプロイされたスタジオ (クラシック) Web サービスによってリーダーおよびライター モジュールが使用され、Azure SQL Database のデータが読み書きされます。 この Web サービスでは、Database server name、Database name、Server user account name、Server user account password という 4 つのパラメーターが公開されています。
-* **start** と [end](https://en.wikipedia.org/wiki/ISO_8601) の日時は、いずれも **ISO 形式** である必要があります。 次に例を示します。2014-10-14T16:32:41Z。 **start + 48 時間** " になります。 **end** プロパティの値を指定しない場合、" **start + 48 時間** " として計算されます。 パイプラインを無期限に実行する場合は、 **9999-09-09** を **end** プロパティの値として指定します。 JSON のプロパティの詳細については、 [JSON スクリプティング リファレンス](/previous-versions/azure/dn835050(v=azure.100)) を参照してください。
+* **start** と [end](https://en.wikipedia.org/wiki/ISO_8601) の日時は、いずれも **ISO 形式** である必要があります。 次に例を示します。2014-10-14T16:32:41Z。 **start + 48 時間** " になります。 **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティの値として指定します。 JSON のプロパティの詳細については、 [JSON スクリプティング リファレンス](/previous-versions/azure/dn835050(v=azure.100)) を参照してください。
 
 ### <a name="other-scenarios"></a>その他のシナリオ
 #### <a name="web-service-requires-multiple-inputs"></a>Web サービスで複数の入力が必要である
-Web サービスで複数の入力を受け取る場合は、 **webServiceInput** プロパティを使用せずに、 **webServiceInputs** プロパティを使用します。 **webServiceInputs** から参照されているデータセットもアクティビティの **inputs** に含める必要があります。
+Web サービスで複数の入力を受け取る場合は、**webServiceInput** プロパティを使用せずに、**webServiceInputs** プロパティを使用します。 **webServiceInputs** から参照されているデータセットもアクティビティの **inputs** に含める必要があります。
 
 Azure Machine Learning スタジオ (クラシック) の実験では、Web サービスの入力および出力ポートとグローバル パラメーターには既定の名前 ("input1"、"input2") がありますが、これらはカスタマイズすることができます。 webServiceInputs、webServiceOutputs、および globalParameters の設定に使用する名前は、実験での名前と厳密に一致する必要があります。 バッチ実行のヘルプ ページでサンプルの要求のペイロードを表示して、スタジオ (クラシック) エンドポイントで必要なマッピングを確認することができます。
 
@@ -545,7 +545,7 @@ Azure Machine Learning スタジオ (クラシック) Web サービスのリー�
 
 
 ## <a name="updating-models-using-update-resource-activity"></a>更新リソース アクティビティを使用してモデルを更新する
-再トレーニングを実行したら、 **Azure Machine Learning Studio (クラシック) 更新リソース アクティビティ** を使用して、スコア付け Web サービス (Web サービスとして公開した予測実験) を、新しくトレーニングを行ったモデルで更新します。 詳しくは、「[更新リソース アクティビティを使用してモデルを更新する](data-factory-azure-ml-update-resource-activity.md)」をご覧ください。
+再トレーニングを実行したら、**Azure Machine Learning Studio (クラシック) 更新リソース アクティビティ** を使用して、スコア付け Web サービス (Web サービスとして公開した予測実験) を、新しくトレーニングを行ったモデルで更新します。 詳しくは、「[更新リソース アクティビティを使用してモデルを更新する](data-factory-azure-ml-update-resource-activity.md)」をご覧ください。
 
 ### <a name="reader-and-writer-modules"></a>リーダーとライター モジュール
 Web サービス パラメーターの使用を伴う一般的なシナリオとして、Azure SQL のリーダーとライターを使用するシナリオがあります。 リーダー モジュールは、スタジオ (クラシック) 外部のデータ管理サービスからデータを実験に読み込むために使用します。 ライター モジュールは、実験のデータをスタジオ (クラシック) 外部のデータ管理サービスに保存するために使用します。

@@ -3,20 +3,20 @@ title: Azure Data Factory を使用して Machine Learning モデルを更新す
 description: Azure Data Factory v1 と Azure Machine Learning スタジオ (クラシック) を使用して予測パイプラインを作成する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: c456c7eb31e1e8e66aa3276a0cb5f6f8b39efa9a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 556936eb6e8c1c1c2dd1fab4ce7dfc1b648710b7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631752"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496604"
 ---
 # <a name="updating-azure-machine-learning-studio-classic-models-using-update-resource-activity"></a>更新リソース アクティビティを使用して Azure Machine Learning スタジオ (クラシック) モデルを更新する
 
@@ -42,7 +42,7 @@ ms.locfileid: "92631752"
 時間の経過と共に、Azure Machine Learning Studio (クラシック) スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 再トレーニングが完了したら、再トレーニング済みの ML モデルでスコア付け Web サービスを更新する必要があります。 Web サービスを使用してスタジオ (クラシック) モデルの再トレーニングと更新を有効にするための標準的な手順を次に示します。
 
 1. [Azure Machine Learning Studio (クラシック)](https://studio.azureml.net) で実験を作成します。
-2. モデルが準備できたら、Azure Machine Learning Studio (クラシック) を使用して、 **トレーニング実験** とスコア付け/ **予測実験** の両方の Web サービスを発行します。
+2. モデルが準備できたら、Azure Machine Learning Studio (クラシック) を使用して、**トレーニング実験** とスコア付け/**予測実験** の両方の Web サービスを発行します。
 
 次の表で、この例で使用する Web サービスについて説明します。  詳細については、[プログラムによる Azure Machine Learning スタジオ (クラシック) モデルの再トレーニング](../../machine-learning/classic/retrain-machine-learning-model.md)に関するページを参照してください。
 
@@ -53,15 +53,15 @@ ms.locfileid: "92631752"
 
 ![[Web サービス]](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
 
-**Azure Machine Learning スタジオ (クラシック) バッチ実行アクティビティ** を使用して、 **トレーニング Web サービス** を呼び出すことができます。 トレーニング Web サービスの呼び出す方法は、データのスコア付け用 Azure Machine Learning スタジオ (クラシック) Web サービス (スコア付け Web サービス) を呼び出す場合と同じです。 前のセクションで、Azure Data Factory パイプラインから Azure Machine Learning スタジオ (クラシック) Web サービスを呼び出す方法について詳しく説明しています。 
+**Azure Machine Learning スタジオ (クラシック) バッチ実行アクティビティ** を使用して、**トレーニング Web サービス** を呼び出すことができます。 トレーニング Web サービスの呼び出す方法は、データのスコア付け用 Azure Machine Learning スタジオ (クラシック) Web サービス (スコア付け Web サービス) を呼び出す場合と同じです。 前のセクションで、Azure Data Factory パイプラインから Azure Machine Learning スタジオ (クラシック) Web サービスを呼び出す方法について詳しく説明しています。 
 
 **scoring web service** を使用して、2 つ目の **Azure Machine Learning スタジオ (クラシック) 更新リソース アクティビティ** を使用して、新しくトレーニングを行ったモデルで Web サービスを更新します。 次の例では、リンクされているサービスの定義を示します。 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>スコア付け Web サービスが従来の Web サービスである
 スコア付け Web サービスが **従来の Web サービス** の場合は、Azure Portal を使用して、2 つ目の **更新可能な既定以外のエンドポイント** を作成します。 手順については、「[エンドポイントを作成する](../../machine-learning/classic/create-endpoint.md)」を参照してください。 更新可能な既定以外のエンドポイントを作成したら、次の手順を行います。
 
-* **[バッチ実行]** をクリックして、 **mlEndpoint** JSON プロパティの URI の値を取得します。
-* **[リソースの更新]** リンクをクリックして、 **updateResourceEndpoint** JSON プロパティの URI の値を取得します。 API キーは、エンドポイントのページにあります (右下隅)。
+* **[バッチ実行]** をクリックして、**mlEndpoint** JSON プロパティの URI の値を取得します。
+* **[リソースの更新]** リンクをクリックして、**updateResourceEndpoint** JSON プロパティの URI の値を取得します。 API キーは、エンドポイントのページにあります (右下隅)。
 
 ![updatable endpoint](./media/data-factory-azure-ml-batch-execution-activity/updatable-endpoint.png)
 
@@ -111,7 +111,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 次のシナリオで詳細を説明します。 このシナリオでは、Azure Data Factory パイプラインからスタジオ (クラシック) モデルの再トレーニングと更新を行う例を示します。
 
 ## <a name="scenario-retraining-and-updating-a-studio-classic-model"></a>シナリオ: スタジオ (クラシック) モデルの再トレーニングと更新
-このセクションでは、 **Azure Machine Learning Studio (classic) バッチ実行アクティビティ** を使用してモデルの再トレーニングを行うサンプル パイプラインを示します。 このパイプラインでは、 **Azure Machine Learning Studio (classic) 更新リソース アクティビティ** を使用して、スコア付け Web サービスのモデルの更新も行います。 このセクションでは、すべてのリンクされたサービス、データ セット、およびパイプラインの JSON スニペットも提供されます。
+このセクションでは、**Azure Machine Learning Studio (classic) バッチ実行アクティビティ** を使用してモデルの再トレーニングを行うサンプル パイプラインを示します。 このパイプラインでは、**Azure Machine Learning Studio (classic) 更新リソース アクティビティ** を使用して、スコア付け Web サービスのモデルの更新も行います。 このセクションでは、すべてのリンクされたサービス、データ セット、およびパイプラインの JSON スニペットも提供されます。
 
 サンプル パイプラインのダイアグラム ビューを次に示します。 ご覧のように、スタジオ (クラシック) バッチ実行アクティビティを使用して、トレーニングの入力を受け取り、トレーニングの出力 (iLearner ファイル) を作成します。 スタジオ (クラシック) 更新リソース アクティビティを使用して、トレーニングの出力を受け取り、スコア付け Web サービスのエンドポイントでモデルを更新します。 更新リソース アクティビティは出力を作成しません。 placeholderBlob は、パイプラインを実行するために、Azure Data Factory サービスで必要とされるダミーの出力データセットです。
 
@@ -260,7 +260,7 @@ Azure Storage には次のデータが格納されています。
 ```
 
 ### <a name="pipeline"></a>パイプライン
-パイプラインには、 **AzureMLBatchExecution** と **AzureMLUpdateResource** の 2 つのアクティビティが含まれています。 Azure Machine Learning スタジオ (クラシック) バッチ実行アクティビティによって、トレーニング データが入力として使用され、iLearner ファイルが出力として作成されます。 このアクティビティは、トレーニング Web サービス (Web サービスとして公開されたトレーニング実験) と入力トレーニング データを呼び出し、Web サービスから ilearner ファイルを受け取ります。 placeholderBlob は、パイプラインを実行するために、Azure Data Factory サービスで必要とされるダミーの出力データセットです。
+パイプラインには、**AzureMLBatchExecution** と **AzureMLUpdateResource** の 2 つのアクティビティが含まれています。 Azure Machine Learning スタジオ (クラシック) バッチ実行アクティビティによって、トレーニング データが入力として使用され、iLearner ファイルが出力として作成されます。 このアクティビティは、トレーニング Web サービス (Web サービスとして公開されたトレーニング実験) と入力トレーニング データを呼び出し、Web サービスから ilearner ファイルを受け取ります。 placeholderBlob は、パイプラインを実行するために、Azure Data Factory サービスで必要とされるダミーの出力データセットです。
 
 ![pipeline diagram](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 

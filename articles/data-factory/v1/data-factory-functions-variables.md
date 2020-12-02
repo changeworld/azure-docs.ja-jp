@@ -2,20 +2,20 @@
 title: Data Factory の関数およびシステム変数
 description: Azure Data Factory の関数およびシステム変数の一覧を提供する
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: cbc7fd22915af1c9645d915a9898679a3a7c30d0
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9b5f91655367e866858a04b941cec4ee61dfe180
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631514"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495652"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory - 関数およびシステム変数
 > [!NOTE]
@@ -37,7 +37,7 @@ ms.locfileid: "92631514"
 > 
 
 ### <a name="example-for-using-a-system-variable"></a>システム変数を使用した例
-次の例では、 **SliceStart** の年、月、日、時刻が **folderPath** プロパティと **fileName** プロパティで使用される個別の変数に抽出されます。
+次の例では、**SliceStart** の年、月、日、時刻が **folderPath** プロパティと **fileName** プロパティで使用される個別の変数に抽出されます。
 
 ```json
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
@@ -61,7 +61,7 @@ Data Factory の関数は、システム変数と共に次の用途で使用で�
    
     入力の依存関係式を指定する場合、$$ は不要です。     
 
-次のサンプルでは、JSON ファイルの **sqlReaderQuery** プロパティが、`Text.Format` 関数から返される値に割り当てられます。 また、 **WindowStart** というシステム変数も使用されます。この変数は、アクティビティ実行ウィンドウの開始時刻を表します。
+次のサンプルでは、JSON ファイルの **sqlReaderQuery** プロパティが、`Text.Format` 関数から返される値に割り当てられます。 また、**WindowStart** というシステム変数も使用されます。この変数は、アクティビティ実行ウィンドウの開始時刻を表します。
 
 ```json
 {
@@ -97,7 +97,7 @@ Data Factory の関数は、システム変数と共に次の用途で使用で�
 | Text |Format(X) |X:文字列変数 |テキストを書式設定します (`\\'` の組み合わせを使用して `'` 文字をエスケープします)。|
 
 > [!IMPORTANT]
-> 別の関数内で関数を使用する場合、内側の関数に **$$** プレフィックスを付ける必要はありません。 例: $$Text.Format('PartitionKey eq \\'my_pkey_filter_value\\' and RowKey ge \\'{0: yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(SliceStart, -6))。 この例でわかるように、 **Time.AddHours** 関数に **$$** プレフィックスは使用されていません。 
+> 別の関数内で関数を使用する場合、内側の関数に **$$** プレフィックスを付ける必要はありません。 例: $$Text.Format('PartitionKey eq \\'my_pkey_filter_value\\' and RowKey ge \\'{0: yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(SliceStart, -6))。 この例でわかるように、**Time.AddHours** 関数に **$$** プレフィックスは使用されていません。 
 
 #### <a name="example"></a>例
 次の例では、Hive アクティビティの入力パラメーターと出力パラメーターが、`Text.Format` 関数と SliceStart システム変数を使用して決定されます。 
