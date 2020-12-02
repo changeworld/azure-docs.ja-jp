@@ -7,11 +7,11 @@ ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: cb8cc98a020cb382a6941c1e410eab4543594629
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278998"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009757"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell スクリプトの例
 
@@ -20,13 +20,13 @@ Azure Remote Rendering には、次の 2 つの REST API が用意されてい�
 - [変換 REST API](../how-tos/conversion/conversion-rest-api.md)
 - [セッション REST API](../how-tos/session-rest-api.md)
 
-[ARR サンプル リポジトリ](https://github.com/Azure/azure-remote-rendering)には、 *Scripts* フォルダーに、サービスの REST API を操作するためのサンプル スクリプトがあります。 この記事では、その使用方法について説明します。
+[ARR サンプル リポジトリ](https://github.com/Azure/azure-remote-rendering)には、*Scripts* フォルダーに、サービスの REST API を操作するためのサンプル スクリプトがあります。 この記事では、その使用方法について説明します。
 
 > [!TIP]
 > また、サービスと対話するための [ARRT と呼ばれる UI ベースのツール](azure-remote-rendering-asset-tool.md)もあります。これは、スクリプトの使用に代わる便利な方法です。 ![ARRT](./media/azure-remote-rendering-asset-tool.png "ARRT のスクリーンショット")
 
 > [!CAUTION]
-> REST API 関数を頻繁に呼び出すと、サーバーが調整され、最終的にエラーが返されます。 この場合の http エラーコード ID は 429 ("要求が多すぎます") です。 経験則として、 **次の呼び出しとの間に 5 秒から 10 秒** の間隔が必要です。
+> REST API 関数を頻繁に呼び出すと、サーバーが調整され、最終的にエラーが返されます。 この場合の http エラーコード ID は 429 ("要求が多すぎます") です。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒** の間隔が必要です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -119,7 +119,7 @@ Azure Remote Rendering には、次の 2 つの REST API が用意されてい�
 .\RenderingSession.ps1
 ```
 
-このスクリプトは、[セッション管理 REST API](../how-tos/session-rest-api.md) を呼び出して、指定された設定でレンダリング VM を起動します。 成功すると、 *sessionId* が取得されます。 その後、セッションの準備が完了するか、エラーが発生するまで、セッションのプロパティがポーリングされます。
+このスクリプトは、[セッション管理 REST API](../how-tos/session-rest-api.md) を呼び出して、指定された設定でレンダリング VM を起動します。 成功すると、*sessionId* が取得されます。 その後、セッションの準備が完了するか、エラーが発生するまで、セッションのプロパティがポーリングされます。
 
 **代替の構成** ファイルを使用するには、次のようにします。
 
@@ -149,7 +149,7 @@ Azure Remote Rendering には、次の 2 つの REST API が用意されてい�
 .\RenderingSession.ps1 -GetSessionProperties -Id <sessionID> [-Poll]
 ```
 
-`-Poll` を使用して、セッションの " *準備が完了* " するか、エラーが発生するまで待機します。
+`-Poll` を使用して、セッションの "*準備が完了*" するか、エラーが発生するまで待機します。
 
 ### <a name="list-active-sessions"></a>アクティブなセッションを一覧表示する
 
@@ -168,7 +168,7 @@ Azure Remote Rendering には、次の 2 つの REST API が用意されてい�
 現時点では、セッションの maxLeaseTime の変更のみがサポートされています。
 
 > [!NOTE]
-> リース時間は、セッション VM が最初に作成された時点から常にカウントされます。 そのため、セッション リースをさらに 1 時間延長するには、 *maxLeaseTime* を 1 時間増やします。
+> リース時間は、セッション VM が最初に作成された時点から常にカウントされます。 そのため、セッション リースをさらに 1 時間延長するには、*maxLeaseTime* を 1 時間増やします。
 
 ```PowerShell
 .\RenderingSession.ps1 -UpdateSession -Id <sessionID> -MaxLeaseTime <hh:mm:ss>
@@ -262,7 +262,7 @@ Shared Access Signature を生成する必要がないため、変換サービ�
 .\Conversion.ps1 -Upload
 ```
 
-BLOB ストレージに既にアップロードされているモデルの変換プロセスの開始のみを行います (アップロードは実行せず、変換の状態はポーリングしません)。このスクリプトは、 *conversionId* を返します。
+BLOB ストレージに既にアップロードされているモデルの変換プロセスの開始のみを行います (アップロードは実行せず、変換の状態はポーリングしません)。このスクリプトは、*conversionId* を返します。
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset

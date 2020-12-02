@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: mbullwin
 ms.openlocfilehash: a17301e0807877662ae1bf34ade48e90a1d30c0c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368646"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006202"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>チュートリアル:バッチ検出と Power BI を使用して異常を視覚化する
 
@@ -164,7 +164,7 @@ Power BI ウィンドウの右側にある **[フィールド]** ウィンドウ
 
 ![新しいクイック メジャー画面のイメージ 2](../media/tutorials/new-quick-measure-2.png)
 
-**[OK]** をクリックすると、フィールドの一覧の下部に `Value for True` フィールドが表示されます。 これを右クリックして、名前を「 **異常** 」に変更します。 これをグラフの **[値]** に追加します。 次に、 **[形式]** ツールを選択し、X 軸の種類を **[カテゴリ別]** に設定します。
+**[OK]** をクリックすると、フィールドの一覧の下部に `Value for True` フィールドが表示されます。 これを右クリックして、名前を「**異常**」に変更します。 これをグラフの **[値]** に追加します。 次に、 **[形式]** ツールを選択し、X 軸の種類を **[カテゴリ別]** に設定します。
 
 ![X 軸の形式変更の画像](../media/tutorials/format-x-axis.png)
 

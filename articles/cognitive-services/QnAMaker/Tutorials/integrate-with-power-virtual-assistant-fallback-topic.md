@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 11/09/2020
-ms.openlocfilehash: 322db4e1535e763f4c3e7c87afaa370471ba0b66
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 3801bb44fed6bf24788957c41de77c89b3025ae8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376300"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351114"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>チュートリアル:Power Virtual Agents にナレッジ ベースを追加する
 ナレッジ ベースから回答を提供するように [Power Virtual Agents](https://powervirtualagents.microsoft.com/) ボットを作成して拡張します。
@@ -53,7 +53,7 @@ Power Virtual Agents のエージェントを QnA Maker のナレッジ ベー�
     * (Power Automate フローに対して) アクションを呼び出します。
 * [Power Automate](https://us.flow.microsoft.com/) ポータルで、次のようにします。
     * _[Generate answer using QnA Maker]\(QnA Maker を使用して回答を生成\)_ テンプレートを検索します
-    * テンプレートを使用して、[QnA Maker の GenerateAnswer](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/) を使用するようにフローを構成します。
+    * テンプレートを使用して、[QnA Maker の GenerateAnswer](/connectors/cognitiveservicesqnamaker/) を使用するようにフローを構成します。
         * QnA Maker によって公開されたナレッジ ベース情報:
             * ナレッジ ベース ID
             * QnA Maker リソース エンドポイント ホスト
@@ -258,6 +258,6 @@ Power Virtual Agents の作成キャンバスを使用して、フォールバ�
 [ナレッジ ベースに関する分析結果の取得](../How-To/get-analytics-knowledge-base.md)
 
 各項目の詳細情報
-* [Power Virtual Agents](https://docs.microsoft.com/power-virtual-agents/)
-* [Power Automate](https://docs.microsoft.com/power-automate/)
-* [QnA Maker コネクタ](https://us.flow.microsoft.com/connectors/shared_cognitiveservicesqnamaker/qna-maker/)と[コネクタの設定](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/)
+* [Power Virtual Agents](/power-virtual-agents/)
+* [Power Automate](/power-automate/)
+* [QnA Maker コネクタ](https://us.flow.microsoft.com/connectors/shared_cognitiveservicesqnamaker/qna-maker/)と[コネクタの設定](/connectors/cognitiveservicesqnamaker/)

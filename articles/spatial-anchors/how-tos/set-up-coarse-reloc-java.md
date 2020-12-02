@@ -1,20 +1,20 @@
 ---
 title: Java での粗い再局在化
 description: Java で粗い再局在化を使用してアンカーを作成して配置する方法の詳細な説明。
-author: bucurb
-manager: dacoghl
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.custom: devx-track-java
-ms.author: bobuc
-ms.date: 09/19/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 01a58207d893b6e4dcadf0b8b295d4bf7ed2ec31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcc88699f4d464362e6d31d99bd028f538d161a5
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319033"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95999843"
 ---
 # <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-java"></a>Java で粗い再局在化を使用してアンカーを作成して配置する方法
 

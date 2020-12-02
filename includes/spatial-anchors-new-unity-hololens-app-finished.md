@@ -1,17 +1,17 @@
 ---
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.date: 06/22/2020
+ms.date: 11/20/2020
 ms.topic: include
-ms.author: crtreasu
+ms.author: parkerra
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: aed5b18a1241aa914f49e7613bd8a6f4a03eff2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1986764a44a98208ee79819fa200034ec34370bf
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87375336"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95996265"
 ---
 ## <a name="putting-everything-together"></a>すべてをまとめる
 
@@ -405,4 +405,4 @@ public class AzureSpatialAnchorsScript : MonoBehaviour
 このチュートリアルでは、新しい Unity HoloLens アプリで Azure Spatial Anchors を使用する方法について説明しました。 新しい Android アプリで Azure Spatial Anchors を使用する方法について詳しくは、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [新しい Android アプリの開始](/azure/spatial-anchors/tutorials/tutorial-new-android-app)
+> [新しい Android アプリの開始](../articles/spatial-anchors/tutorials/tutorial-new-android-app.md)

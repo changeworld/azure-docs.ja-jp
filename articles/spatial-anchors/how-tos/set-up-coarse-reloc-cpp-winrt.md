@@ -1,19 +1,19 @@
 ---
 title: C++ と WinRT での粗い再局在化
 description: C++ と WinRT で粗い再局在化を使用してアンカーを作成して配置する方法の詳細な説明。
-author: bucurb
-manager: dacoghl
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: bobuc
-ms.date: 09/19/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9eace1ee1f97acaf04608d37c9edba482622bd59
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 7068ecb7fcfe888118396523e0e3d997e5a59e9a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097373"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96005012"
 ---
 # <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-cwinrt"></a>C++ と WinRT で粗い再局在化を使用してアンカーを作成して配置する方法
 

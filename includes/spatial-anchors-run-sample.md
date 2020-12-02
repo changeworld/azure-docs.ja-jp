@@ -1,15 +1,15 @@
 ---
-author: shreyasharma
+author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 10/23/2019
-ms.author: shreshar
-ms.openlocfilehash: 68dda321f0088a28f7f3ad1a80a02473fe0e7379
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: d73b3e0938d278e53648a6af7151cecb4ae67c70
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971444"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185382"
 ---
 **[Create & Share Anchor]\(アンカーの作成と共有\)** を使用すると、アンカーを作成し、共有サービスに保存できます。 これに対して、それを共有サービスから取得するために使用できる ID が返されます。 お使いのデバイスまたは別のデバイスから、2 番目のシナリオである **[Locate Shared Anchor]\(共有されたアンカーの検索\)** を実行できます。 
 

@@ -12,19 +12,19 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6b6aea6a3b0856b3db345e20b87d2a12ad055e1
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 077c715616e377d8b296e53fdd5a861f944ab940
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380332"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349505"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>C# でのコンソール アプリ検索クライアントのビルド
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
-> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 このチュートリアルでは、ユーザーが Bing Web Search API にクエリを実行し、優先度を付けた結果を表示できるようにする単純な .NET Core コンソール アプリをビルドする方法を示します。
 
@@ -47,7 +47,7 @@ Visual Studio で、`Ctrl`+`Shift`+`N` キーを押してプロジェクトを�
 
 **[新しいプロジェクト]** ダイアログで、 **[Visual C#] > [Windows クラシック デスクトップ] > [コンソール アプリ (.NET Framework)]** をクリックします。
 
-アプリケーションに " **MyConsoleSearchApp** " という名前を付けて、 **[OK]** をクリックします。
+アプリケーションに "**MyConsoleSearchApp**" という名前を付けて、 **[OK]** をクリックします。
 
 ## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>JSON.net NuGet パッケージをプロジェクトに追加する
 
@@ -56,14 +56,14 @@ JSON.net では、API によって返される JSON 応答を使用すること�
 - **ソリューション エクスプローラー** でプロジェクトを右クリックし、 **[NuGet パッケージの管理...]** を選びます。
 - **[参照]** タブで `Newtonsoft.Json` を検索します。 最新のバージョンを選択し、 **[インストール]** をクリックします。
 - **[変更のレビュー]** ウィンドウで **[OK]** ボタンをクリックします。
-- 次に示す Visual Studio タブを閉じます。 **NuGet:MyConsoleSearchApp** 。
+- 次に示す Visual Studio タブを閉じます。**NuGet:MyConsoleSearchApp**。
 
 ## <a name="add-a-reference-to-systemweb"></a>System.Web に参照を追加する
 
 このチュートリアルは、`System.Web` アセンブリに基づいています。 このアセンブリへの参照をプロジェクトに追加します。
 
 - **ソリューション エクスプローラー** で **[参照]** を右クリックし、 **[参照の追加...]** を選択します
-- **[アセンブリ] > [フレームワーク]** を選択してから下にスクロールし、 **System.Web** をチェックします
+- **[アセンブリ] > [フレームワーク]** を選択してから下にスクロールし、**System.Web** をチェックします
 - **[OK]** を選択します。
 
 ## <a name="add-some-necessary-using-statements"></a>複数の必要な using ステートメントを追加する
@@ -77,7 +77,7 @@ using System.Net.Http;
 
 ## <a name="ask-the-user-for-a-query"></a>ユーザーにクエリを求める
 
-**ソリューション エクスプローラー** で、 **Program.cs** を開きます。 `Main()` メソッドを更新します。
+**ソリューション エクスプローラー** で、**Program.cs** を開きます。 `Main()` メソッドを更新します。
 
 ```csharp
 static void Main()

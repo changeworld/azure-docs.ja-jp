@@ -1,15 +1,15 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 1/29/2019
-ms.author: rgarcia
-ms.openlocfilehash: 52fa21e5f881c7811f1f3e61f51d0c5a374a9f77
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 88fbe9d58f1742ae311958a6bb15134ffec3bdac
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971457"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185359"
 ---
 **[ファイル]**  >  **[ビルド設定]** を選択して、 **[ビルド設定]** を開きます。
 

@@ -6,17 +6,17 @@ ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
 ms.openlocfilehash: f5b332415f1abf7d4c1002bdd4f3bfcef12f1267
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135742"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023264"
 ---
 ## <a name="configure-the-sample-project"></a>サンプル プロジェクトを構成する
 
 次に、Azure Digital Twins インスタンスとやり取りするサンプル クライアント アプリケーションを設定します。
 
-マシン上で、 [*Azure Digital Twins のエンドツーエンド サンプル*](/samples/azure-samples/digital-twins-samples/digital-twins-samples)からダウンロードしたファイルに移動します (まだの場合は解凍します)。
+マシン上で、[*Azure Digital Twins のエンドツーエンド サンプル*](/samples/azure-samples/digital-twins-samples/digital-twins-samples)からダウンロードしたファイルに移動します (まだの場合は解凍します)。
 
 フォルダー内の _AdtSampleApp_ に移動します。 Visual Studio 2019 で _**AdtE2ESample.sln**_ を開きます。 
 
@@ -32,7 +32,7 @@ Visual Studio で _[SampleClientApp] > **[appsettings.json]**_ ファイルを�
 
 ファイルを保存して閉じます。 
 
-次に、 *SampleClientApp* をビルドしたときに *appsettings.json* ファイルが出力ディレクトリにコピーされるように構成します。 そのためには、 *appsettings.json* ファイルを右クリックし、 *[プロパティ]* を選択します。 *[プロパティ]* インスペクターで、 *[出力ディレクトリにコピー]* プロパティの値を *[新しい場合はコピーする]* に変更してください。
+次に、*SampleClientApp* をビルドしたときに *appsettings.json* ファイルが出力ディレクトリにコピーされるように構成します。 そのためには、*appsettings.json* ファイルを右クリックし、 *[プロパティ]* を選択します。 *[プロパティ]* インスペクターで、 *[出力ディレクトリにコピー]* プロパティの値を *[新しい場合はコピーする]* に変更してください。
 
 :::image type="content" source="../articles/digital-twins/media/includes/copy-config.png" alt-text="Visual Studio ウィンドウの [ソリューション エクスプローラー] ペイン (appsettings.json が強調表示されている) とプロパティ ペイン ([出力ディレクトリにコピー] プロパティが [新しい場合はコピーする] に設定されている)" border="false" lightbox="../articles/digital-twins/media/includes/copy-config.png":::
 

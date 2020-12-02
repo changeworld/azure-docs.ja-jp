@@ -1,15 +1,15 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 08/14/2020
-ms.author: rgarcia
-ms.openlocfilehash: 9c20726ce412e651aba0fdd202031d342350c922
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: d969b1639dbb39b920c985964abe1239f068d740
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971489"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185345"
 ---
 **[Build]\(ビルド\)** を選択します。 ウィンドウが開いたら、Xcode プロジェクトのエクスポート先にするフォルダーを選択します。
 
@@ -36,7 +36,7 @@ open ./Unity-iPhone.xcodeproj
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>アプリを iOS デバイスにデプロイする
 
-iOS デバイスを Mac に接続し、**アクティブ スキーム**を iOS デバイスに設定します。
+iOS デバイスを Mac に接続し、**アクティブ スキーム** を iOS デバイスに設定します。
 
    ![デバイスを選択するための [My iPhone] ボタンのスクリーンショット。](./media/spatial-anchors-unity/select-device.png)
 

@@ -1,19 +1,19 @@
 ---
 title: チュートリアル:[新しい Android アプリを作成する]
 description: このチュートリアルでは、Azure Spatial Anchors を使用して新しい Android アプリを作成する方法について説明します。
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 06/22/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3ef24e29e5dde90aa829c46d789256e6e5f3233b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af0d01a20728d2332d4a8d71819f73baf68a65a4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85296204"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95998390"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>チュートリアル:Azure Spatial Anchors を使用して新しい Android アプリを作成する手順
 
@@ -30,7 +30,7 @@ ms.locfileid: "85296204"
 
 Android Studio を起動します。 **[Android Studio へようこそ]** ウィンドウで、 **[新規 Android Studio プロジェクトの開始]** を選択します。 または、既に開かれているプロジェクトがある場合は、 **[ファイル]** -> **[新規プロジェクト]** を選択します。
 
-**[新規プロジェクトの作成]** ウィンドウの **[スマホおよびタブレット]** セクションで、 **[空のアクティビティ]** を選択し、 **[次へ]** をクリックします。 次に、 **[Minimum API level]\(最小 API レベル\)** で `API 26: Android 8.0 (Oreo)` を選択し、 **[Language]\(言語\)** が `Java` に設定されていることを確認します。 プロジェクトの名前と場所、およびパッケージ名の変更が必要な場合があります。 他のオプションはそのままにします。 **[完了]** をクリックします。 **コンポーネント インストーラー**が実行されます。 完了したら、 **[完了]** をクリックします。 いくつかの処理の後、Android Studio によって IDE が開かれます。
+**[新規プロジェクトの作成]** ウィンドウの **[スマホおよびタブレット]** セクションで、 **[空のアクティビティ]** を選択し、 **[次へ]** をクリックします。 次に、 **[Minimum API level]\(最小 API レベル\)** で `API 26: Android 8.0 (Oreo)` を選択し、 **[Language]\(言語\)** が `Java` に設定されていることを確認します。 プロジェクトの名前と場所、およびパッケージ名の変更が必要な場合があります。 他のオプションはそのままにします。 **[完了]** をクリックします。 **コンポーネント インストーラー** が実行されます。 完了したら、 **[完了]** をクリックします。 いくつかの処理の後、Android Studio によって IDE が開かれます。
 
 ## <a name="trying-it-out"></a>試してみる
 

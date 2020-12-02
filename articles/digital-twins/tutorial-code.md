@@ -8,11 +8,11 @@ ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ms.openlocfilehash: 3225fff1c82822dee990804f934ada86068841e8
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280269"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011304"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>チュートリアル:Azure Digital Twins API を使用したコーディング
 
@@ -31,7 +31,7 @@ Azure Digital Twins を使用する開発者は、Azure Digital Twins サービ�
 
 開始するために必要なもの:
 * 任意のコード エディター
-* 開発マシンにインストールされた **.NET Core 3.1** 。 「[.NET Core 3.1 のダウンロード](https://dotnet.microsoft.com/download/dotnet-core/3.1)」から、複数のプラットフォームに対応する .NET Core SDK のこのバージョンをダウンロードできます。
+* 開発マシンにインストールされた **.NET Core 3.1**。 「[.NET Core 3.1 のダウンロード](https://dotnet.microsoft.com/download/dotnet-core/3.1)」から、複数のプラットフォームに対応する .NET Core SDK のこのバージョンをダウンロードできます。
 
 ### <a name="prepare-an-azure-digital-twins-instance"></a>Azure Digital Twins インスタンスを準備する
 
@@ -43,11 +43,11 @@ Azure Digital Twins を使用する開発者は、Azure Digital Twins サービ�
 
 Azure Digital Twins インスタンスを使用する準備ができたら、クライアント アプリ プロジェクトの設定を開始します。 
 
-ご使用のコンピューターでコマンド プロンプトまたはその他のコンソール ウィンドウを開き、このチュートリアルでの作業を格納する空のプロジェクト ディレクトリを作成します。 ディレクトリに任意の名前を指定します (たとえば、 *DigitalTwinsCodeTutorial* )。
+ご使用のコンピューターでコマンド プロンプトまたはその他のコンソール ウィンドウを開き、このチュートリアルでの作業を格納する空のプロジェクト ディレクトリを作成します。 ディレクトリに任意の名前を指定します (たとえば、*DigitalTwinsCodeTutorial*)。
 
 その新しいディレクトリに移動します。
 
-プロジェクト ディレクトリに移動したら、 **空の .NET コンソール アプリ プロジェクトを作成** します。 コマンド ウィンドウで次のコマンドを実行して、コンソール用の最小限の C# プロジェクトを作成できます。
+プロジェクト ディレクトリに移動したら、**空の .NET コンソール アプリ プロジェクトを作成** します。 コマンド ウィンドウで次のコマンドを実行して、コンソール用の最小限の C# プロジェクトを作成できます。
 
 ```cmd/sh
 dotnet new console
@@ -123,16 +123,16 @@ dotnet run
 ```
 
 これにより、最初の実行での依存関係が復元されてから、プログラムが実行されます。 
-* エラーが発生しなかった場合は、プログラムで " *Service client created - ready to go* " が出力されます。
+* エラーが発生しなかった場合は、プログラムで "*Service client created - ready to go*" が出力されます。
 * このプロジェクトにはまだエラー処理がないため、何らかの問題が発生すると、コードによってスローされた例外が表示されます。
 
 ### <a name="upload-a-model"></a>モデルのアップロード
 
-Azure Digital Twins には、組み込みのドメイン ボキャブラリはありません。 Azure Digital Twins で表すことができる環境内の要素の種類は、 **モデル** を使用してご自分で定義します。 [モデル](concepts-models.md)は、オブジェクト指向プログラミング言語におけるクラスに似ています。つまりモデルは、[デジタル ツイン](concepts-twins-graph.md)のユーザー定義のテンプレートとなります。デジタル ツインは、そのテンプレートに従ってインスタンス化されることになります。 それらは、JSON に似た **Digital Twins Definition Language (DTDL)** と呼ばれる言語で記述されます。
+Azure Digital Twins には、組み込みのドメイン ボキャブラリはありません。 Azure Digital Twins で表すことができる環境内の要素の種類は、**モデル** を使用してご自分で定義します。 [モデル](concepts-models.md)は、オブジェクト指向プログラミング言語におけるクラスに似ています。つまりモデルは、[デジタル ツイン](concepts-twins-graph.md)のユーザー定義のテンプレートとなります。デジタル ツインは、そのテンプレートに従ってインスタンス化されることになります。 それらは、JSON に似た **Digital Twins Definition Language (DTDL)** と呼ばれる言語で記述されます。
 
 Azure Digital Twins ソリューションを作成するにあたり最初にすべきことは、DTDL ファイル内に少なくとも 1 つのモデルを定義することです。
 
-プロジェクトを作成したディレクトリに、 *SampleModel.json* という名前の新しい *.json* ファイルを作成します。 次のファイル本文を貼り付けます。 
+プロジェクトを作成したディレクトリに、*SampleModel.json* という名前の新しい *.json* ファイルを作成します。 次のファイル本文を貼り付けます。 
 
 ```json
 {
@@ -158,7 +158,7 @@ Azure Digital Twins ソリューションを作成するにあたり最初にす
 > このチュートリアルのために Visual Studio を使用している場合は、新しく作成した JSON ファイルを選択し、プロパティ インスペクターで *[出力ディレクトリにコピー]* プロパティを *[新しい場合はコピーする]* または *[常にコピーする]* に設定することができます。 これにより、チュートリアルの残りの部分で **F5** キーを使用してプログラムを実行するときに、Visual Studio の既定のパスで JSON ファイルが検出されるようになります。
 
 > [!TIP] 
-> あらゆる言語に対応した [DTDL Validator サンプル](/samples/azure-samples/dtdl-validator/dtdl-validator)でモデル ドキュメントをチェックし、DTDL が有効であることを確認できます。 これは DTDL パーサー ライブラリをベースに構築されています。詳細については、" [*モデルを解析および検証する方法*](how-to-parse-models.md)" に関するページを参照してください。
+> あらゆる言語に対応した [DTDL Validator サンプル](/samples/azure-samples/dtdl-validator/dtdl-validator)でモデル ドキュメントをチェックし、DTDL が有効であることを確認できます。 これは DTDL パーサー ライブラリをベースに構築されています。詳細については、"[*モデルを解析および検証する方法*](how-to-parse-models.md)" に関するページを参照してください。
 
 次に、先ほど作成したモデルを Azure Digital Twins インスタンスにアップロードするためのコードを *Program.cs* に追加します。
 
@@ -213,7 +213,7 @@ await foreach (DigitalTwinsModelData md in modelDataList)
 }
 ```
 
-**この新しいコードをテストするためにプログラムをもう一度実行する前に** 、前回のプログラム実行時にモデルを既にアップロードしたことを思い出してください。 Azure Digital Twins によって、同じモデルを 2 回アップロードすることはできません。そのため、同じモデルを再度アップロードしようとすると、プログラムから例外がスローされます。
+**この新しいコードをテストするためにプログラムをもう一度実行する前に**、前回のプログラム実行時にモデルを既にアップロードしたことを思い出してください。 Azure Digital Twins によって、同じモデルを 2 回アップロードすることはできません。そのため、同じモデルを再度アップロードしようとすると、プログラムから例外がスローされます。
 
 この点を考慮して、コマンド ウィンドウでこのコマンドを使用してプログラムを再度実行します。
 
@@ -267,7 +267,7 @@ for(int i=0; i<3; i++) {
 }
 ```
 
-コマンド ウィンドウで、`dotnet run` を使用してプログラムを実行します。 出力で、 *sampleTwin-0* 、 *sampleTwin-1* 、および *sampleTwin-2* が作成されたことを示す出力メッセージを探します。 
+コマンド ウィンドウで、`dotnet run` を使用してプログラムを実行します。 出力で、*sampleTwin-0*、*sampleTwin-1*、および *sampleTwin-2* が作成されたことを示す出力メッセージを探します。 
 
 次に、プログラムを再度実行します。 
 
@@ -275,7 +275,7 @@ for(int i=0; i<3; i++) {
 
 ### <a name="create-relationships"></a>リレーションシップの作成
 
-次に、作成したツイン間に **リレーションシップ** を作成することで、それらのツインを接続し、 **ツイン グラフ** を形成することができます。 [ツイン グラフ](concepts-twins-graph.md)は、ご自分の環境全体を表すために使用されます。
+次に、作成したツイン間に **リレーションシップ** を作成することで、それらのツインを接続し、**ツイン グラフ** を形成することができます。 [ツイン グラフ](concepts-twins-graph.md)は、ご自分の環境全体を表すために使用されます。
 
 **新しい静的メソッド** を `Program` クラスの `Main` メソッドの下に追加します (これで、コードには 2 つのメソッドがあります)。
 
@@ -375,7 +375,7 @@ await foreach (BasicDigitalTwin twin in result)
 
 ## <a name="complete-code-example"></a>完全なコード例
 
-このチュートリアルのこの時点で、Azure Digital Twins に対して基本的なアクションを実行できる完全なクライアント アプリができました。 参照用に、 *Program.cs* 内のプログラムの完全なコードを次に示します。
+このチュートリアルのこの時点で、Azure Digital Twins に対して基本的なアクションを実行できる完全なクライアント アプリができました。 参照用に、*Program.cs* 内のプログラムの完全なコードを次に示します。
 
 ```csharp
 using System;
@@ -493,7 +493,7 @@ namespace minimal
 ```
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
  
-このチュートリアルで使用したインスタンスは、次に取り組む " [*サンプル クライアント アプリを使用した基本事項の確認に関するチュートリアル*](tutorial-command-line-app.md)" で再利用できます。 次のチュートリアルに進む場合は、ここで設定した Azure Digital Twins インスタンスを残しておくことができます。
+このチュートリアルで使用したインスタンスは、次に取り組む "[*サンプル クライアント アプリを使用した基本事項の確認に関するチュートリアル*](tutorial-command-line-app.md)" で再利用できます。 次のチュートリアルに進む場合は、ここで設定した Azure Digital Twins インスタンスを残しておくことができます。
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
