@@ -6,15 +6,15 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: 8169b277dfae918e86ac493259325ff84d0b6a4e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427473"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998534"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Azure Remote Rendering アカウントを作成する
 
-この章では、 **Azure Remote Rendering** サービスのアカウントを作成する手順について説明します。 クイックスタートまたはチュートリアルを完了するには、有効なアカウントが必要です。
+この章では、**Azure Remote Rendering** サービスのアカウントを作成する手順について説明します。 クイックスタートまたはチュートリアルを完了するには、有効なアカウントが必要です。
 
 ## <a name="create-an-account"></a>アカウントを作成する
 
@@ -48,7 +48,7 @@ Azure Remote Rendering サービスのアカウントを作成するには、次
 },
 ```
 
-*region* オプションを入力するには、 [使用可能なリージョンの一覧](../reference/regions.md)を参照してください。
+*region* オプションを入力するには、[使用可能なリージョンの一覧](../reference/regions.md)を参照してください。
 
 **`arrAccountId`** と **`arrAccountKey`** の値は、次の手順に従ってポータルで確認できます。
 

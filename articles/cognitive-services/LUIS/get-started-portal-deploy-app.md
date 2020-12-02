@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/06/2020
-ms.openlocfilehash: 6126c6e37ad43ed6456b224d043dc6695fa2d00e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b051f349716b5597adee4509cfe774978a8f61aa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91298413"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95972515"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータル内でアプリをデプロイする
 
@@ -121,4 +121,4 @@ LUIS 向けの新しい作成リソースまたはクエリ予測リソースを
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [一般的な意図とエンティティを識別する](luis-tutorial-prebuilt-intents-entities.md)
+> [一般的な意図とエンティティを識別する](./tutorial-machine-learned-entity.md)

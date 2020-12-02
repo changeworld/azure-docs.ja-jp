@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:DirectX を使用して HoloLens アプリを作成する
 description: このクイック スタートでは、Spatial Anchors を使用して HoloLens アプリをビルドする方法について説明します。
-author: craigktreasure
-manager: virivera
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 66b8008312c1cf81d4fca7fb8ee5f26fc4c98f60
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: c96c45869ee1c9c96cd77d0b3eb10c733199666e
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096165"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95993518"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>クイック スタート:Azure Spatial Anchors を使用して HoloLens アプリを C++/WinRT と DirectX で作成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "92096165"
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタートを実行するには、以下が必要です。
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a>、**ユニバーサル Windows プラットフォーム開発**ワークロード、および **Windows 10 SDK (10.0.18362.0 以降)** コンポーネントがインストールされた Windows マシン。 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> および <a href="https://git-lfs.github.com/">Git LFS</a> もインストールする必要があります。
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a>、**ユニバーサル Windows プラットフォーム開発** ワークロード、および **Windows 10 SDK (10.0.18362.0 以降)** コンポーネントがインストールされた Windows マシン。 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> および <a href="https://git-lfs.github.com/">Git LFS</a> もインストールする必要があります。
 - [Visual Studio Marketplace](https://marketplace.visualstudio.com/) から Visual Studio 用の [C++/WinRT Visual Studio 拡張機能 (VSIX)](https://aka.ms/cppwinrt/vsix) をインストールする必要があります。
 - [開発者モード](/windows/mixed-reality/using-visual-studio)が有効になっている HoloLens デバイス。 この記事では、[Windows 10 May 2020 Update](/windows/mixed-reality/whats-new/release-notes-may-2020) が適用された HoloLens デバイスが必要です。 HoloLens を最新のリリースに更新するには、 **[設定]** アプリを開き、 **[更新とセキュリティ]** を選択し、 **[更新プログラムの確認]** ボタンをクリックします。
 - アプリにより、その AppX マニフェストに **spatialPerception** 機能を設定する必要があります。

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: c7c43e02e6bdf75c9551ccdbb9dd8f75bf37a806
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 77a8321ba8bac0ecaf577bce6c3c05d10508128e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91534983"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96020162"
 ---
 # <a name="text-to-speech-rest-api"></a>Text to Speech REST API
 
@@ -34,7 +34,7 @@ Text to Speech REST API ではニューラルと標準のテキスト読み上�
 * Text to Speech REST API には、Authorization ヘッダーが必要です。 つまり、このサービスにアクセスするためには、トークンの交換が済んでいる必要があります。 詳細については、[認証](#authentication)に関するページをご覧ください。
 
 > [!TIP]
-> Government クラウド (FairFax) エンドポイントについては、Azure Government の[ドキュメント](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure)を参照してください。
+> Government クラウド (FairFax) エンドポイントについては、Azure Government の[ドキュメント](../../azure-government/compare-azure-government-global-azure.md)を参照してください。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -222,9 +222,9 @@ Authorization: Bearer [Base64 access_token]
 
 言語固有の例については、クイック スタートを参照してください。
 
-* [.NET Core、C#](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
-* [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python)
-* [Node.js](quickstart-nodejs-text-to-speech.md)
+* [.NET Core、C#](./get-started-text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
+* [Python](./get-started-text-to-speech.md?pivots=programming-language-python)
+* [Node.js](./get-started-text-to-speech.md)
 
 ### <a name="http-status-codes"></a>HTTP 状態コード
 
@@ -245,5 +245,5 @@ HTTP ステータスが `200 OK` の場合、応答の本文には要求され�
 ## <a name="next-steps"></a>次のステップ
 
 - [無料の Azure アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください
-- [長い形式の音声の非同期合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [長い形式の音声の非同期合成](./long-audio-api.md)
 - [カスタム音声の概要](how-to-custom-voice.md)

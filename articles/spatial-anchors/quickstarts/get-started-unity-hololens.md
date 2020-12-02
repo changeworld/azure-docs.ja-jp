@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:Unity を使用して HoloLens アプリを作成する
 description: このクイック スタートでは、Spatial Anchors を使用して HoloLens アプリを Unity でビルドする方法について説明します。
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 09/29/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 143bc89518ff1811ad6789f71fcf7a9267e99f73
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 11d8e8d918b408881f211605ce6c713615f0aa93
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097441"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96022634"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用する Unity HoloLens アプリを作成する
 
@@ -33,7 +33,7 @@ ms.locfileid: "92097441"
 
 このクイック スタートを完了するには、以下が必要です。
 
-- <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.4 (LTS)</a> および <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> 以降がインストールされている Windows コンピューターが必要です。 Visual Studio インストールには、**ユニバーサル Windows プラットフォーム開発**ワークロードと **Windows 10 SDK (10.0.18362.0 以降)** コンポーネントが含まれている必要があります。 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> および <a href="https://git-lfs.github.com/">Git LFS</a> もインストールする必要があります。
+- <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.4 (LTS)</a> および <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> 以降がインストールされている Windows コンピューターが必要です。 Visual Studio インストールには、**ユニバーサル Windows プラットフォーム開発** ワークロードと **Windows 10 SDK (10.0.18362.0 以降)** コンポーネントが含まれている必要があります。 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> および <a href="https://git-lfs.github.com/">Git LFS</a> もインストールする必要があります。
 - [開発者モード](/windows/mixed-reality/using-visual-studio)が有効になっている HoloLens デバイスが必要です。 [Windows 10 May 2020 Update](/windows/mixed-reality/whats-new/release-notes-may-2020) がデバイスにインストールされている必要があります。 HoloLens を最新のリリースに更新するには、 **[設定]** アプリを開き、 **[更新とセキュリティ]** を選択し、 **[更新プログラムの確認]** を選択します。
 - アプリで **SpatialPerception** 機能を有効にする必要があります。 この設定は、 **[ビルド設定]**  >  **[プレーヤーの設定]**  >  **[発行の設定]**  >  **[機能]** にあります。
 - アプリで **[Virtual Reality Supported]\(サポートされている仮想現実\)** を **Windows Mixed Reality SDK** と共に有効にする必要があります。 この設定は、 **[ビルド設定]**  >  **[プレーヤーの設定]**  >  **[XR Settings]\(XR 設定\)** にあります。

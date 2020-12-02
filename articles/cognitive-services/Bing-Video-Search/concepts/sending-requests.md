@@ -10,19 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: aahi
-ms.openlocfilehash: 1e6fc68a1e48c9c47cc6a76911f947f2d9916a25
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 78a3c3c2936bfcaf58ea9e46bd3d6a610cdfe436
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379512"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341497"
 ---
 # <a name="sending-search-requests-to-the-bing-video-search-api"></a>Bing Video Search API への検索要求の送信
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
-> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 この記事では、Bing Video Search API に送信される要求のパラメーターと属性、およびそこから返される JSON 応答オブジェクトについて説明します。 
 
@@ -32,7 +32,7 @@ ms.locfileid: "94379512"
 
 ユーザーが検索語句を入力するための検索ボックスを用意する場合は、[Bing Autosuggest API](../../bing-autosuggest/get-suggested-search-terms.md) を使用することでエクスペリエンスが向上します。 この API は、検索語句をユーザーが入力している最中に、その一部分に基づいてクエリ文字列の候補を返します。
 
-ユーザーが検索語句を入力した後、それを URL エンコードしたうえで、[q](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) クエリ パラメーターを設定します。 たとえば「 *sailing dinghies* 」と入力された場合、`q` を `sailing+dinghies` または `sailing%20dinghies` に設定します。
+ユーザーが検索語句を入力した後、それを URL エンコードしたうえで、[q](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) クエリ パラメーターを設定します。 たとえば「*sailing dinghies*」と入力された場合、`q` を `sailing+dinghies` または `sailing%20dinghies` に設定します。
 
 ## <a name="sending-a-request"></a>要求を送信する
 

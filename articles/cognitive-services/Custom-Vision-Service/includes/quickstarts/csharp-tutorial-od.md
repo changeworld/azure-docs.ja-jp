@@ -4,11 +4,11 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 09/15/2020
 ms.openlocfilehash: bb090c0e40a8376aafb7b7eca479d16d73ce131d
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625276"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021341"
 ---
 .NET 用 Custom Vision クライアント ライブラリの使用を開始します。 以下の手順に従って、パッケージをインストールし、物体検出モデルを構築するためのコード例を試してみましょう。 プロジェクトを作成し、タグを追加し、サンプル画像でプロジェクトをトレーニングして、プロジェクトの予測エンドポイント URL を使用してプログラムでテストします。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
 

@@ -10,16 +10,16 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: ecb0b6a6577161a5349d9d701dd6c116f69411f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b734f54f39b0f442f398a60ad25a846b0f9a6322
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80876091"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96021811"
 ---
 # <a name="deploy-the-computer-vision-container-to-azure-container-instances"></a>Azure Container Instances に Computer Vision コンテナーをデプロイする
 
-Cognitive Services [Computer Vision](computer-vision-how-to-install-containers.md) コンテナーを Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/) にデプロイする方法について説明します。 この手順では、Computer Vision リソースの作成方法を実演します。 次に、関連するコンテナー イメージをプルする方法について説明します。 最後に、ブラウザーからこの 2 つのオーケストレーションを行う機能を取り上げます。 コンテナーを使用することで、開発者の関心をインフラストラクチャの管理から切り離し、アプリケーション開発に専念させることができます。
+Cognitive Services [Computer Vision](computer-vision-how-to-install-containers.md) コンテナーを Azure [Container Instances](../../container-instances/index.yml) にデプロイする方法について説明します。 この手順では、Computer Vision リソースの作成方法を実演します。 次に、関連するコンテナー イメージをプルする方法について説明します。 最後に、ブラウザーからこの 2 つのオーケストレーションを行う機能を取り上げます。 コンテナーを使用することで、開発者の関心をインフラストラクチャの管理から切り離し、アプリケーション開発に専念させることができます。
 
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/30/2019
 ms.author: wolfma
 ms.openlocfilehash: c7332177795a45331749225e0f3dc3856e28a6a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71327056"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001103"
 ---
 Windows 開発用に Visual Studio プロジェクトを作成するためには、プロジェクトの作成、.NET デスクトップ開発用の Visual Studio 設定、Speech SDK のインストール、ターゲット アーキテクチャの選択が必要となります。
 
@@ -23,7 +23,7 @@ Windows 開発用に Visual Studio プロジェクトを作成するためには
 
 1. **[新しいプロジェクトの作成]** ウィンドウで、 **[コンソール アプリ (.NET Framework)]** を選択してから、 **[次へ]** を選択します。
 
-1. **[新しいプロジェクトの構成]** ウィンドウの **[プロジェクト名]** に「*helloworld*」と入力し、**保存先**となるディレクトリのパスを選択するか作成して、 **[作成]** を選択します。
+1. **[新しいプロジェクトの構成]** ウィンドウの **[プロジェクト名]** に「*helloworld*」と入力し、**保存先** となるディレクトリのパスを選択するか作成して、 **[作成]** を選択します。
 
 1. Visual Studio のメニュー バーから、 **[ツール]**  >  **[ツールと機能を取得]** の順に選択して Visual Studio インストーラーを開き、 **[変更中]** ダイアログ ボックスを表示します。
 

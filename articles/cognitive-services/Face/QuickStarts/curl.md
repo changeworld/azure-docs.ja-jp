@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: cd7d1a476f09a2fbfffa687a28616c8faeaae22c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 922b261ffeb6cb7a7170a50a3ba5e5ca91a10a11
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858270"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96012001"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>クイック スタート:Face REST API と cURL を使用して画像から顔を検出する
 

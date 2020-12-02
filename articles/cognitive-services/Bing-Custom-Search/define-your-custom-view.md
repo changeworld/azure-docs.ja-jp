@@ -10,19 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: e8747b822916ba2c9ef7b45cc3cbbaa88d16dcb1
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: b2d4eb75002474bbec57753bbf0255cc4c2b4a16
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565791"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338641"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Bing Custom Search エクスペリエンスを構成する
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
-> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 カスタム検索インスタンスでは、ユーザーが関心を寄せている Web サイトからのみのコンテンツを含むように、検索エクスペリエンスを調整できます。 Bing では、Web 全体の検索を実行するのではなく、関心のある Web のスライスのみを検索します。 Web のカスタム ビューを作成するには、Bing Custom Search [ポータル](https://www.customsearch.ai)を使用します。
 

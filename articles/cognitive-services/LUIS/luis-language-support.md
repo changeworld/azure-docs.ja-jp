@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.openlocfilehash: e377f910e1c1ddda864ea312b40fe3608c166376
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1da43d0ef208d61ced6c8ca8dbc7603e0ef51155
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541392"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96021573"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS の言語と地域のサポート
 
@@ -28,7 +28,7 @@ LUIS はサービス内にさまざまな機能を備えています。 すべ�
 
 LUIS が理解する発話の言語を次に示します。
 
-| Language |Locale  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズ リストのレコメンデーション | \**[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(センチメントと<br>キーワード)|
+| Language |Locale  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズ リストのレコメンデーション | \**[テキスト分析](../text-analytics/language-support.md)<br>(センチメントと<br>キーワード)|
 |--|--|:--:|:--:|:--:|:--:|
 | 英語 (米国) |`en-US` | ✔ | ✔  |✔|✔|
 | アラビア語 (プレビュー - 現代標準アラビア語) |`ar-AR`|-|-|-|-|
@@ -69,7 +69,7 @@ LUIS が理解する発話の言語を次に示します。
 Speech ディクテーション モードの言語については、Speech の「[Supported language (サポートされている言語)](../speech-service/speech-to-text.md)」を参照してください。
 
 ### <a name="bing-spell-check-supported-languages"></a>Bing Spell Check のサポートされている言語
-サポートされている言語と状態の一覧については、Bing Spell Check の[サポートされている言語](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages)に関するページをご覧ください。
+サポートされている言語と状態の一覧については、Bing Spell Check の[サポートされている言語](../bing-spell-check/language-support.md)に関するページをご覧ください。
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>アプリケーションの珍しい単語または外国の単語
 `en-us` カルチャの LUIS では、学習によって英語の単語のほとんど (スラングを含む) が区別されます。 `zh-cn` カルチャの LUIS では、学習によってほとんどの中国語の文字が区別されます。 `en-us` で珍しい単語を使用するか、`zh-cn` で珍しい文字を使用する場合、LUIS で単語または文字を区別できない可能性があるときは、その単語または文字を[フレーズ リスト機能](luis-how-to-add-features.md)に追加できます。 たとえば、アプリケーションのカルチャ以外の単語、つまり外国の単語は、フレーズ リスト機能に追加する必要があります。

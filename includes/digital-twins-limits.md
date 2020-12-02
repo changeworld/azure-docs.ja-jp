@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: fe3c737e0cbf6831e3abc37443e27926ed5e62b8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 183d12b5e9d32c777c8acf01177c8cbbe1b6ca00
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091778"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025885"
 ---
 ### <a name="functional-limits"></a>機能制限
 
@@ -29,7 +29,7 @@ ms.locfileid: "93091778"
 | モデル | 1 つの Azure Digital Twins インスタンス内のモデルの数 | 10,000 | はい |
 | モデル | 1 回の API 呼び出しでアップロードできるモデルの数 | 250 | いいえ |
 | モデル | 1 つのページで返される項目の数 | 100 | いいえ |
-| クエリ | 1 つのページで返される項目の数 | 100 | いいえ |
+| クエリ | 1 つのページで返される項目の数 | 100 | はい |
 | クエリ | クエリ内の `AND` / `OR` 式の数 | 50 | はい |
 | クエリ | `IN` / `NOT IN` 句内の配列項目の数 | 50 | はい |
 | クエリ | クエリの文字数 | 8,000 | はい |
@@ -51,6 +51,6 @@ ms.locfileid: "93091778"
 
 ### <a name="other-limits"></a>その他の制限
 
-Azure Digital Twins モデルの DTDL ドキュメント内のデータ型とフィールドに関する制限事項については、GitHub の仕様ドキュメントを参照してください。 [*Digital Twins Definition Language (DTDL) - バージョン 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
+Azure Digital Twins モデルの DTDL ドキュメント内のデータ型とフィールドに関する制限事項については、GitHub の仕様ドキュメントを参照してください。[*Digital Twins Definition Language (DTDL) - バージョン 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
  
-クエリの待機時間の詳細およびその他のクエリの制限事項については、 [*ツイン グラフにクエリを実行する*](../articles/digital-twins/how-to-query-graph.md)方法に関する記事を参照してください。
+クエリの待機時間の詳細およびその他のクエリの制限事項については、[*ツイン グラフにクエリを実行する*](../articles/digital-twins/how-to-query-graph.md)方法に関する記事を参照してください。

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 1b8bcaf283e612b3ebe6d6b7bb5660e8b3179ad3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f15fbc340aafa325f772a1fd50a2129fa5044c47
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858372"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96020876"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>クイック スタート:Face REST API と C# を使用して画像から顔を検出する
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトの作成
 
-1. Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プロジェクトを作成し、**FaceDetection** という名前を付けます。
+1. Visual Studio で、新しい **コンソール アプリ (.NET Framework)** プロジェクトを作成し、**FaceDetection** という名前を付けます。
 1. ソリューションに他のプロジェクトがある場合は、これを単一のスタートアップ プロジェクトとして選択します。
 
 ## <a name="add-face-detection-code"></a>顔検出コードを追加する

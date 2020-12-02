@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 48a9856c58a815eabcc0b105efcd548e66ddd552
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4f2b07edc6c290fa030621a4dc400ab50890bba
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80874213"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001180"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding の Docker コンテナーの構成 
 
@@ -29,7 +29,7 @@ ms.locfileid: "80874213"
 |必須|設定|目的|
 |--|--|--|
 |はい|[ApiKey](#apikey-setting)|課金情報の追跡に使用されます。|
-|いいえ|[ApplicationInsights](#applicationinsights-setting)|[Azure Application Insights](https://docs.microsoft.com/azure/application-insights) テレメトリ サポートをお客様のコンテナーに追加できます。|
+|いいえ|[ApplicationInsights](#applicationinsights-setting)|[Azure Application Insights](/azure/application-insights) テレメトリ サポートをお客様のコンテナーに追加できます。|
 |はい|[Billing](#billing-setting)|Azure 上のサービス リソースのエンドポイント URI を指定します。|
 |はい|[Eula](#eula-setting)| コンテナーのライセンスに同意していることを示します。|
 |いいえ|[Fluentd](#fluentd-settings)|ログと (必要に応じて) メトリック データを Fluentd サーバーに書き込みます。|

@@ -12,11 +12,11 @@ ms.date: 10/15/2020
 ms.author: erhopf
 ms.custom: devx-track-js
 ms.openlocfilehash: ec73394e184e3c16fbc4eebf2a1090c9e52ddee4
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097050"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188434"
 ---
 このガイドでは、Web ページで使用する JavaScript 用の [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。
 

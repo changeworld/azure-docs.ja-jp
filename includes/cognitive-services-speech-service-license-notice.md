@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: dapine
 ms.openlocfilehash: 68a06bcb96e201efba5e8b394486e62702f9199e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86035898"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187563"
 ---
 > [!IMPORTANT]
 > Azure Cognitive Services Speech SDK のいずれかをダウンロードした時点で、同 SDK のライセンス条件に同意したものと見なされます。 詳細については、次を参照してください。

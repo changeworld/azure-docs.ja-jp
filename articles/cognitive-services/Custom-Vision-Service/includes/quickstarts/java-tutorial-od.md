@@ -5,11 +5,11 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/13/2020
 ms.openlocfilehash: f0dbe64d6a44d7712d83c018c4db72fac871a838
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625479"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021324"
 ---
 Java 用の Custom Vision クライアント ライブラリを使用して物体検出モデルを構築してみましょう。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: 17b070fea422268ec12e0ccd3357ae0549a78916
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e803fa393d85f7f0b4849aed96356b7a4e77d83f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566267"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96000132"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 
@@ -108,7 +108,7 @@ LUIS ポータルでは、抽出するエンティティのテキストにラベ
 
 * 最高レベルではない場合は、[価格レベルを上げる](luis-how-to-azure-subscription.md#change-the-pricing-tier)ことができます。
 * 使用量が最も高い価格レベルを超えた場合は、ロード バランサーを使って Language Understanding リソースをその前に追加します。 これには、Kubernetes または Docker Compose を含む [Language Understanding コンテナー](luis-container-howto.md)が役立ちます。
-* この状態コードが表示された場合は、自分で実装する[再試行ポリシー](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines)を使用してクライアント アプリケーションの要求をゲートすることができます。
+* この状態コードが表示された場合は、自分で実装する[再試行ポリシー](/azure/architecture/best-practices/transient-faults#general-guidelines)を使用してクライアント アプリケーションの要求をゲートすることができます。
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>エンドポイントのクエリで予期していなかった結果が返されました。 どうすればよいですか。
 
@@ -286,7 +286,7 @@ Azure Bot Service を使用していて、 **[Test in Web Chat]\(Web チャッ�
 
 #### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Bot Framework を使用してローカル コンピューターでデバッグしながら問題を解決します。
 
-ボットのローカル デバッグについて詳しくは、「[ボットをデバッグする](https://docs.microsoft.com/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0)」をご覧ください。
+ボットのローカル デバッグについて詳しくは、「[ボットをデバッグする](/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0)」をご覧ください。
 
 ## <a name="integrating-luis"></a>LUIS の統合
 
@@ -296,7 +296,7 @@ LUIS テンプレートを選択し、テンプレート ウィンドウで **[�
 ![LUIS テンプレートの Web アプリ ボット リージョン](./media/luis-faq/web-app-bot-location.png)
 
 ### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>Bot Framework の音声認識の準備がサポートされているのはどの LUIS リージョンですか?
-[音声認識の準備](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)は、米国中部インスタンスの LUIS アプリに対してのみサポートされます。
+[音声認識の準備](/bot-framework/bot-service-manage-speech-priming)は、米国中部インスタンスの LUIS アプリに対してのみサポートされます。
 
 ## <a name="api-programming-strategies"></a>API プログラミング戦略
 
@@ -334,4 +334,4 @@ Build 2019 Conference では、次の機能が公開されました。
 
 LUIS の詳細については、次のリソースを参照してください。
 * [LUIS のタグが付いた Stack Overflow での質問](https://stackoverflow.com/questions/tagged/luis)
-* [MSDN Language Understanding Intelligent Services (LUIS) の Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)
+* [MSDN Language Understanding Intelligent Services (LUIS) の Microsoft Q&A 質問ページ](/answers/topics/azure-language-understanding.html)

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 11/17/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: オンプレミス、Docker、コンテナー
-ms.openlocfilehash: f91d96732c872c6f93ee2de4c5c3eba5fe5ffbc4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 9ca5229200b39f0a3c68da152f4d89f842d021ca
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412240"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95996447"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Speech サービス API 向けの Docker コンテナーをインストールし、実行する 
 
@@ -31,22 +31,22 @@ Speech コンテナーでは、堅牢なクラウド機能とエッジの局所�
 > * 標準音声変換
 > * カスタム音声変換
 > * 標準テキスト読み上げ
-> 
+> * ニューラル テキスト読み上げ
+>
 > 次の音声コンテナーは、限定的なプレビュー段階にあります。
 > * カスタム テキスト読み上げ
 > * 音声言語検出 
-> * Neural Text-to-speech
 >
 > 音声コンテナーを使用するには、オンライン要求を送信し、承認を受けている必要があります。 詳細については、以下の「**コンテナーを実行するための承認を要求する**」セクションを参照してください。
 
 | コンテナー | 特徴 | 最新 |
 |--|--|--|
-| 音声テキスト変換 | 中間結果を使用して、センチメントを分析し、リアルタイムの音声録音またはバッチ音声録音を文字起こしします。  | 2.6.0 |
-| カスタム音声変換 | [Custom Speech ポータル](https://speech.microsoft.com/customspeech)のカスタム モデルを利用し、連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.6.0 |
-| テキスト読み上げ | テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.8.0 |
-| カスタム テキスト読み上げ | [Custom Voice ポータル](https://aka.ms/custom-voice-portal)のカスタム モデルを利用し、テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.8.0 |
+| 音声テキスト変換 | 中間結果を使用して、センチメントを分析し、リアルタイムの音声録音またはバッチ音声録音を文字起こしします。  | 2.7.0 |
+| カスタム音声変換 | [Custom Speech ポータル](https://speech.microsoft.com/customspeech)のカスタム モデルを利用し、連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.7.0 |
+| テキスト読み上げ | テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.9.0 |
+| カスタム テキスト読み上げ | [Custom Voice ポータル](https://aka.ms/custom-voice-portal)のカスタム モデルを利用し、テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.9.0 |
 | 音声言語検出 | オーディオ ファイルで話されている言語を検出します。 | 1.0 |
-| Neural Text-to-speech | ディープ ニューラル ネットワーク テクノロジを使用してテキストを自然な響きの音声に変換することで、合成音声がより自然なものになります。 | 1.2.0 |
+| Neural Text-to-speech | ディープ ニューラル ネットワーク テクノロジを使用してテキストを自然な響きの音声に変換することで、合成音声がより自然なものになります。 | 1.3.0 |
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
@@ -244,13 +244,13 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/neural-tex
 `latest` を除くすべてのタグは、次の形式であり、大文字と小文字が区別されます。
 
 ```
-<major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
+<major>.<minor>.<patch>-<platform>-<locale>-<voice>
 ```
 
 次のタグは、この形式の例です。
 
 ```
-1.2.0-amd64-en-us-arianeural-preview
+1.3.0-amd64-en-us-arianeural
 ```
 
 サポートされているロケール、および **Neural Text-to-speech** コンテナーの対応音声についてはすべて、[Neural Text-to-speech イメージ タグ](../containers/container-image-tags.md#neural-text-to-speech)に関する記事を参照してください。

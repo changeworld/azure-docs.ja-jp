@@ -13,11 +13,11 @@ ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 画像認識、画像認識アプリ、Custom Vision
 ms.openlocfilehash: ab747ad5e7b9362e9c587741198a0191c032b124
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91596896"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018373"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>クイックスタート: クイックスタート: Custom Vision の Web サイトでオブジェクト検出器を構築する
 
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 
-Web ブラウザーで、 [Custom Vision の Web ページ](https://customvision.ai)に移動し、 __[サインイン]__ を選択します。 Azure portal にサインインしたのと同じアカウントでサインインします。
+Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.ai)に移動し、 __[サインイン]__ を選択します。 Azure portal にサインインしたのと同じアカウントでサインインします。
 
 ![サインイン ページの画像](./media/browser-home.png)
 
@@ -60,7 +60,7 @@ Web ブラウザーで、 [Custom Vision の Web ページ](https://customvision
     |__棚の製品__|棚で製品を検出して分類するために最適化されています。|
     |__コンパクト ドメイン__| モバイル デバイス上でのリアルタイムのオブジェクト検出の制約に最適化されています。 コンパクト ドメインで生成されたモデルは、ローカルで実行するためにエクスポートできます。|
 
-1. 最後に、 __[プロジェクトの作成]__ を選択します。
+1. 最後に、__[プロジェクトの作成]__ を選択します。
 
 ## <a name="choose-training-images"></a>トレーニング画像を選択する
 
@@ -70,7 +70,7 @@ Web ブラウザーで、 [Custom Vision の Web ページ](https://customvision
 
 このセクションでは、検出器のトレーニングに役立つように、画像をアップロードして手動でタグ付けします。 
 
-1. 画像を追加するには、 __画像の追加__ ボタンをクリックし、 __ローカル画像の参照__ を選択します。 __[開く]__ を選択して、画像をアップロードします。
+1. 画像を追加するには、__画像の追加__ ボタンをクリックし、__ローカル画像の参照__ を選択します。 __[開く]__ を選択して、画像をアップロードします。
 
     ![[Add Images]\(画像の追加) コントロールは左上に表示され、下部中央にもボタンとして表示されます。](./media/get-started-build-detector/add-images.png)
 
@@ -86,11 +86,11 @@ Web ブラウザーで、 [Custom Vision の Web ページ](https://customvision
 
 ## <a name="train-the-detector"></a>検出器をトレーニングする
 
-検出器モデルをトレーニングするには、 **[トレーニング]** ボタンを選択します。 検出器は、現在のすべての画像とタグを使用し、タグ付けされた各オブジェクトを識別するモデルを作成します。
+検出器モデルをトレーニングするには、**[トレーニング]** ボタンを選択します。 検出器は、現在のすべての画像とタグを使用し、タグ付けされた各オブジェクトを識別するモデルを作成します。
 
 ![Web ページのヘッダー ツールバーの右上にあるトレーニングのボタン](./media/getting-started-build-a-classifier/train01.png)
 
-トレーニング プロセスの所要時間は、わずか数分間のはずです。 この時間の間、 **[パフォーマンス]** タブにトレーニング プロセスに関する情報が表示されます。
+トレーニング プロセスの所要時間は、わずか数分間のはずです。 この時間の間、**[パフォーマンス]** タブにトレーニング プロセスに関する情報が表示されます。
 
 ![メイン セクションにトレーニング ダイアログが表示されたブラウザー ウィンドウ](./media/get-started-build-detector/training.png)
 

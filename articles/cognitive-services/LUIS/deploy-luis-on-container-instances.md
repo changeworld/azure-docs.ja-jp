@@ -10,16 +10,16 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: aahi
-ms.openlocfilehash: 08af17106846a0f5f7a0ccc2b01da1b2e15c1143
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edc2ad0f895b8a1bb6448ce1cdf79b1b2ce83951
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80879212"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95997199"
 ---
 # <a name="deploy-the-language-understanding-luis-container-to-azure-container-instances"></a>Language Understanding (LUIS) コンテナーを Azure Container インスタンスにデプロイする
 
-Cognitive Services [LUIS](luis-container-howto.md) コンテナーを Azure [Container インスタンス](https://docs.microsoft.com/azure/container-instances/)にデプロイする方法について説明します。 この手順では、Anomaly Detector リソースの作成方法を実演します。 次に、関連するコンテナー イメージをプルする方法について説明します。 最後に、ブラウザーからこの 2 つのオーケストレーションを行う機能を取り上げます。 コンテナーを使用することで、開発者の関心をインフラストラクチャの管理から切り離し、アプリケーション開発に専念させることができます。
+Cognitive Services [LUIS](luis-container-howto.md) コンテナーを Azure [Container インスタンス](../../container-instances/index.yml)にデプロイする方法について説明します。 この手順では、Anomaly Detector リソースの作成方法を実演します。 次に、関連するコンテナー イメージをプルする方法について説明します。 最後に、ブラウザーからこの 2 つのオーケストレーションを行う機能を取り上げます。 コンテナーを使用することで、開発者の関心をインフラストラクチャの管理から切り離し、アプリケーション開発に専念させることができます。
 
 [!INCLUDE [Prerequisites](../containers/includes/container-prerequisites.md)]
 

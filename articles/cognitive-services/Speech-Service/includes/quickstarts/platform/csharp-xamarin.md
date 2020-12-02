@@ -12,11 +12,11 @@ ms.date: 10/15/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3f441e2f89d0f85a7a4e2fff5490fed5e2879506
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425147"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188228"
 ---
 このガイドでは、[Xamarin](/xamarin/get-started/what-is-xamarin) 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。これは、.NET を使用する iOS、Android、および Windows 用の最新の高パフォーマンス アプリケーションを構築するためのオープン ソース プラットフォームです。 このパッケージ名の使用を自分で開始する場合は、NuGet コンソールで `Install-Package Microsoft.CognitiveServices.Speech` を実行します。
 

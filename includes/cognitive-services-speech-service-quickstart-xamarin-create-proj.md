@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: 6d20df031633df4642ce9fb5cbbc469fd7f0a5da
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097237"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188499"
 ---
 Xamarin を使用したクロスプラットフォーム モバイル アプリ .NET 開発用の Visual Studio プロジェクトを作成するには、次のことを行う必要があります。
 - Visual Studio の開発オプションを設定する。
@@ -44,7 +44,7 @@ Xamarin を使用したクロスプラットフォーム モバイル アプリ 
 
    ![Visual Studio で新しいプロジェクトを構成する方法を示すスクリーンショット。](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-configure-your-new-project.png)
 
-1. **[プロジェクト名]** に「 *helloworld* 」と入力します。
+1. **[プロジェクト名]** に「*helloworld*」と入力します。
 
 1. **[場所]** で、ご自分のプロジェクトの保存先フォルダーに移動して選択するか、フォルダーを作成します。
 
@@ -60,7 +60,7 @@ Xamarin を使用したクロスプラットフォーム モバイル アプリ 
 
    ![helloworld プロジェクト - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-helloworld.png)
 
-次に、ターゲット プラットフォーム アーキテクチャとスタートアップ プロジェクトを選択します。 Visual Studio ツール バーの **[ソリューション プラットフォーム]** ドロップダウン ボックスを見つけます。 (表示されない場合は、 **[表示]**  >  **[ツール バー]**  >  **[標準]** の順に選択すると、 **[ソリューション プラットフォーム]** を含んだツール バーが表示されます)。64 ビット Windows を実行している場合は、ドロップダウン ボックスで **[x64]** を選択します。 64 ビット Windows では 32 ビット アプリケーションも実行できるため、必要に応じて **[x86]** を選択してもかまいません。 **[Start-up Projects]\(スタートアップ プロジェクト\)** ドロップダウン ボックスで、 **helloworld.UWP (ユニバーサル Windows)** を設定します。
+次に、ターゲット プラットフォーム アーキテクチャとスタートアップ プロジェクトを選択します。 Visual Studio ツール バーの **[ソリューション プラットフォーム]** ドロップダウン ボックスを見つけます。 (表示されない場合は、 **[表示]**  >  **[ツール バー]**  >  **[標準]** の順に選択すると、 **[ソリューション プラットフォーム]** を含んだツール バーが表示されます)。64 ビット Windows を実行している場合は、ドロップダウン ボックスで **[x64]** を選択します。 64 ビット Windows では 32 ビット アプリケーションも実行できるため、必要に応じて **[x86]** を選択してもかまいません。 **[Start-up Projects]\(スタートアップ プロジェクト\)** ドロップダウン ボックスで、**helloworld.UWP (ユニバーサル Windows)** を設定します。
 
 ### <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
@@ -74,14 +74,14 @@ Xamarin を使用したクロスプラットフォーム モバイル アプリ 
 
 1. **[パッケージ ソース]** で nuget.org を選択します。
 
-1. **検索** ボックスに「 *Microsoft.CognitiveServices.Speech* 」と入力します。 このパッケージが検索結果に表示されたらそれを選択します。
+1. **検索** ボックスに「*Microsoft.CognitiveServices.Speech*」と入力します。 このパッケージが検索結果に表示されたらそれを選択します。
 
    ![Microsoft.CognitiveServices.Speech パッケージが強調表示されているスクリーンショット。](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-nuget-install.png)
 
    > [!NOTE] 
    > `Microsoft.CognitiveServices.Speech` NuGet 内の iOS ライブラリでは、ビットコードが有効になっていません。 アプリケーションでビットコード ライブラリを有効にする必要がある場合は、特に iOS プロジェクト用に `Microsoft.CognitiveServices.Speech.Xamarin.iOS` NuGet を使用します。
 
-1. 検索結果の横のパッケージ状態ウィンドウで、すべてのプロジェクトを選択します: **helloworld** 、 **helloworld.Android** 、 **helloworld.iOS** 、および **helloworld.UWP** 。
+1. 検索結果の横のパッケージ状態ウィンドウで、すべてのプロジェクトを選択します: **helloworld**、**helloworld.Android**、**helloworld.iOS**、および **helloworld.UWP**。
 
 1. **[インストール]** を選択します。
 

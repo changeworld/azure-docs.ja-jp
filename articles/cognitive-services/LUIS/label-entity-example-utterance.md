@@ -6,11 +6,11 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: ffbaa2e40d5924ba61e548398e63295cf7dba2b0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303728"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019737"
 ---
 # <a name="label-machine-learning-entity-in-an-example-utterance"></a>発話例内の機械学習エンティティにラベルを付ける
 
@@ -24,7 +24,7 @@ ms.locfileid: "91303728"
 
 発話内のエンティティの例にラベルを付けるには、その発話の意図を選択します。
 
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の **サブスクリプション** と **作成リソース** を選択して、その作成リソースに割り当てられているアプリを表示します。
 1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
 1. エンティティを抽出するためにラベル付けする発話例が含まれている意図を選択します。
 1. ラベルを付けるテキストを選択し、エンティティを選択します。
@@ -37,9 +37,9 @@ ms.locfileid: "91303728"
 
 ## <a name="label-with-the-entity-palette-visible"></a>エンティティ パレットが表示されているラベル
 
-[エンティティについてスキーマを計画](luis-how-plan-your-app.md)した後は、ラベル付け中に**エンティティ パレット**を表示したままにしておきます。 **エンティティ パレット**は、どのエンティティを抽出するかについての計画のリマインダーになります。
+[エンティティについてスキーマを計画](luis-how-plan-your-app.md)した後は、ラベル付け中に **エンティティ パレット** を表示したままにしておきます。 **エンティティ パレット** は、どのエンティティを抽出するかについての計画のリマインダーになります。
 
-**エンティティ パレット**にアクセスするには、発話例の一覧の上のコンテキスト ツールバーで、 **@** 記号を選択します。
+**エンティティ パレット** にアクセスするには、発話例の一覧の上のコンテキスト ツールバーで、 **@** 記号を選択します。
 
 > [!div class="mx-imgBorder"]
 > ![意図の詳細ページのエンティティ パレットのスクリーンショット。](media/label-utterances/entity-palette-from-tool-bar.png)
@@ -66,7 +66,7 @@ ms.locfileid: "91303728"
 
 ## <a name="labeling-entity-roles"></a>エンティティのロールをラベル付けする
 
-エンティティのロールのラベル付けは、**エンティティ パレット**を使用して行います。
+エンティティのロールのラベル付けは、**エンティティ パレット** を使用して行います。
 
 1. [Intent detail]\(意図の詳細\) ページのコンテキスト ツール バーから **[Entity palette]\(エンティティ パレット\)** を選択します。
 1. エンティティ パレットが開いたら、エンティティの一覧からエンティティを選択します。

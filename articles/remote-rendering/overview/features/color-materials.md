@@ -6,11 +6,11 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 26ac1714330bba06c01d33b47105f04c600c7729
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555109"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024097"
 ---
 # <a name="color-materials"></a>色素材
 
@@ -39,7 +39,7 @@ ms.locfileid: "94555109"
 
 * **TransparencyWritesDepth:** 素材に TransparencyWritesDepth フラグが設定されていて、その素材が透明である場合、その素材を使用した物体も、最終的な深度バッファーに寄与します。 次のセクションの色素材プロパティ *transparencyMode* を参照してください。 実際のユース ケースで、完全に透明なシーンの [Late Stage Reprojection](late-stage-reprojection.md) の現実感を高める必要がある場合は、この機能を有効にすることをお勧めします。 不透明と透明が混在するシーンでは、この設定によって、非現実的な再投影動作や再投影アーティファクトが生じることがあります。 このため、一般的なユース ケースにおいて推奨される既定の設定は、このフラグを無効にすることです。 書き込まれる深度値は、カメラに最も近い物体のピクセルごとの深度レイヤーから取得されます。
 
-* **FresnelEffect:** この素材フラグを使用すると、個々のマテリアルに対して付加的な[フレネル効果](../../overview/features/fresnel-effect.md)を有効にすることができます。 この効果の外観は、以下で説明する、他のフレネル パラメーターによって制御されます。 
+* **FresnelEffect:** この素材フラグを使用すると、個々のマテリアルに対して付加的な [フレネル効果](../../overview/features/fresnel-effect.md)を有効にすることができます。 この効果の外観は、以下で説明する、他のフレネル パラメーターによって制御されます。 
 
 * **FresnelEffectColor:** この素材に使用されるフレネルの色。 この素材に対してフレネル効果ビットが設定されている場合にのみ重要です (上記を参照)。 このプロパティによって、フレネル光沢の基本色が制御されます (詳細な説明は「[フレネル効果](../../overview/features/fresnel-effect.md)」を参照してください)。 現在は、rgb チャネル値のみが重要であり、アルファ値は無視されます。
 

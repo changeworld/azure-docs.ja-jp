@@ -5,11 +5,11 @@ ms.service: cognitive-services
 ms.date: 10/26/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 0c6c80849f48cb4f859bcbaaeb4f072eb575ba74
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625201"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021302"
 ---
 このガイドでは、Node.js 用の Custom Vision クライアント ライブラリを使用して物体検出モデルを構築する際の足がかりとして役立つ手順とサンプル コードを紹介します。 プロジェクトを作成し、タグを追加し、プロジェクトをトレーニングして、プロジェクトの予測エンドポイント URL を使用してプログラムでテストします。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
 

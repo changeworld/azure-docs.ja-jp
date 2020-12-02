@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: 967861363d5056a5a466aa88840cda2aafbeb86b
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097169"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188483"
 ---
 C++ デスクトップ開発用の Visual Studio プロジェクトを作成するためには、Visual Studio 開発オプションの設定、プロジェクトの作成、ターゲット アーキテクチャの選択、Speech SDK のインストールが必要となります。
 
@@ -17,7 +17,7 @@ C++ デスクトップ開発用の Visual Studio プロジェクトを作成す�
 
 最初に、C++ デスクトップ開発向けに Visual Studio を正しく設定します。
 
-1. Visual Studio 2019 を開いて**スタート** ウィンドウを表示します。
+1. Visual Studio 2019 を開いて **スタート** ウィンドウを表示します。
 
    ![Visual Studio 2019 の "スタート" ウィンドウを示すスクリーンショット。](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png)
 
@@ -59,7 +59,7 @@ C++ デスクトップ開発用の Visual Studio プロジェクトを作成す�
 
 最後に、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)をインストールし、自分のプロジェクト内の Speech SDK を参照します。
 
-1. **ソリューション エクスプローラー**でソリューションを右クリックし、 **[ソリューションの NuGet パッケージの管理]** を選択して **[NuGet - ソリューション]** ウィンドウに移動します。
+1. **ソリューション エクスプローラー** でソリューションを右クリックし、 **[ソリューションの NuGet パッケージの管理]** を選択して **[NuGet - ソリューション]** ウィンドウに移動します。
 
 1. **[参照]** を選択します。
 

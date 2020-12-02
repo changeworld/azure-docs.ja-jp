@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 282b8e1292bf1fe24655691fbbeb876d871bc31e
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 9ef4378602403afccc7c02e4bacb50e851d74f2a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761347"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96004001"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>クイック スタート:cURL で Form Recognizer REST API を使用してレシートのデータを抽出する
 
@@ -34,32 +34,32 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="analyze-a-receipt"></a>レシートを分析する
 
-レシートの分析を開始するには、下の cURL コマンドを使用して **[Analyze Receipt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync)** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
+レシートの分析を開始するには、下の cURL コマンドを使用して **[Analyze Receipt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync)** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
 
 1. `<Endpoint>` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
 1. `<your receipt URL>` を、レシートの画像の URL アドレスに置き換えます。
 1. `<subscription key>` を、前の手順からコピーしたサブスクリプション キーに置き換えます。
 
 ```bash
-curl -i -X POST "https://<Endpoint>/formrecognizer/v2.1-preview.1/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \"<your receipt URL>\"}"
+curl -i -X POST "https://<Endpoint>/formrecognizer/v2.1-preview.2/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \"<your receipt URL>\"}"
 ```
 
 **Operation-Location** ヘッダーを含む `202 (Success)` 応答を受信します。 このヘッダーの値に含まれる操作 ID を使用して、非同期操作の状態のクエリを実行し、結果を取得できます。 次の例では、`operations/` の後ろの文字列が操作 ID です。
 
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-receipt-results"></a>レシートの結果を取得する
 
-**Analyze Receipt** API を呼び出した後に **[Get Analyze Receipt Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeReceiptResult)** API を呼び出して、操作の状態と抽出されたデータを取得します。 コマンドを実行する前に、次の変更を行います。
+**Analyze Receipt** API を呼び出した後に **[Get Analyze Receipt Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeReceiptResult)** API を呼び出して、操作の状態と抽出されたデータを取得します。 コマンドを実行する前に、次の変更を行います。
 
 1. `<Endpoint>` を、Form Recognizer サブスクリプション キーで取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
 1. `<operationId>` を、前の手順の操作 ID に置き換えます。
 1. `<subscription key>` は、実際のサブスクリプション キーで置き換えてください。
 
 ```bash
-curl -X GET "https://<Endpoint>/formrecognizer/v2.1-preview.1/prebuilt/receipt/analyzeResults/<operationId>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
+curl -X GET "https://<Endpoint>/formrecognizer/v2.1-preview.2/prebuilt/receipt/analyzeResults/<operationId>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
 ### <a name="examine-the-response"></a>結果の確認
@@ -402,4 +402,4 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
 このクイックスタートでは、cURL で Form Recognizer REST API を使用して、レシートの内容を抽出しました。 次に、Form Recognizer API の詳細を把握するためにリファレンス ドキュメントを参照します。
 
 > [!div class="nextstepaction"]
-> [REST API リファレンス ドキュメント](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync)
+> [REST API リファレンス ドキュメント](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync)

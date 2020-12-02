@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: aahi
 ms.openlocfilehash: cedcf8a3fcd656c4af0ca7493c598791d35d20d9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130563"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996129"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Docker Compose を使用して複数のコンテナーをデプロイする
 
@@ -39,7 +39,7 @@ ms.locfileid: "93130563"
 
 ## <a name="docker-compose-file"></a>Docker Compose ファイル
 
-YAML ファイルには、デプロイされるすべてのサービスが定義されています。 これらのサービスは、`DockerFile` または既存のコンテナー イメージのどちらかに依存します。 この例では、2 つのプレビュー イメージを使用します。 次の YAML ファイルをコピーして貼り付け、 *docker-compose.yaml* という名前で保存します。 ファイルで適切な **apikey** 、 **billing** 、および **EndpointUri** の値を指定します。
+YAML ファイルには、デプロイされるすべてのサービスが定義されています。 これらのサービスは、`DockerFile` または既存のコンテナー イメージのどちらかに依存します。 この例では、2 つのプレビュー イメージを使用します。 次の YAML ファイルをコピーして貼り付け、*docker-compose.yaml* という名前で保存します。 ファイルで適切な **apikey**、**billing**、および **EndpointUri** の値を指定します。
 
 ```yaml
 version: '3.7'
@@ -73,16 +73,16 @@ services:
 ```
 
 > [!IMPORTANT]
-> ホスト マシン上に、 **volumes** ノード以下に指定されているディレクトリを作成します。 ボリューム バインドを使用してイメージをマウントする前にディレクトリが存在している必要があるので、この方法が必要です。
+> ホスト マシン上に、**volumes** ノード以下に指定されているディレクトリを作成します。 ボリューム バインドを使用してイメージをマウントする前にディレクトリが存在している必要があるので、この方法が必要です。
 
 ## <a name="start-the-configured-docker-compose-services"></a>構成された Docker Compose サービスを開始する
 
 Docker Compose ファイルを使用すると、定義されたサービスのライフ サイクルのすべての段階 (サービスの開始、停止、再構築、サービス状態の表示、ログのストリーミング) を管理できます。 プロジェクト ディレクトリ (docker-compose.yaml ファイルがある場所) からコマンドライン インターフェイスを開きます。
 
 > [!NOTE]
-> エラーを避けるために、ホスト マシンと Docker エンジンがドライブを適切に共有していることを確認します。 たとえば、 *E:\publicpreview* が *docker-compose.yaml* ファイルのディレクトリとして使用されている場合、ドライブ **E** を Docker と共有します。
+> エラーを避けるために、ホスト マシンと Docker エンジンがドライブを適切に共有していることを確認します。 たとえば、*E:\publicpreview* が *docker-compose.yaml* ファイルのディレクトリとして使用されている場合、ドライブ **E** を Docker と共有します。
 
-コマンドライン インターフェイスから次のコマンドを実行して、 *docker-compose.yaml* ファイルに定義されているすべてのサービスを開始 (または再開) します。
+コマンドライン インターフェイスから次のコマンドを実行して、*docker-compose.yaml* ファイルに定義されているすべてのサービスを開始 (または再開) します。
 
 ```console
 docker-compose up
@@ -165,7 +165,7 @@ IMAGE ID            REPOSITORY                                                  
 
 ### <a name="test-containers"></a>テスト コンテナー
 
-ホスト コンピューター上でブラウザーを開き、 http://localhost:5021/swagger/index.html のように、 *docker-compose.yaml* ファイルで指定されたポートを使用して **localhost** にアクセスします。 たとえば、API の **[使ってみる]** 機能を使用して、Form Recognizer エンドポイントをテストできます。 両方のコンテナーの swagger ページを使用およびテストできます。
+ホスト コンピューター上でブラウザーを開き、 http://localhost:5021/swagger/index.html のように、*docker-compose.yaml* ファイルで指定されたポートを使用して **localhost** にアクセスします。 たとえば、API の **[使ってみる]** 機能を使用して、Form Recognizer エンドポイントをテストできます。 両方のコンテナーの swagger ページを使用およびテストできます。
 
 ![Form Recognizer コンテナー](media/form-recognizer-swagger-page.png)
 

@@ -1,20 +1,20 @@
 ---
 title: クイック スタート:iOS アプリの作成
 description: Swift または Objective-C のプログラムで Azure Spatial Anchors を使用して iOS アプリを作成する方法について説明します。
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2df66979d1e8f400f2630f5e531cd201244fdc6d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4434118313989eb8bc70f1d44e977b2df3633050
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87809988"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96009077"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>クイック スタート:Azure Spatial Anchors を使用する iOS アプリを Swift または Objective-C で作成する
 
@@ -117,7 +117,7 @@ open ./SampleObjC.xcworkspace
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>アプリを iOS デバイスにデプロイする
 
-iOS デバイスを Mac に接続し、**アクティブ スキーム**を iOS デバイスに設定します。
+iOS デバイスを Mac に接続し、**アクティブ スキーム** を iOS デバイスに設定します。
 
 ![デバイスを選択する](./media/get-started-ios/select-device.png)
 

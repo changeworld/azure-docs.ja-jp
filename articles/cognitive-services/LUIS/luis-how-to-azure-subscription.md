@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 07a274bd4ac227b6260f7891b24dad0eacdfb4f7
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: a71c1a0df1a72e3831fa54a041539f62b38a0aca
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561527"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95999911"
 ---
 # <a name="create-luis-resources"></a>LUIS リソースの作成
 
@@ -176,7 +176,7 @@ LUIS 予測ランタイム エンドポイント キーを表示できるユー�
 
 ### <a name="create-resources-in-the-azure-cli"></a>Azure CLI でリソースを作成する
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用し、各リソースを個別に作成します。
+[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) を使用し、各リソースを個別に作成します。
 
 リソース `kind`:
 

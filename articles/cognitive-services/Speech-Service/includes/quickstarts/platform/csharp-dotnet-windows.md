@@ -12,11 +12,11 @@ ms.date: 10/15/2020
 ms.author: erhopf
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: f63c97fd23d56ff508de8d5953eefac6b15ae1aa
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097067"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188451"
 ---
 このガイドでは、.NET Framework (Windows) 用の [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。 このパッケージ名の使用を自分で開始する場合は、NuGet コンソールで `Install-Package Microsoft.CognitiveServices.Speech` を実行します。
 
@@ -30,7 +30,7 @@ ms.locfileid: "92097067"
 
 ## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>Visual Studio プロジェクトを作成して Speech SDK をインストールする
 
-[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)をインストールして、コード内で参照できるようにする必要があります。 そのためには、必要に応じて最初に **helloworld** プロジェクトを作成します。 **.NET デスクトップ開発**ワークロードを使用できるプロジェクトが既にある場合は、そのプロジェクトを使用し、「[NuGet パッケージ マネージャーを使用して Speech SDK をインストールする](#use-nuget-package-manager-to-install-the-speech-sdk)」に進んでください。
+[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)をインストールして、コード内で参照できるようにする必要があります。 そのためには、必要に応じて最初に **helloworld** プロジェクトを作成します。 **.NET デスクトップ開発** ワークロードを使用できるプロジェクトが既にある場合は、そのプロジェクトを使用し、「[NuGet パッケージ マネージャーを使用して Speech SDK をインストールする](#use-nuget-package-manager-to-install-the-speech-sdk)」に進んでください。
 
 ### <a name="create-helloworld-project"></a>helloworld プロジェクトを作成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "92097067"
 
 1. **[新しいプロジェクトの作成]** ウィンドウで、 **[コンソール アプリ (.NET Framework)]** を選択してから、 **[次へ]** を選択します。
 
-1. **[新しいプロジェクトの構成]** ウィンドウの **[プロジェクト名]** に「*helloworld*」と入力し、**保存先**となるディレクトリのパスを選択するか作成して、 **[作成]** を選択します。
+1. **[新しいプロジェクトの構成]** ウィンドウの **[プロジェクト名]** に「*helloworld*」と入力し、**保存先** となるディレクトリのパスを選択するか作成して、 **[作成]** を選択します。
 
 1. Visual Studio のメニュー バーから、 **[ツール]**  >  **[ツールと機能を取得]** の順に選択して Visual Studio インストーラーを開き、 **[変更中]** ダイアログ ボックスを表示します。
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: df9dbdf61dbc7d83f1cf74871ddc864488ed9d47
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097220"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188227"
 ---
 ユニバーサル Windows プラットフォーム (UWP) 開発用の Visual Studio プロジェクトを作成するためには、Visual Studio 開発オプションの設定、プロジェクトの作成、ターゲット アーキテクチャの選択、オーディオ キャプチャの設定、Speech SDK のインストールが必要となります。
 
@@ -17,7 +17,7 @@ ms.locfileid: "92097220"
 
 最初に、UWP 開発向けに Visual Studio を正しく設定します。
 
-1. Visual Studio 2019 を開いて**スタート** ウィンドウを表示します。
+1. Visual Studio 2019 を開いて **スタート** ウィンドウを表示します。
 
    ![[スタート] ウィンドウを示すスクリーンショット。[コードなしで続行] 操作が強調表示されています。](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-start-window.png)
 
@@ -66,13 +66,13 @@ ms.locfileid: "92097220"
 次に、ターゲット プラットフォーム アーキテクチャを選択します。 Visual Studio ツール バーの **[ソリューション プラットフォーム]** ドロップダウン ボックスを見つけます。 (表示されない場合は、 **[表示]**  >  **[ツール バー]**  >  **[標準]** の順に選択すると、 **[ソリューション プラットフォーム]** を含んだツール バーが表示されます。)64 ビット Windows を実行している場合は、ドロップダウン ボックスで **[x64]** を選択します。 64 ビット Windows でも 32 ビット アプリケーションを実行できるため、必要に応じて **[x86]** を選択してもかまいません。
 
 > [!NOTE]
-> Speech SDK は、すべての Intel 互換プロセッサをサポートしていますが、ARM プロセッサの場合は **x64 バージョンのみ**です。
+> Speech SDK は、すべての Intel 互換プロセッサをサポートしていますが、ARM プロセッサの場合は **x64 バージョンのみ** です。
 
 ### <a name="set-up-audio-capture"></a>オーディオ キャプチャを設定する
 
 プロジェクトでオーディオ入力をキャプチャできるようにします。
 
-1. **ソリューション エクスプローラー**で **[Package.appxmanifest]** をダブルクリックしてパッケージ アプリケーション マニフェストを開きます。
+1. **ソリューション エクスプローラー** で **[Package.appxmanifest]** をダブルクリックしてパッケージ アプリケーション マニフェストを開きます。
 
 1. **[機能]** タブを選択します。
 
@@ -86,7 +86,7 @@ ms.locfileid: "92097220"
 
 最後に、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)をインストールし、自分のプロジェクト内の Speech SDK を参照します。
 
-1. **ソリューション エクスプローラー**でソリューションを右クリックし、 **[ソリューションの NuGet パッケージの管理]** を選択して **[NuGet - ソリューション]** ウィンドウに移動します。
+1. **ソリューション エクスプローラー** でソリューションを右クリックし、 **[ソリューションの NuGet パッケージの管理]** を選択して **[NuGet - ソリューション]** ウィンドウに移動します。
 
 1. **[参照]** を選択します。
 
