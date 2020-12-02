@@ -4,16 +4,16 @@ description: Azure の Analysis Services サーバーに接続してデータを
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 93b1e9a2ea052a39e891cf9084b632f434c341df
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 4abe1e9c6f9d7b62792936f816b9c46a937be41a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013697"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499426"
 ---
 # <a name="connecting-to-servers"></a>サーバーへの接続
 
@@ -21,7 +21,7 @@ ms.locfileid: "92013697"
 
 ## <a name="client-libraries"></a>クライアント ライブラリ
 
-[最新のクライアント ライブラリを入手する](/analysis-services/client-libraries?view=azure-analysis-services-current)
+[最新のクライアント ライブラリを入手する](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true)
 
 サーバーへの接続全般に言えることですが、Analysis Services サーバーに接続してデータをやり取りするためには、最新の AMO、ADOMD.NET、OLEDB クライアント ライブラリが必要となります。 SSMS、Visual Studio、Excel 2016 以降、および Power BI では、毎月のリリースにより最新のクライアント ライブラリがインストールまたは更新されます。 ただし、場合によっては、アプリケーションの最新バージョンがないこともあります。 たとえば、ポリシーによって更新が先延ばしされたり、Microsoft 365 の更新プログラムが段階的提供チャネルで提供されたりするケースがそれに該当します。
 
@@ -79,9 +79,9 @@ Analysis Services サーバーを Azure に作成するとき、一意の名前�
 
 ## <a name="connect-as-a-linked-server-from-sql-server"></a>SQL Server からリンク サーバーとして接続する
 
-SQL Server は、MSOLAP をデータ ソース プロバイダーとして指定することによって、[リンク サーバー](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine)として Azure Analysis Services リソースに接続できます。 リンク サーバー接続を構成する前に、必ず最新の [MSOLAP クライアント ライブラリ](/analysis-services/client-libraries?view=azure-analysis-services-current) (プロバイダー) をインストールしてください。 
+SQL Server は、MSOLAP をデータ ソース プロバイダーとして指定することによって、[リンク サーバー](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine)として Azure Analysis Services リソースに接続できます。 リンク サーバー接続を構成する前に、必ず最新の [MSOLAP クライアント ライブラリ](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true) (プロバイダー) をインストールしてください。 
 
-Azure Analysis Services へのリンク サーバー接続の場合、SQL Server プロセスの外で MSOLAP プロバイダーのインスタンスを作成する必要があります。 リンク サーバー オプションを構成する際は、 **[InProcess 許可]** オプションが**選択されていない**ことを確認してください。
+Azure Analysis Services へのリンク サーバー接続の場合、SQL Server プロセスの外で MSOLAP プロバイダーのインスタンスを作成する必要があります。 リンク サーバー オプションを構成する際は、 **[InProcess 許可]** オプションが **選択されていない** ことを確認してください。
 
 **[InProcess 許可]** が選択されていて、SQL Server プロセス内でプロバイダーのインスタンスが作成された場合、次のエラーが返されます。
 

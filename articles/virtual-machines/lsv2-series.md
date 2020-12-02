@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: dd755e1bc220d61aa540a0e7da9e3f174bde9d76
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: ba971919037230cb6c09e627fde448647063b5b9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91652926"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498423"
 ---
 # <a name="lsv2-series"></a>Lsv2 シリーズ
 
@@ -51,7 +51,7 @@ Lsv2 シリーズは、2.55 GHz の全コア ブーストと 3.0 GHz の最大�
 
 <sup>4</sup> Lsv2 ワークロードに役立たないため、Lsv2 シリーズの VM ではデータ ディスク用のホスト キャッシュを提供しません。
 
-<sup>5</sup> Lsv2 シリーズの VM では、一度に最大 30 分間、ディスク パフォーマンスを[バースト](linux/disk-bursting.md)できます。 
+<sup>5</sup> Lsv2 シリーズの VM では、一度に最大 30 分間、ディスク パフォーマンスを[バースト](./disk-bursting.md)できます。 
 
 <sup>6</sup> vCPU が 64 個を超える VM には、次のサポートされているゲスト オペレーティング システムのいずれかが必要です。
 
@@ -70,7 +70,7 @@ Lsv2 シリーズは、2.55 GHz の全コア ブーストと 3.0 GHz の最大�
 - ストレージ容量は GiB (1024^3 バイト) 単位で示されています。 GB (1000^3 バイト) 単位のディスクと GiB (1024^3 バイト) 単位のディスクを比較する場合は、GiB 単位の方が容量の数値が小さく見えることに注意してください。 たとえば、1023 GiB = 1098.4 GB です。
 - ディスク スループットの測定単位は、1 秒あたりの入力/出力操作数 (IOPS) および MBps です (MBps = 10^6 バイト/秒)。
 - VM のパフォーマンスを最適にするには、データ ディスクの数を vCPU あたり 2 ディスクに制限する必要があります。
-- **想定ネットワーク帯域幅**は、すべての宛先について、すべての NIC で [VM の種類ごとに割り当てられた最大集約帯域幅](../virtual-network/virtual-machine-network-throughput.md)です。 上限は保証されませんが、目的のアプリケーションに適した VM の種類を選択するためのガイダンスを示しています。 実際のネットワークのパフォーマンスは、ネットワークの輻輳、アプリケーションの負荷、ネットワーク設定など、さまざまな要因に左右されます。 ネットワーク スループットの最適化については、[Windows および Linux のネットワーク スループットの最適化](../virtual-network/virtual-network-optimize-network-bandwidth.md)に関する記事を参照してください。 Linux または Windows で想定ネットワーク パフォーマンスを実現するには、特定のバージョンを選択するか、VM を最適化することが必要になることがあります。 詳細については、[仮想マシンのスループットを確実にテストする方法](../virtual-network/virtual-network-bandwidth-testing.md)に関する記事を参照してください。
+- **想定ネットワーク帯域幅** は、すべての宛先について、すべての NIC で [VM の種類ごとに割り当てられた最大集約帯域幅](../virtual-network/virtual-machine-network-throughput.md)です。 上限は保証されませんが、目的のアプリケーションに適した VM の種類を選択するためのガイダンスを示しています。 実際のネットワークのパフォーマンスは、ネットワークの輻輳、アプリケーションの負荷、ネットワーク設定など、さまざまな要因に左右されます。 ネットワーク スループットの最適化については、[Windows および Linux のネットワーク スループットの最適化](../virtual-network/virtual-network-optimize-network-bandwidth.md)に関する記事を参照してください。 Linux または Windows で想定ネットワーク パフォーマンスを実現するには、特定のバージョンを選択するか、VM を最適化することが必要になることがあります。 詳細については、[仮想マシンのスループットを確実にテストする方法](../virtual-network/virtual-network-bandwidth-testing.md)に関する記事を参照してください。
 
 
 ## <a name="other-sizes-and-information"></a>その他のサイズと情報

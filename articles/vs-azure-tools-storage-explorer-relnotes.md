@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: a53f947eb2a44cc8773be8ee2b2bd03ca899be22
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7c250f1351d83d213c5c7af5b00d7a648c5d8bc6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95521004"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499664"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer のリリース ノート
 
@@ -559,7 +559,7 @@ ms.locfileid: "95521004"
         
 ### <a name="new"></a>新規
 
-* Storage Explorer を使用して、[RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 経由で BLOB データにアクセスできるようになりました。 サインインしている場合に、自分のストレージ アカウントのキーを Storage Explorer が取得できないと、データ操作時の認証に OAuth トークンが使用されます。
+* Storage Explorer を使用して、[RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 経由で BLOB データにアクセスできるようになりました。 サインインしている場合に、自分のストレージ アカウントのキーを Storage Explorer が取得できないと、データ操作時の認証に OAuth トークンが使用されます。
 * Storage Explorer は ADLS Gen2 ストレージ アカウントをサポートするようになりました。 ストレージ アカウントに対して階層型名前空間が有効になっていることを Storage Explorer が検出すると、ストレージ アカウントの名前の横に "(ADLS Gen2 プレビュー)" と表示されます。 Storage Explorer では、サインインしている場合に階層型名前空間が有効になっているかどうかや、ストレージ アカウントに名前とキーを関連付けているかどうかを検出できます。 ADLS Gen2 ストレージ アカウントでは、Storage Explorer を使用して、以下の操作を実行できます。
   * コンテナーの作成と削除
   * コンテナーのプロパティとアクセス許可の管理 (左側)
@@ -628,7 +628,7 @@ ms.locfileid: "95521004"
         
 ### <a name="new"></a>新規
 
-* Storage Explorer を使用して、[RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 経由で BLOB データにアクセスできるようになりました。 サインインしている場合に、自分のストレージ アカウントのキーを Storage Explorer が取得できないと、データ操作時の認証に OAuth トークンが使用されます。
+* Storage Explorer を使用して、[RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 経由で BLOB データにアクセスできるようになりました。 サインインしている場合に、自分のストレージ アカウントのキーを Storage Explorer が取得できないと、データ操作時の認証に OAuth トークンが使用されます。
 * Storage Explorer は ADLS Gen2 ストレージ アカウントをサポートするようになりました。 ストレージ アカウントに対して階層型名前空間が有効になっていることを Storage Explorer が検出すると、ストレージ アカウントの名前の横に "(ADLS Gen2 プレビュー)" と表示されます。 Storage Explorer では、サインインしている場合に階層型名前空間が有効になっているかどうかや、ストレージ アカウントに名前とキーを関連付けているかどうかを検出できます。 ADLS Gen2 ストレージ アカウントでは、Storage Explorer を使用して、以下の操作を実行できます。
   * コンテナーの作成と削除
   * コンテナーのプロパティとアクセス許可の管理 (左側)
@@ -683,7 +683,7 @@ ms.locfileid: "95521004"
 
 ### <a name="new"></a>新規
 
-* Storage Explorer を使用して、[RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 経由で BLOB データにアクセスできるようになりました。 サインインしている場合に、自分のストレージ アカウントのキーを Storage Explorer が取得できないと、データ操作時の認証に OAuth トークンが使用されます。
+* Storage Explorer を使用して、[RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 経由で BLOB データにアクセスできるようになりました。 サインインしている場合に、自分のストレージ アカウントのキーを Storage Explorer が取得できないと、データ操作時の認証に OAuth トークンが使用されます。
 * Storage Explorer は ADLS Gen2 ストレージ アカウントをサポートするようになりました。 ストレージ アカウントに対して階層型名前空間が有効になっていることを Storage Explorer が検出すると、ストレージ アカウントの名前の横に "(ADLS Gen2 プレビュー)" と表示されます。 Storage Explorer では、サインインしている場合に階層型名前空間が有効になっているかどうかや、ストレージ アカウントに名前とキーを関連付けているかどうかを検出できます。 ADLS Gen2 ストレージ アカウントでは、Storage Explorer を使用して、以下の操作を実行できます。
   * コンテナーの作成と削除
   * コンテナーのプロパティとアクセス許可の管理 (左側)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: a4cc6e31e49243af8fa52ac568bcbba660bcde7e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8a33e9d462f3105bfee295ac82384a38325f7c7c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842738"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498797"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure で利用できるセキュリティ サービスとテクノロジ
 
@@ -91,5 +91,5 @@ ms.locfileid: "94842738"
 | [Azure の Traffic Manager](../../traffic-manager/traffic-manager-overview.md)| グローバルな DNS ロード バランサーです。|
 | [Azure アプリケーション プロキシ](../../active-directory/manage-apps/application-proxy.md)| オンプレミスでホストされている Web アプリケーションのリモート アクセスをセキュリティで保護するための認証フロントエンドです。 |
 |[Azure Firewall](../../firewall/overview.md)|Azure Virtual Network リソースを保護するクラウドベースのマネージド ネットワーク セキュリティ サービスです。|
-|[Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md)|アプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する防御が提供されます。|
+|[Azure DDoS Protection](../../ddos-protection/ddos-protection-overview.md)|アプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する防御が提供されます。|
 |[仮想ネットワーク サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)|直接接続によって、仮想ネットワークのプライベート アドレス空間と VNet の ID が Azure サービスまで拡張されます。|

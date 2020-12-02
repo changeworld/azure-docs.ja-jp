@@ -3,19 +3,19 @@ title: Azure Data Factory の式と関数
 description: この記事では、Data Factory エンティティの作成で使用できる式と関数に関する情報を提供します。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 24347d86a99251d0bf02d5ea5cb6985df5814b29
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 3c966f0efc51a3b2fa8908e060b4031ae1ad1e50
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635186"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500021"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory の式と関数
 
@@ -57,8 +57,8 @@ ms.locfileid: "92635186"
 |----------------|------------|  
 |"\@pipeline().parameters.myString"| `foo` が文字列として返されます。|  
 |"\@{pipeline().parameters.myString}"| `foo` が文字列として返されます。|  
-|"\@pipeline().parameters.myNumber"| `42` が " *数値* " として返されます。|  
-|"\@{pipeline().parameters.myNumber}"| `42` が " *string* " として返されます。|  
+|"\@pipeline().parameters.myNumber"| `42` が "*数値*" として返されます。|  
+|"\@{pipeline().parameters.myNumber}"| `42` が "*string*" として返されます。|  
 |"Answer is: @{pipeline().parameters.myNumber}"| string `Answer is: 42` が返されます。|  
 |"\@concat('Answer is: ', string(pipeline().parameters.myNumber))"| string `Answer is: 42` が返されます。|  
 |"Answer is: \@\@{pipeline().parameters.myNumber}"| string `Answer is: @{pipeline().parameters.myNumber}` が返されます。|  
@@ -68,7 +68,7 @@ ms.locfileid: "92635186"
 ### <a name="complex-expression-example"></a>複合式の例
 次の例は、アクティビティの出力の詳細サブフィールドを参照する複雑な例を示しています。 サブフィールドと評価されるパイプライン パラメーターを参照するには、ドット (.) 演算子ではなく、[] 構文を使用します (subfield1 と subfield2 の場合と同様)
 
-@activity(' *activityName* ').output. *subfield1* . *subfield2* [pipeline().parameters. *subfield3* ]. *subfield4*
+@activity('*activityName*').output.*subfield1*.*subfield2*[pipeline().parameters.*subfield3*].*subfield4*
 
 ### <a name="a-dataset-with-a-parameter"></a>パラメーターを備えたデータセット
 次の例では、BlobDataset は **path** という名前のパラメーターを受け取ります。 その値は、`dataset().path` という式を使用して **folderPath** プロパティの値を設定するために使用されます。 
@@ -181,13 +181,13 @@ ms.locfileid: "92635186"
 | [contains](control-flow-expression-language-functions.md#contains) | コレクションに特定の項目があるかどうかを確認します。 |
 | [empty](control-flow-expression-language-functions.md#empty) | コレクションが空かどうかを調べます。 |
 | [first](control-flow-expression-language-functions.md#first) | コレクションから最初の項目を返します。 |
-| [intersection](control-flow-expression-language-functions.md#intersection) | 指定したコレクションすべてに共通する項目 " *のみ* " を含むコレクションを返します。 |
-| [join](control-flow-expression-language-functions.md#join) | 配列の " *すべて* " の項目を含み、指定された区切り記号で各項目が区切られた、文字列を返します。 |
+| [intersection](control-flow-expression-language-functions.md#intersection) | 指定したコレクションすべてに共通する項目 "*のみ*" を含むコレクションを返します。 |
+| [join](control-flow-expression-language-functions.md#join) | 配列の "*すべて*" の項目を含み、指定された区切り記号で各項目が区切られた、文字列を返します。 |
 | [last](control-flow-expression-language-functions.md#last) | コレクションから最後の項目を返します。 |
 | [length](control-flow-expression-language-functions.md#length) | 文字列または配列内の項目の数を返します。 |
-| [skip](control-flow-expression-language-functions.md#skip) | コレクションの先頭から項目を削除し、" *他のすべて* " の項目を返します。 |
+| [skip](control-flow-expression-language-functions.md#skip) | コレクションの先頭から項目を削除し、"*他のすべて*" の項目を返します。 |
 | [take](control-flow-expression-language-functions.md#take) | コレクションの先頭から項目を返します。 |
-| [union](control-flow-expression-language-functions.md#union) | 指定した複数のコレクションの " *すべての* " 項目を含む 1 つのコレクションを返します。 | 
+| [union](control-flow-expression-language-functions.md#union) | 指定した複数のコレクションの "*すべての*" 項目を含む 1 つのコレクションを返します。 | 
 
 ## <a name="logical-functions"></a>論理関数  
 
@@ -243,7 +243,7 @@ ms.locfileid: "92635186"
 | [xpath](control-flow-expression-language-functions.md#xpath) | XML で XPath (XML Path Language) 式と一致するノードまたは値を調べて、一致するノードまたは値を返します。 |
 
 ## <a name="math-functions"></a>算術関数  
- これらの関数は、 **integer** 型および **float** 型の値に使うことができます。  
+ これらの関数は、**integer** 型および **float** 型の値に使うことができます。  
 
 | 算術関数 | タスク |
 | ------------- | ---- |
@@ -298,7 +298,7 @@ add(<summand_1>, <summand_2>)
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*summand_1* >、< *summand_2*> | はい | 整数、浮動小数点数、または混合 | 加算する数値 |
+| <*summand_1*>、<*summand_2*> | はい | 整数、浮動小数点数、または混合 | 加算する数値 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -541,7 +541,7 @@ and(<expression1>, <expression2>)
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression1* >, < *expression2*> | はい | Boolean | 調べる式 |
+| <*expression1*>, <*expression2*> | はい | Boolean | 調べる式 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -599,7 +599,7 @@ array('<value>')
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| [< *value* >] | Array | 指定した 1 つの入力を含む配列 |
+| [<*value*>] | Array | 指定した 1 つの入力を含む配列 |
 ||||
 
 *例*
@@ -785,7 +785,7 @@ coalesce(<object_1>, <object_2>, ...)
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*object_1* >, < *object_2* >, ... | はい | 任意、型が混在してもかまいません | null かどうか調べる 1 つまたは複数の項目 |
+| <*object_1*>, <*object_2*>, ... | はい | 任意、型が混在してもかまいません | null かどうか調べる 1 つまたは複数の項目 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -821,7 +821,7 @@ concat('<text1>', '<text2>', ...)
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*text1* >, < *text2* >, ... | はい | String | 結合する少なくとも 2 つの文字列 |
+| <*text1*>, <*text2*>, ... | はい | String | 結合する少なくとも 2 つの文字列 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -854,9 +854,9 @@ contains([<collection>], '<value>')
 
 具体的には、この関数は次のコレクション型で動作します。
 
-* " *文字列* " からの " *部分文字列* " の検索
-* " *配列* " からの " *値* " の検索
-* " *ディクショナリ* " からの " *キー* " の検索
+* "*文字列*" からの "*部分文字列*" の検索
+* "*配列*" からの "*値*" の検索
+* "*ディクショナリ*" からの "*キー*" の検索
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
@@ -1025,12 +1025,12 @@ createArray('<object1>', '<object2>', ...)
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*object1* >, < *object2* >, ... | はい | 任意、ただし混在していてはなりません | 配列を作成する少なくとも 2 つの項目 |
+| <*object1*>, <*object2*>, ... | はい | 任意、ただし混在していてはなりません | 配列を作成する少なくとも 2 つの項目 |
 |||||
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| [< *object1* >, < *object2* >, ...] | Array | すべての入力項目から作成された配列 |
+| [<*object1*>, <*object2*>, ...] | Array | すべての入力項目から作成された配列 |
 ||||
 
 *例*
@@ -1486,7 +1486,7 @@ equals('<object1>', '<object2>')
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*object1* >, < *object2*> | はい | 各種 | 比較する値、式、またはオブジェクト |
+| <*object1*>, <*object2*> | はい | 各種 | 比較する値、式、またはオブジェクト |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -1969,7 +1969,7 @@ json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> 
 
 ### <a name="intersection"></a>intersection
 
-指定したコレクションすべてに共通する項目 " *のみ* " を含むコレクションを返します。
+指定したコレクションすべてに共通する項目 "*のみ*" を含むコレクションを返します。
 結果に含まれるためには、この関数に渡されるすべてのコレクションに項目が含まれる必要があります。
 1 つまたは複数の項目が同じ名前である場合は、その名前を持つ最後の項目が結果に含まれます。
 
@@ -1980,7 +1980,7 @@ intersection('<collection1>', '<collection2>', ...)
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*collection1* >, < *collection2* >, ... | はい | 配列またはオブジェクト、両方ともは不可 | 共通項目 " *のみ* " を抽出するコレクション |
+| <*collection1*>, <*collection2*>, ... | はい | 配列またはオブジェクト、両方ともは不可 | 共通項目 "*のみ*" を抽出するコレクション |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -1996,13 +1996,13 @@ intersection('<collection1>', '<collection2>', ...)
 intersection(createArray(1, 2, 3), createArray(101, 2, 1, 10), createArray(6, 8, 1, 2))
 ```
 
-そして、それらの項目 `[1, 2]` " *のみ* " を含む配列を返します。
+そして、それらの項目 `[1, 2]` "*のみ*" を含む配列を返します。
 
 <a name="join"></a>
 
 ### <a name="join"></a>join
 
-配列のすべての項目を含み、各文字が " *区切り記号* " で区切られた文字列を返します。
+配列のすべての項目を含み、各文字が "*区切り記号*" で区切られた文字列を返します。
 
 ```
 join([<collection>], '<delimiter>')
@@ -2016,7 +2016,7 @@ join([<collection>], '<delimiter>')
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*char1*><*delimiter*><*char2*><*delimiter* >... | String | 指定した配列内のすべての項目から作成された結果の文字列 |
+| <*char1*><*delimiter*><*char2*><*delimiter*>... | String | 指定した配列内のすべての項目から作成された結果の文字列 |
 ||||
 
 *例*
@@ -2215,8 +2215,8 @@ max([<number1>, <number2>, ...])
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*number1* >, < *number2* >, ... | はい | 整数、浮動小数点数、または両方 | 最大値を取得する数値のセット |
-| [< *number1* >, < *number2* >, ...] | はい | 配列 - 整数、浮動小数点数、または両方 | 最大値を取得する数値の配列 |
+| <*number1*>, <*number2*>, ... | はい | 整数、浮動小数点数、または両方 | 最大値を取得する数値のセット |
+| [<*number1*>, <*number2*>, ...] | はい | 配列 - 整数、浮動小数点数、または両方 | 最大値を取得する数値の配列 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -2248,8 +2248,8 @@ min([<number1>, <number2>, ...])
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*number1* >, < *number2* >, ... | はい | 整数、浮動小数点数、または両方 | 最小値を取得する数値のセット |
-| [< *number1* >, < *number2* >, ...] | はい | 配列 - 整数、浮動小数点数、または両方 | 最小値を取得する数値の配列 |
+| <*number1*>, <*number2*>, ... | はい | 整数、浮動小数点数、または両方 | 最小値を取得する数値のセット |
+| [<*number1*>, <*number2*>, ...] | はい | 配列 - 整数、浮動小数点数、または両方 | 最小値を取得する数値の配列 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -2397,7 +2397,7 @@ or(<expression1>, <expression2>)
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression1* >, < *expression2*> | はい | Boolean | 調べる式 |
+| <*expression1*>, <*expression2*> | はい | Boolean | 調べる式 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -2482,7 +2482,7 @@ range(<startIndex>, <count>)
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| [< *range-result* >] | Array | 指定したインデックスから始まる整数の配列 |
+| [<*range-result*>] | Array | 指定したインデックスから始まる整数の配列 |
 ||||
 
 *例*
@@ -2531,7 +2531,7 @@ replace('the old string', 'old', 'new')
 
 ### <a name="skip"></a>skip
 
-コレクションの先頭から項目を削除し、" *他のすべて* " の項目を返します。
+コレクションの先頭から項目を削除し、"*他のすべて*" の項目を返します。
 
 ```
 skip([<collection>], <count>)
@@ -2545,7 +2545,7 @@ skip([<collection>], <count>)
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| [< *updated-collection* >] | Array | 指定した項目を削除した後の更新されたコレクション |
+| [<*updated-collection*>] | Array | 指定した項目を削除した後の更新されたコレクション |
 ||||
 
 *例*
@@ -2576,7 +2576,7 @@ split('<text>', '<delimiter>')
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| [< *substring1* >,< *substring2* >,...] | Array | コンマで区切られた、元の文字列からの部分文字列を含む配列 |
+| [<*substring1*>,<*substring2*>,...] | Array | コンマで区切られた、元の文字列からの部分文字列を含む配列 |
 ||||
 
 *例*
@@ -2892,7 +2892,7 @@ take([<collection>], <count>)
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*subset* > または [< *subset* >] | それぞれ文字列、配列 | 元のコレクションの先頭から取得された指定個数の項目を含む文字列または配列 |
+| <*subset*> または [<*subset*>] | それぞれ文字列、配列 | 元のコレクションの先頭から取得された指定個数の項目を含む文字列または配列 |
 ||||
 
 *例*
@@ -2914,7 +2914,7 @@ take(createArray(0, 1, 2, 3, 4), 3)
 ### <a name="ticks"></a>ticks
 
 指定したタイムスタンプの `ticks` プロパティの値を返します。
-" *ティック* " は 100 ナノ秒の間隔です。
+"*ティック*" は 100 ナノ秒の間隔です。
 
 ```
 ticks('<timestamp>')
@@ -3024,7 +3024,7 @@ trim(' Hello World  ')
 
 ### <a name="union"></a>union
 
-指定した複数のコレクションの " *すべての* " 項目を含む 1 つのコレクションを返します。
+指定した複数のコレクションの "*すべての*" 項目を含む 1 つのコレクションを返します。
 この関数に渡されるいずれかのコレクションに含まれる項目は、結果にも含まれます。 1 つまたは複数の項目が同じ名前である場合は、その名前を持つ最後の項目が結果に含まれます。
 
 ```
@@ -3034,7 +3034,7 @@ union([<collection1>], [<collection2>], ...)
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*collection1* >, < *collection2* >, ...  | はい | 配列またはオブジェクト、両方ともは不可 | " *すべての* " 項目を取得するコレクション |
+| <*collection1*>, <*collection2*>, ...  | はい | 配列またはオブジェクト、両方ともは不可 | "*すべての*" 項目を取得するコレクション |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -3044,7 +3044,7 @@ union([<collection1>], [<collection2>], ...)
 
 *例*
 
-この例は、以下のコレクションから " *すべての* " 項目を取得します。
+この例は、以下のコレクションから "*すべての*" 項目を取得します。
 
 ```
 union(createArray(1, 2, 3), createArray(1, 2, 10, 101))
@@ -3159,7 +3159,7 @@ uriComponentToString('http%3A%2F%2Fcontoso.com')
 utcNow('<format>')
 ```
 
-必要に応じて、< *format* > パラメーターで異なる形式を指定できます。
+必要に応じて、<*format*> パラメーターで異なる形式を指定できます。
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
@@ -3271,7 +3271,7 @@ xpath('<xml>', '<xpath>')
 | ------------ | ---- | ----------- |
 | <*xml-node*> | XML | 1 つのノードだけが指定した XPath 式と一致するときの XML ノード |
 | <*value*> | Any | 1 つの値だけが指定した XPath 式と一致するときの XML ノードの値 |
-| [< *xml-node1* >, < *xml-node2* >, ...] </br>または </br>[< *value1* >, < *value2* >, ...] | Array | 指定した XPath 式と一致する XML ノードまたは値の配列 |
+| [<*xml-node1*>, <*xml-node2*>, ...] </br>または </br>[<*value1*>, <*value2*>, ...] | Array | 指定した XPath 式と一致する XML ノードまたは値の配列 |
 ||||
 
 *例 1*

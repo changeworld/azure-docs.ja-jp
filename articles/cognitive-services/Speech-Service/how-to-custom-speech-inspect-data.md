@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: erhopf
-ms.openlocfilehash: a3ff2a1f92cabb61f58d70b732738e613afa7cd9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 87bc411903604a7068f346604853a2a61c9a6f1c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025635"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499188"
 ---
 # <a name="inspect-custom-speech-data"></a>Custom Speech データを検査する
 
@@ -99,8 +99,8 @@ Custom Speech には、オーディオ データを対応する認識結果と�
 
 - [データを評価する](how-to-custom-speech-evaluate-data.md)
 - [モデルをトレーニングする](how-to-custom-speech-train-model.md)
-- [モデルを改良する](how-to-custom-speech-improve-accuracy.md)
-- [モデルをデプロイする](how-to-custom-speech-deploy-model.md)
+- [モデルを改良する](./how-to-custom-speech-evaluate-data.md)
+- [モデルをデプロイする](./how-to-custom-speech-train-model.md)
 
 ## <a name="additional-resources"></a>その他のリソース
 

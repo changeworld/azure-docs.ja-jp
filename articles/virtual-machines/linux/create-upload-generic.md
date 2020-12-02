@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: guybo
-ms.openlocfilehash: a80cc29f318cff8e5a4c665cd07ba1829d25d66d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ef4175d24cfd02bb5cb6470b6334fea190b5bec2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016337"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500599"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>動作保証外のディストリビューションに関する情報
 
@@ -38,7 +38,7 @@ Azure で実行されているすべてのディストリビューションに�
 * Hyper-V 仮想ハード ディスク (VHDX) 形式は Azure ではサポートされていません。サポートされているのは *固定 VHD* のみです。  Hyper-V マネージャーまたは [Convert-VHD](/powershell/module/hyper-v/convert-vhd) コマンドレットを使用して、ディスクを VHD 形式に変換できます。 VirtualBox を使用する場合は、ディスクの作成時に、既定 (動的に割り当てられるサイズ) ではなく、**固定サイズ** を選択します。
 * Azure では、Gen1 (BIOS ブート) および Gen2 (UEFI ブート) 仮想マシンがサポートされています。
 * VHD のサイズの上限は、1,023 GB です。
-* Linux システムをインストールする場合は、Logical Volume Manager (LVM) (多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 標準パーティションを使用することにより、特に OS ディスクをトラブルシューティングのために別の同じ VM に接続する場合に、LVM 名と複製された VM の競合が回避されます。 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) をデータ ディスク上で使用できます。
+* Linux システムをインストールする場合は、Logical Volume Manager (LVM) (多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 標準パーティションを使用することにより、特に OS ディスクをトラブルシューティングのために別の同じ VM に接続する場合に、LVM 名と複製された VM の競合が回避されます。 [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) をデータ ディスク上で使用できます。
 * UDF ファイル システムをマウントするためのカーネル サポートが必要です。 Azure での最初の起動時に、ゲストに接続されている UDF でフォーマットされたメディアを使用して、プロビジョニング構成が Linux VM に渡されます。 Azure Linux エージェントは、その構成を読み取り、VM をプロビジョニングする UDF ファイル システムをマウントする必要があります。
 * 2\.6.37 未満の Linux カーネル バージョンは、HYPER-V で大きい VM サイズの NUMA をサポートできません。 この問題は、主に、アップストリームの Red Hat 2.6.32 カーネルを使用した古いディストリビューションに影響し、Red Hat Enterprise Linux (RHEL) 6.6 (kernel-2.6.32-504) で修正されました。 2\.6.37 より古いカスタム カーネルまたは2.6.32-504 より古い RHEL ベースのカーネルを実行しているシステムでは、grub.conf のカーネル コマンドラインで、ブート パラメーター `numa=off` を設定する必要があります。 詳細については、[Red Hat KB 436883](https://access.redhat.com/solutions/436883) を参照してください。
 * OS ディスクにスワップ パーティションを構成しないでください。 次の手順で説明するように、Linux エージェントは、一時的なリソース ディスク上にスワップ ファイルを作成するよう構成できます。

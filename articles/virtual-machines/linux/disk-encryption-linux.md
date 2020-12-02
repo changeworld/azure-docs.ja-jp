@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e8f71b277a4f4b538d501b1fa825bc6ec43428c8
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d2c9d810fb3bd86d68518e1ad20088a57d538bbe
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359393"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500582"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM での Azure Disk Encryption シナリオ
 
@@ -413,8 +413,8 @@ Azure Disk Encryption は、次の Linux のシナリオ、機能、およびテ
 - "マウント ポイントが入れ子になっている"、つまり、1 つのパスに複数のマウント ポイントがある ("/1stmountpoint/data/2stmountpoint" など) VM。
 - OS フォルダーの上にデータ ドライブがマウントされている VM。
 - 書き込みアクセラレータ ディスクを備えた M シリーズの VM。
-- [カスタマー マネージド キーによるサーバー側での暗号化](disk-encryption.md) (SSE + CMK) で暗号化されているディスクを持つ VM に ADE を適用する。 ADE で暗号化された VM 上のデータ ディスクに SSE + CMK を適用することも、サポートされていないシナリオです。
-- ADE で暗号化されている、または ADE で暗号化 **されたことがある** VM を、[カスタマー マネージド キーを使用したサーバー側暗号化に移行する](disk-encryption.md)。
+- [カスタマー マネージド キーによるサーバー側での暗号化](../disk-encryption.md) (SSE + CMK) で暗号化されているディスクを持つ VM に ADE を適用する。 ADE で暗号化された VM 上のデータ ディスクに SSE + CMK を適用することも、サポートされていないシナリオです。
+- ADE で暗号化されている、または ADE で暗号化 **されたことがある** VM を、[カスタマー マネージド キーを使用したサーバー側暗号化に移行する](../disk-encryption.md)。
 - [ローカルの一時ディスクを使用しない Azure VM のサイズ](../azure-vms-no-temp-disk.md)。具体的には、Dv4、Dsv4、Ev4、および Esv4 です。
 
 ## <a name="next-steps"></a>次のステップ

@@ -3,18 +3,18 @@ title: Azure Data Factory のパイプラインとアクティビティ
 description: Azure Data Factory のパイプラインとアクティビティについて。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 93d741d22ac03c132954a48731451f891042d7b4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ceaced5860976b0fa9f84903804700f778ed9550
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003066"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500082"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
 
@@ -57,7 +57,7 @@ Azure Data Factory は、次の変換アクティビティをサポートして�
 [Hadoop ストリーミング](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
 [Azure Machine Learning スタジオ (クラシック) のアクティビティ: バッチ実行とリソースの更新](transform-data-using-machine-learning.md) | Azure VM
-[ストアド プロシージャ](transform-data-using-stored-procedure.md) | Azure SQL、Azure Synapse Analytics (旧称 SQL Data Warehouse)、または SQL Server
+[ストアド プロシージャ](transform-data-using-stored-procedure.md) | Azure SQL、Azure Synapse Analytics、または SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Databricks Notebook](transform-data-databricks-notebook.md) | Azure Databricks

@@ -256,35 +256,35 @@
         - name: Microsoft.Azure.ServiceBus から Azure.Messaging.ServiceBus への移行
           href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/MigrationGuide.md'
         - name: Azure.Messaging.ServiceBus (.NET Standard - 最新)
-          href: 'https://docs.microsoft.com/dotnet/api/azure.messaging.servicebus'
+          href: /dotnet/api/azure.messaging.servicebus
         - name: Microsoft.Azure.ServiceBus (.NET Standard)
-          href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus'
+          href: /dotnet/api/microsoft.azure.servicebus
         - name: Microsoft.ServiceBus.Messaging (.NET Framework)
-          href: 'https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging'
+          href: /dotnet/api/microsoft.servicebus.messaging
     - name: Java
       items:
         - name: azure-servicebus から azure-messaging-servicebus への移行
           href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/migration-guide.md'
         - name: azure-messaging-servicebus (最新)
-          href: 'https://docs.microsoft.com/java/api/overview/azure/servicebus?view=azure-java-preview'
+          href: /java/api/overview/azure/servicebus?view=azure-java-preview
         - name: azure-servicebus
-          href: 'https://docs.microsoft.com/java/api/overview/azure/servicebus'
+          href: /java/api/overview/azure/servicebus
     - name: Python
       items:
         - name: azure-servicebus バージョン 0.50 からバージョン 7 への移行
           href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/servicebus/azure-servicebus/migration_guide.md'
         - name: azure-servicebus バージョン 7
-          href: 'https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python-preview'
+          href: /python/api/overview/azure/servicebus?view=azure-python-preview
         - name: azure-servicebus バージョン 0.50
-          href: 'https://docs.microsoft.com/python/api/overview/azure/servicebus'
+          href: /python/api/overview/azure/servicebus
     - name: JavaScript
       items:
         - name: バージョン 1 からバージョン 7 への移行
           href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/migrationguide.md'
         - name: azure/service-bus バージョン 7
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node--preview'
+          href: /javascript/api/overview/azure/service-bus?view=azure-node--preview
         - name: azure/service-bus バージョン 1
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node-latest'
+          href: /javascript/api/overview/azure/service-bus?view=azure-node-latest
     - name: PHP
       href: 'https://github.com/Azure/azure-sdk-for-php'
     - name: Ruby

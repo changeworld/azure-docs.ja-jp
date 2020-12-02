@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: d068365cc8197a579c0b043d3fff2da3d54eb803
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ab6408621616a4be62631391456f73e90fced752
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686588"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499001"
 ---
 # <a name="net-c-code-samples-for-azure-cognitive-search"></a>Azure Cognitive Search の .NET (C#) コード サンプル
 
@@ -44,7 +44,7 @@ Azure SDK for .NET には、多数のサンプルと、それぞれについて�
 
 ## <a name="documentation-samples"></a>ドキュメントとサンプル
 
-次のサンプルには、関連記事が 「[Azure Cognitive Search のドキュメント](https://docs.microsoft.com/azure/search/)」にあります。
+次のサンプルには、関連記事が 「[Azure Cognitive Search のドキュメント](./index.yml)」にあります。
 
 | サンプル | 説明 |
 |---------|-------------|
@@ -63,6 +63,6 @@ Azure SDK for .NET には、多数のサンプルと、それぞれについて�
 | サンプル | 説明 |
 |---------|-------------|
 | [azure-search-power-skills](https://github.com/Azure-Samples/azure-search-power-skills)  | 獲得したソリューションに組み込むことができる、使用可能なカスタム スキルのソース コード。  |
-| [ナレッジ マイニング ソリューション アクセラレータ](https://docs.microsoft.com/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | エンドツーエンドのナレッジ マイニング ソリューションのプロトタイプ作成に役立つテンプレート、サポート ファイル、および分析レポートが含まれています。  |
+| [ナレッジ マイニング ソリューション アクセラレータ](/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | エンドツーエンドのナレッジ マイニング ソリューションのプロトタイプ作成に役立つテンプレート、サポート ファイル、および分析レポートが含まれています。  |
 | [Covid-19 Search App リポジトリ](https://github.com/liamca/covid19search) | Cognitive Search ベースの [Covid-19 Search App](https://covid19search.azurewebsites.net/) のソース コード リポジトリ |
 | [JFK](https://github.com/Microsoft/AzureSearch_JFK_Files) | [JFK ソリューション](https://www.microsoft.com/ai/ai-lab-jfk-files)の詳細を確認してください。 |

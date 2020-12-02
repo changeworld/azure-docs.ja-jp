@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 357f44149cb17976556c1e4609f6f2af531b80ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f36502eb464f051cd50b51245db69fa76daa915
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935774"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499545"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>部分的な用語検索と特殊文字を含むパターン (ワイルドカード、正規表現、パターン)
 
@@ -160,7 +160,7 @@ Postman のような Web API テスト ツールを使用している場合は�
 
 組み込みまたは定義済みのアナライザーは、フィールド定義の `analyzer` プロパティに名前を使用して指定できます。インデックスに追加の構成は必要ありません。 次の例では、フィールドに `whitespace` アナライザーを設定する方法を示します。 
 
-他のシナリオと、他の組み込みアナライザーの詳細については、[定義済みアナライザー リスト](/azure/search/index-add-custom-analyzers#predefined-analyzers-reference)に関するページを参照してください。 
+他のシナリオと、他の組み込みアナライザーの詳細については、[定義済みアナライザー リスト](./index-add-custom-analyzers.md#predefined-analyzers-reference)に関するページを参照してください。 
 
 ```json
     {
@@ -177,7 +177,7 @@ Postman のような Web API テスト ツールを使用している場合は�
 
 [カスタム アナライザー](index-add-custom-analyzers.md)を使用している場合は、ユーザー定義のトークナイザー、トークン フィルターに可能な構成設定を組み合わせてインデックスで定義します。 次に、組み込みアナライザーの場合と同様に、フィールド定義で参照します。
 
-用語全体のトークン化が目的である場合は、**キーワード トークナイザー**で構成されるカスタム アナライザーと**小文字のトークン フィルター**を選択することをお勧めします。
+用語全体のトークン化が目的である場合は、**キーワード トークナイザー** で構成されるカスタム アナライザーと **小文字のトークン フィルター** を選択することをお勧めします。
 
 + キーワード トークナイザーは、フィールドの内容全体に対して 1 つのトークンを作成します。
 + lowercase トークン フィルターは、大文字を小文字に変換します。 通常、クエリ パーサーでは、大文字のテキスト入力が小文字になります。 小文字への変換により、トークン化された用語を使用して入力を均質化します。

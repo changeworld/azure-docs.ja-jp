@@ -10,12 +10,12 @@ ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.reviewer: cynthn
-ms.openlocfilehash: 0bc56159d0e9a616d8da8dfe1ec3c128f60ef44a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 95ba93c4a5d71e6813c1bee144c983e1dfd8c89d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342860"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500327"
 ---
 # <a name="security-recommendations-for-virtual-machines-in-azure"></a>Azure の仮想マシンについてのセキュリティに関する推奨事項
 
@@ -24,33 +24,33 @@ ms.locfileid: "93342860"
 
 この記事のいくつかの推奨事項は、Azure Security Center で自動的に対応できます。 Azure Security Center は、Azure にあるリソースの防御の最前線です。 これにより Azure リソースのセキュリティの状態が定期的に分析され、潜在的なセキュリティ脆弱性が特定されます。 その後、それらの脆弱性に対応する方法が推奨されます。 詳細については、「[Azure Security Center でのセキュリティの推奨事項](../security-center/security-center-recommendations.md)」を参照してください。
 
-Azure Security Center の一般的な情報については、「[Azure Security Center とは](../security-center/security-center-intro.md)」を参照してください。
+Azure Security Center の一般的な情報については、「[Azure Security Center とは](../security-center/security-center-introduction.md)」を参照してください。
 
 ## <a name="general"></a>全般
 
 | 推奨 | 説明 | Security Center |
 |-|----|--|
 | カスタム VM イメージを作成する場合、最新の更新プログラムを適用する。 | イメージを作成する前に、オペレーティング システムと、イメージの一部となるすべてのアプリケーションの最新の更新プログラムをインストールしてください。  | - |
-| VM を最新の状態に保つ。 | Azure Automation の [Update Management](../automation/update-management/update-mgmt-overview.md) ソリューションを使用すると、Azure 内の Windows コンピューターと Linux コンピューターに対するオペレーティング システムの更新プログラムを管理できます。 | [はい](../security-center/security-center-apply-system-updates.md) |
+| VM を最新の状態に保つ。 | Azure Automation の [Update Management](../automation/update-management/overview.md) ソリューションを使用すると、Azure 内の Windows コンピューターと Linux コンピューターに対するオペレーティング システムの更新プログラムを管理できます。 | [はい](../security-center/asset-inventory.md) |
 | VM をバックアップする。 | [Azure Backup](../backup/backup-overview.md) を使用すると、アプリケーション データを保護し、運用コストを最小限にすることができます。 アプリケーション エラーが発生するとデータが破損するおそれがあり、ヒューマン エラーが生じればアプリケーションにバグが生まれる危険があります。 Azure Backup は、Windows と Linux を実行する VM を保護します。 | - |
-| 復元性と可用性を高めるために複数の VM を使用する。 | 高可用性を必要とするアプリケーションが VM で実行されている場合は、複数の VM または[可用性セット](../virtual-machines/windows/manage-availability.md)を使用します。 | - |
+| 復元性と可用性を高めるために複数の VM を使用する。 | 高可用性を必要とするアプリケーションが VM で実行されている場合は、複数の VM または[可用性セット](./manage-availability.md)を使用します。 | - |
 | 事業継続とディザスター リカバリー (BCDR) 戦略を採用する。 | Azure Site Recovery では、事業継続性をサポートするように設計されたさまざまなオプションから選択することができます。 さまざまなレプリケーションおよびフェールオーバーのシナリオがサポートされています。 詳しくは、「[Site Recovery について](../site-recovery/site-recovery-overview.md)」をご覧ください。 | - |
 
 ## <a name="data-security"></a>データのセキュリティ
 
 | 推奨 | 説明 | Security Center |
 |-|----|--|
-| オペレーティング システム ディスクを暗号化する。 | [Azure Disk Encryption](../security/azure-security-disk-encryption-overview.md) を使用すると、Windows および Linux の IaaS VM ディスクを暗号化できます。 必要なキーがないと、暗号化されたディスクの内容は読み取れません。 ディスクの暗号化は、ディスクがコピーされた場合に発生する可能性のある不正アクセスから、格納されているデータを保護します。| [はい](../security-center/security-center-apply-disk-encryption.md) |
-| データ ディスクを暗号化する。 | [Azure Disk Encryption](../security/azure-security-disk-encryption-overview.md) を使用すると、Windows および Linux の IaaS VM ディスクを暗号化できます。 必要なキーがないと、暗号化されたディスクの内容は読み取れません。 ディスクの暗号化は、ディスクがコピーされた場合に発生する可能性のある不正アクセスから、格納されているデータを保護します。| -  |
+| オペレーティング システム ディスクを暗号化する。 | [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) を使用すると、Windows および Linux の IaaS VM ディスクを暗号化できます。 必要なキーがないと、暗号化されたディスクの内容は読み取れません。 ディスクの暗号化は、ディスクがコピーされた場合に発生する可能性のある不正アクセスから、格納されているデータを保護します。| [はい](../security-center/asset-inventory.md) |
+| データ ディスクを暗号化する。 | [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) を使用すると、Windows および Linux の IaaS VM ディスクを暗号化できます。 必要なキーがないと、暗号化されたディスクの内容は読み取れません。 ディスクの暗号化は、ディスクがコピーされた場合に発生する可能性のある不正アクセスから、格納されているデータを保護します。| -  |
 | インストール済みソフトウェアを制限する。 | インストール済みソフトウェアを、ソリューションを正常に適用するために必要なものに制限します。 このガイドラインにより、ソリューションの攻撃対象領域を減らすことができます。 | - |
-| ウイルス対策またはマルウェア対策を使用する。 | Azure では、Microsoft、Symantec、Trend Micro、Kaspersky などのセキュリティ ベンダーのマルウェア対策ソフトウェアを使用できます。 このソフトウェアは、悪意のあるファイル、アドウェア、他の脅威から、お使いの VM を保護するのに役立ちます。 アプリケーションのワークロードに基づいて Microsoft Antimalware をデプロイできます。 Microsoft Antimalware は、Windows マシンでのみ使用できます。 基本的な既定のセキュリティまたはカスタム構成のいずれかを使用します。 詳細については、「[Azure Cloud Services および Virtual Machines 向け Microsoft Antimalware](../security/azure-security-antimalware.md)」を参照してください。 | - |
+| ウイルス対策またはマルウェア対策を使用する。 | Azure では、Microsoft、Symantec、Trend Micro、Kaspersky などのセキュリティ ベンダーのマルウェア対策ソフトウェアを使用できます。 このソフトウェアは、悪意のあるファイル、アドウェア、他の脅威から、お使いの VM を保護するのに役立ちます。 アプリケーションのワークロードに基づいて Microsoft Antimalware をデプロイできます。 Microsoft Antimalware は、Windows マシンでのみ使用できます。 基本的な既定のセキュリティまたはカスタム構成のいずれかを使用します。 詳細については、「[Azure Cloud Services および Virtual Machines 向け Microsoft Antimalware](../security/fundamentals/antimalware.md)」を参照してください。 | - |
 | キーとシークレットを安全に格納する。 | セキュリティで保護された一元管理オプションをアプリケーション所有者に提供することにより、シークレットとキーの管理を簡素化します。 この管理によって、偶発的な侵害や漏洩のリスクが軽減されます。 Azure Key Vault では、FIPS 140-2 レベル 2 に認定されたハードウェア セキュリティ モジュール (HSM) にキーを安全に格納できます。 FIPS 140-2 レベル 3 を使用してキーとシークレットを格納する必要がある場合は、[Azure Dedicated HSM](../dedicated-hsm/overview.md) を使用できます。 | - |
 
 ## <a name="identity-and-access-management"></a>ID 管理とアクセス管理 
 
 | 推奨 | 説明 | Security Center |
 |-|----|--|
-| VM 認証を一元化する。 | [Azure Active Directory 認証](../active-directory/develop/authentication-scenarios.md)を使用することにより、Windows と Linux の VM の認証を一元化できます。 | - |
+| VM 認証を一元化する。 | [Azure Active Directory 認証](../active-directory/develop/authentication-vs-authorization.md)を使用することにより、Windows と Linux の VM の認証を一元化できます。 | - |
 
 ## <a name="monitoring"></a>監視
 
@@ -67,4 +67,4 @@ Azure Security Center の一般的な情報については、「[Azure Security 
 
 ## <a name="next-steps"></a>次のステップ
 
-追加のセキュリティ要件については、アプリケーション プロバイダーに確認してください。 セキュリティで保護されたアプリケーションの開発の詳細については、[セキュリティで保護された開発に関するドキュメント](../security/fundamentals/abstract-develop-secure-apps.md)を参照してください。
+追加のセキュリティ要件については、アプリケーション プロバイダーに確認してください。 セキュリティで保護されたアプリケーションの開発の詳細については、[セキュリティで保護された開発に関するドキュメント](https://azure.microsoft.com/resources/develop-secure-applications-on-azure/)を参照してください。

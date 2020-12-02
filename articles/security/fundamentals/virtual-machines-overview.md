@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 91dfb3cb07cca8ec89c77dea43f1cd075db11bbf
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: ed2cb967b24ce5abdebadfe29847ae1a16b4e745
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014766"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498746"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 仮想マシンのセキュリティの概要
 この記事では、仮想マシンで使用できるコアの Azure セキュリティ機能の概要を示します。
@@ -117,7 +117,7 @@ Site Recovery:
 詳細情報:
 
 * [Azure Site Recovery とは](../../site-recovery/site-recovery-overview.md)
-* [Azure Site Recovery のしくみ](/azure/site-recovery/azure-to-azure-architecture)
+* [Azure Site Recovery のしくみ](../../site-recovery/azure-to-azure-architecture.md)
 * [Azure Site Recovery によって保護されるワークロードの種類](../../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>仮想ネットワーク

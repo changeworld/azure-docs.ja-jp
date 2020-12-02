@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: b19dab8dffaa0c9c888e8a9974a43cbb48006fd7
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 0f5eb6a2964cdb679c2a83bd9d9b6296e3e962ed
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504324"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499290"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>プレビュー:イメージの暗号化にカスタマー マネージド キーを使用する
 
@@ -220,6 +220,6 @@ az sig image-version create \
 
 ## <a name="next-steps"></a>次のステップ
 
-[ディスクのサーバー側暗号化](./windows/disk-encryption.md)について学習する。
+[ディスクのサーバー側暗号化](./disk-encryption.md)について学習する。
 
 購入プラン情報を提供する方法については、[イメージ作成時の Azure Marketplace 購入プラン情報の提供](marketplace-images.md)に関する記事を参照してください。

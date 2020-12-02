@@ -3,20 +3,20 @@ title: Azure Data Factory の Azure 関数アクティビティ
 description: Azure 関数アクティビティを使用して、Data Factory パイプライン内で Azure 関数を実行する方法について説明します
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: ee2e59e794cf34a8fd5043a56867a81c2537f1ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7c8f1e5ae0da9e7c404a942fcb4f554281486a7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81415307"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500046"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure Data Factory の Azure 関数アクティビティ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -28,13 +28,13 @@ Azure 関数アクティビティを使用すると、Data Factory パイプラ�
 
 ## <a name="azure-function-linked-service"></a>Azure 関数のリンクされたサービス
 
-Azure 関数の戻り値の型は、有効な `JObject` である必要があります。 ([JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) は `JObject` では "*ない*" ことに留意してください。)`JObject`以外の戻り値の型が失敗し、ユーザー エラー*応答コンテンツは有効な JObject ではない*が発生します。
+Azure 関数の戻り値の型は、有効な `JObject` である必要があります。 ([JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) は `JObject` では "*ない*" ことに留意してください。)`JObject`以外の戻り値の型が失敗し、ユーザー エラー *応答コンテンツは有効な JObject ではない* が発生します。
 
 | **プロパティ** | **説明** | **必須** |
 | --- | --- | --- |
 | type   | type プロパティは、次のように設定する必要があります:**AzureFunction** | はい |
 | function app url | Azure 関数アプリの URL。 形式は `https://<accountname>.azurewebsites.net` です。 この URL は、Azure portal で関数アプリを表示した際に **URL** セクションに表示される値です  | はい |
-| function key | Azure 関数のアクセス キーです。 それぞれの関数の **[管理]** セクションをクリックし、**ファンクション キー**または**ホスト キー**をコピーします。 詳しくは、次の記事をご覧ください:[Azure Functions の HTTP トリガーとバインド](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | はい |
+| function key | Azure 関数のアクセス キーです。 それぞれの関数の **[管理]** セクションをクリックし、**ファンクション キー** または **ホスト キー** をコピーします。 詳しくは、次の記事をご覧ください:[Azure Functions の HTTP トリガーとバインド](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | はい |
 |   |   |   |
 
 ## <a name="azure-function-activity"></a>Azure 関数アクティビティ
@@ -47,16 +47,16 @@ Azure 関数の戻り値の型は、有効な `JObject` である必要があり
 | 関数名  | このアクティビティによって呼び出される Azure 関数アプリ内の関数の名前 | String | はい |
 | method  | 関数呼び出しのための REST API メソッド | 文字列がサポートされている型:"GET"、"POST"、"PUT"   | はい |
 | header  | 要求に送信されるヘッダー。 たとえば、要求に種類と言語を設定する場合: "headers": { "Accept-Language": "en-us", "Content-Type": "application/json" } | 文字列 (または文字列の resultType を含む式) | いいえ |
-| body  | 関数 API メソッドへの要求と共に送信される本文  | 文字列 (または文字列の resultType を含む式) またはオブジェクト。   | PUT/POST メソッドには必須です |
+| body  | 関数 API メソッドへの要求と共に送信される本文  | 文字列 (または文字列の resultType を含む式) またはオブジェクト。   | PUT/POST メソッドには必須です |
 |   |   |   | |
 
-「 [要求ペイロードのスキーマ](control-flow-web-activity.md#request-payload-schema) 」セクションにある要求ペイロードのスキーマを参照してください。
+「[要求ペイロードのスキーマ](control-flow-web-activity.md#request-payload-schema)」セクションにある要求ペイロードのスキーマを参照してください。
 
 ## <a name="routing-and-queries"></a>ルーティングとクエリ
 
-Azure 関数アクティビティでは、**ルーティング**がサポートされます。 たとえば、Azure 関数にエンドポイント`https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>`がある場合、その後でAzure 関数のアクティビティを使用する `functionName` は`<functionName>/<value>`です。 実行時に任意の`functionName`を提供するようこの関数をパラメーター化できます。
+Azure 関数アクティビティでは、**ルーティング** がサポートされます。 たとえば、Azure 関数にエンドポイント`https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>`がある場合、その後でAzure 関数のアクティビティを使用する `functionName` は`<functionName>/<value>`です。 実行時に任意の`functionName`を提供するようこの関数をパラメーター化できます。
 
-また、Azure 関数アクティビティでは**クエリ**がサポートされます。 クエリは`functionName`の一部として含まなければなりません。 たとえば、関数名が`HttpTriggerCSharp`であり含めるクエリは`name=hello`である場合、Azure 関数のアクティビティにおいて`functionName`を`HttpTriggerCSharp?name=hello`として構築できます。 この関数は、実行時に値を決定できるように、パラメーター化できます。
+また、Azure 関数アクティビティでは **クエリ** がサポートされます。 クエリは`functionName`の一部として含まなければなりません。 たとえば、関数名が`HttpTriggerCSharp`であり含めるクエリは`name=hello`である場合、Azure 関数のアクティビティにおいて`functionName`を`HttpTriggerCSharp?name=hello`として構築できます。 この関数は、実行時に値を決定できるように、パラメーター化できます。
 
 ## <a name="timeout-and-long-running-functions"></a>タイムアウトと長期関数
 

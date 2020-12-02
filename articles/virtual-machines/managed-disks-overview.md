@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperfq1
-ms.openlocfilehash: 839ba1f8a5215c9059cfeff6e2158165b154f1f7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 3b0acd683309ceb105c49dc5b0bd493ce2e461b9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289354"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500429"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure マネージド ディスクの概要
 
@@ -71,7 +71,7 @@ VHD を Azure に転送する方法については、[CLI](linux/disks-upload-vh
 
 サーバー側暗号化では、保存時の暗号化が提供され、組織のセキュリティおよびコンプライアンス要件を満たすようにデータが保護されます。 サーバー側暗号化は、マネージド ディスクを使用できるすべてのリージョンのすべてのマネージド ディスク、スナップショット、イメージに対して既定で有効になっています (これに対し、一時ディスクは、ホストで暗号化を有効にしない限り、サーバー側暗号化によって暗号化されません。[一時ディスク ディスク ロール](#temporary-disk)に関するセクションを参照してください)。
 
-キーの管理を Azure に任せることができます (プラットフォーム マネージド キー)。自分でキーを管理することもできます (カスタマー マネージド キー)。 詳細については、「[Azure Disk Storage のサーバー側暗号化](windows/disk-encryption.md)」を参照してください。
+キーの管理を Azure に任せることができます (プラットフォーム マネージド キー)。自分でキーを管理することもできます (カスタマー マネージド キー)。 詳細については、「[Azure Disk Storage のサーバー側暗号化](./disk-encryption.md)」を参照してください。
 
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Encryption
@@ -96,7 +96,7 @@ Azure には、データ ディスク、OS ディスク、一時ディスクと�
 
 ### <a name="temporary-disk"></a>一時ディスク
 
-ほとんどの VM には、マネージド ディスクではない一時ディスクが含まれています。 一時ディスクはアプリケーションやプロセスのために短期間の保存場所を提供するものであり、ページやスワップ ファイルなどのデータ格納のみを意図しています。 一時ディスクのデータは、[メンテナンス イベント](./manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#understand-vm-reboots---maintenance-vs-downtime)中、または [VM の再デプロイ](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json)時に失われる可能性があります。 VM を正常に標準再起動している間、一時ディスク上のディスクは残ります。 一時ディスクのない VM に関する詳細については、「[ローカル一時ディスクを持たない Azure VM のサイズ](azure-vms-no-temp-disk.md)」を参照してください。
+ほとんどの VM には、マネージド ディスクではない一時ディスクが含まれています。 一時ディスクはアプリケーションやプロセスのために短期間の保存場所を提供するものであり、ページやスワップ ファイルなどのデータ格納のみを意図しています。 一時ディスクのデータは、[メンテナンス イベント](./manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)中、または [VM の再デプロイ](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json)時に失われる可能性があります。 VM を正常に標準再起動している間、一時ディスク上のディスクは残ります。 一時ディスクのない VM に関する詳細については、「[ローカル一時ディスクを持たない Azure VM のサイズ](azure-vms-no-temp-disk.md)」を参照してください。
 
 Azure Linux VM の一時ディスクは通常 /dev/sdb です。Windows VM の一時ディスクは既定で D: です。 一時ディスクは、ホストで暗号化を有効にしない限り、サーバー側暗号化によって暗号化されません。
 
@@ -104,7 +104,7 @@ Azure Linux VM の一時ディスクは通常 /dev/sdb です。Windows VM の�
 
 マネージド ディスクのスナップショットは、マネージド ディスクの読み取り専用のクラッシュ整合性の完全なコピーであり、既定で Standard マネージド ディスクとして格納されます。 スナップショットを使用すると、任意の時点のマネージド ディスクのバックアップを作成できます。 これらのスナップショットはソース ディスクとは独立して存在し、新しいマネージド ディスクの作成に使用できます。 
 
-スナップショットは、使用されるサイズに基づいて請求されます。 たとえば、64 GiB のプロビジョニング済み容量でマネージド ディスクのスナップショットを作成し、実際に使用されたデータ サイズが 10 GiB である場合、スナップショットは使用されたデータ サイズである 10 GiB 分のみ課金されます。 スナップショットの使用サイズは、[Azure 利用状況レポート](../cost-management-billing/understand/review-individual-bill.md)で確認できます。 たとえば、スナップショットの使用データ サイズが 10 GiB の場合、 **毎日** の利用状況レポートには、使用量として 10 GiB/(31 日) = 0.3226 が表示されます。
+スナップショットは、使用されるサイズに基づいて請求されます。 たとえば、64 GiB のプロビジョニング済み容量でマネージド ディスクのスナップショットを作成し、実際に使用されたデータ サイズが 10 GiB である場合、スナップショットは使用されたデータ サイズである 10 GiB 分のみ課金されます。 スナップショットの使用サイズは、[Azure 利用状況レポート](../cost-management-billing/understand/review-individual-bill.md)で確認できます。 たとえば、スナップショットの使用データ サイズが 10 GiB の場合、**毎日** の利用状況レポートには、使用量として 10 GiB/(31 日) = 0.3226 が表示されます。
 
 マネージド ディスクでスナップショットを作成する方法の詳細については、次のリソースを参照してください。
 

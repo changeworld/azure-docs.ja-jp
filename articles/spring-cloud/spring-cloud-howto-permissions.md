@@ -7,29 +7,29 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: edd9898580c60199b761b24b172a366069f09cb2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 0c0b3bd81e0f73a7879382e28516378bd722bc17
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516190"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498644"
 ---
 # <a name="how-to-use-permissions-in-azure-spring-cloud"></a>Azure Spring Cloud でアクセス許可を使用する方法
-この記事では、Azure Spring Cloud リソースに対するアクセス許可を委任するカスタム ロールを作成する方法を示します。 カスタム ロールは、さまざまな標準アクセス許可を使用して [Azure 組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)を拡張するものです。
+この記事では、Azure Spring Cloud リソースに対するアクセス許可を委任するカスタム ロールを作成する方法を示します。 カスタム ロールは、さまざまな標準アクセス許可を使用して [Azure 組み込みロール](../role-based-access-control/built-in-roles.md)を拡張するものです。
 
 ここでは以下のカスタム ロールを実装します。
 
-* **開発者ロール** : 
+* **開発者ロール**: 
     * デプロイ
     * テスト
     * アプリを再起動する
     * Git リポジトリのアプリ構成に変更を加え、適用できる
     * ログ ストリームを取得できる
-* **Ops - サイト信頼性エンジニアリング** : 
+* **Ops - サイト信頼性エンジニアリング**: 
     * アプリを再起動する
     * ログ ストリームを取得する
     * アプリや構成に変更を加えることはできない
-* **Azure Pipelines/Jenkins/Github アクション ロール** :
+* **Azure Pipelines/Jenkins/Github アクション ロール**:
     * 作成、読み取り、更新、削除の操作を実行できる
     * サービス インスタンス内にある Azure Spring Cloud とアプリで、すべてを作成し、構成できる:Terraform または ARM テンプレートを使用した Azure Pipelines、Jenkins、または GitHub Actions
 
@@ -54,7 +54,7 @@ ms.locfileid: "92516190"
    ![[アクセス許可の追加] の開始](media/spring-cloud-permissions/add-permissions.png)
 
 ### <a name="search-for-azure-spring-cloud-permissions"></a>Azure Spring Cloud のアクセス許可を検索する:
-7. 検索ボックスで、 *Microsoft.app* を検索します。
+7. 検索ボックスで、*Microsoft.app* を検索します。
 *[Microsoft Azure Spring Cloud]* を選択します。
 
    ![[Azure Spring Cloud] を選択します](media/spring-cloud-permissions/spring-cloud-permissions.png)
@@ -257,9 +257,9 @@ ms.locfileid: "92516190"
 
 
 ## <a name="see-also"></a>関連項目
-* [Azure portal を使用して Azure カスタム ロールを作成または更新する](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-portal)
+* [Azure portal を使用して Azure カスタム ロールを作成または更新する](../role-based-access-control/custom-roles-portal.md)
 
 カスタム アクセス許可を定義する 3 つの方法の詳細については、以下を参照してください。
-* [ロールを複製する](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-portal#clone-a-role)
-* [最初から行う](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-portal#start-from-scratch)
-* [JSON から始める](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-portal#start-from-json)
+* [ロールを複製する](../role-based-access-control/custom-roles-portal.md#clone-a-role)
+* [最初から行う](../role-based-access-control/custom-roles-portal.md#start-from-scratch)
+* [JSON から始める](../role-based-access-control/custom-roles-portal.md#start-from-json)

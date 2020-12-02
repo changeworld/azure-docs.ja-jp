@@ -5,17 +5,17 @@ services: data-factory
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: ''
 manager: anandsub
 ms.date: 09/08/2020
-ms.openlocfilehash: 6f8d74ade382db9bfa28c3ab6f03b95b5ac7947c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3204d33cac9f0944ec2ea2cf43be65c7afa46df
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89567123"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500140"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory でのビジュアルの作成
 
@@ -27,7 +27,7 @@ Azure Data Factory ユーザー インターフェイス エクスペリエン�
 
 ## <a name="authoring-canvas"></a>作成キャンバス
 
-**作成キャンバス**を開くには、鉛筆アイコンをクリックします。 
+**作成キャンバス** を開くには、鉛筆アイコンをクリックします。 
 
 ![作成キャンバス](media/author-visually/authoring-canvas.png)
 
@@ -65,7 +65,7 @@ Azure Data Factory UX の *[管理]* タブによってアクセスされる管�
 
 ![動的なコンテンツの追加](media/author-visually/dynamic-content-1.png)
 
-これにより、**Data Factory の式ビルダー**が開き、サポートされているシステム変数、アクティビティの出力、関数、およびユーザー指定の変数またはパラメーターから式を作成できます。 
+これにより、**Data Factory の式ビルダー** が開き、サポートされているシステム変数、アクティビティの出力、関数、およびユーザー指定の変数またはパラメーターから式を作成できます。 
 
 ![式ビルダー](media/author-visually/dynamic-content-2.png)
 

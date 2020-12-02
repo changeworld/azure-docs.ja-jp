@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e594dab3e4bf36fedee7a068068934501ca02f24
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 07ef3da9f67de92c3526b83222c1c8088660d7c7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842789"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499868"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>Azure Cognitive Search の Azure セキュリティ ベースライン
 
@@ -64,7 +64,7 @@ Cognitive Search では、ネットワーク アクセス制御リストを管�
 
 **ガイダンス**:Cognitive Search には、分散型サービス拒否攻撃に対処するための特定の機能は用意されていませんが、Cognitive Search サービスに関連付けられた仮想ネットワークで DDoS Protection Standard を有効にすることで一般的な保護を行うことができます。
 
-- [DDoS 保護を構成する方法](../virtual-network/manage-ddos-protection.md)
+- [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -223,7 +223,7 @@ Azure Monitor 内で、組織のコンプライアンス規則に従って Log A
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics の詳細情報](../azure-monitor/log-query/get-started-portal.md)
+- [Log Analytics の詳細情報](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
 

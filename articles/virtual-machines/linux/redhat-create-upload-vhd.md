@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: guybo
-ms.openlocfilehash: cc8d4458de5f3bbf1eaf111aa10f1377f3c9d46a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c352b9e6b067724fbfc00bf5b0338baf8514421
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292291"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500497"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Azure 用の Red Hat ベースの仮想マシンの準備
 この記事では、Red Hat Enterprise Linux (RHEL) の仮想マシンを Azure で使用できるように準備する方法について説明します。 この記事で取り上げる RHEL のバージョンは 6.7+ と 7.1+ で、 準備対象のハイパーバイザーは Hyper-V、Kernel-based Virtual Machine (KVM)、VMware です。 Red Hat の Cloud Access プログラムに参加するための資格要件の詳細については、[Red Hat の Cloud Access Web サイト](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)と [Azure での RHEL の実行](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)に関するページを参照してください。 RHEL イメージの作成を自動化する方法については、[Azure Image Builder](./image-builder-overview.md) を参照してください。
@@ -28,7 +28,7 @@ ms.locfileid: "87292291"
 * Azure では、VHDX 形式がサポートされません。 Azure でサポートされるのは、容量固定の VHD のみです。 Hyper-V マネージャーを使ってディスクの形式を VHD に変換するか、または convert-vhd コマンドレットを使用してください。 VirtualBox を使用する場合は、ディスクの作成時に、既定の動的割り当てオプションではなく、 **[容量固定]** を選択します。
 * Azure では、Gen1 (BIOS ブート) および Gen2 (UEFI ブート) 仮想マシンがサポートされています。
 * VHD のサイズの上限は、1,023 GB です。
-* Logical Volume Manager (LVM) がサポートされており、Azure 仮想マシンの OS ディスクやデータ ディスクに使用できます。 ただし、一般に、LVM ではなく OS ディスクの標準パーティションを使用することをお勧めします。 特にオペレーティング システム ディスクをトラブルシューティングのために別の同じ仮想マシンに接続する必要がある場合、そうすることで、複製された仮想マシンとの LVM 名の競合を回避することができます。 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) および [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) のドキュメントもご覧ください。
+* Logical Volume Manager (LVM) がサポートされており、Azure 仮想マシンの OS ディスクやデータ ディスクに使用できます。 ただし、一般に、LVM ではなく OS ディスクの標準パーティションを使用することをお勧めします。 特にオペレーティング システム ディスクをトラブルシューティングのために別の同じ仮想マシンに接続する必要がある場合、そうすることで、複製された仮想マシンとの LVM 名の競合を回避することができます。 [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) および [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) のドキュメントもご覧ください。
 * ユニバーサル ディスク フォーマット (UDF) ファイル システムをマウントするためのカーネル サポートが必要です。 Azure での最初の起動時に、ゲストに接続されている UDF でフォーマットされたメディアを介して、プロビジョニング構成が Linux 仮想マシンに渡されます。 Azure Linux エージェントは、その構成を読み取り、仮想マシンをプロビジョニングする UDF ファイル システムをマウントできる必要があります。
 * オペレーティング システム ディスクでスワップ パーティションを構成しないでください。 Linux エージェントは、一時的なリソース ディスク上にスワップ ファイルを作成するよう構成できます。  このことに関する詳細については、次の手順を参照してください。
 * Azure の VHD の仮想サイズはすべて、1 MB にアラインメントさせる必要があります。 未フォーマット ディスクから VHD に変換するときに、変換する前の未フォーマット ディスクのサイズが 1 MB の倍数であることを確認する必要があります。 詳細については、後述の手順を参照してください。 また、[Linux のインストールに関する注記](create-upload-generic.md#general-linux-installation-notes)のセクションも参照してください。
@@ -458,7 +458,7 @@ ms.locfileid: "87292291"
     # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.9.raw rhel-6.9.vhd
     ```
 
-    または、qemu のバージョン **2.6 以降**を使用して `force_size` オプションを含めます。
+    または、qemu のバージョン **2.6 以降** を使用して `force_size` オプションを含めます。
 
     ```console
     # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-6.9.raw rhel-6.9.vhd
@@ -657,7 +657,7 @@ ms.locfileid: "87292291"
     # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
-    または、qemu のバージョン **2.6 以降**を使用して `force_size` オプションを含めます。
+    または、qemu のバージョン **2.6 以降** を使用して `force_size` オプションを含めます。
 
     ```console
     # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
@@ -824,7 +824,7 @@ ms.locfileid: "87292291"
     # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.9.raw rhel-6.9.vhd
     ```
 
-    または、qemu のバージョン **2.6 以降**を使用して `force_size` オプションを含めます。
+    または、qemu のバージョン **2.6 以降** を使用して `force_size` オプションを含めます。
 
     ```console
     # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-6.9.raw rhel-6.9.vhd
@@ -977,7 +977,7 @@ ms.locfileid: "87292291"
     # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
-    または、qemu のバージョン **2.6 以降**を使用して `force_size` オプションを含めます。
+    または、qemu のバージョン **2.6 以降** を使用して `force_size` オプションを含めます。
 
     ```console
     # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
@@ -1124,7 +1124,7 @@ ms.locfileid: "87292291"
 
 1. 仮想マシンを開始します。 インストール ガイドが表示されたら、 **Tab** キーを押してブート オプションを構成します。
 
-1. ブート オプションの最後に `inst.ks=<the location of the kickstart file>` を入力し、 **Enter**キーを押します。
+1. ブート オプションの最後に `inst.ks=<the location of the kickstart file>` を入力し、 **Enter** キーを押します。
 
 1. インストールが完了するのを待ちます。 完了すると、仮想マシンが自動的にシャットダウンされます。 これで、Linux VHD を Azure にアップロードする準備が整いました。
 

@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: 音声テキスト変換、音声テキスト変換ソフトウェア
-ms.openlocfilehash: f26d896397a950bc2c5f5d1f66dca6a01da045d7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 102289fd233a744952f37568abf77a753953637e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015224"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499647"
 ---
 # <a name="what-is-speech-to-text"></a>音声変換の概要
 
@@ -48,7 +48,7 @@ Speech SDK のサンプル コードは、GitHub 上で入手できます。 こ
 
 ## <a name="customization"></a>カスタマイズ
 
-標準の Speech Service モデルに加えて、カスタム モデルも作成できます。 カスタマイズにより、話し方、ボキャブラリ、背景ノイズなどの音声認識の障壁を克服できます。「[カスタム音声](how-to-custom-speech.md)」を参照してください。 カスタマイズのオプションは、言語やロケールによって異なります。[サポートされる言語](./language-support.md)に関するページを参照して、サポートについて確認してください。
+標準の Speech Service モデルに加えて、カスタム モデルも作成できます。 カスタマイズにより、話し方、ボキャブラリ、背景ノイズなどの音声認識の障壁を克服できます。「[カスタム音声](./custom-speech-overview.md)」を参照してください。 カスタマイズのオプションは、言語やロケールによって異なります。[サポートされる言語](./language-support.md)に関するページを参照して、サポートについて確認してください。
 
 ## <a name="batch-transcription"></a>バッチ文字起こし
 

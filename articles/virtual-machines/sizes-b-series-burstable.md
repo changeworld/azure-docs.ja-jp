@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: dc6706d4ec9090c59d4dd668d2ae1dd3ce7d188a
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 819654ef88584cb91d6032e46256258aaed524fd
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928044"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500310"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>負荷の急増に対応できる B シリーズ仮想マシンのサイズ
 
@@ -21,7 +21,7 @@ Web サーバー、概念実証、小規模なデータベース、開発ビル�
 
 B シリーズには、次の VM サイズが用意されています。
 
-[Azure コンピューティング ユニット (ACU)](./acu.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json):状況に応じて異なります*<br>
+[Azure コンピューティング ユニット (ACU)](./acu.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json):状況に応じて異なります*<br>
 [Premium Storage](premium-storage-performance.md):サポートされています<br>
 [Premium Storage キャッシュ](premium-storage-performance.md): サポートされていません<br>
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
@@ -94,23 +94,23 @@ B16 の特徴:
 ## <a name="q--a"></a>Q & A
 
 ### <a name="q-what-happens-when-my-credits-run-out"></a>Q:クレジットが不足した場合はどうなりますか?
-**A** : クレジットを使い切ると、VM がベースライン パフォーマンスに戻ります。
+**A**: クレジットを使い切ると、VM がベースライン パフォーマンスに戻ります。
 
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>Q: VM のベースライン パフォーマンスが 135% というのは、どういうことでしょうか?
 
-**A** : 135% というのは、その VM サイズを構成する 8 つの vCPU により共有される数字です。 たとえば、アプリケーションで 8 個あるコアのうち 4 個を使用してバッチ処理を実行しており、その 4 つの vCPU の使用率がそれぞれ 30% であれば、VM の CPU パフォーマンスの合計は 120% になります。  つまり、ベースライン パフォーマンスとの差分となる 15% が、VM によりクレジット時間として蓄積されていくことになります。  逆に、(VM の CPU パフォーマンスの最大値は 800% であるわけですから) クレジットの残高があれば、同じ VM で 8 つの vCPU すべてについて 100% のパフォーマンスを使用することもできます。
+**A**: 135% というのは、その VM サイズを構成する 8 つの vCPU により共有される数字です。 たとえば、アプリケーションで 8 個あるコアのうち 4 個を使用してバッチ処理を実行しており、その 4 つの vCPU の使用率がそれぞれ 30% であれば、VM の CPU パフォーマンスの合計は 120% になります。  つまり、ベースライン パフォーマンスとの差分となる 15% が、VM によりクレジット時間として蓄積されていくことになります。  逆に、(VM の CPU パフォーマンスの最大値は 800% であるわけですから) クレジットの残高があれば、同じ VM で 8 つの vCPU すべてについて 100% のパフォーマンスを使用することもできます。
 
 ### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>Q:クレジットの残高や消費量を確認するにはどうすればよいでしょうか?
 
-**A** : **Credit** メトリックでは、VM で蓄積されたクレジットの数を確認できます。 **ConsumedCredit** メトリックでは、蓄積した CPU クレジットをどれだけ消費したかを確認できます。    この 2 つのメトリックは、ポータルの [メトリック] ウィンドウのほか、プログラムを使って Azure Monitor API 経由で確認できるようにする予定です。
+**A**: **Credit** メトリックでは、VM で蓄積されたクレジットの数を確認できます。**ConsumedCredit** メトリックでは、蓄積した CPU クレジットをどれだけ消費したかを確認できます。    この 2 つのメトリックは、ポータルの [メトリック] ウィンドウのほか、プログラムを使って Azure Monitor API 経由で確認できるようにする予定です。
 
 Azure でメトリック データにアクセスする方法の詳細については、「[Microsoft Azure のメトリックの概要](../azure-monitor/platform/data-platform.md)」を参照してください。
 
 ### <a name="q-how-are-credits-accumulated-and-consumed"></a>Q:クレジットはどのように蓄積され、消費されますか?
 
-**A** : VM によるクレジットの蓄積と消費のスピードは、VM がベース パフォーマンス レベルで実行されている場合にクレジットの蓄積量と消費量がいずれもゼロになるように設定されています。  VM の実行中にベース パフォーマンス レベルを下回っていればクレジットが増加し、ベース パフォーマンス レベルよりも多く CPU を使用していればクレジットが減少します。
+**A**: VM によるクレジットの蓄積と消費のスピードは、VM がベース パフォーマンス レベルで実行されている場合にクレジットの蓄積量と消費量がいずれもゼロになるように設定されています。  VM の実行中にベース パフォーマンス レベルを下回っていればクレジットが増加し、ベース パフォーマンス レベルよりも多く CPU を使用していればクレジットが減少します。
 
-**例** : 小規模な勤怠データベース アプリケーション用に B1ms サイズの VM をデプロイしました。 このサイズでは、アプリケーションでベースラインとして vCPU の最大 20% を使用できます。この場合、1 分あたりに利用または蓄積できるクレジットは 0.2 となります。
+**例**: 小規模な勤怠データベース アプリケーション用に B1ms サイズの VM をデプロイしました。 このサイズでは、アプリケーションでベースラインとして vCPU の最大 20% を使用できます。この場合、1 分あたりに利用または蓄積できるクレジットは 0.2 となります。
 
 このアプリケーションは、従業員の勤務日の始めと終わり、具体的には AM 7:00 ～ 9:00 と PM 4:00 ～ 6:00 の間にそれぞれ負荷が大きくなります。 それ以外の 20 時間はこのアプリケーションをほとんど使用しないため、vCPU の使用量はわずか 10% にまで下がります。 このピーク外の時間には、利用できるクレジットが 1 分あたり 0.2 でありながら 0.1 しか消費しません。このため、1 時間に 0.1 x 60 = 6 クレジットが蓄積されます。  つまり、ピーク外の 20 時間に合計 120 クレジットが蓄積されることになります。  
 
@@ -120,7 +120,7 @@ Azure でメトリック データにアクセスする方法の詳細につい�
 
 ### <a name="q-how-can-i-calculate-credits-accumulated-and-used"></a>Q:累積されるクレジットと使用されるクレジットを計算するにはどうすればよいですか?
 
-**A** : 次の数式を使用することができます。
+**A**: 次の数式を使用することができます。
 
 (VM の基本 CPU パフォーマンス - CPU 使用率) / 100 = 1 分あたりに蓄積または使用されるクレジット
 
@@ -128,15 +128,15 @@ Azure でメトリック データにアクセスする方法の詳細につい�
 
 ### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>Q: B シリーズでは、Premium Storage データ ディスクをサポートしていますか?
 
-**A** : はい。B シリーズのどのサイズでも、Premium Storage データ ディスクをサポートしています。
+**A**: はい。B シリーズのどのサイズでも、Premium Storage データ ディスクをサポートしています。
 
 ### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>Q: 再デプロイまたは停止/起動後、クレジットの残りが 0 に設定されるのはなぜですか?
 
-**A** : VM が "再デプロイ" されて VM が別のノードに移動すると、累計されたクレジットは失われます。 VM を起動/停止したが、同じノードにとどまっていれば、VM は 累積されたクレジットを保持します。 ノードで VM を新たに起動するたびに初期クレジットが取得されます (Standard_B8ms では 240)。
+**A**: VM が "再デプロイ" されて VM が別のノードに移動すると、累計されたクレジットは失われます。 VM を起動/停止したが、同じノードにとどまっていれば、VM は 累積されたクレジットを保持します。 ノードで VM を新たに起動するたびに初期クレジットが取得されます (Standard_B8ms では 240)。
 
 ### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>Q:サポートされていない OS イメージを B1ls にデプロイするとどうなりますか?
 
-**A** : B1ls は Linux イメージのみをサポートしているため、他の OS イメージをデプロイすると最善のカスタマー エクスペリエンスが得られない可能性があります。
+**A**: B1ls は Linux イメージのみをサポートしているため、他の OS イメージをデプロイすると最善のカスタマー エクスペリエンスが得られない可能性があります。
 
 ## <a name="other-sizes-and-information"></a>その他のサイズと情報
 

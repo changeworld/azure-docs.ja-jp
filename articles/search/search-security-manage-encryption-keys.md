@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: b0871b6365d78129cd6fdaec82fee14e2b0a7a4b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 4fb20b221858c4717d67e0777afbe5c067c00a69
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693445"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499613"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Azure Cognitive Search のデータ暗号化のためにカスタマー マネージド キーを構成する
 
@@ -96,7 +96,7 @@ CMK 暗号化は、[Azure Key Vault](../key-vault/general/overview.md) に依存
 
 ### <a name="using-azure-cli"></a>Azure CLI の使用
 
-+ [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)がある場合は、次のコマンドを実行して必要なプロパティを有効にすることができます。
++ [Azure CLI のインストール](/cli/azure/install-azure-cli)がある場合は、次のコマンドを実行して必要なプロパティを有効にすることができます。
 
    ```azurecli-interactive
    az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --enable-purge-protection
@@ -173,7 +173,7 @@ Azure Key Vault に既にキーがある場合は、この手順をスキップ�
 
 ## <a name="5---encrypt-content"></a>5 - コンテンツの暗号化
 
-インデックス、データ ソース、スキルセット、インデクサー、またはシノニム マップにカスタマー マネージド キーを追加するには、[Search REST API](https://docs.microsoft.com/rest/api/searchservice/) または SDK を使用する必要があります。 ポータルでは、シノニム マップや暗号化プロパティが公開されません。 有効な API インデックスを使用すると、データ ソース、スキルセット、インデクサー、およびシノニム マップによって、最上位の **encryptionKey** プロパティがサポートされます。
+インデックス、データ ソース、スキルセット、インデクサー、またはシノニム マップにカスタマー マネージド キーを追加するには、[Search REST API](/rest/api/searchservice/) または SDK を使用する必要があります。 ポータルでは、シノニム マップや暗号化プロパティが公開されません。 有効な API インデックスを使用すると、データ ソース、スキルセット、インデクサー、およびシノニム マップによって、最上位の **encryptionKey** プロパティがサポートされます。
 
 この例では、Azure Key Vault と Azure Active Directory の値を使用して、REST API を使用します。
 
@@ -196,7 +196,7 @@ Azure Key Vault に既にキーがある場合は、この手順をスキップ�
 
 ## <a name="example-index-encryption"></a>例:インデックスの暗号化
 
-[インデックスの作成 (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) に関する記事を使用して、暗号化されたインデックスを作成します。 使用する暗号化キーを指定するには、`encryptionKey` プロパティを使用します。
+[インデックスの作成 (Azure Cognitive Search REST API)](/rest/api/searchservice/create-index) に関する記事を使用して、暗号化されたインデックスを作成します。 使用する暗号化キーを指定するには、`encryptionKey` プロパティを使用します。
 > [!Note]
 > Key Vault のこれらの詳細はシークレットとは見なされず、Azure portal 内の関連する Azure Key Vault キーのページを参照して簡単に取得できます。
 
@@ -239,7 +239,7 @@ REST API を使用した新しいインデックスの作成の詳細につい�
 
 ### <a name="synonym-map-encryption"></a>シノニム マップの暗号化
 
-[シノニム マップの作成 (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map) に関する記事を使用して、暗号化されたシノニム マップを作成します。 使用する暗号化キーを指定するには、`encryptionKey` プロパティを使用します。
+[シノニム マップの作成 (Azure Cognitive Search REST API)](/rest/api/searchservice/create-synonym-map) に関する記事を使用して、暗号化されたシノニム マップを作成します。 使用する暗号化キーを指定するには、`encryptionKey` プロパティを使用します。
 
 ```json
 {
@@ -263,7 +263,7 @@ REST API を使用した新しいインデックスの作成の詳細につい�
 
 ## <a name="example-data-source-encryption"></a>例:データ ソースの暗号化
 
-「[データ ソースの作成 (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-data-source)」を使用して、暗号化されたデータ ソースを作成します。 使用する暗号化キーを指定するには、`encryptionKey` プロパティを使用します。
+「[データ ソースの作成 (Azure Cognitive Search REST API)](/rest/api/searchservice/create-data-source)」を使用して、暗号化されたデータ ソースを作成します。 使用する暗号化キーを指定するには、`encryptionKey` プロパティを使用します。
 
 ```json
 {
@@ -289,7 +289,7 @@ REST API を使用した新しいインデックスの作成の詳細につい�
 
 ## <a name="example-skillset-encryption"></a>例:スキルセットの暗号化
 
-[スキルセットの作成 (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-skillset) に関する記事を使用して、暗号化されたスキルセットを作成します。 使用する暗号化キーを指定するには、`encryptionKey` プロパティを使用します。
+[スキルセットの作成 (Azure Cognitive Search REST API)](/rest/api/searchservice/create-skillset) に関する記事を使用して、暗号化されたスキルセットを作成します。 使用する暗号化キーを指定するには、`encryptionKey` プロパティを使用します。
 
 ```json
 {
@@ -315,7 +315,7 @@ REST API を使用した新しいインデックスの作成の詳細につい�
 
 ## <a name="example-indexer-encryption"></a>例:インデクサーの暗号化
 
-[インデクサーの作成 (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) に関する記事を使用して、暗号化されたインデクサーを作成します。 使用する暗号化キーを指定するには、`encryptionKey` プロパティを使用します。
+[インデクサーの作成 (Azure Cognitive Search REST API)](/rest/api/searchservice/create-indexer) に関する記事を使用して、暗号化されたインデクサーを作成します。 使用する暗号化キーを指定するには、`encryptionKey` プロパティを使用します。
 
 ```json
 {

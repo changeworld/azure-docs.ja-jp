@@ -8,20 +8,20 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.author: inhenkel
-ms.openlocfilehash: a0ded2a1ad5cd590ab5715edebde2ab19e399e8d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d0811e8f9183ee334d413bcad69f2c7b32023be3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686468"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499358"
 ---
 # <a name="managed-identities-and-trusted-storage-with-media-services"></a>Media Services でのマネージド ID と信頼されたストレージ
 
-Media Services を[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) と共に使用して、信頼されたストレージを有効にすることができます。 Media Services アカウントを作成するときは、それをストレージ アカウントに関連付ける必要があります。 Media Services は、システム認証を使用してそのストレージ アカウントにアクセスできます。 Media Services により、Media Services アカウントとストレージ アカウントが同じサブスクリプションに含まれていることが検証され、また、関連付けを追加するユーザーが Azure Resource Manager RBAC を使用してストレージ アカウントにアクセスしていることが検証されます。
+Media Services を[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) と共に使用して、信頼されたストレージを有効にすることができます。 Media Services アカウントを作成するときは、それをストレージ アカウントに関連付ける必要があります。 Media Services は、システム認証を使用してそのストレージ アカウントにアクセスできます。 Media Services により、Media Services アカウントとストレージ アカウントが同じサブスクリプションに含まれていることが検証され、また、関連付けを追加するユーザーが Azure Resource Manager RBAC を使用してストレージ アカウントにアクセスしていることが検証されます。
 
 ## <a name="trusted-storage"></a>信頼されたストレージ
 
-ただし、ストレージ アカウントをセキュリティで保護するためにファイアウォールを使用する場合は、マネージド ID 認証を使用する必要があります。 これにより、Media Services は、信頼されたストレージ アクセスによって、ファイアウォールまたは VNet 制限で構成されたストレージ アカウントにアクセスできるようになります。  信頼された Microsoft サービスの詳細については、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)」を参照してください。
+ただし、ストレージ アカウントをセキュリティで保護するためにファイアウォールを使用する場合は、マネージド ID 認証を使用する必要があります。 これにより、Media Services は、信頼されたストレージ アクセスによって、ファイアウォールまたは VNet 制限で構成されたストレージ アカウントにアクセスできるようになります。  信頼された Microsoft サービスの詳細については、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](../../storage/common/storage-network-security.md#trusted-microsoft-services)」を参照してください。
 
 ## <a name="media-services-managed-identity-scenarios"></a>Media Services のマネージド ID のシナリオ
 
@@ -57,4 +57,4 @@ Media Services を[マネージド ID](https://docs.microsoft.com/azure/active-d
 
 ## <a name="next-steps"></a>次のステップ
 
-マネージド ID がお客様とお客様の Azure アプリケーションにどのように役立つかの詳細については、[Azure AD のマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) に関するページを参照してください。
+マネージド ID がお客様とお客様の Azure アプリケーションにどのように役立つかの詳細については、[Azure AD のマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください。

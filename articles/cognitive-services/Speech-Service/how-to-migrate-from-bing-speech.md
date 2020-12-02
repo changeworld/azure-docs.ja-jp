@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: 4b7950759914724234ec89e6eaee13b48e735ec9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: d0ffd786d3fb6bb5f0d70095d947c81caa070518
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024315"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499137"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Speech から Speech Service に移行する
 
@@ -79,7 +79,7 @@ Speech SDK を使ってみる
 
 Bing Speech のお客様は[サポート チケット](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を開いて､カスタマー サービスに問い合わせることをお勧めします｡ サポートで[テクニカル サポート プラン](https://azure.microsoft.com/support/plans/)が必要な場合もお問い合わせください。
 
-Speech Service､SDK､および API サポートについては､Speech Service の[サポート ページ](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext)をご覧ください｡
+Speech Service､SDK､および API サポートについては､Speech Service の[サポート ページ](../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)をご覧ください｡
 
 ## <a name="next-steps"></a>次のステップ
 

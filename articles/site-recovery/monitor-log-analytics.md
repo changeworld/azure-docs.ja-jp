@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 7d11fa8605d9cd5f335b6be56097caf7a5222bbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3d3ce8218030bc8ba6c59b26b7360bf2299e02a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006943"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499817"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Azure Monitor ログを使用した Site Recovery の監視
 
@@ -25,7 +25,7 @@ Site Recovery では、Azure Monitor ログを次の目的に使用できます�
 - **Site Recovery の正常性と状態を監視する**。 たとえば、レプリケーションの正常性、テスト フェールオーバーの状態、Site Recovery のイベント、保護対象マシンの RPO (目標復旧ポイント)、ディスク (またはデータ) の変更量を監視することができます。
 - **Site Recovery のアラートを設定する**。 たとえば、マシンの正常性、テスト フェールオーバーの状態、Site Recovery ジョブの状態に対するアラートを構成することができます。
 
-Site Recovery での Azure Monitor ログの使用は、**Azure から Azure への**レプリケーションと **VMware VM (または物理サーバー) から Azure への**レプリケーションでサポートされます。
+Site Recovery での Azure Monitor ログの使用は、**Azure から Azure への** レプリケーションと **VMware VM (または物理サーバー) から Azure への** レプリケーションでサポートされます。
 
 > [!NOTE]
 > チャーン データ ログを取得し、VMware と物理マシンのレート ログをアップロードするには、プロセス サーバーに Microsoft 監視エージェントをインストールする必要があります。 このエージェントからワークスペースに、複製を行うコンピューターのログが送信されます。 この機能は、モビリティ エージェントのバージョン 9.30 以降でのみ利用できます。
@@ -36,7 +36,7 @@ Site Recovery での Azure Monitor ログの使用は、**Azure から Azure へ
 
 - Recovery Services コンテナー内で保護された少なくとも 1 つのマシン。
 - Site Recovery のログを格納するための Log Analytics ワークスペース。 ワークスペースの設定に関する[説明](../azure-monitor/learn/quick-create-workspace.md)を参照してください。
-- Log Analytics におけるログ クエリの記述、実行、分析の方法に関する基本的な理解。 [詳細については、こちらを参照してください](../azure-monitor/log-query/get-started-portal.md)。
+- Log Analytics におけるログ クエリの記述、実行、分析の方法に関する基本的な理解。 [詳細については、こちらを参照してください](../azure-monitor/log-query/log-analytics-tutorial.md)。
 
 最初に、[監視についての一般的な質問](monitoring-common-questions.md)を確認しておくことをお勧めします。
 
@@ -269,7 +269,7 @@ AzureDiagnostics  
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count() 
 ```
-このアラートでは、**しきい値**を 20 に設定します。
+このアラートでは、**しきい値** を 20 に設定します。
 
 ### <a name="single-machine-in-a-critical-state"></a>1 つのマシンがクリティカル状態
 
@@ -284,7 +284,7 @@ AzureDiagnostics  
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count()  
 ```
-このアラートでは、**しきい値**を 1 に設定します。
+このアラートでは、**しきい値** を 1 に設定します。
 
 ### <a name="multiple-machines-exceed-rpo"></a>複数のマシンが RPO を超過
 
@@ -298,7 +298,7 @@ AzureDiagnostics  
 | project name_s , rpoInSeconds_d   
 | summarize count()  
 ```
-このアラートでは、**しきい値**を 20 に設定します。
+このアラートでは、**しきい値** を 20 に設定します。
 
 ### <a name="single-machine-exceeds-rpo"></a>1 つのマシンが RPO を超過
 
@@ -314,7 +314,7 @@ AzureDiagnostics  
 | project name_s , rpoInSeconds_d   
 | summarize count()  
 ```
-このアラートでは、**しきい値**を 1 に設定します。
+このアラートでは、**しきい値** を 1 に設定します。
 
 ### <a name="test-failover-for-multiple-machines-exceeds-90-days"></a>複数のマシンのテスト フェールオーバーが 90 日を超過
 
@@ -329,7 +329,7 @@ AzureDiagnostics 
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count()  
 ```
-このアラートでは、**しきい値**を 20 に設定します。
+このアラートでは、**しきい値** を 20 に設定します。
 
 ### <a name="test-failover-for-single-machine-exceeds-90-days"></a>1 つのマシンのテスト フェールオーバーが 90 日を超過
 
@@ -344,7 +344,7 @@ AzureDiagnostics 
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count()  
 ```
-このアラートでは、**しきい値**を 1 に設定します。
+このアラートでは、**しきい値** を 1 に設定します。
 
 ### <a name="site-recovery-job-fails"></a>Site Recovery ジョブの失敗
 
@@ -357,7 +357,7 @@ AzureDiagnostics  
 | summarize count()  
 ```
 
-このアラートでは、**しきい値**を 1 に、**期間**を 1,440 分に設定して、直近 24 時間の失敗をチェックします。
+このアラートでは、**しきい値** を 1 に、**期間** を 1,440 分に設定して、直近 24 時間の失敗をチェックします。
 
 ## <a name="next-steps"></a>次のステップ
 

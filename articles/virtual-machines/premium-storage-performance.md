@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 6519f9d549c513e03400366447812a170f9ab41c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: acdddcd95883d13393838a47281fb888ac2f9274
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978664"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500395"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: 高パフォーマンス用に設計する
 
@@ -319,7 +319,7 @@ Windows では、記憶域スペースを使用してディスクをストライ
 
 重要:サーバー マネージャーの UI を使用して、ストライプ ボリュームの列の総数を最大 8 列に設定できます。 8 個を超えるディスクを接続するときは、PowerShell を使用してボリュームを作成します。 PowerShell を使用すると、列数をディスクと同じ数に設定できます。 たとえば、1 つのストライプ セットに 16 個のディスクがある場合、*New-VirtualDisk* PowerShell コマンドレットの *NumberOfColumns* パラメーターで 16 列を指定します。
 
-Linux では、MDADM ユーティリティを使用してディスクをストライピングします。 Linux でのディスク ストライピングの詳しい手順については、「 [Linux でのソフトウェア RAID の構成](linux/configure-raid.md)」をご覧ください。
+Linux では、MDADM ユーティリティを使用してディスクをストライピングします。 Linux でのディスク ストライピングの詳しい手順については、「 [Linux でのソフトウェア RAID の構成](/previous-versions/azure/virtual-machines/linux/configure-raid)」をご覧ください。
 
 *ストライプ サイズ*  
 ディスク ストライピングの重要な構成の 1 つに、ストライプ サイズがあります。 ストライプ サイズ (ブロック サイズ) は、アプリケーションがストライプ ボリュームで対応できるデータの最小チャンクです。 構成するストライプ サイズは、アプリケーションの種類と要求パターンによって異なります。 間違ったストライプ サイズを選択すると、IO の不均衡が生じ、アプリケーションのパフォーマンスが低下する可能性があります。

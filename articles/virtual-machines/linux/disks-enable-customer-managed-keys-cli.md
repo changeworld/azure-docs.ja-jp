@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 2acc95190454de2ffdd81a05a6e6cf166a9a6549
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b6001048d087a50a610b19d6fbdf33529f7210b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88814138"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499715"
 ---
 # <a name="use-the-azure-cli-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>Azure CLI を使用して、マネージド ディスクでカスタマー マネージド キーを使用し、サーバー側の暗号化を有効にする
 
-Azure Disk Storage を使用すると、選択した場合は、マネージド ディスクにサーバー側の暗号化 (SSE) を使用しているときに独自のキーを管理できます。 カスタマー マネージド キーを使用する SSE とその他のマネージド ディスクの暗号化の概念については、ディスクの暗号化の記事の「[カスタマー マネージド キー](disk-encryption.md#customer-managed-keys)」セクションを参照してください。
+Azure Disk Storage を使用すると、選択した場合は、マネージド ディスクにサーバー側の暗号化 (SSE) を使用しているときに独自のキーを管理できます。 カスタマー マネージド キーを使用する SSE とその他のマネージド ディスクの暗号化の概念については、ディスクの暗号化の記事の「[カスタマー マネージド キー](../disk-encryption.md#customer-managed-keys)」セクションを参照してください。
 
 ## <a name="restrictions"></a>制限
 

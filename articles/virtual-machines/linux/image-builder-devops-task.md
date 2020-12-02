@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 88bbd83d7ac5b834255c9b4d46d7cef4394f15d3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a3016900b6265bfd56ad1a5a71f70efc01181af5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968669"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499256"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure Image Builder サービスの DevOps タスク
 
@@ -139,7 +139,7 @@ Windows のみの場合、このタスクではカスタマイズの最後に Wi
 
 次の例で、このしくみについて説明します。
 
-:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="リリース パイプラインでの [成果物の追加] の選択。":::
+:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="階層を示すディレクトリ構造。":::
 
 
 * Windows - ファイルは `C:\` にあります。 `webapp` ディレクトリが含まれた `buildArtifacts` という名前のディレクトリが作成されます。
@@ -194,7 +194,7 @@ Windows のみの場合、このタスクではカスタマイズの最後に Wi
     
 #### <a name="total-length-of-image-build"></a>イメージのビルドの合計時間
 
-DevOps パイプライン タスクでは合計時間をまだ変更できません。 既定値の 240 分を使用します。 [buildTimeoutInMinutes](./image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#properties-buildtimeoutinminutes) を増やす場合は、リリース パイプラインで AZ CLI タスクを使用できます。 テンプレートをコピーして送信するようにタスクを構成します。 例については、こちらの[ソリューション](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)を参照するか、Az PowerShell を使用してください。
+DevOps パイプライン タスクでは合計時間をまだ変更できません。 既定値の 240 分を使用します。 [buildTimeoutInMinutes](./image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-buildtimeoutinminutes) を増やす場合は、リリース パイプラインで AZ CLI タスクを使用できます。 テンプレートをコピーして送信するようにタスクを構成します。 例については、こちらの[ソリューション](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)を参照するか、Az PowerShell を使用してください。
 
 
 #### <a name="storage-account"></a>ストレージ アカウント
@@ -222,7 +222,7 @@ DevOps パイプライン タスクでは合計時間をまだ変更できませ
 
 #### <a name="azure-shared-image-gallery"></a>Azure Shared Image Gallery
 
-Shared Image Gallery は既に存在している**必要があります**。
+Shared Image Gallery は既に存在している **必要があります**。
 
 * ResourceID: 
     ```bash
@@ -314,7 +314,7 @@ starting run template...
 
 VM Image Builder タスクの DevOps ログにエラーが表示されるので、customization.log の場所を参照してください。 次に例を示します。
 
-:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="リリース パイプラインでの [成果物の追加] の選択。":::
+:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="失敗を示す DevOps タスク エラーの例。":::
 
 トラブルシューティングの詳細については、[Azure Image Builder サービスのトラブルシューティング](image-builder-troubleshoot.md)に関する記事をご覧ください。 
 

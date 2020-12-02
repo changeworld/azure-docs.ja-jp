@@ -8,19 +8,19 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
-ms.openlocfilehash: 73ae811c17a578cafc557b0cda9e98b101dd5c03
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f4906d4e0590df047bac4ee15cb0e996a59c3d5b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557419"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498865"
 ---
 # <a name="measured-boot-and-host-attestation"></a>メジャー ブートとホストの構成証明
 この記事では、メジャー ブートとホストの構成証明を通じて、Microsoft がホストの整合性とセキュリティを確保する方法について説明します。
 
 ## <a name="measured-boot"></a>メジャー ブート
 
-[トラステッド プラットフォーム モジュール](https://docs.microsoft.com/windows/security/information-protection/tpm/trusted-platform-module-top-node) (TPM) は、信頼できるサードパーティによって提供されるファームウェアを使用する、暗号化によってセキュリティで保護された改ざん防止監査コンポーネントです。 ブート構成ログには、ホストでブートストラップ シーケンスが前回行われたときに、そのプラットフォーム構成レジスタ (PCR) に記録されたハッシュチェーン測定値が含まれています。 次の図に、この記録プロセスを示します。 前にハッシュされた測定値を次の測定値のハッシュに増分的に追加し、そのハッシュ アルゴリズムを共用体で実行すると、ハッシュチェーンが実現します。
+[トラステッド プラットフォーム モジュール](/windows/security/information-protection/tpm/trusted-platform-module-top-node) (TPM) は、信頼できるサードパーティによって提供されるファームウェアを使用する、暗号化によってセキュリティで保護された改ざん防止監査コンポーネントです。 ブート構成ログには、ホストでブートストラップ シーケンスが前回行われたときに、そのプラットフォーム構成レジスタ (PCR) に記録されたハッシュチェーン測定値が含まれています。 次の図に、この記録プロセスを示します。 前にハッシュされた測定値を次の測定値のハッシュに増分的に追加し、そのハッシュ アルゴリズムを共用体で実行すると、ハッシュチェーンが実現します。
 
 ![ホストの構成証明サービスのハッシュチェーンを示す図。](./media/measured-boot-host-attestation/hash-chaining.png)
 

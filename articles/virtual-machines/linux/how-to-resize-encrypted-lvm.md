@@ -7,12 +7,12 @@ ms.subservice: security
 ms.topic: article
 ms.author: jofrance
 ms.date: 09/21/2020
-ms.openlocfilehash: ddd6097fffbc02c9b7b027bcb712e20cc47f2f96
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 732a2ef3c6c33d0b17deaf3b9bdc5d1ac5e5934c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487961"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498916"
 ---
 # <a name="how-to-resize-logical-volume-management-devices-that-use-azure-disk-encryption"></a>Azure Disk Encryption を使用する論理ボリューム管理デバイスのサイズを変更する方法
 
@@ -32,7 +32,7 @@ ms.locfileid: "92487961"
 
 この記事では、以下のことを前提としています。
 
-- 既存の LVM 構成。 詳細については、[Linux VM における LVM の構成](configure-lvm.md)に関する記事をご覧ください。
+- 既存の LVM 構成。 詳細については、[Linux VM における LVM の構成](/previous-versions/azure/virtual-machines/linux/configure-lvm)に関する記事をご覧ください。
 
 - 既に Azure Disk Encryption によって暗号化されているディスク。 詳細については、「[暗号化されたデバイスで LVM と RAID を構成する](how-to-configure-lvm-raid-on-crypt.md)」をご覧ください。
 

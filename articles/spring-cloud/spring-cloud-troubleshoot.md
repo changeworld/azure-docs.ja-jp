@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 91ef218abc51cbdf079fd9e1baa8eb2b907087df
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 09415c47432f71310b10c86390c10e55f1ccc4b2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94954207"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498610"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Azure Spring Cloud に関する一般的な問題のトラブルシューティング
 
@@ -66,7 +66,7 @@ Azure Log Analytics にログをエクスポートしてください。 Spring �
 
 
 
-Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/get-started-portal.md)」をご覧ください。
+Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/log-analytics-tutorial.md)」をご覧ください。
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>アプリケーションで高い CPU 使用率またはメモリ使用率が発生する
 
@@ -88,7 +88,7 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 
 すべてのインスタンスが稼働している場合は、Azure Log Analytics に移動して、アプリケーション ログのクエリを実行し、コードのロジックを調べます。 これは、いずれかがスケールのパーティション分割に影響している可能性があるかどうかを確認するのに役立ちます。 詳しくは、「[診断設定でログとメトリックを分析する](diagnostic-services.md)」をご覧ください。
 
-Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/get-started-portal.md)」をご覧ください。 [Kusto クエリ言語](/azure/kusto/query/)を使用して、ログのクエリを実行します。
+Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/log-analytics-tutorial.md)」をご覧ください。 [Kusto クエリ言語](/azure/kusto/query/)を使用して、ログのクエリを実行します。
 
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Spring アプリケーションを Azure Spring Cloud にデプロイするためのチェックリスト
 
@@ -163,7 +163,7 @@ Azure portal または Resource Manager テンプレートを使用して、JAR 
 
 また、Azure Log Analytics で "_サービス レジストリ_" のクライアント ログを確認することもできます。 詳しくは、「[診断設定でログとメトリックを分析する](diagnostic-services.md)」をご覧ください
 
-Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/get-started-portal.md)」をご覧ください。 [Kusto クエリ言語](/azure/kusto/query/)を使用して、ログのクエリを実行します。
+Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/log-analytics-tutorial.md)」をご覧ください。 [Kusto クエリ言語](/azure/kusto/query/)を使用して、ログのクエリを実行します。
 
 ### <a name="i-want-to-inspect-my-applications-environment-variables"></a>アプリケーションの環境変数を調べたい
 

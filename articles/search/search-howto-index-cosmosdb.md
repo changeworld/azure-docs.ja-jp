@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: aed1aa03527481014a63c636181725b91b17a1e8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: be7c6ec9dbc577143e6c7219580f42c876f536bc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003890"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499970"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search でインデクサーを使用して Cosmos DB データのインデックスを作成する方法 
 
@@ -24,13 +24,13 @@ ms.locfileid: "96003890"
 > [REST API プレビュー バージョン](search-api-preview.md)にはこれらの機能が用意されています。 現時点でポータルによるサポートは一部のみにとどまります。また、.NET SDK によるサポートはありません。
 
 > [!WARNING]
-> Azure Cognitive Search でサポートされるのは、[インデックス作成ポリシー](/azure/cosmos-db/index-policy)が [[常に]](/azure/cosmos-db/index-policy#indexing-mode) に設定されている Cosmos DB コレクションだけです。 [遅延] インデックス作成ポリシーを使用したコレクションのインデックス作成はお勧めできず、データが失われることがあります。 インデックス作成が無効になっているコレクションはサポートされません。
+> Azure Cognitive Search でサポートされるのは、[インデックス作成ポリシー](../cosmos-db/index-policy.md)が [[常に]](../cosmos-db/index-policy.md#indexing-mode) に設定されている Cosmos DB コレクションだけです。 [遅延] インデックス作成ポリシーを使用したコレクションのインデックス作成はお勧めできず、データが失われることがあります。 インデックス作成が無効になっているコレクションはサポートされません。
 
 この記事では、コンテンツを抽出して Azure Cognitive Search で検索できるようにするために Azure Cosmos DB [インデクサー](search-indexer-overview.md)を構成する方法を説明します。 このワークフローでは、Azure Cognitive Search インデックスを作成して、Azure Cosmos DB から抽出された既存のテキストと共に読み込みます。 
 
-用語が混乱を招く可能性があるため、[Azure Cosmos DB のインデックス作成](/azure/cosmos-db/index-overview)と [Azure Cognitive Search のインデックス作成](search-what-is-an-index.md)はそれぞれのサービスに固有の異なる操作であることに注意してください。 Azure Cognitive Search のインデックス作成を開始するには、Azure Cosmos DB データベースが既に存在していて、データが格納されている必要があります。
+用語が混乱を招く可能性があるため、[Azure Cosmos DB のインデックス作成](../cosmos-db/index-overview.md)と [Azure Cognitive Search のインデックス作成](search-what-is-an-index.md)はそれぞれのサービスに固有の異なる操作であることに注意してください。 Azure Cognitive Search のインデックス作成を開始するには、Azure Cosmos DB データベースが既に存在していて、データが格納されている必要があります。
 
-Azure Cognitive Search の Cosmos DB インデクサーでは、アクセスのためのプロトコルがさまざまに異なる [Azure Cosmos DB 項目](../cosmos-db/databases-containers-items.md#azure-cosmos-items)をクロールできます。 
+Azure Cognitive Search の Cosmos DB インデクサーでは、アクセスのためのプロトコルがさまざまに異なる [Azure Cosmos DB 項目](../cosmos-db/account-databases-containers-items.md#azure-cosmos-items)をクロールできます。 
 
 + [SQL API](../cosmos-db/sql-query-getting-started.md) (一般提供開始済み) では、データ ソースとインデクサーの作成に[ポータル](#cosmos-indexer-portal)、[REST API](/rest/api/searchservice/indexer-operations)、[.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer) を利用できます。
 
@@ -130,7 +130,7 @@ REST API を使用して、Azure Cognitive Search のすべてのインデクサ
 > [!NOTE]
 > Cosmos DB Gremlin API または Cosmos DB Cassandra API からデータのインデックスを作成するためには、まず[こちらのフォーム](https://aka.ms/azure-cognitive-search/indexer-preview)に必要事項を入力し、限定プレビュー機能に対するアクセスを要求する必要があります。 要求が処理されると、[REST API バージョン 2020-06-30-Preview](search-api-preview.md) を使ってデータ ソースを作成する手順の案内が届きます。
 
-この記事の前の方で、[Azure Cosmos DB のインデックス作成](/azure/cosmos-db/index-overview)と [Azure Cognitive Search のインデックス作成](search-what-is-an-index.md)が異なる操作であると説明しました。 Cosmos DB のインデックス作成では、既定ですべてのドキュメントのインデックスが自動的に作成されます (Cassandra API の場合を除きます)。 インデックスの自動作成を無効にすると、ドキュメント ID を使用したクエリまたは自己リンクでのみドキュメントにアクセスできるようになります。 Azure Cognitive Search のインデックス作成では、Azure Cognitive Search によってインデックスが作成されるコレクションで、Cosmos DB の自動インデックス作成が有効になっている必要があります。 Cosmos DB Cassandra API インデクサーのプレビューにサインアップした場合には、Cosmos DB のインデックス作成の設定手順に関する案内が届きます。
+この記事の前の方で、[Azure Cosmos DB のインデックス作成](../cosmos-db/index-overview.md)と [Azure Cognitive Search のインデックス作成](search-what-is-an-index.md)が異なる操作であると説明しました。 Cosmos DB のインデックス作成では、既定ですべてのドキュメントのインデックスが自動的に作成されます (Cassandra API の場合を除きます)。 インデックスの自動作成を無効にすると、ドキュメント ID を使用したクエリまたは自己リンクでのみドキュメントにアクセスできるようになります。 Azure Cognitive Search のインデックス作成では、Azure Cognitive Search によってインデックスが作成されるコレクションで、Cosmos DB の自動インデックス作成が有効になっている必要があります。 Cosmos DB Cassandra API インデクサーのプレビューにサインアップした場合には、Cosmos DB のインデックス作成の設定手順に関する案内が届きます。
 
 > [!WARNING]
 > Azure Cosmos DB とは、次世代の DocumentDB です。 以前の API バージョン **2017-11-11** では、`documentdb` 構文を使用できました。 つまり、データ ソースの種類を `cosmosdb` または `documentdb` として指定することができました。 API バージョン **2019-05-06** 以降では、この記事で説明するように、Azure Cognitive Search API とポータルの両方で `cosmosdb` 構文のみがサポートされるようになりました。 つまり、Cosmos DB エンドポイントに接続する場合場合、データ ソースの種類は `cosmosdb` でなければなりません。

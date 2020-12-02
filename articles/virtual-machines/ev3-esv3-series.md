@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: daberry
-ms.openlocfilehash: 250223c5c15a0179fe105e66e7004f8920c5eb34
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 07564955e9cfa6931e461df00ef50a237a66b9b3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637617"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500684"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 および Esv3 シリーズ
 
@@ -80,7 +80,7 @@ Esv3 シリーズの VM は Intel® ハイパー スレッディング テクノ
 
 <sup>2</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 
-<sup>3</sup> Dsv3 シリーズの VM では、ディスクのパフォーマンスを[バースト](linux/disk-bursting.md)でき、一度に最大 30 分間バーストを最大にしておくことができます。
+<sup>3</sup> Dsv3 シリーズの VM では、ディスクのパフォーマンスを[バースト](./disk-bursting.md)でき、一度に最大 30 分間バーストを最大にしておくことができます。
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: aec8448cb82480397f561e095420bbd49982d4b2
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 11f5fcd74b228fa2d57658f5c268e3bebc3c7e93
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093040"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499528"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>診断設定でログとメトリックを分析する
 
@@ -40,7 +40,7 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
 
 メトリックの完全な一覧については、[Spring Cloud のメトリック](./spring-cloud-concept-metrics.md#user-metrics-options)に関する記事を参照してください。
 
-まず、これらのサービスのいずれかを有効にしてデータを受信します。 Log Analytics の構成については、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/get-started-portal.md)」を参照してください。
+まず、これらのサービスのいずれかを有効にしてデータを受信します。 Log Analytics の構成については、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/log-analytics-tutorial.md)」を参照してください。
 
 ## <a name="configure-diagnostics-settings"></a>診断設定の構成
 
@@ -56,7 +56,7 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
 
 > [!NOTE]
 > 1. ログまたはメトリックが生成されてから、ストレージ アカウント、イベント ハブ、または Log Analytics に表示されるまでに、最大 15 分のギャップがある場合があります。
-> 1. Azure Spring Cloud インスタンスが削除または移動された場合、この操作は**診断設定**リソースには連鎖しません。 **診断設定**リソースは、その親 (つまり、Azure Spring Cloud インスタンス) に対して操作を行う前に手動で削除する必要があります。 そうしないと、新しい Azure Spring Cloud インスタンスが、削除されたものと同じリソース ID でプロビジョニングされる場合、または Azure Spring Cloud インスタンスが戻った場合は、以前の**診断設定**リソースが引き続きそれを拡張します。
+> 1. Azure Spring Cloud インスタンスが削除または移動された場合、この操作は **診断設定** リソースには連鎖しません。 **診断設定** リソースは、その親 (つまり、Azure Spring Cloud インスタンス) に対して操作を行う前に手動で削除する必要があります。 そうしないと、新しい Azure Spring Cloud インスタンスが、削除されたものと同じリソース ID でプロビジョニングされる場合、または Azure Spring Cloud インスタンスが戻った場合は、以前の **診断設定** リソースが引き続きそれを拡張します。
 
 ## <a name="view-the-logs-and-metrics"></a>ログとメトリックの表示
 次の見出しで説明しているように、ログとメトリックを表示するにはさまざまな方法があります。
@@ -114,7 +114,7 @@ Log Analytics で使用されるクエリ言語の詳細については、「[Az
 
 ### <a name="use-your-storage-account"></a>ストレージ アカウントを使用する
 
-1. Azure portal で、左側のナビゲーション パネルまたは検索ボックスから**ストレージ アカウント**を検索します。
+1. Azure portal で、左側のナビゲーション パネルまたは検索ボックスから **ストレージ アカウント** を検索します。
 1. 診断設定を追加したときに選択したストレージ アカウントを選択します。
 1. **[BLOB コンテナー]** ウィンドウを開くには、 **[BLOB]** を選択します。
 1. アプリケーション ログを確認するには、**insights-logs-applicationconsole** という名前のコンテナーを検索します。
@@ -135,7 +135,7 @@ Log Analytics で使用されるクエリ言語の詳細については、「[Az
 
 ## <a name="analyze-the-logs"></a>ログの分析
 
-Azure Log Analytics は Kusto エンジンを使用して実行されているので、ログに対してクエリを実行して分析することができます。 Kusto を使用したログのクエリの簡単な概要については、[Log Analytics チュートリアル](../azure-monitor/log-query/get-started-portal.md)を確認してください。
+Azure Log Analytics は Kusto エンジンを使用して実行されているので、ログに対してクエリを実行して分析することができます。 Kusto を使用したログのクエリの簡単な概要については、[Log Analytics チュートリアル](../azure-monitor/log-query/log-analytics-tutorial.md)を確認してください。
 
 アプリケーション ログには、アプリケーションの正常性やパフォーマンスなどに関する重要な情報と詳細ログが記載されています。 次のセクションでは、アプリケーションの現在の状態と過去の状態を理解するのに役立つ単純なクエリを示します。
 

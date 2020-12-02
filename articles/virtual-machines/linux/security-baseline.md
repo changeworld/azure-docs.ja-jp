@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f9835a0bb67fd276096153c54a569ebb58161799
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 45a33981c51f5a2590843fafc1e54f54d2e567cf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842415"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498474"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Linux Virtual Machines 用の Azure のセキュリティ ベースライン
 
@@ -78,7 +78,7 @@ Linux Virtual Machines 用の Azure セキュリティ ベースラインには�
 
 Azure Security Center の Just In Time ネットワーク アクセスを使用すると、限定された期間だけ Linux Virtual Machines の公開を承認された IP アドレスに制限できます。 また、実際のトラフィックと脅威インテリジェンスに基づいてポートとソース IP を制限する NSG 構成を推奨する Azure Security Center のアダプティブ ネットワーク強化を使用します。
 
-* [DDoS 保護を構成する方法](../../virtual-network/manage-ddos-protection.md)
+* [DDoS 保護を構成する方法](../../ddos-protection/manage-ddos-protection.md)
 
 * [Azure Firewall をデプロイする方法l](../../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -278,7 +278,7 @@ Virtual Machines (VM) に診断拡張機能をデプロイすることによっ�
 
 * [Azure Sentinel をオンボードする方法](../../sentinel/quickstart-onboard.md)
 
-* [Log Analytics ワークスペースについて](../../azure-monitor/log-query/get-started-portal.md)
+* [Log Analytics ワークスペースについて](../../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [Azure Monitor でカスタム クエリを実行する方法](../../azure-monitor/log-query/get-started-queries.md)
 
@@ -308,7 +308,7 @@ Virtual Machines (VM) に診断拡張機能をデプロイすることによっ�
 
 * [Linux サーバーを Azure Security Center にオンボードするための手順](../../security-center/quickstart-onboard-machines.md)
 
-* [次のリンクでは、Microsoft 推奨のセキュリティ ガイドラインが提供される。これは、選択された脆弱性ソフトウェアの条件の一覧として使用できる](./security-recommendations.md)
+* [次のリンクでは、Microsoft 推奨のセキュリティ ガイドラインが提供される。これは、選択された脆弱性ソフトウェアの条件の一覧として使用できる](../security-recommendations.md)
 
 **Azure Security Center の監視**: はい
 
@@ -458,7 +458,7 @@ Virtual Machines (VM) に診断拡張機能をデプロイすることによっ�
 
 **ガイダンス**: 監査ログとサインイン ログを Log Analytics ワークスペースに送信するように Azure Active Directory の診断設定を構成します。 また、ログを確認したり、Azure 仮想マシンの認証 Syslog データにクエリを実行したりするには Azure Monitor を使用します。
 
-* [Log Analytics ワークスペースについて](../../azure-monitor/log-query/get-started-portal.md)
+* [Log Analytics ワークスペースについて](../../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [Azure アクティビティ ログを Azure Monitor に統合する方法](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -586,7 +586,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: Linux Virtual Machines (VM) 上の仮想ディスクは、サーバー側暗号化または Azure Disk Encryption (ADE) のどちらかを使用して、保存時に暗号化されます。 Azure Disk Encryption では、Linux の DM-Crypt 機能を利用して、ゲスト VM 内のカスタマー マネージド キーでマネージド ディスクを暗号化します。 カスタマー マネージド キーを使用したサーバー側の暗号化では、ストレージ サービス内のデータを暗号化することで、VM に対して任意の OS の種類とイメージを使用できるため、ADE がさらに向上します。
 
-* [Azure Managed Disks のサーバー側暗号化](../windows/disk-encryption.md)
+* [Azure Managed Disks のサーバー側暗号化](../disk-encryption.md)
 
 * [Linux VM に対する Azure Disk Encryption](./disk-encryption-overview.md)
 
@@ -618,7 +618,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 * [Linux サーバーを Azure Security Center にオンボードするための手順](../../security-center/quickstart-onboard-machines.md)
 
-* [Microsoft 推奨のセキュリティ ガイドライン](./security-recommendations.md)
+* [Microsoft 推奨のセキュリティ ガイドライン](../security-recommendations.md)
 
 **Azure Security Center の監視**: はい
 
@@ -628,9 +628,9 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**:仮想マシンの更新プログラムと修正プログラムを管理するには、Azure Update Management ソリューションを使用します。 Update Management は、サポートされているシステムへの修正プログラムの適用をローカルで構成された更新リポジトリに依存しています。
 
-* [Azure の Update Management ソリューション](../../automation/update-management/update-mgmt-overview.md)
+* [Azure の Update Management ソリューション](../../automation/update-management/overview.md)
 
-* [VM の更新プログラムとパッチを管理する](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
+* [VM の更新プログラムとパッチを管理する](../../automation/update-management/manage-updates-for-vm.md)
 
 **Azure Security Center の監視**: はい
 
@@ -640,9 +640,9 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: サード パーティ製の修正プログラム管理ソリューションを使用できます。 Azure Update Management のソリューションを使用すると、仮想マシンの更新プログラムと修正プログラムを管理できます。 Update Management は、サポートされているシステムへの修正プログラムの適用をローカルで構成された更新リポジトリに依存しています。
 
-* [Azure の Update Management ソリューション](../../automation/update-management/update-mgmt-overview.md)
+* [Azure の Update Management ソリューション](../../automation/update-management/overview.md)
 
-* [VM の更新プログラムとパッチを管理する](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
+* [VM の更新プログラムとパッチを管理する](../../automation/update-management/manage-updates-for-vm.md)
 
 **Azure Security Center の監視**: 利用不可
 
@@ -1016,7 +1016,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: Azure Linux 仮想マシンでのマルウェア対策にはサード パーティ製ツールが必要になります。
 
-* [Cloud Services と Virtual Machines に対して Microsoft Antimalware を構成する方法](./security-recommendations.md)
+* [Cloud Services と Virtual Machines に対して Microsoft Antimalware を構成する方法](../security-recommendations.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1034,7 +1034,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: Azure Linux 仮想マシンでのマルウェア対策にはサード パーティ製ツールが必要になります。
 
-* [Cloud Services と Virtual Machines に対して Microsoft Antimalware を構成する方法](./security-recommendations.md)
+* [Cloud Services と Virtual Machines に対して Microsoft Antimalware を構成する方法](../security-recommendations.md)
 
 **Azure Security Center の監視**: はい
 

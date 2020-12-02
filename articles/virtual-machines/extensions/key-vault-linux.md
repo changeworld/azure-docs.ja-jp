@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e6e3e1769b6043599d606b84b531ec908519d4c7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9377a21415c22e7b68d850ca1a95f931e62fe573
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955567"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499732"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux 用の Key Vault 仮想マシン拡張機能
 
@@ -35,9 +35,9 @@ Key Vault VM 拡張機能では、次の Linux ディストリビューション
 - PEM
 
 ## <a name="prerequisities"></a>前提条件
-  - 証明書を持つ Key Vault インスタンス。 [Key Vault の作成](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)に関するページを参照してください
-  - VM/VMSS には [マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) が割り当てられている必要があります
-  - Key Vault アクセス ポリシーは、シークレットの `get` および `list` アクセス許可を使用して、VM/VMSS マネージド ID が証明書の秘密の部分を取得できるように設定する必要があります。 [Key Vault に対して認証を行う方法](/azure/key-vault/general/authentication)に関するページと「[Key Vault アクセス ポリシーを割り当てる](/azure/key-vault/general/assign-access-policy-cli)」を参照してください。
+  - 証明書を持つ Key Vault インスタンス。 [Key Vault の作成](../../key-vault/general/quick-create-portal.md)に関するページを参照してください
+  - VM/VMSS には [マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) が割り当てられている必要があります
+  - Key Vault アクセス ポリシーは、シークレットの `get` および `list` アクセス許可を使用して、VM/VMSS マネージド ID が証明書の秘密の部分を取得できるように設定する必要があります。 [Key Vault に対して認証を行う方法](../../key-vault/general/authentication.md)に関するページと「[Key Vault アクセス ポリシーを割り当てる](../../key-vault/general/assign-access-policy-cli.md)」を参照してください。
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
@@ -109,7 +109,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 仮想マシン拡張機能の JSON の構成は、テンプレートの仮想マシン リソースのフラグメント内に入れ子にする必要があります (具体的には、仮想マシン テンプレートの場合は `"resources": []` オブジェクト、仮想マシン スケール セットの場合は `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` オブジェクト)。
 
  > [!NOTE]
-> VM 拡張機能では、Key Vault に対する認証のために、システムまたはユーザーのマネージド ID が割り当てられている必要があります。  [Key Vault に対して認証を行う方法と Key Vault アクセス ポリシー](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)に関するページを参照してください。
+> VM 拡張機能では、Key Vault に対する認証のために、システムまたはユーザーのマネージド ID が割り当てられている必要があります。  [Key Vault に対して認証を行う方法と Key Vault アクセス ポリシー](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)に関するページを参照してください。
 > 
 
 ```json

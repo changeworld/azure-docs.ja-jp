@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 98ba7c63e057e1f6b1f37a6529b6e94e2f514d6d
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 86874a60d48ddcbdaca5ae779ad554ee58cc233b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701033"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498848"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス
 この記事では、Azure 内のデータ、アプリケーション、その他の資産を保護するための運用可能な一連のベスト プラクティスについて説明します。
@@ -195,7 +195,7 @@ Azure Cloud Services の場合は、[複数インスタンス](../../cloud-servi
 
 Azure 内のリソースと供に、お客様のオンプレミスのリソースが攻撃されることがよくあります。 オンプレミスの環境を Azure に接続している場合は、オンプレミスのリソースのパブリック インターネットへの露出を最小限にします。
 
-Azure には、ネットワーク攻撃からの保護を提供する 2 つの DDoS [サービス オファリング](../../virtual-network/ddos-protection-overview.md)があります。
+Azure には、ネットワーク攻撃からの保護を提供する 2 つの DDoS [サービス オファリング](../../ddos-protection/ddos-protection-overview.md)があります。
 
 - 基本保護は、追加コストなしに、既定で Azure に統合されます。 グローバルにデプロイされる Azure ネットワークのスケールと容量が、常時有効なトラフィック監視とリアルタイムのリスク軽減によって、一般的なネットワーク層攻撃からの保護を提供します。 基本保護では、ユーザーによる構成やアプリケーションの変更は必要なく、Azure DNS などの PaaS サービスを含むすべての Azure サービスを保護できます。
 - 標準保護は、ネットワーク攻撃に対する高度な DDoS 軽減機能を提供します。 この機能は、お客様固有の Azure リソースを保護するために自動的に調整されます。 保護は、仮想ネットワークの作成時に簡単に有効にできます。 作成の後で行うこともでき、アプリケーションまたはリソースを変更する必要はありません。

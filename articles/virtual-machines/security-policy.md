@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 83d291ae72e79ec3600015fac07ee4ab80fe5df4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b7f6d30ffa849f78b0f7baa2d84e4fb01f3bf192
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843555"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500344"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Azure で仮想マシンをセキュリティで保護し、ポリシーを使用する
 
@@ -41,7 +41,7 @@ Azure マネージド ディスクは、データをクラウドに永続化す�
 
 プラットフォーム マネージド キーを利用してお使いのマネージド ディスクを暗号化することも、お使いの独自のキーを使用して暗号化を管理することもできます。 独自のキーを使用して暗号化を管理する場合は、マネージド ディスク内のすべてのデータの暗号化と暗号化解除に使用する *カスタマー マネージド キー* を指定できます。 
 
-サーバー側の暗号化の詳細については、[Windows](windows/disk-encryption.md) または [Linux](linux/disk-encryption.md) の記事を参照してください。
+サーバー側の暗号化の詳細については、[Windows](./disk-encryption.md) または [Linux](./disk-encryption.md) の記事を参照してください。
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
@@ -73,4 +73,4 @@ VM に接続するときは、公開キー暗号化を使用して、より安�
 
 
 ## <a name="next-steps"></a>次のステップ
-- Azure Security Center を使って [Linux](../security/fundamentals/overview.md) または [Windows](windows/tutorial-azure-security.md) の仮想マシンのセキュリティを監視する手順を参照します。
+- Azure Security Center を使って [Linux](../security/fundamentals/overview.md) または [Windows](./tutorial-azure-security.md) の仮想マシンのセキュリティを監視する手順を参照します。

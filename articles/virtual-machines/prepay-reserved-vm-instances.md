@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: 5df56b304463ab981026fbe0c82d831d83d702c3
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: f23d1fb0162abf05fba97c2f6fb02be9238fabd2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93380076"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500361"
 ---
 # <a name="save-costs-with-azure-reserved-vm-instances-linux"></a>Azure Reserved VM Instances を使用してコストを削減する (Linux)
 
@@ -43,7 +43,7 @@ VM の予約は、VM のデプロイだけでなく、複数のサービスか�
 
 インスタンス サイズの柔軟性の設定によって、予約インスタンスの割引が適用されるサービスが決まります。
 
-設定がオンかオフかにかかわらず、 *ConsumedService* が `Microsoft.Compute` の場合は、条件に一致する VM の使用量に予約割引が自動適用されます。 そのため、 *ConsumedService* の値に対応した使用量データを確認してください。 次に例をいくつか示します。
+設定がオンかオフかにかかわらず、*ConsumedService* が `Microsoft.Compute` の場合は、条件に一致する VM の使用量に予約割引が自動適用されます。 そのため、*ConsumedService* の値に対応した使用量データを確認してください。 次に例をいくつか示します。
 
 - 仮想マシン
 - 仮想マシン スケール セット
@@ -52,7 +52,7 @@ VM の予約は、VM のデプロイだけでなく、複数のサービスか�
 - Azure Kubernetes Service (AKS)
 - Service Fabric
 
-設定がオンの場合、 *ConsumedService* が次の項目のいずれかであれば、条件に一致する VM の使用量に予約割引が自動適用されます。
+設定がオンの場合、*ConsumedService* が次の項目のいずれかであれば、条件に一致する VM の使用量に予約割引が自動適用されます。
 
 - Microsoft.Compute
 - Microsoft.ClassicCompute
@@ -74,23 +74,23 @@ VM の予約は、VM のデプロイだけでなく、複数のサービスか�
 
 予約 VM インスタンスはほとんどの VM サイズで利用できますが、一部例外があります。 次の VM には予約割引は適用されません。
 
-- **VM シリーズ** : A シリーズ、Av2 シリーズ、または G シリーズ
+- **VM シリーズ**: A シリーズ、Av2 シリーズ、または G シリーズ
 
-- **プレビューまたはキャンペーン VM** : プレビュー段階にあるか、プロモーション メーターを使用している VM シリーズまたはサイズ。
+- **プレビューまたはキャンペーン VM**: プレビュー段階にあるか、プロモーション メーターを使用している VM シリーズまたはサイズ。
 
-- **クラウド** : ドイツまたは中国の各リージョンでは、予約購入を利用できません。
+- **クラウド**: ドイツまたは中国の各リージョンでは、予約購入を利用できません。
 
-- **クォータの不足** : 単一サブスクリプションをスコープとする予約の場合、新しい予約インスタンスに利用できる vCPU クォータがそのサブスクリプションに存在していることが必要です。 たとえば対象のサブスクリプションに、D-Series に対して 10 vCPU のクォータ制限がある場合、Standard_D1 インスタンス 11 個分の予約を購入することはできません。 予約のクォータ チェックには、既にサブスクリプションにデプロイされている VM が含まれます。 たとえば、サブスクリプションに D-Series に対する 10 vCPU のクォータがあり、2 つの standard_D1 インスタンスがデプロイされている場合、このサブスクリプションでは、10 standard_D1 インスタンスの予約を購入することができます。 [クォータを増やす要求を作成](../azure-portal/supportability/resource-manager-core-quotas-request.md)して、この問題を解決できます。
+- **クォータの不足**: 単一サブスクリプションをスコープとする予約の場合、新しい予約インスタンスに利用できる vCPU クォータがそのサブスクリプションに存在していることが必要です。 たとえば対象のサブスクリプションに、D-Series に対して 10 vCPU のクォータ制限がある場合、Standard_D1 インスタンス 11 個分の予約を購入することはできません。 予約のクォータ チェックには、既にサブスクリプションにデプロイされている VM が含まれます。 たとえば、サブスクリプションに D-Series に対する 10 vCPU のクォータがあり、2 つの standard_D1 インスタンスがデプロイされている場合、このサブスクリプションでは、10 standard_D1 インスタンスの予約を購入することができます。 [クォータを増やす要求を作成](../azure-portal/supportability/resource-manager-core-quotas-request.md)して、この問題を解決できます。
 
-- **容量制限** : まれなケースですが、VM サイズのサブセットに関して、リージョンのキャパシティが低下しているために、新しい予約を購入できないよう Azure によって制限されます。
+- **容量制限**: まれなケースですが、VM サイズのサブセットに関して、リージョンのキャパシティが低下しているために、新しい予約を購入できないよう Azure によって制限されます。
 
 ## <a name="buy-a-reserved-vm-instance"></a>予約 VM インスタンスの購入
 
-予約 VM インスタンスは [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D) から購入できます。 予約の支払いは、[前払いまたは月払い](../cost-management-billing/reservations/monthly-payments-reservations.md)で行います。
+予約 VM インスタンスは [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D) から購入できます。 予約の支払いは、[前払いまたは月払い](../cost-management-billing/reservations/prepare-buy-reservation.md)で行います。
 予約 VM インスタンスの購入には、次の要件が適用されます。
 
 - 少なくとも 1 つの EA サブスクリプションまたは従量課金制料金のサブスクリプションの所有者ロールである必要があります。
-- EA サブスクリプションの場合、 [EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。
+- EA サブスクリプションの場合、[EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。
 - クラウド ソリューション プロバイダー (CSP) プログラムの場合、管理エージェントまたはセールス エージェントのみが予約購入できます。
 
 インスタンスを購入する場合、次のことが必要です。
@@ -158,6 +158,4 @@ EA 契約を結んでいる場合、 **[Add more option]\(さらにオプショ�
     - [従量課金制料金のサブスクリプションの予約の使用状況について](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
     - [エンタープライズ加入契約の予約使用量について](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
     - [予約に含まれない Windows ソフトウェアのコスト](../cost-management-billing/reservations/reserved-instance-windows-software-costs.md)
-    - [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](https://docs.microsoft.com/partner-center/azure-reservations)
-
-
+    - [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](/partner-center/azure-reservations)
