@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: d323504a46cd35525c889a94d2d044193c1471ac
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8637b33ebc4b697ee6f498acb84ee33718c53f6d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535947"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448848"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 上の Arc 対応 Kubernetes クラスターで Redis を使用した PHP ゲストブック ステートレス アプリケーションをデプロイする
 
@@ -25,7 +25,7 @@ ms.locfileid: "94535947"
 
 デプロイは、Azure Stack Edge Pro デバイス上の Arc 対応 Kubernetes クラスターで GitOps を使用して行われます。 
 
-この手順は、[Azure Stack Edge Pro デバイス上の Kubernetes ワークロード](azure-stack-edge-gpu-kubernetes-workload-management.md)に関する記事を確認し、[Azure Arc 対応 Kubernetes (プレビュー)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview) の概念を理解しているユーザーを対象としています。
+この手順は、[Azure Stack Edge Pro デバイス上の Kubernetes ワークロード](azure-stack-edge-gpu-kubernetes-workload-management.md)に関する記事を確認し、[Azure Arc 対応 Kubernetes (プレビュー)](../azure-arc/kubernetes/overview.md) の概念を理解しているユーザーを対象としています。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -44,7 +44,7 @@ ms.locfileid: "94535947"
 
 1. Azure Stack Edge Pro デバイスへのアクセスに使用される Windows クライアント システムがある。
   
-    - クライアントで Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、[Windows PowerShell のインストール](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)に関するページを参照してください。
+    - クライアントで Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、[Windows PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)に関するページを参照してください。
     
     - [サポートされているオペレーティング システム](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)が搭載されている他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 
     

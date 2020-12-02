@@ -4,12 +4,12 @@ description: Azure Portal を使用して復旧ポイントから Azure 仮想�
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 335dfc665cc7fb9727e4eff3e65a18a2aa5c3f94
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1c28de679bd957a472e543489a2dd15b3883aed5
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002989"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327187"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -203,7 +203,7 @@ VM の復元が必要になることがある、一般的なシナリオはい�
 **NIC/サブネットでのネットワーク セキュリティ グループ (NSG)** | Azure VM バックアップは、vnet、サブネット、および NIC レベルでの NSG 情報のバックアップと復元をサポートします。
 **ゾーンにピン留めされた VM** | ゾーンにピン留めされた Azure VM を (Azure Backup で) バックアップした場合は、それをピン留めされていたのと同じゾーンで復元できます。 [詳細情報](../availability-zones/az-overview.md)
 **可用性セットで VM を復元する** | ポータルから VM を復元するとき、可用性セットを選択するオプションはありません。 復元された VM には可用性セットがありません。 ディスクの復元オプションを使用する場合、提供されているテンプレートまたは PowerShell を使用してディスクから VM を作成するときに[可用性セットを指定する](../virtual-machines/windows/tutorial-availability-sets.md)ことができます。
-**SQL VM などの特別な VM を復元する** | Azure VM バックアップを使用して SQL VM をバックアップした後、VM の復元オプションを使用したか、ディスクを復元した後に VM を作成した場合は、新しく作成した VM を SQL プロバイダーに登録する必要があります ([こちら](../azure-sql/virtual-machines/windows/sql-vm-resource-provider-register.md?tabs=azure-cli%2Cbash)を参照してください)。 これにより、復元された VM が SQL VM に変換されます。
+**SQL VM などの特別な VM を復元する** | Azure VM バックアップを使用して SQL VM をバックアップした後、VM の復元オプションを使用したか、ディスクを復元した後に VM を作成した場合は、新しく作成した VM を SQL プロバイダーに登録する必要があります ([こちら](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md?tabs=azure-cli%2cbash)を参照してください)。 これにより、復元された VM が SQL VM に変換されます。
 
 ### <a name="restore-domain-controller-vms"></a>ドメイン コントローラー VM を復元する
 

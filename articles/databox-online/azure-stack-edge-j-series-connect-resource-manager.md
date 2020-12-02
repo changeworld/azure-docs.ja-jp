@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 5cf406dc0577f477858dd8a6570f7975747112e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 048f2585d8e9ac1b10293083bda0900e7ce468bb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891253"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447603"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスの Azure Resource Manager に接続する
 
@@ -124,7 +124,7 @@ Azure Resource Manager API を呼び出す Windows クライアントで、デ�
 
 1. *.cer* 拡張子を持つ DER 形式としてエクスポートしたルート証明書は、クライアント システムの信頼されたルート証明機関にインポートされるはずです。 詳細な手順については、[信頼されたルート証明機関ストアへの証明書のインポート](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format)に関するページを参照してください。
 
-2. *.pfx* としてエクスポートしたエンドポイント証明書は、 *.cer* としてエクスポートする必要があります。 この *.cer* は、お使いのシステム上の**個人用**証明書ストアにインポートされます。 詳細な手順については、[個人用ストアへの証明書のインポート](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format)に関するページを参照してください。
+2. *.pfx* としてエクスポートしたエンドポイント証明書は、 *.cer* としてエクスポートする必要があります。 この *.cer* は、お使いのシステム上の **個人用** 証明書ストアにインポートされます。 詳細な手順については、[個人用ストアへの証明書のインポート](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format)に関するページを参照してください。
 
 ## <a name="step-3-install-powershell-on-the-client"></a>手順 3:クライアントに PowerShell をインストールする 
 
@@ -138,9 +138,9 @@ Windows クライアントが、次の前提条件を満たしている必要が
 
     **メジャー** バージョンを比較し、それが確実に 5.0 以降であるようにします。
 
-    バージョンが古い場合は、「[既存の Windows PowerShell をアップグレードする](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)」をご覧ください。
+    バージョンが古い場合は、「[既存の Windows PowerShell をアップグレードする](/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)」をご覧ください。
 
-    PowerShell 5.0 をお持ちでない場合は、「[Windows PowerShell のインストール](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6)」に従います。
+    PowerShell 5.0 をお持ちでない場合は、「[Windows PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)」に従います。
 
     サンプル出力を次に示します。
 
@@ -175,11 +175,11 @@ Windows クライアントが、次の前提条件を満たしている必要が
     PSGallery                 Trusted              https://www.powershellgallery.com/api/v2
     ```
     
-リポジトリが信頼されていない場合、または詳細情報が必要な場合は、「[PowerShell ギャラリーにアクセスできるか検証する](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install?view=azs-1908#2-validate-the-powershell-gallery-accessibility)」を参照してください。
+リポジトリが信頼されていない場合、または詳細情報が必要な場合は、「[PowerShell ギャラリーにアクセスできるか検証する](/azure-stack/operator/azure-stack-powershell-install?view=azs-1908#2-validate-the-powershell-gallery-accessibility)」を参照してください。
 
 ## <a name="step-4-set-up-azure-powershell-on-the-client"></a>手順 4:クライアントで Azure PowerShell を設定する 
 
-<!--1. Verify the API profile of the client and identify which version of the Azure PowerShell modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
+<!--1. Verify the API profile of the client and identify which version of the Azure PowerShell modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
 
 1. デバイスで動作する Azure PowerShell モジュールをクライアントにインストールします。
 
@@ -257,7 +257,7 @@ Binary     1.48.204.0 AzureInformationProtection          {Clear-RMSAuthenticati
 
 デバイスへの接続に使用している Windows クライアントで、次の手順を行います。
 
-1. 管理者として**メモ帳**を起動し、C:\Windows\System32\Drivers\etc にある **hosts** ファイルを開きます。
+1. 管理者として **メモ帳** を起動し、C:\Windows\System32\Drivers\etc にある **hosts** ファイルを開きます。
 
     ![エクスプローラーの hosts ファイル](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file.png)
 
@@ -327,7 +327,7 @@ Azure Resource Manager 環境を設定し、Azure Resource Manager を使用し�
     Set-AzureRMEnvironment -Name <Environment Name>
     ```
     
-    詳細については 「[Set-AzureRMEnvironment](https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0)」を参照してください。
+    詳細については 「[Set-AzureRMEnvironment](/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0)」を参照してください。
 
     - 実行するすべてのコマンドレットに対して、環境をインラインで定義します。 これにより、すべての API 呼び出しが確実に正しい環境を経由するようになります。 既定では、呼び出しは Azure パブリックを経由しますが、Azure Stack Edge Pro デバイス用に設定した環境を経由する必要があります。
 

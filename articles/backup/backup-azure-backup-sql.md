@@ -3,12 +3,12 @@ title: SQL Server を Azure に DPM ワークロードとしてバックアッ�
 description: Azure Backup サービスを使用した SQL Server データベースのバックアップの概要
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 8130990f86311221ae6d097137a66a6e9b81be73
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 592a51051a0d02a6c1d491db0fe559e2e62babb2
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218087"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327051"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server を Azure に DPM ワークロードとしてバックアップする
 
@@ -24,7 +24,7 @@ SQL Server データベースを Azure にバックアップし、Azure から�
 
 >[!NOTE]
 >DPM 2019 UR2 では、クラスター共有ボリューム (CSV) を使用して SQL Server フェールオーバー クラスター インスタンス (FCI) がサポートされます。<br><br>
->[Azure 上で記憶域スペース ダイレクトを使用した SQL Server フェールオーバー クラスター インスタンス](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure)、および [Azure 共有ディスクを使用した SQL Server フェールオーバー クラスター インスタンス](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure)の保護は、この機能によってサポートされています。 Azure VM にデプロイされている SQL FCI インスタンスを保護するには、DPM サーバーを Azure 仮想マシンにデプロイする必要があります。 
+>[Azure 上で記憶域スペース ダイレクトを使用した SQL Server フェールオーバー クラスター インスタンス](../azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md)、および [Azure 共有ディスクを使用した SQL Server フェールオーバー クラスター インスタンス](../azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md)の保護は、この機能によってサポートされています。 Azure VM にデプロイされている SQL FCI インスタンスを保護するには、DPM サーバーを Azure 仮想マシンにデプロイする必要があります。 
 
 ## <a name="prerequisites-and-limitations"></a>前提条件と制限事項
 
@@ -83,7 +83,7 @@ Azure で SQL Server データベースを保護するには、まずバック�
     ![データ保護方法を選択する - 短期的なディスク保護または Azure でのオンライン保護](./media/backup-azure-backup-sql/pg-name.png)
 1. **[短期的な目標値の指定]** ページで、ディスクへのバックアップ ポイントを作成するために必要な入力を指定します。
 
-    この例では、 **[リテンション期間]** は " *5 日* " に設定されています。 バックアップの **[同期の頻度]** は、" *15 分* " に 1 回に設定されています。 **[高速完全バックアップ]** は " *午後 8:00* " に設定されています。
+    この例では、 **[リテンション期間]** は "*5 日*" に設定されています。 バックアップの **[同期の頻度]** は、"*15 分*" に 1 回に設定されています。 **[高速完全バックアップ]** は "*午後 8:00*" に設定されています。
 
     ![バックアップ保護の短期的な目標値を設定する](./media/backup-azure-backup-sql/pg-shortterm.png)
 
@@ -100,7 +100,7 @@ Azure で SQL Server データベースを保護するには、まずバック�
 
     **[ボリュームを自動的に拡大する]** を選択すると、運用データの増大に合わせて DPM でバックアップ ボリュームを増やすことができます。 **[ボリュームを自動的に拡大する]** を選択しない場合、バックアップ ストレージは DPM によって保護グループ内のデータ ソースに制限されます。
 
-1. 管理者であれば、この初回バックアップを **自動的 (ネットワーク経由)** に転送することを選択し、転送するタイミングを選択できます。 または、 **手動** でのバックアップの転送を選択します。 **[次へ]** を選択します。
+1. 管理者であれば、この初回バックアップを **自動的 (ネットワーク経由)** に転送することを選択し、転送するタイミングを選択できます。 または、**手動** でのバックアップの転送を選択します。 **[次へ]** を選択します。
 
     ![レプリカの作成方法を選択する](./media/backup-azure-backup-sql/pg-manual.png)
 
@@ -145,7 +145,7 @@ Azure で SQL Server データベースを保護するには、まずバック�
 1. 初回バックアップ コピーを Azure に転送する方法を選択します。
 
     * **[自動 (ネットワーク経由)]** オプションを選択すると、バックアップ スケジュールに従ってデータが Azure に転送されます。
-    * **[オフライン バックアップ]** の詳細については、「 [オフライン バックアップの概要](offline-backup-overview.md)」を参照してください。
+    * **[オフライン バックアップ]** の詳細については、「[オフライン バックアップの概要](offline-backup-overview.md)」を参照してください。
 
     転送メカニズムを選択したら、 **[次へ]** を選択します。
 
@@ -174,7 +174,7 @@ Azure で SQL Server データベースを保護するには、まずバック�
 
 SQL Server データベースなどの保護されたエンティティを Azure から回復するには:
 
-1. DPM サーバーの管理コンソールを開きます。 **[回復]** ワークスペースに移動して、DPM によってバックアップされたサーバーを確認します。 データベース (この例では ReportServer$MSDPM2012) を選択します。 " **オンライン** " で終わる **[回復時刻]** を選択します。
+1. DPM サーバーの管理コンソールを開きます。 **[回復]** ワークスペースに移動して、DPM によってバックアップされたサーバーを確認します。 データベース (この例では ReportServer$MSDPM2012) を選択します。 "**オンライン**" で終わる **[回復時刻]** を選択します。
 
     ![[回復ポイントの選択]](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
 1. データベース名を右クリックし、 **[回復]** を選択します。

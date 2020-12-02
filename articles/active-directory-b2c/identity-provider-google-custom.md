@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/20/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 91a55782492c1b2612652b147e0aca37941bf4db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 635e33223b054aafb1d91c217a44fdd6d9b369b9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388206"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345169"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Google アカウントによるサインインを設定する
 
@@ -34,10 +34,10 @@ ms.locfileid: "85388206"
 Google アカウントのユーザーがサインインできるようにするには、Google アプリケーション プロジェクトを作成する必要があります。
 
 1. お使いのアカウントの資格情報を使用して [Google Developers Console](https://console.developers.google.com/) にサインインします。
-2. **プロジェクト名**を入力し、 **[作成]** をクリックして、新しいプロジェクトを使用していることを確認します。
+2. **プロジェクト名** を入力し、 **[作成]** をクリックして、新しいプロジェクトを使用していることを確認します。
 3. 左側のメニューで **[認証情報]** を選択して、 **[認証情報を作成]、[Oauth クライアント ID]** の順に選択します。
 4. **[Configure consent screen (同意画面の構成)]** を選択します。
-5. 有効な**メール アドレス**を選択または指定し、ユーザーに表示する**製品名**を入力します。 **[認証済みドメイン]** に「`b2clogin.com`」と入力し、 **[保存]** をクリックします。
+5. 有効な **メール アドレス** を選択または指定し、ユーザーに表示する **製品名** を入力します。 **[認証済みドメイン]** に「`b2clogin.com`」と入力し、 **[保存]** をクリックします。
 6. **[アプリケーションの種類]** で **[Web アプリケーション]** を選択します。
 7. アプリケーションの **[名前]** を入力します。
 8. **[承認済みの JavaScript 生成元]** に「`https://your-tenant-name.b2clogin.com`」と入力し、 **[承認済みのリダイレクト URI]** に「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 your-tenant-name をテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用する必要があります。
@@ -53,8 +53,8 @@ Azure AD B2C テナントで前に記録したクライアント シークレッ
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 5. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
-6. **オプション**については、`Manual`を選択します。
-7. ポリシー キーの**名前**を入力します。 たとえば、「 `GoogleSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
+6. **オプション** については、`Manual`を選択します。
+7. ポリシー キーの **名前** を入力します。 たとえば、「 `GoogleSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
 8. **[シークレット]** に、前に記録したクライアント シークレットを入力します。
 9. **[キー使用法]** として [`Signature`] を選択します。
 10. **Create** をクリックしてください。
@@ -84,7 +84,7 @@ Google アカウントをクレーム プロバイダーとして定義するに
             <Item Key="ClaimsEndpoint">https://www.googleapis.com/oauth2/v1/userinfo</Item>
             <Item Key="scope">email profile</Item>
             <Item Key="HttpBinding">POST</Item>
-            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="UsePolicyInRedirectUri">false</Item>
             <Item Key="client_id">Your Google application ID</Item>
           </Metadata>
           <CryptographicKeys>

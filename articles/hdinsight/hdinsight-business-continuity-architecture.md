@@ -8,12 +8,12 @@ keywords: Hadoop の高可用性
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: c322380d6a41e69baa8f753b84c0bc074f334647
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0275fa4cc46dff8781d73563fd250b1ec62ddd56
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547029"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344115"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Azure HDInsight のビジネス継続性アーキテクチャ
 
@@ -48,15 +48,15 @@ Hive のイベントベースのレプリケーションは、プライマリ �
 
 #### <a name="hive-active-primary-with-on-demand-secondary"></a>オンデマンド セカンダリを備えた Hive アクティブ プライマリ
 
-" *オンデマンド セカンダリを備えたアクティブ プライマリ* " のアーキテクチャでは、通常の操作中、アプリケーションからアクティブなプライマリ リージョンに書き込みが行われ、セカンダリ リージョンではクラスターがプロビジョニングされていません。 セカンダリ リージョンの SQL メタストアとストレージは永続化されており、HDInsight クラスターは、スケジュールされた Hive レプリケーションが実行される前にのみ、オンデマンドでスクリプト化およびデプロイされます。
+"*オンデマンド セカンダリを備えたアクティブ プライマリ*" のアーキテクチャでは、通常の操作中、アプリケーションからアクティブなプライマリ リージョンに書き込みが行われ、セカンダリ リージョンではクラスターがプロビジョニングされていません。 セカンダリ リージョンの SQL メタストアとストレージは永続化されており、HDInsight クラスターは、スケジュールされた Hive レプリケーションが実行される前にのみ、オンデマンドでスクリプト化およびデプロイされます。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary.png" alt-text="Hive と Interactive Query のアーキテクチャ":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary.png" alt-text="オンデマンド セカンダリを備えたアクティブ プライマリ":::
 
 #### <a name="hive-active-primary-with-standby-secondary"></a>スタンバイ セカンダリを備えた Hive アクティブ プライマリ
 
-" *スタンバイ セカンダリを備えたアクティブ プライマリ* " では、通常の操作中、アプリケーションからアクティブなプライマリ リージョンへ書き込みが行われ、読み取り専用モードのスケールダウンされたスタンバイ セカンダリ クラスターが実行されます。 通常の操作中は、リージョン固有の読み取り操作をセカンダリにオフロードすることができます。
+"*スタンバイ セカンダリを備えたアクティブ プライマリ*" では、通常の操作中、アプリケーションからアクティブなプライマリ リージョンへ書き込みが行われ、読み取り専用モードのスケールダウンされたスタンバイ セカンダリ クラスターが実行されます。 通常の操作中は、リージョン固有の読み取り操作をセカンダリにオフロードすることができます。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Hive と Interactive Query のアーキテクチャ":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="スタンバイ セカンダリを備えたアクティブ プライマリ":::
 
 Hive レプリケーションとコード サンプルの詳細については、[Azure HDInsight クラスターでの Apache Hive レプリケーション](./interactive-query/apache-hive-replication.md)に関する記事を参照してください。
 
@@ -85,13 +85,13 @@ HDInsight でネイティブに提供されるものを超える顧客固有の�
 
 通常の操作中は、アプリケーションからプライマリ リージョンにある Spark および Hive クラスターへ読み込みと書き込みが行われ、セカンダリ リージョンではクラスターがプロビジョニングされていません。 セカンダリ リージョンにある SQL メタストア、Hive ストレージ、および Spark ストレージは永続化されています。 Spark と Hive クラスターは、オンデマンドでスクリプト化およびデプロイされます。 Hive レプリケーションは Hive ストレージと Hive メタストアをレプリケートするために使用され、Azure Data Factory の `DistCP` はスタンドアロンの Spark ストレージをコピーするために使用されます。 依存関係の `DistCp` の計算のため、各 Hive レプリケーションの実行の前に Hive クラスターをデプロイする必要があります。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary-spark.png" alt-text="Hive と Interactive Query のアーキテクチャ":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary-spark.png" alt-text="オンデマンド セカンダリを備えたアクティブなプライマリの Apache Spark アーキテクチャ":::
 
 #### <a name="spark-active-primary-with-standby-secondary"></a>スタンバイ セカンダリを備えた Spark アクティブ プライマリ
 
 通常の操作中は、アプリケーションからプライマリ リージョンの Spark と Hive クラスターに対して読み取りと書き込みが行われ、読み取り専用モードのスケールダウンされたスタンバイ状態の Hive および Spark クラスターがセカンダリ リージョンで実行されます。 通常の操作中は、リージョン固有の Hive および Spark の読み取り操作をセカンダリにオフロードすることができます。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary-spark.png" alt-text="Hive と Interactive Query のアーキテクチャ":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary-spark.png" alt-text="アクティブ プライマリを備えたスタンバイ セカンダリ (Apache Spark)":::
 
 ## <a name="apache-hbase"></a>Apache HBase
 
@@ -131,19 +131,19 @@ HBase レプリケーションは、次の 3 つのモードで設定できま�
 
 セカンダリ クラスターは、独自のテーブルをホストできる通常の HBase クラスターとして動作し、リージョンのアプリケーションからの読み取りと書き込みを行うことができます。 ただし、レプリケートされたテーブルや、セカンダリにネイティブなテーブルへの書き込みは、プライマリにはレプリケートされません。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-follower.png" alt-text="Hive と Interactive Query のアーキテクチャ":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-follower.png" alt-text="HBase のリーダー フォロワー モデル":::
 
 #### <a name="hbase-replication--leader--leader-model"></a>HBase レプリケーション:リーダー/リーダー モデル
 
 このリージョンをまたがるセットアップは、プライマリ リージョンとセカンダリ リージョンの間でレプリケーションが双方向に行われることを除けば、一方向のセットアップとよく似ています。 アプリケーションでは、読み取り/書き込みモードで両方のクラスターを使用でき、更新内容はそれらの間で非同期に交換されます。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-leader.png" alt-text="Hive と Interactive Query のアーキテクチャ":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-leader.png" alt-text="HBase のリーダー リーダー モデル":::
 
 #### <a name="hbase-replication-multi-region-or-cyclic"></a>HBase レプリケーション:複数リージョンまたは循環
 
 複数リージョン/循環レプリケーション モデルは HBase レプリケーションの拡張であり、リージョン固有の HBase クラスターの読み取りと書き込みが可能な複数のアプリケーションを含む、グローバル冗長 HBase アーキテクチャを作成するために使用できます。 クラスターは、ビジネス要件に応じて、リーダー/リーダーまたはリーダー/フォロワーのさまざまな組み合わせで設定することができます。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-cyclic.png" alt-text="Hive と Interactive Query のアーキテクチャ":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-cyclic.png" alt-text="HBase の循環モデル":::
 
 ## <a name="apache-kafka"></a>Apache Kafka
 
@@ -151,7 +151,7 @@ HBase レプリケーションは、次の 3 つのモードで設定できま�
 
 レプリケーションが開始された時点のトピックの有効期間によっては、MirrorMaker トピックのレプリケーションにより、ソースとレプリカのトピックの間で異なるオフセットが発生する可能性があります。 HDInsight Kafka クラスターでは、個々のクラスター レベルで使用できる高可用性機能であるトピック パーティション レプリケーションもサポートされています。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-replication.png" alt-text="Hive と Interactive Query のアーキテクチャ":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-replication.png" alt-text="Apache Kafka レプリケーション":::
 
 ### <a name="apache-kafka-architectures"></a>Apache Kafka アーキテクチャ
 
@@ -172,7 +172,7 @@ HBase レプリケーションは、次の 3 つのモードで設定できま�
 * アクティブとパッシブ クラスター間のトピックの結果整合性。
 * プライマリへのフェールバックにより、トピック内のメッセージに不整合が生じる可能性がある。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-passive.png" alt-text="Hive と Interactive Query のアーキテクチャ":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-passive.png" alt-text="Apache Kafka のアクティブ パッシブ モデル":::
 
 #### <a name="kafka-replication-active--active"></a>Kafka レプリケーション:アクティブ/アクティブ
 
@@ -188,7 +188,7 @@ HBase レプリケーションは、次の 3 つのモードで設定できま�
 * 循環レプリケーションの問題に対処する必要がある。  
 * 双方向レプリケーションにより、リージョンのデータ エグレス コストが高くなる。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-active.png" alt-text="Hive と Interactive Query のアーキテクチャ":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-active.png" alt-text="Apache Kafka のアクティブ アクティブ モデル":::
 
 ## <a name="hdinsight-enterprise-security-package"></a>HDInsight Enterprise セキュリティ パッケージ
 
@@ -198,11 +198,11 @@ Ranger メタストア レプリケーション:
 
 Ranger メタストアは、データ承認を制御するための Ranger ポリシーを永続的に格納して提供するために使用されます。 Ranger ポリシーはプライマリとセカンダリで独立して維持し、セカンダリは読み取りレプリカとして維持することをお勧めします。
   
-要件でプライマリとセカンダリの間で Ranger ポリシーを同期させておくことが求められる場合は、[Ranger Import/Export](https://cwiki.apache.org/confluence/display/RANGER/User+Guide+For+Import-Export#:~:text=Ranger%20has%20introduced%20a%20new,can%20import%20and%20export%20policies.&text=Also%20can%20export%2Fimport%20a,repositories\)%20via%20Ranger%20Admin%20UI) を使用して、プライマリからセカンダリへ Ranger ポリシーを定期的にバックアップおよびインポートします。
+要件でプライマリとセカンダリの間で Ranger ポリシーを同期させておくことが求められる場合は、[Ranger Import/Export](https://cwiki.apache.org/confluence/display/RANGER/User+Guide+For+Import-Export) を使用して、プライマリからセカンダリへ Ranger ポリシーを定期的にバックアップおよびインポートします。
 
 プライマリとセカンダリの間で Ranger ポリシーをレプリケートすると、セカンダリが書き込み可能になり、セカンダリへの誤った書き込みが発生して、データに一貫性がなくなる可能性があります。  
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hdinsight-enterprise-security-package.png" alt-text="Hive と Interactive Query のアーキテクチャ":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hdinsight-enterprise-security-package.png" alt-text="HDInsight Enterprise セキュリティ パッケージのアーキテクチャ":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 9a6b0910fcfd2a632f2520a2fe683b15592017cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15e2d7a144b54f443b8298b20dbfacf78a50f9e1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891178"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447549"
 ---
 # <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスにアクセスする Windows クライアント上で TLS 1.2 を構成する
 
@@ -38,11 +38,11 @@ Windows クライアントを使用して Azure Stack Edge Pro デバイスに�
 
 お使いの環境でシステム全体に TLS 1.2 を設定する場合、次のドキュメントのガイドラインに従ってください。
 
-- [全般 - TLS 1.2 を有効にする方法](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12)
-- [クライアントで TLS 1.2 を有効にする方法](https://docs.microsoft.com/configmgr/core/plan-design/security/enable-tls-1-2-client)
-- [サイト サーバーとリモート サイト システムで TLS 1.2 を有効にする方法](https://docs.microsoft.com/configmgr/core/plan-design/security/enable-tls-1-2-server)
-- [TLS/SSL のプロトコル (Schannel SSP)](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-ecc-curve-order)
-- [暗号スイート](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12):具体的には、「[TLS 暗号スイートの順序の構成](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order)」 必ず現在の暗号スイートを一覧に挙げ、不足しているものがあれば次の一覧から追加してください。
+- [全般 - TLS 1.2 を有効にする方法](/windows-server/security/tls/tls-registry-settings#tls-12)
+- [クライアントで TLS 1.2 を有効にする方法](/configmgr/core/plan-design/security/enable-tls-1-2-client)
+- [サイト サーバーとリモート サイト システムで TLS 1.2 を有効にする方法](/configmgr/core/plan-design/security/enable-tls-1-2-server)
+- [TLS/SSL のプロトコル (Schannel SSP)](/windows-server/security/tls/manage-tls#configuring-tls-ecc-curve-order)
+- [暗号スイート](/windows-server/security/tls/tls-registry-settings#tls-12):具体的には、「[TLS 暗号スイートの順序の構成](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order)」 必ず現在の暗号スイートを一覧に挙げ、不足しているものがあれば次の一覧から追加してください。
 
     - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
     - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
@@ -68,7 +68,7 @@ Windows クライアントを使用して Azure Stack Edge Pro デバイスに�
     New-ItemProperty -Path "$HklmSoftwarePath\Policies\Microsoft\Cryptography\Configuration\SSL\00010002" -Name "EccCurves" -PropertyType MultiString -Value @("NistP256", "NistP384")
     ```
     
-    - [最小 RSA キー交換サイズを 2048 に設定します](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#keyexchangealgorithm---client-rsa-key-sizes)。
+    - [最小 RSA キー交換サイズを 2048 に設定します](/windows-server/security/tls/tls-registry-settings#keyexchangealgorithm---client-rsa-key-sizes)。
 
 
 

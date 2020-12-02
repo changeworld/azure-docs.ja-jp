@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 3087c209b844d691173edbbd8a993c1d0aae319b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be7d477d08b025fd450bfa859e8eb677ba680143
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903634"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446368"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>Azure Stack Edge Pro の順序の問題をトラブルシューティングする
 
@@ -33,7 +33,7 @@ ms.locfileid: "90903634"
 
 ![サポートされていないサブスクリプションまたはリージョン](media/azure-stack-edge-troubleshoot-ordering/azure-stack-edge-troubleshoot-ordering-01.png)
 
-**推奨されている解決方法:** [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/)、[クラウド ソリューション プロバイダー (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)、[Microsoft Azure スポンサープラン](https://azure.microsoft.com/offers/ms-azr-0036p/)など、サポートされているサブスクリプションを使用していることを確認してください。 従量課金制サブスクリプションはサポートされていません。 詳細については、[Azure Stack Edge リソースの前提条件](azure-stack-edge-deploy-prep.md#prerequisites)に関するページを参照してください。
+**推奨されている解決方法:** [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/)、[クラウド ソリューション プロバイダー (CSP)](/partner-center/azure-plan-lp)、[Microsoft Azure スポンサープラン](https://azure.microsoft.com/offers/ms-azr-0036p/)など、サポートされているサブスクリプションを使用していることを確認してください。 従量課金制サブスクリプションはサポートされていません。 詳細については、[Azure Stack Edge リソースの前提条件](azure-stack-edge-deploy-prep.md#prerequisites)に関するページを参照してください。
 
 Microsoft では、サブスクリプションの種類のアップグレードがケース バイ ケースで許可される可能性があります。 [Microsoft サポート](https://azure.microsoft.com/support/options/)までご連絡ください。お客様のニーズを理解し、これらの制限を適切に調整できるようにいたします。
 

@@ -3,12 +3,12 @@ title: Azure Event Hubs - 例外 (レガシ)
 description: この記事では、Azure Event Hubs メッセージングの例外と推奨アクションの一覧を示します。
 ms.topic: article
 ms.date: 11/02/2020
-ms.openlocfilehash: adaf7242530727a1f77a9662110a43341e57e80a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 357a87c53023962dd9195a616bd9ce9e01c55bf9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289342"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340969"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>Event Hubs メッセージングの例外 - .NET (レガシ)
 このセクションでは、.NET Framework API によって生成される .NET 例外を示します。 
@@ -107,11 +107,11 @@ Event Hubs では、タイムアウトは接続文字列の一部として、ま
 
 - イベント ハブ上のすべてのパーティション間で負荷が均等に分散されていません。パーティションの 1 つがローカルのスループット単位制限に達しています。
     
-    **解決方法** :パーティション分散戦略を変更するか、 [EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) を実行すると、問題の解決に役立つ場合があります。
+    **解決方法**:パーティション分散戦略を変更するか、[EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) を実行すると、問題の解決に役立つ場合があります。
 
-- Event Hubs 名前空間に十分なスループット ユニットがありません ( [Azure portal](https://portal.azure.com) の Event Hubs 名前空間ウィンドウで **[メトリック]** 画面を確認します)。 ポータルに集計 (1 分) 情報が表示されていますが、スループットはリアルタイムで測定しているため、これは単なる推定値です。
+- Event Hubs 名前空間に十分なスループット ユニットがありません ([Azure portal](https://portal.azure.com) の Event Hubs 名前空間ウィンドウで **[メトリック]** 画面を確認します)。 ポータルに集計 (1 分) 情報が表示されていますが、スループットはリアルタイムで測定しているため、これは単なる推定値です。
 
-    **解決方法** :名前空間のスループット単位数を増やすと、問題の解決に役立つ場合があります。 
+    **解決方法**:名前空間のスループット単位数を増やすと、問題の解決に役立つ場合があります。 
 
     スループット ユニットは、Azure portal の **[Event Hubs 名前空間]** ページの **[スケール]** ページまたは **[概要]** ページで構成できます。 または、使用量のニーズに合わせてスループット ユニットの数を増やすことで、自動的にスケールアップする[自動インフレ](event-hubs-auto-inflate.md)機能を使用することもできます。
 
@@ -123,13 +123,13 @@ Event Hubs では、タイムアウトは接続文字列の一部として、ま
     
     **[概要]** ページの **[メトリックの表示]** セクションで、 **[スループット]** タブに切り替えます。x 軸が 1 分間隔の、より大きいウィンドウで開くグラフを選択します。 ピーク値を確認し、それらを 60 で除算して、受信バイト/秒または送信バイト/秒を取得します。 同様の方法を使用して、 **[要求]** タブのピーク時の 1 秒あたりの要求数を計算します。 
 
-    TU × 制限 (イングレスの場合は 1 MB/秒、またはイングレスに対する要求数 1000/秒、エグレスの場合は 2 MB/秒) の数よりも大きい値が表示される場合は、Event Hubs 名前空間の **[スケール]** (左側のメニュー) ページを使用して手動でスケールアップするか、Event Hubs の[自動インフレ機能](event-hubs-auto-inflate.md)を使用して TU の数を増やします。 自動インフレで増やせるのは、最大 20 TU までであることに注意してください。 これを正確に 40 TU に上げるには、[サポート リクエスト](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)を送信します。
+    TU × 制限 (イングレスの場合は 1 MB/秒、またはイングレスに対する要求数 1000/秒、エグレスの場合は 2 MB/秒) の数よりも大きい値が表示される場合は、Event Hubs 名前空間の **[スケール]** (左側のメニュー) ページを使用して手動でスケールアップするか、Event Hubs の [自動インフレ機能](event-hubs-auto-inflate.md)を使用して TU の数を増やします。 自動インフレで増やせるのは、最大 20 TU までであることに注意してください。 これを正確に 40 TU に上げるには、[サポート リクエスト](../azure-portal/supportability/how-to-create-azure-support-request.md)を送信します。
 
 ### <a name="error-code-50001"></a>エラー コード 50001
 
 このエラーはあまり発生しません。 名前空間に対してコードを実行しているコンテナーの CPU が不足している場合、つまり、Event Hubs ロード バランサーの開始前の時間が数秒もないときに発生します。
 
-**解決方法** :GetRuntimeInformation メソッドの呼び出しの制限。 Azure Event Hubs は、GetRuntimeInfo に対して 1 秒あたり最大 50 の呼び出しをサポートしています。 制限に達すると、次のような例外が表示される可能性があります。
+**解決方法**:GetRuntimeInformation メソッドの呼び出しの制限。 Azure Event Hubs は、GetRuntimeInfo に対して 1 秒あたり最大 50 の呼び出しをサポートしています。 制限に達すると、次のような例外が表示される可能性があります。
 
 ```
 ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.

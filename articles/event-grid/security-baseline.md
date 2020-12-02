@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ccc39513505f299e85cbc270e2daeafeac6ca6fd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 575742ab0d886a69dc5acccf4a65ac8c91b5a871
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94845188"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341037"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Event Grid 用の Azure セキュリティ ベースライン
 
@@ -74,7 +74,7 @@ Azure Event Grid は、トピックおよびドメインへの発行のための
 
 - [Azure Event Grid のトピックまたはドメインに対してプライベート エンドポイントを構成する方法](configure-private-endpoints.md)
 
-- [DDoS 保護を構成する方法](../virtual-network/manage-ddos-protection.md)
+- [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
 - [Azure Security Center の統合された脅威インテリジェンスの詳細について](../security-center/azure-defender.md)
 
@@ -227,7 +227,7 @@ Event Grid に対してプライベート エンドポイントが作成され�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics クエリの使用方法](../azure-monitor/log-query/get-started-portal.md)
+- [Log Analytics クエリの使用方法](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
 

@@ -5,12 +5,12 @@ author: batrived
 ms.topic: article
 ms.date: 06/21/2020
 ms.author: batrived
-ms.openlocfilehash: 7b93d7a110889192bb5be6fffa56a73758d6faa2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: fa119784715b8c88ef3c9f2700b2cac1cc467234
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892317"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339747"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>接続に関する問題のトラブルシューティング - Azure Event Grid
 
@@ -50,7 +50,7 @@ telnet {sampletopicname}.{region}-{suffix}.eventgrid.azure.net 443
 
 Azure を使用している場合、使用している、または使用しようとしているすべての Azure サービスにアクセスするために、企業のファイアウォールまたはプロキシで特定の IP アドレス範囲または URL を許可することが必要になる場合があります。 Event Grid によって使用される IP アドレスでトラフィックが許可されていることを確認します。 Azure Event Grid によって使用される IP アドレスについては、「[Azure の IP 範囲とサービス タグ - パブリック クラウド](https://www.microsoft.com/download/details.aspx?id=56519)」と[サービス タグ - AzureEventGrid](network-security.md#service-tags) を参照してください。
 
-「 [Azure の IP 範囲とサービス タグ - パブリック クラウド](https://www.microsoft.com/download/details.aspx?id=56519)」ドキュメントには、 **リージョン別** の IP アドレスも記載されています。 企業のファイアウォールまたはプロキシで、 **トピックのリージョン** と **ペアになっているリージョン** に対してアドレス範囲を許可することができます。 リージョンのペアになっているリージョンについては、「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](/azure/best-practices-availability-paired-regions)」をご覧ください。 
+「[Azure の IP 範囲とサービス タグ - パブリック クラウド](https://www.microsoft.com/download/details.aspx?id=56519)」ドキュメントには、**リージョン別** の IP アドレスも記載されています。 企業のファイアウォールまたはプロキシで、**トピックのリージョン** と **ペアになっているリージョン** に対してアドレス範囲を許可することができます。 リージョンのペアになっているリージョンについては、「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)」をご覧ください。 
 
 > [!NOTE]
 > 新しい IP アドレスを AzureEventGrid サービス タグに追加することはできますが、通常ではありません。 サービス タグを週単位で確認することをお勧めします。

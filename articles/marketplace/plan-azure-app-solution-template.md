@@ -8,27 +8,27 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 38c7072472a13d7fe3d529933ca17a51e6a86733
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 3e4d0513808cdc44fc71e182a07fa6b050d182ee
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577806"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452503"
 ---
 # <a name="plan-a-solution-template-for-an-azure-application-offer"></a>Azure アプリケーション オファーのソリューション テンプレートを計画する
 
 この記事では、Azure アプリケーション オファーのソリューション テンプレート プランを発行するための要件について説明します。 ソリューション テンプレート プランは、Azure アプリケーション オファーでサポートされる 2 種類のプランのうちの 1 つです。 これらの 2 種類のプランの違いについては、「[プランの種類](plan-azure-application-offer.md#plans)」を参照してください。 まだそうしていない場合は、[Azure アプリケーション オファーの計画](plan-azure-application-offer.md)に関するページを参照してください。
 
-ソリューション テンプレート プランの種類には、ソリューション インフラストラクチャを自動的にデプロイするために [Azure Resource Manager テンプレート (ARM テンプレート)](/azure/azure-resource-manager/templates/overview) が必要です。
+ソリューション テンプレート プランの種類には、ソリューション インフラストラクチャを自動的にデプロイするために [Azure Resource Manager テンプレート (ARM テンプレート)](../azure-resource-manager/templates/overview.md) が必要です。
 
 ## <a name="solution-template-requirements"></a>ソリューション テンプレートの要件
 
 | 必要条件 | 詳細 |
 | ------------ | ------------- |
 | 請求/メータリング | ソリューション テンプレート プランは取引可能ではありませんが、Microsoft のコマーシャル マーケットプレースを通じて課金される有料 VM プランをデプロイするために利用できます。 ソリューションの Resource Manager テンプレートによってデプロイされるリソースは、顧客の Azure サブスクリプション内に設定されます。 従量課金制の仮想マシンが Microsoft 経由で顧客とトランザクション処理され、顧客の Azure サブスクリプションにより課金されます。 <br><br> ライセンス持ち込み (BYOL) 請求の場合、顧客サブスクリプションで発生するインフラストラクチャ コストについては Microsoft が請求しますが、ソフトウェア ライセンス料金についてはユーザーが顧客に対して直接処理します。 |
-| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。 詳細については、次を参照してください。<ul><li>[Azure VM の技術資産を作成する](/azure/marketplace/partner-center-portal/vm-certification-issues-solutions#how-to-address-a-vulnerability-or-exploit-in-a-vm-offer.md) (Windows VHD 用)</li><li>[Azure で動作保証済みの Linux ディストリビューション](/azure/virtual-machines/linux/endorsed-distros) (Linux VHD 用)。</li></ul> |
+| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。 詳細については、次を参照してください。<ul><li>[Azure VM の技術資産を作成する](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (Windows VHD 用)</li><li>[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md) (Linux VHD 用)。</li></ul> |
 | 顧客の利用状況属性 | Azure Marketplace に発行されるすべてのソリューション テンプレートで、顧客の利用状況属性を有効にする必要があります。 顧客の利用状況属性とそれを有効にする方法の詳細については、「[Azure パートナーの顧客の使用状況の属性](azure-partner-customer-usage-attribution.md)」をご覧ください。 |
-| マネージド ディスクの使用 | [マネージド ディスク](/azure/virtual-machines/windows/managed-disks-overview)は、Azure のサービスとしてのインフラストラクチャ (IaaS) VM の永続化ディスクの既定オプションです。 ソリューション テンプレートではマネージド ディスクを使用する必要があります。<ul><li>ソリューション テンプレートを更新するには、「[Azure Resource Manager テンプレートでの管理ディスクの使用](/azure/virtual-machines/using-managed-disks-template-deployments)」のガイダンスに従って、提供されている[サンプル](https://github.com/Azure/azure-quickstart-templates)を使用します。</li><li>VHD をイメージとして Azure Marketplace に発行するには、[Azure PowerShell](/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd) または [Azure CLI](/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd) のいずれかを使用して、マネージド ディスクの基になっている VHD をストレージ アカウントにインポートします</ul> |
+| マネージド ディスクの使用 | [マネージド ディスク](../virtual-machines/managed-disks-overview.md)は、Azure のサービスとしてのインフラストラクチャ (IaaS) VM の永続化ディスクの既定オプションです。 ソリューション テンプレートではマネージド ディスクを使用する必要があります。<ul><li>ソリューション テンプレートを更新するには、「[Azure Resource Manager テンプレートでの管理ディスクの使用](../virtual-machines/using-managed-disks-template-deployments.md)」のガイダンスに従って、提供されている[サンプル](https://github.com/Azure/azure-quickstart-templates)を使用します。</li><li>VHD をイメージとして Azure Marketplace に発行するには、[Azure PowerShell](../virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md) または [Azure CLI](../virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md) のいずれかを使用して、マネージド ディスクの基になっている VHD をストレージ アカウントにインポートします</ul> |
 | 展開パッケージ | お客様がプランをデプロイできるようにするデプロイ パッケージが必要になります。 同じ技術的構成が必要なプランを複数作成する場合は、同じプラン パッケージを使用できます。 詳細については、次のセクションの「デプロイ パッケージ」を参照してください。 |
 |||
 
@@ -38,8 +38,8 @@ ms.locfileid: "94577806"
 
 すべての Azure アプリケーションで、.zip アーカイブのルート フォルダーに次の 2 つのファイルが含まれている必要があります。
 
-- [mainTemplate.json](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md) という名前の Resource Manager テンプレート ファイル。 このテンプレートでは、顧客の Azure サブスクリプションにデプロイするリソースが定義されます。 Resource Manager テンプレートの例については、[Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/documentation/templates/)または対応する [GitHub: Azure Resource Manager クイックスタート テンプレート](https://github.com/azure/azure-quickstart-templates) リポジトリをご覧ください。
-- [createUiDefinition.json](/azure/azure-resource-manager/managed-application-createuidefinition-overview) という名前の、Azure アプリケーション作成エクスペリエンス用のユーザー インターフェイス定義。 ユーザー インターフェイスでは、コンシューマーがパラメーター値を入力できるようにする要素を指定します。
+- [mainTemplate.json](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template) という名前の Resource Manager テンプレート ファイル。 このテンプレートでは、顧客の Azure サブスクリプションにデプロイするリソースが定義されます。 Resource Manager テンプレートの例については、[Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/documentation/templates/)または対応する [GitHub: Azure Resource Manager クイックスタート テンプレート](https://github.com/azure/azure-quickstart-templates) リポジトリをご覧ください。
+- [createUiDefinition.json](../azure-resource-manager/managed-applications/create-uidefinition-overview.md) という名前の、Azure アプリケーション作成エクスペリエンス用のユーザー インターフェイス定義。 ユーザー インターフェイスでは、コンシューマーがパラメーター値を入力できるようにする要素を指定します。
 
 サポートされる最大ファイル サイズは次のとおりです。
 
@@ -50,7 +50,7 @@ ms.locfileid: "94577806"
 
 ## <a name="azure-regions"></a>Azure Azure リージョン
 
-プランは、Azure パブリック リージョン、Azure Government リージョン、または両方に発行できます。 特定のエンドポイントが異なる可能性があるため、[Azure Government](/azure/azure-government/documentation-government-manage-marketplace-partners) に発行する前に、環境でプランをテストおよび検証します。 プランを設定してテストするには、[Microsoft Azure Government 試用版](https://azure.microsoft.com/global-infrastructure/government/request/)に試用版アカウントを申請します。
+プランは、Azure パブリック リージョン、Azure Government リージョン、または両方に発行できます。 特定のエンドポイントが異なる可能性があるため、[Azure Government](../azure-government/documentation-government-manage-marketplace-partners.md) に発行する前に、環境でプランをテストおよび検証します。 プランを設定してテストするには、[Microsoft Azure Government 試用版](https://azure.microsoft.com/global-infrastructure/government/request/)に試用版アカウントを申請します。
 
 発行元は、コンプライアンス管理、セキュリティ対策、ベスト プラクティスについて責任を持ちます。 Azure Government では、物理的に離れた場所にあるデータ センターとネットワークが使用されます (場所は米国のみ)。
 

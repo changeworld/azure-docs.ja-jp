@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 11/16/2020
 ms.author: alkohli
-ms.openlocfilehash: d0d02532f39d676772e5ee5d6414b802faffba7c
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 93df80cd6fcd6f5553ea509a4778a155299bb057
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505939"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449043"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>テンプレートを使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
@@ -76,7 +76,7 @@ VM の作成に必要なリソースを作成するために、これらの前�
     
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループは、ストレージ アカウント、ディスク、マネージド ディスクなどの Azure リソースをデプロイおよび管理するのに使用する論理コンテナーです。
+[New-AzureRmResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループは、ストレージ アカウント、ディスク、マネージド ディスクなどの Azure リソースをデプロイおよび管理するのに使用する論理コンテナーです。
 
 > [!IMPORTANT]
 > すべてのリソースは、デバイスと同じ場所に作成され、その場所は **DBELocal** に設定されます。
@@ -189,7 +189,7 @@ BLOB ストレージへの接続に使用するクライアント用に、hosts 
 
     ![Azure Storage に接続する 2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-2.png)
 
-6. **[名前とキーを使用して接続する]** で、 **表示名** 、 **ストレージ アカウント名** 、Azure Storage の **アカウント キー** を指定します。 **その他** のストレージ ドメインを選択してから、`<device name>.<DNS domain>` 接続文字列を指定します。 Storage Explorer に証明書をインストールしなかった場合は、 **[HTTP を使用する]** オプションをオンにします。 **[次へ]** を選択します。
+6. **[名前とキーを使用して接続する]** で、**表示名**、**ストレージ アカウント名**、Azure Storage の **アカウント キー** を指定します。 **その他** のストレージ ドメインを選択してから、`<device name>.<DNS domain>` 接続文字列を指定します。 Storage Explorer に証明書をインストールしなかった場合は、 **[HTTP を使用する]** オプションをオンにします。 **[次へ]** を選択します。
 
     ![名前とキーを使用して接続する](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-name-key-1.png)
 
@@ -249,7 +249,7 @@ VM のイメージと仮想ネットワークを作成するには、`CreateImag
               "value": "<Operating system corresponding to the VHD you upload can be Windows or Linux>"
         },
         "imageName": {
-            "value": "<Name for the VM iamge>"
+            "value": "<Name for the VM image>"
         },
         "imageUri": {
               "value": "<Path to the VHD that you uploaded in the Storage account>"
@@ -441,7 +441,7 @@ VM を作成するには、`CreateVM.parameters.json` パラメーター ファ�
 
 1. 一意の名前、ネットワーク インターフェイス名、および ipconfig 名を指定します。 
 1. ユーザー名、パスワード、およびサポートされている VM のサイズを入力します。
-1. `CreateImageAndVnet.parameters.json` のパラメーターに指定されているのと同じ名前を、 **VnetName** 、 **subnetName** 、および **ImageName** に付けます。 たとえば、VnetName、subnetName、ImageName を **vnet1** 、 **subnet1** 、 **image1** と指定した場合は、このテンプレートのパラメーターも同じ値のままにします。
+1. `CreateImageAndVnet.parameters.json` のパラメーターに指定されているのと同じ名前を、**VnetName**、**subnetName**、および **ImageName** に付けます。 たとえば、VnetName、subnetName、ImageName を **vnet1**、**subnet1**、**image1** と指定した場合は、このテンプレートのパラメーターも同じ値のままにします。
 1. ここで、前に定義したサブネット ネットワーク内の VM に割り当てる静的 IP アドレスが必要になります。 **PrivateIPAddress** を、パラメーター ファイルのこのアドレスに置き換えます。 VM により、ローカルの DCHP サーバーから IP アドレスが取得されるようにするには、`privateIPAddress` の値を空白のままにします。  
     
     ```json
@@ -629,4 +629,4 @@ To verify if the environment variable for AzCopy was set correctly, take the fol
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Resource Manager コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager コマンドレット](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)

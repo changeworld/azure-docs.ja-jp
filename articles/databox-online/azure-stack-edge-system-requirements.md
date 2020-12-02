@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: a1a0462b82629b16bd8ccbe269fb1a917357d542
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4deeec1b6c9db80c15b001efb7b40bdb4bb9d515
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883515"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452649"
 ---
 # <a name="azure-stack-edge-pro-system-requirements"></a>Azure Stack Edge Pro のシステム要件
 
@@ -62,7 +62,7 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| アウト       | WAN        | はい      | IoT Edge のプロビジョニングのため、送信用に開きます。 この構成は、手動スクリプトや Azure IoT Device Provisioning Service (DPS) を使用する場合に必要です。|
 
-詳細は、[IoT Edge デプロイのファイアウォール規則とポート構成規則](https://docs.microsoft.com/azure/iot-edge/troubleshoot)を参照してください。
+詳細は、[IoT Edge デプロイのファイアウォール規則とポート構成規則](../iot-edge/troubleshoot.md)を参照してください。
 
 ## <a name="url-patterns-for-firewall-rules"></a>ファイアウォール ルールの URL パターン
 

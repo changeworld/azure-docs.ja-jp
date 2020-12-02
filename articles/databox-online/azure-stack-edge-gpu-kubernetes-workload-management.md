@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: d9e0da9e24a0bd32047d029879c4f0e110dc0c16
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ef840b3d9db4e82eeecea37079a08ccb0858a77b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320797"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448533"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスでの Kubernetes ワークロード管理
 
@@ -25,11 +25,11 @@ Azure Stack Edge Pro デバイスでは、コンピューティング ロール�
 
 Azure Stack Edge Pro デバイスにデプロイできる 2 つの一般的なワークロードの種類は、ステートレス アプリケーションまたはステートフル アプリケーションです。
 
-- **ステートレス アプリケーション**では、状態は保持されず、永続ストレージにデータが保存されません。 すべてのユーザーとセッションのデータは、クライアントに残ります。 ステートレス アプリケーションの例には、Nginx などの Web フロントエンドやその他の Web アプリケーションなどがあります。
+- **ステートレス アプリケーション** では、状態は保持されず、永続ストレージにデータが保存されません。 すべてのユーザーとセッションのデータは、クライアントに残ります。 ステートレス アプリケーションの例には、Nginx などの Web フロントエンドやその他の Web アプリケーションなどがあります。
 
     Kubernetes デプロイを作成して、クラスターにステートレス アプリケーションをデプロイできます。 
 
-- **ステートフル アプリケーション**では、その状態を保存する必要があります。 ステートフル アプリケーションでは、永続ボリュームなどの永続ストレージを使用して、サーバーまたは他のユーザーが使用するデータが保存されます。 ステートフル アプリケーションの例には、[Azure SQL Edge](../azure-sql-edge/overview.md) や MongoDB などのデータベースが含まれます。
+- **ステートフル アプリケーション** では、その状態を保存する必要があります。 ステートフル アプリケーションでは、永続ボリュームなどの永続ストレージを使用して、サーバーまたは他のユーザーが使用するデータが保存されます。 ステートフル アプリケーションの例には、[Azure SQL Edge](../azure-sql-edge/overview.md) や MongoDB などのデータベースが含まれます。
 
     Kubernetes デプロイを作成して、ステートフル アプリケーションをデプロイできます。 
 
@@ -53,7 +53,7 @@ Azure Stack Edge Pro デバイスにアプリケーションをデプロイす�
 
 - **Azure Arc 対応 Kubernetes のデプロイ**: Azure Arc 対応 Kubernetes は、Kubernetes クラスターにアプリケーションをデプロイできるようにするためのハイブリッド管理ツールです。 `azure-arc namespace` を使用して、Azure Stack Edge Pro デバイス上の Kubernetes クラスターに接続します。 この名前空間にデプロイされたエージェントが、Azure への接続を担当します。 GitOps ベースの構成管理を使用して、デプロイ構成を適用します。 
     
-    また、Azure Arc 対応 Kubernetes を使用すると、コンテナーに対して Azure Monitor を使用して、クラスターを表示および監視することもできます。 詳細については、[Azure Arc 対応 Kubernetes の概要](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)に関するページを参照してください。
+    また、Azure Arc 対応 Kubernetes を使用すると、コンテナーに対して Azure Monitor を使用して、クラスターを表示および監視することもできます。 詳細については、[Azure Arc 対応 Kubernetes の概要](../azure-arc/kubernetes/overview.md)に関するページを参照してください。
 
 ## <a name="choose-the-deployment-type"></a>デプロイの種類の選択
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 87f27f316914f3efce5a750f50471c65dceca84e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9863ed24da9e427f885a4794bda7e103b0c1cc8e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127843"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455449"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>パートナー センターで Azure アプリをオンボードするためのパートナー センター申請 API
 
@@ -42,8 +42,8 @@ Microsoft Store 申請 API を使用するには、Azure AD アプリケーシ�
 
 1. パートナー センターで、[組織のパートナー センター アカウントを組織の Azure AD ディレクトリに関連付けます](/windows/uwp/publish/associate-azure-ad-with-partner-center)。
 1. 次に、パートナー センターの **[アカウント設定]** セクションの **[ユーザー]** ページから、パートナー センター アカウントの申請にアクセスするために使用するアプリまたはサービスを表す [Azure AD アプリケーションを追加](/windows/uwp/publish/add-users-groups-and-azure-ad-applications#add-azure-ad-applications-to-your-partner-center-account)します。 このアプリケーションに **マネージャー** ロールを確実に割り当てます。 アプリケーションがまだ Azure AD ディレクトリに存在しない場合、[パートナー センターで新しい Azure AD アプリケーションを作成](/windows/uwp/publish/add-users-groups-and-azure-ad-applications#create-a-new-azure-ad-application-account-in-your-organizations-directory-and-add-it-to-your-partner-center-account)できます。
-1. **[ユーザー]** ページに戻り、Azure AD アプリケーションの名前をクリックしてアプリケーション設定に移動し、 **テナント ID** と **クライアント ID** の値を書き留めます。
-1. **[新しいキーを追加]** をクリックします。 次の画面で、 **キー** の値を書き留めます。 このページを離れると、この情報にアクセスすることはできなくなります。 詳細については、「[Azure AD アプリケーションのキーを管理する](/windows/uwp/publish/add-users-groups-and-azure-ad-applications#manage-keys)」を参照してください。
+1. **[ユーザー]** ページに戻り、Azure AD アプリケーションの名前をクリックしてアプリケーション設定に移動し、**テナント ID** と **クライアント ID** の値を書き留めます。
+1. **[新しいキーを追加]** をクリックします。 次の画面で、**キー** の値を書き留めます。 このページを離れると、この情報にアクセスすることはできなくなります。 詳細については、「[Azure AD アプリケーションのキーを管理する](/windows/uwp/publish/add-users-groups-and-azure-ad-applications#manage-keys)」を参照してください。
 
 ### <a name="step-2-obtain-an-azure-ad-access-token"></a>手順 2:Azure AD アクセス トークンを取得する
 
@@ -73,5 +73,5 @@ https://apidocs.microsoft.com/services/partneringestion/
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure VM 技術資産を作成する](create-azure-container-technical-assets.md)方法について学習します
-* [Azure Container オファー](create-azure-container-offer.md)の作成方法について学習します
+* [Azure VM 技術資産を作成する](../create-azure-container-technical-assets.md)方法について学習します
+* [Azure Container オファー](../create-azure-container-offer.md)の作成方法について学習します

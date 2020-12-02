@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 10/28/2020
-ms.openlocfilehash: 2a648b4f4c614fc64fa7817102215720e51abe7f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d303a5d5b9779a2003b12d063c97c36a90576dd3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095603"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456627"
 ---
 # <a name="co-sell-option-in-partner-center"></a>パートナー センターの [共同販売] オプション
 
@@ -83,10 +83,10 @@ Microsoft がオファーの詳細を確認し、顧客のニーズに適合す�
 
 また、オファーの既存の連絡先一覧をエクスポートし、そのファイルに変更を加えることもできます。
 
-* " *名前 (必須)* ":連絡先の名前。
-* " *メール アドレス (必須)* ":連絡先のメール アドレス。
-* " *役職 (必須)* ":役職。
-* " *ロール (必須)* ":次のいずれかのロールを使用します。
+* "*名前 (必須)* ":連絡先の名前。
+* "*メール アドレス (必須)* ":連絡先のメール アドレス。
+* "*役職 (必須)* ":役職。
+* "*ロール (必須)* ":次のいずれかのロールを使用します。
 
     | **ロール**    | **説明**  |
     | :------------------- | :-------------------|
@@ -95,11 +95,11 @@ Microsoft がオファーの詳細を確認し、顧客のニーズに適合す�
     | *:::no-loc text="Partner technical sales":::* | 販売サイクル、販売後の統合、および展開期間中の技術的なアーキテクチャと展開に関する考慮事項をサポートします。 |
     | *:::no-loc text="Partner customer success manager":::* | 通常、展開後に顧客をサポートし、オファーの最大限の活用と、顧客の組織内でのそのフットプリントの拡大を支援します。 |
 
-* *国/地域 (必須):* テンプレートを入力するときは、 [次に示す 2 文字の国/地域コードを使用します](./commercial-marketplace-co-sell-countries.md)。 連絡先がすべての国/地域を対象としている場合は、3 文字のコード "OOO" を使用します。 連絡先が複数の国/地域を対象としている場合は、2 文字のコードをコンマで区切って入力します (たとえば、テンプレートに引用符なしで「US, CA, FR」と入力します)。
+* *国/地域 (必須):* テンプレートを入力するときは、[次に示す 2 文字の国/地域コードを使用します](./commercial-marketplace-co-sell-countries.md)。 連絡先がすべての国/地域を対象としている場合は、3 文字のコード "OOO" を使用します。 連絡先が複数の国/地域を対象としている場合は、2 文字のコードをコンマで区切って入力します (たとえば、テンプレートに引用符なしで「US, CA, FR」と入力します)。
 
     国/地域には、各連絡先の販売区域を反映するようにします。 Microsoft のセールス チームとチャネル リセラーは、この情報を利用して、特定の国/地域内の情報の要求や共同作業を行います。
 
-* *States/Provinces (州/都道府県) (省略可能):* テンプレートに入力するときは、 [州/都道府県一覧](./commercial-marketplace-co-sell-states.md)のページに示されるように XX-XX 形式を使用します。
+* *States/Provinces (州/都道府県) (省略可能):* テンプレートに入力するときは、[州/都道府県一覧](./commercial-marketplace-co-sell-states.md)のページに示されるように XX-XX 形式を使用します。
 
 ## <a name="reference-architecture-diagram"></a>参照アーキテクチャ図
 
@@ -108,7 +108,7 @@ Microsoft がオファーの詳細を確認し、顧客のニーズに適合す�
 
 ドキュメントは、複数のツールを使用して作成できます。 Microsoft Visio には Azure のアーキテクチャのモデルを表す複数のステンシルが用意されているため、これをお勧めします。
 
-参照アーキテクチャ図を作成するための有用な出発点は、[Azure のアーキテクチャのモデル](https://docs.microsoft.com/azure/architecture/browse/)を活用することです。
+参照アーキテクチャ図を作成するための有用な出発点は、[Azure のアーキテクチャのモデル](/azure/architecture/browse/)を活用することです。
 
 ### <a name="typical-components-of-a-reference-architecture-diagram"></a>参照アーキテクチャ図の代表的なコンポーネント
 - オファーをホストおよび操作するクラウド サービス (Azure の消費を生成するものを含む)

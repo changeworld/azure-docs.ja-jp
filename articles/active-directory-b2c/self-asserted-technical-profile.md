@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4e76e3924b1b14660dce8a3b58f7dd5b2715eec
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e17c390dddcb2af9fdc83b45ae812ef1fff7f1c3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670124"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345084"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C のカスタム ポリシーでセルフ アサート技術プロファイルを定義します。
 
@@ -38,7 +38,7 @@ ms.locfileid: "92670124"
 
 ## <a name="input-claims"></a>入力クレーム
 
-セルフアサート技術プロファイルでは、 **InputClaims** と **InputClaimsTransformations** 要素を使用して、セルフアサート ページ (表示要求) に表示される要求の値を事前入力することができます。 たとえば、プロファイルの編集ポリシーでは、ユーザージャーニーはまず Azure AD B2C ディレクトリ サービスからユーザー プロファイルを読み取り、セルフ アサート技術プロファイルは、ユーザー プロファイルに格納されているユーザー データで入力要求を設定します。 これらの要求はユーザー プロファイルから収集され、後で既存のデータを編集できるユーザーに提示されます。
+セルフアサート技術プロファイルでは、**InputClaims** と **InputClaimsTransformations** 要素を使用して、セルフアサート ページ (表示要求) に表示される要求の値を事前入力することができます。 たとえば、プロファイルの編集ポリシーでは、ユーザージャーニーはまず Azure AD B2C ディレクトリ サービスからユーザー プロファイルを読み取り、セルフ アサート技術プロファイルは、ユーザー プロファイルに格納されているユーザー データで入力要求を設定します。 これらの要求はユーザー プロファイルから収集され、後で既存のデータを編集できるユーザーに提示されます。
 
 ```xml
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
@@ -53,11 +53,11 @@ ms.locfileid: "92670124"
 
 ## <a name="display-claims"></a>表示要求
 
-表示要求機能は、現在、 **プレビュー** 段階です。
+表示要求機能は、現在、**プレビュー** 段階です。
 
 **DisplayClaims** 要素には、ユーザーからデータを収集するために画面に提示される要求の一覧が含まれます。 表示要求の値を事前入力するには、以前に説明した入力要求を使用します。 要素は、既定値を含めることもできます。
 
-**DisplayClaims** 内の要求の順序によって、Azure AD B2C による画面への要求の表示順序が指定されます。 特定の要求に対する値の指定をユーザーに強制するには、 **DisplayClaim** 要素の **Required** 属性を `true` に設定します。
+**DisplayClaims** 内の要求の順序によって、Azure AD B2C による画面への要求の表示順序が指定されます。 特定の要求に対する値の指定をユーザーに強制するには、**DisplayClaim** 要素の **Required** 属性を `true` に設定します。
 
 **DisplayClaims** コレクション内の **ClaimType** 要素では、Azure AD B2C でサポートされている **UserInputType** 要素を任意のユーザー入力タイプに設定する必要があります。 たとえば、`TextBox` または `DropdownSingleSelect` です。
 
@@ -89,7 +89,7 @@ ms.locfileid: "92670124"
 
 ### <a name="combine-usage-of-display-claims-and-output-claims-carefully"></a>表示要求と出力要求の組み合わせは慎重に使用する
 
-セルフアサート技術プロファイルに 1 つ以上の **DisplayClaim** 要素を指定する場合は、画面に表示してユーザーからデータを収集する " *すべての* " 要求に対して DisplayClaim を使用する必要があります。 少なくとも 1 つの表示要求が含まれるセルフアサート技術プロファイルでは、出力要求はまったく表示されません。
+セルフアサート技術プロファイルに 1 つ以上の **DisplayClaim** 要素を指定する場合は、画面に表示してユーザーからデータを収集する "*すべての*" 要求に対して DisplayClaim を使用する必要があります。 少なくとも 1 つの表示要求が含まれるセルフアサート技術プロファイルでは、出力要求はまったく表示されません。
 
 基本ポリシー内に `age` 要求が **出力** 要求として定義されている次の例を考えてみます。 セルフアサート技術プロファイルに表示要求を追加する前に、ユーザーからデータを収集するために、`age` 要求が画面に表示されます。
 
@@ -101,7 +101,7 @@ ms.locfileid: "92670124"
 </TechnicalProfile>
 ```
 
-その後、基本を継承するリーフ ポリシーで、 **表示** 要求として `officeNumber` が指定された場合:
+その後、基本を継承するリーフ ポリシーで、**表示** 要求として `officeNumber` が指定された場合:
 
 ```xml
 <TechnicalProfile Id="id">
@@ -125,7 +125,7 @@ ms.locfileid: "92670124"
 > [!NOTE]
 > Identity Experience Framework (IEF) の以前のバージョンでは、出力要求を使用してユーザーからデータを収集していました。 ユーザーからデータを収集するには、代わりに **DisplayClaims** コレクションを使用してください。
 
-**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、 **OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
+**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 
 ### <a name="when-you-should-use-output-claims"></a>いつ出力要求を使用すべきか
 
@@ -133,10 +133,10 @@ ms.locfileid: "92670124"
 
 出力要求は、次の場合に使用します。
 
-- **要求が出力要求変換による出力の場合** 。
-- **出力要求に既定値を設定する** 。ユーザーからデータを収集しない、または検証技術プロファイルからデータを返さない場合。 `LocalAccountSignUpWithLogonEmail`セルフ アサート技術プロファイルは、 **実行済みのセルフ アサート入力** の要求を`true`に設定します。
+- **要求が出力要求変換による出力の場合**。
+- **出力要求に既定値を設定する**。ユーザーからデータを収集しない、または検証技術プロファイルからデータを返さない場合。 `LocalAccountSignUpWithLogonEmail`セルフ アサート技術プロファイルは、**実行済みのセルフ アサート入力** の要求を`true`に設定します。
 - **検証技術プロファイルは、出力要求を返します。** - 技術プロファイルは、いくつかの要求を返す検証技術プロファイルを呼び出すことがあります。 要求をバブルアップして、ユーザー体験の次のオーケストレーション ステップに戻すことができます。 たとえば、ローカル アカウントでサインインすると、`SelfAsserted-LocalAccountSignin-Email`という名前のセルフ アサート技術プロファイルが`login-NonInteractive`という名前の検証技術プロファイルを呼び出します。 この技術プロファイルは、ユーザーの資格情報を検証し、ユーザー プロファイルを返します。 'UserPrincipalName'、'displayName'、'givenName' および 'surName' など。
-- **表示コントロールによって出力要求が返される** 。技術プロファイルに [表示コントロール](display-controls.md)への参照を含めることができます。 表示コントロールによって、検証済みの電子メール アドレスなどの要求が返されます。 要求をバブルアップして、ユーザー体験の次のオーケストレーション ステップに戻すことができます。 表示制御機能は、現在、 **プレビュー** 段階です。
+- **表示コントロールによって出力要求が返される**。技術プロファイルに [表示コントロール](display-controls.md)への参照を含めることができます。 表示コントロールによって、検証済みの電子メール アドレスなどの要求が返されます。 要求をバブルアップして、ユーザー体験の次のオーケストレーション ステップに戻すことができます。 表示制御機能は、現在、**プレビュー** 段階です。
 
 次の例では、表示要求と出力要求の両方を使用するセルフアサート技術プロファイルの使用法を示します。
 

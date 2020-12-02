@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d23560e8ee387ca8bc9cb4bba4211f6c8272addd
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 07f1a6ff5d15ee552680c59c86a194aeabe5b866
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490884"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326388"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage にデータをインポートする
 
@@ -52,7 +52,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 1. ディスク ドライブを SATA コネクタを介して Windows システムに接続します。
 2. 各ドライブに 1 つの NTFS ボリュームを作成します。 ボリュームにドライブ文字を割り当てます。 マウントポイントを使用しないでください。
 3. NTFS ボリュームの BitLocker 暗号化を有効にします。 Windows Server システムを使用している場合は、[Windows Server 2012 R2 で BitLocker を有効にする方法](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)に関するページを参照してください。
-4. 暗号化されたボリュームにデータをコピーします。 ドラッグ アンド ドロップや、Robocopy などのコピーツールを使用します。 ジャーナル ファイル ( *.jrn* ) は、ツールを実行したフォルダーと同じフォルダーに作成されます。
+4. 暗号化されたボリュームにデータをコピーします。 ドラッグ アンド ドロップや、Robocopy などのコピーツールを使用します。 ジャーナル ファイル ( *.jrn*) は、ツールを実行したフォルダーと同じフォルダーに作成されます。
 
    ドライブがロックされていて、ドライブのロックを解除する必要がある場合は、ユース ケースによってロック解除の手順が異なる可能性があります。
 

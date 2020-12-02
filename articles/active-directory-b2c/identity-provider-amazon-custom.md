@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 90b107b2335bd5f08eeb0b9aa66c7a9db9b74eb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5a22655dca5af86729d5a906093a389b2bdc2d0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388563"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345288"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Amazon アカウントでのサインインを設定する
 
@@ -34,7 +34,7 @@ ms.locfileid: "85388563"
 Azure Active Directory B2C (Azure AD B2C) でフェデレーション ID プロバイダーとして Amazon アカウントを使用するには、「[Amazon Developer Services and Technologies](https://developer.amazon.com)」でアプリケーションを作成する必要があります。 まだ Amazon アカウントを持っていない場合は、[https://www.amazon.com/](https://www.amazon.com/) でサインアップできます。
 
 > [!NOTE]  
-> 以下の**手順 8** で次の URL を使用します。`your-tenant-name` はご利用のテナントの名前に置き換えてください。 テナント名を入力するときに、テナントが Azure AD B2C に大文字で定義されている場合でも、すべてに小文字を使用します。
+> 以下の **手順 8** で次の URL を使用します。`your-tenant-name` はご利用のテナントの名前に置き換えてください。 テナント名を入力するときに、テナントが Azure AD B2C に大文字で定義されている場合でも、すべてに小文字を使用します。
 > - **[許可されたオリジン]** には、「`https://your-tenant-name.b2clogin.com`」を入力します 
 > - **[Allowed Return URLs]\(許可された戻り先 URL\)** には、「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」を入力します
 
@@ -49,8 +49,8 @@ Azure AD B2C テナントで前に記録したクライアント シークレッ
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 5. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
-6. **オプション**については、`Manual`を選択します。
-7. ポリシー キーの**名前**を入力します。 たとえば、「 `AmazonSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
+6. **オプション** については、`Manual`を選択します。
+7. ポリシー キーの **名前** を入力します。 たとえば、「 `AmazonSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
 8. **[シークレット]** に、前に記録したクライアント シークレットを入力します。
 9. **[キー使用法]** として [`Signature`] を選択します。
 10. **Create** をクリックしてください。
@@ -81,7 +81,7 @@ Amazon アカウントをクレーム プロバイダーとして定義するに
           <Item Key="ClaimsEndpoint">https://api.amazon.com/user/profile</Item>
           <Item Key="scope">profile</Item>
           <Item Key="HttpBinding">POST</Item>
-          <Item Key="UsePolicyInRedirectUri">0</Item>
+          <Item Key="UsePolicyInRedirectUri">false</Item>
           <Item Key="client_id">Your Amazon application client ID</Item>
         </Metadata>
         <CryptographicKeys>

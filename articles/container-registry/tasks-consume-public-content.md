@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: stevelas
 ms.date: 10/29/2020
 ms.custom: ''
-ms.openlocfilehash: 261604b66d393723b35b472415b8840b047bc36e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 4fba6290b4973e797c13943fc9be4fadb19f3274
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133437"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349284"
 ---
 # <a name="how-to-consume-and-maintain-public-content-with-azure-container-registry-tasks"></a>Azure Container Registry タスクを使用してパブリック コンテンツを使用および保守する方法
 
@@ -39,15 +39,15 @@ Azure Cloud Shell または Azure CLI のローカル インストールを使�
 
 このチュートリアルでは、次の設定を行います。
 
-1. 以下を表す 3 つの **コンテナー レジストリ** 。
+1. 以下を表す 3 つの **コンテナー レジストリ**。
    * ベース イメージの変更をサポートするためのシミュレート対象の [Docker Hub][docker-hub] (`publicregistry`)
    * プライベート イメージを共有するためのチーム レジストリ (`contoso`)
    * インポートされたパブリック コンテンツの会社またはチームの共有レジストリ (`baseartifacts`)
-1. 各レジストリ内の **ACR タスク** 。 これらのタスクで以下を実行します。  
+1. 各レジストリ内の **ACR タスク**。 これらのタスクで以下を実行します。  
    1. シミュレート対象のパブリック `node` イメージをビルドします
    1. 会社またはチームの共有レジストリに `node` イメージをインポートして検証します
    1. `hello-world` イメージをビルドしてデプロイします
-1. 次の構成を含む **ACR タスク定義** 。
+1. 次の構成を含む **ACR タスク定義**。
 1. キー コンテナーへのポインターである **レジストリ資格情報** のコレクション
 1. キー コンテナーへのポインターである `acr-task.yaml` 内で使用可能な **シークレット** のコレクション
 1. `acr-task.yaml` 内で使用される **構成値** のコレクション
@@ -630,31 +630,31 @@ ENV BACKGROUND_COLOR Green
 watch -n1 az acr task list-runs -r $REGISTRY_PUBLIC -o table
 ```
 
-実行したら、 **Ctrl + C** キーを押し、ログを監視します。
+実行したら、**Ctrl + C** キーを押し、ログを監視します。
 
 ```azurecli-interactive
 az acr task logs -r $REGISTRY_PUBLIC
 ```
 
-完了したら、 **base-image-import** タスクを監視します。
+完了したら、**base-image-import** タスクを監視します。
 
 ```azurecli-interactive
 watch -n1 az acr task list-runs -r $REGISTRY_BASE_ARTIFACTS -o table
 ```
 
-実行したら、 **Ctrl + C** キーを押し、ログを監視します。
+実行したら、**Ctrl + C** キーを押し、ログを監視します。
 
 ```azurecli-interactive
 az acr task logs -r $REGISTRY_BASE_ARTIFACTS
 ```
 
-完了したら、 **hello-world** タスクを監視します。
+完了したら、**hello-world** タスクを監視します。
 
 ```azurecli-interactive
 watch -n1 az acr task list-runs -r $REGISTRY -o table
 ```
 
-実行したら、 **Ctrl + C** キーを押し、ログを監視します。
+実行したら、**Ctrl + C** キーを押し、ログを監視します。
 
 ```azurecli-interactive
 az acr task logs -r $REGISTRY
@@ -692,25 +692,25 @@ ENV BACKGROUND_COLOR Red
 watch -n1 az acr task list-runs -r $REGISTRY_PUBLIC -o table
 ```
 
-実行したら、 **Ctrl + C** キーを押し、ログを監視します。
+実行したら、**Ctrl + C** キーを押し、ログを監視します。
 
 ```azurecli-interactive
 az acr task logs -r $REGISTRY_PUBLIC
 ```
 
-完了したら、 **base-image-import** タスクを監視します。
+完了したら、**base-image-import** タスクを監視します。
 
 ```azurecli-interactive
 watch -n1 az acr task list-runs -r $REGISTRY_BASE_ARTIFACTS -o table
 ```
 
-実行したら、 **Ctrl + C** キーを押し、ログを監視します。
+実行したら、**Ctrl + C** キーを押し、ログを監視します。
 
 ```azurecli-interactive
 az acr task logs -r $REGISTRY_BASE_ARTIFACTS
 ```
 
-この時点で、 **base-import-node** タスクの検証失敗が表示され、`hello-world` の更新を発行するシーケンスが停止されるはずです。 出力は次のようになります。
+この時点で、**base-import-node** タスクの検証失敗が表示され、`hello-world` の更新を発行するシーケンスが停止されるはずです。 出力は次のようになります。
 
 ```console
 [...]
@@ -751,11 +751,11 @@ az group delete -n $ACI_RG --no-wait -y
 
 [install-cli]:                  /cli/azure/install-azure-cli
 [acr]:                          https://aka.ms/acr
-[acr-repo-permissions]:         https://aka.ms/acr/repo-permissions
-[acr-task]:                     https://aka.ms/acr/tasks
+[acr-repo-permissions]:         ./container-registry-repository-scoped-permissions.md
+[acr-task]:                     ./container-registry-tasks-overview.md
 [acr-task-triggers]:            container-registry-tasks-overview.md#task-scenarios
 [acr-task-credentials]:       container-registry-tasks-authentication-managed-identity.md#4-optional-add-credentials-to-the-task
-[acr-tokens]:                   https://aka.ms/acr/tokens
+[acr-tokens]:                   ./container-registry-repository-scoped-permissions.md
 [aci]:                          https://aka.ms/aci
 [alpine-public-image]:          https://hub.docker.com/_/alpine
 [docker-hub]:                   https://hub.docker.com
@@ -766,11 +766,7 @@ az group delete -n $ACI_RG --no-wait -y
 [helm-charts]:                  https://helm.sh
 [mcr]:                          https://aka.ms/mcr
 [nginx-public-image]:           https://hub.docker.com/_/nginx
-[oci-artifacts]:                https://aka.ms/acr/artifacts
+[oci-artifacts]:                ./container-registry-oci-artifacts.md
 [oci-consuming-public-content]: https://opencontainers.org/posts/blog/2020-10-30-consuming-public-content/
 [opa]:                          https://www.openpolicyagent.org/
 [quay]:                         https://quay.io
-
-
-
-

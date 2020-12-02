@@ -3,12 +3,12 @@ title: Azure VMware Solution の予約インスタンスを使用してコスト
 description: Azure VMware Solution の予約インスタンスを購入する方法について説明します。
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: b57e985068adabccecbbdb43dd11bcf6596bf422
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 80780e9718001893b6960220b5004c1c29b2fec5
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578952"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327399"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Azure VMware Solution でコストを節約する
 
@@ -63,7 +63,7 @@ Azure VMware Solution ホスト インスタンスの予約インスタンスは
 
 ### <a name="buy-reserved-instances-for-a-csp-subscription"></a>CSP サブスクリプションの予約インスタンスを購入する
 
-顧客に代わって予約インスタンスを購入する CSP は、[パートナー センターのドキュメント](https://docs.microsoft.com/partner-center/azure-plan-manage)からの **代理管理者** (AOBO) の手順を使用する必要があります。 詳細については、[代理管理者 (AOBO)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) に関する動画をご覧ください。
+顧客に代わって予約インスタンスを購入する CSP は、[パートナー センターのドキュメント](/partner-center/azure-plan-manage)からの **代理管理者** (AOBO) の手順を使用する必要があります。 詳細については、[代理管理者 (AOBO)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) に関する動画をご覧ください。
 
 1. [パートナー センター](https://partner.microsoft.com)にサインインします。
 
@@ -113,7 +113,7 @@ Azure VMware Solution ホスト インスタンスの予約インスタンスは
 
 また、予約をより小さいチャンクに分割したり、予約を統合したりすることもできます。 いかなる変更であっても、新しい商用のトランザクションを発生させたり、予約の終了日が変更されたりすることはありません。
 
-CSP マネージド予約の詳細については、「[パートナー センター、Azure portal、および API を使用して Microsoft Azure の予約を顧客に販売する](https://docs.microsoft.com/partner-center/azure-reservations)」を参照してください。
+CSP マネージド予約の詳細については、「[パートナー センター、Azure portal、および API を使用して Microsoft Azure の予約を顧客に販売する](/partner-center/azure-reservations)」を参照してください。
 
 
 
@@ -131,4 +131,4 @@ CSP マネージド予約の詳細については、「[パートナー セン�
 
 一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)」を参照してください。
 
-CSP は、一定の制限付きで、顧客に代わって購入する予約の取り消し、交換、または返金を行うことができます。 詳細については、「[顧客の Microsoft Azure の予約を管理、取り消し、交換、または返金する](https://docs.microsoft.com/partner-center/azure-reservations-manage)」を参照してください。
+CSP は、一定の制限付きで、顧客に代わって購入する予約の取り消し、交換、または返金を行うことができます。 詳細については、「[顧客の Microsoft Azure の予約を管理、取り消し、交換、または返金する](/partner-center/azure-reservations-manage)」を参照してください。

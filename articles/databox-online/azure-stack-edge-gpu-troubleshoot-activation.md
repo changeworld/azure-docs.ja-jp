@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 10/08/2020
 ms.author: alkohli
-ms.openlocfilehash: 33254c170c309626ecfa9099bc4d86578148f4c1
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: e93a7fd7aec5463a3d77bd9d6bb17d7072097870
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91941263"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447625"
 ---
 # <a name="troubleshoot-activation-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスのアクティブ化に関する問題をトラブルシューティングする 
 
@@ -28,11 +28,11 @@ ms.locfileid: "91941263"
 
 | エラー メッセージ| 推奨される解決策 |
 |------------------------------------------------------|--------------------------------------|
-| アクティブ化キーを使用してデバイスをアクティブ化する前にアクティブ化に使用される Azure Key Vault が削除された場合、このエラーが発生します。 <br> ![キー コンテナー エラー 1](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-1.png)  | キー コンテナーが削除されている場合、コンテナーが消去防止期間内であれば、キー コンテナーを回復できます。 [キー コンテナーを回復する](/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault)手順に従います。 <br>消去防止期間が経過した場合、キー コンテナーを回復することはできません。 Microsoft サポートに手順をお問い合わせください。 |
+| アクティブ化キーを使用してデバイスをアクティブ化する前にアクティブ化に使用される Azure Key Vault が削除された場合、このエラーが発生します。 <br> ![キー コンテナー エラー 1](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-1.png)  | キー コンテナーが削除されている場合、コンテナーが消去防止期間内であれば、キー コンテナーを回復できます。 [キー コンテナーを回復する](../key-vault/general/key-vault-recovery.md#list-recover-or-purge-soft-deleted-secrets-keys-and-certificates)手順に従います。 <br>消去防止期間が経過した場合、キー コンテナーを回復することはできません。 Microsoft サポートに手順をお問い合わせください。 |
 | デバイスがアクティブ化された後で Azure Key Vault が削除されている場合に、暗号化を含む操作 (たとえば、**ユーザーの追加**、**共有の追加**、**コンピューティングの構成**) を実行しようとすると、このエラーが発生します。 <br> ![キー コンテナー エラー 2](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-2.png)    | キー コンテナーが削除されている場合、コンテナーが消去防止期間内であれば、キー コンテナーを回復できます。 キー コンテナーを回復する手順に従います。 <br>消去防止期間が経過した場合、キー コンテナーを回復することはできません。 Microsoft サポートに手順をお問い合わせください。 |
 | Azure Key Vault のチャネル整合性キーが削除されている場合に、暗号化を含む操作 (たとえば、**ユーザーの追加**、**共有の追加**、**コンピューティングの構成**) を実行しようとすると、このエラーが発生します。 <br> ![キー コンテナー エラー 3](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-3.png) | キー コンテナーのチャネル整合性キーが削除されていても、まだ消去期間内の場合は、[キー コンテナーのキーの削除を元に戻す](/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval)手順に従います。 <br>消去防止期間を経過しているが、キーがバックアップされている場合は、バックアップから復元できます。そうでない場合、キーを回復することはできません。 Microsoft サポートに手順をお問い合わせください。 |
 | エラーが発生したためにアクティブ化キーの生成が失敗した場合、このエラーが発生します。 追加の詳細が通知内に表示されます。 <br> ![キー コンテナー エラー 4](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-4.png)   | 数分間待ってから操作をやり直してください。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |
-| ユーザーが読み取り専用アクセス許可を持っている場合、アクティブ化キーの生成は許可されず、このエラーが表示されます。 <br> ![キー コンテナー エラー 5](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-5.png) | これは、適切なアクセス権を持っていないか、*Microsoft.KeyVault* が登録されていないことが原因である可能性があります。<li>Azure Stack Edge リソースに対して使用されるリソース グループ レベルで、所有者または共同作成者アクセス権があることを確認します。</li><li>Microsoft.KeyVault リソース プロバイダーが登録されていることを確認します。 リソース プロバイダーを登録するには、Azure Stack Edge リソースに対して使用されているサブスクリプションに移動します。 **[リソース プロバイダー]** に移動し、*Microsoft.KeyVault* を探し、選択して**登録**します。</li> |
+| ユーザーが読み取り専用アクセス許可を持っている場合、アクティブ化キーの生成は許可されず、このエラーが表示されます。 <br> ![キー コンテナー エラー 5](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-5.png) | これは、適切なアクセス権を持っていないか、*Microsoft.KeyVault* が登録されていないことが原因である可能性があります。<li>Azure Stack Edge リソースに対して使用されるリソース グループ レベルで、所有者または共同作成者アクセス権があることを確認します。</li><li>Microsoft.KeyVault リソース プロバイダーが登録されていることを確認します。 リソース プロバイダーを登録するには、Azure Stack Edge リソースに対して使用されているサブスクリプションに移動します。 **[リソース プロバイダー]** に移動し、*Microsoft.KeyVault* を探し、選択して **登録** します。</li> |
 
 ## <a name="next-steps"></a>次のステップ
 

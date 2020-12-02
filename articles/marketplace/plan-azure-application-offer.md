@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 4cb707896aa7874aa2bf287723e8a53d7d6d974c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: bcb8cc6da3d2fc631058386103575549e376a32c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577789"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452148"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレース用に Azure アプリケーション オファーを計画する
 
@@ -33,18 +33,18 @@ Azure アプリケーション オファーを設計、構築、およびテス�
 
 コマーシャル マーケットプレース用に Azure アプリケーション オファーを計画する場合は、次のリソースを確認してください。
 
-- [Azure Resource Manager テンプレートについての理解](/azure/azure-resource-manager/templates/template-syntax)
+- [Azure Resource Manager テンプレートについての理解](../azure-resource-manager/templates/template-syntax.md)
 - クイック スタート:
     - [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)
     - [Azure テンプレートのベスト プラクティス ガイド](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
-    - [アプリケーション定義の発行](/azure/managed-applications/publish-service-catalog-app)
-    - [サービス カタログ アプリのデプロイ](/azure/managed-applications/deploy-service-catalog-quickstart)
+    - [アプリケーション定義の発行](../azure-resource-manager/managed-applications/publish-service-catalog-app.md)
+    - [サービス カタログ アプリのデプロイ](../azure-resource-manager/managed-applications/deploy-service-catalog-quickstart.md)
 - チュートリアル:
-    - [定義ファイルの作成](/azure/managed-applications/publish-service-catalog-app)
+    - [定義ファイルの作成](../azure-resource-manager/managed-applications/publish-service-catalog-app.md)
 - サンプル:
-    - [Azure CLI](/azure/managed-applications/cli-samples)
-    - [Azure PowerShell](/azure/managed-applications/powershell-samples)
-    - [マネージド アプリケーション ソリューション](/azure/managed-applications/sample-projects)
+    - [Azure CLI](../azure-resource-manager/managed-applications/cli-samples.md)
+    - [Azure PowerShell](../azure-resource-manager/managed-applications/powershell-samples.md)
+    - [マネージド アプリケーション ソリューション](../azure-resource-manager/managed-applications/sample-projects.md)
 
 「[Azure Marketplace 向けのソリューション テンプレートとマネージド アプリケーションの作成](https://channel9.msdn.com/Events/Build/2018/BRK3603)」ビデオでは、Azure アプリケーション オファーの種類について包括的に紹介しています。
 
@@ -59,12 +59,12 @@ Azure アプリケーション オファーを設計、構築、およびテス�
 
 Azure アプリケーションを管理するためのスクリプト環境として、次のいずれか一方または両方を選択します。
 
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure PowerShell](/powershell/azure/)
+- [Azure CLI](/cli/azure)
 
 開発環境には次にツールを加えることを推奨します｡
 
-- [Azure 記憶域エクスプローラー](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+- [Azure 記憶域エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)
 - [Visual Studio Code](https://code.visualstudio.com/) と次の拡張機能:
     - 拡張機能: [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     - 拡張機能: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -197,10 +197,10 @@ Azure サブスクリプション ID GUID を使用してプレビュー対象�
 
 [Marketplace の測定サービス API](partner-center-portal/marketplace-metering-service-apis.md) を使用して測定イベントを生成するマネージド アプリケーションの場合は、使用状況測定イベントを生成するときにサービスで使用される ID を指定する必要があります。
 
-[Batch 使用状況イベント](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-batch-usage-event)を使用する場合は、この構成が必要です。 [使用イベント](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-single-usage-event)を送信する場合は、[インスタンス メタデータ サービス](/azure/active-directory/managed-identities-azure-resources/overview)を使用して、[JSON Web トークン (JWT) ベアラー トークン](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token)を取得することもできます。
+[Batch 使用状況イベント](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-batch-usage-event)を使用する場合は、この構成が必要です。 [使用イベント](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-single-usage-event)を送信する場合は、[インスタンス メタデータ サービス](../active-directory/managed-identities-azure-resources/overview.md)を使用して、[JSON Web トークン (JWT) ベアラー トークン](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token)を取得することもできます。
 
-- **Azure Active Directory テナント ID** (必須): Azure portal 内では、Microsoft の 2 つのサービス間の接続が認証済みの通信の背後で行われることを Microsoft が検証できるように、[Azure Active Directory (AD) アプリを作成する](/azure/active-directory/develop/howto-create-service-principal-portal)必要があります。 Azure Active Directory (Azure AD) アプリの[テナント ID](/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in) を見つけるには、Azure Active Directory の [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ブレードに移動します。 **[表示名]** 列で、アプリを選択します。 次に、 **[プロパティ]** を探してから、**ディレクトリ (テナント) ID** (たとえば `50c464d3-4930-494c-963c-1e951d15360e`) を見つけます。
-- **Azure Active Directory アプリケーション ID** (必須): また、自分の[アプリケーション ID](/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in.md) と認証キーも必要です。 アプリケーション ID を見つけるには、Azure Active Directory の [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ブレードに移動します。 **[表示名]** 列でアプリを選択し、次に **アプリケーション (クライアント) ID** (たとえば `50c464d3-4930-494c-963c-1e951d15360e`) を探します。 認証キーを見つけるには、 **[設定]** に移動して **[キー]** を選択します。 説明と期間を入力する必要があります。その後、数値が提供されます。
+- **Azure Active Directory テナント ID** (必須): Azure portal 内では、Microsoft の 2 つのサービス間の接続が認証済みの通信の背後で行われることを Microsoft が検証できるように、[Azure Active Directory (AD) アプリを作成する](../active-directory/develop/howto-create-service-principal-portal.md)必要があります。 Azure Active Directory (Azure AD) アプリの[テナント ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) を見つけるには、Azure Active Directory の [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ブレードに移動します。 **[表示名]** 列で、アプリを選択します。 次に、 **[プロパティ]** を探してから、**ディレクトリ (テナント) ID** (たとえば `50c464d3-4930-494c-963c-1e951d15360e`) を見つけます。
+- **Azure Active Directory アプリケーション ID** (必須): また、自分の [アプリケーション ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) と認証キーも必要です。 アプリケーション ID を見つけるには、Azure Active Directory の [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ブレードに移動します。 **[表示名]** 列でアプリを選択し、次に **アプリケーション (クライアント) ID** (たとえば `50c464d3-4930-494c-963c-1e951d15360e`) を探します。 認証キーを見つけるには、 **[設定]** に移動して **[キー]** を選択します。 説明と期間を入力する必要があります。その後、数値が提供されます。
 
 > [!NOTE]
 > Azure アプリケーション ID は公開元 ID に関連付けられ、この公開元アカウント内でのみ再利用できます。
@@ -209,7 +209,7 @@ Azure サブスクリプション ID GUID を使用してプレビュー対象�
 
 Microsoft がサポートするマーケティングおよびセールス チャネルのオプトインを選択できます。 パートナー センターでオファーを作成すると、プロセスの終盤で、次の 2 つのタブが表示されます。
 
-- **CSP を通して再販する**: このオプションを使用して、Microsoft クラウド ソリューションプロバイダー (CSP) パートナーがバンドルされたオファーの一部としてソリューションを再販できるようにします。 詳細については、「[クラウド ソリューション プロバイダー プログラム](/azure/marketplace/cloud-solution-providers)」を参照してください。
+- **CSP を通して再販する**: このオプションを使用して、Microsoft クラウド ソリューションプロバイダー (CSP) パートナーがバンドルされたオファーの一部としてソリューションを再販できるようにします。 詳細については、「[クラウド ソリューション プロバイダー プログラム](./cloud-solution-providers.md)」を参照してください。
 - **Microsoft と共同販売する**: このオプションを使用すると、Microsoft セールス チームは、顧客のニーズを評価するときに、IP の共同販売対象ソリューションを検討できます。 評価のためにオファーを準備する方法の詳細については、「[パートナー センターの [共同販売] オプション](partner-center-portal/commercial-marketplace-co-sell.md)」を参照してください。 Microsoft CSP パートナー チャネルを通じたプランのマーケティングの詳細については、「[クラウド ソリューション プロバイダー](cloud-solution-providers.md)」を参照してください。
 
 詳細については、[Azure Marketplace でのビジネスの拡大](https://azuremarketplace.microsoft.com/sell)に関するページを参照してください。
@@ -224,12 +224,12 @@ Azure アプリケーション オファーには、1 つ以上のプランが�
 
 Azure アプリケーション プランには、"_ソリューション テンプレート_" と "_マネージド アプリケーション_" の 2 種類があります。 どちらのプランの種類でも、単一の仮想マシン (VM) を超えるソリューションのデプロイと構成の自動化がサポートされています。 IaaS ソリューションなどの複雑なソリューションを提供するための VM、ネットワーク、ストレージ リソースなどの複数のリソースを提供するプロセスを自動化できます。 どちらのプランの種類でも、VM を含むがそれに限定されない、さまざまな種類の Azure リソースを使用できます。
 
-- **ソリューション テンプレート** プランは、コマーシャル マーケットプレースでソリューションを発行するための主な手段の 1 つです。 ソリューション テンプレート プランは、コマーシャル マーケットプレースで取引可能ではありませんが、コマーシャル マーケットプレースを通じて課金される有料 VM オファーをデプロイする目的に使用できます。 顧客がソリューションを管理し、トランザクションが別のプランで課金される場合は、ソリューション テンプレート プランの種類を使用します。 ソリューション テンプレートの作成について詳しくは、「[Azure Resource Manager とは](/azure/azure-resource-manager/resource-group-overview)」を参照してください。
+- **ソリューション テンプレート** プランは、コマーシャル マーケットプレースでソリューションを発行するための主な手段の 1 つです。 ソリューション テンプレート プランは、コマーシャル マーケットプレースで取引可能ではありませんが、コマーシャル マーケットプレースを通じて課金される有料 VM オファーをデプロイする目的に使用できます。 顧客がソリューションを管理し、トランザクションが別のプランで課金される場合は、ソリューション テンプレート プランの種類を使用します。 ソリューション テンプレートの作成について詳しくは、「[Azure Resource Manager とは](../azure-resource-manager/management/overview.md)」を参照してください。
 - **マネージド アプリケーション** プランを使用すると、顧客向けのフル マネージドのターンキー アプリケーションを簡単に構築して提供できます。 機能はソリューション テンプレート プランと同じで、いくつかの重要な違いがあります。
     - リソースはリソース グループにデプロイされ、アプリの公開元によって管理されます。 リソース グループはユーザーのサブスクリプション内に存在しますが、そのリソース グループにアクセスできるのは、発行元のテナントの ID です。 
     - 発行元は、ソリューショ ンの継続的なサポートのためのコストを指定します。トランザクションはコマーシャル マーケットプレースを通じてサポートされます。
  
-    ソリューションがパートナーによって管理されることをご自身または顧客が必要としている場合、またはサブスクリプションベースのソリューションをデプロイする場合は、マネージド アプリケーション プランの種類を使用します。 マネージド アプリケーションの利点と種類について詳しくは、「[Azure マネージド アプリケーションの概要](/azure/managed-applications/overview)」を参照してください。
+    ソリューションがパートナーによって管理されることをご自身または顧客が必要としている場合、またはサブスクリプションベースのソリューションをデプロイする場合は、マネージド アプリケーション プランの種類を使用します。 マネージド アプリケーションの利点と種類について詳しくは、「[Azure マネージド アプリケーションの概要](../azure-resource-manager/managed-applications/overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

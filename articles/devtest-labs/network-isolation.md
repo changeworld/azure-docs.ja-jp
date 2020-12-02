@@ -3,12 +3,12 @@ title: Azure DevTest Labs でのネットワークの分離
 description: Azure DevTest Labs でのネットワークの分離について説明します。
 ms.topic: article
 ms.date: 08/25/2020
-ms.openlocfilehash: aafa6bf94c7963d69bfb67a28a520b811c4fbacf
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 28bfa048a8a6666deb58a8ecfff38779c91d95b8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149149"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352934"
 ---
 # <a name="network-isolation-in-devtest-labs"></a>DevTest Labs でのネットワークの分離
 
@@ -27,7 +27,7 @@ ms.locfileid: "92149149"
 ## <a name="steps-to-enable-network-isolation-during-lab-creation"></a>ラボの作成時にネットワークの分離を有効にする手順
 
 1. ラボの作成時に、 **[ネットワーク]** タブにアクセスします。
-1. ラボによって作成される**既定**のネットワークを選択するか、ドロップダウンから既存のネットワークを選択することができます。 ラボと同じリージョンおよびサブスクリプション内にあるネットワークのみを選択できます。 
+1. ラボによって作成される **既定** のネットワークを選択するか、ドロップダウンから既存のネットワークを選択することができます。 ラボと同じリージョンおよびサブスクリプション内にあるネットワークのみを選択できます。 
 
     > [!div class="mx-imgBorder"]
     > ![ラボの作成](./media/network-isolation/create-lab.png)
@@ -49,7 +49,7 @@ ms.locfileid: "92149149"
 
 ### <a name="steps-to-follow-post-lab-creation"></a>ラボの作成後に従う手順
 
-1. ラボのホーム ページで、 **[概要]** ページの**リソース グループ**を選択します。 そのラボが含まれているリソース グループの **[リソースグループ]** ページが表示されます。 
+1. ラボのホーム ページで、 **[概要]** ページの **リソース グループ** を選択します。 そのラボが含まれているリソース グループの **[リソースグループ]** ページが表示されます。 
  
    > [!div class="mx-imgBorder"]
    > ![Contoso ラボ](./media/network-isolation/contoso-lab.png)
@@ -74,7 +74,7 @@ ms.locfileid: "92149149"
 
 また、これらの手順を自動化して、複数のラボに対してこの設定を構成することもできます。 
 
-[PowerShell と CLI を使用して Azure Storage の既定のネットワーク アクセス ルールを管理する方法の詳細を確認する](../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#powershell)
+[PowerShell と CLI を使用して Azure Storage の既定のネットワーク アクセス ルールを管理する方法の詳細を確認する](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#powershell)
 
 ## <a name="things-to-remember-while-using-a-lab-in-a-network-isolated-mode"></a>ネットワーク分離モードでラボを使用するときに覚えておくべきこと
 

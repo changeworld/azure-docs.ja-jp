@@ -14,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 347948734da439691bced01cf3693d0990567748
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: ca632a643215b689a9bbb825959e5c5c052d73cb
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146230"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326065"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>Azure portal を使用して SQL Server がインストールされた Windows 仮想マシンをプロビジョニングする方法
 
@@ -38,12 +38,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 SQL Server 仮想マシンを作成する際には、仮想マシン ギャラリーにあるいくつかの事前構成済みイメージの中から、使用するイメージを選択できます。 次の手順は、SQL Server 2017 イメージの中から、イメージを 1 つを選択する方法を示したものです。
 
-1. Azure portal の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「 *Azure SQL* 」と入力します。 
+1. Azure portal の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「*Azure SQL*」と入力します。 
 
    **[Azure SQL]** の横にある星を選択してお気に入りとして保存し、左側のナビゲーションの項目として追加することもできます。 
 
 1. **[+ 追加]** を選択して、 **[Select SQL deployment option]\(SQL デプロイ オプションの選択\)** ページを開きます。 **[詳細の表示]** を選択すると、追加情報を表示できます。 
-1. **[SQL 仮想マシン]** タイルの SQL Server イメージ検索ボックスに「 *2017* 」と入力し、ドロップダウンから **[Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016]** を選択します。 
+1. **[SQL 仮想マシン]** タイルの SQL Server イメージ検索ボックスに「*2017*」と入力し、ドロップダウンから **[Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016]** を選択します。 
 
    ![SQL VM イメージの選択](./media/create-sql-vm-portal/select-sql-vm-image-portal.png)
 
@@ -77,13 +77,13 @@ SQL Server 仮想マシンを作成する際には、仮想マシン ギャラ�
     1. 一意の **[仮想マシン名]** を入力します。  
     1. **[リージョン]** で場所を選択します。 
     1. このガイドでは、 **[可用性オプション]** の設定を _[インフラストラクチャ冗長は必要ありません]_ のままにしておきます。 可用性オプションの詳細については、[可用性](../../../virtual-machines/availability.md)に関するページを参照してください。 
-    1. **[イメージ]** の一覧で、 _Free SQL Server License:SQL Server 2017 Developer on Windows Server 2016_ という名前のイメージを選択します。  
+    1. **[イメージ]** の一覧で、_Free SQL Server License:SQL Server 2017 Developer on Windows Server 2016_ という名前のイメージを選択します。  
     1. 仮想マシンの **[サイズ]** で **[サイズの変更]** を選択し、 **[A2 Basic]** プランを選択します。 予期しない課金を防ぐために、利用を終了したリソースは必ずクリーンアップしてください。 運用時のワークロードについては、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](performance-guidelines-best-practices.md)」のマシンのサイズと構成に関する推奨事項を参照してください。
 
     ![インスタンスの詳細](./media/create-sql-vm-portal/basics-instance-details.png)
 
 > [!IMPORTANT]
-> **[サイズの選択]** ウィンドウに表示される月額料金の見積もりには、SQL Server のライセンス費用は含まれていません。 この見積もり料金は VM 単体の費用です。 SQL Server Express エディションと SQL Server Developer エディションでは、この見積もり料金が概算費用の合計になります。 他のエディションについては、「[Windows Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)」で、ターゲットの SQL Server エディションを選択して確認できます。 また、「[SQL Server Azure VM の料金ガイダンス](pricing-guidance.md)」と[仮想マシンのサイズ](../../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)に関するページを参照してください。
+> **[サイズの選択]** ウィンドウに表示される月額料金の見積もりには、SQL Server のライセンス費用は含まれていません。 この見積もり料金は VM 単体の費用です。 SQL Server Express エディションと SQL Server Developer エディションでは、この見積もり料金が概算費用の合計になります。 他のエディションについては、「[Windows Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)」で、ターゲットの SQL Server エディションを選択して確認できます。 また、「[SQL Server Azure VM の料金ガイダンス](pricing-guidance.md)」と[仮想マシンのサイズ](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
 * **[管理者アカウント]** で、ユーザー名とパスワードを指定します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。
 
@@ -149,7 +149,7 @@ SQL Server 仮想マシンを作成する際には、仮想マシン ギャラ�
 **[SQL の接続]** で、この VM 上の SQL Server インスタンスに必要なアクセスの種類を指定します。 このチュートリアルでは、 **[パブリック (インターネット)]** を選択して、インターネット上のコンピューターやサービスから SQL Server に接続できるようにします。 このオプションを選択すると、選択したポートのトラフィックを許可するように、ファイアウォールとネットワーク セキュリティ グループが自動的に構成されます。
 
 > [!TIP]
-> 既定では、SQL Server は既知のポート ( **1433** ) をリッスンします。 セキュリティ強化のためには、前のダイアログでポートを変更して、1401 など、既定以外のポートをリッスンするようにします。 ポートを変更する場合は、SQL Server Management Studio (SSMS) などのクライアント ツールからそのポートを使用して接続する必要があります。
+> 既定では、SQL Server は既知のポート (**1433**) をリッスンします。 セキュリティ強化のためには、前のダイアログでポートを変更して、1401 など、既定以外のポートをリッスンするようにします。 ポートを変更する場合は、SQL Server Management Studio (SSMS) などのクライアント ツールからそのポートを使用して接続する必要があります。
 
 ![SQL VM のセキュリティ](./media/create-sql-vm-portal/azure-sqlvm-security.png)
 
@@ -188,7 +188,7 @@ SQL Server 認証を有効にしない場合は、VM のローカル管理者ア
 | **Key Vault の URL** |Key Vault の場所。 |`https://contosokeyvault.vault.azure.net/` |
 | **プリンシパル名** |Azure Active Directory サービスのプリンシパル名。 クライアント ID とも呼ばれます。 |`fde2b411-33d5-4e11-af04eb07b669ccf2` |
 | **プリンシパル シークレット** |Azure Active Directory サービスのプリンシパル シークレット。 クライアント シークレットとも呼ばれます。 |`9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=` |
-| **[資格情報名]** |**資格情報名** :AKV の統合によって、SQL Server 内に資格情報が作成され、VM からキー コンテナーにアクセスできるようになります。 この資格情報の名前を選択します。 |`mycred1` |
+| **[資格情報名]** |**資格情報名**:AKV の統合によって、SQL Server 内に資格情報が作成され、VM からキー コンテナーにアクセスできるようになります。 この資格情報の名前を選択します。 |`mycred1` |
 
 詳細については、 [Azure VM 上の SQL Server に関する Azure Key Vault 統合の構成](azure-key-vault-integration-configure.md)に関するページを参照してください。
 

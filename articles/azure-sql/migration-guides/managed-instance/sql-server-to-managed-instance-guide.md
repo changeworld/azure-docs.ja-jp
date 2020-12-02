@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 5c20fbbe25b51160f42f233d30c39ccaec0f5cac
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5d5404537ad107a54bd32110727e5a7d0f74ebea
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026063"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326898"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>移行ガイド:SQL Server から SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -99,7 +99,7 @@ SQL Managed Instance でのワークロードのパフォーマンスと SQL Ser
 
 ### <a name="create-sql-managed-instance"></a>SQL マネージド インスタンスの作成 
 
-検出および評価フェーズの情報に基づいて、適切なサイズのターゲット SQL Managed Instance を作成します。 これを行うには、[Azure portal](../../managed-instance/instance-create-quickstart.md)、[PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)、または [Azure Resource Manager (ARM) テンプレート](/azure/azure-sql/managed-instance/create-template-quickstart)を使用します。 
+検出および評価フェーズの情報に基づいて、適切なサイズのターゲット SQL Managed Instance を作成します。 これを行うには、[Azure portal](../../managed-instance/instance-create-quickstart.md)、[PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)、または [Azure Resource Manager (ARM) テンプレート](../../managed-instance/create-template-quickstart.md)を使用します。 
 
 
 ## <a name="migrate"></a>移行
@@ -124,7 +124,7 @@ DMS を使用して移行を実行するには、次の手順に従います。
 1. データベースが復元されたら、 **[一括で開始]** を選択します。 SMB ネットワーク共有でログ末尾のバックアップを使用可能にすると、移行プロセスでログ末尾のバックアップがコピーされ、ターゲットで復元されます。 
 1. ソース データベースへのすべての受信トラフィックを停止し、新しい Azure SQL Managed Instance データベースへの接続文字列を更新します。 
 
-この移行オプションの詳細なステップバイステップのチュートリアルについては、「[DMS を使用してオンラインで SQL Server を Azure SQL Managed Instance に移行する](/azure/dms/tutorial-sql-server-managed-instance-online)」を参照してください。 
+この移行オプションの詳細なステップバイステップのチュートリアルについては、「[DMS を使用してオンラインで SQL Server を Azure SQL Managed Instance に移行する](../../../dms/tutorial-sql-server-managed-instance-online.md)」を参照してください。 
    
 
 
@@ -160,7 +160,7 @@ DMS を使用して移行を実行するには、次の手順に従います。
 
 1. 復元が完了したら、SQL Server Management Studio 内の **オブジェクト エクスプローラー** でデータベースを確認します。 
 
-この移行オプションの詳細については、「[SSMS を使用して Azure SQL Managed Instance にデータベースを復元する](https://docs.microsoft.com/azure/azure-sql/managed-instance/restore-sample-database-quickstart)」を参照してください。
+この移行オプションの詳細については、「[SSMS を使用して Azure SQL Managed Instance にデータベースを復元する](../../managed-instance/restore-sample-database-quickstart.md)」を参照してください。
 
 > [!NOTE]
 > データベースの復元操作は非同期であり、再試行可能です。 接続が切断されるか、タイムアウトが発生した場合に、SQL Server Management Studio にエラーが生じる可能性があります。 Azure SQL Database では、バックグラウンドでのデータベースの復元を試行し続けます。[sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) および [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ビューを使用して、復元の進行状況を追跡できます。
@@ -203,7 +203,7 @@ DMS を使用して移行を実行するには、次の手順に従います。
 
 ## <a name="leverage-advanced-features"></a>高度な機能を活用する 
 
-SQL Managed Instance によって提供されるクラウドベースの高度な機能を活用してください。たとえば、[組み込みの高可用性](../../database/high-availability-sla.md)、[脅威検出](../../database/advanced-data-security.md)、[ワークロードの監視と調整](../../database/monitor-tune-overview.md)などです。 
+SQL Managed Instance によって提供されるクラウドベースの高度な機能を活用してください。たとえば、[組み込みの高可用性](../../database/high-availability-sla.md)、[脅威検出](../../database/azure-defender-for-sql.md)、[ワークロードの監視と調整](../../database/monitor-tune-overview.md)などです。 
 
 [Azure SQL Analytics](../../../azure-monitor/insights/azure-sql.md) を使用すると、多数のマネージド インスタンスを一元的な方法で監視できます。
 

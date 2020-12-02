@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: cb55274800b239cf0e1e942647ae0c65b321b862
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 147c507cde9abf2ef97098c6b41fbbd4d67f02d2
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790051"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324807"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>1 つ以上の AlwaysOn 可用性グループ リスナーの構成 - Resource Manager
 
@@ -64,7 +64,7 @@ Azure ネットワーク セキュリティ グループを使用してアクセ
 可用性グループ用の現在の [Microsoft テンプレート](./availability-group-quickstart-template-configure.md)では、Basic Load Balancer と基本の IP アドレスが使用されています。
 
    > [!NOTE]
-   > クラウド監視に Standard Load Balancer と Azure Storage を使用する場合は、[サービス エンドポイント](../../../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network)を構成する必要があります。 
+   > クラウド監視に Standard Load Balancer と Azure Storage を使用する場合は、[サービス エンドポイント](../../../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)を構成する必要があります。 
    > 
 
 この記事の例では、Standard Load Balancer が指定されています。 例のスクリプトには、`-sku Standard` が含まれています。
@@ -143,7 +143,7 @@ foreach($VMName in $VMNames)
 > [!NOTE]
 > SQL Server 可用性グループの場合は、各 IP アドレスに特定のプローブ ポートが必要です。 たとえば、ロード バランサー上の 1 つの IP アドレスでプローブ ポート 59999 が使用されている場合、そのロード バランサー上の他の IP アドレスではプローブ ポート 59999 を使用できません。
 
-* ロード バランサーの制限については、「 **ネットワークの制限 - Azure Resource Manager** 」にある「 [ロード バランサーごとのプライベート フロント エンド IP](../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)」をご覧ください。
+* ロード バランサーの制限については、「**ネットワークの制限 - Azure Resource Manager**」にある「[ロード バランサーごとのプライベート フロント エンド IP](../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)」をご覧ください。
 * 可用性グループの制限については、「[制限 (可用性グループ)](/sql/database-engine/availability-groups/windows/prereqs-restrictions-recommendations-always-on-availability#RestrictionsAG)」をご覧ください。
 
 次のスクリプトは、既存のロード バランサーに新しい IP アドレスを追加します。 ILB では、負荷分散フロントエンド ポート用のリスナー ポートが使用されます。 このポートには、SQL Server がリッスンしているポートを使用できます。 SQL Server の既定のインスタンスでは、このポートは 1433 です。 バックエンド ポートがフロントエンド ポートと同じになるように、可用性グループの負荷分散規則ではフローティング IP (Direct Server Return) が必要です。 環境に合わせて変数を更新してください。 
@@ -236,7 +236,7 @@ SQLCMD 接続では、プライマリ レプリカをホストしている SQL S
   - AG リスナーのロード バランサーの フローティング IP アドレス
   - クラスター コア IP アドレス (該当する場合)。
 
-* クラウド監視に Standard Load Balancer と Azure Storage を使用する場合は、サービス エンドポイントを作成します。 詳細については、[仮想ネットワークからのアクセスの許可](../../../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network)に関するページを参照してください。
+* クラウド監視に Standard Load Balancer と Azure Storage を使用する場合は、サービス エンドポイントを作成します。 詳細については、[仮想ネットワークからのアクセスの許可](../../../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)に関するページを参照してください。
 
 ## <a name="for-more-information"></a>詳細情報
 

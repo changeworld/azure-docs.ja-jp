@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jingwang
-ms.openlocfilehash: 74cfabff22074ee405d7b417e306da62ef69ae19
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: b1f95cf0a62aa68fe86f37cea137251553458a1d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927126"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348876"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure Data Factory での Excel 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "92927126"
 
 Excel 形式は、以下のコネクタでサポートされています。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。 これはソースとしてはサポートされますが、シンクとしてはサポートされません。 
 
-**注** : [HTTP](connector-http.md) の使用中は、".xls" 形式はサポートされません。 
+**注**: [HTTP](connector-http.md) の使用中は、".xls" 形式はサポートされません。 
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
@@ -31,15 +31,15 @@ Excel 形式は、以下のコネクタでサポートされています。[Amaz
 
 | プロパティ         | 説明                                                  | 必須 |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | データセットの type プロパティは、 **Excel** に設定する必要があります。   | はい      |
+| type             | データセットの type プロパティは、**Excel** に設定する必要があります。   | はい      |
 | location         | ファイルの場所の設定。 ファイル ベースの各コネクタには、固有の場所の種類と `location` でサポートされるプロパティがあります。 | はい      |
 | sheetName        | データを読み取る Excel ワークシートの名前。                       | はい      |
 | range            | 特定のワークシート内で選択データを見つけるセル範囲。例:<br>- 指定なし: 空ではない最初の行と列からワークシート全体を表として読み取ります<br>- `A3`: 特定のセルから始まる表を読み取り、下にあるすべての行と右にあるすべての列を動的に検出します<br>- `A3:H5`: この固定範囲を表として読み取ります<br>- `A3:A3`: この単一セルを読み取ります | いいえ       |
 | firstRowAsHeader | 指定したワークシート (または範囲) 内の先頭行を、列名を含んだヘッダー行として扱うかどうかを指定します。<br>使用できる値は **true** と **false** (既定値) です。 | いいえ       |
 | nullValue        | null 値の文字列表現を指定します。 <br>既定値は **空の文字列** です。 | いいえ       |
 | compression | ファイル圧縮を構成するためのプロパティのグループ。 アクティビティの実行中に圧縮/圧縮解除を行う場合は、このセクションを構成します。 | いいえ |
-| type<br/>( *`compression` の下にあります* ) | JSON ファイルの読み取り/書き込みに使用される圧縮コーデックです。 <br>使用できる値は、 **bzip2** 、 **gzip** 、 **deflate** 、 **ZipDeflate** 、 **TarGzip** 、 **Tar** 、 **snappy** 、または **lz4** です。 既定では圧縮されません。<br>現在、コピー アクティビティによって "snappy" と "lz4" がサポートされておらず、マッピング データ フローによって "ZipDeflate"、"TarGzip"、"Tar" がサポートされていないことに **注意** してください。<br>コピー アクティビティを使用して **ZipDeflate** ファイルを展開し、ファイルベースのシンク データ ストアに書き込むと、`<path specified in dataset>/<folder named as source zip file>/` フォルダーにファイルが抽出されることに **注意** してください。 | いいえ。  |
-| level<br/>( *`compression` の下にあります* ) | 圧縮率です。 <br>使用できる値は、 **Optimal** または **Fastest** です。<br>- **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、圧縮後のファイルが最適に圧縮されていない場合があります。<br>- **Optimal** : 圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。 詳細については、 [圧縮レベル](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) に関するトピックをご覧ください。 | いいえ       |
+| type<br/>( *`compression` の下にあります*) | JSON ファイルの読み取り/書き込みに使用される圧縮コーデックです。 <br>使用できる値は、**bzip2**、**gzip**、**deflate**、**ZipDeflate**、**TarGzip**、**Tar**、**snappy**、または **lz4** です。 既定では圧縮されません。<br>現在、コピー アクティビティによって "snappy" と "lz4" がサポートされておらず、マッピング データ フローによって "ZipDeflate"、"TarGzip"、"Tar" がサポートされていないことに **注意** してください。<br>コピー アクティビティを使用して **ZipDeflate** ファイルを展開し、ファイルベースのシンク データ ストアに書き込むと、`<path specified in dataset>/<folder named as source zip file>/` フォルダーにファイルが抽出されることに **注意** してください。 | いいえ。  |
+| level<br/>( *`compression` の下にあります*) | 圧縮率です。 <br>使用できる値は、**Optimal** または **Fastest** です。<br>- **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、圧縮後のファイルが最適に圧縮されていない場合があります。<br>- **Optimal**: 圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。 詳細については、 [圧縮レベル](/dotnet/api/system.io.compression.compressionlevel) に関するトピックをご覧ください。 | いいえ       |
 
 Azure Blob Storage 上の Excel データセットの例を次に示します。
 
@@ -106,7 +106,7 @@ Azure Blob Storage 上の Excel データセットの例を次に示します。
 
 ### <a name="source-properties"></a>ソースのプロパティ
 
-次の表に、Excel ソースでサポートされるプロパティの一覧を示します。 これらのプロパティは、 **[ソース オプション]** タブで編集できます。インライン データセットを使用する場合、「 [データセットのプロパティ](#dataset-properties)」セクションで説明したプロパティと同じ追加のファイル設定が表示されます。
+次の表に、Excel ソースでサポートされるプロパティの一覧を示します。 これらのプロパティは、 **[ソース オプション]** タブで編集できます。インライン データセットを使用する場合、「[データセットのプロパティ](#dataset-properties)」セクションで説明したプロパティと同じ追加のファイル設定が表示されます。
 
 | 名前                      | 説明                                                  | 必須 | 使用できる値                                            | データ フロー スクリプトのプロパティ         |
 | ------------------------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------- | --------------------------------- |

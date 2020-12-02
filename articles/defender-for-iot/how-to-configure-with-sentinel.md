@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 12f65d0e7f9c380f77fe4189d26fdeafd426295b
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: c5c0f74ed8a5688b20eea4e74f747d3ff6dd0e63
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090796"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340001"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel-preview"></a>Defender for IoT からのデータを Azure Sentinel に接続する (プレビュー)
 
@@ -39,7 +39,7 @@ Microsoft では、最初のクラウドネイティブ SIEM である Azure Sen
 - ワークスペースに対する **読み取り** アクセス許可と **書き込み** アクセス許可が必要です。
 - お使いの適切な IoT ハブで **Defender for IoT** を **有効** にする必要があります。
 - 接続先の **Azure IoT Hub** に対する **読み取り** アクセス許可と **書き込み** アクセス許可の両方が必要です。
-- さらに、 **Azure IoT Hub リソース グループ** に対する **読み取り** アクセス許可と **書き込み** アクセス許可が必要です。
+- さらに、**Azure IoT Hub リソース グループ** に対する **読み取り** アクセス許可と **書き込み** アクセス許可が必要です。
 
 
 ## <a name="connect-to-defender-for-iot"></a>Defender for IoT に接続する
@@ -57,7 +57,7 @@ Microsoft では、最初のクラウドネイティブ SIEM である Azure Sen
 
 Log Analytics の適切なスキーマを使用して Defender for IoT のアラートを表示するには、次のようにします。
 
-1. **[ログ]**  >  **[SecurityInsights]**  >  **[SecurityAlert]** を開くか、 **SecurityAlert** を検索します。
+1. **[ログ]**  >  **[SecurityInsights]**  >  **[SecurityAlert]** を開くか、**SecurityAlert** を検索します。
 1. 次の kql フィルターを使用して、Defender for IoT によって生成されたアラートのみが表示されるようにします。
 
 ```kusto
@@ -72,6 +72,6 @@ IoT ハブに接続してから約 15 分後に Azure Sentinel でハブ デー�
 
 このドキュメントでは、Defender for IoT を Azure Sentinel に接続する方法について学習しました。 脅威の検出とセキュリティ データ アクセスの詳細については、次の記事を参照してください。
 
-- Azure Sentinel を使用して[データと潜在的な脅威を可視化する](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)方法を学習します。
+- Azure Sentinel を使用して[データと潜在的な脅威を可視化する](../sentinel/quickstart-get-visibility.md)方法を学習します。
 
 - [IoT セキュリティ データにアクセス](how-to-security-data-access.md)する方法を学習します。

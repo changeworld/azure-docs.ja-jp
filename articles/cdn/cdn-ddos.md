@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: allensu
-ms.openlocfilehash: befd0658c79ac6b395b82b65b935a7bc4c735c2d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ac00491a34e6e7d18c74827afc6647358794a8be
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778678"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351692"
 ---
 # <a name="azure-cdn-ddos-protection"></a>Azure CDN DDoS Protection
 
@@ -27,7 +27,7 @@ ms.locfileid: "92778678"
 
 ## <a name="azure-cdn-from-microsoft"></a>Microsoft Azure CDN
 
-Microsoft の Azure CDN は、[Azure Basic DDoS](../virtual-network/ddos-protection-overview.md) で保護されています。 これは既定で、追加コストなしに Microsoft の Azure CDN プラットフォームに統合されています。 Microsoft の Azure CDN のグローバルに展開されるネットワークのフル スケールと容量が、常時有効なトラフィック監視とリアルタイムのリスク軽減によって、一般的なネットワーク層攻撃からの保護を提供します。 また、Basic DDoS の保護機能は、特に一般的で頻繁に発生するレイヤー 7 への DNS クエリ フラッド攻撃や、CDN エンドポイントを標的とするレイヤー 3 および 4 への帯域幅消費型攻撃も防御します。 このサービスには、マイクロソフトのエンタープライズ サービスとコンシューマー サービスを大規模な攻撃から保護してきた実績があります。
+Microsoft の Azure CDN は、[Azure Basic DDoS](../ddos-protection/ddos-protection-overview.md) で保護されています。 これは既定で、追加コストなしに Microsoft の Azure CDN プラットフォームに統合されています。 Microsoft の Azure CDN のグローバルに展開されるネットワークのフル スケールと容量が、常時有効なトラフィック監視とリアルタイムのリスク軽減によって、一般的なネットワーク層攻撃からの保護を提供します。 また、Basic DDoS の保護機能は、特に一般的で頻繁に発生するレイヤー 7 への DNS クエリ フラッド攻撃や、CDN エンドポイントを標的とするレイヤー 3 および 4 への帯域幅消費型攻撃も防御します。 このサービスには、マイクロソフトのエンタープライズ サービスとコンシューマー サービスを大規模な攻撃から保護してきた実績があります。
 
 ## <a name="azure-cdn-from-verizon"></a>Azure CDN from Verizon
 
@@ -39,4 +39,4 @@ Azure CDN from Akamai は、Akamai の独自の DDoS 対応策プラットフォ
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure DDoS](../virtual-network/ddos-protection-overview.md) の詳細を学習する。
+[Azure DDoS](../ddos-protection/ddos-protection-overview.md) の詳細を学習する。

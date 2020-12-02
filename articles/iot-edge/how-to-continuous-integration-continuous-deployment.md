@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Edge デバイスに対する継続的インテグレーションと継続的配置 - Azure IoT Edge
 description: YAML を使用して継続的インテグレーションと継続的配置を設定する - Azure IoT Edge、Azure DevOps、Azure Pipelines
-author: shizn
+author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 57031d4ccdfdba73b8b36c8dc943280a8280ffcc
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 444ab8ccfe5a8441a4fd7d280e33d8e929d9387d
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048527"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435894"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices"></a>Azure IoT Edge デバイスに対する継続的インテグレーションと継続的配置
 
@@ -32,15 +32,15 @@ Azure Pipelines 内の組み込み Azure IoT Edge タスクを使用して、Azu
 
 特に指定がない限り、この記事の手順では、タスク パラメーターで使用できるすべての機能については説明しません。 詳細については、「
 
-* [タスクのバージョン](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-versions)
+* [タスクのバージョン](/azure/devops/pipelines/process/tasks?tabs=yaml#task-versions)
 * **詳細** - 該当する場合は、ビルドしないモジュールを指定します。
-* [管理オプション](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-control-options)
-* [環境変数](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#environment-variables)
-* [出力変数](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#use-output-variables-from-tasks)
+* [管理オプション](/azure/devops/pipelines/process/tasks?tabs=yaml#task-control-options)
+* [環境変数](/azure/devops/pipelines/process/variables?tabs=yaml#environment-variables)
+* [出力変数](/azure/devops/pipelines/process/variables?tabs=yaml#use-output-variables-from-tasks)
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Repos リポジトリ。 ない場合は、[プロジェクト内に新しい Git リポジトリを作成する](/azure/devops/repos/git/create-new-repo?tabs=new-nav&view=vsts)ことができます。 この記事では、**IoTEdgeRepo** というリポジトリを作成しました。
+* Azure Repos リポジトリ。 ない場合は、[プロジェクト内に新しい Git リポジトリを作成する](/azure/devops/repos/git/create-new-repo)ことができます。 この記事では、**IoTEdgeRepo** というリポジトリを作成しました。
 * リポジトリにコミットおよびプッシュされた IoT Edge ソリューション。 この記事をテストするための新しいサンプル ソリューションを作成する場合は、[Visual Studio Code でのモジュールの開発とデバッグ](how-to-vs-code-develop-module.md)および[Visual Studio での C# モジュールの開発とデバッグ](./how-to-visual-studio-develop-module.md)に関するページの手順に従ってください。 この記事では、**IoTEdgeSolution** という名前のソリューションをリポジトリに作成しました。これには **filtermodule** という名前のモジュールのコードが含まれています。
 
    この記事では、必要なのは、Visual Studio Code または Visual Studio のいずれかにある IoT Edge テンプレートで作成されたソリューション フォルダーだけです。 続ける前にこのコードをビルド、プッシュ、デプロイ、またはデバッグする必要はありません。 これらのプロセスは Azure Pipelines で設定します。
@@ -50,7 +50,7 @@ Azure Pipelines 内の組み込み Azure IoT Edge タスクを使用して、Azu
 * モジュール イメージをプッシュできるコンテナー レジストリ。 [Azure Container Registry](../container-registry/index.yml) またはサード パーティ製のレジストリを使用することができます。
 * テストと運用環境のデプロイの個々のステージをテストするための少なくとも 2 つの IoT Edge デバイスのある、アクティブな Azure [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。 クイック スタートの記事に従って、[Linux](quickstart-linux.md) または [Windows](quickstart.md) 上に IoT Edge デバイスを作成することができます
 
-Azure Repos の詳細については、[Visual Studio と Azure Repos でのコードの共有](/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts)に関するページを参照してください
+Azure Repos の詳細については、[Visual Studio と Azure Repos でのコードの共有](/azure/devops/repos/git/share-your-code-in-git-vs)に関するページを参照してください
 
 ## <a name="create-a-build-pipeline-for-continuous-integration"></a>継続的インテグレーションのためのビルド パイプラインを作成する
 
@@ -112,13 +112,13 @@ Azure Repos の詳細については、[Visual Studio と Azure Repos でのコ�
        | --- | --- |
        | [同期元フォルダー] | コピー元のソース フォルダー。 空にすると、リポジトリのルートとなります。 ファイルがリポジトリに存在しない場合は、変数を使用します。 例: `$(agent.builddirectory)`.
        | 内容 | `deployment.template.json` と `**/module.json` の 2 つの行を追加します。 |
-       | ターゲット フォルダー | 変数 `$(Build.ArtifactStagingDirectory)` を指定します。 内容については、「[ビルド変数](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables)」を参照してください。 |
+       | ターゲット フォルダー | 変数 `$(Build.ArtifactStagingDirectory)` を指定します。 内容については、「[ビルド変数](/azure/devops/pipelines/build/variables?tabs=yaml#build-variables)」を参照してください。 |
 
    * タスク:**ビルド成果物の公開**
 
        | パラメーター | 説明 |
        | --- | --- |
-       | 公開するためのパス | 変数 `$(Build.ArtifactStagingDirectory)` を指定します。 内容については、「[ビルド変数](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables)」を参照してください。 |
+       | 公開するためのパス | 変数 `$(Build.ArtifactStagingDirectory)` を指定します。 内容については、「[ビルド変数](/azure/devops/pipelines/build/variables?tabs=yaml#build-variables)」を参照してください。 |
        | アーティファクト名 | 既定の名前 (`drop`) を指定します。 |
        | 成果物の公開場所 | 既定の場所 (`Azure Pipelines`) を使用します。 |
 

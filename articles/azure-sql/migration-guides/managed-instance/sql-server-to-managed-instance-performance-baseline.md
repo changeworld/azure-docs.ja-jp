@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mokabiru
 ms.date: 11/06/2020
-ms.openlocfilehash: e9fb004df5fdf8a955312ebcf16b8b60fd7c9b6a
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: c47e4c1278f222feac35a2c6ab0b067c916c0217
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592194"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326847"
 ---
 # <a name="migration-performance-sql-server-to-sql-managed-instance-performance-analysis"></a>移行のパフォーマンス: SQL Server から SQL Managed Instance の場合のパフォーマンス分析
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -86,4 +86,4 @@ SQL Managed Instance には、監視とトラブルシューティングのた�
 - [Azure SQL Managed Instance でのワークロードのパフォーマンスが SQL Server と異なる理由を特定する方法](https://medium.com/azure-sqldb-managed-instance/what-to-do-when-azure-sql-managed-instance-is-slower-than-sql-server-dd39942aaadd)
 - [SQL Managed Instance と SQL Server の間でパフォーマンスの差が生じる主な原因](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)
 - [ストレージ パフォーマンスのベスト プラクティスおよび Azure SQL Managed Instance (General Purpose) に関する考慮事項](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)
-- [Azure SQL Managed Instance のリアルタイムのパフォーマンス監視 (これはアーカイブされていますが、これは目的のターゲットですか?)](https://docs.microsoft.com/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)
+- [Azure SQL Managed Instance のリアルタイムのパフォーマンス監視 (これはアーカイブされていますが、これは目的のターゲットですか?)](/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)

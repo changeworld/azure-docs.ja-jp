@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2c088bce3bc763bf813298ef91b4e07f0b20c50c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7deee88210acf700916961be7c4ccaf9477accf8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93328652"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353444"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Azure Cloud Services の Azure セキュリティ ベースライン
 
@@ -24,11 +24,11 @@ Cloud Services を完全に Azure セキュリティ ベンチマークにマッ
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、 [Azure セキュリティ ベンチマークの「ネットワークのセキュリティ](../security/benchmarks/security-control-network-security.md)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ネットワークのセキュリティ](../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1:仮想ネットワーク内の Azure リソースを保護する
 
-**ガイダンス** :個別のパブリック サブネットとプライベート サブネットを持つクラシック Azure Virtual Network を作成して、信頼されたポートと IP 範囲に基づいて分離を施行します。 これらの仮想ネットワークとサブネットは、現在の Azure Resource Manager のリソースではなく、クラシック Virtual Network (クラシック デプロイ) ベースのリソースである必要があります。  
+**ガイダンス**:個別のパブリック サブネットとプライベート サブネットを持つクラシック Azure Virtual Network を作成して、信頼されたポートと IP 範囲に基づいて分離を施行します。 これらの仮想ネットワークとサブネットは、現在の Azure Resource Manager のリソースではなく、クラシック Virtual Network (クラシック デプロイ) ベースのリソースである必要があります。  
 
 ネットワーク セキュリティ グループを使用してトラフィックを許可または拒否します。ネットワーク セキュリティ グループには、トラフィックの方向、プロトコル、ソース アドレスとポート、および送信先アドレスとポートに基づくアクセス制御ルールが含まれています。 ネットワーク セキュリティ グループのルールは、いつでも変更でき、変更は関連付けられているすべてのインスタンスに適用されます。
 
@@ -36,15 +36,15 @@ Microsoft Azure Cloud Services (クラシック) を Azure Resource Manager 仮�
 
 - [ネットワーク セキュリティ グループの概要](../virtual-network/network-security-groups-overview.md)
 
-- [仮想ネットワーク ピアリング](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq?&amp;preserve-view=true#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
+- [仮想ネットワーク ピアリング](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2:仮想ネットワーク、サブネット、NIC の構成とトラフィックを監視してログに記録する
 
-**ガイダンス** :Azure Cloud Services の構成を文書化し、変更を監視します。 サービスの構成ファイルを使用して、サービスのロールごとにデプロイするロール インスタンスの数、すべての構成設定の値、およびロールに関連付けられているすべての証明書の拇印を指定します。 
+**ガイダンス**:Azure Cloud Services の構成を文書化し、変更を監視します。 サービスの構成ファイルを使用して、サービスのロールごとにデプロイするロール インスタンスの数、すべての構成設定の値、およびロールに関連付けられているすべての証明書の拇印を指定します。 
 
 サービスが仮想ネットワークの一部である場合は、仮想ネットワーク構成ファイルだけでなく、サービス構成ファイルでネットワークの構成情報を指定する必要があります。 サービス構成ファイルの既定の拡張子は .cscfg です。 Azure Policy は、クラシック デプロイでの構成の施行ではサポートされないことに注意してください。
 
@@ -58,27 +58,27 @@ Microsoft Azure Cloud Services (クラシック) を Azure Resource Manager 仮�
 
 - [Cloud Services 構成ファイル](schema-cscfg-file.md)
 
-- [Azure Policy によってサポートされるサービスの一覧](https://docs.microsoft.com/cli/azure/azure-services-the-azure-cli-can-manage?&amp;preserve-view=true)
+- [Azure Policy によってサポートされるサービスの一覧](/cli/azure/azure-services-the-azure-cli-can-manage?amp;preserve-view=)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="13-protect-critical-web-applications"></a>1.3:重要な Web アプリケーションを保護する
 
-**ガイダンス** :Microsoft では、トランスポート層セキュリティ (TLS) プロトコル v1.2 を使用して、Azure Cloud Services と顧客の間で転送されているデータを保護します。 Microsoft のデータ センターは、Azure サービスに接続するクライアント システムとの TLS 接続をネゴシエートします。 TLS には、強力な認証、メッセージの機密性、整合性 (メッセージの改ざん、傍受、偽造の検出が有効)、相互運用性、アルゴリズムの柔軟性、デプロイと使用のしやすさといったメリットがあります。
+**ガイダンス**:Microsoft では、トランスポート層セキュリティ (TLS) プロトコル v1.2 を使用して、Azure Cloud Services と顧客の間で転送されているデータを保護します。 Microsoft のデータ センターは、Azure サービスに接続するクライアント システムとの TLS 接続をネゴシエートします。 TLS には、強力な認証、メッセージの機密性、整合性 (メッセージの改ざん、傍受、偽造の検出が有効)、相互運用性、アルゴリズムの柔軟性、デプロイと使用のしやすさといったメリットがあります。
 
 - [暗号化の基礎](../security/fundamentals/encryption-overview.md)
 
 - [TLS/SSL 証明書の構成](cloud-services-configure-ssl-certificate-portal.md)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4:既知の悪意のある IP アドレスとの通信を拒否する
 
-**ガイダンス** :Azure Cloud では、分散型サービス拒否 (DDoS) 攻撃からプラットフォーム サービスを保護するために複数層のネットワーク セキュリティを実装しています。 Azure DDoS Protection は、Azure Cloud の継続的な監視プロセスの一部であり、侵入テストを通して継続的に強化されています。 この DDoS Protection は、外部からの攻撃だけではなく、他の Azure テナントからの攻撃にも耐えられるように設計されています。 
+**ガイダンス**:Azure Cloud では、分散型サービス拒否 (DDoS) 攻撃からプラットフォーム サービスを保護するために複数層のネットワーク セキュリティを実装しています。 Azure DDoS Protection は、Azure Cloud の継続的な監視プロセスの一部であり、侵入テストを通して継続的に強化されています。 この DDoS Protection は、外部からの攻撃だけではなく、他の Azure テナントからの攻撃にも耐えられるように設計されています。 
 
 Azure Cloud Services 内のプラットフォーム レベルの保護に加えて、通信をブロックまたは拒否するいくつかの方法があります。 次のとおりです。 
 
@@ -89,43 +89,43 @@ Cloud Services の既定の URL または名前 (例: *.cloudapp.net) への着�
 
 従来のサブスクリプション管理者の割り当てに対して、拒否の適用ルールを構成します。 既定では、内部エンドポイントを定義すると、任意のロールから別のロールの内部エンドポイントに、無制限で通信を行うことができます。 通信を制限するには、サービス定義ファイル内で、NetworkTrafficRules 要素を ServiceDefinition 要素に追加する必要があります。
 
-- [自分のクラウド サービスの既定の URL への着信トラフィックをブロックまたは無効にするにはどうすればよいですか](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq?&amp;preserve-view=true#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
+- [自分のクラウド サービスの既定の URL への着信トラフィックをブロックまたは無効にするにはどうすればよいですか](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
 
-- [Azure DDOS protection](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq?&amp;preserve-view=true#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
+- [Azure DDOS protection](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
 
 - [特定の IP アドレスをブロックする](cloud-services-startup-tasks-common.md#block-a-specific-ip-address)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="15-record-network-packets"></a>1.5:ネットワーク パケットを記録する
 
-**ガイダンス** :Azure ネットワークの監視に使用できる、ネットワーク パフォーマンスの監視、診断、および分析サービスである Azure Network Watcher を使用します。 Network Watcher Agent 仮想マシン拡張機能は、オンデマンドでネットワーク トラフィックをキャプチャするためと、Azure Virtual Machines に関するその他の高度な機能を使用するための要件です。 Network Watcher Agent 仮想マシン拡張機能をインストールし、ネットワーク セキュリティ グループのフロー ログを有効にします。
+**ガイダンス**:Azure ネットワークの監視に使用できる、ネットワーク パフォーマンスの監視、診断、および分析サービスである Azure Network Watcher を使用します。 Network Watcher Agent 仮想マシン拡張機能は、オンデマンドでネットワーク トラフィックをキャプチャするためと、Azure Virtual Machines に関するその他の高度な機能を使用するための要件です。 Network Watcher Agent 仮想マシン拡張機能をインストールし、ネットワーク セキュリティ グループのフロー ログを有効にします。
 
 ネットワーク セキュリティ グループでフローのログ記録を構成します。 クラシック デプロイ モデルを使用してデプロイされた既存の仮想マシンに Network Watcher 仮想マシン拡張機能をデプロイする方法の詳細を確認します。
 
 - [ネットワーク セキュリティ グループでフローのログ記録を構成する](../virtual-machines/extensions/network-watcher-linux.md)
 
-- [フロー ログの構成の詳細については、こちらを参照してください](https://docs.microsoft.com/cli/azure/azure-services-the-azure-cli-can-manage?&amp;preserve-view=true)
+- [フロー ログの構成の詳細については、こちらを参照してください](/cli/azure/azure-services-the-azure-cli-can-manage?amp;preserve-view=)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6:ネットワーク ベースの侵入検出または侵入防止システム (IDS または IPS) をデプロイする
 
-**ガイダンス** :Azure Cloud Services には、組み込みの IDS または IPS 機能はありません。 お客様は、組織の要件に基づいて、Azure Marketplace から追加のネットワークベースの IDS または IPS ソリューションを選択してデプロイできます。 サードパーティのソリューションを使用する場合は、選択した IDS または IPS ソリューションを Azure Cloud Services で十分にテストして、適切に稼動および機能するようにしてください。
+**ガイダンス**:Azure Cloud Services には、組み込みの IDS または IPS 機能はありません。 お客様は、組織の要件に基づいて、Azure Marketplace から追加のネットワークベースの IDS または IPS ソリューションを選択してデプロイできます。 サードパーティのソリューションを使用する場合は、選択した IDS または IPS ソリューションを Azure Cloud Services で十分にテストして、適切に稼動および機能するようにしてください。
 
 - [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall) 
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7:Web アプリケーションへのトラフィックを管理する
 
-**ガイダンス** :サービス証明書は Azure Cloud Services に付属して、サービスとの間のセキュリティで保護された通信を有効にします。 サービス定義で定義されているこれらの証明書は、Web ロールのインスタンスを実行している仮想マシンに自動的にデプロイされます。 たとえば、Web ロールの場合は、公開されている HTTPS エンドポイントを認証できるサービス証明書を使用できます。 
+**ガイダンス**:サービス証明書は Azure Cloud Services に付属して、サービスとの間のセキュリティで保護された通信を有効にします。 サービス定義で定義されているこれらの証明書は、Web ロールのインスタンスを実行している仮想マシンに自動的にデプロイされます。 たとえば、Web ロールの場合は、公開されている HTTPS エンドポイントを認証できるサービス証明書を使用できます。 
 
 証明書を更新するには、新しい証明書をアップロードし、サービス構成ファイルの拇印値を変更するだけです。
 
@@ -139,37 +139,37 @@ TLS 1.2 プロトコルを使用します。これは、データをセキュリ
 
 - [Application Gateway をデプロイする方法](../application-gateway/quick-create-portal.md)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9:ネットワーク デバイスの標準的なセキュリティ構成を維持する
 
-**ガイダンス** :Azure Cloud Services の構成を強化し、変更を監視します。 サービス構成ファイルは、サービスのロールごとに配置するロール インスタンスの数、すべての構成設定の値、ロールに関連付けられているすべての証明書のサムプリントを指定します。 
+**ガイダンス**:Azure Cloud Services の構成を強化し、変更を監視します。 サービス構成ファイルは、サービスのロールごとに配置するロール インスタンスの数、すべての構成設定の値、ロールに関連付けられているすべての証明書のサムプリントを指定します。 
 
 サービスが仮想ネットワークの一部である場合は、仮想ネットワーク構成ファイルだけでなく、サービス構成ファイルでネットワークの構成情報を指定する必要があります。 サービス構成ファイルの既定の拡張子は .cscfg です。
 
 Azure Policy は、Azure Cloud Services での構成の施行ではサポートされないことに注意してください。
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10:トラフィック構成規則を文書化する
 
-**ガイダンス** :Azure Virtual Network 内の Azure リソースが送受信するネットワーク トラフィックは、Azure ネットワーク セキュリティ グループを使ってフィルター処理できます。 ネットワーク セキュリティ グループには、何種類かの Azure リソースとの送受信ネットワーク トラフィックを許可または拒否するセキュリティ規則が含まれています。 各規則で、送信元と送信先、ポート、およびプロトコルを指定することができます。
+**ガイダンス**:Azure Virtual Network 内の Azure リソースが送受信するネットワーク トラフィックは、Azure ネットワーク セキュリティ グループを使ってフィルター処理できます。 ネットワーク セキュリティ グループには、何種類かの Azure リソースとの送受信ネットワーク トラフィックを許可または拒否するセキュリティ規則が含まれています。 各規則で、送信元と送信先、ポート、およびプロトコルを指定することができます。
 
 Azure Cloud Services 内の個々のネットワーク セキュリティ グループの規則の "説明" フィールドを使用して、ネットワークとの間のトラフィックを許可する規則を文書化します。
 
 - [ネットワーク セキュリティ グループの規則を使用してネットワーク トラフィックをフィルター処理する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11:自動化ツールを使用してネットワーク リソース構成を監視し、変更を検出する
 
-**ガイダンス** :Azure Traffic Manager の組み込みのエンドポイント監視と自動フェールオーバーの機能を使用します。 これらを使用して、エンドポイントと Azure リージョンの障害に対する回復性を備えた高可用性アプリケーションを提供できます。 エンドポイント監視を構成するには、Traffic Manager プロファイルに特定の設定を指定する必要があります。
+**ガイダンス**:Azure Traffic Manager の組み込みのエンドポイント監視と自動フェールオーバーの機能を使用します。 これらを使用して、エンドポイントと Azure リージョンの障害に対する回復性を備えた高可用性アプリケーションを提供できます。 エンドポイント監視を構成するには、Traffic Manager プロファイルに特定の設定を指定する必要があります。
 
 Azure のプラットフォーム ログであるアクティビティ ログから、サブスクリプション レベルのイベントに関する分析情報を収集します。 これには、リソースが変更されたときや仮想マシンが起動されたときなどの情報が含まれます。 Azure portal でアクティビティ ログを表示するか、PowerShell と CLI を使用してエントリを取得します。 
 
@@ -181,27 +181,27 @@ Azure のプラットフォーム ログであるアクティビティ ログか
 
 - [Traffic Manager の監視](../traffic-manager/traffic-manager-monitoring.md)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳しくは、「 [Azure Security ベンチマーク:ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
+*詳しくは、「[Azure Security ベンチマーク:ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
-**ガイダンス** :Microsoft は、Azure Cloud Services 用の Azure リソースのタイム ソースを保持しています。 お客様は、環境内で使用されているタイム サーバーへのアクセス (UDP プロトコルでポート 123 を使用) を許可するネットワーク ルールを作成することが必要になる場合があります。
+**ガイダンス**:Microsoft は、Azure Cloud Services 用の Azure リソースのタイム ソースを保持しています。 お客様は、環境内で使用されているタイム サーバーへのアクセス (UDP プロトコルでポート 123 を使用) を許可するネットワーク ルールを作成することが必要になる場合があります。
 
 - [NTP サーバー アクセス](../firewall/protect-windows-virtual-desktop.md#additional-considerations)
 
-**Azure Security Center の監視** : はい
+**Azure Security Center の監視**: はい
 
-**責任** : 共有
+**責任**: 共有
 
 ### <a name="22-configure-central-security-log-management"></a>2.2:セキュリティ ログの一元管理を構成する
 
-**ガイダンス** :Azure Event Hubs を使用して、クラウド サービスのストリーミング データをプログラムで使用します。 このデータをすべて統合して Azure Sentinel に送信し、ログを監視して確認するか、サードパーティの SIEM を使用します。 セキュリティ ログを一元的に管理する場合は、選択した Azure Security Center データを Azure Event Hubs に連続エクスポートするように構成し、SIEM に適したコネクタを設定します。 Azure Sentinel のオプションをいくつか次に示します (サードパーティ製ツールを含む)。
+**ガイダンス**:Azure Event Hubs を使用して、クラウド サービスのストリーミング データをプログラムで使用します。 このデータをすべて統合して Azure Sentinel に送信し、ログを監視して確認するか、サードパーティの SIEM を使用します。 セキュリティ ログを一元的に管理する場合は、選択した Azure Security Center データを Azure Event Hubs に連続エクスポートするように構成し、SIEM に適したコネクタを設定します。 Azure Sentinel のオプションをいくつか次に示します (サードパーティ製ツールを含む)。
 
 - Azure Sentinel - ネイティブの Security Center アラート データ コネクタを使用する
 - Splunk - Splunk 向けの Azure Monitor アドオンを使用する
@@ -218,46 +218,46 @@ Azure sentinel で使用可能なコネクタの詳細については、Azure Se
 
 - [Azure Event Hubs を使用した SIEM 統合の構成](../security-center/continuous-export.md)
 
-**Azure Security Center の監視** : はい
+**Azure Security Center の監視**: はい
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3:Azure リソースの監査ログ記録を有効にする
 
-**ガイダンス** :Azure Cloud Services のトラブルシューティングを行うために、Visual Studio を構成して Azure Diagnostics をセットアップします。Azure Diagnostics では、仮想マシン (Azure Cloud Services を実行している仮想マシン インスタンスを含む) 上のシステム データとログ データがキャプチャされます。 診断データは、選択したストレージ アカウントに転送されます。 デプロイする前に、Azure Cloud Services プロジェクトで診断を有効にします。
+**ガイダンス**:Azure Cloud Services のトラブルシューティングを行うために、Visual Studio を構成して Azure Diagnostics をセットアップします。Azure Diagnostics では、仮想マシン (Azure Cloud Services を実行している仮想マシン インスタンスを含む) 上のシステム データとログ データがキャプチャされます。 診断データは、選択したストレージ アカウントに転送されます。 デプロイする前に、Azure Cloud Services プロジェクトで診断を有効にします。
 
  
 Azure Monitor 内のアクティビティ ログでいくつかのイベントの変更履歴を表示します。 イベントの発生期間中に行われた変更を監査します。 [変更履歴 (プレビュー)] タブで詳細な調査を行うために、アクティビティ ログからイベントを選択します。Visual Studio から Azure Cloud Services を発行するときに、診断データを Application Insights に送信します。 その時点で Application Insights の Azure リソースを作成するか、データを既存の Azure リソースに送信します。 
 
 Azure Cloud Services の可用性、パフォーマンス、障害、および使用状況は、Application Insights で監視できます。 カスタム グラフを Application Insights に追加して、最も重要なデータを確認できます。 ロール インスタンスのデータは、Azure Cloud Services プロジェクトで Application Insights SDK を使用して収集できます。 
 
-- [デプロイ前に Visual Studio で診断を有効にする](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?&amp;preserve-view=true#to-turn-on-diagnostics-in-visual-studio-before-deployment)
+- [デプロイ前に Visual Studio で診断を有効にする](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?amp;preserve-view=#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
 - [変更履歴を表示する](../azure-monitor/platform/activity-log.md#view-change-history)
 
 - [Azure クラウド サービス (クラシック) 向けの Application Insights](../azure-monitor/app/cloudservices.md)
 
-- [Azure クラウド サービス (クラシック) と仮想マシンに対する診断を設定する](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?toc=%2Fazure%2Fcloud-services%2Ftoc.json&amp;preserve-view=true)
+- [Azure クラウド サービス (クラシック) と仮想マシンに対する診断を設定する](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?amp;preserve-view=true&toc=%2fazure%2fcloud-services%2ftoc.json)
 
-**Azure Security Center の監視** : はい
+**Azure Security Center の監視**: はい
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5:セキュリティ ログのストレージ保持を構成する
 
-**ガイダンス** :Azure Cloud Services で高度な監視機能を使用すると、5 分、1 時間、12 時間の間隔で追加のメトリックをサンプリングして収集することができます。 集計されたデータはストレージ アカウントのテーブルに格納され、10 日後に消去されます。 ただし、使用されるストレージ アカウントはロールごとに構成されます。ロールによって異なるストレージ アカウントを使用できます。 これは、.csdef ファイルと .cscfg ファイルで接続文字列を使用して構成されます。
+**ガイダンス**:Azure Cloud Services で高度な監視機能を使用すると、5 分、1 時間、12 時間の間隔で追加のメトリックをサンプリングして収集することができます。 集計されたデータはストレージ アカウントのテーブルに格納され、10 日後に消去されます。 ただし、使用されるストレージ アカウントはロールごとに構成されます。ロールによって異なるストレージ アカウントを使用できます。 これは、.csdef ファイルと .cscfg ファイルで接続文字列を使用して構成されます。
 
 高度な監視では、監視対象のロールで Azure Diagnostics 拡張機能 (Application Insights SDK はオプションです) が使用されることに注意してください。 診断拡張機能は、(ロールごとに) 構成ファイル diagnostics.wadcfgx を使用して、監視する診断メトリックを構成します。 Azure 診断拡張機能では、データを収集して Azure Storage アカウントに格納します。 これらの設定は、.wadcfgx ファイル、.csdef ファイル、および.cscfg ファイルで構成されています。
 
 - [クラウド サービスの監視の概要](cloud-services-how-to-monitor.md)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="26-monitor-and-review-logs"></a>2.6:ログを監視して確認する
 
-**ガイダンス** :Azure Cloud Services では、基本または拡張の監視モードを使用できます。 Azure Cloud Services は、ホスト仮想マシンから基本的な監視データ (CPU 使用率、ネットワークの受信/送信、およびディスクの読み取り/書き込み) を自動的に収集します。 Azure portal のクラウド サービスの概要ページとメトリック ページで、収集された監視データを表示します。 
+**ガイダンス**:Azure Cloud Services では、基本または拡張の監視モードを使用できます。 Azure Cloud Services は、ホスト仮想マシンから基本的な監視データ (CPU 使用率、ネットワークの受信/送信、およびディスクの読み取り/書き込み) を自動的に収集します。 Azure portal のクラウド サービスの概要ページとメトリック ページで、収集された監視データを表示します。 
 
 Azure Cloud Services で診断を有効にすると、Azure Diagnostics 拡張機能を使用して、アプリケーション ログやパフォーマンス カウンターなどの診断データを収集できます。 Set-azureservicediagnosticsextension コマンドレットを使用して既に実行されているクラウド サービスの診断構成を有効化または更新するか、診断拡張機能を使用してクラウド サービスを自動的にデプロイします。 必要に応じて、Application Insights SDK をインストールします。 パフォーマンス カウンターを Azure Monitor に送信します。
 
@@ -271,37 +271,37 @@ Azure 診断拡張機能では、データを収集して Azure Storage アカ�
 
 - [Azure Storage への診断データの保存と表示](diagnostics-extension-to-storage.md?&amp;preserve-view=true)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7:異常なアクティビティについてのアラートを有効にする
 
-**ガイダンス** :Azure Sentinel と統合するか、サードパーティの SIEM と統合するか、異常なアクティビティのアラートを有効にして、Azure Cloud Services のログ データを監視します。
+**ガイダンス**:Azure Sentinel と統合するか、サードパーティの SIEM と統合するか、異常なアクティビティのアラートを有効にして、Azure Cloud Services のログ データを監視します。
 
 - [SIEM との統合](../security-center/continuous-export.md)
 
-**Azure Security Center の監視** : はい
+**Azure Security Center の監視**: はい
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8:マルウェア対策のログ記録を一元管理する
 
-**ガイダンス** :Azure 向けの Microsoft Antimalware によって、Azure Cloud Services および仮想マシンが保護されます。 お客様は、Web アプリケーション ファイアウォール、ネットワーク ファイアウォール、マルウェア対策、侵入検出/防御システム (IDS または IPS) などのサード パーティ製のセキュリティ ソリューションを必要に応じてデプロイすることができます。
+**ガイダンス**:Azure 向けの Microsoft Antimalware によって、Azure Cloud Services および仮想マシンが保護されます。 お客様は、Web アプリケーション ファイアウォール、ネットワーク ファイアウォール、マルウェア対策、侵入検出/防御システム (IDS または IPS) などのサード パーティ製のセキュリティ ソリューションを必要に応じてデプロイすることができます。
 
-- [Azure の基本的な IPS/IDS と DDoS が提供する機能には何がありますか](https://docs.microsoft.com/azure/cloud-services/cloud-services-configuration-and-management-faq?&amp;preserve-view=true#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
+- [Azure の基本的な IPS/IDS と DDoS が提供する機能には何がありますか](./cloud-services-configuration-and-management-faq.md?amp;preserve-view=#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ## <a name="identity-and-access-control"></a>ID とアクセスの制御
 
-*詳細については、 [Azure セキュリティ ベンチマークの「ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
-**ガイダンス** :Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure リソースへのアクセスを管理することをお勧めします。 ただし、Azure Cloud Services では、Azure RBAC モデルはサポートされません。Azure RBAC は Azure Resource Manager ベースのサービスではなく、お客様はクラシック サブスクリプションを使用する必要があるためです
+**ガイダンス**:Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure リソースへのアクセスを管理することをお勧めします。 ただし、Azure Cloud Services では、Azure RBAC モデルはサポートされません。Azure RBAC は Azure Resource Manager ベースのサービスではなく、お客様はクラシック サブスクリプションを使用する必要があるためです
 
 既定では、Azure の従来のサブスクリプション管理者ロールには、アカウント管理者、サービス管理者、および共同管理者の 3 つがあります。 
 
@@ -317,49 +317,49 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 - [3 つの従来のサブスクリプション管理ロールの違い](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3: 専用管理者アカウントを使用する
 
-**ガイダンス** :使用可能なロールと、Azure Cloud Services リソースの操作と管理に必要なアクセス許可に基づいて、専用管理アカウントの使用に関する標準的な操作手順を作成することをお勧めします。
+**ガイダンス**:使用可能なロールと、Azure Cloud Services リソースの操作と管理に必要なアクセス許可に基づいて、専用管理アカウントの使用に関する標準的な操作手順を作成することをお勧めします。
 
 - [従来のサブスクリプション管理ロールの違い](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: シングル サインオン (SSO) と Azure Active Directory を統合する
 
-**ガイダンス** :Azure Cloud Services で実行されている複数のアプリケーションの ID を個別に管理することは避けてください。 シングル サインオンを実装して、複数の ID と資格情報をユーザーが管理しなくて済むようにします。
+**ガイダンス**:Azure Cloud Services で実行されている複数のアプリケーションの ID を個別に管理することは避けてください。 シングル サインオンを実装して、複数の ID と資格情報をユーザーが管理しなくて済むようにします。
 
 - [シングル サインオン (SSO) とは](../active-directory/manage-apps/what-is-single-sign-on.md)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
 
-**ガイダンス** :昇格された特権を必要とする管理タスクには、セキュリティで保護された Azure マネージド ワークステーション (特権アクセス ワークステーションとも呼ばれます) を使用することをお勧めします。
+**ガイダンス**:昇格された特権を必要とする管理タスクには、セキュリティで保護された Azure マネージド ワークステーション (特権アクセス ワークステーションとも呼ばれます) を使用することをお勧めします。
 
 - [セキュリティで保護された Azure マネージド ワークステーションを理解する](../active-directory/devices/concept-azure-managed-workstation.md)
 
 - [Azure AD MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、 [Azure セキュリティ ベンチマークの「データ保護](../security/benchmarks/security-control-data-protection.md)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「データ保護](../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
-**ガイダンス** :Azure クラウド サービスの REST API を使用して、Azure クラウド サービスのリソースの機密情報のインベントリを作成します。 デプロイされたクラウド サービスのリソースをポーリングして、構成と .pkg のリソースを取得します。
+**ガイダンス**:Azure クラウド サービスの REST API を使用して、Azure クラウド サービスのリソースの機密情報のインベントリを作成します。 デプロイされたクラウド サービスのリソースをポーリングして、構成と .pkg のリソースを取得します。
 
  例として、いくつかの API を以下に示します。
 
@@ -375,39 +375,39 @@ Azure Cloud Services の REST API のドキュメントを確認し、組織の�
 
 - [配送パッケージの取得](/rest/api/compute/cloudservices/rest-get-package)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2:機密情報を格納または処理するシステムを分離する
 
-**ガイダンス** :Azure Cloud Services の環境の種類やデータの機密度レベルなど、個々のセキュリティ ドメイン用の個別のサブスクリプションと管理グループを使用して分離を実装します。
+**ガイダンス**:Azure Cloud Services の環境の種類やデータの機密度レベルなど、個々のセキュリティ ドメイン用の個別のサブスクリプションと管理グループを使用して分離を実装します。
 
 Azure Cloud Services の証明書要素の "permissionLevel" を編集して、ロール プロセスに付与されるアクセス許可を指定することもできます。 管理者特権プロセスのみが秘密キーにアクセスできるようにするには、管理者特権を指定します。 limitedOrElevated 権限では、すべてのロール プロセスが秘密キーにアクセスできます。 指定できる値は、limitedOrElevated または elevated です。 既定値は limitedOrElevated です。
 
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](/azure/governance/management-groups/create)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
 - [WebRole スキーマ](schema-csdef-webrole.md#Certificate)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3:機密情報の承認されていない転送を監視してブロックする
 
-**ガイダンス** :Azure Marketplace のサードパーティ ソリューションをネットワーク境界で使用して、機密情報の認可されていない転送を監視し、情報セキュリティ担当者にアラートを送信すると同時に、そのような転送をブロックすることをお勧めします。
+**ガイダンス**:Azure Marketplace のサードパーティ ソリューションをネットワーク境界で使用して、機密情報の認可されていない転送を監視し、情報セキュリティ担当者にアラートを送信すると同時に、そのような転送をブロックすることをお勧めします。
 
 - [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : 共有
+**責任**: 共有
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4:転送中のすべての機密情報を暗号化する
 
-**ガイダンス** :Azure Cloud Services に TLS v2 を構成します。 Azure portal を使用して、ステージングされた Azure Cloud Services のデプロイに証明書を追加し、サービスの CSDEF ファイルと CSCFG ファイルに証明書情報を追加します。 アプリケーションを再パッケージ化し、ステージングされたデプロイを更新して、新しいパッケージが使用されるようにします。 
+**ガイダンス**:Azure Cloud Services に TLS v2 を構成します。 Azure portal を使用して、ステージングされた Azure Cloud Services のデプロイに証明書を追加し、サービスの CSDEF ファイルと CSCFG ファイルに証明書情報を追加します。 アプリケーションを再パッケージ化し、ステージングされたデプロイを更新して、新しいパッケージが使用されるようにします。 
 
 Azure Cloud Services に付属しているサービス証明書を Azure で使用して、サービスとの間のセキュリティで保護された通信を有効にします。 公開されている HTTPS エンドポイントを認証できる証明書を指定します。 クラウド サービスのサービス定義でサービス証明書を定義し、ロールのインスタンスを実行している仮想マシンに自動的にデプロイされるようにします。
 
@@ -419,23 +419,23 @@ Azure Cloud Services に付属しているサービス証明書を Azure で使�
 
 - [Python からサービス管理を使用する](cloud-services-python-how-to-use-service-management.md)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : 共有
+**責任**: 共有
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5:アクティブ検出ツールを使用して機密データを特定する
 
-**ガイダンス** :サードパーティのアクティブ検出ツールを使用して、組織のテクノロジ システムによって格納、処理、または送信されるすべての機密情報 (オンサイトにあるもの、またはリモート サービス プロバイダーにあるものなど) を特定し、組織の機密情報インベントリを更新することをお勧めします。
+**ガイダンス**:サードパーティのアクティブ検出ツールを使用して、組織のテクノロジ システムによって格納、処理、または送信されるすべての機密情報 (オンサイトにあるもの、またはリモート サービス プロバイダーにあるものなど) を特定し、組織の機密情報インベントリを更新することをお勧めします。
 
 - [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : 共有
+**責任**: 共有
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7:ホストベースのデータ損失防止を使用してアクセス制御を実施する
 
-**ガイダンス** :クラウド サービス (クラシック) には適用されません。 データ損失は防止されません。
+**ガイダンス**:クラウド サービス (クラシック) には適用されません。 データ損失は防止されません。
 
 ホストベースの自動データ損失防止ソリューションなどのサードパーティ ツールを実装して、データがシステムからコピーされた場合でもデータへのアクセス制御を実施することをお勧めします。
 
@@ -443,25 +443,25 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : 共有
+**責任**: 共有
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8:機密情報を保存時に暗号化する
 
-**ガイダンス** :Azure Cloud Services では、保存時の暗号化はサポートされません。 これは、Azure Cloud Services がステートレスになるように設計されているためです。 Azure Cloud Services では、外部ストレージがサポートされます (既定では保存時に暗号化される Azure Storage など)。  
+**ガイダンス**:Azure Cloud Services では、保存時の暗号化はサポートされません。 これは、Azure Cloud Services がステートレスになるように設計されているためです。 Azure Cloud Services では、外部ストレージがサポートされます (既定では保存時に暗号化される Azure Storage など)。  
 
 一時ディスクに格納されているアプリケーション データは暗号化されません。 必要に応じて、このデータを管理および暗号化する場合は、お客様が責任を負います。  
 
 - [Azure での保存時の暗号化の概要](../security/fundamentals/encryption-atrest.md)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9:重要な Azure リソースへの変更に関するログとアラート
 
-**ガイダンス** :Azure Monitor のクラシック メトリック アラートを使用すると、重要なリソースに適用されたメトリックのいずれかがしきい値を超えたときに通知を受け取ることができます。 クラシック メトリック アラートは、ディメンションを持たないメトリックでのみアラートを生成できる古い機能です。 クラシック メトリック アラートよりも機能が向上したメトリック アラートと呼ばれる新しい機能が既にあります。 
+**ガイダンス**:Azure Monitor のクラシック メトリック アラートを使用すると、重要なリソースに適用されたメトリックのいずれかがしきい値を超えたときに通知を受け取ることができます。 クラシック メトリック アラートは、ディメンションを持たないメトリックでのみアラートを生成できる古い機能です。 クラシック メトリック アラートよりも機能が向上したメトリック アラートと呼ばれる新しい機能が既にあります。 
 
 さらに、Application Insights を使用すると、Azure Cloud Services アプリの可用性、パフォーマンス、障害、および使用状況を監視できます。 この場合は、Application Insights SDK からのデータと、Azure Cloud Services からの Azure Diagnostics のデータが組み合わせて使用されます。
 
@@ -471,17 +471,17 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure クラウド サービス (クラシック) 向けの Application Insights](../azure-monitor/app/cloudservices.md)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、 [Azure セキュリティ ベンチマークの「脆弱性の管理](../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「脆弱性の管理](../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2:自動化されたオペレーティング システム修正プログラム管理ソリューションを展開する
 
-**ガイダンス** :この情報は、Azure Cloud Services worker の Azure ゲストのオペレーティング システムと、サービスとしてのプラットフォーム (PaaS) を使用した Web ロールに関連することに注意してください。 ただし、サービスとしてのインフラストラクチャ (IaaS) を使用した Virtual Machines には適用されません。
+**ガイダンス**:この情報は、Azure Cloud Services worker の Azure ゲストのオペレーティング システムと、サービスとしてのプラットフォーム (PaaS) を使用した Web ロールに関連することに注意してください。 ただし、サービスとしてのインフラストラクチャ (IaaS) を使用した Virtual Machines には適用されません。
 
 既定では、お客様のゲスト オペレーティング・システムは、サービス構成 (.cscfg) で指定した Windows Server 2016 などのオペレーティング・システム ファミリー内でサポートされている最新のイメージに定期的に更新されます。
 
@@ -495,23 +495,23 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [ゲスト OS バージョンの管理](cloud-services-how-to-configure-portal.md#manage-guest-os-version)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : 共有
+**責任**: 共有
 
 ### <a name="53-deploy-an-automated-patch-management-solution-for-third-party-software-titles"></a>5.3:サード パーティ ソフトウェア タイトル用の自動化された修正プログラム管理ソリューションをデプロイする
 
-**ガイダンス** :サードパーティの修正プログラム管理ソリューションを使用します。 環境内で既に Configuration Manager を使用しているお客様は、System Center Updates Publisher を使用して、カスタム更新プログラムを Windows Server Update Service に発行することもできます。 
+**ガイダンス**:サードパーティの修正プログラム管理ソリューションを使用します。 環境内で既に Configuration Manager を使用しているお客様は、System Center Updates Publisher を使用して、カスタム更新プログラムを Windows Server Update Service に発行することもできます。 
 
 これにより、Update Management では、サード パーティ ソフトウェアを使用して、Configuration Manager を更新リポジトリとして使用するマシンに修正プログラムを適用できます。
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5:リスク評価プロセスを使用して、検出された脆弱性の修復に優先順位を付ける
 
-**ガイダンス** :DDoS 攻撃のリスクの範囲を継続的に把握することをお勧めします。 
+**ガイダンス**:DDoS 攻撃のリスクの範囲を継続的に把握することをお勧めします。 
 
 次のシナリオを検討することをお勧めします。
 
@@ -525,41 +525,41 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure リソースのリスク評価](../security/fundamentals/ddos-best-practices.md#risk-evaluation-of-your-azure-resources)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、 [Azure セキュリティ ベンチマークの「インベントリと資産の管理](../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「インベントリと資産の管理](../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された資産検出ソリューションを使用する
 
-**ガイダンス** :Azure Cloud Services には適用されません。 この推奨事項は、IaaS コンピューティング リソースに適用できます。
+**ガイダンス**:Azure Cloud Services には適用されません。 この推奨事項は、IaaS コンピューティング リソースに適用できます。
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3:承認されていない Azure リソースを削除する
 
-**ガイダンス** :インベントリを定期的に調整し、認可されていないリソースがサブスクリプションから適切なタイミングで削除されるようにすることをお勧めします。
+**ガイダンス**:インベントリを定期的に調整し、認可されていないリソースがサブスクリプションから適切なタイミングで削除されるようにすることをお勧めします。
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4:承認された Azure リソースのインベントリを定義および管理する
 
-**ガイダンス** :お客様は、コンピューティング リソース用に承認された Azure リソースと承認されたソフトウェアを定義する必要があります。
+**ガイダンス**:お客様は、コンピューティング リソース用に承認された Azure リソースと承認されたソフトウェアを定義する必要があります。
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5:承認されていない Azure リソースを監視する
 
-**ガイダンス** :Azure Security Center で使用できる適応型アプリケーション制御機能を使用します。 お使いの Windows および Linux の Azure および Azure 以外のコンピューター上でどのアプリケーションが実行できるかを制御できる、Security Center によるインテリジェントかつ自動化されたエンドツーエンドのソリューションです。 また、これは、マルウェアに対してマシンを強化するためにも役立ちます。 
+**ガイダンス**:Azure Security Center で使用できる適応型アプリケーション制御機能を使用します。 お使いの Windows および Linux の Azure および Azure 以外のコンピューター上でどのアプリケーションが実行できるかを制御できる、Security Center によるインテリジェントかつ自動化されたエンドツーエンドのソリューションです。 また、これは、マルウェアに対してマシンを強化するためにも役立ちます。 
 
 この機能は、Azure と Azure 以外の Windows (すべてのバージョン、クラシック、または Azure Resource Manager) コンピューターおよび Linux コンピューターで使用できます。
 
@@ -576,13 +576,13 @@ Security Center では、機械学習を使用して、お使いのコンピュ�
 
 - [アダプティブ アプリケーション制御](../security-center/security-center-adaptive-application.md)
 
-**Azure Security Center の監視** : はい
+**Azure Security Center の監視**: はい
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6:コンピューティング リソース内の承認されていないソフトウェア アプリケーションを監視する
 
-**ガイダンス** :Azure Security Center で使用できる適応型アプリケーション制御機能を使用します。 お使いの Windows および Linux の Azure および Azure 以外のコンピューター上でどのアプリケーションが実行できるかを制御できる、Security Center によるインテリジェントかつ自動化されたエンドツーエンドのソリューションです。 また、これは、マルウェアに対してマシンを強化するためにも役立ちます。 
+**ガイダンス**:Azure Security Center で使用できる適応型アプリケーション制御機能を使用します。 お使いの Windows および Linux の Azure および Azure 以外のコンピューター上でどのアプリケーションが実行できるかを制御できる、Security Center によるインテリジェントかつ自動化されたエンドツーエンドのソリューションです。 また、これは、マルウェアに対してマシンを強化するためにも役立ちます。 
 
 この機能は、Azure と Azure 以外の Windows (すべてのバージョン、クラシック、または Azure Resource Manager) コンピューターおよび Linux コンピューターで使用できます。
 
@@ -604,13 +604,13 @@ Security Center では、機械学習を使用して、お使いのコンピュ�
 
 - [アダプティブ アプリケーション制御](../security-center/security-center-adaptive-application.md)
 
-**Azure Security Center の監視** : はい
+**Azure Security Center の監視**: はい
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7:承認されていない Azure リソースとソフトウェア アプリケーションを削除する
 
-**ガイダンス** :Azure Security Center で使用できる適応型アプリケーション制御機能を使用します。 お使いの Windows および Linux の Azure および Azure 以外のコンピューター上でどのアプリケーションが実行できるかを制御できる、Security Center によるインテリジェントかつ自動化されたエンドツーエンドのソリューションです。 また、これは、マルウェアに対してマシンを強化するためにも役立ちます。 
+**ガイダンス**:Azure Security Center で使用できる適応型アプリケーション制御機能を使用します。 お使いの Windows および Linux の Azure および Azure 以外のコンピューター上でどのアプリケーションが実行できるかを制御できる、Security Center によるインテリジェントかつ自動化されたエンドツーエンドのソリューションです。 また、これは、マルウェアに対してマシンを強化するためにも役立ちます。 
 
 この機能は、Azure と Azure 以外の Windows (すべてのバージョン、クラシック、または Azure Resource Manager) コンピューターおよび Linux コンピューターで使用できます。
 
@@ -632,13 +632,13 @@ Security Center では、機械学習を使用して、お使いのコンピュ�
 
 - [アダプティブ アプリケーション制御](../security-center/security-center-adaptive-application.md)
 
-**Azure Security Center の監視** : はい
+**Azure Security Center の監視**: はい
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="68-use-only-approved-applications"></a>6.8:承認されたアプリケーションのみを使用する
 
-**ガイダンス** :Azure Security Center で使用できる適応型アプリケーション制御機能を使用します。 お使いの Windows および Linux の Azure および Azure 以外のコンピューター上でどのアプリケーションが実行できるかを制御できる、Security Center によるインテリジェントかつ自動化されたエンドツーエンドのソリューションです。 また、これは、マルウェアに対してマシンを強化するためにも役立ちます。 
+**ガイダンス**:Azure Security Center で使用できる適応型アプリケーション制御機能を使用します。 お使いの Windows および Linux の Azure および Azure 以外のコンピューター上でどのアプリケーションが実行できるかを制御できる、Security Center によるインテリジェントかつ自動化されたエンドツーエンドのソリューションです。 また、これは、マルウェアに対してマシンを強化するためにも役立ちます。 
 
 この機能は、Azure と Azure 以外の Windows (すべてのバージョン、クラシック、または Azure Resource Manager) コンピューターおよび Linux コンピューターで使用できます。
 
@@ -660,13 +660,13 @@ Security Center では、機械学習を使用して、お使いのコンピュ�
 
 - [アダプティブ アプリケーション制御](../security-center/security-center-adaptive-application.md)
 
-**Azure Security Center の監視** : はい
+**Azure Security Center の監視**: はい
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10:承認されたソフトウェア タイトルのインベントリを管理する
 
-**ガイダンス** :Azure Security Center で使用できる適応型アプリケーション制御機能を使用します。 お使いの Windows および Linux の Azure および Azure 以外のコンピューター上でどのアプリケーションが実行できるかを制御できる、Security Center によるインテリジェントかつ自動化されたエンドツーエンドのソリューションです。 また、これは、マルウェアに対してマシンを強化するためにも役立ちます。 
+**ガイダンス**:Azure Security Center で使用できる適応型アプリケーション制御機能を使用します。 お使いの Windows および Linux の Azure および Azure 以外のコンピューター上でどのアプリケーションが実行できるかを制御できる、Security Center によるインテリジェントかつ自動化されたエンドツーエンドのソリューションです。 また、これは、マルウェアに対してマシンを強化するためにも役立ちます。 
 
 この機能は、Azure と Azure 以外の Windows (すべてのバージョン、クラシック、または Azure Resource Manager) コンピューターおよび Linux コンピューターで使用できます。
 
@@ -683,13 +683,13 @@ Security Center では、機械学習を使用して、お使いのコンピュ�
 
 - [アダプティブ アプリケーション制御](../security-center/security-center-adaptive-application.md)
 
-**Azure Security Center の監視** : はい
+**Azure Security Center の監視**: はい
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="612-limit-users-ability-to-execute-scripts-in-compute-resources"></a>6.12:コンピューティング リソースでスクリプトを実行するユーザーの機能を制限する
 
-**ガイダンス** :Azure Security Center で使用できる適応型アプリケーション制御機能を使用します。 お使いの Windows および Linux の Azure および Azure 以外のコンピューター上でどのアプリケーションが実行できるかを制御できる、Security Center によるインテリジェントかつ自動化されたエンドツーエンドのソリューションです。 また、これは、マルウェアに対してマシンを強化するためにも役立ちます。 
+**ガイダンス**:Azure Security Center で使用できる適応型アプリケーション制御機能を使用します。 お使いの Windows および Linux の Azure および Azure 以外のコンピューター上でどのアプリケーションが実行できるかを制御できる、Security Center によるインテリジェントかつ自動化されたエンドツーエンドのソリューションです。 また、これは、マルウェアに対してマシンを強化するためにも役立ちます。 
 
 この機能は、Azure と Azure 以外の Windows (すべてのバージョン、クラシック、または Azure Resource Manager) コンピューターおよび Linux コンピューターで使用できます。
 
@@ -711,13 +711,13 @@ Security Center では、機械学習を使用して、お使いのコンピュ�
 
 - [アダプティブ アプリケーション制御](../security-center/security-center-adaptive-application.md)
 
-**Azure Security Center の監視** : はい
+**Azure Security Center の監視**: はい
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13:リスクの高いアプリケーションを物理的または論理的に分離する
 
-**ガイダンス** :Azure Cloud Services を使用した機密性の高いまたはリスクの高いアプリケーションの場合は、個別のサブスクリプションや管理グループを実装して分離を実現します。
+**ガイダンス**:Azure Cloud Services を使用した機密性の高いまたはリスクの高いアプリケーションの場合は、個別のサブスクリプションや管理グループを実装して分離を実現します。
 
 ネットワーク セキュリティ グループを使用して、受信セキュリティ規則を作成し、http などのサービスを選択して、カスタム ポートを選択し、優先度と名前を指定します。 優先度は、ルールが適用される順序に影響します。数値が小さいほど、ルールが早く適用されます。 ビジネス ニーズに基づいてネットワーク トラフィックを分離またはセグメント化するには、ネットワーク セキュリティ グループをサブネットまたは特定のネットワーク インターフェイスに関連付ける必要があります。
 
@@ -725,81 +725,81 @@ Security Center では、機械学習を使用して、お使いのコンピュ�
 
 - [チュートリアル - Azure portal を使用してネットワーク セキュリティ グループでネットワーク トラフィックをフィルター処理する](../virtual-network/tutorial-filter-network-traffic.md)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、 [Azure セキュリティ ベンチマークの「セキュリティで保護された構成](../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「セキュリティで保護された構成](../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
-**ガイダンス** :Azure Cloud Services リソースの安全な構成基準として、Azure Security Center からの推奨事項を使用します。 
+**ガイダンス**:Azure Cloud Services リソースの安全な構成基準として、Azure Security Center からの推奨事項を使用します。 
 
 Azure portal で、[Security Center]、[計算 &amp; アプリ]、[Azure Cloud Services] の順に選択して、サービス リソースに適用できる推奨事項を確認します。
 
 - [セキュリティの推奨事項 - リファレンス ガイド](../security-center/recommendations-reference.md)
 
-**Azure Security Center の監視** : はい
+**Azure Security Center の監視**: はい
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
-**ガイダンス** :Azure Cloud Services には適用されません。 これは、クラシック デプロイ モデルに基づいています。 サードパーティのソリューションを使用して、セキュリティで保護された Azure リソースの構成を維持することをお勧めします
+**ガイダンス**:Azure Cloud Services には適用されません。 これは、クラシック デプロイ モデルに基づいています。 サードパーティのソリューションを使用して、セキュリティで保護された Azure リソースの構成を維持することをお勧めします
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 
-**ガイダンス** :Azure Cloud Services の構成ファイルには、リソースの操作属性が格納されます。 構成ファイルのコピーをセキュリティで保護されたストレージ アカウントに格納できます。
+**ガイダンス**:Azure Cloud Services の構成ファイルには、リソースの操作属性が格納されます。 構成ファイルのコピーをセキュリティで保護されたストレージ アカウントに格納できます。
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7:Azure リソース用の構成管理ツールをデプロイする
 
-**ガイダンス** :Azure Cloud Services には適用されません。 これはクラシック デプロイ モデルに基づいており、Azure Resource Manager のデプロイ ベースの構成ツールで管理することはできません。
+**ガイダンス**:Azure Cloud Services には適用されません。 これはクラシック デプロイ モデルに基づいており、Azure Resource Manager のデプロイ ベースの構成ツールで管理することはできません。
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8:オペレーティング システム用の構成管理ツールをデプロイする
 
-**ガイダンス** :Azure Cloud Services には適用されません。 この推奨事項は、サービスとしてのインフラストラクチャ (IaaS) ベースのコンピューティング リソースに適用できます。
+**ガイダンス**:Azure Cloud Services には適用されません。 この推奨事項は、サービスとしてのインフラストラクチャ (IaaS) ベースのコンピューティング リソースに適用できます。
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9:Azure リソースの自動構成監視を実装する
 
-**ガイダンス** : Azure Security Center を使用して、ご利用の Azure リソースのベースライン スキャンを実行します。  
+**ガイダンス**: Azure Security Center を使用して、ご利用の Azure リソースのベースライン スキャンを実行します。  
 
 - [Azure Security Center の推奨事項を修復する方法](../security-center/security-center-remediate-recommendations.md)
 
-**Azure Security Center の監視** : はい
+**Azure Security Center の監視**: はい
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10:オペレーティング システムの自動構成監視を実装する
 
-**ガイダンス** :Azure Security Center で、[計算 &amp; アプリ] 機能を選択し、仮想マシン、サーバー、およびコンテナーに関する推奨事項に従います。
+**ガイダンス**:Azure Security Center で、[計算 &amp; アプリ] 機能を選択し、仮想マシン、サーバー、およびコンテナーに関する推奨事項に従います。
 
-- [Azure Security Center のコンテナーの推奨事項を理解する](/azure/security-center/security-center-container-recommendations)
+- [Azure Security Center のコンテナーの推奨事項を理解する](../security-center/container-security.md)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11:Azure シークレットを安全に管理する
 
-**ガイダンス** :Azure Cloud Services はクラシック デプロイ モデルに基づいており、Azure Key Vault とは統合されません。
+**ガイダンス**:Azure Cloud Services はクラシック デプロイ モデルに基づいており、Azure Key Vault とは統合されません。
 
 Azure Cloud Services で使用される資格情報などのシークレットをセキュリティで保護することができます。これにより、パスワードを毎回入力する必要がなくなります。 最初に、プレーンテキストのパスワードを指定し、PowerShell コマンドの ConvertTo-SecureString を使用してそのパスワードをセキュリティで保護された文字列に変換します。 次に、ConvertFrom-SecureString を使用して、セキュリティで保護されたこの文字列を、暗号化された標準文字列に変換します。  これで、この暗号化された標準文字列を、Set-Content を使用してファイルに保存することができます。
 
@@ -807,13 +807,13 @@ Azure Cloud Services で使用される資格情報などのシークレット�
 
 - [PowerShell からリモート デスクトップを構成する](cloud-services-role-enable-remote-desktop-powershell.md#configure-remote-desktop-from-powershell)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13:意図しない資格情報の公開を排除する
 
-**ガイダンス** :Azure Cloud Services で使用される資格情報などのシークレットをセキュリティで保護します。これにより、パスワードを毎回入力する必要がなくなります。 
+**ガイダンス**:Azure Cloud Services で使用される資格情報などのシークレットをセキュリティで保護します。これにより、パスワードを毎回入力する必要がなくなります。 
  
 
 最初に、プレーンテキストのパスワードを指定し、PowerShell コマンドの ConvertTo-SecureString を使用してそのパスワードをセキュリティで保護された文字列に変更します。 次に、ConvertFrom-SecureString を使用して、セキュリティで保護されたこの文字列を、暗号化された標準文字列に変換します。 この暗号化された標準文字列を、Set-Content コマンドを使用してファイルに保存します。
@@ -822,17 +822,17 @@ Azure Cloud Services で使用される証明書の秘密キーをセキュリ�
 
 - [PowerShell からリモート デスクトップを構成する](cloud-services-role-enable-remote-desktop-powershell.md#configure-remote-desktop-from-powershell)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、 [Azure セキュリティ ベンチマークの「マルウェアからの防御](../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「マルウェアからの防御](../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="81-use-centrally-managed-antimalware-software"></a>8.1:一元管理されるマルウェア対策ソフトウェアを使用する
 
-**ガイダンス** :Azure 向けの Microsoft Antimalware は、Azure Cloud Services および Virtual Machines で使用できます。 これは、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つ無料のリアルタイム保護です。 これにより、既知の悪意あるソフトウェアや望ましくないソフトウェアが Azure システム上にソフトウェア自体をインストールまたは実行しようとしたときに、アラートが生成されます。 
+**ガイダンス**:Azure 向けの Microsoft Antimalware は、Azure Cloud Services および Virtual Machines で使用できます。 これは、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つ無料のリアルタイム保護です。 これにより、既知の悪意あるソフトウェアや望ましくないソフトウェアが Azure システム上にソフトウェア自体をインストールまたは実行しようとしたときに、アラートが生成されます。 
 
 マルウェア対策の構成を取得するには、PowerShell ベースのマルウェア対策コマンドレット (Get-AzureServiceAntimalwareConfig) を使用します。
 
@@ -840,23 +840,23 @@ Azure Cloud Services のスタートアップ タスクで PowerShell スクリ�
 
 自動化されたインテリジェントなエンドツーエンドのソリューションである Azure Security Center で、適応型アプリケーション制御機能を選択します。 マルウェアからコンピューターを保護し、悪意のあるアプリケーション (マルウェア対策ソリューションでは見逃される可能性のあるものを含む) の実行が試行されるのをブロックまたは警告することができます。
 
-- [Azure Cloud Services にマルウェア対策拡張機能を自動的に追加する方法を教えてください](https://docs.microsoft.com/azure/cloud-services/cloud-services-configuration-and-management-faq?&amp;preserve-view=true#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
+- [Azure Cloud Services にマルウェア対策拡張機能を自動的に追加する方法を教えてください](./cloud-services-configuration-and-management-faq.md?amp;preserve-view=#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
 
 - [マルウェア対策のデプロイ シナリオ](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)
 
 - [アダプティブ アプリケーション制御](../security-center/security-center-adaptive-application.md)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、 [Azure セキュリティ ベンチマークの「インシデント対応](../security/benchmarks/security-control-incident-response.md)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「インシデント対応](../security/benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
-**ガイダンス** : 組織のインシデント対応ガイドを作成します。 要員のすべてのロールを定義するインシデント対応計画が記述されていることと、検出からインシデント後のレビューまでのインシデント対応/管理のフェーズがあることを確認します。
+**ガイダンス**: 組織のインシデント対応ガイドを作成します。 要員のすべてのロールを定義するインシデント対応計画が記述されていることと、検出からインシデント後のレビューまでのインシデント対応/管理のフェーズがあることを確認します。
 
 - [Azure Security Center 内でワークフロー自動化を構成する方法](../security-center/security-center-planning-and-operations-guide.md)
 
@@ -866,77 +866,77 @@ Azure Cloud Services のスタートアップ タスクで PowerShell スクリ�
 
 - [お客様は、独自のインシデント対応計画の作成に役立つ NIST の「コンピューター セキュリティ インシデント対応ガイド」を利用することもできます](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2:インシデントのスコアリングと優先順位付けの手順を作成する
 
-**ガイダンス** : Azure Security Center によって各アラートに重大度が割り当てられるため、最初に調査する必要があるアラートの優先順位付けに役立ちます。 重要度は、アラートの発行に使用された Security Center の信頼度と、アラートの原因となったアクティビティの背後に悪意のある意図があったかどうかの信頼レベルに基づいて決まります。 
+**ガイダンス**: Azure Security Center によって各アラートに重大度が割り当てられるため、最初に調査する必要があるアラートの優先順位付けに役立ちます。 重要度は、アラートの発行に使用された Security Center の信頼度と、アラートの原因となったアクティビティの背後に悪意のある意図があったかどうかの信頼レベルに基づいて決まります。 
 
 サブスクリプション (運用、非運用など) を明確にマークし、Azure リソースを明確に識別および分類するための命名システムを作成します。
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
-**ガイダンス** :定期的にシステムのインシデント対応機能をテストする演習を実施します。 弱点やギャップを特定し、必要に応じて計画を見直します。 
+**ガイダンス**:定期的にシステムのインシデント対応機能をテストする演習を実施します。 弱点やギャップを特定し、必要に応じて計画を見直します。 
 
 - [NIST の出版物「IT 計画と機能に関するテスト、トレーニング、演習プログラムのガイド」を参照してください。](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
-**ガイダンス** :セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。 
+**ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。 
 
 - [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
-**ガイダンス** :連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。 
+**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。 
 
 - [連続エクスポートを構成する方法](../security-center/continuous-export.md) 
 
 - [Azure Sentinel にアラートをストリーミングする方法](../sentinel/connect-azure-security-center.md)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6:セキュリティ アラートへの対応を自動化する
 
-**ガイダンス** :セキュリティ アラートやセキュリティに関する推奨事項に対して "Logic Apps" 経由で応答を自動的にトリガーするには、Azure Security Center のワークフローの自動化機能を使用します。
+**ガイダンス**:セキュリティ アラートやセキュリティに関する推奨事項に対して "Logic Apps" 経由で応答を自動的にトリガーするには、Azure Security Center のワークフローの自動化機能を使用します。
 
 - [ワークフローの自動化と Logic Apps を構成する方法](../security-center/workflow-automation.md)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : Customer
+**責任**: Customer
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、 [Azure セキュリティ ベンチマークの「侵入テストとレッド チーム演習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「侵入テストとレッド チーム演習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、確実に修復されるようにする
 
-**ガイダンス** : お客様の侵入テストが Microsoft のポリシーに違反しないように、確実に次の Microsoft の活動規則に従ってください。 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 
+**ガイダンス**: お客様の侵入テストが Microsoft のポリシーに違反しないように、確実に次の Microsoft の活動規則に従ってください。 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 
 
 - [Microsoft が管理しているクラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施の詳細については、こちらを参照してください。](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure Security Center の監視** : 適用なし
+**Azure Security Center の監視**: 適用なし
 
-**責任** : 共有
+**責任**: 共有
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

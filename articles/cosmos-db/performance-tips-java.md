@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 9a074b872ed19a7d3e6b3e410c69da0f2b78e85e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3eced4e727954906d8ff67e7afe2279100f8f1cc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012580"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349063"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Azure Cosmos DB Sync Java SDK v2 のパフォーマンスに関するヒント
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -141,7 +141,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
     collectionDefinition.setIndexingPolicy(indexingPolicy);
     ```
 
-    詳細については、[Azure Cosmos DB インデックス作成ポリシー](/azure/cosmos-db/index-policy)に関するページをご覧ください。
+    詳細については、[Azure Cosmos DB インデックス作成ポリシー](./index-policy.md)に関するページをご覧ください。
 
 ## <a name="throughput"></a>スループット
 <a id="measure-rus"></a>

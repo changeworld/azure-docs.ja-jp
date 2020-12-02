@@ -3,12 +3,12 @@ title: Azure VMware Solution リソースを有効にする方法
 description: サポート リクエストを送信して Azure VMware Solution リソースを有効にする方法について説明します。 また、Azure VMware Solution のプライベート クラウドにさらに多くのホストを要求することもできます。
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 68f8fe38c67ec5ddad7cf662a7996330ee2a1e73
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 526d6b38f4b4e3f6c4806b71b4728dee90cf558a
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95794709"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325079"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>Azure VMware Solution リソースを有効にする方法
 サポート リクエストを送信して [Azure VMware Solution](introduction.md) リソースを有効にする方法について説明します。 また、Azure VMware Solution のプライベート クラウドにさらに多くのホストを要求することもできます。
@@ -76,7 +76,7 @@ CSP は [Microsoft パートナー センター](https://partner.microsoft.com)�
 
 1. **[Azure プラン]** を選択し、 **[カートに追加]** を選択します。 
 
-1. 顧客の Azure プラン サブスクリプションの全般的な設定を確認し、終了します。 詳細については、[Microsoft パートナー センターに関するドキュメント](https://docs.microsoft.com/partner-center/azure-plan-manage)を参照してください。
+1. 顧客の Azure プラン サブスクリプションの全般的な設定を確認し、終了します。 詳細については、[Microsoft パートナー センターに関するドキュメント](/partner-center/azure-plan-manage)を参照してください。
 
 Azure プランを構成し、必要とされる vSphere RBAC アクセス許可を CSP として指定したら、Azure プラン サブスクリプションのクォータを有効にするよう Microsoft に依頼します。 **代理管理者** (AOBO) の手順を使用して、パートナー センターから Azure portal にアクセスします。
 

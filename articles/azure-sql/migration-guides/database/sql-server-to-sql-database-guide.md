@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 55ce3747aaf105c7e2cbb830b1175769a658fd72
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: ee4abaf3c9f6aa70ba14920711c8917994254649
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496330"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326983"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>移行ガイド:SQL Server から SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -176,7 +176,7 @@ DMS を使用して SQL Server から Azure SQL Database にデータベース�
 
 ## <a name="leverage-advanced-features"></a>高度な機能を活用する 
 
-[組み込みの高可用性](../../database/high-availability-sla.md)、[脅威検出](../../database/advanced-data-security.md)、[ワークロードの監視と調整](../../database/monitor-tune-overview.md)など、SQL Database によって提供されるクラウドベースの高度な機能を利用してください。 
+[組み込みの高可用性](../../database/high-availability-sla.md)、[脅威検出](../../database/azure-defender-for-sql.md)、[ワークロードの監視と調整](../../database/monitor-tune-overview.md)など、SQL Database によって提供されるクラウドベースの高度な機能を利用してください。 
 
 一部の SQL Server 機能は、[データベース互換性レベル](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)を最新の互換性レベル (150) に変更した場合にのみ使用できます。 
 

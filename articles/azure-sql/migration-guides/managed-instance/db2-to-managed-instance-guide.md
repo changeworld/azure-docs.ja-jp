@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: f691ec2d6ba873ba8052c5fab35162932668f185
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: c31187e87f18f0ec84cd5b80ccab997d0ba381c3
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496319"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324756"
 ---
 # <a name="migration-guide-db2-to-sql-managed-instance"></a>移行ガイド:DB2 から SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -149,7 +149,7 @@ SQL Server Migration Assistant (SSMA) を使用して評価を作成します。
 
 ## <a name="leverage-advanced-features"></a>高度な機能を活用する 
 
-[組み込みの高可用性](../../database/high-availability-sla.md)、[脅威検出](../../database/advanced-data-security.md)、[ワークロードの監視と調整](../../database/monitor-tune-overview.md)など、Azure SQL Managed Instance によって提供されるクラウドベースの高度な機能を活用してください。 
+[組み込みの高可用性](../../database/high-availability-sla.md)、[脅威検出](../../database/azure-defender-for-sql.md)、[ワークロードの監視と調整](../../database/monitor-tune-overview.md)など、Azure SQL Managed Instance によって提供されるクラウドベースの高度な機能を活用してください。 
 
 
 一部の SQL Server 機能は、[データベース互換性レベル](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)を最新の互換性レベル (150) に変更した場合にのみ使用できます。 

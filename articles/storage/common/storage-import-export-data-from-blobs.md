@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 39f9a5802d7f10753c8ea81bf414da195e137cc6
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: e2e25f2fb806cb6e88745ffdfefe3dd82c0e9a6d
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93234139"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326542"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage からデータをエクスポートする
 
@@ -72,8 +72,8 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
          ![[すべてをエクスポートする]](./media/storage-import-export-data-from-blobs/export-from-blob4.png)
 
     - エクスポートするコンテナーと BLOB を指定できます。
-        - **エクスポートする BLOB を指定するには** : **[等しい]** セレクターを使用します。 コンテナー名から始まる BLOB への相対パスを指定します。 ルート コンテナーを指定するには、" *$root* " を使用します。
-        - **プレフィックスで始まるすべての BLOB を指定するには** : **[指定値で始まる]** セレクターを使用します。 スラッシュ "/" で始まるプレフィックスを指定します。 プレフィックスには、コンテナー名のプレフィックス、コンテナー名全体、またはコンテナー名全体の後に BLOB 名のプレフィックスを付けた名前を指定できます。 次のスクリーンショットで示すように、処理中にエラーが発生しないように、有効な形式で BLOB のパスを指定する必要があります。 詳細については、「[有効な BLOB パスの例](#examples-of-valid-blob-paths)」を参照してください。
+        - **エクスポートする BLOB を指定するには**: **[等しい]** セレクターを使用します。 コンテナー名から始まる BLOB への相対パスを指定します。 ルート コンテナーを指定するには、" *$root* " を使用します。
+        - **プレフィックスで始まるすべての BLOB を指定するには**: **[指定値で始まる]** セレクターを使用します。 スラッシュ "/" で始まるプレフィックスを指定します。 プレフィックスには、コンテナー名のプレフィックス、コンテナー名全体、またはコンテナー名全体の後に BLOB 名のプレフィックスを付けた名前を指定できます。 次のスクリーンショットで示すように、処理中にエラーが発生しないように、有効な形式で BLOB のパスを指定する必要があります。 詳細については、「[有効な BLOB パスの例](#examples-of-valid-blob-paths)」を参照してください。
 
            ![選択したコンテナーと BLOB をエクスポートする](./media/storage-import-export-data-from-blobs/export-from-blob5.png)
 
@@ -327,7 +327,7 @@ Install-Module -Name Az.ImportExport
     |**/sk:**|コンテナー SAS が指定されていない場合のみ必須。 エクスポート ジョブのストレージ アカウントのアカウント キーです。|
     |**/csas:**|ストレージ アカウント キーが指定されていない場合のみ必須。 エクスポート ジョブでエクスポートされる BLOB を一覧表示するためのコンテナー SAS です。|
     |**/ExportBlobListFile:**|必須。 エクスポートする BLOB の BLOB パスや BLOB パスのプレフィックスの一覧を含む XML ファイルへのパス。 インポート/エクスポート サービス REST API の [Put Job](/rest/api/storageimportexport/jobs) 操作の `BlobListBlobPath` 要素で使用されるファイル形式です。|
-    |**/DriveSize:**|必須。 エクスポート ジョブに使用するドライブのサイズ ( *例:* 500 GB、1.5 TB)。|
+    |**/DriveSize:**|必須。 エクスポート ジョブに使用するドライブのサイズ (*例:* 500 GB、1.5 TB)。|
 
     「[PreviewExport コマンドの例](#example-of-previewexport-command)」を参照してください。
 
@@ -380,9 +380,9 @@ Number of drives needed:        3
    | [指定値で始まる] |/$root/ |ルート コンテナー内のすべての BLOB をエクスポートする |
    | [指定値で始まる] |/book |プレフィックス " **book** |
    | [指定値で始まる] |/music/ |コンテナー " **music** |
-   | [指定値で始まる] |/music/love |コンテナー " **music** " 内の、プレフィックス " **love** " で始まるすべての BLOB をエクスポートする |
+   | [指定値で始まる] |/music/love |コンテナー "**music**" 内の、プレフィックス "**love**" で始まるすべての BLOB をエクスポートする |
    | [等しい] |$root/logo.bmp |ルート コンテナー内の BLOB " **logo.bmp** " をエクスポートする |
-   | [等しい] |videos/story.mp4 |コンテナー " **videos** " 内の BLOB " **story.mp4** " をエクスポートする |
+   | [等しい] |videos/story.mp4 |コンテナー "**videos**" 内の BLOB "**story.mp4**" をエクスポートする |
 
 ## <a name="next-steps"></a>次のステップ
 

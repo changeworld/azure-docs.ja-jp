@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: efc4d07e9e3a64a36f2ecf3fa0000379bef380f9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f8d37cf8f23de1d0535c7a9ff4a95ac217eddf74
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538580"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452395"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする
 
@@ -59,7 +59,7 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
 
 1. **[診断設定の追加]** をクリックします。
 
-1. **[名前]** フィールドに、新しい診断設定の名前を入力します。 たとえば、 **DistributedTracingSettings** などです。
+1. **[名前]** フィールドに、新しい診断設定の名前を入力します。 たとえば、**DistributedTracingSettings** などです。
 
 1. ログの送信先を決定するために、次のオプションを 1 つ以上選択します。
 
@@ -181,7 +181,7 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
 
 ### <a name="workaround-for-third-party-clients"></a>サード パーティ製クライアントの回避策
 
-C SDK を使用せずに分散トレース機能をプレビューするのは **簡単ではありません** 。 したがって、このアプローチはお勧めできません。
+C SDK を使用せずに分散トレース機能をプレビューするのは **簡単ではありません**。 したがって、このアプローチはお勧めできません。
 
 最初に、開発ガイド「[IoT Hub メッセージを作成し、読み取る](iot-hub-devguide-messages-construct.md)」に従って、すべての IoT Hub プロトコル プリミティブをご自身のメッセージで実装する必要があります。 次に、MQTT/AMQP メッセージのプロトコル プロパティを編集して、`tracestate` を **システム プロパティ** として追加します。 具体的には次のとおりです。
 
@@ -295,7 +295,7 @@ IoT メッセージのフローを可視化するために、アプリケーシ�
 
 ### <a name="context"></a>Context
 
-Microsoft 独自の[参照アーキテクチャ](https://aka.ms/iotrefarchitecture) (英語のみ) を含む多くの IoT ソリューションは、通常、[マイクロサービス アーキテクチャ](/azure/architecture/microservices/)のバリアントに準拠しています。 IoT ソリューションが複雑になるにつれて、数多くのマイクロサービスを使用することになります。 それらのマイクロサービスは、Azure のものである場合とそうでない場合があります。 IoT メッセージのドロップまたはスローダウンが発生している場所を正確に特定することは困難になる可能性があります。 たとえば、5 つの異なる Azure サービスと 1,500 台のアクティブ デバイスを使用する IoT ソリューションがあるとします。 device-to-cloud メッセージがデバイスごとに毎秒 10 件送信されますが (合計で毎秒 15,000 メッセージ)、Web アプリには毎秒 10,000 件のメッセージしか表示されません。 どこに問題がありますか。 どのようにして原因を見つけることができるのでしょうか。
+Microsoft 独自の[参照アーキテクチャ](/azure/architecture/reference-architectures/iot) (英語のみ) を含む多くの IoT ソリューションは、通常、[マイクロサービス アーキテクチャ](/azure/architecture/microservices/)のバリアントに準拠しています。 IoT ソリューションが複雑になるにつれて、数多くのマイクロサービスを使用することになります。 それらのマイクロサービスは、Azure のものである場合とそうでない場合があります。 IoT メッセージのドロップまたはスローダウンが発生している場所を正確に特定することは困難になる可能性があります。 たとえば、5 つの異なる Azure サービスと 1,500 台のアクティブ デバイスを使用する IoT ソリューションがあるとします。 device-to-cloud メッセージがデバイスごとに毎秒 10 件送信されますが (合計で毎秒 15,000 メッセージ)、Web アプリには毎秒 10,000 件のメッセージしか表示されません。 どこに問題がありますか。 どのようにして原因を見つけることができるのでしょうか。
 
 ### <a name="distributed-tracing-pattern-in-microservice-architecture"></a>マイクロサービス アーキテクチャでの分散トレース パターン
 

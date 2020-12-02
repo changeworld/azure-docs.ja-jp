@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 0f67a36ac4ccb27d7b955158b7e4a9cf4f5185d0
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 5b96e568b57c34fec1c93727aabe8e739a2a45cd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636920"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448653"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスでの Kubernetes
 
@@ -106,7 +106,7 @@ IoT Edge を介した Kubernetes クラスターへのアプリケーション�
 
 ### <a name="kubernetes-and-azure-arc"></a>Kubernetes と Azure Arc
 
-Azure Arc は、Kubernetes クラスターにアプリケーションをデプロイするためのハイブリッド管理ツールです。 また、Azure Arc を使用すると、コンテナーに対して Azure Monitor を使用して、ご利用のクラスターを表示および監視することもできます。 詳細については、[Azure Arc 対応 Kubernetes とは](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)に関するページを参照してください。 Azure Arc の価格については、[Azure Arc の価格](https://azure.microsoft.com/services/azure-arc/#pricing)に関するページを参照してください。
+Azure Arc は、Kubernetes クラスターにアプリケーションをデプロイするためのハイブリッド管理ツールです。 また、Azure Arc を使用すると、コンテナーに対して Azure Monitor を使用して、ご利用のクラスターを表示および監視することもできます。 詳細については、[Azure Arc 対応 Kubernetes とは](../azure-arc/kubernetes/overview.md)に関するページを参照してください。 Azure Arc の価格については、[Azure Arc の価格](https://azure.microsoft.com/services/azure-arc/#pricing)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

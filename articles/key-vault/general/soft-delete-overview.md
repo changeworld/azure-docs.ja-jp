@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/30/2020
-ms.openlocfilehash: c8ae10fa059bb9cfd32b95f9bc6d21f30ad9f880
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 184003e42a14e786cc52c4f585c6781f7b9fe0e7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744204"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452183"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault の論理的な削除の概要
 
@@ -27,7 +27,7 @@ Key Vault の論理的な削除機能を使用すると、削除されたコン�
 
 ## <a name="supporting-interfaces"></a>インターフェイスのサポート
 
-論理的な削除機能は、[REST API](/rest/api/keyvault/)、[Azure CLI](soft-delete-cli.md)、[Azure PowerShell](soft-delete-powershell.md)、[.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) の各インターフェイスの他に、[ARM テンプレート](/azure/templates/microsoft.keyvault/2019-09-01/vaults)でも使用できます。
+論理的な削除機能は、[REST API](/rest/api/keyvault/)、[Azure CLI](./key-vault-recovery.md)、[Azure PowerShell](./key-vault-recovery.md)、[.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) の各インターフェイスの他に、[ARM テンプレート](/azure/templates/microsoft.keyvault/2019-09-01/vaults)でも使用できます。
 
 ## <a name="scenarios"></a>シナリオ
 
@@ -41,7 +41,7 @@ Azure Key Vault は追跡対象のリソースであり、Azure Resource Manager
 
 論理削除が有効になっている場合、削除されたリソースとしてマークされたリソースは、指定された期間 (既定では 90 日) 保持されます。 さらに、削除されたオブジェクトを回復する、実質的には削除を元に戻すメカニズムも用意されています。
 
-新しいキー コンテナーを作成するときに、論理削除は既定でオンになっています。 [Azure CLI](soft-delete-cli.md) または [Azure PowerShell](soft-delete-powershell.md)を使用すれば、論理削除を行わずにキー コンテナーを作成できます。 キー コンテナーで論理削除が有効になると、無効にすることはできません
+新しいキー コンテナーを作成するときに、論理削除は既定でオンになっています。 [Azure CLI](./key-vault-recovery.md) または [Azure PowerShell](./key-vault-recovery.md)を使用すれば、論理削除を行わずにキー コンテナーを作成できます。 キー コンテナーで論理削除が有効になると、無効にすることはできません
 
 既定の保有期間は 90 日ですが、キー コンテナーの作成時に、Azure portal を通じて、リテンション期間ポリシーの間隔を 7 から 90 日の値に設定することができます。 保護の削除のアイテム保持ポリシーでは、同じ間隔が使用されます。 設定した場合、保持ポリシーの間隔は変更できません。
 
@@ -49,7 +49,7 @@ Azure Key Vault は追跡対象のリソースであり、Azure Resource Manager
 
 ### <a name="purge-protection"></a>消去保護
 
-消去保護は Key Vault のオプションの動作であり、**既定で有効になっていません**。 消去保護は、論理的な削除が有効な場合にのみ有効にすることができます。  これは [CLI](soft-delete-cli.md#enabling-purge-protection) または [PowerShell](soft-delete-powershell.md#enabling-purge-protection) を使用して有効にできます。
+消去保護は Key Vault のオプションの動作であり、**既定で有効になっていません**。 消去保護は、論理的な削除が有効な場合にのみ有効にすることができます。  これは [CLI](./key-vault-recovery.md?tabs=azure-cli) または [PowerShell](./key-vault-recovery.md?tabs=azure-powershell) を使用して有効にできます。
 
 消去保護が有効な場合、削除状態のコンテナーまたはオブジェクトは、保持期間が経過するまで消去できません｡ 論理的に削除されたこれらのコンテナーとオブジェクトはまだ回復可能で、アイテム保持ポリシーに確実に従うことができます。
 
@@ -60,10 +60,10 @@ Azure Key Vault は追跡対象のリソースであり、Azure Resource Manager
 プロキシ リソースで POST 操作によってキー コンテナーを完全削除、つまり消去することが可能ですが、それには特別な権限が必要です。 一般的に、サブスクリプションの所有者だけが、キー コンテナーを消去できます。 POST 操作では、コンテナーが直ちに削除されます。この削除は元に戻すことができません。 
 
 次のような例外があります。
-- Azure サブスクリプションが*削除不可*とマークされている場合｡ この場合は、サービスのみが実際の削除を実行できます。これは、スケジュールされたプロセスとして行われます。 
+- Azure サブスクリプションが *削除不可* とマークされている場合｡ この場合は、サービスのみが実際の削除を実行できます。これは、スケジュールされたプロセスとして行われます。 
 - `--enable-purge-protection flag` がコンテナー自体で有効になっている場合。 この場合、Key Vault では、元のシークレット オブジェクトは、オブジェクトを完全に削除する削除対象としてマークされたときから 90 日間待機します。
 
-手順については、「[CLI で Key Vault の論理的な削除を使用する方法:キー コンテナーを消去する](soft-delete-cli.md#purging-a-key-vault)」または「[PowerShell で Key Vault の論理的な削除を使用する方法:キー コンテナーを消去する](soft-delete-powershell.md#purging-a-key-vault)」を参照してください。
+手順については、「[CLI で Key Vault の論理的な削除を使用する方法:キー コンテナーを消去する](./key-vault-recovery.md?tabs=azure-cli#key-vault-cli)」または「[PowerShell で Key Vault の論理的な削除を使用する方法:キー コンテナーを消去する](./key-vault-recovery.md?tabs=azure-powershell#key-vault-powershell)」を参照してください。
 
 ### <a name="key-vault-recovery"></a>キー コンテナーの回復
 
@@ -71,7 +71,7 @@ Azure Key Vault は追跡対象のリソースであり、Azure Resource Manager
 
 ### <a name="key-vault-object-recovery"></a>キー コンテナー オブジェクトの回復
 
-キーなどのキー コンテナー オブジェクトを削除すると、オブジェクトは削除済み状態になり、どの取得操作でもアクセスできなくなります。 この状態のキー コンテナー オブジェクトは、表示、回復、強制/完全削除だけができます。 オブジェクトを表示するには、Azure CLI `az keyvault key list-deleted` コマンドを使用するか (「[CLI で Key Vault の論理的な削除を使用する方法](soft-delete-cli.md)」を参照)、または Azure PowerShell `-InRemovedState` パラメーターを使用してください (「[PowerShell で Key Vault の論理的な削除を使用する方法](soft-delete-powershell.md#secrets)」を参照)。  
+キーなどのキー コンテナー オブジェクトを削除すると、オブジェクトは削除済み状態になり、どの取得操作でもアクセスできなくなります。 この状態のキー コンテナー オブジェクトは、表示、回復、強制/完全削除だけができます。 オブジェクトを表示するには、Azure CLI `az keyvault key list-deleted` コマンドを使用するか (「[CLI で Key Vault の論理的な削除を使用する方法](./key-vault-recovery.md)」を参照)、または Azure PowerShell `-InRemovedState` パラメーターを使用してください (「[PowerShell で Key Vault の論理的な削除を使用する方法](./key-vault-recovery.md?tabs=azure-powershell#key-vault-powershell)」を参照)。  
 
 また、Key Vault では、削除したキー コンテナーまたはキー コンテナー オブジェクトに対応する基盤となるデータが、事前に定義されたリテンション期間の後に削除されるようにスケジュールされます。 また、コンテナーに対応する DNS レコードも、リテンション期間の間だけ保持されます。
 
@@ -99,5 +99,5 @@ Azure Key Vault は追跡対象のリソースであり、Azure Resource Manager
 
 次の 2 つのガイドでは、論理的な削除を使用する場合の主な使用シナリオを紹介しています。
 
-- [PowerShell で Key Vault の論理的な削除を使用する方法](soft-delete-powershell.md) 
-- [CLI で Key Vault の論理的な削除を使用する方法](soft-delete-cli.md)
+- [PowerShell で Key Vault の論理的な削除を使用する方法](./key-vault-recovery.md) 
+- [CLI で Key Vault の論理的な削除を使用する方法](./key-vault-recovery.md)

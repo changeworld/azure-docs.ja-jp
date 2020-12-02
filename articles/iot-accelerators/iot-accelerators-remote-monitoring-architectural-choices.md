@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1bd08596a30db7322a72b4269fddfe0b9df19119
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27a65d8a499f6eba130dc9537de3cb2b3dc3abe8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61447177"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446757"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>リモート監視のアーキテクチャの選択
 
@@ -23,7 +23,7 @@ Azure IoT リモート監視ソリューション アクセラレータは、オ
 - デバイス管理
 - ストリーム処理
 
-リモート監視ソリューションは、推奨の [Azure IoT リファレンス アーキテクチャ](https://aka.ms/iotrefarchitecture)に従っています。
+リモート監視ソリューションは、推奨の [Azure IoT リファレンス アーキテクチャ](/azure/architecture/reference-architectures/iot)に従っています。
 
 この記事では、各リモート監視サブシステムで行ったアーキテクチャとテクノロジの重要な選択について説明します。 ただし、リモート監視ソリューションで Microsoft が行ったテクノロジの選択は、リモート監視 IoT ソリューションを実装する唯一の方法ではありません。 この技術的な実装は、成功するアプリケーションを構築するための基準として考え、次のために変更する必要があります。
 
@@ -86,4 +86,4 @@ Docker の代替としては、Azure App Service などの PaaS サービスで�
 
 * [ここに](https://www.azureiotsolutions.com/)リモート監視ソリューション アクセラレータをデプロイする
 * GitHub のコードについては、こちら ([C#](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) および [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/)) をご覧ください。  
-* IoT リファレンス アーキテクチャの詳細については、[こちら](https://aka.ms/iotrefarchitecture)をご覧ください。
+* IoT リファレンス アーキテクチャの詳細については、[こちら](/azure/architecture/reference-architectures/iot)をご覧ください。

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: cafb32e5bd91c6b7f3cfef4641828963e0731797
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 46216fe06e3d3425d5b237cdbb7326eed596945a
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496426"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326932"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>移行の概要: SQL Server から SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -183,7 +183,7 @@ Azure SQL Database の場合、適用できるシステム データベースは
 
 SQL Database によって提供されるクラウドベースの高度な機能をぜひ活用してください。 たとえば、バックアップの管理はサービスによって行われるため、もう心配する必要はありません。 [保持期間内の任意の特定の時点](../../database/recovery-using-backups.md#point-in-time-restore)に復元できます。 
 
-セキュリティを強化するために、 [Azure Active Directory 認証](../../database/authentication-aad-overview.md)、[監査](../../database/auditing-overview.md)、 [脅威の検出](../../database/advanced-data-security.md)、 [行レベル セキュリティ](/sql/relational-databases/security/row-level-security)、 [動的データ マスク](/sql/relational-databases/security/dynamic-data-masking)の使用を検討してください。
+セキュリティを強化するために、 [Azure Active Directory 認証](../../database/authentication-aad-overview.md)、[監査](../../database/auditing-overview.md)、 [脅威の検出](../../database/azure-defender-for-sql.md)、 [行レベル セキュリティ](/sql/relational-databases/security/row-level-security)、 [動的データ マスク](/sql/relational-databases/security/dynamic-data-masking)の使用を検討してください。
 
 高度な管理とセキュリティの機能に加えて、SQL Database には[ワークロードの監視とチューニング](../../database/monitor-tune-overview.md)に役立つ高度なツール セットが用意されています。 [Azure SQL Analytics (プレビュー)](../../../azure-monitor/insights/azure-sql.md) は、Azure SQL Database のすべてのデータベースのパフォーマンスを、大規模に、かつ複数のサブスクリプションにわたって 1 つのビューで監視するための先進的クラウド監視ソリューションです。 Azure SQL Analytics で組み込みのインテリジェンスを使用して重要なパフォーマンス メトリックを収集し、視覚化することによって、パフォーマンスのトラブルシューティングを行うことができます。
 

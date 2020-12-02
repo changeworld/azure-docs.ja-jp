@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 91a2d08bf9eea2f5af0f6893712515cb2feeab8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6356089daed02270a14903639afee8001153b195
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890741"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447370"
 ---
 # <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスで kubectl を使用して Kubernetes ステートレス アプリケーションをデプロイする
 
@@ -25,7 +25,7 @@ Kubernetes クラスターを作成し、`kubectl` コマンドライン ツー�
 
 - 1 ノードの Azure Stack Edge Pro デバイスに対するサインイン資格情報がある。
 
-- Azure Stack Edge Pro デバイスにアクセスするために、Windows クライアント システムに Windows PowerShell 5.0 以降がインストールされている。 オペレーティング システムがサポートされている他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 最新バージョンの Windows PowerShell をダウンロードするには、[Windows への PowerShell のインストール](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)に関するページに移動します。
+- Azure Stack Edge Pro デバイスにアクセスするために、Windows クライアント システムに Windows PowerShell 5.0 以降がインストールされている。 オペレーティング システムがサポートされている他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 最新バージョンの Windows PowerShell をダウンロードするには、[Windows への PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)に関するページに移動します。
 
 - Azure Stack Edge Pro デバイスでコンピューティングが有効になっている。 コンピューティングを有効にするには、デバイスのローカル UI で **[コンピューティング]** ページに移動します。 その後、コンピューティングに対して有効にするネットワーク インターフェイスを選択します。 **[有効化]** を選択します。 コンピューティングを有効にすると、そのネットワーク インターフェイスでデバイスの仮想スイッチが作成されます。 詳細については、[Azure Stack Edge Pro でのコンピューティング ネットワークの有効化](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)に関するページを参照してください。
 

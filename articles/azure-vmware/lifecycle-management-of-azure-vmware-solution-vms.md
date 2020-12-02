@@ -3,12 +3,12 @@ title: Azure VMware Solution VM のライフサイクル管理
 description: Microsoft Azure ネイティブ ツールを使用して、Azure VMware Solution VM のライフサイクルのあらゆる側面を管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 5280d362c1e7b1bf33579d051c4cc11adb1b7e59
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ff1032900fa936895f3adfcb0d8a872f24948aca
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545763"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326813"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware Solution VM のライフサイクル管理
 
@@ -61,7 +61,7 @@ Azure Automation の Azure Update Management は、ハイブリッド環境の W
 
 2. **Log Analytics ワークスペース** により、Log Analytics エージェントまたは拡張機能を使用して、ログ収集およびパフォーマンス カウンターの収集が可能になります。 Log Analytics ワークスペースを作成するには、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)」を参照してください。 必要に応じて、[CLI](../azure-monitor/learn/quick-create-workspace-cli.md)、[PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md)、または [Azure Resource Manager テンプレート](../azure-monitor/samples/resource-manager-workspace.md)を使用してワークスペースを作成することもできます。
 
-3. VM に対して Azure Update Management を有効にするには、「[Automation アカウントから Update Management を有効にする](../automation/update-management/update-mgmt-enable-automation-account.md)」を参照してください。 このプロセスでは、Log Analytics ワークスペースを Automation アカウントにリンクします。 
+3. VM に対して Azure Update Management を有効にするには、「[Automation アカウントから Update Management を有効にする](../automation/update-management/enable-from-automation-account.md)」を参照してください。 このプロセスでは、Log Analytics ワークスペースを Automation アカウントにリンクします。 
  
 4. Azure Update Management に VM を追加したら、[VM に更新プログラムをデプロイして結果を確認する](../automation/update-management/deploy-updates.md)ことができます。 
 

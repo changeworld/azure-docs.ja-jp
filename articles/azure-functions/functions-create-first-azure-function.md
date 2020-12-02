@@ -5,12 +5,12 @@ ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 770b1076f1a711cd863c5d3d468a3ec87ea54e7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 746ec7aa3ee41204e051e843ff94ed0771a9d244
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212730"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326184"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure Portal で初めての関数を作成する
 
@@ -21,7 +21,7 @@ Azure Functions を使用すると、最初に仮想マシン (VM) を作成し�
 
 | Visual Studio Code | ターミナル/コマンド プロンプト | Visual Studio |
 | --- | --- | --- |
-|  &bull;&nbsp;[C# で作業を開始する](./functions-create-first-function-vs-code.md?pivots=programming-language-csharp)<br/>&bull;&nbsp;[Java で作業を開始する](./functions-create-first-function-vs-code.md?pivots=programming-language-java)<br/>&bull;&nbsp;[JavaScript で作業を開始する](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)<br/>&bull;&nbsp;[PowerShell で作業を開始する](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)<br/>&bull;&nbsp;[Python で作業を開始する](./functions-create-first-function-vs-code.md?pivots=programming-language-python) |&bull;&nbsp;[C# で作業を開始する](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-csharp)<br/>&bull;&nbsp;[Java で作業を開始する](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)<br/>&bull;&nbsp;[JavaScript で作業を開始する](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)<br/>&bull;&nbsp;[PowerShell で作業を開始する](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-powershell)<br/>&bull;&nbsp;[Python で作業を開始する](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python) | [C# で作業を開始する](functions-create-your-first-function-visual-studio.md) |
+|  &bull;&nbsp;[C# で作業を開始する](./create-first-function-vs-code-csharp.md)<br/>&bull;&nbsp;[Java で作業を開始する](./create-first-function-vs-code-java.md)<br/>&bull;&nbsp;[JavaScript で作業を開始する](./create-first-function-vs-code-node.md)<br/>&bull;&nbsp;[PowerShell で作業を開始する](./create-first-function-vs-code-powershell.md)<br/>&bull;&nbsp;[Python で作業を開始する](./create-first-function-vs-code-python.md) |&bull;&nbsp;[C# で作業を開始する](./create-first-function-cli-csharp.md)<br/>&bull;&nbsp;[Java で作業を開始する](./create-first-function-cli-java.md)<br/>&bull;&nbsp;[JavaScript で作業を開始する](./create-first-function-cli-node.md)<br/>&bull;&nbsp;[PowerShell で作業を開始する](./create-first-function-cli-powershell.md)<br/>&bull;&nbsp;[Python で作業を開始する](./create-first-function-cli-python.md) | [C# で作業を開始する](functions-create-your-first-function-visual-studio.md) |
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -80,4 +80,3 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 ## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
-

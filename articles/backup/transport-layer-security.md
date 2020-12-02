@@ -3,12 +3,12 @@ title: Azure Backup でのトランスポート層セキュリティ
 description: Azure Backup を有効にすることで、暗号化プロトコルであるトランスポート層セキュリティ (TLS) を使用して、ネットワーク経由で転送される際のデータのセキュリティを維持する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/01/2020
-ms.openlocfilehash: 9881fd3532cbc7d67c7d5adbce75e02fc62e0bcf
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: ba9c9d91f562f54695a0739908c8a409d14d5852
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280655"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327119"
 ---
 # <a name="transport-layer-security-in-azure-backup"></a>Azure Backup でのトランスポート層セキュリティ
 
@@ -45,7 +45,7 @@ ms.locfileid: "93280655"
 
 ### <a name="configuring-net-framework"></a>.NET Framework の構成
 
-次のレジストリ キーを使用して、強力な暗号化をサポートするように .NET Framework を構成します。 [.NET Framework の構成の詳細については、こちら](https://docs.microsoft.com/dotnet/framework/network-programming/tls#configuring-schannel-protocols-in-the-windows-registry)を参照してください。
+次のレジストリ キーを使用して、強力な暗号化をサポートするように .NET Framework を構成します。 [.NET Framework の構成の詳細については、こちら](/dotnet/framework/network-programming/tls#configuring-schannel-protocols-in-the-windows-registry)を参照してください。
 
 ```reg
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
@@ -65,7 +65,7 @@ TLS 1.2 は、SSL 2.0、SSL 3.0、TLS 1.0、TLS 1.1 などの以前の暗号化�
 
 ### <a name="what-determines-the-encryption-protocol-used"></a>使用される暗号化プロトコルは何によって決まりますか?
 
-暗号化された会話を確立するために、クライアントとサーバーの両方でサポートされている最上位のプロトコル バージョンがネゴシエートされます。 TLS ハンドシェイク プロトコルの詳細については、「[TLS を使用してセキュリティで保護されたセッションを確立する](https://docs.microsoft.com/windows/win32/secauthn/tls-handshake-protocol#establishing-a-secure-session-by-using-tls)」を参照してください。
+暗号化された会話を確立するために、クライアントとサーバーの両方でサポートされている最上位のプロトコル バージョンがネゴシエートされます。 TLS ハンドシェイク プロトコルの詳細については、「[TLS を使用してセキュリティで保護されたセッションを確立する](/windows/win32/secauthn/tls-handshake-protocol#establishing-a-secure-session-by-using-tls)」を参照してください。
 
 ### <a name="what-is-the-impact-of-not-enabling-tls-12"></a>TLS 1.2 を有効にしないと、どのような影響がありますか?
 
@@ -77,6 +77,6 @@ TLS 1.2 は、SSL 2.0、SSL 3.0、TLS 1.0、TLS 1.1 などの以前の暗号化�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [トランスポート層セキュリティ プロトコル](https://docs.microsoft.com/windows/win32/secauthn/transport-layer-security-protocol)
-- [展開されたオペレーティング システム全体で TLS 1.2 のサポートを確保する](https://docs.microsoft.com/security/engineering/solving-tls1-problem#ensuring-support-for-tls-12-across-deployed-operating-systems)
-- [.NET Framework でのトランスポート層セキュリティ (TLS) のベスト プラクティス](https://docs.microsoft.com/dotnet/framework/network-programming/tls)
+- [トランスポート層セキュリティ プロトコル](/windows/win32/secauthn/transport-layer-security-protocol)
+- [展開されたオペレーティング システム全体で TLS 1.2 のサポートを確保する](/security/engineering/solving-tls1-problem#ensuring-support-for-tls-12-across-deployed-operating-systems)
+- [.NET Framework でのトランスポート層セキュリティ (TLS) のベスト プラクティス](/dotnet/framework/network-programming/tls)

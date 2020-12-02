@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: db81f8b60cf4883223f6fc084c19c8da1d07bc9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 282d60b1894ffa186a6b5b6b5630aefa9e961572
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388104"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345135"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Microsoft アカウントでのサインインを設定する
 
@@ -69,8 +69,8 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
-1. **オプション**については、`Manual`を選択します。
-1. ポリシー キーの**名前**を入力します。 たとえば、「 `MSASecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
+1. **オプション** については、`Manual`を選択します。
+1. ポリシー キーの **名前** を入力します。 たとえば、「 `MSASecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
 1. **[シークレット]** に、前のセクションで記録したクライアント シークレットを入力します。
 1. **[キー使用法]** として [`Signature`] を選択します。
 1. **Create** をクリックしてください。
@@ -100,7 +100,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
             <Item Key="response_mode">form_post</Item>
             <Item Key="scope">openid profile email</Item>
             <Item Key="HttpBinding">POST</Item>
-            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="UsePolicyInRedirectUri">false</Item>
             <Item Key="client_id">Your Microsoft application client ID</Item>
           </Metadata>
           <CryptographicKeys>
@@ -194,7 +194,7 @@ Azure AD B2C との通信は、B2C テナントで登録したアプリケーシ
 1. **PublicPolicyUri** の値をポリシーの URI に更新します。 たとえば、`http://contoso.com/B2C_1A_signup_signin_msa` にします。
 1. **DefaultUserJourney** 内の **ReferenceId** 属性の値を、先ほど作成したユーザー体験の ID (SignUpSignInMSA) と一致するように更新します。
 1. 変更を保存し、ファイルをアップロードし、一覧から新しいポリシーを選択します。
-1. 前のセクションで作成した Azure AD B2C アプリケーション (または、前提条件の完了によるもの (*webapp1* や *testapp1*など)) が **[アプリケーションの選択]** フィールドで選択されていることを確認した後、 **[今すぐ実行]** をクリックしてそれをテストします。
+1. 前のセクションで作成した Azure AD B2C アプリケーション (または、前提条件の完了によるもの (*webapp1* や *testapp1* など)) が **[アプリケーションの選択]** フィールドで選択されていることを確認した後、 **[今すぐ実行]** をクリックしてそれをテストします。
 1. **[Microsoft アカウント]** ボタンを選択し、サインインします。
 
     サインイン操作が成功した場合は、`jwt.ms` にリダイレクトされ、次のようなデコードされたトークンが表示されます。

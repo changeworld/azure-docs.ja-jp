@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 55a7e117ebd49f268d4b075d58791df4e9223fdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a61e87c660bf2d2f0f4c8d02bd1699c58f8da667
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849264"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350672"
 ---
 # <a name="create-a-pool-with-disk-encryption-enabled"></a>ディスク暗号化が有効になっているプールを作成する
 
@@ -25,8 +25,8 @@ Batch プールを使用すると、コンピューティング ノードの OS 
 
 Batch は、プールの構成とリージョンのサポートに基づいて、これらのディスク暗号化テクノロジのいずれかをコンピューティング ノードに適用します。
 
-- [プラットフォーム マネージド キーを使用した保存時のマネージド ディスク暗号化](../virtual-machines/windows/disk-encryption.md#platform-managed-keys)
-- [プラットフォーム マネージド キーを使用したホストでの暗号化](../virtual-machines/windows/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
+- [プラットフォーム マネージド キーを使用した保存時のマネージド ディスク暗号化](../virtual-machines/disk-encryption.md#platform-managed-keys)
+- [プラットフォーム マネージド キーを使用したホストでの暗号化](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
 - [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)
 
 > [!IMPORTANT]
@@ -44,7 +44,7 @@ Azure portal で Batch プールを作成する場合は、 **[Disk Encryption C
 
 プールが作成されると、プールの **[プロパティ]** セクションに、ディスク暗号化構成ターゲットが表示されます。
 
-:::image type="content" source="media/disk-encryption/configuration-target.png" alt-text="Azure portal のディスク暗号化構成オプションのスクリーンショット。":::
+:::image type="content" source="media/disk-encryption/configuration-target.png" alt-text="Azure portal のディスク暗号化構成ターゲットを示すスクリーンショット。":::
 
 ## <a name="examples"></a>例
 
@@ -107,5 +107,5 @@ az batch pool create \
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Disk Storage のサーバー側暗号化](../virtual-machines/windows/disk-encryption.md)の詳細について学習します。
+- [Azure Disk Storage のサーバー側暗号化](../virtual-machines/disk-encryption.md)の詳細について学習します。
 - Batch の詳細については、「[Batch サービスのワークフローとリソース](batch-service-workflow-features.md)」を参照してください。

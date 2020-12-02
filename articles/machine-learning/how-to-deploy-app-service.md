@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 491fa39bed9e73a41f5a29a9040df052b6945552
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 5f3861d43715ed68116d25206efe4347ea96805c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578027"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452130"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service に機械学習モデルをデプロイする (プレビュー)
 
@@ -29,7 +29,7 @@ Azure Machine Learning から Web アプリとして Azure App Service にモデ
 Azure Machine Learning を使用すると、トレーニング済みの機械学習モデルから Docker イメージを作成できます。 このイメージには、データを受信してモデルに送信し、応答を返す Web サービスが含まれています。 Azure App Service を使用してこのイメージを展開でき、さらに次の機能が用意されています。
 
 * セキュリティ強化を目的とした[高度な認証](../app-service/configure-authentication-provider-aad.md)。 認証方法には、Azure Active Directory と多要素認証の両方が含まれます。
-* 再デプロイ不要の[自動スケーリング](../azure-monitor/platform/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json)。
+* 再デプロイ不要の[自動スケーリング](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)。
 * クライアントとサービスの間のセキュリティで保護された通信のための [TLS サポート](../app-service/configure-ssl-certificate-in-code.md)。
 
 Azure App Service によって提供される機能の詳細については、[App Service の概要](../app-service/overview.md)を参照してください。
@@ -271,7 +271,7 @@ print(response.json())
 ## <a name="next-steps"></a>次のステップ
 
 * [App Service on Linux](/azure/app-service/containers/) のドキュメントで Web アプリを構成する方法を確認します。
-* 「[Azure での自動スケールの使用](../azure-monitor/platform/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json)」でスケールの詳細を確認します。
+* 「[Azure での自動スケールの使用](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)」でスケールの詳細を確認します。
 * [Azure App Service で TLS/SSL 証明書を使用します](../app-service/configure-ssl-certificate-in-code.md)。
 * [Azure Active Directory サインインを使用するように App Service アプリを構成します](../app-service/configure-authentication-provider-aad.md)。
 * [Web サービスとしてデプロイされた ML モデルを使用する](how-to-consume-web-service.md)

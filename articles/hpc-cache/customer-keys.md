@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: 8bce19e384e600e95b8306dcbba38652b4432bc9
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 90af33a01450002c7d36a4ab4cf4a3da647068c5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340531"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444564"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Azure HPC Cache にカスタマー マネージド暗号化キーを使用する
 
@@ -20,7 +20,7 @@ Azure Key Vault を使用して、Azure HPC Cache でデータを暗号化する
 > [!NOTE]
 > Azure でキャッシュ ディスクなどに格納されているすべてのデータは、既定で Microsoft のマネージド キーを使用して保存時に暗号化されます。 この記事の手順に従うだけで、データの暗号化に使用するキーを管理することができます。
 
-Azure HPC Cache は、キャッシュ ディスクにカスタマー キーを追加した場合でも、キャッシュされたデータを保持しているマネージド ディスクでの [VM ホスト暗号化](../virtual-machines/linux/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)によっても保護されます。 カスタマー マネージド キーを二重暗号化のために追加することで、セキュリティ ニーズが高いお客様に追加のセキュリティ レベルが提供されます。 詳細については、「[Azure Disk Storage のサーバー側暗号化](../virtual-machines/linux/disk-encryption.md)」を参照してください。
+Azure HPC Cache は、キャッシュ ディスクにカスタマー キーを追加した場合でも、キャッシュされたデータを保持しているマネージド ディスクでの [VM ホスト暗号化](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)によっても保護されます。 カスタマー マネージド キーを二重暗号化のために追加することで、セキュリティ ニーズが高いお客様に追加のセキュリティ レベルが提供されます。 詳細については、「[Azure Disk Storage のサーバー側暗号化](../virtual-machines/disk-encryption.md)」を参照してください。
 
 この機能は、Azure HPC Cache を利用できる一部の Azure リージョンでのみ利用できます。 詳細については、「[利用可能なリージョン](hpc-cache-overview.md#region-availability)」の一覧を参照してください。
 
@@ -144,7 +144,7 @@ Azure HPC Cache を作成する際には、暗号化キーのソースを指定�
 これらの記事では、Azure Key Vault とカスタマー マネージド キーを使用して Azure でデータを暗号化する方法が詳しく説明されています。
 
 * [ストレージ暗号化の概要](../storage/common/storage-service-encryption.md)
-* [カスタマー マネージド キーを使用したディスク暗号化](../virtual-machines/linux/disk-encryption.md#customer-managed-keys) - Azure Key Vault をマネージド ディスクと共に使用した Azure HPC Cache と類似のシナリオのドキュメント
+* [カスタマー マネージド キーを使用したディスク暗号化](../virtual-machines/disk-encryption.md#customer-managed-keys) - Azure Key Vault をマネージド ディスクと共に使用した Azure HPC Cache と類似のシナリオのドキュメント
 
 ## <a name="next-steps"></a>次のステップ
 

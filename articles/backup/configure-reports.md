@@ -3,12 +3,12 @@ title: Azure Backup のレポートを構成する
 description: Log Analytics と Azure ブックを使用して Azure Backup のレポートを構成および表示する
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 11893488c59781bb78cf913a30069e920c66bc71
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 2565fa1183635c10e45b247f723788b6fe371c14
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172455"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325249"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
 
@@ -18,7 +18,7 @@ ms.locfileid: "92172455"
 - バックアップおよび復元の監査。
 - さまざまな細分性レベルで主要な傾向を特定する。
 
-現在、Azure Backup では、[Azure Monitor ログ](../azure-monitor/log-query/get-started-portal.md)と [Azure ブック](../azure-monitor/platform/workbooks-overview.md)を使用するレポート ソリューションが提供されます。 これらのリソースにより、バックアップ資産全体でバックアップに関する豊富な分析情報を得ることができます。 この記事では、Azure Backup レポートを構成および表示する方法について説明します。
+現在、Azure Backup では、[Azure Monitor ログ](../azure-monitor/log-query/log-analytics-tutorial.md)と [Azure ブック](../azure-monitor/platform/workbooks-overview.md)を使用するレポート ソリューションが提供されます。 これらのリソースにより、バックアップ資産全体でバックアップに関する豊富な分析情報を得ることができます。 この記事では、Azure Backup レポートを構成および表示する方法について説明します。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
@@ -159,7 +159,7 @@ SQL や SAP HANA のようなデータベース ワークロードの場合、�
 - 色分けされていないタイルは選択できません。
 - まだ終わっていない現在日のデータはレポートに表示されません。 そのため、 **[時間の範囲]** の選択値が **[過去 7 日間]** の場合、レポートには過去 7 日間のレコードが表示されます。 現在の日付は含まれません。
 - レポートには、選択した時間の範囲内に "*トリガーされた*" ジョブの詳細 (ログジョブとは別のもの) が表示されます。
-- **クラウド ストレージ**と**保護されたインスタンス**について表示される値は、選択した時間の範囲の "*終了*" 時のものです。
+- **クラウド ストレージ** と **保護されたインスタンス** について表示される値は、選択した時間の範囲の "*終了*" 時のものです。
 - レポートに表示されるバックアップ項目は、選択した時間の範囲の "*終了*" 時に存在する項目です。 選択した時間の範囲の間に削除されたバックアップ項目は表示されません。 バックアップ ポリシーにも同じ規則が適用されます。
 
 ## <a name="query-load-times"></a>クエリの読み込み回数

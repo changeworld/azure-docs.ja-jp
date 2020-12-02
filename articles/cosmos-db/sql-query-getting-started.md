@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.author: tisande
-ms.openlocfilehash: 9176205b93519f0afac0c57f5da8593df6673c0f
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: c78e15a0656abd510bbc241d39ffd026afddfd96
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356622"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353665"
 ---
 # <a name="getting-started-with-sql-queries"></a>SQL クエリの使用を開始する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,16 +34,16 @@ Azure Cosmos DB の読み取り負荷の高いワークロードのほとんど�
 
 以下に、各 SDK で **SQL クエリ** を実行する方法の例を示します。
 
-- [.NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-dotnet-v3sdk-samples#query-examples)
-- [Java SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-java-sdk-samples#query-examples)
-- [Node.js SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-nodejs-samples#item-examples)
-- [Python SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-python-samples#item-examples)
+- [.NET SDK](./sql-api-dotnet-v3sdk-samples.md#query-examples)
+- [Java SDK](./sql-api-java-sdk-samples.md#query-examples)
+- [Node.js SDK](./sql-api-nodejs-samples.md#item-examples)
+- [Python SDK](./sql-api-python-samples.md#item-examples)
 
 このドキュメントの残りの部分では、Azure Cosmos DB で SQL クエリの記述を開始する方法について説明します。 SQL クエリは、SDK または Azure portal を使用して実行できます。
 
 ## <a name="upload-sample-data"></a>サンプル データのアップロード
 
-SQL API Cosmos DB アカウントで、[データ エクスプローラー](https://docs.microsoft.com/azure/cosmos-db/data-explorer)を開き、`Families` というコンテナーを作成します。 作成した後、データ構造のブラウザーを使用してそれを検索し、開きます。 `Families` コンテナーでは、コンテナーの名前のすぐ下に `Items` オプションが表示されます。 このオプションを開くと、画面の中央にあるメニュー バーに "新しい項目" を作成するためのボタンが表示されます。 この機能を使用して、下の JSON 項目を作成します。
+SQL API Cosmos DB アカウントで、[データ エクスプローラー](./data-explorer.md)を開き、`Families` というコンテナーを作成します。 作成した後、データ構造のブラウザーを使用してそれを検索し、開きます。 `Families` コンテナーでは、コンテナーの名前のすぐ下に `Items` オプションが表示されます。 このオプションを開くと、画面の中央にあるメニュー バーに "新しい項目" を作成するためのボタンが表示されます。 この機能を使用して、下の JSON 項目を作成します。
 
 ### <a name="create-json-items"></a>JSON 項目を作成する
 

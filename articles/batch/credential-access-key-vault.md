@@ -4,12 +4,12 @@ description: Azure Batch を使用して、プログラムで Key Vault の資�
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 25cb05374fc0667306e2b1004b3cd237413b4409
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: b8b3d2655e79862c068aa48c29c7e89b7df85482
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337493"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350689"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Batch で Key Vault に安全にアクセスする
 
@@ -46,7 +46,7 @@ pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificat
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
-Key Vault へのアクセス権は、 **ユーザー** または **サービス プリンシパル** に付与されます。 プログラムによって Key Vault にアクセスするには、前のステップで作成した証明書と共に[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を使用します。 サービス プリンシパルは、Key Vault と同じ Azure AD テナントに存在する必要があります。
+Key Vault へのアクセス権は、**ユーザー** または **サービス プリンシパル** に付与されます。 プログラムによって Key Vault にアクセスするには、前のステップで作成した証明書と共に[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を使用します。 サービス プリンシパルは、Key Vault と同じ Azure AD テナントに存在する必要があります。
 
 ```powershell
 $now = [System.DateTime]::Parse("2020-02-10")
@@ -67,7 +67,7 @@ $newAzureAdPrincipal = New-AzureRmADServicePrincipal -ApplicationId $newADApplic
 
 ## <a name="grant-rights-to-key-vault"></a>Key Vault への権限を付与する
 
-前の手順で作成したサービス プリンシパルには、Key Vault からシークレットを取得するためのアクセス許可が必要です。 アクセス許可を付与するには、[Azure portal](/azure/key-vault/general/assign-access-policy-portal) を使用するか、次の PowerShell コマンドを使用します。
+前の手順で作成したサービス プリンシパルには、Key Vault からシークレットを取得するためのアクセス許可が必要です。 アクセス許可を付与するには、[Azure portal](../key-vault/general/assign-access-policy-portal.md) を使用するか、次の PowerShell コマンドを使用します。
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"https://batch.mydomain.com' -PermissionsToSecrets 'Get'
@@ -94,7 +94,7 @@ if($psModuleCheck.count -eq 0) {
 
 ## <a name="access-key-vault"></a>Key Vault にアクセスします
 
-これで、Batch ノードで実行されているスクリプトの Key Vault にアクセスできるようになりました。 スクリプトから Key Vault にアクセスするには、スクリプトで証明書を使用して Azure AD に対する認証を行うだけです。 PowerShell でこれを行うには、次のコマンド例を使用します。 **拇印** の適切な GUID、 **アプリ ID** (サービス プリンシパルの ID)、 **テナント ID** (サービス プリンシパルが存在するテナント) を指定します。
+これで、Batch ノードで実行されているスクリプトの Key Vault にアクセスできるようになりました。 スクリプトから Key Vault にアクセスするには、スクリプトで証明書を使用して Azure AD に対する認証を行うだけです。 PowerShell でこれを行うには、次のコマンド例を使用します。 **拇印** の適切な GUID、**アプリ ID** (サービス プリンシパルの ID)、**テナント ID** (サービス プリンシパルが存在するテナント) を指定します。
 
 ```powershell
 Add-AzureRmAccount -ServicePrincipal -CertificateThumbprint -ApplicationId

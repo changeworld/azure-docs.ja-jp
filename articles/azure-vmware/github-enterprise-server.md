@@ -3,12 +3,12 @@ title: Azure VMware Solution のプライベート クラウドに GitHub Enterp
 description: Azure VMware Solution のプライベート クラウドに GitHub Enterprise Server を設定する方法について説明します。
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: afce212416c7c12631a7f8d388dc991ed957736f
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 00b3acf721dd7f7a1a15bcd0d24eccf3ca27ff58
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949311"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326915"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>Azure VMware Solution のプライベート クラウドに GitHub Enterprise Server を設定する
 
@@ -24,7 +24,13 @@ VMware ESXi/vSphere (OVA) 用の [GitHub Enterprise Server の最新リリース
 
 :::image type="content" source="media/github-enterprise-server/github-options.png" alt-text="GitHub をオンプレミスまたはクラウドで実行することを選択します。":::  
 
-:::image type="content" source="media/github-enterprise-server/deploy-ova-template.png" alt-text="GitHub をオンプレミスまたはクラウドで実行することを選択します。" (Actions) |
+:::image type="content" source="media/github-enterprise-server/deploy-ova-template.png" alt-text="OVA テンプレートをデプロイします。":::  
+
+新しい仮想マシンに、GitHubEnterpriseServer などの分かりやすい名前を付けます。 インスタンスをアップグレードするとリリースの詳細が古くなるため、この詳細を VM 名に含める必要はありません。 ここではすべての既定値を選択し (これらの詳細はすぐに編集します)、OVA がインポートされるまで待ちます。
+
+インポートしたら、必要に応じて[ハードウェア構成を調整します](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#creating-the-github-enterprise-server-instance)。 このシナリオの例では、次の構成が必要です。
+
+| リソース | 標準セットアップ | 標準セットアップ + "ベータ機能" (Actions) |
 | --- | --- | --- |
 | vCPU 数 | 4 | 8 |
 | メモリ | 32 GB | 61 GB |
@@ -35,11 +41,11 @@ VMware ESXi/vSphere (OVA) 用の [GitHub Enterprise Server の最新リリース
 
 ## <a name="configuring-the-github-enterprise-server-instance"></a>GitHub Enterprise Server インスタンスの構成
 
-:::image type="content" source="media/github-enterprise-server/install-github-enterprise.png" alt-text="GitHub をオンプレミスまたはクラウドで実行することを選択します。":::  
+:::image type="content" source="media/github-enterprise-server/install-github-enterprise.png" alt-text="GitHub Enterprise をインストールします。":::  
 
 新しくプロビジョニングされた仮想マシン (VM) の電源がオンになったら、[ブラウザーを使用して構成](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#configuring-the-github-enterprise-server-instance)します。 ライセンス ファイルをアップロードし、管理コンソールのパスワードを設定する必要があります。 このパスワードは安全な場所に書き留めてください。
 
-:::image type="content" source="media/github-enterprise-server/ssh-access.png" alt-text="GitHub をオンプレミスまたはクラウドで実行することを選択します。":::    
+:::image type="content" source="media/github-enterprise-server/ssh-access.png" alt-text="SSH 経由で管理シェルにアクセスします。":::    
 
 少なくとも次の手順を実行することをお勧めします。
 
@@ -47,11 +53,11 @@ VMware ESXi/vSphere (OVA) 用の [GitHub Enterprise Server の最新リリース
 
 2. [ご使用のインスタンスの TLS を構成して](https://docs.github.com/en/enterprise/admin/configuration/configuring-tls)、信頼された証明機関によって署名された証明書を使用できるようにします。
 
-:::image type="content" source="media/github-enterprise-server/configuring-your-instance.png" alt-text="GitHub をオンプレミスまたはクラウドで実行することを選択します。":::
+:::image type="content" source="media/github-enterprise-server/configuring-your-instance.png" alt-text="インスタンスを構成します。":::
 
 設定を適用します。  インスタンスが再起動している間、次の手順の「**GitHub Actions 用の BLOB ストレージの構成**」に進むことができます。
 
-:::image type="content" source="media/github-enterprise-server/create-admin-account.png" alt-text="GitHub をオンプレミスまたはクラウドで実行することを選択します。":::
+:::image type="content" source="media/github-enterprise-server/create-admin-account.png" alt-text="管理者アカウントを作成します。":::
 
 インスタンスが再起動したら、インスタンスの新しい管理者アカウントを作成します。 このユーザーのパスワードもメモしておいてください。
 
@@ -74,9 +80,9 @@ VMware ESXi/vSphere (OVA) 用の [GitHub Enterprise Server の最新リリース
 > [!NOTE]
 > GitHub Actions は、[GitHub Enterprise Server リリース 2.22 の制限付きのベータ版が現在提供されています](https://docs.github.com/en/enterprise/admin/github-actions)。
 
-GitHub Enterprise Server で GitHub Actions を有効にするには(現在は "ベータ" 機能として利用可能)、外部 BLOB ストレージが必要です。 この外部 BLOB ストレージは、成果物とログを格納するために Actions によって使用されます。 GitHub Enterprise Server での Actions では、[記憶域プロバイダーとして Azure Blob Storage (およびその他) がサポート](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements)されます。 次に、[BlobStorage](../storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#types-of-storage-accounts) というストレージ アカウントの種類を使用して、新しい Azure ストレージ アカウントをプロビジョニングします。
+GitHub Enterprise Server で GitHub Actions を有効にするには(現在は "ベータ" 機能として利用可能)、外部 BLOB ストレージが必要です。 この外部 BLOB ストレージは、成果物とログを格納するために Actions によって使用されます。 GitHub Enterprise Server での Actions では、[記憶域プロバイダーとして Azure Blob Storage (およびその他) がサポート](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements)されます。 次に、[BlobStorage](../storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-storage-accounts) というストレージ アカウントの種類を使用して、新しい Azure ストレージ アカウントをプロビジョニングします。
 
-:::image type="content" source="media/github-enterprise-server/storage-account.png" alt-text="GitHub をオンプレミスまたはクラウドで実行することを選択します。":::
+:::image type="content" source="media/github-enterprise-server/storage-account.png" alt-text="Azure Blob Storage アカウントをプロビジョニングします。":::
 
 新しい BlobStorage リソースのデプロイが完了したら、([アクセス キー] の下にある) 接続文字列をコピーしてメモします。 この文字列は、このあとすぐに必要になります。
 
@@ -91,9 +97,9 @@ GitHub Enterprise Server で GitHub Actions を有効にするには(現在は "
 
 まず、クラスターに新しい VM をプロビジョニングしてみましょう。 ここでの VM は、[最新リリースの Ubuntu Server](http://releases.ubuntu.com/20.04.1/) に基づくようにします。
 
-:::image type="content" source="media/github-enterprise-server/provision-new-vm.png" alt-text="GitHub をオンプレミスまたはクラウドで実行することを選択します。":::
+:::image type="content" source="media/github-enterprise-server/provision-new-vm.png" alt-text="新しい VM をプロビジョニングする。":::
 
-:::image type="content" source="media/github-enterprise-server/provision-new-vm-2.png" alt-text="GitHub をオンプレミスまたはクラウドで実行することを選択します。":::
+:::image type="content" source="media/github-enterprise-server/provision-new-vm-2.png" alt-text="新しい VM をプロビジョニングする手順 2。":::
 
 VM が作成されたら、電源を入れて SSH 経由で接続します。
 
@@ -152,23 +158,25 @@ VM が作成されたら、電源を入れて SSH 経由で接続します。
 
 次のような出力結果が表示されます。"Blob Storage is healthy"。
 
-GitHub Actions が構成されたので、ユーザーに対して有効にします。 GitHub Enterprise Server インスタンスに管理者としてサインインし、![ロケット アイコン](media/github-enterprise-server/rocket-icon.png) (各ページの右上にあります) を選択します。 左側のサイドバーで、 **[Enterprise overview]** を選択してから、 **[Policies]** 、 **[Actions]** の順に選択し、**すべての組織に対してアクションを有効にする**オプションを選択します。
+GitHub Actions が構成されたので、ユーザーに対して有効にします。 GitHub Enterprise Server インスタンスに管理者としてサインインし、![ロケット アイコン](media/github-enterprise-server/rocket-icon.png) (各ページの右上にあります) を選択します。 左側のサイドバーで、 **[Enterprise overview]** を選択してから、 **[Policies]** 、 **[Actions]** の順に選択し、**すべての組織に対してアクションを有効にする** オプションを選択します。
 
 次に、 **[Self-hosted runners]** タブでランナーを構成します。 **[Add new]** を選択し、ドロップダウンから **[New runner]** を選択します。
 
-次のページに、実行する一連のコマンドが表示されます。ここで必要なのは、ランナーを**構成する**ためのコマンドをコピーすることだけです。以下に例を示します。
+次のページに、実行する一連のコマンドが表示されます。ここで必要なのは、ランナーを **構成する** ためのコマンドをコピーすることだけです。以下に例を示します。
 
 `./config.sh --url https://10.1.1.26/enterprises/octo-org --token AAAAAA5RHF34QLYBDCHWLJC7L73MA`
 
 `config.sh` コマンドをコピーし、お使いの Actions ランナーのセッション (以前に作成したもの) に貼り付けます。
 
-:::image type="content" source="media/github-enterprise-server/actions-runner.png" alt-text="GitHub をオンプレミスまたはクラウドで実行することを選択します。" します。
+:::image type="content" source="media/github-enterprise-server/actions-runner.png" alt-text="Actions ランナー。":::
 
-:::image type="content" source="media/github-enterprise-server/run-runner.png" alt-text="GitHub をオンプレミスまたはクラウドで実行することを選択します。":::
+run.sh コマンドを使用して、ランナーを "*実行*" します。
+
+:::image type="content" source="media/github-enterprise-server/run-runner.png" alt-text="ランナーを実行する。":::
 
 このランナーを企業内の組織で使用できるようにするには、その組織のアクセス権を編集します。
 
-:::image type="content" source="media/github-enterprise-server/edit-runner-access.png" alt-text="GitHub をオンプレミスまたはクラウドで実行することを選択します。":::
+:::image type="content" source="media/github-enterprise-server/edit-runner-access.png" alt-text="ランナーのアクセス権を編集する。":::
 
 ここでは、すべての組織で使用できるようにしますが、組織のサブセットや、さらには特定のリポジトリだけにアクセスを制限することもできます。
 
@@ -180,7 +188,7 @@ GitHub Connect を有効にするには、「[GitHub Connect を使用した Git
 
 GitHub Connect が有効になったら、 **[Server can use actions from GitHub.com in workflow runs]** オプションを選択します。
 
-:::image type="content" source="media/github-enterprise-server/enable-using-actions.png" alt-text="GitHub をオンプレミスまたはクラウドで実行することを選択します。":::
+:::image type="content" source="media/github-enterprise-server/enable-using-actions.png" alt-text="GitHub.com のアクションをワークフロー実行で使用できるようにする。":::
 
 ## <a name="setting-up-and-running-your-first-workflow"></a>最初のワークフローの設定と実行
 
@@ -188,25 +196,30 @@ Actions と GitHub Connect が設定されたので、このすべての作業�
 
 この基本的なワークフローでは、`octokit/request-action` を使い、API を使用して GitHub で問題を開きます。
 
-:::image type="content" source="media/github-enterprise-server/workflow-example.png" alt-text="GitHub をオンプレミスまたはクラウドで実行することを選択します。" 使用します。
+:::image type="content" source="media/github-enterprise-server/workflow-example.png" alt-text="ワークフローの例。":::
+
+>[!NOTE]
+>GitHub.com はアクションをホストしますが、GitHub Enterprise Server 上で実行される場合は、GitHub Enterprise Server API を "*自動的に*" 使用します。
 
 GitHub Connect を有効にしないことを選択した場合は、次の代替ワークフローを使用できます。
 
-:::image type="content" source="media/github-enterprise-server/workflow-example-2.png" alt-text="GitHub をオンプレミスまたはクラウドで実行することを選択します。":::
+:::image type="content" source="media/github-enterprise-server/workflow-example-2.png" alt-text="代替のワークフローの例。":::
 
 お使いのインスタンスのリポジトリに移動し、上記のワークフローを次のように追加します。`.github/workflows/hello-world.yml`
 
-:::image type="content" source="media/github-enterprise-server/workflow-example-3.png" alt-text="GitHub をオンプレミスまたはクラウドで実行することを選択します。":::
+:::image type="content" source="media/github-enterprise-server/workflow-example-3.png" alt-text="別のワークフローの例。":::
 
 リポジトリの **[Actions]** タブで、ワークフローが実行されるまで待ちます。
 
-:::image type="content" source="media/github-enterprise-server/executed-example-workflow.png" alt-text="GitHub をオンプレミスまたはクラウドで実行することを選択します。":::
+:::image type="content" source="media/github-enterprise-server/executed-example-workflow.png" alt-text="実行されるワークフローの例。":::
 
 また、ランナーによって処理されていることを監視することもできます。
 
-:::image type="content" source="media/github-enterprise-server/workflow-processed-by-runner.png" alt-text="GitHub をオンプレミスまたはクラウドで実行することを選択します。" という新しい問題が表示されます。
+:::image type="content" source="media/github-enterprise-server/workflow-processed-by-runner.png" alt-text="ランナーによって処理されたワークフロー。":::
 
-:::image type="content" source="media/github-enterprise-server/example-in-repo.png" alt-text="GitHub をオンプレミスまたはクラウドで実行することを選択します。":::
+すべてが正常に実行されると、リポジトリに "Hello world" という新しい問題が表示されます。
+
+:::image type="content" source="media/github-enterprise-server/example-in-repo.png" alt-text="リポジトリの例。":::
 
 おめでとうございます。 Azure VMware Solution のプライベート クラウドで実行されている GitHub Enterprise Server 上の最初のアクション ワークフローを完了しました。
 

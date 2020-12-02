@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cd877a91c7c082ce7845394f2636857f33b7940f
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 957274e6080ab4b77e6528386fe0b24b2d877219
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578758"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447314"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Azure PowerShell スクリプトを使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
@@ -83,7 +83,7 @@ ms.locfileid: "94578758"
 
     `Uninstall-Module -Name Azure.Storage`
 
-5. Windows クライアントに [AzCopy 10 をダウンロード](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#download-azcopy)します。 スクリプトの実行中にパラメーターとして渡すので、この場所をメモしておきます。
+5. Windows クライアントに [AzCopy 10 をダウンロード](../storage/common/storage-use-azcopy-v10.md#download-azcopy)します。 スクリプトの実行中にパラメーターとして渡すので、この場所をメモしておきます。
 
 6. Windows クライアントで TLS 1.2 以降が実行されていることを確認します。
 

@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Technical Support'
 - fasttrack-edit
 - iot
-ms.openlocfilehash: b179bb3566cc19b8033a56348db34cd1f05cee10
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 81558526500f3c01e975d9a963b4a6a98ec6d753
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506398"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446401"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Azure IoT Hub との切断に関する監視、診断、およびトラブルシューティング
 
@@ -58,7 +58,7 @@ Event Grid を使用したデバイス接続イベントの監視の詳細につ
 
 * デバイス接続イベントの順序付けに関するチュートリアルについては、「[Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける](iot-hub-how-to-order-connection-state-events.md)」を参照してください。
 
-* 電子メール通知の送信に関するチュートリアルについては、Event Grid のドキュメントの「[Event Grid および Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する](/azure/event-grid/publish-iot-hub-events-to-logic-apps)」を参照してください。
+* 電子メール通知の送信に関するチュートリアルについては、Event Grid のドキュメントの「[Event Grid および Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する](../event-grid/publish-iot-hub-events-to-logic-apps.md)」を参照してください。
 
 ## <a name="azure-monitor-route-connection-events-to-logs"></a>Azure Monitor:接続イベントをログにルーティングする
 
@@ -76,7 +76,7 @@ IoT ハブを作成した後は、できるだけ早く診断設定を作成す�
 
 IoT Hub によって出力されたプラットフォーム メトリックに基づいてアラートを設定できます。 メトリック アラートを使用すると、関心のある状態が発生したことをユーザーに通知したり、その状態に自動的に対応できるアクションをトリガーしたりすることができます。
 
-"[*接続されているデバイス (プレビュー)* ](monitor-iot-hub-reference.md#device-metrics)" メトリックは、IoT Hub に接続されているデバイスの数を示します。 このメトリックがしきい値を下回った場合にトリガーされるアラートを作成できます。
+"[*接続されているデバイス (プレビュー)*](monitor-iot-hub-reference.md#device-metrics)" メトリックは、IoT Hub に接続されているデバイスの数を示します。 このメトリックがしきい値を下回った場合にトリガーされるアラートを作成できます。
 
 :::image type="content" source="media/iot-hub-troubleshoot-connectivity/configure-alert-logic.png" alt-text="接続されているデバイス メトリックに関するアラート ロジックの設定。":::
 

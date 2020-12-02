@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 002c718466b9e13d2f92fbea6dd055eb13d4d3a7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 41d98750f3c869eff5abf7482a9bb04435407318
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789116"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436761"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender の概要
 
@@ -61,7 +61,7 @@ Azure 環境の防護に加えて、次のような Azure Defender 機能をハ�
 
 
 
-## <a name="azure-defender-alerts"></a>Azure Defender アラート 
+## <a name="security-alerts"></a>セキュリティのアラート 
 
 Azure Defender により、環境のいずれかの領域で脅威が検出されると、アラートが生成されます。 これらのアラートでは、影響を受けるリソースや推奨される修復手順の詳細と、場合によっては、ロジック アプリを応答でトリガーするオプションが示されます。
 

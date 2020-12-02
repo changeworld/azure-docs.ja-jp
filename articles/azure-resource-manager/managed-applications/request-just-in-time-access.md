@@ -5,12 +5,12 @@ author: MSEvanhi
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: evanhi
-ms.openlocfilehash: 5e1a929924e2c291e0044da99f3ae5d7d1c3b894
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f839eb04e0c036b5059e35fac16d9c702646cbd7
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371569"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435690"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Azure Managed Applications でジャストインタイム アクセスを有効にして要求する
 
@@ -72,9 +72,9 @@ CreateUiDefinition.json ファイルに、コンシューマーが JIT アクセ
 
 1. [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)のコマーシャル マーケットプレース ポータルにサインインします。
 
-1. 新しいマネージド アプリケーションを作成する方法については、「[Azure アプリケーション オファーを作成する](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)」の手順に従ってください。
+1. 新しいマネージド アプリケーションを作成する方法については、「[Azure アプリケーション オファーを作成する](../../marketplace/create-new-azure-apps-offer.md)」の手順に従ってください。
 
-1. **技術的な構成**ページで、 **[ジャストインタイム (JIT) アクセスを有効にする]** チェックボックスを選択します。
+1. **技術的な構成** ページで、 **[ジャストインタイム (JIT) アクセスを有効にする]** チェックボックスを選択します。
 
    :::image type="content" source="./media/request-just-in-time-access/enable-just-in-time-access.png" alt-text="ジャストインタイム アクセスを有効にする":::
 

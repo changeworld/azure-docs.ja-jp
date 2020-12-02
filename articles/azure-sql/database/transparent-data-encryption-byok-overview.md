@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 76ecd811ab0bffe20b4bddcc4dc2eacaffaed588
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2a7d77579eaebd3ee951d0184e25937783420806
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308337"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325198"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure SQL Transparent Data Encryption
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "93308337"
 
 このシナリオでは、TDE 保護機能と呼ばれるデータベース暗号化キー (DEK) の暗号化に使用されるキーは、顧客が所有し、顧客が管理する [Azure Key Vault (AKV)](../../key-vault/general/secure-your-key-vault.md) (クラウドベースの外部キー管理システム) に格納されている、カスタマー マネージド非対称キーです。 Key Vault は、FIPS 140-2 Level 2 認定のハードウェア セキュリティ モジュール (HSM) をオプションで使用できる、RSA 暗号化キー向けの、可用性が高くスケーラブルでセキュリティで保護されたストレージです。 格納されているキーに直接アクセスすることはできませんが、キーを使用して暗号化/復号化のサービスを認証されたエンティティに提供します。 キーは、キー コンテナーによって生成、インポート、または[オンプレミスの HSM デバイスからキー コンテナーに転送](../../key-vault/keys/hsm-protected-keys.md)することができます。
 
-Azure SQL Database と Azure Synapse Analytics の場合、TDE 保護機能はサーバー レベルで設定され、そのサーバーに関連付けられているすべての暗号化されたデータベースによって継承されます。 Azure SQL Managed Instance の場合、TDE 保護機能はインスタンス レベルで設定され、そのインスタンス上のすべての暗号化されたデータベースによって継承されます。 " *サーバー* " という用語は、別途明記されていない限り、このドキュメントでは、SQL Database や Azure Synapse のサーバーと、SQL Managed Instance のマネージド インスタンスの両方を指します。
+Azure SQL Database と Azure Synapse Analytics の場合、TDE 保護機能はサーバー レベルで設定され、そのサーバーに関連付けられているすべての暗号化されたデータベースによって継承されます。 Azure SQL Managed Instance の場合、TDE 保護機能はインスタンス レベルで設定され、そのインスタンス上のすべての暗号化されたデータベースによって継承されます。 "*サーバー*" という用語は、別途明記されていない限り、このドキュメントでは、SQL Database や Azure Synapse のサーバーと、SQL Managed Instance のマネージド インスタンスの両方を指します。
 
 > [!IMPORTANT]
 > サービス マネージド TDE を使用していて、カスタマー マネージド TDE の使用を開始する場合は、切り替え処理中はデータが暗号化されたままとなり、データベース ファイルのダウンタイムが生じたり再暗号化が行われたりすることはありません。 サービス マネージド キーからカスタマー マネージド キーへの切り替えに必要なのは、高速のオンライン操作である DEK の再暗号化だけです。
@@ -78,7 +78,7 @@ AKV の TDE 保護機能を使用するようにサーバーを構成すると�
 
 - キー コンテナーと SQL Database/マネージド インスタンスは、同じ Azure Active Directory テナントに属している必要があります。 キー コンテナーとサーバーのテナント間の対話はサポートされていません。 後でリソースを移動するには、AKV を使用して TDE を再構成する必要があります。 リソースの移動の詳細については、[こちら](../../azure-resource-manager/management/move-resource-group-and-subscription.md)をご覧ください。
 
-- キー (またはキー コンテナー) を誤って削除するデータ損失から保護するには、キー コンテナーで[論理的な削除](../../key-vault/general/soft-delete-overview.md)機能が有効になっている必要があります。 論理的に削除されたリソースは、顧客が復旧または削除しない限り、90 日間保持されます。 *復旧* と *消去* アクションには、キー コンテナーのアクセス ポリシーに関連付けられた独自のアクセス許可があります。 論理的な削除機能は、既定ではオフになっており、[PowerShell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) または [CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete) を使用して有効にすることができます。 Azure portal で有効にすることはできません。  
+- キー (またはキー コンテナー) を誤って削除するデータ損失から保護するには、キー コンテナーで[論理的な削除](../../key-vault/general/soft-delete-overview.md)機能が有効になっている必要があります。 論理的に削除されたリソースは、顧客が復旧または削除しない限り、90 日間保持されます。 *復旧* と *消去* アクションには、キー コンテナーのアクセス ポリシーに関連付けられた独自のアクセス許可があります。 論理的な削除機能は、既定ではオフになっており、[PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell) または [CLI](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli) を使用して有効にすることができます。 Azure portal で有効にすることはできません。  
 
 - Azure Active Directory ID を使用して、サーバーまたはマネージド インスタンスにキー コンテナーへのアクセス権 (get、wrapKey、unwrapKey) を付与します。 Azure portal を使用すると、Azure AD ID が自動的に作成されます。 PowerShell または CLI を使用する場合は、Azure AD ID を明示的に作成し、完了を確認する必要があります。 PowerShell を使用するときの詳細な手順については、[BYOK 対応 TDE の構成](transparent-data-encryption-byok-configure.md)および [SQL Managed Instance 用 BYOK 対応 TDE の構成](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md)に関する記事を参照してください。
 
@@ -90,7 +90,7 @@ AKV の TDE 保護機能を使用するようにサーバーを構成すると�
 
 - キーがアクティブ化された日時 (設定する場合) は、過去の日付と時刻にする必要があります。 有効期限の日時 (設定する場合) は、将来の日付と時刻にする必要があります。
 
-- キーは、" *有効* " 状態になっている必要があります。
+- キーは、"*有効*" 状態になっている必要があります。
 
 - キー コンテナーに既存のキーをインポートする場合は、サポートされているファイル形式 (.pfx、.byok、または. backup) で提供する必要があります。
 
@@ -118,7 +118,7 @@ AKV の TDE 保護機能を使用するようにサーバーを構成すると�
 
 - キー (キー属性、タグ、ACL など) に変更を加えるたびに新しいバックアップを作成します。
 
-- データベースの古いバックアップを復元できるように、キーを交換するときは、キー コンテナーにキーの **以前のバージョンを保持** します。 データベースの TDE 保護機能が変更されても、データベースの古いバックアップが、最新の TDE 保護機能を使用するように **更新されることはありません** 。 復元時には、各バックアップに作成時に暗号化された TDE 保護機能が必要です。 キーの交換を実行するには、[PowerShell を使用した Transparent Data Encryption 保護機能の交換](transparent-data-encryption-byok-key-rotation.md)に関する記事の手順に従います。
+- データベースの古いバックアップを復元できるように、キーを交換するときは、キー コンテナーにキーの **以前のバージョンを保持** します。 データベースの TDE 保護機能が変更されても、データベースの古いバックアップが、最新の TDE 保護機能を使用するように **更新されることはありません**。 復元時には、各バックアップに作成時に暗号化された TDE 保護機能が必要です。 キーの交換を実行するには、[PowerShell を使用した Transparent Data Encryption 保護機能の交換](transparent-data-encryption-byok-key-rotation.md)に関する記事の手順に従います。
 
 - サービス マネージド キーに切り替えた後でも、以前に使用したすべてのキーを AKV で保持します。 これにより、AKV に格納された TDE 保護機能を使用してデータベースのバックアップを復元できます。  Azure Key Vault で作成された TDE 保護機能は、残りの保存されているすべてのバックアップがサービス マネージド キーを使用して作成されるまで保持される必要があります。 [Backup-AzKeyVaultKey](/powershell/module/az.keyvault/backup-azkeyvaultkey) を使用して、これらのキーの回復可能なバックアップ コピーを作成します。
 
@@ -135,7 +135,7 @@ Transparent Data Encryption がカスタマー マネージド キーを使用�
 
 - キーのアクセスが 8 時間以内に復元された場合、データベースは次の 1 時間以内に自動回復します。
 
-- 8 時間を超えてからキーのアクセスが復元された場合、自動回復は不可能です。データベースの復旧にはポータルで追加の手順を踏む必要があり、データベースのサイズによってはかなりの時間がかかることがあります。 データベースがオンラインに戻ると、以前に構成されたサーバーレベルの設定 ( [フェールオーバー グループ](auto-failover-group-overview.md)構成、ポイントインタイム リストア履歴、タグなど) が **失われます** 。 そのため、8 時間以内にキー アクセスの潜在的な問題を特定して対処できるようにする通知システムを実装することをお勧めします。
+- 8 時間を超えてからキーのアクセスが復元された場合、自動回復は不可能です。データベースの復旧にはポータルで追加の手順を踏む必要があり、データベースのサイズによってはかなりの時間がかかることがあります。 データベースがオンラインに戻ると、以前に構成されたサーバーレベルの設定 ([フェールオーバー グループ](auto-failover-group-overview.md)構成、ポイントインタイム リストア履歴、タグなど) が **失われます**。 そのため、8 時間以内にキー アクセスの潜在的な問題を特定して対処できるようにする通知システムを実装することをお勧めします。
 
 以下は、アクセスできないデータベースをオンラインに戻すためにポータルで必要な追加手順です。
 
@@ -146,7 +146,7 @@ Transparent Data Encryption がカスタマー マネージド キーを使用�
 
 キー コンテナーに対する十分なアクセス権を持つユーザーが、次のことを行うことで、キーへのサーバー アクセスを誤って無効にしてしまうことがあります。
 
-- サーバーからキー コンテナーの *get* 、 *wrapKey* 、 *unwrapKey* のアクセス許可を取り消す
+- サーバーからキー コンテナーの *get*、*wrapKey*、*unwrapKey* のアクセス許可を取り消す
 
 - キーを削除する
 
@@ -168,7 +168,7 @@ Transparent Data Encryption がカスタマー マネージド キーを使用�
 
 ## <a name="database-backup-and-restore-with-customer-managed-tde"></a>カスタマー マネージド TDE を使用したデータベースのバックアップと復元
 
-Key Vault のキーを使用して TDE でデータベースを暗号化すると、新しく生成されるバックアップも同じ TDE 保護機能で暗号化されます。 TDE 保護機能が変更されても、データベースの古いバックアップが、最新の TDE 保護機能を使用するように **更新されることはありません** 。
+Key Vault のキーを使用して TDE でデータベースを暗号化すると、新しく生成されるバックアップも同じ TDE 保護機能で暗号化されます。 TDE 保護機能が変更されても、データベースの古いバックアップが、最新の TDE 保護機能を使用するように **更新されることはありません**。
 
 Key Vault の TDE 保護機能で暗号化されたバックアップを復元するには、キー マテリアルがターゲット サーバーで使用できることを確認します。 そのため、データベースのバックアップを復元できるように、TDE 保護機能の古いバージョンをすべてキー コンテナーに保持しておくことをお勧めします。
 

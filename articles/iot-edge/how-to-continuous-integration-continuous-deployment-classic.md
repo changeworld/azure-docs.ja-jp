@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1866f3360b90a96b5e3f215eb7669a1451262bd8
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b9b842b94d66cf91ad836b8ae61df1b3d3f34293
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046011"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435945"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Azure IoT Edge デバイスに対する継続的インテグレーションと継続的配置 (クラシック エディター)
 
@@ -32,15 +32,15 @@ Azure Pipelines 内の組み込み Azure IoT Edge タスクを使用して、Azu
 
 特に指定がない限り、この記事の手順では、タスク パラメーターで使用できるすべての機能については説明しません。 詳細については、「
 
-* [タスクのバージョン](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-versions)
+* [タスクのバージョン](/azure/devops/pipelines/process/tasks?tabs=classic#task-versions)
 * **詳細** - 該当する場合は、ビルドしないモジュールを指定します。
-* [管理オプション](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-control-options)
-* [環境変数](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#environment-variables)
-* [出力変数](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#use-output-variables-from-tasks)
+* [管理オプション](/azure/devops/pipelines/process/tasks?tabs=classic#task-control-options)
+* [環境変数](/azure/devops/pipelines/process/variables?tabs=classic#environment-variables)
+* [出力変数](/azure/devops/pipelines/process/variables?tabs=classic#use-output-variables-from-tasks)
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Repos リポジトリ。 ない場合は、[プロジェクト内に新しい Git リポジトリを作成する](/azure/devops/repos/git/create-new-repo?tabs=new-nav&view=vsts)ことができます。 この記事では、**IoTEdgeRepo** というリポジトリを作成しました。
+* Azure Repos リポジトリ。 ない場合は、[プロジェクト内に新しい Git リポジトリを作成する](/azure/devops/repos/git/create-new-repo)ことができます。 この記事では、**IoTEdgeRepo** というリポジトリを作成しました。
 * リポジトリにコミットおよびプッシュされた IoT Edge ソリューション。 この記事をテストするための新しいサンプル ソリューションを作成する場合は、[Visual Studio Code でのモジュールの開発とデバッグ](how-to-vs-code-develop-module.md)および[Visual Studio での C# モジュールの開発とデバッグ](./how-to-visual-studio-develop-module.md)に関するページの手順に従ってください。 この記事では、**IoTEdgeSolution** という名前のソリューションをリポジトリに作成しました。これには **filtermodule** という名前のモジュールのコードが含まれています。
 
    この記事では、必要なのは、Visual Studio Code または Visual Studio のいずれかにある IoT Edge テンプレートで作成されたソリューション フォルダーだけです。 続ける前にこのコードをビルド、プッシュ、デプロイ、またはデバッグする必要はありません。 これらのプロセスは Azure Pipelines で設定します。
@@ -84,7 +84,7 @@ Azure Pipelines 内の組み込み Azure IoT Edge タスクを使用して、Azu
 
    * Linux コンテナー用にプラットフォーム amd64 でモジュールをビルドする場合、 **[ubuntu-16.04]** を選択します。
 
-   * Windows 1809 コンテナー用にプラットフォーム amd64 でモジュールをビルドする場合は、[Windows 上にセルフホステッド エージェントを設定](/azure/devops/pipelines/agents/v2-windows?view=vsts)する必要があります。
+   * Windows 1809 コンテナー用にプラットフォーム amd64 でモジュールをビルドする場合は、[Windows 上にセルフホステッド エージェントを設定](/azure/devops/pipelines/agents/v2-windows)する必要があります。
 
    * Linux コンテナー用にプラットフォーム arm32v7 または arm64 でモジュールをビルドする場合は、[Linux 上にセルフホステッド エージェントを設定](https://devblogs.microsoft.com/iotdev/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent)する必要があります。
 
@@ -110,7 +110,7 @@ Azure Pipelines 内の組み込み Azure IoT Edge タスクを使用して、Azu
 
    これらの構成では、`module.json` ファイルで定義されているイメージ リポジトリとタグを使用して、モジュール イメージに名前とタグを付けます。 また、 **[Build module images]\(モジュール イメージのビルド\)** は、`module.json` ファイルで定義するのと同じ値に変数を置き換えるのにも役立ちます。 Visual Studio または Visual Studio Code では、`.env` ファイルに実際の値を指定します。 Azure Pipelines では、 **[パイプライン変数]** タブで値を設定します。パイプライン エディターのメニューの **[変数]** タブを選択し、次のように名前と値を構成します。
 
-    * **ACR_ADDRESS**:Azure Container Registry の**ログイン サーバー**値。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。
+    * **ACR_ADDRESS**:Azure Container Registry の **ログイン サーバー** 値。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。
 
     プロジェクトに他の変数がある場合は、このタブでその名前と値を指定できます。 **[Build module images]\(モジュール イメージのビルド\)** では、`${VARIABLE}` 形式の変数のみが認識されます。 `**/module.json` ファイルでこの形式を使用していることを確認してください。
 
@@ -136,14 +136,14 @@ Azure Pipelines 内の組み込み Azure IoT Edge タスクを使用して、Azu
     | 表示名 | 既定の名前を使用するか、カスタマイズします |
     | ソース フォルダー | コピーするファイルが含まれているフォルダー。 |
     | 内容 | `deployment.template.json` と `**/module.json` の 2 つの行を追加します。 これらの 2 つのファイルは、IoT Edge 配置マニフェストを生成するための入力となります。 |
-    | ターゲット フォルダー | 変数 `$(Build.ArtifactStagingDirectory)` を指定します。 内容については、「[ビルド変数](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables)」を参照してください。 |
+    | ターゲット フォルダー | 変数 `$(Build.ArtifactStagingDirectory)` を指定します。 内容については、「[ビルド変数](/azure/devops/pipelines/build/variables#build-variables)」を参照してください。 |
 
 10. **[Publish Build Artifacts]** タスクを選択して編集します。 タスクにビルド成果物のステージング ディレクトリ パスを指定し、そのパスがリリース パイプラインに発行できるようにします。
 
     | パラメーター | 説明 |
     | --- | --- |
     | 表示名 | 既定の名前を使用するか、カスタマイズします。 |
-    | 公開するためのパス | 変数 `$(Build.ArtifactStagingDirectory)` を指定します。 詳細については、「[ビルド変数](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables)」を参照してください。 |
+    | 公開するためのパス | 変数 `$(Build.ArtifactStagingDirectory)` を指定します。 詳細については、「[ビルド変数](/azure/devops/pipelines/build/variables#build-variables)」を参照してください。 |
     | アーティファクト名 | 既定の名前 (**drop**) を使用します。 |
     | 成果物の公開場所 | 既定の場所を使用します:**Azure Pipelines** |
 
@@ -158,9 +158,9 @@ Azure Pipelines 内の組み込み Azure IoT Edge タスクを使用して、Azu
 [!INCLUDE [iot-edge-create-release-pipeline-for-continuous-deployment](../../includes/iot-edge-create-release-pipeline-for-continuous-deployment.md)]
 
 >[!NOTE]
->パイプラインで**階層型配置**を使用する場合、Azure DevOps の Azure IoT Edge タスクでは、階層型配置はまだサポートされていません。
+>パイプラインで **階層型配置** を使用する場合、Azure DevOps の Azure IoT Edge タスクでは、階層型配置はまだサポートされていません。
 >
->ただし、[Azure DevOps の Azure CLI タスク](/azure/devops/pipelines/tasks/deploy/azure-cli)を使用すると、階層型配置として配置を作成できます。 **インライン スクリプト**値については、[az iot edge deployment create コマンド](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)を使用できます。
+>ただし、[Azure DevOps の Azure CLI タスク](/azure/devops/pipelines/tasks/deploy/azure-cli)を使用すると、階層型配置として配置を作成できます。 **インライン スクリプト** 値については、[az iot edge deployment create コマンド](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)を使用できます。
 >
 >   ```azurecli-interactive
 >   az iot edge deployment create -d {deployment_name} -n {hub_name} --content modules_content.json --layered true

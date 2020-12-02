@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: c53f78702aeb5404bd353274ddb29b9356229fae
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ab9e122ba0b2b50203a2d66ae14f03f3b6300f96
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145772"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452335"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (classic) で IoT ハブからのセンサー データを使用して天気予報を行う
 
@@ -46,7 +46,7 @@ Azure Machine Learning Studio (classic)で Azure IoT Hub から取得した気�
   - サブスクリプションの Azure IoT Hub。
   - Azure IoT Hub にメッセージを送信するクライアント アプリケーション。
 - [Azure Machine Learning Studio (クラシック)](https://studio.azureml.net/) アカウント。
-- [Azure Storage アカウント](../storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#types-of-storage-accounts)、**汎用 v2** アカウントが推奨されていますが、Azure Blob Storage をサポートするすべての Azure Storage アカウントも機能します。
+- [Azure Storage アカウント](../storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-storage-accounts)、**汎用 v2** アカウントが推奨されていますが、Azure Blob Storage をサポートするすべての Azure Storage アカウントも機能します。
 
 > [!Note]
 > この記事では、Azure Stream Analytics と他のいくつかの有料サービスを使用します。 Azure リージョン間でデータを転送する必要がある場合、Azure Stream Analytics に追加料金が発生します。 このため、リソース グループ、IoT Hub、Azure Storage アカウント、およびこのチュートリアルの後半で追加した Machine Learning Studio (classic) ワークスペースと Azure Stream Analytics ジョブがすべて同じ Azure リージョンにあることを確認することをお勧めします。 Azure Machine Learning Studio (classic) とその他の Azure サービスの地域サポートは、 「[Azure product availability by region (リージョン別の Azure 製品の可用性)」ページ](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all)で確認できます。
@@ -71,15 +71,15 @@ Azure Machine Learning Studio (classic)で Azure IoT Hub から取得した気�
 
 モデルを正しく動作させるには、気温と湿度のデータが数値データに変換可能である必要があります。 このセクションでは、R スクリプト モジュールを天気予報モデルに追加して、数値に変換できない気温または湿度のデータ値のある行を削除します。
 
-1. [Azure Machine Learning Studio (classic)] ウィンドウの左側にある矢印をクリックして、ツール パネルを展開します。 検索ボックスに「実行」と入力します。 **R スクリプトの実行**モジュールを選択します。
+1. [Azure Machine Learning Studio (classic)] ウィンドウの左側にある矢印をクリックして、ツール パネルを展開します。 検索ボックスに「実行」と入力します。 **R スクリプトの実行** モジュールを選択します。
 
    ![R スクリプトの実行モジュールを選択する](media/iot-hub-weather-forecast-machine-learning/select-r-script-module.png)
 
-1. ダイアグラム上の**見つからないデータのクリーンアップ** モジュールと既存の **R スクリプトの実行**モジュールの近くにある **R スクリプトの実行**モジュールをドラッグします。 **見つからないデータのクリーンアップ** モジュールおよび **R スクリプトの実行**モジュールとの間の接続を削除してから、新しいモジュールの入力と出力を次のように接続します。
+1. ダイアグラム上の **見つからないデータのクリーンアップ** モジュールと既存の **R スクリプトの実行** モジュールの近くにある **R スクリプトの実行** モジュールをドラッグします。 **見つからないデータのクリーンアップ** モジュールおよび **R スクリプトの実行** モジュールとの間の接続を削除してから、新しいモジュールの入力と出力を次のように接続します。
 
    ![R スクリプトの実行モジュールを追加する](media/iot-hub-weather-forecast-machine-learning/add-r-script-module.png)
 
-1. 新しい **R スクリプトの実行**モジュールを選択して、その [プロパティ] ウィンドウを開きます。 次のコードをコピーして **[R スクリプト]** ボックスに貼り付けます。
+1. 新しい **R スクリプトの実行** モジュールを選択して、その [プロパティ] ウィンドウを開きます。 次のコードをコピーして **[R スクリプト]** ボックスに貼り付けます。
 
    ```r
    # Map 1-based optional input ports to variables
@@ -110,7 +110,7 @@ Azure Machine Learning Studio (classic)で Azure IoT Hub から取得した気�
 
    ![Azure Machine Learning Studio (classic) に天気予報モデルをデプロイする](media/iot-hub-weather-forecast-machine-learning/predictive-experiment.png)
 
-1. 予測実験のダイアグラムで、**Web service input (Web サービス入力)** モジュールと上部にある **[Select Columns in Dataset (データセットの列を選択する)]** の間の接続を削除します。 次に、**Web サービスの入力**モジュールを**モデルのスコア付け**モジュールの近くにドラッグし、次のように接続します。
+1. 予測実験のダイアグラムで、**Web service input (Web サービス入力)** モジュールと上部にある **[Select Columns in Dataset (データセットの列を選択する)]** の間の接続を削除します。 次に、**Web サービスの入力** モジュールを **モデルのスコア付け** モジュールの近くにドラッグし、次のように接続します。
 
    ![Azure Machine Learning Studio (classic) で 2 つのモジュールを接続する](media/iot-hub-weather-forecast-machine-learning/connect-modules-azure-machine-learning-studio.png)
 
@@ -118,14 +118,14 @@ Azure Machine Learning Studio (classic)で Azure IoT Hub から取得した気�
 
 1. **[DEPLOY WEB SERVICE]\(Web サービスのデプロイ)** をクリックして、モデルを Web サービスとしてデプロイします。
 
-1. モデルのダッシュボードで、**要求/応答**用に **Excel 2010 以前のブック**をダウンロードします。
+1. モデルのダッシュボードで、**要求/応答** 用に **Excel 2010 以前のブック** をダウンロードします。
 
    > [!Note]
-   > ご自分のコンピューターで新しいバージョンの Excel を実行している場合でも、**Excel 2010 以前のブック**をダウンロードしてください。
+   > ご自分のコンピューターで新しいバージョンの Excel を実行している場合でも、**Excel 2010 以前のブック** をダウンロードしてください。
 
    ![要求/応答エンドポイントに Excel をダウンロードする](media/iot-hub-weather-forecast-machine-learning/download-workbook.png)
 
-1. Excel ブックを開いて、**Web サービス URL** と**アクセス キー**をメモします。
+1. Excel ブックを開いて、**Web サービス URL** と **アクセス キー** をメモします。
 
 [!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
@@ -133,7 +133,7 @@ Azure Machine Learning Studio (classic)で Azure IoT Hub から取得した気�
 
 ### <a name="create-a-stream-analytics-job"></a>Stream Analytics のジョブの作成
 
-1. [Azure Portal](https://portal.azure.com/) で、 **[リソースの作成]** を選択します。 検索ボックスに「stream analytics job 」と入力し、結果のドロップダウンから **Stream Analytics ジョブ**を選択します。 **[Stream Analytics job (Stream Analytics ジョブ)]** ペインが開いたら、 **[作成]** をクリックします。
+1. [Azure Portal](https://portal.azure.com/) で、 **[リソースの作成]** を選択します。 検索ボックスに「stream analytics job 」と入力し、結果のドロップダウンから **Stream Analytics ジョブ** を選択します。 **[Stream Analytics job (Stream Analytics ジョブ)]** ペインが開いたら、 **[作成]** をクリックします。
 1. 次の情報をジョブに入力します。
 
    **ジョブ名**:ジョブの名前。 名前はグローバルに一意である必要があります。
@@ -194,7 +194,7 @@ Azure Machine Learning Studio (classic)で Azure IoT Hub から取得した気�
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>デプロイした Web サービスを呼び出すための関数を Stream Analytics ジョブに追加する
 
 1. **[Job Topology (ジョブ トポロジ)]** で、 **[Functions (関数)]** を選択します。
-1. **[Functions (関数)]** ペインで、 **[Add (追加)]** を選択し、ドロップダウンから **[Azure ML Studio]** を選択します。 (**Azure ML Service** ではなく、**Azure ML Studio**を選択していることを確認してください。) **[New Function (新しい関数)]** ペインで、 **[Provide Azure Machine Learning function settings manually (Azure Machine Learning 関数の設定を手動で指定)]** を選択し、次の情報を入力します。
+1. **[Functions (関数)]** ペインで、 **[Add (追加)]** を選択し、ドロップダウンから **[Azure ML Studio]** を選択します。 (**Azure ML Service** ではなく、**Azure ML Studio** を選択していることを確認してください。) **[New Function (新しい関数)]** ペインで、 **[Provide Azure Machine Learning function settings manually (Azure Machine Learning 関数の設定を手動で指定)]** を選択し、次の情報を入力します。
 
    **[関数のエイリアス]**: 「`machinelearning`」を入力します。
 

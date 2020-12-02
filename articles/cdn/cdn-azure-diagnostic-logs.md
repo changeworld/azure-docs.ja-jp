@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: e5d84616e70d2a28abf3937b485f4fcf5258c43e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fdb609a243656e2c75159cd2d4e70e2f965ae896
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779409"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352118"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>診断ログ - Azure Content Delivery Network
 
@@ -52,24 +52,24 @@ Azure 診断ログでコア分析を確認し、1 つまたは複数の宛先に
 
 3. **[監視]** セクションで **[診断ログ]** を選択します。
 
-    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="CDN エンドポイントを選択する。" border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="診断ログを選択する。" border="true":::
 
 ### <a name="enable-logging-with-azure-storage"></a>Azure Storage でログ記録を有効化する
 
 ストレージ アカウントを使ってログを保存するには、次の手順に従ってください。
 
  >[!NOTE] 
- >これらの手順を完了するには、ストレージ アカウントが必要です。 以下を参照してください:詳細については、「 **[Azure Storage アカウントの作成](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%252fazure%252fstorage%252fblobs%252ftoc.json)** 」を参照してください。
+ >これらの手順を完了するには、ストレージ アカウントが必要です。 以下を参照してください:詳細については、「 **[Azure Storage アカウントの作成](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)** 」を参照してください。
     
 1. **[Diagnostic setting name]\(診断設定の名前\)** には、診断ログ設定の名前を入力します。
  
-2. **ストレージ アカウントへのアーカイブ** を選択し、 **CoreAnalytics** を選択します。 
+2. **ストレージ アカウントへのアーカイブ** を選択し、**CoreAnalytics** を選択します。 
 
 3. **データの保存期間 (日)** には、保存する日数を選択します。 リテンション期間を 0 にすると、ログが無期限に保存されます。 
 
 4. ログのサブスクリプションとストレージ アカウントを選択します。
 
-    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="CDN エンドポイントを選択する。" border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="診断ログ - ストレージ" border="true":::
 
 3. **[保存]** を選択します。
 
@@ -86,7 +86,7 @@ Azure 診断ログでコア分析を確認し、1 つまたは複数の宛先に
 
 3. ログのサブスクリプションと Log Analytics ワークスペースを選択します。
 
-   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="CDN エンドポイントを選択する。" border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="診断ログ - Log Analytics" border="true":::
 
 4. **[保存]** を選択します。
 
@@ -103,7 +103,7 @@ Azure 診断ログでコア分析を確認し、1 つまたは複数の宛先に
 
 3. ログのサブスクリプションとイベント ハブの名前空間を選択します。
 
-   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="CDN エンドポイントを選択する。" border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="診断ログ - イベント ハブ" border="true":::
 
 4. **[保存]** を選択します。
 
@@ -229,7 +229,7 @@ Azure 診断ログでコア分析を確認し、1 つまたは複数の宛先に
 
 ## <a name="log-data-delays"></a>ログ データの遅延
 
-次の表は、 **Azure CDN Standard from Microsoft** 、 **Azure CDN Standard from Akamai** 、および **Azure CDN Standard/Premium from Verizon** のログ データの遅延を示しています。
+次の表は、**Azure CDN Standard from Microsoft**、**Azure CDN Standard from Akamai**、および **Azure CDN Standard/Premium from Verizon** のログ データの遅延を示しています。
 
 Microsoft ログ データの遅延 | Verizon ログ データの遅延 | Akamai ログ データの遅延
 --- | --- | ---

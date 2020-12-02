@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: c27f6ef47b8e4db83ceb63e308e318803800f8a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c12935a4b0b9cbbf088ba7b9c5ea804be0ce85a1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890725"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447353"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Azure CLI と Python を使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
@@ -96,7 +96,7 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
     > [!IMPORTANT]
     > エンドポイントの名前解決には、DNS サーバーの構成を変更することをお勧めします。
 
-    1. **メモ帳**を管理者として起動し (hosts ファイルを保存するには管理者特権が必要です)、`C:\Windows\System32\Drivers\etc` にある **hosts** ファイルを開きます。
+    1. **メモ帳** を管理者として起動し (hosts ファイルを保存するには管理者特権が必要です)、`C:\Windows\System32\Drivers\etc` にある **hosts** ファイルを開きます。
     
         ![エクスプローラーの hosts ファイル](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file.png)
     
@@ -117,7 +117,7 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
 
 ### <a name="verify-profile-and-install-azure-cli"></a>プロファイルを確認して Azure CLI をインストールする
 
-<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
+<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
 
 1. お使いのクライアントに Azure CLI をインストールします。 この例では、Azure CLI 2.0.80 がインストールされています。 Azure CLI のバージョンを確認するには、`az --version` コマンドを実行します。
 
@@ -147,7 +147,7 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
     PS C:\windows\system32>
     ```
 
-    Azure CLI をお持ちでない場合は、[Windows に Azure CLI をダウンロードしてインストール](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)してください。 Azure CLI は、Windows コマンド プロンプトまたは Windows PowerShell を使用して実行できます。
+    Azure CLI をお持ちでない場合は、[Windows に Azure CLI をダウンロードしてインストール](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)してください。 Azure CLI は、Windows コマンド プロンプトまたは Windows PowerShell を使用して実行できます。
 
 2. CLI の Python の場所を書き留めておきます。 これは、Azure CLI の信頼されたルート証明書ストアの場所を特定するために必要です。
 
@@ -308,7 +308,7 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
 
-4. `az login` コマンドを使用して、Azure Stack Edge Pro 環境にサインインします。 Azure Stack Edge Pro 環境には、ユーザーまたは[サービス プリンシパル](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)としてサインインできます。
+4. `az login` コマンドを使用して、Azure Stack Edge Pro 環境にサインインします。 Azure Stack Edge Pro 環境には、ユーザーまたは[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)としてサインインできます。
 
    これらの手順に従い、"*ユーザー*" としてサインインします。
 

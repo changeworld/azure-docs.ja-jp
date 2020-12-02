@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 9f816b35fd79d3f158ea12fd2c7e1d811823dc8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f521bd593369509fd520831f90ce9c601227f09
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931454"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340052"
 ---
 # <a name="security-module-for-azure-rtos-preview"></a>Azure RTOS 用のセキュリティ モジュール (プレビュー)
 
@@ -32,7 +32,7 @@ Azure RTOS 用のセキュリティ モジュールはバックグラウンド�
 
 ## <a name="azure-rtos-netx-duo"></a>Azure RTOS NetX Duo
 
-Azure RTOS NetX Duo は、特に深く埋め込まれるリアルタイムの IoT アプリケーション用に設計された高度な商用 TCP/IP ネットワーク スタックです。 Azure RTOS NetX Duo は、セキュリティやクラウドなどの豊富なプロトコル セットを備えたデュアル IPv4 および IPv6 ネットワーク スタックです。 詳しくは、[Azure RTOS NetX Duo](https://aka.ms/netxduo) ソリューションを参照してください。
+Azure RTOS NetX Duo は、特に深く埋め込まれるリアルタイムの IoT アプリケーション用に設計された高度な商用 TCP/IP ネットワーク スタックです。 Azure RTOS NetX Duo は、セキュリティやクラウドなどの豊富なプロトコル セットを備えたデュアル IPv4 および IPv6 ネットワーク スタックです。 詳しくは、[Azure RTOS NetX Duo](/azure/rtos/netx-duo/) ソリューションを参照してください。
 
 このモジュールには、次の機能があります。
 
@@ -68,4 +68,3 @@ Azure RTOS 用のセキュリティ モジュールは、IoT デバイス用の�
 - Azure RTOS 用のセキュリティ モジュールを使用して作業を開始する ([前提条件と設定](quickstart-azure-rtos-security-module.md))。
 - Azure RTOS 用のセキュリティ モジュールの詳細を確認する ([セキュリティ アラートと推奨事項のサポート](concept-rtos-security-alerts-recommendations.md))。 
 - Azure RTOS 用のセキュリティ モジュールの[リファレンス API](azure-rtos-security-module-api.md) を使用する。
-

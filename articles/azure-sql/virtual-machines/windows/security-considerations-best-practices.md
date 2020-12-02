@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e6f6d1960c07dc23c584dec5bb424f91630fc1bb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 92cd20f9e636c50416a72ec974a33c87da1ae2cb
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785070"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327272"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server のセキュリティに関する考慮事項
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -45,7 +45,7 @@ SQL Server 仮想マシンを作成するときに、マシンと SQL Server へ
 
 ![SQL Server 接続](./media/security-considerations-best-practices/sql-vm-connectivity-option.png)
 
-セキュリティを最大限に強化するため、自分のシナリオで最も制限の厳しいオプションを選択します。 たとえば、同じ VM の SQL Server にアクセスするアプリケーションを実行している場合、最もセキュリティで保護された選択は **[ローカル]** です。 SQL Server へのアクセスを必要とする Azure アプリケーションを実行している場合、 **[プライベート]** では、指定された [Azure 仮想ネットワーク](../../../virtual-network/virtual-networks-overview.md)内の SQL Server への通信のみがセキュリティで保護します。 SQL Server VM にアクセスする [ **パブリック** (インターネット)] が必要な場合、危険を回避するために、このトピックの他のベスト プラクティスに従ってください。
+セキュリティを最大限に強化するため、自分のシナリオで最も制限の厳しいオプションを選択します。 たとえば、同じ VM の SQL Server にアクセスするアプリケーションを実行している場合、最もセキュリティで保護された選択は **[ローカル]** です。 SQL Server へのアクセスを必要とする Azure アプリケーションを実行している場合、 **[プライベート]** では、指定された [Azure 仮想ネットワーク](../../../virtual-network/virtual-networks-overview.md)内の SQL Server への通信のみがセキュリティで保護します。 SQL Server VM にアクセスする [**パブリック** (インターネット)] が必要な場合、危険を回避するために、このトピックの他のベスト プラクティスに従ってください。
 
 ポータルで選択されたオプションは、VM の[ネットワーク セキュリティ グループ](../../../active-directory/identity-protection/concept-identity-protection-security-overview.md) (NSG) の受信セキュリティ ルールを使用して、仮想マシンへのネットワーク トラフィックを許可または拒否します。 SQL Server ポート (既定値 1433) へのトラフィックを許可するには、受信 NSG ルールを変更または新規作成します。 また、このポートでの通信を許可する、特定の IP アドレスを指定することもできます。
 
@@ -59,7 +59,7 @@ SQL Server 仮想マシンを作成するときに、マシンと SQL Server へ
 
 ## <a name="encryption"></a>暗号化
 
-マネージド ディスクでは、サーバー側暗号化と Azure Disk Encryption が提供されます。 [サーバー側暗号化](../../../virtual-machines/windows/disk-encryption.md)では、保存時の暗号化が提供され、組織のセキュリティおよびコンプライアンス要件を満たすようにデータが保護されます。 [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) では、Bitlocker または DM-Crypt テクノロジを使用し、Azure Key Vault と統合して OS とデータ ディスクの両方を暗号化します。 
+マネージド ディスクでは、サーバー側暗号化と Azure Disk Encryption が提供されます。 [サーバー側暗号化](../../../virtual-machines/disk-encryption.md)では、保存時の暗号化が提供され、組織のセキュリティおよびコンプライアンス要件を満たすようにデータが保護されます。 [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) では、Bitlocker または DM-Crypt テクノロジを使用し、Azure Key Vault と統合して OS とデータ ディスクの両方を暗号化します。 
 
 ## <a name="use-a-non-default-port"></a>既定以外のポートの使用
 
@@ -69,7 +69,7 @@ SQL Server 仮想マシンを作成するときに、マシンと SQL Server へ
 
 プロビジョニングした後に、これを構成するには、次の 2 つのオプションがあります。
 
-- Resource Manager VM の場合、 [SQL 仮想マシン リソース](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)から **[セキュリティ]** を選択できます。 ここには、ポートを変更するオプションがあります。
+- Resource Manager VM の場合、[SQL 仮想マシン リソース](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)から **[セキュリティ]** を選択できます。 ここには、ポートを変更するオプションがあります。
 
   ![ポータルの TCP ポートの変更](./media/security-considerations-best-practices/sql-vm-change-tcp-port.png)
 

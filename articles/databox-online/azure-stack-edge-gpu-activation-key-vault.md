@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 8957d8982a3bfe1da2811dc10d0c3e77a72fc288
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ec7a32739940d53d976e73a7e170df96a0acc245
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367603"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449520"
 ---
 # <a name="azure-key-vault-integration-with-azure-stack-edge"></a>Azure Key Vault と Azure Stack Edge の統合 
 
@@ -31,7 +31,7 @@ Azure Stack Edge サービスの場合、使用されるシークレットの 1 
 
 アクティブ化キーの生成処理中に、Azure Stack Edge リソース用のキー コンテナーが作成されます。 
 
-- Azure Stack Edge リソースを作成するときには、 *Microsoft.KeyVault* リソース プロバイダーを登録する必要があります。 サブスクリプションへの所有者または共同作成者のアクセス権をお持ちの場合、リソース プロバイダーの登録は自動的に行われます。 キー コンテナーは、Azure Stack Edge リソースと同じサブスクリプションとリソース グループに作成されます。 
+- Azure Stack Edge リソースを作成するときには、*Microsoft.KeyVault* リソース プロバイダーを登録する必要があります。 サブスクリプションへの所有者または共同作成者のアクセス権をお持ちの場合、リソース プロバイダーの登録は自動的に行われます。 キー コンテナーは、Azure Stack Edge リソースと同じサブスクリプションとリソース グループに作成されます。 
 
 - Azure Stack Edge リソースを作成すると、マネージド サービス ID (MSI) も作成されます。これはリソースの有効期間にわたって保持され、これとクラウド上のリソース プロバイダーとの間で通信が行われます。 
 
@@ -49,7 +49,7 @@ Azure Stack Edge サービスの場合、使用されるシークレットの 1 
 
 - 誤って削除されないように、キー コンテナーではリソース ロックが有効になっています。 また、キー コンテナーでは論理的な削除が有効になっており、誤って削除された場合は 90 日以内にキー コンテナーを復元することができます。 詳細については、「[Azure Key Vault の論理的な削除の概要](../key-vault/general/soft-delete-overview.md)」を参照してください
 
-    キー コンテナーが誤って削除され、消去保護期間の 90 日が経過していない場合は、次の手順に従って[キー コンテナーを回復](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault)します。 
+    キー コンテナーが誤って削除され、消去保護期間の 90 日が経過していない場合は、次の手順に従って[キー コンテナーを回復](../key-vault/general/key-vault-recovery.md#list-recover-or-purge-soft-deleted-secrets-keys-and-certificates)します。 
 
 - Azure キー コンテナーと Azure Stack Edge リソースが統合される前に、既存の Azure Stack Edge リソースがあった場合は、影響を受けません。 既存の Azure Stack Edge リソースを引き続き使用できます。 
 
@@ -73,4 +73,3 @@ When you generate an activation key, the following events occur:
 ## <a name="next-steps"></a>次のステップ
 
 - [アクティブ化キーの生成](azure-stack-edge-gpu-deploy-prep.md#get-the-activation-key)方法に関する詳細をご覧ください。
-

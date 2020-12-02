@@ -4,12 +4,12 @@ description: Recovery Services コンテナーを Azure サブスクリプショ
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 5a73963970b5fad7b3992d501d9aac5cc7229622
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 12c276b861e7db8e93e60eea7e9cd7f3aba04860
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926684"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325776"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動する
 
@@ -30,7 +30,7 @@ ms.locfileid: "92926684"
 - VM が Recovery Services コンテナーと一緒にサブスクリプションをまたいで移動しないか、または新しいリソース グループに移動しない場合、現在の VM の復旧ポイントは、有効期限が切れるまでコンテナーにそのまま残ります。
 - VM をコンテナーと一緒に移動するかどうかに関係なく、VM はコンテナー内に保持されているバックアップ履歴から復元できます。
 - Azure Disk Encryption では、キー コンテナーと VM が同じ Azure リージョンおよびサブスクリプションに属している必要があります。
-- 仮想マシンをマネージド ディスクと一緒に移動するには、この[記事](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription)を参照してください。
+- 仮想マシンをマネージド ディスクと一緒に移動するには、この[記事](../azure-resource-manager/management/move-resource-group-and-subscription.md)を参照してください。
 - クラシック モデルを使用してデプロイされるリソースを移動するためのオプションは、リソースをサブスクリプション内で移動するか、新しいサブスクリプションに移動するかによって異なります。 詳細については、[こちらの記事](../azure-resource-manager/management/move-resource-group-and-subscription.md)を参照してください。
 - コンテナーに対して定義されるバックアップ ポリシーは、コンテナーがサブスクリプションをまたいで移動しても、新しいリソース グループに移動しても保持されます。
 - 移動できるのは、次のいずれかの種類のバックアップ項目を含むコンテナーだけです。 以下に記載されていない種類のバックアップ項目をすべて停止し、データを完全に削除してから、コンテナーを移動する必要があります。
@@ -122,7 +122,7 @@ Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $v
 Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
-上記のコマンドレットを実行した後、指定したリソースを移動することの確認を求められます。 「 **Y** 」と入力して確認します。 検証が成功した後、リソースが移動します。
+上記のコマンドレットを実行した後、指定したリソースを移動することの確認を求められます。 「**Y**」と入力して確認します。 検証が成功した後、リソースが移動します。
 
 ## <a name="use-cli-to-move-recovery-services-vault"></a>CLI を使用して Recovery Services コンテナーを移動する
 

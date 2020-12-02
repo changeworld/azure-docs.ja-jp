@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 019501eef0857c9dc7cd7f63a656eccf61608f1b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 29580564ffa2fed579065e6a8551a6f44597e41a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367824"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433259"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory の既定のユーザー アクセス許可とは
 Azure Active Directory (Azure AD) では、すべてのユーザーに既定のアクセス許可のセットが付与されます。 ユーザーのアクセスは、ユーザーの種類、ユーザーの[ロールの割り当て](active-directory-users-assign-role-azure-portal.md)、および個々のオブジェクトの所有権で構成されます。 この記事では、これらの既定のアクセス許可について説明し、メンバーとゲスト ユーザーの既定値を比較します。 既定のユーザー アクセス許可は、Azure AD のユーザー設定のみで変更できます。
@@ -51,7 +51,7 @@ Azure Active Directory (Azure AD) では、すべてのユーザーに既定の�
 ユーザーが LinkedIn で職場または学校アカウントに接続できるようにする | このオプションを [いいえ] に設定すると、ユーザーは、自身の LinkedIn アカウントで職場または学校のアカウントに接続できなくなります。 詳細については、「[LinkedIn アカウント接続のデータ共有と同意](../enterprise-users/linkedin-user-consent.md)」を参照してください。
 セキュリティ グループを作成できる | このオプションを [いいえ] に設定すると、ユーザーはセキュリティ グループを作成できません。 その場合でも、全体管理者とユーザー管理者はセキュリティ グループを作成できます。 方法については、「[グループの設定を構成するための Azure Active Directory コマンドレット](../enterprise-users/groups-settings-cmdlets.md)」をご覧ください。
 Microsoft 365 グループを作成する機能 | このオプションを [いいえ] に設定すると、ユーザーは Microsoft 365 グループを作成できません。 このオプションを [一部] に設定すると、選ばれたユーザーのセットは Microsoft 365 グループを作成できます。 その場合でも、全体管理者とユーザー管理者は Microsoft 365 グループを作成できます。 方法については、「[グループの設定を構成するための Azure Active Directory コマンドレット](../enterprise-users/groups-settings-cmdlets.md)」をご覧ください。
-Azure AD 管理ポータルへのアクセスを制限する | このオプションを [いいえ] に設定すると、管理者以外の管理者が Azure AD 管理ポータルを使用して Azure AD リソースの読み取りと管理を行うことができます。 [はい] の場合、管理者以外はすべて、管理ポータルでの Azure AD データへのアクセスが制限されます。<p>**注** : この設定では、PowerShell または他のクライアント (Visual Studio など) を使用した Azure AD データへのアクセスは制限されません。[はい] に設定した場合、特定の非管理者ユーザーに Azure AD 管理ポータルを使用する権限を付与するには、ディレクトリ閲覧者ロールなどの管理ロールを割り当ててください。<p>このロールでは、メンバー ユーザーが既定で所有している (ゲストとサービス プリンシパルは所有していない) 基本的なディレクトリ情報を読み取ることができます。
+Azure AD 管理ポータルへのアクセスを制限する | このオプションを [いいえ] に設定すると、管理者以外の管理者が Azure AD 管理ポータルを使用して Azure AD リソースの読み取りと管理を行うことができます。 [はい] の場合、管理者以外はすべて、管理ポータルでの Azure AD データへのアクセスが制限されます。<p>**注**: この設定では、PowerShell または他のクライアント (Visual Studio など) を使用した Azure AD データへのアクセスは制限されません。[はい] に設定した場合、特定の非管理者ユーザーに Azure AD 管理ポータルを使用する権限を付与するには、ディレクトリ閲覧者ロールなどの管理ロールを割り当ててください。<p>このロールでは、メンバー ユーザーが既定で所有している (ゲストとサービス プリンシパルは所有していない) 基本的なディレクトリ情報を読み取ることができます。
 他のユーザーを読み取ることができる | この設定は PowerShell のみでご利用いただけます。 このフラグを $false に設定すると、管理者以外のすべてのユーザーはディレクトリからユーザー情報を読み取ることができなくなります。 Exchange Online などの他の Microsoft サービスのユーザー情報の読み取りは妨げられません。 この設定は特殊な状況を想定しているため、このフラグを $false に設定することは推奨されません。
 
 ## <a name="restrict-guest-users-default-permissions"></a>ゲスト ユーザーの既定のアクセス許可を制限する
@@ -63,7 +63,7 @@ Azure AD 管理ポータルへのアクセスを制限する | このオプシ�
 
 権限 | 設定の説明
 ---------- | ------------
-Guests user access restrictions (Preview) (ゲスト ユーザーのアクセス制限 (プレビュー)) | このオプションを **[Guest users have the same access as members]\(ゲスト ユーザーにメンバーと同じアクセス権を付与する\)** に設定すると、メンバー ユーザーのアクセス許可すべてがゲスト ユーザーに既定で付与されます。<p>このオプションを **[Guest user access is restricted to properties and memberships of their own directory objects]\(ゲスト ユーザーのアクセスを、自分のディレクトリ オブジェクトのプロパティとメンバーシップに制限する\)** に設定すると、ゲスト アクセスは既定で自分のユーザー プロファイルのみに制限されます。 ユーザー プリンシパル名、ObjectId、または表示名で検索する場合でも、他のユーザーへのアクセスは許可されなくなりました。 グループ メンバーシップを含むグループ情報へのアクセスも許可されなくなりました。<p>**注** :この設定では、Microsoft Teams など、一部の Microsoft 365 サービスの参加しているグループへのアクセスは禁止されません。 詳細については、[Microsoft Teams のゲストのアクセス]()に関する記事を参照してください。<p>このアクセス許可の設定に関係なく、ゲスト ユーザーを管理者の役割に追加できます。
+Guests user access restrictions (Preview) (ゲスト ユーザーのアクセス制限 (プレビュー)) | このオプションを **[Guest users have the same access as members]\(ゲスト ユーザーにメンバーと同じアクセス権を付与する\)** に設定すると、メンバー ユーザーのアクセス許可すべてがゲスト ユーザーに既定で付与されます。<p>このオプションを **[Guest user access is restricted to properties and memberships of their own directory objects]\(ゲスト ユーザーのアクセスを、自分のディレクトリ オブジェクトのプロパティとメンバーシップに制限する\)** に設定すると、ゲスト アクセスは既定で自分のユーザー プロファイルのみに制限されます。 ユーザー プリンシパル名、ObjectId、または表示名で検索する場合でも、他のユーザーへのアクセスは許可されなくなりました。 グループ メンバーシップを含むグループ情報へのアクセスも許可されなくなりました。<p>**注**:この設定では、Microsoft Teams など、一部の Microsoft 365 サービスの参加しているグループへのアクセスは禁止されません。 詳細については、[Microsoft Teams のゲストのアクセス](https://docs.microsoft.com/MicrosoftTeams/guest-access)に関する記事を参照してください。<p>このアクセス許可の設定に関係なく、ゲスト ユーザーを管理者の役割に追加できます。
 ゲストは招待ができる | このオプションを [はい] に設定すると、ゲストは他のゲストを招待できます。 詳しくは、[B2B コラボレーションの招待の委任](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings)に関する記事を参照してください。
 メンバーは招待ができる | このオプションを [はい] に設定すると、自分のディレクトリの管理者以外のメンバーがゲストを招待できるようになります。 詳しくは、[B2B コラボレーションの招待の委任](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings)に関する記事を参照してください。
 管理者とゲスト招待元ロールのユーザーは招待ができる | このオプションを [はい] に設定すると、管理者と "ゲスト招待元" ロールのユーザーがゲストを招待できます。 [はい] に設定すると、[メンバーは招待ができる] 設定に関係なく、ゲスト招待元ロールのユーザーはゲストを招待できます。 詳しくは、[B2B コラボレーションの招待の委任](../external-identities/delegate-invitations.md#assign-the-guest-inviter-role-to-a-user)に関する記事を参照してください。

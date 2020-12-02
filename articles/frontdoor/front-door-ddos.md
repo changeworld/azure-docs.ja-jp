@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: jodowns
-ms.openlocfilehash: 58efeaebcc9f643c725cde54fcbda6f65c4bd700
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 24a8a559d72eae4dab0b6e740b34890f1d7ff114
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413699"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350785"
 ---
 # <a name="ddos-protection-on-front-door"></a>Front Door の DDoS 保護
 
@@ -36,7 +36,7 @@ Front Door は、大規模にスケーリングされたグローバル分散サ
 
 ## <a name="caching"></a>キャッシュ
 
-[Front Door のキャッシュ機能](./front-door-caching.md)を使用して、攻撃によって生成される大量のトラフィックからバックエンドを保護することができます。 キャッシュされたリソースは Front Door のエッジ ノードから返されるため、バックエンドに転送されることはありません。 動的な応答でキャッシュの有効期限 (秒または分) が短い場合でも、バックエンド サービスの負荷を大幅に削減できます。 キャッシュの概念とパターンの詳細については、[キャッシュに関する考慮事項](https://docs.microsoft.com/azure/architecture/best-practices/caching)に関するページや[キャッシュ アサイド パターン](https://docs.microsoft.com/azure/architecture/patterns/cache-aside)に関するページを参照してください。
+[Front Door のキャッシュ機能](./front-door-caching.md)を使用して、攻撃によって生成される大量のトラフィックからバックエンドを保護することができます。 キャッシュされたリソースは Front Door のエッジ ノードから返されるため、バックエンドに転送されることはありません。 動的な応答でキャッシュの有効期限 (秒または分) が短い場合でも、バックエンド サービスの負荷を大幅に削減できます。 キャッシュの概念とパターンの詳細については、[キャッシュに関する考慮事項](/azure/architecture/best-practices/caching)に関するページや[キャッシュ アサイド パターン](/azure/architecture/patterns/cache-aside)に関するページを参照してください。
 
 ## <a name="web-application-firewall-waf"></a>Web アプリケーション ファイアウォール (WAF)
 

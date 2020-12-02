@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 93678735237c25b19d04b7d901583ba785d7f594
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9c6247f021b7af4cfdd899ffd4b6bd178f2256c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613545"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345595"
 ---
 # <a name="manage-an-azure-stack-edge-pro-fpga-device-via-windows-powershell"></a>Windows PowerShell を使用して Azure Stack Edge Pro FPGA デバイスを管理する
 
@@ -56,7 +56,7 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
 ```
 このコマンドレットを実行するときは、ネットワーク共有のためのパスワードを指定するよう求められます。
 
-証明書の詳細については、[Azure IoT Edge 証明書](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs)に関するページまたは「[ゲートウェイに証明書をインストール](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway)」に移動してください。
+証明書の詳細については、[Azure IoT Edge 証明書](../iot-edge/iot-edge-certs.md)に関するページまたは「[ゲートウェイに証明書をインストール](../iot-edge/how-to-create-transparent-gateway.md)」に移動してください。
 
 ## <a name="view-device-information"></a>デバイス情報を表示する
  

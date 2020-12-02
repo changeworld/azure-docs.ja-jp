@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 06/03/2020
-ms.openlocfilehash: c5392c822c42c2e0ee3f6ce9edffc6229d572165
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c805bacbd4a2219fb79168ad6426efd8b0a390df
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782418"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324518"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Azure SQL Managed Instance の Machine Learning Services (プレビュー)
 
@@ -52,7 +52,7 @@ Python と R のベース ディストリビューションは Machine Learning 
 
 この限定パブリック プレビューには、[Azure プレビューの使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)が適用されます。 
 
-プレビュー プログラムへの参加に関心をお持ちで、その使用条件に同意する場合は、 [ **https://azure.microsoft.com/support/create-ticket/**](https://azure.microsoft.com/support/create-ticket/) で Azure サポート チケットを作成して登録を依頼できます。 
+プレビュー プログラムへの参加に関心をお持ちで、その使用条件に同意する場合は、[ **https://azure.microsoft.com/support/create-ticket/**](https://azure.microsoft.com/support/create-ticket/) で Azure サポート チケットを作成して登録を依頼できます。 
 
 1. **[サポート チケットを作成]** ページで、 **[インシデントの作成]** をクリックします。
 
@@ -62,7 +62,7 @@ Python と R のベース ディストリビューションは Machine Learning 
    - 問題の種類 - **技術**
    - サブスクリプション - *ご使用のサブスクリプションを選択します*
    - サービス - **SQL Managed Instance**
-   - リソース - " *マネージド インスタンスを選択します* "
+   - リソース - "*マネージド インスタンスを選択します*"
    - 概要 - *要求の簡単な説明を入力します*
    - 問題の種類 - **SQL Managed Instance 向けの Machine Learning Services (プレビュー)**
    - 問題のサブタイプ - **その他の問題または "操作方法" に関する質問**
@@ -85,6 +85,6 @@ Python と R のベース ディストリビューションは Machine Learning 
 ## <a name="next-steps"></a>次のステップ
 
 - [SQL Server Machine Learning Services との重要な違い](machine-learning-services-differences.md)に関する記事を参照してください。
-- Machine Learning Services で Python を使用する方法については、[Python スクリプトの実行](/sql/machine-learning/tutorials/quickstart-python-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&view=sql-server-ver15)に関するページを参照してください。
-- Machine Learning Services で R を使用する方法については、[R スクリプトの実行](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&view=sql-server-ver15)に関するページを参照してください。
+- Machine Learning Services で Python を使用する方法については、[Python スクリプトの実行](/sql/machine-learning/tutorials/quickstart-python-create-script?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&view=sql-server-ver15)に関するページを参照してください。
+- Machine Learning Services で R を使用する方法については、[R スクリプトの実行](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&view=sql-server-ver15)に関するページを参照してください。
 - 他の SQL プラットフォームの機械学習に関する詳細については、[SQL 機械学習のドキュメント](/sql/machine-learning/)を参照してください。

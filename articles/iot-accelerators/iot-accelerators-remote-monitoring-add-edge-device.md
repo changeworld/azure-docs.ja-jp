@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: de060be7ace84ea309b71087a50fd572091bed43
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 88d732cc3feaa2c9a528443d4a783227f3d8e641
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004791"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446796"
 ---
 # <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>IoT Edge デバイスをリモート監視ソリューション アクセラレータに追加する
 
@@ -34,9 +34,9 @@ ms.locfileid: "96004791"
 
 IoT Edge デバイスをソリューション アクセラレータの IoT Hub インスタンスに直接登録することもできます。 次のような攻略ガイドに従う前に、ソリューション アクセラレータで IoT ハブの名前を知る必要があります。
 
-- [Azure portal から新しい Azure IoT Edge デバイスを登録する](../iot-edge/how-to-register-device.md#register-in-the-azure-portal)
-- [Azure CLI を使用して新しい Azure IoT Edge デバイスを登録する](../iot-edge/how-to-register-device.md#register-with-the-azure-cli)
-- [Visual Studio Code から新しい Azure IoT Edge デバイスを登録する](../iot-edge/how-to-register-device.md#register-with-visual-studio-code)
+- [Azure portal から新しい Azure IoT Edge デバイスを登録する](../iot-edge/how-to-manual-provision-symmetric-key.md?tabs=azure-portal%2Cwindows)
+- [Azure CLI を使用して新しい Azure IoT Edge デバイスを登録する](../iot-edge/how-to-manual-provision-symmetric-key.md?tabs=azure-cli%2Cwindows)
+- [Visual Studio Code から新しい Azure IoT Edge デバイスを登録する](../iot-edge/how-to-manual-provision-symmetric-key.md?tabs=visual-studio-code%2Cwindows)
 
 リモート監視ソリューション アクセラレータの IoT ハブにデバイスを登録すると、それが Web UI の **[デバイス エクスプローラー]** ページに表示されます。
 
@@ -44,11 +44,11 @@ IoT Edge デバイスをソリューション アクセラレータの IoT Hub �
 
 Edge デバイスにモジュールをデプロイする前に、IoT Edge ランタイムを実際のデバイスにインストールする必要があります。 次の攻略ガイドでは、一般的なデバイス プラットフォームにランタイムをインストールする方法を説明しています。
 
-- [Linux に Azure IoT Edge ランタイムをインストールする (x64)](../iot-edge/how-to-install-iot-edge-linux.md)
-- [Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)](../iot-edge/how-to-install-iot-edge-linux.md)
-- [Windows に Azure IoT Edge をインストールして Windows コンテナーと共に使用する](../iot-edge/how-to-install-iot-edge-windows.md)
-- [Windows に Azure IoT Edge をインストールして Linux コンテナーと共に使用する](../iot-edge/how-to-install-iot-edge-windows-with-linux.md)
-- [IoT Edge ランタイムを Windows IoT Core にインストールする](../iot-edge/how-to-install-iot-edge-windows.md)
+- [Linux に Azure IoT Edge ランタイムをインストールする (x64)](../iot-edge/how-to-install-iot-edge.md)
+- [Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)](../iot-edge/how-to-install-iot-edge.md)
+- [Windows に Azure IoT Edge をインストールして Windows コンテナーと共に使用する](../iot-edge/how-to-install-iot-edge.md)
+- [Windows に Azure IoT Edge をインストールして Linux コンテナーと共に使用する](../iot-edge/how-to-install-iot-edge.md)
+- [IoT Edge ランタイムを Windows IoT Core にインストールする](../iot-edge/how-to-install-iot-edge.md)
 
 ## <a name="next-steps"></a>次のステップ
 

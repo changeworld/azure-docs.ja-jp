@@ -1,18 +1,18 @@
 ---
 title: Azure DevOps Starter を使用した CI/CD パイプライン - Azure IoT Edge | Microsoft Docs
 description: Azure DevOps Starter を利用すると、Azure での作業を簡単に開始できるようになります。 いくつかの簡単な手順によって、Azure IoT Edge アプリを起動するのに役立ちます。
-author: shizn
+author: kgremban
 ms.author: kgremban
 ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d57c1828b9456851d37a65b88eb5f8ea860a80fe
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 97dc0fe5a3720a41dd63583c222762d832d636ea
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045858"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436999"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>Azure DevOps Starter を使用して IoT Edge 用の CI/CD パイプラインを作成する
 
@@ -74,14 +74,14 @@ DevOps Starter によって、Azure Repos にプロジェクトの Git リポジ
 
    ![Azure Repos 内に生成されたリポジトリを表示する](./media/how-to-devops-starter/view-repositories.png)
 
-> [!NOTE]
-> 次の手順では、Web ブラウザーを使用して、コードを変更します。 代わりにローカルにリポジトリを複製する場合は、ウィンドウの右上の **[複製]** を選択します。 指定された URL を使用し、Visual Studio Code またはお好みの開発ツールで、Git リポジトリを複製します。
+   > [!NOTE]
+   > 次の手順では、Web ブラウザーを使用して、コードを変更します。 代わりにローカルにリポジトリを複製する場合は、ウィンドウの右上の **[複製]** を選択します。 指定された URL を使用し、Visual Studio Code またはお好みの開発ツールで、Git リポジトリを複製します。
 
 2. リポジトリには、作成プロセスで選択したアプリケーションの言語に基づいて、**FilterModule** というモジュールに既にコードが含まれています。 **modules/FilterModule/module.json** ファイルを開きます。
 
    ![Azure Repos 内の module.json ファイルを開く](./media/how-to-devops-starter/open-module-json.png)
 
-3. このファイルの **version** パラメーターでは、[Azure DevOps ビルド変数](/azure/devops/pipelines/build/variables?view=vsts#build-variables)が使用されていることに注意してください。 この構成により、新しいビルドを実行するたびに、新しいバージョンのモジュールが作成されるようになります。
+3. このファイルの **version** パラメーターでは、[Azure DevOps ビルド変数](/azure/devops/pipelines/build/variables#build-variables)が使用されていることに注意してください。 この構成により、新しいビルドを実行するたびに、新しいバージョンのモジュールが作成されるようになります。
 
 ## <a name="examine-the-cicd-pipeline"></a>CI/CD パイプラインを確認する
 
@@ -127,7 +127,7 @@ DevOps Starter によって、Azure Repos にプロジェクトの Git リポジ
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-作成した Azure App Service とその他の関連リソースが必要なくなったら、削除してかまいません。 DevOps Starter ダッシュボードで**削除**機能を使用します。
+作成した Azure App Service とその他の関連リソースが必要なくなったら、削除してかまいません。 DevOps Starter ダッシュボードで **削除** 機能を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 8e18b79cc14fe98879ec97361f6e275d8fd918bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2634ed819b8818632c58b9e471b0f26190e5f16b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90932651"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339967"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>IoT デバイスにセキュリティ エージェントを選択してデプロイする
 
@@ -45,13 +45,13 @@ C ベースのセキュリティ エージェントはメモリ占有領域が�
 | **オープンソース** | [GitHub](https://aka.ms/iot-security-github-c) の [MIT ライセンス](https://en.wikipedia.org/wiki/MIT_License)で使用可能 | [GitHub](https://aka.ms/iot-security-github-cs) の [MIT ライセンス](https://en.wikipedia.org/wiki/MIT_License)で使用可能 |
 | **開発言語**    | C | C# |
 | **Windows プラットフォームのサポート** | いいえ | はい |
-| **Windows の前提条件** | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
+| **Windows の前提条件** | --- | [WMI](/windows/desktop/wmisdk/) |
 | **Linux プラットフォームのサポート** | はい、x64 と x86 | はい、x64 のみ |
 | **Linux の前提条件** | libunwind8、libcurl3、uuid ランタイム、auditd audispd プラグイン | libunwind8、libcurl3、uuid ランタイム、auditd、audispd プラグイン、sudo、netstat、iptables |
 | **ディスクの占有領域** | 10.5 MB | 90 MB |
 | **メモリ占有領域 (平均)** | 5.5 MB | 33 MB |
-| **IoT Hub に対する[認証](concept-security-agent-authentication-methods.md)** | はい | はい |
-| **セキュリティ データの[収集](how-to-agent-configuration.md#supported-security-events)** | はい | はい |
+| **IoT Hub に対する [認証](concept-security-agent-authentication-methods.md)** | はい | はい |
+| **セキュリティ データの [収集](how-to-agent-configuration.md#supported-security-events)** | はい | はい |
 | **イベントの集計** | はい | はい |
 | **[セキュリティ モジュール ツイン](concept-security-module.md)によるリモート構成** | はい | はい |
 

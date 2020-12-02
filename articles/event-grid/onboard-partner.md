@@ -3,12 +3,12 @@ title: Azure portal を使用して Azure Event Grid のパートナーとして
 description: Azure portal を使用して、Azure Event Grid パートナーをオンボードします。
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 36fab35923b8a536a9054e5dc4bfa4c5b82172a7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8344fcd822bfcdc67e2c27b200d97fa70dfefdf2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102713"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349388"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner-using-the-azure-portal"></a>Azure portal を使って Azure Event Grid のパートナーとしてオンボード
 この記事では、サードパーティの SaaS プロバイダー (イベント発行者またはパートナーとも呼ばれます) が Event Grid にオンボードされ、サービスからイベントが発行できるようにする方法と、それらのイベントがエンドユーザーによってどのように使用されるかについて説明します。
@@ -135,7 +135,7 @@ ms.locfileid: "93102713"
 1. **[確認と作成]** では、設定を確認し、 **[作成]** を選択してイベント チャネルを作成します。 
 
 ## <a name="next-steps"></a>次のステップ
-- [パートナー トピックの概要](partner-topics-overview.md)
+- [パートナー トピックの概要](./partner-events-overview.md)
 - [パートナー トピックのオンボード フォーム](https://aka.ms/gridpartnerform)
 - [Auth0 パートナー トピック](auth0-overview.md)
 - [Auth0 パートナー トピックの使用方法](auth0-how-to.md)

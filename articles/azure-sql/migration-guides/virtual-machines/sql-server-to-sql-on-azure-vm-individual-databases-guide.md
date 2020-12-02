@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 1558c396566b2fcfc098a749407d5e7a28316b6f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3b0fdccd3eaf6e6bd94b595107022f738bdd8382
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019451"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325921"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>移行ガイド:SQL Server から Azure VM 上の SQL Server 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -38,8 +38,8 @@ ms.locfileid: "95019451"
 Azure VM 上の SQL Server への移行には、次が必要です。 
 
 - [Database Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)。
-- [Azure Migrate プロジェクト](/azure/migrate/create-manage-projects)。
-- [Azure VM 上のターゲット SQL Server](/azure/azure-sql/virtual-machines/windows/create-sql-vm-portal) の準備 (バージョンはソース SQL Server と同じかそれ以上)。
+- [Azure Migrate プロジェクト](../../../migrate/create-manage-projects.md)。
+- [Azure VM 上のターゲット SQL Server](../../virtual-machines/windows/create-sql-vm-portal.md) の準備 (バージョンはソース SQL Server と同じかそれ以上)。
 - [Azure とオンプレミスの間の接続](/azure/architecture/reference-architectures/hybrid-networking)。
 - [適切な移行戦略の選択](sql-server-to-sql-on-azure-vm-migration-overview.md#migrate)。
 
@@ -157,8 +157,8 @@ DMA の評価の結果によっては、移行後にユーザー データベー
 || Filestream を使用したユーザー データベース |  [バックアップと復元](../../virtual-machines/windows/migrate-to-vm-from-sql-server.md#back-up-and-restore)の方法を使用して移行します。 DMA では、Filestream を使用したデータベースはサポートされていません。 |
 | **Security** | SQL Server と Windows のログイン | DMA を使用して[ユーザー ログインを移行](/sql/dma/dma-migrateserverlogins)します。 |
 || SQL Server ロール | SQL Server Management Studio でスクリプトを使用します |
-|| 暗号化プロバイダー | [Azure Key Vault サービスの使用に切り替える](../../virtual-machines/windows/azure-key-vault-integration-configure.md)ことをお勧めします。 この手順では、[SQL VM リソース プロバイダー](../../virtual-machines/windows/sql-vm-resource-provider-register.md)を使用します。 |
-| **サーバー オブジェクト** | バックアップ デバイス | [Azure Backup サービス](../../../backup/backup-sql-server-database-azure-vms.md)を使用してデータベース バックアップを置換します。または、[Azure Storage](../../virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md) にバックアップを書き込みます (SQL Server 2012 SP1 CU2 +)。 この手順では、[SQL VM リソース プロバイダー](../../virtual-machines/windows/sql-vm-resource-provider-register.md)を使用します。|
+|| 暗号化プロバイダー | [Azure Key Vault サービスの使用に切り替える](../../virtual-machines/windows/azure-key-vault-integration-configure.md)ことをお勧めします。 この手順では、[SQL VM リソース プロバイダー](../../virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md)を使用します。 |
+| **サーバー オブジェクト** | バックアップ デバイス | [Azure Backup サービス](../../../backup/backup-sql-server-database-azure-vms.md)を使用してデータベース バックアップを置換します。または、[Azure Storage](../../virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md) にバックアップを書き込みます (SQL Server 2012 SP1 CU2 +)。 この手順では、[SQL VM リソース プロバイダー](../../virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md)を使用します。|
 || リンク サーバー | SQL Server Management Studio でスクリプトを使用します。 |
 || サーバー トリガー | SQL Server Management Studio でスクリプトを使用します。 |
 | **レプリケーション** | ローカル パブリケーション | SQL Server Management Studio でスクリプトを使用します。 |

@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 55c884375372b3fea2ff3153aa936893cf668903
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e73381ef0e646f697f5195cb3df7f4c2733cccaf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359987"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456912"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server ストアド プロシージャ アクティビティ
 > [!div class="op_single_selector" title1="変換アクティビティ"]
@@ -41,13 +41,13 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 ストアド プロシージャ アクティビティを使用して、社内または Azure 仮想マシン (VM) 上の次のいずれかのデータ ストアでストアド プロシージャを呼び出すことができます。
 
 - Azure SQL データベース
-- Azure Synapse Analytics (旧称 SQL Data Warehouse)
+- Azure Synapse Analytics
 - SQL Server データベース SQL Server を使用している場合、データベースをホストするコンピューターと同じコンピューターまたはデータベースにアクセスできる別のコンピューター上にデータ管理ゲートウェイをインストールします。 データ管理ゲートウェイは、安全かつ管理された方法でオンプレミスまたは Azure VM 上のデータ ソースをクラウド サービスに接続するコンポーネントです。 詳細については、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)に関する記事をご覧ください。
 
 > [!IMPORTANT]
-> Azure SQL Database または SQL Server にデータをコピーする場合、 **sqlWriterStoredProcedureName** プロパティを使用してストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSink** を構成できます。 詳細については、[コピー アクティビティからのストアド プロシージャの呼び出し](data-factory-invoke-stored-procedure-from-copy-activity.md)に関する記事をご覧ください。 プロパティの詳細については、[Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties) の各コネクタに関する記事をご覧ください。 コピー アクティビティを使用して Azure Synapse Analytics にデータをコピー中に、ストアド プロシージャを呼び出すことはできません。 しかし、Azure Synapse Analytics のストアド プロシージャを呼び出すためにストアド プロシージャのアクティビティを使用することは可能です。
+> Azure SQL Database または SQL Server にデータをコピーする場合、**sqlWriterStoredProcedureName** プロパティを使用してストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSink** を構成できます。 詳細については、[コピー アクティビティからのストアド プロシージャの呼び出し](data-factory-invoke-stored-procedure-from-copy-activity.md)に関する記事をご覧ください。 プロパティの詳細については、[Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties) の各コネクタに関する記事をご覧ください。 コピー アクティビティを使用して Azure Synapse Analytics にデータをコピー中に、ストアド プロシージャを呼び出すことはできません。 しかし、Azure Synapse Analytics のストアド プロシージャを呼び出すためにストアド プロシージャのアクティビティを使用することは可能です。
 >
-> Azure SQL Database、SQL Server、または Azure Synapse Analytics からデータをコピーする場合、 **sqlReaderStoredProcedureName** プロパティを使用して、ソース データベースからデータを読み取るストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSource** を構成できます。 詳細については、[Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)、[Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
+> Azure SQL Database、SQL Server、または Azure Synapse Analytics からデータをコピーする場合、**sqlReaderStoredProcedureName** プロパティを使用して、ソース データベースからデータを読み取るストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSource** を構成できます。 詳細については、[Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)、[Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
 
 次のチュートリアルでは、ストアド プロシージャ アクティビティをパイプラインで使用して、Azure SQL Database でストアド プロシージャを呼び出します。
 
@@ -91,7 +91,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 2. 左側のメニューの **[新規]** をクリックし、 **[インテリジェンス + 分析]** 、 **[Data Factory]** の順にクリックします。
 
     ![新しいデータ ファクトリ 1](media/data-factory-stored-proc-activity/new-data-factory.png)
-3. **[新しいデータ ファクトリ]** ブレードで、[名前] フィールドに「 **SProcDF** 」と入力します。 Azure Data Factory の名前は **グローバルで一意** となります。 ファクトリを正常に作成できるようにするには、データ ファクトリの名前の先頭に自分の名前を付ける必要があります。
+3. **[新しいデータ ファクトリ]** ブレードで、[名前] フィールドに「**SProcDF**」と入力します。 Azure Data Factory の名前は **グローバルで一意** となります。 ファクトリを正常に作成できるようにするには、データ ファクトリの名前の先頭に自分の名前を付ける必要があります。
 
    ![新しいデータ ファクトリ 2](media/data-factory-stored-proc-activity/new-data-factory-blade.png)
 4. **Azure サブスクリプション** を選択します。
@@ -159,7 +159,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 
 - **type** プロパティを **SqlServerStoredProcedure** に設定します。
 - type プロパティの **storedProcedureName** を **usp_sample** (ストアド プロシージャの名前) に設定します。
-- **storedProcedureParameters** セクションには、 **DateTime** という名前のパラメーターが 1 つ含まれています。 JSON でのパラメーターの名前は、大文字と小文字の区別も含め、ストアド プロシージャの定義でのパラメーターの名前と一致する必要があります。 パラメーターで null を渡す必要がある場合は、構文として `"param1": null` (すべて小文字) を使用します。
+- **storedProcedureParameters** セクションには、**DateTime** という名前のパラメーターが 1 つ含まれています。 JSON でのパラメーターの名前は、大文字と小文字の区別も含め、ストアド プロシージャの定義でのパラメーターの名前と一致する必要があります。 パラメーターで null を渡す必要がある場合は、構文として `"param1": null` (すべて小文字) を使用します。
 
 1. **[...More (その他)]** (コマンド バー上) をクリックし、 **[新しいパイプライン]** をクリックします。
 2. 次の JSON スニペットをコピーして貼り付けます。
@@ -275,9 +275,9 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 同様に、ストアド プロシージャ アクティビティを **ダウンストリーム アクティビティ** (ストアド プロシージャ アクティビティの完了後に実行されるアクティビティ) とリンクするには、ストアド プロシージャ アクティビティの出力データセットを、パイプラインのダウンストリーム アクティビティの入力として指定します。
 
 > [!IMPORTANT]
-> Azure SQL Database または SQL Server にデータをコピーする場合、 **sqlWriterStoredProcedureName** プロパティを使用してストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSink** を構成できます。 詳細については、[コピー アクティビティからのストアド プロシージャの呼び出し](data-factory-invoke-stored-procedure-from-copy-activity.md)に関する記事をご覧ください。 プロパティの詳細については、[Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties) の各コネクタに関する記事をご覧ください。
+> Azure SQL Database または SQL Server にデータをコピーする場合、**sqlWriterStoredProcedureName** プロパティを使用してストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSink** を構成できます。 詳細については、[コピー アクティビティからのストアド プロシージャの呼び出し](data-factory-invoke-stored-procedure-from-copy-activity.md)に関する記事をご覧ください。 プロパティの詳細については、[Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties) の各コネクタに関する記事をご覧ください。
 > 
-> Azure SQL Database、SQL Server、または Azure Synapse Analytics からデータをコピーする場合、 **sqlReaderStoredProcedureName** プロパティを使用して、ソース データベースからデータを読み取るストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSource** を構成できます。 詳細については、[Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)、[Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
+> Azure SQL Database、SQL Server、または Azure Synapse Analytics からデータをコピーする場合、**sqlReaderStoredProcedureName** プロパティを使用して、ソース データベースからデータを読み取るストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSource** を構成できます。 詳細については、[Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)、[Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
 
 ## <a name="json-format"></a>JSON 形式
 JSON 形式のストアド プロシージャ アクティビティの定義を次に示します。
@@ -307,7 +307,7 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 | --- | --- | --- |
 | name | アクティビティの名前 |はい |
 | description |アクティビティの用途を説明するテキストです。 |いいえ |
-| type | 次のように設定する必要があります。 **SqlServerStoredProcedure** | はい |
+| type | 次のように設定する必要があります。**SqlServerStoredProcedure** | はい |
 | inputs | 省略可能。 入力データセットを指定した場合、ストアド プロシージャ アクティビティの実行に使用できる ("準備完了" 状態である) 必要があります。 ストアド プロシージャで入力データセットをパラメーターとして使用することはできません。 入力データセットは、ストアド プロシージャ アクティビティを開始する前に、依存関係の確認にのみ使用されます。 |いいえ |
 | outputs | ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。 出力データセットでは、ストアド プロシージャ アクティビティの **スケジュール** (毎時、毎週、毎月など) を指定します。 <br/><br/>出力データセットでは、ストアド プロシージャを実行する Azure SQL Database、Azure Synapse Analytics、または SQL Server Database を表す **リンクされたサービス** を使用する必要があります。 <br/><br/>出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 <br/><br/>出力データセットに **ダミー データセット** を指定できる場合もあります。ダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。 |はい |
 | storedProcedureName |出力テーブルで使用するリンクされたサービスで表される Azure SQL Database、Azure Synapse Analytics、または SQL Server のストアド プロシージャ名を指定します。 |はい |
@@ -345,7 +345,7 @@ BEGIN
 END
 ```
 
-ストアド プロシージャ アクティビティから **Scenario** パラメーターとその値を渡します。 前のサンプルの「 **typeProperties** 」セクションは、次のスニペットのようになります。
+ストアド プロシージャ アクティビティから **Scenario** パラメーターとその値を渡します。 前のサンプルの「**typeProperties**」セクションは、次のスニペットのようになります。
 
 ```JSON
 "typeProperties":

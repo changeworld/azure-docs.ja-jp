@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: 2e976b895c6aa63b73c55b458668c00b64c6f960
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 705b0f02682b6aa41cb5c8e77d8da39faa5edb1f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91660906"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450126"
 ---
 # <a name="publish-an-integrated-solution"></a>統合ソリューションを公開する
 
-この記事では、統合されたソリューションをコマーシャル マーケットプレースに発行するための全体的なプロセスと要件について説明します。 単一のオファーにバンドルされた統合ソリューションでは、ソフトウェア ベンダーのポイント ソリューション テクノロジと、サービス パートナーの展開とサポートを組み合わせます。 サービス パートナーは、このオファーを Microsoft AppSource または Azure Marketplace に[コンサルティング サービス](./consulting-services.md)として一覧表示します。
+この記事では、統合されたソリューションをコマーシャル マーケットプレースに発行するための全体的なプロセスと要件について説明します。 単一のオファーにバンドルされた統合ソリューションでは、ソフトウェア ベンダーのポイント ソリューション テクノロジと、サービス パートナーの展開とサポートを組み合わせます。 サービス パートナーは、このオファーを Microsoft AppSource または Azure Marketplace に[コンサルティング サービス](./plan-consulting-service-offer.md)として一覧表示します。
 
 統合ソリューションは、特定の顧客のニーズやシナリオに対応することを目的としています。 プロバイダーは最初に、業界の課題や問題点を把握します。 その後、2 つ以上の最善のテクノロジーを統合して、お客様のために一元管理された再現性のあるデプロイ エクスペリエンスを作成します。 プロバイダーは、お客様の迅速な稼働を支援します。 お客様に対して単一の問い合わせ窓口を提供し、関連するカスタマイズ、コンサルティング、およびソリューションのサポートを提供します。 その成果が、テクノロジとサービスを含む統合ソリューションです。
 
@@ -104,7 +104,7 @@ ms.locfileid: "91660906"
 
 ## <a name="publish-your-integrated-solution"></a>統合ソリューションを公開する
 
-技術的な統合とマーケティング資料が終了したら、[Microsoft AppSource および Azure Marketplace 向けコンサルティング サービス](./consulting-services.md)の公開元ガイドを参照してください。 このリソースを使用して、ソリューションを Microsoft AppSource と Azure Marketplace のいずれで公開するかを決定します。 また、このガイドを使用して、公開成果物を準備し、公開プロセスを完了します。
+技術的な統合とマーケティング資料が終了したら、[Microsoft AppSource および Azure Marketplace 向けコンサルティング サービス](./plan-consulting-service-offer.md)の公開元ガイドを参照してください。 このリソースを使用して、ソリューションを Microsoft AppSource と Azure Marketplace のいずれで公開するかを決定します。 また、このガイドを使用して、公開成果物を準備し、公開プロセスを完了します。
 
 コンサルティング サービス オファーには 5 種類のサービスが用意されていますが、統合ソリューションは概念実証または完全な実装のいずれかである必要があります。
 

@@ -9,17 +9,17 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b3bd6a71898576ac23cdd10c1eb52e1ef3a39b95
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: cfef6ce0fb38f074f854d5ceb77677843e44b91b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336590"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345731"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>システム割り当てマネージド ID を使用して Azure Cosmos DB データにアクセスする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-この記事では、 [マネージド ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) を使用して Azure Cosmos DB キーにアクセスするための、" *堅牢でキー ローテーションに依存しない* " ソリューションを設定します。 この記事の例では Azure Functions を使用しますが、マネージド ID をサポートする任意のサービスを使用できます。 
+この記事では、[マネージド ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) を使用して Azure Cosmos DB キーにアクセスするための、"*堅牢でキー ローテーションに依存しない*" ソリューションを設定します。 この記事の例では Azure Functions を使用しますが、マネージド ID をサポートする任意のサービスを使用できます。 
 
 ここでは、Azure Cosmos DB キーをコピーしなくても Azure Cosmos DB データにアクセスできる関数アプリを作成する方法について説明します。 この関数アプリは、1 分ごとにウェイクアップし、これにより水族館の水槽の現在の気温が記録されます。 タイマーでトリガーされる関数アプリの設定方法については、「[Azure でタイマーによってトリガーされる関数を作成する](../azure-functions/functions-create-scheduled-function.md)」の記事を参照してください。
 
@@ -29,7 +29,7 @@ ms.locfileid: "93336590"
 
 このステップでは、関数アプリにシステム割り当てマネージド ID を割り当てます。
 
-1. [Azure portal](https://portal.azure.com/) で、 **Azure 関数** ウィンドウを開き、関数アプリに移動します。 
+1. [Azure portal](https://portal.azure.com/) で、**Azure 関数** ウィンドウを開き、関数アプリに移動します。 
 
 1. **[プラットフォーム機能]**  >  **[ID]** タブの順に開きます。 
 
@@ -54,7 +54,7 @@ ms.locfileid: "93336590"
 > [!TIP] 
 > ロールを割り当てるときは、必要なアクセス権のみを割り当ててください。 サービスがデータの読み取りのみを必要とする場合は、マネージド ID に **Cosmos DB アカウントの閲覧者** ロールを割り当てます。 最小特権アクセスの重要性についての詳細は、「[特権アカウントの公開時間を短縮する](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts)」の記事を参照してください。
 
-このシナリオでは、関数アプリによって水族館の気温が読み取られ、Azure Cosmos DB のコンテナーにそのデータが書き戻されます。 関数アプリによってデータを書き込む必要があるため、 **DocumentDB アカウント共同作成者** ロールを割り当てる必要があります。 
+このシナリオでは、関数アプリによって水族館の気温が読み取られ、Azure Cosmos DB のコンテナーにそのデータが書き戻されます。 関数アプリによってデータを書き込む必要があるため、**DocumentDB アカウント共同作成者** ロールを割り当てる必要があります。 
 
 ### <a name="assign-the-role-using-azure-portal"></a>Azure portal を使用してロールを割り当てる
 
@@ -68,9 +68,9 @@ ms.locfileid: "93336590"
 
    :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="[ロールの割り当ての追加] ウィンドウを示すスクリーンショット。":::
 
-   * **ロール** : **[DocumentDB Account Contributor]** を選択します。
-   * **アクセスの割り当て先** : **[システム割り当てマネージド ID]** の選択のサブセクションで、 **[関数アプリ]** を選択します。
-   * **Select** :このウィンドウには、サブスクリプション内の、 **[マネージド システム ID]** を持つすべての関数アプリが表示されます。 この場合は、 **[FishTankTemperatureService]** 関数アプリを選択します。 
+   * **ロール**: **[DocumentDB Account Contributor]** を選択します。
+   * **アクセスの割り当て先**: **[システム割り当てマネージド ID]** の選択のサブセクションで、 **[関数アプリ]** を選択します。
+   * **Select**:このウィンドウには、サブスクリプション内の、 **[マネージド システム ID]** を持つすべての関数アプリが表示されます。 この場合は、 **[FishTankTemperatureService]** 関数アプリを選択します。 
 
       :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="例が表示された [ロールの割り当ての追加] ウィンドウを示すスクリーンショット。":::
 
@@ -214,7 +214,7 @@ namespace Monitor
 }
 ```
 
-これで、[関数アプリをデプロイする](../azure-functions/functions-create-first-function-vs-code.md)準備が整いました。
+これで、[関数アプリをデプロイする](../azure-functions/create-first-function-vs-code-csharp.md)準備が整いました。
 
 ## <a name="next-steps"></a>次のステップ
 

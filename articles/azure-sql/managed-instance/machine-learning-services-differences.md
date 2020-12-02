@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 10/26/2020
-ms.openlocfilehash: adf454ac697f8cabf4256ebfc5baa5d0d1c76264
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c806c0a13f9f5f13588b780054d1f285beb44802
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782469"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324535"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>Azure SQL Managed Instance と SQL Server の Machine Learning Services の主な違い
 
@@ -55,7 +55,7 @@ SQL Managed Instance と SQL Server の Machine Learning Services は、Python �
 Python および R のパッケージ管理は、SQL Managed Instance と SQL Server で動作が異なります。 これらの違いは次のとおりです。
 
 - 外部ランタイム (Java など) に依存するか、インストールまたは使用のための OS API へのアクセスが必要なパッケージはサポートされません。
-- パッケージを使用すると、送信ネットワーク呼び出しを実行できます (以前のプレビューから変更)。 [ネットワーク セキュリティ グループ](/azure/virtual-network/network-security-groups-overview) レベルで適切な送信セキュリティ規則を設定して、送信ネットワーク呼び出しを有効にすることができます。
+- パッケージを使用すると、送信ネットワーク呼び出しを実行できます (以前のプレビューから変更)。 [ネットワーク セキュリティ グループ](../../virtual-network/network-security-groups-overview.md) レベルで適切な送信セキュリティ規則を設定して、送信ネットワーク呼び出しを有効にすることができます。
 
 Python および R パッケージの管理の詳細については、以下を参照してください。
 

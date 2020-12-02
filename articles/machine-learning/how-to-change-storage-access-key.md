@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 02772ff6279ee813b86f92984742ba8301bdf74e
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 78829ae52d74cf6ec58c12779c51bca9a98e0af1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357948"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450791"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>ストレージ アカウント キーの再生成
 
@@ -27,7 +27,7 @@ Azure Machine Learning で使用される Azure ストレージ アカウント�
 
 > [!IMPORTANT]
 
-> データストアに登録された資格情報は、ワークスペースに関連付けられている Azure キー コンテナーに保存されます。 キー コンテナーで[論理的な削除](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)を有効にしている場合は、この記事に資格情報を更新する手順が記載されています。 データストアの登録を解除し、同じ名前で再登録しようとすると、この操作は失敗します。 このシナリオでの論理的な削除を有効にする方法については、「[既存のキー コンテナーの論理的な削除を有効にする]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault)」を参照してください。
+> データストアに登録された資格情報は、ワークスペースに関連付けられている Azure キー コンテナーに保存されます。 キー コンテナーで[論理的な削除](../key-vault/general/soft-delete-overview.md)を有効にしている場合は、この記事に資格情報を更新する手順が記載されています。 データストアの登録を解除し、同じ名前で再登録しようとすると、この操作は失敗します。 このシナリオでの論理的な削除を有効にする方法については、「[既存のキー コンテナーの論理的な削除を有効にする]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
