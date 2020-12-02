@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: aaf716b4ac4c49f1d852e917ba818a10ecb541c4
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: d499a0e7d3ca7933632b52d5edbd8094a29dbcaa
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628035"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979897"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>チュートリアル:認証に Microsoft ID プラットフォームを使用する Blazor Server アプリを作成する
 
-Blazor サーバーでは、ASP.NET Core アプリでサーバー上の Razor コンポーネントをホストするためのサポートが提供されます。 このチュートリアルでは、Microsoft ID プラットフォームを使用し、Azure Active Directory (Azure AD) にアプリを登録することで、Blazor Server アプリで認証を実装し、Microsoft Graph からデータを取得する方法について説明します。
+このチュートリアルでは、Microsoft ID プラットフォームを使用し、Azure Active Directory (Azure AD) にアプリを登録することで、ユーザーのサインインを行い、Microsoft Graph からデータを取得する Blazor Server アプリを構築します。
 
 [Blazor WASM](tutorial-blazor-webassembly.md) のチュートリアルも用意されています。
 
-このチュートリアルでは、以下の内容を学習します。
+このチュートリアルの内容:
 
 > [!div class="checklist"]
 > * 認証に Azure Active Directory (Azure AD) を使用するように構成された新しい Blazor Server アプリを作成する

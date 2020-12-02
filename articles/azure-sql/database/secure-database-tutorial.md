@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: b9afb35a0e8a1c2513ce032030271599d181cd14
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 77ed71d74e75abfdf7f84aee9b116f1d9d2ccc9d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792686"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985860"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>チュートリアル:Azure SQL Database 内のデータベースをセキュリティで保護する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ SQL Database とデータベースは、Azure 内のファイアウォールに�
     ![サーバーのファイアウォール規則](./media/secure-database-tutorial/server-name.png)
 
     > [!NOTE]
-    > チュートリアルの後の手順で使用するために、完全修飾サーバー名 ( *yourserver.database.windows.net* など) をコピーしておいてください。
+    > チュートリアルの後の手順で使用するために、完全修飾サーバー名 (*yourserver.database.windows.net* など) をコピーしておいてください。
 
 1. **[概要]** ページで、 **[サーバー ファイアウォールの設定]** を選択します。 サーバーの **[ファイアウォール設定]** ページが開きます。
 
@@ -109,7 +109,7 @@ SQL Database とデータベースは、Azure 内のファイアウォールに�
 1. ツール バー上で **[実行]** を選択して、ファイアウォール規則を作成します。
 
 > [!NOTE]
-> [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database?view=azuresqldb-current) コマンドを使用して、SSMS でサーバーレベルのファイアウォール規則を作成することもできます。ただし、 *master* データベースに接続する必要があります。
+> [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database?view=azuresqldb-current) コマンドを使用して、SSMS でサーバーレベルのファイアウォール規則を作成することもできます。ただし、*master* データベースに接続する必要があります。
 
 ## <a name="create-an-azure-ad-admin"></a>Azure AD 管理者を作成する
 
@@ -131,14 +131,14 @@ Azure AD 管理者を設定する手順は次のとおりです。
     ![管理者の選択](./media/secure-database-tutorial/admin-select.png)
 
     > [!IMPORTANT]
-    > ロールベースのアクセス制御 (RBAC) はポータルにのみ適用され、SQL Server には反映されません。
+    > Azure ロールベースのアクセス制御 (Azure RBAC) はポータルにのみ適用され、SQL Server には反映されません。
 
 1. **[Active Directory 管理者]** ページの上部にある **[保存]** を選択します。
 
     管理者を変更する処理には数分かかる場合があります。 新しい管理者が **[Active Directory 管理者]** ボックスに表示されます。
 
 > [!NOTE]
-> Azure AD 管理者を設定する場合、新しい管理者名 (ユーザーまたはグループ) が SQL Server ログインまたはユーザーとして " *master* " データベースに存在していてはなりません。 存在していると、セットアップが失敗して変更がロールバックされ、その管理者名が既に存在していることが示されます。 SQL Server ログインまたはユーザーは Azure AD に属していないため、Azure AD 認証を使用してこのユーザーに接続しようとしても失敗します。
+> Azure AD 管理者を設定する場合、新しい管理者名 (ユーザーまたはグループ) が SQL Server ログインまたはユーザーとして "*master*" データベースに存在していてはなりません。 存在していると、セットアップが失敗して変更がロールバックされ、その管理者名が既に存在していることが示されます。 SQL Server ログインまたはユーザーは Azure AD に属していないため、Azure AD 認証を使用してこのユーザーに接続しようとしても失敗します。
 
 Azure AD の構成の詳細については、次のページを参照してください。
 
@@ -155,9 +155,9 @@ Azure AD の構成の詳細については、次のページを参照してく�
 
 ユーザーを追加するには、データベース認証の種類を選択します。
 
-- **SQL 認証** : ログインにユーザー名とパスワードを使用します。サーバー内の特定のデータベースのコンテキストでのみ有効です。
+- **SQL 認証**: ログインにユーザー名とパスワードを使用します。サーバー内の特定のデータベースのコンテキストでのみ有効です。
 
-- **Azure AD 認証** : Azure AD によって管理される ID を使用します。
+- **Azure AD 認証**: Azure AD によって管理される ID を使用します。
 
 ### <a name="sql-authentication"></a>SQL 認証
 
@@ -187,12 +187,12 @@ SQL 認証を使用するユーザーを追加する手順は次のとおりで�
 
 ### <a name="azure-ad-authentication"></a>Azure AD 認証
 
-Azure Active Directory 認証では、データベース ユーザーを包含データベース ユーザーとして作成する必要があります。 包含データベース ユーザーは、データベースに関連付けられている Azure AD ディレクトリの ID にマップされていて、 *master* データベース内にログイン情報がありません。 Azure AD の ID は、個々のユーザーまたはグループに対応しています。 詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](/sql/relational-databases/security/contained-database-users-making-your-database-portable)」と、Azure AD を使用して認証する方法に関する [Azure AD チュートリアル](authentication-aad-configure.md)を参照してください。
+Azure Active Directory 認証では、データベース ユーザーを包含データベース ユーザーとして作成する必要があります。 包含データベース ユーザーは、データベースに関連付けられている Azure AD ディレクトリの ID にマップされていて、*master* データベース内にログイン情報がありません。 Azure AD の ID は、個々のユーザーまたはグループに対応しています。 詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](/sql/relational-databases/security/contained-database-users-making-your-database-portable)」と、Azure AD を使用して認証する方法に関する [Azure AD チュートリアル](authentication-aad-configure.md)を参照してください。
 
 > [!NOTE]
 > Azure portal を使用してデータベース ユーザー (管理者を除く) を作成することはできません。 Azure のロールは、SQL サーバー、データベース、データ ウェアハウスには反映されません。 これらは Azure リソースの管理のみに使用され、データベースのアクセス許可には適用されません。
 >
-> たとえば、" *SQL Server 共同作成者* " ロールでは、データベースやデータ ウェアハウスに接続するためのアクセス権は付与されません。 このアクセス許可は、T-SQL ステートメントを使用して、データベース内で付与する必要があります。
+> たとえば、"*SQL Server 共同作成者*" ロールでは、データベースやデータ ウェアハウスに接続するためのアクセス権は付与されません。 このアクセス許可は、T-SQL ステートメントを使用して、データベース内で付与する必要があります。
 
 > [!IMPORTANT]
 > コロン `:` やアンパサンド `&` などの特殊文字は、T-SQL の `CREATE LOGIN` ステートメントと `CREATE USER` ステートメントのユーザー名ではサポートされていません。
@@ -288,7 +288,7 @@ Azure Defender for SQL を有効にするには、次の手順に従います。
        - **[Log Analytics]** : クエリや詳細な分析のために、イベントが自動的に保存されます。
 
            > [!NOTE]
-           > 分析、カスタムのアラート ルール、Excel や Power BI のエクスポートなどの高度な機能をサポートするには、 **Log Analytics ワークスペース** が必要です。 ワークスペースがない場合は、クエリ エディターのみを使用できます。
+           > 分析、カスタムのアラート ルール、Excel や Power BI のエクスポートなどの高度な機能をサポートするには、**Log Analytics ワークスペース** が必要です。 ワークスペースがない場合は、クエリ エディターのみを使用できます。
 
        - **[イベント ハブ]** : イベントをルーティングして、他のアプリケーションで使用できるようにします。
 

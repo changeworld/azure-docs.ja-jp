@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 027305d953a24de17e62aa74b33b72494b03e652
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: ded54628a307f3cf4441e804f7f1025a0e943b51
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825918"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979948"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>チュートリアル:ユーザーをサインインして、JavaScript シングルページ アプリケーション (SPA) から Microsoft Graph API を呼び出す
 
-このチュートリアルでは、個人用 Microsoft アカウントまたは職場および学校アカウントを使用してユーザーをサインインさせるシングルページ アプリケーション (SPA) を JavaScript で構築してから、Microsoft Graph API を呼び出すためのアクセス トークンを取得します。
+このチュートリアルでは、ユーザーのサインインを行い、暗黙的なフローを使用して Microsoft Graph を呼び出す JavaScript シングルページ アプリケーション (SPA) を構築します。 構築する SPA では、JavaScript v1.0 用の Microsoft Authentication Library (MSAL) を使用します。
 
 このチュートリアルの内容:
 
@@ -39,7 +39,7 @@ ms.locfileid: "91825918"
 
 * ローカル Web サーバーを実行するための [Node.js](https://nodejs.org/en/download/)。
 * プロジェクト ファイルを編集するためのエディター ([Visual Studio Code](https://code.visualstudio.com/download) など)。
-* 最新の Web ブラウザー このチュートリアルで作成するアプリでは、[ES6](http://www.ecma-international.org/ecma-262/6.0/) 規則が使用されているため、**Internet Explorer** は**サポートされていません**。
+* 最新の Web ブラウザー このチュートリアルで作成するアプリでは、[ES6](http://www.ecma-international.org/ecma-262/6.0/) 規則が使用されているため、**Internet Explorer** は **サポートされていません**。
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>このガイドで生成されたサンプル アプリの動作
 
@@ -318,10 +318,10 @@ ms.locfileid: "91825918"
 ```
 
  各値の説明:
- - *\<Enter_the_Application_Id_Here>* は、登録したアプリケーションの**アプリケーション (クライアント) ID** です。
- - *\<Enter_the_Cloud_Instance_Id_Here>* は、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、単に「 *https://login.microsoftonline.com* 」と入力します。 **各国**のクラウド (中国など) の場合は、「[各国のクラウド](./authentication-national-cloud.md)」を参照してください。
+ - *\<Enter_the_Application_Id_Here>* は、登録したアプリケーションの **アプリケーション (クライアント) ID** です。
+ - *\<Enter_the_Cloud_Instance_Id_Here>* は、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、単に「 *https://login.microsoftonline.com* 」と入力します。 **各国** のクラウド (中国など) の場合は、「[各国のクラウド](./authentication-national-cloud.md)」を参照してください。
  - *\<Enter_the_Tenant_info_here>* には、次のオプションのいずれかを設定します。
-   - アプリケーションで "*この組織のディレクトリ内のアカウントのみ*" がサポートされる場合は、この値を**テナント ID** または**テナント名** (例: *contoso.microsoft.com*) に置き換えます。
+   - アプリケーションで "*この組織のディレクトリ内のアカウントのみ*" がサポートされる場合は、この値を **テナント ID** または **テナント名** (例: *contoso.microsoft.com*) に置き換えます。
    - アプリケーションで "*任意の組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を **organizations** に置き換えます。
    - アプリケーションで "*任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント*" がサポートされる場合は、この値を **common** に置き換えます。 "*個人用の Microsoft アカウントのみ*" にサポートを制限するには、この値を **consumers** に置き換えます。
 
@@ -406,9 +406,9 @@ ms.locfileid: "91825918"
 
 ### <a name="more-information"></a>詳細情報
 
-ユーザーが初めて **[Sign In]** ボタンを選択すると、`signIn` メソッドによって、ユーザーがサインインするための `loginPopup` が呼び出されます。 このメソッドによって、"*Microsoft ID プラットフォーム エンドポイント*" のポップアップ ウィンドウが開き、ユーザーの資格情報が要求されて検証が行われます。 サインインに成功すると、ユーザーは元の *index.html* ページにリダイレクトされます。 トークンが受信されて `msal.js` によって処理されると、トークンに含まれる情報がキャッシュされます。 このトークンは *ID トークン*と呼ばれ、ユーザー表示名などのユーザーに関する基本情報が含まれます。 何らかの目的のためにこのトークンが提供する任意のデータを使用する予定がある場合、アプリケーションの有効なユーザーに対してトークンが発行されたことを保証するために、このトークンがバックグラウンド サーバーで確実に検証される必要があります。
+ユーザーが初めて **[Sign In]** ボタンを選択すると、`signIn` メソッドによって、ユーザーがサインインするための `loginPopup` が呼び出されます。 このメソッドによって、"*Microsoft ID プラットフォーム エンドポイント*" のポップアップ ウィンドウが開き、ユーザーの資格情報が要求されて検証が行われます。 サインインに成功すると、ユーザーは元の *index.html* ページにリダイレクトされます。 トークンが受信されて `msal.js` によって処理されると、トークンに含まれる情報がキャッシュされます。 このトークンは *ID トークン* と呼ばれ、ユーザー表示名などのユーザーに関する基本情報が含まれます。 何らかの目的のためにこのトークンが提供する任意のデータを使用する予定がある場合、アプリケーションの有効なユーザーに対してトークンが発行されたことを保証するために、このトークンがバックグラウンド サーバーで確実に検証される必要があります。
 
-このガイドで生成する SPA は、ユーザー プロファイル情報のため、`acquireTokenSilent`、`acquireTokenPopup`、またはその両方を呼び出して、Microsoft Graph API の照会に使用される*アクセス トークン*を取得します。 ID トークンを検証するサンプルが必要な場合は、GitHub で[この](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 サンプル")サンプル アプリケーションを参照してください。 このサンプルでは、トークンの検証に ASP.NET Web API を使用しています。
+このガイドで生成する SPA は、ユーザー プロファイル情報のため、`acquireTokenSilent`、`acquireTokenPopup`、またはその両方を呼び出して、Microsoft Graph API の照会に使用される *アクセス トークン* を取得します。 ID トークンを検証するサンプルが必要な場合は、GitHub で[この](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 サンプル")サンプル アプリケーションを参照してください。 このサンプルでは、トークンの検証に ASP.NET Web API を使用しています。
 
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 
@@ -470,7 +470,7 @@ ms.locfileid: "91825918"
 
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>保護された API に対する REST 呼び出しの実行についての詳細
 
-このガイドで作成するサンプル アプリケーションでは、`callMSGraph()` メソッドを使用して、トークンが必要な保護されたリソースに対して HTTP `GET` 要求を実行します。 その後、この要求からその内容が呼び出し元に返されます。 このメソッドは、取得したトークンを *HTTP Authorization ヘッダー*に追加します。 このガイドで作成したサンプル アプリケーションのリソースは、ユーザーのプロファイル情報を表示する Microsoft Graph API *me* エンドポイントです。
+このガイドで作成するサンプル アプリケーションでは、`callMSGraph()` メソッドを使用して、トークンが必要な保護されたリソースに対して HTTP `GET` 要求を実行します。 その後、この要求からその内容が呼び出し元に返されます。 このメソッドは、取得したトークンを *HTTP Authorization ヘッダー* に追加します。 このガイドで作成したサンプル アプリケーションのリソースは、ユーザーのプロファイル情報を表示する Microsoft Graph API *me* エンドポイントです。
 
 ## <a name="test-your-code"></a>コードのテスト
 
@@ -513,4 +513,3 @@ Microsoft ID プラットフォームにおけるシングルページ アプリ
 
 > [!div class="nextstepaction"]
 > [シナリオ:シングルページ アプリ](scenario-spa-overview.md)
-

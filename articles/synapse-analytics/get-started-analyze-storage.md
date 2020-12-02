@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: fabfdce72202f79e2ac5bad08d124df7ce2de542
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 5e3fbd1868cc1216cb7b9d02b2aa8e690af33952
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592585"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917683"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>ストレージ アカウント内のデータを分析する
 
@@ -41,6 +41,8 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 ```
 
 ### <a name="analyze-data-in-a-storage-account"></a>ストレージ アカウント内のデータを分析する
+
+対象のワークスペースの既定の ADLS Gen2 アカウントのデータを分析できます。また、 **[管理]** > **[リンクされたサービス]** > **[新規]** を使用して、ADLS Gen2 または BLOB ストレージ アカウントを対象のワークスペースにリンクすることもできます (以下の手順ではプライマリ ADLS Gen2 アカウントを参照します)。
 
 1. Synapse Studio の **[データ]** ハブに移動し、 **[Linked]\(リンク済み\)** を選択します。
 1. **[ストレージ アカウント]**  >  **[myworkspace (プライマリ - contosolake)]** に移動します。

@@ -8,17 +8,14 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c40f7d988f2b5f206f42eae787efcdce786948a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef6e86bbb55a2c51779f2dcf60f802ce549516cb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857080"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959681"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>チュートリアル:シミュレートされたデバイスのデータを生成する
-
-> [!NOTE]
-> この記事は、IoT Edge 上で Azure Machine Learning を使用するためのチュートリアルのシリーズの一部です。 この記事に直接アクセスしている場合は、最適な結果を得るために、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md) から始めることをお勧めします。
 
 この記事では、機械学習のトレーニング データを使用して、Azure IoT Hub にテレメトリを送信するデバイスをシミュレートします。 概要で説明したように、このチュートリアルでは[ターボファン エンジンの劣化シミュレーション データ セット](https://c3.nasa.gov/dashlink/resources/139/)を使用して、トレーニングとテストのための 1 組の航空機エンジンのデータをシミュレートします。
 
@@ -45,6 +42,10 @@ DeviceHarness プロジェクトは、次の 4 つのクラスから成る C# �
 この記事で説明されているタスクは、完了するまでに約 20 分かかります。
 
 この手順に相当する実際の作業は、デバイス開発者やクラウド開発者によって実行される可能性があります。
+
+## <a name="prerequisites"></a>前提条件
+
+この記事は、IoT Edge 上で Azure Machine Learning を使用するためのチュートリアルのシリーズの一部です。 シリーズの各記事は、前の記事の作業に基づいています。 この記事に直接アクセスしている場合は、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md)を参照してください。
 
 ## <a name="configure-visual-studio-code-and-build-deviceharness-project"></a>Visual Studio Code を構成して DeviceHarness プロジェクトをビルドする
 

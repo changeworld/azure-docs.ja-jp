@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/15/2020
+ms.date: 11/19/2020
 ms.author: alkohli
-ms.openlocfilehash: a73005580c9b7ddeae17e3e0490aa586bd9b0fbb
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: e1dca046177634842de25b255dd1bb22c5d2c5a5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335799"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964079"
 ---
 # <a name="tutorial-order-azure-data-box"></a>チュートリアル:Azure Data Box を注文する
 
-Azure Data Box は、迅速かつ簡単な信頼性の高い方法でオンプレミス データを Azure にインポートできるハイブリッド ソリューションです。 お客様は、Microsoft 提供の 80 TB (使用可能容量) ストレージ デバイスにデータを転送した後、そのデバイスを Microsoft に戻します。 その後、このデータは Azure にアップロードされます。
+Azure Data Box は、迅速かつ簡単な信頼性の高い方法でオンプレミス データを Azure にインポートできるハイブリッド ソリューションです。 お客様は、Microsoft 提供の 80 TB (使用可能容量) ストレージ デバイスにデータを転送した後、そのデバイスを Microsoft に返送します。 その後、このデータは Azure にアップロードされます。
 
 このチュートリアルでは、Azure Data Box を注文する方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -231,7 +231,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
     |ソースの国/地域    |    データが現在存在する国/地域を選択します。         |
     |宛先 Azure リージョン     |     データを転送する Azure リージョンを選択します。 <br> 詳細については、[利用可能なリージョン](data-box-overview.md#region-availability)に関する記事をご覧ください。            |
 
-    [![Azure Data Box インポート注文の開始](media/data-box-deploy-ordered/select-data-box-import-04b.png)](media/data-box-deploy-ordered/select-data-box-import-04b.png#lightbox)
+    [![Azure Data Box インポート注文の開始](media/data-box-deploy-ordered/select-data-box-import-04-b.png#lightbox)
 
 5. **[Data Box]** を選択します。 1 つの注文での使用可能な最大容量は 80 TB です。 データ サイズがこれより大きい場合は、複数の注文を作成できます。
 
@@ -239,19 +239,17 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
 6. **[注文]** で、 **[基本]** タブに移動します。次の情報を入力または選択し、 **[次へ: データの格納先 >]** を選択します。
 
-    |設定  |[値]  |
+    |設定  |値  |
     |---------|---------|
     |サブスクリプション      | サブスクリプションは、前の選択に基づいて自動的に設定されます。|
     |Resource group    | 前に選択したリソース グループ。 |
     |Import order name (インポート注文名) | 注文を追跡するためのフレンドリ名を指定します。 <br> 名前の長さは 3 ～ 24 文字で、文字、数字、ハイフンを使うことができます。 <br> 名前の最初と最後は、文字か数字とする必要があります。    |
 
-    ![Data Box インポート注文ウィザードの [基本] 画面、正しい情報が入力された状態](media/data-box-deploy-ordered/select-data-box-import-06.png)
+    ![Data Box インポート注文ウィザードの [基本] 画面、正しい情報が入力された状態](media/data-box-deploy-ordered/select-data-box-import-06.png)<!--Generic subscription. Cut note. Box command.-->
 
-    既定では、デバイスのロック解除パスワードは、Microsoft マネージド キーを使用して暗号化されます。 注文が完了したら、カスタマー マネージド キーを追加できます。 カスタマー マネージド キーを使用すると、独自の Azure Key Vault キーを使用して、デバイスのロック解除パスワードを保護できます。 詳細については、「[Azure Key Vault のカスタマー マネージド キーを Azure Data Box に使用する](data-box-customer-managed-encryption-key-portal.md)」を参照してください。
+7. **[データの格納先]** 画面で、**データの格納先** (ストレージ アカウントまたはマネージド ディスク) を選択します。
 
-7. **[データの格納先]** タブで、 **[データの格納先]** を選択します。
-
-    格納先として **ストレージ アカウント** を使用している場合は、以下のようなスクリーンショットが表示されます。
+    格納先として **ストレージ アカウント** を使用している場合は、次の画面が表示されます。
 
     ![Data Box インポート注文ウィザードの [データの格納先] 画面。ストレージ アカウントが選択されています](media/data-box-deploy-ordered/select-data-box-import-07.png)
 
@@ -263,39 +261,106 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
     |設定  |値  |
     |---------|---------|
-    |リソース グループ     | オンプレミスの VHD からマネージド ディスクを作成する場合は、新しい リソース グループを作成します。 既存のリソース グループを使用できるのは、Data Box サービスでマネージド ディスクの Data Box 注文を作成するときに、そのリソース グループがすでに作成されていた場合に限られます。 <br> 複数のリソース グループを指定するときは、各リソース グループをセミコロンで区切ります。 サポートされるリソース グループは、最大 10 個です。|
+    |リソース グループ     | オンプレミスの VHD からマネージド ディスクを作成する場合は、新しい リソース グループを作成します。 既存のリソース グループを使用できるのは、Data Box サービスでマネージド ディスクの Data Box 注文を作成するときに、そのリソース グループが既に作成されていた場合に限られます。 <br> 複数のリソース グループを指定するときは、各リソース グループをセミコロンで区切ります。 サポートされるリソース グループは、最大 10 個です。|
 
-    ![Data Box のインポート注文ウィザードの [データの格納先] 画面。Managed Disks が選択されています](media/data-box-deploy-ordered/select-data-box-import-07b.png)
+    ![Data Box のインポート注文ウィザードの [データの格納先] 画面。Managed Disks が選択されています](media/data-box-deploy-ordered/select-data-box-import-07-b.png)
 
     マネージド ディスクに指定されたストレージ アカウントは、ステージング ストレージ アカウントとして使用されます。 VHD は、Data Box サービスにより、ページ BLOB としてステージング ストレージ アカウントにアップロードされた後、マネージド ディスクに変換され、リソース グループに移動されます。 詳細については、「[Azure へのデータのアップロードを確認する](data-box-deploy-picked-up.md#verify-data-upload-to-azure)」を参照してください。
+
    > [!NOTE]
    > ページ BLOB は、正常にマネージド ディスクに変換されなかった場合、ストレージ アカウントに残るため、ストレージの使用料が課金されます。
 
-    **[Next:Security]\(次へ: セキュリティ\)** を選択して続行します。
+8. **[Next:Security]\(次へ: セキュリティ\)** を選択して続行します。
 
-    **[セキュリティ]** 画面では、自分のデバイスを使用してパスワードを共有でき、二重暗号化を使用することを選択できます。 
+    **[セキュリティ]** 画面では、独自の暗号化キーと独自のデバイスを使用してパスワードを共有でき、二重暗号化を使用することを選択できます。
 
     **[セキュリティ]** 画面の設定はすべてオプションです。 設定を変更しない場合は、既定の設定が適用されます。
 
     ![Data Box インポート注文ウィザードの [セキュリティ] 画面](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
 
-8. Azure Data Box で既定で使用される、システムによって生成されるパスワードを使用したくない場合は、 **[Bring your own password]\(独自のパスワードを使用する\)** を展開します。
+9. 独自のカスタマー マネージド キーを使用して新しいリソースのロック解除パスキーを保護する場合は、 **[暗号化の種類]** を展開します。
 
-   システムによって生成されるパスワードは安全であるため、組織で特に必要な場合を除いて推奨されます。
+    Azure Data Box のカスタマー マネージド キーの構成は省略可能です。 Data Box では、既定で Microsoft マネージド キーを使用してロック解除パスキーが保護されます。
 
-   ![Data Box インポート注文の [Security]\(セキュリティ\) 画面。[Bring your own password]\(独自のパスワードを使用する\) オプションが展開されています](media/data-box-deploy-ordered/select-data-box-import-security-02.png)
+    カスタマー マネージド キーは、デバイス上のデータの暗号化方法には影響しません。 キーは、デバイスのロック解除パスキーを暗号化するためにのみ使用されます。
+
+    カスタマー マネージド キーを使用しない場合は、手順 15 に進んでください。
+
+   ![[暗号化の種類] 設定を示すセキュリティ画面](./media/data-box-deploy-ordered/customer-managed-key-01.png)
+
+10. キーの種類として **[カスタマー マネージド キー]** を選択します。 次に、 **[キー コンテナーとキーを選択します]** を選択します。
+   
+    ![セキュリティ画面。カスタマー マネージド キーの設定](./media/data-box-deploy-ordered/customer-managed-key-02.png)
+
+11. **[Azure Key Vault からのキーの選択]** ブレードで、サブスクリプションが自動的に設定されます。
+
+    - **[キー コンテナー]** で、ドロップダウン リストから既存のキー コンテナーを選択できます。
+
+      ![[Select key from Azure Key Vault]\(Azure Key Vault からのキーの選択\) 画面](./media/data-box-deploy-ordered/customer-managed-key-03.png)
+
+    - **[新規作成]** を選択して、新しいキー コンテナーを作成することもできます。 **[キー コンテナーの作成]** 画面で、リソース グループとキー コンテナーの名前を入力します。 **[論理的な削除]** と **[消去保護]** が有効になっていることを確認します。 他のすべての既定値をそのまま使用し、 **[確認および作成]** を選択します。
+
+      ![新しい Azure キー コンテナーの作成設定](./media/data-box-deploy-ordered/customer-managed-key-04.png)
+
+      キー コンテナーの情報を確認し、 **[作成]** を選択します。 キー コンテナーの作成が完了するまで数分待ちます。
+
+      ![新しい Azure キー コンテナーの確認画面](./media/data-box-deploy-ordered/customer-managed-key-05.png)
+
+12. **[Select key from Azure Key Vault]\(Azure Key Vault からのキーの選択\)** で、キー コンテナー内の既存のキーを選択できます。
+
+    ![Azure Key Vault から既存のキーを選択する](./media/data-box-deploy-ordered/customer-managed-key-06.png)
+
+    新しいキーを作成する場合は、 **[新規作成]** を選択します。 RSA キーを使用する必要があります。 サイズは 2,048 以上にすることができます。 新しいキーの名前を入力し、他の既定値をそのまま使用して、 **[作成]** を選択します。
+
+      ![新しいキーの作成オプション](./media/data-box-deploy-ordered/customer-managed-key-07.png)
+
+      キーがキー コンテナーに作成されると通知されます。
+
+13. 使用するキーの **バージョン** を選択し、 **[選択]** を選択します。
+
+      ![キー コンテナーで作成された新しいキー](./media/data-box-deploy-ordered/customer-managed-key-08.png)
+
+    新しいキー バージョンを作成する場合は、 **[新規作成]** を選択します。
+
+    ![新しいキー バージョンを作成するためのダイアログ ボックスを開く](./media/data-box-deploy-ordered/customer-managed-key-08-a.png)
+
+    新しいキー バージョンの設定を選択し、 **[作成]** を選択します。
+
+    ![新しいキー バージョンを作成する](./media/data-box-deploy-ordered/customer-managed-key-08-b.png)
+
+    **[セキュリティ]** 画面の **[暗号化の種類]** 設定に、キー コンテナーとキーが表示されます。
+
+    ![カスタマー マネージド キーのキーとキー コンテナー](./media/data-box-deploy-ordered/customer-managed-key-09.png)
+
+14. このリソースへのアクセスを管理するために使用するユーザー ID を選択します。 **[Select a user identity]\(ユーザー ID を選択する\)** を選択します。 右側のパネルで、使用するサブスクリプションとマネージド ID を選択します。 次に **[選択]** を選択します。
+
+    ユーザー割り当てマネージド ID は、複数のリソースを管理するために使用できるスタンドアロンの Azure リソースです。 詳細については、[マネージド ID の種類](/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。  
+
+    新しいマネージド ID を作成する必要がある場合は、「[Azure portal を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除したり、それにロールを割り当てたりする](/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)」のガイダンスに従ってください。
+    
+    ![[Select a user identity]\(ユーザー ID を選択する\)](./media/data-box-deploy-ordered/customer-managed-key-10.png)
+
+    ユーザー ID が **[暗号化の種類]** の設定に表示されます。
+
+    ![選択したユーザー ID が [暗号化の種類] の設定に表示される](./media/data-box-deploy-ordered/customer-managed-key-11.png)
+
+15. Azure Data Box で既定で使用される、システムによって生成されるパスワードを使用したくない場合は、 **[セキュリティ]** 画面の **[Bring your own password]\(独自のパスワードを使用する\)** を展開します。
+
+    システムによって生成されるパスワードは安全であるため、組織で特に必要な場合を除いて推奨されます。
+
+    ![Data Box インポート注文の展開された [Bring your own password]\(独自のパスワードを使用する\) オプション](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
 
    - 新しいデバイスに独自のパスワードを使用するには、 **[Set preference for the device password]\(デバイス パスワードの基本設定の設定\)** で、 **[Use your own password]\(独自のパスワードを使用する\)** を選択し、セキュリティ要件を満たすパスワードを入力します。
    
      ![Data Box インポート注文の [Security]\(セキュリティ\) 画面。独自のデバイス パスワードを使用するためのオプション](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
 
-   - 共有に独自のパスワードを使用するには:
+ - 共有に独自のパスワードを使用するには:
 
-     1. **[Set preference for the share passwords]\(共有パスワードの基本設定の設定\)** で、 **[Use your own passwords]\(独自のパスワードを使用する\)** を選択し、次に **共有のパスワードを選択** します。
+   - **[Set preference for the share passwords]\(共有パスワードの基本設定の設定\)** で、 **[Use your own passwords]\(独自のパスワードを使用する\)** を選択し、次に **共有のパスワードを選択** します。
      
         ![Data Box インポート注文の [Security]\(セキュリティ\) 画面。共有に独自のパスワードを使用するためのオプション](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
 
-     1. 注文内の各ストレージ アカウントのパスワードを入力します。 パスワードは、ストレージ アカウントのすべての共有で使用されます。
+    - 注文内の各ストレージ アカウントのパスワードを入力します。 パスワードは、ストレージ アカウントのすべての共有で使用されます。
      
         すべてのストレージ アカウントに同じパスワードを使用するには、 **[Copy to all]\(すべてにコピー\)** を選択します。 終了したら、 **[保存]** を選択します。
      
@@ -303,38 +368,38 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
        **[セキュリティ]** 画面で、 **[View or change passwords]\(パスワードの表示または変更\)** を使用してパスワードを変更できます。
 
-9. **[セキュリティ]** で、ソフトウェアベースの二重暗号化を有効にしたい場合は、 **[Double-encryption (for highly secure environments)]\(二重暗号化 (高度にセキュリティ保護された環境用)\)** を展開し、 **[Enable double encryption for the order]\(この注文に関して二重暗号化を有効にする\)** を選択します。
+16. **[セキュリティ]** で、ソフトウェアベースの二重暗号化を有効にしたい場合は、 **[Double-encryption (for highly secure environments)]\(二重暗号化 (高度にセキュリティ保護された環境用)\)** を展開し、 **[Enable double encryption for the order]\(この注文に関して二重暗号化を有効にする\)** を選択します。
 
-   ![Data Box インポート注文の [Security]\(セキュリティ\) 画面。ソフトウェアベースの暗号化を有効にするためのオプション](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
+    ![Data Box のインポート注文の [セキュリティ] 画面。Data Box 注文に対してソフトウェアベースの暗号化を有効にする](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
 
-   Data Box 上のデータに対し、AES-256 ビットの暗号化に加えて、ソフトウェアベースの暗号化が実行されます。
+    Data Box 上のデータに対し、AES-256 ビットの暗号化に加えて、ソフトウェアベースの暗号化が実行されます。
 
-   > [!NOTE]
-   > このオプションを有効にすると、注文の処理とデータのコピーにかかる時間が長くなることがあります。 注文後に、このオプションを変更することはできません。
+    > [!NOTE]
+    > このオプションを有効にすると、注文の処理とデータのコピーにかかる時間が長くなることがあります。 注文後に、このオプションを変更することはできません。
 
-   **[Next:連絡先の詳細]** を選択して続行します。
+    **[Next:連絡先の詳細]** を選択して続行します。
 
-10. **[連絡先の詳細]** で、 **[+ 配送先住所の追加]** を選択します。
+17. **[連絡先の詳細]** で、 **[+ 配送先住所の追加]** を選択します。
 
-    ![[連絡先の詳細] 画面から、Azure Data Box インポート注文に配送先住所を追加します](media/data-box-deploy-ordered/select-data-box-import-08a.png)
+    ![[連絡先の詳細] 画面から、Azure Data Box インポート注文に配送先住所を追加します](media/data-box-deploy-ordered/select-data-box-import-08-a.png)
 
-11. **[Shipping Address]\(配送先住所\)** に、お客様の氏名、会社の名前と郵送先住所、および有効な電話番号を入力します。 次に、 **[住所の確認]** を選択します。 その住所でサービスが利用可能かどうかが確認されます。 その配送先住所でサービスを利用できる場合は、その旨が通知されます。
+18. **[配送先住所]** に、お客様の氏名、会社の名前と郵送先住所、および有効な電話番号を入力します。 **[住所の確認]** を選択します。 配送先住所でサービスが利用可能かどうかが確認されます。 指定した配送先住所でサービスを利用できる場合は、その旨が通知されます。
 
-     ![[配送先住所の追加] ダイアログ ボックス。[出荷方法] オプションと [配送先住所の追加] オプションが強調表示されています](media/data-box-deploy-ordered/select-data-box-import-10.png)
+    ![[配送先住所の追加] ダイアログ ボックスのスクリーンショット。[出荷方法] オプションと [配送先住所の追加] オプションが強調表示されています。](media/data-box-deploy-ordered/select-data-box-import-10.png)
 
     [自己管理の出荷] を選択した場合、注文が正常に処理されると電子メール通知が届きます。 自己管理の出荷の詳細については、[自己管理の出荷の使用](data-box-portal-customer-managed-shipping.md)に関するページをご覧ください。
 
-12. 配送の詳細が正常に検証されたら、 **[配送先住所の追加]** を選択します。 **[連絡先の詳細]** タブが再び表示されます。
+19. 配送の詳細が正常に検証されたら、 **[配送先住所の追加]** を選択します。 **[連絡先の詳細]** タブが再び表示されます。
 
-13. **[連絡先の詳細]** に戻ったら、1 つまたは複数のメール アドレスを追加します。 指定した電子メール アドレスに、注文の状態の更新に関する電子メール通知が送信されます。
+20. **[連絡先の詳細]** に戻ったら、1 つまたは複数のメール アドレスを追加します。 指定した電子メール アドレスに、注文の状態の更新に関する電子メール通知が送信されます。
 
     グループの管理者が辞めた場合も引き続き通知を受け取ることができるように、グループ メールを使用することをお勧めします。
 
-    ![注文ウィザードの [連絡先の詳細] のメール セクション](media/data-box-deploy-ordered/select-data-box-import-08c.png)
+    ![注文ウィザードの [連絡先の詳細] のメール セクション](media/data-box-deploy-ordered/select-data-box-import-08-c.png)
 
-12. **[確認と注文]** で、注文、連絡先、通知、プライバシー条項に関する情報を確認します。 プライバシー条項への同意に対応するボックスをオンにします。
+21. **[確認と注文]** で、注文、連絡先、通知、プライバシー条項に関する情報を確認します。 プライバシー条項への同意に対応するボックスをオンにします。
 
-13. **[注文]** を選択します。 注文が作成されるまで数分かかります。
+22. **[注文]** を選択します。 注文が作成されるまで数分かかります。
 
     ![注文ウィザードの [確認と注文] 画面](media/data-box-deploy-ordered/select-data-box-import-11.png)
 

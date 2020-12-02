@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 10/07/2020
-ms.openlocfilehash: 862d2a93058c63dbfad1db49346edcbfe3c02ad1
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 11/21/2020
+ms.openlocfilehash: 42b586062378c59b66ca945880bf723418264071
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592449"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241932"
 ---
 # <a name="creating-a-synapse-workspace"></a>Synapse ワークスペースの作成
 
@@ -65,9 +65,9 @@ Azure Synapse ワークスペースが作成された後、Synapse Studio を開
 
 Spark プールから Azure Synapse に対して、使用する Spark リソースの数が指示されます。 支払いの対象となるのは、使用したリソースの分だけです。 プールの使用を能動的に停止すると、リソースは自動的にタイムアウトし、リサイクルされます。
 
-## <a name="the-serverless-sql-pool"></a>サーバーレス SQL プール
+## <a name="the-built-in-serverless-sql-pool"></a>組み込みのサーバーレス SQL プール
 
-各ワークスペースには、**組み込み** と呼ばれる、事前構築されたプールが付属しています。 このプールを削除することはできません。 サーバーレス SQL プールを使用すると、Azure Synapse でサーバーレス SQL プールを作成したり、その管理に配慮したりすることなく、SQL を操作できます。 専用 SQL プールとは異なり、サーバーレス SQL プールの課金は、クエリの実行に使用されたリソースの数ではなく、クエリを実行するためにスキャンされたデータの量に基づきます。
+各ワークスペースは、**組み込み** と呼ばれる、事前構築されたサーバーレス SQL プールを備えています。 このプールを削除することはできません。 サーバーレス SQL プールでは、専用 SQL プールで容量を予約しなくても SQL を使用できます。 専用 SQL プールとは異なり、サーバーレス SQL プールの課金は、プールに割り当てられた容量の数ではなく、クエリを実行するためにスキャンされたデータの量に基づきます。
 
 ## <a name="next-steps"></a>次の手順
 

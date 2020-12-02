@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 06/06/2020
-ms.openlocfilehash: 9674b7188251312056812ac8e1dcae5885579e2a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d7a57f98551cf91ed87858caba0907471bcf6b12
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791309"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501228"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL Database の拡張イベントのためのイベント ファイル ターゲット コード
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -451,7 +451,7 @@ GO
 
 ## <a name="output"></a>出力
 
-Transact-SQL スクリプトが完了したら、 **event_data_XML** 列ヘッダーの下にあるセルをクリックします。 **\<event>** 要素が 1 つ表示されます。これに UPDATE ステートメントが 1 つ表示されます。
+Transact-SQL スクリプトが完了したら、**event_data_XML** 列ヘッダーの下にあるセルをクリックします。 **\<event>** 要素が 1 つ表示されます。これに UPDATE ステートメントが 1 つ表示されます。
 
 ここに、テスト中に生成された **\<event>** 要素が 1 つあります。
 
@@ -506,9 +506,9 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 先の Transact-SQL サンプルを Microsoft SQL Server で実行するとします。
 
-- わかりやすくするために、Azure Storage コンテナーの使用を「 *C:\myeventdata.xel* 」のような単純なファイルに完全に置換します。 ファイルは SQL Server をホストするコンピューターのローカル ハード ドライブに書き込まれます。
+- わかりやすくするために、Azure Storage コンテナーの使用を「*C:\myeventdata.xel*」のような単純なファイルに完全に置換します。 ファイルは SQL Server をホストするコンピューターのローカル ハード ドライブに書き込まれます。
 - **CREATE MASTER KEY** と **CREATE CREDENTIAL** には Transact-SQL ステートメントを必要としません。
-- **CREATE EVENT SESSION** ステートメントの **ADD TARGET** 句で、 **filename=** に割り当てられている HTTP 値を「 *C:\myfile.xel* 」のような完全パス文字列に置換します。
+- **CREATE EVENT SESSION** ステートメントの **ADD TARGET** 句で、**filename=** に割り当てられている HTTP 値を「*C:\myfile.xel*」のような完全パス文字列に置換します。
   
   - Azure ストレージ アカウントは必要ありません。
 

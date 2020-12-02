@@ -1,71 +1,63 @@
 ---
-title: Azure Service Bus キューの使用 | Microsoft Docs
-description: このチュートリアルでは、.NET Core コンソール アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信します。
-ms.topic: conceptual
+title: Azure Service Bus キューの概要 (Azure.Messaging.ServiceBus)
+description: このチュートリアルでは、.NET Core C# アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信します。
+ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
-ms.date: 06/23/2020
+ms.date: 11/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cff2b8a8a0f6aefad43737aeb6fe63d40facac05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4335c1e81ead36d14ee1794fffbdd4cc1ff72a0a
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021665"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029610"
 ---
-# <a name="get-started-with-service-bus-queues"></a>Service Bus キューの使用
-[!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-このチュートリアルでは、.NET Core コンソール アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信します。
+# <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>Azure Service Bus キューとの間でメッセージを送受信する (.NET)
+このチュートリアルでは、**Azure.Messaging.ServiceBus** パッケージを使用して .NET Core コンソール アプリケーションを作成し、Service Bus キューとの間でメッセージを送受信します。 
+
+> [!Important]
+> このクイックスタートでは、新しい Azure.Messaging.ServiceBus パッケージを使用します。 以前の Microsoft.Azure.ServiceBus パッケージを使用したクイックスタートについては、[Microsoft.Azure.ServiceBus パッケージを使用したイベントの送受信](service-bus-dotnet-get-started-with-queues-legacy.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Visual Studio 2019](https://www.visualstudio.com/vs)。
-- [NET Core SDK](https://www.microsoft.com/net/download/windows) バージョン 2.0 以降。
+- [Visual Studio 2019](https://www.visualstudio.com/vs)
 - Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
-- 使用するキューがない場合は、「[Azure portal を使用して Service Bus キューを作成する](service-bus-quickstart-portal.md)」の記事にある手順に従って、キューを作成します。
+- 使用するキューがない場合は、「[Azure portal を使用して Service Bus キューを作成する](service-bus-quickstart-portal.md)」の記事にある手順に従って、キューを作成します。 Service Bus 名前空間の **接続文字列** と、作成した **キュー** の名前をメモしておいてください。
 
-  - Service Bus キューの概要を読みます。
-  - Service Bus 名前空間を作成します。
-  - 接続文字列を取得します。
-  - Service Bus キューを作成する。
-
-## <a name="send-messages-to-the-queue"></a>キューへのメッセージの送信
-
-キューにメッセージを送信するために、Visual Studio を使用して C# コンソール アプリケーションを作成します。
+## <a name="send-messages-to-a-queue"></a>メッセージをキューに送信する
+このクイック スタートでは、キューにメッセージを送信する C# .NET Core コンソール アプリケーションを作成します。
 
 ### <a name="create-a-console-application"></a>コンソール アプリケーションの作成
-
-Visual Studio を起動し、C# 用の新しい**コンソール アプリ (.NET Core)** プロジェクトを作成します。 この例では、アプリの名前を *CoreSenderApp* に します。
+Visual Studio を起動し、C# 用の新しい **コンソール アプリ (.NET Core)** プロジェクトを作成します。 
 
 ### <a name="add-the-service-bus-nuget-package"></a>Service Bus NuGet パッケージの追加
 
-1. 新しく作成したプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
-1. **[参照]** を選択します。 **[[Microsoft.Azure.ServiceBus]](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)** を検索して選択します。
+1. 新しく作成したプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
+1. **[参照]** を選択します。 **[Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/)** を検索して選択します。
 1. **[インストール]** を選択し、インストールが完了したら、NuGet パッケージ マネージャーを閉じます。
 
-    ![Select a NuGet package][nuget-pkg]
-
-### <a name="write-code-to-send-messages-to-the-queue"></a>キューにメッセージを送信するコードの作成
+### <a name="add-code-to-send-messages-to-the-queue"></a>キューにメッセージを送信するコードを追加する
 
 1. *Program.cs* 内の名前空間定義の先頭 (クラス宣言の前) に、次の `using` ステートメントを追加します。
 
     ```csharp
-    using System.Text;
-    using System.Threading;
+    using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Microsoft.Azure.ServiceBus;
+    
+    using Azure.Messaging.ServiceBus;
     ```
 
 1. `Program` クラス内で次の変数を宣言します。
 
     ```csharp
-    const string ServiceBusConnectionString = "<your_connection_string>";
-    const string QueueName = "<your_queue_name>";
-    static IQueueClient queueClient;
+        static string connectionString = "<NAMESPACE CONNECTION STRING>";
+        static string queueName = "<QUEUE NAME>";
     ```
 
     名前空間の接続文字列を `ServiceBusConnectionString` 変数として入力します。 キュー名を入力します。
 
-1. `Main()` メソッドを次の **async**`Main` メソッドに置き換えます。 これは次の手順で追加する `SendMessagesAsync()` メソッドを呼び出して、キューにメッセージを送信します。 
+1. `Main()` メソッドを次の **async** `Main` メソッドに置き換えます。 これは次の手順で追加する `SendMessagesAsync()` メソッドを呼び出して、キューにメッセージを送信します。 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -85,316 +77,220 @@ Visual Studio を起動し、C# 用の新しい**コンソール アプリ (.NET
         await queueClient.CloseAsync();
     }
     ```
-1. `MainAsync()` メソッドのすぐ後に、次の `SendMessagesAsync()` メソッドを追加します。`numberOfMessagesToSend` で指定された数 (現時点では 10 に設定) のメッセージを送信する処理が、このメソッドによって実行されます。
+1. `Main()` メソッドのすぐ後に、次の `SendMessagesAsync()` メソッドを追加します。`numberOfMessagesToSend` で指定された数 (現時点では 10 に設定) のメッセージを送信する処理が、このメソッドによって実行されます。
 
     ```csharp
-    static async Task SendMessagesAsync(int numberOfMessagesToSend)
-    {
-        try
+        static async Task SendMessageAsync()
         {
-            for (var i = 0; i < numberOfMessagesToSend; i++)
+            // create a Service Bus client 
+            await using (ServiceBusClient client = new ServiceBusClient(connectionString))
             {
-                // Create a new message to send to the queue.
-                string messageBody = $"Message {i}";
-                var message = new Message(Encoding.UTF8.GetBytes(messageBody));
+                // create a sender for the queue 
+                ServiceBusSender sender = client.CreateSender(queueName);
 
-                // Write the body of the message to the console.
-                Console.WriteLine($"Sending message: {messageBody}");
+                // create a message that we can send
+                ServiceBusMessage message = new ServiceBusMessage("Hello world!");
 
-                // Send the message to the queue.
-                await queueClient.SendAsync(message);
+                // send the message
+                await sender.SendMessageAsync(message);
+                Console.WriteLine($"Sent a single message to the queue: {queueName}");
             }
         }
-        catch (Exception exception)
-        {
-            Console.WriteLine($"{DateTime.Now} :: Exception: {exception.Message}");
-        }
-    }
     ```
+1. メッセージのキュー (.NET キュー) を作成するためのメソッドを `CreateMessages` という名前で `Program` クラスに追加します。 通常、これらのメッセージはアプリケーションのさまざまな部分から届きます。 ここでは、サンプル メッセージのキューを作成します。
 
-*Program.cs* ファイルは次のようになります。
-
-```csharp
-namespace CoreSenderApp
-{
-    using System;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.ServiceBus;
-
-    class Program
-    {
-        // Connection String for the namespace can be obtained from the Azure portal under the 
-        // 'Shared Access policies' section.
-        const string ServiceBusConnectionString = "<your_connection_string>";
-        const string QueueName = "<your_queue_name>";
-        static IQueueClient queueClient;
-
-        public static async Task Main(string[] args)
-        {    
-            const int numberOfMessages = 10;
-            queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
-    
-            Console.WriteLine("======================================================");
-            Console.WriteLine("Press ENTER key to exit after sending all the messages.");
-            Console.WriteLine("======================================================");
-    
-            // Send messages.
-            await SendMessagesAsync(numberOfMessages);
-    
-            Console.ReadKey();
-    
-            await queueClient.CloseAsync();
-        }
-
-        static async Task SendMessagesAsync(int numberOfMessagesToSend)
+    ```csharp
+        static Queue<ServiceBusMessage> CreateMessages()
         {
-            try
+            // create a queue containing the messages and return it to the caller
+            Queue<ServiceBusMessage> messages = new Queue<ServiceBusMessage>();
+            messages.Enqueue(new ServiceBusMessage("First message"));
+            messages.Enqueue(new ServiceBusMessage("Second message"));
+            messages.Enqueue(new ServiceBusMessage("Third message"));
+            return messages;
+        }
+    ```
+1. `SendMessageBatchAsync` という名前のメソッドを `Program` クラスに追加し、次のコードを追加します。 このメソッドは、メッセージのキューを受け取り、Service Bus キューに送信するバッチを準備します。 
+
+    ```csharp
+        static async Task SendMessageBatchAsync()
+        {
+            // create a Service Bus client 
+            await using (ServiceBusClient client = new ServiceBusClient(connectionString))
             {
-                for (var i = 0; i < numberOfMessagesToSend; i++)
+                // create a sender for the queue 
+                ServiceBusSender sender = client.CreateSender(queueName);
+
+                // get the messages to be sent to the Service Bus queue
+                Queue<ServiceBusMessage> messages = CreateMessages();
+
+                // total number of messages to be sent to the Service Bus queue
+                int messageCount = messages.Count;
+
+                // while all messages are not sent to the Service Bus queue
+                while (messages.Count > 0)
                 {
-                    // Create a new message to send to the queue
-                    string messageBody = $"Message {i}";
-                    var message = new Message(Encoding.UTF8.GetBytes(messageBody));
+                    // start a new batch 
+                    using ServiceBusMessageBatch messageBatch = await sender.CreateMessageBatchAsync();
 
-                    // Write the body of the message to the console
-                    Console.WriteLine($"Sending message: {messageBody}");
+                    // add the first message to the batch
+                    if (messageBatch.TryAddMessage(messages.Peek()))
+                    {
+                        // dequeue the message from the .NET queue once the message is added to the batch
+                        messages.Dequeue();
+                    }
+                    else
+                    {
+                        // if the first message can't fit, then it is too large for the batch
+                        throw new Exception($"Message {messageCount - messages.Count} is too large and cannot be sent.");
+                    }
 
-                    // Send the message to the queue
-                    await queueClient.SendAsync(message);
+                    // add as many messages as possible to the current batch
+                    while (messages.Count > 0 && messageBatch.TryAddMessage(messages.Peek()))
+                    {
+                        // dequeue the message from the .NET queue as it has been added to the batch
+                        messages.Dequeue();
+                    }
+        
+                    // now, send the batch
+                    await sender.SendMessagesAsync(messageBatch);
+        
+                    // if there are any remaining messages in the .NET queue, the while loop repeats 
                 }
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine($"{DateTime.Now} :: Exception: {exception.Message}");
+
+                Console.WriteLine($"Sent a batch of {messageCount} messages to the topic: {queueName}");
             }
         }
-    }
-}
-```
-
-プログラムを実行し、Azure portal を確認します。
-
-名前空間の **[概要]** ウィンドウでキューの名前を選択して、キューの **Essentials** を表示します。
-
-![数とサイズが示された受信メッセージ][queue-message]
-
-キューの **[アクティブなメッセージ数]** の値は、現在 **10** です。 この値は、メッセージを取得しないまま送信側アプリを実行するたびに 10 ずつ増えます。
-
-アプリからキューにメッセージを追加するたびに、キューの最新のサイズによって、 **[Essentials]** の **[現在]** の値が増えます。
-
-次のセクションでは、これらのメッセージの取得方法について説明します。
-
-## <a name="receive-messages-from-the-queue"></a>キューからメッセージを受け取る
-
-送信したメッセージを受信するには、別の**コンソール アプリ (.NET Core)** アプリケーションを作成します。 送信側アプリケーションの場合と同様に、**Microsoft.Azure.ServiceBus** NuGet パッケージをインストールします。
-
-### <a name="write-code-to-receive-messages-from-the-queue"></a>キューからメッセージを受信するコードの作成
-
-1. *Program.cs* 内の名前空間定義の先頭 (クラス宣言の前) に、次の `using` ステートメントを追加します。
-
-    ```csharp
-    using System;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.ServiceBus;
     ```
-
-1. `Program` クラス内で次の変数を宣言します。
-
-    ```csharp
-    const string ServiceBusConnectionString = "<your_connection_string>";
-    const string QueueName = "<your_queue_name>";
-    static IQueueClient queueClient;
-    ```
-
-    名前空間の接続文字列を `ServiceBusConnectionString` 変数として入力します。 キュー名を入力します。
-
-1. `Main()` メソッドを次のコードに置き換えます。
+1. `Main()` メソッドを次の **async** `Main` メソッドに置き換えます。 これは両方の Send メソッドを呼び出して、単一のメッセージおよびメッセージのバッチをキューに送信するものです。 
 
     ```csharp
-    static void Main(string[] args)
-    {
-        MainAsync().GetAwaiter().GetResult();
-    }
-
-    static async Task MainAsync()
-    {
-        queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
-
-        Console.WriteLine("======================================================");
-        Console.WriteLine("Press ENTER key to exit after receiving all the messages.");
-        Console.WriteLine("======================================================");
-
-        // Register QueueClient's MessageHandler and receive messages in a loop
-        RegisterOnMessageHandlerAndReceiveMessages();
-
-        Console.ReadKey();
-
-        await queueClient.CloseAsync();
-    }
-    ```
-
-1. `MainAsync()` メソッドのすぐ後に、次のメソッドを追加します。これは、メッセージ ハンドラーを登録し、送信側アプリケーションによって送信されたメッセージを受信します。
-
-    ```csharp
-    static void RegisterOnMessageHandlerAndReceiveMessages()
-    {
-        // Configure the message handler options in terms of exception handling, number of concurrent messages to deliver, etc.
-        var messageHandlerOptions = new MessageHandlerOptions(ExceptionReceivedHandler)
+        static async Task Main()
         {
-            // Maximum number of concurrent calls to the callback ProcessMessagesAsync(), set to 1 for simplicity.
-            // Set it according to how many messages the application wants to process in parallel.
-            MaxConcurrentCalls = 1,
+            // send a message to the queue
+            await SendMessageAsync();
 
-            // Indicates whether the message pump should automatically complete the messages after returning from user callback.
-            // False below indicates the complete operation is handled by the user callback as in ProcessMessagesAsync().
-            AutoComplete = false
-        };
-
-        // Register the function that processes messages.
-        queueClient.RegisterMessageHandler(ProcessMessagesAsync, messageHandlerOptions);
-    }
+            // send a batch of messages to the queue
+            await SendMessageBatchAsync();
+        }
     ```
+5. アプリケーションを実行します。 次のメッセージが表示されます。 
 
-1. 先ほどのメソッドのすぐ後に、受信したメッセージを処理する次の `ProcessMessagesAsync()` メソッドを追加します。
+    ```console
+    Sent a single message to the queue: myqueue
+    Sent a batch of messages to the queue: myqueue
+    ```       
+1. Azure portal で次の手順を実行します。
+    1. 自分の Service Bus 名前空間に移動します。 
+    1. **[概要]** ページ中央下のペインでキューを選択します。 
+    1. **[要点]** セクションの値に注目します。
+
+    :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/sent-messages-essentials.png" alt-text="数とサイズが示された受信メッセージ" lightbox="./media/service-bus-dotnet-get-started-with-queues/sent-messages-essentials.png":::
+
+    次の値に注目してください。
+    - キューの **[アクティブなメッセージ数]** の値は、現在 **4** です。 この値は、メッセージを取得しないまま送信側アプリを実行するたびに 4 ずつ増えます。
+    - アプリからキューにメッセージを追加するたびに、キューの最新のサイズによって、**[Essentials]** の **[現在]** の値が増えます。
+    - 下部の **[Metrics]\(メトリック\)** セクションの **[メッセージ]** グラフを見ると、このキューには 4 つの受信メッセージがあることがわかります。 
+
+## <a name="receive-messages-from-a-queue"></a>キューからメッセージを受信する
+このセクションでは、キューからメッセージを取得するコードを追加します。
+
+1. メッセージや発生したエラーを処理する次のメソッドを `Program` クラスに追加します。 
 
     ```csharp
-    static async Task ProcessMessagesAsync(Message message, CancellationToken token)
-    {
-        // Process the message.
-        Console.WriteLine($"Received message: SequenceNumber:{message.SystemProperties.SequenceNumber} Body:{Encoding.UTF8.GetString(message.Body)}");
-
-        // Complete the message so that it is not received again.
-        // This can be done only if the queue Client is created in ReceiveMode.PeekLock mode (which is the default).
-        await queueClient.CompleteAsync(message.SystemProperties.LockToken);
-
-        // Note: Use the cancellationToken passed as necessary to determine if the queueClient has already been closed.
-        // If queueClient has already been closed, you can choose to not call CompleteAsync() or AbandonAsync() etc.
-        // to avoid unnecessary exceptions.
-    }
-    ```
-
-1. 最後に、次のメソッドを追加します。例外が発生した場合は、すべてこのメソッドによって処理されます。
-
-    ```csharp
-    // Use this handler to examine the exceptions received on the message pump.
-    static Task ExceptionReceivedHandler(ExceptionReceivedEventArgs exceptionReceivedEventArgs)
-    {
-        Console.WriteLine($"Message handler encountered an exception {exceptionReceivedEventArgs.Exception}.");
-        var context = exceptionReceivedEventArgs.ExceptionReceivedContext;
-        Console.WriteLine("Exception context for troubleshooting:");
-        Console.WriteLine($"- Endpoint: {context.Endpoint}");
-        Console.WriteLine($"- Entity Path: {context.EntityPath}");
-        Console.WriteLine($"- Executing Action: {context.Action}");
-        return Task.CompletedTask;
-    }
-    ```
-
-*Program.cs* ファイルは次のようになります。
-
-```csharp
-namespace CoreReceiverApp
-{
-    using System;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.ServiceBus;
-
-    class Program
-    {
-        // Connection String for the namespace can be obtained from the Azure portal under the 
-        // 'Shared Access policies' section.
-        const string ServiceBusConnectionString = "<your_connection_string>";
-        const string QueueName = "<your_queue_name>";
-        static IQueueClient queueClient;
-
-        static void Main(string[] args)
+        // handle received messages
+        static async Task MessageHandler(ProcessMessageEventArgs args)
         {
-            MainAsync().GetAwaiter().GetResult();
+            string body = args.Message.Body.ToString();
+            Console.WriteLine($"Received: {body}");
+
+            // complete the message. messages is deleted from the queue. 
+            await args.CompleteMessageAsync(args.Message);
         }
 
-        static async Task MainAsync()
+        // handle any errors when receiving messages
+        static Task ErrorHandler(ProcessErrorEventArgs args)
         {
-            queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
-
-            Console.WriteLine("======================================================");
-            Console.WriteLine("Press ENTER key to exit after receiving all the messages.");
-            Console.WriteLine("======================================================");
-
-            // Register QueueClient's MessageHandler and receive messages in a loop
-            RegisterOnMessageHandlerAndReceiveMessages();
- 
-            Console.ReadKey();
-
-            await queueClient.CloseAsync();
-        }
-
-        static void RegisterOnMessageHandlerAndReceiveMessages()
-        {
-            // Configure the MessageHandler Options in terms of exception handling, number of concurrent messages to deliver etc.
-            var messageHandlerOptions = new MessageHandlerOptions(ExceptionReceivedHandler)
-            {
-                // Maximum number of Concurrent calls to the callback `ProcessMessagesAsync`, set to 1 for simplicity.
-                // Set it according to how many messages the application wants to process in parallel.
-                MaxConcurrentCalls = 1,
-
-                // Indicates whether MessagePump should automatically complete the messages after returning from User Callback.
-                // False below indicates the Complete will be handled by the User Callback as in `ProcessMessagesAsync` below.
-                AutoComplete = false
-            };
-
-            // Register the function that will process messages
-            queueClient.RegisterMessageHandler(ProcessMessagesAsync, messageHandlerOptions);
-        }
-
-        static async Task ProcessMessagesAsync(Message message, CancellationToken token)
-        {
-            // Process the message
-            Console.WriteLine($"Received message: SequenceNumber:{message.SystemProperties.SequenceNumber} Body:{Encoding.UTF8.GetString(message.Body)}");
-
-            // Complete the message so that it is not received again.
-            // This can be done only if the queueClient is created in ReceiveMode.PeekLock mode (which is default).
-            await queueClient.CompleteAsync(message.SystemProperties.LockToken);
-
-            // Note: Use the cancellationToken passed as necessary to determine if the queueClient has already been closed.
-            // If queueClient has already been Closed, you may chose to not call CompleteAsync() or AbandonAsync() etc. calls 
-            // to avoid unnecessary exceptions.
-        }
-
-        static Task ExceptionReceivedHandler(ExceptionReceivedEventArgs exceptionReceivedEventArgs)
-        {
-            Console.WriteLine($"Message handler encountered an exception {exceptionReceivedEventArgs.Exception}.");
-            var context = exceptionReceivedEventArgs.ExceptionReceivedContext;
-            Console.WriteLine("Exception context for troubleshooting:");
-            Console.WriteLine($"- Endpoint: {context.Endpoint}");
-            Console.WriteLine($"- Entity Path: {context.EntityPath}");
-            Console.WriteLine($"- Executing Action: {context.Action}");
+            Console.WriteLine(args.Exception.ToString());
             return Task.CompletedTask;
         }
-    }
-}
+    ```
+1. `Program` クラスに `ReceiveMessagesAsync` という名前のメソッドを追加し、メッセージを受信するための次のコードを追加します。 
+
+    ```csharp
+        static async Task ReceiveMessagesAsync()
+        {
+            await using (ServiceBusClient client = new ServiceBusClient(connectionString))
+            {
+                // create a processor that we can use to process the messages
+                ServiceBusProcessor processor = client.CreateProcessor(queueName, new ServiceBusProcessorOptions());
+
+                // add handler to process messages
+                processor.ProcessMessageAsync += MessageHandler;
+
+                // add handler to process any errors
+                processor.ProcessErrorAsync += ErrorHandler;
+
+                // start processing 
+                await processor.StartProcessingAsync();
+
+                Console.WriteLine("Wait for a minute and then press any key to end the processing");
+                Console.ReadKey();
+
+                // stop processing 
+                Console.WriteLine("\nStopping the receiver...");
+                await processor.StopProcessingAsync();
+                Console.WriteLine("Stopped receiving messages");
+            }
+        }
+    ```
+1. `Main` メソッドから `ReceiveMessagesAsync` メソッドへの呼び出しを追加します。 単にメッセージの受信をテストしたい場合は、`SendMessagesAsync` メソッドをコメントアウトしてください。 そうしなかった場合は、キューに送信された 4 つのメッセージが重複して表示されます。 
+
+    ```csharp
+        static async Task Main()
+        {
+            // send a message to the queue
+            await SendMessageAsync();
+
+            // send a batch of messages to the queue
+            await SendMessageBatchAsync();
+
+            // receive message from the queue
+            await ReceiveMessagesAsync();
+        }
+    ```
+
+## <a name="run-the-app"></a>アプリを実行する
+アプリケーションを実行します。 しばらく待ってから、任意のキーを押してメッセージの受信を停止します。 次の出力が表示されます (押したのは Space キー)。 
+
+```console
+Sent a single message to the queue: myqueue
+Sent a batch of messages to the queue: myqueue
+Wait for a minute and then press any key to end the processing
+Received: Hello world!
+Received: First message in the batch
+Received: Second message in the batch
+Received: Third message in the batch
+Received: Hello world!
+Received: First message in the batch
+Received: Second message in the batch
+Received: Third message in the batch
+
+Stopping the receiver...
+Stopped receiving messages
 ```
 
-プログラムを実行し、もう一度ポータルを確認します。 **[アクティブなメッセージ数]** と **[現在]** の値は **0** になりました。
+もう一度ポータルを確認します。 
 
-![メッセージが受信された後のキュー][queue-message-receive]
+- **[アクティブなメッセージ数]** と **[現在]** の値は **0** になりました。
+- 下部の **[Metrics]\(メトリック\)** セクションの **[メッセージ]** グラフを見ると、このキューには 8 つの受信メッセージと 8 つの送信メッセージがあることがわかります。 
 
-お疲れさまでした。 ここではキューを作成して、そのキューに一連のメッセージを送信し、同じキューからそれらのメッセージを受信しました。
-
-> [!NOTE]
-> Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは簡単に Service Bus 名前空間に接続し、メッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。
+    :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png" alt-text="受信後のアクティブなメッセージとサイズ" lightbox="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png":::
 
 ## <a name="next-steps"></a>次のステップ
+次のドキュメントおよびサンプルを参照してください。
 
-Service Bus メッセージングのさらに高度な機能を紹介する[サンプルが含まれる GitHub リポジトリ](https://github.com/Azure/azure-service-bus/tree/master/samples)を参照してください。
-
-<!--Image references-->
-
-[nuget-pkg]: ./media/service-bus-dotnet-get-started-with-queues/nuget-package.png
-[queue-message]: ./media/service-bus-dotnet-get-started-with-queues/messages-sent-to-essentials.png
-[queue-message-receive]: ./media/service-bus-dotnet-get-started-with-queues/queue-message-receive-in-essentials.png
+- [.NET 用の Azure Service Bus クライアント ライブラリ - Readme](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus)
+- [GitHub のサンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)
+- [.NET API リファレンス](https://docs.microsoft.com/dotnet/api/azure.messaging.servicebus?view=azure-dotnet-preview&preserve-view=true)
 

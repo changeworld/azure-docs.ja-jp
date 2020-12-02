@@ -6,12 +6,12 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 63b74675a9b0d3480c90c7414e82658705796e7c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 5f604847faf01d1b267e6cbb73481d57ef397bd9
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92438139"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95554435"
 ---
 このクイックスタートでは、iOS 用の Azure Communication Services 通話クライアント ライブラリを使用して、通話を開始する方法について説明します。
 
@@ -32,22 +32,23 @@ Xcode で、新しい iOS プロジェクトを作成し、 **[単一ビュー �
 
 :::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Xcode 内で新しいプロジェクトを作成するウィンドウのスクリーンショット。":::
 
-### <a name="install-the-package"></a>パッケージをインストールする
+### <a name="install-the-package-and-dependencies-with-cocoapods"></a>CocoaPods でパッケージと依存関係をインストールする
 
-Azure Communication Services 通話クライアント ライブラリとその依存関係 (AzureCore.framework と AzureCommunication.framework) をプロジェクトに追加します。
+1. 次のようにして、アプリケーションのポッドファイルを作成します。
 
-> [!NOTE]
-> AzureCommunicationCalling SDK のリリースにより、bash スクリプト `BuildAzurePackages.sh` が見つかるようになります。 `sh ./BuildAzurePackages.sh` の実行時、このスクリプトによって、生成されたフレームワーク パッケージへのパスが示されます。これを、次のステップのサンプル アプリにインポートする必要があります。 スクリプトを実行する前に、Xcode コマンド ライン ツールを設定しておく必要があるので注意してください。Xcode を起動し、[設定] -> [場所] を選択します。 コマンド ライン ツールの Xcode バージョンを選択します。 **BuildAzurePackages.sh スクリプトは、Xcode 11.5 以降でのみ機能します**
+   ```
+   platform :ios, '13.0'
+   use_frameworks!
 
-1. iOS 用の Azure Communication Services 通話クライアント ライブラリを[ダウンロード](https://github.com/Azure/Communication/releases)します。
-2. Xcode で、プロジェクト ファイルをクリックし、ビルド ターゲットを選択してプロジェクト設定エディターを開きます。
-3. **[全般]** タブで **[Frameworks, Libraries, and Embedded Content]\(フレームワーク、ライブラリ、埋め込みコンテンツ\)** セクションまでスクロールし、 **[+]** アイコンをクリックします。
-4. ダイアログの左下にあるドロップダウンを使用して **[ファイルを追加]** を選択し、解凍されたクライアント ライブラリ パッケージの **AzureCommunicationCalling.framework** ディレクトリに移動します。
-    1. **AzureCore.framework** と **AzureCommunication.framework** を追加するための最後の手順を繰り返します。
-5. プロジェクト設定エディターの **[ビルド設定]** タブを開き **[検索パス]** セクションまでスクロールします。 **AzureCommunicationCalling.framework** を含むディレクトリに、新しい **フレームワーク検索パス** エントリを追加します。
-    1. 依存関係を含むフォルダーを指す別のフレームワーク検索パス エントリを追加します。
+   target 'AzureCommunicationCallingSample' do
+     pod 'AzureCommunicationCalling', '~> 1.0.0-beta.5'
+     pod 'AzureCommunication', '~> 1.0.0-beta.5'
+     pod 'AzureCore', '~> 1.0.0-beta.5'
+   end
+   ```
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Xcode 内で新しいプロジェクトを作成するウィンドウのスクリーンショット。":::
+2. `pod install` を実行します。
+3. Xcode を使用して `.xcworkspace` を開きます。
 
 ### <a name="request-access-to-the-microphone"></a>マイクへのアクセスを要求する
 
@@ -74,9 +75,9 @@ import AVFoundation
 ```swift
 struct ContentView: View {
     @State var callee: String = ""
-    @State var callClient: ACSCallClient?
-    @State var callAgent: ACSCallAgent?
-    @State var call: ACSCall?
+    @State var callClient: CallClient?
+    @State var callAgent: CallAgent?
+    @State var call: Call?
 
     var body: some View {
         NavigationView {
@@ -136,7 +137,7 @@ do {
     return
 }
 
-self.callClient = ACSCallClient()
+self.callClient = CallClient()
 
 // Creates the call agent
 self.callClient?.createCallAgent(userCredential) { (agent, error) in
@@ -165,13 +166,13 @@ func startCall()
         if granted {
             // start call logic
             let callees:[CommunicationIdentifier] = [CommunicationUser(identifier: self.callee)]
-            self.call = self.callAgent?.call(callees, options: ACSStartCallOptions())
+            self.call = self.callAgent?.call(callees, options: StartCallOptions())
         }
     }
 }
 ```
 
-`ACSStartCallOptions` のプロパティを使用して、通話の初期オプションを設定することもできます (つまり、マイクをミュートした状態で通話を開始できます)。
+`StartCallOptions` のプロパティを使用して、通話の初期オプションを設定することもできます (つまり、マイクをミュートした状態で通話を開始できます)。
 
 ## <a name="end-a-call"></a>通話を終了する
 
@@ -180,7 +181,7 @@ func startCall()
 ```swift
 func endCall()
 {    
-    self.call!.hangup(ACSHangupOptions()) { (error) in
+    self.call!.hangup(HangupOptions()) { (error) in
         if (error != nil) {
             print("ERROR: It was not possible to hangup the call.")
         }
@@ -192,7 +193,7 @@ func endCall()
 
 iOS シミュレーターでアプリをビルドして実行するには、 **[製品]**  >  **[実行]** の順に選択するか、(&#8984;-R) キーボード ショートカットを使用します。
 
-:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="Xcode 内で新しいプロジェクトを作成するウィンドウのスクリーンショット。":::
+:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="クイック スタート アプリの最終的な外観":::
 
 発信 VOIP 通話を行うには、テキスト フィールドにユーザー ID を指定し、 **[Start Call]\(通話の開始\)** ボタンをタップします。 `8:echo123` を呼び出すとエコー ボットに接続されます。これは、オーディオ デバイスを起動し、デバイスが機能していることを確認する場合に役立ちます。 
 

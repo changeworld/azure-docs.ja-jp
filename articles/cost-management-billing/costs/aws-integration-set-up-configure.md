@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: e900d63ba7e521cbf7e63d8580d22b08726d1ef6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 2b8a008decc41a5686fb2c8d9fee271f95f0fef3
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517346"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122413"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS のコストと使用状況レポートの統合を設定して構成する
 
@@ -66,7 +66,7 @@ Cost Management で AWS アカウントへのロールベースのアクセス�
 2. サービスの一覧で **[IAM]** を選択します。
 3. **[ロール]** を選択してから **[ロールの作成]** を選択します。
 4. 次のページで、 **[Another AWS account]\(別の AWS アカウント\)** を選択します。
-5. **[アカウント ID]** に、「 **432263259397** 」と入力します。
+5. **[アカウント ID]** に、「**432263259397**」と入力します。
 6. **[オプション]** で、 **[Require external ID (Best practice when a third party will assume this role)]\(外部 ID が必要 (サード パーティでこのロールを想定する場合のベスト プラクティス)\)** を選択します。
 7. **[外部 ID]** に、外部 ID を入力します。これは、AWS ロールと Azure Cost Management 間の共有パスコードです。 Cost Management の **[新しいコネクタ]** ページでも同じ外部 ID が使用されます。 外部 ID を入力する場合には、強力なパスコードポリシーを使用するようお勧めします。
     > [!NOTE]
@@ -77,14 +77,14 @@ Cost Management で AWS アカウントへのロールベースのアクセス�
 
 コストと使用状況レポートのアクセス許可を構成します。
 
-1. 「 **Cost and Usage Report** 」と入力します。
+1. 「**Cost and Usage Report**」と入力します。
 2. **[アクセス レベル]**  >  **[読み取り]**  > **DescribeReportDefinitions** の順に選択します。 この手順により、Cost Management では、定義されている CUR レポートを読み取り、レポート定義の前提条件が一致するかどうかを判断できます。
 3. **[Add additional permissions]\(さらにアクセス許可を追加\)** を選択します。
 
 S3 バケットとオブジェクトのアクセス許可を構成します。
 
 1. **[サービスの選択]** を選択します。
-2. 「 **S3** 」と入力します。
+2. 「**S3**」と入力します。
 3. **[アクセス レベル]**  >  **[List]\(一覧表示\)**  > **ListBucket** の順に選択します。 このアクションでは、S3 バケット内のオブジェクトの一覧を取得します。
 4. **[アクセス レベル]**  >  **[読み取り]**  > **GetObject** の順に選択します。 このアクションでは、課金ファイルのダウンロードを許可します。
 5. **[リソース]** を選択します。
@@ -98,7 +98,7 @@ S3 バケットとオブジェクトのアクセス許可を構成します。
 Cost エクスプローラーのアクセス許可を構成します。
 
 1. **[サービスの選択]** を選択します。
-2. 「 **Cost エクスプローラー サービス** 」と入力します。
+2. 「**Cost エクスプローラー サービス**」と入力します。
 3. **[All Cost Explorer Service actions (ce:\*)]\(すべての Cost エクスプローラー サービス アクション (ce:*)\)** を選択します。 このアクションでは、コレクションが正しいことを検証します。
 4. **[Add additional permissions]\(さらにアクセス許可を追加\)** を選択します。
 
@@ -150,12 +150,13 @@ AWS 組織へのアクセス許可を追加します。
 AWS コネクタを作成し、AWS コストの監視を開始するには、次の情報を使用します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. **[コストの管理と請求]**  >  **[コスト管理]** の順に移動します。
+2. 左側のメニュー ("ハンバーガー" のような 3 本線のメニュー アイコン) にある **[ホーム]** をクリックして Azure ホームに移動します。
+3. ページ下部の **[ツール]**  >  **[コスト管理]** に移動します。
 3. **[設定]** の **[AWS のコネクタ]** を選択します。  
 4. ページの上部にある **[+ 追加]** を選択し、コネクタを作成します。  
     :::image type="content" source="./media/aws-integration-setup-configure/aws-connector.png" alt-text="[AWS のコネクタ] 設定を示す例" :::
 1. **[コネクタの作成]** ページで、 **[表示名]** にコネクタの名前を入力します。  
-    :::image type="content" source="./media/aws-integration-setup-configure/create-aws-connector01.png" alt-text="[AWS のコネクタ] 設定を示す例" :::
+    :::image type="content" source="./media/aws-integration-setup-configure/create-aws-connector01.png" alt-text="AWS コネクタの作成ページの例" :::
 1. 必要に応じて、既定の管理グループを選択します。 検出されたすべてのリンクされたアカウントが格納されます。 これは後で設定できます。
 1. 継続処理を希望する場合は、 **[課金]** セクションで **[自動更新]** を **[オン]** にします。 自動オプションを選択した場合は、課金サブスクリプションを選択する必要があります。
 1. **[ロール ARN]** に、AWS でのロールの設定時に使用した値を入力します。
@@ -187,7 +188,7 @@ AWS コネクタを作成し、AWS コストの監視を開始するには、次
 - **[編集]** を選択して、コネクタを更新します。 AWS アカウント番号はロール ARN に表示されるため、変更できません。 ただし、新しいコネクタを作成することはできます。
 - **[確認]** を選択して、確認テストを再実行し、Cost Management でコネクタ設定を使用して、データを収集できることを確認します。
 
-:::image type="content" source="./media/aws-integration-setup-configure/aws-connector-details.png" alt-text="[AWS のコネクタ] 設定を示す例" :::
+:::image type="content" source="./media/aws-integration-setup-configure/aws-connector-details.png" alt-text="AWS コネクタ情報の例" :::
 
 ## <a name="set-up-azure-management-groups"></a>Azure 管理グループを設定する
 
@@ -199,7 +200,7 @@ AWS コネクタを作成し、AWS コストの監視を開始するには、次
 
 AWS 統合アカウントは、複数の AWS アカウントの請求と支払いを結合します。 AWS のリンクされたアカウントとしても機能します。 AWS 統合アカウントの詳細は、AWS コネクタ ページ上のリンクを使用して表示できます。 
 
-:::image type="content" source="./media/aws-integration-setup-configure/aws-consolidated-account01.png" alt-text="[AWS のコネクタ] 設定を示す例" :::
+:::image type="content" source="./media/aws-integration-setup-configure/aws-consolidated-account01.png" alt-text="AWS 統合アカウントの詳細の例" :::
 
 ページからは、次のことを行うことができます。
 
@@ -221,7 +222,7 @@ AWS のリンクされたアカウントは、AWS リソースが作成され、
 - **[更新]** を選択して、AWS のリンクされたアカウントと管理グループの関連付けを更新します。
 - **[アクセスの制御]** を選択して、スコープのロール割り当てを設定します。
 
-:::image type="content" source="./media/aws-integration-setup-configure/aws-linked-account01.png" alt-text="[AWS のコネクタ] 設定を示す例" :::
+:::image type="content" source="./media/aws-integration-setup-configure/aws-linked-account01.png" alt-text="AWS のリンクされたアカウント ページの例" :::
 
 ### <a name="permissions-for-an-aws-linked-account"></a>AWS のリンクされたアカウントのアクセス許可
 

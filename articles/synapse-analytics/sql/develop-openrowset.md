@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 20003a91726e5ccee7f73d85b7c9a9389801e0ad
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 2458b5f3f0c0091bb6ec24e62a1d5614e4e1ecd8
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701757"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888591"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プール (プレビュー) を使う際の OPENROWSET の使用方法
 
@@ -225,6 +225,9 @@ CSV パーサー バージョン 2.0 の詳細:
 - 行の最大サイズの上限は 8 MB です。
 - 次のオプションはサポートされていません。DATA_COMPRESSION
 - 引用符で囲まれた空の文字列 ("") は、空の文字列として解釈されます。
+- DATE データ型でサポートされている形式: YYYY-MM-DD
+- TIME データ型でサポートされている形式: HH:MM:SS[.秒の小数部]
+- DATETIME2 データ型でサポートされている形式: YYYY-MM-DD HH:MM:SS[.秒の小数部]
 
 HEADER_ROW = { TRUE | FALSE }
 

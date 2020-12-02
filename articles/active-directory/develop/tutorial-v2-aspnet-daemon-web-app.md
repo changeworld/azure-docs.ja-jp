@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 72b72959f7b5c89bfad4495c8534de5dfaaefe8b
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 031ee9a6d945d923279fd3025c32212c3ead98ed
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611097"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95406601"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>チュートリアル:Microsoft ID プラットフォームを使用したマルチテナント デーモンを作成する
 
-このチュートリアルでは、Microsoft ID プラットフォームを使用して、Microsoft の企業顧客のデータに非対話型の長期プロセスでアクセスする方法について説明します。 サンプル デーモンでは、[OAuth2 のクライアント資格情報の付与](v2-oauth2-client-creds-grant-flow.md)を使用してアクセス トークンを取得します。 デーモンはその後、そのトークンを使用して [Microsoft Graph](https://graph.microsoft.io) を呼び出して、組織のデータにアクセスします。
+このチュートリアルでは、OAuth 2.0 クライアント資格情報の付与を使用して Microsoft Graph API を呼び出すためのアクセス トークンを取得する ASP.NET デーモン Web アプリをダウンロードして実行します。
+
+このチュートリアルの内容:
 
 > [!div class="checklist"]
 > * Microsoft ID プラットフォームにデーモン アプリを統合する
@@ -43,7 +45,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このサンプルの "デーモン" としてのコンポーネントは、API コントローラー `SyncController.cs` です。 このコントローラーを呼び出すと、顧客の Azure Active Directory (Azure AD) テナントに存在するユーザーのリストが Microsoft Graph からプルされます。 `SyncController.cs` は、Web アプリケーション内の AJAX 呼び出しによってトリガーされます。 Microsoft Graph のアクセス トークンの取得には、[Microsoft Authentication Library (MSAL) for .NET](msal-overview.md) が使用されます。
 
-このアプリは Microsoft の企業顧客を対象としたマルチテナント アプリであるため、顧客が "サインアップ" (つまり、その会社のデータにアプリケーションを "接続") する手段を備えている必要があります。 接続フローの過程で、社内管理者はまず、サインイン済みのユーザーがいなくてもアプリが非対話型形式で企業データにアクセスできるよう、*アプリケーションのアクセス許可*を直接アプリに付与します。 このサンプルのロジックの大部分は、ID プラットフォームの[管理者の同意](v2-permissions-and-consent.md#using-the-admin-consent-endpoint)エンドポイントを使用してこの接続フローを実現する方法を示します。
+このアプリは Microsoft の企業顧客を対象としたマルチテナント アプリであるため、顧客が "サインアップ" (つまり、その会社のデータにアプリケーションを "接続") する手段を備えている必要があります。 接続フローの過程で、社内管理者はまず、サインイン済みのユーザーがいなくてもアプリが非対話型形式で企業データにアクセスできるよう、*アプリケーションのアクセス許可* を直接アプリに付与します。 このサンプルのロジックの大部分は、ID プラットフォームの[管理者の同意](v2-permissions-and-consent.md#using-the-admin-consent-endpoint)エンドポイントを使用してこの接続フローを実現する方法を示します。
 
 ![Azure に接続する 3 つのローカル項目がある UserSync App を示す図。対話的にトークンを取得して Azure A D に接続する Start dot Auth、管理者の同意を得て Azure A D に接続する AccountController、およびユーザーを読み取って Microsoft Graph に接続する SyncController。](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
@@ -115,7 +117,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 1. **[保存]** を選択します。
 1. **[証明書とシークレット]** ページの **[クライアント シークレット]** セクションで、 **[新しいクライアント シークレット]** を選択します。 その後、以下を実行します。
 
-   1. キーの説明 (たとえば**アプリのシークレット**) を入力します。
+   1. キーの説明 (たとえば **アプリのシークレット**) を入力します。
    1. キーの有効期間として **[1 年]** 、 **[2 年]** 、または **[有効期限なし]** を選択します。
    1. **[追加]** ボタンを選びます。
    1. キーの値が表示されたら、コピーして安全な場所に保存します。 このキーは、後から Visual Studio でプロジェクトを構成するために必要となります。 これは二度と表示されず、他の手段で取得することもできません。
@@ -188,13 +190,13 @@ Visual Studio でソリューションを開いて、プロジェクトを構成
    必ずクラス定義全体を置き換えてください。 定義が **public class Startup** から **public partial class Startup** に変わります。
 1. **Startup.Auth.cs** で、Visual Studio の IntelliSense によって提示される **using** ステートメントを追加して、不足している参照を解決します。
 1. プロジェクトを右クリックし、 **[追加]** 、 **[クラス]** の順に選択します。
-1. 検索ボックスに「**OWIN**」と入力します。 **OWIN Startup クラス**が選択肢として表示されます。 それを選択して、クラスに **Startup.cs** という名前を付けます。
+1. 検索ボックスに「**OWIN**」と入力します。 **OWIN Startup クラス** が選択肢として表示されます。 それを選択して、クラスに **Startup.cs** という名前を付けます。
 1. **Startup.cs** で、**Startup** クラスのコードを、サンプル アプリの同じファイルにあるコードに置き換えます。 また、定義が **public class Startup** から **public partial class Startup** に変わります。
 1. **[Models]** フォルダーに、**MsGraphUser.cs** という新しいクラスを追加します。 その実装コードを、サンプルに含まれている同じ名前のファイルの内容に置き換えます。
-1. **MVC 5 コントローラー - 空**の新しいインスタンスを **AccountController** という名前で追加します。 その実装コードを、サンプルに含まれている同じ名前のファイルの内容に置き換えます。
-1. **MVC 5 コントローラー - 空**の新しいインスタンスを **UserController** という名前で追加します。 その実装コードを、サンプルに含まれている同じ名前のファイルの内容に置き換えます。
-1. **Web API 2 コントローラー - 空**の新しいインスタンスを **SyncController** という名前で追加します。 その実装コードを、サンプルに含まれている同じ名前のファイルの内容に置き換えます。
-1. ユーザー インターフェイスについては、**Views\Account** フォルダー内に、**空の (モデルのない) ビュー**のインスタンスを **GrantPermissions**、**Index**、**UserMismatch**. という名前で 3 つ追加します。 また、**Views\User** フォルダーにも **Index** という名前で 1 つ追加します。 その実装コードを、サンプルに含まれている同じ名前のファイルの内容に置き換えます。
+1. **MVC 5 コントローラー - 空** の新しいインスタンスを **AccountController** という名前で追加します。 その実装コードを、サンプルに含まれている同じ名前のファイルの内容に置き換えます。
+1. **MVC 5 コントローラー - 空** の新しいインスタンスを **UserController** という名前で追加します。 その実装コードを、サンプルに含まれている同じ名前のファイルの内容に置き換えます。
+1. **Web API 2 コントローラー - 空** の新しいインスタンスを **SyncController** という名前で追加します。 その実装コードを、サンプルに含まれている同じ名前のファイルの内容に置き換えます。
+1. ユーザー インターフェイスについては、**Views\Account** フォルダー内に、**空の (モデルのない) ビュー** のインスタンスを **GrantPermissions**、**Index**、**UserMismatch**. という名前で 3 つ追加します。 また、**Views\User** フォルダーにも **Index** という名前で 1 つ追加します。 その実装コードを、サンプルに含まれている同じ名前のファイルの内容に置き換えます。
 1. **Shared\_Layout.cshtml** と **Home\Index.cshtml** を更新して、各種ビューを正しく関連付けます。
 
 ## <a name="deploy-the-sample-to-azure"></a>サンプルを Azure にデプロイする
@@ -210,7 +212,7 @@ Visual Studio でソリューションを開いて、プロジェクトを構成
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左上隅にある **[リソースの作成]** を選びます。
 1. **[Web]**  >  **[Web アプリ]** の順に選択し、Web サイトに名前を付けます。 たとえば、**dotnet-web-daemon-v2-contoso.azurewebsites.net** という名前を付けます。
-1. **サブスクリプション**、**リソース グループ**、**アプリ サービスのプランと場所**に関する情報を選択します。 **[OS]** は **[Windows]** 、 **[発行]** は **[コード]** とします。
+1. **サブスクリプション**、**リソース グループ**、**アプリ サービスのプランと場所** に関する情報を選択します。 **[OS]** は **[Windows]** 、 **[発行]** は **[コード]** とします。
 1. **[作成]** を選択し、アプリ サービスが作成されるのを待ちます。
 1. **[デプロイが成功しました]** という通知が表示されたら **[リソースに移動]** を選択し、新しく作成されたアプリ サービスに移動します。
 1. Web サイトが作成されたら、 **[ダッシュボード]** でそれを探して選択し、アプリ サービスの **[概要]** 画面を開きます。

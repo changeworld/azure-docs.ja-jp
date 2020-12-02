@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 11/03/2020
+ms.date: 11/20/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 0aace1041eba771a26bed4c85361ea2551c71ba6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f1d667f55a8be1b701fda6240895dd8f96315cff
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659422"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94986319"
 ---
 ::: zone target="docs"
 
@@ -164,23 +164,28 @@ ms.locfileid: "94659422"
 
 2. 梱包箱を封印し、返送ラベルが見えることを確認します。
 
-3. DHL で集荷を予約するには:
+3. Azure Data Box Operations に返送コードを要求します。 パッケージをデータセンターに返送するには、返送コードが必要です。 [adbops@microsoft.com](mailto:adbops@microsoft.com) に電子メールを送信します。 配送先住所ラベルの返送先住所の横に、はっきりと見えるようにこのコードを記載します。
 
-    * カスタマー サービスのコンタクト センター (+27(0) 11 9213600) に電話し、オプション 1 を選択して、貨物運送状番号を指定します。
-    * 集荷をスケジュールするには、南アフリカ標準時 (ZA) で午後 2:00 前に電話する必要があります。  
-    * 以下の電子メール テンプレートを使用して集荷を手配するには、[Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) に電子メールを送信します。
+4. 次のいずれかの方法を使用して、DHL で集荷を予約します。
+   * [DHL Express South Africa **の「** Schedule a Pickup (集荷をスケジュールする)](https://mydhl.express.dhl/za/en/schedule-pickup.html#/schedule-pickup#label-reference)」にアクセスして、オンラインで集荷を予約します。
+   * 次のテンプレートを使用して、電子メールを [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) に送信します。
 
-    ```output
-    To: Priority.Support@dhl.com
-    Subject:Pickup request for Microsoft Azure
-    Body:  Need pick up for the below shipment
-    *  DHL tracking number (reference number/waybill number)
-    *  Requested pickup date：yyyy/mm/dd; time: HH MM
-    ```
+     ```output
+     To: Priority.Support@dhl.com
+     Subject: Pickup request for Microsoft Azure
+     Body: Need pick up for the below shipment
+       *  DHL tracking number: (reference number/waybill number)
+       *  Requested pickup date: yyyy/mm/dd;time:HH MM
+       *  Shipper contact: (company name)
+       *  Contact person: 
+       *  Phone number: 
+       *  Full physical address: 
+       *  Item to be collected: Azure Dt
+     ```
 
-    * または、最寄りの DHL サービス ポイントにパッケージを持ち込むこともできます。
+    * または、最寄りの DHL サービス ポイントにパッケージを持ち込みます。
 
-4. 問題が発生した場合は、[Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) に電子メールを送り、発生した問題の詳細を説明し、件名に貨物運送状番号を含めます。 +27(0)119213902 に電話することもできます。
+5. 問題が発生した場合は、[Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) に電子メールを送り、発生した問題の詳細を説明し、件名に貨物運送状番号を含めます。 +27(0)119213902 に電話することもできます。
 
 ### <a name="china"></a>[中国](#tab/in-china)
 

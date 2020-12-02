@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: 16fd15a5939cc6c268a80e88401f05042a206075
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ea55762aa40360d8eea94223a030f08aad504206
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516817"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95485394"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>チュートリアル:Blazor Server チャット アプリを構築する
 
@@ -39,7 +39,7 @@ Visual Studio 2019 バージョン 16.2.0 以降では、Azure SignalR Service �
    
    Visual Studio で [新しいプロジェクトの作成]、[Blazor アプリ] の順に選択します。次に、アプリに名前を付けてフォルダーを選択し、[Blazor Server アプリ] を選択します。 Visual Studio がターゲット フレームワークを正しく認識できるよう、あらかじめ .NET Core SDK 3.0 以上をインストールしておいてください。
 
-   [ ![blazor-chat-create](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png#lightbox)
+   [ ![[新しいプロジェクトの作成] で、Blazor App テンプレートが選択されています。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png#lightbox)
    
    または、コマンドを実行します
    ```dotnetcli
@@ -355,7 +355,7 @@ Visual Studio 2019 バージョン 16.2.0 以降では、Azure SignalR Service �
 
 1. <kbd>F5</kbd> キーを押して、アプリを実行します。 次のようにチャットできるようになります。
 
-   [ ![blazor-chat](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif#lightbox)
+   [ ![Bob と Alice との間で交わされたチャットのアニメーションが表示されています。Alice が "Hello" と言うと、Bob が "Hi" と言います。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif#lightbox)
    
 [問題がある場合は、お知らせください。](https://aka.ms/asrs/qsblazor)
 
@@ -375,13 +375,13 @@ Visual Studio 2019 バージョン 16.2.0 以降では、Azure SignalR Service �
    * 特定のターゲット: すべての種類の **Azure App Service** がサポートされています。
    * App Service: 新しいものを作成するか、既存のアプリ サービスを選択します。
 
-   [ ![blazor-chat-profile](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif#lightbox)
+   [ ![このアニメーションでは、[ターゲット] として [Azure] を選択し、[特定のターゲット] として [Azure App Service] を選択しています。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif#lightbox)
 
 1. Azure SignalR Service の依存関係を追加します
 
    発行プロファイルの作成後、 **[サービスの依存関係]** に推奨メッセージが表示されます。 このパネルで **[構成]** をクリックして、既存の Azure SignalR サービスを選択するか、新しく作成してください。
 
-   [ ![blazor-chat-dependency](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png#lightbox)
+   [ ![[発行] で、[構成] へのリンクが強調表示されています。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png#lightbox)
 
    Azure SignalR Service が Azure 上にあればアプリがそれに自動的に切り替わるよう、サービス依存関係によって以下が実行されます。
 
@@ -391,7 +391,7 @@ Visual Studio 2019 バージョン 16.2.0 以降では、Azure SignalR Service �
    * 選択内容に応じてシークレット ストアを構成する。
    * 選択した Azure SignalR サービスがアプリの対象となるように `appsettings` 構成を追加する。
 
-   [ ![blazor-chat-dependency-summary](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png#lightbox)
+   [ ![[Summary of changes]\(変更の概要\) で、チェック ボックスを使用してすべての依存関係が選択されています。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png#lightbox)
 
 1. アプリの発行
 
@@ -400,7 +400,7 @@ Visual Studio 2019 バージョン 16.2.0 以降では、Azure SignalR Service �
    > 最初にページにアクセスしたときには、Azure App Service のデプロイが開始されるまでの待ち時間の関係で、すぐには正常に動作しない場合があります。しばらくしてから、ページを最新の情報に更新してみてください。
    > また、トラフィックが Azure SignalR Service にリダイレクト済みであるかどうかは、ブラウザーのデバッガー モード (<kbd>F12</kbd> キー) を使用して確認できます。
 
-   [ ![blazor-chat-azure](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png#lightbox)
+   [ ![Blazor SignalR Chat Sample には、自分の名前を入力するためのテキスト ボックスと、会話を開始するための [Chat!] ボタンがあります。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png#lightbox)
    
 [問題がある場合は、お知らせください。](https://aka.ms/asrs/qsblazor)
 

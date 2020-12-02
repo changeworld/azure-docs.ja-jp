@@ -9,17 +9,14 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a2087c83ec48b0b732ce1cb954f78fad9b46fef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 199da0586a061bccdf8a6ff8a1f53df2f703512f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857437"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959443"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>チュートリアル:カスタム IoT Edge モジュールの作成とデプロイ
-
-> [!NOTE]
-> この記事は、IoT Edge 上で Azure Machine Learning を使用するためのチュートリアルのシリーズの一部です。 この記事に直接アクセスしている場合は、最適な結果を得るために、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md) から始めることをお勧めします。
 
 この記事では、リーフ IoT デバイスからメッセージを受信し、機械学習モデルを使用してデータを実行し、分析情報を IoT Hub に転送する 3 つの IoT Edge モジュールを作成します。
 
@@ -54,6 +51,10 @@ IoT Edge デバイスで 4 つのことを達成できるようにします。
 ![IoT Edge の 3 つのモジュールのアーキテクチャ図](media/tutorial-machine-learning-edge-06-custom-modules/modules-diagram.png)
 
 この記事の手順は通常、クラウド開発者によって実行されます。
+
+## <a name="prerequisites"></a>前提条件
+
+この記事は、IoT Edge 上で Azure Machine Learning を使用するためのチュートリアルのシリーズの一部です。 シリーズの各記事は、前の記事の作業に基づいています。 この記事に直接アクセスしている場合は、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md)を参照してください。
 
 ## <a name="create-a-new-iot-edge-solution"></a>新しい IoT Edge ソリューションを作成する
 
@@ -156,7 +157,7 @@ Router モジュールは、メッセージを確実に正しい順序で処理�
 
 1. Visual Studio Code で modules フォルダーを右クリックし、 **[Add IoT Edge Module] \(IoT Edge モジュールの追加\)** を選択します。
 
-1. モジュール テンプレートの **C# モジュール**を選択します。
+1. モジュール テンプレートの **C# モジュール** を選択します。
 
 1. モジュールの名前を **turbofanRouter** にします。
 

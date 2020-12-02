@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: e4e2ba15dad7459ba3f7926a965292be37249054
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 528cab915a1ac3918146e428e9ae6b3c401324c8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097364"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96010359"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>チュートリアル:Azure Cosmos DB で .NET SDK を使用して ASP.NET Core MVC Web アプリケーションを開発する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -88,7 +88,7 @@ ms.locfileid: "93097364"
 
 1. **ソリューション エクスプローラー** で、プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
 
-1. **[NuGet パッケージ マネージャー]** で、 **Microsoft.Azure.Cosmos** を検索して選択します。 **[インストール]** を選択します。
+1. **[NuGet パッケージ マネージャー]** で、**Microsoft.Azure.Cosmos** を検索して選択します。 **[インストール]** を選択します。
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="NuGet パッケージのインストール":::
 
@@ -106,7 +106,7 @@ ms.locfileid: "93097364"
 
 ### <a name="add-a-model"></a><a name="add-a-model"></a> モデルを追加する
 
-1. **ソリューション エクスプローラー** で、 **Models** フォルダーを右クリックし、 **[追加]**  >  **[クラス]** を選択します。
+1. **ソリューション エクスプローラー** で、**Models** フォルダーを右クリックし、 **[追加]**  >  **[クラス]** を選択します。
 
 1. **[新しい項目の追加]** で、新しいクラスに *Item.cs* という名前を付けて、 **[追加]** を選択します。
 
@@ -128,16 +128,16 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 #### <a name="create-item-view"></a><a name="AddNewIndexView"></a>項目の作成ビュー
 
-1. **ソリューション エクスプローラー** で、 **Views** フォルダーを右クリックし、 **[追加]**  >  **[新しいフォルダー]** を選択します。 フォルダーに *Item* という名前を付けます。
+1. **ソリューション エクスプローラー** で、**Views** フォルダーを右クリックし、 **[追加]**  >  **[新しいフォルダー]** を選択します。 フォルダーに *Item* という名前を付けます。
 
 1. 空の **Item** フォルダーを右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
 
 1. **[Add MVC View]\(MVC ビューの追加\)** で、次の変更を行います。
 
-   * **[ビュー名]** で、「 *Create* 」と入力します。
+   * **[ビュー名]** で、「*Create*」と入力します。
    * **[テンプレート]** で、 **[Create]** を選択します。
    * **[モデル クラス]** で、 **[Item (todo.Models)]** を選択します。
-   * **[Use a layout page]\(レイアウト ページを使用する\)** をオンにして、「 *~/Views/Shared/_Layout.cshtml* 」と入力します。
+   * **[Use a layout page]\(レイアウト ページを使用する\)** をオンにして、「 *~/Views/Shared/_Layout.cshtml*」と入力します。
    * **[追加]** を選択します。
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="[Add MVC View]\(MVC ビューの追加\) ダイアログ ボックスのスクリーンショット":::
@@ -148,14 +148,14 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 #### <a name="delete-item-view"></a><a name="AddEditIndexView"></a>項目の削除ビュー
 
-1. **ソリューション エクスプローラー** で、 **Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
+1. **ソリューション エクスプローラー** で、**Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
 
 1. **[Add MVC View]\(MVC ビューの追加\)** で、次の変更を行います。
 
-   * **[ビュー名]** ボックスに「 *Delete* 」と入力します。
+   * **[ビュー名]** ボックスに「*Delete*」と入力します。
    * **[テンプレート]** ボックスで、 **[Delete]** を選択します。
    * **[モデル クラス]** ボックスで、 **[Item (todo.Models)]** を選択します。
-   * **[Use a layout page]\(レイアウト ページを使用する\)** をオンにして、「 *~/Views/Shared/_Layout.cshtml* 」と入力します。
+   * **[Use a layout page]\(レイアウト ページを使用する\)** をオンにして、「 *~/Views/Shared/_Layout.cshtml*」と入力します。
    * **[追加]** を選択します。
 
 1. 次に **[追加]** を選択すると、Visual Studio で新しいテンプレート ビューが作成されます。 生成されたファイル内のコードを次の内容に置き換えます。
@@ -164,14 +164,14 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 #### <a name="add-a-view-to-get-an-item-details"></a><a name="AddItemIndexView"></a>項目の詳細を取得するビューを追加する
 
-1. **ソリューション エクスプローラー** で、 **Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
+1. **ソリューション エクスプローラー** で、**Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
 
 1. **[Add MVC View]\(MVC ビューの追加\)** で、次の値を指定します。
 
-   * **[ビュー名]** に、「 *Details* 」と入力します。
+   * **[ビュー名]** に、「*Details*」と入力します。
    * **[テンプレート]** で、 **[Details]** を選択します。
    * **[モデル クラス]** で、 **[Item (todo.Models)]** を選択します。
-   * **[Use a layout page]\(レイアウト ページを使用する\)** をオンにして、「 *~/Views/Shared/_Layout.cshtml* 」と入力します。
+   * **[Use a layout page]\(レイアウト ページを使用する\)** をオンにして、「 *~/Views/Shared/_Layout.cshtml*」と入力します。
 
 1. 次に **[追加]** を選択すると、Visual Studio で新しいテンプレート ビューが作成されます。 生成されたファイル内のコードを次の内容に置き換えます。
 
@@ -179,14 +179,14 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 #### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>項目を編集するためのビューを追加する
 
-1. **ソリューション エクスプローラー** で、 **Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
+1. **ソリューション エクスプローラー** で、**Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
 
 1. **[Add MVC View]\(MVC ビューの追加\)** で、次の変更を行います。
 
-   * **[ビュー名]** ボックスに、「 *Edit* 」と入力します。
+   * **[ビュー名]** ボックスに、「*Edit*」と入力します。
    * **[テンプレート]** ボックスで、 **[編集]** を選択します。
    * **[モデル クラス]** ボックスで、 **[Item (todo.Models)]** を選択します。
-   * **[Use a layout page]\(レイアウト ページを使用する\)** をオンにして、「 *~/Views/Shared/_Layout.cshtml* 」と入力します。
+   * **[Use a layout page]\(レイアウト ページを使用する\)** をオンにして、「 *~/Views/Shared/_Layout.cshtml*」と入力します。
    * **[追加]** を選択します。
 
 1. 次に **[追加]** を選択すると、Visual Studio で新しいテンプレート ビューが作成されます。 生成されたファイル内のコードを次の内容に置き換えます。
@@ -197,14 +197,14 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 最後に、次の手順ですべての項目を取得するビューを追加します。
 
-1. **ソリューション エクスプローラー** で、 **Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
+1. **ソリューション エクスプローラー** で、**Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
 
 1. **[Add MVC View]\(MVC ビューの追加\)** で、次の変更を行います。
 
-   * **[ビュー名]** ボックスに、「 *Index* 」と入力します。
-   * **[テンプレート]** ボックスで、 **[一覧]** を選択します。
+   * **[ビュー名]** ボックスに、「*Index*」と入力します。
+   * **[テンプレート]** ボックスで、**[一覧]** を選択します。
    * **[モデル クラス]** ボックスで、 **[Item (todo.Models)]** を選択します。
-   * **[Use a layout page]\(レイアウト ページを使用する\)** をオンにして、「 *~/Views/Shared/_Layout.cshtml* 」と入力します。
+   * **[Use a layout page]\(レイアウト ページを使用する\)** をオンにして、「 *~/Views/Shared/_Layout.cshtml*」と入力します。
    * **[追加]** を選択します。
 
 1. 次に **[追加]** を選択すると、Visual Studio で新しいテンプレート ビューが作成されます。 生成されたファイル内のコードを次の内容に置き換えます。
@@ -259,7 +259,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 ### <a name="add-a-controller"></a><a name="add-a-controller"></a>コントローラーを追加する
 
-1. **ソリューション エクスプローラー** で、 **Controllers** フォルダーを右クリックし、 **[追加]**  >  **[コントローラー]** を選択します。
+1. **ソリューション エクスプローラー** で、**Controllers** フォルダーを右クリックし、 **[追加]**  >  **[コントローラー]** を選択します。
 
 1. **[スキャフォールディングの追加]** で **[MVC コントローラー - 空]** を選択し、 **[追加]** を選択します。
 
@@ -291,7 +291,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
     :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="[Index] ビューのスクリーンショット":::
   
-1. 一覧の **項目** の横にある **[Edit]** を選択します。 **[Edit]** ビューが表示され、対象オブジェクトのプロパティを更新することができます。 **Completed** フラグもこのビューで更新できます。 **[Completed]** を選択して **[Save]** を選択した場合、アプリでは一覧の **項目** が完了として表示されます。
+1. 一覧の **項目** の横にある **[Edit]** を選択します。 **[Edit]** ビューが表示され、対象オブジェクトのプロパティを更新することができます。**Completed** フラグもこのビューで更新できます。 **[Completed]** を選択して **[Save]** を選択した場合、アプリでは一覧の **項目** が完了として表示されます。
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png" alt-text="[Completed] ボックスがオンになっている [Index] ビューのスクリーンショット":::
 
@@ -303,7 +303,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 以上で、Azure Cosmos DB と連携するアプリケーションが完成しました。今度は、この Web アプリを Azure App Service にデプロイします。  
 
-1. このアプリケーションを発行するために、 **ソリューション エクスプローラー** でプロジェクトを右クリックし、 **[発行]** を選択します。
+1. このアプリケーションを発行するために、**ソリューション エクスプローラー** でプロジェクトを右クリックし、 **[発行]** を選択します。
 
 1. **[発行先を選択]** で、 **[App Service]** を選択します。
 
@@ -317,7 +317,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 別の方法として、新しいプロファイルを作成することもできます。
 
-1. 前の手順と同様に、 **ソリューション エクスプローラー** で、プロジェクトを右クリックし、 **[発行]** を選択します。
+1. 前の手順と同様に、**ソリューション エクスプローラー** で、プロジェクトを右クリックし、 **[発行]** を選択します。
   
 1. **[発行先を選択]** で、 **[App Service]** を選択します。
 

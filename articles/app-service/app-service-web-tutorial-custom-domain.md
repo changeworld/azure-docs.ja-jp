@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6a74f105525ec8ce28559b47ed4fc9624f518a06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a74a3b7542a8d683e9bbf16f99c9b2646d95e00d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488339"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95986549"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>チュートリアル:既存のカスタム DNS 名を Azure App Service にマップする
 
@@ -81,7 +81,7 @@ App Service アプリの管理ページが表示されます。
 
 ### <a name="scale-up-the-app-service-plan"></a>App Service プランをスケール アップする
 
-1. 非 Free レベルのいずれかを選びます (**D1**、**B1**、**B2**、**B3**、または**運用**カテゴリのいずれかのレベル)。 その他のオプションについては、 **[その他のオプションを参照する]** をクリックします。
+1. 非 Free レベルのいずれかを選びます (**D1**、**B1**、**B2**、**B3**、または **運用** カテゴリのいずれかのレベル)。 その他のオプションについては、 **[その他のオプションを参照する]** をクリックします。
 
 1. **[適用]** を選択します。
 
@@ -100,7 +100,7 @@ App Service アプリの管理ページが表示されます。
 ![[カスタム ドメイン検証 ID] ボックスの ID を示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/get-custom-domain-verification-id.png)
 
 > [!WARNING]
-> ドメイン検証 ID をカスタム ドメインに追加すると、未解決の DNS エントリが回避され、サブドメインの乗っ取りを防ぐのに役立ちます。 この一般的な重大度の高い脅威の詳細については、[サブドメインの乗っ取り](../security/fundamentals/subdomain-takeover.md)に関するページを参照してください。
+> ドメイン検証 ID をカスタム ドメインに追加すると、未解決の DNS エントリが回避され、サブドメインの乗っ取りを防ぐのに役立ちます。 前にこの検証 ID を使わずに構成したカスタム ドメインについては、DNS レコードに検証 ID を追加して、同じリスクからそれらを保護する必要があります。 この一般的な重大度の高い脅威の詳細については、[サブドメインの乗っ取り](../security/fundamentals/subdomain-takeover.md)に関するページを参照してください。
 
 ## <a name="map-your-domain"></a>ドメインをマップする
 

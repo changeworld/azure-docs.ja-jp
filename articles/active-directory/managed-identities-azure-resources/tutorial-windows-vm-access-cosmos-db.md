@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/29/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b571b2b8e0d334a02631e3f443ec54398117ee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cd1fb7f33c56aefe76bc55181ae92ca3d149754
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532671"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006970"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure Cosmos DB にアクセスする
 
@@ -82,7 +82,7 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 ```
 
 >[!NOTE]
-> 操作を実行できない場合は、適切なアクセス許可が付与されていない可能性があります。 キーへの書き込みアクセス権が必要な場合は、DocumentDB Account Contributor などの RBAC ロールを使用するか、カスタム役割を作成する必要があります。 詳細については、「[Azure Cosmos DB のロールベースのアクセス制御](../../cosmos-db/role-based-access-control.md)」をご覧ください。
+> 操作を実行できない場合は、適切なアクセス許可が付与されていない可能性があります。 キーへの書き込みアクセス権が必要な場合は、DocumentDB Account Contributor などの Azure ロールを使用するか、カスタム役割を作成する必要があります。 詳細については、「[Azure Cosmos DB での Azure ロールベースのアクセス制御](../../cosmos-db/role-based-access-control.md)」を参照してください。
 
 ## <a name="access-data"></a>データにアクセスする
 
@@ -95,8 +95,8 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 ### <a name="get-an-access-token"></a>アクセス トークンを取得する
 
 1. Azure Portal で **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、**[概要]** ページの上部にある **[接続]** をクリックします。 
-2. Windows VM を作成したときに追加した**ユーザー名**と**パスワード**を入力します。 
-3. これで、仮想マシンを使用する**リモート デスクトップ接続**が作成されました。リモート セッションで PowerShell を開きます。
+2. Windows VM を作成したときに追加した **ユーザー名** と **パスワード** を入力します。 
+3. これで、仮想マシンを使用する **リモート デスクトップ接続** が作成されました。リモート セッションで PowerShell を開きます。
 4. PowerShell の Invoke-WebRequest を使用して、Azure リソース エンドポイントのローカル マネージド ID に、Azure Resource Manager のアクセス トークンを取得するよう要求します。
 
    ```powershell

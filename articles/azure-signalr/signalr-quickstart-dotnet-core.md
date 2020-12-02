@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: b5a2064e2fd80b895b0e801090c66d7119cf69dd
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3cfcf57f455a5c3b17b794acf2ded66ed2285eff
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151013"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873507"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>クイック スタート:SignalR Service を使用してチャット ルームを作成する
 
@@ -32,19 +32,19 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows) のインストール。
 * GitHub リポジトリの [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) をダウンロードまたは複製する。 
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnetcore)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsnetcore)。
 
 ## <a name="create-an-azure-signalr-resource"></a>Azure SignalR リソースの作成
 
 [!INCLUDE [azure-signalr-create](../../includes/signalr-create.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnetcore)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsnetcore)。
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core Web アプリケーションの作成
 
 このセクションでは、[.NET Core コマンド ライン インターフェイス (CLI)](/dotnet/core/tools/) を使用して ASP.NET Core MVC Web アプリ プロジェクトを作成します。 Visual Studio ではなく .NET Core CLI を使用する利点は、Windows、macOS、および Linux プラットフォームで使用できることです。 
 
-1. プロジェクトのフォルダーを作成します。 このクイック スタートでは、 *E:\Testing\chattest* フォルダーを使用します。
+1. プロジェクトのフォルダーを作成します。 このクイック スタートでは、*E:\Testing\chattest* フォルダーを使用します。
 
 2. 新しいフォルダーで、次のコマンドを実行してプロジェクトを作成します。
 
@@ -52,13 +52,13 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
     dotnet new mvc
     ```
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnetcore)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsnetcore)。
 
 ## <a name="add-secret-manager-to-the-project"></a>プロジェクトにシークレット マネージャーを追加します
 
 このセクションでは、プロジェクトに[シークレット マネージャー ツール](/aspnet/core/security/app-secrets)を追加します。 シークレット マネージャー ツールは、開発作業のための機密データをプロジェクト ツリーの外部に格納します。 このアプローチは、ソース コード内のアプリ シークレットが誤って共有されることを防止するのに役立ちます。
 
-1. *.csproj* ファイルを開きます。 `DotNetCliToolReference` 要素を追加して、 *Microsoft.Extensions.SecretManager.Tools* を含めます。 また、 *chattest.csproj* の次のコードに示すように `UserSecretsId` 要素も追加し、ファイルを保存します。
+1. *.csproj* ファイルを開きます。 `DotNetCliToolReference` 要素を追加して、*Microsoft.Extensions.SecretManager.Tools* を含めます。 また、*chattest.csproj* の次のコードに示すように `UserSecretsId` 要素も追加し、ファイルを保存します。
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -76,7 +76,7 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
     </Project>
     ```
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnetcore)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsnetcore)。
 
 ## <a name="add-azure-signalr-to-the-web-app"></a>Web アプリに Azure SignalR を追加する
 
@@ -92,7 +92,7 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
     dotnet restore
     ```
 
-3. シークレット マネージャーに、 *Azure:SignalR:ConnectionString* という名前のシークレットを追加します。 
+3. シークレット マネージャーに、*Azure:SignalR:ConnectionString* という名前のシークレットを追加します。 
 
     このシークレットには、SignalR Service リソースにアクセスするための接続文字列が含められます。 *Azure:SignalR:ConnectionString* は、SignalR が接続を確立するために検索する既定の構成キーです。 次のコマンドにある値を SignalR Service リソースの接続文字列に置き換えます。
 
@@ -142,7 +142,7 @@ SignalR では、ハブは、クライアントから呼び出すことができ
 
 どちらのメソッドも、ASP.NET Core SignalR SDK によって提供される `Clients` インターフェイスを使用します。 このインターフェイスにより、接続されているすべてのクライアントにアクセスできるため、クライアントにコンテンツをプッシュできます。
 
-1. プロジェクト ディレクトリに、 *Hub* という名前の新しいフォルダーを追加します。 新しいフォルダーに、 *ChatHub.cs* という名前の新しいハブ コード ファイルを追加します。
+1. プロジェクト ディレクトリに、*Hub* という名前の新しいフォルダーを追加します。 新しいフォルダーに、*ChatHub.cs* という名前の新しいハブ コード ファイルを追加します。
 
 2. 次のコードを *ChatHub.cs* に追加してハブ クラスを定義し、ファイルを保存します。
 
@@ -168,7 +168,7 @@ SignalR では、ハブは、クライアントから呼び出すことができ
 
 ### <a name="add-the-client-interface-for-the-web-app"></a>Web アプリのクライアント インターフェイスを追加する
 
-このチャット ルーム アプリのクライアント ユーザー インターフェイスは、 *wwwroot* ディレクトリ内の *index.html* という名前のファイルに含まれている HTML と JavaScript で構成されます。
+このチャット ルーム アプリのクライアント ユーザー インターフェイスは、*wwwroot* ディレクトリ内の *index.html* という名前のファイルに含まれている HTML と JavaScript で構成されます。
 
 *css/site.css* ファイルを [サンプル リポジトリ](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot)の *wwwroot* フォルダーからコピーします。 プロジェクトの *css/site.css* を、コピーしたものに置き換えます。
 
@@ -347,7 +347,7 @@ SignalR では、ハブは、クライアントから呼び出すことができ
     }
     ```
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnetcore)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsnetcore)。
 
 ## <a name="build-and-run-the-app-locally"></a>アプリをビルドしてローカルで実行する
 
@@ -382,7 +382,7 @@ SignalR では、ハブは、クライアントから呼び出すことができ
 
     ![Azure SignalR グループ チャットの例](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnetcore)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsnetcore)。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -395,7 +395,7 @@ SignalR では、ハブは、クライアントから呼び出すことができ
 
 [Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** を選択します。
 
-**[名前でフィルター]** テキスト ボックスに、リソース グループの名前を入力します。 このクイックスタートの手順では、 *SignalRTestResources* という名前のリソース グループを使用しました。 結果の一覧の中のリソース グループで、省略記号 ( **[...]** ) > **[リソース グループの削除]** を選択します。
+**[名前でフィルター]** テキスト ボックスに、リソース グループの名前を入力します。 このクイックスタートの手順では、*SignalRTestResources* という名前のリソース グループを使用しました。 結果の一覧の中のリソース グループで、省略記号 ( **[...]** ) > **[リソース グループの削除]** を選択します。
 
 ![リソース グループを削除するための選択](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
 
@@ -403,7 +403,7 @@ SignalR では、ハブは、クライアントから呼び出すことができ
 
 しばらくすると、リソース グループとそのリソースのすべてが削除されます。
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnetcore)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsnetcore)。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -411,5 +411,3 @@ SignalR では、ハブは、クライアントから呼び出すことができ
 
 > [!div class="nextstepaction"]
 > [Azure SignalR Service の認証](./signalr-concept-authenticate-oauth.md)
-
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnetcore)

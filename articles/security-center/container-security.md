@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6b57428aeba702dc8cf06ec4ae7984854a94ac7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7265195f9614928a2150a56a780ea7b36bc2e266
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449175"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030868"
 ---
 # <a name="container-security-in-security-center"></a>Security Center のコンテナーのセキュリティ
 
@@ -58,7 +58,7 @@ Security Center では、スキャナーによる検出結果がフィルター�
 
 Azure Security Center では、IaaS Linux VM 上、または Docker コンテナーを実行している他の Linux マシン上でホストされているアンマネージド コンテナーが識別されます。 Security Center によって、こうしたコンテナーの構成が継続的に評価されます。 その後、[Center for Internet Security (CIS) Docker Benchmark](https://www.cisecurity.org/benchmark/docker/) と比較されます。
 
-Security Center には CIS Docker Benchmark のルールセット全体が含まれており、コンテナーがいずれかのコントロールを満たしていない場合は警告が表示されます。 不適切な構成が検出されると、Security Center によってセキュリティの推奨事項が生成されます。 Security Center の**推奨事項ページ**を使用して、推奨事項を表示したり、問題を修復したりします。 CIS ベンチマーク チェックは、AKS マネージド インスタンスまたは Databricks マネージド VM では実行されません。
+Security Center には CIS Docker Benchmark のルールセット全体が含まれており、コンテナーがいずれかのコントロールを満たしていない場合は警告が表示されます。 不適切な構成が検出されると、Security Center によってセキュリティの推奨事項が生成されます。 Security Center の **推奨事項ページ** を使用して、推奨事項を表示したり、問題を修復したりします。 CIS ベンチマーク チェックは、AKS マネージド インスタンスまたは Databricks マネージド VM では実行されません。
 
 この機能には関連する Security Center 推奨事項が表示されることがありますが、その詳細については、推奨事項参照テーブルの[コンテナー セクション](recommendations-reference.md#recs-containers)をご覧ください。
 
@@ -78,11 +78,11 @@ AKS には、クラスターのセキュリティ体制をセキュリティで�
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>Kubernetes 受付制御を使用したワークロード保護のベストプラクティス
 
-**Kubernetes 用 Azure Policy アドオン**をインストールして、お使いの Kubernetes コンテナーのワークロードを保護するために推奨事項のバンドルを取得します。
+Kubernetes コンテナーのワークロードを保護する推奨事項のバンドルを取得するには、**Kubernetes 用 Azure Policy アドオン** をインストールします。 「[拡張機能の自動プロビジョニングの有効化](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)」で説明されているように、このアドオンは自動的にデプロイすることもできます。 アドオンの自動プロビジョニングが "オン" に設定されている場合は、既存のクラスターおよび今後作成されるクラスターすべて (アドオンのインストール要件を満たすもの) で、拡張機能が既定で有効になります。
 
 [こちらの Kubernetes 用 Azure Policy ページ](../governance/policy/concepts/policy-for-kubernetes.md)で説明するように、アドオンによって、 [Open Policy Agent](https://www.openpolicyagent.org/) 用オープンソース [Gatekeeper v3](https://github.com/open-policy-agent/gatekeeper)  アドミッション コントローラー Webhook が拡張されます。 Kubernetes アドミッション コントローラーは、クラスターの使用方法を規定するプラグインです。 アドオンは Webhook として Kubernetes 受付制御に登録され、大規模な実施内容と安全対策を、一元的で一貫性のある方法でお使いのクラスターに適用できるようにします。 
 
-AKS クラスターにアドオンをインストールすると、Kubernetes API サーバーに対するすべての要求が、クラスターに保存される前に、事前定義された一連のベスト プラクティスを基準にして監視されます。 その後、ベスト プラクティスを**適用**し、それを将来のワークロードに対して要求するように構成できます。 
+AKS クラスターにアドオンが存在する場合、Kubernetes API サーバーに対するすべての要求が、クラスターに保存される前に、事前定義された一連のベスト プラクティスを基準にして監視されます。 その後、ベスト プラクティスを **適用** し、それを将来のワークロードに対して要求するように構成できます。 
 
 たとえば、特権コンテナーが作成されないように要求することができます。また、今後の特権コンテナー作成要求はすべてブロックされます。
 

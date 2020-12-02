@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 45c0108ed87dd5264b9192f5dd69e0198bd59fc1
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 66f077028b9f9f7a7644a318d4447eeaaab19e98
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289787"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919932"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Azure Key Vault の証明書について
 
@@ -44,8 +44,17 @@ Key Vault 証明書が作成されるとき、秘密キーと共にアドレス�
 
 アドレス指定可能なキーは、エクスポート不可能な KV 証明書との関連性が高くなります。 アドレス指定可能な KV キーの操作は、KV 証明書の作成に使用された KV 証明書ポリシーの *keyusage* フィールドからマップされます。  
 
+証明書でサポートされるキー ペアの種類
+
  - サポートされているキーの種類: RSA、RSA-HSM、EC、EC-HSM、oct (一覧は[こちら](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype))。エクスポート可能にできるのは、RSA、EC のみです。 HSM キーはエクスポートできません。
 
+|キーの種類|詳細|セキュリティ|
+|--|--|--|
+|**RSA**| "ソフトウェアで保護される" RSA キー|FIPS 140-2 レベル 1|
+|**RSA-HSM**| "HSM で保護された" RSA キー (Premium SKU のみ)|FIPS 140-2 レベル 2 HSM|
+|**EC**| "ソフトウェアで保護される" 楕円曲線キー|FIPS 140-2 レベル 1|
+|**EC-HSM**| "HSM で保護された" 楕円曲線キー (Premium SKU のみ)|FIPS 140-2 レベル 2 HSM|
+|||
 
 ## <a name="certificate-attributes-and-tags"></a>証明書の属性とタグ
 
@@ -57,14 +66,14 @@ Key Vault 証明書が作成されるとき、秘密キーと共にアドレス�
 
 Key Vault 証明書には次の属性があります。  
 
--   *enabled* : boolean、省略可能、既定値は **true** 。 この属性を指定して、証明書のデータをシークレットとして取得できるか、またはキーとして操作可能かを示すことができます。 また、 *nbf* および *exp* と組み合わせて使います。 *nbf* と *exp* の間で操作が発生する場合、enabled が true に設定されている場合にのみ許可されます。 *nbf* から *exp* までのウィンドウの外側の操作は、自動的に禁止されます。  
+-   *enabled*: boolean、省略可能、既定値は **true**。 この属性を指定して、証明書のデータをシークレットとして取得できるか、またはキーとして操作可能かを示すことができます。 また、*nbf* および *exp* と組み合わせて使います。*nbf* と *exp* の間で操作が発生する場合、enabled が true に設定されている場合にのみ許可されます。 *nbf* から *exp* までのウィンドウの外側の操作は、自動的に禁止されます。  
 
 応答に含まれる追加の読み取り専用属性があります。
 
--   *created* :IntDate: このバージョンの証明書が作成された日時を示します。  
--   *updated* :IntDate: このバージョンの証明書が更新された日時を示します。  
--   *exp* :IntDate: x509 証明書の有効期限日の値を含みます。  
--   *nbf* :IntDate: x509 証明書の有効期間開始日の値を含みます。  
+-   *created*:IntDate: このバージョンの証明書が作成された日時を示します。  
+-   *updated*:IntDate: このバージョンの証明書が更新された日時を示します。  
+-   *exp*:IntDate: x509 証明書の有効期限日の値を含みます。  
+-   *nbf*:IntDate: x509 証明書の有効期間開始日の値を含みます。  
 
 > [!Note] 
 > Key Vault 証明書の期限が切れると、アドレス指定可能なキーとシークレットは機能しなくなります。  
@@ -92,7 +101,7 @@ Key Vault 証明書を最初から作成するときは、ポリシーを提供�
 
      - トリガー: 有効期限までの日数または有効期間のパーセンテージで指定されます  
 
-     - アクション: アクションの種類 ( *emailContacts* または *autoRenew* ) を指定します  
+     - アクション: アクションの種類 (*emailContacts* または *autoRenew*) を指定します  
 
 -   発行者:x509 証明書の発行に使用する証明書発行者に関するパラメーターです。  
 -   ポリシー属性: ポリシーに関連付けられた属性が含まれます  

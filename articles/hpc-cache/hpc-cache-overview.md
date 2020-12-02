@@ -4,15 +4,15 @@ description: ハイパフォーマンス コンピューティングのための
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 09/03/2020
+ms.date: 11/23/2020
 ms.author: v-erkel
 ms.custom: references_regions
-ms.openlocfilehash: b51cd938747c1cfa82b397160f077474e176b2f5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0568d9b7fea2e4e048c0c1d1b2d6f81d64a9b114
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91612967"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519338"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Azure HPC Cache とは
 
@@ -64,6 +64,8 @@ Azure HPC Cache を使用できる場所については、[リージョン別の
 * 西ヨーロッパ
 * US Gov アリゾナ
 * US Gov バージニア州
+
+Azure HPC Cache は 1 つのリージョンに属します。 それを他のリージョンに置かれている BLOB コンテナーに接続すれば、他のリージョンに格納されているデータにアクセスすることができます。 このキャッシュは、顧客データを永続的には格納しません。
 
 ## <a name="next-steps"></a>次のステップ
 

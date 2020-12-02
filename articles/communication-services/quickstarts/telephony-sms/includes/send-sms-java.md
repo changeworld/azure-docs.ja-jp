@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: chrwhit
-ms.openlocfilehash: 76aae596c145c736ae75e65f7f72fdbdcead5919
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: cb8e6934125630590a337ed7bf7f4c81b2b73bb3
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779461"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94915439"
 ---
 Communication Services Java SMS クライアント ライブラリを使用して SMS メッセージを送信することによって、Azure Communication Services の使用を開始します。
 
@@ -28,7 +28,7 @@ Communication Services Java SMS クライアント ライブラリを使用し�
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true) バージョン 8 以降。
+- [Java Development Kit (JDK)](/java/azure/jdk/?preserve-view=true&view=azure-java-stable) バージョン 8 以降。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
 - アクティブな Communication Services リソースと接続文字列。 [Communication Services リソースを作成します](../../create-communication-resource.md)。
 - SMS が有効になっている電話番号。 [電話番号を取得します](../get-phone-number.md)。
@@ -58,7 +58,7 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-sms</artifactId>
-    <version>1.0.0-beta.2</version>
+    <version>1.0.0-beta.3</version>
 </dependency>
 ```
 
@@ -85,7 +85,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.azure.communication.common.CommunicationClientCredential;
 import com.azure.communication.common.PhoneNumber;
 import com.azure.communication.sms.SmsClient;
 import com.azure.communication.sms.SmsClientBuilder;
@@ -113,7 +112,6 @@ Java 用 Azure Communication Services SMS クライアント ライブラリが�
 | SmsClientBuilder              | このクラスによって、SmsClient が作成されます。 これには、エンドポイント、資格情報、および http クライアントを指定します。 |
 | SmsClient                    | このクラスは、すべての SMS 機能に必要となります。 これを使用して、SMS メッセージを送信します。                |
 | SendSmsResponse               | このクラスには、SMS サービスからの応答が含まれます。                                          |
-| CommunicationClientCredential | このクラスによって署名要求が処理されます。                                                            |
 | PhoneNumber                   | このクラスは電話番号情報を保持します
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
@@ -123,20 +121,32 @@ Java 用 Azure Communication Services SMS クライアント ライブラリが�
 `main` メソッドに次のコードを追加します。
 
 ```java
+// Your can find your endpoint and access key from your resource in the Azure Portal
+String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
+String accessKey = "SECRET";
+
 // Create an HttpClient builder of your choice and customize it
 HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
-
-CommunicationClientCredential credential = new CommunicationClientCredential(accessKey);
 
 // Configure and build a new SmsClient
 SmsClient client = new SmsClientBuilder()
     .endpoint(endpoint)
-    .credential(credential)
+    .accessKey(accessKey)
     .httpClient(httpClient)
     .buildClient();
 ```
 
-`com.azure.core.http.HttpClient` インターフェイスを実装する任意のカスタム HTTP クライアントを使用して、クライアントを初期化できます。 上記のコードは、`azure-core` によって提供される [Azure Core Netty HTTP クライアント](https://docs.microsoft.com/java/api/overview/azure/core-http-netty-readme?view=azure-java-stable&preserve-view=true)の使用方法を示しています。
+`com.azure.core.http.HttpClient` インターフェイスを実装する任意のカスタム HTTP クライアントを使用して、クライアントを初期化できます。 上記のコードは、`azure-core` によって提供される [Azure Core Netty HTTP クライアント](/java/api/overview/azure/core-http-netty-readme?preserve-view=true&view=azure-java-stable)の使用方法を示しています。
+
+エンドポイントとアクセス キーを指定する代わりに、connectionString() 関数を使用して接続文字列全体を指定することもできます。 
+```java
+// Your can find your connection string from your resource in the Azure Portal
+String connectionString = "<connection_string>";
+SmsClient client = new SmsClientBuilder()
+    .connectionString(connectionString)
+    .httpClient(httpClient)
+    .buildClient();
+```
 
 ## <a name="send-an-sms-message"></a>SMS メッセージの送信
 

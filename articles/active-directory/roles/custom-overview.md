@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: deb030a708f2df5d95d2261304bb506c4fa5dcc6
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 0785d8070a60ae7594ea0b182a0238bf6b4b6a58
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378501"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95899464"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Azure Active Directory でのカスタム管理者ロール (プレビュー)
 
@@ -34,7 +34,7 @@ Azure AD のロールベースのアクセス制御は Azure AD のパブリッ�
 
 ロール定義を作成したら、ロールの割り当てを作成することによって、ロールをユーザーに割り当てることができます。 ロールの割り当てにより、指定したスコープでロール定義に含まれるアクセス許可がユーザーに付与されます。 この 2 ステップのプロセスにより、1 つのロール定義を作成し、異なるスコープで何度もそれを割り当てることができます。 スコープでは、ロール メンバーがアクセスできる Azure AD リソースのセットを定義します。 最も一般的なスコープは、組織全体 (org-wide) のスコープです。 カスタム ロールは、組織全体のスコープで割り当てることができます。つまり、ロール メンバーには組織内のすべてのリソースに対してロールのアクセス許可が付与されます。 カスタム ロールは、オブジェクトのスコープで割り当てることもできます。 オブジェクト スコープの例は単一のアプリケーションです。 同じロールを、あるユーザーに対しては組織内のすべてのアプリケーションについて割り当て、別のユーザーに対しては Contoso Expense Reports アプリだけのスコープで割り当てる、といったことができます。  
 
-Azure AD の組み込みロールとカスタム ロールは、[Azure のロールベースのアクセス制御 (Azure RBAC)](../../active-directory-b2c/overview.md) と同様の概念で動作します。 [これら 2 つのロールベースのアクセス制御システムの違い](../../role-based-access-control/rbac-and-directory-admin-roles.md)は、Azure RBAC では Azure Resource Management を使用して仮想マシンやストレージなどの Azure リソースへのアクセスが制御されるのに対し、Azure AD カスタム ロールでは Graph API を使用して Azure AD リソースへのアクセスが制御されることです。 どちらのシステムにも、ロールの定義とロールの割り当ての概念が利用されています。 Azure AD RBAC のアクセス許可を Azure RBAC ロールに含めることはできません。また、その逆もできません。
+Azure AD の組み込みロールとカスタム ロールは、[Azure のロールベースのアクセス制御 (Azure RBAC)](../../active-directory-b2c/overview.md) と同様の概念で動作します。 [これら 2 つのロールベースのアクセス制御システムの違い](../../role-based-access-control/rbac-and-directory-admin-roles.md)は、Azure RBAC では Azure Resource Management を使用して仮想マシンやストレージなどの Azure リソースへのアクセスが制御されるのに対し、Azure AD カスタム ロールでは Graph API を使用して Azure AD リソースへのアクセスが制御されることです。 どちらのシステムにも、ロールの定義とロールの割り当ての概念が利用されています。 Azure AD RBAC のアクセス許可を Azure ロールに含めることはできません。また、その逆もできません。
 
 ### <a name="how-azure-ad-determines-if-a-user-has-access-to-a-resource"></a>ユーザーがリソースへのアクセス権を持っているどうかを Azure AD が特定する方法
 
@@ -68,7 +68,7 @@ Azure AD の組み込みロールとカスタム ロールは、[Azure のロー
 
 ### <a name="security-principal"></a>セキュリティ プリンシパル
 
-セキュリティ プリンシパルとは、Azure AD リソースへのアクセスが割り当てられるユーザーまたはサービス プリンシパルを表します。 " *ユーザー* " は、Azure Active Directory 内にプロファイルを持つ個人です。
+セキュリティ プリンシパルとは、Azure AD リソースへのアクセスが割り当てられるユーザーまたはサービス プリンシパルを表します。 "*ユーザー*" は、Azure Active Directory 内にプロファイルを持つ個人です。
 
 ### <a name="role"></a>Role
 

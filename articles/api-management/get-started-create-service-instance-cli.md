@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: ''
 ms.date: 09/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 8e41e20752e4203bf9916813b86cd901f4f75c09
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 863cb6cd10664e14966898045cb2b1861ef75b9f
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708225"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887452"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-cli-preview"></a>クイック スタート」を参照してください。Azure CLI を使用して新しい Azure API Management サービス インスタンスを作成する (プレビュー)
 
@@ -22,9 +22,9 @@ API Management (APIM) が組織にもたらす利点は、外部、パートナ�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Azure Cloud Shell または Azure CLI のローカル インストールを使用して、このクイック スタートを完了できます。 これをローカルで使用する場合は、バージョン 2.11.1 以降をお勧めします。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+- この記事では、Azure CLI のバージョン 2.11.1 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -75,7 +75,7 @@ NAME         RESOURCE GROUP    LOCATION    GATEWAY ADDR                       PU
 myapim       myResourceGroup   Central US  https://myapim.azure-api.net       203.0.113.1                 Online    Developer  1
 ```
 
-API Management サービス インスタンスがオンラインになったら、使用する準備ができています。 [最初の API をインポートして公開する](import-and-publish.md)ためのチュートリアルを開始します。
+API Management サービス インスタンスがオンラインになったら、使用する準備ができています。 [最初の API をインポートして発行する](import-and-publish.md)チュートリアルを開始します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

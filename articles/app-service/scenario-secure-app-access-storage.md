@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - マネージド ID を使用して Web アプリからストレージにアクセスする | Azure
-description: このチュートリアルでは、マネージド ID を使用してアプリに代わって Azure ストレージにアクセスする方法について説明します。
+description: このチュートリアルでは、マネージド ID を使用して、アプリに代わって Azure Storage にアクセスする方法について説明します。
 services: storage, app-service-web
 author: rwike77
 manager: CelesteDG
@@ -10,28 +10,30 @@ ms.workload: identity
 ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: de179ad1e310df1fdeaed2173a83076922f3dccc
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 250e95b33b985aedcc1b1537f57338d29e848451
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428352"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96020213"
 ---
-# <a name="tutorial-access-azure-storage-from-a-web-app"></a>チュートリアル: Web アプリから Azure ストレージにアクセスする
+# <a name="tutorial-access-azure-storage-from-a-web-app"></a>チュートリアル:Web アプリから Azure Storage にアクセスする
 
-マネージド ID を使用して Azure App Service で動作している Web アプリ (サインインしているユーザーではありません) に代わって Azure ストレージにアクセスする方法について説明します。
+マネージド ID を使用して、Azure App Service で実行されている Web アプリ (サインインしているユーザーではありません) に代わって Azure Storage にアクセスする方法について説明します。
 
-:::image type="content" alt-text="ストレージへのアクセス" source="./media/scenario-secure-app-access-storage/web-app-access-storage.svg" border="false":::
+:::image type="content" alt-text="ストレージにアクセスする方法を示す図。" source="./media/scenario-secure-app-access-storage/web-app-access-storage.svg" border="false":::
 
-Web アプリから Azure データ プレーン (Azure Storage、SQL Azure、Azure Key Vault、またはその他のサービス) へのアクセスを追加する必要があります。  共有キーを使用することもできますが、その場合、シークレットを作成、デプロイ、および管理できるユーザーの運用上のセキュリティについて配慮する必要があります。  また、キーが GitHub にチェックインされる可能性もあります。ハッカーはそのスキャン方法を知っています。 Web アプリにデータへのアクセスを許可するより安全な方法では、[マネージド ID](/azure/active-directory/managed-identities-azure-resources/overview) を使用します。 Azure Active Directory のマネージド ID を使用すると、App Services は、アプリの資格情報を必要とすることなく、ロールベースのアクセス制御 (RBAC) を介してリソースにアクセスできます。 マネージド ID を対象の Web アプリに割り当てると、Azure では証明書の作成と配布が行われます。  シークレットまたはアプリの資格情報の管理について心配する必要はありません。
+Web アプリから Azure データ プレーン (Azure Storage、Azure SQL Database、Azure Key Vault、またはその他のサービス) へのアクセスを追加するとします。 共有キーを使用することもできますが、その場合、シークレットを作成、デプロイ、および管理できるユーザーの運用上のセキュリティについて配慮する必要があります。 また、キーが GitHub にチェックインされる可能性もあります。ハッカーはそのスキャン方法を知っています。 Web アプリにデータへのアクセスを許可するより安全な方法では、[マネージド ID](/azure/active-directory/managed-identities-azure-resources/overview) を使用します。
+
+Azure Active Directory (Azure AD) のマネージド ID を使用すると、App Service は、アプリの資格情報を必要とせずに、ロールベースのアクセス制御 (RBAC) を使用してリソースにアクセスできます。 マネージド ID を対象の Web アプリに割り当てると、Azure では証明書の作成と配布が行われます。 シークレットまたはアプリの資格情報の管理について心配する必要はありません。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 >
-> * Web アプリ上でシステム割り当てマネージド ID を作成する
-> * ストレージ アカウントと Blob Storage コンテナーを作成する
-> * マネージド ID を使用して Web アプリからストレージにアクセスする
+> * Web アプリ上でシステム割り当てマネージド ID を作成する。
+> * ストレージ アカウントと Azure Blob Storage コンテナーを作成する。
+> * マネージド ID を使用して Web アプリからストレージにアクセスする。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -39,13 +41,13 @@ Web アプリから Azure データ プレーン (Azure Storage、SQL Azure、Az
 
 * [App Service の認証および承認モジュールが有効になっている](scenario-secure-app-authentication-app-service.md) Azure App Service で実行されている Web アプリケーション。
 
-## <a name="enable-managed-identity-on-app"></a>アプリのマネージド ID を有効にする
+## <a name="enable-managed-identity-on-an-app"></a>アプリでマネージド ID を有効にする
 
-Visual Studio を使用して Web アプリを作成して発行すると、アプリでマネージド ID が有効になります。 ご利用のアプリ サービスで、左側のナビゲーション ペインの **[ID]** を選択し、 **[システム割り当て済み]** を選択します。  **[Status]\(状態\)** が **[オン]** に設定されていることを確認します。  そうでない場合は、 **[保存]** 、 **[はい]** の順にクリックして、システム割り当てマネージド ID を有効にします。  マネージド ID が有効になっている場合は、その状態が *[オン]* に設定されており、オブジェクト ID が使用可能です。
+Visual Studio を使用して Web アプリを作成して発行すると、アプリでマネージド ID が有効になります。 App Service で、左ペインの **[ID]** を選択し、 **[システム割り当て済み]** を選択します。 **[Status]\(状態\)** が **[オン]** に設定されていることを確認します。 そうでない場合は、 **[保存]** を選択し、 **[はい]** を選択して、システム割り当てマネージド ID を有効にします。 マネージド ID が有効になると、状態が **[オン]** に設定され、オブジェクト ID が使用可能になります。
 
-:::image type="content" alt-text="システム割り当て ID" source="./media/scenario-secure-app-access-storage/create-system-assigned-identity.png":::
+:::image type="content" alt-text="[システム割り当て済み] ID オプションを示すスクリーンショット。" source="./media/scenario-secure-app-access-storage/create-system-assigned-identity.png":::
 
-これにより、 **[認証/承認]** ブレードで作成されたアプリ ID とは異なる新しいオブジェクト ID が作成されます。  システム割り当てマネージド ID のオブジェクト ID をコピーしておきます。これは後で必要になります。
+この手順により、 **[認証/承認]** ペインで作成されたアプリ ID とは異なる新しいオブジェクト ID が作成されます。 システム割り当てマネージド ID のオブジェクト ID をコピーしておきます。 この情報は後で必要になります。
 
 ## <a name="create-a-storage-account-and-blob-storage-container"></a>ストレージ アカウントと Blob Storage コンテナーを作成する
 
@@ -59,11 +61,11 @@ Azure Storage 内の BLOB はコンテナーにまとめられます。 この�
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-Azure Portal で汎用 v2 ストレージ アカウントを作成するには、次の手順に従います。
+Azure portal で汎用 v2 ストレージ アカウントを作成するには、次の手順に従います。
 
-1. Azure portal のメニューで **[すべてのサービス]** を選択します。 リソースの一覧で「**ストレージ アカウント**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[ストレージ アカウント]** を選択します。
+1. Azure portal のメニューで、**[すべてのサービス]** を選択します。 リソースの一覧で、「**Storage Accounts**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[ストレージ アカウント]** を選択します。
 
-1. 表示された **[ストレージ アカウント]** ウィンドウで **[追加]** を選択します。
+1. 表示された **[ストレージ アカウント]** ウィンドウで、 **[追加]** を選択します。
 
 1. ストレージ アカウントを作成するサブスクリプションを選択します。
 
@@ -75,13 +77,13 @@ Azure Portal で汎用 v2 ストレージ アカウントを作成するには�
 
 1. 以下のフィールドは既定値に設定されたままにします。
 
-|フィールド|値|
-|--|--|
-|デプロイメント モデル|リソース マネージャー|
-|パフォーマンス|Standard|
-|アカウントの種類|StorageV2 (汎用 v2)|
-|レプリケーション|読み取りアクセス地理冗長ストレージ (RA-GRS)|
-|アクセス層|ホット|
+    |フィールド|値|
+    |--|--|
+    |デプロイメント モデル|リソース マネージャー|
+    |パフォーマンス|Standard|
+    |アカウントの種類|StorageV2 (汎用 v2)|
+    |レプリケーション|読み取りアクセス地理冗長ストレージ (RA-GRS)|
+    |アクセス層|ホット|
 
 1. **[確認および作成]** を選択して、ストレージ アカウントの設定を確認し、アカウントを作成します。
 
@@ -89,9 +91,9 @@ Azure Portal で汎用 v2 ストレージ アカウントを作成するには�
 
 Azure Storage で Blob Storage コンテナーを作成するには、次の手順に従います。
 
-1. Azure Portal で新しいストレージ アカウントに移動します。
+1. Azure portal で新しいストレージ アカウントに移動します。
 
-1. ストレージ アカウントの左側のメニューで、 **[Blob service]** セクションまでスクロールしてから、 **[コンテナー]** を選択します。
+1. ストレージ アカウントの左側のメニューで、 **[Blob service]** セクションまでスクロールし、 **[コンテナー]** を選択します。
 
 1. **[+ コンテナー]** ボタンを選択します。
 
@@ -103,7 +105,9 @@ Azure Storage で Blob Storage コンテナーを作成するには、次の手�
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-汎用 v2 ストレージ アカウントと Blob Storage コンテナーを作成するには、次のスクリプトを実行します。 対象の Web アプリが含まれているリソース グループの名前を指定します。 ストレージ アカウントの名前を入力します。 選択する名前は Azure 全体で一意である必要があります。 また、名前の長さは 3 から 24 文字とし、数字と小文字のみを使用できます。 対象のストレージ アカウントの場所を指定します。  対象のサブスクリプションに有効な場所のリストを表示するには、```Get-AzLocation | select Location``` を実行します。 コンテナー名は小文字である必要があり、英文字または数字で始まる必要があり、英文字、数字、ダッシュ (-) 文字のみを含めることができます。
+汎用 v2 ストレージ アカウントと Blob Storage コンテナーを作成するには、次のスクリプトを実行します。 対象の Web アプリが含まれているリソース グループの名前を指定します。 ストレージ アカウントの名前を入力します。 選択する名前は Azure 全体で一意である必要があります。 また、名前の長さは 3 から 24 文字とし、数字と小文字のみを使用できます。
+
+対象のストレージ アカウントの場所を指定します。 対象のサブスクリプションに有効な場所のリストを表示するには、```Get-AzLocation | select Location``` を実行します。 コンテナー名は小文字である必要があり、英文字または数字で始まる必要があり、英文字、数字、ダッシュ (-) 文字のみを含めることができます。
 
 山かっこ内のプレースホルダーの値は、忘れずに実際の値に置き換えてください。
 
@@ -128,7 +132,9 @@ New-AzStorageContainer -Name $containerName -Context $ctx -Permission blob
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-汎用 v2 ストレージ アカウントと Blob Storage コンテナーを作成するには、次のスクリプトを実行します。 対象の Web アプリが含まれているリソース グループの名前を指定します。 ストレージ アカウントの名前を入力します。 選択する名前は Azure 全体で一意である必要があります。 また、名前の長さは 3 から 24 文字とし、数字と小文字のみを使用できます。 対象のストレージ アカウントの場所を指定します。  コンテナー名は小文字である必要があり、英文字または数字で始まる必要があり、英文字、数字、ダッシュ (-) 文字のみを含めることができます。
+汎用 v2 ストレージ アカウントと Blob Storage コンテナーを作成するには、次のスクリプトを実行します。 対象の Web アプリが含まれているリソース グループの名前を指定します。 ストレージ アカウントの名前を入力します。 選択する名前は Azure 全体で一意である必要があります。 また、名前の長さは 3 から 24 文字とし、数字と小文字のみを使用できます。 
+
+対象のストレージ アカウントの場所を指定します。 コンテナー名は小文字である必要があり、英文字または数字で始まる必要があり、英文字、数字、ダッシュ (-) 文字のみを含めることができます。
 
 次の例では、Azure AD アカウントを使用して、コンテナーの作成操作を承認します。 コンテナーを作成する前に、ストレージ BLOB データ共同作成者ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。
 
@@ -161,20 +167,21 @@ az storage container create \
 
 ## <a name="grant-access-to-the-storage-account"></a>ストレージ アカウントへのアクセスを許可する
 
-BLOB の作成、読み取り、または削除を行う前に、ストレージ アカウントへのアクセスを Web アプリに許可する必要があります。 前の手順では、App Service 上で実行されている Web アプリをマネージド ID を使用して構成しました。  Azure RBAC を使用すると、セキュリティ プリンシパルと同様に、別のリソースへのアクセスをマネージド ID に付与できます。 "*ストレージ BLOB データ共同作成者*" ロールを割り当てると、(システム割り当てマネージド ID で表される) Web アプリには、BLOB コンテナーとデータへの読み取り、書き込み、および削除アクセス権が付与されます。
+BLOB の作成、読み取り、または削除を行う前に、ストレージ アカウントへのアクセスを Web アプリに許可する必要があります。 前の手順では、App Service で実行されている Web アプリをマネージド ID を使用して構成しました。 Azure RBAC を使用すると、セキュリティ プリンシパルと同様に、別のリソースへのアクセス権をマネージド ID に付与できます。 ストレージ BLOB データ共同作成者ロールにより、(システム割り当てマネージド ID で表される) Web アプリに、BLOB コンテナーとデータへの読み取り、書き込み、削除アクセス権が付与されます。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
-[Azure portal](https://portal.azure.com) で、Web アプリにアクセスを許可するストレージ アカウントに移動します。  左側のナビゲーションで **[アクセス制御 (IAM)]** を選択し、 **[ロールの割り当て]** を選択します。  ストレージ アカウントへのアクセス権を持つユーザーのリストが表示されます。  ここで、ストレージ アカウントへのアクセスを必要とするアプリ サービスであるロボットに、ロールの割り当てを追加します。  **[追加]** -> **[ロール割り当ての追加]** の順に選択します。
 
-**[ロール]** で、 **[ストレージ BLOB データ共同作成者]** を選択して、対象の Web アプリにストレージ BLOB の読み取りアクセス権を付与します。  **[アクセスの割り当て先]** で、 **[App Service]** を選択します。  **[サブスクリプション]** で、対象のサブスクリプションを選択します。  次に、アクセス権を与える App Service を選択します。  **[保存]** をクリックします。
+[Azure portal](https://portal.azure.com) で、Web アプリにアクセスを許可するストレージ アカウントに移動します。 左ペインで **[アクセス制御 (IAM)]** を選択し、 **[ロールの割り当て]** を選択します。 ストレージ アカウントへのアクセス権を持つユーザーのリストが表示されます。 ここで、ストレージ アカウントへのアクセスを必要とするアプリ サービスであるロボットに、ロールの割り当てを追加します。 **[追加]**  >  **[ロール割り当ての追加]** の順に選択します。
 
-:::image type="content" alt-text="ロールの割り当てを追加する" source="./media/scenario-secure-app-access-storage/add-role-assignment.png":::
+**[ロール]** で、 **[ストレージ BLOB データ共同作成者]** を選択して、対象の Web アプリにストレージ BLOB の読み取りアクセス権を付与します。 **[アクセスの割り当て先]** で、 **[App Service]** を選択します。 **[サブスクリプション]** で、対象のサブスクリプションを選択します。 次に、アクセスを提供する App Service を選択します。 **[保存]** を選択します。
+
+:::image type="content" alt-text="[ロールの割り当ての追加] 画面を示すスクリーンショット。" source="./media/scenario-secure-app-access-storage/add-role-assignment.png":::
 
 これで、Web アプリからストレージ アカウントにアクセスできるようになりました。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-次のスクリプトを実行して、(システム割り当てマネージド ID で表される) 対象の Web アプリに、対象のストレージ アカウントの "*ストレージ BLOB データ共同作成者*" ロールを割り当てます。
+次のスクリプトを実行して、(システム割り当てマネージド ID で表される) Web アプリに、ストレージ アカウントのストレージ BLOB データ共同作成者ロールを割り当てます。
 
 ```powershell
 $resourceGroup = "securewebappresourcegroup"
@@ -188,7 +195,7 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Storage Blob Data Cont
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-次のスクリプトを実行して、(システム割り当てマネージド ID で表される) 対象の Web アプリに、対象のストレージ アカウントの "*ストレージ BLOB データ共同作成者*" ロールを割り当てます。
+次のスクリプトを実行して、(システム割り当てマネージド ID で表される) Web アプリに、ストレージ アカウントのストレージ BLOB データ共同作成者ロールを割り当てます。
 
 ```azurecli-interactive
 spID=$(az resource list -n SecureWebApp20201102125811 --query [*].identity.principalId --out tsv)
@@ -202,15 +209,15 @@ az role assignment create --assignee $spID --role 'Storage Blob Data Contributor
 
 ## <a name="access-blob-storage-net"></a>Blob Storage にアクセスする (.NET)
 
-[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) クラスは、Azure Storage に対する要求をコードで承認するためにトークン資格情報を取得する際に使用されます。  [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) クラスのインスタンスを作成します。これは、マネージド ID を使用し、トークンを取得してサービス クライアントにアタッチします。 次のコード例では、認証済みのトークン資格情報を取得し、それを使用して、新しい BLOB をアップロードするサービス クライアント オブジェクトを作成します。  
+[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) クラスは、Azure Storage に対する要求をコードで承認するためにトークン資格情報を取得する際に使用されます。 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) クラスのインスタンスを作成します。これは、マネージド ID を使用し、トークンを取得してサービス クライアントにアタッチします。 次のコード例では、認証済みのトークン資格情報を取得し、それを使用して、新しい BLOB をアップロードするサービス クライアント オブジェクトを作成します。
 
 ### <a name="install-client-library-packages"></a>クライアント ライブラリ パッケージをインストールする
 
-Blob Storage サービスを使用するには、[Blob Storage NuGet パッケージ](https://www.nuget.org/packages/Azure.Storage.Blobs/)をインストールします。また、Azure AD 資格情報で認証するには、[.NET 用 Azure Identity クライアント ライブラリ NuGet パッケージ](https://www.nuget.org/packages/Azure.Identity/)をインストールします。  クライアント ライブラリは、.NET Core コマンドライン インターフェイスまたは Visual Studio のパッケージ マネージャー コンソールを使用してインストールします。
+Blob Storage を使用するための [Blob Storage NuGet パッケージ](https://www.nuget.org/packages/Azure.Storage.Blobs/)と、Azure AD の資格情報で認証するための [.NET 用 Azure Identity クライアント ライブラリ NuGet パッケージ](https://www.nuget.org/packages/Azure.Identity/)をインストールします。 クライアント ライブラリは、.NET Core コマンド ライン インターフェイスまたは Visual Studio のパッケージ マネージャー コンソールを使用してインストールします。
 
 # <a name="command-line"></a>[コマンド ライン](#tab/command-line)
 
-コマンド ラインを開き、プロジェクト ファイルが含まれるディレクトリに切り替えます。
+コマンド ラインを開き、プロジェクト ファイルが含まれているディレクトリに切り替えます。
 
 インストール コマンドを実行します。
 
@@ -280,17 +287,17 @@ static public async Task UploadBlob(string accountName, string containerName, st
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このチュートリアルを完了し、Web アプリまたは関連するリソースが不要になった場合は、[作成したリソースをクリーンアップ](scenario-secure-app-clean-up-resources.md)します。
+このチュートリアルを完了し、Web アプリや関連するリソースが不要になった場合は、[作成したリソースをクリーンアップ](scenario-secure-app-clean-up-resources.md)します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、以下の内容を学習しました。
+このチュートリアルでは、次の作業を行う方法を学びました。
 
 > [!div class="checklist"]
 >
-> * システム割り当てマネージド ID を作成する
-> * ストレージ アカウントと Blob Storage コンテナーを作成する
-> * マネージド ID を使用して Web アプリからストレージにアクセスする
+> * システム割り当てマネージド ID を作成する。
+> * ストレージ アカウントと Blob Storage コンテナーを作成する。
+> * マネージド ID を使用して Web アプリからストレージにアクセスする。
 
 > [!div class="nextstepaction"]
 > [ユーザーに代わって App Service から Microsoft Graph にアクセスする](scenario-secure-app-access-microsoft-graph-as-user.md)

@@ -4,12 +4,12 @@ description: Azure portal を使用してプライベート Azure コンテナ�
 ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: f4f16506a36acfe8845e85caf2d337f992f0f332
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 00ed6b4569d22739051198c5b0c60987f783a87f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746683"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020043"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure コンテナー レジストリを作成する
 
@@ -31,21 +31,21 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 **[基本]** タブで **[リソース グループ]** と **[レジストリ名]** の値を入力します。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 このクイック スタートでは、`myResourceGroup` という名前の新しいリソース グループを `West US` に作成し、 **[SKU]** には [Basic] を選択します。
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="ポータルでコンテナー レジストリに移動する":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="ポータルでコンテナー レジストリを作成する":::
 
 残りの設定は既定値のままにします。 次に、 **[Review + create]\(確認と作成\)** を選択します。 設定を確認したら **[作成]** を選択します。
 
-このクイック スタートでは、 *Basic* レジストリを作成します。これは、Azure Container Registry について学習している開発者にとって、コストが最適なオプションです。 利用可能なサービス レベル (SKU) の詳細については、[コンテナー レジストリのサービス レベル][container-registry-skus]に関するページを参照してください。
+このクイック スタートでは、*Basic* レジストリを作成します。これは、Azure Container Registry について学習している開発者にとって、コストが最適なオプションです。 利用可能なサービス レベル (SKU) の詳細については、[コンテナー レジストリのサービス レベル][container-registry-skus]に関するページを参照してください。
 
 **"デプロイメントに成功しました"** というメッセージが表示されたら、ポータルでコンテナー レジストリを選択します。 
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="ポータルでコンテナー レジストリに移動する":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="ポータルでのコンテナー レジストリの概要":::
 
 レジストリ名と **[ログイン サーバー]** の値を書き留めておいてください。 後続の手順で Docker でイメージをプッシュし、プルするとき、これらの値を使用します。
 
 ## <a name="log-in-to-registry"></a>レジストリへのログイン
 
-コンテナー イメージをプッシュしたりプルしたりするには、あらかじめレジストリ インスタンスにログインしておく必要があります。 ローカル コンピューターで [Azure CLI にサインイン][get-started-with-azure-cli]し、[az acr login][az-acr-login] コマンドを実行します。 (Azure CLI でログインする際は、レジストリ名のみを指定します。 "azurecr.io" ドメイン サフィックスは含めないでください)
+コンテナー イメージをプッシュしたりプルしたりするには、あらかじめレジストリ インスタンスにログインしておく必要があります。 ローカル コンピューターで [Azure CLI にサインイン][get-started-with-azure-cli]し、[az acr login][az-acr-login] コマンドを実行します。 Azure CLI でログインする際は、レジストリ名のみを指定します。 ログイン サーバー名は使用しないでください。ドメインのサフィックスが含まれています (`azurecr.io` など)。
 
 ```azurecli
 az acr login --name <registry-name>
@@ -65,7 +65,7 @@ az acr login --name mycontainerregistry
 
 レジストリ内のイメージを一覧表示するには、ポータルでレジストリに移動し、 **[リポジトリ]** を選択してから、`docker push` で作成した **hello-world** リポジトリを選択します。
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="ポータルでコンテナー レジストリに移動する":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="ポータルでコンテナー イメージを一覧表示する":::
 
 **hello-world** リポジトリを選択することによって、 **[タグ]** に `v1` タグが付いたイメージが表示されます。
 
@@ -75,7 +75,7 @@ az acr login --name mycontainerregistry
 
 リソースをクリーンアップするには、ポータルで **myResourceGroup** リソース グループに移動します。 リソース グループが読み込まれたら、 **[リソース グループの削除]** をクリックして、リソース グループ、コンテナー レジストリ、およびそこに格納されているコンテナー イメージを削除します。
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="ポータルでコンテナー レジストリに移動する":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="ポータルでリソース グループを削除する":::
 
 
 ## <a name="next-steps"></a>次のステップ

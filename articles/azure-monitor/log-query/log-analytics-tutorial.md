@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: bd6ba091b3715741af929613600a59511e7cdb0b
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 16292999bf8c01615a9125ffaa9f93fc4b2a8ec2
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94495365"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95756215"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics のチュートリアル
 Log Analytics は、Azure Monitor ログによって収集されたデータからログ クエリを編集して実行し、その結果を対話形式で分析する Azure portal のツールです。 Log Analytics クエリを使用すると、特定の条件に一致するレコードの取得、傾向の特定、パターンの分析を行って、データに関するさまざまな分析情報を入手できます。 
@@ -23,7 +23,7 @@ Log Analytics は、Azure Monitor ログによって収集されたデータか�
 > * 単純なクエリの記述と実行、クエリの時間範囲の変更
 > * クエリ結果のフィルター処理、並べ替え、グループ化
 > * クエリ結果のビジュアルの表示、変更、共有
-> * クエリと結果の保存、読み込み、エクスポート、コピー
+> * クエリと結果の読み込み、エクスポート、コピー
 
 > [!IMPORTANT]
 > このチュートリアルでは、クエリ自体を操作するのではなく、Log Analytics の機能を使用してクエリを作成して実行します。 Log Analytics の機能を活用して、1 つのクエリを作成し、別のサンプル クエリを使用します。 クエリの構文を学習し、クエリ自体の直接編集を開始する準備ができたら、[Kusto クエリ言語のチュートリアル](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor)を完了してください。 そのチュートリアルでは、このチュートリアルで学習するいくつかの機能を利用して、Log Analytics 内で編集して実行できるいくつかのサンプル クエリについて説明しています。

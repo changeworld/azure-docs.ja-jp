@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperfq1
-ms.openlocfilehash: edcc94050880544a6c2de54ff27f833f1c60f99f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: f18f1184f921aca4f2c1e33ac00dcf14c63b24eb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683647"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95893360"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA Portal の管理
 
@@ -146,7 +146,7 @@ ms.locfileid: "94683647"
 - 同じテナント内の 2 つの組織 ID 間でサブスクリプションまたはアカウント所有権の譲渡を行う場合は、Azure RBAC ポリシーと既存のサービス管理者ロールおよび共同管理者ロールが保持されます。
 - 異なるテナント間で行うサブスクリプションまたはアカウント所有権の譲渡では、Azure RBAC ポリシーとロールの割り当てが失われます。
 - ポリシーと管理者ロールが、異なるディレクトリ間で転送されることはありません。 サービス管理者は、ターゲット アカウントの所有者に更新されます。
-- テナント間でサブスクリプションを譲渡する際に、RBAC ポリシーやロールの割り当てが失われるのを防ぐために、 **[Move the subscriptions to the recipient’s Azure AD tenant]\(受け取り側の Azure AD テナントにサブスクリプションを移動する\)** チェック ボックスは必ず **オフ** のままにしてください。 そうすることで、現在の Azure AD テナントにあるサービス、RBAC ロール、ポリシーは維持され、アカウントの課金所有権だけが譲渡されます。  
+- テナント間でサブスクリプションを譲渡する際に、Azure RBAC ポリシーやロールの割り当てが失われるのを防ぐために、 **[Move the subscriptions to the recipient’s Azure AD tenant]\(受け取り側の Azure AD テナントにサブスクリプションを移動する\)** チェック ボックスは必ず **オフ** のままにしてください。 そうすることで、現在の Azure AD テナントにあるサービス、Azure ロール、ポリシーは維持され、アカウントの課金所有権だけが譲渡されます。  
     :::image type="content" source="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="サブスクリプションを Azure AD テナントに移動するためのチェック ボックスがオフになっている画像" lightbox="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
 
 
@@ -282,7 +282,7 @@ Azure EA Portal は、Azure EA のコストと使用状況を管理するのに�
 
 各ロールには、さまざまなレベルのアクセス権と特権があります。
 
-ユーザー ロールの詳細については、[「エンタープライズ ユーザー ロール」](https://docs.microsoft.com/azure/manage/understand-ea-roles#enterprise-user-roles)を参照してください。
+ユーザー ロールの詳細については、[「エンタープライズ ユーザー ロール」](/azure/cost-management-billing/manage/understand-ea-roles#enterprise-user-roles)を参照してください。
 
 ## <a name="add-an-azure-ea-account"></a>Azure EA アカウントを追加する
 

@@ -2,13 +2,13 @@
 title: チュートリアル - Azure に vSphere クラスターをデプロイする
 description: Azure VMware Solution を使用して Azure に vSphere クラスターをデプロイする方法について説明します
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: b673a67fac734c9cb63e96b6a0c3dc9182f4b994
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 11/19/2020
+ms.openlocfilehash: 93937f8ca0918494810885f5cb45de571a6e1529
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952286"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966311"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>チュートリアル:Azure に Azure VMware Solution のプライベート クラウドをデプロイする
 
@@ -16,7 +16,7 @@ Azure VMware Solution を使用すると、Azure に vSphere クラスターを�
 
 Azure VMware Solution では、最初はオンプレミスの vCenter でプライベート クラウドを管理することができないため、追加の構成と接続が必要です。 このチュートリアルでは、これらの手順と、関連する前提条件について説明します。
 
-このチュートリアルでは、以下の内容を学習します。
+このチュートリアルでは、次の方法について説明します。
 
 > [!div class="checklist"]
 > * Azure VMware Solution のプライベート クラウドを作成する
@@ -43,7 +43,7 @@ Azure VMware Solution では、最初はオンプレミスの vCenter でプラ�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure portal の代わりに、Azure Cloud Shell が使用されている Azure CLI を使って、Azure VMware Solution のプライベート クラウドを作成できます。  Azure VMware Solution で使用できるコマンドの一覧については、[azure vmware コマンド](/cli/azure/ext/vmware/vmware)のページを参照してください。
+Azure portal の代わりに、Azure Cloud Shell が使用されている Azure CLI を使って、Azure VMware Solution のプライベート クラウドを作成できます。  Azure VMware Solution で使用できるコマンドの一覧については、[Azure VMware コマンド](/cli/azure/ext/vmware/vmware)のページを参照してください。
 
 #### <a name="open-azure-cloud-shell"></a>Azure Cloud Shell を開く
 
@@ -51,7 +51,7 @@ Azure portal の代わりに、Azure Cloud Shell が使用されている Azure 
 
 #### <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+`[az group create](/cli/azure/group)` コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 
@@ -77,7 +77,7 @@ az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --locati
 
 ## <a name="delete-an-azure-vmware-solution-private-cloud"></a>Azure VMware Solution のプライベート クラウドを削除する
 
-Azure VMware Solution のプライベート クラウドが不要になった場合は、削除できます。 Azure VMware Solution のプライベート クラウドには、分離されたネットワーク ドメイン、専用のサーバー ノードにプロビジョニングされる 1 つ以上の vSphere クラスター、および通常は多くの仮想マシンが含まれています。 プライベート クラウドを削除すると、すべての仮想マシン、そのデータ、およびクラスターが削除されます。 専用のベアメタル ノードが安全にワイプされ、空きプールに返されます。 顧客用にプロビジョニングされたネットワーク ドメインは削除されます。  
+Azure VMware Solution のプライベート クラウドが不要になった場合は、削除できます。 Azure VMware Solution のプライベート クラウドには、分離されたネットワーク ドメイン、専用サーバー ホスト上の 1 つ以上のプロビジョニング済み vSphere クラスター、およびいくつかの仮想マシンが含まれます。 プライベート クラウドを削除すると、すべての仮想マシン、そのデータ、およびクラスターが削除されます。 専用のベアメタル ホストは安全にワイプされ、空きプールに返されます。 顧客用にプロビジョニングされたネットワーク ドメインは削除されます。  
 
 > [!CAUTION]
 > プライベート クラウドを削除する操作は、元に戻すことができません。 プライベート クラウドを削除すると、実行中のすべてのワークロードとコンポーネントが中止され、パブリック IP アドレスを含むすべてのプライベート クラウド データと構成設定が破棄されるので、データを復旧することはできなくなります。
@@ -96,11 +96,11 @@ Azure VMware Solution のプライベート クラウドが不要になった場
 
 ## <a name="azure-vmware-commands"></a>Azure VMware コマンド
 
-Azure VMware Solution で使用できるコマンドの一覧については、[azure vmware コマンド](/cli/azure/ext/vmware/vmware)のページを参照してください。
+Azure VMware Solution で使用できるコマンドの一覧については、[Azure VMware コマンド](/cli/azure/ext/vmware/vmware)のページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、以下の内容を学習しました。
+このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
 > * Azure VMware Solution のプライベート クラウドを作成する

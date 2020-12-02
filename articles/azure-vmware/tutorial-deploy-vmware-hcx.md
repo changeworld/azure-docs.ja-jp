@@ -3,18 +3,21 @@ title: チュートリアル - VMware HCX をデプロイして構成する
 description: Azure VMware Solution プライベート クラウドのために VMware HCX ソリューションをデプロイして構成する方法について説明します。
 ms.topic: tutorial
 ms.date: 11/18/2020
-ms.openlocfilehash: 57bcf1bd3023e56f6a64b5d82d8f1fc90be9dd47
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: afb5c653ce7c4b4a453a4031c5664042357de6c0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888744"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95999631"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX をデプロイして構成する
 
 この記事では、Azure VMware Solution プライベート クラウドのためにオンプレミスの VMware HCX コネクタをデプロイして構成する方法について説明します。 VMware HCX を使用すると、さまざまな移行の種類を通じて、Azure VMware Solution やその他の接続されたサイトに VMware のワークロードを移行できます。 Azure VMware Solution では HCX Cloud Manager をデプロイして構成するため、オンプレミスの VMware データセンターで HCX コネクタをダウンロードし、アクティブ化して構成する必要があります。
 
 VMware HCX Advanced コネクタは、Azure VMware Solution にあらかじめデプロイされています。 最大 3 つのサイト接続 (オンプレミスからクラウド、またはクラウドからクラウド) がサポートされます。 3 つを超えるサイト接続が必要な場合は、[VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) アドオンを有効にするために[サポート リクエスト](https://portal.azure.com/#create/Microsoft.Support)を送信してください。 このアドオンは現在、プレビュー段階です。 
+
+>[!Note]
+>VMware Configuration Maximums ツールでは、オンプレミスの Connector と Cloud Manager との間におけるサイト ペアの最大数は 25 と説明されていますが、この場合も、ライセンスにより、Advanced Edition では 3 に、Enterprise Edition では 10 に制限されます。
 
 >[!NOTE]
 >VMware HCX Enterprise は、Azure VMware Solution でプレビュー サービスとして使用できます。 これは無料で、プレビュー サービスの使用条件が適用されます。 VMware HCX Enterprise サービスが一般提供されると、課金に切り替わるという通知が 30 日前に届きます。 サービスを無効にするかオプトアウトするオプションも用意されます。 VMware HCX Enterprise から VMware HCX Advanced への単純なダウングレード パスはありません。 ダウングレードする場合は、再デプロイする必要があり、ダウンタイムが発生します。

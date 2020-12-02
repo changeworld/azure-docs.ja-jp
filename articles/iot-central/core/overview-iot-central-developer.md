@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 39ce436cd59447b2b6f8d9f88deaab80b00dd639
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 82818c8db326889079948cd2b32b2ed0be6ab50d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812354"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990756"
 ---
 # <a name="iot-central-device-development-overview"></a>IoT Central デバイスの開発の概要
 
@@ -72,7 +72,7 @@ DPS を使用すると、次のことが可能になります。
 
 ### <a name="security"></a>Security
 
-デバイスと IoT Central アプリケーションの間の接続は、[共有アクセス署名](./concepts-get-connected.md#connect-devices-at-scale-using-sas)または業界標準の [X.509 証明書](./concepts-get-connected.md#connect-devices-using-x509-certificates)を使用してセキュリティ保護されます。
+デバイスと IoT Central アプリケーションの間の接続は、[共有アクセス署名](./concepts-get-connected.md#sas-group-enrollment)または業界標準の [X.509 証明書](./concepts-get-connected.md#x509-group-enrollment)を使用してセキュリティ保護されます。
 
 ### <a name="communication-protocols"></a>通信プロトコル
 
@@ -80,12 +80,58 @@ DPS を使用すると、次のことが可能になります。
 
 ## <a name="implement-the-device"></a>デバイスを実装する
 
+IoT Central デバイス テンプレートには、その種類のデバイスで実装されるべき動作を指定する "_モデル_" が含まれています。 動作には、テレメトリ、プロパティ、コマンドが含まれます。
+
+> [!TIP]
+> モデルは、[Digital Twins Definition Language (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl) JSON ファイルとして IoT Central からエクスポートできます。
+
+各モデルには、一意の "_デバイス ツイン モデル識別子_" (DTMI) があります (例: `dtmi:com:example:Thermostat;1`)。 デバイスは、IoT Central に接続するときに、実装するモデルの DTMI を送信します。 これにより、IoT Central で正しいデバイス テンプレートをデバイスに関連付けることができます。
+
+[IoT プラグ アンド プレイ](../../iot-pnp/overview-iot-plug-and-play.md)では、DTDL モデルの実装時にデバイスで遵守されるべき一連の規則を定義しています。
+
+[Azure IoT device SDK](#languages-and-sdks) では、IoT プラグ アンド プレイ規則がサポートされています。
+
+### <a name="device-model"></a>デバイスのモデル
+
+デバイス モデルは、[DTDL](https://github.com/Azure/opendigitaltwins-dtdl) を使用して定義されます。 この言語では以下を定義できます。
+
+- デバイスが送信するテレメトリ。 定義にはテレメトリの名前とデータ型が含まれます。 たとえば、デバイスは温度テレメトリを double として送信します。
+- デバイスによって IoT Central にレポートされるプロパティ。 プロパティ定義には名前とデータ型が含まれます。 たとえば、デバイスはバルブの状態をブール値としてレポートします。
+- デバイスが IoT Central から受け取ることができるプロパティ。 必要に応じて、プロパティを書き込み可能としてマークできます。 たとえば、IoT Central は目標温度を double としてデバイスに送信します。
+- デバイスが応答するコマンド。 定義には、コマンドの名前、およびパラメーターの名前とデータ型が含まれます。 たとえば、デバイスは、再起動するまでの待機時間 (秒数) を指定した再起動コマンドに応答します。
+
+DTDL モデルは、"_コンポーネントなし_" または "_複数コンポーネント_" のモデルにすることができます。
+
+- コンポーネントなしモデル: 単純なモデルでは、埋め込みコンポーネントまたはカスケードされたコンポーネントは使用されません。 すべてのテレメトリ、プロパティ、コマンドは、1 つの "_既定のコンポーネント_" として定義されます。 例については、[Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) モデルを参照してください。
+- 複数コンポーネント モデル: 2 つ以上のコンポーネントを含むより複雑なモデル。 これらのコンポーネントには、1 つの既定のコンポーネントと、入れ子になった 1 つ以上の追加コンポーネントが含まれます。 例については、[Temperature Controller](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) モデルを参照してください。
+
+詳細については、「[モデル内の IoT プラグ アンド プレイ コンポーネント](../../iot-pnp/concepts-components.md)」を参照してください。
+
+### <a name="conventions"></a>規約
+
+デバイスは、IoT Central とデータを交換するときに、IoT プラグ アンド プレイ規則に従う必要があります。 規則は次のとおりです。
+
+- IoT Central に接続するときに DTMI を送信する。
+- 正しく書式設定された JSON ペイロードとメタデータを IoT Central に送信する。
+- IoT Central からの書き込み可能なプロパティとコマンドに正しく応答する。
+- コンポーネントのコマンドの名前付け規則に従う。
+
+> [!NOTE]
+> 現在、IoT Central では、DTDL の **Array** および **Geospatial** データ型は完全にはサポートされていません。
+
+デバイスが IoT Central と交換する JSON メッセージの形式の詳細については、「[テレメトリ、プロパティ、およびコマンドのペイロード](concepts-telemetry-properties-commands.md)」を参照してください。
+
+IoT プラグ アンド プレイ規則の詳細については、「[IoT プラグ アンド プレイ規則](../../iot-pnp/concepts-convention.md)」を参照してください。
+
+### <a name="device-sdks"></a>デバイスの SDK
+
 デバイスの動作を実装するには、[Azure IoT device SDK](#languages-and-sdks) のいずれかを使用します。 コードでは、次の処理を行う必要があります。
 
 - デバイスを DPS に登録し、DPS からの情報を使用して、お使いの IoT Central アプリケーション内の内部 IoT ハブに接続します。
-- IoT Central 内のデバイス テンプレートで指定される形式でテレメトリを送信します。 IoT Central では、デバイス テンプレートを使用して、視覚化と分析のためのテレメトリの使用方法を決定します。
-- デバイスと IoT Central の間でプロパティ値を同期させます。 デバイス テンプレートでは、IoT Central が情報を表示できるように、プロパティ名とデータの種類を指定します。
-- デバイス テンプレートで指定するコマンドのコマンド ハンドラーを実装します。 デバイス テンプレートでは、デバイスで使用する必要があるコマンド名とパラメーターを指定します。
+- デバイスで実装されるモデルの DTMI を通知します。
+- デバイス モデルで指定された形式でテレメトリを送信します。 IoT Central では、デバイス テンプレート内のモデルを使用して、視覚化と分析にテレメトリを使用する方法を決定します。
+- デバイスと IoT Central の間でプロパティ値を同期させます。 モデルでは、IoT Central が情報を表示できるように、プロパティ名とデータ型を指定します。
+- モデルで指定されたコマンドのコマンド ハンドラーを実装します。 モデルでは、デバイスで使用する必要があるコマンド名とパラメーターを指定します。
 
 デバイス テンプレートの役割の詳細については、「[デバイス テンプレートとは](./concepts-device-templates.md)」を参照してください。
 

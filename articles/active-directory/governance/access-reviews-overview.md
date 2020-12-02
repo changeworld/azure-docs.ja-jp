@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 3f52b8d4e56ec854f93940ea77f09c3dff1d362e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 423a879889402d5d3df70a7fadae6451c8418238
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096004"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95743159"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD アクセス レビューとは
 
@@ -74,12 +74,20 @@ Azure AD を使用すると、組織内のユーザーおよび外部ユーザ�
 
 ディレクトリには、少なくとも、以下のタスクを行う従業員と同数の Azure AD Premium P2 ライセンスが必要です。
 
-- レビュー担当者として割り当てられているメンバーとゲスト ユーザー
-- 自己レビューを実行するメンバーとゲスト ユーザー
-- アクセス レビューを実行するグループ所有者
-- アクセス レビューを実行するアプリケーション所有者
+-   レビュー担当者として割り当てられているメンバー ユーザー
+-   自己レビューを実行するメンバー ユーザー
+-   アクセス レビューを実行するグループ所有者としてのメンバー ユーザー
+-   アクセス レビューを実行するアプリケーション所有者としてのメンバー ユーザー
 
-アクセス レビューを設定したり、設定を構成したり、レビューの決定を適用したりするグローバル管理者またはユーザー管理者ロールを持つユーザーには、Azure AD Premium P2 ライセンスは必要 **ありません** 。
+ゲスト ユーザーのライセンス要件は、ご使用のライセンス モデルによって異なります。 ただし、次のゲスト ユーザーのアクティビティは、Azure AD Premium P2 の用途と見なされます。
+
+-   レビュー担当者として割り当てられているゲスト ユーザー
+-   自己レビューを実行するゲスト ユーザー
+-   アクセス レビューを実行するグループ所有者としてのゲスト ユーザー
+-   アクセス レビューを実行するアプリケーション所有者としてのゲスト ユーザー
+
+
+アクセス レビューを設定したり、設定を構成したり、レビューの決定を適用したりするグローバル管理者またはユーザー管理者ロールを持つユーザーには、Azure AD Premium P2 ライセンスは必要 **ありません**。
 
 Azure AD ゲスト ユーザー アクセスは、1:5 の比率の課金モデルに代わる、月間アクティブ ユーザー (MAU) の課金モデルに基づいています。 詳細については、[Azure AD External Identities の価格](../external-identities/external-identities-pricing.md)に関するページを参照してください。
 

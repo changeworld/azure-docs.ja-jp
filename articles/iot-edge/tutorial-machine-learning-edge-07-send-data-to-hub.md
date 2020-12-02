@@ -9,23 +9,24 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec7337ad798d586cb93bd13e60ead1ef9f2a4abe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0695af6922182aa8be7acfb4b0a931bed35ef7d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857250"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959307"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>チュートリアル:透過的なゲートウェイを介してデータを送信する
-
-> [!NOTE]
-> この記事は、IoT Edge 上で Azure Machine Learning を使用するためのチュートリアルのシリーズの一部です。 この記事に直接アクセスしている場合は、最適な結果を得るために、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md) から始めることをお勧めします。
 
 この記事でも、シミュレートされたデバイスとして開発用 VM を使用します。 ただし、データを IoT Hub に直接送信する代わりに、デバイスは、透過的なゲートウェイとして構成された IoT Edge デバイスにデータを送信します。
 
 シミュレートされたデバイスがデータを送信している間、IoT Edge デバイスの動作を監視します。 デバイスの実行が終了したら、ストレージ アカウント内のデータを確認し、すべてが期待どおりに機能したことを検証します。
 
 この手順は、通常はクラウドまたはデバイス開発者によって実行されます。
+
+## <a name="prerequisites"></a>前提条件
+
+この記事は、IoT Edge 上で Azure Machine Learning を使用するためのチュートリアルのシリーズの一部です。 シリーズの各記事は、前の記事の作業に基づいています。 この記事に直接アクセスしている場合は、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md)を参照してください。
 
 ## <a name="review-device-harness"></a>デバイス ハーネスを確認する
 
@@ -56,7 +57,7 @@ ms.locfileid: "91857250"
 
 1. DeviceHarness プロジェクトを Visual Studio Code で開いたまま、プロジェクトをビルドします。 **[ターミナル]** メニューの **[ビルド タスクの実行]** を選択し、 **[ビルド]** を選択します。
 
-1. Azure portal で IoT Edge デバイス (Linux VM) に移動し、概要ページから **DNS 名**の値をコピーして、エッジ ゲートウェイの完全修飾ドメイン名 (FQDN) を見つけます。
+1. Azure portal で IoT Edge デバイス (Linux VM) に移動し、概要ページから **DNS 名** の値をコピーして、エッジ ゲートウェイの完全修飾ドメイン名 (FQDN) を見つけます。
 
 1. IoT デバイス (Linux VM) を起動します (まだ実行されていない場合)。
 

@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 77845a91ed2d185c0fe05e2f40e53b2edf3d1ca7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 4ed999e282aa9bcd80b000f3db2ecf9a8386a489
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741392"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537953"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>チュートリアル:マネージド ID と .NET を使用して Key Vault を Azure Web アプリに接続する
 
-Azure Key Vault は、資格情報やその他のシークレットを安全に保管する方法を提供しますが、コードで Key Vault に対して認証を行い、それらを取得する必要があります。 [Azure リソースのマネージド ID の概要](../../active-directory/managed-identities-azure-resources/overview.md)に関するページは、Azure AD で自動的に管理されているマネージド ID を Azure サービスに付与することで、この問題を解決するうえで役立ちます。 この ID を使用して、コードに資格情報が表示されていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。
+[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) は、資格情報やその他のシークレットを安全に保管する方法を提供しますが、コードで Key Vault に対して認証を行い、それらを取得する必要があります。 [Azure リソースのマネージド ID の概要](../../active-directory/managed-identities-azure-resources/overview.md)に関するページは、Azure AD で自動的に管理されているマネージド ID を Azure サービスに付与することで、この問題を解決するうえで役立ちます。 この ID を使用して、コードに資格情報が表示されていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。
 
-このチュートリアルでは、マネージド ID と Azure Key Vault を使用して Azure Web アプリを認証します。 この手順では、[.NET 用 Azure Key Vault v4 クライアント ライブラリ](/dotnet/api/overview/azure/key-vault?view=azure-dotnet)と [Azure CLI](/cli/azure/get-started-with-azure-cli) を使用していますが、各種の開発言語や Azure PowerShell、Azure portal を使用している場合でも、基本的な原則は同じです。
+このチュートリアルでは、マネージド ID と Azure Key Vault を使用して Azure Web アプリを認証します。 この手順では、[.NET 用 Azure Key Vault v4 クライアント ライブラリ](/dotnet/api/overview/azure/key-vault)と [Azure CLI](/cli/azure/get-started-with-azure-cli) を使用していますが、各種の開発言語や Azure PowerShell、Azure portal を使用している場合でも、基本的な原則は同じです。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,36 +29,13 @@ Azure Key Vault は、資格情報やその他のシークレットを安全に�
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [.Net Core 3.1 SDK 以降](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Azure PowerShell](/powershell/azure/)。
+* [Git をインストールします](https://www.git-scm.com/downloads)。
+* [Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/)。
+* [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview)。 [Azure portal](quick-create-portal.md)、[Azure CLI](quick-create-cli.md)、または [Azure PowerShell](quick-create-powershell.md) を使用して、キー コンテナーを作成できます。
+* Key Vault [シークレット](https://docs.microsoft.com/azure/key-vault/secrets/about-secrets)。 シークレットは、[Azure portal](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal)、[PowerShell](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-powershell)、[Azure CLI](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-cli) のいずれかを使用して作成できます
 
-## <a name="create-a-resource-group"></a>リソース グループを作成する
-
-リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 キー コンテナーと Web アプリの配置先となるリソース グループを [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) コマンドで作成します。
-
-```azurecli-interactive
-az group create --name "myResourceGroup" -l "EastUS"
-```
-
-## <a name="set-up-your-key-vault"></a>キー コンテナーを設定する
-
-キー コンテナーを作成し、このチュートリアルで後から使用するシークレットをそこに格納します。
-
-キー コンテナーを作成するには、[az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) コマンドを使用します。
-
-> [!Important]
-> 各キー コンテナーには一意の名前が必要です。 次の例の <your-keyvault-name> は、お使いのキー コンテナーの名前に置き換えてください。
-
-```azurecli-interactive
-az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
-```
-
-"https://&lt;your-keyvault-name&gt;.vault.azure.net/" の形式で返される `vaultUri` を書き留めます。 「[コードを更新する](#update-the-code)」の手順で使用します。
-
-[!INCLUDE [Create a secret](../../../includes/key-vault-create-secret.md)]
-
-## <a name="create-a-net-web-app"></a>.NET Web アプリを作成する
-
-### <a name="create-a-local-app"></a>ローカル アプリを作成する
+## <a name="create-a-net-core-app-and-deploy-it-to-azure"></a>.NET Core アプリを作成して Azure にデプロイする
+この手順では、ローカル .NET Core プロジェクトを設定します。
 
 コンピューターのターミナル ウィンドウで、`akvwebapp` という名前のディレクトリを作成し、現在のディレクトリをそのディレクトリに変更します。
 
@@ -83,7 +60,11 @@ Web ブラウザーを開き、`http://localhost:5000` のアプリに移動し�
 
 ページに表示されているサンプル アプリの **Hello World** メッセージが表示されます。
 
-### <a name="initialize-the-git-repository"></a>Git リポジトリを初期化する
+## <a name="deploy-app-to-azure"></a>アプリを Azure にデプロイする
+
+この手順では、ローカル Git を使用して、App Service に .NET Core アプリケーションをデプロイします。 アプリケーションを作成してデプロイする方法について詳しくは、[Azure に ASP.NET Core Web アプリを作成する](https://docs.microsoft.com/azure/app-service/quickstart-dotnetcore)方法に関するページを参照してください。
+
+### <a name="configure-local-git-deployment"></a>ローカル Git デプロイを構成する
 
 ターミナル ウィンドウで **Ctrl + C** キーを押して、Web サーバーを終了します。  .NET Core プロジェクト用の Git リポジトリを初期化します。
 
@@ -93,11 +74,9 @@ git add .
 git commit -m "first commit"
 ```
 
-### <a name="configure-a-deployment-user"></a>デプロイ ユーザーを構成する
+FTP およびローカルの Git では、"*デプロイ ユーザー*" を使用して Azure Web アプリにデプロイできます。 デプロイ ユーザーを構成すると、すべての Azure デプロイでこのユーザーを使用できます。 アカウントレベルのデプロイのユーザー名とパスワードは、Azure サブスクリプションの資格情報とは異なります。 
 
-FTP およびローカルの Git では、" *デプロイ ユーザー* " を使用して Azure Web アプリにデプロイできます。 デプロイ ユーザーを構成すると、すべての Azure デプロイでこのユーザーを使用できます。 アカウントレベルのデプロイのユーザー名とパスワードは、Azure サブスクリプションの資格情報とは異なります。 
-
-デプロイ ユーザーを構成するには、[az webapp deployment user set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) コマンドを実行します。 次のガイドラインに準拠したユーザー名とパスワードを選択してください。 
+デプロイ ユーザーを構成するには、[az webapp deployment user set](/cli/azure/webapp/deployment/user?#az-webapp-deployment-user-set) コマンドを実行します。 次のガイドラインに準拠したユーザー名とパスワードを選択してください。 
 
 - ユーザー名は、Azure 内で一意である必要があり、ローカル Git プッシュの場合は "\@" シンボルを含めることはできません。 
 - パスワードは長さが 8 文字以上で、文字、数字、記号のうち 2 つを含む必要があります。 
@@ -110,9 +89,17 @@ JSON 出力には、パスワードが `null` として表示されます。 `'C
 
 Web アプリのデプロイに使用するユーザー名とパスワードを記録します。
 
+### <a name="create-a-resource-group"></a>リソース グループを作成する
+
+リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 キー コンテナーと Web アプリの配置先となるリソース グループを [az group create](/cli/azure/group?#az-group-create) コマンドで作成します。
+
+```azurecli-interactive
+az group create --name "myResourceGroup" -l "EastUS"
+```
+
 ### <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
-Azure CLI の [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest) コマンドで、App Service プランを作成します。 次の例では、 **Free** 価格レベルの `myAppServicePlan` という名前の App Service プランを作成します。
+Azure CLI の [az appservice plan create](/cli/azure/appservice/plan) コマンドで、[App Service プラン](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)を作成します。 次の例では、**Free** 価格レベルの `myAppServicePlan` という名前の App Service プランを作成します。
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
@@ -138,10 +125,11 @@ App Service プランが作成されると、Azure CLI によって、次の例�
 } 
 </pre>
 
+App Service プランの管理の詳細については、「[Azure で App Service プランを管理する](https://docs.microsoft.com/azure/app-service/app-service-plan-manage)」を参照してください。
 
-### <a name="create-a-remote-web-app"></a>リモート Web アプリを作成する
+### <a name="create-a-web-app"></a>Web アプリを作成する
 
-`myAppServicePlan` App Service プランに [Azure Web アプリ](../../app-service/overview.md#app-service-on-linux)を作成します。 
+`myAppServicePlan` App Service プランに [Azure Web アプリ](../../app-service/overview.md)を作成します。 
 
 > [!Important]
 > Key Vault と同様、Azure Web アプリにも一意の名前を付ける必要があります。 次の例の \<your-webapp-name\> は、実際の Web アプリの名前に置き換えてください。
@@ -183,13 +171,13 @@ https://<your-webapp-name>.azurewebsites.net
 
 ### <a name="deploy-your-local-app"></a>ローカル アプリをデプロイする
 
-ローカルのターミナル ウィンドウに戻り、Azure リモートをローカル Git リポジトリに追加します。 *\<deploymentLocalGitUrl-from-create-step>* は、「 [リモート Web アプリを作成する](#create-a-remote-web-app)」の手順で保存した Git リモートの URL に置き換えてください。
+ローカルのターミナル ウィンドウに戻り、Azure リモートをローカル Git リポジトリに追加します。 *\<deploymentLocalGitUrl-from-create-step>* は、[Web アプリの作成](#create-a-web-app)手順で保存した Git リモートの URL に置き換えてください。
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
 ```
 
-アプリをデプロイするために、次のコマンドで Azure リモートにプッシュします。 Git Credential Manager によって資格情報の入力を求めるメッセージが表示されたら、「[デプロイ ユーザーを構成する](#configure-a-deployment-user)」の手順で作成した資格情報を使用してください。
+アプリをデプロイするために、次のコマンドで Azure リモートにプッシュします。 Git Credential Manager によって資格情報の入力を求めるメッセージが表示されたら、[ローカル Git デプロイの構成](#configure-local-git-deployment)手順で作成した資格情報を使用してください。
 
 ```bash
 git push azure master
@@ -230,10 +218,16 @@ http://<your-webapp-name>.azurewebsites.net
 ```
 
 先ほど  にアクセスしたときに表示された "Hello World!" というメッセージが表示されます。
+ 
+## <a name="configure-web-app-to-connect-to-key-vault"></a>Key Vault に接続するように Web アプリを構成する
 
-## <a name="create-and-assign-a-managed-identity"></a>マネージド ID を作成して割り当てる
+このセクションでは、キー コンテナーへの Web アクセスを構成し、キー コンテナーからシークレットを取得するようにアプリケーション コードを更新します。
 
-このアプリケーションの ID を作成するために、Azure CLI で [az webapp-identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) コマンドを実行します。
+### <a name="create-and-assign-a-managed-identity"></a>マネージド ID を作成して割り当てる
+
+このチュートリアルでは、アプリケーションの[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用してキー コンテナーに対する認証を行い、アプリケーションの資格情報を自動的に管理します。
+
+このアプリケーションの ID を作成するために、Azure CLI で [az webapp-identity assign](/cli/azure/webapp/identity?#az-webapp-identity-assign) コマンドを実行します。
 
 ```azurecli-interactive
 az webapp identity assign --name "<your-webapp-name>" --resource-group "myResourceGroup"
@@ -249,16 +243,17 @@ az webapp identity assign --name "<your-webapp-name>" --resource-group "myResour
 }
 ```
 
-キー コンテナーに対する **get** 操作と **list** 操作のアクセス許可を Web アプリに与えるため、Azure CLI の [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) コマンドに principalID を渡します。
+キー コンテナーに対する **get** 操作と **list** 操作のアクセス許可を Web アプリに与えるため、Azure CLI の [az keyvault set-policy](/cli/azure/keyvault?#az-keyvault-set-policy) コマンドに principalID を渡します。
 
 ```azurecli-interactive
 az keyvault set-policy --name "<your-keyvault-name>" --object-id "<principalId>" --secret-permissions get list
 ```
 
+[Azure portal](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal) または [PowerShell](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-powershell) を使用してアクセス ポリシーを割り当てることもできます。
 
-## <a name="modify-the-app-to-access-your-key-vault"></a>キー コンテナーにアクセスするようアプリを変更する
+### <a name="modify-the-app-to-access-your-key-vault"></a>キー コンテナーにアクセスするようアプリを変更する
 
-### <a name="install-the-packages"></a>パッケージのインストール
+#### <a name="install-the-packages"></a>パッケージのインストール
 
 ターミナル ウィンドウから、.NET 用 Azure Key Vault クライアント ライブラリ パッケージをインストールします。
 
@@ -267,7 +262,7 @@ dotnet add package Azure.Identity
 dotnet add package Azure.Security.KeyVault.Secrets
 ```
 
-### <a name="update-the-code"></a>コードを更新する
+#### <a name="update-the-code"></a>コードを更新する
 
 akvwebapp プロジェクトから Startup.cs ファイルを見つけて開きます。 
 
@@ -279,7 +274,7 @@ using Azure.Security.KeyVault.Secrets;
 using Azure.Core;
 ```
 
-`app.UseEndpoints` 呼び出しの前に以下の行を追加します。URI は、実際のキー コンテナーの `vaultUri` に合わせて更新してください。 以下のコードでは、キー コンテナーに対する認証に "[DefaultAzureCredential()](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet)" が使用されています。この場合、アプリケーションのマネージド ID からのトークンが認証に使用されます。 また、キー コンテナーがスロットルされている場合の再試行にはエクスポネンシャル バックオフが使用されています。
+`app.UseEndpoints` 呼び出しの前に以下の行を追加します。URI は、実際のキー コンテナーの `vaultUri` に合わせて更新してください。 以下のコードでは、キー コンテナーに対する認証に "[DefaultAzureCredential()](/dotnet/api/azure.identity.defaultazurecredential)" が使用されています。この場合、アプリケーションのマネージド ID からのトークンが認証に使用されます。 キー コンテナーに対する認証について詳しくは、[開発者ガイド](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)を参照してください。 また、キー コンテナーがスロットルされている場合の再試行にはエクスポネンシャル バックオフが使用されています。 キー コンテナーのトランザクション制限について詳しくは、「[Azure Key Vault のスロットル ガイダンス](https://docs.microsoft.com/azure/key-vault/general/overview-throttling)」を参照してください。
 
 ```csharp
 SecretClientOptions options = new SecretClientOptions()
@@ -294,7 +289,7 @@ SecretClientOptions options = new SecretClientOptions()
     };
 var client = new SecretClient(new Uri("https://<your-unique-key-vault-name>.vault.azure.net/"), new DefaultAzureCredential(),options);
 
-KeyVaultSecret secret = client.GetSecret("mySecret");
+KeyVaultSecret secret = client.GetSecret("<mySecret>");
 
 string secretValue = secret.Value;
 ```
@@ -307,7 +302,7 @@ await context.Response.WriteAsync(secretValue);
 
 次の手順に進む前に、必ず変更内容を保存してください。
 
-### <a name="redeploy-your-web-app"></a>Web アプリを再デプロイする
+#### <a name="redeploy-your-web-app"></a>Web アプリを再デプロイする
 
 コードを更新したら、次の Git コマンドを使用して、そのコードを Azure に再デプロイすることができます。
 
@@ -317,20 +312,20 @@ git commit -m "Updated web app to access my key vault"
 git push azure master
 ```
 
-## <a name="visit-your-completed-web-app"></a>完成した Web アプリにアクセスする
+### <a name="visit-your-completed-web-app"></a>完成した Web アプリにアクセスする
 
 ```bash
 http://<your-webapp-name>.azurewebsites.net
 ```
 
-**Hello World** が表示される前に、シークレットの値が表示されるはずです。 **成功です**
+**Hello World** が表示される前に、シークレットの値が表示されるはずです。**成功です**
 
 ## <a name="next-steps"></a>次のステップ
 
+- [仮想マシンにデプロイされたアプリケーションで Azure Key Vault を使用する (.NET)](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
 - 詳細については、[Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) について学びます。
 - [App Service のマネージド ID](../../app-service/overview-managed-identity.md?tabs=dotnet) について学びます。
-- [.NET 用 Azure Key Vault クライアント ライブラリ API リファレンス](/dotnet/api/overview/azure/key-vault?view=azure-dotnet)を参照してください。
-- [.NET 用 Azure Key Vault クライアント ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault)を参照してください。
-- [.NET 用 Azure Key Vault クライアント ライブラリ v4 の NuGet パッケージ](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)を参照してください。
+- [開発者ガイド](https://docs.microsoft.com/azure/key-vault/general/developers-guide)
+- [キー コンテナーへのアクセスをセキュリティで保護する](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault)
 
 

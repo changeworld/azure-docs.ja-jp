@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: da046fd633120944231ee440605367bdb730cbff
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 450d471beebbcc554a6d534fb2d5361778f158bc
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94543223"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992320"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>データのラベル付けプロジェクトを作成してラベルをエクスポートする 
 
@@ -250,7 +250,7 @@ ML によるラベル付けを開始するために必要とされるラベル�
 
 ## <a name="export-the-labels"></a>ラベルをエクスポートする
 
-いつでも、Machine Learning の実験用にラベル データをエクスポートできます。 画像のラベルは、[COCO 形式](http://cocodataset.org/#format-data)または Azure Machine Learning データセットとしてエクスポートできます。 ラベル付けプロジェクトの **[プロジェクトの詳細]** ページにある **[エクスポート]** ボタンを使用します。
+いつでも、Machine Learning の実験用にラベル データをエクスポートできます。 画像のラベルは、[COCO 形式](http://cocodataset.org/#format-data)または[ラベル付き Azure Machine Learning データセット](how-to-use-labeled-dataset.md)としてエクスポートできます。 ラベル付けプロジェクトの **[プロジェクトの詳細]** ページにある **[エクスポート]** ボタンを使用します。
 
 COCO ファイルは、Azure Machine Learning ワークスペースの既定の BLOB ストアにある *export/coco* 内のフォルダーに作成されます。 エクスポートした Azure Machine Learning データセットには、Machine Learning の **[データセット]** セクションでアクセスできます。 また、データセットの詳細ページには、Python からラベルにアクセスするためのサンプル コードも表示されます。
 

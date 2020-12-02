@@ -2,19 +2,19 @@
 title: Linux Python アプリを構成する
 description: Azure portal と Azure CLI の両方を使用して、Web アプリが実行される Python コンテナーを構成する方法について説明します。
 ms.topic: quickstart
-ms.date: 11/06/2020
+ms.date: 11/16/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 9e0e9098959231d4283608e8191081ae2df6737a
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 149f8deb8839b3adce3555300c94b8ebdf587100
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425917"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873847"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service 向けの Linux Python アプリを構成する
 
-この記事では、[Azure App Service](overview.md) で Python アプリが実行される方法と、必要に応じて App Service の動作をカスタマイズする方法について説明します。 Python アプリは、必要なすべての [pip](https://pypi.org/project/pip/) モジュールと共にデプロイする必要があります。
+この記事では、[Azure App Service](overview.md) で Python アプリが実行される方法、既存のアプリを Azure に移行する方法、および必要に応じて App Service の動作をカスタマイズする方法について説明します。 Python アプリは、必要なすべての [pip](https://pypi.org/project/pip/) モジュールと共にデプロイする必要があります。
 
 App Service デプロイ エンジンでは、[Git リポジトリ](deploy-local-git.md) (または [ZIP パッケージ](deploy-zip.md)) のデプロイ時に自動的に仮想環境をアクティブ化し、`pip install -r requirements.txt` を実行します。
 
@@ -94,7 +94,31 @@ App Service で Linux の Python アプリを実行、ビルドする方法の�
 > [!NOTE]
 > すべてのビルド前後のスクリプトで常に相対パスを使用してください。Oryx が動作するビルド コンテナーは、アプリが動作するランタイム コンテナーとは異なるためです。 コンテナー内のアプリ プロジェクト フォルダーの正確な配置場所 (たとえば、*site/wwwroot* といった配置場所) は指定しないようにします。
 
-## <a name="production-settings-for-django-apps"></a>Django アプリの運用設定
+## <a name="migrate-existing-applications-to-azure"></a>既存のアプリケーションを Azure に移行する
+
+既存の Web アプリケーションは、次のように Azure に再デプロイできます。
+
+1. **ソース リポジトリ**: ソース コードを GitHub などの適切なリポジトリに保持します。これにより、このプロセスの後半で継続的なデプロイを設定することができます。
+    1. App Service が必要なパッケージを自動的にインストールできるようにするには、*requirements.txt* ファイルがリポジトリのルートにある必要があります。    
+
+1. **データベース**:アプリがデータベースに依存している場合は、Azure 上に必要なリソースをプロビジョニングします。 「[チュートリアル:PostgreSQL を使用して Django Web アプリをデプロイする方法のチュートリアルの、データベースの作成に関するセクション](tutorial-python-postgresql-app.md#create-postgres-database-in-azure)の例を参照してください。
+
+1. **App Service リソース**: 対象のアプリケーションをホストするためのリソース グループ、App Service プラン、および App Service Web アプリを作成します。 これは、Azure CLI コマンド `az webapp up` を使用してコードの初期デプロイを実行することで最も簡単に行うことができます。[PostgreSQL を使用して Django Web アプリをデプロイする方法のチュートリアルの、コードのデプロイに関するセクション](tutorial-python-postgresql-app.md#deploy-the-code-to-azure-app-service)を参照してください。 リソース グループ、App Service プラン、および Web アプリの名前を、対象のアプリケーションにより適した名前に置き換えます。
+
+1. **環境変数**:対象のアプリケーションが環境変数を必要とする場合は、同等の [App Service アプリケーション設定](configure-common.md#configure-app-settings)を作成します。 これらの App Service 設定は、[環境変数へのアクセス](#access-app-settings-as-environment-variables)に関するセクションで説明されているように、環境変数としてコードに示されます。
+    - たとえば、データベース接続は、多くの場合、このような設定によって管理されます。[PostgreSQL を使用して Django Web アプリをデプロイする方法のチュートリアルの、データベースに接続するための変数の構成に関するセクション](tutorial-python-postgresql-app.md#configure-environment-variables-to-connect-the-database)を参照してください。
+    - 一般的な Django アプリの特定の設定については、「[Django アプリの運用設定](#production-settings-for-django-apps)」を参照してください。
+
+1. **アプリの起動**: この記事の後半の「[コンテナーのスタートアップ プロセス](#container-startup-process)」セクションを参照して、App Service がアプリを実行する方法を理解します。 App Service では、既定で Gunicorn Web サーバーを使用します。このサーバーは、対象のアプリ オブジェクトまたは *wsgi.py* フォルダーを見つけることができる必要があります。 必要に応じて、[スタートアップ コマンドをカスタマイズ](#customize-startup-command)することができます。
+
+1. **継続的なデプロイ**:「[Azure App Service への継続的デプロイ](deploy-continuous-deployment.md)」(Azure Pipelines または Kudu デプロイを使用している場合) または「[GitHub Actions を使用した App Service へのデプロイ](deploy-github-actions.md)」(GitHub アクションを使用している場合) の説明に従って、継続的デプロイを設定します。
+
+1. **カスタム アクション**: 対象のアプリをホストする App Service コンテナー内で Django データベースの移行などのアクションを実行するには、[SSH 経由でコンテナーに接続](configure-linux-open-ssh-session.md)します。 Django データベースの移行を実行する例については、[PostgreSQL を使用して Django Web アプリをデプロイする方法のチュートリアルの、データベースの移行の実行に関するセクション](tutorial-python-postgresql-app.md#run-django-database-migrations)を参照してください。
+    - 継続的デプロイを使用している場合は、前の「[ビルドの自動化のカスタマイズ](#customize-build-automation)」で説明したように、ビルド後コマンドを使用してこれらのアクションを実行できます。
+
+これらの手順を完了すると、変更をソース リポジトリにコミットし、それらの更新を App Service に自動的にデプロイできるようになります。
+
+### <a name="production-settings-for-django-apps"></a>Django アプリの運用設定
 
 Azure App Service などの運用環境の場合、Django アプリは Django の[デプロイ チェックリスト](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/) (djangoproject.com) に準拠する必要があります。
 

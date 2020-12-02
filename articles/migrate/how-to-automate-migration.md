@@ -6,18 +6,18 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/30/2020
 ms.author: rahugup
-ms.openlocfilehash: e1b34db7f2473e16d3ebde11376652f654f2f778
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 4ef4d3989f063e9d31718bc7143662c4f20cc90b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377957"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500820"
 ---
 # <a name="scale-migration-of-vmware-vms"></a>VMware VM のスケール移行 
 
-この記事は、スクリプトを使用し、エージェントレス方式を使用して多数の VMware 仮想マシン (VM) を移行する方法を理解するために役立ちます。 移行をスケーリングするには、[Azure Migrate PowerShell モジュール](https://aka.ms/azuremigratepowershellvmware)を使用します。 
+この記事は、スクリプトを使用し、エージェントレス方式を使用して多数の VMware 仮想マシン (VM) を移行する方法を理解するために役立ちます。 移行をスケーリングするには、[Azure Migrate PowerShell モジュール](./tutorial-migrate-vmware-powershell.md)を使用します。 
 
-Azure Migrate VMware の移行自動化スクリプトは、GitHub の [Azure PowerShell サンプル](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) リポジトリからダウンロードできます。 このスクリプトを使用すると、エージェントレス移行方法を使用して VMware VM を Azure に移行できます。 これらのスクリプトで使用される Azure Migrate PowerShell コマンドについては、[こちら](https://aka.ms/azuremigratepowershellvmware)を参照してください。
+Azure Migrate VMware の移行自動化スクリプトは、GitHub の [Azure PowerShell サンプル](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) リポジトリからダウンロードできます。 このスクリプトを使用すると、エージェントレス移行方法を使用して VMware VM を Azure に移行できます。 これらのスクリプトで使用される Azure Migrate PowerShell コマンドについては、[こちら](./tutorial-migrate-vmware-powershell.md)を参照してください。
 
 ## <a name="current-limitations"></a>現在の制限
 - これらのスクリプトは、VMware VM とすべてのディスクの移行をサポートしています。 VMware VM にアタッチされているディスクを選択的にレプリケートする場合は、スクリプトを更新できます。 
@@ -26,7 +26,7 @@ Azure Migrate VMware の移行自動化スクリプトは、GitHub の [Azure Po
 ## <a name="prerequisites"></a>前提条件
 
 - [検出のチュートリアルを完了](tutorial-discover-vmware.md)して、移行のために Azure と VMware を準備します。
-- 2 番目のチュートリアルを完了して、Azure に移行する前に [VMware VM を評価](tutorial-assess-vmware.md)しておくことをお勧めします。
+- 2 番目のチュートリアルを完了して、Azure に移行する前に [VMware VM を評価](./tutorial-assess-vmware-azure-vm.md)しておくことをお勧めします。
 - Azure PowerShell `Az` モジュールがあります。 Azure PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成のガイド](/powershell/azure/install-az-ps)を参照してください。
 
 ## <a name="install-azure-migrate-powershell-module"></a>Azure Migrate PowerShell モジュールをインストールする
@@ -123,4 +123,4 @@ Input.csv ファイルを使用して VM のレプリケーションを開始す
 ".\AzMigrate_StartReplication.ps1" .\Input.csv 
 ```
 
-Azure Migrate を使用して VMware VM を移行する場合の Azure PowerShell の使用の詳細については、[チュートリアル](https://aka.ms/azuremigratepowershellvmware)に従ってください。
+Azure Migrate を使用して VMware VM を移行する場合の Azure PowerShell の使用の詳細については、[チュートリアル](./tutorial-migrate-vmware-powershell.md)に従ってください。

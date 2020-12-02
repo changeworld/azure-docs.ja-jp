@@ -4,16 +4,16 @@ description: Azure Blockchain Service の概要です
 ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: e82916d7366ad82746d2d3ddfc979264e113619b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dc716b475fe85170d595463e0785743591e398c1
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334822"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874561"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blockchain Service とは
 
-Azure Blockchain Service は完全に管理された台帳サービスであり、ユーザーは Azure でブロックチェーン ネットワークの拡張や操作を大規模に行うことができます。 インフラストラクチャの管理とブロックチェーン ネットワークのガバナンスの両方の制御が統一された Azure Blockchain Service では、次のような機能が提供されます。
+Azure Blockchain Service はフル マネージド台帳サービスであり、ユーザーは Azure でブロックチェーン ネットワークの拡張や操作を大規模に行うことができます。 インフラストラクチャの管理とブロックチェーン ネットワークのガバナンスの両方の制御が統一された Azure Blockchain Service では、次のような機能が提供されます。
 
 * ネットワークの簡単なデプロイと運用
 * 組み込みのコンソーシアム管理

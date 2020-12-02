@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e153c873305cc128ce97ae7c6a907a8f592f8b32
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: e8decbe22f869573bf7a2221099d2bc30c00fc8a
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357472"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888846"
 ---
 # <a name="quickstart-handle-sms-events"></a>クイック スタート:SMS イベントの処理
 
@@ -24,7 +24,7 @@ Azure Event Grid を使用して Communication Services の SMS イベントを�
 
 ## <a name="about-azure-event-grid"></a>Azure Event Grid について
 
-[Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) は、クラウドベースのイベント処理サービスです。 この記事では、[通信サービス イベント](../../concepts/event-handling.md)のイベントをサブスクライブし、イベントをトリガーして結果を表示する方法について説明します。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 この記事では、メッセージを収集して表示する Web アプリにイベントを送信します。
+[Azure Event Grid](../../../event-grid/overview.md) は、クラウドベースのイベント処理サービスです。 この記事では、[通信サービス イベント](../../concepts/event-handling.md)のイベントをサブスクライブし、イベントをトリガーして結果を表示する方法について説明します。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 この記事では、メッセージを収集して表示する Web アプリにイベントを送信します。
 
 ## <a name="prerequisites"></a>前提条件
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
@@ -49,7 +49,7 @@ Azure Portal で次の操作を行います。
 
 ### <a name="event-grid-viewer-deployment"></a>Event Grid ビューアーのデプロイ
 
-このクイックスタートでは、 [Azure Event Grid ビューアーのサンプル](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)を使用して、ほぼリアルタイムでイベントを表示します。 これにより、リアルタイム フィードのエクスペリエンスがユーザーに提供されます。 さらに、各イベントのペイロードも検査に使用できるようにする必要があります。  
+このクイックスタートでは、 [Azure Event Grid ビューアーのサンプル](/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)を使用して、ほぼリアルタイムでイベントを表示します。 これにより、リアルタイム フィードのエクスペリエンスがユーザーに提供されます。 さらに、各イベントのペイロードも検査に使用できるようにする必要があります。  
 
 ## <a name="subscribe-to-the-sms-events-using-web-hooks"></a>Webhook を使用して SMS イベントをサブスクライブする
 
@@ -63,7 +63,7 @@ Azure Portal で次の操作を行います。
 
 特定のイベントをサブスクライブすることで、どの SMS イベントを追跡し、どこにイベントを送信するかを Event Grid に伝えることができます。 サブスクライブするイベントをドロップダウン メニューから選択します。 SMS の場合は、`SMS Received` と `SMS Delivery Report Received` を選択できます。 
 
-**システム トピック名** を入力するように求められた場合は、生成された後のイベントをフィルター処理するために必要に応じて使用できる一意の識別子を自由に指定します。
+**システム トピック名** の入力を求められた場合は、一意の文字列を自由に指定してかまいません。 このフィールドはエクスペリエンスに影響を与えず、内部テレメトリの目的で使用されます。
 
 [Azure Communication Services でサポートされているイベント](../../concepts/event-handling.md)の完全な一覧を確認してください。
 
@@ -75,7 +75,7 @@ Azure Portal で次の操作を行います。
 
 **[エンドポイント]** については、 **[エンドポイントの選択]** をクリックして、お使いの Web アプリの URL を入力します。
 
-ここでは、クイックスタートで前に設定した [Azure Event Grid ビューアーのサンプル](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)の URL を使用します。 このサンプルの URL は次の形式になります。`https://{{site-name}}.azurewebsites.net/api/updates`
+ここでは、クイックスタートで前に設定した [Azure Event Grid ビューアーのサンプル](/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)の URL を使用します。 このサンプルの URL は次の形式になります。`https://{{site-name}}.azurewebsites.net/api/updates`
 
 次に、 **[選択の確認]** を選択します。
 
@@ -94,7 +94,7 @@ Azure Portal で次の操作を行います。
 
 ### <a name="receiving-sms-events"></a>SMS イベントの受信
 
-上記のいずれかのアクションを完了すると、`SMS Received` および `SMS Delivery Report Received` イベントがお使いのエンドポイントに送信されることがわかります。 これらのイベントは、最初に設定した [Azure Event Grid ビューアーのサンプル](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)に表示されます。 イベントの横にある目のアイコンを押すと、ペイロード全体を表示できます。 イベントは次のようになります。
+上記のいずれかのアクションを完了すると、`SMS Received` および `SMS Delivery Report Received` イベントがお使いのエンドポイントに送信されることがわかります。 これらのイベントは、最初に設定した [Azure Event Grid ビューアーのサンプル](/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)に表示されます。 イベントの横にある目のアイコンを押すと、ペイロード全体を表示できます。 イベントは次のようになります。
 
 :::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="SMS 受信イベントの Event Grid スキーマを示すスクリーンショット。":::
 
@@ -116,4 +116,4 @@ Communication Services サブスクリプションをクリーンアップして
 次のことも実行できます。
 
  - [イベント処理の概念の詳細を確認する](../../concepts/event-handling.md)
- - [Event Grid の詳細を確認する](https://docs.microsoft.com/azure/event-grid/overview)
+ - [Event Grid の詳細を確認する](../../../event-grid/overview.md)

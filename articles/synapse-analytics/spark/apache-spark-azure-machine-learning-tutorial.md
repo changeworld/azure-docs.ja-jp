@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
-ms.reviewer: jrasnick,
-ms.openlocfilehash: 979e360bb920fc3b34a201b1287b50b141bffa9b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.reviewer: jrasnick
+ms.openlocfilehash: e6708874fee3e15349b4389f1ecafa3d48a628dd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313613"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95917199"
 ---
 # <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>チュートリアル:Azure Automated ML と Apache Spark を使用した実験の実行
 
@@ -50,51 +50,52 @@ Azure Machine Learning は、機械学習モデルのトレーニング、デプ
 
 1. PySpark カーネルを使用してノートブックを作成します。 手順については、「[ノートブックを作成する](https://docs.microsoft.com/azure/synapse-analytics/quickstart-apache-spark-notebook#create-a-notebook.)」を参照してください。
    
-   > [!Note]
-   > 
-   > PySpark カーネルであるため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark コンテキストが自動的に作成されます。
-   >
+> [!Note]
+> 
+> PySpark カーネルであるため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark コンテキストが自動的に作成されます。
+>
 
 2. 生データは Parquet 形式であるため、Spark コンテキストを使用して、ファイルをデータフレームとして、直接メモリにプルできます。 Open Datasets API を使用してデータを取得することにより、Spark データフレームを作成します。 ここでは、Spark データフレームの *schema on read* プロパティを使用してデータ型とスキーマを推論します。 
    
-   ```python
-   blob_account_name = "azureopendatastorage"
-   blob_container_name = "nyctlc"
-   blob_relative_path = "yellow"
-   blob_sas_token = r""
+```python
+blob_account_name = "azureopendatastorage"
+blob_container_name = "nyctlc"
+blob_relative_path = "yellow"
+blob_sas_token = r""
 
-   # Allow Spark to read from Blob remotely
-   wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
-   spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name, blob_account_name),blob_sas_token)
+# Allow Spark to read from Blob remotely
+wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
+spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name, blob_account_name),blob_sas_token)
 
-   # Spark read parquet, note that it won't load any data yet by now
-   df = spark.read.parquet(wasbs_path)
-   ```
+# Spark read parquet, note that it won't load any data yet by now
+df = spark.read.parquet(wasbs_path)
+
+```
 
 3. Spark プール (プレビュー) のサイズによっては、生データが大きすぎるか、その操作に時間がかかりすぎる可能性があります。 ```start_date``` および ```end_date``` フィルターを使用して、このデータをさらに絞り込むことができます。 これにより、1 か月分のデータを返すフィルターが適用されます。 データフレームをフィルター処理したら、新しいデータフレームに対して ```describe()``` 関数も実行して、各フィールドの概要の統計を確認します。 
 
    概要の統計に基づいて、データに多少の不規則性と外れ値があることがわかります。 たとえば、最小乗車距離が 0 未満であると統計で示されています。 これらの不規則なデータ ポイントを除外する必要があります。
    
-   ```python
-   # Create an ingestion filter
-   start_date = '2015-01-01 00:00:00'
-   end_date = '2015-12-31 00:00:00'
+```python
+# Create an ingestion filter
+start_date = '2015-01-01 00:00:00'
+end_date = '2015-12-31 00:00:00'
 
-   filtered_df = df.filter('tpepPickupDateTime > "' + start_date + '" and tpepPickupDateTime < "' + end_date + '"')
+filtered_df = df.filter('tpepPickupDateTime > "' + start_date + '" and tpepPickupDateTime < "' + end_date + '"')
 
-   filtered_df.describe().show()
-   ```
+filtered_df.describe().show()
+```
 
 4. ここでは、列のセットを選択し、乗車日時フィールドから時間ベースのさまざまな特徴量を作成することによって、データセットから特徴量を生成します。 前の手順で識別した外れ値も除外してから、トレーニングに不要な最後の何列かを削除します。
    
-   ```python
-   from datetime import datetime
-   from pyspark.sql.functions import *
+```python
+from datetime import datetime
+from pyspark.sql.functions import *
 
-   # To make development easier, faster and less expensive down sample for now
-   sampled_taxi_df = filtered_df.sample(True, 0.001, seed=1234)
+# To make development easier, faster and less expensive down sample for now
+sampled_taxi_df = filtered_df.sample(True, 0.001, seed=1234)
 
-   taxi_df = sampled_taxi_df.select('vendorID', 'passengerCount', 'tripDistance',  'startLon', 'startLat', 'endLon' \
+taxi_df = sampled_taxi_df.select('vendorID', 'passengerCount', 'tripDistance',  'startLon', 'startLat', 'endLon' \
                                 , 'endLat', 'paymentType', 'fareAmount', 'tipAmount'\
                                 , column('puMonth').alias('month_num') \
                                 , date_format('tpepPickupDateTime', 'hh').alias('hour_of_day')\
@@ -108,12 +109,13 @@ Azure Machine Learning は、機械学習モデルのトレーニング、デプ
                                 & (sampled_taxi_df.tripDistance > 0) & (sampled_taxi_df.tripDistance <= 200)\
                                 & (sampled_taxi_df.rateCodeId <= 5)\
                                 & (sampled_taxi_df.paymentType.isin({"1", "2"})))
-   taxi_df.show(10)
-   ```
+taxi_df.show(10)
+```
    
-これによって、次のように、月の日付、乗車時刻 (時)、曜日、合計乗車時間の列が追加された新しいデータフレームが作成されます。 
+   これによって、次のように、月の日付、乗車時刻 (時)、曜日、合計乗車時間の列が追加された新しいデータフレームが作成されます。 
 
-![taxi データフレームの画像。](./media/apache-spark-machine-learning-aml-notebook/aml-dataset.png)
+
+![taxi データフレームの画像。](./media/azure-machine-learning-spark-notebook/dataset.png#lightbox)
 
 ## <a name="generate-test-and-validation-datasets"></a>テストおよび検証用データセットの生成
 
@@ -124,7 +126,6 @@ Azure Machine Learning は、機械学習モデルのトレーニング、デプ
 training_data, validation_data = taxi_df.randomSplit([0.8,0.2], 223)
 
 ```
-
 この手順により、完成したモデルをテストするためのデータ ポイントがモデルのトレーニングに使用されていないことが保証されます。 
 
 ## <a name="connect-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへの接続
@@ -165,43 +166,41 @@ datastore.upload_files(files = ['training_pd.csv'],
                        show_progress = True)
 dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'train-dataset/tabular/training_pd.csv')])
 ```
-
-![アップロードされたデータセットの画像。](./media/apache-spark-machine-learning-aml-notebook/upload-dataset.png)
+![アップロードされたデータセットの画像。](./media/azure-machine-learning-spark-notebook/upload-dataset.png)
 
 ## <a name="submit-an-automl-experiment"></a>AutoML 実験を送信する
 
 #### <a name="define-training-settings"></a>トレーニングの設定を定義する
-
 1. 実験を送信するには、トレーニング用の実験パラメーターとモデルの設定を定義する必要があります。 すべての設定の一覧については、[こちら](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)を参照してください。
 
-   ```python
-   import logging
+```python
+import logging
 
-   automl_settings = {
-       "iteration_timeout_minutes": 10,
-       "experiment_timeout_minutes": 30,
-       "enable_early_stopping": True,
-       "primary_metric": 'r2_score',
-       "featurization": 'auto',
-       "verbosity": logging.INFO,
-       "n_cross_validations": 2}
-   ```
+automl_settings = {
+    "iteration_timeout_minutes": 10,
+    "experiment_timeout_minutes": 30,
+    "enable_early_stopping": True,
+    "primary_metric": 'r2_score',
+    "featurization": 'auto',
+    "verbosity": logging.INFO,
+    "n_cross_validations": 2}
+```
 
-2. 次に、定義したトレーニング設定を \*\*kwargs パラメーターとして AutoMLConfig オブジェクトに渡します。 Spark でトレーニングしているので、```sc``` 変数によって自動的にアクセス可能な Spark コンテキストも渡す必要があります。 さらに、トレーニング データとモデルの種類 (ここでは回帰) を指定します。
+2. 次に、定義したトレーニング設定を **kwargs パラメーターとして AutoMLConfig オブジェクトに渡します。 Spark でトレーニングしているので、```sc``` 変数によって自動的にアクセス可能な Spark コンテキストも渡す必要があります。 さらに、トレーニング データとモデルの種類 (ここでは回帰) を指定します。
 
-   ```python
-   from azureml.train.automl import AutoMLConfig
+```python
+from azureml.train.automl import AutoMLConfig
 
-   automl_config = AutoMLConfig(task='regression',
+automl_config = AutoMLConfig(task='regression',
                              debug_log='automated_ml_errors.log',
                              training_data = dataset_training,
                              spark_context = sc,
                              model_explainability = False, 
                              label_column_name ="fareAmount",**automl_settings)
-   ```
+```
 
 > [!NOTE]
-> 自動化された機械学習の前処理手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 モデルを予測に使用する場合、トレーニング中に適用されたのと同じ前処理手順が入力データに自動的に適用されます。
+>自動化された機械学習の前処理手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 モデルを予測に使用する場合、トレーニング中に適用されたのと同じ前処理手順が入力データに自動的に適用されます。
 
 #### <a name="train-the-automatic-regression-model"></a>自動回帰モデルをトレーニングする 
 ここで、実験オブジェクトを Azure Machine Learning ワークスペースに作成します。 実験は、個々の実行のコンテナーとして機能します。 
@@ -217,10 +216,9 @@ local_run = experiment.submit(automl_config, show_output=True, tags = tags)
 # Use the get_details function to retrieve the detailed output for the run.
 run_details = local_run.get_details()
 ```
-
 実験が完了すると、完了したイテレーションの詳細が出力に返されます。 各イテレーションでは、モデルの種類、実行継続時間、およびトレーニングの精度が表示されます。 BEST フィールドでは、メトリックの種類に基づいて、最高の実行トレーニング スコアが追跡されます。
 
-![モデル出力のスクリーンショット](./media/apache-spark-machine-learning-aml-notebook/aml-model-output.png)
+![モデル出力のスクリーンショット](./media/azure-machine-learning-spark-notebook/model-output.png)
 
 > [!NOTE]
 > 送信された AutoML 実験は、さまざまなイテレーションとモデルの種類を実行します。 通常、この実行には 1 ～ 1.5 時間かかります。 
@@ -234,94 +232,92 @@ best_run, fitted_model = local_run.get_output()
 ```
 
 #### <a name="test-model-accuracy"></a>モデルの精度をテストする
-
 1. モデルの精度をテストするために、最適なモデルを使用して、テスト データセットに対してタクシー料金の予測を実行します。 ```predict``` 関数では、最適なモデルを使用して、検証データセットから y (金額) の値を予測します。 
 
-   ```python
-   # Test best model accuracy
-   validation_data_pd = validation_data.toPandas()
-   y_test = validation_data_pd.pop("fareAmount").to_frame()
-   y_predict = fitted_model.predict(validation_data_pd)
-   ```
+```python
+# Test best model accuracy
+validation_data_pd = validation_data.toPandas()
+y_test = validation_data_pd.pop("fareAmount").to_frame()
+y_predict = fitted_model.predict(validation_data_pd)
+```
 
 2. 二乗平均平方根誤差 (RMSE) は、モデルによって予測されたサンプル値と実測値の差のよく使われる尺度です。 y_test データフレームをモデルの予測値と比較して、結果の二乗平均平方根誤差を計算します。 
 
    関数 ```mean_squared_error``` は 2 つの配列を引数に取り、2 者間の平均二乗誤差を計算します。 次に、結果の平方根をとります。 このメトリックは、タクシー料金の予測が実際の料金の値からどの程度離れているかを大まかに示します。
 
-   ```python
-   from sklearn.metrics import mean_squared_error
-   from math import sqrt
+```python
+from sklearn.metrics import mean_squared_error
+from math import sqrt
 
-   # Calculate Root Mean Square Error
-   y_actual = y_test.values.flatten().tolist()
-   rmse = sqrt(mean_squared_error(y_actual, y_predict))
+# Calculate Root Mean Square Error
+y_actual = y_test.values.flatten().tolist()
+rmse = sqrt(mean_squared_error(y_actual, y_predict))
 
-   print("Root Mean Square Error:")
-   print(rmse)
-   ```
+print("Root Mean Square Error:")
+print(rmse)
+```
 
-   ```Output
-   Root Mean Square Error:
-   2.309997102577151
-   ```
-   
-   二乗平均平方根誤差は、モデルによる応答の予測の正確性を示す良い尺度です。 結果から、モデルでのデータ セットの機能によるタクシー料金の予測はかなり良好で、誤差は 2 ドル以内であることがわかります。
+```Output
+Root Mean Square Error:
+2.309997102577151
+```
+二乗平均平方根誤差は、モデルによる応答の予測の正確性を示す良い尺度です。 結果から、モデルでのデータ セットの機能によるタクシー料金の予測はかなり良好で、誤差は 2 ドル以内であることがわかります。
 
 3. 次のコードを実行して、平均絶対誤差率 (MAPE) を計算します。 このメトリックは、誤差のパーセンテージで精度を表します。 これは、予測値ごとに実際の値との絶対差を計算してから、すべての差を合計することによって行われます。 そしてその合計が、実際の値の合計に対するパーセントで表されます。
 
-   ```python
-   # Calculate MAPE and Model Accuracy 
-   sum_actuals = sum_errors = 0
+```python
+# Calculate MAPE and Model Accuracy 
+sum_actuals = sum_errors = 0
 
-   for actual_val, predict_val in zip(y_actual, y_predict):
-       abs_error = actual_val - predict_val
-       if abs_error < 0:
-           abs_error = abs_error * -1
+for actual_val, predict_val in zip(y_actual, y_predict):
+    abs_error = actual_val - predict_val
+    if abs_error < 0:
+        abs_error = abs_error * -1
 
-       sum_errors = sum_errors + abs_error
-       sum_actuals = sum_actuals + actual_val
+    sum_errors = sum_errors + abs_error
+    sum_actuals = sum_actuals + actual_val
 
-   mean_abs_percent_error = sum_errors / sum_actuals
+mean_abs_percent_error = sum_errors / sum_actuals
 
-   print("Model MAPE:")
-   print(mean_abs_percent_error)
-   print()
-   print("Model Accuracy:")
-   print(1 - mean_abs_percent_error)
-   ```
+print("Model MAPE:")
+print(mean_abs_percent_error)
+print()
+print("Model Accuracy:")
+print(1 - mean_abs_percent_error)
+```
 
-   ```Output
-   Model MAPE:
-   0.03655071038487368
+```Output
+Model MAPE:
+0.03655071038487368
 
-   Model Accuracy:
-   0.9634492896151263
-   ```
-   2 つの予測精度メトリックから、モデルでのデータ セットの機能によるタクシー料金の予測はかなり良好であることがわかります。 
+Model Accuracy:
+0.9634492896151263
+```
+2 つの予測精度メトリックから、モデルでのデータ セットの機能によるタクシー料金の予測はかなり良好であることがわかります。 
 
 4. 線形回帰モデルを近似した後、モデルがデータにどの程度近似するかを判断する必要があります。 これを行うために、予測された出力に対して実際の料金値をプロットします。 さらに、R 二乗メジャーも計算して、近似回帰直線にデータがどれだけ近いかを把握します。
 
-   ```python
-   import matplotlib.pyplot as plt
-   import numpy as np
-   from sklearn.metrics import mean_squared_error, r2_score
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.metrics import mean_squared_error, r2_score
 
-   # Calculate the R2 score using the predicted and actual fare prices
-   y_test_actual = y_test["fareAmount"]
-   r2 = r2_score(y_test_actual, y_predict)
+# Calculate the R2 score using the predicted and actual fare prices
+y_test_actual = y_test["fareAmount"]
+r2 = r2_score(y_test_actual, y_predict)
 
-   # Plot the Actual vs Predicted Fare Amount Values
-   plt.style.use('ggplot')
-   plt.figure(figsize=(10, 7))
-   plt.scatter(y_test_actual,y_predict)
-   plt.plot([np.min(y_test_actual), np.max(y_test_actual)], [np.min(y_test_actual), np.max(y_test_actual)], color='lightblue')
-   plt.xlabel("Actual Fare Amount")
-   plt.ylabel("Predicted Fare Amount")
-   plt.title("Actual vs Predicted Fare Amont R^2={}".format(r2))
-   plt.show()
-   ```
-   
-   ![回帰プロットのスクリーンショット。](./media/apache-spark-machine-learning-aml-notebook/aml-fare-amount.png)
+# Plot the Actual vs Predicted Fare Amount Values
+plt.style.use('ggplot')
+plt.figure(figsize=(10, 7))
+plt.scatter(y_test_actual,y_predict)
+plt.plot([np.min(y_test_actual), np.max(y_test_actual)], [np.min(y_test_actual), np.max(y_test_actual)], color='lightblue')
+plt.xlabel("Actual Fare Amount")
+plt.ylabel("Predicted Fare Amount")
+plt.title("Actual vs Predicted Fare Amont R^2={}".format(r2))
+plt.show()
+
+```
+![回帰プロットのスクリーンショット。](./media/azure-machine-learning-spark-notebook/fare-amount.png)
 
    結果から、R 二乗メジャーが分散の 95% を占めていることがわかります。 これは、実際の観測値のプロットによっても検証されます。 回帰モデルが占める分散が大きいほど、データ ポイントは近似回帰直線に近くなります。  
 
@@ -334,15 +330,13 @@ model_path='outputs/model.pkl'
 model = best_run.register_model(model_name = 'NYCGreenTaxiModel', model_path = model_path, description = description)
 print(model.name, model.version)
 ```
-
 ```Output
 NYCGreenTaxiModel 1
 ```
-
 ## <a name="view-results-in-azure-machine-learning"></a>Azure Machine Learning で結果を表示する
 最後に、Azure Machine Learning ワークスペースで実験に移動して、イテレーションの結果にアクセスすることもできます。 ここでは、実行のステータス、試行したモデル、その他のモデル メトリックの詳細を掘り下げることができます。 
 
-![AML ワークスペースのスクリーンショット。](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-aml-workspace.png)
+![AML ワークスペースのスクリーンショット。](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ac75ab31f8c9cdd9405115db4f5c35d28707e29f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 06d20dd47ceb71b51e226d662892eab06b072685
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950365"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500939"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト
 
@@ -243,8 +243,8 @@ ms.locfileid: "94950365"
     - 待機時間の影響を受けやすいディスクに対し、または [99.9% の単一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) が要求される場合、Azure Premium Storage が使用されていること。
     - Azure 書き込みアクセラレータが正しくデプロイされていること。
         - VM 内で、書き込みアクセラレータが必要な複数のディスクにまたがって、ストレージ スペースまたはストライプ セットが正しく構築されたことを確認します。
-        - [Linux 上のソフトウェア RAID の構成](../../linux/configure-raid.md)を確認します。
-        - [Azure での Linux VM 上の LVM の構成](../../linux/configure-lvm.md)を確認します。
+        - [Linux 上のソフトウェア RAID の構成](/previous-versions/azure/virtual-machines/linux/configure-raid)を確認します。
+        - [Azure での Linux VM 上の LVM の構成](/previous-versions/azure/virtual-machines/linux/configure-lvm)を確認します。
     - [Azure マネージド ディスク](https://azure.microsoft.com/services/managed-disks/)だけが使用されていること。
     - 正しい可用性セットおよび Availability Zones に VM がデプロイされたこと。
     - SAP アプリケーション レイヤーおよび SAP DBMS レイヤーで使用される VM 上で、[Azure 高速ネットワーク](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)が有効になっていること。
@@ -299,7 +299,7 @@ ms.locfileid: "94950365"
 3. システムをシャットダウンできる時間を最適化します。  
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 次の記事を参照してください。
 
 - [SAP NetWeaver のための Azure Virtual Machines の計画と実装](./planning-guide.md)

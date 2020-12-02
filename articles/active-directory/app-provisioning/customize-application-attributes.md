@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: 42ec826ab95363c2599be541fe451473be5ca08d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f65fb37a4cc6640bc998af1c56e7852cccaba234
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441955"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955520"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>チュートリアル - Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングをカスタマイズする
 
@@ -202,7 +202,7 @@ SCIM アプリケーションの場合は、次の例に示すパターンに従
   - **考慮事項**
     - 複数のロールが 1 人のユーザーに割り当てられていないことを確認してください。 どのロールがプロビジョニングされるかを保証することはできません。
     
-  - **出力例** 
+  - **要求の例 (POST)** 
 
    ```json
     {
@@ -226,6 +226,21 @@ SCIM アプリケーションの場合は、次の例に示すパターンに従
    }
    ```
   
+  - **出力例 (PATCH)** 
+    
+   ```
+   "Operations": [
+   {
+   "op": "Add",
+   "path": "roles",
+   "value": [
+   {
+   "value": "{\"id\":\"06b07648-ecfe-589f-9d2f-6325724a46ee\",\"value\":\"25\",\"displayName\":\"Role1234\"}"
+   }
+   ]
+   ```  
+PATCH と POST の要求形式は異なります。 POST と PATCH が同じ形式で送信されるようにするには、[ここ](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility#flags-to-alter-the-scim-behavior)で説明されている機能フラグを使用できます。 
+
 - **AppRoleAssignmentsComplex** 
   - **使用する場合:** 1 人のユーザーに複数のロールをプロビジョニングするには、AppRoleAssignmentsComplex 式を使用します。 
   - **構成方法:** ロールの新しい属性を含めるには、上記のサポートされている属性の一覧を編集します。 

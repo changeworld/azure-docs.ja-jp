@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 11/13/2020
 ms.author: matjazl
-ms.openlocfilehash: 3bb168cf3f642d22096c54b3f35c7833afaff769
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 386003d7dae80e086f523b2cebe61aa0eee7b89e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635145"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95527821"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>Azure API for FHIR とは&reg;
 

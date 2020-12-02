@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3932a1dee0eee16e7d64ff4c6085919d85b431ab
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5c00d08fcaeed8eba5b9732c9196b9abddc32b36
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843266"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500718"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Virtual Machine Scale Sets 用の Azure セキュリティ ベースライン
 
@@ -76,7 +76,7 @@ Virtual Machine Scale Sets 用の Azure セキュリティ ベースラインに
 
 Azure Security Center の Just In Time ネットワーク アクセスを使用すると、限られた期間について、承認された IP アドレスへの Windows Virtual Machines の公開を制限できます。 また、実際のトラフィックと脅威インテリジェンスに基づいてポートとソース IP を制限する NSG 構成を推奨する Azure Security Center のアダプティブ ネットワーク強化を使用します。
 
-* [DDoS 保護を構成する方法](../virtual-network/manage-ddos-protection.md)
+* [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
 * [Azure Firewall をデプロイする方法l](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -284,7 +284,7 @@ Azure 仮想マシン スケール セットでサポートされているアプ
 
 * [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-* [Log Analytics ワークスペースについて](../azure-monitor/log-query/get-started-portal.md)
+* [Log Analytics ワークスペースについて](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
 
@@ -318,7 +318,7 @@ Azure 仮想マシン スケール セットでサポートされているアプ
 
 * [Linux サーバーを Azure Security Center にオンボードするための手順](../security-center/quickstart-onboard-machines.md)
 
-* [次のリンクでは、Microsoft 推奨のセキュリティ ガイドラインが提供される。これは、選択された脆弱性ソフトウェアの条件の一覧として使用できる](../virtual-machines/linux/security-recommendations.md)
+* [次のリンクでは、Microsoft 推奨のセキュリティ ガイドラインが提供される。これは、選択された脆弱性ソフトウェアの条件の一覧として使用できる](../virtual-machines/security-recommendations.md)
 
 **Azure Security Center の監視**: はい
 
@@ -472,7 +472,7 @@ Linux 仮想マシンでは、ノード単位でコンソール ログを手動�
 
 **ガイダンス**: 監査ログとサインイン ログを Log Analytics ワークスペースに送信するように Azure Active Directory の診断設定を構成します。 また、ログを確認したり、Azure 仮想マシンのログ データにクエリを実行したりするには Azure Monitor を使用します。
 
-* [Log Analytics ワークスペースについて](../azure-monitor/log-query/get-started-portal.md)
+* [Log Analytics ワークスペースについて](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -756,7 +756,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 * [Azure Automation の概要](../automation/automation-intro.md)
 
-* [Change Tracking ソリューションを使用して環境内の変更を追跡する](../automation/change-tracking.md)
+* [Change Tracking ソリューションを使用して環境内の変更を追跡する](../automation/change-tracking/overview.md)
 
 * [Azure Automation State Configuration の概要](../automation/automation-dsc-overview.md)
 
@@ -1036,7 +1036,7 @@ Azure Linux 仮想マシンでのマルウェア対策にはサード パーテ�
 
 * [Microsoft Defender Advanced Threat Protection](/windows/security/threat-protection/microsoft-defender-atp/onboard-configure)
 
-* [Cloud Services と Virtual Machines に対して Microsoft Antimalware を構成する方法](../virtual-machines/linux/security-recommendations.md)
+* [Cloud Services と Virtual Machines に対して Microsoft Antimalware を構成する方法](../virtual-machines/security-recommendations.md)
 
 **Azure Security Center の監視**: 適用なし
 

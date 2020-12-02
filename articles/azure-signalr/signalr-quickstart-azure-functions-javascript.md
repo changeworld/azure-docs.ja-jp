@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
 ms.custom: devx-track-js
-ms.openlocfilehash: 02bcbf0b4f6f6021c157a8ba3c5d2783fc94f1aa
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 061dce01d2437d04d371ac65c115a1d95136fb5d
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425312"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874697"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>クイック スタート:JavaScript を使って Azure Functions と SignalR Service を使用するチャット ルームを作成する
 
@@ -32,21 +32,21 @@ Azure SignalR Service を使用すると、アプリケーションに対して�
 > [!NOTE]
 > このクイック スタートは、macOS、Windows、または Linux で実行できます。
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjs)。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
 Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサインインします。
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjs)。
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjs)。
 
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjs)。
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Azure Function アプリを構成して実行する
 
@@ -64,30 +64,30 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 1. *local.settings.sample.json* を *local.settings.json* に変更します。
 
-1. **local.settings.json** で、 **AzureSignalRConnectionString** 設定に接続文字列の値を貼り付けます。 ファイルを保存します。
+1. **local.settings.json** で、**AzureSignalRConnectionString** 設定に接続文字列の値を貼り付けます。 ファイルを保存します。
 
 1. フォルダーに JavaScript 関数が編成されます。 各フォルダーには、関数で使用されるバインディングを定義する *function.json* と、関数の本体である *index.js* という 2 つのファイルがあります。 この関数アプリには、HTTP によってトリガーされる関数が 2 つあります。
 
     - **negotiate** - *SignalRConnectionInfo* 入力バインディングを使用し、有効な接続情報を生成して返却します。
-    - **messages** - 要求本文でチャット メッセージを受信し、 *SignalR* 出力バインディングを使用して接続されているすべてのクライアント アプリケーションにメッセージをブロードキャストします。
+    - **messages** - 要求本文でチャット メッセージを受信し、*SignalR* 出力バインディングを使用して接続されているすべてのクライアント アプリケーションにメッセージをブロードキャストします。
 
-1. ターミナルで、 *src/chat/javascript* フォルダーにいることを確認します。 関数アプリを実行します。
+1. ターミナルで、*src/chat/javascript* フォルダーにいることを確認します。 関数アプリを実行します。
 
     ```bash
     func start
     ```
 
     ![SignalR Service の作成](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-run-application.png)
-
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
+    
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjs)。
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjs)。
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjs)。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -96,4 +96,3 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 > [!div class="nextstepaction"]
 > [VS Code で Azure Functions をデプロイする](/azure/developer/javascript/tutorial-vscode-serverless-node-01)
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)

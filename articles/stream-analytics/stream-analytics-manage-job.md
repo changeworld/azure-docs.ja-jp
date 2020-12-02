@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: fef949e9285264ef46fbaed05a4385a15b27e65e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 70acc696f1cb366d25299f616744e52491a54471
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354470"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024179"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>チュートリアル:Stream Analytics で通話データを分析し、Power BI ダッシュボードで結果を視覚化する
 
@@ -129,7 +129,7 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
 
 1. Stream Analytics ジョブを作成するには、[Azure portal](https://portal.azure.com/) に移動します。
 
-2. **[リソースの作成]** を選択し、 **[Stream Analytics ジョブ]** を検索します。 **[Stream Analytics ジョブ]** タイルを選択し、*[作成]** を選択します。
+2. **[リソースの作成]** を選択し、 **[Stream Analytics ジョブ]** を検索します。 **[Stream Analytics ジョブ]** タイルを選択し、 **[作成]** を選択します。
 
 3. **[新しい Stream Analytics ジョブ]** フォームで、次の値を入力します。
 

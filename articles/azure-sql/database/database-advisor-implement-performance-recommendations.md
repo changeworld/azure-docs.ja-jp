@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: b1ef29eb71ccd945552550f64e5ae95bc85be44d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 79ccf0f8aae7e915601081f875cea294de52d787
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672110"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500854"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Azure SQL Database のデータベース アドバイザーのパフォーマンスに関する推奨事項
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -80,7 +80,7 @@ CPU、データ IO、ログ IO が直前の 30 分間で 80% を超えている�
 
 ## <a name="parameterize-queries-recommendations-preview"></a>クエリのパラメーター化に関する推奨事項 (プレビュー)
 
-継続的に再コンパイルされてはいるもののクエリ実行プランが同じままのクエリが 1 つ以上あると、 *クエリのパラメーター化* に関する推奨事項が表示されます。 この条件によって、強制パラメーター化を適用する機会が生成されます。 強制パラメーター化では、クエリ プランをキャッシュして将来再利用できるようになり、パフォーマンスが向上し、リソース使用率が削減されます。
+継続的に再コンパイルされてはいるもののクエリ実行プランが同じままのクエリが 1 つ以上あると、*クエリのパラメーター化* に関する推奨事項が表示されます。 この条件によって、強制パラメーター化を適用する機会が生成されます。 強制パラメーター化では、クエリ プランをキャッシュして将来再利用できるようになり、パフォーマンスが向上し、リソース使用率が削減されます。
 
 すべてのクエリは、実行プランの生成のために、最初にコンパイルされる必要があります。 生成された各プランがプラン キャッシュに追加されます。 同じクエリのその後の実行では、キャッシュからプランを再利用できるため、追加のコンパイルの必要がなくなります。
 

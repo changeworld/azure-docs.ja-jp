@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 08/27/2020
+ms.date: 11/24/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d700c2f2b4df01da577b67dafab989b655bdb58d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 904456de527e8d0acb1319059c18f9a3c6b0a1a3
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331082"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95992948"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>クイック スタート:Azure Application Gateway による Web トラフィックのルーティング - Azure portal
 
@@ -40,7 +40,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。 **[新規作成]** ウィンドウが表示されます。
 
-2. **[ネットワーク]** を選択し、**おすすめ**のリストで **[Application Gateway]** を選択します。
+2. **[ネットワーク]** を選択し、**おすすめ** のリストで **[Application Gateway]** を選択します。
 
 ### <a name="basics-tab"></a>[基本] タブ
 
@@ -158,7 +158,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 4. 他の既定値をそのまま使用し、 **[Next: ディスク]** を選択します。  
 5. **[ディスク]** タブの既定値をそのまま使用し、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 6. **[ネットワーク]** タブで、 **[仮想ネットワーク]** に **myVNet** が選択されていること、および **[サブネット]** が **myBackendSubnet** に設定されていることを確認します。 他の既定値をそのまま使用し、 **[Next: 管理]** を選択します。<br>Application Gateway は、それが存在している仮想ネットワークの外部にあるインスタンスと通信できますが、IP 接続があることを確認する必要があります。
-7. **[管理]** タブで、 **[ブート診断]** を **[オフ]** に設定します。 他の既定値をそのまま使用し、 **[確認および作成]** を選択します。
+7. **[管理]** タブで、 **[ブート診断]** を **[Disable]\(無効\)** に設定します。 他の既定値をそのまま使用し、 **[確認および作成]** を選択します。
 8. **[確認および作成]** タブで、設定を確認し、検証エラーを修正してから、 **[作成]** を選択します。
 9. 仮想マシンの作成が完了するのを待って先に進みます。
 
@@ -225,7 +225,7 @@ IIS はアプリケーション ゲートウェイを作成するのに必要で
 
 1. Azure portal メニューで **[リソース グループ]** を選択するか、または *[リソース グループ]* を検索して選択します。
 2. **[リソース グループ]** ページで、リストの **myResourceGroupAG** を探して選択します。
-3. **[リソース グループ] ページ**で、 **[リソース グループの削除]** を選択します。
+3. **[リソース グループ] ページ** で、 **[リソース グループの削除]** を選択します。
 4. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「*myResourceGroupAG*」と入力し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ

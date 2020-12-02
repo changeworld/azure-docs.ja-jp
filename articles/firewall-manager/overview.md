@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 09/30/2020
+ms.date: 11/23/2020
 ms.author: victorh
-ms.openlocfilehash: 00a84fbf694a58128712abf806ff12df96f0e5e9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 84ecea7764ddf48d68c983eaa5bccbac5f332d9b
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596692"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95489696"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Azure Firewall Manager とは
 
@@ -89,7 +89,8 @@ Azure Firewall Manager には、次の既知の問題があります。
 |カスタム DNS (プレビュー) が構成されているセキュリティで保護されたハブでは、アプリケーション ルールが失敗します。|強制トンネリングが有効にされている、セキュリティで保護されたハブ デプロイとハブ仮想ネットワーク デプロイ環境では、カスタム DNS (プレビュー) が正しく機能しません。|修正方法は調査中です。|
 |セキュリティ保護付き仮想ハブで DDoS Protection Standard がサポートされていない|DDoS Protection Standard は vWAN と統合されていません。|調査中|
 |アクティビティ ログが完全にはサポートされていない|現在、ファイアウォール ポリシーでは、アクティビティ ログはサポートされていません。|調査中|
-|SNAT のプライベート IP アドレス範囲の構成|[プライベート IP 範囲の設定](../firewall/snat-private-range.md)は、Azure Firewall ポリシーが構成されている場合は無視されます。 宛先 IP アドレスが [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) に従ったプライベート IP アドレス範囲内にある場合、既定の Azure Firewall の動作が使用され、SNAT のネットワーク規則は含まれません。|調査中
+|SNAT のプライベート IP アドレス範囲の構成|[プライベート IP 範囲の設定](../firewall/snat-private-range.md)は、Azure Firewall ポリシーが構成されている場合は無視されます。 宛先 IP アドレスが [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) に従ったプライベート IP アドレス範囲内にある場合、既定の Azure Firewall の動作が使用され、SNAT のネットワーク規則は含まれません。|調査中|
+|Firewall ポリシーを使用するようにファイアウォールが移行されても、いくつかのファイアウォール設定が移行されません|Azure Firewall ポリシーに移行しても、可用性ゾーンと SNAT プライベート アドレスは移行されません。|調査中| 
 
 ## <a name="next-steps"></a>次のステップ
 

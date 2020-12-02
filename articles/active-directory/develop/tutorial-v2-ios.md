@@ -13,16 +13,16 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 70194c7adc55a00c5cb65928daac184499eb124d
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: aff89d49dec9bafedb3c9a5a76abdeb803740a12
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611114"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95746729"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>チュートリアル:iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph を呼び出す
 
-このチュートリアルでは、iOS または macOS アプリを Microsoft ID プラットフォームと統合する方法について説明します。 アプリによって、ユーザーがサインインされ、Microsoft Graph API を呼び出すためのアクセス トークンが取得されて、Microsoft Graph API への要求が行われます。
+このチュートリアルでは、Microsoft ID プラットフォームと連携してユーザーのサインインを処理し、Microsoft Graph API を呼び出すためのアクセス トークンを取得する iOS アプリまたは macOS アプリを作成します。
 
 このガイドを完了すると、アプリケーションは、個人用の Microsoft アカウント (outlook.com、live.com など) と、Azure Active Directory を使用する会社や組織の職場または学校アカウントのサインインを受け入れるようになります。 このチュートリアルは、iOS アプリと macOS アプリの両方に適用されます。 この 2 つのプラットフォームの間では、一部の手順が異なります。
 
@@ -80,7 +80,7 @@ ms.locfileid: "91611114"
 
 7. 画面の上部付近にある **[新しいエクスペリエンスを試す]** を選択して新しいアプリの登録エクスペリエンスを開き、 **[+ 新規登録]**  >  **[+ プラットフォームを追加]**  >  **[iOS/macOS]** の順に選択します。
     - プロジェクトのバンドル ID を入力します。 コードをダウンロードした場合は `com.microsoft.identitysample.MSALiOS` です。 独自のプロジェクトを作成している場合は、Xcode でそのプロジェクトを選択し、 **[全般]** タブを開きます。 **[ID]** セクションにバンドル ID が表示されます。
-8. [`Configure`] を選択し、後でアプリを構成するときに入力できるように、 **[MSAL 構成]** ページに表示される **MSAL の構成**を保存しておきます。 **[Done]** を選択します。
+8. [`Configure`] を選択し、後でアプリを構成するときに入力できるように、 **[MSAL 構成]** ページに表示される **MSAL の構成** を保存しておきます。 **[Done]** を選択します。
 
 ## <a name="add-msal"></a>MSAL の追加
 
@@ -724,7 +724,7 @@ MSAL では、既定でアプリのトークンが iOS または macOS のキー
 
 1. アプリケーションが正しく署名されていることを確認します。
 1. Xcode プロジェクトの設定 > **[機能] タブ** >  **[Enable Keychain Sharing]\(キーチェーン共有を有効にする\)** に移動します。
-1. **[+]** を選択し、次のいずれかの**キーチェーン グループ**を入力します。
+1. **[+]** を選択し、次のいずれかの **キーチェーン グループ** を入力します。
     - iOS: `com.microsoft.adalcache`
     - macOS: `com.microsoft.identity.universalstorage`
 

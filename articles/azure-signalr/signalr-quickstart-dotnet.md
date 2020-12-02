@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: da91a5a7c077eb14d12a711b8b308d7045c88f4a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c39ef505b0cea0ad0c03b81683db8441077cd0d2
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150986"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874544"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>クイック スタート:ASP.NET と SignalR Service を使ってチャット ルームを作成する
 
-Azure SignalR Service は [SignalR for ASP.NET Core 2.1](/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1) に基づいており、ASP.NET SignalR との互換性は 100% では**ありません**。 Azure SignalR Service は、最新の ASP.NET Core テクノロジに基づいて ASP.NET SignalR データ プロトコルを再実装しています。 ASP.NET SignalR に対して Azure SignalR Service を使用する場合、ASP.NET SignalR の一部の機能はサポートされません。たとえば、Azure SignalR はクライアントが再接続したときにメッセージを再生しません。 また、Forever Frame の転送や JSONP はサポートされていません。 ASP.NET SignalR アプリケーションを SignalR Service と共に使用するには、いくらかのコード変更や適切なバージョンの依存ライブラリが必要になります。
+Azure SignalR Service は [SignalR for ASP.NET Core 2.1](/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1) に基づいており、ASP.NET SignalR との互換性は 100% では **ありません**。 Azure SignalR Service は、最新の ASP.NET Core テクノロジに基づいて ASP.NET SignalR データ プロトコルを再実装しています。 ASP.NET SignalR に対して Azure SignalR Service を使用する場合、ASP.NET SignalR の一部の機能はサポートされません。たとえば、Azure SignalR はクライアントが再接続したときにメッセージを再生しません。 また、Forever Frame の転送や JSONP はサポートされていません。 ASP.NET SignalR アプリケーションを SignalR Service と共に使用するには、いくらかのコード変更や適切なバージョンの依存ライブラリが必要になります。
 
 ASP.NET SignalR と ASP.NET Core SignalR の機能の比較の完全なリストについては、[バージョンの違いに関するドキュメント](/aspnet/core/signalr/version-differences?preserve-view=true&view=aspnetcore-3.1)を参照してください。
 
@@ -32,13 +32,13 @@ ASP.NET SignalR と ASP.NET Core SignalR の機能の比較の完全なリスト
 * [.NET 4.6.1](https://www.microsoft.com/net/download/windows)
 * [ASP.NET SignalR 2.4.1](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/)
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnet)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsnet)。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 Azure アカウントで [Azure Portal](https://portal.azure.com/) にサインインします。
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnet)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsnet)。
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
@@ -46,7 +46,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 [「SignalR Service の作成」にあるスクリプト](scripts/signalr-cli-create-service.md)を使用して、このクイック スタートで使用されている Azure リソースを作成することもできます。
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnet)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsnet)。
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
@@ -60,7 +60,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
     git clone https://github.com/aspnet/AzureSignalR-samples.git
     ```
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnet)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsnet)。
 
 ## <a name="configure-and-run-chat-room-web-app"></a>チャット ルーム Web アプリの構成と実行
 
@@ -106,7 +106,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 1. <kbd>F5</kbd> を押し、プロジェクトをデバッグ モードで実行します。 アプリケーションがローカルで実行されます。 アプリケーションそのものが SignalR ランタイムをホストする代わりに、Azure SignalR Service に接続するようになります。
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnet)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsnet)。
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
@@ -121,7 +121,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnet)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsnet)。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -129,5 +129,3 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 > [!div class="nextstepaction"]
 > [Azure SignalR Service を ASP.NET Core と共に使用する](./signalr-quickstart-dotnet-core.md)
-
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnet)

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: antchu
 ms.custom: devx-track-python
-ms.openlocfilehash: 24985a006390977c89c4eedc23084a9856272eba
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: aaaf9011d38e7ec02e83db63757c434329b835e0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355646"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960293"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>クイック スタート:Python を使用した Azure Functions と SignalR Service によるチャット ルームの作成
 
@@ -31,21 +31,21 @@ Azure Functions には [Python 3.6 または 3.7](https://www.python.org/downloa
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qspython)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qspython)。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
 Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサインインします。
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qspython)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qspython)。
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qspython)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qspython)。
 
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qspython)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qspython)。
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Azure Function アプリを構成して実行する
 
@@ -100,15 +100,15 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
     ![関数アプリを実行する](media/signalr-quickstart-azure-functions-python/signalr-quickstart-run-application.png)
     
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qspython)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qspython)。
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qspython)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qspython)。
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qspython)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qspython)。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -117,4 +117,3 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 > [!div class="nextstepaction"]
 > [VS Code で Azure Functions をデプロイする](/azure/developer/javascript/tutorial-vscode-serverless-node-01)
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qspython)

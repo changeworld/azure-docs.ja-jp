@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 11/13/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: computer vision, computer vision アプリケーション, computer vision サービス
-ms.openlocfilehash: aeaa10870b8b40b907da1d1660e77ebf0271c300
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 1b4768781c45733590639b4a382fecfdb02adf48
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629752"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95532292"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
 
@@ -64,7 +64,7 @@ Computer Vision は、多くのデジタル資産管理 (DAM) シナリオに活
 
 ### <a name="detect-faces"></a>顔を検出する
 
-イメージ内の人物の顔を検出して、検出されたそれぞれの顔に関する情報を提示します。 Computer Vision は検出された各顔の座標、四角い枠、性別、および年齢を返します。<br/>Computer Vision では、[Face](/azure/cognitive-services/face/) サービス機能のサブセットが提供されます。 Face サービスは、顔識別や姿勢検出など、より詳細な分析に使用できます。 [顔を検出する](concept-detecting-faces.md)
+イメージ内の人物の顔を検出して、検出されたそれぞれの顔に関する情報を提示します。 Computer Vision は検出された各顔の座標、四角い枠、性別、および年齢を返します。<br/>Computer Vision では、[Face](../face/index.yml) サービス機能のサブセットが提供されます。 Face サービスは、顔識別や姿勢検出など、より詳細な分析に使用できます。 [顔を検出する](concept-detecting-faces.md)
 
 ### <a name="detect-image-types"></a>イメージの種類の検出
 
@@ -90,13 +90,12 @@ Computer Vision は、多くのデジタル資産管理 (DAM) シナリオに活
 
 Computer Vision を使用すると、画像内の[成人向けコンテンツを検出](concept-detecting-adult-content.md)し、さまざまな分類の信頼度スコアを返すことができます。 コンテンツをフラグ設定するためのしきい値は、自分の都合に合わせて、スライディング スケールで設定することができます。
 
-## <a name="use-containers"></a>コンテナーの使用
+## <a name="deploy-on-premises-using-docker-containers"></a>Docker コンテナーを使用してオンプレミスにデプロイする
 
-Computer Vision サービスをオンプレミスで使用するには、Computer Vision Docker コンテナーを使用します。 現在、次の 2 つのコンテナーが提供されています。
+Computer Vision コンテナーを使用して API 機能をオンプレミスにデプロイします。 これらの Docker コンテナーを使用すると、コンプライアンス、セキュリティ、またはその他の運用上の理由により、データにより近いところでサービスを使用できます。 Computer Vision には、次のコンテナーが用意されています。
 
-* [Computer Vision 読み取りコンテナー](computer-vision-how-to-install-containers.md)を使用すると、画像内の印字されたテキストや手書きテキストを認識することができます。
-
-* [Computer Vision 空間分析コンテナー](spatial-analysis-container.md)を使用すると、リアルタイム ストリーミング ビデオを分析して、物理環境における人物とその動きとの間の空間的な関係を把握できます。
+* [Computer Vision Read OCR コンテナー (プレビュー)](computer-vision-how-to-install-containers.md) を使用すると、画像内の印字されたテキストや手書きテキストを認識することができます。
+* [Computer Vision 空間分析コンテナー (プレビュー)](spatial-analysis-container.md) を使用すると、リアルタイム ストリーミング ビデオを分析して、物理環境における人物とその動きとの間の空間的な関係を把握できます。
 
 ## <a name="image-requirements"></a>イメージの要件
 

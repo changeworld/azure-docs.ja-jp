@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 3952736af9cf7c3b720769cee6a58e3fc52a6111
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b62a0da7074676787b7e1c0182ca7588b83cdbe0
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127405"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985044"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central とは
 
@@ -34,10 +34,10 @@ Web UI では、デバイスの状態を監視し、ルールを作成し、ラ�
 
 この IoT Central ドキュメントでは、IoT Central アプリケーションと対話する 4 種類のペルソナに言及しています。
 
-- "_ソリューション ビルダー_": アプリケーションに接続する[デバイスの種類を定義](howto-set-up-template.md)したり、オペレーター向けにアプリケーションをカスタマイズしたりする役割を担います。
-- "_オペレーター_": アプリケーションに接続される[デバイスを管理](howto-manage-devices.md)します。
-- "_管理者_": 管理タスクを担います (アプリケーション内での[ユーザー ロールとアクセス許可](howto-administer.md)の管理など)。
-- "_デバイス開発者_": アプリケーションに接続されるデバイスまたは [IoT Edge モジュール](concepts-iot-edge.md)で[実行するコードを作成](concepts-telemetry-properties-commands.md)します。
+- "_ソリューション ビルダー_": アプリケーションに接続する [デバイスの種類を定義](howto-set-up-template.md)したり、オペレーター向けにアプリケーションをカスタマイズしたりする役割を担います。
+- "_オペレーター_": アプリケーションに接続される [デバイスを管理](howto-manage-devices.md)します。
+- "_管理者_": 管理タスクを担います (アプリケーション内での [ユーザー ロールとアクセス許可](howto-administer.md)の管理など)。
+- "_デバイス開発者_": アプリケーションに接続されるデバイスまたは [IoT Edge モジュール](concepts-iot-edge.md)で [実行するコードを作成](concepts-telemetry-properties-commands.md)します。
 
 ## <a name="create-your-iot-central-application"></a>IoT Central アプリケーションを作成する
 
@@ -46,7 +46,7 @@ Web UI では、デバイスの状態を監視し、ルールを作成し、ラ�
 - クラウドベースのアプリケーション。このアプリケーションによってデバイスからテレメトリを受信し、それらのデバイスの管理が可能となります。
 - カスタム コードを実行する複数のデバイス。これらのデバイスが、クラウドベースのアプリケーションに接続されます。
 
-新しい IoT Central アプリケーションは、ブラウザーからすばやくデプロイし、具体的な要件に合わせてカスタマイズすることができます。 汎用の "_アプリケーション テンプレート_"、または[小売業](../retail/overview-iot-central-retail.md)、[エネルギー](../energy/overview-iot-central-energy.md)、[政府機関](../government/overview-iot-central-government.md)、[医療](../healthcare/overview-iot-central-healthcare.md)の各業界にフォーカスしたアプリケーション テンプレートのいずれかを使用して開始できます。
+新しい IoT Central アプリケーションは、ブラウザーからすばやくデプロイし、具体的な要件に合わせてカスタマイズすることができます。 汎用の "_アプリケーション テンプレート_"、または [小売業](../retail/overview-iot-central-retail.md)、[エネルギー](../energy/overview-iot-central-energy.md)、[政府機関](../government/overview-iot-central-government.md)、[医療](../healthcare/overview-iot-central-healthcare.md)の各業界にフォーカスしたアプリケーション テンプレートのいずれかを使用して開始できます。
 
 ソリューション ビルダーは、自社アプリケーションに接続するデバイス用に、Web ベースのツールを使って "_デバイス テンプレート_" を作成します。 デバイス テンプレートは、特定の種類のデバイスについて、その特性と動作を定義するブループリントです。次に示したのは、その例です。
 
@@ -58,7 +58,7 @@ Web UI では、デバイスの状態を監視し、ルールを作成し、ラ�
 
 この[デバイス テンプレート](howto-set-up-template.md)には、次のものが含まれています。
 
-- デバイスが実装すべき機能を記述する "_デバイス機能モデル_"。 デバイス機能の例を次に示します。
+- デバイスが実装する必要がある機能を記述する "_デバイス モデル_"。 デバイス機能の例を次に示します。
 
   - IoT Central にストリーム配信されるテレメトリ。
   - IoT Central に状態をレポートする際に使用される読み取り専用プロパティ。
@@ -72,9 +72,9 @@ Web UI では、デバイスの状態を監視し、ルールを作成し、ラ�
 
 ソリューション ビルダーには、デバイス テンプレート作成のためのオプションがいくつか用意されています。
 
-- IoT Central でデバイス テンプレートを設計してから、そのデバイス機能モデルをデバイス コードに実装します。
-- Visual Studio Code を使用してデバイス機能モデルを作成し、モデルをリポジトリに発行します。 モデルからデバイス コードを実装し、デバイスを IoT Central アプリケーションに接続します。 IoT Central によって、リポジトリからデバイス機能モデルが検索され、シンプルなデバイス テンプレートが自動的に作成されます。
-- Visual Studio Code を使用してデバイス機能モデルを作成します。 ご利用のデバイス コードをモデルから実装します。 ご利用の IoT Central アプリケーションにデバイス機能モデルを手動でインポートしてから、IoT Central アプリケーションに必要なクラウド プロパティ、カスタマイズ、およびダッシュボードを追加します。
+- IoT Central でデバイス テンプレートを設計し、そのデバイス モデルをデバイス コードに実装します。
+- Visual Studio Code を使用してデバイス モデルを作成し、モデルをリポジトリに発行します。 モデルからデバイス コードを実装し、デバイスを IoT Central アプリケーションに接続します。 IoT Central によって、リポジトリからデバイス モデルが検索され、単純なデバイス テンプレートが自動的に作成されます。
+- Visual Studio Code を使用してデバイス モデルを作成します。 ご利用のデバイス コードをモデルから実装します。 ご利用の IoT Central アプリケーションにデバイス モデルを手動でインポートし、IoT Central アプリケーションに必要なクラウド プロパティ、カスタマイズ、ダッシュボードを追加します。
 
 ソリューション ビルダーは、IoT Central を使用して、デバイス テンプレートを検証するためのテスト デバイス用コードを生成できます。
 
@@ -151,7 +151,6 @@ IoT Central アプリケーションは、Microsoft によって完全にホス�
 - 配列スキーマの種類はサポートされていない。
 - C デバイス SDK と Node.js のデバイス SDK、サービス SDK のみがサポートされている。
 - 現在、IoT Central は、米国、ヨーロッパ、アジア太平洋、オーストラリア、英国、日本で使用できます。
-- デバイス機能モデルには、すべてのインターフェイスが同じファイル内にインラインで定義されている必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

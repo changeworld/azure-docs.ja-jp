@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 11/19/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 72575725c0924b8ec5f9466f4ffbba86bf071db4
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 28637f35294e9c70cbf0e96fb2cdcb1853d2ba39
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631539"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992728"
 ---
 ::: zone target="docs"
 
@@ -92,7 +92,7 @@ ms.locfileid: "91631539"
     * 追跡番号を伝えないと、集荷時に UPS から追加料金が請求されます。
 
     集荷のスケジュールを設定する代わりに、最寄りの持ち込み場所に Data Box を持ち込むこともできます。
-4. 運送業者によって Data Box が集荷され、スキャンされると、ポータルの注文状態は " **集荷されました** " に更新されます。 追跡 ID も表示されます。
+4. 運送業者によって Data Box が集荷され、スキャンされると、ポータルの注文状態は "**集荷されました**" に更新されます。 追跡 ID も表示されます。
 
 ::: zone target="chromeless"
 
@@ -103,12 +103,6 @@ ms.locfileid: "91631539"
 ## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する
 
 Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 Revision 1 のガイドライン](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)に従ってディスク上のデータを消去します。
-
-::: zone-end
-
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
 
@@ -131,12 +125,6 @@ Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 
 ## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する
 
 Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 Revision 1 のガイドライン](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)に従ってディスク上のデータを消去します。
-
-::: zone-end
-
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
 
@@ -182,12 +170,6 @@ Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 
 
 ::: zone-end
 
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
-
 ## <a name="singapore"></a>[シンガポール](#tab/in-singapore)
 
 1. 返品対象のデバイスを発送する場合に使用する元の箱を保管しておきます。
@@ -223,33 +205,33 @@ Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 
 
 ::: zone-end
 
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
-
 ## <a name="south-africa"></a>[南アフリカ](#tab/in-sa)
 
 1. 返送するデバイスを元の箱に梱包します。
 2. デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
-3. DHL で集荷を予約するには:
+3. 追跡番号 (Data Box のローカル Web UI の **[発送準備]** ページに参照番号として表示されます) をメモしておきます。 これは、"発送準備" の手順が正常に完了した後に提供されます。 このページから配送先住所ラベルをダウンロードし、梱包箱に貼り付けます。
+4. Azure Data Box Operations に返送コードを要求します。 パッケージをデータセンターに返送するには、返送コードが必要です。 [adbops@microsoft.com](mailto:adbops@microsoft.com) に電子メールを送信します。 配送先住所ラベルの返送先住所の横に、はっきりと見えるようにこのコードを記載します。
+5. 次のいずれかの方法を使用して、DHL で集荷を予約します。
+ 
+   * [DHL Express South Africa **の「** Schedule a Pickup (集荷をスケジュールする)](https://mydhl.express.dhl/za/en/schedule-pickup.html#/schedule-pickup#label-reference)」にアクセスして、オンラインで集荷を予約します。
+   * 次のテンプレートを使用して、電子メールを [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) に送信します。
 
-    * カスタマー サービスのコンタクト センター (+27(0) 11 9213600) に電話し、オプション 1 を選択して、貨物運送状番号を指定します。
-    * 集荷をスケジュールするには、午後 2:00 時より前に電話する必要があります。
-    * 次のテンプレートを使用して、電子メールを [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) に送信します。
+     ```output
+     To: Priority.Support@dhl.com
+     Subject: Pickup request for Microsoft Azure
+     Body: Need pick up for the below shipment
+       *  DHL tracking number: (reference number/waybill number)
+       *  Requested pickup date: yyyy/mm/dd;time:HH MM
+       *  Shipper contact: (company name)
+       *  Contact person: 
+       *  Phone number: 
+       *  Full physical address: 
+       *  Item to be collected: Azure Dt
+     ```
 
-    ```output
-    To: Priority.Support@dhl.com
-    Subject: Pickup request for Microsoft Azure
-    Body: Need pick up for the below shipment
-      *  DHL tracking number (reference number/waybill number)
-      *  Requested pickup date: yyyy/mm/dd;time:HH MM
-    ```
+    * または、最寄りの DHL サービス ポイントにパッケージを持ち込みます。
 
-    * または、最寄りの DHL サービス ポイントにパッケージを持ち込むこともできます。
-
-4. 問題が発生した場合は、[Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) に電子メールを送り、発生した問題の詳細を説明し、件名に貨物運送状番号を含めます。 +27(0)119213902 に電話することもできます。
+6. 問題が発生した場合は、[Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) に電子メールを送り、発生した問題の詳細を説明し、件名に貨物運送状番号を含めます。 +27(0)119213902 に電話することもできます。
 
 ::: zone target="chromeless"
 
@@ -263,17 +245,11 @@ Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 
 
 ::: zone-end
 
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
-
 ## <a name="hong-kong"></a>[香港特別行政区](#tab/in-hk)
 
 1. 返送するデバイスを元の箱に梱包します。
 2. デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
-3. **Quantium Solutions** ホットライン ( **(852) 2318 1213** ) に、営業時間中 (月曜日から金曜日の午前 9 時から午後 6 時まで) に電話をかけます。  
+3. **Quantium Solutions** ホットライン ( **(852) 2318 1213**) に、営業時間中 (月曜日から金曜日の午前 9 時から午後 6 時まで) に電話をかけます。  
 4. "Microsoft Azure の集荷" であることと、返送ラベルの参照番号および追跡番号 (バー コードの上) を伝え、集荷を手配します。
 5. 口頭で集荷スケジュールが確認されます。 配送業者が集荷に来ない場合は、Quantium Solutions ホットラインに別の手配を依頼します。
 6. Quantium に集荷を予約したら、次のテンプレートを使用して、確定内容を [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) にも連絡します。
@@ -301,12 +277,6 @@ Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 
 ## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する
  
 Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 Revision 1 のガイドライン](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)に従ってディスク上のデータを消去します。
-
-::: zone-end
-
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
 
@@ -369,8 +339,6 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 
 ::: zone target="chromeless"
 
----
-
 ## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
 
 [!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
@@ -381,7 +349,11 @@ Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 
 
 ::: zone-end
 
+---
+
 ::: zone target="docs"
+
+## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
 
 [!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 

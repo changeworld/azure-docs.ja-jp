@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: c88b777e08bc165caefa14fe28d43c498e3fefcd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a016781e5b05c8f43c043bf1f3368a58064e43ad
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790374"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501262"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database の Query Performance Insight
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,8 +41,8 @@ Query Performance Insight では、 [クエリ ストア](/sql/relational-databa
 
 Query Performance Insight を使用するには、次の [Azure ロール ベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) 権限が必要です。
 
-* 上位のリソース消費量クエリとグラフを表示するには、 **閲覧者** 、 **所有者** 、 **共同作成者** 、 **SQL DB 共同作業者** 、または **SQL Server 共同作業者** の権限が必要です。
-* クエリ テキストを表示するには、 **所有者** 、 **共同作成者** 、 **SQL DB 共同作業者** 、または **SQL Server 共同作業者** の権限が必要です。
+* 上位のリソース消費量クエリとグラフを表示するには、**閲覧者**、**所有者**、**共同作成者**、**SQL DB 共同作業者**、または **SQL Server 共同作業者** の権限が必要です。
+* クエリ テキストを表示するには、**所有者**、**共同作成者**、**SQL DB 共同作業者**、または **SQL Server 共同作業者** の権限が必要です。
 
 ## <a name="use-query-performance-insight"></a>Query Performance Insight の使用
 
@@ -238,14 +238,14 @@ Query Performance Insight を使用しているときに、次のようなクエ
 
 保持ポリシーには 2 つの種類があります。
 
-* **サイズ ベース** :このポリシーが **AUTO** に設定されている場合、最大サイズに近づくとデータが自動的にクリーンアップされます。
-* **時間ベース** :既定では、このポリシーは 30 日に設定されます。 クエリ ストアの領域が不足すると、30 日を経過したクエリ情報が削除されます。
+* **サイズ ベース**:このポリシーが **AUTO** に設定されている場合、最大サイズに近づくとデータが自動的にクリーンアップされます。
+* **時間ベース**:既定では、このポリシーは 30 日に設定されます。 クエリ ストアの領域が不足すると、30 日を経過したクエリ情報が削除されます。
 
 キャプチャ ポリシーは、次のように設定できます。
 
 * **[すべて]** : クエリ ストアですべてのクエリがキャプチャされます。
-* **Auto** :クエリ ストアでは、低頻度のクエリおよびコンパイル期間と実行期間が重要ではないクエリは無視されます。 実行回数、コンパイル期間、実行期間のしきい値は内部的に決定されます。 既定のオプションです。
-* **None** :クエリ ストアでは新しいクエリのキャプチャが停止されます。しかし、既にキャプチャされているクエリの実行時統計は引き続き収集されます。
+* **Auto**:クエリ ストアでは、低頻度のクエリおよびコンパイル期間と実行期間が重要ではないクエリは無視されます。 実行回数、コンパイル期間、実行期間のしきい値は内部的に決定されます。 既定のオプションです。
+* **None**:クエリ ストアでは新しいクエリのキャプチャが停止されます。しかし、既にキャプチャされているクエリの実行時統計は引き続き収集されます。
 
 [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) または Azure portal から以下のコマンドを実行して、すべてのポリシーを **AUTO** に設定し、クリーンアップ ポリシーを 30 日に設定することをお勧めします (`YourDB` はデータベース名に置き換えてください)。
 

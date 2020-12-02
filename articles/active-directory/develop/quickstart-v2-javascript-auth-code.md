@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 40929a165e7a3afbbc92a472c352172723745040
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 18b62e34ab57d1d7e937eb21b9ed2a7feffa758c
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533193"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95758950"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>クイック スタート:承認コード フローを使用して JavaScript SPA 内でユーザーをサインインさせ、アクセス トークンを取得する
 

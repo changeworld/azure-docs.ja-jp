@@ -3,14 +3,14 @@ title: クイック スタート:C# ASP.NET アプリを作成する
 description: Visual Studio から既定の C# ASP.NET Web アプリ テンプレートをデプロイすることによって、Azure App Service で Web アプリを実行する方法について説明します。
 ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.topic: quickstart
-ms.date: 08/06/2020
+ms.date: 11/20/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seodec18
-ms.openlocfilehash: 5bf774f2b5cf4a6275dc04248aadfd9a94f5122d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a4f7ba288bc27d6079deea9caf0ea315a55d0745
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88212557"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96004081"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Azure に ASP.NET Framework Web アプリを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "88212557"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、**ASP.NET および Web 開発**のワークロードと共に、<a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> をインストールします。
+このチュートリアルを完了するには、**ASP.NET および Web 開発** のワークロードと共に、<a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> をインストールします。
 
 Visual Studio 2019 を既にインストールしている場合:
 
@@ -53,22 +53,23 @@ Visual Studio 2019 を既にインストールしている場合:
 
 ## <a name="publish-your-web-app"></a>Web アプリを発行する<a name="launch-the-publish-wizard"></a>
 
-1. **ソリューション エクスプローラー**で **myFirstAzureWebApp** プロジェクトを右クリックし、 **[発行]** を選択します。
+1. **ソリューション エクスプローラー** で **myFirstAzureWebApp** プロジェクトを右クリックし、 **[発行]** を選択します。
 
-1. **[App Service]** を選択し、 **[プロファイルの作成]** を選択します。
+1. **[発行]** で **[Azure]** を選択し、 **[次へ]** をクリックします。
 
-   ![プロジェクトの概要ページから発行する](./media/quickstart-dotnet-framework/publish-app-framework-vs2019.png)
+1. **[Azure App Service (Windows)]** を選択し、 **[次へ]** をクリックします。
 
-1. **App Service の [新規作成]** に表示されるオプションは、既に Azure にサインインしているかどうかや、Visual Studio アカウントが Azure アカウントとリンクされているかどうかによって異なります。 **[アカウントの追加]** または **[サインイン]** を選択して Azure サブスクリプションにサインインします。 既にサインインしている場合は、目的のアカウントを選択します。
+   <!-- ![Publish from project overview page](./media/quickstart-dotnet-framework/publish-app-framework-vs2019.png) -->
 
-   > [!NOTE]
-   > 既にサインインしている場合は、まだ **[作成]** を選択しないでください。
-   >
-   >
+1. 表示されるオプションは、既に Azure にサインインしているかどうかや、Visual Studio アカウントが Azure アカウントとリンクされているかどうかによって異なります。 **[アカウントの追加]** または **[サインイン]** を選択して Azure サブスクリプションにサインインします。 既にサインインしている場合は、目的のアカウントを選択します。
 
    ![Azure へのサインイン](./media/quickstart-dotnet-framework/sign-in-azure-framework-vs2019.png)
 
    [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
+
+1. **[App Service インスタンス]** の右側の **[+]** をクリックします。
+
+   ![新しい App Service アプリ](./media/quickstart-dotnet-framework/publish-new-app-service.png)
 
 1. **[リソース グループ]** で、 **[新規]** を選択します。
 
@@ -76,9 +77,9 @@ Visual Studio 2019 を既にインストールしている場合:
 
    [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-1. **[ホスティング プラン]** で **[新規]** を選択します。
+1. **[ホスティング プラン]** で、 **[新規]** を選択します。
 
-1. **[ホスティング プランの構成]** ダイアログで、次の表の値を入力し、 **[OK]** を選択します。
+1. **[ホスティング プラン]** ダイアログで、次の表の値を入力し、 **[OK]** を選択します。
 
    | 設定 | 推奨値 | 説明 |
    |-|-|-|
@@ -90,11 +91,13 @@ Visual Studio 2019 を既にインストールしている場合:
 
 1. **[名前]** に、有効な文字 (`a-z`、`A-Z`、`0-9`、`-`) のみから成る一意のアプリ名を入力します。 自動的に生成される一意の名前をそのまま使用してもかまいません。 Web アプリの URL は `http://<app-name>.azurewebsites.net` です。`<app-name>` には自分のアプリの名前を指定します。
 
-2. **[作成]** をクリックして、Azure リソースの作成を開始します。
+2. **[作成]** を選択して、Azure リソースを作成します。
 
    ![アプリ名を構成する](./media/quickstart-dotnet-framework/web-app-name-framework-vs2019.png)
 
     ウィザードが完了すると、Azure リソースが作成され、発行する準備が整います。
+
+3. **[完了]** を選択して、ウィザードを終了します。
 
 3. **[発行]** ページで、 **[発行]** をクリックします。 Visual Studio によってアプリのビルド、パッケージ化、および Azure への発行が行われた後、既定のブラウザーでアプリが起動されます。
 
@@ -106,7 +109,7 @@ Visual Studio 2019 を既にインストールしている場合:
 
 ## <a name="update-the-app-and-redeploy"></a>アプリを更新して再デプロイする
 
-1. **ソリューション エクスプローラー**で、対象プロジェクトの **[表示]**  >  **[ホーム]**  >  **[Index.cshtml]** を順に開きます。
+1. **ソリューション エクスプローラー** で、対象プロジェクトの **[表示]**  >  **[ホーム]**  >  **[Index.cshtml]** を順に開きます。
 
 1. 上部の `<div class="jumbotron">` HTML タグを検索し、要素全体を次のコードに置き換えます。
 
@@ -117,7 +120,7 @@ Visual Studio 2019 を既にインストールしている場合:
    </div>
    ```
 
-1. Azure に再デプロイするには、**ソリューション エクスプローラー**で **myFirstAzureWebApp** プロジェクトを右クリックし、 **[発行]** を選択します。 続けて、 **[発行]** を選択します。
+1. Azure に再デプロイするには、**ソリューション エクスプローラー** で **myFirstAzureWebApp** プロジェクトを右クリックし、 **[発行]** を選択します。 続けて、 **[発行]** を選択します。
 
     発行が完了すると、Visual Studio で Web アプリの URL のブラウザーが起動されます。
 

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 6ad8f3e146c13e7b88752b8ef6d514346542ce26
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 748ac448ad8bf5c06e5be8b7a4a8b00a9b7af84b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672259"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500888"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>パフォーマンスに関する推奨事項の検索と適用
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Azure portal を使って、Azure SQL Database でご利用のデータベース
 
 ## <a name="viewing-recommendations"></a>推奨事項の表示
 
-パフォーマンスの推奨事項を表示して適用するには、Azure の適切な [Azureロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) アクセス許可が必要です。 推奨事項を表示するには、 **リーダー** 権限と **SQL DB の共同作成者** 権限が必要です。また、インデックスの作成または削除、およびインデックス作成のキャンセルなどのアクションを実行するには、 **所有者** 権限と **SQL DB の共同作成者** 権限が必要です。
+パフォーマンスの推奨事項を表示して適用するには、Azure の適切な [Azureロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) アクセス許可が必要です。 推奨事項を表示するには、**リーダー** 権限と **SQL DB の共同作成者** 権限が必要です。また、インデックスの作成または削除、およびインデックス作成のキャンセルなどのアクションを実行するには、**所有者** 権限と **SQL DB の共同作成者** 権限が必要です。
 
 Azure portal でパフォーマンスに関する推奨事項を調べるには、次の手順に従います。
 
@@ -118,7 +118,7 @@ Azure SQL Database では、次の 3 つのオプションのいずれかを使�
 
 ### <a name="canceling-recommendations"></a>推奨事項のキャンセル
 
-状態が **保留中** 、 **検証中** 、または **成功** の推奨事項はキャンセルすることができます。 ただし、 **実行中** の状態の推奨事項はキャンセルできないのでご注意ください。
+状態が **保留中**、**検証中**、または **成功** の推奨事項はキャンセルすることができます。 ただし、 **実行中** の状態の推奨事項はキャンセルできないのでご注意ください。
 
 1. **[チューニングの履歴]** 領域の推奨事項を選択して、 **[推奨事項の詳細]** ページを開きます。
 2. **[キャンセル]** をクリックして推奨事項の適用プロセスを中止します。

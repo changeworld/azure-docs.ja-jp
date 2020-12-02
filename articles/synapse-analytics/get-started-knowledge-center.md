@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: 57213e228359fd6c201d501d3bb75f7267054277
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 0314f5e55a476cd1cd1f8a31bd918e0ebb64c75f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685428"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95254240"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Synapse Knowledge Center を探索する
 
@@ -33,8 +33,8 @@ Synapse Studio で Knowledge Center を検索するには、次の 2 つの方�
 ## <a name="overview"></a>概要
 
 **Knowledge Center** では、次の 3 つを使用できます。
-* **[Use samples immediately]\(サンプルをすぐに使用する\)** 。 このオプションは、実行中の分析を、可能な限り迅速に表示できるように最適化されています。 Synapse の機能の例をすぐに確認したい場合は、このオプションを選択します。
-* **[Browser available sample]\(使用可能なサンプルを参照する\)** 。 このオプションを使用すると、サンプル データ セットをリンクして、SQL スクリプト、ノートブック、パイプラインの形式でサンプル コードを追加できます。
+* **[Use samples immediately]\(サンプルをすぐに使用する\)** 。 Synapse の機能の例をすぐに確認したい場合は、このオプションを選択します。
+* **[ギャラリーを参照]** 。 このオプションを使用すると、サンプル データ セットをリンクして、SQL スクリプト、ノートブック、パイプラインの形式でサンプル コードを追加できます。
 * **[Tour Synapse studio]\(Synapse Studio のツアーを見る\)** 。 このオプションでは、Synapse Studio の基本的な部分についての簡単なツアーを見ることができます。 これは、Synapse Studio をこれまで使用したことがない場合に役立ちます。
 
 ## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>サーバーレス SQL プールを使用して Blob Storage を探索する
@@ -47,7 +47,7 @@ Synapse Studio で Knowledge Center を検索するには、次の 2 つの方�
 1. [実行] をクリックします。 選択したテキストが実行されます。
 
 ## <a name="loading-more-nyc-taxi-data"></a>ニューヨーク市のタクシー データの追加の読み込み
-1. **[Knowledge Center]** に移動し、 **[Browse available samples]\(使用可能なサンプルを参照する\)** をクリックします。 
+1. **[ナレッジ センター]** に移動し、 **[ギャラリーを参照]** をクリックします。 
 1. 上部にある **[SQL スクリプト]** タブを選択します。
 1. **[ニューヨークのタクシー データを読み込む]** を選択します。
 1. **[入力]** で、 **[既存のプールを選択する]** を選択し、 **[SQLDB1]** を選択します。

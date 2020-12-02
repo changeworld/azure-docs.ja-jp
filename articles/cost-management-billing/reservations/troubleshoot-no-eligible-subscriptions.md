@@ -7,17 +7,17 @@ ms.subservice: reservations
 ms.author: banders
 ms.reviewer: yashar
 ms.topic: troubleshooting
-ms.date: 10/14/2020
-ms.openlocfilehash: fd7a2bde47f34a61390082a223409070275b64ce
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.date: 11/16/2020
+ms.openlocfilehash: 1b36577c3c0940687f98394f8ea4faae83f371be
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92115203"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887197"
 ---
 # <a name="troubleshoot-no-eligible-subscriptions"></a>トラブルシューティング: "有効なサブスクリプションがない"
 
-この記事では、Azure portal で予約を購入しようとしたときに発生する " *有効なサブスクリプションがない* " というエラー メッセージのトラブルシューティング方法について説明します。
+この記事では、Azure portal で予約を購入しようとしたときに発生する "*有効なサブスクリプションがない*" というエラー メッセージのトラブルシューティング方法について説明します。
 
 ## <a name="symptoms"></a>現象
 
@@ -27,7 +27,7 @@ ms.locfileid: "92115203"
    ```
     No eligible subscriptions
     
-    You do not have any eligible subscriptions to purchase reservations. To purchase a reservation, you should be an owner on at least one subscription of the following type: Pay-as-you-go, CSP, Microsoft Enterprise or Microsoft Customer Agreement.
+    You do not have any eligible subscriptions to purchase reservations. To purchase a reservation, you should have owner or reservation purchaser permission on at least one subscription of the following type: Pay-as-you-go, CSP, Microsoft Enterprise or Microsoft Customer Agreement.
     ```
 1. **[購入する製品の選択]** 領域の **[課金サブスクリプション]** の一覧を展開すると、特定のサブスクリプションが予約インスタンスを購入する資格を有していない理由が表示されます。 次の画像は、予約を購入できない理由の例を示しています。  
     :::image type="content" source="./media/troubleshoot-no-eligible-subscriptions/select-product-to-purchase.png" alt-text="予約を購入できない理由の例" lightbox="./media/troubleshoot-no-eligible-subscriptions/select-product-to-purchase.png" :::
@@ -37,7 +37,7 @@ ms.locfileid: "92115203"
 Azure 予約インスタンスを購入するには、次の要件を満たしたサブスクリプションを少なくとも 1 つ所有している必要があります。
 
 - サブスクリプションのプランの種類がサポート対象である必要があります。 サポートされているプランの種類は、従量課金制、クラウド ソリューション プロバイダー (CSP)、Microsoft Azure エンタープライズ、Microsoft 顧客契約です。
-- 自分がサブスクリプションの所有者でなければなりません。
+- サブスクリプションの所有者または予約購入者である必要があります。
 
 要件を満たすサブスクリプションがない場合は、"`No eligible subscriptions`" というエラーが表示されます。
 
@@ -51,19 +51,17 @@ Subscription not eligible for purchase
 This subscription is not eligible for reservation benefit an cannot be used to purchase a reservation.
 ```
 
-:::image type="content" source="./media/troubleshoot-no-eligible-subscriptions/subscription-not-eligible.png" alt-text="予約を購入できない理由の例" :::
+:::image type="content" source="./media/troubleshoot-no-eligible-subscriptions/subscription-not-eligible.png" alt-text="エラー メッセージの例: &quot;購入対象外のサブスクリプション&quot;" :::
 
 ### <a name="cause-2"></a>原因 2
 
-自分がサブスクリプションの所有者でなければなりません。 サブスクリプションの所有者が自分以外のユーザーです。 自分が所有者ではないサブスクリプションを選択すると、次のエラーが表示されます。
+サブスクリプションの所有者または予約購入者である必要があります。 十分なアクセス許可がない場合は、次のエラーが表示されます。
 
 ```
-You do not have owner access on the subscription
+You do not have owner or reservation purchaser access on the subscription
 
-You can only purchase reservations using subscriptions on which you have owner access.
+You can only purchase reservations using subscriptions on which you have owner or reservation purchaser access.
 ```
-
-:::image type="content" source="./media/troubleshoot-no-eligible-subscriptions/no-owner-access.png" alt-text="予約を購入できない理由の例" :::
 
 ## <a name="solution"></a>解決策
 

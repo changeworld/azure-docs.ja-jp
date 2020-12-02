@@ -6,21 +6,21 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 09/15/2020
+ms.topic: how-to
+ms.date: 11/20/2020
 ms.author: banders
-ms.openlocfilehash: f773c964d900c45a51eac433c3616a6e4b8978ae
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: fbb69a4449c32f85cc4be438645b654608aa7489
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "92131141"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026558"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>Azure のクレジット カードの追加または更新
 
 このドキュメントは、クレジット カードを使用して Azure オンラインにサインアップされているお客様を対象としています。
 
-Azure portal では、既定の支払い方法から新しいクレジット カードへの変更と、クレジット カードの詳細の更新を行うことができます。 クレジット カードを変更するには、[アカウント管理者](../understand/subscription-transfer.md#whoisaa)になる必要があります。
+Azure portal では、既定の支払い方法から新しいクレジット カードへの変更と、クレジット カードの詳細の更新を行うことができます。 これらの変更を行うには、[アカウント管理者](../understand/subscription-transfer.md#whoisaa)であるか、適切な [MCA アクセス許可](understand-mca-roles.md)を持っている必要があります。
 
 クレジット カードを削除する場合は、「[Azure の課金の支払い方法を削除する](delete-azure-payment-method.md)」を参照してください。
 
@@ -41,7 +41,7 @@ Azure サブスクリプションの既定のクレジット カードを、新�
 次の手順に従って、サブスクリプションの既定のクレジット カードを新しいものに変更できます。
 
 1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
-1. " **コスト管理 + 請求** " を検索します。  
+1. "**コスト管理 + 請求**" を検索します。  
     ![検索を示すスクリーンショット](./media/change-credit-card/search.png)
 1. クレジット カードを追加するサブスクリプションを選択します。
 1. **[支払い方法]** を選択します。  
@@ -57,7 +57,7 @@ Azure サブスクリプションの既定のクレジット カードを、新�
 また、次の手順に従って、サブスクリプションの既定のクレジット カードをアカウントに保存済みのものに変更することもできます。
 
 1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
-1. " **コスト管理 + 請求** " を検索します。  
+1. "**コスト管理 + 請求**" を検索します。  
     ![検索を示すスクリーンショット](./media/change-credit-card/search.png)
 1. クレジット カードを追加するサブスクリプションを選択します。
 1. **[支払い方法]** を選択します。
@@ -71,7 +71,7 @@ Azure サブスクリプションの既定のクレジット カードを、新�
 クレジット カードを更新しても、番号が元のままである場合は、有効期限など、既存のクレジット カードの詳細情報を更新します。 カードの紛失、盗難、期限切れなどの理由でクレジット カード番号が変更された場合は、[支払い方法としてクレジット カードを追加する](#addcard)セクションの手順に従います。 CVV を更新する必要はありません。
 
 1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
-1. " **コスト管理 + 請求** " を検索します。
+1. "**コスト管理 + 請求**" を検索します。
     ![検索を示すスクリーンショット](./media/change-credit-card/search.png)
 1. **[支払い方法]** を選択します。
     ![[支払い方法の管理] オプションが選択されているスクリーンショット](./media/change-credit-card/payment-methods-blade-x.png)
@@ -82,11 +82,11 @@ Azure サブスクリプションの既定のクレジット カードを、新�
 
 ## <a name="manage-credit-cards-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約のクレジット カードを管理する
 
-以降のセクションは、Microsoft 顧客契約を締結し、クレジット カードを使用して Azure にオンラインでサインアップしたお客様に適用されます。 [Microsoft 顧客契約にアクセスできるかどうかを確認する方法をご覧ください](#check-the-type-of-your-account)。
+以降のセクションは、Microsoft 顧客契約を締結し、クレジット カードを使用して Azure にオンラインでサインアップしたお客様と、適切な [MCA アクセス許可](understand-mca-roles.md)を持つお客様に適用されます。 [Microsoft 顧客契約にアクセスできるかどうかを確認する方法をご覧ください](#check-the-type-of-your-account)。
 
 ### <a name="change-default-credit-card"></a>既定のクレジット カードを変更する
 
-Microsoft 顧客契約を結んでいる場合、クレジット カードは課金プロファイルに関連付けられています。 課金プロファイルの支払い方法を変更するには、Azure にサインアップして課金アカウントを作成したユーザーである必要があります。
+Microsoft 顧客契約を結んでいる場合、クレジット カードは課金プロファイルに関連付けられています。 課金プロファイルの支払い方法を変更するには、Azure にサインアップして課金アカウントを作成済みのユーザーであるか、適切な [MCA アクセス許可](understand-mca-roles.md)を持っている必要があります。
 
 課金プロファイルの既定の支払い方法を小切手/電信送金に変更する場合は、[Azure サブスクリプションの請求書による支払い](pay-by-invoice.md)に関する記事を参照してください。
 
@@ -143,7 +143,7 @@ Azure では、バーチャル カードやプリペイド カードはサポー
 
 ### <a name="how-do-i-change-the-tax-id"></a>税 ID を変更する方法を教えてください。
 
-税 ID を追加または更新するには、 [Azure portal](https://portal.azure.com) のプロファイルを更新し、 **[納税記録]** を選択します。 この税 ID は、免税の計算に使用され、請求書に表示されます。
+税 ID を追加または更新するには、[Azure portal](https://portal.azure.com) のプロファイルを更新し、 **[納税記録]** を選択します。 この税 ID は、免税の計算に使用され、請求書に表示されます。
 
 ## <a name="check-the-type-of-your-account"></a>アカウントの種類を確認する
 

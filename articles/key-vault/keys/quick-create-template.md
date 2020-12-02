@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: 0a613ce64d2037fdc7ebad680939893f1faa0639
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: c16fc475e4982724ebc9f4f55301b6fc56dfb7c7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899010"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95017011"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>クイックスタート: ARM テンプレートを使用して Azure キー コンテナーとキーを作成する (プレビュー)
 
@@ -26,7 +26,7 @@ ms.locfileid: "92899010"
 この記事を完了するには:
 
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
+- ユーザーには、RBAC の組み込みロールが割り当てられている必要があります (共同作成者など)。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 - Azure AD ユーザーオブジェクト ID は、
 テンプレートによるアクセス許可の設定で必要です。 次の手順を使用してオブジェクト ID (GUID) を取得します。
 
@@ -96,7 +96,7 @@ ms.locfileid: "92899010"
     },
     "keySize": {
       "type": "int",
-      "defaultValue": -1,
+      "defaultValue": 2048,
       "metadata": {
         "description": "The size in bits of the key to be created."
       }
@@ -144,7 +144,7 @@ ms.locfileid: "92899010"
       "properties": {
         "kty": "[parameters('keyType')]",
         "keyOps": "[parameters('keyOps')]",
-        "keySize": "[if(equals(parameters('keySize'), -1), json('null'), parameters('keySize'))]",
+        "keySize": "[parameters('keySize')]",
         "curveName": "[parameters('curveName')]"
       }
     }

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b82193fda64f2cf265c879c5cda9141be1b576f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0408d43fe897882fe09f6dd61a22d46349f2978e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627892"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95974393"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>チュートリアル:Windows デスクトップ アプリから Microsoft Graph API を呼び出す
 
-このガイドでは、ネイティブの Windows デスクトップ .NET アプリケーションでアクセス トークンを使用して Microsoft Graph API を呼び出す方法を紹介します。 また、このアプリから Microsoft ID プラットフォームのアクセス トークンを必要とする他の API にアクセスすることもできます。
+このチュートリアルでは、ユーザーのサインインを処理して Microsoft Graph API を呼び出すためのアクセス トークンを取得するネイティブ Windows デスクトップ .NET (XAML) アプリを作成します。 
 
 このガイドを完了すると、アプリケーションで個人アカウント (outlook.com、live.com など) を使用する保護された API を呼び出すことができるようになります。 このアプリケーションでは、Azure Active Directory を使用する会社または組織の職場および学校のアカウントも使用します。
 

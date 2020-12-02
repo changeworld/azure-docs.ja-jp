@@ -1,123 +1,212 @@
 ---
-title: クイック スタート:Python で Azure Service Bus キューを使用する
-description: この記事では、Python を使用して、Azure Service Bus キューを作成し、このキューとの間でメッセージを送受信する方法について説明します。
+title: Azure Service Bus のキューを Python azure-servicebus パッケージ バージョン 7.0.0 で使用する
+description: この記事では、Python を使用して、Azure Service Bus キューとの間でメッセージを送受信する方法について説明します。
 author: spelluru
 documentationcenter: python
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 11/18/2020
 ms.author: spelluru
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: a09f20b2c392dbf219750a76e9570239227dc865
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2b54b167413b0fcbe7022eab4bbbf34b37225be5
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89458563"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95810601"
 ---
-# <a name="quickstart-use-azure-service-bus-queues-with-python"></a>クイック スタート:Python で Azure Service Bus キューを使用する
-
-[!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-
-この記事では、Python を使用して、Azure Service Bus キューを作成し、このキューとの間でメッセージを送受信する方法について説明します。 
-
-Python Azure Service Bus ライブラリの詳細については、「[Python 用 Service Bus ライブラリ](/python/api/overview/azure/servicebus?view=azure-python)」を参照してください。
+# <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-python"></a>Azure Service Bus キューとの間でメッセージを送受信する (Python)
+この記事では、Python を使用して、Azure Service Bus キューとの間でメッセージを送受信する方法について説明します。 
 
 ## <a name="prerequisites"></a>前提条件
 - Azure サブスクリプション。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
-- 「[クイック スタート:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」の手順に従って作成された Service Bus 名前空間。 この記事の後半で使用するために、 **[共有アクセス ポリシー]** 画面からプライマリ接続文字列をコピーします。 
-- [Azure Service Bus][Python Azure Service Bus package] パッケージがインストールされた Python 3.4 x 以上。 詳しくは、[Python インストール ガイド](/azure/developer/python/azure-sdk-install)に関する記事をご覧ください。 
-
-## <a name="create-a-queue"></a>キューを作成する
-
-**ServiceBusClient** オブジェクトを使用して、キューを操作できます。 プログラムを使用して Service Bus にアクセスするには、Python ファイルの先頭付近に、次の行を追加します。
-
-```python
-from azure.servicebus import ServiceBusClient
-```
-
-次のコードを追加して、**ServiceBusClient** オブジェクトを作成します。 `<connectionstring>` を Service Bus のプライマリ接続文字列値に置き換えます。 この値は、[Azure portal][Azure portal] 内の Service Bus 名前空間の **[共有アクセス ポリシー]** にあります。
-
-```python
-sb_client = ServiceBusClient.from_connection_string('<connectionstring>')
-```
-
-次のコードでは、**ServiceBusClient** の `create_queue` メソッドを使用して、`taskqueue` というキューを既定の設定で作成します。
-
-```python
-sb_client.create_queue("taskqueue")
-```
-
-オプションを使用すると、メッセージの Time to Live (TTL) や最大トピック サイズなどの既定のキュー設定をオーバーライドできます。 次のコードは、最大キュー サイズが 5 GB、TTL 値が 1 分の `taskqueue` というキューを作成します。
-
-```python
-sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
-                       default_message_time_to_live=datetime.timedelta(minutes=1))
-```
+- 使用するキューがない場合は、「[Azure portal を使用して Service Bus キューを作成する](service-bus-quickstart-portal.md)」の記事にある手順に従って、キューを作成します。 Service Bus 名前空間の **接続文字列** と、作成した **キュー** の名前をメモしておいてください。
+- Python 2.7 以降および [Python Azure Service Bus](https://pypi.python.org/pypi/azure-servicebus) パッケージがインストールされていること。 詳しくは、[Python インストール ガイド](/azure/developer/python/azure-sdk-install)に関する記事をご覧ください。 
 
 ## <a name="send-messages-to-a-queue"></a>メッセージをキューに送信する
 
-メッセージを Service Bus キューに送信するには、アプリケーションで **ServiceBusClient** オブジェクトの `send` メソッドを呼び出します。 次のコード例では、キュー クライアントを作成し、`taskqueue` キューにテスト メッセージを送信します。 `<connectionstring>` を Service Bus のプライマリ接続文字列値に置き換えます。 
+1. 次の import ステートメントを追加します。 
 
-```python
-from azure.servicebus import QueueClient, Message
+    ```python
+    from azure.servicebus import ServiceBusClient, ServiceBusMessage
+    ```
+2. 次の定数を追加します。 
 
-# Create the QueueClient
-queue_client = QueueClient.from_connection_string("<connectionstring>", "taskqueue")
+    ```python
+    CONNECTION_STR = "<NAMESPACE CONNECTION STRING>"
+    QUEUE_NAME = "<QUEUE NAME>"
+    ```
 
-# Send a test message to the queue
-msg = Message(b'Test Message')
-queue_client.send(msg)
-```
+    > [!IMPORTANT]
+    > - `<NAMESPACE CONNECTION STRING>` を Service Bus 名前空間の接続文字列に置き換えます。
+    > - `<QUEUE NAME>` をキューの名前に置き換えます。 
+3. 単一のメッセージを送信するためのメソッドを追加します。
 
-### <a name="message-size-limits-and-quotas"></a>メッセージ サイズの制限とクォータ
+    ```python
+    def send_single_message(sender):
+        # create a Service Bus message
+        message = ServiceBusMessage("Single Message")
+        # send the message to the queue
+        sender.send_messages(message)
+        print("Sent a single message")
+    ```
 
-Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのキューで保持できるメッセージ数には上限がありませんが、1 つのキューで保持されるメッセージの合計サイズには上限があります。 キューのサイズは作成時に定義できます。上限は 5 GB です。 
+    sender は、作成したキューのクライアントとしての役割を担うオブジェクトです。 それを後で作成し、引数としてこの関数に送信することになります。 
+4. 一連のメッセージを送信するためのメソッドを追加します。
 
-クォータの詳細については、「[Service Bus のクォータ][Service Bus quotas]」を参照してください。
+    ```python
+    def send_a_list_of_messages(sender):
+        # create a list of messages
+        messages = [ServiceBusMessage("Message in list") for _ in range(5)]
+        # send the list of messages to the queue
+        sender.send_messages(messages)
+        print("Sent a list of 5 messages")
+    ```
+5. メッセージのバッチを送信するためのメソッドを追加します。
 
+    ```python
+    def send_batch_message(sender):
+        # create a batch of messages
+        batch_message = sender.create_message_batch()
+        for _ in range(10):
+            try:
+                # add a message to the batch
+                batch_message.add_message(ServiceBusMessage("Message inside a ServiceBusMessageBatch"))
+            except ValueError:
+                # ServiceBusMessageBatch object reaches max_size.
+                # New ServiceBusMessageBatch object can be created here to send more data.
+                break
+        # send the batch of messages to the queue
+        sender.send_messages(batch_message)
+        print("Sent a batch of 10 messages")
+    ```
+6. Service Bus クライアントを作成し、メッセージを送信するためのキューの sender オブジェクトを作成します。
+
+    ```python
+    # create a Service Bus client using the connection string
+    servicebus_client = ServiceBusClient.from_connection_string(conn_str=CONNECTION_STR, logging_enable=True)
+    with servicebus_client:
+        # get a Queue Sender object to send messages to the queue
+        sender = servicebus_client.get_queue_sender(queue_name=QUEUE_NAME)
+        with sender:
+            # send one message        
+            send_single_message(sender)
+            # send a list of messages
+            send_a_list_of_messages(sender)
+            # send a batch of messages
+            send_batch_message(sender)
+    
+    print("Done sending messages")
+    print("-----------------------")
+    ```
+ 
 ## <a name="receive-messages-from-a-queue"></a>キューからメッセージを受信する
-
-キュー クライアントでは、**ServiceBusClient** オブジェクトの `get_receiver` メソッドを使用して、キューからメッセージを受信します。 次のコード例では、キュー クライアントを作成し、`taskqueue` キューからメッセージを受信します。 `<connectionstring>` を Service Bus のプライマリ接続文字列値に置き換えます。 
+次のコードを print ステートメントの後ろに追加します。 このコードは、新しいメッセージを受信しない状態が 5 (`max_wait_time`) 秒続くまで、新しいメッセージを受信し続けます。 
 
 ```python
-from azure.servicebus import QueueClient
-
-# Create the QueueClient
-queue_client = QueueClient.from_connection_string("<connectionstring>", "taskqueue")
-
-# Receive the message from the queue
-with queue_client.get_receiver() as queue_receiver:
-    messages = queue_receiver.fetch_next(timeout=3)
-    for message in messages:
-        print(message)
-        message.complete()
+with servicebus_client:
+    # get the Queue Receiver object for the queue
+    receiver = servicebus_client.get_queue_receiver(queue_name=QUEUE_NAME, max_wait_time=5)
+    with receiver:
+        for msg in receiver:
+            print("Received: " + str(msg))
+            # complete the message so that the message is removed from the queue
+            receiver.complete_message(msg)
 ```
 
-### <a name="use-the-peek_lock-parameter"></a>peek_lock パラメーターを使用する
+## <a name="full-code"></a>コード全体
 
-`get_receiver` のオプションの `peek_lock` パラメーターでは、メッセージが読み取られたときに Service Bus によってそれらのメッセージがキューから削除されるかどうかを決定します。 メッセージを受信するための既定のモードは *PeekLock* です。つまり、`peek_lock` が **True** に設定されており、メッセージをキューから削除せずに読み取って (ピーク)、ロックします。 その後、各メッセージを明示的に完了して、キューから削除する必要があります。
+```python
+# import os
+from azure.servicebus import ServiceBusClient, ServiceBusMessage
 
-読み取り時にキューからメッセージを削除するには、`get_receiver` の `peek_lock` パラメーターを **False** に設定します。 受信操作の一部としてメッセージを削除するのが最もシンプルなモデルですが、障害が発生した場合にアプリケーションがメッセージの欠落を許容できる場合にのみ動作します。 この動作を理解するために、コンシューマーが受信要求を発行した後で、それを処理する前にクラッシュしたというシナリオを考えてみましょう。 メッセージが受信中に削除された場合、アプリケーションが再起動してメッセージの読み取りを再開したときに、クラッシュ前に受信したメッセージは見落とされます。
+CONNECTION_STR = "<NAMESPACE CONNECTION STRING>"
+QUEUE_NAME = "<QUEUE NAME>"
 
-アプリケーションがメッセージの紛失を許容できない場合、受信は 2 段階の操作です。 PeekLock では、次に読み取られるメッセージを検索し、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。 メッセージの処理または格納後、アプリケーションは、**Message** オブジェクトの `complete` メソッドを呼び出して受信処理の第 2 段階を完了します。  `complete` メソッドによって、メッセージが読み取り中としてマークされ、キューから削除されます。
+def send_single_message(sender):
+    message = ServiceBusMessage("Single Message")
+    sender.send_messages(message)
+    print("Sent a single message")
 
-## <a name="handle-application-crashes-and-unreadable-messages"></a>アプリケーションのクラッシュと読み取り不能のメッセージを処理する
+def send_a_list_of_messages(sender):
+    messages = [ServiceBusMessage("Message in list") for _ in range(5)]
+    sender.send_messages(messages)
+    print("Sent a list of 5 messages")
 
-Service Bus には、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。 受信側のアプリケーションがなんらかの理由によってメッセージを処理できない場合には、**Message** オブジェクトの `unlock` メソッドを呼び出すことができます。 Service Bus によりキュー内のメッセージのロックが解除され、メッセージが同じまたは別のコンシューマー側アプリケーションによって再度受信できる状態に変わります。
+def send_batch_message(sender):
+    batch_message = sender.create_message_batch()
+    for _ in range(10):
+        try:
+            batch_message.add_message(ServiceBusMessage("Message inside a ServiceBusMessageBatch"))
+        except ValueError:
+            # ServiceBusMessageBatch object reaches max_size.
+            # New ServiceBusMessageBatch object can be created here to send more data.
+            break
+    sender.send_messages(batch_message)
+    print("Sent a batch of 10 messages")
 
-キュー内でロックされているメッセージにもタイムアウトがあります。 アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合には、Service Bus によってメッセージのロックが自動的に解除され、再度受信できる状態になります。
+servicebus_client = ServiceBusClient.from_connection_string(conn_str=CONNECTION_STR, logging_enable=True)
 
-メッセージが処理された後、`complete` メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般に、この動作は "*1 回以上の処理*" と呼ばれます。 各メッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理を許容できないシナリオでは、配信の試行をまたがって一定であるメッセージの **MessageId** プロパティを使用して、重複するメッセージ配信を処理できます。 
+with servicebus_client:
+    sender = servicebus_client.get_queue_sender(queue_name=QUEUE_NAME)
+    with sender:
+        send_single_message(sender)
+        send_a_list_of_messages(sender)
+        send_batch_message(sender)
 
-> [!TIP]
-> Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、Service Bus 名前空間に接続し、メッセージング エンティティを簡単に管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。
+print("Done sending messages")
+print("-----------------------")
+
+with servicebus_client:
+    receiver = servicebus_client.get_queue_receiver(queue_name=QUEUE_NAME, max_wait_time=5)
+    with receiver:
+        for msg in receiver:
+            print("Received: " + str(msg))
+            receiver.complete_message(msg)
+```
+
+## <a name="run-the-app"></a>アプリを実行する
+アプリケーションを実行すると、次の出力が表示されます。 
+
+```console
+Sent a single message
+Sent a list of 5 messages
+Sent a batch of 10 messages
+Done sending messages
+-----------------------
+Received: Single Message
+Received: Message in list
+Received: Message in list
+Received: Message in list
+Received: Message in list
+Received: Message in list
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+```
+
+Azure portal で、使用する Service Bus 名前空間に移動します。 **[概要]** ページで、**受信** メッセージ数と **送信** メッセージ数が 16 になっていることを確認します。 これらのカウントが表示されない場合は、数分待ってから、ページを最新の情報に更新してください。 
+
+:::image type="content" source="./media/service-bus-python-how-to-use-queues/overview-incoming-outgoing-messages.png" alt-text="受信メッセージ数と送信メッセージ数":::
+
+この **[概要]** ページでキューを選択して、 **[Service Bus キュー]** ページに移動します。 **受信** メッセージ数と **送信** メッセージ数は、このページで確認することもできます。 加えて、キューの **現在のサイズ** や **アクティブなメッセージ数** など、他の情報も表示されます。 
+
+:::image type="content" source="./media/service-bus-python-how-to-use-queues/queue-details.png" alt-text="キューの詳細":::
+
 
 ## <a name="next-steps"></a>次のステップ
+次のドキュメントおよびサンプルを参照してください。 
 
-これで、Service Bus キューの基本を学習できました。詳しくは、[キュー、トピック、サブスクリプション][Queues, topics, and subscriptions]に関する記事をご覧ください。
+- [Python 用の Azure Service Bus クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus)
+- [サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples)。 
+    - **sync_samples** フォルダーには、Service Bus を同期的な方法で扱う方法を紹介したサンプルが格納されています。 このクイック スタートで使用したのは、こちらの方法です。 
+    - **async_samples** フォルダーには、Service Bus を非同期的な方法で扱う方法を紹介したサンプルが格納されています。 
+- [azure-servicebus のリファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-servicebus/azure.servicebus?view=azure-python-preview&preserve-view=true)
 
-[Azure portal]: https://portal.azure.com
-[Python Azure Service Bus package]: https://pypi.python.org/pypi/azure-servicebus  
-[Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[Service Bus quotas]: service-bus-quotas.md

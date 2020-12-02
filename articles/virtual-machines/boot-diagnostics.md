@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 1dcefefe02d91506c494cdf91e75ca951ccf43bb
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 408ba76c44d1161a4b91ccc037721796c7b94661
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365472"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500752"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure のブート診断
 
@@ -41,10 +41,10 @@ Azure portal で VM を作成する場合、既定の設定では、マネージ
 :::image type="content" source="./media/boot-diagnostics/boot-diagnostics-enable-portal.png" alt-text="VM の作成中にマネージド ブート診断を有効にしているスクリーンショット。":::
 
 ### <a name="enable-managed-boot-diagnostics-using-cli"></a>CLI を使用してマネージド ブート診断を有効にする
-マネージド ストレージ アカウントでのブート診断は、Azure CLI 2.12.0 以降でサポートされています。 ストレージ アカウントで名前または URI を入力しない場合は、マネージド アカウントが使用されます。 詳細とコード サンプルについては、[ブート診断に関する CLI ドキュメント](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics?view=azure-cli-latest&preserve-view=true)に関する記事を参照してください。
+マネージド ストレージ アカウントでのブート診断は、Azure CLI 2.12.0 以降でサポートされています。 ストレージ アカウントで名前または URI を入力しない場合は、マネージド アカウントが使用されます。 詳細とコード サンプルについては、[ブート診断に関する CLI ドキュメント](/cli/azure/vm/boot-diagnostics?preserve-view=true&view=azure-cli-latest)に関する記事を参照してください。
 
 ### <a name="enable-managed-boot-diagnostics-using-azure-resource-manager-arm-templates"></a>Azure Resource Manager (ARM) テンプレートを使用してマネージド ブート診断を有効にする
-API バージョン 2020-06-01 以降はすべて、マネージド ブート診断をサポートしています。 詳細については、[ブート診断インスタンス ビュー](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#bootdiagnostics)に関する記事を参照してください。
+API バージョン 2020-06-01 以降はすべて、マネージド ブート診断をサポートしています。 詳細については、[ブート診断インスタンス ビュー](/rest/api/compute/virtualmachines/createorupdate#bootdiagnostics)に関する記事を参照してください。
 
 ```ARM Template
             "name": "[parameters('virtualMachineName')]",

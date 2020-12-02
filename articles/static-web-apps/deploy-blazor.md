@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: cshoe
-ms.openlocfilehash: 60e62228e33d2d86bb407e45802f5c0621a94049
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80a48a948c70db7344ac9cbc20474177309bd909
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761092"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024230"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>チュートリアル:Azure Static Web Apps での Blazor を使用した静的 Web アプリのビルド
 
@@ -33,7 +33,7 @@ Azure Static Web Apps を使用して、サーバーレス バックエンドで
 
 このチュートリアルで紹介するアプリは、3 つの異なる Visual Studio プロジェクトから構成されています。
 
-- **Api**:静的アプリに気象情報を提供する API エンドポイントを実装する C# Azure Functions アプリケーション。 [`WeatherForecastFunction`](https://github.com/ssdeepak/blazor/blob/main/Api/WeatherForecastFunction.cs) で、`WeatherForecast` オブジェクトの配列が返されます。
+- **Api**:静的アプリに気象情報を提供する API エンドポイントを実装する C# Azure Functions アプリケーション。 **WeatherForecastFunction** は、`WeatherForecast` オブジェクトの配列を返します。
 
 - **クライアント**: フロントエンド Blazor Web アセンブリ プロジェクト。 すべてのルートで _index.html_ ファイルが確実に処理されるように、[フォールバック ルート](#fallback-route)が実装されます。
 
@@ -43,7 +43,7 @@ Azure Static Web Apps を使用して、サーバーレス バックエンドで
 
 ## <a name="fallback-route"></a>フォールバック ルート
 
-アプリケーションでは、アプリケーションの特定のルートにマップされる _/counter_ や _/fetchdata_ などの URL が公開されます。 このアプリは単一ページ アプリケーションとして実装されるため、各ルートで _index.html_ ファイルが使用されます。 任意のパスに対する要求で _index.html_ が確実に返されるようにするため、Client プロジェクトの _wwwroot_ フォルダーにある _routes.json_ ファイルに[フォールバック ルート](./routes.md#fallback-routes)が実装されます。
+アプリケーションでは、アプリケーションの特定のルートにマップされる _/counter_ や _/fetchdata_ などの URL が公開されます。 このアプリは単一ページ アプリケーションとして実装されるため、各ルートで _index.html_ ファイルが使用されます。 任意のパスに対する要求で _index.html_ が確実に返されるようにするため、Client プロジェクトの _wwwroot_ フォルダーにある _routes.json_ ファイルに [フォールバック ルート](./routes.md#fallback-routes)が実装されます。
 
 ```json
 {
@@ -79,13 +79,21 @@ Azure Static Web Apps を使用して、サーバーレス バックエンドで
 
 _[基本]_ セクションで、新しいアプリを構成し、それを GitHub リポジトリにリンクすることから始めます。
 
-:::image type="content" source="media/deploy-blazor/basics.png" alt-text="完全な Blazor アプリ" を選択します
+:::image type="content" source="media/deploy-blazor/basics.png" alt-text="[基本] タブ":::
+
+1. お使いの "_Azure サブスクリプション_" を選択します
+1. "_リソース グループ_" を選択するか、新しく作成します
+1. アプリに **my-first-static-blazor-app** という名前を付けます。
+    - 有効な文字は、`a-z` (大文字と小文字の区別をしない)、`0-9`、および `-`です。
+1. 最も近い "_リージョン_" を選択します
 1. **[Free]** _SKU_ を選択します
 1. **[GitHub アカウントでサインイン]** ボタンを選択し、GitHub で認証します
 
 GitHub にサインインした後、リポジトリ情報を入力します。
 
-:::image type="content" source="media/deploy-blazor/repository-details.png" alt-text="完全な Blazor アプリ" を選択します
+:::image type="content" source="media/deploy-blazor/repository-details.png" alt-text="リポジトリの詳細":::
+
+1. 希望する "_組織_" を選択します
 1. _[リポジトリ]_ ドロップダウンから **[my-first-static-blazor-app]** を選択します。
 1. _[ブランチ]_ ドロップダウンから **[main]** を選択します
 
@@ -97,15 +105,15 @@ GitHub にサインインした後、リポジトリ情報を入力します。
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
 
-    :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="完全な Blazor アプリ":::
+    :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="[確認および作成] ボタン":::
 
 1. **［作成］** を選択します
 
-    :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="完全な Blazor アプリ":::
+    :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="[作成] ボタン":::
 
 1. **[リソースに移動]** を選択します。
 
-    :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="完全な Blazor アプリ":::
+    :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="[リソース グループ] ボタン":::
 
 ## <a name="view-the-website"></a>Web サイトを表示する
 
@@ -115,7 +123,9 @@ GitHub にサインインした後、リポジトリ情報を入力します。
 
 Static Web Apps の概要ウィンドウには、Web アプリとの対話に役立つ一連のリンクが表示されます。
 
-:::image type="content" source="./media/deploy-blazor/overview-window.png" alt-text="完全な Blazor アプリ" というバナーをクリックすると、リポジトリに対して実行されている GitHub アクションが表示されます。 デプロイ ジョブが完了したことを確認したら、生成された URL を使用して Web サイトに移動できます。
+:::image type="content" source="./media/deploy-blazor/overview-window.png" alt-text="概要ウィンドウ":::
+
+1. "_Click here to check the status of your GitHub Actions runs (こちらをクリックして、GitHub Actions の実行の状態を確認してください)_ " というバナーをクリックすると、リポジトリに対して実行されている GitHub アクションが表示されます。 デプロイ ジョブが完了したことを確認したら、生成された URL を使用して Web サイトに移動できます。
 
 2. GitHub Actions ワークフローが完了したら、 _[URL]_ リンクを選択して、新しいタブで Web サイトを開くことができます。
 

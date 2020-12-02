@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/27/2020
+ms.date: 11/21/2020
 ms.author: memildin
-ms.openlocfilehash: c0333f9faeae99ee83beda381f77f4f95b0a9192
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 9b715ea890c7c85161a9e360bc16f9a2a608d64b
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636122"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95320983"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -39,6 +39,8 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 - [Security Center の法令遵守ダッシュボードに追加された NIST SP 800 171 R2](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
 - [推奨事項の一覧にフィルターを追加](#recommendations-list-now-includes-filters)
 - [自動プロビジョニング エクスペリエンスの向上と拡張](#auto-provisioning-experience-improved-and-expanded)
+- [連続エクスポートでセキュア スコアが利用可能に (プレビュー)](#secure-score-is-now-available-in-continuous-export-preview)
+- ["システム更新プログラムをマシンにインストールする必要がある" 推奨事項にサブ推奨事項を追加](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations)
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>Azure セキュリティ ベンチマークのカバレッジを広げるために追加された、29 個のプレビュー推奨事項
 
@@ -103,6 +105,41 @@ Azure Security Center の拡大に伴って、より多くの拡張機能が開�
 - (新) Microsoft Dependency Agent
 
 詳細については、「[Azure Security Center からのエージェントと拡張機能の自動プロビジョニング](security-center-enable-data-collection.md)」をご覧ください。
+
+
+### <a name="secure-score-is-now-available-in-continuous-export-preview"></a>連続エクスポートでセキュア スコアが利用可能に (プレビュー)
+
+セキュア スコアの連続エクスポートを使用すると、スコアの変更を Azure Event Hubs または Log Analytics ワークスペースにリアルタイムでストリーム配信することができます。 この機能を使用すると、次のことができます。
+
+- 動的レポートを使用し、一定期間にわたってセキュア スコアを追跡する
+- Azure Sentinel (または他の SIEM) にセキュア スコア データをエクスポートする
+- そのデータを、組織内でセキュア スコアを監視する目的で既に使用しているプロセスに統合する
+
+[Security Center のデータを連続的にエクスポートする](continuous-export.md)方法についての詳しい情報をご覧ください。
+
+
+### <a name="system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations"></a>"システム更新プログラムをマシンにインストールする必要がある" 推奨事項にサブ推奨事項を追加
+
+**システム更新プログラムをマシンにインストールする必要がある** 推奨事項が強化されています。 新しいバージョンには、不足している更新プログラムごとのサブ推奨事項が含まれているほか、次の点が改善されています。
+
+- Azure portal の Azure Security Center ページでの再設計されたエクスペリエンス。 "**システム更新プログラムをマシンにインストールする必要がある**" に関する推奨事項の詳細ページには、次に示すような結果の一覧が表示されます。 1 つの結果を選択すると、詳細ウィンドウが開き、修復情報および影響を受けるリソースの一覧へのリンクが表示されます。
+
+    :::image type="content" source="./media/upcoming-changes/system-updates-should-be-installed-subassessment.png" alt-text="更新された推奨事項のポータル エクスペリエンスで、サブ推奨事項のいずれかを開く":::
+
+- Azure Resource Graph (ARG) からの推奨事項用に強化されたデータ。 ARG は、効率的なリソース探索を実現するように設計されている Azure のサービスです。 ARG を使用すると、特定のサブスクリプション セットの大規模なクエリを実行し、環境を効果的に管理できます。 
+
+    Azure Security Center では、ARG および [Kusto クエリ言語 (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) を使用して、幅広いセキュリティ態勢データに対してクエリを実行できます。
+
+    以前は、この推奨事項を ARG で照会した場合、取得できるのは、マシン上でその推奨事項を修復する必要があるという情報のみでした。 次に示す強化されたバージョンのクエリを実行すると、不足している各システム更新プログラムがマシン別にグループ化されて返されます。
+
+    ```kusto
+    securityresources
+    | where type =~ "microsoft.security/assessments/subassessments"
+    | where extract(@"(?i)providers/Microsoft.Security/assessments/([^/]*)", 1, id) == "4ab6e3c5-74dd-8b35-9ab9-f61b30875b27"
+    | where properties.status.code == "Unhealthy"
+    ```
+
+
 
 ## <a name="october-2020"></a>2020 年 10 月
 
@@ -445,7 +482,7 @@ Security Center の統合された脆弱性評価ツールは、"仮想マシン
 セキュリティ アラートに関する次の電子メール領域が改善されました。 
 
 - すべての重大度レベルのアラートに関する電子メール通知の送信機能を追加
-- サブスクリプションのさまざまな RBAC ロールのユーザーに通知する機能を追加
+- サブスクリプションのさまざまな Azure ロールのユーザーに通知する機能を追加
 - (本当の侵害である可能性が高い) 重大度が高いアラートについては、サブスクリプションの所有者に事前に送信されます
 - 電子メール通知の構成ページから電話番号フィールドが削除されました
 

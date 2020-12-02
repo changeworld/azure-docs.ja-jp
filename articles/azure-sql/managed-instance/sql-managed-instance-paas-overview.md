@@ -11,19 +11,19 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 211ce85fdbf918171ecfc7964bbcdfa2ef245990
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 83f38797e406ff7e62503f59ef979b9ce4f07f97
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790714"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917938"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Azure SQL Managed Instance とは
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Azure SQL Managed Instance はインテリジェントでスケーラブルなクラウド データベース サービスであり、幅広い SQL Server データベース エンジンとの互換性と、フル マネージドの常に最新のサービスとしてのプラットフォームのすべての利点を兼ね備えています。 SQL Managed Instance には、最新の SQL Server (Enterprise Edition) データベース エンジンとの 100% 近い互換性が備わっており、一般的なセキュリティ上の懸念事項に対処するネイティブの[仮想ネットワーク (VNet)](../../virtual-network/virtual-networks-overview.md) の実装と、SQL Server の既存のお客様にとって有利な[ビジネス モデル](https://azure.microsoft.com/pricing/details/sql-database/)を提供します。 SQL Managed Instance により、既存の SQL Server の顧客は最小限のアプリケーションおよびデータベースの変更のみで、オンプレミスのアプリケーションをクラウドに移行 (リフト アンド シフト) することができます。 これと同時に、SQL Managed Instance では、管理のオーバーヘッドと TCO を大幅に削減するすべての PaaS 機能 (自動的な修正プログラムの適用およびバージョン更新、[自動バックアップ](../database/automated-backups-overview.md)、[高可用性](../database/high-availability-sla.md)) を維持します。
 
-Azure SQL Managed Instance を初めてお使いの方は、 [Azure SQL ビデオ シリーズ](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)の *Azure SQL Managed Instance* に関するビデオをご覧ください。
+Azure SQL Managed Instance を初めてお使いの方は、[Azure SQL ビデオ シリーズ](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)の *Azure SQL Managed Instance* に関するビデオをご覧ください。
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Managed-Instance-Overview-6-of-61/player]
 
 > [!IMPORTANT]
@@ -33,7 +33,7 @@ Azure SQL Managed Instance を初めてお使いの方は、 [Azure SQL ビデ�
 
 ![主要な機能](./media/sql-managed-instance-paas-overview/key-features.png)
 
-Azure SQL Managed Instance は、多数のアプリをオンプレミスまたは IaaS、自作、あるいは ISV 提供の環境からフル マネージド PaaS クラウド環境に、できるだけ手間をかけずに移行しようとしているお客様向けに設計されています。 完全に自動化された [Azure Data Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) の利用により、顧客は既存の SQL Server インスタンスを SQL Managed Instance に移行 (リフト アンド シフト) することができます。その結果、VNet のネイティブ サポートにより SQL Server との互換性が維持され、顧客のインスタンスの完全な分離が実現します。  ソフトウェア アシュアランスに基づき、[SQL Server 用の Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を利用して、顧客の既存のライセンスを SQL Managed Instance の割引料金に交換できます。 高度なセキュリティと豊富なプログラミング サーフェスを必要とする SQL Server インスタンスにとって、SQL Managed Instance はクラウド内における最適な移行先です。
+Azure SQL Managed Instance は、多数のアプリをオンプレミスまたは IaaS、自作、あるいは ISV 提供の環境からフル マネージド PaaS クラウド環境に、できるだけ手間をかけずに移行しようとしているお客様向けに設計されています。 完全に自動化された [Azure Data Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) の利用により、顧客は既存の SQL Server インスタンスを SQL Managed Instance に移行 (リフト アンド シフト) することができます。その結果、VNet のネイティブ サポートにより SQL Server との互換性が維持され、顧客のインスタンスの完全な分離が実現します。 移行オプションとツールの詳細については、[SQL Server から Azure SQL Managed Instance への移行の概要](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md)に関するページを参照してください。</br> ソフトウェア アシュアランスに基づき、[SQL Server 用の Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を利用して、顧客の既存のライセンスを SQL Managed Instance の割引料金に交換できます。 高度なセキュリティと豊富なプログラミング サーフェスを必要とする SQL Server インスタンスにとって、SQL Managed Instance はクラウド内における最適な移行先です。
 
 ## <a name="key-features-and-capabilities"></a>主な機能
 
@@ -49,7 +49,7 @@ SQL Managed Instance では、Azure SQL Database と SQL Server データベー�
 |分離環境 ([VNet 統合](connectivity-architecture-overview.md)、シングル テナント サービス、専用のコンピューティングおよびストレージ) <br>[透過的なデータ暗号化 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory (Azure AD) 認証](../database/authentication-aad-overview.md)、シングル サインオンのサポート <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD サーバー プリンシパル (ログイン)</a>  <br>Azure SQL Database と同じコンプライアンス標準に準拠 <br>[SQL 監査](auditing-configure.md) <br>[Advanced Threat Protection](threat-detection-configure.md) |サービスのプロビジョニングとスケーリングを自動化するための Azure Resource Manager API <br>手動でのサービスのプロビジョニングとスケーリングに対応する Azure Portal の機能 <br>データ移行サービス
 
 > [!IMPORTANT]
-> Azure SQL Managed Instance は、多くのコンプライアンス標準に対して認定されています。 詳細については、 [Microsoft Azure コンプライアンス認証](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuideV3?command=Download&downloadType=Document&downloadId=44bbae63-bf4d-4e3b-9d3d-c96fb25ec363&tab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb&docTab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb_FAQ_and_White_Papers)に関するページを参照してください。 **SQL Database** の下で、最新の SQL Managed Instance コンプライアンス証明書の一覧を入手できます。
+> Azure SQL Managed Instance は、多くのコンプライアンス標準に対して認定されています。 詳細については、[Microsoft Azure コンプライアンス認証](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuideV3?command=Download&downloadType=Document&downloadId=44bbae63-bf4d-4e3b-9d3d-c96fb25ec363&tab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb&docTab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb_FAQ_and_White_Papers)に関するページを参照してください。**SQL Database** の下で、最新の SQL Managed Instance コンプライアンス証明書の一覧を入手できます。
 
 SQL Managed Instance の主な機能を次の表に示します。
 
@@ -85,8 +85,8 @@ SQL Managed Instance の[仮想コアベースの購入モデル](../database/se
 
 SQL Managed Instance は 2 つのサービス レベルで利用できます。
 
-- **General Purpose** :一般的なパフォーマンスと I/O 待ち時間要件を持つアプリケーション用に設計されています。
-- **Business Critical** :短い I/O 待ち時間要件で、基盤となるメンテナンス操作がワークロードに与える影響が最小限のアプリケーション用に設計されています。
+- **General Purpose**:一般的なパフォーマンスと I/O 待ち時間要件を持つアプリケーション用に設計されています。
+- **Business Critical**:短い I/O 待ち時間要件で、基盤となるメンテナンス操作がワークロードに与える影響が最小限のアプリケーション用に設計されています。
 
 どちらのサービス階層も 99.99% の可用性を保証し、ストレージ サイズとコンピューティング能力を個別に選択することができます。 Azure SQL Managed Instance の高可用性アーキテクチャの詳細については、[高可用性と Azure SQL Managed Instance](../database/high-availability-sla.md) に関するページを参照してください。
 
@@ -156,7 +156,7 @@ Azure SQL Managed Instance は、データを保護するために使用でき�
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory の統合
 
-SQL Managed Instance では、従来の SQL Server データベース エンジン ログインと、Azure AD に統合されたログインがサポートされています。 Azure AD サーバー プリンシパル (ログイン) ( **パブリック プレビュー** ) は、オンプレミス環境で使用されているオンプレミス データベース ログインの Azure クラウド版です。 Azure AD サーバー プリンシパル (ログイン) を使用すると、Azure AD テナントからユーザーとグループを、まさにインスタンス スコープのプリンシパルとして指定でき、同じマネージド インスタンス内の複数データベース間のクエリなど、インスタンスレベルの任意の操作を実行できます。
+SQL Managed Instance では、従来の SQL Server データベース エンジン ログインと、Azure AD に統合されたログインがサポートされています。 Azure AD サーバー プリンシパル (ログイン) (**パブリック プレビュー**) は、オンプレミス環境で使用されているオンプレミス データベース ログインの Azure クラウド版です。 Azure AD サーバー プリンシパル (ログイン) を使用すると、Azure AD テナントからユーザーとグループを、まさにインスタンス スコープのプリンシパルとして指定でき、同じマネージド インスタンス内の複数データベース間のクエリなど、インスタンスレベルの任意の操作を実行できます。
 
 Azure AD サーバー プリンシパル (ログイン) を作成するための新しい構文 **FROM EXTERNAL PROVIDER** が導入されます。 構文の詳細については、<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> を参照し、[SQL Managed Instance に対する Azure Active Directory 管理者のプロビジョニング](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)に関する記事を確認してください。
 
@@ -168,10 +168,10 @@ SQL Managed Instance では、[Azure Active Directory 統合](../database/authen
 
 SQL Managed Instance 認証とは、データベースへの接続時にユーザーが自分の ID を証明する方法のことです。 SQL Managed Instance では、次の 2 種類の認証がサポートされます。  
 
-- **SQL 認証** :
+- **SQL 認証**:
 
   この認証方法では、ユーザー名とパスワードを使用します。
-- **Azure Active Directory 認証** :
+- **Azure Active Directory 認証**:
 
   この認証方法では、Azure Active Directory で管理されている ID を使用し、管理、統合されたドメインをサポートしています。 [可能であれば](/sql/relational-databases/security/choose-an-authentication-mode)、Active Directory 認証 (統合セキュリティ) を使用します。
 
@@ -181,14 +181,14 @@ SQL Managed Instance 認証とは、データベースへの接続時にユー�
 
 ## <a name="database-migration"></a>データベース移行
 
-SQL Managed Instance のターゲットは、オンプレミスまたは IaaS データベース実装からのデータベースの一括移行を使用するユーザー シナリオです。 SQL Managed Instance では、次に示すような複数のデータベース移行オプションがサポートされています。
+SQL Managed Instance のターゲットは、オンプレミスまたは IaaS データベース実装からのデータベースの一括移行を使用するユーザー シナリオです。 SQL Managed Instance では、移行ガイドで説明されているいくつかのデータベース移行オプションがサポートされています。 詳細については、[SQL Server から Azure SQL Managed Instance への移行の概要](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md)に関するページを参照してください。
 
 ### <a name="backup-and-restore"></a>バックアップと復元  
 
 移行のアプローチでは、Azure Blob Storage への SQL バックアップが活用されます。 Azure ストレージ BLOB に格納されたバックアップは、[T-SQL RESTORE コマンド](/sql/t-sql/statements/restore-statements-transact-sql?preserve-view=true&view=azuresqldb-mi-current)を使用して、マネージド インスタンスに直接復元できます。
 
 - Wide World Importers - Standard データベースのバックアップ ファイルを復元する方法を説明したクイック スタートについては、[バックアップ ファイルをマネージド インスタンスに復元する](restore-sample-database-quickstart.md)方法に関するページを参照してください。 このクイック スタートでは、バックアップ ファイルを Azure BLOB ストレージにアップロードし、Secure Access Signature (SAS) キーを使用してセキュリティで保護する必要があることが説明されています。
-- URL からの復元については、「[URL からのネイティブ復元](migrate-to-instance-from-sql-server.md#native-restore-from-url)」を参照してください。
+- URL からの復元については、「[URL からのネイティブ復元](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md#backup-and-restore)」を参照してください。
 
 > [!IMPORTANT]
 > マネージド インスタンスからのバックアップは、別のマネージド インスタンスにのみ復元できます。 SQL Server インスタンスに復元したり、Azure SQL Database に復元したりすることはできません。
@@ -232,7 +232,7 @@ SQL Managed Instance では、システム管理者が管理タスクに費や�
 
 |プロパティ|値|解説|
 |---|---|---|
-|`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation|この値は SQL Database の値と同じです。 これは、SQL エンジンのバージョン 12 (SQL Server 2014) を示しているわけでは **ありません** 。 SQL Managed Instance では、常に最新の安定した SQL エンジン バージョンが実行されます。これは、SQL Server の使用可能な最新の RTM バージョン以上です。  |
+|`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation|この値は SQL Database の値と同じです。 これは、SQL エンジンのバージョン 12 (SQL Server 2014) を示しているわけでは **ありません**。 SQL Managed Instance では、常に最新の安定した SQL エンジン バージョンが実行されます。これは、SQL Server の使用可能な最新の RTM バージョン以上です。  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|この値は SQL Database の値と同じです。|
 |`SERVERPROPERTY('EngineEdition')`|8|この値では、マネージド インスタンスが一意に識別されます。|
 |`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|次の形式による完全なインスタンス DNS 名:`<instanceName>`.`<dnsPrefix>`.database.windows.net。ここで、`<instanceName>` は顧客が指定する名前です。`<dnsPrefix>` は名前の中で自動生成される部分であり、グローバルな DNS 名の一意性を保証します (例: "wcus17662feb9ce98")|例: my-managed-instance.wcus17662feb9ce98.database.windows.net|

@@ -3,12 +3,12 @@ title: Azure Migrate Server Assessment でエージェントレスの依存関�
 description: Azure Migrate Server Assessment でエージェントレスの依存関係の分析を設定します。
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 8893b0f41bb7a06c02a6c2aa28002980144b582a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 722ad4cc27132815c1416331aaf0691754ccee05
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337695"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500786"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>マシンの依存関係の分析 (エージェントレス)
 
@@ -31,7 +31,7 @@ ms.locfileid: "93337695"
 
 - サポートされているオペレーティング システムと必要なアクセス許可を[確認します](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)。
 - 以下を実行します。
-    - Azure Migrate プロジェクトがあることを確認します。 ない場合は、今すぐ[作成](how-to-add-tool-first-time.md)します。
+    - Azure Migrate プロジェクトがあることを確認します。 ない場合は、今すぐ[作成](./create-manage-projects.md)します。
     - Azure Migrate:Server Assessment ツールがプロジェクトに[追加](how-to-assess.md)されていることを確認します。
     - オンプレミスのマシンを検出するための [Azure Migrate アプライアンス](migrate-appliance.md)を設定します。 VMware VM 用の[アプライアンスを設定します](how-to-set-up-appliance-vmware.md)。 アプライアンスは、オンプレミス マシンを検出して、Azure Migrate:Server Assessment にメタデータとパフォーマンス データを送信します。
 - 分析する各 VM に VMware Tools (10.2 以降) がインストールされていることを確認します。

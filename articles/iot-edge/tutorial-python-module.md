@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - カスタム Python モジュールを作成する - Azure IoT Edge | Microsoft Docs
+title: チュートリアル - Azure IoT Edge を使用したカスタム Python モジュールのチュートリアル
 description: このチュートリアルでは、Python コードで IoT Edge モジュールを作成し、Edge デバイスに展開する方法について説明します。
 services: iot-edge
 author: kgremban
@@ -10,12 +10,12 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1cc3db32650891c5f95be05267541f93ca49218e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 402b61bb0845532d601e9f5dcaaf55eacce685d1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047966"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959375"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の Python IoT Edge モジュールを開発およびデプロイする
 
@@ -34,9 +34,9 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>ソリューション スコープ
+## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、**Visual Studio Code** を使用して **Python** でモジュールを開発し、それを **Linux デバイス**にデプロイする方法について説明します。 IoT Edge では、Windows デバイス用の Python モジュールはサポートされていません。
+このチュートリアルでは、**Visual Studio Code** を使用して **Python** でモジュールを開発し、それを **Linux デバイス** にデプロイする方法について説明します。 IoT Edge では、Windows デバイス用の Python モジュールはサポートされていません。
 
 次の表を使用し、Python モジュールを開発して Linux にデプロイする際のオプションをご確認ください。
 
@@ -44,8 +44,6 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![Linux AMD64 の Python モジュールに VS Code を使用する](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Linux ARM32 の Python モジュールに VS Code を使用する](./media/tutorial-c-module/green-check.png) |  |
-
-## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを開始する前に、前のチュートリアルを完了して、Linux コンテナー開発用の開発環境を設定しておく必要があります。[Linux デバイス用の IoT Edge モジュールを開発する](tutorial-develop-for-linux.md)。 このチュートリアルを完了すると、次の前提条件が満たされます。
 
@@ -84,7 +82,7 @@ Python で IoT Edge モジュールを開発するには、開発マシンに次
    | Provide a solution name (ソリューション名の指定) | ソリューションのためにわかりやすい名前を入力するか、既定値の **EdgeSolution** をそのまま使用します。 |
    | Select module template (モジュール テンプレートの選択) | **[Python モジュール]** を選択します。 |
    | Provide a module name (モジュール名の指定) | ご自身のモジュール **PythonModule** に名前を付けます。 |
-   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリの**ログイン サーバー**の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br>最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/pythonmodule のようになります。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリの **ログイン サーバー** の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br>最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/pythonmodule のようになります。 |
 
    ![Docker イメージ リポジトリを指定する](./media/tutorial-python-module/repository.png)
 
@@ -95,7 +93,7 @@ Python で IoT Edge モジュールを開発するには、開発マシンに次
 IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格情報をプルし、それらを環境ファイルに取り込もうとします。 資格情報が既に含まれているかどうかを確認します。 含まれていない場合は、次のようにして追加します。
 
 1. VS Code エクスプローラーで、 **.env** ファイルを開きます。
-2. ご自身の Azure コンテナー レジストリからコピーした**ユーザー名**と**パスワード**の値を使用して、フィールドを更新します。
+2. ご自身の Azure コンテナー レジストリからコピーした **ユーザー名** と **パスワード** の値を使用して、フィールドを更新します。
 3. .env ファイルを保存します。
 
 ### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する

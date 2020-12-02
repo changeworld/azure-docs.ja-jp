@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 643e3bcd50258e2b5e7f52646f231485f950d677
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 72d9aefcdda5d224b256c6e969b7a75259a97005
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515547"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95750775"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>クイック スタート:Angular シングルページ アプリケーションでユーザーをサインインさせてアクセス トークンを取得する
 

@@ -1,18 +1,18 @@
 ---
-title: Data Factory から Python スクリプトを実行する
-description: チュートリアル - Azure Batch を使用して Azure Data Factory のパイプラインから Python スクリプトを実行する方法について説明します。
-author: mammask
+title: チュートリアル - Data Factory から Python スクリプトを実行する
+description: Azure Batch を使用して Azure Data Factory のパイプラインから Python スクリプトを実行する方法について説明します。
+author: pkshultz
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 08/12/2020
-ms.author: komammas
+ms.author: peshultz
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: c66c14d42c3d14fc4171f6fdfaf2e7f75a531507
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 7752bc3f768aec7a3e98fb1813c4194f81fb9dfb
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886908"
+ms.locfileid: "94917632"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>チュートリアル:Azure Batch を使用して Azure Data Factory から Python スクリプトを実行する
 
@@ -155,6 +155,5 @@ python main.py
 Azure Data Factory についてさらに学習するには、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Data Factory](../data-factory/introduction.md)
-> [パイプラインとアクティビティ](../data-factory/concepts-pipelines-activities.md)
-> [カスタム アクティビティ](../data-factory/transform-data-using-dotnet-custom-activity.md)
+> [Azure Data Factory の概要](../data-factory/introduction.md)
+

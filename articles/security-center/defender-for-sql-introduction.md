@@ -3,17 +3,17 @@ title: Azure Defender for SQL - 利点と機能
 description: Azure Defender for SQL の利点と機能について説明します。
 author: memildin
 ms.author: memildin
-ms.date: 11/17/2020
+ms.date: 11/22/2020
 ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: b4f046339c027a5ae66f7f7510d8d2b311abd6df
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: bb24c04681b142aaa1c80738090afe2a13949495
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693462"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96014544"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Azure Defender for SQL の概要
 
@@ -25,7 +25,7 @@ Azure Defender for SQL には、Azure Security Center の[データ セキュリ
 |----|:----|
 |リリース状態:|**Azure Defender for Azure SQL database servers** - 一般提供 (GA)<br>**Azure Defender for SQL servers on machines** - プレビュー<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |価格:|**Azure Defender for SQL** を構成する 2 つのプランの課金については、[価格に関するページ](security-center-pricing.md)をご覧ください。|
-|保護される SQL のバージョン:|Azure SQL データベース <br>Azure SQL Managed Instance<br>Azure Synapse の専用 SQL プール (旧称 SQL DW)<br>SQL Server (サポートされているすべてのバージョン)|
+|保護される SQL のバージョン:|Azure 仮想マシン ([Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) および [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md)) 上の SQL<br>[Arc 対応 SQL Server](https://docs.microsoft.com/sql/sql-server/azure-arc/overview) (オンプレミスの SQL Server を含む)<br>Azure SQL [単一データベース](../azure-sql/database/single-database-overview.md)および[エラスティック プール](../azure-sql/database/elastic-pool-overview.md)<br>[Azure SQL Managed Instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure Synapse Analytics (旧称 SQL DW) 専用 SQL プール](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse)|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov|
 |||
 

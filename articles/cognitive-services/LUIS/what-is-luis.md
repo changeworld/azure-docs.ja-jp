@@ -5,14 +5,14 @@ keywords: Azure, 人工知能, ai, 自然言語処理, nlp, 自然言語理解, 
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 09/02/2020
+ms.date: 11/23/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 242d131e79966ebdb286a20f75d20f91f5fa7406
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fb36ab8a86a89d6383f93ad58c23956472841de2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91334652"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95539262"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 
@@ -50,9 +50,9 @@ LUIS は、自然言語処理 AI のサブセットである NLU の形式で[�
 
 LUIS アプリには、特定の領域 (ドメイン) に固有の自然言語モデルが含まれます。 LUIS アプリは、構築済みのドメイン モデルをひな形にできるほか、独自にモデルを構築したり、構築済みのドメインの一部に独自の情報を融合したりすることができます。
 
-* **構築済みのモデル**: LUIS には、意図、発話、および構築済みのエンティティを含む構築済みのドメイン モデルが多数あります。 構築済みのモデルの意図と発話を使用せずに、構築済みのエンティティを使用できます。 [構築済みのドメイン モデル](luis-how-to-use-prebuilt-domains.md "事前構築済みドメイン モデル")には、必要な設計がすべて含まれているため、LUIS の使用をすぐに開始できる優れた方法です。
+* **構築済みのモデル**: LUIS には、意図、発話、および構築済みのエンティティを含む構築済みのドメイン モデルが多数あります。 構築済みのモデルの意図と発話を使用せずに、構築済みのエンティティを使用できます。 [構築済みのドメイン モデル](./howto-add-prebuilt-models.md "事前構築済みドメイン モデル")には、必要な設計がすべて含まれているため、LUIS の使用をすぐに開始できる優れた方法です。
 
-* **カスタム モデル**の LUIS を使うと、意図を含む独自のカスタムモデルやエンティティを複数の方法で識別できます。 エンティティには、機械学習エンティティ、特定のエンティティまたはリテラル エンティティ、機械学習エンティティとリテラル エンティティの組み合わせが含まれます。
+* **カスタム モデル** の LUIS を使うと、意図を含む独自のカスタムモデルやエンティティを複数の方法で識別できます。 エンティティには、機械学習エンティティ、特定のエンティティまたはリテラル エンティティ、機械学習エンティティとリテラル エンティティの組み合わせが含まれます。
 
 [NLP AI](artificial-intelligence.md "NLP") の詳細と、NLU の LUIS 固有の領域について学習してください。
 
@@ -116,7 +116,7 @@ LUIS をボットですばやく簡単に使用するためのツール:
 
 ## <a name="integrate-with-a-bot"></a>ボットとの統合
 
-[Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0 "Azure Bot service") を [Microsoft Bot Framework](https://dev.botframework.com/ "Microsoft Bot Framework") と共に使用して、チャットボットを構築してデプロイします。 設計と開発には、グラフィカル インターフェイス ツールの [Composer](https://docs.microsoft.com/composer/ "Composer") または主要なボット シナリオ用に設計された[実用的なボット サンプル](https://github.com/microsoft/BotBuilder-Samples "作業ボットのサンプル")を使用します。
+[Azure Bot Service](/azure/bot-service/ "Azure Bot service") を [Microsoft Bot Framework](https://dev.botframework.com/ "Microsoft Bot Framework") と共に使用して、チャットボットを構築してデプロイします。 設計と開発には、グラフィカル インターフェイス ツールの [Composer](/composer/ "Composer") または主要なボット シナリオ用に設計された[実用的なボット サンプル](https://github.com/microsoft/BotBuilder-Samples "作業ボットのサンプル")を使用します。
 
 ## <a name="integrate-with-other-cognitive-services"></a>他の Cognitive Services との統合
 
@@ -131,6 +131,10 @@ LUIS は、既存の LUIS リソースの一部として Text Analytics の機�
 [ポータル](get-started-portal-build-app.md "ポータル")と [SDK クライアント ライブラリ](azure-sdk-quickstart.md "SDK クライアント ライブラリ")を使用したハンズオン クイックスタートで LUIS について学習します。
 
 
+## <a name="deploy-on-premises-using-docker-containers"></a>Docker コンテナーを使用してオンプレミスにデプロイする
+
+[LUIS コンテナーを使用](luis-container-howto.md)して、API 機能をオンプレミスにデプロイします。 これらの Docker コンテナーを使用すると、コンプライアンス、セキュリティ、またはその他の運用上の理由により、データにより近いところでサービスを使用できます。
+
 ## <a name="next-steps"></a>次のステップ
 
 * サービスとドキュメントの[最新情報](whats-new.md "新機能")
@@ -138,8 +142,8 @@ LUIS は、既存の LUIS リソースの一部として Text Analytics の機�
 * [予測エンドポイントに対してクエリを実行する](luis-get-started-get-intent-from-browser.md "予測エンドポイントに対してクエリを実行する")。
 * LUIS の[開発者向けリソース](developer-reference-resource.md "開発者向けリソース")。
 
-[bot-framework]: https://docs.microsoft.com/bot-framework/
-[flow]: https://docs.microsoft.com/connectors/luis/
+[bot-framework]: /bot-framework/
+[flow]: /connectors/luis/
 [authoring-apis]: https://go.microsoft.com/fwlink/?linkid=2092087
 [endpoint-apis]: https://go.microsoft.com/fwlink/?linkid=2092356
 [qnamaker]: https://qnamaker.ai/

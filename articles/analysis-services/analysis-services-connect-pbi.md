@@ -4,15 +4,15 @@ description: Azure Analysis Services サーバーに Power BI を使って接続
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: bb1781394e0091d8358570c2eaa07ca97297a6ad
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: ed0f3d379ca961c610958c073c27c6fc9583252b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013782"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500922"
 ---
 # <a name="connect-with-power-bi"></a>Power BI を使用した接続
 
@@ -51,4 +51,4 @@ Azure でサーバーを作成して、表形式モデルを展開すると、�
 
 ## <a name="see-also"></a>関連項目
 [Azure Analysis Services に接続する](analysis-services-connect.md)   
-[クライアント ライブラリ](/analysis-services/client-libraries?view=azure-analysis-services-current)
+[クライアント ライブラリ](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true)

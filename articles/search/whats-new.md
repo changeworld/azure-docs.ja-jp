@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4c1284c13d1516ac4061319287adb64ab7e14ff5
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 73902cf53d9995f7dfc1991e3b7ed7c7c469bf2a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579472"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026663"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
@@ -23,7 +23,7 @@ ms.locfileid: "94579472"
 
 |機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | カテゴリ | 説明 | 可用性  |
 |------------------------------|----------|-------------|---------------|
-|[インデクサー、データ ソース、スキルセットに対するカスタマー マネージド キー暗号化](search-security-manage-encryption-keys.md) | Security | この追加により、検索サービスによって作成および管理される資産の全範囲にわたって、カスタマー マネージド暗号化が拡張されます。 CMK のサポートにより、Microsoft が実行および管理する基本暗号化に暗号化レイヤーが追加されます。 | REST api-version=2020-06-30 を使用して一般提供 |  
+|[インデクサー、データ ソース、スキルセットに対するカスタマー マネージド キー暗号化](search-security-manage-encryption-keys.md) | Security | この追加により、検索サービスによって作成および管理される資産の全範囲にわたって、カスタマー マネージド暗号化が拡張されます。 カスタマー マネージド キーのサポートにより、Microsoft が実行および管理する基本暗号化に暗号化レイヤーが追加されます。 | REST api-version=2020-06-30 を使用して一般提供 |  
 
 ## <a name="september-2020"></a>2020 年 9 月
 
@@ -41,7 +41,7 @@ Azure Active Directory に検索サービスの ID を作成した後、Azure RB
 
 |機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | カテゴリ | 説明 | 可用性  |
 |---------|------------------|-------------|---------------|
-| [二重暗号化](search-security-overview.md#encryption) | セキュリティ | 新しい検索サービスでカスタマー マネージド キー (CMK) 暗号化を構成することにより、ストレージ層での二重暗号化を有効にします。 新しいサービスを作成し、[カスタマー マネージド キーを構成してインデックスまたはシノニム マップに適用し](search-security-manage-encryption-keys.md)、そのコンテンツで二重暗号化のメリットを得ます。 | 次のリージョンで 2020 年 8 月 1 日以降に作成されたすべての検索サービスで一般提供されます: 米国西部 2、米国東部、米国中南部、US Gov バージニア、US Gov アリゾナ。 サービスを作成するには、ポータル、管理 REST API、または SDK を使用します。 |
+| [二重暗号化](search-security-overview.md#encryption) | セキュリティ | 新しい検索サービスでカスタマー マネージド キー暗号化を構成して、ストレージ層での二重暗号化を有効にします。 新しいサービスを作成し、[カスタマー マネージド キーを構成してインデックスまたはシノニム マップに適用し](search-security-manage-encryption-keys.md)、そのコンテンツで二重暗号化のメリットを得ます。 | 次のリージョンで 2020 年 8 月 1 日以降に作成されたすべての検索サービスで一般提供されます: 米国西部 2、米国東部、米国中南部、US Gov バージニア、US Gov アリゾナ。 サービスを作成するには、ポータル、管理 REST API、または SDK を使用します。 |
 
 ## <a name="july-2020"></a>2020 年 7 月
 

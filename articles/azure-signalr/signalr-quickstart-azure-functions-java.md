@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
 ms.custom: devx-track-java
-ms.openlocfilehash: fac992ba0d6be945fcb3184d27394ff58d98c44c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: aa300122ab6c448862d46579d6e9ce1e5fc06a79
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151028"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874408"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>クイック スタート:Java を使用した Azure Functions と SignalR Service によるチャット ルームの作成
 
@@ -37,21 +37,21 @@ Azure SignalR Service を使用すると、アプリケーションに対して�
 > [!NOTE]
 > このクイック スタートは、macOS、Windows、または Linux で実行できます。
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjava)。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
 Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサインインします。
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjava)。
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjava)。
 
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjava)。
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Azure Function アプリを構成して実行する
 
@@ -87,15 +87,16 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
     ```bash
     mvn azure-functions:run
     ```
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
+    
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjava)。
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjava)。
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjava)。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -103,5 +104,3 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 > [!div class="nextstepaction"]
 > [Java と Maven を使用して初めての関数を作成する](../azure-functions/functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java%252cprogramming-language-java)
-
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)

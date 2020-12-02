@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 908bf21d2fe101731b11e3a8ad783f17728c8ed3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e289bea6b1a23f1622ced62656164d9865303298
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677331"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912826"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>クイック スタート:Databricks を使用したデータの分析
 
@@ -23,7 +23,7 @@ ms.locfileid: "92677331"
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* Azure Data Lake Gen2 ストレージ アカウントの名前。 [Azure Data Lake Storage Gen2 ストレージ アカウントを作成します](data-lake-storage-quickstart-create-account.md)。
+* 階層型名前空間機能が有効になっているストレージ アカウント。 アカウントの作成については、「[Azure Data Lake Storage Gen2 で使用するストレージ アカウントを作成する](create-data-lake-storage-account.md)」を参照してください。
 
 * **ストレージ BLOB データ共同作成者** のロールが割り当てられた Azure サービス プリンシパルのテナント ID、アプリ ID、パスワード。 [サービス プリンシパルを作成します](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
@@ -151,7 +151,7 @@ dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<container-name>@<st
 
     `%sql` 言語のマジック コマンドを使うと、ノートブックから SQL コードを実行できます (ノートブックが別の種類であっても)。 詳しくは、「[Mixing languages in a notebook](https://docs.azuredatabricks.net/user-guide/notebooks/index.html#mixing-languages-in-a-notebook)」(ノートブックに言語を混在させる) をご覧ください。
 
-2. 実行するクエリについて詳しく理解するため、サンプルの JSON データのスナップショットを見てみます。 次のスニペットをコード セルに貼り付けて、 **Shift + Enter** キーを押します。
+2. 実行するクエリについて詳しく理解するため、サンプルの JSON データのスナップショットを見てみます。 次のスニペットをコード セルに貼り付けて、**Shift + Enter** キーを押します。
 
     ```sql
     %sql
@@ -162,7 +162,7 @@ dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<container-name>@<st
 
     ![サンプル JSON データ](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "サンプル JSON データ")
 
-    サンプルには、ラジオ チャンネルの視聴者の性別 (列名: **gender** ) および登録が無料か有料か (列名: **level** ) に関するデータが含まれます。
+    サンプルには、ラジオ チャンネルの視聴者の性別 (列名: **gender**) および登録が無料か有料か (列名: **level**) に関するデータが含まれます。
 
 4. このデータのビジュアル表現を作成し、各性別について、無料アカウント ユーザーの数と有料登録者の数がわかるようにします。 表形式の出力の下部で、 **[Bar chart]\(棒グラフ\)** アイコンをクリックした後、 **[Plot Options]\(プロット オプション\)** をクリックします。
 
@@ -198,7 +198,7 @@ dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<container-name>@<st
 次の記事に進んで、Azure Databricks を使った ETL (データの抽出、変換、読み込み) 操作の実行方法について学びましょう。
 
 > [!div class="nextstepaction"]
->[Azure Databricks を使ったデータの抽出、変換、読み込み](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md)。
+>[Azure Databricks を使ったデータの抽出、変換、読み込み](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse)。
 
 - 他のデータ ソースから Azure Databricks にデータをインポートする方法については、[Spark データ ソース](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)に関するページを参照してください。
 

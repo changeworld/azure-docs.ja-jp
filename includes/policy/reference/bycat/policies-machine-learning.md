@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 10/20/2020
+ms.date: 11/20/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 30e599fa274bac8b8700d366c7102dcf64a5ad09
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ec1bb2b21e1ac4d24f4643ae85a790b3bc2a147a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311928"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001026"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Azure Machine Learning ワークスペースは、カスタマー マネージド キー (CMK) を使用して暗号化する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8) |カスタマー マネージド キー (CMK) を使用した暗号化が有効になっていない Azure Machine Learning ワークスペースを評価します。 カスタマー マネージド キーによって、ワークスペースのセキュリティ レイヤーが追加されます。 詳細については、[https://aka.ms/azureml-workspaces-cmk](https://aka.ms/azureml-workspaces-cmk) を参照してください。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_CMKEnabled_Audit.json) |
+|[Azure Machine Learning ワークスペースは、カスタマー マネージド キー (CMK) を使用して暗号化する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8) |カスタマー マネージド キー (CMK) を使用した暗号化が有効になっていない Azure Machine Learning ワークスペースを評価します。 カスタマー マネージド キーによって、ワークスペースのセキュリティ レイヤーが追加されます。 詳細については、[https://aka.ms/azureml-workspaces-cmk](https://aka.ms/azureml-workspaces-cmk) を参照してください。 |Audit、Deny、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_CMKEnabled_Audit.json) |
 |[Azure Machine Learning ワークスペースではプライベート リンクを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F40cec1dd-a100-4920-b15b-3024fe8901ab) |1 つ以上の承認されたプライベート エンドポイント接続がない Azure Machine Learning ワークスペースを評価します。 仮想ネットワーク内のクライアントは、プライベート リンク経由でのプライベート エンドポイント接続があるリソースに安全にアクセスできます。 詳細については、[https://aka.ms/azureml-workspaces-privatelink](https://aka.ms/azureml-workspaces-privatelink) を参照してください。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_PrivateLinkEnabled_Audit.json) |
 |[指定された Azure Machine Learning コンピューティングで許可されるモジュール作成者を構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F53c70b02-63dd-11ea-bc55-0242ac130003) |このポリシーは、指定された Azure Machine Learning コンピューティングで許可されるモジュール作成者を指定するのに役立ち、ワークスペースで割り当てることができます。 詳細については、[https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc) を参照してください。 |enforceSetting、無効 |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedModuleAuthors_EnforceSetting.json) |
 |[指定された Azure Machine Learning コンピューティングで許可される Python パッケージを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F77eeea86-7e81-4a7d-9067-de844d096752) | このポリシーは、指定された Azure Machine Learning コンピューティングで許可される Python パッケージを指定するのに役立ち、ワークスペースで割り当てることができます。 詳細については、[https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc) を参照してください。 |enforceSetting、無効 |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedPythonPackageChannels_EnforceSetting.json) |

@@ -3,50 +3,49 @@ title: クイックスタート - Azure IoT Central でルールとアクショ�
 description: このクイックスタートでは、作成者として Azure IoT Central アプリケーションでテレメトリベースのルールとアクションを構成する方法について説明します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/12/2020
+ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: philmea
-ms.openlocfilehash: 66c3bd8650d1194d5d753c1dc967ec8e870c8748
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 99846a5f2435398d13c436460a2756b1b021a1be
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80998963"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990205"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>クイック スタート:Azure IoT Central でデバイスのルールとアクションを構成する
 
 *この記事は、オペレーター、ビルダー、および管理者に適用されます。*
 
-このクイックスタートでは、デバイスのセンサーによってレポートされる温度が華氏 90&deg; を超えた場合にメールを送信する規則を作成します。
+このクイックスタートでは、デバイスのセンサーによってレポートされる湿度が 55% を超えたときにメールを送信するルールを作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
-作業を開始する前に、「[Azure IoT Central アプリケーションの作成](./quick-deploy-iot-central.md)」と[IoT Central アプリケーションへのシミュレーションされたデバイスの追加](./quick-create-simulated-device.md)に関する 2 つのクイックスタートを完了して、作業に使用する **MXChip IoT DevKit** デバイス テンプレートを作成する必要があります。
+作業を開始する前に、「[Azure IoT Central アプリケーションを作成する](./quick-deploy-iot-central.md)」と「[IoT Central アプリケーションにシミュレートされたデバイスを追加する](./quick-create-simulated-device.md)」の 2 つのクイックスタートを完了して、作業に使用する **Sensor Controller** デバイス テンプレートを作成しておく必要があります。
 
 ## <a name="create-a-telemetry-based-rule"></a>テレメトリベースのルールを作成する
 
 1. 新しいテレメトリベースのルールを対象のアプリケーションに追加するには、左側のペインで **[規則]** を選択します。
 
-1. 新しい規則を作成するには、 **+** を選択します。
+1. 新しいルールを作成するには、**[+ 新規]** を選択します。
 
-1. ルール名として「**Environmental temperature**」と入力します。
+1. ルール名として「**Environmental humidity**」と入力します。
 
-1. **[ターゲット デバイス]** セクションで、デバイス テンプレートとして **[MXChip IoT DevKit]** を選択します。 このオプションは、デバイス テンプレートの種類によってルールが適用されるデバイスをフィルター処理します。 **[+ フィルター]** を選択することで、さらにフィルター条件を追加できます。
+1. **[ターゲット デバイス]** セクションで、デバイス テンプレートとして **[Sensor Controller]** を選択します。 このオプションは、デバイス テンプレートの種類によってルールが適用されるデバイスをフィルター処理します。 **[+ フィルター]** を選択することで、さらにフィルター条件を追加できます。
 
 1. **[条件]** セクションで、ルールをトリガーする条件を定義します。 次の情報を使用して、温度テレメトリに基づいて条件を定義します。
 
     | フィールド        | Value            |
     | ------------ | ---------------- |
-    | Measurement  | 気温      |
+    | Measurement  | SensorHumid      |
     | 演算子     | が次の値より大きい  |
-    | Value        | 90               |
+    | Value        | 55               |
 
     さらに条件を追加するには、 **[+ 条件]** を選択します。
 
-    ![ルール条件を作成する](./media/quick-configure-rules/condition.png)
+    :::image type="content" source="media/quick-configure-rules/condition.png" alt-text="ルールの条件を示すスクリーンショット":::
 
 1. ルールがトリガーされたときに実行するメール アクションを追加するには、 **[+ 電子メール]** を選択します。
 
@@ -56,18 +55,18 @@ ms.locfileid: "80998963"
     | --------- | ------------------------------------------------- |
     | Display name | オペレーターの電子メール アクション                          |
     | ターゲット        | メール アドレス                                |
-    | Notes     | 環境温度がしきい値を超えました。 |
+    | Notes     | 環境湿度がしきい値を超えました。 |
 
     > [!NOTE]
     > メール通知を受け取るには、メール アドレスが[アプリケーションのユーザー ID](howto-administer.md) である必要があります。また、そのユーザーが少なくとも一度アプリケーションにサインインしている必要があります。
 
-    ![ルール アクションを作成する](./media/quick-configure-rules/action.png)
+    :::image type="content" source="media/quick-configure-rules/action.png" alt-text="ルールに追加された電子メール アクションを示すスクリーンショット":::
 
 1. **[保存]** を選択します。 ルールが **[ルール]** ページに表示されます。
 
 ## <a name="test-the-rule"></a>ルールをテストする
 
-ルールは保存した後すぐに有効になります。 ルールで定義された条件が満たされると、アプリケーションによって、アクションで指定したメール アドレスにメッセージが送信されます。
+ルールは保存した後すぐに有効になります。 ルールで定義されている条件が満たされると、アプリケーションによって、アクションで指定したアドレスにメールが送信されます。
 
 > [!NOTE]
 > テストの完了後は、ルールを無効にして、受信トレイに届くアラートを停止してください。

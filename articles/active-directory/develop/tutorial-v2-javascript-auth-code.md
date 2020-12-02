@@ -12,24 +12,25 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 01169f3e73fb1d6ddf0ecaf4958c6121cb21c295
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 6b8a9cbfd3e7057f0d85d5f4e19fea3aa4fbe90b
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216132"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980220"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>チュートリアル:認証コード フローを使用して、ユーザーをサインインさせ、JavaScript シングルページ アプリ (SPA) から Microsoft Graph API を呼び出す
 
-このチュートリアルでは、Microsoft Authentication Library (MSAL) for JavaScript v2.0 を使用する JavaScript シングルページ アプリケーション (SPA) を作成し、以下のことを行う方法について説明します。
+このチュートリアルでは、ユーザーのサインインを行い、PKCE による認証コード フローを使用して Microsoft Graph を呼び出す JavaScript シングルページ アプリケーション (SPA) を構築します。 構築する SPA では、JavaScript v2.0 用の Microsoft Authentication Library (MSAL) を使用します。
 
+このチュートリアルの内容:
 > [!div class="checklist"]
 > * PKCE を使用した、OAuth 2.0 認証コード フローの実行
 > * 個人用 Microsoft アカウントと職場または学校アカウントへのサインイン
 > * アクセス トークンの取得
 > * Microsoft ID プラットフォーム エンドポイントから取得したアクセス トークンを必要とする Microsoft Graph または独自 API の呼び出し
 
-MSAL.js 2.0 は、ブラウザーで暗黙的な許可のフローではなく承認コード フローをサポートすることで、MSAL.js 1.0 よりも強化されています。 MSAL.js 2.0 では、暗黙的フローはサポートされて**いません**。
+MSAL.js 2.0 は、ブラウザーで暗黙的な許可のフローではなく承認コード フローをサポートすることで、MSAL.js 1.0 よりも強化されています。 MSAL.js 2.0 では、暗黙的フローはサポートされて **いません**。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -319,12 +320,12 @@ const tokenRequest = {
 
 次の説明に従って、`msalConfig` セクションの値を変更します。
 
-- `Enter_the_Application_Id_Here`:登録したアプリケーションの**アプリケーション (クライアント) ID**。
+- `Enter_the_Application_Id_Here`:登録したアプリケーションの **アプリケーション (クライアント) ID**。
 - `Enter_the_Cloud_Instance_Id_Here`:アプリケーションが登録されている Azure クラウド インスタンス。
   - メイン ("*グローバル*") Azure クラウドの場合は、「`https://login.microsoftonline.com`」と入力します。
-  - **各国**のクラウド (中国など) の場合は、「[各国のクラウド](authentication-national-cloud.md)」に適切な値が記載されています。
+  - **各国** のクラウド (中国など) の場合は、「[各国のクラウド](authentication-national-cloud.md)」に適切な値が記載されています。
 - `Enter_the_Tenant_info_here` は、次のいずれかにする必要があります。
-  - ご自分のアプリケーションで "*この組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を**テナント ID** または**テナント名**に置き換えます。 たとえば、「 `contoso.microsoft.com` 」のように入力します。
+  - ご自分のアプリケーションで "*この組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を **テナント ID** または **テナント名** に置き換えます。 たとえば、「 `contoso.microsoft.com` 」のように入力します。
   - アプリケーションで "*任意の組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を `organizations` に置き換えます。
   - アプリケーションで "*任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント*" がサポートされる場合は、この値を `common` に置き換えます。
   - "*個人用の Microsoft アカウントのみ*" にサポートを制限するには、この値を `consumers` に置き換えます。
@@ -350,7 +351,7 @@ const graphConfig = {
 
 - `Enter_the_Graph_Endpoint_Here` は、アプリケーションが通信する必要がある、Microsoft Graph API のインスタンスです。
   - **グローバル** Microsoft Graph API エンドポイントの場合は、この文字列の両方のインスタンスを `https://graph.microsoft.com` に置き換えます。
-  - **各国**のクラウドのデプロイにおけるエンドポイントの場合は、Microsoft Graph のドキュメントで「[各国のクラウドでのデプロイ](https://docs.microsoft.com/graph/deployments)」を参照してください。
+  - **各国** のクラウドのデプロイにおけるエンドポイントの場合は、Microsoft Graph のドキュメントで「[各国のクラウドでのデプロイ](https://docs.microsoft.com/graph/deployments)」を参照してください。
 
 グローバル エンドポイントを使用している場合、*graphConfig.js* 内の `graphMeEndpoint` および `graphMailEndpoint` の値は、次のようにします。
 
@@ -545,7 +546,7 @@ function readMail() {
 
 ### <a name="how-the-code-works"></a>コードの動作
 
-ユーザーが初めて **[Sign In]** ボタンを選択すると、`signIn` メソッドによって、ユーザーがサインインするための `loginPopup` が呼び出されます。 `loginPopup` メソッドによって、"*Microsoft ID プラットフォーム エンドポイント*" でポップアップ ウィンドウが開き、ユーザーの資格情報が要求されて検証が行われます。 サインインに成功すると、*msal.js* によって[認証コード フロー](v2-oauth2-auth-code-flow.md)が開始されます。
+ユーザーが初めて **[Sign In]** ボタンを選択すると、`signIn` メソッドによって、ユーザーがサインインするための `loginPopup` が呼び出されます。 `loginPopup` メソッドによって、"*Microsoft ID プラットフォーム エンドポイント*" でポップアップ ウィンドウが開き、ユーザーの資格情報が要求されて検証が行われます。 サインインに成功すると、*msal.js* によって [認証コード フロー](v2-oauth2-auth-code-flow.md)が開始されます。
 
 この時点で、PKCE で保護された認証コードが CORS によって保護されたトークン エンドポイントに送信され、トークンと交換されます。 アプリケーションによって ID トークン、アクセス トークン、および更新トークンが受信され、*msal.js* によって処理されて、トークンに含まれる情報がキャッシュされます。
 
@@ -602,7 +603,7 @@ function callMSGraph(endpoint, token, callback) {
 }
 ```
 
-このチュートリアルで作成するサンプル アプリケーションでは、`callMSGraph()` メソッドを使用して、トークンが必要な保護されたリソースに対して HTTP `GET` 要求を実行します。 その後、この要求からその内容が呼び出し元に返されます。 このメソッドは、取得したトークンを *HTTP Authorization ヘッダー*に追加します。 このチュートリアルで作成したサンプル アプリケーションでは、保護されているリソースは、サインイン ユーザーのプロファイル情報を表示する Microsoft Graph API *me* エンドポイントです。
+このチュートリアルで作成するサンプル アプリケーションでは、`callMSGraph()` メソッドを使用して、トークンが必要な保護されたリソースに対して HTTP `GET` 要求を実行します。 その後、この要求からその内容が呼び出し元に返されます。 このメソッドは、取得したトークンを *HTTP Authorization ヘッダー* に追加します。 このチュートリアルで作成したサンプル アプリケーションでは、保護されているリソースは、サインイン ユーザーのプロファイル情報を表示する Microsoft Graph API *me* エンドポイントです。
 
 ## <a name="test-your-application"></a>アプリケーションのテスト
 
@@ -619,23 +620,23 @@ function callMSGraph(endpoint, token, callback) {
 
 ブラウザーに *index.html* ファイルが読み込まれたら、 **[サインイン]** を選択します。 Microsoft ID プラットフォーム エンドポイントにサインインするように求められます。
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="シングルページ アプリケーションでの認証コード フローを示す図":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="サインイン ダイアログを表示している Web ブラウザー":::
 
 ### <a name="provide-consent-for-application-access"></a>アプリケーションによるアクセスに同意する
 
 アプリケーションへの初回サインイン時には、お使いのプロファイルへのアクセスを許可してサインインすることを求められます。
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="シングルページ アプリケーションでの認証コード フローを示す図":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="Web ブラウザーに表示されているコンテンツ ダイアログ":::
 
 要求されたアクセス許可に同意すると、Web アプリケーションにはユーザー名が表示されます。これは、ログインが成功したことを示しています。
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="シングルページ アプリケーションでの認証コード フローを示す図":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="Web ブラウザーでの成功したサインインの結果":::
 
 ### <a name="call-the-graph-api"></a>Graph API を呼び出す
 
 サインインした後、 **[See Profile]** を選択して、Microsoft Graph API への呼び出しからの応答で返されるユーザー プロファイル情報を表示します。
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="シングルページ アプリケーションでの認証コード フローを示す図":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="ブラウザーに表示される Microsoft Graph からのプロファイル情報":::
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>スコープと委任されたアクセス許可の詳細
 

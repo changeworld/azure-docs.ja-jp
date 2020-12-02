@@ -9,21 +9,22 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: b85984207742e0b8991ab65875dd22505b918185
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f57e809373a8bd06c4b4afbb9b193464315e788f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736746"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959579"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>チュートリアル:IoT Edge デバイスの構成
-
-> [!NOTE]
-> この記事は、IoT Edge 上で Azure Machine Learning を使用するためのチュートリアルのシリーズの一部です。 この記事に直接アクセスしている場合は、最適な結果を得るために、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md) から始めることをお勧めします。
 
 この記事では、Linux を実行している Azure 仮想マシンを、透過的なゲートウェイとして機能する IoT Edge デバイスになるように構成します。 透過的なゲートウェイの構成では、デバイスはゲートウェイの存在を知らなくても、ゲートウェイを介して Azure IoT Hub に接続できます。 同時に、Azure IoT Hub 内のデバイスを操作するユーザーは中間のゲートウェイ デバイスを意識しません。 最終的には、IoT Edge モジュールを透過的なゲートウェイに追加することによってエッジ分析をシステムに追加します。
 
 この記事の手順は通常、クラウド開発者によって実行されます。
+
+## <a name="prerequisites"></a>前提条件
+
+この記事は、IoT Edge 上で Azure Machine Learning を使用するためのチュートリアルのシリーズの一部です。 シリーズの各記事は、前の記事の作業に基づいています。 この記事に直接アクセスしている場合は、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md)を参照してください。
 
 ## <a name="create-certificates"></a>証明書の作成
 
@@ -39,7 +40,7 @@ ms.locfileid: "92736746"
 
 4. Visual Studio Code を開きます。
 
-5. **[ファイル]**  >  **[フォルダーを開く...]** を選択し、 **C:\\source\\IoTEdgeAndMlSample\\CreateCertificates** を選択します。
+5. **[ファイル]**  >  **[フォルダーを開く...]** を選択し、**C:\\source\\IoTEdgeAndMlSample\\CreateCertificates** を選択します。
 
 6. エクスプローラー ペインで **[dockerfile]** を右クリックし、 **[Build Image]\(イメージのビルド\)** を選択します。
 
@@ -62,7 +63,7 @@ ms.locfileid: "92736746"
 
 11. メッセージが表示されたら、資格情報を入力します。
 
-12. コンテナーの実行が終了したら、 **c:\\edgeCertificates** にある次のファイルを確認します。
+12. コンテナーの実行が終了したら、**c:\\edgeCertificates** にある次のファイルを確認します。
 
     * c:\\edgeCertificates\\certs\\azure-iot-test-only.root.ca.cert.pem
     * c:\\edgeCertificates\\certs\\new-edge-device-full-chain.cert.pem
@@ -76,7 +77,7 @@ ms.locfileid: "92736746"
 
 1. [Azure portal](https://portal.azure.com) から、Azure Machine Learning ワークスペースに移動します。
 
-2. Azure Machine Learning ワークスペースの概要ページで、 **キー コンテナー** の名前を探します。
+2. Azure Machine Learning ワークスペースの概要ページで、**キー コンテナー** の名前を探します。
 
     ![キー コンテナー名をコピーする](media/tutorial-machine-learning-edge-05-configure-edge-device/find-key-vault-name.png)
 
@@ -122,9 +123,9 @@ Azure Marketplace にある [[Azure IoT Edge on Ubuntu]](https://azuremarketplac
 
 1. **[すべてのサービス]** を選択します。
 
-1. 検索バーに「 **Marketplace** 」と入力して選択します。
+1. 検索バーに「**Marketplace**」と入力して選択します。
 
-1. Marketplace の検索バーに「 **Azure IoT Edge on Ubuntu** 」と入力して選択します。
+1. Marketplace の検索バーに「**Azure IoT Edge on Ubuntu**」と入力して選択します。
 
 1. **[Get started]\(開始する\)** ハイパーリンクを選択して、プログラムからデプロイを行います。
 
@@ -138,7 +139,7 @@ Azure Marketplace にある [[Azure IoT Edge on Ubuntu]](https://azuremarketplac
 
 次に、IoT Edge デバイス用の仮想マシンを作成するスクリプトを実行します。
 
-1. PowerShell ウィンドウを開き、 **EdgeVM** ディレクトリに移動します。
+1. PowerShell ウィンドウを開き、**EdgeVM** ディレクトリに移動します。
 
     ```powershell
     cd c:\source\IoTEdgeAndMlSample\EdgeVM
@@ -160,7 +161,7 @@ Azure Marketplace にある [[Azure IoT Edge on Ubuntu]](https://azuremarketplac
 
 4. スクリプトで VM を設定できるようにするには、使用している Azure サブスクリプションに関連付けられた資格情報で Azure にサインインする必要があります。
 
-5. スクリプトにより、VM を作成するための情報が確認されます。 **y** を選択するか、 **Enter** キーを押して続行します。
+5. スクリプトにより、VM を作成するための情報が確認されます。 **y** を選択するか、**Enter** キーを押して続行します。
 
 6. スクリプトが数分間実行され、その間に次のステップが実行されます。
 
@@ -183,7 +184,7 @@ Azure Marketplace にある [[Azure IoT Edge on Ubuntu]](https://azuremarketplac
     ssh -l <username> iotedge-<suffix>.<region>.cloudapp.azure.com
     ```
 
-2. ホストの信頼性を確認するよう求められたら、「 **yes** 」と入力して **Enter** キーを押します。
+2. ホストの信頼性を確認するよう求められたら、「**yes**」と入力して **Enter** キーを押します。
 
 3. 求められたら、パスワードを入力します。
 

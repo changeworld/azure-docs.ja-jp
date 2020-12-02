@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 08/19/2020
-ms.openlocfilehash: 1aadf1fe59c5300a4f16ea96b1e1d7a5fbcbdd6d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0a18f9adb8c3723619b44b30bfa334edf4300c0d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325738"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95509486"
 ---
 # <a name="what-can-i-do-with-machine-learning-studio-classic"></a>Machine Learning Studio (classic) でできること
 
-**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![これは x 印です。つまり、この記事は Azure Machine Learning を対象としています。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -30,14 +30,14 @@ Machine Learning Studio (classic) は、機械学習モデルを構築、テス�
 
 一般的な予測分析モデルの作成では、1 種類以上のソースからデータを入手し、さまざまなデータ操作と統計関数を使用してデータを変換および分析することにより、一連の結果を生成します。 このようなモデルの作成プロセスは対話型プロセスになります。 十分にトレーニングされた有効なモデルが作成されるまで、さまざまな特徴とパラメーターを繰り返し調整します。
 
-Machine Learning Studio (classic) では、予測分析モデルの作成、テスト、反復作業を支援する、視覚的操作に対応した対話型ワークスペースが提供されます。 "* *_データセット_* _" と分析 " _*_モジュール_*_ " を対話型のキャンバスにドラッグ アンド ドロップし、それらを相互に接続して " _*_実験_*_ " を完成させ、Machine Learning Studio (クラシック) で実行できます。 モデルのさまざまな設計を試す際は、実験を編集して必要に応じて保存し、再度実行できます。 準備が整ったら、" _*_トレーニング実験_*_ " を " _*_予測実験_*_ " に変換します。さらに、" _*_Web サービス_*_ " として発行し、第三者が利用できるようにそのモデルを公開します。
+Machine Learning Studio (classic) では、予測分析モデルの作成、テスト、反復作業を支援する、視覚的操作に対応した対話型ワークスペースが提供されます。 "**_データセット_* _" と分析 "_*_モジュール_*_" を対話型のキャンバスにドラッグ アンド ドロップし、それらを相互に接続して "_*_実験_*_" を完成させ、Machine Learning Studio (クラシック) で実行できます。 モデルのさまざまな設計を試す際は、実験を編集して必要に応じて保存し、再度実行できます。 準備が整ったら、"_*_トレーニング実験_*_" を "_*_予測実験_*_" に変換します。さらに、"_*_Web サービス_*_" として発行し、第三者が利用できるようにそのモデルを公開します。
 
 データセットとモジュールを視覚的に接続すれば予測分析モデルが完成するため、プログラミングは必要ありません。
 
 ![Machine Learning Studio (classic) の図: 実験の作成、各種ソースのデータの読み取り、スコア付けされたデータの書き込み、モデルの書き込み](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
 
 ## <a name="download-the-ml-studio-classic-overview-diagram"></a>ML Studio (classic) の概要図をダウンロードする
-_ *Microsoft ML Studio (クラシック) 機能の概要* *図をダウンロードして、Machine Learning Studio (クラシック) の機能の概要を確認します。 図をタブロイド サイズ (11 x 17 インチ) で印刷し、手元に置いておくことができます。
+_ *Microsoft ML Studio (クラシック) 機能の概要**図をダウンロードして、Machine Learning Studio (クラシック) の機能の概要を確認します。 図をタブロイド サイズ (11 x 17 インチ) で印刷し、手元に置いておくことができます。
 
 **ここから図をダウンロード:[Microsoft Machine Learning Studio (クラシック) の機能の概要](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)** 
 ![Microsoft Machine Learning Studio (クラシック) の機能の概要](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)

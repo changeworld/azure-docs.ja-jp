@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 9ff43202bdace577024413c9cc177de2997a0ad5
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 0dad7add63102d462a2111f1ecf12ae43dae123c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91627952"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996187"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>チュートリアル:ASP.NET Web アプリに Microsoft へのサインインを追加する
 
-このガイドでは、従来の Web ブラウザーベースのアプリケーションと OpenID Connect を使用して、ASP.NET MVC ソリューションを通じて Microsoft へのサインインを実装する方法を示します。
+このチュートリアルでは、Open Web Interface for .NET (OWIN) ミドルウェアと Microsoft ID プラットフォームを使用してユーザーのサインインを処理する ASP.NET MVC Web アプリを作成します。
 
 このガイドを完了すると、ご自分のアプリケーションが outlook.com や live.com などの個人用アカウントのサインインを受け入れることができるようになります。 また、Microsoft ID プラットフォームと統合されている会社や組織の職場または学校アカウントでも、アプリにサインインできるようになります。
 
@@ -36,7 +36,7 @@ ms.locfileid: "91627952"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **ASP.NET および Web 開発**ワークロードがインストールされている [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
+* **ASP.NET および Web 開発** ワークロードがインストールされている [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>このガイドで生成されたサンプル アプリの動作
 
@@ -70,7 +70,7 @@ ms.locfileid: "91627952"
 ## <a name="add-authentication-components"></a>認証コンポーネントの追加
 
 1. Visual Studio で次の操作を行います。 **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順に移動します。
-2. パッケージ マネージャー コンソールのウィンドウで以下を入力し、*OWIN ミドルウェア NuGet パッケージ*を追加します。
+2. パッケージ マネージャー コンソールのウィンドウで以下を入力し、*OWIN ミドルウェア NuGet パッケージ* を追加します。
 
     ```powershell
     Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -408,7 +408,7 @@ Visual Studio でアプリケーションをテストするには、F5 キーを
 
 Microsoft ID プラットフォームと統合するアプリケーションは、データにアクセスする方法をユーザーと管理者が制御できるようにする承認モデルに従います。 このアプリケーションにアクセスするために Microsoft ID プラットフォームで認証されたユーザーは、アプリケーションによって要求されるアクセス許可 ("基本プロファイルの表示" と "自分がアクセス権を付与したデータへのアクセスの管理") に同意するように求められます。 これらのアクセス許可を受け入れると、ユーザーはアプリケーションの結果に進むこととなります。 ただし、次のいずれかの場合は、ユーザーに **[Need admin consent]\(管理者の同意が必要\)** ページが表示され、対応を求められることがあります。
 
-- アプリケーション開発者が、**管理者の同意**を必要とするその他の任意のアクセス許可を追加している。
+- アプリケーション開発者が、**管理者の同意** を必要とするその他の任意のアクセス許可を追加している。
 - または、( **[エンタープライズ アプリケーション] -> [ユーザー設定]** で) テナントが構成されていて、ユーザーが、自分の代わりにアプリが会社のデータにアクセスすることに同意できなくなっている。
 
 詳細については、「[Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意](./v2-permissions-and-consent.md)」を参照してください。

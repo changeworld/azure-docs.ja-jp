@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 18222573956f5ff3e9c617602902374b114328da
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 4fa00bffc35c4ed67ce70751c8882b74ad6b01a1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555619"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95534502"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 
@@ -296,7 +296,7 @@ Azure Monitor for VMs コンテンツの再構築による新規および更新�
 
 ### <a name="logs"></a>ログ
 - [Azure Log Analytics ワークスペースの削除と復旧](platform/delete-workspace.md) - PowerShell コマンドを追加しました。 トラブルシューティングを更新しました。
-- [Azure Monitor で Log Analytics ワークスペースを管理する](platform/manage-access.md) - RBAC セクションに許可されないテーブルの例を追加しました。
+- [Azure Monitor で Log Analytics ワークスペースを管理する](platform/manage-access.md) - Azure RBAC セクションに許可されないテーブルの例を追加しました。
 - [Azure Monitor ログの使用量とコストを管理する](platform/manage-cost-storage.md) - データ サイズの計算に関する詳細を追加しました。 データ ボリューム アラートの構成について更新しました。 Azure Sentinel によって収集されるセキュリティ データの詳細。 データ上限の明確化。
 - [Azure Logic Apps と Power Automate で Azure Monitor ログを使用する](platform/logicapp-flow-connector.md) - コネクタの制限を追加しました。
 
@@ -571,7 +571,7 @@ Azure Monitor for VMs の一般提供に関する全般的な更新
 
 #### <a name="azure-monitor-for-containers"></a>Azure Monitor for Containers
 
-- [Azure Active Directory と Azure Kubernetes Service を統合する](../aks/azure-ad-integration-cli.md) - コンテナーの Azure Monitor をサポートするために RBAC 対応クラスターをサポートするクライアント アプリケーションを作成するためのメモを追加しました。
+- [Azure Active Directory と Azure Kubernetes Service を統合する](../aks/azure-ad-integration-cli.md) - コンテナーの Azure Monitor をサポートするために Kubernetes RBAC 対応クラスターをサポートするクライアント アプリケーションを作成するためのメモを追加しました。
 
 #### <a name="azure-monitor-for-vms"></a>VM に対する Azure Monitor
 

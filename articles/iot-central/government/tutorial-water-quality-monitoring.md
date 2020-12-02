@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a80fe998c1ab241e35bee195b927846e264dec59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07f0e66888eaa909dfce14924e9186bcb9b876b4
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972364"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014494"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>チュートリアル:Azure IoT Central で水質のモニタリング アプリケーションを作成する
 
 
 
-このチュートリアルでは、Azure IoT Central で水質のモニタリング アプリケーションを作成する手順を説明します。 Azure IoT Central の**水質のモニタリング** アプリケーション テンプレートからアプリケーションを作成します。
+このチュートリアルでは、Azure IoT Central で水質のモニタリング アプリケーションを作成する手順を説明します。 Azure IoT Central の **水質のモニタリング** アプリケーション テンプレートからアプリケーションを作成します。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -38,7 +38,7 @@ ms.locfileid: "90972364"
 
 ## <a name="create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Azure IoT Central で水質のモニタリング アプリケーションを作成する
 
-このセクションでは、Azure IoT Central の**水質のモニタリング** テンプレートを使用して、水質のモニタリング アプリケーションを作成します。
+このセクションでは、Azure IoT Central の **水質のモニタリング** テンプレートを使用して、水質のモニタリング アプリケーションを作成します。
 
 1. [Azure IoT Central ホームページ](https://aka.ms/iotcentral)に移動します。
 
@@ -66,7 +66,7 @@ ms.locfileid: "90972364"
 
     ![Azure IoT Central の [新規アプリケーション] の課金情報](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1-billinginfo.png)
 
-これで、Azure IoT Central の**水質のモニタリング** テンプレートを使用して、水質のモニタリング アプリケーションが作成されました。
+これで、Azure IoT Central の **水質のモニタリング** テンプレートを使用して、水質のモニタリング アプリケーションが作成されました。
 
 新しいアプリケーションには、次の構成済みコンポーネントが用意されています。
 
@@ -138,7 +138,7 @@ Azure IoT Central のデバイス テンプレートには、デバイスの機�
 1. デバイス テンプレート メニューから **[カスタマイズ]** を選択します。
 1. テレメトリの種類 **[Temperature]\(温度\)** に移動します。
 1. **[Display name]\(表示名\)** の値を **[Reported temperature]\(報告された温度\)** に変更します。
-1. 測定単位を変更するか、**最小値**と**最大値**を設定します
+1. 測定単位を変更するか、**最小値** と **最大値** を設定します
 1. **[保存]** を選択します。
 
 #### <a name="add-a-cloud-property"></a>クラウド プロパティを追加する
@@ -180,7 +180,7 @@ Azure IoT Central のデバイス テンプレートには、デバイスの機�
 1. **[デバイスのプロパティ]** タブと **[Device Dashboard]\(デバイス ダッシュボード\)** タブを調べます。
 
 > [!NOTE]
-> すべてのタブが**デバイス テンプレート ビュー**から構成されています。
+> すべてのタブが **デバイス テンプレート ビュー** から構成されています。
 
 ### <a name="add-new-devices"></a>新しいデバイスを追加する
 
@@ -188,7 +188,7 @@ Azure IoT Central のデバイス テンプレートには、デバイスの機�
 
 ## <a name="explore-and-configure-rules"></a>ルールを探索して構成する
 
-Azure IoT Central では、デバイス テレメトリを自動的に監視するルールを作成できます。 これらのルールは、いずれかの条件が満たされたときにアクションをトリガーします。 実行できる 1 つのアクションとして、電子メール通知の送信があります。 それ以外には、Microsoft Flow アクションや、他のサービスにデータを送信する Webhook アクションなどが可能です。
+Azure IoT Central では、デバイス テレメトリを自動的に監視するルールを作成できます。 これらのルールは、いずれかの条件が満たされたときにアクションをトリガーします。 実行できる 1 つのアクションとして、電子メール通知の送信があります。 それ以外には、Power Automate アクションや、他のサービスにデータを送信する Webhook アクションなどが可能です。
 
 作成した水質のモニタリング アプリケーションには、2 つの事前構成済みのルールがあります。
 

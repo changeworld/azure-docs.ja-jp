@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: c4132ca675af136d7fd50b8ddd02277919a5ed28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 534619ace09b4e11934062a591adf8d9ab6f77ad
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361094"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500803"
 ---
 # <a name="create-an-azure-vm-assessment"></a>Azure VM の評価を作成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "91361094"
 
 ## <a name="before-you-start"></a>開始する前に
 
-- Azure Migrate プロジェクトを[作成](how-to-add-tool-first-time.md)していることを確認します。
+- Azure Migrate プロジェクトを[作成](./create-manage-projects.md)していることを確認します。
 - プロジェクトを既に作成してある場合は、次のツールを[追加済み](how-to-assess.md)であることを確認します。Azure Migrate: Server Assessment ツールを追加済みであることを確認してください。
 - 評価を作成するには、[VMware](how-to-set-up-appliance-vmware.md) または [Hyper-V](how-to-set-up-appliance-hyper-v.md) 用の Azure Migrate アプライアンスを設定する必要があります。 アプライアンスでオンプレミスのマシンが検出されて、メタデータとパフォーマンス データが Azure Migrate: Server Assessment を使用して作成する方法について説明します。 [詳細については、こちらを参照してください](migrate-appliance.md)。
 
@@ -53,7 +53,7 @@ Azure Migrate: Server Assessment を使用して Azure VM の評価を作成す�
 
     ![評価のプロパティ](./media/how-to-create-assessment//view-all.png)
 
-5. **[次へ]** をクリックして**評価するマシンを選択**します。 **[グループを選択または作成します]** で **[新規作成]** を選択し、グループ名を指定します。 グループで、評価のために 1 つ以上の VM をまとめます。
+5. **[次へ]** をクリックして **評価するマシンを選択** します。 **[グループを選択または作成します]** で **[新規作成]** を選択し、グループ名を指定します。 グループで、評価のために 1 つ以上の VM をまとめます。
 6. **[グループにマシンを追加します]** で、グループに追加する VM を選択します。
 7. **[次へ]** をクリックして **[評価の確認と作成]** を選択し、評価の詳細を確認します。
 8. **[評価を作成します]** をクリックして、グループを作成し、評価を実行します。

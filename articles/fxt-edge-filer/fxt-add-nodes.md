@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 85ad78eeb095b427b1a6334f57c351e926022dff
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217815"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021879"
 ---
 # <a name="tutorial-add-cluster-nodes-to-an-azure-fxt-edge-filer-cluster"></a>チュートリアル:Azure FXT Edge Filer クラスターにクラスター ノードを追加する
 
@@ -69,11 +69,11 @@ Web ブラウザーで、クラスターのコントロール パネルを開き
 
 クラスターのすべてのノードで同じバージョンの OS を使用する必要がありますが、ノードを追加する前にソフトウェアを更新する必要はありません。 **[Allow to Join]\(参加を許可\)** ボタンをクリックした後、クラスター参加プロセスによって、クラスター上のバージョンに一致する OS ソフトウェアが自動的に確認され、インストールされます。
 
-このページのオプションの詳細については、クラスター構成ガイドの[**クラスター** > **FXT ノード**](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html)に関する項目を参照してください。
+このページのオプションの詳細については、クラスター構成ガイドの [**クラスター** > **FXT ノード**](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html)に関する項目を参照してください。
 
 ## <a name="3-click-the-allow-to-join-button"></a>3.[Allow to Join] (参加を許可) ボタンをクリックする
 
-追加するノードの **[Actions]\(操作\)** 列にある **[Allow To Join]\(参加を許可\)** * ボタンをクリックします。
+追加するノードの _ *[Actions]\(操作\)* * 列にある **[Allow To Join]\(参加を許可\)** _ ボタンをクリックします。
 
 ボタンをクリックした後、クラスターへの追加に備えてソフトウェアが更新され、ノードの状態が変わる場合があります。
 

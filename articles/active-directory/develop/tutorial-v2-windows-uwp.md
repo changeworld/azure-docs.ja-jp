@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: cbfb5c598a2a56b0b14a3a90cf29ce23366b9b6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 774c17af88e45e25cf1e8edc0df60ab55fe53e0e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627671"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95974334"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>チュートリアル:ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す
 
-このガイドでは、ネイティブのユニバーサル Windows プラットフォーム (UWP) アプリケーションがアクセス トークンを要求する方法について説明します。 その後、アプリケーションは Microsoft Graph API を呼び出します。 このガイドは、Microsoft ID プラットフォーム エンドポイントのアクセス トークンを必要とする他の API にも適用されます。
+このチュートリアルでは、ユーザーのサインインを処理して Microsoft Graph API を呼び出すためのアクセス トークンを取得するネイティブ ユニバーサル Windows プラットフォーム (UWP) アプリを作成します。 
 
 このガイドの最後に、アプリケーションは個人のアカウントを使用して、保護されている API を呼び出します。 例としては、outlook.com、live.com などがあります。 アプリケーションは、Azure Active Directory (Azure AD) を持つ会社または組織の職場または学校アカウントも呼び出します。
 
@@ -74,7 +74,7 @@ ms.locfileid: "91627671"
 ### <a name="add-microsoft-authentication-library-to-your-project"></a>プロジェクトへの Microsoft Authentication Library の追加
 
 1. Visual Studio で、 **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順に選択します。
-1. 以下のコマンドをコピーして、**パッケージ マネージャー コンソール**のウィンドウに貼り付けます。
+1. 以下のコマンドをコピーして、**パッケージ マネージャー コンソール** のウィンドウに貼り付けます。
 
     ```powershell
     Install-Package Microsoft.Identity.Client
@@ -322,7 +322,7 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 
 #### <a name="more-information"></a>詳細情報<a name="more-information-1"></a>
 
-**OpenID 接続**を使用して取得した ID トークンにも、ユーザー関連情報の少量のサブセットが含まれています。 `DisplayBasicTokenInfo` は、トークンに含まれている基本的な情報を表示します。 この情報には、ユーザーの表示名や ID が含まれます。 また、トークンの有効期限やアクセス トークン自体を表す文字列も含まれます。 **[Call Microsoft Graph API]\(Microsoft Graph API の呼び出し\)** ボタンを数回選択すると、その後の要求で同じトークンが再利用されていることが確認できます。 また、Microsoft Authentication Library がトークンの更新時期だと判断したときに、有効期限が延長されることも確認できます。
+**OpenID 接続** を使用して取得した ID トークンにも、ユーザー関連情報の少量のサブセットが含まれています。 `DisplayBasicTokenInfo` は、トークンに含まれている基本的な情報を表示します。 この情報には、ユーザーの表示名や ID が含まれます。 また、トークンの有効期限やアクセス トークン自体を表す文字列も含まれます。 **[Call Microsoft Graph API]\(Microsoft Graph API の呼び出し\)** ボタンを数回選択すると、その後の要求で同じトークンが再利用されていることが確認できます。 また、Microsoft Authentication Library がトークンの更新時期だと判断したときに、有効期限が延長されることも確認できます。
 
 ### <a name="display-message"></a>メッセージの表示
 

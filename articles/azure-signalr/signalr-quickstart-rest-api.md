@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 85cda8458dca4ce24fed9433af1527f49a2393ad
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 2613f91e8c7f1ad3a05792a9a165f4560c09a637
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150975"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874527"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>クイック スタート:コンソール アプリからのリアルタイム メッセージのブロードキャスト
 
@@ -28,17 +28,17 @@ Azure SignalR サービスは、ブロードキャストなどのサーバーと
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsapi)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsapi)。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサインインします。
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsapi)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsapi)。
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsapi)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsapi)。
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
@@ -51,7 +51,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
     ```bash
     git clone https://github.com/aspnet/AzureSignalR-samples.git
     ```
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsapi)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsapi)。
 
 ## <a name="build-and-run-the-sample"></a>サンプルのビルドと実行
 
@@ -88,7 +88,7 @@ cd bin/Release/netcoreapp2.1/osx.10.13-x64/
 Serverless server -c "<ConnectionString>" -h <HubName>
 ```
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsapi)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsapi)。
 
 ## <a name="run-the-sample-without-publishing"></a>公開せずにサンプルを実行する
 
@@ -106,7 +106,7 @@ dotnet run -- client <ClientName> -c "<ConnectionString>" -h <HubName>
 
 サンプルのルート ディレクトリで`dotnet user-secrets set Azure:SignalR:ConnectionString "<ConnectionString>"`を実行することができます。 その後は、`-c "<ConnectionString>"` オプションが不要になります。
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsapi)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsapi)。
 
 ## <a name="usage"></a>使用法
 
@@ -122,7 +122,7 @@ broadcast
 
 別のクライアント名を持つ複数のクライアントを開始できます。
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsapi)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsapi)。
 
 ## <a name="integration-with-third-party-services"></a><a name="usage"> </a> サード パーティ サービスとの統合
 
@@ -257,11 +257,11 @@ API Version | API HTTP メソッド | 要求 URL
 `200` | サービスは良好
 `5xx` | サービス エラー
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsapi)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsapi)。
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsapi)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsapi)。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -269,5 +269,3 @@ API Version | API HTTP メソッド | 要求 URL
 
 > [!div class="nextstepaction"]
 > [Azure SignalR Service バインディングを使用した Azure Functions の開発](signalr-quickstart-azure-functions-csharp.md)
-
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsapi)

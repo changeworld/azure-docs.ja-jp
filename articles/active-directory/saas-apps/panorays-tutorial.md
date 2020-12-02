@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 9dacbfacdbb9a1ecc103b0cec224d861b42b1576
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 3e4d3145263b4b0379f85dea86d075480935a28c
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369639"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029338"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-panorays"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Panorays の統合
 
@@ -75,18 +75,7 @@ Panorays に対して Azure AD SSO を構成してテストするには、次の
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
-
-1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
-
-    **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
-
-    | [サインオン URL] |
-    |--------------|
-    | `https://www.panoraysapp.com` |
-    | `https://auth.panoraysapp.com` |
-
-1. **[保存]** をクリックします。
+1. **[基本的な SAML 構成]** セクションでは、アプリケーションは事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、 [保存] ボタンをクリックします。
 
 1. Panorays アプリケーションでは特定の形式の SAML アサーションが使用されるため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **[Unique User Identifier]\(一意のユーザー ID\)** は **user.userprincipalname** にマップされています。 Panorays アプリケーションでは、 **[Unique User Identifier]\(一意のユーザー ID\)** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
@@ -134,9 +123,7 @@ Panorays に対して Azure AD SSO を構成してテストするには、次の
 
 #### <a name="sp-initiated"></a>SP Initiated:
 
-1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Panorays のサインオン URL にリダイレクトされます。  
-
-1. Panorays のサインオン URL に直接移動し、そこからログイン フローを開始します。
+[Panorays のサインオン URL](https://www.panoraysapp.com) に直接移動し、そこからログイン フローを開始します。
 
 #### <a name="idp-initiated"></a>IDP Initiated:
 

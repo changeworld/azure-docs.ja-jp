@@ -8,17 +8,14 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cfb778a1a632dc17a9f50c7ea05debed0edb4fb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9a29e890553d15d19853ec836f8c4296869e143
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88660249"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959630"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>チュートリアル:Azure Machine Learning モデルをトレーニングしてデプロイする
-
-> [!NOTE]
-> この記事は、IoT Edge 上で Azure Machine Learning を使用するためのチュートリアルのシリーズの一部です。 この記事に直接アクセスしている場合は、最適な結果を得るために、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md) から始めることをお勧めします。
 
 この記事では、次のタスクを実行します。
 
@@ -29,6 +26,10 @@ ms.locfileid: "88660249"
 Azure Notebooks では、機械学習モデルの実験、トレーニング、デプロイに使用される基本ブロックである Azure Machine Learning ワークスペースを利用します。
 
 一般的に、この記事の手順は、データ サイエンティストによって実行される可能性があります。
+
+## <a name="prerequisites"></a>前提条件
+
+この記事は、IoT Edge 上で Azure Machine Learning を使用するためのチュートリアルのシリーズの一部です。 シリーズの各記事は、前の記事の作業に基づいています。 この記事に直接アクセスしている場合は、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md)を参照してください。
 
 ## <a name="set-up-azure-notebooks"></a>Azure Notebooks を設定する
 
@@ -64,7 +65,7 @@ Azure Notebooks を使用するには、アカウントを作成する必要が�
 
 1. **+** ボタンを選択して新しいプロジェクトを追加します。
 
-1. **[新しいプロジェクトの作成]** ダイアログ ボックスで**プロジェクト名**を入力します。 
+1. **[新しいプロジェクトの作成]** ダイアログ ボックスで **プロジェクト名** を入力します。 
 
 1. プロジェクトを公開する必要も、Readme を用意する必要もないため、 **[Public]\(パブリック\)** と **[README]** はオフのままにしてください。
 

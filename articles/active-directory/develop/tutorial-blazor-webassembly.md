@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: f967b10d729c9c5486bbca9b643f48aaf558687c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 5489feeeec64c7b3d4b5fc28eddfe8b780308796
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628069"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979880"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>チュートリアル:Blazor WebAssembly アプリでユーザーのサインインを行い、保護された API を呼び出す
 
-Blazor WebAssembly (WASM) は、.NET で対話型のクライアント側 Web アプリを構築するためのシングルページ アプリ フレームワークです。 このチュートリアルでは、Microsoft ID プラットフォームを使用し、Azure Active Directory (Azure AD) にアプリを登録することで、Blazor WASM アプリで認証を実装し、Microsoft Graph からデータを取得する方法について説明します。
+このチュートリアルでは、Microsoft ID プラットフォームを使用し、Azure Active Directory (Azure AD) にアプリを登録することで、ユーザーのサインインを行い、Microsoft Graph からデータを取得する Blazor WebAssembly アプリを構築します。
 
 [Blazor Server のチュートリアル](tutorial-blazor-server.md)も用意されています。 
 
-このチュートリアルでは、次のことについて説明します。
+このチュートリアルの内容:
 
 > [!div class="checklist"]
 >

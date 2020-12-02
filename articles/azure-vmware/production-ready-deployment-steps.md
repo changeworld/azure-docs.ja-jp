@@ -3,12 +3,12 @@ title: Azure VMware Solution のデプロイの計画
 description: この記事では、Azure VMware Solution のデプロイ ワークフローの概要について説明します。  最終的な結果として、仮想マシン (VM) の作成と移行に向けて環境の準備が整います。
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 08a15e6f8cad4068415cec3353544829f2218fb0
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 1ef83a568e41fe99f1e8e385a599de9c5ab7c0ca
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888982"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "95529734"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware Solution のデプロイの計画
 
@@ -48,7 +48,7 @@ Azure VMware Solution のデプロイ時に使用するサイズ ホストを特
 
 ## <a name="number-of-hosts"></a>ホストの数
 
-Azure VMware Solution プライベート クラウドにデプロイするホストの数を定義します。  最小ノード数は 3 で、最大はクラスターあたり 16 個です。  詳細については、[Azure VMware Solution プライベート クラウドとクラスター](concepts-private-clouds-clusters.md#clusters)に関するドキュメントを参照してください。
+Azure VMware Solution プライベート クラウドにデプロイするホストの数を定義します。  最小ホスト数は 3 で、最大はクラスターあたり 16 個です。  詳細については、[Azure VMware Solution プライベート クラウドとクラスター](concepts-private-clouds-clusters.md#clusters)に関するドキュメントを参照してください。
 
 当初のデプロイ数を超える数にする必要がある場合は、後でいつでもクラスターを拡張できます。
 

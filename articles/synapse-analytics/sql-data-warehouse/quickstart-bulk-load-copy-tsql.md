@@ -7,20 +7,20 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
-ms.date: 06/18/2020
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: f82bedc6ef638714b2641003e8274c2024a86c2e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 83b5804888379316b855c36f803f646cec102d9e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85213008"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024587"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>クイック スタート:COPY ステートメントを使用してデータを一括読み込みする
 
-このクイックスタートでは、シンプルで柔軟性の高い [COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)による高スループットのデータ インジェストを使用して、SQL プールにデータを一括読み込みします。 COPY ステートメントは、次の機能を備えることによってシームレスかつフレキシブルにデータを読み込めることから推奨されている読み込みユーティリティです。
+このクイックスタートでは、高スループットのデータ インジェストを実現する、シンプルで柔軟性のある [COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用して、専用 SQL プールにデータを一括読み込みします。 COPY ステートメントは、次の機能を備えることによってシームレスかつフレキシブルにデータを読み込めることから推奨されている読み込みユーティリティです。
 
 - さほど権限の高くないユーザーでもデータの読み込みを実行できます。データ ウェアハウスに対する厳格な CONTROL アクセス許可は不要です。
 - 単一の T-SQL ステートメントのみを活用でき、別途データベース オブジェクトを作成する必要はありません。
@@ -34,7 +34,7 @@ ms.locfileid: "85213008"
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイックスタートでは、SQL プールが既に用意されていることを前提とします。 SQL プールが未作成である場合は、[「作成と接続」の「ポータル」](create-data-warehouse-portal.md)のクイックスタートを参照してください。
+このクイックスタートは、専用 SQL プールが既に用意されていることを前提としています。 専用 SQL プールが作成されていない場合は、[ポータルを使用した作成と接続](create-data-warehouse-portal.md)に関するクイックスタートを参照してください。
 
 ## <a name="set-up-the-required-permissions"></a>必要なアクセス許可を設定する
 

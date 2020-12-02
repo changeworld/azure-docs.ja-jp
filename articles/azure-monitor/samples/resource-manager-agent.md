@@ -1,17 +1,17 @@
 ---
 title: エージェント用 Resource Manager テンプレートのサンプル
-description: Azure Monitor で Log Analytics エージェントと診断拡張機能をデプロイして構成するためのサンプルの Azure Resource Manager テンプレート。
+description: Azure Monitor の仮想マシン エージェントをデプロイして構成するためのサンプル Azure Resource Manager テンプレート。
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
-ms.date: 05/18/2020
-ms.openlocfilehash: 8b0673e534826acb5ff2d3747053f58fb39ff285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/17/2020
+ms.openlocfilehash: 00d6635b7bb322d28f0fe3df509ce0cb03e19f3d
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83853118"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95308666"
 ---
 # <a name="resource-manager-template-samples-for-agents-in-azure-monitor"></a>Azure Monitor のエージェント用の Resource Manager テンプレートのサンプル
 この記事には、Azure Monitor で仮想マシンに対して [Log Analytics エージェント](../platform/log-analytics-agent.md)と[診断拡張機能](../platform/diagnostics-extension-overview.md)をデプロイして構成するためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
@@ -19,10 +19,218 @@ ms.locfileid: "83853118"
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
 
-## <a name="windows-log-analytics-agent"></a>Windows Log Analytics エージェント
+## <a name="azure-monitor-agent-preview"></a>Azure Monitor エージェント (プレビュー)
+このセクションのサンプルは、Windows および Linux の Azure Monitor エージェント (プレビュー) です。 ここには、Azure の仮想マシンへのエージェントのインストールのほか、Azure Arc 対応サーバーへのエージェントのインストールも含まれています。 
+
+### <a name="windows-azure-virtual-machine"></a>Windows Azure 仮想マシン
+次のサンプルでは、Microsoft Azure 仮想マシンに Azure Monitor エージェントをインストールします。
+
+#### <a name="template-file"></a>テンプレート ファイル
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorWindowsAgent')]",
+          "type": "Microsoft.Compute/virtualMachines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2020-06-01",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorWindowsAgent",
+              "typeHandlerVersion": "1.0",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>パラメーター ファイル
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-windows-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+### <a name="linux-azure-virtual-machine"></a>Linux Azure 仮想マシン
+次のサンプルでは、Linux Azure 仮想マシンに Azure Monitor エージェントをインストールします。
+
+#### <a name="template-file"></a>テンプレート ファイル
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorLinuxAgent')]",
+          "type": "Microsoft.Compute/virtualMachines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2020-06-01",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorLinuxAgent",
+              "typeHandlerVersion": "1.5",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>パラメーター ファイル
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-linux-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+### <a name="windows-azure-arc-enabled-server"></a>Windows Azure Arc 対応サーバー
+次のサンプルでは、Windows Azure Arc 対応サーバーに Azure Monitor エージェントをインストールします。
+
+#### <a name="template-file"></a>テンプレート ファイル
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorWindowsAgent')]",
+          "type": "Microsoft.HybridCompute/machines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2019-08-02-preview",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorWindowsAgent",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>パラメーター ファイル
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-windows-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+### <a name="linux-azure-arc-enabled-server"></a>Linux Azure Arc 対応サーバー
+次のサンプルでは、Linux Azure Arc 対応サーバーに Azure Monitor エージェントをインストールします。
+
+#### <a name="template-file"></a>テンプレート ファイル
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorLinuxAgent')]",
+          "type": "Microsoft.HybridCompute/machines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2019-08-02-preview",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorLinuxAgent",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>パラメーター ファイル
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-linux-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+## <a name="log-analytics-agent"></a>Log Analytics エージェント
+このセクションのサンプルでは、Azure の Windows 仮想マシンおよび Linux 仮想マシンに Log Analytics エージェントをインストールして、Log Analytics ワークスペースにそれを接続します。
+
+###  <a name="windows"></a>Windows
 次のサンプルでは、Microsoft Azure 仮想マシンに Log Analytics エージェントをインストールします。 これは、[Windows 用の Azure Log Analytics 仮想マシン拡張機能](../../virtual-machines/extensions/oms-windows.md)を有効にすることで実現されます。
 
-### <a name="template-file"></a>テンプレート ファイル
+#### <a name="template-file"></a>テンプレート ファイル
 
 ```json
 {
@@ -90,7 +298,7 @@ ms.locfileid: "83853118"
 
 ```
 
-### <a name="parameter-file"></a>パラメーター ファイル
+#### <a name="parameter-file"></a>パラメーター ファイル
 
 ```json
 {
@@ -114,10 +322,10 @@ ms.locfileid: "83853118"
 ```
 
 
-## <a name="linux-log-analytics-agent"></a>Linux Log Analytics エージェント
+### <a name="linux"></a>Linux
 次のサンプルでは、Linux Azure 仮想マシンに Log Analytics エージェントをインストールします。 これは、[Windows 用の Azure Log Analytics 仮想マシン拡張機能](../../virtual-machines/extensions/oms-linux.md)を有効にすることで実現されます。
 
-### <a name="template-file"></a>テンプレート ファイル
+#### <a name="template-file"></a>テンプレート ファイル
 
 ```json
 {
@@ -184,7 +392,7 @@ ms.locfileid: "83853118"
 }
 ```
 
-### <a name="parameter-file"></a>パラメーター ファイル
+#### <a name="parameter-file"></a>パラメーター ファイル
 
 ```json
 {
@@ -209,10 +417,13 @@ ms.locfileid: "83853118"
 
 
 
-## <a name="windows-diagnostic-extension"></a>Windows 診断拡張機能
+## <a name="diagnostic-extension"></a>診断拡張機能
+このセクションのサンプルでは、Azure の Windows 仮想マシンおよび Linux 仮想マシンに診断拡張機能をインストールし、データ収集のための構成を行います。
+
+### <a name="windows"></a>Windows
 次のサンプルでは、Microsoft Azure 仮想マシンで診断拡張機能を有効にして構成します。 構成の詳細については、「[Windows Diagnostics 拡張機能のスキーマ](../platform/diagnostics-extension-schema-windows.md)」を参照してください。
 
-### <a name="template-file"></a>テンプレート ファイル
+#### <a name="template-file"></a>テンプレート ファイル
 
 ```json
 {
@@ -345,7 +556,7 @@ ms.locfileid: "83853118"
 }
 ```
 
-### <a name="parameter-file"></a>パラメーター ファイル
+#### <a name="parameter-file"></a>パラメーター ファイル
 
 ```json
 {
@@ -374,10 +585,10 @@ ms.locfileid: "83853118"
 }
 ```
 
-## <a name="linux-diagnostic-setting"></a>Linux 診断設定
+### <a name="linux"></a>Linux
 次のサンプルでは、Linux Azure 仮想マシンで診断拡張機能を有効にして構成します。 構成の詳細については、「[Windows Diagnostics 拡張機能のスキーマ](../../virtual-machines/extensions/diagnostics-linux.md)」を参照してください。
 
-### <a name="template-file"></a>テンプレート ファイル
+#### <a name="template-file"></a>テンプレート ファイル
 
 ```json
 {
@@ -565,7 +776,7 @@ ms.locfileid: "83853118"
 }
 ```
 
-### <a name="parameter-file"></a>パラメーター ファイル
+#### <a name="parameter-file"></a>パラメーター ファイル
 
 ```json
 {

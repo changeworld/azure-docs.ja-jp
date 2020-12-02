@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 613cf7d9b68fe42c26f2c01cb1fb5dd1da1e1fb5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f67df45b6b663584e848983251031146cdf8df60
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90945447"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95247695"
 ---
 # <a name="overview-of-azure-stream-analytics-cluster-preview"></a>Azure Stream Analytics クラスターの概要 (プレビュー)
 
@@ -69,7 +69,7 @@ Stream Analytics クラスターは、選択した SU 容量に基づいて課�
 
 ### <a name="which-inputs-and-outputs-can-i-privately-connect-to-from-my-stream-analytics-cluster"></a>Stream Analytics クラスターから、どの入力と出力をプライベートに接続できますか?
 
-Stream Analytics では、さまざまな種類の入力と出力がサポートされます。 Azure Private Link をサポートするこれらのサービスはいずれも、ジョブにプライベートで接続できます。 クラスター内に、ジョブが入力および出力リソースにアクセスできるようにする[プライベート エンドポイントを作成](private-endpoints.md)できます。
+Stream Analytics では、さまざまな種類の入力と出力がサポートされます。 クラスター内に、ジョブが入力および出力リソースにアクセスできるようにする[プライベート エンドポイントを作成](private-endpoints.md)できます。 現時点では、サポートされているサービスは、Azure SQL Database、Azure Storage、Azure Data Lake Storage Gen2、Azure Event Hubs、Azure Service Bus ですが、他の種類も間もなく追加される予定です。 
 
 ## <a name="next-steps"></a>次のステップ
 

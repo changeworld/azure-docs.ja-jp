@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: aaf803d463e03f2de7814fed4b20a0b4312fa1ef
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7f1acc44a80d5ef70145997698a928e6f9ce0d48
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148837"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888880"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT Hub とは
 
@@ -120,11 +120,17 @@ IoT Hub と device SDK は、次のプロトコルを使ったデバイスの接
 
 * [IoT Hub のスロットリング](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
+## <a name="iot-hub-on-azure-stack-hub-preview"></a>Azure Stack Hub 上の IoT Hub (プレビュー)
+
+Azure Stack Hub (プレビュー) 上の IoT Hub を使用すると、ハイブリッド IoT ソリューションを作成できます。 IoT Hub は、IoT アプリケーションとそれが管理するデバイスの間の双方向通信に対する中央メッセージ ハブとして機能する管理サービスです。 Azure Stack Hub 上の IoT Hub を使って IoT ソリューションを構築し、IoT デバイスと対象のオンプレミス ソリューションとの間に、信頼性が高く、セキュリティで保護された通信を提供できます。
+
+Azure Stack Hub 上の IoT Hub は、パブリック プレビューの間は無料で利用できます。 詳細については、「[Azure Stack Hub 上の IoT Hub の概要](/azure-stack/operator/iot-hub-rp-overview)」を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
 エンド ツー エンドの IoT ソリューションを試すには、IoT Hub のクイック スタートをご覧ください。
 
-* [クイック スタート: デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-node.md)
+* [Quickstart: デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-node.md)
 
 Azure IoT を使用して IoT ソリューションを構築してデプロイする方法の詳細については、以下のページを参照してください。
 

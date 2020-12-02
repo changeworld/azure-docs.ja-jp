@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: reference
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 0c89dc28a330e319e18a6289e5f6759c56e46ae8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 139673e46421aa0dc19298697872fbff5fe587af
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791275"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501211"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Azure SQL データベースでの拡張イベント 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -81,7 +81,7 @@ Azure SQL Database での拡張イベントの機能セットは SQL Server お�
 | **sys.database_event_session_targets** |イベント セッションのイベント ターゲットごとに 1 行のデータを返します。 |
 | **sys.database_event_sessions** |データベース内のイベント セッションごとに行を返します。 |
 
-Microsoft SQL Server では、同様のカタログ ビュー名には *.database\_* ではなく、 *.server\_* が含まれています。 名前のパターンは、 **sys.server_event_%** のようになっています。
+Microsoft SQL Server では、同様のカタログ ビュー名には *.database\_* ではなく、 *.server\_* が含まれています。 名前のパターンは、**sys.server_event_%** のようになっています。
 
 ## <a name="new-dynamic-management-views-dmvs"></a>新しい動的管理ビュー [(DMV)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)
 
@@ -151,7 +151,7 @@ Azure SQL Database のイベント セッションから結果を取得できる
 Azure SQL Database のクラウド環境にふさわしいセキュリティ関連の相違点を次にいくつか挙げます。
 
 - 拡張イベントは単一テナントの分離モデルが元になっています。 あるデータベースのイベント セッションが他のデータベースからのデータやイベントにアクセスすることはできません。
-- **マスター** データベースのコンテキストで、 **CREATE EVENT SESSION** ステートメントを実行することはできません。
+- **マスター** データベースのコンテキストで、**CREATE EVENT SESSION** ステートメントを実行することはできません。
 
 ## <a name="permission-model"></a>権限モデル
 
@@ -172,7 +172,7 @@ Azure Storage コンテナーのために生成した SAS トークンには、�
 メモリの最大量が使用されたというエラー メッセージを受信した場合、次の修正措置を実行することができます。
 
 - 同時実行するイベント セッションを減少させる。
-- イベント セッションの **CREATE** と **ALTER** ステートメントにより、 **MAX\_MEMORY** 句で指定するメモリ量を減少させる。
+- イベント セッションの **CREATE** と **ALTER** ステートメントにより、**MAX\_MEMORY** 句で指定するメモリ量を減少させる。
 
 ### <a name="network-latency"></a>ネットワーク待ち時間
 
@@ -189,7 +189,7 @@ Azure Storage BLOB にデータを保持する際に、 **イベント ファイ
 - [CREATE CREDENTIAL (Transact-SQL)](/sql/t-sql/statements/create-credential-transact-sql)
 - [CREATE EVENT SESSION (Transact-SQL)](/sql/t-sql/statements/create-event-session-transact-sql)
 - [Jonathan Kehayias の Microsoft SQL Server の拡張イベントに関するブログ投稿](https://www.sqlskills.com/blogs/jonathan/category/extended-events/)
-- パラメーターを Azure SQL Database に絞り込んだ、Azure " *サービスの更新情報* " の Web ページ。
+- パラメーターを Azure SQL Database に絞り込んだ、Azure "*サービスの更新情報*" の Web ページ。
   - [https://azure.microsoft.com/updates/?service=sql-database](https://azure.microsoft.com/updates/?service=sql-database)
 
 <!--
