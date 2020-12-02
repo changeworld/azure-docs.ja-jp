@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: f22a8f085938f5a3cc3e7a748391a9048129296c
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: b03db9632f5f47a7600c5b9037d16b1cff6ccf69
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888370"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344251"
 ---
 # <a name="buy-a-reservation"></a>予約の購入
 
@@ -81,7 +81,7 @@ Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約イン�
 - [Azure Database for MySQL](../../mysql/concept-reserved-pricing.md)
 - [Azure Database for MariaDB](../../mariadb/concept-reserved-pricing.md)
 - [Azure Synapse Analytics](prepay-sql-data-warehouse-charges.md)
-- [仮想マシン](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [仮想マシン](../../virtual-machines/prepay-reserved-vm-instances.md)
 
 ## <a name="buy-reservations-with-monthly-payments"></a>月払いで予約を購入する
 

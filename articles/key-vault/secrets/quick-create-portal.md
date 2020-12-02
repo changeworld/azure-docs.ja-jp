@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 212e5fb62043c2ffe2b8876249a6aad1d224411d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3d7e6357fd8f1091509cbf27875c028d3af310cb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685853"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445913"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -45,13 +45,13 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 1. **[Generate/Import]\(生成/インポート\)** をクリックします。
 1. **[シークレットの作成]** 画面で、次の値を選択します。
     - **[アップロード オプション]** :手動。
-    - **[名前]** : シークレットの名前を入力します。 シークレットの名前は、キー コンテナー内で一意である必要があります。 名前は、文字で始まり、0 から 9、a から z、A から Z、および - のみを使った 1 から 127 文字の文字列である必要があります。 名前付けの詳細については、[Key Vault のオブジェクト、識別子、バージョン管理](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning)に関するセクションを参照してください。
+    - **[名前]** : シークレットの名前を入力します。 シークレットの名前は、キー コンテナー内で一意である必要があります。 名前は、文字で始まり、0 から 9、a から z、A から Z、および - のみを使った 1 から 127 文字の文字列である必要があります。 名前付けの詳細については、[Key Vault のオブジェクト、識別子、バージョン管理](../general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning)に関するセクションを参照してください。
     - **値**: シークレットの値を入力します。 Key Vault API はシークレット値を文字列として受け取って返します。 
     - 他の値は既定値のままにしておきます。 **Create** をクリックしてください。
 
 シークレットが正常に作成されたことを示すメッセージが表示されたら、一覧でそのシークレットをクリックできます。 
 
-シークレットの属性の詳細については、「[Azure Key Vault のシークレットについて](https://docs.microsoft.com/azure/key-vault/secrets/about-secrets)」を参照してください。
+シークレットの属性の詳細については、「[Azure Key Vault のシークレットについて](./about-secrets.md)」を参照してください。
 
 ## <a name="retrieve-a-secret-from-key-vault"></a>Key Vault からシークレットを取得する
 
@@ -75,7 +75,7 @@ Key Vault に関する他のクイック スタートとチュートリアルは
 3. **[リソース グループ名を入力してください:]** ボックスにリソース グループの名前を入力し、 **[削除]** を選択します。
 
 > [!NOTE]
-> シークレット、キー、証明書、またはキー コンテナーが削除されると、7 日から 90 日の構成可能な期間にわたって回復可能な状態が維持されることに留意してください。 構成が指定されていない場合、既定の回復期間は 90 日に設定されます。 これにより、ユーザーはシークレットの誤削除に気づき、対応するために十分な時間を確保することができます。 キー コンテナーとキー コンテナー オブジェクトの削除と復旧について詳しくは、「[Azure Key Vault の論理的な削除の概要](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)」を参照してください。
+> シークレット、キー、証明書、またはキー コンテナーが削除されると、7 日から 90 日の構成可能な期間にわたって回復可能な状態が維持されることに留意してください。 構成が指定されていない場合、既定の回復期間は 90 日に設定されます。 これにより、ユーザーはシークレットの誤削除に気づき、対応するために十分な時間を確保することができます。 キー コンテナーとキー コンテナー オブジェクトの削除と復旧について詳しくは、「[Azure Key Vault の論理的な削除の概要](../general/soft-delete-overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

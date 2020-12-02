@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: 7433c51b45b0d8459ad1959b29f61660537b8851
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 9d402599c4d6732ce92b8c64af6f660bcedbc4ba
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337459"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455063"
 ---
 # <a name="quickstart-create-your-first-logic-apps-workflow---azure-portal"></a>クイックスタート: 初めての Logic Apps ワークフローを作成する - Azure portal
 
@@ -42,7 +42,7 @@ ms.locfileid: "94337459"
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 
-1. Azure portal の検索ボックスに「`logic apps`」と入力し、 **[Logic Apps]** を選択します。
+1. Azure portal の検索ボックスに「`logic apps`」と入力し、**[Logic Apps]** を選択します。
 
    ![Azure portal のスクリーンショット。検索語句として "logic apps"、選択した検索結果として "Logic Apps" が表示された検索ボックスが示されています。](./media/quickstart-create-first-logic-app-workflow/find-select-logic-apps.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "94337459"
 
 1. **[Logic App]** ペインで、ご自分のロジック アプリの基本的な詳細と設定を入力します。 このサンプル ロジック アプリ用に、新しい[リソース グループ](../azure-resource-manager/management/overview.md#terminology)を作成します。
     
-   | プロパティ | [値] | 説明 |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **名前** | <*ロジック アプリ名*> | ロジック アプリの名前。リージョン全体で一意である必要があります。 名前に含めることができるのは、文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、ピリオド (`.`) のみです。 この例では、"My-First-Logic-App" を使用します。 |
    | **サブスクリプション** | <*Azure サブスクリプション名*> | お使いの Azure サブスクリプションの名前。 |
@@ -63,9 +63,9 @@ ms.locfileid: "94337459"
 
    ![Logic Apps 作成ページのスクリーンショット。新しいロジック アプリの詳細が表示されたペインが示されています。](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
-1. 準備ができたら、 **[確認および作成]** を選択します。 入力した詳細を確認し、 **[作成]** を選択します。
+1. 準備ができたら、**[確認および作成]** を選択します。 入力した詳細を確認し、**[作成]** を選択します。
 
-1. Azure によってアプリが正常にデプロイされたら、 **[リソースに移動]** を選択します。 または、検索ボックスに名前を入力して、目的のロジック アプリを見つけて選択することもできます。
+1. Azure によってアプリが正常にデプロイされたら、**[リソースに移動]** を選択します。 または、検索ボックスに名前を入力して、目的のロジック アプリを見つけて選択することもできます。
 
    ![リソースのデプロイ ページのスクリーンショット。選択された [リソースに移動] ボタンが示されています。](./media/quickstart-create-first-logic-app-workflow/go-to-new-logic-app-resource.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "94337459"
 
 このクイックスタートの例では、[ロジック アプリを作成](#create-your-logic-app)した後、RSS フィード内の新しい項目をチェックし、新しい項目があるときに起動するトリガーを追加します。 また、[承認ベースの自動化されたワークフローを作成する](tutorial-process-mailing-list-subscriptions-workflow.md)方法のチュートリアルのように、さまざまな種類のトリガーを使用してロジック アプリを作成することもできます。
 
-1. **ロジック アプリ デザイナー** の検索ボックスの下で、 **[すべて]** を選択します。
+1. **ロジック アプリ デザイナー** の検索ボックスの下で、**[すべて]** を選択します。
 
 1. RSS コネクタを見つけるために、検索ボックスに「`rss`」と入力します。 **[トリガー]** の一覧から、RSS トリガー **[フィード項目が発行される場合]** を選択します。
 
@@ -91,7 +91,7 @@ ms.locfileid: "94337459"
 
 1. トリガーの RSS フィード URL を指定します。 次に、間隔と頻度を設定して、トリガーのスケジュールを定義します。
 
-   | プロパティ | [値] | 説明 |
+   | プロパティ | 値 | 説明 |
    | -------- | ----- | ----------- |
    | **RSS フィードの URL** | <*RSS-feed-URL*> | 監視したい RSS フィードの URL。 この例では、`https://feeds.a.dj.com/rss/RSSMarketsMain.xml` のウォール ストリート ジャーナルの RSS フィードを使用しています。 ただし、この例の目的のためには、HTTP 認証を必要としない任意の RSS フィードを使用することができます。 頻繁に発行される RSS フィードを選択すると、後でロジック アプリをテストするのが簡単になります。 |
    | **間隔** | 1 | RSS フィード チェックの間隔 (単位数)。 この例では、1 分間隔を使用しています。 |
@@ -112,7 +112,7 @@ ms.locfileid: "94337459"
 
 ## <a name="add-the-send-email-action"></a>"電子メールの送信" アクションを追加する
 
-[ロジック アプリのトリガーを追加](#add-rss-trigger)した後は、[アクション](../logic-apps/logic-apps-overview.md#logic-app-concepts)を追加して、ロジック アプリで RSS フィードをチェックしたときに新しい項目が検出された場合の反応を指定する必要があります。 また、[Logic Apps、Azure Functions、および Azure Storage を使用して電子メールを処理する](/azure/logic-apps/tutorial-process-email-attachments-workflow)方法のチュートリアルのように、はるかに複雑なアクションを含むロジック アプリを作成することもできます。
+[ロジック アプリのトリガーを追加](#add-rss-trigger)した後は、[アクション](../logic-apps/logic-apps-overview.md#logic-app-concepts)を追加して、ロジック アプリで RSS フィードをチェックしたときに新しい項目が検出された場合の反応を指定する必要があります。 また、[Logic Apps、Azure Functions、および Azure Storage を使用して電子メールを処理する](./tutorial-process-email-attachments-workflow.md)方法のチュートリアルのように、はるかに複雑なアクションを含むロジック アプリを作成することもできます。
 
 > [!NOTE]
 > この例では、Office 365 Outlook を電子メール サービスとして使います。 別のサポートされている電子メール サービスを自分のロジック アプリで使用している場合、ユーザー インターフェイスの外観が異なる場合があります。 ただし、別の電子メール サービスに接続するための基本的な概念は同じです。
@@ -125,7 +125,7 @@ ms.locfileid: "94337459"
 
 1. 検索ボックスに「`send an email`」と入力すると、このアクションを提供するコネクタが見つかります。 アクションの一覧にフィルターをかけて特定のアプリまたはサービスに絞り込むには、最初にそのアプリまたはサービスを選択できます。
 
-   たとえば、Microsoft の職場または学校アカウントを使用していて、Office 365 Outlook を使用する場合は、 **[Office 365 Outlook]** を選択します。 また、個人用の Microsoft アカウントを使用している場合は、Outlook.com を選択することもできます。 この例では、Office 365 Outlook が引き続き使用されます。
+   たとえば、Microsoft の職場または学校アカウントを使用していて、Office 365 Outlook を使用する場合は、**[Office 365 Outlook]** を選択します。 また、個人用の Microsoft アカウントを使用している場合は、Outlook.com を選択することもできます。 この例では、Office 365 Outlook が引き続き使用されます。
 
    ![Logic Apps デザイナーのスクリーンショット。アクション ステップと選択された電子メール コネクタ "Office 365 Outlook" が示されています。](./media/quickstart-create-first-logic-app-workflow/select-connector.png)
 
@@ -167,7 +167,7 @@ ms.locfileid: "94337459"
 
       ![Logic Apps デザイナーのスクリーンショット。[電子メールの送信] アクションと、[フィード タイトル] プロパティが含まれるサンプルのメールの件名が示されています。](./media/quickstart-create-first-logic-app-workflow/send-email-feed-title.png)
 
-      デザイナーに "For each" ループが表示される場合、 **[categories-item]\(カテゴリ-項目\)** トークンなど、配列のトークンを選択したことが原因です。 この種のトークンを参照するアクションの前後には、デザイナーによってこのループが自動的に追加されます。 そうすることで個々の配列項目に同じアクションが実行されます。 ループを削除するには、ループのタイトル バーの **省略記号** ( **...** ) を選択し、 **[削除]** を選択します。
+      デザイナーに "For each" ループが表示される場合、 **[categories-item]\(カテゴリ-項目\)** トークンなど、配列のトークンを選択したことが原因です。 この種のトークンを参照するアクションの前後には、デザイナーによってこのループが自動的に追加されます。 そうすることで個々の配列項目に同じアクションが実行されます。 ループを削除するには、ループのタイトル バーの **省略記号** (**...**) を選択し、**[削除]** を選択します。
 
    1. **[本文]** ボックスに、電子メールの本文の内容を入力します。 この例では、`Title:` ( **[フィード タイトル]** プロパティ)、`Date published:` ( **[フィードの公開日付]** プロパティ)、`Link:` ( **[プライマリ フィード リンク]** プロパティ) のように、それぞれに説明テキストが含まれる 3 つのプロパティがコンテンツに含まれています。 編集ボックスで空白行を追加するには、Shift + Enter キーを押します。
 
@@ -210,7 +210,7 @@ RSS フィードに新しい項目がある場合、ロジック アプリは新
 > [!NOTE]
 > [ロジック アプリを削除](manage-logic-apps-with-azure-portal.md#delete-logic-apps)すると、新しい実行はインスタンス化されません。 すべての進行中および保留中の実行は取り消されます。 何千もの実行がある場合、取り消しが完了するまでかなりの時間がかかる場合があります。
 
-1. Azure の検索ボックスに「`resource groups`」と入力し、 **[リソース グループ]** を選択します。
+1. Azure の検索ボックスに「`resource groups`」と入力し、**[リソース グループ]** を選択します。
 
    ![検索語句 "resource groups" が入力されている Azure portal の検索ボックスを示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/find-resource-groups.png)
 

@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: overview
 ms.date: 11/18/2020
 ms.author: banders
-ms.openlocfilehash: eef19a6c421a64c3951d35eea78ea84f7e7d97b2
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 0ef3f833d1bac4f26f49ace2b366cdfcf5ef3e35
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887214"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352985"
 ---
 # <a name="what-are-azure-reservations"></a>Azure の予約とは
 
@@ -125,7 +125,7 @@ Windows 仮想マシンと SQL Database については、ソフトウェアの�
     - [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](/partner-center/azure-reservations)
 
 - サービス プランの予約の詳細については、次の記事を参照してください。
-    - [Azure Reserved VM Instances による仮想マシン](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+    - [Azure Reserved VM Instances による仮想マシン](../../virtual-machines/prepay-reserved-vm-instances.md)
     - [Azure Cosmos DB の容量が予約された Azure Cosmos DB リソース](../../cosmos-db/cosmos-db-reserved-capacity.md)
     - [Azure SQL Database の予約容量を使用した SQL Database 計算リソース](../../azure-sql/database/reserved-capacity-overview.md)
     - [ の予約容量を使用した Azure Cache for Redis リソース](../../azure-cache-for-redis/cache-reserved-pricing.md) ソフトウェア プランの予約の詳細については、次の記事を参照してください。

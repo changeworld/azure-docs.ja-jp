@@ -7,16 +7,16 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 02/05/2020
 ms.author: dobett
-ms.openlocfilehash: 1afb24a0e3e78acb1d44185843538bd55c491edf
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7ff8193e87d138878d95e783d144d445436e7a08
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976778"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453004"
 ---
 # <a name="what-is-the-right-iot-solution-for-your-business"></a>ビジネスに適した IoT ソリューションとはどのようなものでしょうか。
 
-ビジネス向けの IoT ソリューションを構築するには、通常、*プラットフォーム サービス*または*マネージド アプリ プラットフォーム*のいずれかの方法を使用することを選択します。
+ビジネス向けの IoT ソリューションを構築するには、通常、*プラットフォーム サービス* または *マネージド アプリ プラットフォーム* のいずれかの方法を使用することを選択します。
 
 プラットフォーム サービスは、カスタマイズされた柔軟な IoT アプリケーションの構成要素を提供します。 デバイスを接続し、データの取り込み、格納、および分析を行うときに、より多くのオプションを選択してコーディングすることができます。 Azure IoT プラットフォーム サービスには、Azure IoT Hubと Azure Digital Twins 製品が含まれます。
 
@@ -75,4 +75,4 @@ ms.locfileid: "91976778"
 
 成功する IoT ソリューションの主な属性の詳細については、「[成功する IoT ソリューションのための 8 つの属性](https://aka.ms/8attributes)」ホワイト ペーパーを参照してください。
 
-IoT アーキテクチャの詳細については、「[Microsoft Azure IoT Reference Architecture (Microsoft Azure IoT リファレンス アーキテクチャ)](https://aka.ms/iotrefarchitecture)」を参照してください。
+IoT アーキテクチャの詳細については、「[Microsoft Azure IoT Reference Architecture (Microsoft Azure IoT リファレンス アーキテクチャ)](/azure/architecture/reference-architectures/iot)」を参照してください。

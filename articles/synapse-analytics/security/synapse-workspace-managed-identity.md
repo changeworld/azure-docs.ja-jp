@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4100640fd619d9d971ac1c7083eedef8e2125fc3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 5506a54193efc813927663533ddfd89be3ddf40a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738296"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461306"
 ---
-# <a name="azure-synapse-workspace-managed-identity-preview"></a>Azure Synapse ワークスペース マネージド ID (プレビュー)
+# <a name="azure-synapse-workspace-managed-identity"></a>Azure Synapse ワークスペース マネージド ID
 
 この記事では、Azure Synapse ワークスペースのマネージド ID について学習します。
 
@@ -48,7 +48,7 @@ Azure portal でマネージド ID を取得できます。 Azure portal で Azu
 
 ![リンクされたサービスの作成 1](./media/synapse-workspace-managed-identity/workspace-managed-identity-2.png)
 
-**[新しいリンクされたサービス]** ウィンドウで、「 *Azure Data Lake Storage Gen2* 」と入力します。 リストから **[Azure Data Lake Storage Gen2]** のリソースの種類を選択し、 **[続行]** をクリックします。
+**[新しいリンクされたサービス]** ウィンドウで、「*Azure Data Lake Storage Gen2*」と入力します。 リストから **[Azure Data Lake Storage Gen2]** のリソースの種類を選択し、 **[続行]** をクリックします。
 
 ![リンクされたサービスの作成 2](./media/synapse-workspace-managed-identity/workspace-managed-identity-3.png)
 

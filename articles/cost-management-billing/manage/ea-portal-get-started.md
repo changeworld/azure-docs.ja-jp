@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 15e45143d1da5ac405b3e408df197ab04b4dea39
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 0f4f4d934361f1e59eceaaccca680f0cf155bb04
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412274"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348961"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Azure エンタープライズ ポータルを使い始める
 
@@ -44,33 +44,33 @@ Azure エンタープライズ ポータルの完全なオンボード セッシ
 - 部門管理者 (読み取り専用)
 - アカウント所有者
 
-各ロールには、さまざまなレベルのユーザー制限とアクセス許可があります。 詳細については、「[組織の構造とロール別のアクセス許可](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-ea-roles#organization-structure-and-permissions-by-role)」を参照してください。
+各ロールには、さまざまなレベルのユーザー制限とアクセス許可があります。 詳細については、「[組織の構造とロール別のアクセス許可](./understand-ea-roles.md#organization-structure-and-permissions-by-role)」を参照してください。
 
 ## <a name="activate-your-enrollment-create-a-subscription-and-other-administrative-tasks"></a>登録のアクティブ化、サブスクリプションの作成、その他の管理タスク
 
-登録のアクティブ化、部署またはサブスクリプションの作成、管理者とアカウント所有者の追加、およびその他の管理タスクの詳細については、「[Azure EA Portal の管理](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-administration)」を参照してください。
+登録のアクティブ化、部署またはサブスクリプションの作成、管理者とアカウント所有者の追加、およびその他の管理タスクの詳細については、「[Azure EA Portal の管理](./ea-portal-administration.md)」を参照してください。
 
-エンタープライズ サブスクリプションを従量課金制サブスクリプションに変更する方法の詳細については、「[Azure エンタープライズ転送](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-transfers)」を参照してください。
+エンタープライズ サブスクリプションを従量課金制サブスクリプションに変更する方法の詳細については、「[Azure エンタープライズ転送](./ea-transfers.md)」を参照してください。
 
 ## <a name="view-usage-summary-and-download-reports"></a>使用状況の概要を表示してレポートをダウンロードする
 
 Azure EA 請求書の管理と操作を行うことができます。 請求書は料金明細を表示したものであるため、正確に記載されていることを確認する必要があります。
 
-使用状況の概要の表示、レポートのダウンロード、登録請求書の管理を行うには、「[Azure エンタープライズ加入契約の請求書](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-enrollment-invoices)」を参照してください。
+使用状況の概要の表示、レポートのダウンロード、登録請求書の管理を行うには、「[Azure エンタープライズ加入契約の請求書](./ea-portal-enrollment-invoices.md)」を参照してください。
 
 ## <a name="now-that-youre-familiar-with-the-basics-here-are-some-additional-links-to-help-you-get-onboarded"></a>基本的なことがわかったので、オンボードに役立つその他のリンクを示します
 
-「[Azure EA の価格](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-pricing-overview)」では、使用量の計算方法と、計算が複雑になるマイクロソフト エンタープライズ契約のさまざまな Azure サービスに対する料金の詳細について説明されています。
+「[Azure EA の価格](./ea-pricing-overview.md)」では、使用量の計算方法と、計算が複雑になるマイクロソフト エンタープライズ契約のさまざまな Azure サービスに対する料金の詳細について説明されています。
 
-VM 予約インスタンスに対する Azure 予約が、エンタープライズ登録にかかる金額の節約にどのように役立つかについて知りたい場合は、「[Azure EA VM 予約インスタンス](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-vm-reservations)」を参照してください。
+VM 予約インスタンスに対する Azure 予約が、エンタープライズ登録にかかる金額の節約にどのように役立つかについて知りたい場合は、「[Azure EA VM 予約インスタンス](./ea-portal-vm-reservations.md)」を参照してください。
 
-Azure エンタープライズ登録で使用する REST API についての情報と、REST API の一般的な問題を解決する方法については、「[Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis)」を参照してください。
+Azure エンタープライズ登録で使用する REST API についての情報と、REST API の一般的な問題を解決する方法については、「[Azure Enterprise REST API](./ea-portal-rest-apis.md)」を参照してください。
 
-「[Azure EA 契約と修正](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements)」では、Azure EA 契約と修正が、Azure サービスへのアクセス、使用、および支払いの方法にどのように影響するかについて説明されています。
+「[Azure EA 契約と修正](./ea-portal-agreements.md)」では、Azure EA 契約と修正が、Azure サービスへのアクセス、使用、および支払いの方法にどのように影響するかについて説明されています。
 
-「[Azure Marketplace](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-azure-marketplace)」では、EA のお客様とパートナーがマーケットプレースの料金を確認し、Azure Marketplace で購入したものを有効にする方法について説明されています。
+「[Azure Marketplace](./ea-azure-marketplace.md)」では、EA のお客様とパートナーがマーケットプレースの料金を確認し、Azure Marketplace で購入したものを有効にする方法について説明されています。
 
-パートナーの EA 管理者が Azure EA Portal で行う一般的なタスクの説明については、「[パートナー向けの Azure EA ポータル管理](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-partner-portal-administration)」を参照してください。
+パートナーの EA 管理者が Azure EA Portal で行う一般的なタスクの説明については、「[パートナー向けの Azure EA ポータル管理](./ea-partner-portal-administration.md)」を参照してください。
 
 ## <a name="get-started-on-azure-ea---faq"></a>Azure EA の使用開始の際によく寄せられる質問
 
@@ -132,7 +132,7 @@ Azure EA 加入契約において、必要な数の部署を作成できます�
 
 部署とサブスクリプションを作成した後、使用状況レポートにデータを表示できます。 この情報は、部署レベルで使用状況を追跡し、コストを管理し、支出を管理するのに役立ちます。
 
-Reporting API を使用して、使用状況データにアクセスすることもできます。 詳細な情報とサンプル コードについては、[Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis) に関するページを参照してください。
+Reporting API を使用して、使用状況データにアクセスすることもできます。 詳細な情報とサンプル コードについては、[Azure Enterprise REST API](./ea-portal-rest-apis.md) に関するページを参照してください。
 
 ### <a name="can-i-set-a-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>利用量クォータを設定して、制限に近づいたらアラートを受け取ることはできますか?
 
@@ -144,7 +144,7 @@ Reporting API を使用して、使用状況データにアクセスすること
 
 "_リソース グループ_" と "_タグ_" を使用している場合、この情報はサービス レベルで追跡され、詳細な使用状況のダウンロード (CSV) ファイルでアクセスできます。 Azure エンタープライズ ポータルの[使用状況レポートのダウンロード](https://ea.azure.com/report/downloadusage)を参照してください。
 
-API で使用状況にアクセスすることもできます。 詳細な情報とサンプル コードについては、[Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis) に関するページを参照してください。
+API で使用状況にアクセスすることもできます。 詳細な情報とサンプル コードについては、[Azure Enterprise REST API](./ea-portal-rest-apis.md) に関するページを参照してください。
 
 > [!NOTE]
 > タグを適用できるのは、Azure Resource Manager の操作をサポートするリソースのみです。 仮想マシン、仮想ネットワーク、またはストレージをクラシック デプロイ モデル (クラシック ポータルなど) を使用して作成した場合、そのリソースにタグを適用することはできません。 タグ付けをサポートするには、Resource Manager を介してこれらのリソースを再デプロイする必要があります。 その他のすべてのリソースでは、タグ付けがサポートされています。

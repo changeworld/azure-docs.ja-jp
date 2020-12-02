@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: e84afc949a84da90a4799d7db3b3e7ad3e0057a3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3fc7a7f137701590e4bddd791a3fdd2d1eaeca4a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323516"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461605"
 ---
 # <a name="quickstart-create-a-new-serverless-apache-spark-pool-using-the-azure-portal"></a>クイックスタート: Azure portal を使用して新しいサーバーレス Apache Spark プールを作成する
 
@@ -23,7 +23,7 @@ Azure Synapse Analytics には、データの取り込み、変換、モデル�
 このクイックスタートでは、Azure portal を使用して Synapse ワークスペースに Apache Spark プールを作成する方法を学習します。
 
 > [!IMPORTANT]
-> Spark インスタンスの料金は、それを使用しているかどうかに関係なく、分単位で課金されます。 必ず、Spark インスタンスの使用を終了した後にシャットダウンするか、短いタイムアウトを設定してください。 詳しくは、この記事の「 **リソースのクリーンアップ** 」をご覧ください。
+> Spark インスタンスの料金は、それを使用しているかどうかに関係なく、分単位で課金されます。 必ず、Spark インスタンスの使用を終了した後にシャットダウンするか、短いタイムアウトを設定してください。 詳しくは、この記事の「**リソースのクリーンアップ**」をご覧ください。
 
 Azure サブスクリプションをお持ちでない場合は、[開始する前に無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 ## <a name="navigate-to-the-synapse-workspace"></a>Synapse ワークスペースに移動する 
 1. Synapse ワークスペースに移動します。ここでは、検索バーにサービス名 (またはリソース名を直接) 入力して、Apache Spark プールを作成します。
 ![「Synapse ワークスペース」と入力されている Azure portal の検索バー。](media/quickstart-create-sql-pool/create-sql-pool-00a.png)
-1. ワークスペースの一覧で、開くワークスペースの名前 (または名前の一部) を入力します。 この例では、 **contosoanalytics** という名前のワークスペースを使用します。
+1. ワークスペースの一覧で、開くワークスペースの名前 (または名前の一部) を入力します。 この例では、**contosoanalytics** という名前のワークスペースを使用します。
 ![名前に Contoso を含むワークスペースを表示するためにフィルター処理された Synapse ワークスペースの一覧。](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
 
 
@@ -89,7 +89,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 Apache Spark プールを削除する場合は、次の手順を実行します。
 
 1. ワークスペースの [Apache Spark プール] ブレードに移動します。
-2. 削除する Apache Spark プール (この場合は **contosospark** ) を選択します。
+2. 削除する Apache Spark プール (この場合は **contosospark**) を選択します。
 3. **[削除]** を押します。
  ![Apache Spark プールの一覧。最近作成されたプールが選択されています。](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-08.png)
 4. 削除を確認し、 **[削除]** を押します。
@@ -99,4 +99,4 @@ Apache Spark プールを削除する場合は、次の手順を実行します�
 ## <a name="next-steps"></a>次のステップ
 
 - 「[クイック スタート:Apache Spark ノートブックの作成](quickstart-apache-spark-notebook.md)に関するページを参照してください。
-- 「[クイック スタート:Azure portal を使用して Synapse 専用 SQL プールを作成する](quickstart-create-sql-pool-portal.md)」を参照してください。
+- 「[クイック スタート:Azure portal を使用して専用 SQL プールを作成する](quickstart-create-sql-pool-portal.md)」を参照してください。

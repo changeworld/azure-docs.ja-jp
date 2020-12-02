@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 16e325f029fc4c317a61db62df97ded5c213e0e5
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 7c8a35e7c8ecd0952f8e02b66c5071253d9b0445
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132535"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348927"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 予約インスタンス
 
@@ -63,9 +63,9 @@ Azure API を使用して、Azure サービスまたはソフトウェアの予�
 
 ### <a name="how-to-buy-reserved-virtual-machine-instances"></a>予約仮想マシン インスタンスを購入する方法
 
-Azure 予約仮想マシンインスタンスを購入するには、エンタープライズ Azure 加入契約管理者が _[予約インスタンス]_ 購入オプションを有効にする必要があります。 このオプションは、 [Azure EA Portal](https://ea.azure.com/) の _[加入契約]_ タブの _[加入契約の詳細]_ セクションにあります。
+Azure 予約仮想マシンインスタンスを購入するには、エンタープライズ Azure 加入契約管理者が _[予約インスタンス]_ 購入オプションを有効にする必要があります。 このオプションは、[Azure EA Portal](https://ea.azure.com/) の _[加入契約]_ タブの _[加入契約の詳細]_ セクションにあります。
 
-EA 加入契約を有効にして、予約インスタンスを追加すると、EA 加入契約に関連付けられたアクティブなサブスクリプションを持つすべてのアカウント所有者は、[Azure portal](https://aka.ms/reservations) で予約仮想マシン インスタンスを購入できます。 詳細については、[予約仮想マシン インスタンスによる仮想マシンの使用料の前払いとコスト削減](../../virtual-machines/windows/prepay-reserved-vm-instances.md)に関するページを参照してください。
+EA 加入契約を有効にして、予約インスタンスを追加すると、EA 加入契約に関連付けられたアクティブなサブスクリプションを持つすべてのアカウント所有者は、[Azure portal](https://aka.ms/reservations) で予約仮想マシン インスタンスを購入できます。 詳細については、[予約仮想マシン インスタンスによる仮想マシンの使用料の前払いとコスト削減](../../virtual-machines/prepay-reserved-vm-instances.md)に関するページを参照してください。
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>予約インスタンスの購入の詳細を表示する方法
 
@@ -82,7 +82,7 @@ EA 加入契約を有効にして、予約インスタンスを追加すると�
 
 ### <a name="how-to-view-reserved-instance-usage-details"></a>予約インスタンスの使用量の詳細を表示する方法
 
-予約インスタンスの使用量の詳細は、 [Azure portal](https://aka.ms/reservations) に表示することができます。または、 [Azure EA portal](https://ea.azure.com/) で、 _[レポート]_  >  _[使用状況の概要]_  > 、 _[Charges by Services]\(サービス別料金\)_ の順に移動して表示することもできます (課金情報を表示するアクセス権限を持つ EA のお客様の場合)。 予約インスタンスは、"Reservation" を含むサービス名で識別できます。たとえば、`Reservation-Base VM or Virtual Machines Reservation-Windows Svr (1 Core)` と表示されます。
+予約インスタンスの使用量の詳細は、[Azure portal](https://aka.ms/reservations) に表示することができます。または、[Azure EA portal](https://ea.azure.com/) で、 _[レポート]_  >  _[使用状況の概要]_  > 、 _[Charges by Services]\(サービス別料金\)_ の順に移動して表示することもできます (課金情報を表示するアクセス権限を持つ EA のお客様の場合)。 予約インスタンスは、"Reservation" を含むサービス名で識別できます。たとえば、`Reservation-Base VM or Virtual Machines Reservation-Windows Svr (1 Core)` と表示されます。
 
 使用状況の詳細と詳細レポートのダウンロード用 CSV には、予約インスタンスの使用量に関する追加情報が含まれます。 _[追加情報]_ フィールドは、予約インスタンスの使用量を確認するのに役立ちます。
 

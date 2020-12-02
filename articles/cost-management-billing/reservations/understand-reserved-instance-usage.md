@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 2b00c90abce915ae6fd645cbcce3536870609558
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 522b67e62e7ad8560bb48e8d056ca6daeeb45251
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447882"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350910"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>従量課金制料金のサブスクリプションの個別サブスクリプションの Azure 予約の使用状況について
 
@@ -47,7 +47,7 @@ CSV ファイルのこのセクションには、予約の合計使用量が表�
 
 ### <a name="daily-usage-section-of-csv-file"></a>CSV ファイルの Daily Usage セクション
 
-**Additional Info** にフィルターを適用し、自分の**予約 ID** を入力します。 次のスクリーンショットは、予約に関連したフィールドを示しています。
+**Additional Info** にフィルターを適用し、自分の **予約 ID** を入力します。 次のスクリーンショットは、予約に関連したフィールドを示しています。
 
 ![毎日の使用状況の詳細と料金のスクリーンショット](./media/understand-reserved-instance-usage/billing-payg-reserved-instance-csv-details.png)
 
@@ -72,7 +72,7 @@ SQL Database Gen 4 を米国東部リージョンで実行していて、その�
 
 ### <a name="statement-section-of-csv-file"></a>CSV ファイルの Statement セクション
 
-**[Reserved Instance 使用量]** という測定名でフィルターを適用し、必要な**メーター カテゴリ** (Azure SQL Database または Azure Cosmos DB) を選択します。 次のスクリーンショットのように表示されます。
+**[Reserved Instance 使用量]** という測定名でフィルターを適用し、必要な **メーター カテゴリ** (Azure SQL Database または Azure Cosmos DB) を選択します。 次のスクリーンショットのように表示されます。
 
 ![[メーター カテゴリ] の入力内容を示すスクリーンショット。](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
@@ -80,7 +80,7 @@ SQL Database Gen 4 を米国東部リージョンで実行していて、その�
 
 ### <a name="detail-section-of-csv-file"></a>CSV ファイルの Detail セクション
 
-**Additional Info** にフィルターを適用し、自分の**予約 ID** を入力します。 次のスクリーンショットは、SQL Database 予約容量の予約に関連したフィールドを示しています。
+**Additional Info** にフィルターを適用し、自分の **予約 ID** を入力します。 次のスクリーンショットは、SQL Database 予約容量の予約に関連したフィールドを示しています。
 
 ![予約容量の CSV ファイルの詳細を示すスクリーンショット。](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
 
@@ -97,7 +97,7 @@ SQL Database Gen 4 を米国東部リージョンで実行していて、その�
 Azure の予約の詳細については、次の記事を参照してください。
 
 - [Azure の予約とは](save-compute-costs-reservations.md)
-- [Azure Reserved VM Instances による仮想マシンの前払い](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Azure Reserved VM Instances による仮想マシンの前払い](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../../azure-sql/database/reserved-capacity-overview.md)
 - [Azure の予約の管理](manage-reserved-vm-instance.md)
 - [予約割引の適用方法について](../manage/understand-vm-reservation-charges.md)

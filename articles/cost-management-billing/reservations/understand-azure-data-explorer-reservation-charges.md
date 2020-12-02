@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: af2dc8378d1f1fe952a568ecb4bd89d088e3e3d3
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b222e4ff519fbe2fbb4fa58b39555ac9fead0917
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147242"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352917"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>Azure Data Explorer に予約割引が適用されるしくみについて
 
@@ -29,13 +29,13 @@ Azure Data Explorer の予約容量を購入すると、予約の属性や数量
 予約割引は、Azure Data Explorer マークアップ使用量に対して時間単位で適用されます。 Azure Data Explorer リソースの実行時間が 1 時間に満たない合、予約は予約の属性に一致する他の Data Explorer リソースに自動的に適用されます。 この割引は、同時に実行されている Azure Data Explorer リソースに適用できます。 1 時間実行され、予約の属性に一致する Azure Data Explorer リソースがない場合は、その時間について予約割引の特典を完全に活用することができません。
 
 > [!NOTE]
-> * 予約容量による節約額を最大にするために、Azure Data Explorer クラスターに使用される仮想マシンの[予約容量](../../virtual-machines/windows/prepay-reserved-vm-instances.md)を購入することを**強くお勧めします**。
+> * 予約容量による節約額を最大にするために、Azure Data Explorer クラスターに使用される仮想マシンの [予約容量](../../virtual-machines/prepay-reserved-vm-instances.md)を購入することを **強くお勧めします**。
 > * 予約を購入すると、すべてのリージョンに割引が適用されます。
 
 ## <a name="examples"></a>例
 
 次の例は、購入したマークアップ ユニット数と実行する時間に応じて、Azure Data Explorer の予約容量割引がどのように適用されるかを示しています。
-たとえば、エンジン クラスターのサイズが **2 台の D11_v2 VM**の場合、合計オンデマンド料金は、1 時間あたり Azure Data Explorer マークアップ メーター × 4 ユニットになります。
+たとえば、エンジン クラスターのサイズが **2 台の D11_v2 VM** の場合、合計オンデマンド料金は、1 時間あたり Azure Data Explorer マークアップ メーター × 4 ユニットになります。
 
 **シナリオ 1**
 

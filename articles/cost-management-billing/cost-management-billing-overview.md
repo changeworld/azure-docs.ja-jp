@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: contentperfq2
-ms.openlocfilehash: 2c533ea08534444e5bf8d8d57d585e2bf975a93b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1dca2fa938c26ba45f162fae962aec0bfaf6cef7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677391"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353036"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>Azure Cost Management と Billing とは
 
@@ -43,11 +43,11 @@ Azure を使用するためにサインアップすると、課金アカウン�
 
 現在、Azure portal では、次の種類の課金アカウントがサポートされています。
 
-- **Microsoft Online Services Program** : Azure Web サイトから Azure にサインアップすると、Microsoft Online Services Program の個別の課金アカウントが作成されます。 たとえば、Azure 無料アカウントまたは従量課金制料金のアカウントにサインアップした場合や、Visual Studio サブスクライバーとしてサインアップした場合です。
+- **Microsoft Online Services Program**: Azure Web サイトから Azure にサインアップすると、Microsoft Online Services Program の個別の課金アカウントが作成されます。 たとえば、Azure 無料アカウントまたは従量課金制料金のアカウントにサインアップした場合や、Visual Studio サブスクライバーとしてサインアップした場合です。
 
-- **マイクロソフト エンタープライズ契約** :組織が Azure を使用するために Enterprise Agreement (EA) を締結すると、Enterprise Agreement の課金アカウントが作成されます。
+- **マイクロソフト エンタープライズ契約**:組織が Azure を使用するために Enterprise Agreement (EA) を締結すると、Enterprise Agreement の課金アカウントが作成されます。
 
-- **Microsoft Customer Agreement** : 組織が Microsoft 担当者と連携して Microsoft Customer Agreement を締結すると、Microsoft Customer Agreement の課金アカウントが作成されます。 一部のリージョンでは、Azure Web サイトから従量課金制料金のアカウントにサインアップしたお客様や、Azure 無料アカウントをアップグレードしたお客様にも、Microsoft Customer Agreement の課金アカウントが作成される場合があります。
+- **Microsoft Customer Agreement**: 組織が Microsoft 担当者と連携して Microsoft Customer Agreement を締結すると、Microsoft Customer Agreement の課金アカウントが作成されます。 一部のリージョンでは、Azure Web サイトから従量課金制料金のアカウントにサインアップしたお客様や、Azure 無料アカウントをアップグレードしたお客様にも、Microsoft Customer Agreement の課金アカウントが作成される場合があります。
 
 ### <a name="scopes-for-billing-accounts"></a>課金アカウントのスコープ
 スコープとは、請求の表示および管理に使用する、課金アカウント内のノードです。 ユーザーが課金データ、支払い、請求書を管理し、アカウントの全般的な管理を行う場所です。
@@ -108,7 +108,7 @@ Cloudyn は Cost Management に関連した Azure サービスで、2020 年末�
 Azure には、Azure Cost Management と Billing の機能セットに含まれていない、その他のツールもあります。 しかし、それらはコスト管理のプロセスにおいて重要な役割を果たしています。 これらのツールの詳細については、次のリンクを参照してください。
 
 - [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/) - このツールを使用して初期クラウド コストを概算できます。
-- [Azure Migrate](/azure/migrate/migrate-services-overview) - Azure による置換ソリューションから現在のデータ センター ワークロードを評価し、必要な分析情報を取得します。
+- [Azure Migrate](../migrate/migrate-services-overview.md) - Azure による置換ソリューションから現在のデータ センター ワークロードを評価し、必要な分析情報を取得します。
 - [Azure Advisor](../advisor/advisor-overview.md) - 使用されていない VM を識別し、Azure 予約インスタンス購入に関する推奨事項を受け取ります。
 - [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/) - 現在のオンプレミスの Windows Server または SQL Server のライセンスを Azure の VM 用に使用し、コストを節約します。
 

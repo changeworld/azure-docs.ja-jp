@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 11ed87f8cf5aabb86f709d938acc4c31b737ca91
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d95c4bb0345051cc79dadca5fa7cc11932a9512a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91318596"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454043"
 ---
 # <a name="what-is-the-azure-stack-edge-pro-r"></a>Azure Stack Edge Pro R とは
 
@@ -45,7 +45,7 @@ Azure Stack Edge Pro R には、次の機能があります。
 
 ここでは、Azure Stack Edge Pro R を使用してエッジで高速な機械学習 (ML) 推論を実行し、データを Azure に送信する前に前処理するさまざまなシナリオを示します。
 
-- **Azure Machine Learning による推論** - Azure Stack Edge Pro R により、ML モデルを実行して、データがクラウドに送信される前に対応できるように、迅速な結果を得ることができます。 必要に応じて、ML モデルを再調整して改善し続けるために、データ セット全体を転送することができます。 Azure Stack Edge Pro R デバイスで Azure ML ハードウェア アクセラレータ モデルを使用する方法の詳細については、[Azure Stack Edge Pro R への Azure ML ハードウェア アクセラレーション対応モデルのデプロイ](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server)に関する記事を参照してください。
+- **Azure Machine Learning による推論** - Azure Stack Edge Pro R により、ML モデルを実行して、データがクラウドに送信される前に対応できるように、迅速な結果を得ることができます。 必要に応じて、ML モデルを再調整して改善し続けるために、データ セット全体を転送することができます。 Azure Stack Edge Pro R デバイスで Azure ML ハードウェア アクセラレータ モデルを使用する方法の詳細については、[Azure Stack Edge Pro R への Azure ML ハードウェア アクセラレーション対応モデルのデプロイ](../machine-learning/how-to-deploy-fpga-web-service.md#deploy-to-a-local-edge-server)に関する記事を参照してください。
 
 - **データの前処理** - データを Azure に送信する前に変換して、より実用的なデータセットを作成します。 前処理は以下の目的で使用できます。
 
@@ -73,9 +73,9 @@ Azure Stack Edge Pro R ソリューションは、Azure Stack Edge リソース�
 
 Azure Stack Edge Pro R 物理デバイス、Azure リソース、データ転送先のターゲット ストレージ アカウントは、すべて同じリージョン内にある必要はありません。
 
-- **リソースの使用可能性** - Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、「 [リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)」を参照してください。 
+- **リソースの使用可能性** - Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)」を参照してください。 
 
-- **デバイスの可用性** - Azure Stack Edge Pro R デバイスが使用可能なすべての国の一覧については、 [Azure Stack Edge Pro R の価格](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgeProR)に関するページの **[Azure Stack Edge Pro R]** タブにある **[可用性]** セクションにアクセスしてください。
+- **デバイスの可用性** - Azure Stack Edge Pro R デバイスが使用可能なすべての国の一覧については、[Azure Stack Edge Pro R の価格](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgeProR)に関するページの **[Azure Stack Edge Pro R]** タブにある **[可用性]** セクションにアクセスしてください。
 
 - **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。 最適なパフォーマンスを得るには、ストレージ アカウントによって Azure Stack Edge Pro R のデータが格納されるリージョンと、デバイスが配置される場所を近くにする必要があります。 デバイスから離れた場所にあるストレージ アカウントは、待ち時間が長くなり、パフォーマンスが低下します。
 
@@ -83,4 +83,3 @@ Azure Stack Edge Pro R 物理デバイス、Azure リソース、データ転送
 
 - [Azure Stack Edge Pro R のシステム必要条件](azure-stack-edge-gpu-system-requirements.md)を確認します。
 <!--- Understand the [Azure Stack Edge Pro R limits](azure-stack-edge-limits.md).-->
-

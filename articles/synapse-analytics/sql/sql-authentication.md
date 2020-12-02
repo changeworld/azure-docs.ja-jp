@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 460fed7244ba8094da41ae6b5b8161de3d9efe65
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: efa160eb422658aeeb2eea3ad3c1d305b4b9f8be
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317273"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462406"
 ---
 # <a name="sql-authentication"></a>SQL 認証
 
@@ -29,29 +29,29 @@ Azure Active Directory では、ユーザー管理を 1 か所で行うことが
 
 ## <a name="administrative-accounts"></a>管理者アカウント
 
-管理者の機能を果たす 2 つの管理者アカウント ( **サーバー管理者** と **Active Directory 管理者** ) があります。 SQL サーバーのこれらの管理者アカウントを識別するには、Azure portal を開き、Synapse SQL の [プロパティ] タブに移動します。
+管理者の機能を果たす 2 つの管理者アカウント (**サーバー管理者** と **Active Directory 管理者**) があります。 SQL サーバーのこれらの管理者アカウントを識別するには、Azure portal を開き、Synapse SQL の [プロパティ] タブに移動します。
 
 ![SQL サーバーの管理者](./media/sql-authentication/sql-admins.png)
 
 - **サーバー管理者**
 
-  Azure Synapse Analytics を作成するときは、 **サーバー管理者のログイン** に名前を指定する必要があります。 このアカウントは SQL サーバーによって master データベースへのログインとして作成されます。 このアカウントは、SQL Server 認証 (ユーザー名とパスワード) を使用して接続します。 これらのアカウントのうち、存在できるのは 1 つだけです。
+  Azure Synapse Analytics を作成するときは、**サーバー管理者のログイン** に名前を指定する必要があります。 このアカウントは SQL サーバーによって master データベースへのログインとして作成されます。 このアカウントは、SQL Server 認証 (ユーザー名とパスワード) を使用して接続します。 これらのアカウントのうち、存在できるのは 1 つだけです。
 
 - **Azure Active Directory の管理者**
 
-  1 つの Azure Active Directory アカウント (個人またはセキュリティ グループ アカウント) も、管理者として構成できます。 Azure AD 管理者の構成は任意ですが、Synapse SQL への接続に Azure AD アカウントを使用する場合は、Azure AD 管理者を構成する **必要があります** 。
+  1 つの Azure Active Directory アカウント (個人またはセキュリティ グループ アカウント) も、管理者として構成できます。 Azure AD 管理者の構成は任意ですが、Synapse SQL への接続に Azure AD アカウントを使用する場合は、Azure AD 管理者を構成する **必要があります**。
 
 **サーバー管理者** アカウントと **Azure AD 管理者** アカウントには次の特性があります。
 
 - サーバー上の任意の SQL Database に自動的に接続できる唯一のアカウントです (それ以外のアカウントでユーザー データベースに接続するには、そのデータベースの所有者であるか、そのユーザー データベースのユーザー アカウントを持っている必要があります)。
 - これらのアカウントは、`dbo` ユーザーとしてユーザー データベースにアクセスし、ユーザー データベースに対するすべてのアクセス許可を持ちます (ユーザー データベースの所有者も、`dbo` ユーザーとしてデータベースにアクセスします)。
 - `master` データベースには `dbo` ユーザーとしてアクセスできません。master にはアクセス許可の制限があります。
-- 標準 SQL Server `sysadmin` 固定サーバー ロールのメンバーでは **ありません** 。このロールは SQL Database では使用できません。  
+- 標準 SQL Server `sysadmin` 固定サーバー ロールのメンバーでは **ありません**。このロールは SQL Database では使用できません。  
 - データベース、ログイン、master のユーザー、およびサーバー レベルの IP ファイアウォール規則を作成、変更、削除できます。
 - `dbmanager` ロールと `loginmanager` ロールに対して、メンバーの追加と削除を実行できます。
 - `sys.sql_logins` システム テーブルを表示できます。
 
-## <a name="serverless-sql-pool-preview"></a>[サーバーレス SQL プール (プレビュー)](#tab/serverless)
+## <a name="serverless-sql-pool"></a>[サーバーレス SQL プール](#tab/serverless)
 
 サーバーレス SQL プールへのアクセス権を持つユーザーを管理するには、次の手順を使用します。
 
@@ -77,7 +77,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 
 ### <a name="administrator-access-path"></a>Administrator access path
 
-サーバーレベルのファイアウォールが正しく構成されている場合、 **SQL サーバー管理者** と **Azure Active Directory 管理者** は、SQL Server Management Studio や SQL Server Data Tools などのクライアント ツールを使用して接続できます。 すべての機能を提供しているのは、最新のツールだけです。 
+サーバーレベルのファイアウォールが正しく構成されている場合、**SQL サーバー管理者** と **Azure Active Directory 管理者** は、SQL Server Management Studio や SQL Server Data Tools などのクライアント ツールを使用して接続できます。 すべての機能を提供しているのは、最新のツールだけです。 
 
 次の図は、2 つの管理者アカウントの標準的な構成を示しています。
  
@@ -87,7 +87,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 
 ### <a name="database-creators"></a>データベース作成者。
 
-これらの管理者ロールの 1 つは、 **dbmanager** ロールです。 このロールのメンバーは、新しいデータベースを作成できます。 このロールを使用するには、`master` データベースにユーザーを作成し、そのユーザーを **dbmanager** データベース ロールに追加します。 
+これらの管理者ロールの 1 つは、**dbmanager** ロールです。 このロールのメンバーは、新しいデータベースを作成できます。 このロールを使用するには、`master` データベースにユーザーを作成し、そのユーザーを **dbmanager** データベース ロールに追加します。 
 
 データベースを作成するユーザーは、`master` データベースの SQL Server ログインに基づくユーザーであるか、Azure Active Directory ユーザーに基づく包含データベース ユーザーである必要があります。
 
@@ -187,9 +187,9 @@ geo レプリケーション用のログインの構成の詳細については�
 
 - SQL Server 認証を使用する場合は、データベースに包含データベース ユーザーを作成します。 1 人または複数のデータベース ユーザーを[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)に追加し、データベース ロールに[アクセス許可](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)を割り当てます。
 
-データベース ロールは、 **db_owner** 、 **db_ddladmin** 、 **db_datawriter** 、 **db_datareader** 、 **db_denydatawriter** 、 **db_denydatareader** などの組み込みロールを指定できます。 **db_owner** は、少数のユーザーのみに完全なアクセス許可を付与する際によく使用されます。 他の固定データベース ロールは、開発段階の単純なデータベースをすばやく取得するには便利ですが、運用段階のほとんどのデータベースには推奨されません。 
+データベース ロールは、**db_owner**、**db_ddladmin**、**db_datawriter**、**db_datareader**、**db_denydatawriter**、**db_denydatareader** などの組み込みロールを指定できます。 **db_owner** は、少数のユーザーのみに完全なアクセス許可を付与する際によく使用されます。 他の固定データベース ロールは、開発段階の単純なデータベースをすばやく取得するには便利ですが、運用段階のほとんどのデータベースには推奨されません。 
 
-たとえば、 **db_datareader** 固定データベース ロールは、データベース内のすべてのテーブルへの読み取りアクセスを許可しますが、これは、通常、必要以上のことです。 
+たとえば、**db_datareader** 固定データベース ロールは、データベース内のすべてのテーブルへの読み取りアクセスを許可しますが、これは、通常、必要以上のことです。 
 
 それよりも、[CREATE ROLE](https://msdn.microsoft.com/library/ms187936.aspx) ステートメントを使用して独自のユーザー定義データベース ロールを作成し、各ロールに対してビジネスのニーズに応じて必要な最小限のアクセス許可を慎重に付与する方がはるかに適切です。 ユーザーが複数のロールのメンバーである場合は、それらのアクセス許可すべてが集約されます。
 
@@ -205,13 +205,13 @@ SQL Database では、個別に許可または拒否できるアクセス許可�
 
 SQL Database のログインとユーザーの管理では、以下の点を考慮してください。
 
-- `CREATE/ALTER/DROP DATABASE` ステートメントを実行する場合は、 **master** データベースに接続する必要があります。
+- `CREATE/ALTER/DROP DATABASE` ステートメントを実行する場合は、**master** データベースに接続する必要があります。
 - **サーバー管理者** ログインに対応するデータベース ユーザーは、変更または削除できません。
 - **サーバー管理者** ログインの既定の言語は英語 (米国) です。
-- 管理者 ( **サーバー管理者** ログインまたは Azure AD 管理者) と、 **master** データベースの **dbmanager** データベース ロールのメンバーにのみ、`CREATE DATABASE` および `DROP DATABASE` ステートメントを実行するアクセス許可があります。
+- 管理者 (**サーバー管理者** ログインまたは Azure AD 管理者) と、**master** データベースの **dbmanager** データベース ロールのメンバーにのみ、`CREATE DATABASE` および `DROP DATABASE` ステートメントを実行するアクセス許可があります。
 - `CREATE/ALTER/DROP LOGIN` ステートメントを実行する場合は、master データベースに接続する必要があります。 ただし、ログインの使用はお勧めできません。 代わりに、包含データベース ユーザーを使用してください。
 - ユーザー データベースに接続するには、接続文字列にそのデータベースの名前を指定する必要があります。
-- サーバーレベル プリンシパル ログインと、 **master** データベースの **loginmanager** データベース ロールのメンバーにのみ、`CREATE LOGIN`、`ALTER LOGIN`、`DROP LOGIN` ステートメントを実行する権限があります。
+- サーバーレベル プリンシパル ログインと、**master** データベースの **loginmanager** データベース ロールのメンバーにのみ、`CREATE LOGIN`、`ALTER LOGIN`、`DROP LOGIN` ステートメントを実行する権限があります。
 - ADO.NET アプリケーションで `CREATE/ALTER/DROP LOGIN` と `CREATE/ALTER/DROP DATABASE` ステートメントを実行する場合、パラメーター化コマンドは使用できません。 詳細については、「 [コマンドとパラメーター](/dotnet/framework/data/adonet/commands-and-parameters?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」をご覧ください。
 - `CREATE/ALTER/DROP DATABASE` と `CREATE/ALTER/DROP LOGIN` ステートメントを実行する場合、これらの各ステートメントは、Transact-SQL バッチ内の唯一のステートメントである必要があります。 そうでない場合、エラーが発生します。 たとえば、以下の Transact-SQL は、データベースが存在するかどうかを確認します。 存在する場合は、 `DROP DATABASE` ステートメントが呼び出され、データベースが削除されます。 `DROP DATABASE` ステートメントはバッチ内の唯一のステートメントではないので、これを実行すると Transact-SQL はエラーになります。
 
@@ -232,7 +232,7 @@ SQL Database のログインとユーザーの管理では、以下の点を考�
 - `CREATE USER` ステートメントを `FOR/FROM LOGIN` オプションと共に実行する場合、これが Transact-SQL バッチ内の唯一のステートメントである必要があります。
 - `ALTER USER` ステートメントを `WITH LOGIN` オプションと共に実行する場合、これが Transact-SQL バッチ内の唯一のステートメントである必要があります。
 - ユーザーに対して `CREATE/ALTER/DROP` を実行するには、データベースに対する `ALTER ANY USER` 権限が必要です。
-- データベース ロールの所有者が、そのデータベース ロールに対して他のデータベース ユーザーの追加または削除を行おうとすると、次のエラーが発生する場合があります:「 **User or role 'Name' does not exist in this database.** 」。 このエラーは、所有者からはユーザーが見えないために発生します。 この問題を解決するには、そのユーザーに対する `VIEW DEFINITION` 権限をロールの所有者に許可します。 
+- データベース ロールの所有者が、そのデータベース ロールに対して他のデータベース ユーザーの追加または削除を行おうとすると、次のエラーが発生する場合があります:「**User or role 'Name' does not exist in this database.** 」。 このエラーは、所有者からはユーザーが見えないために発生します。 この問題を解決するには、そのユーザーに対する `VIEW DEFINITION` 権限をロールの所有者に許可します。 
 
 ## <a name="next-steps"></a>次のステップ
 

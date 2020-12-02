@@ -8,12 +8,12 @@ ms.reviewer: yashesvi
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 300ac0996d9dcb9ecb07abd3392447e393c1781b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 050984d58137ec03996572d2de41115073e4ab2b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151621"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338165"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure リソースに対する予約を管理する
 
@@ -27,7 +27,7 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 
 ## <a name="reservation-order-and-reservation"></a>予約注文および予約
 
-予約を購入すると、2 つのオブジェクトが作成されます。**予約注文**と**予約**です。
+予約を購入すると、2 つのオブジェクトが作成されます。**予約注文** と **予約** です。
 
 購入時点で、予約注文の下位に 1 つの予約があります。 **[予約注文]** 下には、予約の分割、マージ、一部返金、交換、または新しい予約の作成などの操作があります。
 
@@ -135,7 +135,7 @@ Azure の予約の割引は、継続的にリソースを使用した場合に�
 予約の使用状況を表示する方法の 1 つは、Azure portal にあります。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. **[すべてのサービス]**  > [ **[予約]** ](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) を選択し、予約の **[使用率 (%)]** に注目します。  
+2. **[すべてのサービス]**  > [ **[予約]**](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) を選択し、予約の **[使用率 (%)]** に注目します。  
   ![予約の一覧を表示したイメージ](./media/manage-reserved-vm-instance/reservation-list.png)
 3. 予約を選択します。
 4. 一定期間にわたる予約の使用傾向を確認します。  
@@ -168,7 +168,7 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 - [Azure の予約とは](save-compute-costs-reservations.md)
 
 サービス プランの購入:
-- [Azure Reserved VM Instances による仮想マシンの前払い](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Azure Reserved VM Instances による仮想マシンの前払い](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../../azure-sql/database/reserved-capacity-overview.md)
 - [Azure Cosmos DB の容量が予約された Azure Cosmos DB リソースの前払い](../../cosmos-db/cosmos-db-reserved-capacity.md)
 

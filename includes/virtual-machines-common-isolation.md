@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: sttsinar
 ms.custom: include file
-ms.openlocfilehash: 3d65b574fc1479d000d347020823166a4d4b968b
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: bd31152c6742271658cf4fd7ac2a5e2957651c84
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410590"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96478477"
 ---
 Azure Compute では、特定のハードウェアの種類に分離される、単一顧客専用の仮想マシン サイズを提供します。 分離されたサイズは、特定のハードウェア世代上に存続して動作し、そのハードウェア世代が廃止されると非推奨となります。
 
@@ -25,10 +25,13 @@ Azure Compute では、特定のハードウェアの種類に分離される、
 現在の分離された仮想マシンのプランには、以下が含まれます。
 * Standard_E64is_v3
 * Standard_E64i_v3
+* Standard_E80ids_v4
+* Standard_E80is_v4
 * Standard_M128ms
 * Standard_GS5
 * Standard_G5
 * Standard_F72s_v2
+
 
 > [!NOTE]
 > 分離された VM サイズには、ハードウェアによって限定される有効期間があります。 詳細については以下を参照してください
@@ -47,22 +50,22 @@ Azure Compute では、特定のハードウェアの種類に分離される、
 
 ## <a name="faq"></a>よく寄せられる質問
 ### <a name="q-is-the-size-going-to-get-retired-or-only-isolation-feature-is"></a>Q:廃止される予定なのはサイズですか、それとも "分離" 機能のみですか?
-**A** : 仮想マシン サイズに添字の "i" がない場合は、"分離" 機能のみが廃止されます。 分離が不要な場合、する必要のあるアクションはなく、VM は予期したとおり機能し続けます。 例として、Standard_DS15_v2、Standard_D15_v2、Standard_M128ms などが挙げられます。仮想マシン サイズに添字の "i" が含まれる場合、そのサイズは廃止されます。
+**A**: 仮想マシン サイズに添字の "i" がない場合は、"分離" 機能のみが廃止されます。 分離が不要な場合、する必要のあるアクションはなく、VM は予期したとおり機能し続けます。 例として、Standard_DS15_v2、Standard_D15_v2、Standard_M128ms などが挙げられます。仮想マシン サイズに添字の "i" が含まれる場合、そのサイズは廃止されます。
 
 ### <a name="q-is-there-a-downtime-when-my-vm-lands-on-a-non-isolated-hardware"></a>Q:分離されていないハードウェアに VM がある場合、ダウンタイムは発生しますか?
-**A** : 分離が不要な場合、必要なアクションはなく、ダウンタイムは生じません。
+**A**: 分離が不要な場合、必要なアクションはなく、ダウンタイムは生じません。
 
 ### <a name="q-is-there-any-cost-delta-for-moving-to-a-non-isolated-virtual-machine"></a>Q:分離されていない仮想マシンに移行する場合、コスト差分がありますか?
-**A** : いいえ
+**A**: いいえ
 
 ### <a name="q-when-are-the-other-isolated-sizes-going-to-retire"></a>Q:他の分離されたサイズはいつ廃止される予定ですか?
-**A** : 分離されたサイズが正式に非推奨となる 12 か月前に通知が送付されます。
+**A**: 分離されたサイズが正式に非推奨となる 12 か月前に通知が送付されます。
 
 ### <a name="q-im-an-azure-service-fabric-customer-relying-on-the-silver-or-gold-durability-tiers-does-this-change-impact-me"></a>Q:シルバーまたはゴールドの持続性層を利用している Azure Service Fabric ユーザーです。 この変更の影響はありますか?
-**A** : いいえ。 Service Fabric の[持続性層](../articles/service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)で提供されている保証は、この変更の後も引き続き機能します。 その他の理由で物理的なハードウェアの分離が必要な場合、上記のいずれかのアクションを実行する必要があります。 
+**A**: いいえ。 Service Fabric の[持続性層](../articles/service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)で提供されている保証は、この変更の後も引き続き機能します。 その他の理由で物理的なハードウェアの分離が必要な場合、上記のいずれかのアクションを実行する必要があります。 
  
 ### <a name="q-what-are-the-milestones-for-d15_v2-or-ds15_v2-isolation-retirement"></a>Q:D15_v2 や DS15_v2 の分離に関する廃止のマイルストーンはどのようになっていますか? 
-**A** : 
+**A**: 
  
 | Date | アクション |
 |---|---| 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: c16fc475e4982724ebc9f4f55301b6fc56dfb7c7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 73c52963df65dc4037f087a93108ccfacb3fb5d4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95017011"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461560"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>クイックスタート: ARM テンプレートを使用して Azure キー コンテナーとキーを作成する (プレビュー)
 
@@ -26,7 +26,7 @@ ms.locfileid: "95017011"
 この記事を完了するには:
 
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-- ユーザーには、RBAC の組み込みロールが割り当てられている必要があります (共同作成者など)。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- ユーザーには、RBAC の組み込みロールが割り当てられている必要があります (共同作成者など)。 [詳細については、こちらを参照してください](../../role-based-access-control/role-assignments-portal.md)
 - Azure AD ユーザーオブジェクト ID は、
 テンプレートによるアクセス許可の設定で必要です。 次の手順を使用してオブジェクト ID (GUID) を取得します。
 

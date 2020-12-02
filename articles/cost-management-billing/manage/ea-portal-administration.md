@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperfq1
-ms.openlocfilehash: f18f1184f921aca4f2c1e33ac00dcf14c63b24eb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bb8a52a2258143e1c68ca46ac31a8c986b1bcfe7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95893360"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457142"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA Portal の管理
 
@@ -282,13 +282,13 @@ Azure EA Portal は、Azure EA のコストと使用状況を管理するのに�
 
 各ロールには、さまざまなレベルのアクセス権と特権があります。
 
-ユーザー ロールの詳細については、[「エンタープライズ ユーザー ロール」](/azure/cost-management-billing/manage/understand-ea-roles#enterprise-user-roles)を参照してください。
+ユーザー ロールの詳細については、[「エンタープライズ ユーザー ロール」](./understand-ea-roles.md#enterprise-user-roles)を参照してください。
 
 ## <a name="add-an-azure-ea-account"></a>Azure EA アカウントを追加する
 
 Azure EA アカウントは、Azure EA Portal における組織単位です。 これは、サブスクリプションの管理に使用されるほか、レポートにも使用されます。 Azure サービスにアクセスして使用するには、自分でアカウントを作成するか、誰かにアカウントを作成してもらう必要があります。
 
-Azure アカウントの詳細については、「[アカウントの追加](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-administration#add-an-account)」を参照してください。
+Azure アカウントの詳細については、「[アカウントの追加](#add-an-account)」を参照してください。
 
 ## <a name="enterprise-devtest-offer"></a>Enterprise Dev/Test オファー
 
@@ -361,7 +361,7 @@ Azure エンタープライズ管理者は、組織のアカウント オーナ�
 
 サブスクリプションを取り消すことができるのはアカウント管理者のみです。
 
-詳細については、「[サブスクリプションの取り消し後の流れ](cancel-azure-subscription.md#what-happens-after-i-cancel-my-subscription)」を参照してください。
+詳細については、「[サブスクリプションの取り消し後の流れ](cancel-azure-subscription.md#what-happens-after-subscription-cancellation)」を参照してください。
 
 ## <a name="delete-an-account"></a>アカウントの削除
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: ce3903bad4f7e4675406956ddedbc9011a6d2be8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: f4803cc9871b71e65e4d94ed37d3f9771be1cae0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522262"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454957"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Private Link とは 
 Azure Private Link を使用すると、お使いの仮想ネットワーク内の[プライベート エンドポイント](private-endpoint-overview.md)経由で Azure PaaS サービス (Azure Storage、SQL Database など) と Azure でホストされている顧客所有の、またはパートナー サービスにアクセスできます。
@@ -47,7 +47,7 @@ Azure Private Link には次のような利点があります。
 | Azure Queue Storage       |  すべてのパブリック リージョン<br/> すべての Government リージョン       |  アカウントの種類 General Purpose V2 でサポートされます | GA <br/> [Queue storage のプライベート エンドポイントを作成する方法を確認します。](tutorial-private-endpoint-storage-portal.md) |
 | Azure Table Storage       |  すべてのパブリック リージョン<br/> すべての Government リージョン       |  アカウントの種類 General Purpose V2 でサポートされます | GA <br/> [Table Storage のプライベート エンドポイントを作成する方法を確認します。](tutorial-private-endpoint-storage-portal.md)  |
 |  Azure SQL データベース         | すべてのパブリック リージョン <br/> すべての Government リージョン<br/>すべての中国リージョン      |  プロキシの[接続ポリシー](../azure-sql/database/connectivity-architecture.md#connection-policy)についてサポートされます | GA <br/> [Azure SQL のプライベート エンドポイントを作成する方法を確認します](create-private-endpoint-portal.md)      |
-|Azure Synapse Analytics (旧称 SQL Data Warehouse)| すべてのパブリック リージョン <br/> すべての Government リージョン |  プロキシの[接続ポリシー](../azure-sql/database/connectivity-architecture.md#connection-policy)についてサポートされます |GA <br/> [Azure Synapse Analytics のプライベート エンドポイントを作成する方法を確認します。](../azure-sql/database/private-endpoint-overview.md)|
+|Azure Synapse Analytics| すべてのパブリック リージョン <br/> すべての Government リージョン |  プロキシの[接続ポリシー](../azure-sql/database/connectivity-architecture.md#connection-policy)についてサポートされます |GA <br/> [Azure Synapse Analytics のプライベート エンドポイントを作成する方法を確認します。](../azure-sql/database/private-endpoint-overview.md)|
 |Azure Cosmos DB|  すべてのパブリック リージョン<br/> すべての Government リージョン</br> すべての中国リージョン | |GA <br/> [Cosmos DB のプライベート エンドポイントを作成する方法を確認します。](./tutorial-private-endpoint-cosmosdb-portal.md)|
 |  Azure Database for PostgreSQL - 単一サーバー         | すべてのパブリック リージョン <br/> すべての Government リージョン<br/>すべての中国リージョン     | General Purpose とメモリ最適化の価格レベルでサポートされます | GA <br/> [Azure Database for PostgreSQL のプライベート エンドポイントを作成する方法を確認します。](../postgresql/concepts-data-access-and-security-private-link.md)      |
 |  Azure Database for MySQL         | すべてのパブリック リージョン<br/> すべての Government リージョン<br/>すべての中国リージョン      |  | GA <br/> [Azure Database for MySQL のプライベート エンドポイントを作成する方法を確認します。](../mysql/concepts-data-access-security-private-link.md)     |
