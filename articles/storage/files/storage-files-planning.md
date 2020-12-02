@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: e60ba773c5ef750f027c2e0b1528409c71eeb4b8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 650ee1fc9e0e1941a7a3655bca1c75950ab878dd
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011704"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492116"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) は、サーバーレスの Azure ファイル共有を直接マウントすることと、Azure File Sync を使用してオンプレミスで Azure ファイル共有をキャッシュすることの 2 つの主な方法でデプロイできます。選択するデプロイ オプションによって、デプロイを計画する際に考慮する必要がある内容が変わります。 
@@ -99,13 +99,13 @@ Azure Files には、データがバックアップされて回復可能であ�
 論理的な削除の詳細については、[データの誤削除の防止](./storage-files-prevent-file-share-deletion.md)に関する記事を参照してください。
 
 ### <a name="backup"></a>バックアップ
-[共有スナップショット](./storage-snapshots-files.md)を利用して、Azure ファイル共有をバックアップすることができます。これは、特定の時点の共有の読み取り専用のコピーです。 スナップショットは増分であり、以前のスナップショット以降に変更されたデータだけが含まれます。 ファイル共有ごとに最大 200 のスナップショットを保持し、最大 10 年間保存できます。 これらのスナップショットを取得するには、Azure portal、PowerShell、またはコマンドライン インターフェイス (CLI) を使用して手動で行うか、または [Azure Backup](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) を使用することができます。 スナップショットはファイル共有内に格納されます。つまり、ファイル共有を削除すると、スナップショットも削除されます。 スナップショット バックアップを誤削除から保護するために、共有に対して論理的な削除が有効になっていることを確認します。
+[共有スナップショット](./storage-snapshots-files.md)を利用して、Azure ファイル共有をバックアップすることができます。これは、特定の時点の共有の読み取り専用のコピーです。 スナップショットは増分であり、以前のスナップショット以降に変更されたデータだけが含まれます。 ファイル共有ごとに最大 200 のスナップショットを保持し、最大 10 年間保存できます。 これらのスナップショットを取得するには、Azure portal、PowerShell、またはコマンドライン インターフェイス (CLI) を使用して手動で行うか、または [Azure Backup](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) を使用することができます。 スナップショットはファイル共有内に格納されます。つまり、ファイル共有を削除すると、スナップショットも削除されます。 スナップショット バックアップを誤削除から保護するために、共有に対して論理的な削除が有効になっていることを確認します。
 
-[Azure ファイル共有の Azure Backup ](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)によって、スナップショットのスケジュール設定と保持期間が処理されます。 三世代 (GFS: grandfather-father-son) 機能は、日次、週次、月次、年次のスナップショットを取得できることを意味し、それぞれに個別の保持期間が設けられています。 また、Azure Backup によって論理的な削除の有効化が調整され、その中のいずれかのファイル共有がバックアップに構成されると、すぐにストレージ アカウント上で削除のロックが行われます。 最後に、顧客が自身のバックアップ資産の統合されたビューを利用できるように、Azure Backup には、特定の主な監視機能およびアラート機能が用意されています。
+[Azure ファイル共有の Azure Backup ](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)によって、スナップショットのスケジュール設定と保持期間が処理されます。 三世代 (GFS: grandfather-father-son) 機能は、日次、週次、月次、年次のスナップショットを取得できることを意味し、それぞれに個別の保持期間が設けられています。 また、Azure Backup によって論理的な削除の有効化が調整され、その中のいずれかのファイル共有がバックアップに構成されると、すぐにストレージ アカウント上で削除のロックが行われます。 最後に、顧客が自身のバックアップ資産の統合されたビューを利用できるように、Azure Backup には、特定の主な監視機能およびアラート機能が用意されています。
 
 Azure portal 上で、Azure Backup を使用して、項目レベルおよび共有レベルの両方の復元を実行できます。 必要な作業は、復元ポイント (特定のスナップショット)、特定のファイルまたはディレクトリ (該当する場合)、復元先の場所 (元の場所または別の場所) を選択することだけです。 バックアップ サービスによって、スナップショット データのコピーが処理され、ポータル上に復元の進行状況が表示されます。
 
-バックアップの詳細については、「[Azure ファイル共有のバックアップについて](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)」を参照してください。
+バックアップの詳細については、「[Azure ファイル共有のバックアップについて](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」を参照してください。
 
 ### <a name="advanced-threat-protection-for-azure-files-preview"></a>Advanced Threat Protection for Azure Files (プレビュー)
 Advanced Threat Protection (ATP) for Azure Storage には、ストレージ アカウントへの通常とは異なるアクセス試行など、ストレージ アカウント上で異常なアクティビティが検出されたときにアラートを提示するセキュリティ インテリジェンスの追加レイヤーが用意されています。 また、ATP によってマルウェアのハッシュ評価分析も実行され、既知のマルウェアに関するアラート通知が行われます。 Azure Security Center を使用して、サブスクリプションまたはストレージ アカウント レベルで ATP を構成できます。 

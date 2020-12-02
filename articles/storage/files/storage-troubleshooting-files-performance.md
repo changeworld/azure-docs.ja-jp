@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: a49dbdace01396656c3114df0bc0d4589aff57c1
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 5a35d939c12639770e25c3096c77f13d31310f85
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916493"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492014"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Azure ファイル共有のパフォーマンスに関する問題のトラブルシューティング
 
@@ -196,7 +196,7 @@ I/O 集中型ワークロードのために、Azure ファイル共有へのア�
 
 ### <a name="cause"></a>原因  
 
-ファイル共有に関するファイル変更通知の数が多くなると、待機時間が大幅に長くなる可能性があります。 一般に、この問題は、ディレクトリ構造が深い入れ子になっているファイル共有でホストされている Web サイトで発生します。 一般的なシナリオは、IIS でホストされている Web アプリケーションです。既定の構成では、ファイル変更通知はディレクトリごとにセットアップされます。 SMB クライアントが登録されている共有で変更 ([ReadDirectoryChangesW](https://docs.microsoft.com/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) が行われるたびに、ファイル サービスからクライアントに変更通知がプッシュされます。そのため、システム リソースが消費され、変更の数に伴い問題が悪化します。 これにより、共有のスロットリングが発生し、クライアント側の待機時間が長くなります。 
+ファイル共有に関するファイル変更通知の数が多くなると、待機時間が大幅に長くなる可能性があります。 一般に、この問題は、ディレクトリ構造が深い入れ子になっているファイル共有でホストされている Web サイトで発生します。 一般的なシナリオは、IIS でホストされている Web アプリケーションです。既定の構成では、ファイル変更通知はディレクトリごとにセットアップされます。 SMB クライアントが登録されている共有で変更 ([ReadDirectoryChangesW](/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) が行われるたびに、ファイル サービスからクライアントに変更通知がプッシュされます。そのため、システム リソースが消費され、変更の数に伴い問題が悪化します。 これにより、共有のスロットリングが発生し、クライアント側の待機時間が長くなります。 
 
 確認するには、ポータルで Azure メトリックを使用します。 
 

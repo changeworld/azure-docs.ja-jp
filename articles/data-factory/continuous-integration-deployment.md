@@ -5,18 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 93aeb088f82cae6dde215792e399997b592a5c14
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: a7d392412aa481d9541cd4987cfb4c18d04dafa0
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96003975"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500157"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 
@@ -639,7 +639,7 @@ Git が構成されていない場合は、 **[ARM テンプレート]** 一覧�
 
 ## <a name="exposure-control-and-feature-flags"></a>露出調整と機能フラグ
 
-チームで作業しているときに、変更をマージする場合があるかもしれませんが、PROD や QA などより高度な環境では実行しないかもしれません。 このようなシナリオに対応するため、ADF チームでは、[機能フラグを使用する DevOps 構想](https://docs.microsoft.com/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops)をお勧めしています。 ADF では、[グローバル パラメーター](author-global-parameters.md)と [If Condition アクティビティ](control-flow-if-condition-activity.md)を組み合わせて、これらの環境フラグに基づいてロジックのセットを非表示にすることができます。
+チームで作業しているときに、変更をマージする場合があるかもしれませんが、PROD や QA などより高度な環境では実行しないかもしれません。 このようなシナリオに対応するため、ADF チームでは、[機能フラグを使用する DevOps 構想](/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops)をお勧めしています。 ADF では、[グローバル パラメーター](author-global-parameters.md)と [If Condition アクティビティ](control-flow-if-condition-activity.md)を組み合わせて、これらの環境フラグに基づいてロジックのセットを非表示にすることができます。
 
 機能フラグを設定する方法については、次のビデオ チュートリアルをご覧ください。
 

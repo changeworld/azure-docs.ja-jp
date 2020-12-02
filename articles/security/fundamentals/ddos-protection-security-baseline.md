@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c57ad181f35d3c0498804f65390792d0e600f1ff
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1c1a5a96742d380ce42c0aea8c77a199083df47f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843419"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492252"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure DDoS Protection Standard 用の Azure セキュリティ ベースライン
 
@@ -38,7 +38,7 @@ ms.locfileid: "94843419"
 
 Azure アクティビティ ログの診断設定を有効にして、Log Analytics ワークスペース、Azure イベント ハブ、または Azure ストレージア カウントにログを送信してアーカイブします。 アクティビティ ログは、コントロール プレーン レベルで Azure Cache for Redis インスタンスで実行された操作に関する分析情報を提供します。 Azure アクティビティ ログのデータを使用すると、Azure DDoS Protection インスタンスのコントロール プレーン レベルで実行された書き込み操作 (PUT、POST、DELETE) について、"いつだれが何を" 行ったのかを確認できます。
 
-- [DDoS Protection メトリックのアラートを構成する方法](../../virtual-network/manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics)
+- [DDoS Protection メトリックのアラートを構成する方法](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
 
 - [Azure アクティビティ ログの診断設定を有効にする方法](../../azure-monitor/platform/activity-log.md)
 
@@ -60,7 +60,7 @@ Azure アクティビティ ログの診断設定を有効にして、Log Analyt
 
 **ガイダンス**: Azure アクティビティ ログの診断設定を有効にし、Log Analytics ワークスペースにログを送信します。 Log Analytics でクエリを実行して、用語の検索、傾向の特定、パターンの分析を行います。また、Recovery Services コンテナー用に収集された可能性があるアクティビティ ログ データに基づいて、多くの他の分析情報も提供されます。
 
-- [DDoS Protection 標準サービスのテレメトリ、ログ、および攻撃分析にアクセスする方法に関する情報](../../virtual-network/manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics)
+- [DDoS Protection 標準サービスのテレメトリ、ログ、および攻撃分析にアクセスする方法に関する情報](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
 
 - [Azure アクティビティ ログの診断設定を有効にする方法](../../azure-monitor/platform/activity-log.md)
 
@@ -96,7 +96,7 @@ Log Analytics ワークスペースを Azure Sentinel にオンボードしま�
 
 また、Azure Active Directory (AD) には、明示的に割り当てる必要があり、クエリ可能な組み込みロールがあります。 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。
 
-- [Azure DDoS Protection のアクセス許可を理解する](../../virtual-network/manage-ddos-protection.md#permissions-and-restrictions)
+- [Azure DDoS Protection のアクセス許可を理解する](../../ddos-protection/manage-permissions.md)
 
 - [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -166,7 +166,7 @@ Log Analytics ワークスペースを Azure Sentinel にオンボードしま�
 
 - [セキュリティで保護された Azure マネージド ワークステーションのデプロイ](../../active-directory/devices/howto-azure-managed-workstation.md)
 
-- [クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [クラウドベースの Azure AD Multi-Factor Authentication のデプロイの計画](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -266,7 +266,7 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 **ガイダンス**: Azure DDoS Protection プランに関する作業を行うには、使用するアカウントがネットワークの共同作業者ロール、または特定のアクションが割り当てられたカスタム ロールに、割り当てられている必要があります。
 
-- [Azure DDoS Protection で Azure ロールベースのアクセス制御 (Azure RBAC) を管理する](../../virtual-network/manage-ddos-protection.md)
+- [Azure DDoS Protection で Azure ロールベースのアクセス制御 (Azure RBAC) を管理する](../../ddos-protection/manage-ddos-protection.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -524,7 +524,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 Azure Monitor のアラート構成を使用すると、利用可能な DDoS Protection メトリックをどれでも選び、攻撃中に有効な軽減策がある場合にそのメトリックのアラートを受けることができます。 条件が満たされると、指定したアドレスにアラート メールが届きます
 
-- [DDoS Protection メトリックのアラートを構成する](../../virtual-network/manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics)
+- [DDoS Protection メトリックのアラートを構成する](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
 
 - [連続エクスポートを構成する方法](../../security-center/continuous-export.md)
 

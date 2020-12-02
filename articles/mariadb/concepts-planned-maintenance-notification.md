@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 1c9ae694fefcede599331d5d57a298bda4739f53
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: c290236dfe7e88999847f8cb0d66b2d3c868c1ab
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920527"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453296"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の計画メンテナンス通知
 
@@ -61,7 +61,7 @@ Azure portal で計画メンテナンス通知を確認するか、通知を受�
 7. [ルールの作成時に有効にする] を確実に [はい] に設定します。
 8. **[アラート ルールの作成]** を選択してアラートを完成させます
 
-**サービス正常性アラート** の作成方法の詳細な手順については、「[サービス通知のアクティビティ ログ アラートを作成する](../service-health/alerts-activity-log-service-notifications.md)」を参照してください。
+**サービス正常性アラート** の作成方法の詳細な手順については、「[サービス通知のアクティビティ ログ アラートを作成する](../service-health/alerts-activity-log-service-notifications-portal.md)」を参照してください。
 
 ## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>計画メンテナンスのキャンセルや延期は可能ですか?
 

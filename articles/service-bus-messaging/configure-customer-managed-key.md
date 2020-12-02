@@ -3,12 +3,12 @@ title: Azure Service Bus 保存データの暗号化用に独自のキーを構�
 description: この記事では、Azure Service Bus の保存データを暗号化するための独自のキーを構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 32fcdad28b06df1763ab1efb1740d87d0b247b0a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 35680819350582062dd4227c65f9e72ae8b3ee5c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843402"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489702"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Azure portal を使用して Azure Service Bus 保存データの暗号化用のカスタマー マネージド キーを構成する
 Azure Service Bus Premium では、Azure Storage Service Encryption (Azure SSE) による保存データの暗号化が提供されます。 Service Bus Premium では、データを格納するために Azure Storage が使用されます。既定では、Azure Storage を使用して格納されるすべてのデータは、Microsoft のマネージド キーを使用して暗号化されます。 
@@ -42,7 +42,7 @@ Azure portal でカスタマー マネージド キーを有効にするには�
 
 ## <a name="set-up-a-key-vault-with-keys"></a>キーを使用したキー コンテナーの設定
 
-カスタマー マネージド キーを有効にした後、カスタマー マネージド キーを Azure Service Bus 名前空間に関連付ける必要があります。 Service Bus では Azure Key Vault のみがサポートされます。 前のセクションで **カスタマー マネージド キーによる暗号化** のオプションを有効にした場合は、キーが Azure Key Vault にインポートされている必要があります。 また、キーに対して **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** が構成されている必要があります。 これらの設定は、[PowerShell](../key-vault/general/soft-delete-powershell.md) または [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection) を使用して構成できます。
+カスタマー マネージド キーを有効にした後、カスタマー マネージド キーを Azure Service Bus 名前空間に関連付ける必要があります。 Service Bus では Azure Key Vault のみがサポートされます。 前のセクションで **カスタマー マネージド キーによる暗号化** のオプションを有効にした場合は、キーが Azure Key Vault にインポートされている必要があります。 また、キーに対して **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** が構成されている必要があります。 これらの設定は、[PowerShell](../key-vault/general/key-vault-recovery.md) または [CLI](../key-vault/general/key-vault-recovery.md) を使用して構成できます。
 
 1. 新しいキー コンテナーを作成するには、Azure Key Vault の[クイック スタート](../key-vault/general/overview.md)に従ってください。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../key-vault/general/about-keys-secrets-certificates.md)」を参照してください。
 1. コンテナーの作成時、論理的な削除と消去保護の両方をオンにするには、[az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) コマンドを使用します。

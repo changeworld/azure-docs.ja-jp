@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 9524577d40c3b6b65bb3c3c8ff9e257b015ed90d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 4425fdf488665ad555c73c59682041cb23a9ca66
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012954"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447333"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning ワークスペースを作成して管理する 
 
@@ -30,7 +30,7 @@ ms.locfileid: "95012954"
 
 ## <a name="limitations"></a>制限事項
 
-* 新しいワークスペースを作成するときに、ワークスペースで自動的に必要な Azure サービスが作成されるようにするか、既存のサービスを提供することができます。 既存のサービスを提供する場合、これらのすべてのサービスがワークスペースと同じ Azure サブスクリプションに含まれている必要があります。
+[!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 

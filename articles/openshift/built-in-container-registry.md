@@ -6,12 +6,12 @@ ms.author: jiangma
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 0a6449e6b728ee690dd6ddee192868aaeb3511ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9ed53721b66dc03bad24e0510e0c8a970c61aec1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911041"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492422"
 ---
 # <a name="configure-built-in-container-registry-for-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 の組み込みのコンテナー レジストリを構成する
 
@@ -26,9 +26,9 @@ Azure Red Hat OpenShift には [OpenShift Container Registry (OCR)](https://docs
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、ARO クラスターが既に存在していることを前提としています。 ARO クラスターが必要な場合は、ARO チュートリアル「[Azure Red Hat OpenShift 4 クラスターを作成する](/azure/openshift/tutorial-create-cluster)」を参照してください。 `az aro create` に対して `--pull-secret` 引数を指定してクラスターを作成する必要があります。  これは、Azure Active Directory 認証と組み込みコンテナー レジストリを構成するために必要です。
+この記事は、ARO クラスターが既に存在していることを前提としています。 ARO クラスターが必要な場合は、ARO チュートリアル「[Azure Red Hat OpenShift 4 クラスターを作成する](./tutorial-create-cluster.md)」を参照してください。 `az aro create` に対して `--pull-secret` 引数を指定してクラスターを作成する必要があります。  これは、Azure Active Directory 認証と組み込みコンテナー レジストリを構成するために必要です。
 
-クラスターを作成したら、「[Azure Red Hat OpenShift 4 クラスターに接続する](/azure/openshift/tutorial-connect-cluster)」の手順に従ってクラスターに接続します。
+クラスターを作成したら、「[Azure Red Hat OpenShift 4 クラスターに接続する](./tutorial-connect-cluster.md)」の手順に従ってクラスターに接続します。
    * この記事の後半で `oc` コマンドを使用するため、「OpenShift CLI をインストールする」の手順に従ってください。
    * `https://console-openshift-console.apps.<random>.<region>.aroapp.io/` のようなクラスター コンソールの URL をメモします。 `<random>` と `<region>` の値は、この記事の後半で使用します。
    * `kubeadmin` 資格情報をメモします。 これは、この記事の後半でまた使用します。

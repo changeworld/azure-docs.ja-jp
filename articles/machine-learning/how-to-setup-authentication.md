@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 7fa6beacf4456145e312494a72dad321dfef3754
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ca8a36584c09d850ed1daab8cba301b244f76526
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843929"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447021"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning のリソースとワークフローの認証を設定する
 
@@ -67,7 +67,7 @@ SP を作成し、ワークスペースへのアクセス権を付与する最�
 
     CLI で既定のブラウザーを開くことができる場合、開いたブラウザにサインイン ページが読み込まれます。 それ以外の場合は、ブラウザーを開き、コマンド ラインの指示に従う必要があります。 この手順では、[https://aka.ms/devicelogin](https://aka.ms/devicelogin) にアクセスして認証コードを入力する必要があります。
 
-    Azure のサブスクリプションが複数ある場合、`az account set -s <subscription name or ID>` コマンドを使用してサブスクリプションを設定できます。 詳しくは、「[Use multiple Azure subscriptions (複数の Azure サブスクリプションを使用する)](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)」をご覧ください。
+    Azure のサブスクリプションが複数ある場合、`az account set -s <subscription name or ID>` コマンドを使用してサブスクリプションを設定できます。 詳しくは、「[Use multiple Azure subscriptions (複数の Azure サブスクリプションを使用する)](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)」をご覧ください。
 
     その他の認証方法については、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest)」を参照してください。
 
@@ -184,7 +184,7 @@ SP を作成し、ワークスペースへのアクセス権を付与する最�
 > interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
 > ```
 
-Azure CLI を使用する場合、CLI セッションの認証には `az login` コマンドを使用します。 詳細については、[Azure CLI の概要](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)に関するページをご覧ください。
+Azure CLI を使用する場合、CLI セッションの認証には `az login` コマンドを使用します。 詳細については、[Azure CLI の概要](/cli/azure/get-started-with-azure-cli)に関するページをご覧ください。
 
 > [!TIP]
 > 以前 Azure CLI を使用して対話的に認証した環境から SDK を使用している場合は、CLI にキャッシュされた資格情報を使用して `AzureCliAuthentication` クラスで、ワークスペースに認証できます。

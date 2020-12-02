@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 095a97d27439c54e2ade96e3a40349a0d95b9c11
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f6d17b007fcccd87aed17a9ec3ca039b9559ab6d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843096"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492235"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Site Recovery 用の Azure セキュリティ ベースライン
 
@@ -52,7 +52,7 @@ Site Recovery がどのように Azure セキュリティ ベンチマークに�
 
 Azure PowerShell または Azure CLI を使用して、タグに基づいたリソースの検索やアクション実行ができます。 
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags) 
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md) 
 
 - [Azure 仮想ネットワークの作成方法](../virtual-network/quick-create-portal.md) 
 
@@ -164,9 +164,9 @@ Log Analytics でクエリを実行して、用語の検索し、傾向の特定
 
 **ガイダンス**:ロールは既定では割り当てられません。 ビジネス ニーズに基づいて明示的に割り当てる必要があります。 すべてのロールの割り当ては、PowerShell CLI または Azure Active Directory (Azure AD) を使用して確認でき、これにより、管理グループのメンバーであるアカウントを検出できます。
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?amp;preserve-view=true&view=azureadps-2.0)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
 
 **Azure Security Center の監視**: はい
 
@@ -224,7 +224,7 @@ Log Analytics でクエリを実行して、用語の検索し、傾向の特定
 
 - [Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations) (Privileged Access Workstation)
 
-- [クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
+- [クラウドベースの Azure AD Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -270,7 +270,7 @@ Azure AD の ID およびアクセス レビューを使用して、グループ
 
 アクセス レビューが完了したユーザーだけが継続的にアクセスできるように、定期的にユーザー アクセスをレビューするプロセスを作成します。 
 
-- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring/)
+- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
 - [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
@@ -286,7 +286,7 @@ Azure AD サインイン アクティビティ、監査、およびリスク イ
 
 このプロセスをさらに効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査とサインインのログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペース内で必要なアラートを構成できます。
 
-- [Azure アクティビティ ログを Azure Monitor に統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -431,7 +431,7 @@ Site Recovery では、データの保存時の暗号化がサポートされて
 
 - [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -505,7 +505,7 @@ Azure でポリシーを作成および管理する方法を理解すること�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](/azure/governance/policy/samples)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -530,7 +530,7 @@ Azure でポリシーを作成および管理する方法を理解すること�
 **ガイダンス**: Azure Policy を使用して、Recovery Services コンテナーの標準的なセキュリティ構成を定義して実装します。 
 
 "Microsoft RecoveryServices" 名前空間で Azure Policy エイリアスを使用して、Site Recovery サービスの Recovery Services コンテナー リソースの構成を監査または適用するためのカスタム ポリシーを作成します。
-- [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -553,9 +553,9 @@ Azure でポリシーを作成および管理する方法を理解すること�
 
 **ガイダンス**:Recovery Services コンテナーと関連リソースにカスタム Azure Policy 定義を使用している場合は、Azure Repos を選択して、コードを安全に格納して管理します。
 
-- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
 
-- [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Azure Repos のドキュメント](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -608,7 +608,7 @@ Azure リソースの構成を自動的に適用するには、Azure Policy の 
 
 マネージド ID を使用すると、コードに資格情報を追加しなくても、Azure AD の認証をサポートするさまざまなサービス (Key Vault を含む) に対して認証を行うことができます。
 
-- [Azure マネージド ID と統合する方法](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity?tabs=core2x)
+- [Azure マネージド ID と統合する方法](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md?tabs=core2x)
 
 - [Recovery Services コンテナーでシステム マネージド ID を有効にする方法](azure-to-azure-how-to-enable-replication-private-endpoints.md#enable-the-managed-identity-for-the-vault)
 
@@ -638,7 +638,7 @@ Azure リソースの構成を自動的に適用するには、Azure Policy の 
 
 - [Azure Cloud Services および Virtual Machines 向けの Microsoft Antimalware について](../security/fundamentals/antimalware.md)
 
-- [データ サービスに対する Azure Security Center の脅威検出について](/azure/security-center/threat-protection)
+- [データ サービスに対する Azure Security Center の脅威検出について](../security-center/azure-defender.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -656,7 +656,7 @@ Site Recovery サービス メタデータによって使用される、構成�
 
 これは顧客のスコープ外であり、Site Recovery チームによって内部で処理されます。 顧客は、Azure でキー コンテナーのキーをバックアップできます。
 
-- [Azure 上でキー コンテナーのキーをバックアップする方法](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -666,7 +666,7 @@ Site Recovery サービス メタデータによって使用される、構成�
 
 **ガイダンス**:バックアップされたカスタマー マネージド キーの復元を定期的にテストします。
 
-- [Azure でキー コンテナーのキーを復元する方法](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure でキー コンテナーのキーを復元する方法](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -676,7 +676,7 @@ Site Recovery サービス メタデータによって使用される、構成�
 
 **ガイダンス**:データは、Azure の Infrastructure as a Service (IaaS) ベースの仮想マシンで Storage Service Encryption (SSE) を使用して保存時に暗号化されます。 Key Vault で論理的な削除を有効にして、偶発的または悪意のある削除からキーを保護します。
 
-- [Key Vault で論理的な削除を有効にする方法](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview?tabs=azure-portal)
+- [Key Vault で論理的な削除を有効にする方法](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center の監視**: はい
 
@@ -712,7 +712,7 @@ Site Recovery サービス メタデータによって使用される、構成�
 
 - [Security alerts in Azure Security Center](../security-center/security-center-alerts-overview.md) 
 
-- [タグを使用した Azure リソースの整理](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -778,5 +778,5 @@ Site Recovery サービス メタデータによって使用される、構成�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

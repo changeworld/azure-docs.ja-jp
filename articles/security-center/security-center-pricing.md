@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/24/2020
 ms.author: memildin
-ms.openlocfilehash: ee2582d25477d9b9f4fe0bac6b230132a797fd0f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6c0e92c566dd69cdea14c9c7d346a5ec65f892bf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95896596"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487951"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure Security Center の価格
 Azure Security Center は、Azure、オンプレミス、他のクラウドで実行されているワークロードの統合セキュリティ管理と高度な脅威保護を実現します。 ハイブリッド クラウド ワークロードの可視化と制御、脅威にさらされる機会を減らす積極的防御、急速に進化するサイバー リスクへの対応に役立つインテリジェント検出などの機能が提供されます。
@@ -83,12 +83,12 @@ Security Center には 2 つのプランがあります。
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>サブスクリプションで Azure Defender を有効にするにはどうすればよいですか? 
 以下に示すどの方法でも、ご利用のサブスクリプションに対して Azure Defender を有効にすることができます。 
 
-|メソッド  |Instructions  |
+|Method  |手順  |
 |---------|---------|
 |Azure portal の Azure Security Center ページ|[Azure Defender を有効にする](#enable-azure-defender)|
-|REST API|[Pricings API](https://docs.microsoft.com/rest/api/securitycenter/pricings)|
-|Azure CLI|[az security pricing](https://docs.microsoft.com/cli/azure/security/pricing)|
-|PowerShell|[Set-AzSecurityPricing](https://docs.microsoft.com/powershell/module/az.security/set-azsecuritypricing)|
+|REST API|[Pricings API](/rest/api/securitycenter/pricings)|
+|Azure CLI|[az security pricing](/cli/azure/security/pricing)|
+|PowerShell|[Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)|
 |Azure Policy|[バンドルの価格](https://github.com/Azure/Azure-Security-Center/tree/master/Pricing%20%26%20Settings/Azure%20Policy%20definitions/Bundle%20Pricings)|
 |||
 
@@ -105,13 +105,13 @@ Security Center には 2 つのプランがあります。
 > このことは、Security Center によって保護される他の種類のリソースにも当てはまります。 
 
 ### <a name="will-i-be-charged-for-machines-without-the-log-analytics-agent-installed"></a>Log Analytics エージェントがインストールされていないマシンは課金されますか?
-はい。 サブスクリプションで[サーバー用 Azure Defender](defender-for-servers-introduction.md) を有効にすると、そのサブスクリプション内のマシンには、Log Analytics エージェントがインストールされていなくても一連の保護が適用されます。
+正解です。 サブスクリプションで[サーバー用 Azure Defender](defender-for-servers-introduction.md) を有効にすると、そのサブスクリプション内のマシンには、Log Analytics エージェントがインストールされていなくても一連の保護が適用されます。
 
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice"></a>Log Analytics エージェントが複数のワークスペースにレポートする場合、二重に課金されるのですか? 
-はい。 2 つ以上の異なる Log Analytics ワークスペース (マルチホーム) にデータを送信するように Log Analytics エージェントを構成した場合、"セキュリティ" または "マルウェア対策" ソリューションがインストールされている各ワークスペースが課金の対象となります。 
+正解です。 2 つ以上の異なる Log Analytics ワークスペース (マルチホーム) にデータを送信するように Log Analytics エージェントを構成した場合、"セキュリティ" または "マルウェア対策" ソリューションがインストールされている各ワークスペースが課金の対象となります。 
 
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them"></a>Log Analytics エージェントが複数のワークスペースにレポートする場合、それらすべてで 500 MB 無料のデータ インジェストが利用できるのですか?
-はい。 2 つ以上の異なる Log Analytics ワークスペース (マルチホーム) にデータを送信するように Log Analytics エージェントを構成した場合、500 MB 分のデータ インジェストが無料になります。 これはノード単位、レポート先ワークスペース単位、日単位で計算され、"セキュリティ" または "マルウェア対策" ソリューションがインストールされているどのワークスペースでも利用できます。 500 MB を超えて取り込まれたデータについては課金の対象となります。
+正解です。 2 つ以上の異なる Log Analytics ワークスペース (マルチホーム) にデータを送信するように Log Analytics エージェントを構成した場合、500 MB 分のデータ インジェストが無料になります。 これはノード単位、レポート先ワークスペース単位、日単位で計算され、"セキュリティ" または "マルウェア対策" ソリューションがインストールされているどのワークスペースでも利用できます。 500 MB を超えて取り込まれたデータについては課金の対象となります。
 
 
 ## <a name="next-steps"></a>次のステップ

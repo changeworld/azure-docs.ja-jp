@@ -300,7 +300,7 @@
         - name: 予約インスタンス
           items:
             - name: VM の前払い
-              href: prepay-reserved-vm-instances.md
+              href: ../prepay-reserved-vm-instances.md
             - name: Azure の予約とは
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: VM インスタンス サイズの柔軟性
@@ -570,7 +570,7 @@
             - name: Bastion ホストの作成
               items:
                 - name: ポータル
-                  href: ../../bastion/bastion-create-host-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  href: ../../bastion/tutorial-create-host-portal.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
                 - name: PowerShell
                   href: ../../bastion/bastion-create-host-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: CLI
@@ -650,6 +650,7 @@
         - name: OS ディスクの交換
           href: os-disk-swap.md
         - name: VM にタグを付ける
+          href: time-sync.md
           items:
             - name: ポータル
               href: ../tag-portal.md
@@ -660,7 +661,6 @@
             - name: Template
               href: ../tag-template.md
             - name: 時間同期
-          href: time-sync.md
         - name: VM でのスクリプトの実行
           href: run-scripts-in-vm.md
           items:
@@ -863,8 +863,6 @@
           href: install-mongodb.md
         - name: SAP on Azure
           href: ../workloads/sap/get-started.md
-        - name: MATLAB クラスター
-          href: matlab-mdcs-cluster.md
         - name: "Visual\_Studio"
           href: using-visual-studio-vm.md
         - name: ハイ パフォーマンス コンピューティング (HPC)

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 5734e028f7a735a48e49f4e6c582682bcd7cbd97
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 24e52f517f46de06fef8aa52e889185826c20d44
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888387"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498397"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>クラシックから Azure Resource Manager への移行に関してよく寄せられる質問
 
@@ -126,7 +126,7 @@ Resource Manager デプロイ モデルへのツールの更新は、移行計�
 
 Linux の場合:
 
-* [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](./linux/migration-classic-resource-manager-overview.md)
+* [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](./migration-classic-resource-manager-overview.md)
 * [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](migration-classic-resource-manager-deep-dive.md)
 * [クラシックから Azure Resource Manager への IaaS リソースの移行計画](migration-classic-resource-manager-plan.md)
 * [PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](migration-classic-resource-manager-ps.md)

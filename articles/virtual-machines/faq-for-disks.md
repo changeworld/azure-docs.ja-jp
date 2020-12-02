@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d6cf0ba06293a073fc8fbe26e2386f1852429002
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: dcfef81f2d7f3413489490d97c143fdec7e11bed
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843997"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499324"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 
@@ -151,7 +151,7 @@ Azure ディスク予約には、指定された SKU の Premium SSD を P30 (1 
 予約は、容量ではなくディスクの形式で行われます。 つまり、P80 (32 TiB) ディスクを予約すると、1 個の P80 ディスクが取得され、その特定の予約を 2 つの小さな P70 (16 TiB) ディスクに分割することはできません。 もちろん、2 つの個別の P70 (16 TiB) ディスクなど、任意の数のディスクを予約することができます。
 
 **Azure ディスク予約はどのように適用されますか?**     
-ディスク予約は、予約済み仮想マシン (VM) インスタンスと似たモデルに従います。 違いは、ディスク予約を異なる SKU に適用することはできませんが、VM インスタンスでは可能である点です。 VM インスタンスの詳細については、「[Azure Reserved VM Instances を使用してコストを削減する](./linux/prepay-reserved-vm-instances.md)」を参照してください。     
+ディスク予約は、予約済み仮想マシン (VM) インスタンスと似たモデルに従います。 違いは、ディスク予約を異なる SKU に適用することはできませんが、VM インスタンスでは可能である点です。 VM インスタンスの詳細については、「[Azure Reserved VM Instances を使用してコストを削減する](./prepay-reserved-vm-instances.md)」を参照してください。     
 
 **Azure ディスク予約を介して購入したデータ ストレージは、複数のリージョンで使用できますか?**     
 Azure ディスク予約は、特定のリージョンと SKU (米国東部 2 の P30 など) 用に購入されるため、こうした構成要素以外では使用できません。 他のリージョンまたは SKU のディスク ストレージのニーズに合わせて、いつでも追加の Azure ディスク予約を購入できます。    

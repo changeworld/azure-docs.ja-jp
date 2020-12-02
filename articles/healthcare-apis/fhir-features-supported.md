@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: cavoeg
-ms.openlocfilehash: 3aea2322129c383a385168c54001464da5dae276
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 9a4c331d82695aecb53990fd604ade82f3361959
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95520086"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452911"
 ---
 # <a name="features"></a>特徴
 
@@ -100,8 +100,8 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 |-------------------------|-----------|-----------|-----------|---------|
 | `_sort`                 | Partial        | 部分的   | 部分的        |   `_sort=_lastUpdated` がサポートされています       |
 | `_count`                | はい       | はい       | はい       | `_count` の上限は 100 文字です。 100 より大きい値に設定すると、100 個だけが返され、バンドルで警告が返されます。 |
-| `_include`              | はい       | はい       | Yes       |含まれる項目は 100 に制限されています。 Cosmos DB 上の PaaS や OSS に含めても :iterate のサポートは含まれません。|
-| `_revinclude`           | はい       | はい       | Yes       | 含まれる項目は 100 に制限されています。 Cosmos DB 上の PaaS や OSS に含めても :iterate のサポートは含まれません。|
+| `_include`              | はい       | はい       | はい       |含まれる項目は 100 に制限されています。 Cosmos DB 上の PaaS や OSS に含めても :iterate のサポートは含まれません。|
+| `_revinclude`           | はい       | はい       | はい       | 含まれる項目は 100 に制限されています。 Cosmos DB 上の PaaS や OSS に含めても :iterate のサポートは含まれません。|
 | `_summary`              | Partial   | Partial   | Partial   | `_summary=count` がサポートされています |
 | `_total`                | Partial   | Partial   | Partial   | _total=non および _total=accurate      |
 | `_elements`             | はい       | はい       | はい       |         |
@@ -135,7 +135,7 @@ FHIR Server は、アクセス制御のために [Azure Active Directory](https:
 
 ## <a name="service-limits"></a>サービスの制限
 
-* [**要求ユニット (RU)** ](https://docs.microsoft.com/azure/cosmos-db/concepts-limits) - Azure API for FHIR のポータルで最大 10,000 RU を構成できます。 少なくとも 400 RU か 10 RU/GB が必要になります (大きい方)。 必要な単位が 10,000 RU を超える場合、サポート チケットを発行して増やすことができます。 利用できる最大値は 1,000,000 です。
+* [**要求ユニット (RU)** ](../cosmos-db/concepts-limits.md) - Azure API for FHIR のポータルで最大 10,000 RU を構成できます。 少なくとも 400 RU か 10 RU/GB が必要になります (大きい方)。 必要な単位が 10,000 RU を超える場合、サポート チケットを発行して増やすことができます。 利用できる最大値は 1,000,000 です。
 
 * **コンカレント接続** と **インスタンス** - 既定では、クラスター内の 2 つのインスタンス上で 5 つのコンカレント接続が用意されています (同時要求は合計で 10)。 同時要求がさらに必要であると思われる場合、サポート チケットを開き、ニーズの詳細を含めてください。
 

@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: b309ce01595e2e62bea7f78ae728d83bc7d9b9be
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1217d3af855e96b6d6a0f403c2ff351a6b957d9a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992167"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459667"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance で一般的なセキュリティ要件を解決するためのプレイブック
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "94992167"
 
 ### <a name="deployment-offers-not-covered-in-this-guide"></a>このガイドで扱っていないデプロイのオファー
 
-- Azure Synapse Analytics (旧称 SQL Data Warehouse)
+- Azure Synapse Analytics
 - Azure SQL VM (IaaS)
 - SQL Server
 
@@ -112,7 +112,7 @@ ID の中央管理には、次のような利点があります。
 > - Azure AD アクセス トークンはクライアント側にキャッシュされ、その有効期間はトークンの構成によって異なります。 「[Azure Active Directory における構成可能なトークンの有効期間](../../active-directory/develop/active-directory-configurable-token-lifetimes.md)」という記事を参照してください。
 > - Azure AD Authentication の問題のトラブルシューティングのガイダンスについては、次のブログを参照してください。[Azure AD のトラブルシューティング](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991)。
 
-### <a name="azure-ad-multi-factor-authentication"></a>Azure AD の Multi-Factor Authentication
+### <a name="azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication
 
 > 次で言及されています: OSA プラクティス #2、ISO アクセス制御 (AC)
 
@@ -614,7 +614,7 @@ SQL Managed Instance の場合:
 
 DDoS 保護は、Azure プラットフォームの一部として自動的に有効になります。 これには、パブリック エンドポイントでのネットワーク レベル攻撃に対する常時オンのトラフィック監視とリアルタイム軽減策が含まれます。
 
-- [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md) を使用して、仮想ネットワークにデプロイされたリソースに関連付けられているパブリック IP アドレスを監視します。
+- [Azure DDoS Protection](../../ddos-protection/ddos-protection-overview.md) を使用して、仮想ネットワークにデプロイされたリソースに関連付けられているパブリック IP アドレスを監視します。
 
 - [SQL Database の Advanced Threat Protection](threat-detection-overview.md) を使用して、データベースに対するサービス拒否 (DoS) 攻撃を検出します。
 

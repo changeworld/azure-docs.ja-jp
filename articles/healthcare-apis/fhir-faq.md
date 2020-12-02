@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 744bcfe196629f76c5505f36ef9c8c224fefe601
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 31ae5b780bf451e29a97f04202f804db27fc387a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95909069"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452940"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Azure API for FHIR についてよく寄せられる質問
 
@@ -31,7 +31,7 @@ ms.locfileid: "95909069"
 現在当社は、ID プロバイダーとして Microsoft Azure Active Directory をサポートしています。
 
 ### <a name="what-is-the-recovery-point-objective-rpo-for-the-azure-api-for-fhir"></a>Azure API for FHIR の回復ポイントの目標 (RPO) はどれくらいですか?
-Azure API for FHIR では、永続化プロバイダーとして Cosmos DB が使用されています。 このため、サービスの RPO は [Cosmos DB (単一リージョン)](https://docs.microsoft.com/azure/cosmos-db/consistency-levels) と等しくなり、240 分未満です。
+Azure API for FHIR では、永続化プロバイダーとして Cosmos DB が使用されています。 このため、サービスの RPO は [Cosmos DB (単一リージョン)](../cosmos-db/consistency-levels.md) と等しくなり、240 分未満です。
 
 ### <a name="what-fhir-version-do-you-support"></a>どのバージョンの FHIR がサポートされますか?
 
@@ -122,7 +122,7 @@ $export は、FHIR 仕様 (https://hl7.org/fhir/uv/bulkdata/export/index.html ) 
 
 ### <a name="where-can-i-see-an-example-of-connecting-a-web-application-to-azure-api-for-fhir"></a>Web アプリケーションを Azure API for FHIR に接続する例については、どこで見られますか?
 
-アプリケーションとシナリオの例を含む、[正常性アーキテクチャの GitHub ページ](https://github.com/microsoft/health-architectures)があります。 そこでは、Web アプリケーションを Azure API for FHIR に接続する方法を示しています。  
+アプリケーションとシナリオの例を含む、[正常性アーキテクチャの GitHub ページ](https://aka.ms/health-architectures)があります。 そこでは、Web アプリケーションを Azure API for FHIR に接続する方法を示しています。  
 
 ## <a name="azure-api-for-fhir-features-and-services"></a>Azure API for FHIR の機能とサービス 
 

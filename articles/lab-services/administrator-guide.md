@@ -3,12 +3,12 @@ title: Azure Lab Services - 管理者ガイド | Microsoft Docs
 description: このガイドは、Azure Lab Services を使用してラボ アカウントを作成および管理する管理者に役立ちます。
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: 08d2fea719ad67f666ea9da09721dc3f7ab54768
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3ad3ee38a6c08a6af85822d76012cc6dfc34ff4e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999282"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462469"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services - 管理者ガイド
 大学のクラウド リソースを管理する情報技術 (IT) 管理者は、通常、学校のラボ アカウントの設定を担当します。 管理者または教師は、ラボ アカウントを設定した後、アカウント内に含まれるラボを作成します。 この記事では、関連する Azure リソースの概要を説明し、それらを作成するためのガイダンスを示します。
@@ -167,14 +167,14 @@ Azure Lab Services のリソースを設定する場合、リソースをホス�
 
 | サイズ | 仕様 | 系列 | 推奨される用途 |
 | ---- | ----- | ------ | ------------- |
-| Small| <ul><li>2&nbsp;コア</li><li>3.5 GB RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | コマンド ライン、Web ブラウザーの起動、トラフィックが少ない Web サーバー、中小規模のデータベースに最も適しています。 |
-| Medium | <ul><li>4&nbsp;コア</li><li>7&nbsp;GB&nbsp;RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | リレーショナル データベース、メモリ内キャッシュ、分析に最も適しています。 |
-| 中 (入れ子になった仮想化) | <ul><li>4&nbsp;コア</li><li>16&nbsp;GB&nbsp;RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | リレーショナル データベース、メモリ内キャッシュ、分析に最も適しています。
+| Small| <ul><li>2&nbsp;コア</li><li>3.5 GB RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | コマンド ライン、Web ブラウザーの起動、トラフィックが少ない Web サーバー、中小規模のデータベースに最も適しています。 |
+| Medium | <ul><li>4&nbsp;コア</li><li>7&nbsp;GB&nbsp;RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | リレーショナル データベース、メモリ内キャッシュ、分析に最も適しています。 |
+| 中 (入れ子になった仮想化) | <ul><li>4&nbsp;コア</li><li>16&nbsp;GB&nbsp;RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#dsv3-series) | リレーショナル データベース、メモリ内キャッシュ、分析に最も適しています。
 | Large | <ul><li>8&nbsp;コア</li><li>16&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_A8_v2](../virtual-machines/av2-series.md) | 高速の CPU、ローカル ディスクのより優れたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。  また、このサイズは入れ子になった仮想化もサポートしています。 |
-| 大 (入れ子になった仮想化) | <ul><li>8&nbsp;コア</li><li>32&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | 高速の CPU、ローカル ディスクのより優れたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。 |
+| 大 (入れ子になった仮想化) | <ul><li>8&nbsp;コア</li><li>32&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#dsv3-series) | 高速の CPU、ローカル ディスクのより優れたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。 |
 | 小規模 GPU (視覚化) | <ul><li>6&nbsp;コア</li><li>56&nbsp;GB&nbsp;RAM</li>  | [Standard_NV6](../virtual-machines/nv-series.md) | OpenGL や DirectX などのフレームワークを使用するリモート視覚化、ストリーミング、ゲーム、エンコードに最適です。 |
 | Small GPU (Compute) | <ul><li>6&nbsp;コア</li><li>56&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_NC6](../virtual-machines/nc-series.md) |AI やディープ ラーニングなどのコンピューティング集中型アプリケーションに最も適しています。 |
-| 中規模 GPU (視覚化) | <ul><li>12&nbsp;コア</li><li>112&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | OpenGL や DirectX などのフレームワークを使用するリモート視覚化、ストリーミング、ゲーム、エンコードに最適です。 |
+| 中規模 GPU (視覚化) | <ul><li>12&nbsp;コア</li><li>112&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | OpenGL や DirectX などのフレームワークを使用するリモート視覚化、ストリーミング、ゲーム、エンコードに最適です。 |
 
 ## <a name="manage-identity"></a>ID の管理
 
@@ -271,7 +271,7 @@ Azure Lab Services では、ラボが配置されている[地域内のターゲ
 
 共有イメージ ギャラリーには、特定のリージョンへのレプリケーションを削除するオプションがありますが、コストを削減する方法としてレプリケーションを削除しないでください。 レプリケーションを変更すると、Azure Lab Services で、共有イメージ ギャラリー内に保存されたイメージから VM を発行することができなくなるおそれがあります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ラボの設定と管理の詳細については、以下を参照してください。
 

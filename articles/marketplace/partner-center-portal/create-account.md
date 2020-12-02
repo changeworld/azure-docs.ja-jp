@@ -8,12 +8,12 @@ ms.date: 11/02/2020
 author: parthpandyaMSFT
 ms.author: parthp
 ms.custom: contperfq2
-ms.openlocfilehash: ccdc87d03181bad1aba4dd362a651fa42381343a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 39a9b363c847b615bfbe049b4b47628e8688c607
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95542288"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458115"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>パートナー センターでコマーシャル マーケットプレース アカウントを作成する
 
@@ -114,7 +114,7 @@ Microsoft Partner Network アカウントを使用すると、会社の職場メ
 >
 >個人アカウントは、独自に作業する開発者向けです。 会社アカウントは、組織や企業向けです。 会社アカウントでは、追加機能を使用してアプリを送信することができます。
 >
-> 会社のアカウントを設定する権限があることを確認するために、登録後に会社のアカウントを追加で検証する必要があります。 この検証には、数日から数週間かかることがあり、多くの場合、会社への電話連絡が含まれます。 どちらの種類のアカウントでも、アプリ、アドイン、サービスを送信できます。 詳細については、「 [アカウントの種類、場所、料金](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees)」を参照してください。
+> 会社のアカウントを設定する権限があることを確認するために、登録後に会社のアカウントを追加で検証する必要があります。 この検証には、数日から数週間かかることがあり、多くの場合、会社への電話連絡が含まれます。 どちらの種類のアカウントでも、アプリ、アドイン、サービスを送信できます。 詳細については、「 [アカウントの種類、場所、料金](/windows/uwp/publish/account-types-locations-and-fees)」を参照してください。
 
 開発者プログラムと同じアカウントで商業マーケットプレース プログラムに登録すると、パートナー センターの左側のウィンドウに既存のすべてのプログラムの登録が表示されます。
 

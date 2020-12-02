@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/06/2020
 ms.author: nichola
 ms.reviewer: ''
-ms.openlocfilehash: 975c92256ea0993badde0faf840a939f42901059
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 86c379316737b7718b62165a6feb93ca3a0e9954
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95753699"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484041"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>継続的アクセス評価が有効になった API をアプリケーションで使用する方法
 
@@ -27,9 +27,9 @@ ms.locfileid: "95753699"
 
 ## <a name="implementation-considerations"></a>実装時の注意事項
 
-継続的アクセス評価を使用するには、アプリもそれがアクセスするリソース API も CAE 対応であることが必要です。 ただし、CAE 対応のリソースを使用するようにコードを準備しても、CAE 対応でない API を使用できなくなるわけではありません。 
+継続的アクセス評価を使用するには、アプリもそれがアクセスするリソース API も CAE 対応であることが必要です。 ただし、CAE 対応のリソースを使用するようにコードを準備しても、CAE 対応でない API を使用できなくなるわけではありません。
 
-リソース API によって CAE が実装されていて、CAE を処理できることがご利用のアプリケーションで宣言されている場合、アプリには、そのリソースに対して CAE トークンが与えられます。 このため、CAE に対応する準備がアプリでできていることを宣言する場合、アプリケーションは、Microsoft Identity アクセス トークンを受け入れるすべてのリソース API の CAE 要求チャレンジを処理する必要があります。 これらの API 呼び出し内で CAE 応答を処理しない場合、トークンが、返された有効期間内にまだあるものの CAE のために取り消されている状態では、API 呼び出しを再試行するループにアプリが陥る可能性があります。 
+リソース API によって CAE が実装されていて、CAE を処理できることがご利用のアプリケーションで宣言されている場合、アプリには、そのリソースに対して CAE トークンが与えられます。 このため、CAE に対応する準備がアプリでできていることを宣言する場合、アプリケーションは、Microsoft Identity アクセス トークンを受け入れるすべてのリソース API の CAE 要求チャレンジを処理する必要があります。 これらの API 呼び出し内で CAE 応答を処理しない場合、トークンが、返された有効期間内にまだあるものの CAE のために取り消されている状態では、API 呼び出しを再試行するループにアプリが陥る可能性があります。
 
 ## <a name="the-code"></a>コード
 
@@ -57,7 +57,7 @@ WWW-Authenticate=Bearer
 ```csharp
 if (APIresponse.IsSuccessStatusCode)
 {
-    // . . .
+    // ...
 }
 else
 {
@@ -99,7 +99,7 @@ catch (MsalUiRequiredException)
             .ExecuteAsync()
             .ConfigureAwait(false);
     }
-    // . . .
+    // ...
 ```
 
 CAE 対応のリソースから返された要求チャレンジを処理する準備がアプリケーションでできたら、そのアプリが CAE に対応可能な状態にあることを Microsoft Identity に伝えることができます。 これをお使いの MSAL アプリケーションで行うには、"cp1" のクライアント機能を使用してパブリック クライアントを構築します。
@@ -114,6 +114,6 @@ _clientApp = PublicClientApplicationBuilder.Create(App.ClientId)
 
 ユーザーをアプリケーションにサインインさせてから、Azure portal を使用してユーザーのセッションを取り消すことで、アプリケーションをテストできます。 CAE 対応の API が次にアプリで呼び出されたとき、ユーザーは再認証を行うように求められます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-詳細については、「[継続的アクセス評価](/conditional-access/concept-continuous-access-evaluation.md)」を参照してください。
+詳細については、「[継続的アクセス評価](../conditional-access/concept-continuous-access-evaluation.md)」を参照してください。

@@ -3,16 +3,16 @@ title: Azure Service Bus サブスクリプション ルール SQL フィルタ�
 description: この記事では、SQL フィルターの文法について詳しく説明します。 SQL フィルターでは、SQL-92 標準のサブセットがサポートされます。
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: bd263e8177652165376d4f6fe9e231af71ebdcbe
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 9bff18b2161e419d728c360c9ed950ac2867fea8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95805629"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498678"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>サブスクリプション ルールの SQL フィルター構文
 
-"*SQL フィルター*" は、Service Bus トピック サブスクリプションで使用できるフィルターの種類の 1 つです。 これは、SQL-92 標準のサブセットに基づくテキスト式です。 フィルター式は、[Azure Resource Manager テンプレート](service-bus-resource-manager-namespace-topic-with-rule.md)内の Service Bus `Rule` の 'sqlFilter' プロパティの `sqlExpression` 要素、Azure CLI `az servicebus topic subscription rule create` コマンドの [`--filter-sql-expression`](https://docs.microsoft.com/cli/azure/servicebus/topic/subscription/rule?view=azure-cli-latest&preserve-view=true#az_servicebus_topic_subscription_rule_create) 引数、およびサブスクリプション ルールの管理を可能にするいくつかの SDK 関数と共に使用されます。
+"*SQL フィルター*" は、Service Bus トピック サブスクリプションで使用できるフィルターの種類の 1 つです。 これは、SQL-92 標準のサブセットに基づくテキスト式です。 フィルター式は、[Azure Resource Manager テンプレート](service-bus-resource-manager-namespace-topic-with-rule.md)内の Service Bus `Rule` の 'sqlFilter' プロパティの `sqlExpression` 要素、Azure CLI `az servicebus topic subscription rule create` コマンドの [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) 引数、およびサブスクリプション ルールの管理を可能にするいくつかの SDK 関数と共に使用されます。
 
 Service Bus Premium では、JMS 2.0 API を介して [JMS SQL メッセージ セレクター構文](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html)もサポートされています。
 
@@ -52,7 +52,7 @@ Service Bus Premium では、JMS 2.0 API を介して [JMS SQL メッセージ �
   
 -   `<scope>` は、`<property_name>` のスコープを示す省略可能な文字列です。 有効な値は `sys` または `user`です。 `sys` 値は、`<property_name>` が [BrokeredMessage クラス](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)のパブリック プロパティ名である場合にシステム スコープを示します。 `user` は、`<property_name>` が [BrokeredMessage クラス](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)のディクショナリのキーである場合にユーザー スコープを示します。 `<scope>` が指定されていない場合、`user` スコープが既定のスコープです。  
   
-## <a name="remarks"></a>注釈
+## <a name="remarks"></a>解説
 
 存在しないシステム プロパティにアクセスしようとするとエラーになりますが、存在しないユーザー プロパティにアクセスしようとしてもエラーにはなりません。 代わりに、存在しないユーザー プロパティは不明な値として内部的に評価されます。 不明な値は演算子の評価時に特別に処理されます。  
   
@@ -105,7 +105,7 @@ Service Bus Premium では、JMS 2.0 API を介して [JMS SQL メッセージ �
       <expression>  
 ```  
   
-### <a name="remarks"></a>注釈
+### <a name="remarks"></a>解説
   
 `<pattern>` は、文字列として評価される式である必要があります。 これは LIKE 演算子のパターンとして使用されます。      次のワイルドカード文字を含めることができます。  
   
@@ -120,7 +120,7 @@ Service Bus Premium では、JMS 2.0 API を介して [JMS SQL メッセージ �
       <expression>  
 ```  
   
-### <a name="remarks"></a>注釈  
+### <a name="remarks"></a>解説  
 
 `<escape_char>` は、長さ 1 の文字列として評価される式である必要があります。 これは、LIKE 演算子のエスケープ文字として使用されます。  
   
@@ -169,7 +169,7 @@ Service Bus Premium では、JMS 2.0 API を介して [JMS SQL メッセージ �
       TRUE | FALSE  
 ```  
   
-### <a name="remarks"></a>注釈  
+### <a name="remarks"></a>解説  
 
 ブール型の定数は、**TRUE** または **FALSE** キーワードで表されます。 値は `System.Boolean` として格納されます。  
   
@@ -179,7 +179,7 @@ Service Bus Premium では、JMS 2.0 API を介して [JMS SQL メッセージ �
 <string_constant>  
 ```  
   
-### <a name="remarks"></a>注釈  
+### <a name="remarks"></a>解説  
 
 文字列定数は単一引用符で囲まれ、任意の有効な Unicode 文字が含まれます。 文字列定数に組み込む単一引用符は、2 つの単一引用符で表されます。  
   
@@ -191,7 +191,7 @@ Service Bus Premium では、JMS 2.0 API を介して [JMS SQL メッセージ �
       property(name) | p(name)  
 ```  
   
-### <a name="remarks"></a>注釈
+### <a name="remarks"></a>解説
   
 `newid()` 関数は、`System.Guid.NewGuid()` メソッドによって生成された `System.Guid` を返します。  
   
@@ -321,7 +321,7 @@ sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','S
 C# のサンプルについては、[GitHub のトピック フィルターのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters)を参照してください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [SQLFilter クラス (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [SQLFilter クラス (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)

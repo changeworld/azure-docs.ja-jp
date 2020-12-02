@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ec619681f1eebc51da85d31ad15f1db25cfd3cbc
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 570281e31c70b2f5f85a858f9dd424f93ee86029
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917921"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460061"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault を Azure Private Link と統合する
 
@@ -226,14 +226,14 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 * プライベート DNS ゾーン リソースがあることを調べて確認します。 
     1. プライベート DNS ゾーン リソースの名前は、正確に privatelink.vaultcore.azure.net である必要があります。 
-    2. これを設定する方法については、次のリンクを参照してください。 [プライベート DNS ゾーン](https://docs.microsoft.com/azure/dns/private-dns-privatednszone)
+    2. これを設定する方法については、次のリンクを参照してください。 [プライベート DNS ゾーン](../../dns/private-dns-privatednszone.md)
     
 * プライベート DNS ゾーンが仮想ネットワークにリンクされていないことを確認します。 パブリック IP アドレスがまだ返される場合は、これが問題である可能性があります。 
     1. プライベート DNS ゾーンが仮想ネットワークにリンクされていない場合、仮想ネットワークから送信された DNS クエリでは、キー コンテナーのパブリック IP アドレスが返されます。 
     2. Azure portal でプライベート DNS ゾーン リソースに移動し、仮想ネットワーク リンクのオプションをクリックします。 
     4. キー コンテナーへの呼び出しを実行する仮想ネットワークが、一覧に表示されている必要があります。 
     5. ない場合は追加します。 
-    6. 詳細な手順については、[プライベート DNS ゾーンへの仮想ネットワークのリンク](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)に関するドキュメントを参照してください
+    6. 詳細な手順については、[プライベート DNS ゾーンへの仮想ネットワークのリンク](../../dns/private-dns-getstarted-portal.md#link-the-virtual-network)に関するドキュメントを参照してください
 
 * キー コンテナーの A レコードがプライベート DNS ゾーンから欠落していないことを確認します。 
     1. [プライベート DNS ゾーン] ページに移動します。 

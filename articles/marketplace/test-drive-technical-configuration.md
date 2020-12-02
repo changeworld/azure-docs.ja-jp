@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: de85e4eb553f623790b472e79f8f97487ba96b48
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 553eba3898a5ea42e5d478603e35e82c68abcab1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95751115"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462899"
 ---
 # <a name="test-drive-technical-configuration"></a>体験版の技術的な構成
 
@@ -38,9 +38,9 @@ Microsoft は、サービスのプロビジョニングとプロビジョニン�
 
 - **ロール名** (必須) – カスタム Dynamics 365 体験版に定義したセキュリティ ロール名を指定します。体験版の間、これがユーザーに割り当てられます。(例: test-drive-role)。
 
-ご利用の Dynamics 365 環境を体験版用に設定してから、AppSource にアクセス許可を付与することで、ご利用のテナント内で体験版ユーザーのプロビジョニングおよびプロビジョニング解除を行う方法のヘルプについては、[こちらの手順](https://docs.microsoft.com/azure/marketplace/test-drive-azure-subscription-setup)に従ってください。
+ご利用の Dynamics 365 環境を体験版用に設定してから、AppSource にアクセス許可を付与することで、ご利用のテナント内で体験版ユーザーのプロビジョニングおよびプロビジョニング解除を行う方法のヘルプについては、[こちらの手順](./test-drive-azure-subscription-setup.md)に従ってください。
 
-ホストされている体験版を一覧表示して構成するための詳しい手順については、「[ホストされた体験版の詳細な構成](https://docs.microsoft.com/azure/marketplace/test-drive-hosted-detailed-config)」ページを参照してください。
+ホストされている体験版を一覧表示して構成するための詳しい手順については、「[ホストされた体験版の詳細な構成](./test-drive-hosted-detailed-config.md)」ページを参照してください。
 
 ## <a name="logic-app-test-drive"></a>ロジック アプリの体験版
 
@@ -95,7 +95,7 @@ Microsoft が体験版のデプロイを代行できるようにするには、�
 
 現在、パートナー センターで体験版を作成している場合は、続行する前に、 **[下書きの保存]** を選択します。
 
-ホストされている体験版を一覧表示して構成するための詳しい手順については、「[ホストされた体験版の詳細な構成](https://docs.microsoft.com/azure/marketplace/test-drive-hosted-detailed-config)」ページを参照してください。
+ホストされている体験版を一覧表示して構成するための詳しい手順については、「[ホストされた体験版の詳細な構成](./test-drive-hosted-detailed-config.md)」ページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

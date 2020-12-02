@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 11/30/2020
-ms.openlocfilehash: 30f9eac0a0e88092a243b4d9421d2a4f33b07841
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 014bcd6fc519c267cdf17e9e98b850425c25ead6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95758692"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459320"
 ---
 # <a name="prepare-your-azure-container-technical-assets"></a>Azure コンテナーの技術資産を準備する
 
@@ -20,7 +20,7 @@ ms.locfileid: "95758692"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-クイックスタート、チュートリアル、サンプルについては、[Azure Container Instances のドキュメント](/azure/container-instances/)をご覧ください。
+クイックスタート、チュートリアル、サンプルについては、[Azure Container Instances のドキュメント](../container-instances/index.yml)をご覧ください。
 
 ## <a name="fundamental-technical-knowledge"></a>技術的な知識の基礎
 
@@ -43,7 +43,7 @@ ms.locfileid: "95758692"
 
 開発環境には次にツールを加えることを推奨します｡
 
-- [Azure 記憶域エクスプローラー](/azure/vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
+- [Azure 記憶域エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - 拡張機能: [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - 拡張機能: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -55,9 +55,9 @@ ms.locfileid: "95758692"
 
 オンプレミスのレジストリから Azure Container Instances にイメージをデプロイすることはできません。
 
-- ローカル レジストリに既に作業コンテナーがある場合は、Azure レジストリを作成し、コンテナー イメージを Azure Container Registry にアップロードします。 詳細については、「[チュートリアル: Azure Container Registry タスクを使用して、クラウドでコンテナー イメージをビルドしてデプロイする](/azure/container-registry/container-registry-tutorial-quick-task.md)。
+- ローカル レジストリに既に作業コンテナーがある場合は、Azure レジストリを作成し、コンテナー イメージを Azure Container Registry にアップロードします。 詳細については、「[チュートリアル: Azure Container Registry タスクを使用して、クラウドでコンテナー イメージをビルドしてデプロイする](../container-registry/container-registry-tutorial-quick-task.md)。
 
-- まだコンテナー イメージを持っておらず、既存のアプリケーションをコンテナ化したり、新しいコンテナー ベースのアプリケーションを作成する必要がある場合は、GitHub からアプリケーションのソース コードをクローンし、アプリケーションのソースからコンテナー イメージを作成して、ローカルの Docker 環境でイメージをテストします。 詳細については、「[チュートリアル: Azure Container Instances へのデプロイに使用するコンテナー イメージを作成する](/azure/container-instances/container-instances-tutorial-prepare-app.md)」を参照してください。
+- まだコンテナー イメージを持っておらず、既存のアプリケーションをコンテナ化したり、新しいコンテナー ベースのアプリケーションを作成する必要がある場合は、GitHub からアプリケーションのソース コードをクローンし、アプリケーションのソースからコンテナー イメージを作成して、ローカルの Docker 環境でイメージをテストします。 詳細については、「[チュートリアル: Azure Container Instances へのデプロイに使用するコンテナー イメージを作成する](../container-instances/container-instances-tutorial-prepare-app.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

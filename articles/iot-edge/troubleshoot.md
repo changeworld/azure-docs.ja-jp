@@ -8,12 +8,12 @@ ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: daae45c9eca45022225ea47aa048815d5eff70c4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 035cf5be4471cad7ac11eb8ce9a8a0ecb13a68da
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964509"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462369"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>IoT Edge デバイスのトラブルシューティング
 
@@ -81,7 +81,7 @@ iotedge support-bundle --since 6h
 
 ## <a name="verify-the-installation-of-iot-edge-on-your-devices"></a>デバイスに IoT Edge がインストールされていることを確認する
 
-[edgeAgent モジュール ツインの監視](https://docs.microsoft.com/azure/iot-edge/how-to-monitor-module-twins)によって、デバイスに IoT Edge がインストールされていることを確認できます。
+[edgeAgent モジュール ツインの監視](./how-to-monitor-module-twins.md)によって、デバイスに IoT Edge がインストールされていることを確認できます。
 
 最新の edgeAgent モジュール ツインを取得するには、[Azure Cloud Shell](https://shell.azure.com/) から次のコマンドを実行します。
 
@@ -89,7 +89,7 @@ iotedge support-bundle --since 6h
    az iot hub module-twin show --device-id <edge_device_id> --module-id $edgeAgent --hub-name <iot_hub_name>
    ```
 
-このコマンドは、edgeAgent の[報告されるプロパティ](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub)すべてを出力します。 次に、デバイスの状態を監視する便利な方法を示します。
+このコマンドは、edgeAgent の[報告されるプロパティ](./module-edgeagent-edgehub.md)すべてを出力します。 次に、デバイスの状態を監視する便利な方法を示します。
 
 * ランタイムの状態
 * ランタイムの開始時刻

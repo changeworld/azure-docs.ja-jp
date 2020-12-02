@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 94cb40522a9e463fea2efae329daf910b5386cdd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: bf593eab54233ab65435585485dd8e3940f5addb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832604"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489821"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
@@ -210,7 +210,7 @@ Azure での特定の機能に対して責任を負うグループまたは個�
 > 個別のアクセス許可では、不要な複雑さと混乱が発生し、それが積み重なって、何かを壊してしまう心配なしでは修正するのが難しい "レガシ" 構成になります。 リソース固有のアクセス許可は使わないようにします。 代わりに、エンタープライズ全体のアクセス許可には管理グループを使用し、サブスクリプション内のアクセス許可にはリソース グループを使用します。 ユーザー固有のアクセス許可は使わないようにします。 代わりに、Azure AD でグループにアクセスを割り当てます。
 
 **ベスト プラクティス**: セキュリティ チームには Azure のリソースを把握するための Azure の責任のアクセス権を付与し、リスクを評価して修復できるようにします。
-**詳細**: セキュリティ チームには、Azure RBAC の[セキュリティ閲覧者](../../role-based-access-control/built-in-roles.md#security-reader)ロールを付与します。 責任の範囲に応じて、ルート管理グループまたはセグメント管理グループを使用できます。
+**詳細**: セキュリティ チームには、Azure RBAC の [セキュリティ閲覧者](../../role-based-access-control/built-in-roles.md#security-reader)ロールを付与します。 責任の範囲に応じて、ルート管理グループまたはセグメント管理グループを使用できます。
 
 * すべてのエンタープライズ リソースを担当するチームに対しては **ルート管理グループ**
 * スコープが限られたチームには **セグメント管理グループ** (一般に、規制または他の組織的な境界のため)
@@ -229,12 +229,12 @@ Azure RBAC などの機能を使用したデータ アクセス制御を適用�
 
 特権アカウントとは、IT システムを管理するアカウントです。 サイバー攻撃では、組織のデータやシステムへのアクセス手段を得るために、このようなアカウントが標的にされます。 特権アクセスを保護するには、悪意のあるユーザーにさらされる危険からアカウントとシステムを分離する必要があります。
 
-サイバー攻撃者から特権アクセスを保護するためのロードマップを作成して従うことをお勧めします。 Azure AD、Microsoft Azure、Microsoft 365、およびその他のクラウド サービスで管理または報告される ID とアクセスを保護するための詳細なロードマップの作成については、「[Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)」を確認してください。
+サイバー攻撃者から特権アクセスを保護するためのロードマップを作成して従うことをお勧めします。 Azure AD、Microsoft Azure、Microsoft 365、およびその他のクラウド サービスで管理または報告される ID とアクセスを保護するための詳細なロードマップの作成については、「[Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](../../active-directory/roles/security-planning.md)」を確認してください。
 
-「[Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)」に記載されているベスト プラクティスを以下にまとめています。
+「[Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](../../active-directory/roles/security-planning.md)」に記載されているベスト プラクティスを以下にまとめています。
 
 **ベスト プラクティス**: 特権アカウントへのアクセスを管理、制御、および監視します。   
-**詳細**: [Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md) を有効にします。 Privileged Identity Management を有効にすると、特権アクセス ロールが変更されたという電子メール通知を受け取ります。 これらの通知は、ディレクトリ内の高度な特権ロールに他のユーザーが追加された場合に早期警告を提供します。
+**詳細**: [Azure AD Privileged Identity Management](../../active-directory/roles/security-planning.md) を有効にします。 Privileged Identity Management を有効にすると、特権アクセス ロールが変更されたという電子メール通知を受け取ります。 これらの通知は、ディレクトリ内の高度な特権ロールに他のユーザーが追加された場合に早期警告を提供します。
 
 **ベスト プラクティス**: すべての重要な管理者アカウントが、マネージド Azure AD アカウントであるようにします。
 **詳細**: 重要な管理者ロールから、すべてのコンシューマー アカウントを削除します (hotmail.com、live.com、outlook.com といった Microsoft アカウントなど)。
@@ -261,10 +261,10 @@ Azure RBAC などの機能を使用したデータ アクセス制御を適用�
 **ベスト プラクティス**: 少なくとも 2 つの緊急アクセス用アカウントを定義します。   
 **詳細**: 緊急アクセス用アカウントは、組織において既存の Azure Active Directory 環境での特権アクセスを制限するのに役立ちます。 このようなアカウントは高い特権を持っており、特定のユーザーには割り当てられません。 緊急アクセス用アカウントは、通常の管理者アカウントを使うことができないシナリオに制限されます。 組織では、緊急用アカウントの使用を必要な時間だけに制限する必要があります。
 
-グローバル管理者ロールが割り当てられているか、その対象であるアカウントを評価します。 `*.onmicrosoft.com` ドメイン (緊急アクセスが目的) を使用してクラウド専用アカウントが見当たらない場合は、それらを作成します。 詳しくは、「[Azure AD で緊急アクセス用管理者アカウントを管理する](../../active-directory/users-groups-roles/directory-emergency-access.md)」をご覧ください。
+グローバル管理者ロールが割り当てられているか、その対象であるアカウントを評価します。 `*.onmicrosoft.com` ドメイン (緊急アクセスが目的) を使用してクラウド専用アカウントが見当たらない場合は、それらを作成します。 詳しくは、「[Azure AD で緊急アクセス用管理者アカウントを管理する](../../active-directory/roles/security-emergency-access.md)」をご覧ください。
 
 **ベスト プラクティス**: 緊急事態が発生した場合の "非常時" プロセスを用意します。
-**詳細**: 「[Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)」の手順に従います。
+**詳細**: 「[Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](../../active-directory/roles/security-planning.md)」の手順に従います。
 
 **ベスト プラクティス**: すべての重要な管理者アカウントには、パスワードレス (推奨) または Multi-Factor Authentication を要求します。
 **詳細**: [Microsoft Authenticator アプリ](../../active-directory/authentication/howto-authentication-passwordless-phone.md)を使用して、パスワードを使用せずに Azure AD アカウントにサインインします。 [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) のように、Microsoft Authenticator は、キーベースの認証を使用して、デバイスに関連付けられていて生体認証または PIN を使用するユーザー資格情報を有効にします。
@@ -284,25 +284,25 @@ Azure RBAC などの機能を使用したデータ アクセス制御を適用�
 **詳細**: Microsoft 365 攻撃シミュレーターまたはサードパーティのオファリングを使用して、現実的な攻撃のシナリオを組織内で実行します。 これは、実際の攻撃が発生する前に脆弱性のあるユーザーを発見するのに役立ちます。
 
 **ベスト プラクティス**: 最も頻繁に使用される攻撃手法を軽減するための対策を講じます。  
-**詳細**: [職場または学校アカウントに切り替える必要がある管理者ロールの Microsoft アカウントを特定する](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
+**詳細**: [職場または学校アカウントに切り替える必要がある管理者ロールの Microsoft アカウントを特定する](../../active-directory/roles/security-planning.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
 
-[グローバル管理者アカウントのユーザー アカウントとメール転送を分離する](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)  
+[グローバル管理者アカウントのユーザー アカウントとメール転送を分離する](../../active-directory/roles/security-planning.md)  
 
-[管理者アカウントのパスワードが最近変更されたことを確認する](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
+[管理者アカウントのパスワードが最近変更されたことを確認する](../../active-directory/roles/security-planning.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
 
-[パスワード ハッシュ同期をオンにする](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)  
+[パスワード ハッシュ同期をオンにする](../../active-directory/roles/security-planning.md#turn-on-password-hash-synchronization)  
 
-[すべての特権ロールに属するユーザーおよび露出しているユーザーに多要素認証を要求する](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
+[すべての特権ロールに属するユーザーおよび露出しているユーザーに多要素認証を要求する](../../active-directory/roles/security-planning.md#require-multi-factor-authentication-for-users-in-privileged-roles-and-exposed-users)  
 
-[Microsoft 365 のセキュリティ スコアを取得する (Microsoft 365 を使用している場合)](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#obtain-your-office-365-secure-score-if-using-office-365)  
+[Microsoft 365 のセキュリティ スコアを取得する (Microsoft 365 を使用している場合)](../../active-directory/roles/security-planning.md#obtain-your-microsoft-365-secure-score-if-using-microsoft-365)  
 
-[Microsoft 365 のセキュリティ ガイダンスを確認する (Microsoft 365 を使用している場合)](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
+[Microsoft 365 のセキュリティ ガイダンスを確認する (Microsoft 365 を使用している場合)](../../active-directory/roles/security-planning.md#review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365)  
 
-[Microsoft 365 のアクティビティ監視を構成する (Microsoft 365 を使用している場合)](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#configure-office-365-activity-monitoring-if-using-office-365)  
+[Microsoft 365 のアクティビティ監視を構成する (Microsoft 365 を使用している場合)](../../active-directory/roles/security-planning.md#configure-microsoft-365-activity-monitoring-if-using-microsoft-365)  
 
-[インシデント/緊急時対応計画の所有者を設定する](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#establish-incidentemergency-response-plan-owners)  
+[インシデント/緊急時対応計画の所有者を設定する](../../active-directory/roles/security-planning.md#establish-incidentemergency-response-plan-owners)  
 
-[オンプレミスの特権管理者アカウントをセキュリティで保護する](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)
+[オンプレミスの特権管理者アカウントをセキュリティで保護する](../../active-directory/roles/security-planning.md#turn-on-password-hash-synchronization)
 
 特権アクセスをセキュリティで保護しない場合は、高度な特権ロールに属するユーザーが多すぎて攻撃を受けやすくなっている可能性があります。 多くの場合、サイバー攻撃者を含む悪意のあるアクターは、管理者アカウントやその他の特権アクセスの要素をターゲットとして、資格情報盗用を使用して機密データやシステムへのアクセスを取得します。
 

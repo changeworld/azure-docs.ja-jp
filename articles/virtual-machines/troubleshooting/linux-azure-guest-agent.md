@@ -11,16 +11,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: axelg
-ms.openlocfilehash: 9e3b376cfaf5379acaf92713c42509471200d066
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: fc609b60c9d5d4d4734c3d73cbda87935b533caf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95547912"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500259"
 ---
 # <a name="troubleshooting-azure-linux-guest-agent"></a>Azure Linux ゲスト エージェントのトラブルシューティング
 
-[Azure Linux ゲスト エージェント](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)は、仮想マシン (VM) エージェントです。 これを使用すると、VM が IP アドレス 168.63.129.16 でファブリック コントローラー (VM がホストされている基盤の物理サーバー) と通信できるようになります。 この IP アドレスは、通信を容易にする仮想パブリック IP アドレスです。 詳しくは、「[IP アドレス 168.63.129.16 とは](../../virtual-network/what-is-ip-address-168-63-129-16.md)」を参照してください。
+[Azure Linux ゲスト エージェント](../extensions/agent-linux.md)は、仮想マシン (VM) エージェントです。 これを使用すると、VM が IP アドレス 168.63.129.16 でファブリック コントローラー (VM がホストされている基盤の物理サーバー) と通信できるようになります。 この IP アドレスは、通信を容易にする仮想パブリック IP アドレスです。 詳しくは、「[IP アドレス 168.63.129.16 とは](../../virtual-network/what-is-ip-address-168-63-129-16.md)」を参照してください。
 
 ## <a name="checking-agent-status-and-version"></a>エージェントの状態とバージョンの確認
 

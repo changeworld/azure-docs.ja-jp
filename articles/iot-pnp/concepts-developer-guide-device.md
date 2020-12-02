@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 8d8da39f038f465030a2dced092ab1b008e30e5e
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 3aa236570e518b142adb8382387a8cdea4fc08a0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511364"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453272"
 ---
 # <a name="iot-plug-and-play-device-developer-guide"></a>IoT プラグ アンド プレイ デバイス開発者ガイド
 
@@ -67,8 +67,8 @@ IoT プラグ アンド プレイ デバイス、モジュール、または IoT
 IoT プラグ アンド プレイ デバイスの開発について学習したので、いくつかの追加リソースを次に示します。
 
 - [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
-- [C デバイス SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
-- [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)
+- [C デバイス SDK](/azure/iot-hub/iot-c-sdk-ref/)
+- [IoT REST API](/rest/api/iothub/device)
 - [モデル コンポーネント](concepts-components.md)
 - [DTDL 作成ツールをインストールして使用する](howto-use-dtdl-authoring-tools.md)
 - [IoT プラグ アンド プレイ サービス開発者ガイド](concepts-developer-guide-service.md)

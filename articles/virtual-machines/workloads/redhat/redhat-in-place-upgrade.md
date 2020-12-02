@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 4487aeba72cc71a31871169c0647efbff34ee068
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9b35a3cbe23af91f7f0b8aceecfb8ba3c9720461
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968623"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484415"
 ---
 # <a name="red-hat-enterprise-linux-in-place-upgrades"></a>インプレース アップグレードの Red Hat Enterprise Linux
 
@@ -35,7 +35,7 @@ Red Hat と Azure では、インプレース アップグレードを使用し�
 >[!Important] 
 > アップグレードを開始する前に、イメージのスナップショットを作成してください。
 
-* 最新の RHEL 7 バージョンを使用していることを確認してください。 現在の最新バージョンは RHEL 7.9 です。 ロックされたバージョンを使用していて、RHEL 7.9 にアップグレードできない場合は、[こちらの手順に従って、非 EUS (Extended Update Support) リポジトリに切り替えます](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock)。
+* 最新の RHEL 7 バージョンを使用していることを確認してください。 現在の最新バージョンは RHEL 7.9 です。 ロックされたバージョンを使用していて、RHEL 7.9 にアップグレードできない場合は、[こちらの手順に従って、非 EUS (Extended Update Support) リポジトリに切り替えます](./redhat-rhui.md#switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock)。
 
 * 次のコマンドを実行して、アップグレードをチェックし、正常に完了するかどうかを確認します。 このコマンドでは、 */var/log/leapp/leapp-report.txt* ファイルが生成されます。 このファイルには、処理と実行内容について、およびアップグレードが可能かどうかが記載されています。
 
@@ -49,7 +49,7 @@ Red Hat と Azure では、インプレース アップグレードを使用し�
 
 * */etc/ssh/sshd_config* で SSH の root アクセスを有効にします。
     1. */etc/ssh/sshd_config* ファイルを開きます。
-    1. `#PermitRootLogin yes` を検索します。
+    1. `#PermitRootLogin yes` を探します。
     1. 番号記号 (`#`) を削除して、文字列をコメント解除します。
 
 ## <a name="upgrade-steps"></a>アップグレードの手順
@@ -91,7 +91,7 @@ Red Hat と Azure では、インプレース アップグレードを使用し�
 
 1. アップグレードが完了したら、root の SSH アクセスを削除します。
     1. */etc/ssh/sshd_config* ファイルを開きます。
-    1. `#PermitRootLogin yes` を検索します。
+    1. `#PermitRootLogin yes` を探します。
     1. 番号記号 (`#`) を追加して、文字列をコメントにします。
 
 1. SSHD サービスを再起動して、変更を適用します。

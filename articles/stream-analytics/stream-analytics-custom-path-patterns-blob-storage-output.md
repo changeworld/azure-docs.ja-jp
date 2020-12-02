@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 72718285ff83a23acd21a5e29001ea96e1f061c8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 9763a0ac3cba15dcfd66b8fad83230e2b0eb356b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95531357"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491674"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割
 
@@ -25,7 +25,7 @@ Azure Stream Analytics は、カスタム フィールドまたは属性およ�
 
 ### <a name="partition-key-options"></a>パーティション キーのオプション
 
-入力データをパーティション分割するために使用されるパーティション キー (または列名) には、ハイフン、アンダースコア、およびスペースを含む英数字を含めることができます。 入れ子になったフィールドは、別名と共に使用されない限り、パーティション キーとして使用できません。 パーティション キーは NVARCHAR(MAX)、BIGINT、FLOAT、または BIT (互換性レベル 1.2 以上) にする必要があります。 詳細については、[Azure Stream Analytics のデータ型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)に関するページをご覧ください。
+入力データをパーティション分割するために使用されるパーティション キー (または列名) には、ハイフン、アンダースコア、およびスペースを含む英数字を含めることができます。 入れ子になったフィールドは、別名と共に使用されない限り、パーティション キーとして使用できません。 パーティション キーは NVARCHAR(MAX)、BIGINT、FLOAT、または BIT (互換性レベル 1.2 以上) にする必要があります。 詳細については、[Azure Stream Analytics のデータ型](/stream-analytics-query/data-types-azure-stream-analytics)に関するページをご覧ください。
 
 ### <a name="example"></a>例
 

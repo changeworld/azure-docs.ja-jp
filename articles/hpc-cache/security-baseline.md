@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3e040146673ba16c07856f30b88771d0063713e9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e7f6cf905613866041e72433328ea742706a8c49
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95896885"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453863"
 ---
 # <a name="azure-security-baseline-for-azure-hpc-cache"></a>Azure HPC Cache 用の Azure セキュリティ ベースライン
 
@@ -22,7 +22,7 @@ Azure HPC Cache を完全に Azure セキュリティ ベンチマークにマ�
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、[Azure セキュリティ ベンチマークの「ネットワークのセキュリティ](/azure/security/benchmarks/security-controls-v2-network-security)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ネットワークのセキュリティ](../security/benchmarks/security-controls-v2-network-security.md)」を参照してください。*
 
 ### <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1: 内部トラフィック用のセキュリティを実装する
 
@@ -62,7 +62,7 @@ Azure HPC Cache には、次の条件を満たした専用のサブネットが�
 
 ### <a name="ns-2-connect-private-networks-together"></a>NS-2: プライベート ネットワークをまとめて接続する
 
-**ガイダンス**:Azure ExpressRoute または Azure 仮想プライベート ネットワーク (VPN) を使用して、コロケーション環境内で Azure のデータセンターとオンプレミスのインフラストラクチャ間のプライベート接続を作成できます。 ExpressRoute 接続はパブリック インターネットを経由しないので、一般的なインターネット接続と比べて信頼性が高く、高速で、待ち時間も短くなります。 ポイント対サイト VPN とサイト間 VPN では、これらの VPN オプションと Azure ExpressRoute の任意の組み合わせを使用して、オンプレミスのデバイスやネットワークを仮想ネットワークに接続できます。 
+**ガイダンス**:Azure ExpressRoute または Azure 仮想プライベート ネットワーク (VPN) を使用して、コロケーション環境内で Azure のデータセンターとオンプレミスのインフラストラクチャ間のプライベート接続を作成できます。 ExpressRoute 接続はパブリック インターネットを経由しないので、一般的なインターネット接続と比べて信頼性が高く、より高速で、待ち時間も短くなります。 ポイント対サイト VPN とサイト間 VPN では、これらの VPN オプションと Azure ExpressRoute の任意の組み合わせを使用して、オンプレミスのデバイスやネットワークを仮想ネットワークに接続できます。 
 
 Azure で 2 つ以上の仮想ネットワークを接続するには、仮想ネットワーク ピアリングを使用します。 ピアリングされた仮想ネットワーク間のネットワーク トラフィックはプライベートであり、Azure のバックボーン ネットワーク上に保持されます。
 
@@ -104,9 +104,9 @@ Azure には、この保護に対するネイティブ機能が含まれてい�
 
 Azure HPC Cache は Web アプリケーションを実行するためのものではなく、Web アプリケーションを対象とする外部ネットワーク攻撃からこれを保護するために追加で設定を構成したり、追加のネットワーク サービスを配置したりする必要はありません。
 
-- [Azure Firewall のドキュメント](/azure/firewall/) 
+- [Azure Firewall のドキュメント](../firewall/index.yml) 
 
-- [Azure portal を使用した Azure DDoS Protection Standard の管理](/azure/virtual-network/manage-ddos-protection) 
+- [Azure portal を使用した Azure DDoS Protection Standard の管理](../ddos-protection/manage-ddos-protection.md) 
 
 - [Azure Security Center の推奨事項](../security-center/recommendations-reference.md#recs-network)
 
@@ -118,7 +118,7 @@ Azure HPC Cache は Web アプリケーションを実行するためのもの�
 
 **ガイダンス**:Azure Firewall で脅威インテリジェンス ベースのフィルター処理を使用して、既知の悪意のある IP アドレスおよびドメインとの間のトラフィックに対してアラートを送信したりブロックしたりします。 この IP アドレスとドメインのソースは、Microsoft の脅威インテリジェンス フィードです。 
 
-ペイロード検査が必要な場合は、ペイロード検査機能を備えたサードパーティの侵入検出および侵入防止システム (IDS/IPS) ソリューションを、Azure Marketplace からデプロイできます。 または、ネットワーク ベースの IDS/IPS と組み合わせて、またはその代わりに、ホスト ベースの IDS/IPS またはホスト ベースのエンドポイント検出と応答 (EDR) ソリューションを、使用することも選択できます。
+ペイロード検査が必要な場合は、ペイロード検査機能を備えたサードパーティの侵入検出および侵入防止システム (IDS/IPS) ソリューションを、Azure Marketplace からデプロイできます。 または、ネットワーク ベースの IDS/IPS と組み合わせて、またはその代わりに、ホスト ベースの IDS/IPS またはホスト ベースのエンドポイント検出と応答 (EDR) ソリューションを使用することも選択できます。
 
 注:IDS/IPS の使用に関して規制やその他の要件がある場合は、SIEM ソリューションに高品質のアラートが提供されるように、常に調整されていることを確認します。
 
@@ -126,7 +126,7 @@ Azure HPC Cache は Web アプリケーションを実行するためのもの�
 
 - [Azure Marketplace のサードパーティの IDS 機能](https://azuremarketplace.microsoft.com/marketplace?search=IDS) 
 
-- [Microsoft Defender の ATP EDR 機能](/windows/security/threat-protection/microsoft-defender-atp/overviewendpoint-detection-response)
+- [Microsoft Defender の ATP EDR 機能](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -170,7 +170,7 @@ Azure HPC Cache がキャッシュのプライベート仮想ネットワーク�
 
 ## <a name="identity-management"></a>ID 管理
 
-*詳細については、[Azure セキュリティ ベンチマークの「ID 管理](/azure/security/benchmarks/security-controls-v2-identity-management).* 」を参照してください。
+*詳細については、[Azure セキュリティ ベンチマークの「ID 管理](../security/benchmarks/security-controls-v2-identity-management.md).* 」を参照してください。
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1:Azure Active Directory を中央 ID および認証システムとして標準化する
 
@@ -190,7 +190,7 @@ Azure AD を保護することは、組織のクラウド セキュリティ プ
 
 - [Azure AD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) 
 
-- [アプリケーションに外部 ID プロバイダーを使用する](/azure/active-directory/b2b/identity-providers) 
+- [アプリケーションに外部 ID プロバイダーを使用する](../active-directory/external-identities/identity-providers.md) 
 
 - [Azure Active Directory の ID セキュリティ スコアとは](../active-directory/fundamentals/identity-secure-score.md)
 
@@ -216,7 +216,7 @@ HPC Cache は、事前に定義されたアクセス許可規則によって Azu
 
 **ガイダンス**:Azure HPC Cache は、内部操作用に Azure AD と統合されていません。 ただし、Azure AD を使用して、HPC Cache のデプロイと関連コンポーネントを作成、表示、および管理するために、Azure portal または CLI でユーザーを認証することができます。
 
-Azure Active Directory により、Azure リソース、クラウド アプリケーション、オンプレミス アプリケーションに対する ID とアクセスの管理が提供されます。 これには、従業員などの企業 ID だけでなく、パートナー、ベンダー、サプライヤーなどの外部 ID も含まれます。 これによってシングル サインオン (SSO) が可能となり、オンプレミスとクラウドにある組織のデータとリソースへのアクセスを管理し、セキュリティで保護することができます。 すべてのユーザー、アプリケーション、デバイスを Azure AD に接続することで、シームレスで安全なアクセスを実現し、可視性と制御性を高めることができます。
+Azure Active Directory により、Azure リソース、クラウド アプリケーション、オンプレミス アプリケーションに対する ID とアクセスの管理が提供されます。 これには、従業員などの企業 ID だけでなく、パートナー、ベンダー、サプライヤーなどの外部 ID も含まれます。 これにより、オンプレミスおよびクラウド内の組織のデータとリソースへのアクセスを管理し、セキュリティで保護するためのシングルサインオン (SSO) が可能になります。 すべてのユーザー、アプリケーション、デバイスを Azure AD に接続することで、シームレスで安全なアクセスを実現し、可視性と制御性を高めることができます。
 
 - [Azure AD を使用したアプリケーションの SSO について理解する](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -231,7 +231,7 @@ Azure Active Directory により、Azure リソース、クラウド アプリ�
 Azure AD では、多要素認証 (MFA)、および強力なパスワードレスの方法によって、強力な認証制御がサポートされています。
 
 - 多要素認証:Azure AD MFA を有効にし、Azure Security Center の ID とアクセス管理の推奨事項に従って、MFA 構成のベスト プラクティスを導入します。 MFA は、サインインの条件とリスク要因に基づいて、すべてのユーザー、選択されたユーザー、またはユーザー単位のレベルで適用できます。
-- パスワードレス認証 - 以下の 3 つのパスワードレス認証オプションを使用できます。Windows Hello for Business、Microsoft Authenticator アプリ、スマート カードなどのオンプレミスの認証方法。
+- パスワードレス認証 - 3 つのパスワードレス認証オプションを使用できます。Windows Hello for Business、Microsoft Authenticator アプリ、スマート カードなどのオンプレミスの認証方法。
 
 管理者と特権のあるユーザーの場合は、強力な認証方法の最高レベルを使用してください。 適切かつ強力な認証ポリシーを他のユーザーにロールアウトします。
 
@@ -273,9 +273,9 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 - [Azure Active Directory の監査アクティビティ レポート](../active-directory/reports-monitoring/concept-audit-logs.md)
 
-- [Azure AD の危険なサインインを表示する方法](/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
+- [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md) 
 
-- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](/azure/active-directory/reports-monitoring/concept-user-at-risk) 
+- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](../active-directory/identity-protection/overview-identity-protection.md) 
 
 - [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](../security-center/security-center-identity-access.md)
 
@@ -299,7 +299,7 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 ## <a name="privileged-access"></a>特権アクセス
 
-*詳細については、[Azure セキュリティ ベンチマークの「特権アクセス](/azure/security/benchmarks/security-controls-v2-privileged-access)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「特権アクセス](../security/benchmarks/security-controls-v2-privileged-access.md)」を参照してください。*
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2:ビジネス クリティカルなシステムへの管理アクセスを制限する
 
@@ -351,7 +351,7 @@ NFS ストレージ ターゲットを使用する場合は、ネットワーク
 
 緊急アクセス用アカウントの資格情報 (パスワード、証明書、スマート カードなど) は安全に保管し、緊急時にのみそれらを使うことを許可された個人のみに知らせる必要があります。
 
-- [Azure AD で緊急アクセス用アカウントを管理する](/azure/active-directory/users-groups-roles/directory-emergency-access)
+- [Azure AD で緊急アクセス用アカウントを管理する](../active-directory/roles/security-emergency-access.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -391,7 +391,7 @@ Azure RBAC を使用してリソースに割り当てる特権は、常に、ロ
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、[Azure セキュリティ ベンチマークの「データ保護](/azure/security/benchmarks/security-controls-v2-data-protection)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「データ保護](../security/benchmarks/security-controls-v2-data-protection.md)」を参照してください。*
 
 ### <a name="dp-1-discover-classify-and-label-sensitive-data"></a>DP-1:機密データを検出、分類、ラベル付けする 
 
@@ -453,11 +453,11 @@ Azure でキャッシュ ディスクなどに格納されているすべての�
 
 コンピューティング リソースでの準拠に必要な場合は、ホストベースの自動データ損失防止ソリューションなどのサードパーティ ツールを実装して、データがシステムからコピーされた場合でもデータへのアクセス制御を実施します。
 
-- [Azure HPC Cache でカスタマー マネージド暗号化キーを使用する方法](https://docs.microsoft.com/azure/hpc-cache/hpc-cache-create?tabs=azure-portal#enable-azure-key-vault-encryption-optional)
+- [Azure HPC Cache でカスタマー マネージド暗号化キーを使用する方法](./hpc-cache-create.md?tabs=azure-portal#enable-azure-key-vault-encryption-optional)
 
 - [Azure での保存時の暗号化の概要](../security/fundamentals/encryption-atrest.md#encryption-at-rest-in-microsoft-cloud-services) 
 
-- [カスタマー マネージド暗号化キーを構成する方法](/azure/storage/common/storage-encryption-keys-portal) 
+- [カスタマー マネージド暗号化キーを構成する方法](../storage/common/customer-managed-keys-configure-key-vault.md) 
 
 - [暗号化モデルとキー管理テーブル](../security/fundamentals/encryption-atrest.md)
 
@@ -471,7 +471,7 @@ Azure でキャッシュ ディスクなどに格納されているすべての�
 
 ## <a name="asset-management"></a>アセット管理
 
-*詳細については、[Azure セキュリティ ベンチマークの「アセット管理](/azure/security/benchmarks/security-controls-v2-asset-management)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「アセット管理](../security/benchmarks/security-controls-v2-asset-management.md)」を参照してください。*
 
 ### <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1:セキュリティ チームが資産のリスクを確実に可視化できるようにする
 
@@ -504,7 +504,7 @@ HPC Cache のリソースでは、アプリケーションを実行すること�
 
 - [Azure Security Center の資産インベントリ管理](../security-center/asset-inventory.md) 
 
-- [リソースの名前付けとタグ付けの意思決定ガイド](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json) 
+- [リソースの名前付けとタグ付けの意思決定ガイド](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json) 
 
 - [Azure 仮想マシンのインベントリを有効にする方法](../automation/automation-tutorial-installed-software.md)
 
@@ -518,7 +518,7 @@ HPC Cache のリソースでは、アプリケーションを実行すること�
 
 - [Azure Policy を構成して管理する](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](/azure/governance/policy/samples/not-allowed-resource-types) 
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md) 
 
 - [Azure Resource Graph Explorer を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
@@ -538,7 +538,7 @@ HPC Cache のリソースでは、アプリケーションを実行すること�
 
 ## <a name="logging-and-threat-detection"></a>ログと脅威検出
 
-*詳細については、[Azure セキュリティ ベンチマークの「ログと脅威検出](/azure/security/benchmarks/security-controls-v2-logging-threat-protection)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ログと脅威検出](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)」を参照してください。*
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1:Azure リソースの脅威検出を有効にする
 
@@ -546,7 +546,7 @@ HPC Cache のリソースでは、アプリケーションを実行すること�
 
 HPC Cache から SIEM に、カスタム脅威検出を設定するために使用できるログを転送します。 潜在的な脅威や異常を検出するために、さまざまな種類の Azure 資産を監視していることを確認してください。 アナリストが選別しやすいように、質の高いアラートを取得して誤検知を減らすことに専念します。 アラートは、ログ データ、エージェント、その他のデータを元に生成できます。
 
-- [Azure Security Center での脅威の防止](/azure/security-center/threat-protection) 
+- [Azure Security Center での脅威の防止](../security-center/azure-defender.md) 
 
 - [Azure Security Center セキュリティ アラート リファレンス ガイド](../security-center/alerts-reference.md) 
 
@@ -575,7 +575,7 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 - [Azure Identity Protection を有効にする](../active-directory/identity-protection/overview-identity-protection.md) 
 
-- [Azure Security Center での脅威の防止](/azure/security-center/threat-protection)
+- [Azure Security Center での脅威の防止](../security-center/azure-defender.md)
 
 **Azure Security Center の監視**: はい
 
@@ -643,7 +643,7 @@ Azure アクティビティ ログを一元的なログ記録に統合してい�
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、[Azure セキュリティ ベンチマークの「インシデント対応](/azure/security/benchmarks/security-controls-v2-incident-response)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「インシデント対応](../security/benchmarks/security-controls-v2-incident-response.md)」を参照してください。*
 
 ### <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1: 準備 – インシデント対応プロセスを Azure 用に更新する
 
@@ -725,7 +725,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 - [Security alerts in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [タグを使用した Azure リソースの整理](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -747,7 +747,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 ## <a name="posture-and-vulnerability-management"></a>体制と脆弱性の管理
 
-*詳細については、[Azure セキュリティ ベンチマークの「体制と脆弱性の管理](/azure/security/benchmarks/security-controls-v2-vulnerability-management)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「体制と脆弱性の管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)」を参照してください。*
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>PV-3: コンピューティング リソースにセキュリティで保護された構成を確立する
 
@@ -778,7 +778,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 ## <a name="backup-and-recovery"></a>バックアップと回復
 
-*詳細については、[Azure セキュリティ ベンチマークの「バックアップと回復](/azure/security/benchmarks/security-controls-v2-backup-recovery)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「バックアップと回復」](../security/benchmarks/security-controls-v2-backup-recovery.md)を参照してください。*
 
 ### <a name="br-1-ensure-regular-automated-backups"></a>BR-1:定期的な自動バックアップを保証する
 
@@ -814,7 +814,7 @@ Azure HPC Cache は、キャッシュ ディスクにカスタマー キーを�
 
 - [カスタマー マネージド キーを使用したバックアップ データの暗号化](../backup/encryption-at-rest-with-cmk.md)  
 
-- [Azure 上で Key Vault のキーをバックアップする方法](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-5.1.0&amp;preserve-view=true)
+- [Azure 上で Key Vault のキーをバックアップする方法](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-5.1.0)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -824,7 +824,7 @@ Azure HPC Cache は、キャッシュ ディスクにカスタマー キーを�
 
 **ガイダンス**:バックアップされたカスタマー マネージド キーを復元できることを定期的に確認します。
 
-- [Azure でキー コンテナーのキーを復元する方法](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-5.1.0&amp;preserve-view=true)
+- [Azure でキー コンテナーのキーを復元する方法](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-5.1.0)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -834,7 +834,7 @@ Azure HPC Cache は、キャッシュ ディスクにカスタマー キーを�
 
 **ガイダンス**:キーの紛失を回避および回復する手段を確保します。 Azure Key Vault で論理的な削除と消去保護を有効にして、キーが偶発的または悪意から削除されないようにします。
 
-- [Key Vault で論理的な削除と消去保護を有効にする方法](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Key Vault で論理的な削除と消去保護を有効にする方法](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -842,7 +842,7 @@ Azure HPC Cache は、キャッシュ ディスクにカスタマー キーを�
 
 ## <a name="governance-and-strategy"></a>ガバナンスと戦略
 
-*詳細については、[Azure セキュリティ ベンチマークの「ガバナンスと戦略](/azure/security/benchmarks/security-controls-v2-governance-strategy)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ガバナンスと戦略](../security/benchmarks/security-controls-v2-governance-strategy.md)」を参照してください。*
 
 ### <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1: 資産の管理とデータ保護の戦略を定義する 
 
@@ -867,15 +867,15 @@ Azure HPC Cache は、キャッシュ ディスクにカスタマー キーを�
 -   適切な暗号化標準
 
 詳細については、次のリファレンスを参照してください。
-- [Azure セキュリティ アーキテクチャに関する推奨事項 - ストレージ、データ、暗号化](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
+- [Azure セキュリティ アーキテクチャに関する推奨事項 - ストレージ、データ、暗号化](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
 - [Azure のセキュリティの基礎 - Azure のデータ セキュリティ、暗号化、ストレージ](../security/fundamentals/encryption-overview.md)
 
-- [クラウド導入フレームワーク - Azure のデータ セキュリティと暗号化のベスト プラクティス](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
+- [クラウド導入フレームワーク - Azure のデータ セキュリティと暗号化のベスト プラクティス](../security/fundamentals/data-encryption-best-practices.md?amp;bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
-- [Azure セキュリティ ベンチマーク - アセット管理](/azure/security/benchmarks/security-benchmark-v2-asset-management)
+- [Azure セキュリティ ベンチマーク - アセット管理](/azure/security/benchmarks/security-controls-v2-asset-management)
 
-- [Azure セキュリティ ベンチマーク - データ保護](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure セキュリティ ベンチマーク - データ保護](/azure/security/benchmarks/security-controls-v2-data-protection)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -903,7 +903,7 @@ Azure HPC Cache は、キャッシュ ディスクにカスタマー キーを�
 
 **ガイダンス**:個々の資産とそれらがホストされている環境に対するリスクを継続的に測定し、軽減します。 高い価値を持つ資産と、攻撃に晒される可能性の高い部分 (公開されたアプリケーション、ネットワークのイングレス ポイントとエグレス ポイント、ユーザーと管理者のエンドポイントなど) を優先します。
 
-- [Azure セキュリティ ベンチマーク - 体制と脆弱性の管理](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure セキュリティ ベンチマーク - 体制と脆弱性の管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -944,7 +944,7 @@ Azure HPC Cache は、キャッシュ ディスクにカスタマー キーを�
 詳細については、次のリファレンスを参照してください。
 - [Azure のセキュリティのベスト プラクティス 11 - アーキテクチャ。単一の統合セキュリティ戦略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure セキュリティ ベンチマーク - ネットワーク セキュリティ](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Azure セキュリティ ベンチマーク - ネットワーク セキュリティ](/azure/security/benchmarks/security-controls-v2-network-security)
 
 - [Azure のネットワーク セキュリティの概要](../security/fundamentals/network-overview.md)
 
@@ -972,9 +972,9 @@ Azure HPC Cache は、キャッシュ ディスクにカスタマー キーを�
 
 詳細については、次のリファレンスを参照してください。
 
-- [Azure セキュリティ ベンチマーク - ID 管理](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure セキュリティ ベンチマーク - ID 管理](/azure/security/benchmarks/security-controls-v2-identity-management)
 
-- [Azure セキュリティ ベンチマーク - 特権アクセス](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure セキュリティ ベンチマーク - 特権アクセス](/azure/security/benchmarks/security-controls-v2-privileged-access)
 
 - [Azure のセキュリティのベスト プラクティス 11 - アーキテクチャ。単一の統合セキュリティ戦略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -986,7 +986,7 @@ Azure HPC Cache は、キャッシュ ディスクにカスタマー キーを�
 
 ### <a name="gs-7-define-logging-and-threat-response-strategy"></a>GS-7: ログ記録と脅威対応戦略を定義する
 
-**ガイダンス**:コンプライアンス要件を満たしながら脅威を迅速に検出して修復するための、ログ記録と脅威対応戦略を確立します。 統合と手動手順ではなく脅威に集中できるように、高品質のアラートとシームレスなエクスペリエンスをアナリストに提供することを優先します。 
+**ガイダンス**:コンプライアンス要件を満たしながら脅威を迅速に検出して修復するための、ログ記録と脅威対応戦略を確立します。 アナリストが、統合や手動による手順ではなく、脅威の対応に集中できるように、質の高いアラートとシームレスなエクスペリエンスを提供することを優先してください。 
 
 この戦略には、次の要素に関する文書化されたガイダンス、ポリシー、標準が含まれている必要があります。 
 
@@ -1006,9 +1006,9 @@ Azure HPC Cache は、キャッシュ ディスクにカスタマー キーを�
 
 詳細については、次のリファレンスを参照してください。
 
-- [Azure セキュリティ ベンチマーク - ログと脅威検出](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure セキュリティ ベンチマーク - ログと脅威検出](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure セキュリティ ベンチマーク - インシデント対応](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure セキュリティ ベンチマーク - インシデント対応](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Azure のセキュリティのベスト プラクティス 4 - プロセス: クラウドのインシデント対応プロセスを更新する](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
@@ -1022,5 +1022,5 @@ Azure HPC Cache は、キャッシュ ディスクにカスタマー キーを�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

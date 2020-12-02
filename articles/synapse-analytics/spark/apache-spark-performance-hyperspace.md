@@ -10,12 +10,12 @@ ms.date: 08/12/2020
 ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 81ebf643591eeb3600957aafa8da2ca6055575a6
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 6795828f4fd3a77a7bc6d8de208848d5f4ee3bee
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95241592"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501041"
 ---
 # <a name="hyperspace-an-indexing-subsystem-for-apache-spark"></a>Hyperspace:Apache Spark 用のインデックス作成サブシステム
 
@@ -232,10 +232,9 @@ deptData.Write().Mode("overwrite").Parquet(deptLocation);
 結果は次のようになります。
 
 ```console
-import org.apache.spark.sql.DataFrame  
 departments: Seq[(Int, String, String)] = List((10,Accounting,New York), (20,Research,Dallas), (30,Sales,Chicago), (40,Operations,Boston))  
 employees: Seq[(Int, String, Int)] = List((7369,SMITH,20), (7499,ALLEN,30), (7521,WARD,30), (7566,JONES,20), (7698,BLAKE,30), (7782,CLARK,10), (7788,SCOTT,20), (7839,KING,10), (7844,TURNER,30), (7876,ADAMS,20), (7900,JAMES,30), (7934,MILLER,10), (7902,FORD,20), (7654,MARTIN,30))  
-import spark.implicits._  
+
 empData: org.apache.spark.sql.DataFrame = [empId: int, empName: string ... 1 more field]  
 deptData: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 1 more field]  
 empLocation: String = /your-path/employees.parquet  
@@ -362,6 +361,7 @@ val hyperspace: Hyperspace = Hyperspace()
 :::zone pivot = "programming-language-python"
 
 ```python
+from hyperspace import *
 
 # Create an instance of Hyperspace
 hyperspace = Hyperspace(spark)
@@ -386,7 +386,6 @@ Hyperspace hyperspace = new Hyperspace(spark);
 結果は次のようになります。
 
 ```console
-import com.microsoft.hyperspace._  
 hyperspace: com.microsoft.hyperspace.Hyperspace = com.microsoft.hyperspace.Hyperspace@1432f740
 ```
 
@@ -456,7 +455,6 @@ var deptIndexConfig2 = new IndexConfig("deptIndex2", new string[] {"location"}, 
 結果は次のようになります。
 
 ```console
-import com.microsoft.hyperspace.index.IndexConfig  
 empIndexConfig: com.microsoft.hyperspace.index.IndexConfig = [indexName: empIndex; indexedColumns: deptid; includedColumns: empname]  
 deptIndexConfig1: com.microsoft.hyperspace.index.IndexConfig = [indexName: deptIndex1; indexedColumns: deptid; includedColumns: deptname]  
 deptIndexConfig2: com.microsoft.hyperspace.index.IndexConfig = [indexName: deptIndex2; indexedColumns: location; includedColumns: deptname]  
@@ -502,12 +500,6 @@ hyperspace.CreateIndex(deptDF, deptIndexConfig2);
 ```
 
 ::: zone-end
-
-結果は次のようになります。
-
-```console
-import com.microsoft.hyperspace.index.Index
-```
 
 ## <a name="list-indexes"></a>インデックスを一覧表示する
 
@@ -1304,7 +1296,7 @@ Project [empName#528, deptName#534]
 
 ```scala
 spark.conf.set("spark.hyperspace.explain.displayMode", "html")
-hyperspace.explain(eqJoin) { displayHTML }
+hyperspace.explain(eqJoin)(displayHTML(_))
 ```
 
 ::: zone-end
