@@ -47,6 +47,8 @@
           href: how-to-legacy-device-symm-key.md
         - name: カスタム割り当てポリシーの使用
           href: tutorial-custom-allocation-policies.md
+        - name: 複数の X.509 デバイスのプロビジョニング
+          href: tutorial-custom-hsm-enrollment-group-x509.md
     - name: 2 - デバイスを複数のハブにプロビジョニングする
       items:
         - name: 複数のハブを DPS にリンクする
