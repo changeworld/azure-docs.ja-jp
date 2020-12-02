@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 5a2d7f9f60253916eae808a7f65bc4b4b289bd67
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3f4791c5cbcf731e118bac4bf692adcad7e9ff44
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694782"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483591"
 ---
 # <a name="using-snat-for-outbound-connections"></a>アウトバウンド接続での SNAT の使用
 
@@ -182,8 +182,6 @@ Azure Virtual Network NAT の詳細については、「[Azure Virtual Network N
 
 ## <a name="constraints"></a>制約
 
-*   **TCP RST** が受信または送信された場合、ポートは 15 秒後に解放されます
-*   **FINACK** が受信または送信された場合、ポートは 240 秒後に解放されます
 *   新しいパケットが送信されず、接続がアイドル状態の場合、ポートは 4 から 120 分後に解放されます。
   * このしきい値は、アウトバウンド規則を使用して構成できます。
 *   各 IP アドレスには、SNAT に使用できる 64,000 個のポートが用意されています。

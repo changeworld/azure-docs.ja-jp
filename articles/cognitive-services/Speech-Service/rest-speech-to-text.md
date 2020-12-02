@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 89e5fa180b011cbedebc25a5e5d555a2190805f8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: dff7ff0afd6c236645731dc7edd936b0b808716b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015360"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483922"
 ---
 # <a name="speech-to-text-rest-api"></a>Speech to Text REST API
 
@@ -58,7 +58,7 @@ REST 要求のクエリ文字列には、次のパラメーターを含めるこ
 | `language` | 認識の対象として発話された言語を識別します。 [サポートされている言語](language-support.md#speech-to-text)を参照してください。 | 必須 |
 | `format` | 結果の形式を指定します。 指定できる値は、`simple` と `detailed` です。 単純な結果には `RecognitionStatus`、`DisplayText`、`Offset`、`Duration`が含まれます。 詳細な応答には、表示テキストの 4 つの異なる表現が含まれます。 既定の設定は `simple` です。 | 省略可能 |
 | `profanity` | 認識結果内の不適切な表現をどう扱うかを指定します。 指定できる値は、`masked` (不適切な表現をアスタリスクに置き換える)、`removed` (すべての不適切な表現を結果から除去する)、または `raw` (不適切な表現を結果に含める) です。 既定の設定は `masked` です。 | 省略可能 |
-| `cid` | [Custom Speech ポータル](how-to-custom-speech.md)を使用してカスタム モデルを作成する場合、 **[デプロイ]** ページにある **[エンドポイント ID]** を使用してカスタム モデルを使用できます。 `cid` クエリ文字列パラメーターの引数として **[エンドポイント ID]** を使用します。 | 省略可能 |
+| `cid` | [Custom Speech ポータル](./custom-speech-overview.md)を使用してカスタム モデルを作成する場合、 **[デプロイ]** ページにある **[エンドポイント ID]** を使用してカスタム モデルを使用できます。 `cid` クエリ文字列パラメーターの引数として **[エンドポイント ID]** を使用します。 | 省略可能 |
 
 ## <a name="request-headers"></a>要求ヘッダー
 

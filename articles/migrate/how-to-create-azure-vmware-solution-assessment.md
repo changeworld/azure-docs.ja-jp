@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: 834fd32d17c4a5ff112dd11a331a59336d7cbcb7
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f9fdff54cbd795c6aeda1708dcae8d00022a6a43
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315250"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483506"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Azure VMware Solution (AVS) の評価を作成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "92315250"
 
 ## <a name="before-you-start"></a>開始する前に
 
-- Azure Migrate プロジェクトを[作成](how-to-add-tool-first-time.md)していることを確認します。
+- Azure Migrate プロジェクトを[作成](./create-manage-projects.md)していることを確認します。
 - プロジェクトを既に作成してある場合は、次のツールを[追加済み](how-to-assess.md)であることを確認します。Azure Migrate: Server Assessment ツールを追加済みであることを確認してください。
 - 評価を作成するには、[VMware](how-to-set-up-appliance-vmware.md) 用の Azure Migrate アプライアンスを設定する必要があります。これは、オンプレミスのマシンを検出して Azure Migrate: Server Assessment にメタデータとパフォーマンスデータを送信します。Server Assessment を使用して作成する方法について説明します。 [詳細については、こちらを参照してください](migrate-appliance.md)。
 - コンマ区切り値 (CSV) 形式で[サーバーのメタデータをインポート](./tutorial-discover-import.md)することもできます。
@@ -66,7 +66,7 @@ Azure VMware Solution (AVS) の評価作成に使用できるサイズ変更の�
 
     ![AVS 評価のプロパティ](./media/how-to-create-avs-assessment/avs-view-all.png)
 
-5. **[次へ]** をクリックして**評価するマシンを選択**します。 **[グループを選択または作成します]** で **[新規作成]** を選択し、グループ名を指定します。 グループで、評価のために 1 つ以上の VM をまとめます。
+5. **[次へ]** をクリックして **評価するマシンを選択** します。 **[グループを選択または作成します]** で **[新規作成]** を選択し、グループ名を指定します。 グループで、評価のために 1 つ以上の VM をまとめます。
 
 6. **[グループにマシンを追加します]** で、グループに追加する VM を選択します。
 

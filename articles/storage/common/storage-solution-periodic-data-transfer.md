@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: a0efc6f6f6d4ae6355fbb42fbc7e13ad7c078cf3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 19a4645e2bde4cf6b9f9a78123b334c290581ac4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792890"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484534"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>定期的なデータの転送用のソリューション
  
@@ -25,7 +25,7 @@ ms.locfileid: "92792890"
 
 定期的なデータ転送用の推奨されるオプションは、転送が定期的であるか継続的であるかに応じて 2 つのカテゴリに分類されます。
 
-- **スクリプト/プログラム ツール** – 一定間隔で発生するデータ転送では、AzCopy や Azure Storage REST API などのスクリプトおよびプログラム ツールを使用します。 これらのツールは、IT プロフェッショナルおよび開発者を対象としています。
+- **スクリプト/プログラム ツール**– 一定間隔で発生するデータ転送では、AzCopy や Azure Storage REST API などのスクリプトおよびプログラム ツールを使用します。 これらのツールは、IT プロフェッショナルおよび開発者を対象としています。
 
     - **AzCopy** - このコマンドライン ツールを使用すると、最適なパフォーマンスで Azure BLOB、Files、および Table ストレージとの間で相互に簡単にデータをコピーできます。 AzCopy はコンカレンシーと並列処理をサポートし、中断された場合にコピー操作を再開することができます。
     - **Azure Storage REST API/SDK** – アプリケーションの構築時に、Azure Storage REST API に対するアプリケーションを開発し、複数の言語で提供される Azure SDK を使用できます。 REST API では、Azure との間で相互に高パフォーマンスのデータ コピーを行うことができるように特別に設計された、Azure Storage Data Movement Library を利用することもできます。
@@ -65,7 +65,7 @@ ms.locfileid: "92792890"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [AzCopy を使用してデータを転送する](./storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ftables%252ftoc.json)。
+- [AzCopy を使用してデータを転送する](./storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
 - [Storage REST API を使用したデータ転送の詳細](/dotnet/api/overview/azure/storage)。
 - 以下の方法を理解します。
     - [Data Box Gateway を使用してデータを転送する](../../databox-online/data-box-gateway-deploy-add-shares.md)します。

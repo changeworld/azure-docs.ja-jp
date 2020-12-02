@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 2b474ae184374a2c91dcba15517048556686ec35
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8eaadc031039b22e209db1023c65da39e1e096b1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782231"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483285"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Azure Storage の暗号化のためのカスタマー マネージド キー
 
@@ -63,7 +63,7 @@ BLOB ストレージと Azure Files のデータは、カスタマー マネー�
 キー コンテナーにあるカスタマー マネージド キーを使用して Azure Storage 暗号化を構成する方法については、「[Azure Key Vault に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault.md)」を参照してください。 マネージド HSM にあるカスタマー マネージド キーを構成する方法については、「[Azure Key Vault Managed HSM (プレビュー) に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault-hsm.md)」を参照してください。
 
 > [!IMPORTANT]
-> カスタマー マネージド キーは、Azure AD の 1 つの機能である、Azure リソース用マネージド ID に依存します。 マネージド ID は現在、クロスディレクトリ シナリオをサポートしていません。 Azure portal でカスタマー マネージド キーを構成すると、内部でマネージド ID がストレージ アカウントに自動的に割り当てられます。 その後、サブスクリプション、リソース グループ、またはストレージ アカウントを 1 つの Azure AD ディレクトリから別のディレクトリに移動した場合、そのストレージ アカウントに関連付けられているマネージド ID は新しいテナントに転送されないため、カスタマー マネージド キーが機能しなくなることがあります。 詳細については、「 [Azure リソース用マネージド ID に関する FAQ と既知の問題](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)」の中の「 **Azure AD ディレクトリ間のサブスクリプションの転送** 」を参照してください。  
+> カスタマー マネージド キーは、Azure AD の 1 つの機能である、Azure リソース用マネージド ID に依存します。 マネージド ID は現在、クロスディレクトリ シナリオをサポートしていません。 Azure portal でカスタマー マネージド キーを構成すると、内部でマネージド ID がストレージ アカウントに自動的に割り当てられます。 その後、サブスクリプション、リソース グループ、またはストレージ アカウントを 1 つの Azure AD ディレクトリから別のディレクトリに移動した場合、そのストレージ アカウントに関連付けられているマネージド ID は新しいテナントに転送されないため、カスタマー マネージド キーが機能しなくなることがあります。 詳細については、「[Azure リソース用マネージド ID に関する FAQ と既知の問題](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)」の中の「**Azure AD ディレクトリ間のサブスクリプションの転送**」を参照してください。  
 
 Azure Storage の暗号化では、2048、3072、および 4096 のサイズの RSA および RSA-HSM キーがサポートされています。 キーの詳細については、「[キーについて](../../key-vault/keys/about-keys.md)」を参照してください。
 
@@ -113,7 +113,7 @@ Azure Storage の暗号化では、2048、3072、および 4096 のサイズの 
 
 ## <a name="customer-managed-keys-for-azure-managed-disks"></a>Azure マネージド ディスク用のカスタマー マネージド キー
 
-カスタマー マネージド キーは、Azure マネージド ディスクの暗号化の管理にも使用できます。 マネージド ディスクに対するカスタマー マネージド キーの動作は、Azure Storage リソースに対する動作とは異なります。 詳細については、Windows の場合は「[Azure Managed Disks のサーバー側暗号化](../../virtual-machines/windows/disk-encryption.md)」を参照してください。また、Linux の場合は「[Azure Managed Disks のサーバー側暗号化](../../virtual-machines/linux/disk-encryption.md)」を参照してください。
+カスタマー マネージド キーは、Azure マネージド ディスクの暗号化の管理にも使用できます。 マネージド ディスクに対するカスタマー マネージド キーの動作は、Azure Storage リソースに対する動作とは異なります。 詳細については、Windows の場合は「[Azure Managed Disks のサーバー側暗号化](../../virtual-machines/disk-encryption.md)」を参照してください。また、Linux の場合は「[Azure Managed Disks のサーバー側暗号化](../../virtual-machines/disk-encryption.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

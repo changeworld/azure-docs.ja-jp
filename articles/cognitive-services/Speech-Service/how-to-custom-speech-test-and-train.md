@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: cd9b85f22866c529b66fa6df07bd524516726086
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: a5457dc94082f089d3adf02c9614d05d2c5db244
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165334"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484007"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -87,7 +87,7 @@ ms.locfileid: "92165334"
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 > [!TIP]
-> トレーニング データとテスト データをアップロードする場合、.zip ファイルのサイズは 2 GB を超えることはできません。 トレーニング用にさらに多くのデータが必要な場合は、複数の .zip ファイルに分割し、個別にアップロードします。 その後、 *複数* のデータセットからトレーニングを選択できます。 ただし、 *単一* のデータセットからのみテストができます。
+> トレーニング データとテスト データをアップロードする場合、.zip ファイルのサイズは 2 GB を超えることはできません。 トレーニング用にさらに多くのデータが必要な場合は、複数の .zip ファイルに分割し、個別にアップロードします。 その後、*複数* のデータセットからトレーニングを選択できます。 ただし、*単一* のデータセットからのみテストができます。
 
 <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX <span class="docon docon-navigate-external x-hidden-focus"></span></a> を使用して、オーディオのプロパティを確認したり、既存のオーディオを適切な形式に変換したりします。 SoX のコマンドラインから、これらのアクティビティ各々を実行する方法の例を、次にいくつか示します:
 
@@ -204,4 +204,4 @@ ms.locfileid: "92165334"
 * [データを検査する](how-to-custom-speech-inspect-data.md)
 * [データを評価する](how-to-custom-speech-evaluate-data.md)
 * [モデルをトレーニングする](how-to-custom-speech-train-model.md)
-* [モデルをデプロイする](how-to-custom-speech-deploy-model.md)
+* [モデルをデプロイする](./how-to-custom-speech-train-model.md)

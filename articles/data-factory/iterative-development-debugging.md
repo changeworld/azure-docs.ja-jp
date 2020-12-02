@@ -7,14 +7,14 @@ ms.service: data-factory
 services: data-factory
 documentationcenter: ''
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
-ms.openlocfilehash: f1f81af715bc4b2248a24076f3b12a74d0ee73e3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+author: dcstwh
+ms.author: weetok
+ms.openlocfilehash: 9b28fb24439354e09e5262281a99cd9dc0153a04
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102072"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485248"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Azure Data Factory での反復開発とデバッグ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -27,7 +27,7 @@ Azure Data Factory を使用すると、データ統合ソリューションを�
 
 ## <a name="debugging-a-pipeline"></a>パイプラインのデバッグ
 
-パイプライン キャンバスを使用して作成するときは、 **デバッグ** 機能を使用してアクティビティをテストできます。 テストの実行を行うときは、 **[デバッグ]** を選択する前に、Data Factory に変更を発行する必要はありません。 この機能は、Data Factory ワークフローを更新する前に、変更が期待どおりに動作することを確認する場合に便利です。
+パイプライン キャンバスを使用して作成するときは、**デバッグ** 機能を使用してアクティビティをテストできます。 テストの実行を行うときは、**[デバッグ]** を選択する前に、Data Factory に変更を発行する必要はありません。 この機能は、Data Factory ワークフローを更新する前に、変更が期待どおりに動作することを確認する場合に便利です。
 
 ![パイプライン キャンバスのデバッグ機能](media/iterative-development-debugging/iterative-development-1.png)
 

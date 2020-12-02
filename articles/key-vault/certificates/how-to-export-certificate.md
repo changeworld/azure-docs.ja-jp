@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: e7ea3ef16b60e53450436bda66ce3dde091c81c2
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4339e8217702e9f25877bc8c250b5363e2c59a42
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289552"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483697"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Azure Key Vault から証明書をエクスポートする
 
@@ -27,14 +27,14 @@ Azure Key Vault を使用すると、ネットワーク用のデジタル証明�
 
 ### <a name="composition-of-a-certificate"></a>証明書の構成
 
-Key Vault 証明書が作成されると、アドレス指定可能な " *キー* " と " *シークレット* " が同じ名前で作成されます。 Key Vault のキーによりキーの操作が可能になります。 Key Vault のシークレットにより、シークレットとして証明書の値を取得できます。 Key Vault 証明書には、公開 x509 証明書メタデータも含まれます。 詳細については、「[証明書の構成](./about-certificates.md#composition-of-a-certificate)」を参照してください。
+Key Vault 証明書が作成されると、アドレス指定可能な "*キー*" と "*シークレット*" が同じ名前で作成されます。 Key Vault のキーによりキーの操作が可能になります。 Key Vault のシークレットにより、シークレットとして証明書の値を取得できます。 Key Vault 証明書には、公開 x509 証明書メタデータも含まれます。 詳細については、「[証明書の構成](./about-certificates.md#composition-of-a-certificate)」を参照してください。
 
 ### <a name="exportable-and-non-exportable-keys"></a>エクスポート可能およびエクスポート不可能なキー
 
 Key Vault 証明書が作成されると、アドレス指定可能なシークレットから秘密キーとともにそれを取得できます。 PFX または PEM 形式で証明書を取得します。
 
-- **エクスポート可能** :証明書の作成に使用されるポリシーで、キーがエクスポート可能であることが示されています。
-- **エクスポート不可能** :証明書の作成に使用されるポリシーで、キーがエクスポート不可能であることが示されています。 この場合、秘密キーは、シークレットとして取得されたときの値の一部ではありません。
+- **エクスポート可能**:証明書の作成に使用されるポリシーで、キーがエクスポート可能であることが示されています。
+- **エクスポート不可能**:証明書の作成に使用されるポリシーで、キーがエクスポート不可能であることが示されています。 この場合、秘密キーは、シークレットとして取得されたときの値の一部ではありません。
 
 サポートされているキーの種類: RSA、RSA-HSM、EC、EC-HSM、oct (一覧は[こちら](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype))。エクスポート可能にできるのは、RSA、EC のみです。 HSM キーはエクスポートできません。
 
@@ -79,11 +79,11 @@ az keyvault secret download -–file {nameofcert.pfx}
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Azure PowerShell でこのコマンドを使用して、 **TestCert01** という名前の証明書を **ContosoKV01** という名前のキー コンテナーから取得します。 証明書を PFX ファイルとしてダウンロードするには、次のコマンドを実行します。 これらのコマンドは、 **SecretId** にアクセスし、内容を PFX ファイルとして保存します。
+Azure PowerShell でこのコマンドを使用して、**TestCert01** という名前の証明書を **ContosoKV01** という名前のキー コンテナーから取得します。 証明書を PFX ファイルとしてダウンロードするには、次のコマンドを実行します。 これらのコマンドは、**SecretId** にアクセスし、内容を PFX ファイルとして保存します。
 
 ```azurepowershell
 $cert = Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
-$secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $cert.Name
+$secret = Get-AzKeyVaultSecret -VaultName "ContosoKV01" -Name $cert.Name
 $secretValueText = '';
 $ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
 try {
@@ -102,7 +102,7 @@ $pfxFileByte = $x509Cert.Export($type, $password)
 ```
 
 このコマンドにより、証明書のチェーン全体が秘密キーと共にエクスポートされます。 証明書がパスワードで保護されていること。
-**Get-AzKeyVaultCertificate** コマンドとパラメーターの詳細については、 [Get-AzKeyVaultCertificate の例 2](/powershell/module/az.keyvault/Get-AzKeyVaultCertificate?view=azps-4.4.0) を参照してください。
+**Get-AzKeyVaultCertificate** コマンドとパラメーターの詳細については、[Get-AzKeyVaultCertificate の例 2](/powershell/module/az.keyvault/Get-AzKeyVaultCertificate?view=azps-4.4.0) を参照してください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 

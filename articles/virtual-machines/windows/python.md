@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: devx-track-python
-ms.openlocfilehash: 402a61b4b5335c19d75cd1182243783453a0e7fa
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a7117d30eb1774753f21e82ad5f812a7309d8386
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974857"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483098"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python を使用して Azure で Windows VM を作成および管理する
 
@@ -492,7 +492,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="add-a-data-disk-to-the-vm"></a>VM にデータ ディスクを追加する
 
-仮想マシンでは 1 つ以上の[データ ディスク](../managed-disks-overview.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)を保持することができ、それらは VHD として格納されます。
+仮想マシンでは 1 つ以上の[データ ディスク](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を保持することができ、それらは VHD として格納されます。
 
 1. 仮想マシンにデータ ディスクを追加するには、.py ファイルの変数の後に次の関数を追加します。 
 
@@ -559,7 +559,7 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 1. コンソール アプリケーションを実行するには、Visual Studio で **[開始]** をクリックします。
 
-2. 各リソースの状態が返された後、**Enter** キーを押します。 状態の情報では、プロビジョニングが**成功**状態になっている必要があります。 仮想マシンが作成された後、作成したすべてのリソースを削除する機会があります。 **Enter** キーを押してリソースの削除を開始する前に、Azure Portal でリソースの作成状況を確認することもできます。 Azure Portal が開いたままになっている場合、新しいリソースを表示するにはブレードの更新が必要になる場合があります。  
+2. 各リソースの状態が返された後、**Enter** キーを押します。 状態の情報では、プロビジョニングが **成功** 状態になっている必要があります。 仮想マシンが作成された後、作成したすべてのリソースを削除する機会があります。 **Enter** キーを押してリソースの削除を開始する前に、Azure Portal でリソースの作成状況を確認することもできます。 Azure Portal が開いたままになっている場合、新しいリソースを表示するにはブレードの更新が必要になる場合があります。  
 
     このコンソール アプリケーションが実行を開始してから完全に終了するまでには、約 5 分かかります。 アプリケーションが終了してから、すべてのリソースとリソース グループが削除されるまで、数分かかる場合があります。
 

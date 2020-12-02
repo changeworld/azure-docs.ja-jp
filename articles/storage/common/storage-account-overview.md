@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: fc44b7a49785a24460ea11f07e5248b266f5dfad
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7008cfcdeb4615b42839f92a6df71357f9acf911
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793009"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484993"
 ---
 # <a name="storage-account-overview"></a>ストレージ アカウントの概要
 
@@ -138,7 +138,7 @@ Azure Storage では、使用パターンに基づいて、ブロック BLOB デ
 > [!NOTE]
 > ブロック BLOB および BLOB ストレージ アカウントは、Blob service エンドポイントのみを公開します。
 
-ストレージアカウント内のオブジェクトの場所をエンドポイントに追加して、ストレージアカウント内のオブジェクトにアクセスするためのURLを構築します。 たとえば、BLOB アドレスは、 http:// *mystorageaccount* .blob.core.windows.net/ *mycontainer*/*myblob* のような形式になります。
+ストレージアカウント内のオブジェクトの場所をエンドポイントに追加して、ストレージアカウント内のオブジェクトにアクセスするためのURLを構築します。 たとえば、BLOB アドレスは、 http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob* のような形式になります。
 
 BLOB 用のカスタム ドメインを使用するようにストレージ アカウントを構成することもできます。 詳細については、「[Azure Storage アカウントのカスタム ドメイン名の構成](../blobs/storage-custom-domain-name.md)」をご覧ください。  
 
@@ -151,7 +151,7 @@ BLOB 用のカスタム ドメインを使用するようにストレージ ア�
 次の方法のいずれかを使用して、ストレージ アカウント内のデータへのアクセス権を付与できます。
 
 - **Azure Active Directory:** Azure Active Directory (Azure AD) の資格情報を使用して、ユーザー、グループ、またはその他の ID による BLOB データとキュー データへのアクセスを認証します。 ID の認証が成功した場合、Azure AD は、Azure Blob Storage または Queue Storage に対する要求の承認で使用されるトークンを返します。 詳細については、「[Azure Active Directory を使用して Azure Storage へのアクセスを認証する](storage-auth-aad.md)」を参照してください。
-- **共有キーによる承認:** ストレージ アカウント アクセス キーを使用して、アプリケーションが実行時に Azure Storage にアクセスするために使用する接続文字列を構成します。 接続文字列内の値を使用して、Azure Storage に渡される " *承認* " ヘッダーが作成されます。 詳細については、「[Azure Storage の接続文字列を構成する](storage-configure-connection-string.md)」を参照してください。
+- **共有キーによる承認:** ストレージ アカウント アクセス キーを使用して、アプリケーションが実行時に Azure Storage にアクセスするために使用する接続文字列を構成します。 接続文字列内の値を使用して、Azure Storage に渡される "*承認*" ヘッダーが作成されます。 詳細については、「[Azure Storage の接続文字列を構成する](storage-configure-connection-string.md)」を参照してください。
 - **共有アクセス署名:** Azure AD 承認を使用していない場合は、共有アクセス署名を使用して、ストレージ アカウント内のリソースへのアクセス権を委任します。 共有アクセス署名は、URL 上の Azure Storage への要求を承認するために必要なすべての情報をカプセル化するトークンです。 ストレージ リソース、与えられるアクセス許可、そのアクセス許可が共有アクセス署名の一部として有効である期間を指定できます。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-sas-overview.md)」をご覧ください。
 
 > [!NOTE]
@@ -167,7 +167,7 @@ Microsoft では、オンプレミス ストレージ デバイスまたはサ�
 
 ### <a name="azcopy"></a>AzCopy
 
-AzCopy は、Azure Storage との間で高パフォーマンスのデータ コピーを行うように設計された Windows コマンドライン ユーティリティです。 AzCopy を使用して、既存の汎用ストレージ アカウントから BLOB ストレージ アカウントにデータをコピーできます。またオンプレミス ストレージ デバイスから データをアップロードできます。 詳細については、[AzCopy コマンド ライン ユーティリティを使用したデータの転送](./storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)に関するページをご覧ください。
+AzCopy は、Azure Storage との間で高パフォーマンスのデータ コピーを行うように設計された Windows コマンドライン ユーティリティです。 AzCopy を使用して、既存の汎用ストレージ アカウントから BLOB ストレージ アカウントにデータをコピーできます。またオンプレミス ストレージ デバイスから データをアップロードできます。 詳細については、[AzCopy コマンド ライン ユーティリティを使用したデータの転送](./storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページをご覧ください。
 
 ### <a name="data-movement-library"></a>データ移動ライブラリ
 

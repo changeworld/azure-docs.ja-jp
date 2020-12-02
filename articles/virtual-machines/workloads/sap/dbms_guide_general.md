@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 38f6cf039de2404c7b3eeecc74ee33233f4a2058
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5638b60b60f3952ab40fa000e457082f4748ac35
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965291"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484347"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -160,8 +160,8 @@ IOPS の要件が 1 つの VHD で提供可能な容量を超えている場合�
 >
 > Linux 上でのソフトウェア RAID の構築がサポートされているのは、MDADM および論理ボリューム マネージャー (LVM) のみです。 詳細については、次を参照してください。
 >
-> - MDADM を使用して [Linux 上にソフトウェア RAID を構成する](../../linux/configure-raid.md)
-> - LVM を使用して[ Azure 内の Linux VM 上に LVM を構成する](../../linux/configure-lvm.md)
+> - MDADM を使用して [Linux 上にソフトウェア RAID を構成する](/previous-versions/azure/virtual-machines/linux/configure-raid)
+> - LVM を使用して[ Azure 内の Linux VM 上に LVM を構成する](/previous-versions/azure/virtual-machines/linux/configure-lvm)
 >
 >
 

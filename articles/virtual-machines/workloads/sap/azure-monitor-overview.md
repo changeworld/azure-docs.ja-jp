@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: 5bb40ec930731b58d457500d83b66c7a187b44d8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bcb912a24dfb2a5e78719cf9010fd23afe0df185
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957437"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484398"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>SAP ソリューション向け Azure Monitor (プレビュー)
 
@@ -35,7 +35,7 @@ SAP ソリューション向け Azure Monitor は、Azure Marketplace を通じ�
 - SAP HANA データベース
 - Microsoft SQL Server
 
-SAP ソリューション向け Azure Monitor では、Log Analytics や[ブック](../../../azure-monitor/platform/workbooks-overview.md)などの [Azure Monitor](../../../azure-monitor/overview.md) の既存機能を利用して、追加の監視機能が提供されます。 お客様は、SAP ソリューション向け Azure Monitor によって提供される既定のブックを編集することによって[カスタム視覚化](../../../azure-monitor/platform/workbooks-overview.md#getting-started)を作成し、Log Analytics ワークスペースを使用して[カスタム クエリ](../../../azure-monitor/log-query/get-started-portal.md)や[カスタム アラート](../../../azure-monitor/learn/tutorial-response.md)を作成し、[柔軟な保有期間](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)を利用し、監視データをチケット システムに接続することができます。
+SAP ソリューション向け Azure Monitor では、Log Analytics や[ブック](../../../azure-monitor/platform/workbooks-overview.md)などの [Azure Monitor](../../../azure-monitor/overview.md) の既存機能を利用して、追加の監視機能が提供されます。 お客様は、SAP ソリューション向け Azure Monitor によって提供される既定のブックを編集することによって[カスタム視覚化](../../../azure-monitor/platform/workbooks-overview.md#getting-started)を作成し、Log Analytics ワークスペースを使用して[カスタム クエリ](../../../azure-monitor/log-query/log-analytics-tutorial.md)や[カスタム アラート](../../../azure-monitor/learn/tutorial-response.md)を作成し、[柔軟な保有期間](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)を利用し、監視データをチケット システムに接続することができます。
 
 ## <a name="what-data-does-azure-monitor-for-sap-solutions-collect"></a>SAP ソリューション向け Azure Monitor ではどのようなデータが収集されますか?
 

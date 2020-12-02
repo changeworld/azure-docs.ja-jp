@@ -487,7 +487,7 @@
                       href: ../image-version-vm-cli.md
                     - name: マネージド ディスクまたはスナップショットから
                       href: ../image-version-snapshot-cli.md
-                    - name: マネージド イメージから移行する
+                    - name: マネージド イメージの複製
                       href: ../image-version-managed-image-cli.md
                     - name: 別のギャラリーからコピーする
                       href: ../image-version-another-gallery-cli.md
@@ -511,7 +511,7 @@
                       href: ../image-version-vm-powershell.md
                     - name: マネージド ディスクまたはスナップショットから
                       href: ../image-version-snapshot-powershell.md
-                    - name: マネージド イメージから移行する
+                    - name: マネージド イメージの複製
                       href: ../image-version-managed-image-powershell.md
                     - name: 別のギャラリーからコピーする
                       href: ../image-version-another-gallery-powershell.md
@@ -585,7 +585,7 @@
           href: ../managed-disk-from-image-version.md
     - name: VM のセキュリティ保護
       items:
-        - name: Recommendations
+        - name: 推奨事項
           href: ../security-recommendations.md
         - name: ジャストインタイム アクセス
           href: ../../security-center/security-center-just-in-time.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json

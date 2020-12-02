@@ -192,8 +192,16 @@
           href: application-proxy-remove-personal-data.md
         - name: カスタム ドメインの構成
           href: application-proxy-configure-custom-domain.md
-        - name: アプリ デリバリー コントローラーとネットワークを使用してレガシ アプリをセキュリティで保護する
-          href: secure-hybrid-access.md
+        - name: レガシ アプリのセキュリティ保護
+          items:
+            - name: Azure AD を使用した安全なハイブリッド アクセス
+              href: secure-hybrid-access.md
+            - name: F5 と Azure AD の統合
+              href: f5-aad-integration.md
+            - name: Azure IaaS での F5 BIG-IP VE のデプロイ
+              href: f5-bigip-deployment-guide.md
+            - name: パスワードレス VPN のための F5 Big-IP と Azure AD
+              href: f5-aad-password-less-vpn.md
         - name: 発行に関するチュートリアル
           items:
             - name: NDES サーバー上のアプリケーション プロキシとの統合

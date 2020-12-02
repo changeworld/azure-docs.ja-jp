@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: bd8da9ae7e31fb60ba0ca553f5aa304ccd3621d2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d9e5f9b531fc28caf8f3162a70318927d40bb923
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127180"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483064"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Azure で Micro Focus Enterprise Server 5.0 および Enterprise Developer 5.0 をインストールする
 
@@ -42,12 +42,12 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017 
     > [!Note]
     > 以下のように、VM へのアクセスを制御するためのオプションはいくつかあります。
     > -   [Azure Bastion](https://azure.microsoft.com/services/azure-bastion/) を設定することをお勧めします。
-    > -   [サイト間仮想プライベート ネットワーク (VPN)](../../../../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md) トンネル。
+    > -   [サイト間仮想プライベート ネットワーク (VPN)](../../../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) トンネル。
     > -   ジャンプボックス VM。
 
 ## <a name="install-enterprise-server"></a>Enterprise Server をインストールする
 
-1.  セキュリティや管理容易性を向上させるために、このプロジェクトだけのための新しいリソース グループ (たとえば、 **RGMicroFocusEntServer** ) を作成することを考慮してください。 Azure での名前の最初の部分を使用してリソースの種類を選択することにより、一覧内で見つけやすくします。
+1.  セキュリティや管理容易性を向上させるために、このプロジェクトだけのための新しいリソース グループ (たとえば、**RGMicroFocusEntServer**) を作成することを考慮してください。 Azure での名前の最初の部分を使用してリソースの種類を選択することにより、一覧内で見つけやすくします。
 
 2.  仮想マシンを作成します。 Azure Marketplace から、必要な仮想マシンとオペレーティング システムを選択します。 推奨される設定を次に示します。
 
@@ -61,7 +61,7 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017 
 
 5.  残りの設定については既定値を受け入れます。 これらの VM の管理者のために作成したユーザー名とパスワードを覚えておいてください。
 
-6.  仮想マシンが作成されたら、Enterprise Server コンピューターでは **9003、86** 、HTTP の場合は **80** 、リモート デスクトップ プロトコル (RDP) の場合は **3389** 、および Developer コンピューターでは **3389** の受信ポートを開きます。
+6.  仮想マシンが作成されたら、Enterprise Server コンピューターでは **9003、86**、HTTP の場合は **80**、リモート デスクトップ プロトコル (RDP) の場合は **3389**、および Developer コンピューターでは **3389** の受信ポートを開きます。
 
 7.  Enterprise Server 仮想マシンにサインインするには、Azure portal で [ES2 v3 VM] を選択します。 **[概要]** セクションに移動し、 **[接続]** を選択して RDP セッションを起動します。 VM のために作成した資格情報を使用してサインインします。
 
@@ -97,7 +97,7 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017 
 
 ## <a name="install-enterprise-developer-on-the-developer-machine"></a>開発者のコンピューターに Enterprise Developer をインストールする
 
-1.  前に作成したリソース グループ (たとえば、 **RGMicroFocusEntServer** ) を選択した後、開発者イメージを選択します。
+1.  前に作成したリソース グループ (たとえば、**RGMicroFocusEntServer**) を選択した後、開発者イメージを選択します。
 
 2.  仮想マシンにサインインするには、 **[概要]** セクションに移動し、 **[接続]** を選択します。 このサインインにより、RDP セッションが起動されます。 VM のために作成した資格情報を使用してサインインします。
 

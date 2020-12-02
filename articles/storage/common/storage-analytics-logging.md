@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 971f0cd74d7ccc6e2b0d8049a4441ba3d465b70a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: eb71de223e2d840e0caa0444b837e16e1f091414
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787671"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484789"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics のログ
 
@@ -57,7 +57,7 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
 > [!NOTE]
 >  コンテナーの一覧作成操作 ( List Containers 操作など) を実行しても、`$logs` コンテナーは表示されません。 直接アクセスする必要があります。 たとえば、List Blobs 操作を使用して、`$logs` コンテナー内の BLOB にアクセスできます。
 
-要求がログに記録されると、Storage Analytics は、中間結果をブロックとしてアップロードします。 これらのブロックを定期的にコミットし、BLOB として利用できるようにします。 **$logs** コンテナー内の BLOB にログ データが表示されるまでに最長 1 時間かかる場合があります。これは、ストレージ サービスがログ ライターをフラッシュする頻度が原因です。 同じ時間内に作成されたログについて、重複するレコードが存在する場合があります。 レコードが重複しているかどうかは、 **RequestId** と **Operation** の数をチェックすることによって確認できます。
+要求がログに記録されると、Storage Analytics は、中間結果をブロックとしてアップロードします。 これらのブロックを定期的にコミットし、BLOB として利用できるようにします。 **$logs** コンテナー内の BLOB にログ データが表示されるまでに最長 1 時間かかる場合があります。これは、ストレージ サービスがログ ライターをフラッシュする頻度が原因です。 同じ時間内に作成されたログについて、重複するレコードが存在する場合があります。 レコードが重複しているかどうかは、**RequestId** と **Operation** の数をチェックすることによって確認できます。
 
 複数のファイルに及ぶ大量のログ データが毎時間発生する場合、BLOB メタデータを使用して BLOB メタデータ フィールドを検査すると、ログに含まれているデータを確認できます。 これが便利であるのは、データがログ ファイルに書き込まれる間に遅延が発生することもあるためです。BLOB メタデータを見ると、BLOB 名を見たときよりも正確に BLOB の内容がわかります。
 
@@ -139,7 +139,7 @@ Azure portal では、 **[Diagnostics settings (classic)]\(診断の設定 (ク�
 
  ローカル マシン上で PowerShell を使用して、ストレージ アカウント内のストレージ ログを構成できます。現在の設定を取得するには、Azure PowerShell コマンドレット **Get-AzStorageServiceLoggingProperty** を使用し、現在の設定を変更するには、コマンドレット **Set-AzStorageServiceLoggingProperty** を使用します。  
 
- ストレージ ログを制御するコマンドレットでは、 **LoggingOperations** パラメーターが使用されます。このパラメーターは文字列で、記録する要求の種類がコンマ区切り形式で含まれています。 指定できる要求の種類には、 **read** 、 **write** 、および **delete** の 3 つがあります。 ログをオフにするには、 **LoggingOperations** パラメーターに **none** の値を指定します。  
+ ストレージ ログを制御するコマンドレットでは、**LoggingOperations** パラメーターが使用されます。このパラメーターは文字列で、記録する要求の種類がコンマ区切り形式で含まれています。 指定できる要求の種類には、**read**、**write**、および **delete** の 3 つがあります。 ログをオフにするには、**LoggingOperations** パラメーターに **none** の値を指定します。  
 
  以下のコマンドでは、既定のストレージ アカウント内の Queue サービスで read、write、および delete の各要求に対するログがオンにされます。リテンション期間は 5 日間に設定されています。  
 
@@ -204,7 +204,7 @@ AzCopy の使用を開始するには、「[AzCopy を使ってみる](storage-u
 azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
 ```
 
-特定のファイルをダウンロードする方法の詳細については、「[特定のファイルをダウンロードする](./storage-use-azcopy-blobs.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#download-specific-files)」を参照してください。
+特定のファイルをダウンロードする方法の詳細については、「[特定のファイルをダウンロードする](./storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files)」を参照してください。
 
 ログ データのダウンロードが完了すると、ファイル内のログ エントリを表示できます。 これらのログ ファイルでは、多くのログ読み取りツールで解析できる区切り記号付きテキスト形式が使用されています (詳細については、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」を参照してください)。 ログ ファイルの内容を書式設定、フィルタリング、並べ替え、AD 検索するために、各種のツールがさまざまな機能を提供しています。 ストレージ ログのログ ファイルの形式および内容の詳細については、「[Storage Analytics Log Format (Storage Analytics のログ形式)](/rest/api/storageservices/storage-analytics-log-format)」および「[Storage Analytics Logged Operations and Status Message (Storage Analytics によって記録される操作および状態メッセージ)](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)」を参照してください。
 

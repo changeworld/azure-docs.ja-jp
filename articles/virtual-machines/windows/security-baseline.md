@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 385f747999bbdb408dd1c5d2f5f12717834e94da
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: af7cc9d83b87c8a772a190c431d6946eec4dda86
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844218"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483132"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Windows Virtual Machines 用の Azure のセキュリティ ベースライン
 
@@ -76,7 +76,7 @@ Windows Virtual Machines 用の Azure セキュリティ ベースラインに�
 
 Azure Security Center の Just In Time ネットワーク アクセスを使用すると、限られた期間について、承認された IP アドレスへの Windows Virtual Machines の公開を制限できます。 また、実際のトラフィックと脅威インテリジェンスに基づいてポートとソース IP を制限する NSG 構成を推奨する Azure Security Center のアダプティブ ネットワーク強化を使用します。
 
-* [DDoS 保護を構成する方法](../../virtual-network/manage-ddos-protection.md)
+* [DDoS 保護を構成する方法](../../ddos-protection/manage-ddos-protection.md)
 
 * [Azure Firewall をデプロイする方法l](../../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -274,7 +274,7 @@ Virtual Machines (VM) に診断拡張機能をデプロイすることによっ�
 
 * [Azure Sentinel をオンボードする方法](../../sentinel/quickstart-onboard.md)
 
-* [Log Analytics ワークスペースについて](../../azure-monitor/log-query/get-started-portal.md)
+* [Log Analytics ワークスペースについて](../../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [Azure Monitor でカスタム クエリを実行する方法](../../azure-monitor/log-query/get-started-queries.md)
 
@@ -452,7 +452,7 @@ Virtual Machines (VM) に診断拡張機能をデプロイすることによっ�
 
 **ガイダンス**: 監査ログとサインイン ログを Log Analytics ワークスペースに送信するように Azure Active Directory の診断設定を構成します。 また、ログを確認したり、Azure 仮想マシンのログ データにクエリを実行したりするには Azure Monitor を使用します。
 
-* [Log Analytics ワークスペースについて](../../azure-monitor/log-query/get-started-portal.md)
+* [Log Analytics ワークスペースについて](../../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [Azure アクティビティ ログを Azure Monitor に統合する方法](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -580,7 +580,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: Windows Virtual Machines (VM) 上の仮想ディスクは、サーバー側暗号化または Azure Disk Encryption (ADE) のどちらかを使用して、保存時に暗号化されます。 Azure Disk Encryption では、Windows の BitLocker 機能を利用して、ゲスト VM 内のカスタマー マネージド キーを使用してマネージド ディスクを暗号化します。 カスタマー マネージド キーを使用したサーバー側の暗号化では、ストレージ サービス内のデータを暗号化することで、VM に対して任意の OS の種類とイメージを使用できるため、ADE がさらに向上します。
 
-* [Azure Managed Disks のサーバー側暗号化](./disk-encryption.md)
+* [Azure Managed Disks のサーバー側暗号化](../disk-encryption.md)
 
 * [Windows VM 用の Azure Disk Encryption](./disk-encryption-overview.md)
 
@@ -620,9 +620,9 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**:仮想マシンの更新プログラムと修正プログラムを管理するには、Azure Update Management ソリューションを使用します。 Update Management は、サポート対象の Windows システムへの修正プログラムの適用を、ローカルに構成された更新リポジトリに依存しています。 System Center Updates Publisher (Updates Publisher) などのツールを使用して、カスタム更新プログラムを Windows Server Update Services (WSUS) に公開できます。 このシナリオでは、サード パーティ製ソフトウェアで Configuration Manager を更新リポジトリとして使用するマシンに、Update Management で修正プログラムを適用できます。
 
-* [Azure の Update Management ソリューション](../../automation/update-management/update-mgmt-overview.md)
+* [Azure の Update Management ソリューション](../../automation/update-management/overview.md)
 
-* [VM の更新プログラムとパッチを管理する](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
+* [VM の更新プログラムとパッチを管理する](../../automation/update-management/manage-updates-for-vm.md)
 
 **Azure Security Center の監視**: はい
 
@@ -632,9 +632,9 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: サード パーティ製の修正プログラム管理ソリューションを使用できます。 Azure Update Management のソリューションを使用すると、仮想マシンの更新プログラムと修正プログラムを管理できます。 Update Management は、サポート対象の Windows システムへの修正プログラムの適用を、ローカルに構成された更新リポジトリに依存しています。 System Center Updates Publisher (Updates Publisher) などのツールを使用して、カスタム更新プログラムを Windows Server Update Services (WSUS) に公開できます。 このシナリオでは、サード パーティ製ソフトウェアで Configuration Manager を更新リポジトリとして使用するマシンに、Update Management で修正プログラムを適用できます。
 
-* [Azure の Update Management ソリューション](../../automation/update-management/update-mgmt-overview.md)
+* [Azure の Update Management ソリューション](../../automation/update-management/overview.md)
 
-* [VM の更新プログラムとパッチを管理する](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
+* [VM の更新プログラムとパッチを管理する](../../automation/update-management/manage-updates-for-vm.md)
 
 **Azure Security Center の監視**: 利用不可
 

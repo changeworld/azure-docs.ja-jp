@@ -676,6 +676,8 @@
                       href: app/java-standalone-telemetry-processors.md
                     - name: JVM 引数の設定
                       href: app/java-standalone-arguments.md
+                    - name: 2.x からのアップグレード
+                      href: app/java-standalone-upgrade-from-2x.md
             - name: オンプレミスのサーバー
               items:
                 - name: ASP.NET

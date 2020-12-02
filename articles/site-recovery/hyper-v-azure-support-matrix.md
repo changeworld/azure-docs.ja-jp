@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 53967ab0bec9488691ff60cdabb8fedbb6b9730e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7466f037f0a39b67023b9ebcc27c2e19b27f42ab
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87386709"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485265"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -136,7 +136,7 @@ geo 冗長ストレージ | ○ | ○
 ブロック blob | いいえ | ×
 保存時の暗号化 (SSE)| ○ | ○
 保存時の暗号化 (CMK) <br></br> (マネージド ディスクへのフェールオーバーの場合のみ)| はい (PowerShell Az 3.3.0 モジュール以降を使用) | はい (PowerShell Az 3.3.0 モジュール以降を使用)
-保存時の二重暗号化 <br></br> (マネージド ディスクへのフェールオーバーの場合のみ) <br></br> [Windows](../virtual-machines/windows/disk-encryption.md) および [Linux](../virtual-machines/linux/disk-encryption.md) でサポートされているリージョンの詳細について参照してください | はい (PowerShell Az 3.3.0 モジュール以降を使用) | はい (PowerShell Az 3.3.0 モジュール以降を使用)
+保存時の二重暗号化 <br></br> (マネージド ディスクへのフェールオーバーの場合のみ) <br></br> [Windows](../virtual-machines/disk-encryption.md) および [Linux](../virtual-machines/disk-encryption.md) でサポートされているリージョンの詳細について参照してください | はい (PowerShell Az 3.3.0 モジュール以降を使用) | はい (PowerShell Az 3.3.0 モジュール以降を使用)
 Premium Storage | ○ | はい
 Standard Storage | はい | ○
 Import/Export サービス | × | いいえ

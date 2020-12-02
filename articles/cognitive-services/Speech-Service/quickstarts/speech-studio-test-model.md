@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/04/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 9101944a567df5000d3584ed48eff24e4c5e0057
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 572b3b3459e1d837130f3c987d45ee45629f37ad
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89565805"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485078"
 ---
 # <a name="test-a-model-using-an-audio-file-in-speech-studio"></a>Speech Studio でオーディオ ファイルを使用してモデルをテストする
 
@@ -23,7 +23,7 @@ ms.locfileid: "89565805"
 
 ## <a name="prerequisites"></a>前提条件
 
-Speech ポータルを使用する前に、[次の手順に従って、Azure アカウントを作成し、Speech サービスにサブスクライブします](../how-to-custom-speech.md#set-up-your-azure-account)。 この統合されたサブスクリプションにより、音声テキスト変換、テキスト読み上げ、音声翻訳、および Custom Speech ポータルにアクセスできるようになります。
+Speech ポータルを使用する前に、[次の手順に従って、Azure アカウントを作成し、Speech サービスにサブスクライブします](../custom-speech-overview.md#set-up-your-azure-account)。 この統合されたサブスクリプションにより、音声テキスト変換、テキスト読み上げ、音声翻訳、および Custom Speech ポータルにアクセスできるようになります。
 
 ## <a name="download-an-audio-file"></a>オーディオ ファイルをダウンロードする
 

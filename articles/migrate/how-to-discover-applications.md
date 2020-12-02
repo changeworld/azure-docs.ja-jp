@@ -3,12 +3,12 @@ title: Azure Migrate を使用したオンプレミス サーバーでのアプ�
 description: Azure Migrate Server Assessment を使用して、オンプレミス サーバー上のアプリ、ロール、および機能を検出する方法について説明します。
 ms.topic: article
 ms.date: 06/10/2020
-ms.openlocfilehash: 6bdc26ac3a27026183e889bf258e2e1a5dadebfb
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 960877ac4eab4d8f23b5616dc04628142964b46a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315212"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483455"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>マシンのアプリ、ロール、および機能を検出する
 
@@ -23,7 +23,7 @@ ms.locfileid: "92315212"
 ## <a name="before-you-start"></a>開始する前に
 
 - 次を完了したことを確認します。
-    - Azure Migrate プロジェクトの[作成](how-to-add-tool-first-time.md)。
+    - Azure Migrate プロジェクトの[作成](./create-manage-projects.md)。
     - プロジェクトへの Azure Migrate:Server Assessment ツーのル[追加](how-to-assess.md)。
 - [アプリ検出のサポートと要件](migrate-support-matrix-vmware.md#vmware-requirements)を確認します。
 - アプリ検出を実行する VM に PowerShell バージョン2.0 以降がインストールされていること、および VMware ツール (10.2.0 より後) がインストールされていることを確認します。

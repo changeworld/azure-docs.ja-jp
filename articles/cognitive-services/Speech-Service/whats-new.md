@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: erhopf
-ms.openlocfilehash: 5c4f02eff06c08f1829f9f1c74d1dcb09ee57905
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a562c28235608d4a2425455b5543a76c99374f80
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024791"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483816"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>音声サービス: ドキュメントの最新情報
 
@@ -32,7 +32,7 @@ ms.locfileid: "95024791"
 
 ### <a name="new-articles"></a>新しい記事
 
-* [Custom Speech 用のモデルを向上させる](how-to-custom-speech-improve-accuracy.md)
+* [Custom Speech 用のモデルを向上させる](./how-to-custom-speech-evaluate-data.md)
 
 ### <a name="updated-articles"></a>更新された記事
 
@@ -44,7 +44,7 @@ ms.locfileid: "95024791"
 * [クイック スタート: Python の長い形式の音声の非同期合成 (プレビュー)](./long-audio-api.md) - パブリック ニューラル音声のサポートと関連するパラメーターについて更新しました。
 * [クイック スタート: オーディオ ファイルから音声を認識する](./get-started-speech-to-text.md) - JavaScript の手順をドキュメントに追加しました。
 * [クイック スタート: マイクから音声を認識する](./get-started-speech-to-text.md)- Go および JavaScript の手順をドキュメントに追加しました。
-* [クイック スタート: BLOB ストレージに格納された音声を認識する](quickstarts/from-blob.md) - JavaScript の手順をドキュメントに追加しました。
+* [クイック スタート: BLOB ストレージに格納された音声を認識する](./batch-transcription.md) - JavaScript の手順をドキュメントに追加しました。
 * [クイック スタート: Language Understanding (LUIS) を使用して、音声、意図、エンティティを認識する](quickstarts/intent-recognition.md)
 * [クイック スタート: 開発環境を設定する](quickstarts/setup-platform.md) - JavaScript の手順をドキュメントに追加しました。
 * [クイック スタート: オーディオ ファイルに音声を合成する](./get-started-text-to-speech.md) - JavaScript の手順をドキュメントに追加しました。
