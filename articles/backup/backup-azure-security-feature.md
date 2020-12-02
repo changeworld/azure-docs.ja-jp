@@ -4,12 +4,12 @@ description: Azure Backup のセキュリティ機能を使用してバックア
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: 5a408dc07e83e790a63f8a252d4ed3f84bf66be4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c671b1b54b937f518f7179bb6940f31a28a78d4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89181682"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841020"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Azure Backup を使用したハイブリッド バックアップを保護するためのセキュリティ機能
 
@@ -48,10 +48,10 @@ Recovery Services コンテナーを作成している場合、すべてのセ�
     ![Recovery Services コンテナーのプロパティのスクリーンショット](./media/backup-azure-security-feature/security-settings-update.png)
 
     [更新] リンクから **[セキュリティの設定]** ウィンドウが開きます。ここで機能の概要を確認したり、機能を有効にしたりすることができます。
-5. **[Have you configured Azure Multi-Factor Authentication? (Azure Multi-Factor Authentication を構成しましたか?)]** ドロップダウン リストから値を選択して、[Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) を有効にしたかどうかを確認します。 有効にした場合は、Azure portal へのサインイン時に別のデバイス (携帯電話など) から認証を実行するように求められます。
+5. **[Have you configured Azure AD Multi-Factor Authentication?]\(Azure AD Multi-Factor Authentication を構成しましたか?\)]** ドロップダウン リストから値を選択して、[Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) を有効にしたかどうかを確認します。 有効にした場合は、Azure portal へのサインイン時に別のデバイス (携帯電話など) から認証を実行するように求められます。
 
-   Backup で重要な操作を実行する場合、Azure Portal で使用可能なセキュリティ PIN を入力する必要があります。 Azure Multi-Factor Authentication を有効にすると、セキュリティ レイヤーが追加されます。 有効な Azure 資格情報を持ち、2 番目のデバイスから認証された承認済みのユーザーのみが Azure Portal にアクセスできます。
-6. セキュリティ設定を保存するには、 **[有効]** を選択して、 **[保存]** を選択します。 **[有効]** を選択できるのは、前の手順で **[Have you configured Azure Multi-Factor Authentication? (Azure Multi-Factor Authentication を構成しましたか?)]** リストから値を選択した場合のみです。
+   Backup で重要な操作を実行する場合、Azure Portal で使用可能なセキュリティ PIN を入力する必要があります。 Azure AD Multi-Factor Authentication を有効にすると、セキュリティ レイヤーが追加されます。 有効な Azure 資格情報を持ち、2 番目のデバイスから認証された承認済みのユーザーのみが Azure Portal にアクセスできます。
+6. セキュリティ設定を保存するには、 **[有効]** を選択して、 **[保存]** を選択します。 **有効** を選択できるのは、前の手順で **Have you configured Azure AD Multi-Factor Authentication?\(Azure AD Multi-Factor Authentication を構成しましたか?\)** リストから値を選択した場合のみです。
 
     ![セキュリティ設定のスクリーンショット](./media/backup-azure-security-feature/enable-security-settings-dpm-update.png)
 
@@ -66,12 +66,12 @@ Backup では、削除されたバックアップ データが 14 日間保持�
 
 **Azure Backup Server** ユーザーの場合:
 
-1. バックアップを作成したサーバーがまだ使用可能な場合は、削除されたデータ ソースを再保護し、**データの復旧**機能を使用して、すべての古い復旧ポイントから復旧します。
+1. バックアップを作成したサーバーがまだ使用可能な場合は、削除されたデータ ソースを再保護し、**データの復旧** 機能を使用して、すべての古い復旧ポイントから復旧します。
 2. このサーバーを使用できない場合は、[[別の Azure Backup Server からデータを復元する]](backup-azure-alternate-dpm-server.md) を使用し、別の Azure Backup Server インスタンスを使用して、このデータを取得します。
 
 **Data Protection Manager** ユーザーの場合:
 
-1. バックアップを作成したサーバーがまだ使用可能な場合は、削除されたデータ ソースを再保護し、**データの復旧**機能を使用して、すべての古い復旧ポイントから復旧します。
+1. バックアップを作成したサーバーがまだ使用可能な場合は、削除されたデータ ソースを再保護し、**データの復旧** 機能を使用して、すべての古い復旧ポイントから復旧します。
 2. このサーバーを使用できない場合は、[[外部 DPM の追加]](backup-azure-alternate-dpm-server.md) を使用し、別の Data Protection Manager サーバーを使用して、このデータを取得します。
 
 ## <a name="prevent-attacks"></a>攻撃の防止
@@ -80,11 +80,11 @@ Backup では、削除されたバックアップ データが 14 日間保持�
 
 ### <a name="authentication-to-perform-critical-operations"></a>重要な操作を実行するための認証
 
-重要な操作の認証レイヤー追加の一環として、**保護の停止 (データの削除を含む)** 操作や**パスフレーズの変更**操作の実行時に、セキュリティ PIN の入力が求められます。
+重要な操作の認証レイヤー追加の一環として、**保護の停止 (データの削除を含む)** 操作や **パスフレーズの変更** 操作の実行時に、セキュリティ PIN の入力が求められます。
 
 > [!NOTE]
 >
-> 現時点、セキュリティ PIN は、DPM および MABS の**保護の停止 (データの削除を含む)** ではサポートされていません。
+> 現時点、セキュリティ PIN は、DPM および MABS の **保護の停止 (データの削除を含む)** ではサポートされていません。
 
 この PIN を受け取るには次のようにします。
 

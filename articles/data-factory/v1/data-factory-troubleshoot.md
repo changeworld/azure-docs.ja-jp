@@ -8,17 +8,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 7afc16beaacee5b75d57c4e4216a105734d20a09
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: bd18a26a1c199e1ecc32cfc371d2931b1dee0c3f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637073"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494972"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory のトラブルシューティング
 > [!NOTE]
@@ -65,7 +65,7 @@ Data Management Gateway の高速セットアップを起動するには、Inter
 ゲートウェイ コンピューターで **Data Management Gateway 構成マネージャー** を起動し、 **[トラブルシューティング]** タブを使用して、ゲートウェイ コンピューターから SQL Server への接続をテストします。 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。   
 
 ### <a name="problem-input-slices-are-in-waiting-state-forever"></a>問題: 入力スライスの状態が Waiting のままになっている
-このスライスの状態は、さまざまな理由から **Waiting** になっている可能性があります。 一般的な理由の 1 つとして、 **external** プロパティが **true** に設定されていないことが挙げられます。 Azure Data Factory の範囲外で生成されるデータセットの場合、 **external** プロパティによるマーキングが必要です。 このプロパティは、データが外部データであり、データ ファクトリ内のパイプラインでサポートされていないことを示します。 それぞれのストアでデータが使用可能になると、データ スライスは **Ready** とマーキングされます。
+このスライスの状態は、さまざまな理由から **Waiting** になっている可能性があります。 一般的な理由の 1 つとして、**external** プロパティが **true** に設定されていないことが挙げられます。 Azure Data Factory の範囲外で生成されるデータセットの場合、 **external** プロパティによるマーキングが必要です。 このプロパティは、データが外部データであり、データ ファクトリ内のパイプラインでサポートされていないことを示します。 それぞれのストアでデータが使用可能になると、データ スライスは **Ready** とマーキングされます。
 
 **external** プロパティの使用方法については、次の例を参照してください。 external を true に設定するときに、必要に応じて **externalData** _ を指定できます。
 
@@ -97,7 +97,7 @@ Data Management Gateway の高速セットアップを起動するには、Inter
 }
 ```
 
-このエラーを解決するには、入力テーブルの JSON 定義に _ *external* * プロパティと **externalData** セクション (省略可能) を追加し、テーブルをもう一度作成します。
+このエラーを解決するには、入力テーブルの JSON 定義に _ *external** プロパティと **externalData** セクション (省略可能) を追加し、テーブルをもう一度作成します。
 
 ### <a name="problem-hybrid-copy-operation-fails"></a>問題: ハイブリッド コピー操作に失敗する
 Data Management Gateway を使用したオンプレミス データ ストアへのコピーや、それからのコピーの問題をトラブルシューティングする手順については、[ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)に関するセクションを参照してください。

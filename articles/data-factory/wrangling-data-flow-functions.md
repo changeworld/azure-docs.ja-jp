@@ -1,18 +1,18 @@
 ---
 title: Azure Data Factory でのラングリング データ フロー変換関数
 description: Azure Data Factory で使用可能なラングリング データ フロー関数の概要
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: c56c52193f433571f16e4acf7bd6e7b89641b26f
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 28c6228d4401db0fd1301137167a86cb6f18cbeb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233952"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494921"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>ラングリング データ フローの変換関数
 
@@ -55,7 +55,7 @@ Azure Data Factory のラングリング データ フローを使用すると�
 * テキスト連結
 * 日付と時刻の演算 (算術演算子、[Date.AddDays](/powerquery-m/date-adddays)、[Date.AddMonths](/powerquery-m/date-addmonths)、[Date.AddQuarters](/powerquery-m/date-addquarters)、[Date.AddWeeks](/powerquery-m/date-addweeks)、[Date.AddYears](/powerquery-m/date-addyears))
 * Duration は日付と時刻の演算に使用できますが、シンクに書き込まれる前に別の型に変換する必要があります (算術演算子、[#duration](/powerquery-m/sharpduration)、[Duration.Days](/powerquery-m/duration-days)、[Duration.Hours](/powerquery-m/duration-hours)、[Duration.Minutes](/powerquery-m/duration-minutes)、[Duration.Seconds](/powerquery-m/duration-seconds)、[Duration.TotalDays](/powerquery-m/duration-totaldays)、[Duration.TotalHours](/powerquery-m/duration-totalhours)、[Duration.TotalMinutes](/powerquery-m/duration-totalminutes)、[Duration.TotalSeconds](/powerquery-m/duration-totalseconds))    
-* ほとんどの標準、科学的、および三角関数の数値関数 (Number.Factorial、Number.Permutations、および Number.Combinations *を除く*[演算](/powerquery-m/number-functions#operations)、 [丸め](/powerquery-m/number-functions#rounding)、および [三角関数](/powerquery-m/number-functions#trigonometry)の下のすべての関数)
+* ほとんどの標準、科学的、および三角関数の数値関数 (Number.Factorial、Number.Permutations、および Number.Combinations *を除く*[演算](/powerquery-m/number-functions#operations)、[丸め](/powerquery-m/number-functions#rounding)、および [三角関数](/powerquery-m/number-functions#trigonometry)の下のすべての関数)
 * 置換 ([Replacer.ReplaceText](/powerquery-m/replacer-replacetext)、[Replacer.ReplaceValue](/powerquery-m/replacer-replacevalue)、[Text.Replace](/powerquery-m/text-replace)、[Text.Remove](/powerquery-m/text-remove))
 * 位置指定テキスト抽出 ([Text.PositionOf](/powerquery-m/text-positionof)、[Text.Length](/powerquery-m/text-length)、[Text.Start](/powerquery-m/text-start)、[Text.End](/powerquery-m/text-end)、[Text.Middle](/powerquery-m/text-middle)、[Text.ReplaceRange](/powerquery-m/text-replacerange)、[Text.RemoveRange](/powerquery-m/text-removerange))
 * 基本的なテキストの書式設定 ([Text.Lower](/powerquery-m/text-lower)、[Text.Upper](/powerquery-m/text-upper)、[Text.Trim](/powerquery-m/text-trim)/[Start](/powerquery-m/text-trimstart)/[End](/powerquery-m/text-trimend)、[Text.PadStart](/powerquery-m/text-padstart)/[End](/powerquery-m/text-padend)、[Text.Reverse](/powerquery-m/text-reverse))

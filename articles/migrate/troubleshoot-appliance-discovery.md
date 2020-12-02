@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: b6fed24c7de87424bde94b864d4a9db91828a510
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0d4630cad94a30e0dd53785c512e452d7b4a7d38
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315783"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494445"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure Migrate アプライアンスと検出のトラブルシューティング
 
@@ -80,7 +80,7 @@ Azure へのサインインに正しくない Azure アカウントを使用し�
     - 必要な Azure ロールとアクセス許可の[詳細を参照](./migrate-appliance.md#appliance---vmware)してください。
 - エラー 60039 "The appliance might not be registered successfully to the Azure Migrate project" (アプライアンスが Azure Migrate プロジェクトに正常に登録されていない可能性があります) は、アプライアンスの登録に使用された Azure Migrate プロジェクトが見つからない場合に発生する可能性があります。
     - Azure portal で、リソース グループにプロジェクトが存在するかどうかを確認してください。
-    - プロジェクトが存在しない場合は、ご利用のリソース グループに新しい Azure Migrate プロジェクトを作成して、アプライアンスをもう一度登録してください。 新しいプロジェクトを作成する[方法を参照](./how-to-add-tool-first-time.md#create-a-project-and-add-a-tool)してください。
+    - プロジェクトが存在しない場合は、ご利用のリソース グループに新しい Azure Migrate プロジェクトを作成して、アプライアンスをもう一度登録してください。 新しいプロジェクトを作成する[方法を参照](./create-manage-projects.md#create-a-project-for-the-first-time)してください。
 
 ## <a name="error-6003060031-key-vault-management-operation-failed"></a>エラー 60030/60031: Key Vault の管理操作が失敗した
 

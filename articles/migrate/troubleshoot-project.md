@@ -6,12 +6,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
-ms.openlocfilehash: f2245e13f348706f662055408196ea7a26484811
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: af9254bc536dedc425aac53199665ae399e60a5a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314638"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494411"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Azure Migrate プロジェクトのトラブルシューティング
 
@@ -19,7 +19,7 @@ ms.locfileid: "92314638"
 
 ## <a name="how-to-add-new-project"></a>新しいプロジェクトを追加するには
 
-1 つのサブスクリプションに複数の Azure Migrate プロジェクトを含めることができます。 初めてプロジェクトを作成する方法、またはプロジェクトを[さらに追加する](create-manage-projects.md#create-additional-projects)方法について[説明します](how-to-add-tool-first-time.md)。
+1 つのサブスクリプションに複数の Azure Migrate プロジェクトを含めることができます。 初めてプロジェクトを作成する方法、またはプロジェクトを[さらに追加する](create-manage-projects.md#create-additional-projects)方法について[説明します](./create-manage-projects.md)。
 
 ## <a name="what-azure-permissions-are-needed"></a>必要な Azure アクセス許可とは
 
@@ -40,7 +40,7 @@ Azure Migrate プロジェクトは、[パブリック クラウド](migrate-sup
 
 ## <a name="can-i-upgrade-old-project"></a>古いプロジェクトをアップグレードできますか
 
-以前のバージョンの Azure Migrate のプロジェクトは更新できません。 [新しいプロジェクトを作成して](how-to-add-tool-first-time.md)、ツールを追加する必要があります。
+以前のバージョンの Azure Migrate のプロジェクトは更新できません。 [新しいプロジェクトを作成して](./create-manage-projects.md)、ツールを追加する必要があります。
 
 ## <a name="cant-create-a-project"></a>プロジェクトを作成できない
 

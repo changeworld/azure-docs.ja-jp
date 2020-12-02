@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: java, jakartaee, javaee, microprofile, open-liberty, websphere-liberty, aro, openshift, red hat
-ms.openlocfilehash: 41891b58942efbfd705747cc16219185f2a2daa2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0c17c911d1eefe646785314a26b6a9b1e964ca67
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018394"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493945"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Azure Red Hat OpenShift 4 クラスターに Open Liberty/WebSphere Liberty を使用する Java アプリケーションをデプロイする
 
@@ -25,26 +25,26 @@ ms.locfileid: "95018394"
 このガイドを正しく進めるには、以下の前提条件を満たす必要があります。
 
 > [!NOTE]
-> OpenShift クラスターを作成して実行するには、Azure Red Hat OpenShift に少なくとも 40 コアが必要です。 新しい Azure サブスクリプションの既定の Azure リソース クォータは、この要件を満たしていません。 リソースの制限の引き上げを依頼するには、「[標準クォータ:VM シリーズでの制限の引き上げ](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)」を参照してください。 試用版サブスクリプションはクォータ引き上げの対象ではないことに注意してください。クォータ引き上げを要求する前に、[従量課金制のサブスクリプションにアップグレード](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription)してください。
+> OpenShift クラスターを作成して実行するには、Azure Red Hat OpenShift に少なくとも 40 コアが必要です。 新しい Azure サブスクリプションの既定の Azure リソース クォータは、この要件を満たしていません。 リソースの制限の引き上げを依頼するには、「[標準クォータ:VM シリーズでの制限の引き上げ](../azure-portal/supportability/per-vm-quota-requests.md)」を参照してください。 試用版サブスクリプションはクォータ引き上げの対象ではないことに注意してください。クォータ引き上げを要求する前に、[従量課金制のサブスクリプションにアップグレード](../cost-management-billing/manage/upgrade-azure-subscription.md)してください。
 
 1. Unix のようなオペレーティング システム (Ubuntu、macOS など) がインストールされているローカル マシンを準備します。
 1. Java SE 実装 (たとえば [AdoptOpenJDK OpenJDK 8 LTS/OpenJ9](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)) をインストールします。
 1. [Maven](https://maven.apache.org/download.cgi) 3.5.0 以上をインストールします。
 1. お使いの OS 用の [Docker](https://docs.docker.com/get-docker/) をインストールします。
-1. [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 2.0.75 以降をインストールします。
+1. [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) 2.0.75 以降をインストールします。
 1. [`envsubst`](https://command-not-found.com/envsubst) がオペレーティング システムに事前にインストールされていないかどうかを調べてインストールします。
 1. このサンプルのコードをローカル システムにクローンします。 サンプルは [GitHub](https://github.com/Azure-Samples/open-liberty-on-aro) にあります。
-1. [Azure Red Hat OpenShift 4 クラスターの作成](/azure/openshift/tutorial-create-cluster)に関するページの手順に従います。
+1. [Azure Red Hat OpenShift 4 クラスターの作成](./tutorial-create-cluster.md)に関するページの手順に従います。
 
    "Red Hat プル シークレットを取得する" 手順は省略可能のラベルが付いていますが、**この記事には必須です**。  プル シークレットを使用すると、Azure Red Hat OpenShift クラスターで、Open Liberty オペレーターを見つけることができます。
 
    クラスターでメモリを集中的に使用するアプリケーションを実行する予定の場合は、`--worker-vm-size` パラメーターを使用して、ワーカー ノードにとって適切な仮想マシン サイズを指定します。 たとえば `Standard_E4s_v3` は、クラスターに Elasticsearch オペレーターをインストールするための仮想マシンの最小サイズです。 詳細については、次を参照してください。
 
-   * [クラスターを作成するための Azure CLI](https://docs.microsoft.com/cli/azure/aro?view=azure-cli-latest&preserve-view=true#az-aro-create)
-   * [メモリ最適化でサポートされる仮想マシンのサイズ](/azure/openshift/support-policies-v4#memory-optimized)
+   * [クラスターを作成するための Azure CLI](/cli/azure/aro?preserve-view=true&view=azure-cli-latest#az-aro-create)
+   * [メモリ最適化でサポートされる仮想マシンのサイズ](./support-policies-v4.md#memory-optimized)
    * [Elasticsearch オペレーターをインストールするための前提条件](https://docs.openshift.com/container-platform/4.3/logging/cluster-logging-deploying.html#cluster-logging-deploy-eo-cli_cluster-logging-deploying)
 
-1. [Azure Red Hat OpenShift 4 クラスターへの接続](/azure/openshift/tutorial-connect-cluster)に関するページの手順に従って、クラスターに接続します。
+1. [Azure Red Hat OpenShift 4 クラスターへの接続](./tutorial-connect-cluster.md)に関するページの手順に従って、クラスターに接続します。
    * この記事では後で `oc` コマンドを使用するため、「OpenShift CLI をインストールする」の手順に必ず従ってください。
    * `https://console-openshift-console.apps.<random>.<region>.aroapp.io/` のようなクラスター コンソールの URL を書き留めます。
    * `kubeadmin` の資格情報を書き留めます。
@@ -314,7 +314,7 @@ oc delete -f openlibertyapplication.yaml
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-「[チュートリアル:Azure Red Hat OpenShift 4 クラスターを削除する](/azure/openshift/tutorial-delete-cluster)」の手順に従って、ARO クラスターを削除します。
+「[チュートリアル:Azure Red Hat OpenShift 4 クラスターを削除する](./tutorial-delete-cluster.md)」の手順に従って、ARO クラスターを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

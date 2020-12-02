@@ -1,18 +1,18 @@
 ---
 title: Azure Data Factory のラングリング データ フロー
 description: Azure Data Factory のラングリング データ フローの概要
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: fe3fd25753344c5ccfd21310ae01fca9962e3971
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 607ed6167ec761a6bf380a2cc420eb72f808f0a3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636070"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494870"
 ---
 # <a name="what-are-wrangling-data-flows"></a>ラングリング データ フローとは
 
@@ -56,7 +56,7 @@ Azure Data Factory のラングリング データ フローを使用すると�
 
 ## <a name="the-mashup-editor"></a>マッシュアップ エディター
 
-ラングリング データ フローを作成する場合、すべてのソース データがデータセット クエリになり、 **ADFResource** フォルダーに配置されます。 既定では、UserQuery は最初のデータセット クエリを指します。 データセット クエリに対する変更はサポートされておらず、永続化もされないため、すべての変換は UserQuery で実行される必要があります。 クエリの名前変更、追加、削除は、現在サポートされていません。
+ラングリング データ フローを作成する場合、すべてのソース データがデータセット クエリになり、**ADFResource** フォルダーに配置されます。 既定では、UserQuery は最初のデータセット クエリを指します。 データセット クエリに対する変更はサポートされておらず、永続化もされないため、すべての変換は UserQuery で実行される必要があります。 クエリの名前変更、追加、削除は、現在サポートされていません。
 
 ![ラングリング](media/wrangling-data-flow/editor.png)
 

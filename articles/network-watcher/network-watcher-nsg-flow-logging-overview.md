@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 792908236c4f240db64bd3899474d779d5b0570c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b6f66813ea23f6c9d4b47a3733d0c72c683d0676
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018105"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493986"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
@@ -59,7 +59,7 @@ ms.locfileid: "96018105"
 **主要な概念**
 
 - ソフトウェア定義ネットワークは、仮想ネットワーク (VNet) とサブネットを中心に編成されています。 これらの VNet とサブネットのセキュリティは、NSG を使用して管理できます。
-- ネットワーク セキュリティ グループ (NSG) には、それが接続されているリソース内でネットワーク トラフィックを許可または拒否する一連の _セキュリティ規則_ が含まれています。 NSG はサブネットや個々の VM に関連付けることができるほか、Resource Manager モデルについては VM にアタッチされた個々のネットワーク インターフェイス (NIC) に関連付けることができます。 詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/network-security-groups-overview.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json)に関する記事をご覧ください。
+- ネットワーク セキュリティ グループ (NSG) には、それが接続されているリソース内でネットワーク トラフィックを許可または拒否する一連の _セキュリティ規則_ が含まれています。 NSG はサブネットや個々の VM に関連付けることができるほか、Resource Manager モデルについては VM にアタッチされた個々のネットワーク インターフェイス (NIC) に関連付けることができます。 詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。
 - ネットワーク内のすべてのトラフィック フローは、該当する NSG のルールを使用して評価されます。
 - これらの評価の結果が NSG フロー ログです。 フロー ログは Azure プラットフォームを通じて収集され、顧客のリソースに変更を加える必要はありません。
 - 注:ルールには、終了するものと、終了しないものの 2 つの種類があり、それぞれログ記録の動作が異なります。
