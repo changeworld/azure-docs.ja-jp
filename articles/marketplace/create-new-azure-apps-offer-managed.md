@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 85f5beb6188b1f6987934f1c39c579d5a3028a5e
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 61ee0b769664d1f574177e27b5b1fb10e9845035
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579489"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463096"
 ---
 # <a name="configure-a-managed-application-plan"></a>マネージド アプリケーション プランを構成する
 
@@ -135,10 +135,10 @@ USD (USD = 米国ドル) で設定された価格は、保存時の最新の為�
 
 **[完全]** または **[増分]** デプロイ モードのいずれかを選択します。
 
-- **[完全]** モードでは、顧客がアプリケーションを再デプロイすると、[mainTemplate.json](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md) で定義されていない管理対象リソース グループのリソースは削除されます。
+- **[完全]** モードでは、顧客がアプリケーションを再デプロイすると、[mainTemplate.json](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template) で定義されていない管理対象リソース グループのリソースは削除されます。
 - **[増分]** モードでは、アプリケーションを再デプロイしても、既存のリソースは変更されずに残ります。
 
-デプロイ モードの詳細については、「[Azure Resource Manager のデプロイ モード](/azure/azure-resource-manager/deployment-modes)」をご覧ください。
+デプロイ モードの詳細については、「[Azure Resource Manager のデプロイ モード](../azure-resource-manager/templates/deployment-modes.md)」をご覧ください。
 
 ### <a name="provide-a-notification-endpoint-url"></a>通知エンドポイント URL を指定する
 

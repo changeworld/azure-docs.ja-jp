@@ -124,6 +124,8 @@
           href: concepts-supported-versions.md
         - name: 制限事項
           href: concepts-limits.md
+        - name: 運用上のベスト プラクティス
+          href: concept-operation-excellence-best-practices.md
         - name: 価格レベル
           items:
             - name: 価格レベル
@@ -195,6 +197,10 @@
             - name: パフォーマンスに関する推奨事項
               href: concepts-performance-recommendations.md
               displayName: recommendation
+            - name: 監視のベスト プラクティス
+              href: concept-monitoring-best-practices.md
+            - name: パフォーマンスのベスト プラクティス
+              href: concept-performance-best-practices.md
         - name: アプリケーション開発
           items:
             - name: アプリケーション開発の概要

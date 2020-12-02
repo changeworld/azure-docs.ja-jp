@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 11/06/2020
-ms.openlocfilehash: 9e8aecfe8b16d8af755d3f4c3c71b875d4e8ec40
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 88779f67a2fa9b18f0177a1459b32c672343bb57
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95751251"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462950"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>ホストされた体験版の詳細な構成
 
@@ -29,7 +29,7 @@ ms.locfileid: "95751251"
 
     - **[体験版の種類]** – **[Microsoft Hosted (Dynamics 365 for Customer Engagement & PowerApps)]\(Microsoft ホスト (Dynamics 365 for Customer Engagement & PowerApps)\)** を選択します。 これは、体験版ユーザーのプロビジョニングとプロビジョニング解除を行うサービスが Microsoft によってホストされて管理されることを示します。
 
-5. [こちらの説明](https://docs.microsoft.com/azure/marketplace/test-drive-azure-subscription-setup)に従って、テナントで体験版ユーザーをプロビジョニングおよびプロビジョニング解除するためのアクセス許可を Microsoft AppSource に付与します。 この手順では、以下で説明する **Azure AD アプリ ID** と **Azure AD アプリ キー** の値を生成します。
+5. [こちらの説明](./test-drive-azure-subscription-setup.md)に従って、テナントで体験版ユーザーをプロビジョニングおよびプロビジョニング解除するためのアクセス許可を Microsoft AppSource に付与します。 この手順では、以下で説明する **Azure AD アプリ ID** と **Azure AD アプリ キー** の値を生成します。
 6. **[Test drive technical configuration]\(体験版の技術的構成\)** ページで以下のフィールドを設定します。
 
     [![体験版の技術的構成ページ。](media/test-drive/technical-config-details.png)](media/test-drive/technical-config-details.png#lightbox)
@@ -81,7 +81,7 @@ ms.locfileid: "95751251"
     - **[Azure Active Directory テナント名]** – Dynamics 365 インスタンスのための Azure テナントの名前。 「`<tenantname>.onmicrosoft.com`」の形式を使用します。 値の例: `testdrive.onmicrosoft.com`。
     - **[Azure Active Directory アプリケーション ID]** – 手順 5 で作成した Azure Active Directory (AD) アプリの ID。 値の例: `53852862-a2ae-4e43-9461-faa49650a096`。
     - **[Azure Active Directory アプリケーションのクライアント シークレット]** – 手順 5 で作成した Azure AD アプリのシークレット。 値の例: `IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=`。
-    - **[試用版を利用する法人]** – 試用版ユーザーを割り当てる法人を指定します。 「[法人を作成または変更する](https://technet.microsoft.com/library/hh242184.aspx)」で新しいものを作成できます。
+    - **[試用版を利用する法人]** – 試用版ユーザーを割り当てる法人を指定します。 「[法人を作成または変更する](/dynamicsax-2012/appuser-itpro/create-or-modify-a-legal-entity)」で新しいものを作成できます。
     - **[ロール名]** – 体験版用に作成した Dynamics 365 のカスタム セキュリティ ロールの AOT (アプリケーション オブジェクト ツリー) の名前。 これは、体験版の使用中にユーザーに割り当てられるロールです。
 
         :::image type="content" source="./media/test-drive/security-config.png" alt-text="セキュリティ構成のページ。":::
