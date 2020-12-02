@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 10/28/2020
-ms.openlocfilehash: 753d72b31e4f813d0e7abbbd223e050fd3390411
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.date: 11/24/2020
+ms.openlocfilehash: c436d75384c527ba7666cd2e6e780b9d8a93eae2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910765"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003950"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory でのデータ フロー アクティビティ
 
@@ -37,6 +37,7 @@ ms.locfileid: "92910765"
          "coreCount": 8,
          "computeType": "General"
       },
+      "traceLevel": "Fine",
       "staging": {
           "linkedService": {
               "referenceName": "MyStagingLinkedService",
@@ -62,6 +63,7 @@ compute.coreCount | Spark クラスター内で使用されるコアの数です
 compute.computeType | Spark クラスター内で使用されるコンピューティングの種類です。 自動解決 Azure 統合ランタイムが使用されている場合にのみ指定できます。 | "General"、"ComputeOptimized"、"MemoryOptimized" | いいえ
 staging.linkedService | Azure Synapse Analytics ソースまたはシンクを使用している場合は、PolyBase ステージングに使用するストレージ アカウントを指定します。<br/><br/>Azure Storage が VNet サービス エンドポイントを使用して構成されている場合は、ストレージ アカウントで [信頼された Microsoft サービスを許可する] を有効にしたマネージド ID 認証を使用する必要があります。「[Azure Storage で VNet サービス エンドポイントを使用した場合の影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)」を参照してください。 また、[Azure Blob](connector-azure-blob-storage.md#managed-identity) と [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) に必要な構成についても説明します。<br/> | LinkedServiceReference | データ フローが Azure Synapse Analytics に対して読み取りまたは書き込みを行う場合のみ
 staging.folderPath | Azure Synapse Analytics ソースまたはシンクを使用している場合は、PolyBase ステージングに使用する BLOB ストレージ アカウント内のフォルダー パス | String | データ フローが Azure Synapse Analytics に対して読み取りまたは書き込みを行う場合のみ
+traceLevel | データ フロー アクティビティの実行のログ レベルを設定します | Fine、Coarse、None | No
 
 ![データ フローの実行](media/data-flow/activity-data-flow.png "データ フローの実行")
 
@@ -87,6 +89,12 @@ Core Count プロパティと Compute Type プロパティは、実行時に入�
 ### <a name="polybase"></a>PolyBase
 
 Azure Synapse Analytics (旧称 SQL Data Warehouse) をシンクまたはソースとして使用する場合は、PolyBase バッチ読み込み用のステージングの場所を選択する必要があります。 PolyBase を使用すると、データを行ごとに読み込む代わりに一括してバッチ読み込みを行うことができます。 PolyBase を実行すると、Azure Synapse Analytics への読み込み時間が大幅に短縮されます。
+
+## <a name="logging-level"></a>ログ記録レベル
+
+データ フロー アクティビティのすべてのパイプラインを実行してすべての詳細なテレメトリ ログを完全にログする必要がない場合は、必要に応じてログ レベルを [基本] または [なし] に設定できます。 データ フローを [詳細] モード (既定値) で実行する場合、データ変換中に各パーティション レベルでアクティビティを完全にログするように ADF に要求します。 この処理には高い負荷がかかる可能性があるため、トラブルシューティングを行うときにのみ [詳細] を有効にすることで、データ フローおよびパイプライン全体のパフォーマンスを向上させることができます。 [基本] モードでは、その期間の変換だけがログされるのに対し、[なし] を指定した場合は、期間の概要のみが提供されます。
+
+![ログ記録レベル](media/data-flow/logging.png "ログ レベルの設定")
 
 ## <a name="parameterizing-data-flows"></a>データ フローをパラメーター化する
 

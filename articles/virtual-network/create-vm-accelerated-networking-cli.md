@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 0b0b2cbf3fc637d7ad53be911c0171f6bb971bc6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bccbfed96dd6cd87bdfe986baf4b52817a160ac0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896125"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95533363"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Azure CLI で、高速ネットワークを使用する Linux 仮想マシンを作成する
 
@@ -48,10 +48,10 @@ Azure ギャラリーでは次のディストリビューションが既定で�
 * **RHEL 7.4 以降**
 * **CentOS 7.4 以降**
 * **CoreOS Linux**
-* **Debian "Stretch" (バックポート カーネルを含む)**
+* **Debian "Stretch" (バックポート カーネルを含む)、Debian "Buster" 以降**
 * **Oracle Linux 7.4 以降 (Red Hat Compatible Kernel (RHCK) を含む)**
 * **Oracle Linux 7.5 以降 (UEK バージョン 5 を含む)**
-* **FreeBSD 10.4、11.1、および 12.0**
+* **FreeBSD 10.4、11.1 および 12.0 以降**
 
 ## <a name="limitations-and-constraints"></a>制限と制約
 
@@ -87,9 +87,9 @@ removed per issue https://github.com/MicrosoftDocs/azure-docs/issues/9772 -->
 ## <a name="cli-creation"></a>CLI の作成
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-最新の [Azure CLI](/cli/azure/install-azure-cli) をインストールし、[az login](/cli/azure/reference-index) を使用して Azure アカウントにログインします。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、 *myResourceGroup* 、 *myNic* 、 *myVM* といったパラメーター名にします。
+最新の [Azure CLI](/cli/azure/install-azure-cli) をインストールし、[az login](/cli/azure/reference-index) を使用して Azure アカウントにログインします。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myNic*、*myVM* といったパラメーター名にします。
 
-[az group create](/cli/azure/group) を使用して、リソース グループを作成します。 次の例では、 *myResourceGroup* という名前のリソース グループを場所 *centralus* に作成します。
+[az group create](/cli/azure/group) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを場所 *centralus* に作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location centralus
@@ -109,7 +109,7 @@ az network vnet create \
 ```
 
 ### <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
-[az network nsg create](/cli/azure/network/nsg) で、ネットワーク セキュリティ グループを作成します。 次の例では、 *myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成します。
+[az network nsg create](/cli/azure/network/nsg) で、ネットワーク セキュリティ グループを作成します。 次の例では、*myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成します。
 
 ```azurecli
 az network nsg create \
@@ -144,7 +144,7 @@ az network public-ip create \
     --resource-group myResourceGroup
 ```
 
-高速ネットワークを有効にし、[az network nic create](/cli/azure/network/nic) を使用してネットワーク インターフェイスを作成します。 次の例では、 *myVnet* 仮想ネットワークの *mySubnet* サブネットの *myNic* というネットワーク インターフェイスを作成し、 *myNetworkSecurityGroup* ネットワーク セキュリティ グループをネットワーク インターフェイスに関連付けます。
+高速ネットワークを有効にし、[az network nic create](/cli/azure/network/nic) を使用してネットワーク インターフェイスを作成します。 次の例では、*myVnet* 仮想ネットワークの *mySubnet* サブネットの *myNic* というネットワーク インターフェイスを作成し、*myNetworkSecurityGroup* ネットワーク セキュリティ グループをネットワーク インターフェイスに関連付けます。
 
 ```azurecli
 az network nic create \
@@ -160,7 +160,7 @@ az network nic create \
 ### <a name="create-a-vm-and-attach-the-nic"></a>VM を作成して NIC を接続する
 VM を作成するとき、`--nics` を使用して作成した NIC を指定します。 「[Linux accelerated networking](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)」(Linux 高速ネットワーク) に記載されているサイズとディストリビューションを選択します。 
 
-[az vm create](/cli/azure/vm) を使用して VM を作成します。 次の例では、UbuntuLTS イメージと高速ネットワークをサポートするサイズ ( *Standard_DS4_v2* ) を使用して、 *myVM* という VM を作成します。
+[az vm create](/cli/azure/vm) を使用して VM を作成します。 次の例では、UbuntuLTS イメージと高速ネットワークをサポートするサイズ (*Standard_DS4_v2*) を使用して、*myVM* という VM を作成します。
 
 ```azurecli
 az vm create \
@@ -192,7 +192,7 @@ VM が作成されると、次のサンプル出力のような出力が返さ�
 
 ### <a name="confirm-that-accelerated-networking-is-enabled"></a>高速ネットワークが有効になっていることを確認します。
 
-次のコマンドを使用して、VM との SSH セッションを作成します。 作成した仮想マシンに割り当てたパブリック IP アドレスに `<your-public-ip-address>` を置き換え、VM の作成時に `--admin-username` に異なる値を使用していた場合は、 *azureuser* を置き換えます。
+次のコマンドを使用して、VM との SSH セッションを作成します。 作成した仮想マシンに割り当てたパブリック IP アドレスに `<your-public-ip-address>` を置き換え、VM の作成時に `--admin-username` に異なる値を使用していた場合は、*azureuser* を置き換えます。
 
 ```bash
 ssh azureuser@<your-public-ip-address>
@@ -200,10 +200,10 @@ ssh azureuser@<your-public-ip-address>
 
 Bash シェルから `uname -r` を入力し、カーネル バージョンが次のいずれかのバージョン以降であることを確認します。
 
-* **Ubuntu 16.04** : 4.11.0-1013
-* **SLES SP3** : 4.4.92-6.18
-* **RHEL** :7.4.2017120423
-* **CentOS** : 7.4.20171206
+* **Ubuntu 16.04**: 4.11.0-1013
+* **SLES SP3**: 4.4.92-6.18
+* **RHEL**:7.4.2017120423
+* **CentOS**: 7.4.20171206
 
 
 `lspci` コマンドを使用して、Mellanox VF デバイスが VM に公開されていることを確認します。 次の出力のような出力が返されます。
@@ -230,7 +230,7 @@ VM の高速ネットワークが有効になりました。
 
 ## <a name="handle-dynamic-binding-and-revocation-of-virtual-function"></a>仮想関数の動的バインディングと失効を処理する 
 アプリケーションは、VM で公開されている合成 NIC 経由で実行する必要があります。 VF NIC 経由でアプリケーションが直接実行される場合、一部のパケットは統合インターフェイス経由で表示されるので、VM を宛先とする **すべての** パケットが受信されることはありません。
-アプリケーションを合成 NIC 経由で実行すると、該当のアプリケーションを宛先とする **すべての** パケットが、そのアプリケーションで受信されることが保証されます。 また、ホストがサービス提供されている場合に VF が取り消されたとしても、アプリケーションは確実に引き続き実行されます。 合成 NIC にバインドされているアプリケーションは、 **高速ネットワーク** を利用するすべてのアプリケーションにとって **必須** の要件です。
+アプリケーションを合成 NIC 経由で実行すると、該当のアプリケーションを宛先とする **すべての** パケットが、そのアプリケーションで受信されることが保証されます。 また、ホストがサービス提供されている場合に VF が取り消されたとしても、アプリケーションは確実に引き続き実行されます。 合成 NIC にバインドされているアプリケーションは、**高速ネットワーク** を利用するすべてのアプリケーションにとって **必須** の要件です。
 
 ## <a name="enable-accelerated-networking-on-existing-vms"></a>既存の VM 上で高速ネットワークを有効にする
 高速ネットワークを有効にしないで VM を作成した場合は、既存の VM に対してこの機能を有効にすることができます。  VM は、上記で説明した次の前提条件を満たすことによって、高速ネットワークをサポートしている必要があります。

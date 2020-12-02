@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 1ae4e2a1e0d67a0a09c19b517245ffc6d92d17df
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 03874f76772d8722c7161ef43a2297c2e01b7da9
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629922"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95748837"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight リリース ノート
 
@@ -25,16 +25,16 @@ Azure HDInsight は、Azure 上でオープン ソース分析を行うエンタ
 
 リリース ノートをサブスクライブする場合は、[この GitHub リポジトリ](https://github.com/hdinsight/release-notes/releases)のリリースをご覧ください。
 
-## <a name="release-date-11092020"></a>リリース日: 2020 年 11 月 9 日
+## <a name="release-date-11182020"></a>リリース日: 2020 年 11 月 18 日
 
 このリリースは HDInsight 3.6 と HDInsight 4.0 の両方に適用されます。 HDInsight リリースは、数日以内にすべてのリージョンでご利用になれます。 ここのリリース日は、最初のリージョンのリリース日です。 以下の変更が見られない場合は、お客様のリージョンで数日以内にリリースがライブになるまでお待ちください。
 
 ## <a name="new-features"></a>新機能
-### <a name="hdinsight-identity-broker-hib-is-now-ga"></a>HDInsight Identity Broker (HIB) の一般提供が開始されました
-このリリースで、ESP クラスターに対して OAuth 認証を有効にする HDInsight Identity Broker (HIB) の一般提供が開始されました。 このリリース以降に作成された HIB クラスターには、次の最新の HIB 機能があります。
-- 高可用性 (HA)
-- Multi-Factor Authentication (MFA) のサポート
-- フェデレーション ユーザーの AAD-DS へのパスワード ハッシュ同期なしのサインインの詳細については、[HIB のドキュメント](https://docs.microsoft.com/azure/hdinsight/domain-joined/identity-broker)を参照してください。
+### <a name="auto-key-rotation-for-customer-managed-key-encryption-at-rest"></a>保存時におけるカスタマー マネージド キー暗号化の自動キー ローテーション
+このリリース以降、お客様はカスタマー マネージド キーの暗号化に、バージョンレスの Azure KeyValut 暗号化キー URL を使用できます。 HDInsight は、有効期限が切れたとき、または新しいバージョンに置き換えられたときに、自動的にキーをローテーションします。 詳細については[ここ](https://docs.microsoft.com/azure/hdinsight/disk-encryption)を参照してください。
+
+### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>Spark、Hadoop、および ML Services 用のさまざまな Zookeeper 仮想マシン サイズを選択する機能
+これまで、HDInsight では、Spark、Hadoop、ML Services のクラスターの種類に対して Zookeeper ノード サイズのカスタマイズはサポートされていませんでした。 既定値は A2_v2 および A2 の仮想マシン サイズであり、無料で提供されます。 このリリース以降、お客様のシナリオに最も適した Zookeeper 仮想マシン サイズを選択できます。 A2_v2 および A2 以外の仮想マシン サイズの Zookeeper ノードには課金されます。 A2_v2 および A2 の仮想マシンは引き続き無料で提供されます。
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットへの移行
 HDInsight では、Azure 仮想マシンを使用してクラスターをプロビジョニングするようになりました。 このリリース以降、サービスは徐々に [Azure 仮想マシン スケール セット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)に移行されます。 このプロセス全体に数か月かかる可能性があります。 リージョンとサブスクリプションが移行された後は、新しく作成された HDInsight クラスターは、お客様が操作することなく、仮想マシン スケール セット上で動作するようになります。 破壊的変更は想定されていません。
@@ -46,14 +46,11 @@ HDInsight 3.6 ML Services クラスターの種類は、2020 年 12 月 31 日�
 ### <a name="disabled-vm-sizes"></a>無効な VM サイズ
 2020 年 11 月 16 日以降、新規のお客様が HDInsight で standand_A8、standand_A9、standand_A10、および standand_A11 の VM サイズを使用してクラスターを作成することができなくなります。 過去 3 か月間、これらの VM サイズを使用していた既存のお客様は、影響を受けません。 2021 年 1 月 9 日以降は、すべてのお客様が HDInsight で standand_A8、standand_A9、standand_A10、および standand_A11 の VM サイズを使用してクラスターを作成することができなくなります。 既存のクラスターはそのまま実行されます。 システムやサポートが中断される可能性を回避するため、HDInsight 4.0 への移行を検討してください。
 
-## <a name="behavior-changes"></a>動作の変更
+### <a name="behavior-changes"></a>動作の変更
 このリリースに動作変更はありません。
 
 ## <a name="upcoming-changes"></a>今後の変更
 今後のリリースでは、次の変更が行われます。
-
-### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>Spark、Hadoop、および ML Services 用のさまざまな Zookeeper 仮想マシン サイズを選択する機能
-現在、HDInsight では、Spark、Hadoop、および ML サービス クラスターの種類での Zookeeper ノード サイズのカスタマイズはサポートされていません。 既定値は A2_v2 および A2 の仮想マシン サイズであり、無料で提供されます。 今後のリリースでは、お客様のシナリオに最も適した Zookeeper 仮想マシン サイズを選択できます。 A2_v2 および A2 以外の仮想マシン サイズの Zookeeper ノードには課金されます。 A2_v2 および A2 の仮想マシンは引き続き無料で提供されます。
 
 ### <a name="default-cluster-version-will-be-changed-to-40"></a>既定のクラスター バージョンは 4.0 に変更されます
 2021 年 2 月以降、HDInsight クラスターの既定のバージョンは 3.6 から 4.0 に変更されます。 使用可能なバージョンの詳細については、「[使用可能なバージョン](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#available-versions)」を参照してください。 HDInsight 4.0 の新機能については、[こちら](https://docs.microsoft.com/azure/hdinsight/hdinsight-version-release)を参照してください
@@ -63,8 +60,6 @@ HDInsight 3.6 のサポートが終了します。 2021 年 6 月 30 日以降�
 
 ## <a name="bug-fixes"></a>バグの修正
 HDInsight は引き続き、クラスターの信頼性とパフォーマンスの向上を実現します。 
-### <a name="fix-issue-for-restarting-vms-in-cluster"></a>クラスター内の VM の再起動に関する問題を修正
-クラスター内の VM の再起動に関する問題が修正されました。[PowerShell または REST API を使用して、クラスター内のノードをもう一度再起動する](https://docs.microsoft.com/azure/hdinsight/cluster-reboot-vm)ことができます。
 
 ## <a name="component-version-change"></a>コンポーネントのバージョンの変更
 このリリースでは、コンポーネントのバージョン変更はありません。 HDInsight 4.0 と HDInsight 3.6 の現在のコンポーネント バージョンについては、[こちらのドキュメント](./hdinsight-component-versioning.md)を参照してください。

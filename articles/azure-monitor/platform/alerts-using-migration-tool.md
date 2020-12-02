@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: e49525018a3e23ecbbf92d7a8b3f7c50804432b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7bcf3e5c0b50d3d6eb8f71dc70f0ff064ff3465
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358663"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536032"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>自主的移行ツールを使用してクラシック アラート ルールを移行する
 
@@ -83,7 +83,7 @@ Azure portal 内でご利用のクラシック アラート ルールの移行�
 
 ### <a name="who-can-trigger-the-migration"></a>移行をトリガーできるユーザー
 
-サブスクリプション レベルで監視共同作成者ロールを割り当てられているユーザーは、移行をトリガーすることができます。 [移行プロセスのロール ベースのアクセス制御について](alerts-understand-migration.md#who-can-trigger-the-migration)。
+サブスクリプション レベルで監視共同作成者ロールを割り当てられているユーザーは、移行をトリガーすることができます。 [移行プロセスの Azure ロールベースのアクセス制御については、こちらを参照してください](alerts-understand-migration.md#who-can-trigger-the-migration)。
 
 ### <a name="how-long-will-the-migration-take"></a>移行にはどのくらいの時間がかかりますか?
 

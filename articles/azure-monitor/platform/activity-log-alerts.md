@@ -4,12 +4,12 @@ description: アクティビティ ログで特定のイベントが発生した
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 7ed73678e0df1e068782c2a094846132be58cfe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 836fc20b6c3d46766801dce0e2aeda83a217d6a3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86516126"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536083"
 ---
 # <a name="alerts-on-activity-log"></a>アクティビティ ログ アラート
 
@@ -18,7 +18,7 @@ ms.locfileid: "86516126"
 アクティビティ ログ アラートは、アラートに指定した条件と一致する新しい[アクティビティのログ イベント](activity-log-schema.md)が発生したときにアクティブになるアラートです。 [Azure アクティビティ ログ](platform-logs-overview.md)に記録されたイベントの順序と量に基づいて、アラートルールが起動します。 アクティビティ ログ アラートは Azure リソースであるため、Azure Resource Manager テンプレートを使用して作成できます。 これらは、Azure Portal で作成、更新、削除することもできます。 この記事では、アクティビティ ログ アラートの背後の概念について説明します。 アクティビティ ログ アラート ルールの作成と使用の詳細については、[アクティビティ ログ アラートの作成と管理](alerts-activity-log.md)に関するページをご覧ください。
 
 > [!NOTE]
-> アクティビティ ログのアラートのカテゴリに含まれるイベントに対して、アラートを作成することは**できません**。
+> アクティビティ ログのアラートのカテゴリに含まれるイベントに対して、アラートを作成することは **できません**。
 
 通常、アクティビティ ログ アラートを作成して、通知を受け取るのは次の場合です。
 
@@ -40,7 +40,7 @@ JSON オブジェクトの任意の最上位プロパティに基づいて、ア
     - サブスクリプション レベル:サブスクリプション内のすべての仮想マシンや、サブスクリプション内のすべてのリソースなど
 - **[リソース グループ]** :既定では、アラート ルールは、[スコープ] での定義対象となっているのと同じリソース グループに保存されます。 ユーザーは、アラート ルールを格納するリソース グループを定義することもできます。
 - **[リソースの種類]** :アラートの対象として、Resource Manager で定義されている名前空間。
-- **[操作名]** : ロールベースのアクセス制御に使用される [Azure Resource Manager の操作](../../role-based-access-control/resource-provider-operations.md)名。 Azure Resource Manager に登録されていない操作は、アクティビティ ログ アラート ルールでは使用できません。
+- **[操作名]** : Azure ロールベースのアクセス制御に使用される [Azure リソース プロバイダーの操作](../../role-based-access-control/resource-provider-operations.md)名。 Azure Resource Manager に登録されていない操作は、アクティビティ ログ アラート ルールでは使用できません。
 - **レベル**:イベントの重大度レベル (情報、警告、エラー、重大)。
 - **状態**: イベントの状態 (通常は [開始]、[失敗]、または [成功])。
 - **イベント開始者**: "呼び出し元" とも呼ばれます。 操作を実行したユーザーの電子メール アドレスまたは Azure Active Directory 識別子。

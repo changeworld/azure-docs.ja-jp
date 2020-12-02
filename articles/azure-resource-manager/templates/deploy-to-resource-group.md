@@ -2,13 +2,13 @@
 title: リソースをリソース グループにデプロイする
 description: Azure Resource Manager テンプレートでリソースをデプロイする方法について説明します。 複数のリソース グループを対象にする方法について説明します。
 ms.topic: conceptual
-ms.date: 10/26/2020
-ms.openlocfilehash: fd211641d7fcc02a1db154053597497583b21ae5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/24/2020
+ms.openlocfilehash: 9d0bec51fa55ee377eb647a11fb554ec3b81e9eb
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681338"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95807719"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>ARM テンプレートを使用したリソース グループへのデプロイ
 
@@ -83,6 +83,8 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 
 * 操作のターゲット リソース グループ
 * 同じサブスクリプションまたは他のサブスクリプション内の他のリソース グループ
+* テナント内の任意のサブスクリプション
+* リソース グループのテナント
 * [拡張リソース](scope-extension-resources.md)はリソースに適用できます
 
 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
@@ -95,6 +97,8 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-rg.json" highlight="5":::
 
+テンプレートの例については、「[ターゲット リソース グループにデプロイする](#deploy-to-target-resource-group)」を参照してください。
+
 ### <a name="scope-to-resource-group-in-same-subscription"></a>同じサブスクリプション内のリソース グループにスコープを設定する
 
 同じサブスクリプション内の別のリソース グループにリソースをデプロイするには、入れ子になったデプロイを追加して、`resourceGroup` プロパティを含めます。 サブスクリプション ID またはリソース グループを指定しない場合は、親テンプレートのサブスクリプションとリソース グループが使用されます。 すべてのリソース グループは、デプロイの実行前に存在している必要があります。
@@ -103,13 +107,43 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/same-sub-to-resource-group.json" highlight="9,13":::
 
+テンプレートの例については、「[複数のリソースグループにデプロイする](#deploy-to-multiple-resource-groups)」を参照してください。
+
 ### <a name="scope-to-resource-group-in-different-subscription"></a>別のサブスクリプション内のリソース グループにスコープを設定する
 
 別のサブスクリプション内のリソース グループにリソースをデプロイするには、入れ子になったデプロイを追加し、 `subscriptionId` と `resourceGroup` の各プロパティを含めます。 次の例では、入れ子になったデプロイは `demoResourceGroup` という名前のリソース グループを対象としています。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/different-sub-to-resource-group.json" highlight="9,10,14":::
 
-## <a name="cross-resource-groups"></a>リソース グループをまたぐ場合
+テンプレートの例については、「[複数のリソースグループにデプロイする](#deploy-to-multiple-resource-groups)」を参照してください。
+
+### <a name="scope-to-subscription"></a>サブスクリプションへのスコープ
+
+リソースをサブスクリプションにデプロイするには、入れ子になったデプロイを追加して、`subscriptionId` プロパティを含めます。 サブスクリプションには、ターゲット リソース グループのサブスクリプション、またはテナント内の他の任意のサブスクリプションを指定できます。 また、入れ子になったデプロイについて `location` プロパティを設定します。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-to-subscription.json" highlight="9,10,14":::
+
+テンプレートの例については、「[リソース グループの作成](#create-resource-group)」を参照してください。
+
+### <a name="scope-to-tenant"></a>テナントへのスコープ
+
+`scope` を `/` に設定することで、テナントにリソースを作成できます。 テンプレートをデプロイするユーザーには、[テナントでデプロイするための必要なアクセス権が必要です](deploy-to-tenant.md#required-access)。
+
+`scope` と `location` を設定した入れ子になったデプロイを使用できます。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-to-tenant.json" highlight="9,10,14":::
+
+または、管理グループなどの一部のリソースの種類に対して、スコープを `/` に設定することもできます。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-create-mg.json" highlight="12,15":::
+
+## <a name="deploy-to-target-resource-group"></a>ターゲット リソース グループにデプロイする
+
+リソースをターゲット リソース グループにデプロイするには、テンプレートの **リソース** セクションにそれらのリソースを定義します。 次のテンプレートでは、デプロイ操作で指定されているリソース グループにストレージ アカウントが作成されます。
+
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json":::
+
+## <a name="deploy-to-multiple-resource-groups"></a>複数のリソース グループにデプロイする
 
 1 つの ARM テンプレートで複数のリソース グループにデプロイできます。 親テンプレートとは異なるリソース グループをターゲットにするには、[入れ子になったテンプレートまたはリンクされたテンプレート](linked-templates.md)を使用します。 デプロイ リソースの種類に、入れ子になったテンプレートのデプロイ対象のサブスクリプション ID およびリソース グループの値を指定します。 リソース グループは、異なるサブスクリプションに存在していても構いません。
 
@@ -152,10 +186,10 @@ $secondRG = "secondarygroup"
 $firstSub = "<first-subscription-id>"
 $secondSub = "<second-subscription-id>"
 
-Select-AzSubscription -Subscription $secondSub
+Set-AzContext -Subscription $secondSub
 New-AzResourceGroup -Name $secondRG -Location eastus
 
-Select-AzSubscription -Subscription $firstSub
+Set-AzContext -Subscription $firstSub
 New-AzResourceGroup -Name $firstRG -Location southcentralus
 
 New-AzResourceGroupDeployment `
@@ -207,6 +241,76 @@ az deployment group create \
 ```
 
 ---
+
+## <a name="create-resource-group"></a>リソース グループの作成
+
+リソース グループのデプロイから、サブスクリプションのレベルに切り替えて、リソース グループを作成することができます。 次のテンプレートでは、ストレージ アカウントをターゲット リソース グループにデプロイし、指定されたサブスクリプションに新しいリソース グループを作成します。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storagePrefix": {
+            "type": "string",
+            "maxLength": 11
+        },
+        "newResourceGroupName": {
+            "type": "string"
+        },
+        "nestedSubscriptionID": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        }
+    },
+    "variables": {
+        "storageName": "[concat(parameters('storagePrefix'), uniqueString(resourceGroup().id))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "name": "[variables('storageName')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "demoSubDeployment",
+            "location": "westus",
+            "subscriptionId": "[parameters('nestedSubscriptionID')]",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Resources/resourceGroups",
+                            "apiVersion": "2020-06-01",
+                            "name": "[parameters('newResourceGroupName')]",
+                            "location": "[parameters('location')]",
+                            "properties": {}
+                        }
+                    ],
+                    "outputs": {}
+                }
+            }
+        }
+    ]
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
 

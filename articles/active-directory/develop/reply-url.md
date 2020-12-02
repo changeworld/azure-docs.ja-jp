@@ -5,18 +5,18 @@ description: Microsoft の ID プラットフォームによって適用され�
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 10/29/2020
+ms.date: 11/23/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: a2838e40844b83d1e90789439ce286f2738e22c4
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 30ea74b249937544a0bf9811cad60f02c1ca45c7
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331857"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95752790"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>リダイレクト URI (応答 URL) に関する制約と制限
 
@@ -51,25 +51,32 @@ ms.locfileid: "94331857"
 
 [RFC 8252 のセクション 8.3](https://tools.ietf.org/html/rfc8252#section-8.3) と [7.3](https://tools.ietf.org/html/rfc8252#section-7.3) に従って、"loopback" または "localhost" リダイレクト URI には、次の 2 つの特別な考慮事項があります。
 
-1. リダイレクトがデバイスから切り離されることはないため、`http` URI スキームを指定できます。 そのため、これらの両方を使用できます。
-    - `http://127.0.0.1/myApp`
-    - `https://127.0.0.1/myApp`
-1. ネイティブ アプリケーションでは一時的なポート範囲が頻繁に必要とされるため、リダイレクト URI の照合目的では、ポート コンポーネント (`:5001`や `:443` など) は無視されます。 結果として、これらはすべて同等と見なされます。
-    - `http://127.0.0.1/MyApp`
-    - `http://127.0.0.1:1234/MyApp`
-    - `http://127.0.0.1:5000/MyApp`
-    - `http://127.0.0.1:8080/MyApp`
+1. リダイレクトがデバイスから切り離されることはないため、`http` URI スキームを指定できます。 そのため、これら両方の URI を使用できます。
+    - `http://localhost/myApp`
+    - `https://localhost/myApp`
+1. ネイティブ アプリケーションでは一時的なポート範囲が頻繁に必要とされるため、リダイレクト URI の照合目的では、ポート コンポーネント (`:5001`や `:443` など) は無視されます。 結果として、これらの URI はすべて同等と見なされます。
+    - `http://localhost/MyApp`
+    - `http://localhost:1234/MyApp`
+    - `http://localhost:5000/MyApp`
+    - `http://localhost:8080/MyApp`
 
 開発の観点から見ると、これはいくつかのことを意味します。
 
 * ポートのみが異なる複数のリダイレクト URI を登録しないでください。 ログイン サーバーでは任意のものが選択され、そのリダイレクト URI に関連付けられている動作が使用されます (たとえば、リダイレクトが `web` 型か、`native` 型か、`spa` 型か)。
 
     これは、同じアプリケーションの登録で異なる認証フロー (認可コードの付与と暗黙のフローなど) を使用する場合に特に重要です。 各リダイレクト URI に適切な応答動作を関連付けるには、ログイン サーバーがリダイレクト URI を区別できる必要があります。また、ポートのみが異なる場合は、リダイレクト URI を区別できません。
-* 複数のリダイレクト URI を localhost に登録して開発中にさまざまなフローをテストする必要がある場合は、URI の "*パス*" コンポーネントを使用してそれらを区別します。 たとえば、`http://127.0.0.1/MyWebApp` は `http://127.0.0.1/MyNativeApp` と一致しません。
+* 複数のリダイレクト URI を localhost に登録して開発中にさまざまなフローをテストする必要がある場合は、URI の "*パス*" コンポーネントを使用してそれらを区別します。 たとえば、`http://localhost/MyWebApp` は `http://localhost/MyNativeApp` と一致しません。
 * IPv6 ループバック アドレス (`[::1]`) は、現在サポートされていません。
-* ファイアウォールの構成が正しくなかったりネットワーク インターフェイスの名前が変更されたりしたことによってアプリが破損しないようにするには、リダイレクト URI で `localhost` ではなく IP リテラル ループバック アドレス `127.0.0.1` を使用します。
 
-    IP リテラル ループバック アドレス `127.0.0.1` で `http` スキームを使用するには、現在のところ[アプリケーション マニフェスト](reference-app-manifest.md)で [replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute) 属性を変更する必要があります。
+#### <a name="prefer-127001-over-localhost"></a>127.0.0.1 以上の localhost が推奨されています
+
+ファイアウォールの構成が正しくなかったりネットワーク インターフェイスの名前が変更されたりしたことによってアプリが破損しないようにするには、リダイレクト URI で `localhost` ではなく IP リテラル ループバック アドレス `127.0.0.1` を使用します。 たとえば、`https://127.0.0.1` のようにします。
+
+ただし、Azure portal の **[リダイレクト URI]** テキスト ボックスを使用して、`http` スキームを使用するループバックベースのリダイレクト URI を追加することはできません。
+
+:::image type="content" source="media/reply-url/portal-01-no-http-loopback-redirect-uri.png" alt-text="許可されていない HTTP ベースのループバック リダイレクト URI を示す Azure portal のエラー ダイアログ":::
+
+`127.0.0.1` ループバック アドレスで `http` スキームを使用するリダイレクト URI を追加するには、現在のところ[アプリケーション マニフェスト](reference-app-manifest.md)で [replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute) 属性を変更する必要があります。
 
 ## <a name="restrictions-on-wildcards-in-redirect-uris"></a>リダイレクト URI のワイルドカードに関する制限事項
 

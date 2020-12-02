@@ -3,16 +3,17 @@ title: Red Hat Enterprise Linux 延長ライフサイクル サポート
 description: Red Hat Enterprise 延長ライフサイクル サポート アドオンを追加する方法について説明します
 author: mathapli
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: 124ff65087887a437e0b82fbd7b1e4c72e4f7b4c
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 1f31cc982e5e7f92cfe7e8adf588dd96628f2c6f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684357"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95744043"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Red Hat Enterprise Linux (RHEL) Extended Lifecycle Support
 この記事では、次の Red Hat Enterprise イメージに対する延長ライフサイクル サポートについて説明します。
@@ -21,6 +22,14 @@ ms.locfileid: "94684357"
 ## <a name="red-hat-enterprise-linux-6-lifecycle"></a>Red Hat Enterprise Linux 6 のライフサイクル
 2020 年 11 月 30 日をもって、Red Hat Enterprise Linux 6 のメンテナンス フェーズは終了します。 メンテナンス フェーズの後に、延長ライフサイクル フェーズが続きます。 Red Hat Enterprise Linux 6 はフルまたはメンテナンスのフェーズから移行するため、Red Hat Enterprise Linux 7 または 8 にアップグレードすることを強くお勧めします。 顧客が Red Hat Enterprise Linux 6 を使い続ける必要がある場合は、Red Hat Red Hat Enterprise Linux Extended Life Cycle Support (ELS) アドオンを追加することをお勧めします。
 
+## <a name="steps-to-add-extended-lifecycle-support-on-marketplace-pay-as-you-go-vms"></a>Marketplace の従量課金制 VM に拡張ライフサイクル サポートを追加する手順
+1. [こちらからアクセスできる ELS フォーム](https://aka.ms/els-form)に、連絡先の詳細と、ELS サポートを追加する VM のサブスクリプションの情報を入力します。 アドオンの価格の詳細は、フォームでも確認できます。
+1. Azure Red Hat Enterprise Linux チームが、1-2 営業日以内に連絡して、ELS サポート アドオンを適用した VM の一覧をご案内します。 一覧を確認し、アドオンの価格に同意してください。
+1. Azure Red Hat Enterprise Linux チームが、ELS クライアント パッケージを VM に追加する手順を共有します。 電子メールに記載されている手順に従って、引き続きソフトウェア メンテナンス (バグとセキュリティの修正) を受け取り、Red Hat Enterprise Linux 6 のサポートを受けます。
+
+> [!Note]
+> RHEL ELS アドオンを使用する手順は、組織外のユーザーと共有しないでください。 サポートの依頼、またはその他の質問については、AzureRedHatELS@microsoft.com にご連絡ください。
+
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 #### <a name="im-running-red-hat-enterprise-linux-6-and-cant-migrate-to-a-later-version-at-this-time-what-options-do-i-have"></a>Red Hat Enterprise Linux 6 を実行しています。現時点では、新しいバージョンに移行することはできません。 どのようなオプションがありますか
@@ -28,19 +37,8 @@ ms.locfileid: "94684357"
 * できるだけ早く Red Hat Enterprise Linux 7 または 8 に移行してください。
 
 #### <a name="what-is-the-additional-charge-for-using-red-hat-enterprise-linux-extended-life-cycle-support-els-add-on"></a>Red Hat Enterprise Linux Extended Life Cycle Support (ELS) アドオンを使用する場合、追加料金はいくらですか?
+拡張ライフサイクル サポートに関連するコストについては、[ELS フォーム](https://aka.ms/els-form)を参照してください
 
-|VM サイズ|追加料金の時間枠|追加の金額 (米国ドル)| Notes|
-|---|---|---|---|
-| 小規模な仮想ゲスト (4 コア以下) | 1 時間ごとの追加料金 | 未定 | |
-|  | 1 か月ごとの追加料金 | 未定 | 予約インスタンス向け |
-|  | 1 年ごとの追加料金 | 未定 | 予約インスタンス向け |
-| 大規模な仮想ゲスト (5 コア以上) | 1 時間ごとの追加料金 | 未定 | |
-|  | 1 か月ごとの追加料金 | 未定 | 予約インスタンス向け |
-|  | 1 年ごとの追加料金 | 未定 | 予約インスタンス向け |
-
-#### <a name="what-is-the-process-to-add-extended-life-cycle-support-els-repositories-to-continue-to-receive-software-maintenance-bug-and-security-fixes-and--support-for-red-hat-enterprise-linux-6"></a>Extended Life Cycle Support (ELS) リポジトリを追加して、引き続きソフトウェア メンテナンス (バグとセキュリティの修正) を受信し、Red Hat Enterprise Linux 6 をサポートするプロセスは何ですか?
-
-ELS にサインアップするエンドツーエンドのプロセスは、こちらでまもなく入手できるようになる予定です (遅くとも 2020 年 11 月 30 日までに)。
 
 ## <a name="next-steps"></a>次のステップ
 

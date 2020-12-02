@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: b2dec95e0258933b50d4437f1cb317639b62883d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3467a5d5daa300f82c7b81641ab7e262259d9285
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67181218"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556430"
 ---
 ### <a name="upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-storsomple-adapter-for-sharepoint"></a>SharePoint 2010 を SharePoint 2013 にアップグレードして SharePoint 用 StorSimple アダプターをインストールする
 > [!IMPORTANT]
@@ -20,7 +20,7 @@ ms.locfileid: "67181218"
 #### <a name="to-upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-adapter"></a>SharePoint 2010 を SharePoint 2013 にアップグレードしてアダプターをインストールするには
 1. SharePoint 2010 ファームで、外部化された BLOB の BLOB ストア パスと RBS が有効にされているコンテンツ データベースをメモします。 
 2. 新しい SharePoint 2013 ファームをインストールして構成します。 
-3. データベース、アプリケーション、およびサイト コレクションを SharePoint 2010 ファームから新しい SharePoint 2013 ファームに移動します。 手順については、「 [SharePoint 2013 へのアップグレード プロセスの概要](https://technet.microsoft.com/library/cc262483.aspx)」を参照してください。
+3. データベース、アプリケーション、およびサイト コレクションを SharePoint 2010 ファームから新しい SharePoint 2013 ファームに移動します。 手順については、「 [SharePoint 2013 へのアップグレード プロセスの概要](/SharePoint/upgrade-and-update/overview-of-the-upgrade-process)」を参照してください。
 4. 新しいファームに SharePoint 用 StorSimple アダプターをインストールします。 手順については、「 [SharePoint 用 StorSimple アダプターをインストールする](#install-the-storsimple-adapter-for-sharepoint) 」を参照してください。
 5. 手順 1. でメモした情報を使用して、同じコンテンツ データベース セットの RBS を有効にし、SharePoint 2010 のインストール時に使用したのと同じ BLOB ストア パスを指定します。 手順については、「[RBS の構成](#configure-rbs)」を参照してください。 この手順を完了すると、あらかじめ外部化されているファイルが新しいファームからアクセス可能になります。 
 
@@ -29,7 +29,7 @@ ms.locfileid: "67181218"
 > このアップグレードは、以下の理由で、計画的なメンテナンス期間中に実行されるようスケジュールする必要があります。
 > 
 > * あらかじめ外部化されているコンテンツは、アダプターを再インストールするまで使用できません。
-> * SharePoint 用 StorSimple アダプターの以前のバージョンをアンインストールしてから新しいバージョンをインストールするまでにサイトにアップロードされたコンテンツは、コンテンツ データベースに格納されます。 そのコンテンツは、新しいアダプターをインストールした後、StorSimple デバイスに移動する必要があります。 コンテンツの移行は、SharePoint に用意されている Microsoft `RBS Migrate()` PowerShell コマンドレットを使用して行うことができます。 詳細については、「 [コンテンツをリモート BLOB ストレージ (RBS) 内または RBS 外に移行する (SharePoint Foundation 2010)](https://technet.microsoft.com/library/ff628255.aspx)」を参照してください。 
+> * SharePoint 用 StorSimple アダプターの以前のバージョンをアンインストールしてから新しいバージョンをインストールするまでにサイトにアップロードされたコンテンツは、コンテンツ データベースに格納されます。 そのコンテンツは、新しいアダプターをインストールした後、StorSimple デバイスに移動する必要があります。 コンテンツの移行は、SharePoint に用意されている Microsoft `RBS Migrate()` PowerShell コマンドレットを使用して行うことができます。 詳細については、「 [コンテンツをリモート BLOB ストレージ (RBS) 内または RBS 外に移行する (SharePoint Foundation 2010)](/previous-versions/office/sharepoint-foundation-2010/ff628255(v=office.14))」を参照してください。 
 > 
 > 
 
@@ -41,4 +41,3 @@ ms.locfileid: "67181218"
    > 
    > 
 2. 新しい SharePoint 用 StorSimple アダプターをインストールします。 新しいアダプターは、以前 RBS に対して有効または無効にされたコンテンツ データベースを自動的に認識し、以前の設定を使用します。
-

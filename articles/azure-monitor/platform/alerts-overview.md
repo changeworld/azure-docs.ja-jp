@@ -4,12 +4,12 @@ description: Azure でのアラートの概要です。 アラート、クラシ
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: e71f048a0a96323552b426663a235ed66fa2ef87
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: b8d24eab79bdf16e4d883549be00431bd5372af8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108798"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536049"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要 
 
@@ -82,7 +82,7 @@ Azure Monitor の監視データを使用してインフラストラクチャま
 | [Acknowledged] (確認済み) | 管理者がアラートをレビューし、それに対する作業を開始しました。 |
 | クローズ | 問題が解決されました。 アラートが終了されされた後、それを再び開いて別の状態に変更できます。 |
 
-*アラートの状態*は異なり、*監視条件*には依存しません。 アラートの状態は、ユーザーによって設定されます。 監視条件は、システムによって設定されます。 アラートが発生すると、アラートの監視条件は *Fired* に設定されます。アラート発生の原因になった状態が解消されると、監視条件は *Resolved* に設定されます。 
+*アラートの状態* は異なり、*監視条件* には依存しません。 アラートの状態は、ユーザーによって設定されます。 監視条件は、システムによって設定されます。 アラートが発生すると、アラートの監視条件は *Fired* に設定されます。アラート発生の原因になった状態が解消されると、監視条件は *Resolved* に設定されます。 
 
 アラートの状態は、ユーザーが変更するまで変わりません。 [アラートとスマート グループの状態を変更する方法](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)について参照してください。
 
@@ -173,7 +173,7 @@ Azure Monitor の監視データを使用してインフラストラクチャま
 | 履歴 | アラートによって実行された各アクションと、アラートに加えられたすべての変更を一覧表示します。 現在は、状態の変更に制限されています。 |
 | 診断 | アラートが含まれているスマート グループに関する情報。 "*アラートの数*" は、そのスマート グループに含まれているアラートの数を示します。 アラートの一覧ページ内の時間フィルターに関係なく、過去 30 日間に作成された、同じスマート グループ内の他のアラートが含まれます。 アラートを選択すると、その詳細が表示されます。 |
 
-## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>アラート インスタントのロールベースのアクセス制御 (RBAC)
+## <a name="azure-role-based-access-control-azure-rbac-for-your-alert-instances"></a>アラート インスタントの Azure ロールベースのアクセス制御 (Azure RBAC)
 
 アラート インスタンスを使用および管理するには、ユーザーに[監視共同作成者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)または[監視閲覧者](../../role-based-access-control/built-in-roles.md#monitoring-reader)のいずれかの Azure 組み込みロールが必要です。 これらのロールは、サブスクリプション レベルからリソース レベルでの詳細な割り当てまで、Azure Resource Manager のすべてのスコープでサポートされています。 たとえば、ユーザーが仮想マシン `ContosoVM1` に対する "監視共同作成者" アクセス権のみを持っている場合は、`ContosoVM1` で生成されたアラートのみを使用および管理できます。
 

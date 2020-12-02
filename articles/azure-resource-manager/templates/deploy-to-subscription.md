@@ -2,13 +2,13 @@
 title: サブスクリプションにリソースをデプロイする
 description: Azure Resource Manager テンプレートでリソース グループを作成する方法について説明します。 Azure サブスクリプション スコープでリソースをデプロイする方法も示します。
 ms.topic: conceptual
-ms.date: 10/26/2020
-ms.openlocfilehash: 7b0edde4f3571255e92c65d82429b4ddd1a689b8
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/24/2020
+ms.openlocfilehash: 2d4bd0db32a4bf0224b9da3af6e03ca86d7b496e
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668883"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95807707"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>ARM テンプレートを使用したサブスクリプションのデプロイ
 
@@ -104,7 +104,7 @@ az deployment sub create \
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-PowerShell デプロイ コマンドには、 [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) または **New-AzSubscriptionDeployment** を使用します。 次の例では、リソース グループを作成するテンプレートがデプロイされます。
+PowerShell デプロイ コマンドには、[New-AzDeployment](/powershell/module/az.resources/new-azdeployment) または **New-AzSubscriptionDeployment** を使用します。 次の例では、リソース グループを作成するテンプレートがデプロイされます。
 
 ```azurepowershell-interactive
 New-AzSubscriptionDeployment `
@@ -126,25 +126,41 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 * [デプロイ ボタンを使用して GitHub リポジトリからテンプレートをデプロイする](deploy-to-azure-button.md)
 * [Cloud Shell から ARM テンプレートをデプロイする](deploy-cloud-shell.md)
 
+## <a name="deployment-location-and-name"></a>デプロイの場所と名前
+
+サブスクリプション レベルのデプロイの場合、デプロイの場所を指定する必要があります。 デプロイの場所は、デプロイするリソースの場所とは異なります。 デプロイの場所では、デプロイ データを格納する場所を指定します。 [管理グループ](deploy-to-management-group.md)および[テナント](deploy-to-tenant.md)のデプロイにも場所が必要です。 [リソース グループ](deploy-to-resource-group.md)のデプロイの場合、リソース グループの場所を使用してデプロイ データを格納します。
+
+デプロイ名を指定することも、既定のデプロイ名を使用することもできます。 既定の名前は、テンプレート ファイルの名前です。 たとえば、**azuredeploy.json** という名前のテンプレートをデプロイすると、既定のデプロイ名として **azuredeploy** が作成されます。
+
+デプロイ名ごとに、場所を変更することはできません。 ある場所にデプロイを作成しようとしても、別の場所に同じ名前の既存のデプロイがあると、作成することはできません。 たとえば、**centralus** で **deployment1** という名前のサブスクリプションのデプロイを作成した場合、後で **deployment1** という名前の別のデプロイを **westus** の場所に作成することはできません。 エラー コード `InvalidDeploymentLocation` が表示された場合は、別の名前を使用するか、その名前の以前のデプロイと同じ場所を使用してください。
+
 ## <a name="deployment-scopes"></a>デプロイのスコープ
 
 サブスクリプションにデプロイする際には、リソースを以下にデプロイできます。
 
 * 操作のターゲット サブスクリプション
-* サブスクリプション内のリソース グループ
+* テナント内の任意のサブスクリプション
+* そのサブスクリプション内または他のサブスクリプション内のリソース グループ
+* そのサブスクリプションのテナント
 * [拡張リソース](scope-extension-resources.md)はリソースに適用できます
 
-ターゲット サブスクリプションとは異なるサブスクリプションにデプロイすることはできません。 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
+テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
 
 このセクションでは、異なるスコープを指定する方法について説明します。 これらの異なるスコープを 1 つのテンプレートで結合することができます。
 
-### <a name="scope-to-subscription"></a>サブスクリプションへのスコープ
+### <a name="scope-to-target-subscription"></a>ターゲット サブスクリプションにスコープを設定する
 
 リソースをターゲット サブスクリプションにデプロイするには、テンプレートのリソース セクションに目的のリソースを追加します。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-sub.json" highlight="5":::
 
 サブスクリプションへのデプロイの例については、「[リソース グループを作成する](#create-resource-groups)」と「[ポリシー定義を割り当てる](#assign-policy-definition)」を参照してください。
+
+### <a name="scope-to-other-subscription"></a>他のサブスクリプションにスコープを設定する
+
+操作のサブスクリプションとは異なるサブスクリプションにリソースをデプロイするには、入れ子になったデプロイを追加します。 デプロイ先のサブスクリプションの ID に `subscriptionId` プロパティを設定します。 入れ子になったデプロイについては `location` プロパティを設定します。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-sub.json" highlight="9,10,14":::
 
 ### <a name="scope-to-resource-group"></a>リソース グループへのスコープ
 
@@ -154,13 +170,17 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 
 リソース グループにデプロイする例については、「[リソース グループとリソースを作成する](#create-resource-group-and-resources)」を参照してください。
 
-## <a name="deployment-location-and-name"></a>デプロイの場所と名前
+### <a name="scope-to-tenant"></a>テナントへのスコープ
 
-サブスクリプション レベルのデプロイの場合、デプロイの場所を指定する必要があります。 デプロイの場所は、デプロイするリソースの場所とは異なります。 デプロイの場所では、デプロイ データを格納する場所を指定します。
+`scope` を `/` に設定することで、テナントにリソースを作成できます。 テンプレートをデプロイするユーザーには、[テナントでデプロイするための必要なアクセス権が必要です](deploy-to-tenant.md#required-access)。
 
-デプロイ名を指定することも、既定のデプロイ名を使用することもできます。 既定の名前は、テンプレート ファイルの名前です。 たとえば、 **azuredeploy.json** という名前のテンプレートをデプロイすると、既定のデプロイ名として **azuredeploy** が作成されます。
+`scope` と `location` を設定した入れ子になったデプロイを使用できます。
 
-デプロイ名ごとに、場所を変更することはできません。 ある場所にデプロイを作成しようとしても、別の場所に同じ名前の既存のデプロイがあると、作成することはできません。 エラー コード `InvalidDeploymentLocation` が表示された場合は、別の名前を使用するか、その名前の以前のデプロイと同じ場所を使用してください。
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-to-tenant.json" highlight="9,10,14":::
+
+または、管理グループなどの一部のリソースの種類に対して、スコープを `/` に設定することもできます。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-create-mg.json" highlight="12,15":::
 
 ## <a name="resource-groups"></a>リソース グループ
 

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
-ms.date: 7/14/2020
-ms.openlocfilehash: 653e6aad7f57b4d683f2f71ed22e402ed5d1fca8
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 11/19/2020
+ms.openlocfilehash: a20c495553dfe9a16c34a2972575d21cc95eef44
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630296"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537137"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 独立系ソフトウェア ベンダー (ISV) コネクト プログラム オンボード ガイド
 
@@ -38,7 +38,7 @@ ISV コネクト プログラムのアカウントを設定して管理するに
 > この手順で法的契約に署名するには、パートナー センターでアカウントに対する "*所有者*" または "*マネージャー*" のロールが必要です。
 
 1. [パートナー センター](https://partner.microsoft.com/dashboard)にサインインします。
-1. **[設定]** (歯車アイコン)、次に **[開発者向け設定]** を選択します。
+1. **[設定]** (歯車アイコン) > **[アカウント設定]** を選択します。
 1. **[契約]** を選択します。
 1. バージョンのリンクを選択し、契約を表示します。
 1. 契約に同意して受け入れるには、 **[Accept Agreement]\(契約に同意する\)** を選択します。
@@ -51,8 +51,8 @@ ISV コネクト プログラムのアカウントを設定して管理するに
 > このステップで課金情報を更新するには、パートナー センターでアカウントに対する "*所有者*" または "*マネージャー*" のロールが必要です。
 
 1. [パートナー センター](https://partner.microsoft.com/dashboard)にサインインします。
-1. **[設定]** (歯車アイコン)、次に **[開発者向け設定]** を選択します。
-1. **[アカウント設定]** で、 **[課金プロファイル]** を選択します。
+1. **[設定]** (歯車アイコン) > **[アカウント設定]** を選択します。
+1. **[組織プロファイル]** で、 **[課金プロファイル]** を選択して、 **[開発者]** タブを選択します。
 1. 法人から設定された主要連絡先と課金情報を確認します。
 1. 変更を行うには、 **[更新]** を選択します。
 1. 該当する場合は、税 ID または VAT ID の設定を指定します。

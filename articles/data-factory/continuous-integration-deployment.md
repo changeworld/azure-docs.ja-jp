@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: b31931af7b8d1442a66333622a23d017ab7fb5a9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 93aeb088f82cae6dde215792e399997b592a5c14
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658691"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96003975"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 
@@ -636,6 +636,14 @@ Git が構成されていない場合は、 **[ARM テンプレート]** 一覧�
 環境に修正プログラムを適用する方法については、次の詳細なビデオ チュートリアルの動画をご覧ください。 
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4I7fi]
+
+## <a name="exposure-control-and-feature-flags"></a>露出調整と機能フラグ
+
+チームで作業しているときに、変更をマージする場合があるかもしれませんが、PROD や QA などより高度な環境では実行しないかもしれません。 このようなシナリオに対応するため、ADF チームでは、[機能フラグを使用する DevOps 構想](https://docs.microsoft.com/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops)をお勧めしています。 ADF では、[グローバル パラメーター](author-global-parameters.md)と [If Condition アクティビティ](control-flow-if-condition-activity.md)を組み合わせて、これらの環境フラグに基づいてロジックのセットを非表示にすることができます。
+
+機能フラグを設定する方法については、次のビデオ チュートリアルをご覧ください。
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4IxdW]
 
 ## <a name="best-practices-for-cicd"></a>CI/CD のベスト プラクティス
 

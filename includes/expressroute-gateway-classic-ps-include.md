@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 70ac106995324c758bde942d12191a01e3457e6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0c05eb88df27ba9e71c0f61bad75457d893a7ce
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67180909"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95553507"
 ---
 > [!NOTE]
 > これらの例は、S2S/ExpressRoute の共存構成には該当しません。
@@ -25,7 +25,7 @@ ms.locfileid: "67180909"
 
 ### <a name="download-the-network-configuration-file"></a>ネットワーク構成ファイルをダウンロードする
 
-1. [ネットワーク構成ファイル](../articles/virtual-network/virtual-networks-using-network-configuration-file.md)に関する記事の手順に従ってネットワーク構成ファイルをダウンロードします。 テキスト エディターを使用してファイルを開きます。
+1. [ネットワーク構成ファイル](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file)に関する記事の手順に従ってネットワーク構成ファイルをダウンロードします。 テキスト エディターを使用してファイルを開きます。
 2. ローカル ネットワーク サイトをファイルに追加します。 任意の有効なアドレス プレフィックスを使用できます。 VPN ゲートウェイに使用する任意の有効な IP アドレスを追加してください。 このセクションのアドレス値は ExpressRoute の動作上は使用されませんが、ファイルの検証に必要となります。 この例では、"branch1" がサイトの名前です。 別の名前を使用することもできますが、このファイルの Gateway セクションでも必ず同じ値を使用してください。
 
    ```

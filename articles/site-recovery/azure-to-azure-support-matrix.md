@@ -4,12 +4,12 @@ description: Azure Site Recovery を使用したセカンダリ リージョン�
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: c54c4608f04c8f98e21309ca531452ae0a34fdf2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2391a4056d5c0c952677b57e7d37a181ef0eacc0
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646374"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95808857"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure リージョン間での Azure VM ディザスター リカバリーに関するサポート マトリックス
 
@@ -113,6 +113,9 @@ SUSE Linux Enterprise Server 11 | SP3<br/><br/> レプリケートするマシ�
 SUSE Linux Enterprise Server 11 | SP4
 Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)、[7.8](https://support.microsoft.com/help/4573888/)、[8.0](https://support.microsoft.com/help/4573888/)、[8.1](https://support.microsoft.com/help/4573888/)  <br/> Red Hat と互換可能なカーネルまたは Unbreakable Enterprise カーネル リリース 3、4、5 (UEK3、UEK4、UEK5) を実行している<br/><br/>8.1<br/>すべての UEK カーネルと RedHat カーネル <= 3.10.0-1062.* での実行は、[9.35](https://support.microsoft.com/help/4573888/) でサポートされます。それ以降の RedHat カーネルは、[9.36](https://support.microsoft.com/help/4578241/) でサポートされます
 
+> [!NOTE]
+> Linux バージョンでは、Azure Site Recovery ではカスタマイズされた OS イメージがサポートされないことを確認してください。 ディストリビューションのマイナー バージョン リリース/更新の一部である stock カーネルのみがサポートされます。
+
 ** 注: 最新の Linux カーネルをリリースから 15 日以内にサポートするため、Azure Site Recovery では最新のモビリティ エージェント バージョンに加えてホットフィックス修正プログラムがロールアウトされます。 この修正は、2 つのメジャー バージョンのリリースの間にロールアウトされます。 最新バージョンのモビリティ エージェント (ホットフィックス修正プログラムを含む) に更新するには、[こちらの記事](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)で示されている手順に従います。 この修正プログラムは、現在、Azure から Azure への DR シナリオで使用されるモビリティ エージェントに対してロールアウトされます。
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Azure 仮想マシン用のサポートされる Ubuntu カーネル バージョン
@@ -172,7 +175,7 @@ SUSE Linux Enterprise Server 15 および 15 SP1 | [9.34](https://support.micros
 * ボリューム マネージャー:LVM2
 
 > [!NOTE]
-> マルチパス ソフトウェアはサポートされていません。 
+> マルチパス ソフトウェアはサポートされていません。
 
 
 ## <a name="replicated-machines---compute-settings"></a>レプリケートされるマシン - コンピューティングの設定
@@ -213,7 +216,7 @@ Azure RBAC ポリシー | サポートされていません | VM での Azure �
 --- | --- | ---
 OS ディスクの最大サイズ | 2048 GB | VM ディスクに関する[詳細を表示します](../virtual-machines/managed-disks-overview.md)。
 一時ディスク | サポートされていません | 一時ディスクは常にレプリケーションから除外されます。<br/><br/> 一時ディスクに永続データを格納しないでください。 [詳細については、こちらを参照してください](../virtual-machines/managed-disks-overview.md)。
-データ ディスクの最大サイズ | マネージド ディスクの場合は 8,192 GB<br></br>アンマネージド ディスクの場合は 4,095 GB|
+データ ディスクの最大サイズ | マネージド ディスクの場合は 32 TB<br></br>アンマネージド ディスクの場合は 4 TB|
 データ ディスクの最小サイズ | 非管理対象ディスクの制限はありません。 マネージド ディスクの場合は 2 GB |
 データ ディスクの最大数 | 最大 64 (特定の Azure VM サイズでのサポートに従います) | VM サイズに関する[詳細を表示します](../virtual-machines/sizes.md)。
 データ ディスクの変更レート | Premium ストレージではディスクあたり最大 20 MBps。 Standard ストレージではディスクあたり最大 2 MBps。 | ディスクでの平均データ変更レートが継続的に最大値より高い場合、レプリケーションが追いつかなくなります。<br/><br/>  ただし、上限の超過が散発的である場合は、レプリケーションが追いつくことができます。しかし、復旧ポイントがわずかに遅延することもあります。

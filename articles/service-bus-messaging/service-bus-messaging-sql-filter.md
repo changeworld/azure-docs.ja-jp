@@ -1,22 +1,23 @@
 ---
-title: Azure Service Bus の SQLFilter 構文リファレンス | Microsoft Docs
-description: この記事では、SQLFilter の文法について詳しく説明します。 SqlFilter では、SQL-92 標準のサブセットをサポートします。
+title: Azure Service Bus サブスクリプション ルール SQL フィルター構文 | Microsoft Docs
+description: この記事では、SQL フィルターの文法について詳しく説明します。 SQL フィルターでは、SQL-92 標準のサブセットがサポートされます。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 8412dea583ae119b30976e53d4751411b45339a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: bd263e8177652165376d4f6fe9e231af71ebdcbe
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85341596"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95805629"
 ---
-# <a name="sqlfilter-syntax"></a>SQLFilter 構文
+# <a name="subscription-rule-sql-filter-syntax"></a>サブスクリプション ルールの SQL フィルター構文
 
-*SqlFilter* オブジェクトは [SqlFilter クラス](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)のインスタンスであり、[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) に対して評価される SQL 言語ベースのフィルター式を表します。 SqlFilter では、SQL-92 標準のサブセットをサポートします。  
+"*SQL フィルター*" は、Service Bus トピック サブスクリプションで使用できるフィルターの種類の 1 つです。 これは、SQL-92 標準のサブセットに基づくテキスト式です。 フィルター式は、[Azure Resource Manager テンプレート](service-bus-resource-manager-namespace-topic-with-rule.md)内の Service Bus `Rule` の 'sqlFilter' プロパティの `sqlExpression` 要素、Azure CLI `az servicebus topic subscription rule create` コマンドの [`--filter-sql-expression`](https://docs.microsoft.com/cli/azure/servicebus/topic/subscription/rule?view=azure-cli-latest&preserve-view=true#az_servicebus_topic_subscription_rule_create) 引数、およびサブスクリプション ルールの管理を可能にするいくつかの SDK 関数と共に使用されます。
+
+Service Bus Premium では、JMS 2.0 API を介して [JMS SQL メッセージ セレクター構文](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html)もサポートされています。
+
   
- このトピックでは、SqlFilter の文法について詳しく説明します。  
-  
-```  
+``` 
 <predicate ::=  
       { NOT <predicate> }  
       | <predicate> AND <predicate>  
@@ -51,7 +52,7 @@ ms.locfileid: "85341596"
   
 -   `<scope>` は、`<property_name>` のスコープを示す省略可能な文字列です。 有効な値は `sys` または `user`です。 `sys` 値は、`<property_name>` が [BrokeredMessage クラス](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)のパブリック プロパティ名である場合にシステム スコープを示します。 `user` は、`<property_name>` が [BrokeredMessage クラス](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)のディクショナリのキーである場合にユーザー スコープを示します。 `<scope>` が指定されていない場合、`user` スコープが既定のスコープです。  
   
-## <a name="remarks"></a>解説
+## <a name="remarks"></a>注釈
 
 存在しないシステム プロパティにアクセスしようとするとエラーになりますが、存在しないユーザー プロパティにアクセスしようとしてもエラーにはなりません。 代わりに、存在しないユーザー プロパティは不明な値として内部的に評価されます。 不明な値は演算子の評価時に特別に処理されます。  
   
@@ -81,7 +82,7 @@ ms.locfileid: "85341596"
   
 `[:IsDigit:]` は、10 進数として分類される任意の Unicode 文字を表します。 `c` が Unicode の数字の場合、`System.Char.IsDigit(c)` は `true` を返します。  
   
-`<regular_identifier>` に予約済みのキーワードを指定することはできません。  
+`<regular_identifier>` に予約キーワードを指定することはできません。  
   
 `<delimited_identifier>` は、左右の各かっこ ([]) で囲まれた任意の文字列です。 右角かっこは 2 つの右角かっこで表されます。 `<delimited_identifier>` の例を次に示します。  
   
@@ -91,7 +92,7 @@ ms.locfileid: "85341596"
   
 ```  
   
-`<quoted_identifier>` は、二重引用符で囲まれた任意の文字列です。 識別子の二重引用符は 2 つの二重引用符で表されます。 引用符で囲まれた識別子は、文字列定数と混同されやすい可能性があるので使用しないことをお勧めします。 可能であれば、区切られた識別子を使用してください。 `<quoted_identifier>` の例を次に示します。  
+`<quoted_identifier>` は、二重引用符で囲まれた任意の文字列です。 識別子の二重引用符は 2 つの二重引用符で表されます。 引用符で囲まれた識別子は、文字列定数と混同されやすい可能性があるので使用しないことをお勧めします。 可能であれば、区切られた識別子を使用してください。 こちらに `<quoted_identifier>` の例を示します。  
   
 ```  
 "Contoso & Northwind"  
@@ -104,7 +105,7 @@ ms.locfileid: "85341596"
       <expression>  
 ```  
   
-### <a name="remarks"></a>解説
+### <a name="remarks"></a>注釈
   
 `<pattern>` は、文字列として評価される式である必要があります。 これは LIKE 演算子のパターンとして使用されます。      次のワイルドカード文字を含めることができます。  
   
@@ -119,7 +120,7 @@ ms.locfileid: "85341596"
       <expression>  
 ```  
   
-### <a name="remarks"></a>解説  
+### <a name="remarks"></a>注釈  
 
 `<escape_char>` は、長さ 1 の文字列として評価される式である必要があります。 これは、LIKE 演算子のエスケープ文字として使用されます。  
   
@@ -136,7 +137,7 @@ ms.locfileid: "85341596"
   
 -   `<integer_constant>` は、引用符で囲まれておらず、小数点が含まれていない数値の文字列です。 値は内部的に `System.Int64` として格納され、同じ範囲に従います。  
   
-     長い定数の例を次に示します。  
+     長い定数の例をこちらに示します。  
   
     ```  
     1894  
@@ -168,7 +169,7 @@ ms.locfileid: "85341596"
       TRUE | FALSE  
 ```  
   
-### <a name="remarks"></a>解説  
+### <a name="remarks"></a>注釈  
 
 ブール型の定数は、**TRUE** または **FALSE** キーワードで表されます。 値は `System.Boolean` として格納されます。  
   
@@ -178,7 +179,7 @@ ms.locfileid: "85341596"
 <string_constant>  
 ```  
   
-### <a name="remarks"></a>解説  
+### <a name="remarks"></a>注釈  
 
 文字列定数は単一引用符で囲まれ、任意の有効な Unicode 文字が含まれます。 文字列定数に組み込む単一引用符は、2 つの単一引用符で表されます。  
   
@@ -190,9 +191,9 @@ ms.locfileid: "85341596"
       property(name) | p(name)  
 ```  
   
-### <a name="remarks"></a>解説
+### <a name="remarks"></a>注釈
   
-`newid()` 関数は、`System.Guid.NewGuid()` メソッドによって生成された **System.Guid** を返します。  
+`newid()` 関数は、`System.Guid.NewGuid()` メソッドによって生成された `System.Guid` を返します。  
   
 `property(name)` 関数は、`name` によって参照されるプロパティの値を返します。 `name` 値には、文字列値を返す任意の有効な式を指定できます。  
   
@@ -218,13 +219,13 @@ ms.locfileid: "85341596"
   
   算術演算子での unknown 評価は次のとおりです。  
   
-- 2 項演算子では、左側または右側あるいは左右のオペランドが **unknown** と評価された場合、結果は **unknown** になります。  
+- 2 項演算子では、左側または右側のオペランドが **unknown** と評価された場合、結果は **unknown** になります。  
   
 - 単項演算子では、オペランドが **unknown** と評価された場合、結果は **unknown** になります。  
   
   2 項比較演算子での unknown 評価は次のとおりです。  
   
-- 左側または右側あるいは左右のオペランドが **unknown** と評価された場合、結果は **unknown** になります。  
+- 左側または右側のオペランドが **unknown** と評価された場合、結果は **unknown** になります。  
   
   `[NOT] LIKE` での unknown 評価は次のとおりです。  
   
@@ -268,8 +269,63 @@ ms.locfileid: "85341596"
   
 -   算術演算子 (`+`、`-`、`*`、`/`、`%` など) は、データ型の上位変換および暗黙的な変換で C# 演算子の結合と同じセマンティクスに従います。
 
+
+## <a name="examples"></a>例
+
+### <a name="set-rule-action-for-a-sql-filter"></a>SQL フィルターのルール アクションの設定
+
+```csharp
+// instantiate the ManagementClient
+this.mgmtClient = new ManagementClient(connectionString);
+
+// create the SQL filter
+var sqlFilter = new SqlFilter("source = @stringParam");
+
+// assign value for the parameter
+sqlFilter.Parameters.Add("@stringParam", "orders");
+
+// instantiate the Rule = Filter + Action
+var filterActionRule = new RuleDescription
+{
+    Name = "filterActionRule",
+    Filter = sqlFilter,
+    Action = new SqlRuleAction("SET source='routedOrders'")
+};
+
+// create the rule on Service Bus
+await this.mgmtClient.CreateRuleAsync(topicName, subscriptionName, filterActionRule);
+```
+
+### <a name="sql-filter-on-a-system-property"></a>システム プロパティでの SQL フィルター
+
+```csharp
+sys.Label LIKE '%bus%'`
+```
+
+### <a name="using-or"></a>OR の使用 
+
+```csharp
+ sys.Label LIKE '%bus%'` OR `user.tag IN ('queue', 'topic', 'subscription')
+```
+
+### <a name="using-in-and-not-in"></a>IN と NOT IN の使用
+
+```csharp
+StoreId IN('Store1', 'Store2', 'Store3')"
+
+sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
+
+sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8')
+```
+
+C# のサンプルについては、[GitHub のトピック フィルターのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters)を参照してください。
+
+
 ## <a name="next-steps"></a>次のステップ
 
 - [SQLFilter クラス (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [SQLFilter クラス (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
-- [SQLRuleAction クラス](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [SqlFilter クラス (Java)](/java/api/com.microsoft.azure.servicebus.rules.SqlFilter)
+- [SqlRuleFilter (JavaScript)](/javascript/api/@azure/service-bus/sqlrulefilter)
+- [az servicebus topic subscription rule](/cli/azure/servicebus/topic/subscription/rule)
+- [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

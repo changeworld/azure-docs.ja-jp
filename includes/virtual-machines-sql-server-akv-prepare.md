@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 66a3ecd82ab61f25c99fd1268d9ce7567b057d66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3509185baa3a9d7be90c1fa4bd8000da4a8a6fe5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86050369"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557929"
 ---
 ## <a name="prepare-for-akv-integration"></a>AKV 統合の準備
 Azure Key Vault 統合を使用し、SQL Server VM を構成するには、いくつかの前提条件があります。 
@@ -38,7 +38,7 @@ Azure Key Vault 統合を使用し、SQL Server VM を構成するには、い�
 
 最初に、サブスクリプションに [Azure Active Directory](https://azure.microsoft.com/trial/get-started-active-directory/) (AAD) を追加する必要があります。 特定のユーザーやアプリケーションが Key Vault にアクセスするための許可が与えられるなど、さまざまな利点があります。
 
-次に、アプリケーションを AAD に登録します。 これで VM に必要なキー コンテナーへのアクセス許可を持つサービス プリンシパル アカウントを入手できます。 Azure Key Vault の記事のセクション「[Azure Active Directory にアプリケーションを登録する](../articles/key-vault/key-vault-manage-with-cli2.md#registering-an-application-with-azure-active-directory)」にこれらの手順があります。あるいは、[このブログ投稿](https://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx)の「**Get an identity for the application (アプリケーションの ID を取得する)** 」セクションのスクリーンショットで手順を確認できます。 これらの手順を完了する前に、後で SQL VM で Azure Key Vault 統合を有効にするときに必要になる次の情報をこの登録中に集める必要があります。
+次に、アプリケーションを AAD に登録します。 これで VM に必要なキー コンテナーへのアクセス許可を持つサービス プリンシパル アカウントを入手できます。 Azure Key Vault の記事のセクション「[Azure Active Directory にアプリケーションを登録する](../articles/key-vault/general/manage-with-cli2.md#registering-an-application-with-azure-active-directory)」にこれらの手順があります。あるいは、[このブログ投稿](/archive/blogs/kv/azure-key-vault-step-by-step)の「**Get an identity for the application (アプリケーションの ID を取得する)** 」セクションのスクリーンショットで手順を確認できます。 これらの手順を完了する前に、後で SQL VM で Azure Key Vault 統合を有効にするときに必要になる次の情報をこの登録中に集める必要があります。
 
 * アプリケーションが追加されたら、 **[登録済みのアプリ]** ブレードで **[アプリケーション ID]** (別名 AAD ClientID または AppID) を探します。
     アプリケーション ID は後に PowerShell スクリプトの **$spName** (サービス プリンシパル名) パラメーターに割り当てられ、Azure Key Vault 統合を有効にします。
@@ -51,10 +51,10 @@ Azure Key Vault 統合を使用し、SQL Server VM を構成するには、い�
 
 * アプリケーション ID とシークレットは、SQL Server で資格情報を作成する場合も使用されます。
 
-* この新しいアプリケーション ID (またはクライアント ID) に権限を与え、アクセス許可 (**get**、**wrapKey**、**unwrapKey**) を与える必要があります。 これは [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) コマンドレットで行われます。 詳細については、[Azure Key Vault の概要](../articles/key-vault/key-vault-overview.md)に関する記事を参照してください。
+* この新しいアプリケーション ID (またはクライアント ID) に権限を与え、アクセス許可 (**get**、**wrapKey**、**unwrapKey**) を与える必要があります。 これは [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) コマンドレットで行われます。 詳細については、[Azure Key Vault の概要](../articles/key-vault/general/overview.md)に関する記事を参照してください。
 
 ### <a name="create-a-key-vault"></a><a id="createkeyvault"></a> キー コンテナーを作成する
-Azure Key Vault を使用して VM の暗号化に使用する鍵を保存するには、Key Vault へのアクセス許可が必要です。 キー コンテナーをまだ設定していない場合、「[Azure Key Vault の概要](../articles/key-vault/key-vault-overview.md)」記事の手順で作成します。 これらの手順を完了する前に、後で SQL VM で Azure Key Vault 統合を有効にするときに必要になるいくつかの情報をこの設定中に集める必要があります。
+Azure Key Vault を使用して VM の暗号化に使用する鍵を保存するには、Key Vault へのアクセス許可が必要です。 キー コンテナーをまだ設定していない場合、「[Azure Key Vault の概要](../articles/key-vault/general/overview.md)」記事の手順で作成します。 これらの手順を完了する前に、後で SQL VM で Azure Key Vault 統合を有効にするときに必要になるいくつかの情報をこの設定中に集める必要があります。
 
 ```azurepowershell
 New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'

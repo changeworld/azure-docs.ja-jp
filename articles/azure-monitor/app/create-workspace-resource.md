@@ -3,18 +3,18 @@ title: 新しい Azure Monitor Application Insights のワークスペース ベ
 description: 新しい Azure Monitor Application Insights のワークスペース ベースのリソースを有効にするために必要な手順について説明します。
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: 9b91e5065729bee6af3f8018c36930e132eb1a15
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: ecbac02bcb4d9b4f0db36eab854a91366c774d6c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945415"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536916"
 ---
 # <a name="workspace-based-application-insights-resources"></a>ワークスペース ベースの Application Insights リソース
 
 ワークスペース ベースのリソースは、Application Insights と Log Analytics 間の完全な統合をサポートします。 Application Insights テレメトリを共通の Log Analytics ワークスペースに送信できるようになりました。これにより、アプリケーション、インフラストラクチャ、およびプラットフォームのログを 1 つの統合された場所に保持しながら、Log Analytics のすべての機能にフル アクセスできます。
 
-これにより、リソース全体で一般的なロールベースのアクセス制御 (RBAC) を使えるようになり、アプリ間またはワークスペース間のクエリが不要になります。
+これにより、リソース全体で一般的な Azure ロールベースのアクセス制御 (Azure RBAC) を使えるようになり、アプリ間またはワークスペース間のクエリが不要になります。
 
 > [!NOTE]
 > ワークスペース ベースの Application Insights リソースのデータ インジェストとリテンション期間は、データが保管されている Log Analytics ワークスペースを通じて課金されます。 ワークスペース ベースの Application Insights リソースの課金に関する[詳細を参照]( ./pricing.md#workspace-based-application-insights)してください。

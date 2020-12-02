@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 352c057a74d1be5f440041b9f13127e8730edf82
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 88774450fb196da5de24bcad047ecdb8c424f653
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698072"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736535"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS クラスターの構成
 
@@ -237,47 +237,28 @@ az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myR
 通常の Gen1 ノード プールを作成する場合は、カスタムの `--aks-custom-headers` タグを省略できます。
 
 
-## <a name="ephemeral-os-preview"></a>エフェメラル OS (プレビュー)
+## <a name="ephemeral-os"></a>エフェメラル OS
 
-既定では、Azure 仮想マシンのオペレーティング システム ディスクは、VM を別のホストに再配置する必要がある場合にデータの損失を防ぐために、Azure Storage に自動的にレプリケートされます。 ただし、コンテナーはローカルの状態を永続化するように設計されていないため、この動作の価値は限定的であり、ノードのプロビジョニング速度の低下や読み取り/書き込みの待機時間の増加など、いくつかの欠点があります。
+既定では、VM を別のホストに再配置する必要がある場合にデータの損失を防ぐために、Azure によって仮想マシンのオペレーティング システム ディスクが Azure Storage に自動的にレプリケートされます。 ただし、コンテナーはローカルの状態を永続化するように設計されていないため、この動作の価値は限定的であり、ノードのプロビジョニング速度の低下や読み取り/書き込みの待機時間の増加など、いくつかの欠点があります。
 
 これに対して、エフェメラル OS ディスクは、一時ディスクと同様に、ホスト マシンにのみ格納されます。 これにより、読み取り/書き込みの待機時間が短縮され、ノードのスケーリングやクラスターのアップグレードが高速になります。
 
 一時ディスクと同様に、エフェメラル OS ディスクは仮想マシンの価格に含まれているため、追加のストレージ コストは発生しません。
 
-`EnableEphemeralOSDiskPreview` 機能を登録します。
+> [!IMPORTANT]
+>ユーザーが OS のマネージド ディスクを明示的に要求していない場合、AKS は可能であれば指定された nodepool 構成で、既定でエフェメラル OS になります。
 
-```azurecli
-az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
-```
+エフェメラル OS を使用する場合、OS ディスクは VM キャッシュに格納されている必要があります。 VM キャッシュのサイズは、[Azure のドキュメント](../virtual-machines/dv3-dsv3-series.md)で IO スループットの横の括弧内 ("キャッシュ サイズは GiB 単位") に記載されています。
 
-状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) コマンドを使用して登録状態を確認できます。
+既定の OS ディスク サイズが 100 GB の AKS の既定の VM サイズである Standard_DS2_v2 を例に取ると、この VM サイズではエフェメラル OS がサポートされますが、キャッシュ サイズはわずか 86 GB になります。 ユーザーが明示的に指定しない場合、この構成はマネージド ディスクに既定で設定されます。 ユーザーがエフェメラル OS を明示的に要求した場合は、検証エラーが発生します。
 
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
-```
+OS ディスクが 60 GB の同じ Standard_DS2_v2 をユーザーが要求した場合、この構成は既定でエフェメラル OS になります。要求されたサイズである 60 GB は、最大キャッシュ サイズの 86 GB を下回っています。
 
-状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
+OS ディスクが 100 GB の Standard_D8s_v3 を使用すると、この VM サイズはエフェメラル OS をサポートし、キャッシュ領域は 200 GB となります。 ユーザーが OS ディスクの種類を指定していない場合、nodepool は既定でエフェメラル OS を受け取ります。 
 
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```
+エフェメラル OS には、バージョン 2.15.0 以上の Azure CLI が必要です。
 
-エフェメラル OS には、バージョン 0.4.63 以上の aks-preview CLI 拡張機能が必要です。
-
-aks-preview CLI 拡張機能をインストールするには、次の Azure CLI コマンドを使用します。
-
-```azurecli
-az extension add --name aks-preview
-```
-
-aks-preview CLI 拡張機能を更新するには、次の Azure CLI コマンドを使用します。
-
-```azurecli
-az extension update --name aks-preview
-```
-
-### <a name="use-ephemeral-os-on-new-clusters-preview"></a>新しいクラスターでエフェメラル OS を使用する (プレビュー)
+### <a name="use-ephemeral-os-on-new-clusters"></a>新しいクラスターでエフェメラル OS を使用する
 
 クラスターの作成時に、エフェメラル OS ディスクを使用するようにクラスターを構成します。 `--node-osdisk-type` フラグを使用して、新しいクラスターの OS ディスクの種類としてエフェメラル OS を設定します。
 
@@ -285,9 +266,9 @@ az extension update --name aks-preview
 az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
-ネットワークに接続された OS ディスクを使用して通常のクラスターを作成する場合は、カスタムの `--node-osdisk-type` タグを省略するか、`--node-osdisk-type=Managed` を指定できます。 次に示すように、エフェメラル OS のノード プールを追加することもできます。
+ネットワークに接続された OS ディスクを使用して通常のクラスターを作成する場合は、`--node-osdisk-type=Managed` を指定することで行うことができます。 次に示すように、エフェメラル OS のノード プールを追加することもできます。
 
-### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>既存のクラスターでエフェメラル OS を使用する (プレビュー)
+### <a name="use-ephemeral-os-on-existing-clusters"></a>既存のクラスターでエフェメラル OS を使用する
 エフェメラル OS ディスクを使用するように新しいノード プールを構成します。 `--node-osdisk-type` フラグを使用して、OS ディスクの種類として、そのノード プールの OS ディスクの種類を設定します。
 
 ```azurecli
@@ -295,9 +276,9 @@ az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-grou
 ```
 
 > [!IMPORTANT]
-> エフェメラル OS を使用する場合、VM およびインスタンス イメージは、最大で VM キャッシュのサイズまでデプロイできます。 AKS の場合、既定のノードの OS ディスク構成では 100 GiB が使用されます。つまり、100 GiB より大きいキャッシュを持つサイズの VM が必要になります。 既定の Standard_DS2_v2 のキャッシュ サイズは 86 GiB であり、十分な大きさではありません。 Standard_DS3_v2 のキャッシュ サイズは 172 GiB であり、十分な大きさです。 `--node-osdisk-size` を使用して、OS ディスクの既定のサイズを小さくすることもできます。 AKS イメージの最小サイズは 30 GiB です。 
+> エフェメラル OS を使用する場合、VM およびインスタンス イメージは、最大で VM キャッシュのサイズまでデプロイできます。 AKS の場合、既定のノードの OS ディスク構成では 128 GB が使用されます。つまり、128 GB より大きいキャッシュを持つサイズの VM が必要になります。 既定の Standard_DS2_v2 のキャッシュ サイズは 86 GB であり、十分な大きさではありません。 Standard_DS3_v2 のキャッシュ サイズは 172 GB であり、十分な大きさです。 `--node-osdisk-size` を使用して、OS ディスクの既定のサイズを小さくすることもできます。 AKS イメージの最小サイズは 30 GB です。 
 
-ネットワークに接続された OS ディスクを使用してノード プールを作成する場合は、カスタムの `--node-osdisk-type` タグを省略できます。
+ネットワークに接続された OS ディスクを使用してノード プールを作成する場合は、`--node-osdisk-type Managed` を指定することで行うことができます。
 
 ## <a name="custom-resource-group-name"></a>カスタム リソース グループ名
 

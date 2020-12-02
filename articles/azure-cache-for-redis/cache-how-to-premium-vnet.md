@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: f7b4a22c0473acb7da0708f095c25b4f3f78fe66
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5fd82105c94bb9be2d07c8843834465821acd8bc
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445593"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95803775"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Premium Azure Cache for Redis の Virtual Network のサポートを構成する方法
 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能を含め、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 VNet とは、クラウド内のプライベート ネットワークです。 VNet を使用して Azure Cache for Redis インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、VNet 内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium Azure Cache for Redis インスタンスの仮想ネットワークのサポートを構成する方法について説明します。
@@ -130,7 +130,7 @@ Azure Cache for Redis が VNet でホストされている場合は、次の表�
 
 | ポート | Direction | トランスポート プロトコル | 目的 | ローカル IP | リモート IP |
 | --- | --- | --- | --- | --- | --- |
-| 80、443 |送信 |TCP |Azure Storage/PKI (インターネット) に対する Redis の依存関係 | (Redis サブネット) |* |
+| 80、443 |送信 |TCP |Azure Storage/PKI (インターネット) に対する Redis の依存関係 | (Redis サブネット) |* <sup>4</sup> |
 | 443 | 送信 | TCP | Azure Key Vault と Azure Monitor に対する Redis の依存関係 | (Redis サブネット) | AzureKeyVault、AzureMonitor <sup>1</sup> |
 | 53 |送信 |TCP/UDP |DNS (インターネット/VNet) に対する Redis の依存関係 | (Redis サブネット) | 168.63.129.16 および 169.254.169.254 <sup>2</sup> およびサブネットのカスタム DNS サーバー <sup>3</sup> |
 | 8443 |送信 |TCP |Redis の内部通信 | (Redis サブネット) | (Redis サブネット) |
@@ -146,6 +146,8 @@ Azure Cache for Redis が VNet でホストされている場合は、次の表�
 
 <sup>3</sup> カスタム DNS サーバーのないサブネット、またはカスタム DNS を無視する新しい redis キャッシュには必要ありません。
 
+<sup>4</sup> 詳細については、[VNET ネットワーク接続の追加要件](#additional-vnet-network-connectivity-requirements)に関するページを参照してください。
+
 #### <a name="geo-replication-peer-port-requirements"></a>geo レプリケーション ピア ポートの要件
 
 Azure Virtual Network 内のキャッシュ間で geo レプリケーションを使用している場合、推奨される構成は、両方のキャッシュに対する受信および送信方向両方において、サブネット全体に対してポート 15000-15999 のブロックを解除することです。これにより、サブネット内のすべてのレプリカ コンポーネントが将来の geo フェールオーバーが発生した場合でも相互に直接通信できるようになります。
@@ -156,13 +158,13 @@ Azure Virtual Network 内のキャッシュ間で geo レプリケーション�
 
 | ポート | Direction | トランスポート プロトコル | 目的 | ローカル IP | リモート IP |
 | --- | --- | --- | --- | --- | --- |
-| 6379, 6380 |受信 |TCP |Redis へのクライアント通信、Azure 負荷分散 | (Redis サブネット) | (Redis サブネット)、Virtual Network、Azure Load Balancer <sup>1</sup> |
+| 6379, 6380 |受信 |TCP |Redis へのクライアント通信、Azure 負荷分散 | (Redis サブネット) | (Redis サブネット)、(クライアント サブネット)、AzureLoadBalancer <sup>1</sup> |
 | 8443 |受信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
-| 8500 |受信 |TCP/UDP |Azure 負荷分散 | (Redis サブネット) |Azure Load Balancer |
-| 10221-10231 |受信 |TCP |Redis クラスターへのクライアント通信、Redis の内部通信 | (Redis サブネット) |(Redis サブネット)、Azure Load Balancer、(クライアント サブネット) |
-| 13000-13999 |受信 |TCP |Redis クラスターへのクライアント通信、Azure 負荷分散 | (Redis サブネット) |Virtual Network、Azure Load Balancer |
-| 15000-15999 |受信 |TCP |Redis クラスター、Azure 負荷分散、geo レプリケーションへのクライアント通信 | (Redis サブネット) |Virtual Network、Azure Load Balancer、(geo レプリカ ピア サブネット) |
-| 16001 |受信 |TCP/UDP |Azure 負荷分散 | (Redis サブネット) |Azure Load Balancer |
+| 8500 |受信 |TCP/UDP |Azure 負荷分散 | (Redis サブネット) | AzureLoadBalancer |
+| 10221-10231 |受信 |TCP |Redis クラスターへのクライアント通信、Redis の内部通信 | (Redis サブネット) |(Redis サブネット)、AzureLoadBalancer、(クライアント サブネット) |
+| 13000-13999 |受信 |TCP |Redis クラスターへのクライアント通信、Azure 負荷分散 | (Redis サブネット) | (Redis サブネット)、(クライアント サブネット)、AzureLoadBalancer |
+| 15000-15999 |受信 |TCP |Redis クラスター、Azure 負荷分散、geo レプリケーションへのクライアント通信 | (Redis サブネット) | (Redis サブネット)、(クライアント サブネット)、AzureLoadBalancer、(geo レプリカ ピア サブネット) |
+| 16001 |受信 |TCP/UDP |Azure 負荷分散 | (Redis サブネット) | AzureLoadBalancer |
 | 20226 |受信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
 
 <sup>1</sup> NSG 規則を作成するために、サービス タグ 'AzureLoadBalancer' (Resource Manager) (または、クラシックの場合 'AZURE_LOADBALANCER') を使用できます。
@@ -218,19 +220,19 @@ DNS 名を解決できない場合、StackExchange.Redis クライアントに�
 VNet は Premium キャッシュでのみ使用できます。
 
 ### <a name="why-does-creating-an-azure-cache-for-redis-fail-in-some-subnets-but-not-others"></a>Azure Cache for Redis の作成が失敗するサブネットと成功するサブネットがあるのはなぜですか
-Azure Cache for Redis を Resource Manager VNet にデプロイする場合、キャッシュは、他の種類のリソースが含まれない専用サブネット内に存在する必要があります。 Azure Cache for Redis を他のリソースが含まれる Resource Manager VNet サブネットにデプロイしようとすると、そのデプロイは失敗します。 新しい Azure Cache for Redis を作成する前に、サブネット内の既存のリソースを削除する必要があります。
+Azure Cache for Redis を VNet にデプロイする場合、キャッシュは、他のリソースの種類が含まれない専用サブネット内に存在する必要があります。 Azure Cache for Redis を他のリソース (アプリケーション ゲートウェイや送信 NAT など) が含まれる Resource Manager VNet サブネットにデプロイしようとすると、そのデプロイは通常失敗します。 新しい Azure Cache for Redis を作成する前に、他の種類の既存のリソースを削除する必要があります。
 
-使用可能な IP アドレスが十分にあれば、複数の種類のリソースをクラシック VNet にデプロイできます。
+また、十分な数の使用可能な IP アドレスがサブネット内にある必要があります。
 
 ### <a name="what-are-the-subnet-address-space-requirements"></a>サブネット アドレス空間の要件には何がありますか
 Azure は、各サブネット内で一部の IP アドレスを予約し、これらのアドレスを使用することはできません。 サブネットの最初と最後の IP アドレスは、Azure サービスで使用される 3 つ以上のアドレスと共に、プロトコル準拠に予約されます。 詳細については、「 [これらのサブネット内の IP アドレスの使用に関する制限はありますか](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
 
-Azure VNET インフラストラクチャによって使用される IP アドレスに加えて、サブネットの各 Redis インスタンスは、シャードごとに 2 つの IP アドレスおよびロード バランサー用に 1 つの追加 IP アドレスを使用します。 クラスター化されていないキャッシュは、1 つのシャードを持つと見なされます。
+Azure VNET インフラストラクチャによって使用される IP アドレスに加えて、サブネットの各 Redis インスタンスは、クラスター シャードごとに 2 つの IP アドレス (さらに、追加レプリカがある場合はそのための追加 IP アドレス) およびロード バランサー用に 1 つの追加 IP アドレスを使用します。 クラスター化されていないキャッシュは、1 つのシャードを持つと見なされます。
 
 ### <a name="do-all-cache-features-work-when-hosting-a-cache-in-a-vnet"></a>VNET でキャッシュをホストしている場合、キャッシュ機能はすべて動作しますか
 キャッシュが VNET の一部である場合は、VNET のクライアントだけがキャッシュにアクセスできます。 そのため、次のキャッシュ管理機能は現時点では動作しません。
 
-* Redis コンソール - Redis コンソールは、VNET の外部にあるローカル ブラウザーで実行されるため、キャッシュに接続できません。
+* Redis コンソール - Redis コンソールはローカル ブラウザーで実行されます。これは通常、VNET に接続されていない開発者用コンピューター上にあるため、キャッシュに接続できません。
 
 
 ## <a name="use-expressroute-with-azure-cache-for-redis"></a>ExpressRoute と Azure Cache for Redis の使用

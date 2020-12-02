@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
-ms.openlocfilehash: 9b660bf20c90a84780175e70573c96a0ce1b0b7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cb4cdef227c786b12790903037fdc02649592e3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91376992"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95990886"
 ---
 ## <a name="use-custom-page-content"></a>カスタム ページ コンテンツを使用する
 
@@ -56,7 +56,7 @@ Azure AD B2C では、[クロス オリジン リソース共有 (CORS)](https:/
 
 ## <a name="hosting-the-page-content"></a>ページ コンテンツのホスト
 
-独自の HTML ファイルと CSS ファイルを使用して UI をカスタマイズする場合は、CORS をサポートする、公開されている任意の HTTPS エンドポイントで UI コンテンツをホストします。 たとえば、[Azure Blob Storage](../articles/storage/blobs/storage-blobs-introduction.md)、[Azure App Services](/azure/app-service/)、Web サーバー、CDN、AWS S3、またはファイル共有システムなどです。
+独自の HTML ファイルと CSS ファイルを使用して UI をカスタマイズする場合は、CORS をサポートする、公開されている任意の HTTPS エンドポイントで UI コンテンツをホストします。 たとえば、[Azure Blob Storage](../articles/storage/blobs/storage-blobs-introduction.md)、[Azure App Services](../articles/app-service/index.yml)、Web サーバー、CDN、AWS S3、またはファイル共有システムなどです。
 
 ## <a name="guidelines-for-using-custom-page-content"></a>カスタム ページ コンテンツを使用するためのガイドライン
 
@@ -116,17 +116,17 @@ HTML コンテンツを Blob Storage でホストするには、次の手順を�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **ハブ** メニューで、 **[新規]**  >  **[ストレージ]**  >  **[ストレージ アカウント]** の順にクリックします。
-1. ストレージ アカウントの**サブスクリプション**を選択します。
-1. **リソース グループ**を作成するか、既存のリソース グループを選択します。
-1. ストレージ アカウント用に一意の**名前**を入力します。
-1. ストレージ アカウントの**地理的な場所**を選択します。
+1. ストレージ アカウントの **サブスクリプション** を選択します。
+1. **リソース グループ** を作成するか、既存のリソース グループを選択します。
+1. ストレージ アカウント用に一意の **名前** を入力します。
+1. ストレージ アカウントの **地理的な場所** を選択します。
 1. **[デプロイ モデル]** は **[リソース マネージャー]** のまま残してかまいません。
 1. **[パフォーマンス]** は **[標準]** のまま残してかまいません。
 1. **[Account Kind]** (アカウントの種類) を **[Blob Storage]** に変更します。
 1. **[レプリケーション]** は **[RA-GRS]** のまま残してかまいません。
 1. **[アクセス レベル]** は **[ホット]** のまま残してかまいません。
 1. **[確認および作成]** を選択して、ストレージ アカウントを作成します。
-    デプロイが完了したら、**ストレージ アカウント**のページが自動的に開きます。
+    デプロイが完了したら、**ストレージ アカウント** のページが自動的に開きます。
 
 #### <a name="21-create-a-container"></a>2.1 コンテナーを作成する
 

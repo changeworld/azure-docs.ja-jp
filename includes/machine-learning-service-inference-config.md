@@ -4,22 +4,22 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 01/28/2020
 ms.author: larryfr
-ms.openlocfilehash: f500df6a592769928470d22468ff2fdff18293a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f7798e684a0a144cfe5285a0dd926a3b440934a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88748774"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563308"
 ---
-`inferenceconfig.json` ドキュメント内のエントリは、[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) クラスのパラメーターにマップされます。 次の表は、JSON ドキュメントのエントリとメソッド用パラメーターの間のマッピングについてまとめたものです。
+`inferenceconfig.json` ドキュメント内のエントリは、[InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) クラスのパラメーターにマップされます。 次の表は、JSON ドキュメントのエントリとメソッド用パラメーターの間のマッピングについてまとめたものです。
 
 | JSON エンティティ | メソッド パラメーター | 説明 |
 | ----- | ----- | ----- |
 | `entryScript` | `entry_script` | イメージに対して実行するコードを含むローカル ファイルのパス。 |
 | `sourceDirectory` | `source_directory` | 省略可能。 イメージを作成するためのすべてのファイルを含むフォルダーへのパス。パスにより、このフォルダーまたはサブ フォルダー内の任意のファイルへのアクセスが簡単になります。 ローカル コンピューターから Webservice の依存関係として、フォルダー全体をアップロードできます。 注: entry_script、conda_file、および extra_docker_file_steps パスは、source_directory パスへの相対パスです。 |
-| `environment` | `environment` | 省略可能。  Azure Machine Learning [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)。|
+| `environment` | `environment` | 省略可能。  Azure Machine Learning [環境](/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)。|
 
-Azure Machine Learning [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)の完全な仕様を、推論構成ファイルに含めることができます。 この環境がワークスペースに存在しない場合は、Azure Machine Learning によって作成されます。 それ以外の場合は、必要に応じて Azure Machine Learning によって環境が更新されます。 次の JSON は例です。
+Azure Machine Learning [環境](/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)の完全な仕様を、推論構成ファイルに含めることができます。 この環境がワークスペースに存在しない場合は、Azure Machine Learning によって作成されます。 それ以外の場合は、必要に応じて Azure Machine Learning によって環境が更新されます。 次の JSON は例です。
 
 ```json
 {
@@ -65,7 +65,7 @@ Azure Machine Learning [環境](https://docs.microsoft.com/python/api/azureml-co
 }
 ```
 
-また、分離された CLI パラメーターで既存の Azure Machine Learning [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)を使用し、推論構成ファイルから "環境" キーを削除することもできます。 環境名には -e を使用し、環境のバージョンには --ev を使用します。 --ev を指定しない場合は、最新バージョンが使用されます。 推論構成ファイルの例を次に示します。
+また、分離された CLI パラメーターで既存の Azure Machine Learning [環境](/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)を使用し、推論構成ファイルから "環境" キーを削除することもできます。 環境名には -e を使用し、環境のバージョンには --ev を使用します。 --ev を指定しない場合は、最新バージョンが使用されます。 推論構成ファイルの例を次に示します。
 
 ```json
 {
@@ -76,7 +76,7 @@ Azure Machine Learning [環境](https://docs.microsoft.com/python/api/azureml-co
 
 次のコマンドは、前述の推論構成ファイル (myInferenceConfig.json という名前) を使用してモデルをデプロイする方法を示しています。 
 
-また、既存の Azure Machine Learning [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) (AzureML-Minimal という名前) の最新バージョンも使用します。
+また、既存の Azure Machine Learning [環境](/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) (AzureML-Minimal という名前) の最新バージョンも使用します。
 
 ```azurecli-interactive
 az ml model deploy -m mymodel:1 --ic myInferenceConfig.json -e AzureML-Minimal --dc deploymentconfig.json

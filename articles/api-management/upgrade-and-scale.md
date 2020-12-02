@@ -11,18 +11,18 @@ ms.workload: integration
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 626f5b67905e5dd89cf8f12460bc2378451614de
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c7f0e98b5ea2fdd13b1daa9fd9737998eb6cfaf1
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078308"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "96010216"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management インスタンスのアップグレードとスケーリングを行う  
 
-ユーザーは、ユニットを追加したり削除したりすることにより、Azure API Management インスタンスをスケーリングできます。 **ユニット**は専用の Azure リソースで構成され、1 か月あたりの API 呼び出しの数として表される特定の耐荷容量があります。 この数値は呼び出しの制限を表しているのではなく、大まかな容量計画を行うための最大スループット値です。 実際のスループットと待ち時間は、コンカレント接続の数とレート、構成されたポリシーの種類と数、要求のサイズと応答のサイズ、バックエンドの待ち時間などの多くの要因によって、大幅に異なります。
+ユーザーは、ユニットを追加したり削除したりすることにより、Azure API Management インスタンスをスケーリングできます。 **ユニット** は専用の Azure リソースで構成され、1 か月あたりの API 呼び出しの数として表される特定の耐荷容量があります。 この数値は呼び出しの制限を表しているのではなく、大まかな容量計画を行うための最大スループット値です。 実際のスループットと待ち時間は、コンカレント接続の数とレート、構成されたポリシーの種類と数、要求のサイズと応答のサイズ、バックエンドの待ち時間などの多くの要因によって、大幅に異なります。
 
-各ユニットの容量と価格は、ユニットが存在する**レベル**によって決まります。 4 つのレベル、すなわち、**Developer**、**Basic**、**Standard**、**Premium** から選択できます。 レベル内でサービスの容量を増やす必要がある場合は、ユニットを追加する必要があります。 API Management インスタンスで現在選択されているサービス レベルでユニットのさらなる追加が許可されていない場合は、上位のサービス レベルにアップグレードする必要があります。
+各ユニットの容量と価格は、ユニットが存在する **レベル** によって決まります。 4 つのレベル、すなわち、**Developer**、**Basic**、**Standard**、**Premium** から選択できます。 レベル内でサービスの容量を増やす必要がある場合は、ユニットを追加する必要があります。 API Management インスタンスで現在選択されているサービス レベルでユニットのさらなる追加が許可されていない場合は、上位のサービス レベルにアップグレードする必要があります。
 
 各ユニットの価格と使用可能な機能 (複数リージョンへのデプロイなど) は、API Management インスタンス用に選択したサービス レベルによって異なります。 [価格の詳細](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)に関する記事で、ユニットあたりの価格と各レベルで利用できる機能が説明されています。 
 
@@ -57,7 +57,7 @@ ms.locfileid: "92078308"
 > アップグレードまたはスケーリング プロセスは、適用されるまでに 15 ～ 45 分かかる場合があります。 終了すると通知されます。
 
 > [!NOTE]
-> **従量課金**レベルの API Management サービスは、トラフィックに基づいて自動的にスケールされます。
+> **従量課金** レベルの API Management サービスは、トラフィックに基づいて自動的にスケールされます。
 
 ## <a name="scale-your-api-management-service"></a>API Management サービスをスケーリングする
 
@@ -66,7 +66,7 @@ ms.locfileid: "92078308"
 1. [Azure portal](https://portal.azure.com/) で API Management サービスに移動します。
 2. メニューから **[場所]** を選択します。
 3. スケーリングする場所が含まれている行をクリックします。
-4. スライダーを使用するか数値を入力して、**ユニット**の新しい数を指定します。
+4. スライダーを使用するか数値を入力して、**ユニット** の新しい数を指定します。
 5. **[Apply]** をクリックします。
 
 ## <a name="change-your-api-management-service-tier"></a>API Management サービス レベルを変更する
@@ -78,6 +78,10 @@ ms.locfileid: "92078308"
 
 ## <a name="downtime-during-scaling-up-and-down"></a>スケールアップおよびスケールダウンの際のダウンタイム
 Developer レベルへのスケールダウンまたは Developer レベルからのスケールアップを行うとき、ダウンタイムが発生します。 それ以外の場合、ダウンタイムはありません。 
+
+## <a name="compute-isolation"></a>コンピューティングの分離
+セキュリティ要件に [コンピューティングの分離](https://docs.microsoft.com/azure/azure-government/azure-secure-isolation-guidance#compute-isolation)が含まれている場合は、**Isolated** 価格レベルを使用できます。 このレベルによって、API Management サービス インスタンスのコンピューティング リソースが物理ホスト全体を消費し、サポートする必要のある分離レベル (たとえば、米国国防総省影響レベル 5 (IL5) のワークロード) が提供されます。 Isolated レベルにアクセスできるようにするには、[サポート チケットを作成](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)してください。 
+
 
 
 ## <a name="next-steps"></a>次のステップ

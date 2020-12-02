@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 92ac1887aca8f30c551419ef9149073d79f333a5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7d3bc13dc373cda510153099859cf4cd61b3dd69
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143831"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95534536"
 ---
 # <a name="access-control"></a>アクセス制御
 
@@ -32,7 +32,7 @@ ms.locfileid: "92143831"
 "ブック共同作成者" は、共有ブックを保存するために、オブジェクトに "workbooks/write" 特権を追加します。
 自分だけが閲覧できるプライベート ブックをユーザーが保存するために特別な特権は必要ありません。
 
-カスタムのロールベースのアクセス制御の場合:
+カスタム ロールの場合:
 
 共有ブックを保存するには、`microsoft.insights/workbooks/write` を追加します。 詳細については、[ブック共同作成者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)ロールに関するページを参照してください。
 

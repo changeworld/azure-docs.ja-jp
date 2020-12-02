@@ -1,20 +1,19 @@
 ---
-title: Azure Service Bus の SQLRuleAction 構文リファレンス
-description: この記事では、SQLRuleAction 構文のリファレンスを示します。 アクションは、ブローカー メッセージに対して実行される SQL 言語ベースの構文で記述されています。
+title: Azure Service Bus サブスクリプション ルールの SQL アクション構文 |Microsoft Docs
+description: この記事では、SQL ルールのアクション構文のリファレンスを示します。 アクションは、メッセージに対して実行される SQL 言語ベースの構文で記述されています。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 61fa6e046b4d4a0ba91bf8608c846755026d07ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: a156a9d8f18a7763f03c63b56681fa25ce6de289
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85341573"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95808839"
 ---
-# <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure Service Bus の SQLRuleAction 構文リファレンス
+# <a name="subscription-rule-sql-action-syntax"></a>サブスクリプション ルールの SQL アクション構文
 
-*SqlRuleAction* は [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) クラスのインスタンスであり、[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) に対して実行される、SQL 言語ベースの構文で記述された一連のアクションを表します。   
+"*SQL アクション*" は、メッセージがサブスクリプション ルールのフィルターによって選択された後にメッセージ メタデータを操作するために使用されます。 これは、SQL-92 標準のサブセットに基づくテキスト式です。 アクション式は、[Azure Resource Manager テンプレート](service-bus-resource-manager-namespace-topic-with-rule.md)内の Service Bus `Rule` の "action" プロパティの `sqlExpression` 要素、または Azure CLI `az servicebus topic subscription rule create` コマンドの [`--action-sql-expression`](https://docs.microsoft.com/cli/azure/servicebus/topic/subscription/rule?view=azure-cli-latest&preserve-view=true#az_servicebus_topic_subscription_rule_create) 引数、およびサブスクリプション ルールの管理を可能にするいくつかの SDK 関数で使用されます。
   
-この記事では、SQL ルール アクションの文法について詳しく説明します。  
   
 ```  
 <statements> ::=
@@ -56,7 +55,7 @@ ms.locfileid: "85341573"
   
 -   `<scope>` は、`<property_name>` のスコープを示す省略可能な文字列です。 有効な値は `sys` または `user`です。 `sys` 値は、`<property_name>` が [BrokeredMessage クラス](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)のパブリック プロパティ名である場合にシステム スコープを示します。 `user` は、`<property_name>` が [BrokeredMessage クラス](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)のディクショナリのキーである場合にユーザー スコープを示します。 `<scope>` が指定されていない場合、`user` スコープが既定のスコープです。  
   
-### <a name="remarks"></a>解説  
+### <a name="remarks"></a>注釈  
 
 存在しないシステム プロパティにアクセスしようとするとエラーになりますが、存在しないユーザー プロパティにアクセスしようとしてもエラーにはなりません。 代わりに、存在しないユーザー プロパティは不明な値として内部的に評価されます。 不明な値は演算子の評価時に特別に処理されます。  
   
@@ -108,7 +107,7 @@ ms.locfileid: "85341573"
       <expression>  
 ```  
   
-### <a name="remarks"></a>解説
+### <a name="remarks"></a>注釈
   
  `<pattern>` は、文字列として評価される式である必要があります。 これは LIKE 演算子のパターンとして使用されます。      次のワイルドカード文字を含めることができます。  
   
@@ -123,7 +122,7 @@ ms.locfileid: "85341573"
       <expression>  
 ```  
   
-### <a name="remarks"></a>解説
+### <a name="remarks"></a>注釈
   
  `<escape_char>` は、長さ 1 の文字列として評価される式である必要があります。 これは、LIKE 演算子のエスケープ文字として使用されます。  
   
@@ -172,7 +171,7 @@ ms.locfileid: "85341573"
       TRUE | FALSE  
 ```  
   
-### <a name="remarks"></a>解説
+### <a name="remarks"></a>注釈
   
 ブール型の定数は、`TRUE` または `FALSE` キーワードで表されます。 値は `System.Boolean` として格納されます。  
   
@@ -182,7 +181,7 @@ ms.locfileid: "85341573"
 <string_constant>  
 ```  
   
-### <a name="remarks"></a>解説
+### <a name="remarks"></a>注釈
   
 文字列定数は単一引用符で囲まれ、任意の有効な Unicode 文字が含まれます。 文字列定数に組み込む単一引用符は、2 つの単一引用符で表されます。  
   
@@ -194,7 +193,7 @@ ms.locfileid: "85341573"
       property(name) | p(name)  
 ```  
   
-### <a name="remarks"></a>解説  
+### <a name="remarks"></a>注釈  
 
 `newid()` 関数は、`System.Guid.NewGuid()` メソッドによって生成された **System.Guid** を返します。  
   
@@ -211,5 +210,9 @@ ms.locfileid: "85341573"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [SQLRuleAction クラス](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
-- [SQLFilter クラス](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
+- [SQLRuleAction クラス (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [SQLRuleAction クラス (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlruleaction)
+- [SqlRuleAction クラス (Java)](/java/api/com.microsoft.azure.servicebus.rules.sqlruleaction)
+- [SqlRuleAction (JavaScript)](/javascript/api/@azure/service-bus/sqlruleaction)
+- [az servicebus topic subscription rule](/cli/azure/servicebus/topic/subscription/rule)
+- [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

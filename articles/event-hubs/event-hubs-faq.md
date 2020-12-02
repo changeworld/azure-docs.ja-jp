@@ -3,12 +3,12 @@ title: よく寄せられる質問 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs に関するよく寄せられる質問 (FAQ) とその回答の一覧を示します。
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: 3b55521c9f90192891b450e3e161607a334c3a00
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: c756d0bccd9b2ad303bd97d3bfb7aed8b0b82b09
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909711"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96002794"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問
 
@@ -58,70 +58,7 @@ Event Hubs は、リソースの状態を示す網羅的なメトリックを [A
 ### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Azure Event Hubs では顧客データはどこに格納されますか。
 Azure Event Hubs では顧客データが格納されます。 このデータは、Event Hubs によって 1 つのリージョンに自動的に格納されるため、このサービスによって、[トラスト センター](https://azuredatacentermap.azurewebsites.net/)に指定されているものも含めて、リージョンのデータ保存場所の要件が自動的に満たされます。
 
-### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>ファイアウォールで開く必要があるのはどのポートですか。 
-Azure Service Bus でメッセージを送受信する場合、次のプロトコルを使用できます。
-
-- AMQP
-- HTTP
-- Apache Kafka
-
-これらのプロトコルを使用して Azure Event Hubs と通信するために開く必要がある送信ポートについては、次の表を参照してください。 
-
-| Protocol | Port | 詳細 | 
-| -------- | ----- | ------- | 
-| AMQP | 5671 と 5672 | [AMQP プロトコル ガイド](../service-bus-messaging/service-bus-amqp-protocol-guide.md)に関するページを参照してください | 
-| HTTP、HTTPS | 80、443 |  |
-| Kafka | 9093 | [Kafka アプリケーションからの Event Hubs の使用](event-hubs-for-kafka-ecosystem-overview.md)に関するページをご覧ください
-
-### <a name="what-ip-addresses-do-i-need-to-allow"></a>どのような IP アドレスを許可する必要がありますか。
-接続の許可リストに追加する適切な IP アドレスを見つけるには、次の手順に従います。
-
-1. コマンド プロンプトで、次のコマンドを実行します。 
-
-    ```
-    nslookup <YourNamespaceName>.servicebus.windows.net
-    ```
-2. `Non-authoritative answer` で返された IP アドレスをメモします。 
-
-名前空間に **ゾーン冗長性** を使用している場合は、次の追加手順を実行する必要があります。 
-
-1. まず、名前空間に対して nslookup を実行します。
-
-    ```
-    nslookup <yournamespace>.servicebus.windows.net
-    ```
-2. **non-authoritative answer** セクションの名前をメモします。これは、次のいずれかの形式になります。 
-
-    ```
-    <name>-s1.cloudapp.net
-    <name>-s2.cloudapp.net
-    <name>-s3.cloudapp.net
-    ```
-3. s1、s2、s3 のサフィックスが付いているそれぞれについて nslookup を実行し、3 つの可用性ゾーンで実行されている 3 つのインスタンスすべての IP アドレスを取得します。 
-
-    > [!NOTE]
-    > `nslookup` コマンドによって返された IP アドレスは、静的 IP アドレスではありません。 ただし、基になるデプロイが削除されるか別のクラスターに移動されるまでは変わりません。
-
-### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>名前空間へのメッセージの送信または受信を行うクライアント IP はどこで確認できますか。
-まず、名前空間で [IP フィルター](event-hubs-ip-filtering.md)を有効にします。 
-
-次に、「[診断ログを有効にする](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)」の手順に従って、[Event Hubs 仮想ネットワーク接続イベント](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema)の診断ログを有効にします。 接続が拒否された IP アドレスが表示されます。
-
-```json
-{
-    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
-    "NamespaceName": "namespace-name",
-    "IPAddress": "1.2.3.4",
-    "Action": "Deny Connection",
-    "Reason": "IPAddress doesn't belong to a subnet with Service Endpoint enabled.",
-    "Count": "65",
-    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
-    "Category": "EventHubVNetConnectionEvent"
-}
-```
-
-> [!IMPORTANT]
-> 仮想ネットワーク ログが生成されるのは、名前空間で **特定の IP アドレス** (IP フィルター規則) からのアクセスが許可されている場合のみです。 これらの機能を使用して名前空間へのアクセスを制限せずに、Azure Event Hubs 名前空間に接続しているクライアントの IP アドレスを追跡する仮想ネットワーク ログを取得する場合は、次の回避策を使用できます。IP フィルター処理を有効にし、アドレス指定可能な IPv4 の範囲の合計 (1.0.0.0/1 - 255.0.0.0/1) を追加します。 Azure Event Hubs は IPv6 アドレス範囲をサポートしていません。 
+[!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 
 ## <a name="apache-kafka-integration"></a>Apache Kafka の統合
 
@@ -178,7 +115,7 @@ Event Hubs でのスループットは、Event Hubs 経由で入出力される�
 少ないスループット ユニット (TU) (2 TU など) で始めることもできます。 トラフィックが 15 TU に増える可能性が予測される場合は、名前空間で自動インフレ機能を有効にし、上限を 15 TU に設定します。 これで、トラフィックの増加に従って TU を自動的に増やすことができます。
 
 ### <a name="is-there-a-cost-associated-when-i-turn-on-the-auto-inflate-feature"></a>自動インフレ機能を有効にした場合、関連するコストは発生しますか。
-この機能に関連して生じる **コストはありません** 。 
+この機能に関連して生じる **コストはありません**。 
 
 ### <a name="how-are-throughput-limits-enforced"></a>スループットの制限はどのように適用されるのですか。
 名前空間内のすべてのイベント ハブの合計 **イングレス** スループットまたは合計イングレス イベント レートがスループット ユニットの上限の総計を超過した場合は、送信側が調整され、受信クォータを超えたことを示すエラーを受信します。
@@ -189,12 +126,12 @@ Event Hubs でのスループットは、Event Hubs 経由で入出力される�
 
 ### <a name="is-there-a-limit-on-the-number-of-throughput-units-that-can-be-reservedselected"></a>予約または選択できるスループット ユニットの数に制限はありますか。
 
-Azure portal で Basic または Standard レベルの名前空間を作成する場合、名前空間に対して最大 20 個の TU を選択できます。 これを **正確に** 40 TU に上げるには、 [サポート リクエスト](../azure-portal/supportability/how-to-create-azure-support-request.md)を送信します。  
+Azure portal で Basic または Standard レベルの名前空間を作成する場合、名前空間に対して最大 20 個の TU を選択できます。 これを **正確に** 40 TU に上げるには、[サポート リクエスト](../azure-portal/supportability/how-to-create-azure-support-request.md)を送信します。  
 
 1. **[Event Bus Namespace]\(イベント バス名前空間\)** ページで、左側のメニューの **[新しいサポート リクエスト]** を選択します。 
 1. **[新しいサポート リクエスト]** ページで、次の手順を行います。
     1. **[概要]** には、いくつかの単語で問題を説明してください。 
-    1. **[問題の種類]** で、 **[クォータ]** を選択します。 
+    1. **[問題の種類]** で、**[クォータ]** を選択します。 
     1. **[問題のサブタイプ]** には、 **[スループット ユニットの増減を要求する]** を選択します。 
     
         :::image type="content" source="./media/event-hubs-faq/support-request-throughput-units.png" alt-text="サポート リクエスト ページ":::
@@ -230,7 +167,7 @@ Event Hubs は、コンシューマー グループ 1 つにつきパーティ�
 1. **[Event Bus Namespace]\(イベント バス名前空間\)** ページで、左側のメニューの **[新しいサポート リクエスト]** を選択します。 
 1. **[新しいサポート リクエスト]** ページで、次の手順を行います。
     1. **[概要]** には、いくつかの単語で問題を説明してください。 
-    1. **[問題の種類]** で、 **[クォータ]** を選択します。 
+    1. **[問題の種類]** で、**[クォータ]** を選択します。 
     1. **[問題のサブタイプ]** には、 **[Request for partition change]\(パーティションの変更を要求する\)** を選択します。 
     
         :::image type="content" source="./media/event-hubs-faq/support-request-increase-partitions.png" alt-text="パーティション数を増やす":::
@@ -305,7 +242,7 @@ SLA の詳細については、「 [サービス レベル アグリーメント
 
 コードから特定の Storage API バージョンを対象にする方法の例については、次の GitHub 上のサンプルを参照してください。 
 
-- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)
+- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/)
 - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)
 - Python - [同期](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py)、[非同期](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
 - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) および [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts)

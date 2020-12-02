@@ -2,14 +2,14 @@
 title: 論理的な組織化のためにリソース、リソース グループ、サブスクリプションにタグを付ける
 description: タグを適用して、課金や管理のために Azure リソースを整理する方法を示します。
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 11/20/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3ffcb4a0f2f5dc64b165fcdec03f7c3ced258cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e9ef96a712e5ac2ba483170fb8ef9c89115b4f8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90086761"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95972566"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>タグを使用して Azure リソースと整理階層を整理する
 
@@ -240,107 +240,200 @@ Remove-AzTag -ResourceId "/subscriptions/$subscription"
 
 ### <a name="apply-tags"></a>タグを適用する
 
-リソース グループまたはリソースにタグを追加する場合は、既存のタグを上書きするか、既存のタグに新しいタグを追加することができます。
+Azure CLI には、タグを適用するための 2 つのコマンドが用意されています。[az tag create](/cli/azure/tag#az_tag_create) と [az tag update](/cli/azure/tag#az_tag_update) です。 Azure CLI 2.10.0 以降である必要があります。 `az version` を使用して、お使いのバージョンを確認できます。 更新またはインストールする方法については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
-リソースのタグを上書きするには、次のコマンドを使用します。
+**az tag create** を実行すると、リソース、リソース グループ、またはサブスクリプションのすべてのタグが置き換えられます。 コマンドを呼び出すときに、タグを付けるエンティティのリソース ID を渡します。
 
-```azurecli-interactive
-az resource tag --tags 'Dept=IT' 'Environment=Test' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
-```
-
-リソースの既存のタグにタグを追加するには、次のコマンドを使用します。
+次の例では、一連のタグがストレージ アカウントに適用されます。
 
 ```azurecli-interactive
-az resource update --set tags.'Status'='Approved' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
+resource=$(az resource show -g demoGroup -n demoStorage --resource-type Microsoft.Storage/storageAccounts --query "id" --output tsv)
+az tag create --resource-id $resource --tags Dept=Finance Status=Normal
 ```
 
-リソース グループの既存のタグを上書きするには、次のコマンドを使用します。
+コマンドが完了すると、リソースに 2 つのタグが付いていることがわかります。
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Status": "Normal"
+  }
+},
+```
+
+異なるタグを指定してコマンドをもう一度実行すると、前のタグが削除されることに注意してください。
 
 ```azurecli-interactive
-az group update -n examplegroup --tags 'Environment=Test' 'Dept=IT'
+az tag create --resource-id $resource --tags Team=Compliance Environment=Production
 ```
 
-リソース グループの既存のタグにタグを追加するには、次のコマンドを使用します。
+```output
+"properties": {
+  "tags": {
+    "Environment": "Production",
+    "Team": "Compliance"
+  }
+},
+```
+
+既にタグがあるリソースにタグを追加するには、**az tag update** を使用します。 **--operation** パラメーターを **Merge** に設定します。
 
 ```azurecli-interactive
-az group update -n examplegroup --set tags.'Status'='Approved'
+az tag update --resource-id $resource --operation Merge --tags Dept=Finance Status=Normal
 ```
 
-現在、Azure CLI には、サブスクリプションにタグを適用するコマンドはありません。 ただし、CLI を使用して、サブスクリプションにタグを適用する ARM テンプレートをデプロイできます。 「[リソース グループまたはサブスクリプションにタグを適用する](#apply-tags-to-resource-groups-or-subscriptions)」を参照してください。
+2 つの新しいタグが既存の 2 つのタグに追加されていることに注意してください。
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Environment": "Production",
+    "Status": "Normal",
+    "Team": "Compliance"
+  }
+},
+```
+
+各タグ名に対して設定できる値は 1 つだけです。 タグに新しい値を指定すると、マージ操作を使用した場合でも、古い値が置き換えられます。 次の例では、Status タグを Normal から Green に変更します。
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Merge --tags Status=Green
+```
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Environment": "Production",
+    "Status": "Green",
+    "Team": "Compliance"
+  }
+},
+```
+
+**--operation** パラメーターを **Replace** に設定すると、既存のタグが新しいタグのセットに置き換えられます。
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Replace --tags Project=ECommerce CostCenter=00123 Team=Web
+```
+
+リソースには新しいタグだけが残ります。
+
+```output
+"properties": {
+  "tags": {
+    "CostCenter": "00123",
+    "Project": "ECommerce",
+    "Team": "Web"
+  }
+},
+```
+
+同じコマンドを、リソース グループまたはサブスクリプションに対しても使用できます。 タグを付けるリソース グループまたはサブスクリプションの識別子を渡します。
+
+リソース グループに新しいタグのセットを追加する場合の使用方法は、次のとおりです。
+
+```azurecli-interactive
+group=$(az group show -n demoGroup --query id --output tsv)
+az tag create --resource-id $group --tags Dept=Finance Status=Normal
+```
+
+リソース グループのタグを更新する場合の使用方法は、次のとおりです。
+
+```azurecli-interactive
+az tag update --resource-id $group --operation Merge --tags CostCenter=00123 Environment=Production
+```
+
+サブスクリプションに新しいタグのセットを追加する場合の使用方法は、次のとおりです。
+
+```azurecli-interactive
+sub=$(az account show --subscription "Demo Subscription" --query id --output tsv)
+az tag create --resource-id /subscriptions/$sub --tags CostCenter=00123 Environment=Dev
+```
+
+サブスクリプションのタグを更新する場合の使用方法は、次のとおりです。
+
+```azurecli-interactive
+az tag update --resource-id /subscriptions/$sub --operation Merge --tags Team="Web Apps"
+```
 
 ### <a name="list-tags"></a>タグの一覧を表示する
 
-リソースの既存のタグを表示するには、次のように使用します。
+リソース、リソース グループ、またはサブスクリプションのタグを取得するには、[az tag list](/cli/azure/tag#az_tag_list) コマンドを使用して、エンティティのリソース ID を渡します。
+
+リソースのタグを表示するには、次のように使用します。
 
 ```azurecli-interactive
-az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
+resource=$(az resource show -g demoGroup -n demoStorage --resource-type Microsoft.Storage/storageAccounts --query "id" --output tsv)
+az tag list --resource-id $resource
 ```
 
-リソース グループの既存のタグを表示するには、次のようにします。
+リソース グループのタグを表示するには、次のように使用します。
 
 ```azurecli-interactive
-az group show -n examplegroup --query tags
+group=$(az group show -n demoGroup --query id --output tsv)
+az tag list --resource-id $group
 ```
 
-このスクリプトは次の形式を返します。
+サブスクリプションのタグを表示するには、次のように使用します。
 
-```json
-{
-  "Dept"        : "IT",
-  "Environment" : "Test"
-}
+```azurecli-interactive
+sub=$(az account show --subscription "Demo Subscription" --query id --output tsv)
+az tag list --resource-id /subscriptions/$sub
 ```
 
 ### <a name="list-by-tag"></a>タグで一覧を取得する
 
-特定のタグと値を持つすべてのリソースを取得するには、`az resource list` を使用します。
+特定のタグ名と値を持つリソースを取得するには、次のように使用します。
 
 ```azurecli-interactive
-az resource list --tag Dept=Finance
+az resource list --tag CostCenter=00123 --query [].name
 ```
 
-特定のタグが付いたリソース グループを取得するには、`az group list` を使用します。
+特定のタグ名と任意のタグ値を持つリソースを取得するには、次のように使用します。
 
 ```azurecli-interactive
-az group list --tag Dept=IT
+az resource list --tag Team --query [].name
+```
+
+特定のタグ名と値を持つリソース グループを取得するには、次のように使用します。
+
+```azurecli-interactive
+az group list --tag Dept=Finance
+```
+
+### <a name="remove-tags"></a>タグを削除する
+
+特定のタグを削除するには、**az tag update** を使用し、 **--operation** を **Delete** に設定します。 削除するタグを渡します。
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Delete --tags Project=ECommerce Team=Web
+```
+
+指定したタグが削除されます。
+
+```output
+"properties": {
+  "tags": {
+    "CostCenter": "00123"
+  }
+},
+```
+
+すべてのタグを削除するには、[az tag delete](/cli/azure/tag#az_tag_delete) コマンドを使用します。
+
+```azurecli-interactive
+az tag delete --resource-id $resource
 ```
 
 ### <a name="handling-spaces"></a>スペースを処理する
 
-タグの名前または値にスペースが含まれている場合は、いくつかの追加手順を実行する必要があります。 
-
-Azure CLI の `--tags` パラメーターでは、文字列の配列で構成される文字列を指定することができます。 次の例では、タグにスペースとハイフンが含まれるリソース グループのタグを上書きします。 
+タグの名前または値にスペースが含まれている場合は、二重引用符で囲みます。
 
 ```azurecli-interactive
-TAGS=("Cost Center=Finance-1222" "Location=West US")
-az group update --name examplegroup --tags "${TAGS[@]}"
-```
-
-`--tags` パラメーターを使用して、リソース グループまたはリソースを作成または更新するときに、同じ構文を使用できます。
-
-`--set` パラメーターを使用してタグを更新するには、キーと値を文字列として渡す必要があります。 次の例では、1 つのタグをリソース グループに追加します。
-
-```azurecli-interactive
-TAG="Cost Center='Account-56'"
-az group update --name examplegroup --set tags."$TAG"
-```
-
-ここでは、値にはハイフンが含まれているので、タグ値は単一引用符でマークされます。
-
-また、多くのリソースにタグを適用することが必要になる場合もあります。 次の例では、タグにスペースが含まれている場合に、リソース グループのすべてのタグをそのリソースに適用します。
-
-```azurecli-interactive
-jsontags=$(az group show --name examplegroup --query tags -o json)
-tags=$(echo $jsontags | tr -d '{}"' | sed 's/: /=/g' | sed "s/\"/'/g" | sed 's/, /,/g' | sed 's/ *$//g' | sed 's/^ *//g')
-origIFS=$IFS
-IFS=','
-read -a tagarr <<< "$tags"
-resourceids=$(az resource list -g examplegroup --query [].id --output tsv)
-for id in $resourceids
-do
-  az resource tag --tags "${tagarr[@]}" --id $id
-done
-IFS=$origIFS
+az tag update --resource-id $group --operation Merge --tags "Cost Center"=Finance-1222 Location="West US"
 ```
 
 ## <a name="templates"></a>テンプレート

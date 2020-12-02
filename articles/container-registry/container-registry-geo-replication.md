@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: a26a3a0902b76359dc7441d97fa2516989ec7f0b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 636896edf8180052508f366bcc548efe13dec1e2
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486874"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95810047"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
@@ -18,9 +18,9 @@ ms.locfileid: "92486874"
 
 geo レプリケートされたレジストリには次の利点があります。
 
-* 複数のリージョンで 1 つのレジストリ/イメージ/タグ名を使用できる
-* リージョン デプロイからネットワーク上の近い場所のレジストリにアクセスできる
-* コンテナー ホストと同じリージョンにあるレプリケートされたローカルのレジストリからイメージがプルされるので、追加のエグレス料金が発生しない
+* 複数のリージョンで単一のレジストリ、イメージ、タグの名前を使用できる
+* ネットワーク上の近い場所のレジストリにアクセスできることで、リージョンのデプロイのパフォーマンスと信頼性が向上する
+* コンテナー ホストと同じまたは隣接するリージョンにあるレプリケートされたローカルのレジストリからイメージ レイヤーをプルすることで、データ転送コストを削減する
 * 複数のリージョンにまたがってレジストリを一元管理できる
 
 > [!NOTE]
@@ -57,7 +57,8 @@ Azure Container Registry の geo レプリケーション機能を使用する�
 
 * すべてのリージョンにまたがる 1 つのレジストリ (`contoso.azurecr.io`) を管理すれば済む。
 * すべてのリージョンで同じイメージ URL (`contoso.azurecr.io/public/products/web:1.2`) が使用されるので、イメージのデプロイの 1 つの構成を管理すれば済む。
-* 1 つのレジストリにプッシュすれば済む。geo レプリケーションは、ACR が管理する。 特定のレプリカ内のイベントを通知するように、リージョン [Webhook](container-registry-webhook.md) を構成できます。
+* 1 つのレジストリにプッシュすれば済む。geo レプリケーションは、ACR が管理する。 ACR は一意のレイヤーのみをレプリケートし、リージョン間のデータ転送を削減する。 
+* 特定のレプリカ内のイベントを通知するように、リージョン [Webhook](container-registry-webhook.md) を構成する。
 
 ## <a name="configure-geo-replication"></a>geo レプリケーションの構成
 
@@ -131,7 +132,7 @@ geo レプリカ レジストリにイメージをプッシュする Docker ク�
 
 Geo レプリケートされたレジストリでの操作をトラブルシューティングする場合、1 つまたは複数のレプリケーションへの Traffic Manager のルーティングを一時的に無効にすることができます。 Azure CLI バージョン 2.8 以降では、レプリケートされたリージョンを作成または更新する際に、`--region-endpoint-enabled` オプション (プレビュー) を構成できます。 レプリケーションの `--region-endpoint-enabled` オプションを `false` に設定すると、Traffic Manager はそのリージョンに docker push 要求または docker pull 要求をルーティングしなくなります。 既定では、すべてのレプリケーションへのルーティングが有効になっており、ルーティングの有効/無効にかかわらず、すべてのレプリケーション間でデータ同期が実行されます。
 
-既存のレプリケーションへのルーティングを無効にするには、最初に [az acr replication list][az-acr-replication-list] を実行して、レジストリ内のレプリケーションを一覧表示します。 次に、[az acr replication update][az-acr-replication-update] を実行し、特定のレプリケーションに `--region-endpoint-enabled false` を設定します。 たとえば、 *myregistry* の *westus* レプリケーションの設定を構成するには、以下のように指定します。
+既存のレプリケーションへのルーティングを無効にするには、最初に [az acr replication list][az-acr-replication-list] を実行して、レジストリ内のレプリケーションを一覧表示します。 次に、[az acr replication update][az-acr-replication-update] を実行し、特定のレプリケーションに `--region-endpoint-enabled false` を設定します。 たとえば、*myregistry* の *westus* レプリケーションの設定を構成するには、以下のように指定します。
 
 ```azurecli
 # Show names of existing replications

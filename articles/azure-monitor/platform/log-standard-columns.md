@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 695b0b0ac06e63912ca0a471be3d96c148458c29
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 2370f76bacb8645f1b343da4f056c8bcf06a26dd
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104242"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95796717"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Azure Monitor ログ内の標準列
 Azure Monitor ログ内のデータは、[Log Analytics ワークスペースまたは Application Insights アプリケーションのどちらかに一連のレコードとして格納され](./data-platform-logs.md)、各レコードが固有の列のセットを備えた特定のデータ型を持っています。 多くのデータ型には、複数の型にわたって共通の標準列があります。 この記事では、これらの列について説明し、それらの列をクエリで使用する方法の例を示します。
@@ -80,7 +80,7 @@ search *
 ## <a name="_resourceid"></a>\_ResourceId
 **\_ResourceId** 列には、そのレコードが関連付けられているリソースの一意識別子が保持されます。 これにより、クエリのスコープを特定のリソースからのレコードのみに設定したり、複数のテーブルにまたがる関連データを結合したりために使用する標準列が提供されます。
 
-Azure リソースの場合、 **_ResourceId** の値は [Azure リソース ID の URL](../../azure-resource-manager/templates/template-functions-resource.md) です。 この列は現在 Azure リソースに制限されていますが、オンプレミスのコンピューターなどの Azure 外のリソースに拡張される予定です。
+Azure リソースの場合、 **_ResourceId** の値は [Azure リソース ID の URL](../../azure-resource-manager/templates/template-functions-resource.md) です。 この列は、[Azure Arc](../../azure-arc/overview.md) リソースを含む Azure リソース、またはインジェスト時にリソース ID が示されたカスタム ログに限定されます。
 
 > [!NOTE]
 > 一部のデータ型には、Azure リソース ID か、または少なくともその一部 (サブスクリプション ID など) を含むフィールドが既に割り当てられています。 これらのフィールドは下位互換性のために保持されていますが、_ResourceId を使用して相互相関を実行する方が一貫性があるため、この方法をお勧めします。
@@ -111,17 +111,47 @@ AzureActivity
 ) on _ResourceId  
 ```
 
-次のクエリは、 **_ResourceId** を解析し、Azure サブスクリプションごとに課金対象のデータ ボリュームを集計します。
+次のクエリは、 **_ResourceId** を解析し、Azure リソース グループごとに課金対象のデータ ボリュームを集計します。
 
 ```Kusto
 union withsource = tt * 
 | where _IsBillable == true 
 | parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
     resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
-| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last 
+| summarize Bytes=sum(_BilledSize) by resourceGroup | sort by Bytes nulls last 
 ```
 
 複数の種類のデータにわたるスキャンは、実行コストが高いため、これらの `union withsource = tt *` クエリは多用しないようにします。
+
+\_ResourceId 列を解析して抽出するのではなく、\_SubscriptionId 列を使用する方が効率的です。
+
+## <a name="_substriptionid"></a>\_SubstriptionId
+**\_SubscriptionId** 列には、そのレコードが関連付けられているリソースのサブスクリプション ID が保持されます。 これにより、クエリのスコープを特定のサブスクリプションからのレコードのみに設定したり、異なるサブスクリプションを比較するために使用する標準列が提供されます。
+
+Azure リソースの場合、 **__SubscriptionId** の値は [Azure リソース ID の URL](../../azure-resource-manager/templates/template-functions-resource.md) のサブスクリプションの部分です。 この列は、[Azure Arc](../../azure-arc/overview.md) リソースを含む Azure リソース、またはインジェスト時にリソース ID が示されたカスタム ログに限定されます。
+
+> [!NOTE]
+> 一部のデータ型には、Azure サブスクリプション ID を含むフィールドが既に割り当てられています。 これらのフィールドは下位互換性のために保持されていますが、\_SubscriptionId 列を使用して相互相関を実行する方が一貫性があるため、この方法をお勧めします。
+### <a name="examples"></a>例
+次のクエリを使用すると、特定のサブスクリプションのコンピューターのパフォーマンス データを調べます。 
+
+```Kusto
+Perf 
+| where TimeGenerated > ago(24h) and CounterName == "memoryAllocatableBytes"
+| where _SubscriptionId == "57366bcb3-7fde-4caf-8629-41dc15e3b352"
+| summarize avgMemoryAllocatableBytes = avg(CounterValue) by Computer
+```
+
+次のクエリは、 **_ResourceId** を解析し、Azure サブスクリプションごとに課金対象のデータ ボリュームを集計します。
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by _SubscriptionId | sort by Bytes nulls last 
+```
+
+複数の種類のデータにわたるスキャンは、実行コストが高いため、これらの `union withsource = tt *` クエリは多用しないようにします。
+
 
 ## <a name="_isbillable"></a>\_IsBillable
 **\_IsBillable** 列では、取り込まれたデータが課金対象かどうかを指定します。 **\_IsBillable** が `false` のデータは無料で収集され、Azure アカウントには課金されません。
@@ -168,8 +198,7 @@ union withsource = tt *
 ```Kusto
 union withsource=table * 
 | where _IsBillable == true 
-| parse _ResourceId with "/subscriptions/" SubscriptionId "/" *
-| summarize Bytes=sum(_BilledSize) by  SubscriptionId | sort by Bytes nulls last 
+| summarize Bytes=sum(_BilledSize) by  _SubscriptionId | sort by Bytes nulls last 
 ```
 
 取り込まれた課金対象イベントのサイズをリソース グループごとに表示するには、次のクエリを使用します。
@@ -178,7 +207,7 @@ union withsource=table *
 union withsource=table * 
 | where _IsBillable == true 
 | parse _ResourceId with "/subscriptions/" SubscriptionId "/resourcegroups/" ResourceGroupName "/" *
-| summarize Bytes=sum(_BilledSize) by  SubscriptionId, ResourceGroupName | sort by Bytes nulls last 
+| summarize Bytes=sum(_BilledSize) by  _SubscriptionId, ResourceGroupName | sort by Bytes nulls last 
 
 ```
 
@@ -211,4 +240,4 @@ union withsource = tt *
 
 - [Azure Monitor ログ データの格納](../log-query/log-query-overview.md)方法の詳細を確認する。
 - [ログ クエリの作成](../log-query/get-started-queries.md)に関するレッスンを参照する。
-- [ログ クエリでのテーブルの結合](../log-query/joins.md)に関するレッスンを参照する。
+- [ログ クエリでのテーブルの結合](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins)に関するレッスンを参照する。

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a442b5de7a256dd8bcf47da741bd41894709c3a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74085257"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558855"
 ---
 Microsoft Azure クラウド サービスに関する問題を診断するためには、仮想マシン上で問題の発生に伴って生成されるクラウド サービスのログ ファイルを収集する必要があります。 AzureLogCollector 拡張機能をオンデマンドで使用し、クラウド サービスの VM (Web ロールと worker ロールの両方) からログを一度に収集して、Azure ストレージ アカウントにその収集したファイルを転送することができます。このとき、リモートから VM にログオンする必要は一切ありません。
 
@@ -44,11 +44,11 @@ Microsoft Azure クラウド サービスに関する問題を診断するため
 * Azure PowerShell。 インストール手順については、[Azure PowerShell のインストール](/powershell/azure/install-az-ps)に関するページをご覧ください。
 
 ## <a name="add-the-extension"></a>拡張機能の追加
-AzureLogCollector 拡張機能は、[Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) コマンドレットまたは [Service Management REST API](https://msdn.microsoft.com/library/ee460799.aspx) を使用して追加することができます。
+AzureLogCollector 拡張機能は、[Microsoft Azure PowerShell](/previous-versions/azure/dn495240(v=azure.100)) コマンドレットまたは [Service Management REST API](/previous-versions/azure/ee460799(v=azure.100)) を使用して追加することができます。
 
-Cloud Services に関しては、 **Set-AzureServiceExtension**という既存の Azure PowerShell コマンドレットを使用して、クラウド サービス ロール インスタンス上で拡張機能を有効にすることができます。 このコマンドレットを使ってこの拡張機能を有効にすると、そのたびに、選択したロールの選択したロール インスタンス上でログ収集が開始されます。
+Cloud Services に関しては、 **Set-AzureServiceExtension** という既存の Azure PowerShell コマンドレットを使用して、クラウド サービス ロール インスタンス上で拡張機能を有効にすることができます。 このコマンドレットを使ってこの拡張機能を有効にすると、そのたびに、選択したロールの選択したロール インスタンス上でログ収集が開始されます。
 
-Virtual Machines に関しては、 **Set-AzureVMExtension**という既存の Azure PowerShell コマンドレットを使用して、Virtual Machines 上で拡張機能を有効にすることができます。 このコマンドレットを使ってこの拡張機能を有効にすると、そのたびに、各インスタンス上でログ収集が開始されます。
+Virtual Machines に関しては、 **Set-AzureVMExtension** という既存の Azure PowerShell コマンドレットを使用して、Virtual Machines 上で拡張機能を有効にすることができます。 このコマンドレットを使ってこの拡張機能を有効にすると、そのたびに、各インスタンス上でログ収集が開始されます。
 
 この拡張機能の内部では、JSON ベースの PublicConfiguration と PrivateConfiguration が使用されています。 以下に示したのは、パブリック構成とプライベート構成に使用されるサンプル JSON のレイアウトです。
 
@@ -86,7 +86,7 @@ Virtual Machines に関しては、 **Set-AzureVMExtension**という既存の A
 ```
 
 > [!NOTE]
-> この拡張機能に **privateConfiguration**は必要ありません。 **–PrivateConfiguration** 引数には空の構造体を指定してください。
+> この拡張機能に **privateConfiguration** は必要ありません。 **–PrivateConfiguration** 引数には空の構造体を指定してください。
 > 
 > 
 
@@ -528,4 +528,3 @@ else
 
 ## <a name="next-steps"></a>次の手順
 これで、すっきりと 1 か所からログを調査またはコピーできます。
-

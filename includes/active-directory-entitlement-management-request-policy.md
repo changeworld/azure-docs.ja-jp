@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 239fcc1e57cb4bd56a8704f8a840689d44617fcf
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: b7029c5cdd004910caa83425536bbe481e4b01f3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93029478"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557449"
 ---
 ## <a name="for-users-in-your-directory"></a>ディレクトリ内のユーザーの場合
 
@@ -33,7 +33,7 @@ ms.locfileid: "93029478"
     | **All members (excluding guests) (すべてのメンバー (ゲストを除く))** | ディレクトリ内のすべてのメンバー ユーザーがこのアクセス パッケージを要求できるようにする場合は、このオプションを選択します。 このオプションには、ディレクトリに招待したゲスト ユーザーは含まれません。 |
     | **All users (including guests) (すべてのユーザー (ゲストを含む))** | ディレクトリ内のすべてのメンバー ユーザーとゲスト ユーザーがこのアクセス パッケージを要求できるようにする場合は、このオプションを選択します。 |
 
-    ゲスト ユーザーは、[Azure AD B2B](../articles/active-directory/b2b/what-is-b2b.md) でディレクトリに招待された外部ユーザーを指します。 メンバー ユーザーとゲスト ユーザーの違いについて詳しくは、「[Azure Active Directory の既定のユーザー アクセス許可とは](../articles/active-directory/fundamentals/users-default-permissions.md)」を参照してください。
+    ゲスト ユーザーは、[Azure AD B2B](../articles/active-directory/external-identities/what-is-b2b.md) でディレクトリに招待された外部ユーザーを指します。 メンバー ユーザーとゲスト ユーザーの違いについて詳しくは、「[Azure Active Directory の既定のユーザー アクセス許可とは](../articles/active-directory/fundamentals/users-default-permissions.md)」を参照してください。
 
 1. **[特定のユーザーとグループ]** を選択した場合は、 **[ユーザーとグループの追加]** をクリックします。
 
@@ -47,10 +47,10 @@ ms.locfileid: "93029478"
 
 ## <a name="for-users-not-in-your-directory"></a>ディレクトリ内にいないユーザーの場合
 
- **ディレクトリ内にいないユーザー** とは、別の Azure AD ディレクトリまたはドメイン内のユーザーのことを指します。 これらのユーザーは、ディレクトリにまだ招待されていない可能性があります。 Azure AD ディレクトリは、 **[コラボレーションの制限]** で招待を許可するように構成する必要があります。 詳細については、「[B2B 外部コラボレーションを有効にしてゲストを招待できるユーザーを管理する](../articles/active-directory/b2b/delegate-invitations.md)」を参照してください。
+ **ディレクトリ内にいないユーザー** とは、別の Azure AD ディレクトリまたはドメイン内のユーザーのことを指します。 これらのユーザーは、ディレクトリにまだ招待されていない可能性があります。 Azure AD ディレクトリは、 **[コラボレーションの制限]** で招待を許可するように構成する必要があります。 詳細については、「[B2B 外部コラボレーションを有効にしてゲストを招待できるユーザーを管理する](../articles/active-directory/external-identities/delegate-invitations.md)」を参照してください。
 
 > [!NOTE]
-> 要求が承認されるか自動承認される、ディレクトリ内にまだ存在しないユーザーについて、ゲスト ユーザー アカウントが作成されます。 ゲストは招待されますが、招待メールは届きません。 その代わりに、自分のアクセス パッケージの割り当てが配信されるときに電子メールを受け取ります。 既定では、最後の割り当てが期限切れになったかキャンセルされたことが原因でそのゲスト ユーザーにアクセス パッケージの割り当てがなくなった場合、そのゲスト ユーザー アカウントはサインインがブロックされ、その後で削除されます。 アクセス パッケージの割り当てがない場合でも、ゲスト ユーザーがディレクトリ内に無期限に残るようにしたい場合は、エンタイトルメント管理構成の設定を変更できます。 ゲスト ユーザー オブジェクトの詳細については、「[Azure Active Directory B2B コラボレーション ユーザーのプロパティ](../articles/active-directory/b2b/user-properties.md)」を参照してください。
+> 要求が承認されるか自動承認される、ディレクトリ内にまだ存在しないユーザーについて、ゲスト ユーザー アカウントが作成されます。 ゲストは招待されますが、招待メールは届きません。 その代わりに、自分のアクセス パッケージの割り当てが配信されるときに電子メールを受け取ります。 既定では、最後の割り当てが期限切れになったかキャンセルされたことが原因でそのゲスト ユーザーにアクセス パッケージの割り当てがなくなった場合、そのゲスト ユーザー アカウントはサインインがブロックされ、その後で削除されます。 アクセス パッケージの割り当てがない場合でも、ゲスト ユーザーがディレクトリ内に無期限に残るようにしたい場合は、エンタイトルメント管理構成の設定を変更できます。 ゲスト ユーザー オブジェクトの詳細については、「[Azure Active Directory B2B コラボレーション ユーザーのプロパティ](../articles/active-directory/external-identities/user-properties.md)」を参照してください。
 
 ディレクトリ内にいないユーザーがこのアクセス パッケージを要求できるようにする場合は、次の手順に従います。
 
@@ -81,7 +81,7 @@ ms.locfileid: "93029478"
 1. すべての接続済み組織を選択したら、 **[選択]** をクリックします。
 
     > [!NOTE]
-    > 選択した接続済み組織のすべてのユーザーは、このアクセス パッケージを要求できます。 これには、組織に関連付けられている Azure AD 内のすべてのサブドメインのユーザーが含まれます。ただし、それらのドメインが Azure B2B の許可リストまたは拒否リストによってブロックされている場合を除きます。 詳細については、「[B2B ユーザーに対する特定組織からの招待を許可またはブロックする](../articles/active-directory/b2b/allow-deny-list.md)」を参照してください。
+    > 選択した接続済み組織のすべてのユーザーは、このアクセス パッケージを要求できます。 これには、組織に関連付けられている Azure AD 内のすべてのサブドメインのユーザーが含まれます。ただし、それらのドメインが Azure B2B の許可リストまたは拒否リストによってブロックされている場合を除きます。 詳細については、「[B2B ユーザーに対する特定組織からの招待を許可またはブロックする](../articles/active-directory/external-identities/allow-deny-list.md)」を参照してください。
 
 1. [[承認]](#approval) セクションまでスキップします。
 
@@ -141,7 +141,7 @@ ms.locfileid: "93029478"
     
 1. 最初の承認者として **[マネージャー]** を選択した場合は、 **[フォールバックの追加]** をクリックして、フォールバック承認者として指定する、ディレクトリ内のユーザーまたはグループを 1 つ以上選択します。 エンタイトルメント管理でアクセスを要求しているユーザーのマネージャーが見つからなかった場合、フォールバック承認者が要求を受け取ります。
 
-    エンタイトルメント管理でのマネージャーの検索には、 **Manager** 属性が使用されます。 この属性は、Azure AD のユーザーのプロファイルにあります。 詳細については、「[Azure Active Directory を使用してユーザーのプロファイル情報を追加または更新する](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md)」を参照してください。
+    エンタイトルメント管理でのマネージャーの検索には、**Manager** 属性が使用されます。 この属性は、Azure AD のユーザーのプロファイルにあります。 詳細については、「[Azure Active Directory を使用してユーザーのプロファイル情報を追加または更新する](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md)」を参照してください。
 
 1. **[特定の承認者の選択]** を選択した場合は、 **[承認者の追加]** をクリックして、承認者として指定する、ディレクトリ内のユーザーまたはグループを 1 つ以上選択します。
 
@@ -218,12 +218,12 @@ ms.locfileid: "93029478"
 
 1. 独自のローカライズ オプションを追加する場合は、 **[add localization]\(ローカリゼーションの追加\)** をクリックします。
     1. **[Add localizations for question]\(質問のローカリゼーションの追加\)** ペインで、質問をローカライズする言語の **言語コード** を選択します。
-    1. 構成した言語で、 **Localized Text\(ローカライズされたテキスト)** ボックスに質問を入力します。
+    1. 構成した言語で、**Localized Text\(ローカライズされたテキスト)** ボックスに質問を入力します。
     1. 必要なすべてのローカライズを追加したら、 **[保存]** をクリックします。
 
     ![アクセス パッケージ - ポリシー - ローカライズされたテキストの構成](./media/active-directory-entitlement-management-request-policy/add-localization-question.png)
 
-1. 要求元が回答する **回答形式** を選択します。 回答形式には、" *短いテキスト* "、" *複数選択* "、および " *長いテキスト* " があります。
+1. 要求元が回答する **回答形式** を選択します。 回答形式には、"*短いテキスト*"、"*複数選択*"、および "*長いテキスト*" があります。
  
     ![アクセス パッケージ - ポリシー - 複数選択の回答形式の表示と編集の選択](./media/active-directory-entitlement-management-request-policy/answer-format-view-edit.png)
  

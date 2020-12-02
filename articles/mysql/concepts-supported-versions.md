@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: ed767055c1227d39fc29ac77a44c96b19030ad28
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8033117d9e3c31f8aa9bba06afb7c3b1b7bba67f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535862"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95751030"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>サポートされている Azure Database for MySQL サーバー バージョン
 
@@ -46,7 +46,7 @@ Azure Database for MySQL では現在、次のバージョンがサポートさ�
 ## <a name="managing-updates-and-upgrades"></a>更新プログラムとアップグレードの管理
 このサービスでは、バグ修正バージョンの更新プログラムの適用が自動管理されます。 たとえば、5.7.20 から 5.7.21 などです。  
 
-現在は、マイナー バージョンとメジャー バージョンのアップグレードはサポートされていません。 たとえば、MySQL 5.6 から MySQL 5.7 へのアップグレードはサポートされません。 5\.6 から 5.7 にアップグレードする場合は、新しいエンジンのバージョンで作成されたサーバーに[ダンプを復元](./concepts-migrate-dump-restore.md)します。
+現在、メジャー バージョンのアップグレードは、MySQL v5.6 から v5.7 へのアップグレードがサポートされています。 詳細については、[メジャー バージョンのアップグレードの実行方法](how-to-major-version-upgrade.md)に関する記事を参照してください。 5\.7 から 8.0 にアップグレードする場合は、[ダンプを実行し、新しいエンジンのバージョンで作成されたサーバーにそれを復元](./concepts-migrate-dump-restore.md)することをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 

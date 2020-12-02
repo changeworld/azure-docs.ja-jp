@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 26f0006ad2b26757e335ba1819c2b82ba519f8cc
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 95560801d4132735435e4d45e8a588476636ec38
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491445"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001237"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Queue storage トリガー
 
@@ -44,7 +44,7 @@ public static class QueueFunctions
 
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
-次の例は、 *function.json* ファイルのキュー トリガー バインディングと、バインディングを使用する [C# スクリプト (.csx)](functions-reference-csharp.md) コードを示しています。 この関数は、キュー項目が処理されるたびに `myqueue-items` キューをポーリングし、ログを書き込みます。
+次の例は、*function.json* ファイルのキュー トリガー バインディングと、バインディングを使用する [C# スクリプト (.csx)](functions-reference-csharp.md) コードを示しています。 この関数は、キュー項目が処理されるたびに `myqueue-items` キューをポーリングし、ログを書き込みます。
 
 *function.json* ファイルを次に示します。
 
@@ -97,9 +97,25 @@ public static void Run(CloudQueueMessage myQueueItem,
 
 function.json の `name` プロパティで名前が指定された `myQueueItem` については、「[使用方法](#usage)」セクションを参照してください。  ここに表示されているその他すべての変数については、「[メッセージのメタデータ](#message-metadata)」セクションを参照してください。
 
+# <a name="java"></a>[Java](#tab/java)
+
+次の Java の例は、キュー `myqueuename` に格納されるトリガーされたメッセージを記録するストレージ キュー トリガー関数を示しています。
+
+ ```java
+ @FunctionName("queueprocessor")
+ public void run(
+    @QueueTrigger(name = "msg",
+                   queueName = "myqueuename",
+                   connection = "myconnvarname") String message,
+     final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+ ```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-次の例は、 *function.json* ファイルのキュー トリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、キュー項目が処理されるたびに `myqueue-items` キューをポーリングし、ログを書き込みます。
+次の例は、*function.json* ファイルのキュー トリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、キュー項目が処理されるたびに `myqueue-items` キューをポーリングし、ログを書き込みます。
 
 *function.json* ファイルを次に示します。
 
@@ -141,6 +157,42 @@ module.exports = async function (context, message) {
 ```
 
 function.json の `name` プロパティで名前が指定された `myQueueItem` については、「[使用方法](#usage)」セクションを参照してください。  ここに表示されているその他すべての変数については、「[メッセージのメタデータ](#message-metadata)」セクションを参照してください。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+次の例では、トリガーを使用してキュー メッセージを読み取って関数に渡す方法を示します。
+
+ストレージ キュー トリガーは *function.json* ファイルで定義され、そこで `type` は `queueTrigger` に設定されます。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "QueueItem",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "messages",
+      "connection": "MyStorageConnectionAppSetting"
+    }
+  ]
+}
+```
+
+*Run.ps1* ファイルのコードによってパラメーターが `$QueueItem` として宣言され、関数でキュー メッセージを読み取ることができるようになります。
+
+```powershell
+# Input bindings are passed in via param block.
+param([string] $QueueItem, $TriggerMetadata)
+
+# Write out the queue message and metadata to the information log.
+Write-Host "PowerShell queue trigger function processed work item: $QueueItem"
+Write-Host "Queue item expiration time: $($TriggerMetadata.ExpirationTime)"
+Write-Host "Queue item insertion time: $($TriggerMetadata.InsertionTime)"
+Write-Host "Queue item next visible time: $($TriggerMetadata.NextVisibleTime)"
+Write-Host "ID: $($TriggerMetadata.Id)"
+Write-Host "Pop receipt: $($TriggerMetadata.PopReceipt)"
+Write-Host "Dequeue count: $($TriggerMetadata.DequeueCount)"
+```
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -189,22 +241,6 @@ def main(msg: func.QueueMessage):
 
     logging.info(result)
 ```
-
-# <a name="java"></a>[Java](#tab/java)
-
-次の Java の例は、キュー `myqueuename` に格納されるトリガーされたメッセージを記録するストレージ キュー トリガー関数を示しています。
-
- ```java
- @FunctionName("queueprocessor")
- public void run(
-    @QueueTrigger(name = "msg",
-                   queueName = "myqueuename",
-                   connection = "myconnvarname") String message,
-     final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
- ```
 
  ---
 
@@ -270,14 +306,6 @@ def main(msg: func.QueueMessage):
 
 属性は、C# スクリプトではサポートされていません。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-属性は、JavaScript ではサポートされていません。
-
-# <a name="python"></a>[Python](#tab/python)
-
-属性は、Python ではサポートされていません。
-
 # <a name="java"></a>[Java](#tab/java)
 
 `QueueTrigger` 注釈を使用すると、関数をトリガーするキューにアクセスできます。 次の例では、`message` パラメーターを使用して、キュー メッセージを関数で使用できるようにします。
@@ -305,11 +333,23 @@ public class QueueTriggerDemo {
 |`queueName`  | ストレージ アカウントのキュー名を宣言します。 |
 |`connection` | ストレージ アカウントの接続文字列を示します。 |
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+属性は、JavaScript ではサポートされていません。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+属性は、PowerShell ではサポートされていません。
+
+# <a name="python"></a>[Python](#tab/python)
+
+属性は、Python ではサポートされていません。
+
 ---
 
 ## <a name="configuration"></a>構成
 
-次の表は、 *function.json* ファイルと `QueueTrigger` 属性で設定したバインド構成のプロパティを説明しています。
+次の表は、*function.json* ファイルと `QueueTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
@@ -317,7 +357,7 @@ public class QueueTriggerDemo {
 |**direction**| 該当なし | *function.json* ファイルの場合のみ。 `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
 |**name** | 該当なし |関数コードでキュー項目ペイロードを含む変数の名前。  |
 |**queueName** | **QueueName**| ポーリングするキューの名前。 |
-|**connection** | **Connection** |このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "MyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。|
+|**connection** | **接続** |このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "MyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -327,7 +367,7 @@ public class QueueTriggerDemo {
 
 `string paramName` のようなメソッド パラメーターを使用してメッセージ データにアクセスします。 次の型のいずれにでもバインドできます。
 
-* オブジェクト - Functions ランタイムは、JSON ペイロードを、コードで定義されている任意のクラスのインスタンスに逆シリアル化します。 
+* オブジェクト - Functions ランタイムは、JSON ペイロードを、コードで定義されている任意のクラスのインスタンスに逆シリアル化します。
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
@@ -345,17 +385,21 @@ public class QueueTriggerDemo {
 
 `CloudQueueMessage` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 
+# <a name="java"></a>[Java](#tab/java)
+
+[QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable&preserve-view=true) 注釈を使用すると、関数をトリガーしたキュー メッセージにアクセスできます。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 キュー項目ペイロードは、`context.bindings.<NAME>` を介して使用できます。ここで、`<NAME>` は *function.json* で定義されている名前と一致します。 ペイロードが JSON の場合、値はオブジェクトに逆シリアル化されます。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+*function.json* ファイルのバインドの `name` パラメーターで指定された名前と一致する文字列パラメーターを使用して、キュー メッセージにアクセスします。
+
 # <a name="python"></a>[Python](#tab/python)
 
-[QueueMessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python) として型指定されたパラメーターを使用して、キュー メッセージにアクセスします。
-
-# <a name="java"></a>[Java](#tab/java)
-
-[QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable) 注釈を使用すると、関数をトリガーしたキュー メッセージにアクセスできます。
+[QueueMessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python&preserve-view=true) として型指定されたパラメーターを使用して、キュー メッセージにアクセスします。
 
 ---
 
@@ -363,9 +407,9 @@ public class QueueTriggerDemo {
 
 キュー トリガーは、いくつかの[メタデータ プロパティ](./functions-bindings-expressions-patterns.md#trigger-metadata)を提供します。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらのプロパティは、[CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) クラスのメンバーです。
 
-|プロパティ|種類|説明|
+|プロパティ|Type|説明|
 |--------|----|-----------|
-|`QueueTrigger`|`string`|キュー ペイロード (有効な文字列の場合)。 キュー メッセージ ペイロードが文字列の場合、`QueueTrigger` は、 *function.json* の `name` プロパティで指定された変数と同じ値になります。|
+|`QueueTrigger`|`string`|キュー ペイロード (有効な文字列の場合)。 キュー メッセージ ペイロードが文字列の場合、`QueueTrigger` は、*function.json* の `name` プロパティで指定された変数と同じ値になります。|
 |`DequeueCount`|`int`|このメッセージがデキューされた回数。|
 |`ExpirationTime`|`DateTimeOffset`|メッセージが期限切れになる時刻。|
 |`Id`|`string`|キュー メッセージ ID。|

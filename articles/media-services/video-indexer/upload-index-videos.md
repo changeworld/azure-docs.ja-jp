@@ -8,17 +8,19 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/10/2020
+ms.date: 11/12/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a5106e1089e2353d2db884977eb51a4fd2717b99
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: a0b7330485d3152a588d43added7d9feaa5c2a14
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506177"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "95994496"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
+
+ビデオがアップロードされると、Video Indexer は (必要に応じて) ビデオをエンコードします (後述)。 Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[ご使用の Azure サブスクリプションと Azure Media Services アカウントに接続される](connect-to-azure.md) Video Indexer アカウントを作成します。 インデックス作成にかかった時間 (分) に対して支払います。詳細については、「[Media Services の価格](https://azure.microsoft.com/pricing/details/media-services/)」を参照してください。
 
 Video Indexer API でビデオをアップロードする場合、次のアップロード オプションがあります。 
 
@@ -26,34 +28,10 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 * 要求本文のバイト配列としてビデオ ファイルを送信する方法です。
 * [アセット ID](../latest/assets-concept.md) (有料アカウントでのみサポート) を指定して、既存の Azure Media Services アセットを使用します。
 
-ビデオがアップロードされると、Video Indexer は (必要に応じて) ビデオをエンコードします (後述)。 Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[ご使用の Azure サブスクリプションと Azure Media Services アカウントに接続される](connect-to-azure.md) Video Indexer アカウントを作成します。 インデックス作成にかかった時間 (分) に対して支払います。詳細については、「[Media Services の価格](https://azure.microsoft.com/pricing/details/media-services/)」を参照してください。
-
 この記事では、次のオプションを使用してビデオをアップロードし、インデックスを作成する方法について説明します。
 
-* [Video Indexer Web サイト](#website) 
-* [Video Indexer API](#apis)
-
-## <a name="uploading-considerations-and-limitations"></a>アップロードに関する考慮事項と制限事項
- 
-- ビデオの名前は、80 文字以下にする必要があります。
-- URL に基づいてビデオをアップロードする場合 (推奨)、エンドポイントは TLS 1.2 (またはそれ以降) を使用してセキュリティで保護する必要があります。
-- URL オプションでのアップロード サイズは、30 GB に制限されます。
-- 要求 URL の長さは 6144 文字に制限されており、クエリ文字列の URL の長さは 4096 文字に制限されています。
-- バイト配列オプションでのアップロード サイズは、2 GB に制限されます。
-- バイト配列オプションでは 30 分後にタイムアウトします。
-- `videoURL` パラメーターに指定する URL はエンコードする必要があります
-- Media Services アセットのインデックス作成には、URL からのインデックス作成と同じ制限が適用されます。
-- Video Indexer では、1 つのファイルの最大時間制限は 4 時間です。
-- URL にアクセスできる必要があります (たとえば、パブリック URL)。 
-
-    プライベート URL の場合は、要求でアクセス トークンが提供される必要があります。
-- URL では、Web ページ (`www.youtube.com` へのリンクなど) ではなく、有効なメディア ファイルを指す必要があります。
-- 有料アカウントでは、1 分あたり最大 50 個のムービーをアップロードできます。試用版アカウントでは、1 分あたり最大 5 個のムービーです。
-
-> [!Tip]
-> .NET Framework バージョン 4.6.2 以上を使用することをお勧めします。 これは、それ以前の .NET Framework では既定で TLS 1.2 に設定されていないためです。
->
-> 以前の .NET Framework を使用する必要がある場合は、REST API の呼び出しを行う前に、コードに次の 1 行を追加します。  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+* [Video Indexer Web サイト](#upload-and-index-a-video-using-the-video-indexer-website) 
+* [Video Indexer API](#upload-and-index-with-api)
 
 ## <a name="supported-file-formats-for-video-indexer"></a>Video Indexer でサポートされているファイル形式
 
@@ -66,7 +44,7 @@ Video Indexer で使用できるファイル形式の一覧については、「
 - ビデオ ファイルやオーディオ ファイルだけでなく、Video Indexer によってそれらのファイルから抽出されたメタデータや分析情報も削除することができます。 Video Indexer からファイルを削除すると、そのファイルとそのメタデータおよび分析情報は Video Indexer から完全に削除されます。 ただし、Azure ストレージに独自のバックアップ ソリューションを実装している場合、ファイルは Azure ストレージに残ります。
 - アップロードが Video Indexer Web サイトで行われるか、Upload API を使用して行われるかに関係なく、ビデオの永続性は同じです。
    
-## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a name="website"></a>Video Indexer Web サイトを使用したビデオのアップロードとインデックス作成
+## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a>Video Indexer Web サイトを使用したビデオのアップロードとインデックス作成
 
 > [!NOTE]
 > ビデオの名前は、80 文字以下にする必要があります。
@@ -82,13 +60,13 @@ Video Indexer で使用できるファイル形式の一覧については、「
     > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="アップロードの進行状況":::
 1. Video Indexer で分析が完了すると、ビデオへのリンクとビデオの内容の簡単な説明が記載されたメールが届きます。 たとえば、人物、トピックス、OCR などが表示されます。
 
-## <a name="upload-and-index-with-api"></a><a name="apis"></a>API を使用したアップロードとインデックス作成
+## <a name="upload-and-index-with-api"></a>API を使用したアップロードとインデックス作成
 
 [Upload Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API を使用して、URL に基づいてビデオのアップロードとインデックス作成を行います。 後述のコード サンプルには、バイト配列をアップロードする方法を示すコメント アウトされたコードが含まれています。 
 
 ### <a name="configurations-and-params"></a>構成とパラメーター
 
-このセクションでは、いくつかの省略可能なパラメーターと、それらを設定する場合について説明します。
+このセクションでは、いくつかの省略可能なパラメーターと、それらを設定する場合について説明します。 最新のパラメーター情報については、[ビデオのアップロード](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)の API に関するページを参照してください。
 
 #### <a name="externalid"></a>externalID 
 
@@ -96,27 +74,7 @@ Video Indexer で使用できるファイル形式の一覧については、「
 
 #### <a name="callbackurl"></a>callbackUrl
 
-以下のイベントについてのユーザーへの通知 (POST 要求を使用) に使われる URL です。
-
-- インデックス状態の変更: 
-    - プロパティ:    
-    
-        |名前|説明|
-        |---|---|
-        |id|ビデオ ID|
-        |state|ビデオの状態|  
-    - 例: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
-- ビデオで特定された人物:
-  - Properties
-    
-      |名前|説明|
-      |---|---|
-      |id| ビデオ ID|
-      |faceId|ビデオ インデックスに表示される顔 ID|
-      |knownPersonId|顔モデル内で一意の人物 ID|
-      |personName|人物の名前|
-        
-    - 例: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+[!INCLUDE [callback url](./includes/callback-url.md)]
 
 ##### <a name="other-considerations"></a>その他の考慮事項
 
@@ -364,6 +322,28 @@ public class AccountContractSlim
 |409|VIDEO_INDEXING_IN_PROGRESS|指定されたアカウントで既に同じビデオの処理が進行中です。|
 |400|VIDEO_ALREADY_FAILED|指定されたアカウントで 2 時間以内に同じビデオの処理に失敗しました。 API クライアントは、ビデオを再アップロードする前に少なくとも 2 時間待つ必要があります。|
 |429||試用版アカウントでは、1 分あたり 5 回のアップロードが許可されます。 有料アカウントでは、1 分あたり 50 回のアップロードが許可されます。|
+
+## <a name="uploading-considerations-and-limitations"></a>アップロードに関する考慮事項と制限事項
+ 
+- ビデオの名前は、80 文字以下にする必要があります。
+- URL に基づいてビデオをアップロードする場合 (推奨)、エンドポイントは TLS 1.2 (またはそれ以降) を使用してセキュリティで保護する必要があります。
+- URL オプションでのアップロード サイズは、30 GB に制限されます。
+- 要求 URL の長さは 6144 文字に制限されており、クエリ文字列の URL の長さは 4096 文字に制限されています。
+- バイト配列オプションでのアップロード サイズは、2 GB に制限されます。
+- バイト配列オプションでは 30 分後にタイムアウトします。
+- `videoURL` パラメーターに指定する URL はエンコードする必要があります
+- Media Services アセットのインデックス作成には、URL からのインデックス作成と同じ制限が適用されます。
+- Video Indexer では、1 つのファイルの最大時間制限は 4 時間です。
+- URL にアクセスできる必要があります (たとえば、パブリック URL)。 
+
+    プライベート URL の場合は、要求でアクセス トークンが提供される必要があります。
+- URL では、Web ページ (`www.youtube.com` へのリンクなど) ではなく、有効なメディア ファイルを指す必要があります。
+- 有料アカウントでは、1 分あたり最大 50 個のムービーをアップロードできます。試用版アカウントでは、1 分あたり最大 5 個のムービーです。
+
+> [!Tip]
+> .NET Framework バージョン 4.6.2 以上を使用することをお勧めします。 これは、それ以前の .NET Framework では既定で TLS 1.2 に設定されていないためです。
+>
+> 以前の .NET Framework を使用する必要がある場合は、REST API の呼び出しを行う前に、コードに次の 1 行を追加します。  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
 ## <a name="next-steps"></a>次のステップ
 

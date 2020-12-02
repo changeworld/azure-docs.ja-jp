@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 1522bb133c7d8f877a334e47bf7929c533ea3465
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8b827a80059cecadd7b76263f13dd4a0d141fc7a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376180"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563070"
 ---
 #### <a name="to-create-a-cloud-appliance"></a>クラウド アプライアンスを作成するには
 
@@ -33,8 +33,7 @@ ms.locfileid: "93376180"
    7. クラウド アプライアンスに格納するデータが Microsoft のデータセンターでホストされることに同意する旨のチェック ボックスをオンにします。
        * 物理デバイスのみを使用する場合は、暗号化キーがご利用のデバイスに保管されるため、マイクロソフトが暗号化を解除することはできません。
 
-       * クラウド アプライアンスを使用する場合、暗号化キーと復号化キーの両方が Microsoft Azure に保管されます。 詳細については、[クラウド アプライアンスを使用する際のセキュリティに関する考慮事項](../articles/storsimple/storsimple-security.md)をご覧ください。
+       * クラウド アプライアンスを使用する場合、暗号化キーと復号化キーの両方が Microsoft Azure に保管されます。 詳細については、[クラウド アプライアンスを使用する際のセキュリティに関する考慮事項](../articles/storsimple/storsimple-8000-security.md)をご覧ください。
    8. **[作成]** をクリックすると、クラウド アプライアンスがプロビジョニングされます。 デバイスは、プロビジョニングされるまで約 30 分かかることがあります。 クラウド アプライアンスが正常に作成されると、通知が表示されます。 [デバイス] ブレードに移動すると、デバイスの一覧が更新され、クラウド アプライアンスが表示されます。 アプライアンスの状態が **[セットアップの準備が完了しました]** になっています。
       
       ![StorSimple Cloud Appliance の [セットアップの準備が完了しました]](./media/storsimple-8000-create-cloud-appliance-u2/sca-create3.png)
-

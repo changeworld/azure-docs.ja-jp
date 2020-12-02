@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e029de19e6bdb635dfc4797367de29dfb87e32ce
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: da6387c55200bad3458705cf570f60ca40db1be0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325392"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95900612"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Azure Synapse Analytics データ管理パートナー
 
@@ -34,6 +34,7 @@ ms.locfileid: "93325392"
 | ![Redpoint Global](./media/sql-data-warehouse-partner-data-management/redpoint-global-logo.png) |**RedPoint Data Management**<br>RedPoint Data Management を使用することで、マーケティング担当者はすべてのデータを適用してクロス チャネルでの顧客とのつながりを促進しながら、構造化および非構造化データの管理を行うことができます。 RedPoint を使用すれば、構造化データと非構造化データの価値を最大化することで、今日のオムニ チャネルの顧客を引き込むために必要な高度にパーソナライズされ、状況に応じたやり取りを実現できます。 ドラッグ アンド ドロップ インターフェイスにより、データ管理プロセスを容易に設計および実行できます。 |[製品ページ](https://www.redpointglobal.com/customer-data-management)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/redpoint-global.redpoint-rpdm)<br> |
 | ![Sentry One](./media/sql-data-warehouse-partner-data-management/sql-sentry-logo.png) |**SentryOne (DW Sentry)**<br>インテリジェントなデータ移動ダッシュボードやイベント カレンダーを使用して、ワークロードに影響を与えている原因を常時正確に把握できます。 データの読み込み、バックアップ、復元のために実行されているクエリやジョブを可視化できるように設計されているので、Azure リソースが最大限に活用されているかについての心配は不要です。 |[製品ページ](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br>[Azure Marketplace](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br> |
 | ![SqlDBM](./media/sql-data-warehouse-partner-data-management/sqldbm-logo.png) |**SqlDBM**<br>SqlDBM はクラウドベースのデータ モデリング ツールです。このツールを使用すると、任意のブラウザーでどこにいても簡単かつ便利な方法でデータベースを開発できます。 同時に、データベース キー、スキーマ、インデックス、列制約、リレーションシップなど、必要なデータベース ルールとオブジェクトを組み込むこともできます。 |[製品ページ](http://sqldbm.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/sqldbm1583438206845.sqldbm-data-modeling-tool?tab=Overview)<br>|
+| ![Tamr](./media/sql-data-warehouse-partner-data-management/tamr-logo.png) |**Tamr**<br>Tamr を使用すると、組織は、Azure Synapse にマスター データを提供することで、Azure Synapse の分析機能を最大限に活用できるようになります。 Tamr のクラウドネイティブなデータ マスタリング ソリューションは、データの結合、クレンジング、分類という負荷の高い作業に機械学習を使用し、これに直感的な人間によるフィードバック ワークフローを加えて、データとビジネス成果のギャップを解消します。 Tamr は、Azure の各種データ サービス (Azure Synapse Analytics、Azure Databricks、Azure HDInsight、Azure Data Catalog、Azure Data Lake Storage、Azure Data Factory など) と統合されています。 Azure の柔軟性と拡張性を活用することで、総保有コストを削減しながら大規模なデータ マスタリングを実現できます。 |[製品ページ](https://www.tamr.com/tamr-partners/microsoft-azure/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/tamrinc.unify_v_2019?tab=Overview) |
 | ![Teleran](./media/sql-data-warehouse-partner-data-management/teleran-logo.jpg) |**Teleran**<br>Teleran の Query Control を使用すると、不適切で不完全な形式のクエリが Synapse に到達することによりコンピューティング リソースが浪費されるのを防ぐことができます。 インテリジェントなメッセージを分析ユーザーに送信して、データをより効率的に操作できるようにします。 目標は、Azure のコストを不必要に増加させずに、優れたビジネスの結果を得ることです。 Teleran の Usage Analysis では、ユーザー、アプリケーション、クエリ、およびデータ利用状況のアクティビティの分析が提供されます。 これにより、起こっていることの全体像を常に把握できます。 これにより、サービスを向上させ、ビジネスの生産性を高め、Synapse の消費コストを最適化することができます。 |[製品ページ](https://teleran.com/azure-synapse-optimization-cost-control/)<br>|
 
 ## <a name="next-steps"></a>次のステップ
