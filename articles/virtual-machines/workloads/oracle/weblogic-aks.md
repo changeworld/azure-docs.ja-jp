@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 10/28/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: a57d5a00fad9a17e01b96ebdf395fb7a4b857935
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cf44ad8d81656248329d993d86e9922dc4985258
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968691"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486676"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-the-azure-kubernetes-service"></a>Azure Kubernetes Service で Oracle WebLogic Server を実行するためのソリューションとは
 
 このページでは、Azure Kubernetes Service (AKS) で Oracle WebLogic Server (WLS) を実行するためのソリューションについて説明します。 これらのソリューションは、Oracle と Microsoft が共同で開発およびサポートしています。
 
-WebLogic Server を Azure Virtual Machines で実行することもできます。 これを行うためのソリューションについては、[こちらの Microsoft の記事](/azure/virtual-machines/workloads/oracle/oracle-weblogic)を参照してください。
+WebLogic Server を Azure Virtual Machines で実行することもできます。 これを行うためのソリューションについては、[こちらの Microsoft の記事](./oracle-weblogic.md)を参照してください。
 
 WebLogic Server は、世界中の最もミッション クリティカルなエンタープライズ Java アプリケーションを複数実行している最先端の Java アプリケーション サーバーです。 WebLogic Server は、Oracle ソフトウェア スイートのミドルウェア基盤を形成しています。 Oracle と Microsoft は、最先端のクラウド プラットフォームとして Azure 上でワークロードを実行するための選択肢と柔軟性を WebLogic Server の顧客に与えることに取り組んでいます。
 

@@ -10,12 +10,12 @@ ms.workload: azure-vs
 ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7cf2474c9ca005d85cea28f2b8fa1e23836b191f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008890"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487560"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Visual Studio から Azure 仮想マシンへ ASP.NET Web アプリケーションを発行する
 
@@ -26,7 +26,7 @@ Azure VM へ ASP.NET プロジェクトを発行するには、Visual Studio を
 
 - マシンは、ASP.NET Web アプリケーションを実行するよう構成し、WebDeploy をインストールする必要があります。 詳細については、[WebDeploy を使用した ASP.NET VM の作成](https://github.com/aspnet/Tooling/blob/AspNetVMs/docs/create-asp-net-vm-with-webdeploy.md)に関するページを参照してください。
 
-- VM に DNS 名が構成されている必要があります。 詳細については、「[Azure Portal で Windows VM の完全修飾ドメイン名を作成する](portal-create-fqdn.md)」を参照してください。
+- VM に DNS 名が構成されている必要があります。 詳細については、「[Azure Portal で Windows VM の完全修飾ドメイン名を作成する](../create-fqdn.md)」を参照してください。
 
 ## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>Visual Studio を使用して Azure VM に ASP.NET Web アプリを発行します。
 次のセクションでは、Azure の仮想マシンに既存の ASP.NET Web アプリケーションを発行する方法について説明します。

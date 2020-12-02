@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bd69f239a1c65040c44da776186ab8d955f5e333
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3a232f8e8c35e265a8243ac79e465c03f6b9650e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693186"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487866"
 ---
 # <a name="security-control-network-security"></a>セキュリティ コントロールネットワークのセキュリティ
 
@@ -76,7 +76,7 @@ Azure Security Center の Just In Time ネットワーク アクセスを使用�
 
 Azure Security Center のアダプティブ ネットワークのセキュリティ強化を使用して、実際のトラフィックと脅威インテリジェンスに基づいてポートとソース IP を制限する NSG 構成を推奨します。
 
-- [DDoS 保護を構成する方法](../../virtual-network/manage-ddos-protection.md)
+- [DDoS 保護を構成する方法](../../ddos-protection/manage-ddos-protection.md)
 
 - [Azure Firewall をデプロイする方法l](../../firewall/tutorial-firewall-deploy-portal.md)
 

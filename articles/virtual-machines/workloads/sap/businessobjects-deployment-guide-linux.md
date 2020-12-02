@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 17b978d3f4faebd3870868bceeea4572288ecb07
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 647009854ef5a0c0811fc303914f724272f1a3f5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965359"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486659"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure の Linux 向け SAP BusinessObjects BI プラットフォーム デプロイ ガイド
 
@@ -615,7 +615,7 @@ CMS データベースのその他の DBMS デプロイについては、[SAP �
 
 ファイル リポジトリ サーバー (FRS) とは、レポート、ユニバース、接続などの内容が格納されているディスク ディレクトリを指します。 それは、そのシステムのすべてのアプリケーション サーバー間で共有されます。 そのため、高可用性を確保する必要があります。
 
-Azure を使用すると、高可用性と高い耐久性を実現するように設計された [Azure Premium Files](../../../storage/files/storage-files-introduction.md) または [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) のいずれかをファイル共有のために選択できます。 詳細については、Azure Files の「[冗長性](https://docs.microsoft.com/azure/storage/files/storage-files-planning#redundancy)」セクションを参照してください。
+Azure を使用すると、高可用性と高い耐久性を実現するように設計された [Azure Premium Files](../../../storage/files/storage-files-introduction.md) または [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) のいずれかをファイル共有のために選択できます。 詳細については、Azure Files の「[冗長性](../../../storage/files/storage-files-planning.md#redundancy)」セクションを参照してください。
 
 > [!NOTE]
 > Azure Files の SMB プロトコルは一般公開されていますが、Azure Files の NFS プロトコル サポートは現在プレビューの段階です。 詳細については、「[Azure Files での NFS 4.1 サポートのプレビューが開始されました](https://azure.microsoft.com/en-us/blog/nfs-41-support-for-azure-files-is-now-in-preview/)」を参照してください。
@@ -667,7 +667,7 @@ Azure Site Recovery サービスを使用して、Web および BI アプリケ�
 
   Azure NetApp Files リージョン間レプリケーションを使用できます。これは現在[プレビュー](https://azure.microsoft.com/en-us/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/)段階であり、NetApp SnapMirror® テクノロジが活用されています。 そのため、変更されたブロックだけが、圧縮された効率的な形式でネットワーク経由で送信されます。 この独自のテクノロジによってリージョン間でのレプリケーションに必要なデータ量が最小化されることで、データ転送コストが削減されます。 また、レプリケーションにかかる時間が短縮されるため、より小さい回復ポイントの目標 (RPO) を実現できます。 詳細については、「[リージョン間レプリケーションを使用するための要件と考慮事項](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md)」を参照してください。
 
-- **Azure Premium Files** を使用する場合、ローカル冗長 (LRS) およびゾーン冗長ストレージ (ZRS) のみがサポートされます。 Azure Premium Files の DR 戦略を使用する場合、[AzCopy](../../../storage/common/storage-use-azcopy-v10.md) または [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/) を使用して、異なるリージョンの別のストレージ アカウントにファイルをコピーすることができます。 詳細については、「[ディザスター リカバリーとストレージ アカウントのフェールオーバー](../../../storage/common/storage-disaster-recovery-guidance.md)」を参照してください。
+- **Azure Premium Files** を使用する場合、ローカル冗長 (LRS) およびゾーン冗長ストレージ (ZRS) のみがサポートされます。 Azure Premium Files の DR 戦略を使用する場合、[AzCopy](../../../storage/common/storage-use-azcopy-v10.md) または [Azure PowerShell](/powershell/module/az.storage/) を使用して、異なるリージョンの別のストレージ アカウントにファイルをコピーすることができます。 詳細については、「[ディザスター リカバリーとストレージ アカウントのフェールオーバー](../../../storage/common/storage-disaster-recovery-guidance.md)」を参照してください。
 
 #### <a name="cms-database"></a>CMS データベース
 
@@ -695,4 +695,4 @@ Azure Database for MySQL には、障害が発生した場合にデータベー�
 - [多層 SAP アプリ デプロイのディザスター リカバリーを設定する](../../../site-recovery/site-recovery-sap.md)
 - [SAP のための Azure Virtual Machines の計画と実装](planning-guide.md)
 - [SAP のための Azure Virtual Machines のデプロイ](deployment-guide.md)
-- [SAP のための Azure Virtual Machines DBMS のデプロイ](dbms-guide.md)
+- [SAP のための Azure Virtual Machines DBMS のデプロイ](./dbms_guide_general.md)

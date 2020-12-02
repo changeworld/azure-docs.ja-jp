@@ -4,19 +4,19 @@ description: Azure の Analysis Services サーバーに接続してデータを
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 12/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 039783fc10fb08523dc81e13b5f6f456fa8d0c97
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 8fa657f3b343cdf49723dc68601bb1c9513ff504
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014768"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487339"
 ---
 # <a name="create-an-office-data-connection-file"></a>Office データ接続ファイルを作成する
 
-この記事では、Excel 2016 バージョン番号 16.0.7369.2117 以前または Excel 2013 から Azure Analysis Services サーバーに接続するための Office データ接続ファイルを作成する方法について説明します。 更新された [MSOLAP.7 プロバイダー](/analysis-services/client-libraries?view=azure-analysis-services-current)も必要です。
+この記事では、Excel 2016 バージョン番号 16.0.7369.2117 以前または Excel 2013 から Azure Analysis Services サーバーに接続するための Office データ接続ファイルを作成する方法について説明します。 更新された [MSOLAP.7 プロバイダー](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true)も必要です。
 
 
 1. 以下に示すサンプル接続ファイルをコピーしてテキスト エディターに貼り付けます。 

@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: ad3980db6348867e92664e314326d23b4274abcc
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 743412b7602e5781911cdf190e41a5ee15bfddd4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701570"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487679"
 ---
 # <a name="design-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で設計する
 この記事では、クラウド向けのアプリケーションを設計するときに考慮すべきセキュリティ アクティビティと制御について説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) の要件と設計のフェーズ中に考慮すべきセキュリティの質問と概念に加えて、トレーニング用のリソースについて説明します。 目標は、より安全なアプリケーションの設計に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -157,7 +157,7 @@ Azure は、Web サイトと Web アプリケーションのホストに使用�
 | 改ざん              | 整合性             | SSL/TLS 証明書を検証する。 SSL/TLS を使用するアプリケーションは、接続先エンティティの X.509 証明書を完全に検証する必要があります。 [x509 証明書を管理](../../key-vault/general/about-keys-secrets-certificates.md)するには、Azure Key Vault 証明書を使用します。 |
 | 否認            | 否認防止       | Azure の[監視と診断](/azure/architecture/best-practices/monitoring)を有効にする。|
 | 情報漏えい | 機密情報       | [保存中](../fundamentals/encryption-atrest.md)と[転送中](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)の機密データを暗号化する。 |
-| サービス拒否      | 可用性          | 潜在的なサービス拒否状態のパフォーマンス メトリックを監視する。 接続のフィルターを実装する。 [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md#next-steps) をアプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する防御が提供されます。|
+| サービス拒否      | 可用性          | 潜在的なサービス拒否状態のパフォーマンス メトリックを監視する。 接続のフィルターを実装する。 [Azure DDoS Protection](../../ddos-protection/ddos-protection-overview.md#next-steps) をアプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する防御が提供されます。|
 | 特権の昇格 | 承認         | Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) を使用します。|
 
 ### <a name="reduce-your-attack-surface"></a>攻撃の対象となる領域を減らす

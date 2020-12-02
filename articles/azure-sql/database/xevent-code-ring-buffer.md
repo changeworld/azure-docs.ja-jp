@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: d73efd7a64d0118cea11ca9b0a35f659ce7fee6a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a646588616b874e40b1ed2a5a0b5e691b075075d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791292"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487305"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL Database での拡張イベント向けリング バッファー ターゲット コード
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,10 +28,10 @@ ms.locfileid: "92791292"
 このトピックでは、以下を実行する TRANSACT-SQL コードのサンプルについて説明します。
 
 1. 表示させるデータでテーブルを作成する。
-2. 既存の拡張イベントのセッション (つまり **sqlserver.sql_statement_starting** ) を作成する。
+2. 既存の拡張イベントのセッション (つまり **sqlserver.sql_statement_starting**) を作成する。
 
    * イベントは、次の特定の Update 文字列を含む SQL ステートメントに限定される: **statement LIKE ’%UPDATE tabEmployee%’** 。
-   * イベントの出力をリング バッファー タイプのターゲット (つまり **package0.ring_buffer** ) に送信するよう選択できる。
+   * イベントの出力をリング バッファー タイプのターゲット (つまり **package0.ring_buffer**) に送信するよう選択できる。
 3. イベント セッションを開始する。
 4. 単純な SQL UPDATE ステートメントをいくつか発行する。
 5. リング バッファーからイベント出力を取得する SQL SELECT を発行する。

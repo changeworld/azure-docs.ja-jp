@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/06/2020
 ms.author: amsriva
-ms.openlocfilehash: b9154b124f89a8b672c58d5e7bce28c0833e8a8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9d7fb8be1894ffa5f8c35e16e1ed3aa0949b3ff
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84988041"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488206"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>VPN Gateway クラシックから Resource Manager への移行
 VPN Gateway は クラシック モデル から Resource Manager デプロイ モデルに移行できるようになりました。 詳細については、Azure Resource Manager の[機能と利点](../azure-resource-manager/management/overview.md)をご覧ください。 この記事では、従来のデプロイメントから新しい Resource Manager ベースモデルへの移行方法について説明します。 
 
-VPN Gateway は、クラシックから Resource Manager への VNet の移行の一部として移行されます。 この移行では、一度に 1つの VNet が移行されます。 移行に必要な追加のツールや前提条件はありません。 移行手順は既存の VNet の移行と同じで、詳細は[IaaS リソースの移行](../virtual-machines/windows/migration-classic-resource-manager-ps.md)に関するページに記載されています。 移行中にデータ パスのダウンタイムはないため、既存のワークロードは引き続き動作し、移行中にオンプレミスの接続が失われることはありません。 VPN Gateway に関連付けられているパブリック IP アドレスは、移行プロセス中も変更されません。 そのため、移行後にオンプレミスのルーターを再構成する必要はありません。  
+VPN Gateway は、クラシックから Resource Manager への VNet の移行の一部として移行されます。 この移行では、一度に 1つの VNet が移行されます。 移行に必要な追加のツールや前提条件はありません。 移行手順は既存の VNet の移行と同じで、詳細は[IaaS リソースの移行](../virtual-machines/migration-classic-resource-manager-ps.md)に関するページに記載されています。 移行中にデータ パスのダウンタイムはないため、既存のワークロードは引き続き動作し、移行中にオンプレミスの接続が失われることはありません。 VPN Gateway に関連付けられているパブリック IP アドレスは、移行プロセス中も変更されません。 そのため、移行後にオンプレミスのルーターを再構成する必要はありません。  
 
 Resource Manager モデルは従来のモデルと異なり、仮想ネットワーク ゲートウェイ、ローカル ネットワーク ゲートウェイ、接続リソースで構成されます。 これらは、それぞれ VPN Gateway、 オンプレミスのアドレス空間であるローカルサイト、 2 つの間の接続を表します。 移行が完了すると、ゲートウェイはクラシック モデルでは利用できなくなり、仮想ネットワーク ゲートウェイ、ローカル ネットワーク ゲートウェイ、接続オブジェクトのすべての管理操作は、Resource Manager モデルを使って行う必要があります。
 
@@ -66,5 +66,4 @@ VNet の移行中、現在の VNet の VPN Gateway に接続しているエン�
 * 影響を受けるVNet からオンプレミスの場所を表すローカル ネットワーク ゲートウェイへの明示的な接続を確立します。 これには、オンプレミスのルーターの構成を変更して、IPsec トンネルを作成、構成する必要もあります。
 
 ## <a name="next-steps"></a>次のステップ
-VPN Gateway の移行サポートについて学習した後は、[プラットフォームでサポートされる、クラシックから Azure Resource Manager への IaaS リソースの移行](../virtual-machines/windows/migration-classic-resource-manager-ps.md)に関する記事をご覧ください。
-
+VPN Gateway の移行サポートについて学習した後は、[プラットフォームでサポートされる、クラシックから Azure Resource Manager への IaaS リソースの移行](../virtual-machines/migration-classic-resource-manager-ps.md)に関する記事をご覧ください。

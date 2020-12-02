@@ -4,15 +4,15 @@ description: この記事では、Azure Analysis Services で、ID 管理とユ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b40be802f30bac8438f10c4ab60e1c196c9f7164
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 551bae56565140da3754e74a23b1cc18087f1171
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833794"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487441"
 ---
 # <a name="authentication-and-user-permissions"></a>認証とユーザーのアクセス許可
 
@@ -24,7 +24,7 @@ Azure Analysis Services では、[Azure AD B2B コラボレーション](../acti
 
 ## <a name="authentication"></a>認証
 
-すべてのクライアント アプリケーションとツールは、Analysis Services [クライアント ライブラリ](/analysis-services/client-libraries?view=azure-analysis-services-current) (AMO、MSOLAP、ADOMD) の 1 つ以上を使ってサーバーに接続します。 
+すべてのクライアント アプリケーションとツールは、Analysis Services [クライアント ライブラリ](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true) (AMO、MSOLAP、ADOMD) の 1 つ以上を使ってサーバーに接続します。 
 
 3 つのクライアント ライブラリはすべて、Azure AD の対話型フローと非対話型認証方法の両方をサポートします。 2 つの非対話型方法である Active Directory パスワード認証方法と Active Directory 統合認証方法は、AMOMD と MSOLAP を利用しているアプリケーションで使用できます。 これら 2 つの方式では、ポップアップ ダイアログ ボックスは表示されません。
 

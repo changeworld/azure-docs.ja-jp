@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ce9ab371c0ed1e81cf1dfb53fca7e359e1aeb35
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9a907f2a6fc54c96dbef9f2091a91cac50bbd4ca
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967501"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486523"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure における SAP HANA インフラストラクチャの構成と運用
 このドキュメントは、Azure インフラストラクチャの構成と Azure のネイティブ仮想マシン (VM) にデプロイされている SAP HANA システムの運用に関するガイダンスを提供します。 また、ドキュメントには、M128 の VM SKU 向けの SAP HANA スケールアウトの構成情報が含まれます。 このドキュメントは、以下の内容を含む標準の SAP ドキュメントを代替するものではありません。
@@ -245,8 +245,8 @@ DT 2.0 のベスト プラクティス ガイダンスに従い、ディスク I
 DT 2.0 VM に複数の Azure ディスクをアタッチし、OS レベルでソフトウェア RAID (ストライピング) を作成して、VM あたりのディスク スループットの上限に達するようにする必要があります。 この点に関しては、単一の Azure ディスクで VM の上限に達するスループットを提供することはできません。 DT 2.0 を実行するには、Azure Premium Storage が必須です。 
 
 - 利用可能な Azure ディスクの種類の詳細については、[こちら](../../disks-types.md)を参照してください。
-- mdadm でのソフトウェア RAID の作成の詳細については、[こちら](../../linux/configure-raid.md)を参照してください。
-- 最大スループットのストライプ ボリュームを作成するための LVM の構成の詳細については、[こちら](../../linux/configure-lvm.md)を参照してください。
+- mdadm でのソフトウェア RAID の作成の詳細については、[こちら](/previous-versions/azure/virtual-machines/linux/configure-raid)を参照してください。
+- 最大スループットのストライプ ボリュームを作成するための LVM の構成の詳細については、[こちら](/previous-versions/azure/virtual-machines/linux/configure-lvm)を参照してください。
 
 サイズの要件に応じて、VM の最大スループットに達するようにするためのさまざまなオプションがあります。 ここでは、VM スループットの上限に達するように DT 2.0 VM の種類ごとに可能なデータ ボリューム ディスク構成を示します。 E32sv3 VM は、より小規模なワークロードのエントリ レベルと見なす必要があります。 十分な速度でないことがわかった場合、VM のサイズを M64-32ms に変更する必要がある可能性があります。
 M64-32ms VM のメモリは多いため、IO 読み込みでは、特に読み取り集中型のワークロードの上限に達しない場合があります。 そのため、顧客固有のワークロードによっては、ストライプ セット内の少ないディスクで十分な場合があります。 しかし、安全策として、最大スループットを保証するために次のディスク構成が選択されています。
@@ -324,4 +324,3 @@ SUSE Linux Enterprise Server または Red Hat を実行している場合は、
 - [Red Hat Enterprise Linux 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](./sap-hana-scale-out-standby-netapp-files-rhel.md)
 - [SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性](./sap-hana-high-availability.md)
 - [Red Hat Enterprise Linux 上の Azure VM での SAP HANA の高可用性](./sap-hana-high-availability-rhel.md)
-

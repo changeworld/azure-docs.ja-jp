@@ -3,20 +3,20 @@ title: Azure Data Factory のシステム変数
 description: この記事では、Azure Data Factory でサポートされているシステム変数について説明します。 Data Factory エンティティを定義するときに、式でこれらの変数を使用できます。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: 2690ded0ac45719cb1082c85ab535c91ad491172
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1780b4a64de349c1e272158fe6bfde9cab6f8369
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417965"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486047"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされているシステム変数
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -42,7 +42,7 @@ ms.locfileid: "81417965"
 | 変数名 | 説明 |
 | --- | --- |
 | @trigger().scheduledTime |トリガーがパイプライン実行を呼び出すようにスケジュールされた時間。 たとえば、5 分ごとに起動されるトリガーの場合、この変数はそれぞれ `2017-06-01T22:20:00Z`、`2017-06-01T22:25:00Z`、`2017-06-01T22:30:00Z` を返します。|
-| @trigger().startTime |トリガーが**実際に**パイプライン実行を呼び出すために起動した時間。 たとえば、5 分ごとに起動されるトリガーの場合、この変数はそれぞれ、`2017-06-01T22:20:00.4061448Z`、`2017-06-01T22:25:00.7958577Z`、`2017-06-01T22:30:00.9935483Z` のような値を返します。 (注: タイムスタンプは、既定で ISO 8601 形式です)|
+| @trigger().startTime |トリガーが **実際に** パイプライン実行を呼び出すために起動した時間。 たとえば、5 分ごとに起動されるトリガーの場合、この変数はそれぞれ、`2017-06-01T22:20:00.4061448Z`、`2017-06-01T22:25:00.7958577Z`、`2017-06-01T22:30:00.9935483Z` のような値を返します。 (注: タイムスタンプは、既定で ISO 8601 形式です)|
 
 ## <a name="tumbling-window-trigger-scope"></a>タンブリング ウィンドウ トリガーのスコープ
 トリガーのタイプが "TumblingWindowTrigger" の場合、これらのシステム変数は、トリガー JSON 内の任意の場所で参照できます。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6fedefccf57364e690415542114030ba7ce12b49
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3f02c90dd6c751909434f3f2af9b8eb81ee1c4b9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974093"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488376"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Windows 仮想マシン用の Azure Disk Encryption に関する FAQ
 
@@ -55,15 +55,15 @@ Azure Disk Encryption を使用して VM ディスクを暗号化するための
 
 ## <a name="what-is-storage-server-side-encryption"></a>Storage のサーバー側の暗号化とはなんですか。
 
-Storage のサーバー側の暗号化では、Azure Storage で Azure Managed Disks が暗号化されます。 マネージド ディスクは既定で、プラットフォーム マネージド キーを使用したサーバー側の暗号化 (2017 年6 月 10 日以降) で暗号化されます。 カスタマー マネージド キーを指定することによって、独自のキーを使用してマネージド ディスクの暗号化を管理できます。 詳細については、「[Azure Managed Disks のサーバー側暗号化](disk-encryption.md)」を参照してください。
+Storage のサーバー側の暗号化では、Azure Storage で Azure Managed Disks が暗号化されます。 マネージド ディスクは既定で、プラットフォーム マネージド キーを使用したサーバー側の暗号化 (2017 年6 月 10 日以降) で暗号化されます。 カスタマー マネージド キーを指定することによって、独自のキーを使用してマネージド ディスクの暗号化を管理できます。 詳細については、「[Azure Managed Disks のサーバー側暗号化](../disk-encryption.md)」を参照してください。
  
 ## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Azure Disk Encryption とカスタマー マネージド キーを使用したStorage のサーバー側の暗号化の違いはなんですか。また、これらのソリューションはどのようなときに使用すべきでしょうか。
 
 Azure Disk Encryption は、カスタマー マネージド キーを使用して、OS ディスク、データ ディスク、および一時的なディスクをエンド ツー エンドで暗号化します。
 
 - 上記とエンド ツー エンドの暗号化をすべて暗号化する必要がある場合は、Azure Disk Encryption を使用します。 
-- カスタマー マネージド キーを使用して保存データのみを暗号化することが要件に含まれている場合は、[カスタマー マネージド キーを使用したサーバー側の暗号化](disk-encryption.md)を使用します。 Azure Disk Encryption と、カスタマー マネージド キーを使用したStorage サーバー側暗号化の両方でディスクを暗号化することはできません。
-- [Windows でサポートされていないシナリオ](disk-encryption-windows.md#unsupported-scenarios)に示されているシナリオを使用している場合は、[カスタマー マネージド キーによるサーバー側暗号化](disk-encryption.md)を検討してください。 
+- カスタマー マネージド キーを使用して保存データのみを暗号化することが要件に含まれている場合は、[カスタマー マネージド キーを使用したサーバー側の暗号化](../disk-encryption.md)を使用します。 Azure Disk Encryption と、カスタマー マネージド キーを使用したStorage サーバー側暗号化の両方でディスクを暗号化することはできません。
+- [Windows でサポートされていないシナリオ](disk-encryption-windows.md#unsupported-scenarios)に示されているシナリオを使用している場合は、[カスタマー マネージド キーによるサーバー側暗号化](../disk-encryption.md)を検討してください。 
 - 組織のポリシーにより、保存されているコンテンツを Azure マネージド キーを使用して暗号化できる場合、操作は必要ありません。コンテンツは既定で暗号化されます。 マネージド ディスクの場合、ストレージ内のコンテンツは、プラットフォーム マネージド キーを使用したサーバー側の暗号化で、既定で暗号化されます。 キーは Azure Storage サービスによって管理されます。 
 
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>シークレットまたは暗号化キーを切り替えるにはどうすればいいですか。
@@ -105,7 +105,7 @@ Azure Disk Encryption の前提条件があります。 Azure Active Directory �
 
 ## <a name="what-version-of-azure-powershell-does-azure-disk-encryption-support"></a>Azure Disk Encryption は、どのバージョンの Azure PowerShell をサポートしていますか。
 
-Azure Disk Encryption を構成するには、最新バージョンの Azure PowerShell SDK を使用してください。 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases) の最新バージョンをダウンロードしてください。 Azure Disk Encryption は、Azure SDK Version 1.1.0 では*サポートされていません*。
+Azure Disk Encryption を構成するには、最新バージョンの Azure PowerShell SDK を使用してください。 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases) の最新バージョンをダウンロードしてください。 Azure Disk Encryption は、Azure SDK Version 1.1.0 では *サポートされていません*。
 
 ## <a name="what-is-the-disk-bek-volume-or-mntazure_bek_disk"></a>ディスク "Bek ボリューム" または "/mnt/azure_bek_disk" とは何ですか。
 

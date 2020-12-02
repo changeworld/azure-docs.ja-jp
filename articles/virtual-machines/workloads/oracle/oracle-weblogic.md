@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 09/23/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: 51f0e68b3e07a157a5222a4374f9e1b74ef7e403
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 277e9049d2069190a68dd98c22acd60212c1b99d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968708"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486693"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Azure Virtual Machines で Oracle WebLogic Server を実行するためのソリューションとは
 
 このページでは、Azure Virtual Machines で Oracle WebLogic Server (WLS) を実行するためのソリューションについて説明します。 これらのソリューションは、Oracle と Microsoft が共同で開発およびサポートしています。
 
-また、Azure Kubernetes Service で WLS を実行することもできます。 これを行うための解決策については、[この Microsoft の記事](/azure/virtual-machines/workloads/oracle/weblogic-aks)を参照してください。
+また、Azure Kubernetes Service で WLS を実行することもできます。 これを行うための解決策については、[この Microsoft の記事](./weblogic-aks.md)を参照してください。
 
 WLS は、世界中の最もミッション クリティカルなエンタープライズ Java アプリケーションを複数実行している最先端の Java アプリケーション サーバーです。 WLS は、Oracle ソフトウェア スイートのミドルウェア基盤を形成しています。 Oracle と Microsoft は、最先端のクラウド プラットフォームとして Azure 上でワークロードを実行するための選択肢と柔軟性を WLS の顧客に与えることに取り組んでいます。
 

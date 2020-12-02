@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/30/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 8b7490723d3930a151abf1d3f72bb957e02e5988
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d88792f50e0e79dd0313694cf979761054551eac
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975503"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487526"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Azure VM を Azure Managed Disks に移行する
 
@@ -27,7 +27,7 @@ Azure Managed Disks を使用すると、ストレージ アカウントを個�
 |---------|---------|
 |スタンドアロン VM と可用性セット内の VM をマネージド ディスクに変換する     |[VM を非管理対象ディスクからマネージド ディスクに変換する](convert-unmanaged-to-managed-disks.md)         |
 |1 つの VM をクラシックからマネージド ディスク上の Resource Manager に変換する     |[クラシック VHD から VM を作成する](create-vm-specialized-portal.md)         |
-|VNet 内のすべての VM をクラシックからマネージド ディスク上の Resource Manager に変換する     |[IaaS リソースをクラシックから Resource Manager に移行する](migration-classic-resource-manager-ps.md)方法に関する記事の参照後、[VM を非管理対象ディスクからマネージド ディスクに変換する](convert-unmanaged-to-managed-disks.md)方法に関する記事         |
+|VNet 内のすべての VM をクラシックからマネージド ディスク上の Resource Manager に変換する     |[IaaS リソースをクラシックから Resource Manager に移行する](../migration-classic-resource-manager-ps.md)方法に関する記事の参照後、[VM を非管理対象ディスクからマネージド ディスクに変換する](convert-unmanaged-to-managed-disks.md)方法に関する記事         |
 |標準のアンマネージド ディスクを持つ VM をプレミアム マネージド ディスクを持つ VM にアップグレードする     | まず、[Windows 仮想マシンをアンマネージド ディスクからマネージド ディスクに変換します](convert-unmanaged-to-managed-disks.md)。 次に、[マネージド ディスクのストレージの種類を更新します](convert-disk-storage.md)。         |
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]

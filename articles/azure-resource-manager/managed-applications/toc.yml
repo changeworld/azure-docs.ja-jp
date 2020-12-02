@@ -31,6 +31,10 @@
       href: concepts-built-in-policy.md
     - name: ロール定義のアーティファクト
       href: concepts-custom-role-definition.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
 - name: 操作方法ガイド
   items:
     - name: ディストリビューターのプロパティ
@@ -40,7 +44,7 @@
         - name: ポータルのインターフェイスをテストする
           href: test-createuidefinition.md
         - name: Azure アプリケーション オファーを作成する
-          href: ../../marketplace/partner-center-portal/create-new-azure-apps-offer.md?toc=/azure/azure-resource-manager/managed-applications/toc.json
+          href: ../../marketplace/create-new-azure-apps-offer.md?toc=/azure/azure-resource-manager/managed-applications/toc.json
         - name: Just-In-Time アクセスを要求する
           href: request-just-in-time-access.md
         - name: 既存の仮想ネットワークを使用する
