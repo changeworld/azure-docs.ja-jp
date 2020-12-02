@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1012ae32f679d23f16a7483415657596d027cc01
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: ab3b655d59e2cb8c6773fa1a34a08638e6926475
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658827"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180661"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する
 
@@ -320,7 +320,7 @@ AD FS での MFA 規則の設定:
 
 Azure AD でユーザーまたはグループに対して MFA 規則を指定します。
 
-1. [新しい条件付きアクセス ポリシー](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json)を作成します。
+1. [新しい条件付きアクセス ポリシー](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)を作成します。
 
 2. **[割り当て]** を選択します。 MFA を適用するユーザーまたはグループを追加します。
 
@@ -333,7 +333,7 @@ Azure AD でユーザーまたはグループに対して MFA 規則を指定し
 
 Azure AD で未登録のデバイスに対する MFA 規則を指定します。
 
-1. [新しい条件付きアクセス ポリシー](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json)を作成します。
+1. [新しい条件付きアクセス ポリシー](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)を作成します。
 
 2. **[割り当て]** を **[すべてのユーザー]** に設定します。
 
@@ -348,7 +348,7 @@ Azure AD で未登録のデバイスに対する MFA 規則を指定します。
 
 Azure AD でユーザーの場所に基づいて MFA 規則を指定します。
 
-1. [新しい条件付きアクセス ポリシー](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json)を作成します。
+1. [新しい条件付きアクセス ポリシー](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)を作成します。
 
 1. **[割り当て]** を **[すべてのユーザー]** に設定します。
 
@@ -386,7 +386,7 @@ AD FS 2016 では、複数の組み込みアクセス制御ポリシーから選
 ![Azure AD の組み込みのアクセス制御](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-1.png)
 
 
-Azure AD で組み込みのポリシーを実装するには、[新しい条件付きアクセス ポリシー](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json)を使用してアクセス制御を構成するか、AD FS 2016 のカスタム ポリシー デザイナーを使用してアクセス制御ポリシーを構成します。 ルール エディターには、あらゆる種類の配列を作成するのに役立つ、許可オプションと除外オプションの完全な一覧があります。
+Azure AD で組み込みのポリシーを実装するには、[新しい条件付きアクセス ポリシー](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)を使用してアクセス制御を構成するか、AD FS 2016 のカスタム ポリシー デザイナーを使用してアクセス制御ポリシーを構成します。 ルール エディターには、あらゆる種類の配列を作成するのに役立つ、許可オプションと除外オプションの完全な一覧があります。
 
 ![Azure AD のアクセス制御ポリシー](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-2.png)
 

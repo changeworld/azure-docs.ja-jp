@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: bwren
 ms.custom: include file
-ms.openlocfilehash: 83e046ca97ceee249e707e30f478fad89345f4de
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: ff5d04a2923f16c763e1529ecb365f60d6275ca2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504015"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028226"
 ---
 ### <a name="general-query-limits"></a>一般的なクエリの制限
 
 | 制限 | 説明 |
 |:---|:---|
-| クエリ言語 | Azure Monitor では、Azure Data Explorer と同じ [Kusto クエリ言語](/azure/kusto/query/)が使用されます。 Azure Monitor でサポートされていない KQL 言語要素については、「[Azure Monitor ログ クエリ言語の違い](../articles/azure-monitor/log-query/data-explorer-difference.md)」を参照してください。 |
+| クエリ言語 | Azure Monitor では、Azure Data Explorer と同じ [Kusto クエリ言語](/azure/kusto/query/)が使用されます。 Azure Monitor でサポートされていない KQL 言語要素については、「[Azure Monitor ログ クエリ言語の違い](/azure/data-explorer/kusto/query/)」を参照してください。 |
 | Azure Azure リージョン | データが複数の Azure リージョンの Log Analytics ワークスペースにまたがっている場合、ログ クエリで過剰なオーバーヘッドが発生する可能性があります。 詳細については、「[クエリの制限](../articles/azure-monitor/log-query/scope.md#query-scope-limits)」をご覧ください。 |
 | リソース間のクエリ | 1 回のクエリ内の Application Insights リソースと Log Analytics ワークスペースの数は 100 個に制限されています。<br>リソース間のクエリは、ビュー デザイナーでサポートされていません。<br>ログ アラートでのリソース間のクエリは、新しい scheduledQueryRules API でサポートされています。<br>詳細については、[リソース間のクエリの制限](../articles/azure-monitor/log-query/cross-workspace-query.md#cross-resource-query-limits)に関する記事を参照してください。 |
 

@@ -4,12 +4,12 @@ description: Azure でリソースの Web アプリ、クラウド サービス�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 543ecc80abeb9a437a895224de6ade679698c4d7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5af60befeda9f0ed4ed76f7ab8449e94950352fb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020910"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186577"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure での自動スケールの使用
 この記事では、Microsoft Azure Portal でリソースの自動スケール設定をセットアップする方法について説明します。
@@ -151,12 +151,12 @@ ARM テンプレートでこの機能を有効にするには、`Microsoft.Web/s
 1. [移動先の Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all)で Azure の自動スケーリングが使用可能であることを確認します。
 
 ### <a name="move"></a>詳細ビュー
-新しい環境で自動スケーリング設定を作成するには、[REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings/createorupdate) を使います。 移動先のリージョンで作成される自動スケーリング設定は、移動元リージョンの自動スケーリング設定のコピーになります。
+新しい環境で自動スケーリング設定を作成するには、[REST API](/rest/api/monitor/autoscalesettings/createorupdate) を使います。 移動先のリージョンで作成される自動スケーリング設定は、移動元リージョンの自動スケーリング設定のコピーになります。
 
-移動元リージョンの自動スケーリング設定と関連付けて作成された[診断設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)は移動できません。 自動スケーリング設定の作成が完了した後で、移行先リージョンで診断設定を再作成する必要があります。 
+移動元リージョンの自動スケーリング設定と関連付けて作成された[診断設定](./diagnostic-settings.md)は移動できません。 自動スケーリング設定の作成が完了した後で、移行先リージョンで診断設定を再作成する必要があります。 
 
 ### <a name="learn-more-about-moving-resources-across-azure-regions"></a>Azure リージョン間でのリソースの移動に関する詳細情報
-リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、「[リソースを新しいリソース グループまたはサブスクリプションに移動する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)」を参照してください。
+リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、「[リソースを新しいリソース グループまたはサブスクリプションに移動する](../../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 - [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: 908602dff3be2f392bc595f0074db7f95b8936a9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c316aaf02979008b9d2ebc691d54c0fb95a5a52d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660986"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994861"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング:Azure ポイント対サイト接続の問題
 
@@ -317,7 +317,7 @@ VPN クライアントは Azure 仮想ネットワークに接続しています
 
 ### <a name="solution"></a>解決策
 
-RADIUS サーバーが正しく構成されていることを確認します。 詳細については、「[RADIUS 認証と Azure Multi-Factor Authentication Server の統合](../active-directory/authentication/howto-mfaserver-dir-radius.md)」を参照してください。
+RADIUS サーバーが正しく構成されていることを確認します。 詳細については、「[RADIUS 認証と Azure AD Multi-Factor Authentication Server の統合](../active-directory/authentication/howto-mfaserver-dir-radius.md)」を参照してください。
 
 ## <a name="error-405-when-you-download-root-certificate-from-vpn-gateway"></a>VPN Gateway からルート証明書をダウンロードするときに "エラー 405" が発生します
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: ed9942fa7b73418e3ef1ddf0651781d32b662995
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 04f1eb0d9db00a2be1a4619cafe38aa18145fc78
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92049549"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185999"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>ロジック アプリを使用して Log Analytics ワークスペースから Azure ストレージにデータをアーカイブする
 この記事では、[Azure Logic Apps](../../logic-apps/index.yml) を使用して Azure Monitor の Log Analytics ワークスペースにあるデータを照会し、Azure Storage に送信する方法について説明します。 このプロセスは、監査とコンプライアンスのシナリオに合わせて Azure Monitor のログ データをエクスポートする必要がある場合や、別のサービスでこのデータを取得できるようにする場合に使用します。  
@@ -25,7 +25,7 @@ ms.locfileid: "92049549"
 - PowerShell スクリプトを使用したローカル コンピューターへのワンタイム エクスポート。 「[Invoke-AzOperationalInsightsQueryExport]](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport) 」を参照してください。
 
 ## <a name="overview"></a>概要
-この手順では、[Azure Monitor Logs コネクタ](https://docs.microsoft.com/connectors/azuremonitorlogs/)を使用します。これにより、ロジック アプリからログ クエリを実行し、その出力をワークフロー内の他のアクションで使用できるようになります。 この手順では、[Azure Blob Storage コネクタ](https://docs.microsoft.com/connectors/azureblob/)を使用して、クエリ出力を Azure Storage に送信します。 その他のアクションについては以降のセクションで説明します。
+この手順では、[Azure Monitor Logs コネクタ](/connectors/azuremonitorlogs/)を使用します。これにより、ロジック アプリからログ クエリを実行し、その出力をワークフロー内の他のアクションで使用できるようになります。 この手順では、[Azure Blob Storage コネクタ](/connectors/azureblob/)を使用して、クエリ出力を Azure Storage に送信します。 その他のアクションについては以降のセクションで説明します。
 
 ![ロジック アプリの概要](media/logs-export-logicapp/logic-app-overview.png)
 
@@ -61,7 +61,7 @@ Azure Monitor の Log Analytics ワークスペースとログ クエリは、�
 
 ## <a name="create-logic-app"></a>ロジック アプリの作成
 
-Azure portal で **[Logic Apps]** に移動し、 **[追加]** をクリックします。 新しいロジック アプリを格納する **サブスクリプション**、**リソース グループ**、**リージョン**を選択し、一意の名前を付けます。 **[Log Analytics]** 設定を有効にすると、「[Azure Monitor ログを設定し、Azure Logic Apps の診断データを収集する](../../logic-apps/monitor-logic-apps-log-analytics.md)」で説明されているように、ランタイム データおよびイベントに関する情報を収集できます。 この設定は、Azure Monitor Logs コネクタを使用する場合には不要です。
+Azure portal で **[Logic Apps]** に移動し、 **[追加]** をクリックします。 新しいロジック アプリを格納する **サブスクリプション**、**リソース グループ**、**リージョン** を選択し、一意の名前を付けます。 **[Log Analytics]** 設定を有効にすると、「[Azure Monitor ログを設定し、Azure Logic Apps の診断データを収集する](../../logic-apps/monitor-logic-apps-log-analytics.md)」で説明されているように、ランタイム データおよびイベントに関する情報を収集できます。 この設定は、Azure Monitor Logs コネクタを使用する場合には不要です。
 
 ![ロジック アプリを作成する](media/logs-export-logicapp/create-logic-app.png)
 
@@ -89,7 +89,7 @@ Azure portal で **[Logic Apps]** に移動し、 **[追加]** をクリック�
 ## <a name="add-azure-monitor-logs-action"></a>Azure Monitor Logs アクションの追加
 Azure Monitor Logs アクションを使用すると、実行するクエリを指定できます。 この例で使用されているログ クエリの場合、1 時間ごとの繰り返しに合わせて最適化されており、特定の実行時間のために取り込まれたデータを収集します。 たとえば、ワークフローが 4:35 に実行される場合、時間の範囲は 4:00 から 5:00 までになります。 ロジック アプリを別の頻度で実行するように変更する場合は、クエリも変更する必要があります。 たとえば、繰り返しを毎日実行するように設定した場合は、クエリで startTime を startofday(make_datetime(year,month,day,0,0)) に設定します。 
 
-Log Analytics ワークスペースの**サブスクリプション**と**リソース グループ**を選択します。 **[リソースの種類]** で *[Log Analytics ワークスペース]* を選択し、 **[リソース名]** でワークスペースの名前を選択します。
+Log Analytics ワークスペースの **サブスクリプション** と **リソース グループ** を選択します。 **[リソースの種類]** で *[Log Analytics ワークスペース]* を選択し、 **[リソース名]** でワークスペースの名前を選択します。
 
 **[クエリ]** ウィンドウに次のログ クエリを追加します。  
 

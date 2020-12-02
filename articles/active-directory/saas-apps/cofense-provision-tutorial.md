@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: Zhchia
-ms.openlocfilehash: b12a595c9b59b40ee6982f123baddaa818dd87ef
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 56b75d34bed65dae53c88eab6a16d848083ccc73
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836293"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179114"
 ---
 # <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために Cofense Recipient Sync を構成する
 
@@ -38,7 +38,7 @@ ms.locfileid: "94836293"
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
 * [Azure AD テナント](../develop/quickstart-create-new-tenant.md) 
-* プロビジョニングを構成するための[アクセス許可](../users-groups-roles/directory-assign-admin-roles.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
+* プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
 * Cofense PhishMe の標準オペレーターのアカウント。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する

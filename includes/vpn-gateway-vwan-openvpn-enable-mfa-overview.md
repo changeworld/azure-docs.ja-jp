@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3417bf0bd4ae1e0aa670f9fbfcc1fbbfeb372972
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fba8aa577bcb3b5ef44d57c388a1f1de7494782
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77471539"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995619"
 ---
-ユーザーにアクセスを許可する前に 2 つ目の認証要素の入力を求めるようにしたい場合には、Azure AD テナント用の Azure Multi-Factor Authentication (MFA) を構成できます。 MFA はユーザー単位で構成できます。または、[条件付きアクセス](../articles/active-directory/conditional-access/overview.md)を介して MFA を利用することもできます。
+ユーザーにアクセスを許可する前に 2 つ目の認証要素の入力を求めるようにしたい場合には、Azure AD テナント用の Azure AD Multi-Factor Authentication (MFA) を構成できます。 MFA はユーザー単位で構成できます。または、[条件付きアクセス](../articles/active-directory/conditional-access/overview.md)を介して MFA を利用することもできます。
 
 * ユーザーごとの MFA は、追加料金なしで有効にすることができます。 ユーザーごとに MFA を有効にすると、ユーザーは Azure AD テナントに関連付けられているすべてのアプリケーションに対して 2 要素認証を求められます。 手順については、[オプション 1](#peruser) を参照してください。
 * 条件付きアクセスを使用すると、2番目の要素をどのように昇格するかをきめ細かく制御できます。 MFA を VPN のみに割り当て、Azure AD テナントに関連付けられている他のアプリケーションを除外することができます。 手順については、[オプション 2](#conditional) を参照してください。

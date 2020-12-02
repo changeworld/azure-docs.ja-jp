@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f99d57e084a6a765b8598ba7f8eebbd7ddb34d74
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7d9c4dff1e4a3ba7c7a2b11311e97eb5e66a1585
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964640"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994249"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>パスワードなしのセキュリティ キー サインインを有効にする (プレビュー)
 
@@ -29,7 +29,7 @@ ms.locfileid: "91964640"
 
 ## <a name="requirements"></a>必要条件
 
-- [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+- [Azure AD Multi-Factor Authentication](howto-mfa-getstarted.md)
 - [統合されたセキュリティ情報の登録](concept-registration-mfa-sspr-combined.md)の有効化 (プレビュー)
 - 互換性のある [FIDO2 セキュリティ キー](concept-authentication-passwordless.md#fido2-security-keys)
 - WebAuthN requires Windows 10 バージョン 1903 以降**
@@ -55,15 +55,15 @@ Hybrid Azure AD 参加済みデバイスでは、Windows 10 バージョン 2004
 1. 方法 **[FIDO2 セキュリティ キー]** で、次のオプションを選択します。
    1. **有効にする** - [はい] または [いいえ]
    1. **ターゲット** - [すべてのユーザー] または [ユーザーの選択]
-1. 構成を**保存**します。
+1. 構成を **保存** します。
 
 ## <a name="user-registration-and-management-of-fido2-security-keys"></a>FIDO2 セキュリティ キーのユーザー登録と管理
 
 1. [https://myprofile.microsoft.com](https://myprofile.microsoft.com) を参照します。
 1. まだしていない場合はサインインします。
 1. **[セキュリティ情報]** をクリックします。
-   1. ユーザーが既に 1 つ以上の Azure Multi-Factor Authentication 方法を登録している場合は、FIDO2 セキュリティ キーをすぐに登録することができます。
-   1. 少なくとも 1 つの Azure 多要素認証方法を登録していない場合は、いずれかを追加する必要があります。
+   1. ユーザーが既に 1 つ以上の Azure AD Multi-Factor Authentication 方法を登録している場合は、FIDO2 セキュリティ キーをすぐに登録することができます。
+   1. 少なくとも 1 つの Azure AD Multi-Factor Authentication 方法を登録していない場合は、いずれかを追加する必要があります。
 1. **[方法の追加]** をクリックし、 **[セキュリティ キー]** を選択して、FIDO2 セキュリティ キーを追加します。
 1. **[USB デバイス]** または **[NFC デバイス]** を選択します。
 1. キーを準備し、 **[次へ]** を選択します。
@@ -81,7 +81,7 @@ Hybrid Azure AD 参加済みデバイスでは、Windows 10 バージョン 2004
 
 この機能のプレビュー中に、フィードバックを共有したい場合、または問題が発生した場合は、次の手順を使用して Windows フィードバック ハブ アプリ経由で共有してください。
 
-1. **フィードバック ハブ**を起動し、サインインしていることを確認します。
+1. **フィードバック ハブ** を起動し、サインインしていることを確認します。
 1. 次の分類でフィードバックを送信します。
    - カテゴリ:セキュリティとプライバシー
    - サブカテゴリ: FIDO
@@ -105,4 +105,4 @@ Microsoft では、Hybrid Azure AD 参加済みデバイスと Azure AD 参加�
 
 [デバイス登録の詳細](../devices/overview.md)
 
-[Azure Multi-factor Authentication の詳細](../authentication/howto-mfa-getstarted.md)
+[Azure AD Multi-factor Authentication の詳細](../authentication/howto-mfa-getstarted.md)

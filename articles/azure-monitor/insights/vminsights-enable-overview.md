@@ -8,11 +8,11 @@ ms.author: bwren
 ms.date: 08/27/2020
 ms.custom: references_regions
 ms.openlocfilehash: f5e774e9b7327d4b403f6a09187e97082a77aa78
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900344"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186808"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Azure Monitor for VMs の有効化の概要
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2020
 ms.author: jeedes
-ms.openlocfilehash: fc98201ac97409edd9be8522532728d7bb9b15af
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bd62855aef59439ed476a13770f79ce6d3cf68f8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021403"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180797"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-marketo"></a>チュートリアル: Marketo と Azure Active Directory の統合
 
@@ -239,9 +239,8 @@ Marketo で Azure AD シングル サインオンを構成してテストする�
 
 1. Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Marketo に自動的にサインインされます
 
-1. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Marketo] タイルをクリックすると、SSO を設定した Marketo に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+1. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Marketo] タイルをクリックすると、SSO を設定した Marketo に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Marketo を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
+Marketo を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

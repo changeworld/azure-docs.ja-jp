@@ -13,11 +13,11 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 7fa13a328a55b0e9eaa546e70bf0711f4f011cf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89068537"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173432"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Xamarin アプリケーションで Microsoft Authenticator または Intune ポータル サイトを使用する
 
@@ -237,7 +237,7 @@ result = await app.AcquireTokenInteractive(scopes)
 
 ### <a name="step-4-add-a-redirect-uri-to-your-app-registration"></a>手順 4:アプリの登録にリダイレクト URI を追加する
 
-MSAL では、URL を使用してブローカーが呼び出され、アプリに戻されます。 そのラウンド トリップを完了するには、[Azure portal](https://portal.azure.com) を使用して、アプリに対する**リダイレクト URI** を登録する必要があります。
+MSAL では、URL を使用してブローカーが呼び出され、アプリに戻されます。 そのラウンド トリップを完了するには、[Azure portal](https://portal.azure.com) を使用して、アプリに対する **リダイレクト URI** を登録する必要があります。
 
 アプリケーションのリダイレクト URI の形式は、APK の署名に使用された証明書によって異なります。 次に例を示します。
 
@@ -247,7 +247,7 @@ msauth://com.microsoft.xforms.testApp/hgbUYHVBYUTvuvT&Y6tr554365466=
 
 URI の最後の部分 `hgbUYHVBYUTvuvT&Y6tr554365466=` は、APK の署名に使用されている署名の Base64 エンコード バージョンです。 Visual Studio でアプリを開発するときに、特定の証明書を使用して APK に署名せずにコードをデバッグすると、Visual Studio によってデバッグのために自動的に APK が署名されます。 このように Visual Studio によって APK の署名が自動的に行われるときは、ビルドに使用されたコンピューターに対する一意の署名が提供されます。 このため、異なるコンピューター上でアプリをビルドするたびに、MSAL による認証を行うために、アプリケーションのコード内および Azure portal 上のアプリケーションの登録にあるリダイレクト URI を更新する必要が生じます。
 
-デバッグしているときに、指定されたリダイレクト URI が正しくないことを示す MSAL 例外 (ログ メッセージ) が発生する場合があります。 現在デバッグを行っているコンピューターで**使用する必要があるリダイレクト URI は、例外またはログ メッセージでも示されます**。 コードでリダイレクト URI を更新し、提供されたリダイレクト URI を Azure portal のアプリの登録に追加すれば、提供されたリダイレクト URI を使用してアプリの開発を続けることができます。
+デバッグしているときに、指定されたリダイレクト URI が正しくないことを示す MSAL 例外 (ログ メッセージ) が発生する場合があります。 現在デバッグを行っているコンピューターで **使用する必要があるリダイレクト URI は、例外またはログ メッセージでも示されます**。 コードでリダイレクト URI を更新し、提供されたリダイレクト URI を Azure portal のアプリの登録に追加すれば、提供されたリダイレクト URI を使用してアプリの開発を続けることができます。
 
 コードの最終処理を行う準備ができたら、APK に署名するときの証明書の署名を使用するように、コード内と Azure portal 上のアプリケーションの登録にあるリダイレクト URI を更新します。
 
@@ -315,7 +315,7 @@ MSAL がブローカーを使用するように構成されているのに、ブ
 
 たとえば、`msauth://com.microsoft.xforms.testApp/hgbUYHVBYUTvuvT&Y6tr554365466=` のリダイレクト URI がある場合、次の XML スニペットのようなマニフェストにする必要があります。
 
-`android:path` の値の署名の前にあるスラッシュ (`/`) は**必要**です。
+`android:path` の値の署名の前にあるスラッシュ (`/`) は **必要** です。
 
 ```xml
 <!-- NOTE the SLASH (required) that prefixes the signature value in the path attribute.

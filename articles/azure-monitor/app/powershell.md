@@ -3,12 +3,12 @@ title: PowerShell での Azure Application Insights の自動化 | Microsoft Doc
 description: Azure Resource Manager テンプレートを使用して、PowerShell でのリソース、アラート、および可用性テストの作成および管理を自動化します。
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: 58ed537a8fa6622756e7bcddceb6e9321cfbd82e
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: c380880845c162a1e8fb38e699a439ac04fb3b5a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94741078"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186271"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>PowerShell を使用した Application Insights リソースの管理
 
@@ -469,7 +469,6 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
 自動化に関するその他の記事:
 
 * [Application Insights リソースを作成するための PowerShell スクリプト](./create-new-resource.md#creating-a-resource-automatically) - テンプレートを使用しない簡単な方法
-* [Web テストを作成する](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-alerts-metric#availability-test-with-metric-alert)
+* [Web テストを作成する](../samples/resource-manager-alerts-metric.md#availability-test-with-metric-alert)
 * [Azure Diagnostics を Application Insights に送信する](powershell-azure-diagnostics.md)
 * [リリースの注釈を作成する](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
-

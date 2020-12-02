@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 31c9dcaf6c6f26d28d70e3d1664665c2dbc37ce6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 48188adfc3648db76f2ca362f59de6986c7c1339
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393083"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174953"
 ---
 # <a name="how-provisioning-works"></a>プロビジョニングのしくみ
 
@@ -43,7 +43,7 @@ Azure AD プロビジョニング サービスでは、自動プロビジョニ�
 
 ## <a name="authorization"></a>承認
 
-Azure AD をアプリケーションのユーザー管理 API に接続するには、資格情報が必要です。 アプリケーションの自動ユーザー プロビジョニングを構成している間に、有効な資格情報を入力する必要があります。 ギャラリー アプリケーションの場合、アプリケーションの資格情報の種類と要件については、アプリのチュートリアルを参照してください。 ギャラリー以外のアプリケーションの場合は、[SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#authorization-for-provisioning-connectors-in-the-application-gallery) のドキュメントを参照して、資格情報の種類と要件を理解することができます。 Azure portal で、資格情報をテストできます (Azure AD により、指定された資格情報を使用してアプリのプロビジョニング アプリへの接続が試行されます)。
+Azure AD をアプリケーションのユーザー管理 API に接続するには、資格情報が必要です。 アプリケーションの自動ユーザー プロビジョニングを構成している間に、有効な資格情報を入力する必要があります。 ギャラリー アプリケーションの場合、アプリケーションの資格情報の種類と要件については、アプリのチュートリアルを参照してください。 ギャラリー以外のアプリケーションの場合は、[SCIM](./use-scim-to-provision-users-and-groups.md#authorization-for-provisioning-connectors-in-the-application-gallery) のドキュメントを参照して、資格情報の種類と要件を理解することができます。 Azure portal で、資格情報をテストできます (Azure AD により、指定された資格情報を使用してアプリのプロビジョニング アプリへの接続が試行されます)。
 
 ## <a name="mapping-attributes"></a>属性のマッピング
 

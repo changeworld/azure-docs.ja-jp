@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96485dabd8cfb2ea9e3fb907940fccb05b5baee3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab425d0232310bd80d41c4028229c9da324a2bc9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659346"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168238"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory ハイブリッド ID の設計上の考慮事項 - 次の段階
 要件を定義し、モバイル デバイスのすべての選択肢を検討したので、次の段階ではユーザーと組織に最適なサポート インフラストラクチャをデプロイします。
@@ -31,7 +31,7 @@ ms.locfileid: "89659346"
 
 * [Microsoft System Center](/previous-versions/system-center/developer/cc817313(v=msdn.10)) ソリューションは、IT スタッフが管理が簡単なシステムを構築し、操作を自動化できるように、インフラストラクチャ、ポリシー、プロセス、ベスト プラクティスに関する知識を集め、まとめる際に役立ちます。
 * [Microsoft Intune](/mem/intune/) はクラウドベースのデバイス管理サービスであり、コンピューターとモバイル デバイスを管理し、コンピューターの情報を守る際に役立ちます。
-* [MDM for Microsoft 365](https://technet.microsoft.com/library/ms.o365.cc.devicepolicy.aspx) を利用すれば、Microsoft 365 機構に接続されているモバイル デバイスを管理し、セキュリティで保護できます。 MDM for Microsoft 365 を使用して、デバイスのセキュリティ ポリシーとアクセス ルールを設定し、紛失または盗難時にモバイル デバイスのデータを消去できます。
+* [MDM for Microsoft 365](/microsoft-365/admin/basic-mobility-security/overview) を利用すれば、Microsoft 365 機構に接続されているモバイル デバイスを管理し、セキュリティで保護できます。 MDM for Microsoft 365 を使用して、デバイスのセキュリティ ポリシーとアクセス ルールを設定し、紛失または盗難時にモバイル デバイスのデータを消去できます。
 
 ## <a name="hybrid-identity-resources"></a>ハイブリッド ID リソース
 次のリソースには、モバイル デバイス管理ソリューションに関する最新ニュースと更新が頻繁に掲載されます。

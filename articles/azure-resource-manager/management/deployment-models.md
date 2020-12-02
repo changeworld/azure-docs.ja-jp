@@ -3,12 +3,12 @@ title: Resource Manager デプロイとクラシック デプロイ
 description: Resource Manager デプロイ モデルとクラシック (あるいはサービス管理) デプロイ モデルの違いについて説明します。
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.openlocfilehash: d9c1a27efc1f474e25d0ed164d106e8f64ba3e96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da260db84de0cc8bd092eb95491b7cc38df93a12
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88511407"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185846"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について
 
@@ -123,9 +123,9 @@ SRP: ストレージ リソース プロバイダー、CRP: コンピューテ�
 クラシック デプロイから Resource Manager デプロイメントにリソースを移行する準備ができたら、次のページを参照してください。
 
 1. [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](../../virtual-machines/migration-classic-resource-manager-deep-dive.md)
-2. [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)
-3. [Azure PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](../../virtual-machines/windows/migration-classic-resource-manager-ps.md)
-4. [Azure CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](../../virtual-machines/linux/migration-classic-resource-manager-cli.md)
+2. [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](../../virtual-machines/migration-classic-resource-manager-overview.md)
+3. [Azure PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](../../virtual-machines/migration-classic-resource-manager-ps.md)
+4. [Azure CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](../../virtual-machines/migration-classic-resource-manager-cli.md)
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

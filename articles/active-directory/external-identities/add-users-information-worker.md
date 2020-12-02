@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd8f6bb8ce93d1d423019f792624d8bdac56ecf8
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 352d5218f91fa55134a7515b6aeee49857847468
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892641"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173211"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>組織内のユーザーがゲスト ユーザーをアプリに招待する方法
 
@@ -28,7 +28,7 @@ ms.locfileid: "92892641"
  - セルフサービス用にアプリを構成して、グループをアプリに割り当てる
 
 > [!NOTE]
-> この記事では、Azure AD テナントに追加したギャラリーおよび SAML ベースのアプリのセルフサービス管理を設定する方法について説明します。 ユーザーが自身の Microsoft 365 グループへのアクセスを管理できるように、[Microsoft 365 のセルフサービス グループを設定する](../users-groups-roles/groups-self-service-management.md)こともできます。 ユーザーが Office ファイルとアプリをゲスト ユーザーと共有できるその他の方法については、[Microsoft 365 グループでのゲスト アクセス](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6)に関するページと、「[SharePoint ファイルまたはフォルダーの共有](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)」を参照してください。
+> この記事では、Azure AD テナントに追加したギャラリーおよび SAML ベースのアプリのセルフサービス管理を設定する方法について説明します。 ユーザーが自身の Microsoft 365 グループへのアクセスを管理できるように、[Microsoft 365 のセルフサービス グループを設定する](../enterprise-users/groups-self-service-management.md)こともできます。 ユーザーが Office ファイルとアプリをゲスト ユーザーと共有できるその他の方法については、[Microsoft 365 グループでのゲスト アクセス](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6)に関するページと、「[SharePoint ファイルまたはフォルダーの共有](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)」を参照してください。
 
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>アクセス パネルからアプリにゲスト ユーザーを招待する
 
@@ -75,7 +75,7 @@ ms.locfileid: "92892641"
 
 ## <a name="prerequisites"></a>前提条件
 
-セルフサービス アプリ管理には、グローバル管理者と Azure AD 管理者によるいくつかの初期設定が必要です。 この設定の一環として、セルフサービス用にアプリを構成して、アプリケーション所有者が管理できるアプリにグループを割り当てます。 また、誰でもメンバーシップを要求できるが、グループ所有者の承認が必要なグループを構成できます ([セルフサービス グループ管理](../users-groups-roles/groups-self-service-management.md)に関するページを参照してください)。 
+セルフサービス アプリ管理には、グローバル管理者と Azure AD 管理者によるいくつかの初期設定が必要です。 この設定の一環として、セルフサービス用にアプリを構成して、アプリケーション所有者が管理できるアプリにグループを割り当てます。 また、誰でもメンバーシップを要求できるが、グループ所有者の承認が必要なグループを構成できます ([セルフサービス グループ管理](../enterprise-users/groups-self-service-management.md)に関するページを参照してください)。 
 
 > [!NOTE]
 > ゲスト ユーザーを、動的グループ、またはオンプレミスの Active Directory と同期しているグループに追加することはできません。

@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/30/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 8c908b7f72e5581122427a7d711ae9cf61d2d90f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef9efe389894af7c792e980922ca422e9d05929b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665611"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028224"
 ---
-次の表では、Azure の汎用 v1、v2、BLOB ストレージ、ブロック BLOB ストレージのアカウントに対する既定の制限について説明します。 "*受信*" 制限は、ストレージ アカウントに送信されるすべてのデータを指します。 *送信*制限は、ストレージ アカウントから受信するすべてのデータを指します。
+次の表では、Azure の汎用 v1、v2、BLOB ストレージ、ブロック BLOB ストレージのアカウントに対する既定の制限について説明します。 "*受信*" 制限は、ストレージ アカウントに送信されるすべてのデータを指します。 *送信* 制限は、ストレージ アカウントから受信するすべてのデータを指します。
 
 > [!NOTE]
 > より高い容量とイングレスの制限を要求できます。 増加を依頼するには、[Azure サポート](https://azure.microsoft.com/support/faq/)にお問い合わせください。
@@ -41,5 +41,4 @@ ms.locfileid: "91665611"
 > [!NOTE]
 > Microsoft では、ほとんどのシナリオで汎用 v2 ストレージ アカウントを使用することをお勧めしています。 汎用 v1 または Azure BLOB ストレージ アカウントは汎用 v2 アカウントに簡単にアップグレードできます。その際にダウンタイムは発生せず、データをコピーする必要はありません。 詳細については、「[汎用 v2 ストレージ アカウントにアップグレードする](../articles/storage/common/storage-account-upgrade.md)」を参照してください。
 
-すべてのストレージ アカウントは、いつ作成されたかに関係なく、フラット ネットワーク トポロジ上で実行されます。 Azure Storage フラット ネットワークのアーキテクチャとスケーラビリティの詳細については、[Microsoft Azure Storage: 強力な一貫性を備えた高可用性クラウド ストレージ サービス](https://docs.microsoft.com/archive/blogs/hanuk/windows-azures-flat-network-storage-to-enable-higher-scalability-targets)を参照してください。 
-
+すべてのストレージ アカウントは、いつ作成されたかに関係なく、フラット ネットワーク トポロジ上で実行されます。 Azure Storage フラット ネットワークのアーキテクチャとスケーラビリティの詳細については、[Microsoft Azure Storage: 強力な一貫性を備えた高可用性クラウド ストレージ サービス](/archive/blogs/hanuk/windows-azures-flat-network-storage-to-enable-higher-scalability-targets)を参照してください。

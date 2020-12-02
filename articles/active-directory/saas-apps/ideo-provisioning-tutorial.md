@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: Zhchia
-ms.openlocfilehash: 10b7b79ba5081e6133f2e5e94840eddfe403caef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4d877468e87edb11b606668739d8d539ef0cc1dd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013175"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180852"
 ---
 # <a name="tutorial-configure-ideo-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に IDEO を構成する
 
@@ -39,7 +39,7 @@ ms.locfileid: "96013175"
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
 * [Azure AD テナント](../develop/quickstart-create-new-tenant.md)。
-* プロビジョニングを構成するための[アクセス許可](../users-groups-roles/directory-assign-admin-roles.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。
+* プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。
 * [IDEO テナント](https://www.shape.space/product/pricing)
 * 管理者アクセス許可を持つ IDEO 上のユーザー アカウント。
 

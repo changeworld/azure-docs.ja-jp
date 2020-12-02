@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a48a72aa021a17c59adb86bece66cec966e234bd
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0c4fde22b1b8d72ae8ae775c090e0da25ce0665f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056142"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181171"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure Monitor ログを使用して Azure AD アクティビティ ログを分析する
 
@@ -90,7 +90,7 @@ AuditLogs
 
     ![警告の設定](./media/howto-analyze-activity-logs-log-analytics/setalert.png)
 
-2. アラートに作成された既定の**アラートの条件**を選択し、既定のメトリックの **[しきい値]** を 10 に更新します。
+2. アラートに作成された既定の **アラートの条件** を選択し、既定のメトリックの **[しきい値]** を 10 に更新します。
 
     ![アラートの条件](./media/howto-analyze-activity-logs-log-analytics/alertcriteria.png)
 
@@ -104,9 +104,9 @@ AuditLogs
 
 ブックには、監査、サインイン、プロビジョニングの各イベントに関する一般的なシナリオに関連した複数のレポートが表示されます。 前のセクションで説明されている手順を使用して、レポートに表示されるデータのいずれかについてアラートすることもできます。
 
-* **プロビジョニング分析**:この[ブック](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics)には、プロビジョニングされた新しいユーザーとプロビジョニング エラーの数、更新されたユーザーと更新エラーの数、プロビジョニング解除されたユーザーと該当するエラーの数など、プロビジョニング アクティビティの監査に関連するレポートが表示されます。    
+* **プロビジョニング分析**:この [ブック](../app-provisioning/application-provisioning-log-analytics.md)には、プロビジョニングされた新しいユーザーとプロビジョニング エラーの数、更新されたユーザーと更新エラーの数、プロビジョニング解除されたユーザーと該当するエラーの数など、プロビジョニング アクティビティの監査に関連するレポートが表示されます。    
 * **Sign-ins Events\(サインイン イベント\)** :このブックには、経時的にサインイン数を追跡する概要ビューだけでなく、アプリケーション、ユーザー、デバイスごとのサインインなど、サインイン アクティビティの監視に関連する最も重要なレポートが表示されます。
-* **分析情報への条件付きアクセス**:条件付きアクセスに関する分析情報とレポートの[ブック](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-insights-reporting)を使用すると、自分の組織内での一定期間にわたる条件付きアクセス ポリシーの影響を把握できます。 
+* **分析情報への条件付きアクセス**:条件付きアクセスに関する分析情報とレポートの [ブック](../conditional-access/howto-conditional-access-insights-reporting.md)を使用すると、自分の組織内での一定期間にわたる条件付きアクセス ポリシーの影響を把握できます。 
 
 ## <a name="next-steps"></a>次のステップ
 

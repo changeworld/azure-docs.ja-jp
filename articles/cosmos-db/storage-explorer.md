@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 9260f2892bdcc6a694e1e54e29cb06bae90298eb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 61ae446d180a86b42bc52ac3244b96b7b347b68f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074473"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010573"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>Azure Storage Explorer を使用して Azure Cosmos DB リソースを管理する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -38,7 +38,7 @@ SQL API または Azure Cosmos DB の MongoDB 用 API の Cosmos アカウント
 
    :::image type="content" source="./media/storage-explorer/plug-in-icon.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
 
-1. **[Add an Azure Account]\(Azure アカウントの追加\)** を選択し、 **[サインイン]** を選択します。
+1. **[Add an Azure Account]\(Azure アカウントの追加\)** を選択し、**[サインイン]** を選択します。
 
    :::image type="content" source="./media/storage-explorer/connect-to-azure-subscription.png" alt-text="[Add an Azure Account]\(Azure アカウントの追加\) ラジオ ボタンが選択され、[Azure 環境] ドロップダウン メニューが表示された [Azure Storage への接続] ウィンドウのスクリーンショット。":::
 
@@ -71,6 +71,9 @@ SQL API または Azure Cosmos DB の MongoDB 用 API の Cosmos アカウント
    1. **[接続]** を選択して、Azure Cosmos DB アカウントに接続します。
 
       :::image type="content" source="./media/storage-explorer/connection-string.png" alt-text="[API] ドロップダウン メニュー、[接続文字列] ボックス、[アカウント ラベル] ボックスを示した、[Connect to Cosmos DB]\(Cosmos DB に接続\) ウィンドウのスクリーンショット。":::
+
+> [!NOTE]
+> Azure Storage Explorer に Azure Cosmos DB 接続文字列の形式が無効であることが示された場合は、接続文字列の末尾にセミコロン (`;`) があることを確認してください。 有効な Azure Cosmos DB 接続文字列の例を次に示します。`AccountEndpoint=https://accountname.documents.azure.com:443;AccountKey=accountkey==;`
 
 ## <a name="use-a-local-emulator-to-connect-to-azure-cosmos-db"></a>ローカル エミュレーターを使用して Azure Cosmos DB に接続する
 
@@ -123,7 +126,7 @@ SQL API または Azure Cosmos DB の MongoDB 用 API の Cosmos アカウント
 
    :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="[データベースの作成] が強調表示されている状態で右クリックした後に表示されるメニューを示したスクリーンショット。":::
 
-1. データベース名を入力し、 **Eenter** キーを押して完了します。
+1. データベース名を入力し、**Eenter** キーを押して完了します。
 
 #### <a name="delete-a-database"></a>データベースの削除
 
@@ -141,7 +144,7 @@ SQL API または Azure Cosmos DB の MongoDB 用 API の Cosmos アカウント
 
    :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="[コレクションの作成] が強調表示されている状態で右クリックした後に表示されるメニューを示したスクリーンショット。":::
 
-1. [コレクションの作成] ウィンドウで、 **コレクション ID** や **ストレージ容量** など、要求された情報を入力します。 **[OK]** を選択して作業を終了します。
+1. [コレクションの作成] ウィンドウで、**コレクション ID** や **ストレージ容量** など、要求された情報を入力します。 **[OK]** を選択して作業を終了します。
 
    :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="[コレクション ID] ボックスと [ストレージ容量] ボタンが表示された [コレクションの作成] ウィンドウのスクリーンショット。":::
 
@@ -175,7 +178,7 @@ SQL API または Azure Cosmos DB の MongoDB 用 API の Cosmos アカウント
 
 #### <a name="query-for-documents"></a>ドキュメントのクエリ
 
-* ドキュメント フィルターを編集するには、 [SQL クエリ](./sql-query-getting-started.md)を入力して **[適用]** を選択します。
+* ドキュメント フィルターを編集するには、[SQL クエリ](./sql-query-getting-started.md)を入力して **[適用]** を選択します。
 
   :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="[フィルター] および [適用] ボタン、ID 番号、クエリ ボックスが強調表示された右側のウィンドウのスクリーンショット。":::
 
@@ -194,7 +197,7 @@ SQL API または Azure Cosmos DB の MongoDB 用 API の Cosmos アカウント
 
 #### <a name="filter-for-graph"></a>グラフのフィルター選択
 
-* グラフ フィルターを編集するには、 [Gremlin クエリ](gremlin-support.md)を入力して、 **[フィルターの適用]** を選択します。
+* グラフ フィルターを編集するには、[Gremlin クエリ](gremlin-support.md)を入力して、 **[フィルターの適用]** を選択します。
 
    :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="左側のウィンドウで選択された [グラフ] を示し、右側のウィンドウに表示された [フィルターの適用] と強調表示された [クエリ] ボックスを示したスクリーンショット。":::
 
@@ -244,7 +247,7 @@ SQL API または Azure Cosmos DB の MongoDB 用 API の Cosmos アカウント
   
 * 既存のストアド プロシージャを編集するには、プロシージャをダブルクリックし、更新を行ってから、 **[更新]** を選択して保存します。 また、 **[破棄]** を選択して、変更を取り消すこともできます。
 
-* **トリガー** と **UDF** に対する操作は、 **ストアド プロシージャ** に対する操作に似ています。
+* **トリガー** と **UDF** に対する操作は、**ストアド プロシージャ** に対する操作に似ています。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -270,7 +273,7 @@ Storage Explorer が自己署名証明書を検出しても、受信した HTTPS
      - macOS および Linux:お使いのオペレーティング システムに付属しているはずです。
 
 1. OpenSSL を実行します。
-    * Windows: インストール ディレクトリ、 **/bin/** の順に移動して、 **openssl.exe** をダブルクリックします。
+    * Windows: インストール ディレクトリ、 **/bin/** の順に移動して、**openssl.exe** をダブルクリックします。
     * Mac と Linux:ターミナルで **openssl** を実行します。
 1. `s_client -showcerts -connect microsoft.com:443` を実行します。
 1. 自己署名証明書を検索します。 どれが自己署名かわからない場合は、証明書の発行先 ("s:") と証明書の発行者 ("i:") が同じものを検索します。
@@ -323,7 +326,7 @@ Storage Explorer が自己署名証明書を検出しても、受信した HTTPS
   * ~/.config/StorageExplorer (Linux の場合)
   
   > [!NOTE]
-  > これらのファイルを削除した場合は、 **資格情報をすべて再入力する必要があります** 。
+  > これらのファイルを削除した場合は、**資格情報をすべて再入力する必要があります**。
 
 ### <a name="httphttps-proxy-issue"></a>HTTP/HTTPS プロキシの問題
 

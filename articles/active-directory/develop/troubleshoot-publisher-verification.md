@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 4a66db34adb4eb751abc741964b740b3b6f48c69
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 857659cdd97666dba585c1ec22c750e29bf28879
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073735"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169173"
 ---
 # <a name="troubleshoot-publisher-verification"></a>発行者の確認に関するトラブルシューティング
 [発行者の確認](publisher-verification-overview.md)で、エラーが発生してプロセスを完了できない場合、または予期しない動作が発生する場合は、次の手順を行う必要があります。 
@@ -51,14 +51,14 @@ ms.locfileid: "92073735"
     1. 自分の[パートナー プロファイル](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)に移動し、次のことを確認します。 
         - MPN ID が正しい。 
         - エラーまたは "保留中のアクション" が表示されず、会社プロファイルとパートナー情報の両方の検証状態が "承認済み" または "成功" と表示される。
-    1. [MPN テナント管理ページ](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement)に移動し、アプリが登録されているテナント、およびサインインに使用しているユーザー アカウントのテナントが、関連付けられているテナントの一覧に含まれることを確認します。 さらにテナントを追加する必要がある場合は、[こちら](https://docs.microsoft.com/partner-center/multi-tenant-account)の手順を実行します。 追加したテナントのすべてのグローバル管理者には、パートナー センター アカウントの全体管理者特権が付与されることに注意してください。
-    1. [MPN ユーザー管理ページ](https://partner.microsoft.com/pcv/users)に移動し、サインインに使用しているユーザーが、グローバル管理者、MPN 管理者、またはアカウント管理者のいずれかであることを確認します。パートナー センターのロールにユーザーを追加する必要がある場合は、[こちら](https://docs.microsoft.com/partner-center/create-user-accounts-and-set-permissions)の手順を実行します。
+    1. [MPN テナント管理ページ](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement)に移動し、アプリが登録されているテナント、およびサインインに使用しているユーザー アカウントのテナントが、関連付けられているテナントの一覧に含まれることを確認します。 さらにテナントを追加する必要がある場合は、[こちら](/partner-center/multi-tenant-account)の手順を実行します。 追加したテナントのすべてのグローバル管理者には、パートナー センター アカウントの全体管理者特権が付与されることに注意してください。
+    1. [MPN ユーザー管理ページ](https://partner.microsoft.com/pcv/users)に移動し、サインインに使用しているユーザーが、グローバル管理者、MPN 管理者、またはアカウント管理者のいずれかであることを確認します。パートナー センターのロールにユーザーを追加する必要がある場合は、[こちら](/partner-center/create-user-accounts-and-set-permissions)の手順を実行します。
 
 - **Azure AD ポータルにサインインすると、登録されているアプリが表示されません。なぜですか?** 
     アプリの登録は、このテナントの別のユーザー アカウント、個人またはコンシューマー アカウント、または別のテナントを使用して作成された可能性があります。 アプリの登録が作成されたテナントで、正しいアカウントを使用してサインインしていることを確認します。
 
 - **多要素認証に関連するエラーが発生します。どうすればよいですか。** 
-    [多要素認証](../fundamentals/concept-fundamentals-mfa-get-started.md)が有効になっており、かつサインインに使用しているユーザーとこのシナリオに**必要**であることを確認します。 たとえば、MFA には次のような条件があります。
+    [多要素認証](../fundamentals/concept-fundamentals-mfa-get-started.md)が有効になっており、かつサインインに使用しているユーザーとこのシナリオに **必要** であることを確認します。 たとえば、MFA には次のような条件があります。
     - サインインに使用しているユーザーには常に必要です
     - [Azure の管理に必要です](../conditional-access/howto-conditional-access-policy-azure-management.md)。
     - サインインに使用している[この種類の管理者には必要です](../conditional-access/howto-conditional-access-policy-admin-mfa.md)。

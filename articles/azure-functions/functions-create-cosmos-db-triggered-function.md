@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: c7dc18d8186d7262154cc0718bb6ad77ebbb5d2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 907836b0e45ccc9e9481e605b1ebf4180f7650d6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85829841"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182582"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB によってトリガーされる関数を作成する
 
@@ -50,7 +50,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 1. **[新規関数]** ページで、検索フィールドに「`cosmos`」と入力し、 **[Azure Cosmos DB trigger]\(Azure Cosmos DB トリガー\)** テンプレートを選択します。
 
-   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="Azure Cosmos DB コード":::
+   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="Azure portal での関数のページ":::
 
 
 1. 新しいトリガーは、次の表に示すように設定します。
@@ -58,13 +58,13 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
     | 設定      | 推奨値  | 説明                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **新規関数** | 既定名値を受け入れる | 関数の名前です。 |
-    | **Cosmos DB アカウント接続** | 既定の新しい名前を受け入れる | **[新規]** 、前に作成した**データベース アカウント**、 **[OK]** の順に選択します。 この操作により、アカウント接続のアプリケーション設定が作成されます。 この設定は、データベースへの接続へのバインディングによって使用されます。 |
+    | **Cosmos DB アカウント接続** | 既定の新しい名前を受け入れる | **[新規]** 、前に作成した **データベース アカウント**、 **[OK]** の順に選択します。 この操作により、アカウント接続のアプリケーション設定が作成されます。 この設定は、データベースへの接続へのバインディングによって使用されます。 |
     | **データベース名** | タスク | 監視対象のコレクションが含まれているデータベースの名前。 |
     | **[コレクション名]** | アイテム | 監視対象のコレクションの名前。 |
     | **リースのコレクション名** | リース | リースを格納するコレクションの名前。 |
     | **リースのコレクションが存在しない場合、作成します** | はい | リースのコレクションの存在をチェックし、自動的に作成します。 |
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Azure Cosmos DB コード":::
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Azure Cosmos DB でトリガーされる関数の作成":::
 
 1. **[関数の作成]** を選択します。 
 
@@ -72,7 +72,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 1. テンプレートベースの関数コードを表示するには、 **[Code + Test]\(コード + テスト\)** を選択します。
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="Azure Cosmos DB コード":::
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="Cosmos DB の関数テンプレート (C#)":::
 
     この関数テンプレートは、ドキュメント数と最初のドキュメント ID をログに書き込みます。
 
@@ -100,7 +100,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
     | ---|---|--- |
     | **データベース ID** | タスク |新しいデータベースの名前。 これは、関数バインドで定義された名前と一致する必要があります。 |
     | **コンテナー ID** | アイテム | 新しいコンテナーの名前。 これは、関数バインドで定義された名前と一致する必要があります。  |
-    | **[[パーティション キー]](../cosmos-db/partition-data.md)** | /category|各パーティションに均等にデータを分散するパーティション キー。 効率の良いコンテナーを作成するためには、正しいパーティション キーを選択することが大切です。 | 
+    | **[[パーティション キー]](../cosmos-db/partitioning-overview.md)** | /category|各パーティションに均等にデータを分散するパーティション キー。 効率の良いコンテナーを作成するためには、正しいパーティション キーを選択することが大切です。 | 
     | **スループット** |400 RU| 既定値を使用します。 待ち時間を短縮する場合、後でスループットをスケールアップできます。 |    
 
 1. **[OK]** をクリックして、Items コンテナーを作成します。 コンテナーが作成されるまで多少時間がかかる場合があります。
@@ -111,7 +111,15 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 1. データ エクスプローラーで新しい **Items** コンテナーを展開し、 **[Items]\(項目\)** を選択して、 **[New Item]\(新しい項目\)** を選択します。
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="Azure Cosmos DB コード"
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="Items コンテナーへの項目の作成":::
+
+1. 新しい項目の内容を次の内容に置き換えて、 **[保存]** を選択します。
+
+    ```yaml
+    {
+        "id": "task1",
+        "category": "general",
+        "description": "some task"
     }
     ```
 

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7311f4faf4d8e93c4d3d2724bb9810342a769473
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 7c1e46fd55cd7beda931db2e24cc2210753ee26f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379232"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180406"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Azure Active Directory でカスタム ロールの割り当てを表示する
 
@@ -32,14 +32,14 @@ ms.locfileid: "93379232"
 この手順では、組織全体のスコープを使用してロールの割り当てを表示する方法について説明します。
 
 1. Azure AD 組織の特権ロール管理者またはグローバル管理者のアクセス許可を使用して [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
-1. **[Azure Active Directory]** を選択し、 **[ロールと管理者]** を選択します。次に、ロールを選択して開き、そのプロパティを表示します。
+1. **[Azure Active Directory]** を選択し、**[ロールと管理者]** を選択します。次に、ロールを選択して開き、そのプロパティを表示します。
 1. **[割り当て]** を選択して、そのロールの割り当てを表示します。
 
     ![一覧からロールを開いたときに、ロールの割り当てとアクセス許可を表示する](./media/custom-view-assignments/role-assignments.png)
 
 ## <a name="view-role-assignments-using-azure-ad-powershell"></a>Azure AD PowerShell を使用してロールの割り当てを表示する
 
-このセクションでは、組織全体のスコープを使用してロールの割り当てを表示する方法について説明します。 この記事では、[Azure Active Directory PowerShell バージョン 2](/powershell/module/azuread/?view=azureadps-2.0#directory_roles) モジュールを使います。 PowerShell を使用して単一アプリケーションのスコープを表示するには、[PowerShell を使用したカスタム ロールの割り当て](../users-groups-roles/roles-assign-powershell.md)に関するページのコマンドレットを使用できます。
+このセクションでは、組織全体のスコープを使用してロールの割り当てを表示する方法について説明します。 この記事では、[Azure Active Directory PowerShell バージョン 2](/powershell/module/azuread/?view=azureadps-2.0#directory_roles) モジュールを使います。 PowerShell を使用して単一アプリケーションのスコープを表示するには、[PowerShell を使用したカスタム ロールの割り当て](./custom-assign-powershell.md)に関するページのコマンドレットを使用できます。
 
 ### <a name="prepare-powershell"></a>PowerShell を準備する
 
@@ -78,7 +78,7 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
 
 ## <a name="view-role-assignments-using-microsoft-graph-api"></a>Microsoft Graph API を使用してロールの割り当てを表示する
 
-このセクションでは、組織全体のスコープを使用してロールの割り当てを表示する方法について説明します。  Graph API を使用して単一アプリケーションのスコープの割り当てを表示するには、[Graph API を使用したカスタム ロールの割り当て](../users-groups-roles/roles-assign-graph.md)に関するページの操作を使用できます。
+このセクションでは、組織全体のスコープを使用してロールの割り当てを表示する方法について説明します。  Graph API を使用して単一アプリケーションのスコープの割り当てを表示するには、[Graph API を使用したカスタム ロールの割り当て](./custom-assign-graph.md)に関するページの操作を使用できます。
 
 特定のロールの定義に対するロールの割り当てを取得するための HTTP 要求。
 
@@ -109,7 +109,7 @@ HTTP/1.1 200 OK
 
     ![[アプリの登録] ページからアプリの登録を作成または編集する](./media/custom-view-assignments/appreg-all-apps.png)
 
-1. アプリの登録で、 **[ロールと管理者]** を選択し、次にロールを選択してそのプロパティを表示します。
+1. アプリの登録で、**[ロールと管理者]** を選択し、次にロールを選択してそのプロパティを表示します。
 
     ![[アプリの登録] ページから、アプリの登録のロールの割り当てを表示する](./media/custom-view-assignments/appreg-assignments.png)
 

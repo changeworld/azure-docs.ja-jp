@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: d5da6576258d3e33296781bbc262494220140ddc
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 37c237cdaf6c0d4f766d4b2e39c10e3e96215463
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489286"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187835"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>ダウンストリーム IoT Edge デバイスを Azure IoT Edge ゲートウェイに接続する (プレビュー)
 
@@ -172,7 +172,7 @@ Linux では、ユーザー **iotedge** に、証明書とキーが保持され�
      type: "docker"
      env: {}
      config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1"
+       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
        auth: {}
    ```
 
@@ -202,7 +202,7 @@ Linux では、ユーザー **iotedge** に、証明書とキーが保持され�
 
 この機能はパブリック プレビュー段階にありますが、IoT Edge ランタイム モジュールのパブリック プレビュー バージョンが使用されるように IoT Edge デバイスを構成する必要があります。 前のセクションで、起動時に edgeAgent を構成する手順について説明しています。 また、デバイスのデプロイでランタイム モジュールを構成する必要もあります。
 
-1. パブリック プレビュー イメージが使用されるように edgeHub モジュールを構成します: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1`。
+1. パブリック プレビュー イメージが使用されるように edgeHub モジュールを構成します: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2`。
 
 1. EdgeHub モジュールに対して次の環境変数を構成します。
 
@@ -211,7 +211,7 @@ Linux では、ユーザー **iotedge** に、証明書とキーが保持され�
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. パブリック プレビュー イメージが使用されるように edgeAgent モジュールを構成します: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1`。
+1. パブリック プレビュー イメージが使用されるように edgeAgent モジュールを構成します: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2`。
 
 ## <a name="network-isolate-downstream-devices"></a>ネットワークでダウンストリーム デバイスを分離する
 
@@ -366,7 +366,7 @@ agent:
   type: "docker"
   env: {}
   config:
-    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc1"
+    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc2"
     auth: {}
 ```
 

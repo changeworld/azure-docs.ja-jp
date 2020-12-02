@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0ab8eac97a6b02377d38653a990a2f0d5ff81ba
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: f88091fdf1bd39961ccf7a542aab3e7d2c3646e2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94334960"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172671"
 ---
 # <a name="certificate-authorities-used-by-azure-active-directory"></a>Azure Active Directory で使用される証明機関
 
@@ -98,4 +98,4 @@ TLS/SSL プロトコル経由で Azure Active Directory (Azure AD) の ID サー
 | DigiCert Basic RSA CN CA G2| 02f7e1f982bad 009aff47dc95741b2f6| 2020 年 3 月 4 日<br>2030 年 3 月 4 日| 4d1fa5d1fb1ac3917c08e 43f65015e6aea571179| [AIA](http://cacerts.digicert.cn/DigiCertBasicRSACNCAG2.crt)<br>[CDP](http://crl.digicert.cn/DigiCertBasicRSACNCAG2.crl)<br>[OCSP](http://ocsp.digicert.cn/) |
 
 ## <a name="next-steps"></a>次の手順
-[Microsoft 365 の暗号化チェーンについて学習する](https://docs.microsoft.com/microsoft-365/compliance/encryption-office-365-certificate-chains?view=o365-worldwide)
+[Microsoft 365 の暗号化チェーンについて学習する](/microsoft-365/compliance/encryption-office-365-certificate-chains?view=o365-worldwide)

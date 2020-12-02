@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 066e9cf6c63c9f2073ba869e8b40e25bfc993cd8
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: ddb73de87789934aa66893bdbe6519011cf324b3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491377"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186101"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics のログ クエリのスコープと時間範囲
-[Azure portal の [Log Analytics]](get-started-portal.md) で[ログ クエリ](log-query-overview.md)を実行するとき、クエリによって評価されるデータのセットは、選択したスコープと時間範囲によって異なります。 この記事では、スコープと時間範囲、および要件に応じてそれぞれを設定する方法について説明します。 さまざまな種類のスコープの動作についても説明します。
+[Azure portal の [Log Analytics]](./log-analytics-tutorial.md) で[ログ クエリ](log-query-overview.md)を実行するとき、クエリによって評価されるデータのセットは、選択したスコープと時間範囲によって異なります。 この記事では、スコープと時間範囲、および要件に応じてそれぞれを設定する方法について説明します。 さまざまな種類のスコープの動作についても説明します。
 
 
 ## <a name="query-scope"></a>クエリ スコープ
@@ -87,5 +87,5 @@ Log Analytics ウィンドウの上部にあるタイム ピッカーから選�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure portal 内での Log Analytics の使用に関するチュートリアル](get-started-portal.md)を進めます。
+- [Azure portal 内での Log Analytics の使用に関するチュートリアル](./log-analytics-tutorial.md)を進めます。
 - [クエリの作成に関するチュートリアル](get-started-queries.md)を進めます。

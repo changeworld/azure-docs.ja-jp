@@ -6,18 +6,18 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
-ms.openlocfilehash: 4b0b85b08c3f813440d556c61ba5e290ac200049
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 413bb88deac96c1ca12e8a9d25fc9cd16edf4616
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686477"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183959"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>接続とメッセージ配信に関する問題のトラブルシューティング方法
 
 このガイダンスでは、自己診断を行って、根本原因を直接見つけたり、問題を絞り込んだりするのに役立つ方法をいくつか紹介します。 自己診断の結果は、より詳細な調査のために Microsoft に報告する際にも役立ちます。
 
-最初に、Azure portal から、Azure SignalR Service (**ASRS**) がどの [ServiceMode](https://docs.microsoft.com/azure/azure-signalr/concept-service-mode) に構成されているかを確認する必要があります。
+最初に、Azure portal から、Azure SignalR Service (**ASRS**) がどの [ServiceMode](./concept-service-mode.md) に構成されているかを確認する必要があります。
 
 :::image type="content" source="./media/signalr-howto-troubleshoot-method/service-mode.png" alt-text="ServiceMode":::
 
@@ -49,13 +49,13 @@ ms.locfileid: "94686477"
 
 ### <a name="how-to-view-the-traffic-and-narrow-down-the-issue"></a>トラフィックを表示して問題を絞り込む方法
 
-動作中のトラフィックをキャプチャすることは、問題を絞り込むための最も単純な方法です。 以下で説明しているオプションを使用して、[ネットワーク トレース](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#network-traces)をキャプチャできます。
+動作中のトラフィックをキャプチャすることは、問題を絞り込むための最も単純な方法です。 以下で説明しているオプションを使用して、[ネットワーク トレース](/aspnet/core/signalr/diagnostics#network-traces)をキャプチャできます。
 
-* [Fiddler でネットワーク トレースを収集する](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#network-traces)
+* [Fiddler でネットワーク トレースを収集する](/aspnet/core/signalr/diagnostics#network-traces)
 
-* [tcpdump でネットワーク トレースを収集する](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#collect-a-network-trace-with-tcpdump-macos-and-linux-only)
+* [tcpdump でネットワーク トレースを収集する](/aspnet/core/signalr/diagnostics#collect-a-network-trace-with-tcpdump-macos-and-linux-only)
 
-* [ブラウザーでネットワーク トレースを収集する](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#collect-a-network-trace-in-the-browser)
+* [ブラウザーでネットワーク トレースを収集する](/aspnet/core/signalr/diagnostics#collect-a-network-trace-in-the-browser)
 
 <a name="view_traffic_client"></a>
 
@@ -63,7 +63,7 @@ ms.locfileid: "94686477"
 
 SignalR の永続的な接続の場合は、まず、ホストされているアプリ サーバーに対して `/negotiate` を行い、次に、Azure SignalR サービスにリダイレクトしてから、Azure SignalR サービスへの永続的な接続を実際に確立します。 詳細な手順については、「[Azure SignalR Service の内部構造](https://github.com/Azure/azure-signalr/blob/dev/docs/internal.md)」を参照してください。
 
-クライアント側のネットワーク トレースを入手したら、どの要求がどのような状態コードと応答で失敗しているかを調べて、[トラブルシューティング ガイド](https://docs.microsoft.com/azure/azure-signalr/signalr-howto-troubleshoot-guide)内で解決策を探します。
+クライアント側のネットワーク トレースを入手したら、どの要求がどのような状態コードと応答で失敗しているかを調べて、[トラブルシューティング ガイド](./signalr-howto-troubleshoot-guide.md)内で解決策を探します。
 
 #### <a name="server-requests"></a>サーバー要求
 
@@ -71,7 +71,7 @@ SignalR *Server* では、"*サーバー*" と "*サービス*" の間の "*サ�
 
 Azure SignalR Service のネットワークが不安定であるかその定期的メンテナンスのため、またはホストされているアプリ サーバーの更新やメンテナンスのために、"*サーバー接続*" が切断される場合があります。 クライアント側に切断/再接続メカニズムがある限り、クライアント側で発生した切断/再接続と同様に、影響は最小限になります。
 
-サーバー側のネットワーク トレースを表示して、"*サーバー接続*" が切断された理由や、*サービス* に拒否された理由について、状態コードとエラーの詳細を確認します。そして、[トラブルシューティング ガイド](https://docs.microsoft.com/azure/azure-signalr/signalr-howto-troubleshoot-guide)で根本原因を調べます。
+サーバー側のネットワーク トレースを表示して、"*サーバー接続*" が切断された理由や、*サービス* に拒否された理由について、状態コードとエラーの詳細を確認します。そして、[トラブルシューティング ガイド](./signalr-howto-troubleshoot-guide.md)で根本原因を調べます。
 
 
 ### <a name="how-to-add-logs"></a>ログを追加する方法
@@ -86,18 +86,18 @@ Azure SignalR Service のネットワークが不安定であるかその定期�
 
 ##### <a name="enable-client-side-logging-for-aspnet-core-signalr"></a>`ASP.NET Core SignalR` に対するクライアント側のログ記録を有効にする
 
-* [JavaScript クライアントのログ記録](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#javascript-client-logging)
+* [JavaScript クライアントのログ記録](/aspnet/core/signalr/diagnostics#javascript-client-logging)
 
-* [.NET クライアントのログ記録](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#net-client-logging)
+* [.NET クライアントのログ記録](/aspnet/core/signalr/diagnostics#net-client-logging)
 
 
 ##### <a name="enable-client-side-logging-for-aspnet-signalr"></a>`ASP.NET SignalR` に対するクライアント側のログ記録を有効にする
 
-* [.NET クライアント](https://docs.microsoft.com/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-net-client-windows-desktop-apps)
+* [.NET クライアント](/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-net-client-windows-desktop-apps)
 
-* [Windows Phone 8 クライアントでのトレースの有効化](https://docs.microsoft.com/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-windows-phone-8-clients)
+* [Windows Phone 8 クライアントでのトレースの有効化](/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-windows-phone-8-clients)
 
-* [JavaScript クライアントでのトレースの有効化](https://docs.microsoft.com/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-javascript-client)
+* [JavaScript クライアントでのトレースの有効化](/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-javascript-client)
 
 <a name="add_logs_server"></a>
 
@@ -105,7 +105,7 @@ Azure SignalR Service のネットワークが不安定であるかその定期�
 
 ##### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>`ASP.NET Core SignalR` に対するサーバー側のログ記録を有効にする
 
-`ASP.NET Core SignalR` のためのサーバー側ログ記録は、`ASP.NET Core` フレームワークで提供されている `ILogger` ベースの[ログ記録](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&tabs=aspnetcore2x)と統合されています。 サーバー側のログ記録は、`ConfigureLogging` を使用して有効にできます。以下に使用例を示します。
+`ASP.NET Core SignalR` のためのサーバー側ログ記録は、`ASP.NET Core` フレームワークで提供されている `ILogger` ベースの[ログ記録](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1)と統合されています。 サーバー側のログ記録は、`ConfigureLogging` を使用して有効にできます。以下に使用例を示します。
 
 ```cs
 .ConfigureLogging((hostingContext, logging) =>
@@ -162,7 +162,7 @@ Azure SignalR のロガー カテゴリは常に `Microsoft.Azure.SignalR` で�
 
 #### <a name="how-to-enable-logs-inside-azure-signalr-service"></a>Azure SignalR サービス内でログを有効にする方法
 
-Azure SignalR サービスに対して[診断ログを有効にする](https://docs.microsoft.com/azure/azure-signalr/signalr-tutorial-diagnostic-logs)こともできます。これらのログでは、Azure SignalR サービスに接続されているすべての接続の詳細情報が提供されます。
+Azure SignalR サービスに対して[診断ログを有効にする](./signalr-howto-diagnostic-logs.md)こともできます。これらのログでは、Azure SignalR サービスに接続されているすべての接続の詳細情報が提供されます。
 
 <a name="serverless_mode_tsg"></a>
 
@@ -194,7 +194,7 @@ Azure SignalR サービスに対して[診断ログを有効にする](https://d
     * または、インスタンスを再起動します。
     * 上記のすべての選択肢が機能しない場合は、Azure portal で新しいサポート要求を追加し、Microsoft までお問い合わせください。
 
-[ディザスター リカバリー](https://docs.microsoft.com/azure/azure-signalr/signalr-concept-disaster-recovery)の詳細を確認してください。
+[ディザスター リカバリー](./signalr-concept-disaster-recovery.md)の詳細を確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,14 +1,14 @@
 ---
 title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
-ms.date: 11/09/2020
+ms.date: 11/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: dfb92e3f4f02e693ae5e4bba57e5344288c4615a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 95b9bcf6bb9530afc9f6a23c323b6931e8975ad1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413124"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95905125"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -42,7 +42,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 > [!NOTE]
 > Azure Lighthouse に関連するテナント情報に加え、これらの API で表示されるテナントには、Azure Databricks または Azure マネージド アプリケーションのパートナー テナントが反映されることがあります。
 
-また、Azure Lighthouse タスクの実行に固有の API も用意されています。 詳細については、 **リファレンス** を参照してください。
+また、Azure Lighthouse タスクの実行に固有の API も用意されています。 詳細については、**リファレンス** を参照してください。
 
 ## <a name="enhanced-services-and-scenarios"></a>強化されたサービスとシナリオ
 
@@ -81,6 +81,8 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 [Azure Kubernetes Service (AKS)](../../aks/index.yml):
 
 - ホストされている Kubernetes 環境を管理し、顧客のテナント内でコンテナー化されたアプリケーションをデプロイして管理する
+- 顧客テナントのクラスターをデプロイおよび管理する
+-   コンテナーに対して Azure Monitor を使用して、顧客テナント全体のパフォーマンスを監視する
 
 [Azure Migrate](../../migrate/index.yml):
 
@@ -170,4 +172,4 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Resource Manager テンプレートを使用する](../how-to/onboard-customer.md)か[プライベートまたはパブリックのマネージド サービスのオファーを Azure Marketplace に公開する](../how-to/publish-managed-services-offers.md)ことで、Azure Lighthouse に顧客をオンボードします。
-- Azure portal の **[マイ カスタマー]** に移動して、 [顧客を表示および管理](../how-to/view-manage-customers.md)します。
+- Azure portal の **[マイ カスタマー]** に移動して、[顧客を表示および管理](../how-to/view-manage-customers.md)します。

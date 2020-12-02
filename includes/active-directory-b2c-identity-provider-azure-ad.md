@@ -5,19 +5,19 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 04/07/2020
 ms.author: mimart
-ms.openlocfilehash: 818f33abfdb0655d96c0a8873a43903ee972b3bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb2ecd9ab63345954356d18164a2afe94a5aae24
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82925445"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025447"
 ---
 ## <a name="register-an-azure-ad-app"></a>Azure AD アプリの登録
 
 特定の Azure AD 組織のユーザーのサインインを有効にするには、組織の Azure AD テナント内でアプリケーションを登録する必要があります。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 組織の Azure AD テナント (contoso.com など) が含まれているディレクトリを使用していることを確認します。 上部のメニューで **[ディレクトリ + サブスクリプション] フィルター**を選択し、Azure AD テナントが含まれているディレクトリを選択します。
+1. 組織の Azure AD テナント (contoso.com など) が含まれているディレクトリを使用していることを確認します。 上部のメニューで **[ディレクトリ + サブスクリプション] フィルター** を選択し、Azure AD テナントが含まれているディレクトリを選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
 1. **[新規登録]** を選択します。
 1. アプリケーションの **[名前]** を入力します。 たとえば、「 `Azure AD B2C App` 」のように入力します。
@@ -32,11 +32,11 @@ ms.locfileid: "82925445"
 
 1. **[登録]** を選択します。 後の手順で使用するために、**アプリケーション (クライアント) ID** を記録しておきます。
 1. **[Certificates & secrets]\(証明書とシークレット\)** を選択してから、 **[New client secret]\(新しいクライアント シークレット\)** を選択します。
-1. シークレットの**説明**を入力し、有効期限を選択して、 **[追加]** を選択します。 後の手順で使用するために、シークレットの**値**を記録しておきます。
+1. シークレットの **説明** を入力し、有効期限を選択して、 **[追加]** を選択します。 後の手順で使用するために、シークレットの **値** を記録しておきます。
 
 ### <a name="configuring-optional-claims"></a>省略可能な要求の構成
 
-Azure AD から `family_name` および `given_name` 要求を取得する場合は、ご利用のアプリケーションに対して省略可能な要求を Azure portal UI またはアプリケーション マニフェストで構成できます。 詳細については、[Azure AD アプリに省略可能な要求を提供する方法](/azure/active-directory/develop/active-directory-optional-claims)に関するページを参照してください。
+Azure AD から `family_name` および `given_name` 要求を取得する場合は、ご利用のアプリケーションに対して省略可能な要求を Azure portal UI またはアプリケーション マニフェストで構成できます。 詳細については、[Azure AD アプリに省略可能な要求を提供する方法](../articles/active-directory/develop/active-directory-optional-claims.md)に関するページを参照してください。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 **Azure Active Directory** を検索して選択します。
 1. **[管理]** セクションで、 **[アプリの登録]** を選択します。

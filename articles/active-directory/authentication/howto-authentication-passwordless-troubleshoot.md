@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 690d4761657b8bf6e5ba63ddfbce7163584e64e2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964572"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174036"
 ---
 # <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad-preview"></a>Azure AD での FIDO 2 セキュリティ キーのハイブリッド デプロイ (プレビュー) のトラブルシューティング
 

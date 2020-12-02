@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57466cccb71444d5711a9221c324a107757c5e82
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 4baaf2de6fbe4a56f64d449644b8594217dc432c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576797"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172739"
 ---
 # <a name="remote-desktop-gateway-services"></a>リモート デスクトップ ゲートウェイ サービス
 
-リモート デスクトップ service (RDS) の標準デプロイには、Windows Server で実行されるさまざまな[リモート デスクトップ ロール サービス](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture)が含まれます。 Azure Active Directory (Azure AD) アプリケーション プロキシを使用した RDS デプロイには、コネクタ サービスが実行されているサーバーからの永続的な送信接続を使用します。 その他のデプロイでは、ロード バランサーを介した着信接続が開いたままになります。 この認証パターンを使用すると、リモート デスクトップ サービスを通じてオンプレミスのアプリケーションを発行することで、さらに多くのアプリケーションを提供することができます。 また、Azure AD アプリケーション プロキシを使用することで、デプロイの攻撃面を減少させることもできます。
+リモート デスクトップ service (RDS) の標準デプロイには、Windows Server で実行されるさまざまな[リモート デスクトップ ロール サービス](/windows-server/remote/remote-desktop-services/Desktop-hosting-logical-architecture)が含まれます。 Azure Active Directory (Azure AD) アプリケーション プロキシを使用した RDS デプロイには、コネクタ サービスが実行されているサーバーからの永続的な送信接続を使用します。 その他のデプロイでは、ロード バランサーを介した着信接続が開いたままになります。 この認証パターンを使用すると、リモート デスクトップ サービスを通じてオンプレミスのアプリケーションを発行することで、さらに多くのアプリケーションを提供することができます。 また、Azure AD アプリケーション プロキシを使用することで、デプロイの攻撃面を減少させることもできます。
 
 ## <a name="use-when"></a>使用する状況
 
@@ -44,8 +44,7 @@ ms.locfileid: "94576797"
 
 ## <a name="implement-remote-desktop-gateway-services-with-azure-ad"></a>Azure AD を使用したリモート デスクトップ ゲートウェイ サービスを実装する
 
-* [Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-integrate-with-remote-desktop-services) 
+* [Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行](../manage-apps/application-proxy-integrate-with-remote-desktop-services.md) 
 
-* [Azure AD でアプリケーション プロキシを使用したリモート アクセスを行うためにオンプレミス アプリケーションを追加する](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)
+* [Azure AD でアプリケーション プロキシを使用したリモート アクセスを行うためにオンプレミス アプリケーションを追加する](../manage-apps/application-proxy-add-on-premises-application.md)
 
- 

@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: 07d9ae0d7cdf8e823bb59cb376d40cdf846bb2cb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3cb01a8f1c06bad618ae5c7930920ee0f067038c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092757"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184537"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor で Log Analytics ワークスペースの正常性を監視する
-Azure Monitor で Log Analytics ワークスペースのパフォーマンスと可用性を維持するには、発生する問題を事前に検出できるようにする必要があります。 この記事では、[Operation](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) テーブル内のデータを使用して、Log Analytics ワークスペースの正常性を監視する方法について説明します。 このテーブルはすべての Log Analytics ワークスペースに含まれているもので、その中にはお使いのワークスペースで発生したエラーと警告が入っています。 このデータを定期的に確認し、ワークスペース内に重要なインシデントがあるときは、アラートを作成して事前に通知する必要があります。
+Azure Monitor で Log Analytics ワークスペースのパフォーマンスと可用性を維持するには、発生する問題を事前に検出できるようにする必要があります。 この記事では、[Operation](/azure/azure-monitor/reference/tables/operation) テーブル内のデータを使用して、Log Analytics ワークスペースの正常性を監視する方法について説明します。 このテーブルはすべての Log Analytics ワークスペースに含まれているもので、その中にはお使いのワークスペースで発生したエラーと警告が入っています。 このデータを定期的に確認し、ワークスペース内に重要なインシデントがあるときは、アラートを作成して事前に通知する必要があります。
 
 ## <a name="_logoperation-function"></a>_LogOperation 関数
 
-Azure Monitor ログでは、問題が発生したワークスペース内の [Operation](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) テーブルに問題の詳細を送信します。 **_LogOperation** システム関数は **Operation** テーブルに基づいており、分析とアラート作成のための簡略化された情報セットを提供します。
+Azure Monitor ログでは、問題が発生したワークスペース内の [Operation](/azure/azure-monitor/reference/tables/operation) テーブルに問題の詳細を送信します。 **_LogOperation** システム関数は **Operation** テーブルに基づいており、分析とアラート作成のための簡略化された情報セットを提供します。
 
 ## <a name="columns"></a>[列]
 
@@ -60,8 +60,8 @@ Azure Monitor ログでは、問題が発生したワークスペース内の [O
 | Metadata。 | エラー | 構成エラーが検出されました。 | |
 | データ コレクション | エラー   | 設定された日数より前に要求が作成されたため、データが削除されました。 | [Azure Monitor ログで使用量とコストを管理する](manage-cost-storage.md#alert-when-daily-cap-reached)
 | データ コレクション | ［情報］    | コレクション マシンの構成が検出されました。| |
-| データ コレクション | ［情報］    | データ コレクションが新しい日で開始されました。 | [Azure Monitor ログで使用量とコストを管理する](/azure/azure-monitor/platform/manage-cost-storage#alert-when-daily-cap-reached) |
-| データ コレクション | 警告 | 1 日の上限に達したため、データ コレクションが停止しました。| [Azure Monitor ログで使用量とコストを管理する](/azure/azure-monitor/platform/manage-cost-storage#alert-when-daily-cap-reached) |
+| データ コレクション | ［情報］    | データ コレクションが新しい日で開始されました。 | [Azure Monitor ログで使用量とコストを管理する](./manage-cost-storage.md#alert-when-daily-cap-reached) |
+| データ コレクション | 警告 | 1 日の上限に達したため、データ コレクションが停止しました。| [Azure Monitor ログで使用量とコストを管理する](./manage-cost-storage.md#alert-when-daily-cap-reached) |
 | データ処理 | エラー   | JSON 形式が無効です。 | [HTTP データ コレクター API を使用して Azure Monitor にログ データを送信する (パブリック プレビュー)](data-collector-api.md#request-body) | 
 | データ処理 | 警告 | 値が許容される最大サイズにトリミングされました。 | [Azure Monitor サービスの制限](../service-limits.md#log-analytics-workspaces) |
 | データ処理 | 警告 | サイズの上限に達したため、フィールド値がトリミングされました。 | [Azure Monitor サービスの制限](../service-limits.md#log-analytics-workspaces) | 

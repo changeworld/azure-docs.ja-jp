@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8578f8aef779ff80f3965fc21b24b785f11226d0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2e7e798967541748b5572994d48cb5bdf7474cb1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024145"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182871"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Azure Monitor ログに Azure Automation のジョブ データを転送する
 
@@ -177,7 +177,7 @@ AzureDiagnostics
 
 ### <a name="filter-job-status-output-converted-into-a-json-object"></a>JSON オブジェクトに変換されたジョブの状態の出力をフィルター処理する
 
-最近、Log Analytics サービスで Automation ログ データが `AzureDiagnostics` テーブルに書き込まれる場合の動作が変更されており、JSON プロパティが個別のフィールドに分割されなくなりました。 出力ストリーム内のオブジェクトを個別の列として JSON 形式で書式設定するように Runbook を構成している場合は、それらのプロパティにアクセスするために、そのフィールドを JSON オブジェクトに解析するようにクエリを再構成する必要があります。 これは、[parsejson](https://docs.microsoft.com/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#parsejson) を使用して、既知のパスにある特定の JSON 要素にアクセスすることによって実現されます。
+最近、Log Analytics サービスで Automation ログ データが `AzureDiagnostics` テーブルに書き込まれる場合の動作が変更されており、JSON プロパティが個別のフィールドに分割されなくなりました。 出力ストリーム内のオブジェクトを個別の列として JSON 形式で書式設定するように Runbook を構成している場合は、それらのプロパティにアクセスするために、そのフィールドを JSON オブジェクトに解析するようにクエリを再構成する必要があります。 これは、[parsejson](/azure/data-explorer/kusto/query/samples?pivots=#parsejson) を使用して、既知のパスにある特定の JSON 要素にアクセスすることによって実現されます。
 
 たとえば、Runbook によって、出力ストリーム内の *ResultDescription* プロパティが複数のフィールドを含む JSON 形式で書式設定されるとします。 **Status** という名前のフィールドで指定されるエラー状態にあるジョブの状態を検索するには、次のクエリ例を使用して、**Failed** の状態を持つ *ResultDescription* を検索します。
 

@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 10/29/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e8e3df77df53b887c4367e46b05d8a7ea4eed2f6
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 946ff043828034340ae3273fc0629e32de755540
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061628"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026808"
 ---
 ## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>自己署名ルート証明書の作成
 
-New-SelfSignedCertificate コマンドレットを使用して、自己署名ルート証明書を作成します。 追加のパラメーターについては、「[New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate)」を参照してください。
+New-SelfSignedCertificate コマンドレットを使用して、自己署名ルート証明書を作成します。 追加のパラメーターについては、「[New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate)」を参照してください。
 
 1. Windows 10 または Windows Server 2016 を実行しているコンピューターから、昇格された特権を使用して Windows PowerShell コンソールを開きます。 これらの例は、Azure Cloud Shell の [使ってみる] では動作しません。 これらの例は、ローカルで実行する必要があります。
-1. 次の例を使用して、自己署名ルート証明書を作成します。 次の例では、"P2SRootCert" という名前の自己署名ルート証明書が作成され、"Certificates-Current User\Personal\Certificates" に自動的にインストールされます。 *certmgr.msc* 、または *ユーザー証明書の管理* を開くと、証明書を表示できます。
+1. 次の例を使用して、自己署名ルート証明書を作成します。 次の例では、"P2SRootCert" という名前の自己署名ルート証明書が作成され、"Certificates-Current User\Personal\Certificates" に自動的にインストールされます。 *certmgr.msc*、または *ユーザー証明書の管理* を開くと、証明書を表示できます。
 
    `Connect-AzAccount` コマンドレットを使用してサインインします。 次に、必要な変更を行って、次の例を実行します。
 
@@ -39,7 +39,7 @@ New-SelfSignedCertificate コマンドレットを使用して、自己署名ル
 
 次の手順では、自己署名ルート証明書からクライアント証明書を生成する方法を示しています。 同じルート証明書から複数のクライアント証明書を生成できます。 以下の手順を使用してクライアント証明書を生成すると、証明書の生成に使用したコンピューターにクライアント証明書が自動的にインストールされます。 クライアント証明書を別のクライアント コンピューターにインストールする場合は、その証明書をエクスポートできます。
 
-例では、New-SelfSignedCertificate コマンドレットを使用して、1 年で期限切れになるクライアント証明書を生成しています。 クライアント証明書の別の有効期限値を設定するなど、追加のパラメーター情報については、「[New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate)」を参照してください。
+例では、New-SelfSignedCertificate コマンドレットを使用して、1 年で期限切れになるクライアント証明書を生成しています。 クライアント証明書の別の有効期限値を設定するなど、追加のパラメーター情報については、「[New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate)」を参照してください。
 
 ### <a name="example-1---powershell-console-session-still-open"></a>例 1 - PowerShell コンソール セッションがまだ開いたまま
 

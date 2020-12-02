@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 21a43a005b78c8916d06e97ca9d2ba21d5a585a3
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 56416009395ebf8270ad0fa8d141277424dd6d9a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423843"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183466"
 ---
 # <a name="authentication"></a>認証
 
@@ -23,4 +23,4 @@ ms.locfileid: "93423843"
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
-[Azure Active Directory (Azure AD) 認証](/azure/active-directory/authentication/overview-authentication)では、Azure Active Directory から取得されるベアラー トークンを利用して要求を認証します。 この認証方法を使用した要求がどのように認可されるかの詳細については、[Azure AD 認証](./rest-api-authorization-azure-ad.md)に関するセクションを参照してください。
+[Azure Active Directory (Azure AD) 認証](../active-directory/authentication/overview-authentication.md)では、Azure Active Directory から取得されるベアラー トークンを利用して要求を認証します。 この認証方法を使用した要求がどのように認可されるかの詳細については、[Azure AD 認証](./rest-api-authorization-azure-ad.md)に関するセクションを参照してください。

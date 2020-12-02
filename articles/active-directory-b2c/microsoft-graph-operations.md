@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9db46d13c9a798204958a7c295df9cca169fc08f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cd4c70354920655507f987f43a542e4b474803e1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94954037"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170941"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Azure AD B2C に使用可能な Microsoft Graph 操作
 
@@ -36,12 +36,12 @@ Microsoft Graph API での Azure AD B2C ユーザー アカウントの管理の
 
 ## <a name="user-phone-number-management"></a>ユーザーの電話番号の管理
 
-- [追加](https://docs.microsoft.com/graph/api/authentication-post-phonemethods)
-- [Get](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)
-- [アップデート](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update)
-- [削除](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete)
+- [追加](/graph/api/authentication-post-phonemethods)
+- [Get](/graph/api/b2cauthenticationmethodspolicy-get)
+- [アップデート](/graph/api/b2cauthenticationmethodspolicy-update)
+- [削除](/graph/api/phoneauthenticationmethod-delete)
 
-Microsoft Graph API を使用したユーザーのサインイン電話番号の管理の詳細については、[B2C 認証方法](https://docs.microsoft.com/graph/api/resources/b2cauthenticationmethodspolicy)に関する記事を参照してください。
+Microsoft Graph API を使用したユーザーのサインイン電話番号の管理の詳細については、[B2C 認証方法](/graph/api/resources/b2cauthenticationmethodspolicy)に関する記事を参照してください。
 
 ## <a name="identity-providers-user-flow"></a>ID プロバイダー（ユーザーフロー）
 

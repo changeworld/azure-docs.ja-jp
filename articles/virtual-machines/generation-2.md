@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
-ms.openlocfilehash: 0aedcc3be4cb319dc24990507d85756bd77777e4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 56a360f461c89d7c60e973bf2d6258d63113ab47
+ms.sourcegitcommit: 6b16e7cc62b29968ad9f3a58f1ea5f0baa568f02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963829"
+ms.lasthandoff: 11/28/2020
+ms.locfileid: "96303768"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -49,6 +49,8 @@ ms.locfileid: "94963829"
 * [NCv3 シリーズ](ncv3-series.md)
 * [ND シリーズ](nd-series.md)
 * [NVv3 シリーズ](nvv3-series.md)
+* [NVv4 シリーズ](nvv4-series.md)
+* [NCasT4_v3 シリーズ](nct4-v3-series.md)
 
 <sup>1</sup> Mv2 シリーズは、第 1 世代 VM のイメージをサポートしておらず、第 2 世代のイメージのサブセットのみをサポートしています。 詳細については、[Mv2 シリーズのドキュメント](mv2-series.md)を参照してください。
 
@@ -85,7 +87,7 @@ Azure では現在、オンプレミスの Hyper-V が第 2 世代 VM に対し�
 
 ### <a name="generation-1-vs-generation-2-features"></a>第 1 世代と第 2 世代の特徴の比較
 
-| 特徴量 | 第 1 世代 | 第 2 世代 |
+| 機能 | 第 1 世代 | 第 2 世代 |
 |---------|--------------|--------------|
 | ブート             | PCAT                      | UEFI                               |
 | ディスク コントローラー | IDE                       | SCSI                               |

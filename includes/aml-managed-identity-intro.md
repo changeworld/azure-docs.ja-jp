@@ -9,14 +9,14 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 08/24/2020
-ms.openlocfilehash: d8ee7b61897a9718d7078fc16eddc177fefbff43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70b636b7bb508b71475a7464983b091d5d10e0e1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89147256"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027481"
 ---
- また、Azure Machine Learning コンピューティング クラスターによって、[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) がサポートされ、コードに資格情報を含めることなく、Azure リソースへのアクセスが認証されます。 マネージド ID には、次の 2 種類があります。
+ また、Azure Machine Learning コンピューティング クラスターによって、[マネージド ID](../articles/active-directory/managed-identities-azure-resources/overview.md) がサポートされ、コードに資格情報を含めることなく、Azure リソースへのアクセスが認証されます。 マネージド ID には、次の 2 種類があります。
 
 * **システム割り当てマネージド ID** は、Azure Machine Learning コンピューティング クラスターで直接有効になります。 システム割り当て ID のライフ サイクルは、コンピューティング クラスターに直接関連付けられます。 コンピューティング クラスターが削除された場合、Azure は Azure AD の資格情報および ID を自動的にクリーンアップします。
 * **ユーザー割り当てマネージド ID** は、Azure マネージド ID サービスを介して提供されるスタンドアロンの Azure リソースです。 ユーザー割り当てマネージド ID を複数のリソースに割り当てることができ、任意の有効期間を設定できます。

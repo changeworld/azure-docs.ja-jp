@@ -5,11 +5,11 @@ ms.service: expressroute
 ms.topic: include
 ms.author: cherylmc
 ms.openlocfilehash: f04861d55c9cea3c79f4983f7be2e1f5a3c6d864
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74926218"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018167"
 ---
 最新バージョンの Azure Service Management (SM) PowerShell モジュールと ExpressRoute モジュールをインストールします。 Azure CloudShell 環境を使用して SM モジュールを実行することはできません。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 04399dc82a3bd2d70b8b472b121e95a73ca43136
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9c27139e2dca37c1ff8d963e1e8cdb5de682d39d
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009604"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302942"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>チュートリアル: Azure Active Directory と Carlson Wagonlit Travel の統合
 
@@ -119,7 +119,7 @@ Carlson Wagonlit Travel で Azure AD シングル サインオンを構成する
 
 ### <a name="configure-carlson-wagonlit-travel-single-sign-on"></a>Carlson Wagonlit Travel のシングル サインオンの構成
 
-**Carlson Wagonlit Travel** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Carlson Wagonlit Travel サポート チーム](http://www.carlsonwagonlit.in/content/cwt/in/en/technical-assistance.html)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Carlson Wagonlit Travel** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Carlson Wagonlit Travel サポート チーム](https://www.mycwt.com/traveler-help/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -174,7 +174,7 @@ Carlson Wagonlit Travel で Azure AD シングル サインオンを構成する
 
 ### <a name="create-carlson-wagonlit-travel-test-user"></a>Carlson Wagonlit Travel のテスト ユーザーの作成
 
-このセクションでは、Carlson Wagonlit Travel で Britta Simon というユーザーを作成します。 [Carlson Wagonlit Travel サポート チーム](http://www.carlsonwagonlit.in/content/cwt/in/en/technical-assistance.html)と協力して、Carlson Wagonlit Travel プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Carlson Wagonlit Travel で Britta Simon というユーザーを作成します。 [Carlson Wagonlit Travel サポート チーム](https://www.mycwt.com/traveler-help/)と協力して、Carlson Wagonlit Travel プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

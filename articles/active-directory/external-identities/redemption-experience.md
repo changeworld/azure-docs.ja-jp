@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2427d974f96c0905ea2eb33daea7c89de277ec9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8520afdd05ecce8604ce72596bdf06053217cc2e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441812"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173092"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B コラボレーションの招待の利用
 
@@ -25,15 +25,15 @@ ms.locfileid: "92441812"
 ゲスト ユーザーをディレクトリに追加すると、そのゲスト ユーザーのアカウントは同意状態 (PowerShell で表示可能) になります。これは、最初は **PendingAcceptance** に設定されます。 ゲストが招待を受け入れ、プライバシー ポリシーと利用規約に同意するまで、この設定は維持されます。 その後、同意の状態が **承認済み** に変わり、同意ページはゲストに表示されなくなります。
 
    > [!IMPORTANT]
-   > **2021 年 3 月 31 日以降** 、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様は、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
+   > **2021 年 3 月 31 日以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様は、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
 
 ## <a name="redemption-through-the-invitation-email"></a>招待メールによる利用
 
 [Azure portal](./b2b-quickstart-add-guest-users-portal.md) を使用してディレクトリにゲスト ユーザーを追加すると、そのプロセスで招待メールがゲストに送信されます。 ゲスト ユーザーをディレクトリに追加するために [PowerShell を使用する](./b2b-quickstart-invite-powershell.md)際に、招待メールを送信するように選択することもできます。 以下は、メールのリンクを利用する場合のゲストのエクスペリエンスの説明です。
 
-1. ゲストは、 **Microsoft Invitations** から送信される [招待メール](./invitation-email-elements.md)を受け取ります。
+1. ゲストは、**Microsoft Invitations** から送信される [招待メール](./invitation-email-elements.md)を受け取ります。
 2. ゲストは、電子メールで **[招待の承諾]** を選択します。
-3. ゲストは、自分の資格情報を使用してディレクトリにサインインします。 ゲストがディレクトリにフェデレーションできるアカウントを持っておらず、[電子メール ワンタイム パスコード (OTP)](./one-time-passcode.md) 機能が有効になっていない場合、ゲストは個人用 [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) または [Azure AD セルフサービス アカウント](../users-groups-roles/directory-self-service-signup.md)を作成するように求められます。 詳細については、「[招待の引き換えフロー](#invitation-redemption-flow)」を参照してください。
+3. ゲストは、自分の資格情報を使用してディレクトリにサインインします。 ゲストがディレクトリにフェデレーションできるアカウントを持っておらず、[電子メール ワンタイム パスコード (OTP)](./one-time-passcode.md) 機能が有効になっていない場合、ゲストは個人用 [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) または [Azure AD セルフサービス アカウント](../enterprise-users/directory-self-service-signup.md)を作成するように求められます。 詳細については、「[招待の引き換えフロー](#invitation-redemption-flow)」を参照してください。
 4. ゲストには、以下に説明されている[同意エクスペリエンス](#consent-experience-for-the-guest)が示されます。
 
 ## <a name="redemption-through-a-direct-link"></a>直接リンクによる利用
@@ -74,9 +74,9 @@ ms.locfileid: "92441812"
 
 7. [ゲスト用の電子メール ワンタイム パスコードが有効になっている](./one-time-passcode.md#when-does-a-guest-user-get-a-one-time-passcode)場合、招待メール経由でパスコードがユーザーに送信されます。 ユーザーはこのパスコードを取得し、Azure AD サインイン ページで入力します。
 
-8. ゲスト用の電子メール ワンタイム パスコードが無効になっている場合、Azure AD によって、ドメイン サフィックスがチェックされ、コンシューマー アカウントに属しているかどうかが判断されます。 該当する場合、ユーザーは、個人用 [Microsoft アカウント](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)を作成するように求められます。 該当しない場合、[Azure AD セルフサービス アカウント](../users-groups-roles/directory-self-service-signup.md)を作成するように求められます。
+8. ゲスト用の電子メール ワンタイム パスコードが無効になっている場合、Azure AD によって、ドメイン サフィックスがチェックされ、コンシューマー アカウントに属しているかどうかが判断されます。 該当する場合、ユーザーは、個人用 [Microsoft アカウント](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)を作成するように求められます。 該当しない場合、[Azure AD セルフサービス アカウント](../enterprise-users/directory-self-service-signup.md)を作成するように求められます。
 
-9. Azure AD では、メールへのアクセスを確認することで、[Azure AD セルフサービス アカウント](../users-groups-roles/directory-self-service-signup.md)の作成が試行されます。 アカウントの確認は、コードをメールに送信し、ユーザーにそのコードを取得させ、Azure AD に送信させることで行われます。 ただし、招待されたユーザーのテナントがフェデレーションされているか、または招待されたユーザーのテナントで AllowEmailVerifiedUsers フィールドが false に設定されている場合、ユーザーは引き換えを完了できず、フローは結果的にエラーになります。 詳細については、「[Azure Active Directory B2B コラボレーションのトラブルシューティング](./troubleshoot.md#the-user-that-i-invited-is-receiving-an-error-during-redemption)」を参照してください。
+9. Azure AD では、メールへのアクセスを確認することで、[Azure AD セルフサービス アカウント](../enterprise-users/directory-self-service-signup.md)の作成が試行されます。 アカウントの確認は、コードをメールに送信し、ユーザーにそのコードを取得させ、Azure AD に送信させることで行われます。 ただし、招待されたユーザーのテナントがフェデレーションされているか、または招待されたユーザーのテナントで AllowEmailVerifiedUsers フィールドが false に設定されている場合、ユーザーは引き換えを完了できず、フローは結果的にエラーになります。 詳細については、「[Azure Active Directory B2B コラボレーションのトラブルシューティング](./troubleshoot.md#the-user-that-i-invited-is-receiving-an-error-during-redemption)」を参照してください。
 
 10. ユーザーは、個人用 [Microsoft アカウント (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) を作成するように求められます。
 

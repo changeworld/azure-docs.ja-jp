@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/08/2020
-ms.openlocfilehash: 048230bb85d2ac599efc6bd3fb326f98038cce57
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2aa83a861697882127c75eb696807f604c3061f0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686560"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184554"
 ---
 # <a name="troubleshoot-azure-monitor-for-vms-guest-health-preview"></a>Azure Monitor for VMs のゲストの正常性 (プレビュー) をトラブルシューティングする
 この記事では、Azure Monitor for VMs の正常性に関する問題があるときに実行できるトラブルシューティング手順について説明します。
@@ -42,7 +42,7 @@ Azure Monitor エージェント拡張機能とゲスト VM 正常性エージ�
 データ ソースとして正常性拡張機能を指定するデータ収集ルールが、仮想マシンに関連付けられていることを確認します。
 
 ## <a name="error-message-for-bad-request-due-to-insufficient-permissions"></a>アクセス許可が十分でないため無効な要求であることを示すエラー メッセージ
-このエラーは、**Microsoft.WorkloadMonitor** リソース プロバイダーがサブスクリプションに登録されなかったことを示しています。 このリソース プロバイダーの登録の詳細については、「[Azure リソース プロバイダーと種類](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider)」を参照してください。 
+このエラーは、**Microsoft.WorkloadMonitor** リソース プロバイダーがサブスクリプションに登録されなかったことを示しています。 このリソース プロバイダーの登録の詳細については、「[Azure リソース プロバイダーと種類](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)」を参照してください。 
 
 ![正しくない要求](media/vminsights-health-troubleshoot/bad-request.png)
 

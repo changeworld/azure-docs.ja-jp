@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2f1c703f2bd2e90e15c566b7e04e8a878c16f6de
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b73fa80085cc0491c8b4d0856d0baacfef1b51c0
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001271"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301530"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
@@ -22,7 +22,7 @@ Hybrid Runbook Worker で実行される Runbook を作成するときは、work
 
 Azure Automation による Hybrid Runbook Worker でのジョブの処理は、Azure サンドボックスで実行されるジョブとは異なります。 実行時間の長い Runbook がある場合、起こりうる再起動に対して回復性があることを確認します。 ジョブの動作の詳細については、「[Hybrid Runbook Worker ジョブ](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-jobs)」を参照してください。
 
-Hybrid Runbook Worker のジョブは、Windows ではローカルの **システム** アカウントで実行され、Linux では **nxautomation** アカウントで実行されます。 Linux の場合、Runbook モジュールが格納されている場所に **nxautomation** アカウントがアクセスできることを確認します。 [Install-Module](/powershell/module/powershellget/install-module) コマンドレットを使用するときは、`Scope` パラメーターに対して AllUsers を指定し、**nxautomation** アカウントがアクセスできるようにします。 Linux での PowerShell に関する詳細については、「[Windows 以外のプラットフォームでの PowerShell に関する既知の問題](/powershell/scripting/whats-new/known-issues-ps6#known-issues-for-powershell-on-non-windows-platforms)」を参照してください。
+Hybrid Runbook Worker のジョブは、Windows ではローカルの **システム** アカウントで実行され、Linux では **nxautomation** アカウントで実行されます。 Linux の場合、Runbook モジュールが格納されている場所に **nxautomation** アカウントがアクセスできることを確認します。 [Install-Module](/powershell/module/powershellget/install-module) コマンドレットを使用するときは、`Scope` パラメーターに対して AllUsers を指定し、**nxautomation** アカウントがアクセスできるようにします。 Linux での PowerShell に関する詳細については、「[Windows 以外のプラットフォームでの PowerShell に関する既知の問題](/powershell/scripting/whats-new/what-s-new-in-powershell-70?view=powershell-7.1)」を参照してください。
 
 ## <a name="configure-runbook-permissions"></a>Runbook のアクセス許可を構成する
 

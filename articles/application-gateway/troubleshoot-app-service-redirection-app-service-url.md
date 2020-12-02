@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 51249c68407f6b4ca7793b2fdeceab5aa4f7bc5c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 1cc7df755198461643703cac988c8c31f2ac25db
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94575987"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182888"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Application Gateway での App Service に関する問題のトラブルシューティング
 
@@ -93,7 +93,7 @@ v1 SKU を使用する場合、location ヘッダーを書き換えることは�
 
 カスタム ドメインを所有していることと、このプロセスに従うことが必要になります。
 
-- App Service のカスタム ドメイン一覧にドメインを登録します。 App Service の FQDN を指す CNAME がカスタム ドメインに必要です。 詳細については、「[既存のカスタム DNS 名を Azure App Service にマップする](/azure/app-service/app-service-web-tutorial-custom-domain)」を参照してください。
+- App Service のカスタム ドメイン一覧にドメインを登録します。 App Service の FQDN を指す CNAME がカスタム ドメインに必要です。 詳細については、「[既存のカスタム DNS 名を Azure App Service にマップする](../app-service/app-service-web-tutorial-custom-domain.md)」を参照してください。
 
     ![App Service のカスタムドメインの一覧](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/02/2020
 ms.author: hrasheed
 ms.openlocfilehash: c0084fffa4e506f463bb77d7c216f29f4037162b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284416"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998271"
 ---
 問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
 

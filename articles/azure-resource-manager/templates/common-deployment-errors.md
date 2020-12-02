@@ -4,12 +4,12 @@ description: Azure Resource Manager を使用した Azure へのリソースの�
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 09/09/2020
-ms.openlocfilehash: fb7e476a5b4416282546d321a5e9a0127b7a4364
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 785a74184cae8523b99da7f647ca87fda53c8648
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000710"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185829"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
 
@@ -76,10 +76,10 @@ ms.locfileid: "96000710"
 | StorageAccountAlreadyTaken | ストレージ アカウントに一意の名前を指定してください。 | [ストレージ アカウント名の解決](error-storage-account-name.md) |
 | StorageAccountNotFound | サブスクリプション、リソース グループ、および使用するストレージ アカウントの名前を確認してください。 | |
 | SubnetsNotInSameVnet | 仮想マシンでは、仮想ネットワークを 1 つのみを持つことができます。 複数の NIC をデプロイするときは、それらが同じ仮想ネットワークに属していることを確認してください。 | [複数の NIC](../../virtual-machines/windows/multiple-nics.md) |
-| SubscriptionNotFound | デプロイ用に指定されたサブスクリプションにアクセスできません。 サブスクリプション ID が間違っている、テンプレートをデプロイしているユーザーにサブスクリプションにデプロイするための適切なアクセス許可がない、またはサブスクリプション ID の形式が間違っている可能性があります。 入れ子になったデプロイを使用して[スコープにまたがってデプロイ](cross-scope-deployment.md)する場合は、サブスクリプションの GUID を指定してください。 | |
+| SubscriptionNotFound | デプロイ用に指定されたサブスクリプションにアクセスできません。 サブスクリプション ID が間違っている、テンプレートをデプロイしているユーザーにサブスクリプションにデプロイするための適切なアクセス許可がない、またはサブスクリプション ID の形式が間違っている可能性があります。 入れ子になったデプロイを使用して[スコープにまたがってデプロイ](./deploy-to-resource-group.md)する場合は、サブスクリプションの GUID を指定してください。 | |
 | SubscriptionNotRegistered | リソースをデプロイするときは、リソース プロバイダーをサブスクリプションに登録する必要があります。 デプロイに Azure Resource Manager テンプレートを使用すると、リソース プロバイダーがサブスクリプションに自動的に登録されます。 自動登録が時間内に完了しないことがあります。 この断続的なエラーを回避するには、デプロイの前にリソース プロバイダーを登録します。 | [登録を解決する](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | 不要な依存関係を削除します。 | [循環依存関係を解決する](error-invalid-template.md#circular-dependency) |
-| TooManyTargetResourceGroups | 1 回のデプロイのリソース グループ数を減らします。 | [スコープをまたいだデプロイ](cross-scope-deployment.md) |
+| TooManyTargetResourceGroups | 1 回のデプロイのリソース グループ数を減らします。 | [スコープをまたいだデプロイ](./deploy-to-resource-group.md) |
 
 ## <a name="find-error-code"></a>エラー コードを見つける
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 0fa0b0d5e3620fc45a104ea31fd3bcbedd673da1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0ce969a4ab016d6a036d33a0e9bf027bb580a20
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318948"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186220"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>オンプレミス サーバー用に Azure Monitor Application Insights エージェントをデプロイする
 
@@ -67,7 +67,7 @@ Application Insights エージェントは、 https://www.powershellgallery.com/
   - [Get-ApplicationInsightsMonitoringStatus](./status-monitor-v2-api-reference.md#get-applicationinsightsmonitoringstatus) コマンドレットは、有効化が成功したことを確認するために使用できます。
   - アプリからテレメトリが送信されているかどうかをすばやく判断するには、[Live Metrics](./live-stream.md) を使用することをお勧めします。
 
-  - [Log Analytics](../log-query/get-started-portal.md) を使用して、現在テレメトリを送信しているすべてのクラウド ロールを一覧表示することもできます。
+  - [Log Analytics](../log-query/log-analytics-tutorial.md) を使用して、現在テレメトリを送信しているすべてのクラウド ロールを一覧表示することもできます。
       ```Kusto
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
@@ -86,4 +86,3 @@ Application Insights エージェントは、 https://www.powershellgallery.com/
 * サイトがライブの状態であることを確認するために [Web テストを作成](monitor-web-app-availability.md)します。
 * Web ページ コードからの例外を参照してトレースの呼び出しを有効にするために、[Web クライアント テレメトリ](./javascript.md)を追加します。
 * トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](./asp-net.md)します。
-

@@ -14,18 +14,18 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: hahamil
 ms.reviewer: marsma
-ms.openlocfilehash: 7e53e21b6d929e2f0ba9a2e23e4e8e1b2278f828
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 3f5791bfcf6547b7fc4e84bee3d4c1c49453af9c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209155"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169496"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>方法:Android で MSAL を使用してクロスアプリ SSO を有効にする
 
 シングル サインオン (SSO) を使用すると、ユーザーは資格情報を一度入力するだけで、その資格情報をアプリケーション間で自動的に機能させることができます。
 
-[Microsoft ID プラットフォーム](/azure/active-directory/develop/)と Microsoft Authentication Library (MSAL) は、アプリのスイート間で SSO を有効にするのに役立ちます。 ブローカー機能と Authenticator アプリケーションを使用することで、デバイス全体に SSO を拡張できます。
+[Microsoft ID プラットフォーム](./index.yml)と Microsoft Authentication Library (MSAL) は、アプリのスイート間で SSO を有効にするのに役立ちます。 ブローカー機能と Authenticator アプリケーションを使用することで、デバイス全体に SSO を拡張できます。
 
 この攻略ガイドでは、SSO をユーザーに提供するためにアプリケーションで使用される SDK を構成する方法について説明します。
 
@@ -33,7 +33,7 @@ ms.locfileid: "92209155"
 
 この攻略ガイドでは、次を行う方法がわかっていることを前提としています。
 
-- Azure portal を使用してアプリをプロビジョニングする。 このトピックの詳細については、[Android チュートリアル](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android#create-a-project)のアプリ作成手順を参照してください。
+- Azure portal を使用してアプリをプロビジョニングする。 このトピックの詳細については、[Android チュートリアル](./tutorial-v2-android.md#create-a-project)のアプリ作成手順を参照してください。
 - アプリケーションを Android 用の [Microsoft Authentication Library](https://github.com/AzureAD/microsoft-authentication-library-for-android) と統合する。
 
 ## <a name="methods-for-single-sign-on"></a>シングル サインオンのメソッド

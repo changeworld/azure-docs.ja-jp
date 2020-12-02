@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: ec2ffe71a32781a855da258f3621738f1a5f6be4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e9a1bef582053eccdbfef63c2159cf540ffd9bfb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294293"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186594"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Azure Monitor のログ アラートのトラブルシューティング  
 
 この記事では、Azure Monitor 内のログ アラートに関する一般的な問題の解決方法について説明します。 また、ログ アラートの機能や構成でよく発生する問題の解決策も紹介しています。
 
-ログ アラートを使用すると、ユーザーは [Log Analytics](../log-query/get-started-portal.md) クエリを使用して、設定した頻度で毎回リソース ログを評価し、結果に基づいてアラートを発生させることができます。 [アクション グループ](./action-groups.md)を使用することで、ルールによって 1 つ以上のアクションをトリガーできます。 [ログ アラートの機能と用語の詳細について参照してください](alerts-unified-log.md)。
+ログ アラートを使用すると、ユーザーは [Log Analytics](../log-query/log-analytics-tutorial.md) クエリを使用して、設定した頻度で毎回リソース ログを評価し、結果に基づいてアラートを発生させることができます。 [アクション グループ](./action-groups.md)を使用することで、ルールによって 1 つ以上のアクションをトリガーできます。 [ログ アラートの機能と用語の詳細について参照してください](alerts-unified-log.md)。
 
 > [!NOTE]
 > この記事では、トリガーされ Azure portal に表示されたアラート ルールの通知が、関連付けられているアクション グループで対処されなかった場合については考慮していません。 そのような場合は、[ここ](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)でトラブルシューティングに関する詳細を参照してください。

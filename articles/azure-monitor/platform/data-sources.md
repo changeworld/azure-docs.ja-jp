@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/06/2020
-ms.openlocfilehash: 48336b65ec564f834ef8a1e8f4911c89b1a37f31
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: c6b976ca1beb9beb78f7c56d7ae512c1f499c2c5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107948"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186526"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor で使用する監視データのソース
 Azure Monitor は、[ログ](data-platform-logs.md)と[メトリック](data-platform-metrics.md)を含む[一般的な監視データ プラットフォーム](data-platform.md)をベースにしています。 このプラットフォームにデータを収集すれば、Azure Monitor にある共通のツール一式を使用して、複数のリソースからのデータをまとめて分析することができます。 特定のシナリオに対応するために監視データは他の場所に送信されることがあるほか、一部のリソースについては、他の場所に書き込まれた後で、ログやメトリックに収集されることもあります。
@@ -164,7 +164,7 @@ Azure Monitor における詳しいアプリケーションの監視は、さま
 |            | 例外のサブセットを得るためにキャプチャされたデバッグのスナップショット データは、Azure Storage に格納されます。 Azure portal で Application Insights を使用してダウンロードし、ローカル分析を行います。  | [スナップショットのしくみ](../app/snapshot-debugger.md#how-snapshots-work) |
 
 ## <a name="monitoring-solutions-and-insights"></a>監視ソリューションと Insights
-[監視ソリューション](../insights/solutions.md)と [Insights](../insights/insights-overview.md) は、データを収集して、特定のサービスやアプリケーションの操作に関する追加の分析情報を提供します。 アプリケーションのさまざまな階層 (場合によっては複数の階層) に存在するリソースに対応することもできます。
+[監視ソリューション](../insights/solutions.md)と [Insights](../monitor-reference.md) は、データを収集して、特定のサービスやアプリケーションの操作に関する追加の分析情報を提供します。 アプリケーションのさまざまな階層 (場合によっては複数の階層) に存在するリソースに対応することもできます。
 
 ### <a name="monitoring-solutions"></a>監視ソリューション
 

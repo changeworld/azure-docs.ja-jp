@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 39a511601606118228ee5fbd9dcf68b6707ede47
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 5d950598e4a0af86ac37b53722e80eb4ef0a71a4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288352"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183058"
 ---
 # <a name="app-service-networking-features"></a>App Service のネットワーク機能
 
@@ -26,9 +26,9 @@ Azure App Service のデプロイには、主に 2 つの種類があります�
 
 ## <a name="multitenant-app-service-networking-features"></a>マルチテナント App Service のネットワーク機能 
 
-Azure App Service は分散システムです。 受信した HTTP または HTTPS 要求を処理するロールは、" *フロントエンド* " と呼ばれます。 お客様のワークロードをホストするロールは、 *worker* と呼ばれます。 App Service のデプロイ内のロールはすべて、マルチテナント ネットワークに存在します。 同じ App Service スケール ユニット内に多くのお客様が存在しているので、App Service ネットワークをお使いのネットワークに直接接続することはできません。 
+Azure App Service は分散システムです。 受信した HTTP または HTTPS 要求を処理するロールは、"*フロントエンド*" と呼ばれます。 お客様のワークロードをホストするロールは、*worker* と呼ばれます。 App Service のデプロイ内のロールはすべて、マルチテナント ネットワークに存在します。 同じ App Service スケール ユニット内に多くのお客様が存在しているので、App Service ネットワークをお使いのネットワークに直接接続することはできません。 
 
-ネットワークを接続する代わりに、アプリケーション通信のさまざまな側面を処理する機能が必要になります。 お客様のアプリ " *への* " 要求を処理する機能を、お客様のアプリ " *からの* " 呼び出しを行うときの問題を解決するために使用することはできません。 同様に、お客様のアプリからの呼び出しに関する問題を解決する機能を、お客様のアプリに対する問題を解決するために使用することはできません。  
+ネットワークを接続する代わりに、アプリケーション通信のさまざまな側面を処理する機能が必要になります。 お客様のアプリ "*への*" 要求を処理する機能を、お客様のアプリ "*からの*" 呼び出しを行うときの問題を解決するために使用することはできません。 同様に、お客様のアプリからの呼び出しに関する問題を解決する機能を、お客様のアプリに対する問題を解決するために使用することはできません。  
 
 | 受信時の機能 | 送信時の機能 |
 |---------------------|-------------------|
@@ -98,7 +98,7 @@ App Service には、サービスの管理に使用されるエンドポイン�
 
 ### <a name="access-restrictions"></a>アクセスの制限 
 
-アクセスの制限を使用すると、" *受信* " 要求をフィルター処理できます。 このフィルター処理は、アプリが実行される worker ロールよりも上流にある、フロントエンド ロールで行われます。 フロントエンド ロールは worker より上流に存在するので、アクセスの制限はアプリに対するネットワーク レベルでの保護と考えることができます。 
+アクセスの制限を使用すると、"*受信*" 要求をフィルター処理できます。 このフィルター処理は、アプリが実行される worker ロールよりも上流にある、フロントエンド ロールで行われます。 フロントエンド ロールは worker より上流に存在するので、アクセスの制限はアプリに対するネットワーク レベルでの保護と考えることができます。 
 
 この機能を使用すると、優先順位に従って評価される許可規則と拒否規則のリストを作成できます。 これは、Azure ネットワークのネットワーク セキュリティ グループ (NSG) 機能と似ています。 この機能は、ASE またはマルチテナント サービスで使用できます。 ILB ASE またはプライベート エンドポイントで使用すると、プライベート アドレス ブロックからのアクセスを制限できます。
 > [!NOTE]
@@ -116,7 +116,7 @@ IP ベースのアクセス制限機能は、アプリに到達するために�
 
 #### <a name="access-restriction-rules-based-on-service-endpoints"></a>サービス エンドポインに基づくアクセス制限規則 
 
-サービス エンドポイントを使用すると、アプリへの " *受信* " アクセスをロック ダウンすることができるため、送信元アドレスは、選択したサブネットのセットからのものである必要があります。 この機能は、IP アクセス制限と併用できます。 サービス エンドポイントは、リモート デバッグと互換性がありません。 アプリでリモート デバッグを使用する場合は、サービス エンドポイントが有効になっているサブネット内にクライアントを配置することはできません。 サービス エンドポイントを設定するプロセスは、IP アクセス制限を設定するプロセスに似ています。 パブリック アドレスおよび仮想ネットワーク内のサブネットが含まれる許可と拒否のアクセス規則リストを作成できます。 
+サービス エンドポイントを使用すると、アプリへの "*受信*" アクセスをロック ダウンすることができるため、送信元アドレスは、選択したサブネットのセットからのものである必要があります。 この機能は、IP アクセス制限と併用できます。 サービス エンドポイントは、リモート デバッグと互換性がありません。 アプリでリモート デバッグを使用する場合は、サービス エンドポイントが有効になっているサブネット内にクライアントを配置することはできません。 サービス エンドポイントを設定するプロセスは、IP アクセス制限を設定するプロセスに似ています。 パブリック アドレスおよび仮想ネットワーク内のサブネットが含まれる許可と拒否のアクセス規則リストを作成できます。 
 
 この機能のユース ケースをいくつか示します。
 
@@ -129,7 +129,7 @@ IP ベースのアクセス制限機能は、アプリに到達するために�
 
 ### <a name="private-endpoint"></a>プライベート エンドポイント
 
-プライベート エンドポイントは、Azure Private Link を使用して Web アプリにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントにより、お客様の仮想ネットワークからのプライベート IP アドレスを使用して、Web アプリが実質的に仮想ネットワークに取り込まれます。 この機能は、Web アプリへの " *受信* " フロー専用です。
+プライベート エンドポイントは、Azure Private Link を使用して Web アプリにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントにより、お客様の仮想ネットワークからのプライベート IP アドレスを使用して、Web アプリが実質的に仮想ネットワークに取り込まれます。 この機能は、Web アプリへの "*受信*" フロー専用です。
 詳細については、「[Azure Web アプリでプライベート エンドポイントを使用する][privateendpoints]」を参照してください。
 
 この機能のユース ケースをいくつか示します。
@@ -166,7 +166,7 @@ App Service ハイブリッド接続では、その上で何が行われてい�
 
 ### <a name="gateway-required-vnet-integration"></a>ゲートウェイが必要な VNet 統合 
 
-App Service のゲートウェイが必要な VNet 統合機能を使用すると、アプリから Azure 仮想ネットワークへの " *送信* " 要求を行うことができます。 この機能を使用すると、アプリが実行されているホストが、ポイント対サイト VPN を使用して、仮想ネットワーク上の Virtual Network ゲートウェイに接続されます。 この機能を構成すると、アプリには、各インスタンスに割り当てられているポイント対サイト アドレスのいずれかが付与されます。 この機能を使用して、任意のリージョンの、クラシックまたは Azure Resource Manager 仮想ネットワーク内のリソースにアクセスできます。 
+App Service のゲートウェイが必要な VNet 統合機能を使用すると、アプリから Azure 仮想ネットワークへの "*送信*" 要求を行うことができます。 この機能を使用すると、アプリが実行されているホストが、ポイント対サイト VPN を使用して、仮想ネットワーク上の Virtual Network ゲートウェイに接続されます。 この機能を構成すると、アプリには、各インスタンスに割り当てられているポイント対サイト アドレスのいずれかが付与されます。 この機能を使用して、任意のリージョンの、クラシックまたは Azure Resource Manager 仮想ネットワーク内のリソースにアクセスできます。 
 
 ![ゲートウェイが必要な VNet 統合を示す図。](media/networking-features/gw-vnet-integration.png)
 
@@ -290,12 +290,12 @@ App Service をスキャンすると、受信接続用に公開されている�
 |  インフラストラクチャの使用 | 7654、1221 |
 
 <!--Links-->
-[appassignedaddress]: https://docs.microsoft.com/azure/app-service/configure-ssl-certificate
-[iprestrictions]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
-[serviceendpoints]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
-[hybridconn]: https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections
-[vnetintegrationp2s]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
-[vnetintegration]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
-[networkinfo]: https://docs.microsoft.com/azure/app-service/environment/network-info
-[appgwserviceendpoints]: https://docs.microsoft.com/azure/app-service/networking/app-gateway-with-service-endpoints
-[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint
+[appassignedaddress]: ./configure-ssl-certificate.md
+[iprestrictions]: ./app-service-ip-restrictions.md
+[serviceendpoints]: ./app-service-ip-restrictions.md
+[hybridconn]: ./app-service-hybrid-connections.md
+[vnetintegrationp2s]: ./web-sites-integrate-with-vnet.md
+[vnetintegration]: ./web-sites-integrate-with-vnet.md
+[networkinfo]: ./environment/network-info.md
+[appgwserviceendpoints]: ./networking/app-gateway-with-service-endpoints.md
+[privateendpoints]: ./networking/private-endpoint.md

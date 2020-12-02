@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 2837f8c5b098b0502bd293ec2414ad7401cc4f95
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 33c7b9b91067c39ea047242d207a4834c08b7e40
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996170"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179339"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cornerstone OnDemand の統合
 
@@ -82,9 +82,9 @@ Cornerstone OnDemand で Azure AD SSO を構成してテストするには、次
 
 1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<company>.csod.com`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<company>.csod.com/samldefault.aspx?ouid=2`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<company>.csod.com`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<company>.csod.com/samldefault.aspx?ouid=2`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Cornerstone OnDemand クライアント サポート チーム](mailto:moreinfo@csod.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

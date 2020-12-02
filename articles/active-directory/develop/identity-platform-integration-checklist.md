@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 036c40395e5da5ebc09a87e420893d7dbd2ec668
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94da22fbb2940bddaad1324bedc8759706eca37b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116803"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173568"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft ID プラットフォームのベスト プラクティスと推奨事項
 
@@ -32,7 +32,7 @@ ms.locfileid: "88116803"
 
 ## <a name="basics"></a>基本
 
-![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) [Microsoft プラットフォーム ポリシーを読んで理解します](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409)。 ユーザーとプラットフォームを保護するために設計時に要点をまとめた条項にアプリケーションが従っていることを確認します。
+![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) [Microsoft プラットフォーム ポリシーを読んで理解します](/legal/microsoft-identity-platform/terms-of-use)。 ユーザーとプラットフォームを保護するために設計時に要点をまとめた条項にアプリケーションが従っていることを確認します。
 
 ## <a name="ownership"></a>所有権
 

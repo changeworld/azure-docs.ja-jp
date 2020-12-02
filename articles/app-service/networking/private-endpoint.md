@@ -9,17 +9,17 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 880100c3d67dfe10aacf10ed5bb57dec6e2c2a83
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: bebc7dcbc18a25b0d6d0761a8ca3ac476e83e581
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217067"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183041"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Azure Web アプリでプライベート エンドポイントを使用する
 
 > [!IMPORTANT]
-> プライベート エンドポイントは、次の App Service プランでホストされている Windows および Linux の Web アプリ (コンテナー化されているかどうかにかかわらず) で使用できます: **Isolated** 、 **PremiumV2** 、 **PremiumV3** 、 **Functions Premium** (Elastic Premium プランとも呼ばれます)。 
+> プライベート エンドポイントは、次の App Service プランでホストされている Windows および Linux の Web アプリ (コンテナー化されているかどうかにかかわらず) で使用できます:**Isolated**、**PremiumV2**、**PremiumV3**、**Functions Premium** (Elastic Premium プランとも呼ばれます)。 
 
 Azure Web アプリにプライベート エンドポイントを使用すると、プライベート ネットワーク内のクライアントが Private Link 経由で安全にアプリにアクセスできるようになります。 プライベート エンドポイントは、Azure VNet アドレス空間からの IP アドレスを使用します。 プライベート ネットワーク上のクライアントと Web アプリ間のネットワーク トラフィックは、VNet および Microsoft バックボーン ネットワーク上の Private Link を経由することで、パブリック インターネットにさらされないようにします。
 
@@ -86,7 +86,7 @@ Web アプリにプライベート エンドポイントを使用する場合は
 |cloudservicename.cloudapp.net|A|40.122.110.154|<-- このパブリック IP はプライベート エンドポイントではありません。403 エラーを受け取ります|
 
 テスト コンピューターのホスト エントリを変更できることをテストするには、プライベート DNS サーバーまたは Azure DNS プライベート ゾーンを設定する必要があります。
-作成する必要がある DNS ゾーンは、 **privatelink.azurewebsites.net** です。 A レコードとプライベート エンドポイント IP を使用して、Web アプリのレコードを登録します。
+作成する必要がある DNS ゾーンは、**privatelink.azurewebsites.net** です。 A レコードとプライベート エンドポイント IP を使用して、Web アプリのレコードを登録します。
 たとえば、名前解決は次のようになります。
 
 |名前 |Type |値 |注記 |
@@ -144,7 +144,7 @@ Web アプリに対してプライベート エンドポイントが有効にな
 [dnsvalidation]: ../app-service-web-tutorial-custom-domain.md
 [pllimitations]: ../../private-link/private-endpoint-overview.md#limitations
 [pricing]: https://azure.microsoft.com/pricing/details/private-link/
-[howtoguide1]: ../../private-link/create-private-endpoint-webapp-portal.md
+[howtoguide1]: ../../private-link/tutorial-private-endpoint-webapp-portal.md
 [howtoguide2]: ../scripts/cli-deploy-privateendpoint.md
 [howtoguide3]: ../scripts/powershell-deploy-private-endpoint.md
 [howtoguide4]: ../scripts/template-deploy-private-endpoint.md

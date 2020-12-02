@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 695d47c839a9436f4fad9399f7995b3197e1c0eb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b1583307771dd58053128d71cb0ae5dd7e709f68
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964997"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174383"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーとアカウント制限
 
@@ -57,7 +57,7 @@ Azure AD のパスワード ポリシーは、*EnforceCloudPasswordPolicyForPass
 | パスワードの有効期間 (パスワードの最大有効期間) |<ul><li>既定値:**90** 日。</li><li>値を構成するには、Windows PowerShell 用 Azure Active Directory モジュールから `Set-MsolPasswordPolicy` コマンドレットを使用します。</li></ul> |
 | パスワードの期限切れの通知 (ユーザーにパスワードの有効期限が通知されるタイミング) |<ul><li>既定値:**14** 日 (パスワードの有効期限が切れる前)。</li><li>値を構成するには、`Set-MsolPasswordPolicy` コマンドレットを使用します。</li></ul> |
 | パスワードの有効期限 (パスワードを無期限にします) |<ul><li>既定値: **false** (パスワードの有効期限が指定されていることを示します)。</li><li>各ユーザー アカウントの値を構成するには、`Set-MsolUser` コマンドレットを使用します。</li></ul> |
-| パスワード変更履歴 | ユーザーがパスワードを変更する場合、前回のパスワードを再度使用することは*できません*。 |
+| パスワード変更履歴 | ユーザーがパスワードを変更する場合、前回のパスワードを再度使用することは *できません*。 |
 | パスワード リセット履歴 | ユーザーが忘れたパスワードをリセットする場合、前回のパスワードを再度使用することが ''*できます*''。 |
 
 ## <a name="administrator-reset-policy-differences"></a>管理者リセット ポリシーの相違点
@@ -133,7 +133,7 @@ Azure AD のパスワード ポリシーは、*EnforceCloudPasswordPolicyForPass
        Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
        ```
 
-   * すべてのユーザーについて**パスワードを無期限にする**設定を表示するには、次のコマンドレットを実行します。
+   * すべてのユーザーについて **パスワードを無期限にする** 設定を表示するには、次のコマンドレットを実行します。
 
        ```powershell
        Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
@@ -180,4 +180,4 @@ Azure AD のパスワード ポリシーは、*EnforceCloudPasswordPolicyForPass
 
 SSPR の使用を始めるには、「[チュートリアル: Azure Active Directory のセルフサービス パスワード リセットを使用して、ユーザーが自分のアカウントのロック解除またはパスワードのリセットを実行できるようにする](tutorial-enable-sspr.md)」を参照してください。
 
-SSPR で問題が発生した場合は、「[セルフサービス パスワード リセットのトラブルシューティング](active-directory-passwords-troubleshoot.md)」を参照してください
+SSPR で問題が発生した場合は、「[セルフサービス パスワード リセットのトラブルシューティング](./troubleshoot-sspr.md)」を参照してください

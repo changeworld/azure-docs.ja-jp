@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 11/09/2020
-ms.openlocfilehash: 62621a36955808ec3f2c796681fe660e6e8524bc
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.date: 11/18/2020
+ms.openlocfilehash: 7bfd951d7cec27e0b8264aaabf9bc3a17875256a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443383"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000727"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor のカスタマー マネージド キー 
 
@@ -21,11 +21,13 @@ ms.locfileid: "94443383"
 
 ## <a name="customer-managed-key-overview"></a>カスタマー マネージド キーの概要
 
-[保存時の暗号化](../../security/fundamentals/encryption-atrest.md)は、組織の一般的なプライバシーおよびセキュリティ要件です。 保存時の暗号化は Azure で完全に管理できますが、暗号化または暗号化キーを厳密に管理するさまざまなオプションが提供されています。
+[保存時の暗号化](../../security/fundamentals/encryption-atrest.md)は、組織の一般的なプライバシーおよびセキュリティ要件です。 保存時の暗号化は Azure で完全に管理できますが、暗号化および暗号化キーを厳密に管理するさまざまなオプションが提供されています。
 
-Azure Monitor により、Microsoft マネージド キー (MMK) を使用して、すべてのデータおよび保存されたクエリが保存時に暗号化されるようになります。 Azure Monitor には、[Azure Key Vault](../../key-vault/general/overview.md) に格納され、データ暗号化のためにストレージによって使用される、独自のキーを使用した暗号化のオプションも用意されています。 キーは、[ソフトウェアまたはハードウェアの HSM で保護](../../key-vault/general/overview.md)できます。 Azure Monitor での暗号化の使用は、[Azure Storage の暗号化](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption)での運用方法とまったく同じです。
+Azure Monitor により、Microsoft マネージド キー (MMK) を使用して、すべてのデータおよび保存されたクエリが保存時に暗号化されるようになります。 Azure Monitor には、[Azure Key Vault](../../key-vault/general/overview.md) に格納され、いつでもデータへのアクセスを取り消すことができる、独自のキーを使用した暗号化のオプションも用意されています。 Azure Monitor での暗号化の使用は、[Azure Storage の暗号化](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption)での運用方法とまったく同じです。
 
-カスタマー マネージド キー機能は、専用の Log Analytics クラスターで提供されます。 これにより、[ロックボックス](#customer-lockbox-preview) コントロールを使用してデータを保護し、データへのアクセスをいつでも取り消すことができます。 過去 14 日間に取り込まれたデータも、効率的なクエリ エンジン操作のためにホットキャッシュ (SSD ベース) で保持されます。 このデータは、カスタマー マネージド キーの構成に関係なく、Microsoft キーで暗号化されたままになりますが、SSD データに対する制御は[キーの失効](#key-revocation)に従います。 2021 年の前半には、カスタマー マネージド キーを使用して SSD データを暗号化できるように準備しています。
+カスタマー マネージド キーは、より高い保護レベルと制御を可能にする専用の Log Analytics クラスターで提供されます。 専用クラスターに取り込まれたデータは、2 回暗号化されます。Microsoft のマネージド キーまたはカスタマー マネージド キーを使用してサービス レベルで一度暗号化され、2 つの異なる暗号化アルゴリズムと 2 つの異なるキーを使用してインフラストラクチャ レベルで一度暗号化されます。 [二重暗号化](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)を使用すると、暗号化アルゴリズムまたはキーのいずれかが侵害される可能性があるシナリオから保護されます。 この場合は、追加の暗号化レイヤーによって引き続きデータが保護されます。 専用クラスターを使用すると、[ロックボックス](#customer-lockbox-preview) コントロールを使用してデータを保護することもできます。
+
+過去 14 日間に取り込まれたデータも、効率的なクエリ エンジン操作のためにホットキャッシュ (SSD ベース) で保持されます。 このデータは、カスタマー マネージド キーの構成に関係なく、Microsoft キーで暗号化されたままになりますが、SSD データに対する制御は[キーの失効](#key-revocation)に従います。 2021 年の前半には、カスタマー マネージド キーを使用して SSD データを暗号化できるように準備しています。
 
 [Log Analytics クラスターの価格モデル](./manage-cost-storage.md#log-analytics-dedicated-clusters)では、1,000 GB/日レベルから始まる容量予約が使用されます。
 
@@ -34,7 +36,7 @@ Azure Monitor により、Microsoft マネージド キー (MMK) を使用して
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Azure Monitor でのカスタマー マネージド キーの動作
 
-Azure Monitor は、システム割り当てのマネージド ID を活用して Azure Key Vault にアクセス権を付与します。 システム割り当てマネージド ID は、1 つの Azure リソースにのみ関連付けできますが、Log Analytics クラスターの ID はクラスター レベルでサポートされます。これは、この機能が専用の Log Analytics クラスターで提供されることを意味します。 複数のワークスペースでカスタマー マネージド キーをサポートするために、新しい Log Analytics "*クラスター*" リソースは、Key Vault と Log Analytics のワークスペースの間の中間 ID 接続として実行されます。 Log Analytics クラスター ストレージは、"*クラスター*" リソースに関連付けられているマネージド ID を使用して、Azure Active Directory 経由で Azure Key Vault に対する認証を行います。 
+Azure Monitor は、システム割り当てのマネージド ID を活用して Azure Key Vault にアクセス権を付与します。 システム割り当てマネージド ID は、1 つの Azure リソースにのみ関連付けできますが、Log Analytics クラスターの ID はクラスター レベルでサポートされます。これは、この機能が専用の Log Analytics クラスターで提供されることを意味します。 複数のワークスペースでカスタマー マネージド キーをサポートするために、新しい Log Analytics *クラスター* リソースは、Key Vault と Log Analytics のワークスペースの間の中間 ID 接続として実行されます。 Log Analytics クラスター ストレージは、"*クラスター*" リソースに関連付けられているマネージド ID を使用して、Azure Active Directory 経由で Azure Key Vault に対する認証を行います。 
 
 構成後、専用クラスターにリンクされているワークスペースに取り込まれるすべてのデータは、Key Vault 内のキーを使用して暗号化されます。 いつでも、クラスターからワークスペースのリンクを解除できます。 その後、新しいデータが Log Analytics ストレージに取り込まれて Microsoft キーで暗号化されますが、新しいデータと古いデータに対してシームレスにクエリを実行することができます。
 
@@ -74,77 +76,18 @@ Azure Monitor は、システム割り当てのマネージド ID を活用し�
 
 ### <a name="asynchronous-operations-and-status-check"></a>非同期操作と状態のチェック
 
-構成手順の一部はすぐに完了できないため、非同期的に実行されます。 構成で REST 要求を使用している場合、応答では最初に HTTP 状態コード 200 (OK) が返され、受け入れられたときに *Azure-AsyncOperation* プロパティを持つヘッダーが返されます。
+構成手順の一部はすぐに完了できないため、非同期的に実行されます。 REST を使用している場合、応答では最初に HTTP 状態コード 200 (OK) が返され、受け入れられたときに *Azure-AsyncOperation* プロパティを持つヘッダーが返されます。
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
 
-次に、*Azure-AsyncOperation* ヘッダー値に GET 要求を送信することにより、非同期操作の状態を確認できます。
+*Azure-AsyncOperation* ヘッダー値に GET 要求を送信することにより、非同期操作の状態を確認できます。
 ```rst
 GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-08-01
 Authorization: Bearer <token>
 ```
 
-この応答には、操作とその *状態* に関する情報が含まれています。 これは、次のいずれかになります。
-
-操作が進行中です
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "InProgress", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-}
-```
-
-キー識別子の更新操作が進行中です
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "Updating", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-    "endTime": "2017-01-06T20:56:56.002812+00:00",
-}
-```
-
-クラスターの削除が進行中です -- ワークスペースにリンクされているクラスターを削除すると、リンク解除操作がワークスペースごとに非同期に実行され、操作に時間がかかることがあります。
-これは、ワークスペースがリンクされていないクラスターを削除するときは関係ありません。この場合、クラスター リソースはすぐに削除されます。
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "Deleting", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-    "endTime": "2017-01-06T20:56:56.002812+00:00",
-}
-```
-
-操作が完了しました
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "Succeeded", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-    "endTime": "2017-01-06T20:56:56.002812+00:00",
-}
-```
-
-操作に失敗しました
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "Failed", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-    "endTime": "2017-01-06T20:56:56.002812+00:00",
-    "error" : { 
-        "code": "error-code",  
-        "message": "error-message" 
-    }
-}
-```
+応答の `status` には、次のいずれかが含まれます。'InProgress'、'Updating'、'Deleting'、'Succeeded、'Failed' (エラー コードを伴う)。
 
 ### <a name="allowing-subscription"></a>サブスクリプションを許可する
 
@@ -595,7 +538,7 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
   1. REST を使用している場合、応答から Azure-AsyncOperation URL 値をコピーし、「[非同期操作と状態のチェック](#asynchronous-operations-and-status-check)」に従います。
   2. GET 要求をクラスターまたはワークスペースに送信し、応答を観察します。 たとえば、リンクされていないワークスペースには、*features* の下に *clusterResourceId* が存在しません。
 
-- カスタマー マネージド キーに関するサポートおよびヘルプを受けるには、お客様の連絡先を Microsoft に登録してください。
+- [二重暗号化](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)は、2020 年 10 月以降、リージョンで二重暗号化が導入された後に作成されたクラスターに対して自動的に構成されます。 クラスターを作成したときに、「<リージョン名> はクラスターの二重暗号化をサポートしていません」というエラーが表示された場合でも、クラスターを作成できますが、二重暗号化は無効になります。 クラスターが作成された後に、有効/無効を切り替えることはできません。 リージョンで二重暗号化がサポートされていない場合にクラスターを作成するには、REST 要求本文に `"properties": {"isDoubleEncryptionEnabled": false}` を追加します。
 
 - エラー メッセージ
   

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 96f1e3983f3c093cdf643e7674221b04631eeabd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ddff11caba9d83e9ed21748fd50a3480d866d8a9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965626"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174566"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory の証明書ベースの認証の概要
 
@@ -31,7 +31,7 @@ ms.locfileid: "91965626"
 このトピックの内容と前提条件:
 
 - Office 365 Enterprise、Business、Education、および US Government の各プランのテナントのユーザー向けに証明書ベースの認証 (CBA) を構成し、使用する方法について説明します。 Office 365 China、US Government Defense、および US Government Federal の各プランでは、この機能はプレビュー版として提供されています。
-- [公開キー基盤 (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) と [AD FS](../hybrid/how-to-connect-fed-whatis.md) が構成されていることを前提としています。
+- [公開キー基盤 (PKI)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831740(v=ws.11)) と [AD FS](../hybrid/how-to-connect-fed-whatis.md) が構成されていることを前提としています。
 
 ## <a name="requirements"></a>必要条件
 
@@ -158,7 +158,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 即時の失効が必要な場合 (たとえば、ユーザーがデバイスを紛失した場合) は、ユーザーの認証トークンを無効にできます。 認証トークンを無効にするには、Windows PowerShell を使用してこの特定のユーザーの **StsRefreshTokenValidFrom** フィールドを設定します。 アクセスを無効にする各ユーザーの **StsRefreshTokenValidFrom** フィールドを更新する必要があります。
 
-失効状態が継続していることを確認するには、CRL の**発効日**を **StsRefreshTokenValidFrom** で設定した値より後の日付に設定し、対象の証明書が CRL にあることを確認する必要があります。
+失効状態が継続していることを確認するには、CRL の **発効日** を **StsRefreshTokenValidFrom** で設定した値より後の日付に設定し、対象の証明書が CRL にあることを確認する必要があります。
 
 次の手順は、 **StsRefreshTokenValidFrom** フィールドを設定することで認証トークンを更新し、無効にするプロセスを簡単に示したものです。
 
@@ -190,7 +190,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 ### <a name="testing-your-certificate"></a>証明書のテスト
 
-構成の最初のテストとして、**デバイス上のブラウザー**を使用して [Outlook Web Access](https://outlook.office365.com) または [SharePoint Online](https://microsoft.sharepoint.com) へのサインインを試みます。
+構成の最初のテストとして、**デバイス上のブラウザー** を使用して [Outlook Web Access](https://outlook.office365.com) または [SharePoint Online](https://microsoft.sharepoint.com) へのサインインを試みます。
 
 サインインが成功した場合、次のことがわかります。
 

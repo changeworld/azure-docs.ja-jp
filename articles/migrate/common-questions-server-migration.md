@@ -4,11 +4,11 @@ description: Azure Migrate Server Migration を使用したマシンの移行に
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.openlocfilehash: b62110e6b2ce97cdd80ed91ee4b1e75d119c7c7d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315232"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180695"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server Migration:一般的な質問
 
@@ -34,8 +34,8 @@ Azure Migrate: Server Migration ツールでは、UEFI ベースのマシンは 
 | SUSE Linux Enterprise Server 15 SP1                     | Y                                                                                                                                         | Y                              | Y                                                          |
 | SUSE Linux Enterprise Server 12 SP4                     | Y                                                                                                                                         | Y                              | Y                                                          |
 | Ubuntu Server 16.04、18.04、19.04、19.10                | Y                                                                                                                                         | Y                              | Y                                                          |
-| RHEL 8.1、8.0、7.8、7.7、7.6、7.5、7.4、7.0、6.x        | Y<br>                 _RHEL 8.x には[手動による準備](./prepare-for-migration.md#linux-machines)が必要_   | Y                              | Y                                                          |
-| Cent OS 8.1、8.0、7.7、7.6、7.5、7.4、6.x               | Y<br>_Cent OS 8.x には[手動による準備](./prepare-for-migration.md#linux-machines)が必要_ | Y                              | Y                                                          |
+| RHEL 8.1、8.0、7.8、7.7、7.6、7.5、7.4、7.0、6.x        | Y<br>                 _RHEL 8.x には [手動による準備](./prepare-for-migration.md#linux-machines)が必要_   | Y                              | Y                                                          |
+| Cent OS 8.1、8.0、7.7、7.6、7.5、7.4、6.x               | Y<br>_Cent OS 8.x には [手動による準備](./prepare-for-migration.md#linux-machines)が必要_ | Y                              | Y                                                          |
 | Oracle Linux 7.7、7.7-CI                                |  Y                                                                                                                                        | Y                              | Y                                                          |
 
 ## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>Azure Migrate で作成した Recovery Services コンテナーをディザスター リカバリーのシナリオに使用することはできますか?
@@ -78,10 +78,10 @@ Azure Migrate: Server Migration ツールには、ソース サーバー/VM を 
 
 移行オプションを決める際の考慮事項をいくつか次に示します。
 
-**エージェントレスの移行**では、移行されるソース VM/サーバー上にソフトウェア (エージェント) を展開する必要はありません。 エージェントレスのオプションは、仮想化プロバイダーによって提供される機能と統合することによってレプリケーションを調整します。
+**エージェントレスの移行** では、移行されるソース VM/サーバー上にソフトウェア (エージェント) を展開する必要はありません。 エージェントレスのオプションは、仮想化プロバイダーによって提供される機能と統合することによってレプリケーションを調整します。
 エージェントレスのレプリケーション オプションは、[VMware VM](./tutorial-migrate-vmware.md) と [Hyper-V VM](./tutorial-migrate-hyper-v.md) で使用できます。
 
-**エージェントベースの移行**では、移行されるソース VM/マシンに Azure Migrate ソフトウェア (エージェント) をインストールする必要があります。 エージェントベースのオプションは、レプリケーション機能に仮想化プラットフォームを使用しないため、x86/x64 アーキテクチャを実行しているすべてのサーバーと、エージェントベースのレプリケーション方法でサポートされているオペレーティングシステムのバージョンで使用できます。
+**エージェントベースの移行** では、移行されるソース VM/マシンに Azure Migrate ソフトウェア (エージェント) をインストールする必要があります。 エージェントベースのオプションは、レプリケーション機能に仮想化プラットフォームを使用しないため、x86/x64 アーキテクチャを実行しているすべてのサーバーと、エージェントベースのレプリケーション方法でサポートされているオペレーティングシステムのバージョンで使用できます。
 
 エージェントベースの移行オプションは、[VMware VM](./tutorial-migrate-vmware-agent.md)、[Hyper-V VM](./tutorial-migrate-physical-virtual-machines.md)、[物理サーバー](./tutorial-migrate-physical-virtual-machines.md)、[AWS で実行されている VM](./tutorial-migrate-aws-virtual-machines.md)、GCP で実行されている VM、または別の仮想化プロバイダーで実行されている VM に使用できます。 エージェントベースの移行では、移行の目的でマシンを物理サーバーとして扱います。
 
@@ -143,7 +143,7 @@ New-NetQosPolicy -Name "ThrottleReplication" -AppPathNameMatchCondition "Gateway
 
 ## <a name="how-does-churn-rate-affect-agentless-replication"></a>チャーン レートはエージェントレス レプリケーションにどのように影響しますか?
 
-エージェントレス レプリケーションでは日付が折りたたまれるため、*チャーン レート*より*チャーン パターン*が重要です。 ファイルが繰り返し書き込まれる場合、そのレートはあまり影響を与えません。 ただし、セクターが 1 つおきに書き込まれるパターンでは、次回のサイクルでチャーンが高くなります。 転送するデータの量を最小限に抑えるため、次回のサイクルをスケジュールする前に、できるだけ多くのデータを折りたためるようにします。
+エージェントレス レプリケーションでは日付が折りたたまれるため、*チャーン レート* より *チャーン パターン* が重要です。 ファイルが繰り返し書き込まれる場合、そのレートはあまり影響を与えません。 ただし、セクターが 1 つおきに書き込まれるパターンでは、次回のサイクルでチャーンが高くなります。 転送するデータの量を最小限に抑えるため、次回のサイクルをスケジュールする前に、できるだけ多くのデータを折りたためるようにします。
 
 ## <a name="how-frequently-is-a-replication-cycle-scheduled"></a>レプリケーション サイクルはどのくらいの頻度でスケジュールされますか?
 

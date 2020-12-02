@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e617d7ccc14e65c18eb86877b1c7fb1aeef74cd0
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 1f34e734b315c7c05ce77f5e168a452fc1c1c547
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578894"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168680"
 ---
 # <a name="ldap-synchronization-with-azure-active-directory"></a>Azure Active Directory との LDAP 同期
 
@@ -52,13 +52,12 @@ Azure Active Directory (Azure AD) によって、LDAP 同期を Azure AD Connect
 
 ## <a name="implement-ldap-synchronization-with-azure-ad"></a>Azure AD との LDAP 同期を実装する
 
-* [ハイブリッド ID ディレクトリ統合ツール](https://docs.microsoft.com/azure/active-directory/hybrid/plan-hybrid-identity-design-considerations-tools-comparison) 
+* [ハイブリッド ID ディレクトリ統合ツール](../hybrid/plan-hybrid-identity-design-considerations-tools-comparison.md) 
 
-* [Azure AD Connect インストールのロードマップ](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-roadmap) 
+* [Azure AD Connect インストールのロードマップ](../hybrid/how-to-connect-install-roadmap.md) 
 
-* [LDAP コネクタの概要と作成](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap) 
+* [LDAP コネクタの概要と作成](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap) 
 
    > [!NOTE]
    > LDAP コネクタは、Forefront Identity Manager や Microsoft Identity Manager に関する知識を必要とする高度な構成です。 運用環境で使用されている場合、この構成に関するご質問については、[Premier サポート](https://support.microsoft.com/premier)または Microsoft Partner Network を使ってお問い合わせください。
 
- 

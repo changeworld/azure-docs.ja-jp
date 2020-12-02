@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.openlocfilehash: cf25ef59bc1ea5db61dcfb3c76c0d978cb1f95d0
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: b41575208d0793a33864556ec4313ae1a71f2db5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931838"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184469"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Azure NetApp Files のパフォーマンス ベンチマークのテスト レコメンデーション
 
@@ -24,7 +24,7 @@ Azure NetApp Files ボリュームのパフォーマンス特性を理解する�
 
 ### <a name="vm-instance-sizing"></a>VM インスタンスのサイズ設定
 
-最良の結果を得るには、テストを実行するために適切なサイズの仮想マシン (VM) インスタンスを使用していることを確認してください。 次の例では Standard_D32s_v3 インスタンスを使用します。 VM インスタンスのサイズの詳細について、Windows ベースの VM の場合は「[Azure の Windows 仮想マシンのサイズ](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-network%252ftoc.json)」、Linux ベースの VM の場合は「[Azure の Linux 仮想マシンのサイズ](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)」を参照してください。
+最良の結果を得るには、テストを実行するために適切なサイズの仮想マシン (VM) インスタンスを使用していることを確認してください。 次の例では Standard_D32s_v3 インスタンスを使用します。 VM インスタンスのサイズの詳細について、Windows ベースの VM の場合は「[Azure の Windows 仮想マシンのサイズ](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」、Linux ベースの VM の場合は「[Azure の Linux 仮想マシンのサイズ](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
 ### <a name="azure-netapp-files-volume-sizing"></a>Azure NetApp Files ボリュームのサイズ設定
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: Zhchia
-ms.openlocfilehash: 3fa91e6d9c1df941a930d53119e6d4bd4cabca04
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 7d5904461d642f47e691d0a1aaa1f1faf439df1f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354361"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96178145"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>チュートリアル:Insight4GRC を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -36,7 +36,7 @@ ms.locfileid: "94354361"
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
 * [Azure AD テナント](../develop/quickstart-create-new-tenant.md) 
-* プロビジョニングを構成するための[アクセス許可](../users-groups-roles/directory-assign-admin-roles.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
+* プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
 * 管理者アクセス許可がある Insight4GRC のユーザー アカウント。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
@@ -59,7 +59,7 @@ Azure AD アプリケーション ギャラリーから Insight4GRC を追加し
 
 Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当て、ユーザーまたはグループの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、以下の[手順](../manage-apps/assign-user-or-group-access-portal.md)を使用して、ユーザーとグループをアプリケーションに割り当てることができます。 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)で説明されているスコープ フィルターを使用できます。 
 
-* Insight4GRC にユーザーとグループを割り当てるときは、 **既定のアクセス** 以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](../develop/howto-add-app-roles-in-azure-ad-apps.md)してロールを追加することができます。 
+* Insight4GRC にユーザーとグループを割り当てるときは、**既定のアクセス** 以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](../develop/howto-add-app-roles-in-azure-ad-apps.md)してロールを追加することができます。 
 
 * 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、これを制御するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)を指定できます。 
 
@@ -86,7 +86,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナント URL]** に、SCIM エンドポイントの URL を入力します。 エンドポイント URL は `https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 ` という形式にする必要があり、 **Insight4GRC Domain Name** は前の手順で取得した値です。 **[シークレット トークン]** に、先ほど取得したベアラー トークンの値を入力します。 **[テスト接続]** をクリックして、Azure AD から Insight4GRC への接続を確保します。 接続できない場合は、使用中の Insight4GRC アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナント URL]** に、SCIM エンドポイントの URL を入力します。 エンドポイント URL は `https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 ` という形式にする必要があり、**Insight4GRC Domain Name** は前の手順で取得した値です。 **[シークレット トークン]** に、先ほど取得したベアラー トークンの値を入力します。 **[テスト接続]** をクリックして、Azure AD から Insight4GRC への接続を確保します。 接続できない場合は、使用中の Insight4GRC アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL とシークレット トークンを入力できる場所である [管理者資格情報] ダイアログ ボックスを示すスクリーンショット。](./media/insight4grc-provisioning-tutorial/provisioning.png)
 

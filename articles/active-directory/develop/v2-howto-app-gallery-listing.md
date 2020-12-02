@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 3b9f744e414e83c103f6b9249a0ccf5020588463
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 6374164bb5049742d63a669b4c1e552c93967977
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356350"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173381"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>アプリを Azure AD アプリ ギャラリーで公開する
 
@@ -36,7 +36,7 @@ Azure AD ギャラリーにアプリを追加すると、次のような利点�
 - ユーザーに対してシングル サインオンを提供します。 SSO を使用すると、カスタマーのシングル サインオンが容易になることにより、サポート コストを削減できます。 ワンクリック SSO が有効になっている場合、顧客の IT 管理者がアプリケーションの構成方法を知らなくても、アプリケーションを組織内で使用できます。 シングル サインオンの詳細については、「[シングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 - アプリが、Microsoft 365 アプリ ギャラリー、Microsoft 365 アプリ起動ツール、Office.com の Microsoft Search で見つかるようになります。 
 - 統合されたアプリの管理。 Azure AD でのアプリ管理の詳細については、「[アプリケーション管理とは](../manage-apps/what-is-application-management.md)」を参照してください。
-- アプリでは、[Graph API](https://docs.microsoft.com/graph/) を使用して、Microsoft のエコシステムでユーザーの生産性を向上させるデータにアクセスできます。
+- アプリでは、[Graph API](/graph/) を使用して、Microsoft のエコシステムでユーザーの生産性を向上させるデータにアクセスできます。
 - Azure AD チームと共同で共通のカスタマー向けにアプリケーション固有のドキュメントを作成することで、導入しやすくなります。
 - 従業員 ID やゲスト ID の認証と承認を完全に管理する機能を顧客に提供できます。
 - すべてアカウント管理とコンプライアンスの責任を顧客の ID 所有者が担います。
@@ -47,7 +47,7 @@ Azure AD ギャラリーにアプリを追加すると、次のような利点�
 - ユーザーが Azure AD SSO を使用してアプリケーションにサインオンすると、別の資格情報が必要なくなり、セキュリティと利便性が向上します。
 
 > [!TIP]
-> 購入またはサブスクリプションを通じて他の会社にアプリケーションを提供する際に、顧客が独自の Azure テナント内でアプリケーションを利用できるようにします。 これは、マルチテナント アプリケーションの作成と呼ばれます。 この概念の概要については、「[Azure 上のマルチテナント アプリケーション](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications)」と「[Azure Active Directory のテナント](single-and-multi-tenant-apps.md)」を参照してください。
+> 購入またはサブスクリプションを通じて他の会社にアプリケーションを提供する際に、顧客が独自の Azure テナント内でアプリケーションを利用できるようにします。 これは、マルチテナント アプリケーションの作成と呼ばれます。 この概念の概要については、「[Azure 上のマルチテナント アプリケーション](../../dotnet-develop-multitenant-applications.md)」と「[Azure Active Directory のテナント](single-and-multi-tenant-apps.md)」を参照してください。
 
 > [!IMPORTANT]
 > Azure AD ギャラリーでアプリを公開するには、特定の使用条件に同意する必要があります。 始める前に、[使用条件](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)を読んで同意してください。
@@ -162,7 +162,7 @@ OpenID Connect の場合、アプリケーションはマルチテナントで�
 Microsoft では、SAML の実装用のライブラリは提供されていないか、または推奨されていません。 利用できるオープンソース ライブラリは数多くあります。
 
 ### <a name="implement-ws-fed"></a>WS-Fed を実装する
-ASP.NET Core での WS-Fed の詳細については、「[ASP.NET Core で WS-Federation を使用してユーザーを認証する](https://docs.microsoft.com/aspnet/core/security/authentication/ws-federation)」を参照してください。
+ASP.NET Core での WS-Fed の詳細については、「[ASP.NET Core で WS-Federation を使用してユーザーを認証する](/aspnet/core/security/authentication/ws-federation)」を参照してください。
 
 ### <a name="implement-password-vaulting"></a>パスワードの保管を実装する
 
@@ -173,7 +173,7 @@ HTML のサインイン ページがある Web アプリケーションを作成
 
 アプリをテストするには、Azure AD テナントが必要です。 開発環境をセットアップするには、「[クイックスタート: テナントを設定する](quickstart-create-new-tenant.md)」を参照してください。
 
-または、すべての Microsoft 365 サブスクリプションには、Azure AD テナントが付属しています。 無料の Microsoft 365 開発環境をセットアップするには、[Microsoft 365 開発者プログラムへの参加](https://docs.microsoft.com/office/developer-program/microsoft-365-developer-program)に関するページを参照してください。
+または、すべての Microsoft 365 サブスクリプションには、Azure AD テナントが付属しています。 無料の Microsoft 365 開発環境をセットアップするには、[Microsoft 365 開発者プログラムへの参加](/office/developer-program/microsoft-365-developer-program)に関するページを参照してください。
 
 テナントの用意ができたら、シングル サインオン アクセスを有効にしてテストする必要があります。 
 
@@ -209,7 +209,7 @@ HTML のサインイン ページがある Web アプリケーションを作成
 
 ### <a name="documentation-on-the-microsoft-site"></a>Microsoft サイト上のドキュメント
 
-Azure Active Directory アプリケーション ギャラリーにアプリケーションを登録すると (これにより、Azure Marketplace でもアプリケーションが公開されます)、Microsoft により、段階的なプロセスを説明するために、共通のお客様向けのドキュメントが生成されます。 [こちら](https://aka.ms/appstutorial)で例を参照できます。 このドキュメントは、ギャラリーへの送信に基づいて作成されます。GitHub アカウントを使用してアプリケーションに変更を加える場合、このドキュメントを簡単に更新できます。
+Azure Active Directory アプリケーション ギャラリーにアプリケーションを登録すると (これにより、Azure Marketplace でもアプリケーションが公開されます)、Microsoft により、段階的なプロセスを説明するために、共通のお客様向けのドキュメントが生成されます。 [こちら](../saas-apps/tutorial-list.md)で例を参照できます。 このドキュメントは、ギャラリーへの送信に基づいて作成されます。GitHub アカウントを使用してアプリケーションに変更を加える場合、このドキュメントを簡単に更新できます。
 
 
 ## <a name="step-5---submit-your-app"></a>ステップ 5 - アプリを送信する
@@ -262,7 +262,7 @@ OpenID Connect を使用してギャラリー内の一覧にご利用のアプ�
 
 ![ギャラリーでのパスワード SSO アプリケーションの一覧表示](./media/howto-app-gallery-listing/passwordsso.png)
 
-ユーザー プロビジョニングのために [SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) 2.0 エンドポイントを実装している場合は、示されているようにオプションを選択します。 
+ユーザー プロビジョニングのために [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2.0 エンドポイントを実装している場合は、示されているようにオプションを選択します。 
 
    ![ユーザー プロビジョニングの要求](./media/howto-app-gallery-listing/user-provisioning.png)
 

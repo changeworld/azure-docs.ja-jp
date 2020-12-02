@@ -4,12 +4,12 @@ description: Web アプリに対する要求の失敗率の異常な変化を通
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 0f93c7b185b292f8d9792a11807b7c99ad846d37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 329f5bc6f5c3523bc76876f946474eaeb897cfe9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565839"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186968"
 ---
 # <a name="smart-detection---failure-anomalies"></a>スマート検出 - 失敗の異常
 [Application Insights](./app-insights-overview.md) では、Web アプリで要求の失敗率が異常に増加すると、ほぼリアルタイムで自動的にユーザーにアラートを送信します。 具体的には、失敗として報告された HTTP 要求または依存関係の呼び出しの割合が異常に上昇すると、それが検出されます。 要求の場合、失敗した要求の応答コードは、通常、400 以上です。 アラートの詳細には、問題のトリアージと診断に役立つよう、失敗の特性および関連するアプリケーション データの分析が表示されます。 また、より詳しい診断を行うために、Application Insights ポータルへのリンクも含まれています。 この機能は、機械学習アルゴリズムを使用して通常のエラー率を予測するため、セットアップや構成は不要です。
@@ -73,11 +73,11 @@ Web アプリから Application Insights にデータが送られると、スマ
 
 [アラート] ページを開きます。 エラーの異常アラート ルールが、手動で設定したすべてのアラートと共に含まれており、現在アラート状態にあるかどうかを確認できます。
 
-:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="失敗箇所周辺のクラスター分析を示すスマート検出のアラートのサンプル。" lightbox="./media/proactive-failure-diagnostics/021.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="Application Insights リソース ページで、[アラート] タイル、[アラート ルールの管理] の順にクリックします。" lightbox="./media/proactive-failure-diagnostics/021.png":::
 
 アラートをクリックして構成します。
 
-:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="失敗箇所周辺のクラスター分析を示すスマート検出のアラートのサンプル。" lightbox="./media/proactive-failure-diagnostics/032.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="ルールの構成画面。" lightbox="./media/proactive-failure-diagnostics/032.png":::
 
 エラーの異常アラート ルールを無効にしたり削除したりすることはできますが、同じ Application Insights リソースに別のルールを作成することはできません。
 
@@ -299,7 +299,7 @@ Web アプリから Application Insights にデータが送られると、スマ
 
 [エラーの診断] をクリックすると、問題の詳細を確認して解決するのに役立ちます。
 
-:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="失敗箇所周辺のクラスター分析を示すスマート検出のアラートのサンプル。" lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
+:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="診断検索。" lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
 
 要求の割合と影響を受けるユーザーの数から、問題の緊急度を判断できます。 上の例では、78.5% という失敗率が通常の失敗率である 2.2% と比較され、異常事態が発生していることを示しています。 一方、影響を受けたユーザー数は 46 人のみです。 それが自分のアプリであれば、その深刻度を評価できます。
 
@@ -307,13 +307,13 @@ Web アプリから Application Insights にデータが送られると、スマ
 
 この例では、要求の制限を超えたため、SQL Database から例外が発生しました。
 
-:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="失敗箇所周辺のクラスター分析を示すスマート検出のアラートのサンプル。" lightbox="./media/proactive-failure-diagnostics/052.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="失敗した要求の詳細。" lightbox="./media/proactive-failure-diagnostics/052.png":::
 
 ## <a name="review-recent-alerts"></a>最新のアラートを確認する
 
 Application Insights リソース ページで **[アラート]** をクリックすると、直近の発生アラートが表示されます。
 
-:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="失敗箇所周辺のクラスター分析を示すスマート検出のアラートのサンプル。" lightbox="./media/proactive-failure-diagnostics/070.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="アラートの概要。" lightbox="./media/proactive-failure-diagnostics/070.png":::
 
 ## <a name="whats-the-difference-"></a>違い...
 失敗の異常のスマート検出は、Application Insights の類似しているが異なる他の機能を補完します。
@@ -356,10 +356,9 @@ Application Insights リソース ページで **[アラート]** をクリッ�
 
 * [メトリックス エクスプローラー](../platform/metrics-charts.md)
 * [Search エクスプローラー](./diagnostic-search.md)
-* [Analytics - 強力なクエリ言語](../log-query/get-started-portal.md)
+* [Analytics - 強力なクエリ言語](../log-query/log-analytics-tutorial.md)
 
 スマート検出は自動化されています。 ただし、アラートを追加で設定する機能が用意されています。
 
 * [手動で構成するメトリックのアラート](../platform/alerts-log.md)
 * [可用性 Web テスト](./monitor-web-app-availability.md)
-

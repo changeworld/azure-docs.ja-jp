@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1b603dc4c31cb608a0840da78a2e987b3edd3c1e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 4d3ee6df90424788c6f9b6bb4e2055023a5d56a6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353596"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182069"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために MediusFlow を構成する
 
@@ -36,7 +36,7 @@ ms.locfileid: "94353596"
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
 * [Azure AD テナント](../develop/quickstart-create-new-tenant.md) 
-* プロビジョニングを構成するための[アクセス許可](../users-groups-roles/directory-assign-admin-roles.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
+* プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
 * 品質保証または運用テナントがあるアクティブな MediusFlow サブスクリプション。
 * Mediusflow で構成を実行できる管理者アクセス権を持つ MediusFlow のユーザー アカウント。
 * ユーザーをプロビジョニングする必要がある MediusFlow テナントに会社が追加されていること。
@@ -94,7 +94,7 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
     :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="MediusFlow 管理コンソールの [User provisioning configuration]\(ユーザー プロビジョニングの構成\) タブのスクリーンショット。[Add new configuration]\(新しい構成の追加\) ボタンが強調表示されています。" border="false":::
 
-9. ユーザーの既定の設定を指定します。 このビューでは、既定の属性を設定することができます。 標準設定で問題ない場合は、有効な会社名を入力するだけで十分です。 これらの構成設定は Mediusflow からフェッチされるため、最初に構成する必要があります。 詳細については、この記事の「 **前提条件** 」セクションを参照してください。
+9. ユーザーの既定の設定を指定します。 このビューでは、既定の属性を設定することができます。 標準設定で問題ない場合は、有効な会社名を入力するだけで十分です。 これらの構成設定は Mediusflow からフェッチされるため、最初に構成する必要があります。 詳細については、この記事の「**前提条件**」セクションを参照してください。
 
     :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="MediusFlow の [Add new configuration]\(新しい構成の追加\) ウィンドウのスクリーンショット。ロケールの設定、フィルター、ユーザー ロールなど、多くの設定が表示されています。" border="false":::
 
@@ -114,7 +114,7 @@ Azure AD アプリケーション ギャラリーから MediusFlow を追加し�
 
 Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当て、ユーザーまたはグループの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、以下の[手順](../manage-apps/assign-user-or-group-access-portal.md)を使用して、ユーザーとグループをアプリケーションに割り当てることができます。 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)で説明されているスコープ フィルターを使用できます。 
 
-* MediusFlow にユーザーとグループを割り当てるときは、 **既定のアクセス** 以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](../develop/howto-add-app-roles-in-azure-ad-apps.md)してロールを追加することができます。 
+* MediusFlow にユーザーとグループを割り当てるときは、**既定のアクセス** 以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](../develop/howto-add-app-roles-in-azure-ad-apps.md)してロールを追加することができます。 
 
 * 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、これを制御するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)を指定できます。 
 

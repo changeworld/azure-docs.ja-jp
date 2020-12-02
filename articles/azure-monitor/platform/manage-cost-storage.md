@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 940955c8ace956354a2747f5ad21430620c2a9d1
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: b84d24174771e8395677874c9dac863fa6f27a54
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95744570"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185914"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
@@ -78,7 +78,7 @@ Log Analytics の課金は Azure の課金内容に加えられます。 Azure P
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>ご自分の Azure 請求書での Log Analytics の使用状況の表示 
 
-Azure では、[Azure Cost Management と課金](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%252fazure%252fbilling%252fTOC.json)ハブに便利な機能が多数用意されています。 たとえば、"コスト分析" 機能を使用すると、Azure リソースに対するご自分の支出を表示できます。 まず、"リソースの種類" によるフィルターを追加します (Log Analytics の場合は microsoft.operationalinsights/workspace、Log Analytics クラスターの場合は microsoft.operationalinsights/workspace)。これにより、Log Analytics の支出を追跡できます。 次に、[グループ化] で [測定カテゴリ] または [測定] を選択します。  Azure Security Center や Azure Sentinel などの他のサービスも、Log Analytics ワークスペース リソースに対して使用量の請求を行うことに注意してください。 サービス名へのマッピングを表示するには、グラフの代わりにテーブル ビューを選択できます。 
+Azure では、[Azure Cost Management と課金](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json)ハブに便利な機能が多数用意されています。 たとえば、"コスト分析" 機能を使用すると、Azure リソースに対するご自分の支出を表示できます。 まず、"リソースの種類" によるフィルターを追加します (Log Analytics の場合は microsoft.operationalinsights/workspace、Log Analytics クラスターの場合は microsoft.operationalinsights/workspace)。これにより、Log Analytics の支出を追跡できます。 次に、[グループ化] で [測定カテゴリ] または [測定] を選択します。  Azure Security Center や Azure Sentinel などの他のサービスも、Log Analytics ワークスペース リソースに対して使用量の請求を行うことに注意してください。 サービス名へのマッピングを表示するには、グラフの代わりにテーブル ビューを選択できます。 
 
 [Azure portal から使用状況をダウンロード](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)することで、使用状況をさらに詳しく理解できます。 ダウンロードしたスプレッドシートでは、Azure リソースごとに (たとえば、Log Analytics ワークスペース)、1 日あたりの使用量を確認することができます。 この Excel スプレッドシートでは、ご利用の Log Analytics ワークスペースからの使用状況を検索することができます。それには、まず、"測定カテゴリ" 列でフィルター処理を行って "Log Analytics"、"洞察と分析" (従来の価格レベルの一部で使用)、および "Azure Monitor" (容量予約の価格レベルで使用) を表示し、次に "インスタンス ID" 列に対するフィルター "contains workspace" または "contains cluster" (後者の場合は、Log Analytics クラスターの使用量を含めます) を追加します。 使用量は "消費量" 列に表示され、各エントリの単位は "測定単位" 列に表示されます。  詳細については、「[Microsoft Azure の課金内容を確認する](../../cost-management-billing/understand/review-individual-bill.md)」を参照してください。 
 
@@ -128,7 +128,7 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
 
 ## <a name="log-analytics-and-security-center"></a>Log Analytics と Security Center
 
-[Azure Security Center](https://docs.microsoft.com/azure/security-center/) の課金は Log Analytics の課金と密接に結び付けられています。 Security Center では、一連の[セキュリティ データの種類](https://docs.microsoft.com/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent、SecurityAlert、Securityalert、SecurityBaselineSummary、Securityalert、Securityalert、WindowsFirewall、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus) と、Update Management ソリューションがワークスペースで実行されていないか、またはソリューションのターゲット設定が有効にされている場合に、Update および UpdateSummary データの種類に対して 500 MB/ノード/日の割り当てが行われます。 ワークスペースがレガシのノードごとの価格レベルにある場合、Security Center と Log Analytics の割り当てが結合されて、すべての課金対象の取り込まれたデータにまとめて適用されます。  
+[Azure Security Center](../../security-center/index.yml) の課金は Log Analytics の課金と密接に結び付けられています。 Security Center では、一連の[セキュリティ データの種類](/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent、SecurityAlert、Securityalert、SecurityBaselineSummary、Securityalert、Securityalert、WindowsFirewall、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus) と、Update Management ソリューションがワークスペースで実行されていないか、またはソリューションのターゲット設定が有効にされている場合に、Update および UpdateSummary データの種類に対して 500 MB/ノード/日の割り当てが行われます。 ワークスペースがレガシのノードごとの価格レベルにある場合、Security Center と Log Analytics の割り当てが結合されて、すべての課金対象の取り込まれたデータにまとめて適用されます。  
 
 ## <a name="change-the-data-retention-period"></a>データ保持期間の変更
 
@@ -481,7 +481,7 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 | パフォーマンス カウンター       | [パフォーマンス カウンターの構成](data-sources-performance-counters.md)を次のように変更します。 <br> - 収集の頻度を減らす <br> - パフォーマンス カウンターの数を減らす |
 | イベント ログ                 | [イベント ログの構成](data-sources-windows-events.md)を次のように変更します。 <br> - 収集対象のイベント ログの数を減らす <br> - 必要なイベント レベルのみを収集する たとえば、"*情報*" レベルのイベントを収集しないようにします。 |
 | syslog                     | [syslog の構成](data-sources-syslog.md)を次のように変更します。 <br> - 収集対象の施設の数を減らす <br> - 必要なイベント レベルのみを収集する たとえば、"*情報*" と "*デバッグ*" レベルのイベントを収集しないようにします。 |
-| AzureDiagnostics           | [リソース ログの収集](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-in-azure-portal)を次のように変更します。 <br> - Log Analytics へのリソース送信ログの数を減らす <br> - 必要なログのみを収集する |
+| AzureDiagnostics           | [リソース ログの収集](./diagnostic-settings.md#create-in-azure-portal)を次のように変更します。 <br> - Log Analytics へのリソース送信ログの数を減らす <br> - 必要なログのみを収集する |
 | ソリューションを必要としないコンピューターからのソリューション データ | [ソリューションのターゲット設定](../insights/solution-targeting.md)を使用して、必要なコンピューター グループからのみデータを収集するようにします。 |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>ノードごとの価格レベルでの課金対象のノードの取得

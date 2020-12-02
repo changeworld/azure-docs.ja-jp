@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: f49ae5139dc92ec1448e5dea05be8c8c216ef91e
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361349"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002665"
 ---
 # <a name="how-to-use-perfinsights-in-azure"></a>Azure で PerfInsights を使用する方法
 
@@ -123,10 +123,10 @@ Windows VM、ディスクまたは記憶域プールの構成、パフォーマ�
 | XPerf トレース                       |                            |                                    |                          |                      | はい                  |
 | StorPort トレース                    |                            |                                    |                          |                      | はい                  |
 | ネットワーク トレース                     |                            |                                    |                          | はい                  | はい                  |
-| Diskspd ベンチマーク トレース ***       |                            | はい                                |                          |                      |                      |
+| Diskspd ベンチマーク トレース **_       |                            | はい                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
-### <a name="performance-diagnostics-trace-"></a>パフォーマンス診断トレース (*)
+### <a name="performance-diagnostics-trace-_"></a>パフォーマンス診断トレース (_)
 
 バックグラウンドでルール ベースのエンジンを実行してデータを収集し、継続的なパフォーマンスの問題を診断します。 現在サポートされているルールは次のとおりです。
 
@@ -154,7 +154,7 @@ Windows VM、ディスクまたは記憶域プールの構成、パフォーマ�
 #### <a name="for-azure-files"></a>Azure Files 向け
 \SMB Client Shares
 
-### <a name="diskspd-benchmark-trace-"></a>Diskspd ベンチマーク トレース (***)
+### <a name="diskspd-benchmark-trace-_"></a>Diskspd ベンチマーク トレース (**_)
 Diskspd I/O ワークロード テスト (OS ディスク [書き込み] とプール ドライブ [読み取り/書き込み])
 
 ## <a name="run-the-perfinsights-tool-on-your-vm"></a>VM での PerfInsights ツールの実行
@@ -165,8 +165,7 @@ Diskspd I/O ワークロード テスト (OS ディスク [書き込み] とプ�
 
 -  このツールを、パフォーマンスに問題がある VM で実行する必要があります。 
 
--  次のオペレーティング システムがサポートされています。
-   * Windows Server 2019
+-  サポートされているオペレーティング システムは次のとおりです: _ Windows Server 2019
    * Windows Server 2016
    * Windows Server 2012 R2
    * Windows Server 2012

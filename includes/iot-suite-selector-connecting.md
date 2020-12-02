@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4b93685160250a5abe7c050db89978ae8ceb1a9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67181611"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027924"
 ---
 > [!div class="op_single_selector"]
 > * [Windows 上の C](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -21,9 +21,9 @@ ms.locfileid: "67181611"
 > * [Raspberry Pi の C](../articles/iot-accelerators/iot-accelerators-connecting-pi-c.md)
 > * [Node.js (汎用)](../articles/iot-accelerators/iot-accelerators-connecting-devices-node.md)
 > * [Raspberry Pi の Node.js](../articles/iot-accelerators/iot-accelerators-connecting-pi-node.md)
-> * [MXChip IoT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)
+> * [MXChip IoT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md)
 
-このチュートリアルでは、次のテレメトリを、リモート監視の[ソリューション アクセラレータ](../articles/iot-accelerators/about-iot-accelerators.md)に送信する **Chiller** デバイスを実装します。
+このチュートリアルでは、次のテレメトリを、リモート監視の [ソリューション アクセラレータ](../articles/iot-accelerators/about-iot-accelerators.md)に送信する **Chiller** デバイスを実装します。
 
 * 気温
 * 圧力
@@ -54,7 +54,7 @@ ms.locfileid: "67181611"
 ### <a name="add-your-device-to-the-remote-monitoring-solution"></a>デバイスをリモート監視ソリューションに追加する
 
 > [!NOTE]
-> ソリューションにデバイスを既に追加している場合は、この手順を省略して構いません。 ただし、次の手順では、デバイスの接続文字列が必要です。 デバイスの接続文字列は、[Azure Portal](https://portal.azure.com) から、または [az iot](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) CLI ツールを使用して取得できます。
+> ソリューションにデバイスを既に追加している場合は、この手順を省略して構いません。 ただし、次の手順では、デバイスの接続文字列が必要です。 デバイスの接続文字列は、[Azure Portal](https://portal.azure.com) から、または [az iot](/cli/azure/iot?view=azure-cli-latest) CLI ツールを使用して取得できます。
 
 デバイスがソリューション アクセラレータに接続するには、有効な資格情報を使用して IoT Hub に対してデバイス自身の ID を証明する必要があります。 ソリューションにデバイスを追加するときに、これらの資格情報を含むデバイスの接続文字列を保存する機会が与えられます。 このチュートリアルの後半で、クライアント アプリケーションにデバイスの接続文字列を含めます。
 
@@ -68,7 +68,7 @@ ms.locfileid: "67181611"
 
     ![デバイス オプションを選択する](media/iot-suite-selector-connecting/devicesoptions.png)
 
-1. **[適用]** を選択します。 **デバイス ID**、**主キー**、**接続文字列の主キー**の値をメモします。
+1. **[適用]** を選択します。 **デバイス ID**、**主キー**、**接続文字列の主キー** の値をメモします。
 
     ![資格情報の取得](media/iot-suite-selector-connecting/credentials.png)
 

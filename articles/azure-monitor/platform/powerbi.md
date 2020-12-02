@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 8b9624313716081a039b12c73e54b9f7afc2a323
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53277f64c3d1b03572732157756da1fececbcd43
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86505314"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184571"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Azure Monitor ログ データを Power BI にインポートする
 
@@ -28,7 +28,7 @@ Azure Monitor の [Log Analytics ワークスペース](manage-access.md) から
 ## <a name="export-query"></a>クエリをエクスポートする
 まず、Power BI データセットに取り込むデータを返す[ログ クエリ](../log-query/log-query-overview.md)を作成します。  次にそのクエリを Power BI Desktop で使用できる [Power Query (M) 言語](/powerquery-m/power-query-m-language-specification)にエクスポートします。
 
-1. データセットのデータを抽出するために [Log Analytics にログ クエリを作成します](../log-query/get-started-portal.md)。
+1. データセットのデータを抽出するために [Log Analytics にログ クエリを作成します](../log-query/log-analytics-tutorial.md)。
 2. **[エクスポート]**  >  **[Power BI Query (M)]** の順に選択します。  これにより、**PowerBIQuery.txt** という名前のテキスト ファイルにクエリがエクスポートされます。 
 
     ![ログ検索のエクスポート](media/powerbi/export-analytics.png)

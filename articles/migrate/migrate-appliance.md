@@ -4,11 +4,11 @@ description: Azure Migrate アプライアンスに対するサポートの概�
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450049"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008703"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
@@ -69,8 +69,8 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 **検出の制限** | アプライアンスは、最大 5000 個の Hyper-V ホストを検出できます。<br/> アプライアンスは、最大 300 個の Hyper-V ホストに接続できます。
 **VHD テンプレート** | VHD を含む zip 形式のフォルダー。 ポータルから、または[こちら](https://go.microsoft.com/fwlink/?linkid=2140422)からダウンロードします。<br/><br/> ダウンロード サイズは 8.91 GB です。<br/><br/> ダウンロードしたアプライアンス テンプレートには、180 日間有効な Windows Server 2016 評価版ライセンスが付属します。 評価期間が期限切れ間近の場合は、新しいアプライアンスをダウンロードしてデプロイするか、アプライアンス VM のオペレーティング システムのライセンスをアクティブ化することをお勧めします。
 **PowerShell スクリプト** | この[記事](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)を参照してください。<br/><br/> 
-**ソフトウェア/ハードウェア***   |  アプライアンスは、Windows Server 2016、16 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを搭載したコンピューターで実行する必要があります。<br/> アプライアンスには、静的または動的 IP アドレスが必要であり、直接またはプロキシを介したインターネット アクセスが必要です。<br/><br/> アプライアンスを Hyper-V VM として実行する場合、ハードウェア要件を割り当てるのに十分なリソースが Hyper-V ホスト上に必要です。<br/><br/> 物理マシンでアプライアンスを実行する場合は、Windows Server 2016 を実行しており、ハードウェアの要件を満たしていることを確認します。 
-**Hyper-V の要件** | VHD テンプレートを使用してアプライアンスをデプロイする場合、Azure Migrate によって提供されるアプライアンス VM は、Hyper-V VM バージョン 5.0 です。<br/><br/> Hyper-V ホストで Windows Server 2012 R2 以降が実行されている必要があります。 
+**ソフトウェア/ハードウェア** _   |  アプライアンスは、Windows Server 2016、16 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを搭載したコンピューターで実行する必要があります。<br/> アプライアンスには、静的または動的 IP アドレスが必要であり、直接またはプロキシを介したインターネット アクセスが必要です。<br/><br/> アプライアンスを Hyper-V VM として実行する場合、ハードウェア要件を割り当てるのに十分なリソースが Hyper-V ホスト上に必要です。<br/><br/> 物理マシンでアプライアンスを実行する場合は、Windows Server 2016 を実行しており、ハードウェアの要件を満たしていることを確認します。 
+_ *Hyper-V 要件** | VHD テンプレートを使用してアプライアンスをデプロイする場合、Azure Migrate によって提供されるアプライアンス VM は、Hyper-V VM バージョン 5.0 です。<br/><br/> Hyper-V ホストで Windows Server 2012 R2 以降が実行されている必要があります。 
 **ハッシュ値 - VHD** | VHD テンプレートのハッシュ値を[確認](tutorial-discover-hyper-v.md#verify-security)します。
 **ハッシュ値 - PowerShell スクリプト** | PowerShell スクリプトのハッシュ値を[確認](deploy-appliance-script.md#verify-file-security)します。
 

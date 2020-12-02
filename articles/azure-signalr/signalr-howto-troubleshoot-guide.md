@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 11ea348a80bc226b6a96bea1e7c023ee9c06b13a
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: cc17dcef7a554bee2715c79ba7d0c2356db2c6b3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684119"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185659"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR Service の一般的な問題に関するトラブルシューティング ガイド
 
@@ -148,7 +148,7 @@ ASP.NET SignalR の場合、[クライアント接続が切断される](#client
 
 **Free** インスタンスの場合、**コンカレント** 接続数の制限は 20 です。**Standard** インスタンスの場合、**コンカレント** 接続数の制限は **ユニットあたり** 1 K です。つまり、100 ユニットでは 100 K のコンカレント接続が許可されます。
 
-接続には、クライアントとサーバーの両方の接続が含まれます。 接続がどのようにカウントされるかについては、[ここ](https://docs.microsoft.com/azure/azure-signalr/signalr-concept-messages-and-connections#how-connections-are-counted)で確認してください。
+接続には、クライアントとサーバーの両方の接続が含まれます。 接続がどのようにカウントされるかについては、[ここ](./signalr-concept-messages-and-connections.md#how-connections-are-counted)で確認してください。
 
 ## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500 "ネゴシエート時のエラー":Azure SignalR サービスはまだ接続されていません。後でもう一度試してください。
 
@@ -162,7 +162,7 @@ ASP.NET SignalR の場合、[クライアント接続が切断される](#client
 
 #### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>ASP.NET Core SignalR に対するサーバー側のログ記録を有効にする
 
-ASP.NET Core SignalR のサーバー側ログは、ASP.NET Core フレームワークで提供されている `ILogger` ベースの[ログ記録](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&tabs=aspnetcore2x)と統合されています。 サーバー側のログ記録は、`ConfigureLogging` を使用して有効にできます。以下に使用例を示します。
+ASP.NET Core SignalR のサーバー側ログは、ASP.NET Core フレームワークで提供されている `ILogger` ベースの[ログ記録](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1)と統合されています。 サーバー側のログ記録は、`ConfigureLogging` を使用して有効にできます。以下に使用例を示します。
 ```cs
 .ConfigureLogging((hostingContext, logging) =>
         {
@@ -337,7 +337,7 @@ finally
 
 * クライアント接続はどのように再開するのでしょうか。
     
-    以下に、*常に再試行* の戦略を採用した接続再開ロジックを含む[サンプル コード](https://github.com/Azure/azure-signalr/tree/dev/samples)を示します。
+    以下に、*常に再試行* の戦略を採用した接続再開ロジックを含む [サンプル コード](https://github.com/Azure/azure-signalr/tree/dev/samples)を示します。
 
     * [ASP.NET Core C# クライアント](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample.CSharpClient/Program.cs#L64)
 

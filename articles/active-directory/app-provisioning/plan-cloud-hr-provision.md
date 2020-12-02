@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: ce8b792beb8652bedfddff470444240bc3edf148
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 64418a727ecb9a300912a4766a9ea2066328ad31
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363659"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174902"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Azure Active Directory ユーザー プロビジョニングのためのクラウド人事アプリケーションの計画
 
@@ -60,9 +60,9 @@ Azure AD のユーザー プロビジョニング サービスを使用すると
 
 この記事では、次の用語を使用しています。
 
-- **ソース システム** :Azure AD のプロビジョニング元である、ユーザーのリポジトリ。 例として、Workday や SuccessFactors などのクラウド人事アプリがあります。
-- **ターゲット システム** :Azure AD のプロビジョニング先である、ユーザーのリポジトリ。 例として、Active Directory、Azure AD、Microsoft 365、その他の SaaS アプリがあります。
-- **入社/異動/退職プロセス** :クラウド人事アプリを記録システムとして使用する新規雇用、異動、退職に対して使われる用語。 プロセスが完了するのは、サービスによって必要な属性がターゲット システムに正常にプロビジョニングされた時点です。
+- **ソース システム**:Azure AD のプロビジョニング元である、ユーザーのリポジトリ。 例として、Workday や SuccessFactors などのクラウド人事アプリがあります。
+- **ターゲット システム**:Azure AD のプロビジョニング先である、ユーザーのリポジトリ。 例として、Active Directory、Azure AD、Microsoft 365、その他の SaaS アプリがあります。
+- **入社/異動/退職プロセス**:クラウド人事アプリを記録システムとして使用する新規雇用、異動、退職に対して使われる用語。 プロセスが完了するのは、サービスによって必要な属性がターゲット システムに正常にプロビジョニングされた時点です。
 
 ### <a name="key-benefits"></a>主な利点
 
@@ -144,9 +144,9 @@ Azure AD のユーザー プロビジョニング サービスを使用すると
 
 クラウド人事アプリと Active Directory の間の Azure AD プロビジョニング ワークフローを容易にするため、Azure AD アプリ ギャラリーからプロビジョニング コネクタ アプリを複数追加できます。
 
-- **クラウド人事アプリからAzure Active Directory へのユーザー プロビジョニング** :このプロビジョニング コネクタ アプリは、クラウド人事アプリから 1 つの Active Directory ドメインへのユーザー アカウントのプロビジョニングを容易にします。 複数のドメインがある場合は、プロビジョニング先にする必要がある Active Directory ドメインごとに 1 つ、Azure AD アプリ ギャラリーからこのアプリのインスタンスを追加できます。
-- **クラウド人事アプリから Azure AD へのユーザー プロビジョニング** :Azure AD Connect は Active Directory ユーザーを Azure AD に同期するために使用するツールですが、このプロビジョニング コネクタ アプリを使用すると、クラウドのみのユーザーをクラウド人事アプリから 1 つの Azure AD テナントに容易にプロビジョニングできます。
-- **クラウド人事アプリへの書き戻し** :このプロビジョニング コネクタ アプリを使用すると、ユーザーのメール アドレスを Azure AD からクラウド人事アプリに容易に書き戻すことができます。
+- **クラウド人事アプリからAzure Active Directory へのユーザー プロビジョニング**:このプロビジョニング コネクタ アプリは、クラウド人事アプリから 1 つの Active Directory ドメインへのユーザー アカウントのプロビジョニングを容易にします。 複数のドメインがある場合は、プロビジョニング先にする必要がある Active Directory ドメインごとに 1 つ、Azure AD アプリ ギャラリーからこのアプリのインスタンスを追加できます。
+- **クラウド人事アプリから Azure AD へのユーザー プロビジョニング**:Azure AD Connect は Active Directory ユーザーを Azure AD に同期するために使用するツールですが、このプロビジョニング コネクタ アプリを使用すると、クラウドのみのユーザーをクラウド人事アプリから 1 つの Azure AD テナントに容易にプロビジョニングできます。
+- **クラウド人事アプリへの書き戻し**:このプロビジョニング コネクタ アプリを使用すると、ユーザーのメール アドレスを Azure AD からクラウド人事アプリに容易に書き戻すことができます。
 
 たとえば、次の図は、Azure AD アプリ ギャラリーで入手できる Workday コネクタ アプリの一覧です。
 
@@ -245,7 +245,7 @@ Azure AD Connect プロビジョニング エージェントのデプロイ ト�
 
 要件に応じて、Azure AD では、定数値の提供、または[属性マッピングの式の作成](../app-provisioning/functions-for-customizing-application-data.md)によって属性から属性への直接マッピングをサポートします。 この柔軟性により、ターゲット アプリの属性に設定される内容を完全に制御できます。 [Microsoft Graph API](../app-provisioning/export-import-provisioning-configuration.md) と Graph Explorer を使用すると、ユーザー プロビジョニングの属性マッピングとスキーマを JSON ファイルにエクスポートし、それを Azure AD にインポートし直すことができます。
 
-既定では、一意の社員 ID を表すクラウド人事アプリの属性が、 *Active Directory の一意の属性にマップされる一致属性* として使用されます。 たとえば、Workday アプリのシナリオでは、 **Workday** の **WorkerID** 属性が Active Directory の **employeeID** 属性にマップされます。
+既定では、一意の社員 ID を表すクラウド人事アプリの属性が、*Active Directory の一意の属性にマップされる一致属性* として使用されます。 たとえば、Workday アプリのシナリオでは、**Workday** の **WorkerID** 属性が Active Directory の **employeeID** 属性にマップされます。
 
 複数の一致属性を設定し、一致の優先順位を割り当てることができます。 一致の優先順位に従って評価が行われます。 1 件でも一致が見つかると、一致する属性の評価はそれ以上行われません。
 
@@ -366,9 +366,9 @@ Azure AD プロビジョニング サービスを初めて実行すると、ク�
 
 ソリューションの要件に合ったクラウド人事アプリを選択します。
 
-**Workday** :Workday から Active Directory および Azure AD に従業員プロファイルをインポートするには、「 [チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment)」を参照してください。 必要に応じて、メール アドレス、ユーザー名、電話番号を Workday に書き戻すことができます。
+**Workday**:Workday から Active Directory および Azure AD に従業員プロファイルをインポートするには、「[チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment)」を参照してください。 必要に応じて、メール アドレス、ユーザー名、電話番号を Workday に書き戻すことができます。
 
-**SAP SuccessFactors** :SuccessFactors から Active Directory および Azure AD に従業員プロファイルをインポートするには、「 [チュートリアル:SAP SuccessFactors を構成し、自動ユーザー プロビジョニングに対応させる](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)」をご覧ください。 必要に応じて、メール アドレスとユーザー名を SuccessFactors に書き戻すことができます。
+**SAP SuccessFactors**:SuccessFactors から Active Directory および Azure AD に従業員プロファイルをインポートするには、「[チュートリアル:SAP SuccessFactors を構成し、自動ユーザー プロビジョニングに対応させる](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)」をご覧ください。 必要に応じて、メール アドレスとユーザー名を SuccessFactors に書き戻すことができます。
 
 ## <a name="manage-your-configuration"></a>構成の管理
 
@@ -404,9 +404,9 @@ Azure AD プロビジョニング サービスでは、レポートの生成、�
 
 - [Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングの構成に関する問題](application-provisioning-config-problem.md)
 - [アプリケーションにプロビジョニングするためにオンプレミスの Active Directory から Azure AD に属性を同期する](user-provisioning-sync-attributes-for-mapping.md)
-- [Azure Active Directory ギャラリー アプリケーションへのユーザー プロビジョニングを構成している間の管理者の資格情報の保存に関する問題](application-provisioning-config-problem-storage-limit.md)
+- [Azure Active Directory ギャラリー アプリケーションへのユーザー プロビジョニングを構成している間の管理者の資格情報の保存に関する問題](./user-provisioning.md)
 - [Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない](application-provisioning-config-problem-no-users-provisioned.md)
-- [Azure AD ギャラリー アプリケーションへプロビジョニングされた間違ったユーザー グループ](application-provisioning-config-problem-wrong-users-provisioned.md)
+- [Azure AD ギャラリー アプリケーションへプロビジョニングされた間違ったユーザー グループ](../manage-apps/add-application-portal-assign-users.md)
 - [エージェントのトラブルシューティングのための Windows イベント ビューアーの設定](../saas-apps/workday-inbound-tutorial.md#setting-up-windows-event-viewer-for-agent-troubleshooting)
 - [サービスのトラブルシューティングのための Azure portal 監査ログの設定](../saas-apps/workday-inbound-tutorial.md#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
 - [AD ユーザー アカウントの作成操作のログの概要](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-ad-user-account-create-operations)

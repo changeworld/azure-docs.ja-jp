@@ -4,12 +4,12 @@ description: プライベート Azure Kubernetes Service (AKS) クラスター�
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 5c45c01e34c4663657dbeee803fe0bb5cdae6a3c
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 450d68e26c5a3fc1ecfbaf6a3be6b5f698ee65e3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380574"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183262"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>プライベート Azure Kubernetes Service クラスターを作成する
 
@@ -125,7 +125,7 @@ AKS クラスターと同じ VNET に VM を作成するのが最も簡単な方
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [private-link-service]: ../private-link/private-link-service-overview.md#limitations
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
-[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[azure-bastion]: ../bastion/tutorial-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
 [devops-agents]: /azure/devops/pipelines/agents/agents?view=azure-devops
 [availability-zones]: availability-zones.md

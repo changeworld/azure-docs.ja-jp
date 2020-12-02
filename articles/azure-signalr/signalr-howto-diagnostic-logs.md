@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: b0c1a91df30ee6a88f055dc47cfdef339e2ee2b2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5ad40ca051677ced0c6d8b5c35e8563272ff598f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151064"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183976"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Azure SignalR Service のリソース ログ
 
@@ -122,7 +122,7 @@ message | ログ イベントの詳細なメッセージ
 
     ![Log Analytics メニュー項目](./media/signalr-tutorial-diagnostic-logs/log-analytics-menu-item.png)
 
-2. 「`SignalRServiceDiagnosticLogs`」と入力し、リソース ログのクエリを実行する時間の範囲を選択します。 詳細なクエリについては、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/get-started-portal.md)」を参照してください。
+2. 「`SignalRServiceDiagnosticLogs`」と入力し、リソース ログのクエリを実行する時間の範囲を選択します。 詳細なクエリについては、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/log-analytics-tutorial.md)」を参照してください。
 
     ![Log Analytics のクエリ ログ](./media/signalr-tutorial-diagnostic-logs/query-log-in-log-analytics.png)
 
@@ -182,7 +182,7 @@ Azure SignalR Service のトラブルシューティングを行うには、サ�
 
 #### <a name="throttling"></a>Throttling
 
-Azure SignalR Service への SignalR クライアント接続を確立できないことがわかった場合は、リソース ログを確認してください。 リソース ログ上で `Connection count reaches limit` が発生している場合は、確立している SignalR Service への接続が多すぎて、接続数の上限に到達しています。 SignalR サービスのスケールアップを検討してください。 リソース ログ上で `Message count reaches limit` が発生している場合は、Free レベルを利用しており、メッセージのクォータを最大まで使用していることを意味します。 さらにメッセージを送信する場合は、SignalR サービスを Standard レベルへ変更して追加のメッセージを送信することを検討してください。 詳細については、「[Azure SignalR Service の価格](https://azure.microsoft.com/pricing/details/signalr-service/)」を参照してください。
+Azure SignalR Service への SignalR クライアント接続を確立できないことがわかった場合は、リソース ログを確認してください。 リソース ログ上で `Connection count reaches limit` が発生している場合は、確立している SignalR Service への接続が多すぎて、接続数の上限に到達しています。 SignalR サービスのスケールアップを検討してください。 リソース ログ上で `Message count reaches limit` が発生している場合は、Free レベルを利用しており、メッセージのクォータを最大まで使用していることを意味します。 さらにメッセージを送信する場合は、SignalR サービスを Standard レベルへ変更して追加のメッセージを送信することを検討してください。 詳細については、「[Azure SignalR Service の価格](https://azure.microsoft.com/pricing/details/signalr-service/)」を参照してください。
 
 ### <a name="get-help"></a>ヘルプの参照
 

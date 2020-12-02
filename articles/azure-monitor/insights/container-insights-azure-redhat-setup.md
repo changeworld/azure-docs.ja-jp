@@ -3,12 +3,12 @@ title: Azure Monitor for containers を使用して Azure Red Hat OpenShift v3.x
 description: この記事では、Azure Red Hat OpenShift バージョン 3 以降でホストされている Azure Monitor を使用して Kubernetes クラスターの監視を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 1186056559d6497b2b48cb3533a0967d6d61f38e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2cd39c13ce7d67b2bfcfaca0a6f627e19d289783
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216370"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186917"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Azure Red Hat OpenShift v3 を構成する
 
@@ -18,7 +18,7 @@ ms.locfileid: "92216370"
 > 2020 年 10 月の時点で、新しい 3.11 クラスターを作成することはできなくなります。
 > 既存の 3.11 クラスターは、2022 年 6 月までは引き続き動作しますが、その日以降はサポートされなくなります。
 >
-> このガイドに従って、[Azure Red Hat OpenShift 4 クラスターを作成](https://docs.microsoft.com/azure/openshift/tutorial-create-cluster)します。
+> このガイドに従って、[Azure Red Hat OpenShift 4 クラスターを作成](../../openshift/tutorial-create-cluster.md)します。
 > ご質問がある場合は、[お問い合わせください](mailto:aro-feedback@microsoft.com)。
 
 Azure Monitor for containers は、Azure Kubernetes Service (AKS) と AKS エンジン クラスター用の監視エクスペリエンスを提供するものです。 この記事では、[Azure Red Hat OpenShift](../../openshift/intro-openshift.md) バージョン 3 およびバージョン 3 のサポートされている最新バージョンでホストされている Kubernetes クラスターの監視を有効にし、類似した監視エクスペリエンスを実現する方法について説明します。
@@ -230,7 +230,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
     az openshift show -g <clusterResourceGroup> -n <clusterName>
     ```
 
-5. JSON パラメーター ファイル **existingClusterParam.json** を編集し、 *aroResourceId* および *aroResourceLocation* の値を更新します。 **workspaceResourceId** の値は、ワークスペース名を含む Log Analytics ワークスペースの完全なリソース ID です。
+5. JSON パラメーター ファイル **existingClusterParam.json** を編集し、*aroResourceId* および *aroResourceLocation* の値を更新します。 **workspaceResourceId** の値は、ワークスペース名を含む Log Analytics ワークスペースの完全なリソース ID です。
 
 6. Azure CLI を使用してデプロイするには、次のコマンドを実行します。
 

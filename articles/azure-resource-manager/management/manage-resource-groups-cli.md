@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9b5addd9d275e9367988dc10689c27fa035e97dd
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4a9a4ed4ebba7f6f2470bb9e7000a899ebc26323
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951776"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185812"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Azure CLI を使用した Azure Resource Manager リソース グループの管理
 
@@ -135,7 +135,7 @@ az group export --name $resourceGroupName
 
 テンプレートのエクスポート機能は、Azure Data Factory リソースのエクスポートをサポートしていません。 Data Factory リソースをエクスポートする方法については、「[Azure Data Factory のデータ ファクトリをコピーまたは複製する](../../data-factory/copy-clone-data-factory.md)」を参照してください。
 
-クラシック デプロイ モデルを使用して作成されたリソースをエクスポートするには、[Resource Manager デプロイ モデルに移行する](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)必要があります。
+クラシック デプロイ モデルを使用して作成されたリソースをエクスポートするには、[Resource Manager デプロイ モデルに移行する](../../virtual-machines/migration-classic-resource-manager-overview.md)必要があります。
 
 詳細については、「[Azure portal のテンプレートへの単一および複数リソースのエクスポート](../templates/export-template-portal.md)」を参照してください。
 

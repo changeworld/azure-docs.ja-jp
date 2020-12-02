@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea8905051d06e4f8787d80abf5cc33dbc21692e0
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 30d268b116b35ede5741179c3f60da909c792ba8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95488438"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168970"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD でのグループベース ライセンスの PowerShell と Graph の例
 
@@ -661,9 +661,9 @@ aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipp
 グループを使用したライセンス管理の機能セットについては、以下の記事をご覧ください。
 
 * [What is group-based licensing in Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md) (Azure Active Directory のグループベースのライセンスとは)
-* [Assigning licenses to a group in Azure Active Directory](../users-groups-roles/licensing-groups-assign.md) (Azure Active Directory でのグループへのライセンス割り当て)
+* [Assigning licenses to a group in Azure Active Directory](./licensing-groups-assign.md) (Azure Active Directory でのグループへのライセンス割り当て)
 * [Azure Active Directory のグループのライセンスに関する問題の特定と解決](licensing-groups-resolve-problems.md)
 * [Azure Active Directory で個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する方法](licensing-groups-migrate-users.md)
 * [Azure Active Directory のグループベースのライセンスを使用して製品ライセンス間でユーザーを移行する方法](licensing-groups-change-licenses.md)
-* [Azure Active Directory グループベース ライセンスのその他のシナリオ](../users-groups-roles/licensing-group-advanced.md)
+* [Azure Active Directory グループベース ライセンスのその他のシナリオ](./licensing-group-advanced.md)
 * [Azure Active Directory のグループベースのライセンスの PowerShell の例](licensing-ps-examples.md)

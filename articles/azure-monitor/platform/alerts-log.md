@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 0842efe304faa9a0d94fbf71075f1bc16ff34014
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 61aba3e5792d1cc20da16686d052de91744dab76
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018207"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186781"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してログ アラートを作成、表示、管理する
 
 ## <a name="overview"></a>概要
 
-ログ アラートによって、ユーザーは [Log Analytics](../log-query/get-started-portal.md) クエリを使用して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。 [アクション グループ](./action-groups.md)を使用することで、ルールによって 1 つ以上のアクションをトリガーできます。 [ログ アラートの機能と用語の詳細について参照してください](alerts-unified-log.md)。
+ログ アラートによって、ユーザーは [Log Analytics](../log-query/log-analytics-tutorial.md) クエリを使用して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。 [アクション グループ](./action-groups.md)を使用することで、ルールによって 1 つ以上のアクションをトリガーできます。 [ログ アラートの機能と用語の詳細について参照してください](alerts-unified-log.md)。
 
 この記事では、Azure Monitor を使用してログ アラートを作成および管理する方法について説明します。 アラート ルールは、次の 3 つのコンポーネントによって定義されます。
 - ターゲット:監視する特定の Azure リソース。
@@ -27,7 +27,7 @@ ms.locfileid: "96018207"
 Azure Resource Manager テンプレートを使用してログ アラート ルールを作成することもできます。これについては、[別の記事](alerts-log-create-templates.md)で説明されています。
 
 > [!NOTE]
-> [Log Analytics ワークスペース](../log-query/get-started-portal.md)からのログ データを、Azure Monitor メトリック ストアに送信することもできます。 各メトリック アラートの[動作](alerts-metric-overview.md)は異なります。これは、操作するデータによっては、より望ましい場合があります。 メトリックにルーティングできるログとその方法については、[ログのメトリック アラート](alerts-metric-logs.md)に関するページを参照してください。
+> [Log Analytics ワークスペース](../log-query/log-analytics-tutorial.md)からのログ データを、Azure Monitor メトリック ストアに送信することもできます。 各メトリック アラートの[動作](alerts-metric-overview.md)は異なります。これは、操作するデータによっては、より望ましい場合があります。 メトリックにルーティングできるログとその方法については、[ログのメトリック アラート](alerts-metric-logs.md)に関するページを参照してください。
 
 ## <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Microsoft Azure portal でログ アラート ルールを作成する
 
@@ -35,7 +35,7 @@ Azure Resource Manager テンプレートを使用してログ アラート ル�
 
 1. アラートを作成するリソースにアクセスします。
 1. **[モニター]** で、 **[ログ]** を選択します。
-1. 問題を示している可能性のあるログ データのクエリを実行します。 検出できることや、[独自のクエリを記述する方法の概要](../log-query/get-started-portal.md)を理解するには、[アラートのクエリ例に関するトピック](../log-query/saved-queries.md)を使用してください。 また、[最適化されたアラート クエリを作成する方法について確認してください](alerts-log-query.md)。
+1. 問題を示している可能性のあるログ データのクエリを実行します。 検出できることや、[独自のクエリを記述する方法の概要](../log-query/log-analytics-tutorial.md)を理解するには、[アラートのクエリ例に関するトピック](../log-query/example-queries.md)を使用してください。 また、[最適化されたアラート クエリを作成する方法について確認してください](alerts-log-query.md)。
 1. [+ 新しいアラート ルール] ボタンを押して、アラート作成フローを開始します。
 
     ![Log Analytics - アラートの設定](media/alerts-log/AlertsAnalyticsCreate.png)
@@ -327,4 +327,3 @@ az group deployment create \
 * [Azure Resource Manager テンプレート](./alerts-log-create-templates.md)を使用してログ アラートを作成します。
 * [ログ アラートの Webhook アクション](./alerts-log-webhook.md)を理解します。
 * [ログ クエリ](../log-query/log-query-overview.md)についてさらに学習します
-

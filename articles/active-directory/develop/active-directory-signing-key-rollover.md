@@ -12,12 +12,12 @@ ms.date: 8/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b65ad1f22d20686a1ee47631f9209e1b15b0ab58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 981ac775e7153cfd03dc1760bbbc4e50fd9ecc57
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88948132"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169547"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Microsoft ID プラットフォームでの署名キーのロールオーバー
 この記事では、Microsoft ID プラットフォームによってセキュリティ トークンに署名するために使用される公開キーに関して、知っておく必要があることについて説明します。 これらのキーは定期的にロールオーバーされ、緊急時にはすぐにロールオーバーされる可能性があることにご注意ください。 Microsoft ID プラットフォームを使用するすべてのアプリケーションは、キーのロールオーバー プロセスをプログラムで処理できる必要があります。 ここではキーのしくみについて説明すると共に、アプリケーションへのロールオーバーの影響を評価する方法について説明します。また、必要に応じてキーのロールオーバーに対処できるよう、アプリケーションを更新したり、定期的な手動ロールオーバー プロセスを確立したりする方法について説明しています。
@@ -150,7 +150,7 @@ Visual Studio 2013 で Web API テンプレートを使用して Web API を作�
 
 手動で認証を構成する場合は、以下の手順に従って、自動的にキー情報を更新するように Web API を構成する方法を確認してください。
 
-次のコード スニペットは、フェデレーション メタデータ ドキュメントから最新のキーを取得し、 [JWT トークン ハンドラー](https://msdn.microsoft.com/library/dn205065.aspx) を使用してトークンを検証する方法を示しています。 このコード スニペットでは、データベース内か、構成ファイル内か、またはその他の場所に配置するかどうかにかかわらず、Microsoft ID プラットフォームからの将来のトークンを検証するキーを保持するために、独自のキャッシュ メカニズムが使用されることを前提としています。
+次のコード スニペットは、フェデレーション メタデータ ドキュメントから最新のキーを取得し、 [JWT トークン ハンドラー](/previous-versions/dotnet/framework/security/json-web-token-handler) を使用してトークンを検証する方法を示しています。 このコード スニペットでは、データベース内か、構成ファイル内か、またはその他の場所に配置するかどうかにかかわらず、Microsoft ID プラットフォームからの将来のトークンを検証するキーを保持するために、独自のキャッシュ メカニズムが使用されることを前提としています。
 
 ```
 using System;
@@ -241,7 +241,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Visual Studio 2012 を使用して作成された、リソースを保護する Web アプリケーション
-アプリケーションが Visual Studio 2012 で作成されている場合、通常、アプリケーションは ID およびアクセス ツールを使用して構成されています。 また、通常は [発行者名レジストリの検証 (VINR)](https://msdn.microsoft.com/library/dn205067.aspx)が使用されています。 VINR の役割は、信頼できる ID プロバイダー (Microsoft ID プラットフォーム) に関する情報、およびそれらによって発行されたトークンを検証するために使用されるキーに関する情報を維持することです。 また、VINR を使用すると、ディレクトリに関連付けられている最新のフェデレーション メタデータ ドキュメントをダウンロードし、構成が期限切れになっているかどうかを確認し、必要に応じて新しいキーでアプリケーションを更新することにより、Web.config ファイルに保存されているキー情報を自動的に更新することが容易になります。
+アプリケーションが Visual Studio 2012 で作成されている場合、通常、アプリケーションは ID およびアクセス ツールを使用して構成されています。 また、通常は [発行者名レジストリの検証 (VINR)](/previous-versions/dotnet/framework/security/validating-issuer-name-registry)が使用されています。 VINR の役割は、信頼できる ID プロバイダー (Microsoft ID プラットフォーム) に関する情報、およびそれらによって発行されたトークンを検証するために使用されるキーに関する情報を維持することです。 また、VINR を使用すると、ディレクトリに関連付けられている最新のフェデレーション メタデータ ドキュメントをダウンロードし、構成が期限切れになっているかどうかを確認し、必要に応じて新しいキーでアプリケーションを更新することにより、Web.config ファイルに保存されているキー情報を自動的に更新することが容易になります。
 
 Microsoft から提供されたコード サンプルまたはチュートリアルのいずれかを使用してアプリケーションを作成した場合、キーのロールオーバー ロジックは既にプロジェクトに含まれています。 以下に示すコードがプロジェクト内に存在していることを確認できます。 アプリケーションにこのロジックが含まれていない場合は、以下の手順を実行してロジックを追加し、正常に機能することを確認してください。
 
@@ -261,7 +261,7 @@ Microsoft から提供されたコード サンプルまたはチュートリア
     ValidatingIssuerNameRegistry.WriteToConfig(metadataAddress, configPath);
    }
    ```
-4. 次に示すように、**Global.asax.cs** 内の**Application_Start()** メソッドで **RefreshValidationSettings()** メソッドを呼び出します。
+4. 次に示すように、**Global.asax.cs** 内の **Application_Start()** メソッドで **RefreshValidationSettings()** メソッドを呼び出します。
    ```
    protected void Application_Start()
    {
@@ -290,14 +290,14 @@ Microsoft から提供されたコード サンプルまたはチュートリア
 WIF v1.0 でアプリケーションを作成した場合、新しいキーを使用するようにアプリケーションの構成を自動的に更新するメカニズムは用意されていません。
 
 * "*最も簡単な方法*" は、WIF SDK に含まれている FedUtil ツールを使用することです。このツールでは、最新のメタデータ ドキュメントを取得し、構成を更新できます。
-* System 名前空間に最新バージョンの WIF が含まれている .NET 4.5 にアプリケーションを更新する。 その後、 [発行者名レジストリの検証 (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) を使用して、アプリケーションの構成の自動更新を実行できます。
+* System 名前空間に最新バージョンの WIF が含まれている .NET 4.5 にアプリケーションを更新する。 その後、 [発行者名レジストリの検証 (VINR)](/previous-versions/dotnet/framework/security/validating-issuer-name-registry) を使用して、アプリケーションの構成の自動更新を実行できます。
 * このガイダンスの末尾にある手順に従って、手動ロールオーバーを実行します。
 
 FedUtil を使用して構成を更新する手順は、次のようになります。
 
 1. Visual Studio 2008 または 2010 をデプロイしてあるマシンに WIF v1.0 SDK がインストールされていることを確認します。 インストールされていない場合は、[ここからダウンロード](https://www.microsoft.com/en-us/download/details.aspx?id=4451) できます。
 2. Visual Studio でソリューションを開き、該当するプロジェクトを右クリックして、 **[Update federation metadata (フェデレーション メタデータの更新)]** を選択します。 このオプションが表示されない場合は、FedUtil と WIF v1.0 SDK の少なくともどちらかがインストールされていません。
-3. プロンプトで **[更新]** を選択してフェデレーション メタデータの更新を開始します。 アプリケーションがホストされているサーバー環境にアクセスできる場合は、FedUtil の [メタデータの自動更新スケジューラ](https://msdn.microsoft.com/library/ee517272.aspx)を使用することもできます。
+3. プロンプトで **[更新]** を選択してフェデレーション メタデータの更新を開始します。 アプリケーションがホストされているサーバー環境にアクセスできる場合は、FedUtil の [メタデータの自動更新スケジューラ](/previous-versions/windows-identity-foundation/ee517272(v=msdn.10))を使用することもできます。
 4. **[完了]** をクリックして更新プロセスを完了します。
 
 ### <a name="web-applications--apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>その他のライブラリが使用されているか、サポートされているプロトコルが手動で実装された、リソースを保護する Web アプリケーション/API
@@ -309,4 +309,4 @@ FedUtil を使用して構成を更新する手順は、次のようになりま
 [この GitHub リポジトリ](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)
 
 ## <a name="how-to-perform-a-manual-rollover-if-your-application-does-not-support-automatic-rollover"></a>アプリケーションで自動ロールオーバーがサポートされていない場合に手動ロールオーバーを実行する方法
-アプリケーションで自動ロールオーバーがサポートされて**いない**場合は、Microsoft ID プラットフォームの署名キーを定期的に監視し、適宜手動ロールオーバーを実行するプロセスを確立する必要があります。 [こちらの GitHub リポジトリ](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) には、これを実行する方法についてのスクリプトと手順が含まれています。
+アプリケーションで自動ロールオーバーがサポートされて **いない** 場合は、Microsoft ID プラットフォームの署名キーを定期的に監視し、適宜手動ロールオーバーを実行するプロセスを確立する必要があります。 [こちらの GitHub リポジトリ](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) には、これを実行する方法についてのスクリプトと手順が含まれています。

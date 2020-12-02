@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 4a9282882d23ecbdc3c03ca158ea3de5566143e7
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 59924c1f876d08aa504f19c5d6c86dca32fbd1e2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634856"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173466"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>開発するモバイル アプリでシングル サインオンとアプリ保護ポリシーをサポートする
 
@@ -38,7 +38,7 @@ ms.locfileid: "94634856"
 
 ### <a name="use-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) を使用する
 
-アプリケーションでシングル サインオンを実装する場合は、[Microsoft Authentication Library (MSAL)](msal-overview.md) を使用することをお勧めします。 MSAL を使用すると、最小限のコードおよび API 呼び出しでアプリに認証を追加し、[Microsoft ID プラットフォーム](/azure/active-directory/develop/)のすべての機能を取得して、セキュリティで保護された認証ソリューションのメンテナンスを Microsoft で処理できるようにすることができます。 既定では、MSAL によってアプリケーションの SSO サポートが追加されます。 さらに、アプリ保護ポリシーも実装する場合は、MSAL の使用が必須となります。
+アプリケーションでシングル サインオンを実装する場合は、[Microsoft Authentication Library (MSAL)](msal-overview.md) を使用することをお勧めします。 MSAL を使用すると、最小限のコードおよび API 呼び出しでアプリに認証を追加し、[Microsoft ID プラットフォーム](./index.yml)のすべての機能を取得して、セキュリティで保護された認証ソリューションのメンテナンスを Microsoft で処理できるようにすることができます。 既定では、MSAL によってアプリケーションの SSO サポートが追加されます。 さらに、アプリ保護ポリシーも実装する場合は、MSAL の使用が必須となります。
 
 > [!NOTE]
 > 埋め込み Web ビューを使用するように MSAL を構成することもできます。 この場合は、シングル サインオンが阻止されます。 SSO を確実に機能させるには、既定の動作 (つまり、システム Web ブラウザー) を使用します。
@@ -64,7 +64,7 @@ Apple では、iOS アプリケーションでこれを行うためのガイダ�
 
 アプリ保護ポリシーを有効にするには、[Microsoft Authentication Library (MSAL)](msal-overview.md) を使用します。 MSAL は Microsoft ID プラットフォームの認証および承認ライブラリであり、Intune SDK はこれと連動するように開発されています。
 
-また、認証にブローカー アプリを使用する必要があります。 ブローカーにより、アプリのコンプライアンスを確保するために、アプリケーションとデバイスの情報を提供するようアプリに要求されます。 [ブローカー認証](brokered-auth.md)に、iOS ユーザーは [Microsoft Authenticator アプリ](../user-help/user-help-auth-app-sign-in.md)を使用し、Android ユーザーは Microsoft Authenticator アプリまたは[ポータル サイト アプリ](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)を使用します。 既定では、MSAL によって、認証要求を満たすための最初の選択肢としてブローカーが使用されます。したがって、既製の MSAL を使用する場合、認証のためのブローカーの使用がアプリに対して自動的に有効になります。
+また、認証にブローカー アプリを使用する必要があります。 ブローカーにより、アプリのコンプライアンスを確保するために、アプリケーションとデバイスの情報を提供するようアプリに要求されます。 [ブローカー認証](./msal-android-single-sign-on.md)に、iOS ユーザーは [Microsoft Authenticator アプリ](../user-help/user-help-auth-app-sign-in.md)を使用し、Android ユーザーは Microsoft Authenticator アプリまたは[ポータル サイト アプリ](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)を使用します。 既定では、MSAL によって、認証要求を満たすための最初の選択肢としてブローカーが使用されます。したがって、既製の MSAL を使用する場合、認証のためのブローカーの使用がアプリに対して自動的に有効になります。
 
 最後に、アプリ保護ポリシーを有効にするために、アプリに [Intune SDK を追加](/mem/intune/developer/app-sdk-get-started)します。 ほとんどの場合、SDK はインターセプト モデルに従い、アプリ保護ポリシーが自動的に適用されて、アプリで実行されているアクションが許可されるかどうかが判断されます。 特定のアクションに制限があるかどうかをアプリに通知するために、手動で呼び出すことができる API もあります。
 
@@ -73,8 +73,8 @@ Apple では、iOS アプリケーションでこれを行うためのガイダ�
 - [Microsoft Azure Active Directory シングル サインオンのデプロイ計画](../manage-apps/plan-sso-deployment.md)
 - [方法: macOS と iOS で SSO を構成する](single-sign-on-macos-ios.md)
 - [Apple デバイス用の Microsoft Enterprise SSO プラグイン (プレビュー)](apple-sso-plugin.md)
-- [Android のブローカー認証](brokered-auth.md)
-- [承認エージェントとそれらを有効にする方法](authorization-agents.md)
+- [Android のブローカー認証](./msal-android-single-sign-on.md)
+- [承認エージェントとそれらを有効にする方法](./msal-android-single-sign-on.md)
 - [Microsoft Intune アプリ SDK の概要](/mem/intune/developer/app-sdk-get-started)
 - [Intune App SDK の設定を構成する](/mem/intune/developer/app-sdk-ios#configure-settings-for-the-intune-app-sdk)
 - [保護されている Microsoft Intune アプリ](/mem/intune/apps/apps-supported-intune-apps)

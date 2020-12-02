@@ -4,12 +4,12 @@ description: Azure for Student Starter サブスクリプション内から Azur
 Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: ecb2cc20bec602101d683dbfdd3f82a2e199aa16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f40405c9325743da5d1963e3baea781606d2d8d9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87386964"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182531"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Azure for Students Starter を使用して関数を作成する
 
@@ -100,7 +100,7 @@ Azure for Students Starter では、Azure Functions ランタイムのほとん�
 これで、単純な HTTP トリガー関数を含む関数アプリの作成が完了しました。 次は、ローカル ツール、その他の言語、監視、統合を探索できます。
 
  * [Visual Studio での初めての関数の作成](./functions-create-your-first-function-visual-studio.md)
- * [Visual Studio Code を使用した初めての関数の作成](./functions-create-first-function-vs-code.md)
+ * [Visual Studio Code を使用した初めての関数の作成](./create-first-function-vs-code-csharp.md)
  * [Azure Functions の JavaScript 開発者向けガイド](./functions-reference-node.md)
  * [Azure Functions を使用して Azure SQL Database に接続する](./functions-scenario-database-table-cleanup.md)
  * [Azure Functions HTTP バインディングについて学習します](./functions-bindings-http-webhook.md)。

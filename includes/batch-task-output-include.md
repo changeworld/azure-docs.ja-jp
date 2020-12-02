@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: eaa76153fe96b5fd41166b20770e0a969aa9260d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 019e8db54c1cfd9f436f880b8ddbb9bfa31c50bc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83797170"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028072"
 ---
-Azure Batch で実行するタスクによって、実行時に出力データが生成されることがあります。 タスクの出力データは、多くの場合、ジョブ内の他のタスク、またはそのジョブを実行したクライアント アプリケーション (あるいは両方) が取得できるように格納される必要があります。 タスクは Batch コンピューティング ノードのファイル システムに出力データを書き込みますが、再イメージ化されるとき、またはノードがプールを終了するときに、ノードのすべてのデータが失われます。 タスクには、ファイル リテンション期間が設定されている場合もあります。この期間が過ぎると、タスクによって作成されたファイルが削除されます。 これらの理由から、後で必要になるタスク出力をデータ ストア ([Azure Storage](https://docs.microsoft.com/azure/storage/) など) に永続化することが重要です。
+Azure Batch で実行するタスクによって、実行時に出力データが生成されることがあります。 タスクの出力データは、多くの場合、ジョブ内の他のタスク、またはそのジョブを実行したクライアント アプリケーション (あるいは両方) が取得できるように格納される必要があります。 タスクは Batch コンピューティング ノードのファイル システムに出力データを書き込みますが、再イメージ化されるとき、またはノードがプールを終了するときに、ノードのすべてのデータが失われます。 タスクには、ファイル リテンション期間が設定されている場合もあります。この期間が過ぎると、タスクによって作成されたファイルが削除されます。 これらの理由から、後で必要になるタスク出力をデータ ストア ([Azure Storage](../articles/storage/index.yml) など) に永続化することが重要です。
 
 Batch のストレージ アカウント オプションについては、「[Batch アカウントと Azure Storage アカウント](../articles/batch/accounts.md#azure-storage-accounts)」を参照してください。

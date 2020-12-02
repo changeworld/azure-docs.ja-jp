@@ -13,16 +13,16 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: ed3e9da628ab779ab47673fa2ce728c5c25539be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b683eaaf4c93ef0dcf74680e1e174e0f867a7041
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88166435"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173398"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>MSAL.NET を使用してソーシャル ID でユーザーをサインインさせる
 
-MSAL.NET を使用して、[Azure Active Directory B2C (Azure AD B2C)](https://aka.ms/aadb2c) でソーシャル ID を持つユーザーをサインインさせることができます。 Azure AD B2C はポリシーの概念を基に構築されています。 MSAL.NET では、ポリシーを指定するということは、機関を提供することです。
+MSAL.NET を使用して、[Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/overview.md) でソーシャル ID を持つユーザーをサインインさせることができます。 Azure AD B2C はポリシーの概念を基に構築されています。 MSAL.NET では、ポリシーを指定するということは、機関を提供することです。
 
 - パブリック クライアント アプリケーションをインスタンス化するときは、機関の一部としてポリシーを指定する必要があります。
 - ポリシーを適用するときは、`authority` パラメーターを受け取る `AcquireTokenInteractive` のオーバーライドを呼び出します。
@@ -124,7 +124,7 @@ private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
 
 ROPC フローの詳細については、[リソース所有者のパスワード資格情報の付与を使用したサインイン](v2-oauth-ropc.md)に関する記事を参照してください。
 
-アプリケーションでユーザーにパスワードを求めることは安全でないため、ROPC フローは**推奨されません**。 この問題の詳細については、[深刻化するパスワードの問題の解決策](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)に関する記事を参照してください。
+アプリケーションでユーザーにパスワードを求めることは安全でないため、ROPC フローは **推奨されません**。 この問題の詳細については、[深刻化するパスワードの問題の解決策](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)に関する記事を参照してください。
 
 ROPC フローでユーザー名とパスワードを使用すると、次のようなことが犠牲になります。
 
@@ -153,7 +153,7 @@ AcquireTokenByUsernamePassword(
 
 ### <a name="limitations-of-the-ropc-flow"></a>ROPC フローの制限事項
 
-ROPC フローは、ユーザーがメール アドレスまたはユーザー名を使用して Azure AD B2C に登録した**ローカル アカウントでのみ動作します**。 Azure AD B2C によってサポートされる外部 ID プロバイダー (Facebook、Google など) とフェデレーションした場合、このフローは機能しません。
+ROPC フローは、ユーザーがメール アドレスまたはユーザー名を使用して Azure AD B2C に登録した **ローカル アカウントでのみ動作します**。 Azure AD B2C によってサポートされる外部 ID プロバイダー (Facebook、Google など) とフェデレーションした場合、このフローは機能しません。
 
 ## <a name="google-auth-and-embedded-webview"></a>Google 認証と埋め込み Web ビュー
 
@@ -186,7 +186,7 @@ Azure AD B2C シナリオでは、これらの両方の要求が欠落する可�
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>"トークンの応答にありません" の軽減策
 
-1 つの方法は、`preferred_username` ではなく `name` 要求を使用することです。 Azure AD B2C によって発行された ID トークンに `name` 要求を含めるには、ユーザー フローを構成するときに**表示名**を選択します。
+1 つの方法は、`preferred_username` ではなく `name` 要求を使用することです。 Azure AD B2C によって発行された ID トークンに `name` 要求を含めるには、ユーザー フローを構成するときに **表示名** を選択します。
 
 ユーザー フローによって返される要求を指定する方法の詳細については、「[チュートリアル:Azure AD B2C 内にユーザーフローを作成する](../../active-directory-b2c/tutorial-create-user-flows.md)」を参照してください。
 

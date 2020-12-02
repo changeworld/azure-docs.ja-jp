@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f08a6b3f7abfc79bff6baff2a339053905612535
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67181209"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027786"
 ---
 #### <a name="to-attach-the-sas-cables"></a>SAS ケーブルの取り付け方法
 1. 主エンクロージャと EBOD エンクロージャを識別します。 2 つのエンクロージャはそれぞれのバックプレーンを見て識別できます。 次の図を参考にしてください。 
@@ -22,7 +22,7 @@ ms.locfileid: "67181209"
    |:--- |:--- |
    | 1 |主エンクロージャ |
    | 2 |EBOD エンクロージャ |
-2. 主エンクロージャと EBOD エンクロージャのシリアル番号を見つけます。 シリアル番号ステッカーが各エンクロージャの背面の耳に付いています。 両方のエンクロージャのシリアル番号が一致している必要があります。 [Microsoft サポートに連絡してください](../articles/storsimple/storsimple-contact-microsoft-support.md) 。 次の図を参考にしてシリアル番号を見つけてください。
+2. 主エンクロージャと EBOD エンクロージャのシリアル番号を見つけます。 シリアル番号ステッカーが各エンクロージャの背面の耳に付いています。 両方のエンクロージャのシリアル番号が一致している必要があります。 [Microsoft サポートに連絡してください](../articles/storsimple/storsimple-8000-contact-microsoft-support.md) 。 次の図を参考にしてシリアル番号を見つけてください。
    
     ![シリアル番号の位置を示すエンクロージャの背面図](./media/storsimple-sas-cable-8600/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
    
@@ -51,4 +51,3 @@ ms.locfileid: "67181209"
       | 4 |EBOD コントローラー 1 |
       | 5、6 |主エンクロージャの SAS ポート (EBOD のラベル) |
       | 7、8 |EBOD エンクロージャの SAS ポート (ポート A) |
-

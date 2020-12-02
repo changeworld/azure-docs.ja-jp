@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 68e47fe3cc674542a807ecbabd37cc6b624d5c03
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 167ed7e5c00452db4ee77e10236fec3ff86f0439
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145593"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175102"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>プロビジョニングを Azure Monitor ログと統合する方法の概要
 
@@ -30,13 +30,13 @@ Azure Monitoring を構成すると、アプリケーションのプロビジョ
 
 :::image type="content" source="media/application-provisioning-log-analytics/diagnostic-settings.png" alt-text="診断設定へのアクセス" lightbox="media/application-provisioning-log-analytics/diagnostic-settings.png":::
 
-:::image type="content" source="media/application-provisioning-log-analytics/enable-log-analytics.png" alt-text="診断設定へのアクセス" lightbox="media/application-provisioning-log-analytics/enable-log-analytics.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/enable-log-analytics.png" alt-text="アプリケーションのプロビジョニング ログを有効にする" lightbox="media/application-provisioning-log-analytics/enable-log-analytics.png":::
 
 > [!NOTE]
 > 最近ワークスペースをプロビジョニングしたばかりの場合は、ログを送信できるようになるまでに時間がかかることがあります。 サブスクリプションが  *microsoft.insights* を使用するように登録されていないというエラーを受け取った場合は、数分後にもう一度確認してください。
  
 ## <a name="understanding-the-data"></a>データの説明
-プロビジョニングからログ ビューアーに送信される基のデータ ストリームはほぼ同じです。 Azure Monitor ログには、Azure portal UI および Azure API とほぼ同じストリームが取得されます。 次の表に示すように、ログ フィールドにはわずかな **違い** しかありません。 これらのフィールドの詳細については、「[provisioningObjectSummary を一覧表示する](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http&preserve-view=true)」を参照してください。
+プロビジョニングからログ ビューアーに送信される基のデータ ストリームはほぼ同じです。 Azure Monitor ログには、Azure portal UI および Azure API とほぼ同じストリームが取得されます。 次の表に示すように、ログ フィールドにはわずかな **違い** しかありません。 これらのフィールドの詳細については、「[provisioningObjectSummary を一覧表示する](/graph/api/provisioningobjectsummary-list?preserve-view=true&tabs=http&view=graph-rest-beta)」を参照してください。
 
 |Azure Monitor ログ   |Azure portal UI   |Azure API |
 |----------|-----------|------------|
@@ -51,9 +51,9 @@ Azure Monitor ブックには、データ分析用の柔軟なキャンバスが
 
 アプリケーションのプロビジョニングには、あらかじめ構築された一連のブックが付属しています。 これらは、[ブック] ページで確認できます。 データを表示するには、すべてのフィルター (timeRange、jobID、appName) を設定する必要があります。 また、アプリをプロビジョニングしておく必要があります。そうしないと、ログにデータが記録されません。
 
-:::image type="content" source="media/application-provisioning-log-analytics/workbooks.png" alt-text="診断設定へのアクセス" lightbox="media/application-provisioning-log-analytics/workbooks.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/workbooks.png" alt-text="アプリケーションのプロビジョニングのブック" lightbox="media/application-provisioning-log-analytics/workbooks.png":::
 
-:::image type="content" source="media/application-provisioning-log-analytics/report.png" alt-text="診断設定へのアクセス" lightbox="media/application-provisioning-log-analytics/report.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/report.png" alt-text="アプリケーションのプロビジョニング ダッシュボード" lightbox="media/application-provisioning-log-analytics/report.png":::
 
 ## <a name="custom-queries"></a>カスタム クエリ
 
@@ -100,15 +100,15 @@ Azure Monitor を使用すると、プロビジョニングに関連する主要
 
 障害が急増した場合にアラートを発します。 jobID は、お使いのアプリケーションの jobID に置き換えてください。
 
-:::image type="content" source="media/application-provisioning-log-analytics/alert1.png" alt-text="診断設定へのアクセス" lightbox="media/application-provisioning-log-analytics/alert1.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/alert1.png" alt-text="障害が急増した場合にアラートを発します。" lightbox="media/application-provisioning-log-analytics/alert1.png":::
 
 プロビジョニング サービスが動作しなくなる原因となった問題が存在する可能性があります。 次のアラートを使用して、特定の期間にプロビジョニング イベントがないことを検出します。
 
-:::image type="content" source="media/application-provisioning-log-analytics/alert2.png" alt-text="診断設定へのアクセス" lightbox="media/application-provisioning-log-analytics/alert2.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/alert2.png" alt-text="プロビジョニング サービスが動作しなくなる原因となった問題が存在する可能性があります。" lightbox="media/application-provisioning-log-analytics/alert2.png":::
 
 無効または削除が急増した場合にアラートを発します。
 
-:::image type="content" source="media/application-provisioning-log-analytics/alert3.png" alt-text="診断設定へのアクセス" lightbox="media/application-provisioning-log-analytics/alert3.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/alert3.png" alt-text="無効または削除が急増した場合にアラートを発します。" lightbox="media/application-provisioning-log-analytics/alert3.png":::
 
 
 ## <a name="community-contributions"></a>コミュニティからの投稿
@@ -121,4 +121,4 @@ Microsoft では、アプリケーションのプロビジョニングのクエ�
 - [Azure Monitor ログでクエリの使用を開始する](../../azure-monitor/log-query/get-started-queries.md)
 - [Create and manage alert groups in the Azure portal](../../azure-monitor/platform/action-groups.md)
 - [Azure Active Directory ログ分析用のビューのインストールと使用](../reports-monitoring/howto-install-use-log-analytics-views.md)
-- [プロビジョニング ログ API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta.md&preserve-view=true)
+- [プロビジョニング ログ API](/graph/api/resources/provisioningobjectsummary?preserve-view=true&view=graph-rest-beta.md)

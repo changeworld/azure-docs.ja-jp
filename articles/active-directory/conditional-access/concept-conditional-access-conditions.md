@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dddad5692ab2eebb6ef9b427c091be449791d7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96d1eaff4d1b93ad3bb489f177020c351fe4d13d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818345"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95904037"
 ---
 # <a name="conditional-access-conditions"></a>条件付きアクセス:条件
 
@@ -194,7 +194,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 デバイス状態の条件を使用して、組織の条件付きアクセス ポリシーから、ハイブリッド Azure AD 参加済みデバイスや、Microsoft Intune コンプライアンス ポリシーに準拠しているとマークが付けられているデバイスを除外することができます。
 
 例: *Microsoft Azure の管理* クラウド アプリにアクセスする *すべてのユーザー* について、*アクセス制御* と **ブロック** のために、**すべてのデバイスの状態** を含め、**ハイブリッド Azure AD 参加済みのデバイス** と **デバイスは準拠としてマーク済み** を除外する。 
-   - この例では、ハイブリッド Azure AD 参加済みデバイスや準拠としてマーク済みのデバイスからは、Microsoft Azure の管理へのアクセスのみを許可するポリシーが作成されます。
+   - この例では、ハイブリッド Azure AD 参加済みデバイスまたは準拠としてマーク済みのデバイスのいずれかから、Microsoft Azure の管理へのアクセスのみを許可するポリシーが作成されます。
 
 ## <a name="next-steps"></a>次のステップ
 

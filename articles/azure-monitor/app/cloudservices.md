@@ -4,12 +4,12 @@ description: Application Insights で Web と worker ロールを効果的に監
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: cae2e4e1d5b5e199e772c5263a46d82289f5d6ac
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 29482403358936b95fc5e814b68238cc8c25f7a8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992842"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186356"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure クラウド サービス向けの Application Insights
 [Application Insights][start] では、Application Insights SDK からのデータとお客様のクラウド サービスからの [Azure 診断](../platform/diagnostics-extension-overview.md)データを組み合わせることで、[Azure クラウド サービス アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況を監視できます。 アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
@@ -102,9 +102,9 @@ Application Insights に送信される診断情報のレベルを変更した�
 
 Visual Studio で、Application Insights SDK を各クラウド アプリ プロジェクト用に構成します。
 
-1. **Web ロール**を構成するには、プロジェクトを右クリックし、 **[Application Insights の構成]** を選択するか、または **[追加]、[Application Insights のテレメトリ]** の順に選択します。
+1. **Web ロール** を構成するには、プロジェクトを右クリックし、 **[Application Insights の構成]** を選択するか、または **[追加]、[Application Insights のテレメトリ]** の順に選択します。
 
-1. **worker ロール**を構成するには: 
+1. **worker ロール** を構成するには: 
 
     a. プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
 
@@ -191,7 +191,7 @@ Application Insights の [Azure 診断](../platform/diagnostics-extension-overvi
 
 ![Azure 診断データ](./media/cloudservices/23-wad.png)
 
-Azure 診断によって送信されるさまざまなトレース ログ全体を検索するには、[[検索]](./diagnostic-search.md) または [Analytics クエリ](../log-query/get-started-portal.md)を使用します。 たとえば、ハンドルされない例外が発生し、それによってロールがクラッシュしてリサイクルされたとします。 その情報は、Windows イベント ログのアプリケーション チャンネルに表示されます。 [検索] を使用して Windows イベント ログのエラーを表示し、例外の完全なスタック トレースを取得できます。 これは、問題の根本原因の発見に役立ちます。
+Azure 診断によって送信されるさまざまなトレース ログ全体を検索するには、[[検索]](./diagnostic-search.md) または [Analytics クエリ](../log-query/log-analytics-tutorial.md)を使用します。 たとえば、ハンドルされない例外が発生し、それによってロールがクラッシュしてリサイクルされたとします。 その情報は、Windows イベント ログのアプリケーション チャンネルに表示されます。 [検索] を使用して Windows イベント ログのエラーを表示し、例外の完全なスタック トレースを取得できます。 これは、問題の根本原因の発見に役立ちます。
 
 ![Azure 診断の検索](./media/cloudservices/25-wad.png)
 

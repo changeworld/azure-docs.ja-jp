@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: ramakk
-ms.openlocfilehash: 50669dcce044988f2e45acc2a17ae43c140d1ab5
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 96d8ba058a33d408ec2ee2a1adfba9011f393da9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930307"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184486"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp Files のネットワーク計画のガイドライン
 
@@ -116,7 +116,7 @@ Azure NetApp Files 用の委任サブネットでは、ユーザー定義ルー�
 
 ![ハイブリッド ネットワーク環境](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
-ハイブリッド シナリオでは、オンプレミスのデータセンターのアプリケーションが Azure のリソースにアクセスする必要があります。  これは、データセンターを Azure に拡張したいのか、Azure ネイティブ サービスを使用したいのか、それともディザスター リカバリーが目的なのかに関係なく当てはまります。 サイト間 VPN または ExpressRoute 経由でオンプレミスの複数のリソースを Azure のリソースに接続する方法については、[VPN Gateway の計画オプション](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%252fazure%252fvirtual-network%252ftoc.json#planningtable)に関するページを参照してください。
+ハイブリッド シナリオでは、オンプレミスのデータセンターのアプリケーションが Azure のリソースにアクセスする必要があります。  これは、データセンターを Azure に拡張したいのか、Azure ネイティブ サービスを使用したいのか、それともディザスター リカバリーが目的なのかに関係なく当てはまります。 サイト間 VPN または ExpressRoute 経由でオンプレミスの複数のリソースを Azure のリソースに接続する方法については、[VPN Gateway の計画オプション](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable)に関するページを参照してください。
 
 ハイブリッド ハブスポーク トポロジでは、Azure のハブ VNet は、オンプレミス ネットワークへの主要な接続ポイントとして機能します。 スポークはハブとピアリングされる VNet であり、ワークロードを分離するために使用できます。
 

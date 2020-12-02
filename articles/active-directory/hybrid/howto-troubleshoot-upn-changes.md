@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a1acdbeb29091bae0be214b740023f13928506a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46ecc2cba96b07d9105020e69ae3198a3765be7c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319845"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172233"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Azure Active Directory でのユーザー プリンシパル名の変更の計画とトラブルシューティング
 
@@ -174,7 +174,7 @@ Windows Hello for Business が使用されている場合、ユーザーは[再�
 
 * プッシュ通知または確認コードを使用した多要素認証
 
-* [ブローカー認証](../develop/brokered-auth.md)を使用するアプリケーションにシングル サインオンを提供するための、iOS および Android デバイスでの認証ブローカーとしての機能
+* [ブローカー認証](../develop/msal-android-single-sign-on.md)を使用するアプリケーションにシングル サインオンを提供するための、iOS および Android デバイスでの認証ブローカーとしての機能
 
 * Intune App Protection やデバイスの登録と管理などの他の機能に対する要件である、Azure AD へのデバイスの登録 (Workplace Join とも呼ばれます)
 

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 425a7ff0553ddeac502c59e240f5ab152d6e0d79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f66c710901b129cb6b138fff126e67615c790714
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015155"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183670"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>Azure Monitor ログとの統合
 
@@ -36,7 +36,7 @@ Azure Monitor ログへの Automation State Configuration レポートの送信�
 
 - 2016 年 11 月以降のリリースの [Azure PowerShell](/powershell/azure/) (v2.3.0)。
 - Azure Automation アカウント。 詳細については、「[Azure Automation の概要](automation-intro.md)」を参照してください。
-- Automation & Control サービス プラン付きの Log Analytics ワークスペース。 詳細については、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/get-started-portal.md)」を参照してください。
+- Automation & Control サービス プラン付きの Log Analytics ワークスペース。 詳細については、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/log-analytics-tutorial.md)」を参照してください。
 - 1 つ以上の Azure Automation State Configuration ノード。 詳細については、「[Azure Automation State Configuration による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」をご覧ください。
 - [xDscDiagnostics](https://www.powershellgallery.com/packages/xDscDiagnostics/2.7.0.0) モジュール、バージョン 2.7.0.0 以上。 インストール手順については、「[Azure Automation Desired State Configuration (DSC) の問題をトラブルシューティングする](./troubleshoot/desired-state-configuration.md)」を参照してください。
 

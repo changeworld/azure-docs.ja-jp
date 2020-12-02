@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: c333b95ed762c905511ab1d4a84050d50f0e023c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 66b10efb6ca93bc6b4dd67d700daaf1f9049de68
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371326"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183432"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>使用状況データ、メトリック、およびログを Azure Monitor にアップロードする
 
@@ -63,7 +63,7 @@ az provider register -n Microsoft.AzureData --wait
 次のコマンドを実行して、メトリック アップロードのサービス プリンシパルを作成します。
 
 > [!NOTE]
-> サービス プリンシパルを作成するには、[Azure で一定のアクセス許可](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app)を持っている必要があります。
+> サービス プリンシパルを作成するには、[Azure で一定のアクセス許可](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)を持っている必要があります。
 
 サービス プリンシパルを作成するには、次の例を更新します。 `<ServicePrincipalName>` をサービス プリンシパルの名前に置き換えて、コマンドを実行します。
 

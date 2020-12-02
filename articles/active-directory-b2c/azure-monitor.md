@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 11/12/2020
-ms.openlocfilehash: b41f5e9a3bd4d3cbe52cf2e1c567d24de8a661f4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6d40eab12c9726459543d0b69e27b73178eba99f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95992845"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170618"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Monitor で Azure AD B2C を監視する
 
@@ -104,7 +104,7 @@ Azure AD B2C では、[Azure Active Directory 監視](../active-directory/report
    | [Msp Offer Name]\(Msp オファー名\)| この定義を説明する名前。 たとえば、*Azure AD B2C Monitoring* など。  |
    | [Msp Offer Description]\(Msp オファーの説明\)| プランの簡単な説明。 たとえば、"*Azure AD B2C で Azure Monitor を有効にする*" などです。|
    | [Managed By Tenant Id]\(テナント ID で管理\)| Azure AD B2C テナントの **テナント ID** (ディレクトリ ID とも呼ばれる)。 |
-   |[Authorizations]|Azure AD の `principalId`、`principalIdDisplayName`、および Azure の `roleDefinitionId` が含まれるオブジェクトの JSON 配列を指定します。 `principalId` は、この Azure サブスクリプションのリソースにアクセスできる B2C グループまたはユーザーの **オブジェクト ID** です。 このチュートリアルでは、前に記録したグループのオブジェクト ID を指定します。 `roleDefinitionId` には、"*共同作成者ロール*" の[組み込みロール](../role-based-access-control/built-in-roles.md)の値 `b24988ac-6180-42a0-ab88-20f7382dd24c` を使用します。|
+   |[Authorizations]|Azure AD の `principalId`、`principalIdDisplayName`、および Azure の `roleDefinitionId` が含まれるオブジェクトの JSON 配列を指定します。 `principalId` は、この Azure サブスクリプションのリソースにアクセスできる B2C グループまたはユーザーの **オブジェクト ID** です。 このチュートリアルでは、前に記録したグループのオブジェクト ID を指定します。 `roleDefinitionId` には、"*共同作成者ロール*" の [組み込みロール](../role-based-access-control/built-in-roles.md)の値 `b24988ac-6180-42a0-ab88-20f7382dd24c` を使用します。|
    | Rg Name \(RG 名\) | 前に Azure AD テナントに作成したリソースグループの名前。 たとえば、*azure-ad-b2c-monitor* などです。 |
 
    次の例は、1 つのセキュリティ グループでの承認配列を示しています。
@@ -140,9 +140,9 @@ Azure AD B2C では、[Azure Active Directory 監視](../active-directory/report
 
 診断設定では、リソースのログとメトリックを送信する場所を定義します。 使用できる送信先は次のとおりです。
 
-- [Azure Storage アカウント](../azure-monitor/platform/resource-logs-collect-storage.md)
-- [イベント ハブ](../azure-monitor/platform/resource-logs-stream-event-hubs.md) ソリューション
-- [Log Analytics ワークスペース](../azure-monitor/platform/resource-logs-collect-workspace.md)
+- [Azure Storage アカウント](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [イベント ハブ](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) ソリューション
+- [Log Analytics ワークスペース](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)
 
 この例では、Log Analytics ワークスペースを使用してダッシュボードを作成します。
 
@@ -180,7 +180,7 @@ Azure AD B2C ディレクトリで Azure Monitor を使用するための診断�
 ログ クエリは、Azure Monitor ログ内に収集されたデータの価値を最大限に活用するのに役立ちます。 強力なクエリ言語により、複数のテーブルのデータを結合したり、大量のデータ セットを集約したり、最小限のコードによって複雑な操作を実行したりできます。 有用なデータが収集されていて、適切なクエリを作成する方法を理解していれば、ほぼすべての疑問に答えたり、分析を実行したりすることができます。 詳細については、「[Azure Monitor でログ クエリの使用を開始する](../azure-monitor/log-query/get-started-queries.md)」を参照してください。
 
 1. **Log Analytics ワークスペース** から、 **[ログ]** を選択します。
-1. クエリ エディターで、次の [Kusto クエリ言語](https://docs.microsoft.com/azure/data-explorer/kusto/query/)のクエリを貼り付けます。 このクエリは、過去 x 日間の操作によるポリシーの使用状況を示します。 既定の期間は、90 日間 (90d) に設定されています。 このクエリは、ポリシーによってトークン/コードが発行される操作のみに注目していることに注意してください。
+1. クエリ エディターで、次の [Kusto クエリ言語](/azure/data-explorer/kusto/query/)のクエリを貼り付けます。 このクエリは、過去 x 日間の操作によるポリシーの使用状況を示します。 既定の期間は、90 日間 (90d) に設定されています。 このクエリは、ポリシーによってトークン/コードが発行される操作のみに注目していることに注意してください。
 
     ```kusto
     AuditLogs
@@ -205,7 +205,7 @@ Azure AD B2C ディレクトリで Azure Monitor を使用するための診断�
 
 1. **[保存]** を選択します。
 
-[render](https://docs.microsoft.com/azure/data-explorer/kusto/query/renderoperator?pivots=azuremonitor) 演算子を使用してデータを視覚化するようにクエリを変更することもできます。
+[render](/azure/data-explorer/kusto/query/renderoperator?pivots=azuremonitor) 演算子を使用してデータを視覚化するようにクエリを変更することもできます。
 
 ```kusto
 AuditLogs
@@ -258,7 +258,7 @@ JSON ギャラリー テンプレートを使用して新しいブックを作�
 アラートは Azure Monitor のアラート ルールによって作成され、保存済みのクエリまたはカスタム ログ検索を一定の間隔で自動的に実行できます。 特定のパフォーマンス メトリック、特定のイベントが作成されたとき、イベントが欠如しているとき、または特定の時間枠内に作成されたイベントの数に基づくアラートを作成できます。 たとえば、アラートを使用して、サインインの平均数が特定のしきい値を超えたら通知を受けるようにできます。 詳細については、[アラートの作成](../azure-monitor/learn/tutorial-response.md)に関するページをご覧ください。
 
 
-次の手順を使用して、**合計要求数** が前の期間と比較して 25% 低下したら[電子メール通知](../azure-monitor/platform/action-groups.md#configure-notifications)を送信する新しい Azure アラートを作成します。 アラートは 5 分ごとに実行され、過去 24 時間以内の低下が調べられます。 アラートは、Kusto クエリ言語を使用して作成されます。
+次の手順を使用して、**合計要求数** が前の期間と比較して 25% 低下したら [電子メール通知](../azure-monitor/platform/action-groups.md#configure-notifications)を送信する新しい Azure アラートを作成します。 アラートは 5 分ごとに実行され、過去 24 時間以内の低下が調べられます。 アラートは、Kusto クエリ言語を使用して作成されます。
 
 
 1. **Log Analytics ワークスペース** から、 **[ログ]** を選択します。 

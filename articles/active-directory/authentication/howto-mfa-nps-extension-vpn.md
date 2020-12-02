@@ -1,6 +1,6 @@
 ---
-title: NPS 拡張機能を使用する VPN と Azure MFA - Azure Active Directory
-description: Microsoft Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合します。
+title: NPS 拡張機能を使用する VPN と Azure AD MFA - Azure Active Directory
+description: Microsoft Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure AD MFA と統合します。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7243857db9a3726bb42815ac4c9eef661f52e47
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 73fa82c3f162b546517ce40ef1447c002351d5b4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964725"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994470"
 ---
-# <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合する
+# <a name="integrate-your-vpn-infrastructure-with-azure-ad-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure AD MFA と統合する
 
-Azure のネットワーク ポリシー サーバー (NPS) 拡張機能を使用すると、組織はクラウド ベースの [Azure Multi-Factor Authentication (MFA)](howto-mfaserver-nps-rdg.md) を使用して 2 段階認証を提供することで、リモート認証ダイヤルイン ユーザー サービス (RADIUS) クライアント認証を保護することができます。
+Azure のネットワーク ポリシー サーバー (NPS) 拡張機能を使用すると、組織はクラウド ベースの [Azure AD Multi-Factor Authentication (MFA)](howto-mfaserver-nps-rdg.md) を使用して 2 段階認証を提供することで、リモート認証ダイヤルイン ユーザー サービス (RADIUS) クライアント認証を保護することができます。
 
 この記事では、Azure の NPS 拡張機能を使用して、NPS インフラストラクチャを MFA と統合する手順を説明します。 このプロセスを実行すると、VPN を使用してネットワークに接続しようとするユーザーに対して安全な 2 段階認証が使用されるようになります。
 
@@ -43,7 +43,7 @@ Azure のネットワーク ポリシー サーバー (NPS) 拡張機能を使�
 * 802.1x 対応ワイヤレス アクセス ポイントとイーサネット スイッチへのアクセスに認証と承認を強制する方法を提供できます。
   詳細については、「[Network Policy Server](/windows-server/networking/technologies/nps/nps-top)」(ネットワーク ポリシー サーバー) を参照してください。
 
-組織がセキュリティを強化し、高水準のコンプライアンスを実現するには、NPS を Azure Multi-Factor Authentication と統合して、ユーザーが 2 段階認証を使用して VPN サーバーの仮想ポートに接続する方法があります。 ユーザーはアクセスの許可を得るために、ユーザー名とパスワードの組み合わせを、ユーザーが管理している他の情報と共に提供する必要があります。 これは、信頼できる、簡単に複製できない情報にする必要があります。 たとえば、携帯電話番号、固定電話番号、モバイル デバイス上のアプリケーションなどです。
+組織がセキュリティを強化し、高水準のコンプライアンスを実現するには、NPS を Azure AD Multi-Factor Authentication と統合して、ユーザーが 2 段階認証を使用して VPN サーバーの仮想ポートに接続する方法があります。 ユーザーはアクセスの許可を得るために、ユーザー名とパスワードの組み合わせを、ユーザーが管理している他の情報と共に提供する必要があります。 これは、信頼できる、簡単に複製できない情報にする必要があります。 たとえば、携帯電話番号、固定電話番号、モバイル デバイス上のアプリケーションなどです。
 
 Azure の NPS 拡張機能を利用できるようになる前は、NPS と MFA の統合環境の 2 段階認証の実装を希望するお客様は、オンプレミス環境に別の MFA サーバーを構成し、管理する必要がありました。 このような種類の認証は、RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server のセットアップと構成で提供されていました。
 
@@ -66,9 +66,9 @@ Azure の NPS 拡張機能を NPS と統合した場合、正常な認証フロ�
 1. VPN サーバーが、リソース (リモート デスクトップ セッションなど) に接続するためのユーザー名とパスワードが含まれた認証要求を VPN ユーザーから受信します。
 2. RADIUS クライアントとして機能する VPN サーバーは、要求を RADIUS *Access-Request* メッセージに変換し、NPS 拡張機能がインストールされている RADIUS サーバーに、(パスワードが暗号化された) メッセージを送信します。
 3. Active Directory でユーザー名とパスワードの組み合わせが検証されます。 ユーザー名またはパスワードが正しくない場合、RADIUS サーバーは *Access-Reject* メッセージを送信します。
-4. NPS 接続要求とネットワーク ポリシーで指定されているすべての条件が満たされていれば (時刻やグループ メンバーシップの制約など)、NPS 拡張機能によって、Azure Multi-Factor Authentication を使用したセカンダリ認証の要求がトリガーされます。
-5. Azure Multi-Factor Authentication は Azure Active Directory と通信してユーザーの詳細を取得し、ユーザーが構成した方法 (携帯電話の呼び出し、テキスト メッセージ、モバイル アプリ) を使用してセカンダリ認証を実行します。
-6. MFA チャレンジが成功すると、Azure Multi-Factor Authentication は結果を NPS 拡張機能に送信します。
+4. NPS 接続要求とネットワーク ポリシーで指定されているすべての条件が満たされていれば (時刻やグループ メンバーシップの制約など)、NPS 拡張機能によって、Azure AD Multi-Factor Authentication を使用したセカンダリ認証の要求がトリガーされます。
+5. Azure AD Multi-Factor Authentication は Azure Active Directory と通信してユーザーの詳細を取得し、ユーザーが構成した方法 (携帯電話の呼び出し、テキスト メッセージ、モバイル アプリ) を使用してセカンダリ認証を実行します。
+6. MFA チャレンジが成功すると、Azure AD Multi-Factor Authentication は結果を NPS 拡張機能に送信します。
 7. 接続試行が認証され、承認されたら、拡張機能がインストールされている NPS は、RADIUS *Access-Accept* メッセージを VPN サーバー (RADIUS クライアント) に送信します。
 8. ユーザーは、VPN サーバーの仮想ポートへのアクセスが許可され、暗号化された VPN トンネルを確立します。
 
@@ -78,7 +78,7 @@ Azure の NPS 拡張機能を NPS と統合した場合、正常な認証フロ�
 
 * VPN インフラストラクチャ
 * ネットワーク ポリシーとアクセス サービス ロール
-* Azure Multi-Factor Authentication のライセンス
+* Azure AD Multi-Factor Authentication のライセンス
 * Windows Server ソフトウェア
 * ライブラリ
 * オンプレミスの Active Directory と同期された Azure Active Directory (Azure AD)
@@ -92,13 +92,13 @@ Azure の NPS 拡張機能を NPS と統合した場合、正常な認証フロ�
 
 ### <a name="the-network-policy-and-access-services-role"></a>ネットワーク ポリシーとアクセス サービス ロール
 
-ネットワーク ポリシーとアクセス サービスは、RADIUS サーバーと RADIUS クライアントの機能を提供します。 この記事では、環境内のメンバー サーバーまたはドメイン コントローラーにネットワーク ポリシーとアクセス サービス ロールがインストールされていることを前提としています。 このガイドで、VPN 構成の RADIUS を構成します。 ネットワーク ポリシーとアクセス サービス ロールは、VPN サーバー*以外の*サーバーにインストールします。
+ネットワーク ポリシーとアクセス サービスは、RADIUS サーバーと RADIUS クライアントの機能を提供します。 この記事では、環境内のメンバー サーバーまたはドメイン コントローラーにネットワーク ポリシーとアクセス サービス ロールがインストールされていることを前提としています。 このガイドで、VPN 構成の RADIUS を構成します。 ネットワーク ポリシーとアクセス サービス ロールは、VPN サーバー *以外の* サーバーにインストールします。
 
 Windows Server 2012 以降にネットワーク ポリシーとアクセス サービス ロール サービスをインストールする方法については、「[Install a NAP Health Policy Server](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd296890(v=ws.10))」(NAP 正常性ポリシー サーバーのインストール) を参照してください。 Windows Server 2016 では、NAP は非推奨となります。 NPS をドメイン コントローラーにインストールする際の推奨事項など、NPS のベスト プラクティスについては、「[Best Practices for NPS](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771746(v=ws.10))」(NPS のベスト プラクティス) を参照してください。
 
-### <a name="azure-mfa-license"></a>Azure MFA のライセンス
+### <a name="azure-ad-mfa-license"></a>Azure AD MFA ライセンス
 
-Azure Multi-Factor Authentication にはライセンスが必要です。ライセンスは、Azure AD Premium、Enterprise Mobility + Security、または Multi-Factor Authentication スタンドアロン ライセンスで入手できます。 使用量ベースの Azure MFA のライセンス (ユーザーごと、認証ごとのライセンスなど) は、NPS 拡張機能に対応していません。 詳細については、「[Azure Multi-Factor Authentication の入手方法](concept-mfa-licensing.md)」をご覧ください。 テスト目的で。試用版サブスクリプションをご利用いただけます。
+Azure AD Multi-Factor Authentication にはライセンスが必要です。ライセンスは、Azure AD Premium、Enterprise Mobility + Security、または Multi-Factor Authentication スタンドアロン ライセンスで入手できます。 使用量ベースの Azure AD MFA のライセンス (ユーザーごと、認証ごとのライセンスなど) は、NPS 拡張機能に対応していません。 詳細については、「[Azure AD Multi-Factor Authentication の入手方法](concept-mfa-licensing.md)」をご覧ください。 テスト目的で。試用版サブスクリプションをご利用いただけます。
 
 ### <a name="windows-server-software"></a>Windows Server ソフトウェア
 
@@ -302,7 +302,7 @@ NPS ロールがメンバー サーバーにインストールされている場
 
 ## <a name="configure-multi-factor-authentication"></a>Multi-Factor Authentication の構成
 
-ユーザーに Multi-Factor Authentication を構成する方法については、「[クラウドベースの Azure Multi-Factor Authentication のデプロイの計画](howto-mfa-getstarted.md#create-conditional-access-policy)」および「[アカウントへの 2 段階認証の設定](../user-help/multi-factor-authentication-end-user-first-time.md)」を参照してください
+ユーザーに Multi-Factor Authentication を構成する方法については、「[クラウドベースの Azure AD Multi-Factor Authentication のデプロイの計画](howto-mfa-getstarted.md#create-conditional-access-policy)」および「[アカウントへの 2 段階認証の設定](../user-help/multi-factor-authentication-end-user-first-time.md)」を参照してください
 
 ## <a name="install-and-configure-the-nps-extension"></a>NPS 拡張機能のインストールと構成
 
@@ -312,17 +312,17 @@ NPS ロールがメンバー サーバーにインストールされている場
 > REQUIRE_USER_MATCH レジストリ キーでは、大文字と小文字が区別されます。 値はすべて大文字の形式で設定する必要があります。
 >
 
-NPS 拡張機能をインストールして構成したら、このサーバーによって処理される RADIUS ベースのすべてのクライアント認証に MFA を使用する必要があります。 すべての VPN ユーザーを Azure Multi-Factor Authentication に登録していない場合、次のいずれかを実行できます。
+NPS 拡張機能をインストールして構成したら、このサーバーによって処理される RADIUS ベースのすべてのクライアント認証に MFA を使用する必要があります。 すべての VPN ユーザーを Azure AD Multi-Factor Authentication に登録していない場合、次のいずれかを実行できます。
 
 * 別の RADIUS サーバーを設定して、MFA を使用するように構成されていないユーザーを認証します。
 
-* ユーザーが Azure Multi-Factor Authentication に登録されている場合、チャレンジされたユーザーが 2 つ目の認証要素を提供できるようにするレジストリ エントリを作成します。
+* ユーザーが Azure AD Multi-Factor Authentication に登録されている場合、チャレンジされたユーザーが 2 つ目の認証要素を提供できるようにするレジストリ エントリを作成します。
 
 _HKLM\SOFTWARE\Microsoft\AzureMfa に REQUIRE_USER_MATCH_ という名前の新しい文字列値を作成し、値を *TRUE* または *FALSE* に設定します。
 
 ![[ユーザー照合が必要] 設定](./media/howto-mfa-nps-extension-vpn/image34.png)
 
-値が *TRUE* に設定されているか空の場合は、すべての認証要求が MFA チャレンジの対象となります。 値が *FALSE* に設定されている場合は、Azure Multi-Factor Authentication に登録されているユーザーにのみ、MFA チャレンジが発行されます。 *FALSE* の設定は、オンボード期間中にテスト環境または運用環境でのみ使用します。
+値が *TRUE* に設定されているか空の場合は、すべての認証要求が MFA チャレンジの対象となります。 値が *FALSE* に設定されている場合は、Azure AD Multi-Factor Authentication に登録されているユーザーにのみ、MFA チャレンジが発行されます。 *FALSE* の設定は、オンボード期間中にテスト環境または運用環境でのみ使用します。
 
 
 
@@ -338,7 +338,7 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
 
 ### <a name="install-the-nps-extension"></a>NPS 拡張機能のインストール
 
-ネットワーク ポリシーとアクセス サービスの役割がインストールされ、設計で RADIUS サーバーとして機能するサーバーに、NPS 拡張機能をインストールする必要があります。 VPN サーバーには NPS 拡張機能を*インストールしないでください*。
+ネットワーク ポリシーとアクセス サービスの役割がインストールされ、設計で RADIUS サーバーとして機能するサーバーに、NPS 拡張機能をインストールする必要があります。 VPN サーバーには NPS 拡張機能を *インストールしないでください*。
 
 1. [Microsoft ダウンロード センター](https://aka.ms/npsmfa)から NPS 拡張機能をダウンロードします。
 
@@ -346,11 +346,11 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
 
 3. NPS サーバーで **NpsExtnForAzureMfaInstaller.exe** をダブルクリックし、メッセージに従って **[実行]** を選択します。
 
-4. **[NPS Extension For Azure MFA Setup]\(Azure MFA セットアップの NPS 拡張機能\)** ウィンドウで、 **[ライセンス条項と条件に同意します]** チェック ボックスをオンにして、 **[インストール]** を選択します。
+4. **[Azure AD MFA セットアップの NPS 拡張機能]** ウィンドウで、 **[ライセンス条項と条件に同意します]** チェック ボックスをオンにして、 **[インストール]** を選択します。
 
-    ![[NPS Extension For Azure MFA Setup]\(Azure MFA セットアップの NPS 拡張機能\) ウィンドウ](./media/howto-mfa-nps-extension-vpn/image36.png)
+    ![[Azure AD MFA セットアップの NPS 拡張機能] ウィンドウ](./media/howto-mfa-nps-extension-vpn/image36.png)
 
-5. **[NPS Extension For Azure MFA Setup]\(Azure MFA セットアップの NPS 拡張機能\)** ウィンドウで、 **[閉じる]** を選択します。  
+5. **[Azure AD MFA セットアップの NPS 拡張機能]** ウィンドウで、 **[閉じる]** を選択します。  
 
     ![[セットアップ完了] 確認ウィンドウ](./media/howto-mfa-nps-extension-vpn/image37.png)
 
@@ -402,7 +402,7 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
 
 ![Windows 設定の [VPN] ウィンドウ](./media/howto-mfa-nps-extension-vpn/image42.png)
 
-Azure MFA で以前に構成したセカンダリ検証方法で認証に成功すると、リソースに接続されます。 ただし、セカンダリ認証に失敗した場合、リソースへのアクセスは拒否されます。
+Azure AD MFA で以前に構成したセカンダリ検証方法で認証に成功すると、リソースに接続されます。 ただし、セカンダリ認証に失敗した場合、リソースへのアクセスは拒否されます。
 
 次の例では、Windows Phone の Microsoft Authenticator アプリでセカンダリ認証を提供しています。
 
@@ -424,7 +424,7 @@ Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
 
 ![ネットワーク ポリシー サーバー ログの例](./media/howto-mfa-nps-extension-vpn/image45.png)
 
-Azure Multi-Factor Authentication の NPS 拡張機能がインストールされているサーバーで、拡張機能に固有のイベント ビューアーのアプリケーション ログ (*アプリケーションとサービス ログ\Microsoft\AzureMfa*) を確認できます。
+Azure AD Multi-Factor Authentication の NPS 拡張機能がインストールされているサーバーで、拡張機能に固有のイベント ビューアーのアプリケーション ログ (*アプリケーションとサービス ログ\Microsoft\AzureMfa*) を確認できます。
 
 ```powershell
 Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
@@ -436,15 +436,15 @@ Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
 
 構成が予想どおりに動作していない場合、トラブルシューティングでは、まず MFA を使用するようにユーザーが構成されていることを確認します。 ユーザーに、[Azure Portal](https://portal.azure.com) に接続してもらいます。 ユーザーがセカンダリ認証を求められ、正常に認証できれば、MFA の構成には問題がないことがわかります。
 
-ユーザーの MFA が機能している場合、関連するイベント ビューアー ログを確認する必要があります。 関連するイベント ログとして、前のセクションで説明したセキュリティ イベント ログ、ゲートウェイの操作ログ、Azure Multi-Factor Authentication ログがあります。
+ユーザーの MFA が機能している場合、関連するイベント ビューアー ログを確認する必要があります。 関連するイベント ログとして、前のセクションで説明したセキュリティ イベント ログ、ゲートウェイの操作ログ、Azure AD Multi-Factor Authentication ログがあります。
 
 失敗したサインイン イベント (イベント ID 6273) が表示されたセキュリティ ログの例を次に示します。
 
 ![失敗したサインイン イベントが表示されたセキュリティ ログ](./media/howto-mfa-nps-extension-vpn/image47.png)
 
-Azure Multi-Factor Authentication ログの関連するイベントを次に示します。
+Azure AD Multi-Factor Authentication ログの関連するイベントを次に示します。
 
-![Azure Multi-Factor Authentication のログ](./media/howto-mfa-nps-extension-vpn/image48.png)
+![Azure AD Multi-Factor Authentication ログ](./media/howto-mfa-nps-extension-vpn/image48.png)
 
 高度なトラブルシューティングを実行するには、NPS サービスがインストールされているサーバーで NPS データベース形式のログ ファイルを参照します。 ログ ファイルは、コンマ区切りのテキスト ファイルとして _%SystemRoot%\System32\Logs_ フォルダーに作成されています。 ログ ファイルの詳細については、「[Interpret NPS Database Format Log Files](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771748(v=ws.10))」(NPS データベース形式のログ ファイルの解釈) を参照してください。
 
@@ -456,11 +456,11 @@ Azure Multi-Factor Authentication ログの関連するイベントを次に示�
 
 ![フィルター処理されたトラフィックを示す Microsoft Message Analyzer](./media/howto-mfa-nps-extension-vpn/image50.png)
 
-詳細については、「[Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合](howto-mfa-nps-extension.md)」をご覧ください。
+詳細については、[Azure AD Multi-Factor Authentication と既存の NPS インフラストラクチャの統合](howto-mfa-nps-extension.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Multi-Factor Authentication の入手方法](concept-mfa-licensing.md)
+[Azure AD Multi-Factor Authentication の取得](concept-mfa-licensing.md)
 
 [RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server](howto-mfaserver-nps-rdg.md)
 

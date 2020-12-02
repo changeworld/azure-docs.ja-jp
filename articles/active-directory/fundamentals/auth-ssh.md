@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb766150339820f9356fe94311cd1ff33dda5480
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3b77ab0832fa19149c270d6ba5a6641069548cbe
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92462813"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172722"
 ---
 # <a name="ssh"></a>SSH  
 
@@ -42,20 +42,19 @@ SSH と Azure AD
 
 * **[ユーザー]** :SSH クライアントを起動して、Linux® VM との接続を設定し、認証用の資格情報を指定します。
 
-* **Web ブラウザー** :ユーザーが操作するコンポーネントです。 ID プロバイダー (Azure AD) と通信して、ユーザーを安全に認証、認可します。
+* **Web ブラウザー**:ユーザーが操作するコンポーネントです。 ID プロバイダー (Azure AD) と通信して、ユーザーを安全に認証、認可します。
 
-* **SSH クライアント** :接続設定プロセスを駆動します。
+* **SSH クライアント**:接続設定プロセスを駆動します。
 
-* **Azure AD** :デバイス フローを使用してユーザーの ID を認証し、Linux VM に対してトークンを発行します。
+* **Azure AD**:デバイス フローを使用してユーザーの ID を認証し、Linux VM に対してトークンを発行します。
 
-* **Linux VM** :トークンを受け入れ、正常な接続を提供します。
+* **Linux VM**:トークンを受け入れ、正常な接続を提供します。
 
 ## <a name="implement-ssh-with-azure-ad"></a>Azure AD を使用して SSH を実装する 
 
-* [Azure Active Directory の資格情報を使用して Linux® VM にログインする - Azure 仮想マシン](https://docs.microsoft.com/azure/virtual-machines/linux/login-using-aad) 
+* [Azure Active Directory の資格情報を使用して Linux® VM にログインする - Azure 仮想マシン](../../virtual-machines/linux/login-using-aad.md) 
 
-* [OAuth 2.0 デバイス コード フロー - Microsoft ID プラットフォーム](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code)
+* [OAuth 2.0 デバイス コード フロー - Microsoft ID プラットフォーム](../develop/v2-oauth2-device-code.md)
 
 * [Azure Active Directory との統合 (akamai.com)](https://learn.akamai.com/webhelp/enterprise-application-access/enterprise-application-access/GUID-6B16172C-86CC-48E8-B30D-8E678BF3325F.html)
 
- 

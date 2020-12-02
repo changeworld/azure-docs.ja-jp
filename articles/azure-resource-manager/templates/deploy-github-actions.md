@@ -3,13 +3,13 @@ title: GitHub Actions を使用した Resource Manager テンプレートのデ�
 description: GitHub Actions を使用して Azure Resource Manager テンプレートをデプロイする方法について説明します。
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.custom: github-actions-azure
-ms.openlocfilehash: 69974a8db30f12b255a4bab57ebfa32ba78f67ed
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: github-actions-azure, devx-track-azurecli
+ms.openlocfilehash: 3dcb246956aae274f17cf938ee3d406562b22941
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746101"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95905261"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>GitHub Actions を使用した Azure Resource Manager テンプレートのデプロイ
 
@@ -100,7 +100,7 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 1. GitHub リポジトリの上部のメニューで、 **[Actions]\(アクション\)** を選択します。
 1. **[New workflow]\(新しいワークフロー\)** を選択します。
 1. **[Set up a workflow yourself]\(ワークフローを自分でセットアップする\)** を選択します。
-1. **main.yml** 以外の別の名前を使用する場合は、ワークフロー ファイルの名前を変更します。 (例: **deployStorageAccount.yml** )。
+1. **main.yml** 以外の別の名前を使用する場合は、ワークフロー ファイルの名前を変更します。 (例: **deployStorageAccount.yml**)。
 1. yml ファイルの内容を以下に置き換えます。
 
     ```yml
@@ -112,7 +112,7 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
         steps:
 
           # Checkout code
-        - uses: actions/checkout@master
+        - uses: actions/checkout@main
 
           # Log into Azure
         - uses: azure/login@v1
@@ -136,23 +136,22 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 
     ワークフロー ファイルの最初のセクションには次のものが含まれます。
 
-    - **name** :ワークフローの名前。
-    - **on** : ワークフローをトリガーする GitHub イベントの名前。 マスター ブランチでプッシュ イベントが発生し、指定された 2 つのファイルの少なくとも 1 つが変更されると、ワークフローがトリガーされます。 この 2 つのファイルは、ワークフロー ファイルとテンプレート ファイルです。
+    - **name**:ワークフローの名前。
+    - **on**: ワークフローをトリガーする GitHub イベントの名前。 メイン ブランチでプッシュ イベントが発生し、指定された 2 つのファイルの少なくとも 1 つが変更されると、ワークフローがトリガーされます。 この 2 つのファイルは、ワークフロー ファイルとテンプレート ファイルです。
 
 1. **[Start commit]\(コミットの開始\)** を選択します。
-1. **[Commit directly to the master branch]\(マスター ブランチに直接コミットする\)** を選択します。
+1. **[Commit directly to the main branch]\(メイン ブランチに直接コミットする\)** を選択します。
 1. **[Commit new file]\(新しいファイルをコミットする\)** (または **[Commit changes]\(変更をコミットする\)** ) を選択します。
 
 ワークフローは、ワークフロー ファイルまたはテンプレート ファイルの更新によってトリガーされるように構成されているため、変更をコミットするとすぐにワークフローが開始されます。
 
 ## <a name="check-workflow-status"></a>ワークフローの状態を確認する
 
-1. **[Actions]\(アクション\)** タブを選択します。 **Create deployStorageAccount.yml** ワークフローが表示されます。 ワークフローの実行には 1 から 2 分かかります。
+1. **[Actions]\(アクション\)** タブを選択します。**Create deployStorageAccount.yml** ワークフローが表示されます。 ワークフローの実行には 1 から 2 分かかります。
 1. ワークフローを選択して開きます。
 1. メニューから **[Run ARM deploy]\(ARM デプロイを実行\)** を選択して、デプロイを確認します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
-
 リソース グループとリポジトリが不要になったら、リソース グループと GitHub リポジトリを削除して、デプロイしたリソースをクリーンアップします。 
 
 ## <a name="next-steps"></a>次の手順

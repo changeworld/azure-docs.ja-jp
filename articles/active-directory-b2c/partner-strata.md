@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 6276bd0db9bfb93897f7350b87d208ac2951c859
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: bddc4c64feb31f78bed482bbd729ab1c4b8e676e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330327"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171417"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>オンプレミスのアプリケーションを保護するために、Strata を使用して Azure AD B2C を拡張するためのチュートリアル
 
@@ -25,9 +25,9 @@ Maverics Identity Orchestrator を使用すると、オンプレミスのアプ�
 
 - **オンプレミスのハイブリッド アプリへのお客様によるシングル サインオン (SSO)** :Azure AD B2C では、お客様が Maverics Identity Orchestrator を使用して SSO を行うことがサポートされます。 ユーザーは、Azure AD B2C またはソーシャル ID プロバイダー (IdP) でホストされているアカウントでサインインします。 Maverics を使用すると、Symantec SiteMinder などの従来の ID システムによって保護されてきたアプリで SSO を使用できるようになります。
 
-- **アプリを書き直すことなく、標準ベースの SSO をアプリで使用できるようにする** :Azure AD B2C を使用してユーザー アクセスを管理し、Maverics Identity Orchestrator の SAML または OIDC コネクタを使用して SSO を有効にします。
+- **アプリを書き直すことなく、標準ベースの SSO をアプリで使用できるようにする**:Azure AD B2C を使用してユーザー アクセスを管理し、Maverics Identity Orchestrator の SAML または OIDC コネクタを使用して SSO を有効にします。
 
-- **構成が簡単** :Azure AD B2C には、Maverics Identity Orchestrator の SAML または OIDC コネクタを Azure AD B2C に接続するための簡単なステップバイステップのユーザー インターフェイスが用意されています。
+- **構成が簡単**:Azure AD B2C には、Maverics Identity Orchestrator の SAML または OIDC コネクタを Azure AD B2C に接続するための簡単なステップバイステップのユーザー インターフェイスが用意されています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,7 +35,7 @@ Maverics Identity Orchestrator を使用すると、オンプレミスのアプ�
 
 - Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 
-- お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。
+- お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](./tutorial-create-tenant.md)。
 
 - Maverics Identity Orchestrator で使用されるシークレットを格納するための [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) のインスタンス。 これは、Azure AD B2C またはその他の属性プロバイダー (ライトウェイト ディレクトリ アクセス プロトコル (LDAP) のディレクトリやデータベースなど) に接続するために使用されます。
 
@@ -47,11 +47,11 @@ Maverics Identity Orchestrator を使用すると、オンプレミスのアプ�
 
 Strata の Maverics との統合には、次のコンポーネントが含まれています。
 
-- **Azure AD B2C** :ユーザーの資格情報の検証を担当する承認サーバー。 認証済みユーザーは、Azure AD B2C ディレクトリに格納されているローカル アカウントを使用して、オンプレミスのアプリにアクセスできます。
+- **Azure AD B2C**:ユーザーの資格情報の検証を担当する承認サーバー。 認証済みユーザーは、Azure AD B2C ディレクトリに格納されているローカル アカウントを使用して、オンプレミスのアプリにアクセスできます。
 
-- **外部のソーシャルまたはエンタープライズ IdP** :任意の OpenID Connect プロバイダー、Facebook、Google、または GitHub を使用できます。 Azure AD B2C での [外部 IdP](https://docs.microsoft.com/azure/active-directory-b2c/technical-overview#external-identity-providers) の使用に関する情報を参照してください。  
+- **外部のソーシャルまたはエンタープライズ IdP**:任意の OpenID Connect プロバイダー、Facebook、Google、または GitHub を使用できます。 Azure AD B2C での [外部 IdP](./technical-overview.md#external-identity-providers) の使用に関する情報を参照してください。  
 
-- **Strata の Maverics Identity Orchestrator** :ユーザーのサインオンを調整し、HTTP ヘッダーを介してアプリに ID を透過的に渡すサービス。
+- **Strata の Maverics Identity Orchestrator**:ユーザーのサインオンを調整し、HTTP ヘッダーを介してアプリに ID を透過的に渡すサービス。
 
 次のアーキテクチャの図に、この実装を示します。
 
@@ -75,7 +75,7 @@ Strata の Maverics との統合には、次のコンポーネントが含まれ
 
 1. **アプリケーションの登録**
 
-   a. Azure AD B2C テナントに [Orchestrator をアプリケーションとして登録します](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications?tabs=app-reg-ga)。
+   a. Azure AD B2C テナントに [Orchestrator をアプリケーションとして登録します](./tutorial-register-applications.md?tabs=app-reg-ga)。
    >[!Note]
    >後で Orchestrator インスタンスを構成するときに、テナント名と識別子、クライアント ID、クライアント シークレット、構成済みの要求、およびリダイレクト URI が必要になります。
 
@@ -83,13 +83,13 @@ Strata の Maverics との統合には、次のコンポーネントが含まれ
 
    c. アプリケーションのリダイレクト URI を追加します。 この URI は、Orchestrator の Azure AD B2C コネクタ構成の `oauthRedirectURL` パラメーターと一致します (`https://example.com/oidc-endpoint` など)。
 
-2. **ユーザー フローの作成** : [サインアップとサインインのユーザー フロー](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)を作成します。
+2. **ユーザー フローの作成**:[サインアップとサインインのユーザー フロー](./tutorial-create-user-flows.md)を作成します。
 
-3. **IdP の追加** :ローカル アカウント、あるいはソーシャルまたはエンタープライズ [IdP](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers) のいずれかから、ユーザーのサインインを選択します。
+3. **IdP の追加**:ローカル アカウント、あるいはソーシャルまたはエンタープライズ [IdP](./tutorial-add-identity-providers.md) のいずれかから、ユーザーのサインインを選択します。
 
-4. **ユーザー属性の定義** :サインアップ中に収集される属性を定義します。
+4. **ユーザー属性の定義**:サインアップ中に収集される属性を定義します。
 
-5. **アプリケーション要求の指定** :Orchestrator インスタンスを介してアプリケーションに返される属性を指定します。 Orchestrator では、Azure AD B2C から返された要求の属性が使用され、接続されている他の ID システム (LDAP ディレクトリやデータベースなど) から追加の属性を取得できます。 これらの属性は、HTTP ヘッダーに設定され、上流のオンプレミス アプリケーションに送信されます。
+5. **アプリケーション要求の指定**:Orchestrator インスタンスを介してアプリケーションに返される属性を指定します。 Orchestrator では、Azure AD B2C から返された要求の属性が使用され、接続されている他の ID システム (LDAP ディレクトリやデータベースなど) から追加の属性を取得できます。 これらの属性は、HTTP ヘッダーに設定され、上流のオンプレミス アプリケーションに送信されます。
 
 ## <a name="configure-maverics-identity-orchestrator"></a>Maverics Identity Orchestrator を構成する
 
@@ -259,7 +259,7 @@ appgateways:
 
 Orchestrator で Azure AD B2C およびその他の ID システムへの接続に使用されるシークレットをセキュリティで保護することが重要です。 Maverics では、`maverics.yaml` からシークレットが既定ではプレーンテキストで読み込まれますが、このチュートリアルでは、シークレット プロバイダーとして Azure Key Vault を使用します。
 
-指示に従って、Orchestrator インスタンスでシークレット プロバイダーとして使用される[新しい Key Vault を作成します](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault)。 資格情報コンテナーにシークレットを追加し、各シークレットに付けられている `SECRET NAME` をメモしておきます。 たとえば、`AzureADB2CClientSecret` のようにします。
+指示に従って、Orchestrator インスタンスでシークレット プロバイダーとして使用される[新しい Key Vault を作成します](../key-vault/secrets/quick-create-portal.md)。 資格情報コンテナーにシークレットを追加し、各シークレットに付けられている `SECRET NAME` をメモしておきます。 たとえば、`AzureADB2CClientSecret` のようにします。
 
 `maverics.yaml` 構成ファイルで値をシークレットとして宣言するには、シークレットを山かっこで囲みます。
 
@@ -342,6 +342,6 @@ appgateways:
 
 追加情報については、次の記事を参照してください。
 
-- [Azure AD B2C のカスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)

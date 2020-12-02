@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: fcbfd3eb805e046647a2c28cef8c378b44026bd0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ac6981d998f25b8df7cea553fe152d68cd43fee5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013192"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181426"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>チュートリアル:Snowflake を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -39,7 +39,7 @@ ms.locfileid: "96013192"
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
 * [Azure AD テナント](../develop/quickstart-create-new-tenant.md)。
-* プロビジョニングを構成するための[アクセス許可](../users-groups-roles/directory-assign-admin-roles.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。
+* プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。
 * [Snowflake テナント](https://www.Snowflake.com/pricing/)。
 * Admin アクセス許可がある Snowflake のユーザー アカウント。
 

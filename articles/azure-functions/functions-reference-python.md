@@ -4,12 +4,12 @@ description: Python を使用して関数を開発する方法について説明
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 7d97405a0b75129ddb0da581955728b393bf49ca
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8254abda68949e6884143316d4b29b07ade129dc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539075"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167847"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -19,7 +19,7 @@ Python 開発者は、次のいずれかの記事にも興味があるかもし�
 
 | 作業の開始 | 概念| シナリオとサンプル |
 | -- | -- | -- | 
-| <ul><li>[Visual Studio Code を使用した Python 関数](./functions-create-first-function-vs-code.md?pivots=programming-language-python)</li><li>[ターミナルとコマンド プロンプトを使用した Python 関数](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[パフォーマンスに関する考慮事項&nbsp;](functions-best-practices.md)</li></ul> | <ul><li>[PyTorch を使用した画像の分類](machine-learning-pytorch.md)</li><li>[Azure Automation サンプル](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[TensorFlow を使用した機械学習](functions-machine-learning-tensorflow.md)</li><li>[Python サンプルの参照](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
+| <ul><li>[Visual Studio Code を使用した Python 関数](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[ターミナルとコマンド プロンプトを使用した Python 関数](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[パフォーマンスに関する考慮事項&nbsp;](functions-best-practices.md)</li></ul> | <ul><li>[PyTorch を使用した画像の分類](machine-learning-pytorch.md)</li><li>[Azure Automation サンプル](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[TensorFlow を使用した機械学習](functions-machine-learning-tensorflow.md)</li><li>[Python サンプルの参照](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 ## <a name="programming-model"></a>プログラミング モデル
 
@@ -491,7 +491,7 @@ func azure functionapp publish <APP_NAME>
 
 `<APP_NAME>` を、Azure 内のご自分の関数アプリの名前に置き換えることを忘れないでください。
 
-[Visual Studio Code の Azure Functions 拡張機能](functions-create-first-function-vs-code.md#publish-the-project-to-azure)も、既定ではリモート ビルドを要求します。
+[Visual Studio Code の Azure Functions 拡張機能](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure)も、既定ではリモート ビルドを要求します。
 
 ### <a name="local-build"></a>ローカル ビルド
 

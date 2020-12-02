@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 6643ec72ec5126866b0ad6e924a92f02170bd278
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 2ce5ac43af57b82f912b10eeacf285a688888e9d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359665"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180882"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>チュートリアル:G Suite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -45,7 +45,7 @@ ms.locfileid: "94359665"
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
 * [Azure AD テナント](../develop/quickstart-create-new-tenant.md) 
-* プロビジョニングを構成するための[アクセス許可](../users-groups-roles/directory-assign-admin-roles.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
+* プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
 * [G Suite テナント](https://gsuite.google.com/pricing.html)
 * 管理者アクセス許可を持つ G Suite 上のユーザー アカウント。
 
@@ -71,7 +71,7 @@ Azure AD での自動ユーザー プロビジョニング用に G Suite を構�
     ![G Suite の API の有効化](./media/google-apps-provisioning-tutorial/gapps-api-enabled.png)
 
     > [!IMPORTANT]
-   > G Suite にプロビジョニングしようとしているすべてのユーザーについて、その Azure AD でのユーザー名がカスタム ドメインに関連付けられている **必要があります** 。 たとえば G Suite では、bob@contoso.onmicrosoft.com のようなユーザー名は使用できませんが、 bob@contoso.com のようなユーザー名は使用できます。 既存のユーザーのドメインは、[ここ](../fundamentals/add-custom-domain.md)にある手順に従って変更できます。
+   > G Suite にプロビジョニングしようとしているすべてのユーザーについて、その Azure AD でのユーザー名がカスタム ドメインに関連付けられている **必要があります**。 たとえば G Suite では、bob@contoso.onmicrosoft.com のようなユーザー名は使用できませんが、 bob@contoso.com のようなユーザー名は使用できます。 既存のユーザーのドメインは、[ここ](../fundamentals/add-custom-domain.md)にある手順に従って変更できます。
 
 4. Azure AD で目的のカスタム ドメインを追加して検証したら、それらを G Suite で再度検証する必要があります。 G Suite でドメインを検証するには、次の手順を参照してください。
 
@@ -107,7 +107,7 @@ Azure AD アプリケーション ギャラリーから G Suite を追加して�
 
 Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当て、ユーザーまたはグループの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、以下の[手順](../manage-apps/assign-user-or-group-access-portal.md)を使用して、ユーザーとグループをアプリケーションに割り当てることができます。 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)で説明されているスコープ フィルターを使用できます。 
 
-* G Suite にユーザーとグループを割り当てるときは、 **既定のアクセス** 以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](../develop/howto-add-app-roles-in-azure-ad-apps.md)してロールを追加することができます。 
+* G Suite にユーザーとグループを割り当てるときは、**既定のアクセス** 以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](../develop/howto-add-app-roles-in-azure-ad-apps.md)してロールを追加することができます。 
 
 * 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、これを制御するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)を指定できます。 
 
@@ -149,7 +149,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
      ![G Suite のテナントの承認](./media/google-apps-provisioning-tutorial/gapps-auth.png)
 
-7. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が G Suite に接続できることを確認します。 接続できない場合は、使用中の G Suite アカウントに管理者アクセス許可があることを確認してから、もう一度試します。 その後、 **承認** 手順を再び試します。
+7. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が G Suite に接続できることを確認します。 接続できない場合は、使用中の G Suite アカウントに管理者アクセス許可があることを確認してから、もう一度試します。 その後、**承認** 手順を再び試します。
 
 6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 

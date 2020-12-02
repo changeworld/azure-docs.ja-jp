@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5314758acecae2a9d68f2405fc1c3d2196950b4
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: f209d394e1a0c2c4ddde9cbf8df2704647e2822a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577058"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168714"
 ---
 # <a name="ldap-authentication-with-azure-active-directory"></a>Azure Active Directory による LDAP 認証
 
@@ -60,12 +60,11 @@ ms.locfileid: "94577058"
 
 ## <a name="implement-ldap-authentication-with-azure-ad"></a>Azure AD による LDAP 認証を実装する
 
-* [Azure Active Directory Domain Services インスタンスを作成して構成する](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance) 
+* [Azure Active Directory Domain Services インスタンスを作成して構成する](../../active-directory-domain-services/tutorial-create-instance.md) 
 
-* [Azure AD DS インスタンス用の仮想ネットワークを構成する](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-configure-networking) 
+* [Azure AD DS インスタンス用の仮想ネットワークを構成する](../../active-directory-domain-services/tutorial-configure-networking.md) 
 
-* [Azure AD DS のマネージド ドメイン用に Secure LDAP を構成する](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-configure-ldaps) 
+* [Azure AD DS のマネージド ドメイン用に Secure LDAP を構成する](../../active-directory-domain-services/tutorial-configure-ldaps.md) 
 
-* [Azure AD DS でオンプレミス ドメインに対して出力方向のフォレストの信頼を作成する](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-forest-trust)
+* [Azure AD DS でオンプレミス ドメインに対して出力方向のフォレストの信頼を作成する](../../active-directory-domain-services/tutorial-create-forest-trust.md)
 
- 

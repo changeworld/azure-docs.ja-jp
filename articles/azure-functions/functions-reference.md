@@ -4,12 +4,12 @@ description: プログラミング言語とバインドを問わず、Azure で�
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 9a3c0643f4fc965ff64106758320aeb445aaf9ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54bfd770fba9a1766396d66c0c263111c233c9c2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85921738"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167881"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 開発者ガイド
 Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインド固有の詳細を学習する前に、それらすべてに当てはまるこの概要をお読みください。
@@ -61,7 +61,7 @@ function.json ファイルには、関数のトリガー、バインド、その
 > パッケージを手動でデプロイする場合は、必ず _host.json_ ファイルと関数フォルダーを直接 `wwwroot` フォルダーにデプロイします。 デプロイに `wwwroot` フォルダーを含めないでください。 そうしないと、`wwwroot\wwwroot` フォルダーができてしまいます。
 
 #### <a name="use-local-tools-and-publishing"></a>ローカル ツールの使用と公開
-関数アプリは、[Visual Studio](./functions-develop-vs.md)、[Visual Studio Code](functions-create-first-function-vs-code.md)、[IntelliJ](./functions-create-maven-intellij.md)、[Eclipse](./functions-create-maven-eclipse.md)、[Azure Functions Core Tools](./functions-develop-local.md) など、さまざまなツールを利用して作成し、公開できます。 詳細については、「[Azure Functions をローカルでコーディングしてテストする](./functions-develop-local.md)」を参照してください。
+関数アプリは、[Visual Studio](./functions-develop-vs.md)、[Visual Studio Code](./create-first-function-vs-code-csharp.md)、[IntelliJ](./functions-create-maven-intellij.md)、[Eclipse](./functions-create-maven-eclipse.md)、[Azure Functions Core Tools](./functions-develop-local.md) など、さまざまなツールを利用して作成し、公開できます。 詳細については、「[Azure Functions をローカルでコーディングしてテストする](./functions-develop-local.md)」を参照してください。
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 

@@ -14,19 +14,19 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 646bd2b6a8e22698e6fbcb44d2442e921c7850a5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e7a77c110c12fd6b42e8defbe43a40579b9c6588
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441506"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168765"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B コラボレーションのトラブルシューティング
 
 以下に、Azure Active Directory (Azure AD) B2B コラボレーションの一般的な問題のいくつかの対処方法を示します。
 
    > [!IMPORTANT]
-   > **2021 年 3 月 31 日以降** 、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様は、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
+   > **2021 年 3 月 31 日以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様は、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
 
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>外部ユーザーを追加しましたが、グローバル アドレス帳またはユーザー選択ウィンドウに表示されません
 
@@ -93,15 +93,15 @@ Azure Active Directory を使用している組織のユーザーを招待して
 
 このユーザーは Azure ユーザー アカウントを持っており、破棄されているか非管理対象のバイラル テナントです。 さらに、このテナントにはグローバル管理者も会社の管理者もいません。
 
-この問題を解決するには、破棄されたテナントを引き継ぐ必要があります。 「[Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ](../users-groups-roles/domains-admin-takeover.md)」を参照してください。 また、自分が名前空間を管理しているという直接の証拠を提供するために、問題のドメイン サフィックスに対するインターネット接続の DNS にアクセスする必要があります。 テナントが管理対象状態に戻ったら、ユーザーおよび検証済みドメイン名を残すことが組織にとって最良の選択肢かどうかをお客様と話し合ってください。
+この問題を解決するには、破棄されたテナントを引き継ぐ必要があります。 「[Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ](../enterprise-users/domains-admin-takeover.md)」を参照してください。 また、自分が名前空間を管理しているという直接の証拠を提供するために、問題のドメイン サフィックスに対するインターネット接続の DNS にアクセスする必要があります。 テナントが管理対象状態に戻ったら、ユーザーおよび検証済みドメイン名を残すことが組織にとって最良の選択肢かどうかをお客様と話し合ってください。
 
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Just-In-Time または "バイラル” テナントを持つゲスト ユーザーは、自分のパスワードをリセットすることはできません
 
-ID テナントが Just-In-Time (JIT) テナントまたはバイラル テナント (つまり、独立したアンマネージド Azure テナント) である場合は、ゲスト ユーザーだけが自分のパスワードをリセットできます。 場合によっては、組織が、従業員が仕事用メール アドレスを使用してサービスにサインアップするときに作成される[バイラル テナントの管理を引き継ぎます](../users-groups-roles/domains-admin-takeover.md)。 組織がバイラル テナントを引き継いだ後は、その組織の管理者しか、ユーザーのパスワードをリセットしたり SSPR を有効にしたりできなくなります。 必要に応じて、招待側の組織としては、ディレクトリからゲスト ユーザー アカウントを削除し、招待を再送信することができます。
+ID テナントが Just-In-Time (JIT) テナントまたはバイラル テナント (つまり、独立したアンマネージド Azure テナント) である場合は、ゲスト ユーザーだけが自分のパスワードをリセットできます。 場合によっては、組織が、従業員が仕事用メール アドレスを使用してサービスにサインアップするときに作成される[バイラル テナントの管理を引き継ぎます](../enterprise-users/domains-admin-takeover.md)。 組織がバイラル テナントを引き継いだ後は、その組織の管理者しか、ユーザーのパスワードをリセットしたり SSPR を有効にしたりできなくなります。 必要に応じて、招待側の組織としては、ディレクトリからゲスト ユーザー アカウントを削除し、招待を再送信することができます。
 
 ## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>ゲスト ユーザーが AzureAD PowerShell V1 モジュールを使用できない
 
-2019 年 11 月 18 日時点で、ディレクトリ内のゲスト ユーザー ( **userType** プロパティが **Guest** であるユーザー アカウントとして定義) は、AzureAD PowerShell V1 モジュールの使用をブロックされています。 今後、ユーザーはメンバー ユーザー ( **userType** が **Member** ) になるか、AzureAD PowerShell V2 モジュールを使用する必要があります。
+2019 年 11 月 18 日時点で、ディレクトリ内のゲスト ユーザー (**userType** プロパティが **Guest** であるユーザー アカウントとして定義) は、AzureAD PowerShell V1 モジュールの使用をブロックされています。 今後、ユーザーはメンバー ユーザー (**userType** が **Member**) になるか、AzureAD PowerShell V2 モジュールを使用する必要があります。
 
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>Azure US Government テナントでは、B2B コラボレーションのゲストユーザーを招待できません。
 

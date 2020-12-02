@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 65451ed99580d9f2d66bd28518f0ec40a21ffe65
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ed5eda668f6bd52ba144aa664119ab613fdb7742
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317081"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183585"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Automation で Runbook を管理する
 
@@ -45,13 +45,13 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ## <a name="import-a-runbook"></a>Runbook をインポートする
 
-PowerShell または PowerShell ワークフロー ( **.ps1** ) スクリプト、グラフィカル Runbook ( **.graphrunbook** )、Python 2 スクリプト ( **.py** ) をインポートして独自の Runbook を作成することができます。 以下の点を考慮して、インポート中に作成される [Runbook の種類](automation-runbook-types.md) を指定する必要があります。
+PowerShell または PowerShell ワークフロー ( **.ps1**) スクリプト、グラフィカル Runbook ( **.graphrunbook**)、Python 2 スクリプト ( **.py**) をインポートして独自の Runbook を作成することができます。 以下の点を考慮して、インポート中に作成される [Runbook の種類](automation-runbook-types.md) を指定する必要があります。
 
-* ワークフローが含まれていない **.ps1** ファイルは、 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) または [PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) のどちらにもインポートすることができます。 それを PowerShell ワークフロー Runbook にインポートすると、ワークフローに変換されます。 この場合、Runbook には、加えられた変更を説明するコメントが追加されます。
+* ワークフローが含まれていない **.ps1** ファイルは、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) または [PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) のどちらにもインポートすることができます。 それを PowerShell ワークフロー Runbook にインポートすると、ワークフローに変換されます。 この場合、Runbook には、加えられた変更を説明するコメントが追加されます。
 
-* PowerShell ワークフローを含む **.ps1** ファイルは、 [PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) にのみインポートできます。 ファイルに複数の PowerShell ワークフローが含まれている場合、インポートは失敗します。 各ワークフローを専用のファイルに保存し、それぞれを個別にインポートする必要があります。
+* PowerShell ワークフローを含む **.ps1** ファイルは、[PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) にのみインポートできます。 ファイルに複数の PowerShell ワークフローが含まれている場合、インポートは失敗します。 各ワークフローを専用のファイルに保存し、それぞれを個別にインポートする必要があります。
 
-* PowerShell ワークフローを含む **.ps1** ファイルは PowerShell スクリプト エンジンでは認識できないため、 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) にインポートしないでください。
+* PowerShell ワークフローを含む **.ps1** ファイルは PowerShell スクリプト エンジンでは認識できないため、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) にインポートしないでください。
 
 * **.graphrunbook** ファイルは、新しい [グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) にのみインポートします。
 
@@ -223,7 +223,7 @@ Start-AzAutomationRunbook `
 
 1. Automation アカウントを作成して[共同作成者ロール](automation-role-based-access-control.md)を取得します。
 2. その[アカウントを Azure ワークスペースにリンク](../security-center/security-center-enable-data-collection.md)させます。
-3. [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)、[Update Management](update-management/update-mgmt-overview.md)、または別の Automation 機能を有効にします。 
+3. [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)、[Update Management](./update-management/overview.md)、または別の Automation 機能を有効にします。 
 4. Linux マシンを使用している場合、高い権限が必要です。 ログインして[署名のチェックをオフ](automation-linux-hrw-install.md#turn-off-signature-validation)にしてください。
 
 ## <a name="test-a-runbook"></a>Runbook をテストする

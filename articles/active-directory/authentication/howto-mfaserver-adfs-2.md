@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dc11faa502e5a6d8ede761d35d1ba24305b7688
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 13cfed6bf378ff9dacc4b6446cdfc246a87949bb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964181"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994232"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>AD FS 2.0 と連携するように Azure Multi-Factor Authentication Server を構成する
 
@@ -25,11 +25,11 @@ ms.locfileid: "91964181"
 このドキュメントでは、Azure Multi-Factor Authentication Server と AD FS 2.0 の使用について説明します。 AD FS について詳しくは、「[Azure Multi-Factor Authentication Server と Windows Server 2012 R2 の AD FS を使用したクラウドとオンプレミスのリソースのセキュリティ保護](howto-mfaserver-adfs-2012.md)」をご覧ください。
 
 > [!IMPORTANT]
-> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなりました。 サインイン イベント時に多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication (MFA) を使用していただく必要があります。
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなりました。 サインイン イベント時に多要素認証が必要な新しいお客様は、クラウドベースの Azure AD Multi-Factor Authentication (MFA) を使用していただく必要があります。
 >
-> クラウドベースの MFA の使用を開始するには、「[チュートリアル: Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
+> クラウドベースの MFA の使用を開始するには、「[チュートリアル: Azure AD Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
 >
-> クラウドベースの MFA を使用する場合は、「[Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護](howto-mfa-adfs.md)」を参照してください。
+> クラウドベースの MFA を使用する場合は、[Azure AD Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護](howto-mfa-adfs.md)に関する記事を参照してください。
 >
 > 2019 年 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
 

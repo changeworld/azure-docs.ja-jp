@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 654d7b4ddb332906aba330da20d42a0e16ec79e6
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5be6a2d73be35b3d637df9364364784d373dabb3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021441"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186696"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor によって監視される内容
 この記事では、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。 
@@ -189,7 +189,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 
 | 製品/サービス | 説明 |
 |:---|:---|
-| [Azure Automation](../automation/index.yml) | Windows および Linux のコンピューターでオペレーティング システムの更新を管理し、変更を追跡します。 [Change Tracking](../automation/change-tracking/overview.md) と [Update Management](../automation/update-management/update-mgmt-overview.md) に関する記事を参照してください。 |
+| [Azure Automation](../automation/index.yml) | Windows および Linux のコンピューターでオペレーティング システムの更新を管理し、変更を追跡します。 [Change Tracking](../automation/change-tracking/overview.md) と [Update Management](../automation/update-management/overview.md) に関する記事を参照してください。 |
 | [Azure Information Protection ](/azure/information-protection/) | ドキュメントと電子メールを分類し、必要に応じて保護します。 「[Azure Information Protection の中央レポート機能](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)」を参照してください。 |
 | [Azure Security Center](../security-center/index.yml) | セキュリティ イベントを収集して分析し、脅威分析を実行します。 「[Azure Security Center でのデータ収集](../security-center/security-center-enable-data-collection.md)」を参照してください。 |
 | [Azure Sentinel](../sentinel/index.yml) | Office 365 やアマゾン ウェブ サービスの Cloud Trail などのさまざまなソースに接続します。 「[データ ソースの接続](../sentinel/connect-data-sources.md)」のページを参照してください。 |
@@ -245,4 +245,3 @@ Azure Monitor は、次の表に示す方法を使用して、Azure 外部のリ
 - [Azure Monitor ログでデータを分析するためのログ クエリの作成に関するチュートリアル](learn/tutorial-resource-logs.md)を完了してください。
 - [Azure Monitor メトリックでデータを分析するためのメトリック グラフの作成に関するチュートリアル](learn/tutorial-metrics-explorer.md)を完了してください。
 
- 

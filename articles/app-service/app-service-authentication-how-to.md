@@ -4,12 +4,12 @@ description: App Service でさまざまなシナリオに合わせて認証お�
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: ad83e7ad5e1ffc03bf7c62df9b28512e19a62100
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0e07dc42a45a697b293e2ebc90bdd92aa924f071
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010199"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302029"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 上での認証と承認の高度な使用方法
 
@@ -172,7 +172,7 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 
 - **Google**: `access_type=offline` クエリ文字列パラメーターを `/.auth/login/google` API 呼び出しに追加します。 Mobile Apps SDK を使用している場合は、`LogicAsync` オーバーロードの 1 つにパラメーターを追加できます ([Google 更新トークン](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)に関するページをご覧ください)。
 - **Facebook**: 更新トークンを提供しません。 長期間維持されるトークンの有効期限は 60 日間です ([Facebook のアクセス トークンの有効期限と延長](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)に関するページをご覧ください)。
-- **Twitter**: アクセス トークンに有効期限はありません ([Twitter OAuth の FAQ](https://developer.twitter.com/en/docs/basics/authentication/FAQ) に関するページを参照してください)。
+- **Twitter**: アクセス トークンに有効期限はありません ([Twitter OAuth の FAQ](https://developer.twitter.com/en/docs/authentication/faq) に関するページを参照してください)。
 - **Microsoft アカウント**: [Microsoft アカウント認証設定を構成する](configure-authentication-provider-microsoft.md)場合は、`wl.offline_access` スコープを選択します。
 - **Azure Active Directory**: [https://resources.azure.com](https://resources.azure.com) で、次の手順を実行します。
     1. ページの上部にある **[Read/Write]** を選択します。

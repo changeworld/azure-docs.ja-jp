@@ -12,21 +12,21 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9d8970387982e293d3c8495079e7529fac2ccaa
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2ab61fb57f98f62f2e8e5ca697bb5ef8301cada2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966935"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994198"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA Server と Active Directory 間のディレクトリ統合
 
 Azure MFA Server を Active Directory や別の LDAP ディレクトリと統合するには、Azure MFA Server の [ディレクトリの統合] セクションを使用します。 そのディレクトリ スキーマに合わせて属性を構成したり、自動ユーザー同期を設定したりすることができます。
 
 > [!IMPORTANT]
-> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなりました。 サインイン イベント時に多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication (MFA) を使用していただく必要があります。
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなりました。 サインイン イベント時に多要素認証が必要な新しいお客様は、クラウドベースの Azure AD Multi-Factor Authentication (MFA) を使用していただく必要があります。
 >
-> クラウドベースの MFA の使用を開始するには、「[チュートリアル: Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
+> クラウドベースの MFA の使用を開始するには、「[チュートリアル: Azure AD Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
 >
 > 2019 年 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
 

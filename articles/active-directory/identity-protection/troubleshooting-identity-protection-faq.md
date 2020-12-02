@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58f0ffa8bd43a8428603334b6c89fa1cf36315b5
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: ba22745923f1b157c477dce0b5704c7e278e748e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987339"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176003"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory Identity Protection についてよく寄せられる質問
 
@@ -38,7 +38,7 @@ Azure AD Identity Protection のお客様であれば、[危険なユーザー](
 ## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>サインインがブロックされたのに、Identity Protection でリスクの検出が生成されなかったのはなぜですか?
 サインインはいくつかの理由でブロックされる可能性があります。 Identity Protection を使用すると、認証要求で正しい資格情報が使用されたときのリスクの検出だけが生成されることに注意してください。 ユーザーが正しくない資格情報を使用した場合は、不正なアクターによって正しい資格情報が使用されているのでない限り、資格情報の侵害のリスクがないため、Identity Protection によってフラグは設定されません。 ユーザーがサインインをブロックされても Identity Protection の検出が生成されない場合に可能性がある理由としては、次のようなものがあります。
 * IP アドレスからの悪意のあるアクティビティのため、**IP がブロックされる可能性があります**。 IP ブロック メッセージを見ても、資格情報が正しかったかどうかはわかりません。 IP がブロックされていて、正しい資格情報が使用されていない場合、Identity Protection の検出は生成されません。
-* **[スマート ロックアウト](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)** により、複数回失敗した後でアカウントのサインインがブロックされることがあります
+* **[スマート ロックアウト](../authentication/howto-password-smart-lockout.md)** により、複数回失敗した後でアカウントのサインインがブロックされることがあります
 * リスク レベル以外の条件を使用して認証要求をブロックする **条件付きアクセス ポリシー** が適用されている可能性があります
 
 ### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>特定の種類の検出のレポートを取得する方法はありますか?
@@ -93,6 +93,4 @@ IP の地理的位置情報のマッピングについては、業界全体の�
 
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>サインインに関連付けられている検出のリスクが低または中の場合に、サインインの「サインイン リスク (集計)」スコアが「高」になるのはなぜですか?
 
-集計リスク スコアが高であるのは、サインインの他の特徴、またはそのサインインに対して複数の検出が行われたという事実に基づく可能性があります。 逆に、サインインに関連付けられている検出のリスクが「高」の場合でも、サインインのサインイン リスク (集計) が「中」になることがあります。 
-
-
+集計リスク スコアが高であるのは、サインインの他の特徴、またはそのサインインに対して複数の検出が行われたという事実に基づく可能性があります。 逆に、サインインに関連付けられている検出のリスクが「高」の場合でも、サインインのサインイン リスク (集計) が「中」になることがあります。

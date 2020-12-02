@@ -17,12 +17,12 @@ ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 675c98e00b7458f326c95741529f7ce41a91dc18
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2408db2d91740350405f11e2a1250ab9b3a4fe31
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319723"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181205"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory ポータルのプロビジョニング レポート (プレビュー)
 
@@ -211,7 +211,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 ## <a name="what-you-should-know"></a>知っておくべきこと
 
-- 報告されたプロビジョニング データは、Premium Edition の場合は 30 日間、Free Edition の場合は 7 日間、Azure portal に保存されます。プロビジョニング ログは[ログ分析](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics)のために発行して、30 日間を超えても保存することができます。 
+- 報告されたプロビジョニング データは、Premium Edition の場合は 30 日間、Free Edition の場合は 7 日間、Azure portal に保存されます。プロビジョニング ログは[ログ分析](../app-provisioning/application-provisioning-log-analytics.md)のために発行して、30 日間を超えても保存することができます。 
 
 - [変更 ID] 属性は、一意の識別子として使用できます。 これは、たとえば製品サポートとやり取りするときに便利です。
 

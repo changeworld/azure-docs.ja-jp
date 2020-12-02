@@ -4,17 +4,16 @@ description: マッピング データ フローでのシンク変換を構成�
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
-manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/02/2020
-ms.openlocfilehash: 2e26028c47e8c96f8c1adabc468ee6f03e3cb19c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.date: 11/17/2020
+ms.openlocfilehash: fa048473f0f285b793dad88c7defdb6189ca1ccd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427294"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023008"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>マッピング データ フローでのシンク変換
 
@@ -69,10 +68,6 @@ Azure Data Factory から、[90 を超えるネイティブ コネクタ](connec
 
 **スキーマの検証**: [スキーマの検証] を選択すると、受信ソース スキーマの列がソース プロジェクション内で見つからない場合、またはデータ型が一致しない場合にデータ フローは失敗します。 この設定を使用して、ソース データが定義済みのプロジェクションのコントラクトを満たすように強制します。 これは、列の名前または型が変更されたことを通知する、データベース ソースのシナリオにおいて便利です。
 
-**Use TempDB (TempDB を使用):** 既定では、Data Factory には、読み込みプロセスの一部としてデータを格納するために、グローバル一時テーブルが使用されます。 あるいは、[Use TempDB]\(TempDB を使用\) オプションをオフにし、代わりに、このシンクに使用されているデータベース内にあるユーザー データベースに、一時的に保持するテーブルを格納するように Data Factory に求めることもできます。
-
-![Temp DB を使用](media/data-flow/tempdb.png "Temp DB を使用")
-
 ## <a name="cache-sink"></a>キャッシュ シンク
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4HKt1]
@@ -109,9 +104,18 @@ Azure Data Factory から、[90 を超えるネイティブ コネクタ](connec
 
 ![カスタム シンクの順序付け](media/data-flow/cache-2.png "カスタム シンクの順序付け")
 
+## <a name="error-row-handling"></a>エラー行の処理
+
+データベースに書き込む場合、書き込み先で設定されている制約によって、データの特定の行が失敗することがあります。 既定では、データ フローの実行は最初に発生したエラーで失敗します。 一部のコネクタでは、 **[エラーのまま続行する]** を選択すると、個々の行でエラーが発生した場合でもデータ フローを完了することができます。 現時点では、この機能は Azure SQL Database でのみ使用できます。 詳細については、[Azure SQL DB でのエラー行の処理](connector-azure-sql-database.md#error-row-handling)に関する記事を参照してください。
+
+以下は、シンク変換でデータベースのエラー行の処理を自動的に使用する方法を説明するビデオ チュートリアルです。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4IWne]
+
 ## <a name="data-preview-in-sink"></a>シンクでのデータのプレビュー
 
 デバッグ クラスター上でデータ プレビューをフェッチすると、データはシンクに書き込まれません。 データの外観を示すスナップショットが返されますが、指定した変換先には何も書き込まれません。 シンクへのデータの書き込みをテストするには、パイプライン キャンバスからパイプラインのデバッグを実行します。
 
 ## <a name="next-steps"></a>次のステップ
+
 これでデータ フローが作成されたので、[データ フローのアクティビティをパイプラインに](concepts-data-flow-overview.md)追加します。

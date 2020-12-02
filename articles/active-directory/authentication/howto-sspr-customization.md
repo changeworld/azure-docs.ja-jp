@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bef201cbd14a4de0c785b5f86d534f27bfedb31
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e121a6a45ab20055591a3670152114b8d03529cf
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363710"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173996"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>Azure Active Directory のセルフサービス パスワード リセットのユーザー エクスペリエンスをカスタマイズする
 
@@ -45,8 +45,8 @@ ms.locfileid: "92363710"
 既定の連絡先メールは、次の順序で受信者に送信されます。
 
 1. *ヘルプデスク管理者* ロールまたは *パスワード管理者* ロールが割り当てられている場合は、これらのロールを持つ管理者が通知を受け取ります。
-1. ヘルプデスク管理者またはパスワード管理者が割り当てられていない場合は、" *ユーザー管理者* " ロールを持つ管理者が通知を受け取ります。
-1. 上記のどのロールも割り当てられていない場合は、 *グローバル管理者* が通知を受け取ります。
+1. ヘルプデスク管理者またはパスワード管理者が割り当てられていない場合は、"*ユーザー管理者*" ロールを持つ管理者が通知を受け取ります。
+1. 上記のどのロールも割り当てられていない場合は、*グローバル管理者* が通知を受け取ります。
 
 どの場合も、最大 100 人の受信者が通知を受け取ります。
 
@@ -74,8 +74,8 @@ ms.locfileid: "92363710"
 
 ユーザーにわかりやすくするには、ポータルおよび自動通信の組織名を変更することができます。 Azure portal でディレクトリ名属性を変更するには、 **[Azure Active Directory]**  >  **[プロパティ]** に移動します。 このわかりやすい組織名オプションは、次の例のように、自動化された電子メールでよく見られるものです。
 
-* メールのフレンドリ名 (例: " *CONTOSO の代理としての Microsoft のデモ* ")
-* メールの件名行 (例: " *CONTOSO デモ アカウントのメール確認コード* ")
+* メールのフレンドリ名 (例: "*CONTOSO の代理としての Microsoft のデモ*")
+* メールの件名行 (例: "*CONTOSO デモ アカウントのメール確認コード*")
 
 ## <a name="customize-the-ad-fs-sign-in-page"></a>AD FS サインイン ページをカスタマイズする
 
@@ -91,4 +91,4 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><a href='https://passwor
 
 環境内での SSPR の使用状況を把握するには、「[Azure AD のパスワード管理に関するレポート オプション](howto-sspr-reporting.md)」を参照してください。
 
-SSPR で問題が発生した場合は、「[セルフサービス パスワード リセットのトラブルシューティング](active-directory-passwords-troubleshoot.md)」を参照してください
+SSPR で問題が発生した場合は、「[セルフサービス パスワード リセットのトラブルシューティング](./troubleshoot-sspr.md)」を参照してください

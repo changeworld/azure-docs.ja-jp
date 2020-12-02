@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74cb1e021049b7c36c4c23f2e9a6a7512fba1110
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 71726724e7c018f34b1175f323d0c8e55b604931
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146138"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973639"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -122,7 +122,7 @@ Azure、Office 365、Microsoft 365 サービスの Azure Active Directory への
 **サービス カテゴリ:** アクセス レビュー  
 **製品の機能:** Identity Governance
  
-無効化して削除は、組織がグループとアプリで外部のゲストをより適切に管理するのに役立つ、Azure AD アクセス レビューの高度なコントロールです。 ゲストがアクセス レビューで拒否された場合、 **無効化して削除** により、30 日間サインインをブロックできます。 30 日が経過すると、テナントから完全に削除されます。
+無効化して削除は、組織がグループとアプリで外部のゲストをより適切に管理するのに役立つ、Azure AD アクセス レビューの高度なコントロールです。 ゲストがアクセス レビューで拒否された場合、**無効化して削除** により、30 日間サインインをブロックできます。 30 日が経過すると、テナントから完全に削除されます。
 
 この機能の詳細については、「[Azure AD アクセス レビューを使用して外部 ID の無効化および削除を行う (プレビュー)](../governance/access-reviews-external-users.md#disable-and-delete-external-identities-with-azure-ad-access-reviews-preview)」を参照してください。
  
@@ -457,7 +457,7 @@ Azure AD エンタイトルメント管理に、割り当てを管理するた�
 **サービス カテゴリ:** Privileged Identity Management  
 **製品の機能:** Privileged Identity Management
  
-以前は、Privileged Identity Management (PIM) にオンボードするには、ユーザーの同意と、Azure MFA への登録が含まれる PIM のブレードでのオンボード フローが必要でした。 Azure AD の [ロールと管理者] ブレードへの PIM エクスペリエンスの最近の統合により、このエクスペリエンスは削除されています。 有効な P2 ライセンスを持つテナントは、PIM に自動的にオンボードされます。
+以前は、Privileged Identity Management (PIM) にオンボードするには、ユーザーの同意と、Azure AD MFA への登録が含まれる PIM のブレードでのオンボード フローが必要でした。 Azure AD の [ロールと管理者] ブレードへの PIM エクスペリエンスの最近の統合により、このエクスペリエンスは削除されています。 有効な P2 ライセンスを持つテナントは、PIM に自動的にオンボードされます。
 
 PIM へのオンボードにより、テナントが直接悪影響を受けることはありません。 次の変更が予想されます。
 - PIM または Azure AD の [ロールと管理者] ブレードで割り当てを行うときに、開始時刻と終了時刻でアクティブか有資格かなどの、追加の割り当てオプション。 
@@ -674,7 +674,7 @@ Microsoft Identity Manager (MIM) 2016 Service Pack 2 (SP2) の[修正プログ�
 **サービス カテゴリ:** 条件付きアクセス  
 **製品の機能:** ID のセキュリティ & 保護
  
-条件付きアクセスでのクライアント アプリ条件の GA リリースにより、新しいポリシーが既定で、すべてのクライアント アプリケーションに適用されるようになりました。 これには、レガシ認証クライアントが含まれます。 既存のポリシーは変更されませんが、ポリシーによって提供されるクライアント アプリを簡単に確認できるように、" *構成の "はい、いいえ"* " の切り替えは既存のポリシーから削除されます。 
+条件付きアクセスでのクライアント アプリ条件の GA リリースにより、新しいポリシーが既定で、すべてのクライアント アプリケーションに適用されるようになりました。 これには、レガシ認証クライアントが含まれます。 既存のポリシーは変更されませんが、ポリシーによって提供されるクライアント アプリを簡単に確認できるように、"*構成の "はい、いいえ"* " の切り替えは既存のポリシーから削除されます。 
 
 新しいポリシーを作成するときは、従来の認証をまだ使用しているユーザーとサービス アカウントを除外してください。そうしないと、ブロックされます。 [詳細については、こちらを参照してください](../conditional-access/concept-conditional-access-conditions.md)。
  

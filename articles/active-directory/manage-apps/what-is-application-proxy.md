@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bc3352dd57a76cbb0b38455adfa11987ec93781a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d73cf3336afad83fadf6f56606161f523e202280
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003023"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180542"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Azure AD アプリケーション プロキシを使用してリモート ユーザー向けにオンプレミス アプリを発行する
 
@@ -95,7 +95,7 @@ Azure AD はアプリケーション プロキシを使用して、オンプレ�
 
 サード パーティ統合または特定の構成のシナリオでは、アプリケーション プロキシは次の認証プロトコルもサポートしています。
 
-* [**ヘッダーベースの認証**](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers)。 このサインオン方法は、PingAccess というサード パーティの認証サービスを使用し、アプリケーションがヘッダーを使って認証する場合に使用されます。 このシナリオでは、認証は PingAccess によって処理されます。
+* [**ヘッダーベースの認証**](./application-proxy-configure-single-sign-on-with-headers.md)。 このサインオン方法は、PingAccess というサード パーティの認証サービスを使用し、アプリケーションがヘッダーを使って認証する場合に使用されます。 このシナリオでは、認証は PingAccess によって処理されます。
 * [**フォームまたはパスワード ベースの認証**](application-proxy-configure-single-sign-on-password-vaulting.md)。 この認証方法では、ユーザーは初回アクセス時にユーザー名とパスワードを使用してアプリケーションにサインオンします。 最初のサインイン後は、Azure AD がユーザー名とパスワードをアプリケーションに提供します。 このシナリオでは、認証は Azure AD によって処理されます。
 * [**SAML 認証**](application-proxy-configure-single-sign-on-on-premises-apps.md)。 SAML ベースのシングル サインオンは、SAML 2.0 または WS-Federation のいずれかのプロトコルを使用するアプリケーションでサポートされます。 SAML によるシングル サインオンでは、ユーザーの Azure AD アカウントを使用して、Azure AD がアプリケーションに対して認証を行います。
 

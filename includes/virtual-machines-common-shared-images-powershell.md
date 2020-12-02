@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 03/18/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 10c2b447a3f174afe93f56084827756d24d982cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 807cbd283cf7971bf4256451028ffa16a0911266
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82792192"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027070"
 ---
 ## <a name="create-an-image-gallery"></a>イメージ ギャラリーを作成する 
 
 イメージ ギャラリーは、イメージの共有を有効にするために使用されるプライマリ リソースです。 ギャラリー名で許可されている文字は、英字 (大文字または小文字)、数字、ドット、およびピリオドです。 ギャラリー名にダッシュを含めることはできません。 ギャラリー名は、お使いのサブスクリプション内で一意にする必要があります。 
 
-イメージ ギャラリーは、[New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery) を使用して作成します。 次の例では、*myGalleryRG* リソース グループに *myGallery* という名前のギャラリーを作成します。
+イメージ ギャラリーは、[New-AzGallery](/powershell/module/az.compute/new-azgallery) を使用して作成します。 次の例では、*myGalleryRG* リソース グループに *myGallery* という名前のギャラリーを作成します。
 
 ```azurepowershell-interactive
 $resourceGroup = New-AzResourceGroup `
@@ -49,4 +49,3 @@ New-AzRoleAssignment `
    -ResourceGroupName $resourceGroup.ResourceGroupName
 
 ```
-

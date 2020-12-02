@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2d7c1c0245649fdb7eed1033a953b8cc3933626
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e4f960819aa208dcc8d3e476fc45a766452b612c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442118"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168952"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Azure AD B2B コラボレーションの制限
 現在、Azure Active Directory (Azure AD) B2B コラボレーションには、この記事に記載されている制限が適用されます。
@@ -28,7 +28,7 @@ Azure AD B2B を使用すると、多要素認証をリソース組織 (招待�
 B2B コラボレーションのフローでは、ユーザーをディレクトリに追加し、招待の使用、アプリ割り当てなどの際に動的に更新します。 更新と書き込みは、通常、1 つのディレクトリ インスタンスで行い、すべてのインスタンス間でレプリケートする必要があります。 すべてのインスタンスが更新されると、レプリケーションが完了します。 いずれかのインスタンスでオブジェクトの書き込みまたは更新が行われ、そのオブジェクトを取得する呼び出しが別のインスタンスに対して行われた場合は、レプリケーションの遅延が発生する可能性があります。 その場合は、更新または再試行が役立つことがあります。 API を使用してアプリを記述する場合は、バックオフの再試行がこの問題を軽減するための推奨される防御的な方法です。
 
 ## <a name="azure-ad-directories"></a>Azure AD ディレクトリ
-Azure AD B2B は、Azure AD サービス ディレクトリの制限に従います。 ユーザーが作成できるディレクトリ数と、ユーザーまたはゲスト ユーザーが所属できるディレクトリ数の詳細については、「[Azure AD サービスの制限と制約](../users-groups-roles/directory-service-limits-restrictions.md)」を参照してください。
+Azure AD B2B は、Azure AD サービス ディレクトリの制限に従います。 ユーザーが作成できるディレクトリ数と、ユーザーまたはゲスト ユーザーが所属できるディレクトリ数の詳細については、「[Azure AD サービスの制限と制約](../enterprise-users/directory-service-limits-restrictions.md)」を参照してください。
 
 ## <a name="national-clouds"></a>各国のクラウド
 [国内クラウド](../develop/authentication-national-cloud.md) は、物理的に分離された Azure のインスタンスです。 国内クラウドの境界を越えた B2B Collaboration はサポートされません。 たとえば、ご利用の Azure テナントがパブリックのグローバル クラウドに存在する場合、アカウントが国内クラウドにあるユーザーを招待することはできません。 ユーザーと共同作業を行うには、そのユーザーに別のメール アドレスを要求するか、またはご利用のディレクトリ内にメンバー ユーザー アカウントを作成してください。

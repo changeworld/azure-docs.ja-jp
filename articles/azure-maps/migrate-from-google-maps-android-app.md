@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d7ec1edb779ddaf53cef02dd6e83bb3e719d0b4e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b096b24acd5cf65f6ad3e9eabb1d536b3aae0168
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503557"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187070"
 ---
 # <a name="tutorial---migrate-an-android-app-from-google-maps"></a>チュートリアル - Google Maps から Android アプリを移行する
 
@@ -769,7 +769,7 @@ Azure Maps Android SDK の詳細について学習します。
 > [Android マップへのシンボル レイヤーの追加](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Android マップへの図形の追加](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [Android マップへの図形の追加](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Android マップでのマップ スタイルの変更](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Android マップでのマップ スタイルの変更](./set-android-map-styles.md)

@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 88e9d16a205df16a2be63e67f45cdbcf9144b30f
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f41354630f4885a30bd5c036495b216a2cc05599
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108458"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167796"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
@@ -88,7 +88,7 @@ App Service プランで JavaScript 関数を実行する場合は、CPUの少�
 
 ### <a name="always-on"></a><a name="always-on"></a> 常にオン
 
-App Service プランを実行する場合、関数アプリが正常に実行されるように、 **常時接続** 設定を有効にする必要があります。 App Service プランでは、関数のランタイムは非アクティブな状態が数分続くとアイドル状態となるため、関数を "起こす" ことができるのは HTTP トリガーのみとなります。 常時接続は App Service プランでのみ使用可能です。 従量課金プランでは、関数アプリはプラットフォームにより自動的にアクティブ化されます。
+App Service プランを実行する場合、関数アプリが正常に実行されるように、**常時接続** 設定を有効にする必要があります。 App Service プランでは、関数のランタイムは非アクティブな状態が数分続くとアイドル状態となるため、関数を "起こす" ことができるのは HTTP トリガーのみとなります。 常時接続は App Service プランでのみ使用可能です。 従量課金プランでは、関数アプリはプラットフォームにより自動的にアクティブ化されます。
 
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
@@ -97,7 +97,7 @@ App Service プランを実行する場合、関数アプリが正常に実行�
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>既存のアプリケーションのホスティング プランを決定する
 
-自分の関数アプリで使用されるホスティング プランを確認するには、 [Azure portal](https://portal.azure.com) で関数アプリの **[概要]** タブの **[App Service プラン]** を表示します。 価格レベルを表示するには、 **[App Service プラン]** の名前を選択し、左側のウィンドウから **[プロパティ]** を選択します。
+自分の関数アプリで使用されるホスティング プランを確認するには、[Azure portal](https://portal.azure.com) で関数アプリの **[概要]** タブの **[App Service プラン]** を表示します。 価格レベルを表示するには、 **[App Service プラン]** の名前を選択し、左側のウィンドウから **[プロパティ]** を選択します。
 
 ![ポータルでのスケーリング プランの表示](./media/functions-scale/function-app-overview-portal.png)
 
@@ -136,15 +136,15 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 ### <a name="runtime-scaling"></a>実行時のスケーリング
 
-Azure Functions は " *スケール コントローラー* " と呼ばれるコンポーネントを使用して、イベント レートを監視し、スケールアウトとスケールインのどちらを実行するかを決定します。 スケール コントローラーは、トリガーの種類ごとにヒューリスティックを使用します。 たとえば、Azure Queue Storage トリガーを使用した場合、拡大縮小はキューの長さや最も古いキュー メッセージの経過時間に基づいて実施されます。
+Azure Functions は "*スケール コントローラー*" と呼ばれるコンポーネントを使用して、イベント レートを監視し、スケールアウトとスケールインのどちらを実行するかを決定します。 スケール コントローラーは、トリガーの種類ごとにヒューリスティックを使用します。 たとえば、Azure Queue Storage トリガーを使用した場合、拡大縮小はキューの長さや最も古いキュー メッセージの経過時間に基づいて実施されます。
 
-Azure Functions のスケールの単位は関数アプリです。 関数アプリがスケールアウトするときは、Azure Functions ホストの複数のインスタンスを実行するための追加リソースが割り当てられます。 反対に、コンピューティングの需要が減ると、スケール コントローラーにより、関数ホストのインスタンスが削除されます。 関数アプリ内で関数が何も実行されていない場合、インスタンスの数は最終的に 0 に " *スケールイン* " されます。
+Azure Functions のスケールの単位は関数アプリです。 関数アプリがスケールアウトするときは、Azure Functions ホストの複数のインスタンスを実行するための追加リソースが割り当てられます。 反対に、コンピューティングの需要が減ると、スケール コントローラーにより、関数ホストのインスタンスが削除されます。 関数アプリ内で関数が何も実行されていない場合、インスタンスの数は最終的に 0 に "*スケールイン*" されます。
 
 ![イベントを監視してインスタンスを作成しているスケール コントローラー](./media/functions-scale/central-listener.png)
 
 ### <a name="cold-start"></a>コールド スタート
 
-関数アプリが数分の間アイドル状態になると、プラットフォームによって、アプリが実行されるインスタンスの数が 0 にスケール ダウンされる可能性があります。 次の要求には、0 から 1 へのスケーリングの待機時間が追加されています。 この待機時間は、 _コールド スタート_ と呼ばれます。 関数アプリによって読み込まれる必要がある依存関係の数は、コールド スタート時間に影響を与える可能性があります。 コールド スタートは、応答を必ず返す必要がある HTTP トリガーなどの同期操作においては問題です。 コールド スタートが関数に影響を与えている場合は、Always On が有効になっている Premium プランまたは専用プランで実行することを検討してください。   
+関数アプリが数分の間アイドル状態になると、プラットフォームによって、アプリが実行されるインスタンスの数が 0 にスケール ダウンされる可能性があります。 次の要求には、0 から 1 へのスケーリングの待機時間が追加されています。 この待機時間は、_コールド スタート_ と呼ばれます。 関数アプリによって読み込まれる必要がある依存関係の数は、コールド スタート時間に影響を与える可能性があります。 コールド スタートは、応答を必ず返す必要がある HTTP トリガーなどの同期操作においては問題です。 コールド スタートが関数に影響を与えている場合は、Always On が有効になっている Premium プランまたは専用プランで実行することを検討してください。   
 
 ### <a name="understanding-scaling-behaviors"></a>スケーリングの動作について
 
@@ -153,7 +153,7 @@ Azure Functions のスケールの単位は関数アプリです。 関数アプ
 * 1 つの関数アプリがスケールアウトされるのは、最大 200 インスタンスまでのみとなります。 1 つのインスタンスで一度に複数のメッセージや要求を処理できるので、同時実行の数に上限は設定されていません。  必要な場合は[最大値を下げて](#limit-scale-out)スケーリングを制限できます。
 * HTTP トリガーの場合、新しいインスタンスは最大で 1 秒間に 1 回割り当てられます。
 * HTTP 以外のトリガーの場合、新しいインスタンスは最大で 30 秒ごとに 1 回割り当てられます。 [Premium プラン](#premium-plan)で実行しているときは、スケーリングが速くなります。
-* Service Bus トリガーの場合、最も効率的なスケーリングを行うためには、リソースに対して " _管理_ " 権限を使用します。 " _リッスン_ " 権限では、スケーリングの決定を通知するためにキューの長さを使用できないため、スケーリングが正確ではありません。 Service Bus アクセス ポリシーで権限を設定する方法の詳細については、「[共有アクセス承認ポリシー](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies)」を参照してください。
+* Service Bus トリガーの場合、最も効率的なスケーリングを行うためには、リソースに対して "_管理_" 権限を使用します。 "_リッスン_" 権限では、スケーリングの決定を通知するためにキューの長さを使用できないため、スケーリングが正確ではありません。 Service Bus アクセス ポリシーで権限を設定する方法の詳細については、「[共有アクセス承認ポリシー](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies)」を参照してください。
 * イベント ハブのトリガーについては、リファレンス記事の[スケーリングのガイダンス](functions-bindings-event-hubs-trigger.md#scaling)を参照してください。 
 
 ### <a name="limit-scale-out"></a>スケールアウトを制限する
@@ -174,8 +174,8 @@ Python と Node.js のスケールインの詳細については、「[Azure Fun
 
 各プランの課金の詳細については、[Azure Functions の価格に関するページ](https://azure.microsoft.com/pricing/details/functions/)を参照してください。 使用量は Function App レベルで集計され、関数コードが実行されている期間のみカウントされます。 課金の単位は、次のとおりです。
 
-* **ギガバイト/秒 (GB/秒) 単位でのリソース使用量** 。 メモリ サイズと、関数アプリ内の全関数の実行時間の組み合わせとして計算されます。 
-* **実行回数** 。 イベント トリガーに応じて関数が実行されるたびにカウントされます。
+* **ギガバイト/秒 (GB/秒) 単位でのリソース使用量**。 メモリ サイズと、関数アプリ内の全関数の実行時間の組み合わせとして計算されます。 
+* **実行回数**。 イベント トリガーに応じて関数が実行されるたびにカウントされます。
 
 従量課金の請求を理解する方法についての便利なクエリと情報については、[請求に関する FAQ](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ) をご覧ください。
 
@@ -257,6 +257,6 @@ Python と Node.js のスケールインの詳細については、「[Azure Fun
 
 ## <a name="next-steps"></a>次のステップ
 
-+ [クイック スタート: Visual Studio Code を使用して Azure Functions プロジェクトを作成する](functions-create-first-function-vs-code.md)
++ [クイック スタート: Visual Studio Code を使用して Azure Functions プロジェクトを作成する](./create-first-function-vs-code-csharp.md)
 + [Azure Functions のデプロイ テクノロジ](functions-deployment-technologies.md) 
 + [Azure Functions 開発者ガイド](functions-reference.md)

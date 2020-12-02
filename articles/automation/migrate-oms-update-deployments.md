@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: dabe914ffd4e84e8ded5c0e3b519036479fe33ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2226f55c829afa4316a92888d16f6dc68e1f931
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987601"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183602"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Azure Monitor ログの更新プログラムの展開を Azure portal に移行する
 
@@ -19,7 +19,7 @@ Operations Management Suite (OMS) ポータルは[非推奨](../azure-monitor/pl
 ## <a name="key-information"></a>重要な情報
 
 * 既存の展開は引き続き機能します。 Azure で展開を再作成したら、以前の展開を削除できます。
-* OMS で使用していた既存の機能はすべて Azure で利用できます。 Update Management の詳細については、[Update Management の概要](update-management/update-mgmt-overview.md)に関する記事を参照してください。
+* OMS で使用していた既存の機能はすべて Azure で利用できます。 Update Management の詳細については、[Update Management の概要](./update-management/overview.md)に関する記事を参照してください。
 
 ## <a name="access-the-azure-portal"></a>Azure portal にアクセスする
 
@@ -43,7 +43,7 @@ Operations Management Suite (OMS) ポータルは[非推奨](../azure-monitor/pl
 
 OMS ポータルで作成されたすべての更新プログラムの展開には、[保存された検索条件](../azure-monitor/platform/computer-groups.md)があります。これはコンピューター グループとも呼ばれ、存在する更新プログラムの展開と同じ名前を持ちます。 保存された検索条件には、更新プログラムの展開でスケジュールされていたコンピューターの一覧が含まれています。
 
-:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="[Update Management] ページのスクリーンショット。":::
+:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="[更新プログラムの展開] ページのスクリーンショット。[名前] と [サーバー] フィールドが強調表示されています。":::
 
 この既存の保存された検索条件を使用するには、次の手順に従います。
 
@@ -74,4 +74,4 @@ OMS ポータルで作成されたすべての更新プログラムの展開に�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Automation の Update Management の詳細については、[Update Management の概要](update-management/update-mgmt-overview.md)に関する記事を参照してください。
+Azure Automation の Update Management の詳細については、[Update Management の概要](./update-management/overview.md)に関する記事を参照してください。

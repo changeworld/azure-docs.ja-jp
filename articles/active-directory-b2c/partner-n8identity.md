@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: dd6e760fe8052463491f249b54c3af3d2636d46d
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 337275cef0f2159cb5fac40ac0435408baf3bbef
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376886"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170924"
 ---
 # <a name="tutorial-for-configuring-theaccesshub-admin-tool-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して TheAccessHub 管理ツールを構成するためのチュートリアル
 
@@ -38,13 +38,13 @@ ms.locfileid: "93376886"
 
 - Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 
-- [Azure AD B2C テナント](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。 テナントは Azure サブスクリプションにリンクされている必要があります。
+- [Azure AD B2C テナント](./tutorial-create-tenant.md)。 テナントは Azure サブスクリプションにリンクされている必要があります。
 
 - TheAccessHub 管理ツール環境:新しい環境をプロビジョニングするには、[N8 Identity](https://n8id.com/contact/) に問い合わせてください。
 
 - [省略可能] 顧客データを移行するすべてのデータベースまたはライトウェイト ディレクトリ アクセス プロトコル (LDAP) の接続および資格情報。
 
-- [省略可能] TheAccessHub 管理ツールをサインアップ ポリシー フローに統合する場合は、[カスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)を使用するように構成された Azure AD B2C 環境。
+- [省略可能] TheAccessHub 管理ツールをサインアップ ポリシー フローに統合する場合は、[カスタム ポリシー](./custom-policy-get-started.md)を使用するように構成された Azure AD B2C 環境。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -358,7 +358,7 @@ Azure AD B2C 顧客データを TheAccessHub 管理ツールに同期するに�
 
 ## <a name="configure-azure-ad-b2c-policies"></a>Azure AD B2C ポリシーを構成する
 
-場合によっては、Azure AD B2C に応じて TheAccessHub 管理ツールを最新の状態に同期する機能に制限があります。 TheAccessHub 管理ツールの API と Azure AD B2C ポリシーを活用して、変更が発生したときに TheAccessHub 管理ツールに通知できます。 このソリューションには、[Azure AD B2C カスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started#:~:text=%20Get%20started%20with%20custom%20policies%20in%20Azure,Experience%20Framework%20applications.%20Azure%20AD%20B2C...%20More%20)に関する技術的な知識が必要です。 次のセクションでは、TheAccessHub 管理ツールにサインアップ カスタム ポリシー内の新しいアカウントを通知するための、ポリシー ステップとセキュリティで保護された証明書の例を示します。
+場合によっては、Azure AD B2C に応じて TheAccessHub 管理ツールを最新の状態に同期する機能に制限があります。 TheAccessHub 管理ツールの API と Azure AD B2C ポリシーを活用して、変更が発生したときに TheAccessHub 管理ツールに通知できます。 このソリューションには、[Azure AD B2C カスタム ポリシー](./custom-policy-get-started.md)に関する技術的な知識が必要です。 次のセクションでは、TheAccessHub 管理ツールにサインアップ カスタム ポリシー内の新しいアカウントを通知するための、ポリシー ステップとセキュリティで保護された証明書の例を示します。
 
 ### <a name="create-a-secure-credential-to-invoke-theaccesshub-admin-tools-api"></a>TheAccessHub 管理ツールの API を呼び出すためのセキュリティで保護された資格情報を作成する
 
@@ -372,7 +372,7 @@ Azure AD B2C 顧客データを TheAccessHub 管理ツールに同期するに�
 
 5. **[Download]\(ダウンロード\)** を選択して、クライアント証明書を取得します。
 
-6. こちらの[チュートリアル](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api#https-client-certificate-authentication )に従って、Azure AD B2C にクライアント証明書を追加します。
+6. こちらの[チュートリアル](./secure-rest-api.md#https-client-certificate-authentication )に従って、Azure AD B2C にクライアント証明書を追加します。
 
 ### <a name="retrieve-your-custom-policy-examples"></a>カスタム ポリシーの例を取得する
 
@@ -386,12 +386,12 @@ Azure AD B2C 顧客データを TheAccessHub 管理ツールに同期するに�
 
 5. **[Download]\(ダウンロード\)** を選択して、顧客がサインアップしたときに顧客を TheAccessHub 管理ツールに追加する基本ポリシーを含む zip ファイルを取得します。
 
-6. こちらの[チュートリアル](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)に従い、Azure AD B2C でカスタム ポリシーの設計を開始します。
+6. こちらの[チュートリアル](./custom-policy-get-started.md)に従い、Azure AD B2C でカスタム ポリシーの設計を開始します。
 
 ## <a name="next-steps"></a>次のステップ
 
 追加情報については、次の記事を参照してください。
 
-- [Azure AD B2C のカスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6ac568e56d201ef43e40428085b226608e83973a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 62b4629d258f8779dc53b4b8e00684d3b793291d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024570"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183755"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management 用の Azure セキュリティ ベースライン
 
@@ -98,7 +98,7 @@ Azure Security Center の統合された脅威インテリジェンスを使用�
 
 * [Azure Application Gateway について](../application-gateway/index.yml)
 
-* [Azure DDoS Protection Standard を構成する方法](../virtual-network/manage-ddos-protection.md)
+* [Azure DDoS Protection Standard を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
 * [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/azure-defender.md)
 
@@ -301,7 +301,7 @@ Azure Monitor に加えて、Azure API Management を 1 つまたは複数の Az
 
 * [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
 
-* [Log Analytics ワークスペースについて](../azure-monitor/log-query/get-started-portal.md)
+* [Log Analytics ワークスペースについて](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [Azure Application Insights と統合する方法](./api-management-howto-app-insights.md)
 
@@ -614,7 +614,7 @@ Microsoft では、Azure API Management 用の基になるインフラストラ�
 
 **ガイダンス**: 管理プレーン呼び出しは、TLS 経由で Azure Resource Manager によって行われます。 有効な JSON Web トークン (JWT) が必要です。 データ プレーン呼び出しは、TLS と、サポートされる認証メカニズムのいずれか (例: クライアント証明書や JWT など) で保護できます。
 
-* [Azure API Management でのデータ保護について](./api-management-security-controls.md#data-protection)
+* [Azure API Management でのデータ保護について](#data-protection)
 
 * [Azure API Management で TLS 設定を管理する](./api-management-howto-manage-protocols-ciphers.md)
 
@@ -664,7 +664,7 @@ Microsoft では、Azure API Management 用の基になるインフラストラ�
 
 **ガイダンス**: 証明書、キー、およびシークレットの名前付きの値などの機密データは、サービスで管理される、サービス インスタンスごとのキーで暗号化されます。 すべての暗号化キーはサービス インスタンスごとに存在し、サービスで管理されます。
 
-* [Azure API Management を使用した保存データの保護と暗号化について](./api-management-security-controls.md#data-protection)
+* [Azure API Management を使用した保存データの保護と暗号化について](#data-protection)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -692,7 +692,7 @@ Microsoft では、Azure API Management 用の基になるインフラストラ�
 
 Microsoft でスキャンおよび修正される、基になるプラットフォーム。 利用可能なセキュリティ コントロールを確認して、サービス構成関連の脆弱性を軽減します。
 
-* [Azure API Management で利用可能なセキュリティ コントロールについて](./api-management-security-controls.md)
+* [Azure API Management で利用可能なセキュリティ コントロールについて]()
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -728,7 +728,7 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 Microsoft でスキャンおよび修正される、基になるプラットフォーム。 顧客が利用可能なセキュリティ コントロールを確認して、サービス構成関連の脆弱性を軽減します。
 
-* [Azure API Management で利用可能なセキュリティ コントロールについて](./api-management-security-controls.md)
+* [Azure API Management で利用可能なセキュリティ コントロールについて]()
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -932,8 +932,6 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 * [Azure Repos のドキュメント](/azure/devops/repos/index)
 
-* [Azure API Management DevOps リソース キットについて](./api-management-security-controls.md#configuration-management)
-
 **Azure Security Center の監視**: 適用なし
 
 **責任**: Customer
@@ -971,8 +969,6 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 **ガイダンス**:Azure API Management DevOps リソース キットを使用して、Azure API Management の構成管理を行います。
 
 また、Azure Policy を使用して、Azure API Management サービスの標準的なセキュリティ構成を定義して実装します。 Azure API Management インスタンスの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.ApiManagement" 名前空間で Azure Policy エイリアスを使用します。 Azure リソース全体にセキュリティで保護された設定を適用するには、Azure ポリシー [拒否] と [存在する場合はデプロイする] を使用します。
-
-* [Azure API Management DevOps リソース キットについて](./api-management-security-controls.md#configuration-management)
 
 * [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 

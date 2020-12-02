@@ -3,12 +3,12 @@ title: Windows Admin Center からハイブリッド マシンを Azure に接�
 description: この記事では、Windows Admin Center から Azure Arc 対応サーバーを使用して、エージェントをインストールし、マシンを Azure に接続する方法について説明します。
 ms.date: 10/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: d47e3dd4434d719f890b64e4cdfb12a189c0632a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 8fa118a254689feade2897f083bb3aa2dc9db02c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133462"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183415"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-windows-admin-center"></a>Windows Admin Center からハイブリッド マシンを Azure に接続する
 
@@ -26,7 +26,7 @@ ms.locfileid: "93133462"
 
 ### <a name="security"></a>セキュリティ
 
-このデプロイ方法では、エージェントをインストールして構成するために、対象の Windows マシンまたはサーバーに対する管理者権限が必要です。 また、 [**ゲートウェイ ユーザー**](/windows-server/manage/windows-admin-center/plan/user-access-options#gateway-access-roles) ロールのメンバーであることも必要です。
+このデプロイ方法では、エージェントをインストールして構成するために、対象の Windows マシンまたはサーバーに対する管理者権限が必要です。 また、[**ゲートウェイ ユーザー**](/windows-server/manage/windows-admin-center/plan/user-access-options#gateway-access-roles) ロールのメンバーであることも必要です。
 
 ## <a name="deploy"></a>デプロイ
 
@@ -69,4 +69,4 @@ Connected Machine エージェントのインストールを確認するには�
 
 * [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM での Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) を使用した監視の有効化などの方法です。
 
-* [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)の詳細を確認します。 Windows および Linux 用の Log Analytics エージェントは、オペレーティング システムやワークロードの監視データを収集し、Automation Runbook や Update Management などの機能を使用してそれを管理するか、または [Azure Security Center](../../security-center/security-center-intro.md) などの他の Azure サービスを使用する場合に必要になります。
+* [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)の詳細を確認します。 Windows および Linux 用の Log Analytics エージェントは、オペレーティング システムやワークロードの監視データを収集し、Automation Runbook や Update Management などの機能を使用してそれを管理するか、または [Azure Security Center](../../security-center/security-center-introduction.md) などの他の Azure サービスを使用する場合に必要になります。

@@ -3,12 +3,12 @@ title: Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 description: Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 98f6ce7eee799b1baf29782d7eca11d62cf62353
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 64e5ac46fbeb71706f7b1ae2d3682260e3cbc651
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207293"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993654"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 
@@ -62,7 +62,7 @@ Azure コンピューティング リソースの時刻同期を構成する方�
 **責任:** Customer
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5:セキュリティ ログのストレージ保持を構成する
-***ガイダンス:** Azure Monitor で、組織のコンプライアンス規則に従って、Azure DevTest Labs インスタンスに関連付けられている Log Analytics ワークスペースのログの保有期間を設定します。
+**_ガイダンス:_* Azure Monitor で、組織のコンプライアンス規則に従って、Azure DevTest Labs インスタンスに関連付けられている Log Analytics ワークスペースのログの保有期間を設定します。
 
 詳細については、次の記事を参照してください。[ログ保持期間のパラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -175,9 +175,9 @@ DevTest Labs には、既定のパスワードという概念がありません�
 - [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)  
 - [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
-**Azure Security Center の監視:** * はい
+**Azure Security Center の監視:** _ はい
 
-**責任:** Customer
+_ *責任:* * お客様
 
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
@@ -387,7 +387,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 **責任:** Customer
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3:サードパーティの自動化されたソフトウェア修正プログラム管理ソリューションを展開する
-***ガイダンス:*** ラボ管理者は、[DevTest Labs 成果物](add-artifact-vm.md)を使用して、セキュリティ更新プログラムやその他の更新プログラムを含むラボ カスタム イメージの更新を自動化できます。 
+**_ガイダンス:_* _ ラボ管理者は、[DevTest Labs 成果物](add-artifact-vm.md)を使用して、セキュリティ更新プログラムやその他の更新プログラムを含むラボ カスタム イメージの更新を自動化できます。 
 
 [DevTest Labs イメージ ファクトリ](image-factory-create.md)の詳細について説明します。これは、イメージを定期的に、すべての必要な構成と共に、ビルドして配布する、コードとしての構成のソリューションです。 
 
@@ -396,7 +396,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 - [Azure の Update Management ソリューション](../automation/update-management/update-mgmt-overview.md)
 - [VM の更新プログラムとパッチを管理する](../automation/update-management/update-mgmt-overview.md)
 
-**Azure Security Center の監視:** 適用なし
+_ *Azure Security Center の監視:* * 適用なし
 
 **責任:** Customer
 
@@ -692,7 +692,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 
 - [マネージド ID を構成して DevTest Labs に Azure Resource Manager 環境をデプロイする](use-managed-identities-environments.md)
 - [マネージド ID を構成して DevTest Labs に仮想マシンをデプロイする](enable-managed-identities-lab-vms.md)
-- [キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md)
+- [キー コンテナーを作成する方法](../key-vault/general/quick-create-portal.md)
 - [Key Vault に対して認証を行う方法](../key-vault/general/authentication.md)
 - [Key Vault のアクセス ポリシーを割り当てる方法](../key-vault/general/assign-access-policy-portal.md)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 544e01ef96165cd6c96a97761a3e758b93b1b15b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 79076db9de4122c19fcb03bbfc938214097e19f6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014348"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181596"
 ---
 # <a name="tutorial-configure-rollbar-for-automatic-user-provisioning"></a>チュートリアル:Rollbar を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -36,7 +36,7 @@ ms.locfileid: "96014348"
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
 * [Azure AD テナント](../develop/quickstart-create-new-tenant.md) 
-* プロビジョニングを構成するための[アクセス許可](../users-groups-roles/directory-assign-admin-roles.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
+* プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
 * Enterprise プランがある [Rollbar テナント](https://rollbar.com/pricing/)。
 * Admin アクセス許可がある Rollbar のユーザー アカウント。
 

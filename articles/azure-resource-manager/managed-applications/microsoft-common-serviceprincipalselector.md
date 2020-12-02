@@ -5,16 +5,16 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: tomfitz
-ms.openlocfilehash: 9d41e41f110e927f436b38d6291719c138defa53
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2fdbbad467d8c762db485fc7935e9cef78313fd0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94745765"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184452"
 ---
 # <a name="microsoftcommonserviceprincipalselector-ui-element"></a>Microsoft.Common.ServicePrincipalSelector UI 要素
 
-ユーザーが既存の[サービス プリンシパル](/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)を選択したり、新しいアプリケーションを登録したりできるようにするコントロールです。 **[新規作成]** を選択したときに、新しいアプリケーションを登録する手順に従います。 既存のアプリケーションを選択すると、コントロールにより、パスワードまたは証明書の拇印を入力するテキスト ボックスが提供されます。
+ユーザーが既存の[サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を選択したり、新しいアプリケーションを登録したりできるようにするコントロールです。 **[新規作成]** を選択したときに、新しいアプリケーションを登録する手順に従います。 既存のアプリケーションを選択すると、コントロールにより、パスワードまたは証明書の拇印を入力するテキスト ボックスが提供されます。
 
 ## <a name="ui-samples"></a>UI サンプル
 

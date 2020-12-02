@@ -11,15 +11,14 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 580459f3a5da8485bd92395f9b0b9745e28c023c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a0e9401842284cad29b297be5ce572fa53cfe774
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325262"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188090"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Azure Container Instances にモデルをデプロイする
-
 
 Azure Machine Learning を使用して Azure Container Instances (ACI) にモデルを Web サービスとしてデプロイする方法を説明します。 次のいずれかの条件に当てはまる場合に Azure Container Instances を使用します。
 
@@ -29,7 +28,7 @@ Azure Machine Learning を使用して Azure Container Instances (ACI) にモデ
 ACI の利用可能なクォータとリージョンについては、[Azure Container Instances のクォータとリージョンの可用性](../container-instances/container-instances-quotas.md)に関する記事を参照してください。
 
 > [!IMPORTANT]
-> Web サービスにデプロイする前にローカルでデバッグすることを強くお勧めします。詳細については、「[ローカル デバッグ](./how-to-troubleshoot-deployment.md#debug-locally)」を参照してください
+> Web サービスにデプロイする前にローカルでデバッグすることを強くお勧めします。詳細については、「[ローカル デバッグ](./how-to-troubleshoot-deployment-local.md)」を参照してください
 >
 > Azure Machine Learning の[ローカルの Notebook へのデプロイ](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)に関する記事を参照することもできます
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: cee9544dbc2deecafa67d73d3bdea804937c1d7a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 691d35267c255c933a8098b99301fbb795a3cd0c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005114"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181069"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>チュートリアル:Atlassian Cloud を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -36,7 +36,7 @@ ms.locfileid: "96005114"
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
 * [Azure AD テナント](../develop/quickstart-create-new-tenant.md)。
-* プロビジョニングを構成するための[アクセス許可](../users-groups-roles/directory-assign-admin-roles.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。
+* プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。
 * [Atlassian Cloud テナント](https://www.atlassian.com/licensing/cloud)
 * Admin アクセス許可がある Atlassian Cloud のユーザー アカウント。
 

@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: 23ebb513e55e6b61f608354ae1cb3bf3864a54ae
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 7c1e1d52b8434db930fcdd05c5c5441ba027abc8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108849"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186016"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Azure Monitor でのログのメトリック アラートの作成
 
@@ -25,10 +25,10 @@ Azure Monitor では、[クラシック アラート](./alerts-classic-portal.md
 
 - Windows および Linux マシンの[パフォーマンス カウンター](./data-sources-performance-counters.md)
 - [Agent Health のためのハートビート レコード](../insights/solution-agenthealth.md)
-- [更新管理](../../automation/update-management/update-mgmt-overview.md)レコード
+- [更新管理](../../automation/update-management/overview.md)レコード
 - [イベント データ](./data-sources-windows-events.md) ログ
 
-**ログのメトリック アラート**には、Azure のクエリ ベースの[ログ アラート](./alerts-log.md)よりも多くの利点があります。その一部を次に示します。
+**ログのメトリック アラート** には、Azure のクエリ ベースの [ログ アラート](./alerts-log.md)よりも多くの利点があります。その一部を次に示します。
 
 - メトリック アラートでは、ほぼリアルタイムの監視機能が提供されます。ログのメトリック アラートは、同じものを確保するためにログ ソースからデータをフォークします。
 - メトリック アラートはステートフルです。アラートが発生したときとアラートが解決されたときに、それぞれ一度だけ通知します。アラートの条件が満たされると間隔ごとに発生し続けるステートレスなログ アラートとは異なります。
@@ -55,7 +55,7 @@ Log Analytics データで収集されたログのメトリックを機能させ
 
 1. **アクティブな Log Analytics ワークスペース**: 有効かつアクティブな Log Analytics ワークスペースが存在する必要があります。 詳細については、[Azure portal での Log Analytics ワークスペースの作成](../learn/quick-create-workspace.md)に関するページをご覧ください。
 2. **Log Analytics ワークスペースのエージェントを構成する**: 前の手順で使用した Log Analytics ワークスペースにデータを送信するために、Azure VM およびオンプレミスの VM でエージェントを構成する必要があります。 詳細については、[Log Analytics エージェントの概要](./agents-overview.md)に関する記事をご覧ください。
-3. **サポートされている Log Analytics ソリューションをインストールする**: Log Analytics ソリューションを構成して、データを Log Analytics ワークスペースに送信する必要があります。サポートされるソリューションは、[Windows および Linux のパフォーマンス カウンター](./data-sources-performance-counters.md)、[Agent Health のハートビート レコード](../insights/solution-agenthealth.md)、[更新管理](../../automation/update-management/update-mgmt-overview.md)、および[イベント データ](./data-sources-windows-events.md)です。
+3. **サポートされている Log Analytics ソリューションをインストールする**: Log Analytics ソリューションを構成して、データを Log Analytics ワークスペースに送信する必要があります。サポートされるソリューションは、[Windows および Linux のパフォーマンス カウンター](./data-sources-performance-counters.md)、[Agent Health のハートビート レコード](../insights/solution-agenthealth.md)、[更新管理](../../automation/update-management/overview.md)、および [イベント データ](./data-sources-windows-events.md)です。
 4. **ログを送信するように構成された Log Analytics ソリューション**: Log Analytis ソリューションでは、[Log Analytics ワークスペースでサポートされるメトリック](./metrics-supported.md#microsoftoperationalinsightsworkspaces)に対応するログまたはデータが必要です。 たとえば、 *% Available Memory* の場合、[パフォーマンス カウンター](./data-sources-performance-counters.md) ソリューションでこのメトリックのカウンターを構成しておく必要があります。
 
 ## <a name="configuring-metric-alert-for-logs"></a>ログのメトリック アラートの構成
@@ -65,10 +65,10 @@ Log Analytics データで収集されたログのメトリックを機能させ
 手順の詳細とサンプルについては、[メトリック アラートの作成と管理](./alerts-metric.md)に関するページをご覧ください。 具体的には、ログのメトリック アラートでは、メトリック アラートを管理する手順に従います。次の点に注意してください。
 
 - メトリック アラートのターゲットが有効な "*Log Analytics ワークスペース*" であることを確認します。
-- 選択した "*Log Analytics ワークスペース*" のメトリック アラート用に選択したシグナルの種類が**メトリック**であることを確認します。
+- 選択した "*Log Analytics ワークスペース*" のメトリック アラート用に選択したシグナルの種類が **メトリック** であることを確認します。
 - ディメンション フィルターを使用して、特定の条件またはリソースをフィルター処理します。ログのメトリックは多次元です。
 - "*シグナル ロジック*" を構成すると、ディメンション (コンピューターなど) の複数の値にまたがる単一のアラートを作成できます。
-- 選択した "*Log Analytics ワークスペース*" のメトリック アラートを作成する際に Azure portal を使用**しない**場合は、まず、[Azure Monitor のスケジュールされたクエリ ルール](/rest/api/monitor/scheduledqueryrules)を使用してログ データをメトリックに変換するための明示的なルールを手動で作成する必要があります。
+- 選択した "*Log Analytics ワークスペース*" のメトリック アラートを作成する際に Azure portal を使用 **しない** 場合は、まず、[Azure Monitor のスケジュールされたクエリ ルール](/rest/api/monitor/scheduledqueryrules)を使用してログ データをメトリックに変換するための明示的なルールを手動で作成する必要があります。
 
 > [!NOTE]
 > Azure portal を使用して Log Analytics ワークスペースのメトリック アラートを作成すると、[Azure Monitor のスケジュールされたクエリ ルール](/rest/api/monitor/scheduledqueryrules)を使用してログ データをメトリックに変換するための対応するルールがバックグラウンドで自動的に作成されます。*ユーザーの介入や操作は不要です*。 Azure portal 以外の方法を使用してログのメトリック アラートを作成する場合は、「[ログのメトリック アラートのリソース テンプレート](#resource-template-for-metric-alerts-for-logs)」をご覧ください。このセクションには、メトリック アラートを作成する前に、ScheduledQueryRule ベースのログからメトリックへの変換ルールを作成する方法のサンプルが示されています。このルールがないと、ログのメトリック アラートを作成するためのデータが存在しなくなります。

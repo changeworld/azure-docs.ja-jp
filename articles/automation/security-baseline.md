@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2d0157f3e7ab0ef373235fcc6e188f9caa36eff4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: e07e9035dc55f77a2e76b4f4ee306deab829980a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833301"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182752"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Automation 用の Azure セキュリティ ベースライン
 
@@ -80,7 +80,7 @@ Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合
 
 Azure Security Center の Just In Time ネットワーク アクセスを使用すると、限られた期間について、承認された IP アドレスへの Windows 仮想マシンの公開を制限できます。 また、実際のトラフィックと脅威インテリジェンスに基づいてポートとソース IP を制限するために、NSG 構成に Azure Security Center のアダプティブ ネットワーク強化の推奨事項を使用します。
 
-* [DDoS 保護を構成する方法](../virtual-network/manage-ddos-protection.md)
+* [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
 * [Azure Firewall をデプロイする方法l](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -220,7 +220,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 * [リンクされた Log Analytics ワークスペースでサポートされるリージョン](./how-to/region-mappings.md)
 
-* [Update Management ログにクエリを実行する](./update-management/update-mgmt-query-logs.md)
+* [Update Management ログにクエリを実行する](./update-management/query-logs.md)
 
 **Azure Security Center の監視**: はい
 
@@ -270,7 +270,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center で
 
 * [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-* [Azure Monitor のログ クエリについて](../azure-monitor/log-query/get-started-portal.md)
+* [Azure Monitor のログ クエリについて](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
 
@@ -600,7 +600,7 @@ Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合
 
 Hybrid Runbook Worker を使用する場合、仮想マシン上の仮想ディスクは、サーバー側の暗号化または Azure Disk Encryption (ADE) を使用して、保存時に暗号化されます。 Azure Disk Encryption では、Windows の BitLocker 機能を利用して、ゲスト VM 内のカスタマー マネージド キーを使用してマネージド ディスクを暗号化します。 カスタマー マネージド キーを使用したサーバー側の暗号化では、ストレージ サービス内のデータを暗号化することで、VM に対して任意の OS の種類とイメージを使用できるため、ADE がさらに向上します。
 
-* [Azure Managed Disks のサーバー側暗号化](../virtual-machines/windows/disk-encryption.md)
+* [Azure Managed Disks のサーバー側暗号化](../virtual-machines/disk-encryption.md)
 
 * [Windows VM 用の Azure Disk Encryption](../virtual-machines/windows/disk-encryption-overview.md)
 
@@ -646,9 +646,9 @@ Hybrid Runbook Worker を使用する場合、仮想マシン上の仮想ディ�
 
 Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合は、Azure Update Management を使用して、仮想マシンの更新プログラムおよび修正プログラムを管理します。 Update Management は、サポート対象の Windows システムへの修正プログラムの適用を、ローカルに構成された更新リポジトリに依存しています。 System Center Updates Publisher (Updates Publisher) などのツールを使用して、カスタム更新プログラムを Windows Server Update Services (WSUS) に公開できます。 このシナリオでは、サード パーティ製ソフトウェアで Configuration Manager を更新リポジトリとして使用するマシンに、Update Management で修正プログラムを適用できます。
 
-* [Azure における Update Management](./update-management/update-mgmt-overview.md)
+* [Azure における Update Management](./update-management/overview.md)
 
-* [VM の更新プログラムと修正プログラムの管理](./update-management/update-mgmt-manage-updates-for-vm.md)
+* [VM の更新プログラムと修正プログラムの管理](./update-management/manage-updates-for-vm.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -660,9 +660,9 @@ Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合
 
 Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合は、Azure Update Management を使用して、仮想マシンの更新プログラムおよび修正プログラムを管理できます。 Update Management は、サポート対象の Windows システムへの修正プログラムの適用を、ローカルに構成された更新リポジトリに依存しています。 System Center Updates Publisher (Updates Publisher) などのツールを使用して、カスタム更新プログラムを Windows Server Update Services (WSUS) に公開できます。 このシナリオでは、サード パーティ ソフトウェアで Configuration Manager を更新リポジトリとして使用するマシンに、Update Management で修正プログラムを適用できます。
 
-* [Azure の Update Management ソリューション](./update-management/update-mgmt-overview.md)
+* [Azure の Update Management ソリューション](./update-management/overview.md)
 
-* [Azure VM の更新プログラムとパッチの管理](./update-management/update-mgmt-manage-updates-for-vm.md)
+* [Azure VM の更新プログラムとパッチの管理](./update-management/manage-updates-for-vm.md)
 
 **Azure Security Center の監視**: 適用なし
 

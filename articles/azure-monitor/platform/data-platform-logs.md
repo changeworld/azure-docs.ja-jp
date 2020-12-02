@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: d00ffb1cb9b9fd6231322d4ef5bfebfbe242eac7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3c3a20d8401affc519e118c7f2295339990e7dee
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014239"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186509"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure Monitor ログの概要
 Azure Monitor ログは、[監視対象のリソース](../monitor-reference.md)からログとパフォーマンス データを収集して整理する Azure Monitor の機能です。 Azure サービスからの[プラットフォーム ログ](platform-logs-overview.md)、[仮想マシン エージェント](agents-overview.md)からのログとパフォーマンス データ、[アプリケーション](../app/app-insights-overview.md)からの使用状況とパフォーマンス データなど、さまざまなソースからのデータを 1 つのワークスペースに統合し、何百万ものレコードを迅速に分析できる高度なクエリ言語を使用してまとめて分析することができます。 特定のレコードのセットを取得するだけの単純なクエリを実行することも、高度なデータ分析を実行して監視データの重要なパターンを特定することもできます。 Log Analytics を使用してログ クエリとその結果を対話形式で操作したり、アラート ルールでそれらを使用して問題が事前に通知されるようにしたり、ブックやダッシュボードでその結果を視覚化したりします。
@@ -25,11 +25,11 @@ Azure Monitor ログは、[監視対象のリソース](../monitor-reference.md)
 
 |  |  |
 |:---|:---|
-| **分析** | Azure portal で [Log Analytics](../log-query/get-started-portal.md) を使用して[ログ クエリ](../log-query/log-query-overview.md)を書き、強力な分析エンジンを使用してログ データを対話形式で分析します。 |
+| **分析** | Azure portal で [Log Analytics](../log-query/log-analytics-tutorial.md) を使用して[ログ クエリ](../log-query/log-query-overview.md)を書き、強力な分析エンジンを使用してログ データを対話形式で分析します。 |
 | **Alert** | クエリの結果が特定の結果に一致するときに、通知を送信するか[自動化されたアクション](action-groups.md)を実行する、[ログ警告ルール](alerts-log.md)を構成します。 |
-| **視覚化** | テーブルまたはグラフとして表示されるクエリ結果を [Azure ダッシュボード](../../azure-portal/azure-portal-dashboards.md)にピン留めします。<br>[ブック](../app/usage-workbooks.md)を作成し、対話形式のレポートに複数のデータ セットを結合します。 <br>クエリの結果を [Power BI](powerbi.md) にエクスポートし、さまざまな視覚化を使用して Azure の外部のユーザーと共有します。<br>クエリの結果を [Grafana](grafana-plugin.md) にエクスポートし、そのダッシュボード機能を活用し、他のデータ ソースと結合します。|
+| **視覚化** | テーブルまたはグラフとして表示されるクエリ結果を [Azure ダッシュボード](../../azure-portal/azure-portal-dashboards.md)にピン留めします。<br>[ブック](./workbooks-overview.md)を作成し、対話形式のレポートに複数のデータ セットを結合します。 <br>クエリの結果を [Power BI](powerbi.md) にエクスポートし、さまざまな視覚化を使用して Azure の外部のユーザーと共有します。<br>クエリの結果を [Grafana](grafana-plugin.md) にエクスポートし、そのダッシュボード機能を活用し、他のデータ ソースと結合します。|
 | **分析情報** | 特定のアプリケーションやサービスを監視するためのカスタマイズされたエクスペリエンスを提供する[分析情報](../monitor-reference.md#insights-and-core-solutions)をサポートします。  |
-| **取得** | [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics) を使用して、コマンド ラインからログ クエリの結果にアクセスします。<br>[PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.operationalinsights)を使用して、コマンド ラインからログ クエリの結果にアクセスします。<br>[REST API](https://dev.loganalytics.io/) を使用して、カスタム アプリケーションからログ クエリの結果にアクセスします。 |
+| **取得** | [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics) を使用して、コマンド ラインからログ クエリの結果にアクセスします。<br>[PowerShell コマンドレット](/powershell/module/az.operationalinsights)を使用して、コマンド ラインからログ クエリの結果にアクセスします。<br>[REST API](https://dev.loganalytics.io/) を使用して、カスタム アプリケーションからログ クエリの結果にアクセスします。 |
 | **エクスポート** | Azure ストレージ アカウントまたは Azure Event Hubs への[ログ データの自動エクスポート](logs-data-export.md)を構成します。<br>[Logic Apps](logicapp-flow-connector.md) を使用し、ログ データを取得して外部の場所にコピーするワークフローを構築します。 |
 
 ![ログの概要](media/data-platform-logs/logs-overview.png)
@@ -75,8 +75,8 @@ Application Insights のログ データは、Azure Monitor ログにも格納�
 ## <a name="log-analytics"></a>Log Analytics
 Azure portal のツールである Log Analytics を使用して、ログ クエリを編集して実行し、その結果を対話形式で分析します。 その後、作成したクエリを使用して、ログ クエリ アラートやブックなどの Azure Monitor の他の機能をサポートできます。 Azure Monitor メニューの **[ログ]** オプション、または Azure portal のその他のほとんどのサービスから、Log Analytics にアクセスできます。
 
-- Log Analytics の説明については、[Azure Monitor の Log Analytics の概要](/azure/azure-monitor/log-query/log-analytics-overview)に関するページを参照してください。 
-- Log Analytics 機能を使用して簡単なログクエリを作成し、その結果を分析する方法を体験するには、[Log Analytics チュートリアル](/azure/azure-monitor/log-query/log-analytics-tutorial)を参照してください。
+- Log Analytics の説明については、[Azure Monitor の Log Analytics の概要](../log-query/log-analytics-overview.md)に関するページを参照してください。 
+- Log Analytics 機能を使用して簡単なログクエリを作成し、その結果を分析する方法を体験するには、[Log Analytics チュートリアル](../log-query/log-analytics-tutorial.md)を参照してください。
 
 
 

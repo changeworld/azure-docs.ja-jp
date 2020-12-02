@@ -6,16 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: b23f1d455610222ffa5713773a0bfb947f23ce34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fb0288d592af8bd23415b31ecf6a6e3448b92ba
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91340085"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186033"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでログ アラートを作成する
 
-ログ アラートにより、ユーザーは [Log Analytics](../log-query/get-started-portal.md) クエリを使用して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。 [アクション グループ](./action-groups.md)を使用することで、ルールによって 1 つ以上のアクションの実行をトリガーできます。 [ログ アラートの機能と用語の詳細について参照してください](alerts-unified-log.md)。
+ログ アラートにより、ユーザーは [Log Analytics](../log-query/log-analytics-tutorial.md) クエリを使用して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。 [アクション グループ](./action-groups.md)を使用することで、ルールによって 1 つ以上のアクションの実行をトリガーできます。 [ログ アラートの機能と用語の詳細について参照してください](alerts-unified-log.md)。
 
 この記事では、[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md) を使用して Azure Monitor に[ログ アラート](alerts-unified-log.md)を構成する方法について説明します。 Resource Manager テンプレートを使用して､環境全体にまたがって一貫しかつ再現可能な方法でプログラムからアラートを設定することができます｡ ログ アラートは `Microsoft.Insights/scheduledQueryRules` リソース プロバイダーで作成されます。 API リファレンスについては、[Scheduled Query Rules API](/rest/api/monitor/scheduledqueryrules/) のページを参照してください。
 
@@ -26,7 +26,7 @@ ms.locfileid: "91340085"
 4. 任意のデプロイ方法を使用してテンプレートをデプロイします｡
 
 > [!NOTE]
-> [Log Analytics ワークスペース](../log-query/get-started-portal.md)からのログ データを、Azure Monitor メトリック ストアに送信することもできます。 各メトリック アラートの[動作](alerts-metric-overview.md)は異なります。これは、操作するデータによっては、より望ましい場合があります。 メトリックにルーティングできるログとその方法については、[ログのメトリック アラート](alerts-metric-logs.md)に関するページを参照してください。
+> [Log Analytics ワークスペース](../log-query/log-analytics-tutorial.md)からのログ データを、Azure Monitor メトリック ストアに送信することもできます。 各メトリック アラートの[動作](alerts-metric-overview.md)は異なります。これは、操作するデータによっては、より望ましい場合があります。 メトリックにルーティングできるログとその方法については、[ログのメトリック アラート](alerts-metric-logs.md)に関するページを参照してください。
 
 > [!NOTE]
 > Log Analytics のログ アラートは、従来の [Log Analytics Alert API](api-alerts.md) と [Log Analytics の保存された検索とアラート](../insights/solutions.md)の従来のテンプレートを使用して、管理されていました。 [現在の ScheduledQueryRules API への切り替えの詳細について確認してください](alerts-log-api-switch.md)。

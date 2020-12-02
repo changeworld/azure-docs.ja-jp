@@ -15,12 +15,12 @@ ms.date: 11/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: 53628f5aa0bc5ab5dedde5deb9950c7b13fb4bf6
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e30af9522d7c8fa81c4d93e11d252aefc4426586
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490748"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184265"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC のトラブルシューティング
 
@@ -151,7 +151,7 @@ CanDelegate        : False
 }
 ```
 
-セキュリティ プリンシパルが削除されているこれらのロールの割り当てを残しておくのは問題ではありません。 必要であれば、他のロールの割り当てと同様の手順を使用して、これらのロールの割り当てを削除できます。 ロールの割り当てを削除する方法については、[Azure portal](role-assignments-portal.md#remove-a-role-assignment)、[Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)、または [Azure CLI](role-assignments-cli.md#remove-role-assignment) を参照してください
+セキュリティ プリンシパルが削除されているこれらのロールの割り当てを残しておくのは問題ではありません。 必要であれば、他のロールの割り当てと同様の手順を使用して、これらのロールの割り当てを削除できます。 ロールの割り当てを削除する方法については、[Azure portal](role-assignments-portal.md#remove-a-role-assignment)、[Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)、または [Azure CLI](role-assignments-cli.md#remove-a-role-assignment) を参照してください
 
 PowerShell では、オブジェクト ID とロール定義名を使ってロールの割り当てを削除しようとし、複数のロールの割り当てがパラメーターに一致する場合、次のエラー メッセージを受け取ります。"The provided information does not map to a role assignment" (指定された情報は、ロールの割り当てにマップされていません)。 次の出力は、エラー メッセージの例を示しています。
 

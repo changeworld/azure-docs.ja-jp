@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 11/03/2020
+ms.date: 11/18/2020
 ms.custom: generated
-ms.openlocfilehash: a48a13fa18025254ee31344868d10181ae87c65e
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: e18dc7e16eb0b114bd279d53b7dcc895bd62f338
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685479"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002733"
 ---
 # <a name="azure-built-in-roles"></a>Azure 組み込みロール
 
@@ -237,6 +237,7 @@ ms.locfileid: "94685479"
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/elevateAccess/Action | テナント スコープで、ユーザー アクセス管理者のアクセス権を呼び出し元に付与します。 |
 > | [Microsoft.Blueprint](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/write | 任意のブループリント割り当てを作成または更新します |
 > | [Microsoft.Blueprint](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/delete | 任意のブループリント割り当てを削除します |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/galleries/share/action | ギャラリーを別のスコープに共有します |
 > | **DataActions** |  |
 > | "*なし*" |  |
 > | **NotDataActions** |  |
@@ -260,7 +261,8 @@ ms.locfileid: "94685479"
         "Microsoft.Authorization/*/Write",
         "Microsoft.Authorization/elevateAccess/Action",
         "Microsoft.Blueprint/blueprintAssignments/write",
-        "Microsoft.Blueprint/blueprintAssignments/delete"
+        "Microsoft.Blueprint/blueprintAssignments/delete",
+        "Microsoft.Compute/galleries/share/action"
       ],
       "dataActions": [],
       "notDataActions": []
@@ -6551,6 +6553,7 @@ Azure Sentinel 共同作成者です。[詳細](../sentinel/roles.md)
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | ワークスペースのデータソースを取得します。 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/* |  |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/read | プライベート ブックが読み取られます |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -6583,6 +6586,7 @@ Azure Sentinel 共同作成者です。[詳細](../sentinel/roles.md)
         "Microsoft.OperationalInsights/workspaces/query/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.Insights/workbooks/*",
+        "Microsoft.Insights/myworkbooks/read",
         "Microsoft.Authorization/*/read",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Resources/deployments/*",
@@ -6620,6 +6624,7 @@ Azure Sentinel 閲覧者です。[詳細](../sentinel/roles.md)
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | ワークスペースのデータソースを取得します。 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/read | ブックを読み取ります |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/read | プライベート ブックが読み取られます |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -6656,6 +6661,7 @@ Azure Sentinel 閲覧者です。[詳細](../sentinel/roles.md)
         "Microsoft.OperationalInsights/workspaces/query/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.Insights/workbooks/read",
+        "Microsoft.Insights/myworkbooks/read",
         "Microsoft.Authorization/*/read",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Resources/deployments/*",
@@ -6699,13 +6705,15 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | ワークスペースのデータソースを取得します。 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/read | ブックを読み取ります |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/read | プライベート ブックが読み取られます |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
-> | "*なし*" |  |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/cases/*/Delete |  |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/incidents/*/Delete |  |
 > | **DataActions** |  |
 > | "*なし*" |  |
 > | **NotDataActions** |  |
@@ -6741,13 +6749,17 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
         "Microsoft.OperationalInsights/workspaces/query/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.Insights/workbooks/read",
+        "Microsoft.Insights/myworkbooks/read",
         "Microsoft.Authorization/*/read",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Resources/deployments/*",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Support/*"
       ],
-      "notActions": [],
+      "notActions": [
+        "Microsoft.SecurityInsights/cases/*/Delete",
+        "Microsoft.SecurityInsights/incidents/*/Delete"
+      ],
       "dataActions": [],
       "notDataActions": []
     }
@@ -7004,8 +7016,8 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 > | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/read | 指定された資格情報コンテナー内のキーを一覧表示するか、キーのプロパティおよび公開マテリアルを読み取ります。 非対称キーの場合、この操作では公開キーを公開し、署名の暗号化や検証などの公開キー アルゴリズムを実行する機能が含まれます。 秘密キーと対称キーが公開されることはありません。 |
-> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | Key Vault キーを使用して対称キーをラップします。 Key Vault キーが非対称の場合は、この操作を読み取りアクセス権で実行できることに注意してください。 |
-> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/unwrap/action | Key Vault キーを使用して対称キーのラップを解除します。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | Key Vault キーで対称キーをラップします。 Key Vault キーが非対称の場合は、この操作を読み取りアクセス権を持つプリンシパルで実行できることに注意してください。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/unwrap/action | Key Vault キーで対称キーをラップ解除します。 |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -7049,12 +7061,12 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/read | 指定された資格情報コンテナー内のキーを一覧表示するか、キーのプロパティおよび公開マテリアルを読み取ります。 非対称キーの場合、この操作では公開キーを公開し、署名の暗号化や検証などの公開キー アルゴリズムを実行する機能が含まれます。 秘密キーと対称キーが公開されることはありません。 |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/update/action | 特定のキーに関連付けられている、指定された属性を更新します。 |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/backup/action | キーのバックアップ ファイルを作成します。 このファイルは、同じサブスクリプションの Key Vault でキーを復元するために使用できます。 制限が適用される場合があります。 |
-> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/encrypt/action | キーを使用してプレーンテキストを暗号化します。 キーが非対称の場合は、この操作を読み取りアクセス権を持つプリンシパルで実行できることに注意してください。 |
-> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/decrypt/action | キーを使用して暗号化テキストの暗号化を解除します。 |
-> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | Key Vault キーを使用して対称キーをラップします。 Key Vault キーが非対称の場合は、この操作を読み取りアクセス権で実行できることに注意してください。 |
-> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/unwrap/action | Key Vault キーを使用して対称キーのラップを解除します。 |
-> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/sign/action | キーでハッシュに署名します。 |
-> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/verify/action | ハッシュを確認します。 キーが非対称の場合は、この操作を読み取りアクセス権を持つプリンシパルで実行できることに注意してください。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/encrypt/action | キーでプレーンテキストを暗号化します。 キーが非対称の場合は、この操作を読み取りアクセス権を持つプリンシパルで実行できることに注意してください。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/decrypt/action | キーで暗号化テキストの暗号化を解除します。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | Key Vault キーで対称キーをラップします。 Key Vault キーが非対称の場合は、この操作を読み取りアクセス権を持つプリンシパルで実行できることに注意してください。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/unwrap/action | Key Vault キーで対称キーをラップ解除します。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/sign/action | キーでメッセージ ダイジェスト (ハッシュ) に署名します。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/verify/action | キーでメッセージ ダイジェスト (ハッシュ) の署名を検証します。 キーが非対称の場合は、この操作を読み取りアクセス権を持つプリンシパルで実行できることに注意してください。 |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -7760,7 +7772,7 @@ Application Insights スナップショット デバッガーで収集された�
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/sharedKeys/action | ワークスペースの共有キーを取得します。 これらのキーを使用して、Microsoft Operational Insights エージェントをワークスペースに接続します。 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/storageinsightconfigs/* | Log Analytics ストレージ インサイト構成の読み取り/書き込み/削除を行います。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
-> | [Microsoft.WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/monitors/* | ゲスト VM の正常性モニターに関する情報を取得します。  |
+> | [Microsoft.WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/monitors/* | ゲスト VM の正常性モニターに関する情報を取得します。 |
 > | [Microsoft.AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/smartDetectorAlertRules/* |  |
 > | [Microsoft.AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/actionRules/* |  |
 > | [Microsoft.AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/smartGroups/* |  |

@@ -4,12 +4,12 @@ description: C# を使用して Azure Functions を開発する方法につい�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 51a7ffe72f8597fbaa11eae12585ebde8bb83153
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 3c363d13933e6554a6eefbeaf02d87dc6b382628
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380965"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002396"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
@@ -17,12 +17,13 @@ ms.locfileid: "94380965"
 
 この記事では、.NET クラス ライブラリの C# を使用した Azure Functions 開発の概要を示します。
 
+C# 開発者の方は、次の記事のいずれかに関心があるかもしれません。
+
+| 作業の開始 | 概念| ガイド付き学習とサンプル |
+| -- | -- | -- | 
+| <ul><li>[Visual Studio の使用](functions-create-your-first-function-visual-studio.md)</li><li>[Visual Studio Code の使用](create-first-function-vs-code-csharp.md)</li><li>[コマンド ライン ツールの使用](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[ホスティング オプション](functions-scale.md)</li><li>[パフォーマンス&nbsp;に関する考慮事項](functions-best-practices.md)</li><li>[Visual Studio 開発](functions-develop-vs.md)</li><li>[依存関係の挿入](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[サーバーレス アプリケーションの作成](/learn/paths/create-serverless-applications/)</li><li>[C# のサンプル](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
+
 Azure Functions では、C# および C# スクリプト プログラミング言語をサポートします。 [Azure Portal での C# の使用](functions-create-function-app-portal.md)に関するガイダンスを探している場合は、[C# スクリプト (.csx) 開発者向けリファレンス](functions-reference-csharp.md)をご覧ください。
-
-この記事では、既に次の記事に目を通していることを前提とします。
-
-* [Azure Functions の開発者向けガイド](functions-reference.md)
-* [Azure Functions 向けの Visual Studio 2019 Tools](functions-develop-vs.md)
 
 ## <a name="supported-versions"></a>サポートされているバージョン
 

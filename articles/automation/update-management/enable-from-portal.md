@@ -5,18 +5,18 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 73813ffbb6ac1839a48fc455dec5f6ad26ed0164
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: ac402587c8346c14f34b683ba10832c7779b660b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348791"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182769"
 ---
 # <a name="enable-update-management-from-the-azure-portal"></a>Azure portal から Update Management を有効にする
 
 この記事では、ブラウザーで Azure portal にアクセスして、VM の [Update Management](overview.md) 機能を有効にする方法を説明します。 Azure VM を大規模に有効にするには、Update Management を使用して既存の Azure VM を有効にする必要があります。
 
-VM の管理に使用できるリソース グループの数は、[Resource Manager のデプロイの上限](../../azure-resource-manager/templates/cross-scope-deployment.md)によって制限されます。 Resource Manager のデプロイ (更新プログラムのデプロイと混同しないでください) は、デプロイあたり 5 つのリソース グループに制限されています。 それらのリソース グループのうちの 2 つは、Log Analytics ワークスペース、Automation アカウント、および関連リソースを構成するために予約されています。 Update Management による管理のために選択できるリソース グループは、これで 3 つ残ります。 この制限は、Automation 機能によって管理できるリソース グループの数ではなく、同時セットアップのみに適用されます。
+VM の管理に使用できるリソース グループの数は、[Resource Manager のデプロイの上限](../../azure-resource-manager/templates/deploy-to-resource-group.md)によって制限されます。 Resource Manager のデプロイ (更新プログラムのデプロイと混同しないでください) は、デプロイあたり 5 つのリソース グループに制限されています。 それらのリソース グループのうちの 2 つは、Log Analytics ワークスペース、Automation アカウント、および関連リソースを構成するために予約されています。 Update Management による管理のために選択できるリソース グループは、これで 3 つ残ります。 この制限は、Automation 機能によって管理できるリソース グループの数ではなく、同時セットアップのみに適用されます。
 
 > [!NOTE]
 > Update Management を有効にする際、Log Analytics ワークスペースと Automation アカウントのリンクは特定のリージョンでのみサポートされています。 サポートされているマッピング ペアの一覧については、[Automation アカウントと Log Analytics ワークスペースのリージョン マッピング](../how-to/region-mappings.md)に関する記事をご覧ください。

@@ -3,12 +3,12 @@ title: Azure Monitor for containers からのメトリック アラート
 description: この記事では、Azure Monitor for containers から利用可能なパブリック プレビュー段階の推奨メトリック アラートを確認します。
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: cda5639fdf72f5731af851860f37afa888e7d965
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 16995246578dc8d3c009253d8384c6d7ff3911d3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927823"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186883"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Azure Monitor for containers からの推奨メトリック アラート (プレビュー)
 
@@ -24,7 +24,7 @@ Azure Monitor のアラートに詳しくない場合は、事前に「[Microsof
 
 * カスタム メトリックは、一部の Azure リージョンでのみ利用できます。 サポートされているリージョンの一覧については、「[サポートされているリージョン](../platform/metrics-custom-overview.md#supported-regions)」を参照してください。
 
-* メトリック アラートおよび追加メトリックの導入をサポートするためのエージェントの必要最小限のバージョンは、AKS の場合は **mcr.microsoft.com/azuremonitor/containerinsights/ciprod:ciprod05262020** 、Azure Arc 対応 Kubernetes クラスターの場合は **mcr.microsoft.com/azuremonitor/containerinsights/ciprod:ciprod09252020** です。
+* メトリック アラートおよび追加メトリックの導入をサポートするためのエージェントの必要最小限のバージョンは、AKS の場合は **mcr.microsoft.com/azuremonitor/containerinsights/ciprod:ciprod05262020**、Azure Arc 対応 Kubernetes クラスターの場合は **mcr.microsoft.com/azuremonitor/containerinsights/ciprod:ciprod09252020** です。
 
     お使いのクラスターで新しいバージョンのエージェントが実行されていることを確認するには、次のいずれかの手順を行います。
 
@@ -33,7 +33,7 @@ Azure Monitor のアラートに詳しくない場合は、事前に「[Microsof
 
     AKS の場合、表示される値はバージョン **ciprod05262020** 以降である必要があります。 Azure Arc 対応 Kubernetes クラスターの場合、表示される値はバージョン **ciprod09252020** 以降である必要があります。 クラスターで古いバージョンを使用している場合は、「[コンテナーに対する Azure Monitor エージェントをアップグレードする方法](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster)」の手順を参照して、最新バージョンを取得します。
 
-    エージェントのリリースに関する詳細については、[エージェントのリリース履歴](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)を参照してください。 メトリックが収集されていることを確認するには、Azure Monitor のメトリックス エクスプローラーを使用して、 **分析情報** が一覧表示されている **[メトリック名前空間]** から確認できます。 収集されている場合は、先に進んで、アラートの設定を開始できます。 収集されたメトリックが表示されない場合は、クラスターのサービス プリンシパルまたは MSI に必要なアクセス許可がありません。 SPN または MSI が **監視メトリック パブリッシャー** ロールのメンバーであることを確認するには、「 [Azure CLI を使用してクラスターごとにアップグレードする](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli)」セクションの手順に従って、ロールの割り当てを確認して設定します。
+    エージェントのリリースに関する詳細については、[エージェントのリリース履歴](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)を参照してください。 メトリックが収集されていることを確認するには、Azure Monitor のメトリックス エクスプローラーを使用して、**分析情報** が一覧表示されている **[メトリック名前空間]** から確認できます。 収集されている場合は、先に進んで、アラートの設定を開始できます。 収集されたメトリックが表示されない場合は、クラスターのサービス プリンシパルまたは MSI に必要なアクセス許可がありません。 SPN または MSI が **監視メトリック パブリッシャー** ロールのメンバーであることを確認するには、「[Azure CLI を使用してクラスターごとにアップグレードする](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli)」セクションの手順に従って、ロールの割り当てを確認して設定します。
 
 ## <a name="alert-rules-overview"></a>アラート ルールの概要
 
@@ -74,9 +74,9 @@ Azure Monitor のアラートに詳しくない場合は、事前に「[Microsof
 
 * *oomKilledContainerCount* メトリックは、OOM により中止されたコンテナーがある場合にのみ送信されます。
 
-* *cpuExceededPercentage* 、 *memoryRssExceededPercentage* 、 *memoryWorkingSetExceededPercentage* メトリックは、CPU、メモリ RSS、メモリ ワーキング セットの値が、構成されたしきい値 (既定のしきい値は 95%) を超えたときに送信されます。 これらのしきい値には、対応するアラート ルールに指定されたアラート条件のしきい値は含まれません。 つまり、これらのメトリックを収集し、[メトリック エクスプローラー](../platform/metrics-getting-started.md) で分析する必要がある場合は、しきい値をアラートのしきい値より低い値に構成することをお勧めします。 コンテナーのリソース使用率のしきい値に関するコレクション設定関連の構成は、セクション `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` の下の ConfigMaps ファイルでオーバーライドすることができます。 ConfigMap 構成ファイルの構成の詳細については、セクション「[ConfigMaps で警告可能なメトリックを構成する](#configure-alertable-metrics-in-configmaps)」を参照してください。
+* *cpuExceededPercentage*、*memoryRssExceededPercentage*、*memoryWorkingSetExceededPercentage* メトリックは、CPU、メモリ RSS、メモリ ワーキング セットの値が、構成されたしきい値 (既定のしきい値は 95%) を超えたときに送信されます。 これらのしきい値には、対応するアラート ルールに指定されたアラート条件のしきい値は含まれません。 つまり、これらのメトリックを収集し、[メトリック エクスプローラー](../platform/metrics-getting-started.md) で分析する必要がある場合は、しきい値をアラートのしきい値より低い値に構成することをお勧めします。 コンテナーのリソース使用率のしきい値に関するコレクション設定関連の構成は、セクション `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` の下の ConfigMaps ファイルでオーバーライドすることができます。 ConfigMap 構成ファイルの構成の詳細については、セクション「[ConfigMaps で警告可能なメトリックを構成する](#configure-alertable-metrics-in-configmaps)」を参照してください。
 
-* *pvUsageExceededPercentage* メトリックは、永続ボリューム使用率が、構成されているしきい値 (既定のしきい値は 60%) を超えたときに送信されます。 このしきい値には、対応するアラート ルールに指定されたアラート条件のしきい値は含まれません。 つまり、これらのメトリックを収集し、[メトリック エクスプローラー](../platform/metrics-getting-started.md) で分析する必要がある場合は、しきい値をアラートのしきい値より低い値に構成することをお勧めします。 永続ボリューム使用率のしきい値に関する収集設定関連の構成は、セクション `[alertable_metrics_configuration_settings.pv_utilization_thresholds]` の下の ConfigMaps ファイルでオーバーライドすることができます。 ConfigMap 構成ファイルの構成の詳細については、セクション「[ConfigMaps で警告可能なメトリックを構成する](#configure-alertable-metrics-in-configmaps)」を参照してください。 *kube-system* 名前空間の要求での永続ボリューム メトリックの収集は、既定では除外されます。 この名前空間の収集を有効にするには、ConfigMap ファイルの `[metric_collection_settings.collect_kube_system_pv_metrics]` セクションを使用します。 詳細については、「[メトリック収集の設定](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-agent-config#metric-collection-settings)」を参照してください。
+* *pvUsageExceededPercentage* メトリックは、永続ボリューム使用率が、構成されているしきい値 (既定のしきい値は 60%) を超えたときに送信されます。 このしきい値には、対応するアラート ルールに指定されたアラート条件のしきい値は含まれません。 つまり、これらのメトリックを収集し、[メトリック エクスプローラー](../platform/metrics-getting-started.md) で分析する必要がある場合は、しきい値をアラートのしきい値より低い値に構成することをお勧めします。 永続ボリューム使用率のしきい値に関する収集設定関連の構成は、セクション `[alertable_metrics_configuration_settings.pv_utilization_thresholds]` の下の ConfigMaps ファイルでオーバーライドすることができます。 ConfigMap 構成ファイルの構成の詳細については、セクション「[ConfigMaps で警告可能なメトリックを構成する](#configure-alertable-metrics-in-configmaps)」を参照してください。 *kube-system* 名前空間の要求での永続ボリューム メトリックの収集は、既定では除外されます。 この名前空間の収集を有効にするには、ConfigMap ファイルの `[metric_collection_settings.collect_kube_system_pv_metrics]` セクションを使用します。 詳細については、「[メトリック収集の設定](./container-insights-agent-config.md#metric-collection-settings)」を参照してください。
 
 ## <a name="metrics-collected"></a>収集されるメトリック
 
@@ -146,7 +146,7 @@ Azure Resource Manager テンプレートとパラメーター ファイルを�
 
 1. 次のコマンドを使用して、アラート ルールを作成するには、Azure Resource Manager テンプレートとパラメーター ファイルをダウンロードして、ローカル フォルダーに保存します。
 
-2. カスタマイズされたテンプレートを portal からデプロイするには、 [Azure portal](https://portal.azure.com)で **[リソースの作成]** を選択します。
+2. カスタマイズされたテンプレートを portal からデプロイするには、[Azure portal](https://portal.azure.com)で **[リソースの作成]** を選択します。
 
 3. **template** を検索して、 **[テンプレートのデプロイ]** を選択します。
 

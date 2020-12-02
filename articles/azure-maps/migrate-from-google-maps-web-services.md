@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: f97d04ca40e69ba2516744adfc9f1f455cba97c0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0bb252e227e4f23388929f2fca18769e0bd02e19
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896346"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187036"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>チュートリアル - Google Maps から Web サービスを移行する
 
@@ -132,7 +132,7 @@ Azure Maps の逆ジオコーディング API には、Google マップでは利
 Google マップで目的地データを検索するには、場所検索 API を使用します。 この API により、目的地を検索するための 3 つの異なる方法が提供されます。
 
 - **テキストから場所を検索する:** 目的地を名前、住所、または電話番号に基づいて検索します。
-- **近隣検索** : ある場所から特定の距離内にある目的地を検索します。
+- **近隣検索**: ある場所から特定の距離内にある目的地を検索します。
 - **テキスト検索:** 目的地や場所の情報を含む自由形式のテキストを使用して場所を検索します。 たとえば、"ニューヨークのピザ" や "メイン ストリート付近のレストラン" などです。
 
 Azure Maps には、目的地を検索するための複数の検索 API が用意されています。
@@ -219,7 +219,7 @@ Azure Maps のルート指定サービスでは、ルート指定の計算用と
 | `mode`                         | `travelMode`                       |
 | `optimize`                     | `computeBestOrder`                 |
 | `origin`                       | `query`                            |
-| `region`                       | *N/A* - これはジオコーディング関連の機能です。 Azure Maps ジオコーディング API を使用する場合は、 *countrySet* パラメーターを使用します。  |
+| `region`                       | *N/A* - これはジオコーディング関連の機能です。 Azure Maps ジオコーディング API を使用する場合は、*countrySet* パラメーターを使用します。  |
 | `traffic_model`               | *N/A* - 交通情報データを *traffic* パラメーターで使用する必要がある場合のみ指定できます。 |
 | `transit_mode`                | [モビリティ サービスのドキュメント](/rest/api/maps/mobility)を参照してください。 |
 | `transit_routing_preference` | [モビリティ サービスのドキュメント](/rest/api/maps/mobility)を参照してください。 |
@@ -501,10 +501,10 @@ Azure Maps REST サービスについて、さらに詳しく学習します。
 > [ルート指定のベスト プラクティス](how-to-use-best-practices-for-routing.md)
 
 > [!div class="nextstepaction"]
-> [Azure Maps REST サービス API のリファレンス ドキュメント](https://docs.microsoft.com/rest/api/maps/)
+> [Azure Maps REST サービス API のリファレンス ドキュメント](/rest/api/maps/)
 
 > [!div class="nextstepaction"]
-> [コード サンプル](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [コード サンプル](/samples/browse/?products=azure-maps)
 
 > [!div class="nextstepaction"]
 > [サービス モジュール (Web SDK) の使用方法](how-to-use-best-practices-for-routing.md)

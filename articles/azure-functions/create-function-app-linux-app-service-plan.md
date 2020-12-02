@@ -3,12 +3,12 @@ title: Linux 上で Azure portal から Function Appを作成する
 description: Azure portal を使用して Linux 上で初めての Azure 関数を作成する方法について説明します。
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 53edee15d9c9dfa66e57bb1eb03b1d8f66aa1ee2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20390239ed58e42749e9a3bae472a2f3f6324bb2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970727"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181256"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Azure App Service プランで Linux 上に Function App を作成する
 
@@ -44,7 +44,7 @@ Linux での関数の実行をホストするための Function App が必要で
     |**Version**| バージョン番号 | インストールされているランタイムのバージョンを選択します。  |
     |**リージョン**| 優先リージョン | ユーザーに近い[リージョン](https://azure.microsoft.com/regions/)、または関数がアクセスする他のサービスの近くのリージョンを選択します。 |
 
-    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-basics-linux.png" alt-text="Azure portal での関数アプリの作成":::
+    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-basics-linux.png" alt-text="[基本] ページ":::
 
 1. **[次へ :ホスティング]** を選択します。 **[ホスティング]** ページで、次の設定を入力します。
 
@@ -54,15 +54,21 @@ Linux での関数の実行をホストするための Function App が必要で
     |**オペレーティング システム**| **Linux** | オペレーティング システムは、ランタイム スタックの選択に基づいてあらかじめ選択されますが、必要に応じて設定を変更できます。 |
     | **[プラン](../azure-functions/functions-scale.md)** | **従量課金プラン (サーバーレス)** | Function App にどのようにリソースが割り当てられるかを定義するホスティング プラン。 既定の **[従量課金プラン]** では、リソースは関数の必要に応じて動的に追加されます。 この[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/)のホスティングでは、関数が実行された時間にのみ課金されます。 App Service プランで実行する場合は、[関数アプリのスケーリング](../azure-functions/functions-scale.md)を管理する必要があります。  |
 
-    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-hosting-linux.png" alt-text="Azure portal での関数アプリの作成":::
+    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-hosting-linux.png" alt-text="ホスティング ページ":::
 
 1. **[次へ :監視]** を選択します。 **[監視]** ページで、次の設定を入力します。
 
     | 設定      | 推奨値  | 説明 |
     | ------------ | ---------------- | ----------- |
-    | **[Application Insights](../azure-functions/functions-monitoring.md)** | **可** (既定) | 最も近いサポートされているリージョン内に同じ*アプリ名*の Application Insights リソースを作成します。 この設定を展開するか、 **[新規作成]** を選択することによって、Application Insights 名を変更するか、データを格納する [Azure 地理的環境](https://azure.microsoft.com/global-infrastructure/geographies/)内の別のリージョンを選択することができます。 |
+    | **[Application Insights](../azure-functions/functions-monitoring.md)** | **可** (既定) | 最も近いサポートされているリージョン内に同じ *アプリ名* の Application Insights リソースを作成します。 この設定を展開するか、 **[新規作成]** を選択することによって、Application Insights 名を変更するか、データを格納する [Azure 地理的環境](https://azure.microsoft.com/global-infrastructure/geographies/)内の別のリージョンを選択することができます。 |
 
-   :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-monitoring-linux.png" alt-text="Azure portal での関数アプリの作成" というメッセージが表示されるまで待ちます。
+   :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-monitoring-linux.png" alt-text="[監視] ページ":::
+
+1. **[確認および作成]** を選択して、アプリ構成の選択内容を確認します。
+
+1. **[確認および作成]** ページで設定を確認して、 **[作成]** を選択し、関数アプリをプロビジョニングしてデプロイします。
+
+1. ポータルの右上隅の **[通知]** アイコンを選択し、"**デプロイメントに成功しました**" というメッセージが表示されるまで待ちます。
 
 1. **[リソースに移動]** を選択して、新しい Function App を確認します。 また、 **[ダッシュボードにピン留めする]** を選択することもできます。 ピン留めすると、ダッシュボードからこの関数アプリ リソースに戻るのが容易になります。
 
@@ -77,7 +83,7 @@ Linux での関数の実行をホストするための Function App が必要で
 このセクションでは、ポータルの新しい Function App で関数を作成する方法について説明します。
 
 > [!NOTE]
-> Azure Functions を試す場合、ポータル開発の経験があれば役立ちます。 ほとんどのシナリオでは、[Visual Studio Code](functions-create-first-function-vs-code.md#create-an-azure-functions-project)または [Azure Functions Core Tools](functions-run-local.md#create-a-local-functions-project)を使用して、ローカルで関数を開発し、プロジェクトを Function App に公開することを検討してください。  
+> Azure Functions を試す場合、ポータル開発の経験があれば役立ちます。 ほとんどのシナリオでは、[Visual Studio Code](./create-first-function-vs-code-csharp.md#create-an-azure-functions-project)または [Azure Functions Core Tools](functions-run-local.md#create-a-local-functions-project)を使用して、ローカルで関数を開発し、プロジェクトを Function App に公開することを検討してください。  
 
 1. **[関数]** ウィンドウの左側のメニューで、 **[関数]** を選択し、上部のメニューから **[追加]** を選択します。 
  

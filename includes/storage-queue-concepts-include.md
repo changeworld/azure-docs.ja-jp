@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 08/21/2020
 ms.author: tamram
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 3aa21fb99ac5ab24674bf5d4b62fd3fca98de632
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45df30f4f1444b6148af9f3c7d47b94909ccef3d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88853657"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028064"
 ---
 ## <a name="what-is-queue-storage"></a>Queue storage とは
 
@@ -23,7 +23,7 @@ Azure Queue サービスには、次のコンポーネントが含まれます�
 ![Azure Queue サービス コンポーネント](./media/storage-queue-concepts-include/azure-queue-service-components.png)
 
 * **ストレージ アカウント:** Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。 ストレージ アカウントの詳細については、「[ストレージ アカウントの概要](../articles/storage/common/storage-account-overview.md)」を参照してください。
-* **キュー:** キューは、メッセージのセットを格納します。 すべてのメッセージはキューに 格納されている必要があります。 キュー名は小文字で入力する必要があります。 キューの名前付け規則については、「 [Naming Queues and Metadata (キューとメタデータの名前付け規則)](https://msdn.microsoft.com/library/azure/dd179349.aspx)」を参照してください。
+* **キュー:** キューは、メッセージのセットを格納します。 すべてのメッセージはキューに 格納されている必要があります。 キュー名は小文字で入力する必要があります。 キューの名前付け規則については、「 [Naming Queues and Metadata (キューとメタデータの名前付け規則)](/rest/api/storageservices/Naming-Queues-and-Metadata)」を参照してください。
 * **メッセージ:** 形式を問わず、メッセージのサイズは最大で 64 KB です。 メッセージをキューで保持できる最長時間は 7 日間です。 バージョン 2017-07-29 以降では、最大有効期間を任意の正の数にすることができます。また、-1 は、メッセージが期限切れにならないことを示します。 このパラメーターを省略すると、既定の有効期間は 7 日になります。
 * **URL 形式**: キューは、次の URL 形式を使用してアドレス指定できます:   http://`<storage account>`.queue.core.windows.net/`<queue>`
 

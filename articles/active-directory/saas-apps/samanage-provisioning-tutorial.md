@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5cdc36c20cbba148bb68bda700f5fdccbc593caf
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: cca46d47003a1611c861986f8df839de57500db6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353001"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181485"
 ---
 # <a name="tutorial-configure-solarwinds-service-desk-previously-samanage-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように SolarWinds Service Desk (旧称 Samanage) を構成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "94353001"
 
 ## <a name="migrate-to-the-new-solarwinds-service-desk-application"></a>新しい SolarWinds Service Desk アプリケーションに移行する
 
-SolarWinds Service Desk との既存の統合がある場合は、今後の変更について次のセクションを参照してください。 SolarWinds Service Desk を初めて設定する場合は、このセクションをスキップして、「 **サポートされる機能** 」に進むことができます。
+SolarWinds Service Desk との既存の統合がある場合は、今後の変更について次のセクションを参照してください。 SolarWinds Service Desk を初めて設定する場合は、このセクションをスキップして、「**サポートされる機能**」に進むことができます。
 
 #### <a name="whats-changing"></a>変更点
 
@@ -33,7 +33,7 @@ SolarWinds Service Desk との既存の統合がある場合は、今後の変�
 
 #### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>既存のカスタム統合を新しいアプリケーションに移行するには、どうすればよいですか?
 
-有効な管理者資格情報を持つ既存の SolarWinds Service Desk 統合がある場合、 **操作は必要はありません** 。 新しいアプリケーションに顧客が自動的に移行されます。 この処理は、完全にバックグラウンドで実行されます。 既存の資格情報の有効期限が切れている場合、またはアプリケーションへのアクセスを再度承認する必要がある場合は、有効期間の長いシークレット トークンを生成する必要があります。 新しいトークンを生成するには、この記事の手順 2 を参照してください。
+有効な管理者資格情報を持つ既存の SolarWinds Service Desk 統合がある場合、**操作は必要はありません**。 新しいアプリケーションに顧客が自動的に移行されます。 この処理は、完全にバックグラウンドで実行されます。 既存の資格情報の有効期限が切れている場合、またはアプリケーションへのアクセスを再度承認する必要がある場合は、有効期間の長いシークレット トークンを生成する必要があります。 新しいトークンを生成するには、この記事の手順 2 を参照してください。
 
 
 #### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>アプリケーションが移行されたかどうかを確認するにはどうすればよいですか? 
@@ -54,7 +54,7 @@ SolarWinds Service Desk との既存の統合がある場合は、今後の変�
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
 * [Azure AD テナント](../develop/quickstart-create-new-tenant.md) 
-* プロビジョニングを構成するための[アクセス許可](../users-groups-roles/directory-assign-admin-roles.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
+* プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
 * Professional パッケージを使用する [SolarWinds Service Desk テナント](https://www.samanage.com/pricing/)。
 * 管理者のアクセス許可を持つ SolarWinds Service Desk のユーザー アカウント。
 

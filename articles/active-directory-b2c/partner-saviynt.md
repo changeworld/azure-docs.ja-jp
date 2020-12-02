@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 184616058cb2a86025eb75b4923e374ab42ebf05
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 99741a412ae02a2d30293e1aa254245f5ca7b662
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953561"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171434"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Saviynt と Azure Active Directory B2C を構成するチュートリアル
 
@@ -69,7 +69,7 @@ Saviynt 統合には、次のコンポーネントが含まれています。
 
 1. Saviynt アカウントを作成するには、[Saviynt](https://saviynt.com/contact-us/) にお問い合わせください
 
-2. 代理管理ポリシーを作成し、さまざまな役割を持つ[代理管理者](../active-directory/users-groups-roles/roles-concept-delegation.md)としてユーザーを割り当てます。
+2. 代理管理ポリシーを作成し、さまざまな役割を持つ[代理管理者](../active-directory/roles/concept-delegation.md)としてユーザーを割り当てます。
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>Azure AD B2C と Saviynt を構成する
 

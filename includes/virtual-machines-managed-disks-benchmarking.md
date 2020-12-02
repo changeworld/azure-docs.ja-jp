@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 09af5d9af749d43f9d15f42daee6b562a877397b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 358e92d8e43473c168e24be9f4af504e6ffcc37a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94633428"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026358"
 ---
 *キャッシュのウォームアップ*  
 ReadOnly ホスト キャッシュを使用するディスクでは、ディスクの制限を超えた高 IOPS を実現できます。 ホスト キャッシュからこの最大の読み取りパフォーマンスを得るには、まず、このディスクのキャッシュをウォームアップする必要があります。 これにより、ベンチマーク ツールが CacheReads ボリュームで促進する読み取り IO が、直接ディスクにヒットするのではなく、実際にキャッシュにヒットするようになります。 キャッシュ ヒットにより、キャッシュが有効化された 1 つのディスクから追加の IOPS が得られます。
@@ -123,17 +123,9 @@ direct=1
 iodepth=256
 ioengine=libaio
 bs=8k
+numjobs=4
 
 [writer1]
-rw=randwrite
-directory=/mnt/nocache
-[writer2]
-rw=randwrite
-directory=/mnt/nocache
-[writer3]
-rw=randwrite
-directory=/mnt/nocache
-[writer4]
 rw=randwrite
 directory=/mnt/nocache
 ```
@@ -164,17 +156,9 @@ direct=1
 iodepth=256
 ioengine=libaio
 bs=8k
+numjobs=4
 
 [reader1]
-rw=randread
-directory=/mnt/readcache
-[reader2]
-rw=randread
-directory=/mnt/readcache
-[reader3]
-rw=randread
-directory=/mnt/readcache
-[reader4]
 rw=randread
 directory=/mnt/readcache
 ```
@@ -205,33 +189,13 @@ direct=1
 iodepth=128
 ioengine=libaio
 bs=4k
+numjobs=4
 
 [reader1]
 rw=randread
 directory=/mnt/readcache
-[reader2]
-rw=randread
-directory=/mnt/readcache
-[reader3]
-rw=randread
-directory=/mnt/readcache
-[reader4]
-rw=randread
-directory=/mnt/readcache
 
 [writer1]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-[writer2]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-[writer3]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-[writer4]
 rw=randwrite
 directory=/mnt/nocache
 rate_iops=12500

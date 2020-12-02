@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb54410fb314376b68d7297a3452f0990762343d
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 69e87fc919893a544f5d0b1b615a110f25486e57
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577160"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168748"
 ---
 # <a name="header-based-authentication-with-azure-active-directory"></a>Azure Active Directory を使用したヘッダーベースの認証
 
@@ -48,8 +48,8 @@ ms.locfileid: "94577160"
 
 ## <a name="implement-header-based-authentication-with-azure-ad"></a>Azure AD を使用したヘッダーベースの認証を実装する
 
-* [Azure AD でアプリケーション プロキシを使用したリモート アクセスを行うためにオンプレミス アプリケーションを追加する](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)  
+* [Azure AD でアプリケーション プロキシを使用したリモート アクセスを行うためにオンプレミス アプリケーションを追加する](../manage-apps/application-proxy-add-on-premises-application.md)  
 
-* [アプリケーション プロキシと PingAccess を使用したシングル サインオン用のヘッダーベースの認証](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-ping-access) 
+* [アプリケーション プロキシと PingAccess を使用したシングル サインオン用のヘッダーベースの認証](../manage-apps/application-proxy-configure-single-sign-on-with-headers.md) 
 
-* [アプリ デリバリー コントローラーとネットワークを使用してレガシ アプリをセキュリティで保護する](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access)
+* [アプリ デリバリー コントローラーとネットワークを使用してレガシ アプリをセキュリティで保護する](../manage-apps/secure-hybrid-access.md)

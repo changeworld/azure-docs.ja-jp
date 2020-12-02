@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: 2c5c017ac0faf443a38fc43dfd27c7e776cb52a0
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: a5f7569fc46d4678ca0c12299e33caa3c78df849
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683373"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182922"
 ---
 # <a name="application-gateway-high-traffic-support"></a>Application Gateway の高トラフィックのサポート
 
@@ -23,7 +23,7 @@ Application Gateway と Web アプリケーション ファイアウォール (W
 
 実際のトラフィックに従い、若干のバッファーを追加して Application Gateway をスケーリングすることが重要です。それによって、トラフィックの急増やスパイクに備え、QoS に対する影響を最小限に抑えることができます。 以下の推奨事項は、追加のトラフィックを処理するために Application Gateway と WAF を設定する場合に役立ちます。
 
-Application Gateway で提供されているメトリックの一覧については、[メトリックに関するドキュメント](./application-gateway-metrics.md)を確認してください。 メトリックのアラートを設定する方法については、Azure portal での[メトリックの視覚化](./application-gateway-metrics.md#metrics-visualization)に関する記事と、[Azure Monitor に関するドキュメント](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric)を参照してください。
+Application Gateway で提供されているメトリックの一覧については、[メトリックに関するドキュメント](./application-gateway-metrics.md)を確認してください。 メトリックのアラートを設定する方法については、Azure portal での[メトリックの視覚化](./application-gateway-metrics.md#metrics-visualization)に関する記事と、[Azure Monitor に関するドキュメント](../azure-monitor/platform/alerts-metric.md)を参照してください。
 
 ## <a name="scaling-for-application-gateway-v1-sku-standardwaf-sku"></a>Application Gateway v1 SKU (Standard/WAF SKU) のスケーリング
 
@@ -65,7 +65,7 @@ Application Gateway v2 SKU の自動スケーリングでは、スケールア�
 
 ## <a name="monitoring-and-alerting"></a>監視とアラート
 
-トラフィックまたは使用率の異常が通知されるようにするために、特定のメトリックに対してアラートを設定できます。 Application Gateway で提供されているメトリックの一覧については、[メトリックに関するドキュメント](./application-gateway-metrics.md)を参照してください。 メトリックのアラートを設定する方法については、Azure portal での[メトリックの視覚化](./application-gateway-metrics.md#metrics-visualization)に関する記事と、[Azure Monitor に関するドキュメント](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric)を参照してください。
+トラフィックまたは使用率の異常が通知されるようにするために、特定のメトリックに対してアラートを設定できます。 Application Gateway で提供されているメトリックの一覧については、[メトリックに関するドキュメント](./application-gateway-metrics.md)を参照してください。 メトリックのアラートを設定する方法については、Azure portal での[メトリックの視覚化](./application-gateway-metrics.md#metrics-visualization)に関する記事と、[Azure Monitor に関するドキュメント](../azure-monitor/platform/alerts-metric.md)を参照してください。
 
 ## <a name="alerts-for-application-gateway-v1-sku-standardwaf"></a>Application Gateway v1 SKU (Standard/WAF) のアラート
 

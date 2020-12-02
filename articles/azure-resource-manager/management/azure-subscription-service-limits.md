@@ -3,12 +3,12 @@ title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 この記事では、制限を引き上げる方法と、最大値に関する情報について説明します。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 54eb25e302d49be9e3ab1febeb5c636d267d7e4f
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 810d503f1abdc14ad2d255a89aebe7c10954a889
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577840"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186203"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 
@@ -398,7 +398,7 @@ Standard ストレージ アカウントの制限について詳しくは、[Sta
 
 #### <a name="disk-encryption-sets"></a>ディスク暗号化セット
 
-リージョンごと、サブスクリプションごとに、50 のディスク暗号化セットという制限があります。 詳細については、[Linux](../../virtual-machines/linux/disk-encryption.md#restrictions) または [Windows](../../virtual-machines/windows/disk-encryption.md#restrictions) 仮想マシンの暗号化ドキュメントを参照してください。 クォータを増やす必要がある場合は、Azure サポートにお問い合わせください。
+リージョンごと、サブスクリプションごとに、50 のディスク暗号化セットという制限があります。 詳細については、[Linux](../../virtual-machines/disk-encryption.md#restrictions) または [Windows](../../virtual-machines/disk-encryption.md#restrictions) 仮想マシンの暗号化ドキュメントを参照してください。 クォータを増やす必要がある場合は、Azure サポートにお問い合わせください。
 
 ### <a name="managed-virtual-machine-disks"></a>管理対象の仮想マシン ディスク
 

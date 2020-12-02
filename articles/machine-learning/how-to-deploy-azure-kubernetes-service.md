@@ -11,15 +11,14 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: e041b69d8fc256ff5fe759be9716db032540f2cb
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: d314c285057950ebaecb2e3f75a83948c8bf3cc2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873796"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182446"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする
-
 
 Azure Machine Learning を使って Azure Kubernetes Service (AKS) 上の Web サービスとしてモデルをデプロイする方法について説明します。 Azure Kubernetes Service は高スケールの運用デプロイに適してします。 次のいずれかの機能が必要な場合は、Azure Kubernetes Service を使用します。
 
@@ -34,7 +33,7 @@ Azure Machine Learning を使って Azure Kubernetes Service (AKS) 上の Web �
 Azure Kubernetes Service にデプロイするときは、__ご利用のワークスペースに接続されている__ AKS クラスターにデプロイします。 AKS クラスターのワークスペースへの接続に関する詳細については、「[Azure Kubernetes Service クラスターを作成してアタッチする](how-to-create-attach-kubernetes.md)」を参照してください。
 
 > [!IMPORTANT]
-> Web サービスにデプロイする前にローカルでデバッグすることをお勧めします。 詳細については、「[ローカル デバッグ](./how-to-troubleshoot-deployment.md#debug-locally)」を参照してください。
+> Web サービスにデプロイする前にローカルでデバッグすることをお勧めします。 詳細については、「[ローカル デバッグ](./how-to-troubleshoot-deployment-local.md)」を参照してください。
 >
 > Azure Machine Learning の[ローカルの Notebook へのデプロイ](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)に関する記事を参照することもできます
 

@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: lcozzens
-ms.openlocfilehash: b2b903f259fdd2564fbcaed5eb0a750edf9c06e2
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 936be917d5b494c9d71386440c711ef6c29ffb45
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075877"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183500"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Azure Pipelines を使用して App Configuration に設定をプッシュする
 
@@ -23,7 +23,7 @@ ms.locfileid: "92075877"
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 - App Configuration リソース - [Azure portal](https://portal.azure.com)で無料リソースを作成する。
 - Azure DevOps プロジェクト - [無料プロジェクトを作成する](https://go.microsoft.com/fwlink/?LinkId=2014881)
-- Azure App Configuration Push タスク - [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push#:~:text=Navigate%20to%20the%20Tasks%20tab,the%20Azure%20App%20Configuration%20instance.) から無料でダウンロードする。
+- Azure App Configuration Push タスク - [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push) から無料でダウンロードする。
 
 ## <a name="create-a-service-connection"></a>サービス接続を作成する
 
@@ -87,7 +87,7 @@ App Configuration Push タスクによって、次のパラメーターが使用
 - **ラベル**:App Configuration ストア内で、各キー値にラベルとして追加される文字列。
 - **コンテンツの種類**: App Configuration ストア内で、各キー値にコンテンツの種類として追加される文字列。
 - **タグ**:`{"tag1":"val1", "tag2":"val2"}` 形式の JSON オブジェクト。これは、App Configuration ストアにプッシュされる各キー値に追加されるタグを定義します。
-- **指定されたプレフィックスとラベルを含むストア内の他のすべてのキー値を削除する**: 既定値は、**オフ**です。
+- **指定されたプレフィックスとラベルを含むストア内の他のすべてのキー値を削除する**: 既定値は、**オフ** です。
   - **オン**: 指定されたプレフィックスとラベルの両方と一致する App Configuration ストア内のすべてのキー値を削除した後、構成ファイルの新しいキー値をプッシュします。
   - **オフ**: すべてのキー値を構成ファイルから App Configuration ストアにプッシュし、App Configuration ストア内の他のすべてのものをそのまま残します。
 

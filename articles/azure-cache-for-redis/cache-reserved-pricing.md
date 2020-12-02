@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 99aa4d9ed6552075b0da4d451201f48ba6adfb1b
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 9931dd9acb51e74c34a57b0475bca79fb9ba79cf
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578707"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184180"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>予約容量を使用した計算リソースの Azure Cache for RedisRedis を使用した前払い
 
@@ -37,7 +37,7 @@ Azure Cache for Redis の予約容量は [Azure portal](https://portal.azure.com
 
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>予約容量用に Azure Cache for Redis を購入する
 
-予約 VM インスタンスは [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/) から購入できます。 予約の支払いは、[前払いまたは月払い](../cost-management-billing/reservations/monthly-payments-reservations.md)で行います。
+予約 VM インスタンスは [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/) から購入できます。 予約の支払いは、[前払いまたは月払い](../cost-management-billing/reservations/prepare-buy-reservation.md)で行います。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **[すべてのサービス]**  >  **[予約]** を選択します。

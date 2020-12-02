@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cynthn
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 58f38f5fe5544f01636d5fd2b2393025e5cb01ab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9556b20ba0ceac2d4c1ad92897e6f9d46293387f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92756076"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028097"
 ---
 ## <a name="create-an-image-gallery"></a>イメージ ギャラリーを作成する 
 
@@ -21,7 +21,7 @@ ms.locfileid: "92756076"
 
 ギャラリー名で許可されている文字は、英字 (大文字または小文字)、数字、ドット、およびピリオドです。 ギャラリー名にダッシュを含めることはできません。   ギャラリー名は、お使いのサブスクリプション内で一意にする必要があります。 
 
-[az sig create](/cli/azure/sig#az-sig-create) を使用してイメージ ギャラリーを作成します。 次の例では、 *myGalleryRG* という名前のリソース グループを " *米国東部* " に作成し、 *myGallery* という名前のギャラリーを作成します。
+[az sig create](/cli/azure/sig#az-sig-create) を使用してイメージ ギャラリーを作成します。 次の例では、*myGalleryRG* という名前のリソース グループを "*米国東部*" に作成し、*myGallery* という名前のギャラリーを作成します。
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location eastus
@@ -50,4 +50,4 @@ az role assignment create \
    --scope <gallery ID>
 ```
 
-RBAC を使用してリソースを共有する方法の詳細については、「[RBAC と Azure CLI を使用してアクセスを管理する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)」を参照してください。
+RBAC を使用してリソースを共有する方法の詳細については、「[RBAC と Azure CLI を使用してアクセスを管理する](../articles/role-based-access-control/role-assignments-cli.md)」を参照してください。

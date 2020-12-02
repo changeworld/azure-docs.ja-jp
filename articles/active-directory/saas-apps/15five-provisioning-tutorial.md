@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 528ab93d1cf47d64338ef186a120695681f48e55
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 00f713e8d319d7ad8dcea014429c57d7fba40541
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998653"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181222"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>チュートリアル:15Five を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -39,7 +39,7 @@ ms.locfileid: "95998653"
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
 * [Azure AD テナント](../develop/quickstart-create-new-tenant.md)。
-* プロビジョニングを構成するための[アクセス許可](../users-groups-roles/directory-assign-admin-roles.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。
+* プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。
 * [15Five テナント](https://www.15five.com/pricing/)。
 * Admin アクセス許可がある 15Five のユーザー アカウント
 

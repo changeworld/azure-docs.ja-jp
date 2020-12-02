@@ -6,19 +6,19 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.subservice: alerts
-ms.openlocfilehash: 7f03858b2427b2a2069ebe2c9d06425e7a741e2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7c9c76816b5d1ee2eedfb7e54645e056906feef
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294361"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186628"
 ---
 # <a name="optimizing-log-alert-queries"></a>ログ アラート クエリの最適化
 この記事では、最適なパフォーマンスを実現するために[ログ アラート](alerts-unified-log.md) クエリを記述して変換する方法について説明します。 最適化されたクエリを使用すると、頻繁に実行されるアラートの待機時間と負荷が軽減されます。
 
 ## <a name="how-to-start-writing-an-alert-log-query"></a>アラート ログ クエリの記述を開始する方法
 
-アラート クエリは、問題を示す[ログ分析のログ データを照会](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)することから開始します。 何が検出できるかを理解するには、[アラートのクエリ例に関するトピック](../log-query/saved-queries.md)を使用できます。 また、[独自のクエリの記述を記述する](../log-query/get-started-portal.md)ことから開始することもできます。 
+アラート クエリは、問題を示す[ログ分析のログ データを照会](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)することから開始します。 何が検出できるかを理解するには、[アラートのクエリ例に関するトピック](../log-query/example-queries.md)を使用できます。 また、[独自のクエリの記述を記述する](../log-query/log-analytics-tutorial.md)ことから開始することもできます。 
 
 ### <a name="queries-that-indicate-the-issue-and-not-the-alert"></a>アラートでなく問題を示すクエリ
 

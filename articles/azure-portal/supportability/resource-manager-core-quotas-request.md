@@ -7,12 +7,12 @@ ms.date: 01/27/2020
 ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 7486cee351880dc0465a43b1259a5f07ef31c77b
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 550c011bb9f4aeb99a4dcb8da0e7ae2be4202788
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173292"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185880"
 ---
 # <a name="quota-increase-requests"></a>クォータの引き上げのリクエスト
 
@@ -24,7 +24,6 @@ Azure Portal から VM シリーズの vCPU クォータ制限の増加を要求
 新しいサブスクリプションが作成されるとき、リージョンの vCPU の合計の既定値が、すべての個別 VM シリーズに対する既定の vCPU クォータの合計と等しくない場合があります。 その結果、デプロイする個々の VM シリーズごとに十分なクォータを持つサブスクリプションが作成される可能性があります。 これにより、すべてのデプロイに対するリージョンの vCPU の合計のクォータが不足する可能性があります。 この場合、リージョンの vCPU の合計の制限を明示的に引き上げるための要求を送信する必要があります。 リージョンの vCPU の合計の制限が、そのリージョンのすべての VM シリーズにわたって承認されたクォータの合計を超えることはできません。
 
 > [!NOTE]
-> 制限を引き上げるまたは既定の制限を超えるクォータが必要な場合は、[オンライン カスタマー サポートに申請 (無料)](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-resource-quota#solution) してください。
+> 制限を引き上げるまたは既定の制限を超えるクォータが必要な場合は、[オンライン カスタマー サポートに申請 (無料)](../../azure-resource-manager/templates/error-resource-quota.md#solution) してください。
 
 クォータの詳細については、「[仮想マシンの vCPU クォータ](../../virtual-machines/windows/quotas.md)」および「[Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-resource-manager/management/azure-subscription-service-limits.md)」を参照してください。
-

@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 817c41a969f03ad04d372c516a16ef6b770f3e18
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e3eed0e7378f513e45e0eb9ac719a92e87ec1d53
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755603"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028373"
 ---
 ## <a name="access-the-virtual-machine"></a>仮想マシンにアクセスする
 
 次の手順では、Azure Cloud Shell の Azure CLI を使用します。 必要に応じて、開発用マシンに [Azure CLI をインストール](/cli/azure/install-azure-cli)し、ローカルでコマンドを実行することができます。
 
-次の手順は、 **SSH** アクセスを許可するように Azure 仮想マシンを構成する方法を示しています。 ここに示された手順では、ソリューション アクセラレータ用に選択された名前を **contoso-simulation** と想定しています。この値を実際のデプロイの名前に置き換えてください。
+次の手順は、**SSH** アクセスを許可するように Azure 仮想マシンを構成する方法を示しています。 ここに示された手順では、ソリューション アクセラレータ用に選択された名前を **contoso-simulation** と想定しています。この値を実際のデプロイの名前に置き換えてください。
 
 1. ソリューション アクセラレータ リソースを含むリソース グループの内容を一覧表示します。
 
@@ -35,7 +35,7 @@ ms.locfileid: "92755603"
     az network nsg rule update --name SSH --nsg-name contoso-simulation-nsg -g contoso-simulation --access Allow -o table
     ```
 
-    SSH アクセスを有効にするのはテストおよび開発中のみにしてください。 SSH を有効にした場合、[できるだけ早く無効にする必要があります](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#disable-rdpssh-access-to-virtual-machines)。
+    SSH アクセスを有効にするのはテストおよび開発中のみにしてください。 SSH を有効にした場合、[できるだけ早く無効にする必要があります](../articles/security/fundamentals/network-best-practices.md#disable-rdpssh-access-to-virtual-machines)。
 
 1. 仮想マシン上の **azureuser** アカウントのパスワードを既知のパスワードに更新します。 次のコマンドを実行するときに自分のパスワードを選択してください。
 

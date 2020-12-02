@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: b0bc23d515bebdd0d943bbad33c5ebba35a35605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fdb3b2b23d07b79a8e9979450bee653d646196c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987208"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182803"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours を構成する
 
@@ -63,7 +63,7 @@ VM の停止のみを行うようにこの機能を構成できます。 カス�
 
 ### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>サブスクリプションとリソース グループに対する起動および停止アクションを対象にする
 
-1. `External_Start_ResourceGroupNames` および `External_Stop_ResourceGroupNames` 変数で対象となる VM に、正の整数値を持つ `sequencestart` と `sequencestop` タグを追加します。 起動アクションと停止アクションは昇順で実行されます。 VM にタグを付ける方法については、[Azure で Windows 仮想マシンにタグを付ける方法](../virtual-machines/windows/tag.md)と [Azure で Linux 仮想マシンにタグを付ける方法](../virtual-machines/linux/tag.md)に関するページを参照してください。
+1. `External_Start_ResourceGroupNames` および `External_Stop_ResourceGroupNames` 変数で対象となる VM に、正の整数値を持つ `sequencestart` と `sequencestop` タグを追加します。 起動アクションと停止アクションは昇順で実行されます。 VM にタグを付ける方法については、[Azure で Windows 仮想マシンにタグを付ける方法](../virtual-machines/tag-portal.md)と [Azure で Linux 仮想マシンにタグを付ける方法](../virtual-machines/tag-cli.md)に関するページを参照してください。
 
 2. スケジュール **Sequenced-StartVM** と **Sequenced-StopVM** を、要件を満たす日付と時刻に変更し、スケジュールを有効にします。
 
@@ -126,7 +126,7 @@ Start/Stop VMs during off-hours は、営業時間外などの非ピーク期間
 
 ### <a name="target-the-autostop-action-to-a-list-of-vms"></a>VM のリストを自動停止アクションの対象にする
 
-1. 新しい[スケジュール](shared-resources/schedules.md#create-a-schedule)を作成し、**AutoStop_CreateAlert_Parent** Runbook にリンクして、VM 名のコンマ区切りリストを `VMList` パラメーターに追加します。
+1. 新しい [スケジュール](shared-resources/schedules.md#create-a-schedule)を作成し、**AutoStop_CreateAlert_Parent** Runbook にリンクして、VM 名のコンマ区切りリストを `VMList` パラメーターに追加します。
 
 2. (省略可) VM の一部を自動停止アクションから除外する場合、VM 名のコンマ区切りリスト (スペースなし) を `External_ExcludeVMNames` 変数に追加できます。
 
@@ -143,13 +143,13 @@ Start/Stop VMs during off-hours のデプロイ後に電子メール通知を変
 
 2. [StartStop_VM_Notification] ページで、 **[詳細]** の **[詳細の編集]** をクリックします。 これで、[電子メール/SMS/プッシュ/音声] ページが開きます。 メール アドレスを更新し、 **[OK]** をクリックして変更を保存します。
 
-    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="[モニター - アクション グループ] ページのスクリーンショット。":::
+    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="更新されたメール アドレスの例を示す [電子メール/SMS/プッシュ/音声] ページのスクリーンショット。":::
 
     アクション グループにさらにアクションを追加することもできます。アクション グループの詳細については、「[アクション グループ](../azure-monitor/platform/action-groups.md)」を参照してください。
 
 この機能によって仮想マシンがシャットダウンされたときに送信されるメールの例を以下に示します。
 
-:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="[モニター - アクション グループ] ページのスクリーンショット。":::
+:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="機能によって仮想マシンがシャットダウンされたときに送信されるメールの例のスクリーンショット。":::
 
 ## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>VM を追加または除外する
 

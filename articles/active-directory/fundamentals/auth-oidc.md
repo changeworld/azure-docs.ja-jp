@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f38da0dd2dc2adc8049e2b307c861651a55ed700
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 0e5bf7e51de38d42e64f6737e687c5946a464160
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576990"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168663"
 ---
 # <a name="openid-connect-authentication-with-azure-active-directory"></a>Azure Active Directory を使用した OpenID Connect 認証
 
@@ -48,14 +48,13 @@ OIDC の設計目標は、"簡単なことは簡単に、複雑なことも可�
 
 ## <a name="implement-oidc-with-azure-ad"></a>Azure AD を使用して OIDC を実装する
 
-* [Azure AD とアプリケーションの統合](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) 
+* [Azure AD とアプリケーションの統合](../saas-apps/tutorial-list.md) 
 
-* [Microsoft ID プラットフォームにおける OAuth 2.0 プロトコルと OpenID Connect プロトコル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols) 
+* [Microsoft ID プラットフォームにおける OAuth 2.0 プロトコルと OpenID Connect プロトコル](../develop/active-directory-v2-protocols.md) 
 
-* [Microsoft ID プラットフォームと OpenID Connect プロトコル](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc) 
+* [Microsoft ID プラットフォームと OpenID Connect プロトコル](../develop/v2-protocols-oidc.md) 
 
-* [Azure Active Directory B2C での OpenID Connect による Web サインイン](https://docs.microsoft.com/azure/active-directory-b2c/openid-connect) 
+* [Azure Active Directory B2C での OpenID Connect による Web サインイン](../../active-directory-b2c/openid-connect.md) 
 
-* [OpenID Connect と Azure AD を使用してアプリケーションをセキュリティで保護する](https://docs.microsoft.com/learn/modules/secure-app-with-oidc-and-azure-ad/) 
+* [OpenID Connect と Azure AD を使用してアプリケーションをセキュリティで保護する](/learn/modules/secure-app-with-oidc-and-azure-ad/) 
 
- 

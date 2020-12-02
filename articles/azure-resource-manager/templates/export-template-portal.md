@@ -3,12 +3,12 @@ title: Azure portal でテンプレートをエクスポートする
 description: Azure portal を使用して、サブスクリプション内のリソースから Azure Resource Manager テンプレートをエクスポートします。
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 6d0c9adb121372047336d2753df047f54f1e0fa2
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: ee97953a337bbb7cc9a8d1f042a3beae7bccdcae
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951759"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185693"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Azure portal のテンプレートへの単一および複数リソースのエクスポート
 
@@ -51,7 +51,7 @@ Resource Manager では、テンプレートにエクスポートするリソー
 
 テンプレートのエクスポート機能は、Azure Data Factory リソースのエクスポートをサポートしていません。 Data Factory リソースをエクスポートする方法については、「[Azure Data Factory のデータ ファクトリをコピーまたは複製する](../../data-factory/copy-clone-data-factory.md)」を参照してください。
 
-クラシック デプロイ モデルを使用して作成されたリソースをエクスポートするには、[Resource Manager デプロイ モデルに移行する](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)必要があります。
+クラシック デプロイ モデルを使用して作成されたリソースをエクスポートするには、[Resource Manager デプロイ モデルに移行する](../../virtual-machines/migration-classic-resource-manager-overview.md)必要があります。
 
 テンプレートをエクスポートしたとき、リソースの種類がエクスポートされなかったという警告が表示された場合でも、そのリソースのプロパティを検出できます。 リソース プロパティを表示するためのさまざまなオプションに関する詳細について、「[リソースのプロパティ](view-resources.md)」についてを参照してください。 リソースの種類については、[Azure REST API](/rest/api/azure/) も参照できます。
 

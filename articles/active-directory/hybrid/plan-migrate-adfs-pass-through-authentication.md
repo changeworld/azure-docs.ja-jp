@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0edda2a01d6b17aebba3fbe4dbf039bf1d2f2c5
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1257c783ffeae68bf338b21a5d2f6bba72ea25b3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411118"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997768"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Azure Active Directory でフェデレーションからパススルー認証に移行する
 
@@ -38,7 +38,7 @@ AD FS の使用からパススルー認証の使用に移行するには、次�
 パススルー認証の使用への移行手順を正常に完了するには、[Azure Active Directory Connect](https://www.microsoft.com/download/details.aspx?id=47594) (Azure AD Connect) 1.1.819.0 以降のバージョンが必要です。 Azure AD Connect 1.1.819.0 では、サインイン変換の実行方法が大幅に変更されています。 このバージョンでは、AD FS からクラウド認証への移行にかかる時間が、全体で数時間から数分に短縮できる可能性があります。
 
 > [!IMPORTANT]
-> 古いドキュメント、ツール、およびブログでは、ドメインをフェデレーション ID からマネージド ID に変換する際に、ユーザーの変換が必要であると記載されている場合があります。 " *ユーザーの変換* " は必要なくなりました。 Microsoft では、この変更を反映するようにドキュメントやツールを更新しています。
+> 古いドキュメント、ツール、およびブログでは、ドメインをフェデレーション ID からマネージド ID に変換する際に、ユーザーの変換が必要であると記載されている場合があります。 "*ユーザーの変換*" は必要なくなりました。 Microsoft では、この変更を反映するようにドキュメントやツールを更新しています。
 
 Azure AD Connect を更新するには、「[Azure AD Connect:旧バージョンから最新バージョンにアップグレードする](./how-to-upgrade-previous-version.md)」の手順を完了してください。
 
@@ -52,14 +52,14 @@ Azure AD Connect を更新するには、「[Azure AD Connect:旧バージョン
 
 フェデレーション ID 管理からパススルー認証とシームレスなシングル サインオン (SSO) に移行する場合、2 つの方法から選ぶことができます。 使用する方法は、最初に AD FS インスタンスをどのように構成したかによって決まります。
 
-* **Azure AD Connect** 。 最初に Azure AD Connect を使用して AD FS を構成した場合は、Azure AD Connect ウィザードを使ってパススルー認証に変更する *必要があります* 。
+* **Azure AD Connect**。 最初に Azure AD Connect を使用して AD FS を構成した場合は、Azure AD Connect ウィザードを使ってパススルー認証に変更する *必要があります*。
 
    ‎ユーザー サインインの方法を変更する際、Azure AD Connect によって自動的に **Set-MsolDomainAuthentication** コマンドレットが実行されます。 Azure AD Connect によって、Azure AD テナント内のすべての確認済みフェデレーション ドメインが自動的にフェデレーション解除されます。
 
    > [!NOTE]
    > 現在、最初に Azure AD Connect を使用して AD FS を構成した場合、ユーザー サインインをパススルー認証に変更したときに、お客様のテナントに含まれているすべてのドメインがフェデレーション解除されることは避けられません。
 ‎
-* **Azure AD Connect と PowerShell** 。 この方法は、最初に Azure AD Connect を使用して AD FS を構成していない場合にのみ使用できます。 このオプションでも、Azure AD Connect ウィザードを使用してユーザー サインインの方法を変更する必要があります。 このオプションの主な違いは、ウィザードで **Set-MsolDomainAuthentication** コマンドレットが自動的に実行されないことです。 このオプションでは、どのドメインをどの順序で変換するかを完全に制御できます。
+* **Azure AD Connect と PowerShell**。 この方法は、最初に Azure AD Connect を使用して AD FS を構成していない場合にのみ使用できます。 このオプションでも、Azure AD Connect ウィザードを使用してユーザー サインインの方法を変更する必要があります。 このオプションの主な違いは、ウィザードで **Set-MsolDomainAuthentication** コマンドレットが自動的に実行されないことです。 このオプションでは、どのドメインをどの順序で変換するかを完全に制御できます。
 
 どの方法を使用すればよいかを理解するために、次のセクションの手順を行います。
 
@@ -81,12 +81,12 @@ Azure AD Connect を更新するには、「[Azure AD Connect:旧バージョン
    ![[追加のタスク] ページの [現在の構成を表示する] オプションのスクリーンショット](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image2.png)<br />
 3. **[追加のタスク] > [フェデレーションの管理]** で、 **[Active Directory フェデレーション サービス (AD FS)]** までスクロールします。<br />
 
-   * このセクションに AD FS 構成が表示される場合は、AD FS が最初に Azure AD Connect を使用して構成されたと見なすことができます。 Azure AD Connect の **[ユーザー サインインの変更]** オプションを使用して、ドメインをフェデレーション ID からマネージド ID に変換できます。 このプロセスの詳細については、「 **オプション A: Azure AD Connect を使用してパススルー認証を構成する** 」セクションを参照してください。
-   * AD FS が現在の設定の一覧に表示されていない場合は、PowerShell を使用して、ドメインをフェデレーション ID からマネージド ID に手動で変換する必要があります。 このプロセスの詳細については、次のセクションを参照してください。「 **オプション B:Azure AD Connect と PowerShell を使用してフェデレーションからパススルー認証に切り替える** 」セクションはスキップします。
+   * このセクションに AD FS 構成が表示される場合は、AD FS が最初に Azure AD Connect を使用して構成されたと見なすことができます。 Azure AD Connect の **[ユーザー サインインの変更]** オプションを使用して、ドメインをフェデレーション ID からマネージド ID に変換できます。 このプロセスの詳細については、「**オプション A: Azure AD Connect を使用してパススルー認証を構成する**」セクションを参照してください。
+   * AD FS が現在の設定の一覧に表示されていない場合は、PowerShell を使用して、ドメインをフェデレーション ID からマネージド ID に手動で変換する必要があります。 このプロセスの詳細については、次のセクションを参照してください。「**オプション B:Azure AD Connect と PowerShell を使用してフェデレーションからパススルー認証に切り替える**」セクションはスキップします。
 
 ### <a name="document-current-federation-settings"></a>現在のフェデレーション設定をドキュメント化する
 
-現在のフェデレーション設定を確認するには、 **Get-MsolDomainFederationSettings** コマンドレットを実行します。
+現在のフェデレーション設定を確認するには、**Get-MsolDomainFederationSettings** コマンドレットを実行します。
 
 ``` PowerShell
 Get-MsolDomainFederationSettings -DomainName YourDomain.extention | fl *
@@ -98,7 +98,7 @@ Get-MsolDomainFederationSettings -DomainName YourDomain.extention | fl *
 Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 ```
 
-ご利用のフェデレーションの設計とデプロイのドキュメント用にカスタマイズされた可能性のある、すべての設定を確認します。 具体的には、 **PreferredAuthenticationProtocol** 、 **SupportsMfa** 、および **PromptLoginBehavior** のカスタマイズを確認します。
+ご利用のフェデレーションの設計とデプロイのドキュメント用にカスタマイズされた可能性のある、すべての設定を確認します。 具体的には、**PreferredAuthenticationProtocol**、**SupportsMfa**、および **PromptLoginBehavior** のカスタマイズを確認します。
 
 詳細と例については、次の記事をご覧ください。
 
@@ -108,7 +108,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 > [!NOTE]
 > **SupportsMfa** が **True** に設定されている場合は、第 2 要素チャレンジをユーザー認証フローに挿入するためにオンプレミス多要素認証ソリューションを使用しています。 このセットアップは、Azure AD 認証シナリオでは動作しなくなりました。 
 >
-> 代わりに、同じ機能を実行するために、Azure Multi-Factor Authentication クラウドベース サービスを使用します。 先に進む前に、多要素認証の要件を慎重に評価してください。 Azure Multi-Factor Authentication の使用方法、ライセンスの内容、およびユーザーの登録プロセスについて理解してから、ドメインの変換を行ってください。
+> 代わりに、同じ機能を実行するために、Azure AD Multi-Factor Authentication クラウドベース サービスを使用します。 先に進む前に、多要素認証の要件を慎重に評価してください。 Azure AD Multi-Factor Authentication の使用方法、ライセンスの内容、およびユーザーの登録プロセスについて理解してから、ドメインの変換を行ってください。
 
 #### <a name="back-up-federation-settings"></a>フェデレーション設定をバックアップする
 
@@ -133,7 +133,7 @@ AD FS Rapid Restore Tool を使用しない場合は、少なくとも、Microso
 | 引き続き AD FS を (Azure AD と Microsoft 365 以外の) 他のアプリケーションと一緒に使用する予定である。 | ドメインを変換した後、AD FS と Azure AD の両方を使用します。 ユーザー エクスペリエンスをよく検討してください。 一部のシナリオでは、ユーザーの認証が 2 回必要になる可能性があります。1 回は Azure AD に対するもので (これにより、ユーザーは Microsoft 365 などの他のアプリケーションに対する SSO アクセスを取得します)、もう 1 回は証明書利用者信頼として AD FS にまだバインドされているすべてのアプリケーションに対するものです。 |
 | AD FS インスタンスが大幅にカスタマイズされていて、onload.js ファイル内の特定のカスタマイズ設定に依存している (たとえば、ユーザー名にユーザー プリンシパル名 (UPN) ではなく **SamAccountName** 形式のみを使用するようにサインイン エクスペリエンスを変更している場合や、組織でサインイン エクスペリエンスを大幅にブランド化している場合)。 Azure AD で onload.js ファイルを複製できない。 | 続行する前に、Azure AD で現在のカスタマイズ要件を満たせることを確認する必要があります。 詳細情報とガイダンスについては、AD FS のブランド化と AD FS のカスタマイズに関するセクションを参照してください。|
 | AD FS を使用して、以前のバージョンの認証クライアントをブロックしている。| [条件付きアクセス制御](../conditional-access/concept-conditional-access-conditions.md)と [Exchange Online のクライアント アクセス規則](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules)の組み合わせを使用して、以前のバージョンの認証クライアントをブロックする AD FS 制御を置き換えることを検討します。 |
-| ユーザーに、AD FS への認証時にオンプレミスの多要素認証サーバー ソリューションに対する多要素認証を行うことを要求している。| マネージド ID ドメインでは、オンプレミスの多要素認証ソリューションを介して認証フローに多要素認証チャレンジを挿入することはできません。 ただし、ドメインの変換後は、Azure Multi-Factor Authentication サービスを使用して多要素認証を行うことができます。<br /><br /> 現在、ユーザーが Azure Multi-Factor Authentication を使用していない場合は、1 回限りのユーザー登録手順が必要になります。 計画した登録の準備を行い、ユーザーに連絡する必要があります。 |
+| ユーザーに、AD FS への認証時にオンプレミスの多要素認証サーバー ソリューションに対する多要素認証を行うことを要求している。| マネージド ID ドメインでは、オンプレミスの多要素認証ソリューションを介して認証フローに多要素認証チャレンジを挿入することはできません。 ただし、ドメインの変換後は、Azure AD Multi-Factor Authentication サービスを使用して多要素認証を行うことができます。<br /><br /> 現在、ユーザーが Azure AD Multi-Factor Authentication を使用していない場合は、1 回限りのユーザー登録手順が必要になります。 計画した登録の準備を行い、ユーザーに連絡する必要があります。 |
 | 現在、Microsoft 365 へのアクセスを制御するために、AD FS でアクセス制御ポリシー (AuthZ 規則) を使用している。| ポリシーを同等の Azure AD [条件付きアクセス ポリシー](../conditional-access/overview.md)と [Exchange Online のクライアント アクセス規則](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules)に置き換えることを検討します。|
 
 ### <a name="common-ad-fs-customizations"></a>一般的な AD FS のカスタマイズ
@@ -144,11 +144,11 @@ AD FS Rapid Restore Tool を使用しない場合は、少なくとも、Microso
 
 認証を行うユーザーが企業ネットワーク内に存在する場合、AD FS によって **InsideCorporateNetwork** 要求が発行されます。 その後、この要求を Azure AD に渡すことができます。 要求は、ユーザーのネットワークの場所に基づいて多要素認証をバイパスするために使用されます。 現在、AD FS でこの機能を利用できるかどうかを判断する方法については、「[フェデレーション ユーザー用の信頼できる IP](../authentication/howto-mfa-adfs.md)」を参照してください。
 
-ドメインがパススルー認証に変換された後、 **InsideCorporateNetwork** 要求は使用できません。 この機能の代わりに、[Azure AD のネームド ロケーション](../reports-monitoring/quickstart-configure-named-locations.md)を使用できます。
+ドメインがパススルー認証に変換された後、**InsideCorporateNetwork** 要求は使用できません。 この機能の代わりに、[Azure AD のネームド ロケーション](../reports-monitoring/quickstart-configure-named-locations.md)を使用できます。
 
 ネームド ロケーションを構成した後は、ネットワークの **[すべての信頼できる場所]** または **[MFA の信頼できる IP]** の値を含めるか除外するために構成されたすべての条件付きアクセス ポリシーを、新しいネームド ロケーションを反映するように更新する必要があります。
 
-条件付きアクセスでの **場所** の条件の詳細については、 [Active Directory の条件付きアクセスの場所](../conditional-access/location-condition.md)に関するページを参照してください。
+条件付きアクセスでの **場所** の条件の詳細については、[Active Directory の条件付きアクセスの場所](../conditional-access/location-condition.md)に関するページを参照してください。
 
 #### <a name="hybrid-azure-ad-joined-devices"></a>ハイブリッド Azure AD 参加済みデバイス
 
@@ -226,7 +226,7 @@ Azure AD スマート ロックアウトでは、ブルートフォース パス
 
 デバイスでシームレス SSO を使用する場合は、Active Directory のグループ ポリシーを使って、ユーザーのイントラネット ゾーン設定に Azure AD URL を追加する必要があります。
 
-既定では、Web ブラウザーで、URL から適切なゾーン (インターネットまたはイントラネット) が自動的に判断されます。 たとえば、 **http:\/\/contoso/** はイントラネット ゾーンにマップされ、 **http:\/\/intranet.contoso.com** はインターネット ゾーンにマップされます (URL にピリオドが含まれているため)。 Azure AD URL と同様に、URL をブラウザーのイントラネット ゾーンに明示的に追加した場合にのみ、ブラウザーから Kerberos チケットがクラウド エンドポイントに送信されます。
+既定では、Web ブラウザーで、URL から適切なゾーン (インターネットまたはイントラネット) が自動的に判断されます。 たとえば、**http:\/\/contoso/** はイントラネット ゾーンにマップされ、**http:\/\/intranet.contoso.com** はインターネット ゾーンにマップされます (URL にピリオドが含まれているため)。 Azure AD URL と同様に、URL をブラウザーのイントラネット ゾーンに明示的に追加した場合にのみ、ブラウザーから Kerberos チケットがクラウド エンドポイントに送信されます。
 
 必要な変更をデバイスに[ロールアウト](./how-to-connect-sso-quick-start.md)する手順を完了してください。
 
@@ -292,7 +292,7 @@ Azure AD スマート ロックアウトでは、ブルートフォース パス
 「[テストと次のステップ](#testing-and-next-steps)」に進みます。
 
 > [!IMPORTANT]
-> 次のセクションはスキップします。「 **オプション B:Azure AD Connect と PowerShell を使用してフェデレーションからパススルー認証に切り替える** 」セクションはスキップします。 そのセクションの手順は、サインイン方法をパススルー認証に変更し、シームレス SSO を有効にするオプション A を選択した場合、適用されません。 
+> 次のセクションはスキップします。「**オプション B:Azure AD Connect と PowerShell を使用してフェデレーションからパススルー認証に切り替える**」セクションはスキップします。 そのセクションの手順は、サインイン方法をパススルー認証に変更し、シームレス SSO を有効にするオプション A を選択した場合、適用されません。 
 
 #### <a name="option-b-switch-from-federation-to-pass-through-authentication-by-using-azure-ad-connect-and-powershell"></a>オプション B: Azure AD Connect と PowerShell を使用してフェデレーションからパススルー認証に切り替える
 
@@ -430,7 +430,7 @@ AD FS を他の目的で (つまり、他の証明書利用者信頼で) 使用�
 
 ### <a name="sync-userprincipalname-updates"></a>userPrincipalName の更新を同期する
 
-これまで、次の条件が両方とも当てはまらない限り、オンプレミス環境から同期サービスを使用する、 **UserPrincipalName** 属性の更新はブロックされていました。
+これまで、次の条件が両方とも当てはまらない限り、オンプレミス環境から同期サービスを使用する、**UserPrincipalName** 属性の更新はブロックされていました。
 
 * ユーザーがマネージド (非フェデレーション) ID ドメインに存在する。
 * ユーザーにライセンスが割り当てられていない。

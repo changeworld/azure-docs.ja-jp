@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4dd9f98f174144cef455157162694a470aa1065f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2652bd8ed33eb68e228f059fba9daa3c6e7c22da
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951765"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170159"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Azure Pipelines を使用してカスタム ポリシーをデプロイする
 
@@ -29,7 +29,7 @@ Azure Pipelines を有効にして Azure AD B2C 内でカスタム ポリシー�
 1. Azure パイプラインを構成する
 
 > [!IMPORTANT]
-> Azure パイプラインを使用した Azure AD B2C カスタム ポリシーの管理では、現在、Microsoft Graph API `/beta` エンドポイントで利用できる **プレビュー** 操作を使用します。 実稼働アプリケーションにおけるこれらの API の使用はサポートされていません。 詳細については、「[Microsoft Graph REST API ベータ版のエンドポイント リファレンス](/graph/api/overview?toc=.%252fref%252ftoc.json&view=graph-rest-beta)」を参照してください。
+> Azure パイプラインを使用した Azure AD B2C カスタム ポリシーの管理では、現在、Microsoft Graph API `/beta` エンドポイントで利用できる **プレビュー** 操作を使用します。 実稼働アプリケーションにおけるこれらの API の使用はサポートされていません。 詳細については、「[Microsoft Graph REST API ベータ版のエンドポイント リファレンス](/graph/api/overview?toc=.%2fref%2ftoc.json&view=graph-rest-beta)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

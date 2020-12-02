@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c340f973193f9c46735423c86112816003fecfcd
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 748f91b2fe77667969e9736f8084a9dd24018425
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578911"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172471"
 ---
 # <a name="directory-synchronization"></a>ディレクトリ同期
 
@@ -54,8 +54,8 @@ ms.locfileid: "94578911"
 
 ## <a name="implement-directory-synchronization-with-azure-ad"></a>Azure AD とのディレクトリ同期を実装する
 
-* [ID プロビジョニングとは](https://docs.microsoft.com/azure/active-directory/cloud-provisioning/what-is-provisioning) 
+* [ID プロビジョニングとは](../cloud-provisioning/what-is-provisioning.md) 
 
-* [ハイブリッド ID ディレクトリ統合ツール](https://docs.microsoft.com/azure/active-directory/hybrid/plan-hybrid-identity-design-considerations-tools-comparison) 
+* [ハイブリッド ID ディレクトリ統合ツール](../hybrid/plan-hybrid-identity-design-considerations-tools-comparison.md) 
 
-* [Azure AD Connect インストールのロードマップ](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-roadmap)
+* [Azure AD Connect インストールのロードマップ](../hybrid/how-to-connect-install-roadmap.md)

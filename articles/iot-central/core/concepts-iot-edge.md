@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 5c51649e742f6e314e0e324ae19c38f1a83b02ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c4248246be845aa8608aac8b8a3ce761ea1ef86
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016862"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004774"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -29,7 +29,7 @@ IoT Edge は、次の 3 つのコンポーネントで構成されます。
 
 **Azure IoT Edge** デバイスは、IoT Edge デバイスに接続するダウンストリーム デバイスがあるゲートウェイ デバイスにすることができます。 この記事では、ダウンストリーム デバイスの接続パターンに関する詳細情報を共有します。
 
-**デバイス テンプレート**により、デバイスと IoT Edge のモジュールの機能が定義されます。 機能には、モジュールが送信するテレメトリ、モジュール プロパティ、モジュールが応答するコマンドが含まれます。
+**デバイス テンプレート** により、デバイスと IoT Edge のモジュールの機能が定義されます。 機能には、モジュールが送信するテレメトリ、モジュール プロパティ、モジュールが応答するコマンドが含まれます。
 
 ## <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>ゲートウェイおよびモジュールとのダウンストリーム デバイスのリレーションシップ
 
@@ -63,9 +63,9 @@ Azure IoT Central では、配置マニフェストをインポートしてデ�
 
 IoT Central は、IoT Edge デバイスを次のようにモデル化します。
 
-* すべての IoT Edge デバイス テンプレートに、デバイス機能モデルがあります。
+* すべての IoT Edge デバイス テンプレートに、デバイス モデルがあります。
 * 配置マニフェストに一覧表示されているすべてのカスタム モジュールに対して、モジュール機能モデルが生成されます。
-* 各モジュール機能モデルとデバイス機能モデルの間にリレーションシップが確立されます。
+* 各モジュール機能モデルとデバイス モデルの間にリレーションシップが確立されます。
 * モジュール機能モデルは、モジュール インターフェイスを実装します。
 * 各モジュール インターフェイスには、テレメトリ、プロパティ、およびコマンドが含まれます。
 
@@ -73,7 +73,7 @@ IoT Central は、IoT Edge デバイスを次のようにモデル化します�
 
 ## <a name="iot-edge-gateway-devices"></a>IoT Edge ゲートウェイ デバイス
 
-IoT Edge デバイスをゲートウェイ デバイスにするよう選択した場合は、ゲートウェイ デバイスに接続するデバイスのデバイス機能モデルにダウンストリーム リレーションシップを追加できます。
+IoT Edge デバイスをゲートウェイ デバイスにするよう選択した場合は、ゲートウェイ デバイスに接続するデバイスのデバイス モデルにダウンストリーム リレーションシップを追加できます。
 
 ## <a name="next-steps"></a>次のステップ
 

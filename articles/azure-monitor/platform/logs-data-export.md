@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 1813da8a8a812eeded235d71c351ec352c42707c
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: d2e93ccfaf3ff2c5b74ceef1f6a274f71ee52c4e
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920085"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309836"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
 Azure Monitor で Log Analytics ワークスペースのデータ エクスポートを使用すると、Log Analytics ワークスペースで選択したテーブルのデータを収集する際に Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。 この記事では、この機能の詳細と、ワークスペースでデータ エクスポートを構成する手順について説明します。
@@ -68,7 +68,7 @@ Log Analytics ワークスペースのデータ エクスポートでは、Log A
 
 ストレージ アカウントの BLOB パスは、*WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=00/PT1H.json* です。 追加 BLOB はストレージへの書き込みが 50K に制限されているため、追加の数が多い場合はエクスポートされる BLOB の数が増える可能性があります。 このような場合の BLOB の名前付けパターンは PT1H_#.json となり、# は増分の BLOB 数です。
 
-ストレージ アカウントのデータ形式は [JSON 行](diagnostic-logs-append-blobs.md)です。 つまり、各レコードは改行で区切られ、外部のレコード配列や JSON レコード間のコンマはありません。 
+ストレージ アカウントのデータ形式は [JSON 行](./resource-logs-blob-format.md)です。 つまり、各レコードは改行で区切られ、外部のレコード配列や JSON レコード間のコンマはありません。 
 
 [![ストレージのサンプル データ](media/logs-data-export/storage-data.png)](media/logs-data-export/storage-data.png#lightbox)
 
@@ -78,7 +78,7 @@ Log Analytics のデータ エクスポートでは、時間ベースのアイ�
 データは、Azure Monitor に到達すると、ほぼリアルタイムでイベント ハブに送信されます。 イベント ハブは、エクスポートするデータ型ごとに作成され、*am-* の後にテーブルの名前が続く名前が付けられます。 たとえば、テーブル *SecurityEvent* は、*am-SecurityEvent* という名前のイベント ハブに送信されます。 エクスポートされたデータを特定のイベント ハブに到達させる場合や、47 文字の制限を超える名前の付いたテーブルがある場合は、独自のイベント ハブ名を指定して、定義されたテーブルのすべてのデータをそれにエクスポートすることができます。
 
 考慮事項:
-1. "Basic" イベント ハブ SKU では、下のほうのイベント サイズ[制限](https://docs.microsoft.com/azure/event-hubs/event-hubs-quotas#basic-vs-standard-tiers)がサポートされます。ワークスペースの一部のログはそれを超過し、削除されることがありまする "Standard" または "Dedicated" イベント ハブをエクスポート先として使用することをお勧めします。
+1. "Basic" イベント ハブ SKU では、下のほうのイベント サイズ[制限](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers)がサポートされます。ワークスペースの一部のログはそれを超過し、削除されることがありまする "Standard" または "Dedicated" イベント ハブをエクスポート先として使用することをお勧めします。
 2. 多くの場合、エクスポートされるデータの量は時間の経過と共に増加します。そのため、より高い転送速度を処理し、調整シナリオやデータ待ち時間を回避するために、イベント ハブのスケールを拡大する必要があります。 Event Hubs の自動インフレ機能を使用して、自動的にスケールアップし、スループット ユニットの数を増やすことで、使用量のニーズを満たす必要があります。 詳細については、「[Azure Event Hubs のスループット ユニットを自動的にスケールアップする](../../event-hubs/event-hubs-auto-inflate.md)」参照してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -117,6 +117,10 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 ### <a name="create-or-update-data-export-rule"></a>データ エクスポート ルールを作成または更新する
 データ エクスポート ルールでは、あるテーブル セットについて 1 つのエクスポート先にエクスポートするデータを定義します。 ルールはエクスポート先ごとに作成できます。
 
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -203,6 +207,10 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 ## <a name="view-data-export-configuration"></a>データ エクスポートの構成を表示する
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+N/A
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 CLI を使用してデータ エクスポート ルールの構成を表示するには、次のコマンドを使用します。
@@ -221,6 +229,10 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ---
 
 ## <a name="disable-an-export-rule"></a>エクスポート ルールを無効にする
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -256,6 +268,10 @@ Content-type: application/json
 
 ## <a name="delete-an-export-rule"></a>エクスポート ルールを削除する
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+N/A
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 CLI を使用してデータ エクスポート ルールを削除するには、次のコマンドを使用します。
@@ -274,6 +290,10 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 ---
 
 ## <a name="view-all-data-export-rules-in-a-workspace"></a>ワークスペース内のすべてのデータ エクスポート ルールを表示する
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

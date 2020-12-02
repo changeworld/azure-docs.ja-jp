@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: fd1ca218d9c079e26f8424a36b90b9b657690b41
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: d44f9109540c3899ab50bd5c4c02afa19045bafb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397707"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182939"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Application Gateway での無効なゲートウェイによるエラーのトラブルシューティング
 
@@ -95,7 +95,7 @@ DhcpOptions            : {
 * BackendHttpSetting で 80 以外のポートが指定されている場合、既定のサイトはポート 80 でリッスンするように構成する必要があります。
 * `http://127.0.0.1:port` の呼び出しで、HTTP 結果コード 200 が返されるようにする必要があります。 30 秒のタイムアウト期間内に返されるようにする必要があります。
 * 構成済みのポートを開き、構成済みのポートでの送受信トラフィックをブロックするファイアウォール規則または Azure ネットワーク セキュリティ グループが存在しないようにします。
-* FQDN またはパブリック IP と共に Azure クラシック VM またはクラウド サービスを使用する場合、対応する[エンドポイント](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=%252fazure%252fapplication-gateway%252ftoc.json)を必ず開いてください。
+* FQDN またはパブリック IP と共に Azure クラシック VM またはクラウド サービスを使用する場合、対応する[エンドポイント](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=%2fazure%2fapplication-gateway%2ftoc.json)を必ず開いてください。
 * Azure Resource Manager を介して VM を構成しており、アプリケーション ゲートウェイがデプロイされた VNet の外側に VM がある場合、[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)は、目的のポートにアクセスできるように構成する必要があります。
 
 ## <a name="problems-with-custom-health-probe"></a>カスタムの正常性プローブに関する問題

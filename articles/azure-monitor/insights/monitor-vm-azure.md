@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 0c1e84695ce40b489fb1005325d501ea241cdaf1
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: fc89790c7d268bcfa0c08bd26249bc91979d7fca
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94738103"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186900"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure Monitor を使用して Azure 仮想マシンを監視する
 この記事では、Azure Monitor を使用して Azure 仮想マシンから監視データを収集して分析し、正常性を維持する方法について説明します。 仮想マシンは、[他の Azure リソース](monitor-azure-resource.md)と同様に、Azure Monitor を使用して可用性とパフォーマンスを監視できますが、ゲスト オペレーティング システムとそこで実行されるワークロードも監視する必要があるため、他のリソースと異なります。 
@@ -64,7 +64,7 @@ Azure の仮想マシンによって、次の図に示すような[ログ](../pl
 これらの各構成ステップについては、以降のセクションで説明します。
 
 ### <a name="enable-azure-monitor-for-vms"></a>Azure Monitor for VMs の有効化
-[Azure Monitor for VMs](vminsights-overview.md) は、Azure Monitor 内の仮想マシンを監視するための主要なツールである Azure Monitor の[分析情報](insights-overview.md)です。 これにより、標準 Azure Monitor 機能に次の付加価値が提供されます。
+[Azure Monitor for VMs](vminsights-overview.md) は、Azure Monitor 内の仮想マシンを監視するための主要なツールである Azure Monitor の[分析情報](../monitor-reference.md)です。 これにより、標準 Azure Monitor 機能に次の付加価値が提供されます。
 
 - 仮想マシンのゲスト オペレーティング システムとワークロードの監視を有効にする Log Analytics エージェントと Dependency Agent のオンボードの簡略化。 
 - 仮想マシンのゲスト オペレーティング システムからコア パフォーマンス メトリックの分析を可能にする、事前に定義された傾向を示すパフォーマンス グラフとブック。
@@ -140,7 +140,7 @@ az monitor diagnostic-settings create \
 | 診断設定 | 現在の仮想マシンに対して[診断拡張機能](../platform/diagnostics-extension-overview.md)を有効にして構成します。 |
 | Advisor の推奨事項 | [Azure Advisor](../../advisor/index.yml) からの現在の仮想マシンに関する推奨事項。 |
 | ログ | 現在の仮想マシンに設定されている[スコープ](../log-query/scope.md)を使用して、[Log Analytics](../log-query/log-analytics-overview.md) を開きます。 |
-| 接続モニター | [Network Watcher 接続モニター](../../network-watcher/connection-monitor-preview.md)を開いて、現在の仮想マシンと他の仮想マシンとの間の接続を監視します。 |
+| 接続モニター | [Network Watcher 接続モニター](../../network-watcher/connection-monitor-overview.md)を開いて、現在の仮想マシンと他の仮想マシンとの間の接続を監視します。 |
 
 
 ## <a name="analyzing-metric-data"></a>メトリック データの分析
@@ -242,4 +242,3 @@ System Center Operations Manager を使用すると、仮想マシン上のワ�
 
 * [ログ クエリを使用して Azure Monitor ログのデータを分析する方法について学習する。](../log-query/get-started-queries.md)
 * [Azure Monitor のメトリックとログを使用したアラートについて学習する。](../platform/alerts-overview.md)
-

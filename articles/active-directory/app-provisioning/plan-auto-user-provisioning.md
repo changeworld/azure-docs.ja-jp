@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 010e2a206ef08677651572c274cfc38fd516ecc9
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: e741bd6c87ea32b0d92b1dd53112a1bed3e4cd38
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041122"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174919"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>自動ユーザー プロビジョニングのデプロイを計画する
 
@@ -34,13 +34,13 @@ Azure Active Directory (Azure AD) の自動ユーザープロビジョニング�
 
 自動ユーザー プロビジョニングを有効にすると、主に次のような利点があります。
 
-* **生産性の向上** 。 1 つのユーザー プロビジョニング管理インターフェイスで、複数の SaaS アプリケーションにわたってユーザー ID を管理できます。 このインターフェイスには、プロビジョニング ポリシーの単一のセットがあります。
+* **生産性の向上**。 1 つのユーザー プロビジョニング管理インターフェイスで、複数の SaaS アプリケーションにわたってユーザー ID を管理できます。 このインターフェイスには、プロビジョニング ポリシーの単一のセットがあります。
 
-* **リスクの管理** 。 ロールやアクセス権を定義する従業員の状態またはグループ メンバーシップに基づいて変更を自動化することで、セキュリティを強化できます。
+* **リスクの管理**。 ロールやアクセス権を定義する従業員の状態またはグループ メンバーシップに基づいて変更を自動化することで、セキュリティを強化できます。
 
-* **コンプライアンスとガバナンスへの対応** 。 Azure AD は、すべてのユーザー プロビジョニング要求のネイティブ監査ログをサポートしています。 要求は、ソース システムとターゲット システムの両方で実行されます。 これにより、1 つの画面から、どのユーザーがアプリケーションにアクセスできるかを追跡できます。
+* **コンプライアンスとガバナンスへの対応**。 Azure AD は、すべてのユーザー プロビジョニング要求のネイティブ監査ログをサポートしています。 要求は、ソース システムとターゲット システムの両方で実行されます。 これにより、1 つの画面から、どのユーザーがアプリケーションにアクセスできるかを追跡できます。
 
-* **コスト削減** 。 自動ユーザー プロビジョニングを使用すると、手動プロビジョニングに関連した非効率性や人的エラーを回避することでコストが削減されます。 これにより、独自開発のユーザー プロビジョニング ソリューション、スクリプト、および監査ログの必要性が軽減されます。
+* **コスト削減**。 自動ユーザー プロビジョニングを使用すると、手動プロビジョニングに関連した非効率性や人的エラーを回避することでコストが削減されます。 これにより、独自開発のユーザー プロビジョニング ソリューション、スクリプト、および監査ログの必要性が軽減されます。
 
 ### <a name="licensing"></a>ライセンス
 
@@ -107,7 +107,7 @@ Azure AD プロビジョニング サービスは、各アプリケーション 
 
 1. **Azure AD プロビジョニング サービス** は、ソース システムとターゲット システムに対して [初回サイクル](../app-provisioning/user-provisioning.md)を実行します。 
 
-1. **Azure AD プロビジョニング サービス** は、初回サイクル以降に更新されたすべてのユーザーとグループについてソース システムに対してクエリを実行し、 [増分サイクル](../app-provisioning/user-provisioning.md)を実行します。
+1. **Azure AD プロビジョニング サービス** は、初回サイクル以降に更新されたすべてのユーザーとグループについてソース システムに対してクエリを実行し、[増分サイクル](../app-provisioning/user-provisioning.md)を実行します。
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>クラウド HR アプリケーションの自動ユーザー プロビジョニング 
 
@@ -157,7 +157,7 @@ Azure AD ポータルを使用して、プロビジョニングをサポート�
 
 そうなっていない場合は、次の手順に従ってください。
 
-1. 事前統合されたユーザー プロビジョニング コネクタの[要求を作成](../azuread-dev/howto-app-gallery-listing.md)します。 Microsoft チームがお客様およびアプリケーション開発者と協力し、SCIM がサポートされている場合、お客様のアプリケーションを Microsoft のプラットフォームにオンボードします。
+1. 事前統合されたユーザー プロビジョニング コネクタの[要求を作成](../develop/v2-howto-app-gallery-listing.md)します。 Microsoft チームがお客様およびアプリケーション開発者と協力し、SCIM がサポートされている場合、お客様のアプリケーションを Microsoft のプラットフォームにオンボードします。
 
 1. アプリに対する [BYOA SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 汎用ユーザー プロビジョニング サポートを使用します。 これは、事前に統合されたプロビジョニング コネクタのないアプリにユーザーをプロビジョニングするための Azure AD の要件です。
 
@@ -300,11 +300,11 @@ Azure AD は、監査ログとレポートによって組織のユーザーの�
 
 * [アプリケーションにプロビジョニングするためにオンプレミスの Active Directory から Azure AD に属性を同期する](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
 
-* [Azure Active Directory ギャラリー アプリケーションへのユーザー プロビジョニングを構成している間の管理者の資格情報の保存に関する問題](../app-provisioning/application-provisioning-config-problem-storage-limit.md)
+* [Azure Active Directory ギャラリー アプリケーションへのユーザー プロビジョニングを構成している間の管理者の資格情報の保存に関する問題](./user-provisioning.md)
 
 * [Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md)
 
-* [Azure AD ギャラリー アプリケーションへプロビジョニングされた間違ったユーザー グループ](../app-provisioning/application-provisioning-config-problem-wrong-users-provisioned.md)
+* [Azure AD ギャラリー アプリケーションへプロビジョニングされた間違ったユーザー グループ](../manage-apps/add-application-portal-assign-users.md)
 
 ### <a name="helpful-documentation"></a>役に立つドキュメント
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 21307deb509d0735e4367f2b41603086f301bdeb
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 51a2facfdaccc6cb29264873e9ffd60fc48735da
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533533"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174664"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory アプリケーションのプロビジョニング新機能
 
@@ -59,7 +59,7 @@ Azure Active Directory アプリケーションのプロビジョニングに関
 
 
 ### <a name="updated-articles"></a>更新された記事
-- [Microsoft Graph API を使用してプロビジョニングを構成する](application-provisioning-configure-api.md)
+- [Microsoft Graph API を使用してプロビジョニングを構成する](/graph/application-provisioning-configure-api)
 - [Azure AD ユーザー プロビジョニング サービスの SCIM 2.0 プロトコルへのコンプライアンスに関する既知の問題と解決策](application-provisioning-config-problem-scim-compatibility.md)
 
 ## <a name="july-2020"></a>2020 年 7 月

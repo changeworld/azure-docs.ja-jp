@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f957070ec94fc4c61089f31fe91261a2f52c4ee4
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: b95aac504bc6ee72c353faecad25384e2dc90840
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578860"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172420"
 ---
 # <a name="scim-synchronization-with-azure-active-directory"></a>Azure Active Directory との SCIM 同期
 
@@ -45,11 +45,10 @@ SCIM とは、2 つのエンドポイント (/Users エンドポイントおよ�
 
 ## <a name="implement-scim-with-azure-ad"></a>Azure AD による SCIM を実装する 
 
-* [Azure AD でのプロビジョニングのしくみ ](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works)
+* [Azure AD でのプロビジョニングのしくみ ](../app-provisioning/how-provisioning-works.md)
 
-* [Azure portal でエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する](https://docs.microsoft.com/azure/active-directory/app-provisioning/configure-automatic-user-provisioning-portal)
+* [Azure portal でエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 
-* [SCIM エンドポイントの構築と Azure AD を使用したユーザー プロビジョニングの構成](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)
+* [SCIM エンドポイントの構築と Azure AD を使用したユーザー プロビジョニングの構成](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
-* [Azure AD プロビジョニング サービスの SCIM 2.0 プロトコルへのコンプライアンス](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility)
-
+* [Azure AD プロビジョニング サービスの SCIM 2.0 プロトコルへのコンプライアンス](../app-provisioning/application-provisioning-config-problem-scim-compatibility.md)

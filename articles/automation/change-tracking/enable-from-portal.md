@@ -5,18 +5,18 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9d13e19958ce4614db3706845cc6717b77f60c4c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 6ca5b1df05c04937598278378e001f41f08ef23c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209152"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183636"
 ---
 # <a name="enable-change-tracking-and-inventory-from-azure-portal"></a>Azure portal で変更履歴とインベントリを有効にする
 
 この記事では、Azure portal で 1 つ以上の Azure VM に対して[変更履歴とインベントリ](overview.md)機能を有効にする方法について説明します。 Azure VM を大規模に有効にするには、変更履歴とインベントリを使用して既存の VM を有効にする必要があります。
 
-VM の管理に使用できるリソース グループの数は、[Resource Manager のデプロイの上限](../../azure-resource-manager/templates/cross-scope-deployment.md)によって制限されます。 Resource Manager のデプロイは、デプロイあたり 5 つのリソース グループに制限されています。 それらのリソース グループのうちの 2 つは、Log Analytics ワークスペース、Automation アカウント、および関連リソースを構成するために予約されています。 変更履歴とインベントリを使った管理のために選択できるリソース グループは、これで 3 つ残ります。 この制限は、Automation 機能によって管理できるリソース グループの数ではなく、同時セットアップのみに適用されます。
+VM の管理に使用できるリソース グループの数は、[Resource Manager のデプロイの上限](../../azure-resource-manager/templates/deploy-to-resource-group.md)によって制限されます。 Resource Manager のデプロイは、デプロイあたり 5 つのリソース グループに制限されています。 それらのリソース グループのうちの 2 つは、Log Analytics ワークスペース、Automation アカウント、および関連リソースを構成するために予約されています。 変更履歴とインベントリを使った管理のために選択できるリソース グループは、これで 3 つ残ります。 この制限は、Automation 機能によって管理できるリソース グループの数ではなく、同時セットアップのみに適用されます。
 
 > [!NOTE]
 > 変更履歴とインベントリを有効にする際、Log Analytics ワークスペースと Automation アカウントのリンクは特定のリージョンでのみサポートされています。 サポートされているマッピング ペアの一覧については、[Automation アカウントと Log Analytics ワークスペースのリージョン マッピング](../how-to/region-mappings.md)に関する記事をご覧ください。
@@ -60,5 +60,5 @@ https://portal.azure.com で Azure にサインインします。
 
 ## <a name="next-steps"></a>次のステップ
 
-* この機能の操作の詳細については、[変更履歴の管理](manage-change-tracking.md)と[インベントリの管理](manage-inventory-vms.md)に関するページを参照してください。
+* この機能の操作の詳細については、[変更履歴の管理](manage-change-tracking.md)と[インベントリの管理](manage-inventory-vms.md)に関するページをご覧ください。
 * この機能に関する一般的な問題のトラブルシューティングについては、「[Change Tracking と Inventory に関する問題のトラブルシューティング](../troubleshoot/change-tracking.md)」を参照してください。

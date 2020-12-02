@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 92d108304f788279a636b1dc5e1c4e6c103ede3d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 62f163b9ce649cd5ddb52b4325682570633dfb92
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088881"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183160"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した API Management 用の CI/CD
 
@@ -36,19 +36,19 @@ ms.locfileid: "93088881"
 
 :::image type="content" source="media/devops-api-development-templates/apim-devops.png" alt-text="API Management を使用した DevOps を示す図。":::
 
-この例では、デプロイ環境が 2 つあります。" *開発* " と " *運用* " です。 それぞれに、独自の API Management インスタンスがあります。 
+この例では、デプロイ環境が 2 つあります。"*開発*" と "*運用*" です。 それぞれに、独自の API Management インスタンスがあります。 
 
 * API 開発者は、開発インスタンスにアクセスし、それを使用して自分の API の開発とテストを行うことができます。 
-* " *API 発行者* " と呼ばれる指定のチームが運用インスタンスを管理します。
+* "*API 発行者*" と呼ばれる指定のチームが運用インスタンスを管理します。
 
-この提案されたアプローチの鍵となるのは、API Management のすべての構成を [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)に保存しておくことです。 組織は、これらのテンプレートを Git などのソース管理システムで保持する必要があります。 図に示すように、発行者リポジトリに、テンプレート コレクション内の運用 API Management インスタンスのすべての構成が含まれています。
+この提案されたアプローチの鍵となるのは、API Management のすべての構成を [Azure Resource Manager テンプレート](../azure-resource-manager/templates/template-syntax.md)に保存しておくことです。 組織は、これらのテンプレートを Git などのソース管理システムで保持する必要があります。 図に示すように、発行者リポジトリに、テンプレート コレクション内の運用 API Management インスタンスのすべての構成が含まれています。
 
 |テンプレート  |説明  |
 |---------|---------|
 |サービス テンプレート     | 価格レベルやカスタム ドメインなど、API Management インスタンスのサービス レベルの構成。         |
 |共有テンプレート     |  グループ、製品、ロガーなど、API Management インスタンス全体の共有リソース。    |
 |API テンプレート     |  API とそのサブリソース (操作、ポリシー、診断設定) の構成。        |
-|マスター (メイン) テンプレート     |   すべてのテンプレートに[リンクし](../azure-resource-manager/resource-group-linked-templates.md)、それらを順番にデプロイすることで、すべてを 1 つにまとめます。 すべての構成を 1 つの API Management インスタンスにデプロイする場合は、メイン テンプレートをデプロイします。 各テンプレートを個別にデプロイすることもできます。       |
+|マスター (メイン) テンプレート     |   すべてのテンプレートに[リンクし](../azure-resource-manager/templates/linked-templates.md)、それらを順番にデプロイすることで、すべてを 1 つにまとめます。 すべての構成を 1 つの API Management インスタンスにデプロイする場合は、メイン テンプレートをデプロイします。 各テンプレートを個別にデプロイすることもできます。       |
 
 API 開発者は、発行者リポジトリを開発者リポジトリにフォークし、自分の API に関する変更を処理します。 ほとんどの場合、自分の API 用の API テンプレートに専念し、共有またはサービス テンプレートを変更する必要はありません。
 

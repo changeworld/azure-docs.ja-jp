@@ -13,19 +13,19 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 378dab95d8fb3519bb2fc5c934a760e051a18d29
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: b08b07ebcd6e45e95e23dff8686148889e9d4b39
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94575885"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173921"
 ---
 # <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Azure Active Directory の条件付きアクセス機能についての開発者ガイド
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
 > [!NOTE]
-> この記事の Microsoft ID プラットフォーム バージョンについては、「[Azure Active Directory の条件付きアクセスについての開発者ガイド](/azure/active-directory/develop/v2-conditional-access-dev-guide)」を参照してください。
+> この記事の Microsoft ID プラットフォーム バージョンについては、「[Azure Active Directory の条件付きアクセスについての開発者ガイド](../develop/v2-conditional-access-dev-guide.md)」を参照してください。
 
 Azure Active Directory (Azure AD) の条件付きアクセス機能では、アプリをセキュリティで保護し、サービスを保護するために使用できる方法の 1 つを提供します。 条件付きアクセスを使用することで、開発者やエンタープライズのお客様は、次のようなさまざまな方法でサービスを保護できます。
 

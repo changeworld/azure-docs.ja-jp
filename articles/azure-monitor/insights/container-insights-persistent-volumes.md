@@ -3,12 +3,12 @@ title: Azure Monitor for containers で PV の監視を構成する | Microsoft 
 description: この記事では、Azure Monitor for containers で永続ボリュームを使用している Kubernetes クラスターの監視を構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: 30e99c2abbc66de257f9623dedc901fca51976c1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e7c547c137fc84e6e6dfb2807b871ef0329a3c13
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92492126"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186849"
 ---
 # <a name="configure-pv-monitoring-with-azure-monitor-for-containers"></a>Azure Monitor for containers で PV の監視を構成する
 
@@ -30,4 +30,4 @@ Azure Monitor for containers には、すべてのクラスター用のブック
 
 ## <a name="next-steps"></a>次のステップ
 
-- 収集される PV メトリックの詳細を[こちら](https://aka.ms/ci/pvconfig)で確認します。
+- 収集される PV メトリックの詳細を[こちら](./container-insights-agent-config.md)で確認します。

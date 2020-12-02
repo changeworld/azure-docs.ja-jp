@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 85ff3bed2a648f852c311fefa8513622c2a48285
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 4d12a7ec76f3390aabc7b45aeb0cd8cedcc6febd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376538"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186475"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>セキュア エクスポートを使用して Azure を ITSM ツールに接続する
 
@@ -60,8 +60,8 @@ ITSM Connector ツールの使用を開始するには、次の手順を実行�
 3. パートナー環境を構成します。 
 
 セキュア エクスポートは、次の ITSM ツールとの接続をサポートしています。
-* [ServiceNow](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-servicenow-to-azure-monitor)
-* [BMC Helix](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-bmc-helix-to-azure-monitor)
+* [ServiceNow](#connect-servicenow-to-azure-monitor)
+* [BMC Helix](#connect-bmc-helix-to-azure-monitor)
 
 ## <a name="register-with-azure-active-directory"></a>Azure Active Directory に登録する
 
@@ -90,7 +90,7 @@ ITSM Connector ツールの使用を開始するには、次の手順を実行�
 5. **[セキュア Webhook]** を選択します。
 6. 次の詳細を選択します。
    1. 登録した Azure Active Directory インスタンスのオブジェクト ID を選択します。
-   2. URI に、[ITSM ツール環境](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#configure-the-partner-environment)からコピーした Webhook URL を貼り付けます。
+   2. URI に、[ITSM ツール環境](#configure-the-itsm-tool-environment)からコピーした Webhook URL を貼り付けます。
    3. **[共通アラート スキーマを有効にする]** に **[はい]** を設定します。 
 
    次の図は、セキュア Webhook アクションの構成の例を示しています。

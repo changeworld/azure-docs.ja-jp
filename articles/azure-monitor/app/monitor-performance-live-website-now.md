@@ -4,12 +4,12 @@ description: Web サイトを再デプロイせずにそのパフォーマンス
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 6c27c78bf8e3f3b8af342a14a38c9be3821d781a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 53dbcc341fdd4bc194d34d40cdd2a975df496376
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020927"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186305"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights コードなしアタッチを使用した実行時の Web アプリのインストルメント化
 
@@ -93,7 +93,7 @@ Application Insights を有効にすると、Web アプリに DLL と Applicatio
 
 - applicationInsights.config ファイルがターゲット アプリ ディレクトリ内に存在し、お客様の ikey を含んでいることを確認します。
 
-- データがないと思われる場合は、[Analytics](../log-query/get-started-portal.md) でクエリを実行して、現在テレメトリを送信中のクラウド ロールをすべて一覧表示できます。
+- データがないと思われる場合は、[Analytics](../log-query/log-analytics-tutorial.md) でクエリを実行して、現在テレメトリを送信中のクラウド ロールをすべて一覧表示できます。
   ```Kusto
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
@@ -340,4 +340,3 @@ Status Monitor を使用して実行時にのみインストルメント化す�
 [qna]: ../faq.md
 [roles]: ./resources-roles-access-control.md
 [usage]: ./javascript.md
-

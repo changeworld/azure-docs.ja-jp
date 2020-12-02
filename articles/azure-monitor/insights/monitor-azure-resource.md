@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: e3a8e8b908c9d278654bfe992474811d6a9ddb86
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: d365b13ef8fb7ed9676bb00919315dc6fc9773ee
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993713"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184588"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure Monitor を使用した Azure リソースの監視
 Azure リソースに依存するクリティカルなアプリケーションとビジネス プロセスがある場合は、それらのリソースの可用性、パフォーマンス、操作を監視する必要があります。 この記事では、Azure リソースによって生成される監視データと、Azure Monitor の機能を使用してこのデータについての分析とアラートを行う方法について説明します。
@@ -93,14 +93,14 @@ Azure Monitor ログにデータを収集するには、Log Analytics ワーク�
 
 
 ### <a name="insights-and-solutions"></a>分析情報とソリューション 
-一部のサービスでは、Azure Monitor の標準機能を超えるツールが提供されています。 [分析情報](./insights-overview.md)では、Azure Monitor データ プラットフォームと標準機能に基づいてカスタマイズされた監視エクスペリエンスが提供されます。 [ソリューション](./solutions.md)では、Azure Monitor ログに基づいて構築された定義済みの監視ロジックが提供されます。 
+一部のサービスでは、Azure Monitor の標準機能を超えるツールが提供されています。 [分析情報](../monitor-reference.md)では、Azure Monitor データ プラットフォームと標準機能に基づいてカスタマイズされた監視エクスペリエンスが提供されます。 [ソリューション](./solutions.md)では、Azure Monitor ログに基づいて構築された定義済みの監視ロジックが提供されます。 
 
 サービスに Azure Monitor の分析情報がある場合は、各リソースのメニューの **[監視]** からアクセスできます。 すべての分析情報とソリューションには、**Azure Monitor** のメニューからアクセスします。
 
 ![Azure portal での分析情報](media/monitor-azure-resource/insights.png)
 
 ### <a name="metrics"></a>メトリック
-Azure portal でメトリックを分析するには、ほとんどのサービスの **[メトリック]** メニュー項目から使用できる[メトリックスエクス プローラー](../platform/metrics-getting-started.md)を使用します。 このツールを使用すると、個々のメトリックまたは複数の組み合わせを使用して、相関関係や傾向を特定することができます。 
+Azure portal でメトリックを分析するには、ほとんどのサービスの **[メトリック]** メニュー項目から使用できる [メトリックスエクス プローラー](../platform/metrics-getting-started.md)を使用します。 このツールを使用すると、個々のメトリックまたは複数の組み合わせを使用して、相関関係や傾向を特定することができます。 
 
 - メトリックス エクスプローラーの使用について詳しくは、「[Azure メトリックス エクスプローラーの概要](../platform/metrics-getting-started.md)」を参照してください。
 - 複数のメトリックの使用や、フィルターや分割の適用など、メトリックス エクスプローラーの高度な機能については、「[Azure メトリックス エクスプローラーの高度な機能](../platform/metrics-charts.md)」を参照してください。
@@ -119,7 +119,7 @@ Azure portal でアクティビティ ログのエントリを表示します。
 ### <a name="azure-monitor-logs"></a>Azure Monitor ログ
 Azure Monitor ログを使用すると、複数のサービスや他のデータ ソースからのログとメトリックが統合され、強力なクエリ ツールで分析することができます。 前に説明したように、Azure Monitor の Log Analytics ワークスペースにプラットフォーム メトリック、アクティビティ ログ、リソース ログを収集するには、診断設定を作成します。
 
-[Log Analytics](../log-query/get-started-portal.md) では[ログ クエリ](../log-query/log-query-overview.md)を使用できます。これは、すべての機能を備えたクエリ言語を使用してログ データの高度な分析を実行できる、Azure Monitor の強力な機能です。 [クエリ スコープ](../log-query/scope.md#query-scope)としてリソースを使用してログ クエリを操作するには、Azure リソースの **[監視]** メニューの **[ログ]** から Log Analytics を開きます。 これにより、そのリソースだけについて複数のテーブルのデータを分析できます。 すべてのリソースのログにアクセスするには、Azure Monitor のメニューから **[ログ]** を使用します。 
+[Log Analytics](../log-query/log-analytics-tutorial.md) では[ログ クエリ](../log-query/log-query-overview.md)を使用できます。これは、すべての機能を備えたクエリ言語を使用してログ データの高度な分析を実行できる、Azure Monitor の強力な機能です。 [クエリ スコープ](../log-query/scope.md#query-scope)としてリソースを使用してログ クエリを操作するには、Azure リソースの **[監視]** メニューの **[ログ]** から Log Analytics を開きます。 これにより、そのリソースだけについて複数のテーブルのデータを分析できます。 すべてのリソースのログにアクセスするには、Azure Monitor のメニューから **[ログ]** を使用します。 
 
 - ログ クエリの記述に使用されるクエリ言語の使用に関するチュートリアルについては、「[Azure Monitor でログ クエリの使用を開始する](../log-query/get-started-queries.md)」を参照してください。
 - Azure Monitor ログでのリソース ログの収集方法と、クエリでそれらにアクセスする方法の詳細については、「[Azure Monitor の Log Analytics ワークスペースで Azure リソース ログを収集する](../platform/resource-logs.md#send-to-log-analytics-workspace)」を参照してください。

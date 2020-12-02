@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 82220a63cfe470344951e4276bc9eaccd9600428
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 2011fa8e85f10f12ae914b02710bbd65f5700403
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677352"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913047"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>パフォーマンス用に Azure Data Lake Storage Gen2 を最適化する
 
@@ -47,7 +47,7 @@ Data Lake Storage Gen2 は、あらゆる分析シナリオで必要とされる
 |--------------------|------------------------------------------------------|------------------------------|
 | DistCp            | -m (マッパー)   | [リンク](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [リンク](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | fs.azure.block.size、-m (マッパー)    |   [リンク](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| Sqoop           | fs.azure.block.size、-m (マッパー)    |   [リンク](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>データ セットの構成
 
@@ -57,7 +57,7 @@ Data Lake Storage Gen2 は、あらゆる分析シナリオで必要とされる
 
 通常、HDInsight や Azure Data Lake Analytics などの分析エンジンでは、ファイルごとのオーバーヘッドがあります。 データを多数の小さなファイルとして保存すると、パフォーマンスに悪影響を及ぼすことがあります。 一般に、パフォーマンスを向上させるには、データをより大きなサイズ (256 MB から 100 GB) のファイルにまとめます。 エンジンとアプリケーションの中には、サイズが 100 GB を超えるファイルを効率的に処理できないものもあります。
 
-場合によっては、データ パイプラインで小さなファイルを多数含む生データの制御が制限されることがあります。 ダウンストリーム アプリケーションでは、"調理" のプロセスを設けて、より大きいファイルを生成することをお勧めします。
+場合によっては、データ パイプラインで小さなファイルを多数含む生データの制御が制限されることがあります。 一般に、ダウンストリーム アプリケーションで使用できるように小さいファイルを大きなファイルに集約する何らかのプロセスを、お使いのシステムに用意することをお勧めします。
 
 ### <a name="organizing-time-series-data-in-folders"></a>フォルダー内の時系列データの整理
 

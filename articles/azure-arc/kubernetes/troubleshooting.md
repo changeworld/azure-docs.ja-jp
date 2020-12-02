@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Arc 対応 Kubernetes クラスターに関する一般的な問題のトラブルシューティング。
 keywords: Kubernetes, Arc, Azure, コンテナー
-ms.openlocfilehash: 4a8f4c652f1ab73e0b9979f77d7de5014c8d31a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e05701b92d2d96074a07e0e61ce65145a1d9dfd
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540610"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302398"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Azure Arc 対応 Kubernetes のトラブルシューティング (プレビュー)
 
@@ -69,7 +69,7 @@ pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
 
-すべてのポッドの `STATUS` が `Running` である必要があり、`READY` は `3/3` または `2/2` である必要があります。 ログを取得し、`Error` または `CrashLoopBackOff` を返しているポッドを書き留めます。 これらのポッドのいずれかが `Pending` 状態で止まっている場合、原因として、クラスター ノードにリソースが十分にないことが考えられます。 [クラスターをスケールアップする](https://kubernetes.io/docs/tasks/administer-cluster/cluster-management/#resizing-a-cluster)と、ポッドが `Running` 状態に移行します。
+すべてのポッドの `STATUS` が `Running` である必要があり、`READY` は `3/3` または `2/2` である必要があります。 ログを取得し、`Error` または `CrashLoopBackOff` を返しているポッドを書き留めます。 これらのポッドのいずれかが `Pending` 状態で止まっている場合、原因として、クラスター ノードにリソースが十分にないことが考えられます。 [クラスターをスケールアップする](https://kubernetes.io/docs/tasks/administer-cluster/)と、ポッドが `Running` 状態に移行します。
 
 ## <a name="connecting-kubernetes-clusters-to-azure-arc"></a>Azure Arc に Kubernetes クラスターを Azure に接続する
 

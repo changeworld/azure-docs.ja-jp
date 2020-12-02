@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e368b1590f263618969423d57cdf0531fc2bb54d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 069d7af9cee0bee673c8f0b32659ce362fe4dd70
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67181014"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026798"
 ---
 ### <a name="to-modify-the-local-network-gateway-gatewayipaddress"></a>ローカル ネットワーク ゲートウェイの "gatewayIpAddress" を変更するには
 
-接続先の VPN デバイスのパブリック IP アドレスが変更された場合には、ローカル ネットワーク ゲートウェイを変更してアドレスの変更を反映する必要があります。 ゲートウェイの IP アドレスは、既存の VPN ゲートウェイ接続 (がある場合には、その接続) を削除することなく変更できます。 ゲートウェイの IP アドレスを変更するには、[az network local-gateway update](https://docs.microsoft.com/cli/azure/network/local-gateway) コマンドを使用します。値 "Site2" と "TestRG1" は独自の値に置き換えてください。
+接続先の VPN デバイスのパブリック IP アドレスが変更された場合には、ローカル ネットワーク ゲートウェイを変更してアドレスの変更を反映する必要があります。 ゲートウェイの IP アドレスは、既存の VPN ゲートウェイ接続 (がある場合には、その接続) を削除することなく変更できます。 ゲートウェイの IP アドレスを変更するには、[az network local-gateway update](/cli/azure/network/local-gateway) コマンドを使用します。値 "Site2" と "TestRG1" は独自の値に置き換えてください。
 
 ```azurecli
 az network local-gateway update --gateway-ip-address 23.99.222.170 --name Site2 --resource-group TestRG1

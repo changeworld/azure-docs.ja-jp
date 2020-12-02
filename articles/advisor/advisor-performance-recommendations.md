@@ -3,12 +3,12 @@ title: Advisor を使用して Azure アプリのパフォーマンスを向上�
 description: Azure Advisor のパフォーマンスに関する推奨事項を使用すると、ビジネスに不可欠なアプリケーションのスピードと応答性を向上させることができます。
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 6a008411d4422853e6a98fad59bd4519b42a9548
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 55f5ac6784bf613170fd10060799ab5ad1290a62
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308681"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183347"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 
@@ -146,7 +146,7 @@ Advisor によって、現在構成されていないリージョンからのト
 
 ## <a name="configure-your-azure-cosmos-db-indexing-policy-by-using-custom-included-or-excluded-paths"></a>カスタムの含まれるパスまたは除外されるパスを使用して Azure Cosmos DB インデックス作成ポリシーを構成する
 
-Advisor によって、既定のインデックス作成ポリシーが使用され、カスタム インデックス作成ポリシーの恩恵を受ける可能性がある Azure Cosmos DB コンテナーが特定されます。 この決定は、ワークロード パターンに基づいて行われます。 既定のインデックス作成ポリシーでは、すべてのプロパティのインデックスが作成されます。 クエリ フィルターで明示的に包含または除外されたパスを持つカスタム インデックス作成ポリシーを使用すると、インデックス作成に使用される RU とストレージを減らすことができます。 [インデックス ポリシーの変更の詳細を確認してください。](/azure/cosmos-db/index-policy)
+Advisor によって、既定のインデックス作成ポリシーが使用され、カスタム インデックス作成ポリシーの恩恵を受ける可能性がある Azure Cosmos DB コンテナーが特定されます。 この決定は、ワークロード パターンに基づいて行われます。 既定のインデックス作成ポリシーでは、すべてのプロパティのインデックスが作成されます。 クエリ フィルターで明示的に包含または除外されたパスを持つカスタム インデックス作成ポリシーを使用すると、インデックス作成に使用される RU とストレージを減らすことができます。 [インデックス ポリシーの変更の詳細を確認してください。](../cosmos-db/index-policy.md)
 
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Azure Cosmos DB クエリ ページ サイズ (MaxItemCount) を -1 に設定する 
 

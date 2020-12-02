@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: alsin
-ms.openlocfilehash: 226a23bfdacb0f7423c7dafb8cae36af7333699d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 4694fa679c7bbff309a0452219ff39bacf2488c4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681841"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183704"
 ---
 # <a name="repair-an-automanage-account"></a>Automanage アカウントの修復
 [Azure Automanage アカウント](./automanage-virtual-machines.md#automanage-account)は、自動化された操作が行われるセキュリティ コンテキストまたは ID です。 最近、Automanage アカウントを含むサブスクリプションを新しいテナントに移動した場合は、そのアカウントを再構成する必要があります。 再構成するには、ID の種類をリセットし、アカウントに適切なロールを割り当てる必要があります。
@@ -22,8 +22,8 @@ ms.locfileid: "94681841"
 次の Azure Resource Manager (ARM) テンプレートを使用して、Automanage アカウント ID の種類をリセットします。 ファイルを armdeploy.json または同様の名前でローカルに保存します。 Automanage アカウントの名前と場所は、ARM テンプレートに必須のパラメーターです。
 
 1. 次のテンプレートを使用して、Resource Manager デプロイを作成します。 `identityType = None` を使用してください。
-    * `az deployment sub create` を使用して、Azure CLI でデプロイを作成できます。 詳細については、「[az deployment sub](https://docs.microsoft.com/cli/azure/deployment/sub)」を参照してください。
-    * `New-AzDeployment` モジュールを使用して、PowerShell でデプロイを作成できます。 詳細については、「[New-AzDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azdeployment)」を参照してください。
+    * `az deployment sub create` を使用して、Azure CLI でデプロイを作成できます。 詳細については、「[az deployment sub](/cli/azure/deployment/sub)」を参照してください。
+    * `New-AzDeployment` モジュールを使用して、PowerShell でデプロイを作成できます。 詳細については、「[New-AzDeployment](/powershell/module/az.resources/new-azdeployment)」を参照してください。
 
 1. `identityType = SystemAssigned` を使用して、同じ ARM テンプレートをもう一度実行します。
 
@@ -63,7 +63,7 @@ Automanage アカウントには、Automanage で管理されている VM が含
 
 ARM テンプレートまたは Azure CLI を使用している場合は、Automanage アカウントのプリンシパル ID (オブジェクト ID とも呼ばれます) が必要になります (Azure portal を使用している場合は、ID は必要ありません)。この ID は、次の方法を使用して見つけることができます。
 
-- [Azure CLI](https://docs.microsoft.com/cli/azure/ad/sp):コマンド `az ad sp list --display-name <name of your Automanage Account>` を使用します。
+- [Azure CLI](/cli/azure/ad/sp):コマンド `az ad sp list --display-name <name of your Automanage Account>` を使用します。
 
 - Azure portal:**Azure Active Directory** にアクセスし、Automanage アカウントを名前で検索します。 **[エンタープライズ アプリケーション]** で、Automanage アカウント名が表示されたらそれを選択します。
 

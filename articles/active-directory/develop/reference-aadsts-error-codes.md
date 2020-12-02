@@ -12,12 +12,12 @@ ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 59ed397f3bd54a324f8fa375a3ea870860c31142
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: fa6fc11441811589967ddd7728501b521f9f9155
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410931"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169275"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 認証と承認のエラー コード
 
@@ -315,7 +315,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS700022 | InvalidMultipleResourcesScope - 入力パラメーターのスコープに指定された値に複数のリソースが含まれているため無効です。 |
 | AADSTS700023 | InvalidResourcelessScope - アクセス トークンを要求するときに、入力パラメーターのスコープに指定された値が無効です。 |
 | AADSTS7000215 | 無効なクライアント シークレットが指定されています。 開発者エラー - アプリは、必要な認証パラメーターまたは正しい認証パラメーターを使用せずにサインインしようとしています。|
-| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided - 指定されたクライアント秘密鍵の有効期限が切れています。 Azure portal にアクセスしてアプリの新しいキーを作成するか、またはセキュリティを強化するために証明書資格情報を使用することを検討してください ([https://aka.ms/certCreds](https://aka.ms/certCreds))。 |
+| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided - 指定されたクライアント秘密鍵の有効期限が切れています。 Azure portal にアクセスしてアプリの新しいキーを作成するか、またはセキュリティを強化するために証明書資格情報を使用することを検討してください ([https://aka.ms/certCreds](./active-directory-certificate-credentials.md))。 |
 | AADSTS700005 | InvalidGrantRedeemAgainstWrongTenant - 指定された承認コードは、他のテナントに対して使用することを目的にしているため、拒否されました。 OAuth2 承認コードは、それが取得されたときの同じテナント (必要に応じて /common または /{tenant-ID}) に対して引き換える必要があります。 |
 | AADSTS1000000 | UserNotBoundError - Bind API では Azure AD ユーザーも外部 IDP による認証が必要ですが、まだ行われていません。 |
 | AADSTS1000002 | BindCompleteInterruptError - バインドは正常に完了しましたが、ユーザーに通知する必要があります。 |

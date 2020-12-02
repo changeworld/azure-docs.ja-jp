@@ -4,14 +4,14 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
-ms.openlocfilehash: 4f13c171c5fafb13875f5f87d4eb3d6013f0ff30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 190da8fc98f3a03499188ab173f058d15cd2dafe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79485951"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027677"
 ---
-`deploymentconfig.json` ドキュメントのエントリは、[AciWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py) のパラメーターにマップされます。 次の表は、JSON ドキュメントのエントリとメソッド用パラメーターの間のマッピングについてまとめたものです。
+`deploymentconfig.json` ドキュメントのエントリは、[AciWebservice.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py) のパラメーターにマップされます。 次の表は、JSON ドキュメントのエントリとメソッド用パラメーターの間のマッピングについてまとめたものです。
 
 | JSON エンティティ | メソッド パラメーター | 説明 |
 | ----- | ----- | ----- |

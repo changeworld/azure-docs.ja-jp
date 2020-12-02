@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 5d8adea95708f4c7bbe3e7113c3e39e0484159ee
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 634ac311ba62a134e47f9413d185d4fdf9d63cdb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018051"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186985"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -147,7 +147,7 @@ W3C TraceContext ベースの分散トレースは、最近のすべての .NET 
       distributedTracingMode: 2 // DistributedTracingModes.W3C
   ```
 > [!IMPORTANT] 
-> 相関付けを有効にするために必要なすべての構成を表示するには、[JavaScript の相関付けに関するドキュメント](/azure/azure-monitor/app/javascript#enable-correlation)を参照してください。
+> 相関付けを有効にするために必要なすべての構成を表示するには、[JavaScript の相関付けに関するドキュメント](./javascript.md#enable-correlation)を参照してください。
 
 ## <a name="telemetry-correlation-in-opencensus-python"></a>OpenCensus Python におけるテレメトリの相関付け
 

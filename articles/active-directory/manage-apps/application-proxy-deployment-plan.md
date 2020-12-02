@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
-ms.openlocfilehash: 9736e1b71f5e129989aba9a045581bae8a1c5f93
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9815237617566eda4759ecc31718786b6cb2cac8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997547"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176054"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD アプリケーション プロキシのデプロイ計画
 
@@ -323,7 +323,7 @@ Azure AD は、[監査ログとレポート](../reports-monitoring/concept-provi
 * [アプリに対するシングル サインオンの構成](application-proxy-config-sso-how-to.md)
 * [管理ポータルでのアプリの作成に関する問題](application-proxy-config-problem.md)
 * [Kerberos の制約付き委任を構成する](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
-* [PingAccess を使用した構成](/azure/active-directory/manage-apps/application-proxy-ping-access-publishing-guide)
+* [PingAccess を使用した構成](./application-proxy-ping-access-publishing-guide.md)
 * ["この企業アプリケーションにアクセスできない" というエラー](application-proxy-sign-in-bad-gateway-timeout-error.md)
 * [アプリケーション プロキシ エージェント コネクタのインストールに関する問題](application-proxy-connector-installation-problem.md)
 * [サインインの問題](application-sign-in-problem-on-premises-application-proxy.md)

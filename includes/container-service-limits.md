@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/22/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 6b4678b381e769993b01bbedd1cb4c0aeefc0cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32edd880e5e455393e60c87f4f963d71a3e59a20
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80334699"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025604"
 ---
 | リソース | 制限 |
 | --- | :--- |
@@ -28,7 +28,7 @@ ms.locfileid: "80334699"
 <!-- LINKS - Internal -->
 [basic-networking]: ../articles/aks/concepts-network.md#kubenet-basic-networking
 [advanced-networking]: ../articles/aks/concepts-network.md#azure-cni-advanced-networking
-[standard-load-balancer]: ../articles/load-balancer/load-balancer-standard-overview.md
+[standard-load-balancer]: ../articles/load-balancer/load-balancer-overview.md
 [node-pool]: ../articles/aks/use-multiple-node-pools.md
 
 <!-- LINKS - External -->

@@ -5,27 +5,27 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.date: 07/09/2020
-ms.openlocfilehash: de5d3f8f32e928c77ffd6028ec764793ab7229ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f25c335c568c112c05f81df51d69e83aeff423e2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86495341"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026806"
 ---
 ## <a name="business-disaster-recovery"></a>ビジネスのディザスター リカバリー
 
-このセクションでは、障害が発生した場合でもアプリやサービスを実行し続ける Azure Time Series Insights の機能 (*ビジネス ディザスター リカバリー*とも呼ばれます) について説明します。
+このセクションでは、障害が発生した場合でもアプリやサービスを実行し続ける Azure Time Series Insights の機能 (*ビジネス ディザスター リカバリー* とも呼ばれます) について説明します。
 
 ### <a name="high-availability"></a>高可用性
 
-Azure Time Series Insights は、Azure サービスとして、Azure リージョン レベルでの冗長性を利用して特定の "*高可用性*" 機能を提供します。 たとえば、Azure では、Azure の*複数のリージョンにわたる可用性*機能を通じて、ディザスター リカバリー機能がサポートされています。
+Azure Time Series Insights は、Azure サービスとして、Azure リージョン レベルでの冗長性を利用して特定の "*高可用性*" 機能を提供します。 たとえば、Azure では、Azure の *複数のリージョンにわたる可用性* 機能を通じて、ディザスター リカバリー機能がサポートされています。
 
 Azure を通じて提供される (および、すべての Azure Time Series Insights インスタンスで利用可能な) 追加の高可用性機能として、次のようなものがあります。
 
-- **フェールオーバー**:Azure では [geo レプリケーションと負荷分散](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)が提供されます。
-- **データ復元**と**ストレージ復旧**: Azure では、[データを保持および復旧するためのいくつかのオプション](https://docs.microsoft.com/azure/architecture/resiliency/recovery-data-corruption)が提供されます。
-- **Azure Site Recovery**:Azure は、[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) を通じたサイトの復旧機能を提供します。
-- **Azure Backup**:[Azure Backup](https://docs.microsoft.com/azure/backup/backup-architecture) は、Azure VM のオンプレミス バックアップとクラウド内バックアップの両方をサポートしています。
+- **フェールオーバー**:Azure では [geo レプリケーションと負荷分散](/azure/architecture/resiliency/recovery-loss-azure-region)が提供されます。
+- **データ復元** と **ストレージ復旧**: Azure では、[データを保持および復旧するためのいくつかのオプション](/azure/architecture/resiliency/recovery-data-corruption)が提供されます。
+- **Azure Site Recovery**:Azure は、[Azure Site Recovery](../articles/site-recovery/index.yml) を通じたサイトの復旧機能を提供します。
+- **Azure Backup**:[Azure Backup](../articles/backup/backup-architecture.md) は、Azure VM のオンプレミス バックアップとクラウド内バックアップの両方をサポートしています。
 
 デバイスやユーザーにグローバルで複数のリージョンにわたる高可用性を提供するには、必ず関連する Azure 機能を有効にしてください。
 
@@ -36,9 +36,9 @@ Azure を通じて提供される (および、すべての Azure Time Series In
 
 次のような一部の Azure IoT サービスにも、組み込みのビジネス ディザスター リカバリー機能が含まれています。
 
-- [Azure IoT Hub の高可用ディザスター リカバリー](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr) (リージョン内の冗長性が含まれます)
-- [Azure Event Hubs ポリシー](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
-- [Azure Storage の冗長性](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+- [Azure IoT Hub の高可用ディザスター リカバリー](../articles/iot-hub/iot-hub-ha-dr.md) (リージョン内の冗長性が含まれます)
+- [Azure Event Hubs ポリシー](../articles/event-hubs/event-hubs-geo-dr.md)
+- [Azure Storage の冗長性](../articles/storage/common/storage-redundancy.md)
 
 Azure Time Series Insights を他のサービスと統合すると、ディザスター リカバリーの可能性が向上します。 たとえば、イベント ハブに送信されたテレメトリが、バックアップ Azure Blob Storage データベースに保持される場合があります。
 
@@ -55,10 +55,10 @@ Azure Time Series Insights のデータ、アプリ、およびサービスが�
 
 重複する環境を作成するには、以下の操作を行います。
 
-1. 2 つ目のリージョンに環境を作成します。 詳細については、[Azure portal で新しい Azure Time Series Insights 環境を作成する](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)方法に関するページを参照してください。
+1. 2 つ目のリージョンに環境を作成します。 詳細については、[Azure portal で新しい Azure Time Series Insights 環境を作成する](../articles/time-series-insights/time-series-insights-get-started.md)方法に関するページを参照してください。
 1. イベント ソースの 2 つ目の専用コンシューマー グループを作成します。
 1. そのイベント ソースを新しい環境に接続します。 必ず 2 つ目の専用コンシューマー グループを指定してください。
-1. Azure Time Series Insights の [IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) と [Event Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access) のドキュメントを確認します。
+1. Azure Time Series Insights の [IoT Hub](../articles/time-series-insights/how-to-ingest-data-iot-hub.md) と [Event Hub](../articles/time-series-insights/concepts-access-policies.md) のドキュメントを確認します。
 
 イベントが発生した場合:
 
@@ -71,5 +71,4 @@ Azure Time Series Insights のデータ、アプリ、およびサービスが�
 > * 遅延も発生することがあります。
 > * 操作が再ルーティングされるため、メッセージの処理に瞬間的なスパイクが発生する可能性もあります。
 > 
-> 詳細については、[Azure Time Series Insights の待ち時間の短縮](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency)に関するページを参照してください。
-
+> 詳細については、[Azure Time Series Insights の待ち時間の短縮](../articles/time-series-insights/time-series-insights-environment-mitigate-latency.md)に関するページを参照してください。

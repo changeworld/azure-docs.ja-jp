@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 261a7033737e0d7be9974ca80ca6844b50a19973
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9959ce1c88fb595dedd4174a9185f801168ecb0d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968618"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994181"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server
 
@@ -27,9 +27,9 @@ Windows Server 2012 R2 ではターミナル サービス向けの Windows 認�
 Azure Multi-Factor Authentication Server を専用のサーバーにインストールします。このサーバーがプロキシとしての役割を果たし、RADIUS 要求をリモート デスクトップ ゲートウェイ サーバーの NPS に戻します。 NPS は、ユーザー名とパスワードを検証した後、Multi-Factor Authentication Server に応答を返します。 その後、MFA Server は、認証の 2 番目の要素を実行し、結果をゲートウェイに返します。
 
 > [!IMPORTANT]
-> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなりました。 サインイン イベント時に多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication (MFA) を使用していただく必要があります。
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなりました。 サインイン イベント時に多要素認証が必要な新しいお客様は、クラウドベースの Azure AD Multi-Factor Authentication (MFA) を使用していただく必要があります。
 >
-> クラウドベースの MFA の使用を開始するには、「[チュートリアル: Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
+> クラウドベースの MFA の使用を開始するには、「[チュートリアル: Azure AD Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
 >
 > クラウドベースの MFA を使用する場合は、[Azure Multi-Factor Authentication 用に RADIUS 認証と統合する](howto-mfa-nps-extension.md)方法に関する記事を参照してください。
 >

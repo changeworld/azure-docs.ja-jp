@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 224ccaeace91288171db42d2b8b8cf8c21a352e0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 99da9b787bfe06bece8b8dafdafc257336dddf63
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652520"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176190"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証のトラブルシューティング
 
@@ -72,7 +72,7 @@ ms.locfileid: "94652520"
  ``` 
 4. 資格情報の入力を求められたら、(https://login.microsoftonline.com) ) へのサインインに使用するものと同じユーザー名とパスワードを入力します。
 
-同じユーザー名またはパスワードのエラーが発生した場合、パススルー認証エージェントは正常に動作していて、オンプレミスの UPN がルーティング不可能であることが問題の可能性があることを意味しています。 詳細については、「[代替ログイン ID を構成する]( /windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More)」を参照してください。
+同じユーザー名またはパスワードのエラーが発生した場合、パススルー認証エージェントは正常に動作していて、オンプレミスの UPN がルーティング不可能であることが問題の可能性があることを意味しています。 詳細については、「[代替ログイン ID を構成する](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)」を参照してください。
 
 > [!IMPORTANT]
 > Azure AD Connect サーバーが ([Azure AD Connect の前提条件](./how-to-connect-install-prerequisites.md#installation-prerequisites)に記載されている要件である) ドメイン参加済みでない場合は、無効なユーザー名/パスワードの問題が発生します。

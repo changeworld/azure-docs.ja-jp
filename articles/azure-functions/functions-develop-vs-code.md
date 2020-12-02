@@ -4,12 +4,12 @@ description: Visual Studio Code 用 Azure Functions 拡張機能を使用して�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: c851f5284b87f224932b027fd10ce720327639c2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 573177615ff898326eb29649a7f766b5df34b587
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010516"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168435"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions を開発する
 
@@ -34,7 +34,7 @@ Azure Functions 拡張機能には、次のような利点があります。
 
 この記事の例は、現在、JavaScript (Node.js) と C# クラス ライブラリの関数でのみ使用可能です。  
 
-この記事では、Azure Functions 拡張機能を使って関数を開発して Azure に発行する方法に関する詳細情報を提供します。 この記事を読む前に、[Visual Studio Code を使って最初の関数を作成](functions-create-first-function-vs-code.md) してください。
+この記事では、Azure Functions 拡張機能を使って関数を開発して Azure に発行する方法に関する詳細情報を提供します。 この記事を読む前に、[Visual Studio Code を使って最初の関数を作成](./create-first-function-vs-code-csharp.md) してください。
 
 > [!IMPORTANT]
 > 1 つの関数アプリにローカル開発とポータル開発を混在させないでください。 ローカル プロジェクトから関数アプリに発行すると、ポータルで開発した関数がデプロイ プロセスによって上書きされます。
@@ -233,7 +233,7 @@ Visual Studio Code から発行するときには、[ZIP デプロイ](functions
 
 ### <a name="quick-function-app-create"></a>関数アプリのクイック作成
 
-**[+ Create New Function App in Azure...]\(+ Azure で新しい関数アプリを作成する...\)** を選択すると、関数アプリに必要な Azure リソースの値が拡張機能によって自動的に生成されます。 これらの値は、選択した関数アプリ名に基づきます。 既定値を使ってプロジェクトを Azure の新しい関数アプリに発行する例については、[Visual Studio Code のクイックスタートに関する記事](functions-create-first-function-vs-code.md#publish-the-project-to-azure)を参照してください。
+**[+ Create New Function App in Azure...]\(+ Azure で新しい関数アプリを作成する...\)** を選択すると、関数アプリに必要な Azure リソースの値が拡張機能によって自動的に生成されます。 これらの値は、選択した関数アプリ名に基づきます。 既定値を使ってプロジェクトを Azure の新しい関数アプリに発行する例については、[Visual Studio Code のクイックスタートに関する記事](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure)を参照してください。
 
 作成したリソースに明示的な名前を指定する場合は、高度な作成パスを選択する必要があります。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: a51a4a95d3580912d9b727d1580e6f278831f677
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ffbf3fa3e2d404b7bc5888ef01707cbd816600b3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891504"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182854"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure Automanage for virtual machines
 
@@ -28,7 +28,7 @@ ms.locfileid: "92891504"
 
 ## <a name="overview"></a>概要
 
-Azure Automanage for virtual machines サービスを使用すると、Azure で仮想マシンに役に立つ特定のサービスを検出し、オンボード方法を知り、構成方法を知る必要がなくなります。 これらのサービスは、仮想マシンの信頼性、セキュリティ、管理を強化するためのものであり、Azure のベスト プラクティス サービスと見なされます ([Azure Update Management](../automation/update-management/update-mgmt-overview.md)、[Azure Backup](../backup/backup-overview.md) など多数)。
+Azure Automanage for virtual machines サービスを使用すると、Azure で仮想マシンに役に立つ特定のサービスを検出し、オンボード方法を知り、構成方法を知る必要がなくなります。 これらのサービスは、仮想マシンの信頼性、セキュリティ、管理を強化するためのものであり、Azure のベスト プラクティス サービスと見なされます ([Azure Update Management](../automation/update-management/overview.md)、[Azure Backup](../backup/backup-overview.md) など多数)。
 
 Azure Automanage に仮想マシンをオンボードすると、各ベスト プラクティス サービスが推奨される設定に自動的に構成されます。 ベスト プラクティスは、サービスごとに異なります。 たとえば、Azure Backup の場合、仮想マシンを 1 日に 1 回バックアップして 6 か月保持する、といったベスト プラクティスが考えられます。
 
@@ -47,7 +47,7 @@ Azure Automanage に仮想マシンをオンボードすると、各ベスト �
 - ユーザーは正しいアクセス許可を持っている必要があります (次の段落を参照)
 - 現時点では、サンドボックス サブスクリプションは Automanage ではサポートされていません
 
-既存の Automanage アカウントを使用して VM で Automanage を有効にするには、VM を含むリソース グループの **共同作成者** ロールが必要です。 新しい Automanage アカウントで Automanage を有効にする場合は、サブスクリプションに対する次のアクセス許可が必要です。 **所有者** ロール、または **共同作成者** ロールと **ユーザー アクセス管理者** ロールの併用。 
+既存の Automanage アカウントを使用して VM で Automanage を有効にするには、VM を含むリソース グループの **共同作成者** ロールが必要です。 新しい Automanage アカウントで Automanage を有効にする場合は、サブスクリプションに対する次のアクセス許可が必要です。**所有者** ロール、または **共同作成者** ロールと **ユーザー アクセス管理者** ロールの併用。 
 
 > [!NOTE]
 > 別のサブスクリプションのワークスペースに接続されている VM で Automanage を使用する場合は、サブスクリプションごとに上記に記載されているアクセス許可を持っている必要があります。
@@ -89,7 +89,7 @@ VM に対して Automanage を初めて有効にする場合は、Azure portal �
 
 ### <a name="customizing-a-configuration-profile-using-preferences"></a>基本設定を使用した構成プロファイルのカスタマイズ
 
-自動的にオンボードされる標準サービスに加えて、ユーザーは基本設定の特定のサブセットを構成することもできます。 これらの基本設定は、ベスト プラクティスに違反しない構成オプションの範囲内で許可されます。 たとえば、Azure Backup の場合、ユーザーによる定義が許可されているのは、バックアップの頻度と実行する曜日です。 しかし、Azure Backup 完全にオフにすることは許可されて " *いません* "。
+自動的にオンボードされる標準サービスに加えて、ユーザーは基本設定の特定のサブセットを構成することもできます。 これらの基本設定は、ベスト プラクティスに違反しない構成オプションの範囲内で許可されます。 たとえば、Azure Backup の場合、ユーザーによる定義が許可されているのは、バックアップの頻度と実行する曜日です。 しかし、Azure Backup 完全にオフにすることは許可されて "*いません*"。
 
 > [!NOTE]
 > Dev/Test 構成プロファイルでは、VM のバックアップはまったく行われません。
@@ -107,7 +107,7 @@ Automanage アカウントは、自動化された操作が行われるセキュ
 Azure portal のエクスペリエンスでは、VM で Automanage が有効になっていると、 **[Enable Azure VM best practice]\(Azure VM のベスト プラクティスを有効にする\)** ブレードの詳細ドロップダウンを使用して、Automanage アカウントを割り当てたり、手動で作成したりすることができます。
 
 > [!NOTE]
-> 既存の Automanage アカウントを使用して VM で Automanage を有効にするには、VM を含むリソース グループの **共同作成者** ロールが必要です。 新しい Automanage アカウントで Automanage を有効にする場合は、サブスクリプションに対する次のアクセス許可が必要です。 **所有者** ロール、または **共同作成者** ロールと **ユーザー アクセス管理者** ロールの併用。
+> 既存の Automanage アカウントを使用して VM で Automanage を有効にするには、VM を含むリソース グループの **共同作成者** ロールが必要です。 新しい Automanage アカウントで Automanage を有効にする場合は、サブスクリプションに対する次のアクセス許可が必要です。**所有者** ロール、または **共同作成者** ロールと **ユーザー アクセス管理者** ロールの併用。
 
 
 ## <a name="status-of-vms"></a>VM の状態
@@ -123,7 +123,7 @@ Azure portal で、自動管理されている VM がすべて表示されてい
 - *[構成済み]* - VM は構成されており、ドリフトは検出されていません
 - *[失敗]* - VM にはドリフトがあり、修正できませんでした
 
-**[状態]** が *[失敗]* と表示される場合は、VM が配置されているリソース グループを使用してデプロイのトラブルシューティングを行うことができます。 **[リソース グループ]** に移動し、リソース グループを選択し、 **[デプロイ]** をクリックして、" *失敗* " 状態とエラーの詳細を確認します。
+**[状態]** が *[失敗]* と表示される場合は、VM が配置されているリソース グループを使用してデプロイのトラブルシューティングを行うことができます。 **[リソース グループ]** に移動し、リソース グループを選択し、 **[デプロイ]** をクリックして、"*失敗*" 状態とエラーの詳細を確認します。
 
 
 ## <a name="disabling-automanage-for-vms"></a>Automanage for VMs を無効にする

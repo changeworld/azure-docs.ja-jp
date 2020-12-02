@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: 4ced7331daa116e237d9628d12d16a67687db5b9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 43731f84066943b991b566ff5936e4288aa669eb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968091"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175221"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の仮想ネットワーク設計の考慮事項と構成オプション
 
@@ -104,7 +104,7 @@ Azure AD DS の仮想ネットワークを設計する際には、次の考慮�
 
 ## <a name="network-security-groups-and-required-ports"></a>ネットワーク セキュリティ グループと必要なポート
 
-[ネットワーク セキュリティ グループ (NSG)](../virtual-network/security-overview.md) には、Azure 仮想ネットワーク内のトラフィックへのネットワーク トラフィックを許可または拒否するルールの一覧が含まれています。 ネットワーク セキュリティ グループは、サービスが認証および管理機能を提供できるようにする一連の規則を含むマネージド ドメインを展開するときに作成されます。 この既定のネットワーク セキュリティ グループは、マネージド ドメインがデプロイされる仮想ネットワーク サブネットに関連付けられています。
+[ネットワーク セキュリティ グループ (NSG)](../virtual-network/network-security-groups-overview.md) には、Azure 仮想ネットワーク内のトラフィックへのネットワーク トラフィックを許可または拒否するルールの一覧が含まれています。 ネットワーク セキュリティ グループは、サービスが認証および管理機能を提供できるようにする一連の規則を含むマネージド ドメインを展開するときに作成されます。 この既定のネットワーク セキュリティ グループは、マネージド ドメインがデプロイされる仮想ネットワーク サブネットに関連付けられています。
 
 マネージド ドメインで認証と管理サービスを提供するには、次のネットワーク セキュリティ グループの規則が必要です。 マネージド ドメインが展開されている仮想ネットワーク サブネットのネットワーク セキュリティ グループ規則を編集または削除しないでください。
 
@@ -176,4 +176,4 @@ Azure AD DS で使用されるネットワーク リソースと接続オプシ�
 
 * [Azure 仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)
 * [Azure VPN ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)
-* [Azure ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)
+* [Azure ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)

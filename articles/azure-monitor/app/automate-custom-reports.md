@@ -4,12 +4,12 @@ description: Azure Application Insights データを利用して 日/週/月 1 �
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: f35b7cbde7b719a91b23b19481ab704c445485cb
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: d465666ce5d631a234644d1adc85afcf6e3c1e27
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827737"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010607"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Azure Application Insights データを利用したカスタム レポートの自動化
 
@@ -31,7 +31,7 @@ ms.locfileid: "91827737"
 
 [Application Insights データに対してプログラムからクエリを実行する](https://dev.applicationinsights.io/) ことで、スケジュールに従ってカスタム レポートを作成できます。 次のオプションを利用して、すぐに始めることができます。
 
-* [Microsoft Flow を利用してレポートを自動化する](../platform/logicapp-flow-connector.md)
+* [Power Automate を利用してレポートを自動化する](../platform/logicapp-flow-connector.md)
 * [Logic Apps を利用してレポートを自動化する](automate-with-logic-apps.md)
 * Monitoring シナリオで "Application Insights scheduled digest" [Azure 関数](../../azure-functions/functions-create-first-azure-function.md)テンプレートを利用する。 この関数は SendGrid を使って電子メールを配信します。 
 

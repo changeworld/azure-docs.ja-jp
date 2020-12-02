@@ -12,12 +12,12 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: 19889c05447db05cc20c8f46e97bd8d16ff43bdf
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f74cdb700013dc9b124c6a2df195456f08e4b60a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445661"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182140"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>SaaS アプリケーションと Azure Active Directory の統合に関するチュートリアル
 
@@ -25,7 +25,7 @@ ms.locfileid: "94445661"
 
 Azure AD に事前に統合されているすべての SaaS アプリの一覧については、[Active Directory Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps) のページをご覧ください。
 
-[アプリケーション ネットワーク ポータル](../azuread-dev/howto-app-gallery-listing.md)を使用して、自動プロビジョニング用にギャラリーに追加される [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) が有効なアプリケーションを要求したり、SSO 用にギャラリーに追加される SAML または OIDC が有効になっているアプリケーションを要求したりします。
+[アプリケーション ネットワーク ポータル](../develop/v2-howto-app-gallery-listing.md)を使用して、自動プロビジョニング用にギャラリーに追加される [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) が有効なアプリケーションを要求したり、SSO 用にギャラリーに追加される SAML または OIDC が有効になっているアプリケーションを要求したりします。
 
 ## <a name="quick-links"></a>クイック リンク:
 

@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: Zhchia
-ms.openlocfilehash: 9335869797509171c71caffb0062aeccca207803
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 1658e6adf0c9de0cbd7412b963fb9a134f633430
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358917"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179700"
 ---
 # <a name="tutorial-configure-clarizen-one-for-automatic-user-provisioning"></a>チュートリアル:Clarizen One を構成し、自動ユーザー プロビジョニングに対応させる
 
-このチュートリアルでは、自動ユーザー プロビジョニングを構成するために Clarizen One と Azure Active Directory (Azure AD) の両方で行う必要がある手順について説明します。 構成すると、Azure AD による Azure AD プロビジョニング サービスを使用した [Clarizen One](https://www.clarizen.com/) へのユーザーとグループのプロビジョニングとプロビジョニング解除が自動的に行われます。 このサービスで実行されること、しくみ、およびよく寄せられる質問については、[SaaS (サービスとしてのソフトウェア) アプリケーションへのユーザーのプロビジョニングとプロビジョニング解除を Azure AD で自動化する方法](../manage-apps/user-provisioning.md)に関するページを参照してください。
+このチュートリアルでは、自動ユーザー プロビジョニングを構成するために Clarizen One と Azure Active Directory (Azure AD) の両方で行う必要がある手順について説明します。 構成すると、Azure AD による Azure AD プロビジョニング サービスを使用した [Clarizen One](https://www.clarizen.com/) へのユーザーとグループのプロビジョニングとプロビジョニング解除が自動的に行われます。 このサービスで実行されること、しくみ、およびよく寄せられる質問については、[SaaS (サービスとしてのソフトウェア) アプリケーションへのユーザーのプロビジョニングとプロビジョニング解除を Azure AD で自動化する方法](../app-provisioning/user-provisioning.md)に関するページを参照してください。
 
 ## <a name="capabilities-supported"></a>サポートされる機能
 
@@ -33,21 +33,21 @@ ms.locfileid: "94358917"
 > * アクセスが不要になった Clarizen One のユーザーを削除する。
 > * Azure AD と Clarizen One の間でのユーザー属性の同期を維持する。
 > * Clarizen One にグループとグループ メンバーシップをプロビジョニングする。
-> * Clarizen One への[シングル サインオン (SSO)](https://docs.microsoft.com/azure/active-directory/saas-apps/clarizen-tutorial) が推奨される。
+> * Clarizen One への[シングル サインオン (SSO)](./clarizen-tutorial.md) が推奨される。
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
-* [Azure AD テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)。
-* プロビジョニングを構成するための[アクセス許可](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)が割り当てられた Azure AD のユーザー アカウント。 たとえば、アプリケーション管理者、クラウド アプリケーション管理者、アプリケーションの所有者、グローバル管理者があります。
+* [Azure AD テナント](../develop/quickstart-create-new-tenant.md)。
+* プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)が割り当てられた Azure AD のユーザー アカウント。 たとえば、アプリケーション管理者、クラウド アプリケーション管理者、アプリケーションの所有者、グローバル管理者があります。
 * Clarizen One のユーザー アカウントに、**統合ユーザー** と **Lite 管理者** の [アクセス許可](https://success.clarizen.com/hc/articles/360011833079-API-Keys-Support)がある。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
 
-1. [プロビジョニング サービスのしくみ](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を確認します。
-1. [プロビジョニングの対象](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)となるユーザーを決定します。
-1. [Azure AD と Clarizen One の間でマップする](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)データを決定します。
+1. [プロビジョニング サービスのしくみ](../app-provisioning/user-provisioning.md)を確認します。
+1. [プロビジョニングの対象](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)となるユーザーを決定します。
+1. [Azure AD と Clarizen One の間でマップする](../app-provisioning/customize-application-attributes.md)データを決定します。
 
 ## <a name="step-2-configure-clarizen-one-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD によるプロビジョニングをサポートするように Clarizen One を構成する
 
@@ -61,14 +61,14 @@ ms.locfileid: "94358917"
 
 ## <a name="step-3-add-clarizen-one-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから Clarizen One を追加する
 
-Azure AD アプリケーション ギャラリーから Clarizen One を追加して、Clarizen One へのプロビジョニングの管理を開始します。 SSO のために Clarizen One を以前に設定している場合は、同じアプリケーションを使用できます。 統合を初めてテストするときは、別のアプリを作成してください。 ギャラリーからアプリケーションを追加する方法について詳しくは、[Azure AD テナントへのアプリケーションの追加](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)に関するページを参照してください。
+Azure AD アプリケーション ギャラリーから Clarizen One を追加して、Clarizen One へのプロビジョニングの管理を開始します。 SSO のために Clarizen One を以前に設定している場合は、同じアプリケーションを使用できます。 統合を初めてテストするときは、別のアプリを作成してください。 ギャラリーからアプリケーションを追加する方法について詳しくは、[Azure AD テナントへのアプリケーションの追加](../manage-apps/add-application-portal.md)に関するページを参照してください。
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>手順 4. プロビジョニングの対象となるユーザーを定義する
 
-Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当てや、ユーザーまたはグループの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、「[Azure Active Directory のアプリに対するユーザー割り当ての管理](../manage-apps/assign-user-or-group-access-portal.md)」の手順に従って、ユーザーとグループをアプリケーションに割り当てます。 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、「[スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)」で説明されているスコープ フィルターを使用します。
+Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当てや、ユーザーまたはグループの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、「[Azure Active Directory のアプリに対するユーザー割り当ての管理](../manage-apps/assign-user-or-group-access-portal.md)」の手順に従って、ユーザーとグループをアプリケーションに割り当てます。 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、「[スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)」で説明されているスコープ フィルターを使用します。
 
-* Clarizen One にユーザーとグループを割り当てる場合は、**既定のアクセス** 以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)してロールを追加することができます。
-* 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、制御を維持するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)を指定できます。
+* Clarizen One にユーザーとグループを割り当てる場合は、**既定のアクセス** 以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](../develop/howto-add-app-roles-in-azure-ad-apps.md)してロールを追加することができます。
+* 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、制御を維持するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)を指定できます。
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-clarizen-one"></a>手順 5. Clarizen One への自動ユーザー プロビジョニングを構成する
 
@@ -104,7 +104,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 1. **[マッピング]** セクションの **[Azure Active Directory ユーザーを Clarizen One に同期する]** を選択します。
 
-1. **[属性マッピング]** セクションで、Azure AD から Clarizen One に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Clarizen One のユーザー アカウントとの照合に使用されます。 [照合する対象の属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)を変更する場合は、その属性に基づいたユーザーのフィルター処理が Clarizen One API で確実にサポートされている必要があります。 **[保存]** ボタンをクリックして変更をコミットします。
+1. **[属性マッピング]** セクションで、Azure AD から Clarizen One に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Clarizen One のユーザー アカウントとの照合に使用されます。 [照合する対象の属性](../app-provisioning/customize-application-attributes.md)を変更する場合は、その属性に基づいたユーザーのフィルター処理が Clarizen One API で確実にサポートされている必要があります。 **[保存]** ボタンをクリックして変更をコミットします。
 
    |属性|Type|
    |---|---|
@@ -158,7 +158,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
       |externalId|String|
       |members|リファレンス|
 
-1. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の手順を参照してください。
+1. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の手順を参照してください。
 
 1. Clarizen One に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
@@ -178,9 +178,9 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
 
-1. [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
-1. [進行状況バー](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
-1. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、「[検疫状態のアプリケーションのプロビジョニング](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)」を参照してください。
+1. [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
+1. [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+1. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、「[検疫状態のアプリケーションのプロビジョニング](../app-provisioning/application-provisioning-quarantine-status.md)」を参照してください。
 
 ## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
 
@@ -196,9 +196,9 @@ Clarizen One ギャラリー アプリにユーザーを割り当てるときは
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)

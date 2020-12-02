@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 6b3fdf052ce7f0d6a5c3497aa1ac971d9249546a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 118bdcb6929abfc162ff05e91f1621f087b6c50c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015594"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186730"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>VM 用 Azure Monitor からログを照会する方法
 
@@ -473,7 +473,6 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Monitor でログ クエリを初めて作成する場合は、Azure portal で [Log Analytics の使用方法](../log-query/get-started-portal.md)に関するページを参照してログ クエリを作成してください。
+* Azure Monitor でログ クエリを初めて作成する場合は、Azure portal で [Log Analytics の使用方法](../log-query/log-analytics-tutorial.md)に関するページを参照してログ クエリを作成してください。
 
-* [検索クエリの記述方法](/azure/azure-monitor/log-query/get-started-queries)を参照してください。
-
+* [検索クエリの記述方法](../log-query/get-started-queries.md)を参照してください。

@@ -4,12 +4,12 @@ description: Application Insights は、アプリのテレメトリの高度な�
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: c817e2c7f609bbbec52eff1b898a8d7c53209a28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28a32c714618a3b6b0c3126d8060295f134ddc7c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87321311"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186237"
 ---
 # <a name="smart-detection---performance-anomalies"></a>スマート検出 - パフォーマンスの異常
 
@@ -175,11 +175,10 @@ Application Insights は、一部のユーザーにのみ影響する、また�
 
 * [Profiler](profiler.md) 
 * [スナップショット デバッガー](./snapshot-debugger.md)
-* [Analytics](../log-query/get-started-portal.md)
+* [Analytics](../log-query/log-analytics-tutorial.md)
 * [Analytics Smart Diagnostics](../log-query/log-query-overview.md)
 
 スマート検出は、すべて自動化されています。 ただし、アラートを追加で設定する機能が用意されています。
 
 * [手動で構成するメトリックのアラート](../platform/alerts-log.md)
 * [可用性 Web テスト](./monitor-web-app-availability.md)
-

@@ -5,12 +5,12 @@ services: automation
 ms.date: 11/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 1ed4ad3e1bae34b5007d13c7d092f46e972ac8a8
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 35feb136ca1fd7ea0be16a906f7d5193cf8570c7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347082"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183551"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>Azure VM から Update Management を有効にする
 
@@ -39,7 +39,7 @@ ms.locfileid: "93347082"
 
     ![左側のウィンドウから [ゲスト + ホストの更新プログラム] を選択します](media/enable-from-vm/select-guest-and-os-updates.png)
 
-4. ワークスペースに対して VM が有効かどうかを判断するには、`Microsoft.OperationalInsights/workspaces/read` アクセス許可が必要です。 必要な追加のアクセス許可については、[マシンを有効にするために必要なアクセス許可](../automation-role-based-access-control.md#feature-setup-permissions)に関する記事をご覧ください。 一度に複数のマシンを有効にする方法については、「[Automation アカウントから Update Management を有効にする](update-mgmt-enable-automation-account.md)」をご覧ください。
+4. ワークスペースに対して VM が有効かどうかを判断するには、`Microsoft.OperationalInsights/workspaces/read` アクセス許可が必要です。 必要な追加のアクセス許可については、[マシンを有効にするために必要なアクセス許可](../automation-role-based-access-control.md#feature-setup-permissions)に関する記事をご覧ください。 一度に複数のマシンを有効にする方法については、「[Automation アカウントから Update Management を有効にする](./enable-from-automation-account.md)」をご覧ください。
 
 5. [Update Management の有効化] ページで、Log Analytics ワークスペースおよび Automation アカウントを選択し、 **[有効にする]** をクリックして、Update Management を有効にします。 Update Management を有効にした後、VM から更新プログラムの評価を表示できるようになるまでに、約 15 分かかることがあります。
 

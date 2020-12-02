@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: daf40a2ced3f753619e9c4723dbe78cd7e51ff21
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: c1604d79ce5eb9949028cd677b340bf3d4b09f6c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577908"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172841"
 ---
 # <a name="oauth-20-authentication-with-azure-active-directory"></a>Azure Active Directory を使用した OAuth 2.0 認証
 
@@ -44,10 +44,9 @@ OAuth 2.0 は、OpenID Connect (OIDC) に直接関連しています。 OIDC は
 
 ## <a name="implement-oauth-20-with-azure-ad"></a>Azure AD を使用して OAuth 2.0 を実装する
 
-* [Azure AD とアプリケーションの統合](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) 
+* [Azure AD とアプリケーションの統合](../saas-apps/tutorial-list.md) 
 
-* [Microsoft ID プラットフォームにおける OAuth 2.0 プロトコルと OpenID Connect プロトコル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols) 
+* [Microsoft ID プラットフォームにおける OAuth 2.0 プロトコルと OpenID Connect プロトコル](../develop/active-directory-v2-protocols.md) 
 
-* [アプリケーションの種類と OAuth2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-app-types) 
+* [アプリケーションの種類と OAuth2.0](../develop/v2-app-types.md) 
 
- 

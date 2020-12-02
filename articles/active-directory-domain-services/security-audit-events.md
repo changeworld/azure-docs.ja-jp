@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: b9656b62e2c689d0993fb16c1f1d66b14d3430c6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b4fb5c1dcb2bb34b472c2a3eda88ca4c219303d0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967734"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175170"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services でセキュリティ監査を有効にする
 
@@ -95,7 +95,7 @@ Azure PowerShell を使用して Azure AD DS のセキュリティ監査イベ�
 1. セキュリティ監査イベントのターゲット リソースを作成します。
 
     * **Azure ストレージ** - [Azure PowerShell を使用してストレージ アカウントを作成します](../storage/common/storage-account-create.md?tabs=azure-powershell)
-    * **Azure イベント ハブ** - [Azure PowerShell を使用してイベント ハブを作成します](../event-hubs/event-hubs-quickstart-powershell.md)。 また、[New-AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) コマンドレットを使用して、イベント ハブ*名前空間*に Azure AD DS のアクセス許可を付与する承認規則を作成しなければならない場合もあります。 承認規則には、**管理**、**リッスン**、および**送信**権限を含める必要があります。
+    * **Azure イベント ハブ** - [Azure PowerShell を使用してイベント ハブを作成します](../event-hubs/event-hubs-quickstart-powershell.md)。 また、[New-AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) コマンドレットを使用して、イベント ハブ *名前空間* に Azure AD DS のアクセス許可を付与する承認規則を作成しなければならない場合もあります。 承認規則には、**管理**、**リッスン**、および **送信** 権限を含める必要があります。
 
         > [!IMPORTANT]
         > イベント ハブ自体ではなく、イベント ハブ名前空間に承認規則を設定していることを確認します。
@@ -141,7 +141,7 @@ Azure PowerShell を使用して Azure AD DS のセキュリティ監査イベ�
 Log Analytic ワークスペースを使用すると、Azure Monitor と Kusto クエリ言語を使用して、セキュリティ監査イベントを表示および分析できます。 このクエリ言語は、読みやすい構文で強力な分析機能を提供する読み取り専用の用途向けに設計されています。 Kusto クエリ言語の使用を開始する方法の詳細については、次の記事を参照してください。
 
 * [Azure Monitor のドキュメント](../azure-monitor/index.yml)
-* [Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/get-started-portal.md)
+* [Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/log-analytics-tutorial.md)
 * [Azure Monitor でログ クエリの使用を開始する](../azure-monitor/log-query/get-started-queries.md)
 * [Log Analytics データのダッシュボードを作成して共有する](../azure-monitor/learn/tutorial-logs-dashboards.md)
 

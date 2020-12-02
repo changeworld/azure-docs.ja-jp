@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 818ae0b90b71b61c3b33676d81d9c783c577bdcc
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 6612e6982ae4826869134dfa46b35a3f202d4bbb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683898"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183245"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Azure Kubernetes Service 用の Azure セキュリティ ベースライン
 
@@ -20,7 +20,7 @@ Azure Kubernetes Service 用の Azure セキュリティ ベースラインに�
 
 このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview.md) に基づいて作成されています。
 
-詳細については、[Azure セキュリティ ベースラインの概要](/azure/security/benchmarks/security-baselines-overview)に関するページを参照してください。
+詳細については、[Azure セキュリティ ベースラインの概要](../security/benchmarks/security-baselines-overview.md)に関するページを参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
@@ -85,7 +85,7 @@ AKS 環境で使用される API の認証、承認、調整、キャッシュ�
 
 - [Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用したポッド間のトラフィックの保護](use-network-policies.md)
 
-- [DDoS 保護を構成する方法](../virtual-network/manage-ddos-protection.md)
+- [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
 **Azure Security Center の監視**: 適用なし
 

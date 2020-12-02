@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fa1c2627917bfe386c488470f6a78db4c51f2ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fae9872593b48355d4ad3711e8e5092481b16213
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994266"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174532"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフサービス パスワード リセット
 
@@ -195,9 +195,9 @@ Azure AD によって現在のハイブリッド接続が確認され、Azure po
 * お客様のオンプレミスのライトバック クライアントは稼働しています。
 * Azure AD Connect はオンラインであり、オンプレミスのライトバック クライアントに接続されていますが、 インストールされている Azure AD Connect のバージョンが古いようです。 最新の接続機能と重要なバグ フィックスを確実に入手するため、[Azure AD Connect のアップグレード](../hybrid/how-to-upgrade-previous-version.md)をご検討ください。
 * インストールされている Azure AD Connect のバージョンが古いため、残念ながらオンプレミスのライトバック クライアントの状態を確認できません。 [Azure AD Connect をアップグレードし](../hybrid/how-to-upgrade-previous-version.md)、接続の状態を確認できるようにしてください。
-* 申し訳ございません。現在オンプレミスのライトバック クライアントに接続できないようです。 [Azure AD Connect のトラブルシューティングを行い](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity)、接続を復元してください。
+* 申し訳ございません。現在オンプレミスのライトバック クライアントに接続できないようです。 [Azure AD Connect のトラブルシューティングを行い](./troubleshoot-sspr-writeback.md)、接続を復元してください。
 * パスワード ライトバックが正しく構成されていないため、残念ながらオンプレミスのライトバック クライアントに接続できません。 [パスワード ライトバックを構成し](./tutorial-enable-sspr-writeback.md)、接続を復元してください。
-* 申し訳ございません。現在オンプレミスのライトバック クライアントに接続できないようです。 これはマイクロソフト側の一時的な問題が原因の可能性があります。 問題が解決しない場合は、[Azure AD Connect のトラブルシューティングを行い](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity)、接続を復元してください。
+* 申し訳ございません。現在オンプレミスのライトバック クライアントに接続できないようです。 これはマイクロソフト側の一時的な問題が原因の可能性があります。 問題が解決しない場合は、[Azure AD Connect のトラブルシューティングを行い](./troubleshoot-sspr-writeback.md)、接続を復元してください。
 
 SSPR 書き戻しの使用を開始するには、次のチュートリアルをご覧ください。
 

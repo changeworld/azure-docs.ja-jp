@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ab14413de1f999747e5b3fb58b505e0a9258a55
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7cd2aa5e9ff8cbaeead69f11d2e3de7f760b53ec
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441217"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168646"
 ---
 # <a name="saml-authentication-with-azure-active-directory"></a>Azure Active Directory を使用した SAML 認証
 
@@ -43,18 +43,18 @@ SAML 仕様には、次の 3 つのロールが定義されています。
 
 * **[ユーザー]** :アプリケーションからサービスを要求します。
 
-* **Web ブラウザー** :ユーザーが操作するコンポーネントです。
+* **Web ブラウザー**:ユーザーが操作するコンポーネントです。
 
-* **Web アプリ** :SAML がサポートされ、IdP として Azure AD が使用されるエンタープライズ アプリケーションです。
+* **Web アプリ**:SAML がサポートされ、IdP として Azure AD が使用されるエンタープライズ アプリケーションです。
 
-* **トークン** :プリンシパル (ユーザー) に関する IdP で行われたクレーム セットが保持される SAML アサーションです (SAML トークンとも呼ばれます)。 認証情報、属性、および認可決定ステートメントが含まれています。
+* **トークン**:プリンシパル (ユーザー) に関する IdP で行われたクレーム セットが保持される SAML アサーションです (SAML トークンとも呼ばれます)。 認証情報、属性、および認可決定ステートメントが含まれています。
 
-* **Azure AD** :SAML アプリ用に SSO と多要素認証を提供するエンタープライズ クラウド IdP です。 証明書利用者アプリケーションへの認証サービスを提供しながら、ユーザーに関する ID 情報が同期、保守、管理されます。 
+* **Azure AD**:SAML アプリ用に SSO と多要素認証を提供するエンタープライズ クラウド IdP です。 証明書利用者アプリケーションへの認証サービスを提供しながら、ユーザーに関する ID 情報が同期、保守、管理されます。 
 
 ## <a name="implement-saml-authentication-with-azure-ad"></a>Azure AD を使用して SAML 認証を実装する
 
-* [Azure Active Directory を使用して SaaS アプリケーションを統合するためのチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) 
+* [Azure Active Directory を使用して SaaS アプリケーションを統合するためのチュートリアル](../saas-apps/tutorial-list.md) 
 
-* [ギャラリー以外のアプリケーションに SAML ベースのシングル サインオンを構成する](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app) 
+* [ギャラリー以外のアプリケーションに SAML ベースのシングル サインオンを構成する](../manage-apps/add-application-portal.md) 
 
-* [Azure AD で SAML プロトコルを使用する方法](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-protocol-reference)
+* [Azure AD で SAML プロトコルを使用する方法](../develop/active-directory-saml-protocol-reference.md)

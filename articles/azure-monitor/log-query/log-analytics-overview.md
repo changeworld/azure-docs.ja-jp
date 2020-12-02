@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
-ms.openlocfilehash: 26d6bcb52099b15aeeb73a36a7144c14bdf481d6
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: ba27739ff9e9d992ffe6202629a1db19604b1409
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496411"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186118"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>Azure Monitor の Log Analytics の概要
 Log Analytics は、Azure portal のツールであり、Azure Monitor ログのデータでのログ クエリの編集と実行に使用します。 一連のレコードを返す単純なクエリを作成後、Log Analytics の機能を使用して、それらのレコードを並べ替え、フィルター、および分析できます。 また、より高度なクエリを作成して統計分析を実行し、結果をグラフで視覚化して特定の傾向を識別することもできます。 クエリの結果を対話的に操作する場合でも、ログ クエリ アラートやブックなどの他の Azure Monitor の機能で使用する場合でも、クエリ結果の書き込みとテストのためのツールとして Log Analytics を使用します。 
 
 
 > [!TIP]
-> この記事では、Log Analytics とその各機能について説明します。 チュートリアルに直接進む場合は、「[Log Analytics のチュートリアル](get-started-portal.md)」を参照してください。
+> この記事では、Log Analytics とその各機能について説明します。 チュートリアルに直接進む場合は、「[Log Analytics のチュートリアル](./log-analytics-tutorial.md)」を参照してください。
 
 
 
@@ -91,5 +91,5 @@ Log Analytics を起動すると、最初に表示されるのは、[クエリ�
 Azure Data Explorer Web UI に慣れている場合は、Log Analytics の外観に見覚えがあるでしょう。 これは、Log Analytics が Azure Data Explorer を基に構築されており、同じ Kusto クエリ言語 (KQL) を使用するためです。 Log Analytics には、時間範囲によるフィルターや、クエリからのアラート ルールの作成機能など、Azure Monitor 固有の機能が追加されています。 どちらのツールにも、使用可能なテーブルの構造をスキャンできるできるエクスプローラーが含まれますが、Azure Data Explorer Web UI は主に Azure Data Explorer データベース内のテーブルを処理し、一方 Log Analytics は Log Analytics ワークスペース内のテーブルを処理します。 
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure portal 内での Log Analytics の使用に関するチュートリアル](get-started-portal.md)を進めます。
+- [Azure portal 内での Log Analytics の使用に関するチュートリアル](./log-analytics-tutorial.md)を進めます。
 - [クエリの作成に関するチュートリアル](get-started-queries.md)を進めます。
