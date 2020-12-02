@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/11/2020
+ms.date: 11/19/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 4b4c02efffb39e88a01c35d3c818930a0f6fd9cf
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8a1c789759f1119a6170fffc2c70874cd9a32fde
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069757"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919686"
 ---
 # <a name="known-issues-application-provisioning"></a>既知の問題:アプリケーションのプロビジョニング
 アプリのプロビジョニングを使用するときに注意する必要がある既知の問題。 UserVoice のアプリケーション プロビジョニング サービスに関するフィードバックを提供することができます。[Azure AD のアプリケーションのプロビジョニングの UserVoice](https://aka.ms/appprovisioningfeaturerequest) ページを参照してください。 Microsoft では、サービスを改善するために UserVoice を注意深く確認しています。 
@@ -86,6 +86,9 @@ UI のソース属性ドロップダウンにスキーマの拡張機能が表�
 
 グループがスコープ内にあり、メンバーがスコープ外にある場合、グループはプロビジョニングされます。 スコープ外のユーザーはプロビジョニングされません。 メンバーがスコープ内に戻っても、サービスではすぐに変更が検出されません。 プロビジョニングを再開すると、問題は解決します。 すべてのユーザーが適切にプロビジョニングされることを確保するため、定期的にサービスを再起動することをお勧めします。  
 
+**マネージャーがプロビジョニングされない**
+
+ユーザーとそのマネージャーが両方ともプロビジョニング対象となっている場合は、ユーザーがプロビジョニングされた後でマネージャーが更新されます。 ただし初日に、ユーザーはプロビジョニング対象でもマネージャーが対象外となっている場合、マネージャーを参照せずにユーザーがプロビジョニングされます。 その後マネージャーがプロビジョニング対象となっても、プロビジョニングを再開し、サービスによってすべてのユーザーがもう一度評価されるまで、マネージャーの参照は更新されません。 
 
 ## <a name="next-steps"></a>次のステップ
 - [プロビジョニングのしくみ](how-provisioning-works.md)

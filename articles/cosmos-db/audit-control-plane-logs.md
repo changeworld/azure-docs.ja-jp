@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: sngun
-ms.openlocfilehash: 683fc553e7712e2a760a0af1b601207cb20f2f55
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a0feaf4a984f40ddee7a30291fe0a8f671b6512a
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092808"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636845"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Azure Cosmos DB コントロール プレーン操作を監査する方法
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -28,9 +28,9 @@ Azure Cosmos DB のコントロール プレーンとは、Azure Cosmos アカ�
 
 ## <a name="disable-key-based-metadata-write-access"></a>キー ベースのメタデータ書き込みアクセスを無効にする
 
-Azure Cosmos DB でコントロール プレーン操作を監査する前に、アカウントでのキーベースのメタデータ書き込みアクセスを無効にします。 キーベースのメタデータ書き込みアクセスが無効になっている場合、アカウント キーを使用して Azure Cosmos アカウントに接続しているクライアントは、アカウントにアクセスできません。 書き込みアクセスを無効にするには、`disableKeyBasedMetadataWriteAccess` プロパティを true に設定します。 このプロパティを設定すると、適切なロールベースのアクセス制御 (RBAC) ロールと資格情報を持つユーザーは、すべてのリソースに変更を加えることができます。 このプロパティを設定する方法の詳細については、「[SDK からの変更を防止する](role-based-access-control.md#prevent-sdk-changes)」の記事を参照してください。 
+Azure Cosmos DB でコントロール プレーン操作を監査する前に、アカウントでのキーベースのメタデータ書き込みアクセスを無効にします。 キーベースのメタデータ書き込みアクセスが無効になっている場合、アカウント キーを使用して Azure Cosmos アカウントに接続しているクライアントは、アカウントにアクセスできません。 書き込みアクセスを無効にするには、`disableKeyBasedMetadataWriteAccess` プロパティを true に設定します。 このプロパティを設定すると、適切な Azure ロールと資格情報を持つユーザーは、すべてのリソースに変更を加えることができます。 このプロパティを設定する方法の詳細については、「[SDK からの変更を防止する](role-based-access-control.md#prevent-sdk-changes)」の記事を参照してください。 
 
-`disableKeyBasedMetadataWriteAccess` が有効になった後で、SDK ベースのクライアントで作成または更新操作を実行すると、「" *Azure Cosmos DB エンドポイント経由での 'ContainerNameorDatabaseName' リソースに対する "POST" 操作は許可されません* "」エラーが返されます。 お使いのアカウントでのこのような操作へのアクセスを有効にするか、Azure Resource Manager、Azure CLI、または Azure PowerShell を使用して作成/更新操作を実行する必要があります。 切り替えて戻るには、 [Cosmos SDK からの変更の防止](role-based-access-control.md#prevent-sdk-changes)に関する記事の説明に従って、Azure CLI を使用して disableKeyBasedMetadataWriteAccess を **false** に設定します。 `disableKeyBasedMetadataWriteAccess` の値を、true ではなく false に変更してください。
+`disableKeyBasedMetadataWriteAccess` が有効になった後で、SDK ベースのクライアントで作成または更新操作を実行すると、「"*Azure Cosmos DB エンドポイント経由での 'ContainerNameorDatabaseName' リソースに対する "POST" 操作は許可されません*"」エラーが返されます。 お使いのアカウントでのこのような操作へのアクセスを有効にするか、Azure Resource Manager、Azure CLI、または Azure PowerShell を使用して作成/更新操作を実行する必要があります。 切り替えて戻るには、[Cosmos SDK からの変更の防止](role-based-access-control.md#prevent-sdk-changes)に関する記事の説明に従って、Azure CLI を使用して disableKeyBasedMetadataWriteAccess を **false** に設定します。 `disableKeyBasedMetadataWriteAccess` の値を、true ではなく false に変更してください。
 
 メタデータ書き込みアクセスを無効にする場合は、次の点を考慮してください。
 
@@ -78,7 +78,7 @@ Azure portal を使用して、コントロール プレーン操作の診断ロ
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>特定の操作に関連付けられている ID を識別する
 
-さらにデバッグする場合は、アクティビティ ID の使用または操作のタイムスタンプにより、 **アクティビティ ログ** 内の特定の操作を特定できます。 タイムスタンプは、アクティビティ ID が明示的に渡されていない一部の Resource Manager クライアントに使用されます。 アクティビティ ログには、操作が開始された ID の詳細が示されます。 次のスクリーンショットは、アクティビティ ID を使用し、アクティビティ ログでその ID に関連付けられている操作を検索する方法を示しています。
+さらにデバッグする場合は、アクティビティ ID の使用または操作のタイムスタンプにより、**アクティビティ ログ** 内の特定の操作を特定できます。 タイムスタンプは、アクティビティ ID が明示的に渡されていない一部の Resource Manager クライアントに使用されます。 アクティビティ ログには、操作が開始された ID の詳細が示されます。 次のスクリーンショットは、アクティビティ ID を使用し、アクティビティ ログでその ID に関連付けられている操作を検索する方法を示しています。
 
 :::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="アクティビティ ID を使用して操作を検索する":::
 

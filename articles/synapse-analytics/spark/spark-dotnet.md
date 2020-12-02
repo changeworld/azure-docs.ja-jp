@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9fbf4eab55ec2cf8e4f0e27969ca4a22eb1f27ad
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 753c7ff48960711cbedbf6b5d8644a26502dd413
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578619"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023744"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>Azure Synapse Analytics で .NET for Apache Spark を使用する
 
@@ -74,9 +74,11 @@ Azure Synapse Analytics を使用して [Synapse Spark プールの Apache Spark
 
 ### <a name="install-nuget-packages-in-notebooks"></a>ノートブックに NuGet パッケージをインストールする
 
-NuGet パッケージの名前の前に `#r` 記号を使用することで、任意の NuGet パッケージをノートブックにインストールできます。 次の図は例を示しています。
+NuGet パッケージの名前の前に `#r nuget` マジック コマンドを使用することで、任意の NuGet パッケージをノートブックにインストールできます。 次の図は例を示しています。
 
 ![Spark .NET ノートブック NuGet パッケージをインストールするために #r を使用していることを示すスクリーンショット](./media/apache-spark-development-using-notebooks/synapse-spark-dotnet-notebook-nuget.png)
+
+ノートブックで NuGet パッケージを使用する方法の詳細については、[.NET のインタラクティブ ドキュメント](https://github.com/dotnet/interactive/blob/main/docs/nuget-overview.md)を参照してください。
 
 ### <a name="net-for-apache-spark-c-kernel-features"></a>.NET for Apache Spark C# カーネル機能
 

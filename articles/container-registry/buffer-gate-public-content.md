@@ -4,13 +4,13 @@ description: Docker Hub やその他のパブリック コンテンツのパブ�
 author: dlepow
 ms.topic: article
 ms.author: danlep
-ms.date: 10/29/2020
-ms.openlocfilehash: def1c3a9b8a1086f453c7e71d766ab0dd89b0c2d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 11/20/2020
+ms.openlocfilehash: 0c92899528d417f9c91f8f8930ca4932dc74e850
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347524"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024740"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>Azure Container Registry を使用してパブリック コンテンツを管理する
 
@@ -26,6 +26,8 @@ ms.locfileid: "93347524"
 ## <a name="authenticate-with-docker-hub"></a>Docker Hub を使用して認証する
 
 最初の手順として、現在、ビルドまたはデプロイのワークフローの一環として Docker Hub からパブリック イメージをプルしている場合、匿名のプル要求を行うのではなく、[Docker Hub アカウントを使用して認証](https://docs.docker.com/docker-hub/download-rate-limit/#how-do-i-authenticate-pull-requests)することをお勧めします。
+
+匿名のプル要求を頻繁に行うと、`ERROR: toomanyrequests: Too Many Requests.` や `You have reached your pull rate limit.` のような Docker エラーが発生することがあります。このようなエラーを防ぐには、Docker Hub に対して認証を行います。
 
 > [!NOTE]
 > 2020 年 11 月 2 日より、Docker の無料プラン アカウントから Docker Hub に対する匿名と認証済みの要求に[ダウンロード レート制限](https://docs.docker.com/docker-hub/download-rate-limit)が適用されるようになり、それぞれ IP アドレスと Docker ID によって実施されます。 
@@ -46,21 +48,21 @@ App Service や Azure Container Instances を含むいくつかの Azure サー�
 
 **App Service**
 
-* **イメージのソース** :Docker Hub
-* **リポジトリ アクセス** :プライベート
-* **ログイン** : \<Docker Hub username>
-* **パスワード** : \<Docker Hub token>
+* **イメージのソース**:Docker Hub
+* **リポジトリ アクセス**:プライベート
+* **ログイン**: \<Docker Hub username>
+* **パスワード**: \<Docker Hub token>
 
 詳細については、「[App Service での Docker Hub の認証されたプル](https://azure.github.io/AppService/2020/10/15/Docker-Hub-authenticated-pulls-on-App-Service.html)」を参照してください。
 
 **Azure Container Instances**
 
-* **イメージのソース** :Docker Hub またはその他のレジストリ
-* **イメージの種類** :プライベート
-* **イメージ レジストリのログイン サーバー** : docker.io
-* **イメージ レジストリのユーザー名** : \<Docker Hub username>
-* **イメージ レジストリのパスワード** : \<Docker Hub token>
-* **イメージ** : docker.io/\<repo name\>:\<tag>
+* **イメージのソース**:Docker Hub またはその他のレジストリ
+* **イメージの種類**:プライベート
+* **イメージ レジストリのログイン サーバー**: docker.io
+* **イメージ レジストリのユーザー名**: \<Docker Hub username>
+* **イメージ レジストリのパスワード**: \<Docker Hub token>
+* **イメージ**: docker.io/\<repo name\>:\<tag>
 
 ## <a name="import-images-to-an-azure-container-registry"></a>Azure コンテナー レジストリへのイメージのインポート
  

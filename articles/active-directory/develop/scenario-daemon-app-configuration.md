@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 24e3841abc9c397ab307e55405bdcc208815570e
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6864502a9d338a786e1e77dbf9888a7818bb94e9
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444165"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95748650"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すデーモン アプリ - コードの構成
 
@@ -36,9 +36,9 @@ Web API を呼び出すデーモン アプリケーションのコードを構�
 
 デーモン アプリケーションでは、委任されたアクセス許可ではなく、アプリケーションのアクセス許可が使用されます。 そのため、サポートされているアカウントの種類を、組織のディレクトリ内のアカウントまたは個人用 Microsoft アカウント (例: Skype、Xbox、Outlook.com) にすることはできません。 Microsoft の個人アカウントの場合、デーモン アプリケーションに同意を付与するテナント管理者はいません。 *自分の所属組織のアカウント* または *任意の組織のアカウント* を選択する必要があります。
 
-そのため、アプリケーション構成に指定された機関は、(組織に関連付けられたテナント ID またはドメイン名を指定して) テナント化する必要があります。
+アプリケーション構成に指定された機関は、(組織に関連付けられたテナント ID またはドメイン名を指定して) テナント化する必要があります。
 
-マルチテナント ツールを提供する ISV の場合は、`organizations` を使用することができます。 ただし、管理者の同意を付与する方法をお客様に説明することも必要になる点に留意してください。 詳細については、「[テナント全体の同意の要求する](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)」を参照してください。 また、現在、MSAL には、クライアント資格情報が (証明書ではなく) アプリケーション シークレットである場合にのみ、`organizations` が許可されるという制限があります。
+マルチテナント ツールを提供する場合でも、テナント ID またはドメイン名を使用する必要があります。このフローでは `common` や `organizations` は使用 **しません**。どのテナントを使用する必要があるかをサービスが確実に推測できないためです。
 
 ## <a name="configure-and-instantiate-the-application"></a>アプリケーションを構成してインスタンス化する
 
@@ -261,7 +261,7 @@ ConfidentialClientApplication cca =
                 .build();
 ```
 
-or
+または
 
 ```Java
 PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */

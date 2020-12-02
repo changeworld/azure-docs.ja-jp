@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a703f6d32cb665bfada73ca833f51c94d83f8b97
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 0ffa0059e78ee193cb12a4838282f7f9fb282edd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146162"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973696"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -189,7 +189,7 @@ oAuth2PermissionGrant に対するデルタ クエリがパブリック プレ�
 
 **製品の機能:** 開発者エクスペリエンス
 
-これらの API は、ユーザーの認証方法を管理するための主要なツールです。 MFA とセルフサービス パスワード リセット (SSPR) に使用される認証子を、プログラムで事前登録および管理できるようになりました。 これは、Azure MFA、SSPR、および Microsoft Graph の領域で最も要求の多い機能の 1 つでした。 このウェーブでリリースされた新しい API により、次のことが可能になります。
+これらの API は、ユーザーの認証方法を管理するための主要なツールです。 MFA とセルフサービス パスワード リセット (SSPR) に使用される認証子を、プログラムで事前登録および管理できるようになりました。 これは、Azure AD MFA、SSPR、および Microsoft Graph の領域で最も要求の多い機能の 1 つでした。 このウェーブでリリースされた新しい API により、次のことが可能になります。
 
 - ユーザーの認証用電話を読み取り、追加、更新、削除する
 - ユーザーのパスワードをリセットする
@@ -227,9 +227,9 @@ oAuth2PermissionGrant に対するデルタ クエリがパブリック プレ�
 
 **製品の機能:** アクセス制御
 
-**プリンター管理者** :このロールを持つユーザーは、プリンターを登録して、ユニバーサル印刷コネクタの設定など、Microsoft ユニバーサル印刷ソリューションのすべてのプリンター構成のすべての側面を管理できます。 すべての委任された印刷アクセス許可要求に同意することができます。 プリンター管理者は、印刷レポートにアクセスすることもできます。 
+**プリンター管理者**:このロールを持つユーザーは、プリンターを登録して、ユニバーサル印刷コネクタの設定など、Microsoft ユニバーサル印刷ソリューションのすべてのプリンター構成のすべての側面を管理できます。 すべての委任された印刷アクセス許可要求に同意することができます。 プリンター管理者は、印刷レポートにアクセスすることもできます。 
 
-**プリンター技術者** :このロールを持つユーザーは、プリンターを登録して、Microsoft ユニバーサル印刷ソリューションでプリンターの状態を管理できます。 すべてのコネクタ情報を読み取ることもできます。 プリンター技術者が行うことができない主要なタスクは、プリンターに対するユーザー アクセス許可の設定と、プリンターの共有です。 [詳細情報。](../roles/permissions-reference.md#printer-administrator)
+**プリンター技術者**:このロールを持つユーザーは、プリンターを登録して、Microsoft ユニバーサル印刷ソリューションでプリンターの状態を管理できます。 すべてのコネクタ情報を読み取ることもできます。 プリンター技術者が行うことができない主要なタスクは、プリンターに対するユーザー アクセス許可の設定と、プリンターの共有です。 [詳細情報。](../roles/permissions-reference.md#printer-administrator)
 
 ---
 
@@ -366,7 +366,7 @@ Azure Active Directory (Azure AD) で、動的グループ ルールを検証す
 
 **製品の機能:** ID のセキュリティ & 保護
 
-**Azure AD 改善アクションのセキュリティの既定値群のサポート:** Microsoft セキュリティ スコアでは、 [Azure AD のセキュリティの既定値群](./concept-fundamentals-security-defaults.md)をサポートするように改善アクションが更新されます。これにより、一般的な攻撃に対する事前構成済みのセキュリティ設定を使用して組織を保護しやすくなります。 これは、次の改善アクションに影響します。
+**Azure AD 改善アクションのセキュリティの既定値群のサポート:** Microsoft セキュリティ スコアでは、[Azure AD のセキュリティの既定値群](./concept-fundamentals-security-defaults.md)をサポートするように改善アクションが更新されます。これにより、一般的な攻撃に対する事前構成済みのセキュリティ設定を使用して組織を保護しやすくなります。 これは、次の改善アクションに影響します。
 
 - すべてのユーザーがセキュリティで保護されたアクセスのために多要素認証を完了できるようにする
 - 管理者ロールに対して MFA を必須にする
@@ -397,7 +397,7 @@ Azure Active Directory (Azure AD) で、動的グループ ルールを検証す
 **サービス カテゴリ:** B2B  
 **製品の機能:** B2B/B2C
  
-**2021 年 3 月 31 日以降** 、Microsoft では、B2B コラボレーション シナリオ用にアンマネージド Azure Active Directory (Azure AD) アカウントおよびテナントを作成することによって招待の引き換えをサポートしなくなります。 これに備えて、[電子メール ワンタイム パスコード認証](../external-identities/one-time-passcode.md)を選択することをお勧めします。
+**2021 年 3 月 31 日以降**、Microsoft では、B2B コラボレーション シナリオ用にアンマネージド Azure Active Directory (Azure AD) アカウントおよびテナントを作成することによって招待の引き換えをサポートしなくなります。 これに備えて、[電子メール ワンタイム パスコード認証](../external-identities/one-time-passcode.md)を選択することをお勧めします。
 
 ---
 
@@ -757,7 +757,7 @@ Azure AD への SAP SuccessFactors の受信プロビジョニングを設定す
 **サービス カテゴリ:** B2C - コンシューマー ID 管理  
 **製品の機能:** B2B/B2C
 
-ユーザーがアプリを使用するための新規登録をするときに、Azure AD B2C を使用して、カスタマイズされた電子メールを作成できるようになりました。 DisplayControls (現在プレビュー段階) とサード パーティの電子メール プロバイダー ( [SendGrid](https://sendgrid.com/)、 [SparkPost](https://sparkpost.com/)、カスタム REST API など) を使用することで、独自の電子メール テンプレート、 **From** アドレス、件名テキストを使用できるだけでなく、ローカライズやカスタムのワンタイム パスワード (OTP) 設定をサポートできます。
+ユーザーがアプリを使用するための新規登録をするときに、Azure AD B2C を使用して、カスタマイズされた電子メールを作成できるようになりました。 DisplayControls (現在プレビュー段階) とサード パーティの電子メール プロバイダー ([SendGrid](https://sendgrid.com/)、[SparkPost](https://sparkpost.com/)、カスタム REST API など) を使用することで、独自の電子メール テンプレート、**From** アドレス、件名テキストを使用できるだけでなく、ローカライズやカスタムのワンタイム パスワード (OTP) 設定をサポートできます。
 
 詳細については、[Azure Active Directory B2C でのカスタム電子メール検証](../../active-directory-b2c/custom-email-sendgrid.md)に関する記事を参照してください。
 
@@ -969,7 +969,7 @@ Azure AD アプリケーション ギャラリーが更新され、プロビジ�
 
 **種類:** 変更の計画 **サービス カテゴリ:** ID 保護 **製品の機能:** ID のセキュリティ & 保護
 
-開発者からのフィードバックに応え、Azure AD Premium P2 サブスクライバーは Microsoft Graph 用の新しい riskDetection API を使用して Azure AD Identity Protection のリスク検出データに対して複雑なクエリを実行できるようになりました。 既存の [identityRiskEvent](/graph/api/resources/identityriskevent?view=graph-rest-beta) API ベータ版では、 **2020 年 1 月 10 日** 頃からデータを戻すことを停止します。 組織で identityRiskEvent API を使用している場合は、新しい riskDetection API に移行する必要があります。
+開発者からのフィードバックに応え、Azure AD Premium P2 サブスクライバーは Microsoft Graph 用の新しい riskDetection API を使用して Azure AD Identity Protection のリスク検出データに対して複雑なクエリを実行できるようになりました。 既存の [identityRiskEvent](/graph/api/resources/identityriskevent?view=graph-rest-beta) API ベータ版では、**2020 年 1 月 10 日** 頃からデータを戻すことを停止します。 組織で identityRiskEvent API を使用している場合は、新しい riskDetection API に移行する必要があります。
 
 新しい riskDetection API の詳細については、[リスク検出 API のリファレンス ドキュメント](/graph/api/resources/riskdetection)をご覧ください。
 
@@ -979,7 +979,7 @@ Azure AD アプリケーション ギャラリーが更新され、プロビジ�
 
 **種類:** 変更の計画 **サービス カテゴリ:** アプリ プロキシ **製品の機能:** アクセス制御
 
-Chrome 80 ブラウザーがリリースされる数週間前に、アプリケーション プロキシの Cookie が **SameSite** 属性を処理する方法を更新する予定です。 Chrome 80 のリリースでは、 **SameSite** 属性を指定していない Cookie は `SameSite=Lax` に設定されているかのように扱われます。
+Chrome 80 ブラウザーがリリースされる数週間前に、アプリケーション プロキシの Cookie が **SameSite** 属性を処理する方法を更新する予定です。 Chrome 80 のリリースでは、**SameSite** 属性を指定していない Cookie は `SameSite=Lax` に設定されているかのように扱われます。
 
 この変更によって悪影響を及ぼす可能性を回避するために、次の方法でアプリケーション プロキシのアクセスとセッション Cookie を更新しています。
 
@@ -1159,7 +1159,7 @@ Azure AD Domain Services (Azure AD DS) を更新し、新しく強化された�
 
 **種類:** 変更の計画 **サービス カテゴリ:** マイ プロファイルとマイ アカウント **製品の機能:** コラボレーション
 
-10月から、「マイ プロファイル」エクスペリエンスは、「マイ アカウント」になります。 その変更の一環として、現在「 **マイ プロファイル** 」となっているところはすべて、「 **マイ アカウント** 」に変更されます。 名前の変更といくつかの設計上の改善に加え、更新されたエクスペリエンスでは、Microsoft Office アカウント ページとの統合が強化されます。 具体的には、Office のインストール済み環境とサブスクリプションに **[アカウントの概要]** ページからアクセスできるようになります。また、Office に関連した連絡先の設定に **[プライバシー]** ページからアクセスできます。
+10月から、「マイ プロファイル」エクスペリエンスは、「マイ アカウント」になります。 その変更の一環として、現在「**マイ プロファイル**」となっているところはすべて、「**マイ アカウント**」に変更されます。 名前の変更といくつかの設計上の改善に加え、更新されたエクスペリエンスでは、Microsoft Office アカウント ページとの統合が強化されます。 具体的には、Office のインストール済み環境とサブスクリプションに **[アカウントの概要]** ページからアクセスできるようになります。また、Office に関連した連絡先の設定に **[プライバシー]** ページからアクセスできます。
 
 「マイ プロファイル」(プレビュー) エクスペリエンスの詳細については、「[マイ プロファイル (プレビュー) ポータルの概要](../user-help/my-account-portal-overview.md)」を参照してください。
 
@@ -1271,7 +1271,7 @@ Power BI Mobile アプリの詳細 (アプリのダウンロード場所など) 
 
 - その他の軽微なバグを修正しました。
 
-2019 年 7 月 1 日以降、Microsoft は新しいデプロイに対する MFA Server の提供を停止しました。 多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用する必要があります。 詳細については、「[クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画](../authentication/howto-mfa-getstarted.md)」を参照してください。
+2019 年 7 月 1 日以降、Microsoft は新しいデプロイに対する MFA Server の提供を停止しました。 多要素認証が必要な新しいお客様は、クラウドベースの Azure AD Multi-Factor Authentication を使用する必要があります。 詳細については、[クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画](../authentication/howto-mfa-getstarted.md)に関するページを参照してください。
 
 ---
 
@@ -1486,7 +1486,7 @@ Azure Monitor を設定する方法については、[Azure Monitor の Azure AD
 
 **種類:** 変更の計画 **サービス カテゴリ:** MFA **製品の機能:** ID のセキュリティ & 保護
 
-[Office 365 の IP アドレスと URL Web サービス](/office365/enterprise/office-365-ip-web-service)から、MFA サーバーの IP アドレスを削除する予定です。 現在これらのページに依存してファイアウォールの設定を更新している場合は、「 [Azure Multi-Factor Authentication Server の概要](../authentication/howto-mfaserver-deploy.md#azure-multi-factor-authentication-server-firewall-requirements)」の「 **Azure Multi-Factor Authentication Server ファイアウォールの要件** 」セクションに記載されている IP アドレスの一覧も含まれていることを確認する必要があります。
+[Office 365 の IP アドレスと URL Web サービス](/office365/enterprise/office-365-ip-web-service)から、MFA サーバーの IP アドレスを削除する予定です。 現在これらのページに依存してファイアウォールの設定を更新している場合は、「[Azure Multi-Factor Authentication Server の概要](../authentication/howto-mfaserver-deploy.md#azure-multi-factor-authentication-server-firewall-requirements)」の「**Azure Multi-Factor Authentication Server ファイアウォールの要件**」セクションに記載されている IP アドレスの一覧も含まれていることを確認する必要があります。
 
 ---
 
@@ -1573,7 +1573,7 @@ Azure AD Domain Services のセキュリティ監査がパブリック プレビ
 
 **種類:** 新機能 **サービス カテゴリ:** セルフサービス パスワード リセット **製品の機能:** 監視とレポート
 
-新しい認証方法の使用状況と分析情報のレポートは、Azure Multi-Factor Authentication やセルフサービス パスワード リセット などの機能が組織内でどのように登録されて使用されているかを理解するのに役立ちます (各機能の登録済みユーザー数、パスワードのリセットでセルフサービス パスワード リセット が使用される頻度、リセットが行われた方法など)。
+新しい認証方法の使用状況と分析情報のレポートは、Azure AD Multi-Factor Authentication やセルフサービス パスワード リセットなどの機能が組織内でどのように登録されて使用されているかを理解するのに役立ちます (各機能の登録済みユーザー数、パスワードのリセットでセルフサービス パスワード リセット が使用される頻度、リセットが行われた方法など)。
 
 詳細については、[認証方法の使用状況と分析情報 (プレビュー)](../authentication/howto-authentication-methods-usage-insights.md) に関する記事をご覧ください。
 
@@ -1583,7 +1583,7 @@ Azure AD Domain Services のセキュリティ監査がパブリック プレビ
 
 **種類:** 新機能 **サービス カテゴリ:** ID 保護 **製品の機能:** ID のセキュリティ & 保護
 
-すべての Azure AD 管理者が、 **リスクのフラグ付きユーザー** レポートなど、既存のセキュリティ レポートの上部にあるバナーを選択して、 **危険なユーザー** レポートや **危険なサインイン** レポートに表示される新しいセキュリティ エクスペリエンスを使い始めることができるようになりました。 時間をかけて、すべてのセキュリティ レポートが以前のバージョンから新しいバージョンに移行され、新しいレポートでは次の追加機能が提供されます。
+すべての Azure AD 管理者が、**リスクのフラグ付きユーザー** レポートなど、既存のセキュリティ レポートの上部にあるバナーを選択して、**危険なユーザー** レポートや **危険なサインイン** レポートに表示される新しいセキュリティ エクスペリエンスを使い始めることができるようになりました。 時間をかけて、すべてのセキュリティ レポートが以前のバージョンから新しいバージョンに移行され、新しいレポートでは次の追加機能が提供されます。
 
 - 高度なフィルター処理と並べ替え
 
@@ -1747,9 +1747,9 @@ Azure AD が更新されて、会社のブランドがサインイン ページ�
 
 **種類:** 非推奨 **サービス カテゴリ:** MFA **製品の機能:** ID のセキュリティ & 保護
 
-2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 組織内で多要素認証が必要な新しいお客様は、今後はクラウドベースの Azure Multi-Factor Authentication を使用する必要があります。 7 月 1 日より前に MFA Server をアクティブ化したお客様には、変更が表示されません。 引き続き、最新バージョンをダウンロードしたり、今後の更新プログラムを取得したり、アクティブ化資格情報を生成したりすることができます。
+2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 組織内で多要素認証が必要な新しいお客様は、今後はクラウドベースの Azure AD Multi-Factor Authentication を使用する必要があります。 7 月 1 日より前に MFA Server をアクティブ化したお客様には、変更が表示されません。 引き続き、最新バージョンをダウンロードしたり、今後の更新プログラムを取得したり、アクティブ化資格情報を生成したりすることができます。
 
-詳細については、「[Azure Multi-Factor Authentication Server の概要](../authentication/howto-mfaserver-deploy.md)」を参照してください。 クラウドベースの Azure Multi-factor Authentication の詳細については、「[クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画](../authentication/howto-mfa-getstarted.md)」を参照してください。
+詳細については、「[Azure Multi-Factor Authentication Server の概要](../authentication/howto-mfaserver-deploy.md)」を参照してください。 クラウドベースの Azure AD Multi-factor Authentication の詳細については、[クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画](../authentication/howto-mfa-getstarted.md)に関するページを参照してください。
 
 ---
 
@@ -1989,7 +1989,7 @@ Azure AD アクティビティ ログの視覚化に関するフィードバッ�
 
 Azure AD アクセス レビューの新しい更新プログラムにより、次のことが可能になります。
 
-- アクセス レビューの頻度を、以前からある、週に 1 度、月に 1 度、4 半期に 1 度、および 1 年に 1 度のオプションに加え、「 **半年に 1 度** 」に変更します。
+- アクセス レビューの頻度を、以前からある、週に 1 度、月に 1 度、4 半期に 1 度、および 1 年に 1 度のオプションに加え、「**半年に 1 度**」に変更します。
 
 - 1 つのアクセス レビューを作成するときに、複数の Azure AD と Azure リソースのロールを選択します。 この場合は、すべてのロールが同じ設定値で設定され、すべてのレビュー担当者に同時に通知が送られます。
 
@@ -2125,7 +2125,7 @@ SAML で認証されたオンプレミス アプリで、これらのアプリ�
 
 ![サンプル情報を含む新しい [監査ログ] ページ](media/whats-new/audit-logs-page.png)
 
-新しい **[監査ログ]** ページの詳細については、「 [Azure Active Directory ポータルの監査アクティビティ レポート](../reports-monitoring/concept-audit-logs.md#audit-logs)」を参照してください。
+新しい **[監査ログ]** ページの詳細については、「[Azure Active Directory ポータルの監査アクティビティ レポート](../reports-monitoring/concept-audit-logs.md#audit-logs)」を参照してください。
 
 ---
 
@@ -2376,7 +2376,7 @@ Active Directory Domain Services (AD DS) オブジェクトが同期範囲から
 
 - **多数のユーザーを対象に大規模な ImmutableID 更新を段階的に行う**
 
-  たとえば、時間のかかる AD DS フォレスト間移行を行う必要があります。 解決方法:Azure AD Connect を使用し、 **ソース アンカーを構成** します。また、ユーザーが移行するとき、Azure AD からローカル AD DS ユーザーの新しいフォレストの ms-DS-Consistency-Guid 属性に既存の ImmutableID 値をコピーします。 詳細については、「[sourceAnchor としての ms-DS-ConsistencyGuid の使用](../hybrid/plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)」を参照してください。
+  たとえば、時間のかかる AD DS フォレスト間移行を行う必要があります。 解決方法:Azure AD Connect を使用し、**ソース アンカーを構成** します。また、ユーザーが移行するとき、Azure AD からローカル AD DS ユーザーの新しいフォレストの ms-DS-Consistency-Guid 属性に既存の ImmutableID 値をコピーします。 詳細については、「[sourceAnchor としての ms-DS-ConsistencyGuid の使用](../hybrid/plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)」を参照してください。
 
 - **多数のユーザーを対象に大規模な ImmutableID 更新を一度に行う**
 
@@ -2617,7 +2617,7 @@ ForceDelete ドメイン API を使用して、ユーザー、グループ、ア
 
 - Jamf Pro
 
-このワンクリック エクスペリエンスの使用を開始するには、 **Azure portal** > アプリケーションの **SSO 構成** ページにアクセスします。 詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください
+このワンクリック エクスペリエンスの使用を開始するには、**Azure portal** > アプリケーションの **SSO 構成** ページにアクセスします。 詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください
 
 ---
 
@@ -2646,7 +2646,7 @@ ForceDelete ドメイン API を使用して、ユーザー、グループ、ア
 
 **種類:** 新機能 **サービス カテゴリ:** レポート **製品の機能:** 監視とレポート
 
-Azure portal の **[サインイン]** ページの **[トラブルシューティングおよびサポート]** タブは、管理者やサポート エンジニアが、Azure AD のサインインに関連する問題のトラブルシューティングを行う助けとなるように設計されています。この新しいタブには、問題の解決に役立つように、エラー コード、エラー メッセージ、および修復の推奨事項 (ある場合) が表示されます。 問題を解決できない場合は、 **クリップボードへのコピー** 操作によってサポート チケットを作成する新しい方法も用意されています。この方法で、サポート チケット内のログ ファイルの **要求 ID** と **日付 (UTC)** のフィールドが設定されます。
+Azure portal の **[サインイン]** ページの **[トラブルシューティングおよびサポート]** タブは、管理者やサポート エンジニアが、Azure AD のサインインに関連する問題のトラブルシューティングを行う助けとなるように設計されています。この新しいタブには、問題の解決に役立つように、エラー コード、エラー メッセージ、および修復の推奨事項 (ある場合) が表示されます。 問題を解決できない場合は、**クリップボードへのコピー** 操作によってサポート チケットを作成する新しい方法も用意されています。この方法で、サポート チケット内のログ ファイルの **要求 ID** と **日付 (UTC)** のフィールドが設定されます。
 
 ![新しいタブが表示されている サインイン ログ](media/whats-new/troubleshooting-and-support.png)
 
@@ -2790,7 +2790,7 @@ Microsoft では、Azure AD に対してより大規模な IP 範囲の導入を
 
 **種類:** 新機能 **サービス カテゴリ:** アプリ プロキシ **製品の機能:** アクセス制御
 
-アプリケーション プロキシ アプリには、 **HTTP 専用 Cookie** と呼ばれる新しい設定があります。 この設定では、アプリケーション プロキシ アクセス Cookie とセッション Cookie の両方に対する HTTP 応答ヘッダーに HTTPOnly フラグを追加して、クライアント側スクリプトから Cookie へのアクセスを停止し、さらに Cookie のコピーや変更などのアクションを防止することにより、セキュリティを強化します。 このフラグは以前は使用されていませんでしたが、Cookie は常に暗号化され、TLS 接続を使用して送信されることで、不適切な変更から保護されていました。
+アプリケーション プロキシ アプリには、**HTTP 専用 Cookie** と呼ばれる新しい設定があります。 この設定では、アプリケーション プロキシ アクセス Cookie とセッション Cookie の両方に対する HTTP 応答ヘッダーに HTTPOnly フラグを追加して、クライアント側スクリプトから Cookie へのアクセスを停止し、さらに Cookie のコピーや変更などのアクションを防止することにより、セキュリティを強化します。 このフラグは以前は使用されていませんでしたが、Cookie は常に暗号化され、TLS 接続を使用して送信されることで、不適切な変更から保護されていました。
 
 この設定は、リモート デスクトップなどの ActiveX コントロールを使用するアプリとの互換性はありません。 このような状況の場合は、この設定をオフにすることをお勧めします。
 
@@ -3028,7 +3028,7 @@ TOU エンドユーザー UI の同意の文字列を更新しています。
 
 **種類:** 変更の計画 **サービス カテゴリ:** レポート **製品の機能:** 監視とレポート
 
-セキュリティ強化のため、委任された承認ワークフローを使って [Azure AD アクティビティ ログ API](../reports-monitoring/concept-reporting-api.md) にアクセスするアプリのアクセス許可を変更する必要がありました。 この変更は、 **2018 年 6 月 26日** までに行われます。
+セキュリティ強化のため、委任された承認ワークフローを使って [Azure AD アクティビティ ログ API](../reports-monitoring/concept-reporting-api.md) にアクセスするアプリのアクセス許可を変更する必要がありました。 この変更は、**2018 年 6 月 26日** までに行われます。
 
 お使いのアプリに Azure AD アクティビティ ログ API を使っているものがある場合は、以下の手順に従って、変更後にアプリで問題が発生しないことを確認してください。
 
@@ -3052,9 +3052,9 @@ TOU エンドユーザー UI の同意の文字列を更新しています。
 
 トランスポート層セキュリティ (TLS) は、通信する 2 つのアプリケーション間にプライバシーとデータ整合性を提供するプロトコルであり、今日、最も広く展開され、使用されているセキュリティ プロトコルです。
 
-[PCI Security Standards Council](https://www.pcisecuritystandards.org/) は、 **2018 年 6 月 30 日** に開始されたコンプライアンスに沿って、新しいより安全なアプリ プロトコルを有効にして、初期バージョンの TLS および Secure Sockets Layer (SSL) を無効化する必要があることを決定しました。 この変更は、Azure AD サービスに接続し、PCI DSS コンプライアンスを必要とする場合には、TLS 1.0 を無効にしなければならないことを意味します。 複数のバージョンの TLS が使用可能ですが、TLS 1.2 は Azure Active Directory Services に利用できる最新バージョンです。 クライアント/サーバーおよびブラウザー/サーバーの両方の組み合わせにおいて、TLS 1.2 に直接移行することを強くお勧めします。
+[PCI Security Standards Council](https://www.pcisecuritystandards.org/) は、**2018 年 6 月 30 日** に開始されたコンプライアンスに沿って、新しいより安全なアプリ プロトコルを有効にして、初期バージョンの TLS および Secure Sockets Layer (SSL) を無効化する必要があることを決定しました。 この変更は、Azure AD サービスに接続し、PCI DSS コンプライアンスを必要とする場合には、TLS 1.0 を無効にしなければならないことを意味します。 複数のバージョンの TLS が使用可能ですが、TLS 1.2 は Azure Active Directory Services に利用できる最新バージョンです。 クライアント/サーバーおよびブラウザー/サーバーの両方の組み合わせにおいて、TLS 1.2 に直接移行することを強くお勧めします。
 
-古いブラウザーでは、TLS 1.2 などの新しい TLS バージョンがサポートされない可能性があります。 お使いのブラウザーでどの TLS バージョンがサポートされるかを確認するには、 [Qualys SSL Labs](https://www.ssllabs.com/) サイトへ移動して、 **[Test your browser]** をクリックします。 お使いの Web ブラウザーを最新バージョンにアップグレードして、可能であれば TLS 1.2 のみを有効にすることをお勧めします。
+古いブラウザーでは、TLS 1.2 などの新しい TLS バージョンがサポートされない可能性があります。 お使いのブラウザーでどの TLS バージョンがサポートされるかを確認するには、[Qualys SSL Labs](https://www.ssllabs.com/) サイトへ移動して、 **[Test your browser]** をクリックします。 お使いの Web ブラウザーを最新バージョンにアップグレードして、可能であれば TLS 1.2 のみを有効にすることをお勧めします。
 
 **TLS 1.2 を有効にするために、ブラウザーで実行する手順**
 
@@ -3066,15 +3066,15 @@ TOU エンドユーザー UI の同意の文字列を更新しています。
 
 - **Google Chrome**
 
-    1. Google Chrome を開き、「 *chrome://settings/* 」とアドレス バーに入力して、 **Enter** キーを押します。
+    1. Google Chrome を開き、「*chrome://settings/* 」とアドレス バーに入力して、**Enter** キーを押します。
     2. **[詳細]** オプションを展開し、 **[システム]** 領域へ移動して、 **[プロキシ セットアップを開く]** を選択します。
     3. **[インターネットのプロパティ]** ボックスで、 **[詳細]** タブを選択し、 **[セキュリティ]** 領域へ移動して、 **[use TLS 1.2]\(TLS 1.2 を使用する\)** を選択してから、 **[OK]** をクリックします。
     4. すべてのブラウザー ウィンドウを閉じて、Google Chrome を再起動します。
 
 - **Mozilla Firefox**
 
-    1. Firefox を開き、アドレス バーに「 *about:config* 」と入力してから、 **Enter** キーを押します。
-    2. *TLS* という語句を検索して、 **security.tls.version.max** エントリを選択します。
+    1. Firefox を開き、アドレス バーに「*about:config*」と入力してから、**Enter** キーを押します。
+    2. *TLS* という語句を検索して、**security.tls.version.max** エントリを選択します。
     3. 値を **3** に設定して、ブラウザーでバージョン TLS 1.2 までを使用するように設定し、 **[OK]** をクリックします。
 
         >[!NOTE]
@@ -3132,11 +3132,11 @@ Azure AD Password Protection の詳細については、「[組織内の不適�
 
 ---
 
-### <a name="new-and-comprehensive-guidance-about-deploying-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のデプロイに関する新しい包括的なガイダンス
+### <a name="new-and-comprehensive-guidance-about-deploying-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication のデプロイに関する新しい包括的なガイダンス
 
 **種類:** 新機能 **サービス カテゴリ:** その他 **製品の機能:** ID のセキュリティ & 保護
 
-組織に Azure Multi-Factor Authentication (MFA) をデプロイする方法に関する新しいステップ バイ ステップ ガイドを公開しました。
+組織に Azure AD Multi-Factor Authentication (MFA) をデプロイする方法に関する新しいステップ バイ ステップ ガイドを公開しました。
 
 MFA のデプロイ ガイドを表示するには、GitHub の [Identity Deployment Guides](./active-directory-deployment-plans.md) (ID デプロイ ガイド) リポジトリに移動します。 デプロイ ガイドに関するフィードバックを提出するには、[Deployment Plan Feedback (デプロイ プランに関するフィードバック) フォーム](https://aka.ms/deploymentplanfeedback)を使用してください。 デプロイ ガイドに関する質問がある場合は、[IDGitDeploy](mailto:idgitdeploy@microsoft.com) までお問い合わせください。
 
@@ -3172,15 +3172,15 @@ MFA のデプロイ ガイドを表示するには、GitHub の [Identity Deploy
 
 **種類:** 変更の計画 **サービス カテゴリ:** 認証 (ログイン) **製品の機能:** プラットフォーム
 
-Azure Active Directory (Azure AD) などのサービスとしてのソフトウェア オファーは、インターネット経由で直接アクセスすることで最適に動作するように設計されており、ExpressRoute または他のプライベート VPN トンネルは必要ありません。 このため、 **2018 年 8 月 1日** をもって、Azure パブリック ピアリングおよび Microsoft ピアリングの Azure コミュニティを使用する Azure AD サービスに対する ExpressRoute のサポートは停止します。 この変更によって影響を受けるサービスでは、Azure AD トラフィックが ExpressRoute からインターネットに段階的に移行します。
+Azure Active Directory (Azure AD) などのサービスとしてのソフトウェア オファーは、インターネット経由で直接アクセスすることで最適に動作するように設計されており、ExpressRoute または他のプライベート VPN トンネルは必要ありません。 このため、**2018 年 8 月 1日** をもって、Azure パブリック ピアリングおよび Microsoft ピアリングの Azure コミュニティを使用する Azure AD サービスに対する ExpressRoute のサポートは停止します。 この変更によって影響を受けるサービスでは、Azure AD トラフィックが ExpressRoute からインターネットに段階的に移行します。
 
 サポートは変更されますが、認証トラフィック用に専用回線セットを使用する必要がある状況がまだ存在することも認識しています。 このため、Azure AD は、"他の Office 365 Online サービス" コミュニティとの Microsoft ピアリングでまだ ExpressRoute とサービスを使用しているテナント IP 範囲ごとの制限を引き続きサポートします。 お使いのサービスが影響を受け、ExpressRoute が必要な場合は、次の操作を行う必要があります。
 
-- **Azure パブリック ピアリングの場合。** Microsoft ピアリングに移行し、 **その他の Office 365 Online サービス (12076:5100)** コミュニティにサインアップします。 Azure パブリック ピアリングから Microsoft ピアリングに移行する方法について詳しくは、「[パブリック ピアリングを Microsoft ピアリングに移行する](../../expressroute/how-to-move-peering.md)」をご覧ください。
+- **Azure パブリック ピアリングの場合。** Microsoft ピアリングに移行し、**その他の Office 365 Online サービス (12076:5100)** コミュニティにサインアップします。 Azure パブリック ピアリングから Microsoft ピアリングに移行する方法について詳しくは、「[パブリック ピアリングを Microsoft ピアリングに移行する](../../expressroute/how-to-move-peering.md)」をご覧ください。
 
 - **Microsoft ピアリングの場合。** **その他の Office 365 Online サービス (12076:5100)** コミュニティにサインアップします。 ルーティングの要件について詳しくは、「ExpressRoute のルーティングの要件」の「[BGP コミュニティのサポート](../../expressroute/expressroute-routing.md#bgp)」をご覧ください。
 
-専用回線の使用を続ける必要がある場合は、Microsoft アカウント チームに連絡し、 **その他の Office 365 Online サービス (12076:5100)** コミュニティを使用する承認を取得する方法を確認する必要があります。 MS Office 管理レビュー委員会は、回線が必要かどうかを検証し、回線を保持することによる技術的な影響をお客様が理解していることを確認します。 承認されていないサブスクリプションが Office 365 のルート フィルターを作成しようとすると、エラー メッセージが表示されます。
+専用回線の使用を続ける必要がある場合は、Microsoft アカウント チームに連絡し、**その他の Office 365 Online サービス (12076:5100)** コミュニティを使用する承認を取得する方法を確認する必要があります。 MS Office 管理レビュー委員会は、回線が必要かどうかを検証し、回線を保持することによる技術的な影響をお客様が理解していることを確認します。 承認されていないサブスクリプションが Office 365 のルート フィルターを作成しようとすると、エラー メッセージが表示されます。
 
 ---
 
@@ -3312,7 +3312,7 @@ AADConnect の 5 月のリリースには、PingFederate との統合のパブ�
 
 **種類:** 変更された機能 **サービス カテゴリ:** 認証 (ログイン) **製品の機能:** ユーザー認証
 
-2018 年 4 月 25 日以降に作成されたアプリは、 **query** response_mode を使用して **id_token** を要求することはできません。  これにより、OIDC 仕様による Azure AD のインラインが実現し、アプリの攻撃対象領域を削減できます。  2018 年 4 月 25 日より前に作成されたアプリによる **query** response_mode と **id_token** の response_type の使用はブロックされません。  Azure AD に id_token を要求した場合に返されるエラーは **AADSTS70007: 'query' is not a supported value of 'response_mode' when requesting a token** (AADSTS70007: トークン要求時の 'query' は 'response_mode' のサポートされている値ではありません) です。
+2018 年 4 月 25 日以降に作成されたアプリは、**query** response_mode を使用して **id_token** を要求することはできません。  これにより、OIDC 仕様による Azure AD のインラインが実現し、アプリの攻撃対象領域を削減できます。  2018 年 4 月 25 日より前に作成されたアプリによる **query** response_mode と **id_token** の response_type の使用はブロックされません。  Azure AD に id_token を要求した場合に返されるエラーは **AADSTS70007: 'query' is not a supported value of 'response_mode' when requesting a token** (AADSTS70007: トークン要求時の 'query' は 'response_mode' のサポートされている値ではありません) です。
 
 **fragment** と **form_post** response_modes は引き続き動作します。新しいアプリケーション オブジェクトを作成する (たとえば、アプリ プロキシで使用する) 場合は、新しいアプリケーションが作成される前にいずれかの response_modes が使用されることを確認してください。
 
@@ -4094,7 +4094,7 @@ Intune Managed Browser を承認されたアプリとして使用することで
 
 **種類:** 新機能 **サービス カテゴリ:** セルフサービス パスワード リセット **製品の機能:** ユーザー認証
 
-オンプレミスのパスワード ライトバック クライアントの状態を確認できるようになりました。 このオプションは、 [[パスワードのリセット]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset) ページの **[オンプレミスの統合]** セクションで使用できます。
+オンプレミスのパスワード ライトバック クライアントの状態を確認できるようになりました。 このオプションは、[[パスワードのリセット]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset) ページの **[オンプレミスの統合]** セクションで使用できます。
 
 オンプレミスのライトバック クライアントへの接続で問題が生じた場合、次の内容のエラー メッセージが表示されます。
 
@@ -4164,15 +4164,15 @@ Azure AD 条件付きアクセス ポリシーのデバイス プラットフォ
 
 ---
 
-### <a name="network-policy-server-extension-for-azure-multi-factor-authentication"></a>Azure Multi-factor Authentication の ネットワーク ポリシー サーバー拡張機能
+### <a name="network-policy-server-extension-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication の ネットワーク ポリシー サーバー拡張機能
 
 **種類:** 新機能 **サービス カテゴリ:** 多要素認証 **製品の機能:** ユーザー認証
 
-Azure Multi-Factor Authentication のネットワーク ポリシー サーバー拡張機能は、既存のサーバーを使用してクラウド ベースの多要素認証機能をご利用の認証インフラストラクチャに追加します。 ネットワーク ポリシー サーバー拡張機能を使用すると、電話、テキスト メッセージ、またはモバイル アプリによる検証を、ご利用の既存の認証フローに追加できます。 新しいサーバーをインストール、構成、メンテナンスする必要はありません。
+Azure AD Multi-Factor Authentication のネットワーク ポリシー サーバー拡張機能は、既存のサーバーを使用してクラウド ベースの多要素認証機能をご利用の認証インフラストラクチャに追加します。 ネットワーク ポリシー サーバー拡張機能を使用すると、電話、テキスト メッセージ、またはモバイル アプリによる検証を、ご利用の既存の認証フローに追加できます。 新しいサーバーをインストール、構成、メンテナンスする必要はありません。
 
-この拡張機能は、Azure Multi-Factor Authentication Server をデプロイせずに仮想プライベート ネットワーク接続を保護する必要がある組織を対象に作成されました。 ネットワーク ポリシー サーバー拡張機能は、RADIUS とクラウド ベース Azure Multi-Factor Authentication の間のアダプターとして機能し、認証の 2 番目の要素をフェデレーション ユーザーまたは同期済みユーザーに提供します。
+この拡張機能は、Azure Multi-Factor Authentication Server をデプロイせずに仮想プライベート ネットワーク接続を保護する必要がある組織を対象に作成されました。 ネットワーク ポリシー サーバー拡張機能は、RADIUS とクラウド ベース Azure AD Multi-Factor Authentication の間のアダプターとして機能し、認証の 2 番目の要素をフェデレーション ユーザーまたは同期済みユーザーに提供します。
 
-詳細については、「[Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合](../authentication/howto-mfa-nps-extension.md)」をご覧ください。
+詳細については、[Azure AD Multi-Factor Authentication と既存の NPS インフラストラクチャの統合](../authentication/howto-mfa-nps-extension.md)に関するページをご覧ください。
 
 ---
 
@@ -4250,7 +4250,7 @@ Azure Portal では次の機能が提供されています。
 
 **種類:** 修正済み **サービス カテゴリ:** マイ アプリ **製品の機能:** シングル サインオン
 
-Azure AD は、HTML ユーザー名とパスワード フィールドをレンダリングするアプリケーションのサインイン フィールドの自動検出をサポートしています。 この手順は「[アプリケーションのサインイン フィールドを自動的にキャプチャする方法](../manage-apps/troubleshoot-password-based-sso.md#manually-capture-sign-in-fields-for-an-app)」に示されています。 この機能は、 [Azure Portal](https://aad.portal.azure.com) の **[エンタープライズ アプリケーション]** ページで *ギャラリー以外のアプリケーション* を追加することで表示されます。 さらに、Web URL を入力してページを保存することにより、この新しいアプリケーションの **シングル サインオン** モードを **パスワード ベースのシングル サインオン** を実行するように構成できます。
+Azure AD は、HTML ユーザー名とパスワード フィールドをレンダリングするアプリケーションのサインイン フィールドの自動検出をサポートしています。 この手順は「[アプリケーションのサインイン フィールドを自動的にキャプチャする方法](../manage-apps/troubleshoot-password-based-sso.md#manually-capture-sign-in-fields-for-an-app)」に示されています。 この機能は、[Azure Portal](https://aad.portal.azure.com) の **[エンタープライズ アプリケーション]** ページで *ギャラリー以外のアプリケーション* を追加することで表示されます。 さらに、Web URL を入力してページを保存することにより、この新しいアプリケーションの **シングル サインオン** モードを **パスワード ベースのシングル サインオン** を実行するように構成できます。
 
 サービスの問題により、この機能は一時的に無効化されていました。 問題が解決されたため、サインイン フィールドの自動検出が再び利用可能になりました。
 

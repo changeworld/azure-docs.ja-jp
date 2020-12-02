@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 10/30/2020
-ms.openlocfilehash: a97e39314b4dc15a360a01408f183a3f9a19c76f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/18/2020
+ms.openlocfilehash: c6754e6f0e3f0d6208bd34c96c8bc473429c943c
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131362"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917904"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動バックアップ - Azure SQL Database および SQL Managed Instance
 
@@ -36,9 +36,9 @@ SQL Database と SQL Managed Instance は SQL Server 技術を利用して、[�
 
 ### <a name="backup-storage-redundancy"></a>バックアップ ストレージの冗長性
 
-SQL Database と SQL Managed Instance では既定で、[ペアになっているリージョン](../../best-practices-availability-paired-regions.md)にレプリケートされる geo 冗長 (RA-GRS) [ストレージ BLOB](../../storage/common/storage-redundancy.md) にデータが格納されます。 それにより、プライマリ リージョンのバックアップ ストレージに影響する障害が起きないように保護され、万一障害が発生しても別のリージョンにサーバーを復元できます。 
+SQL Database と SQL Managed Instance では既定で、[ペアになっているリージョン](../../best-practices-availability-paired-regions.md)にレプリケートされる geo 冗長[ストレージ BLOB](../../storage/common/storage-redundancy.md) にデータが格納されます。 それにより、プライマリ リージョンのバックアップ ストレージに影響する障害が起きないように保護され、万一障害が発生しても別のリージョンにサーバーを復元できます。 
 
-バックアップ ストレージの冗長性を構成するオプションによって、ローカル冗長、ゾーン冗長、geo 冗長のいずれかのストレージ BLOB を、SQL Managed Instance または SQL Database に対して柔軟に選択することができます。 マネージド インスタンスまたは SQL データベースがデプロイされているのと同じリージョンにデータが保持されるようにするには、既定の geo 冗長バックアップ ストレージの冗長性を変更し、バックアップに対してローカル冗長 (LRS) またはゾーン冗長 (ZRS) のストレージ BLOB を構成することができます。 ストレージの冗長性メカニズムでは、計画されたイベントや計画外のイベント (一時的なハードウェア障害、ネットワークの停止や停電、大規模な自然災害など) からデータを保護するため、データのコピーが複数格納されます。 構成されたバックアップ ストレージの冗長性が、ポイントインタイム リストア (PITR) に使用される短期保有バックアップ設定と、長期的バックアップ (LTR) に使用される長期保有バックアップの、両方に適用されます。 
+バックアップ ストレージの冗長性を構成するオプションによって、ローカル冗長、ゾーン冗長、geo 冗長のいずれかのストレージ BLOB を、SQL Managed Instance または SQL Database に対して柔軟に選択することができます。 マネージド インスタンスまたは SQL データベースがデプロイされているのと同じリージョンにデータが保持されるようにするには、既定の geo 冗長バックアップ ストレージの冗長性を変更し、バックアップに対してローカル冗長またはゾーン冗長のストレージ BLOB を構成することができます。 ストレージの冗長性メカニズムでは、計画されたイベントや計画外のイベント (一時的なハードウェア障害、ネットワークの停止や停電、大規模な自然災害など) からデータを保護するため、データのコピーが複数格納されます。 構成されたバックアップ ストレージの冗長性が、ポイントインタイム リストア (PITR) に使用される短期保有バックアップ設定と、長期的バックアップ (LTR) に使用される長期保有バックアップの、両方に適用されます。 
 
 SQL Database の場合、バックアップ ストレージの冗長性は、データベースの作成時に構成することも、既存のデータベースに対して更新することもできます。既存のデータベースに対する変更は、それ以降のバックアップにのみ適用されます。 既存のデータベースのバックアップ ストレージの冗長性を更新した後、変更が適用されるまでに最大 48 時間かかることがあります。 ローカル冗長またはゾーン冗長のストレージを使用するようにデータベースを更新するとすぐに、geo リストアが無効になることに注意してください。 
 
@@ -66,7 +66,7 @@ SQL Database の場合、バックアップ ストレージの冗長性は、デ
 復元を実行するには、[バックアップからのデータベースの復元](recovery-using-backups.md)に関する記事を参照してください。
 
 > [!NOTE]
-> Azure Storage では、" *レプリケーション* " とは、ある場所から別の場所に BLOB をコピーすることを表します。 SQL では、" *データベース レプリケーション* " とは、複数のセカンダリ データベースをプライマリ データベースと同期しておくために使用されるさまざまなテクノロジのことです。
+> Azure Storage では、"*レプリケーション*" とは、ある場所から別の場所に BLOB をコピーすることを表します。 SQL では、"*データベース レプリケーション*" とは、複数のセカンダリ データベースをプライマリ データベースと同期しておくために使用されるさまざまなテクノロジのことです。
 
 次の例を使用して、バックアップの構成と復元の操作を試すことができます。
 
@@ -179,9 +179,9 @@ SQL Database と SQL Managed Instance では、課金対象の合計バックア
 ### <a name="backup-storage-redundancy"></a>バックアップ ストレージの冗長性
 
 バックアップ ストレージの冗長性は、バックアップ コストに次のように影響します。
-- LRS 価格 = x
-- ZRS 価格 = 1.25x
-- RA-GRS 価格 = 2x
+- ローカル冗長ストレージの価格 = x
+- ゾーン冗長ストレージの価格 = 1.25x
+- geo 冗長ストレージの価格 = 2x
 
 バックアップ ストレージの価格の詳細については、「[Azure SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/single/)」と「[Azure SQL Managed Instance の価格](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)」を参照してください。
 
@@ -373,7 +373,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 > [!NOTE]
 > SQL Managed Instance のバックアップに対する構成可能なストレージの冗長性は、マネージド インスタンス作成プロセスの間にのみ指定できます。 リソースがプロビジョニングされた後に、バックアップ ストレージ冗長性オプションを変更することはできません。 SQL Database の場合、現在、この機能のパブリック プレビューはブラジル南部で使用可能であり、東南アジアの Azure リージョンで一般提供されています。 
 
-マネージド インスタンスのバックアップ ストレージに対する冗長性を設定できるのは、インスタンスの作成時のみです。 SQL Database については、データベースを作成するときに設定するか、または既存のデータベースに対して更新することができます。 既定値は geo 冗長ストレージ (RA-GRS) です。 ローカル冗長 (LRS)、ゾーン冗長 (ZRS)、geo 冗長 (RA-GRS) の各バックアップ ストレージ間の価格の違いについては、[マネージド インスタンスの価格のページ](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)を参照してください。
+マネージド インスタンスのバックアップ ストレージに対する冗長性を設定できるのは、インスタンスの作成時のみです。 SQL Database については、データベースを作成するときに設定するか、または既存のデータベースに対して更新することができます。 既定値は geo 冗長ストレージです。 ローカル冗長、ゾーン冗長、geo 冗長の各バックアップ ストレージ間の価格の違いについては、[マネージド インスタンスの価格のページ](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)を参照してください。
 
 ### <a name="configure-backup-storage-redundancy-by-using-the-azure-portal"></a>Azure portal を使用してバックアップ ストレージの冗長性を構成する
 

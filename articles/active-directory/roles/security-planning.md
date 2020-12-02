@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69428898ca123bf5b5fa96cf041818cc15f5ac40
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: b0a62aafd8073b5f1a35ba340c48c80f498be2c2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378637"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834457"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -78,7 +78,7 @@ Azure AD Privileged Identity Management を有効にしたら、次のように�
 
 2. Privileged Identity Management を使用する Azure AD 組織を選択するには、Azure portal の右上隅でユーザー名を選択します。
 
-3. Azure portal メニューの **[すべてのサービス]** を選択し、 **Azure AD Privileged Identity Management** の一覧をフィルター処理します。
+3. Azure portal メニューの **[すべてのサービス]** を選択し、**Azure AD Privileged Identity Management** の一覧をフィルター処理します。
 
 4. **[すべてのサービス]** の一覧から Privileged Identity Management を開き、ダッシュ ボードにピン留めします。
 
@@ -114,7 +114,7 @@ Azure AD Privileged Identity Management が組織内にない場合は、[PowerS
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>多要素認証を有効にし、その他のすべての高度な特権を持つシングル ユーザー非フェデレーション管理者アカウントを登録します。
 
-1 つまたは複数の Azure AD 管理者ロール グローバル管理者、特権ロール管理者、Exchange 管理者、および SharePoint 管理者。 ガイドを使用して[管理者アカウントの Multi-Factor Authentication (MFA)](../authentication/howto-mfa-userstates.md) を有効にし、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) でそれらすべてのユーザーが登録されていることを確認しします。 詳しくは、[Microsoft 365 におけるデータとサービスへのアクセスの保護](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)に関するページの手順 2 と手順 3 をご覧ください。 
+次のような Azure AD 管理者ロールを永続的に割り当てられているすべての個人ユーザーには、サインイン時に Azure AD Multi-Factor Authentication (MFA) を要求します:グローバル管理者、特権ロール管理者、Exchange 管理者、および SharePoint 管理者。 ガイドを使用して[管理者アカウントの Multi-Factor Authentication (MFA)](../authentication/howto-mfa-userstates.md) を有効にし、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) でそれらすべてのユーザーが登録されていることを確認しします。 詳しくは、[Microsoft 365 におけるデータとサービスへのアクセスの保護](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)に関するページの手順 2 と手順 3 をご覧ください。 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>ステージ 2:よく使用される攻撃の緩和
 
@@ -135,7 +135,7 @@ Azure AD Privileged Identity Management が組織内にない場合は、[PowerS
 * 管理目的で使用されているアカウントが次のようになっていることを確認します。
 
   * 使用可能な電子メール アドレスが設定されている
-  * Azure Multi-Factor Authentication に登録しているか、オンプレミスの MFA を使用している
+  * Azure AD Multi-Factor Authentication に登録しているか、オンプレミスの MFA を使用している
 * ユーザーに管理アクセス権を使用するビジネス上の正当な理由を尋ねます。
 * 管理者アクセス権を必要としない個人ユーザーとサービスの管理者アクセス権を取り消します。
 
@@ -240,7 +240,7 @@ Azure アクティビティ ログは、Azure でのサブスクリプション 
 
 #### <a name="continue-rollout-of-stronger-authentication-for-all-users"></a>すべてのユーザーについて、より強力な認証のロールアウトを継続する
 
-高度に露出されたユーザーには、Azure MFA や Windows Hello などの最新の強力な認証を使用するように要求します。 高度に露出されたユーザーの例を次に示します。
+高度に露出されたユーザーには、Azure AD MFA や Windows Hello などの最新の強力な認証を使用するように要求します。 高度に露出されたユーザーの例を次に示します。
 
 * 経営幹部レベルの役員
 * 高レベルのマネージャー

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 032b63700f2842826de916a8f077975689d56911
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b40be802f30bac8438f10c4ab60e1c196c9f7164
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014904"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833794"
 ---
 # <a name="authentication-and-user-permissions"></a>認証とユーザーのアクセス許可
 
@@ -32,7 +32,7 @@ Excel や Power BI Desktop などのクライアント アプリケーション�
 
 使用するクライアント アプリケーションまたはツールに応じて、認証の種類とサインインの方法が異なる場合があります。 各アプリケーションは、Azure Analysis Services のようなクラウド サービスに接続するためのさまざまな機能をサポートしている場合があります。
 
-Power BI Desktop、Visual Studio、SSMS では、Azure Multi-Factor Authentication (MFA) もサポートされている対話型の認証方式である Active Directory ユニバーサル認証がサポートされています。 Azure MFA は、シンプルなサインイン プロセスを提供しながら、データやアプリケーションへのアクセスを効果的に保護することができます。 Azure MFA は、複数の検証オプション (電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、モバイル アプリ通知) による強力な認証を提供します。 Azure AD との対話型 MFA はポップアップ ダイアログ ボックスで検証できます。 **ユニバーサル認証を使うことをお勧めします**。
+Power BI Desktop、Visual Studio、SSMS では、Azure AD Multi-Factor Authentication (MFA) もサポートされている対話型の認証方式である Active Directory のユニバーサル認証がサポートされています。 Azure AD MFA は、シンプルなサインイン プロセスを提供しながら、データやアプリケーションへのアクセスを効果的に保護することができます。 Azure MFA は、複数の検証オプション (電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、モバイル アプリ通知) による強力な認証を提供します。 Azure AD との対話型 MFA はポップアップ ダイアログ ボックスで検証できます。 **ユニバーサル認証を使うことをお勧めします**。
 
 ユニバーサル認証が選択されていないか、使用できない (Excel) 場合に、Windows アカウントを使って Azure にサインインするには、[Active Directory フェデレーション サービス (AD FS)](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs) が必要です。 フェデレーションでは、Azure AD および Microsoft 365 のユーザーはオンプレミスの資格情報を使って認証されて、Azure リソースにアクセスできます。
 
@@ -44,7 +44,7 @@ Azure Analysis Services サーバーは、Windows 認証、Active Directory パ�
 
 *  Azure AS テナントに招待された Azure B2B ゲスト ユーザーをサポートしています。 サーバーへの接続時に、ゲスト ユーザーは Active Directory のユニバーサル認証を選ぶ必要があります。
 
-*  Multi-Factor Authentication (MFA) をサポートします。 Azure MFA は、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、モバイル アプリ通知など、各種確認オプションでデータとアプリケーションへのアクセスを保護するのに役立ちます。 Azure AD との対話型 MFA はポップアップ ダイアログ ボックスで検証できます。
+*  Multi-Factor Authentication (MFA) をサポートします。 Azure AD MFA は、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、モバイル アプリ通知など、各種確認オプションでデータとアプリケーションへのアクセスを保護するのに役立ちます。 Azure AD との対話型 MFA はポップアップ ダイアログ ボックスで検証できます。
 
 ### <a name="visual-studio"></a>Visual Studio
 
@@ -60,9 +60,9 @@ Excel ユーザーは、Windows アカウント、組織 ID (メール アドレ
 
 ## <a name="user-permissions"></a>ユーザーのアクセス許可
 
-**サーバー管理者**は、Azure Analysis Services サーバー インスタンスに固有です。 Azure Portal、SSMS、Visual Studio などのツールを使って接続し、データベースの追加やユーザー ロールの管理などのタスクを実行します。 既定では、サーバーを作成したユーザーは、自動的に Analysis Services サーバー管理者として追加されます。 他の管理者は、Azure Portal または SSMS を使って追加できます。 サーバー管理者には、同じサブスクリプションの Azure AD テナントにアカウントが必要です。 詳しくは、「[サーバー管理者の管理](analysis-services-server-admins.md)」をご覧ください。 
+**サーバー管理者** は、Azure Analysis Services サーバー インスタンスに固有です。 Azure Portal、SSMS、Visual Studio などのツールを使って接続し、データベースの追加やユーザー ロールの管理などのタスクを実行します。 既定では、サーバーを作成したユーザーは、自動的に Analysis Services サーバー管理者として追加されます。 他の管理者は、Azure Portal または SSMS を使って追加できます。 サーバー管理者には、同じサブスクリプションの Azure AD テナントにアカウントが必要です。 詳しくは、「[サーバー管理者の管理](analysis-services-server-admins.md)」をご覧ください。 
 
-**データベース ユーザー**は、Excel や Power BI などのクライアント アプリケーションを使ってモデル データベースに接続します。 ユーザーは、データベース ロールに追加する必要があります。 データベース ロールは、データベースに対して管理者、プロセス、または読み取りアクセス許可を定義します。 管理者のアクセス許可を含むロールのデータベース ユーザーは、サーバー管理者とは異なることを理解することが重要です。 ただし、既定では、サーバー管理者はデータベース管理者でもあります。 詳しくは、「[データベース ロールとユーザーの管理](analysis-services-database-users.md)」をご覧ください。
+**データベース ユーザー** は、Excel や Power BI などのクライアント アプリケーションを使ってモデル データベースに接続します。 ユーザーは、データベース ロールに追加する必要があります。 データベース ロールは、データベースに対して管理者、プロセス、または読み取りアクセス許可を定義します。 管理者のアクセス許可を含むロールのデータベース ユーザーは、サーバー管理者とは異なることを理解することが重要です。 ただし、既定では、サーバー管理者はデータベース管理者でもあります。 詳しくは、「[データベース ロールとユーザーの管理](analysis-services-database-users.md)」をご覧ください。
 
 **Azure リソース所有者**。 リソース所有者は、Azure サブスクリプションのリソースを管理します。 リソース所有者は、Azure Portal の **[アクセス制御]** を使用して、または Azure Resource Manager テンプレートで、サブスクリプション内の所有者または共同作成者のロールに Azure AD ユーザー ID を追加できます。 
 

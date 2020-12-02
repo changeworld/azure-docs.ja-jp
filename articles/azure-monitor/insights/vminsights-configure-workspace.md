@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: a7bdc1ee22d3672160122cad65b18de99f743cc7
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: a4380ae7fdb523f8b2f5bc14fefa094b6d96e547
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94747691"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95750536"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>Azure Monitor for VMs 用に Log Analytics ワークスペースを構成する
 Azure Monitor for VMs は、Azure Monitor 内の 1 つ以上の Log Analytics ワークスペースからデータを収集します。 エージェントをオンボードする前に、ワークスペースを作成して構成する必要があります。 この記事では、ワークスペースの要件と、それを Azure Monitor for VMs 用に構成するための要件について説明します。
@@ -68,7 +68,7 @@ Azure Monitor for VMs では、次のリージョン内の Log Analytics ワー�
 - オーストラリア東部
 - オーストラリア南東部
 
-## <a name="role-based-access-control"></a>ロールベースのアクセス制御
+## <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 Azure Monitor for VMs の機能を有効にしてアクセスするには、ワークスペース内の [Log Analytics 共同作成者ロール](../platform/manage-access.md#manage-access-using-azure-permissions)が必要です。 パフォーマンス、正常性、マップ データを表示するには、Azure VM に対する[監視閲覧者ロール](../platform/roles-permissions-security.md#built-in-monitoring-roles)が必要です。 Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、「[ワークスペースを管理する](../platform/manage-access.md)」を参照してください。
 
 ## <a name="add-vminsights-solution-to-workspace"></a>ワークスペースに VMInsights ソリューションを追加する
@@ -80,7 +80,7 @@ Azure Monitor for VMs で Log Analytics ワークスペースを使用するに�
 ### <a name="azure-portal"></a>Azure portal
 Azure portal を使用して既存のワークスペースを構成するためのオプションは 3 つあります。 それぞれについて下で説明します。
 
-1 つのワークスペースを構成するには、 **[その他のオンボード オプション]** 、 **[ワークスペースの構成]** の順に選択します。 サブスクリプションとワークスペースを選択し、 **[構成]** をクリックします。
+1 つのワークスペースを構成するには、**Azure Monitor** メニューの **[Virtual Machines]** オプションを選択し、 **[その他のオンボードオプション]** を選択してから **[ワークスペースの構成]** を選択します。 サブスクリプションとワークスペースを選択し、 **[構成]** をクリックします。
 
 [![ワークスペースを構成する](media/vminsights-enable-at-scale-policy/configure-workspace.png)](media/vminsights-enable-at-scale-policy/configure-workspace.png#lightbox)
 

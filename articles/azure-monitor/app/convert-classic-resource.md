@@ -3,18 +3,18 @@ title: Azure Monitor Application Insights のクラシック リソースをワ�
 description: Azure Monitor Application Insights のクラシック リソースを新しいワークスペースベースのモデルにアップグレードするために必要な手順について説明します。
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 0d2c7d1b9ee57e6d201205c04557e1b5f5623eb0
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 709cff1326bb6393a14c594ea434a6c16fb80860
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930579"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536525"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>ワークスペースベースの Application Insights リソースに移行する
 
 このガイドでは、クラシック Application Insights リソースをワークスペースベースのリソースに移行するプロセスについて説明します。 ワークスペース ベースのリソースは、Application Insights と Log Analytics 間の完全な統合をサポートします。 ワークスペースベースのリソースは、Application Insights テレメトリを共通の Log Analytics ワークスペースに送信します。これにより、アプリケーション、インフラストラクチャ、およびプラットフォームのログを 1 つの統合された場所に保持しながら、[Azure Monitor の最新機能](#new-capabilities)にアクセスできます。
 
-ワークスペースベースのリソースにより、リソース全体で共通のロールベースのアクセス制御 (RBAC) が有効になり、アプリ間またはワークスペース間のクエリが不要になります。
+ワークスペースベースのリソースにより、リソース全体で共通の Azure ロールベースのアクセス制御 (Azure RBAC) が有効になり、アプリ間またはワークスペース間のクエリが不要になります。
 
 **ワークスペースベースのリソースは、現在、すべての商用リージョンおよび Azure US Government でご利用いただけます**
 
@@ -33,7 +33,7 @@ ms.locfileid: "91930579"
 ワークスペースベースのリソースに移行するときに、クラシック リソースのストレージから新しいワークスペースベースのストレージにデータが転送されることはありません。 その代わりに、移行を選ぶと、クラシック リソース データへのアクセスを保持しつつ、新しいデータの書き込み先が Log Analytics ワークスペースに変更されます。 
 
 クラシック リソース データは永続的に保持され、従来の Application Insights リソースにデータ保持設定が適用されます。 移行後に取り込まれるすべての新しいデータには、関連付けられている Log Analytics ワークスペースの[データ保持設定](../platform/manage-cost-storage.md#change-the-data-retention-period)が適用されます。Log Analytics ワークスペースでは、[データの種類別のデータ保持設定](../platform/manage-cost-storage.md#retention-by-data-type)もサポートされています。
-移行プロセスは**永続的な処理であり、元に戻すことはできません**。 リソースをワークスペースベースの Application Insights に移行すると、そのリソースは常にワークスペースベースのリソースであり続けます。 ただし、移行の完了後、必要に応じて対象のワークスペースを変更できます。 
+移行プロセスは **永続的な処理であり、元に戻すことはできません**。 リソースをワークスペースベースの Application Insights に移行すると、そのリソースは常にワークスペースベースのリソースであり続けます。 ただし、移行の完了後、必要に応じて対象のワークスペースを変更できます。 
 
 > [!NOTE]
 > ワークスペース ベースの Application Insights リソースのデータ インジェストとリテンション期間は、データが保管されている [Log Analytics ワークスペースを通じて課金](../platform/manage-cost-storage.md)されます。 移行前にクラシック Application Insights リソース データに取り込まれたデータに対して 90 日を超える保持期間を選択した場合、データ保持の料金はその Application Insights リソースを通じて課金され続けます。 ワークスペース ベースの Application Insights リソースの課金に関する[詳細を参照]( ./pricing.md#workspace-based-application-insights)してください。
@@ -209,7 +209,7 @@ Application Insights リソース ペイン内で **[プロパティ]**  >  **[�
 
 **エラー メッセージ:** *The selected workspace is configured with workspace-based access mode. (選択されたワークスペースは、ワークスペースベースのアクセス モードで構成されています。)Some APM features may be impacted. (一部の APM 機能に影響する可能性があります。)Select another workspace or allow resource-based access in the workspace settings. (別のワークスペースを選択するか、ワークスペースの設定でリソースベースのアクセスを許可してください。)You can override this error by using CLI. (CLI を使用すると、このエラーをオーバーライドできます。)* 
 
-ワークスペースベースの Application Insights リソースを正常に動作させるには、ターゲット Log Analytics ワークスペースのアクセス制御モードを**リソースまたはワークスペースのアクセス許可**設定に変更する必要があります。 この設定は、 **[プロパティ]**  >  **[アクセス制御モード]** の Log Analytics ワークスペースの UI にあります。 詳細な手順については、[Log Analytics のアクセス制御モードの構成ガイダンス](../platform/manage-access.md#configure-access-control-mode)を参照してください。 アクセス制御モードとして、排他的な **[ワークスペースのアクセス許可が必要]** 設定が指定されている場合、ポータルの移行エクスペリエンスを使用した移行はブロックされたままになります。
+ワークスペースベースの Application Insights リソースを正常に動作させるには、ターゲット Log Analytics ワークスペースのアクセス制御モードを **リソースまたはワークスペースのアクセス許可** 設定に変更する必要があります。 この設定は、 **[プロパティ]**  >  **[アクセス制御モード]** の Log Analytics ワークスペースの UI にあります。 詳細な手順については、[Log Analytics のアクセス制御モードの構成ガイダンス](../platform/manage-access.md#configure-access-control-mode)を参照してください。 アクセス制御モードとして、排他的な **[ワークスペースのアクセス許可が必要]** 設定が指定されている場合、ポータルの移行エクスペリエンスを使用した移行はブロックされたままになります。
 
 現在のターゲット ワークスペースのセキュリティ上の理由により、アクセス制御モードを変更できない場合は、移行に使用する新しい Log Analytics ワークスペースを作成することをお勧めします。 
 

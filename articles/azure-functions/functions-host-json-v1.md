@@ -3,12 +3,12 @@ title: Azure Functions 1.x の host.json のリファレンス
 description: Azure Functions の v1 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 32848c725d5c99e3814e86447d604839502054c0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 588ab6723015f34d15e4a46ec4f7324302b13b81
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167724"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832825"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x の host.json のリファレンス
 
@@ -93,7 +93,8 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
     "serviceBus": {
       "maxConcurrentCalls": 16,
       "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
+      "autoRenewTimeout": "00:05:00",
+      "autoComplete": true
     },
     "singleton": {
       "lockPeriod": "00:00:15",
@@ -286,6 +287,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
     "sendGrid": {
         "from": "Contoso Group <admin@contoso.com>"
     }
+}    
 ```
 
 |プロパティ  |Default | 説明 |
@@ -301,7 +303,8 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
     "serviceBus": {
       "maxConcurrentCalls": 16,
       "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
+      "autoRenewTimeout": "00:05:00",
+      "autoComplete": true
     }
 }
 ```
@@ -310,7 +313,8 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 |---------|---------|---------| 
 |maxConcurrentCalls|16|メッセージ ポンプが開始する必要があるコールバックの同時呼び出しの最大数 既定では、Functions ランタイムは、複数のメッセージを同時に処理します。 一度に 1 つのキューまたはトピックのメッセージのみを処理するようにランタイムに指示するには、`maxConcurrentCalls` を 1 に設定します。 | 
 |prefetchCount|該当なし|基になる MessageReceiver に使用される既定の PrefetchCount。| 
-|autoRenewTimeout|00:05:00|メッセージ ロックが自動的に更新される最大間隔。| 
+|autoRenewTimeout|00:05:00|メッセージ ロックが自動的に更新される最大間隔。|
+|autoComplete|true|true の場合、操作が正常に実行されたときにトリガーがメッセージの処理を自動的に完了します。 false の場合、返す前にメッセージを完了するのは関数の役割です。|
 
 ## <a name="singleton"></a>singleton
 
