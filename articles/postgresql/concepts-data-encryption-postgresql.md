@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 078b0fe63cf89f2736a8707ad561c798c4818317
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 23961a03d1da1137d92ecd3b8003241120b11d80
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242417"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493785"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>カスタマーマネージド キーを使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化
 
@@ -47,9 +47,9 @@ KEK で暗号化された DEK は、個別に格納されます。 KEK へのア
 
 PostgreSQL サーバーで DEK の暗号化のために Key Vault に格納されているカスタマーマネージド キーを使用する場合、Key Vault 管理者がサーバーに次のアクセス権を付与します。
 
-* **get** :Key Vault 内のキーの公開部分とプロパティを取得します。
-* **wrapKey** :DEK を暗号化できるようにします。 暗号化された DEK は Azure Database for PostgreSQL に格納されます。
-* **unwrapKey** :DEK の暗号化を解除できるようにします。 Azure Database for PostgreSQL でデータを暗号化または復号化するには、暗号化解除された DEK が必要となります
+* **get**:Key Vault 内のキーの公開部分とプロパティを取得します。
+* **wrapKey**:DEK を暗号化できるようにします。 暗号化された DEK は Azure Database for PostgreSQL に格納されます。
+* **unwrapKey**:DEK の暗号化を解除できるようにします。 Azure Database for PostgreSQL でデータを暗号化または復号化するには、暗号化解除された DEK が必要となります
 
 Key Vault 管理者は、後で監査できるように、[Key Vault の監査イベントのログ記録を有効](../azure-monitor/insights/key-vault-insights-overview.md)にすることもできます。
 
@@ -67,7 +67,7 @@ Key Vault を構成するための要件を以下に示します。
 
 * DEK の暗号化に使用されるカスタマーマネージド キーは、非対称の RSA 2048 のみです。
 * キーがアクティブ化された日時 (設定する場合) は、過去の日付と時刻にする必要があります。 有効期限 (設定する場合) は、将来の日付と時刻にする必要があります。
-* キーは、" *有効* " 状態になっている必要があります。
+* キーは、"*有効*" 状態になっている必要があります。
 * Key Vault に[既存のキーをインポート](/rest/api/keyvault/ImportKey/ImportKey)する場合は、サポートされているファイル形式 (`.pfx`、`.byok`、`.backup`) で指定するようにしてください。
 
 ## <a name="recommendations"></a>推奨事項
@@ -77,7 +77,7 @@ Key Vault を構成するための要件を以下に示します。
 * Key Vault でリソース ロックを設定して、この重要なリソースを削除できるユーザーを制御し、誤削除や許可されていない削除を防ぎます。
 * すべての暗号化キーの監査およびレポートを有効にします。 Key Vault で提供されるログは、他のセキュリティ情報およびイベント管理ツールに簡単に挿入できます。 Azure Monitor Log Analytics は、既に統合されているサービスの一例です。
 * DEK のラップとラップ解除操作のためのより高速なアクセスを保証するために、Key Vault と Azure Database for PostgreSQL 単一サーバーが同じリージョンに存在することを確認します。
-* Azure KeyVault を **プライベート エンドポイントと選択されたネットワーク** のみにロックダウンし、 *信頼された Microsoft* サービスのみがリソースを保護できるようにします。
+* Azure KeyVault を **プライベート エンドポイントと選択されたネットワーク** のみにロックダウンし、*信頼された Microsoft* サービスのみがリソースを保護できるようにします。
 
     :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="trusted-service-with-AKV":::
 
@@ -89,13 +89,13 @@ Key Vault を構成するための要件を以下に示します。
 
 ## <a name="inaccessible-customer-managed-key-condition"></a>カスタマーマネージド キーのアクセス不可状態
 
-Key Vault でカスタマー マネージド キーを使用してデータ暗号化を構成する場合に、サーバーをオンラインに保つには、このキーへの継続的なアクセスが必要です。 サーバーで Key Vault のカスタマーマネージド キーにアクセスできなくなった場合、サーバーでは 10 分以内にすべての接続を拒否し始めます。 サーバーで対応するエラー メッセージが発行され、サーバーの状態が " *アクセス不可* " に変更されます。 サーバーがこの状態になる理由としては、次のようなものがあります。
+Key Vault でカスタマー マネージド キーを使用してデータ暗号化を構成する場合に、サーバーをオンラインに保つには、このキーへの継続的なアクセスが必要です。 サーバーで Key Vault のカスタマーマネージド キーにアクセスできなくなった場合、サーバーでは 10 分以内にすべての接続を拒否し始めます。 サーバーで対応するエラー メッセージが発行され、サーバーの状態が "*アクセス不可*" に変更されます。 サーバーがこの状態になる理由としては、次のようなものがあります。
 
-* データ暗号化が有効になっている Azure Database for PostgreSQL 単一サーバーに対してポイントインタイム リストア サーバーを作成すると、新しく作成されたサーバーは " *アクセス不可* " 状態になります。 サーバー状態は [Azure portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) または [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) から修正できます。
-* データ暗号化が有効になっている Azure Database for PostgreSQL 単一サーバーに対して読み取りレプリカを作成すると、レプリカ サーバーは " *アクセス不可* " 状態になります。 サーバー状態は [Azure portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) または [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) から修正できます。
-* KeyVault を削除すると、Azure Database for PostgreSQL 単一サーバーはキーにアクセスできなくなり、" *アクセス不可* " 状態に移行します。 [Key Vault](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) を復旧し、データ暗号化を再検証して、サーバーを " *使用可能* " にしてください。
-* KeyVault からキーを削除すると、Azure Database for PostgreSQL 単一サーバーはキーにアクセスできなくなり、" *アクセス不可* " 状態に移行します。 [キー](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects)を復旧し、データ暗号化を再検証して、サーバーを " *使用可能* " にしてください。
-* Azure KeyVault に格納されているキーの有効期限が切れると、キーは無効になり、Azure Database for PostgreSQL 単一サーバーは " *アクセス不可* " 状態に移行します。 [CLI](/cli/azure/keyvault/key#az-keyvault-key-set-attributes) を使用してキーの有効期限を延長した後、データの暗号化を再検証して、サーバーを " *使用可能* " にしてください。
+* データ暗号化が有効になっている Azure Database for PostgreSQL 単一サーバーに対してポイントインタイム リストア サーバーを作成すると、新しく作成されたサーバーは "*アクセス不可*" 状態になります。 サーバー状態は [Azure portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) または [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) から修正できます。
+* データ暗号化が有効になっている Azure Database for PostgreSQL 単一サーバーに対して読み取りレプリカを作成すると、レプリカ サーバーは "*アクセス不可*" 状態になります。 サーバー状態は [Azure portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) または [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) から修正できます。
+* KeyVault を削除すると、Azure Database for PostgreSQL 単一サーバーはキーにアクセスできなくなり、"*アクセス不可*" 状態に移行します。 [Key Vault](../key-vault/general/key-vault-recovery.md) を復旧し、データ暗号化を再検証して、サーバーを "*使用可能*" にしてください。
+* KeyVault からキーを削除すると、Azure Database for PostgreSQL 単一サーバーはキーにアクセスできなくなり、"*アクセス不可*" 状態に移行します。 [キー](../key-vault/general/key-vault-recovery.md)を復旧し、データ暗号化を再検証して、サーバーを "*使用可能*" にしてください。
+* Azure KeyVault に格納されているキーの有効期限が切れると、キーは無効になり、Azure Database for PostgreSQL 単一サーバーは "*アクセス不可*" 状態に移行します。 [CLI](/cli/azure/keyvault/key#az-keyvault-key-set-attributes) を使用してキーの有効期限を延長した後、データの暗号化を再検証して、サーバーを "*使用可能*" にしてください。
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>Key Vault からの誤ったキー アクセスの失効
 
@@ -131,11 +131,11 @@ Key Vault に格納されている顧客のマネージド キーで Azure Datab
 
 Azure Database for PostgreSQL の場合、カスタマー マネージド キー (CMK) を使用した保存データの暗号化のサポートには、いくつかの制限があります。
 
-* この機能のサポートは、 **General Purpose** および **Memory Optimized** 価格レベルに限定されています。
+* この機能のサポートは、**General Purpose** および **Memory Optimized** 価格レベルに限定されています。
 * この機能は、16 TB までのストレージをサポートしているリージョンとサーバーでのみサポートされています。 最大 16 TB のストレージをサポートする Azure リージョンの一覧については、[こちらの](concepts-pricing-tiers.md#storage)ドキュメントにあるストレージのセクションを参照してください
 
     > [!NOTE]
-    > - 上記のリージョンで作成されたすべての新しい PostgreSQL サーバー、カスタマー マネージャー キーによる暗号化のサポートが、 **利用可能** です。 ポイント イン タイム リストア (PITR) サーバーまたは読み取りレプリカは、理論上 ' 新規 ' には該当しません。
+    > - 上記のリージョンで作成されたすべての新しい PostgreSQL サーバー、カスタマー マネージャー キーによる暗号化のサポートが、**利用可能** です。 ポイント イン タイム リストア (PITR) サーバーまたは読み取りレプリカは、理論上 ' 新規 ' には該当しません。
     > - プロビジョニングされたサーバーによって最大 16 TB がサポートされているかどうかを検証するには、ポータルの [価格レベル] ブレードにアクセスして、プロビジョニング済みのサーバーでサポートされる最大ストレージ サイズを確認できます。 スライダーを最大 4 TB まで動かすことができる場合、サーバーでは、カスタマー マネージド キーを使用した暗号化がサポートされていない可能性があります。 ただし、データは常にサービス マネージド キーを使用して暗号化されます。 質問がある場合は、AskAzureDBforPostgreSQL@service.microsoft.com までご連絡ください。
 
 * RSA 2048 暗号化キーを使用した暗号化のみがサポートされています。

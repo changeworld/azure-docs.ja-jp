@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 06341f8630684519a456d5ef89144ae3c0934b23
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 278f8f816909a7e365d7e45d04c5169950e79a65
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423149"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493680"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-by-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL - フレキシブル サーバーを管理する
 
@@ -43,7 +43,7 @@ az account set --subscription <subscription id>
 
 ## <a name="scale-compute-and-storage"></a>コンピューティングとストレージのスケーリング
 
-次のコマンドを使用して、コンピューティング レベル、仮想コア、ストレージを簡単にスケールアップできます。 実行可能なすべてのサーバー操作の一覧については、[az postgres flexible-server](https://docs.microsoft.com/cli/azure/postgres/flexible-server) の概要に関するページを参照してください。
+次のコマンドを使用して、コンピューティング レベル、仮想コア、ストレージを簡単にスケールアップできます。 実行可能なすべてのサーバー操作の一覧については、[az postgres flexible-server](/cli/azure/postgres/flexible-server) の概要に関するページを参照してください。
 
 ```azurecli-interactive
 az postgres flexible-server update --resource-group myresourcegroup --name mydemoserver --sku-name Standard_D4ds_v3 --storage-size 6144
@@ -131,7 +131,7 @@ az postgres flexible-server update --resource-group myresourcegroup --name mydem
 
 ## <a name="delete-a-server"></a>サーバーの削除
 
-Azure Database for PostgreSQL フレキシブル サーバーを削除するには、[az postgres flexible-server delete](https://docs.microsoft.com/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) コマンドを実行します。
+Azure Database for PostgreSQL フレキシブル サーバーを削除するには、[az postgres flexible-server delete](/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) コマンドを実行します。
 
 ```azurecli-interactive
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver
