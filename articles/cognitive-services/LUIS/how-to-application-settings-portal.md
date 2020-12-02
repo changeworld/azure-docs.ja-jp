@@ -3,14 +3,14 @@ title: アプリケーションの設定
 description: LUIS ポータルで、発話の正規化やアプリのプライバシーなど、アプリケーションとバージョンの設定を構成します。
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: quickstart
-ms.date: 05/17/2020
-ms.openlocfilehash: 0a07e423b5307934938727cd8ccc475989e04362
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.topic: conceptual
+ms.date: 11/30/2020
+ms.openlocfilehash: aabe05924e781fbab5f92bd620ddcd566365f7e8
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91309627"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436642"
 ---
 # <a name="application-and-version-settings"></a>アプリとバージョンの設定
 

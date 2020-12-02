@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 7c0b399f84e793d9e762c89dbbd1901bb5a95f26
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 32f6a9dae1a5b0be604b53d814ebc85cb7813b91
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024332"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353767"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>音声テキスト変換についてよく寄せられる質問
 
-疑問点への回答がこのよく寄せられる質問で見つからない場合は、[その他のサポート オプション](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext)を確認してください。
+疑問点への回答がこのよく寄せられる質問で見つからない場合は、[その他のサポート オプション](../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)を確認してください。
 
 ## <a name="general"></a>全般
 
@@ -71,7 +71,7 @@ ms.locfileid: "95024332"
 
 **Q:個人の要求はログに記録されますか。**
 
-**A**: 既定では、要求は (音声と文字起こしのどちらにも) ログに記録されません。 必要に応じて、[カスタム エンドポイントを作成する](how-to-custom-speech-deploy-model.md)ときに、 *[Log content from this endpoint]\(このエンドポイントからコンテンツをログに記録する\)* オプションを選択して、トレースを有効にすることができます。 その後、要求は Azure のセキュリティで保護されたストレージに記録されます。
+**A**: 既定では、要求は (音声と文字起こしのどちらにも) ログに記録されません。 必要に応じて、[カスタム エンドポイントを作成する](./how-to-custom-speech-train-model.md)ときに、 *[Log content from this endpoint]\(このエンドポイントからコンテンツをログに記録する\)* オプションを選択して、トレースを有効にすることができます。 その後、要求は Azure のセキュリティで保護されたストレージに記録されます。
 
 **Q:ユーザーの要求は調整されますか。**
 

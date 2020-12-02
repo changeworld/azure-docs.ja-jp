@@ -8,16 +8,16 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperfq2
-ms.openlocfilehash: 9aa1156da48ba39672d59858d0640619581329ee
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 45b177bd35af9748ff80ecc38f2d1c803c10546e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981121"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452815"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital Twins ツイン グラフに対してクエリを実行する
 
-この記事では、クエリの例について、および **Azure Digital Twins クエリ言語** を使用して情報の[ツイン グラフ](concepts-twins-graph.md)に対してクエリを実行する手順の詳細について説明します。 (クエリ言語の概要とその機能の完全な一覧については、["*クエリ言語の概念*"](concepts-query-language.md) に関する記事を参照してください。)
+この記事では、クエリの例について、および **Azure Digital Twins クエリ言語** を使用して情報の [ツイン グラフ](concepts-twins-graph.md)に対してクエリを実行する手順の詳細について説明します。 (クエリ言語の概要とその機能の完全な一覧については、["*クエリ言語の概念*"](concepts-query-language.md) に関する記事を参照してください。)
 
 この記事では、デジタル ツインのクエリ言語の構造および共通のクエリ操作を示すサンプル クエリについて冒頭で説明します。 次に、Azure Digital Twins の [Query API](/rest/api/digital-twins/dataplane/query) または [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) を使用して、クエリを作成した後にそのクエリを実行する方法について説明します。
 
@@ -258,7 +258,7 @@ SELECT Consumer.name AS consumerName, Edge.prop1 AS first, Edge.prop2 AS second,
 FROM DIGITALTWINS Factory
 JOIN Consumer RELATED Factory.customer Edge
 WHERE Factory.$dtId = 'ABC'
-AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)"
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)
 ```
 
 これは、上記と同じセットに対してクエリを実行する類似のクエリですが、"*Consumer.name*" プロパティのみが `consumerName` としてプロジェクションされ、完全な "*Factory*" はツインとしてプロジェクションされます。

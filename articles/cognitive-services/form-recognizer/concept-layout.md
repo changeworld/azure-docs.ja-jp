@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: b489964e5ef8ea483cbe203be1ff665078a6d66a
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 60ef490bbba4dca4f01b82967ad6ea8636e7bd4e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95741731"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353699"
 ---
 # <a name="form-recognizer-layout-service"></a>Form Recognizer レイアウト サービス
 
-Azure Form Recognizer を使用すると、レイアウト サービスを使用して、ドキュメントからテキスト、テーブル、選択マーク、構造情報を抽出できます。 Layout API を使用すると、お客様は、さまざまな形式のドキュメントを渡して、構造化されたデータとドキュメントの表現を取得できます。 強力な[光学式文字認識 (OCR)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) 機能と、ドキュメントを解釈するディープ ラーニング モデルを組み合わせて、ドキュメントのテキスト、テーブル、選択マーク、構造を抽出します。 
+Azure Form Recognizer を使用すると、レイアウト サービスを使用して、ドキュメントからテキスト、テーブル、選択マーク、構造情報を抽出できます。 Layout API を使用すると、お客様は、さまざまな形式のドキュメントを渡して、構造化されたデータとドキュメントの表現を取得できます。 強力な[光学式文字認識 (OCR)](../computer-vision/concept-recognizing-text.md) 機能と、ドキュメントを解釈するディープ ラーニング モデルを組み合わせて、ドキュメントのテキスト、テーブル、選択マーク、構造を抽出します。 
 
 ## <a name="what-does-the-layout-service-do"></a>レイアウト サービスの機能
 
@@ -96,7 +96,3 @@ JSON 出力には次の 2 つの部分があります。
 
 * [Form Recognizer とは](./overview.md)
 * [REST API リファレンス ドキュメント](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeLayoutAsync)
-
-
-
-
