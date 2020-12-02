@@ -4,16 +4,16 @@ description: Azure Analysis Services リソースを別のリージョンに移�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: how-to
-ms.date: 06/09/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 1f7ecf960ae94fae4d829e73daf051b9062e478d
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 049ff6d14c3967481eb73037814082fa261154e3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018196"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497930"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Analysis Services を別のリージョンに移動する
 
@@ -32,7 +32,7 @@ ms.locfileid: "92018196"
 > * 新しいターゲット サーバーとデータベースを確認します。
 > * ソース サーバーを削除します。
 
-この記事では、リソース テンプレートを使用して、**基本構成**を持つ単一の Analysis Services サーバーを、同じサブスクリプション内の別のリージョン "*および*" リソース グループに移行する方法について説明します。 テンプレートを使用すると、構成済みのサーバー プロパティが保持され、ターゲット サーバーが、同じプロパティ (リージョンとリソース グループは除く) を使用して、ソース サーバーとして構成されることが確実になります。 この記事では、データ ソース、ストレージ、ゲートウェイ リソースなど、同じリソース グループに属する可能性がある関連リソースの移動については説明しません。 
+この記事では、リソース テンプレートを使用して、**基本構成** を持つ単一の Analysis Services サーバーを、同じサブスクリプション内の別のリージョン "*および*" リソース グループに移行する方法について説明します。 テンプレートを使用すると、構成済みのサーバー プロパティが保持され、ターゲット サーバーが、同じプロパティ (リージョンとリソース グループは除く) を使用して、ソース サーバーとして構成されることが確実になります。 この記事では、データ ソース、ストレージ、ゲートウェイ リソースなど、同じリソース グループに属する可能性がある関連リソースの移動については説明しません。 
 
 サーバーを別のリージョンに移動する前に、詳細なプランを作成することをお勧めします。 ゲートウェイやストレージなど、他にも移動が必要になる可能性があるリソースを検討します。 いずれのプランでも、運用サーバーを移動する前に、テスト サーバーを使用して 1 つ以上の試用移動操作を完了することが重要です。
 
@@ -58,7 +58,7 @@ ms.locfileid: "92018196"
 
 ### <a name="backup-model-databases"></a>モデル データベースをバックアップする
 
-**ストレージ設定**がまだソース サーバー用に構成されていない場合は、「[ストレージ設定の構成](analysis-services-backup.md#configure-storage-settings)」の手順に従ってください。
+**ストレージ設定** がまだソース サーバー用に構成されていない場合は、「[ストレージ設定の構成](analysis-services-backup.md#configure-storage-settings)」の手順に従ってください。
 
 ストレージ設定が構成されたら、「[バックアップ](analysis-services-backup.md#backup)」の手順に従って、ストレージ コンテナーにモデル データベースの .abf バックアップを作成します。 .abf バックアップは、後で新しいターゲット サーバーに復元します。
 
@@ -88,7 +88,7 @@ Azure portal を使用してテンプレートをエクスポートするには:
 
 PowerShell を使用してテンプレートをエクスポートするには:
 
-1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
+1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -177,7 +177,7 @@ PowerShell を使用して Shared Access Signature を取得するには、「[P
 
 #### <a name="regions"></a>リージョン
 
-Azure リージョンを取得するには、[Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)に関するページをご覧ください。 PowerShell を使用してリージョンを取得するには、[Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) コマンドを実行します。
+Azure リージョンを取得するには、[Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)に関するページをご覧ください。 PowerShell を使用してリージョンを取得するには、[Get-AzLocation](/powershell/module/az.resources/get-azlocation) コマンドを実行します。
 
 ```azurepowershell-interactive
    Get-AzLocation | format-table 
@@ -278,7 +278,7 @@ PowerShell を使用してサーバー URI を取得するには、次のコマ�
 
 省略可能:[ALM Toolkit](http://alm-toolkit.com/) は、Power BI データセット "*および*" Analysis Services 表形式モデル データベースの比較と管理を行うための "*オープン ソース*" ツールです。 このツールキットを使用して、ソース サーバーとターゲット サーバーの両方のデータベースに接続し、比較します。 データベースの移行が成功した場合、モデル オブジェクトの定義が同じになります。 
 
-:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="SAS の取得":::
+:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="ALM Toolkit":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

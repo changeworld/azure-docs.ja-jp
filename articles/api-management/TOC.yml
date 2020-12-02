@@ -80,6 +80,8 @@
       href: observability.md
     - name: Resource Manager テンプレートを使用した CI/CD
       href: devops-api-development-templates.md
+    - name: 論理的な削除
+      href: soft-delete.md
 - name: 操作方法ガイド
   items:
     - name: API の定義

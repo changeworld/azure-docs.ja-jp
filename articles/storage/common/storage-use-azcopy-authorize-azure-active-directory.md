@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/03/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 89aab37b750a61bd21ba9af23875536a8cfbff4a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: b13b5e1e27e9717066ff8f1aa8e245e8d9f54bbb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413620"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498117"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>AzCopy と Azure Active Directory (Azure AD) を使用して BLOB へのアクセスを承認する
 
@@ -42,7 +42,7 @@ AzCopy についての詳細は、「[AzCopy を使ってみる](storage-use-azc
 - Resource group
 - サブスクリプション
 
-ロールを確認して割り当てる方法については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](./storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)」を参照してください。
+ロールを確認して割り当てる方法については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](./storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
 > [!NOTE]
 > Azure ロールの割り当ての反映には最大で 5 分かかる場合があることに留意してください。

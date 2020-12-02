@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: eee711917a732bfc24b10db82c75786fd9734b57
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: c77f0e93e9f0084f335df39d2878871d66af0aac
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555687"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498032"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -291,8 +291,8 @@ Azure Policy のために (それが提供されているリージョンで) マ
 
 |マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | プレビュー | プレビュー |
-| ユーザー割り当て済み | ![利用可能][check] | ![利用可能][check] | プレビュー | プレビュー |
+| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | プレビュー | ![利用可能][check] |
+| ユーザー割り当て済み | ![利用可能][check] | ![利用可能][check] | プレビュー | ![利用可能][check] |
 
 Azure Virtual Machine Scale Sets のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
@@ -308,8 +308,8 @@ Azure Virtual Machine Scale Sets のために (それが提供されているリ
 
 | マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | プレビュー | プレビュー |
-| ユーザー割り当て済み | ![利用可能][check] | ![利用可能][check] | プレビュー | プレビュー |
+| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | プレビュー | ![利用可能][check] |
+| ユーザー割り当て済み | ![利用可能][check] | ![利用可能][check] | プレビュー | ![利用可能][check] |
 
 Azure Virtual Machines のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 

@@ -6,12 +6,12 @@ ms.author: jumeder
 ms.date: 11/09/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0596d118d1f3c09bc295891f023fe9990f3f1e05
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: c8ecd3afc95cf4b8054cd7db3530c15afebea3ce
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94558124"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498236"
 ---
 # <a name="fresnel-effect"></a>フレネル効果
 
@@ -21,7 +21,7 @@ ms.locfileid: "94558124"
 
 ## <a name="enabling-the-fresnel-effect"></a>フレネル効果を有効にする
 
-フレネル効果の機能を使用するには、対象となる素材でこの機能を有効にする必要があります。 有効にするには、[PBR 素材](../../overview/features/pbr-materials.md)で、[PbrMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures) の FresnelEffect ビットを設定します。 [ColorMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering) と[色素材](../../overview/features/color-materials.md)にも、同じパターンが適用されます。 使用方法のデモについては、「コード サンプル」セクションを参照してください。
+フレネル効果の機能を使用するには、対象となる素材でこの機能を有効にする必要があります。 有効にするには、[PBR 素材](../../overview/features/pbr-materials.md)で、[PbrMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures) の FresnelEffect ビットを設定します。 [ColorMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering) と[色素材](../../overview/features/color-materials.md)にも、同じパターンが適用されます。 使用方法のデモについては、「コード サンプル」セクションを参照してください。
 
 有効にすると、フレネル効果がすぐに表示されます。 既定では、光沢は白 (1, 1, 1, 1) で、指数は 1 となります。 次のパラメーター セッターを使用して、これらの設定をカスタマイズできます。
 
@@ -93,10 +93,10 @@ void SetFresnelEffect(ApiHandle<AzureSession> session, ApiHandle<Material> mater
 
 ## <a name="api-documentation"></a>API のドキュメント
 
-* [C# PbrMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures)
-* [C++ PbrMaterialFeatures](https://docs.microsoft.com/cpp/api/remote-rendering/pbrmaterialfeatures)
-* [C# ColorMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.colormaterialfeatures)
-* [C++ ColorMaterialFeatures](https://docs.microsoft.com/cpp/api/remote-rendering/colormaterialfeatures)
+* [C# PbrMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures)
+* [C++ PbrMaterialFeatures](/cpp/api/remote-rendering/pbrmaterialfeatures)
+* [C# ColorMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.colormaterialfeatures)
+* [C++ ColorMaterialFeatures](/cpp/api/remote-rendering/colormaterialfeatures)
 
 ## <a name="next-steps"></a>次のステップ
 

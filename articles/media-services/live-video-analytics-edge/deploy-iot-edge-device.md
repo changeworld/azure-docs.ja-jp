@@ -3,12 +3,12 @@ title: IoT Edge デバイスに Live Video Analytics をデプロイする - Azu
 description: この記事では、IoT Edge デバイスに Live Video Analytics をデプロイするときに役立つ手順を示します。 たとえば、ローカル Linux コンピューターにアクセスできる場合や、以前に Azure Media Services アカウントを作成してある場合などに、これを行います。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: a64fc11d7afa70d5200fdbd24bd3facdb8a95a7e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 4fa4a9643976ba513b025706cacec26b2a50afb5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019581"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498321"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge デバイスに Live Video Analytics をデプロイする
 
@@ -23,8 +23,8 @@ ms.locfileid: "92019581"
 * [サポートされている Linux オペレーティング システム](../../iot-edge/support.md#operating-systems)のいずれかを実行している x86-64 または ARM64 デバイス
 * [所有者特権](../../role-based-access-control/built-in-roles.md#owner)がある Azure サブスクリプション
 * [IoT Hub を作成してセットアップします](../../iot-hub/iot-hub-create-through-portal.md)
-* [IoT Edge デバイスを登録します](../../iot-edge/how-to-register-device.md)
-* [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../../iot-edge/how-to-install-iot-edge-linux.md)
+* [IoT Edge デバイスを登録します](../../iot-edge/how-to-manual-provision-symmetric-key.md)
+* [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../../iot-edge/how-to-install-iot-edge.md)
 * [Azure Media Services アカウントを作成します](../latest/create-account-howto.md)
 
     * 次のいずれかのリージョンを使用します: 米国東部 2、米国東部、米国中部、米国中北部、東日本、米国西部、米国西部 2、米国中西部、カナダ東部、英国南部、フランス中部、フランス南部、スイス北部、スイス西部、西日本。
@@ -166,7 +166,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
         "aadServicePrincipalSecret": "{secret}"
     }
     ```
-    これらは、上記の JSON に対して**必須**のプロパティです。  
+    これらは、上記の JSON に対して **必須** のプロパティです。  
     * {subscriptionID} - これは、自分の Azure サブスクリプション ID です
     * {resourceGroupName} - これは、Media Services アカウントが属しているリソース グループです
     * {AMS-account-name} - これは、Media Services アカウントの名前です
@@ -176,7 +176,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
     * aadServicePrincipalAppId - これは、Media Services アカウントのサービス プリンシパルのアプリ ID であり、上記のリンクの "AadClientId" と同じです。
     * aadServicePrincipalSecret - これはサービス プリンシパルのパスワードであり、上記のリンクの "AadSecret" と同じです。
 
-    次に示すのは、JSON に追加してモジュールを監視するのに役立つ、**推奨される**いくつかの追加プロパティです。 詳細については、「[監視とログ記録](monitoring-logging.md)」を参照してください。
+    次に示すのは、JSON に追加してモジュールを監視するのに役立つ、**推奨される** いくつかの追加プロパティです。 詳細については、「[監視とログ記録](monitoring-logging.md)」を参照してください。
     
     ```
     "diagnosticsEventsOutputName": "lvaEdgeDiagnostics",
@@ -185,7 +185,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
     "logCategories": "Application,Events"
     ```
     
-    次に示すのは、JSON で追加できる**オプションの**プロパティです。
+    次に示すのは、JSON で追加できる **オプションの** プロパティです。
     
     ```
     "aadEndpoint": "https://login.microsoftonline.com",

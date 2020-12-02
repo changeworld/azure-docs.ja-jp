@@ -10,12 +10,12 @@ ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 5f772bd996b126a4cd7182a2ce088c2d3edc8e7d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 683f0e070ad77add62ed76eabd70b42ba15f012e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312023"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498134"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>ストレージ アカウントへの要求に必要な最小バージョンのトランスポート層セキュリティ (TLS) を適用する
 
@@ -35,7 +35,7 @@ ms.locfileid: "93312023"
 
 Azure Storage アカウントに対する要求をログに記録し、クライアントによって使用される TLS のバージョンを特定するために、Azure Monitor の Azure Storage ログ記録 (プレビュー) を使用することができます。 詳細については、「[Azure Storage を監視する](../blobs/monitor-blob-storage.md)」を参照してください。
 
-Azure Monitor の Azure Storage ログ記録では、ログ クエリを使用したログ データの分析がサポートされています。 ログに対してクエリを実行するために、Azure Log Analytics ワークスペースを使用できます。 ログ クエリの詳細については、「[チュートリアル: Log Analytics クエリの使用方法](../../azure-monitor/log-query/get-started-portal.md)」を参照してください。
+Azure Monitor の Azure Storage ログ記録では、ログ クエリを使用したログ データの分析がサポートされています。 ログに対してクエリを実行するために、Azure Log Analytics ワークスペースを使用できます。 ログ クエリの詳細については、「[チュートリアル: Log Analytics クエリの使用方法](../../azure-monitor/log-query/log-analytics-tutorial.md)」を参照してください。
 
 Azure Monitor で Azure Storage のデータをログに記録し、Azure Log Analytics で分析するには、まず、データをログに記録する要求の種類とストレージ サービスを示す診断設定を作成する必要があります。 Azure portal で診断設定を作成するには、これらの手順に従います。
 
@@ -46,7 +46,7 @@ Azure Monitor で Azure Storage のデータをログに記録し、Azure Log An
 1. 要求をログに記録する Azure Storage サービスを選択します。 たとえば、Blob Storage に対する要求をログに記録するには、 **[Blob]** を選択します。
 1. **[診断設定の追加]** を選択します。
 1. 診断設定の名前を指定します。
-1. **[カテゴリの詳細]** の **[ログ]** セクションで、ログを記録する要求の種類を選択します。 読み取り、書き込み、および削除要求をログに記録できます。 たとえば、 **StorageRead** と **StorageWrite** を選択すると、選択されたサービスへの読み取りおよび書き込み要求がログに記録されます。
+1. **[カテゴリの詳細]** の **[ログ]** セクションで、ログを記録する要求の種類を選択します。 読み取り、書き込み、および削除要求をログに記録できます。 たとえば、**StorageRead** と **StorageWrite** を選択すると、選択されたサービスへの読み取りおよび書き込み要求がログに記録されます。
 1. **[宛先の詳細]** で、 **[Log Analytics への送信]** を選択します。 以下の図に示すように、ご利用のサブスクリプションと、先ほど作成した Log Analytics ワークスペースを選択します。
 
     :::image type="content" source="media/transport-layer-security-configure-minimum-version/create-diagnostic-setting-logs.png" alt-text="要求のログを記録するための診断設定の作成方法を示すスクリーンショット":::
@@ -109,7 +109,7 @@ Azure portal を使用して既存のストレージ アカウントの TLS の�
 
 PowerShell を使用してストレージ アカウントの最小 TLS バージョンを構成するには、[Azure PowerShell バージョン 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0) 以降をインストールします。 次に、新規または既存のストレージ アカウントに **MinimumTLSVersion** プロパティを構成します。 **MinimumTlsVersion** の有効な値は、`TLS1_0`、`TLS1_1`、`TLS1_2` です。
 
-次の例では、ストレージ アカウントを作成し、 **MinimumTLSVersion** を TLS 1.1 に設定した後、アカウントを更新して、 **MinimumTLSVersion** を TLS 1.2 に設定します。 この例では、各ケースのプロパティ値も取得します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
+次の例では、ストレージ アカウントを作成し、**MinimumTLSVersion** を TLS 1.1 に設定した後、アカウントを更新して、**MinimumTLSVersion** を TLS 1.2 に設定します。 この例では、各ケースのプロパティ値も取得します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
 
 ```powershell
 $rgName = "<resource-group>"
@@ -139,7 +139,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName `
 
 Azure CLI を使用してストレージ アカウントの最小 TLS バージョンを構成するには、Azure CLI バージョン 2.9.0 以降をインストールします。 詳細については、「 [Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。 次に、新規または既存のストレージ アカウントに **minimumTlsVersion** プロパティを構成します。 **minimumTlsVersion** の有効な値は、`TLS1_0`、`TLS1_1`、`TLS1_2` です。
 
-次の例では、ストレージ アカウントを作成し、 **minimumTLSVersion** を TLS 1.1 に設定します。 次に、アカウントを更新して、 **minimumTLSVersion** プロパティを TLS 1.2 に設定します。 この例では、各ケースのプロパティ値も取得します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
+次の例では、ストレージ アカウントを作成し、**minimumTLSVersion** を TLS 1.1 に設定します。 次に、アカウントを更新して、**minimumTLSVersion** プロパティを TLS 1.2 に設定します。 この例では、各ケースのプロパティ値も取得します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
 
 ```azurecli-interactive
 az storage account create \
@@ -169,10 +169,10 @@ az storage account show \
 
 # <a name="template"></a>[テンプレート](#tab/template)
 
-テンプレートを使用してストレージ アカウントの最小 TLS バージョンを構成するには、 **MinimumTLSVersion** プロパティを `TLS1_0`、`TLS1_1`、または `TLS1_2` に設定してテンプレートを作成します。 次の手順は、Azure portal でテンプレートを作成する方法について説明しています。
+テンプレートを使用してストレージ アカウントの最小 TLS バージョンを構成するには、**MinimumTLSVersion** プロパティを `TLS1_0`、`TLS1_1`、または `TLS1_2` に設定してテンプレートを作成します。 次の手順は、Azure portal でテンプレートを作成する方法について説明しています。
 
 1. Azure portal で、 **[リソースの作成]** を選択します。
-1. **[Marketplace を検索]** で「 **template deployment** 」と入力し、 **Enter** キーを押します。
+1. **[Marketplace を検索]** で「**template deployment**」と入力し、**Enter** キーを押します。
 1. **[Template deployment (deploy using custom templates) (preview)]\(テンプレートのデプロイ (カスタム テンプレートを使用してデプロイ)\)** 、 **[作成]** 、 **[エディターで独自のテンプレートを作成する]** の順に選択します。
 1. テンプレート エディターで、次の JSON を貼り付けて新しいアカウントを作成し、最小 TLS バージョンを TLS 1.2 に設定します。 山かっこ内のプレースホルダーは、実際の値に置き換えてください。
 
@@ -205,7 +205,7 @@ az storage account show \
     ```
 
 1. テンプレートを保存します。
-1. リソース グループ パラメーターを指定し、 **[確認と作成]** ボタンを選択してテンプレートをデプロイし、 **MinimumTLSVersion** プロパティが構成されたストレージ アカウントを作成します。
+1. リソース グループ パラメーターを指定し、 **[確認と作成]** ボタンを選択してテンプレートをデプロイし、**MinimumTLSVersion** プロパティが構成されたストレージ アカウントを作成します。
 
 ---
 
@@ -286,7 +286,7 @@ Azure portal でポリシーを割り当てるには、次の手順を実行し�
 1. **[スコープ]** フィールドで、ポリシー割り当てのスコープを選択します。
 1. **[ポリシー定義]** フィールドで、 **[More]\(詳細\)** ボタンを選択して、前のセクションで定義したポリシーを一覧から選択します。
 1. ポリシー割り当て用の名前 を入力します。 説明は省略できます。
-1. **[ポリシーの適用]** を " *有効* " のままに設定しておきます。 この設定は、監査ポリシーには影響しません。
+1. **[ポリシーの適用]** を "*有効*" のままに設定しておきます。 この設定は、監査ポリシーには影響しません。
 1. **[確認および作成]** を選択して割り当てを作成します。
 
 ### <a name="view-compliance-report"></a>コンプライアンス レポートを表示する
@@ -310,7 +310,7 @@ Azure Policy では、Azure リソースが要件と標準に準拠している�
 
 適用ポリシーでは、Deny 効果を使用して、最小 TLS バージョンが組織の標準に準拠しなくなるようなストレージ アカウントの作成要求または変更要求が禁止されます。 効果の詳細については、「[Azure Policy の効果について](../../governance/policy/concepts/effects.md)」を参照してください。
 
-TLS 1.2 より小さい最小 TLS バージョンに対して Deny 効果を持つポリシーを作成するには、「 [Azure Policy を使用してコンプライアンスを監査する](#use-azure-policy-to-audit-for-compliance)」で説明されている手順に従いますが、ポリシー定義の **policyRule** セクションに次の JSON を指定します。
+TLS 1.2 より小さい最小 TLS バージョンに対して Deny 効果を持つポリシーを作成するには、「[Azure Policy を使用してコンプライアンスを監査する](#use-azure-policy-to-audit-for-compliance)」で説明されている手順に従いますが、ポリシー定義の **policyRule** セクションに次の JSON を指定します。
 
 ```json
 {

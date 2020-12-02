@@ -1,19 +1,19 @@
 ---
 title: マッピング データ フローを使用してデータを変換する
 description: このチュートリアルでは、Azure Data Factory で マッピング データ フローを使用してデータを変換するための詳細な手順を説明します
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/09/2019
-ms.openlocfilehash: fa516f577254f827a6437697df82010bd9b631ee
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: b0f564f68a638e7efd1cd1ce9116a26f4d19f277
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555912"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497063"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>マッピング データ フローを使用してデータを変換する
 
