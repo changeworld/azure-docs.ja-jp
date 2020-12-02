@@ -9,12 +9,12 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 4beb1c31f34ec4e8d26228cfe4f30f5109a1b60c
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 85665dbda2ed11ffa04b71e4317f2b34b83d317f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394545"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349369"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>クイック スタート:Microsoft Genomics サービス経由でワークフローを実行する
 
@@ -112,18 +112,18 @@ Microsoft Genomics サービスでは、入力ファイルとして paired end �
 [https://msgensampledata.blob.core.windows.net/small/chr21_1.fq.gz](https://msgensampledata.blob.core.windows.net/small/chr21_1.fq.gz)
 [https://msgensampledata.blob.core.windows.net/small/chr21_2.fq.gz](https://msgensampledata.blob.core.windows.net/small/chr21_2.fq.gz)
 
-ストレージ アカウント内では、入力データ用に 1 つの BLOB コンテナーと、出力データ用に 2 つ目の BLOB コンテナーを作成する必要があります。  入力データをお使いの入力用 BLOB コンテナーにアップロードします。 アップロードを行うために、[Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)、[BlobPorter](https://github.com/Azure/blobporter)、[AzCopy](../storage/common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) など、さまざまなツールを使用できます。 
+ストレージ アカウント内では、入力データ用に 1 つの BLOB コンテナーと、出力データ用に 2 つ目の BLOB コンテナーを作成する必要があります。  入力データをお使いの入力用 BLOB コンテナーにアップロードします。 アップロードを行うために、[Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)、[BlobPorter](https://github.com/Azure/blobporter)、[AzCopy](../storage/common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) など、さまざまなツールを使用できます。 
 
 ## <a name="run-a-workflow-through-the-microsoft-genomics-service-using-the-msgen-python-client"></a>`msgen` Python クライアントを使用して Microsoft Genomics サービス経由でワークフローを実行する
 
-Microsoft Genomics サービス経由でワークフローを実行するために、 *config.txt* ファイルを編集してお使いのデータの入力および出力ストレージ コンテナーを指定します。
+Microsoft Genomics サービス経由でワークフローを実行するために、*config.txt* ファイルを編集してお使いのデータの入力および出力ストレージ コンテナーを指定します。
 お使いの Genomics アカウントからダウンロードした *config.txt* ファイルを開きます。 ユーザーによる指定が必要なセクションは、サブスクリプション キーと下部にある 6 つの項目、ストレージ アカウント名、入力および出力用のキーとコンテナー名です。 この情報を検索するには、Azure portal 内でお使いのストレージ アカウントの **アクセス キー** に移動するか、Azure Storage Explorer から直接移動します。  
 
 ![Genomics の構成](./media/quickstart-run-genomics-workflow-portal/genomics-config.PNG "Genomics の構成")
 
 GATK4 を実行したい場合は、`process_name` パラメーターを `gatk4` に設定します。
 
-既定では、Genomics サービスから VCF ファイルが出力されます。 VCF 出力 (GATK 3.x では `-emitRefConfidence` に、GATK 4.x では `emit-ref-confidence` に相当) ではなく gVCF 出力を希望する場合は、 *config.txt* に `emit_ref_confidence` パラメーターを追加し、それを `gvcf` に設定してください (上図参照)。  VCF 出力に戻す場合は、 *config.txt* ファイルからそれを削除するか、`emit_ref_confidence` パラメーターを `none` に設定します。 
+既定では、Genomics サービスから VCF ファイルが出力されます。 VCF 出力 (GATK 3.x では `-emitRefConfidence` に、GATK 4.x では `emit-ref-confidence` に相当) ではなく gVCF 出力を希望する場合は、*config.txt* に `emit_ref_confidence` パラメーターを追加し、それを `gvcf` に設定してください (上図参照)。  VCF 出力に戻す場合は、*config.txt* ファイルからそれを削除するか、`emit_ref_confidence` パラメーターを `none` に設定します。 
 
 `bgzip` は、vcf または gvcf ファイルを圧縮するツールです。また、`tabix` を使用すると、圧縮されたファイル用のインデックスを作成できます。 既定で、Genomics サービスでは、".g.vcf" 出力に対して `bgzip` に続いて `tabix` が実行されますが、".vcf" 出力の場合、既定ではこれらのツールは実行されません。 実行すると、サービスによって ".gz" (bgzip 出力) および ".tbi" (tabix 出力) ファイルが生成されます。 引数はブール値であり、"vcf" 出力の場合は既定で false に設定され、"gcvf" 出力の場合は既定で true に設定されます。 コマンド ライン上で使用するには、`-bz` または `--bgzip-output` を `true` (bgzip および tabix を実行) または `false` として指定します。 この引数を *config.txt* ファイル内で使用するには、ファイルに `bgzip_output: true` または `bgzip_output: false` を追加します。
 

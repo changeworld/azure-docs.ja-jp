@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: af5af26a8970409b07eda6195b0853c3fa931b3f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: c1c6478948aaf207f0ca1adf367840ca3db34649
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506255"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325301"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -134,7 +134,7 @@ tokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
 
 ```javascript  
 await identityClient.revokeTokens(identityResponse);
-console.log(`\nSuccessfully revoked all access tokens for identity with Id: ${identityResponse.communicationUserId}`);
+console.log(`\nSuccessfully revoked all access tokens for identity with ID: ${identityResponse.communicationUserId}`);
 ```
 
 ## <a name="delete-an-identity"></a>ID の削除
@@ -143,7 +143,7 @@ ID を削除すると、すべてのアクティブなアクセス トークン�
 
 ```javascript
 await identityClient.deleteUser(identityResponse);
-console.log(`\nDeleted the identity with Id: ${identityResponse.communicationUserId}`);
+console.log(`\nDeleted the identity with ID: ${identityResponse.communicationUserId}`);
 ```
 
 ## <a name="run-the-code"></a>コードの実行

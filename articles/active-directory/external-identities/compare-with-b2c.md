@@ -12,12 +12,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 420cc2bc38d079fa95f6b90ed20cb31e994f4ea3
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 6be0720b7eafb251b262d5cd182bdf06e201402d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027076"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173075"
 ---
 # <a name="what-are-external-identities-in-azure-active-directory"></a>Azure Active Directory の外部 ID とは
 
@@ -51,7 +51,7 @@ Azure AD External Identities を使用して、組織の境界を越えて、顧
 
 ## <a name="about-multitenant-applications"></a>マルチテナント アプリケーションについて
 
-アプリをサービスとして提供していて、顧客のユーザー アカウントを管理したくない場合は、マルチテナント アプリが適切な選択肢になる可能性があります。 他の Azure AD テナントを対象としたアプリケーションを開発する場合、1 つの組織のユーザー (シングル テナント) も、既に Azure AD テナントを所有している組織のユーザー (マルチテナント アプリケーション) も対象にすることができます。 既定では、Azure AD でのアプリの登録はシングル テナントですが、登録をマルチテナントにすることができます。 このマルチテナント アプリケーションは、自身の Azure AD に一度だけ自分で登録します。 その後は追加で作業しなくても、任意の組織の Azure AD ユーザーであればだれでもそのアプリケーションを使用できます。 詳細については、「[マルチテナント アプリケーションでの ID 管理](https://docs.microsoft.com/azure/architecture/multitenant-identity/)」、[ハウツー ガイド](../develop/howto-convert-app-to-be-multi-tenant.md)を参照してください。
+アプリをサービスとして提供していて、顧客のユーザー アカウントを管理したくない場合は、マルチテナント アプリが適切な選択肢になる可能性があります。 他の Azure AD テナントを対象としたアプリケーションを開発する場合、1 つの組織のユーザー (シングル テナント) も、既に Azure AD テナントを所有している組織のユーザー (マルチテナント アプリケーション) も対象にすることができます。 既定では、Azure AD でのアプリの登録はシングル テナントですが、登録をマルチテナントにすることができます。 このマルチテナント アプリケーションは、自身の Azure AD に一度だけ自分で登録します。 その後は追加で作業しなくても、任意の組織の Azure AD ユーザーであればだれでもそのアプリケーションを使用できます。 詳細については、「[マルチテナント アプリケーションでの ID 管理](/azure/architecture/multitenant-identity/)」、[ハウツー ガイド](../develop/howto-convert-app-to-be-multi-tenant.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

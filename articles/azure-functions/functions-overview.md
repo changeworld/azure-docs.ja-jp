@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperfq2
-ms.openlocfilehash: 6713c0d45a8b5363122c726d1d31e5c479ba8fff
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 514f2e9a82a50f95f9c054c6a54e7b5af3c0af15
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95504633"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167779"
 ---
 # <a name="introduction-to-azure-functions"></a>Azure Functions の概要
 
@@ -38,7 +38,7 @@ ms.locfileid: "95504633"
 | --- | --- |
 | **Web API をビルドする** | [HTTP トリガー](./functions-bindings-http-webhook.md)を使用して Web アプリケーションのエンドポイントを実装します |
 | **ファイルのアップロードを処理する** | [Blob Storage](./functions-bindings-storage-blob.md) のファイルがアップロードされたり変更されたりしたときにコードを実行します |
-| **サーバーレス ワークフローを作成する** | [Durable Functions](./durable-functions-overview.md) を使用して一連の関数のチェーンを作成します。 |
+| **サーバーレス ワークフローを作成する** | [Durable Functions](./durable/durable-functions-overview.md) を使用して一連の関数のチェーンを作成します。 |
 | **データベースの変更に対処する** | [Cosmos DB](./functions-bindings-cosmosdb-v2.md) でドキュメントが作成または更新されたときにカスタム ロジックを実行します |
 | **スケジュールされたタスクを実行する** | [設定した時刻](./functions-bindings-timer.md)にコードを実行します |
 | **信頼性の高いメッセージ キュー システムを作成する** | [Queue Storage](./functions-bindings-storage-queue.md)、[Service Bus](./functions-bindings-service-bus.md)、[Event Hubs](./functions-bindings-event-hubs.md) のいずれかを使用してメッセージ キューを処理します |
@@ -51,7 +51,7 @@ ms.locfileid: "95504633"
 
 - **デプロイの自動化**: ツールベースのアプローチから外部パイプラインの使用まで、[無数のデプロイ オプション](./functions-deployment-technologies.md)が利用できます。
 
-- **関数のトラブルシューティング**: [監視ツール](./functions-monitoring.md)と[テスト戦略](./functions-test-a-function.md)を使用して、アプリの分析情報を入手します。
+- **関数のトラブルシューティング**: [監視ツール](./functions-monitoring.md)と [テスト戦略](./functions-test-a-function.md)を使用して、アプリの分析情報を入手します。
 
 - **柔軟な価格オプション**: [従量課金](./pricing.md)プランでは、関数が実行されている間だけ支払いが発生します。これに対し、[Premium](./pricing.md) プランと [App Service](./pricing.md) プランでは、特別なニーズに対応するための機能が提供されます。
 

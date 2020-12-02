@@ -150,7 +150,7 @@ Text Analytics クライアントは、キーを使用して Azure に対して�
 
 * [クライアントを認証する](#authenticate-the-client)
 * [感情分析](#sentiment-analysis) 
-* [意見マイニング](#opinion-mining)
+* [オピニオン マイニング](#opinion-mining)
 * [言語検出](#language-detection)
 * [名前付きエンティティの認識](#named-entity-recognition-ner)
 * [エンティティ リンク設定](#entity-linking)

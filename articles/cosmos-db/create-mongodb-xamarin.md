@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/09/2020
 ms.author: masoucou
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 94cf54e689f845f77c54d1d3c7710e079594f556
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 339c6177de6e83f463efbc97e88a36ed4c52d97b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098945"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349097"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート: .NET SDK と Azure Cosmos DB の MongoDB 用 API を使用して Xamarin.Forms アプリを構築する
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -36,7 +36,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 サンプルを実行するには、[Visual Studio](https://www.visualstudio.com/downloads/) または [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) と、有効な Azure CosmosDB アカウントが必要です。
 
-まだ Visual Studio を持っていない場合は、 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードし、セットアップで **[.NET によるモバイル開発]** のワークロードをインストールしてください。
+まだ Visual Studio を持っていない場合は、[Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードし、セットアップで **[.NET によるモバイル開発]** のワークロードをインストールしてください。
 
 Mac で作業したい場合は、[Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) をダウンロードして、セットアップを実行します。
 
@@ -168,7 +168,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 2. **TaskList.Core** プロジェクトの **Helpers** ディレクトリにある **APIKeys.cs** ファイルを開きます。
 
-3. ポータルから (コピー ボタンを使って) **プライマリ接続文字列** の値をコピーし、 **APIKeys.cs** ファイルの **ConnectionString** フィールドの値に設定します。
+3. ポータルから (コピー ボタンを使って) **プライマリ接続文字列** の値をコピーし、**APIKeys.cs** ファイルの **ConnectionString** フィールドの値に設定します。
 
 4. 接続文字列から `&replicaSet=globaldb` を削除します。 クエリ文字列からその値を削除しないと、ランタイム エラーが発生します。
 
@@ -207,4 +207,4 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 このクイック スタートでは、Azure Cosmos DB アカウントを作成し、MongoDB 用 API を使用して Xamarin.Forms アプリを実行する方法を学習しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。
 
 > [!div class="nextstepaction"]
-> [Azure Cosmos DB の MongoDB 用 API で構成された Azure Cosmos DB にデータをインポートする](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)
+> [Azure Cosmos DB の MongoDB 用 API で構成された Azure Cosmos DB にデータをインポートする](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

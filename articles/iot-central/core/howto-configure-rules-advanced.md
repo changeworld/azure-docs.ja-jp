@@ -47,7 +47,7 @@ Power Automate のトリガーとして **Azure IoT Central V3 - preview** コ�
 
 Azure Logic Apps のトリガーとして **Azure IoT Central V3 - preview** コネクタを追加するには:
 
-1. **Logic Apps デザイナー**で、 **[空のロジック アプリ]** テンプレートを選択します。
+1. **Logic Apps デザイナー** で、 **[空のロジック アプリ]** テンプレートを選択します。
 1. デザイナーで、 **[カスタム]** タブを選択します。
 1. *IoT Central* を検索し、**Azure IoT Central V3 - preview** コネクタを選択します。
 1. トリガーの一覧で、 **[ルールが起動されたとき (プレビュー)]** を選択します。
@@ -70,12 +70,12 @@ Power Automate のアクションとして **Azure IoT Central V3 - preview** �
 
 Azure Logic Apps のアクションとして **Azure IoT Central V3 - preview** コネクタを追加するには:
 
-1. **Logic Apps デザイナー**の **[アクションを選択してください]** パネルで、 **[カスタム]** タブを選択します。
+1. **Logic Apps デザイナー** の **[アクションを選択してください]** パネルで、 **[カスタム]** タブを選択します。
 1. *IoT Central* を検索し、**Azure IoT Central V3 - preview** コネクタを選択します。
 1. アクションの一覧で、使用する IoT Central アクションを選択します。
 1. アクション ステップで、選択したアクションの構成を完了します。 次に、 **[保存]** を選択します。
 
-:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Azure IoT Central - preview コネクタを検索し、トリガーを選択する":::
+:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Azure IoT Central V3 コネクタを検索し、アクションを選択する":::
 
 ## <a name="list-of-actions"></a>アクションの一覧
 

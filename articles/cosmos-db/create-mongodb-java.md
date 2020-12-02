@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 2dcd72f9231726d5a2f473dbbfa4d8fd81e64b97
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8a8fa9e15630aea3fb92571fd88a0ce01d3c9211
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098981"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349114"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>クイック スタート:Azure Cosmos DB の MongoDB API と Java を使ってコンソール アプリを作成する
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -42,7 +42,7 @@ ms.locfileid: "93098981"
 
 ## <a name="add-a-collection"></a>コレクションの追加
 
-新しいデータベースに **db** 、新しいコレクションに **coll** という名前を付けます。
+新しいデータベースに **db**、新しいコレクションに **coll** という名前を付けます。
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-mongodb-create-collection.md)] 
 
@@ -112,7 +112,7 @@ ms.locfileid: "93098981"
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
-1. Azure Cosmos DB アカウントから **[クイック スタート]** を選択し、 **Java** を選択して、接続文字列をクリップボードにコピーします。
+1. Azure Cosmos DB アカウントから **[クイック スタート]** を選択し、**Java** を選択して、接続文字列をクリップボードにコピーします。
 
 2. *Program.java* ファイルを開き、MongoClientURI コンストラクターの引数を接続文字列で置き換えます。 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
     
@@ -137,4 +137,4 @@ ms.locfileid: "93098981"
 このクイックスタートでは、Azure Cosmos DB API for Mongo DB アカウントを作成する方法や、データ エクスプローラーを使用してデータベースとコンテナーを追加する方法、Java コンソール アプリを使用してデータを追加する方法について説明しました。 これで、Cosmos データベースに追加のデータをインポートできます。 
 
 > [!div class="nextstepaction"]
-> [MongoDB データを Azure Cosmos DB にインポートする](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)
+> [MongoDB データを Azure Cosmos DB にインポートする](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

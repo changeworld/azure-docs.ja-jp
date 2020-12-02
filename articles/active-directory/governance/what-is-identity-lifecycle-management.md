@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d54e1127207f0593f8d345b266d7db6e92b5c0d
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 65e1217041d85b66664792d9475cdfcb517559b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335402"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172437"
 ---
 # <a name="what-is-identity-lifecycle-management"></a>ID ライフサイクル管理とは
 
@@ -70,7 +70,7 @@ Azure AD では現在これらの機能を提供しています。
 ## <a name="next-steps"></a>次のステップ 
 
 - [プロビジョニングとは](what-is-provisioning.md)
-- [Azure AD のエンタイトルメント管理で外部ユーザーのアクセスを管理する](/azure/active-directory/governance/entitlement-management-external-users)
+- [Azure AD のエンタイトルメント管理で外部ユーザーのアクセスを管理する](./entitlement-management-external-users.md)
 - [人事主導のプロビジョニングとは](what-is-hr-driven-provisioning.md)
 - [アプリのプロビジョニングとは](what-is-app-provisioning.md)
 - [ディレクトリ間のプロビジョニングとは](what-is-inter-directory-provisioning.md)

@@ -33,13 +33,13 @@ ms.locfileid: "93286201"
 
 全体的なソリューションは、次のコンポーネントで構成されます。
 
-1. **Azure AD** :`Restrict-Access-To-Tenants: <permitted tenant list>` ヘッダーが存在する場合、Azure AD からは許可されているテナントのセキュリティ トークンのみが発行されます。
+1. **Azure AD**:`Restrict-Access-To-Tenants: <permitted tenant list>` ヘッダーが存在する場合、Azure AD からは許可されているテナントのセキュリティ トークンのみが発行されます。
 
-2. **オンプレミスのプロキシ サーバー インフラストラクチャ** : このインフラストラクチャは、トランスポート層セキュリティ (TLS) 検査に対応したプロキシ デバイスです。 許可されているテナントのリストを含むヘッダーを Azure AD 宛てのトラフィックに挿入するようにプロキシを構成する必要があります。
+2. **オンプレミスのプロキシ サーバー インフラストラクチャ**: このインフラストラクチャは、トランスポート層セキュリティ (TLS) 検査に対応したプロキシ デバイスです。 許可されているテナントのリストを含むヘッダーを Azure AD 宛てのトラフィックに挿入するようにプロキシを構成する必要があります。
 
-3. **クライアント ソフトウェア** : テナント制限をサポートするには、プロキシ インフラストラクチャがトラフィックをインターセプトできるように、クライアント ソフトウェアはトークンを直接 Azure AD に要求する必要があります。 先進認証 (OAuth 2.0 など) を使用する Office クライアントと同様に、ブラウザー ベースの Microsoft 365 アプリケーションは現在、テナント制限をサポートしています。
+3. **クライアント ソフトウェア**: テナント制限をサポートするには、プロキシ インフラストラクチャがトラフィックをインターセプトできるように、クライアント ソフトウェアはトークンを直接 Azure AD に要求する必要があります。 先進認証 (OAuth 2.0 など) を使用する Office クライアントと同様に、ブラウザー ベースの Microsoft 365 アプリケーションは現在、テナント制限をサポートしています。
 
-4. **先進認証** : テナント制限を使用し、許可されていないすべてのテナントへのアクセスをブロックするには、クラウド サービスは先進認証を使用する必要があります。 既定で先進認証プロトコルを使用するように Microsoft 365 クラウド サービスを構成する必要があります。 Microsoft 365 による最新の認証のサポートに関する最新情報については、[Office 365 の最新の認証の更新](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)に関するページをご覧ください。
+4. **先進認証**: テナント制限を使用し、許可されていないすべてのテナントへのアクセスをブロックするには、クラウド サービスは先進認証を使用する必要があります。 既定で先進認証プロトコルを使用するように Microsoft 365 クラウド サービスを構成する必要があります。 Microsoft 365 による最新の認証のサポートに関する最新情報については、[Office 365 の最新の認証の更新](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)に関するページをご覧ください。
 
 次の図は、おおまかなトラフィック フローを示しています。 テナント制限では、TLS 検査は Microsoft 365 クラウド サービスではなく、Azure AD へのトラフィック上でのみ必要です。 Azure AD への認証のためのトラフィック量は一般に、Exchange Online や SharePoint Online などの SaaS アプリケーションへのトラフィック量よりはるかに少ないため、この区別が重要です。
 
@@ -67,7 +67,7 @@ ms.locfileid: "93286201"
 
 #### <a name="configuration"></a>構成
 
-login.microsoftonline.com、login.microsoft.com、login.windows.net への各受信要求で、 *Restrict-Access-To-Tenants* と *Restrict-Access-Context* の 2 つの HTTP ヘッダーを挿入します。
+login.microsoftonline.com、login.microsoft.com、login.windows.net への各受信要求で、*Restrict-Access-To-Tenants* と *Restrict-Access-Context* の 2 つの HTTP ヘッダーを挿入します。
 
 > [!NOTE]
 > SSL インターセプトとヘッダー挿入を構成する場合、 https://device.login.microsoftonline.com へのトラフィックが除外されていることを確認してください。 この URL はデバイス認証に使用され、TLS の中断と検査を実行すると、クライアント証明書の認証が妨げられる可能性があり、それにより、デバイスの登録とデバイスベースの条件付きアクセスの問題が発生する可能性があります。
@@ -78,7 +78,7 @@ login.microsoftonline.com、login.microsoft.com、login.windows.net への各受
 
 - *Restrict-Access-To-Tenants* には、ユーザーにアクセスを許可するテナントのコンマ区切りリストである、\<permitted tenant list\> の値を使用します。 テナントに登録されているドメインを使用して、このリストのテナントとディレクトリ ID 自体を識別できます。 テナントを記述する 3 つのすべての方法の例として、Contoso、Fabrikam、および Microsoft を許可する名前と値のペアは、`Restrict-Access-To-Tenants: contoso.com,fabrikam.onmicrosoft.com,72f988bf-86f1-41af-91ab-2d7cd011db47` のようになります。
 
-- *Restrict-Access-Context* には、どのテナントでテナント制限を設定するかを宣言している、1 つのディレクトリ ID の値を使用します。 たとえば、テナント制限ポリシーを設定するテナントとして Contoso を宣言するには、名前と値のペアは `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` のようになります。  このスポットでは、独自のディレクトリ ID を使用する **必要があります** 。
+- *Restrict-Access-Context* には、どのテナントでテナント制限を設定するかを宣言している、1 つのディレクトリ ID の値を使用します。 たとえば、テナント制限ポリシーを設定するテナントとして Contoso を宣言するには、名前と値のペアは `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` のようになります。  このスポットでは、独自のディレクトリ ID を使用する **必要があります**。
 
 > [!TIP]
 > ディレクトリ ID は、[Azure Active Directory ポータル](https://aad.portal.azure.com/)で見つけることができます。 管理者としてサインインし、 **[Azure Active Directory]** を選択して、 **[プロパティ]** を選択します。 
@@ -158,7 +158,7 @@ Fiddler は無料の Web デバッグ プロキシです。Fiddler を使用し�
 
 2. [Fiddler のヘルプ ドキュメント](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS)に従って、HTTPS トラフィックを復号化するように Fiddler を構成します。
 
-3. カスタム ルールを使用して、 *Restrict-Access-To-Tenants* と *Restrict-Access-Context* の各ヘッダーを挿入するように Fiddler を構成します。
+3. カスタム ルールを使用して、*Restrict-Access-To-Tenants* と *Restrict-Access-Context* の各ヘッダーを挿入するように Fiddler を構成します。
 
    1. Fiddler Web Debugger ツールで、 **[Rules]** メニューを選択し、 **[Customize Rules…]** を選択して CustomRules ファイルを開きます。
 

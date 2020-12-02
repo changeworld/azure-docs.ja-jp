@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cbca2d00d10b6595b8a1d13251dd88c65667541
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: df199afd85c788299334087321c3edac8482698d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135006"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168510"
 ---
 # <a name="what-is-inter-directory-provisioning"></a>ディレクトリ間のプロビジョニングとは
 
@@ -35,7 +35,7 @@ ms.locfileid: "93135006"
 
 - [Azure AD Connect クラウド プロビジョニング](../cloud-provisioning/what-is-cloud-provisioning.md) - ハイブリッド ID の目標に適合し、それを達成するように設計された Microsoft の新しいエージェントです。  Active Directory と Azure AD との間でディレクトリ間のプロビジョニングを実現する軽量の環境となっています。
 
-- [Microsoft Identity Manager](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016) - ID とアクセス管理を意図した Microsoft のオンプレミス ソリューションです。組織内のユーザー、資格情報、ポリシー、アクセスを効率的に管理できます。 また、Active Directory や Azure AD などのディレクトリのためのハイブリッド ID 環境を実現する高度なディレクトリ間のプロビジョニングを利用できます。
+- [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) - ID とアクセス管理を意図した Microsoft のオンプレミス ソリューションです。組織内のユーザー、資格情報、ポリシー、アクセスを効率的に管理できます。 また、Active Directory や Azure AD などのディレクトリのためのハイブリッド ID 環境を実現する高度なディレクトリ間のプロビジョニングを利用できます。
 
 ### <a name="key-benefits"></a>主な利点
 
@@ -45,7 +45,7 @@ ms.locfileid: "93135006"
 - [パススルー認証](../hybrid/how-to-connect-pta.md) - ユーザーがオンプレミスとクラウド内で同じパスワードを使用できるようにするサインイン方法ですが、フェデレーション環境の追加のインフラストラクチャは必要ありません。
 - [フェデレーション統合](../hybrid/how-to-connect-fed-whatis.md) - オンプレミスの AD FS インフラストラクチャを使ってハイブリッド環境を構成するために使用できます。 証明書の更新や追加の AD FS サーバー デプロイなどの AD FS 管理機能も提供されます。
 - [同期](../hybrid/how-to-connect-sync-whatis.md) - ユーザー、グループ、およびその他のオブジェクトを作成する役割を果たします。  また、オンプレミスのユーザーやグループの ID 情報をクラウド側と一致させる役割もあります。  この同期にはパスワード ハッシュも含まれます。
-- [正常性の監視](../hybrid/whatis-hybrid-identity-health.md) - 信頼性の高い監視機能が利用でき、そのアクティビティは、Azure portal で一元的に表示されます。 
+- [正常性の監視](../hybrid/whatis-azure-ad-connect.md) - 信頼性の高い監視機能が利用でき、そのアクティビティは、Azure portal で一元的に表示されます。 
 
 
 ## <a name="next-steps"></a>次のステップ 

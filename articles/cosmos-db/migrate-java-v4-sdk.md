@@ -64,11 +64,11 @@ Azure Cosmos DB Sync Java SDK 2.x.x を使用している場合、Azure Cosmos D
 
 * Azure Cosmos DB Java SDK 3.x.x と 4.0 では、Sync API と Async API の両方が提供されています。
 
-  * **Java SDK 4.0** : クラス名で `Cosmos` の後に `Async` が追加されていない限り、すべてのクラスは Sync API に属します。
+  * **Java SDK 4.0**: クラス名で `Cosmos` の後に `Async` が追加されていない限り、すべてのクラスは Sync API に属します。
 
-  * **Java SDK 3.x.x** : クラス名で `Cosmos` の後に `Async` が追加されていない限り、すべてのクラスは Async API に属します。
+  * **Java SDK 3.x.x**: クラス名で `Cosmos` の後に `Async` が追加されていない限り、すべてのクラスは Async API に属します。
 
-  * **Async Java SDK 2.x.x** : クラス名は Sync Java SDK 2.x.x に似ていますが、名前は *Async* で始まります。
+  * **Async Java SDK 2.x.x**: クラス名は Sync Java SDK 2.x.x に似ていますが、名前は *Async* で始まります。
 
 ### <a name="hierarchical-api-structure"></a>階層型の API 構造
 

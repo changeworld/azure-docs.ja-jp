@@ -7,12 +7,12 @@ keywords: Azure Automation, DSC, PowerShell, State Configuration, Update Managem
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 24aeb37cf868bed5d4211bc9b459a4736ceea4b2
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: e3986b7e8fc70f8662bed40b076897caa6165744
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205338"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182820"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure Automation の概要
 
@@ -43,7 +43,7 @@ Azure Automation の構成管理では、次の 2 つの機能にアクセスで
 
 ## <a name="update-management"></a>更新管理
 
-Azure Automation には、Windows システムと Linux システムのハイブリッド環境全体に対する[更新管理](update-management/update-mgmt-overview.md)機能が含まれています。 更新管理を使用することで、Azure を始めとするクラウドとオンプレミスの垣根を越えて更新の準拠状態を可視化することができます。 この機能を使用すると、デプロイ スケジュールを作成して、定義済みのメンテナンス期間中に更新プログラムがインストールされるように調整できます。 マシンにインストールすべきでない更新プログラムは、更新管理機能を使用して、デプロイから除外することができます。
+Azure Automation には、Windows システムと Linux システムのハイブリッド環境全体に対する[更新管理](./update-management/overview.md)機能が含まれています。 更新管理を使用することで、Azure を始めとするクラウドとオンプレミスの垣根を越えて更新の準拠状態を可視化することができます。 この機能を使用すると、デプロイ スケジュールを作成して、定義済みのメンテナンス期間中に更新プログラムがインストールされるように調整できます。 マシンにインストールすべきでない更新プログラムは、更新管理機能を使用して、デプロイから除外することができます。
 
 ## <a name="shared-capabilities"></a>共有機能
 

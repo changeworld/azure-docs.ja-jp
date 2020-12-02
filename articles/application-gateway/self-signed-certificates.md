@@ -17,7 +17,7 @@ ms.locfileid: "93396942"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>カスタム ルート CA を使用して Azure Application Gateway の自己署名証明書を生成する
 
-Application Gateway v2 SKU では、バックエンド サーバーを許可するために、信頼されたルート証明書の使用を導入しています。 これにより、v1 SKU で必要だった認証証明書が不要になります。 この " *ルート証明書* " は、バックエンド証明書サーバーからの Base-64 エンコード X.509(.CER) 形式のルート証明書です。 サーバー証明書を発行したルート証明機関 (CA) が識別され、サーバー証明書が TLS/SSL 通信に使用されます。
+Application Gateway v2 SKU では、バックエンド サーバーを許可するために、信頼されたルート証明書の使用を導入しています。 これにより、v1 SKU で必要だった認証証明書が不要になります。 この "*ルート証明書*" は、バックエンド証明書サーバーからの Base-64 エンコード X.509(.CER) 形式のルート証明書です。 サーバー証明書を発行したルート証明機関 (CA) が識別され、サーバー証明書が TLS/SSL 通信に使用されます。
 
 Application Gateway は、よく知られている CA (GoDaddy や DigiCert など) によって署名されている Web サイトの証明書を既定で信頼します。 その場合は、ルート証明書を明示的にアップロードする必要はありません。 詳細については、「[Application Gateway での TLS 終了とエンド ツー エンド TLS の概要](ssl-overview.md)」を参照してください。 ただし、開発/テスト環境を所有していて、検証済みの CA 署名証明書を購入したくない場合は、独自のカスタム CA を作成し、それを使用して自己署名証明書を作成することができます。 
 

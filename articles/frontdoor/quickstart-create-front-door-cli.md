@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/21/2020
 ms.author: duau
-ms.openlocfilehash: a24c0fdb244f87dbf281bcf59b5e1986a215142a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e01b56f88270348167ef1eef9d913e65074d9247
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275616"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327255"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>クイックスタート:Azure CLI を使用して高可用性を実現するグローバル Web アプリケーションのための Front Door を作成する
 
 Azure CLI によって Azure Front Door の使用を開始し、高可用性を実現するハイ パフォーマンスなグローバル Web アプリケーションを作成しましょう。
 
-Front Door により、バックエンド プール内の特定のリソースに Web トラフィックが送信されます。 フロントエンド ドメインを定義し、バックエンド プールにリソースを追加して、ルーティング規則を作成しました。 この記事では、1 つのバックエンド プールに 2 つの Web アプリ リソースがある単純な構成と、"/*" に一致する既定のパスを使用する 1 つのルーティング規則を使用します。
+Front Door により、バックエンド プール内の特定のリソースに Web トラフィックが送信されます。 フロントエンド ドメインを定義し、バックエンド プールにリソースを追加して、ルーティング規則を作成します。 この記事では、1 つのバックエンド プールに 2 つの Web アプリ リソースがある単純な構成と、"/*" に一致する既定のパスを使用する 1 つのルーティング規則を使用します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +44,7 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
 Azure で、関連するリソースをリソース グループに割り当てます。 既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。
 
-このクイックスタートでは、2 つのリソース グループが必要です。 1 つは*米国中部*、もう 1 つは*米国中南部*に必要です。
+このクイックスタートでは、2 つのリソース グループが必要です。 1 つは *米国中部*、もう 1 つは *米国中南部* に必要です。
 
 [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true) を使用して、次のようにリソース グループを作成します。
 
@@ -66,7 +66,7 @@ az group create \
 
 ### <a name="create-app-service-plans"></a>App Service プランを作成する
 
-Web アプリを作成する前に、2 つの App Service プランを、1 つは*米国中部*に、もう 1 つは*米国中南部*に作成する必要があります。
+Web アプリを作成する前に、2 つの App Service プランを、1 つは *米国中部* に、もう 1 つは *米国中南部* に作成する必要があります。
 
 [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create&preserve-view=true) を使用して App Service プランを作成します。
 
@@ -77,7 +77,7 @@ az appservice plan create \
 
 az appservice plan create \
 --name myAppServicePlanSouthCentralUS \
--resource-groupg myRGFDSouthCentral
+--resource-group myRGFDSouthCentral
 ```
 
 ### <a name="create-web-apps"></a>Web アプリを作成する

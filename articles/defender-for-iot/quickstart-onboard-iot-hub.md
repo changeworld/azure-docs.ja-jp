@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 3f84f3121d9982205ecf51ec64cfe332b6a5ad42
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 786fcd1a0c6d7df2c38a086a830a63f7179d7d40
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90945926"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352509"
 ---
 # <a name="quickstart-onboard-azure-defender-for-iot-service-in-iot-hub"></a>クイック スタート:IoT Hub での Azure Defender for IoT サービスのオンボード
 
-この記事では、既存の IoT Hub 上で Defender for IoT サービスを有効にする方法について説明します。 現在 IoT Hub がない場合、作業を開始するには、「[Azure portal を使用して IoT Hub を作成する](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)」を参照してください。
+この記事では、既存の IoT Hub 上で Defender for IoT サービスを有効にする方法について説明します。 現在 IoT Hub がない場合、作業を開始するには、「[Azure portal を使用して IoT Hub を作成する](../iot-hub/iot-hub-create-through-portal.md)」を参照してください。
 
 > [!NOTE]
 > Defender for IoT では、現在、Standard レベルの IoT Hub だけがサポートされています。
@@ -30,8 +30,8 @@ ms.locfileid: "90945926"
 ## <a name="prerequisites-for-enabling-the-service"></a>サービスを有効にするための前提条件
 
 - Log Analytics ワークスペース
-  - 既定では、Defender for IoT によって、2 種類の情報 (**セキュリティ アラート**と**レコメンデーション**) が Log Analytics ワークスペースに保存されます。
-  - 追加の情報の種類として**未加工のイベント**のストレージを追加することもできます。 Log Analytics に**未加工のイベント**を保存すると、追加のストレージ コストがかかることに注意してください。
+  - 既定では、Defender for IoT によって、2 種類の情報 (**セキュリティ アラート** と **レコメンデーション**) が Log Analytics ワークスペースに保存されます。
+  - 追加の情報の種類として **未加工のイベント** のストレージを追加することもできます。 Log Analytics に **未加工のイベント** を保存すると、追加のストレージ コストがかかることに注意してください。
 - IoT Hub (Standard レベル)
 - すべての[サービスの前提条件](service-prerequisites.md)を満たしていること
 

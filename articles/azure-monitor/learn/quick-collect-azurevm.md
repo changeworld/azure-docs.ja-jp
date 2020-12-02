@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: fb7a32199117be76e411155910d558ef187398ab
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 6cc9c6af4592956b6498e826ef65b556e5780f34
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448264"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186832"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Azure Monitor を使用して Azure 仮想マシンからデータを収集する
 
@@ -32,10 +32,10 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 2. **[作成]** を選択し、次の項目について選択します。
 
-   * 新しい **Log Analytics ワークスペース**の名前 (*DefaultLAWorkspace* など) を指定します。  
-   * 関連付ける**サブスクリプション**をドロップダウン リストから選択します (既定値が適切でない場合)。
+   * 新しい **Log Analytics ワークスペース** の名前 (*DefaultLAWorkspace* など) を指定します。  
+   * 関連付ける **サブスクリプション** をドロップダウン リストから選択します (既定値が適切でない場合)。
    * **[リソース グループ]** では、1 つ以上の Azure Virtual Machines を含む既存のリソース グループを選択します。  
-   * VM のデプロイ先となる**場所**を選択します。  詳細については、[Log Analytics を使用できるリージョン](https://azure.microsoft.com/regions/services/)に関するページを参照してください。
+   * VM のデプロイ先となる **場所** を選択します。  詳細については、[Log Analytics を使用できるリージョン](https://azure.microsoft.com/regions/services/)に関するページを参照してください。
    * 2018 年 4 月 2 日より後に作成された新しいサブスクリプションでワークスペースを作成した場合は、自動的に "*1 GB あたり*" の価格プランが使用され、価格レベルを選択するためのオプションは利用できなくなります。  4 月 2 日より前に作成された既存のサブスクリプションのワークスペースを作成している場合、または既存の EA 登録に関連付けられたサブスクリプションに対してワークスペースを作成している場合は、希望の価格レベルを選択します。  特定のレベルの詳細については、[Log Analytics の価格の詳細](https://azure.microsoft.com/pricing/details/log-analytics/)に関するページを参照してください。
   
         ![Log Analytics リソース ブレードの作成](media/quick-collect-azurevm/create-log-analytics-workspace-azure-portal.png) 
@@ -59,11 +59,11 @@ Azure に既にデプロイされている Windows および Linux の仮想マ�
 
 3. 左側のメニューの [ワークスペースのデータ ソース] で **[仮想マシン]** を選択します。  
 
-4. **[仮想マシン]** の一覧で、エージェントをインストールする仮想マシンを選択します。 VM の **Log Analytics 接続の状態**が **[未接続]** になっていることに注意してください。
+4. **[仮想マシン]** の一覧で、エージェントをインストールする仮想マシンを選択します。 VM の **Log Analytics 接続の状態** が **[未接続]** になっていることに注意してください。
 
 5. 仮想マシンの詳細で **[接続]** を選択します。 エージェントが自動的にインストールされ、Log Analytics のワークスペース用に構成されます。 このプロセスは数分かかります。その間、 **[状態]** には "**接続中**" と表示されます。
 
-6. エージェントをインストールして接続した後、**Log Analytics 接続の状態**は**このワークスペース**で更新されます。
+6. エージェントをインストールして接続した後、**Log Analytics 接続の状態** は **このワークスペース** で更新されます。
 
 ## <a name="collect-event-and-performance-data"></a>イベントとパフォーマンス データを収集する
 
@@ -136,9 +136,9 @@ Azure Monitor は、Windows イベント ログまたは Linux Syslog からイ�
 
 ## <a name="next-steps"></a>次のステップ
 
-次は Windows または Linux の仮想マシンからオペレーションおよびパフォーマンス データを収集し、*無料*で収集するデータの調査と分析、およびデータに対するアクションの実行を簡単に開始することができます。  
+次は Windows または Linux の仮想マシンからオペレーションおよびパフォーマンス データを収集し、*無料* で収集するデータの調査と分析、およびデータに対するアクションの実行を簡単に開始することができます。  
 
 データの表示および分析方法を学習する場合は、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Log Analytics でのデータの表示と分析](../log-query/get-started-portal.md)
+> [Log Analytics でのデータの表示と分析](../log-query/log-analytics-tutorial.md)

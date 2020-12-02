@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ef6f6068bce7a676e55eca10ae9198b2238a143
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 640367d1b833f61e8a83fe9ce6b14d6d799cf9b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135093"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172454"
 ---
 # <a name="what-is-provisioning"></a>プロビジョニングとは
 
@@ -59,7 +59,7 @@ Azure AD を使用した人事主導のプロビジョニングには、3 つの
 
 ![アプリのプロビジョニング](media/what-is-provisioning/cloud-3b.png)
 
-Azure AD における **[アプリのプロビジョニング](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** という用語は、Azure AD や Active Directory とは異なる独自のデータ ストアを有するアプリケーションに関して、ユーザーがアクセスする必要のあるアプリケーションに、ユーザー ID のコピーを自動的に作成することを意味します。 アプリのプロビジョニングには、ユーザー ID の作成に加えて、ユーザーの状態または役割が変化したときに、ユーザー ID をメンテナンスしたりそれらのアプリから削除したりすることも含まれます。 一般的なシナリオとしては、[Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial)、[Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial)、[ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial) といったアプリケーションへの Azure AD ユーザーのプロビジョニングが挙げられます。これらのアプリケーションにはいずれも、Azure AD とは異なる独自のユーザー リポジトリがあります。
+Azure AD における **[アプリのプロビジョニング](../app-provisioning/user-provisioning.md)** という用語は、Azure AD や Active Directory とは異なる独自のデータ ストアを有するアプリケーションに関して、ユーザーがアクセスする必要のあるアプリケーションに、ユーザー ID のコピーを自動的に作成することを意味します。 アプリのプロビジョニングには、ユーザー ID の作成に加えて、ユーザーの状態または役割が変化したときに、ユーザー ID をメンテナンスしたりそれらのアプリから削除したりすることも含まれます。 一般的なシナリオとしては、[Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../saas-apps/salesforce-provisioning-tutorial.md)、[ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md) といったアプリケーションへの Azure AD ユーザーのプロビジョニングが挙げられます。これらのアプリケーションにはいずれも、Azure AD とは異なる独自のユーザー リポジトリがあります。
 
 詳細については、「[アプリのプロビジョニングとは](what-is-app-provisioning.md)」を参照してください。
 

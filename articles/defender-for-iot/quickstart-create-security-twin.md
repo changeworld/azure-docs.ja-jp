@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 822e9dc237dd6f4d73e1860c6a0b240fb94c3105
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 74e0e8daa662f4dd49f1886972236b5b0a3b100a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90945607"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348859"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>クイック スタート:azureiotsecurity モジュール ツインを作成する
 
@@ -31,7 +31,7 @@ Azure に構築された IoT ソリューションでは、デバイス ツイ�
 Defender for IoT は、既存の IoT デバイス管理プラットフォームと完全に統合されるため、デバイスのセキュリティ状態を管理したり、既存のデバイス制御機能を利用したりすることができます。
 Defender for IoT の統合は、IoT Hub ツイン メカニズムを利用することによって実現されます。
 
-Azure IoT Hub でのモジュール ツインの一般的な概念の詳細については、[IoT Hub モジュール ツイン](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins)に関するページを参照してください。
+Azure IoT Hub でのモジュール ツインの一般的な概念の詳細については、[IoT Hub モジュール ツイン](../iot-hub/iot-hub-devguide-module-twins.md)に関するページを参照してください。
 
 Defender for IoT では、モジュール ツイン メカニズムを利用して、各デバイス用の _azureiotsecurity_ というセキュリティ モジュール ツインが管理されます。
 
@@ -64,7 +64,7 @@ _azureiotsecurity_ モジュール ツインは、次の 2 つの方法で作成
 特定のデバイスのセキュリティ モジュール ツインが存在するかどうかを確認するには、以下の操作を行います。
 
 1. Azure IoT Hub で、 **[エクスプローラー]** メニューの **[IoT デバイス]** を選択します。
-1. デバイス ID を入力するか、 **[デバイスのクエリ] フィールド**のオプションを選択して、 **[デバイスのクエリ]** をクリックします。
+1. デバイス ID を入力するか、 **[デバイスのクエリ] フィールド** のオプションを選択して、 **[デバイスのクエリ]** をクリックします。
     ![デバイスのクエリ](./media/quickstart/verify-security-module-twin.png)
 1. デバイスを選択するか、またはダブルクリックして、[デバイスの詳細] ページを開きます。
 1. **[モジュール ID]** メニューを選択し、デバイスに関連付けられているモジュール ID の一覧に **azureiotsecurity** モジュールが存在することを確認します。

@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
 ms.openlocfilehash: 457f7e07391c647d2ab0e7d78197086f6f5e2cf7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337441"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187784"
 ---
 # <a name="quickstart-use-java-and-jdbc-with-azure-database-for-mysql"></a>クイックスタート: Azure Database for MySQL で Java と JDBC を使用する
 
@@ -167,7 +167,7 @@ password=$AZ_MYSQL_PASSWORD
 
 ### <a name="create-an-sql-file-to-generate-the-database-schema"></a>データベース スキーマを生成するための SQL ファイルを作成する
 
-データベース スキーマを作成するためには、 *src/main/resources/`schema.sql`* ファイルを使用します。 このファイルを次の内容で作成します。
+データベース スキーマを作成するためには、*src/main/resources/`schema.sql`* ファイルを使用します。 このファイルを次の内容で作成します。
 
 ```sql
 DROP TABLE IF EXISTS todo;
@@ -237,7 +237,7 @@ public class DemoApplication {
 このファイルを見るとわかるように、データの挿入、読み取り、更新、削除のためのメソッドがコメント化されています。これらのメソッドのコードは、この記事の中で後から作成します。それぞれのメソッドが完成したら都度、コメント解除することができます。
 
 > [!NOTE]
-> データベースの資格情報は、 *application.properties* ファイルの *user* プロパティと *password* プロパティに格納されます。 プロパティ ファイルは引数として渡されるため、これらの資格情報は `DriverManager.getConnection(properties.getProperty("url"), properties);` を実行するときに使用されます。
+> データベースの資格情報は、*application.properties* ファイルの *user* プロパティと *password* プロパティに格納されます。 プロパティ ファイルは引数として渡されるため、これらの資格情報は `DriverManager.getConnection(properties.getProperty("url"), properties);` を実行するときに使用されます。
 
 > [!NOTE]
 > 末尾の `AbandonedConnectionCleanupThread.uncheckedShutdown();` 行は、アプリケーションのシャットダウン時に内部スレッドを破棄するための、MySQL ドライバー固有のコマンドです。
@@ -326,7 +326,7 @@ public class Todo {
 }
 ```
 
-このクラスは、 *schema.sql* スクリプトを実行する際に作成した `todo` テーブルにマップされるドメイン モデルです。
+このクラスは、*schema.sql* スクリプトを実行する際に作成した `todo` テーブルにマップされるドメイン モデルです。
 
 ### <a name="insert-data-into-azure-database-for-mysql"></a>データを Azure Database for MySQL に挿入する
 

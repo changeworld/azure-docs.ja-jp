@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2020
 ms.author: rkarlin
-ms.openlocfilehash: 38e78b80fd14aec7557b563b2b33faf7d51bd114
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 321c8d2b9e58aba943c5bf19adf54d6359c5be96
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759734"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351778"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>クイック スタート:Azure RTOS 用のセキュリティ モジュール (プレビュー)
 
-この記事では、使い始める前の前提条件について説明し、IoT Hub で Azure RTOS サービス用のセキュリティ モジュールを有効にする方法について説明します。 現在 IoT Hub がない場合、作業を開始するには、「[Azure portal を使用して IoT Hub を作成する](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)」を参照してください。
+この記事では、使い始める前の前提条件について説明し、IoT Hub で Azure RTOS サービス用のセキュリティ モジュールを有効にする方法について説明します。 現在 IoT Hub がない場合、作業を開始するには、「[Azure portal を使用して IoT Hub を作成する](../iot-hub/iot-hub-create-through-portal.md)」を参照してください。
 
 > [!NOTE]
 > Azure RTOS 用のセキュリティ モジュールは、Standard レベルの IoT Hub でのみサポートされています。
@@ -63,10 +63,10 @@ IoT Hub での Log Analytics インジェストは、既定の Defender for IoT 
 1. **[データ収集]** を選択します。 
 1. **[ワークスペースの構成]** オプションで、 **[オン]** に切り替えます。 
 1. 新しい Log Analytics ワークスペースを作成するか、既存のものをアタッチします。 **[Access to raw security data]\(生セキュリティ データにアクセスする\)** オプションが選択されていることを確認します。 
- :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Azure RTOS のデータ収集オプションにアクセスする":::
+ :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="データ収集オプションと生セキュリティ データ オプションの両方が選択されている Azure RTOS の構成":::
 1. **[保存]** を選びます。
 1. Azure リソースの一覧に戻り、作成またはアタッチした Log Analytics ワークスペースが IoT Hub に対して有効になっていることを確認します。
-    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="Azure RTOS のデータ収集オプションにアクセスする"::: 
+    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="Azure リソースの一覧で、IoT Hub に正しい Log Analytics ワークスペースが追加されていることを確認する"::: 
 
 ## <a name="next-steps"></a>次のステップ
 

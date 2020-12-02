@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/05/2020
 ms.author: kenwith
 ms.custom: contperfq2
-ms.openlocfilehash: 4c37923b0955652a0627808b19762095c18bdedc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a1d83f91ad82bddacb7e806e31151b8e4a7ab612
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737670"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344931"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>Azure AD で属性マッピングの式を記述するためのリファレンス
 
@@ -26,8 +26,8 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 属性マッピングの式の構文は、Visual Basic のApplications (VBA) 関数に似ています。
 
-* 式全体は、関数の形式で定義する必要があります。名前の後にかっこで囲んだ引数を続けます。 *FunctionName(`<<argument 1>>`,`<<argument N>>`)*
-* 各関数内で他の関数を入れ子にすることができます。 次に例を示します。 *FunctionOne(FunctionTwo(`<<argument1>>`))*
+* 式全体は、関数の形式で定義する必要があります。名前の後にかっこで囲んだ引数を続けます。*FunctionName(`<<argument 1>>`,`<<argument N>>`)*
+* 各関数内で他の関数を入れ子にすることができます。 次に例を示します。*FunctionOne(FunctionTwo(`<<argument1>>`))*
 * 関数には、次の 3 つの異なる種類の引数を渡すことができます。
   
   1. 属性。角かっこで囲む必要があります。 例: [attributeName]
@@ -377,7 +377,7 @@ string に含まれる文字数が numChars で指定した数より少ない場
 | --- | --- | --- | --- |
 | **source** |必須 |String |通常、属性の名前。 |
 | **start** |必須 |整数 (integer) |部分文字列が始まる **source** 文字列のインデックス。 文字列内の最初の文字のインデックスは 1、2 番目の文字のインデックスは 2です (以降同様)。 |
-| **length** |必須 |整数 (integer) |部分文字列の長さ。 length が **source** 文字列の外で終わる場合は、 **start** インデックスから **source** 文字列の末尾までの部分文字列を返します。 |
+| **length** |必須 |整数 (integer) |部分文字列の長さ。 length が **source** 文字列の外で終わる場合は、**start** インデックスから **source** 文字列の末尾までの部分文字列を返します。 |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -407,7 +407,7 @@ string に含まれる文字数が numChars で指定した数より少ない場
 ### <a name="numfromdate"></a>NumFromDate
 **関数:** NumFromDate(value)
 
-**説明:** NumFromDate 関数は、DateTime 値を、 [accountExpires](/windows/win32/adschema/a-accountexpires) などの属性を設定するために必要な Active Directory 形式に変換します。 この関数を使用して、Workday や SuccessFactors などのクラウド HR アプリから受信した DateTime 値を、それと等価な AD 表現に変換します。 
+**説明:** NumFromDate 関数は、DateTime 値を、[accountExpires](/windows/win32/adschema/a-accountexpires) などの属性を設定するために必要な Active Directory 形式に変換します。 この関数を使用して、Workday や SuccessFactors などのクラウド HR アプリから受信した DateTime 値を、それと等価な AD 表現に変換します。 
 
 **パラメーター:** 
 
@@ -453,25 +453,25 @@ string に含まれる文字数が numChars で指定した数より少ない場
 * **regexPattern** と **replacementValue** が指定された場合:
 
   * この関数で **regexPattern** が **source** の文字列に適用され、regex グループ名を使って **replacementValue** の文字列を作成できます。
-* **regexPattern** 、 **regexGroupName** 、 **replacementValue** が指定された場合:
+* **regexPattern**、**regexGroupName**、**replacementValue** が指定された場合:
   
-  * この関数で **regexPattern** が **source** の文字列に適用され、 **regexGroupName** と一致するすべての値が **replacementValue** に置き換えられます
-* **regexPattern** 、 **regexGroupName** 、 **replacementAttributeName** が指定された場合:
+  * この関数で **regexPattern** が **source** の文字列に適用され、**regexGroupName** と一致するすべての値が **replacementValue** に置き換えられます
+* **regexPattern**、**regexGroupName**、**replacementAttributeName** が指定された場合:
   
-  * **source** に値が指定されていない場合は、 **source** を返します。
-  * **source** に値がある場合、この関数で **regexPattern** が **source** の文字列に適用され、 **regexGroupName** と一致するすべての値が **replacementAttributeName** に関連付けられた値に置き換えられます
+  * **source** に値が指定されていない場合は、**source** を返します。
+  * **source** に値がある場合、この関数で **regexPattern** が **source** の文字列に適用され、**regexGroupName** と一致するすべての値が **replacementAttributeName** に関連付けられた値に置き換えられます
 
 **パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
-| **source** |必須 |String |通常は、 **source** オブジェクトの属性の名前。 |
+| **source** |必須 |String |通常は、**source** オブジェクトの属性の名前。 |
 | **oldValue** |省略可能 |String |**source** または **template** に含まれる置換前の値。 |
-| **regexPattern** |省略可能 |String |**source** に含まれる置換前の値の正規表現パターン。 または、 **replacementPropertyName** が使われるときは、 **replacementPropertyName** から値を抽出するパターン。 |
+| **regexPattern** |省略可能 |String |**source** に含まれる置換前の値の正規表現パターン。 または、**replacementPropertyName** が使われるときは、**replacementPropertyName** から値を抽出するパターン。 |
 | **regexGroupName** |省略可能 |String |**regexPattern** 内のグループの名前。 **replacementPropertyName** を使用した場合にのみ、このグループの値が **replacementPropertyName** から **replacementValue** として抽出されます。 |
 | **replacementValue** |省略可能 |String |古い値を置き換える新しい値。 |
 | **replacementAttributeName** |省略可能 |String |置換値に使用する属性の名前 |
-| **template** |省略可能 |String |**template** の値を指定した場合、template 内で **oldValue** が検索され、 **source** の値で置換されます。 |
+| **template** |省略可能 |String |**template** の値を指定した場合、template 内で **oldValue** が検索され、**source** の値で置換されます。 |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -534,7 +534,7 @@ string に含まれる文字数が numChars で指定した数より少ない場
 ### <a name="switch"></a>Switch
 **関数:** Switch(source, defaultValue, key1, value1, key2, value2, …)
 
-**説明:** **source** 値が **key** と一致するときに、その **key** の **value** を返します。 **source** 値がどの key とも一致しない場合は、 **defaultValue** を返します。  **key** と **value** パラメーターは、常にペアで指定する必要があります。 この関数には、常に、偶数個のパラメーターを指定する必要があります。 この関数は、manager などの参照属性には使用しないでください。 
+**説明:** **source** 値が **key** と一致するときに、その **key** の **value** を返します。 **source** 値がどの key とも一致しない場合は、**defaultValue** を返します。  **key** と **value** パラメーターは、常にペアで指定する必要があります。 この関数には、常に、偶数個のパラメーターを指定する必要があります。 この関数は、manager などの参照属性には使用しないでください。 
 
 **パラメーター:** 
 
@@ -542,7 +542,7 @@ string に含まれる文字数が numChars で指定した数より少ない場
 | --- | --- | --- | --- |
 | **source** |必須 |String |**Source** 値。 |
 | **defaultValue** |省略可能 |String |source がどの key とも一致しないときに使用される既定値。 空の文字列 ("") を指定できます。 |
-| **key** |必須 |String |**source** 値と比較する **key** 。 |
+| **key** |必須 |String |**source** 値と比較する **key**。 |
 | **value** |必須 |String |key と一致する **source** の置換値。 |
 
 ---
@@ -556,7 +556,7 @@ string に含まれる文字数が numChars で指定した数より少ない場
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
-| **culture** |省略可能 |String |RFC 4646 に基づくカルチャ名の形式は、 *languagecode2-country/regioncode2* です。ここで、 *languagecode2* は 2 文字の言語コードで、 *country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
+| **culture** |省略可能 |String |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
 
 ---
 ### <a name="toupper"></a>ToUpper
@@ -569,7 +569,7 @@ string に含まれる文字数が numChars で指定した数より少ない場
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
-| **culture** |省略可能 |String |RFC 4646 に基づくカルチャ名の形式は、 *languagecode2-country/regioncode2* です。ここで、 *languagecode2* は 2 文字の言語コードで、 *country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
+| **culture** |省略可能 |String |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
 
 ---
 ### <a name="word"></a>Word
@@ -610,7 +610,7 @@ string に含まれる単語の数が指定より少ないか、区切り記号�
 **サンプル入力/出力:** 
 
 * **入力** (mail): "john.doe@contoso.com"
-* **出力** : "john.doe"
+* **出力**: "john.doe"
 
 ### <a name="append-constant-suffix-to-user-name"></a>ユーザー名に定数のサフィックスを追加する
 Salesforce Sandbox を使用している場合は、ユーザー名を同期する前に、すべてのユーザー名に追加のサフィックスを追加する必要があります。
@@ -620,8 +620,8 @@ Salesforce Sandbox を使用している場合は、ユーザー名を同期す�
 
 **サンプル入力/出力:** 
 
-* **入力** : (userPrincipalName): "John.Doe@contoso.com"
-* **出力** :  "John.Doe@contoso.com.test"
+* **入力**: (userPrincipalName): "John.Doe@contoso.com"
+* **出力**:  "John.Doe@contoso.com.test"
 
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>姓の一部と名の一部を連結することでユーザー エイリアスを生成する
 ユーザーの名の最初の 3 文字とユーザーの姓の最初の 5 文字を取得することでユーザー エイリアスを生成する必要があります。
@@ -633,7 +633,7 @@ Salesforce Sandbox を使用している場合は、ユーザー名を同期す�
 
 * **入力** (givenName):"John"
 * **入力** (surname):"Doe"
-* **出力** :"JohDoe"
+* **出力**:"JohDoe"
 
 ### <a name="remove-diacritics-from-a-string"></a>文字列から分音記号を削除する
 アクセント記号を含む文字を、アクセント記号を含まない同等の文字に置換する必要があります。
@@ -643,7 +643,7 @@ Salesforce Sandbox を使用している場合は、ユーザー名を同期す�
 **サンプル入力/出力:** 
 
 * **入力** (givenName):"Zoë"
-* **出力** :"Zoe"
+* **出力**:"Zoe"
 
 ### <a name="split-a-string-into-a-multi-valued-array"></a>文字列を複数値の配列に分割します
 コンマ区切りの一覧になっている文字列を受け取り、Salesforce の PermissionSets 属性などの複数値の属性にプラグインできる配列に分割する必要があります。 この例では、アクセス許可セットの一覧が、Azure AD の extensionAttribute5 に格納されています。
@@ -652,8 +652,8 @@ Salesforce Sandbox を使用している場合は、ユーザー名を同期す�
 
 **サンプル入力/出力:** 
 
-* **INPUT** (extensionAttribute5):"PermissionSetOne, PermisionSetTwo"
-* **OUTPUT** :  ["PermissionSetOne", "PermissionSetTwo"]
+* **INPUT** (extensionAttribute5):
+* **OUTPUT**:  ["PermissionSetOne", "PermissionSetTwo"]
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>特定の形式の文字列として日付を出力する
 SaaS アプリケーションに特定の形式で日付を送信します。 たとえば、ServiceNow 向けに日付の書式を設定します。
@@ -665,7 +665,7 @@ SaaS アプリケーションに特定の形式で日付を送信します。 �
 **サンプル入力/出力:**
 
 * **入力** (extensionAttribute1):"20150123105347.1Z"
-* **出力** :"2015-01-23"
+* **出力**:"2015-01-23"
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>定義済みのオプション セットに基づいて値を置換する
 
@@ -677,7 +677,7 @@ Azure AD に格納されている都道府県コードに基づいて、ユー�
 **サンプル入力/出力:**
 
 * **入力** (state):"QLD"
-* **出力** :"Australia/Brisbane"
+* **出力**:"Australia/Brisbane"
 
 ### <a name="replace-characters-using-a-regular-expression"></a>正規表現を使用して文字を置換します
 正規表現の値と一致する文字を見つけて削除する必要があります。
@@ -689,7 +689,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 **サンプル入力/出力:**
 
 * **INPUT** (mailNickname: "john_doe72"
-* **出力** :"72"
+* **出力**:"72"
 
 ### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>生成された userPrincipalName (UPN) の値を小文字に変換します
 次の例では、PreferredFirstName および PreferredLastName ソース フィールドを連結することで UPN 値が生成され、ToLower 関数は、すべての文字を小文字に変換するために、生成された文字列で機能します。 
@@ -700,7 +700,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 * **入力** (PreferredFirstName):"John"
 * **入力** (PreferredLastName):"Smith"
-* **出力** : "john.smith@contoso.com"
+* **出力**: "john.smith@contoso.com"
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>userPrincipalName (UPN) 属性用に一意の値を生成する
 ユーザーの名、ミドル ネーム、姓を基にして UPN 属性の値を生成し、値を UPN 属性に割り当てる前に、対象の AD ディレクトリで値が一意であることを確認する必要があります。
@@ -719,9 +719,9 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 * **入力** (PreferredFirstName):"John"
 * **入力** (PreferredLastName):"Smith"
-* **出力** : John.Smith@contoso.com の UPN 値がディレクトリにまだ存在しない場合は "John.Smith@contoso.com"
-* **出力** : John.Smith@contoso.com の UPN 値がディレクトリに既に存在する場合は "J.Smith@contoso.com"
-* **出力** : 上記の 2 つの UPN 値がディレクトリに既に存在する場合は "Jo.Smith@contoso.com"
+* **出力**: John.Smith@contoso.com の UPN 値がディレクトリにまだ存在しない場合は "John.Smith@contoso.com"
+* **出力**: John.Smith@contoso.com の UPN 値がディレクトリに既に存在する場合は "J.Smith@contoso.com"
+* **出力**: 上記の 2 つの UPN 値がディレクトリに既に存在する場合は "Jo.Smith@contoso.com"
 
 ### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>NULL でない場合はフロー メール値、それ以外の場合は userPrincipalName
 メール属性が存在する場合は、それをフローすることをおすすめします。 存在しない場合、代わりに userPrincipalName の値をフローしてください。
@@ -733,7 +733,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 * **入力** (mail):NULL
 * **入力** (userPrincipalName): "John.Doe@contoso.com"
-* **出力** :  "John.Doe@contoso.com"
+* **出力**:  "John.Doe@contoso.com"
 
 ## <a name="related-articles"></a>関連記事
 * [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)

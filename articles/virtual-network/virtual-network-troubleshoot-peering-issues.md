@@ -36,8 +36,8 @@ ms.locfileid: "83587733"
 
 同じサブスクリプションにある仮想ネットワークの仮想ネットワーク ピアリングを構成するには、次の記事にある方法を使用します。
 
-* 仮想ネットワークが*同じリージョン*にある場合は、「[ピアリングの作成](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#create-a-peering)」を参照してください。
-* 仮想ネットワークが*異なるリージョン*にある場合は、「[仮想ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)」を参照してください。 
+* 仮想ネットワークが *同じリージョン* にある場合は、「[ピアリングの作成](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#create-a-peering)」を参照してください。
+* 仮想ネットワークが *異なるリージョン* にある場合は、「[仮想ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)」を参照してください。 
 
 > [!Note]
 > 次のリソースについては、グローバル仮想ネットワーク ピアリング経由での接続が機能しません。 
@@ -59,7 +59,7 @@ ms.locfileid: "83587733"
 異なるサブスクリプションまたは Active Directory テナント内の仮想ネットワークの仮想ネットワーク ピアリングを構成するには、[Azure CLI の異なるサブスクリプションでのピアリングの作成](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)に関する記事を参照してください。
 
 > [!Note]
-> ネットワーク ピアリングを構成するには、両方のサブスクリプションで**ネットワーク共同作成者**のアクセス許可を持っている必要があります。 詳細については、[ピアリングのアクセス許可](virtual-network-manage-peering.md#permissions)に関するページを参照してください。
+> ネットワーク ピアリングを構成するには、両方のサブスクリプションで **ネットワーク共同作成者** のアクセス許可を持っている必要があります。 詳細については、[ピアリングのアクセス許可](virtual-network-manage-peering.md#permissions)に関するページを参照してください。
 
 ## <a name="configure-virtual-network-peering-with-hub-spoke-topology-that-uses-on-premises-resources"></a>オンプレミス リソースを使用するハブスポーク トポロジで仮想ネットワーク ピアリングを構成する
 

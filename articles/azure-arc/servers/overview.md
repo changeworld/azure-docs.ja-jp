@@ -4,12 +4,12 @@ description: Azure Arc 対応サーバーを使用して、Azure の外部でホ
 keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新管理, 変更追跡, インベントリ, Runbook, Python, グラフィカル, ハイブリッド
 ms.date: 11/12/2020
 ms.topic: overview
-ms.openlocfilehash: 2df970f7c94f1e306243aba1480ee7023b8f76c1
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8368f89b8e471698ede3e9e8eb691e69f494b6e2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578724"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183398"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーとは
 
@@ -29,7 +29,7 @@ Azure の外部でホストされているハイブリッド マシンでこの�
 
 - Azure 以外の Windows または Linux マシンでサポートされている [Azure VM 拡張機能](manage-vm-extensions.md)を使用して、Azure Automation [State Configuration](../../automation/automation-dsc-overview.md) や Azure Monitor Log Analytics ワークスペースなどの他の Azure サービスによるデプロイを簡略化します。 これには、カスタム スクリプト拡張機能を使用した、デプロイ後の構成またはソフトウェアのインストールの実行が含まれます。
 
-- Azure Automation で [Update Management](../../automation/update-management/update-mgmt-overview.md) を使用して、Windows と Linux サーバーのオペレーティング システムの更新プログラムを管理します
+- Azure Automation で [Update Management](../../automation/update-management/overview.md) を使用して、Windows と Linux サーバーのオペレーティング システムの更新プログラムを管理します
 
     > [!NOTE]
     > 現時点では、Arc 対応サーバーから Update Management を直接有効にすることはサポートされていません。 要件とサーバーに対する有効化の方法を理解するには、「[Automation アカウントから Update Management を有効にする](../../automation/update-management/enable-from-automation-account.md)」を参照してください。

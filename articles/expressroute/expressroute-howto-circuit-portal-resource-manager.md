@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.date: 10/21/2020
 ms.author: duau
 ms.openlocfilehash: b0fd844021e7398e061072d7939b782616580c1c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368691"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185200"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit"></a>クイックスタート: ExpressRoute 回線の作成と変更
 
@@ -41,13 +41,21 @@ ms.locfileid: "92368691"
 
     :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/create-expressroute-circuit-menu.png" alt-text="ExpressRoute 回線の作成":::
 
-2. **[ExpressRoute]** を選択すると、 **[Create ExpressRoute]\(ExpressRoute の作成\)** ページが表示されます。 回線の**リソース グループ**、**リージョン**、**名前**を指定します。 次に、**次のステップ: 構成 >** をクリックします。
+2. **[ExpressRoute]** を選択すると、 **[Create ExpressRoute]\(ExpressRoute の作成\)** ページが表示されます。 回線の **リソース グループ**、**リージョン**、**名前** を指定します。 次に、**次のステップ: 構成 >** をクリックします。
 
-    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-basic.png" alt-text="ExpressRoute 回線の作成":::
+    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-basic.png" alt-text="リソース グループとリージョンを構成する":::
 
 3. このページで値を入力するときは、正しい SKU レベル (Local、Standard、または Premium) とデータ計測課金モデル (無制限または従量制) を必ず指定してください。
 
-    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-configuration.png" alt-text="ExpressRoute 回線の作成" プロパティに**リンクされていません**。それは、Azure Network Resource Provider が配置されている地理的な場所を参照します。 それらは関連付けられていませんが、回路のピアリングの場所と地理的に近い場所にある Network Resource Provider を選択することをお勧めします。
+    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-configuration.png" alt-text="回線を構成する":::
+    
+    * **[ポートの種類]** により、サービス プロバイダーに接続するか、またはピアリングの場所で Microsoft のグローバル ネットワークに直接接続するかが決まります。
+    * **[新規作成またはクラシックからインポート]** により、新しい回線を作成するか、または従来の回線を Azure Resource Manager に移行するかが決まります。
+    * **[プロバイダー]** は、サービスの要求先となるインターネット サービス プロバイダーです。
+    * **ピアリングの場所** とは、Microsoft とピアリングしている物理的な場所です。
+
+    > [!IMPORTANT]
+    > ピアリングの場所は、Microsoft とピアリングしている[物理的な場所](expressroute-locations.md)を示します。 この場所は "Location" プロパティに **リンクされていません**。それは、Azure Network Resource Provider が配置されている地理的な場所を参照します。 それらは関連付けられていませんが、回路のピアリングの場所と地理的に近い場所にある Network Resource Provider を選択することをお勧めします。
 
     * **[SKU]** によって、ExpressRoute Local、ExpressRoute Standard、または ExpressRoute Premium のどのアドオンを有効にするかが決まります。 ローカルの SKU を取得する場合は **[Local]** 、標準の SKU を取得する場合は **[Standard]** 、Premium アドオンの場合は **[Premium]** を指定できます。 SKU を変更し、プレミアム アドオンを有効にすることができます。
     > [!IMPORTANT]
@@ -66,17 +74,17 @@ ms.locfileid: "92368691"
 
 左側のメニューで **[すべてのサービス] > [ネットワーク] > [ExpressRoute 回線]** を選択すると、作成したすべての回線を表示できます。
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-menu.png" alt-text="ExpressRoute 回線の作成":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-menu.png" alt-text="Expressroute 回線のメニュー":::
 
 サブスクリプション内で作成されたすべての Expressroute 回線がここに表示されます。
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-list.png" alt-text="ExpressRoute 回線の作成":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-list.png" alt-text="Expressroute 回線の一覧":::
 
 **プロパティを表示する**
 
 回線を選択し、その回線のプロパティを表示できます。 回線の **[概要]** ページでは、サービス キーがサービス キー フィールドに表示されます。 プロビジョニング プロセスを完了するには、回線のサービス キーを参照し、それをサービス プロバイダーに提供します。 サービス キーは回線に固有です。
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview.png" alt-text="ExpressRoute 回線の作成":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview.png" alt-text="プロパティを表示する":::
 
 ### <a name="send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>プロビジョニングのためにサービス キーを接続プロバイダーに送信する
 
@@ -87,7 +95,7 @@ ms.locfileid: "92368691"
 プロバイダーの状態: **未プロビジョニング**<BR>
 回線の状態: **有効**
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview-provisioning-state.png" alt-text="ExpressRoute 回線の作成":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview-provisioning-state.png" alt-text="プロビジョニング プロセスを開始":::
 
 回線は、接続プロバイダーが有効にしている間、次の状態に変化します。
 
@@ -103,7 +111,7 @@ ExpressRoute 回線を使用するには、次の状態になっている必要�
 
 関心のある回線を選択し、その回線のプロパティを表示できます。 **[プロバイダーの状態]** が **[プロビジョニング済み]** になっていることを確認してから続行します。
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png" alt-text="ExpressRoute 回線の作成":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png" alt-text="回線とプロバイダーの状態":::
 
 ### <a name="create-your-routing-configuration"></a>ルーティング構成を作成する
 
@@ -136,12 +144,12 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
   > [!IMPORTANT]
   > 回線の帯域幅のダウングレードはサポートされていません。
 
-* 課金プランを*従量制課金データ*から*無制限データ*に変更します。
+* 課金プランを *従量制課金データ* から *無制限データ* に変更します。
 
   > [!IMPORTANT]
-  > **無制限データ**から**従量制課金データ**への課金プランの変更はサポートされていません。
+  > **無制限データ** から **従量制課金データ** への課金プランの変更はサポートされていません。
 
-* *従来の操作の許可*を有効または無効にできます。
+* *従来の操作の許可* を有効または無効にできます。
   > [!IMPORTANT]
   > 既存のポートの容量が不十分な場合、ExpressRoute 回線の再作成が必要になる可能性があります。 その場所に使用可能な追加の容量がない場合、回路をアップグレードすることはできません。
   >
@@ -151,22 +159,22 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 
 ExpressRoute 回線を変更するには、 **[構成]** を選択します。
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-configuration.png" alt-text="ExpressRoute 回線の作成":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-configuration.png" alt-text="回線の変更":::
 
 ## <a name="deprovisioning-an-expressroute-circuit"></a><a name="delete"></a>ExpressRoute 回線のプロビジョニング解除
 
-ExpressRoute 回線サービス プロバイダーのプロビジョニング状態が**プロビジョニング中**または**プロビジョニング済み**の場合、サービス プロバイダー側の回線のプロビジョニングを解除するには、サービス プロバイダーに連絡する必要があります。 Microsoft は、サービス プロバイダーが回線のプロビジョニング解除を完了し、通知するまで、リソースの予約と課金を続行します。
+ExpressRoute 回線サービス プロバイダーのプロビジョニング状態が **プロビジョニング中** または **プロビジョニング済み** の場合、サービス プロバイダー側の回線のプロビジョニングを解除するには、サービス プロバイダーに連絡する必要があります。 Microsoft は、サービス プロバイダーが回線のプロビジョニング解除を完了し、通知するまで、リソースの予約と課金を続行します。
 
 > [!NOTE]
 >* プロビジョニングを解除する前に、ExpressRoute 回線から "*すべての仮想ネットワーク*" のリンクを解除する必要があります。 この操作が失敗した場合は、回線にリンクされている仮想ネットワークがないか確認してください。
->* サービス プロバイダーが回線のプロビジョニングを解除済み (サービス プロバイダーのプロビジョニング状態が**未プロビジョニング**に設定されている) の場合、回線を削除することができます。 これによって回線の課金が停止されます。
+>* サービス プロバイダーが回線のプロビジョニングを解除済み (サービス プロバイダーのプロビジョニング状態が **未プロビジョニング** に設定されている) の場合、回線を削除することができます。 これによって回線の課金が停止されます。
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 **[削除]** アイコンを選択し、ExpressRoute 回線を削除できます。 続行する前に、プロバイダーのステータスが確実に "*未プロビジョニング*" になっているようにします。
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-delete.png" alt-text="ExpressRoute 回線の作成":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-delete.png" alt-text="回線を削除する":::
 
 ## <a name="next-steps"></a>次のステップ
 

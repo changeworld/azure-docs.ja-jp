@@ -12,12 +12,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: ae2f2b8b9b6f3bc934321b13dcefeff46e43b089
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 936e4f8f54e92ba90372fff1c9d8dfc1982bbd62
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788164"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325118"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Azure SQL Managed Instance の使用を開始する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "92788164"
 最初の手順として、最初の SQL Managed Instance をその配置先のネットワーク環境で作成し、クエリを実行するコンピューターまたは仮想マシンから SQL Managed Instance への接続を有効にする必要があります。 次のガイドを使用できます。
 
 - [Azure portal を使用して SQL Managed Instance を作成します](instance-create-quickstart.md)。 Azure portal で、必要なパラメーター (ユーザー名/パスワード、コア数、最大ストレージ容量) を構成します。また、Azure ネットワーク環境を自動的に作成できます。ネットワークの詳細やインフラストラクチャの要件を把握している必要はありません。 現在 SQL Managed Instance の作成が許可されている[サブスクリプションの種類](resource-limits.md#supported-subscription-types)を使用していることを確認します。 使用したい独自のネットワークがある場合、またはネットワークをカスタマイズする場合は、「[Azure SQL Managed Instance の既存の仮想ネットワークを構成する](vnet-existing-add-subnet.md)」または「[Azure SQL Managed Instance の仮想ネットワークを作成する](virtual-network-subnet-create-arm-template.md)」を参照してください。
-- SQL Managed Instance は、パブリック エンドポイントを持たない独自の VNet に作成されます。 クライアント アプリケーションのアクセスのために、以下のクイック スタートのいずれかを使用して、 **同じ VNet (異なるサブネット) 内に VM を作成する** か、 **クライアント コンピューターから VNet へのポイント対サイト VPN 接続を作成する** ことができます。
+- SQL Managed Instance は、パブリック エンドポイントを持たない独自の VNet に作成されます。 クライアント アプリケーションのアクセスのために、以下のクイック スタートのいずれかを使用して、**同じ VNet (異なるサブネット) 内に VM を作成する** か、**クライアント コンピューターから VNet へのポイント対サイト VPN 接続を作成する** ことができます。
   - お使いの環境からデータに直接アクセスするために、SQL Managed Instance で[パブリック エンドポイント](public-endpoint-configure.md)を有効にします。
   - SQL Server Management Studio などのクライアント アプリケーション接続のために、[SQL Managed Instance VNet に Azure 仮想マシン](connect-vm-instance-configure.md)を作成します。
   - SQL Server Management Studio とその他のクライアント接続アプリケーションがあるクライアント コンピューターから、[SQL Managed Instance へのポイント対サイト VPN 接続](point-to-site-p2s-configure.md)を設定します。 これは、SQL Managed Instance とその VNet への接続に関する 2 つのオプションのうちの 1 つです。
@@ -72,7 +72,7 @@ SQL Managed Instance をデプロイする VNet とサブネットが既にあ�
 ただし、運用データベース移行する場合、または何らかのパフォーマンス テストに使用する開発/テスト データベースを移行する場合であっても、次のような追加の手法を使用することを検討する必要があります。
 
 - パフォーマンス テスト - ソース SQL Server インスタンスのベースライン パフォーマンス メトリックを測定し、データベースの移行先である SQL Managed Instance のパフォーマンス メトリックと比較する必要があります。 詳しくは、[best practices for performance comparison (パフォーマンス比較のベスト プラクティス)](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210) に関する記事をご覧ください。
-- オンライン移行 - この記事で説明されているネイティブの `RESTORE` の場合、データベースが復元される (そして、まだ Azure Blob Storage に格納されていない場合は Azure Blob Storage にコピーされる) まで待つ必要があります。 このため、特に大規模なデータベースでは、アプリケーションに多少のダウンタイムが発生します。 運用データベースを移動するには、[データ移行サービス (DMS)](../../dms/tutorial-sql-server-to-managed-instance.md?toc=%252fazure%252fsql-database%252ftoc.json) を使用して、最小限のダウンタイムでデータベースを移行します。 DMS は、ソース データベースで行われた変更を、復元する SQL Managed Instance データベースに増分方式でプッシュすることによってこれを実現します。 この方法であれば、最小限のダウンタイムでアプリケーションをソースからターゲットのデータベースにすばやく切り替えることができます。
+- オンライン移行 - この記事で説明されているネイティブの `RESTORE` の場合、データベースが復元される (そして、まだ Azure Blob Storage に格納されていない場合は Azure Blob Storage にコピーされる) まで待つ必要があります。 このため、特に大規模なデータベースでは、アプリケーションに多少のダウンタイムが発生します。 運用データベースを移動するには、[データ移行サービス (DMS)](../../dms/tutorial-sql-server-to-managed-instance.md?toc=%2fazure%2fsql-database%2ftoc.json) を使用して、最小限のダウンタイムでデータベースを移行します。 DMS は、ソース データベースで行われた変更を、復元する SQL Managed Instance データベースに増分方式でプッシュすることによってこれを実現します。 この方法であれば、最小限のダウンタイムでアプリケーションをソースからターゲットのデータベースにすばやく切り替えることができます。
 
 [推奨される移行プロセス](migrate-to-instance-from-sql-server.md)の詳細を確認してください。
 

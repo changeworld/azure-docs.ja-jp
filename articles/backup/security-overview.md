@@ -3,12 +3,12 @@ title: セキュリティ機能の概要
 description: バックアップ データを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つ Azure Backup のセキュリティ機能について説明します。
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 8c4d3af9205df43c3596da64d7fcad2a9eb82500
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 9aa1909f1590b477d9a7f7a09ad0c2b1936e3e29
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093346"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325657"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure Backup のセキュリティ機能の概要
 
@@ -26,7 +26,7 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの[
 
 [Azure Backup を管理するための Azure ロールベースのアクセス制御](./backup-rbac-rs-vault.md)について確認してください。
 
-Azure Backup には、セキュリティ脆弱性の防止、検出、および対応を行うための、サービスに組み込まれているセキュリティ コントロールがいくつかあります。 [Azure Backup のセキュリティ コントロール](./backup-security-controls.md)について確認してください。
+Azure Backup には、セキュリティ脆弱性の防止、検出、および対応を行うための、サービスに組み込まれているセキュリティ コントロールがいくつかあります。 [Azure Backup のセキュリティ コントロール](./security-baseline.md)について確認してください。
 
 ## <a name="separation-between-guest-and-azure-storage"></a>ゲストと Azure ストレージの分離
 

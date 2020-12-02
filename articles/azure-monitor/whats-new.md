@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 4fa00bffc35c4ed67ce70751c8882b74ad6b01a1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bf15e380eb1a88acc39ca63165d18d04a260b35d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95534502"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185897"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 
@@ -230,7 +230,7 @@ ms.locfileid: "95534502"
 - [Azure Monitor のカスタマー マネージド キー](platform/customer-managed-keys.md) - エラー メッセージとクエリの CMK 構成のセクションを追加しました。
 - [Azure Monitor HTTP データ コレクター API](platform/data-collector-api.md) - Python 3 のサンプルを追加しました。
 - [Azure Monitor でログ クエリを最適化する](log-query/query-optimization.md) - サブクエリを使用するときの複数のデータ スキャンの回避に関するセクションを追加しました。
-- [チュートリアル:Log Analytics クエリの使用方法](log-query/get-started-portal.md) - ビデオを追加しました。
+- [チュートリアル:Log Analytics クエリの使用方法](./log-query/log-analytics-tutorial.md) - ビデオを追加しました。
 
 ### <a name="platform-logs"></a>プラットフォーム ログ
 - [プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](platform/diagnostic-settings.md) - ビデオを追加しました。

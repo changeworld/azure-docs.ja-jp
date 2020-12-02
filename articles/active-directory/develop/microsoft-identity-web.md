@@ -13,12 +13,12 @@ ms.date: 10/09/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 77cb3b0c13a6bfe41c6f7a1a5a0f9d7278aea1db
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: b82e300128a41f8315132e1ff93af33c853edb15
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930154"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173517"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Microsoft Identity Web 認証ライブラリ
 
@@ -39,7 +39,7 @@ Microsoft Identity Web は [NuGet](#nuget)、[.NET Core プロジェクト テ�
 
 #### <a name="nuget"></a>NuGet
 
-Microsoft Identity Web は、アプリのニーズに応じたモジュール型機能を提供する一連のパッケージとして、NuGet で入手できます。 .NET CLI の `dotnet add` コマンドまたは Visual Studio の **NuGet パッケージ マネージャー**を使用して、プロジェクトに適したパッケージをインストールします。
+Microsoft Identity Web は、アプリのニーズに応じたモジュール型機能を提供する一連のパッケージとして、NuGet で入手できます。 .NET CLI の `dotnet add` コマンドまたは Visual Studio の **NuGet パッケージ マネージャー** を使用して、プロジェクトに適したパッケージをインストールします。
 
 - [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) - メイン パッケージ。 Microsoft Identity Web を使用するすべてのアプリに必要です。
 - [Microsoft.Identity.Web.UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) - 省略可能。 Web アプリに対するユーザーのサインインとサインアウトおよび関連付けられているコントローラーの UI を追加します。
@@ -58,14 +58,14 @@ dotnet new --install Microsoft.Identity.Web.ProjectTemplates::1.0.0
 
 次の図は、サポートされているアプリの種類とその関連する引数の概要を示しています。
 
-:::image type="content" source="media/microsoft-identity-web-overview/diagram-microsoft-identity-web-templates.png" lightbox="media/microsoft-identity-web-overview/diagram-microsoft-identity-web-templates.png" alt-text="Microsoft Identity Web 用の利用可能な .NET CLI プロジェクト テンプレートの図&quot;:::
+:::image type="content" source="media/microsoft-identity-web-overview/diagram-microsoft-identity-web-templates.png" lightbox="media/microsoft-identity-web-overview/diagram-microsoft-identity-web-templates.png" alt-text="Microsoft Identity Web 用の利用可能な .NET CLI プロジェクト テンプレートの図":::
 <br /><sup><b>*</b></sup> `MultiOrg` は `webapi2` ではサポートされていませんが、テナントを `common` または `organizations` に設定することにより、*appsettings.json* で有効にすることができます
 <br /><sup><b>**</b></sup> `--calls-graph` は、Azure AD B2C ではサポートされていません
 
 [Blazor Server チュートリアル](tutorial-blazor-server.md)から取得した次の .NET CLI コマンドの例では、適切なパッケージおよびスタート コード (プレースホルダー値を表示) を含む新しい Blazor Server プロジェクトを生成します。
 
 ```dotnetcli
-dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id &quot;00000000-0000-0000-0000-000000000000&quot; --tenant-id &quot;11111111-1111-1111-1111-111111111111" --output my-blazor-app
+dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id "00000000-0000-0000-0000-000000000000" --tenant-id "11111111-1111-1111-1111-111111111111" --output my-blazor-app
 ```
 
 #### <a name="github"></a>GitHub
@@ -82,7 +82,7 @@ Microsoft Identity Web には、既定の ASP.NET 3.1 プロジェクト テン�
 |------------------------------------------------------------------------------------------|----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | Web アプリでの[ユーザーのサインイン](scenario-web-app-sign-user-app-configuration.md)             | <li>職場または学校アカウント<li>ソーシャル ID (Azure AD B2C) | <li>職場または学校アカウント<li>個人用 Microsoft アカウント<li>ソーシャル ID (Azure AD B2C)     |
 | [Web API の保護](scenario-protected-web-api-app-configuration.md#microsoftidentityweb) | <li>職場または学校アカウント<li>ソーシャル ID (Azure AD B2C) | <li>職場または学校アカウント<li>個人用 Microsoft アカウント<li>ソーシャル ID (Azure AD B2C)     |
-| マルチテナント アプリでの発行者の検証                                                   | いいえ                                                                   | はい ([すべてのクラウド](authentication-national-cloud.md)と [Azure AD B2C](/azure/active-directory-b2c)) |
+| マルチテナント アプリでの発行者の検証                                                   | いいえ                                                                   | はい ([すべてのクラウド](authentication-national-cloud.md)と [Azure AD B2C](../../active-directory-b2c/index.yml)) |
 | Web アプリ/API による [Microsoft Graph の呼び出し][scenario-api-call-graph]                             | いいえ                                                                   | はい                                                                                                     |
 | Web アプリ/API による [Web API の呼び出し][scenario-api-call-api]                                       | いいえ                                                                   | はい                                                                                                     |
 | 証明書資格情報のサポート                                                         | いいえ                                                                   | はい (Azure Key Vault を含む)                                                                          |

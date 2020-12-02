@@ -21,7 +21,7 @@ Azure Static Web Apps でのルーティングでは、静的コンテンツと 
 - _routes.json_ ファイルは、アプリのビルド成果物フォルダーのルートに存在する必要があります。
 - 規則は、`routes` 配列に出現する順序で実行されます。
 - 最初に一致した時点で、規則の評価は停止します。 ルーティング規則は連結されません。
-- ロールは _routes.json_ ファイルで定義されており、ユーザーは[招待](authentication-authorization.md)によってロールに関連付けられます。
+- ロールは _routes.json_ ファイルで定義されており、ユーザーは [招待](authentication-authorization.md)によってロールに関連付けられます。
 - ロールの名前はお客様が完全に制御できます。
 
 ルーティングのトピックは、認証と承認の概念とかなり重複します。 この記事と共に、[認証と承認](authentication-authorization.md)に関するガイドをお読みください。
@@ -290,9 +290,9 @@ MIME の種類を使用するときは、次の考慮事項が重要です。
 | 要求先 | 結果 |
 |--|--|--|
 | _/profile_ | 認証されたユーザーには、 _/profile/index.html_ ファイルが提供されます。 認証されていないユーザーは、 _/login_ にリダイレクトされます。 |
-| _/admin/reports_ | _administrators_ ロールの認証されたユーザーには、 _/admin/reports/index.html_ ファイルが提供されます。 _administrators_ ロールではない認証されたユーザーには、401 エラー<sup>2</sup>が提供されます。 認証されていないユーザーは、 _/login_ にリダイレクトされます。 |
+| _/admin/reports_ | _administrators_ ロールの認証されたユーザーには、 _/admin/reports/index.html_ ファイルが提供されます。 _administrators_ ロールではない認証されたユーザーには、401 エラー <sup>2</sup>が提供されます。 認証されていないユーザーは、 _/login_ にリダイレクトされます。 |
 | _/api/admin_ | _administrators_ ロールの認証されたユーザーからの要求は、API に送信されます。 _administrators_ ロールではない認証されたユーザーおよび認証されていないユーザーには、401 エラーが提供されます。 |
-| _/customers/contoso_ | _administrators_ ロールまたは _customers\_contoso_ ロールに属している認証されたユーザーには、 _/customers/contoso/index.html_ ファイル<sup>2</sup>が提供されます。 _administrators_ ロールまたは _customers\_contoso_ ロールでない認証されたユーザーには、401 エラーが提供されます。 認証されていないユーザーは、 _/login_ にリダイレクトされます。 |
+| _/customers/contoso_ | _administrators_ ロールまたは _customers\_contoso_ ロールに属している認証されたユーザーには、 _/customers/contoso/index.html_ ファイル <sup>2</sup>が提供されます。 _administrators_ ロールまたは _customers\_contoso_ ロールでない認証されたユーザーには、401 エラーが提供されます。 認証されていないユーザーは、 _/login_ にリダイレクトされます。 |
 | _/login_ | 認証されていないユーザーは、GitHub で認証するように求められます。 |
 | _/.auth/login/twitter_ | Twitter での承認は無効になっています。 サーバーは 404 エラーで応答します。 |
 | _/logout_ | ユーザーは、すべての認証プロバイダーからログアウトされます。 |

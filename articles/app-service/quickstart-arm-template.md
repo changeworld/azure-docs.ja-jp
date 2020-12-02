@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/16/2020
 ms.custom: subject-armqs, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: c8542bfe3d1393917a63e4a1feae7d6dfc223031
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 5be4cea7d8ddb00a4c8a22a696dbdce1c062765c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746190"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183024"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して App Service アプリを作成する
 
@@ -49,7 +49,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) と [Azure CL
 
 このテンプレートには、利便性のために事前に定義されているいくつかのパラメーターが含まれています。 パラメーターの既定値とその説明については、次の表を参照してください。
 
-| パラメーター | Type    | 既定値                | 説明 |
+| パラメーター | 種類    | 既定値                | 説明 |
 |------------|---------|------------------------------|-------------|
 | webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | アプリの名前 |
 | location   | string  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | アプリのリージョン |
@@ -70,7 +70,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) と [Azure CL
 
 このテンプレートには、利便性のために事前に定義されているいくつかのパラメーターが含まれています。 パラメーターの既定値とその説明については、次の表を参照してください。
 
-| パラメーター | Type    | 既定値                | 説明 |
+| パラメーター | 種類    | 既定値                | 説明 |
 |------------|---------|------------------------------|-------------|
 | webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | アプリの名前 |
 | location   | string  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | アプリのリージョン |
@@ -145,7 +145,7 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 > [PHP と MySQL](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
-> [Java を使用して Azure SQL データベースに接続する](../azure-sql/database/connect-query-java.md?toc=%252fazure%252fjava%252ftoc.json)
+> [Java を使用して Azure SQL データベースに接続する](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
 
 > [!div class="nextstepaction"]
 > [カスタム ドメインをマップする](app-service-web-tutorial-custom-domain.md)
