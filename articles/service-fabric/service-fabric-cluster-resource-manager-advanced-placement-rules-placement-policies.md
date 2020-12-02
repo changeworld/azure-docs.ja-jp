@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fbfec218c1bf1d018157fc6d78c700991f332a13
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5a4586c9c1be51b0ebbdebcf0c23289fc39f9eda
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172794"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485503"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Service Fabric サービスの配置ポリシー
 配置ポリシーは、特定のあまり一般的ではないシナリオでサーバーの配置の制御に使用できる追加の規則です。 このようなシナリオのいくつかの例は、次のとおりです。
@@ -98,7 +98,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ```
 
 ## <a name="requiring-replica-distribution-and-disallowing-packing"></a>レプリカの分散を必須にしてパッキングを許可しない
-クラスターが正常に動作している場合、 _通常_ 、レプリカは障害ドメインとアップグレード ドメイン全体に分散されています。 ただし、指定されたパーティションの複数のレプリカが、1 つのドメインに一時的にパッキングされる結果になる場合があります。 たとえば、fd:/0、fd:/1、fd:/2 という 3 つの障害ドメイン内に 9 つのノードがあるクラスターがあるとします。 また、サービスには 3 つのレプリカがあります。 この環境で fd:/1 と fd:/2 のレプリカに使用されていたノードが停止したとします。 通常、クラスター リソース マネージャーによって、これらの同じ障害ドメインの他のノードが優先されます。 この場合、容量の問題でこれらのドメイン内の他のいずれのノードも有効ではなかったと仮定します。 Cluster Resource Manager でそれらのレプリカの置き換えを構築する場合、fd:/0 のノードを選択する必要があります。 ただし、 _その選択_ を実行すると、障害ドメインの制約違反になる状況が生じます。 複数のレプリカをパッキングすると、レプリカ セット全体が停止したり、失われたりする可能性が高まります。 
+クラスターが正常に動作している場合、_通常_、レプリカは障害ドメインとアップグレード ドメイン全体に分散されています。 ただし、指定されたパーティションの複数のレプリカが、1 つのドメインに一時的にパッキングされる結果になる場合があります。 たとえば、fd:/0、fd:/1、fd:/2 という 3 つの障害ドメイン内に 9 つのノードがあるクラスターがあるとします。 また、サービスには 3 つのレプリカがあります。 この環境で fd:/1 と fd:/2 のレプリカに使用されていたノードが停止したとします。 通常、クラスター リソース マネージャーによって、これらの同じ障害ドメインの他のノードが優先されます。 この場合、容量の問題でこれらのドメイン内の他のいずれのノードも有効ではなかったと仮定します。 Cluster Resource Manager でそれらのレプリカの置き換えを構築する場合、fd:/0 のノードを選択する必要があります。 ただし、_その選択_ を実行すると、障害ドメインの制約違反になる状況が生じます。 複数のレプリカをパッキングすると、レプリカ セット全体が停止したり、失われたりする可能性が高まります。 
 
 > [!NOTE]
 > 制約と制約の優先順位の概要については、[このトピック](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities)をご覧ください。
@@ -150,7 +150,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 >
 
 > [!NOTE]
-> 現時点で、このポリシーは、ExclusiveProcess [サービス パッケージ アクティブ化モード](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicepackageactivationmode?view=azure-dotnet)のステートレス サービスでのみサポートされています。
+> 現時点で、このポリシーは、ExclusiveProcess [サービス パッケージ アクティブ化モード](/dotnet/api/system.fabric.description.servicepackageactivationmode?view=azure-dotnet)のステートレス サービスでのみサポートされています。
 >
 
 > [!WARNING]
@@ -158,7 +158,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 >
 
 > [!NOTE]
-> この配置ポリシーで [MinInstanceCount](https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount?view=azure-dotnet) の値を大きくすると、アプリケーションのアップグレードが停止する可能性があります。 たとえば、5 ノードのクラスターがあり、InstanceCount=10 と設定されている場合、各ノードに 2 つのインスタンスが存在します。 MinInstanceCount=9 を設定した場合、試行されたアプリのアップグレードが停止する可能性があります。MinInstanceCount=8 の場合は、これを回避できます。
+> この配置ポリシーで [MinInstanceCount](/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount?view=azure-dotnet) の値を大きくすると、アプリケーションのアップグレードが停止する可能性があります。 たとえば、5 ノードのクラスターがあり、InstanceCount=10 と設定されている場合、各ノードに 2 つのインスタンスが存在します。 MinInstanceCount=9 を設定した場合、試行されたアプリのアップグレードが停止する可能性があります。MinInstanceCount=8 の場合は、これを回避できます。
 >
 
 ## <a name="next-steps"></a>次のステップ

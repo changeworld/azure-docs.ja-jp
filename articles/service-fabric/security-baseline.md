@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dc66de09a5918b19c60aaa0d3e9ab662876dc31a
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 9eab908d2767bcdc9305daa625c70be9b63b9756
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684323"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485548"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Service Fabric 用の Azure セキュリティ ベースライン
 
@@ -76,7 +76,7 @@ Service Fabric 用の Azure セキュリティ ベースラインには、デプ
 
 **ガイダンス**: DDoS 攻撃からの保護のために、Azure Service Fabric クラスターがデプロイされている仮想ネットワーク上で Azure DDoS Standard Protection を有効にします。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のインターネット IP アドレスとの通信を拒否します。
 
-* [DDoS 保護を構成する方法](../virtual-network/manage-ddos-protection.md)
+* [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
 * [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/azure-defender.md)
 
@@ -626,7 +626,7 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 * [最新のスケール セット モデルで VM を最新の状態にする方法](../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
 
-* [Azure Automation の Update Management の概要](../automation/update-management/update-mgmt-overview.md)
+* [Azure Automation の Update Management の概要](../automation/update-management/overview.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 

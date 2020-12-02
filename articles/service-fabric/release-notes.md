@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 01574407801c0a6b0a5e0ddc438af4d3965dc090
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9960f15f2f91b51b73727ab421eb58dddc5bb2b3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131549"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485571"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース
 
@@ -29,17 +29,17 @@ Service Fabric ランタイムの 7.2 リリースでは、ツールと SDK の�
 ## <a name="what-is-new-in-service-fabric-7"></a>Service Fabric 7.? の新機能
 このリリースでは、重要な機能の追加と改良が行われています。 以下、主な機能をいくつか紹介します。
 ## <a name="key-announcements-in-72"></a>7\.2 での重要な発表
-- **プレビュー** : [**Service Fabric マネージド クラスター**](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-managed-clusters-are-now-in-public-preview/ba-p/1721572)がパブリック プレビューになりました。 Service Fabric マネージド クラスターは、Service Fabric クラスターを構成する基になるリソースを単一の ARM リソースにカプセル化することで、クラスターのデプロイと管理を簡素化することを目的としています。 詳細については、[Service Fabric マネージド クラスターの概要](https://docs.microsoft.com/azure/service-fabric/overview-managed-cluster)に関する記事を参照してください。
-- **プレビュー** : [**ノード数よりも多くの数のインスタンスを持つステートレス サービスのサポート**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies)がパブリック プレビューになりました。 配置ポリシーを使用すると、1 つのノードにパーティションの複数のステートレス インスタンスを作成できます。
+- **プレビュー**:[**Service Fabric マネージド クラスター**](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-managed-clusters-are-now-in-public-preview/ba-p/1721572)がパブリック プレビューになりました。 Service Fabric マネージド クラスターは、Service Fabric クラスターを構成する基になるリソースを単一の ARM リソースにカプセル化することで、クラスターのデプロイと管理を簡素化することを目的としています。 詳細については、[Service Fabric マネージド クラスターの概要](./overview-managed-cluster.md)に関する記事を参照してください。
+- **プレビュー**:[**ノード数よりも多くの数のインスタンスを持つステートレス サービスのサポート**](./service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)がパブリック プレビューになりました。 配置ポリシーを使用すると、1 つのノードにパーティションの複数のステートレス インスタンスを作成できます。
 - [**FabricObserver (FO) 3.0**](https://aka.ms/sf/fabricobserver) を使用できるようになりました。
     - Linux および Windows クラスターで FabricObserver を実行できるようになりました。
     - カスタムのオブザーバー プラグインを作成できるようになりました。 詳細とコードについては、[プラグインの readme](https://github.com/microsoft/service-fabric-observer/blob/master/Documentation/Plugins.md) と[サンプル プラグイン プロジェクト](https://github.com/microsoft/service-fabric-observer/tree/master/SampleObserverPlugin)を参照してください。
     - アプリケーション パラメーターをアップグレードすることで、任意のオブザーバーの設定を変更できるようになりました。 これは、特定のオブザーバー設定を変更するために、FO を再デプロイする必要がなくなったことを意味します。 [サンプル](https://github.com/microsoft/service-fabric-observer/blob/master/Documentation/Using.md#parameterUpdates)を参照してください。
 - [**Ubuntu 18.04 OneBox コンテナー イメージのサポート**](https://hub.docker.com/_/microsoft-service-fabric-onebox)。
-- **プレビュー** : [**Service Fabric アプリケーションの KeyVault リファレンスでは、 **バージョン管理されたシークレットのみ** をサポートしています。バージョンのないシークレットはサポートされません。** ](https://docs.microsoft.com/azure/service-fabric/service-fabric-keyvault-references)
+- **プレビュー**:[**Service Fabric アプリケーションの KeyVault リファレンスでは、**バージョン管理されたシークレットのみ** をサポートしています。バージョンのないシークレットはサポートされません。**](./service-fabric-keyvault-references.md)
 - SF SDK には、新しい .Net Framework ステートレス/ステートフル/アクター プロジェクトを作成できるようにするために、最新の VS 2019 更新プログラム 16.7.6 または 16.8 プレビュー 4 が必要です。 最新の VS 更新プログラムがインストールされていない場合は、サービス プロジェクトの作成後、パッケージ マネージャーを使用して、ステートフル/ステートレス プロジェクトの場合は Microsoft.ServiceFabric.Services (バージョン 4.2.x) をインストールし、アクター プロジェクトの場合は Microsoft.ServiceFabric.Actors (バージョン 4.2.x) を nuget.org からインストールします。
-- **RunToCompletion** :Service Fabric は、ゲスト実行可能ファイルの実行完了の概念をサポートしています。 この更新により、レプリカの実行が完了すると、このレプリカに割り当てられたクラスター リソースが解放されます。
-- [**リソース ガバナンスのサポートの強化**](https://docs.microsoft.com/azure/service-fabric/service-fabric-resource-governance): CPU およびメモリ リソースの要求と制限の仕様が許可されるようになります。
+- **RunToCompletion**:Service Fabric は、ゲスト実行可能ファイルの実行完了の概念をサポートしています。 この更新により、レプリカの実行が完了すると、このレプリカに割り当てられたクラスター リソースが解放されます。
+- [**リソース ガバナンスのサポートの強化**](./service-fabric-resource-governance.md): CPU およびメモリ リソースの要求と制限の仕様が許可されるようになります。
 
 ### <a name="service-fabric-72-releases"></a>Service Fabric 7.2 リリース
 | リリース日 | Release | 詳細情報 |
@@ -79,7 +79,7 @@ Microsoft では 7.1 をリリースしていますが、現在 COVID-19 の危�
 - [**完了まで実行するか、サービスに対して 1 回実行**](./run-to-completion.md)**
 
 ### <a name="image-store-improvements"></a>Image Store の改良
- - Service Fabric 7.1 は、 **既定でカスタム トランスポートを使用してノード間のファイル転送をセキュリティで保護** します。 SMB ファイル共有への依存は、バージョン 7.1 からは取り除かれています。 既定の動作をオプトアウトすることを希望するお客様のために、また、アップグレードまたは以前のバージョンへのダウングレードに対応するために、Image Store サービスのレプリカを格納するノードには、セキュリティで保護された SMB ファイル共有が引き続き存在します。
+ - Service Fabric 7.1 は、**既定でカスタム トランスポートを使用してノード間のファイル転送をセキュリティで保護** します。 SMB ファイル共有への依存は、バージョン 7.1 からは取り除かれています。 既定の動作をオプトアウトすることを希望するお客様のために、また、アップグレードまたは以前のバージョンへのダウングレードに対応するために、Image Store サービスのレプリカを格納するノードには、セキュリティで保護された SMB ファイル共有が引き続き存在します。
        
  ### <a name="reliable-collections-improvements"></a>リライアブル コレクションの改良
 
@@ -110,13 +110,13 @@ Azure Service Fabric 7.0 の提供開始 Azure portal または Azure Resource M
 ### <a name="key-announcements"></a>重要な発表
  - [**アプリケーション サービスでの KeyVaultReference サポート (プレビュー)**](./service-fabric-keyvault-references.md)[マネージド ID](./concepts-managed-identity.md) が有効になっている Service Fabric アプリケーションは、環境変数、アプリケーション パラメーター、またはコンテナー リポジトリ資格情報として Key Vault シークレット URL を直接参照できるようになりました。 Service Fabric は、アプリケーションのマネージド ID を使用してシークレットを自動的に解決します。 
      
-- **ステートレス サービスのアップグレードの安全性の向上** :アプリケーションのアップグレード中に可用性を保証するために、使用可能と見なされる [ステートレス サービスの最小インスタンス数](/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet)を定義するための新しい構成を導入しました。 以前は、すべてのサービスでこの値は 1 であり、変更できませんでした。 この新しいサービスごとの安全性チェックにより、アプリケーションのアップグレード中、クラスターのアップグレード中、Service Fabric の正常性と安全性のチェックに依存するその他のメンテナンス中に、サービスの稼働インスタンスの最小数を維持できるようになります。
+- **ステートレス サービスのアップグレードの安全性の向上**:アプリケーションのアップグレード中に可用性を保証するために、使用可能と見なされる [ステートレス サービスの最小インスタンス数](/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet)を定義するための新しい構成を導入しました。 以前は、すべてのサービスでこの値は 1 であり、変更できませんでした。 この新しいサービスごとの安全性チェックにより、アプリケーションのアップグレード中、クラスターのアップグレード中、Service Fabric の正常性と安全性のチェックに依存するその他のメンテナンス中に、サービスの稼働インスタンスの最小数を維持できるようになります。
   
 - [**ユーザー サービスのリソース制限**](./service-fabric-resource-governance.md#enforcing-the-resource-limits-for-user-services)ユーザーは、ノード上のユーザー サービスのリソース制限を設定して、Service Fabric システム サービスのリソース不足などのシナリオを防ぐことができます。 
   
 - 特定の種類のレプリカの [**非常に高いサービス移動コスト**](./service-fabric-cluster-resource-manager-movement-cost.md)。 移動コストが非常に高いレプリカは、他の方法では解決できないクラスター内での制約違反があった場合にのみ移動されます。 "非常に高い" 移動コストの使用が妥当である状況、およびその他の考慮事項については、リンク先のドキュメントを参照してください。
   
--  **追加のクラスターの安全性チェック** :このリリースでは、構成可能なシード ノード クォーラム安全性チェックが導入されました。 これにより、クラスターのライフサイクルと管理のシナリオで使用できるようにする必要があるシード ノードの数をカスタマイズできます。 構成された値を下回るクラスターを取得する操作はブロックされます。 現在、既定値は常にシード ノードのクォーラムです。たとえば、7 つのシード ノードがある場合、5 つのシード ノードを下回る操作は既定でブロックされます。 この変更により、最小セーフ値 6 を作成できるようになりました。これにより、一度にダウンするシード ノードを 1 つだけにすることができます。
+-  **追加のクラスターの安全性チェック**:このリリースでは、構成可能なシード ノード クォーラム安全性チェックが導入されました。 これにより、クラスターのライフサイクルと管理のシナリオで使用できるようにする必要があるシード ノードの数をカスタマイズできます。 構成された値を下回るクラスターを取得する操作はブロックされます。 現在、既定値は常にシード ノードのクォーラムです。たとえば、7 つのシード ノードがある場合、5 つのシード ノードを下回る操作は既定でブロックされます。 この変更により、最小セーフ値 6 を作成できるようになりました。これにより、一度にダウンするシード ノードを 1 つだけにすることができます。
    
 - [**Service Fabric Explorer でのバックアップと復元サービスの管理**](./service-fabric-backuprestoreservice-quickstart-azurecluster.md)のサポートが追加されました。 これにより、SFX 内から次のアクティビティを直接実行できるようになります。バックアップと復元サービスの検出、バックアップ ポリシーの作成、自動バックアップの有効化、アドホック バックアップの実行、復元操作のトリガー、および既存のバックアップの参照を実行できます。
 
@@ -152,7 +152,7 @@ Service Fabric 6.5 の新機能は以下のとおりです。
 
 - ステートフル サービス用の[レプリカ ライフサイクル イベント](service-fabric-diagnostics-event-generation-operational.md#replica-events)が追加されました。
 
-- [シード ノードの状態の可視性が向上しました](service-fabric-understand-and-troubleshoot-with-system-health-reports.md#seed-node-status)。シード ノードが異常な場合のクラスター レベルの警告などです (" *ダウン* "、" *削除済み* "、または " *不明* ")。
+- [シード ノードの状態の可視性が向上しました](service-fabric-understand-and-troubleshoot-with-system-health-reports.md#seed-node-status)。シード ノードが異常な場合のクラスター レベルの警告などです ("*ダウン*"、"*削除済み*"、または "*不明*")。
 
 - [Service Fabric アプリケーション ディザスター リカバリー ツール](https://github.com/Microsoft/Service-Fabric-AppDRTool)を使用すると、プライマリ クラスターで災害が発生した場合に、Service Fabric ステートフル サービスを迅速に復旧できます。 プライマリ クラスターからのデータは、定期的なバックアップと復元を使用して、セカンダリ スタンバイ アプリケーションで継続的に同期されます。
 
