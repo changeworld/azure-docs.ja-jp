@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5e688fbf653646fcdd500f36930fd6b46bebeefa
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: a2cbd2dd4dd32be137e461985e9f10fd07ed8a60
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842160"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325640"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Backup 用の Azure セキュリティ ベースライン
 
@@ -302,7 +302,7 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 - [Azure Backup での多要素認証](./backup-azure-security-feature.md)
 
-- [クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
+- [クラウドベースの Azure AD Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: はい
 
@@ -314,7 +314,7 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 - [Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations) (Privileged Access Workstation)
 
-- [クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
+- [クラウドベースの Azure AD Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -534,7 +534,7 @@ MARS エージェントでバックアップする場合、またはカスタマ
 
 Microsoft でスキャンおよび修正される、基になるプラットフォーム。 Azure Backup で利用可能なセキュリティ コントロールを確認して、サービス構成関連の脆弱性を軽減します。
 
-- [Azure Backup で利用可能なセキュリティ コントロールについて](./backup-security-controls.md)
+- [Azure Backup で利用可能なセキュリティ コントロールについて]()
 
 **Azure Security Center の監視**: 現在は使用できません
 

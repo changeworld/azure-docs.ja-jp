@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターの設定を変更する
 description: この記事では、カスタマイズ可能な Fabric の設定と Fabric アップグレード ポリシーについて説明します。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: a83d24b4badd78750756a3cb4564b1e53fd30593
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1f16e89dd1131f6aea64e5e72a342b3b737f3728
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648227"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187223"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -141,6 +141,7 @@ ms.locfileid: "94648227"
 |IsEnabled|ブール値、既定値は FALSE|静的|DnsService を有効または無効にします。 DnsService は既定で無効になっています。有効にするには、この構成を設定する必要があります。 |
 |PartitionPrefix|string、既定値は "--"|静的|パーティション分割されたサービスの DNS クエリのパーティション プレフィックス文字列値を制御します。 値には次の条件があります。 <ul><li>DNS クエリの一部なので、RFC に準拠している必要があります。</li><li>ドット '.' は DNS サフィックスの動作を妨げるため、使用しないでください。</li><li>長さの上限は 5 文字です。</li><li>空の文字列にすることはできません。</li><li>PartitionPrefix 設定がオーバーライドされている場合は、PartitionSuffix もオーバーライドされる必要があります。その逆も同様です。</li></ul>詳細については、「[Azure Service Fabric の DNS サービス](service-fabric-dnsservice.md)」を参照してください。|
 |PartitionSuffix|string、既定値は ""|静的|パーティション分割されたサービスの DNS クエリのパーティション サフィックス文字列値を制御します。値には次の条件があります。 <ul><li>DNS クエリの一部なので、RFC に準拠している必要があります。</li><li>ドット '.' は DNS サフィックスの動作を妨げるため、使用しないでください。</li><li>長さの上限は 5 文字です。</li><li>PartitionPrefix 設定がオーバーライドされている場合は、PartitionSuffix もオーバーライドされる必要があります。その逆も同様です。</li></ul>詳細については、「[Azure Service Fabric の DNS サービス](service-fabric-dnsservice.md)」を参照してください。 |
+|RetryTransientFabricErrors|ブール値、既定値は true|静的|この設定を使用すると、DnsService から Service Fabric API を呼び出すときに、再試行機能を制御することができます。 有効にすると、一時的なエラーが発生した場合に最大 3 回再試行します。|
 
 ## <a name="eventstoreservice"></a>EventStoreService
 
@@ -423,7 +424,7 @@ ms.locfileid: "94648227"
 |AzureStorageMaxConnections | int、既定値は 5000 |動的|Azure Storage へのコンカレント接続の最大数。 |
 |AzureStorageMaxWorkerThreads | int、既定値は 25 |動的|並列 worker スレッドの最大数。 |
 |AzureStorageOperationTimeout | 時間 (秒単位)、既定値は 6000 |動的|timespan を秒単位で指定します。 xstore 操作が完了するまでのタイムアウト。 |
-|CleanupApplicationPackageOnProvisionSuccess|ブール値、既定値は FALSE |動的|成功したプロビジョニングでアプリケーション パッケージの自動クリーンアップを有効または無効にします。<br/> *ベスト プラクティスは `true` を使用することです。*
+|CleanupApplicationPackageOnProvisionSuccess|ブール値、既定値は true |動的|成功したプロビジョニングでアプリケーション パッケージの自動クリーンアップを有効または無効にします。
 |CleanupUnusedApplicationTypes|ブール値、既定値は FALSE |動的|この構成が有効な場合は、未使用のアプリケーションの種類のバージョンが自動的に登録解除され、直近の未使用の 3 バージョンがスキップされるため、イメージ ストアが占有するディスク領域が削減されます。 自動クリーンアップはその特定のアプリケーションの種類のプロビジョニングが成功した後にトリガーされるだけでなく、すべてのアプリケーションの種類で、1 日に 1 回定期的に実行されます。 スキップする未使用のバージョンの数は、パラメーター "MaxUnusedAppTypeVersionsToKeep" を使用して構成できます。 <br/> *ベスト プラクティスは `true` を使用することです。*
 |DisableChecksumValidation | ブール値、既定値は false |静的| この構成により、アプリケーションのプロビジョニング時におけるチェックサムの検証を有効または無効にすることができます。 |
 |DisableServerSideCopy | ブール値、既定値は false |静的|この構成により、アプリケーションのプロビジョニング時における、ImageStore でのアプリケーション パッケージのサーバー側のコピーを有効または無効にできます。 |
@@ -520,6 +521,7 @@ ms.locfileid: "94648227"
 |AutoDetectAvailableResources|ブール値、既定値は TRUE|静的|この構成は、ノードで使用可能なリソース (CPU およびメモリ) の自動検出をトリガーします。この構成が true に設定されている場合は、実際の容量を読み取り、ユーザーによって不適切なノード容量が指定されているとき、または容量が定義されていないときは、それを修正します。この構成が false の場合は、ユーザーによって不適切なノード容量が指定されているという警告をトレースしますが、修正しません。つまり、ユーザーは、実際のノードの容量よりも大きな値を指定しようとしています。容量が未定義の場合は、無制限の容量と見なされます |
 |BalancingDelayAfterNewNode | 時間 (秒単位)、既定値は 120 |動的|timespan を秒単位で指定します。 新しいノードの追加後、この期間内に均衡化アクティビティを開始しないでください。 |
 |BalancingDelayAfterNodeDown | 時間 (秒単位)、既定値は 120 |動的|timespan を秒単位で指定します。 ノード ダウン イベント後、この期間内に均衡化アクティビティを開始しないでください。 |
+|BlockNodeInUpgradeConstraintPriority | int、既定値は 0 |動的|容量の制約の優先順位を指定します:0:ハード、1:ソフト、負の値:Ignore  |
 |CapacityConstraintPriority | int、既定値は 0 | 動的|容量の制約の優先順位を指定します:0:ハード、1:ソフト、負の値:無視。 |
 |ConsecutiveDroppedMovementsHealthReportLimit | int、既定値は 20 | 動的|ResourceBalancer が発行した移動が連続して破棄された回数がここで定義した連続回数に達すると、診断が行われ、正常性の警告が出力されます。 負の値:この条件下では警告は出力されません。 |
 |ConstraintFixPartialDelayAfterNewNode | 時間 (秒単位)、既定値は 120 |動的| timespan を秒単位で指定します。 新しいノードの追加後、この期間内に FaultDomain および UpgradeDomain の制約違反を修正しないでください。 |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ad10195c50d3de49ce89c3917ebac5ba76ca4194
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a5003a68047c526996ec2c0065e08d5d5829b8ae
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94974714"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351658"
 ---
 # <a name="azure-security-baseline-for-azure-defender-for-iot"></a>Azure Defender for IoT 用の Azure セキュリティ ベースライン
 
@@ -22,7 +22,7 @@ Azure Defender for IoT を完全に Azure セキュリティ ベンチマーク�
 
 ## <a name="identity-management"></a>ID 管理
 
-*詳細については、[Azure セキュリティ ベンチマークの「ID 管理](/azure/security/benchmarks/security-controls-v2-identity-management).* 」を参照してください。
+*詳細については、[Azure セキュリティ ベンチマークの「ID 管理](../security/benchmarks/security-controls-v2-identity-management.md).* 」を参照してください。
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1:Azure Active Directory を中央 ID および認証システムとして標準化する
 
@@ -40,7 +40,7 @@ Azure AD では、外部 ID がサポートされます。これにより、Micr
 
 - [Azure AD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) 
 
-- [アプリケーションに外部 ID プロバイダーを使用する](/azure/active-directory/b2b/identity-providers) 
+- [アプリケーションに外部 ID プロバイダーを使用する](../active-directory/external-identities/identity-providers.md) 
 
 - [Azure Active Directory の ID セキュリティ スコアとは](../active-directory/fundamentals/identity-secure-score.md)
 
@@ -50,7 +50,7 @@ Azure AD では、外部 ID がサポートされます。これにより、Micr
 
 ### <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3:アプリケーションのアクセスに Azure AD シングル サインオン (SSO) を使用する
 
-**ガイダンス**:Azure Defender for IoT では、Azure Active Directory を使用して、Azure リソース、クラウド アプリケーション、オンプレミスのアプリケーションに ID とアクセス管理を提供します。 これには、従業員などの企業 ID だけでなく、パートナー、ベンダー、サプライヤーなどの外部 ID も含まれます。 これによってシングル サインオン (SSO) が可能となり、オンプレミスとクラウドにある組織のデータとリソースへのアクセスを管理し、セキュリティで保護することができます。 すべてのユーザー、アプリケーション、デバイスを Azure AD に接続することで、シームレスで安全なアクセスを実現し、可視性と制御性を高めることができます。
+**ガイダンス**:Azure Defender for IoT では、Azure Active Directory を使用して、Azure リソース、クラウド アプリケーション、オンプレミスのアプリケーションに ID とアクセス管理を提供します。 これには、従業員などの企業 ID だけでなく、パートナー、ベンダー、サプライヤーなどの外部 ID も含まれます。 これにより、オンプレミスおよびクラウド内の組織のデータとリソースへのアクセスを管理し、セキュリティで保護するためのシングルサインオン (SSO) が可能になります。 すべてのユーザー、アプリケーション、デバイスを Azure AD に接続することで、シームレスで安全なアクセスを実現し、可視性と制御性を高めることができます。
 
 - [Azure AD を使用したアプリケーションの SSO について理解する](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -99,9 +99,9 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 - [Azure AD でアクティビティ レポートを監査する](../active-directory/reports-monitoring/concept-audit-logs.md) 
 
-- [Azure AD の危険なサインインを表示する方法](/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
+- [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md) 
 
-- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](/azure/active-directory/reports-monitoring/concept-user-at-risk) 
+- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](../active-directory/identity-protection/overview-identity-protection.md) 
 
 - [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](../security-center/security-center-identity-access.md) 
 
@@ -115,13 +115,13 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 ## <a name="privileged-access"></a>特権アクセス
 
-*詳細については、[Azure セキュリティ ベンチマークの「特権アクセス](/azure/security/benchmarks/security-controls-v2-privileged-access)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「特権アクセス](../security/benchmarks/security-controls-v2-privileged-access.md)」を参照してください。*
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2:ビジネス クリティカルなシステムへの管理アクセスを制限する
 
 **ガイダンス**:Azure Defender for IoT は、アカウントが属するサブスクリプションと管理グループへの特権アクセスを許可するアカウントを制限することによって、Azure RBAC を使用して、ビジネス クリティカルなシステムへのアクセスを分離します。
 
-また、ビジネス クリティカルなシステムにインストールされたエージェントを使用して、Active Directory ドメイン コントローラー (DC)、セキュリティ ツール、システム管理ツールなど、ビジネス クリティカルなアクセスへの管理アクセス権を持つ管理、ID、およびセキュリティ システムへのアクセスも制限します。 これらの管理システムおよびセキュリティ システムを侵害した攻撃者は、それらをすぐに悪用してビジネス クリティカルな資産を侵害することができます。
+また、お使いのビジネス クリティカルなアクセス対象への管理アクセス権を持つ、管理システム、ID システム、セキュリティ システムへのアクセスも制限してください (Active Directory Domain Controller (DC)、セキュリティ ツール、システム管理ツール、ビジネス クリティカル システムにインストールされたエージェントなど)。 これらの管理システムおよびセキュリティ システムを侵害した攻撃者は、それらをすぐに悪用してビジネス クリティカルな資産を侵害することができます。
 
 一貫したアクセス制御を確保するため、自分の企業のセグメント化戦略にすべての種類のアクセス制御を合わせる必要があります。
 
@@ -141,7 +141,7 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 緊急アクセス用アカウントの資格情報 (パスワード、証明書、スマート カードなど) は安全に保管し、緊急時にのみそれらを使うことを許可された個人のみに知らせる必要があります。
 
-- [Azure AD で緊急アクセス用アカウントを管理する](/azure/active-directory/users-groups-roles/directory-emergency-access)
+- [Azure AD で緊急アクセス用アカウントを管理する](../active-directory/roles/security-emergency-access.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -161,7 +161,7 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 ### <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7:Just Enough Administration (最小限の特権の原則) に従う 
 
-**ガイダンス**:Azure Defender for IoT は、Azure のロールベースのアクセス制御 (RBAC) との統合により、そのリソースを管理します。 Azure RBAC を使用すると、ロールの割り当てによって Azure リソースへのアクセスを管理できます。 これらのロールを、ユーザー、グループ サービス プリンシパル、およびマネージド ID に割り当てることができます。 特定のリソースに対して定義済みの組み込みロールがあります。これらのロールは、Azure CLI、Azure PowerShell、Azure portal などのツールを使用してインベントリまたは照会できます。 Azure RBAC を使用してリソースに割り当てる特権は、常に、ロールで必要なものに制限する必要があります。 これは、Azure Active Directory Privileged Identity Management (PIM) のジャスト イン タイム (JIT) アプローチを補完するものであり、定期的に見直す必要があります。
+**ガイダンス**:Azure Defender for IoT は、Azure のロールベースのアクセス制御 (RBAC) との統合により、そのリソースを管理します。 Azure RBAC を使用すると、ロールの割り当てによって Azure リソースへのアクセスを管理できます。 これらのロールを、ユーザー、グループ サービス プリンシパル、およびマネージド ID に割り当てることができます。 特定のリソースに対して定義済みの組み込みロールがあります。これらのロールは、Azure CLI、Azure PowerShell、Azure portal などのツールを使用してインベントリまたは照会できます。 Azure RBAC を使用してリソースに割り当てる特権は、常に、ロールで必要なものに制限する必要があります。 これは、Azure AD Privileged Identity Management (PIM) のジャスト イン タイム (JIT) アプローチを補完するものであり、定期的に見直す必要があります。
 
 組み込みのロールを使用してアクセス許可を割り当て、カスタム ロールは必要な場合にのみ作成します。
 
@@ -177,7 +177,7 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、[Azure セキュリティ ベンチマークの「データ保護](/azure/security/benchmarks/security-controls-v2-data-protection)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「データ保護](../security/benchmarks/security-controls-v2-data-protection.md)」を参照してください。*
 
 ### <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1:機密データを検出、分類、ラベル付けする
 
@@ -189,7 +189,7 @@ Azure SQL Database に格納されている情報の分類とラベル付けに�
 
 - [Azure Information Protection を使用して機密情報をタグ付けする](/azure/information-protection/what-is-information-protection) 
 
-- [Azure SQL Data Discovery を実装する方法](/azure/sql-database/sql-database-data-discovery-and-classification)
+- [Azure SQL Data Discovery を実装する方法](../azure-sql/database/data-discovery-and-classification-overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -231,7 +231,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ## <a name="asset-management"></a>アセット管理
 
-*詳細については、[Azure セキュリティ ベンチマークの「アセット管理](/azure/security/benchmarks/security-controls-v2-asset-management)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「アセット管理](../security/benchmarks/security-controls-v2-asset-management.md)」を参照してください。*
 
 ### <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1:セキュリティ チームが資産のリスクを確実に可視化できるようにする
 
@@ -289,7 +289,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、[Azure セキュリティ ベンチマークの「インシデント対応](/azure/security/benchmarks/security-controls-v2-incident-response)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「インシデント対応](../security/benchmarks/security-controls-v2-incident-response.md)」を参照してください。*
 
 ### <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1: 準備 – インシデント対応プロセスを Azure 用に更新する
 
@@ -371,7 +371,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 - [Security alerts in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [タグを使用した Azure リソースの整理](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -393,7 +393,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 ## <a name="posture-and-vulnerability-management"></a>体制と脆弱性の管理
 
-*詳細については、[Azure セキュリティ ベンチマークの「体制と脆弱性の管理](/azure/security/benchmarks/security-controls-v2-vulnerability-management)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「体制と脆弱性の管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)」を参照してください。*
 
 ### <a name="pv-8-conduct-regular-attack-simulation"></a>PV-8: 定期的に攻撃シミュレーションを実施する
 
@@ -412,7 +412,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 ## <a name="governance-and-strategy"></a>ガバナンスと戦略
 
-*詳細については、[Azure セキュリティ ベンチマークの「ガバナンスと戦略](/azure/security/benchmarks/security-controls-v2-governance-strategy)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ガバナンスと戦略](../security/benchmarks/security-controls-v2-governance-strategy.md)」を参照してください。*
 
 ### <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1: 資産の管理とデータ保護の戦略を定義する 
 
@@ -437,15 +437,15 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 -   適切な暗号化標準
 
 詳細については、次のリファレンスを参照してください。
-- [Azure セキュリティ アーキテクチャに関する推奨事項 - ストレージ、データ、暗号化](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
+- [Azure セキュリティ アーキテクチャに関する推奨事項 - ストレージ、データ、暗号化](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
 - [Azure のセキュリティの基礎 - Azure のデータ セキュリティ、暗号化、ストレージ](../security/fundamentals/encryption-overview.md)
 
-- [クラウド導入フレームワーク - Azure のデータ セキュリティと暗号化のベスト プラクティス](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
+- [クラウド導入フレームワーク - Azure のデータ セキュリティと暗号化のベスト プラクティス](../security/fundamentals/data-encryption-best-practices.md?amp;bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
-- [Azure セキュリティ ベンチマーク - アセット管理](/azure/security/benchmarks/security-benchmark-v2-asset-management)
+- [Azure セキュリティ ベンチマーク - アセット管理](/azure/security/benchmarks/security-controls-v2-asset-management)
 
-- [Azure セキュリティ ベンチマーク - データ保護](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure セキュリティ ベンチマーク - データ保護](/azure/security/benchmarks/security-controls-v2-data-protection)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -473,7 +473,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 **ガイダンス**:個々の資産とそれらがホストされている環境に対するリスクを継続的に測定し、軽減します。 高い価値を持つ資産と、攻撃に晒される可能性の高い部分 (公開されたアプリケーション、ネットワークのイングレス ポイントとエグレス ポイント、ユーザーと管理者のエンドポイントなど) を優先します。
 
-- [Azure セキュリティ ベンチマーク - 体制と脆弱性の管理](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure セキュリティ ベンチマーク - 体制と脆弱性の管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -514,7 +514,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 詳細については、次のリファレンスを参照してください。
 - [Azure のセキュリティのベスト プラクティス 11 - アーキテクチャ。単一の統合セキュリティ戦略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure セキュリティ ベンチマーク - ネットワーク セキュリティ](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Azure セキュリティ ベンチマーク - ネットワーク セキュリティ](/azure/security/benchmarks/security-controls-v2-network-security)
 
 - [Azure のネットワーク セキュリティの概要](../security/fundamentals/network-overview.md)
 
@@ -542,9 +542,9 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 詳細については、次のリファレンスを参照してください。
 
-- [Azure セキュリティ ベンチマーク - ID 管理](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure セキュリティ ベンチマーク - ID 管理](/azure/security/benchmarks/security-controls-v2-identity-management)
 
-- [Azure セキュリティ ベンチマーク - 特権アクセス](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure セキュリティ ベンチマーク - 特権アクセス](/azure/security/benchmarks/security-controls-v2-privileged-access)
 
 - [Azure のセキュリティのベスト プラクティス 11 - アーキテクチャ。単一の統合セキュリティ戦略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -556,7 +556,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 ### <a name="gs-7-define-logging-and-threat-response-strategy"></a>GS-7: ログ記録と脅威対応戦略を定義する
 
-**ガイダンス**:コンプライアンス要件を満たしながら脅威を迅速に検出して修復するための、ログ記録と脅威対応戦略を確立します。 統合と手動手順ではなく、脅威に集中できるように、高品質のアラートとシームレスなエクスペリエンスをアナリストに提供することを優先します。 
+**ガイダンス**:コンプライアンス要件を満たしながら脅威を迅速に検出して修復するための、ログ記録と脅威対応戦略を確立します。 アナリストが、統合や手動による手順ではなく、脅威の対応に集中できるように、質の高いアラートとシームレスなエクスペリエンスを提供することを優先してください。 
 
 この戦略には、次の要素に関する文書化されたガイダンス、ポリシー、標準が含まれている必要があります。 
 
@@ -576,9 +576,9 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 詳細については、次のリファレンスを参照してください。
 
-- [Azure セキュリティ ベンチマーク - ログと脅威検出](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure セキュリティ ベンチマーク - ログと脅威検出](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure セキュリティ ベンチマーク - インシデント対応](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure セキュリティ ベンチマーク - インシデント対応](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Azure のセキュリティのベスト プラクティス 4 - プロセス: クラウドのインシデント対応プロセスを更新する](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
@@ -592,5 +592,5 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7bf78194b50e2e2335d807504ebca5f8a0e9f0eb
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ef516e021b33c465139ecab621369223f61608f4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94849142"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348553"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>Azure Data Share 用の Azure セキュリティ ベースライン
 
@@ -78,7 +78,7 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics クエリの使用方法](/azure/azure-monitor/log-query/get-started-portal) 
+- [Log Analytics クエリの使用方法](../azure-monitor/log-query/log-analytics-tutorial.md) 
 
 - [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md) 
 
@@ -108,7 +108,7 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 **ガイダンス**:Azure Data Share では、Azure Active Directory を使用した SSO 認証がサポートされています。 組織の既存の ID でサービスの SSO を有効にすることで、ユーザーが管理する必要がある ID と資格情報の数を減らします。
 
-- [Azure AD を使用した SSO の概要](/azure/active-directory/manage-apps/what-is-single-sign-o)
+- [Azure AD を使用した SSO の概要](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -155,7 +155,7 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 **ガイダンス**: Azure AD には、古いアカウントの検出に役立つログが用意されています。 また、Azure AD の ID およびアクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。
 
-- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring/) 
+- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml) 
 
 - [Azure AD の ID およびアクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md) 
 
@@ -171,7 +171,7 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 このプロセスを効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペース内で必要なアラートを構成できます。
 
-- [Azure アクティビティ ログを Azure Monitor と統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics) 
+- [Azure アクティビティ ログを Azure Monitor と統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) 
 
 **Azure Security Center の監視**: 適用なし
 
@@ -181,7 +181,7 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 **ガイダンス**: Azure AD Identity Protection 機能を使用して、ユーザー ID に関連して検出された疑わしいアクションに対する自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
 
-- [Azure AD の危険なサインインを表示する方法](/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
+- [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md) 
 
 - [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
 
@@ -227,7 +227,7 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 ネットワーク デバイスと Web アプリケーションで脆弱性評価を実行するためのサードパーティ ソリューションを使用します。 リモート スキャンを実施する場合は、1 つの永続的な管理者アカウントを使用しないでください。 スキャン アカウントには、JIT プロビジョニングの方法論を実装することを検討してください。 スキャン アカウントの資格情報は保護と監視の対象とし、脆弱性のスキャンのためにのみ使用する必要があります。
 
-- [Azure Security Center の脆弱性評価の推奨事項を実装する方法](/azure/security-center/security-center-vulnerability-assessment-recommendations) 
+- [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/deploy-vulnerability-assessment-vm.md) 
 
 **Azure Security Center の監視**: はい
 
@@ -257,11 +257,11 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 **ガイダンス**: 必要に応じて、タグ付け、管理グループ、および個別のサブスクリプションを使用して、資産の整理と追跡を行います。 定期的にインベントリを調整し、承認されていないリソースがサブスクリプションから適切なタイミングで削除されるようにします。
 
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription) 
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md) 
 
-- [管理グループを作成する方法](/azure/governance/management-groups/create) 
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md) 
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -292,7 +292,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**:Azure リソースが不要になった場合は削除します。Azure portal、PowerShell、または CLI を使用して、それを行うことができます。
 
-- [Azure リソース グループとリソースの削除](https://docs.microsoft.com/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-powershell)
+- [Azure リソース グループとリソースの削除](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell)
 
 Azure Data Share によって、OS が公開されることもなければ、そのリソース上にサードパーティ製のソフトウェア アプリケーションをインストールすることが許可されることもありません。
 
@@ -330,7 +330,7 @@ Azure Data Share によって、OS が公開されることもなければ、そ
 
 **ガイダンス**:カスタム Azure Policy 定義、Azure Resource Manager テンプレート、Desired State Configuration スクリプトなどのコードを安全に格納して管理するには、Azure DevOps を使用します。 Azure DevOps で管理するリソースにアクセスするには、Azure Active Directory (Azure AD) で定義された (Azure DevOps に統合されている場合)、または Active Directory で定義された (TFS に統合されている場合) 特定のユーザー、組み込みのセキュリティ グループ、またはグループにアクセス許可を付与したり、そのアクセス許可を拒否したりできます。
 
-- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
 
 - [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions) 
 
@@ -362,5 +362,5 @@ Azure Data Share によって、OS が公開されることもなければ、そ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

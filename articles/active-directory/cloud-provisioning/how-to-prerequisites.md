@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f6c5985c16875e263f2494f56636abb4d4e980d
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 8eb8de2424012d12f216f154eb077028a8f82d76
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237257"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173704"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect クラウド プロビジョニングの前提条件
 この記事では、ID ソリューションとして Azure Active Directory (Azure AD) クラウド プロビジョニングを選択して使用する方法に関するガイダンスを示します。
@@ -30,11 +30,11 @@ Azure AD Connect クラウド プロビジョニングを使用するには、�
 - オンプレミスのファイアウォールの構成
 
 ## <a name="group-managed-service-accounts"></a>Group Managed Service Accounts
-グループ管理サービス アカウントは、パスワードの自動管理、簡略化されたサービス プリンシパル名 (SPN) の管理、管理を他の管理者に委任する機能を提供し、またこの機能を複数のサーバーに拡張する、マネージド ドメイン アカウントです。  Azure AD Connect Cloud Sync では、エージェントを実行するための gMSA がサポートされ、使用されています。  このアカウントを作成するために、セットアップ中に管理者資格情報の入力を求められます。  このアカウントは、(domain\provAgentgMSA$) として表示されます。  gMSA の詳細については、[グループ管理サービス アカウント](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)に関するページを参照してください。 
+グループ管理サービス アカウントは、パスワードの自動管理、簡略化されたサービス プリンシパル名 (SPN) の管理、管理を他の管理者に委任する機能を提供し、またこの機能を複数のサーバーに拡張する、マネージド ドメイン アカウントです。  Azure AD Connect Cloud Sync では、エージェントを実行するための gMSA がサポートされ、使用されています。  このアカウントを作成するために、セットアップ中に管理者資格情報の入力を求められます。  このアカウントは、(domain\provAgentgMSA$) として表示されます。  gMSA の詳細については、[グループ管理サービス アカウント](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)に関するページを参照してください。 
 
 ### <a name="prerequisites-for-gmsa"></a>gMSA の前提条件:
 1.  gMSA ドメインのフォレスト内の Active Directory スキーマを Windows Server 2012 に更新する必要があります。
-2.  ドメイン コントローラー上の [PowerShell RSAT モジュール](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools)
+2.  ドメイン コントローラー上の [PowerShell RSAT モジュール](/windows-server/remote/remote-server-administration-tools)
 3.  ドメイン内の少なくとも 1 つのドメイン コントローラーで Windows Server 2012 が実行されている必要があります。
 4.  エージェントをインストールするドメイン参加済みサーバーは、Windows Server 2012 以降である必要があります。
 

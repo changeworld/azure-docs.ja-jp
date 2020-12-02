@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b9966d4d9ab0a37f5484ec9eb9b7e2472a6b41dc
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a7fdb370847e72657829d53df019203b0a5b211b
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012916"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302579"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning での強化学習 (プレビュー)
 
@@ -117,7 +117,7 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="specify-a-virtual-network"></a>仮想ネットワークを指定する
 
-複数のコンピューティング先を使用する RL ジョブの場合、ワーカー ノードとヘッド ノードが相互に通信できるようにポートが開かれている仮想ネットワークを指定する必要があります。 仮想ネットワークはどのリソース グループに作成してもかまいませんが、ワークスペースと同じリージョンに存在する必要があります。 仮想ネットワークの設定の詳細については、前提条件セクションで示されている[ワークスペース セットアップ ノートブック](https://aka.ms/azure-rl-env-setup)を参照してください。 ここでは、リソース グループ内で仮想ネットワークの名前を指定します。
+複数のコンピューティング先を使用する RL ジョブの場合、ワーカー ノードとヘッド ノードが相互に通信できるようにポートが開かれている仮想ネットワークを指定する必要があります。 仮想ネットワークはどのリソース グループに作成してもかまいませんが、ワークスペースと同じリージョンに存在する必要があります。 仮想ネットワークの設定の詳細については、前提条件セクションで示されているワークスペース セットアップ ノートブックを参照してください。 ここでは、リソース グループ内で仮想ネットワークの名前を指定します。
 
 ```python
 vnet = 'your_vnet'

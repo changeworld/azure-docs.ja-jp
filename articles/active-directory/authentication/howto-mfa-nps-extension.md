@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 576b9c11f167f7c0d5fcb06e484347c643589a66
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: abdfbc92af3617a7a13a2e4f603de9c1cc3959af
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839065"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174332"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication と既存のネットワーク ポリシー サーバー (NPS) インフラストラクチャの統合
 
@@ -72,7 +72,7 @@ NPS 拡張機能は、既存のインフラストラクチャで使用します�
 
 ### <a name="licenses"></a>ライセンス
 
-Azure AD Multi-Factor Authentication の NPS 拡張機能は、[Azure AD Multi-Factor Authentication のライセンス](multi-factor-authentication.md)をお持ちのお客様にご利用いただけます。 使用量ベースの Azure AD Multi-Factor Authentication のライセンス (ユーザーごと、認証ごとのライセンスなど) は、NPS 拡張機能に対応していません。
+Azure AD Multi-Factor Authentication の NPS 拡張機能は、[Azure AD Multi-Factor Authentication のライセンス](./concept-mfa-howitworks.md)をお持ちのお客様にご利用いただけます。 使用量ベースの Azure AD Multi-Factor Authentication のライセンス (ユーザーごと、認証ごとのライセンスなど) は、NPS 拡張機能に対応していません。
 
 ### <a name="software"></a>ソフトウェア
 

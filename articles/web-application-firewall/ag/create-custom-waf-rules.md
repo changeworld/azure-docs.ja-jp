@@ -8,12 +8,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: f164418c29e9838928f3d03519342ebef40e16e7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b14bd60ab744be5a1735abc073f32f8ebc3e1ab1
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015699"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301706"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Application Gateway で Web アプリケーション ファイアウォール v2 のカスタム規則を作成して使用する
 
@@ -21,7 +21,7 @@ Azure Application Gateway の Web アプリケーション ファイアウォー
 
 この記事では、WAF v2 で作成および使用できるカスタム規則の例を示します。 Azure PowerShell を使用して WAF にカスタム規則をデプロイする方法については、[Azure PowerShell を使用した Web アプリケーション ファイアウォールのカスタム規則の構成](configure-waf-custom-rules.md)に関する記事を参照してください。
 
-この記事に示されている JSON スニペットは、[ApplicationGatewayWebApplicationFirewallPolicies](/templates/microsoft.network/applicationgatewaywebapplicationfirewallpolicies) リソースから派生しています。
+この記事に示されている JSON スニペットは、[ApplicationGatewayWebApplicationFirewallPolicies](/azure/templates/microsoft.network/applicationgatewaywebapplicationfirewallpolicies) リソースから派生しています。
 
 >[!NOTE]
 > アプリケーション ゲートウェイが WAF レベルを使用していない場合、アプリケーション ゲートウェイを WAF レベルにアップグレードするオプションが右側のウィンドウに表示されます。

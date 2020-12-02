@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンのバックアップと�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 343ad80a6b68de352424fa8f16686fcece921954
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: cb25d9263648fbd92bc075751c1a8e627d03bd44
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840918"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325215"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure 仮想マシンでのバックアップ エラーのトラブルシューティング
 
@@ -246,7 +246,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 **手順 2**:VM の負荷が少ない (たとえば、CPU または IOPS が低い) 時間帯へのバックアップ スケジュールの変更を試みます
 
-**手順 3**:[VM のサイズの増加](https://docs.microsoft.com/azure/virtual-machines/windows/resize-vm)を試み、操作を再試行します。
+**手順 3**:[VM のサイズの増加](../virtual-machines/windows/resize-vm.md)を試み、操作を再試行します。
 
 ### <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001、ResourceNotFound - VM が存在しないため、操作を実行できませんでした / 400094、BCMV2VMNotFound - 仮想マシンが存在しません / Azure 仮想マシンが見つかりませんでした
 

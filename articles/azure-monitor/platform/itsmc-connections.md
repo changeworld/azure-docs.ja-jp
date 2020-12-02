@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: f7980ca7bc6f23c383ea013c2b017b3bd61e2d25
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 410281ce67faf345539701389d4b03351d403b99
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842296"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186067"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
 この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](./itsmc-overview.md)に関する記事をご覧ください。
@@ -46,7 +46,7 @@ ms.locfileid: "94842296"
 > [!NOTE]
 > 
 > - ITSM Connector は、クラウドベースの ServiceNow インスタンスにのみ接続できます。 オンプレミスの ServiceNow インスタンスは現在サポートされていません。
-> - アクションの一部としてカスタム [テンプレート](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions)を使用するには、SCSM テンプレートのパラメーター "ProjectionType" を "IncidentManagement!System.WorkItem.Incident.ProjectionType" にマップする必要があります
+> - アクションの一部としてカスタム [テンプレート](./itsmc-overview.md#template-definitions)を使用するには、SCSM テンプレートのパラメーター "ProjectionType" を "IncidentManagement!System.WorkItem.Incident.ProjectionType" にマップする必要があります
 
 ### <a name="connection-procedure"></a>接続手順
 
@@ -432,4 +432,3 @@ Cherwell のクライアント ID とキーを生成するには、次の手順�
 
 ## <a name="next-steps"></a>次のステップ
  - [Azure アラートから ITSM 作業項目を作成する](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
-

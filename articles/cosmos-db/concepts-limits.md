@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: f1a7ffc8225ea20b48df4e1d9a049655ca4776a4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f591a9781cb81ec735d22f4f687f8d413923dc93
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964662"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349131"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -78,8 +78,8 @@ Cosmos コンテナー (または共有スループット データベース) �
 
 | リソース | 既定の制限 |
 | --- | --- |
-| コンテナーあたりの最小 RU ([専用スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| データベースあたりの最小 RU ([共有スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 最初の 25 個のコンテナーに対して 400 RU/秒。 後で各コンテナーに 100 RU/s を追加。 |
+| コンテナーあたりの最小 RU ([専用スループット プロビジョニング モード](./account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| データベースあたりの最小 RU ([共有スループット プロビジョニング モード](./account-databases-containers-items.md#azure-cosmos-containers)) | 最初の 25 個のコンテナーに対して 400 RU/秒。 後で各コンテナーに 100 RU/s を追加。 |
 
 Cosmos DB は、SDK またはポータルを経由した、コンテナーまたはデータベースあたりのスループット (RU) のプログラムによるスケーリングをサポートしています。    
 
@@ -91,7 +91,6 @@ Cosmos DB は、SDK またはポータルを経由した、コンテナーまた
 
 | リソース | 制限 |
 | --- | --- |
-| コンテナーあたりの最大 RU/秒 | 5,000 |
 | (論理) パーティションあたりの最大 RU | 5,000 |
 | すべての項目にわたる、(論理) パーティションあたりの最大ストレージ | 20 GB |
 | 個別の (論理) パーティション キーの最大数 | 無制限 |

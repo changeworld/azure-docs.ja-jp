@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: da2535a9764c909af3a491402311fe263dbb48fb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c476fe2af1fb4bddff4799609b164aab14f57b00
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93331045"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187402"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure Virtual WAN は GA ですか。
 
@@ -273,3 +273,7 @@ Azure Firewall 経由のインターネット ブレークアウトを使用し�
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Basic タイプの Virtual WAN と Standard タイプの Virtual WAN の違いは何ですか。
 
 「[Basic および Standard の仮想 WAN](../articles/virtual-wan/virtual-wan-about.md#basicstandard)」を参照してください。 価格については、[価格](https://azure.microsoft.com/pricing/details/virtual-wan/)ページを参照してください。
+
+### <a name="does-virtual-wan-store-customer-data"></a>Virtual WAN に顧客データは格納されますか? 
+
+いいえ。 Virtual WAN にお客様のデータは一切格納されません。

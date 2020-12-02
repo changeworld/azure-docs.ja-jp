@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/17/2020
-ms.openlocfilehash: fa048473f0f285b793dad88c7defdb6189ca1ccd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 63be912986542741359cd5e88227f06905d42647
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023008"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350876"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>マッピング データ フローでのシンク変換
 
@@ -100,7 +100,7 @@ Azure Data Factory から、[90 を超えるネイティブ コネクタ](connec
 ![[カスタム シンクの順序付け] を示すスクリーンショット。](media/data-flow/custom-sink-ordering.png "[カスタム シンクの順序付け] を示すスクリーンショット。")
 
 > [!NOTE]
-> [キャッシュされた参照](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder#cached-lookup)を使用する場合は、シンクの順序付けで、キャッシュされたシンクが順序付けの一番下 (または最初) である 1 に設定されるようにしてください。
+> [キャッシュされた参照](./concepts-data-flow-expression-builder.md#cached-lookup)を使用する場合は、シンクの順序付けで、キャッシュされたシンクが順序付けの一番下 (または最初) である 1 に設定されるようにしてください。
 
 ![カスタム シンクの順序付け](media/data-flow/cache-2.png "カスタム シンクの順序付け")
 

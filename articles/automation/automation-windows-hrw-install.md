@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 31bb0fac302a81c2523a2d2855ca1930cb266ac4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e77a90617d79dab8c71cdf0c7a6a4fb21e052fbd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95906621"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182786"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker をデプロイする
 
@@ -65,7 +65,7 @@ Hybrid Runbook Worker のネットワーク要件については、[ネットワ
 ご利用の Automation アカウントのいずれか 1 つの Hybrid Runbook Worker グループに worker マシンを追加できます。 Update Management によって管理されているシステム Hybrid Runbook Worker をホストしているマシンの場合は、Hybrid Runbook Worker グループに追加できます。 しかし、Update Management と Hybrid Runbook Worker グループ メンバーシップの両方に同じ Automation アカウントを使用する必要があります。
 
 >[!NOTE]
->Azure Automation [Update Management](update-management/update-mgmt-overview.md) を使用すると、Update Management に対して有効になっている Azure または Azure 以外のマシンに、システム Hybrid Runbook Worker が自動的にインストールされます。 ただし、この worker は、Automation アカウント内の Hybrid Runbook Worker グループには登録されません。 これらのマシン上で Runbook を実行するには、それを Hybrid Runbook Worker グループに追加する必要があります。 それをグループに追加するには、「[手動デプロイ](#manual-deployment)」セクションの手順 6 に従ってください。
+>Azure Automation [Update Management](./update-management/overview.md) を使用すると、Update Management に対して有効になっている Azure または Azure 以外のマシンに、システム Hybrid Runbook Worker が自動的にインストールされます。 ただし、この worker は、Automation アカウント内の Hybrid Runbook Worker グループには登録されません。 これらのマシン上で Runbook を実行するには、それを Hybrid Runbook Worker グループに追加する必要があります。 それをグループに追加するには、「[手動デプロイ](#manual-deployment)」セクションの手順 6 に従ってください。
 
 ## <a name="enable-for-management-with-azure-automation-state-configuration"></a>Azure Automation State Configuration による管理のための有効化
 

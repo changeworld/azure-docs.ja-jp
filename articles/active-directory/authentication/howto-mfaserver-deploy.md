@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eca3b8f1cd8f27c193e8f8235887e21230f60611
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 611107ed02aeb4dc75302f519681c932980f612e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838622"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174172"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server の概要
 
@@ -58,7 +58,7 @@ Azure Multi-factor Authentication に使用しているサーバーが次の要�
 | Azure Multi-Factor Authentication Server の要件 | 説明 |
 |:--- |:--- |
 | ハードウェア |<li>200 MB のハード ディスク容量</li><li>x32 または x64 対応のプロセッサ</li><li>1 GB 以上の RAM</li> |
-| ソフトウェア |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008/R2 ([ESU](https://docs.microsoft.com/lifecycle/faq/extended-security-updates) がある場合のみ)</li><li>Windows 10</li><li>Windows 8.1 全エディション</li><li>Windows 8 全エディション</li><li>Windows 7 全エディション ([ESU](https://docs.microsoft.com/lifecycle/faq/extended-security-updates) がある場合のみ)</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 以上 (ユーザー ポータルまたは Web サービス SDK をインストールする場合)</li> |
+| ソフトウェア |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008/R2 ([ESU](/lifecycle/faq/extended-security-updates) がある場合のみ)</li><li>Windows 10</li><li>Windows 8.1 全エディション</li><li>Windows 8 全エディション</li><li>Windows 7 全エディション ([ESU](/lifecycle/faq/extended-security-updates) がある場合のみ)</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 以上 (ユーザー ポータルまたは Web サービス SDK をインストールする場合)</li> |
 | アクセス許可 | Active Directory に登録するためのドメイン管理者アカウントまたはエンタープライズ管理者アカウント |
 
 ### <a name="azure-mfa-server-components"></a>Azure MFA Server のコンポーネント

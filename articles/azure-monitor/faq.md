@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 391d9562bc73265a10976f485c78e3966aa4fe83
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: b770e4488b6edb1c2d3749066315b552c0b5b40a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536287"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186169"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
@@ -31,7 +31,7 @@ ms.locfileid: "95536287"
 メトリックやアクティビティ ログの収集など、自動的に有効になる Azure Monitor の機能は、無料で提供されます。 ログ クエリやアラートなどの他の機能については、関連コストが発生します。 詳細な価格については、[Azure Monitor の価格に関するページ](https://azure.microsoft.com/pricing/details/monitor/)をご覧ください。
 
 ### <a name="how-do-i-enable-azure-monitor"></a>Azure Monitor を有効にするにはどうすればよいですか?
-Azure Monitor は新しい Azure サブスクリプションを作成した時点で有効になり、[アクティビティ ログ](./platform/platform-logs-overview.md)とプラットフォーム [メトリック](platform/data-platform-metrics.md)が自動的に収集されます。 Azure リソースの動作に関するさらに詳細な情報を収集するには[診断設定](platform/diagnostic-settings.md)を作成し、特定のサービスについて収集されたデータについて追加の分析を提供するには[監視ソリューション](insights/solutions.md)と[分析情報](insights/insights-overview.md)を追加します。 
+Azure Monitor は新しい Azure サブスクリプションを作成した時点で有効になり、[アクティビティ ログ](./platform/platform-logs-overview.md)とプラットフォーム [メトリック](platform/data-platform-metrics.md)が自動的に収集されます。 Azure リソースの動作に関するさらに詳細な情報を収集するには[診断設定](platform/diagnostic-settings.md)を作成し、特定のサービスについて収集されたデータについて追加の分析を提供するには[監視ソリューション](insights/solutions.md)と[分析情報](./monitor-reference.md)を追加します。 
 
 ### <a name="how-do-i-access-azure-monitor"></a>Azure Monitor にアクセスするにはどうすればよいですか?
 Azure Monitor のすべての機能とデータには、Azure portal の **[モニター]** メニューからアクセスします。 さまざまな Azure サービスのメニューの **[監視]** セクションでは、特定のリソースに対してフィルター処理されたデータを使用して、同じツールにアクセスできます。 Azure Monitor データには、CLI、PowerShell、REST API を使用したさまざまなシナリオでもアクセスできます。
@@ -65,7 +65,7 @@ Azure Monitor では、さまざまなソースからのデータが[ログ](pla
 ## <a name="solutions-and-insights"></a>ソリューションと分析情報
 
 ### <a name="what-is-an-insight-in-azure-monitor"></a>Azure Monitor での分析情報とはどのようなものですか?
-分析情報では、特定の Azure サービスに対するカスタマイズされた監視エクスペリエンスが提供されます。 Azure Monitor の他の機能と同じメトリックとログが使用されますが、追加データを収集し、Azure portal で独自のエクスペリエンスを提供することができます。 [Azure Monitor での分析情報](insights/insights-overview.md)に関する記事をご覧ください。
+分析情報では、特定の Azure サービスに対するカスタマイズされた監視エクスペリエンスが提供されます。 Azure Monitor の他の機能と同じメトリックとログが使用されますが、追加データを収集し、Azure portal で独自のエクスペリエンスを提供することができます。 [Azure Monitor での分析情報](./monitor-reference.md)に関する記事をご覧ください。
 
 Azure portal で分析情報を表示するには、 **[モニター]** メニューの **[分析情報]** セクション、またはサービスのメニューの **[監視]** セクションを使用します。
 
@@ -77,7 +77,7 @@ Azure portal でソリューションを表示するには、 **[モニター]**
 ## <a name="logs"></a>ログ
 
 ### <a name="whats-the-difference-between-azure-monitor-logs-and-azure-data-explorer"></a>Azure Monitor ログと Azure Data Explorer の違いは何ですか?
-Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure Monitor ログは、Azure Data Explorer を基にして構築されており、若干の違いはありますが同じ Kusto クエリ言語 (KQL) を使用します。 「[Azure Monitor ログ クエリ言語の違い](log-query/data-explorer-difference.md)」をご覧ください。
+Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure Monitor ログは、Azure Data Explorer を基にして構築されており、若干の違いはありますが同じ Kusto クエリ言語 (KQL) を使用します。 「[Azure Monitor ログ クエリ言語の違い](/azure/data-explorer/kusto/query/)」をご覧ください。
 
 ### <a name="how-do-i-retrieve-log-data"></a>ログ データはどのようにして取得しますか?
 すべてのデータは、Kusto クエリ言語 (KQL) で記述したログ クエリを使用して、Log Analytics ワークスペースから取得します。 独自のクエリを記述したり、特定のアプリケーションまたはサービス用のログ クエリが含まれるソリューションや分析情報を使用したりできます。 「[Azure Monitor のログ クエリの概要](log-query/log-query-overview.md)」をご覧ください。
@@ -224,7 +224,7 @@ WireData
 * [Node.js アプリ](app/nodejs.md)
 * [Azure で動作する Web アプリ](app/azure-web-apps.md)
 * [Azure の Cloud Services](app/cloudservices.md)
-* [Docker で実行中のアプリ サーバー](app/docker.md)
+* [Docker で実行中のアプリ サーバー](./azure-monitor-app-hub.yml)
 * [単一ページの Web アプリ](app/javascript.md)
 * [SharePoint](app/sharepoint.md)
 * [Windows デスクトップ アプリ](app/windows-desktop.md)
@@ -401,7 +401,7 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 
 既存の Application Insights リソースをあるリージョンから別のリージョンに移動することは、**現在サポートされていません**。 収集した履歴データを新しいリージョンに **移行することはできません**。 唯一の部分的な回避策は次のとおりです。
 
-1. 新しいリージョンに新しい Application Insights リソース ([クラシック](app/create-new-resource.md)または[ワークスペースベース](/azure/azure-monitor/app/create-workspace-resource)) を作成します。
+1. 新しいリージョンに新しい Application Insights リソース ([クラシック](app/create-new-resource.md)または[ワークスペースベース](./app/create-workspace-resource.md)) を作成します。
 2. 元のリソースに固有のすべての独自のカスタマイズを新しいリソースに再作成します。
 3. 新しいリージョン リソースの[インストルメンテーション キー](app/create-new-resource.md#copy-the-instrumentation-key)または[接続文字列](app/sdk-connection-string.md)を使用するようにアプリケーションを変更します。  
 4. 新しい Application Insights リソースで引き続きすべてが期待どおりに動作していることをテストして確認します。 
@@ -414,7 +414,7 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 - 可用性アラートを再作成します。
 - ユーザーが新しいリソースにアクセスするために必要なカスタムの Azure ロールベースのアクセス制御 (Azure RBAC) 設定を再作成します。 
 - インジェスト サンプリング、データ保有、日次上限、およびカスタム メトリックの有効化を含む設定をレプリケートします。 これらの設定は、 **[使用量と推定コスト]** ペインで制御します。
-- [リリース注釈](/azure/azure-monitor/app/annotations)、[ライブ メトリックとコントロール チャネルの保護](app/live-stream.md#secure-the-control-channel)など、API キーに依存するすべての統合。新しい API キーを生成し、関連する統合を更新する必要があります。 
+- [リリース注釈](./app/annotations.md)、[ライブ メトリックとコントロール チャネルの保護](app/live-stream.md#secure-the-control-channel)など、API キーに依存するすべての統合。新しい API キーを生成し、関連する統合を更新する必要があります。 
 - クラシック リソースの連続エクスポートを再構成する必要があります。
 - ワークスペースベースのリソースの診断設定を再構成する必要があります。
 

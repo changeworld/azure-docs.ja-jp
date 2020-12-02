@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: f65fb37a4cc6640bc998af1c56e7852cccaba234
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5f6e5de61c9f43d5958e68c545105c4373996f7c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955520"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175068"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>チュートリアル - Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングをカスタマイズする
 
@@ -239,7 +239,7 @@ SCIM アプリケーションの場合は、次の例に示すパターンに従
    }
    ]
    ```  
-PATCH と POST の要求形式は異なります。 POST と PATCH が同じ形式で送信されるようにするには、[ここ](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility#flags-to-alter-the-scim-behavior)で説明されている機能フラグを使用できます。 
+PATCH と POST の要求形式は異なります。 POST と PATCH が同じ形式で送信されるようにするには、[ここ](./application-provisioning-config-problem-scim-compatibility.md#flags-to-alter-the-scim-behavior)で説明されている機能フラグを使用できます。 
 
 - **AppRoleAssignmentsComplex** 
   - **使用する場合:** 1 人のユーザーに複数のロールをプロビジョニングするには、AppRoleAssignmentsComplex 式を使用します。 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c8ed791fc9496e67acdcfbfafddad9170ac47535
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: b19162636707b8d2cc8b7a9ef33c03738eb8e631
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522585"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184435"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>Azure Monitor 用の Azure セキュリティ ベースライン
 
@@ -154,7 +154,7 @@ Private Link で Azure Monitor を使用すると、'プライベート エン�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics クエリの使用方法](log-query/get-started-portal.md)
+- [Log Analytics クエリの使用方法](./log-query/log-analytics-tutorial.md)
 
 - [Azure Monitor でカスタム クエリを実行する方法](log-query/get-started-queries.md)
 

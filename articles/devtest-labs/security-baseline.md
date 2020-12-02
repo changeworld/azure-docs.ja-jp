@@ -3,12 +3,12 @@ title: Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 description: Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 64e5ac46fbeb71706f7b1ae2d3682260e3cbc651
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ae3886e1c47b1d6835dc348b474e3d9e82a8f41
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993654"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348825"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 
@@ -379,7 +379,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2:自動化されたオペレーティング システム修正プログラム管理ソリューションを展開する
 **ガイダンス:** DevTest Labs 内でホストされている Windows および Linux VM に最新のセキュリティ更新プログラムが確実にインストールされるようにするには、Azure Update Management を使用します。 Windows VM については、Windows Update が有効になっていて、自動的に更新するよう設定されていることを確認します。 現在、この設定は DevTest Labs を通じて構成することはできませんが、ラボ管理者またはサブスクリプション管理者は、サブスクリプション内の基になるコンピューティング VM でこの設定を構成できます。 
 
-- [Azure で VM に対して Update Management を構成する方法](../automation/update-management/update-mgmt-overview.md)
+- [Azure で VM に対して Update Management を構成する方法](../automation/update-management/overview.md)
 - [Security Center によって監視される Azure セキュリティ ポリシーについて理解する](../security-center/policy-reference.md)
 
 **Azure Security Center の監視**: 適用なし
@@ -393,8 +393,8 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 
 サブスクリプション管理者は、Azure Update Management ソリューションを使用して、DevTest Labs VM の更新プログラムと修正プログラムを管理することもできます。 Update Management は、サポート対象の Windows システムへの修正プログラムの適用を、ローカルに構成された更新リポジトリに依存しています。 System Center Updates Publisher (Updates Publisher) などのツールを使用して、カスタム更新プログラムを Windows Server Update Services (WSUS) に公開できます。 このシナリオでは、サード パーティ製ソフトウェアで Configuration Manager を更新リポジトリとして使用するマシンに、Update Management で修正プログラムを適用できます。
 
-- [Azure の Update Management ソリューション](../automation/update-management/update-mgmt-overview.md)
-- [VM の更新プログラムとパッチを管理する](../automation/update-management/update-mgmt-overview.md)
+- [Azure の Update Management ソリューション](../automation/update-management/overview.md)
+- [VM の更新プログラムとパッチを管理する](../automation/update-management/overview.md)
 
 _ *Azure Security Center の監視:* * 適用なし
 

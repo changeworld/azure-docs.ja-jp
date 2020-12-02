@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: fe347983e2143c7a4bdf00ca0207356c881c66ac
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 72d7a40c38f3629a70260f223074b456dff9ce38
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95891284"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182837"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure Attestation のトラブルシューティング ガイド
 
@@ -95,7 +95,7 @@ b. Azure ロールの割り当て設定を確認します。
  
   ```
 
-c. 一覧に適切なロールの割り当てが見つからない場合は、[ここ](/azure/role-based-access-control/role-assignments-powershell)の手順に従ってください。
+c. 一覧に適切なロールの割り当てが見つからない場合は、[ここ](../role-based-access-control/role-assignments-powershell.md)の手順に従ってください。
 
 ## <a name="2-http--400-errors"></a>2.HTTP - 400 エラー
 
@@ -123,7 +123,7 @@ G:\Az\security\Attestation\src\AttestationServices\Instance\Enclave\api.cpp(840)
 
 "draftPolicyForAttestation" パラメーターにポリシー テキストを指定して、構成証明 API に要求を送信します。 AttestSgxEnclave API は、構成証明の呼び出し中にこのポリシードキュメントを使用し、これを使用して、構成証明ポリシーを使用する前にテストすることができます。 このフィールドが存在するときに生成された構成証明トークンは、セキュリティで保護されません。
 
-[構成証明ポリシーの例](/azure/attestation/policy-examples)を参照してください。
+[構成証明ポリシーの例](./policy-examples.md)を参照してください。
 
 ### <a name="22-attestation-failure-due-to-invalid-input"></a>2.2. 無効な入力による Attestation の失敗
 
@@ -163,7 +163,7 @@ At line:1 char:1
 
 そうでないと、証明書チェーンは無効であると見なされます。
 
-[ポリシー署名者](/azure/attestation/policy-signer-examples)の例と[ポリシー](/azure/attestation/policy-examples)の例を参照してください。 
+[ポリシー署名者](./policy-signer-examples.md)の例と[ポリシー](./policy-examples.md)の例を参照してください。 
 
 ### <a name="24-adddelete-policy-signer-failure"></a>2.4. ポリシー署名者の追加または削除エラー
 
@@ -209,7 +209,7 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Attestation.AddAzureAttestationPolicySigner
 ```
 
-**トラブルシューティングの手順** 新しいポリシー署名者証明書を追加または削除するには、"x-ms-policyCertificate" という名前の要求を持つ RFC7519 JSON Web Token (JWT) を使用します。 要求の値は RFC7517 JSON Web キーです。このキーには、追加する証明書が含まれます。 JWT は、プロバイダーに関連付けられている有効なポリシー署名者証明書の秘密キーで署名されている必要があります。 [ポリシー署名者の例](/azure/attestation/policy-signer-examples)を参照してください。
+**トラブルシューティングの手順** 新しいポリシー署名者証明書を追加または削除するには、"x-ms-policyCertificate" という名前の要求を持つ RFC7519 JSON Web Token (JWT) を使用します。 要求の値は RFC7517 JSON Web キーです。このキーには、追加する証明書が含まれます。 JWT は、プロバイダーに関連付けられている有効なポリシー署名者証明書の秘密キーで署名されている必要があります。 [ポリシー署名者の例](./policy-signer-examples.md)を参照してください。
 
 ### <a name="25-attestation-policy-configuration-failure"></a>2.5. Attestation ポリシーの構成エラー
 
@@ -255,7 +255,7 @@ JWT 形式でポリシーを構成するには、"AttestationPolicy" という�
 
 PowerShell では、JWT 形式でポリシーを構成するための PolicyFormat を JWT として指定します。 既定のポリシー形式はテキストです。
 
-構成証明の[ポリシーの例](/azure/attestation/policy-examples)と[構成証明ポリシーの作成方法](/azure/attestation/author-sign-policy)を参照してください。 
+構成証明の[ポリシーの例](./policy-examples.md)と[構成証明ポリシーの作成方法](./author-sign-policy.md)を参照してください。 
 
 ## <a name="3-azattestation-installation-issues-in-powershell"></a>3.PowerShell での Az.Attestation のインストールに関する問題
 
@@ -301,4 +301,3 @@ Get-InstalledModule
 バージョンが最小要件を満たしていない場合は、Update-Module コマンドを実行します。
 
 例: - Update-Module -Name Az.Attestation
-

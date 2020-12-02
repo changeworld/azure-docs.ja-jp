@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: c7f0e98b5ea2fdd13b1daa9fd9737998eb6cfaf1
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 466af29a3f073f73d4a0fc62d74709cd59f82425
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "96010216"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183789"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management インスタンスのアップグレードとスケーリングを行う  
 
@@ -80,7 +80,7 @@ ms.locfileid: "96010216"
 Developer レベルへのスケールダウンまたは Developer レベルからのスケールアップを行うとき、ダウンタイムが発生します。 それ以外の場合、ダウンタイムはありません。 
 
 ## <a name="compute-isolation"></a>コンピューティングの分離
-セキュリティ要件に [コンピューティングの分離](https://docs.microsoft.com/azure/azure-government/azure-secure-isolation-guidance#compute-isolation)が含まれている場合は、**Isolated** 価格レベルを使用できます。 このレベルによって、API Management サービス インスタンスのコンピューティング リソースが物理ホスト全体を消費し、サポートする必要のある分離レベル (たとえば、米国国防総省影響レベル 5 (IL5) のワークロード) が提供されます。 Isolated レベルにアクセスできるようにするには、[サポート チケットを作成](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)してください。 
+セキュリティ要件に [コンピューティングの分離](../azure-government/azure-secure-isolation-guidance.md#compute-isolation)が含まれている場合は、**Isolated** 価格レベルを使用できます。 このレベルによって、API Management サービス インスタンスのコンピューティング リソースが物理ホスト全体を消費し、サポートする必要のある分離レベル (たとえば、米国国防総省影響レベル 5 (IL5) のワークロード) が提供されます。 Isolated レベルにアクセスできるようにするには、[サポート チケットを作成](../azure-portal/supportability/how-to-create-azure-support-request.md)してください。 
 
 
 

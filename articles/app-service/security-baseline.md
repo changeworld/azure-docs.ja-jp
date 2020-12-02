@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 640d51de6dac1d175f9b46f327b72f293cf025cb
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 691bb538ea0f46e26c318a68e9f66a9a986eb5d4
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94849128"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301839"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>App Service 用の Azure セキュリティ ベースライン
 
@@ -47,7 +47,7 @@ Web アプリケーション ファイアウォール (WAF) が有効になっ�
 
 - [Open Web Application Security Project (OWASP) の上位 10 の脆弱性の保護](https://owasp.org/www-project-top-ten/)
 
-- [ネットワーク セキュリティ グループ](/azure/virtual-network/security-overview)
+- [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)
 
 - [アプリを Azure 仮想ネットワークに統合する](web-sites-integrate-with-vnet.md)
 
@@ -71,7 +71,7 @@ Azure Firewall を使用して、トラフィックを送信し、サブスク�
 
 - [Azure Security Center によって提供されるネットワークのセキュリティについて](../security-center/security-center-network-recommendations.md)
 
-- [App Service の監視と保護を有効にする方法](/azure/security-center/security-center-app-services)
+- [App Service の監視と保護を有効にする方法](/azure/security-center/defender-for-app-service-intro)
 
 **Azure Security Center の監視**: はい
 
@@ -168,7 +168,7 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 - [ポータルで Application Gateway を使用してエンド ツー エンド TLS を構成する方法](../application-gateway/end-to-end-ssl-portal.md)
 
-- [「App Service 環境をロックする」の説明に従って ASE を保護する](https://review.docs.microsoft.com/azure/app-service/environment/firewall-integrationEnvironment:)
+- [「App Service 環境をロックする」の説明に従って ASE を保護する](/azure/app-service/environment/firewall-integration)
 
 **Azure Security Center の監視**: はい
 
@@ -205,7 +205,7 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 - [ポータルで Application Gateway を使用してエンド ツー エンド TLS を構成する方法](../application-gateway/end-to-end-ssl-portal.md)
 
-- [「App Service 環境をロックする」の説明に従って ASE を保護する](https://review.docs.microsoft.com/azure/app-service/environment/firewall-integrationEnvironment:)
+- [「App Service 環境をロックする」の説明に従って ASE を保護する](/azure/app-service/environment/firewall-integration)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -219,9 +219,9 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 すべてのリソースがタグ付きで作成され、タグ付けされていない既存のリソースがユーザーに通知されるようにするために、タグ付け処理に関連したすべての組み込み Azure Policy 定義 ("タグとその値が必要" など) を適用します。 Azure PowerShell または Azure CLI を選択して、タグに基づいたリソースの検索やアクションを実行します。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-- [Azure App Service のアクセス制限](/azure/app-service/app-service-ip-restriction)
+- [Azure App Service のアクセス制限](/azure/app-service/app-service-ip-restrictions)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -241,7 +241,7 @@ Security Center、ポータル、またはプログラム ツールを使用し�
 
 ネットワーク リソースの構成を監視し、変更を迅速に検出するために、自動ツールを備えたプロセスを作成することをお勧めします。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](/azure/azure-monitor/platform/activity-log-view)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -280,7 +280,7 @@ App Service とその他の Azure リソースの Azure アクティビティ �
 
 さらに、Azure Key Vault により、アクセス ポリシーと監査履歴を使用した一元的なシークレット管理が提供されます。 
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
 
 - [Azure App Service の診断設定を有効にする方法](troubleshoot-diagnostic-logs.md)
 
@@ -309,7 +309,7 @@ Web アプリケーション ファイアウォール (WAF) を配置してい�
 
 スケーラブルなクラウド ネイティブのセキュリティ情報イベント管理 (SIEM) システムである Azure Sentinel を使用して、要件に従ってさまざまなデータ ソースおよびコネクタを統合します。 必要に応じて、Azure Marketplace のサードパーティのセキュリティ情報イベント管理ソリューションに対してデータを有効にしてオンボードできます。
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
 
 - [Application Insights を有効にする方法](../azure-monitor/app/app-insights-overview.md)
 
@@ -343,7 +343,7 @@ Azure Web Application Firewall (WAF) を配置している場合は、リアル�
 
 **ガイダンス**:Azure Active Directory (Azure AD) の組み込みロールは、明示的に割り当てる必要があり、クエリ可能です。 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
 
 - [App Service と Azure Functions でマネージド ID を使用する方法](overview-managed-identity.md?context=azure%2Factive-directory%2Fmanaged-identities-azure-resources%2Fcontext%2Fmsi-context&amp;tabs=dotnet)
 
@@ -422,7 +422,7 @@ App Service アプリが使用するフェデレーション ID では、サー�
 
 Azure AD に対して多要素認証を実装します。 管理者は、ポータルのサブスクリプション アカウントが保護されていることを確認する必要があります。 作成したリソースはサブスクリプションで管理されているため、サブスクリプションは攻撃に対して脆弱です。 
 
-- [Azure Security MFA](/azure/security/develop/secure-aad-app)
+- [Azure Security MFA](/previous-versions/azure/security/develop/secure-aad-app)
 
 - [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -454,9 +454,9 @@ Security Center の脅威の防止により、環境に対して包括的な防�
 
 - [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Azure AD のリスク検出の概要](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Azure AD のリスク検出の概要](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Azure コンピューティング リソースのための脅威の防止](/azure/security-center/threat-protection)
+- [Azure コンピューティング リソースのための脅威の防止](../security-center/azure-defender.md)
 
 **Azure Security Center の監視**: はい
 
@@ -488,7 +488,7 @@ Security Center の脅威の防止により、環境に対して包括的な防�
 
 **ガイダンス**:Azure Active Directory (Azure AD) によって提供されるログを使用して古いアカウントを検出します。 Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、ロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的に確認し、意図したユーザーのみが継続的アクセス権を持っていることを確認します。 
 
-- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring)
+- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
 - [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
@@ -504,7 +504,7 @@ Azure AD サインイン アクティビティ、監査、およびリスク イ
 
 - [Azure AD ログインを使用するように Azure App Service アプリを構成する方法](configure-authentication-provider-aad.md)
 
-- [Azure アクティビティ ログを Azure Monitor に統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -520,7 +520,7 @@ Azure AD Identity Protection を使用して、ユーザー ID に関連する�
 
 - [Azure AD ログインを使用するように Azure App Service アプリを構成する方法](configure-authentication-provider-aad.md)
 
-- [Azure AD の危険なサインインを表示する方法](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -546,7 +546,7 @@ Azure AD Identity Protection を使用して、ユーザー ID に関連する�
 
 **ガイダンス**:機密情報を格納または処理する App Service リソースの追跡を支援するために、タグを使用します。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -628,7 +628,7 @@ Microsoft では、基になるプラットフォームを管理し、顧客の�
 
 ローカルに接続されたディスクは、必要に応じて Web サイトの一時ストレージ (たとえば、D:\local や %TMP%) として使用できますが、これらのディスクは保存時に暗号化されないので注意してください。
 
-- [Azure App Service のデータ保護のコントロールについて](app-service-security-controls.md)
+- [Azure App Service のデータ保護のコントロールについて]()
 
 - [Azure Storage の保存時の暗号化について](../storage/common/storage-service-encryption.md)
 
@@ -656,9 +656,9 @@ Microsoft では、基になるプラットフォームを管理し、顧客の�
 
 App Service アプリをセキュリティで保護するための Security Center の推奨事項を確認し、それに従ってください。
 
-- [CI/CD パイプラインに継続的なセキュリティ検証を追加する方法](https://docs.microsoft.com/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops&amp;preserve-view=true)
+- [CI/CD パイプラインに継続的なセキュリティ検証を追加する方法](/azure/devops/migrate/security-validation-cicd-pipeline?amp;preserve-view=true&view=azure-devops)
 
-- [Azure Security Center の脆弱性評価の推奨事項を実装する方法](/azure/security-center/security-center-vulnerability-assessment-recommendations)
+- [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -686,7 +686,7 @@ App Service アプリをセキュリティで保護するための Security Cent
 
 - [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -698,7 +698,7 @@ App Service アプリをセキュリティで保護するための Security Cent
 
 **ガイダンス**: メタデータを使用して Azure リソースにタグを適用し、それらを各分類に論理的に整理します。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -715,11 +715,11 @@ Azure Policy を選択して、次の組み込みポリシー定義を使用し�
 
 参照先のリンクで追加情報を確認してください。
 
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](/azure/governance/management-groups/create)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -891,7 +891,7 @@ Azure Policy を構成して、次の組み込みポリシー定義を使用し�
 
 標準化された使用のため、組み込みポリシー定義を適用するプロセスを文書化することをお勧めします。   
 
-- [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -917,9 +917,9 @@ Azure Policy を構成して、次の組み込みポリシー定義を使用し�
 
 既存の継続的インテグレーション (CI) および継続的デリバリー (CD) パイプラインを使用して、既知の安全な構成をデプロイします。
 
-- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
 
-- [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Azure Repos のドキュメント](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -951,11 +951,11 @@ Azure リソースの構成を自動的に適用するには、Azure Policy の 
 
 **ガイダンス**:マネージド ID を使用して、Azure Active Directory (Azure AD) で自動的に管理される ID を App Service アプリに提供します。 マネージド ID を使用すると、コード内に資格情報を記述しなくても、Azure AD 認証をサポートするすべてのサービス (Key Vault を含む) に対してアプリで認証を行うことができます。 Azure Key Vault で論理的な削除が有効になっていることを確認します。
 
-- [Azure Key Vault で論理的な削除を有効にする方法](/azure/key-vault/key-vault-soft-delete-powershell)
+- [Azure Key Vault で論理的な削除を有効にする方法](../key-vault/general/key-vault-recovery.md)
 
 - [App Service に対しマネージド ID を使用する方法](overview-managed-identity.md)
 
-- [マネージド ID で Key Vault の認証を提供する方法](/azure/key-vault/managed-identity)
+- [マネージド ID で Key Vault の認証を提供する方法](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center の監視**: はい
 
@@ -967,7 +967,7 @@ Azure リソースの構成を自動的に適用するには、Azure Policy の 
 
 - [App Service に対しマネージド ID を使用する方法](overview-managed-identity.md)
 
-- [マネージド ID で Key Vault の認証を提供する方法](/azure/key-vault/managed-identity)
+- [マネージド ID で Key Vault の認証を提供する方法](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1000,7 +1000,7 @@ App Service によって、アプリで使用するようにユーザーが構�
 
 - [Azure App Service バックアップ機能について](manage-backup.md)
 
-- [Azure Storage の暗号化のためのカスタマー マネージド キー](https://docs.microsoft.com/azure/storage/common/customer-managed-keys-overview?toc=/azure/storage/blobs/toc.json)
+- [Azure Storage の暗号化のためのカスタマー マネージド キー](../storage/common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1053,7 +1053,7 @@ Azure Storage 暗号化は、Resource Manager と従来のストレージ アカ
 
 - [保存データに対する Azure Storage 暗号化の概要](../storage/common/storage-service-encryption.md)
 
-- [Azure Key Vault で論理的な削除を有効にする方法](/azure/key-vault/key-vault-soft-delete-powershell)
+- [Azure Key Vault で論理的な削除を有効にする方法](../key-vault/general/key-vault-recovery.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1149,5 +1149,5 @@ Microsoft が管理するクラウド インフラストラクチャ、サービ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

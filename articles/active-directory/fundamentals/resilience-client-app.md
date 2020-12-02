@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 69967035f98d7ec2fcedff173dcf481455014ac2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9189d4d8cda5f9fcfce7e6ac2097414aa29f0a68
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919169"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317471"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>開発するクライアント アプリケーションで認証と認可の回復性を向上させる
 
@@ -152,9 +152,9 @@ CAE は初期段階にありますが、アプリケーションで使用され�
 
 リソース API を開発する場合は、[Shared Signals と Events WG](https://openid.net/wg/sse/) に参加されることをお勧めします。 Microsoft は、Microsoft ID とリソース プロバイダー間のセキュリティ イベントの共有を可能にするために、こちらのグループと連携しています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [継続的アクセス評価が有効になった API をアプリケーションで使用する方法](../develop/app-resilience-continuous-access-evaluation.md)
 - [デーモン アプリケーションで回復性を強化する](resilience-daemon-app.md)
 - [ID およびアクセス管理インフラストラクチャで回復性を強化する](resilience-in-infrastructure.md)
-- [Azure Active Directory B2C を使用した顧客の ID およびアクセス管理で回復性を強化する](resilience-b2c.md)
+- [CIAM システムで回復性を強化する](resilience-b2c.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 99594ad5fe07f18f639b4870f4e0faa59a697afc
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: a92802f0b121a332afccf7f6c12e876b3263bd82
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843181"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343945"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>ExpressRoute 用の Azure セキュリティ ベースライン
 
@@ -56,9 +56,9 @@ ExpressRoute 用の Azure セキュリティ ベースラインには、デプ�
 
 **ガイダンス**:適用できません。各顧客の ExpressRoute は、独自のルーティング ドメイン内に含まれ、独自の仮想ネットワークにトンネリングされます。 ExpressRoute は分離されていますが、同じ仮想ネットワークを共有する他のリソースをさらに保護するため、DDoS Protection Standard を有効にして DDoS 攻撃に対して保護できます。
 
-* [Azure ExpressRoute のセキュリティ コントロールを理解する](./expressroute-security-controls.md)
+* [Azure ExpressRoute のセキュリティ コントロールを理解する]()
 
-* [DDoS 保護を構成する方法](../virtual-network/manage-ddos-protection.md)
+* [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -76,7 +76,7 @@ ExpressRoute 用の Azure セキュリティ ベースラインには、デプ�
 
 **ガイダンス**:適用できません。各顧客の ExpressRoute は、独自のルーティング ドメイン内に含まれ、独自の仮想ネットワークにトンネリングされます。
 
-* [Azure ExpressRoute のセキュリティ コントロールを理解する](./expressroute-security-controls.md)
+* [Azure ExpressRoute のセキュリティ コントロールを理解する]()
 
 **Azure Security Center の監視**: 適用なし
 
@@ -303,7 +303,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 * [Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations) (Privileged Access Workstation)
 
-* [クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
+* [クラウドベースの Azure AD Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -447,7 +447,7 @@ ExpressRoute 経由でサイト間 IPSEC を構成する方法: https://docs.mic
 
 **ガイダンス**: 適用できません。Azure ExpressRoute は顧客データを格納しません。
 
-* [Azure ExpressRoute のセキュリティ コントロールを理解する](./expressroute-security-controls.md)
+* [Azure ExpressRoute のセキュリティ コントロールを理解する]()
 
 **Azure Security Center の監視**: 適用なし
 
@@ -861,7 +861,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: 適用できません。Azure ExpressRoute は顧客データを格納しません。
 
-* [Azure ExpressRoute のセキュリティ コントロールを理解する](./expressroute-security-controls.md)
+* [Azure ExpressRoute のセキュリティ コントロールを理解する]()
 
 **Azure Security Center の監視**: 適用なし
 

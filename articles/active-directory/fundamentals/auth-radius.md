@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ec8062eb864c877b0f3659ca2dd8f103e935071
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 97c524e1f4c05787f1dd61dea5a463e8fa83511a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836786"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168629"
 ---
 # <a name="radius-authentication-with-azure-active-directory"></a>Azure Active Directory を使用した RADIUS 認証
 
@@ -59,13 +59,12 @@ Windows NPS サーバーでは、Active Directory を照合してユーザーの
 
 ## <a name="implement-radius-with-azure-ad"></a>Azure AD を使用した RADIUS を実装する 
 
-* [NPS を使用した Azure AD Multi-Factor Authentication 機能を提供する](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-nps-extension) 
+* [NPS を使用した Azure AD Multi-Factor Authentication 機能を提供する](../authentication/howto-mfa-nps-extension.md) 
 
-* [Azure AD Multi-Factor Authentication の NPS 拡張機能を構成する](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-nps-extension-advanced) 
+* [Azure AD Multi-Factor Authentication の NPS 拡張機能を構成する](../authentication/howto-mfa-nps-extension-advanced.md) 
 
-* [NPS 拡張機能を使用する Azure AD Multi-Factor Authentication を備えた VPN](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-nps-extension-vpn) 
+* [NPS 拡張機能を使用する Azure AD Multi-Factor Authentication を備えた VPN](../authentication/howto-mfa-nps-extension-vpn.md) 
 
   
 ‎ 
 
- 

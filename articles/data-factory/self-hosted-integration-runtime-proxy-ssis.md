@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/19/2020
-ms.openlocfilehash: a79055a77ec73ce2b267bb4f16fa91f37e22ea75
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 82cc58d46061ec7b623d062ab0b0e5a1fdae7ddd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916782"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352220"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>セルフホステッド IR を Azure Data Factory で Azure-SSIS IR のプロキシとして構成する
 
@@ -70,7 +70,7 @@ Azure Blob Storage のリンクされたサービスを、Azure-SSIS IR が設�
 - **[認証方法]** で、 **[アカウント キー]** 、 **[SAS URI]** 、 **[サービス プリンシパル]** 、または **[マネージド ID]** を選択します。  
 
 >[!TIP]
->**サービス プリンシパル** 方法を選択した場合は、サービス プリンシパルに少なくとも *ストレージ BLOB データ共同作成者* のロールを付与します。 詳細については、「[Azure Blob Storage コネクタ](connector-azure-blob-storage.md#linked-service-properties)」をご覧ください。 **[マネージド ID]** 方法を選択した場合は、Azure Blob Storage にアクセスするための適切なロールを ADF マネージド ID に付与します。 詳細については、[ADF マネージ ID による Azure Active Directory 認証を使用した Azure Blob Storage にアクセスする](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)方法に関するページをご覧ください。
+>**サービス プリンシパル** 方法を選択した場合は、サービス プリンシパルに少なくとも *ストレージ BLOB データ共同作成者* のロールを付与します。 詳細については、「[Azure Blob Storage コネクタ](connector-azure-blob-storage.md#linked-service-properties)」をご覧ください。 **[マネージド ID]** 方法を選択した場合は、Azure Blob Storage にアクセスするための適切なロールを ADF マネージド ID に付与します。 詳細については、[ADF マネージ ID による Azure Active Directory 認証を使用した Azure Blob Storage にアクセスする](/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)方法に関するページをご覧ください。
 
 ![Azure Blob Storage のリンクされたサービスをステージング用に準備する](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -157,7 +157,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="debug-the-on-premises-and-cloud-staging-tasks"></a>オンプレミスとクラウドのステージング タスクをデバッグする
 
-セルフホステッド IR では、ランタイム ログは *C:\ProgramData\SSISTelemetry* フォルダー内にあり、オンプレミスのステージング タスクの実行ログは *C:\ProgramData\SSISTelemetry\ExecutionLog* フォルダー内にあります。  クラウドにあるステージング タスクの実行ログは、パッケージを格納した場所が SSISDB であるかどうかや、[Azure Monitor の統合](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#monitor-ssis-operations-with-azure-monitor)などを有効にするかどうかに応じて、SSISDB 内、指定されたロギング ファイル パス、または Azure Monitor にあります。オンプレミスのステージング タスクの一意の ID も、クラウドにあるステージング タスクの実行ログ内にあります。 
+セルフホステッド IR では、ランタイム ログは *C:\ProgramData\SSISTelemetry* フォルダー内にあり、オンプレミスのステージング タスクの実行ログは *C:\ProgramData\SSISTelemetry\ExecutionLog* フォルダー内にあります。  クラウドにあるステージング タスクの実行ログは、パッケージを格納した場所が SSISDB であるかどうかや、[Azure Monitor の統合](./monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor)などを有効にするかどうかに応じて、SSISDB 内、指定されたロギング ファイル パス、または Azure Monitor にあります。オンプレミスのステージング タスクの一意の ID も、クラウドにあるステージング タスクの実行ログ内にあります。 
 
 ![1 番目のステージング タスクの一意の ID](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
@@ -173,7 +173,7 @@ Azure-SSIS IR で実行されるクラウドにあるステージング タス�
 
 Azure-SSIS IR のプロキシとしてセルフホステッド IR を使用してオンプレミスのデータにアクセスするために、カスタム/サードパーティのコンポーネントを有効にするには、次の手順に従います。
 
-1. [標準/簡易カスタム セットアップ](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)を使用して、Azure-SSIS IR に SQL Server 2017 をターゲットとするカスタム/サードパーティのコンポーネントをインストールします。
+1. [標準/簡易カスタム セットアップ](./how-to-configure-azure-ssis-ir-custom-setup.md)を使用して、Azure-SSIS IR に SQL Server 2017 をターゲットとするカスタム/サードパーティのコンポーネントをインストールします。
 
 1. セルフホステッド IR に次の DTSPath レジストリ キーを作成します (まだ存在しない場合)。
    1. `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` を `C:\Program Files\Microsoft SQL Server\140\DTS\` に設定
@@ -197,7 +197,7 @@ Azure-SSIS IR のプロキシとしてセルフホステッド IR を使用し�
 
 ## <a name="current-limitations"></a>現在の制限
 
-- 現在、Hadoop/HDFS/DQS コンポーネントを除き、Azure-SSIS IR Standard Edition に組み込まれているか、事前にインストールされているデータ フロー コンポーネントのみがサポートされています。[Azure-SSIS IR に組み込まれているか、事前にインストールされているすべてのコンポーネント](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime)に関するページをご覧ください。
+- 現在、Hadoop/HDFS/DQS コンポーネントを除き、Azure-SSIS IR Standard Edition に組み込まれているか、事前にインストールされているデータ フロー コンポーネントのみがサポートされています。[Azure-SSIS IR に組み込まれているか、事前にインストールされているすべてのコンポーネント](./built-in-preinstalled-components-ssis-integration-runtime.md)に関するページをご覧ください。
 - 現在、マネージド コード (.NET Framework) で記述されたカスタム/サードパーティのデータ フロー コンポーネントのみがサポートされています。ネイティブ コード (C++) で記述されたコンポーネントは、現在サポートされていません。
 - オンプレミスとクラウドの両方のステージング タスクで変数値を変更することは、現在サポートされていません。
 - オンプレミスのステージング タスクでオブジェクト型の変数値を変更しても、他のタスクには反映されません。

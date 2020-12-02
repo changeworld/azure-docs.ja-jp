@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0da8755199645b12e9c6ed75a42881fe86e70b5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f10d8a94be53780f732112c012600a7fb840642b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023039"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180644"
 ---
 # <a name="what-is-risk"></a>リスクとは
 
@@ -74,7 +74,7 @@ Identity Protection を使用すると、組織は、強力なリソースにア
 
 ### <a name="risk-levels"></a>リスク レベル
 
-Identity Protection では、リスクを低、中、高の 3 つのレベルに分類します。 [カスタム ID 保護ポリシー](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-policies#custom-conditional-access-policy)を構成する場合に、**リスクなし** レベルでトリガーされるように構成することもできます。 リスクなしは、ユーザーの ID が侵害されたことを示すアクティブな通知がないことを意味します。
+Identity Protection では、リスクを低、中、高の 3 つのレベルに分類します。 [カスタム ID 保護ポリシー](./concept-identity-protection-policies.md#custom-conditional-access-policy)を構成する場合に、**リスクなし** レベルでトリガーされるように構成することもできます。 リスクなしは、ユーザーの ID が侵害されたことを示すアクティブな通知がないことを意味します。
 
 Microsoft ではリスクの計算方法に関する具体的な詳細を公開していませんが、各レベルごとに、ユーザーまたはサインインが侵害されたという信頼度は高くなります。 たとえば、見慣れないサインイン プロパティのインスタンスが 1 つあるといったことは、資格情報の漏洩ほど脅威的ではない可能性があります。
 

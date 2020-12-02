@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 97cdc4ad0b1d5e7dfb6642fa0163f810be5d7171
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: dccb734ef4eaa9f22b70488918f14ad94f723453
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966923"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437135"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>IoT Edge の展開からログを取得する
 
@@ -33,7 +33,7 @@ IoT Edge エージェント モジュールに含まれているダイレクト 
 <{Log Level}> {Timestamp} {Message Text}
 ```
 
-`{Log Level}` は [Syslog の重大度レベルの形式](https://wikipedia.org/wiki/Syslog#Severity_lnevel)に従い、`{Timestamp}` は `yyyy-mm-dd hh:mm:ss.fff zzz` の書式設定にする必要があります。
+`{Log Level}` は [Syslog の重大度レベルの形式](https://wikipedia.org/wiki/Syslog#Severity_level)に従い、`{Timestamp}` は `yyyy-mm-dd hh:mm:ss.fff zzz` の書式設定にする必要があります。
 
 [IoT Edge の Logger クラス](https://github.com/Azure/iotedge/blob/master/edge-util/src/Microsoft.Azure.Devices.Edge.Util/Logger.cs)は、canonical 実装として機能します。
 
@@ -50,10 +50,10 @@ IoT Edge エージェント モジュールに含まれているダイレクト 
           {
              "id": "regex string",
              "filter": {
-                "tail": int,
-                "since": int,
-                "until": int,
-                "loglevel": int,
+                "tail": "int",
+                "since": "int",
+                "until": "int",
+                "loglevel": "int",
                 "regex": "regex string"
              }
           }
@@ -159,10 +159,10 @@ az iot hub invoke-module-method \
           {
              "id": "regex string",
              "filter": {
-                "tail": int,
-                "since": int,
-                "until": int,
-                "loglevel": int,
+                "tail": "int",
+                "since": "int",
+                "until": "int",
+                "loglevel": "int",
                 "regex": "regex string"
              }
           }
@@ -172,7 +172,7 @@ az iot hub invoke-module-method \
     }
 ```
 
-| 名前 | Type | 説明 |
+| 名前 | 種類 | 説明 |
 |-|-|-|
 | sasURL | string (URI) | [Azure Blob Storage コンテナーへの書き込みアクセスを含む共有アクセス署名 URL](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer)。 |
 
@@ -186,7 +186,7 @@ az iot hub invoke-module-method \
     }
 ```
 
-| 名前 | Type | 説明 |
+| 名前 | 種類 | 説明 |
 |-|-|-|
 | status | string | `NotStarted`、`Running`、`Completed`、`Failed`、または `Unknown`の 1 つ。 |
 | message | string | エラーの場合はメッセージ、それ以外の場合は空の文字列。 |
@@ -289,7 +289,7 @@ Azure portal で、次の情報を含めた sasURL を指定した後に、メ�
     }
 ```
 
-| 名前 | Type | 説明 |
+| 名前 | 種類 | 説明 |
 |-|-|-|
 | schemaVersion | string | `1.0` |
 | sasURL | string (URI) | [Azure Blob Storage コンテナーへの書き込みアクセスを含む共有アクセス署名 URL](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
@@ -310,7 +310,7 @@ Azure portal で、次の情報を含めた sasURL を指定した後に、メ�
     }
 ```
 
-| 名前 | Type | 説明 |
+| 名前 | 種類 | 説明 |
 |-|-|-|
 | status | string | `NotStarted`、`Running`、`Completed`、`Failed`、または `Unknown`の 1 つ。 |
 | message | string | エラーの場合はメッセージ、それ以外の場合は空の文字列。 |
@@ -368,7 +368,7 @@ Azure portal で、次の情報を含めた sasURL を指定した後に、メ�
     }
 ```
 
-| 名前 | Type | 説明 |
+| 名前 | 種類 | 説明 |
 |-|-|-|
 | status | string | `NotStarted`、`Running`、`Completed`、`Failed`、または `Unknown`の 1 つ。 |
 | message | string | エラーの場合はメッセージ、それ以外の場合は空の文字列。 |

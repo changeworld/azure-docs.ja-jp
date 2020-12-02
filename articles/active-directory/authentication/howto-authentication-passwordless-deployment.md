@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0143da9c1961b4123467120210135f7db2c582c8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b4c06e53d3ddfb5f344a759e31d83cb22ce6d4d3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839575"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174138"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory でパスワードレス認証のデプロイを計画する
 
@@ -78,7 +78,7 @@ Microsoft のパスワードレス認証方法では、さまざまなシナリ�
 
 Windows Hello の前提条件は、オンプレミス、ハイブリッド、クラウドのみのどの構成にデプロイするかに大きく依存します。 詳細については、[Windows Hello for Business の前提条件の完全な一覧](/windows/security/identity-protection/hello-for-business/hello-identity-verification)を参照してください。
 
-### <a name="azure-ad-multi-factor-authentication"></a>Azure AD の Multi-Factor Authentication
+### <a name="azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication
 
 ユーザーは、Azure AD Multi-Factor Authentication 登録フローの一部として、自身のパスワードレスの方法を登録します。 ユーザー名とパスワードによる多要素認証と別の登録済み方法を、一部のシナリオで電話またはセキュリティ キーを使用できない場合の代替手段として使用できます。
 
@@ -126,7 +126,7 @@ Microsoft では、伝達方法の原案として役立つ Azure Multi-Factor Au
 
 グループは、オンプレミスのディレクトリまたは Azure AD から同期できます。 パイロットの結果に満足できたら、すべてのユーザーをパスワードレス認証に切り替えることができます。
 
-デプロイの計画に関するページの「[パイロットのベスト プラクティス](https://aka.ms/deploymentplans)」を参照してください。
+デプロイの計画に関するページの「[パイロットのベスト プラクティス](../fundamentals/active-directory-deployment-plans.md)」を参照してください。
 
 ## <a name="plan-passwordless-authentication-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用したパスワードレス認証を計画する
 

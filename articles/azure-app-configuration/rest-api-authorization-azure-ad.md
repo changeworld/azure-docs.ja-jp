@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 89c51e69a4274affcecb4d967deb96dcebcfd70f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 0229b1941e40345f35cb7409533e54b0c4ea7d5d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95253372"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182616"
 ---
 # <a name="azure-active-directory-authorization---rest-api-reference"></a>Azure Active Directory 認可 - REST API リファレンス
 
@@ -43,4 +43,4 @@ HTTP/1.1 403 Forbidden
 
 ## <a name="managing-role-assignments"></a>ロールの割り当ての管理
 
-ロールの割り当ての管理は、すべての Azure サービスで標準となっている [RBAC の手順](https://docs.microsoft.com/azure/role-based-access-control/overview)を使用して行えます。 これを行うには、Azure CLI、PowerShell、および Azure portal を使用します。 詳細については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)」を参照してください。
+ロールの割り当ての管理は、すべての Azure サービスで標準となっている [RBAC の手順](../role-based-access-control/overview.md)を使用して行えます。 これを行うには、Azure CLI、PowerShell、および Azure portal を使用します。 詳細については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)」を参照してください。

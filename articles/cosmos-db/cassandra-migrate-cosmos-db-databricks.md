@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 877aa96b189de47d158721df6585cb94ace4a855
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 827abcdb9eb2eb8b7328eb3e3a78f49d51e87e6b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94932870"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349182"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>Azure Databricks を使用して Cassandra から Azure Cosmos DB Cassandra API アカウントにデータを移行する
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -28,7 +28,7 @@ Azure Cosmos DB の Cassandra API は、次のようなさまざまな理由に�
 
 データベースのワークロードをプラットフォーム間で移行するには、さまざまな方法があります。 [Azure Databricks](https://azure.microsoft.com/services/databricks/) は、[Apache Spark](https://spark.apache.org/) 用の「サービスとしてのプラットフォーム」製品です。これにより、大規模なオフライン移行を実行できます。 この記事では、Azure Databricks を使用して、ネイティブ Apache Cassandra キースペース/テーブルから Azure Cosmos DB Cassandra API にデータを移行するために必要な手順について説明します。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>[前提条件]
 
 * [Azure Cosmos DB Cassandra API アカウントのプロビジョニング](create-cassandra-dotnet.md#create-a-database-account)
 
@@ -114,7 +114,7 @@ DFfromNativeCassandra
 ```
 
 > [!NOTE]
-> `spark.cassandra.output.concurrent.writes` と `connections_per_executor_max` の構成は、[レート制限](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/)を回避するために重要です。この制限は、Cosmos DB への要求が、プロビジョニングされたスループット ([要求ユニット](https://docs.microsoft.com/azure/cosmos-db/request-units)) を超えると発生します。 Spark クラスター内の実行プログラム数に応じて、これらの設定値の調整が必要になることがあります。また、ターゲット テーブルに書き込まれる各レコードのサイズ (および RU のコスト) によっても、調整が必要になる場合があります。
+> `spark.cassandra.output.concurrent.writes` と `connections_per_executor_max` の構成は、[レート制限](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/)を回避するために重要です。この制限は、Cosmos DB への要求が、プロビジョニングされたスループット ([要求ユニット](./request-units.md)) を超えると発生します。 Spark クラスター内の実行プログラム数に応じて、これらの設定値の調整が必要になることがあります。また、ターゲット テーブルに書き込まれる各レコードのサイズ (および RU のコスト) によっても、調整が必要になる場合があります。
 
 ## <a name="next-steps"></a>次のステップ
 

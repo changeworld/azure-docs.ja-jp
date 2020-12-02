@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06c37eaf63b79b171e5a21d807262cfb359d416c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 765bfe0f805ae4219110d689e8f7f8fd54a26cf3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994164"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173938"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory のセルフサービス パスワード リセットのデプロイを計画する
 
@@ -123,7 +123,7 @@ SSPR をデプロイする前に、各パスワード リセット呼び出し�
 
 ### <a name="engage-the-right-stakeholders"></a>適切な関係者を関わらせる
 
-テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者を関与させ](https://aka.ms/deploymentplans)、利害関係者およびそのプロジェクトでの入力と説明責任を文書化することで、プロジェクトでの利害関係者の役割をよく理解させます。
+テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者を関与させ](../fundamentals/active-directory-deployment-plans.md)、利害関係者およびそのプロジェクトでの入力と説明責任を文書化することで、プロジェクトでの利害関係者の役割をよく理解させます。
 
 #### <a name="required-administrator-roles"></a>必要な管理者ロール
 
@@ -325,7 +325,7 @@ Azure portal で構築済みのレポートを使用して、SSPR のパフォ�
 
 ### <a name="troubleshoot"></a>トラブルシューティング
 
-* 「[セルフサービスのパスワードのリセットのトラブルシューティング](./active-directory-passwords-troubleshoot.md)」を参照してください 
+* 「[セルフサービスのパスワードのリセットのトラブルシューティング](./troubleshoot-sspr.md)」を参照してください 
 
 * 「[パスワード管理に関するよく寄せられる質問 (FAQ)](./active-directory-passwords-faq.md)」に従ってください 
 

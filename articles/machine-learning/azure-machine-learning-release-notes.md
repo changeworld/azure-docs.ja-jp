@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 53a30f92adaf25d87897e98834cda2d5f92b874c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 03825e0f091df01b98355dd6789eb5c9cb2897b0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012273"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444535"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
@@ -43,7 +43,7 @@ ms.locfileid: "96012273"
     + 名前が既に存在する場合の動作についての説明を含めるように、`OutputDatasetConfig.register_on_complete` のドキュメントが改善されました。
     + 共通の環境変数と競合する可能性があるデータセットの入力と出力の名前を指定すると、警告が表示されるようになりました。
     + データストアの登録時に、`grant_workspace_access` パラメーターが再利用されるようにしました。 Machine Learning Studio から仮想ネットワークの背後にあるデータにアクセスするには、これを `True` に設定します。
-      [詳細情報](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
+      [詳細情報](./how-to-enable-studio-virtual-network.md)
     + リンクされたサービス API は改善されています。 リソース ID を指定する代わりに、構成で定義されている sub_id、rg、name の 3 つの個別のパラメーターがあります。
     + 顧客がトークンの破損の問題を自己解決できるようにするために、ワークスペース トークンの同期をパブリック メソッドにできるようにします。
     + この変更により、空の文字列を script_param の値として使用できるようになります。
@@ -109,8 +109,8 @@ ms.locfileid: "96012273"
 
 ### <a name="azure-machine-learning-studio-notebooks-experience-october-update"></a>Azure Machine Learning Studio のノートブック エクスペリエンス (10 月の更新)
 + **新機能**
-  + [仮想ネットワークの完全サポート](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
-  + [フォーカス モード](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#focus-mode)
+  + [仮想ネットワークの完全サポート](./how-to-enable-studio-virtual-network.md)
+  + [フォーカス モード](./how-to-run-jupyter-notebooks.md#focus-mode)
   + ノートブックの保存 Ctrl-S
   + 行番号
 

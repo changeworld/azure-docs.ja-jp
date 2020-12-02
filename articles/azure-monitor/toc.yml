@@ -131,7 +131,7 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: 警告
+    - name: アラート
       items:
         - name: 概要
           href: platform/alerts-overview.md
@@ -1143,6 +1143,8 @@
               href: platform/workbooks-tree-visualizations.md
             - name: グラフ
               href: platform/workbooks-graph-visualizations.md
+            - name: マップ
+              href: platform/workbooks-map-visualizations.md
             - name: 蜂の巣
               href: platform/workbooks-honey-comb.md
             - name: 複合棒グラフ
