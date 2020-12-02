@@ -10,19 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 93be72f2afcda90dde1b74c5ee317a7ad3350be1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4300860039b76bd076f19acfc252f59ef10d462b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075689"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351846"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Bing Search API の利用と表示の要件
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
-> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 この使用/表示要件は、次の Bing Search API のコンテンツと関連情報 (リレーションシップ、メタデータ、その他のシグナルを含む) を実装するあらゆる場合に適用されます。
 
@@ -104,7 +104,7 @@ ms.locfileid: "93075689"
 ### <a name="notices-and-branding"></a>通知とブランディング 
 次の処理が必要です。
 
-- ユーザーが検索クエリを入力できるユーザー エクスペリエンス (UX) の近くの目立つ位置に、[Microsoft のプライバシーに関する声明](https://go.microsoft.com/fwlink/?LinkId=521839) をリンク先とする有効なハイパーリンクを配置してください。 そのハイパーリンクのラベルは、" **Microsoft のプライバシーに関する声明** " とします。
+- ユーザーが検索クエリを入力できるユーザー エクスペリエンス (UX) の近くの目立つ位置に、[Microsoft のプライバシーに関する声明](https://go.microsoft.com/fwlink/?LinkId=521839) をリンク先とする有効なハイパーリンクを配置してください。 そのハイパーリンクのラベルは、"**Microsoft のプライバシーに関する声明**" とします。
 
 - ユーザーが検索クエリを入力できるユーザー エクスペリエンス (UX) の近くの目立つ位置に、「[Bing Trademark Usage Guidelines (Bing の商標利用ガイドライン)](https://go.microsoft.com/fwlink/?linkid=833278)」に従って Bing のブランド表示を配置してください。 配置するブランド表示では、インターネット検索エクスペリエンスに Microsoft の技術を利用していることをユーザーに明示する必要があります。
 
@@ -172,5 +172,4 @@ Search API の利用と表示の要件のうち、このセクションよりも
 
 ## <a name="gdpr-compliance"></a>GDPR コンプライアンス  
 
-欧州連合一般データ保護規則 (GDPR) の下で個人データに該当し、Search API、Bing Spell Check API、または Bing Autosuggest API の呼び出しに関連して処理されるデータについては、お客様と Microsoft のどちらも、GDPR に定める独立したデータ管理者となりますのでご了承ください。 お客様は、自己による GDPR の遵守について単独で責任を負うものとします。  
-
+欧州連合一般データ保護規則 (GDPR) の下で個人データに該当し、Search API、Bing Spell Check API、または Bing Autosuggest API の呼び出しに関連して処理されるデータについては、お客様と Microsoft のどちらも、GDPR に定める独立したデータ管理者となりますのでご了承ください。 お客様は、自己による GDPR の遵守について単独で責任を負うものとします。

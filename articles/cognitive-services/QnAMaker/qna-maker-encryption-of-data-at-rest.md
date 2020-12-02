@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.author: egeaney
-ms.openlocfilehash: 1ee3c3942ee7d01fa174947f5d9c278cddaf0424
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 19dc0f3a676d5373b28e4b7055050477c426f847
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376917"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345782"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>QnA Maker での保存データの暗号化
 
@@ -26,11 +26,11 @@ QnA Maker を使うと、クラウドに永続化されるデータが自動的�
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
-QnA Maker では、Azure Search から CMK のサポートが使用されます。 [Azure Key Vault を使用して Azure Search 内で CMK](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys) を構成します。 この Azure インスタンスを QnA Maker サービスに関連付けて、CMK を有効にする必要があります。
+QnA Maker では、Azure Search から CMK のサポートが使用されます。 [Azure Key Vault を使用して Azure Search 内で CMK](../../search/search-security-manage-encryption-keys.md) を構成します。 この Azure インスタンスを QnA Maker サービスに関連付けて、CMK を有効にする必要があります。
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
 
-QnA Maker によって [Azure Search からの CMK](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys) が使用され、Azure 検索インデックスに格納されているデータを暗号化するため、与えられた CMK を自動的に関連付けます。
+QnA Maker によって [Azure Search からの CMK](../../search/search-security-manage-encryption-keys.md) が使用され、Azure 検索インデックスに格納されているデータを暗号化するため、与えられた CMK を自動的に関連付けます。
 
 ---
 
@@ -43,7 +43,7 @@ QnA Maker サービスでは、Azure Search サービスから CMK が使用さ�
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
-1. 新しい Azure Search インスタンスを作成し、[Azure Cognitive Search でのカスタマー マネージド キーの前提条件](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys#prerequisites)に関する記事に記載されている前提条件に従います。
+1. 新しい Azure Search インスタンスを作成し、[Azure Cognitive Search でのカスタマー マネージド キーの前提条件](../../search/search-security-manage-encryption-keys.md#prerequisites)に関する記事に記載されている前提条件に従います。
 
    ![暗号化の設定を表示する 1](../media/cognitive-services-encryption/qna-encryption-1.png)
 
@@ -62,14 +62,14 @@ QnA Maker サービスでは、Azure Search サービスから CMK が使用さ�
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
 
 1.  QnA Maker マネージド (プレビュー) サービスの **[暗号化]** タブに移動します。
-2.  **[カスタマー マネージド キー]** オプションを選択します。 [[カスタマー マネージド キー]](https://docs.microsoft.com/azure/storage/common/customer-managed-keys-configure-key-vault?tabs=portal) の詳細を入力し、 **[保存]** をクリックします。
+2.  **[カスタマー マネージド キー]** オプションを選択します。 [[カスタマー マネージド キー]](../../storage/common/customer-managed-keys-configure-key-vault.md?tabs=portal) の詳細を入力し、 **[保存]** をクリックします。
 
      :::image type="content" source="../media/cognitive-services-encryption/qnamaker-v2-encryption-cmk.png" alt-text="QnA Maker マネージド (プレビュー) CMK 設定" lightbox="../media/cognitive-services-encryption/qnamaker-v2-encryption-cmk.png":::
 
 3.  正常に保存されると、Azure Search インデックスに格納されているデータの暗号化に CMK が使用されます。
 
 > [!IMPORTANT]
-> ナレッジ ベースを作成する前に、新しい Azure Cognitive Search サービスで CMK を設定することをお勧めします。 既存のナレッジ ベースを使用して QnA Maker サービスで CMK を設定した場合、ナレッジ ベースにアクセスできなくなるおそれがあります。 暗号化されたコンテンツを Azure Cognitive Search で使用する方法の詳細については、[こちら](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys#work-with-encrypted-content)をご覧ください。
+> ナレッジ ベースを作成する前に、新しい Azure Cognitive Search サービスで CMK を設定することをお勧めします。 既存のナレッジ ベースを使用して QnA Maker サービスで CMK を設定した場合、ナレッジ ベースにアクセスできなくなるおそれがあります。 暗号化されたコンテンツを Azure Cognitive Search で使用する方法の詳細については、[こちら](../../search/search-security-manage-encryption-keys.md#work-with-encrypted-content)をご覧ください。
 
 > [!NOTE]
 > カスタマー マネージド キーを使用できるようにするには、[Cognitive Services カスタマー マネージド キー要求フォーム](https://aka.ms/cogsvc-cmk)に記入して送信します。
@@ -87,6 +87,6 @@ QnA Maker ポータルは、ユーザーのブラウザー上で実行されま�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Key Vault 内の CMK を使用した Azure Search での暗号化](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)
-* [保存データの暗号化](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
-* [Azure Key Vault の詳細を確認する](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Azure Key Vault 内の CMK を使用した Azure Search での暗号化](../../search/search-security-manage-encryption-keys.md)
+* [保存データの暗号化](../../security/fundamentals/encryption-atrest.md)
+* [Azure Key Vault の詳細を確認する](../../key-vault/general/overview.md)

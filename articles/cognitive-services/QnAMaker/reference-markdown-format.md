@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 03/19/2020
-ms.openlocfilehash: f5f640f8895cd6defe31a68b790ce841c4679a6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f49e05578f55a38845acbd4010f928fb17c51606
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777366"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352271"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>QnA Maker の回答テキストでサポートされるマークダウン形式
 
@@ -22,7 +22,7 @@ Markdown の検証については、 **[CommonMark](https://commonmark.org/help/
 
 回答の[リッチテキスト編集](How-To/edit-knowledge-base.md#add-an-editorial-qna-set)では、作成者は、書式設定ツールバーを使用して、テキストをすばやく選択し、書式設定することができます。
 
-Markdown は、CI/CD パイプラインの一部として、または[バッチ テスト](Quickstarts/batch-testing.md)のためにインポートされるナレッジ ベースを作成するために、コンテンツを自動生成する必要がある場合に適しています。
+Markdown は、CI/CD パイプラインの一部として、または[バッチ テスト](./index.yml)のためにインポートされるナレッジ ベースを作成するために、コンテンツを自動生成する必要がある場合に適しています。
 
 ## <a name="supported-markdown-format"></a>サポートされるマークダウン形式
 

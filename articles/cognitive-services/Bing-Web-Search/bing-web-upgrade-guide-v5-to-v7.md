@@ -11,19 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 39848bcaded1669c6a6efd5b649ecf8e8343a596
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: d930543671a5328d76a38aa7e1b421c111e89e39
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381118"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349522"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Bing Web Search API v5 から v7 へのアップグレード
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
-> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 このアップグレード ガイドでは、Bing Web Search API のバージョン 5 とバージョン 7 の間の変更点を識別します。 このガイドは、バージョン 7 を使用するために更新する必要のあるアプリケーションの部分を識別するのに役立ちます。
 
@@ -31,7 +31,7 @@ ms.locfileid: "94381118"
 
 ### <a name="endpoints"></a>エンドポイント
 
-- エンドポイントのバージョン番号は、v5 から v7 に変更されました。 例: https:\/\/api.cognitive.microsoft.com/bing/ **v7.0** /search。
+- エンドポイントのバージョン番号は、v5 から v7 に変更されました。 例: https:\/\/api.cognitive.microsoft.com/bing/**v7.0**/search。
 
 ### <a name="error-response-objects-and-error-codes"></a>エラー応答オブジェクトとエラー コード
 

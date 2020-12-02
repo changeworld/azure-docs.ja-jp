@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 0f49621d44b99412b9a6ab0360c30c894a71e5d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c231ac95841043e5576f064e683dd86d9695b108
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776869"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353189"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>ご自分のサポート情報にセキュリティで保護された SharePoint データ ソースを追加する
 
@@ -27,7 +27,7 @@ QnA Maker サポート情報マネージャーが Active Directory マネージ�
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>サポート情報へのサポート対象ファイルの種類の追加
 
-SharePoint サイトからご自分のサポート情報に、QnA Maker でサポートされているすべての[ファイルの種類](../Concepts/content-types.md)を追加できます。 ファイルのリソースがセキュリティで保護されている場合、[アクセス許可](#permissions)を付与する必要がある場合があります。
+SharePoint サイトからご自分のサポート情報に、QnA Maker でサポートされているすべての[ファイルの種類](../index.yml)を追加できます。 ファイルのリソースがセキュリティで保護されている場合、[アクセス許可](#permissions)を付与する必要がある場合があります。
 
 1. SharePoint サイトのあるライブラリから、ファイルの省略記号メニュー (`...`) を選択します。
 1. ファイルの URL をコピーします。
@@ -61,7 +61,7 @@ SharePoint サーバーからセキュリティで保護されたファイルが
 
 ### <a name="knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal"></a>サポート情報マネージャー: SharePoint データ ソースを QnA Maker ポータルに追加する
 
-**QnA Maker マネージャー**がセキュリティで保護された SharePoint ドキュメントをサポート情報に追加すると、サポート情報マネージャーによって Active Directory マネージャーが完了する必要のあるアクセス許可の要求が開始されます。
+**QnA Maker マネージャー** がセキュリティで保護された SharePoint ドキュメントをサポート情報に追加すると、サポート情報マネージャーによって Active Directory マネージャーが完了する必要のあるアクセス許可の要求が開始されます。
 
 この要求は、Active Directory アカウントの認証のポップアップで開始されます。
 
@@ -156,7 +156,7 @@ Use the following steps to transform the SharePoint URL into a sharing token.
 
 ### Add or update a SharePoint File URI to your knowledge base
 
-Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileuri` in the QnA Maker API for [adding a knowledge base](https://go.microsoft.com/fwlink/?linkid=2092179) or [updating a knowledge base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update). The following fields are mandatory: name, fileuri, filename, source.
+Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileuri` in the QnA Maker API for [adding a knowledge base](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) or [updating a knowledge base](/rest/api/cognitiveservices/qnamaker/knowledgebase/update). The following fields are mandatory: name, fileuri, filename, source.
 
 ```
 {
@@ -188,4 +188,4 @@ Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileu
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [自分のサポート情報の共同利用](collaborate-knowledge-base.md)
+> [自分のサポート情報の共同利用](../index.yml)

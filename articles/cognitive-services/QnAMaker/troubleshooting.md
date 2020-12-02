@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 11/09/2020
-ms.openlocfilehash: 6bf9eb5fbb8604bca67279f5f41c8aed19a510c0
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: e8b1d985fcb2852df52382e005ec0f0266e23d9d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376878"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345646"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker のトラブルシューティング
 
@@ -84,7 +84,7 @@ QnA Maker サービスについてきわめて多く寄せられる質問を精�
 <details>
 <summary><b>作成できるナレッジ ベースの最大サイズはどれくらいですか。</b></summary>
 
-**回答**: ナレッジ ベースのサイズは、QnA Maker サービスの作成時に選択した Azure Search の SKU により異なります。 詳細については、[こちら](./Tutorials/choosing-capacity-qnamaker-deployment.md)を参照してください。
+**回答**: ナレッジ ベースのサイズは、QnA Maker サービスの作成時に選択した Azure Search の SKU により異なります。 詳細については、[こちら](./concepts/azure-resources.md)を参照してください。
 
 </details>
 
@@ -98,7 +98,7 @@ QnA Maker サービスについてきわめて多く寄せられる質問を精�
 <details>
 <summary><b>複数人でナレッジ ベースを共有するにはどうすればよいですか?</b></summary>
 
-**回答**: 共有は、QnA Maker サービス レベルで行われます。つまり、サービス内のすべてのナレッジ ベースが共有されます。 ナレッジ ベースの共同作業の方法については、[こちら](./How-To/collaborate-knowledge-base.md)を参照してください。
+**回答**: 共有は、QnA Maker サービス レベルで行われます。つまり、サービス内のすべてのナレッジ ベースが共有されます。 ナレッジ ベースの共同作業の方法については、[こちら](./index.yml)を参照してください。
 
 </details>
 
@@ -137,7 +137,7 @@ QnA Maker サービスについてきわめて多く寄せられる質問を精�
 <details>
 <summary><b>SharePoint リンクが抽出されません。なぜでしょうか?</b></summary>
 
-**回答**: 詳細については、「[Data source locations (データ ソースの場所)](./Concepts/knowledge-base.md#data-source-locations)」を参照してください。
+**回答**: 詳細については、「[Data source locations (データ ソースの場所)](./concepts/data-sources-and-content.md#data-source-locations)」を参照してください。
 
 </details>
 
@@ -167,7 +167,7 @@ QnA ペアをナレッジ ベースに追加すると、回答のマークダウ
 <details>
 <summary><b>QnA Maker では英語以外の言語もサポートされますか。</b></summary>
 
-**回答**: 詳細については、[サポートされている言語](./Overview/languages-supported.md)に関するページを参照してください。
+**回答**: 詳細については、[サポートされている言語](./overview/language-support.md)に関するページを参照してください。
 
 多言語コンテンツが含まれる場合は、言語ごとにサービスを作成してください。
 
@@ -185,7 +185,7 @@ QnA ペアをナレッジ ベースに追加すると、回答のマークダウ
 <details>
 <summary><b>作成できるナレッジ ベースの最大サイズはどれくらいですか。</b></summary>
 
-**回答**: ナレッジ ベースのサイズは、QnA Maker サービスの作成時に選択した Azure Search の SKU により異なります。 詳細については、[こちら](./Tutorials/choosing-capacity-qnamaker-deployment.md)を参照してください。
+**回答**: ナレッジ ベースのサイズは、QnA Maker サービスの作成時に選択した Azure Search の SKU により異なります。 詳細については、[こちら](./concepts/azure-resources.md)を参照してください。
 
 </details>
 
@@ -199,7 +199,7 @@ QnA ペアをナレッジ ベースに追加すると、回答のマークダウ
 <details>
 <summary><b>複数人でナレッジ ベースを共有するにはどうすればよいですか?</b></summary>
 
-**回答**: 共有は、QnA Maker サービス レベルで行われます。つまり、サービス内のすべてのナレッジ ベースが共有されます。 ナレッジ ベースの共同作業の方法については、[こちら](./How-To/collaborate-knowledge-base.md)を参照してください。
+**回答**: 共有は、QnA Maker サービス レベルで行われます。つまり、サービス内のすべてのナレッジ ベースが共有されます。 ナレッジ ベースの共同作業の方法については、[こちら](./index.yml)を参照してください。
 
 </details>
 
@@ -220,7 +220,7 @@ QnA ペアをナレッジ ベースに追加すると、回答のマークダウ
 <details>
 <summary><b>SharePoint リンクが抽出されません。なぜでしょうか?</b></summary>
 
-**回答**: 詳細については、「[Data source locations (データ ソースの場所)](./Concepts/knowledge-base.md#data-source-locations)」を参照してください。
+**回答**: 詳細については、「[Data source locations (データ ソースの場所)](./concepts/data-sources-and-content.md#data-source-locations)」を参照してください。
 
 </details>
 
@@ -250,7 +250,7 @@ QnA ペアをナレッジ ベースに追加すると、回答のマークダウ
 <details>
 <summary><b>QnA Maker では英語以外の言語もサポートされますか。</b></summary>
 
-**回答**: 詳細については、[サポートされている言語](./Overview/languages-supported.md)に関するページを参照してください。
+**回答**: 詳細については、[サポートされている言語](./overview/language-support.md)に関するページを参照してください。
 
 多言語コンテンツが含まれる場合は、言語ごとにサービスを作成してください。
 
@@ -366,7 +366,7 @@ QnA ペアをナレッジ ベースに追加すると、回答のマークダウ
 <details>
 <summary><b>QnA Maker を利用するには Bot Framework を使う必要がありますか?</b></summary>
 
-**回答**: いいえ。QnA Maker に関して [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) を使用する必要はありません。 ただし、QnA Maker は [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0&preserve-view=true) に用意されているいくつかのテンプレートの 1 つとして提供されています。 Bot Service では、Microsoft Bot Framework を使用してインテリジェントなボットを迅速に開発し、サーバーレス環境で実行することができます。
+**回答**: いいえ。QnA Maker に関して [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) を使用する必要はありません。 ただし、QnA Maker は [Azure Bot Service](/azure/bot-service/?preserve-view=true&view=azure-bot-service-4.0) に用意されているいくつかのテンプレートの 1 つとして提供されています。 Bot Service では、Microsoft Bot Framework を使用してインテリジェントなボットを迅速に開発し、サーバーレス環境で実行することができます。
 
 </details>
 
@@ -405,7 +405,7 @@ QnA ペアをナレッジ ベースに追加すると、回答のマークダウ
 **回答**: Web サイトに QnA Maker サービスを Web チャット コントロールとして埋め込むには、次の手順に従ってください。
 
 1. [こちら](./Quickstarts/create-publish-knowledge-base.md)の手順に従って、FAQ ボットを作成します。
-2. [こちら](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat)の手順に従って、Web チャットを有効にします。
+2. [こちら](/azure/bot-service/bot-service-channel-connect-webchat)の手順に従って、Web チャットを有効にします。
 
 </details>
 
@@ -415,7 +415,7 @@ QnA ペアをナレッジ ベースに追加すると、回答のマークダウ
 <details>
 <summary><b>QnA Maker を利用するには Bot Framework を使う必要がありますか?</b></summary>
 
-**回答**: いいえ。QnA Maker に関して [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) を使用する必要はありません。 ただし、QnA Maker は [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0&preserve-view=true) に用意されているいくつかのテンプレートの 1 つとして提供されています。 Bot Service では、Microsoft Bot Framework を使用してインテリジェントなボットを迅速に開発し、サーバーレス環境で実行することができます。
+**回答**: いいえ。QnA Maker に関して [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) を使用する必要はありません。 ただし、QnA Maker は [Azure Bot Service](/azure/bot-service/?preserve-view=true&view=azure-bot-service-4.0) に用意されているいくつかのテンプレートの 1 つとして提供されています。 Bot Service では、Microsoft Bot Framework を使用してインテリジェントなボットを迅速に開発し、サーバーレス環境で実行することができます。
 
 </details>
 
@@ -454,7 +454,7 @@ QnA ペアをナレッジ ベースに追加すると、回答のマークダウ
 **回答**: Web サイトに QnA Maker サービスを Web チャット コントロールとして埋め込むには、次の手順に従ってください。
 
 1. [こちら](./Quickstarts/create-publish-knowledge-base.md)の手順に従って、FAQ ボットを作成します。
-2. [こちら](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat)の手順に従って、Web チャットを有効にします。
+2. [こちら](/azure/bot-service/bot-service-channel-connect-webchat)の手順に従って、Web チャットを有効にします。
 
 ---
 

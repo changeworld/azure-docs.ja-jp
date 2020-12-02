@@ -5,16 +5,16 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: how-to
 ms.date: 11/09/2020
-ms.openlocfilehash: ceff3127eba724ba9aa9bc8f9398d0f27ba687eb
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 5aab021ab5194b4af18e3ff1b2c154ed74710353
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376611"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346122"
 ---
 # <a name="change-default-answer-for-a-qna-maker-resource"></a>QnA Maker リソースの既定の回答を変更する
 
-ナレッジ ベースの既定の回答は、回答が見つからない場合に返されることを意図しています。 [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna) などのクライアント アプリケーションを使用している場合は、スコアしきい値を満たす回答がないことを示す別個の既定の回答が用意されている場合もあります。
+ナレッジ ベースの既定の回答は、回答が見つからない場合に返されることを意図しています。 [Azure Bot Service](/azure/bot-service/bot-builder-howto-qna) などのクライアント アプリケーションを使用している場合は、スコアしきい値を満たす回答がないことを示す別個の既定の回答が用意されている場合もあります。
 
 ## <a name="types-of-default-answer"></a>既定の回答の種類
 
@@ -24,15 +24,15 @@ ms.locfileid: "94376611"
 
 |既定の回答の種類|回答の説明|
 |--|--|
-|回答が決定されないときの KB 回答|`No good match found in KB.` - [GenerateAnswer API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) で質問に対応する回答が見つからないとき、App Service の `DefaultAnswer` 設定が返されます。 同じ QnA Maker リソース内のすべてのナレッジ ベースは、同じ既定の回答テキストを共有します。<br>Azure portal、App Service、あるいは設定を[取得](https://docs.microsoft.com/rest/api/appservice/webapps/listapplicationsettings)または[更新](https://docs.microsoft.com/rest/api/appservice/webapps/updateapplicationsettings)するための REST API を利用し、設定を管理できます。|
-|フォローアップ プロンプトの指示テキスト|会話フローでフォローアップ プロンプトを使用するとき、ユーザーにフォローアップ プロンプトから選択してもらうため、QnA ペアの回答は場合によっては不要です。 この場合、フォローアップ プロンプトの予測ごとに返される既定の回答テキストを設定することで特定のテキストを設定します。 このテキストは、フォローアップ プロンプトの選択時、指示テキストとして表示されます。 この既定の回答テキストの例が `Please select from the following choices` です。 この構成については、このドキュメントの後続セクションで説明しています。 [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create) を使用し、`defaultAnswerUsedForExtraction` のナレッジ ベース定義の一部としても設定できます。|
+|回答が決定されないときの KB 回答|`No good match found in KB.` - [GenerateAnswer API](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) で質問に対応する回答が見つからないとき、App Service の `DefaultAnswer` 設定が返されます。 同じ QnA Maker リソース内のすべてのナレッジ ベースは、同じ既定の回答テキストを共有します。<br>Azure portal、App Service、あるいは設定を[取得](/rest/api/appservice/webapps/listapplicationsettings)または[更新](/rest/api/appservice/webapps/updateapplicationsettings)するための REST API を利用し、設定を管理できます。|
+|フォローアップ プロンプトの指示テキスト|会話フローでフォローアップ プロンプトを使用するとき、ユーザーにフォローアップ プロンプトから選択してもらうため、QnA ペアの回答は場合によっては不要です。 この場合、フォローアップ プロンプトの予測ごとに返される既定の回答テキストを設定することで特定のテキストを設定します。 このテキストは、フォローアップ プロンプトの選択時、指示テキストとして表示されます。 この既定の回答テキストの例が `Please select from the following choices` です。 この構成については、このドキュメントの後続セクションで説明しています。 [REST API](/rest/api/cognitiveservices/qnamaker/knowledgebase/create) を使用し、`defaultAnswerUsedForExtraction` のナレッジ ベース定義の一部としても設定できます。|
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
 
 |既定の回答の種類|回答の説明|
 |--|--|
-|回答が決定されないときの KB 回答|`No good match found in KB.` - [GenerateAnswer API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) で質問に対応する回答が見つからないとき、既定のテキスト応答が表示されます。 QnA Maker マネージド (プレビュー) では、ナレッジ ベースの **[設定]** でこのテキストを設定できます。 <br><br> ![QnA Maker マネージド (プレビュー) 既定の回答を設定する](../media/qnamaker-how-change-default-answer/qnamaker-v2-change-default-answer.png)|
-|フォローアップ プロンプトの指示テキスト|会話フローでフォローアップ プロンプトを使用するとき、ユーザーにフォローアップ プロンプトから選択してもらうため、QnA ペアの回答は場合によっては不要です。 この場合、フォローアップ プロンプトの予測ごとに返される既定の回答テキストを設定することで特定のテキストを設定します。 このテキストは、フォローアップ プロンプトの選択時、指示テキストとして表示されます。 この既定の回答テキストの例が `Please select from the following choices` です。 この構成については、このドキュメントの後続セクションで説明しています。 `defaultAnswerUsedForExtraction` でナレッジ ベースを定義するとき、[REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create) を使用してこれを設定することもできます。|
+|回答が決定されないときの KB 回答|`No good match found in KB.` - [GenerateAnswer API](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) で質問に対応する回答が見つからないとき、既定のテキスト応答が表示されます。 QnA Maker マネージド (プレビュー) では、ナレッジ ベースの **[設定]** でこのテキストを設定できます。 <br><br> ![QnA Maker マネージド (プレビュー) 既定の回答を設定する](../media/qnamaker-how-change-default-answer/qnamaker-v2-change-default-answer.png)|
+|フォローアップ プロンプトの指示テキスト|会話フローでフォローアップ プロンプトを使用するとき、ユーザーにフォローアップ プロンプトから選択してもらうため、QnA ペアの回答は場合によっては不要です。 この場合、フォローアップ プロンプトの予測ごとに返される既定の回答テキストを設定することで特定のテキストを設定します。 このテキストは、フォローアップ プロンプトの選択時、指示テキストとして表示されます。 この既定の回答テキストの例が `Please select from the following choices` です。 この構成については、このドキュメントの後続セクションで説明しています。 `defaultAnswerUsedForExtraction` でナレッジ ベースを定義するとき、[REST API](/rest/api/cognitiveservices/qnamaker/knowledgebase/create) を使用してこれを設定することもできます。|
 
 ---
 

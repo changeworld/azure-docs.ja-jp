@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 2016d6dfedef68c334758660e9affa0ad9b9d4a3
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 2c159e25195c5f144187268b4355c1078695e809
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505242"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345527"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker の新機能
 
@@ -56,17 +56,17 @@ QnA Maker の新機能について説明します。
 
 ### <a name="november-2019"></a>2019 年 11 月
 
-* QnA Maker に対する[政府クラウドのサポート](https://docs.microsoft.com/azure/azure-government/documentation-government-services-aiandcognitiveservices#qna-maker)
-* [複数ターン](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/multiturn-conversation)機能が一般提供になりました
-* レベル 1 の言語で[おしゃべりのサポート](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base#language-support)が利用可能になりました
+* QnA Maker に対する[政府クラウドのサポート](../../azure-government/compare-azure-government-global-azure.md#guidance-for-developers)
+* [複数ターン](./how-to/multiturn-conversation.md)機能が一般提供になりました
+* レベル 1 の言語で[おしゃべりのサポート](./how-to/chit-chat-knowledge-base.md#language-support)が利用可能になりました
 
 ### <a name="october-2019"></a>2019 年 10 月
 
-* QnA Maker サービスにおけるすべてのナレッジ ベースの[言語を明示的に設定](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base)
+* QnA Maker サービスにおけるすべてのナレッジ ベースの[言語を明示的に設定](./index.yml)
 
 ### <a name="september-2019"></a>2019 年 9 月
 
-* [XLS ファイル形式](concepts/content-types.md)を使用したインポートとエクスポート
+* [XLS ファイル形式](./index.yml)を使用したインポートとエクスポート
 
 ### <a name="june-2019"></a>2019 年 6 月
 

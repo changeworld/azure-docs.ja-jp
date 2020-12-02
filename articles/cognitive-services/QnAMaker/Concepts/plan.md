@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 0be2fecfad4d2a2b829266fa1d9574bcc4c50eee
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 048b53186aa0be388d9d801cd6590d4295a4faa7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376679"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353172"
 ---
 # <a name="plan-your-qna-maker-app"></a>QnA Maker アプリの計画
 
@@ -94,13 +94,13 @@ QnA Maker リソースに作成された 1 つ目のナレッジ ベースによ
 
 ### <a name="ingest-data-sources"></a>データ ソースを取り込む
 
-取り込まれた次の[データ ソース](knowledge-base.md)のいずれかを使用して、ナレッジ ベースを作成することができます。
+取り込まれた次の[データ ソース](../index.yml)のいずれかを使用して、ナレッジ ベースを作成することができます。
 
 * パブリック URL
 * SharePoint のプライベート URL
 * ファイル
 
-インジェスト プロセスでは、[サポートされているコンテンツの種類](content-types.md)がマークダウンに変換されます。 *回答* のそれ以上の編集はすべて、マークダウンを使用して行われます。 ナレッジ ベースを作成した後は、[リッチ テキスト作成](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer)を使用して、QnA Maker ポータルで [QnA ペア](question-answer-set.md)を編集できます。
+インジェスト プロセスでは、[サポートされているコンテンツの種類](../index.yml)がマークダウンに変換されます。 *回答* のそれ以上の編集はすべて、マークダウンを使用して行われます。 ナレッジ ベースを作成した後は、[リッチ テキスト作成](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer)を使用して、QnA Maker ポータルで [QnA ペア](question-answer-set.md)を編集できます。
 
 ### <a name="data-format-considerations"></a>データ形式に関する考慮事項
 
@@ -124,17 +124,17 @@ QnA ペアの最終的な形式はマークダウンであるため、[マーク
 
 コラボレーターは、ナレッジ ベース アプリケーションの完全な開発スタックを共有する他の開発者であることも、ナレッジ ベースの作成のみに制限されていることもあります。
 
-ナレッジ ベースの作成では、コラボレーターの機能の範囲を制限するために、Azure portal で適用するいくつかの[ロールベースのアクセス許可](../how-to/collaborate-knowledge-base.md)をサポートしています。
+ナレッジ ベースの作成では、コラボレーターの機能の範囲を制限するために、Azure portal で適用するいくつかの[ロールベースのアクセス許可](../index.yml)をサポートしています。
 
 ## <a name="integration-with-client-applications"></a>クライアント アプリケーションとの統合
 
-[クライアント アプリケーション](integration-with-other-applications.md)との統合は、予測ランタイム エンドポイントにクエリを送信することで実現します。 クエリは、QnA Maker の Web アプリ エンドポイントへの SDK または REST ベースの要求と共に、特定のナレッジ ベースに送信されます。
+[クライアント アプリケーション](../index.yml)との統合は、予測ランタイム エンドポイントにクエリを送信することで実現します。 クエリは、QnA Maker の Web アプリ エンドポイントへの SDK または REST ベースの要求と共に、特定のナレッジ ベースに送信されます。
 
 クライアント要求を正しく認証するためには、クライアント アプリケーションが正しい資格情報とナレッジ ベース ID を送信する必要があります。 Azure Bot Service を使用する場合は、Azure portal でボット構成の一部として設定を構成します。
 
 ### <a name="conversation-flow-in-a-client-application"></a>クライアント アプリケーションでの会話フロー
 
-Azure ボットなどの[クライアント アプリケーション](integration-with-other-applications.md)での会話フローでは、ナレッジ ベースとの対話の前後に機能が必要になる場合があります。
+Azure ボットなどの[クライアント アプリケーション](../index.yml)での会話フローでは、ナレッジ ベースとの対話の前後に機能が必要になる場合があります。
 
 お使いのクライアント アプリケーションは、フォローアップ プロンプトを処理する別の手段を提供するか、おしゃべりを含めることで、会話フローをサポートしていますか。 その場合は、これらを早期に設計し、別のサービスによって、またはナレッジ ベースに送信されたときに、クライアント アプリケーション クエリが正しく処理されるようにします。
 
@@ -152,7 +152,7 @@ QnA Maker では、_アクティブ ラーニング_ を使用して、回答に
 
 ### <a name="providing-a-default-answer"></a>既定の回答の提供
 
-ナレッジ ベースは、回答が見つからない場合は _既定の回答_ を返します。 この回答は、QnA Maker ポータルの **[設定]** ページ、または [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body) で構成できます。
+ナレッジ ベースは、回答が見つからない場合は _既定の回答_ を返します。 この回答は、QnA Maker ポータルの **[設定]** ページ、または [API](/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body) で構成できます。
 
 この既定の回答は、Azure ボットの既定の回答とは異なります。 構成設定の一環として、Azure portal で Azure ボットの既定の回答を構成します。 これは、スコアのしきい値が満たされない場合に返されます。
 
@@ -197,7 +197,7 @@ QnA Maker マネージド (プレビュー) では、ランタイムは QnA Make
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
 
-マネージド デプロイでは、テレメトリは [Azure Monitor サービス](https://docs.microsoft.com/azure/azure-monitor/)経由で提供されます。 [上位のクエリ](../how-to/get-analytics-knowledge-base.md)を使用して、メトリックを理解します。
+マネージド デプロイでは、テレメトリは [Azure Monitor サービス](../../../azure-monitor/index.yml)経由で提供されます。 [上位のクエリ](../how-to/get-analytics-knowledge-base.md)を使用して、メトリックを理解します。
 
 
 ---
@@ -217,7 +217,7 @@ QnA Maker マネージド (プレビュー) では、ランタイムは QnA Make
 
 ### <a name="devops-development"></a>DevOps 開発
 
-DevOps パイプラインに挿入するナレッジ ベースを開発するには、[バッチ テスト](../quickstarts/batch-testing.md)中にナレッジ ベースを分離する必要があります。
+DevOps パイプラインに挿入するナレッジ ベースを開発するには、[バッチ テスト](../index.yml)中にナレッジ ベースを分離する必要があります。
 
 ナレッジ ベースは、QnA Maker リソースの他のすべてのナレッジ ベースと Cognitive Search インデックスを共有します。 ナレッジ ベースはパーティションによって分離されますが、インデックスを共有すると、発行されたナレッジ ベースと比較したときにスコアの差が生じる可能性があります。
 

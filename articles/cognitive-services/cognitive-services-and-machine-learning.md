@@ -7,12 +7,12 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 96cca89b1206aaa7890648def694074a18b2aa17
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 4ab32cd37d732cd9f177363da547edd22bd5af77
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368867"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349267"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services と機械学習
 
@@ -44,7 +44,7 @@ Cognitive Services は次の場合に使用します。
 
 機械学習システムを構築するプロセスでは、機械学習やデータ サイエンスの知識がある程度必要になります。
 
-機械学習は、[Azure Machine Learning (AML) の製品とサービス](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure%252fmachine-learning%252fstudio%252fcontext%252fml-context)を通じて提供されます。
+機械学習は、[Azure Machine Learning (AML) の製品とサービス](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure%2fmachine-learning%2fstudio%2fcontext%2fml-context)を通じて提供されます。
 
 ## <a name="what-is-a-cognitive-service"></a>Cognitive Services とは
 
@@ -71,13 +71,13 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 
 ### <a name="no-additional-training-data-required"></a>追加のトレーニング データが不要
 
-完全にトレーニングされたモデルを提供するサービスは、" _不透明のボックス_ " として扱われます。 その仕組みやトレーニングに使用されたデータを知る必要はありません。 完全にトレーニングされたモデルに自分のデータを取り込むことで予測が得られます。 
+完全にトレーニングされたモデルを提供するサービスは、"_不透明のボックス_" として扱われます。 その仕組みやトレーニングに使用されたデータを知る必要はありません。 完全にトレーニングされたモデルに自分のデータを取り込むことで予測が得られます。 
 
 ### <a name="some-or-all-training-data-required"></a>トレーニング データが一部または全部必要
 
 一部のサービスでは、自分のデータを取り込んでからモデルをトレーニングすることができます。 これにより、サービスのデータとアルゴリズムに自分のデータを加えてモデルを拡張できます。 出力はニーズに合ったものとなります。 自分のデータを取り込むときに、サービスに固有の方法でデータにタグを付ける必要がある場合があります。 たとえば、花を識別するようにモデルをトレーニングする場合は、花の画像のカタログを、各画像における花の位置と共に提供してモデルをトレーニングできます。 
 
-あるサービスは、独自のデータを強化するためにユーザーにデータの提供を " _許可_ " します。 あるサービスは、ユーザーにデータの提供を " _要求_ " します。 
+あるサービスは、独自のデータを強化するためにユーザーにデータの提供を "_許可_" します。 あるサービスは、ユーザーにデータの提供を "_要求_" します。 
 
 ### <a name="real-time-or-near-real-time-data-required"></a>リアルタイムまたはほぼリアルタイムのデータが必要
 

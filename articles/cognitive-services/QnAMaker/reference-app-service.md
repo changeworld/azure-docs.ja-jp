@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: 1dfe14d96efd37e3dec7faeae1dfff21122958bc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e7dfc6db50432b19d515671fabe26edf9cfb45ef
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95894203"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345670"
 ---
 # <a name="service-configuration"></a>サービス構成
 
@@ -20,7 +20,7 @@ QnA Maker の各バージョンには、異なる Azure リソース (サービ�
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
-QnA Maker は、App Service を使用して、[generateAnswer API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/runtime/generateanswer) が使用するクエリ ランタイムを提供します。
+QnA Maker は、App Service を使用して、[generateAnswer API](/rest/api/cognitiveservices/qnamaker4.0/runtime/generateanswer) が使用するクエリ ランタイムを提供します。
 
 これらの設定は、App Service 用に Azure portal に用意されています。 この設定は、 **[設定]** 、 **[構成]** を選択して使用できます。
 

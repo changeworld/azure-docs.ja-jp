@@ -7,23 +7,23 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-java
 ms.topic: how-to
-ms.openlocfilehash: 34184123a3fc096c014dc0185b51b088c59a6e04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e2e902e0563e0f4ae8c0c3d0dc795a8260c62db
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777519"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351165"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>クイック スタート:Java を使用して QnA Maker のナレッジ ベースを公開する
 
 この REST ベースのクイック スタートでは、ナレッジ ベース (KB) をプログラムから公開する手順を紹介しています。 公開すると、ナレッジ ベースの最新バージョンが、専用の Azure Cognitive Search インデックスにプッシュされ、アプリケーションやチャット ボット内で呼び出すことができるエンドポイントが作成されます。
 
 このクイック スタートで呼び出す QnA Maker API は次のとおりです。
-* [公開](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) - この API は、要求の本文に情報を必要としません。
+* [公開](/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) - この API は、要求の本文に情報を必要としません。
 
 ## <a name="prerequisites"></a>前提条件
 
-* [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit Standard Edition)
+* [JDK SE](/azure/developer/java/fundamentals/java-jdk-long-term-support) (Java Development Kit Standard Edition)
 * このサンプルでは、HTTP Components の Apache [HTTP クライアント](https://hc.apache.org/httpcomponents-client-ga/)を使用しています。 以下の Apache HTTP クライアント ライブラリをプロジェクトに追加する必要があります。
     * httpclient-4.5.3.jar
     * httpcore-4.4.6.jar
@@ -101,4 +101,4 @@ public class PublishKB {
 ナレッジ ベースが公開された後、[回答を生成するためのエンドポイント URL](./get-answer-from-knowledge-base-java.md) が必要になります。
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API リファレンス](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [QnA Maker (V4) REST API リファレンス](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)

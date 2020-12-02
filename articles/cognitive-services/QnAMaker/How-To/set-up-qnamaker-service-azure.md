@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: ccd070d2d7a6fcccab6d243567dfbe02960cc870
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 83917214705546b21553e997ccab11a7511f77fd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376410"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353308"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker のリソースを管理する
 
@@ -81,7 +81,7 @@ QnA Maker 管理 SKU をアップグレードするには、次の手順に従�
 
  ナレッジ ベースでクライアント アプリからのより多くの要求に対応する必要がある場合は、App Service の価格レベルをアップグレードします。
 
-App Service は、[スケールアップ](https://docs.microsoft.com/azure/app-service/manage-scale-up)またはスケールアウトすることができます。
+App Service は、[スケールアップ](../../../app-service/manage-scale-up.md)またはスケールアウトすることができます。
 
 Azure portal で App Service リソースに移動し、必要に応じて **[スケールアップ]** と **[スケールアウト]** のどちらかのオプションを選択します。
 
@@ -133,6 +133,7 @@ App Service Environment を使用して、QnA Maker App Service をホストで�
 2. アプリ サービスを公開し、QnA Maker の利用を次のように許可します。
     * 一般公開 - 既定
     * DNS サービス タグ: `CognitiveServicesManagement`
+3. Azure Resource Manager を使用して QnA Maker Cognitive Services インスタンス (Microsoft.CognitiveServices/accounts) を作成します。QnA Maker エンドポイントは App Service Environment に設定する必要があります。
 
 ### <a name="network-isolation-for-app-service"></a>App Service のためのネットワークの分離
 
@@ -143,8 +144,6 @@ QnA Maker コグニティブ サービスでは、サービス タグ `Cognitive
 * App Service リソースのネットワーク セクションに移動し、[アクセス制限の構成] をクリックして、許可リストに IP を追加します。
 
 また、App Service に対して同じ処理を行う自動スクリプトも用意されています。 [許可リストを構成するための PowerShell スクリプト](https://github.com/pchoudhari/QnAMakerBackupRestore/blob/master/AddRestrictedIPAzureAppService.ps1)については、GitHub 上にあります。 スクリプト パラメーターとして、サブスクリプション ID、リソース グループ、および実際の App Service 名を入力する必要があります。 スクリプトを実行すると、App Service の許可リストに IP が自動的に追加されます。
-    
-1. Azure Resource Manager を使用して QnA Maker Cognitive Services インスタンス (Microsoft.CognitiveServices/accounts) を作成します。QnA Maker エンドポイントは App Service Environment に設定する必要があります。
 
 ### <a name="business-continuity-with-traffic-manager"></a>トラフィック マネージャーを使用したビジネス継続性
 
@@ -155,13 +154,13 @@ QnA Maker コグニティブ サービスでは、サービス タグ `Cognitive
 
 上に示した概念の説明は次のとおりです。
 
-1. [ペアになっている Azure リージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)に、同一の [QnA Maker サービス](set-up-qnamaker-service-azure.md)を 1 つずつ、計 2 つ設定します。
+1. [ペアになっている Azure リージョン](../../../best-practices-availability-paired-regions.md)に、同一の [QnA Maker サービス](set-up-qnamaker-service-azure.md)を 1 つずつ、計 2 つ設定します。
 
 1. プライマリ QnA Maker App サービスを[バックアップ](../../../app-service/manage-backup.md)して、セカンダリ セットアップで[復元](../../../app-service/web-sites-restore.md)します。 これにより、両方のセットアップが同じホスト名とキーで動作するようになります。
 
 1. プライマリとセカンダリの Azure 検索インデックスを常に同期しておきます。Azure のインデックスをバックアップおよび復元する方法については、[GitHub](https://github.com/pchoudhari/QnAMakerBackupRestore) でサンプルを参照してください。
 
-1. [連続エクスポート](../../../application-insights/app-insights-export-telemetry.md)を使って Application Insights をバックアップします。
+1. [連続エクスポート](../../../azure-monitor/app/export-telemetry.md)を使って Application Insights をバックアップします。
 
 1. プライマリとセカンダリのスタックを設定したら、[トラフィック マネージャー](../../../traffic-manager/traffic-manager-overview.md)を使用して 2 つのエンドポイントを構成し、ルーティング方法を設定します。
 
@@ -387,4 +386,4 @@ QnA Maker ナレッジ ベースに使用されているいずれかの Azure �
 [App Service](../../../app-service/index.yml) と [Search Service](../../../search/index.yml) の詳細をご覧ください。
 
 > [!div class="nextstepaction"]
-> [他のユーザーとの作成方法の詳細をご覧ください](../how-to/collaborate-knowledge-base.md)
+> [他のユーザーとの作成方法の詳細をご覧ください](../index.yml)

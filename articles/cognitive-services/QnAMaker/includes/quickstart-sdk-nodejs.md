@@ -4,12 +4,12 @@ description: このクイックスタートでは、Node.js 用 QnA Maker クラ
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: b64379e81f6c4d3da37526d75e08bc0fbed37103
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9eb79223e91d31c76631d17263f6f33632824266
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91253933"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351076"
 ---
 Node.js 用 QnA Maker クライアント ライブラリは、次の目的で使用することができます。
 
@@ -22,7 +22,7 @@ Node.js 用 QnA Maker クライアント ライブラリは、次の目的で使
 * 回答の取得
 * ナレッジ ベースの削除
 
-[リファレンスのドキュメント](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | [Node.js のサンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/qnamaker_quickstart.js)
+[リファレンスのドキュメント](/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | [Node.js のサンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/qnamaker_quickstart.js)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -71,7 +71,7 @@ index.js という名前のファイルを作成し、次のライブラリを�
 > [!IMPORTANT]
 > Azure portal に移動し、前提条件で作成した QnA Maker リソースのキーとエンドポイントを探します。 それらは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。
 > ナレッジ ベースを作成するには、キー全体が必要です。 エンドポイントから必要となるのはリソース名のみです。 形式は `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` です。
-> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 たとえば、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) で安全なキー記憶域を確保できます。
+> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 たとえば、[Azure Key Vault](../../../key-vault/general/overview.md) で安全なキー記憶域を確保できます。
 
 [!code-javascript[Set the resource key and resource name](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=Resourcevariables)]
 
@@ -84,15 +84,15 @@ QnA Maker には、次の 2 種類のオブジェクト モデルが使用され
 
 ### <a name="qnamakerclient-object-model"></a>QnAMakerClient オブジェクト モデル
 
-作成 QnA Maker クライアントは、キーが含まれている資格情報を使用して Azure に対して認証する [QnAMakerClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest) オブジェクトです。
+作成 QnA Maker クライアントは、キーが含まれている資格情報を使用して Azure に対して認証する [QnAMakerClient](/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest) オブジェクトです。
 
-クライアントが作成されたら、[knowledgebase](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest#knowledgebase) を使用して、ナレッジ ベースを作成、管理、公開します。
+クライアントが作成されたら、[knowledgebase](/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest#knowledgebase) を使用して、ナレッジ ベースを作成、管理、公開します。
 
-JSON オブジェクトを送信して、ナレッジ ベースを管理します。 即時操作の場合は、通常、状態を示す JSON オブジェクトがメソッドから返されます。 実行時間の長い操作の場合、応答は操作 ID になります。 [client.operations.getDetails](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/operations?view=azure-node-latest#getdetails-string--msrest-requestoptionsbase-) メソッドを操作 ID と共に呼び出して、[要求の状態](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/operation?view=azure-node-latest)を確認します。
+JSON オブジェクトを送信して、ナレッジ ベースを管理します。 即時操作の場合は、通常、状態を示す JSON オブジェクトがメソッドから返されます。 実行時間の長い操作の場合、応答は操作 ID になります。 [client.operations.getDetails](/javascript/api/@azure/cognitiveservices-qnamaker/operations?view=azure-node-latest#getdetails-string--msrest-requestoptionsbase-) メソッドを操作 ID と共に呼び出して、[要求の状態](/javascript/api/@azure/cognitiveservices-qnamaker/operation?view=azure-node-latest)を確認します。
 
 ### <a name="qnamakerruntimeclient-object-model"></a>QnAMakerRuntimeClient オブジェクト モデル
 
-予測の QnA Maker クライアントは、QnAMakerRuntimeClient オブジェクトです。ナレッジ ベースの公開後に作成クライアントの呼び出し ([client.EndpointKeys.getKeys](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/endpointkeys?view=azure-node-latest#getkeys-msrest-requestoptionsbase-)) から返される Microsoft.Rest.ServiceClientCredentials (予測ランタイム キーを含む) を使用して Azure に対する認証を行います。
+予測の QnA Maker クライアントは、QnAMakerRuntimeClient オブジェクトです。ナレッジ ベースの公開後に作成クライアントの呼び出し ([client.EndpointKeys.getKeys](/javascript/api/@azure/cognitiveservices-qnamaker/endpointkeys?view=azure-node-latest#getkeys-msrest-requestoptionsbase-)) から返される Microsoft.Rest.ServiceClientCredentials (予測ランタイム キーを含む) を使用して Azure に対する認証を行います。
 
 
 ## <a name="code-examples"></a>コード例
@@ -114,17 +114,17 @@ JSON オブジェクトを送信して、ナレッジ ベースを管理しま�
 
 ## <a name="authenticate-the-client-for-authoring-the-knowledge-base"></a>ナレッジ ベースを作成するためのクライアントを認証する
 
-ご利用のエンドポイントとキーを使用してクライアントをインスタンス化します。 自分のキーを使用して ServiceClientCredentials オブジェクトを作成し、それを自分のエンドポイントと共に使用して、[QnAMakerClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest) オブジェクトを作成します。
+ご利用のエンドポイントとキーを使用してクライアントをインスタンス化します。 自分のキーを使用して ServiceClientCredentials オブジェクトを作成し、それを自分のエンドポイントと共に使用して、[QnAMakerClient](/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest) オブジェクトを作成します。
 
 [!code-javascript[Create QnAMakerClient object with key and endpoint](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=AuthorizationAuthor)]
 
 ## <a name="create-a-knowledge-base"></a>ナレッジ ベースの作成
 
-ナレッジ ベースには、次の 3 つのソースの [CreateKbDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/createkbdto?view=azure-node-latest) オブジェクトに対する質問と回答のペアが格納されます。
+ナレッジ ベースには、次の 3 つのソースの [CreateKbDTO](/javascript/api/@azure/cognitiveservices-qnamaker/createkbdto?view=azure-node-latest) オブジェクトに対する質問と回答のペアが格納されます。
 
-* **本文**の場合は、[QnADTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnadto?view=azure-node-latest) オブジェクトを使用します。
+* **本文** の場合は、[QnADTO](/javascript/api/@azure/cognitiveservices-qnamaker/qnadto?view=azure-node-latest) オブジェクトを使用します。
     * メタデータとフォローアップ プロンプトを使用するには、編集コンテキストを使用します (このデータは個々の QnA ペア レベルで追加されるため)。
-* **ファイル**の場合は、[FileDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/filedto?view=azure-node-latest) オブジェクトを使用します。 FileDTO には、ファイル名と、ファイルに到達するためのパブリック URL が含まれます。
+* **ファイル** の場合は、[FileDTO](/javascript/api/@azure/cognitiveservices-qnamaker/filedto?view=azure-node-latest) オブジェクトを使用します。 FileDTO には、ファイル名と、ファイルに到達するためのパブリック URL が含まれます。
 * **URL** の場合は、公開されている URL を表す文字列のリストを使用します。
 
 作成手順には、ナレッジ ベースのプロパティも含まれます。
@@ -132,7 +132,7 @@ JSON オブジェクトを送信して、ナレッジ ベースを管理しま�
 * `enableHierarchicalExtraction` - 抽出された QnA ペア間のプロンプト関係を自動的に作成する
 * `language` - リソースの最初のナレッジ ベースを作成するときに、Azure Search インデックスで使用する言語を設定する
 
-ナレッジ ベース情報を使用して、[create](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#create-createkbdto--servicecallback-operation--) メソッドを呼び出します。 ナレッジ ベース情報は、基本的に JSON オブジェクトです。
+ナレッジ ベース情報を使用して、[create](/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#create-createkbdto--servicecallback-operation--) メソッドを呼び出します。 ナレッジ ベース情報は、基本的に JSON オブジェクトです。
 
 create メソッドから戻ったら、返された操作 ID を [wait_for_operation](#get-status-of-an-operation) メソッドに渡して、状態をポーリングします。 操作が完了すると、wait_for_operation メソッドから戻ってきます。 返された操作の `resourceLocation` ヘッダー値を解析して、新しいナレッジ ベース ID を取得します。
 
@@ -142,7 +142,7 @@ create メソッドから戻ったら、返された操作 ID を [wait_for_oper
 
 ## <a name="update-a-knowledge-base"></a>ナレッジ ベースの更新
 
-ナレッジ ベースを更新するには、ナレッジ ベース ID と、[add](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest#add)、[update](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest#update)、[delete](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest#deleteproperty) DTO オブジェクトを含む [UpdateKbOperationDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest) を、[update](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#update-string--updatekboperationdto--msrest-requestoptionsbase-) メソッドに渡します。 DTO も、基本的に JSON オブジェクトです。 更新が成功したかどうかを確認するには、[wait_for_operation](#get-status-of-an-operation) メソッドを使用します。
+ナレッジ ベースを更新するには、ナレッジ ベース ID と、[add](/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest#add)、[update](/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest#update)、[delete](/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest#deleteproperty) DTO オブジェクトを含む [UpdateKbOperationDTO](/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest) を、[update](/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#update-string--updatekboperationdto--msrest-requestoptionsbase-) メソッドに渡します。 DTO も、基本的に JSON オブジェクトです。 更新が成功したかどうかを確認するには、[wait_for_operation](#get-status-of-an-operation) メソッドを使用します。
 
 [!code-javascript[Update a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=UpdateKBMethod&highlight=74,81)]
 
@@ -150,14 +150,14 @@ create メソッドから戻ったら、返された操作 ID を [wait_for_oper
 
 ## <a name="download-a-knowledge-base"></a>ナレッジ ベースのダウンロード
 
-データベースを [QnADocumentsDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnadocumentsdto?view=azure-node-latest) のリストとしてダウンロードするには、[download](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#download-string--models-environmenttype--msrest-requestoptionsbase-) メソッドを使用します。 このメソッドの結果は TSV ファイルではないため、これは、QnA Maker ポータルの **[設定]** ページからのエクスポートと同等 "_ではありません_"。
+データベースを [QnADocumentsDTO](/javascript/api/@azure/cognitiveservices-qnamaker/qnadocumentsdto?view=azure-node-latest) のリストとしてダウンロードするには、[download](/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#download-string--models-environmenttype--msrest-requestoptionsbase-) メソッドを使用します。 このメソッドの結果は TSV ファイルではないため、これは、QnA Maker ポータルの **[設定]** ページからのエクスポートと同等 "_ではありません_"。
 
 [!code-javascript[Download a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=DownloadKB&highlight=2)]
 
 
 ## <a name="publish-a-knowledge-base"></a>ナレッジ ベースの公開
 
-[publish](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#publish-string--msrest-requestoptionsbase-) メソッドを使用して、ナレッジ ベースを公開します。 これにより、ナレッジ ベース ID によって参照される、最新の保存済みおよびトレーニング済みのモデルが取得され、エンドポイントで公開されます。 HTTP 応答コードを調べて、発行が成功したことを検証します。
+[publish](/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#publish-string--msrest-requestoptionsbase-) メソッドを使用して、ナレッジ ベースを公開します。 これにより、ナレッジ ベース ID によって参照される、最新の保存済みおよびトレーニング済みのモデルが取得され、エンドポイントで公開されます。 HTTP 応答コードを調べて、発行が成功したことを検証します。
 
 [!code-javascript[Publish a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=PublishKB&highlight=3)]
 
@@ -166,7 +166,7 @@ create メソッドから戻ったら、返された操作 ID を [wait_for_oper
 
 ナレッジ ベースの公開後、ランタイムに対してクエリを実行するには、クエリ ランタイム キーが必要です。 これは、元のクライアント オブジェクトを作成するときに使用したキーとは異なります。
 
-[EndpointKeys.getKeys](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/endpointkeys?view=azure-node-latest) メソッドを使用して、[EndpointKeysDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/endpointkeysdto?view=azure-node-latest) クラスを取得します。
+[EndpointKeys.getKeys](/javascript/api/@azure/cognitiveservices-qnamaker/endpointkeys?view=azure-node-latest) メソッドを使用して、[EndpointKeysDTO](/javascript/api/@azure/cognitiveservices-qnamaker/endpointkeysdto?view=azure-node-latest) クラスを取得します。
 
 そのオブジェクトに返されたいずれかのキー プロパティを使用して、ナレッジ ベースにクエリを実行します。
 
@@ -190,13 +190,13 @@ RuntimeClient.runtime.generateAnswer メソッドを使用して公開済みの�
 
 ## <a name="delete-a-knowledge-base"></a>ナレッジ ベースを削除する
 
-[delete](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#deletemethod-string--msrest-requestoptionsbase-) メソッドをナレッジ ベース ID のパラメーターと共に使用して、ナレッジ ベースを削除します。
+[delete](/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#deletemethod-string--msrest-requestoptionsbase-) メソッドをナレッジ ベース ID のパラメーターと共に使用して、ナレッジ ベースを削除します。
 
 [!code-javascript[Delete a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=DeleteKB&highlight=3)]
 
 ## <a name="get-status-of-an-operation"></a>操作の状態の取得
 
-create や update などのメソッドの中には、プロセスが終了するのを待つ代わりに、[操作](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/operations?view=azure-node-latest)が返されるのに十分な時間がかかるものがあります。 操作からの[操作 ID](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/operation?view=azure-node-latest#operationid) を使用して、(再試行ロジックを使用して) ポーリングし、元のメソッドの状態を判別します。
+create や update などのメソッドの中には、プロセスが終了するのを待つ代わりに、[操作](/javascript/api/@azure/cognitiveservices-qnamaker/operations?view=azure-node-latest)が返されるのに十分な時間がかかるものがあります。 操作からの[操作 ID](/javascript/api/@azure/cognitiveservices-qnamaker/operation?view=azure-node-latest#operationid) を使用して、(再試行ロジックを使用して) ポーリングし、元のメソッドの状態を判別します。
 
 次のコード ブロック内の _delayTimer_ 呼び出しは、再試行ロジックをシミュレートするために使用されています。 これを独自の再試行ロジックに置き換えます。
 

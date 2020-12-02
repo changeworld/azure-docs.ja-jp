@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.custom: cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: bf24d7c5ca88c47d3bfd8067a4e533ed413dde90
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 324f89d2de56666242ed4f6231eff0855ec561b3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918760"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356479"
 ---
 Python 用 Azure Content Moderator クライアント ライブラリの使用を開始します。 以下の手順に従って、PiPy パッケージをインストールし、基本タスクのコード例を試してみましょう。 
 
@@ -65,9 +65,9 @@ pip install --upgrade azure-cognitiveservices-vision-contentmoderator
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_vars)]
 
 > [!IMPORTANT]
-> Azure Portal にアクセスします。 「 **前提条件** 」セクションで作成した Content Moderator リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
+> Azure Portal にアクセスします。 「**前提条件**」セクションで作成した Content Moderator リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
 >
-> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 たとえば、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) が考えられます。
+> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 たとえば、[Azure Key Vault](../../../../key-vault/general/overview.md) が考えられます。
 
 ## <a name="object-model"></a>オブジェクト モデル
 
@@ -99,7 +99,7 @@ pip install --upgrade azure-cognitiveservices-vision-contentmoderator
 
 ## <a name="moderate-text"></a>テキストのモデレート
 
-次のコードでは、Content Moderator クライアントを使用してテキストの本文が分析され、結果がコンソールに出力されます。 まず、自分のプロジェクトのルートに **text_files/** フォルダーを作成し、 *content_moderator_text_moderation.txt* ファイルを追加します。 このファイルに独自のテキストを追加するか、次のサンプル テキストを使用します。
+次のコードでは、Content Moderator クライアントを使用してテキストの本文が分析され、結果がコンソールに出力されます。 まず、自分のプロジェクトのルートに **text_files/** フォルダーを作成し、*content_moderator_text_moderation.txt* ファイルを追加します。 このファイルに独自のテキストを追加するか、次のサンプル テキストを使用します。
 
 ```
 Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
@@ -120,7 +120,7 @@ Crap is the profanity here. Is this information PII? phone 2065550111
 
 ### <a name="get-sample-text"></a>サンプル テキストを取得する
 
-このサンプルを使用するには、自分のプロジェクトのルートに **text_files/** フォルダーを作成し、 *content_moderator_term_list.txt* ファイルを追加します。 このファイルには、用語のリストと照らし合わせて検査される、有機的なテキストが含まれている必要があります。 次のサンプル テキストを使用することができます。
+このサンプルを使用するには、自分のプロジェクトのルートに **text_files/** フォルダーを作成し、*content_moderator_term_list.txt* ファイルを追加します。 このファイルには、用語のリストと照らし合わせて検査される、有機的なテキストが含まれている必要があります。 次のサンプル テキストを使用することができます。
 
 ```
 This text contains the terms "term1" and "term2".

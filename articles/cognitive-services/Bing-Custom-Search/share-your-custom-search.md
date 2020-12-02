@@ -10,28 +10,28 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 90b6619a5a0c3d59b09eeb5a5002d15cf0c21e19
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6141bd67681df757536792981d47756a20ed33db
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095902"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353325"
 ---
 # <a name="share-your-custom-search-instance"></a>カスタム検索インスタンスの共有
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
-> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 インスタンスをチームのメンバーと共有することで、インスタンスの編集やテストを簡単に共同で行うことができます。 電子メール アドレスだけを使用して、任意のユーザーとインスタンスを共有できます。 インスタンスを共有する
 
 - [カスタム検索](https://customsearch.ai)にサインインします。
 - カスタム検索インスタンスの作成
 - 設定アイコン (歯車として表示される) をクリックします。 
-- **[インスタンスの共有]** で、インスタンスを共有するユーザーの電子メール アドレスを入力して、 **[共有]** をクリックします。 
+- **[インスタンスの共有]** で、インスタンスを共有するユーザーの電子メール アドレスを入力して、**[共有]** をクリックします。 
 
-電子メール アドレスを追加した後に、 **[インスタンスの共有者]** の一覧に追加します。 インスタンスを共有する各人に対してこのプロセスを繰り返します。 
+電子メール アドレスを追加した後に、**[インスタンスの共有者]** の一覧に追加します。 インスタンスを共有する各人に対してこのプロセスを繰り返します。 
 
 カスタム検索アカウントを持っていないユーザーの電子メールでも、一覧に追加することができます。 構成変更を行う前に、カスタム検索にサインアップする必要があります。 他のユーザーとインスタンスを共有すると、そのユーザーのカスタム検索インスタンスの一覧に表示されます。 インスタンスを変更できるのは、一度に 1 人のユーザーのみです。 他のユーザーが編集しているインスタンスを変更しようとすると、警告が表示されます。 インスタンスは、最大 10 ユーザーと共有することができます。
 

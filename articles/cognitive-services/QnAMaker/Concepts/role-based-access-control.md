@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: c3d6e21b45bccbdaeeee350bac79be680783eb24
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ecf81152605d77e1036c9fbf5d3308af2b1fb988
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147530"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346157"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>他の作成者や編集者との共同作業
 
@@ -42,11 +42,11 @@ QnA Maker リソースに設定された Azure ロールベースのアクセス
 |3|QnA Maker API によってトークンが検証されます。|
 |4 |QnA Maker API によって QnAMaker サービスが呼び出されます。|
 
-[オーサリング API](../How-To/collaborate-knowledge-base.md) を呼び出す場合は、認証を設定する方法の詳細を確認してください。
+[オーサリング API](../index.yml) を呼び出す場合は、認証を設定する方法の詳細を確認してください。
 
 ## <a name="authenticate-by-qna-maker-portal"></a>QnA Maker ポータルによる認証
 
-QnA Maker ポータルを使用して作成および共同作業を行う場合、[コラボレーター用のリソースに適切なロールを追加する](../How-To/collaborate-knowledge-base.md)と、QnA Maker ポータルによってすべてのアクセス許可が管理されます。
+QnA Maker ポータルを使用して作成および共同作業を行う場合、[コラボレーター用のリソースに適切なロールを追加する](../index.yml)と、QnA Maker ポータルによってすべてのアクセス許可が管理されます。
 
 ## <a name="authenticate-by-qna-maker-apis-and-sdks"></a>QnA Maker API および SDK による認証
 
@@ -54,4 +54,4 @@ REST または SDK を介して API を使用して作成および共同作業�
 
 ## <a name="next-step"></a>次のステップ
 
-* [言語](design-language-culture.md)および[クライアント アプリケーション](integration-with-other-applications.md)用のナレッジ ベースを設計する
+* [言語](../index.yml)および[クライアント アプリケーション](../index.yml)用のナレッジ ベースを設計する

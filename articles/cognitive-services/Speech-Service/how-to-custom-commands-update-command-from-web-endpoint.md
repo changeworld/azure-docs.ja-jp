@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: encorona
-ms.openlocfilehash: a24f1337a68f38db273688e9a91c65ac2f4736b4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 737b6e0534111924a31204d4548dfa59805c2fe5
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963608"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352577"
 ---
 # <a name="update-a-command-from-a-web-endpoint"></a>Web エンドポイントからコマンドを更新する
 
@@ -29,7 +29,7 @@ ms.locfileid: "94963608"
 
 ## <a name="create-an-azure-function"></a>Azure 関数の作成 
 
-この例では、次の入力 (またはこの入力のサブセット) をサポートする、HTTP によってトリガーされる [Azure 関数](https://docs.microsoft.com/azure/azure-functions/)が必要です。
+この例では、次の入力 (またはこの入力のサブセット) をサポートする、HTTP によってトリガーされる [Azure 関数](../../azure-functions/index.yml)が必要です。
 
 ```JSON
 {

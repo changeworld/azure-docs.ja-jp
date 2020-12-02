@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: d39e34bd85c4524a6f28d188f977a7ab37eecc58
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e1a8043912c984be46f85bd384a7049da27028b3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445015"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353240"
 ---
 # <a name="active-learning-suggestions"></a>アクティブ ラーニングの提案
 
@@ -137,7 +137,7 @@ QnA Maker では、どの回答が最適な回答であったかについて明�
 * 許容できるスコアの範囲を決定するなどのビジネス ロジック。
 * ユーザーのフィードバックとビジネス ロジックの両方の組み合わせ。
 
-[Train API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/runtime/train) を使用して、ユーザーが選択した後、正しい回答を QnA Maker に送信します。
+[Train API](/rest/api/cognitiveservices/qnamaker4.0/runtime/train) を使用して、ユーザーが選択した後、正しい回答を QnA Maker に送信します。
 
 ## <a name="next-step"></a>次のステップ
 

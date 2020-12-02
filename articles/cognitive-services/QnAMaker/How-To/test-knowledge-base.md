@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 21984a03947e4f9f60e705955cb1be3b2df8933c
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 273548ec095ce04772438a2d732b914d80d976cc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376193"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353155"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>QnA Maker のナレッジ ベースをテストする
 
@@ -323,4 +323,4 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [ナレッジ ベースの公開](./publish-knowledge-base.md)
+> [ナレッジ ベースの公開](../quickstarts/create-publish-knowledge-base.md)

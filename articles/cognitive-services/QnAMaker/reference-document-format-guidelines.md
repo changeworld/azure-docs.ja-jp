@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 04/06/2020
-ms.openlocfilehash: d35ea57a68e500deffa99033b83114ec518dd5e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1bf6eebcfc43452dd9a62e4a49f9aacbcd517ffc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776733"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352237"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>インポートされたドキュメントおよび URL の形式のガイドライン
 
@@ -20,9 +20,9 @@ ms.locfileid: "91776733"
 
 ファイルまたは URL をインポートすると、QnA Maker によってコンテンツは[マークダウン形式](https://en.wikipedia.org/wiki/Markdown)に変換され、保存されます。 変換プロセスによって、テキストに `\n\n` などの新しい行が追加されます。 マークダウン形式の知識があると、変換されたコンテンツを理解し、ナレッジ ベース コンテンツを管理するために役立ちます。
 
-ナレッジ ベースのコンテンツを直接追加または編集する場合は、**マークダウンの書式設定**を使用してリッチ テキスト コンテンツを作成するか、既に回答に含まれているマークダウン形式コンテンツを変更します。 QnA Maker は多くのマークダウン形式をサポートしているため、コンテンツにリッチ テキスト機能を取り込むことができます。 ただし、チャット ボットなどのクライアント アプリケーションは、同じマークダウン形式のセットをサポートしていない場合があります。 クライアント アプリケーションの回答の表示をテストすることが重要です。
+ナレッジ ベースのコンテンツを直接追加または編集する場合は、**マークダウンの書式設定** を使用してリッチ テキスト コンテンツを作成するか、既に回答に含まれているマークダウン形式コンテンツを変更します。 QnA Maker は多くのマークダウン形式をサポートしているため、コンテンツにリッチ テキスト機能を取り込むことができます。 ただし、チャット ボットなどのクライアント アプリケーションは、同じマークダウン形式のセットをサポートしていない場合があります。 クライアント アプリケーションの回答の表示をテストすることが重要です。
 
-[コンテンツの種類と例](./Concepts/content-types.md#file-and-url-data-types)の完全な一覧を参照してください。
+[コンテンツの種類と例](./concepts/data-sources-and-content.md#content-types-of-documents-you-can-add-to-a-knowledge-base)の完全な一覧を参照してください。
 
 ## <a name="basic-document-formatting"></a>基本的なドキュメントの書式設定
 
@@ -118,4 +118,4 @@ Answer2
 
 ## <a name="next-steps"></a>次のステップ
 
-[コンテンツの種類と例](./Concepts/content-types.md#file-and-url-data-types)の完全な一覧を参照してください
+[コンテンツの種類と例](./concepts/data-sources-and-content.md#content-types-of-documents-you-can-add-to-a-knowledge-base)の完全な一覧を参照してください

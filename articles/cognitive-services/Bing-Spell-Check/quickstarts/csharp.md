@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3229091a0effda7837b8e58fe8764910e3b6636d
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: ace7a0ccaba533c9e72961536159d32af5ab8d98
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366997"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352730"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>クイック スタート:Bing Spell Check REST API と C# を使用してスペルをチェックする
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
-> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関するページを参照してください。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関するページを参照してください。
 
 このクイック スタートを使用して、Bing Spell Check の REST API を呼び出してみましょう。 このシンプルな C# アプリケーションは、API に要求を送信して、一連の修正候補を返します。 
 
@@ -155,7 +155,7 @@ static void Main(string[] args)
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-プロジェクトをビルドして実行します。 Visual Studio を使用している場合は、 **F5** キーを押してファイルをデバッグします。
+プロジェクトをビルドして実行します。 Visual Studio を使用している場合は、**F5** キーを押してファイルをデバッグします。
 
 ## <a name="example-json-response"></a>JSON の応答例
 

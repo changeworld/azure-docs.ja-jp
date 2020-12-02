@@ -3,12 +3,12 @@ title: ナレッジ ベースに対してクエリを実行する - QnA Maker
 description: ナレッジ ベースは公開する必要があります。 公開されると、ナレッジ ベースに対するクエリは、generateAnswer API を使用してランタイム予測エンドポイントで実行されます。
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e8dd056a7b6357b8342d3059e17baa88db92b404
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: d8f986299edee46bf5cace7a9f4c805c29b3ce0c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376714"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346207"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>回答を求めてナレッジ ベースに対してクエリを実行する
 
@@ -18,7 +18,7 @@ ms.locfileid: "94376714"
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
-トレーニングされ、[公開された](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker ナレッジ ベースは、[GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage) で、ボットまたはその他のクライアント アプリケーションからユーザー クエリを受け取ります。 次の図は、ユーザー クエリを受け取ったときのプロセスを示しています。
+トレーニングされ、[公開された](../quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA Maker ナレッジ ベースは、[GenerateAnswer API](../how-to/metadata-generateanswer-usage.md) で、ボットまたはその他のクライアント アプリケーションからユーザー クエリを受け取ります。 次の図は、ユーザー クエリを受け取ったときのプロセスを示しています。
 
 ![ユーザー クエリのランク付けモデル プロセス](../media/qnamaker-concepts-knowledgebase/ranker-v1.png)
 
@@ -28,7 +28,7 @@ ms.locfileid: "94376714"
 
 |手順|目的|
 |--|--|
-|1|クライアント アプリケーションがユーザー クエリを [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage) に送信します。|
+|1|クライアント アプリケーションがユーザー クエリを [GenerateAnswer API](../how-to/metadata-generateanswer-usage.md) に送信します。|
 |2|QnA Maker が、言語検出、スペル チェック プログラム、およびワード ブレーカーを使用してユーザー クエリを前処理します。|
 |3|この前処理は、最適な検索結果が得られるようユーザー クエリを変更するために行われます。|
 |4|この変更されたクエリが Azure Cognitive Search インデックスに送信され、`top` の数の結果を受け取ります。 正しい回答がこれらの結果にない場合、`top` の値をわずかに増やします。 一般的に、`top` の値が 10 の場合は、90% のクエリで役立ちます。|
@@ -41,7 +41,7 @@ ms.locfileid: "94376714"
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
 
-トレーニングされ、[公開された](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker ナレッジ ベースは、[GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage) で、ボットまたはその他のクライアント アプリケーションからユーザー クエリを受け取ります。 次の図は、ユーザー クエリを受け取ったときのプロセスを示しています。
+トレーニングされ、[公開された](../quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA Maker ナレッジ ベースは、[GenerateAnswer API](../how-to/metadata-generateanswer-usage.md) で、ボットまたはその他のクライアント アプリケーションからユーザー クエリを受け取ります。 次の図は、ユーザー クエリを受け取ったときのプロセスを示しています。
 
 ![ユーザー クエリ プレビューのランク付けモデル プロセス](../media/qnamaker-concepts-knowledgebase/ranker-v2.png)
 
@@ -51,7 +51,7 @@ ms.locfileid: "94376714"
 
 |手順|目的|
 |--|--|
-|1|クライアント アプリケーションがユーザー クエリを [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage) に送信します。|
+|1|クライアント アプリケーションがユーザー クエリを [GenerateAnswer API](../how-to/metadata-generateanswer-usage.md) に送信します。|
 |2|QnA Maker が、言語検出、スペル チェック プログラム、およびワード ブレーカーを使用してユーザー クエリを前処理します。|
 |3|この前処理は、最適な検索結果が得られるようユーザー クエリを変更するために行われます。|
 |4|この変更されたクエリが Azure Cognitive Search インデックスに送信され、`top` の数の結果を受け取ります。 正しい回答がこれらの結果にない場合、`top` の値をわずかに増やします。 一般的に、`top` の値が 10 の場合は、90% のクエリで役立ちます。|

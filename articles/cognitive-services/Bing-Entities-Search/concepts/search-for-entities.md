@@ -10,25 +10,25 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 489a158c49bc6695a460fdef5b92606335a07ef6
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9dabceda17defb24f2a916cd641f625feb551c6a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365994"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353291"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Bing Entity API でのエンティティの検索
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
-> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 ## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>Bing Autosuggest API で検索語句の候補を表示する
 
 ユーザーが検索語句を入力するための検索ボックスを用意する場合は、[Bing Autosuggest API](../../bing-autosuggest/get-suggested-search-terms.md) を使用することでエクスペリエンスが向上します。 この API は、検索語句をユーザーが入力している最中に、その一部分に基づいてクエリ文字列の候補を返します。
 
-ユーザーが検索語句を入力した後、その語句を URL エンコードしたうえで、[q](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) クエリ パラメーターを設定します。 たとえば、ユーザーが「 *Marcus Appel* 」と入力した場合、`q` を *Marcus+Appel* または *Marcus%20Appel* に設定します。
+ユーザーが検索語句を入力した後、その語句を URL エンコードしたうえで、[q](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) クエリ パラメーターを設定します。 たとえば、ユーザーが「*Marcus Appel*」と入力した場合、`q` を *Marcus+Appel* または *Marcus%20Appel* に設定します。
 
 検索用語にスペル ミスが含まれていると、検索応答に [QueryContext](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) オブジェクトが含まれます。 このオブジェクトは元のスペルと Bing が検索に使用した修正済みのスペルを示します。
 
@@ -194,7 +194,7 @@ API の応答には、[SearchResponse](/rest/api/cognitiveservices-bingsearch/bi
 > [!NOTE]
 > エンティティの応答では複数の市場がサポートされますが、場所の応答では米国ビジネスの場所しかサポートされません。 
 
-*近くのレストラン* などのローカル対応エンティティ クエリでは、正確な結果を提供するためにユーザーの場所を提供する必要があります。 要求では常に X-Search-Location と X-MSEdge-ClientIP のヘッダーを使用して、ユーザーの場所を指定する必要があります。 Bing では、ユーザーの場所をクエリに使用するメリットが認められると、 [QueryContext](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) の `askUserForLocation` フィールドが **true** に設定されます。 
+*近くのレストラン* などのローカル対応エンティティ クエリでは、正確な結果を提供するためにユーザーの場所を提供する必要があります。 要求では常に X-Search-Location と X-MSEdge-ClientIP のヘッダーを使用して、ユーザーの場所を指定する必要があります。 Bing では、ユーザーの場所をクエリに使用するメリットが認められると、[QueryContext](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) の `askUserForLocation` フィールドが **true** に設定されます。 
 
 ```json
 {
@@ -301,7 +301,7 @@ Bing Entity API の応答には、第三者が所有する情報が含まれま�
 
 ![ライセンスの帰属表示](../media/cognitive-services-bing-entities-api/licenseattribution.png)
 
-表示するライセンス通知には、ライセンスに関する情報を掲載している Web サイトへのハイパーリンクを含める必要があります。 通常は、ライセンスの名前をハイパーリンクにします。 たとえば、通知の文言が " **Text under CC-BY-SA license (CC-BY-SA ライセンスが適用されるテキスト)** " であって、ライセンスの名前が CC-BY-SA の場合、CC-BY-SA の部分をハイパーリンクにします。
+表示するライセンス通知には、ライセンスに関する情報を掲載している Web サイトへのハイパーリンクを含める必要があります。 通常は、ライセンスの名前をハイパーリンクにします。 たとえば、通知の文言が "**Text under CC-BY-SA license (CC-BY-SA ライセンスが適用されるテキスト)**" であって、ライセンスの名前が CC-BY-SA の場合、CC-BY-SA の部分をハイパーリンクにします。
 
 ### <a name="link-and-text-attribution"></a>リンクとテキスト属性
 

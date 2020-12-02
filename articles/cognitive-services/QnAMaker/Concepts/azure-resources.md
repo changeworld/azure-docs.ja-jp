@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 46b1cf2681ab5d804035c98d458600de5081c77d
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: cd64c19e7e9af05becd7a6978ceb4d0306112170
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376798"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351897"
 ---
 # <a name="azure-resources-for-qna-maker"></a>QnA Maker 用の Azure リソース
 
@@ -49,8 +49,8 @@ QnA Maker では、それぞれ異なる目的で複数の Azure ソースを使
 通常、次の 3 つのパラメーターを考慮する必要があります。
 
 * **サービスに必要なスループット**:
-    * App Service の適切な[アプリ プラン](https://azure.microsoft.com/pricing/details/app-service/plans/)を、実際のニーズに基づいて選択します。 アプリは[スケールアップ](https://docs.microsoft.com/azure/app-service/manage-scale-up)またはスケールダウンすることができます。
-    * この点は、Azure **Cognitive Search** の SKU の選択にも影響します。詳細については、[こちら](https://docs.microsoft.com/azure/search/search-sku-tier)を参照してください。 さらに、レプリカで Cognitive Search の[容量](../../../search/search-capacity-planning.md)を調整することが必要になる場合があります。
+    * App Service の適切な[アプリ プラン](https://azure.microsoft.com/pricing/details/app-service/plans/)を、実際のニーズに基づいて選択します。 アプリは[スケールアップ](../../../app-service/manage-scale-up.md)またはスケールダウンすることができます。
+    * この点は、Azure **Cognitive Search** の SKU の選択にも影響します。詳細については、[こちら](../../../search/search-sku-tier.md)を参照してください。 さらに、レプリカで Cognitive Search の[容量](../../../search/search-capacity-planning.md)を調整することが必要になる場合があります。
 
 * **ナレッジ ベースのサイズと数**: 実際のシナリオに合った適切な [Azure Search SKU](https://azure.microsoft.com/pricing/details/search/) を選択してください。 通常は、さまざまな主題の領域の数に基づいて必要なナレッジ ベースの数を決定します。 (1 つの言語の) 主題の領域を 1 つのナレッジ ベースに含めるようにします。
 
@@ -74,7 +74,7 @@ QnA Maker では、それぞれ異なる目的で複数の Azure ソースを使
 
 * **サービスに必要なスループット**:
     * QnA Maker マネージド (プレビュー) は無料サービスであり、現在のスループットは、管理 API と予測 API の両方について 10 TPS に制限されています。
-    * この点は、Azure **Cognitive Search** の SKU の選択にも影響します。詳細については、[こちら](https://docs.microsoft.com/azure/search/search-sku-tier)を参照してください。 さらに、レプリカで Cognitive Search の[容量](../../../search/search-capacity-planning.md)を調整することが必要になる場合があります。
+    * この点は、Azure **Cognitive Search** の SKU の選択にも影響します。詳細については、[こちら](../../../search/search-sku-tier.md)を参照してください。 さらに、レプリカで Cognitive Search の[容量](../../../search/search-capacity-planning.md)を調整することが必要になる場合があります。
 
 * **ナレッジ ベースのサイズと数**: 実際のシナリオに合った適切な [Azure Search SKU](https://azure.microsoft.com/pricing/details/search/) を選択してください。 通常は、さまざまな主題の領域の数に基づいて必要なナレッジ ベースの数を決定します。 (1 つの言語の) 主題の領域を 1 つのナレッジ ベースに含めるようにします。
 
@@ -240,7 +240,7 @@ QnA Maker サービスでは、App Service でホストされるランタイム�
 
 |名前|場所|目的|
 |--|--|--|
-|オーサリング キー|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|これらのキーは、[QnA Maker 管理サービス API](https://go.microsoft.com/fwlink/?linkid=2092179) へのアクセスに使用されます。 これらの API を使用して、ナレッジ ベース内の質問と回答を編集したり、ナレッジ ベースを公開したりできます。 これらのキーは、新しい QnA Maker サービスを作成するときに作成されます。<br><br>これらのキーは、 **[キー]** ページの **Cognitive Services** リソースで確認できます。|
+|オーサリング キー|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|これらのキーは、[QnA Maker 管理サービス API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) へのアクセスに使用されます。 これらの API を使用して、ナレッジ ベース内の質問と回答を編集したり、ナレッジ ベースを公開したりできます。 これらのキーは、新しい QnA Maker サービスを作成するときに作成されます。<br><br>これらのキーは、 **[キー]** ページの **Cognitive Services** リソースで確認できます。|
 |クエリ エンドポイント キー|[QnA Maker ポータル](https://www.qnamaker.ai)|これらのキーは、公開されたナレッジ ベースのエンドポイントにクエリを実行して、ユーザーの質問に対する回答を取得する目的で使用されます。 通常、このクエリ エンドポイントは、QnA Maker サービスに接続するチャット ボットまたはクライアント アプリケーション コードで使用されます。 これらのキーは、QnA Maker ナレッジ ベースを公開するときに作成されます。<br><br>これらのキーは、 **[サービスの設定]** ページで確認できます。 このページは、ページの右上にあるドロップダウン メニュー内のユーザーのメニューに含まれています。|
 
 ### <a name="subscription-keys"></a>サブスクリプション キー
@@ -251,11 +251,11 @@ QnA Maker サービスでは、App Service でホストされるランタイム�
 
 ### <a name="recommended-settings-for-network-isolation"></a>ネットワーク分離の推奨設定
 
-* [仮想ネットワークを構成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)して、Cognitive Services リソースをパブリック アクセスから保護します。
+* [仮想ネットワークを構成](../../cognitive-services-virtual-networks.md?tabs=portal)して、Cognitive Services リソースをパブリック アクセスから保護します。
 * App Service (QnA Runtime) をパブリック アクセスから保護します。
     * Cognitive Services IP からのトラフィックのみを許可します。 これらは、既にサービス タグ "CognitiveServicesManagement" に含まれています。 これは、オーサリング API シリーズ (KB の作成/更新) で App Service を起動し、それに応じて Azure Search Service を更新するために必要です。
     * Bot Service、QnA Maker ポータル (ご使用の企業ネットワークなど) のような他のエントリポイントも予測 "GenerateAnswer" API アクセスを許可していることを確認します。
-    * [サービス タグに関する詳細](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)を確認します。
+    * [サービス タグに関する詳細](../../../virtual-network/service-tags-overview.md)を確認します。
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
 
@@ -317,8 +317,8 @@ QnA Maker マネージド (プレビュー) サービスにより、顧客のサ
 
 |名前|場所|目的|
 |--|--|--|
-|オーサリング キー|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|これらのキーは、[QnA Maker 管理サービス API](https://go.microsoft.com/fwlink/?linkid=2092179) へのアクセスに使用されます。 これらの API を使用して、ナレッジ ベース内の質問と回答を編集したり、ナレッジ ベースを公開したりできます。 これらのキーは、新しい QnA Maker サービスを作成するときに作成されます。<br><br>これらのキーは、 **[キー]** ページの **Cognitive Services** リソースで確認できます。|
-|Azure Cognitive Search の管理者キー|[Azure Portal](https://docs.microsoft.com/azure/search/search-security-api-keys)|これらのキーは、ユーザーの Azure サブスクリプションにデプロイされている Azure Cognitive Search サービスとの通信に使用されます。 Azure Cognitive Search を QnA Maker マネージド (プレビュー) サービスに関連付けると、管理者キーが QnA Maker サービスに自動的に渡されます。 <br><br>これらのキーは、**Azure Cognitive Search** リソースの **[キー]** ページで確認できます。|
+|オーサリング キー|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|これらのキーは、[QnA Maker 管理サービス API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) へのアクセスに使用されます。 これらの API を使用して、ナレッジ ベース内の質問と回答を編集したり、ナレッジ ベースを公開したりできます。 これらのキーは、新しい QnA Maker サービスを作成するときに作成されます。<br><br>これらのキーは、 **[キー]** ページの **Cognitive Services** リソースで確認できます。|
+|Azure Cognitive Search の管理者キー|[Azure Portal](../../../search/search-security-api-keys.md)|これらのキーは、ユーザーの Azure サブスクリプションにデプロイされている Azure Cognitive Search サービスとの通信に使用されます。 Azure Cognitive Search を QnA Maker マネージド (プレビュー) サービスに関連付けると、管理者キーが QnA Maker サービスに自動的に渡されます。 <br><br>これらのキーは、**Azure Cognitive Search** リソースの **[キー]** ページで確認できます。|
 
 ### <a name="subscription-keys"></a>サブスクリプション キー
 
@@ -328,13 +328,12 @@ QnA Maker マネージド (プレビュー) サービスにより、顧客のサ
 
 ### <a name="recommended-settings-for-network-isolation"></a>ネットワーク分離の推奨設定 
 
-[仮想ネットワークを構成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)して、Cognitive Services リソースをパブリック アクセスから保護します。
+[仮想ネットワークを構成](../../cognitive-services-virtual-networks.md?tabs=portal)して、Cognitive Services リソースをパブリック アクセスから保護します。
 
 ---
 
 ## <a name="next-steps"></a>次のステップ
 
-* QnA Maker の[ナレッジ ベース](knowledge-base.md)について確認します
+* QnA Maker の[ナレッジ ベース](../index.yml)について確認します
 * [ナレッジ ベースのライフ サイクル](development-lifecycle-knowledge-base.md)を理解します
 * サービスとナレッジ ベースの[制限](../limits.md)を確認します
-

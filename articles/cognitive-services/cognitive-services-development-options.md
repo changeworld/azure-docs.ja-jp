@@ -8,12 +8,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 4eaa33778287bfcda45547c24e6abe0606b6baa7
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a952bfa45515b9d35549d03d18fd94103679344d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368799"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349471"
 ---
 # <a name="cognitive-services-development-options"></a>Cognitive Services の開発オプション
 
@@ -49,10 +49,10 @@ Cognitive Services を使用できるさまざまな方法を見ていきます�
 
 Cognitive Services のクライアント ライブラリと REST API を使用すると、サービスに直接アクセスできます。 これらのツールを使用すると、Cognitive Services とそのベースライン モデルにプログラムでアクセスでき、多くの場合、モデルとソリューションをプログラムでカスタマイズできます。 
 
-* **対象ユーザー** : 開発者とデータ科学者
-* **利点** :任意の言語と環境からのサービスの呼び出しに関して、最大限の柔軟性が提供されます。 
-* **UI** : なし - コードのみ
-* **サブスクリプション** : Azure アカウント + Cognitive Services リソース
+* **対象ユーザー**: 開発者とデータ科学者
+* **利点**:任意の言語と環境からのサービスの呼び出しに関して、最大限の柔軟性が提供されます。 
+* **UI**: なし - コードのみ
+* **サブスクリプション**: Azure アカウント + Cognitive Services リソース
 
 使用可能なクライアント ライブラリと REST API の詳細については、[Cognitive Services の概要](index.yml)に関するページでサービスを選択し、視覚、決定、言語、音声に関するクイックスタートのいずれかを参照してください。
 
@@ -60,10 +60,10 @@ Cognitive Services のクライアント ライブラリと REST API を使用�
 
 ビッグ データ向けの Cognitive Services を使用すると、継続的に改善されるインテリジェントなモデルを Apache Spark&trade; と SQL の計算に直接埋め込むことができます。 これらのツールにより、開発者は低レベルの細かいネットワーク設定から解放され、スマートな分散アプリケーションの作成に集中できます。 ビッグ データ用の Cognitive Services の場合、次のプラットフォームとコネクタがサポートされています: Azure Databricks、Azure Synapse、Azure Kubernetes Service、データ コネクタ。
 
-* **対象ユーザー** : データ科学者、データ エンジニア
-* **利点** :ビッグ データ向けの Azure Cognitive Services を使用すると、ユーザーは Apache Spark&trade; を使用して、テラバイト単位のデータを Cognitive Services に渡すことができます。 データストアを使用して大規模なインテリジェント アプリケーションを簡単に作成できます。
-* **UI** : なし - コードのみ
-* **サブスクリプション** : Azure アカウント + Cognitive Services リソース
+* **対象ユーザー**: データ科学者、データ エンジニア
+* **利点**:ビッグ データ向けの Azure Cognitive Services を使用すると、ユーザーは Apache Spark&trade; を使用して、テラバイト単位のデータを Cognitive Services に渡すことができます。 データストアを使用して大規模なインテリジェント アプリケーションを簡単に作成できます。
+* **UI**: なし - コードのみ
+* **サブスクリプション**: Azure アカウント + Cognitive Services リソース
 
 Cognitive Services のビッグ データの詳細については、[概要](./big-data/cognitive-services-for-big-data.md)に関するページを参照してください。 構築を始める準備ができたら、[Python](./big-data/samples-python.md) または [Scala](./big-data/samples-scala.md) のサンプルを試してみてください。
 
@@ -71,46 +71,46 @@ Cognitive Services のビッグ データの詳細については、[概要](./b
 
 [Azure Functions](../azure-functions/index.yml) と [Azure App Service Web ジョブ](../app-service/index.yml)はどちらも、開発者向けに設計されたコード第一の統合サービスを提供するものであり、[Azure App Service](../app-service/index.yml) 上に構築されています。 これらの製品により、コードを記述するためのサーバーレス インフラストラクチャが提供されます。 そのコード内では、クライアント ライブラリと REST API を使用して、サービスを呼び出すことができます。 
 
-* **対象ユーザー** : 開発者とデータ科学者
-* **利点** :イベントによってトリガーされるコードを実行できるサーバーレス コンピューティング サービス。 
-* **UI** : はい
-* **サブスクリプション** : Azure アカウント + Cognitive Services リソース + Azure Functions サブスクリプション
+* **対象ユーザー**: 開発者とデータ科学者
+* **利点**:イベントによってトリガーされるコードを実行できるサーバーレス コンピューティング サービス。 
+* **UI**: はい
+* **サブスクリプション**: Azure アカウント + Cognitive Services リソース + Azure Functions サブスクリプション
 
 ### <a name="azure-logic-apps"></a>Azure Logic Apps 
 
 [Azure Logic Apps](../logic-apps/index.yml) を使用すると、Power Automate と同じワークフロー デザイナーとコネクタが共有されますが、Visual Studio や DevOps との統合など、より高度な制御が提供されます。 Power Automate を使用すると、API にプロキシまたはラッパーを提供するサービス固有のコネクタを通じて、ご自分のコグニティブ サービス リソースと簡単に統合できます。 これらは、Power Automate で使用できるものと同じコネクタです。 
 
-* **対象ユーザー** : 開発者、インテグレーター、IT プロフェッショナル、DevOps
-* **利点** :コーディングの少ないソリューションで高度なオプションと統合を提供するデザイナー第一 (宣言型) の開発モデル。
-* **UI** : はい
-* **サブスクリプション** : Azure アカウント + Cognitive Services リソース + Logic Apps デプロイ
+* **対象ユーザー**: 開発者、インテグレーター、IT プロフェッショナル、DevOps
+* **利点**:コーディングの少ないソリューションで高度なオプションと統合を提供するデザイナー第一 (宣言型) の開発モデル。
+* **UI**: はい
+* **サブスクリプション**: Azure アカウント + Cognitive Services リソース + Logic Apps デプロイ
 
 ### <a name="power-automate"></a>Power Automate 
 
 Power Automate は [Power Platform](/power-platform/) のサービスであり、コードを記述せずにアプリとサービスの間の自動化されたワークフローを作成するのに役立ちます。 Power Automate ソリューションで Cognitive Services リソースと簡単にやりとりできるように、いくつかのコネクタが用意されています。 Power Automate は Logic Apps の上に構築されています。 
 
-* **対象ユーザー** : ビジネス ユーザー (アナリスト)、SharePoint 管理者
-* **利点** :デスクトップからマウス クリック、キーストローク、コピーと貼り付けの手順を記録するだけで、反復的な手動タスクを自動化できます。
-* **UI ツール** : はい - UI のみ
-* **サブスクリプション** : Azure アカウント + Cognitive Services リソース + Power Automate サブスクリプション + Office 365 サブスクリプション
+* **対象ユーザー**: ビジネス ユーザー (アナリスト)、SharePoint 管理者
+* **利点**:デスクトップからマウス クリック、キーストローク、コピーと貼り付けの手順を記録するだけで、反復的な手動タスクを自動化できます。
+* **UI ツール**: はい - UI のみ
+* **サブスクリプション**: Azure アカウント + Cognitive Services リソース + Power Automate サブスクリプション + Office 365 サブスクリプション
 
 ### <a name="ai-builder"></a>AI Builder 
 
 Microsoft Power Platform の機能である [AI Builder](/ai-builder/overview) を使用すると、プロセスを自動化して結果を予測することにより、ビジネスのパフォーマンスを向上させることができます。 AI Builder を使用すると、ポイント アンド クリック エクスペリエンスによりソリューションに AI の機能を組み込むことができます。 Form Recognizer、Text Analytics、Computer Vision などの多くの Cognitive Services がここに直接統合されており、独自のコグニティブ サービスを作成する必要はありません。 
 
-* **対象ユーザー** : ビジネス ユーザー (アナリスト)、SharePoint 管理者
-* **利点** :ポイント アンド クリック エクスペリエンスにより AI の機能を組み込むターンキー ソリューション。 コーディングやデータ サイエンスのスキルは必要ありません。
-* **UI ツール** : はい - UI のみ
-* **サブスクリプション** : AI Builder
+* **対象ユーザー**: ビジネス ユーザー (アナリスト)、SharePoint 管理者
+* **利点**:ポイント アンド クリック エクスペリエンスにより AI の機能を組み込むターンキー ソリューション。 コーディングやデータ サイエンスのスキルは必要ありません。
+* **UI ツール**: はい - UI のみ
+* **サブスクリプション**: AI Builder
 
 ### <a name="continuous-integration-and-deployment"></a>継続的インテグレーションと継続的配置
 
 Azure DevOps と GitHub Actions を使用して、デプロイを管理できます。 [次のセクション](#continuous-integration-and-delivery-with-devops-and-github-actions)には、Speech および Language Understanding (LUIS) サービス用のカスタム モデルをトレーニングしてデプロイするための CI/CD 統合の 2 つの例があります。 
 
-* **対象ユーザー** : 開発者、データ科学者、データ エンジニア
-* **利点** :プログラムによってアプリケーションやモデルを継続的に調整、更新、デプロイできます。 データを使用して音声、視覚、言語、決定のモデルを定期的に改善および更新する場合、大きな利点があります。 
-* **UI ツール** : なし - コードのみ 
-* **サブスクリプション** : Azure アカウント + Cognitive Services リソース + GitHub アカウント
+* **対象ユーザー**: 開発者、データ科学者、データ エンジニア
+* **利点**:プログラムによってアプリケーションやモデルを継続的に調整、更新、デプロイできます。 データを使用して音声、視覚、言語、決定のモデルを定期的に改善および更新する場合、大きな利点があります。 
+* **UI ツール**: なし - コードのみ 
+* **サブスクリプション**: Azure アカウント + Cognitive Services リソース + GitHub アカウント
 
 ## <a name="tools-to-customize-and-configure-models"></a>モデルをカスタマイズおよび構成するためのツール
 
@@ -133,7 +133,7 @@ Cognitive Services を使用してアプリケーションまたはワークフ�
 | Language | QnA Maker | https://www.qnamaker.ai/ | [クイックスタート](./qnamaker/quickstarts/create-publish-knowledge-base.md) |
 | Language | Translator、カスタム翻訳ツール | https://portal.customtranslator.azure.ai/ | [クイックスタート](./translator/custom-translator/quickstart-build-deploy-custom-model.md) |
 | Speech | カスタム コマンド | https://speech.microsoft.com/ | [クイックスタート](./speech-service/custom-commands.md) |
-| Speech | Custom Speech | https://speech.microsoft.com/ | [クイックスタート](./speech-service/how-to-custom-speech.md) |
+| Speech | Custom Speech | https://speech.microsoft.com/ | [クイックスタート](./speech-service/custom-speech-overview.md) |
 | Speech | Custom Voice | https://speech.microsoft.com/ | [クイックスタート](./speech-service/how-to-custom-voice.md) |  
 
 ### <a name="continuous-integration-and-delivery-with-devops-and-github-actions"></a>DevOps と GitHub Actions を使用した継続的インテグレーションと継続的デリバリー

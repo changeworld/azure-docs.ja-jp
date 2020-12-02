@@ -7,22 +7,22 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-java
 ms.topic: how-to
-ms.openlocfilehash: 09123b46b259ec4ad512c6a57d926bbc70102fe7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8075371bddfc92d7477b3b036575836aa65f1cd0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023686"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346033"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-java"></a>クイック スタート:Java を使用してナレッジ ベースから質問の回答を取得する
 
-このクイック スタートでは、発行済みの QnA Maker ナレッジ ベースからプログラムによって回答を取得する手順を紹介しています。 ナレッジ ベースには、FAQ などの[データ ソース](../Concepts/knowledge-base.md)からの質問と回答が含まれます。 [質問](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)は QnA Maker サービスに送信されます。 [応答](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties)には、予測上位の回答が含まれます。
+このクイック スタートでは、発行済みの QnA Maker ナレッジ ベースからプログラムによって回答を取得する手順を紹介しています。 ナレッジ ベースには、FAQ などの[データ ソース](../index.yml)からの質問と回答が含まれます。 [質問](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)は QnA Maker サービスに送信されます。 [応答](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties)には、予測上位の回答が含まれます。
 
-[リファレンス ドキュメント](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/Runtime) | [サンプル](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/get-answer/GetAnswer.java)
+[リファレンス ドキュメント](/rest/api/cognitiveservices/qnamaker4.0/Runtime) | [サンプル](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/get-answer/GetAnswer.java)
 
 ## <a name="prerequisites"></a>前提条件
 
-* [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit Standard Edition)
+* [JDK SE](/azure/developer/java/fundamentals/java-jdk-long-term-support) (Java Development Kit Standard Edition)
 * このサンプルでは、HTTP Components の Apache [HTTP クライアント](https://hc.apache.org/httpcomponents-client-ga/)を使用しています。 以下の Apache HTTP クライアント ライブラリをプロジェクトに追加する必要があります。
     * httpclient-4.5.3.jar
     * httpcore-4.4.6.jar
@@ -95,4 +95,4 @@ public class GetAnswer {
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API リファレンス](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [QnA Maker (V4) REST API リファレンス](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)

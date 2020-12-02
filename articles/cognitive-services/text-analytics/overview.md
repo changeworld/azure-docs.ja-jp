@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 keywords: テキスト マイニング、感情分析、テキスト分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 14dfa6111bbda8750b175c8c9b2a96321e1af2c5
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 68f892fea01582b16dad5efd8c86dbf0b578e50f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519406"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353053"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Text Analytics API とは
 
@@ -82,11 +82,11 @@ ID をベースに出力は 1 つの JSON ドキュメントとして返され�
 
 * 最小限のプログラミングが必要:
     * [Text Analytics と Power Automate を使用して Excel 内の情報を抽出する](tutorials/extract-excel-information.md)
-    * [Text Analytics API と MS Flow を使用して、Yammer グループ内のコメントのセンチメントを特定する](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
+    * [Text Analytics API と MS Flow を使用して、Yammer グループ内のコメントのセンチメントを特定する](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
     * [Power BI と Text Analytics API を統合して顧客からのフィードバックを分析する](tutorials/tutorial-power-bi-key-phrases.md)
 * プログラミング エクスペリエンスが推奨される:
-    * [Azure Databricks を使用した、ストリーミング データに対する感情分析](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
-    * [テキストの翻訳、センチメントの分析、音声の合成を行う Flask アプリを作成する](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
+    * [Azure Databricks を使用した、ストリーミング データに対する感情分析](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
+    * [テキストの翻訳、センチメントの分析、音声の合成を行う Flask アプリを作成する](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
 
 
 <a name="supported-languages"></a>

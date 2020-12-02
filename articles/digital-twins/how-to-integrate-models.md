@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 11/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1866e9b233a1379474c061779ada09fd6d119107
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: f5bfe128ddc04e8048bb89a8e39035434dfd2b92
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94338666"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352883"
 ---
 # <a name="integrate-industry-standard-models-with-dtdl-for-azure-digital-twins"></a>業界標準モデルを Azure Digital Twins 用の DTDL に統合する
 
 業界標準に基づくモデルや、RDF または OWL などの標準的なオントロジー表現を使用するモデルを使用すると、Azure Digital Twins モデルを設計する場合に充実した出発点を利用できます。 業界モデルの利用は、標準化と情報共有にも役立ちます。
 
-Azure Digital Twins で使用するモデルは、JSON-LD ベースの [**Digital Twins Definition Language (DTDL)** ](concepts-models.md) で表現する必要があります。 そのため、この記事では、既存の業界概念を DTDL セマンティクスと統合して、Azure Digital Twins で使用できるように、業界標準モデルを DTDL で表現する方法について説明します。 DTDL モデルは、その後、Azure Digital Twins 内で、モデルの信頼できるソースとして使用されます。
+Azure Digital Twins で使用するモデルは、JSON-LD ベースの [**Digital Twins Definition Language (DTDL)**](concepts-models.md) で表現する必要があります。 そのため、この記事では、既存の業界概念を DTDL セマンティクスと統合して、Azure Digital Twins で使用できるように、業界標準モデルを DTDL で表現する方法について説明します。 DTDL モデルは、その後、Azure Digital Twins 内で、モデルの信頼できるソースとして使用されます。
 
 業界標準モデルを DTDL に統合するには、次の 3 つのパスがあります。
 * **導入**: 広く採用されている業界標準に基づいて構築されたオープンソースの DTDL オントロジーを使用して、ソリューションを開始できます。 
@@ -111,7 +111,7 @@ Azure Digital Twins サービスで使用するために、RDF ベースのモ�
 
 このサンプルは、**RdfToDtdlConverter** という名前の .NET Core コマンド ライン アプリケーションです。
 
-サンプルはここから入手できます:[**RdfToDtdlConverter**](https://docs.microsoft.com/samples/azure-samples/rdftodtdlconverter/digital-twins-model-conversion-samples/)。 
+サンプルはここから入手できます:[**RdfToDtdlConverter**](/samples/azure-samples/rdftodtdlconverter/digital-twins-model-conversion-samples/)。 
 
 コードをお使いのマシンにダウンロードするには、サンプルのランディング ページのタイトルの下にある *[ZIP のダウンロード]* ボタンをクリックします。 これで、*ZIP* ファイルが *RdfToDtdlConverter_sample_application_to_convert_RDF_to_DTDL.zip* という名前でダウンロードされます。その後、このファイルを解凍して探索することができます。
 

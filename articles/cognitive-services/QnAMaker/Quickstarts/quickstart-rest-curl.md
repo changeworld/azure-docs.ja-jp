@@ -7,16 +7,16 @@ ms.date: 11/09/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.openlocfilehash: 021628b92f1068743b097a455306df742f308f86
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 7592b9fb509f39504ad2399d0e939ceca1156221
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427685"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351097"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>クイック スタート:cURL と REST を使用してナレッジ ベースを管理する
 
-このクイックスタートでは、ナレッジ ベースを作成、公開し、クエリを実行する手順を紹介しています。 QnA Maker は、[データ ソース](../Concepts/knowledge-base.md)の FAQ などの半構造化コンテンツから質問とその回答を自動的に抽出します。 ナレッジ ベースのモデルは、API 要求の本文で送信される JSON で定義されます。
+このクイックスタートでは、ナレッジ ベースを作成、公開し、クエリを実行する手順を紹介しています。 QnA Maker は、[データ ソース](../index.yml)の FAQ などの半構造化コンテンツから質問とその回答を自動的に抽出します。 ナレッジ ベースのモデルは、API 要求の本文で送信される JSON で定義されます。
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -54,7 +54,7 @@ REST API と cURL を使用してナレッジ ベースを作成するには、�
 |--|--|--|
 |QnA Maker リソースの名前|URL|URL の構築用|
 |QnA Maker リソースのキー|`Ocp-Apim-Subscription-Key` ヘッダーの `-h` パラメーター|QnA Maker サービスに対する認証|
-|ナレッジ ベースを表す JSON|`-d` パラメーター|JSON の[例](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
+|ナレッジ ベースを表す JSON|`-d` パラメーター|JSON の[例](/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
 |JSON のサイズ (バイト単位)|`Content-Size` ヘッダーの `-h` パラメーター||
 
 cURL コマンドは、BASH シェルから実行します。 コマンドは、実際のリソース名、リソース キー、JSON の値、JSON のサイズに合わせて編集してください。
@@ -89,7 +89,7 @@ REST API と cURL を使用してナレッジ ベースを作成するには、�
 |--|--|--|
 |QnA Maker リソースの名前|URL|URL の構築用|
 |QnA Maker リソースのキー|`Ocp-Apim-Subscription-Key` ヘッダーの `-h` パラメーター|QnA Maker サービスに対する認証|
-|ナレッジ ベースを表す JSON|`-d` パラメーター|JSON の[例](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
+|ナレッジ ベースを表す JSON|`-d` パラメーター|JSON の[例](/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
 |JSON のサイズ (バイト単位)|`Content-Size` ヘッダーの `-h` パラメーター||
 
 cURL コマンドは、BASH シェルから実行します。 コマンドは、実際のリソース名、リソース キー、JSON の値、JSON のサイズに合わせて編集してください。
@@ -322,7 +322,7 @@ cURL の応答には、ランタイム エンドポイント キーが含まれ�
 |QnA Maker リソースの名前|URL|URL の構築用|
 |QnA Maker のランタイム キー|`Authorization` ヘッダーの `-h` パラメーター|キーは、`Endpointkey ` という単語を含む文字列の一部です。 QnA Maker サービスに対する認証|
 |ナレッジ ベース ID|URL ルート|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
-|クエリを表す JSON|`-d` パラメーター|JSON の[要求本文のパラメーター](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body)と[例](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
+|クエリを表す JSON|`-d` パラメーター|JSON の[要求本文のパラメーター](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body)と[例](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
 |JSON のサイズ (バイト単位)|`Content-Size` ヘッダーの `-h` パラメーター||
 
 cURL コマンドは、BASH シェルから実行します。 コマンドは、実際のリソース名、リソース キー、ナレッジ ベース ID に合わせて編集してください。
@@ -347,7 +347,7 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker/knowledg
 |QnA Maker リソースの名前|URL|URL の構築用|
 |QnA Maker リソースのキー|`Ocp-Apim-Subscription-Key` ヘッダーの `-h` パラメーター|QnA Maker サービスに対する認証|
 |ナレッジ ベース ID|URL ルート|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
-|クエリを表す JSON|`-d` パラメーター|JSON の[要求本文のパラメーター](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body)と[例](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
+|クエリを表す JSON|`-d` パラメーター|JSON の[要求本文のパラメーター](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body)と[例](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
 |JSON のサイズ (バイト単位)|`Content-Size` ヘッダーの `-h` パラメーター||
 
 cURL コマンドは、BASH シェルから実行します。 コマンドは、実際のリソース名、リソース キー、ナレッジ ベース ID に合わせて編集してください。
@@ -414,11 +414,11 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [作成](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)のリファレンス ドキュメント
-* [ランタイム](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/runtime)のリファレンス ドキュメント
+* [作成](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)のリファレンス ドキュメント
+* [ランタイム](/rest/api/cognitiveservices/qnamaker4.0/runtime)のリファレンス ドキュメント
 * [cURL を使用したサンプル BASH スクリプト](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/curl/QnAMaker)
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API リファレンス](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [QnA Maker (V4) REST API リファレンス](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)

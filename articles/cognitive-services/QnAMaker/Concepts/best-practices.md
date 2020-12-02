@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 2f87f5c7e43757db476153db93d6ecc5082dde89
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: ee8d838ba315c2e261a61699948b71a710341165
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376759"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346360"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースのベスト プラクティス
 
@@ -18,7 +18,7 @@ ms.locfileid: "94376759"
 
 ## <a name="extraction"></a>抽出
 
-QnA Maker サービスは継続的に、コンテンツから QnA を抽出するアルゴリズムを改善し、サポートされるファイルおよび HTML 形式のリストを拡大しています。 ドキュメントの種類に応じた、データ抽出の[ガイドライン](../Concepts/content-types.md)に従ってください。
+QnA Maker サービスは継続的に、コンテンツから QnA を抽出するアルゴリズムを改善し、サポートされるファイルおよび HTML 形式のリストを拡大しています。 ドキュメントの種類に応じた、データ抽出の[ガイドライン](../index.yml)に従ってください。
 
 一般的に、FAQ ページは独立させ、他の情報と組み合わせないでください。 製品マニュアルにはわかりやすい見出しを付けてください。索引ページを付けることもお勧めします。
 
@@ -117,10 +117,10 @@ QnA Maker でサポートされている優先度付け機能を効果的に活�
 
 ### <a name="use-synonyms"></a>同義語を使用する
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
-英語では同意語をある程度サポートしていますが、さまざま言い方があるキーワードに同意語を追加するには、[Alterations API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) を介して、大文字と小文字が区別されない言葉の変更機能を使用します。 同義語は QnA Maker サービスレベルで追加され、**サービス内の全ナレッジ ベースで共有されます**。
+英語では同意語をある程度サポートしていますが、さまざま言い方があるキーワードに同意語を追加するには、[Alterations API](/rest/api/cognitiveservices/qnamaker/alterations/replace) を介して、大文字と小文字が区別されない言葉の変更機能を使用します。 同義語は QnA Maker サービスレベルで追加され、**サービス内の全ナレッジ ベースで共有されます**。
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
-英語では同意語をある程度サポートしていますが、さまざま言い方があるキーワードに同意語を追加するには、[Alterations API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) を介して、大文字と小文字が区別されない言葉の変更機能を使用します。 QnA Maker マネージド (プレビュー) の同意語は **ナレッジ ベースごとに追加** されます。
+英語では同意語をある程度サポートしていますが、さまざま言い方があるキーワードに同意語を追加するには、[Alterations API](/rest/api/cognitiveservices/qnamaker/alterations/replace) を介して、大文字と小文字が区別されない言葉の変更機能を使用します。 QnA Maker マネージド (プレビュー) の同意語は **ナレッジ ベースごとに追加** されます。
 
 |元の語|シノニム|
 |--|--|
@@ -141,7 +141,7 @@ QnA Maker のランク付けアルゴリズムはユーザーからの問い合�
 これら 2 つの QnA は非常によく似た語で表現されていますが、この類似性のために、「*`<x>` の場所はどこですか*」のように表現されるユーザーの問い合わせの多くが非常に近いスコアになる可能性があります。 代わりに、ナレッジ ベース内の多くの質問に存在するかもしれない「場所」のような語を避け、"*駐車場はどこですか*" や "*ATM はどこですか*" のような質問で違いを明確にしてください。
 
 ## <a name="collaborate"></a>協力
-QnA Maker では、ユーザーはナレッジ ベースに[協力](../How-to/collaborate-knowledge-base.md)できます。 ナレッジ ベースにアクセスするためには、Azure QnA Maker リソース グループへのアクセス権がユーザーに必要です。 ナレッジ ベースの編集と保守管理を外注する組織もありますが、その場合でも Azure リソースへのアクセスを保護できます。 この編集者/承認者モデルは、異なるサブスクリプションで同じ [QnA Maker サービス](../How-to/set-up-qnamaker-service-azure.md)を 2 つ設定し、その 1 つを編集/テスト サイクルに選択することで実現されます。 テストが終了したら、[インポート/エクスポート](../Tutorials/migrate-knowledge-base.md) プロセスを利用して、承認者の QnA Maker サービスにナレッジ ベース コンテンツを転送します。この承認者が最終的にナレッジ ベースを公開し、エンドポイントを更新します。
+QnA Maker では、ユーザーはナレッジ ベースに[協力](../index.yml)できます。 ナレッジ ベースにアクセスするためには、Azure QnA Maker リソース グループへのアクセス権がユーザーに必要です。 ナレッジ ベースの編集と保守管理を外注する組織もありますが、その場合でも Azure リソースへのアクセスを保護できます。 この編集者/承認者モデルは、異なるサブスクリプションで同じ [QnA Maker サービス](../How-to/set-up-qnamaker-service-azure.md)を 2 つ設定し、その 1 つを編集/テスト サイクルに選択することで実現されます。 テストが終了したら、[インポート/エクスポート](../Tutorials/migrate-knowledge-base.md) プロセスを利用して、承認者の QnA Maker サービスにナレッジ ベース コンテンツを転送します。この承認者が最終的にナレッジ ベースを公開し、エンドポイントを更新します。
 
 
 

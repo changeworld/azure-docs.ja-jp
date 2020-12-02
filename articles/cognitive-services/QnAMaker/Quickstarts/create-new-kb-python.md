@@ -7,22 +7,22 @@ ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-python
 ms.topic: how-to
-ms.openlocfilehash: 6155722b81b32e426a91a283910e8bdce926e342
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f3f433742ec25a1ee1abb2ede32a38e6b611f14
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777652"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352288"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>クイック スタート: Python を使用して QnA Maker のナレッジ ベースを作成する
 
-このクイック スタートでは、QnA Maker ナレッジ ベースのサンプルをプログラムから作成して発行する手順を紹介しています。 QnA Maker は、[データ ソース](../Concepts/knowledge-base.md)の FAQ などの半構造化コンテンツから質問とその回答を自動的に抽出します。 ナレッジ ベースのモデルは、API 要求の本文で送信される JSON で定義されます。
+このクイック スタートでは、QnA Maker ナレッジ ベースのサンプルをプログラムから作成して発行する手順を紹介しています。 QnA Maker は、[データ ソース](../index.yml)の FAQ などの半構造化コンテンツから質問とその回答を自動的に抽出します。 ナレッジ ベースのモデルは、API 要求の本文で送信される JSON で定義されます。
 
 このクイック スタートで呼び出す QnA Maker API は次のとおりです。
-* [KB の作成](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
-* [取得操作の詳細](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
+* [KB の作成](/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
+* [取得操作の詳細](/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[リファレンス ドキュメント](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Python サンプル](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py)
+[リファレンス ドキュメント](/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Python サンプル](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -48,8 +48,8 @@ Program クラスの上部に、QnA Maker にアクセスするために必要�
 
 次の値を設定します。
 
-* `<your-qna-maker-subscription-key>` - この**キー**は 32 文字の文字列で、Azure portal の [クイックスタート] ページの QnA Maker リソースで入手できます。 これは、予測エンドポイント キーと同じではありません。
-* `<your-resource-name>` - この**リソース名**を使用して、`https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 形式の作成エンドポイントの URL が構築されます。 これは、予測エンドポイントを照会するときに使用した URL と同じではありません。
+* `<your-qna-maker-subscription-key>` - この **キー** は 32 文字の文字列で、Azure portal の [クイックスタート] ページの QnA Maker リソースで入手できます。 これは、予測エンドポイント キーと同じではありません。
+* `<your-resource-name>` - この **リソース名** を使用して、`https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 形式の作成エンドポイントの URL が構築されます。 これは、予測エンドポイントを照会するときに使用した URL と同じではありません。
 
 :::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="constants":::
 
@@ -135,4 +135,4 @@ python create-new-knowledge-base-3x.py
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API リファレンス](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [QnA Maker (V4) REST API リファレンス](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2019
-ms.openlocfilehash: dc910c01c401468a3dae392a6318344bee25efb7
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 5035a81838ace0678f0cbb68ad2b9325de498003
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375642"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353121"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker のリソースとナレッジ ベースに対する言語のサポート
 
@@ -140,7 +140,7 @@ QnA Maker マネージドでは、個々のナレッジベース レベルで言
 |ベトナム語|
 
 ## <a name="query-matching-and-relevance"></a>クエリの一致と関連性
-QnA Maker による結果の提供は、[Azure Cognitive Search の言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)に依存してします。
+QnA Maker による結果の提供は、[Azure Cognitive Search の言語アナライザー](/rest/api/searchservice/language-support)に依存してします。
 
 Azure Cognitive Search の機能はサポートされている言語に従いますが、QnA Maker には Azure Search の結果より上位に追加のランカーがあります。 このランカー モデルでは、以下の言語においていくつかの特別なセマンティックとワード ベースの機能が使用されます。
 
@@ -166,4 +166,4 @@ Azure Cognitive Search の機能はサポートされている言語に従いま
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [言語の選択](../how-to/language-knowledge-base.md)
+> [言語の選択](../index.yml)

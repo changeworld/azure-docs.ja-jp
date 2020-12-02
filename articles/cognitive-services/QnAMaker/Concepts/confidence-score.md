@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: abae83cee106feb553e8ced404d23ba5619ba416
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 489592fcbc779685728b120f18e5e923ee34d655
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327155"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346377"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>回答の信頼度スコア
 ユーザー クエリがナレッジ ベースに対して一致すると、QnA Maker は、信頼度スコアと共に該当する回答を返します。 このスコアは、回答が特定のユーザー クエリに最適である信頼度を示します。
@@ -62,7 +62,7 @@ ms.locfileid: "91327155"
 ボット フレームワークからは、[C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) または [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs) で options オブジェクトの一部としてスコアを設定します。
 
 ## <a name="improve-confidence-scores"></a>信頼度スコアの向上
-ユーザー クエリに対する特定の応答の信頼度スコアを上げるには、その応答に対する代替質問として、ユーザー クエリをナレッジ ベースに追加できます。 大文字と小文字が区別される[単語変更](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace)を使用して、KB のキーワードにシノニムを追加することもできます。
+ユーザー クエリに対する特定の応答の信頼度スコアを上げるには、その応答に対する代替質問として、ユーザー クエリをナレッジ ベースに追加できます。 大文字と小文字が区別される[単語変更](/rest/api/cognitiveservices/qnamaker/alterations/replace)を使用して、KB のキーワードにシノニムを追加することもできます。
 
 
 ## <a name="similar-confidence-scores"></a>類似する信頼度スコア
@@ -89,4 +89,3 @@ ms.locfileid: "91327155"
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [ベスト プラクティス](./best-practices.md)
-

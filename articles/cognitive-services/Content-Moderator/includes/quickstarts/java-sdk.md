@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 6f5d1fd8a179f88677ddd6d7b1875f60836ade51
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 30360253c0b1aa34c4af1e5efdf3cf9b4d8baaa0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918751"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356496"
 ---
 Java 用 Azure Content Moderator クライアント ライブラリの使用を開始します。 以下の手順に従って、Maven パッケージをインストールし、基本タスクのコード例を試してみましょう。 
 
@@ -48,13 +48,13 @@ Java 用 Content Moderator クライアント ライブラリは、次の目的�
 mkdir myapp && cd myapp
 ```
 
-作業ディレクトリから `gradle init` コマンドを実行します。 次のコマンドを実行すると、 *build.gradle.kts* を含む、Gradle 用の重要なビルド ファイルが作成されます。これは、アプリケーションを作成して構成するために、実行時に使用されます。
+作業ディレクトリから `gradle init` コマンドを実行します。 次のコマンドを実行すると、*build.gradle.kts* を含む、Gradle 用の重要なビルド ファイルが作成されます。これは、アプリケーションを作成して構成するために、実行時に使用されます。
 
 ```console
 gradle init --type basic
 ```
 
-**DSL** を選択するよう求められたら、 **Kotlin** を選択します。
+**DSL** を選択するよう求められたら、**Kotlin** を選択します。
 
 ## <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
 
@@ -89,7 +89,7 @@ dependencies{
 mkdir -p src/main/java
 ```
 
-新しいフォルダーに移動し、 *ContentModeratorQuickstart.java* という名前のファイルを作成します。 それを任意のエディターまたは IDE で開き、以下の `import` ステートメントを追加します。
+新しいフォルダーに移動し、*ContentModeratorQuickstart.java* という名前のファイルを作成します。 それを任意のエディターまたは IDE で開き、以下の `import` ステートメントを追加します。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imports)]
 
@@ -101,9 +101,9 @@ mkdir -p src/main/java
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_creds)]
 
 > [!IMPORTANT]
-> Azure Portal にアクセスします。 「 **前提条件** 」セクションで作成した [製品名] リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
+> Azure Portal にアクセスします。 「**前提条件**」セクションで作成した [製品名] リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
 >
-> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)に関するページを参照してください。
+> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](../../../cognitive-services-security.md)に関するページを参照してください。
 
 アプリケーションの **main** メソッドで、このクイックスタートで使用するメソッドの呼び出しを追加します。 その定義は後から行います。
 
@@ -147,7 +147,7 @@ mkdir -p src/main/java
 
 ### <a name="define-helper-class"></a>ヘルパー クラスを定義する
 
-次に、 *ContentModeratorQuickstart.java* ファイルに、 **ContentModeratorQuickstart** クラス内に次のクラス定義を追加します。 この内部クラスは、画像のモデレート プロセスで使用されます。
+次に、*ContentModeratorQuickstart.java* ファイルに、**ContentModeratorQuickstart** クラス内に次のクラス定義を追加します。 この内部クラスは、画像のモデレート プロセスで使用されます。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_evaluationdata)]
 
@@ -220,7 +220,7 @@ gradle build
 gradle run
 ```
 
-次に、 *src/main/resources/ModerationOutput.json* ファイルに移動し、コンテンツ モデレーションの結果を表示します。
+次に、*src/main/resources/ModerationOutput.json* ファイルに移動し、コンテンツ モデレーションの結果を表示します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

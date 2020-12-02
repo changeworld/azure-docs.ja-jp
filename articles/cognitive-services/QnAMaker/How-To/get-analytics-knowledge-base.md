@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: f58fe342d66c328bdadf41fc965c2952605aea8e
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 5f149dd6db82b66b45a4c995e2004936481af786
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376577"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352424"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>ナレッジ ベースに関する分析の取得
 
@@ -52,7 +52,7 @@ ms.locfileid: "94376577"
 
 QnA Maker マネージド (プレビュー) によって Azure 診断ログが使用され、テレメトリ データとチャット ログが格納されます。 下の手順でサンプル クエリを実行し、QnA Maker ナレッジ ベースの使用状況分析を取得します。
 
-1. QnA Maker マネージド (プレビュー) サービスの[診断ログを有効にします](https://docs.microsoft.com/azure/cognitive-services/diagnostic-logging)。
+1. QnA Maker マネージド (プレビュー) サービスの[診断ログを有効にします](../../diagnostic-logging.md)。
 
 2. 前の手順で、ログに **[Audit]、[RequestResponse]、[AllMetrics]** に加えて **[Trace]** を選択しました。
 

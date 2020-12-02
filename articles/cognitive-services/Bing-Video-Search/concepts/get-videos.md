@@ -10,19 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 2fab4a57a939f9516140562cb8b8508b2ba69dc0
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 10277efe1f06de3633b2d614e2ee5ec0cc351c76
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379890"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351931"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Bing Video Search API で動画を検索する
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
-> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 Bing Video Search API を使用すると、Bing のコグニティブ ニュース検索機能を簡単にアプリケーションに統合することができます。 この API は主に、関連する動画を Web から検索して返すものですが、同時に、インテリジェントで的を絞った動画検索を Web 上で行うための機能をいくつか備えています。
 
@@ -149,9 +149,9 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>クエリの展開
 
-Bing がクエリを展開して元の検索を絞り込むことができる場合、[Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) オブジェクトには `queryExpansions` フィールドが含まれます。 たとえば、クエリが *Cleaning Gutters* だった場合、展開されるクエリには、Gutter Cleaning **Tools** 、Cleaning Gutters **From the Ground** 、Gutter Cleaning **Machine** 、および **Easy** Gutter Cleaning となる場合があります。
+Bing がクエリを展開して元の検索を絞り込むことができる場合、[Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) オブジェクトには `queryExpansions` フィールドが含まれます。 たとえば、クエリが *Cleaning Gutters* だった場合、展開されるクエリには、Gutter Cleaning **Tools**、Cleaning Gutters **From the Ground**、Gutter Cleaning **Machine**、および **Easy** Gutter Cleaning となる場合があります。
 
-次の例は、 *Cleaning Gutters* の展開されたクエリを示しています。
+次の例は、*Cleaning Gutters* の展開されたクエリを示しています。
 
 ```json
 {
@@ -180,9 +180,9 @@ Bing がクエリを展開して元の検索を絞り込むことができる場
 
 ## <a name="pivoting-the-query"></a>クエリのピボット
 
-元の検索クエリを Bing が分割できる場合、[Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) オブジェクトには `pivotSuggestions` フィールドが存在します。 たとえば、元のクエリが「 *Cleaning Gutters* 」である場合、そのクエリが Bing によって *Cleaning* と *Gutters* に分割される可能性があります。
+元の検索クエリを Bing が分割できる場合、[Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) オブジェクトには `pivotSuggestions` フィールドが存在します。 たとえば、元のクエリが「*Cleaning Gutters*」である場合、そのクエリが Bing によって *Cleaning* と *Gutters* に分割される可能性があります。
 
-次の例は、 *Cleaning Gutters* に関するピボット候補を示しています。
+次の例は、*Cleaning Gutters* に関するピボット候補を示しています。
 
 ```json
 {

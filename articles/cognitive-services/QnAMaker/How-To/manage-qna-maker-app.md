@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 93d9cc871d1cb114f7f08b68eb8ae9d597e228b9
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 9c042d044f5ceba5a64d6bd7dfefa34bbc69b107
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376487"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353206"
 ---
 # <a name="manage-qna-maker-app"></a>QnA Maker アプリの管理
 
@@ -23,7 +23,7 @@ QnA Maker では共同作成者の役割に基づいて共同作成者のアク�
 
 ## <a name="add-azure-role-based-access-control-azure-rbac"></a>Azure ロールベースのアクセス制御を追加する (Azure RBAC)
 
-QnA Maker を使用すると、複数の担当者が同じ QnA Maker リソース内のすべてのナレッジベースで共同作業を行うことができます。 この機能は、[Azure ロール ベースのアクセス制御 (Azure RBAC)](../../../active-directory/role-based-access-control-configure.md) で提供されています。
+QnA Maker を使用すると、複数の担当者が同じ QnA Maker リソース内のすべてのナレッジベースで共同作業を行うことができます。 この機能は、[Azure ロール ベースのアクセス制御 (Azure RBAC)](../../../role-based-access-control/role-assignments-portal.md) で提供されています。
 
 ## <a name="access-at-the-qna-maker-resource-level"></a>QnA Maker リソース レベルでのアクセス
 

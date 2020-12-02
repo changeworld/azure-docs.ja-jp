@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: bd2032d565f5bd1fb430449be8b8c08e222f531d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 085dd18214f795566669fb862bba63b67eb9115d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95029385"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350366"
 ---
 # <a name="build-an-enrollment-app-for-android-with-react"></a>React を使用して Android 用の登録アプリをビルドする
 
@@ -74,7 +74,7 @@ ms.locfileid: "95029385"
 
 ### <a name="android"></a>Android
 
-最初に、アプリが運用環境に展開できる状態であることを確認します。アプリのコードからキーまたはシークレットを削除し、[セキュリティのベスト プラクティス](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp)に従っていることを確認します。
+最初に、アプリが運用環境に展開できる状態であることを確認します。アプリのコードからキーまたはシークレットを削除し、[セキュリティのベスト プラクティス](../cognitive-services-security.md?tabs=command-line%2ccsharp)に従っていることを確認します。
 
 アプリを運用環境にリリースする準備ができたら、リリース対応の APK ファイルを生成します。これは、Android アプリのパッケージ ファイル形式です。 この APK ファイルに、秘密キーで署名する必要があります。 このリリース ビルドを使用して、デバイスへのアプリの直接的な配布を始めることができます。 
 

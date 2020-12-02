@@ -10,19 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: fbe8f9f4c5354d5a1b68909fcb65597e8c03dfb8
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: ecf01720126a9bf5da4aabb08653e62b42265d36
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94367167"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351352"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Bing News Search API でニュースを検索する
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
-> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 Bing Image Search API を使用すると、Bing のコグニティブ ニュース検索機能を簡単にアプリケーションに統合することができます。
 
@@ -32,7 +32,7 @@ Bing News Search API は主に、関連するニュース記事を検索して�
 
 ユーザーが検索語句を入力するための検索ボックスを用意する場合は、[Bing Autosuggest API](../../bing-autosuggest/get-suggested-search-terms.md) を使用することでエクスペリエンスが向上します。 この API は、検索語句をユーザーが入力している最中に、その一部分に基づいてクエリ文字列の候補を返します。
 
-ユーザーが検索語句を入力した後、それを URL エンコードしたうえで、[q](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query) クエリ パラメーターを設定します。 たとえば「 *sailing dinghies* 」と入力された場合、`q` を `sailing+dinghies` または `sailing%20dinghies` に設定します。
+ユーザーが検索語句を入力した後、それを URL エンコードしたうえで、[q](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query) クエリ パラメーターを設定します。 たとえば「*sailing dinghies*」と入力された場合、`q` を `sailing+dinghies` または `sailing%20dinghies` に設定します。
 
 ## <a name="get-general-news"></a>通常のニュースを取得する
 

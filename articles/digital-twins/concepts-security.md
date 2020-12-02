@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 349f57299387b616373bb5fb4d295da8df8ee493
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: d62e7566038af6647cab2992b02184a4ea5ba30b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279891"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344149"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure Digital Twins をセキュリティで保護する
 
-Azure Digital Twins では、セキュリティのために、デプロイ内の特定のデータ、リソース、アクションへのアクセスを正確に制御できます。 この処理には、 **Azure ロールベースのアクセス制御 (Azure RBAC)** と呼ばれるきめ細かいロールおよびアクセス許可の管理戦略が使用されています。 Azure RBAC の一般的な原則については、[こちら](../role-based-access-control/overview.md)を参照してください。
+Azure Digital Twins では、セキュリティのために、デプロイ内の特定のデータ、リソース、アクションへのアクセスを正確に制御できます。 この処理には、**Azure ロールベースのアクセス制御 (Azure RBAC)** と呼ばれるきめ細かいロールおよびアクセス許可の管理戦略が使用されています。 Azure RBAC の一般的な原則については、[こちら](../role-based-access-control/overview.md)を参照してください。
 
 Azure Digital Twins では、保存データの暗号化もサポートされています。
 
@@ -24,16 +24,16 @@ Azure Digital Twins では、保存データの暗号化もサポートされて
 
 Azure RBAC は、[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) との統合を介して Azure Digital Twins に提供されます。
 
-Azure RBAC を使用して、" *セキュリティ プリンシパル* " (ユーザー、グループ、またはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与できます。 セキュリティ プリンシパルは Azure AD によって認証され、応答として OAuth 2.0 トークンを受け取ります。 このトークンは、Azure Digital Twins インスタンスへのアクセス要求を承認するために使用できます。
+Azure RBAC を使用して、"*セキュリティ プリンシパル*" (ユーザー、グループ、またはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与できます。 セキュリティ プリンシパルは Azure AD によって認証され、応答として OAuth 2.0 トークンを受け取ります。 このトークンは、Azure Digital Twins インスタンスへのアクセス要求を承認するために使用できます。
 
 ### <a name="authentication-and-authorization"></a>認証と権限承認
 
-Azure AD では、アクセスは 2 段階のプロセスです。 セキュリティ プリンシパル (ユーザー、グループ、またはアプリケーション) が Azure Digital Twins にアクセスしようとすると、要求は必ず " *認証* " され、" *承認* " されます。 
+Azure AD では、アクセスは 2 段階のプロセスです。 セキュリティ プリンシパル (ユーザー、グループ、またはアプリケーション) が Azure Digital Twins にアクセスしようとすると、要求は必ず "*認証*" され、"*承認*" されます。 
 
-1. まず、セキュリティ プリンシパルの ID が " *認証* " され、OAuth 2.0 トークンが返されます。
-2. 次に、指定されたリソースへのアクセスを " *承認* " するために、トークンが要求の一部として Azure Digital Twins サービスに渡されます。
+1. まず、セキュリティ プリンシパルの ID が "*認証*" され、OAuth 2.0 トークンが返されます。
+2. 次に、指定されたリソースへのアクセスを "*承認*" するために、トークンが要求の一部として Azure Digital Twins サービスに渡されます。
 
-この認証手順では、実行時のアプリケーション要求に OAuth 2.0 アクセス トークンが含まれている必要があります。 アプリケーションが Azure エンティティ ( [Azure Functions](../azure-functions/functions-overview.md) アプリなど) 内で実行されている場合、 **マネージド ID** を使用してリソースにアクセスできます。 マネージド ID の詳細については、次のセクションを参照してください。
+この認証手順では、実行時のアプリケーション要求に OAuth 2.0 アクセス トークンが含まれている必要があります。 アプリケーションが Azure エンティティ ([Azure Functions](../azure-functions/functions-overview.md) アプリなど) 内で実行されている場合、**マネージド ID** を使用してリソースにアクセスできます。 マネージド ID の詳細については、次のセクションを参照してください。
 
 承認の手順では、セキュリティ プリンシパルに Azure ロールを割り当てる必要があります。 セキュリティ プリンシパルに割り当てられたロールによって、そのプリンシパルが持つアクセス許可が決定されます。 Azure Digital Twins には、Azure Digital Twins リソースの一連のアクセス許可を含む Azure ロールが用意されています。 これらのロールについては、この記事の後半で説明します。
 
@@ -60,12 +60,12 @@ Azure には、Azure Digital Twins [データ プレーン API](how-to-use-apis-
 > * *"Azure Digital Twins Data Reader" (Azure Digital Twins データ閲覧者)* の旧称は *"Azure Digital Twins Reader (Preview)" (Azure Digital Twins 閲覧者 (プレビュー))* です。
 
 ロールを割り当てるには、次の 2 つの方法があります。
-* Azure portal で Azure Digital Twins のアクセス制御 (IAM) ペインを使用する (「 [*Azure portal を使用して Azure ロールの割り当てを追加または削除する*](../role-based-access-control/role-assignments-portal.md)」を参照してください)
+* Azure portal で Azure Digital Twins のアクセス制御 (IAM) ペインを使用する (「[*Azure portal を使用して Azure ロールの割り当てを追加または削除する*](../role-based-access-control/role-assignments-portal.md)」を参照してください)
 * CLI コマンドを使用してロールを追加または削除する
 
-この詳細な実行手順については、 [*Azure Digital Twins チュートリアルのエンド ツー エンドのソリューションの接続*](tutorial-end-to-end.md)に関するページを参照してください。
+この詳細な実行手順については、[*Azure Digital Twins チュートリアルのエンド ツー エンドのソリューションの接続*](tutorial-end-to-end.md)に関するページを参照してください。
 
-組み込みロールの定義方法の詳細については、Azure RBAC のドキュメントの [*ロール定義の概要*](../role-based-access-control/role-definitions.md)に関するページを参照してください。 Azure カスタム ロールの作成については、「 [*Azure カスタム ロール*](../role-based-access-control/custom-roles.md)」を参照してください。
+組み込みロールの定義方法の詳細については、Azure RBAC のドキュメントの [*ロール定義の概要*](../role-based-access-control/role-definitions.md)に関するページを参照してください。 Azure カスタム ロールの作成については、「[*Azure カスタム ロール*](../role-based-access-control/custom-roles.md)」を参照してください。
 
 ##### <a name="automating-roles"></a>ロールの自動化
 
@@ -87,13 +87,13 @@ Azure には、Azure Digital Twins [データ プレーン API](how-to-use-apis-
 
 ### <a name="troubleshooting-permissions"></a>アクセス許可のトラブルシューティング
 
-ユーザーが自分のロールで許可されていないアクションの実行を試みた場合、`403 (Forbidden)` と書かれた、サービス要求からのエラーが表示されることがあります。 詳細とトラブルシューティングの手順については、" [*Azure Digital Twins 要求が失敗しました: 状態 403 (許可されていません)*](troubleshoot-error-403.md)" といったエラーのトラブルシューティングに関するページを参照してください。
+ユーザーが自分のロールで許可されていないアクションの実行を試みた場合、`403 (Forbidden)` と書かれた、サービス要求からのエラーが表示されることがあります。 詳細とトラブルシューティングの手順については、"[*Azure Digital Twins 要求が失敗しました: 状態 403 (許可されていません)*](troubleshoot-error-403.md)" といったエラーのトラブルシューティングに関するページを参照してください。
 
 ## <a name="service-tags"></a>サービス タグ
 
-**サービス タグ** は、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。これにより、ネットワーク セキュリティ規則に対する頻繁な更新の複雑さを最小限に抑えられます。 サービス タグの詳細については、"  [*仮想ネットワーク タグ* " ](../virtual-network/service-tags-overview.md)に関するページを参照してください。 
+**サービス タグ** は、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。これにより、ネットワーク セキュリティ規則に対する頻繁な更新の複雑さを最小限に抑えられます。 サービス タグの詳細については、" [*仮想ネットワーク タグ*"](../virtual-network/service-tags-overview.md)に関するページを参照してください。 
 
-サービス タグを使用して、 [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md#security-rules) または  [Azure Firewall](../firewall/service-tags.md) に対してネットワーク アクセス制御を定義するには、セキュリティ規則を作成するときに特定の IP アドレスの代わりにサービス タグを使用します。 規則の適切な " *ソース* "  または " *宛先* "  フィールドにサービス タグ名 (この場合は  **AzureDigitalTwins** ) を指定することにより、対応するサービスのトラフィックを許可または拒否することができます。 
+サービス タグを使用して、 [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md#security-rules) または  [Azure Firewall](../firewall/service-tags.md) に対してネットワーク アクセス制御を定義するには、セキュリティ規則を作成するときに特定の IP アドレスの代わりにサービス タグを使用します。 規則の適切な " *ソース*"  または " *宛先*"  フィールドにサービス タグ名 (この場合は  **AzureDigitalTwins**) を指定することにより、対応するサービスのトラフィックを許可または拒否することができます。 
 
 **AzureDigitalTwins** サービス タグの詳細を以下に示します。
 
@@ -105,13 +105,13 @@ Azure には、Azure Digital Twins [データ プレーン API](how-to-use-apis-
 
 Azure Digital Twins でサービス タグを使用して [イベント ルート](concepts-route-events.md) エンドポイントにアクセスする手順を次に示します。
 
-1. 最初に、Azure の IP 範囲とサービス タグを示す次の JSON ファイル参照をダウンロードします。 [" *Azure の IP 範囲とサービス タグ* "](https://www.microsoft.com/download/details.aspx?id=56519)。 
+1. 最初に、Azure の IP 範囲とサービス タグを示す次の JSON ファイル参照をダウンロードします。["*Azure の IP 範囲とサービス タグ*"](https://www.microsoft.com/download/details.aspx?id=56519)。 
 
 2. JSON ファイル内で "AzureDigitalTwins" IP 範囲を検索します。  
 
 3. エンドポイントに接続されている外部リソース (たとえば、[Event Grid](../event-grid/overview.md)、[Event Hub](../event-hubs/event-hubs-about.md)、[Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)、または[配信不能イベント](concepts-route-events.md#dead-letter-events)用の [Azure Storage](../storage/blobs/storage-blobs-overview.md)) のドキュメントを参照して、そのリソースに対して IP フィルターを設定する方法を確認します。
 
-4. " *手順 2* " からの IP 範囲を使用して、外部リソースに対して IP フィルターを設定します。  
+4. "*手順 2*" からの IP 範囲を使用して、外部リソースに対して IP フィルターを設定します。  
 
 5. 必要に応じて、IP 範囲を定期的に更新します。 範囲は時間の経過と共に変化する可能性があるため、これらを定期的にチェックし、必要に応じて更新することをお勧めします。 これらの更新の頻度は異なる場合がありますが、1 週間に 1 回チェックすることをお勧めします。
 
@@ -121,7 +121,7 @@ Azure Digital Twins によって、データ センターに書き込まれる�
 
 ## <a name="cross-origin-resource-sharing-cors"></a>クロスオリジン リソース共有 (CORS)
 
-現在、Azure Digital Twins では **クロスオリジン リソース共有 (CORS)** がサポートされていません。 このため、ブラウザー アプリ、[API Management (APIM)](../api-management/api-management-key-concepts.md) インターフェイス、または [Power Apps](https://docs.microsoft.com/powerapps/powerapps-overview) コネクタから REST API を呼び出すと、ポリシー エラーが表示される場合があります。
+現在、Azure Digital Twins では **クロスオリジン リソース共有 (CORS)** がサポートされていません。 このため、ブラウザー アプリ、[API Management (APIM)](../api-management/api-management-key-concepts.md) インターフェイス、または [Power Apps](/powerapps/powerapps-overview) コネクタから REST API を呼び出すと、ポリシー エラーが表示される場合があります。
 
 このエラーを解決するには、次のいずれかの操作を行います。
 * メッセージから CORS ヘッダー `Access-Control-Allow-Origin` を削除します。 このヘッダーは、応答を共有できるかどうかを示します。 
@@ -131,6 +131,6 @@ Azure Digital Twins によって、データ センターに書き込まれる�
 
 * [*インスタンスと認証の設定方法*](how-to-set-up-instance-portal.md)に関するページで取り上げられている、動作中の概念について確認します。
 
-* クライアント アプリケーション コードからこれらの概念を操作する方法を、 [*アプリ認証コードを作成する方法*](how-to-authenticate-client.md)に関するページで確認します。
+* クライアント アプリケーション コードからこれらの概念を操作する方法を、[*アプリ認証コードを作成する方法*](how-to-authenticate-client.md)に関するページで確認します。
 
 * [Azure RBAC](../role-based-access-control/overview.md) の詳細を確認します。
