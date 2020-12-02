@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 08/03/2020
 ms.author: curtand
-ms.openlocfilehash: d9023579b6627e9dab9feac8dfaccd94dc9f5c12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a002254995e42fc586b707e3cb373dac66e678ee
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798127"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834151"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>[自分のサインイン] ページから最近のサインイン アクティビティを表示および検索する
 
@@ -46,7 +46,7 @@ ms.locfileid: "88798127"
 
 ### <a name="if-you-see-an-unsuccessful-sign-in"></a>サインインの失敗が表示される場合
 
-サインインの失敗が表示される場合は、資格情報を誤って入力した可能性があります。 攻撃者がパスワードを推測しようとしている可能性もあります。 このリスクに対応するには、パスワードを変更する必要はありませんが、Azure Multi-Factor Authentication (MFA) に登録することをお勧めします。 多要素認証を使用すると、ハッカーがパスワードを推測したとしても、それだけではアカウントにアクセスできません。
+サインインの失敗が表示される場合は、資格情報を誤って入力した可能性があります。 攻撃者がパスワードを推測しようとしている可能性もあります。 このリスクに対応するには、パスワードを変更する必要はありませんが、Azure AD Multi-Factor Authentication (MFA) に登録することをお勧めします。 多要素認証を使用すると、ハッカーがパスワードを推測したとしても、それだけではアカウントにアクセスできません。
 
 ![サインインの失敗のタイル](media/my-account-portal-sign-ins-page/unsuccessful.png)
 
@@ -56,9 +56,9 @@ ms.locfileid: "88798127"
 
 利用可能な情報によって、最近のサインイン アクティビティを検索することができます。 たとえば、オペレーティング システム、場所、アプリなどによって、最近のサインイン アクティビティを検索できます。
 
-1. **[最近のアクティビティを確認する]** ページで、**検索**バーに検索する情報を入力します。 たとえば、「`Unsuccessful`」と入力すると、マイ アカウント アプリによって収集されたすべてのサインインの失敗アクティビティが検索されます。
+1. **[最近のアクティビティを確認する]** ページで、**検索** バーに検索する情報を入力します。 たとえば、「`Unsuccessful`」と入力すると、マイ アカウント アプリによって収集されたすべてのサインインの失敗アクティビティが検索されます。
 
-2. 検索を開始するには、**検索**ボタンを選択します。
+2. 検索を開始するには、**検索** ボタンを選択します。
 
     ![検索バー、検索ボタン、結果が強調表示された [最近のアクティビティ] ページ](media/my-account-portal-sign-ins-page/sign-in-search.png)
 

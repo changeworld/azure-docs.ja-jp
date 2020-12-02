@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 466851ce04a047f3edabcf33b45dba9cab0db20e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: cf64deb17bea508637debb5612231d355d523fbb
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132705"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95315585"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor エージェントの概要 (プレビュー)
 Azure Monitor エージェント (AMA) では、仮想マシンのゲスト オペレーティング システムから監視データが収集され、それが Azure Monitor に配信されます。 この記事では、Azure Monitor エージェントのインストール方法やデータ収集の構成方法など、Azure Monitor エージェントの概要について説明します。
@@ -54,7 +54,7 @@ Azure Monitor エージェントのパブリック プレビュー中は、次�
 
 - Azure Monitor エージェントでは、Azure Monitor for VMs や Azure Security Center などのソリューションと分析情報がサポートされません。 現在サポートされているシナリオは、構成したデータ収集ルールを使用してデータを収集することだけです。 
 - データ収集ルールは、収集先として使用する Log Analytics ワークスペースと同じリージョンに作成する必要があります。
-- 現在、Azure 仮想マシンのみがサポートされています。 オンプレミスの仮想マシン、仮想マシン スケール セット、Arc for Servers、Azure Kubernetes Service、その他のコンピューティング リソースの種類は現在サポートされていません。
+- 現在、Azure 仮想マシンと Azure Arc 対応サーバーがサポートされています。仮想マシン スケール セット、Azure Kubernetes Service、およびその他のコンピューティング リソースの種類は、現在サポートされていません。
 - 仮想マシンは、次の HTTPS エンドポイントにアクセスできる必要があります。
   - *.ods.opinsights.azure.com
   - *.ingest.monitor.azure.com
@@ -94,50 +94,8 @@ Azure Monitor エージェントにはキーは必要ありませんが、代わ
 ## <a name="networking"></a>ネットワーキング
 Azure Monitor エージェントでは Azure サービス タグ (AzureMonitor タグと AzureResourceManager タグの両方が必要) がサポートされますが、Azure Monitor プライベート リンク スコープや直接プロキシとはまだ連動していません。
 
-## <a name="install-the-azure-monitor-agent"></a>Azure Monitor エージェントのインストール
-Azure Monitor エージェントは、次の表に示す詳細で [Azure VM 拡張機能](../../virtual-machines/extensions/overview.md)として実装されます。 
-
-| プロパティ | Windows | Linux |
-|:---|:---|:---|
-| Publisher | Microsoft.Azure.Monitor  | Microsoft.Azure.Monitor |
-| 型      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
-| TypeHandlerVersion  | 1.0 | 1.5 |
-
-PowerShell または CLI を使用して、次のような仮想マシン エージェントをインストールするには、いずれかの方法を使用して Azure Monitor エージェントをインストールします。 または、ポータルを使用して、Azure サブスクリプションの仮想マシンでエージェントをインストールし、データ収集を構成できます。この手順については、「[Azure Monitor エージェント用のデータ収集の構成 (プレビュー)](data-collection-rule-azure-monitor-agent.md#create-using-the-azure-portal)」を参照してください。
-
-### <a name="windows"></a>Windows
-
-# <a name="cli"></a>[CLI](#tab/CLI1)
-
-```azurecli
-az vm extension set --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.Monitor --ids {resource ID of the VM}
-
-```
-
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell1)
-
-```powershell
-Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
-```
----
-
-
-### <a name="linux"></a>Linux
-
-# <a name="cli"></a>[CLI](#tab/CLI2)
-
-```azurecli
-az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --ids {resource ID of the VM}
-
-```
-
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell2)
-
-```powershell
-Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
-```
----
 
 ## <a name="next-steps"></a>次のステップ
 
+- Windows および Linux の仮想マシンに [Azure Monitor エージェント をインストール](azure-monitor-agent-install.md)します。
 - [データ収集ルールを作成し](data-collection-rule-azure-monitor-agent.md)、エージェントからデータを収集して Azure Monitor に送信します。

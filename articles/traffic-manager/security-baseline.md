@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9ed6a57dadb70daed9cdf02421b91d310b4b0f07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4523319c04703c04a293471124329512e31a265
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631462"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964679"
 ---
 # <a name="azure-security-baseline-for-azure-traffic-manager"></a>Azure Traffic Manager の Azure セキュリティ ベースライン
 
-Microsoft Azure Traffic Manager 用の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。 このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview-v1.md) に基づいて作成されています。 内容は、**セキュリティ制御**によってグループ化されています。これは、Azure セキュリティ ベンチマークと、Azure Traffic Manager に適用できる関連ガイダンスによって定義されています。 Azure Traffic Manager に適用できない**制御**は、除外されています。
+Microsoft Azure Traffic Manager 用の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。 このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview-v1.md) に基づいて作成されています。 内容は、**セキュリティ制御** によってグループ化されています。これは、Azure セキュリティ ベンチマークと、Azure Traffic Manager に適用できる関連ガイダンスによって定義されています。 Azure Traffic Manager に適用できない **制御** は、除外されています。
 
 Azure Traffic Manager が Azure セキュリティ ベンチマークに完全にマップされる方法については、[完全な Azure Traffic Manager セキュリティ ベースライン マッピング ファイル](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)を参照してください。
 
@@ -156,7 +156,7 @@ Resource Manager では、任意のサブスクリプションのエンドポイ
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: すべての Azure Active Directory ベースのアクセスに多要素認証を使用する
 
-**ガイダンス**:Azure Active Directory Multi-Factor Authentication を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。
+**ガイダンス**: Azure Active Directory Multi-Factor Authentication を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。
 
 - [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -270,7 +270,7 @@ Resource Manager では、任意のサブスクリプションのエンドポイ
 
 Resource Manager では、任意のサブスクリプションのエンドポイントを Traffic Manager に追加できますが、Traffic Manager プロファイルを構成するユーザーにそのエンドポイント対する読み取りアクセス権が必要となります。
 
-Azure Traffic Manager には、ユーザーに割り当てることができる、"Azure Traffic Manager の共同作成者" という定義済みの Azure RBAC ロールがあります。
+Azure Traffic Manager には、ユーザーに割り当てることができる、"Traffic Manager の共同作成者" という定義済みの Azure ロールがあります。
 
 - [Azure portal を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)
 
@@ -412,7 +412,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
-**ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
+**ガイダンス**:Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 

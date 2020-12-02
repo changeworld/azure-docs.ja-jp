@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3b4a9547a1bd62b7464b4a79fe68720572630f3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d826b80c11b700d753acc18f8d4c626a65510f93
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961892"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833811"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows での node アプリケーションのベスト プラクティスとトラブルシューティング ガイド
 
@@ -121,13 +121,13 @@ IIS の既定の動作として、応答データは、フラッシュするま�
 
 多くのアプリケーションは、通常の操作の一環として、発信接続を行う必要があります。 たとえば、要求を受信すると、node アプリケーションは別の場所の REST API に問い合わせて、要求を処理するための情報を取得しようとします。 http または https 呼び出しを行うときに、キープ アライブ エージェントを使用する場合があります。 これらの発信呼び出しを行うときに、キープ アライブ エージェントとして agentkeepalive モジュールを使用できます。
 
-agentkeepalive モジュールは、Azure の Web WebApp VM でソケットが再利用されることを保証します。 送信要求のたびに新しいソケットを作成すると、アプリケーションにオーバーヘッドが追加されます。 アプリケーションでソケットを再利用することで、アプリケーションが VM ごとに割り当てられている maxSockets を超えないことが保証されます。 Azure App Service では、agentKeepAlive maxSockets 値を VM あたり合計 160 ソケット (node.exe の 4 つのインスタンス \* インスタンス当たり 40 の maxSockets) に設定することが推奨されています。
+agentkeepalive モジュールは、Azure の Web WebApp VM でソケットが再利用されることを保証します。 送信要求のたびに新しいソケットを作成すると、アプリケーションにオーバーヘッドが追加されます。 アプリケーションでソケットを再利用することで、アプリケーションが VM ごとに割り当てられている maxSockets を超えないことが保証されます。 Azure App Service では、agentKeepAlive maxSockets 値を VM あたり合計 128 ソケット (node.exe の 4 つのインスタンス \* インスタンス当たり 32 の maxSockets) に設定することが推奨されています。
 
 [agentKeepALive](https://www.npmjs.com/package/agentkeepalive) 構成の例:
 
 ```nodejs
 let keepaliveAgent = new Agent({
-    maxSockets: 40,
+    maxSockets: 32,
     maxFreeSockets: 10,
     timeout: 60000,
     keepAliveTimeout: 300000

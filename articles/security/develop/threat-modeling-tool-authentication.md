@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
-ms.openlocfilehash: e9a1afd1d998fcb3ba715c890cc4deac1f0a7da5
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ee4dd70faab9ed44b1aa6ca8ca0ec517c7746f66
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517718"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832532"
 ---
 # <a name="security-frame-authentication--mitigations"></a>セキュリティ フレーム:認証 | 対応策
 
@@ -30,7 +30,7 @@ ms.locfileid: "94517718"
 | **Web アプリケーション**    | <ul><li>[標準の認証メカニズムを使用して Web アプリケーションに対する認証を行うことを検討する](#standard-authn-web-app)</li><li>[認証失敗のシナリオをアプリケーションが安全に処理する](#handle-failed-authn)</li><li>[ステップアップまたはアダプティブ認証を有効にする](#step-up-adaptive-authn)</li><li>[管理インターフェイスのロックが適切にロックダウンされていることを確認する](#admin-interface-lockdown)</li><li>[パスワードの再設定機能を安全に実装する](#forgot-pword-fxn)</li><li>[パスワードとアカウント ポリシーが実装されていることを確認する](#pword-account-policy)</li><li>[ユーザー名が列挙されないコントロールを実装する](#controls-username-enum)</li></ul> |
 | **[データベース]** | <ul><li>[可能であれば Windows 認証を使用して SQL Server に接続する](#win-authn-sql)</li><li>[可能であれば Azure Active Directory 認証を使用して SQL Database に接続する](#aad-authn-sql)</li><li>[SQL 認証モードを使用する場合は、SQL サーバーでアカウントとパスワード ポリシーが適用されていることを確認する](#authn-account-pword)</li><li>[包含データベースでは SQL 認証を使用しない](#autn-contained-db)</li></ul> |
 | **Azure Event Hub** | <ul><li>[SaS トークンを使用したデバイスごとの認証資格情報を使用する](#authn-sas-tokens)</li></ul> |
-| **Azure の信頼の境界** | <ul><li>[Azure 管理者用の Azure Multi-Factor Authentication を有効にする](#multi-factor-azure-admin)</li></ul> |
+| **Azure の信頼の境界** | <ul><li>[Azure 管理者用の Azure AD Multi-Factor Authentication を有効にする](#multi-factor-azure-admin)</li></ul> |
 | **Service Fabric の信頼の境界** | <ul><li>[Service Fabric クラスターへの匿名アクセスを制限する](#anon-access-cluster)</li><li>[Service Fabric のクライアントとノード間の証明書が、ノード間の証明書と異なることを確認する](#fabric-cn-nn)</li><li>[AAD を使用して Service Fabric クラスターに対してクライアントを認証する](#aad-client-fabric)</li><li>[承認された証明機関 (CA) から取得された Service fabric 証明書であることを確認する](#fabric-cert-ca)</li></ul> |
 | **Identity Server** | <ul><li>[Identity Server でサポートされる標準的な認証シナリオを使用する](#standard-authn-id)</li><li>[既定の Identity Server トークン キャッシュをスケーラブルな代替手段でオーバーライドする](#override-token)</li></ul> |
 | **コンピューターの信頼の境界** | <ul><li>[デプロイされたアプリケーションのバイナリがデジタル署名されていることを確認する](#binaries-signed)</li></ul> |
@@ -173,7 +173,7 @@ ms.locfileid: "94517718"
 | **参照**              | [Event Hubs の認証とセキュリティ モデルの概要](../../event-hubs/authenticate-shared-access-signature.md) |
 | **手順** | <p>Event Hubs のセキュリティ モデルは、Shared Access Signature (SAS) トークンとイベント パブリッシャーの組み合わせに基づいています。 パブリッシャー名は、トークンを受け取る DeviceID を表します。 これは、生成されたトークンと各デバイスを関連付けるうえで役に立ちます。</p><p>すべてのメッセージが、サービス側の発信元でタグ付けされており、ペイロード内配信元なりすまし試行を検出できます。 デバイスを認証するときに、一意のパブリッシャーを対象とした SAS トークンをデバイスごとに生成します。</p>|
 
-## <a name="enable-azure-multi-factor-authentication-for-azure-administrators"></a><a id="multi-factor-azure-admin"></a>Azure 管理者用の Azure Multi-Factor Authentication を有効にする
+## <a name="enable-azure-ad-multi-factor-authentication-for-azure-administrators"></a><a id="multi-factor-azure-admin"></a>Azure 管理者用の Azure AD Multi-Factor Authentication を有効にする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -181,7 +181,7 @@ ms.locfileid: "94517718"
 | **SDL フェーズ**               | デプロイ |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [Azure Multi-Factor Authentication とは](../../active-directory/authentication/concept-mfa-howitworks.md) |
+| **参照**              | [Azure AD Multi-Factor Authentication とは](../../active-directory/authentication/concept-mfa-howitworks.md) |
 | **手順** | <p>Multi-Factor Authentication (MFA) は、複数の確認方法を要求することで、ユーザーのサインインとトランザクションにさらなる重要なセキュリティ レイヤーを追加する認証方法です。 これらは、次の確認方法のうち 2 つ以上を要求することで機能します。</p><ul><li>ユーザーが知っている情報 (一般にパスワード)</li><li>ユーザーの所持品 (複製が困難な、携帯電話などの信頼されているデバイス)</li><li>ユーザー自身 (生体認証)</li><ul>|
 
 ## <a name="restrict-anonymous-access-to-service-fabric-cluster"></a><a id="anon-access-cluster"></a>Service Fabric クラスターへの匿名アクセスを制限する

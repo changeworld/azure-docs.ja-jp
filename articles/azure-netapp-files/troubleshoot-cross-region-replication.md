@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/17/2020
+ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 6fbb9b054433905d41d0171ab08b4647618be466
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: b30ed0cca680013b85efe064d59fb7cb73d753d2
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94745685"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95239552"
 ---
 # <a name="troubleshoot-cross-region-replication"></a>リージョン間レプリケーションのトラブルシューティング
 
@@ -50,6 +50,12 @@ ms.locfileid: "94745685"
 |-|-|
 |     `Replication   cannot be deleted, mirror state needs to be in status: Broken before deleting`    |     レプリケーションが解除されているか、または初期化されずにアイドル状態になっている (初期化に失敗した) かを確認します。    |
 |     `Cannot delete   source replication`    |     ソース側からのレプリケーションの削除は許可されていません。 ターゲット側からレプリケーションを削除していることを確認します。    |
+
+## <a name="errors-deleting-volume"></a>ボリュームの削除中に発生するエラー
+
+|     エラー メッセージ    |     解決策    |
+|-|-|
+| `Volume is a member of an active volume replication relationship`  |  ボリュームを削除する前に、レプリケーションを削除します。 「[レプリケーションの削除](cross-region-replication-delete.md)」を参照してください。 この操作では、ボリュームのレプリケーションを削除する前にピアリングを中断する必要があります。 |
 | `Volume with replication cannot be deleted`  |  ボリュームを削除する前に、レプリケーションを削除します。 「[レプリケーションの削除](cross-region-replication-delete.md)」を参照してください。 この操作では、ボリュームのレプリケーションを削除する前にピアリングを中断する必要があります。 
 
 ## <a name="errors-resyncing-volume"></a>ボリュームの再同期中に発生するエラー
@@ -69,7 +75,7 @@ ms.locfileid: "94745685"
 
 * [リージョン間レプリケーション](cross-region-replication-introduction.md)
 * [リージョン間レプリケーションを使用するための要件と考慮事項](cross-region-replication-requirements-considerations.md)
-* [レプリケーション ピアリングの作成](cross-region-replication-create-peering.md)
+* [ボリューム レプリケーションを作成する](cross-region-replication-create-peering.md)
 * [レプリケーション関係の正常性状態を表示する](cross-region-replication-display-health-status.md)
 * [ディザスター リカバリーの管理](cross-region-replication-manage-disaster-recovery.md)
 * [リージョン間レプリケーションのトラブルシューティング](troubleshoot-cross-region-replication.md)

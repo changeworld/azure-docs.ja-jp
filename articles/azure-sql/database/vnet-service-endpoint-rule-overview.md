@@ -11,17 +11,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 4539709dbac992979af6a56e3dae81725a35739d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 97be3bf0ecec20c4bf2e1633f893c9aa0d9ba49d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325009"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020284"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL Database のサーバー用の仮想ネットワーク サービス エンドポイントと規則の使用
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-" *仮想ネットワーク規則* " は 1 つのファイアウォール セキュリティ機能であり、 [Azure SQL Database](sql-database-paas-overview.md) 内のデータベースおよびエラスティック プール用、または [Azure Synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 内のデータベース用のサーバーが、仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御します。 この記事では、仮想ネットワーク規則機能が、場合によっては Azure SQL Database と Azure Synapse Analytics (以前の SQL Data Warehouse) のデータベースへの通信を安全に許可するための最適な選択肢となる理由を説明します。
+"*仮想ネットワーク規則*" は 1 つのファイアウォール セキュリティ機能であり、[Azure SQL Database](sql-database-paas-overview.md) 内のデータベースおよびエラスティック プール用、または [Azure Synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 内のデータベース用のサーバーが、仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御します。 この記事では、仮想ネットワーク規則機能が、場合によっては Azure SQL Database と Azure Synapse Analytics (以前の SQL Data Warehouse) のデータベースへの通信を安全に許可するための最適な選択肢となる理由を説明します。
 
 > [!NOTE]
 > この記事は、Azure SQL Database と Azure Synapse Analytics の両方に適用されます。 単純にするために、"データベース" という言葉で Azure SQL Database と Azure Synapse Analytics の両方のデータベースを表すことにします。 同様に、"サーバー" という言葉は、Azure SQL Database と Azure Synapse Analytics をホストする[論理 SQL サーバー](logical-servers.md)を表しています。
@@ -55,7 +55,7 @@ ms.locfileid: "93325009"
 - **ネットワーク管理者:** &nbsp; エンドポイントを有効にします。
 - **データベース管理者:** &nbsp;アクセス制御リスト (ACL) を更新して、指定されたサブネットをサーバーに追加します。
 
-*RBAC による代替:*
+"*Azure RBAC による代替:* "
 
 ネットワーク管理およびデータベース管理のロールには、仮想ネットワーク規則の管理に必要とされる機能以外もあります。 それらの機能のうち 1 つのサブネットだけが必要になります。
 
@@ -80,6 +80,7 @@ Azure SQL Database の場合、仮想ネットワーク規則機能には以下�
 
 - Azure SQL Database に対する仮想ネットワーク サービス エンドポイントを有効にすると、MySQL および PostgreSQL Azure サービスに対してもエンドポイントが有効になります。 ただし、エンドポイントを有効にすると、エンドポイントから MySQL または PostgreSQL インスタンスへの接続の試行は失敗します。
   - 根本的な理由は、MySQL および PostgreSQL には仮想ネットワーク規則が構成されていない可能性があるためです。 接続を成功させるには、Azure Database for MySQL と Azure Database for PostgreSQL の仮想ネットワーク規則を構成する必要があります。
+  - プライベート エンドポイントを使用して既に構成されている SQL 論理サーバー上で VNet のファイアウォール規則を定義するには、 **[パブリック ネットワーク アクセスの拒否]** を **[いいえ]** に設定します。
 
 - ファイアウォールでは、IP アドレスは以下のネットワーク項目に適用されますが、仮想ネットワーク規則は適用されません。
   - [サイト間 (S2S) 仮想プライベート ネットワーク (VPN)][vpn-gateway-indexmd-608y]
@@ -89,7 +90,7 @@ Azure SQL Database の場合、仮想ネットワーク規則機能には以下�
 
 Azure SQL Database のサービス エンドポイントを使用する場合、次の考慮事項を確認してください。
 
-- **Azure SQL Database のパブリック IP へのアウトバウンドが必要** :ネットワーク セキュリティ グループ (NSG) は、接続を許可するために Azure SQL Database IP に対して開かれている必要があります。 Azure SQL Database に NSG の[サービス タグ](../../virtual-network/network-security-groups-overview.md#service-tags)を使用して、この設定を行うことができます。
+- **Azure SQL Database のパブリック IP へのアウトバウンドが必要**:ネットワーク セキュリティ グループ (NSG) は、接続を許可するために Azure SQL Database IP に対して開かれている必要があります。 Azure SQL Database に NSG の[サービス タグ](../../virtual-network/network-security-groups-overview.md#service-tags)を使用して、この設定を行うことができます。
 
 ### <a name="expressroute"></a>ExpressRoute
 
@@ -121,7 +122,7 @@ PolyBase と COPY ステートメントは、高スループットのデータ �
 
 #### <a name="steps"></a>手順
 
-1. PowerShell で、Azure Synapse をホストしている **サーバーを、Azure Active Directory (AAD) に登録します** 。
+1. PowerShell で、Azure Synapse をホストしている **サーバーを、Azure Active Directory (AAD) に登録します**。
 
    ```powershell
    Connect-AzAccount
@@ -129,14 +130,14 @@ PolyBase と COPY ステートメントは、高スループットのデータ �
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
-1. この [ガイド](../../storage/common/storage-account-create.md)を使用して、 **汎用 v2 ストレージ アカウント** を作成します。
+1. この [ガイド](../../storage/common/storage-account-create.md)を使用して、**汎用 v2 ストレージ アカウント** を作成します。
 
    > [!NOTE]
    >
-   > - 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この [ガイド](../../storage/common/storage-account-upgrade.md)を使用して、 **最初に v2 にアップグレードする** 必要があります。
+   > - 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この [ガイド](../../storage/common/storage-account-upgrade.md)を使用して、**最初に v2 にアップグレードする** 必要があります。
    > - Azure Data Lake Storage Gen2 に関する既知の問題については、この[ガイド](../../storage/blobs/data-lake-storage-known-issues.md)をご覧ください。
 
-1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 手順 1 で Azure Active Directory (AAD) に登録した Azure Synapse Analytics をホストするサーバーに、 **ストレージ BLOB データ共同作成者** Azure ロールを割り当てます。
+1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 手順 1 で Azure Active Directory (AAD) に登録した Azure Synapse Analytics をホストするサーバーに、**ストレージ BLOB データ共同作成者** Azure ロールを割り当てます。
 
    > [!NOTE]
    > ストレージ アカウントの所有者特権を持つメンバーのみが、この手順を実行できます。 さまざまな Azure の組み込みロールについては、こちらの[ガイド](../../role-based-access-control/built-in-roles.md)をご覧ください。
@@ -180,15 +181,15 @@ BLOB 監査では、監査ログをユーザー独自のストレージ アカ�
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>VNet サービス エンドポイントをオンにすることなく VNet ファイアウォール規則をサーバーに追加する
 
-この機能が強化される以前は、ライブ VNet ルールをファイアウォールに実装するには、VNet サービス エンドポイントをオンにする必要がありました。 エンドポイントが特定の VNet サブネットを Azure SQL Database 内のデータベースに関連付けていました。 しかし、2018 年 1 月現在からは、 **IgnoreMissingVNetServiceEndpoint** フラグを設定することでこの要件を回避できます。
+この機能が強化される以前は、ライブ VNet ルールをファイアウォールに実装するには、VNet サービス エンドポイントをオンにする必要がありました。 エンドポイントが特定の VNet サブネットを Azure SQL Database 内のデータベースに関連付けていました。 しかし、2018 年 1 月現在からは、**IgnoreMissingVNetServiceEndpoint** フラグを設定することでこの要件を回避できます。
 
 単にファイアウォール規則を設定するだけでは、サーバーのセキュリティ保護には役立ちません。 セキュリティを有効にするには、VNet サービス エンドポイントをオンにする必要もあります。 サービス エンドポイントをオンにする場合、オフからオンへの切り替えが完了するまで VNet サブネットでダウンタイムが発生します。 これは、大規模 VNet のコンテキストに特に当てはまります。 **IgnoreMissingVNetServiceEndpoint** フラグを使用すると、切り替え中のダウンタイムを軽減するか、なくすことができます。
 
-PowerShell を使用して、 **IgnoreMissingVNetServiceEndpoint** フラグを設定できます。 詳細については、[PowerShell での仮想ネットワーク サービス エンドポイントと Azure SQL Database の規則の作成][sql-db-vnet-service-endpoint-rule-powershell-md-52d]に関する記事をご覧ください。
+PowerShell を使用して、**IgnoreMissingVNetServiceEndpoint** フラグを設定できます。 詳細については、[PowerShell での仮想ネットワーク サービス エンドポイントと Azure SQL Database の規則の作成][sql-db-vnet-service-endpoint-rule-powershell-md-52d]に関する記事をご覧ください。
 
 ## <a name="errors-40914-and-40615"></a>エラー 40914 および 40615
 
-接続エラー 40914 は、Azure Portal の [ファイアウォール] ウィンドウで指定されている " *仮想ネットワーク規則* " に関係があります。 エラー 40615 も同様ですが、ファイアウォールでの " *IP アドレス規則* " に関係している点が異なります。
+接続エラー 40914 は、Azure Portal の [ファイアウォール] ウィンドウで指定されている "*仮想ネットワーク規則*" に関係があります。 エラー 40615 も同様ですが、ファイアウォールでの "*IP アドレス規則*" に関係している点が異なります。
 
 ### <a name="error-40914"></a>エラー 40914
 
@@ -210,7 +211,7 @@ PowerShell を使用して、 **IgnoreMissingVNetServiceEndpoint** フラグを�
 
 ## <a name="portal-can-create-a-virtual-network-rule"></a>Portal で仮想ネットワーク規則を作成する
 
-このセクションでは、 [Azure portal][http-azure-portal-link-ref-477t] を使用して、お使いの Azure SQL Database 内のデータベースに " *仮想ネットワーク規則* " を作成する方法を説明します。 この規則は、" *仮想ネットワーク サービス エンドポイント* " としてタグ付けされた特定のサブネットからの通信を許可するように、お使いのデータベースに指示します。
+このセクションでは、[Azure portal][http-azure-portal-link-ref-477t] を使用して、お使いの Azure SQL Database 内のデータベースに "*仮想ネットワーク規則*" を作成する方法を説明します。 この規則は、"*仮想ネットワーク サービス エンドポイント*" としてタグ付けされた特定のサブネットからの通信を許可するように、お使いのデータベースに指示します。
 
 > [!NOTE]
 > サーバーの VNet ファイアウォール規則にサービス エンドポイントを追加する場合は、まず、そのサブネットに対するサービス エンドポイントを有効にする必要があります。

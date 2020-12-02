@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 2b8009d6d571a9daf7163d2126b6d52edfc4bfdd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 001721ac0fdbbaaf808b962a79353369ab1dddb5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521086"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521956"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices"></a>Azure Automanage for virtual machines のベスト プラクティス
 
@@ -33,6 +33,7 @@ Automanage for virtual machines を使用すると、このような Azure サ�
 |Microsoft Antimalware    |Azure に対する Microsoft マルウェア対策は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つリアルタイムの保護です。 これにより、既知の悪意あるソフトウェアや望ましくないソフトウェアが Azure システム上にソフトウェア自体をインストールまたは実行しようとしたときに、アラートが生成されます。 [詳細情報](../security/fundamentals/antimalware.md)。 |Azure VM のベスト プラクティス - 運用、Azure VM のベスト プラクティス - Dev/Test    |Yes    |
 |更新管理    |Azure Automation の Update Management を使用して、仮想マシンのオペレーティング システムの更新プログラムを管理することができます。 すべてのエージェント マシンで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。 [詳細情報](../automation/update-management/update-mgmt-overview.md)。    |Azure VM のベスト プラクティス - 運用、Azure VM のベスト プラクティス - Dev/Test    |No    |
 |変更履歴とインベントリ    |変更履歴とインベントリでは、変更履歴とインベントリの機能を組み合わせて、仮想マシンとサーバー インフラストラクチャの変更を追跡できます。 このサービスを利用すれば、環境内のサービス、デーモン、ソフトウェア、レジストリ、ファイル全体にわたって変更を追跡し、不要な変更を診断したりアラートを生成したりすることができます。 インベントリのサポートにより、ゲスト リソースでクエリを実行して、インストール済みのアプリケーションやその他の構成アイテムを可視化できます。  [詳細情報](../automation/change-tracking/overview.md)。    |Azure VM のベスト プラクティス - 運用、Azure VM のベスト プラクティス - Dev/Test    |No    |
+|Azure ゲスト構成    | ゲスト構成ポリシーは、マシンのコンプライアンスに関するレポートを作成し、構成を監視するために使用されます。 ゲスト構成拡張機能を使用して、Automanage サービスによって [Windows セキュリティ ベースライン](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines)がインストールされます。 [詳細情報](../governance/policy/concepts/guest-configuration.md)。    |Azure VM のベスト プラクティス - 運用、Azure VM のベスト プラクティス - Dev/Test    |No    |
 |Azure Automation アカウント    |Azure Automation は、インフラストラクチャとアプリケーションのライフサイクル全体にわたる管理をサポートします。 [詳細情報](../automation/automation-intro.md)。    |Azure VM のベスト プラクティス - 運用、Azure VM のベスト プラクティス - Dev/Test    |No    |
 |Log Analytics ワークスペース    |Azure Monitor では、ログ データが Log Analytics ワークスペースに格納されます。Log Analytics ワークスペースは Azure リソースであり、データが収集、集計され、管理境界として機能するコンテナーです。 [詳細情報](../azure-monitor/platform/design-logs-deployment.md)。    |Azure VM のベスト プラクティス - 運用、Azure VM のベスト プラクティス - Dev/Test    |No    |
 
@@ -42,7 +43,7 @@ Automanage for virtual machines を使用すると、このような Azure サ�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure portal で Automanage for virtual machines を有効にしてみます。
+Azure portal でAzure Automanage for virtual machines を有効にしてみてください。
 
 > [!div class="nextstepaction"]
 > [Azure portal で Azure Automanage for virtual machines を有効にする](quick-create-virtual-machines-portal.md)

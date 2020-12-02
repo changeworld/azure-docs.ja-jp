@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 10/23/2019
 ms.reviewer: cweining
-ms.openlocfilehash: b439dcfc755f0113ffabf792850a2bd0fbcf322e
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: cbbec71ff8ab762ea0da764a7db9459123850271
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996515"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95530235"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET アプリでの例外でのデバッグ スナップショット
 例外が発生したとき、実行中の Web アプリケーションからデバッグ スナップショットを自動的に収集できます。 スナップショットには、例外がスローされたときのソース コードと変数の状態が表示されます。 [Azure Application Insights](./app-insights-overview.md) のスナップショット デバッガーにより、Web アプリの例外テレメトリが監視されます。 運用環境の問題の診断に必要な情報を入手できるように、スローされる上位の例外に関するスナップショットが収集されます。 [スナップショット コレクター NuGet パッケージ](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)をアプリケーションに含め、必要に応じて、[ApplicationInsights.config](./configuration-with-applicationinsights-config.md) にコレクション パラメーターを構成します。スナップショットが、Application Insights ポータルの[例外](./asp-net-exceptions.md)に表示されます。
@@ -39,7 +39,7 @@ ms.locfileid: "91996515"
 
 ## <a name="grant-permissions"></a>[アクセス許可の付与]
 
-スナップショットへのアクセスは、ロールベースのアクセス制御 (RBAC) によって保護されます。 スナップショットを検査するユーザーは、最初にサブスクリプション所有者によって必要なロールに追加される必要があります。
+スナップショットへのアクセスは、Azure ロールベースのアクセス制御 (Azure RBAC) によって保護されます。 スナップショットを検査するユーザーは、最初にサブスクリプション所有者によって必要なロールに追加される必要があります。
 
 > [!NOTE]
 > 所有者と共同作成者には、このロールは自動的に割り当てられません。 所有者や共同作成者がスナップショットを見る場合は、自分自身をロールに追加する必要があります。
@@ -98,7 +98,7 @@ Snapshot Collector は、[Application Insights Telemetry Processor](./configurat
 > [!TIP]
 > - プロセスのスナップショットは、実行中のプロセスの一時停止された複製です。
 > - スナップショットの作成には約 10 から 20 ミリ秒かかります。
-> - `ThresholdForSnapshotting` の既定値は 1 です。 これは最小値でもあります。 そのため、スナップショットが作成される前に、アプリは同じ例外を  **2 回**トリガーする必要があります。
+> - `ThresholdForSnapshotting` の既定値は 1 です。 これは最小値でもあります。 そのため、スナップショットが作成される前に、アプリは同じ例外を  **2 回** トリガーする必要があります。
 > - Visual Studio でデバッグ中にスナップショットを生成する場合は、`IsEnabledInDeveloperMode` を true に設定します。
 > - スナップショットの作成速度は `SnapshotsPerTenMinutesLimit` 設定によって制限されます。 既定では、10 分ごとに 1 つのスナップショットが上限です。
 > - 1 日あたり 50 枚を超えるスナップショットをアップロードすることはできません。

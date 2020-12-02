@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 2c415fc92d2d338c568c422b1db2579563527839
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f07efcc18f3eff7e40232941befb563cd236266b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442057"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013023"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Resource Manager テンプレートを使用して Azure Machine Learning のワークスペースを作成します。
 
@@ -28,7 +28,7 @@ ms.locfileid: "94442057"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション** 。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+* **Azure サブスクリプション**。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
 
 * CLI からテンプレートを使用するには、[Azure PowerShell](/powershell/azure/?view=azps-1.2.0) または [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) が必要です。
 
@@ -38,6 +38,10 @@ ms.locfileid: "94442057"
     * __仮想ネットワークの背後にあるワークスペースの Azure Container Registry__
 
     詳細については、[クォータの管理と増加](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)に関するページを参照してください。
+
+## <a name="limitations"></a>制限事項
+
+* 新しいワークスペースを作成する場合、そのワークスペースに必要な Azure サービスを自動的に作成することも、既存のサービスを使用することもできます。 既存のサービスを使用する場合、これらのサービスはすべて、ワークスペースと同じ Azure サブスクリプションに含まれている必要があります。
 
 ## <a name="workspace-resource-manager-template"></a>ワークスペースの Resource Manager テンプレート
 
@@ -69,7 +73,7 @@ ms.locfileid: "94442057"
 > [!TIP]
 > このドキュメントに関連付けられているテンプレートでは新しい Azure コンテナー レジストリが作成されますが、コンテナー レジストリを作成せずに新しいワークスペースを作成することもできます。 コンテナー レジストリが必要な操作を実行すると、それが 1 つ作成されます。 たとえば、モデルのトレーニングやデプロイなどです。
 >
-> 新しいコンテナー レジストリまたはストレージ アカウントを作成するのではなく、Azure Resource Manager テンプレートで既存のものを参照することもできます。 ただし、使用するコンテナー レジストリでは、 __管理者アカウント__ を有効にする必要があります。 管理者アカウントを有効にする方法の詳細については、「[管理者アカウント](../container-registry/container-registry-authentication.md#admin-account)」を参照してください。
+> 新しいコンテナー レジストリまたはストレージ アカウントを作成するのではなく、Azure Resource Manager テンプレートで既存のものを参照することもできます。 ただし、使用するコンテナー レジストリでは、__管理者アカウント__ を有効にする必要があります。 管理者アカウントを有効にする方法の詳細については、「[管理者アカウント](../container-registry/container-registry-authentication.md#admin-account)」を参照してください。
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
@@ -124,10 +128,10 @@ New-AzResourceGroupDeployment `
 
 ---
 
-既定では、テンプレートの一部として作成されるすべてのリソースは新規です。 ただし、既存のリソースを使用することもできます。 テンプレートに追加のパラメーターを指定することで、既存のリソースを使用できます。 たとえば、既存のストレージ アカウントを使用する場合は、 **storageAccountOption** の値を **existing** に設定し、 **storageAccountName** パラメーターにストレージ アカウントの名前を指定します。
+既定では、テンプレートの一部として作成されるすべてのリソースは新規です。 ただし、既存のリソースを使用することもできます。 テンプレートに追加のパラメーターを指定することで、既存のリソースを使用できます。 たとえば、既存のストレージ アカウントを使用する場合は、**storageAccountOption** の値を **existing** に設定し、**storageAccountName** パラメーターにストレージ アカウントの名前を指定します。
 
 > [!IMPORTANT]
-> 既存の Azure Storage アカウントを使用する場合は、Premium アカウント (Premium_LRS と Premium_GRS) にすることはできません。 また、階層的名前空間 (Azure Data Lake Storage Gen2 で使用されます) を含めることもできません。 ワークスペースの既定のストレージ アカウントでは、Premium Storage と階層型名前空間はサポートされていません。 ワークスペースの _既定の_ ストレージ アカウントでは、Premium Storage と階層型名前空間はサポートされていません。 " _既定以外_ " のストレージ アカウントでは、Premium Storage または階層型名前空間を使用できます。
+> 既存の Azure Storage アカウントを使用する場合は、Premium アカウント (Premium_LRS と Premium_GRS) にすることはできません。 また、階層的名前空間 (Azure Data Lake Storage Gen2 で使用されます) を含めることもできません。 ワークスペースの既定のストレージ アカウントでは、Premium Storage と階層型名前空間はサポートされていません。 ワークスペースの _既定の_ ストレージ アカウントでは、Premium Storage と階層型名前空間はサポートされていません。 "_既定以外_" のストレージ アカウントでは、Premium Storage または階層型名前空間を使用できます。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -178,7 +182,7 @@ New-AzResourceGroupDeployment `
 > * Azure Key Vault は、Azure Machine Learning ワークスペースの作成を計画しているリージョンと同じリージョンにある必要があります。
 > * Azure Key Vault の ID と、暗号化キーの URI を指定する必要があります。
 
-`cmk_keyvault` (Key Vault の ID) およびこのテンプレートで必要な `resource_cmk_uri` (キー URI) パラメーターの __値を取得するには__ 、次の手順を使用します。    
+`cmk_keyvault` (Key Vault の ID) およびこのテンプレートで必要な `resource_cmk_uri` (キー URI) パラメーターの __値を取得するには__、次の手順を使用します。    
 
 1. Key Vault ID を取得するには、次のコマンドを使用します。  
 
@@ -254,7 +258,7 @@ New-AzResourceGroupDeployment `
 
 カスタマー マネージド キーを使用する場合、Azure Machine Learning により、Cosmos DB インスタンスを含むセカンダリ リソース グループが作成されます。 詳細については、「[保存時の暗号化 - Cosmos DB](concept-data-encryption.md#encryption-at-rest)」を参照してください。
 
-データに対して提供できる追加の構成は、 **confidential_data** パラメーターを **true** に設定することです。 これにより、次の処理が行われます。
+データに対して提供できる追加の構成は、**confidential_data** パラメーターを **true** に設定することです。 これにより、次の処理が行われます。
 
 * サブスクリプションで以前にクラスターを作成していない場合に、Azure Machine Learning コンピューティング クラスターに対してローカル スクラッチ ディスクの暗号化を開始します。 以前にサブスクリプションでクラスターを作成したことがある場合は、サポート チケットを開き、ご利用のコンピューティング クラスターでスクラッチ ディスクの暗号化を有効にします。
 * 実行間でローカル スクラッチ ディスクをクリーンアップします。
@@ -278,7 +282,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="only-deploy-workspace-behind-private-endpoint"></a>プライベート エンドポイントの背後にのみワークスペースをデプロイする
 
-関連付けられたリソースが仮想ネットワークの背後にない場合、 **privateEndpointType** パラメーターを `AutoAproval` または `ManualApproval` に設定すると、ワークスペースをプライベート エンドポイントの背後にデプロイできます。 これは、新規および既存のワークスペースの両方に対して行うことができます。 既存のワークスペースを更新する場合は、テンプレート パラメーターに既存のワークスペースの情報を入力します。
+関連付けられたリソースが仮想ネットワークの背後にない場合、**privateEndpointType** パラメーターを `AutoAproval` または `ManualApproval` に設定すると、ワークスペースをプライベート エンドポイントの背後にデプロイできます。 これは、新規および既存のワークスペースの両方に対して行うことができます。 既存のワークスペースを更新する場合は、テンプレート パラメーターに既存のワークスペースの情報を入力します。
 
 > [!IMPORTANT]
 > Azure Government リージョンまたは Azure China 21Vianet リージョンでは、プライベート リンクで Azure Machine Learning ワークスペースを使用することはできません。
@@ -424,7 +428,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="use-an-existing-virtual-network--resources"></a>既存の仮想ネットワークとリソースを使用する
 
-既存の関連付けられたリソースと共にワークスペースをデプロイするには、サブネット パラメーターと共に **vnetOption** パラメーターを **existing** に設定する必要があります。 ただし、デプロイの **前に** 、各リソースの仮想ネットワークにサービス エンドポイントを作成する必要があります。 新しい仮想ネットワークのデプロイと同様に、1 つまたはすべてのリソースを仮想ネットワークの背後にデプロイできます。
+既存の関連付けられたリソースと共にワークスペースをデプロイするには、サブネット パラメーターと共に **vnetOption** パラメーターを **existing** に設定する必要があります。 ただし、デプロイの **前に**、各リソースの仮想ネットワークにサービス エンドポイントを作成する必要があります。 新しい仮想ネットワークのデプロイと同様に、1 つまたはすべてのリソースを仮想ネットワークの背後にデプロイできます。
 
 > [!IMPORTANT]
 > サブネットには `Microsoft.Storage` サービス エンドポイントが必要です。
@@ -541,7 +545,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
-1. 「[カスタム テンプレートからリソースをデプロイする](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)」の手順に従います。 __[テンプレートの選択]__ 画面に到達したら、 **201-machine-learning-advanced** テンプレートをドロップダウンから選択します。
+1. 「[カスタム テンプレートからリソースをデプロイする](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)」の手順に従います。 __[テンプレートの選択]__ 画面に到達したら、**201-machine-learning-advanced** テンプレートをドロップダウンから選択します。
 1. テンプレートを使用するには、 __[テンプレートの選択]__ を選択します。 デプロイのシナリオに応じて、以下の必須情報とその他のパラメーターを指定します。
 
    * サブスクリプション:これらのリソースに使用する Azure サブスクリプションを選択します。

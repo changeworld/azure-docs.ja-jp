@@ -2,18 +2,18 @@
 title: よく寄せられる質問
 description: Azure VMware Solution についてよく寄せられる質問にお答えします。
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 11/19/2020
 ms.author: dikamath
-ms.openlocfilehash: 2d71c30d2fb08629674c352ae812d8890463abfe
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 0bc3e0ab5b3017c2d051113a57d79214ffce0836
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695103"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967348"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware Solution についてよく寄せられる質問
 
-Azure VMware Solution についてよく寄せられる質問にお答えします。
+この記事では、Azure VMware Solution についてよく寄せられる質問に回答します。
 
 ## <a name="general"></a>全般
 
@@ -33,7 +33,7 @@ Azure VMware Solution のお客様はすべての Azure サービスを利用で
 
 #### <a name="do-i-use-the-same-tools-that-i-use-now-to-manage-private-cloud-resources"></a>プライベート クラウドのリソースを管理するために現在使用しているのと同じツールを使用しますか?
 
-はい。 デプロイと多くの管理操作のために Azure portal を使用します。 vSphere と NSX-T のリソースを管理するために vCenter と NSX Manager を使用します。
+はい。 デプロイといくつかの管理操作のために Azure portal を使用します。 vSphere と NSX-T のリソースを管理するために vCenter と NSX Manager を使用します。
 
 #### <a name="can-i-manage-a-private-cloud-with-my-on-premises-vcenter"></a>オンプレミスの vCenter を使用してプライベート クラウドを管理できますか?
 
@@ -65,7 +65,7 @@ Azure VMware Solution のお客様はすべての Azure サービスを利用で
 はい。インストールされるシステムがプライベート クラウドの vCenter にアクセスでき、パブリック DNS を使用して ESXi ホスト名を解決している場合は管理できます。
 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Azure VMware Solution の VM で VMRC をインストールして使用するための特別な手順はありますか?
-いいえ。[VMware によって提供されている手順](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html)を使用し、その手順で指定されている VM の前提条件を満たすようにしてください。 
+いいえ。 [VMware によって提供されている手順](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html)を使用し、その手順で指定されている VM の前提条件を満たすようにしてください。 
 
 #### <a name="is-vmware-hcx-supported-on-vpns"></a>VMware HCX は VPN でサポートされますか?
 いいえ。帯域幅と待機時間の要件があるためサポートされません。
@@ -105,7 +105,7 @@ Azure VMware Solution の各 ESXi ホストは、4 つの 25 Gbps NIC、ESXi の
 
 はい。すべての vSAN データが、Azure Key Vault に保存されているキーを使用して既定で暗号化されます。
 
-#### <a name="you-document-that-commvault-veritas-and-veeam-have-extended-their-backup-solutions-to-work-with-azure-vmware-solution-what-about-other-independent-software-vendor-isv-backup-solutions"></a>Commvault、Veritas、Veeam の各社は Azure VMware Solution と連係するようにバックアップ ソリューションを拡張したと Microsoft のドキュメントに記載されています。 その他の独立系ソフトウェア ベンダー (ISV) のバックアップ ソリューションはどうですか?
+#### <a name="you-document-that-commvault-veritas-and-veeam-have-extended-their-backup-solutions-to-work-with-azure-vmware-solution-what-about-other-independent-software-vendors-isvs-backup-solutions"></a>Commvault、Veritas、Veeam の各社は Azure VMware Solution と連係するようにバックアップ ソリューションを拡張したと Microsoft のドキュメントに記載されています。 その他の独立系ソフトウェア ベンダー (ISV) のバックアップ ソリューションはどうですか?
 
 Microsoft で把握している限りでは、HotAdd トランスポート モードで VMware VADP を使用するバックアップ ソリューションは、Azure VMware Solution ですぐに使用できるはずです。
 
@@ -147,7 +147,7 @@ VM テンプレートに "*thin_provision*" ストレージ ポリシーを使�
 
 #### <a name="what-versions-of-vmware-software-is-used-in-private-clouds"></a>プライベート クラウドで使用される VMware ソフトウェアのバージョンは何ですか?
 
-プライベート クラウドでは、vSphere 6.7、vSAN 6.7、VMware HCX、および NSX-T バージョン 2.5 が使用されます。  
+プライベート クラウドでは、vSphere 6.7 U3、vSAN 6.7 U3、VMware HCX、および NSX-T 2.5 が使用されます。  詳細については、[VMware ソフトウェアの要件](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)に関するページを参照してください。
 
 #### <a name="do-private-clouds-use-vmware-nsx"></a>プライベート クラウドでは VMware NSX は使用されますか?
 
@@ -163,7 +163,7 @@ VM テンプレートに "*thin_provision*" ストレージ ポリシーを使�
 
 #### <a name="what-is-the-upgrade-and-update-schedule-for-vmware-software-in-a-private-cloud"></a>プライベート クラウドでの VMware ソフトウェアのアップグレードと更新のスケジュールはどのようになりますか?
 
-プライベート クラウド ソフトウェア バンドルのアップグレードは、VMware のソフトウェア バンドルの最新リリースの単一バージョン内でソフトウェアを保持するために行われます。 プライベート クラウド ソフトウェアのバージョンは、個々のソフトウェア コンポーネント (ESXi、NSX-T、vCenter、vSAN) の最新バージョンとは異なる場合があります。
+プライベート クラウド ソフトウェア バンドルのアップグレードは、VMware のソフトウェア バンドルの最新リリースの単一バージョン内でソフトウェアを保持します。 プライベート クラウド ソフトウェアのバージョンは、個々のソフトウェア コンポーネント (ESXi、NSX-T、vCenter、vSAN) の最新バージョンとは異なる場合があります。
 
 #### <a name="how-often-will-the-private-cloud-software-stack-be-updated"></a>プライベート クラウド ソフトウェア スタックはどのくらいの頻度で更新されますか?
 
@@ -218,7 +218,7 @@ CloudAdmin グループの特権が付与されます。 詳細については�
 
 #### <a name="what-privileges-and-permissions-will-i-have-on-the-nsx-t-manager"></a>NSX-T Manager にはどのような特権とアクセス許可がありますか?
 
-NSX-T に対する完全な管理者特権があり、オンプレミスの NSX-T データセンターと同様に、ロールベースのアクセス制御を管理できます。 詳細については、[アクセスと ID の概念](concepts-identity.md)に関するページを参照してください。
+NSX-T に対する完全な管理者特権があり、オンプレミスの NSX-T データセンターと同様に、vSphere ロールベースのアクセス制御を管理できます。 詳細については、[アクセスと ID の概念](concepts-identity.md)に関するページを参照してください。
 
 > [!NOTE]
 > プライベート クラウドのデプロイの一部として T0 ルーターが作成され構成されます。 この論理ルーターまたは NSX-T エッジ ノード VM を変更すると、プライベート クラウドへの接続に影響する可能性があります。
@@ -245,23 +245,22 @@ Azure サブスクリプションの Azure アカウントが必要です。
 
 #### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>Red Hat ソリューションは Azure VMware Solution でサポートされていますか?
 
-Microsoft と Red Hat は、Azure プラットフォームで実行される Red Hat エコシステムの統合されたコンタクト ポイントを提供する、同じ場所に配置されている統合されたサポート チームを共有しています。  Red Hat Enterprise Linux で動作する他の Azure platform サービスと同様に、Azure VMware Solution はクラウド アクセスと統合サポートの配下にあり、Red Hat Enterprise Linux を Azure 内の Azure VMware Solution 上で実行することがサポートされています。
+Microsoft と Red Hat は、Azure プラットフォームで実行される Red Hat エコシステムの統合されたコンタクト ポイントを提供する、同じ場所に配置されている統合されたサポート チームを共有しています。  Red Hat Enterprise Linux で動作する他の Azure platform サービスと同様に、Azure VMware Solution はクラウド アクセスと統合サポートの配下にあります。 Red Hat Enterprise Linux は、Azure 内の Azure VMware Solution 上で実行することがサポートされています。
 
-#### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>VMware HCX Enterprise Edition を利用できますか? 利用できる場合、コストはどのくらいですか?
+#### <a name="is-vmware-hcx-enterprise-available-and-if-so-how-much-does-it-cost"></a>VMware HCX Enterprise を利用できますか? 利用できる場合、コストはどのくらいですか?
 
-VMware HCX Enterprise Edition (EE) は、Azure VMware Solution で、*プレビュー* の機能/サービスとして使用できます。 Azure VMware Solution 向けの VMware HCX EE はプレビュー段階ですが、無料の機能/サービスであり、プレビュー サービスの利用規約が適用されます。 VMware HCX EE サービスが GA になると、課金が切り替わるという通知が 30 日間前に届きます。 サービスを停止またはオプトアウトすることができます。
+VMware HCX Enterprise は、Azure VMware Solution で、*プレビュー* の機能/サービスとして使用できます。 Azure VMware Solution 向けの VMware HCX Enterprise はプレビュー段階ですが、無料の機能/サービスであり、プレビュー サービスの利用規約が適用されます。 VMware HCX Enterprise サービスが GA になると、課金が切り替わるという通知が 30 日間前に届きます。 サービスを停止またはオプトアウトすることができます。
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Azure VMware Solution に対するホスト クォータの増量はどのようにリクエストすればよいですか?
 
-CSP で管理されているサブスクリプションの場合は、顧客がパートナーへの要求を行う必要があり、パートナー チームが Microsoft と協力して、サブスクリプションのクォータを増やします。 詳細については、「[Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)」をご覧ください。 
+CSP によって管理されるサブスクリプションの場合、顧客はパートナーに要求を送信する必要があります。 その後、パートナー チームは Microsoft と協力して、サブスクリプションのクォータを増やします。 詳細については、「[Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)」をご覧ください。 
 
-EA サブスクリプションの場合は、顧客がこの手順に従う必要があります。
+EA サブスクリプションの場合は、次の手順を使用します。 まず、次のものが必要になります。
 
-* Microsoft との [Azure Enterprise Agreement (EA)](../cost-management-billing/manage/ea-portal-agreements.md) が必要です。
-* Azure サブスクリプションの Azure アカウントが必要です。
+* Microsoft との [Azure Enterprise Agreement (EA)](../cost-management-billing/manage/ea-portal-agreements.md)。
+* Azure サブスクリプションの Azure アカウント。
 
-Azure VMware Solution リソースを作成する前に、サポート チケットを提出して、ノードを割り当てる必要があります。 リクエストが確認されてノードが割り当てられるまでに、最大 5 営業日かかります。 Azure VMware Solution の既存のプライベート クラウドがあり、さらに多くのノードを割り当てる必要がある場合は、同じプロセスを実行します。
-
+Azure VMware Solution リソースを作成する前に、サポート チケットを提出して、ホストが割り当てられるようにします。 リクエストが確認されて実行されるまでに、最大 5 営業日かかります。 Azure VMware Solution の既存のプライベート クラウドがあり、さらに多くのホストを割り当てる必要がある場合は、同じプロセスを実行します。
 
 1. Azure portal の **[ヘルプとサポート]** で、 **[新しいサポート リクエスト](https://rc.portal.azure.com/#create/Microsoft.Support)** を作成し、チケットに関する次の情報を提供します。
    - **問題の種類:** 技術
@@ -276,42 +275,47 @@ Azure VMware Solution リソースを作成する前に、サポート チケッ
 
    - POC または運用環境 
    - リージョン名
-   - ノードの数
+   - ホストの数
    - その他の詳細
 
    >[!NOTE]
-   >Azure VMware Solution では、プライベート クラウドを稼働させ、冗長 N + 1 ノードを提供するために、3 つ以上のノードを推奨しています。 
+   >Azure VMware Solution では、プライベート クラウドを稼働させ、冗長 N + 1 ホストを提供するために、3 つ以上のホストをお勧めしています。 
 
 1. **[確認および作成]** を選択して、リクエストを送信します。
 
    サポート担当者がリクエストを確認するまで、最大 5 営業日かかります。
 
    >[!IMPORTANT] 
-   >既存の Azure VMware Solution が既にあり、追加のノードをリクエストする場合は、ノードが割り当てられるまでに 5 営業日が必要であることに注意してください。 
+   >既存の Azure VMware Solution が既にあり、追加のホストを要求する場合は、ホストが割り当てられるまでに 5 営業日が必要であることに注意してください。 
 
-1. ノードをプロビジョニングする前に、Azure portal で **Microsoft.AVS** リソース プロバイダーを必ず登録してください。  
+1. ホストをプロビジョニングする前に、Azure portal で **Microsoft.AVS** リソース プロバイダーを必ず登録してください。  
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
+   ```
 
-   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md). 
+   リソース プロバイダーを登録するその他の方法については、「[Azure リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)」を参照してください。 
 
-#### Are Reserved Instances available for purchasing through the Cloud Solution Provider (CSP) program?
+#### <a name="are-reserved-instances-available-for-purchasing-through-the-cloud-solution-provider-csp-program"></a>予約インスタンスは、クラウド ソリューション プロバイダー (CSP) プログラムを通じて購入できますか?
 
-Yes. CSP can purchase reserved instances on behalf of their customers, see [Save costs with a reserved instance](reserved-instance.md) article. 
+はい。 CSP は顧客のために予約インスタンスを購入できます。 詳細については、「[予約インスタンスを使用してコストを節約する](reserved-instance.md)」を参照してください。 
 
-#### Does Azure VMware Solution offer multi-tenancy for hosting CSP partners?
+#### <a name="does-azure-vmware-solution-offer-multi-tenancy-for-hosting-csp-partners"></a>Azure VMware Solution では CSP パートナーをホストするためのマルチテナントは提供されますか?
 
-No. Currently Azure VMware Solution does not offer multi-tenancy.
+いいえ。 現時点では、Azure VMware Solution ではマルチテナントは提供されていません。
+
+#### <a name="will-traffic-between-on-premises-and-azure-vmware-solution-over-expressroute-incur-any-outbound-data-transfer-charge-in-the-metered-data-plan"></a>オンプレミスと ExpressRoute 経由の Azure VMware Solution 間のトラフィックでは、従量制課金接続プランでの送信データ転送料金が発生しますか?
+
+Azure VMware Solution の ExpressRoute 回線のトラフィックは、どのような方法でも課金されません。 オンプレミスに接続している ExpressRoute 回線から Azure へのトラフィックは、ExpressRoute 価格プランに従って課金されます。
 
 
-## Customer communication
+## <a name="customer-communication"></a>顧客とのコミュニケーション
 
-#### How can I receive an alert when Azure sends service health notifications to my Azure subscription?
+#### <a name="how-can-i-receive-an-alert-when-azure-sends-service-health-notifications-to-my-azure-subscription"></a>Azure でサービス正常性通知が Azure サブスクリプションに送信されるときに、アラートを受け取ることはできますか?
 
-Service issues, planned maintenance, health advisories, security advisories notifications are published through **Service Health** in the Azure portal.  You can take timely actions when you set up activity log alerts for these notifications. For more information, see [Create service health alerts using the Azure portal](../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal).
+サービスに関する問題、計画メンテナンス、正常性の勧告、セキュリティに関する勧告の通知は、Azure portal の **Service Health** を介して公開されます。  これらの通知に対してアクティビティ ログ アラートを設定すると、適切なタイミングで対処することができます。 詳細については、「[Azure portal を使用して Service Health アラートを作成する](../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal)」を参照してください。
 
-:::image type="content" source="media/service-health.png" alt-text="Screenshot of Service Health notifications":::
+:::image type="content" source="media/service-health.png" alt-text="Service Health 通知のスクリーンショット":::
 
 
 

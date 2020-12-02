@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: how-to, automl
 ms.date: 03/09/2020
-ms.openlocfilehash: a79fc0311e940b9b4eb3e14838ef22e09342a066
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 65ce11581972c83b0294c0afcbe95e5a35ef2471
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357999"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920578"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>クラウドで自動機械学習を使用してモデルをトレーニングする
 
@@ -45,7 +45,7 @@ ws = Workspace.from_config()
 
 まだ存在しない場合、[`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?preserve-view=true&view=azure-ml-py) ターゲットをワークスペース (`ws`) に作成します。
 
-**推定所要時間** : AmlCompute ターゲットの作成には約 5 分かかります。
+**推定所要時間**: AmlCompute ターゲットの作成には約 5 分かかります。
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -220,7 +220,7 @@ Jupyter Notebook を使用していない場合は、実行自体の URL を表�
 remote_run.get_portal_url()
 ```
 
-ご利用のワークスペースで同じ情報にアクセスすることができます。  これらの結果の詳細については、「[自動機械学習の結果について](how-to-understand-automated-ml.md)」を参照してください。
+ご利用のワークスペースで同じ情報にアクセスすることができます。  これらの結果の詳細については、[自動機械学習の結果の評価](how-to-understand-automated-ml.md)に関する記事を参照してください。
 
 ## <a name="example"></a>例
 

@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9115b5414bce407787c3aff63c8b6e368e7c72d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 30c5e102ca6da4aab8314d803f9460a4e654163a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966697"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838401"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>RADIUS 認証と Azure Multi-Factor Authentication Server の統合
 
 RADIUS は、認証要求を承認してそれらの要求を処理する標準のプロトコルです。 Azure Multi-Factor Authentication Server は RADIUS サーバーとして機能します。 これを RADIUS クライアント (VPN アプライアンス) と認証対象の間に置くことで 2 段階認証が追加されます。 この場合、認証ターゲットは、Active Directory や LDAP ディレクトリ、別の RADIUS サーバーなどになります。 Azure Multi-Factor Authentication (MFA) が機能するには、クライアント サーバーと認証ターゲットの両方と通信できるように Azure MFA Server を構成する必要があります。 Azure MFA Server は RADIUS クライアントから要求を受け取り、認証ターゲットに対して資格情報を検証し、Azure Multi-Factor Authentication を追加して、RADIUS クライアントに応答を返します。 認証要求が成功するのは、プライマリ認証と Azure Multi-Factor Authentication の両方が成功した場合だけです。
 
 > [!IMPORTANT]
-> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなりました。 サインイン イベント時に多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication (MFA) を使用していただく必要があります。
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなりました。 サインイン イベント時に多要素認証が必要な新しいお客様は、クラウドベースの Azure AD Multi-Factor Authentication (MFA) を使用していただく必要があります。
 >
-> クラウドベースの MFA の使用を開始するには、「[チュートリアル: Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
+> クラウドベースの MFA の使用を開始するには、「[チュートリアル: Azure AD Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
 >
 > クラウドベースの MFA を使用する場合は、「[Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合](howto-mfa-nps-extension.md)」を参照してください。
 >
@@ -87,4 +87,4 @@ RADIUS クライアントを構成するには、ガイドラインに従いま�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Multi-Factor Authentication がクラウドにある場合は、[RADIUS 認証と統合](howto-mfa-nps-extension.md)する方法を参照してください。 
+Azure AD Multi-Factor Authentication がクラウドにある場合は、[RADIUS 認証と統合](howto-mfa-nps-extension.md)する方法を参照してください。 

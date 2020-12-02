@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor Authentication を構成する - Azure Active Directory
-description: Azure portal で Azure Multi-Factor Authentication の設定を構成する方法について説明します
+title: Azure AD Multi-Factor Authentication を構成する - Azure Active Directory
+description: Azure portal で Azure AD Multi-Factor Authentication の設定を構成する方法について説明します
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,26 +12,26 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 17fbba605f6f20fa384d59a8c89ee536a9b121bf
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: adca22b3a8d9b93dfbc62202106127a5833a4c38
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964437"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839201"
 ---
-# <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
+# <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Azure AD Multi-Factor Authentication の設定を構成する
 
-Azure Multi-Factor Authentication のエンドユーザー エクスペリエンスをカスタマイズするために、アカウント ロックアウトのしきい値や、不正アクセスのアラートと通知などの設定のオプションを構成できます。 一部の設定は Azure Active Directory (Azure AD) の Azure portal 内に直接ありますが、一部は別の Azure Multi-Factor Authentication ポータルにあります。
+Azure AD Multi-Factor Authentication のエンドユーザー エクスペリエンスをカスタマイズするために、アカウント ロックアウトのしきい値や、不正アクセスのアラートと通知などの設定のオプションを構成できます。 一部の設定は Azure Active Directory (Azure AD) の Azure portal 内に直接ありますが、一部は別の Azure AD Multi-Factor Authentication ポータルにあります。
 
-Azure portal では、次の Azure Multi-Factor Authentication 設定を使用できます。
+Azure portal では、次の Azure AD Multi-Factor Authentication 設定を使用できます。
 
 | 特徴量 | 説明 |
 | ------- | ----------- |
-| [アカウントのロックアウト](#account-lockout) | 連続して拒否された認証試行が多すぎる場合に、Azure Multi-Factor Authentication を使用しないようにアカウントを一時的にロックします。 この機能は、認証のために PIN を入力するユーザーにのみ適用されます。 (MFA サーバー) |
-| [ユーザーのブロック/ブロック解除](#block-and-unblock-users) | 特定のユーザーが Azure Multi-Factor Authentication 要求を受信できないようにブロックします。 ブロックされているユーザーを認証しようとすると、自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされたままか、手動でブロック解除されます。 |
+| [アカウントのロックアウト](#account-lockout) | 連続して拒否された認証試行が多すぎる場合に、Azure AD Multi-Factor Authentication を使用しないようにアカウントを一時的にロックします。 この機能は、認証のために PIN を入力するユーザーにのみ適用されます。 (MFA サーバー) |
+| [ユーザーのブロック/ブロック解除](#block-and-unblock-users) | 特定のユーザーが Azure AD Multi-Factor Authentication 要求を受信できないようにブロックします。 ブロックされているユーザーを認証しようとすると、自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされたままか、手動でブロック解除されます。 |
 | [不正アクセスのアラート](#fraud-alert) | ユーザーが不正な確認要求を通報できるようにする設定を構成します。 |
 | [通知](#notifications) | MFA サーバーからのイベントの通知を有効にします。 |
-| [OATH トークン](concept-authentication-oath-tokens.md) | クラウドベースの Azure MFA 環境で、ユーザーの OATH トークンを管理するために使用されます。 |
+| [OATH トークン](concept-authentication-oath-tokens.md) | クラウドベースの Azure AD MFA 環境で、ユーザーの OATH トークンを管理するために使用されます。 |
 | [電話の設定](#phone-call-settings) | クラウド環境とオンプレミス環境の電話と案内メッセージに関連する設定を構成します。 |
 | プロバイダー | アカウントに関連付けた可能性がある既存の認証プロバイダーを表示します。 2018 年 9 月 1 日時点では、新しい認証プロバイダーは作成できません |
 
@@ -57,7 +57,7 @@ Azure portal では、次の Azure Multi-Factor Authentication 設定を使用�
 
 ## <a name="block-and-unblock-users"></a>ユーザーのブロックおよびブロック解除
 
-ユーザーのデバイスが紛失するか、盗難にあった場合は、関連付けられているアカウントに対する Azure Multi-Factor Authentication の試行をブロックできます。 ブロックされているユーザーに対する Azure Multi-Factor Authentication の試行は自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされ続けます。
+ユーザーのデバイスが紛失するか、盗難にあった場合は、関連付けられているアカウントに対する Azure AD Multi-Factor Authentication の試行をブロックできます。 ブロックされているユーザーに対する Azure AD Multi-Factor Authentication の試行は自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされ続けます。
 
 ### <a name="block-a-user"></a>ユーザーのブロック
 
@@ -85,7 +85,7 @@ Azure portal では、次の Azure Multi-Factor Authentication 設定を使用�
 
 次の不正アクセスのアラート構成オプションを使用できます。
 
-* **不正を通報するユーザーを自動的にブロックする**:ユーザーが不正を通報した場合、そのユーザー アカウントに対する Azure MFA の認証試行は、90 日間、または管理者がアカウントのブロックを解除するまでブロックされます。 管理者はサインイン レポートを使用してサインインを確認し、将来の不正アクセスを防止するための適切なアクションを実行できます。 その後、管理者はそのユーザーのアカウントの[ブロックを解除](#unblock-a-user)できます。
+* **不正を通報するユーザーを自動的にブロックする**:ユーザーが不正を通報した場合、そのユーザー アカウントに対する Azure AD MFA の認証試行は、90 日間、または管理者がアカウントのブロックを解除するまでブロックされます。 管理者はサインイン レポートを使用してサインインを確認し、将来の不正アクセスを防止するための適切なアクションを実行できます。 その後、管理者はそのユーザーのアカウントの[ブロックを解除](#unblock-a-user)できます。
 * **[Code to report fraud during initial greeting]\(案内メッセージ中に入力する不正アクセス通報コード\)** : ユーザーは、多要素認証を実行する電話を受けた場合、通常、 **#** を押してサインインを確認します。 不正アクセスを通報する場合は、 **#** を押す前にコードを入力します。 このコードは、既定では **0** ですが、カスタマイズすることができます。
 
    > [!NOTE]
@@ -156,7 +156,7 @@ CSV ファイルのサイズによって異なりますが、この処理には�
 * *+1 (877) 668 6536*
 
 > [!NOTE]
-> 公衆電話網経由で Azure Multi-Factor Authentication の電話がかけられた場合、発信者番号をサポートしていない通信事業者を通じてルーティングされることがあります。 このため、発信者番号は、Azure Multi-Factor Authentication が常にそれを送信しているにもかかわらず保証されません。 このことは、Azure Multi-Factor Authentication から提供される電話とテキスト メッセージの両方に当てはまります。 テキスト メッセージが Azure Multi-Factor Authentication からのものかどうかを確認する必要がある場合、[SMS メッセージを送る際に使用される SMS ショート コード](multi-factor-authentication-faq.md#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users)に関するページを参照してください。
+> 公衆電話網経由で Azure AD Multi-Factor Authentication の電話がかけられた場合、発信者番号をサポートしていない通信事業者を通じてルーティングされることがあります。 このため、発信者番号は、Azure AD Multi-Factor Authentication が常にそれを送信しているにもかかわらず保証されません。 このことは、Azure AD Multi-Factor Authentication から提供される電話とテキスト メッセージの両方に当てはまります。 テキスト メッセージが Azure AD Multi-Factor Authentication からのものかどうかを確認する必要がある場合、[SMS メッセージを送る際に使用される SMS ショート コード](multi-factor-authentication-faq.md#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users)に関するページを参照してください。
 
 独自の発信者番号を構成するには、次の手順を実行します。
 
@@ -166,7 +166,7 @@ CSV ファイルのサイズによって異なりますが、この処理には�
 
 ### <a name="custom-voice-messages"></a>カスタム音声メッセージ
 
-カスタム音声メッセージ機能を使用すると、Azure Multi-Factor Authentication で独自のレコーディングや案内を使用できます。 これらのメッセージは、既定の Microsoft レコーディングに加えて使用するか、その代わりに使用できます。
+カスタム音声メッセージ機能を使用すると、Azure AD Multi-Factor Authentication で独自のレコーディングや案内を使用できます。 これらのメッセージは、既定の Microsoft レコーディングに加えて使用するか、その代わりに使用できます。
 
 開始する前に、次の制限に注意してください。
 
@@ -221,22 +221,22 @@ CSV ファイルのサイズによって異なりますが、この処理には�
 1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]**  >  **[電話の設定]** の順に移動します。
 1. **[案内の追加]** を選択します。
 1. 案内の **[種類]** を選択します。たとえば、 *[案内 (標準)]* や *[認証成功]* です。
-1. 前のセクションの「[カスタム メッセージ言語の動作](#custom-message-language-behavior)」に基づいて、**言語**を選択します。
+1. 前のセクションの「[カスタム メッセージ言語の動作](#custom-message-language-behavior)」に基づいて、**言語** を選択します。
 1. アップロードする *.mp3* または *.wav* サウンド ファイルを参照して、選択します。
 1. 準備ができたら、 **[追加]** 、 **[保存]** の順に選択します。
 
 ## <a name="mfa-service-settings"></a>MFA サービスの設定
 
-Azure Multi-Factor Authentication におけるアプリ パスワード、信頼できる IP、確認オプション、および多要素認証の記憶の設定は、サービス設定で確認できます。 これはどちらかというとレガシ ポータルであり、通常の Azure AD ポータルの一部ではありません。
+Azure AD Multi-Factor Authentication におけるアプリ パスワード、信頼できる IP、確認オプション、および多要素認証の記憶の設定は、サービス設定で確認できます。 これはどちらかというとレガシ ポータルであり、通常の Azure AD ポータルの一部ではありません。
 
 Azure portal からサービス設定にアクセスするには、 **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]**  >  **[作業の開始]**  >  **[構成]**  >  **[追加のクラウドベースの MFA 設定]** の順に移動します。 新しいウィンドウまたはタブが開き、追加の "*サービス設定*" のオプションが表示されます。
 
 ## <a name="trusted-ips"></a>信頼できる IP
 
-Azure Multi-Factor Authentication の "_信頼できる IP_" 機能を使用すると、定義された IP アドレス範囲からサインインするユーザーに対する多要素認証プロンプトがバイパスされます。 オンプレミス環境の信頼できる IP 範囲は、これらの場所のいずれかにユーザーがいるときに、Azure Multi-Factor Authentication プロンプトが表示されないように設定できます。
+Azure AD Multi-Factor Authentication の "_信頼できる IP_" 機能を使用すると、定義された IP アドレス範囲からサインインするユーザーに対する多要素認証プロンプトがバイパスされます。 オンプレミス環境の信頼できる IP 範囲は、これらの場所のいずれかにユーザーがいるときに、Azure AD Multi-Factor Authentication プロンプトが表示されないように設定できます。
 
 > [!NOTE]
-> 信頼できる IP には、MFA Server を使用する場合にのみ、プライベート IP 範囲を含めることができます。 クラウドベースの Azure Multi-Factor Authentication では、パブリック IP アドレス範囲のみを使用できます。
+> 信頼できる IP には、MFA Server を使用する場合にのみ、プライベート IP 範囲を含めることができます。 クラウドベースの Azure AD Multi-Factor Authentication では、パブリック IP アドレス範囲のみを使用できます。
 >
 > IPv6 範囲は、[ネームド ロケーション (プレビュー)](../conditional-access/location-condition.md#preview-features) インターフェイスでのみサポートされています。
 
@@ -291,7 +291,7 @@ Azure Multi-Factor Authentication の "_信頼できる IP_" 機能を使用す�
 
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>サービス設定を使用した信頼できる IP 機能の有効化
 
-条件付きアクセスポリシーを使用して信頼できる IP を有効にしない場合は、次の手順を使用して、Azure Multi-Factor Authentication の *[サービス設定]* を構成できます。
+条件付きアクセスポリシーを使用して信頼できる IP を有効にしない場合は、次の手順を使用して、Azure AD Multi-Factor Authentication の *[サービス設定]* を構成できます。
 
 1. Azure portal で、**Azure Active Directory** を検索して選択し、 **[ユーザー]** を選択します。
 1. **[Multi-Factor Authentication]** を選択します。
@@ -311,7 +311,7 @@ Azure Multi-Factor Authentication の "_信頼できる IP_" 機能を使用す�
 
 ## <a name="verification-methods"></a>検証方法
 
-サービス設定ポータルでユーザーが使用できる検証方法を選択できます。 ユーザーは、自分のアカウントを Azure Multi-Factor Authentication 用に登録するときに、有効になっているオプションから使用する検証方法を選択します。 登録プロセスのガイダンスについては、[アカウントへの多要素認証の設定](../user-help/multi-factor-authentication-end-user-first-time.md)を参照してください。
+サービス設定ポータルでユーザーが使用できる検証方法を選択できます。 ユーザーは、自分のアカウントを Azure AD Multi-Factor Authentication 用に登録するときに、有効になっているオプションから使用する検証方法を選択します。 登録プロセスのガイダンスについては、[アカウントへの多要素認証の設定](../user-help/multi-factor-authentication-end-user-first-time.md)を参照してください。
 
 次の検証方法を使用できます。
 
@@ -356,7 +356,7 @@ Multi-Factor Authentication の記憶機能では、ブラウザーでユーザ�
 >
 > ユーザーが AD FS の **[サインインしたままにする]** を選択し、さらに Multi-Factor Authentication に対してデバイスを信頼済みとしてマークした場合、**Multi-Factor Authentication を記憶する** 日数が過ぎるとユーザーは自動的に確認されません。 Azure AD によって、新たに多要素認証を行うように要求されても、AD FS によって多要素認証が再実行されるのでなく、元の Multi-Factor Authentication クレームおよび日付を含むトークンが返されます。 **その結果、Azure AD と AD FS との間で本人確認がループ状態に陥ります。**
 >
-> **Multi-Factor Authentication の記憶**機能は、B2B ユーザーとは互換性がなく、招待されたテナントにサインインしても B2B ユーザーには表示されません。
+> **Multi-Factor Authentication の記憶** 機能は、B2B ユーザーとは互換性がなく、招待されたテナントにサインインしても B2B ユーザーには表示されません。
 >
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Multi-Factor Authentication の記憶を有効にする
@@ -376,4 +376,4 @@ Multi-Factor Authentication の記憶機能では、ブラウザーでユーザ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Multi-Factor Authentication で使用できる方法の詳細については、「[Azure Active Directory で使用できる認証方法と検証方法](concept-authentication-methods.md)」を参照してください。
+Azure AD Multi-Factor Authentication で使用できる方法の詳細については、「[Azure Active Directory で使用できる認証方法と検証方法](concept-authentication-methods.md)」を参照してください。

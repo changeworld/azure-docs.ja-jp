@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 11/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 45357092784bd9c8821a81b07ce3c381c4ce7989
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 4fa0f4d87567bd77faacfd2373dba0d2b8996446
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410506"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873371"
 ---
 # <a name="localization-string-ids"></a>ローカライズ文字列 ID
 
@@ -27,33 +27,44 @@ ms.locfileid: "94410506"
 
 次の ID は、`api.signuporsignin` の ID を持つコンテンツ定義と、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)に使用されます。
 
-| id | 既定値 |
-| -- | ------------- |
-| **local_intro_email** | 自分の既存のアカウントでサインイン |
-| **logonIdentifier_email** | 電子メール アドレス |
-| **requiredField_email** | メール アドレスを入力してください |
-| **invalid_email** | 有効な電子メール アドレスを入力してください |
-| **email_pattern** | ^[a-zA-Z0-9.!#$%&'' *+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)* $ |
-| **local_intro_username** | 自分のユーザー名でサインイン |
-| **logonIdentifier_username** | ユーザー名 |
-| **requiredField_username** | ユーザー名を入力してください |
-| **password** | Password |
-| **requiredField_password** | パスワードを入力してください |
-| **invalid_password** | 入力したパスワードは、予期された形式ではありません。 |
-| **forgotpassword_link** | パスワードを忘れた場合 |
-| **createaccount_intro** | アカウントをお持ちでない場合は、 |
-| **createaccount_link** | 今すぐサインアップ |
-| **divider_title** | OR |
-| **cancel_message** | ユーザーがパスワードを忘れました |
-| **button_signin** | サインイン |
-| **social_intro** | 自分のソーシャル アカウントでサインイン |
-  **remember_me** |サインインしたままにする。 |
-| **unknown_error** | サインインで問題が発生しました。 後でもう一度やり直してください。 |
+| id | 既定値 | ページ レイアウト バージョン |
+| -- | ------------- | ------ |
+| **forgotpassword_link** | パスワードを忘れた場合 | `All` |
+| **createaccount_intro** | アカウントをお持ちでない場合は、 | `All` |
+| **button_signin** | サインイン | `All` |
+| **social_intro** | 自分のソーシャル アカウントでサインイン | `All` |
+| **remember_me** |サインインしたままにする。 | `All` |
+| **unknown_error** | サインインで問題が発生しました。 後でもう一度やり直してください。 | `All` |
+| **divider_title** | OR | `All` |
+| **local_intro_email** | 自分の既存のアカウントでサインイン | `< 2.0.0` |
+| **logonIdentifier_email** | 電子メール アドレス | `< 2.0.0` |
+| **requiredField_email** | メール アドレスを入力してください | `< 2.0.0` |
+| **invalid_email** | 有効な電子メール アドレスを入力してください | `< 2.0.0` |
+| **email_pattern** | ^[a-zA-Z0-9.!#$%&''\*+/=?^\_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)\*$ | `< 2.0.0` |
+| **local_intro_username** | 自分のユーザー名でサインイン | `< 2.0.0` |
+| **logonIdentifier_username** | ユーザー名 | `< 2.0.0` |
+| **requiredField_username** | ユーザー名を入力してください | `< 2.0.0` |
+| **password** | Password | `< 2.0.0` |
+| **requiredField_password** | パスワードを入力してください | `< 2.0.0` |
+| **createaccount_link** | 今すぐサインアップ | `< 2.0.0` |
+| **cancel_message** | ユーザーがパスワードを忘れました | `< 2.0.0` |
+| **invalid_password** | 入力したパスワードは、予期された形式ではありません。 | `< 2.0.0` |
+| **createaccount_one_link** | 今すぐサインアップ | `>= 2.0.0` |
+| **createaccount_two_links** | {0} または {1} を使用してサインアップする | `>= 2.0.0` |
+| **createaccount_three_links** | {0}、{1}、または {2} を使用してサインアップする | `>= 2.0.0` |
+| **local_intro_generic** | {0} を使用してサインインする | `>= 2.1.0` |
+| **requiredField_generic** | {0} を入力してください | `>= 2.1.0` |
+| **invalid_generic** | 有効な {0} を入力してください | `>= 2.1.1` |
+| **heading** | サインイン | `>= 2.1.1` |
+
+
+> [!NOTE]
+> * {0} のようなプレースホルダーには、`ClaimType` の `DisplayName` 値が自動的に入力されます。 
+> * `ClaimType` をローカライズする方法については、「[サインアップまたはサインインの例](#signupsigninexample)」を参照してください。
 
 次の例は、サインアップまたはサインインページでユーザー インターフェイス要素の一部を使用する方法を示しています。
 
-![サインアップまたはサインイン ページの UX 要素](./media/localization-string-ids/localization-susi.png)
-
+:::image type="content" source="./media/localization-string-ids/localization-susi-2.png" alt-text="サインアップまたはサインイン ページの UX 要素を示すスクリーンショット。":::
 
 ### <a name="sign-up-or-sign-in-identity-providers"></a>サインアップまたはサインイン ID プロバイダー
 
@@ -95,32 +106,28 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 | **UserMessageIfUserAccountLocked** | ご使用のアカウントは、不正使用を防ぐために一時的にロックされています。 後で再試行してください。 |
 | **AADRequestsThrottled** | この時点でリクエストが多すぎます。 しばらく待って、もう一度やり直してください。 |
 
+<a name="signupsigninexample"></a>
 ### <a name="sign-up-or-sign-in-example"></a>サインアップまたはサインインの例
 
 ```xml
 <LocalizedResources Id="api.signuporsignin.en">
   <LocalizedStrings>
-    <LocalizedString ElementType="UxElement" StringId="logonIdentifier_email">Email Address</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="requiredField_email">Please enter your email</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="logonIdentifier_username">Username</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="password">Password</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="createaccount_link">Sign up now</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="requiredField_username">Please enter your user name</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="createaccount_intro">Don't have an account?</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="forgotpassword_link">Forgot your password?</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="divider_title">OR</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="cancel_message">The user has forgotten their password</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="button_signin">Sign in</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email Address</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="heading">Sign in</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="social_intro">Sign in with your social account</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="local_intro_generic">Sign in with your {0}</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="requiredField_password">Please enter your password</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="invalid_password">The password you entered is not in the expected format.</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="local_intro_username">Sign in with your user name</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="local_intro_email">Sign in with your existing account</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="invalid_email">Please enter a valid email address</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_generic">Please enter your {0}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="invalid_generic">Please enter a valid {0}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_one_link">Sign up now</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_two_links">Sign up with {0} or {1}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_three_links">Sign up with {0}, {1}, or {2}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="forgotpassword_link">Forgot your password?</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_signin">Sign in</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="divider_title">OR</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="unknown_error">We are having trouble signing you in. Please try again later.</LocalizedString>
     <!-- Uncomment the remember_me only if the keep me signed in is activated. 
     <LocalizedString ElementType="UxElement" StringId="remember_me">Keep me signed in</LocalizedString> -->
-    <LocalizedString ElementType="UxElement" StringId="email_pattern">^[a-zA-Z0-9.!#$%&amp;’'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$</LocalizedString>
     <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">Facebook</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidPassword">Your password is incorrect.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfPasswordExpired">Your password has expired.</LocalizedString>
@@ -433,9 +440,9 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 </LocalizedResources>
 ```
 
-## <a name="azure-mfa-error-messages"></a>Azure MFA エラー メッセージ
+## <a name="azure-ad-mfa-error-messages"></a>Azure AD MFA のエラー メッセージ
 
-[Azure MFA の技術プロファイル](multi-factor-auth-technical-profile.md)のエラー メッセージ用 ID を次に示します。
+[Azure AD MFA の技術プロファイル](multi-factor-auth-technical-profile.md)のエラー メッセージ用 ID を次に示します。
 
 | id | 既定値 |
 | -- | ------------- |
@@ -446,7 +453,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 |UserMessageIfThrottled | 要求が調整されています。後でもう一度お試しください。|
 |UserMessageIfWrongCodeEntered|間違ったコードが入力されました。後でもう一度お試しください。|
 
-### <a name="azure-mfa-example"></a>Azure MFA の例
+### <a name="azure-ad-mfa-example"></a>Azure AD MFA の例
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">

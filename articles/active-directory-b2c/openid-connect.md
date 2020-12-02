@@ -11,12 +11,12 @@ ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e1e300f2e18d7103cde374c5eba6877602ac3721
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: dbfeefc14059785ba82cbf245a60e5e72759db76
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961223"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840408"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OpenID Connect による Web サインイン
 
@@ -24,7 +24,7 @@ OpenID Connect は、ユーザーを Web アプリケーションに安全にサ
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 の "*認可*" プロトコルを "*認証*" プロトコルとして使用できるように拡張したものです。 この認証プロトコルでは、シングル サインオンを実行できます。 ここでは、クライアントがユーザーの ID を検証したり、ユーザーに関する基本的なプロファイル情報を取得したりできるようにする "*ID トークン*" の概念が導入されています。
 
-これは OAuth 2.0 の拡張であるため、アプリケーションが*アクセス トークン*を安全に取得することも可能になります。 アクセス トークンを使用すると、[認可サーバー](protocols-overview.md)によってセキュリティ保護されたリソースにアクセスできます。 サーバー上でホストされ、ブラウザー経由でアクセスされる Web アプリケーションを構築する場合は、OpenID Connect をお勧めします。 トークンの詳細については、「[Overview of tokens in Azure Active Directory B2C (Azure Active Directory B2C でのトークンの概要)](tokens-overview.md)」を参照してください。
+これは OAuth 2.0 の拡張であるため、アプリケーションが *アクセス トークン* を安全に取得することも可能になります。 アクセス トークンを使用すると、[認可サーバー](protocols-overview.md)によってセキュリティ保護されたリソースにアクセスできます。 サーバー上でホストされ、ブラウザー経由でアクセスされる Web アプリケーションを構築する場合は、OpenID Connect をお勧めします。 トークンの詳細については、「[Overview of tokens in Azure Active Directory B2C (Azure Active Directory B2C でのトークンの概要)](tokens-overview.md)」を参照してください。
 
 Azure AD B2C は、単純な認証と権限付与以上のことができるように標準の OpenID Connect プロトコルを拡張したものです。 これには、OpenID Connect を使用してサインアップ、サインイン、プロファイル管理などのユーザー エクスペリエンスをご利用のアプリに追加できるようにする[ユーザー フロー パラメーター](user-flow-overview.md)が導入されています。
 
@@ -124,7 +124,7 @@ ID トークンの署名を検証した後、確認する必要のあるいく�
 
 - ユーザー/組織がアプリケーションにサインアップ済みであることを確認する。
 - 適切な承認/特権がユーザーにあることを確認する。
-- Azure Multi-Factor Authentication など特定の強度の認証が行われたことを確認する。
+- Azure AD Multi-Factor Authentication など特定の強度の認証が行われたことを確認する。
 
 ID トークンを検証した後、ユーザーとのセッションを開始できます。 ID トークン内の要求を使用して、アプリケーションでユーザーに関する情報を取得できます。 この情報の使用には、表示、記録、および承認が含まれます。
 

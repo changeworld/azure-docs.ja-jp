@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: f91928812dd2f9f850b5e4c3af16ce5c82608e05
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: baa0aa01c94c4deb35db8a59f7b4f81224ae1fd3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371054"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836990"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory の認証管理の運用リファレンス ガイド
 
@@ -95,7 +95,7 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 
 ### <a name="on-premises-outage-authentication-resiliency"></a>オンプレミスの停止に対する認証の回復性
 
-Azure AD のパスワード ハッシュ同期 (PHS) と Azure MFA を使用すると、よりシンプルで、漏洩した資格情報の検出が可能になるだけでなく、[NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/) などのサイバー攻撃によってオンプレミスの停止が発生しても、ユーザーが SaaS アプリケーションや Microsoft 365 にアクセスできるようになります。 また、フェデレーションと組み合わせると、PHS を有効にすることもできます。 PHS を有効にすると、フェデレーション サービスが使用できない場合に認証のフォールバックが可能になります。
+Azure AD のパスワード ハッシュ同期 (PHS) と Azure AD MFA を使用すると、よりシンプルで、漏洩した資格情報の検出が可能になるだけでなく、[NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/) などのサイバー攻撃によってオンプレミスの停止が発生しても、ユーザーが SaaS アプリケーションや Microsoft 365 にアクセスできるようになります。 また、フェデレーションと組み合わせると、PHS を有効にすることもできます。 PHS を有効にすると、フェデレーション サービスが使用できない場合に認証のフォールバックが可能になります。
 
 オンプレミスの組織に障害回復戦略がない場合や、Azure AD と統合されていない場合は、Azure AD PHS をデプロイし、PHS を含むディザスター リカバリー計画を定義する必要があります。 Azure AD PHS を有効にすると、オンプレミスの Active Directory が使用できない場合に、ユーザーが Azure AD に対して認証を行うことができるようになります。
 

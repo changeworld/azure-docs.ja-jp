@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 575c139a3b417eb9429695d3ea6be26bf5625de5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 12e5a6db7257678b3d4d14d7583a1a30da0d3a87
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371071"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967144"
 ---
 # <a name="monitor-identity-and-access"></a>ID とアクセスを監視する
 
@@ -30,7 +30,7 @@ ID に関連するアクティビティと構成を監視することで、イ�
 
 Azure Security Center には、組織の ID とセキュリティの要件を確実に満たすための 2 つの専用のセキュリティ コントロールがあります。 
 
- - **アクセスとアクセス許可の管理** - [最小特権アクセス モデル](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)を採用し、ユーザーが各自の仕事を遂行するために必要なアクセス許可のみを付与することをお勧めします。 このコントロールには、リソースへのアクセスを制御するための[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) を実装するための推奨事項も含まれます。
+ - **アクセスとアクセス許可の管理** - [最小特権アクセス モデル](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)を採用し、ユーザーが各自の仕事を遂行するために必要なアクセス許可のみを付与することをお勧めします。 このコントロールには、リソースへのアクセスを制御するための [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) を実装するための推奨事項も含まれます。
  
  - **MFA の有効化** - [MFA](https://www.microsoft.com/security/business/identity/mfa) を有効にすると、アカウントのセキュリティが強化され、しかもユーザーはそれまでと同様、シングル サインオンでほとんどすべてのアプリケーションに対して認証を行うことができます。
 
@@ -52,14 +52,14 @@ Security Center の ID とアクセスの保護にはいくつかの制限があ
 
 - 600 を超えるアカウントを持つサブスクリプションでは、ID に関する推奨事項は利用できません。 このような場合、これらの推奨事項は [利用できない評価] の下に表示されます。
 - クラウド ソリューション プロバイダー (CSP) パートナーの管理エージェントでは、ID に関する推奨事項は利用できません。
-- ID に関する推奨事項では、特権 ID 管理 (PIM) システムによって管理されているアカウントは識別されません。 PIM ツールを使用している場合、 **アクセスとアクセス許可の管理** コントロールに不正確な結果が表示されることがあります。
+- ID に関する推奨事項では、特権 ID 管理 (PIM) システムによって管理されているアカウントは識別されません。 PIM ツールを使用している場合、**アクセスとアクセス許可の管理** コントロールに不正確な結果が表示されることがあります。
 
 ## <a name="multi-factor-authentication-mfa-and-azure-active-directory"></a>多要素認証 (MFA) と Azure Active Directory 
 
 MFA を有効にするには、[Azure Active Directory (AD) テナントのアクセス許可](../active-directory/roles/permissions-reference.md)が必要です。
 
 - AD の Premium Edition を使用している場合は、[条件付きアクセス](../active-directory/conditional-access/concept-conditional-access-policy-common.md)を使用して MFA を有効にします。
-- AD の無料エディションを使用している場合は、 [Azure Active Directory のドキュメント](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)の説明に従って、 **セキュリティの既定値** を有効にします。
+- AD の無料エディションを使用している場合は、[Azure Active Directory のドキュメント](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)の説明に従って、**セキュリティの既定値** を有効にします。
 
 ## <a name="identify-accounts-without-multi-factor-authentication-mfa-enabled"></a>多要素認証 (MFA) が有効になっていないアカウントを識別する
 

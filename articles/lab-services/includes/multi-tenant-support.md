@@ -3,15 +3,15 @@ author: Julia
 ms.author: juliako
 ms.date: 10/30/2020
 ms.topic: include
-ms.openlocfilehash: a07e4c8ae222aa2a1f6ce43fd1dabe193f8cf6e8
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: d2eff2720d4a8d7b18bb52c827c86bc883ff1dfb
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148289"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95097066"
 ---
-複数の Azure AD テナントの一部である管理者またはラボ所有者は、Azure Lab Services ポータル (右上隅) からテナント間を移動できます。 
+2 つ以上の Azure AD テナントで管理者ロールまたはラボ所有者ロールをお持ちの場合は、次のスクリーンショットに示すように、右上のコントロールを選択して、Azure Lab Services ポータルでテナント間を切り替えることができます。 
 
-![テナントを選択する](../media/multi-tenant-support/picker.png)
+![Azure Lab Services ポータルでテナント間を切り替えるためのコントロールのスクリーンショット。](../media/multi-tenant-support/picker.png)
 
-テナントを選択したら、左上隅にある Azure Active Directory (Azure AD) テナント内でラボ アカウントを選択します。
+Azure AD テナントを選択したら、左上にあるコントロールを選択してラボ アカウントに移動します。

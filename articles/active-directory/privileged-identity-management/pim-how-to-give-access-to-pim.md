@@ -14,19 +14,19 @@ ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f8991d5ba9efb8e3223dd44a8d037acf2de849
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fba46ee5632f7411c433e4bba29201c59c552f21
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009564"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835205"
 ---
 # <a name="delegate-access-to-privileged-identity-management"></a>Privileged Identity Management へのアクセスを委任する
 
 Privileged Identity Management (PIM) へのアクセス権を委任する場合は、グローバル管理者が、他のユーザーに特権ロール管理者ロールを割り当てることができます。 既定では、セキュリティ管理者とセキュリティ リーダーが持つのは Privileged Identity Management に対する読み取り専用アクセス権だけです。 Privileged Identity Management へのアクセス権を付与するには、最初のユーザーが他のユーザーに **特権ロール管理者** ロールを割り当てます。 Azure AD ロールのみを管理するのに必要なのは、特権ロール管理者ロールです。 Azure リソースの設定を管理するために、特権ロール管理者のアクセス許可は必要ありません。
 
 > [!NOTE]
-> Privileged Identity Management の管理には、Azure Multi-Factor Authentication が必要です。 Microsoft アカウントは Azure Multi-Factor Authentication に登録できないため、Microsoft アカウントでサインインするユーザーは、Privileged Identity Management にアクセスできません。
+> Privileged Identity Management の管理には、Azure AD Multi-Factor Authentication が必要です。 Microsoft アカウントは Azure AD Multi-Factor Authentication に登録できないため、Microsoft アカウントでサインインするユーザーは、Privileged Identity Management にアクセスできません。
 
 1 人のユーザーがロックアウトされたり、アカウントが削除されたりしたときのために、特権ロール管理者ロールを割り当てられたユーザーが常に少なくとも 2 人いるようにしてください。
 
@@ -54,9 +54,9 @@ Privileged Identity Management (PIM) へのアクセス権を委任する場合�
 
 1. メンバーを選択し、**[選択]** をクリックします。
 
-1. **[OK]** を選択して、メンバーを **特権ロール管理者**ロールの対象にします。
+1. **[OK]** を選択して、メンバーを **特権ロール管理者** ロールの対象にします。
 
-    新しいロールを Privileged Identity Management の他のユーザーに割り当てると、そのユーザーは、ロールをアクティブ化する**対象**として自動的に構成されます。
+    新しいロールを Privileged Identity Management の他のユーザーに割り当てると、そのユーザーは、ロールをアクティブ化する **対象** として自動的に構成されます。
 
 1. メンバーを固定するには、特権ロール管理者メンバーの一覧でユーザーを選択します。
 

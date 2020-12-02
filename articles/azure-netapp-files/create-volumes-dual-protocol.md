@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 4fa2c724906c8a6bfb294541b6616ddc7ae22df6
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 06885e3f6a1ceeebc7c0bb1053e36e9e95a0043e
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591650"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888778"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files のデュアルプロトコル (NFSv3 と SMB) ボリュームを作成する
 
@@ -51,6 +51,8 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMBv3、またはデュア
     |-  |-  |-  |-  |-  |
     | UNIX  | NFS   | NFSv3 モード ビット   | UNIX  | NFS と Windows   |
     | NTFS  | Windows   | NTFS ACL     | NTFS  |NFS と Windows|
+* NFS を使用して NTFS セキュリティ スタイル ボリュームをマウントする UNIX ユーザーは、UNIX `root` の場合は Windows ユーザー `root`、その他のすべてのユーザーの場合は `pcuser` として認証されます。 NFS の使用中、ボリュームをマウントする前に、これらのユーザー アカウントが Active Directory に存在していることを確認してください。 
+
 
 ## <a name="create-a-dual-protocol-volume"></a>デュアルプロトコル ボリュームを作成する
 

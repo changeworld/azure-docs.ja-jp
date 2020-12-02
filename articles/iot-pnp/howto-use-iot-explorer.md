@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: contperfq2
-ms.openlocfilehash: 8482ba608ee5fcefb006234b339cd9b711a38020
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 55607527ced2e5d93a61cfd85477758482f18daa
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445304"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495425"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT エクスプローラーをインストールして使用する
 
@@ -40,7 +40,7 @@ Azure IoT エクスプローラー ツールを使用するには、次のもの
 
 ## <a name="use-azure-iot-explorer"></a>Azure IoT エクスプローラーを使用する
 
-デバイスに関しては、自分のデバイスを接続するか、サンプルのシミュレートされたデバイスのいずれかを使用することができます。 異なる言語で記述されたシミュレート デバイスの例については、クイックスタート「[サンプルの IoT プラグ アンド プレイ デバイス アプリケーションを IoT Hub に接続する (Node.js)](quickstart-connect-device-node.md)」を参照してください。
+デバイスに関しては、自分のデバイスを接続するか、サンプルのシミュレートされたデバイスのいずれかを使用することができます。 異なる言語で記述されたシミュレート デバイスの例については、クイックスタート「[サンプルの IoT プラグ アンド プレイ デバイス アプリケーションを IoT Hub に接続する (Node.js)](quickstart-connect-device.md)」を参照してください。
 
 ### <a name="connect-to-your-hub"></a>お使いのハブに接続する
 

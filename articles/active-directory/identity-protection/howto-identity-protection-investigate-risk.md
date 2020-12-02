@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3610fa5ea442e5ccb15255d8a1ddcee211871aeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be72c2152bdb8e1155d2dd29547f93ba3605d462
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84463945"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95251095"
 ---
 # <a name="how-to-investigate-risk"></a>方法:リスクの調査
 
-Identity Protection を使用すると、お使いの環境のリスクを調査するために使用できる 3 種類のレポートが組織に提供されます。 これらのレポートは、**危険なユーザー**、**危険なサインイン**、および**リスク検出**です。 イベントの調査は、セキュリティ戦略の弱点を理解して識別するための鍵です。
+Identity Protection を使用すると、お使いの環境のリスクを調査するために使用できる 3 種類のレポートが組織に提供されます。 これらのレポートは、**危険なユーザー**、**危険なサインイン**、および **リスク検出** です。 イベントの調査は、セキュリティ戦略の弱点を理解して識別するための鍵です。
 
 3 つのレポートは、Azure portal の外部で詳細な分析を行うために、どれもイベントを .CSV 形式でダウンロードできます。 危険なユーザー レポートと危険なサインイン レポートでは、最新の 2,500 項目をダウンロードできます。一方、リスク検出レポートでは、最新の 5,000 レコードをダウンロードできます。
 
@@ -90,6 +90,10 @@ Identity Protection を使用すると、お使いの環境のリスクを調査
 - Microsoft Cloud App Security (MCAS) のリンクから詳細な情報にアクセスする
 
 管理者は、ユーザーのリスク レポートまたはサインイン レポートに戻り、収集された情報に基づいてアクションを実行できます。
+
+> [!NOTE] 
+> 当社のシステムでは、リスクのあるユーザーのリスク スコアに影響を与えたリスク イベントが誤検知であること、または MFA プロンプトの実行やセキュリティで保護されたパスワードの変更など、ポリシーを適用することによってユーザーのリスクが修復されたことが検出される場合があります。 その場合、リスクの状態は無視され、「AI によってサインインが安全であることが確認されました」というリスクの詳細が表示されます。また、ユーザーのリスクには影響しなくなります。 
+
 
 ## <a name="next-steps"></a>次のステップ
 

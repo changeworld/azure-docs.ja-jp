@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a0d474208f11c203ca65e9ac296fa381d8633a8b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 12c9fd43933f9f54e013752c5fe482ce31650536
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663295"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95238396"
 ---
 # <a name="create-an-app-service-environment"></a>App Service Environment を作成する
 
@@ -48,7 +48,7 @@ ASEv3 は、一部のリージョンでのみ提供されます。 プレビュ�
 
 ## <a name="creating-an-ase-in-the-portal"></a>ポータルでの ASE の作成
 
-1. ASEv3 を作成するには、マーケットプレースで **App Service Environment v3** を検索します。  
+1. ASEv3 を作成するには、マーケットプレースで **App Service Environment (プレビュー)** を検索します。  
 2. 基本:サブスクリプションを選択し、リソース グループを選択または作成して、ASE の名前を入力します。  ASE 名は、ASE のドメインのサフィックスにも使用されます。  ASE 名が *contoso* の場合、ドメインのサフィックスは *contoso.appserviceenvironment.net* になります。  ASE のデプロイ先である Vnet で使用する Azure DNS プライベート ゾーンに、この名前が自動的に設定されます。 
 
     ![App Service Environment の作成の [基本] タブ](./media/creation/creation-basics.png)

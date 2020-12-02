@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor Authentication の認証方法を管理する - Azure Active Directory
-description: Azure Multi-Factor Authentication の Azure Active Directory ユーザー設定を構成する方法について説明します。
+title: Azure AD Multi-Factor Authentication の認証方法を管理する - Azure Active Directory
+description: Azure AD Multi-Factor Authentication の Azure Active Directory ユーザー設定を構成する方法について説明します。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6309ef6793858051ceaf3c3b33edb9f830b26710
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 1117b5194dae92a8025594ed71fc629670d875cf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378047"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838929"
 ---
-# <a name="manage-user-authentication-methods-for-azure-multi-factor-authentication"></a>Azure Multi-factor Authentication のユーザー認証方法を管理する
+# <a name="manage-user-authentication-methods-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-factor Authentication のユーザー認証方法を管理する
 
 Azure AD のユーザーには、2 つの異なる連絡先情報のセットがあります。  
 
 - パブリック プロファイルの連絡先情報。これはユーザー プロファイルで管理され、自分の組織のメンバーに表示されます。 オンプレミスの Active Directory から同期したユーザーの場合、この情報はオンプレミスの Windows Server Active Directory Domain Services で管理されます。
 - 認証方法。これは常に非公開で、多要素認証 (MFA) を含む認証にのみ使用されます。 管理者はユーザーの認証方法ブレードでこれらの方法を管理でき、ユーザーは MyAccount の [セキュリティ情報] ページで自分の方法を管理できます。
 
-ユーザーの Azure Multi-Factor Authentication 方法を管理する場合、認証管理者は次のことができます。 
+ユーザーの Azure AD Multi-Factor Authentication 方法を管理する場合、認証管理者は次のことができます。 
 
 1. MFA に使用される電話番号など、特定のユーザーの認証方法を追加します。
 1. ユーザーのパスワードをリセットします。
@@ -116,6 +116,6 @@ Remove-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com -PhoneAuthentic
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、個々のユーザー設定を構成する方法について説明しました。 Azure Multi-Factor Authentication サービスの全体的な設定を構成するには、「[Azure Multi-Factor Authentication の設定を構成する](howto-mfa-mfasettings.md)」を参照してください。
+この記事では、個々のユーザー設定を構成する方法について説明しました。 Azure AD Multi-Factor Authentication サービスの全体的な設定を構成するには、「[Azure AD Multi-Factor Authentication の設定を構成する](howto-mfa-mfasettings.md)」を参照してください。
 
-ユーザーがヘルプを必要とする場合は、[Azure Multi-Factor Authentication のユーザー ガイド](../user-help/multi-factor-authentication-end-user-first-time.md)を参照してください。
+ユーザーがヘルプを必要とする場合は、[Azure AD Multi-Factor Authentication のユーザー ガイド](../user-help/multi-factor-authentication-end-user-first-time.md)を参照してください。

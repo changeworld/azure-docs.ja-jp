@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 6fd20cd9e3172d6ce80d2c18c2cfa41fcc044929
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8021d659c144bfb68c2714f1680b6ad27a51b56a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92508031"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522347"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure プライベート エンドポイントとは
 
@@ -28,7 +28,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 |Subnet    |  仮想ネットワークからデプロイしてプライベート IP アドレスを割り当てるサブネット。 サブネットの要件については、この記事の「制限事項」セクションを参照してください。         |
 |Private Link リソース    |   使用可能な種類の一覧から、リソース ID または別名を使用して接続するプライベート リンク リソース。 このリソースに送信されるすべてのトラフィックに対して、一意のネットワーク識別子が生成されます。       |
 |ターゲット サブリソース   |      接続するサブリソース。 それぞれの種類のプライベート リンク リソースには、好みに応じて選択できるさまざまなオプションがあります。    |
-|接続の承認方法    |  自動または手動。 ロールベースのアクセス制御 (RBAC) のアクセス許可に基づいて、自分のプライベート エンドポイントを自動的に承認することができます。 RBAC を使用せずにプライベート リンク リソースに接続する場合は、手動による方法を使用して、リソースの所有者が接続を承認できるようにします。        |
+|接続の承認方法    |  自動または手動。 Azure ロールベースのアクセス制御 (Azure RBAC) のアクセス許可に基づいて、自分のプライベート エンドポイントを自動的に承認することができます。 Azure RBAC を使用せずにプライベート リンク リソースに接続する場合は、手動による方法を使用して、リソースの所有者が接続を承認できるようにします。        |
 |要求メッセージ     |  要求された接続を手動で承認するためのメッセージを指定できます。 このメッセージは、特定の要求を識別するために使用できます。        |
 |[接続状態]   |   プライベート エンドポイントがアクティブかどうかを指定する読み取り専用のプロパティ。 トラフィックの送信に使用できるのは、承認済み状態のプライベート エンドポイントのみです。 使用可能なその他の状態: <br>- **[Approved]\(承認済み\)** : 接続が自動または手動で承認され、使用する準備が整っています。</br><br>- **[Pending]\(保留中\)** : 接続が手動で作成されており、プライベート リンク リソースの所有者による承認を待っています。</br><br>- **[Rejected]\(拒否済み\)** : プライベート リンク リソースの所有者によって接続が拒否されました。</br><br>- **[Disconnected]\(切断済み\)** : プライベート リンク リソースの所有者によって接続が削除されました。 プライベート エンドポイントは情報が多くなり、クリーンアップのために削除する必要があります。 </br>|
 
@@ -45,9 +45,9 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
  
 - 同じプライベート リンク リソースを使用して、複数のプライベート エンドポイントを作成できます。 共通の DNS サーバー構成を使用する単一のネットワークでは、特定のプライベート リンク リソースに単一のプライベート エンドポイントを使用することで、エントリの重複や DNS 解決の競合を回避することをお勧めします。 
  
-- 同じ仮想ネットワーク内の同じサブネットまたは異なるサブネットに複数のプライベート エンドポイントを作成できます。 サブスクリプションに作成できるプライベート エンドポイントの数には制限があります。 詳細については、 [Azure の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)に関する記事を参照してください。
+- 同じ仮想ネットワーク内の同じサブネットまたは異なるサブネットに複数のプライベート エンドポイントを作成できます。 サブスクリプションに作成できるプライベート エンドポイントの数には制限があります。 詳細については、 [Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)に関する記事を参照してください。
 
-- プライベート リンク リソースからのサブスクリプションも、Micosoft.Network リソース プロバイダーに登録されている必要があります。 詳細については、 [Azure リソース プロバイダー](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)に関する記事を参照してください。
+- プライベート リンク リソースからのサブスクリプションも、Micosoft.Network リソース プロバイダーに登録されている必要があります。 詳細については、 [Azure リソース プロバイダー](../azure-resource-manager/management/resource-providers-and-types.md)に関する記事を参照してください。
 
  
 ## <a name="private-link-resource"></a>プライベート リンク リソース 
@@ -136,7 +136,7 @@ Azure サービスでプライベート エンドポイントを使用する場�
 - [ポータルを使用して SQL Database 用のプライベート エンドポイントを作成する](create-private-endpoint-portal.md)
 - [PowerShell を使用して SQL Database 用のプライベート エンドポイントを作成する](create-private-endpoint-powershell.md)
 - [CLI を使用して SQL Database 用のプライベート エンドポイントを作成する](create-private-endpoint-cli.md)
-- [ポータルを使用してストレージ アカウント用のプライベート エンドポイントを作成する](create-private-endpoint-storage-portal.md)
+- [ポータルを使用してストレージ アカウント用のプライベート エンドポイントを作成する](./tutorial-private-endpoint-storage-portal.md)
 - [ポータルを使用して Azure Cosmos アカウント用のプライベート エンドポイントを作成する](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Azure PowerShell を使用して独自の Private Link サービスを作成する](create-private-link-service-powershell.md)
 - [ポータルを使用して、シングル サーバー用 Azure Database for PostgreSQL への独自の Private Link を作成する](../postgresql/howto-configure-privatelink-portal.md)

@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 318da4e92e6d07df1fcb89a4df0cb29d82caa630
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7f52e46ff9cab7d3d150af9fd7b4f1c432bec74b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294870"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836191"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>ハイブリッド ID 導入戦略の定義
 このタスクでは、次のトピックで検討したビジネス要件を満たすために、ハイブリッド ID ソリューションのハイブリッド ID 導入戦略を定義します。
@@ -176,7 +176,7 @@ ms.locfileid: "91294870"
 > 
 
 ## <a name="define-multi-factor-authentication-strategy"></a>多要素認証戦略の定義
-このタスクでは、使用する多要素認証戦略を定義します。  Azure Multi-Factor Authentication では、次の 2 種類のバージョンが用意されています。  1 つはクラウドベースで、もう 1 つは Azure MFA Server を使用するオンプレミス ベースです。  上記で行った評価に基づいて、戦略に適したソリューションを決定できます。  次の表を使用して、どの設計オプションが企業のセキュリティ要件を最適に満たすかを判断します。
+このタスクでは、使用する多要素認証戦略を定義します。  Azure AD Multi-Factor Authentication では、次の 2 種類のバージョンが用意されています。  1 つはクラウドベースで、もう 1 つは Azure MFA Server を使用するオンプレミス ベースです。  上記で行った評価に基づいて、戦略に適したソリューションを決定できます。  次の表を使用して、どの設計オプションが企業のセキュリティ要件を最適に満たすかを判断します。
 
 多要素設計オプション:
 

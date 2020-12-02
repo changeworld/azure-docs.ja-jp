@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 8437c83faf8dfcec0a21add2006b6cf627447dd1
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 1459c80c857a436c8369d3ebe89794e0b69c33b1
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516443"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980883"
 ---
-# <a name="public-preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>パブリック プレビュー:Azure ハイブリッド特典 - Linux Virtual Machines に適用する方法
+# <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure ハイブリッド特典 - Linux Virtual Machines に適用する方法
 
 ## <a name="overview"></a>概要
 
 Azure ハイブリッド特典を使用すると、既存の Red Hat または SUSE ソフトウェア サブスクリプションを使用して、オンプレミスの Red Hat Enterprise Linux (RHEL) サーバーと SUSE Linux Enterprise Server (SLES) 仮想マシン (VM) を Azure に簡単に移行できます。 この特典により、ソフトウェア料金は RHEL または SLES サブスクリプションによってカバーされるため、お客様には VM のインフラストラクチャ コストのみが課金されます。 この特典は、すべての RHEL および SLES Marketplace の従量課金制 (PAYG) イメージに適用されます。
 
 > [!IMPORTANT]
-> Linux VM の Azure ハイブリッド特典は、現在パブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> Linux VM の Azure ハイブリッド特典は、一般提供されるようになりました
+
 
 ## <a name="benefit-description"></a>特典の説明
 
@@ -44,12 +44,6 @@ Azure ハイブリッド特典は、すべての RHEL および SLES Marketplace
 Linux VM で予約インスタンス、専用ホスト、および SQL ハイブリッド特典を既に使用している場合は、Azure ハイブリッド特典の対象になりません。
 
 ## <a name="how-to-get-started"></a>ファースト ステップ
-
-Azure ハイブリッド特典は現在、Linux VM 向けのプレビュー段階にあります。 プレビューにアクセスできるようになったら、Azure CLI を使用して特典を有効にすることができます。
-
-### <a name="public-preview"></a>パブリック プレビュー
-
-Azure ハイブリッド特典 (Linux 向け) は、現在パブリック プレビュー段階にあります。 次の手順を使用して、Red Hat および SUSE のディストリビューションの特典を有効にすることができます。 
 
 ### <a name="red-hat-customers"></a>Red Hat のお客様
 
@@ -152,6 +146,35 @@ A:いいえ、できません。 VM で実行しているディストリビュ�
 *Q:Red Hat Cloud Access に登録しましたが、RHEL VM で特典を有効にすることができません。どうすればよいですか。*
 
 A:Red Hat Cloud Access サブスクリプションの登録が、Red Hat から Azure に反映されるまでに時間がかかる場合があります。 1 営業日後も引き続きエラーが表示される場合は、Microsoft サポートにお問い合わせください。
+
+*Q:RHEL BYOS の "ゴールデン イメージ" を使用して VM をデプロイしました。これらのイメージの課金を BYOS から PAYG に変換することはできますか。*
+
+A:いいえ、できません。 Azure ハイブリッド特典では、従量課金制のイメージでの変換のみがサポートされています。
+
+*Q:RHEL BYOS の "ゴールデン イメージ" を使用して VM をデプロイしました。これらのイメージの課金を BYOS から PAYG に変換することはできますか。*
+
+A:いいえ、できません。 Azure ハイブリッド特典では、従量課金制のイメージでの変換のみがサポートされています。
+
+*Q:オンプレミス (ASR 経由またはそれ以外) から Azure に独自の RHEL イメージをアップロードしました。これらのイメージの課金を BYOS から PAYG に変換することはできますか。*
+
+A:いいえ、できません。 Azure ハイブリッド特典機能は、現在、RHEL および SLES の Marketplace イメージでのみ使用できます。 
+
+*Q:Marketplace の RHEL および SLES の SAP イメージからデプロイされた VM で Azure ハイブリッド特典を使用できますか。*
+
+A: はい、できます。 RHEL VM にはライセンスの種類 'RHEL_BYOS' を使用できます。Marketplace の RHEL および SLES の SAP イメージからデプロイされた VM の変換には、'SLES_BYOS' を使用できます。
+
+*Q:RHEL および SLES の仮想マシン スケール セット (VMSS) で Azure ハイブリッド特典を使用できますか。*
+
+A:いいえ、できません。 現在、RHEL および SLES の VMSS は Azure ハイブリッド特典のスコープに含まれていません。
+
+*Q:RHEL および SLES の予約インスタンス (RI) で Azure ハイブリッド特典を使用できますか。*
+
+A:いいえ、できません。 現在、RHEL および SLES の RI は Azure ハイブリッド特典のスコープに含まれていません。
+
+*Q:RHEL イメージの SQL Server 用にデプロイされた仮想マシンで Azure ハイブリッド特典を使用できますか。*
+
+A:いいえ、できません。 これらのサポートは計画されていません。
+ 
 
 ## <a name="common-issues"></a>一般的な問題
 このセクションには、発生する可能性のある一般的な問題の一覧と、軽減策の手順が含まれています。

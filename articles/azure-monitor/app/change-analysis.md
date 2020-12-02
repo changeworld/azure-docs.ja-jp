@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: ed29bfc099ce401288c07db863207a1d989a5e0d
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 36e73ceddaa5e3f9cbbf4a41f76a4ba6d70eed0f
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168275"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979965"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Monitor でアプリケーション変更分析 (プレビュー) を使用する
 
@@ -91,7 +91,7 @@ Azure Monitor では、変更分析はセルフサービスの **問題の診断
 
 ### <a name="application-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>問題の診断と解決ツールのアプリケーション変更分析
 
-アプリケーション変更分析は、Web アプリの問題の診断と解決ツールに含まれているスタンドアロン検出機能です。 また、 **[アプリケーションのクラッシュ]** と **[Web App Down detectors]\(Web アプリのダウン検出\)** にも含まれています。 [問題の診断と解決] ツールを開くと、 **Microsoft.ChangeAnalysis** リソース プロバイダーが自動的に登録されます。 次の手順に従って、ゲストでの Web アプリの変更追跡を有効にします。
+アプリケーション変更分析は、Web アプリの問題の診断と解決ツールに含まれているスタンドアロン検出機能です。 また、 **[アプリケーションのクラッシュ]** と **[Web App Down detectors]\(Web アプリのダウン検出\)** にも含まれています。 [問題の診断と解決] ツールを開くと、**Microsoft.ChangeAnalysis** リソース プロバイダーが自動的に登録されます。 次の手順に従って、ゲストでの Web アプリの変更追跡を有効にします。
 
 1. **[Availability and Performance]\(可用性とパフォーマンス\)** を選択します。
 
@@ -124,7 +124,7 @@ Azure Monitor では、変更分析はセルフサービスの **問題の診断
 ![トラブルシューティング ツールの変更アナライザー](./media/change-analysis/analyze-recent-changes.png)
 
 ### <a name="activity-log-change-history"></a>アクティビティ ログ変更履歴
-アクティビティ ログの[変更履歴の表示](../platform/activity-log.md#view-change-history)機能では、アプリケーション変更分析サービス バックエンドを呼び出して、操作に関連付けられている変更を取得します。 **変更履歴** では、[Azure Resource Graph](../../governance/resource-graph/overview.md) が直接呼び出されていましたが、バックエンドが交換され、アプリケーション変更分析が呼び出されるようになったため、返される変更に、[Azure リソースグラフ](../../governance/resource-graph/overview.md)からのリソースレベルの変更、 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) からのリソース プロパティ、App Services Web アプリなどの PaaS サービスからのゲスト内の変更が含まれるようになります。 アプリケーション変更分析サービスで、ユーザーのサブスクリプションの変更をスキャンできるようにするには、リソース プロバイダーを登録する必要があります。 **[変更履歴]** タブに初めて入ると、ツールによって **Microsoft.ChangeAnalysis** リソース プロバイダーの登録が自動的に開始されます。 登録後、 **Azure Resource Graph** からの変更がすぐに利用できるようになり、過去 14 日間が対象になります。 ほかのソースからの変更は、サブスクリプションのオンボードから 4 時間後に使用できるようになります。
+アクティビティ ログの[変更履歴の表示](../platform/activity-log.md#view-change-history)機能では、アプリケーション変更分析サービス バックエンドを呼び出して、操作に関連付けられている変更を取得します。 **変更履歴** では、[Azure Resource Graph](../../governance/resource-graph/overview.md) が直接呼び出されていましたが、バックエンドが交換され、アプリケーション変更分析が呼び出されるようになったため、返される変更に、[Azure リソースグラフ](../../governance/resource-graph/overview.md)からのリソースレベルの変更、 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) からのリソース プロパティ、App Services Web アプリなどの PaaS サービスからのゲスト内の変更が含まれるようになります。 アプリケーション変更分析サービスで、ユーザーのサブスクリプションの変更をスキャンできるようにするには、リソース プロバイダーを登録する必要があります。 **[変更履歴]** タブに初めて入ると、ツールによって **Microsoft.ChangeAnalysis** リソース プロバイダーの登録が自動的に開始されます。 登録後、**Azure Resource Graph** からの変更がすぐに利用できるようになり、過去 14 日間が対象になります。 ほかのソースからの変更は、サブスクリプションのオンボードから 4 時間後に使用できるようになります。
 
 ![アクティビティ ログ変更履歴の統合](./media/change-analysis/activity-log-change-history.png)
 
@@ -174,7 +174,7 @@ foreach ($webapp in $webapp_list)
 ### <a name="having-trouble-registering-microsoftchange-analysis-resource-provider-from-change-history-tab"></a>[変更履歴] タブからの Microsoft.Change Analysis リソース プロバイダーの登録で問題が発生している
 アプリケーション変更分析との統合後、変更履歴を初めて表示すると、リソース プロバイダー **Microsoft.ChangeAnalysis** が自動的に登録されることがわかります。 まれに、次のような理由でこれが失敗する場合があります。
 
-- **Microsoft.ChangeAnalysis リソース プロバイダーを登録するための十分なアクセス許可がありません** 。 このエラー メッセージは、現在のサブスクリプションのロールに、関連付けられている **Microsoft.Support/register/action** スコープがないことを意味します。 これは、サブスクリプションの所有者ではなく、同僚を通じて共有アクセス許可を取得した場合に発生する可能性があります。 つまり、リソース グループへの表示アクセス権です。 これを解決するには、サブスクリプションの所有者に問い合わせて、 **Microsoft.ChangeAnalysis** リソースプロバイダーを登録します。 これは、Azure portal の **サブスクリプション | リソース プロバイダー** から行うことができ、```Microsoft.ChangeAnalysis``` を検索し、UI で、または Azure PowerShell や Azure CLI を使用して登録します。
+- **Microsoft.ChangeAnalysis リソース プロバイダーを登録するための十分なアクセス許可がありません**。 このエラー メッセージは、現在のサブスクリプションのロールに、関連付けられている **Microsoft.Support/register/action** スコープがないことを意味します。 これは、サブスクリプションの所有者ではなく、同僚を通じて共有アクセス許可を取得した場合に発生する可能性があります。 つまり、リソース グループへの表示アクセス権です。 これを解決するには、サブスクリプションの所有者に問い合わせて、**Microsoft.ChangeAnalysis** リソースプロバイダーを登録します。 これは、Azure portal の **サブスクリプション | リソース プロバイダー** から行うことができ、```Microsoft.ChangeAnalysis``` を検索し、UI で、または Azure PowerShell や Azure CLI を使用して登録します。
 
     PowerShell を使用してリソース プロバイダーを登録します。 
     ```PowerShell
@@ -182,9 +182,10 @@ foreach ($webapp in $webapp_list)
     Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
     ```
 
-- **Microsoft.ChangeAnalysis リソース プロバイダーを登録できませんでした** 。 このメッセージは、UI によってリソース プロバイダーの登録の要求が送信された直後に何かが失敗し、それがアクセス許可の問題に関係していないことを示しています。 一時的なインターネット接続の問題である可能性があります。 ページを更新し、インターネット接続を確認してみてください。 エラーが解決しない場合は、changeanalysishelp@microsoft.com にお問い合わせください
+- **Microsoft.ChangeAnalysis リソース プロバイダーを登録できませんでした**。 このメッセージは、UI によってリソース プロバイダーの登録の要求が送信された直後に何かが失敗し、それがアクセス許可の問題に関係していないことを示しています。 一時的なインターネット接続の問題である可能性があります。 ページを更新し、インターネット接続を確認してみてください。 エラーが解決しない場合は、changeanalysishelp@microsoft.com にお問い合わせください
+- **Microsoft ChangeAnalysis リソース プロバイダーの照会に失敗し**、「*Azure lighthouse サブスクリプションはサポートされていません。変更はサブスクリプションのホーム テナントでのみ行えます*」というようなメッセージを受け取ります。 変更分析リソース プロバイダーの登録に現時点で制限があり、ホーム テナントにないユーザーの Azure Lighthouse サブスクリプションを介して行うことができません。 この制限は、近い将来に解決される予定です。 これが障害となっている問題である場合、サービス プリンシパルを作成し、アクセスを許可するためのロールを明示的に割り当てることによって回避できます。  詳細については、changeanalysishelp@microsoft.com にお問い合わせください。
 
-- **予想以上に時間がかかっています** 。 このメッセージは、登録に 2 分以上かかっていることを示しています。 これはめったにありませんが、必ずしも問題が発生したことを示しているわけではありません。 **サブスクリプション | リソース プロバイダー** に移動して、 **Microsoft.ChangeAnalysis** リソースプロバイダーの登録状態を確認できます。 UI を使用して登録を解除し、再登録または更新してみて、それが役立つかどうかを確認できます。 問題が解決しない場合は、changeanalysishelp@microsoft.com にサポートについてお問い合わせください。
+- **予想以上に時間がかかっています**。 このメッセージは、登録に 2 分以上かかっていることを示しています。 これはめったにありませんが、必ずしも問題が発生したことを示しているわけではありません。 **サブスクリプション | リソース プロバイダー** に移動して、**Microsoft.ChangeAnalysis** リソースプロバイダーの登録状態を確認できます。 UI を使用して登録を解除し、再登録または更新してみて、それが役立つかどうかを確認できます。 問題が解決しない場合は、changeanalysishelp@microsoft.com にサポートについてお問い合わせください。
     ![時間がかかりすぎる RP 登録のトラブルシューティング](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
 
 ![[トラブルシューティング ツール] が選択されている、仮想マシンの [問題の診断と解決] ツールのスクリーンショット。](./media/change-analysis/vm-dnsp-troubleshootingtools.png)

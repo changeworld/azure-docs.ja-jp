@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: a34f2e50a5eb4ab87a02a5128cb912fa220849f1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 81d82bccd6b6bd97b84df5269dd59ffac4903370
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317065"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980380"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory マネージド仮想ネットワーク (プレビュー)
 
@@ -72,6 +72,11 @@ Azure Data Factory にマネージド プライベート エンドポイント�
 ![マネージド プライベート エンドポイントを承認する](./media/tutorial-copy-data-portal-private/approve-private-endpoint.png)
 
 承認済み状態のマネージド プライベート エンドポイントのみが、指定されたプライベート リンク リソースにトラフィックを送信できます。
+
+## <a name="interactive-authoring"></a>インタラクティブな作成
+インタラクティブな作成機能は、テスト接続、フォルダー一覧とテーブル リストの参照、スキーマの取得、データのプレビューなどの機能に使用されます。 ADF で管理されている仮想ネットワーク内の Azure Integration Runtime を作成または編集する際に、インタラクティブな作成を有効にすることができます。 バックエンド サービスでは、インタラクティブな作成機能のためにコンピューティングが事前に割り当てられます。 そうしないと、インタラクティブな操作が実行されるたびにコンピューティングが割り当てられ、時間がかかります。 インタラクティブな作成の Time To Live (TTL) は 60 分です。つまり、前回のインタラクティブな作成操作から 60 分が経過すると、この機能が自動的に無効になります。
+
+![インタラクティブな作成](./media/managed-vnet/interactive-authoring.png)
 
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
 ### <a name="supported-data-sources"></a>サポートされるデータ ソース

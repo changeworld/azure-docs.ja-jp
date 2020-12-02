@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a83d1a4bdc2496f874a963b8858192273260cc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91b7bd6d05ee0b992ee166b9acb13aff2e605a2c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89276271"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961007"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health の操作
 このトピックでは、Azure Active Directory (Azure AD) Connect Health を使用して実行できるさまざまな操作について説明します。
@@ -137,7 +137,7 @@ Azure AD Connect Health 内で "*すべてのサービス インスタンス*" �
 3. **[役割の選択]** ウィンドウで、ロール (たとえば、 **[所有者]** ) を選択します。<br>
    ![Azure AD Connect Health と Azure RBAC の構成メニューのスクリーンショット](./media/how-to-connect-health-operations/RBAC_add.png)
 4. 対象となるユーザー/グループの名前または識別子を入力します。 1 つまたは複数のユーザー/グループを同時に選択できます。 **[選択]** をクリックします。
-   ![Azure AD Connect Health と Azure RBAC のロール一覧のスクリーンショット](./media/how-to-connect-health-operations/RBAC_select_users.png)
+   ![Azure AD Connect Health と Azure のロール一覧のスクリーンショット](./media/how-to-connect-health-operations/RBAC_select_users.png)
 5. **[OK]** を選択します。<br>
 6. ロールの割り当てが完了した後に、ユーザーとグループが一覧に表示されます。<br>
    ![新しいユーザーが強調表示されている、Azure AD Connect Health と Azure RBAC のスクリーンショット](./media/how-to-connect-health-operations/RBAC_user_list.png)

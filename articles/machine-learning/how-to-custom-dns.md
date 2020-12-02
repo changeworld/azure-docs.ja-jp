@@ -8,19 +8,19 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 11/13/2020
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e3d95be52215b03a30dc4b5c7f251357f163b24a
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: c67dcbbe2ca6dea533260f59831556c4338374ba
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616095"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012995"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>カスタム DNS サーバーでワークスペースを使用する方法
 
-仮想ネットワークで Azure Machine Learning を使用する場合、[DNS 名前解決を処理する方法はいくつかあります](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。 既定では、ワークスペースとプライベート エンドポイントの名前解決は、Azure によって自動的に処理されます。 代わりに "_独自のカスタム DNS サーバーを使用する場合_" は、ワークスペース用に DNS エントリを手動で作成する必要があります。
+プライベート エンドポイントで Azure Machine Learning ワークスペースを使用する場合、[DNS 名前解決を処理する方法はいくつかあります](../private-link/private-endpoint-dns.md)。 既定では、ワークスペースとプライベート エンドポイントの名前解決は、Azure によって自動的に処理されます。 代わりに "_独自のカスタム DNS サーバーを使用する場合_" は、ワークスペース用に DNS エントリを手動で作成する必要があります。
 
 > [!IMPORTANT]
 > この記事では、これらのエントリの完全修飾ドメイン名 (FQDN) と IP アドレスを検索する方法についてのみ説明します。これらの項目の DNS レコードを構成する方法については説明しません。 レコードを追加する方法については、DNS ソフトウェアのドキュメントを参照してください。
@@ -33,6 +33,8 @@ ms.locfileid: "94616095"
 
 - [トレーニングおよび推論中にネットワーク分離](./how-to-network-security-overview.md)を使用することに精通していること。
 
+- [Azure プライベート エンドポイントの DNS ゾーン構成](../private-link/private-endpoint-dns.md)に関する知識。
+
 - 必要に応じて、[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/install-az-ps)。
 
 ## <a name="find-the-ip-addresses"></a>IP アドレスを検索する
@@ -43,7 +45,7 @@ ms.locfileid: "94616095"
 * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 * `<workspace-GUID>.workspace.<region>.aether.ms`
-* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.ml`
+* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.net`
 * コンピューティング インスタンスを作成する場合は、ワークスペースのプライベート エンドポイントのプライベート IP を持つ `<instance-name>.<region>.instances.azureml.ms` のエントリも追加する必要があります。
 
     > [!NOTE]

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ee1734e61ffe59fccf3ad35c1f0c607882f7f40
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1245010ae0b21c5bb8e3ebd93a9fe851d48c858b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659199"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835511"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>AD FS アプリケーション アクティビティ レポート (プレビュー) を使用してアプリケーションを Azure AD に移行する
 
@@ -76,7 +76,7 @@ AD FS アプリケーション アクティビティ レポートは、Azure por
 
 |結果  |合格/警告/不合格  |説明  |
 |---------|---------|---------|
-|Test-ADFSRPAdditionalAuthenticationRules <br> At least one non-migratable rule was detected for AdditionalAuthentication. (AdditionalAuthentication について、移行できない規則が 1 つ以上検出された)。       | 合格/警告          | 証明書利用者には、多要素認証 (MFA) を要求するための規則があります。 Azure AD に移行するには、これらの規則を条件付きアクセス ポリシーに変換します。 オンプレミス MFA を使用している場合は、Azure MFA に移行することをお勧めします。 [条件付きアクセスの詳細についてご確認ください](../authentication/concept-mfa-howitworks.md)。        |
+|Test-ADFSRPAdditionalAuthenticationRules <br> At least one non-migratable rule was detected for AdditionalAuthentication. (AdditionalAuthentication について、移行できない規則が 1 つ以上検出された)。       | 合格/警告          | 証明書利用者には、多要素認証 (MFA) を要求するための規則があります。 Azure AD に移行するには、これらの規則を条件付きアクセス ポリシーに変換します。 オンプレミス MFA を使用している場合は、Azure AD MFA に移行することをお勧めします。 [条件付きアクセスの詳細についてご確認ください](../authentication/concept-mfa-howitworks.md)。        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> Relying party has AdditionalWSFedEndpoint set to true. (証明書利用者の AdditionalWSFedEndpoint が true に設定されている)。       | 合格/不合格          | AD FS の証明書利用者で、複数の WS-Fed アサーション エンドポイントが許可されています。 現在、Azure AD でサポートされているのは 1 つだけです。 この結果によって移行が妨げられている場合は、[ご連絡ください](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints)。     |
 |Test-ADFSRPAllowedAuthenticationClassReferences <br> Relying Party has set AllowedAuthenticationClassReferences. (証明書利用者で AllowedAuthenticationClassReferences が設定されている)。       | 合格/不合格          | AD FS のこの設定では、特定の認証の種類のみを許可するようアプリケーションを構成するかどうかを指定します。 この機能を実現するには、条件付きアクセスを使用することをお勧めします。  この結果によって移行が妨げられている場合は、[ご連絡ください](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695672-allow-in-azure-ad-to-specify-certain-authentication)。  [条件付きアクセスの詳細についてご確認ください](../authentication/concept-mfa-howitworks.md)。          |
 |Test-ADFSRPAlwaysRequireAuthentication <br> AlwaysRequireAuthenticationCheckResult      | 合格/不合格          | AD FS のこの設定では、SSO Cookie を無視して "**認証のためのプロンプトを毎回表示する**" ようアプリケーションが構成されているかどうかを指定します。 Azure AD では、条件付きアクセス ポリシーを使用して認証セッションを管理し、同様の動作を実現することができます。 [条件付きアクセスを使用して認証セッション管理を構成する](../conditional-access/howto-conditional-access-session-lifetime.md)方法を確認してください。          |

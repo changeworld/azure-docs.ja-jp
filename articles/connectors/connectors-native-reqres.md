@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 11/19/2020
 tags: connectors
-ms.openlocfilehash: c0e8743d78c8eeafb5bdeb6ade783d5e75991f91
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: b8f95e7e173dd6d1ad43301aab8ff3ec7cf78018
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330990"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981002"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps で受信 HTTPS 要求を受信して応答する
 
@@ -190,9 +190,9 @@ ms.locfileid: "94330990"
    > [!NOTE]
    > 要求トリガーを呼び出すとき、ハッシュまたはシャープ記号 ( **#** ) を URI に含める場合、エンコードされたバージョン `%25%23` を代わりに使用します。
 
-1. ご利用のロジック アプリをトリガーするには、生成された URL に HTTP POST を送信します。
+1. ご利用のロジック アプリをテストするには、生成された URL に HTTP 要求を送信します。
 
-   たとえば、[Postman](https://www.getpostman.com/) などのツールを使用して HTTP POST を送信できます。 トリガーの基になる JSON 定義と、このトリガーの呼び出し方法の詳細については、このトピックス、[Request タイプのトリガー](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)に関するページ、および「[Azure Logic Apps で HTTP エンドポイントを使用してワークフローを呼び出すか、トリガーするか、または入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」を参照してください。
+   たとえば、[Postman](https://www.getpostman.com/) などのツールを使用して HTTP 要求を送信できます。 トリガーの基になる JSON 定義と、このトリガーの呼び出し方法の詳細については、このトピックス、[Request タイプのトリガー](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)に関するページ、および「[Azure Logic Apps で HTTP エンドポイントを使用してワークフローを呼び出すか、トリガーするか、または入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」を参照してください。
 
 [トランスポート層セキュリティ (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) (以前の Secure Sockets Layer (SSL))、[Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml)、Azure API Management によるロジック アプリの公開、または受信呼び出しを発信する IP アドレスの制限などの、ロジック アプリへの受信呼び出しのセキュリティ、認可、および暗号化の詳細については、[アクセスとデータのセキュリティ保護に関するページの「要求ベースのトリガーへの受信呼び出しへのアクセス」](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)を参照してください。
 

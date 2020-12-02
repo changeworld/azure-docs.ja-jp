@@ -2,21 +2,21 @@
 title: Azure Event Grid での geo ディザスター リカバリー | Microsoft Docs
 description: Azure Event Grid で geo ディザスター リカバリー (GeoDR) が自動的にサポートされる方法について説明します。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: ccb16971020a65932daa8f9adf4b7cd9008a9253
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/19/2020
+ms.openlocfilehash: 10beaf0ae25f3ed9b7bcda5961a89494b18b84d9
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86105848"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980851"
 ---
 # <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Azure Event Grid でのサーバー側 geo ディザスター リカバリー
 Event Grid には、新規だけでなく既存のすべてのドメイン、トピック、およびイベント サブスクリプション用のメタ データの自動 geo ディザスター リカバリー (GeoDR) が追加されました。 Azure リージョン全体が停止しても、ご利用のイベント関連のインフラストラクチャ メタデータはすべて、Event Grid によって既にペアのリージョンに同期されています。 ご利用の新しいイベントは、ご自分が介入しなくても再び流れ始めます。 
 
 ディザスター リカバリーは 2 つのメトリックで測定されます。
 
-- [回復ポイントの目標 (RPO)](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_Point_Objective): 失われる可能性がある分または時間分のデータ。
-- [回復時刻の目標 (RTO)](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_time_objective): サービスが停止している可能性がある時間 (分)。
+- 回復ポイントの目標 (RPO): 失われる可能性がある分または時間分のデータ。
+- 回復時刻の目標 (RTO): サービスが停止している可能性がある時間。
 
 Event Grid の自動フェイルオーバーでは、ご利用のメタデータ (イベント サブスクリプションなど) およびデータ (イベント) に対してさまざまな RPO と RTO が用意されています。 以下の仕様とは異なる仕様が必要な場合でも、独自の[クライアント側フェイルオーバーをトピックの正常性 API を使用して実装](custom-disaster-recovery.md)することができます。
 

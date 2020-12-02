@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
-ms.date: 08/23/2018
+ms.date: 11/19/2020
 tags: connectors
-ms.openlocfilehash: 6c9c54450788a89a7b1aadbb0b4682a60619c061
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 765bb66b572f0c046222cfb617fe4caa80925256
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334601"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967404"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して IBM DB2 リソースにアクセスして管理する
 
@@ -28,7 +28,7 @@ IBM DB2 コネクタでは、次の IBM DB2 のプラットフォームとバー
 
 | プラットフォーム | Version | 
 |----------|---------|
-| IBM DB2 for z/OS | 11.1、10.1 |
+| IBM DB2 for z/OS | 12、11.1、10.1 |
 | IBM DB2 for i | 7.3、7.2、7.1 |
 | IBM DB2 for LUW | 11、10.5 |
 |||
@@ -55,7 +55,7 @@ IBM DB2 コネクタでサポートされる次のデータベース操作は、
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
-* DB2 データベースにアクセスするためのロジック アプリ。 このコネクタではアクションのみが提供されるため、ロジック アプリを開始するには、**繰り返し**トリガーなどのトリガーを別に選択してください。
+* DB2 データベースにアクセスするためのロジック アプリ。 このコネクタではアクションのみが提供されるため、ロジック アプリを開始するには、**繰り返し** トリガーなどのトリガーを別に選択してください。
 この記事の例では、**Recurrence** トリガーを使用します。
 
 <a name="add-db2-action"></a>

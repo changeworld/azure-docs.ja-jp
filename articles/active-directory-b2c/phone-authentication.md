@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d3d044be923e5d7a621b72a926db0b4ce9a09b72
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9d4fa80f669493e4dc47a9ad0f9bfe9390d4ab24
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93122726"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953578"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Azure AD B2C でカスタム ポリシーを使用した電話のサインアップとサインインを設定する
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) での電話のサインアップと�
 
 ## <a name="pricing"></a>価格
 
-ワンタイム パスワードは SMS テキスト メッセージを使用してお客様のユーザーに送信されるため、お客様は送信されたメッセージごとに課金される場合があります。 価格情報については、「 [Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)」の「 **別料金** 」セクションを参照してください。
+ワンタイム パスワードは SMS テキスト メッセージを使用してお客様のユーザーに送信されるため、お客様は送信されたメッセージごとに課金される場合があります。 価格情報については、「[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)」の「**別料金**」セクションを参照してください。
 
 ## <a name="user-experience-for-phone-sign-up-and-sign-in"></a>電話のサインアップとサインインのユーザー エクスペリエンス
 
@@ -35,7 +35,7 @@ Azure Active Directory B2C (Azure AD B2C) での電話のサインアップと�
 > [!NOTE]
 > 以下のサンプル テキストと同様に、サインアップおよびサインインのエクスペリエンスに同意情報を含めることを強くお勧めします。 このサンプル テキストは、参考目的でのみ使用してください。 [CTIA Web サイト](https://www.ctia.org/programs)にある「Short Code Monitoring Handbook」(ショート コード監視に関するハンドブック) を参照し、ご自身のコンプライアンス ニーズを満たすための最終的なテキストと機能の構成に関するガイダンスについては、法務またはコンプライアンスの専門家に相談してください。
 >
-> " *電話番号を入力すると、テキスト メッセージによって送信されるワンタイム パスコードの受信に同意したことになり、 *&lt;挿入: アプリケーション名&gt; にサインインできるようになります* "。標準メッセージとデータの通信料が適用される場合があります。*
+> "*電話番号を入力すると、テキスト メッセージによって送信されるワンタイム パスコードの受信に同意したことになり、 *&lt;挿入: アプリケーション名&gt; にサインインできるようになります*"。標準メッセージとデータの通信料が適用される場合があります。*
 >
 > *&lt;挿入: プライバシーに関する声明へのリンク&gt;*<br/>*&lt;挿入: サービス利用規約へのリンク&gt;*
 
@@ -82,7 +82,7 @@ Azure Active Directory B2C (Azure AD B2C) での電話のサインアップと�
 
 ## <a name="deleting-a-user-account"></a>ユーザー アカウントを削除する
 
-場合によっては、Azure AD B2C ディレクトリからユーザーと関連付けられたデータを削除する必要があります。 Azure portal を使用してユーザー アカウントを削除する方法の詳細については、[こちらの手順](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-azure#step-5-delete)を参照してください。 
+場合によっては、Azure AD B2C ディレクトリからユーザーと関連付けられたデータを削除する必要があります。 Azure portal を使用してユーザー アカウントを削除する方法の詳細については、[こちらの手順](/microsoft-365/compliance/gdpr-dsr-azure#step-5-delete)を参照してください。 
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -108,7 +108,7 @@ OTP を設定する前に、次のリソースを用意しておく必要があ�
 
 1. 各ファイル内で、文字列 `yourtenant` を、使用している Azure AD B2C テナントの名前に置き換えます。 たとえば、B2C テナントの名前が *contosob2c* であれば、`yourtenant.onmicrosoft.com` のすべてのインスタンスは `contosob2c.onmicrosoft.com` になります。
 
-1. 「[Azure Active Directory B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」の「[カスタム ポリシーにアプリケーション ID を追加します](custom-policy-get-started.md#add-application-ids-to-the-custom-policy)」の手順を完了します。 この場合は、前提条件を完了したときに登録した 2 つのアプリケーション ( *IdentityExperienceFramework* と *ProxyIdentityExperienceFramework* ) の **アプリケーション (クライアント) ID** を使用して、`/phone-number-passwordless/`**`Phone_Email_Base.xml`** を更新します。
+1. 「[Azure Active Directory B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」の「[カスタム ポリシーにアプリケーション ID を追加します](custom-policy-get-started.md#add-application-ids-to-the-custom-policy)」の手順を完了します。 この場合は、前提条件を完了したときに登録した 2 つのアプリケーション (*IdentityExperienceFramework* と *ProxyIdentityExperienceFramework*) の **アプリケーション (クライアント) ID** を使用して、`/phone-number-passwordless/`**`Phone_Email_Base.xml`** を更新します。
 
 ## <a name="upload-the-policy-files"></a>ポリシー ファイルをアップロードする
 
@@ -128,7 +128,7 @@ OTP を設定する前に、次のリソースを用意しておく必要があ�
 
 ## <a name="test-the-custom-policy"></a>カスタム ポリシーをテストする
 
-1. **[カスタム ポリシー]** で、 **[B2C_1A_SignUpOrSignInWithPhone]** を選択します。
+1. **[カスタム ポリシー]** で、**[B2C_1A_SignUpOrSignInWithPhone]** を選択します。
 1. **[アプリケーションの選択]** で、前提条件の完了時に登録した *webapp1* アプリケーションを選択します。
 1. **[応答 URL の選択]** で、`https://jwt.ms` を選択します。
 1. **[今すぐ実行]** を選択し、電子メール アドレスまたは電話番号を使用してサインアップします。
@@ -153,7 +153,7 @@ GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssi
 ## <a name="next-steps"></a>次のステップ
 
 電話のサインアップとサインインのカスタム ポリシー スターター パック (およびその他のスターター パック) を GitHub で見つけることができます。[Azure-Samples/active-directory-b2c-custom-policy-starterpack/scenarios/phone-number-passwordless][starter-pack-phone] スターター パックのポリシー ファイルには、多要素認証の技術プロファイルと電話番号要求変換が使用されています。
-* [Azure Multi-Factor Authentication 技術プロファイルを定義する](multi-factor-auth-technical-profile.md)
+* [Azure AD Multi-Factor Authentication 技術プロファイルを定義する](multi-factor-auth-technical-profile.md)
 * [電話番号要求変換を定義する](phone-number-claims-transformations.md)
 
 <!-- LINKS - External -->

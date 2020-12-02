@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: a866a225da87c22a3a276a5d59b8e86f1f955cae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34eeeed2b3c44336cd4aa1219d54b1811c6988f5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856196"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952320"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで使用するストレージ オプションを比較する
 
@@ -36,6 +36,8 @@ HDInsight クラスターを作成する際、次のいくつかの異なる Azu
 |Azure Storage| 汎用 v1 | Object | BLOB | Standard | 該当なし | All | All |
 |Azure Storage| Blob Storage** | Object | ブロック BLOB | Standard | ホット、クール、アーカイブ | All | All |
 |Azure Data Lake Storage Gen1| 該当なし | 階層構造 (ファイルシステム) | 該当なし | 該当なし | 該当なし | 3.6 のみ | HBase を除くすべて |
+|Azure Storage| ブロック BLOB| Object | ブロック BLOB | Premium | 該当なし| 3.6 以降 | 高速書き込みが可能なのは HBase のみ|
+|Azure Data Lake Storage Gen2| ブロック BLOB| 階層構造 (ファイルシステム) | ブロック BLOB | Premium | 該当なし| 3.6 以降 | 高速書き込みが可能なのは HBase のみ|
 
 ** HDInsight クラスターの場合、セカンダリ ストレージ アカウントのみに BlobStorage の種類を使用できます。ページ BLOB は、サポートされるストレージ オプションではありません。
 

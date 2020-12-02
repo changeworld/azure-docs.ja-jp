@@ -3,21 +3,21 @@ title: Azure IoT Central のテレメトリ、プロパティ、およびコマ�
 description: Azure IoT Central デバイス テンプレートを使用すると、実装する必要のある、デバイスのテレメトリ、プロパティ、およびコマンドを指定できます。 デバイスが IoT Central と交換できるデータの形式について説明します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 06/12/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 9e5288bb177d5827f05003e4561bc79240a71b59
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 24fbe347aeb0b47ffd1ba694f761d909ff2950f8
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427870"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989549"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>テレメトリ、プロパティ、およびコマンドのペイロード
 
-" _この記事は、デバイス開発者を対象としています。_ "
+"_この記事は、デバイス開発者を対象としています。_ "
 
 Azure IoT Central のデバイス テンプレートは、以下を定義するブループリントです。
 
@@ -29,12 +29,12 @@ Azure IoT Central のデバイス テンプレートは、以下を定義する�
 
 この記事では、利用可能なすべての種類のテレメトリ、プロパティ、およびコマンドのペイロードについては説明しませんが、例では全種類のキーを示します。
 
-それぞれの例は、デバイス機能モデル (DCM) のスニペットを示しています。これは、デバイスが IoT Central アプリケーションと対話する必要のある方法を示すために、種類および JSON ペイロードの例を定義するものです。
+それぞれの例は、デバイス モデルのスニペットを示しています。これは、デバイスが IoT Central アプリケーションとどのように対話する必要があるかを示すために、種類および JSON ペイロードの例を定義するものです。
 
 > [!NOTE]
-> IoT Central は有効な JSON を受け付けますが、それが視覚化に使用されるのは、DCM での定義と一致している場合のみです。 定義に一致していないデータはエクスポートできます。「[Azure で宛先に IoT データをエクスポートする](howto-export-data.md)」を参照してください。
+> IoT Central は有効な JSON を受け付けますが、それが視覚化に使用されるのは、デバイス モデルでの定義と一致している場合のみです。 定義に一致していないデータはエクスポートできます。「[Azure で宛先に IoT データをエクスポートする](howto-export-data.md)」を参照してください。
 
-DCM を定義する JSON ファイルでは、[デジタル ツイン定義言語 (DTDL) V1](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/dtdlv1.md)を使用します。 この仕様には、`@id` プロパティ形式の定義が含まれています。
+デバイス モデルを定義する JSON ファイルでは、[デジタル ツイン定義言語 (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) が使用されます。
 
 使用中のこれらのペイロードの一部を示すサンプル デバイス コードについては、チュートリアルの「[クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する (Node.js)](tutorial-connect-device-nodejs.md)」と「[クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する (Python)](tutorial-connect-device-python.md)」を参照してください。
 
@@ -56,11 +56,10 @@ IoT Central では、デバイスからアプリケーションに送信され�
 
 このセクションでは、デバイスが IoT Central アプリケーションにストリーミングするプリミティブ型のテレメトリの例を示します。
 
-DCM の次のスニペットは、`boolean` 型のテレメトリの定義を示しています。
+デバイス モデルの次のスニペットは、`boolean` 型のテレメトリの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "BooleanTelemetry"
@@ -76,11 +75,10 @@ DCM の次のスニペットは、`boolean` 型のテレメトリの定義を示
 { "BooleanTelemetry": true }
 ```
 
-DCM の次のスニペットは、`string` 型のテレメトリの定義を示しています。
+デバイス モデルの次のスニペットは、`string` 型のテレメトリの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "StringTelemetry"
@@ -96,11 +94,10 @@ DCM の次のスニペットは、`string` 型のテレメトリの定義を示�
 { "StringTelemetry": "A string value - could be a URL" }
 ```
 
-DCM の次のスニペットは、`integer` 型のテレメトリの定義を示しています。
+デバイス モデルの次のスニペットは、`integer` 型のテレメトリの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "IntegerTelemetry"
@@ -117,11 +114,10 @@ DCM の次のスニペットは、`integer` 型のテレメトリの定義を示
 { "IntegerTelemetry": 23 }
 ```
 
-DCM の次のスニペットは、`double` 型のテレメトリの定義を示しています。
+デバイス モデルの次のスニペットは、`double` 型のテレメトリの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "DoubleTelemetry"
@@ -137,11 +133,10 @@ DCM の次のスニペットは、`double` 型のテレメトリの定義を示�
 { "DoubleTelemetry": 56.78 }
 ```
 
-DCM の次のスニペットは、`dateTime` 型のテレメトリの定義を示しています。
+デバイス モデルの次のスニペットは、`dateTime` 型のテレメトリの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "DateTimeTelemetry"
@@ -151,17 +146,16 @@ DCM の次のスニペットは、`dateTime` 型のテレメトリの定義を�
 }
 ```
 
-デバイス クライアントは、次の例のようなテレメトリを JSON として送信する必要があります。`DateTime` 型は、ISO 8061 に準拠している必要があります。
+デバイス クライアントは、次の例のようなテレメトリを JSON として送信する必要があります。`DateTime` の型は、ISO 8061 形式にする必要があります。
 
 ```json
 { "DateTimeTelemetry": "2020-08-30T19:16:13.853Z" }
 ```
 
-DCM の次のスニペットは、`duration` 型のテレメトリの定義を示しています。
+デバイス モデルの次のスニペットは、`duration` 型のテレメトリの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "DurationTelemetry"
@@ -171,7 +165,7 @@ DCM の次のスニペットは、`duration` 型のテレメトリの定義を�
 }
 ```
 
-デバイス クライアントは、次の例のようなテレメトリを JSON として送信する必要があります。期間は、ISO 8601 の期間に準拠している必要があります。
+デバイス クライアントは、次の例のようなテレメトリを JSON として送信する必要があります。期間は ISO 8601 形式にする必要があります。
 
 ```json
 { "DurationTelemetry": "PT10H24M6.169083011336625S" }
@@ -181,11 +175,10 @@ DCM の次のスニペットは、`duration` 型のテレメトリの定義を�
 
 このセクションでは、デバイスが IoT Central アプリケーションにストリーミングする複合型のテレメトリの例を示します。
 
-DCM の次のスニペットは、`geopoint` 型のテレメトリの定義を示しています。
+デバイス モデルの次のスニペットは、`geopoint` 型のテレメトリの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "GeopointTelemetry"
@@ -207,18 +200,16 @@ DCM の次のスニペットは、`geopoint` 型のテレメトリの定義を�
 }
 ```
 
-DCM の次のスニペットは、`Enum` 型のテレメトリの定義を示しています。
+デバイス モデルの次のスニペットは、`Enum` 型のテレメトリの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "EnumTelemetry"
   },
   "name": "EnumTelemetry",
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "displayName": {
       "en": "Enum"
@@ -226,8 +217,6 @@ DCM の次のスニペットは、`Enum` 型のテレメトリの定義を示し
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item1"
         },
@@ -235,8 +224,6 @@ DCM の次のスニペットは、`Enum` 型のテレメトリの定義を示し
         "name": "Item1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item2"
         },
@@ -244,8 +231,6 @@ DCM の次のスニペットは、`Enum` 型のテレメトリの定義を示し
         "name": "Item2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item3"
         },
@@ -263,26 +248,22 @@ DCM の次のスニペットは、`Enum` 型のテレメトリの定義を示し
 { "EnumTelemetry": 1 }
 ```
 
-DCM の次のスニペットは、`Object` 型のテレメトリの定義を示しています。 このオブジェクトには、`dateTime` 型、`integer` 型、`Enum` 型である 3 つのフィールドがあります。
+デバイス モデルの次のスニペットは、`Object` 型のテレメトリの定義を示しています。 このオブジェクトには、`dateTime` 型、`integer` 型、`Enum` 型である 3 つのフィールドがあります。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "ObjectTelemetry"
   },
   "name": "ObjectTelemetry",
   "schema": {
-    "@id": "<element id>",
     "@type": "Object",
     "displayName": {
       "en": "Object"
     },
     "fields": [
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Property1"
         },
@@ -290,8 +271,6 @@ DCM の次のスニペットは、`Object` 型のテレメトリの定義を示�
         "schema": "dateTime"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Property2"
         },
@@ -299,14 +278,11 @@ DCM の次のスニペットは、`Object` 型のテレメトリの定義を示�
         "schema": "integer"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Property3"
         },
         "name": "Property3",
         "schema": {
-          "@id": "<element id>",
           "@type": "Enum",
           "displayName": {
             "en": "Enum"
@@ -314,8 +290,6 @@ DCM の次のスニペットは、`Object` 型のテレメトリの定義を示�
           "valueSchema": "integer",
           "enumValues": [
             {
-              "@id": "<element id>",
-              "@type": "EnumValue",
               "displayName": {
                 "en": "Item1"
               },
@@ -323,8 +297,6 @@ DCM の次のスニペットは、`Object` 型のテレメトリの定義を示�
               "name": "Item1"
             },
             {
-              "@id": "<element id>",
-              "@type": "EnumValue",
               "displayName": {
                 "en": "Item2"
               },
@@ -332,8 +304,6 @@ DCM の次のスニペットは、`Object` 型のテレメトリの定義を示�
               "name": "Item2"
             },
             {
-              "@id": "<element id>",
-              "@type": "EnumValue",
               "displayName": {
                 "en": "Item3"
               },
@@ -360,11 +330,10 @@ DCM の次のスニペットは、`Object` 型のテレメトリの定義を示�
 }
 ```
 
-DCM の次のスニペットは、`vector` 型のテレメトリの定義を示しています。
+デバイス モデルの次のスニペットは、`vector` 型のテレメトリの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "VectorTelemetry"
@@ -390,14 +359,13 @@ DCM の次のスニペットは、`vector` 型のテレメトリの定義を示�
 
 このセクションでは、デバイスが IoT Central アプリケーションに送信する、テレメトリのイベントおよび状態の例を示します。
 
-DCM の次のスニペットは、`integer` イベント型の定義を示しています。
+デバイス モデルの次のスニペットは、`integer` 型のイベントの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": [
     "Telemetry",
-    "SemanticType/Event"
+    "Event"
   ],
   "displayName": {
     "en": "IntegerEvent"
@@ -413,27 +381,23 @@ DCM の次のスニペットは、`integer` イベント型の定義を示して
 { "IntegerEvent": 74 }
 ```
 
-DCM の次のスニペットは、`integer` 状態型の定義を示しています。
+デバイス モデルの次のスニペットは、`integer` 型の状態の定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": [
     "Telemetry",
-    "SemanticType/State"
+    "State"
   ],
   "displayName": {
     "en": "IntegerState"
   },
   "name": "IntegerState",
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Level1"
         },
@@ -441,8 +405,6 @@ DCM の次のスニペットは、`integer` 状態型の定義を示していま
         "name": "Level1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Level2"
         },
@@ -450,8 +412,6 @@ DCM の次のスニペットは、`integer` 状態型の定義を示していま
         "name": "Level2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Level3"
         },
@@ -478,17 +438,17 @@ DCM の次のスニペットは、`integer` 状態型の定義を示していま
 
 このセクションでは、デバイスが IoT Central アプリケーションに送信するプリミティブ型のプロパティの例を示します。
 
-DCM の次のスニペットは、`boolean` 型のプロパティの定義を示しています。
+デバイス モデルの次のスニペットは、`boolean` 型のプロパティの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "BooleanProperty"
   },
   "name": "BooleanProperty",
-  "schema": "boolean"
+  "schema": "boolean",
+  "writable": false
 }
 ```
 
@@ -498,17 +458,17 @@ DCM の次のスニペットは、`boolean` 型のプロパティの定義を示
 { "BooleanProperty": false }
 ```
 
-DCM の次のスニペットは、`boolean` 型のプロパティの定義を示しています。
+デバイス モデルの次のスニペットは、`boolean` 型のプロパティの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "LongProperty"
   },
   "name": "LongProperty",
-  "schema": "long"
+  "schema": "long",
+  "writable": false
 }
 ```
 
@@ -518,17 +478,17 @@ DCM の次のスニペットは、`boolean` 型のプロパティの定義を示
 { "LongProperty": 439 }
 ```
 
-DCM の次のスニペットは、`date` 型のプロパティの定義を示しています。
+デバイス モデルの次のスニペットは、`date` 型のプロパティの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "DateProperty"
   },
   "name": "DateProperty",
-  "schema": "date"
+  "schema": "date",
+  "writable": false
 }
 ```
 
@@ -538,17 +498,17 @@ DCM の次のスニペットは、`date` 型のプロパティの定義を示し
 { "DateProperty": "2020-05-17" }
 ```
 
-DCM の次のスニペットは、`duration` 型のプロパティの定義を示しています。
+デバイス モデルの次のスニペットは、`duration` 型のプロパティの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "DurationProperty"
   },
   "name": "DurationProperty",
-  "schema": "duration"
+  "schema": "duration",
+  "writable": false
 }
 ```
 
@@ -558,17 +518,17 @@ DCM の次のスニペットは、`duration` 型のプロパティの定義を�
 { "DurationProperty": "PT10H24M6.169083011336625S" }
 ```
 
-DCM の次のスニペットは、`float` 型のプロパティの定義を示しています。
+デバイス モデルの次のスニペットは、`float` 型のプロパティの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "FloatProperty"
   },
   "name": "FloatProperty",
-  "schema": "float"
+  "schema": "float",
+  "writable": false
 }
 ```
 
@@ -578,17 +538,17 @@ DCM の次のスニペットは、`float` 型のプロパティの定義を示�
 { "FloatProperty": 1.9 }
 ```
 
-DCM の次のスニペットは、`string` 型のプロパティの定義を示しています。
+デバイス モデルの次のスニペットは、`string` 型のプロパティの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "StringProperty"
   },
   "name": "StringProperty",
-  "schema": "string"
+  "schema": "string",
+  "writable": false
 }
 ```
 
@@ -602,17 +562,17 @@ DCM の次のスニペットは、`string` 型のプロパティの定義を示�
 
 このセクションでは、デバイスが IoT Central アプリケーションに送信する複合型のプロパティの例を示します。
 
-DCM の次のスニペットは、`geopoint` 型のプロパティの定義を示しています。
+デバイス モデルの次のスニペットは、`geopoint` 型のプロパティの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "GeopointProperty"
   },
   "name": "GeopointProperty",
-  "schema": "geopoint"
+  "schema": "geopoint",
+  "writable": false
 }
 ```
 
@@ -628,18 +588,17 @@ DCM の次のスニペットは、`geopoint` 型のプロパティの定義を�
 }
 ```
 
-DCM の次のスニペットは、`Enum` 型のプロパティの定義を示しています。
+デバイス モデルの次のスニペットは、`Enum` 型のプロパティの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "EnumProperty"
   },
   "name": "EnumProperty",
+  "writable": false,
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "displayName": {
       "en": "Enum"
@@ -647,8 +606,6 @@ DCM の次のスニペットは、`Enum` 型のプロパティの定義を示し
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item1"
         },
@@ -656,8 +613,6 @@ DCM の次のスニペットは、`Enum` 型のプロパティの定義を示し
         "name": "Item1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item2"
         },
@@ -665,8 +620,6 @@ DCM の次のスニペットは、`Enum` 型のプロパティの定義を示し
         "name": "Item2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item3"
         },
@@ -684,26 +637,23 @@ DCM の次のスニペットは、`Enum` 型のプロパティの定義を示し
 { "EnumProperty": 1 }
 ```
 
-DCM の次のスニペットは、`Object` 型のプロパティの定義を示しています。 このオブジェクトには、`string` 型と `integer` 型である 2 つのフィールドがあります。
+デバイス モデルの次のスニペットは、`Object` 型のプロパティの定義を示しています。 このオブジェクトには、`string` 型と `integer` 型である 2 つのフィールドがあります。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "ObjectProperty"
   },
   "name": "ObjectProperty",
+  "writable": false,
   "schema": {
-    "@id": "<element id>",
     "@type": "Object",
     "displayName": {
       "en": "Object"
     },
     "fields": [
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Field1"
         },
@@ -711,8 +661,6 @@ DCM の次のスニペットは、`Object` 型のプロパティの定義を示�
         "schema": "integer"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Field2"
         },
@@ -735,17 +683,17 @@ DCM の次のスニペットは、`Object` 型のプロパティの定義を示�
 }
 ```
 
-DCM の次のスニペットは、`vector` 型のプロパティの定義を示しています。
+デバイス モデルの次のスニペットは、`vector` 型のプロパティの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "VectorProperty"
   },
   "name": "VectorProperty",
-  "schema": "vector"
+  "schema": "vector",
+  "writable": false
 }
 ```
 
@@ -780,11 +728,10 @@ IoT Central では、デバイスからは、書き込み可能なプロパテ�
 
 `ad` は、オプションの文字列での説明です。
 
-DCM の次のスニペットは、書き込み可能な `string` プロパティ型の定義を示しています。
+デバイス モデルの次のスニペットは、書き込み可能な `string` 型のプロパティの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "StringPropertyWritable"
@@ -816,11 +763,10 @@ DCM の次のスニペットは、書き込み可能な `string` プロパティ
 }
 ```
 
-DCM の次のスニペットは、書き込み可能な `Enum` プロパティ型の定義を示しています。
+デバイス モデルの次のスニペットは、書き込み可能な `Enum` 型のプロパティの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "EnumPropertyWritable"
@@ -828,7 +774,6 @@ DCM の次のスニペットは、書き込み可能な `Enum` プロパティ�
   "name": "EnumPropertyWritable",
   "writable": true,
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "displayName": {
       "en": "Enum"
@@ -836,8 +781,6 @@ DCM の次のスニペットは、書き込み可能な `Enum` プロパティ�
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item1"
         },
@@ -845,8 +788,6 @@ DCM の次のスニペットは、書き込み可能な `Enum` プロパティ�
         "name": "Item1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item2"
         },
@@ -854,8 +795,6 @@ DCM の次のスニペットは、書き込み可能な `Enum` プロパティ�
         "name": "Item2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item3"
         },
@@ -890,36 +829,30 @@ DCM の次のスニペットは、書き込み可能な `Enum` プロパティ�
 
 ## <a name="commands"></a>コマンド
 
-### <a name="synchronous-command-types"></a>同期コマンド型
+> [!NOTE]
+> IoT Central Web UI では、コマンドに **[オフラインの場合にキューに入れる]** オプションを選択できます。 この設定は、デバイス テンプレートからモデルまたはインターフェイスをエクスポートする場合は含まれません。
 
-DCM の次のスニペットは、パラメーターがなく、デバイスが何かを返すことを想定していない同期コマンドの定義を示しています。
+デバイス モデルの次のスニペットは、パラメーターがなく、デバイスが何かを返すことを想定していないコマンドの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "synchronous",
-  "durable": false,
   "displayName": {
-    "en": "SynchronousCommandBasic"
+    "en": "CommandBasic"
   },
-  "name": "SynchronousCommandBasic"
+  "name": "CommandBasic"
 }
 ```
 
 デバイスは要求で空のペイロードを受信します。そして応答では、成功を示すために `200` HTTP 応答コードを使用して空のペイロードを返す必要があります。
 
-DCM の次のスニペットは、整数型のパラメーターが 1 つあり、デバイスが整数値を返すことを想定している同期コマンドの定義を示しています。
+デバイス モデルの次のスニペットは、整数型のパラメーターが 1 つあり、デバイスが整数値を返すことを想定しているコマンドの定義を示しています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "synchronous",
-  "durable": false,
   "request": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "RequestParam"
     },
@@ -927,8 +860,7 @@ DCM の次のスニペットは、整数型のパラメーターが 1 つあり�
     "schema": "integer"
   },
   "response": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "ResponseParam"
     },
@@ -936,39 +868,32 @@ DCM の次のスニペットは、整数型のパラメーターが 1 つあり�
     "schema": "integer"
   },
   "displayName": {
-    "en": "SynchronousCommandSimple"
+    "en": "CommandSimple"
   },
-  "name": "SynchronousCommandSimple"
+  "name": "CommandSimple"
 }
 ```
 
 デバイスは、要求ペイロードとして整数値を受け取ります。 デバイスは、成功を示すために、`200` HTTP 応答コードを使用して応答ペイロードとして整数値を返す必要があります。
 
-DCM の次のスニペットは、オブジェクト パラメーターが 1 つあり、デバイスがオブジェクトを返すことを想定している同期コマンドの定義を示しています。 この例では、どちらのオブジェクトにも整数フィールドと文字列フィールドがあります。
+デバイス モデルの次のスニペットは、オブジェクト パラメーターが 1 つあり、デバイスがオブジェクトを返すことを想定しているコマンドの定義を示しています。 この例では、どちらのオブジェクトにも整数フィールドと文字列フィールドがあります。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "synchronous",
-  "durable": false,
   "request": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "RequestParam"
     },
     "name": "RequestParam",
     "schema": {
-      "@id": "<element id>",
       "@type": "Object",
       "displayName": {
         "en": "Object"
       },
       "fields": [
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field1"
           },
@@ -976,8 +901,6 @@ DCM の次のスニペットは、オブジェクト パラメーターが 1 つ
           "schema": "integer"
         },
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field2"
           },
@@ -988,22 +911,18 @@ DCM の次のスニペットは、オブジェクト パラメーターが 1 つ
     }
   },
   "response": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "ResponseParam"
     },
     "name": "ResponseParam",
     "schema": {
-      "@id": "<element id>",
       "@type": "Object",
       "displayName": {
         "en": "Object"
       },
       "fields": [
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field1"
           },
@@ -1011,8 +930,6 @@ DCM の次のスニペットは、オブジェクト パラメーターが 1 つ
           "schema": "integer"
         },
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field2"
           },
@@ -1023,9 +940,9 @@ DCM の次のスニペットは、オブジェクト パラメーターが 1 つ
     }
   },
   "displayName": {
-    "en": "SynchronousCommandComplex"
+    "en": "CommandComplex"
   },
-  "name": "SynchronousCommandComplex"
+  "name": "CommandComplex"
 }
 ```
 
@@ -1041,19 +958,15 @@ DCM の次のスニペットは、オブジェクト パラメーターが 1 つ
 { "Field1": 87, "Field2": "Another string value" }
 ```
 
-### <a name="asynchronous-command-types"></a>非同期コマンド型
+### <a name="long-running-commands"></a>実行時間の長いコマンド
 
-DCM の次のスニペットは、非同期コマンドの定義を示しています。 このコマンドには整数パラメーターが 1 つあり、デバイスが整数値を返すことが想定されています。
+デバイス モデルの次のスニペットは、コマンドの定義を示しています。 このコマンドには整数パラメーターが 1 つあり、デバイスが整数値を返すことが想定されています。
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "asynchronous",
-  "durable": false,
   "request": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "RequestParam"
     },
@@ -1061,8 +974,7 @@ DCM の次のスニペットは、非同期コマンドの定義を示してい�
     "schema": "integer"
   },
   "response": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "ResponseParam"
     },
@@ -1070,19 +982,19 @@ DCM の次のスニペットは、非同期コマンドの定義を示してい�
     "schema": "integer"
   },
   "displayName": {
-    "en": "AsynchronousCommandSimple"
+    "en": "LongRunningCommandSimple"
   },
-  "name": "AsynchronousCommandSimple"
+  "name": "LongRunningCommandSimple"
 }
 ```
 
-デバイスは、要求ペイロードとして整数値を受け取ります。 デバイスは、`202` HTTP 応答コードを使用して空の応答ペイロードを返し、デバイスが非同期処理の要求を受け付けたことを示します。
+デバイスは、要求ペイロードとして整数値を受け取ります。 このコマンドの処理に時間がかかる場合、デバイスは、`202` HTTP 応答コードを使用して空の応答ペイロードを返し、デバイスが処理の要求を受け付けたことを示します。
 
 デバイスは、要求の処理を完了したら、次の例のようなプロパティを IoT Central に送信する必要があります。 プロパティ名は、コマンド名と同じである必要があります。
 
 ```json
 {
-  "AsynchronousCommandSimple": {
+  "LongRunningCommandSimple": {
     "value": 87
   }
 }

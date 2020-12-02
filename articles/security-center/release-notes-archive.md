@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: e802f798ade5e6bfe0b40b17bbf15df5387ef7c3
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 26192c742ab2e010c18c02226252dbb480b72cee
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357846"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967161"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Security Center の最新情報のアーカイブ
 
@@ -188,7 +188,7 @@ Azure Security Center の規制コンプライアンス ダッシュボードに
 - **カナダ連邦の PBMM**
 - **Azure CIS 1.1.0 (新規)** (Azure CIS 1.1.0 のより完全な表現)
 
-さらに、 **Azure セキュリティ ベンチマーク** が最近追加されました。これは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインです。 追加の標準が使用可能になると、ダッシュボードでサポートされます。  
+さらに、**Azure セキュリティ ベンチマーク** が最近追加されました。これは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインです。 追加の標準が使用可能になると、ダッシュボードでサポートされます。  
  
 詳しくは、「[規制コンプライアンス ダッシュボードでの動的コンプライアンス パッケージへの更新](update-regulatory-compliance-packages.md)」を参照してください。
 
@@ -392,7 +392,7 @@ Kubernetes は、ソフトウェアをクラウドにデプロイして管理す
 このパブリック プレビュー リリースの新しい機能は次のとおりです。
 
 - **検出と可視化** - Security Center の登録済みサブスクリプション内のマネージド AKS インスタンスの継続的な検出。
-- **セキュリティ スコアの推奨事項** - お客様のセキュリティ スコアの一部として、AKS のセキュリティのベスト プラクティスへの準拠を支援する実用的な項目 (例: "ロールベースのアクセス制御を使用して、Kubernetes Service クラスターへのアクセスを制限する必要があります")。
+- **セキュリティ スコアの推奨事項** - お客様が AKS のセキュリティに関するベストプラクティスに準拠し、セキュリティ スコアを上げるのに役立つ実用的な項目。 「Kubernetes Service クラスターへのアクセスを制限するには、ロールベースの Access Control を使用する必要がある」などの項目を含む推奨事項。
 - **脅威の検出** - ホストおよびクラスターベースの分析 (例: "特権コンテナーが検出されました")。
 
 

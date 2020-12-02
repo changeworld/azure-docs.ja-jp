@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4da1066166a3384ffb5f0f94599452829faed1b
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 026f45e715f6d442b27cdd0274f029a68330f7ee
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356588"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839830"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Azure Active Directory パスワード保護を使用して不適切なパスワードを排除する
 
@@ -24,7 +24,7 @@ ms.locfileid: "93356588"
 
 Azure AD パスワード保護では、既定のグローバル禁止パスワード リストが Azure AD テナント内のすべてのユーザーに自動的に適用されます。 独自のビジネス ニーズやセキュリティ ニーズに対応するため、カスタムの禁止パスワード リストにエントリを定義できます。 ユーザーがパスワードを変更またはリセットすると、これらの禁止パスワード リストがチェックされ、強力なパスワードの使用が強制されます。
 
-Azure AD パスワード保護によって適用される強力なパスワードだけに依存せずに、[Azure Multi-Factor Authentication](concept-mfa-howitworks.md) のような追加機能を使用する必要があります。 サインイン イベントに対して複数のセキュリティ層を使用する方法の詳細については、「[Your Pa$$word doesn't matter (パスワードは関係ない)](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)」を参照してください。
+Azure AD パスワード保護によって適用される強力なパスワードだけに依存せずに、[Azure AD Multi-Factor Authentication](concept-mfa-howitworks.md) のような追加機能を使用する必要があります。 サインイン イベントに対して複数のセキュリティ層を使用する方法の詳細については、「[Your Pa$$word doesn't matter (パスワードは関係ない)](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)」を参照してください。
 
 > [!IMPORTANT]
 > 概念に関するこの記事では、Azure AD パスワード保護のしくみを管理者向けに説明します。 既にセルフサービス パスワード リセットの登録が済んでいて、ご自分のアカウントに戻る必要があるエンド ユーザーは、[https://aka.ms/sspr](https://aka.ms/sspr) にアクセスしてください。

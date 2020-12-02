@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/20/2020
-ms.openlocfilehash: 66d420a902cbfb56ece75646ee39bbba774b6208
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.date: 11/21/2020
+ms.openlocfilehash: 30521e85feda0fc19329364dcb710d322ae8cfc1
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312408"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95323228"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor エージェントの概要
 
@@ -34,7 +34,7 @@ ms.locfileid: "92312408"
 
 | | Azure Monitor エージェント (プレビュー) | 診断<br>拡張機能 (WAD) | Log Analytics<br>エージェント | 依存関係<br>エージェント |
 |:---|:---|:---|:---|:---|
-| **サポートされている環境** | Azure | Azure | Azure<br>その他のクラウド<br>オンプレミス | Azure<br>その他のクラウド<br>オンプレミス | 
+| **サポートされている環境** | Azure<br>その他のクラウド (Azure Arc)<br>オンプレミス (Azure Arc)  | Azure | Azure<br>その他のクラウド<br>オンプレミス | Azure<br>その他のクラウド<br>オンプレミス | 
 | **エージェントの要件**  | なし | なし | なし | Log Analytics エージェントが必要 |
 | **収集されるデータ** | イベント ログ<br>パフォーマンス | イベント ログ<br>ETW イベント<br>パフォーマンス<br>ファイル ベース ログ<br>IIS ログ<br>.NET アプリ ログ<br>クラッシュ ダンプ<br>エージェント診断ログ | イベント ログ<br>パフォーマンス<br>ファイル ベース ログ<br>IIS ログ<br>分析情報とソリューション<br>その他のサービス | プロセスの依存関係<br>ネットワーク接続のメトリック |
 | **送信されるデータ** | Azure Monitor ログ<br>Azure Monitor メトリック | Azure Storage<br>Azure Monitor メトリック<br>イベント ハブ | Azure Monitor ログ | Azure Monitor ログ<br>(Log Analytics エージェント経由) |
@@ -44,7 +44,7 @@ ms.locfileid: "92312408"
 
 | | Azure Monitor エージェント (プレビュー) | 診断<br>拡張機能 (LAD) | Telegraf<br>エージェント | Log Analytics<br>エージェント | 依存関係<br>エージェント |
 |:---|:---|:---|:---|:---|:---|
-| **サポートされている環境** | Azure | Azure | Azure<br>その他のクラウド<br>オンプレミス | Azure<br>その他のクラウド<br>オンプレミス | Azure<br>その他のクラウド<br>オンプレミス |
+| **サポートされている環境** | Azure<br>その他のクラウド (Azure Arc)<br>オンプレミス (Arc Arc) | Azure | Azure<br>その他のクラウド<br>オンプレミス | Azure<br>その他のクラウド<br>オンプレミス | Azure<br>その他のクラウド<br>オンプレミス |
 | **エージェントの要件**  | なし | なし | なし | なし | Log Analytics エージェントが必要 |
 | **収集されるデータ** | syslog<br>パフォーマンス | syslog<br>パフォーマンス | パフォーマンス | syslog<br>パフォーマンス| プロセスの依存関係<br>ネットワーク接続のメトリック |
 | **送信されるデータ** | Azure Monitor ログ<br>Azure Monitor メトリック | Azure Storage<br>イベント ハブ | Azure Monitor メトリック | Azure Monitor ログ | Azure Monitor ログ<br>(Log Analytics エージェント経由) |
@@ -56,7 +56,7 @@ ms.locfileid: "92312408"
 
 次のことを行う必要がある場合は、Azure Monitor エージェントを使用します。
 
-- Azure、その他のクラウド、またはオンプレミスの任意の仮想マシンからゲスト ログとメトリックを収集する。 (Azure のみプレビュー段階にあります。)
+- Azure、その他のクラウド、またはオンプレミスの任意の仮想マシンからゲスト ログとメトリックを収集する。 (Azure の外部の仮想マシンには Azure Arc が必要です。) 
 - Azure Monitor での分析のために、Azure Monitor ログと Azure Monitor メトリックにデータを送信する。 
 - アーカイブのためにデータを Azure Storage に送信する。
 - [Azure Event Hubs](diagnostics-extension-stream-event-hubs.md) を使用して、データをサードパーティ製のツールに送信する。
@@ -148,9 +148,9 @@ Telegraf エージェントは、次のような場合に使用します。
 | Windows Server 2012 R2                                   | X | X | X | X |
 | Windows Server 2012                                      | X | X | X | X |
 | Windows Server 2008 R2                                   |   | X | X | X |
-| Windows 10 Enterprise<br>(マルチセッションを含む) および Pro<br>(サーバー シナリオのみ)  | X | X | X | X |
+| Windows 10 Enterprise<br>(マルチセッションを含む) および Pro<br>(サーバー シナリオのみ)  | X | X | x | X |
 | Windows 8 Enterprise および Pro<br>(サーバー シナリオのみ)  |   | x | X |   |
-| Windows 7 SP1<br>(サーバー シナリオのみ)                 |   | x | X |   |
+| Windows 7 SP1<br>(サーバー シナリオのみ)                 |   | X | X |   |
 
 
 ### <a name="linux"></a>Linux
@@ -159,13 +159,13 @@ Telegraf エージェントは、次のような場合に使用します。
 |:---|:---:|:---:|:---:|:---:
 | Amazon Linux 2017.09                                     |   | X |   |   |
 | CentOS Linux 8                                           |   | X |   |   |
-| CentOS Linux 7                                           | X | X |   | X |
-| CentOS Linux 7.8                                         | X | x | X | X |
-| CentOS Linux 7.6                                         | X | x | X | X |
+| CentOS Linux 7                                           | X | x |   | X |
+| CentOS Linux 7.8                                         | X | X | x | X |
+| CentOS Linux 7.6                                         | X | X | X | X |
 | CentOS Linux 6                                           |   | X |   |   |
 | CentOS Linux 6.5 以降                                        |   | X |   | X |
 | Debian 10                                                | X |   |   |   |
-| Debian 9                                                 | X | X | x | x |
+| Debian 9                                                 | X | X | x | X |
 | Debian 8                                                 |   | X | X | X |
 | Debian 7                                                 |   |   |   | X |
 | OpenSUSE 13.1+                                           |   |   |   | X |
@@ -174,13 +174,13 @@ Telegraf エージェントは、次のような場合に使用します。
 | Oracle Linux 6.4+                                        |   | X |   | X |
 | Red Hat Enterprise Linux Server 8                        |   | X |   |   |
 | Red Hat Enterprise Linux Server 7                        | X | X | X | X |
-| Red Hat Enterprise Linux Server 6                        |   | X | X |   |
-| Red Hat Enterprise Linux Server 6.7 以降                     |   | X | x | X |
-| SUSE Linux Enterprise Server 15                          | X | X |   |   |
-| SUSE Linux Enterprise Server 12                          | X | X | x | X |
-| Ubuntu 20.04 LTS                                         |   | X |   |   |
-| Ubuntu 18.04 LTS                                         | X | X | x | X |
-| Ubuntu 16.04 LTS                                         | X | X | x | X |
+| Red Hat Enterprise Linux Server 6                        |   | x | X |   |
+| Red Hat Enterprise Linux Server 6.7 以降                     |   | X | X | X |
+| SUSE Linux Enterprise Server 15                          | X | x |   |   |
+| SUSE Linux Enterprise Server 12                          | X | X | X | X |
+| Ubuntu 20.04 LTS                                         |   | x |   |   |
+| Ubuntu 18.04 LTS                                         | X | X | X | x |
+| Ubuntu 16.04 LTS                                         | X | X | X | X |
 | Ubuntu 14.04 LTS                                         |   | X |   | X |
 
 

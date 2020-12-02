@@ -11,25 +11,25 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d3315a8d6bca9406461d0082ed85bbefc9459f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d4897b9187caab50be4db75bbc0af03e3d35aa4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88950206"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835987"
 ---
 # <a name="user-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection を使用したユーザー エクスペリエンス
 
 Azure Active Directory Identity Protection を使用すると、次の操作を行うことができます。
 
-* ユーザーに対して Azure Multi-Factor Authentication (MFA) への登録を必須にする
+* ユーザーに対して Azure AD Multi-Factor Authentication (MFA) への登録を必須にする
 * 危険なサインインと侵害されたユーザーを自動的に修復する
 
-すべての Identity Protection 保護ポリシーは、ユーザーのサインイン エクスペリエンスに影響を与えます。 ユーザーが Azure MFA やセルフサービス パスワード リセット などのツールに登録して使用できるようにすると、影響が軽減される可能性があります。 これらのツールと適切なポリシーを選択することで、ユーザーが必要に応じて自己修復オプションを使用できるようになります。
+すべての Identity Protection 保護ポリシーは、ユーザーのサインイン エクスペリエンスに影響を与えます。 ユーザーが Azure AD MFA やセルフサービス パスワード リセットなどのツールに登録して使用できるようにすると、影響が軽減される可能性があります。 これらのツールと適切なポリシーを選択することで、ユーザーが必要に応じて自己修復オプションを使用できるようになります。
 
 ## <a name="multi-factor-authentication-registration"></a>多要素認証の登録
 
-多要素認証の登録を必要とする Identity Protection 保護ポリシーを有効にし、すべてのユーザーを対象にすると、ユーザーは、Azure MFA を使用して今後自己修復を行うことができるようになります。 このポリシーを構成すると、登録することを選択できる 14 日の期間がユーザーに与えられ、この期間の最後に強制的に登録されます。 ユーザーのエクスペリエンスについては、以下でその概要を説明します。 詳細については、エンドユーザー ドキュメントの記事「[2 要素認証と職場または学校アカウントの概要](../user-help/multi-factor-authentication-end-user-first-time.md)」を参照してください。
+多要素認証の登録を必要とする Identity Protection 保護ポリシーを有効にし、すべてのユーザーを対象にすると、ユーザーは、Azure AD MFA を使用して今後自己修復を行うことができるようになります。 このポリシーを構成すると、登録することを選択できる 14 日の期間がユーザーに与えられ、この期間の最後に強制的に登録されます。 ユーザーのエクスペリエンスについては、以下でその概要を説明します。 詳細については、エンドユーザー ドキュメントの記事「[2 要素認証と職場または学校アカウントの概要](../user-help/multi-factor-authentication-end-user-first-time.md)」を参照してください。
 
 ### <a name="registration-interrupt"></a>登録の割り込み
 
@@ -37,7 +37,7 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
    
     ![詳細情報が必要](./media/concept-identity-protection-user-experience/identity-protection-experience-more-info-mfa.png)
 
-1. ガイド付きの手順を完了して、Azure Multi-Factor Authentication に登録し、サインインを完了します。
+1. ガイド付きの手順を完了して、Azure AD Multi-Factor Authentication に登録し、サインインを完了します。
 
 ## <a name="risky-sign-in-remediation"></a>危険なサインインの修復
 
@@ -49,7 +49,7 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
    
     ![何かが普通でないことを示しているプロンプト](./media/concept-identity-protection-user-experience/120.png)
 
-1. ユーザーは、前に登録した方法のいずれかを使用して Azure MFA を完了することで、本人であることを証明する必要があります。 
+1. ユーザーは、前に登録した方法のいずれかを使用して Azure AD MFA を完了することで、本人であることを証明する必要があります。 
 
 ### <a name="risky-sign-in-administrator-unblock"></a>危険なサインインの管理者によるブロック解除
 
@@ -69,7 +69,7 @@ IT スタッフは、「[ユーザーのブロック解除](howto-identity-prote
    
     ![Remediation](./media/concept-identity-protection-user-experience/101.png)
 
-1. ユーザーは、前に登録した方法のいずれかを使用して Azure MFA を完了することで、本人であることを証明する必要があります。 
+1. ユーザーは、前に登録した方法のいずれかを使用して Azure AD MFA を完了することで、本人であることを証明する必要があります。 
 1. 最後に、誰かがアカウントにアクセスした可能性があるため、ユーザーは、セルフサービス パスワード リセット を使用して、パスワードを変更することを強制されます。
 
 ## <a name="risky-sign-in-administrator-unblock"></a>危険なサインインの管理者によるブロック解除

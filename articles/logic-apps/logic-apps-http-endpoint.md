@@ -5,13 +5,13 @@ services: logic-apps
 ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 08/27/2020
-ms.openlocfilehash: 8a59b47dadd845f1a522854c503af11c8fff72fd
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.date: 11/19/2020
+ms.openlocfilehash: b345168dad63b1846d46c12721587eaffb5f887e
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331976"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981206"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Azure Logic Apps で HTTPS エンドポイントを使用して、ロジック アプリの呼び出し、トリガー、または入れ子を行います
 
@@ -104,7 +104,7 @@ ms.locfileid: "94331976"
 
    * **[HTTP POST の URL]** ボックスの右で **[URL のコピー]** (ファイル コピー アイコン) を選択します。
 
-   * 次の POST 呼び出しを行います。
+   * この呼び出しは、要求トリガーが想定するメソッドを使用して行います。 この例では、`POST` メソッドを使用します。
 
      `POST https://management.azure.com/{logic-app-resource-ID}/triggers/{endpoint-trigger-name}/listCallbackURL?api-version=2016-06-01`
 
@@ -124,7 +124,7 @@ ms.locfileid: "94331976"
 
 ## <a name="select-expected-request-method"></a>待機する要求メソッドの選択
 
-既定では、要求トリガーは POST 要求を待機します。 待機する別のメソッドを指定できますが、指定できるメソッドは 1 つだけです。
+既定では、要求トリガーは `POST` 要求を待機します。 呼び出し元が使用する必要のある別のメソッドを指定できますが、指定できるメソッドは 1 つだけです。
 
 1. 要求トリガーで、 **[新しいパラメーターの追加]** 一覧を開き、 **[メソッド]** を選択します。それにより、トリガーにこのプロパティが追加されます。
 
@@ -262,7 +262,7 @@ ms.locfileid: "94331976"
 
 ## <a name="call-logic-app-through-endpoint-url"></a>エンドポイント URL 経由でロジック アプリを呼び出す
 
-エンドポイントを作成したら、そのエンドポイントの完全な URL に HTTPS `POST` 要求を送信することによってロジック アプリをトリガーできます。 ロジック アプリでは、直接アクセス エンドポイントの組み込みがサポートされています。
+エンドポイントを作成したら、そのエンドポイントの完全な URL に HTTPS 要求を送信することによってロジック アプリをトリガーできます。 ロジック アプリでは、直接アクセス エンドポイントの組み込みがサポートされています。
 
 <a name="generated-tokens"></a>
 

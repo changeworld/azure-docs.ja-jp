@@ -8,18 +8,19 @@ manager: juergent
 editor: ''
 keywords: HLI, HANA, SKUs, S896, S224, S448, S672, Optane, SAP
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/23/2020
+ms.date: 11/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08872b95c4cff3c261a545f117cc4e6bf24e15a5
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 2732f9fc4b1b9251391180874a055e8ffd8d9e7a
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411475"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985078"
 ---
 # <a name="available-skus-for-hana-large-instances"></a>HANA Large Instances で利用できる SKU
 
@@ -34,17 +35,20 @@ ms.locfileid: "94411475"
 
 - 米国西部 2
 - 米国東部
-- 米国東部 2
-- 米国中南部
+
+リビジョン 4.2 のスタンプに基づく BareMetal Infrastructure (SAP HANA ワークロードで認定) サービス。 次の Azure リージョンでは、以下のいくつかの構成で使用できます。
 - 西ヨーロッパ
 - 北ヨーロッパ
+- 米国東部 2
+- 米国中南部
+
 
 
 
 提供されている利用可能な Azure L インスタンスの一覧は次のようになります。
 
 > [!IMPORTANT]
-> リスト内で最初の列は、L インスタンスの種類ごとに HANA 認定の状態を表していることをご承知おきください。 この列は、 [SAP HANA ハードウェア ディレクトリ](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)の、文字 **S** で始まる Azure SKU と関連するはずです。
+> リスト内で最初の列は、L インスタンスの種類ごとに HANA 認定の状態を表していることをご承知おきください。 この列は、[SAP HANA ハードウェア ディレクトリ](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)の、文字 **S** で始まる Azure SKU と関連するはずです。
 
 
 
@@ -104,9 +108,9 @@ ms.locfileid: "94411475"
 
 完全な HANA L インスタンス スタンプは、1 件のお客様専用に割り当てられるわけではありません。 これは、Azure にデプロイされたネットワーク ファブリック経由で接続されるコンピューティング リソースとストレージ リソースのラックにも当てはまります。 Azure などの HANA L インスタンス インフラストラクチャでは、次の 3 つのレベルで相互に分離されたお客様のさまざまな &quot;テナント&quot; をデプロイします。
 
-- **ネットワーク** :HANA L インスタンス スタンプ内の仮想ネットワークによって分離します。
-- **ストレージ** : ストレージ ボリュームが割り当てられており、テナント間でストレージ ボリュームを分離するストレージ仮想マシンによって分離します。
-- **コンピューティング** :サーバー ユニットを 1 つのテナント専用に割り当てます。 サーバー ユニットがハード パーティション分割やソフト パーティション分割されることはありません。 1 つのサーバー ユニットやホスト ユニットがテナント間で共有されることもありません。 
+- **ネットワーク**:HANA L インスタンス スタンプ内の仮想ネットワークによって分離します。
+- **ストレージ**: ストレージ ボリュームが割り当てられており、テナント間でストレージ ボリュームを分離するストレージ仮想マシンによって分離します。
+- **コンピューティング**:サーバー ユニットを 1 つのテナント専用に割り当てます。 サーバー ユニットがハード パーティション分割やソフト パーティション分割されることはありません。 1 つのサーバー ユニットやホスト ユニットがテナント間で共有されることもありません。 
 
 異なるテナント間で HANA L インスタンス ユニットのデプロイが相互に表示されることはありません。 異なるテナントにデプロイされた HANA L インスタンス ユニットは、HANA L インスタンス スタンプ レベルで相互に直接通信することはできません。 HANA L インスタンス スタンプ レベルでは、同じテナント内の HANA L インスタンス ユニットだけが相互に通信できます。
 

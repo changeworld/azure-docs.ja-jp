@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43b883cac7b970488a30116bc06efc8663766629
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5c4301a61a79ab2351c18af0c76cccc3d07dd202
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370204"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836684"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Azure AD を使用してセキュリティで保護された ID に迅速に対応する
 
@@ -75,7 +75,7 @@ Azure AD Free、Office 365、または Microsoft 365 の各アプリのお客様
 
 | 推奨アクション | Detail |
 | --- | --- |
-| [Azure MFA と SSPR の統合された登録エクスペリエンスを有効にして、ユーザー登録エクスペリエンスを簡略化する](../authentication/howto-registration-mfa-sspr-combined.md) | Azure Multi-Factor Authentication とセルフサービス パスワード リセットの両方について、ユーザーが 1 つの共通操作で登録できるようにします。 |
+| [Azure AD MFA と SSPR の統合された登録エクスペリエンスを有効にして、ユーザー登録エクスペリエンスを簡略化する](../authentication/howto-registration-mfa-sspr-combined.md) | Azure AD Multi-Factor Authentication とセルフサービス パスワード リセットの両方について、ユーザーが 1 つの共通操作で登録できるようにします。 |
 | [組織の MFA 設定を構成する](../authentication/howto-mfa-getstarted.md) | 多要素認証を使用した侵害からアカウントを確実に保護する |
 | [セルフサービス パスワード リセットを有効にする](../authentication/tutorial-enable-sspr.md) | この機能により、ユーザーが自分のデバイスやアプリケーションにサインインできなくなった場合のヘルプ デスクの問い合わせが減り、生産性の喪失も軽減されます |
 | [パスワード ライトバックを実装する](../authentication/tutorial-enable-sspr-writeback.md)(ハイブリッド ID を使用している場合) | クラウドでのパスワードの変更を、オンプレミスの Windows Server Active Directory 環境に書き戻すことを許可します。 |
@@ -105,11 +105,11 @@ Azure AD Free、Office 365、または Microsoft 365 の各アプリのお客様
 
 | 推奨アクション | Detail |
 | --- | --- |
-| [Azure MFA と SSPR の統合された登録エクスペリエンスを有効にして、ユーザー登録エクスペリエンスを簡略化する](../authentication/howto-registration-mfa-sspr-combined.md) | Azure Multi-Factor Authentication とセルフサービス パスワード リセットの両方について、ユーザーが 1 つの共通操作で登録できるようにします。 |
+| [Azure AD MFA と SSPR の統合された登録エクスペリエンスを有効にして、ユーザー登録エクスペリエンスを簡略化する](../authentication/howto-registration-mfa-sspr-combined.md) | Azure AD Multi-Factor Authentication とセルフサービス パスワード リセットの両方について、ユーザーが 1 つの共通操作で登録できるようにします。 |
 | [組織の MFA 設定を構成する](../authentication/howto-mfa-getstarted.md) | 多要素認証を使用した侵害からアカウントを確実に保護する |
 | [セルフサービス パスワード リセットを有効にする](../authentication/tutorial-enable-sspr.md) | この機能により、ユーザーが自分のデバイスやアプリケーションにサインインできなくなった場合のヘルプ デスクの問い合わせが減り、生産性の喪失も軽減されます |
 | [パスワード ライトバックを実装する](../authentication/tutorial-enable-sspr-writeback.md)(ハイブリッド ID を使用している場合) | クラウドでのパスワードの変更を、オンプレミスの Windows Server Active Directory 環境に書き戻すことを許可します。 |
-| [Identity Protection ポリシーを有効にして MFA 登録を強制する](../identity-protection/howto-identity-protection-configure-mfa-policy.md) | Azure Multi-Factor Authentication (MFA) のロールアウトを管理します。 |
+| [Identity Protection ポリシーを有効にして MFA 登録を強制する](../identity-protection/howto-identity-protection-configure-mfa-policy.md) | Azure AD Multi-Factor Authentication (MFA) のロールアウトを管理します。 |
 | [Identity Protection のユーザーとサインインのリスク ポリシーを有効にする](../identity-protection/howto-identity-protection-configure-risk-policies.md) | Identity Protection のユーザーとサインインのポリシーを有効にします。 推奨されるサインイン ポリシーは、中程度のリスクのサインインをターゲットとし、MFA を要求します。 ユーザー ポリシーの場合は、パスワードの変更操作を必要とする危険度の高いユーザーをターゲットにする必要があります。 |
 | 条件付きアクセス ポリシーを作成して有効にする | [管理者が管理者権限を割り当てられているアカウントを保護するための MFA。](../conditional-access/howto-conditional-access-policy-admin-mfa.md) <br><br> [レガシ認証プロトコルに関連するリスクが増加したため、レガシ認証プロトコルをブロックします。](../conditional-access/howto-conditional-access-policy-block-legacy.md) <br><br> [Azure リソースにアクセスするすべてのユーザーに対して多要素認証を要求することで、特権リソースを保護するには、Azure 管理のために MFA を必須にします。](../conditional-access/howto-conditional-access-policy-azure-management.md) |
 | [パスワード ハッシュ同期を有効にする](../hybrid/how-to-connect-password-hash-synchronization.md) (ハイブリッド ID を使用している場合) | 認証に冗長性を提供し、セキュリティを強化します (スマート ロックアウト、IP ロックアウト、漏洩した資格情報を検出する機能など) |

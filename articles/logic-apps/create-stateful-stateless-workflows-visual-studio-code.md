@@ -5,20 +5,20 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
-ms.date: 11/09/2020
-ms.openlocfilehash: 749807349fd83f9639461fd4ddd9ab771d108119
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.date: 11/17/2020
+ms.openlocfilehash: 14809cb28870e88cfa584c4f02360d50beabf901
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410557"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981059"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (プレビュー) 拡張機能を使用して Visual Studio Code でステートフルまたはステートレスのワークフローを作成する
 
 > [!IMPORTANT]
 > この機能はパブリック プレビュー段階であり、サービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-アプリ、データ、クラウド サービス、およびシステムを統合するロジック アプリ ワークフローを作成するには、Visual Studio Code と Azure Logic Apps (プレビュー) 拡張機能を使用し、 [" *ステートフル* " および " *ステートレス* " のロジック アプリ ワークフロー](#stateful-stateless)を開発環境で作成してローカルに実行します。
+アプリ、データ、クラウド サービス、およびシステムを統合するロジック アプリ ワークフローを作成するには、Visual Studio Code と Azure Logic Apps (プレビュー) 拡張機能を使用し、["*ステートフル*" および "*ステートレス*" のロジック アプリ ワークフロー](#stateful-stateless)を開発環境で作成してローカルに実行します。
 
 ![Visual Studio Code とロジック アプリ ワークフローを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-logic-apps-overview.png)
 
@@ -26,7 +26,7 @@ ms.locfileid: "94410557"
 
 一方、Visual Studio Code と Azure portal で作成して使用するために、元の **[ロジック アプリ]** リソースの種類もまだ存在しています。 ただし、元のリソースの種類のエクスペリエンスは、新しいリソースの種類とは別のものです。 現時点では、 **[ロジック アプリ]** と **[ロジック アプリ (プレビュー)]** の両方のリソースの種類が Visual Studio Code と Azure portal に同時に存在できます。 Azure サブスクリプションでデプロイされているすべてのロジック アプリを表示してアクセスできますが、それぞれのカテゴリとセクションで個別に表示されています。
 
-この記事では、 [このパブリック プレビューの概要](#whats-new)を示し、 **[ロジック アプリ (プレビュー)]** リソースの種類に関するさまざまな側面と、Visual Studio Code を使用してこのリソースを作成する方法について説明します。
+この記事では、[このパブリック プレビューの概要](#whats-new)を示し、 **[ロジック アプリ (プレビュー)]** リソースの種類に関するさまざまな側面と、Visual Studio Code を使用してこのリソースを作成する方法について説明します。
 
 * [ステートフルおよびステートレス](#stateful-stateless)のロジック アプリの違い。
 
@@ -51,7 +51,7 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
   * Azure Logic Apps サービスがクラウド接続のランタイム エンドポイントに要求を送信するために使用できる Shared Access Signature (SAS) 接続文字列を生成するため、どこからでも実行できるロジック アプリを作成してデプロイします。 Logic Apps サービスでは、Azure にデプロイするときにこれらの値を Azure Key Vault に簡単に格納できるように、これらの接続文字列が他のアプリケーション設定と共に保存されます。
 
     > [!NOTE]
-    > 既定では、 **ロジック アプリ (プレビュー)** リソースには、実行時に接続を認証するために自動的に有効にされる [システム割り当てマネージド ID](../logic-apps/create-managed-service-identity.md) があります。 この ID は、接続の作成時に使用する認証資格情報または接続文字列とは異なります。 この ID を無効にした場合、接続は実行時に機能しません。
+    > 既定では、**ロジック アプリ (プレビュー)** リソースには、実行時に接続を認証するために自動的に有効にされる [システム割り当てマネージド ID](../logic-apps/create-managed-service-identity.md) があります。 この ID は、接続の作成時に使用する認証資格情報または接続文字列とは異なります。 この ID を無効にした場合、接続は実行時に機能しません。
 
 * メモリ内でのみ実行されるステートレスなロジック アプリを作成します。これにより、実行履歴やアクション間のデータが外部ストレージに保持されないため、処理が速くなり、応答が速く、スループットが向上し、実行にかかるコストも少なくなります。 必要に応じて、デバッグを容易にするために実行履歴を有効にすることができます。 詳細については、「[ステートフルおよびステートレスのロジック アプリ](#stateful-stateless)」を参照してください。
 
@@ -82,7 +82,7 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
 
 ## <a name="pricing-model"></a>価格モデル
 
-新しい **[ロジック アプリ (プレビュー)]** リソースの種類をデプロイすると、ホスティング プランを選択するように求められます。具体的には、価格モデルとして使用するために、 [App Service プランまたは Premium プラン](../azure-functions/functions-scale.md)を選択する必要があります。 App Service プランを選択した場合は、[[価格レベル]](../app-service/overview-hosting-plans.md) も選択するように求められます。 パブリック プレビュー期間中は、App Service でロジック アプリを実行しても、選択したプランの他に " *追加* " 料金は発生しません。
+新しい **[ロジック アプリ (プレビュー)]** リソースの種類をデプロイすると、ホスティング プランを選択するように求められます。具体的には、価格モデルとして使用するために、[App Service プランまたは Premium プラン](../azure-functions/functions-scale.md)を選択する必要があります。 App Service プランを選択した場合は、[[価格レベル]](../app-service/overview-hosting-plans.md) も選択するように求められます。 パブリック プレビュー期間中は、App Service でロジック アプリを実行しても、選択したプランの他に "*追加*" 料金は発生しません。
 
 ステートフルなロジック アプリは[外部ストレージ](../azure-functions/functions-scale.md#storage-account-requirements)を使用するため、Azure Storage の価格モデルは、Azure Logic Apps ランタイムが実行するストレージ トランザクションに適用されます。 たとえば、キューはスケジュール設定に使用され、テーブルと BLOB はワークフローの状態の格納に使用されます。
 
@@ -104,11 +104,11 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
 
 * まだ、すべての Azure リージョンではサポートされていません。 現在利用可能なリージョンについては、[リージョンの一覧](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions)を確認してください。
 
-* ワークフローを開始するには、Logic Apps ランタイムでネイティブに実行できる[組み込みの Request トリガー、HTTP トリガー、Event Hubs トリガー、または Service Bus トリガー](../connectors/apis-list.md)を使用します。 現時点では、[エンタープライズ コネクタ](../connectors/apis-list.md#enterprise-connectors)、[オンプレミス データ ゲートウェイ トリガー](../connectors/apis-list.md#on-premises-connectors)、Webhook ベースのトリガー、スライディング ウィンドウ トリガー、[カスタム コネクタ](../connectors/apis-list.md#custom-apis-and-connectors)、統合アカウント、それらの成果物、[それらのコネクタ](../connectors/apis-list.md#integration-account-connectors)は、このプレビューではサポートされていません。 "Azure 関数呼び出し" 機能は使用できないため、ここでは HTTP " *アクション* " を使用して、Azure 関数に対する要求 URL を呼び出します。
+* ワークフローを開始するには、Logic Apps ランタイムでネイティブに実行できる[組み込みの Request トリガー、HTTP トリガー、Event Hubs トリガー、または Service Bus トリガー](../connectors/apis-list.md)を使用します。 現時点では、[エンタープライズ コネクタ](../connectors/apis-list.md#enterprise-connectors)、[オンプレミス データ ゲートウェイ トリガー](../connectors/apis-list.md#on-premises-connectors)、Webhook ベースのトリガー、スライディング ウィンドウ トリガー、[カスタム コネクタ](../connectors/apis-list.md#custom-apis-and-connectors)、統合アカウント、それらの成果物、[それらのコネクタ](../connectors/apis-list.md#integration-account-connectors)は、このプレビューではサポートされていません。 "Azure 関数呼び出し" 機能は使用できないため、ここでは HTTP "*アクション*" を使用して、Azure 関数に対する要求 URL を呼び出します。
 
-  以前に指定されたトリガーを除き、" *ステートフル* " ワークフローには、Azure にデプロイされている [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)用のトリガーとアクションと、Logic Apps ランタイムでネイティブに実行される組み込みのトリガーとアクションの両方を使用できます。 ただし、 *ステートレス* なワークフローでは、現在、トリガーではなくマネージド コネクタに対する *アクション* のみがサポートされています。 ステートレスなワークフローにおいて Azure のコネクタを有効にすることができますが、デザイナーには選択できるマネージド コネクタ トリガーは表示されません。
+  以前に指定されたトリガーを除き、"*ステートフル* " ワークフローには、Azure にデプロイされている [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)用のトリガーとアクションと、Logic Apps ランタイムでネイティブに実行される組み込みのトリガーとアクションの両方を使用できます。 ただし、*ステートレス* なワークフローでは、現在、トリガーではなくマネージド コネクタに対する *アクション* のみがサポートされています。 ステートレスなワークフローにおいて Azure のコネクタを有効にすることができますが、デザイナーには選択できるマネージド コネクタ トリガーは表示されません。
 
-* 新しい **ロジック アプリ (プレビュー)** リソースの種類をデプロイできるのは、 [Azure の Premium または App Service ホスティング プラン](#publish-azure)または [Docker コンテナー](#deploy-docker)に対してだけであり、 [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) にはできません。 このリソースの種類のデプロイについては、 **従量課金** ホスティング プランはサポートされておらず、使用できません。
+* 新しい **ロジック アプリ (プレビュー)** リソースの種類をデプロイできるのは、[Azure の Premium または App Service ホスティング プラン](#publish-azure)または [Docker コンテナー](#deploy-docker)に対してだけであり、[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) にはできません。 このリソースの種類のデプロイについては、**従量課金** ホスティング プランはサポートされておらず、使用できません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -150,7 +150,7 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
 
   * [Visual Studio Code 用 Azure Logic Apps (プレビュー) 拡張機能](https://go.microsoft.com/fwlink/p/?linkid=2143167)。 このパブリック プレビュー拡張機能を使用すると、ステートフルおよびステートレスなロジック アプリを作成し、Visual Studio Code でローカルに実行することができます。
 
-    現時点では、元の **Azure Logic Apps** 拡張機能と新しい **Azure Logic Apps (プレビュー)** 拡張機能の両方を Visual Studio Code に同時にインストールすることができます。 Visual Studio Code ツールバーの Azure アイコンを選択すると、Azure にデプロイされているすべてのロジック アプリを表示できます。ただし、各リソースの種類は、 **Logic Apps** および **Azure Logic Apps (プレビュー)** の拡張機能セクションに個別に表示されます。
+    現時点では、元の **Azure Logic Apps** 拡張機能と新しい **Azure Logic Apps (プレビュー)** 拡張機能の両方を Visual Studio Code に同時にインストールすることができます。 Visual Studio Code ツールバーの Azure アイコンを選択すると、Azure にデプロイされているすべてのロジック アプリを表示できます。ただし、各リソースの種類は、**Logic Apps** および **Azure Logic Apps (プレビュー)** の拡張機能セクションに個別に表示されます。
 
     > [!IMPORTANT]
     > **Azure Logic Apps (プライベート プレビュー)** 拡張機能を使用してロジック アプリを作成した場合、これらのロジック アプリはパブリック プレビュー拡張機能では動作しません。 ただし、プライベート プレビュー拡張機能をアンインストールし、必要なクリーンアップを実行し、パブリック プレビュー拡張機能をインストールすることによって、これらのロジック アプリを移行できます。 その後、Visual Studio Code で新しいプロジェクトを作成し、以前に作成したロジック アプリの **workflow.definition** ファイルを新しいプロジェクトにコピーできます。
@@ -243,7 +243,7 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
 
 ロジック アプリを作成する前に、Visual Studio Code からロジック アプリを管理およびデプロイできるように、ローカル プロジェクトを作成します。 基になるプロジェクトは、Azure Functions プロジェクト (関数アプリ プロジェクトとも呼ばれます) に似ています。 ただし、これらの種類のプロジェクトは相互に分離されているので、ロジック アプリのワークフローと関数が同じプロジェクトに存在することはできません。
 
-1. コンピューター上に、Visual Studio Code で後で作成するプロジェクトに使用する " *空の* " ローカル フォルダーを作成します。
+1. コンピューター上に、Visual Studio Code で後で作成するプロジェクトに使用する "*空の*" ローカル フォルダーを作成します。
 
 1. Visual Studio Code で、開いているすべてのフォルダーを閉じます。
 
@@ -498,7 +498,7 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
 
    1. **[保存先のコレクションまたはフォルダーの選択]** で、 **[コレクションの作成]** を選択します。
 
-   1. **[すべてのコレクション]** で、要求を整理するために作成するコレクションの名前を指定して Enter キーを押し、 **[< *コレクション名*> に保存]** を選択します。 この例では、`Logic Apps requests` というコレクション名を使用しています。
+   1. **[すべてのコレクション]** で、要求を整理するために作成するコレクションの名前を指定して Enter キーを押し、 **[<*コレクション名*> に保存]** を選択します。 この例では、`Logic Apps requests` というコレクション名を使用しています。
 
       Postman の要求ウィンドウが開き、Request トリガーのコールバック URL に要求を送信できるようになります。
 
@@ -528,9 +528,9 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
    | **Aborted** | 外部に問題が発生したため、実行が停止したか、または完了しませんでした。たとえば、システムの停止や Azure サブスクリプションの中断などです。 |
    | **取り消し済み** | 実行がトリガーされ、開始されましたが、キャンセル要求を受け取りました。 |
    | **Failed** | 実行中に少なくとも 1 つのアクションが失敗しました。 ワークフローの後続のアクションは、エラーを処理するように設定されていません。 |
-   | **実行中** | 実行がトリガーされ、進行中です。ただし、この状態は、[アクション制限](logic-apps-limits-and-config.md)または[現在の料金プラン](https://azure.microsoft.com/pricing/details/logic-apps/)によって制限されている実行に対しても表示されます。 <p><p>**ヒント** : [診断ログ](monitor-logic-apps-log-analytics.md)を設定すると、発生するスロットル イベントに関する情報を取得することができます。 |
+   | **実行中** | 実行がトリガーされ、進行中です。ただし、この状態は、[アクション制限](logic-apps-limits-and-config.md)または[現在の料金プラン](https://azure.microsoft.com/pricing/details/logic-apps/)によって制限されている実行に対しても表示されます。 <p><p>**ヒント**:[診断ログ](monitor-logic-apps-log-analytics.md)を設定すると、発生するスロットル イベントに関する情報を取得することができます。 |
    | **Succeeded** | 実行は成功しました。 いずれかのアクションが失敗した場合、ワークフロー内の後続のアクションによってそのエラーが処理されます。 |
-   | **タイムアウト** | 現在の継続時間が実行継続時間の制限を超えたため、実行がタイムアウトしました。これは、 [ **[実行履歴の保持期間 (日数)]** 設定](logic-apps-limits-and-config.md#run-duration-retention-limits)によって制御されます。 実行の継続時間は、実行の開始時刻とその開始時刻での実行継続時間の制限を使用して計算されます。 <p><p>**注** :実行の継続時間が現在の *"実行履歴の保持期間の制限"* も超えている場合は、毎日のクリーンアップ ジョブによって実行履歴から実行が消去されます。これも、 [ **[実行履歴の保持期間 (日数)]** 設定](logic-apps-limits-and-config.md#run-duration-retention-limits)によって制御されます。 実行がタイムアウトしたか完了したかにかかわらず、保持期間は常に、実行の開始時刻と " *現在の* " 保持期間の制限を使用して計算されます。 そのため、処理中の実行の継続時間制限を短くすると、実行はタイムアウトします。ただし、実行が実行履歴に残るか消去されるかは、実行の継続時間が保持期間の制限を超えているかどうかに基づいて決まります。 |
+   | **タイムアウト** | 現在の継続時間が実行継続時間の制限を超えたため、実行がタイムアウトしました。これは、[ **[実行履歴の保持期間 (日数)]** 設定](logic-apps-limits-and-config.md#run-duration-retention-limits)によって制御されます。 実行の継続時間は、実行の開始時刻とその開始時刻での実行継続時間の制限を使用して計算されます。 <p><p>**注**:実行の継続時間が現在の *"実行履歴の保持期間の制限"* も超えている場合は、毎日のクリーンアップ ジョブによって実行履歴から実行が消去されます。これも、[ **[実行履歴の保持期間 (日数)]** 設定](logic-apps-limits-and-config.md#run-duration-retention-limits)によって制御されます。 実行がタイムアウトしたか完了したかにかかわらず、保持期間は常に、実行の開始時刻と "*現在の*" 保持期間の制限を使用して計算されます。 そのため、処理中の実行の継続時間制限を短くすると、実行はタイムアウトします。ただし、実行が実行履歴に残るか消去されるかは、実行の継続時間が保持期間の制限を超えているかどうかに基づいて決まります。 |
    | **待機中** | たとえば、その前のワークフロー インスタンスがまだ実行中である等の理由で、実行が開始されていないか、または一時停止しています。 |
    |||
 
@@ -541,6 +541,9 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
    Visual Studio Code で [モニター] ビューが開き、実行の各ステップの状態が表示されます。
 
    ![ワークフロー実行の各ステップとその状態を示すスクリーンショット](./media/create-stateful-stateless-workflows-visual-studio-code/run-history-action-status.png)
+
+   > [!NOTE]
+   > 実行が失敗し、モニター ビューのステップに `400 Bad Request` エラーが表示された場合、この問題は、長いトリガー名またはアクション名が原因で、基になる URI (Uniform Resource Identifier) が既定の文字制限を超えたために発生している可能性があります。 詳細については、「[400 無効な要求です](#400-bad-request)」を参照してください。
 
    ワークフローの各ステップに付けられる状態は次のとおりです。
 
@@ -664,7 +667,7 @@ Visual Studio Code では、プロジェクトを Azure に直接デプロイす
 
       ![[Azure:Logic Apps (プレビュー)] ウィンドウと、作成する新しいロジック アプリの名前を入力するプロンプトを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/enter-logic-app-name.png)
 
-   1. 新しいロジック アプリのホスティング プランとして、 [ **[App Service プラン]**](../azure-functions/functions-scale.md#app-service-plan) または [ **[Premium]**](../azure-functions/functions-scale.md#premium-plan) を選択します。 この例では、 **[App Service プラン]** を選択します。
+   1. 新しいロジック アプリのホスティング プランとして、[ **[App Service プラン]**](../azure-functions/functions-scale.md#app-service-plan) または [ **[Premium]**](../azure-functions/functions-scale.md#premium-plan) を選択します。 この例では、 **[App Service プラン]** を選択します。
 
       ![[Azure:Logic Apps (プレビュー)] ウィンドウと、[App Service プラン] または [Premium] を選択するように求めるプロンプトを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/select-hosting-plan.png)
 
@@ -836,7 +839,7 @@ Azure portal を使用すると、Visual Studio Code からデプロイした **
 
 Visual Studio Code でステートレスなロジック アプリ ワークフローをローカルで実行している場合は、次の手順に従います。
 
-1. プロジェクトで、 **workflow-designtime** フォルダーを見つけて展開します。 **local.settings.json** ファイルを見つけて開きます。
+1. プロジェクトで、**workflow-designtime** フォルダーを見つけて展開します。 **local.settings.json** ファイルを見つけて開きます。
 
 1. `Workflows.{yourWorkflowName}.operationOptions` プロパティを追加し、値を `WithStatelessRunHistory` に設定します。次に例を示します。
 
@@ -957,7 +960,7 @@ Visual Studio Code でステートレスなロジック アプリ ワークフ�
 
    `POST /runtime/webhooks/workflow/api/management/workflows/{workflow-name}/triggers/{trigger-name}/listCallbackUrl?api-version=2019-10-01-edge-preview&code={master-key}`
 
-   < *master-key* > の値は、 **azure-webjobs-secrets/{deployment-name}/host.json** ファイルで `AzureWebJobsStorage` に対して設定した Azure ストレージ アカウントで定義されています。この値は次のセクションで確認できます。
+   <*master-key*> の値は、**azure-webjobs-secrets/{deployment-name}/host.json** ファイルで `AzureWebJobsStorage` に対して設定した Azure ストレージ アカウントで定義されています。この値は次のセクションで確認できます。
 
    ```json
    {
@@ -975,7 +978,7 @@ Visual Studio Code でステートレスなロジック アプリ ワークフ�
 
 ## <a name="nested-behavior-differences-between-stateful-and-stateless-logic-apps"></a>ステートフルなロジック アプリとステートレスなロジック アプリの入れ子になった動作の違い
 
-[Request](../connectors/connectors-native-reqres.md) トリガー、 [HTTP Webhook](../connectors/connectors-native-webhook.md) トリガー、または [ApiConnectionWehook 型](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)であり HTTPS 要求を受信できるマネージド コネクタ トリガーを使用することによって、同じ **ロジック アプリ (プレビュー)** リソースに存在する他のロジック アプリ ワークフローから [ロジック アプリ ワークフローを呼び出せるようにする](../logic-apps/logic-apps-http-endpoint.md)ことができます。
+[Request](../connectors/connectors-native-reqres.md) トリガー、[HTTP Webhook](../connectors/connectors-native-webhook.md) トリガー、または [ApiConnectionWehook 型](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)であり HTTPS 要求を受信できるマネージド コネクタ トリガーを使用することによって、同じ **ロジック アプリ (プレビュー)** リソースに存在する他のロジック アプリ ワークフローから [ロジック アプリ ワークフローを呼び出せるようにする](../logic-apps/logic-apps-http-endpoint.md)ことができます。
 
 親ワークフローが子ワークフローを呼び出した後、入れ子になったロジック アプリ ワークフローが実行できる動作パターンを次に示します。
 
@@ -1014,6 +1017,47 @@ Visual Studio Code でステートレスなロジック アプリ ワークフ�
   * コード文字の制限は、1,024 文字から 10 万文字に増加しています。
 
   * コードの実行時間の制限は、5 秒から 15 秒に増加しています。
+
+<a name="troubleshooting"></a>
+
+## <a name="troubleshoot-errors-and-problems"></a>エラーと問題のトラブルシューティング
+
+<a name="400-bad-request"></a>
+
+### <a name="400-bad-request"></a>"400 無効な要求です"
+
+実行が失敗し、モニター ビューで実行を検査すると、このエラーが長い名前のトリガーまたはアクションで表示されることがあります。これが原因で、基になる URI (Uniform Resource Identifier) が既定の文字制限を超えてしまいます。
+
+この問題を解決し、長い URI に合わせて調整するには、次の手順に従って、コンピューターの `UrlSegmentMaxCount` と `UrlSegmentMaxLength` のレジストリ キーを編集します。 これらのキーの既定値については、「[Windows 用のレジストリ設定の Http.sys](/troubleshoot/iis/httpsys-registry-windows)」のトピックに記載されています。
+
+> [!IMPORTANT]
+> 開始する前に、作業内容が保存されていることを確認してください。 この解決策では、変更を有効にするために対処後にコンピューターを再起動する必要があります。
+
+1. コンピューターで、 **[ファイル名を指定して実行]** ウィンドウを開き、`regedit` コマンドを実行します。これにより、レジストリ エディターが開きます。
+
+1. **[ユーザー アカウント制御]** ボックスで、 **[はい]** を選択して、コンピューターへの変更を許可します。
+
+1. 左側のウィンドウで、 **[コンピューター]** の下のパス **HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\HTTP\Parameters** に沿ってノードを展開し、 **[Parameters]** を選択します。
+
+1. 右側のペインで、`UrlSegmentMaxCount` と `UrlSegmentMaxLength` のレジストリ キーを見つけます。
+
+1. 使用する名前が URI に収容されるように、これらのキーの値を十分に増やします。 これらのキーが存在しない場合は、次の手順に従って **Parameters** フォルダーに追加します。
+
+   1. **[Parameters]** のショートカット メニューから、 **[新規]**  >  **[DWORD (32 ビット) 値]** を選択します。
+
+   1. 表示された編集ボックスに、新しいキー名として `UrlSegmentMaxCount` を入力します。
+
+   1. 新しいキーのショートカット メニューを開き、 **[修正]** を選択します。
+
+   1. 表示された **[文字列の編集]** ボックスで、 **[値のデータ]** に 16 進数形式または 10 進数形式のキー値を入力します。 たとえば、16 進数の `400` は 10 進数の `1024` に相当します。
+
+   1. `UrlSegmentMaxLength` のキー値を追加するには、これらの手順を繰り返します。
+
+   これらのキー値を増やすか、追加すると、レジストリ エディターは次の例のようになります。
+
+   ![レジストリ エディターを示すスクリーンショット。](media/create-stateful-stateless-workflows-visual-studio-code/edit-registry-settings-uri-length.png)
+
+1. 準備ができたら、コンピューターを再起動して変更を有効にします。
 
 ## <a name="next-steps"></a>次のステップ
 

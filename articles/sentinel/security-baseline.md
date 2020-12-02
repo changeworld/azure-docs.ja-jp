@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ab28c7c592c270cb7b5ba6afa6145bdcfed89099
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: bf249046a30e023a2d7b596fb6424c7005c2a875
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658929"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841939"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>Azure Sentinel の Azure セキュリティ ベースライン
 
@@ -163,11 +163,11 @@ ms.locfileid: "94658929"
 
 ### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6: セキュリティで保護された Azure マネージド ワークステーションを管理タスクに使用する
 
-**ガイダンス**: Azure Multi-Factor Authentication (MFA) が有効な特権アクセス ワークステーション (PAW) を使用してログインし、Azure Sentinel 対応リソースを構成します。 
+**ガイダンス**:Azure AD Multi-Factor Authentication (MFA) が有効な特権アクセス ワークステーション (PAW) を使用してログインし、Azure Sentinel 対応リソースを構成します。 
 
 - [Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations) (Privileged Access Workstation)
 
-- [クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
+- [クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 

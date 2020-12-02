@@ -11,19 +11,19 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: 4be3f8c6cd416743c2d1118cf2de01073c3022ff
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 25c2157a8de237d0ec66caa72d59c810d419ac76
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790493"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989124"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL Database の DNS エイリアス
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 Azure SQL Database にはドメイン ネーム システム (DNS) サーバーが用意されています。 PowerShell と REST API では、[論理 SQL サーバー](logical-servers.md)名の [DNS エイリアスの作成や管理を行う呼び出し](#anchor-powershell-code-62x)を使用できます。
 
-" *DNS エイリアス* " はサーバー名の代わりとして使用できます。 クライアント プログラムで接続文字列内にエイリアスを使用することができます。 DNS エイリアスには、クライアント プログラムを別のサーバーにリダイレクトする変換レイヤーがあります。 このレイヤーによって、ユーザーはすべてのクライアントとその接続文字列を特定して編集するという面倒な作業が不要になっています。
+"*DNS エイリアス*" はサーバー名の代わりとして使用できます。 クライアント プログラムで接続文字列内にエイリアスを使用することができます。 DNS エイリアスには、クライアント プログラムを別のサーバーにリダイレクトする変換レイヤーがあります。 このレイヤーによって、ユーザーはすべてのクライアントとその接続文字列を特定して編集するという面倒な作業が不要になっています。
 
 DNS エイリアスの一般的な使用法には、次のようなものがあります。
 
@@ -61,7 +61,7 @@ Azure SQL Database の DNS エイリアス機能は、次のようなシナリ�
   - サーバーを削除すると、そのサーバーを参照するすべての DNS エイリアスも Azure システムによって削除されます。
 - *どのリージョンにもバインドされない:* DNS エイリアスはリージョンにバインドされません。 どの DNS エイリアスも任意のリージョンに存在する地理的サーバーを参照するよう更新できます。
   - ただし、別のサーバーを参照するようエイリアスを更新する際は、両方のサーバーが同じ Azure *サブスクリプション* に存在する必要があります。
-- *権限:* DNS エイリアスを管理するユーザーには、 *サーバー共同作成者* 権限以上の権限が必要です。 詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](../../role-based-access-control/overview.md)」を参照してください。
+- *権限:* DNS エイリアスを管理するユーザーには、*サーバー共同作成者* 権限以上の権限が必要です。 詳細については、[Azure portal における Azure ロールベースのアクセス制御の基礎](../../role-based-access-control/overview.md)に関するページを参照してください。
 
 ## <a name="manage-your-dns-aliases"></a>DNS エイリアスの管理
 
@@ -104,8 +104,8 @@ DNS エイリアスには、現在、次の制限事項があります。
 
 - *最大 2 分の遅延:* DNS エイリアスの更新または削除に最大 2 分かかります。
   - ただし、遅延の有無にかかわらず、エイリアスは元のサーバーへのクライアント接続の参照を直ちに停止します。
-- *DNS の参照:* 現時点では、特定の DNS エイリアスが参照しているサーバーを確認する正式な方法は、 [DNS の参照](/windows-server/administration/windows-commands/nslookup)の実行だけです。
-- _テーブルの監査はサポートされていない:_ データベースで " *テーブル監査* " が有効になっているサーバーでは DNS エイリアスを使用できません。
+- *DNS の参照:* 現時点では、特定の DNS エイリアスが参照しているサーバーを確認する正式な方法は、[DNS の参照](/windows-server/administration/windows-commands/nslookup)の実行だけです。
+- _テーブルの監査はサポートされていない:_ データベースで "*テーブル監査*" が有効になっているサーバーでは DNS エイリアスを使用できません。
   - テーブル監査は非推奨になりました。
   - [BLOB 監査](../../azure-sql/database/auditing-overview.md)に移行することをお勧めします。
 

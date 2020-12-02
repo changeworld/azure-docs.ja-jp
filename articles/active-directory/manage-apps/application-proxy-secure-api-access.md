@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e38d8261bf141248fd143f27c74e0761e54f73f9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: eaa4a8f92809dcf44969958573231ad37d908daa
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649332"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835699"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したオンプレミス API へのアクセスのセキュリティ保護
 
@@ -36,7 +36,7 @@ ms.locfileid: "94649332"
 
 Azure AD アプリケーション プロキシはこのソリューションのバックボーンを形成し、API アクセスのパブリック エンドポイントとして機能し、認証と承認を提供します。 [Microsoft Authentication Library (MSAL)](../azuread-dev/active-directory-authentication-libraries.md) ライブラリを使用することで、さまざまなプラットフォームから API にアクセスできます。
 
-Azure AD アプリケーション プロキシの認証と承認は Azure AD 上に構築されているため、Azure AD の条件付きアクセスを使用して、信頼済みデバイスのみがアプリケーション プロキシ経由で公開された API にアクセスできるようにすることが可能です。 デスクトップについては Azure AD Join または Azure AD Hybrid Joined を使用し、デバイスについては Intune Managed を使用します。 Azure Multi-Factor Authentication などの Azure Active Directory Premium 機能や、[Azure Identity Protection](../identity-protection/overview-identity-protection.md) の機械学習支援型のセキュリティも活用できます。
+Azure AD アプリケーション プロキシの認証と承認は Azure AD 上に構築されているため、Azure AD の条件付きアクセスを使用して、信頼済みデバイスのみがアプリケーション プロキシ経由で公開された API にアクセスできるようにすることが可能です。 デスクトップについては Azure AD Join または Azure AD Hybrid Joined を使用し、デバイスについては Intune Managed を使用します。 Azure AD Multi-Factor Authentication などの Azure Active Directory Premium 機能や、[Azure Identity Protection](../identity-protection/overview-identity-protection.md) の機械学習支援型のセキュリティも活用できます。
 
 ## <a name="prerequisites"></a>前提条件
 

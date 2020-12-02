@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 64334b17060879a2e587b13b062c81e86df33831
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: a910edfbbe1ad07dca806026396c506f7e90e6e7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94743438"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019434"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>移行の概要: SQL Server から Azure VM 上の SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -57,6 +57,8 @@ VM 上の SQL Server の適切なインストールと構成にも考慮する�
 - 既存の製品のサポート ライフ サイクル
 - 移行中のアプリケーションのダウンタイム期間
 
+:::image type="content" source="media/sql-server-to-sql-on-azure-vm-individual-databases-guide/virtual-machine-migration-downtime.png" alt-text="仮想マシンの移行に伴うダウンタイム":::
+
 次の表では、2 つの移行戦略の違いについて説明します。
 <br />
 
@@ -71,11 +73,11 @@ VM 上の SQL Server の適切なインストールと構成にも考慮する�
 次の表では、SQL Server データベースを Azure VM 上の SQL Server に移行する **リフト アンド シフト** 移行戦略で使用できる方法について詳しく説明します。
 <br />
 
-|**方法** | **最小ソース バージョン** | **最小ターゲット バージョン** | **ソースのバックアップ サイズ制限** |  **ノート** |
+|**方法** | **最小ソース バージョン** | **最小ターゲット バージョン** | **ソースのバックアップ サイズ制限** |  **メモ** |
 | --- | --- | --- | --- | --- |
-| [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  既存の SQL Server がそのまま、Azure VM 上の SQL Server のインスタンスに移動されます。 移行のワークロードは最大 35,000 VM にスケーリングできます。 <br /><br /> サーバー データの同期中、ソース サーバーがオンラインのままで要求に対応するので、ダウンタイムが最小限に抑えられます。 <br /><br /> **自動化とスクリプト**:[Azure Site Recovery のスクリプト](../../../migrate/how-to-migrate-at-scale.md)と[ Azure のスケーリングされた移行と計画の例](/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
+| [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  既存の SQL Server がそのまま、Azure VM 上の SQL Server のインスタンスに移動されます。 移行のワークロードは最大 35,000 VM にスケーリングできます。 <br /><br /> サーバー データの同期中、ソース サーバーがオンラインのままで要求に対応するので、ダウンタイムが最小限に抑えられます。 <br /><br /> **自動化とスクリプト**:[Azure Site Recovery のスクリプト](../../../migrate/how-to-migrate-at-scale.md)と [ Azure のスケーリングされた移行と計画の例](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
 
-## <a name="migrate"></a>Migrate  
+## <a name="migrate"></a>移行  
 
 設定が容易なため、ネイティブな SQL Server の[バックアップ](/sql/t-sql/statements/backup-transact-sql)をローカルで行ってからそのファイルを Azure にコピーすることが、移行アプローチとして推奨されます。 この方法でサポートされるのは、SQL Server のバージョンが 2008 以降のいずれかである大規模なデータベース (1 TB 超) と、大規模なデータベース バックアップ (1 TB 超) です。 ただし、1 TB 未満で Azure との接続性が高い SQL Server 2014 以降のデータベースでは、[URL への SQL Server バックアップ](/sql/relational-databases/backup-restore/sql-server-backup-to-url)の方が、より優れたアプローチになります。 
 
@@ -84,7 +86,7 @@ SQL Server データベースを Azure VM 上の SQL Server のインスタン�
 次の表では、SQL Server データベースを Azure VM 上の SQL Server に移行するために使用できるすべての方法について詳しく説明します。
 <br />
 
-|**方法** | **最小ソース バージョン** | **最小ターゲット バージョン** | **ソースのバックアップ サイズ制限** | **ノート** |
+|**方法** | **最小ソース バージョン** | **最小ターゲット バージョン** | **ソースのバックアップ サイズ制限** | **メモ** |
 | --- | --- | --- | --- | --- |
 | **[ファイルへのバックアップ](sql-server-to-sql-on-azure-vm-individual-databases-guide.md#migrate)** | SQL Server 2008 SP4 | SQL Server 2008 SP4| [Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  これは、マシン間でデータベースを移動する際の、十分にテストされたシンプルな手法です。 圧縮を使用して、転送するバックアップのサイズを最小限に抑えます。 <br /><br /> **自動化とスクリプト**:[Transact-SQL (T-SQL)](/sql/t-sql/statements/backup-transact-sql) と [BLOB ストレージへの AzCopy](../../../storage/common/storage-use-azcopy-v10.md)  |
 | **[URL へのバックアップ](/sql/relational-databases/backup-restore/sql-server-backup-to-url)** | SQL Server 2012 SP1 CU2 | SQL Server 2012 SP1 CU2| SQL Server 2016 の場合は 12.8 TB、それ以外の場合は 1 TB | Azure Storage を使用してバックアップ ファイルを VM に移動するもう 1 つの方法です。 圧縮を使用して、転送するバックアップのサイズを最小限に抑えます。 <br /><br /> **自動化とスクリプト**:[T-SQL またはメンテナンス プラン](/sql/relational-databases/backup-restore/sql-server-backup-to-url) |
@@ -117,8 +119,8 @@ SQL Server データベースを Azure VM 上の SQL Server のインスタン�
 
 次のようなサービスがあります。
 
-- [**SQL Server Integration Services (SSIS)** ](/sql/integration-services/install-windows/upgrade-integration-services)
-- [**SQL Server Reporting Services (SSRS)** ](/sql/reporting-services/install-windows/upgrade-and-migrate-reporting-services)
+- [**SQL Server Integration Services (SSIS)**](/sql/integration-services/install-windows/upgrade-integration-services)
+- [**SQL Server Reporting Services (SSRS)**](/sql/reporting-services/install-windows/upgrade-and-migrate-reporting-services)
 - [**SQL Server Analysis Services (SSAS)**](/sql/database-engine/install-windows/upgrade-analysis-services)
 
 ## <a name="supported-versions"></a>サポートされているバージョン
@@ -138,7 +140,7 @@ SQL Server データベースを Azure VM 上の SQL Server に移行する作�
    - [Azure 総保有コスト計算ツール](https://azure.microsoft.com/pricing/tco/calculator/) 
 
 
-- クラウド移行のためのフレームワークと導入サイクルの詳細については、以下を参照してください
+- クラウド移行のためのフレームワークと導入サイクルの詳細については、次を参照してください。
    -  [Azure 向けのクラウド導入フレームワーク](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Azure に移行するワークロードの料金計算とサイズ設定のベスト プラクティス](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
 
@@ -148,4 +150,4 @@ SQL Server データベースを Azure VM 上の SQL Server に移行する作�
 
 
 - アプリケーション アクセス レイヤーを評価するには、「[Data Access Migration Toolkit (プレビュー)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)」を参照してください
-- データ アクセス レイヤーの A/B テストの実行方法について詳しくは、[Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) についてのページを参照してください。
+- データ アクセス層の A/B テストの実行方法の詳細については、[Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) に関するページを参照してください。

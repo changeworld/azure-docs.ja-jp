@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: d13f401fab126f57d07d405ab5d6ce461c26e139
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 60e86c7c849bf09b3a5577453a6935466ab447f6
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658946"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95483915"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>ワークスペースおよびテナント全体での Azure Sentinel の拡張
 
@@ -34,7 +34,7 @@ Azure Sentinel は、Log Analytics ワークスペースの上に構築されて
 | 主権と規制のコンプライアンス | ワークスペースは、特定のリージョンに結び付けられます。 規制の要件を満たすためにデータを異なる [Azure の地域](https://azure.microsoft.com/global-infrastructure/geographies/)に保持する必要がある場合は、別のワークスペースに分割する必要があります。 |  |
 | データ所有権 | データ所有権の境界 (たとえば、子会社や関連会社など) は、個別のワークスペースを使用するとより適切に線引きできます。 |  |
 | 複数の Azure テナント | Azure Sentinel では、それ自体の Azure Active Directory (Azure AD) テナントの境界内にある Microsoft と Azure の SaaS リソースからのデータ収集だけがサポートされています。 そのため、Azure AD テナントごとに個別のワークスペースが必要です。 |  |
-| 詳細なデータ アクセスの制御 | 組織によっては、組織の内部または外部の異なるグループに、Azure Sentinel によって収集されたデータの一部へのアクセスを許可することが必要になる場合があります。 次に例を示します。<br><ul><li>リソース所有者のリソースに関連するデータへのアクセス</li><li>地域または子会社の SOC による、組織のそれぞれの部分に関連するデータへのアクセス</li></ul> | [リソース RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) または[テーブル レベル RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) を使用します |
+| 詳細なデータ アクセスの制御 | 組織によっては、組織の内部または外部の異なるグループに、Azure Sentinel によって収集されたデータの一部へのアクセスを許可することが必要になる場合があります。 次に例を示します。<br><ul><li>リソース所有者のリソースに関連するデータへのアクセス</li><li>地域または子会社の SOC による、組織のそれぞれの部分に関連するデータへのアクセス</li></ul> | [リソース Azure RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) または[テーブル レベル Azure RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) を使用します |
 | 詳細な保有期間の設定 | 従来、複数のワークスペースは、異なるデータの種類に対して異なる保有期間を設定するための唯一の方法でした。 テーブル レベルの保有期間の設定の導入により、多くの場合、これは不要になりました。 | [テーブル レベルの保有期間の設定](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316)を使用するか、または[データの削除](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)を自動化します |
 | 課金を分割する | 個別のサブスクリプションにワークスペースを配置することにより、異なるパーティに課金できます。 | 使用状況レポートとクロス請求 |
 | レガシ アーキテクチャ | 複数のワークスペースの使用は、現在ではもう有効ではない制限やベスト プラクティスが考慮されていた以前の設計から生じている可能性があります。 また、設計に関する恣意的な選択であり、変更することで Azure Sentinel にいっそう適切に対応できる可能性もあります。<br><br>たとえば、次のようになります。<br><ul><li>Azure Security Center をデプロイするときの、サブスクリプションごとの既定のワークスペースの使用</li><li>解決策が比較的新しいものである、詳細なアクセス制御または保有期間の設定に対するニーズ</li></ul> | ワークスペースを再設計します |

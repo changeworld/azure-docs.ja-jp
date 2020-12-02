@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b308b47ff813237bdf90637334f20ac6b5490a19
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: dbe22a1af8fbf61629fa9df1267416ca3822884b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992832"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840085"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory のパスワードレス認証オプション
 
@@ -44,7 +44,7 @@ Windows Hello for Business は、指定された自分用の Windows PC を持�
 
 ![Windows Hello for Business を使用したユーザー サインインに関連する手順の概要を示す図](./media/concept-authentication-passwordless/windows-hello-flow.png)
 
-1. ユーザーは、生体認証または PIN のジェスチャを使用して Windows にサインインします。 このジェスチャによって、Windows Hello for Business の秘密キーのロックが解除され、*クラウド AP プロバイダー*というクラウド認証セキュリティ サポート プロバイダーに送信されます。
+1. ユーザーは、生体認証または PIN のジェスチャを使用して Windows にサインインします。 このジェスチャによって、Windows Hello for Business の秘密キーのロックが解除され、*クラウド AP プロバイダー* というクラウド認証セキュリティ サポート プロバイダーに送信されます。
 1. クラウド AP プロバイダーにより、Azure AD に nonce (1 回だけ使用できるランダムな任意の数) が要求されます。
 1. Azure AD からは 5 分間有効な nonce が返されます。
 1. クラウド AP プロバイダーでは、ユーザーの秘密キーを使用して nonce に署名され、署名済みの nonce が Azure AD に返されます。
@@ -62,7 +62,7 @@ Windows Hello for Business の[計画ガイド](/windows/security/identity-prote
 
 Authenticator アプリは、あらゆる iOS や Android フォンを、強力なパスワードレスの資格情報に変えます。 ユーザーは、自分の電話で通知を受け取り、画面に表示される番号と電話の番号を照合してから、生体認証 (指紋または顔) あるいは PIN を使用して確認できます。 インストールの詳細については、「[Microsoft Authenticator アプリのダウンロードとインストール](../user-help/user-help-auth-app-download-install.md)」を参照してください。
 
-Microsoft Authenticator アプリを使用したパスワードなしの Azure AD へのサインインは現在プレビュー段階です。 Azure 多要素認証、セルフサービス パスワード リセット (SSPR)、または OATH ソフトウェア トークンの第 2 認証向けの Microsoft Authenticator アプリの使用は一般公開されています。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+Microsoft Authenticator アプリを使用したパスワードなしの Azure AD へのサインインは現在プレビュー段階です。 Azure AD Multi-Factor Authentication、セルフサービス パスワード リセット (SSPR)、または OATH ソフトウェア トークンの第 2 認証向けの Microsoft Authenticator アプリの使用は一般公開されています。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 Authenticator アプリを使用したパスワードレス認証では、Windows Hello for Business と同じ基本的なパターンに従います。 これは、Azure AD によって使用されている Microsoft Authenticator アプリのバージョンを見つけられるように、ユーザーを識別する必要があるため、少し複雑になります。
 
@@ -112,7 +112,7 @@ FIDO2 セキュリティ キーを使用した Azure AD へのサインインは
 
 FIDO Alliance によって FIDO2 認定されたキーが多数存在する場合、Microsoft では、最大限のセキュリティと最適なエクスペリエンスを保証するために、ベンダーによって実装される FIDO2 Client-to-Authenticator Protocol (CTAP) 仕様の一部の省略可能な拡張機能が必要になります。
 
-セキュリティ キーでは、Microsoft との互換性を維持するために、FIDO2 CTAP プロトコルの以下の機能と拡張機能を実装する**必要があります**。
+セキュリティ キーでは、Microsoft との互換性を維持するために、FIDO2 CTAP プロトコルの以下の機能と拡張機能を実装する **必要があります**。
 
 | # | 機能 / 拡張機能 (信頼) | この機能または拡張機能が必要な理由 |
 | --- | --- | --- |

@@ -4,12 +4,12 @@ description: Batch は、Batch サービスからの認証に Azure AD をサポ
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: cb8306da4022ea1819e2da32a2f513c83bed309f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 784e92eaa2cd672d511177066befcfd7effc7ca4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309368"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95252642"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch サービスの認証に Active Directory を使用する
 
@@ -53,9 +53,9 @@ Azure AD エンドポイントの詳細については、[認証と承認の比�
 
 Azure AD を使用して認証する最初の手順は、アプリケーションを Azure AD テナントに登録することです。 アプリケーションを登録すると、Azure [Active Directory Authentication Library](../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) をコードから呼び出すことができます。 ADAL は、Azure AD で認証するための API をアプリケーションから提供します。 使用プランが統合認証かサービス プリンシパルかに関わらず、アプリケーションの登録は必須です。
 
-アプリケーションの登録では、使用するアプリケーションに関する情報を Azure AD に提供します。 これで、Azure AD から、実行時にアプリケーションを Azure AD と関連付ける際に使用するアプリケーション ID ( *クライアント ID とも呼ばれます* ) が提供されます。 アプリケーション ID の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。
+アプリケーションの登録では、使用するアプリケーションに関する情報を Azure AD に提供します。 これで、Azure AD から、実行時にアプリケーションを Azure AD と関連付ける際に使用するアプリケーション ID (*クライアント ID とも呼ばれます*) が提供されます。 アプリケーション ID の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。
 
-Batch アプリケーションを登録するには、 [クイックスタートの「 **アプリケーションを登録する** 」セクションの手順に従います。Microsoft ID プラットフォームにアプリケーションを登録する](../active-directory/develop/quickstart-register-app.md)」を参照してください。 ネイティブ アプリケーションとしてアプリケーションを登録する場合は、 **リダイレクト URI** 用に任意の有効な URI を指定できます。 実際のエンドポイントである必要はありません。
+Batch アプリケーションを登録するには、[クイックスタートの「**アプリケーションを登録する**」セクションの手順に従います。Microsoft ID プラットフォームにアプリケーションを登録する](../active-directory/develop/quickstart-register-app.md)」を参照してください。 ネイティブ アプリケーションとしてアプリケーションを登録する場合は、**リダイレクト URI** 用に任意の有効な URI を指定できます。 実際のエンドポイントである必要はありません。
 
 アプリケーションを登録すると、次のようにアプリケーション ID が表示されます。
 
@@ -144,7 +144,7 @@ Azure Portal で次の手順に従います。
 - Microsoft.Batch/batchAccounts/read (任意の読み取り操作)
 - Microsoft.Batch/batchAccounts/listKeys/action (任意の操作)
 
-カスタム ロールは、Batch アカウントの資格情報 (共有キー) ではなく、Azure AD によって認証されるユーザーを対象としています。 Batch アカウントの資格情報は、Batch アカウントに対する完全なアクセス許可を付与することに注意してください。 また、自動プールを使用するジョブには、プールレベルのアクセス許可が必要なことにも注意してください。
+カスタム ロールは、Batch アカウントの資格情報 (共有キー) ではなく、Azure AD によって認証されるユーザーを対象としています。 Batch アカウントの資格情報は、Batch アカウントに対する完全なアクセス許可を付与することに注意してください。 また、[autopool](nodes-and-pools.md#autopools) を使用するジョブには、プールレベルのアクセス許可が必要なことにも注意してください。
 
 > [!NOTE]
 > 特定のロールの割り当ては、[アクション] フィールドで指定する必要がありますが、それ以外は [DataAction] フィールドで指定する必要があります。 詳細については、「[Azure リソース プロバイダーの操作](../role-based-access-control/resource-provider-operations.md#microsoftbatch)」を参照してください。
@@ -268,13 +268,13 @@ public static async Task<string> GetAuthenticationTokenAsync()
 デリゲートをパラメーターとして受け取る **BatchTokenCredentials** オブジェクトを作成します。 これらの資格情報を使用して **BatchClient** オブジェクトを開きます。 この **BatchClient** オブジェクトを使って Batch サービスに対する残りの操作を行えます。
 
 ```csharp
-public static async Task PerformBatchOperations()
+public static void PerformBatchOperations()
 {
     Func<Task<string>> tokenProvider = () => GetAuthenticationTokenAsync();
 
-    using (var client = await BatchClient.OpenAsync(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
+    using (var client = BatchClient.Open(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
     {
-        await client.JobOperations.ListJobs().ToListAsync();
+        client.JobOperations.ListJobs();
     }
 }
 ```
@@ -336,13 +336,13 @@ public static async Task<string> GetAuthenticationTokenAsync()
 デリゲートをパラメーターとして受け取る **BatchTokenCredentials** オブジェクトを作成します。 これらの資格情報を使用して **BatchClient** オブジェクトを開きます。 この **BatchClient** オブジェクトを使用して、Batch サービスに対する残りの操作を行います。
 
 ```csharp
-public static async Task PerformBatchOperations()
+public static void PerformBatchOperations()
 {
     Func<Task<string>> tokenProvider = () => GetAuthenticationTokenAsync();
 
-    using (var client = await BatchClient.OpenAsync(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
+    using (var client = BatchClient.Open(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
     {
-        await client.JobOperations.ListJobs().ToListAsync();
+        client.JobOperations.ListJobs();
     }
 }
 ```
@@ -397,7 +397,7 @@ credentials = ServicePrincipalCredentials(
 )
 ```
 
-サービス プリンシパルの資格情報を使用して、 **BatchServiceClient** オブジェクトを開きます。 この **BatchServiceClient** オブジェクトを使用して、Batch サービスに対する残りの操作を行います。
+サービス プリンシパルの資格情報を使用して、**BatchServiceClient** オブジェクトを開きます。 この **BatchServiceClient** オブジェクトを使用して、Batch サービスに対する残りの操作を行います。
 
 ```python
     batch_client = BatchServiceClient(

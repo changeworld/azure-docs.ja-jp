@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 886597e5490acb94f43d840dc5a3d22092e45849
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 94cb40522a9e463fea2efae329daf910b5386cdd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698764"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832604"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
@@ -157,7 +157,7 @@ ID セキュリティ スコアは、セキュリティ対策を客観的に測�
 
 すべてのユーザーに対して 2 段階認証を要求することをお勧めします。 これには、組織内の管理者およびアカウントが侵害された場合に重大な影響を及ぼす可能性のあるその他のユーザー (財務担当者など) が含まれます。
 
-2 段階認証を要求するオプションは複数あります。 最適なオプションは、目的、実行している Azure AD エディション、およびライセンス プログラムによって異なります。 最適なオプションを判断するには、「[ユーザーに 2 段階認証を要求する方法](../../active-directory/authentication/howto-mfa-userstates.md)」を参照してください。 ライセンスと価格の詳細については、[Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) と [Azure Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) の価格に関するページを参照してください。
+2 段階認証を要求するオプションは複数あります。 最適なオプションは、目的、実行している Azure AD エディション、およびライセンス プログラムによって異なります。 最適なオプションを判断するには、「[ユーザーに 2 段階認証を要求する方法](../../active-directory/authentication/howto-mfa-userstates.md)」を参照してください。 ライセンスと価格の詳細については、[Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) と [Azure AD Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) の価格に関するページを参照してください。
 
 2 段階認証を有効にするオプションと利点を次に示します。
 
@@ -170,14 +170,14 @@ ID セキュリティ スコアは、セキュリティ対策を客観的に測�
 この方法はすべてのライセンス レベルで使用できますが、既存の条件付きアクセス ポリシーと併用することはできません。 詳細については、[Azure AD のセキュリティの既定値](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)に関するページを参照してください
 
 **オプション 2**:[ユーザーの状態を変更することで Multi-Factor Authentication を有効にします](../../active-directory/authentication/howto-mfa-userstates.md)。   
-**利点**:2 段階認証を要求するための従来の方法です。 これは、[クラウド内の Azure Multi-Factor Authentication と Azure Multi-Factor Authentication Server](../../active-directory/authentication/concept-mfa-howitworks.md) の両方に対応します。 この方法を使用すると、ユーザーはサインインするたびに 2 段階認証を実行するよう求められ、条件付きアクセス ポリシーがオーバーライドされます。
+**利点**:2 段階認証を要求するための従来の方法です。 これは、[クラウド内の Azure AD Multi-Factor Authentication と Azure Multi-Factor Authentication Server](../../active-directory/authentication/concept-mfa-howitworks.md) の両方に対応します。 この方法を使用すると、ユーザーはサインインするたびに 2 段階認証を実行するよう求められ、条件付きアクセス ポリシーがオーバーライドされます。
 
-Multi-factor Authentication を有効にする必要がある場合を判断するには、「[所属する組織に適しているのはどちらのバージョンの Azure MFA であるかを確認しましょう](../../active-directory/authentication/concept-mfa-howitworks.md)」をご覧ください。
+Multi-factor Authentication を有効にする必要がある場合を判断するには、「[所属する組織に適しているのはどちらのバージョンの Azure AD MFA であるかを確認しましょう](../../active-directory/authentication/concept-mfa-howitworks.md)」をご覧ください。
 
 **オプション 3**:[条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします](../../active-directory/authentication/howto-mfa-getstarted.md)。
 **利点**:このオプションでは、[条件付きアクセス](../../active-directory/conditional-access/concept-conditional-access-policy-common.md)を使用して特定の条件下で 2 段階認証を要求できます。 特定の条件としては、異なる場所、信頼されていないデバイス、または危険と見なされるアプリケーションからのユーザーのサインインを指定できます。 2 段階認証を要求する特定の条件を定義すると、要求のメッセージがユーザーに繰り返し表示されないようにすることができます。このようなメッセージは、不快なユーザー エクスペリエンスとなり得ます。
 
-これは、ユーザーの 2 段階認証を有効にするうえで最も柔軟性の高い手段です。 条件付きアクセス ポリシーを有効にする方法は、クラウド内の Azure Multi-Factor Authentication に対してのみ機能します。これは Azure AD の Premium 機能です。 この方法の詳細については、「[クラウドベースの Azure Multi-Factor Authentication をデプロイする](../../active-directory/authentication/howto-mfa-getstarted.md)」を参照してください。
+これは、ユーザーの 2 段階認証を有効にするうえで最も柔軟性の高い手段です。 条件付きアクセス ポリシーを有効にする方法は、クラウド内の Azure AD Multi-Factor Authentication に対してのみ機能します。これは Azure AD の Premium 機能です。 この方法の詳細については、「[クラウドベースの Azure AD Multi-Factor Authentication をデプロイする](../../active-directory/authentication/howto-mfa-getstarted.md)」を参照してください。
 
 **オプション 4**: [リスクベースの条件付きアクセス ポリシー](../../active-directory/conditional-access/howto-conditional-access-policy-risk.md)を評価することによって、条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします。   
 **利点**:このオプションの利点は次のとおりです。
@@ -269,7 +269,7 @@ Azure RBAC などの機能を使用したデータ アクセス制御を適用�
 **ベスト プラクティス**: すべての重要な管理者アカウントには、パスワードレス (推奨) または Multi-Factor Authentication を要求します。
 **詳細**: [Microsoft Authenticator アプリ](../../active-directory/authentication/howto-authentication-passwordless-phone.md)を使用して、パスワードを使用せずに Azure AD アカウントにサインインします。 [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) のように、Microsoft Authenticator は、キーベースの認証を使用して、デバイスに関連付けられていて生体認証または PIN を使用するユーザー資格情報を有効にします。
 
-次のような Azure AD 管理者ロールを永続的に割り当てられているすべての個人ユーザーには、サインイン時に Azure Multi-factor Authentication を要求します: グローバル管理者、特権ロール管理者、Exchange Online 管理者、SharePoint Online 管理者。 [管理者アカウントの Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-userstates.md) を有効にし、管理者アカウントのユーザーが登録していることを確認します。
+次のような Azure AD 管理者ロールを永続的に割り当てられているすべての個人ユーザーには、サインイン時に Azure AD Multi-factor Authentication を要求します: グローバル管理者、特権ロール管理者、Exchange Online 管理者、SharePoint Online 管理者。 [管理者アカウントの Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-userstates.md) を有効にし、管理者アカウントのユーザーが登録していることを確認します。
 
 **ベスト プラクティス**: 重要な管理者アカウントには、運用タスク (たとえば、閲覧やメール) を使用できない管理ワークステーションを用意します。 これにより、閲覧やメールを使用する攻撃ベクトルから管理者アカウントが保護され、主要なインシデントのリスクが大幅に低下します。
 **詳細**: 管理ワークステーションを使用します。 ワークステーションのセキュリティのレベルを選択します。

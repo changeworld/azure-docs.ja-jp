@@ -13,17 +13,17 @@ ms.date: 04/02/2017
 ms.author: curtand
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
-ms.openlocfilehash: 51cfe2c448fde8c50f8b846979a4b35fa4be5ec1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f27dd7daf310e425b09db7905ad2f7c37fcff81
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056030"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834168"
 ---
 # <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>2 要素検証方法を使用して職場または学校アカウントにサインインする
 
 > [!NOTE]
-> この記事では、一般的なサインイン エクスペリエンスを紹介しています。 サインインに関するヘルプやトラブルシューティングについては、「[2 段階認証で発生する問題](multi-factor-authentication-end-user-troubleshoot.md)」を参照してください。
+> この記事では、一般的なサインイン エクスペリエンスを紹介しています。 サインインに関するヘルプやトラブルシューティングについては、「[Azure AD Multi-Factor Authentication での問題](multi-factor-authentication-end-user-troubleshoot.md)」を参照してください。
 
 ## <a name="what-will-your-sign-in-experience-be"></a>さまざまなサインイン エクスペリエンス
 2 番目の要素として使うものに何を選ぶかにより (電話、認証アプリ、またはテキスト)、サインイン エクスペリエンスが異なります。 お客さまの操作内容に最も近いものを選択してください。
@@ -59,7 +59,7 @@ ms.locfileid: "90056030"
 
    ![Microsoft が通知を送信する](./media/multi-factor-authentication-end-user-signin/notify.png)
 
-3. お客様の電話で通知を開き、**確認**キーを選択します。 PIN の入力が必要な企業の場合は、ここで入力します。
+3. お客様の電話で通知を開き、**確認** キーを選択します。 PIN の入力が必要な企業の場合は、ここで入力します。
 4. これでサインインできます。
 
 ### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリと確認コードを使用してサインインするには
@@ -83,7 +83,7 @@ Microsoft Authenticator アプリを使用して確認コードを取得する�
    ![別の方法を使用する](./media/multi-factor-authentication-end-user-signin/alt.png)
 
 ## <a name="next-steps"></a>次のステップ
-- 2 段階認証を使用したサインインに問題がある場合は、「[2 段階認証で発生する問題](multi-factor-authentication-end-user-troubleshoot.md)」を参照してください。
+- 2 段階認証を使用したサインインに問題がある場合は、「[Azure AD Multi-Factor Authentication での問題](multi-factor-authentication-end-user-troubleshoot.md)」を参照してください。
 
 - 2 段階認証設定を管理する方法については、「[2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md)」を参照してください。
 

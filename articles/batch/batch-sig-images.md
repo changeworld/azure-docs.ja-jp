@@ -2,14 +2,14 @@
 title: Shared Image Gallery を使用してカスタム イメージ プールを作成する
 description: カスタム イメージ プールは、Batch ワークロードを実行する計算ノードを構成するための効率的な方法です。
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 11/18/2020
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 4a41e8345bdb4c4e8761debe8e6b39f8588f5a8c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c24da435540f62a793620fe6005d176ce10c7b05
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745524"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917785"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Shared Image Gallery を使用してカスタム イメージ プールを作成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "92745524"
 
 - **Azure Batch アカウント。** Batch アカウントを作成するには、[Azure portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
 
-- **Shared Image Gallery のイメージ** 。 共有イメージを作成するには、マネージド イメージ リソースが必要です。ない場合は作成する必要があります。 イメージは、VM の OS ディスクと、それに接続されたデータ ディスク (後者はオプション) のスナップショットから作成する必要があります。
+- **Shared Image Gallery のイメージ**。 共有イメージを作成するには、マネージド イメージ リソースが必要です。ない場合は作成する必要があります。 イメージは、VM の OS ディスクと、それに接続されたデータ ディスク (後者はオプション) のスナップショットから作成する必要があります。
 
 > [!NOTE]
 > 共有イメージが Batch アカウントと同じサブスクリプションに含まれていない場合は、そのサブスクリプションの [Microsoft.Batch リソース プロバイダーを登録](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)する必要があります。 2 つのサブスクリプションが同じ Azure AD テナントに存在する必要があります。
@@ -73,6 +73,7 @@ Azure では、以下から作成できるマネージド イメージから共�
 - VM には、Azure 拡張機能 (カスタム スクリプト拡張機能など) をインストールしないでください。 イメージにプレインストールされた拡張機能が含まれる場合、Azure で Batch プールのデプロイ時に問題が発生する可能性があります。
 - 添付データ ディスクを含める場合は、それらを使用する VM 内からディスクを マウントおよびフォーマットする必要があります。
 - 提供するベース OS イメージには、必ず既定の一時ドライブを使用するようにしてください。 現在、Batch ノード エージェントでは、既定の一時ドライブを使用する必要があります。
+- OS ディスクが暗号化されていないことを確認します。
 - VM が実行状態になったら、RDP (Windows の場合) または SSH (Linux の場合) を使用して VM に接続します。 必要なソフトウェアをインストールしたり、必要なデータをコピーしてください。  
 
 ### <a name="create-a-vm-snapshot"></a>VM スナップショットを作成する
@@ -218,7 +219,7 @@ client.pool.add(new_pool)
 
 共有イメージを使用して、数百または数千以上の VM を含むプールを作成する場合は、次のガイダンスを参考にしてください。
 
-- **Shared Image Gallery のレプリカ番号。**  最大 600 個のインスタンスを含むプールごとに、少なくとも 1 つのレプリカを保持することをお勧めします。 たとえば、3000 個の VM を含むプールを作成する場合は、イメージのレプリカを少なくとも 5 つは保持するようにしてください。 パフォーマンスを向上させるために、最小要件よりも多くのレプリカを保持することを常にお勧めします。
+- **Shared Image Gallery のレプリカ番号。**  最大 300 個のインスタンスを含むプールごとに、少なくとも 1 つのレプリカを保持することをお勧めします。 たとえば、3000 個の VM を含むプールを作成する場合は、イメージのレプリカを少なくとも 10 個は保持するようにしてください。 パフォーマンスを向上させるために、最小要件よりも多くのレプリカを保持することを常にお勧めします。
 
 - **サイズ変更のタイムアウト。** プールに含まれるノード数が固定の場合 (自動スケーリングしない場合) は、プールのサイズに応じてプールの `resizeTimeout` プロパティの値を大きくしてください。 サイズ変更のタイムアウトの推奨値は、VM 1000 個ごとに最短で 15 分です。 たとえば、2000 個の VM があるプールの場合、サイズ変更のタイムアウトの推奨値は最短で 30 分です。
 

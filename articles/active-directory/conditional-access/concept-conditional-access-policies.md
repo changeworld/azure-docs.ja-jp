@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5361460f7816dd4a3b2b53deecd9d360f98ad1d3
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 74e4ca34a69b121ce5b92ad52125dc317e3aea43
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145362"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837670"
 ---
 # <a name="building-a-conditional-access-policy"></a>条件付きアクセス ポリシーの構築
 
-「 [条件付きアクセスとは](overview.md)」の記事で説明されているように、条件付きアクセス ポリシーは、 **割り当て** と **アクセス制御** の if then ステートメントです。 条件付きアクセス ポリシーではシグナルをまとめ、決定を行い、組織のポリシーを適用します。
+「[条件付きアクセスとは](overview.md)」の記事で説明されているように、条件付きアクセス ポリシーは、**割り当て** と **アクセス制御** の if then ステートメントです。 条件付きアクセス ポリシーではシグナルをまとめ、決定を行い、組織のポリシーを適用します。
 
 組織ではこれらのポリシーをどのように作成しますか? 必要なものは何ですか? どのように適用しますか?
 
@@ -101,7 +101,7 @@ ms.locfileid: "92145362"
 
 許可コントロールでは、1 つまたは複数のコントロールの適用をトリガーできます。 
 
-- 多要素認証 (Azure Multi-Factor Authentication) を要求する
+- 多要素認証 (Azure AD Multi-Factor Authentication) を要求する
 - デバイスが準拠としてマーク済みであることを必要とする (Intune)
 - ハイブリッド Azure AD 参加済みのデバイスを必要とする
 - 承認済みクライアント アプリを必須にする
@@ -133,10 +133,10 @@ ms.locfileid: "92145362"
 
 条件付きアクセス ポリシーを適用するには、少なくとも以下のものが含まれている必要があります。
 
-- ポリシーの **名前** 。
+- ポリシーの **名前**。
 - **代入**
-   - ポリシーを適用する **ユーザーまたはグループあるいはその両方** 。
-   - ポリシーを適用する **クラウド アプリまたはアクション** 。
+   - ポリシーを適用する **ユーザーまたはグループあるいはその両方**。
+   - ポリシーを適用する **クラウド アプリまたはアクション**。
 - **アクセス制御**
    - **許可** または **ブロック** コントロール
 
@@ -150,7 +150,7 @@ ms.locfileid: "92145362"
 
 [Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md) (条件付きアクセスの What If ツールを使用したサインイン動作のシミュレート)
 
-[クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画](../authentication/howto-mfa-getstarted.md)
+[クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画](../authentication/howto-mfa-getstarted.md)
 
 [Intune でのデバイス コンプライアンスの管理](/intune/device-compliance-get-started)
 

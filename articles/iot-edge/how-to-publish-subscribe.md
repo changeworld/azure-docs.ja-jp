@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: ef92895374f07c79f8ba8d626a0aab3d89733f40
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 1ace40098e1d53c6199accea755ffb6969781663
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629650"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015665"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Aure IoT Edge を使用した発行とサブスクライブ
 
@@ -209,7 +209,7 @@ IoT ハブのトピックの承認は、ユーザー定義のトピックとは�
 
 ## <a name="publish-and-subscribe-on-user-defined-topics"></a>ユーザー定義のトピックでの発行とサブスクライブ
 
-この記事では、トピックをサブスクライブする **sub_client** という名前の 1 つのクライアントと、トピックに発行する **pub_client** というもう 1 つのクライアントを使用します。 [対称キー認証](how-to-authenticate-downstream-device.md#symmetric-key-authentication)を使用しますが、[x.509 自己署名認証](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)または [x.509 自己署名認証](./how-to-authenticate-downstream-device.md#x509-self-signed-authentication)を使用して行うこともできます。
+この記事では、トピックをサブスクライブする **sub_client** という名前の 1 つのクライアントと、トピックに発行する **pub_client** というもう 1 つのクライアントを使用します。 [対称キー認証](how-to-authenticate-downstream-device.md#symmetric-key-authentication)を使用しますが、[x.509 自己署名認証](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)または [x.509 CA 署名認証](./how-to-authenticate-downstream-device.md#x509-ca-signed-authentication)を使用して行うこともできます。
 
 ### <a name="create-publisher-and-subscriber-clients"></a>パブリッシャーとサブスクライバーのクライアントを作成する
 

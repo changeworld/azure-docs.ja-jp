@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: 578f3244381c94552a159589478781640629271f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: b309ce01595e2e62bea7f78ae728d83bc7d9b9be
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788640"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992167"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance で一般的なセキュリティ要件を解決するためのプレイブック
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -80,11 +80,11 @@ ID の中央管理には、次のような利点があります。
 - 簡素化された柔軟なアクセス許可の管理。
 - 大規模なアプリケーションの管理。
 
-**実装方法** :
+**実装方法**:
 
 - Azure Active Directory (Azure AD) 認証を使用して、ID の集中管理を行います。
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - Azure AD テナントを作成し、人間のユーザーを表す[ユーザーを作成](../../active-directory/fundamentals/add-users-azure-active-directory.md)し、アプリ、サービス、自動化ツールを表す[サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md)を作成します。 サービス プリンシパルは、Windows および Linux でのサービス アカウントに相当します。
 
@@ -107,24 +107,24 @@ ID の中央管理には、次のような利点があります。
 > [!NOTE]
 >
 > - Azure AD 認証は Azure SQL 監査ログに記録されますが、Azure AD サインイン ログには記録されません。
-> - Azure で付与された RBAC アクセス許可は、Azure SQL Database または SQL Managed Instance のアクセス許可には適用されません。 このようなアクセス許可は、既存の SQL アクセス許可を使用して手動で作成またはマップする必要があります。
+> - Azure で付与された Azure RBAC アクセス許可は、Azure SQL Database または SQL Managed Instance のアクセス許可には適用されません。 このようなアクセス許可は、既存の SQL アクセス許可を使用して手動で作成またはマップする必要があります。
 > - クライアント側では、Azure AD 認証にはインターネットへのアクセス、またはユーザー定義ルート (UDR) 経由の仮想ネットワークへのアクセスが必要です。
 > - Azure AD アクセス トークンはクライアント側にキャッシュされ、その有効期間はトークンの構成によって異なります。 「[Azure Active Directory における構成可能なトークンの有効期間](../../active-directory/develop/active-directory-configurable-token-lifetimes.md)」という記事を参照してください。
 > - Azure AD Authentication の問題のトラブルシューティングのガイダンスについては、次のブログを参照してください。[Azure AD のトラブルシューティング](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991)。
 
-### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
+### <a name="azure-ad-multi-factor-authentication"></a>Azure AD の Multi-Factor Authentication
 
 > 次で言及されています: OSA プラクティス #2、ISO アクセス制御 (AC)
 
-Azure Multi-Factor Authentication は、複数の形式の認証を要求することにより、セキュリティを強化するのに役立ちます。
+Azure AD Multi-Factor Authentication では、複数の形式の認証が要求されるので、セキュリティが強化されます。
 
-**実装方法** :
+**実装方法**:
 
 - 条件付きアクセスを使用して Azure AD で [Multi-Factor Authentication を有効](../../active-directory/authentication/concept-mfa-howitworks.md)にし、対話型認証を使用します。
 
 - 別の方法として、Azure AD または AD ドメイン全体で Multi-Factor Authentication を有効にすることもできます。
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - Azure AD で条件付きアクセスをアクティブにします (Premium サブスクリプションが必要)。
   - [Azure AD での条件付きアクセス](../../active-directory/conditional-access/overview.md)に関する記事を参照してください。  
@@ -144,7 +144,7 @@ Azure Multi-Factor Authentication は、複数の形式の認証を要求する�
     - [bcp ユーティリティ](/sql/tools/bcp-utility): オプション -G (対話型)
 
 - Multi-Factor Authentication をサポートする対話型認証を使用して、Azure SQL Database または Azure SQL Managed Instance に接続するアプリケーションを実装します。
-  - 「[Azure Multi-Factor Authentication を使用して Azure SQL Database に接続する](active-directory-interactive-connect-azure-sql-db.md)」という記事を参照してください。
+  - [Azure AD Multi-Factor Authentication を使用した Azure SQL Database への接続](active-directory-interactive-connect-azure-sql-db.md)に関する記事を参照してください。
   > [!NOTE]
   > この認証モードには、ユーザーベースの ID が必要です。 個々の Azure AD ユーザー認証をバイパスする信頼できる ID モデルが使用されている場合 (たとえば、Azure リソースにマネージド ID を使用)、Multi-Factor Authentication は適用されません。
 
@@ -154,11 +154,11 @@ Azure Multi-Factor Authentication は、複数の形式の認証を要求する�
 
 パスワードベースの認証方法は、強度が低い認証形式です。 資格情報が侵害されたり、誤って漏洩したりする可能性があります。
 
-**実装方法** :
+**実装方法**:
 
 - パスワードの使用を排除する Azure AD 統合認証を使用します。
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - Windows の資格情報を使用したシングル サインオン認証を使用します。 オンプレミスの AD ドメインを Azure AD とフェデレーションし、(Azure AD を使用するドメインに参加しているコンピューターに対して) 統合 Windows 認証を使用します。
   - [Azure AD 統合認証に対する SSMS のサポート](authentication-aad-configure.md#active-directory-integrated-authentication)に関する記事を参照してください。
@@ -167,11 +167,11 @@ Azure Multi-Factor Authentication は、複数の形式の認証を要求する�
 
 > 次で言及されています: OSA プラクティス #4、ISO アクセス制御 (AC)
 
-**実装方法** :
+**実装方法**:
 
 - Azure マネージド ID を有効にします。 また、統合認証や証明書ベースの認証を使用することもできます。
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - [Azure リソースに対してマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用します。
   - [システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql.md)
@@ -188,11 +188,11 @@ Azure Multi-Factor Authentication は、複数の形式の認証を要求する�
 
 パスワードの使用を避けられない場合は、それらがセキュリティで保護されていることを確認します。
 
-**実装方法** :
+**実装方法**:
 
 - Azure Key Vault を使用してパスワードとシークレットを格納します。 適用できる場合は必ず、Azure AD ユーザーを含む Azure SQL Database に対して Multi-Factor Authentication を使用します。
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - パスワードやシークレットを回避できない場合は、ユーザー パスワードとアプリケーション シークレットを Azure Key Vault に保存し、Key Vault のアクセス ポリシーを使用してアクセスを管理します。
 
@@ -202,11 +202,11 @@ Azure Multi-Factor Authentication は、複数の形式の認証を要求する�
 
 SQL 認証とは、ユーザーがユーザー名とパスワードを使用して Azure SQL Database または SQL Managed Instance に接続するときに、そのユーザーを認証することを指します。 ログインは、サーバーまたはマネージド インスタンスごとに作成し、ユーザーはデータベースごとに作成する必要があります。
 
-**実装方法** :
+**実装方法**:
 
 - SQL 認証を使用します。
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - サーバーまたはインスタンス管理者として、ログインとユーザーを作成します。 パスワードを持つ包含データベース ユーザーを使用する場合を除いて、すべてのパスワードはマスター データベースに格納されます。
   - [SQL Database、SQL Managed Instance、Azure Synapse Analytics へのデータベース アクセスの制御と許可](logins-create-manage.md)に関する記事を参照してください。
@@ -221,7 +221,7 @@ SQL 認証とは、ユーザーがユーザー名とパスワードを使用し�
 
 最小特権の原則には、ユーザーは自分のタスクを完了するのに必要である以上の特権を持つべきではないと記載されています。 詳細については、「[Just Enough Administration](/powershell/scripting/learn/remoting/jea/overview)」という記事を参照してください。
 
-**実装方法** :
+**実装方法**:
 
 必要なタスクを完了するのに必要な[アクセス許可](/sql/relational-databases/security/permissions-database-engine)のみを割り当てます。
 
@@ -244,7 +244,7 @@ SQL 認証とは、ユーザーがユーザー名とパスワードを使用し�
     - [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)
     - [Azure カスタム ロール](../../role-based-access-control/custom-roles.md)
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 次のベスト プラクティスは省略可能ですが、セキュリティ戦略の管理容易性とサポート容易性が向上します。
 
@@ -281,7 +281,7 @@ SQL 認証とは、ユーザーがユーザー名とパスワードを使用し�
 
 職務の分離では、機密性の高いタスクを、別々のユーザーに割り当てられる複数のタスクに分割する必要性が述べられています。 職務を分離することで、データの侵害を防ぐことができます。
 
-**実装方法** :
+**実装方法**:
 
 - 必要な職務の分離レベルを特定します。 例 :
   - 開発/テスト環境と運用環境の間
@@ -308,7 +308,7 @@ SQL 認証とは、ユーザーがユーザー名とパスワードを使用し�
   - プロセスへの人間の介入。
   - 監査証跡 - 監査の詳細については、「[重要なセキュリティ イベントを監査する](#audit-critical-security-events)」を参照してください。
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - 開発/テスト環境と運用環境で、別々のアカウントが使用されていることを確認します。 別々のアカウントを使用すると、テストと運用のシステムの分離に従うことができます。
 
@@ -352,7 +352,7 @@ SoD についてより深く知りたい読者には、次のリソースをお�
 
 職務の分離は、データベース内のデータに限定されず、アプリケーション コードも含まれます。 悪意のあるコードが、セキュリティ制御をくぐり抜ける可能性があります。 カスタム コードを運用環境にデプロイする前に、デプロイされる内容を確認する必要があります。
 
-**実装方法** :
+**実装方法**:
 
 - ソース管理をサポートする Azure Data Studio のようなデータベース ツールを使用します。
 
@@ -360,7 +360,7 @@ SoD についてより深く知りたい読者には、次のリソースをお�
 
 - メイン ブランチにコミットする前に、(コード自体の作成者以外の) ユーザーが、特権の昇格の可能性に関するリスクや悪意のあるデータ変更がないかコードを検査して、不正および悪意のあるアクセスから保護する必要があります。 これは、ソース管理メカニズムを使用して実行できます。
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - 標準化: すべてのコード更新で従うべき標準的手順を実装すると役立ちます。
 
@@ -395,12 +395,12 @@ SoD についてより深く知りたい読者には、次のリソースをお�
 
 保存時の暗号化は、データベース、ログ、およびバックアップ ファイルに保存されているときのデータの暗号化保護です。
 
-**実装方法** :
+**実装方法**:
 
 - サービス マネージド キーを使用した [Transparent Database Encryption (TDE)](transparent-data-encryption-tde-overview.md) は、2017 年より後に Azure SQL Database および SQL Managed Instance で作成されたすべてのデータベースに対して既定で有効になっています。
 - マネージド インスタンスで、オンプレミス サーバーを使用した復元操作からデータベースが作成された場合は、元のデータベースの TDE 設定が使用されます。 元のデータベースで TDE が有効になっていない場合は、マネージド インスタンスに対して手動で TDE を有効にすることをお勧めします。
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - 保存時の暗号化を必要とするデータをマスター データベースに格納しないでください。 マスター データベースは、TDE を使用して暗号化できません。
 
@@ -414,11 +414,11 @@ SoD についてより深く知りたい読者には、次のリソースをお�
 
 どのデータが機密であるかや、機密データをメモリ内で暗号化して管理者がプレーンテキストで使用できないようにするかどうかを判定するポリシーは、お客様の組織とお客様が準拠する必要がある法令遵守規定に固有です。 関連する要件を確認してください （「[機密データを特定してタグを付ける](#identify-and-tag-sensitive-data)」）。
 
-**実装方法** :
+**実装方法**:
 
 - [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) を使用して、メモリ内にある場合や使用中であっても、機密データが Azure SQL Database または SQL Managed Instance にプレーンテキストで確実に公開されないようにします。 Always Encrypted により、データベース管理者 (DBA) とクラウド管理者 (または、高い特権を持つが未承認のユーザーを偽装できる悪意のあるアクター) からデータを保護し、データにアクセスできるユーザーをより細かく制御できます。
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - Always Encrypted は、保存データ (TDE) または転送中のデータ (SSL/TLS) の暗号化の代替ではありません。 パフォーマンスと機能への影響を最小限に抑えるため、機密データ以外のデータには Always Encrypted を使用しないでください。 保存時、転送中、使用中のデータを包括的に保護するには、TDE およびトランスポート層セキュリティ (TLS) と組み合わせて Always Encrypted を使用することをお勧めします。
 
@@ -446,7 +446,7 @@ SoD についてより深く知りたい読者には、次のリソースをお�
 
 暗号化は、暗号化キーにアクセスできる特定のアプリケーション ユーザーのみがデータを表示また更新できるようにするための方法として使用できます。
 
-**実装方法** :
+**実装方法**:
 
 - セル レベルの暗号化 (CLE) を使用します。 詳細については、「[データの列の暗号化](/sql/relational-databases/security/encryption/encrypt-a-column-of-data)」という記事を参照してください。
 - Always Encrypted を使用してください。ただし、制限事項には注意してください。 制限事項を次に示します。
@@ -472,14 +472,14 @@ Always Encrypted が、基本的に、使用中の機密データを Azure SQL D
 
 承認されていないユーザーがデータを表示するのを防ぐもう 1 つの方法は、ユーザー アプリケーションが引き続きデータを処理および表示できるようにデータの型と形式を維持しながら、データを難読化またはマスクすることです。
 
-**実装方法** :
+**実装方法**:
 
 - テーブルの列を難読化するには、[動的データ マスク](/sql/relational-databases/security/dynamic-data-masking)を使用します。
 
 > [!NOTE]
 > Always Encrypted は、動的データ マスクでは機能しません。 同じ列を暗号化してマスクすることはできません。つまり、使用中のデータを保護することと、動的データ マスクによってアプリ ユーザーのデータをマスクすることのどちらを優先するかを決める必要があります。
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 > [!NOTE]
 > 動的データ マスクを使用して、高い特権を持つユーザーからデータを保護することはできません。 マスク ポリシーは、db_owner のような管理者アクセス権を持つユーザーには適用されません。
@@ -499,11 +499,11 @@ Always Encrypted が、基本的に、使用中の機密データを Azure SQL D
 
 既知の脆弱性 (たとえば、古い TLS プロトコルと暗号スイートを使用するなど) があるクライアント マシンとアプリケーションが Azure SQL Database および SQL Managed Instance に接続できないようにする方法のベスト プラクティス。
 
-**実装方法** :
+**実装方法**:
 
 - Azure SQL Database および SQL Managed Instance に接続しているクライアント コンピューターでは、確実に [トランスポート層セキュリティ (TLS)](security-overview.md#transport-layer-security-encryption-in-transit) を使用します。
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - 暗号化を有効にしてすべてのアプリとツールを SQL Database に接続するように構成します
   - Encrypt = On、TrustServerCertificate = Off (または Microsoft 以外のドライバーでの同等のもの)。
@@ -524,7 +524,7 @@ Always Encrypted が、基本的に、使用中の機密データを Azure SQL D
 
 > 次で言及されています: OSA プラクティス #5
 
-**実装方法** :
+**実装方法**:
 
 SQL Database:
 
@@ -536,7 +536,7 @@ SQL Managed Instance の場合:
 
 - 「[ネットワークの要件](../managed-instance/connectivity-architecture-overview.md#network-requirements)」のガイドラインに従います。
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - (たとえば、プライベート データ パスを使用して) プライベート エンドポイントで接続することにより、Azure SQL Database および SQL Managed Instance へのアクセスを制限します。
   - マネージド インスタンスは、外部アクセスを防ぐために、仮想ネットワーク内で分離することができます。 同じリージョン内の同じまたはピアリングされた仮想ネットワークにあるアプリケーションとツールは、直接アクセスできます。 異なるリージョンにあるアプリケーションとツールは、仮想ネットワーク間接続や ExpressRoute 回線のピアリングを使用して接続を確立できます。 ユーザーは、ネットワーク セキュリティ グループ (NSG) を使用して、ポート 1433 でのアクセスを、マネージド インスタンスへのアクセスを必要とするリソースのみに制限する必要があります。
@@ -560,7 +560,7 @@ SQL Managed Instance の場合:
 
 ### <a name="configure-power-bi-for-secure-connections-to-sql-databasesql-managed-instance"></a>SQL Database または SQL Managed Instance へのセキュリティで保護された接続用に Power BI を構成する
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - Power BI Desktop の場合、可能な限りプライベート データ パスを使用します。
 
@@ -572,7 +572,7 @@ SQL Managed Instance の場合:
 
 ### <a name="configure-app-service-for-secure-connections-to-sql-databasesql-managed-instance"></a>SQL Database または SQL Managed Instance へのセキュリティで保護された接続用に App Service を構成する
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - 単純な Web アプリの場合、パブリック エンドポイント経由で接続するには、 **[Azure サービスを許可する]** を [オン] に設定する必要があります。
 
@@ -586,7 +586,7 @@ SQL Managed Instance の場合:
 
 ### <a name="configure-azure-virtual-machine-hosting-for-secure-connections-to-sql-databasesql-managed-instance"></a>SQL Database または SQL Managed Instance へのセキュリティで保護された接続用に Azure 仮想マシンのホスティングを構成する
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - Azure 仮想マシンの NSG で許可と拒否の規則を組み合わせて使用して、VM からアクセスできるリージョンを制御します。
 
@@ -610,7 +610,7 @@ SQL Managed Instance の場合:
 
 > 次で言及されています: OSA プラクティス #9
 
-**実装方法** :
+**実装方法**:
 
 DDoS 保護は、Azure プラットフォームの一部として自動的に有効になります。 これには、パブリック エンドポイントでのネットワーク レベル攻撃に対する常時オンのトラフィック監視とリアルタイム軽減策が含まれます。
 
@@ -618,7 +618,7 @@ DDoS 保護は、Azure プラットフォームの一部として自動的に有
 
 - [SQL Database の Advanced Threat Protection](threat-detection-overview.md) を使用して、データベースに対するサービス拒否 (DoS) 攻撃を検出します。
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - 「[攻撃対象領域を最小限にする](#minimize-attack-surface)」で説明されているプラクティスに従うことで、DDoS 攻撃の脅威を最小限にすることができます。
 
@@ -637,7 +637,7 @@ DDoS 保護は、Azure プラットフォームの一部として自動的に有
 
 Advanced Threat Protection を使用すると、異常なアクティビティに対するセキュリティ アラートを提供することで、潜在的な脅威が発生したときにそれを検出して対応することができます。
 
-**実装方法** :
+**実装方法**:
 
 - [Advanced Threat Protection for SQL](threat-detection-overview.md#alerts) を使用して、通常と異なる、害を及ぼす可能性のあるデータベースへのアクセスや悪用の試行を検出します。たとえば、次のようなものがあります。
   - SQL インジェクション攻撃。
@@ -645,7 +645,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
   - 特権の悪用。
   - データ窃盗。
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - 特定のサーバーまたはマネージド インスタンス用に [Azure Defender for SQL](azure-defender-for-sql.md)  を構成します。 [Azure Security Center の Standard レベル](../../security-center/security-center-pricing.md)に切り替えて、サブスクリプション内のすべてのサーバーおよびマネージド インスタンス用に Azure Defender for SQL を構成することもできます。
 
@@ -655,13 +655,13 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 
 データベース イベントを追跡すると、データベース アクティビティを理解するために役立ちます。 ビジネス上の懸念やセキュリティ違反の疑いを示す可能性のある不一致や異常について分析情報を得ることができます。 また、これにより、コンプライアンス基準への準拠を可能にし、促進します。
 
-**実装方法** :
+**実装方法**:
 
 -  [SQL Database 監査](../../azure-sql/database/auditing-overview.md)または [Managed Instance の監査](../managed-instance/auditing-configure.md)を有効にしてデータベース イベントを追跡し、それらを Azure Storage アカウント、Log Analytics ワークスペース (プレビュー)、または Event Hubs (プレビュー) の監査ログに書き込みます。
 
 - 監査ログは、Azure Storage アカウント、Log Analytics ワークスペース (Azure Monitor ログで使用)、またはイベント ハブ (イベント ハブで使用) に書き込むことができます。 これらのオプションは組み合わせて構成でき、それぞれの場所に監査ログが書き込まれます。
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - イベントを監査するためにサーバーまたは [Managed Instance Auditing](../managed-instance/auditing-configure.md) に [SQL Database 監査](../../azure-sql/database/auditing-overview.md)を構成すると、そのサーバー上の既存および新しく作成されたすべてのデータベースが監査されます。
 - 既定で、監査ポリシーには、データベースに対するすべてのアクション (クエリ、ストアド プロシージャ、成功および失敗したログイン) が含まれます。その結果、大量の監査ログが生成される可能性があります。 [PowerShell を使用してさまざまな種類のアクションとアクション グループの監査を構成する](./auditing-overview.md#manage-auditing)ことをお勧めします。 これを構成すると、監査されるアクションの数を制御し、イベント損失のリスクを最小限に抑えることができます。 カスタムの監査構成を使うと、必要な監査データのみをキャプチャできます。
@@ -670,7 +670,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 > [!NOTE]
 > Log Analytics に対する監査を有効にすると、インジェストのレートに基づくコストが発生します。 この[オプション](https://azure.microsoft.com/pricing/details/monitor/)を使用した場合のコストを承知のうえで利用するか、または、監査ログを Azure ストレージ アカウントに格納することを検討してください。
 
-**その他のリソース** :
+**その他のリソース**:
 
 - [SQL データベースの監査](../../azure-sql/database/auditing-overview.md)
 - [SQL Server 監査](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
@@ -679,12 +679,12 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 
 ストレージ アカウントへのアクセスを制限して、職務の分離をサポートし、DBA と監査者を分離します。
 
-**実装方法** :
+**実装方法**:
 
 - 監査ログを Azure Storage に保存するときは、ストレージ アカウントへのアクセスが最小限のセキュリティ原則に合わせて制限されていることを確認します。 ストレージ アカウントにアクセスできるユーザーを制御します。
 - 詳細については、[Azure Storage へのアクセスの承認](../../storage/common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関する記事を参照してください。
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - 監査ターゲットへのアクセスを制御することは、DBA を監査者から分離する際の重要な概念です。
 
@@ -698,13 +698,13 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 
 潜在的なデータベースの脆弱性を検出して修正することにより、データベースのセキュリティを事前に強化します。
 
-**実装方法** :
+**実装方法**:
 
 - [SQL 脆弱性評価](/sql/relational-databases/security/sql-vulnerability-assessment) (VA) を有効にしてデータベースのセキュリティ問題をスキャンし、データベースで定期的に自動実行されるようにします。
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
-- 最初に、データベース上で VA を実行し、セキュリティのベスト プラクティスに反する失敗したチェックを修正して繰り返します。 スキャンが " _クリーン_ " になるか、すべてのチェックに合格するまで、許容される構成のベースラインを設定します。  
+- 最初に、データベース上で VA を実行し、セキュリティのベスト プラクティスに反する失敗したチェックを修正して繰り返します。 スキャンが "_クリーン_" になるか、すべてのチェックに合格するまで、許容される構成のベースラインを設定します。  
 
 - 定期的な反復スキャンを 1 週間に 1 回実行するように構成し、関係者が概要のメールを受信するように構成します。
 
@@ -712,7 +712,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 
 - チェックを解決し、関連するベースラインを更新します。 アクションを解決するためのチケット項目を作成し、それらが解決されるまで追跡します。
 
-**その他のリソース** :
+**その他のリソース**:
 
 - [SQL 脆弱性評価](/sql/relational-databases/security/sql-vulnerability-assessment)
 - [SQL 脆弱性評価サービスは、データベースの脆弱性を特定するのに役に立ちます](sql-vulnerability-assessment.md)
@@ -721,14 +721,14 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 
 機密データが含まれている可能性がある列を検出します。 何が機密データとみなされるかは、お客様や遵守すべき規則などによって大きく異なり、そのデータを所管するユーザーによって評価される必要があります。 機密度に基づく高度な監査と保護のシナリオを使用するために、列を分類します。
 
-**実装方法** :
+**実装方法**:
 
 - [SQL データの検出と分類](data-discovery-and-classification-overview.md)を使用して、データベース内の機密データを検出、分類、ラベル付け、および保護します。
   - [SQL Data Discovery and Classification]\(SQL データの検出と分類\) ダッシュボードで、自動検出によって作成された分類の推奨事項を確認します。 機密データに分類ラベルが永続的にタグ付けされるように、関連する分類を受け入れます。
   - 自動メカニズムによって検出されなかったその他の機密データ フィールドについては、手動で分類を追加します。
 - 詳しくは、「[SQL データの検出と分類](/sql/relational-databases/security/sql-data-discovery-and-classification)」をご覧ください。
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - データベースの分類状態を正確に評価するために、分類ダッシュボードを定期的に監視します。 コンプライアンスと監査の目的で、データベースの分類状態に関するレポートをエクスポートまたは印刷して共有することができます。
 
@@ -740,12 +740,12 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 
 機密データにアクセスするユーザーを監視し、監査ログで機密データに対するクエリをキャプチャします。
 
-**実装方法** :
+**実装方法**:
 
 - SQL 監査とデータ分類を組み合わせて使用します。
   - [SQL Database Audit](../../azure-sql/database/auditing-overview.md) ログで、特に機密データへのアクセスを追跡できます。 また、アクセスされたデータや機密ラベルなどの情報を表示することもできます。 詳細については、[データ検出と分類](data-discovery-and-classification-overview.md)に関するページと「[機密データへのアクセスの監査](data-discovery-and-classification-overview.md#audit-sensitive-data)」を参照してください。
 
-**ベスト プラクティス** :
+**ベスト プラクティス**:
 
 - 監査とデータ分類に関するセクションのベスト プラクティスを参照してください。
   - [重要なセキュリティ イベントを監査する](#audit-critical-security-events)
@@ -755,7 +755,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 
 データ センター (SQL Database のデータベースを含む) のセキュリティ体制を強化する、統一されたインフラストラクチャ セキュリティ管理システムを使用します。 データベースとコンプライアンス状態のセキュリティに関連する推奨事項の一覧を表示します。
 
-**実装方法** :
+**実装方法**:
 
 - [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) で、SQL に関連したセキュリティの推奨事項とアクティブな脅威を監視します。
 
@@ -769,11 +769,11 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 
 パブリック エンドポイント経由でサーバーに接続するとデータ窃盗のリスクが生じます。これは、ユーザーがパブリック IP に対してファイアウォールを開く必要があるからです。  
 
-**シナリオ 1** : Azure VM 上のアプリケーションが Azure SQL Database 内のデータベースに接続します。 悪意のあるアクターが VM にアクセスして、不正に侵入します。 このシナリオにおけるデータ窃盗とは、承認されていない VM を使用する外部エンティティがデータベースに接続し、個人データをコピーし、それを BLOB ストレージや、別のサブスクリプションの別の SQL データベースに格納することを意味します。
+**シナリオ 1**: Azure VM 上のアプリケーションが Azure SQL Database 内のデータベースに接続します。 悪意のあるアクターが VM にアクセスして、不正に侵入します。 このシナリオにおけるデータ窃盗とは、承認されていない VM を使用する外部エンティティがデータベースに接続し、個人データをコピーし、それを BLOB ストレージや、別のサブスクリプションの別の SQL データベースに格納することを意味します。
 
-**シナリオ 2** : 悪意のある DBA。 このシナリオは、規制対象業界のセキュリティに敏感なお客様によって提起されます。 このシナリオでは、高い特権を持つユーザーが、Azure SQL Database から、データ所有者によって制御されていない別のサブスクリプションにデータをコピーする可能性があります。
+**シナリオ 2**: 悪意のある DBA。 このシナリオは、規制対象業界のセキュリティに敏感なお客様によって提起されます。 このシナリオでは、高い特権を持つユーザーが、Azure SQL Database から、データ所有者によって制御されていない別のサブスクリプションにデータをコピーする可能性があります。
 
-**考えられる軽減策** :
+**考えられる軽減策**:
 
 現在、Azure SQL Database および SQL Managed Instance では、データ窃盗の脅威を軽減するために次の方法が提供されています。
 

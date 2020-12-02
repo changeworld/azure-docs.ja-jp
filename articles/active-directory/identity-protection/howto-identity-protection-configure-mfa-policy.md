@@ -11,27 +11,27 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4c6b57eaa2a68906053faade48dd0e63fbf0db7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 072db1d47abd95844075aeedfeddc4f8cf6bf936
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84464336"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835868"
 ---
-# <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>方法:Azure Multi-Factor Authentication 登録ポリシーを構成する
+# <a name="how-to-configure-the-azure-ad-multi-factor-authentication-registration-policy"></a>方法:Azure AD Multi-Factor Authentication 登録ポリシーを構成する
 
-Azure AD Identity Protection を使用すると、多要素認証 (MFA) 登録を要求する条件付きアクセス ポリシーを構成することによって、サインインする先進認証アプリに関係なく、MFA 登録の展開を管理できます。
+Azure AD Identity Protection を使用すると、多要素認証 (MFA) 登録を要求する条件付きアクセス ポリシーを構成することによって、サインインする先進認証アプリに関係なく、Azure AD Multi-Factor Authentication (MFA) 登録の展開を管理できます。
 
-## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>Azure Multi-Factor Authentication 登録ポリシーとは
+## <a name="what-is-the-azure-ad-multi-factor-authentication-registration-policy"></a>Azure AD Multi-Factor Authentication 登録ポリシーとは
 
-Azure Multi-Factor Authentication は、ユーザー名とパスワードに加えて、その他の要素を使用することでユーザーを確認する手段を提供します。 ユーザーのサインインに第 2 のセキュリティ層を提供します。ユーザーが MFA プロンプトに応答できるようにするには、まず Azure Multi-Factor Authentication に登録する必要があります。
+Azure AD Multi-Factor Authentication は、ユーザー名とパスワードに加えて、その他の要素を使用することでユーザーを確認する手段を提供します。 ユーザーのサインインに第 2 のセキュリティ層を提供します。ユーザーが MFA プロンプトに応答できるようにするには、まず Azure AD Multi-Factor Authentication に登録する必要があります。
 
-次のような理由から、ユーザーのサインインに対して Azure Multi-Factor Authentication を要求することをお勧めします。
+次のような理由から、ユーザーのサインインに対して Azure AD Multi-Factor Authentication を要求することをお勧めします。
 
 - 幅広い検証オプションを通して強力な認証が提供されます。
 - 組織が Identity Protection でのリスク検出から自己修復するための準備において重要な役割を果たします。
 
-Azure Multi-Factor Authentication の詳細については、[Azure Multi-Factor Authentication の概要](../authentication/howto-mfa-getstarted.md)に関するページをご覧ください。
+Azure AD Multi-Factor Authentication の詳細については、[Azure AD Multi-Factor Authentication の概要](../authentication/howto-mfa-getstarted.md)に関するページをご覧ください。
 
 ## <a name="policy-configuration"></a>ポリシーの構成
 
@@ -41,7 +41,7 @@ Azure Multi-Factor Authentication の詳細については、[Azure Multi-Factor
       1. **[ユーザー]** - **[すべてのユーザー]** を選択します。ロールアウトを制限する場合は **[個人と グループの選択]** を選択します。
          1. 必要に応じて、ポリシーからユーザーを除外できます。
    1. **[コントロール]** で:
-      1. **[Azure MFA への登録を必須とする]** チェックボックスがオンであることを確認し、 **[選択]** を選択します。
+      1. **[Azure AD MFA への登録を必須とする]** チェックボックスがオンであることを確認し、 **[選択]** を選択します。
    1. **[ポリシーの適用]**  -  **[オン]**
    1. **および**
 
@@ -59,4 +59,4 @@ Azure Active Directory Identity Protection によって、次回対話形式で�
 
 - [Azure AD のセルフサービス パスワード リセット を有効にする](../authentication/howto-sspr-deployment.md)
 
-- [Azure Multi-Factor Authentication を有効にする](../authentication/howto-mfa-getstarted.md)
+- [Azure AD の Multi-Factor Authentication を有効にする](../authentication/howto-mfa-getstarted.md)

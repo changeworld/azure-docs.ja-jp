@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f0c19e33ab6f91e69f9c7dbc5bc29fef1fd53bb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0143da9c1961b4123467120210135f7db2c582c8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964878"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839575"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory でパスワードレス認証のデプロイを計画する
 
@@ -67,9 +67,9 @@ Microsoft のパスワードレス認証方法では、さまざまなシナリ�
 
 | 前提条件 | Authenticator アプリ | FIDO2 セキュリティ キー |
 | --- | --- | --- |
-| [Azure Multi-Factor Authentication とセルフサービス パスワード リセット (SSPR) の統合された登録](howto-registration-mfa-sspr-combined.md)が有効になっている | √ | √ |
-| [ユーザーが Azure Multi-Factor Authentication を実行できる](howto-mfa-getstarted.md) | √ | √ |
-| [ユーザーが Azure Multi-Factor Authentication と SSPR の登録をしている](howto-registration-mfa-sspr-combined.md) | √ | √ |
+| [Azure AD Multi-Factor Authentication とセルフサービス パスワード リセット (SSPR) の統合された登録](howto-registration-mfa-sspr-combined.md)が有効になっている | √ | √ |
+| [ユーザーが Azure AD Multi-Factor Authentication を実行できる](howto-mfa-getstarted.md) | √ | √ |
+| [ユーザーが Azure AD Multi-Factor Authentication と SSPR の登録をしている](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [ユーザーがモバイル デバイスを Azure Active Directory に登録している](../devices/overview.md) | √ |   |
 | Microsoft Edge や Mozilla Firefox などのサポートされているブラウザーを使用している Windows 10 バージョン 1809 以降 <br> (バージョン 67 以降)。 <br> *ネイティブ サポートには 1903 以降のバージョンをお勧めします*。 |   | √ |
 | 互換性のある FIDO2 セキュリティ キー。 [Microsoft でテストおよび検証済み](./concept-authentication-passwordless.md)の FIDO2 セキュリティ デバイスまたは他の互換性のある FIDO2 セキュリティ デバイスを確実に使用します。 |   | √ |
@@ -78,9 +78,9 @@ Microsoft のパスワードレス認証方法では、さまざまなシナリ�
 
 Windows Hello の前提条件は、オンプレミス、ハイブリッド、クラウドのみのどの構成にデプロイするかに大きく依存します。 詳細については、[Windows Hello for Business の前提条件の完全な一覧](/windows/security/identity-protection/hello-for-business/hello-identity-verification)を参照してください。
 
-### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
+### <a name="azure-ad-multi-factor-authentication"></a>Azure AD の Multi-Factor Authentication
 
-ユーザーは、Azure Multi-Factor Authentication 登録フローの一部として、自身のパスワードレスの方法を登録します。 ユーザー名とパスワードによる多要素認証と別の登録済み方法を、一部のシナリオで電話またはセキュリティ キーを使用できない場合の代替手段として使用できます。
+ユーザーは、Azure AD Multi-Factor Authentication 登録フローの一部として、自身のパスワードレスの方法を登録します。 ユーザー名とパスワードによる多要素認証と別の登録済み方法を、一部のシナリオで電話またはセキュリティ キーを使用できない場合の代替手段として使用できます。
 
 ### <a name="licensing"></a>ライセンス 
 パスワードレス認証には追加料金は発生しませんが、一部の前提条件では Premium サブスクリプションが必要になる場合があります。 機能とライセンスの詳細については、[Azure Active Directory のライセンスに関するページ](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。 
@@ -140,7 +140,7 @@ Microsoft Authenticator アプリは Google Play または Apple App Store か�
 
 **AD FS 統合** - ユーザーが Microsoft Authenticator のパスワードなしの資格情報を有効にすると、そのユーザーの認証では、既定で承認のための通知が送信されます。 ハイブリッド テナントのユーザーは、[代わりにパスワードを使用する] を選択しない限り、サインインのために ADFS に送られることはありません。 このプロセスでは、オンプレミスの条件付きアクセス ポリシーとパススルー認証フローもバイパスされます。 ただし、*login_hint* が指定されている場合、ユーザーは ADFS に転送され、パスワードなしの資格情報を使用するオプションはバイパスされます。
 
-**Azure Multi-Factor Authentication Server** - 組織のオンプレミスの Azure MFA Server を介した多要素認証が有効になっているエンド ユーザーは、1 つのパスワードレスの電話によるサインイン資格情報を作成して使用できます。 ユーザーがその資格情報で Microsoft Authenticator の複数のインストール (5 つ以上) をアップグレードしようとすると、この変更はエラーになることがあります。
+**Azure AD Multi-Factor Authentication Server** - 組織のオンプレミスの Azure MFA Server を介した多要素認証が有効になっているエンド ユーザーは、1 つのパスワードレスの電話によるサインイン資格情報を作成して使用できます。 ユーザーがその資格情報で Microsoft Authenticator の複数のインストール (5 つ以上) をアップグレードしようとすると、この変更はエラーになることがあります。
 
 **デバイス登録** - Authenticator アプリをパスワードなし認証に使用するには、デバイスを Azure AD テナントに登録する必要があり、共有デバイスは使用できません。 デバイスは 1 つのテナントにのみ登録できます。 この制限は、Authenticator アプリを使用する電話サインインに対して、1 つの職場または学校アカウントのみがサポートされることを意味します。
 
@@ -152,7 +152,7 @@ Microsoft Authenticator アプリは Google Play または Apple App Store か�
 -    ハイブリッド Azure Active Directory 参加済み Windows 10 デバイス (プレビュー)
      -    クラウドベースとオンプレミスの両方のリソースへのアクセスを提供します。 オンプレミスのリソースへのアクセスの詳細については、「[FIDO2 キーを使用したオンプレミスのリソースへの SSO](./howto-authentication-passwordless-security-key-on-premises.md)」を参照してください。
 
-**互換性のある FIDO2 セキュリティ キー**を有効にする必要があります。 Microsoft は、[FIDO2 キー ベンダーとの重要なパートナーシップ](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Microsoft-passwordless-partnership-leads-to-innovation-and-great/ba-p/566493)を発表しました。
+**互換性のある FIDO2 セキュリティ キー** を有効にする必要があります。 Microsoft は、[FIDO2 キー ベンダーとの重要なパートナーシップ](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Microsoft-passwordless-partnership-leads-to-innovation-and-great/ba-p/566493)を発表しました。
 
 **Azure AD Web アプリと Azure AD Windows 参加済みデバイスの場合**:
 
@@ -212,7 +212,7 @@ FIDO2 セキュリティ キーを使用して Windows 10 のサインインを�
 
 Azure AD には、技術やビジネスの分析情報を提供するレポートがあります。 ビジネスおよび技術アプリケーションの所有者に、組織の要件に基づいてこれらのレポートの所有権を引き受けさせ、レポートを使用させます。
 
-管理者は、Azure Active Directory ポータルの [**認証**方法] セクションで、パスワードなしの資格情報の設定を有効にし、管理することができます。
+管理者は、Azure Active Directory ポータルの [**認証** 方法] セクションで、パスワードなしの資格情報の設定を有効にし、管理することができます。
 
 Azure AD では、次の場合に監査ログにエントリが追加されます。
 

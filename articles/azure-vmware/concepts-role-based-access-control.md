@@ -1,16 +1,16 @@
 ---
-title: 概念 - ロールベースのアクセス制御 (RBAC)
-description: Azure VMware Solution のロールベースのアクセス制御の主な機能について説明します
+title: 概念 - vSphere ロールベースのアクセス制御 (vSphere RBAC)
+description: Azure VMware Solution の vSphere ロールベースのアクセス制御の主な機能について説明します
 ms.topic: conceptual
 ms.date: 10/23/2020
-ms.openlocfilehash: 6e1864fdfe397325a7c5ba601b625bcc1776174c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: fbd5b48ce30a6612c45ebd97f08812efd29c50b3
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535488"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888404"
 ---
-# <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>Azure VMware Solution のロールベースのアクセス制御 (RBAC)
+# <a name="vsphere-role-based-access-control-vsphere-rbac-for-azure-vmware-solution"></a>Azure VMware Solution の vSphere ロールベースのアクセス制御 (vSphere RBAC)
 
 Azure VMware Solution では、vCenter に cloudadmin という組み込みのローカル ユーザーがあり、組み込みの CloudAdmin ロールに割り当てられています。 このローカルの cloudadmin ユーザーを使用して、AD にユーザーが設定されます。 通常、プライベート クラウドのワークロードは、CloudAdmin ロールによって作成と管理が行われます。 Azure VMware Solution では、CloudAdmin ロールには、他の VMware クラウド ソリューションとは異なる vCenter 特権があります。     
 

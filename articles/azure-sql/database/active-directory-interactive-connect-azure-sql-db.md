@@ -11,17 +11,17 @@ author: GithubMirek
 ms.author: MirekS
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: bef6e6c5ef795c192a846700fc046aa20274502d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 93831ec4c1dc3e34c2ea144e71b67dae711ee870
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673411"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841650"
 ---
-# <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を使用して Azure SQL Database に接続する
+# <a name="connect-to-azure-sql-database-with-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication を使用して Azure SQL Database に接続する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-この記事では、Azure SQL Database に接続する C# プログラムについて説明します。 このプログラムでは、[Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) をサポートする対話モードの認証を使用します。
+この記事では、Azure SQL Database に接続する C# プログラムについて説明します。 このプログラムでは、[Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) をサポートする対話モードの認証を使用します。
 
 SQL ツールでの多要素認証のサポートの詳細については、「[SQL Server Data Tools (SSDT) での Azure Active Directory のサポート](/sql/ssdt/azure-active-directory)」をご覧ください。
 
@@ -39,7 +39,7 @@ SQL ツールでの多要素認証のサポートの詳細については、「[
 
 * システムから携帯電話に送信された多要素認証確認コードの入力を求めるダイアログ ボックス。
 
-多要素認証を要求するように Azure AD を構成する方法については、「[クラウドベースの Azure Multi-Factor Authentication をデプロイする](../../active-directory/authentication/howto-mfa-getstarted.md)」をご覧ください。
+多要素認証を要求するように Azure AD を構成する方法については、「[クラウドベースの Azure AD Multi-Factor Authentication をデプロイする](../../active-directory/authentication/howto-mfa-getstarted.md)」をご覧ください。
 
 これらのダイアログのスクリーンショットについては、「[SQL Server Management Studio と Azure AD 用に多要素認証を構成する](authentication-mfa-ssms-configure.md)」をご覧ください。
 
@@ -56,7 +56,7 @@ SQL ツールでの多要素認証のサポートの詳細については、「[
 
 Azure AD 認証を使用するには、C# プログラムで Azure AD アプリケーションとして登録する必要があります。 アプリを登録するには、Azure AD 管理者または Azure AD *Application Developer* のロールが割り当てられたユーザーである必要があります。 ロールの割り当ての詳細については、「[Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる](../../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)」を参照してください。
 
-アプリの登録を完了すると、 **アプリケーション ID** が生成され、表示されます。 接続するには、プログラムにこの ID を含める必要があります。
+アプリの登録を完了すると、**アプリケーション ID** が生成され、表示されます。 接続するには、プログラムにこの ID を含める必要があります。
 
 アプリケーションに必要なアクセス許可を登録して設定するには:
 
@@ -64,7 +64,7 @@ Azure AD 認証を使用するには、C# プログラムで Azure AD アプリ�
 
     ![アプリの登録](./media/active-directory-interactive-connect-azure-sql-db/image1.png)
 
-    アプリの登録が作成されると、 **アプリケーション ID** 値が生成され、表示されます。
+    アプリの登録が作成されると、**アプリケーション ID** 値が生成され、表示されます。
 
     ![表示されたアプリ ID](./media/active-directory-interactive-connect-azure-sql-db/image2.png)
 
@@ -72,7 +72,7 @@ Azure AD 認証を使用するには、C# プログラムで Azure AD アプリ�
 
     ![登録済みのアプリのアクセス許可の設定](./media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
 
-3. **[所属する組織で使用している API]** を選択し、検索ボックスに「 **Azure SQL Database** 」と入力して、 **[Azure SQL Database]** を選択します。
+3. **[所属する組織で使用している API]** を選択し、検索ボックスに「**Azure SQL Database**」と入力して、 **[Azure SQL Database]** を選択します。
 
     ![Azure SQL Database の API へのアクセスの追加](./media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
 
@@ -150,9 +150,9 @@ C# プログラムを実行する予定の場合、同じ構成で、同じコ�
 > [!NOTE]
 > .NET Core を使用している場合は、[Microsoft.Data.SqlClient](/dotnet/api/microsoft.data.sqlclient?view=sqlclient-dotnet-core-1.1) 名前空間を使用することをお勧めします。 詳細については、[ブログ記事](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)をご覧ください。
 
-この C# サンプル プログラムでは、 [*Microsoft.IdentityModel.Clients.ActiveDirectory*](/dotnet/api/microsoft.identitymodel.clients.activedirectory) DLL アセンブリを利用します。
+この C# サンプル プログラムでは、[*Microsoft.IdentityModel.Clients.ActiveDirectory*](/dotnet/api/microsoft.identitymodel.clients.activedirectory) DLL アセンブリを利用します。
 
-このパッケージをインストールするには、Visual Studio で **[プロジェクト]**  >  **[NuGet パッケージの管理]** の順に選択します。 「 **Microsoft.IdentityModel.Clients.ActiveDirectory** 」を検索してインストールします。
+このパッケージをインストールするには、Visual Studio で **[プロジェクト]**  >  **[NuGet パッケージの管理]** の順に選択します。 「**Microsoft.IdentityModel.Clients.ActiveDirectory**」を検索してインストールします。
 
 これは C# のソース コードの例です。
 

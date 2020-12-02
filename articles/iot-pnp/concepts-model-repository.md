@@ -3,16 +3,16 @@ title: デバイス モデル リポジトリの概念の理解 | Microsoft Docs
 description: ソリューション開発者や IT プロフェッショナル向けに、デバイス モデル リポジトリの基本的な概念について説明します。
 author: rido-min
 ms.author: rmpablos
-ms.date: 09/30/2020
+ms.date: 11/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4e15ef5256c1552fc8ab7fb9bd84f15bb3433834
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: b567efe2541bb33c905def73bb78398799b4ed69
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131362"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920544"
 ---
 # <a name="device-model-repository"></a>デバイス モデル リポジトリ
 
@@ -30,7 +30,7 @@ Microsoft によって、これらの特性を持つパブリック DMR がホ�
 
 ## <a name="custom-device-model-repository"></a>カスタム デバイス モデル リポジトリ
 
-ローカル ファイル システムやカスタム HTTP Web サーバーなどの任意のストレージ メディア内で同じ DMR パターンを使用して、カスタム DMR を作成できます。 DMR にアクセスするために使用するベース URL を変更するだけで、パブリック DMR と同じ方法でカスタム DMR からデバイス モデルを取得できます。
+ローカル ファイル システムやカスタム HTTP Web サーバーなどの任意のストレージ メディア内で同じ DMR パターンを使用して、カスタム DMR を作成します。 DMR にアクセスするために使用するベース URL を変更して、パブリック DMR と同じ方法でカスタム DMR からデバイス モデルを取得できます。
 
 > [!NOTE]
 > Microsoft は、パブリック DMR のデバイス モデルを検証するためのツールを提供しています。 これらのツールはカスタム リポジトリで再利用できます。
@@ -47,7 +47,7 @@ Microsoft によって、これらの特性を持つパブリック DMR がホ�
 
 ### <a name="resolve-models"></a>モデルを解決する
 
-プログラムを使用してこれらのインターフェイスにアクセスするには、DTMI を、パブリック エンドポイントのクエリに使用できる相対パスに変換する必要があります。 次のコード サンプルは、この方法を示します。
+プログラムを使用してこれらのインターフェイスにアクセスするには、DTMI を、パブリック エンドポイントのクエリに使用できる相対パスに変換する必要があります。
 
 DTMI を絶対パスに変換するには、`IsValidDtmi` と共に `DtmiToPath` 関数を使用します。
 
@@ -85,47 +85,82 @@ string modelContent = await _httpClient.GetStringAsync(fullyQualifiedPath);
 > [!Important]
 > パブリック DMR にモデルを送信できるようにするには、GitHub アカウントが必要です。
 
-1. パブリック GitHub リポジトリをフォークします: [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models)。
+1. パブリック GitHub リポジトリ ([https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models)) をフォークします。
 1. フォークされたリポジトリをクローンします。 必要に応じて、新しいブランチを作成して、変更を `main` ブランチから分離します。
-1. フォルダーまたはファイル名の規則を使用して、新しいインターフェイスを `dtmi` フォルダーに追加します。 [add-model](#add-model) ツールを参照してください。
-1. [変更を検証するためのスクリプト](#validate-files)のセクションを使用して、デバイス モデルをローカルで検証します。
+1. フォルダーまたはファイル名の規則を使用して、新しいインターフェイスを `dtmi` フォルダーに追加します。 詳細については、「[`dtmi/` フォルダーへのモデルのインポート](#import-a-model-to-the-dtmi-folder)」を参照してください。
+1. `dmr-client` ツールを使用して、ローカルでモデルを検証します。 詳細については、「[モデルを検証する](#validate-models)」を参照してください。
 1. 変更をローカルでコミットし、フォークにプッシュします。
 1. フォークから、`main` ブランチを対象とするプル要求を作成します。 「[Issue もしくはプル リクエストの作成](https://docs.github.com/free-pro-team@latest/desktop/contributing-and-collaborating-using-github-desktop/creating-an-issue-or-pull-request)」のドキュメントを参照してください。
 1. [プル要求の要件](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md)を確認します。
 
-送信された新しいインターフェイスを検証し、プル要求がすべてのチェックを満たすことを確認する一連の GitHub アクションがプル要求によってトリガーされます。
+送信されたインターフェイスを検証する一連の GitHub アクションがプル要求によってトリガーされ、プル要求がすべての要件を満たしていることが確認されます。
 
 Microsoft によって、3 営業日以内にすべてのチェックが行われ、プル要求への応答が行われます。
 
-### <a name="add-model"></a>add-model
+### <a name="dmr-client-tools"></a>`dmr-client` のツール
 
-次の手順は、add-model.js スクリプトを使用して新しいインターフェイスを追加する方法を示しています。 このスクリプトでは、Node.js を実行する必要があります。
+PR チェック中にモデルの検証に使用されるツールは、DTDL インターフェイスをローカルに追加して検証する際にも使用できます。
 
-1. コマンド プロンプトから、ローカル git リポジトリに移動します
-1. `npm install` を実行します。
-1. `npm run add-model <path-to-file-to-add>` を実行します。
+> [!NOTE]
+> このツールには、[.NET SDK](https://dotnet.microsoft.com/download) バージョン 3.1 以上が必要です。
+
+### <a name="install-dmr-client"></a>`dmr-client` のインストール
+
+```bash
+curl -L https://aka.ms/install-dmr-client-linux | bash
+```
+
+```powershell
+iwr https://aka.ms/install-dmr-client-windows -UseBasicParsing | iex
+```
+
+### <a name="import-a-model-to-the-dtmi-folder"></a>`dtmi/` フォルダーへのモデルのインポート
+
+モデルが既に json ファイルに格納されている場合は、`dmr-client import` コマンドを使用して、`dtmi/` フォルダーに正しいファイル名で追加できます。
+
+```bash
+# from the local repo root folder
+dmr-client import --model-file "MyThermostat.json"
+```
+
+> [!TIP]
+> `--local-repo` 引数を使用して、ローカル リポジトリのルート フォルダーを指定できます。
+
+### <a name="validate-models"></a>モデルを検証する
+
+以下の `dmr-client validate` コマンドを使用して、モデルを検証できます。
+
+```bash
+dmr-client validate --model-file ./my/model/file.json
+```
+
+> [!NOTE]
+> 検証では、すべてのインターフェイスが DTDL 言語仕様と互換性があることを確認するために、最新の DTDL パーサー バージョンが使用されます。
+
+外部の依存関係を検証するには、それらがローカル リポジトリに存在している必要があります。 モデルを検証するには、`--repo` オプションを使用して `local` フォルダーまたは `remote` フォルダーを指定し、依存関係を解決します。
+
+```bash
+# from the repo root folder
+dmr-client validate --model-file ./my/model/file.json --repo .
+```
+
+### <a name="strict-validation"></a>厳密な検証
+
+DMR には追加の[要件](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md)が含まれています。その要件に対してモデルを検証するには、`stict` フラグを使用します。
+
+```bash
+dmr-client validate --model-file ./my/model/file.json --repo . --strict true
+```
 
 コンソール出力にエラー メッセージが表示されていないかを確認します。
 
-### <a name="local-validation"></a>ローカル検証
+### <a name="export-models"></a>モデルをエクスポートする
 
-プル要求を送信する前に、同じ検証チェックをローカルで実行して、問題を事前に診断することができます。
+JSON 配列を使用することで、モデルを特定リポジトリ (ローカルまたはリモート) から 1 つのファイルにエクスポートできます。
 
-#### <a name="validate-files"></a>validate-files
-
-`npm run validate-files <file1.json> <file2.json>` により、ファイル パスが予期されるフォルダーおよびファイル名と一致することが確認されます。
-
-#### <a name="validate-ids"></a>validate-ids
-
-`npm run validate-ids <file1.json> <file2.json>` により、ドキュメント内で定義されているすべての ID がメイン ID と同じルートを使用していることが確認されます。
-
-#### <a name="validate-deps"></a>validate-deps
-
-`npm run validate-deps <file1.json> <file2.json>` により、すべての依存関係が `dtmi` フォルダー内で使用可能であることが確認されます。
-
-#### <a name="validate-models"></a>validate-models
-
-[DTDL 検証サンプル](https://github.com/Azure-Samples/DTDL-Validator)を実行して、デバイス モデルをローカルで検証できます。
+```bash
+dmr-client export --dtmi "dtmi:com:example:TemperatureController;1" -o TemperatureController.expanded.json
+```
 
 ## <a name="next-steps"></a>次のステップ
 

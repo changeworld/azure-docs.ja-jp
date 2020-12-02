@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f6c75337c27e14fb77161cf641cde0a582901e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff2651d2fed9c307bbb90623572b4a74d750d3a4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90014635"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836072"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
 
@@ -261,11 +261,11 @@ Office チームでは、Office ポータルに現在の製品名が反映され
 ## <a name="operational-best-practice"></a>操作のベスト プラクティス    
 Windows Server Active Directory と Azure Active Directory 間で同期を行う場合に実行する必要があるベスト プラクティスを次に示します。
 
-**同期されるすべてのアカウントに Multi-Factor Authentication を適用する** Azure Multi-Factor Authentication は、ユーザーにとり代わらずに平易でありながら、データやアプリケーションへのアクセスを保護します。 第 2 の認証方式を要求することでセキュリティが向上し、使用が簡単なさまざまな認証方法によって強力な認証を実現しています。 ユーザーは、管理者が行う構成上の決定に基づいて、MFA で認証が行われる場合と行われない場合があります。 MFA の詳細は、こちら https://www.microsoft.com/security/business/identity/mfa?rtc=1 を参照してください。
+**同期されるすべてのアカウントに Multi-Factor Authentication を適用する** Azure AD Multi-Factor Authentication は、ユーザーにとり代わらずに平易でありながら、データやアプリケーションへのアクセスを保護します。 第 2 の認証方式を要求することでセキュリティが向上し、使用が簡単なさまざまな認証方法によって強力な認証を実現しています。 ユーザーは、管理者が行う構成上の決定に基づいて、MFA で認証が行われる場合と行われない場合があります。 MFA の詳細は、こちら https://www.microsoft.com/security/business/identity/mfa?rtc=1 を参照してください。
 
 **Azure AD Connect サーバーのセキュリティ ガイドラインに従う** Azure AD Connect サーバーには、重要な ID データが格納されているため、[Active Directory 管理階層モデル](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)の説明に従い、階層 0 のコンポーネントとして取り扱う必要があります。 こちらの[お使いの AADConnect サーバーを保護するガイドライン](./how-to-connect-install-prerequisites.md#azure-ad-connect-server)の説明も参照してください。
 
-**資格情報の漏洩に対して PHS を有効にする** パスワード ハッシュの同期では、ご自分のハイブリッド アカウントの[漏洩資格情報検出](../identity-protection/concept-identity-protection-risks.md)も有効になります。 Microsoft はダーク Web の研究者や法執行機関と協力し、公で利用できるユーザー名とパスワードのペアを見つけています。 これらの任意のペアがご自分のユーザーのものと一致する場合、関連付けられているアカウントは高リスクに移されます。 
+**資格情報の漏洩に対して PHS を有効にする** パスワード ハッシュの同期では、ご自分のハイブリッド アカウントの [漏洩資格情報検出](../identity-protection/concept-identity-protection-risks.md)も有効になります。 Microsoft はダーク Web の研究者や法執行機関と協力し、公で利用できるユーザー名とパスワードのペアを見つけています。 これらの任意のペアがご自分のユーザーのものと一致する場合、関連付けられているアカウントは高リスクに移されます。 
 
 
 ## <a name="troubleshooting"></a>トラブルシューティング

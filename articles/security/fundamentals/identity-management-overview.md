@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 48d0483247f610a1e8c7491e13ea86883bf8f341
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 2c7d51da361816841ff556c1da696a48d2ce6a06
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410370"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843691"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure ID 管理のセキュリティの概要
 
@@ -79,13 +79,13 @@ Azure AD アプリケーション プロキシを使用すると、[SharePoint](
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Azure Multi-Factor Authentication は、複数の確認方法の使用を要求することで、ユーザーのサインインとトランザクションに重要な 2 つ目のセキュリティ レイヤーを追加する認証方法です。 Multi-Factor Authentication を使えば、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護できます。 電話やテキスト メッセージ、モバイル アプリによる通知のほか、確認コードやサード パーティの OAuth トークンなど、一連の照合方法を通じて確実な認証を行うことができます。
+Azure AD Multi-Factor Authentication は、複数の確認方法の使用を要求することで、ユーザーのサインインとトランザクションに重要な 2 つ目のセキュリティ レイヤーを追加する認証方法です。 Multi-Factor Authentication を使えば、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護できます。 電話やテキスト メッセージ、モバイル アプリによる通知のほか、確認コードやサード パーティの OAuth トークンなど、一連の照合方法を通じて確実な認証を行うことができます。
 
 詳細情報:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Azure Multi-Factor Authentication とは](../../active-directory/authentication/concept-mfa-howitworks.md)
-* [Azure Multi-Factor Authentication のしくみ](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Azure AD Multi-Factor Authentication とは](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Azure AD の Multi-Factor Authentication の仕組み](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="azure-rbac"></a>Azure RBAC
 
@@ -107,10 +107,10 @@ Azure RBAC は Azure Resource Manager 上に構築された認可システムで
 
 Azure portal では、レポートは次のカテゴリに分類されます。
 
-* **異常レポート** : 異常と考えられるサインイン イベントが含まれます。 この目的は、このようなアクティビティを認識し、イベントが不審であるかどうかを判断できるようにすることです。
-* **統合アプリケーション レポート** : 組織内のクラウド アプリケーションの使用状況に関する分析情報を提供します。 Azure AD は、何千ものクラウド アプリケーションとの統合を提供します。
-* **エラー レポート** : 外部アプリケーションにアカウントをプロビジョニングするときに発生することがあるエラーを示します。
-* **ユーザー固有レポート** : 特定のユーザーのデバイス サインイン アクティビティ データを表示します。
+* **異常レポート**: 異常と考えられるサインイン イベントが含まれます。 この目的は、このようなアクティビティを認識し、イベントが不審であるかどうかを判断できるようにすることです。
+* **統合アプリケーション レポート**: 組織内のクラウド アプリケーションの使用状況に関する分析情報を提供します。 Azure AD は、何千ものクラウド アプリケーションとの統合を提供します。
+* **エラー レポート**: 外部アプリケーションにアカウントをプロビジョニングするときに発生することがあるエラーを示します。
+* **ユーザー固有レポート**: 特定のユーザーのデバイス サインイン アクティビティ データを表示します。
 * **[アクティビティ ログ]** :過去 24 時間、過去 7 日間、または過去 30 日間のすべての監査イベントの記録、グループのアクティビティの変更、およびパスワードのリセットと登録のアクティビティが含まれます。
 
 詳細情報:

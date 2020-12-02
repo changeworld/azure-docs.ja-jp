@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.author: yohaddad
-ms.openlocfilehash: 5a5e448660583204d424358e571c4bfb74890e8d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: e84342bff0d2bbc3b034afc1b3c5e8a7dc4a9eb1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94737831"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015529"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
@@ -29,10 +29,10 @@ ms.locfileid: "94737831"
 
 | 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
 | --- | --- | --- | --- | --- |
-|  Rel 20-11 |  [4586793]  |  最新の累積的な更新プログラム | 6.25 | 2020 年 11 月 10 日 |
+|  Rel 20-11 OOB |  [4594442]  |  最新の累積的な更新プログラム | 6.25 | 2020 年 11 月 17 日 |
+|  Rel 20-11 OOB |  [4594441]  |  最新の累積的な更新プログラム | 5.49 | 2020 年 11 月 19 日 |
 |  Rel 20-11 |  [4580325]  |  フラッシュの更新プログラム | 3.91、4.84、5.49、6.25 | 2020 年 10 月 13 日 |
 |  Rel 20-11 |  [4586768]  |  IE の累積的な更新プログラム | 2.104、3.91、4.84 | 2020 年 11 月 10 日 |
-|  Rel 20-11 |  [4586830]  |  最新の累積的な更新プログラム | 5.49 | 2020 年 11 月 10 日 |
 |  Rel 20-11 |  [4578952]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | 2.104 | 2020 年 11 月 10 日 |
 |  Rel 20-11 |  [4578955]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | 2.104 | 2020 年 11 月 10 日 |
 |  Rel 20-11 |  [4578953]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | 4.84 | 2020 年 11 月 10 日 |
@@ -52,10 +52,10 @@ ms.locfileid: "94737831"
 |  Rel 20-11 |  [4494175]  |  マイクロコード | 5.49 | 2020 年 9 月 1 日 |
 |  Rel 20-11 |  [4494174]  |  マイクロコード | 6.25 | 2020 年 9 月 3 日 |
 
-[4586793]: https://support.microsoft.com/kb/4586793
+[4594442]: https://support.microsoft.com/kb/4594442
+[4594441]: https://support.microsoft.com/kb/4594441
 [4580325]: https://support.microsoft.com/kb/4580325
 [4586768]: https://support.microsoft.com/kb/4586768
-[4586830]: https://support.microsoft.com/kb/4586830
 [4578952]: https://support.microsoft.com/kb/4578952
 [4578955]: https://support.microsoft.com/kb/4578955
 [4578953]: https://support.microsoft.com/kb/4578953

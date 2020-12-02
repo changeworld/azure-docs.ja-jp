@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 10/14/2020
+ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: 0f7fec997ec6d0c73fe6d1039ab1033752e0cedf
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: b546b043b856fd6ec69acd63fd69a01c48d0553b
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566573"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990127"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web アプリケーション ファイアウォール (WAF) ポリシーの概要
 
@@ -43,7 +43,7 @@ URI レベルまでさらにカスタマイズする場合は、WAF ポリシー
 
 サイトごとの WAF ポリシーと同様に、固有性の高いポリシーの方が固有性の低いポリシーよりも優先されます。 つまり、URL パス マップに対する URI ごとのポリシーは、その上位にあるサイトごとまたはグローバルの WAF ポリシーよりも優先されます。
 
-## <a name="example"></a>例
+### <a name="example"></a>例
 
 たとえば、contoso.com、fabrikam.com、adatum.com という 3 つのサイトがあり、すべて同じアプリケーション ゲートウェイの背後に配置されているとします。 3 つのサイトすべてに WAF を適用する予定ですが、顧客が製品にアクセスし、閲覧し、購入する場所である adatum.com には高度なセキュリティが必要です。
 
@@ -53,7 +53,7 @@ URI レベルまでさらにカスタマイズする場合は、WAF ポリシー
 
 adatum.com/payments URI は、注意が必要な場所です。 そのため、その URI に別のポリシーを適用し、すべてのルールを有効のままにします。また、すべての除外も削除します。
 
-この例では、2 つのサイトに適用されるグローバル ポリシーがあります。 1 つのサイトに適用されるサイトごとのポリシーと、1 つの固有のパスベースのルールに適用される URI ごとのポリシーがあります。 この例に対応する PowerShell について、サイトごとのポリシーと URI ごとのポリシーを作成する方法 (存在する場合はここにリンクを挿入) を参照してください。
+この例では、2 つのサイトに適用されるグローバル ポリシーがあります。 1 つのサイトに適用されるサイトごとのポリシーと、1 つの固有のパスベースのルールに適用される URI ごとのポリシーがあります。 この例の対応する PowerShell については、「[Azure PowerShell を使用してサイト別 WAF ポリシーを構成する](per-site-policies.md)」を参照してください。
 
 ## <a name="existing-waf-configurations"></a>既存の WAF 構成
 

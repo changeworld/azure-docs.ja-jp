@@ -12,21 +12,21 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06900483598e1c03bd56cd8ac8c905f885012f08
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 7a8b013723707c4a3a087a90674227c3d41c5108
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91395891"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836939"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory でのヨーロッパの顧客のための ID データ ストレージ
 Microsoft 365 や Azure などの Microsoft Online サービスをサブスクライブしている場合、識別データは Azure AD により、組織によって提供されたアドレスに基づく地理的な場所に格納されます。 ID データの格納場所については、Microsoft Trust Center の「[データの保管場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)」のセクションを参照してください。
 
 ヨーロッパ内でアドレスを提供したお客様の場合、Azure AD は、ヨーロッパ データセンター内でほとんどの ID データを保持します。 このドキュメントでは、Azure AD サービスによりヨーロッパの外部に格納されているすべてのデータについての情報を提供します。
 
-## <a name="microsoft-azure-multi-factor-authentication"></a>Microsoft Azure Multi-Factor Authentication
+## <a name="microsoft-azure-ad-multi-factor-authentication"></a>Microsoft Azure AD Multi-Factor Authentication
 
-クラウドベースの Azure Multi-Factor Authentication では、ユーザーに最も近いデータセンターで認証が完了します。 Azure Multi-Factor Authentication のデータセンターは、北米、ヨーロッパ、アジア太平洋にあります。
+クラウドベースの Azure AD Multi-Factor Authentication では、ユーザーに最も近いデータセンターで認証が完了します。 Azure AD Multi-Factor Authentication のデータセンターは、北米、ヨーロッパ、アジア太平洋にあります。
 
 * 電話を使用する多要素認証は、米国のデータセンターから発信され、グローバル プロバイダーによってルーティングされます。
 * SMS を使用する多要素認証は、グローバル プロバイダーによってルーティングされます。
@@ -34,7 +34,7 @@ Microsoft 365 や Azure などの Microsoft Online サービスをサブスク�
     * Apple のプッシュ通知などのデバイス ベンダー固有のサービスは、ヨーロッパ外部にある可能性があります。
 * ヨーロッパのデータセンターから発信される OATH コードを使用する多要素認証要求は、ヨーロッパで検証されます。
 
-Azure Multi-Factor Authentication Server (MFA Server) およびクラウドベースの Azure MFA によって収集されるユーザー情報の詳細については、「[Azure Multi-Factor Authentication によるユーザー データの収集](../authentication/howto-mfa-reporting-datacollection.md)」を参照してください。
+Azure Multi-Factor Authentication Server (MFA Server) およびクラウドベースの Azure AD MFA によって収集されるユーザー情報の詳細については、「[Azure Multi-Factor Authentication によるユーザー データの収集](../authentication/howto-mfa-reporting-datacollection.md)」を参照してください。
 
 ## <a name="password-based-single-sign-on-for-enterprise-applications"></a>エンタープライズ アプリケーションでのパスワードベースのシングル サインオン
  

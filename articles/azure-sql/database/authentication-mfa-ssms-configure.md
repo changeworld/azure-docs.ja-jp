@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 2de48946088316e9070e13396f124148a4ff6099
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 094e40fe55e1ba51b0539d740ecb449a8327d6a6
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675022"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841242"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>SQL Server Management Studio と Azure AD 用に多要素認証を構成する
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -29,10 +29,10 @@ ms.locfileid: "92675022"
 
 ## <a name="configuration-steps"></a>構成の手順
 
-1. **Azure Active Directory の構成** - 詳細については、「 [Azure AD ディレクトリの管理](/previous-versions/azure/azure-services/hh967611(v=azure.100))」、「 [オンプレミスのディレクトリと Azure Active Directory の統合](../../active-directory/hybrid/whatis-hybrid-identity.md)」、 [独自のドメイン名を Azure AD に追加する方法に関するブログ](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)、 [Microsoft Azure が Windows Server Active Directory とのフェデレーションをサポートするようになったことに関するブログ](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)、および [Windows PowerShell を使用した Azure AD の管理に関する記事](/previous-versions/azure/jj151815(v=azure.100))を参照してください。
-2. **MFA の構成** - 詳細な手順については、「 [Azure Multi-Factor Authentication とは](../../active-directory/authentication/concept-mfa-howitworks.md)」、「 [Azure SQL Database と Data Warehouse での条件付きアクセス (MFA)](conditional-access-configure.md)」を参照してください (完全な条件付きアクセスの場合は Premium Azure Active Directory が必要です。 標準の Azure AD では、制限付きの MFA を使用できます)。
-3. **Azure AD Authentication の構成** - 手順については、 [Azure AD Authentication を使用して SQL Database、SQL Managed Instance、または Azure Synapse に接続する](authentication-aad-overview.md)方法に関するページをご覧ください。
-4. **SSMS のダウンロード** - クライアント コンピューターで、「 [SQL Server Management Studio (SSMS) のダウンロード](/sql/ssms/download-sql-server-management-studio-ssms)」から SSMS の最新版をダウンロードします。
+1. **Azure Active Directory の構成** - 詳細については、「[Azure AD ディレクトリの管理](/previous-versions/azure/azure-services/hh967611(v=azure.100))」、「[オンプレミスのディレクトリと Azure Active Directory の統合](../../active-directory/hybrid/whatis-hybrid-identity.md)」、[独自のドメイン名を Azure AD に追加する方法に関するブログ](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)、[Microsoft Azure が Windows Server Active Directory とのフェデレーションをサポートするようになったことに関するブログ](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)、および [Windows PowerShell を使用した Azure AD の管理に関する記事](/previous-versions/azure/jj151815(v=azure.100))を参照してください。
+2. **MFA の構成** - 詳細な手順については、「[Azure AD Multi-Factor Authentication とは](../../active-directory/authentication/concept-mfa-howitworks.md)」、「[Azure SQL Database と Data Warehouse での条件付きアクセス (MFA)](conditional-access-configure.md)」を参照してください (完全な条件付きアクセスの場合は Premium Azure Active Directory が必要です。 標準の Azure AD では、制限付きの MFA を使用できます)。
+3. **Azure AD Authentication の構成** - 手順については、[Azure AD Authentication を使用して SQL Database、SQL Managed Instance、または Azure Synapse に接続する](authentication-aad-overview.md)方法に関するページをご覧ください。
+4. **SSMS のダウンロード** - クライアント コンピューターで、「[SQL Server Management Studio (SSMS) のダウンロード](/sql/ssms/download-sql-server-management-studio-ssms)」から SSMS の最新版をダウンロードします。
 
 ## <a name="connecting-by-using-universal-authentication-with-ssms"></a>SSMS でユニバーサル認証を使って接続する
 

@@ -3,12 +3,12 @@ title: 概念 - プライベート クラウドとクラスター
 description: Azure VMware Solution ソフトウェアによるデータ センターと vSphere クラスターの主な機能について説明します。
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: daa712a722ca3252a49e4f54e0cc9e42de4ffc73
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: af34bb0d83d9571ae91dce90cab198a61cfe82a1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337323"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967382"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware Solution のプライベート クラウドとクラスターの概念
 
@@ -38,7 +38,7 @@ Azure サブスクリプション、Azure VMware Solution のプライベート 
 
 ## <a name="hosts"></a>Hosts
 
-Azure VMware Solution プライベート クラウドのクラスターでは、ハイパーコンバージド ベアメタル インフラストラクチャ ノードが使用されます。 ホストの RAM、CPU、ディスク容量を次の表に示します。 
+Azure VMware Solution プライベート クラウドのクラスターでは、ハイパーコンバージド ベアメタル インフラストラクチャ ホストが使用されます。 ホストの RAM、CPU、ディスク容量を次の表に示します。 
 
 | ホストの種類              |             CPU             |   RAM (GB)   |  vSAN NVMe キャッシュ階層 (TB、生)  |  vSAN SSD 容量階層 (TB、生)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
@@ -59,7 +59,7 @@ Azure VMware Solution プライベート クラウドのクラスターで使用
 
 プライベート クラウド内の新しいクラスターの場合、ソフトウェア バージョンは、現在実行されているものと一致します。 サブスクリプション内の新しいプライベート クラウドの場合、ソフトウェア スタックの最新バージョンがインストールされます。
 
-Azure VMware Solution プラットフォーム ソフトウェアの一般的なアップグレード ポリシーおよびプロセスについては、[アップグレードの概念](concepts-upgrades.md)に関する記事に記載されています。
+Azure VMware Solution プラットフォーム ソフトウェアの一般的なアップグレード ポリシーおよびプロセスについては、[プライベート クラウドの更新とアップグレード](concepts-upgrades.md)に関する記事に記載されています。
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>ホストのメンテナンスとライフサイクル管理
 

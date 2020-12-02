@@ -5,12 +5,12 @@ ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.date: 10/10/2019
-ms.openlocfilehash: c20333c83275edb90a266afec3ec3756ae1e0e7e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 41b7c80c85331f288343351749e6b2e5292b30c6
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216268"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241609"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>実行時の変更による U-SQL ランタイム エラーをトラブルシューティングする方法について説明します。
 
@@ -49,9 +49,23 @@ release_YYYYMMDD_adl_buildno[_modifier]
 
 発生する可能性があるランタイム バージョンの問題として、次の 2 つが考えられます。
 
-1. スクリプトまたは一部のユーザー コードによって、あるリリースから次のリリースにかけて動作が変更される場合。 このような重大な変更は、通常はリリース ノートの発行によって事前に伝達されます。 このような重大な変更が発生した場合は、Microsoft サポートに連絡して、この重大な動作を報告し (それがまだ文書化されていない場合)、以前のランタイム バージョンに対してジョブを送信してください。
+1. スクリプトまたは一部のユーザー コードによって、あるリリースから次のリリースにかけて動作が変更される場合。 このような重大な変更は、通常はリリース ノートの発行によって事前に伝達されます。 このような破壊的変更が発生した場合は、Microsoft サポートに連絡して、この重大な動作を報告し (それがまだ文書化されていない場合)、以前のランタイム バージョンに対してジョブを送信してください。
 
-2. 既定以外のランタイムが自分のアカウントに固定されているときに、そのランタイムを明示的または暗黙的に使用していて、そのランタイムがしばらくして削除された場合。 ランタイムの欠落が発生した場合は、スクリプトをアップグレードして、現在の既定のランタイムで実行するようにしてください。 さらに時間がかかる場合は、Microsoft サポートにお問い合わせください。
+2. 既定以外のランタイムが自分のアカウントに固定されているときに、そのランタイムを明示的または暗黙的に使用していて、そのランタイムがしばらくして削除された場合。 ランタイムの欠落が発生した場合は、スクリプトをアップグレードして、現在の既定のランタイムで実行するようにしてください。 さらに時間がかかる場合は、Microsoft サポートにお問い合わせください
+
+## <a name="known-issues"></a>既知の問題
+
+* USQL スクリプトで Newtonsoft.Json ファイル バージョン 12.0.3 またはそれ以降を参照すると、次のコンパイル エラーが発生します。
+
+    *"申し訳ございません。お使いの Data Lake Analytics アカウントで実行中のジョブは実行速度が低下するか、完了できない可能性があります。予期しない問題が発生したため、この機能を Azure Data Lake Analytics アカウントに自動的に復元できません。調査のために Azure Data Lake エンジニアへ問題が送信されました。"*  
+
+    呼び出し履歴には次のものが含まれます。  
+    `System.IndexOutOfRangeException: Index was outside the bounds of the array.`  
+    `at Roslyn.Compilers.MetadataReader.PEFile.CustomAttributeTableReader.get_Item(UInt32 rowId)`  
+    `...`
+
+    **解決策**:Newtonsoft.Json ファイル v12.0.2 またはそれ以前のファイルを使用してください。
+
 
 ## <a name="see-also"></a>関連項目
 

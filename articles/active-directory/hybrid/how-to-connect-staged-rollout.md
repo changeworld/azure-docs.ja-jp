@@ -10,16 +10,16 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24eb7ac7c4490c8d27d141f6417ae157a7a9c65b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2a79ec9a54ae597bc7e9795029dc4292c2c82345
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646578"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836395"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>段階的なロールアウトを使用してクラウド認証に移行する (プレビュー)
 
-段階的なロールアウトにより、ドメインを切り替える前に、Azure Multi-Factor Authentication (MFA)、条件付きアクセス、漏洩した資格情報の ID 保護、ID 管理などのクラウド認証機能を使用して、一連のユーザーを選択的にテストすることができます。  この記事では、スイッチの作成方法について説明します。 段階的なロールアウトを開始する前に、次の条件が 1 つ以上当てはまる場合の影響を考慮する必要があります：
+段階的なロールアウトにより、ドメインを切り替える前に、Azure AD Multi-Factor Authentication (MFA)、条件付きアクセス、漏洩した資格情報の ID 保護、ID 管理などのクラウド認証機能を使用して、一連のユーザーを選択的にテストすることができます。  この記事では、スイッチの作成方法について説明します。 段階的なロールアウトを開始する前に、次の条件が 1 つ以上当てはまる場合の影響を考慮する必要があります：
     
 -  現在、オンプレミスの Multi-Factor 認証サーバーを使用しています。 
 -  認証にスマート カードを使用しています。 
@@ -45,7 +45,7 @@ ms.locfileid: "94646578"
 
 -   クラウド認証に移行するユーザーに必要なすべての適切なテナント ブランドと条件付きアクセスポリシーを構成しました。
 
--   Azure Multi-Factor Authentication の使用を計画している場合は、[セルフサービス パスワード リセット (SSPR) と Multi-Factor Authentication の統合された登録](../authentication/concept-registration-mfa-sspr-combined.md)を使用して、ユーザーが認証方法を 1 回で登録できるようにすることをお勧めします。 注: ステージングされたロールアウト中に MyProfile ページを使用してパスワードのリセットやパスワードの変更のために SSPR を使用するときは、Azure AD Connect は新しいパスワード ハッシュを同期する必要があり、これにはリセット後最大 2 分かかることがあります。
+-   Azure AD Multi-Factor Authentication の使用を計画している場合は、[セルフサービス パスワード リセット (SSPR) と Multi-Factor Authentication の統合された登録](../authentication/concept-registration-mfa-sspr-combined.md)を使用して、ユーザーが認証方法を 1 回で登録できるようにすることをお勧めします。 注: ステージングされたロールアウト中に MyProfile ページを使用してパスワードのリセットやパスワードの変更のために SSPR を使用するときは、Azure AD Connect は新しいパスワード ハッシュを同期する必要があり、これにはリセット後最大 2 分かかることがあります。
 
 -   この段階的なロールアウト機能を使用するには、テナントのグローバル管理者である必要があります。
 

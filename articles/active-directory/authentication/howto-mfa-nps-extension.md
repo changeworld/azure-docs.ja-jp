@@ -1,6 +1,6 @@
 ---
-title: NPS で Azure Multi-Factor Authentication を使用する - Azure Active Directory
-description: 既存のネットワーク ポリシー サーバー (NPS) 認証インフラストラクチャで Azure Multi-Factor Authentication の機能を使用する方法について説明します
+title: NPS で Azure AD Multi-Factor Authentication を使用する - Azure Active Directory
+description: 既存のネットワーク ポリシー サーバー (NPS) 認証インフラストラクチャで Azure AD Multi-Factor Authentication の機能を使用する方法について説明します
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,31 +12,31 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 20ae53805d25614e18f17a7d20acd884d31ab7d6
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 576b9c11f167f7c0d5fcb06e484347c643589a66
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925715"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839065"
 ---
-# <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存のネットワーク ポリシー サーバー (NPS) インフラストラクチャの統合
+# <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication と既存のネットワーク ポリシー サーバー (NPS) インフラストラクチャの統合
 
-Azure Multi-Factor Authentication のネットワーク ポリシー サーバー (NPS) 拡張機能は、既存のサーバーを使用してクラウド ベースの MFA 機能を認証インフラストラクチャに追加します。 NPS 拡張機能を使用すると、新しいサーバーをインストール、構成、管理することなく、電話、テキスト メッセージ、またはモバイル アプリによる検証を既存の認証フローに追加できます。
+Azure AD Multi-Factor Authentication のネットワーク ポリシー サーバー (NPS) 拡張機能は、既存のサーバーを使用してクラウド ベースの MFA 機能を認証インフラストラクチャに追加します。 NPS 拡張機能を使用すると、新しいサーバーをインストール、構成、管理することなく、電話、テキスト メッセージ、またはモバイル アプリによる検証を既存の認証フローに追加できます。
 
-NPS 拡張機能は、RADIUS とクラウド ベース Azure Multi-Factor Authentication の間のアダプターとして機能し、認証の 2 番目の要素をフェデレーション ユーザーまたは同期済みユーザーに提供します。
+NPS 拡張機能は、RADIUS とクラウド ベース Azure AD Multi-Factor Authentication の間のアダプターとして機能し、認証の 2 番目の要素をフェデレーション ユーザーまたは同期済みユーザーに提供します。
 
 ## <a name="how-the-nps-extension-works"></a>NPS 拡張機能のしくみ
 
-Azure Multi-Factor Authentication の NPS 拡張機能を使用する場合、認証フローには次のコンポーネントが含まれます。
+Azure AD Multi-Factor Authentication の NPS 拡張機能を使用する場合、認証フローには次のコンポーネントが含まれます。
 
-1. **NAS/VPN サーバー** : VPN クライアントから受信した要求を RADIUS 要求に変換して NPS サーバーに送信します。
-2. **NPS サーバー** : Active Directory Domain Service (AD DS) に接続して RADIUS 要求のプライマリ認証を行います。成功したら、インストール済みの任意の拡張機能に要求を渡します。  
-3. **NPS 拡張機能** : セカンダリ認証のために Azure Multi-Factor Authentication への要求をトリガーします。 応答を受信したら、MFA チャレンジが成功していた場合は、Azure STS が発行した MFA クレームを含むセキュリティ トークンを NPS サーバーに提供して認証要求を完了します。
-4. **Azure MFA** : Azure Active Directory (Azure AD) と通信してユーザーの詳細を取得し、ユーザーに構成されている検証メソッドを使用してセカンダリ認証を行います。
+1. **NAS/VPN サーバー**: VPN クライアントから受信した要求を RADIUS 要求に変換して NPS サーバーに送信します。
+2. **NPS サーバー**: Active Directory Domain Service (AD DS) に接続して RADIUS 要求のプライマリ認証を行います。成功したら、インストール済みの任意の拡張機能に要求を渡します。  
+3. **NPS 拡張機能**: セカンダリ認証のために Azure AD Multi-Factor Authentication への要求をトリガーします。 応答を受信したら、MFA チャレンジが成功していた場合は、Azure STS が発行した MFA クレームを含むセキュリティ トークンを NPS サーバーに提供して認証要求を完了します。
+4. **Azure AD MFA**: Azure Active Directory (Azure AD) と通信してユーザーの詳細を取得し、ユーザーに構成されている検証メソッドを使用してセカンダリ認証を行います。
 
 次の図に、この認証要求フローの概要を示します。
 
-![VPN サーバーを介して NPS サーバーと Azure Multi-Factor Authentication の NPS 拡張機能に対して認証を行うユーザーの認証フローの図](./media/howto-mfa-nps-extension/auth-flow.png)
+![VPN サーバーを介して NPS サーバーと Azure AD Multi-Factor Authentication の NPS 拡張機能に対して認証を行うユーザーの認証フローの図](./media/howto-mfa-nps-extension/auth-flow.png)
 
 ### <a name="radius-protocol-behavior-and-the-nps-extension"></a>RADIUS プロトコルの動作と NPS 拡張機能
 
@@ -44,27 +44,27 @@ RADIUS は UDP プロトコルであるため、送信側はパケット損失�
 
 ![NPS サーバーからの応答のタイムアウト後の RADIUS UDP パケット フローと要求の図](./media/howto-mfa-nps-extension/radius-flow.png)
 
-NPS サーバーは、MFA 要求がまだ処理されている可能性があるため、接続がタイムアウトする前は、VPN サーバーの元の要求に応答できません。 ユーザーが MFA プロンプトに正常に応答しなかった場合もあります。そのため、Azure Multi-Factor Authentication の NPS 拡張機能は、そのイベントが完了するのを待機しています。 この場合、NPS サーバーでは、追加の VPN サーバー要求が複製要求と識別されます。 NPS サーバーでは、これらの重複する VPN サーバー要求が破棄されます。
+NPS サーバーは、MFA 要求がまだ処理されている可能性があるため、接続がタイムアウトする前は、VPN サーバーの元の要求に応答できません。 ユーザーが MFA プロンプトに正常に応答しなかった場合もあります。そのため、Azure AD Multi-Factor Authentication の NPS 拡張機能は、そのイベントが完了するのを待機しています。 この場合、NPS サーバーでは、追加の VPN サーバー要求が複製要求と識別されます。 NPS サーバーでは、これらの重複する VPN サーバー要求が破棄されます。
 
 ![RADIUS サーバーからの複製要求を破棄する NPS サーバーの図](./media/howto-mfa-nps-extension/discard-duplicate-requests.png)
 
-NPS サーバーのログを見ると、これらの追加の要求が破棄されている可能性があります。 この動作は、エンド ユーザーが 1 回の認証試行に対して複数の要求を取得できないようにするための仕様です。 NPS サーバーのイベント ログの破棄された要求は、NPS サーバーまたは Azure Multi-Factor Authentication の NPS 拡張機能に問題があることを示すものではありません。
+NPS サーバーのログを見ると、これらの追加の要求が破棄されている可能性があります。 この動作は、エンド ユーザーが 1 回の認証試行に対して複数の要求を取得できないようにするための仕様です。 NPS サーバーのイベント ログの破棄された要求は、NPS サーバーまたは Azure AD Multi-Factor Authentication の NPS 拡張機能に問題があることを示すものではありません。
 
 破棄される要求を最小限に抑えるには、VPN サーバーを少なくとも 60 秒のタイムアウトで構成することをお勧めします。 必要に応じて、またはイベント ログの破棄された要求を減らすために、VPN サーバーのタイムアウト値を 90 秒または 120 秒に増やすことができます。
 
-この UDP プロトコルの動作により、NPS サーバーは、ユーザーが最初の要求に応答した後でも複製要求を受信し、別の MFA プロンプトを送信する可能性があります。 このタイミング条件を回避するために、Azure Multi-Factor Authentication の NPS 拡張機能は、正常な応答が VPN サーバーに送信されてから最大 10 秒間、複製要求をフィルター処理して破棄し続けます。
+この UDP プロトコルの動作により、NPS サーバーは、ユーザーが最初の要求に応答した後でも複製要求を受信し、別の MFA プロンプトを送信する可能性があります。 このタイミング条件を回避するために、Azure AD Multi-Factor Authentication の NPS 拡張機能は、正常な応答が VPN サーバーに送信されてから最大 10 秒間、複製要求をフィルター処理して破棄し続けます。
 
 ![正常な応答が返されてから 10 秒間、VPN サーバーからの複製要求を破棄し続ける NPS サーバーの図](./media/howto-mfa-nps-extension/delay-after-successful-authentication.png)
 
-この場合も、Azure Multi-Factor Authentication プロンプトが正常に終了したにも関わらず、NPS サーバーのイベント ログには破棄された要求がある可能性があります。 これは予期される動作であり、NPS サーバーまたは Azure Multi-Factor Authentication の NPS 拡張機能に問題があることを示すものではありません。
+この場合も、Azure AD Multi-Factor Authentication プロンプトが正常に終了したにも関わらず、NPS サーバーのイベント ログには破棄された要求がある可能性があります。 これは予期される動作であり、NPS サーバーまたは Azure AD Multi-Factor Authentication の NPS 拡張機能に問題があることを示すものではありません。
 
 ## <a name="plan-your-deployment"></a>デプロイを計画する
 
 NPS 拡張機能は、自動的に冗長性を処理するため、特別な構成は不要です。
 
-必要な数だけ Azure Multi-Factor Authentication 対応の NPS サーバーを作成できます。 複数のサーバーをインストールする場合、サーバーごとに異なるクライアント証明書を使用する必要があります。 サーバーごとに証明書を作成することは、各証明書を個別に更新でき、すべてのサーバー全体でのダウンタイムを心配しなくてもよいことを意味します。
+必要な数だけ Azure AD Multi-Factor Authentication 対応の NPS サーバーを作成できます。 複数のサーバーをインストールする場合、サーバーごとに異なるクライアント証明書を使用する必要があります。 サーバーごとに証明書を作成することは、各証明書を個別に更新でき、すべてのサーバー全体でのダウンタイムを心配しなくてもよいことを意味します。
 
-VPN サーバーは認証要求をルーティングするため、新しい Azure Multi-Factor Authentication 対応の NPS サーバーを認識する必要があります。
+VPN サーバーは認証要求をルーティングするため、新しい Azure AD Multi-Factor Authentication 対応の NPS サーバーを認識する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -72,7 +72,7 @@ NPS 拡張機能は、既存のインフラストラクチャで使用します�
 
 ### <a name="licenses"></a>ライセンス
 
-Azure Multi-Factor Authentication の NPS 拡張機能は、[Azure Multi-Factor Authentication のライセンス](multi-factor-authentication.md)をお持ちのお客様にご利用いただけます。 使用量ベースの Azure Multi-Factor Authentication のライセンス (ユーザーごと、認証ごとのライセンスなど) は、NPS 拡張機能に対応していません。
+Azure AD Multi-Factor Authentication の NPS 拡張機能は、[Azure AD Multi-Factor Authentication のライセンス](multi-factor-authentication.md)をお持ちのお客様にご利用いただけます。 使用量ベースの Azure AD Multi-Factor Authentication のライセンス (ユーザーごと、認証ごとのライセンスなど) は、NPS 拡張機能に対応していません。
 
 ### <a name="software"></a>ソフトウェア
 
@@ -95,11 +95,11 @@ Windows PowerShell 用 Microsoft Azure Active Directory モジュールも、セ
 
 NPS 拡張機能を使用するすべてのユーザーが、Azure AD Connect を使用して Azure AD に同期され、MFA の対象として登録されている必要があります。
 
-拡張機能をインストールするときは、Azure AD テナントの " *テナント ID* " と管理資格情報が必要です。 テナント ID を取得するには、次の手順のようにします。
+拡張機能をインストールするときは、Azure AD テナントの "*テナント ID*" と管理資格情報が必要です。 テナント ID を取得するには、次の手順のようにします。
 
 1. Azure テナントの全体管理者として [Azure Portal](https://portal.azure.com) にサインインします。
 1. **Azure Active Directory** を探して選択します。
-1. **[概要]** ページに、" *テナント情報* " が表示されます。 次のスクリーンショットの例に示すように、 *[テナント ID]* の横にある **[コピー]** アイコンを選択します。
+1. **[概要]** ページに、"*テナント情報*" が表示されます。 次のスクリーンショットの例に示すように、 *[テナント ID]* の横にある **[コピー]** アイコンを選択します。
 
    ![Azure portal からのテナント ID の取得](./media/howto-mfa-nps-extension/azure-active-directory-tenant-id-portal.png)
 
@@ -125,7 +125,7 @@ NPS 拡張機能をインストールする前に、認証トラフィックを�
 
 NPS サーバーは、Azure AD に接続し、MFA 要求を認証します。 この役割に対して 1 台のサーバーを選択します。 NPS 拡張機能は RADIUS でないすべての要求に対してエラーをスローするため、他のサービスからの要求を処理しないサーバーを選択することをお勧めします。 NPS サーバーを、環境のプライマリおよびセカンダリ認証サーバーとしてセットアップする必要があります。 別のサーバーに RADIUS 要求をプロキシすることはできません。
 
-1. サーバーで、 **サーバー マネージャー** を開きます。 *[クイック スタート]* メニューから **[役割と機能の追加ウィザード]** を選択します。
+1. サーバーで、**サーバー マネージャー** を開きます。 *[クイック スタート]* メニューから **[役割と機能の追加ウィザード]** を選択します。
 2. インストールの種類として、 **[役割ベースまたは機能ベースのインストール]** を選択します。
 3. **[ネットワーク ポリシーとアクセス サービス]** サーバーの役割を選択します。 ウィンドウがポップアップし、この役割を実行するために必要な追加機能が通知される場合があります。
 4. *[確認]* ページまでウィザードを続行します。 準備ができたら、 **[インストール]** を選択します。
@@ -151,13 +151,13 @@ NPS サーバーの役割のインストールには数分かかる場合があ�
 NPS 拡張機能のデプロイで使用できる認証方法に影響する 2 つの要素があります。
 
 * RADIUS クライアント (VPN、Netscaler サーバーなど) と NPS サーバー間で使用されるパスワードの暗号化アルゴリズム。
-   - **PAP** を使うと、クラウドでの Azure Multi-Factor Authentication のすべての認証方法 (電話、一方向テキスト メッセージ、モバイル アプリの通知、OATH ハードウェア トークン、モバイル アプリの確認コード) がサポートされます。
+   - **PAP** を使うと、クラウドでの Azure AD Multi-Factor Authentication のすべての認証方法 (電話、一方向テキスト メッセージ、モバイル アプリの通知、OATH ハードウェア トークン、モバイル アプリの確認コード) がサポートされます。
    - **CHAPV2** と **EAP** は、電話とモバイル アプリの通知をサポートします。
 
     > [!NOTE]
     > NPS 拡張機能をデプロイするときに、これらの要素を使用して、ユーザーに使用できる方法を評価します。 RADIUS クライアントは PAP をサポートしているが、クライアント UX に確認コードの入力フィールドがない場合は、サポートされるオプションは電話とモバイル アプリの通知の 2 つになります。
     >
-    > また、使用されている認証プロトコル (PAP、CHAP、または EAP) に関係なく、MFA メソッドがテキストベース (SMS、モバイル アプリ確認コード、または OATH ハードウェア トークン) であり、ユーザーが VPN クライアントの UI 入力フィールドにコードまたはテキストを入力する必要がある場合は、認証が成功する可能性があります。 " *ただし* "、ネットワーク アクセス ポリシーで構成されている RADIUS 属性は、RADIUS クライアント (VPN ゲートウェイなどのネットワーク アクセス デバイス) へは転送 " *されません* "。 その結果、VPN クライアントが持つアクセス権は、必要以上に多くなったり、少なくなったり、なくなったりします。
+    > また、使用されている認証プロトコル (PAP、CHAP、または EAP) に関係なく、MFA メソッドがテキストベース (SMS、モバイル アプリ確認コード、または OATH ハードウェア トークン) であり、ユーザーが VPN クライアントの UI 入力フィールドにコードまたはテキストを入力する必要がある場合は、認証が成功する可能性があります。 "*ただし*"、ネットワーク アクセス ポリシーで構成されている RADIUS 属性は、RADIUS クライアント (VPN ゲートウェイなどのネットワーク アクセス デバイス) へは転送 "*されません*"。 その結果、VPN クライアントが持つアクセス権は、必要以上に多くなったり、少なくなったり、なくなったりします。
 
 * クライアント アプリケーション (VPN、Netscaler サーバーなど) が処理できる入力方式。 たとえば、VPN クライアントに、ユーザーがテキストまたはモバイル アプリから確認コードを入力できるようにするなんらかの手段があるかどうか。
 
@@ -165,7 +165,7 @@ Azure で[サポートされていない認証方法を無効にする](howto-mf
 
 ### <a name="register-users-for-mfa"></a>ユーザーを MFA に登録する
 
-NPS 拡張機能を展開して使用する前に、Azure Multi-Factor Authentication を実行する必要があるユーザーを MFA に登録する必要があります。 また、拡張機能をデプロイ時にテストするには、Azure Multi-Factor Authentication に対して完全に登録されている少なくとも 1 つのテスト アカウントが必要です。
+NPS 拡張機能を展開して使用する前に、Azure AD Multi-Factor Authentication を実行する必要があるユーザーを MFA に登録する必要があります。 また、拡張機能をデプロイ時にテストするには、Azure AD Multi-Factor Authentication に対して完全に登録されている少なくとも 1 つのテスト アカウントが必要です。
 
 テスト アカウントを作成して構成する必要がある場合は、次の手順を使用します。
 
@@ -175,9 +175,9 @@ NPS 拡張機能を展開して使用する前に、Azure Multi-Factor Authentic
 
 > [!IMPORTANT]
 >
-> ユーザーが Azure Multi-Factor Authentication に正常に登録していることを確認してください。 ユーザーが以前にセルフサービス パスワード リセット (SSPR) のみに登録している場合は、そのアカウントに対して *StrongAuthenticationMethods* が有効になります。 ユーザーが SSPR のみに登録した場合でも、 *StrongAuthenticationMethods* が構成されている場合は、Azure Multi-Factor Authentication が適用されます。
+> ユーザーが Azure AD Multi-Factor Authentication に正常に登録していることを確認してください。 ユーザーが以前にセルフサービス パスワード リセット (SSPR) のみに登録している場合は、そのアカウントに対して *StrongAuthenticationMethods* が有効になります。 ユーザーが SSPR のみに登録した場合でも、*StrongAuthenticationMethods* が構成されている場合は、Azure AD Multi-Factor Authentication が適用されます。
 >
-> SSPR と Azure Multi-Factor Authentication を同時に構成する、統合されたセキュリティ登録を有効にすることができます。 詳細については、「[Azure Active Directory での統合されたセキュリティ情報の登録の有効化](howto-registration-mfa-sspr-combined.md)」を参照してください。
+> SSPR と Azure AD Multi-Factor Authentication を同時に構成する、統合されたセキュリティ登録を有効にすることができます。 詳細については、「[Azure Active Directory での統合されたセキュリティ情報の登録の有効化](howto-registration-mfa-sspr-combined.md)」を参照してください。
 >
 > 以前に SSPR のみを有効にした場合は、[認証方法を再登録するようユーザーに強制する](howto-mfa-userdevicesettings.md#manage-user-authentication-options)こともできます。
 
@@ -186,7 +186,7 @@ NPS 拡張機能を展開して使用する前に、Azure Multi-Factor Authentic
 > [!IMPORTANT]
 > VPN アクセス ポイントとは異なるサーバーに NPS 拡張機能をインストールします。
 
-### <a name="download-and-install-the-nps-extension-for-azure-mfa"></a>Azure MFA の NPS 拡張機能をダウンロードしてインストールする
+### <a name="download-and-install-the-nps-extension-for-azure-ad-mfa"></a>Azure AD MFA の NPS 拡張機能をダウンロードしてインストールする
 
 NPS 拡張機能をダウンロードしてインストールするには、次の手順を実行します。
 
@@ -235,7 +235,7 @@ NPS 拡張機能をダウンロードしてインストールするには、次�
    ```
 
 1. プロンプトが表示されたら、管理者として Azure AD にログインします。
-1. PowerShell によって、テナント ID の入力が求められます。 前提条件のセクションで Azure portal からコピーした " *テナント ID* " の GUID を使用します。
+1. PowerShell によって、テナント ID の入力が求められます。 前提条件のセクションで Azure portal からコピーした "*テナント ID*" の GUID を使用します。
 1. スクリプトが終了すると、成功メッセージが表示されます。  
 
 以前のコンピューター証明書が期限切れになり、新しい証明書が生成された場合は、期限切れの証明書をすべて削除する必要があります。 期限切れの証明書があると、NPS 拡張機能の起動で問題が生じる可能性があります。
@@ -275,7 +275,7 @@ Azure Government クラウドまたは Azure China 21Vianet クラウドを使�
 
 NPS 拡張機能のリリース *1.0.1.32* では、複数の証明書の読み取りがサポートされるようになりました。 この機能により、証明書の有効期限が切れる前のローリング アップデートが容易になります。 組織で以前のバージョンの NPS 拡張機能を実行している場合は、バージョン *1.0.1.32* 以降にアップグレードしてください。
 
-`AzureMfaNpsExtnConfigSetup.ps1` スクリプトによって作成された証明書は、2 年間有効です。 証明書の有効期限を監視します。 NPS 拡張機能の証明書は、" *ローカル コンピューター* " の証明書ストアの *[個人用]* に配置され、インストール スクリプトに提供されるテナント ID に対して " *発行* " されます。
+`AzureMfaNpsExtnConfigSetup.ps1` スクリプトによって作成された証明書は、2 年間有効です。 証明書の有効期限を監視します。 NPS 拡張機能の証明書は、"*ローカル コンピューター*" の証明書ストアの *[個人用]* に配置され、インストール スクリプトに提供されるテナント ID に対して "*発行*" されます。
 
 証明書の有効期限が近づいている場合は、置き換えるための新しい証明書を作成する必要があります。  このプロセスを完了するには、`AzureMfaNpsExtnConfigSetup.ps1` を再度実行し、メッセージが表示されたら同じテナント ID を指定します。 このプロセスは、環境内の各 NPS サーバーで繰り返す必要があります。
 
@@ -287,8 +287,8 @@ NPS 拡張機能のリリース *1.0.1.32* では、複数の証明書の読み�
 
 ### <a name="configuration-limitations"></a>構成の制限
 
-- Azure Multi-Factor Authentication の NPS 拡張機能には、MFA サーバーからクラウドにユーザーと設定を移行するためのツールは含まれません。 このため、既存のデプロイではなく、新しいデプロイに拡張機能を使用することをお勧めします。 既存のデプロイで拡張機能を使用する場合、ユーザーはクラウドに MFA の詳細を設定するために、再度セキュリティ確認を実行する必要があります。  
-- NPS 拡張機能は、オンプレミスの AD DS 環境の UPN を使用して Azure Multi-Factor Authentication のユーザーを識別し、セカンダリ認証を行います。代替ログイン ID やカスタム AD DS フィールドなど、UPN 以外の識別子を使用するように NPS 拡張機能を構成することができます。 詳細については、[Microsoft Multi-Factor Authentication のための NPS 拡張機能の詳細構成オプション](howto-mfa-nps-extension-advanced.md)に関するページをご覧ください。
+- Azure AD Multi-Factor Authentication の NPS 拡張機能には、MFA サーバーからクラウドにユーザーと設定を移行するためのツールは含まれません。 このため、既存のデプロイではなく、新しいデプロイに拡張機能を使用することをお勧めします。 既存のデプロイで拡張機能を使用する場合、ユーザーはクラウドに MFA の詳細を設定するために、再度セキュリティ確認を実行する必要があります。  
+- NPS 拡張機能は、オンプレミスの AD DS 環境の UPN を使用して Azure AD Multi-Factor Authentication のユーザーを識別し、セカンダリ認証を行います。代替ログイン ID やカスタム AD DS フィールドなど、UPN 以外の識別子を使用するように NPS 拡張機能を構成することができます。 詳細については、[Microsoft Multi-Factor Authentication のための NPS 拡張機能の詳細構成オプション](howto-mfa-nps-extension-advanced.md)に関するページをご覧ください。
 - すべての暗号化プロトコルで、すべての検証メソッドがサポートされるわけではありません。
    - **PAP** は、電話、テキスト メッセージ、モバイル アプリの通知、およびモバイル アプリの確認コードをサポートします。
    - **CHAPV2** と **EAP** は、電話とモバイル アプリの通知をサポートします。
@@ -309,9 +309,9 @@ MFA に登録されていないユーザーがいる場合は、そのユーザ�
 
 この設定により、ユーザーが MFA に登録されていない場合の処理方法が決まります。 キーが存在しないか、設定されていないか、または *TRUE* に設定されていて、ユーザーが登録されていない場合は、拡張機能による MFA チャレンジが失敗します。
 
-キーが *FALSE* に設定されていて、ユーザーが登録されていない場合は、MFA を実行することがなく認証が行われます。 ユーザーが MFA に登録されている場合、 *REQUIRE_USER_MATCH* が *FALSE* に設定されている場合でも、ユーザーは MFA で認証する必要があります。
+キーが *FALSE* に設定されていて、ユーザーが登録されていない場合は、MFA を実行することがなく認証が行われます。 ユーザーが MFA に登録されている場合、*REQUIRE_USER_MATCH* が *FALSE* に設定されている場合でも、ユーザーは MFA で認証する必要があります。
 
-ユーザーのオンボーディング中、Azure Multi-Factor Authentication への登録の一部がまだ完了しないうちに、このキーを作成して *FALSE* に設定できます。 ただし、MFA に登録されていないユーザーのサインインが許可されることになるため、このキーは運用環境に移行する前に削除してください。
+ユーザーのオンボーディング中、Azure AD Multi-Factor Authentication への登録の一部がまだ完了しないうちに、このキーを作成して *FALSE* に設定できます。 ただし、MFA に登録されていないユーザーのサインインが許可されることになるため、このキーは運用環境に移行する前に削除してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -339,7 +339,7 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 このコマンドは、テナントと NPS 拡張機能のインスタンスを関連付けているすべての証明書を PowerShell セッションに出力します。 クライアント証明書を *Base-64 encoded X.509(.cer)* ファイルとして秘密キーなしでエクスポートし、PowerShell が出力したリストと比較します。
 
-次のコマンドによって、名前が *npscertificate* 、形式が *.cer* のファイルが *C:* ドライブのルートに作成されます。
+次のコマンドによって、名前が *npscertificate*、形式が *.cer* のファイルが *C:* ドライブのルートに作成されます。
 
 ```powershell
 import-module MSOnline
@@ -347,7 +347,7 @@ Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertificate.cer
 ```
 
-このコマンドを実行したら、 *C:* ドライブのルートに移動して、そのファイルを見つけてダブルクリックします。 [詳細] に移動して、[サムプリント] までスクロール ダウンします。 サーバーにインストールされている証明書のサムプリントとこれを比較します。 証明書のサムプリントが一致する必要があります。
+このコマンドを実行したら、*C:* ドライブのルートに移動して、そのファイルを見つけてダブルクリックします。 [詳細] に移動して、[サムプリント] までスクロール ダウンします。 サーバーにインストールされている証明書のサムプリントとこれを比較します。 証明書のサムプリントが一致する必要があります。
 
 複数の証明書が返されている場合は、判読できる形式のタイムスタンプ *Valid-From* と *Valid-Until* を使用して、明らかに無関係な証明書を除外することができます。
 
@@ -376,11 +376,11 @@ NPS 拡張機能を実行しているサーバーから https://adnotifications.
 
 以前のコンピューター証明書が期限切れになり、新しい証明書が生成された場合は、期限切れの証明書をすべて削除します。 期限切れの証明書があると、NPS 拡張機能の起動で問題が生じる可能性があります。
 
-有効な証明書があるかどうかを確認するには、MMC を使用してローカルの " *コンピューター アカウントの証明書ストア* " をチェックし、その証明書が有効期限を過ぎていないことを確認してください。 有効な証明書を新しく生成するには、「[PowerShell スクリプトの実行](#run-the-powershell-script)」の手順を再度行います。
+有効な証明書があるかどうかを確認するには、MMC を使用してローカルの "*コンピューター アカウントの証明書ストア*" をチェックし、その証明書が有効期限を過ぎていないことを確認してください。 有効な証明書を新しく生成するには、「[PowerShell スクリプトの実行](#run-the-powershell-script)」の手順を再度行います。
 
 ### <a name="why-do-i-see-discarded-requests-in-the-nps-server-logs"></a>NPS サーバーのログに破棄された要求があるのはなぜですか。
 
-タイムアウト値が小さすぎる場合、VPN サーバーは NPS サーバーに対して繰り返し要求を送信することがあります。 これらの複製要求は NPS サーバーによって検出され、破棄されます。 この動作は仕様どおりであり、NPS サーバーまたは Azure Multi-Factor Authentication の NPS 拡張機能に問題があることを示すものではありません。
+タイムアウト値が小さすぎる場合、VPN サーバーは NPS サーバーに対して繰り返し要求を送信することがあります。 これらの複製要求は NPS サーバーによって検出され、破棄されます。 この動作は仕様どおりであり、NPS サーバーまたは Azure AD Multi-Factor Authentication の NPS 拡張機能に問題があることを示すものではありません。
 
 NPS サーバーのログに破棄されたパケットがある理由の詳細については、この記事の冒頭にある「[RADIUS プロトコルの動作と NPS 拡張機能](#radius-protocol-behavior-and-the-nps-extension)」を参照してください。
 
@@ -390,7 +390,7 @@ NPS サーバーのログに破棄されたパケットがある理由の詳細�
 
 ### <a name="additional-troubleshooting"></a>その他のトラブルシューティング
 
-その他のトラブルシューティングのガイダンスと可能なソリューションについては、「[Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する](howto-mfa-nps-extension-errors.md)」を参照してください。
+その他のトラブルシューティングのガイダンスと可能なソリューションについては、「[Azure AD Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する](howto-mfa-nps-extension-errors.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -400,4 +400,4 @@ NPS サーバーのログに破棄されたパケットがある理由の詳細�
 
 - NPS 拡張機能を使用して[リモート デスクトップ ゲートウェイ](howto-mfa-nps-extension-rdg.md)と [VPN サーバー](howto-mfa-nps-extension-vpn.md)を統合する方法を学習する
 
-- [Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する](howto-mfa-nps-extension-errors.md)
+- [Azure AD Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する](howto-mfa-nps-extension-errors.md)

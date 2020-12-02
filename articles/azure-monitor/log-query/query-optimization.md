@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 7e1deb11eb8ae754198cae5be7ecf7150262a61e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: a817c12a367d7c14f693389920e49b368a35cc06
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411390"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522874"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Monitor でログ クエリを最適化する
 Azure Monitor ログでは、[Azure Data Explorer (ADX)](/azure/data-explorer/) を使用して、ログ データを格納し、そのデータを分析するためのクエリを実行します。 これにより、ADX クラスターが作成、管理、保持され、ログ分析ワークロードに合わせて最適化されます。 クエリを実行すると、クエリが最適化され、ワークスペース データを格納する適切な ADX クラスターにルーティングされます。 Azure Monitor ログと Azure Data Explorer のどちらにも、クエリの自動最適化メカニズムが多数使用されています。 自動最適化によって大幅に処理が促進される一方で、クエリのパフォーマンスを飛躍的に向上させることができるケースもいくつかあります。 この記事では、パフォーマンスに関する考慮事項とそれを調整するいくつかの手法について説明します。
@@ -463,7 +463,7 @@ Azure Monitor ログでは、Azure Data Explorer の大規模なクラスター�
 - シリアル化関数やウィンドウ関数 ([serialize 演算子](/azure/kusto/query/serializeoperator)、[next ()](/azure/kusto/query/nextfunction)、[prev ()](/azure/kusto/query/prevfunction)、[row](/azure/kusto/query/rowcumsumfunction) 関数など) の使用。 このようなケースのいくつかでは、時系列およびユーザー分析関数を使用できます。 また、[range](/azure/kusto/query/rangeoperator)、[sort](/azure/kusto/query/sortoperator)、[order](/azure/kusto/query/orderoperator)、[top](/azure/kusto/query/topoperator)、[top-hitters](/azure/kusto/query/tophittersoperator)、[getschema](/azure/kusto/query/getschemaoperator) 演算子がクエリの末尾以外で使用されている場合にも、非効率的なシリアル化が発生する可能性があります。
 -    [dcount ()](/azure/kusto/query/dcount-aggfunction) 集計関数を使用すると、システムでは個別の値の中央コピーが強制的に保持されます。 データのスケールが大きい場合は、dcount 関数の省略可能なパラメーターを使用して精度を下げることを検討してください。
 -    多くの場合、[join](/azure/kusto/query/joinoperator?pivots=azuremonitor) 演算子を使用すると全体的な並列処理が低下します。 パフォーマンスに問題がある場合は、代替手段としてシャッフル結合を試してください。
--    リソースのスコープが指定されたクエリで、非常に多くの Azure のロールの割り当てがある状況では、実行前の RBAC チェックに時間がかかることがあります。 その結果、チェックにかかる時間が長くなり、並列処理が低下する可能性があります。 たとえば、多数のリソースがあり、各リソースに、サブスクリプションやリソース グループのレベルではなくリソースレベルでロールの割り当てが多数存在するサブスクリプションに対してクエリが実行されます。
+-    リソースのスコープが指定されたクエリで、非常に多くの Azure のロールの割り当てがある状況では、実行前の Kubernetes RBAC または Azure RBAC チェックに時間がかかることがあります。 その結果、チェックにかかる時間が長くなり、並列処理が低下する可能性があります。 たとえば、多数のリソースがあり、各リソースに、サブスクリプションやリソース グループのレベルではなくリソースレベルでロールの割り当てが多数存在するサブスクリプションに対してクエリが実行されます。
 -    クエリで小さなデータ チャンクを処理している場合、システムがクエリを多数の計算ノードに分散させないため、その並列処理は少なくなります。
 
 

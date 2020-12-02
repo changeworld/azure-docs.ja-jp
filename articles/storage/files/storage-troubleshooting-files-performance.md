@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 6e4eb37477a335ae93b9982692c238d05c81000b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a49dbdace01396656c3114df0bc0d4589aff57c1
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660289"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916493"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Azure ファイル共有のパフォーマンスに関する問題のトラブルシューティング
 
@@ -196,7 +196,7 @@ I/O 集中型ワークロードのために、Azure ファイル共有へのア�
 
 ### <a name="cause"></a>原因  
 
-ファイル共有に関するファイル変更通知の数が多くなると、待機時間が大幅に長くなる可能性があります。 一般に、この問題は、ディレクトリ構造が深い入れ子になっているファイル共有でホストされている Web サイトで発生します。 一般的なシナリオは、IIS でホストされている Web アプリケーションです。既定の構成では、ファイル変更通知はディレクトリごとにセットアップされます。 SMB クライアントが登録されている共有で変更 (ReadDirectoryChangesW) が行われるたびに、ファイル サービスからクライアントに変更通知がプッシュされます。そのため、システム リソースが消費され、変更の数に伴い問題が悪化します。 これにより、共有のスロットリングが発生し、クライアント側の待機時間が長くなります。 
+ファイル共有に関するファイル変更通知の数が多くなると、待機時間が大幅に長くなる可能性があります。 一般に、この問題は、ディレクトリ構造が深い入れ子になっているファイル共有でホストされている Web サイトで発生します。 一般的なシナリオは、IIS でホストされている Web アプリケーションです。既定の構成では、ファイル変更通知はディレクトリごとにセットアップされます。 SMB クライアントが登録されている共有で変更 ([ReadDirectoryChangesW](https://docs.microsoft.com/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) が行われるたびに、ファイル サービスからクライアントに変更通知がプッシュされます。そのため、システム リソースが消費され、変更の数に伴い問題が悪化します。 これにより、共有のスロットリングが発生し、クライアント側の待機時間が長くなります。 
 
 確認するには、ポータルで Azure メトリックを使用します。 
 
@@ -213,10 +213,8 @@ I/O 集中型ワークロードのために、Azure ファイル共有へのア�
     - レジストリで `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC\Parameters\ConfigPollMilliSeconds ` を設定し、W3WP プロセスを再起動して、IIS ワーカー プロセス (W3WP) のポーリング間隔を 0 に更新します。 この設定の詳細については、[IIS の多くの部分で使用される共通のレジストリ キー](/troubleshoot/iis/use-registry-keys#registry-keys-that-apply-to-iis-worker-process-w3wp)に関するページをご覧ください。
 - ファイル変更通知のポーリング間隔を長くして、ボリュームを減らします。
     - 要件に基づいて、W3WP ワーカー プロセスのポーリング間隔を大きい値 (10 分や 30 分など) に更新します。 [レジストリで](/troubleshoot/iis/use-registry-keys#registry-keys-that-apply-to-iis-worker-process-w3wp) `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC\Parameters\ConfigPollMilliSeconds ` を設定し、W3WP プロセスを再起動します。
-- Web サイトのマップされた物理ディレクトリのディレクトリ構造が入れ子になっている場合は、ファイル変更通知のスコープを制限してみると、通知のボリュームが減る可能性があります。
-    - 既定では、仮想ディレクトリのマップ先となる物理ディレクトリ内の Web.config ファイルの構成と、その物理ディレクトリ内のすべての子ディレクトリ内の構成が IIS で使用されます。 子ディレクトリ内の Web.config ファイルを使用しない場合は、仮想ディレクトリで allowSubDirConfig 属性に false を指定します。 詳細については、[こちら](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#virtual-directories)をご覧ください。 
-
-Web.Config で IIS 仮想ディレクトリ "allowSubDirConfig" 設定を false に設定して、マップされた物理子ディレクトリをスコープから除外します。  
+- Web サイトのマップされた物理ディレクトリのディレクトリ構造が入れ子になっている場合は、ファイル変更通知のスコープを制限してみると、通知のボリュームが減る可能性があります。 既定では、仮想ディレクトリのマップ先となる物理ディレクトリ内の Web.config ファイルの構成と、その物理ディレクトリ内のすべての子ディレクトリ内の構成が IIS で使用されます。 子ディレクトリ内の Web.config ファイルを使用しない場合は、仮想ディレクトリで allowSubDirConfig 属性に false を指定します。 詳細については、[こちら](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#virtual-directories)をご覧ください。 
+    - Web.Config で IIS 仮想ディレクトリ "allowSubDirConfig" 設定を *false* に設定して、マップされた物理子ディレクトリをスコープから除外します。  
 
 ## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>ファイル共有がスロットルされた場合にアラートを作成する方法
 

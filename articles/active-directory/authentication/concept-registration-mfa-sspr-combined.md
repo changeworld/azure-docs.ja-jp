@@ -1,6 +1,6 @@
 ---
-title: SSPR と Azure Multi-Factor Authentication のための統合された登録 - Azure Active Directory
-description: ユーザーが Azure Multi-Factor Authentication とセルフサービス パスワード リセットの両方に登録できるようになる Azure Active Directory の統合された登録エクスペリエンスについて説明します。
+title: SSPR と Azure AD Multi-Factor Authentication のための統合された登録 - Azure Active Directory
+description: ユーザーが Azure AD Multi-Factor Authentication とセルフサービス パスワード リセットの両方に登録できるようになる Azure Active Directory の統合された登録エクスペリエンスについて説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e1036e63b4fdef241350786fa3a246946a9223c
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 22f43c5f9848670b9df4b061c5abb6cc30912172
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378008"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839796"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory での統合されたセキュリティ情報の登録の概要
 
-統合された登録の前、ユーザーは Azure Multi-Factor Authentication (MFA) とセルフサービス パスワード リセット (SSPR) の認証方法を別々に登録しました。 ユーザーは Multi-Factor Authentication と SSPR に同様の方法が使用されることに困惑しましたが、どちらの機能も登録する必要がありました。 現在では、統合された登録を使用することで、ユーザーは 1 回登録して Multi-Factor Authentication と SSPR の両方の利点を得ることができます。
+統合された登録の前、ユーザーは Azure AD Multi-Factor Authentication (MFA) とセルフサービス パスワード リセット (SSPR) の認証方法を別々に登録しました。 ユーザーは Multi-Factor Authentication と SSPR に同様の方法が使用されることに困惑しましたが、どちらの機能も登録する必要がありました。 現在では、統合された登録を使用することで、ユーザーは 1 回登録して Multi-Factor Authentication と SSPR の両方の利点を得ることができます。
 
 > [!NOTE]
 > 2020 年 8 月 15 日以降は、すべての新しい Azure AD テナントで、統合された登録が自動的に有効になります。
@@ -37,11 +37,11 @@ ms.locfileid: "93378008"
 Azure AD の結合されたセキュリティ情報の登録は、Azure Germany や Azure China 21Vianet などの各国のクラウドでは現在利用できません。 Azure US Government では使用できます。
 
 > [!IMPORTANT]
-> 元のプレビューと拡張版の両方の統合された登録エクスペリエンスが有効になっているユーザーには、新しい動作が示されます。 両方のエクスペリエンスが有効になっているユーザーには、新しい [マイ プロファイル] エクスペリエンスのみが表示されます。 新しい ” *マイ プロファイル* ” は統合された登録の外観と統一されており、ユーザーにシームレスなエクスペリエンスを提供します。 ユーザーは、[https://myprofile.microsoft.com](https://myprofile.microsoft.com) に移動することによって [My Profile] (マイ プロファイル) を表示できます。
+> 元のプレビューと拡張版の両方の統合された登録エクスペリエンスが有効になっているユーザーには、新しい動作が示されます。 両方のエクスペリエンスが有効になっているユーザーには、新しい [マイ プロファイル] エクスペリエンスのみが表示されます。 新しい ”*マイ プロファイル*” は統合された登録の外観と統一されており、ユーザーにシームレスなエクスペリエンスを提供します。 ユーザーは、[https://myprofile.microsoft.com](https://myprofile.microsoft.com) に移動することによって [My Profile] (マイ プロファイル) を表示できます。
 >
 > セキュリティ情報オプションにアクセスしようとすると、「申し訳ございません。サインインできませんでした」などのエラー メッセージが表示される場合があります。 サードパーティの Cookie をブロックする構成またはグループ ポリシー オブジェクトが Web ブラウザーに設定されていないことを確認します。
 
-” *マイ プロファイル* ” ページは、そのページにアクセスしているコンピューターの言語設定に基づいてローカライズされます。 Microsoft は、ページへの以降のアクセスの試みが引き続き最後に使用された言語でレンダリングされるように、利用された最新の言語をブラウザー キャッシュに格納します。 キャッシュをクリアすると、ページは再レンダリングされます。
+”*マイ プロファイル*” ページは、そのページにアクセスしているコンピューターの言語設定に基づいてローカライズされます。 Microsoft は、ページへの以降のアクセスの試みが引き続き最後に使用された言語でレンダリングされるように、利用された最新の言語をブラウザー キャッシュに格納します。 キャッシュをクリアすると、ページは再レンダリングされます。
 
 強制的に特定の言語にする場合は、URL の末尾に `?lng=<language>` を追加することができます。`<language>` は、レンダリングする言語のコードです。
 
@@ -58,7 +58,7 @@ Azure AD の結合されたセキュリティ情報の登録は、Azure Germany 
 | ハードウェア トークン | いいえ | いいえ | はい |
 | Phone | はい | はい | はい |
 | Alternate phone | はい | はい | はい |
-| 会社電話 | はい | はい | はい |
+| 会社電話 | はい | はい | Yes |
 | Email | はい | はい | はい |
 | セキュリティの質問 | はい | いいえ | はい |
 | アプリ パスワード | はい | いいえ | はい |
@@ -142,8 +142,8 @@ Multi-Factor Authentication に使用できる少なくとも 1 つの方法を�
 
 ## <a name="next-steps"></a>次のステップ
 
-最初に、[セルフサービス パスワード リセットを有効にする](tutorial-enable-sspr.md)チュートリアルと、[Azure Multi-Factor Authentication を有効にする](tutorial-enable-azure-mfa.md)チュートリアルを参照してください。
+最初に、[セルフサービス パスワード リセットを有効にする](tutorial-enable-sspr.md)チュートリアルと、[Azure AD Multi-Factor Authentication を有効にする](tutorial-enable-azure-mfa.md)チュートリアルを参照してください。
 
 [テナントでの統合された登録を有効にする](howto-registration-mfa-sspr-combined.md)方法、または[ユーザーに認証方法の再登録を強制する](howto-mfa-userdevicesettings.md#manage-user-authentication-options)方法について説明します。
 
-また、[Azure Multi-Factor Authentication と SSPR で使用可能な方法](concept-authentication-methods.md)を確認することもできます。
+また、[Azure AD Multi-Factor Authentication と SSPR で使用可能な方法](concept-authentication-methods.md)を確認することもできます。

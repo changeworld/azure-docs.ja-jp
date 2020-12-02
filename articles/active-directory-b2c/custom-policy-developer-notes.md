@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e2ebc0033f2d2d55571ba45a38b5e0061716673d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 04852e3081807930ced9fdacc75c956d9a15ff23
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532479"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840731"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーに関する開発者向けのメモ
 
@@ -98,7 +98,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | 機能 | 開発 | プレビュー | GA | Notes |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [電話要素認証](phone-factor-technical-profile.md) |  |  | X |  |
-| [Azure MFA 認証](multi-factor-auth-technical-profile.md) |  | X |  |  |
+| [Azure AD MFA 認証](multi-factor-auth-technical-profile.md) |  | X |  |  |
 | [ワンタイム パスワード](one-time-password-technical-profile.md) |  | X |  |  |
 | ローカル ディレクトリとしての [Azure Active Directory](active-directory-technical-profile.md) |  |  | X |  |
 | 電子メール検証のための Azure 電子メール サブシステム |  |  | X |  |

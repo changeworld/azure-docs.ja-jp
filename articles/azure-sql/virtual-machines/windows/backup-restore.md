@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: a386ea5149b36a4e82b4c935e2373f505c6c83cf
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: db270224a753f815a2d94e6a1fa79ebbedf49278
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789881"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94991572"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Azure VM における SQL Server のバックアップと復元
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -55,23 +55,23 @@ SQL Server 2016 以降の VM では、自動バックアップ v2 により、�
 
 SQL VM の自動バックアップを構成する方法の詳細については、次のいずれかの記事をご覧ください。
 
-- **SQL Server 2016/2017** : [Azure Virtual Machines の自動バックアップ v2](automated-backup.md)
-- **SQL Server 2014** : [SQL Server 2014 Virtual Machines の自動バックアップ](automated-backup-sql-2014.md)
+- **SQL Server 2016/2017**:[Azure Virtual Machines の自動バックアップ v2](automated-backup.md)
+- **SQL Server 2014**:[SQL Server 2014 Virtual Machines の自動バックアップ](automated-backup-sql-2014.md)
 
 ## <a name="azure-backup-for-sql-vms"></a><a id="azbackup"></a> SQL VM の Azure Backup
 
 [Azure Backup](../../../backup/index.yml) は、Azure VM 上の SQL Server 向けのエンタープライズ クラスのバックアップ機能を提供します。 すべてのバックアップは、Recovery Services コンテナーに格納され、管理されます。 このソリューションにはいくつかの利点があります (特に企業向け)。
 
-- **ゼロインフラストラクチャでのバックアップ** :バックアップ サーバーまたは保存場所を管理する必要がありません。
-- **スケール** :多くの SQL VM と数千のデータベースを保護します。
-- **従量課金制** :この機能は、Azure Backup によって提供される個別のサービスですが、すべての Azure サービスと同様に、料金は使用した分だけになります。
-- **一元管理と監視** :Azure Backup がサポートする他のワークロードを含め、すべてのバックアップを Azure の単一のダッシュボードで一元管理できます。
-- **ポリシーに基づくバックアップと保持** :定期的なバックアップ用の標準バックアップ ポリシーを作成できます。 何年もバックアップを維持するためのバックアップ ポリシーを作成することもできます。
-- **SQL Always On のサポート** :SQL Server Always On 構成を検出して保護し、バックアップ可用性グループのバックアップ設定を使用します。
+- **ゼロインフラストラクチャでのバックアップ**:バックアップ サーバーまたは保存場所を管理する必要がありません。
+- **スケール**:多くの SQL VM と数千のデータベースを保護します。
+- **従量課金制**:この機能は、Azure Backup によって提供される個別のサービスですが、すべての Azure サービスと同様に、料金は使用した分だけになります。
+- **一元管理と監視**:Azure Backup がサポートする他のワークロードを含め、すべてのバックアップを Azure の単一のダッシュボードで一元管理できます。
+- **ポリシーに基づくバックアップと保持**:定期的なバックアップ用の標準バックアップ ポリシーを作成できます。 何年もバックアップを維持するためのバックアップ ポリシーを作成することもできます。
+- **SQL Always On のサポート**:SQL Server Always On 構成を検出して保護し、バックアップ可用性グループのバックアップ設定を使用します。
 - **15 分の復旧ポイント目標 (RPO)** :SQL トランザクション ログのバックアップを最大 15 分ごとに構成できます。
-- **ポイントインタイム リストア** :ポータルを使用して、データベースを特定の時点に復元できます。複数の完全バックアップ、差分バックアップ、およびログ バックアップを手動で復元する必要はありません。
-- **エラーが発生した場合の統合電子メール アラート** :エラーが発生した場合の統合電子メール通知を構成できます。
-- **ロールベースのアクセス制御** :ポータルを介してバックアップと復元の操作を管理できるユーザーを決定できます。
+- **ポイントインタイム リストア**:ポータルを使用して、データベースを特定の時点に復元できます。複数の完全バックアップ、差分バックアップ、およびログ バックアップを手動で復元する必要はありません。
+- **エラーが発生した場合の統合電子メール アラート**:エラーが発生した場合の統合電子メール通知を構成できます。
+- **Azure ロールベースのアクセス制御**: ポータルを介してバックアップと復元の操作を管理できるユーザーを決定できます。
 
 機能の簡単な概要とデモについては、次のビデオをご覧ください。
 
@@ -108,9 +108,9 @@ SQL Server 2012 SP1 CU2 以降では、Microsoft Azure Blob ストレージに�
 
 詳細については、SQL Server のバージョンに応じて、次のいずれかの記事をご覧ください。
 
-- **SQL Server 2016/2017** : [SQL Server Backup to URL](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
-- **SQL Server 2014** : [SQL Server 2014 Backup to URL](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service?viewFallbackFrom=sql-server-2014)
-- **SQL Server 2012** : [SQL Server 2012 Backup to URL](/previous-versions/sql/sql-server-2012/jj919148(v=sql.110))
+- **SQL Server 2016/2017**:[SQL Server Backup to URL](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
+- **SQL Server 2014**:[SQL Server 2014 Backup to URL](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service?viewFallbackFrom=sql-server-2014)
+- **SQL Server 2012**:[SQL Server 2012 Backup to URL](/previous-versions/sql/sql-server-2012/jj919148(v=sql.110))
 
 ### <a name="managed-backup"></a>管理対象のバックアップ
 

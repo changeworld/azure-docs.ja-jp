@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: eed1b0e1b01d5d13330b927429eca9a28ff80658
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c6d26de62364b6aca671d1e4283a01c1b78c397
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009258"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014834"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) でのテナントとホスト プールの作成
 
@@ -49,7 +49,7 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 **原因:** Azure Active Directory インスタンスで、Windows Virtual Desktop への同意が付与されていません。
 
-**解決策:** [こちらのガイドに従って](https://docs.microsoft.com/azure/virtual-desktop/virtual-desktop-fall-2019/tenant-setup-azure-active-directory#grant-permissions-to-windows-virtual-desktop)、同意を付与してください。
+**解決策:** [こちらのガイドに従って](./tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop)、同意を付与してください。
 
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>エラー:管理サービスに問い合わせる許可がユーザーに与えられていません
 
@@ -97,10 +97,10 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 **原因 2:** 使用されているサブスクリプションが、Microsoft クラウド サービス プロバイダー (CSP) テナントの一部です。
 
-**解決策 2:** GitHub の場所に移動して、**新しい Windows Virtual Desktop ホスト プールを作成およびプロビジョニング**し、次の手順に従います。
+**解決策 2:** GitHub の場所に移動して、**新しい Windows Virtual Desktop ホスト プールを作成およびプロビジョニング** し、次の手順に従います。
 
 1. **[Azure に配置する]** を右クリックして **[リンク アドレスをコピー]** を選択します。
-2. **メモ帳**を開き、リンクを貼り付けます。
+2. **メモ帳** を開き、リンクを貼り付けます。
 3. # 文字の前に、CSP エンド カスタマー テナント名を挿入します。
 4. ブラウザーで新しいリンクを開くと、Azure portal でテンプレートが読み込まれます。
 
@@ -140,9 +140,9 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失敗をトラブルシューティングするには、次の手順に従います。
 
-1. 「[Azure Resource Manager でのデプロイ操作の表示](../../azure-resource-manager/resource-manager-deployment-operations.md)」を使用して、デプロイのエラーを確認します。
-2. デプロイにエラーがない場合、「[リソースのアクションを監査するアクティビティ ログの表示](../../azure-resource-manager/resource-group-audit.md)」を使用して、アクティビティ ログのエラーを確認します。
-3. エラーが特定されたら、エラー メッセージと、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../../azure-resource-manager/resource-manager-common-deployment-errors.md)」のリソースを使用して問題に対処します。
+1. 「[Azure Resource Manager でのデプロイ操作の表示](../../azure-resource-manager/templates/deployment-history.md)」を使用して、デプロイのエラーを確認します。
+2. デプロイにエラーがない場合、「[リソースのアクションを監査するアクティビティ ログの表示](../../azure-resource-manager/management/view-activity-logs.md)」を使用して、アクティビティ ログのエラーを確認します。
+3. エラーが特定されたら、エラー メッセージと、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../../azure-resource-manager/templates/common-deployment-errors.md)」のリソースを使用して問題に対処します。
 4. 以前のデプロイ中に作成されたすべてのリソースを削除し、テンプレートのデプロイを再試行します。
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>エラー:デプロイに失敗しました….\<hostname>/joindomain
@@ -168,7 +168,7 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 **解決策 2:** 「[エラー: ドメイン名が解決されません](troubleshoot-vm-configuration-2019.md#error-domain-name-doesnt-resolve)」 (「[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration-2019.md)」) を参照してください。
 
-**原因 3:** 仮想ネットワーク (VNET) の DNS 構成が**既定**に設定されています。
+**原因 3:** 仮想ネットワーク (VNET) の DNS 構成が **既定** に設定されています。
 
 これを解決するには、次の操作を実行します。
 
@@ -375,7 +375,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
 ```
 
-### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>エラー:ユーザーが Azure 多要素認証 (MFA) を要求する
+### <a name="error-user-requires-azure-ad-multi-factor-authentication-mfa"></a>エラー:ユーザーが Azure AD Multi-Factor Authentication (MFA) を要求する
 
 > [!div class="mx-imgBorder"]
 > ![多要素認証 (MFA) の欠如によるデプロイ失敗のスクリーンショット](../media/MFARequiredError.png)
@@ -386,7 +386,7 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 "message": "{\r\n  \"status\": \"Failed\",\r\n  \"error\": {\r\n    \"code\": \"ResourceDeploymentFailure\",\r\n    \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"VMExtensionProvisioningError\",\r\n        \"message\": \"VM has reported a failure when processing extension 'dscextension'. Error message: \\\"DSC Configuration 'FirstSessionHost' completed with error(s). Following are the first few: PowerShell DSC resource MSFT_ScriptResource  failed to execute Set-TargetResource functionality with error message: One or more errors occurred.  The SendConfigurationApply function did not succeed.\\\".\"\r\n      }\r\n    ]\r\n  }\r\n}"
 ```
 
-**原因:** 指定された Windows Virtual Desktop テナント管理者が、サインインするために Azure 多要素認証 (MFA) を必要としています。
+**原因:** 指定された Windows Virtual Desktop テナント管理者が、サインインするために Azure AD Multi-Factor Authentication (MFA) を必要としています。
 
 **解決策:** 次の手順に従って、サービス プリンシパルを作成し、それに Windows Virtual Desktop のロールを割り当てます: [チュートリアル: PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する](create-service-principal-role-powershell.md)。 サービス プリンシパルを使用して Windows Virtual Desktop にサインインできることを確認した後、使用している方法に応じて、Azure Marketplace オファリングまたは GitHub の Azure Resource Manager テンプレートを再実行します。 次の指示に従って、方法に応じた正しいパラメーターを入力します。
 

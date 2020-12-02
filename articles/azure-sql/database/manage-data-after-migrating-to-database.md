@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: f0f9d2affe39eaf74d4c0a537658d655a0c150d7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fe49dce276a15d9d7bc8ddaa5618c0e43dec62e9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789575"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841225"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>クラウドの新しい DBA – 移行後の Azure SQL Database の管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -106,7 +106,7 @@ SQL Database では 2 種類の認証方法が提供されています。
 
 従来の Windows 認証はサポートされていません。 Azure Active Directory (Azure AD) は、ID とアクセスの集中管理サービスです。 組織内のすべての担当者にシングル サインオン (SSO) アクセスを非常に簡単に提供できます。 つまり、認証が簡単なように、資格情報はすべての Azure サービスで共有されます。 
 
-Azure AD は [Azure Multi-Factor Authentication](authentication-mfa-ssms-overview.md) をサポートします。[数クリック](../../active-directory/hybrid/how-to-connect-install-express.md)で Azure AD を Windows Server Active Directory と統合できます。 SQL 認証はこれまでとまったく同じように動作します。 ユーザー名とパスワードを提供すると、特定のサーバーの任意のデータベースでユーザーを認証できます。 これを使用すると、SQL Database および Azure Synapse Analytics (旧称 SQL Data Warehouse) で、Azure AD ドメイン内において Multi-Factor Authentication とゲスト ユーザー アカウントを提供できます。 既に Active Directory をオンプレミスで使用している場合、そのディレクトリを Azure Active Directory とフェデレーションして Azure へ拡張できます。
+Azure AD は [Azure AD Multi-Factor Authentication](authentication-mfa-ssms-overview.md) をサポートします。[数クリック](../../active-directory/hybrid/how-to-connect-install-express.md)で Azure AD を Windows Server Active Directory と統合できます。 SQL 認証はこれまでとまったく同じように動作します。 ユーザー名とパスワードを提供すると、特定のサーバーの任意のデータベースでユーザーを認証できます。 これを使用すると、SQL Database および Azure Synapse Analytics (旧称 SQL Data Warehouse) で、Azure AD ドメイン内において Multi-Factor Authentication とゲスト ユーザー アカウントを提供できます。 既に Active Directory をオンプレミスで使用している場合、そのディレクトリを Azure Active Directory とフェデレーションして Azure へ拡張できます。
 
 |**ユーザーの条件**|**SQL Database / Azure Synapse Analytics**|
 |---|---|
@@ -320,11 +320,11 @@ SQL Database では、特定のクラスのデータ破損にデータを失う�
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database-using-the-azure-portal"></a>Azure portal を使用して、SQL Database のデータを BACPAC ファイルとしてエクスポートおよびインポートするにはどうすればよいですか
 
-- **Export** :Azure SQL Database は、Azure Portal で BACPAC ファイルとしてエクスポートできます
+- **Export**:Azure SQL Database は、Azure Portal で BACPAC ファイルとしてエクスポートできます
 
    ![データベースのエクスポート](./media/manage-data-after-migrating-to-database/database-export1.png)
 
-- **Import** :Azure portal を使って、データを BACPAC ファイルとして Azure SQL Database のデータベースにインポートすることもできます。
+- **Import**:Azure portal を使って、データを BACPAC ファイルとして Azure SQL Database のデータベースにインポートすることもできます。
 
    ![データベースのインポート](./media/manage-data-after-migrating-to-database/import1.png)
 

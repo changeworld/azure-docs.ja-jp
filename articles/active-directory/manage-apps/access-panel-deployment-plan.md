@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: 8e345b27fdb2604c0c3264d6935cb9cff8aeec9c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 7edb7b498450625faf90f0601e19745ad632635a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656736"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835664"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Azure Active Directory マイ アプリのデプロイを計画する
 
@@ -26,7 +26,7 @@ Azure AD マイ アプリを使用すると、次の操作を実行できます�
 * 会社の Azure AD 接続されているすべてのリソース (アプリケーションなど) を検出してアクセスする
 * 新しいアプリとグループへのアクセスを要求する
 * 他のユーザーのためにこれらのリソースへのアクセスを管理する
-* セルフサービス パスワード リセット と Azure Multi-Factor Authentication の設定を管理する
+* セルフサービス パスワード リセットと Azure AD Multi-Factor Authentication の設定を管理する
 * 各自のデバイスを管理する
 
 また、管理者が以下を管理できるようにします。
@@ -54,7 +54,7 @@ Azure AD マイ アプリは、次のようにビジネスに役立ちます。
 
 マイ アプリは基本的なレベルでは無料であり、使用にライセンスは必要ありません。 ただし、ディレクトリ内のオブジェクトとデプロイする追加機能の数によっては、追加のライセンスが必要になる場合があります。 ライセンス要件がある一部の一般的な Azure AD のシナリオには、以下のセキュリティ機能が含まれます。
 
-* [Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+* [Azure AD Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
 * [グループベースのメンバーシップ](../fundamentals/active-directory-manage-groups.md)
 * [セルフサービス パスワード リセット](../authentication/tutorial-enable-sspr.md)
 * [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
@@ -312,4 +312,4 @@ Azure Active Directory 内で必要なタスクを実行するには、最小限
 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) を使用してロールを管理し、ディレクトリのアクセス許可を持つユーザーに対する追加の監査、制御、およびアクセス レビューを提供することができます。
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Multi-Factor Authentication のデプロイを計画する](../authentication/howto-mfa-getstarted.md)
+[Azure AD Multi-Factor Authentication のデプロイを計画する](../authentication/howto-mfa-getstarted.md)

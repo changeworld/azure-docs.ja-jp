@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da68e21aa279ea2503a21ce35eee52f8e49d1434
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81f4407ee7721332a4143952d1720151bb70d8c9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049096"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837540"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>条件付きアクセス:セキュリティ情報登録のセキュリティ保護
 
-Azure Multi-Factor Authentication とセルフサービス パスワード リセット の登録をユーザーがいつどのように行うかについてのセキュリティ保護が、条件付きアクセス ポリシーのユーザー アクションを使用して可能になりました。 このプレビュー機能は、[統合登録プレビュー](../authentication/concept-registration-mfa-sspr-combined.md)を有効にしている組織で使用することができます。 この機能は、信頼できるネットワークの場所などの条件を使用して、Azure Multi-Factor Authentication およびセルフサービス パスワード リセット (SSPR) への登録へのアクセスを制限したい組織で有効にすることができます。 使用可能な条件の詳細については、「[条件付きアクセス: 条件](concept-conditional-access-conditions.md)」を参照してください。
+Azure AD Multi-Factor Authentication とセルフサービス パスワード リセットの登録をユーザーがいつどのように行うかについてのセキュリティ保護が、条件付きアクセス ポリシーのユーザー アクションを使用して可能になりました。 このプレビュー機能は、[統合登録プレビュー](../authentication/concept-registration-mfa-sspr-combined.md)を有効にしている組織で使用することができます。 この機能は、信頼できるネットワークの場所などの条件を使用して、Azure AD Multi-Factor Authentication およびセルフサービス パスワード リセット (SSPR) への登録へのアクセスを制限したい組織で有効にすることができます。 使用可能な条件の詳細については、「[条件付きアクセス: 条件](concept-conditional-access-conditions.md)」を参照してください。
 
 ## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>信頼できる場所からの登録を要求するポリシーを作成する
 

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f5a01724bfefd50297182f998b46f99eacca5843
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1a46c272ee2f7aa2d6621e3dc2db81605ba0363f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325778"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833114"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Functions における Azure Blob Storage の入力バインド
 
@@ -175,6 +175,15 @@ module.exports = function(context) {
 
 これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
 
+使用されるバインドは、`dataType` プロパティによって決まります。 次の値は、さまざまなバインド方法をサポートするために使用できます。
+
+| バインド値 | Default | 説明 | 例 |
+| --- | --- | --- | --- |
+| `undefined` | Y | リッチ バインドを使用します | `def main(input: func.InputStream)` |
+| `string` | × | 汎用バインドを使用し、入力型を `string` としてキャストします | `def main(input: str)` |
+| `binary` | × | 汎用バインドを使用し、入力 BLOBを `bytes` Python オブジェクトとしてキャストします | `def main(input: bytes)` |
+
+
 Python コードを次に示します。
 
 ```python
@@ -309,6 +318,7 @@ public static void Run(
 |**name** | 該当なし | 関数コード内の BLOB を表す変数の名前。|
 |**path** |**BlobPath** | BLOB へのパス。 |
 |**connection** |**接続**| このバインドに使用する[ストレージ接続文字列](../storage/common/storage-configure-connection-string.md)を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
+|**dataType**| 該当なし | 動的に型指定される言語の場合は、基になるデータ型を指定します。 設定可能な値は、`string`、`binary`、または `stream` です。 詳細については、[トリガーとバインドの概念](functions-triggers-bindings.md?tabs=python#trigger-and-binding-definitions)に関する記事を参照してください。 |
 |該当なし | **Access (アクセス)** | 読み取りと書き込みのどちらを行うかを示します。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

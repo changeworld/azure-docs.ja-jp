@@ -3,16 +3,17 @@ title: Azure で利用可能な Red Hat Enterprise Linux イメージ
 description: Microsoft Azure の Red Hat Enterprise Linux イメージについて説明します
 author: asinn826
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 66e2f70a5d55d263f7da343c0987e77a9f60c3b0
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: ea0e8c148a847ecc23bab5e87a1dc60a626cf0c1
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372678"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95411616"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Azure で利用可能な Red Hat Enterprise Linux (RHEL) イメージ
 Azure では、さまざまなユース ケースに対応する多様な RHEL イメージを提供しています。
@@ -54,12 +55,14 @@ RHEL          | 6.7      | RAW    | Linux エージェント | 12 月 1 日か�
 |             | 8-lvm-gen2| LVM    | Linux エージェント | Hyper-V Generation 2 - RHEL 8.x イメージ ファミリ。 通常のリポジトリに接続されています。
 |             | 8        | LVM    | Linux エージェント | RHEL 8.0 イメージ。
 |             | 8-gen2   | LVM    | Linux エージェント | Hyper-V 第 2 世代 - RHEL 8.0 イメージ。
-|             | 8.1      | LVM    | Linux エージェント | RHEL 8.2 イメージ。 現在、通常のリポジトリに接続されています。
-|             | 81gen2   | LVM    | Linux エージェント | Hyper-V 第 2 世代 - RHEL 8.1 イメージ。 現在、通常のリポジトリに接続されています。
-|             | 8.1-ci   | LVM    | Linux エージェント | プロビジョニング エージェントとして cloud-init を使用する RHEL 8.1 イメージ。 現在、通常のリポジトリに接続されています。
-|             | 81-ci-gen2| LVM    | Linux エージェント | Hyper-V 第 2 世代 - プロビジョニング エージェントとして cloud-init を使用する RHEL 8.1 イメージ。 現在、通常のリポジトリに接続されています。
-|             | 8.2      | LVM    | Linux エージェント | RHEL 8.2 イメージ。 現在、通常のリポジトリに接続されています。
-|             | 82gen2   | LVM    | Linux エージェント | Hyper-V 第 2 世代 - RHEL 8.1 イメージ。 現在、通常のリポジトリに接続されています。
+|             | 8.1      | LVM    | Linux エージェント | 既定では EUS リポジトリに接続されています。
+|             | 81gen2   | LVM    | Linux エージェント | Hyper-V Generation 2 - 2020 年 11 月現在、EUS リポジトリに接続されています。
+|             | 8.1-ci   | LVM    | Linux エージェント | 2020 年 11 月現在、EUS リポジトリに接続されています。
+|             | 81-ci-gen2| LVM    | Linux エージェント | Hyper-V Generation 2 - 2020 年 11 月現在、EUS リポジトリに接続されています。
+|             | 8.2      | LVM    | Linux エージェント | 2020 年 11 月現在、EUS リポジトリに接続されています。
+|             | 82gen2   | LVM    | Linux エージェント | Hyper-V Generation 2 - 2020 年 11 月現在、EUS リポジトリに接続されています。
+|             | 8.3   | LVM    | Linux エージェント |  標準リポジトリに接続されています (RHEL 8.3 では EUS は使用できません)
+|             | 83-gen2   | LVM    | Linux エージェント |Hyper-V Generation 2 - 標準リポジトリに接続されています (RHEL 8.3 では EUS は使用できません)
 RHEL-SAP      | 7.4      | LVM    | Linux エージェント | RHEL 7.4 for SAP HANA および Business Apps。 E4S リポジトリに接続されており、SAP および RHEL の割増料金と基本コンピューティング料金が請求されます。
 |             | 74sap-gen2| LVM    | Linux エージェント | RHEL 7.4 for SAP HANA および Business Apps。 第 2 世代イメージ。 E4S リポジトリに接続されており、SAP および RHEL の割増料金と基本コンピューティング料金が請求されます。
 |             | 7.5       | LVM    | Linux エージェント | RHEL 7.5 for SAP HANA および Business Apps。 E4S リポジトリに接続されており、SAP および RHEL の割増料金と基本コンピューティング料金が請求されます。
@@ -75,6 +78,11 @@ RHEL-SAP-APPS | 6.8       | RAW    | Linux エージェント | RHEL 6.8 for SAP
 |             | 7.4       | LVM    | Linux エージェント | RHEL 7.4 for SAP Business Applications。
 |             | 7.6       | LVM    | Linux エージェント | RHEL 7.6 for SAP Business Applications。
 |             | 7.7       | LVM    | Linux エージェント | RHEL 7.7 for SAP Business Applications。
+|             | 77-gen2       | LVM    | Linux エージェント | RHEL 7.7 for SAP Business Applications。 第 2 世代イメージ
+|             | 8.1       | LVM    | Linux エージェント | RHEL 8.1 for SAP Business Applications。
+|             | 81-gen2      | LVM    | Linux エージェント | RHEL 8.1 for SAP Business Applications。 第 2 世代イメージ。
+|             | 8.2       | LVM    | Linux エージェント | RHEL 8.2 for SAP Business Applications。
+|             | 82-gen2      | LVM    | Linux エージェント | RHEL 8.2 for SAP Business Applications。 第 2 世代イメージ。
 RHEL-HA       | 7.4       | LVM    | Linux エージェント | HA アドオンが追加された RHEL 7.4。 基本コンピューティング料金に加えて、HA および RHEL の割増料金が請求されます。 RHEL-SAP-HA イメージを優先して古くなりました。
 |             | 7.5       | LVM    | Linux エージェント | HA アドオンが追加された RHEL 7.5。 基本コンピューティング料金に加えて、HA および RHEL の割増料金が請求されます。 RHEL-SAP-HA イメージを優先して古くなりました。
 |             | 7.6       | LVM    | Linux エージェント | HA アドオンが追加された RHEL 7.6。 基本コンピューティング料金に加えて、HA および RHEL の割増料金が請求されます。 RHEL-SAP-HA イメージを優先して古くなりました。
@@ -85,6 +93,10 @@ RHEL-SAP-HA   | 7.4          | LVM    | Linux エージェント | HA および�
 |             | 76sapha-gen2 | LVM    | Linux エージェント | HA および更新サービスを備えた RHEL 7.6 for SAP。 第 2 世代イメージ。 E4S リポジトリに接続されています。 基本コンピューティング料金に加えて、SAP および HA リポジトリと RHEL の割増料金が請求されます。
 |             | 7.7          | LVM    | Linux エージェント | HA および更新サービスを備えた RHEL 7.7 for SAP。 E4S リポジトリに接続されています。 基本コンピューティング料金に加えて、SAP および HA リポジトリと RHEL の割増料金が請求されます。
 |             | 77sapha-gen2 | LVM    | Linux エージェント | HA および更新サービスを備えた RHEL 7.7 for SAP。 第 2 世代イメージ。 E4S リポジトリに接続されています。 基本コンピューティング料金に加えて、SAP および HA リポジトリと RHEL の割増料金が請求されます。
+|             | 8.1          | LVM    | Linux エージェント | HA および更新サービスを備えた RHEL 8.1 for SAP。 E4S リポジトリに接続されています。 基本コンピューティング料金に加えて、SAP および HA リポジトリと RHEL の割増料金が請求されます。
+|             | 81sapha-gen2          | LVM    | Linux エージェント | HA および更新サービスを備えた RHEL 8.1 for SAP。 E4S リポジトリにアタッチされた第 2 世代イメージ。 基本コンピューティング料金に加えて、SAP および HA リポジトリと RHEL の割増料金が請求されます。
+|             | 8.2          | LVM    | Linux エージェント | HA および更新サービスを備えた RHEL 8.2 for SAP。 基本コンピューティング料金に加えて、SAP および HA リポジトリと RHEL の割増料金が請求されます。
+|             | 82sapha-gen2          | LVM    | Linux エージェント | HA および更新サービスを備えた RHEL 8.2 for SAP。 E4S リポジトリにアタッチされた第 2 世代イメージ。 基本コンピューティング料金に加えて、SAP および HA リポジトリと RHEL の割増料金が請求されます。
 rhel-byos     |rhel-lvm74| LVM    | Linux エージェント | RHEL 7.4 BYOS イメージ。どの更新ソースにも接続されておらず、RHEL の割増料金は請求されません。
 |             |rhel-lvm75| LVM    | Linux エージェント | RHEL 7.5 BYOS イメージ。どの更新ソースにも接続されておらず、RHEL の割増料金は請求されません。
 |             |rhel-lvm76| LVM    | Linux エージェント | RHEL 7.6 BYOS イメージ。どの更新ソースにも接続されておらず、RHEL の割増料金は請求されません。

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dd88f6e8eb2ce95c1aa68c63f3d14a14e079d19
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2cdf89fa3281e070d6b1ac762d30d7c391f4126f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93396517"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963642"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -707,10 +707,11 @@ Azure AD でデバイスを管理するためのフル アクセス。
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.directory/auditLogs/allProperties/read | Azure Active Directory での auditLogs 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
-| microsoft.directory/devices/bitLockerRecoveryKeys/read | Azure Active Directory での devices.bitLockerRecoveryKeys プロパティの読み取り。 |
+| microsoft.directory/bitlockerKeys/key/read | Azure Active Directory での bitlocker キー オブジェクトおよびプロパティ (回復キーを含む) の読み取り。 |
 | microsoft.directory/devices/delete | Azure Active Directory での devices の削除。 |
 | microsoft.directory/devices/disable | Azure Active Directory での devices の無効化。 |
 | microsoft.directory/devices/enable | Azure Active Directory での devices の有効化。 |
+| microsoft.directory/devices/extensionAttributes/update | Azure Active Directory での devices.extensionAttributes プロパティのすべての値の更新。 |
 | microsoft.directory/signInReports/allProperties/read | Azure Active Directory での signInReports 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Microsoft 365 Service Health の読み取りと構成。 |
@@ -731,6 +732,7 @@ Azure AD のすべての側面と、Azure AD の ID が使用される Microsoft
 | microsoft.directory/applications/allProperties/allTasks | Azure Active Directory での applications の作成と削除、およびすべてのプロパティの読み取りと更新。 |
 | microsoft.directory/appRoleAssignments/allProperties/allTasks | Azure Active Directory での appRoleAssignments の作成と削除、およびすべてのプロパティの読み取りと更新。 |
 | microsoft.directory/auditLogs/allProperties/read | Azure Active Directory での auditLogs 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
+| microsoft.directory/bitlockerKeys/key/read | Azure Active Directory での bitlocker キー オブジェクトおよびプロパティ (回復キーを含む) の読み取り。 |
 | microsoft.directory/contacts/allProperties/allTasks | Azure Active Directory での contacts の作成と削除、およびすべてのプロパティの読み取りと更新。 |
 | microsoft.directory/contracts/allProperties/allTasks | Azure Active Directory での contracts の作成と削除、およびすべてのプロパティの読み取りと更新。 |
 | microsoft.directory/devices/allProperties/allTasks | Azure Active Directory での devices の作成と削除、およびすべてのプロパティの読み取りと更新。 |
@@ -1087,6 +1089,7 @@ Exchange 製品のすべての側面を管理できます。
 | microsoft.directory/applications/basic/read    | Azure Active Directory での applications の基本プロパティの読み取り。 |
 | microsoft.directory/applications/owners/read    | Azure Active Directory での applications.owners プロパティの読み取り。 |
 | microsoft.directory/applications/policies/read    | Azure Active Directory での applications.policies プロパティの読み取り。 |
+| microsoft.directory/bitlockerKeys/key/read | Azure Active Directory での bitlocker キー オブジェクトおよびプロパティ (回復キーを含む) の読み取り。 |
 | microsoft.directory/contacts/basic/read    | Azure Active Directory での contacts の基本プロパティの読み取り。 |
 | microsoft.directory/contacts/memberOf/read    | Azure Active Directory での contacts.memberOf プロパティの読み取り。 |
 | microsoft.directory/contracts/basic/read    | Azure Active Directory での contracts の基本プロパティの読み取り。 |
@@ -1267,13 +1270,16 @@ Intune 製品のすべての側面を管理できます。
 
 | **アクション** | **説明** |
 | --- | --- |
+| microsoft.directory/bitlockerKeys/key/read | Azure Active Directory での bitlocker キー オブジェクトおよびプロパティ (回復キーを含む) の読み取り。 |
 | microsoft.directory/contacts/basic/update | Azure Active Directory での contacts の基本プロパティの更新。 |
 | microsoft.directory/contacts/create | Azure Active Directory での contacts の作成。 |
 | microsoft.directory/contacts/delete | Azure Active Directory での contacts の削除。 |
 | microsoft.directory/devices/basic/update | Azure Active Directory での devices の基本プロパティの更新。 |
-| microsoft.directory/devices/bitLockerRecoveryKeys/read | Azure Active Directory での devices.bitLockerRecoveryKeys プロパティの読み取り。 |
 | microsoft.directory/devices/create | Azure Active Directory での devices の作成。 |
 | microsoft.directory/devices/delete | Azure Active Directory での devices の削除。 |
+| microsoft.directory/devices/disable | Azure Active Directory での devices の無効化。 |
+| microsoft.directory/devices/enable | Azure Active Directory での devices の有効化。 |
+| microsoft.directory/devices/extensionAttributes/update | Azure Active Directory での devices.extensionAttributes プロパティのすべての値の更新。 |
 | microsoft.directory/devices/registeredOwners/update | Azure Active Directory での devices.registeredOwners プロパティの更新。 |
 | microsoft.directory/devices/registeredUsers/update | Azure Active Directory での devices.registeredUsers プロパティの更新。 |
 | microsoft.directory/groups/appRoleAssignments/update | Azure Active Directory での groups.appRoleAssignments プロパティの更新。 |
@@ -1513,7 +1519,7 @@ Power BI 製品のすべての側面を管理できます。
 
 ### <a name="power-platform-administrator-permissions"></a>Power Platform 管理者のアクセス許可
 
-Microsoft Dynamics 365、PowerApps、Microsoft Flow のすべての側面を作成および管理できます。 
+Microsoft Dynamics 365、PowerApps、Power Automate のすべての側面を作成および管理できます。
 
 > [!NOTE]
 > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
@@ -1524,7 +1530,7 @@ Microsoft Dynamics 365、PowerApps、Microsoft Flow のすべての側面を作�
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | ディレクトリレベル サービスの Azure サポート チケットの作成と管理。 |
 | microsoft.dynamics365/allEntities/allTasks | Dynamics 365 の全側面の管理。 |
-| microsoft.flow/allEntities/allTasks | Microsoft Flow のすべての側面を管理します。 |
+| microsoft.flow/allEntities/allTasks | Power Automate の全側面の管理。 |
 | microsoft.powerApps/allEntities/allTasks | Power Apps のすべての側面を管理します。 |
 | microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Microsoft 365 Service Health の読み取りと構成。 |
@@ -1654,9 +1660,9 @@ Microsoft Search 設定のすべての側面を作成および管理できます
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | ディレクトリレベル サービスの Azure サポート チケットの作成と管理。 |
+| microsoft.directory/bitlockerKeys/key/read | Azure Active Directory での bitlocker キー オブジェクトおよびプロパティ (回復キーを含む) の読み取り。 |
 | microsoft.directory/applications/policies/update | Azure Active Directory での applications.policies プロパティの更新。 |
 | microsoft.directory/auditLogs/allProperties/read | Azure Active Directory での auditLogs 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
-| microsoft.directory/devices/bitLockerRecoveryKeys/read | Azure Active Directory での devices.bitLockerRecoveryKeys プロパティの読み取り。 |
 | microsoft.directory/identityProtection/allProperties/read | microsoft.aad.identityProtection でのすべてのリソースの読み取り。 |
 | microsoft.directory/identityProtection/allProperties/update | microsoft.aad.identityProtection でのすべてのリソースの更新。 |
 | microsoft.directory/policies/basic/update | Azure Active Directory での policies の基本プロパティの更新。 |
@@ -1706,7 +1712,7 @@ Azure AD と Microsoft 365 のセキュリティ情報とレポートを読み�
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.directory/auditLogs/allProperties/read | Azure Active Directory での auditLogs 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
-| microsoft.directory/devices/bitLockerRecoveryKeys/read | Azure Active Directory での devices.bitLockerRecoveryKeys プロパティの読み取り。 |
+| microsoft.directory/bitlockerKeys/key/read | Azure Active Directory での bitlocker キー オブジェクトおよびプロパティ (回復キーを含む) の読み取り。 |
 | microsoft.directory/policies/conditionalAccess/basic/read | Azure Active Directory での policies.conditionalAccess プロパティの読み取り。 |
 | microsoft.directory/signInReports/allProperties/read | Azure Active Directory での signInReports 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
 | microsoft.aad.identityProtection/allEntities/read | microsoft.aad.identityProtection でのすべてのリソースの読み取り。 |

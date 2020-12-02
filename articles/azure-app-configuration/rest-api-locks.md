@@ -6,23 +6,21 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 4949db646c54d75f60d29d3c631d0f4ee8d7c26e
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 7e63b48f2119c48cd43717acee7b13b1701e0032
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423835"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241269"
 ---
 # <a name="locks"></a>ロック
 
-api-version: 1.0
-
-この API では、キー値リソースのロックまたはロック解除のセマンティクスが提供されます。 次の操作がサポートされます。
+この API (バージョン 1.0) では、キー値リソースのロックおよびロック解除のセマンティクスが提供されます。 次の操作がサポートされます。
 
 - ロックを設定する
 - ロックを解除する
 
-`label` (存在する場合) は、明示的なラベル値でなければなりません (ワイルドカードは使用 **できません**)。 すべての操作で、これは省略可能なパラメーターです。 省略されている場合、ラベルがないことを意味します。
+`label` (存在する場合) は、明示的なラベル値でなければなりません (ワイルドカードは使用できません)。 すべての操作で、これは省略可能なパラメーターです。 省略されている場合、ラベルがないことを意味します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,8 +28,8 @@ api-version: 1.0
 
 ## <a name="lock-key-value"></a>キー値をロックする
 
-- **必須:** ``{key}``、``{api-version}``  
-- "*省略可能*": ``label``
+- 必須: ``{key}``、``{api-version}``  
+- 省略可能: ``label``
 
 ```http
 PUT /locks/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -65,8 +63,8 @@ HTTP/1.1 404 Not Found
 
 ## <a name="unlock-key-value"></a>キー値のロックを解除する
 
-- **必須:** ``{key}``、``{api-version}``  
-- "*省略可能*": ``label``
+- 必須: ``{key}``、``{api-version}``  
+- 省略可能: ``label``
 
 ```http
 DELETE /locks/{key}?label={label}?api-version={api-version} HTTP/1.1
@@ -98,7 +96,7 @@ Content-Type: application/vnd.microsoft.appconfig.kv+json; charset=utf-8"
 HTTP/1.1 404 Not Found
 ```
 
-## <a name="conditional-lockunlock"></a>条件付きロックまたはロック解除
+## <a name="conditional-lock-and-unlock"></a>条件付きロックとロック解除
 
 競合状態を回避するには、`If-Match` または `If-None-Match` 要求ヘッダーを使用します。 `etag` 引数はキー表現の一部です。 `If-Match` または `If-None-Match` を省略した場合、操作は無条件になります。
 

@@ -6,18 +6,18 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 50d97a330507e9361674776acf29d1007ee5bf58
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: f89b3f2fa4805eeb2fd9f9d511c8f228b98139ac
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423709"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241031"
 ---
 # <a name="key-values"></a>キー値
 
-api-version: 1.0
-
 キー値は、`key` + `label` の一意の組み合わせによって識別されるリソースです。 `label` はオプションです。 ラベルがないキー値を明示的に参照する場合は、"\0" (URL エンコード: ``%00``) を使用してください。 各操作の詳細を確認してください。
+
+この記事は、API バージョン 1.0 に適用されます。
 
 ## <a name="operations"></a>Operations
 
@@ -47,8 +47,8 @@ api-version: 1.0
 
 ## <a name="get-key-value"></a>キー値の取得
 
-**必須:** ``{key}``、``{api-version}``  
-*省略可能:* ``label`` - 省略した場合、ラベルのないキー値を意味します
+必須: ``{key}``、``{api-version}``  
+省略可能:``label`` (省略した場合、ラベルのないキー値を意味します。)
 
 ```http
 GET /kv/{key}?label={label}&api-version={api-version}
@@ -87,7 +87,7 @@ HTTP/1.1 404 Not Found
 
 ## <a name="get-conditionally"></a>取得 (条件付き)
 
-クライアントのキャッシュを向上させるには、 `If-Match` または `If-None-Match` の要求ヘッダーを使用します。 `etag` 引数はキー表現の一部です。 [セクション 14.24 および 14.26](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) を参照してください。
+クライアントのキャッシュを向上させるには、 `If-Match` または `If-None-Match` の要求ヘッダーを使用します。 `etag` 引数はキー表現の一部です。 詳細については、[セクション 14.24 および 14.26](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) を参照してください。
 
 次の要求では、現在の表現が指定された `etag` と一致しない場合にのみ、キー値が取得されます。
 
@@ -111,10 +111,7 @@ HTTP/1.1 200 OK
 
 ## <a name="list-key-values"></a>キー値の一覧表示
 
-その他のオプションについては、「**フィルター処理**」を参照してください
-
-*省略可能:* ``key`` - 指定されていない場合は、**すべての** キーを意味します。
-*省略可能:* ``label`` - 指定されていない場合は、**すべての** ラベルを意味します。
+省略可能:``key`` (指定されていない場合は、すべてのキーを意味します。)省略可能:``label`` (指定されていない場合は、すべてのラベルを意味します。)
 
 ```http
 GET /kv?label=*&api-version={api-version} HTTP/1.1
@@ -127,10 +124,12 @@ HTTP/1.1 200 OK
 Content-Type: application/vnd.microsoft.appconfig.kvset+json; charset=utf-8
 ```
 
+その他のオプションについては、この記事で後述する「フィルター処理」のセクションを参照してください。
+
 ## <a name="pagination"></a>改ページ位置の自動修正
 
 返された項目の数が応答の制限を超えている場合、結果は改ページされます。 省略可能な `Link` 応答ヘッダーに従い、`rel="next"` を使用してナビゲーションを行います。
-あるいは、コンテンツによって、`@nextLink` プロパティの形式で次のリンクが指定されます。 リンクされた uri には、 `api-version` 引数が含まれます。
+あるいは、コンテンツによって、`@nextLink` プロパティの形式で次のリンクが指定されます。 リンクされた URI には、`api-version` 引数が含まれます。
 
 ```http
 GET /kv?api-version={api-version} HTTP/1.1
@@ -226,7 +225,7 @@ Content-Type: application/problem+json; charset=utf-8
 
 ## <a name="request-specific-fields"></a>特定のフィールドの要求
 
-省略可能な `$select` クエリ文字列パラメーターを使用して、要求されたフィールドのコンマ区切りリストを指定します。 `$select` パラメーターを省略した場合、応答には既定のセットが含まれます。
+省略可能な `$select` クエリ文字列パラメーターを使用して、要求するフィールドのコンマ区切りリストを指定します。 `$select` パラメーターを省略した場合、応答には既定のセットが含まれます。
 
 ```http
 GET /kv?$select=key,value&api-version={api-version} HTTP/1.1
@@ -234,7 +233,7 @@ GET /kv?$select=key,value&api-version={api-version} HTTP/1.1
 
 ## <a name="time-based-access"></a>時間ベースのアクセス
 
-過去の時間のものとして結果の表現を取得します。 セクション [2.1.1](https://tools.ietf.org/html/rfc7089#section-2.1) を参照してください。 上で定義されているように、改ページ位置の自動修正は引き続きサポートされます。
+過去の時間のものとして結果の表現を取得します。 詳細については、セクション [2.1.1](https://tools.ietf.org/html/rfc7089#section-2.1) を参照してください。 この記事で既に定義したように、改ページ位置の自動修正は引き続きサポートされます。
 
 ```http
 GET /kv?api-version={api-version} HTTP/1.1
@@ -258,10 +257,10 @@ Link: <{relative uri}>; rel="original"
 }
 ```
 
-## <a name="set-key"></a>設定キー
+## <a name="set-key"></a>キーの設定
 
-- **必須:** ``{key}``
-- *省略可能:* ``label`` - 指定されていない場合、または label=%00 の場合、ラベルなしの KV を意味します。
+- [必須ですか?]\: ``{key}``オン
+- 省略可能:``label`` (指定されていない場合、または label=%00 の場合、ラベルなしのキー値を意味します。)
 
 ```http
 PUT /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -325,7 +324,7 @@ Content-Type: application/problem+json; charset="utf-8"
 競合状態を回避するには、`If-Match` または `If-None-Match` 要求ヘッダーを使用します。 `etag` 引数はキー表現の一部です。
 `If-Match` または `If-None-Match` を省略した場合、操作は無条件になります。
 
-次の応答では、現在の表現が指定された `etag` と一致する場合にのみ、値が更新されます
+次の応答では、現在の表現が指定された `etag` と一致する場合にのみ、値が更新されます。
 
 ```http
 PUT /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -333,7 +332,7 @@ Content-Type: application/vnd.microsoft.appconfig.kv+json
 If-Match: "4f6dd610dd5e4deebc7fbaef685fb903"
 ```
 
-次の応答では、現在の表現が指定された `etag` と一致 "*しない*" 場合にのみ、値が更新されます
+次の応答では、現在の表現が指定された `etag` と一致しない場合にのみ、値が更新されます。
 
 ```http
 PUT /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -349,7 +348,7 @@ Content-Type: application/vnd.microsoft.appconfig.kv+json;
 If-Match: "*"
 ```
 
-次の要求では、表現がまだ存在 "*しない*" 場合にのみ、値が追加されます。
+次の要求では、表現がまだ存在 "しない" 場合にのみ、値が追加されます。
 
 ```http
 PUT /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -373,8 +372,8 @@ HTTP/1.1 412 PreconditionFailed
 
 ## <a name="delete"></a>削除
 
-- **必須:** `{key}`、`{api-version}`
-- *省略可能:* `{label}` - 指定されていない場合、または label=%00 の場合、ラベルなしの KV を意味します。
+- 必須: `{key}`、`{api-version}`
+- 省略可能:`{label}` (指定されていない場合、または label=%00 の場合、ラベルなしのキー値を意味します。)
 
 ```http
 DELETE /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -396,4 +395,4 @@ HTTP/1.1 204 No Content
 
 ## <a name="delete-key-conditionally"></a>キーの削除 (条件付き)
 
-**キーの設定 (条件付き)** に似ています
+これは、この記事の前述の「キーの設定 (条件付き)」セクションに似ています。

@@ -5,19 +5,19 @@ description: 自動フェールオーバー グループを使用して、サー
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: high-availability
-ms.custom: sqldbrb=2
+ms.custom: sqldbrb=2, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 11/16/2020
-ms.openlocfilehash: 35856a0d414e288fcd184164733e9430a6bee296
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0d2248b9c0a289f5e4f9f2f8e987365ab58c49c0
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94653744"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988546"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -142,15 +142,15 @@ ms.locfileid: "94653744"
 
 ### <a name="create-failover-group"></a>フェールオーバー グループの作成
 
-フェールオーバー グループを作成するには、プライマリ サーバーとセカンダリ サーバーの両方、およびフェールオーバー グループ内のすべてのデータベースへの RBAC 書き込みアクセス権が必要です。 SQL Managed Instance の場合、プライマリとセカンダリの両方の SQL Managed Instance への RBAC 書き込みアクセス権が必要です。しかし、個々の SQL Managed Instance データベースをフェールオーバー グループに対して追加や削除はできないため、個々のデータベースに対するアクセス許可は関係しません。
+フェールオーバー グループを作成するには、プライマリ サーバーとセカンダリ サーバーの両方、およびフェールオーバー グループ内のすべてのデータベースへの Azure RBAC 書き込みアクセス権が必要です。 SQL Managed Instance の場合、プライマリとセカンダリの両方の SQL Managed Instance への Azure RBAC 書き込みアクセス権が必要です。しかし、個々の SQL Managed Instance データベースをフェールオーバー グループに対して追加または削除することはできないため、個々のデータベースに対するアクセス許可は関係しません。
 
 ### <a name="update-a-failover-group"></a>フェールオーバー グループの更新
 
-フェールオーバー グループを更新するには、そのフェールオーバー グループ、および現在のプライマ リ サーバーまたはマネージド インスタンス上のすべてのデータベースへの RBAC 書き込みアクセス権が必要です。  
+フェールオーバー グループを更新するには、そのフェールオーバー グループ、および現在のプライマリ サーバーまたはマネージド インスタンス上のすべてのデータベースへの Azure RBAC 書き込みアクセス権が必要です。  
 
 ### <a name="fail-over-a-failover-group"></a>フェールオーバー グループをフェールオーバーする
 
-フェールオーバー グループをフェールオーバーするには、新しいプライマリ サーバーまたはマネージド インスタンス上のフェールオーバー グループへの RBAC 書き込みアクセス権が必要です。
+フェールオーバー グループをフェールオーバーするには、新しいプライマリ サーバーまたはマネージド インスタンス上のフェールオーバー グループへの Azure RBAC 書き込みアクセス権が必要です。
 
 ## <a name="best-practices-for-sql-database"></a>SQL Database のベスト プラクティス
 
@@ -409,7 +409,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 ## <a name="programmatically-managing-failover-groups"></a>フェールオーバー グループのプログラムによる管理
 
-前に説明したように、自動フェールオーバー グループとアクティブ geo レプリケーションは、Azure PowerShell および REST API を使用してプログラムによって管理することもできます。 次の表では、使用できるコマンド セットについて説明します。 アクティブ geo レプリケーションには、管理のための Azure Resource Manager API 一式 ([Azure SQL Database REST API](/rest/api/sql/)、[Azure PowerShell コマンドレット](/powershell/azure/)など) が含まれています。 これらの API は、リソース グループの使用を必要とし、ロール ベース セキュリティ (RBAC) をサポートします。 アクセス ロールの実装方法の詳細については、[Azure のロール ベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) に関するページをご覧ください。
+前に説明したように、自動フェールオーバー グループとアクティブ geo レプリケーションは、Azure PowerShell および REST API を使用してプログラムによって管理することもできます。 次の表では、使用できるコマンド セットについて説明します。 アクティブ geo レプリケーションには、管理のための Azure Resource Manager API 一式 ([Azure SQL Database REST API](/rest/api/sql/)、[Azure PowerShell コマンドレット](/powershell/azure/)など) が含まれています。 これらの API では、リソース グループを使用する必要があり、Azure のロール ベースのアクセス制御 (Azure RBAC) がサポートされます。 アクセス ロールの実装方法の詳細については、[Azure のロール ベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) に関するページをご覧ください。
 
 ### <a name="manage-sql-database-failover"></a>SQL Database のフェールオーバーを管理する
 

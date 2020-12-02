@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d90384644c58938bfc8a37ec1231b0d12fd60057
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 788c52490a97bb5d5aee0656bbdd09731d767d85
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90058702"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842602"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Azure パブリック IP の Azure セキュリティ ベースライン
 
-このセキュリティ ベースラインにより、[Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview.md) のガイダンスが Azure パブリック IP に適用されます。 Azure セキュリティ ベンチマークには、Azure 上のクラウド ソリューションをセキュリティで保護する方法に関する推奨事項がまとめてあります。 内容は、**セキュリティ制御**によってグループ化されています。これは、Azure セキュリティ ベンチマークと、Azure パブリック IP に適用できる関連ガイダンスによって定義されています。 Azure パブリック IP に適用できない**制御**は、除外されています。  Azure パブリック IP では、顧客データは保存されないので注意してください。
+このセキュリティ ベースラインにより、[Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview.md) のガイダンスが Azure パブリック IP に適用されます。 Azure セキュリティ ベンチマークには、Azure 上のクラウド ソリューションをセキュリティで保護する方法に関する推奨事項がまとめてあります。 内容は、**セキュリティ制御** によってグループ化されています。これは、Azure セキュリティ ベンチマークと、Azure パブリック IP に適用できる関連ガイダンスによって定義されています。 Azure パブリック IP に適用できない **制御** は、除外されています。  Azure パブリック IP では、顧客データは保存されないので注意してください。
 
 Azure パブリック IP と Azure セキュリティ ベンチマークのマッピングの詳細については、[Azure パブリック IP セキュリティ ベースライン マッピング ファイル](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)をご覧ください。
 
@@ -148,11 +148,11 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) と Azure
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
 
-**ガイダンス**: Azure Multi-Factor Authentication (MFA) が有効な特権アクセス ワークステーション (PAW) を使用してログインし、Azure Sentinel 対応リソースを構成します。
+**ガイダンス**:Azure AD Multi-Factor Authentication (MFA) が有効な特権アクセス ワークステーション (PAW) を使用してログインし、Azure Sentinel 対応リソースを構成します。
 
 - [Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations) (Privileged Access Workstation)
 
-- [クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
+- [クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 

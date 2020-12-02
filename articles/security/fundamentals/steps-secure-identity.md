@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 4fa5ba935e77055936b2abc4faab49b5d10cb5c0
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 4703a76ff0a0b55a438f9f0d164cd7f2d3242a02
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410064"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842024"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 
@@ -48,7 +48,7 @@ ms.locfileid: "94410064"
 
 このチェックリストを読み始める前に、読んでいる間にセキュリティが侵害されないようにしてください。 まず、特権アカウントを保護する必要があります。
 
-攻撃者に特権アカウントを支配されると、多大な損害が発生する可能性があるので、まず特権アカウントを保護することが重要です。 [Azure AD セキュリティの既定値](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)または[条件付きアクセス](../../active-directory/conditional-access/plan-conditional-access.md)を使用して、すべての管理者に関して [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (MFA) を有効にして要求します。 MFA を実装していない場合はすぐに実装してください。 これは非常に重要です。
+攻撃者に特権アカウントを支配されると、多大な損害が発生する可能性があるので、まず特権アカウントを保護することが重要です。 [Azure AD セキュリティの既定値](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)または[条件付きアクセス](../../active-directory/conditional-access/plan-conditional-access.md)を使用して、すべての管理者に関して [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (MFA) を有効にして要求します。 MFA を実装していない場合はすぐに実装してください。 これは非常に重要です。
 
 準備はできたでしょうか。 それでは、チェックリストの確認に入りましょう。
 
@@ -59,9 +59,9 @@ ms.locfileid: "94410064"
 
 ### <a name="make-sure-your-organization-uses-strong-authentication"></a>組織で強力な認証が使用されるようにする
 
-パスワードの推測、フィッシング、マルウェアによる盗難、または再利用が頻繁に行われることを考えると、何らかの強力な資格情報でパスワードを強化することが非常に重要です。[Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) の詳細をご確認ください。
+パスワードの推測、フィッシング、マルウェアによる盗難、または再利用が頻繁に行われることを考えると、何らかの強力な資格情報でパスワードを強化することが非常に重要です。[Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) の詳細をご確認ください。
 
-ID セキュリティの基本レベルを簡単に有効にするために、[Azure AD セキュリティの既定値](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)によりワンクリックでの有効化を使用できます。 セキュリティの既定値により、テナント内のすべてのユーザーに Azure MFA が適用され、従来のプロトコル テナント全体からのサインインがブロックされます。
+ID セキュリティの基本レベルを簡単に有効にするために、[Azure AD セキュリティの既定値](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)によりワンクリックでの有効化を使用できます。 セキュリティの既定値により、テナント内のすべてのユーザーに Azure AD MFA が適用され、従来のプロトコル テナント全体からのサインインがブロックされます。
 
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>攻撃されやすいパスワードを禁止して、従来の複雑さと有効期限にのルールを無効にする。
 
@@ -72,7 +72,7 @@ Azure AD の[パスワードの動的禁止](../../active-directory/authenticati
 [NIST ガイダンス](https://pages.nist.gov/800-63-3/sp800-63b.html)に基づく次のような先進のパスワード ポリシーを採用することをお勧めします。
 
 1. パスワードに 8 文字以上を必要とする。 ユーザーが予測可能なパスワードを選んだり、パスワードをファイルに保存したり、書き留めたりする原因となるため、必ずしも長ければ長いほど良いというわけではありません。
-2. 有効期限のルールを無効にする。このルールは、簡単に推測されるパスワード ( **Spring2019!** など) をユーザーが使用する原因になります
+2. 有効期限のルールを無効にする。このルールは、簡単に推測されるパスワード (**Spring2019!** など) をユーザーが使用する原因になります
 3. 文字構成の要件を無効にして、よく攻撃されるパスワードをユーザーが選択するのを防ぐ。これは、文字構成の要件が、パスワードで予測可能な文字置換をユーザーが選択する原因となるためです。
 
 Azure AD で直接 ID を作成した場合、[PowerShell を使用してユーザーのパスワードの期限切れを防ぐ](../../active-directory/authentication/concept-sspr-policy.md)ことができます。 ハイブリッド組織では、[ドメイン グループ ポリシー設定](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10))または [Windows PowerShell](/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy) を使用してこれらのポリシーを実装する必要があります。

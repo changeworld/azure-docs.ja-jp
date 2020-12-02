@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: a75dd24769a4f1af018981ffcec279afc2a88b5a
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: f7980ca7bc6f23c383ea013c2b017b3bd61e2d25
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682420"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842296"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
 この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](./itsmc-overview.md)に関する記事をご覧ください。
@@ -41,6 +41,7 @@ ms.locfileid: "94682420"
 - ハイブリッド接続が作成および構成されている。 詳細情報: [ハイブリッド接続の構成](#configure-the-hybrid-connection)。
 - サポートされている Service Manager のバージョン: 2012 R2 または 2016。
 - ユーザー ロール: [上級オペレーター](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10))。
+- 現在、Azure Monitor から送信されたアラートによって、System Center Service Manager インシデントが作成されます。
 
 > [!NOTE]
 > 
@@ -186,7 +187,7 @@ Service Manager インスタンスを Azure の ITSMC に接続するハイブ�
 次の前提条件が満たされていることを確認してください。
 - ITSMC がインストールされている。 詳細情報: [IT Service Management Connector ソリューションの追加](./itsmc-overview.md#add-it-service-management-connector)。
 - ServiceNow でサポートされているバージョン: Orlando、New York、Madrid、London、Kingston、Jakarta、Istanbul、Helsinki、Geneva。
-- 現在、Azure Monitor から送信されたアラートによって、ServiceNow で、次のいずれかの要素が作成されます: イベント、インシデント、アラート。
+- 現在、Azure Monitor から送信されたアラートによって、ServiceNow で、次のいずれかの要素が作成されます:イベント、インシデント、またはアラート。
 > [!NOTE]
 > ITSMC では、ServiceNow からの公式の SaaS サービスのみがサポートされています。 ServiceNow のプライベート デプロイはサポートされていません。 
 

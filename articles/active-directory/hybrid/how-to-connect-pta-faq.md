@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6db477a288ef41c2946cd550af6ff87999eff2f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bb9d9e7c60344a2a4c538c6d3bf59e337e4569c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461276"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836327"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory パススルー認証:よく寄せられる質問
 
@@ -37,7 +37,7 @@ Azure AD の各種サインイン方法の比較および組織に合った適�
 
 ## <a name="does-conditional-access-work-with-pass-through-authentication"></a>[条件付きアクセス](../conditional-access/overview.md)は、パススルー認証と連携しますか。
 
-はい。 Microsoft Azure Multi-Factor Authentication を含め、すべての条件付きアクセス機能がパススルー認証と連携します。
+はい。 Azure AD Multi-Factor Authentication を含め、すべての条件付きアクセス機能がパススルー認証と連携します。
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>パススルー認証では、"userPrincipalName" の代わりに "Alternate ID" がユーザー名としてサポートされますか。
 はい。連絡用電子メールなどの UPN 以外の値を使用したサインインは、パススルー認証 (PTA) とパスワード ハッシュ同期 (PHS) の両方でサポートされています。 詳しくは、[代替ログイン ID](../authentication/howto-authentication-use-email-signin.md)に関するページをご覧ください。
@@ -107,9 +107,9 @@ Azure AD Connect を使用して、サインイン方法をパスワード ハ�
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>パススルー認証エージェントを削除するにはどうすればよいですか。
 
-パススルー認証エージェントが実行されている間はアクティブなままであり、ユーザーのサインイン要求を継続的に処理します。 認証エージェントをアンインストールするには、 **[コントロール パネル]、[プログラム]、[プログラムと機能]** の順に選択し、**Microsoft Azure AD Connect 認証エージェント**と **Microsoft Azure AD Connect Agent Updater** プログラムの両方をアンインストールします。
+パススルー認証エージェントが実行されている間はアクティブなままであり、ユーザーのサインイン要求を継続的に処理します。 認証エージェントをアンインストールするには、 **[コントロール パネル]、[プログラム]、[プログラムと機能]** の順に選択し、**Microsoft Azure AD Connect 認証エージェント** と **Microsoft Azure AD Connect Agent Updater** プログラムの両方をアンインストールします。
 
-上記の手順を完了した後、[Azure Active Directory 管理センター](https://aad.portal.azure.com)の [パススルー認証] ブレードを確認すると、認証エージェントは**非アクティブ**と表示されます。 これは "_予期されること_" です。 認証エージェントは 10 日後に自動的に一覧から削除されます。
+上記の手順を完了した後、[Azure Active Directory 管理センター](https://aad.portal.azure.com)の [パススルー認証] ブレードを確認すると、認証エージェントは **非アクティブ** と表示されます。 これは "_予期されること_" です。 認証エージェントは 10 日後に自動的に一覧から削除されます。
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>既に AD FS を使用して、Azure AD にサインインしています。 これをパススルー認証に切り替えるには、どうすればよいですか。
 

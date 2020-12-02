@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.date: 05/29/2020
-ms.openlocfilehash: 9922ddf0859e4f28d5759108581f5ef538f0c294
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: eaf0131877e7a333fe2a6f157523da5ad7bcf07b
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305568"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95500001"
 ---
 # <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>Machine Learning Studio (classic) Web サービスを使用する方法
 
-**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![いいえ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (クラシック)   ![これは × 印です。つまり、この記事は Azure Machine Learning を対象としています。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Azure Machine Learning Studio (クラシック) の予測モデルを Web サービスとしてデプロイすると、REST API を使用してデータを送信し、予測を取得することができます。 リアルタイムまたはバッチ モードでデータを送信できます。
@@ -94,7 +94,7 @@ Machine Learning API ヘルプには、予測 Web サービスの詳細が含ま
 ### <a name="c-sample"></a>C# のサンプル
 Machine Learning Web サービスに接続するには、ScoreData を渡す **HttpClient** を使用します。 ScoreData には、ScoreData を表す数値機能の n 次元ベクトルである FeatureVector が含まれています。 Machine Learning サービスの認証には、API キーを使用します。
 
-Machine Learning Web サービスに接続するには、 **Microsoft.AspNet.WebApi.Client** NuGet パッケージをインストールする必要があります。
+Machine Learning Web サービスに接続するには、**Microsoft.AspNet.WebApi.Client** NuGet パッケージをインストールする必要があります。
 
 **Microsoft.AspNet.WebApi.Client NuGet in Visual Studio をインストールする**
 
@@ -105,7 +105,7 @@ Machine Learning Web サービスに接続するには、 **Microsoft.AspNet.Web
 **サンプル コードを実行するには**
 
 1. Machine Learning サンプル コレクションに含まれる "サンプル 1: UCI からデータセットをダウンロード: Adult 2 class dataset" 実験を公開します。
-2. Web サービスからのキーを持つ apiKey を割り当てます。 上記の「 **承認キーを取得する** 」を参照してください。
+2. Web サービスからのキーを持つ apiKey を割り当てます。 上記の「**承認キーを取得する**」を参照してください。
 3. 要求の URI を含む serviceUri を割り当てます。
 
 **完成した要求は次のようになります。**
@@ -201,7 +201,7 @@ Machine Learning Web サービスに接続するには、Python 2.X の場合は
 **サンプル コードを実行するには**
 
 1. Machine Learning サンプル コレクションに含まれる "Sample 1: UCI からデータセットをダウンロード: Adult 2 class dataset" 実験を公開します。
-2. Web サービスからのキーを持つ apiKey を割り当てます。 この記事の始めのほうにある「 **承認キーを取得する** 」セクションをご覧ください。
+2. Web サービスからのキーを持つ apiKey を割り当てます。 この記事の始めのほうにある「**承認キーを取得する**」セクションをご覧ください。
 3. 要求の URI を含む serviceUri を割り当てます。
 
 **完成した要求は次のようになります。**
@@ -250,7 +250,7 @@ except urllib2.HTTPError, error:
 
 ### <a name="r-sample"></a>R サンプル
 
-Machine Learning Web サービスに接続するには、 **RCurl** および **rjson** ライブラリを使用して要求を作成し、返された JSON 応答を処理します。 ScoreData を渡します。この ScoreData には、ScoreData を表す数値機能の n 次元ベクトルである FeatureVector が含まれています。 Machine Learning サービスの認証には、API キーを使用します。
+Machine Learning Web サービスに接続するには、**RCurl** および **rjson** ライブラリを使用して要求を作成し、返された JSON 応答を処理します。 ScoreData を渡します。この ScoreData には、ScoreData を表す数値機能の n 次元ベクトルである FeatureVector が含まれています。 Machine Learning サービスの認証には、API キーを使用します。
 
 **完成した要求は次のようになります。**
 ```r

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: 779330d7881040026f45a031f95f44d770f39a56
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e9eabc73c244526f0ea15b9c72b5377545f662b2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412767"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844865"
 ---
 # <a name="security-management-in-azure"></a>Azure のセキュリティ管理
 Azure の利用者は、そのクラウド環境をさまざまなデバイスから管理できます。その中には管理ワークステーションや開発用 PC もあれば、タスク固有の権限を持った特権付きのエンド ユーザー デバイスもあります。 管理作業は、[Azure Portal](https://azure.microsoft.com/features/azure-portal/) など、Web ベースのコンソールを介して実行する場合もあれば、 オンプレミス システムと Azure との間に直接接続が存在し、仮想プライベート ネットワーク (VPN) やターミナル サービス、クライアント アプリケーション プロトコルを介して実行したり、プログラムから Azure Service Management API (SMAPI) を介して実行したりする場合もあります。 また、クライアントのエンドポイントはドメインに参加している場合と、タブレット、スマートフォンなど、管理下にない孤立したデバイスである場合とがあります。
@@ -112,7 +112,7 @@ Azure では、[多要素認証](../../active-directory/authentication/concept-m
 * 管理者のワークステーションと同じ[管理ドメイン](/previous-versions/windows/it-pro/windows-2000-server/bb727085(v=technet.10))に RD ゲートウェイを参加させます。 これは、Azure AD に対する一方向の信頼関係を持ったドメイン内でサイト間 IPsec VPN または ExpressRoute を使用する場合や、オンプレミスの AD DS インスタンスと Azure AD との間で資格情報をフェデレーションしている場合に必要となります。
 * クライアント コンピューターの名前が有効であること (ドメインに参加していること)、また Azure Portal へのアクセスが許可されていることを RD ゲートウェイが確認できるように[クライアント接続承認ポリシー](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753324(v=ws.11))を構成します。
 * [Azure VPN](https://azure.microsoft.com/documentation/services/vpn-gateway/) に IPsec を使用し、盗聴やトークンの盗難から管理トラフィックをさらに保護します。または、[Azure ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) を介してインターネット リンクを隔離することを検討します。
-* RD ゲートウェイ経由でログオンする管理者には、多要素認証 ([Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) 経由) またはスマート カード認証を使用します。
+* RD ゲートウェイ経由でログオンする管理者には、多要素認証 ([Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) 経由) またはスマート カード認証を使用します。
 * 発信元 [IP アドレスの制限](https://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/)または[ネットワーク セキュリティ グループ](../../virtual-network/network-security-groups-overview.md)を Azure で構成し、許可する管理エンドポイントの数を最小限にします。
 
 ## <a name="security-guidelines"></a>セキュリティ ガイドライン

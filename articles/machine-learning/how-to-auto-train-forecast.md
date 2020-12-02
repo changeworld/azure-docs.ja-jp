@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 3be1d404d0cac7f9e5c9b1c2f7350cf05c5fe794
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0bbb18a82de508f79cd2fd5dde58c1cf33520950
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358118"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887401"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 
@@ -102,7 +102,7 @@ test_labels = test_data.pop(label).values
 
 `AutoMLConfig` オブジェクトでは、個別のトレーニングおよび検証セットを直接指定できます。   [AutoMLConfig](#configure-experiment) の詳細について参照してください。
 
-時系列の予測の場合、既定では、 **ローリング オリジン クロス検証 (ROCV)** のみが検証に使用されます。 トレーニングおよびと検証データを一緒に渡し、`AutoMLConfig` の `n_cross_validations` パラメーターでクロス検証の分割数を設定します。 ROCV を使用すると、起点の時点を使用して系列をトレーニング データと検証データに分割することができます。 時間内の原点をスライドすると、クロス検証のフォールドが生成されます。 この戦略を使用すると、時系列データの整合性を維持し、データ漏えいのリスクを排除できます。
+時系列の予測の場合、既定では、**ローリング オリジン クロス検証 (ROCV)** のみが検証に使用されます。 トレーニングおよびと検証データを一緒に渡し、`AutoMLConfig` の `n_cross_validations` パラメーターでクロス検証の分割数を設定します。 ROCV を使用すると、起点の時点を使用して系列をトレーニング データと検証データに分割することができます。 時間内の原点をスライドすると、クロス検証のフォールドが生成されます。 この戦略を使用すると、時系列データの整合性を維持し、データ漏えいのリスクを排除できます。
 
 ![ローリング オリジン クロス検証](./media/how-to-auto-train-forecast/ROCV.svg)
 
@@ -138,7 +138,7 @@ ForecastTCN (プレビュー)| ForecastTCN は、最も要求の厳しい予測�
 
 回帰の問題と同様に、タスクの種類、イテレーションの数、トレーニング データ、クロス検証の数など、標準的なトレーニング パラメーターを定義します。 予測タスクの場合は、実験に影響を与える追加パラメーターを設定する必要があります。 
 
-これらの追加パラメーターの概要を次の表に示します。 構文のデザイン パターンについては、[リファレンス ドキュメント](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py)を参照してください。
+これらの追加パラメーターの概要を次の表に示します。 構文のデザイン パターンについては、[ForecastingParameter クラスのリファレンス ドキュメント](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py)を参照してください。
 
 | パラメーター名&nbsp; | 説明 | 必須 |
 |-------|-------|-------|
@@ -148,12 +148,12 @@ ForecastTCN (プレビュー)| ForecastTCN は、最も要求の厳しい予測�
 |`time_series_id_column_names`|タイムスタンプが同じ複数の行を含むデータ内の時系列を一意に識別するために使用される列名。 時系列識別子が定義されていない場合、データ セットは 1 つの時系列であると見なされます。 単一の時系列の詳細については、[energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand) に関するページを参照してください。||
 |`target_lags`|データの頻度に基づいて対象の値を遅延させる行の数。 このラグは一覧または単一の整数として表されます。 独立変数と依存変数の間のリレーションシップが既定で一致しない場合、または関連付けられていない場合、ラグを使用する必要があります。 ||
 |`feature_lags`| `target_lags` が設定され、`feature_lags` が `auto` に設定されている場合、遅延する機能が自動 ML によって自動的に決定されます。 機能のタイム ラグを有効にすると、精度の向上に役立つ場合があります。 既定では、機能のタイム ラグは無効になっています。 ||
-|`target_rolling_window_size`|予測値の生成に使用する *n* 履歴期間 (トレーニング セットのサイズ以下)。 省略した場合、 *n* はトレーニング セットの全体のサイズになります。 モデルのトレーニング時に特定の量の履歴のみを考慮する場合は、このパラメーターを指定します。 [ターゲットのローリング ウィンドウ集計](#target-rolling-window-aggregation)について、詳細情報をご覧ください。||
-|`short_series_handling`| 短い時系列処理を有効にして、データの不足によるエラーがトレーニング中に発生しないようにします。 短い時系列処理は、既定で true に設定されています。|
+|`target_rolling_window_size`|予測値の生成に使用する *n* 履歴期間 (トレーニング セットのサイズ以下)。 省略した場合、*n* はトレーニング セットの全体のサイズになります。 モデルのトレーニング時に特定の量の履歴のみを考慮する場合は、このパラメーターを指定します。 [ターゲットのローリング ウィンドウ集計](#target-rolling-window-aggregation)について、詳細情報をご覧ください。||
+|`short_series_handling_config`| 短い時系列処理を有効にして、データの不足によるエラーがトレーニング中に発生しないようにします。 短い時系列処理は、既定で `auto` に設定されています。 [短い系列の処理](#short-series-handling)に関する詳細を確認してください。|
 
 
 次のコードによって、以下の処理が実行されます。 
-* `ForecastingParameters` クラスを活用して、実験トレーニング用の予測パラメーターを定義します。
+* [`ForecastingParameters`](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) クラスを活用して、実験トレーニング用の予測パラメーターを定義します。
 * `time_column_name` をデータ セットの `day_datetime` フィールドに設定します。 
 * `time_series_id_column_names` パラメーターを `"store"` に定義します。 これにより、データ用に **2 つの異なる時系列グループ** (ストア A および B 用) が確実に作成されます。
 * テスト セット全体を予測するために、`forecast_horizon` を 50 に設定します。 
@@ -164,13 +164,12 @@ ForecastTCN (プレビュー)| ForecastTCN は、最も要求の厳しい予測�
 ```python
 from azureml.automl.core.forecasting_parameters import ForecastingParameters
 
-forecasting_parameters = ForecastingParameters(
-    time_column_name='day_datetime', 
-    forecast_horizon=50,
-    time_series_id_column_names=["store"],
-    target_lags='auto',
-    target_rolling_window_size=10
-)
+forecasting_parameters = ForecastingParameters(time_column_name='day_datetime', 
+                                               forecast_horizon=50,
+                                               time_series_id_column_names=["store"],
+                                               target_lags='auto',
+                                               target_rolling_window_size=10)
+                                              
 ```
 
 これらの `forecasting_parameters` は、`forecasting` のタスクの種類、プライマリ メトリック、終了基準、トレーニング データと共に、標準の `AutoMLConfig` オブジェクトに渡されます。 
@@ -190,12 +189,12 @@ automl_config = AutoMLConfig(task='forecasting',
                              n_cross_validations=5,
                              enable_ensembling=False,
                              verbosity=logging.INFO,
-                             **time_series_settings)
+                             **forecasting_parameters)
 ```
 
 ### <a name="featurization-steps"></a>特徴量化の手順
 
-自動機械学習におけるあらゆる実験では、自動スケーリングと正規化の手法が既定でデータに適用されます。 これらの手法は、さまざまなスケールの特徴に反応する " *特定* " のアルゴリズムを支援する **特徴量化** の一種です。 既定の特徴量化の手順の詳細については、[AutoML での特徴量化](how-to-configure-auto-features.md#automatic-featurization)に関するページを参照してください。
+自動機械学習におけるあらゆる実験では、自動スケーリングと正規化の手法が既定でデータに適用されます。 これらの手法は、さまざまなスケールの特徴に反応する "*特定*" のアルゴリズムを支援する **特徴量化** の一種です。 既定の特徴量化の手順の詳細については、[AutoML での特徴量化](how-to-configure-auto-features.md#automatic-featurization)に関するページを参照してください。
 
 ただし、次の手順は `forecasting` のタスクの種類に対してのみ実行されます。
 
@@ -219,19 +218,23 @@ ML モデルのトレーニングに使用されたデータと特徴から確�
 |カスタマイズ|定義|
 |--|--|
 |**列の目的の更新**|指定した列の自動検出された特徴の種類をオーバーライドします。|
-|**トランスフォーマー パラメーターの更新** |指定したトランスフォーマーのパラメーターを更新します。 現在は、 *Imputer* (fill_value および median) がサポートされています。|
+|**トランスフォーマー パラメーターの更新** |指定したトランスフォーマーのパラメーターを更新します。 現在は、*Imputer* (fill_value および median) がサポートされています。|
 |**列の削除** |特徴量化から削除する列を指定します。|
 
 SDK を使用して特徴量化をカスタマイズするには、`AutoMLConfig` オブジェクト内で `"featurization": FeaturizationConfig` を指定します。 [カスタムの特徴量化](how-to-configure-auto-features.md#customize-featurization)について、詳細情報をご覧ください。
 
 ```python
 featurization_config = FeaturizationConfig()
+
 # `logQuantity` is a leaky feature, so we remove it.
 featurization_config.drop_columns = ['logQuantitity']
+
 # Force the CPWVOL5 feature to be of numeric type.
 featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
+
 # Fill missing values in the target column, Quantity, with zeroes.
 featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
+
 # Fill mising values in the `INCOME` column with median value.
 featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
 ```
@@ -260,7 +263,7 @@ Azure Machine Learning Studio を実験に使用している場合は、[Studio 
 automl_config = AutoMLConfig(task='forecasting',
                              enable_dnn=True,
                              ...
-                             **time_series_settings)
+                             **forecasting_parameters)
 ```
 > [!Warning]
 > SDK を使用して作成された実験に対して DNN を有効にすると、[最適なモデル説明](how-to-machine-learning-interpretability-automl.md)が無効になります。
@@ -274,11 +277,40 @@ DNN を利用した詳細なコード例については、[飲料生産予測 �
 
 たとえば、エネルギー需要を予測するとします。 3 日間のローリング ウィンドウの特徴を追加して、暖房が入っている空間の熱変化を考慮することもできます。 この例では、`AutoMLConfig` コンストラクターで `target_rolling_window_size= 3` を設定して、このウィンドウを作成します。 
 
-この表は、ウィンドウ集計が適用されたときに発生する特徴エンジニアリングを示しています。 **最小値、最大値** 、 **合計値** の列は、定義された設定に基づいて、3 のスライディング ウィンドウで生成されます。 各行には新しい計算済みの特徴があります。2017 年 9 月 8 日の午前 4:00 のタイムスタンプの場合、最大値、最小値、合計値は、2017 年 9 月 8 日午前 1:00 から午前 3:00 までの **需要値** を使用して計算されます。 この 3 のウィンドウは、残りの行のデータを設定するためにシフトされます。
+この表は、ウィンドウ集計が適用されたときに発生する特徴エンジニアリングを示しています。 **最小値、最大値**、**合計値** の列は、定義された設定に基づいて、3 のスライディング ウィンドウで生成されます。 各行には新しい計算済みの特徴があります。2017 年 9 月 8 日の午前 4:00 のタイムスタンプの場合、最大値、最小値、合計値は、2017 年 9 月 8 日午前 1:00 から午前 3:00 までの **需要値** を使用して計算されます。 この 3 のウィンドウは、残りの行のデータを設定するためにシフトされます。
 
 ![ターゲットのローリング ウィンドウ](./media/how-to-auto-train-forecast/target-roll.svg)
 
 [ターゲットのローリング ウィンドウ集計の特徴](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)を利用した Python コードの例を参照してください。
+
+### <a name="short-series-handling"></a>短い系列の処理
+
+自動 ML では、モデル開発のトレーニングと検証のフェーズを実施するのに十分なデータ ポイントがない場合、時系列は **短い系列** と見なされます。 データ ポイントの数は実験ごとに異なり、max_horizon、クロス検証の分割の数、モデルのルックバックの長さ (時系列の特徴を構成するために必要な最大の履歴) に依存します。 正確な計算については、[short_series_handling_config のリファレンスドキュメント](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration)を参照してください。
+
+自動 ML は、既定では `ForecastingParameters` オブジェクトの `short_series_handling_config` パラメーターを使用して、短い系列の処理を提供します。 
+
+短い系列の処理を有効にするには、`freq` パラメーターも定義する必要があります。 既定の動作 `short_series_handling_config = auto` を変更するには、`ForecastingParameter` オブジェクトの `short_series_handling_config` パラメーターを更新します。  
+
+```python
+from azureml.automl.core.forecasting_parameters import ForecastingParameters
+
+forecast_parameters = ForecastingParameters(time_column_name='day_datetime', 
+                                            forecast_horizon=50,
+                                            short_series_handling_config='auto',
+                                            freq = 50
+                                            target_lags='auto')
+```
+次の表は、`short_series_handling_config` のために設定できる項目をまとめたものです。
+ 
+|設定|説明
+|---|---
+|`auto`| 次に、短い系列の処理の既定の動作を示します。 <li> *すべての系列が短い* 場合は、データを埋め込みます。 <br> <li> *すべてが短い系列ではない* 場合は、短い系列をドロップします。 
+|`pad`| `short_series_handling_config = pad` の場合、自動 ML は、検出されたそれぞれの短い系列に対してダミーの値を追加します。 次に、列の型と、それらに埋め込まれる内容を示します。 <li>オブジェクト列には NAN <li> 数値列には 0 <li> ブール/論理列には False <li> ターゲット列には、平均が 0、標準偏差が 1 のランダムな値が埋め込まれます。 
+|`drop`| `short_series_handling_config = drop` の場合、短い系列は自動 ML によってドロップされ、トレーニングや予測には使用されません。 これらの系列の予測では、NAN が返されます。
+|`None`| 埋め込まれる、またはドロップされる系列はありません。
+
+>[!WARNING]
+>失敗せずに過去のトレーニングが受けられるように人為的なデータを用いるため、データが埋め込まれると、結果のモデルの精度に影響が及ぶ可能性があります。 <br> <br> 短い系列が多くなる場合、説明可能性の結果に影響が生じる可能性があります。
 
 ## <a name="run-the-experiment"></a>実験を実行する 
 

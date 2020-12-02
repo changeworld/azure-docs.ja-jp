@@ -4,16 +4,16 @@ description: この記事を使用して、コンポーネントの状態およ�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/27/2020
+ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 540c4394a73ceff1f68a613561c034ca3bc7efc5
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: daae45c9eca45022225ea47aa048815d5eff70c4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046572"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964509"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>IoT Edge デバイスのトラブルシューティング
 
@@ -46,6 +46,8 @@ iotedge check
 * "*接続検査*" では、IoT Edge ランタイムがホスト デバイス上のポートにアクセス可能であること、およびすべての IoT Edge コンポーネントが IoT Hub にアクセス可能であることが確認されます。 IoT Edge デバイスがプロキシの背後にある場合、この一連の検査でてエラーが返されます。
 * "*製品の準備完了検査*" では、デバイス証明機関 (CA) の証明書の状態やモジュール ログ ファイルの構成など、推奨される運用上のベスト プラクティスが検査されます。
 
+IoT Edge チェック ツールでは、コンテナーを使用して診断が実行されます。 コンテナー イメージ `mcr.microsoft.com/azureiotedge-diagnostics:latest` は、[Microsoft Container Registry](https://github.com/microsoft/containerregistry) から入手できます。 インターネットに直接アクセスせずにデバイスのチェックを実行する必要がある場合は、デバイスにコンテナー イメージへのアクセス権が必要です。
+
 エラーや警告が表示された場合の対処方法など、このツールが実行する各診断チェックの詳細については、[IoT Edge のトラブルシューティング チェック](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)に関するページを参照してください。
 
 ## <a name="gather-debug-information-with-support-bundle-command"></a>"support-bundle" コマンドを使用してデバッグ情報を収集する
@@ -66,6 +68,8 @@ Windows の場合:
 iotedge support-bundle --since 6h
 ```
 
+また、デバイスへの[ダイレクト メソッド](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)の呼び出しを使用して、support-bundle コマンドの出力を Azure Blob Storage にアップロードすることもできます。
+
 > [!WARNING]
 > `support-bundle` コマンドからの出力には、ホスト、デバイス名とモジュール名、モジュールによってログに記録された情報などが含まれる場合があります。パブリック フォーラムで出力を共有する場合は、この点に注意してください。
 
@@ -74,6 +78,23 @@ iotedge support-bundle --since 6h
 古いバージョンの IoT Edge を実行している場合は、アップグレードすると問題が解決されることがあります。 `iotedge check` ツールでは、IoT Edge セキュリティ デーモンが最新バージョンであることは確認されますが、IoT Edge ハブとエージェント モジュールのバージョンは確認されません。 デバイス上のランタイム モジュールのバージョンを確認するには、`iotedge logs edgeAgent` と `iotedge logs edgeHub` のコマンドを使用します。 バージョン番号は、モジュールの起動時にログで宣言されます。
 
 デバイスを更新する手順については、「[IoT Edge セキュリティ デーモンおよびランタイムの更新](how-to-update-iot-edge.md)」を参照してください。
+
+## <a name="verify-the-installation-of-iot-edge-on-your-devices"></a>デバイスに IoT Edge がインストールされていることを確認する
+
+[edgeAgent モジュール ツインの監視](https://docs.microsoft.com/azure/iot-edge/how-to-monitor-module-twins)によって、デバイスに IoT Edge がインストールされていることを確認できます。
+
+最新の edgeAgent モジュール ツインを取得するには、[Azure Cloud Shell](https://shell.azure.com/) から次のコマンドを実行します。
+
+   ```azurecli-interactive
+   az iot hub module-twin show --device-id <edge_device_id> --module-id $edgeAgent --hub-name <iot_hub_name>
+   ```
+
+このコマンドは、edgeAgent の[報告されるプロパティ](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub)すべてを出力します。 次に、デバイスの状態を監視する便利な方法を示します。
+
+* ランタイムの状態
+* ランタイムの開始時刻
+* ランタイムの最後の終了時刻
+* ランタイムの再起動回数
 
 ## <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>IoT Edge Security Manager の状態とそのログを確認する
 
@@ -192,6 +213,8 @@ IoT Edge セキュリティ デーモンが実行されている場合は、コ�
 ```cmd
 iotedge logs <container name>
 ```
+
+また、デバイス上のモジュールへの[ダイレクト メソッド](how-to-retrieve-iot-edge-logs.md#upload-module-logs)の呼び出しを使用して、そのモジュールのログを Azure Blob Storage にアップロードすることもできます。
 
 ## <a name="view-the-messages-going-through-the-iot-edge-hub"></a>IoT Edge ハブを通過するメッセージを表示する
 

@@ -13,19 +13,19 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 09/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 3b81572266f6ee5bd90662a98988d41479f399cc
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 9afad44bcf67478a81e75c17d0ff8ffc6d8c65aa
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675008"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841132"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Azure Active Directory の多要素認証の使用
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse Analytics では、 *[Azure Active Directory - MFA で汎用]* 認証を使用して [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) からの接続をサポートします。 この記事では、さまざまな認証オプションの違いについて説明します。また、Azure SQL に対する Azure Active Directory (Azure AD) でのユニバーサル認証の使用に関連した制限事項についても説明します。
 
-**最新の SSMS のダウンロード** - クライアント コンピューターで、「 [SQL Server Management Studio (SSMS) のダウンロード](/sql/ssms/download-sql-server-management-studio-ssms)」から SSMS の最新版をダウンロードします。 
+**最新の SSMS のダウンロード** - クライアント コンピューターで、「[SQL Server Management Studio (SSMS) のダウンロード](/sql/ssms/download-sql-server-management-studio-ssms)」から SSMS の最新版をダウンロードします。 
 
 [!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
 
@@ -41,13 +41,13 @@ Azure AD には 2 つの非対話型認証モデルがあり、さまざまな�
 - `Azure Active Directory - Password`
 - `Azure Active Directory - Integrated`
 
-Azure Multi-Factor Authentication (MFA) もサポートする対話型方式は次のとおりです。 
+Azure AD Multi-Factor Authentication (MFA) もサポートする対話型の方式: 
 
 - `Azure Active Directory - Universal with MFA`
 
-Azure MFA を使えば、簡単なサインイン プロセスというユーザーの要求を満たしながら、データとアプリケーションへのアクセスを保護できます。 電話、テキスト メッセージ、スマート カードと PIN、モバイル アプリ通知など、簡単な各種確認オプションによって強力な認証が実現するため、ユーザーは自分に最も合った方法を選択できます。 Azure AD との対話型 MFA はポップアップ ダイアログ ボックスで検証できます。
+Azure AD MFA を使用すると、簡単なサインイン プロセスというユーザーの要求を満たしながら、データとアプリケーションへのアクセスを保護できます。 電話、テキスト メッセージ、スマート カードと PIN、モバイル アプリ通知など、簡単な各種確認オプションによって強力な認証が実現するため、ユーザーは自分に最も合った方法を選択できます。 Azure AD との対話型 MFA はポップアップ ダイアログ ボックスで検証できます。
 
-Azure Multi-Factor Authentication の説明については、[Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) に関する記事をご覧ください。
+Azure AD Multi-Factor Authentication の説明については、[Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) に関する記事をご覧ください。
 構成手順については、「[SQL Server Management Studio 用に Azure SQL Database の多要素認証を構成する](authentication-mfa-ssms-configure.md)」をご覧ください。
 
 ### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD ドメイン名またはテナント ID パラメーター
@@ -58,7 +58,7 @@ Azure Multi-Factor Authentication の説明については、[Multi-Factor Authe
 
 
 1. SSMS で接続を開きます。 サーバー名を入力し、 **[Azure Active Directory - MFA で汎用]** 認証を選択します。 サインインに使用する **ユーザー名** を追加します。
-1. **[オプション]** ボックスを選択し、 **[接続プロパティ]** タブに移動します。 **[データベースへの接続]** ダイアログ ボックスで、使用するデータベースをダイアログ ボックスに入力します。 **[AD ドメインの名前またはテナントの ID]** ボックスをオンにし、ドメイン名 ( **contosotest.onmicrosoft.com** ) またはテナント ID の GUID などの認証機関を入力します。 
+1. **[オプション]** ボックスを選択し、 **[接続プロパティ]** タブに移動します。 **[データベースへの接続]** ダイアログ ボックスで、使用するデータベースをダイアログ ボックスに入力します。 **[AD ドメインの名前またはテナントの ID]** ボックスをオンにし、ドメイン名 (**contosotest.onmicrosoft.com**) またはテナント ID の GUID などの認証機関を入力します。 
 
    ![[接続プロパティ] タブのスクリーンショット。[データベースに接続] と [AD ドメイン名またはテナント ID] が強調表示されています。](./media/authentication-mfa-ssms-overview/mfa-tenant-ssms.png)
 
@@ -100,4 +100,4 @@ Azure AD B2B シナリオでゲスト ユーザーとしてサポートされて
 - [BACPAC ファイルを新しいデータベースにインポートする](database-import.md)  
 - [BACPAC ファイルへのデータベースのエクスポート](database-export.md)  
 - C# インターフェイス [IUniversalAuthProvider インターフェイス](/dotnet/api/microsoft.sqlserver.dac.iuniversalauthprovider)  
-- **[Azure Active Directory - MFA で汎用]** 認証を使用している場合、ADAL トレースは、 [SSMS 17.3](/sql/ssms/download-sql-server-management-studio-ssms) 以降で使用可能です。 ADAL トレースは既定ではオフであり、オンにするには、 **[ツール]** の **[オプション]** メニューで、 **[Azure サービス]** 、 **[Azure クラウド]** 、 **[ADAL 出力ウィンドウのトレース レベル]** の順に選んで、 **[表示]** メニューの **[出力]** を有効にします。 出力ウィンドウで **[Azure Active Directory option]\(Azure Active Directory オプション\)** を選ぶと、トレースが使用可能になります。
+- **[Azure Active Directory - MFA で汎用]** 認証を使用している場合、ADAL トレースは、[SSMS 17.3](/sql/ssms/download-sql-server-management-studio-ssms) 以降で使用可能です。 ADAL トレースは既定ではオフであり、オンにするには、 **[ツール]** の **[オプション]** メニューで、 **[Azure サービス]** 、 **[Azure クラウド]** 、 **[ADAL 出力ウィンドウのトレース レベル]** の順に選んで、 **[表示]** メニューの **[出力]** を有効にします。 出力ウィンドウで **[Azure Active Directory option]\(Azure Active Directory オプション\)** を選ぶと、トレースが使用可能になります。

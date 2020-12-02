@@ -8,18 +8,18 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: 6eecaaff836d3253d382fdf0280f9a15c3a7b00b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf48f873127a12c3cabb28da33d34cedcda2793b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050864"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831568"
 ---
 # <a name="examine-the-video-indexer-output"></a>Video Indexer の出力を調べる
 
-ビデオにインデックスを付けると、Video Indexer によって、指定された動画の分析情報の詳細を含む JSON コンテンツが生成されます。 分析情報には、トランスクリプト、OCR、顔、トピック、ブロックなどが含まれます。各種の分析情報には、その分析情報がビデオにいつ現れたかを示す時間範囲のインスタンスが含まれます。 
+ビデオにインデックスを付けると、Video Indexer によって、指定されたビデオの分析情報の詳細を含む JSON コンテンツが生成されます。 分析情報には、トランスクリプト、OCR、顔、トピック、ブロックなどが含まれます。各種の分析情報には、その分析情報がビデオにいつ現れたかを示す時間範囲のインスタンスが含まれます。 
 
 [Video Indexer](https://www.videoindexer.ai/) の Web サイト上にあるビデオの **[再生]** ボタンを押して、ビデオの要約された分析情報を視覚的に確認できます。 
 
@@ -97,7 +97,7 @@ ms.locfileid: "89050864"
 |---|---|
 |name|ビデオの名前 Azure Monitor など|
 |id|ビデオの ID 63c6d532ff など|
-|privacyMode|内訳に含めることができるモードは、**秘密**、**公開**のいずれかです。 **公開** - アカウント内のすべてのユーザーと、ビデオへのリンクを持っているユーザーがビデオを見ることができます。 **秘密** - ビデオは、アカウント内のすべてのユーザーに表示されます。|
+|privacyMode|内訳に含めることができるモードは、**秘密**、**公開** のいずれかです。 **公開** - アカウント内のすべてのユーザーと、ビデオへのリンクを持っているユーザーがビデオを見ることができます。 **秘密** - ビデオは、アカウント内のすべてのユーザーに表示されます。|
 |duration|分析情報が発生した時刻を示す 1 つの期間が含まれます。 期間は秒単位です。|
 |thumbnailVideoId|サムネイルの取得元のビデオの ID。
 |thumbnailId|ビデオのサムネイル ID。 実際のサムネイルを取得するには、[Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) を呼び出し、thumbnailVideoId と thumbnailId に渡します。|
@@ -187,6 +187,7 @@ ms.locfileid: "89050864"
 |textualContentModeration|[textualContentModeration](#textualcontentmoderation) 分析情報。|
 |emotions| [emotions](#emotions) 分析情報。|
 |topics|[topics](#topics) 分析情報。|
+|speakers|[speakers](#speakers) 分析情報。|
 
 例:
 
@@ -222,36 +223,45 @@ instances|このブロックの時間範囲の一覧|
 |---|---|
 |id|行 ID。|
 |text|トランスクリプトそのもの。|
+|confidence|トランスクリプトの精度の信頼性。|
+|speakerId|話者の ID。|
 |language|トランスクリプトの言語。 各行の言語が異なる可能性があるトランスクリプトをサポートすることを目的としています。|
 |instances|この行が出現する時間範囲の一覧。 インスタンスがトランスクリプトの場合、instance は 1 つだけあります。|
 
 例:
 
 ```json
-"transcript": [
+"transcript":[
 {
-    "id": 0,
-    "text": "Hi I'm Doug from office.",
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:00.5100000",
-        "end": "00:00:02.7200000"
-    }
-    ]
+  "id":1,
+  "text":"Well, good morning everyone and welcome to",
+  "confidence":0.8839,
+  "speakerId":1,
+  "language":"en-US",
+  "instances":[
+     {
+    "adjustedStart":"0:00:10.21",
+    "adjustedEnd":"0:00:12.81",
+    "start":"0:00:10.21",
+    "end":"0:00:12.81"
+     }
+  ]
 },
 {
-    "id": 1,
-    "text": "I have a guest. It's Michelle.",
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:02.7200000",
-        "end": "00:00:03.9600000"
-    }
-    ]
-}
-] 
+  "id":2,
+  "text":"ignite 2016. Your mission at Microsoft is to empower every",
+  "confidence":0.8944,
+  "speakerId":2,
+  "language":"en-US",
+  "instances":[
+     {
+    "adjustedStart":"0:00:12.81",
+    "adjustedEnd":"0:00:17.03",
+    "start":"0:00:12.81",
+    "end":"0:00:17.03"
+     }
+  ]
+},
 ```
 
 #### <a name="ocr"></a>ocr
@@ -827,6 +837,42 @@ Video Indexer では、トランスクリプトから主なトピックを推論
 . . .
 ```
 
+#### <a name="speakers"></a>speakers
+
+|名前|説明|
+|---|---|
+|id|話者の ID。|
+|name|"Speaker # *<number>* " の形式の話者の名前。例えば、"Speaker #1" です。|
+|instances |この話者が出現した時間範囲の一覧。|
+
+```json
+"speakers":[
+{
+  "id":1,
+  "name":"Speaker #1",
+  "instances":[
+     {
+    "adjustedStart":"0:00:10.21",
+    "adjustedEnd":"0:00:12.81",
+    "start":"0:00:10.21",
+    "end":"0:00:12.81"
+     }
+  ]
+},
+{
+  "id":2,
+  "name":"Speaker #2",
+  "instances":[
+     {
+    "adjustedStart":"0:00:12.81",
+    "adjustedEnd":"0:00:17.03",
+    "start":"0:00:12.81",
+    "end":"0:00:17.03"
+     }
+  ]
+},
+` ` `
+```
 ## <a name="next-steps"></a>次のステップ
 
 [Video Indexer 開発者ポータル](https://api-portal.videoindexer.ai)

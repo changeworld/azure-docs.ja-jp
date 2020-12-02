@@ -3,14 +3,14 @@ title: Azure Automation Update Management の概要
 description: この記事では、Windows および Linux マシンの更新プログラムを実装する Update Management 機能について概要を説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 10/26/2020
+ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09bd82225fb7d8a6eefe84b5a70660e4553a3070
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: eadceb17d01b40deab656bdd6223cb8f0844f54f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360787"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95528246"
 ---
 # <a name="update-management-overview"></a>Update Management の概要
 
@@ -76,10 +76,10 @@ Update Management では、同期先として構成されたソースに基づ�
 |---------|---------|
 |Windows Server 2019 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2016 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2012 R2 (Datacenter、Standard)<br><br>Windows Server 2012 ||
 |Windows Server 2008 R2 (RTM および SP1 Standard)| Update Management では、このオペレーティング システムの評価および修正プログラムの適用がサポートされます。 Windows Server 2008 R2 では、[Hybrid Runbook Worker](../automation-windows-hrw-install.md) がサポートされています。 |
-|CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。 分類に基づく修正プログラムでは、CentOS の RTM リリースには含まれていないセキュリティ データを返すための `yum` が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux の更新プログラムの分類](view-update-assessments.md#linux)に関する記事を参照してください。          |
-|Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。        |
+|CentOS 6 および 7 (x64)      | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。 分類に基づく修正プログラムでは、CentOS の RTM リリースには含まれていないセキュリティ データを返すための `yum` が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux の更新プログラムの分類](view-update-assessments.md#linux)に関する記事を参照してください。          |
+|Red Hat Enterprise 6 および 7 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。        |
 |SUSE Linux Enterprise Server 12 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。        |
-|Ubuntu 14.04 LTS、16.04 LTS、18.04 (x86/x64)      |Linux エージェントでは、更新リポジトリへのアクセス権が必要です。         |
+|Ubuntu 14.04 LTS、16.04 LTS、18.04 (x64)      |Linux エージェントでは、更新リポジトリへのアクセス権が必要です。         |
 
 > [!NOTE]
 > Azure 仮想マシン スケール セットは、Update Management を使用して管理できます。 Update Management は、基本イメージではなくインスタンス自体で動作します。 すべての VM インスタンスを一度に更新しないように、段階的に更新をスケジュールする必要があります。 仮想マシン スケールセットのノードを追加するには、「[Azure 以外のマシンを Change Tracking とインベントリに追加する](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory)」の手順に従ってください。
@@ -132,7 +132,7 @@ Update Management では、このセクションで説明されているリソ�
 
 Update Management を有効にすると、Update Management に含まれている Runbook をサポートするために、Log Analytics ワークスペースに直接接続された Windows マシンが自動的に Hybrid Runbook Worker として構成されます。
 
-Update Management で管理されている各 Windows マシンは、Automation アカウントの [システム ハイブリッド worker グループ] として、[ハイブリッド worker グループ] ペインに表示されます。 グループでは、`Hostname FQDN_GUID` の名前付け規則が使用されます。 アカウントの Runbook でこれらのグループを対象として指定することはできません。 指定しようとすると、失敗します。 これらのグループは、Update Management のみをサポートすることを目的としています。 Hybrid Runbook Worker として構成されている Windows マシンの一覧を表示する方法の詳細については、「[Hybrid Runbook Workers の表示](../automation-hybrid-runbook-worker.md#view-hybrid-runbook-workers)」を参照してください。
+Update Management で管理されている各 Windows マシンは、Automation アカウントの [システム ハイブリッド worker グループ] として、[ハイブリッド worker グループ] ペインに表示されます。 グループでは、`Hostname FQDN_GUID` の名前付け規則が使用されます。 アカウントの Runbook でこれらのグループを対象として指定することはできません。 指定しようとすると、失敗します。 これらのグループは、Update Management のみをサポートすることを目的としています。 Hybrid Runbook Worker として構成されている Windows マシンの一覧を表示する方法の詳細については、「[Hybrid Runbook Workers の表示](../automation-hybrid-runbook-worker.md#view-system-hybrid-runbook-workers)」を参照してください。
 
 Update Management と Hybrid Runbook Worker グループ メンバーシップの両方に同じアカウントを使用すると、Windows マシンを Automation アカウントの Hybrid Runbook Worker グループに追加して Automation Runbook をサポートすることができます。 この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 で追加されました。
 

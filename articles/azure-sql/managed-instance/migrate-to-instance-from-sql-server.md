@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: 7e7775f289e0221862d11c585ae85a5b0bc6cc27
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2761b97e595f5e11b00e75cd778ee269b12bfcae
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788552"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917802"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Azure SQL Managed Instance への SQL Server インスタンスの移行
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-この記事では、SQL Server 2005 以降のバージョンのインスタンスを [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) に移行する方法について説明します。 単一データベースまたはエラスティック プールへの移行については、[SQL Database への移行](../database/migrate-to-database-from-sql-server.md)に関する記事を参照してください。 他のプラットフォームからの移行に関する移行の情報については、[Azure データベース移行ガイド](https://datamigration.microsoft.com/)を参照してください。
+この記事では、SQL Server 2005 以降のバージョンのインスタンスを [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) に移行する方法について説明します。 単一データベースまたはエラスティック プールへの移行については、「[移行の概要:SQL Server から SQL Database](../migration-guides/database/sql-server-to-sql-database-overview.md)」を参照してください。 他のプラットフォームからの移行、およびツールとオプションに関するガイダンスについては、「[Azure SQL への移行](../migration-guides/index.yml)」を参照してください。
 
 > [!NOTE]
 > Azure SQL Managed Instance をすぐに開始して試す場合は、このページではなく[クイックスタート ガイド](quickstart-content-reference-guide.md)に関するページをご覧ください。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 0704f076ef7c5d1a39af67d3ec6ec2baece1fda5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9c100ca82b751a050e74cce85e1794701a789288
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517303"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95498471"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel のアクセス許可
 
@@ -54,7 +54,7 @@ Azure Sentinel 専用の組み込みロールが 3 つあります。
 
 - プレイブックを使用して脅威への対応を自動化する
 
-    Azure Sentinel では、自動化された脅威の対応に **プレイブック** を使用します。 プレイブックは、 **Azure Logic Apps** に基づいて構築されている、別の Azure リソースです。 セキュリティ運用チームの特定のメンバーに、セキュリティ オーケストレーション、自動化、および対応 (SOAR) の操作に Logic Apps を使用する権能を割り当てることができます。 [Logic App 共同作成者](../role-based-access-control/built-in-roles.md#logic-app-contributor)または [Logic App オペレーター](../role-based-access-control/built-in-roles.md#logic-app-operator) ロールを使用して、プレイブックを使用するための明示的なアクセス許可を割り当てることができます。
+    Azure Sentinel では、自動化された脅威の対応に **プレイブック** を使用します。 プレイブックは、**Azure Logic Apps** に基づいて構築されている、別の Azure リソースです。 セキュリティ運用チームの特定のメンバーに、セキュリティ オーケストレーション、自動化、および対応 (SOAR) の操作に Logic Apps を使用する権能を割り当てることができます。 [Logic App 共同作成者](../role-based-access-control/built-in-roles.md#logic-app-contributor)または [Logic App オペレーター](../role-based-access-control/built-in-roles.md#logic-app-operator) ロールを使用して、プレイブックを使用するための明示的なアクセス許可を割り当てることができます。
 
 - Azure Sentinel にデータ ソースを接続する
 
@@ -62,7 +62,7 @@ Azure Sentinel 専用の組み込みロールが 3 つあります。
 
 - インシデントを割り当てるゲスト ユーザー
 
-    ゲスト ユーザーによるインシデント割り当てを可能にする必要がある場合、ユーザーには、Azure Sentinel レスポンダー ロールに加えて、[ディレクトリ閲覧者](../active-directory/roles/permissions-reference.md#directory-readers)のロールが割り当てられている必要があります。 このロールは、Azure ロール *ではなく* 、 **Azure Active Directory** ロールであり、通常の (非ゲスト) ユーザーには既定でこのロールが割り当てられていることに注意してください。 
+    ゲスト ユーザーによるインシデント割り当てを可能にする必要がある場合、ユーザーには、Azure Sentinel レスポンダー ロールに加えて、[ディレクトリ閲覧者](../active-directory/roles/permissions-reference.md#directory-readers)のロールが割り当てられている必要があります。 このロールは、Azure ロール *ではなく*、**Azure Active Directory** ロールであり、通常の (非ゲスト) ユーザーには既定でこのロールが割り当てられていることに注意してください。 
 
 それらを並べて比較したものについては、[下の表](#roles-and-allowed-actions)を参照してください。
 
@@ -70,11 +70,11 @@ Azure Sentinel 専用の組み込みロールが 3 つあります。
 
 Azure Sentinel 固有の Azure ロールの割り当てでは、Azure および Log Analytics の他の Azure ロールが他の目的でユーザーに割り当てられている可能性があります。 これらのロールでは、Azure Sentinel ワークスペースや他のリソースへのアクセスを含む広範なアクセス許可のセットが付与されていることに注意してください。
 
-- **Azure ロール:** [所有者](../role-based-access-control/built-in-roles.md#owner)、 [共同作成者](../role-based-access-control/built-in-roles.md#contributor)、および [閲覧者](../role-based-access-control/built-in-roles.md#reader)です。 Azure ロールによって、Log Analytics ワークスペースや Azure Sentinel リソースなど、すべての Azure リソースへのアクセス権が付与されます。
+- **Azure ロール:** [所有者](../role-based-access-control/built-in-roles.md#owner)、[共同作成者](../role-based-access-control/built-in-roles.md#contributor)、および [閲覧者](../role-based-access-control/built-in-roles.md#reader)です。 Azure ロールによって、Log Analytics ワークスペースや Azure Sentinel リソースなど、すべての Azure リソースへのアクセス権が付与されます。
 
-- **Log Analytics のロール:** [Log Analytics 共同作成者](../role-based-access-control/built-in-roles.md#log-analytics-contributor)、 [Log Analytics 閲覧者](../role-based-access-control/built-in-roles.md#log-analytics-reader)。 Log Analytics のロールでは、Log Analytics ワークスペースに対するアクセス権が付与されます。 
+- **Log Analytics のロール:** [Log Analytics 共同作成者](../role-based-access-control/built-in-roles.md#log-analytics-contributor)、[Log Analytics 閲覧者](../role-based-access-control/built-in-roles.md#log-analytics-reader)。 Log Analytics のロールでは、Log Analytics ワークスペースに対するアクセス権が付与されます。 
 
-たとえば、 **Azure Sentinel 閲覧者** ロールを割り当てられていて、 **Azure Sentinel 共同作成者** ロールを割り当てられていないユーザーでも、Azure レベルで **共同作成者** ロールが割り当てられている場合は、Azure Sentinel の項目を編集できます。 そのため、Azure Sentinel 内のユーザーにのみアクセス許可を付与する場合は、このユーザーの以前のアクセス許可を慎重に削除して、別のリソースに必要なアクセス権が無効にならないようにする必要があります。
+たとえば、**Azure Sentinel 閲覧者** ロールを割り当てられていて、**Azure Sentinel 共同作成者** ロールを割り当てられていないユーザーでも、Azure レベルで **共同作成者** ロールが割り当てられている場合は、Azure Sentinel の項目を編集できます。 そのため、Azure Sentinel 内のユーザーにのみアクセス許可を付与する場合は、このユーザーの以前のアクセス許可を慎重に削除して、別のリソースに必要なアクセス権が無効にならないようにする必要があります。
 
 ## <a name="roles-and-allowed-actions"></a>ルールと許可されているアクション
 
@@ -91,7 +91,7 @@ Azure Sentinel 固有の Azure ロールの割り当てでは、Azure および 
 
 - Azure 組み込みロールの使用に加え、またはその代わりに、Azure Sentinel の Azure カスタム ロールを作成することができます。 Azure Sentinel の Azure カスタム ロールは、[Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) および [Azure Log Analytics リソース](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)に対する特定のアクセス許可に基づいて、他の[Azure カスタム ロール](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)を作成する場合と同じ方法で作成されます。
 
-- Azure Sentinel ワークスペースのデータに対して、Log Analytics の高度なロールベースのアクセス制御を使用できます。 これには、データ型ベースの Azure RBAC とリソース中心の Azure RBAC の両方が含まれます。 Log Analytics ロールの詳細については、[Azure Monitor でのログ データとワークスペースの管理](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)に関する記事を参照してください。
+- Azure Sentinel ワークスペースのデータに対して、Log Analytics の高度な Azure ロールベースのアクセス制御を使用できます。 これには、データ型ベースの Azure RBAC とリソース中心の Azure RBAC の両方が含まれます。 Log Analytics ロールの詳細については、[Azure Monitor でのログ データとワークスペースの管理](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

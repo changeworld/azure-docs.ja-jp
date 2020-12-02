@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 544625fe9fd2dbd87ad7330d7277494cbfbe6eb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e5cb077868a224620d1a23e1ff1aac9c8d9f095
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891098"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874476"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>Microsoft Azure Stack Hub 適合性チェッカー ツールを使用して Azure Stack Edge Pro の証明書を作成する 
 
@@ -42,7 +42,7 @@ Azure Stack Hub 対応性チェッカー ツール (AzsReadinessChecker) を使�
 Azure Stack Edge Pro デバイスのデプロイ用の CSR を作成するには、次のことを確認してください。 
 
 - Windows 10 または Windows Server 2016 以降を実行しているクライアントがある。 
-- このシステムの [PowerShell ギャラリー](https://aka.ms/AzsReadinessChecker)から Microsoft Azure Stack Hub 適合性チェッカー ツール 1.2002.1133.85 をダウンロードした。 このパッケージの検索が必要になる場合があります。 Azure Stack Edge Pro デバイス用の証明書を作成できるのは、このバージョンのツールだけです。
+- このシステムの [PowerShell ギャラリー](https://aka.ms/AzsReadinessChecker)から Microsoft Azure Stack Hub 適合性チェッカー ツールをダウンロードした。
 - 証明書のための次の情報がある。
   - [デバイス名]
   - ノードのシリアル番号
@@ -56,7 +56,7 @@ Azure Stack Edge Pro デバイスのデプロイ用の CSR を作成するには
 2. Azure Stack Hub 適合性チェッカー ツールをインストールします。 PowerShell プロンプトで次のように入力します。 
 
     ```azurepowershell
-    Install-Module -Name Microsoft.AzureStack.ReadinessChecker -RequiredVersion 1.2002.1133.85 -Force
+    Install-Module -Name Microsoft.AzureStack.ReadinessChecker
     ```
 
     インストールされているバージョンを確認するには、次のように入力します。  
@@ -152,4 +152,4 @@ Azure Stack Edge Pro デバイスのデプロイ用の CSR を作成するには
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Edge Pro デバイスをデプロイする](azure-stack-edge-gpu-deploy-prep.md)
+[Azure Stack Edge Pro デバイスを配置する](azure-stack-edge-gpu-deploy-prep.md)

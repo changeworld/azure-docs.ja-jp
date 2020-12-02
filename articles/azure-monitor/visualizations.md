@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 4c9f74f5a9950a299b34e22c1e86dd91f8c82364
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9f95a5e85ec4eebf82cca707476750595331d73
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983603"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522670"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure Monitor からのデータを視覚化する
 この記事では、Azure Monitor に格納されたログとメトリック データを視覚化するために使用可能な方法の概要を提供します。
@@ -49,7 +49,7 @@ ms.locfileid: "90983603"
 - Azure との緊密な統合。 視覚化は、メトリックス エクスプローラー、Log Analytics、Application Insights など、複数の Azure ページからダッシュボードにピン留めできます。
 - メトリックとログの両方をサポート。
 - [メトリックス エクスプローラー](platform/metrics-charts.md)、[ログ クエリ](log-query/log-query-overview.md)、Application Insights の[マップ](app/app-map.md)と可用性からの出力など、複数のソースからのデータを結合します。
-- 個人または共有のダッシュボードのオプション。 Azure [ロール ベースの認証 (RBAC)](../role-based-access-control/overview.md) との統合。
+- 個人または共有のダッシュボードのオプション。 [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) と統合。
 - 自動更新。 メトリックの更新は、最短 5 分の時間範囲に依存します。 特定の視覚エフェクトの [更新] アイコンをクリックするか、ダッシュボード全体を更新することにより、オンデマンドで手動更新オプションを使って 1 時間ごとに更新をログに記録します。
 - タイムスタンプとカスタム パラメーターでパラメーター化されたメトリック ダッシュボード。
 - 柔軟なレイアウト オプション。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0429eec2a84c22f3d998baa4dde4f543d4927f16
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 77a2a32b9a6358c39a14cfe37eeb44f7cb90af0a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695335"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841990"
 ---
 # <a name="securing-paas-deployments"></a>PaaS デプロイをセキュリティで保護する
 
@@ -82,14 +82,14 @@ ID 境界を管理するためのベスト プラクティスを次に示しま�
 **ベスト プラクティス**: VM を直接リモート管理できる管理インターフェイスを使用して、PaaS サービスと IaaS サービスのハイブリッドで VM 管理インターフェイスを保護する。   
 **詳細**: [SSH](https://en.wikipedia.org/wiki/Secure_Shell)、[RDP](https://support.microsoft.com/kb/186607)、[PowerShell リモート処理](/powershell/module/microsoft.powershell.core/enable-psremoting)などのリモート管理プロトコルを使用できます。 通常は、インターネットから VM に直接リモート アクセスできないように設定することをお勧めします。
 
-可能であれば、Azure 仮想ネットワークの仮想プライベート ネットワークを使用するなどの代替アプローチを使用します。 別の方法が利用できない場合は、複雑なパスフレーズおよび 2 要素認証 ([Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) など) を使用するようにします。
+可能であれば、Azure 仮想ネットワークの仮想プライベート ネットワークを使用するなどの代替アプローチを使用します。 別の方法が利用できない場合は、複雑なパスフレーズおよび 2 要素認証 ([Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) など) を使用するようにします。
 
 **ベスト プラクティス**: 強力な認証と承認のプラットフォームを使用する。   
 **詳細**: Azure AD で、カスタム ユーザー ストアではなくフェデレーション ID を使用するようにします。 フェデレーション ID を使用すると、プラットフォームベースのアプローチを活用して、承認された ID の管理をパートナーに委任することができます。 従業員を解雇し、その情報を複数の ID と承認システムに反映する必要がある場合は、フェデレーション ID によるアプローチが特に重要になってきます。
 
 カスタム コードではなく、プラットフォームが提供する認証と承認のメカニズムを使用するようにします。 その理由は、カスタム認証コードの開発ではエラーが生じやすいためです。 開発者のほとんどはセキュリティ専門家ではなく、細部に留意したり、認証や承認の最新動向を把握している可能性は低くなります。 商用コード (たとえば Microsoft のコード) は、通常徹底的にセキュリティ レビューされています。
 
-2 要素認証を使用します。 2 要素認証はユーザー名や認証パスワードの種類に固有のセキュリティ脆弱性が回避されるため、認証と承認において現在標準になっています。 Azure 管理 (ポータル/リモート PowerShell) インターフェイスと、顧客に提供されるサービスへのアクセスは、[Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) を使用するように設計、構成する必要があります。
+2 要素認証を使用します。 2 要素認証はユーザー名や認証パスワードの種類に固有のセキュリティ脆弱性が回避されるため、認証と承認において現在標準になっています。 Azure 管理 (ポータル/リモート PowerShell) インターフェイスと、顧客に提供されるサービスへのアクセスは、[Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) を使用するように設計、構成する必要があります。
 
 OAuth2 や Kerberos などの標準的な認証プロトコルを使用します。 これらのプロトコルは幅広くピア レビューされており、認証と承認用にプラットフォーム ライブラリの一部として実装される可能性があります。
 

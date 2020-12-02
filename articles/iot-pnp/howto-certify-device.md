@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b20dab7719e4c55c5868032db3178bb7baaddda0
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7aa84336a3d71349c127ad15a90af98ffe2133fe
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748478"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980237"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>IoT プラグ アンド プレイ デバイスを認定する方法
 
@@ -44,6 +44,10 @@ IoT プラグ アンド プレイで実行されるアプリケーション コ�
 - モデル、および必要なすべてのインターフェイスを [Azure IoT パブリック モデル リポジトリに発行する](https://devicemodels.azureiotsolutions.com/)
 - DPS プロビジョニング ペイロードで [DPS 登録](concepts-developer-guide-device-csharp.md#dps-payload)中にモデル ID を送信する。
 - [MQTT 接続](concepts-developer-guide-device-csharp.md#model-id-announcement)中にモデル ID を知らせる。
+- すべてのデバイス モデルは、[Azure IoT Central](https://aka.ms/pnp-iotc-getstarted) と互換性がある必要がある。
+
+> [!NOTE]
+> 現時点で、Azure IoT Central では **配列** および **地理空間** DTDL データ型は完全にはサポートされていません。
 
 ## <a name="test-with-the-azure-iot-extension-cli"></a>Azure IoT 拡張機能 CLI でテストする
 
@@ -203,7 +207,7 @@ Azure IoT パブリック モデル リポジトリにモデルを発行する�
 
 ### <a name="submit-and-publish"></a>送信と発行
 
-最後に必要なステージは、レビューのためにプロジェクトを送信することです。 この手順では、Azure Certified Device チーム メンバーに、デバイスとマーケティングの詳細やファースト ステップ ガイドを含め、網羅性を目的としてプロジェクトをレビューするように通知します。 チーム メンバーは、事前に質問に関して指定された会社のメール アドレスに問い合わせたり、承認前に要求を編集したりできます。
+最後に必要なステージは、レビューのためにプロジェクトを送信することです。 この手順では、Azure Certified Device チーム メンバーに、デバイスとマーケティングの詳細やファースト ステップ ガイドを含め、完全性のためにプロジェクトをレビューするように通知します。 チーム メンバーは、事前に質問に関して指定された会社のメール アドレスに問い合わせたり、承認前に要求を編集したりできます。
 
 デバイスで認定の一環としてさらに手動による検証が必要な場合は、現時点で通知を受け取ります。
 

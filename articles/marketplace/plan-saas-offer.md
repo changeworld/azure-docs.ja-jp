@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 5a646f7f42a2af8dcf15f7b7b2cd700e159fe88d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 9034757539a3dfd8b5e43e97ec518479da396456
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734397"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917547"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースの SaaS オファーを計画する方法
 
@@ -104,7 +104,26 @@ CRM の接続は、オファーの作成時または作成後にいつでも追�
 
 ## <a name="selecting-an-online-store"></a>オンライン ストアの選択
 
-SaaS オファーを公開すると、Microsoft AppSource、Azure Marketplace、またはその両方にリスト登録されます。 各オンライン ストアには、固有の顧客要件があります。 AppSource はビジネス ソリューション向けで、Azure Marketplace は IT ソリューション向けです。 オファーの種類、取引機能、カテゴリによって、オファーの公開先が決まります。 カテゴリとサブカテゴリは、ソリューションの種類に基づいて各オンライン ストアにマップされます。 オンライン ストアでサポートされているリスト オプションの詳細については、「[オンライン ストア別のリストと価格に関するオプション](determine-your-listing-type.md#listing-and-pricing-options-by-online-store)」を参照してください。 カテゴリとサブカテゴリの詳細については、「[コマーシャル マーケットプレースでのカテゴリとサブカテゴリ](categories.md)」を参照してください。
+SaaS オファーを公開すると、Microsoft AppSource、Azure Marketplace、またはその両方にリスト登録されます。 各オンライン ストアには、固有の顧客要件があります。 AppSource はビジネス ソリューション向けで、Azure Marketplace は IT ソリューション向けです。 オファーの種類、取引機能、カテゴリによって、オファーの公開先が決まります。 カテゴリとサブカテゴリは、ソリューションの種類に基づいて各オンライン ストアにマップされます。 
+
+SaaS オファーが IT ソリューション (Azure Marketplace) とビジネス ソリューション (AppSource) の "*両方*" である場合は、各オンライン ストアに適用されるカテゴリおよびサブカテゴリを選択します。 両方のオンライン ストアに公開されるオファーには、IT ソリューション "*および*" ビジネス ソリューションとしての価値提案が存在する必要があります。
+
+> [!IMPORTANT]
+> [従量制課金](partner-center-portal/saas-metered-billing.md)での SaaS オファーは、Azure Marketplace と Azure portal を通じて利用できます。 プライベート プランのみを含む SaaS オファーは、Azure portal から利用できます。
+
+| 従量制課金 | パブリック プラン | プライベート プラン | 次で利用可能: |
+|---|---|---|---|
+| はい             | はい         | いいえ           | Azure Marketplace と Azure portal |
+| はい             | はい         | Yes          | Azure Marketplace と Azure portal* |
+| はい             | いいえ          | はい          | Azure portal のみ |
+| いいえ              | いいえ          | はい          | Azure portal のみ |
+|||||
+
+&#42; このオファーのプライベート プランは、Azure portal 経由でのみ利用可能です
+
+たとえば、従量制課金とプライベート プランのみ (パブリックプランなし) のオファーを購入するのは、Azure portal のお客様のみになります。 詳細については、「[Microsoft 商業マーケットプレースでのプライベート オファー](private-offers.md)」を参照してください。
+
+オンライン ストアでサポートされているリスト オプションの詳細については、「[オンライン ストア別のリストと価格に関するオプション](determine-your-listing-type.md#listing-and-pricing-options-by-online-store)」を参照してください。 カテゴリとサブカテゴリの詳細については、「[コマーシャル マーケットプレースでのカテゴリとサブカテゴリ](categories.md)」を参照してください。
 
 ## <a name="legal-contracts"></a>法的契約
 

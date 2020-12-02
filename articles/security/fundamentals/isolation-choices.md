@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 3141d9937591467870ee4a88d16a96cbdb24a05b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c06fb0830ae709918b668ed60efbaaf47a63ce84
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696219"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842840"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 
@@ -90,7 +90,7 @@ Azure Active Directory のその他の機能を次に示します。
 
 - Azure AD は、オンプレミス ディレクトリとの [Active Directory フェデレーション サービス (AD FS)](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)、同期、およびレプリケーションを使用し、フェデレーションを通じて ID をサービスとして提供します。
 
-- [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) は、モバイル アプリケーション、電話、またはテキスト メッセージを使用したサインインの検証をユーザーに要求する多要素認証サービスです。 Azure AD と併用して Azure Multi-Factor Authentication サーバーでオンプレミス リソースをセキュリティで保護したり、SDK を使用するカスタム アプリケーションおよびディレクトリに使用したりすることができます。
+- [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) は、モバイル アプリケーション、電話、またはテキスト メッセージを使用したサインインの検証をユーザーに要求する多要素認証サービスです。 Azure AD と併用して Azure Multi-Factor Authentication サーバーでオンプレミス リソースをセキュリティで保護したり、SDK を使用するカスタム アプリケーションおよびディレクトリに使用したりすることができます。
 
 - [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/)を使用すると、ドメイン コントローラーをデプロイしなくても、Azure Virtual Machines を Active Directory ドメインに参加させることができます。 ユーザーは会社の Active Directory 資格情報を使用してこれらの仮想マシンにサインインし、グループ ポリシーによってすべての Azure 仮想マシンにセキュリティ基準を適用することで、ドメインに参加している仮想マシンを管理できます。
 

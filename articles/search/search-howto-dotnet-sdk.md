@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4b3256591c0aa2536fd42bcdbb2ef339fc1d5c48
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 3ceead297ea726e256d806c08c22810b39296793
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356809"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917173"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>C# .NET アプリケーションで Azure.Search.Documents を使用する方法
 
@@ -54,7 +54,7 @@ Azure.Search.Documents (バージョン 11) は、[Azure Cognitive Search REST A
 
 + 自分が所有する Azure Cognitive Search サービス。 SDK を使用するには、サービスの名前および 1 つまたは複数の API キーが必要です。 [ポータルでサービスを作成していない場合は、作成](search-create-service-portal.md)します。
 
-+ Visual Studio の **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[ソリューションの NuGet パッケージの管理]** を使用して、 [Azure.Search.Documents package](https://www.nuget.org/packages/Azure.Search.Documents) をダウンロードします。 パッケージ名 `Azure.Search.Documents` を検索します。
++ Visual Studio の **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[ソリューションの NuGet パッケージの管理]** を使用して、[Azure.Search.Documents package](https://www.nuget.org/packages/Azure.Search.Documents) をダウンロードします。 パッケージ名 `Azure.Search.Documents` を検索します。
 
 Azure SDK for .NET は [.NET Standard 2.0](/dotnet/standard/net-standard#net-implementation-support) に準拠しています。これは、.NET Framework 4.6.1 と .NET Core 2.0 を最小要件としていることを意味します。
 
@@ -230,6 +230,22 @@ private static void WriteDocuments(SearchResults<Hotel> searchResults)
     Console.WriteLine();
 }
 ```
+
+別の方法として、インデックスにフィールドを直接追加する方法もあります。 次の例では、いくつかのフィールドのみを示します。
+
+   ```csharp
+    SearchIndex index = new SearchIndex(indexName)
+    {
+        Fields =
+            {
+                new SimpleField("hotelId", SearchFieldDataType.String) { IsKey = true, IsFilterable = true, IsSortable = true },
+                new SearchableField("hotelName") { IsFilterable = true, IsSortable = true },
+                new SearchableField("hotelCategory") { IsFilterable = true, IsSortable = true },
+                new SimpleField("baseRate", SearchFieldDataType.Int32) { IsFilterable = true, IsSortable = true },
+                new SimpleField("lastRenovationDate", SearchFieldDataType.DateTimeOffset) { IsFilterable = true, IsSortable = true }
+            }
+    };
+   ```
 
 ### <a name="field-definitions"></a>フィールド定義
 
@@ -436,7 +452,7 @@ UploadDocuments(searchClient);
 
 ## <a name="run-queries"></a>クエリを実行する
 
-まず、 **appsettings.json** から検索エンドポイントとクエリ API キーを読み取る `SearchClient` を設定します。
+まず、**appsettings.json** から検索エンドポイントとクエリ API キーを読み取る `SearchClient` を設定します。
 
 ```csharp
 private static SearchClient CreateSearchClientForQueries(string indexName, IConfigurationRoot configuration)

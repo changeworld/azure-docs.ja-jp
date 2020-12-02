@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 7/21/2020
 ms.custom: it-pro, seodec18, references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 812abe141f8130a198178668dc4f212f373d9bcd
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 4d7c37e64e4f1b339ae66fe3d9135b1874476eb3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94334943"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836973"
 ---
 # <a name="customer-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Azure Active Directory でのオーストラリアとニュージーランドの顧客データの保存 
 
@@ -27,7 +27,7 @@ Azure AD およびその他の Microsoft サービスのデータが配置され
 
 2020 年 2 月 26 日から、Microsoft は、オーストラリアまたはニュージーランドの請求先住所を含む新しいテナントについて、Azure AD の顧客データをオーストラリアのデータセンター内に格納し始めました。 2020 年 5 月 1 日から 2021 年 3 月 31 日までの期間に、Microsoft は、請求先住所がオーストラリアまたはニュージーランドにある既存のテナントをオーストラリアのデータセンターに移行します (お客様による操作は必要ありません)。 移行プロセスは、お客様のダウンタイムを必要とせず、移行中、テナントの機能に影響を与えません。
 
-また、一部の Azure AD 機能では、オーストラリアでの顧客データの格納がまだサポートされていません。 特定の機能の情報については、[Azure AD データ マップ](https://msit.powerbi.com/view?r=eyJrIjoiYzEyZTc5OTgtNTdlZS00ZTVkLWExN2ItOTM0OWU4NjljOGVjIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9)に関するページを参照してください。 たとえば、Microsoft Azure Multi-Factor Authentication の場合、顧客データは米国内に格納され、グローバルに処理されます。 「[Azure Multi-Factor Authentication のデータの保存場所と顧客データ](../authentication/concept-mfa-data-residency.md)」を参照してください。
+また、一部の Azure AD 機能では、オーストラリアでの顧客データの格納がまだサポートされていません。 特定の機能の情報については、[Azure AD データ マップ](https://msit.powerbi.com/view?r=eyJrIjoiYzEyZTc5OTgtNTdlZS00ZTVkLWExN2ItOTM0OWU4NjljOGVjIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9)に関するページを参照してください。 たとえば、Microsoft Azure AD Multi-Factor Authentication の場合、顧客データは米国内に格納され、グローバルに処理されます。 「[Azure AD Multi-Factor Authentication のデータの保存場所と顧客データ](../authentication/concept-mfa-data-residency.md)」を参照してください。
 
 > [!NOTE]
 > Azure AD と統合される Microsoft の製品およびサービス、ならびにサードパーティのアプリケーションは、顧客データにアクセスすることができます。 使用する製品、サービス、アプリケーションをそれぞれ評価して、その特定の製品、サービス、アプリケーションによる顧客データの処理方法を確認し、それらが会社のデータ ストレージ要件を満たしているかどうかを判断してください。 Microsoft サービスのデータ保存場所の詳細については、Microsoft セキュリティ センターの[データの保存場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)に関するセクションを参照してください。

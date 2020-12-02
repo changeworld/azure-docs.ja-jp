@@ -6,23 +6,22 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 7d1990d6bc524a69de2b22b4f7c5aeec88c3ce9d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 668345da8bb89412f7b1dd36975c5bed6f229580
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423819"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95246386"
 ---
 # <a name="key-value-revisions"></a>キー値のリビジョン
 
-api-version: 1.0
+*キー値のリビジョン* によって、キー値リソースの履歴表現が定義されます。 リビジョンは、Free レベルのストアの場合は 7 日後、Standard レベルのストアの場合は 30 日後に有効期限が切れます。 リビジョンでは、`List` 操作がサポートされます。
 
-**キー値のリビジョン** によって、キー値リソースの履歴表現が定義されます。 リビジョンは、Free レベルのストアの場合は 7 日後、Standard レベルのストアの場合は 30 日後に有効期限が切れます。 リビジョンでは、次の操作がサポートされます。
+すべての操作で、``key`` は省略可能なパラメーターです。 省略されている場合は、すべてのキーを意味します。
 
-- List
+すべての操作で、``label`` は省略可能なパラメーターです。 省略されている場合は、すべてのラベルを意味します。
 
-すべての操作で、``key`` は省略可能なパラメーターです。 省略されている場合は、**すべての** キーを意味します。
-すべての操作で、``label`` は省略可能なパラメーターです。 省略されている場合は、**すべての** ラベルを意味します。
+この記事は、API バージョン 1.0 に適用されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -62,7 +61,7 @@ Accept-Ranges: items
 
 ## <a name="pagination"></a>改ページ位置の自動修正
 
-返された項目の数が応答の制限を超えている場合、結果は改ページされます。 省略可能な ``Link`` 応答ヘッダーに従い、``rel="next"`` を使用してナビゲーションを行います。  あるいは、コンテンツによって、``@nextLink`` プロパティの形式で次のリンクが指定されます。
+返された項目の数が応答の制限を超えている場合、結果は改ページされます。 省略可能な ``Link`` 応答ヘッダーに従い、``rel="next"`` を使用してナビゲーションを行います。 あるいは、コンテンツによって、``@nextLink`` プロパティの形式で次のリンクが指定されます。
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1
@@ -88,7 +87,7 @@ Link: <{relative uri}>; rel="next"
 
 ## <a name="list-subset-of-revisions"></a>リビジョンのサブセットを一覧表示する
 
-`Range` 要求ヘッダーを使用します。 応答には `Content-Range` ヘッダーが含まれます。 サーバーは、要求された範囲を満たせない場合、HTTP `416` (RangeNotSatisfiable) を使用して応答します。
+`Range` 要求ヘッダーを使用します。 応答には、`Content-Range` ヘッダーが含まれています。 サーバーでは、要求された範囲を満たせない場合、HTTP `416` (`RangeNotSatisfiable`) を使用して応答します。
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1
@@ -135,6 +134,8 @@ GET /revisions?key={key}&label={label}&api-version={api-version}
 
 ### <a name="reserved-characters"></a>予約文字
 
+予約文字は次のとおりです。
+
 `*`, `\`, `,`
 
 予約文字が値の一部である場合は、`\{Reserved Character}` を使用してエスケープする必要があります。 予約されていない文字もエスケープできます。
@@ -160,19 +161,19 @@ Content-Type: application/problem+json; charset=utf-8
 
 ### <a name="examples"></a>例
 
-- All
+- All:
 
     ```http
     GET /revisions
     ```
 
-- キー名が **abc** で始まる項目
+- キー名が **abc** で始まる項目:
 
     ```http
     GET /revisions?key=abc*&api-version={api-version}
     ```
 
-- キー名が **abc** または **xyz** で、ラベルに **prod** が含まれている項目
+- キー名が **abc** または **xyz** で、ラベルに **prod** が含まれている項目:
 
     ```http
     GET /revisions?key=abc,xyz&label=*prod*&api-version={api-version}
@@ -180,7 +181,7 @@ Content-Type: application/problem+json; charset=utf-8
 
 ## <a name="request-specific-fields"></a>特定のフィールドを要求する
 
-省略可能な `$select` クエリ文字列パラメーターを使用して、要求されたフィールドのコンマ区切りリストを指定します。 `$select` パラメーターを省略した場合、応答には既定のセットが含まれます。
+省略可能な `$select` クエリ文字列パラメーターを使用して、要求するフィールドのコンマ区切りリストを指定します。 `$select` パラメーターを省略した場合、応答には既定のセットが含まれます。
 
 ```http
 GET /revisions?$select=value,label,last_modified&api-version={api-version} HTTP/1.1
@@ -188,7 +189,7 @@ GET /revisions?$select=value,label,last_modified&api-version={api-version} HTTP/
 
 ## <a name="time-based-access"></a>時間ベースのアクセス
 
-過去の時間のものとして結果の表現を取得します。 [2.1.1](https://tools.ietf.org/html/rfc7089#section-2.1) セクションを参照してください。
+過去の時間のものとして結果の表現を取得します。 詳細については、「[HTTP Framework for Time-Based Access to Resource States -- Memento (リソース状態への時間ベースのアクセスのための HTTP フレームワーク -- Memento)](https://tools.ietf.org/html/rfc7089#section-2.1)」のセクション 2.1.1 を参照してください。
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1

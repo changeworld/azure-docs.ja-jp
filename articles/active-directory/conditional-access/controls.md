@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59f83d232874a7702598b6ea5fdd458c101e7e79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7585c91e42b2d3591532756c1ead9ea60b7035e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266580"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837585"
 ---
 # <a name="custom-controls-preview"></a>カスタム コントロール (プレビュー)
 
@@ -53,7 +53,7 @@ ms.locfileid: "89266580"
 
 ## <a name="known-limitations"></a>既知の制限事項
 
-カスタム コントロールは、Privileged Identity Manager (PIM) でロールを昇格させる目的で Azure Multi-Factor Authentication、Azure AD のセルフサービス パスワード リセット (SSPR)、多要素認証要求の要件を満たすことを必要とする ID 保護の自動化では使用できず、Intune デバイス登録の一環として使用できず、また、Azure AD にデバイスを登録するときに使用できません。
+カスタム コントロールは、Privileged Identity Manager (PIM) でロールを昇格させる目的で Azure AD Multi-Factor Authentication、Azure AD のセルフサービス パスワード リセット (SSPR)、多要素認証要求の要件を満たすことを必要とする ID 保護の自動化では使用できず、Intune デバイス登録の一環として使用できず、また、Azure AD にデバイスを登録するときに使用できません。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: fc405c56538ab305d6e0b8a22c1095458cb1264e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: eacc7adae16785049022cd05f04904d97b0b3a6d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309884"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486128"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure AI ギャラリーでリソースなどを共有し、発見する
 
-**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![これは × 印です。つまり、この記事は Azure Machine Learning を対象としています。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 
@@ -31,7 +31,7 @@ ms.locfileid: "93309884"
 Azure AI ギャラリーには、Microsoft とデータ サイエンス コミュニティのメンバーから投稿された多数のさまざまなリソースが含まれています。 これには以下が含まれます。
 
 * **実験** - ギャラリーには、Azure Machine Learning Studio (クラシック) で開発されたさまざまな実験が含まれています。 特定の機械学習手法を示す簡単な概念実証の実験から、複雑な機械学習の問題用の熟成されたソリューションまで広範囲に渡ります。
-* **チュートリアル** : Machine Learning のテクノロジと概念を紹介するか、Machine Learning に関する問題を解決するための高度な手法を説明するさまざまなチュートリアルを使用できます。
+* **チュートリアル**: Machine Learning のテクノロジと概念を紹介するか、Machine Learning に関する問題を解決するための高度な手法を説明するさまざまなチュートリアルを使用できます。
 * **コレクション** - コレクションでは、特定のソリューションまたは概念に対応する実験、API、およびその他のギャラリー リソースをグループ化できます。
 * **カスタム モジュール** - Studio (クラシック) ワークスペースにカスタム モジュールをダウンロードして、独自の実験で使用できます。
 
@@ -48,12 +48,12 @@ LinkedIn や Twitter の共有機能を使用するか、またはリンクを�
 
 サインインすると、ギャラリー コミュニティのメンバーになります。 これにより、リソースをダウンロードするか、または独自のギャラリー項目を投稿することで、あなたが見つけたソリューションを他のユーザーが利用できるようになります。
 
-**実験** 、 **カスタム モジュール** をダウンロードして、独自の分析ソリューションの開発に使用できます。
-**実験** 、 **チュートリアル** 、および **コレクション** をギャラリーに投稿できます。
+**実験**、**カスタム モジュール** をダウンロードして、独自の分析ソリューションの開発に使用できます。
+**実験**、**チュートリアル**、および **コレクション** をギャラリーに投稿できます。
 
 ## <a name="download-experiments-modules"></a>実験、モジュールのダウンロード
 
-独自の Machine Learning Studio (classic) ワークスペースに **実験** 、 **カスタム モジュール** をダウンロードして、独自のソリューションの開発に使用できます。
+独自の Machine Learning Studio (classic) ワークスペースに **実験**、**カスタム モジュール** をダウンロードして、独自のソリューションの開発に使用できます。
 
 AI ギャラリー内からリソースをダウンロードするには:
 
@@ -202,6 +202,6 @@ Studio (クラシック) 内からリソースをダウンロードするには�
 
 このギャラリーが、ユーザーの皆さまによって、ユーザーの皆さまのために活用されることを願っています。 ギャラリーの好き嫌いについて、右側のスマイリーを使用してお聞かせください。  
 
-![フィードバック](./media/gallery-how-to-use-contribute-publish/feedback.png)
+![フィードバック ウィンドウで、気に入った機能を報告したり、改善点を送信したりできます。 [送信] ボタンがあります。](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
 **[ギャラリーにアクセスする >>](https://gallery.azure.ai)**

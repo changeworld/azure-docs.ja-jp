@@ -3,12 +3,12 @@ title: 推奨セキュリティ プラクティス
 description: Azure Lighthouse を使用する場合、セキュリティとアクセス制御を考慮することが重要です。
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 097611837e3bba2d1a44ec521862e03cc467d707
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef2c41cf052e5f79ecf4abf01c8f3fab3dd1de14
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399382"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843725"
 ---
 # <a name="recommended-security-practices"></a>推奨セキュリティ プラクティス
 
@@ -17,11 +17,11 @@ ms.locfileid: "91399382"
 > [!TIP]
 > これらの推奨事項は、Azure Lighthouse を使用して[複数のテナントを管理するエンタープライズ](enterprise.md)にも適用されます。
 
-## <a name="require-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を必須とする
+## <a name="require-azure-ad-multi-factor-authentication"></a>Azure AD の Multi-Factor Authentication を必須とする
 
-[Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (2 段階認証) には、複数の認証ステップを要求することで、攻撃者によるアカウントへのアクセスを阻止する効果があります。 管理テナント内のすべてのユーザー (委任された顧客のリソースにアクセスできるユーザーを含む) について、Multi-Factor Authentication を必須としてください。
+[Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (2 段階認証) には、複数の認証ステップを要求することで、攻撃者によるアカウントへのアクセスを阻止する効果があります。 管理テナント内のすべてのユーザー (委任された顧客のリソースにアクセスできるユーザーを含む) について、Multi-Factor Authentication を必須としてください。
 
-顧客にも、そのテナントに Azure Multi-Factor Authentication の導入を求めることをお勧めします。
+顧客にも、そのテナントに Azure AD Multi-Factor Authentication の導入を求めることをお勧めします。
 
 ## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>最小限の特権の原則を使用してグループにアクセス許可を割り当てる
 
@@ -47,5 +47,5 @@ ms.locfileid: "91399382"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Multi-Factor Authentication をデプロイ](../../active-directory/authentication/howto-mfa-getstarted.md)します。
+- [Azure AD Multi-Factor Authentication をデプロイします](../../active-directory/authentication/howto-mfa-getstarted.md)。
 - [テナント間の管理エクスペリエンス](cross-tenant-management-experience.md)について学習します。

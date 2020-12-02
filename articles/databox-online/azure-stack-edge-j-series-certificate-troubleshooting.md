@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 09/29/2020
+ms.date: 11/20/2020
 ms.author: alkohli
-ms.openlocfilehash: f0f9dfa6e3d6ae02f66ac71f62586953cb21517e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4848f5e8b542d80b382abe39f4882a26e0f534c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568354"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015682"
 ---
 # <a name="troubleshooting-certificate-errors"></a>証明書エラーのトラブルシューティング
 
@@ -46,6 +46,7 @@ ms.locfileid: "91568354"
 | CertificateManagement_MissingServerOid | サブジェクト名 {0} の証明書にサーバー認証 OID がありません。 証明書のプロパティを確認し、必要に応じて新しい証明書を導入してください。|
 | CertificateManagement_NameMismatch | 証明書の種類が一致しません。 必要なスコープ: {0}、見つかったスコープ: {1}。 適切な証明書をアップロードしてください。|
 | CertificateManagement_NoPrivateKeyPresent | サブジェクト名 {0} の証明書に秘密キーがありません。 秘密キーとともに .pfx 証明書をアップロードしてください。|
+| CertificateManagement_NoRSACryptoPrivateKey | サブジェクト名 {0} の証明書の秘密キーにアクセスできません。 サポートされている証明書を使用していることを確認してください。 Microsoft RSA/Schannel Cryptographic Provider のみがサポートされます。 |
 | CertificateManagement_NotSelfSignedCertificate | サブジェクト名 {0} の証明書が自己署名されていません。 ルート証明書には自己署名が必要です。 |
 | CertificateManagement_NotSupportedOnVirtualAppliance | この操作は、仮想デバイスではサポートされません。 このエラーは、戦術的なクラウド アプライアンスで実行されている Data Box Gateway でのみ署名が行われることを示します。 このエラーは、Windows PowerShell を使用してデバイスを管理しているときに発生します。|
 | CertificateManagement_SelfSignedCertificate | サブジェクト名 {0} の証明書は自己署名されています。 正しく署名されている証明書をアップロードしてください。|
@@ -57,6 +58,7 @@ ms.locfileid: "91568354"
 | CertificateImportFailure | 拇印 {0} 付きの証明書がノード {1} にインポートされませんでした。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |
 | CertificateApplyFailure | 拇印 {0} 付きの証明書がノード {1} に適用されませんでした。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。|
 | NodeNotReachable | {0} の証明書を検証できませんでした。 システム ハードウェアとソフトウェアの正常性をご確認ください。|
+
 
 ## <a name="next-steps"></a>次のステップ
 

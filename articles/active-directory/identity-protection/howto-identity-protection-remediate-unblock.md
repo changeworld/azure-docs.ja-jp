@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c297e1a4f6443e584f04914712314d33df23b119
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 6dd918aef85deefc23771413c3eb7b92f1189d39
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776104"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835800"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>リスクを修復してユーザーをブロック解除する
 
@@ -37,7 +37,7 @@ ms.locfileid: "91776104"
 
 ### <a name="self-remediation-with-risk-policy"></a>リスク ポリシーを使用した自己修復
 
-リスク ポリシーで Azure Multi-Factor Authentication (MFA) とセルフサービス パスワード リセット (SSPR) を使用して自己修復を許可した場合、リスクが検出されたときに、ユーザーが自分自身をブロック解除できます。 これらの検出は、クローズされたとみなされます。 リスクが検出されたときに Azure MFA と SSPR を使用するには、ユーザーが登録済みである必要があります。
+リスク ポリシーで Azure AD Multi-Factor Authentication (MFA) とセルフサービス パスワード リセット (SSPR) を使用して自己修復を許可した場合、リスクが検出されたときに、ユーザーが自分自身をブロック解除できます。 これらの検出は、クローズされたとみなされます。 リスクが検出されたときに Azure AD MFA と SSPR を使用するには、ユーザーが登録済みである必要があります。
 
 一部の検出では、ユーザーの自己修復を必要とするレベルのリスクが発生しないことありますが、管理者はこれらの検出も評価する必要があります。 管理者は、[特定の場所からのアクセスのブロック](../conditional-access/howto-conditional-access-policy-location.md)やポリシーで許容されるリスクの低減などの追加の対策が必要であると判断できます。
 
@@ -49,7 +49,7 @@ ms.locfileid: "91776104"
 
 - **一時パスワードを生成する** - 一時パスワードを生成することによって、ID をすぐに安全な状態に戻すことができます。 この方法では、影響を受けるユーザーが一時的なパスワードを知る必要があるために、ユーザーと接触する必要があります。 パスワードは一時的なので、ユーザーは次回サインイン時にパスワードを何か新しいものに変更することを求められます。
 
-- **ユーザーにパスワードをリセットするよう要求する** - ユーザーにパスワードをリセットするよう要求すると、ヘルプ デスクや管理者に連絡せずに自己復旧することができます。 この方法は、Azure MFA と SSPR に登録されているユーザーにのみ適用されます。 まだ登録されていないユーザーの場合、このオプションは使用できません。
+- **ユーザーにパスワードをリセットするよう要求する** - ユーザーにパスワードをリセットするよう要求すると、ヘルプ デスクや管理者に連絡せずに自己復旧することができます。 この方法は、Azure AD MFA と SSPR に登録されているユーザーにのみ適用されます。 まだ登録されていないユーザーの場合、このオプションは使用できません。
 
 ### <a name="dismiss-user-risk"></a>ユーザー リスクを無視する
 

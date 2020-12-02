@@ -6,20 +6,22 @@ services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: bfa6690c636e15fa933f50698cd81359600b5c05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f164418c29e9838928f3d03519342ebef40e16e7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77368309"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015699"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Application Gateway で Web アプリケーション ファイアウォール v2 のカスタム規則を作成して使用する
 
 Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) v2 により、Web アプリケーションが保護されます。 この保護は、Open Web Application Security Project (OWASP) コア規則セット (CRS) によって提供されます。 場合によっては、特定のニーズを満たすために、独自のカスタム規則を作成する必要があります。 WAF のカスタム規則の詳細については、[Web アプリケーション ファイアウォールのカスタム規則の概要](custom-waf-rules-overview.md)に関する記事を参照してください。
 
 この記事では、WAF v2 で作成および使用できるカスタム規則の例を示します。 Azure PowerShell を使用して WAF にカスタム規則をデプロイする方法については、[Azure PowerShell を使用した Web アプリケーション ファイアウォールのカスタム規則の構成](configure-waf-custom-rules.md)に関する記事を参照してください。
+
+この記事に示されている JSON スニペットは、[ApplicationGatewayWebApplicationFirewallPolicies](/templates/microsoft.network/applicationgatewaywebapplicationfirewallpolicies) リソースから派生しています。
 
 >[!NOTE]
 > アプリケーション ゲートウェイが WAF レベルを使用していない場合、アプリケーション ゲートウェイを WAF レベルにアップグレードするオプションが右側のウィンドウに表示されます。
@@ -229,7 +231,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="example-4"></a>例 4
 
-この例では、User-Agent *evilbot* と、範囲 192.168.5.0/24 内のトラフィックをブロックしたいとします。 これを行うには、2 つの個別の一致条件を作成し、両方を同じ規則に配置します。 これにより、User-Agent ヘッダー内の *evilbot* **および**範囲 192.168.5.0/24 からの IP アドレスの両方が一致した場合、要求がブロックされることが保証されます。
+この例では、User-Agent *evilbot* と、範囲 192.168.5.0/24 内のトラフィックをブロックしたいとします。 これを行うには、2 つの個別の一致条件を作成し、両方を同じ規則に配置します。 これにより、User-Agent ヘッダー内の *evilbot***および** 範囲 192.168.5.0/24 からの IP アドレスの両方が一致した場合、要求がブロックされることが保証されます。
 
 ロジック: p **かつ** q
 
@@ -303,7 +305,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
 
 この例では、要求が IP アドレス範囲 *192.168.5.0/24* の外であるか、またはユーザー エージェント文字列が *chrome* でない (つまり、ユーザーが Chrome ブラウザーを使用していない) 場合にブロックしたいとします。 このロジックは "**または**" を使用するため、次の例で示しているように、2 つの条件は別々の規則内にあります。 トラフィックをブロックするには、*myrule1* と *myrule2* の両方が一致する必要があります。
 
-ロジック: (p **かつ** q) **でない** = p **でない**または q **でない**
+ロジック: (p **かつ** q) **でない** = p **でない** または q **でない**
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `

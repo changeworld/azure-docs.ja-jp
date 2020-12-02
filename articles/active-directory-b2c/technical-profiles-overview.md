@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7417e2d39371066a5c5e8576040cbe22e7632043
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d61471e07dda8fcf0c715dcffe85ad3e39ed8ac3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90562878"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840374"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの技術プロファイルについて
 
@@ -30,7 +30,7 @@ ms.locfileid: "90562878"
 
 - [Application Insights](application-insights-technical-profile.md) - イベント データを [Application Insights](../azure-monitor/app/app-insights-overview.md)に送信します。
 - [Azure Active Directory](active-directory-technical-profile.md) - Azure Active Directory B2C ユーザー管理をサポートします。
-- [Azure Multi-Factor Authentication](multi-factor-auth-technical-profile.md) - Azure Multi-Factor Authentication (MFA) を使用して電話番号を確認するためのサポートを提供します。 
+- [Azure AD Multi-Factor Authentication](multi-factor-auth-technical-profile.md) - Azure AD Multi-Factor Authentication (MFA) を使用して電話番号を確認するためのサポートを提供します。 
 - [要求変換](claims-transformation-technical-profile.md) - 出力要求変換を呼び出して、要求の値を操作したり、要求を検証したり、一連の出力要求の既定値を設定したりすることができます。
 - [ID トークン ヒント](id-token-hint.md) - `id_token_hint` JWT トークンの署名、発行者名、トークン対象ユーザーを検証し、受信トークンから要求を抽出します。
 - [JWT トークン発行者](jwt-issuer-technical-profile.md) - 証明書利用者アプリケーションに戻された JWT トークンを発行します。
@@ -52,7 +52,7 @@ ms.locfileid: "90562878"
 ![技術プロファイルのフローを示している図](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
 
 1. **シングル サインオン (SSO) セッション管理** - [SSO セッション管理](custom-policy-reference-sso.md)を使用して、技術プロファイルのセッション状態を復元します。
-1. **入力要求変換** - 要求バッグからピックアップされるすべての入力[要求変換](claimstransformations.md)の入力要求。  入力要求変換の出力要求は、後続の入力要求変換の入力要求になる場合があります。
+1. **入力要求変換** - 要求バッグからピックアップされるすべての入力 [要求変換](claimstransformations.md)の入力要求。  入力要求変換の出力要求は、後続の入力要求変換の入力要求になる場合があります。
 1. **入力要求** - 要求は要求バッグからピックアップされ、技術プロファイルに使用されます。 たとえば、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)では、入力要求を使用して、ユーザーが提供する出力要求を事前作成します。 REST API 技術プロファイルでは、入力要求を使用し、入力パラメーターを REST API エンドポイントに送信します。 Azure Active Directory では、アカウントの読み取り、更新、削除を行うために、一意識別子として入力要求を使用します。
 1. **技術プロファイルの実行** - 技術プロファイルでは、その要求を構成されたパーティと交換します。 次に例を示します。
     - ユーザーを ID プロバイダーにリダイレクトして、サインインを完了します。 サインインが成功したら、ユーザーが返され、技術プロファイルの実行が続行されます。
@@ -61,7 +61,7 @@ ms.locfileid: "90562878"
     - MFA テキスト メッセージを送信して検証します。
 1. **検証技術プロファイル** - [セルフアサート技術プロファイル](self-asserted-technical-profile.md)からは、[検証技術プロファイル](validation-technical-profile.md)を呼び出すことができます。 検証技術プロファイルでは、ユーザーによってプロファイルされたデータを検証し、出力要求を含めて、または含めないで、エラー メッセージや OK を返します。 たとえば、Azure AD B2C では、新しいアカウントを作成する前に、ユーザーがディレクトリ サービスに既に存在するかどうかを確認します。 REST API 技術プロファイルを呼び出して、独自のビジネス ロジックを追加できます。<p>検証技術プロファイルの出力要求のスコープは、検証技術プロファイルを呼び出す技術プロファイルに限定されます。 また、同じ技術プロファイル以下に他の検証技術プロファイルもあります。 次のオーケストレーションの手順で出力要求を使用する場合は、検証技術プロファイルを呼び出す技術プロファイルに出力要求を追加する必要があります。
 1. **出力要求** - 要求は要求バッグに戻されます。 次のオーケストレーションの手順、または出力要求変換でこれらの要求を使用できます。
-1. **出力要求変換** - すべての出力[要求変換](claimstransformations.md)の入力要求は、要求バッグからピックアップされます。 前の手順からの技術プロファイルの出力要求は、出力要求変換の入力要求になる場合があります。 実行後、出力要求は要求バッグに戻されます。 出力要求変換の出力要求は、後続の出力要求変換の入力要求になる場合があります。
+1. **出力要求変換** - すべての出力 [要求変換](claimstransformations.md)の入力要求は、要求バッグからピックアップされます。 前の手順からの技術プロファイルの出力要求は、出力要求変換の入力要求になる場合があります。 実行後、出力要求は要求バッグに戻されます。 出力要求変換の出力要求は、後続の出力要求変換の入力要求になる場合があります。
 1. **シングル サインオン (SSO) セッション管理** - [SSO セッション管理](custom-policy-reference-sso.md)を使用して、技術プロファイルのデータをセッションに永続化します。
 
 

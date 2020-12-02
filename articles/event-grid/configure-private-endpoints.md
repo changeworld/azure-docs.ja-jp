@@ -2,14 +2,14 @@
 title: Azure Event Grid のトピックまたはドメインに対してプライベート エンドポイントを構成する
 description: この記事では Azure Event Grid のトピックまたはドメインに対してプライベート エンドポイントを構成する方法について説明します。
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 11/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e2e164d55f61f7a08e689aea106eac678b553c82
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f8e0cfc0a850ae15ea6d03ff6ca8b90003adbfc9
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324146"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916992"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid のトピックまたはドメインに対してプライベート エンドポイントを構成する
 [プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用すると、パブリック インターネットを経由せずに[プライベート リンク](../private-link/private-link-overview.md)上で安全に仮想ネットワークからトピックおよびドメインへ直接、イベントのイングレスを行えるようになります。 プライベート エンドポイントは、トピックまたはドメインの VNet アドレス空間からの IP アドレスを使用します。 概念の詳細については、[ネットワーク セキュリティ](network-security.md)に関する記事をご覧ください。
@@ -20,26 +20,26 @@ ms.locfileid: "91324146"
 このセクションでは、Azure portal を使用して、トピックまたはドメインに対してプライベート エンドポイントを作成する方法について説明します。
 
 > [!NOTE]
-> このセクションで示す手順は、多くがトピックに関するものです。 同様の手順を使用して、**ドメイン**のプライベート エンドポイントを作成できます。 
+> このセクションで示す手順は、多くがトピックに関するものです。 同様の手順を使用して、**ドメイン** のプライベート エンドポイントを作成できます。 
 
 1. [Azure portal](https://portal.azure.com) にサインインし、ご自身のトピックまたはドメインに移動します。
 2. トピックページの **[ネットワーク]** タブに切り替えます。 ツールバーで **[+ プライベート エンドポイント]** を選択します。
 
     ![プライベート エンドポイントの追加](./media/configure-private-endpoints/add-button.png)
 2. **[基本]** ページで、次の手順を行います。 
-    1. プライベート エンドポイントを作成する **Azure サブスクリプション**を選択します。 
-    2. プライベート エンドポイント用の **Azure リソース グループ**を選択します。 
-    3. エンドポイントの**名前**を入力します。 
-    4. エンドポイントの**リージョン**を選択します。 プライベート エンドポイントが存在するリージョンは仮想ネットワークと同じでなければなりませんが、プライベート リンク リソース (この例ではイベント グリッド トピック) のリージョンとは異なっていてもかまいません。 
+    1. プライベート エンドポイントを作成する **Azure サブスクリプション** を選択します。 
+    2. プライベート エンドポイント用の **Azure リソース グループ** を選択します。 
+    3. エンドポイントの **名前** を入力します。 
+    4. エンドポイントの **リージョン** を選択します。 プライベート エンドポイントが存在するリージョンは仮想ネットワークと同じでなければなりませんが、プライベート リンク リソース (この例ではイベント グリッド トピック) のリージョンとは異なっていてもかまいません。 
     5. 次に、 **[Next:Resource >]/(次へ: リソース >/)** ボタンがページの下部にあるのでクリックします。 
 
       ![プライベート エンドポイント - 基本ページ](./media/configure-private-endpoints/basics-page.png)
 3. **[リソース]** ページで、次の手順を行います。 
     1. 接続方法について、 **[マイ ディレクトリ内の Azure リソースに接続します]** を選択した場合は、次の手順に従います。 この例では、ディレクトリ内の Azure リソースに接続する方法を示します。 
-        1. **トピックまたはドメイン**が存在する **Azure サブスクリプション**を選択します。 
-        1. **リソースの種類**については、 **[リソースの種類]** に **Microsoft.EventGrid/topics** または **Microsoft.EventGrid/domains** を選択します。
+        1. **トピックまたはドメイン** が存在する **Azure サブスクリプション** を選択します。 
+        1. **リソースの種類** については、 **[リソースの種類]** に **Microsoft.EventGrid/topics** または **Microsoft.EventGrid/domains** を選択します。
         2. **[リソース]** については、ドロップダウン リストからトピックまたはドメインを選択します。 
-        3. **ターゲット サブリソース**が **[トピック]** または **[ドメイン]** に設定されていることを確認します (選択したリソースの種類に基づく)。    
+        3. **ターゲット サブリソース** が **[トピック]** または **[ドメイン]** に設定されていることを確認します (選択したリソースの種類に基づく)。    
         4. **Next:次へ: 構成 >/** ボタンがページの下部にあるので選択します。 
 
             ![[プライベート エンドポイントの作成] ページの [リソース] を示すスクリーンショット。](./media/configure-private-endpoints/resource-page.png)
@@ -52,7 +52,7 @@ ms.locfileid: "91324146"
             ![[プライベート エンドポイント - リソース] ページ](./media/configure-private-endpoints/connect-azure-resource-id.png)
 4. **[構成]** ページで、プライベート エンドポイントのデプロイ先とする仮想ネットワーク内のサブネットを選択します。 
     1. **[仮想ネットワーク]** を選択します。 ドロップダウン リストには、現在選択されているサブスクリプションおよび場所内の仮想ネットワークのみが一覧表示されます。 
-    2. 選択した仮想ネットワーク内の**サブネット**を選択します。 
+    2. 選択した仮想ネットワーク内の **サブネット** を選択します。 
     3. **Next:次へ: タグ >** ボタンがページの下部にあるので選択します。 
 
     ![[プライベート エンドポイント - 構成] ページ](./media/configure-private-endpoints/configuration-page.png)
@@ -80,7 +80,7 @@ ms.locfileid: "91324146"
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 検索バーで、 **[Event Grid トピック]** または **[Event Grid ドメイン]** に入力します。
-1. 管理する**トピック**または**ドメイン**を選択します。
+1. 管理する **トピック** または **ドメイン** を選択します。
 1. **[ネットワーク]** タブを選択します。
 1. 保留中の接続がある場合は、プロビジョニング状態に **[保留]** と表示されている接続が一覧表示されます。 
 
@@ -88,9 +88,9 @@ ms.locfileid: "91324146"
 保留状態のプライベート エンドポイントを承認できます。 承認するには、次の手順に従います。 
 
 > [!NOTE]
-> このセクションで示す手順は、多くがトピックに関するものです。 同様の手順を使用して、**ドメイン**のプライベート エンドポイントを承認できます。 
+> このセクションで示す手順は、多くがトピックに関するものです。 同様の手順を使用して、**ドメイン** のプライベート エンドポイントを承認できます。 
 
-1. 承認する**プライベート エンドポイント**を選択し、ツールバーの **[承認]** を選択します。
+1. 承認する **プライベート エンドポイント** を選択し、ツールバーの **[承認]** を選択します。
 
     ![プライベート エンドポイント - 保留状態](./media/configure-private-endpoints/pending.png)
 1. **[接続の承認]** ダイアログ ボックスで、コメントを入力し (省略可能)、 **[はい]** を選択します。 
@@ -104,11 +104,11 @@ ms.locfileid: "91324146"
 保留状態または承認済み状態のプライベート エンドポイントを拒否できます。 拒否するには、次の手順に従います。 
 
 > [!NOTE]
-> このセクションで示す手順は、トピックに関するものです。 同様の手順を使用して、**ドメイン**のプライベート エンドポイントを拒否できます。 
+> このセクションで示す手順は、トピックに関するものです。 同様の手順を使用して、**ドメイン** のプライベート エンドポイントを拒否できます。 
 
-1. 拒否する**プライベート エンドポイント**を選択し、ツールバーの **[拒否]** を選択します。
+1. 拒否する **プライベート エンドポイント** を選択し、ツールバーの **[拒否]** を選択します。
 
-    ![[ネットワーク] - [プライベート エンドポイント接続 (プレビュー)] で [拒否] が選択されたことを示すスクリーンショット。](./media/configure-private-endpoints/reject-button.png)
+    ![[ネットワーク] - [プライベート エンドポイント接続] で [拒否] が選択されたことを示すスクリーンショット。](./media/configure-private-endpoints/reject-button.png)
 1. **[接続の拒否]** ダイアログ ボックスで、コメントを入力し (省略可能)、 **[はい]** を選択します。 
 
     ![プライベート エンドポイント - 拒否](./media/configure-private-endpoints/reject.png)
@@ -121,7 +121,7 @@ ms.locfileid: "91324146"
 
 
 ## <a name="use-azure-cli"></a>Azure CLI の使用
-プライベート エンドポイントを作成するには、次の例で示すように、[az network private-endpoint create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) メソッドを使用します。
+プライベート エンドポイントを作成するには、次の例で示すように、[az network private-endpoint create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create) メソッドを使用します。
 
 ```azurecli-interactive
 az network private-endpoint create \
@@ -135,19 +135,19 @@ az network private-endpoint create \
     --group-ids topic
 ```
 
-例で使用するパラメーターの説明については、[az network private-endpoint create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) のドキュメントを参照してください。 この例では、次の点に注意してください。 
+例で使用するパラメーターの説明については、[az network private-endpoint create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create) のドキュメントを参照してください。 この例では、次の点に注意してください。 
 
-- `private-connection-resource-id` には、**トピック**または**ドメイン**のリソース ID を指定します。 前の例では、種類にトピックを使用しています。
+- `private-connection-resource-id` には、**トピック** または **ドメイン** のリソース ID を指定します。 前の例では、種類にトピックを使用しています。
 - `group-ids` の場合、`topic` または `domain` を指定します。 前の例では、`topic` を使用しています。 
 
-プライベート エンドポイントを削除するには、次の例で示すように、[az network private-endpoint delete](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete) メソッドを使用します。
+プライベート エンドポイントを削除するには、次の例で示すように、[az network private-endpoint delete](/cli/azure/network/private-endpoint?#az-network-private-endpoint-delete) メソッドを使用します。
 
 ```azurecli-interactive
 az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --name <PRIVATE ENDPOINT NAME>
 ```
 
 > [!NOTE]
-> このセクションで示す手順は、トピックに関するものです。 同様の手順を使用して、**ドメイン**のプライベート エンドポイントを作成できます。 
+> このセクションで示す手順は、トピックに関するものです。 同様の手順を使用して、**ドメイン** のプライベート エンドポイントを作成できます。 
 
 
 
@@ -165,7 +165,7 @@ az extension add -n eventgrid
 ```
 
 ### <a name="create-a-private-endpoint"></a>プライベート エンドポイントの作成
-プライベート エンドポイントを作成するには、次の例で示すように、[az network private-endpoint create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) メソッドを使用します。
+プライベート エンドポイントを作成するには、次の例で示すように、[az network private-endpoint create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create) メソッドを使用します。
 
 ```azurecli-interactive
 az network private-endpoint create \
@@ -179,19 +179,19 @@ az network private-endpoint create \
     --group-ids topic
 ```
 
-例で使用するパラメーターの説明については、[az network private-endpoint create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) のドキュメントを参照してください。 この例では、次の点に注意してください。 
+例で使用するパラメーターの説明については、[az network private-endpoint create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create) のドキュメントを参照してください。 この例では、次の点に注意してください。 
 
-- `private-connection-resource-id` には、**トピック**または**ドメイン**のリソース ID を指定します。 前の例では、種類にトピックを使用しています。
+- `private-connection-resource-id` には、**トピック** または **ドメイン** のリソース ID を指定します。 前の例では、種類にトピックを使用しています。
 - `group-ids` の場合、`topic` または `domain` を指定します。 前の例では、`topic` を使用しています。 
 
-プライベート エンドポイントを削除するには、次の例で示すように、[az network private-endpoint delete](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete) メソッドを使用します。
+プライベート エンドポイントを削除するには、次の例で示すように、[az network private-endpoint delete](/cli/azure/network/private-endpoint?#az-network-private-endpoint-delete) メソッドを使用します。
 
 ```azurecli-interactive
 az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --name <PRIVATE ENDPOINT NAME>
 ```
 
 > [!NOTE]
-> このセクションで示す手順は、トピックに関するものです。 同様の手順を使用して、**ドメイン**のプライベート エンドポイントを作成できます。 
+> このセクションで示す手順は、トピックに関するものです。 同様の手順を使用して、**ドメイン** のプライベート エンドポイントを作成できます。 
 
 #### <a name="sample-script"></a>サンプル スクリプト
 次の Azure リソースを作成するサンプル スクリプトを示します。
@@ -311,7 +311,7 @@ az eventgrid topic update \
 このセクションでは、PowerShell を使用して、トピックまたはドメインに対してプライベート エンドポイントを作成する方法について説明します。 
 
 ### <a name="prerequisite"></a>前提条件
-「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md)」の手順に従って、Azure Active Directory アプリケーションを作成し、**ディレクトリ (テナント) ID**、**アプリケーション (クライアント) ID**、および**アプリケーション (クライアント) シークレット**の値を書き留めます。 
+「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md)」の手順に従って、Azure Active Directory アプリケーションを作成し、**ディレクトリ (テナント) ID**、**アプリケーション (クライアント) ID**、および **アプリケーション (クライアント) シークレット** の値を書き留めます。 
 
 ### <a name="prepare-token-and-headers-for-rest-api-calls"></a>REST API 呼び出し用のトークンとヘッダーを準備する 
 次の前提条件コマンドを実行して、REST API 呼び出しで使用する認証トークンを取得し、Authorization やその他のヘッダー情報を設定します。 
@@ -358,7 +358,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 ### <a name="create-an-event-grid-topic-with-a-private-endpoint"></a>プライベート エンドポイントを使用して Event Grid トピックを作成する
 
 > [!NOTE]
-> このセクションで示す手順は、トピックに関するものです。 同様の手順を使用して、**ドメイン**のプライベート エンドポイントを作成できます。 
+> このセクションで示す手順は、トピックに関するものです。 同様の手順を使用して、**ドメイン** のプライベート エンドポイントを作成できます。 
 
 
 ```azurepowershell-interactive
@@ -438,7 +438,7 @@ Invoke-RestMethod -Method 'Get'  `
 次のサンプル PowerShell スニペットでは、プライベート エンドポイントを承認する方法を示します。 
 
 > [!NOTE]
-> このセクションで示す手順は、トピックに関するものです。 同様の手順を使用して、**ドメイン**のプライベート エンドポイントを承認できます。 
+> このセクションで示す手順は、トピックに関するものです。 同様の手順を使用して、**ドメイン** のプライベート エンドポイントを承認できます。 
 
 ```azurepowershell-interactive
 $approvedBody = @{"properties"=@{"privateLinkServiceConnectionState"=@{"status"="approved";"description"="connection approved";"actionsRequired"="none"}}} | ConvertTo-Json
@@ -460,7 +460,7 @@ Invoke-RestMethod -Method 'Get'  `
 次の例では、PowerShell を使用して、プライベート エンドポイントを拒否する方法を示します。 前の GET コマンドの結果から、プライベート エンドポイントの GUID を取得できます。 
 
 > [!NOTE]
-> このセクションで示す手順は、トピックに関するものです。 同様の手順を使用して、**ドメイン**のプライベート エンドポイントを拒否できます。 
+> このセクションで示す手順は、トピックに関するものです。 同様の手順を使用して、**ドメイン** のプライベート エンドポイントを拒否できます。 
 
 
 ```azurepowershell-interactive

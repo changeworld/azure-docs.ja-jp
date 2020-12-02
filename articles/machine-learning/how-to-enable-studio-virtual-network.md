@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 7cdd70a44a090b03a3f11626805565469c7c04e7
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: df4d777ad78240b3ca84c51152b37861c4ccc486
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554667"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960004"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure 仮想ネットワークで Azure Machine Learning Studio を使用する
 
@@ -90,7 +90,7 @@ Azure Machine Learning では、[データストア](concept-data.md#datastores)
 1. データストアの設定で、 __[Azure Machine Learning service がワークスペース マネージド ID を使用してストレージにアクセスするのを許可する]__ で __[はい]__ を選択します。
 
 
-この手順により、Azure リソースベース アクセス制御 (Azure RBAC) を使用して、ワークスペースのマネージド ID がストレージ サービスに __閲覧者__ として追加されます。 __閲覧者__ のアクセス権を指定することにより、ワークスペースはファイアウォールの設定を取得し、データが仮想ネットワークから離れないようにすることができます。
+この手順により、Azure ロールベース アクセス制御 (Azure RBAC) を使用して、ワークスペースのマネージド ID がストレージ サービスに __閲覧者__ として追加されます。 __閲覧者__ のアクセス権を指定することにより、ワークスペースはファイアウォールの設定を取得し、データが仮想ネットワークから離れないようにすることができます。
 
 > [!NOTE]
 > これらの変更は、有効になるまでに最大 10 分かかる場合があります。

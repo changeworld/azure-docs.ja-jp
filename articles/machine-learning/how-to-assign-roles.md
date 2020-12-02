@@ -11,23 +11,23 @@ ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: dd8eff01cd52f8d80eb56f3a1ebe924763c8b70c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 90abd46e73ecb50b5e6de40218571d0ec899752e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441701"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012960"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
 
 この記事では、Azure Machine Learning ワークスペースへのアクセス (認可) を管理する方法について説明します。 [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) は、Azure リソースへのアクセスを管理するために使用されます (新しいリソースの作成や既存のリソースの使用など)。 Azure Active Directory (Azure AD) のユーザーには、リソースへのアクセス権を付与する特定のロールが割り当てられます。 Azure には、組み込みロールと、カスタム ロールを作成する機能の両方が用意されています。
 
 > [!TIP]
-> この記事では Azure Machine Learning に焦点を当てていますが、Azure ML が依存する個々のサービスには独自の RBAC 設定があります。 たとえば、この記事の情報を使用して、Azure Kubernetes Service で Web サービスとしてデプロイされたモデルにスコアリング要求を送信できるユーザーを構成できます。 ただし、Azure Kubernetes Service には、独自の Azure RBAC ロールのセットがあります。 Azure Machine Learning で役立つ可能性があるサービス固有の RBAC 情報については、次のリンクを参照してください。
+> この記事では Azure Machine Learning に焦点を当てていますが、Azure ML が依存する個々のサービスには独自の RBAC 設定があります。 たとえば、この記事の情報を使用して、Azure Kubernetes Service で Web サービスとしてデプロイされたモデルにスコアリング要求を送信できるユーザーを構成できます。 ただし、Azure Kubernetes Service には、独自の Azure ロールのセットがあります。 Azure Machine Learning で役立つ可能性があるサービス固有の RBAC 情報については、次のリンクを参照してください。
 >
 > * [Azure Kubernetes クラスター リソースへのアクセスを制御する](../aks/azure-ad-rbac.md)
 > * [Kubernetes 認可に Azure RBAC を使用する](../aks/manage-azure-rbac.md)
-> * [Azure RBAC を使用して BLOB データにアクセスする](/storage/common/storage-auth-aad-rbac-portal.md)
+> * [Azure RBAC を使用して BLOB データにアクセスする](/azure/storage/common/storage-auth-aad-rbac-portal)
 
 > [!WARNING]
 > 一部のロールを適用すると、他のユーザーが Azure Machine Learning スタジオを使用するときに UI 機能が制限されることがあります。 たとえば、ユーザーのロールにコンピューティング インスタンスを作成する機能がない場合、コンピューティング インスタンスを作成するオプションをスタジオで使用できません。 この動作は想定されており、アクセス拒否エラーが返される操作をユーザーが実行できないようにしています。

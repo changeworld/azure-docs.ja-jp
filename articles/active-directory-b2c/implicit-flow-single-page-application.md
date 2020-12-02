@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 44300771ce6471c97dcd582884995395daae4995
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: fe31e1bf095d15cfdd7945288486cb866ace8246
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215486"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840612"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OAuth 2.0 暗黙的フローを使用したシングルページ サインイン
 
@@ -30,7 +30,7 @@ ms.locfileid: "92215486"
 
 [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core) のような一部のフレームワークでは、暗黙的な許可フローのみがサポートされます。 このような場合、Azure Active Directory B2C (Azure AD B2C) では、OAuth 2.0 認可の暗黙的な許可フローがサポートされます。 これらのフローについては、[OAuth 2.0 仕様の セクション 4.2](https://tools.ietf.org/html/rfc6749) で説明されています。 暗黙的フローでは、アプリは Azure Active Directory (Azure AD) 承認エンドポイントから直接トークンを受け取るため、サーバー間の交換は実行されません。 すべての認証ロジックとセッション処理は、ページ リダイレクトまたはポップアップ ボックスを使って、JavaScript クライアント内ですべて行われます。
 
-Azure AD B2C によって、標準の OAuth 2.0 暗黙的フローが、単純な認証と承認以上まで拡張されます。 Azure AD B2C には、[ポリシー パラメーター](user-flow-overview.md)が導入されています。 ポリシー パラメーターと共に OAuth 2.0 を使用して、サインアップ、サインイン、プロファイル管理のユーザー フローなどのポリシーをアプリに追加できます。 この記事の HTTP 要求例では、 **{tenant}.onmicrosoft.com** を例として使用します。 実際のテナントがあり、ユーザー フローも作成済みである場合は、`{tenant}` を実際のテナントの名前に置き換えてください。
+Azure AD B2C によって、標準の OAuth 2.0 暗黙的フローが、単純な認証と承認以上まで拡張されます。 Azure AD B2C には、[ポリシー パラメーター](user-flow-overview.md)が導入されています。 ポリシー パラメーターと共に OAuth 2.0 を使用して、サインアップ、サインイン、プロファイル管理のユーザー フローなどのポリシーをアプリに追加できます。 この記事の HTTP 要求例では、**{tenant}.onmicrosoft.com** を例として使用します。 実際のテナントがあり、ユーザー フローも作成済みである場合は、`{tenant}` を実際のテナントの名前に置き換えてください。
 
 暗黙的サインイン フローは、次の図のようになっています。 各手順については、この記事の後の方で詳しく説明します。
 
@@ -141,7 +141,7 @@ ID トークンの署名の検証後に、いくつかの要求で検証が必�
 
 * ユーザーまたは組織がアプリにサインアップ済みであることを確認する。
 * ユーザーが適切な承認や特権を持っていることを確認する。
-* Azure Multi-Factor Authentication の使用など、特定の強度の認証が行われたことを確認する。
+* Azure AD Multi-Factor Authentication の使用など、特定の強度の認証が行われたことを確認する。
 
 ID トークンに含まれる要求の詳細については、[Azure AD B2C トークン リファレンス](tokens-overview.md)を参照してください。
 

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: fb409673e028375812551ec146b43c27e3755d2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3f6f6a5ac1068f2eabca351e85376b8e16d1058
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91595536"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016753"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>タイム シリーズ ID の選択に関するベスト プラクティス
 
@@ -32,11 +32,11 @@ ms.locfileid: "91595536"
 > * *変更できません* プロパティ： 一度作成した後は変更できません。
 
 > [!TIP]
-> イベント ソースが IoT ハブの場合、時系列 ID は、***iothub-connection-device-id*** になる可能性があります。
+> イベント ソースが IoT ハブの場合、時系列 ID は、***iothub-connection-device-id** _ になる可能性があります。
 
 従うべき主なベストプラクティスは、次のとおりです：
 
-多数 (たとえば数百から数千) の個別の値を備えたパーティション キーを選択します。 多くの場合、これは JSON のデバイス ID、センサー ID、またはタグ ID である可能性があります。
+_ 多数 (たとえば数百から数千) の個別の値を備えたパーティション キーを選択します。 多くの場合、これは JSON のデバイス ID、センサー ID、またはタグ ID である可能性があります。
 * タイム シリーズ ID は、[タイム シリーズ モデル](./concepts-model-overview.md)のリーフ ノード レベルで一意である必要があります。
 * 時系列 ID のプロパティ名文字列の文字制限は、128 です。 時系列 ID のプロパティ値の場合、文字数の制限は 1024 です。
 * 時系列 ID の一意のプロパティ値がない場合は、null 値として扱われ、一意性制約と同じルールに従います。
@@ -86,4 +86,4 @@ Azure portal では、次のようにして、複合キーを入力できます�
 
 * [JSON のフラット化とエスケープのルール](./concepts-json-flattening-escaping-rules.md)を読み、イベントの格納方法を理解する。
 
-* [Azure Time Series Insights Gen2 環境](./time-series-insights-update-plan.md)を計画します。
+* [Azure Time Series Insights Gen2 環境](./how-to-plan-your-environment.md)を計画します。

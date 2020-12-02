@@ -1,18 +1,18 @@
 ---
 title: Common Data Model 形式
 description: Common Data Model メタデータ システムを使用してデータを変換します
-author: djpmsft
+author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/13/2020
-ms.author: daperlov
-ms.openlocfilehash: 452aa3406ac09dd8342d8ade0b56b126067b7582
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/20/2020
+ms.author: makromer
+ms.openlocfilehash: 7fc3a63f841a88451746d088a527a41d756e711f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636410"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015173"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory での Common Data Model 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -52,7 +52,11 @@ Common Data Model は、マッピング データ フローの[インライン �
 | コーパス エンティティ | エンティティ参照のパス | はい | String | エンティティ |
 | [Allow no files found]\(ファイルの未検出を許可\) | true の場合、ファイルが見つからない場合でもエラーはスローされない | no | `true` または `false` | ignoreNoFilesFound |
 
-ソース変換で使用するエンティティ定義がデータ フォルダーと同じディレクトリにある場合、[Use entity from corpus]\(コーパスのエンティティを使用する\) の選択を解除し、エンティティ参照として使用するエンティティを入力します。
+ソース変換とシンク変換の両方で "エンティティ参照" を選択する際に、以下の 3 つのオプションからエンティティ参照の場所を選択できます。
+
+* ローカル- ADF によって既に使用されているマニフェスト ファイルで定義されているエンティティを使用します。
+* カスタム - ADF によって使用されているマニフェスト ファイルとは異なるエンティティ マニフェスト ファイルを指定するように求めるメッセージが表示されます。
+* 標準 - ```Github``` に保持されている CDM エンティティの標準ライブラリにあるエンティティ参照を使用します。
 
 ### <a name="sink-settings"></a>シンクの設定
 

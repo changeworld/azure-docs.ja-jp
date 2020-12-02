@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 11/15/2020
-ms.openlocfilehash: 48bd32569b7eb7fa09f83f81190bf96baa42fae0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.date: 11/19/2020
+ms.openlocfilehash: a79055a77ec73ce2b267bb4f16fa91f37e22ea75
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659983"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916782"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>セルフホステッド IR を Azure Data Factory で Azure-SSIS IR のプロキシとして構成する
 
@@ -175,8 +175,10 @@ Azure-SSIS IR のプロキシとしてセルフホステッド IR を使用し�
 
 1. [標準/簡易カスタム セットアップ](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)を使用して、Azure-SSIS IR に SQL Server 2017 をターゲットとするカスタム/サードパーティのコンポーネントをインストールします。
 
-1. セルフホステッド IR に DTSPath レジストリ キー (`Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` と `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath`) を作成します (まだ存在しない場合)。
- 
+1. セルフホステッド IR に次の DTSPath レジストリ キーを作成します (まだ存在しない場合)。
+   1. `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` を `C:\Program Files\Microsoft SQL Server\140\DTS\` に設定
+   1. `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` を `C:\Program Files (x86)\Microsoft SQL Server\140\DTS\` に設定
+   
 1. 上記の DTSPath でセルフホステッド IR に SQL Server 2017 をターゲットとするカスタム/サードパーティのコンポーネントをインストールし、次のインストール プロセスを確認します。
 
    1. `<DTSPath>`、`<DTSPath>/Connections`、`<DTSPath>/PipelineComponents`、`<DTSPath>/UpgradeMappings` フォルダーがまだ存在しない場合は作成します。
@@ -185,7 +187,7 @@ Azure-SSIS IR のプロキシとしてセルフホステッド IR を使用し�
    
    1. カスタム/サードパーティのコンポーネント アセンブリで参照されるすべてのアセンブリをグローバル アセンブリ キャッシュ (GAC) にインストールします。
 
-簡易カスタム セットアップとセルフホステッド IR を Azure-SSIS IR 用のプロキシとして使用する[サードパーティのコンポーネント](https://www.aecorsoft.com/blog/2020/11/8/using-azure-data-factory-to-bring-sap-data-to-azure-via-self-hosted-ir-and-ssis-ir)の例を次に示します。
+ここでは、パートナーである [Theobald Software](https://kb.theobald-software.com/xtract-is/XIS-for-Azure-SHIR) と [Aecorsoft](https://www.aecorsoft.com/blog/2020/11/8/using-azure-data-factory-to-bring-sap-data-to-azure-via-self-hosted-ir-and-ssis-ir)の例を示します。こちらのコンポーネントは、高速カスタム セットアップと、セルフホステッド IR を Azure-SSIS IR のプロキシとしてを使用するように設定されています。
 
 ## <a name="enforce-tls-12"></a>TLS 1.2 を適用する
 

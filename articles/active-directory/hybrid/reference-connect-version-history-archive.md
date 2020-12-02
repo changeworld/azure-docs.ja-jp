@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0adf548b009ad6fe0c85501b9777ff23723b3e24
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 859a4f199e65dd0c3aee9424029f6060683d5fbd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413413"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836089"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect:バージョンのリリース履歴アーカイブ
 
@@ -212,8 +212,8 @@ SQL Always On 可用性が ADSync DB に対して構成されている場合に 
 - デバイスの書き戻しの構成は、Azure AD Connect ウィザード内でのみ管理されるようになりました。
 - SQL 接続の問題とその他のさまざまなトラブルシューティング ユーティリティをトラブルシューティングするために使用できる ADSyncTools.psm1 という名前の新しい PowerShell モジュールが追加されました。 ADSyncTools モジュールの詳細については、[こちら](tshoot-connect-tshoot-sql-connectivity.md)を参照してください。 
 - 新しいタスクである "デバイス オプションの構成" が追加されました。 このタスクを使用して、次の 2 つの操作を構成できます。 
-  - **Hybrid Azure AD 参加** :環境にオンプレミスの AD フットプリントがあるときに、Azure Active Directory が提供する機能も活用したい場合は、ハイブリッド Azure AD 参加済みデバイスを実装できます。 これらのデバイスは、オンプレミスの Active Directory と Azure Active Directory の両方に参加しているデバイスです。
-  - **デバイス ライトバック** :デバイス ライトバックを使うと、AD FS (2012 R2 以降) で保護されているデバイスへの、デバイスに基づく条件付きアクセスを有効にできます。
+  - **Hybrid Azure AD 参加**:環境にオンプレミスの AD フットプリントがあるときに、Azure Active Directory が提供する機能も活用したい場合は、ハイブリッド Azure AD 参加済みデバイスを実装できます。 これらのデバイスは、オンプレミスの Active Directory と Azure Active Directory の両方に参加しているデバイスです。
+  - **デバイス ライトバック**:デバイス ライトバックを使うと、AD FS (2012 R2 以降) で保護されているデバイスへの、デバイスに基づく条件付きアクセスを有効にできます。
 
     >[!NOTE] 
     > - 同期カスタマイズ オプションからデバイスの書き戻しを有効にするオプションはグレー表示されます。 
@@ -425,13 +425,13 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 #### <a name="fixed-issues"></a>修正された問題
 * Azure AD Connect ウィザードの *[ユーザー サインインの変更]* タスクの問題を修正しました。
 
-  * この問題は、Azure AD Connect の既存のデプロイでパスワード同期が **有効** になっており、ユーザーのサインイン方法を *パススルー認証* に設定しようとするときに発生します。 変更が適用される前に、ウィザードに " *パスワード同期を無効にする* " という内容のメッセージが間違って表示されます。 ただし、変更が適用された後もパスワード同期は引き続き有効です。 この修正により、今後はウィザードでこのメッセージが表示されることはありません。
+  * この問題は、Azure AD Connect の既存のデプロイでパスワード同期が **有効** になっており、ユーザーのサインイン方法を *パススルー認証* に設定しようとするときに発生します。 変更が適用される前に、ウィザードに "*パスワード同期を無効にする*" という内容のメッセージが間違って表示されます。 ただし、変更が適用された後もパスワード同期は引き続き有効です。 この修正により、今後はウィザードでこのメッセージが表示されることはありません。
 
   * 仕様上、お客様が *[ユーザー サインインの変更]* タスクを使用してユーザーのサインイン方法を更新するときに、ウィザードによってパスワード同期が無効化されることはありません。 これは、ユーザーの主要なサインイン方法としてパススルー認証またはフェデレーションを有効にする場合でも、パスワード同期を維持する必要があるお客様への中断を避けるためです。
 
   * ユーザーのサインイン方法を更新した後にパスワード同期を無効にする場合は、ウィザードで *[Customize Synchronization Configuration]\(同期構成のカスタマイズ\)* タスクを実行する必要があります。 *[Optional features]\(オプション機能\)* ページに移動して、 *[パスワード同期]* オプションをオフにします。
 
-  * シームレス シングル サインオンを有効または無効にしようとする場合にも、同じ問題が発生することに注意してください。 特に、Azure AD Connect の既存のデプロイでパスワード同期が有効になっており、ユーザーのサインイン方法が既に *パススルー認証* に構成されている場合です。 ユーザーのサインイン方法が "パススルー認証" に構成されたままで、 *[ユーザー サインインの変更]* タスクを使用して、 *[Enable Seamless Single Sign-On]\(シームレス シングル サインオンを有効にする\)* オプションをオンまたはオフにしようとすると、 変更が適用される前に、ウィザードに " *パスワード同期を無効にする* " という内容のメッセージが間違って表示されます。 ただし、変更が適用された後もパスワード同期は引き続き有効です。 この修正により、今後はウィザードでこのメッセージが表示されることはありません。
+  * シームレス シングル サインオンを有効または無効にしようとする場合にも、同じ問題が発生することに注意してください。 特に、Azure AD Connect の既存のデプロイでパスワード同期が有効になっており、ユーザーのサインイン方法が既に *パススルー認証* に構成されている場合です。 ユーザーのサインイン方法が "パススルー認証" に構成されたままで、 *[ユーザー サインインの変更]* タスクを使用して、 *[Enable Seamless Single Sign-On]\(シームレス シングル サインオンを有効にする\)* オプションをオンまたはオフにしようとすると、 変更が適用される前に、ウィザードに "*パスワード同期を無効にする*" という内容のメッセージが間違って表示されます。 ただし、変更が適用された後もパスワード同期は引き続き有効です。 この修正により、今後はウィザードでこのメッセージが表示されることはありません。
 
 * Azure AD Connect ウィザードの *[ユーザー サインインの変更]* タスクの問題を修正しました。
 
@@ -441,11 +441,11 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
   * シームレス シングル サインオンを有効または無効にしようとする場合にも、同じ問題が発生することに注意してください。 特に、Azure AD Connect の既存のデプロイでパスワード同期が無効になっており、ユーザーのサインイン方法が既に *パススルー認証* に構成されている場合です。 ユーザーのサインイン方法が "パススルー認証" に構成されたままで、 *[ユーザー サインインの変更]* タスクを使用して、 *[Enable Seamless Single Sign-On]\(シームレス シングル サインオンを有効にする\)* オプションをオンまたはオフにしようとすると、 変更が適用されるときに、ウィザードによってパスワード同期が有効になります。 この修正により、ウィザードでパスワード同期が有効化されなくなりました。 
 
-* Azure AD Connect のアップグレードが失敗して " *Unable to upgrade the Synchronization Service* "(同期サービスをアップグレードできません) というエラーが表示される問題を修正しました。 また、今後は同期サービスの起動時にイベント エラー " *The service was unable to start because the version of the database is newer than the version of the binaries installed* "(データベースのバージョンが、インストールされているバイナリのバージョンよりも新しいため、サービスを開始できませんでした) が表示されることはありません。 この問題は、アップグレードを実行している管理者が、Azure AD Connect で使用されている SQL サーバーに対して sysadmin 権限を持っていない場合に発生します。 この修正により、Azure AD Connect ではアップグレード時に、管理者が ADSync データベースに対する db_owner 権限を持っていることのみが求められます。
+* Azure AD Connect のアップグレードが失敗して "*Unable to upgrade the Synchronization Service*"(同期サービスをアップグレードできません) というエラーが表示される問題を修正しました。 また、今後は同期サービスの起動時にイベント エラー "*The service was unable to start because the version of the database is newer than the version of the binaries installed*"(データベースのバージョンが、インストールされているバイナリのバージョンよりも新しいため、サービスを開始できませんでした) が表示されることはありません。 この問題は、アップグレードを実行している管理者が、Azure AD Connect で使用されている SQL サーバーに対して sysadmin 権限を持っていない場合に発生します。 この修正により、Azure AD Connect ではアップグレード時に、管理者が ADSync データベースに対する db_owner 権限を持っていることのみが求められます。
 
 * [シームレス シングル サインオン](./how-to-connect-sso.md)を有効にしているお客様に影響を与える、Azure AD Connect のアップグレードの問題を修正しました。 Azure AD Connect をアップグレードした後に、シームレス シングル サインオンが引き続き有効で完全に機能するにもかかわらず、Azure AD Connect ウィザードに "無効" と間違って表示されます。 この修正により、この機能がウィザードで正しく "有効" と表示されるようになりました。
 
-* Azure AD Connect ウィザードで、ソース アンカーに関連する変更が行われていない場合にも、 *[構成の準備完了]* ページに " *ソース アンカーの構成* " メッセージが常に表示される問題を修正しました。
+* Azure AD Connect ウィザードで、ソース アンカーに関連する変更が行われていない場合にも、 *[構成の準備完了]* ページに "*ソース アンカーの構成*" メッセージが常に表示される問題を修正しました。
 
 * Azure AD Connect のインプレース アップグレードを手動で実行する際、お客様には、対応する Azure AD テナントのグローバル管理者の資格情報を入力することが求められます。 以前は、入力されたグローバル管理者の資格情報が別の Azure AD テナントに属している場合でも、アップグレードを続行できました。 アップグレードが正常に完了したように見えても、特定の構成はアップグレードで正しく保持されません。 この変更により、入力された資格情報が該当する Azure AD テナントに一致しない場合、ウィザードでアップグレードを続行できません。
 
@@ -480,7 +480,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
 #### <a name="known-issues"></a>既知の問題
-* Azure AD Connect のアップグレードが失敗して " *Unable to upgrade the Synchronization Service* "(同期サービスをアップグレードできません) というエラーが表示される既知の問題があります。 また、今後は同期サービスの起動時にイベント エラー " *The service was unable to start because the version of the database is newer than the version of the binaries installed* "(データベースのバージョンが、インストールされているバイナリのバージョンよりも新しいため、サービスを開始できませんでした) が表示されることはありません。 この問題は、アップグレードを実行している管理者が、Azure AD Connect で使用されている SQL サーバーに対して sysadmin 権限を持っていない場合に発生します。 dbo アクセス許可では不十分です。
+* Azure AD Connect のアップグレードが失敗して "*Unable to upgrade the Synchronization Service*"(同期サービスをアップグレードできません) というエラーが表示される既知の問題があります。 また、今後は同期サービスの起動時にイベント エラー "*The service was unable to start because the version of the database is newer than the version of the binaries installed*"(データベースのバージョンが、インストールされているバイナリのバージョンよりも新しいため、サービスを開始できませんでした) が表示されることはありません。 この問題は、アップグレードを実行している管理者が、Azure AD Connect で使用されている SQL サーバーに対して sysadmin 権限を持っていない場合に発生します。 dbo アクセス許可では不十分です。
 
 * [シームレス シングル サインオン](how-to-connect-sso.md)を有効にしているお客様に影響する、Azure AD Connect のアップグレードに関する既知の問題があります。 Azure AD Connect をアップグレードすると、機能は引き続き有効であるにもかかわらず、ウィザードには無効と表示されます。 この問題は、今後のリリースで修正される予定です。 この表示の問題が気になるお客様は、ウィザードでシームレス シングル サインオンを有効にすることで、問題を手動で修正できます。
 
@@ -521,7 +521,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 ### <a name="seamless-single-sign-on"></a>シームレス シングル サインオン
 #### <a name="fixed-issues"></a>修正された問題
-* [シームレス シングル サインオン](how-to-connect-sso.md)の有効化が試行されたときに Azure AD Connect ウィザードがエラーを返す問題を修正しました。 エラー メッセージは、" *Configuration of Microsoft Azure AD Connect Authentication Agent failed. (Microsoft Azure AD Connect の認証エージェントを構成できませんでした)* " です。 この問題は、[パススルー認証](how-to-connect-sso.md)用の認証エージェントのプレビュー バージョンを[こちらの記事](how-to-connect-pta-upgrade-preview-authentication-agents.md)に記載されている手順に基づいて手動でアップグレードしたお客様に影響します。
+* [シームレス シングル サインオン](how-to-connect-sso.md)の有効化が試行されたときに Azure AD Connect ウィザードがエラーを返す問題を修正しました。 エラー メッセージは、"*Configuration of Microsoft Azure AD Connect Authentication Agent failed. (Microsoft Azure AD Connect の認証エージェントを構成できませんでした)* " です。 この問題は、[パススルー認証](how-to-connect-sso.md)用の認証エージェントのプレビュー バージョンを[こちらの記事](how-to-connect-pta-upgrade-preview-authentication-agents.md)に記載されている手順に基づいて手動でアップグレードしたお客様に影響します。
 
 
 ## <a name="115610"></a>1.1.561.0
@@ -608,7 +608,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 ### <a name="pass-through-authentication"></a>パススルー認証
 
 #### <a name="new-features-and-improvements"></a>新機能と機能強化
-* パススルー認証に必要なエージェントの名前が、" *Microsoft Azure AD アプリケーション プロキシ コネクタ* " から " *Microsoft Azure AD Connect 認証エージェント* " に変更されました。
+* パススルー認証に必要なエージェントの名前が、"*Microsoft Azure AD アプリケーション プロキシ コネクタ*" から "*Microsoft Azure AD Connect 認証エージェント*" に変更されました。
 
 * パススルー認証を有効にしても、既定では、パスワード ハッシュ同期は有効化されなくなりました。
 
@@ -633,7 +633,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 * パスワード ライトバックによって Azure AD 管理者がオンプレミスの AD 特権ユーザー アカウントのパスワードをリセットできる、という問題を修正しました。 この問題は、特権アカウントに対するパスワードのリセット アクセス許可が、Azure AD Connect に付与されている場合に発生します。 このバージョンの Azure AD Connect で問題を解決するには、オンプレミスの AD 特権ユーザー アカウントの所有者でない Azure AD 管理者が、任意の AD 特権ユーザー アカウントのパスワードをリセットできないようにします。 詳しくは、[セキュリティ アドバイザリ 4033453](/security-updates/SecurityAdvisories/2017/4033453) を参照してください。
 
-* Azure AD Connect がオンプレミスの AD ms-DS-ConsistencyGuid 属性へのライトバックを行わないという、[ソース アンカーとしての ms-DS-ConsistencyGuid](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) 機能に関連する問題を修正しました。 この問題は、オンプレミスの AD フォレストに複数の Azure AD Connect が追加され、" *[複数のディレクトリにユーザー ID が存在します] オプション* " が選択されているときに発生します。 このような構成が使用されている場合、結果の同期ルールでは、メタバースの sourceAnchorBinary 属性が設定されません。 sourceAnchorBinary 属性は、ms-DS-ConsistencyGuid 属性のソース属性として使用されます。 このため、ms-DSConsistencyGuid 属性へのライトバックが行われません。 この問題を修正するために、メタバースの sourceAnchorBinary 属性が常に設定されるように、次の同期規則が更新されました。
+* Azure AD Connect がオンプレミスの AD ms-DS-ConsistencyGuid 属性へのライトバックを行わないという、[ソース アンカーとしての ms-DS-ConsistencyGuid](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) 機能に関連する問題を修正しました。 この問題は、オンプレミスの AD フォレストに複数の Azure AD Connect が追加され、" *[複数のディレクトリにユーザー ID が存在します] オプション*" が選択されているときに発生します。 このような構成が使用されている場合、結果の同期ルールでは、メタバースの sourceAnchorBinary 属性が設定されません。 sourceAnchorBinary 属性は、ms-DS-ConsistencyGuid 属性のソース属性として使用されます。 このため、ms-DSConsistencyGuid 属性へのライトバックが行われません。 この問題を修正するために、メタバースの sourceAnchorBinary 属性が常に設定されるように、次の同期規則が更新されました。
   * AD からの受信 - InetOrgPerson AccountEnabled.xml
   * AD からの受信 - InetOrgPerson Common.xml
   * AD からの受信 - ユーザー AccountEnabled.xml
@@ -649,11 +649,11 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 #### <a name="new-features-and-improvements"></a>新機能と機能強化
 
 * 以前は、[ソース アンカーとしての ms-DS-ConsistencyGuid](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) 機能は、新しいデプロイでのみ使用できました。 現在、この機能は、既存のでデプロイでも使用することができます。 具体的には次のとおりです。
-  * 機能にアクセスするには、Azure AD Connect ウィザードを開始し、" *ソース アンカーの更新* " オプションを選択します。
+  * 機能にアクセスするには、Azure AD Connect ウィザードを開始し、"*ソース アンカーの更新*" オプションを選択します。
   * このオプションは、objectGuid を sourceAnchor 属性として使用している既存のデプロイにのみ表示されます。
   * オプションを構成するとき、オンプレミス Active Directory の ms-DS-ConsistencyGuid 属性の状態がウィザードによって検証されます。 この属性がディレクトリ内のどのユーザー オブジェクトに対しても構成されていない場合は、ms-DS-ConsistencyGuid が sourceAnchor 属性として使用されます。 ディレクトリ内の 1 つ以上のユーザー オブジェクトに対してこの属性が構成済みであった場合は、この属性が他のアプリケーションによって使用されており、sourceAnchor 属性としては適さないため、ソース アンカーの変更を続行できないと判断されます。 この属性が、既存のアプリケーションで使用されていないことが確実である場合は、サポートに連絡してエラーの抑制方法を入手する必要があります。
 
-* デバイス オブジェクトの **userCertificate** 属性に固有の機能として、Azure AD Connect は、Azure AD との同期の前に、 [Windows 10 エクスペリエンスのためにドメイン参加済みデバイスを Azure AD に接続する](../devices/hybrid-azuread-join-plan.md)ときに必要な証明書の値を探して、それ以外の部分を除外できるようになりました。 この動作を有効にするために、既定の同期規則 "AAD への送信 - デバイス結合 SOAInAD" が更新されました。
+* デバイス オブジェクトの **userCertificate** 属性に固有の機能として、Azure AD Connect は、Azure AD との同期の前に、[Windows 10 エクスペリエンスのためにドメイン参加済みデバイスを Azure AD に接続する](../devices/hybrid-azuread-join-plan.md)ときに必要な証明書の値を探して、それ以外の部分を除外できるようになりました。 この動作を有効にするために、既定の同期規則 "AAD への送信 - デバイス結合 SOAInAD" が更新されました。
 
 * Azure AD Connect が、オンプレミス AD **publicDelegates** 属性への Exchange Online **cloudPublicDelegates** 属性のライトバックをサポートするようになりました。 これにより、オンプレミスの Exchange メールボックスを持つユーザーに送信するための SendOnBehalfTo 権限を、Exchange Online メールボックスに付与できるシナリオが有効になります。 この機能をサポートするために、既定の同期規則 "AD への送信 – ユーザー Exchange ハイブリッド PublicDelegates ライトバック" が新しく追加されました。 この同期規則は、Exchange ハイブリッド機能が有効になっている場合にのみ、Azure AD Connect に追加されます。
 
@@ -760,16 +760,16 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 Azure AD Connect Sync
 
 * ユーザーが Set-ADSyncAutoUpgrade コマンドレットを使用して自動アップグレード機能を無効にしたにもかかわらず、Azure AD Connect サーバーで自動アップグレードが実行される問題を修正しました。 この修正の適用後も、サーバー上の自動アップグレード プロセスで引き続きアップグレードが定期的にチェックされますが、ダウンロードされたインストーラーは、自動アップグレードの構成を忠実に守ります。
-* DirSync のインプレース アップグレード中、Azure AD Connect は、Azure AD コネクタが Azure AD との同期に使用する Azure AD サービス アカウントを作成します。 アカウントの作成後、Azure AD Connect は、そのアカウントを使って Azure AD を認証します。 この認証が一時的な問題で失敗することがあり、それが原因で、DirSync のインプレース アップグレードも " *An error has occurred executing Configure AAD Sync task: AADSTS50034: To sign into this application, the account must be added to the xxx.onmicrosoft.com directory. (AAD 同期タスクの構成の実行中にエラーが発生しました:AADSTS50034:このアプリケーションにサインインするには、xxx.onmicrosoft.com ディレクトリにアカウントを追加する必要があります。)* " というエラーが発生して失敗することがあります。 DirSync アップグレードの回復性を高めるために、Azure AD Connect で認証ステップが再試行されるようになりました。
+* DirSync のインプレース アップグレード中、Azure AD Connect は、Azure AD コネクタが Azure AD との同期に使用する Azure AD サービス アカウントを作成します。 アカウントの作成後、Azure AD Connect は、そのアカウントを使って Azure AD を認証します。 この認証が一時的な問題で失敗することがあり、それが原因で、DirSync のインプレース アップグレードも "*An error has occurred executing Configure AAD Sync task: AADSTS50034: To sign into this application, the account must be added to the xxx.onmicrosoft.com directory. (AAD 同期タスクの構成の実行中にエラーが発生しました:AADSTS50034:このアプリケーションにサインインするには、xxx.onmicrosoft.com ディレクトリにアカウントを追加する必要があります。)* " というエラーが発生して失敗することがあります。 DirSync アップグレードの回復性を高めるために、Azure AD Connect で認証ステップが再試行されるようになりました。
 * ビルド 443 では、DirSync のインプレース アップグレードは成功するものの、ディレクトリの同期に必要な実行プロファイルが作成されない問題がありました。 このビルドの Azure AD Connect には、復旧ロジックが追加されています。 ユーザーがこのビルドにアップグレードするときに、不足している実行プロファイルが Azure AD Connect によって検出されて作成されます。
-* パスワード同期処理が、イベント ID 6900 および " *同一のキーを含む項目が既に追加されています* " というエラーで起動に失敗する問題を修正しました。 この問題は、AD 構成パーティションを含めるように OU のフィルタリング構成を更新した場合に発生します。 この問題を修正するため、AD ドメイン パーティションからのパスワード変更のみを同期するようにパスワード同期処理を変更しました。 非ドメイン パーティション (構成パーティションなど) はスキップされます。
+* パスワード同期処理が、イベント ID 6900 および "*同一のキーを含む項目が既に追加されています*" というエラーで起動に失敗する問題を修正しました。 この問題は、AD 構成パーティションを含めるように OU のフィルタリング構成を更新した場合に発生します。 この問題を修正するため、AD ドメイン パーティションからのパスワード変更のみを同期するようにパスワード同期処理を変更しました。 非ドメイン パーティション (構成パーティションなど) はスキップされます。
 * AD コネクタでオンプレミス AD との通信に使用されるオンプレミス AD DS アカウントが、高速インストール中、Azure AD Connect によって作成されます。 以前のバージョンでは、このアカウントが、user-Account-Control 属性の PASSWD_NOTREQD フラグを設定した状態で作成され、アカウントにはランダムなパスワードが設定されます。 新しいバージョンでは、アカウントのパスワードが設定された後、PASSWD_NOTREQD フラグは Azure AD Connect によって明示的に削除されます。
-* オンプレミス AD スキーマに mailNickname 属性が検出されたものの、AD ユーザー オブジェクト クラスにその属性がバインドされていないと、" *a deadlock occurred in sql server which trying to acquire an application lock (アプリケーション ロックの取得を試みるデッドロックが SQL Server で発生しました)* " というエラーが発生して DirSync のアップグレードが失敗する問題を修正しました。
+* オンプレミス AD スキーマに mailNickname 属性が検出されたものの、AD ユーザー オブジェクト クラスにその属性がバインドされていないと、"*a deadlock occurred in sql server which trying to acquire an application lock (アプリケーション ロックの取得を試みるデッドロックが SQL Server で発生しました)* " というエラーが発生して DirSync のアップグレードが失敗する問題を修正しました。
 * 管理者が Azure AD Connect ウィザードを使って Azure AD Connect Sync の構成を更新しているときに、デバイスの書き戻し機能が自動的に無効になる問題を修正しました。 この問題は、デバイスの書き戻し構成が既にオンプレミス AD に存在しているときに、ウィザードによってその前提条件チェックが実行され、失敗することが原因で発生します。 デバイスの書き戻しが既に有効になっている場合は、このチェックをスキップすることで問題を修正しました。
 * OU のフィルタリングは、Azure AD Connect ウィザードを使用するか、または Synchronization Service Manager を使用して構成することができます。 以前のバージョンでは、Azure AD Connect ウィザードを使用して OU のフィルタリングを構成した場合、後で作成した新しい OU がディレクトリ同期の対象に含められます。 新しい OU を含めたくない場合は、Synchronization Service Manager を使って OU のフィルタリングを構成する必要があります。 新しいバージョンでは、同じ動作を Azure AD Connect ウィザードを使って実現できます。
 * Azure AD Connect で必要なストアド プロシージャが、dbo スキーマにではなく、インストールしている管理者のスキーマに作成される問題を修正しました。
 * Azure AD から返される TrackingId 属性が Azure AD Connect Server のイベント ログから抜け落ちる問題を修正しました。 この問題は、Azure AD Connect が Azure AD からリダイレクト メッセージを受信し、指定されたエンドポイントに Azure AD Connect が接続できない場合に発生します。 TrackingId は、トラブルシューティング時に、サービス側のログに関連付ける目的でサポート エンジニアが使用します。
-* Azure AD Connect は、Azure AD から LargeObject エラーを受け取ると、EventID 6941 のイベントと " *提供されたオブジェクトが大きすぎます。このオブジェクト上の属性値の数を調整してください* " というメッセージを生成します。 その際、誤解を招くおそれのある EventID 6900 イベントと、" *Microsoft.Online.Coexistence.ProvisionRetryException:Windows Azure Active Directory サービスと通信できません* " というメッセージも Azure AD Connect から生成されます。 今後は混乱を防ぐために、Azure AD Connect で LargeObject エラーが発生しても、後者のイベントは生成されません。
+* Azure AD Connect は、Azure AD から LargeObject エラーを受け取ると、EventID 6941 のイベントと "*提供されたオブジェクトが大きすぎます。このオブジェクト上の属性値の数を調整してください*" というメッセージを生成します。 その際、誤解を招くおそれのある EventID 6900 イベントと、"*Microsoft.Online.Coexistence.ProvisionRetryException:Windows Azure Active Directory サービスと通信できません*" というメッセージも Azure AD Connect から生成されます。 今後は混乱を防ぐために、Azure AD Connect で LargeObject エラーが発生しても、後者のイベントは生成されません。
 * Generic LDAP コネクタの構成を更新しようとしているときに Synchronization Service Manager が無応答になる問題を修正しました。
 
 **新機能/改善点:**
@@ -1023,7 +1023,7 @@ AD FS の管理
 **新機能:**
 
 * [Automatic upgrade](how-to-connect-install-automatic-upgrade.md) 機能。
-* インストール ウィザードで Azure Multi-Factor Authentication および Privileged Identity Management を使用して全体管理者をサポート。
+* インストール ウィザードで Azure AD Multi-Factor Authentication および Privileged Identity Management を使用して全体管理者をサポート。
   * Multi-Factor Authentication を使用する場合は、 https://secure.aadcdn.microsoftonline-p.com へのトラフィックも許可するように、プロキシを設定する必要があります。
   * Multi-Factor Authentication を正しく動作させるには、信頼済みサイトの一覧に https://secure.aadcdn.microsoftonline-p.com を追加する必要があります。
 * 初期インストール後のユーザーのサインイン方法の変更を許可。

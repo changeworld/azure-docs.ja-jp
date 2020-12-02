@@ -2,13 +2,13 @@
 title: Azure Batch のノードとプール
 description: コンピューティング ノードとプールについて、およびそれらが Azure Batch ワークフローで開発の観点からどのように使用されるかについて説明します。
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 77f3a1c954f5591537436c9ee747052b3a642ec4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 11/20/2020
+ms.openlocfilehash: 880a956a2d839483c59578afad1b62146799578a
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537613"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95243071"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch のノードとプール
 
@@ -40,7 +40,7 @@ Azure Batch プールは、コア Azure コンピューティング プラット
 
 プールは、そのプールを作成した Batch アカウントのみが使用できます。 Batch アカウントは、実行するアプリケーションのリソース要件を満たすために、複数のプールを作成できます。
 
-プールは手動で作成できるほか、実行する操作を指定した場合は Batch サービスによって自動的に作成できます。 プールを作成するときに次の属性を指定できます。
+プールは手動で作成できるほか、実行する操作を指定した場合は [Batch サービスによって自動的に](#autopools)作成できます。 プールを作成するときに次の属性を指定できます。
 
 - [ノードのオペレーティング システムとバージョン](#operating-system-and-version)
 - [ノードの種類とターゲット ノード数](#node-type-and-target)
@@ -184,6 +184,10 @@ Azure Batch ソリューションを設計するときは、いつ、どのよ�
 もう一方の極端な例としては、ジョブをすぐに開始することが最優先事項であるような場合、プールを事前に作成し、ジョブが送信される前にノードを使用可能にしておくという方法があります。 この場合はタスクをすぐに開始できますが、ノードはタスクが割り当てられるまでアイドル状態で待機する可能性があります。
 
 変動の大きい継続的な負荷に対応するために、通常はこれらを組み合わせた方法が採用されます。 複数のジョブが送信されるプールを作成し、ジョブの負荷に応じてノードの数をスケールアップまたはスケールダウンすることができます。 この方法では、現在の負荷に応じて事後的に対応できます。また、負荷を予測できる場合は事前に対応することもできます。 詳細については、「[自動スケーリング ポリシー](#automatic-scaling-policy)」を参照してください。
+
+## <a name="autopools"></a>自動プール
+
+[自動プール](/rest/api/batchservice/job/add#autopoolspecification)は、プールで実行されるジョブの前に作成されるのではなく、ジョブの送信時に Batch サービスによって作成されるプールです。 Batch サービスでは、指定した特性に従って、自動プールの有効期間が管理されます。 ほとんどの場合、これらのプールも、ジョブの完了後に自動的に削除されるように設定されます。
 
 ## <a name="security-with-certificates"></a>証明書によるセキュリティ
 

@@ -1,14 +1,14 @@
 ---
 title: クエリ言語を理解する
 description: Resource Graph テーブルと、Azure Resource Graph で使用可能な Kusto データ型、演算子、関数について説明します。
-ms.date: 10/28/2020
+ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7c3ad55a0f1af623211852c02aabd37560c00bc6
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 34aaaa60ed9d757cc1a63ffaebb2225900cff61f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926089"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966685"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Resource Graph クエリ言語の概要
 
@@ -24,19 +24,19 @@ Azure Resource Graph のクエリ言語では、さまざまな演算子と関�
 
 ## <a name="resource-graph-tables"></a>Resource Graph テーブル
 
-Resource Graph には、Azure Resource Manager のリソースの種類とそのプロパティに関するデータ用のテーブルがいくつか用意されています。 これらのテーブルを `join` または `union` 演算子と共に使用して、関連するリソースの種類からプロパティを取得できます。 Resource Graph で使用できるテーブルの一覧を次に示します。
+Resource Graph には、Azure Resource Manager のリソースの種類とそのプロパティに関するデータ用のテーブルがいくつか用意されています。 一部のテーブルを `join` または `union` 演算子と共に使用して、関連するリソースの種類からプロパティを取得できます。 Resource Graph で使用できるテーブルの一覧を次に示します。
 
-|Resource Graph テーブル |説明 |
+|Resource Graph テーブル |`join` できますか? |説明 |
 |---|---|
-|リソース |クエリ内で何も定義されていない場合の既定のテーブル。 Resource Manager のリソースの種類とプロパティのほとんどはここにあります。 |
-|ResourceContainers |サブスクリプション (プレビュー中 -- `Microsoft.Resources/subscriptions`) とリソース グループ (`Microsoft.Resources/subscriptions/resourcegroups`) のリソースの種類とデータが含まれています。 |
-|AdvisorResources |`Microsoft.Advisor` に " _関連する_ " リソースが含まれています。 |
-|AlertsManagementResources |`Microsoft.AlertsManagement` に " _関連する_ " リソースが含まれています。 |
-|GuestConfigurationResources |`Microsoft.GuestConfiguration` に " _関連する_ " リソースが含まれています。 |
-|MaintenanceResources |`Microsoft.Maintenance` に " _関連する_ " リソースが含まれています。 |
-|PolicyResources |`Microsoft.PolicyInsights` に " _関連する_ " リソースが含まれています。 ( **プレビュー** )|
-|SecurityResources |`Microsoft.Security` に " _関連する_ " リソースが含まれています。 |
-|ServiceHealthResources |`Microsoft.ResourceHealth` に " _関連する_ " リソースが含まれています。 |
+|リソース |Yes |クエリ内で何も定義されていない場合の既定のテーブル。 Resource Manager のリソースの種類とプロパティのほとんどはここにあります。 |
+|ResourceContainers |Yes |サブスクリプション (プレビュー中 -- `Microsoft.Resources/subscriptions`) とリソース グループ (`Microsoft.Resources/subscriptions/resourcegroups`) のリソースの種類とデータが含まれています。 |
+|AdvisorResources |No |`Microsoft.Advisor` に "_関連する_" リソースが含まれています。 |
+|AlertsManagementResources |No |`Microsoft.AlertsManagement` に "_関連する_" リソースが含まれています。 |
+|GuestConfigurationResources |No |`Microsoft.GuestConfiguration` に "_関連する_" リソースが含まれています。 |
+|MaintenanceResources |No |`Microsoft.Maintenance` に "_関連する_" リソースが含まれています。 |
+|PolicyResources |No |`Microsoft.PolicyInsights` に "_関連する_" リソースが含まれています。 (**プレビュー**)|
+|SecurityResources |No |`Microsoft.Security` に "_関連する_" リソースが含まれています。 |
+|ServiceHealthResources |No |`Microsoft.ResourceHealth` に "_関連する_" リソースが含まれています。 |
 
 リソースの種類を含む、完全な一覧については、[リファレンス: サポートされているテーブルとリソースの種類](../reference/supported-tables-resources.md)に関するページを参照してください。
 
@@ -45,7 +45,7 @@ Resource Graph には、Azure Resource Manager のリソースの種類とその
 
 ポータル内の Resource Graph Explorer を使用して、各テーブルで使用できるリソースの種類を確認します。 別の方法として、`<tableName> | distinct type` などのクエリを使用して、指定した Resource Graph テーブルでサポートされている、環境内に存在するリソースの種類の一覧を取得することもできます。
 
-次のクエリは、単純な `join` を示しています。 クエリ結果では、列が結合され、結合されたテーブルの重複する列名 (この例では _ResourceContainers_ ) が **1** と共に追加されます。 _ResourceContainers_ テーブルには、サブスクリプションとリソース グループの両方の種類があります。どちらの種類も、 _resources_  テーブルからリソースへの結合に使用できます。
+次のクエリは、単純な `join` を示しています。 クエリ結果では、列が結合され、結合されたテーブルの重複する列名 (この例では _ResourceContainers_) が **1** と共に追加されます。 _ResourceContainers_ テーブルには、サブスクリプションとリソース グループの両方の種類があります。どちらの種類も、_resources_  テーブルからリソースへの結合に使用できます。
 
 ```kusto
 Resources
@@ -53,7 +53,7 @@ Resources
 | limit 1
 ```
 
-次のクエリは、`join` のより複雑な使用方法を示しています。 このクエリは、結合対象のテーブルをサブスクリプション リソースに制限し、さらに、`project` を使用して、元のフィールドである _subscriptionId_ と、 _SubName_ という名前に変更された _name_ フィールドのみが含まれるように制限しています。 フィールドは _Resources_  に既に存在するため、フィールド名を変更すると、`join` によって _name1_  として追加されなくなります。 元のテーブルは `where` でフィルター処理され、次の `project` には両方のテーブルの列が含まれます。 クエリの結果として、キー コンテナーが 1 つ返されると共に、そのタイプと名前、そしてキー コンテナーが存在するサブスクリプションの名前が表示されます。
+次のクエリは、`join` のより複雑な使用方法を示しています。 このクエリは、結合対象のテーブルをサブスクリプション リソースに制限し、さらに、`project` を使用して、元のフィールドである _subscriptionId_ と、_SubName_ という名前に変更された _name_ フィールドのみが含まれるように制限しています。 フィールドは _Resources_  に既に存在するため、フィールド名を変更すると、`join` によって _name1_  として追加されなくなります。 元のテーブルは `where` でフィルター処理され、次の `project` には両方のテーブルの列が含まれます。 クエリの結果として、キー コンテナーが 1 つ返されると共に、そのタイプと名前、そしてキー コンテナーが存在するサブスクリプションの名前が表示されます。
 
 ```kusto
 Resources
@@ -64,7 +64,7 @@ Resources
 ```
 
 > [!NOTE]
-> `project` を使用して `join` の結果を制限する場合は、2 つのテーブルを関連付けるために `join` によって使用されるプロパティ (上記の例の _subscriptionId_ ) が `project` に含まれている必要があります。
+> `project` を使用して `join` の結果を制限する場合は、2 つのテーブルを関連付けるために `join` によって使用されるプロパティ (上記の例の _subscriptionId_) が `project` に含まれている必要があります。
 
 ## <a name="extended-properties-preview"></a><a name="extended-properties"></a>拡張プロパティ (プレビュー)
 
@@ -125,7 +125,7 @@ Resource Graph では、KQL [データ型](/azure/kusto/query/scalar-data-types/
 |[count](/azure/kusto/query/countoperator) |[カウント キー コンテナー](../samples/starter.md#count-keyvaults) | |
 |[distinct](/azure/kusto/query/distinctoperator) |[特定の別名の個別の値の表示](../samples/starter.md#distinct-alias-values) | |
 |[extend](/azure/kusto/query/extendoperator) |[仮想マシンの数 (OS の種類別)](../samples/starter.md#count-os) | |
-|[join](/azure/kusto/query/joinoperator) |[サブスクリプション名を含むキー コンテナー](../samples/advanced.md#join) |サポートされる結合フレーバー: [innerunique ](/azure/kusto/query/joinoperator#default-join-flavor)、[inner ](/azure/kusto/query/joinoperator#inner-join)、[leftouter ](/azure/kusto/query/joinoperator#left-outer-join)。 1 つのクエリでは `join` が 3 つに制限されます。 ブロードキャスト結合などのカスタム結合方法は使用できません。 1 つのテーブル内、または _Resources_ テーブルと _ResourceContainers_ テーブルの間で使用できます。 |
+|[join](/azure/kusto/query/joinoperator) |[サブスクリプション名を含むキー コンテナー](../samples/advanced.md#join) |サポートされる結合フレーバー: [innerunique ](/azure/kusto/query/joinoperator#default-join-flavor)、[inner ](/azure/kusto/query/joinoperator#inner-join)、[leftouter ](/azure/kusto/query/joinoperator#left-outer-join)。 1 つのクエリでは `join` が 3 つに制限されます。 ブロードキャスト結合などのカスタム結合方法は使用できません。 どのテーブルで `join` を使用できるかについては、「[Resource Graph テーブル](#resource-graph-tables)」を参照してください。 |
 |[limit](/azure/kusto/query/limitoperator) |[パブリック IP アドレスの一覧表示](../samples/starter.md#list-publicip) |`take` のシノニム。 [Skip](./work-with-data.md#skipping-records) と一緒に機能しません。 |
 |[mvexpand](/azure/kusto/query/mvexpandoperator) | | レガシ演算子では、代わりに `mv-expand` を使用します。 _RowLimit_ の最大は 400 です。 既定値は 128 です。 |
 |[mv-expand](/azure/kusto/query/mvexpandoperator) |[特定の書き込み場所を含む Cosmos DB を一覧表示する](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ の最大は 400 です。 既定値は 128 です。 |
@@ -136,7 +136,7 @@ Resource Graph では、KQL [データ型](/azure/kusto/query/scalar-data-types/
 |[summarize](/azure/kusto/query/summarizeoperator) |[Azure リソースの数](../samples/starter.md#count-resources) |簡略化された最初のページのみ |
 |[take](/azure/kusto/query/takeoperator) |[パブリック IP アドレスの一覧表示](../samples/starter.md#list-publicip) |`limit` のシノニム。 [Skip](./work-with-data.md#skipping-records) と一緒に機能しません。 |
 |[top](/azure/kusto/query/topoperator) |[名前とその OS の種類による最初の 5 つの仮想マシンの表示](../samples/starter.md#show-sorted) | |
-|[union](/azure/kusto/query/unionoperator) |[2 つのクエリの結果を結合して 1 つの結果にする](../samples/advanced.md#unionresults) |1 つのテーブルを使用できます: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _Table_. 1 つのクエリでは `union` 分岐が 3 つに制限されます。 `union` 分岐テーブルのあいまい解決は許可されていません。 1 つのテーブル内、または _Resources_ テーブルと _ResourceContainers_ テーブルの間で使用できます。 |
+|[union](/azure/kusto/query/unionoperator) |[2 つのクエリの結果を結合して 1 つの結果にする](../samples/advanced.md#unionresults) |1 つのテーブルを使用できます:_T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _Table_. 1 つのクエリでは `union` 分岐が 3 つに制限されます。 `union` 分岐テーブルのあいまい解決は許可されていません。 1 つのテーブル内、または _Resources_ テーブルと _ResourceContainers_ テーブルの間で使用できます。 |
 |[where](/azure/kusto/query/whereoperator) |[ストレージを含むリソースの表示](../samples/starter.md#show-storage) | |
 
 ## <a name="query-scope"></a>クエリ スコープ

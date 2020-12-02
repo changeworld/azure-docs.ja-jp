@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85e8cb63cd06027754628dcf61aad0ac72b8233b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6fa06133c7793cd5f7d14ba587f9f50b523b0299
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967020"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838759"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Windows Server の AD FS と連携するように Azure Multi-Factor Authentication Server を構成する
 
@@ -25,11 +25,11 @@ Active Directory フェデレーション サービス (AD FS) を使用して�
 この記事では、Azure Multi-Factor Authentication Server と Windows Server 2012 R2 または Windows Server 2016 の AD FS の使用について説明します。 詳細については、「 [Azure Multi-Factor Authentication Server と AD FS 2.0 を使用したクラウドおよびオンプレミスのリソースのセキュリティ保護](howto-mfaserver-adfs-2.md)」を参照してください。
 
 > [!IMPORTANT]
-> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなりました。 サインイン イベント時に多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication (MFA) を使用していただく必要があります。
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなりました。 サインイン イベント時に多要素認証が必要な新しいお客様は、クラウドベースの Azure AD Multi-Factor Authentication (MFA) を使用していただく必要があります。
 >
 > クラウドベースの MFA の使用を開始するには、「[チュートリアル: Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
 >
-> クラウドベースの MFA を使用する場合は、「[Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護](howto-mfa-adfs.md)」を参照してください。
+> クラウドベースの MFA を使用する場合は、[Azure AD Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護](howto-mfa-adfs.md)に関する記事を参照してください。
 >
 > 2019 年 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
 
@@ -164,7 +164,7 @@ MFA Server の AD FS アダプターの問題をトラブルシューティン�
 
 1. MFA Server インターフェイスで AD FS セクションを開き、 **[ログを有効にする]** をオンにします。
 2. 各 AD FS サーバーで、**regedit.exe** を使用して文字列値レジストリ キー `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Positive Networks\PhoneFactor\InstallPath` を作成し、値を `C:\Program Files\Multi-Factor Authentication Server\` (または他の任意のディレクトリ) に設定します。  **末尾の円記号が重要であることに注意してください。**
-3. `C:\Program Files\Multi-Factor Authentication Server\Logs` ディレクトリ (または**手順 2.** で指定した他のディレクトリ内のディレクトリ) を作成します。
+3. `C:\Program Files\Multi-Factor Authentication Server\Logs` ディレクトリ (または **手順 2.** で指定した他のディレクトリ内のディレクトリ) を作成します。
 4. Logs ディレクトリに対する変更アクセス許可を AD FS サービス アカウントに付与します。
 5. AD FS サービスを再起動します。
 6. Logs ディレクトリに `MultiFactorAuthAdfsAdapter.log` ファイルが作成されていることを確認します。

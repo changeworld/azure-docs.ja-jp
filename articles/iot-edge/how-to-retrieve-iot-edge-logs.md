@@ -4,18 +4,18 @@ description: IoT Edge モジュール ログの取得と Azure Blob Storage へ�
 author: v-tcassi
 manager: philmea
 ms.author: v-tcassi
-ms.date: 09/14/2020
+ms.date: 11/12/2020
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 64264028706c1493f687f032a7ec39e69188bd45
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 97cdc4ad0b1d5e7dfb6642fa0163f810be5d7171
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171910"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966923"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>IoT Edge の展開からログを取得する
 
@@ -141,6 +141,14 @@ az iot hub invoke-module-method \
 
 **UploadModuleLogs** ダイレクト メソッドを使用して、指定された Azure Blob Storage コンテナーに要求されたログを送信します。
 
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+> [!NOTE]
+> ゲートウェイ デバイスの背後にあるデバイスからログをアップロードする場合は、[API プロキシと Blob Storage モジュール](how-to-configure-api-proxy-module.md)が最上位層デバイスに構成されている必要があります。 これらのモジュールは、ゲートウェイ デバイスを介して下位層のデバイスからクラウド内のストレージにログをルーティングします。
+
+::: moniker-end
+
 このメソッドは、"sasUrl" キーを追加することで、**GetModuleLogs** に似た JSON ペイロードを受け入れます。
 
 ```json
@@ -260,6 +268,14 @@ Azure portal で、次の情報を含めた sasURL を指定した後に、メ�
 ## <a name="upload-support-bundle-diagnostics"></a>サポート バンドル診断をアップロードする
 
 **UploadSupportBundle** ダイレクト メソッドを使用して、IoT Edge モジュール ログの zip ファイルをバンドルし、使用可能な Azure Blob Storage コンテナーにアップロードします。 このダイレクト メソッドによって、IoT Edge デバイス上で [`iotedge support-bundle`](./troubleshoot.md#gather-debug-information-with-support-bundle-command) コマンドが実行されて、ログが取得されます。
+
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+> [!NOTE]
+> ゲートウェイ デバイスの背後にあるデバイスからログをアップロードする場合は、[API プロキシと Blob Storage モジュール](how-to-configure-api-proxy-module.md)が最上位層デバイスに構成されている必要があります。 これらのモジュールは、ゲートウェイ デバイスを介して下位層のデバイスからクラウド内のストレージにログをルーティングします。
+
+::: moniker-end
 
 このメソッドは、次のスキーマを持つ JSON ペイロードを受け取ります。
 
