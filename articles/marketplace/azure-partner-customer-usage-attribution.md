@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 2c2b7de65e7ac22ebe648ce98633d5ae88818324
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 3728fdd07172f2402ddb1dc7434ddb1993b984b1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628392"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95999877"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>コマーシャル マーケットプレース パートナーと顧客の使用状況の属性
 
@@ -251,11 +251,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>レポート
 
-顧客の使用状況属性のレポートは、パートナー センター ダッシュ ボードで確認できます ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure))。 レポートを表示するには、パートナー センターの資格情報を使用してサインインする必要があります。 レポートまたはサインインに関する問題が発生した場合は、「サポートを受ける」セクションの指示に従ってサポート リクエストを作成します。
-
-[Partner Association Type]\(パートナー関連付けタイプ\) のドロップダウン リストで追跡対象のテンプレートを選択すると、レポートが表示されます。
-
-![顧客の使用状況の属性のレポート](media/marketplace-publishers-guide/customer-usage-attribution-report.png)
+顧客の使用状況属性のレポートは、パートナー センター ダッシュ ボードで確認できます ([https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview](https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview))。 レポートを表示するには、パートナー センターの資格情報を使用してサインインする必要があります。 レポートまたはサインインで問題が発生した場合は、[サポート リクエスト](#get-support)を作成します。
 
 ## <a name="notify-your-customers"></a>顧客に通知する
 

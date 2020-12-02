@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: 5abb509f1753c65554bd74ababe9acca4103c15a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5974388c096c9bc8693c5fc2cf918989c6eadd3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509088"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488733"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>リモート ツールを使用して Azure VM の問題をトラブルシューティングする
 
@@ -180,7 +180,7 @@ Azure Resource Manager VM の場合は、ポータルから実行コマンドを
     Enter-PSSession -ComputerName  "<<CLOUDSERVICENAME.cloudapp.net>>" -port "<<PUBLIC PORT NUMBER>>" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-  * Azure Resource Manager VM の場合は、最初にパブリック IP アドレスに DNS 名を追加します。 詳しい手順については、「[Windows VM 用の Azure Portal での完全修飾ドメイン名の作成](../windows/portal-create-fqdn.md)」を参照してください。 次に、次のコマンドを実行します。
+  * Azure Resource Manager VM の場合は、最初にパブリック IP アドレスに DNS 名を追加します。 詳しい手順については、「[Windows VM 用の Azure Portal での完全修飾ドメイン名の作成](../create-fqdn.md)」を参照してください。 次に、次のコマンドを実行します。
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
@@ -218,7 +218,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
    ![レジストリ エディター](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 
-3. **[選択するオブジェクト名を入力してください]** ボックスに**ホスト名**または**動的 IP** (推奨) を入力して、ターゲット VM を検索します。
+3. **[選択するオブジェクト名を入力してください]** ボックスに **ホスト名** または **動的 IP** (推奨) を入力して、ターゲット VM を検索します。
 
    ![[選択するオブジェクト名を入力してください] ボックス](./media/remote-tools-troubleshoot-azure-vm-issues/input-computer-name.png) 
  

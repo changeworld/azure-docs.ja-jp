@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a6d4e7f4ca7288b36f6801b9ddb362b7e936862d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9dda02e483f3437237837a9b3b8bdcbcf84fcd1d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843623"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489600"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>Service Bus 用の Azure セキュリティ ベースライン
 
@@ -60,7 +60,7 @@ Azure Security Center を使用し、ネットワークの保護に関する推�
 
 **ガイダンス**:Service Bus 名前空間に関連付けられた仮想ネットワーク上で DDoS Protection Standard を有効にして、分散型サービス拒否 (DDoS) 攻撃から保護します。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のインターネット IP アドレスとの通信を拒否します。
 
-- [DDoS 保護を構成する方法](../virtual-network/manage-ddos-protection.md)
+- [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
 - [Azure Security Center の統合された脅威インテリジェンス](../security-center/azure-defender.md)
 
@@ -197,7 +197,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**:異常な動作がないかログを分析および監視し、Service Bus エンティティに関連する結果を定期的に確認します。 Azure Monitor を使用して、ログを確認したり、Service Bus に関連するログ データにクエリを実行したりします。
 
-- [Log Analytics ワークスペースの詳細について](../azure-monitor/log-query/get-started-portal.md)
+- [Log Analytics ワークスペースの詳細について](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
 

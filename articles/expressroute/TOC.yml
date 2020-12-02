@@ -162,6 +162,8 @@
           href: expressroute-howto-coexist-resource-manager.md
         - name: Azure Availability Zones でのゾーン冗長 VNet ゲートウェイの作成
           href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md?toc=%2fazure%2fexpressroute%2ftoc.json
+    - name: コストの計画と管理
+      href: plan-manage-cost.md
     - name: クラシックから Resource Manager への移行
       items:
         - name: 回線をクラシックから Resource Manager に移行する

@@ -342,7 +342,7 @@
 - name: 移行と移動の問題
   items:
     - name: Azure Resource Manager の移行 (ASM から ARM) に関する FAQ
-      href: ../windows/migration-classic-resource-manager-overview.md
+      href: ../migration-classic-resource-manager-overview.md
 - name: 計画メンテナンス
   items:
     - name: 概要

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 09/15/2020
-ms.openlocfilehash: 52cb5ac5423aac0599ba2827667ee670dde286a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01232aa101e2964354acfbeb6cea341a0da33ca6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331660"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489890"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 用カスタマー ロックボックス
 
@@ -64,7 +64,7 @@ Microsoft Azure 用カスタマー ロックボックスには、お客様が顧
 - 仮想マシン スケール セット - Windows と Linux
 
 > [!NOTE]
-> IaaS クラシック インスタンスは、カスタマー ロックボックスではサポートされていません。 IaaS Classic インスタンス上でワークロードを実行している場合は、それらを Classic から Resource Manager デプロイ モデルに移行することをお勧めします。 手順については、「[プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)」を参照してください。
+> IaaS クラシック インスタンスは、カスタマー ロックボックスではサポートされていません。 IaaS Classic インスタンス上でワークロードを実行している場合は、それらを Classic から Resource Manager デプロイ モデルに移行することをお勧めします。 手順については、「[プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](../../virtual-machines/migration-classic-resource-manager-overview.md)」を参照してください。
 
 #### <a name="detailed-audit-logs"></a>詳細な監査ログ
 
@@ -99,7 +99,7 @@ Microsoft Azure 用カスタマー ロックボックスには、お客様が顧
 
     ![Azure カスタマー ロックボックス - メール通知](./media/customer-lockbox-overview/customer-lockbox-email-notification.png)
 
-8. メール通知には、Azure portal の**カスタマー ロックボックス** ブレードへのリンクが記載されます。 指定された承認者は、このリンクを使用し、Azure portal にサインインして、組織がカスタマー ロックボックスについて保留しているすべての要求を表示します。
+8. メール通知には、Azure portal の **カスタマー ロックボックス** ブレードへのリンクが記載されます。 指定された承認者は、このリンクを使用し、Azure portal にサインインして、組織がカスタマー ロックボックスについて保留しているすべての要求を表示します。
 
     ![Azure カスタマー ロックボックス - ランディング ページ](./media/customer-lockbox-overview/customer-lockbox-landing-page.png)
 

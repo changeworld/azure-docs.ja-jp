@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: b5827d60b5968eb9f5e9e0a2ca5ec884366aea3d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: e2be62180907e94401548774b3403db0f36caca3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376971"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488471"
 ---
 VM を単一リージョンに配置すると、インスタンス間の物理的な距離が短縮されます。 また、単一可用性ゾーンに配置した場合も、それらの物理的な位置は近くなります。 ただし、Azure の占有領域が拡大するにつれ、単一可用性ゾーンが複数の物理的なデータ センターにまたがる可能性があるため、ネットワーク待ち時間がアプリケーションに影響を与えることがあります。 
 
@@ -62,11 +62,11 @@ Azure データセンターでのハードウェアの使用停止などの計�
 
     -   CLI を使用する場合は、オプションのパラメーター '--include-colocation-status' を含めることによって、`az ppg show` を使用してコロケーションの状態を取得できます。
 
-- 近接配置グループごとに、**コロケーションの状態**プロパティに、グループ化されたリソースの現在の配置状態の概要が示されます。 
+- 近接配置グループごとに、**コロケーションの状態** プロパティに、グループ化されたリソースの現在の配置状態の概要が示されます。 
 
     - **配置済み**:リソースは近接配置グループの同じ待機時間のエンベロープ内にあります。
 
-    - **不明**: 少なくとも 1 つの VM リソースが割り当て解除されています。 正常に起動されると、状態は**配置済み**に戻ります。
+    - **不明**: 少なくとも 1 つの VM リソースが割り当て解除されています。 正常に起動されると、状態は **配置済み** に戻ります。
 
     - **未配置**: 少なくとも 1 つの VM リソースが近接配置グループに配置されていません。 配置されていない特定のリソースも、メンバーシップ セクションで個別に呼び出されます
 
@@ -82,7 +82,7 @@ Azure データセンターでのハードウェアの使用停止などの計�
 デプロイの制約によって割り当てエラーが発生した場合は、最初に、影響を受ける近接配置グループ内のすべてのリソース (配置済みのリソースを含む) を停止して割り当てを解除してから、再起動して配置を復元することが必要になる場合があります。
 
 ## <a name="best-practices"></a>ベスト プラクティス 
-- 最も短い待ち時間を実現するには、近接通信配置グループを高速ネットワークと共に使用します。 詳細については、「[高速ネットワークを使った Linux 仮想マシンの作成](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」または「[高速ネットワークを使った Windows 仮想マシンの作成](/azure/virtual-network/create-vm-accelerated-networking-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+- 最も短い待ち時間を実現するには、近接通信配置グループを高速ネットワークと共に使用します。 詳細については、「[高速ネットワークを使った Linux 仮想マシンの作成](../articles/virtual-network/create-vm-accelerated-networking-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」または「[高速ネットワークを使った Windows 仮想マシンの作成](../articles/virtual-network/create-vm-accelerated-networking-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 - すべての VM サイズを 1 つのテンプレートでデプロイします。 必要な VM SKU とサイズの一部がサポートされていないハードウェアに配置されることを回避するには、すべてのアプリケーション層を 1 つのテンプレートに含めて、すべてが同時にデプロイされるようにします。
 - PowerShell、CLI、または SDK を使用してデプロイのスクリプトを作成している場合は、割り当てエラー `OverconstrainedAllocationRequest` が表示されることがあります。 この場合は、既存のすべての VM を停止して割り当てを解除し、デプロイ スクリプト内のシーケンスを、失敗した VM SKU/サイズで始まるように変更する必要があります。 
 - VM が削除された既存の配置グループを再利用する場合は、その削除が完全に完了するまで待ってから VM を追加してください。

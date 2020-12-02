@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 06/19/2020
-ms.openlocfilehash: 304e1ab475213bde2644c8241905408ade5672ed
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 193e7bd78046a1d73cb55171c15c9cb6a7278297
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489966"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490042"
 ---
 # <a name="what-is-a-test-drive"></a>体験版とは
 
@@ -24,7 +24,7 @@ ms.locfileid: "94489966"
 
 体験版は、ソリューションまたはアプリケーションを要求するお客様に対し、オンデマンドでデプロイするマネージド インスタンスです。 体験版インスタンスが割り当てられると、そのお客様は、一定の期間中使用できるようになります。 期間が終了すると、別のお客様用のスペースを作成するために削除されます。
 
-発行者は、パートナー センターで体験版の設定を管理および構成します。 技術的な構成の詳細は、オファーの種類によって異なります。 詳細なガイダンスについては、「[体験版の技術的な構成](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration)」を参照してください。
+発行者は、パートナー センターで体験版の設定を管理および構成します。 技術的な構成の詳細は、オファーの種類によって異なります。 詳細なガイダンスについては、「[体験版の技術的な構成](./test-drive-technical-configuration.md)」を参照してください。
 
 お客様は、[AppSource](https://appsource.microsoft.com/en-US/) でオファーの CTA として体験版をご利用いただけます。 連絡先情報を入力し、オファーの使用条件とプライバシー ポリシーに同意してから、事前に構成された環境へのアクセスを取得して、一定期間、それを試すことができます。 顧客は、製品の主要な機能と利点に関するセルフガイドによる実践的な試用版を受け取り、発行者は貴重な潜在顧客を得ることができます。
 
@@ -43,7 +43,7 @@ ms.locfileid: "94489966"
 - ロジック アプリ (サポート モードのみ)
 - Power BI
 
-これらのいずれかの体験版を構成する方法の詳細については、「[体験版の技術的な構成](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration)」を参照してください。 
+これらのいずれかの体験版を構成する方法の詳細については、「[体験版の技術的な構成](./test-drive-technical-configuration.md)」を参照してください。 
 
 ### <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager の体験版
 
@@ -65,7 +65,7 @@ ms.locfileid: "94489966"
 
 ### <a name="logic-app-test-drive"></a>ロジック アプリの体験版
 
-この種類の体験版は、Microsoft によってホストされていないため、Dynamics AX/CRM オファーの種類には Azure Resource Manager (ARM) テンプレートを使用します。 ARM テンプレートを実行して、Azure サブスクリプションで必要なリソースを作成する必要があります。 ロジック アプリの体験版は、現在サポート モードになっており、Microsoft では推奨されていません。ロジック アプリの体験版を構成する方法の詳細については、「[体験版の技術的な構成](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration)」を参照してください。
+この種類の体験版は、Microsoft によってホストされていないため、Dynamics AX/CRM オファーの種類には Azure Resource Manager (ARM) テンプレートを使用します。 ARM テンプレートを実行して、Azure サブスクリプションで必要なリソースを作成する必要があります。 ロジック アプリの体験版は、現在サポート モードになっており、Microsoft では推奨されていません。ロジック アプリの体験版を構成する方法の詳細については、「[体験版の技術的な構成](./test-drive-technical-configuration.md)」を参照してください。
 
 ### <a name="power-bi-test-drive"></a>Power BI の体験版
 

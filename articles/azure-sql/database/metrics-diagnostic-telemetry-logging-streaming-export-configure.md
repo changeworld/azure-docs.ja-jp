@@ -9,14 +9,14 @@ ms.devlang: sqldbrb=2
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 04/06/2020
-ms.openlocfilehash: b1e1de694b6333a350d034b08225aeea117ae703
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 999bb83af6937d4a7b3d7ee8207e2fd689a23d35
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790476"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490822"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Azure SQL Database および SQL Managed Instance 診断テレメトリのストリーミング エクスポートを構成する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -63,9 +63,9 @@ Intelligent Insights ログのエクスポートをストリーミングする�
 
   [Azure Event Hub](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) にストリーミングされるデータは、次の機能を提供します。
 
-  - **サード パーティ製のロギングおよびテレメトリ ストリームにログをストリーミングする** :すべてのメトリックとリソース ログを 1 つのイベント ハブにストリーミングして、ログ データをサード パーティの SIEM またはログ分析ツールにパイプします。
-  - **カスタムのテレメトリおよびログ プラットフォームを構築する** :高い拡張性の公開サブスクライブを特長とするイベント ハブを使用することで、メトリックとリソース ログをカスタム テレメトリ プラットフォームに柔軟に取り込むことができます。 詳細については、「[Azure Event Hubs でのグローバル スケール テレメトリ プラットフォームの設計とサイズ変更](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)」を参照してください。
-  - **データを Power BI にストリーミングしてサービスの正常性を表示する** :Event Hubs、Stream Analytics、Power BI を使用して、診断データを Azure サービスの近リアルタイム洞察に転換します。 このソリューションの詳細については、「[Stream Analytics と Power BI:ストリーミング データのリアルタイム分析ダッシュボード](../../stream-analytics/stream-analytics-power-bi-dashboard.md)」を参照してください。
+  - **サード パーティ製のロギングおよびテレメトリ ストリームにログをストリーミングする**:すべてのメトリックとリソース ログを 1 つのイベント ハブにストリーミングして、ログ データをサード パーティの SIEM またはログ分析ツールにパイプします。
+  - **カスタムのテレメトリおよびログ プラットフォームを構築する**:高い拡張性の公開サブスクライブを特長とするイベント ハブを使用することで、メトリックとリソース ログをカスタム テレメトリ プラットフォームに柔軟に取り込むことができます。 詳細については、「[Azure Event Hubs でのグローバル スケール テレメトリ プラットフォームの設計とサイズ変更](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)」を参照してください。
+  - **データを Power BI にストリーミングしてサービスの正常性を表示する**:Event Hubs、Stream Analytics、Power BI を使用して、診断データを Azure サービスの近リアルタイム洞察に転換します。 このソリューションの詳細については、「[Stream Analytics と Power BI:ストリーミング データのリアルタイム分析ダッシュボード](../../stream-analytics/stream-analytics-power-bi-dashboard.md)」を参照してください。
 - **[Azure Storage](#stream-into-azure-storage)** :
 
   [Azure Storage](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) にストリーミングされたデータを使用すると、前述の 2 つのストリーミング オプションの何分の 1 かのわずかなコストで、膨大な量の診断テレメトリをアーカイブできます。
@@ -124,7 +124,7 @@ Azure portal で診断テレメトリのストリーミング エクスポート
 4. 独自の参照の設定名を入力します。
 5. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]** 、 **[イベント ハブへのストリーム]** 、または **[Log Analytics への送信]** から選択します。
 6. Log Analytics の場合は、 **[構成]** を選択し、 **[+ 新しいワークスペースの作成]** を選択することによって新しいワークスペースを作成するか、または既存のワークスペースを選択します。
-7. エラスティック プール診断テレメトリの基本メトリックのチェック ボックスをオンにします。 **基本** メトリック。
+7. エラスティック プール診断テレメトリの基本メトリックのチェック ボックスをオンにします。**基本** メトリック。
    ![エラスティック プールに対して診断を構成する](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-elasticpool-selection.png)
 
 8. **[保存]** を選択します。

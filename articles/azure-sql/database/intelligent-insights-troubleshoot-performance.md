@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: troubleshooting
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 4837b905f4e65b5513f1dbf693af9815b5696a4a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c42db1445c939069f334d04ea26d54cdb843c336
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782962"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488835"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Azure SQL Database と Azure SQL Managed Instance のパフォーマンスに関する問題を Intelligent Insights でトラブルシューティングする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -210,7 +210,7 @@ Azure SQL Database では、[Query Performance Insight](query-performance-insigh
 
 この検出可能なパフォーマンス パターンは、過去 7 日間のワークロード ベースラインと比較してパフォーマンスの低いクエリが検出された場合の、ワークロードのパフォーマンスの低下を表します。
 
-この場合、システムは他の検出可能な標準パフォーマンス カテゴリの低パフォーマンス クエリを分類することはできませんが、回帰の原因である待機の統計を検出しました。 したがって、それらを " *待機の増加の統計* " のクエリと見なし、回帰の原因である特殊な待機統計も公開されます。
+この場合、システムは他の検出可能な標準パフォーマンス カテゴリの低パフォーマンス クエリを分類することはできませんが、回帰の原因である待機の統計を検出しました。 したがって、それらを "*待機の増加の統計*" のクエリと見なし、回帰の原因である特殊な待機統計も公開されます。
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
@@ -256,7 +256,7 @@ DTU を最も多く消費するデータベースで、現在のワークロー�
 
 データベース エンジンでは、クエリ実行コストが最も低いクエリ実行プランが決定されます。 クエリの種類とワークロードが変更されると、既存のプランが効率的ではなくなったり、データベース エンジンで最適な評価が行われなかったりする場合があります。 修正については、クエリの実行プランは手動で適用できます。
 
-この検出可能なパフォーマンス パターンでは、プラン回帰の 3 つの異なるケース (新しいプランへの回帰、前のプランへの回帰、ワークロードが変更された既存のプランへの回帰) が組み合わされています。 発生した具体的なプラン回帰の種類は、診断ログの " *詳細* " プロパティで提供されます。
+この検出可能なパフォーマンス パターンでは、プラン回帰の 3 つの異なるケース (新しいプランへの回帰、前のプランへの回帰、ワークロードが変更された既存のプランへの回帰) が組み合わされています。 発生した具体的なプラン回帰の種類は、診断ログの "*詳細*" プロパティで提供されます。
 
 新しいプランへの回帰の状態は、前のプランほど効率的ではない、新しいクエリ実行プランの実行がデータベース エンジンで開始されている状態を表します。 前のプランへの回帰の状態は、データベース エンジンで、新しくより効率的なプランから、新しいプランほど効率的ではない前のプランの使用に切り替わった状態を表します。 ワークロードが変更された既存のプランへの回帰は、前のプランと新しいプランが継続的に交互に行われつつ、パフォーマンスの低いプランへの比重が高まっている状態を表します。
 
