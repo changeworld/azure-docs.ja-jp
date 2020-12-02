@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d03b8f13a016dc21e37b82f66abc8050ef17d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77ecc23e2969ce4ce26eef7b9a3a485389d08ce0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266784"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837109"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -57,7 +57,7 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 
 ### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices"></a>Q:Windows 10 デバイスに "Your organization has deleted the device (組織がデバイスを削除しました)" または "Your organization has disabled the device (組織がデバイスを無効にしました)" というエラー メッセージが表示されるのはなぜですか?
 
-**A:** Azure AD に参加または登録した Windows 10 デバイスで、シングル サインオンを有効にする[プライマリ更新トークン (PRT)](concept-primary-refresh-token.md) がユーザーに発行されます。 PRT の有効性は、デバイス自体の有効性に基づきます。 デバイス自体からアクションを開始せずに、Azure AD でデバイスが削除または無効にされている場合に、このメッセージがユーザーに表示されます。 デバイスは、次のいずれかのシナリオで Azure AD で削除または無効にすることができます。 
+**A:** Azure AD に参加または登録した Windows 10 デバイスで、シングル サインオンを有効にする [プライマリ更新トークン (PRT)](concept-primary-refresh-token.md) がユーザーに発行されます。 PRT の有効性は、デバイス自体の有効性に基づきます。 デバイス自体からアクションを開始せずに、Azure AD でデバイスが削除または無効にされている場合に、このメッセージがユーザーに表示されます。 デバイスは、次のいずれかのシナリオで Azure AD で削除または無効にすることができます。 
 
 - ユーザーが、マイ アプリ ポータルからデバイスを無効にする。 
 - 管理者 (またはユーザー) が、Azure portal で、または PowerShell を使用して、デバイスを削除または無効化する
@@ -198,7 +198,7 @@ Windows 10 2004 更新プログラムでは、UPN の変更がサポートされ
 
 ---
 
-### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>Q:一部のユーザーに、Azure AD 参加済みデバイスで Azure Multi-Factor Authentication のプロンプトが表示されないのはなぜですか?
+### <a name="q-why-dont-some-of-my-users-get-azure-ad-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>Q:一部のユーザーに、Azure AD 参加済みデバイスで Azure AD Multi-Factor Authentication のプロンプトが表示されないのはなぜですか?
 
 **A:** ユーザーが Multi-Factor Authentication を使用してデバイスを Azure AD に参加または登録している可能性があります。 それにより、デバイス自体がそのユーザーにとっての信頼された 2 つ目の要素になります。 同じユーザーがデバイスにサインインしてアプリケーションにアクセスするときは常に、Azure AD はデバイスを 2 つ目の要素と見なします。 これによりそのユーザーは、Multi-Factor Authentication の追加のプロンプトが表示されることなく、アプリケーションにシームレスにアクセスできます。 
 

@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2020
 ms.author: blehr
-ms.custom: references_regions
-ms.openlocfilehash: a1bd303390626eaea71e588e325fedbd2d8fa4b9
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.custom: references_regions , devx-track-azurecli
+ms.openlocfilehash: 0c248149694c2bf66b8c94e9c0a29a8f7da9f4e4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353358"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843742"
 ---
 # <a name="upgrade-public-ip-addresses"></a>パブリック IP アドレスのアップグレード
 
@@ -148,24 +148,14 @@ azure network reserved-ip commit-migration $name
 
 ## <a name="limitations"></a>制限事項
 
-* この機能は現在、次のリージョンでのみご利用いただけます。<br>
-米国中西部<br>
-米国中北部<br>
-米国西部<br>
-米国西部 2<br>
-ノルウェー東部<br>
-南アフリカ北部<br>
-米国東部<br>
-北ヨーロッパ<br>
-韓国中部<br>
-インド中部<br>
-米国東部 2<br>
-スイス北部<br>
-インド西部<br>
-ドイツ北部<br>
-カナダ中部<br>
-フランス南部<br>
-インド西部
+* この機能は、現在、次のリージョンではご利用いただけません。<br>
+US Gov バージニア州<br>
+US DoD East<br>
+US DoD Central<br>
+中国東部<br>
+中国東部 2<br>
+中国北部<br>
+中国北部 2
 
 * Basic パブリック IP をアップグレードする場合、その IP を Azure リソースに関連付けることはできません。  パブリック IP の関連付けを解除する方法の詳細については、[このページ](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address)をご覧ください。  同様に、予約済み IP を移行する場合、その IP をクラウド サービスに関連付けることはできません。  予約済み IP の関連付けを解除する方法の詳細については、[このページ](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm)をご覧ください。  
 * Basic SKU から Standard SKU にアップグレードされたパブリック IP は、引き続き[可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones)を使用できないため、ゾーン冗長またはゾーン ベースの Azure リソースに関連付けることはできません。  これは、可用性ゾーンを提供するリージョンにのみ適用されます。

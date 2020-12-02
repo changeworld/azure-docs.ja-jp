@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: how-to, contperfq1, devx-track-python, data4ml
-ms.openlocfilehash: 30ece529b141f3a50191c532d85265d8e9555b34
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3c8e18a3a216240a624b3b14f5e2e397d6c06012
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538599"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961330"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Azure のストレージ サービスに接続する
 
@@ -180,7 +180,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 Azure Data Lake Storage Generation 2 (ADLS Gen 2) データストアの場合、[register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) を使用して、[サービス プリンシパルのアクセス許可](../active-directory/develop/howto-create-service-principal-portal.md)を持つ Azure Data Lake Gen 2 ストレージに接続されている資格情報データストアを登録します。  
 
-サービス プリンシパルを利用するには、[アプリケーションを登録](../active-directory/develop/app-objects-and-service-principals.md)し、ロールベースのアクセス制御 (Azure RBAC) またはアクセス制御リスト (ACL) を使用してデータ アクセスをサービス プリンシパルに付与する必要があります。 詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](../storage/blobs/data-lake-storage-access-control-model.md)」をご覧ください。 
+サービス プリンシパルを利用するには、[アプリケーションを登録](../active-directory/develop/app-objects-and-service-principals.md)し、Azure ロールベースのアクセス制御 (Azure RBAC) またはアクセス制御リスト (ACL) を使用してデータ アクセスをサービス プリンシパルに付与する必要があります。 詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](../storage/blobs/data-lake-storage-access-control-model.md)」をご覧ください。 
 
 次のコードでは、データストア `adlsgen2_datastore_name` を作成し、ワークスペース `ws` に登録しています。 このデータストアは、指定されたサービス プリンシパルの資格情報を使用して、`account_name` ストレージ アカウントのファイル システム `test` にアクセスします。 仮想ネットワークのシナリオに関するガイダンスや、必要な認証資格情報を検索する場所については、「[ストレージへのアクセスとアクセス許可](#storage-access-and-permissions)」のセクションを参照してください。 
 

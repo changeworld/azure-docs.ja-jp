@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 315dfcb10b11278401d6cc0abd42b40b5f55f72a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6efcadf85816bb6aa014893bb9b20476a0701990
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968363"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886755"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>オンプレミスの Azure AD パスワード保護環境を監視してログを確認する
 
@@ -70,11 +70,15 @@ DC エージェント管理ログは、ソフトウェアの動作に関する�
 |失敗 (顧客のパスワード ポリシーのため)| 10016、30002| 10017、30003|
 |失敗 (Microsoft のパスワード ポリシーのため)| 10016、30004| 10017、30005|
 |失敗 (Microsoft と顧客のパスワード ポリシーの組み合わせのため)| 10016、30026| 10017、30027|
+|失敗 (ユーザー名による)| 10016、30021| 10017、30022|
 |監査のみの合格 (顧客のパスワード ポリシーに失敗)| 10024、30008| 10025、30007|
 |監査のみの合格 (Microsoft のパスワード ポリシーに失敗)| 10024、30010| 10025、30009|
 |監査のみの合格 (Microsoft と顧客のパスワード ポリシーの組み合わせに失敗)| 10024、30028| 10025、30029|
+|監査のみの合格 (ユーザー名のために失敗)| 10016、30024| 10017、30023|
 
 上の表のケースで "ポリシーの組み合わせ" となっているのは、Microsoft 禁止パスワード リストと顧客禁止パスワード リストの両方から少なくとも 1 つのトークンが、ユーザーのパスワードに含まれることが検出された状況を指します。
+
+上の表のケースで "ユーザー名" に言及しているものは、ユーザーのアカウント名またはユーザーのフレンドリ名のいずれか、あるいはその両方が含まれているユーザーのパスワードが見つかった状況を示しています。 どちらのシナリオでも、ポリシーが [強制] に設定されている場合はユーザーのパスワードが拒否され、ポリシーが監査モードの場合は合格となります。
 
 イベントのペアが一緒に記録されるときは、同じ CorrelationId によって両方のイベントが明示的に関連付けられます。
 

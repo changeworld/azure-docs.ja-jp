@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: c85624d9eced3130a1c7b99943095688beee62bd
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: ff197f8add65782a594d64661ffecdaced4598c2
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93417590"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919626"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>Azure Database for MySQL - 単一サーバーの計画メンテナンス通知
 
@@ -78,7 +78,7 @@ Azure portal で計画メンテナンス通知を確認するか、通知を受�
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure Database for MySQL についての質問や提案は、Azure Database for MySQL チーム ( *AskAzureDBforMySQL@service.microsoft.com* ) にメールでお送りください。
+- Azure Database for MySQL についての質問や提案は、Azure Database for MySQL チーム (AskAzureDBforMySQL@service.microsoft.com) にメールでお送りください
 - メトリックに対するアラートの作成のガイダンスについては、[アラートを設定する方法](howto-alert-on-metric.md)に関するページをご覧ください。
 - [Azure Database for MySQL - 単一サーバーへの接続に関する問題のトラブルシューティング](howto-troubleshoot-common-connection-issues.md)
 - [一時的なエラーを処理して Azure Database for MySQL - 単一サーバーに効率的に接続する](concepts-connectivity.md)

@@ -8,22 +8,20 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 233ba17e1ae1b554eff092151ad9f05fd660beb3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d73ad3235e5ff2c9dbf0cca546308469ef6b5ac0
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970012"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887041"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細
 
 > [!IMPORTANT]
 > 現在、IaaS VM の約 90% で [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) が使用されています。 2020 年 2 月 28 日の時点で、クラシック VM は非推奨とされており、2023 年 3 月 1 日に完全に廃止されます。 この非推奨について[詳細]( https://aka.ms/classicvmretirement)および[それが与える影響](./classic-vm-deprecation.md#how-does-this-affect-me)について確認してください。
 
-Azure クラシック デプロイ モデルから、Azure Resource Manager デプロイ モデルへの移行を詳しく見ていきましょう。 Azure Platform 上の 2 つのデプロイメント モデルの間で、どのようにリソースが移行されるかを理解できるように、リソースと機能レベルでリソースについて説明していきます。 詳細については、次のサービス告知記事を参照してください。
+Azure クラシック デプロイ モデルから、Azure Resource Manager デプロイ モデルへの移行を詳しく見ていきましょう。 Azure Platform 上の 2 つのデプロイメント モデルの間で、どのようにリソースが移行されるかを理解できるように、リソースと機能レベルでリソースについて説明していきます。 詳細については、次のサービス告知記事を参照してください。「[プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](migration-classic-resource-manager-overview.md)」。
 
-* Linux の場合:「[プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](./linux/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」。
-* Windows の場合:「[プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](./windows/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」。
 
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>クラシック デプロイ モデルから Azure Resource Manager への IaaS リソースの移行
 最初に、サービスとしてのインフラストラクチャ (IaaS) リソースにおけるデータ プレーン操作と管理プレーン操作の違いについて理解することが重要です。
@@ -33,7 +31,7 @@ Azure クラシック デプロイ モデルから、Azure Resource Manager デ�
 
 クラシック デプロイ モデル スタックと Resource Manager スタックとで、データ プレーンに違いはありません。 両者の違いは、移行プロセス時にクラシック デプロイ モデルのリソースが Resource Manager スタックにおける表現に自動で変換される点にあります。 したがって、Resource Manager スタックのリソースは、新しいツール、API、SDK を使って管理する必要があります。
 
-![管理/コントロール プレーンとデータ プレーンの違いを示す図](media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
+![管理/コントロール プレーンとデータ プレーンの違いを示す図](./media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
 
 
 > [!NOTE]
@@ -48,11 +46,11 @@ Azure クラシック デプロイ モデルから、Azure Resource Manager デ�
 * 移行中に発生する可能性のある予期しないエラーに備え、営業時間外での移行を計画します。
 * 準備手順の完了後に検証しやすいように、PowerShell、コマンド ライン インターフェイス (CLI) コマンド、または REST API を使用して、VM の現在の構成をダウンロードします。
 * 移行を開始する前に、Resource Manager デプロイ モデルを処理する自動化スクリプトと運用化スクリプトを更新します。 必要に応じて、リソースの準備ができた状態で GET 操作を実行できます。
-* クラシック デプロイ モデルの IaaS リソースで構成されているロールベースのアクセス制御 (RBAC) ポリシーを評価し、移行が完了したら計画します。
+* クラシック デプロイ モデルの IaaS リソースで構成されている Azure ロールベースのアクセス制御 (Azure RBAC) ポリシーを評価し、移行が完了したら計画します。
 
 移行のワークフローを次に示します。
 
-![移行のワークフローを示す図](windows/media/migration-classic-resource-manager/migration-workflow.png)
+![移行のワークフローを示す図](./media/migration-classic-resource-manager/migration-workflow.png)
 
 > [!NOTE]
 > 以降のセクションで説明する操作はすべてべき等です。 サポートされていない機能や構成エラー以外の問題が発生した場合、準備、中止、またはコミットの操作を再試行してください。 Azure でもう一度アクションが試行されます。
@@ -98,13 +96,13 @@ Azure クラシック デプロイ モデルから、Azure Resource Manager デ�
 
 次の 2 つのスクリーンショットには、準備操作が正常に終了した後の結果が表示されています。 最初のスクリーンショットには、元のクラウド サービスを含むリソース グループが表示されています。 2 番目のスクリーンショットには、"-Migrated" の付いた新しいリソース グループが表示されています。ここには、同じ Azure Resource Manager リソースが含まれています。
 
-![元のクラウド サービスを示すスクリーンショット](windows/media/migration-classic-resource-manager/portal-classic.png)
+![元のクラウド サービスを示すスクリーンショット](./media/migration-classic-resource-manager/portal-classic.png)
 
-![準備操作時の Azure Resource Manager リソースを示すスクリーンショット](windows/media/migration-classic-resource-manager/portal-arm.png)
+![準備操作時の Azure Resource Manager リソースを示すスクリーンショット](./media/migration-classic-resource-manager/portal-arm.png)
 
 ここで、準備フェーズ完了後のリソースを概観しておきましょう。 データ プレーンのリソースは同じであることに注意してください。 管理プレーン (クラシック デプロイ モデル) とコントロール プレーン (Resource Manager) の両方で表されています。
 
-![準備フェーズの図](windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
+![準備フェーズの図](./media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
 
 > [!NOTE]
 > クラシック デプロイ モデルの仮想ネットワーク内にない VM は、この移行フェーズで "停止済みかつ割り当て解除済み" になります。
@@ -124,7 +122,7 @@ Azure クラシック デプロイ モデルから、Azure Resource Manager デ�
 ### <a name="abort"></a>中止
 この手順は省略可能です。クラシック デプロイ モデルに対する変更を元に戻し、移行を中止したい場合に使用します。 リソースの (準備手順で作成された) Resource Manager メタデータは、この操作で削除されます。 
 
-![中止手順の図](windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
+![中止手順の図](media/migration-classic-resource-manager/behind-the-scenes-abort.png)
 
 
 > [!NOTE]
@@ -139,13 +137,13 @@ Azure クラシック デプロイ モデルから、Azure Resource Manager デ�
 >
 >
 
-![コミット手順の図](windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
+![コミット手順の図](media/migration-classic-resource-manager/behind-the-scenes-commit.png)
 
 ## <a name="migration-flowchart"></a>移行フローチャート
 
 次のフローチャートで移行の流れを示します。
 
-![Screenshot that shows the migration steps](windows/media/migration-classic-resource-manager/migration-flow.png)
+![Screenshot that shows the migration steps](media/migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>クラシック デプロイ モデル リソースから Resource Manager リソースへの変換
 次の表では、リソースはクラシック デプロイ モデルと Resource Manager で呼称が異なる場合があります。 その他の機能とリソースは現在サポートされていません。
@@ -183,24 +181,12 @@ Azure クラシック デプロイ モデルから、Azure Resource Manager デ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Linux の場合:
-
-* [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](./linux/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [クラシックから Azure Resource Manager への IaaS リソースの移行計画](./linux/migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](./windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](./linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [クラシックから Azure Resource Manager への IaaS リソースの移行を支援するコミュニティ ツール](./windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Review most common migration errors](./linux/migration-classic-resource-manager-errors.md?toc=/azure/virtual-machines/linux/toc.json) (移行の一般的なエラーを確認する)
-* [クラシックから Azure Resource Manager への IaaS リソースの移行に関してよく寄せられる質問を確認する](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-Windows の場合:
-
-* [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](./windows/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [クラシックから Azure Resource Manager への IaaS リソースの移行計画](./windows/migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](./windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](./linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](migration-classic-resource-manager-overview.md)
+* [クラシックから Azure Resource Manager への IaaS リソースの移行計画](migration-classic-resource-manager-plan.md)
+* [PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](migration-classic-resource-manager-ps.md)
+* [CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](migration-classic-resource-manager-cli.md)
 * [VPN Gateway クラシックから Resource Manager への移行](../vpn-gateway/vpn-gateway-classic-resource-manager-migration.md)
 * [クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線および関連する仮想ネットワークの移行](../expressroute/expressroute-migration-classic-resource-manager.md)
-* [クラシックから Azure Resource Manager への IaaS リソースの移行を支援するコミュニティ ツール](./windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Review most common migration errors](./windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (移行の一般的なエラーを確認する)
-* [クラシックから Azure Resource Manager への IaaS リソースの移行に関してよく寄せられる質問を確認する](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [クラシックから Azure Resource Manager への IaaS リソースの移行を支援するコミュニティ ツール](migration-classic-resource-manager-community-tools.md)
+* [Review most common migration errors](migration-classic-resource-manager-errors.md) (移行の一般的なエラーを確認する)
+* [クラシックから Azure Resource Manager への IaaS リソースの移行に関してよく寄せられる質問を確認する](migration-classic-resource-manager-faq.md)

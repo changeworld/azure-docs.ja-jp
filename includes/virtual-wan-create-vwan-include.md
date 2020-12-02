@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 07/09/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 62d466e81309765540bcbd52714733b97d241ebc
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 5915830e4521399ad322dd4a6f3926428d811455
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93354133"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94942642"
 ---
-ブラウザーから Azure portal に移動し、Azure アカウントでサインインします。
+ブラウザーから [Azure ポータル](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
 
-1. [仮想 WAN] ページに移動します。 ポータルで **+ [リソースの作成]** をクリックします。 検索ボックスに「**Virtual WAN**」と入力し、**Enter** キーを押します。
+1. ポータルで **[+ リソースの作成]** を選択します。 検索ボックスに「**Virtual WAN**」と入力し、**Enter** キーを押します。
 1. 結果から **[Virtual WAN]** を選択します。 [Virtual WAN] (仮想 WAN) ページで、 **[作成]** を選択して [WAN の作成] ページを開きます。
 1. **[WAN の作成]** ページの **[基本]** タブで、次のフィールドに入力します。
 

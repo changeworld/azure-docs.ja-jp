@@ -10,10 +10,10 @@ ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: b70beb90fae794eb5512cb8b466524169c4c7b53
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 11/29/2020
 ms.locfileid: "92792992"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Azure ストレージ アカウントを別のリージョンに移動する
@@ -103,7 +103,7 @@ Azure portal を使用してテンプレートをデプロイするには:
 
 1. Azure Portal で、 **[リソースの作成]** を選択します。
 
-2. **[Marketplace を検索]** で「 **template deployment** 」と入力し、 **Enter** キーを押します。
+2. **[Marketplace を検索]** で「**template deployment**」と入力し、**Enter** キーを押します。
 
 3. **[テンプレートのデプロイ]** を選択します。
 
@@ -137,7 +137,7 @@ Azure portal を使用してテンプレートをデプロイするには:
          "location": "centralus"
          }]          
     ```
-    リージョンの場所コードを取得するには、「[Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)」を参照してください。  リージョンのコードは、スペースを含まないリージョン名です ( **Central US** = **centralus** )。
+    リージョンの場所コードを取得するには、「[Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)」を参照してください。  リージョンのコードは、スペースを含まないリージョン名です (**Central US** = **centralus**)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -186,7 +186,7 @@ PowerShell を使用してテンプレートをデプロイするには:
 
 2. プロパティ値を入力または選択します。
 
-- **サブスクリプション** :Azure サブスクリプションを選択します。
+- **サブスクリプション**:Azure サブスクリプションを選択します。
 
 - **[リソース グループ]** : **[新規作成]** を選択して、リソース グループに名前を付けます。
 

@@ -3,12 +3,12 @@ title: Azure Service Bus トピック フィルター | Microsoft Docs
 description: この記事では、どのメッセージをトピックから受信するかを、フィルターを指定することによってサブスクライバーが定義する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 5df343ff63c01a7cf10315b758e3d6fba8ac5674
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04ae585c42f8acfbf338bf23befb32a5521fcf57
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88066748"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94889033"
 ---
 # <a name="topic-filters-and-actions"></a>トピック フィルターとアクション
 
@@ -18,7 +18,7 @@ ms.locfileid: "88066748"
 
 Service Bus は、次の 3 つのフィルター条件をサポートします。
 
--   *ブール値フィルター* - **すべての着信メッセージがサブスクリプションに選択される (**true**) TrueFilter** 、あるいは受信メッセージのいずれもサブスクリプションに選択されない (**false**) **FalseFilter** のいずれか。
+-   *ブール値フィルター* - **すべての着信メッセージがサブスクリプションに選択される (**true**) TrueFilter** 、あるいは受信メッセージのいずれもサブスクリプションに選択されない (**false**) **FalseFilter** のいずれか。 これら 2 つのフィルターは、SQL フィルターから派生します。 
 
 -   *SQL フィルター* - **SqlFilter** には、受信メッセージのユーザー定義のプロパティとシステム プロパティに対して、ブローカーで評価される、SQL に似た条件式が入っています。 すべてのシステム プロパティの条件式にはプレフィックスとして `sys.` を付ける必要があります。 [フィルター条件の SQL 言語のサブセット](service-bus-messaging-sql-filter.md)は、プロパティ (`EXISTS`) や null 値 (`IS NULL`) の存在のテスト、論理 NOT/AND/OR、関係演算子、単純な数値を使った算術演算、および `LIKE` による単純なテキスト パターン マッチングを実行します。
 
@@ -52,6 +52,75 @@ SQL フィルター条件を使用すると、プロパティとその値を追�
 パーティション分割では、フィルターを使用して、予測可能で相互に排他的な方法で複数の既存のトピック サブスクリプションにメッセージを配布します。 パーティション分割のパターンは、それぞれが、たとえば顧客プロファイル情報のようなデータ全体の中のサブセットをそれぞれが保持する、機能的には同一のコンパートメントにある多数の異なるコンテキストを処理するために、システムを拡張する場合に使用されます。 パーティション分割では、発行元は、パーティション分割モデルの知識がなくても、トピックにメッセージを送信できます。 メッセージは、正しいサブスクリプションに移動され、パーティションのメッセージ ハンドラーはそこからメッセージを取得できます。
 
 ルーティングでは、フィルターを使用して、予測可能な方法で複数のトピック サブスクリプションにメッセージを配布しますが、必ずしも排他的ではありません。 トピック フィルターは、[自動転送](service-bus-auto-forwarding.md)機能と組み合わせると、Azure リージョン内にメッセージを配布するための Service Bus 名前空間内での複雑なルーティング グラフの作成に使用することができます。 Azure Functions または Azure Logic Apps を Azure Service Bus 名前空間の間の仲介役として機能させることで、基幹業務アプリケーションに直接統合された複雑なグローバル トポロジを作成できます。
+
+## <a name="examples"></a>例
+
+### <a name="set-rule-action-for-a-sql-filter"></a>SQL フィルターのルール アクションの設定
+
+```csharp
+// instantiate the ManagementClient
+this.mgmtClient = new ManagementClient(connectionString);
+
+// create the SQL filter
+var sqlFilter = new SqlFilter("source = @stringParam");
+
+// assign value for the parameter
+sqlFilter.Parameters.Add("@stringParam", "orders");
+
+// instantiate the Rule = Filter + Action
+var filterActionRule = new RuleDescription
+{
+    Name = "filterActionRule",
+    Filter = sqlFilter,
+    Action = new SqlRuleAction("SET source='routedOrders'")
+};
+
+// create the rule on Service Bus
+await this.mgmtClient.CreateRuleAsync(topicName, subscriptionName, filterActionRule);
+```
+
+### <a name="sql-filter-on-a-system-property"></a>システム プロパティでの SQL フィルター
+
+```csharp
+sys.Label LIKE '%bus%'`
+```
+
+### <a name="using-or"></a>OR の使用 
+
+```csharp
+sys.Label LIKE '%bus%' OR user.tag IN ('queue', 'topic', 'subscription')
+```
+
+### <a name="using-in-and-not-in"></a>IN と NOT IN の使用
+
+```csharp
+StoreId IN('Store1', 'Store2', 'Store3')"
+
+sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
+
+sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8')
+```
+
+これらのフィルターを使用した C# のサンプルについては、[GitHub のトピック フィルターのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters)を参照してください。
+
+### <a name="correlation-filter-using-correlationid"></a>CorrelationID を使用した相関関係フィルター
+
+```csharp
+new CorrelationFilter("Contoso");
+```
+
+`CorrelationID` が `Contoso` に設定されたメッセージをフィルター処理します。 
+
+### <a name="correlation-filter-using-system-and-user-properties"></a>システムおよびユーザーのプロパティを使用した相関関係フィルター
+
+```csharp
+var filter = new CorrelationFilter();
+filter.Label = "Important";
+filter.ReplyTo = "johndoe@contoso.com";
+filter.Properties["color"] = "Red";
+```
+
+これは `sys.ReplyTo = 'johndoe@contoso.com' AND sys.Label = 'Important' AND color = 'Red'` と同等です。
 
 
 > [!NOTE]

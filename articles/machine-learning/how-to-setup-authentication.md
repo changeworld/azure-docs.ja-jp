@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
-ms.openlocfilehash: adc0547e36e9cf996a87c2683b4830541b8cd360
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 7fa6beacf4456145e312494a72dad321dfef3754
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442108"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843929"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning のリソースとワークフローの認証を設定する
 
@@ -154,7 +154,7 @@ SP を作成し、ワークスペースへのアクセス権を付与する最�
 ## <a name="use-interactive-authentication"></a>対話型認証の使用
 
 > [!IMPORTANT]
-> 対話型認証では、ブラウザーが使用され、Cookie (サードパーティの Cookie を含む) が必要です。 Cookie を無効にしている場合は、"サインインできませんでした" などのエラーを受け取る場合があります。 このエラーは、[Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) を有効にしている場合にも発生する場合があります。
+> 対話型認証では、ブラウザーが使用され、Cookie (サードパーティの Cookie を含む) が必要です。 Cookie を無効にしている場合は、"サインインできませんでした" などのエラーを受け取る場合があります。 このエラーは、[Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) を有効にしている場合にも発生する場合があります。
 
 ドキュメントとサンプルのほとんどの例では、対話型認証が使用されています。 たとえば、SDK を使用する場合は、UI ベースの認証フローを使用して自動的に入力を求める関数呼び出しが 2 つあります。
 

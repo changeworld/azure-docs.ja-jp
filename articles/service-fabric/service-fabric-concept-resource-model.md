@@ -4,12 +4,12 @@ description: この記事では、Azure Resource Manager を使用した Azure S
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 3968fde0222dcee8047e7490dba78879ab6110e2
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 886b7d6b40bebf6234064b0627017db1d8cfe31f
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681688"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888829"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric アプリケーション リソース モデル
 
@@ -91,6 +91,7 @@ Resource Manager テンプレートからアプリケーションをデプロイ
 >
 >
 
+
 | パラメーター              | 説明                                 | 例                                                      | 説明                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | デプロイ先クラスターの名前 | sf-cluster123                                                |                                                              |
@@ -137,6 +138,11 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 ```
 
 ## <a name="upgrade-the-service-fabric-application-by-using-resource-manager"></a>Resource Manager を使用した Service Fabric アプリケーションのアップグレード
+
+
+> [!IMPORTANT]
+> ARM JSON 定義を使用してデプロイされているサービスはすべて、対応する ApplicationManifest.xml ファイルの DefaultServices セクションから削除する必要があります。
+
 
 次のいずれかの理由により、Service Fabric クラスターに既にデプロイされているアプリケーションをアップグレードする場合があります。
 

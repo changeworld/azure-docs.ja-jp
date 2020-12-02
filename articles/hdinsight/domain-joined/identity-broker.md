@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: df4faf367951402914abb03285498e0da6f3105f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9a2bda0a526c307ae17d8415f6f24423ddf51b63
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337678"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917768"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID ブローカー (HIB)
 
@@ -31,8 +31,8 @@ HDInsight ID ブローカーにより、パスワード ハッシュを Azure AD
 
 |認証オプション |HDInsight 構成 | 検討するべき要素 |
 |---|---|---|
-| OAuth のみ | Enterprise セキュリティ パッケージ + HDInsight ID ブローカー | 最も安全なオプションです。 (多要素認証がサポートされています)。パス ハッシュ同期は必要では " *ありません* "。 Azure AD DS でのパスワード ハッシュを使用しないオンプレミス アカウントでは ssh/kinit/keytab アクセスはできません。 クラウド専用アカウントでは、引き続き ssh/kinit/keytab 接続することができます。 OAuth による Ambari への Web ベースのアクセス。 OAuth をサポートするために、レガシ アプリ (JDBC/ODBC など) を更新する必要があります。|
-| OAuth と基本認証 | Enterprise セキュリティ パッケージ + HDInsight ID ブローカー | OAuth による Ambari への Web ベースのアクセス。 レガシ アプリでは、基本認証が引き続き使用されます。基本認証アクセスでは、多要素認証を無効にする必要があります。 パス ハッシュ同期は必要では " *ありません* "。 Azure AD DS でのパスワード ハッシュを使用しないオンプレミス アカウントでは ssh/kinit/keytab アクセスはできません。 クラウド専用アカウントでは、引き続き ssh/kinit 接続することができます。 |
+| OAuth のみ | Enterprise セキュリティ パッケージ + HDInsight ID ブローカー | 最も安全なオプションです。 (多要素認証がサポートされています)。パス ハッシュ同期は必要では "*ありません*"。 Azure AD DS でのパスワード ハッシュを使用しないオンプレミス アカウントでは ssh/kinit/keytab アクセスはできません。 クラウド専用アカウントでは、引き続き ssh/kinit/keytab 接続することができます。 OAuth による Ambari への Web ベースのアクセス。 OAuth をサポートするために、レガシ アプリ (JDBC/ODBC など) を更新する必要があります。|
+| OAuth と基本認証 | Enterprise セキュリティ パッケージ + HDInsight ID ブローカー | OAuth による Ambari への Web ベースのアクセス。 レガシ アプリでは、基本認証が引き続き使用されます。基本認証アクセスでは、多要素認証を無効にする必要があります。 パス ハッシュ同期は必要では "*ありません*"。 Azure AD DS でのパスワード ハッシュを使用しないオンプレミス アカウントでは ssh/kinit/keytab アクセスはできません。 クラウド専用アカウントでは、引き続き ssh/kinit 接続することができます。 |
 | 基本認証のみ | Enterprise セキュリティ パッケージ | オンプレミスのセットアップに最も似ています。 Azure AD DS へのパスワード ハッシュ同期が必要です。 オンプレミスのアカウントでは、ssh/kinit 接続することも、keytab を使用することもできます。 バッキング ストレージが Azure Data Lake Storage Gen2 である場合は、多要素認証を無効にする必要があります。 |
 
 次の図は、HDInsight ID ブローカーが有効になった後の、フェデレーション ユーザーを含むすべてのユーザーの、最新の OAuth ベースの認証フローを示しています。
@@ -137,6 +137,25 @@ curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application
 ``` 
 
 Beeline と Livy を使用する場合は、[こちら](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/HIB/HIBSamples)で提供されているサンプル コードに従い、OAuth を使用してクラスターに接続するようにクライアントをセットアップすることもできます。
+
+## <a name="faq"></a>よく寄せられる質問
+### <a name="what-app-is-created-by-hdinsight-in-aad"></a>AAD では HDInsight によってどのようなアプリが作成されますか?
+クラスターごとに、サード パーティのアプリケーションが、identifierUri (https://clustername.azurehdinsight.net など) としてクラスター URI と共に AAD に登録されます。
+
+### <a name="why-are-users-prompted-for-consent-before-using-hib-enabled-clusters"></a>HIB 対応クラスターを使用する前にユーザーに同意を求めるのはなぜですか?
+AAD では、ユーザーを認証したり、データにアクセスしたりする前に、すべてのサード パーティのアプリケーションに同意を求めます。
+
+### <a name="can-the-consent-be-approved-programatically"></a>同意はプログラムによって承認できますか?
+Microsoft Graph API を使用すると、同意を自動化できます。[API のドキュメント](https://docs.microsoft.com/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0)を参照してください。同意を自動化する順序は、以下のとおりです。
+
+* アプリを登録し、Microsoft Graph にアクセスするための Application.ReadWrite.All アクセス許可をそのアプリに付与します
+* クラスターが作成されたら、識別子 URI に基づいてクラスター アプリを照会します
+* アプリの同意を登録します
+
+クラスターが削除されると、HDInsight はアプリを削除します。同意をクリーンアップする必要はありません。
+
+ 
+
 
 ## <a name="next-steps"></a>次のステップ
 

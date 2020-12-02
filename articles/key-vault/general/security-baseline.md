@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1abbabd3c231a70ca473c4b64e9a8c75d2119c89
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 7d116010d5e6fea5e1ba8a66431b874194506283
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445525"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843453"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Key Vault 用の Azure セキュリティ ベースライン
 
@@ -382,7 +382,7 @@ https://docs.microsoft.com/azure/key-vault/service-to-service-authentication
 
 **ガイダンス**: Azure Active Directory Multi-Factor Authentication を有効にし、イベント ハブ対応リソースを保護するための Azure Security Center ID とアクセス管理 (現在はプレビュー段階) の推奨事項に従います。
 
-クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画:
+クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
@@ -397,11 +397,11 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
 
-**ガイダンス**: Azure Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Key Vault 対応リソースを構成します。 
+**ガイダンス**:Azure AD Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Key Vault 対応リソースを構成します。 
 
 特権アクセス ワークステーション: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
 
-クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/12/2020
+ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: e67b507baf1c3271a7fe32318597722e52fd3890
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de41bd030ea73ac68bfac5fbfbd03ae14cf7980f
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891376"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874238"
 ---
 # <a name="certificate-requirements"></a>証明書の要件
 
@@ -30,12 +30,13 @@ ms.locfileid: "90891376"
 * 証明書の *Issued to:* フィールドは、ルート CA 証明書を除き、*Issued by:* フィールドと同じにしないでください。
 
 
-
 ## <a name="certificate-algorithms"></a>証明書アルゴリズム
 
 証明書アルゴリズムには次の要件が必要です。
 
 * 証明書では、RSA キー アルゴリズムを使用する必要があります。
+
+* Microsoft RSA/Schannel Cryptographic Provider を使用した RSA 証明書のみがサポートされます。
 
 * 証明書の署名アルゴリズムを SHA1 にすることはできません。
 
@@ -74,13 +75,15 @@ Azure Stack Edge Pro デバイスにインストールされている PFX 証明
 
 * 証明書の PFX 暗号化は、3 DES になっている必要があります。 これは、Windows 10 クライアントまたは Windows Server 2016 証明書ストアからエクスポートするときに使用される既定の暗号化です。 3DES に関する詳細については、[トリプル DES](https://en.wikipedia.org/wiki/Triple_DES) を参照してください。
 
-* 証明書 PFX ファイルの *Key Usage* フィールドには、*Digital Signature* と *KeyEncipherment* の値が含まれている必要があります。
+* 証明書 PFX ファイルの *Key Usage* フィールドには、*Digital Signature* と *KeyEncipherment* の有効な値が含まれている必要があります。
 
 * 証明書の PFX ファイルの *Enhanced Key Usage* フィールドには、*Server Authentication (1.3.6.1.5.5.7.3.1)* と *Client Authentication (1.3.6.1.5.5.7.3.2)* の値が含まれている必要があります。
 
 * Azure Stack 適合性チェッカー ツールを使用している場合、デプロイの時点で、すべての証明書 PFX ファイルのパスワードが同じである必要があります。 詳細については、「[Microsoft Azure Stack Hub 適合性チェッカー ツールを使用して Azure Stack Edge Pro の証明書を作成する](azure-stack-edge-j-series-create-certificates-tool.md)」を参照してください。
 
 * 証明書 PFX のパスワードは、複雑なパスワードにする必要があります。 このパスワードはデプロイ パラメーターとして使用するため、メモしておいてください。
+
+* Microsoft RSA/Schannel Cryptographic Provider を使用した RSA 証明書のみを使用してください。
 
 詳細については、[秘密キーを使用した PFX 証明書のエクスポート](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)に関するセクションを参照してください。
 

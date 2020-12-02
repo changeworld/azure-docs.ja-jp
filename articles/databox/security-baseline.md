@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 36d3fdbe05a4fac63415e34aea879a9ef576b725
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 6c2a15ac8d0863539ca878a048940b19794e920d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127099"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842909"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Azure Data Box 用の Azure セキュリティ ベースライン
 
@@ -271,11 +271,11 @@ Azure Data Box 用の Azure セキュリティ ベースラインには、ご自
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
 
-**ガイダンス**: Azure Multi-Factor Authentication (MFA) 対応の特権アクセス ワークステーション (PAW) を使用して、ログインし、Azure Data Box の注文を構成します。
+**ガイダンス**:Azure AD Multi-Factor Authentication (MFA) 対応の特権アクセス ワークステーション (PAW) を使用して、ログインし、Azure Data Box の注文を構成します。
 
 * [Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations) (Privileged Access Workstation)
 
-* [クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
+* [クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 

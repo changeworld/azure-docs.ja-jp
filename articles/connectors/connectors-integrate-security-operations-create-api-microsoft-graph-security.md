@@ -3,18 +3,18 @@ title: セキュリティ操作の統合と管理と Microsoft Graph Security
 description: Microsoft Graph Security と Azure Logic Apps を使用して、アプリの脅威の防止、検出、および対応を強化します
 services: logic-apps
 ms.suite: integration
-author: preetikr
+author: ecfan
 ms.author: preetikr
 ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 0f121caddc6b629920479a34bef7b284dea117a4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a83cd68df2f1d722517d6239bf6959075860d0b8
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677500"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888540"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>セキュリティ操作を Microsoft Graph Security および Azure Logic Apps と統合することで脅威の防止能力を強化する
 
@@ -30,13 +30,13 @@ ms.locfileid: "92677500"
 
 ロジック アプリのワークフローでは、Microsoft Graph Security コネクタから応答を取得するアクションを使用して、その出力をワークフローの他のアクションで使用できるようにすることができます。 Microsoft Graph Security コネクタのアクションからの出力を、ワークフローの他のアクションで使用することもできます。 たとえば、Microsoft Graph Security コネクタを通して重大度が高いアラートを取得したら、これらのアラートを Outlook コネクタを使用して電子メール メッセージで送信できます。 
 
-Microsoft Graph Security の詳細については、「[Microsoft Graph Security API の概要](/graph/security-concept-overview)」を参照してください。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。 Microsoft Flow または PowerApps については、[Flow の概要](https://flow.microsoft.com/)または [PowerApps の概要](https://powerapps.microsoft.com/)に関するページを参照してください。
+Microsoft Graph Security の詳細については、「[Microsoft Graph Security API の概要](/graph/security-concept-overview)」を参照してください。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。 Power Automate または PowerApps について詳しい情報をお探しの場合は、[Power Automate](https://flow.microsoft.com/) または [Power Apps](https://powerapps.microsoft.com/) のサイトをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 
 
-* Microsoft Graph Security コネクタを使用するには、Azure Active Directory (AD) テナント管理者によって " *明示的に与えられた* " 同意が必要です。これは [Microsoft Graph Security の認証要件](/graph/security-authorization)の一部です。 この同意には、Microsoft Graph Security コネクタのアプリケーション ID と名前が必要です。これらは [Azure portal](https://portal.azure.com) でも見つけることができます。
+* Microsoft Graph Security コネクタを使用するには、Azure Active Directory (AD) テナント管理者によって "*明示的に与えられた*" 同意が必要です。これは [Microsoft Graph Security の認証要件](/graph/security-authorization)の一部です。 この同意には、Microsoft Graph Security コネクタのアプリケーション ID と名前が必要です。これらは [Azure portal](https://portal.azure.com) でも見つけることができます。
 
   | プロパティ | 値 |
   |----------|-------|
@@ -96,7 +96,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
    | **間隔** | `interval` | はい | Integer | ワークフローの実行間隔を、[頻度] に指定された単位に基づいて表す正の整数。 間隔の最小値と最大値は次のとおりです。 <p><p>- Month: 1 から 16 か月 <br>- Day: 1 から 500 日 <br>- Hour: 1 から 12,000 時間 <br>- Minute: 1 から 72,000 分 <br>- Second: 1 から 9,999,999 秒 <p>たとえば間隔が 6 で、頻度が "月" である場合は、繰り返しは 6 か月ごとになります。 |
    | **頻度** | `frequency` | はい | String | 繰り返しの時間の単位: **[秒]** 、 **[分]** 、 **[時間]** 、 **[日]** 、 **[週]** 、または **[月]** |
    | **タイム ゾーン** | `timeZone` | いいえ | String | 開始時刻を指定したときに限り適用されます。このトリガーに [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を指定することはできないためです。 適用するタイム ゾーンを選択してください。 |
-   | **[開始時刻]** | `startTime` | いいえ | String | 開始日時を次の形式で指定します。 <p><p>YYYY-MM-DDThh:mm:ss (タイム ゾーンを選択した場合) <p>または <p>YYYY-MM-DDThh:mm:ssZ (タイム ゾーンを選択しなかった場合) <p>たとえば、2017 年 9 月 18 日午後 2:00 にする場合は、"2017-09-18T14:00:00" と指定し、太平洋標準時などのタイム ゾーンを選択します。 または、タイム ゾーンなしで「2017-09-18T14:00:00Z」と指定します。 <p>**注:** この開始時刻には、最大で 49 年先の時刻を指定できます。また、 [UTC の日付と時刻の形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (ただし、 [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除く) で [日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従っている必要があります。 タイム ゾーンを選択しない場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 <p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 " [*開始日時の使用方法を具体的に教えてください*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)" |
+   | **[開始時刻]** | `startTime` | いいえ | String | 開始日時を次の形式で指定します。 <p><p>YYYY-MM-DDThh:mm:ss (タイム ゾーンを選択した場合) <p>または <p>YYYY-MM-DDThh:mm:ssZ (タイム ゾーンを選択しなかった場合) <p>たとえば、2017 年 9 月 18 日午後 2:00 にする場合は、"2017-09-18T14:00:00" と指定し、太平洋標準時などのタイム ゾーンを選択します。 または、タイム ゾーンなしで「2017-09-18T14:00:00Z」と指定します。 <p>**注:** この開始時刻には、最大で 49 年先の時刻を指定できます。また、[UTC の日付と時刻の形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (ただし、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除く) で [日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従っている必要があります。 タイム ゾーンを選択しない場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 <p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 "[*開始日時の使用方法を具体的に教えてください*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)" |
    ||||||
 
 1.  操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
@@ -109,7 +109,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 ### <a name="manage-alerts"></a>Manage alerts
 
-フィルター処理、並べ替え、または最新の結果の取得を行うには、 [Microsoft Graph でサポートされている ODATA クエリ パラメーター](/graph/query-parameters) " *だけ* " を指定します。 完全なベース URL または HTTP アクション (`https://graph.microsoft.com/v1.0/security/alerts`、`GET` 操作、`PATCH` 操作など) は " *指定しないでください* "。 重大度が高いアラートの一覧を取得する場合の **アラートの取得** アクションのパラメーターの例は次のとおりです。
+フィルター処理、並べ替え、または最新の結果の取得を行うには、[Microsoft Graph でサポートされている ODATA クエリ パラメーター](/graph/query-parameters) "*だけ*" を指定します。 完全なベース URL または HTTP アクション (`https://graph.microsoft.com/v1.0/security/alerts`、`GET` 操作、`PATCH` 操作など) は "*指定しないでください*"。 重大度が高いアラートの一覧を取得する場合の **アラートの取得** アクションのパラメーターの例は次のとおりです。
 
 `Filter alerts value as Severity eq 'high'`
 
@@ -124,7 +124,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 ### <a name="manage-alert-subscriptions"></a>アラート サブスクリプションを管理する
 
-Microsoft Graph では、" [*サブスクリプション*](/graph/api/resources/subscription)" ( [*Webhook*](/graph/api/resources/webhooks)) がサポートされています。 サブスクリプションを取得、更新、または削除するには、[Microsoft Graph でサポートされている ODATA クエリ パラメーター](/graph/query-parameters)を Microsoft Graph エンティティ コンストラクトに指定し、`security/alerts` と ODATA クエリを含めます。 ベース URL (`https://graph.microsoft.com/v1.0` など) は " *含めないでください* "。 代わりに、次の例の形式を使用してください。
+Microsoft Graph では、"[*サブスクリプション*](/graph/api/resources/subscription)" ([*Webhook*](/graph/api/resources/webhooks)) がサポートされています。 サブスクリプションを取得、更新、または削除するには、[Microsoft Graph でサポートされている ODATA クエリ パラメーター](/graph/query-parameters)を Microsoft Graph エンティティ コンストラクトに指定し、`security/alerts` と ODATA クエリを含めます。 ベース URL (`https://graph.microsoft.com/v1.0` など) は "*含めないでください*"。 代わりに、次の例の形式を使用してください。
 
 `security/alerts?$filter=status eq 'NewAlert'`
 
@@ -138,7 +138,7 @@ Microsoft Graph では、" [*サブスクリプション*](/graph/api/resources/
 
 ### <a name="manage-threat-intelligence-indicators"></a>脅威インテリジェンス インジケーターを管理する
 
-フィルター処理、並べ替え、または最新の結果の取得を行うには、 [Microsoft Graph でサポートされている ODATA クエリ パラメーター](/graph/query-parameters) " *だけ* " を指定します。 完全なベース URL または HTTP アクション (`https://graph.microsoft.com/beta/security/tiIndicators`、`GET` 操作、`PATCH` 操作など) は " *指定しないでください* "。 脅威の種類が `DDoS` であるインジケーターの一覧を取得する場合の **脅威インテリジェンス インジケーターの取得** アクションのパラメーターの具体例を次に示します。
+フィルター処理、並べ替え、または最新の結果の取得を行うには、[Microsoft Graph でサポートされている ODATA クエリ パラメーター](/graph/query-parameters) "*だけ*" を指定します。 完全なベース URL または HTTP アクション (`https://graph.microsoft.com/beta/security/tiIndicators`、`GET` 操作、`PATCH` 操作など) は "*指定しないでください*"。 脅威の種類が `DDoS` であるインジケーターの一覧を取得する場合の **脅威インテリジェンス インジケーターの取得** アクションのパラメーターの具体例を次に示します。
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 

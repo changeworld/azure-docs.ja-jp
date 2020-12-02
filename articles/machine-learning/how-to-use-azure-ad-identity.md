@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7b76c81a78bfd3eb57a54f1d23ba1b154b09b3e6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: bcf5f75cf5cabe42f530a6a179c2cafd43b5520d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660153"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952541"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Azure Kubernetes Service の Machine Learning Web サービスで Azure AD ID を使用する
 
@@ -32,13 +32,13 @@ ms.locfileid: "94660153"
 
 ## <a name="create-and-install-an-azure-identity"></a>Azure ID を作成してインストールする
 
-1. ご自分の AKS クラスターで RBAC が有効かどうかを調べるには、次のコマンドを使用します。
+1. ご自分の AKS クラスターで Kubernetes RBAC が有効かどうかを調べるには、次のコマンドを使用します。
 
     ```azurecli-interactive
     az aks show --name <AKS cluster name> --resource-group <resource group name> --subscription <subscription id> --query enableRbac
     ```
 
-    このコマンドは、RBAC が有効になっている場合に `true` の値を返します。 この値により、次の手順で使用するコマンドが決まります。
+    このコマンドは、Kubernetes RBAC が有効になっている場合に `true` の値を返します。 この値により、次の手順で使用するコマンドが決まります。
 
 1. [Azure AD ポッド ID](https://azure.github.io/aad-pod-identity/docs/getting-started/installation/) を AKS クラスターにインストールします。
 

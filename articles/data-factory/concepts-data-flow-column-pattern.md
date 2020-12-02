@@ -6,24 +6,24 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/16/2020
-ms.openlocfilehash: dab065f4d2b025fa15966d81b66b41acb12c54b3
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 11/17/2020
+ms.openlocfilehash: 68c211608cfceedaa9d13a595be6d1e5de17f1d5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027135"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845008"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>マッピング データ フロー内の列パターンを使用する
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-複数のマッピング データ フローの変換によって、ハードコーディングされた列名ではなく、パターンに基づいてテンプレート列を参照できるようになります。 このマッチングは、" *列パターン* " と呼ばれます。 正確なフィールド名を必要とするのではなく、パターンを定義して名前、データ、型、ストリーム、発生元、位置に基づいて列を照合できます。 列パターンが役立つシナリオが 2 つあります。
+複数のマッピング データ フローの変換によって、ハードコーディングされた列名ではなく、パターンに基づいてテンプレート列を参照できるようになります。 このマッチングは、"*列パターン*" と呼ばれます。 正確なフィールド名を必要とするのではなく、パターンを定義して名前、データ、型、ストリーム、発生元、位置に基づいて列を照合できます。 列パターンが役立つシナリオが 2 つあります。
 
 * 受信ソース フィールドが頻繁に変更される場合。テキスト ファイルや NoSQL データベースの列が変更されるケースなどです。 このシナリオは、[スキーマの誤差](concepts-data-flow-schema-drift.md)と呼ばれます。
 * 大規模な列グループに対して共通の操作を実行したい場合。 列名に ' total ' が含まれているすべての列を double 型にキャストするなどです。
 
-列パターンは現在、派生列、集計、選択、およびシンクの変換に使用できます。
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4Iui1]
 
 ## <a name="column-patterns-in-derived-column-and-aggregate"></a>派生列および集計の列パターン
 
@@ -42,6 +42,12 @@ ms.locfileid: "93027135"
 一致条件が正しいことを確認するには、 **[検査]** タブ内にある定義列の出力スキーマを検証するか、または **[データのプレビュー]** タブ内にあるデータのスナップショットを取得できます。 
 
 ![スクリーンショットには、[出力スキーマ] タブが示されています。](media/data-flow/columnpattern3.png "列パターン")
+
+### <a name="hierarchical-pattern-matching"></a>階層型のパターン マッチング
+
+複雑な階層構造内でも、パターン マッチングを作成できます。 セクション `Each MoviesStruct that matches` を展開すると、データ ストリーム内の各階層の内容が表示されます。 その後、選択した階層内のプロパティに関するマッチング パターンを作成できます。
+
+![スクリーンショットは、階層型の列パターンを示しています。](media/data-flow/patterns-hierarchy.png "階層内の列パターン")
 
 ## <a name="rule-based-mapping-in-select-and-sink"></a>選択とシンクにおけるルールベースのマッピング
 
@@ -77,7 +83,7 @@ ms.locfileid: "93027135"
 
 ## <a name="pattern-matching-expression-values"></a>パターン マッチングの式の値。
 
-* `$$` は、実行時に各一致の名前または値に変換されます。
+* `$$` は、実行時に各一致の名前または値に変換されます。 `$$` は `this` と同等と見なされます。
 * `name` は、受信した各列の名前を表します
 * `type` は、受信した各列のデータ型を表します
 * `stream` は、フロー内の各ストリームまたは変換に関連付けられた名前を表します

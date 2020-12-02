@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 06a2a5bbe637cd2366dbdf218c0278cd683635df
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c2679be2ca1db9017cbc37219402fa4e1c0666a5
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130036"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874425"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースの SaaS Fulfillment API バージョン 2
 
@@ -28,7 +28,7 @@ SaaS サブスクリプションの状態と適用可能なアクションを示
 
 ![Marketplace での SaaS サブスクリプションのライフサイクル](./media/saas-subscription-lifecycle-api-v2.png)
 
-#### <a name="purchased-but-not-yet-activated-pendingfulfillmentstart"></a>購入済みであるが、まだアクティブ化されていない ( *PendingFulfillmentStart* )
+#### <a name="purchased-but-not-yet-activated-pendingfulfillmentstart"></a>購入済みであるが、まだアクティブ化されていない (*PendingFulfillmentStart*)
 
 エンド カスタマー (または CSP) がマーケットプレースで SaaS オファーを購入した後、発行者に購入が通知されます。これにより、発行者側でエンド カスタマー用に新しい SaaS アカウントが作成され、構成されます。
 
@@ -44,7 +44,7 @@ SaaS サブスクリプションの状態と適用可能なアクションを示
 
 ランディング ページの URL は、24 時間 365 日稼働し、いつでも Microsoft からの新しい呼び出しを受け取る準備ができている必要があります。 ランディング ページが使用できなくなった場合、お客様は SaaS サービスにサインアップして使用を開始することができません。
 
-次に、`x-ms-marketplace-token header` ヘッダー パラメーターの値として [SaaS Resolve API](#resolve-a-purchased-subscription) を呼び出すことによって、発行者から Microsoft に " *トークン* " を返す必要があります。  Resolve API 呼び出しの結果として、購入の一意の ID、購入されたオファーの ID、購入されたプランの ID などの SaaS 購入の詳細を表すトークンが交換されます。
+次に、`x-ms-marketplace-token header` ヘッダー パラメーターの値として [SaaS Resolve API](#resolve-a-purchased-subscription) を呼び出すことによって、発行者から Microsoft に "*トークン*" を返す必要があります。  Resolve API 呼び出しの結果として、購入の一意の ID、購入されたオファーの ID、購入されたプランの ID などの SaaS 購入の詳細を表すトークンが交換されます。
 
 ランディング ページでは、顧客は Azure Active Directory (Azure AD) シングル サインオン (SSO) を使用して、新規または既存の SaaS アカウントにログオンする必要があります。
 
@@ -63,7 +63,7 @@ SaaS サブスクリプションの状態と適用可能なアクションを示
 
 この状態は、プロビジョニング済み SaaS サブスクリプションを表す安定した状態です。 [Activate Subscription API](#activate-a-subscription) 呼び出しが Microsoft 側で処理されると、SaaS サブスクリプションがサブスクライブ済みとしてマークされます。 これで、発行者側で顧客が SaaS サービスを使用できるようになり、顧客に請求が行われます。
 
-SaaS サブスクリプションが既にアクティブになっていて、顧客が Azure portal または M365 管理センターから SaaS の **管理** エクスペリエンスを開始することを選択した場合、アクティブ化フローの場合と同じように、 **ランディング ページの URL** が *token* パラメーターを使用して Microsoft によって呼び出されます。  発行者は、新規購入と既存の SaaS アカウントの管理を区別し、このランディング ページの URL 呼び出しを適宜処理する必要があります。
+SaaS サブスクリプションが既にアクティブになっていて、顧客が Azure portal または M365 管理センターから SaaS の **管理** エクスペリエンスを開始することを選択した場合、アクティブ化フローの場合と同じように、**ランディング ページの URL** が *token* パラメーターを使用して Microsoft によって呼び出されます。  発行者は、新規購入と既存の SaaS アカウントの管理を区別し、このランディング ページの URL 呼び出しを適宜処理する必要があります。
 
 #### <a name="being-updated-subscribed"></a>更新中 (サブスクライブ済み)
 
@@ -82,11 +82,14 @@ SaaS サブスクリプションに対して 2 種類の更新ができます。
 
 ##### <a name="update-initiated-from-the-marketplace"></a>マーケットプレースから開始された更新
 
-このフローでは、顧客は M365 管理センターからサブスクリプション プランまたはシート数を変更します。  
+このフローでは、顧客は Azure portal または M365 管理センターからサブスクリプション プランまたはシート数を変更します。  
 
-1. 更新が入力されると、Microsoft によって、パートナー センターの **[接続 Webhook]** フィールドに構成されている発行者の Webhook URL が、 *action* およびその他の関連するパラメーターの適切な値を使用して呼び出されます。  
+1. 更新が入力されると、Microsoft によって、パートナー センターの **[接続 Webhook]** フィールドに構成されている発行者の Webhook URL が、*action* およびその他の関連するパラメーターの適切な値を使用して呼び出されます。  
 1. 発行者側は SaaS サービスに対して必要な変更を行い、[Update Status of Operation API](#update-the-status-of-an-operation) を呼び出すことによって、変更が完了したことを Microsoft に通知します。
 1. 失敗の状態を持つ Patch が送信された場合、更新プロセスは Microsoft 側で完了しません。  SaaS サブスクリプションは、既存のプランとシート数のままになります。
+
+> [!NOTE]
+> 発行者は、Webhook 通知を受信した後 *10 秒の以内に*、PATCH を呼び出して失敗/成功応答で[操作 API の状態を更新](#update-the-status-of-an-operation)する必要があります。 操作状態の PATCH が 10 秒以内に受信されなかった場合、変更計画は *成功として自動的にパッチが適用* されます。 
 
 Marketplace で開始された更新シナリオの API 呼び出しのシーケンスを次に示します。
 
@@ -98,7 +101,7 @@ Marketplace で開始された更新シナリオの API 呼び出しのシーケ
 
 1. 要求された変更を発行者側で行う前に、発行者のコードで [Change Plan API](#change-the-plan-on-the-subscription) または [Change Quantity API](#change-the-quantity-of-seats-on-the-saas-subscription) あるいはその両方を呼び出す必要があります。 
 
-1. Microsoft はサブスクリプションに変更を適用し、 **接続 Webhook** を使用して、同じ変更を適用するように発行者に対して通知します。  
+1. Microsoft はサブスクリプションに変更を適用し、**接続 Webhook** を使用して、同じ変更を適用するように発行者に対して通知します。  
 
 1. 発行者はその後に限り SaaS サブスクリプションに対して必要な変更を行い、変更が完了したら [Update Status of Operation API](#update-the-status-of-an-operation) を呼び出して Microsoft に通知します。
 
@@ -106,9 +109,9 @@ Marketplace で開始された更新シナリオの API 呼び出しのシーケ
 
 ![発行者側で開始された更新の API 呼び出し](./media/saas-update-status-api-v2-calls-publisher-side.png)
 
-#### <a name="suspended-suspended"></a>中断 ( *中断* )
+#### <a name="suspended-suspended"></a>中断 (*中断*)
 
-この状態は、SaaS サービスに対する顧客の支払いが受け取られていないことを示します。 発行者には、SaaS サブスクリプションの状態の変更が Microsoft によって通知されます。 この通知は、 *action* パラメーターを *Suspended* に設定した Webhook の呼び出しによって行われます。
+この状態は、SaaS サービスに対する顧客の支払いが受け取られていないことを示します。 発行者には、SaaS サブスクリプションの状態の変更が Microsoft によって通知されます。 この通知は、*action* パラメーターを *Suspended* に設定した Webhook の呼び出しによって行われます。
 
 発行者は、発行者側での SaaS サービスへの変更を行うことも、行わないこともできます。 発行者が中断された顧客に対してこの情報を使用可能にすること、また、顧客の SaaS サービスへのアクセスを制限またはブロックすることをお勧めします。  支払いが一切受け取られない可能性があります。
 
@@ -119,13 +122,13 @@ Microsoft は、サブスクリプションを自動的に取り消す前に、3
 
 発行者が何らかのアクションを実行する前に、サブスクリプションの状態が Microsoft 側で "中断" に変更されます。 アクティブなサブスクリプションのみを中断できます。
 
-#### <a name="reinstated-suspended"></a>復帰 ( *中断* )
+#### <a name="reinstated-suspended"></a>復帰 (*中断*)
 
 サブスクリプションを復帰させています。
 
 このアクションは、顧客の支払い方法が再度有効になったこと、SaaS サブスクリプションに対して支払いが行われることを示します。  サブスクリプションを復帰させています。 この場合、次のようになります。 
 
-1. Microsoft によって、 *action* パラメーターを *Reinstate* の値に設定した Webhook が呼び出されます。  
+1. Microsoft によって、*action* パラメーターを *Reinstate* の値に設定した Webhook が呼び出されます。  
 1. 発行者は、このサブスクリプションを発行者側で再び完全に運用可能にします。
 1. 発行者は、成功の状態を持つ [Patch Operation API](#update-the-status-of-an-operation) を呼び出します。  
 1. その後、復帰が成功し、顧客に SaaS サブスクリプションの請求が再び行われます。 
@@ -135,7 +138,7 @@ Microsoft は、サブスクリプションを自動的に取り消す前に、3
 
 中断されたサブスクリプションのみを復帰させることができます。  SaaS サブスクリプションを復帰させている間、その状態は中断のままになります。  この操作が完了すると、サブスクリプションの状態はアクティブになります。
 
-#### <a name="renewed-subscribed"></a>更新済み ( *サブスクライブ済み* )
+#### <a name="renewed-subscribed"></a>更新済み (*サブスクライブ済み*)
 
 サブスクリプション期間が (1 か月後または 1 年後に) 終了すると、SaaS サブスクリプションが Microsoft によって自動的に更新されます。  自動更新設定の既定値は、すべての SaaS サブスクリプションで *true* です。 アクティブな SaaS サブスクリプションは、継続して定期的に更新されます。 サブスクリプションが更新されるとき、Microsoft から発行者への通知は行われません。 顧客は、M365 管理ポータルまたは Azure portal 経由で、SaaS サブスクリプションの自動更新を無効にすることができます。  この場合、SaaS サブスクリプションは、現在の請求期間の終了時に自動的に取り消されます。  また、顧客はいつでも SaaS サブスクリプションを取り消すことができます。
 
@@ -143,7 +146,7 @@ Microsoft は、サブスクリプションを自動的に取り消す前に、3
 
 支払いの問題によって自動更新が失敗した場合、サブスクリプションは中断されます。  発行者に通知が行われます。
 
-#### <a name="canceled-unsubscribed"></a>取り消し ( *登録解除済み* ) 
+#### <a name="canceled-unsubscribed"></a>取り消し (*登録解除済み*) 
 
 サブスクリプションは、発行者サイト、Azure portal、または M365 管理センターからサブスクリプションを取り消すことによる、明示的な顧客または CSP のアクションに応じて、この状態になります。  サブスクリプションは、料金未払いを原因に 30 日間中断状態になった後、暗黙的に取り消すこともできます。
 
@@ -170,9 +173,9 @@ TLS バージョン 1.2 というバージョンが、HTTPS 通信の最小バ�
 
 #### <a name="resolve-a-purchased-subscription"></a>購入済みサブスクリプションを解決する
 
-解決エンドポイントを使用すると、発行者は、マーケットプレースの購入識別トークン (「 [購入済みであるが、まだアクティブ化されていない](#purchased-but-not-yet-activated-pendingfulfillmentstart)」で " *トークン* " として参照されている) を、永続的な購入済み SaaS サブスクリプション ID とその詳細に交換できます。
+解決エンドポイントを使用すると、発行者は、マーケットプレースの購入識別トークン (「[購入済みであるが、まだアクティブ化されていない](#purchased-but-not-yet-activated-pendingfulfillmentstart)」で "*トークン*" として参照されている) を、永続的な購入済み SaaS サブスクリプション ID とその詳細に交換できます。
 
-顧客がパートナーのランディング ページの URL にリダイレクトされると、この URL 呼び出しで、顧客識別トークンが *token* パラメーターとして渡されます。 パートナーは、このトークンを使用すること、およびそれを解決するための要求を行うことを期待されています。 Resolve API 応答には、購入を一意に識別するための SaaS サブスクリプション ID とその他の詳細が含まれています。 ランディング ページの URL 呼び出しで提供される " *トークン* " は、通常 24 時間有効です。 受け取った " *トークン* " が既に期限切れになっている場合は、エンド カスタマーに次のガイダンスを提供することをお勧めします。
+顧客がパートナーのランディング ページの URL にリダイレクトされると、この URL 呼び出しで、顧客識別トークンが *token* パラメーターとして渡されます。 パートナーは、このトークンを使用すること、およびそれを解決するための要求を行うことを期待されています。 Resolve API 応答には、購入を一意に識別するための SaaS サブスクリプション ID とその他の詳細が含まれています。 ランディング ページの URL 呼び出しで提供される "*トークン*" は、通常 24 時間有効です。 受け取った "*トークン*" が既に期限切れになっている場合は、エンド カスタマーに次のガイダンスを提供することをお勧めします。
 
 "この購入を特定できませんでした。Azure portal または M365 管理センターでこの SaaS サブスクリプションを再度開いて、[アカウントの構成] または [アカウントの管理] ボタンをもう一度クリックしてください。"
 
@@ -674,7 +677,7 @@ SaaS サブスクリプションで購入されたシートの数を更新 (増�
 
 指定した SaaS サブスクリプションの登録を解除します。  発行者はこの API を使用する必要はありません。SaaS サブスクリプションを取り消すには、顧客をマーケットプレースに転送することをお勧めします。
 
-マーケットプレースで購入された SaaS サブスクリプションの取り消しを発行者側で実装する場合、発行者はこの API を呼び出す必要があります。  この呼び出しが完了すると、サブスクリプションの状態が Microsoft 側で " *登録解除済み* " になります。
+マーケットプレースで購入された SaaS サブスクリプションの取り消しを発行者側で実装する場合、発行者はこの API を呼び出す必要があります。  この呼び出しが完了すると、サブスクリプションの状態が Microsoft 側で "*登録解除済み*" になります。
 
 次に示す猶予期間中にサブスクリプションが取り消された場合、顧客への請求は行われません。
 
@@ -788,9 +791,9 @@ SaaS サブスクリプションで購入されたシートの数を更新 (増�
 
 #### <a name="get-operation-status"></a>操作状態を取得する
 
-発行者が、指定した非同期操作の状態を追跡できるようにします: **Unsubscribe** 、 **ChangePlan** 、または **ChangeQuantity** 。
+発行者が、指定した非同期操作の状態を追跡できるようにします: **Unsubscribe**、**ChangePlan**、または **ChangeQuantity**。
 
-この API 呼び出しの `operationId` は、 **Operation-Location** によって返される値、保留中の操作を取得する API 呼び出し、または Webhook 呼び出しで受け取った `<id>` パラメーター値から取得できます。
+この API 呼び出しの `operationId` は、**Operation-Location** によって返される値、保留中の操作を取得する API 呼び出し、または Webhook 呼び出しで受け取った `<id>` パラメーター値から取得できます。
 
 ##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Get `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -850,7 +853,7 @@ Response body:
 
 保留中の操作の状態を更新して、発行者側で操作が成功したか失敗したかを示します。
 
-この API 呼び出しの `operationId` は、 **Operation-Location** によって返される値、保留中の操作を取得する API 呼び出し、または Webhook 呼び出しで受け取った `<id>` パラメーター値から取得できます。
+この API 呼び出しの `operationId` は、**Operation-Location** によって返される値、保留中の操作を取得する API 呼び出し、または Webhook 呼び出しで受け取った `<id>` パラメーター値から取得できます。
 
 ##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Patch `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -962,7 +965,7 @@ Forbidden.  認証トークンが無効であるか、期限切れか、指定�
 
 購入フローは、オファーが公開されている場所に応じて、Azure portal または Microsoft AppSource サイトからトリガーできます。
 
-" *プラン変更* "、" *数量変更* "、" *登録解除* " の各アクションは、発行者側からテストされます。  Microsoft 側からは、Azure portal と管理センター (Microsoft AppSource での購入が管理されているポータル) の両方から、" *登録解除* " をトリガーできます。  " *数量とプランの変更* " は、管理センターからのみトリガーできます。
+"*プラン変更*"、"*数量変更*"、"*登録解除*" の各アクションは、発行者側からテストされます。  Microsoft 側からは、Azure portal と管理センター (Microsoft AppSource での購入が管理されているポータル) の両方から、"*登録解除*" をトリガーできます。  "*数量とプランの変更*" は、管理センターからのみトリガーできます。
 
 ## <a name="get-support"></a>サポートを受ける
 

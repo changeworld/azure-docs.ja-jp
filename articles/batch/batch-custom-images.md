@@ -2,17 +2,17 @@
 title: マネージド イメージを使用してカスタム イメージ プールを作成する
 description: マネージド イメージから Batch カスタム イメージ プールを作成して、アプリケーション用のソフトウェアとデータを含むコンピューティング ノードをプロビジョニングします。
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: 45bf0f8b3cb335b7025ff06189bf6bc4e0a896ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/18/2020
+ms.openlocfilehash: 0a357a1d8a22341297f3bee73fb0867fb03f374f
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85851295"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916578"
 ---
 # <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>マネージド イメージを使用してカスタム イメージ プールを作成する
 
-Batch プールの仮想マシン (VM) のカスタム イメージ プールを作成するために、マネージド イメージを使用して [Shared Image Gallery イメージ](batch-sig-images.md)を作成できます。 マネージド イメージだけを使用することもできますが、2019-08-01 以前の API バージョンでのみサポートされます。 
+Batch プールの仮想マシン (VM) のカスタム イメージ プールを作成するために、マネージド イメージを使用して [Shared Image Gallery イメージ](batch-sig-images.md)を作成できます。 マネージド イメージだけを使用することもできますが、2019-08-01 以前の API バージョンでのみサポートされます。
 
 > [!IMPORTANT]
 > ほとんどの場合、Shared Image Gallery を使用してカスタム イメージを作成する必要があります。 Shared Image Gallery を使用すると、プールを迅速にプロビジョニングしたり、VM の数を増やしたり、VM のプロビジョニング時に信頼性を向上させたりすることができます。 詳細については、「[Shared Image Gallery を使用してカスタム プールを作成する](batch-sig-images.md)」を参照してください。
@@ -23,7 +23,7 @@ Batch プールの仮想マシン (VM) のカスタム イメージ プールを
 
 - **マネージド イメージ リソース**。 カスタム イメージを使用して仮想マシンのプールを作成するには、Batch アカウントと同じ Azure サブスクリプションおよびリージョンに、マネージド イメージ リソースを配置または作成する必要があります。 イメージは、VM の OS ディスクと、それに接続されたデータ ディスク (後者はオプション) のスナップショットから作成する必要があります。
   - 作成する各プールには、一意のカスタム イメージを使用します。
-  - Batch API を使用してイメージでプールを作成するには、イメージの**リソース ID** を指定します。形式は次のとおりです。`/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`
+  - Batch API を使用してイメージでプールを作成するには、イメージの **リソース ID** を指定します。形式は次のとおりです。`/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`
   - マネージド イメージ リソースは、スケール アップするプールの有効期間を通じて存在する必要があり、プールを削除した後は削除することができます。
 
 - **Azure Active Directory (Azure AD) 認証**。 Batch クライアント API では、Azure AD 認証を使用する必要があります。 Azure AD の Azure Batch のサポートについては、「[Batch サービスの認証に Active Directory を使用する](batch-aad-auth.md)」に記載されています。
@@ -36,7 +36,7 @@ Azure では、次のものからマネージド イメージを準備できま�
 - マネージド ディスクで汎用化された Azure VM
 - クラウドにアップロードされた、汎用化されたオンプレミス VHD
 
-マネージド イメージを使って Batch プールを安定的にスケーリングするには、最初の方法 (VM のディスクのスナップショットを使用する) *のみ*を使用してマネージド イメージを作成することをお勧めします。 次の手順では、VM を準備し、スナップショットを作成し、スナップショットからマネージド イメージを作成する方法を説明します。
+マネージド イメージを使って Batch プールを安定的にスケーリングするには、最初の方法 (VM のディスクのスナップショットを使用する) *のみ* を使用してマネージド イメージを作成することをお勧めします。 次の手順では、VM を準備し、スナップショットを作成し、スナップショットからマネージド イメージを作成する方法を説明します。
 
 ### <a name="prepare-a-vm"></a>VM を準備する
 
@@ -49,6 +49,7 @@ Azure では、次のものからマネージド イメージを準備できま�
 - VM には、Azure 拡張機能 (カスタム スクリプト拡張機能など) をインストールしないでください。 イメージにプレインストールされた拡張機能が含まれる場合、Azure で Batch プールのデプロイ時に問題が発生する可能性があります。
 - 添付データ ディスクを含める場合は、それらを使用する VM 内からディスクを マウントおよびフォーマットする必要があります。
 - 提供するベース OS イメージには、必ず既定の一時ドライブを使用するようにしてください。 現在、Batch ノード エージェントでは、既定の一時ドライブを使用する必要があります。
+- OS ディスクが暗号化されていないことを確認します。
 - VM が実行状態になったら、RDP (Windows の場合) または SSH (Linux の場合) を使用して VM に接続します。 必要なソフトウェアをインストールしたり、必要なデータをコピーしてください。  
 
 ### <a name="create-a-vm-snapshot"></a>VM スナップショットを作成する

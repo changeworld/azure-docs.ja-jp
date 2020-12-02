@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 1f71c01d53a89ce1b459826689eb5b2e4899b3a2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c015561e66d77e6df352e601bf1a67da5996d4d5
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92886649"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94915170"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -153,7 +153,7 @@ call = callAgent.join(context, groupCallContext, joinCallOptions);
 
 ### <a name="prerequisites"></a>前提条件
 
-Cloud Messaging (FCM) が有効になっている Firebase アカウントが設定されており、Firebase Cloud Messaging サービスが Azure Notification Hubs インスタンスに接続されているものとします。 詳細については、「[Communication Services の通知](https://docs.microsoft.com/azure/communication-services/concepts/notifications)」を参照してください。
+Cloud Messaging (FCM) が有効になっている Firebase アカウントが設定されており、Firebase Cloud Messaging サービスが Azure Notification Hubs インスタンスに接続されているものとします。 詳細については、「[Communication Services の通知](../../../concepts/notifications.md)」を参照してください。
 また、このチュートリアルでは、Android Studio バージョン 3.6 以降を使用してアプリケーションがビルドされているものとします。
 
 Firebase Cloud Messaging から通知メッセージを受信するには、Android アプリケーションに対する一連のアクセス許可が必要です。 お使いの `AndroidManifest.xml` ファイルの *<manifest ...>* の直後、または *</application>* タグの下に、次の一連のアクセス許可を追加します。
@@ -232,7 +232,7 @@ catch(Exception e) {
 
 着信通話プッシュ通知を受信するには、ペイロードを設定して *CallAgent* インスタンスで *handlePushNotification()* を呼び出します。
 
-Firebase Cloud Messaging からペイロードを取得するには、 *FirebaseMessagingService* Firebase クライアント ライブラリ クラスを拡張し、`onMessageReceived` メソッドをオーバーライドする、新しいサービスをまず作成 ([ファイル] > [新規] > [サービス] > [サービス]) します。 このメソッドは、Firebase Cloud Messaging によってアプリケーションにプッシュ通知が配信されると呼び出されるイベント ハンドラーです。
+Firebase Cloud Messaging からペイロードを取得するには、*FirebaseMessagingService* Firebase クライアント ライブラリ クラスを拡張し、`onMessageReceived` メソッドをオーバーライドする、新しいサービスをまず作成 ([ファイル] > [新規] > [サービス] > [サービス]) します。 このメソッドは、Firebase Cloud Messaging によってアプリケーションにプッシュ通知が配信されると呼び出されるイベント ハンドラーです。
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -262,7 +262,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         </service>
 ```
 
-- ペイロードを取得したら、 *CallAgent* インスタンスで *handlePushNotification* メソッドを呼び出すことによって処理されるように、 *Communication Services* のクライアント ライブラリに渡すことができます。 `CallAgent` インスタンスを作成するには、`CallClient` クラスで `createCallAgent(...)` メソッドを呼び出します。
+- ペイロードを取得したら、*CallAgent* インスタンスで *handlePushNotification* メソッドを呼び出すことによって処理されるように、*Communication Services* のクライアント ライブラリに渡すことができます。 `CallAgent` インスタンスを作成するには、`CallClient` クラスで `createCallAgent(...)` メソッドを呼び出します。
 
 ```java
 try {

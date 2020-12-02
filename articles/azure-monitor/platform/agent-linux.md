@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 8b9fac51b5bdab20d7b082945ee594ac76c3e52a
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: e1dbf5e20aa206189397cab26e9b867f4942e1d5
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332503"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886840"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Linux コンピューターに Log Analytics エージェントをインストールする
 この記事では、次の方法を使用して Linux コンピューターに Log Analytics エージェントをインストールする方法の詳細を説明します。
@@ -30,13 +30,17 @@ Log Analytics エージェントでサポートされている Linux ディス�
 
 >[!NOTE]
 >OpenSSL 1.1.0 は x86_x64 プラットフォーム (64-bit) 上のみでサポートされ、1.x より前の OpenSSL は、どのプラットフォーム上でもサポートされません。
->
+
+>[!NOTE]
+>コンテナーでの Log Analytics Linux エージェントの実行はサポートされていません。 コンテナーを監視する必要がある場合は、Docker ホストでは[コンテナー監視ソリューション](../insights/containers.md)、Kubernetes では [Azure Monitor for containers](../insights/container-insights-overview.md) を利用してください。
+
 2018 年 8 月以降にリリースされたバージョンからは、サポート モデルに次の変更を加えています。  
 
 * クライアントではなく、サーバー バージョンのみがサポートされます。  
 * [Azure Linux 動作保証済みディストリビューション](../../virtual-machines/linux/endorsed-distros.md)のサポートに重点が置かれています。 新しいディストリビューションやバージョンが Azure Linux 動作保証済みになってから、Log Analytics Linux エージェントでサポートされるまでの間に、遅延が発生する場合があることに注意してください。
 * 記載されている各メジャー バージョンのマイナー リリースは、すべてサポートされます。
-* 製造元のサポート終了日を超過したバージョンは、サポートされません。  
+* 製造元のサポート終了日を超過したバージョンは、サポートされません。
+* VM イメージのみをサポートします。公式のディストリビューション発行元のイメージから派生したコンテナーでもサポートされません。
 * AMI の新しいバージョンはサポートされません。  
 * 既定で SSL 1.x を実行するバージョンのみが、サポートされます。
 
@@ -126,7 +130,7 @@ Linux 用 Log Analytics エージェントのパッケージをインストー�
 
 次の手順では、直接またはプロキシサーバー経由で通信して、GitHub でホストされているエージェントをダウンロードしてインストールする Linux コンピューター用のラッパー スクリプトを使用して、Azure と Azure Government クラウドで Log Analytics 用エージェントのセットアップを構成します。  
 
-Linux コンピューターと Log Analytics との通信をプロキシ サーバーを介して行う必要がある場合、コマンド ラインから「`-p [protocol://][user:password@]proxyhost[:port]`」を入力することでこの構成を指定できます。 *protocol* プロパティは `http` または `https` を受け取り、 *proxyhost* プロパティはプロキシ サーバーの完全修飾ドメイン名または IP アドレスを受け取ります。 
+Linux コンピューターと Log Analytics との通信をプロキシ サーバーを介して行う必要がある場合、コマンド ラインから「`-p [protocol://][user:password@]proxyhost[:port]`」を入力することでこの構成を指定できます。 *protocol* プロパティは `http` または `https` を受け取り、*proxyhost* プロパティはプロキシ サーバーの完全修飾ドメイン名または IP アドレスを受け取ります。 
 
 例: `https://proxy01.contoso.com:30443`
 
@@ -215,7 +219,7 @@ sudo sh ./omsagent-*.universal.x64.sh --extract
 バージョン 1.0.0-47 以降の以前のバージョンからのアップグレードは、各リリースでサポートされています。 `--upgrade` パラメーターを使用してインストールを実行すると、エージェントのすべてのコンポーネントを最新バージョンにアップグレードできます。
 
 ## <a name="cache-information"></a>キャッシュ情報
-Linux 用 Log Analytics エージェントからのデータは、ローカル マシン上の *%STATE_DIR_WS%/out_oms_common* .buffer* にキャッシュされてから Azure Monitor に送信されます。 カスタム ログ データは *%STATE_DIR_WS%/out_oms_blob* .buffer* にバッファリングされます。 このパスは、一部の[ソリューションとデータ型](https://github.com/microsoft/OMS-Agent-for-Linux/search?utf8=%E2%9C%93&q=+buffer_path&type=)では異なる場合があります。
+Linux 用 Log Analytics エージェントからのデータは、ローカル マシン上の *%STATE_DIR_WS%/out_oms_common*.buffer* にキャッシュされてから Azure Monitor に送信されます。 カスタム ログ データは *%STATE_DIR_WS%/out_oms_blob*.buffer* にバッファリングされます。 このパスは、一部の[ソリューションとデータ型](https://github.com/microsoft/OMS-Agent-for-Linux/search?utf8=%E2%9C%93&q=+buffer_path&type=)では異なる場合があります。
 
 エージェントによって 20 秒ごとにアップロードが試行されます。 失敗した場合は、成功するまで、待機する時間が指数関数的に増加します。2 回目の試行の前に 30 秒前、3 回目の前に 60 秒前、さらにその次の前に 120 秒間といった具合に、再接続が成功するまで最大 16 分間待機します。 エージェントでは、特定のデータ チャンクに対して最大 6 回再試行されてから破棄され、次に進みます。 これは、エージェントが再度正常にアップロードできるようになるまで継続されます。 これは、データが破棄されるまでに最大約 30 分間バッファーされる可能性があることを意味します。
 

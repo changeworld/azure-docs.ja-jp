@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 4362b579b7f01570a2b5fd072bf53ad495797cd8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fb91a490083629101470565a630b659c090e071b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783778"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843368"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Azure Key Vault でカスタマー マネージド キーを Import/Export サービスのために使用する
 
@@ -33,9 +33,9 @@ Azure Import/Export では暗号化キーを使用して、ドライブのロッ
     - [ファイルのインポート ジョブを作成する](storage-import-export-data-to-files.md)
     - [BLOB のエクスポート ジョブを作成する](storage-import-export-data-from-blobs.md)
 
-2. BitLocker キーを保護するために使用できるキーを含む既存の Azure Key Vault があります。 Azure portal を使ってキー コンテナーを作成する方法を学習するには、「[クイック スタート: Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../../key-vault/secrets/quick-create-portal.md)」をご覧ください。
+2. BitLocker キーを保護するために使用できるキーを含む既存の Azure Key Vault があります。 Azure portal を使ってキー コンテナーを作成する方法を学習するには、「[クイック スタート: Azure portal を使用して Azure Key Vault を作成する](../../key-vault/general/quick-create-portal.md)」を参照します。
 
-    - 既存の Key Vault には、 **論理的な削除** や **消去保護** が設定されています。 これらのプロパティは、既定では有効になっていません。 これらのプロパティを有効にするには、次のいずれかの記事の「 **論理的な削除を有効にする** 」および「 **消去保護を有効にする** 」を参照してください。
+    - 既存の Key Vault には、**論理的な削除** や **消去保護** が設定されています。 これらのプロパティは、既定では有効になっていません。 これらのプロパティを有効にするには、次のいずれかの記事の「**論理的な削除を有効にする**」および「**消去保護を有効にする**」を参照してください。
 
         - [PowerShell で Key Vault の論理的な削除を使用する方法](../../key-vault/general/key-vault-recovery.md)
         - [CLI で Key Vault の論理的な削除を使用する方法](../../key-vault/general/key-vault-recovery.md)
@@ -56,7 +56,7 @@ Import/Export サービス用のカスタマー マネージド キーの構成�
 
     ![BitLocker キーを表示する](./media/storage-import-export-encryption-key-portal/encryption-key-2.png)
 
-4. カスタマー マネージド キーを指定するオプションがあります。 カスタマー マネージド キーを選択してから、 **キー コンテナーとキーを選択します** 。
+4. カスタマー マネージド キーを指定するオプションがあります。 カスタマー マネージド キーを選択してから、**キー コンテナーとキーを選択します**。
 
     ![カスタマー マネージド キーを選択する](./media/storage-import-export-encryption-key-portal/encryption-key-3.png)
 

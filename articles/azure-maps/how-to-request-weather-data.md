@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b5db19a6549e7e4675213973554ff18bf46dda1e
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 3e0dce10d582006ab8c1dabf6d4b3efc82d8f39f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92915371"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957114"
 ---
 # <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>Azure Maps Weather Service を使用して、リアルタイムと予測の気象データを要求する
 
@@ -27,6 +27,12 @@ Azure Maps [Weather Service](https://docs.microsoft.com/rest/api/maps/weather) �
 * [Get Daily Forecast API](https://docs.microsoft.com/rest/api/maps/weather/getdailyforecastpreview) を使用して、日ごとの予測を要求します。
 * [Get Hourly Forecast API](https://docs.microsoft.com/rest/api/maps/weather/gethourlyforecastpreview) を使用して、時間ごとの予測を要求します。
 * [Get Minute Forecast API](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview) を使用して、分ごとの予測を要求します。
+
+このビデオでは、Azure Maps Weather Service の概要と REST 呼び出しの例について説明しています。
+
+<br/>
+
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps-Weather-services-for-developers/player" width="960" height="540" allowFullScreen frameBorder="0" title="開発者向けの Azure Maps Weather Service - Microsoft Channel 9 ビデオ"></iframe>
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 2de3f78b58e10a4fbf65bb00d516448a089f85b6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d5a8fe4192c3778e259ed18239a4198398d8807b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370952"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836837"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory 一般的な運用ガイド リファレンス
 
@@ -43,7 +43,7 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 | ハイブリッド ログの監視:パススルー認証エージェント | IAM 運用チーム |
 | ハイブリッド ログの監視:パスワード ライトバック サービス | IAM 運用チーム |
 | ハイブリッド ログの監視:オンプレミスのパスワード保護ゲートウェイ | IAM 運用チーム |
-| ハイブリッド ログの監視:Azure MFA NPS 拡張機能 (該当する場合) | IAM 運用チーム |
+| ハイブリッド ログの監視:Azure AD MFA NPS 拡張機能 (該当する場合) | IAM 運用チーム |
 
 リストを確認する際には、所有者が空のタスクに所有者を割り当てるか、上記の推奨事項に一致しない所有者を持つタスクの所有権を調整する必要がある場合があります。
 
@@ -86,7 +86,7 @@ Azure AD Connect および AD FS を監視するために組織は [Azure AD Con
 
 ### <a name="on-premises-agents-logs"></a>オンプレミスのエージェント ログ
 
-一部の ID 管理とアクセス管理サービスでは、ハイブリッドシナリオを有効にするためにオンプレミスのエージェントが必要です。 例としては、パスワードのリセット、パススルー認証 (PTA)、Azure AD アプリケーション プロキシ、Azure MFA NPS 拡張機能などがあります。 運用チームが、System Center Operations Manager や SIEM などのソリューションを使用して、コンポーネント エージェントのログをアーカイブおよび分析することで、これらのコンポーネントのベースラインを設定して正常性を監視することが重要です。 また、エラーのパターンをトラブルシューティングする方法については、Infosec 運用チームまたはヘルプデスクにとっても重要です。
+一部の ID 管理とアクセス管理サービスでは、ハイブリッドシナリオを有効にするためにオンプレミスのエージェントが必要です。 例としては、パスワードのリセット、パススルー認証 (PTA)、Azure AD アプリケーション プロキシ、Azure AD MFA NPS 拡張機能などがあります。 運用チームが、System Center Operations Manager や SIEM などのソリューションを使用して、コンポーネント エージェントのログをアーカイブおよび分析することで、これらのコンポーネントのベースラインを設定して正常性を監視することが重要です。 また、エラーのパターンをトラブルシューティングする方法については、Infosec 運用チームまたはヘルプデスクにとっても重要です。
 
 #### <a name="on-premises-agents-logs-recommended-reading"></a>オンプレミスのエージェント ログに関する推奨資料
 
@@ -94,7 +94,7 @@ Azure AD Connect および AD FS を監視するために組織は [Azure AD Con
 - [セルフサービス パスワード リセット のトラブルシューティング - Azure Active Directory](../authentication/troubleshoot-sspr.md)
 - [Azure AD アプリケーション プロキシ コネクタについて](../manage-apps/application-proxy-connectors.md)
 - [Azure AD Connect:パススルー認証のトラブルシューティング](../hybrid/tshoot-connect-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)
-- [Azure MFA NPS 拡張機能のエラー コードのトラブルシューティング](../authentication/howto-mfa-nps-extension-errors.md)
+- [Azure AD MFA NPS 拡張機能のエラー コードのトラブルシューティング](../authentication/howto-mfa-nps-extension-errors.md)
 
 ### <a name="on-premises-agents-management"></a>オンプレミスのエージェント管理
 
@@ -156,7 +156,7 @@ Azure AD によって使用される "差出人" アドレスは 2 つありま�
 
 Azure AD で直接認証されるようアプリケーションを構成している組織は、[Azure AD スマート ロックアウト](../authentication/concept-sspr-howitworks.md)を利用できます。 Windows Server 2012 R2 で AD FS を使っている場合は、AD FS の[エクストラネット ロックアウト保護](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)を実装します。 Windows Server 2016 以降で AD FS を使っている場合は、[エクストラネット スマート ロックアウト](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)を実装します。 少なくとも、オンプレミスの Active Directory へのブルート フォース攻撃のリスクを含むように、エクストラネット ロックアウトを有効にすることをお勧めします。 ただし、Windows 2016 以降で AD FS を利用している場合は、[パスワード スプレー](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/)攻撃を軽減するのに役立つ、エクストラネットのスマート ロックアウトも有効にする必要があります。
 
-AD FS が Azure AD フェデレーションにのみ使用される場合、攻撃対象を最小限に抑えるために無効にできるエンドポイントがいくつかあります。 たとえば、AD FS が Azure AD にのみ使用される場合、 **usernamemixed** および **windowstransport** に対して有効になっているエンドポイント以外の WS-Trust エンドポイントを無効にする必要があります。
+AD FS が Azure AD フェデレーションにのみ使用される場合、攻撃対象を最小限に抑えるために無効にできるエンドポイントがいくつかあります。 たとえば、AD FS が Azure AD にのみ使用される場合、**usernamemixed** および **windowstransport** に対して有効になっているエンドポイント以外の WS-Trust エンドポイントを無効にする必要があります。
 
 ### <a name="access-to-machines-with-on-premises-identity-components"></a>オンプレミスの ID コンポーネントを使用したマシンへのアクセス
 
@@ -166,9 +166,9 @@ Active Directory 管理階層モデルは、環境のフル コントロール (
 
 [階層モデル](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)は 3 つのレベルで構成され、管理者アカウントのみが含まれ、標準ユーザー アカウントは含まれません。
 
-- **階層 0** : 環境内のエンタープライズ ID を直接管理します。 階層 0 には、Active Directory フォレスト、ドメイン、ドメイン コントローラー、それに含まれるすべての資産を直接的または間接的に管理するアカウント、グループ、その他の資産が含まれます。 階層 0 のすべての資産は、事実上相互に管理しあっているため、セキュリティの機密性は同じです。
-- **階層 1** : エンタープライズ サーバーとアプリケーションを管理します。 階層 1 の資産には、サーバーのオペレーティング システム、クラウド サービス、エンタープライズ アプリケーションが含まれます。 階層 1 の管理者アカウントによって、これらの資産でホストされている多くのビジネス価値を管理します。 一般的なロールの例として、すべてのエンタープライズ サービスに影響する機能を持つこれらのオペレーティング システムを管理しているサーバー管理者があります。
-- **階層 2** : - ユーザーのワークステーションとデバイスを管理します。 階層 2 の管理者アカウントによって、ユーザーのワークステーションやデバイスでホストされている多くのビジネス価値を管理します。 例としては、ヘルプ デスクやコンピューター サポートの管理者が挙げられます。ほとんどのユーザー データの整合性に影響を及ぼす可能性があるためです。
+- **階層 0**: 環境内のエンタープライズ ID を直接管理します。 階層 0 には、Active Directory フォレスト、ドメイン、ドメイン コントローラー、それに含まれるすべての資産を直接的または間接的に管理するアカウント、グループ、その他の資産が含まれます。 階層 0 のすべての資産は、事実上相互に管理しあっているため、セキュリティの機密性は同じです。
+- **階層 1**: エンタープライズ サーバーとアプリケーションを管理します。 階層 1 の資産には、サーバーのオペレーティング システム、クラウド サービス、エンタープライズ アプリケーションが含まれます。 階層 1 の管理者アカウントによって、これらの資産でホストされている多くのビジネス価値を管理します。 一般的なロールの例として、すべてのエンタープライズ サービスに影響する機能を持つこれらのオペレーティング システムを管理しているサーバー管理者があります。
+- **階層 2**: - ユーザーのワークステーションとデバイスを管理します。 階層 2 の管理者アカウントによって、ユーザーのワークステーションやデバイスでホストされている多くのビジネス価値を管理します。 例としては、ヘルプ デスクやコンピューター サポートの管理者が挙げられます。ほとんどのユーザー データの整合性に影響を及ぼす可能性があるためです。
 
 ドメイン コントローラーの場合と同じ方法で、Azure AD Connect、AD FS、SQL サービスなどのオンプレミスの ID コンポーネントへのアクセスをロックダウンします。
 

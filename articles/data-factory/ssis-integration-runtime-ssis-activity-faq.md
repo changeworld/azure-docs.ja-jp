@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 4c817194bbe0e4cf211992920bad9deb40bf05f4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b4902e1fb7a2a181d3d5b2ce2ac6d1d458500fce
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632211"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844184"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>SSIS 統合ランタイムでのパッケージ実行のトラブルシューティング
 
@@ -121,14 +121,14 @@ SSIS 統合ランタイムで多数のパッケージが並列に実行されて
 
 ### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>エラー メッセージ:"Microsoft OLE DB Provider for Analysis Services。 'Hresult: 0x80004005 説明:' COM エラー: COM エラー: mscorlib; 呼び出しのターゲットが例外をスローしました"
 
-考えられる原因の 1 つは、Azure Analysis Services の認証用に、Azure Multi-Factor Authentication が有効になっているユーザー名またはパスワードが構成されていることです。 この認証は、SSIS 統合ランタイムではサポートされていません。 Azure Analysis Services の認証には、サービス プリンシパルを使用してみてください。
+考えられる原因の 1 つは、Azure Analysis Services の認証用に、Azure AD Multi-Factor Authentication が有効になっているユーザー名またはパスワードが構成されていることです。 この認証は、SSIS 統合ランタイムではサポートされていません。 Azure Analysis Services の認証には、サービス プリンシパルを使用してみてください。
 
 1. 「[サービス プリンシパルによる自動化](../analysis-services/analysis-services-service-principal.md)」の説明に従って、サービス プリンシパルを準備します。
-2. 接続マネージャーで、 **[特定のユーザー名とパスワードを使用する]** を構成します。ユーザー名として **AppID** 、パスワードとして **clientSecret** を設定します。
+2. 接続マネージャーで、 **[特定のユーザー名とパスワードを使用する]** を構成します。ユーザー名として **AppID**、パスワードとして **clientSecret** を設定します。
 
 ### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>エラー メッセージ:"ADO NET 変換元では、接続 {GUID} を取得できませんでした。エラー メッセージ: ユーザー 'NT AUTHORITY\ANONYMOUS LOGON' はログインできませんでした。'" (マネージド ID の使用時)
 
-*ConnectUsingManagedIdentity* パラメーターが **True** のときは、接続マネージャーの認証方法を **[Active Directory パスワード認証]** として構成していないことを確認してください。 代わりに **[SQL 認証]** として構成できます。これは、 *ConnectUsingManagedIdentity* が設定されている場合は無視されます。
+*ConnectUsingManagedIdentity* パラメーターが **True** のときは、接続マネージャーの認証方法を **[Active Directory パスワード認証]** として構成していないことを確認してください。 代わりに **[SQL 認証]** として構成できます。これは、*ConnectUsingManagedIdentity* が設定されている場合は無視されます。
 
 ### <a name="error-message-0xc020801f-at--odata-source--cannot-acquire-a-managed-connection-from-the-run-time-connection-manager"></a>エラー メッセージ:"0xC020801F at ...、OData Source [...]:ランタイム接続マネージャーからマネージド接続を取得できません"
 

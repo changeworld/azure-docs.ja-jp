@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: b77132a12475a66c099f5d38c04e8b58f7b839a7
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: d15f58a2d87483e8e2fd6711481bfe8866ca1548
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504851"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920612"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Azure の共有イメージ ギャラリーのトラブルシューティング
 
@@ -70,14 +70,14 @@ ms.locfileid: "94504851"
 **原因**:<imageDefinitionName\> の名前の末尾がピリオドまたはアンダースコアになっています。  
 **回避策**:次の条件を満たすイメージ定義の名前を選択します: 
 - 80 文字に制限されている
-- 英字、数字、アンダースコア、ピリオドのみを含む
+- 英字、数字、アンダースコア、ハイフン、ピリオドのみを含む
 - 先頭と末尾が英字または数字である。
 
 "*その検証規則によると、エンティティ名 <imageDefinitionName\> は無効です: ^[^\_\\W][\\w-.\_]{0,79}(?<![-.])$* "  
 **原因**:<imageDefinitionName\> の名前の末尾がピリオドまたはアンダースコアになっています。  
 **回避策**:次の条件を満たすイメージ定義の名前を選択します: 
 - 80 文字に制限されている
-- 英字、数字、アンダースコア、ピリオドのみを含む
+- 英字、数字、アンダースコア、ハイフン、ピリオドのみを含む
 - 先頭と末尾が英字または数字である
 
 "*資産名 galleryImage.properties.identifier.<property\> が有効ではありません。空にすることはできません。許可されている文字は、大文字または小文字、数字、ハイフン (-)、ピリオド (.)、アンダースコア (\_) です。名前の末尾にピリオド (.) を使用することはできません。名前の長さは、<number\> 文字を超えることはできません。* "  

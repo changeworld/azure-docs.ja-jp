@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 03/05/2020
+ms.date: 11/18/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: a9b68b2d4298c5e692782e529bae9a9df6359953
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 97017e104ecff38ebf4e475fb5f6ae42707ef10e
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331160"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919592"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する
 
@@ -86,6 +86,9 @@ AKS にデプロイする場合、新しい AKS クラスターを作成する�
 - 既存のクラスターを接続する場合、 **[AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** を使用します。 どちらも **enable_ssl** メソッドを持つ構成オブジェクトが返されます。
 
 **enable_ssl** メソッドは、Microsoft によって提供される証明書でも、購入する証明書を使用することもできます。
+
+> [!WARNING]
+> AKS クラスターが内部ロード バランサーで構成されている場合、Microsoft が提供する証明書の使用は __サポートされていません__。 Microsoft 提供の証明書を使用するには、Azure のパブリック IP リソースが必要です。これが内部ロード バランサー用に構成されている場合、AKS には使用できません。
 
   * Microsoft 提供の証明書を使用する場合、*leaf_domain_label* パラメーターを使用する必要があります。 このパラメーターは、サービスの DNS 名を生成します。 たとえば、"contoso" という値を使用すると "contoso\<six-random-characters>.\<azureregion>.cloudapp.azure.com" というドメイン名が作成されます。この場合の \<azureregion> は、サービスが含まれるリージョンを意味しています。 必要に応じて、*overwrite_existing_domain* パラメーターを使用して既存の *leaf_domain_label* を上書きできます。
 
@@ -159,7 +162,8 @@ aci_config = AciWebservice.deploy_configuration(
 
   > [!WARNING]
   > Microsoft 提供の証明書を使用してサービスを作成するために *leaf_domain_label* を使用した場合は、クラスターの DNS 値を手動で更新しないでください。 この値は、自動的に設定される必要があります。
-
+  >
+  > AKS クラスターが内部ロード バランサーで構成されている場合、Microsoft が提供する証明書の使用 (*leaf_domain_label* を設定) は __サポートされていません__。 Microsoft 提供の証明書を使用するには、Azure のパブリック IP リソースが必要です。これが内部ロード バランサー用に構成されている場合、AKS には使用できません。
   左ウィンドウの **[設定]** タブの下の **[構成]** タブで、AKS クラスターのパブリック IP アドレスの DNS を更新します。 (次の図を参照してください)。パブリック IP アドレスは、AKS エージェント ノードとその他のネットワーク リソースを含むリソース グループの下に作成されるリソースの種類です。
 
   [![Azure Machine Learning: TLS を使用して Web サービスをセキュリティで保護する](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
