@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/15/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 63768581da07566ac59b525ca0aefbd7b616e20e
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 4f774351fc0eaaf32069687a1943c72b74b6308a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635570"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494326"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>クイック スタート:Azure CLI を使用した Azure Database for MySQL サーバーの作成
 
 > [!TIP]
 > よりシンプルな [az mysql up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI コマンド (現在はプレビュー段階) の使用を検討してください。 こちらの[クイック スタート](./quickstart-create-server-up-azure-cli.md) をお試しください。
 
-このクイック スタートでは、[Azure Cloud Shell](https://shell.azure.com) の [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) コマンドを使用して、Azure Database for MySQL サーバーを 5 分で作成する方法について説明します。 
+このクイック スタートでは、[Azure Cloud Shell](https://shell.azure.com) の [Azure CLI](/cli/azure/get-started-with-azure-cli) コマンドを使用して、Azure Database for MySQL サーバーを 5 分で作成する方法について説明します。 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

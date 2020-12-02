@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9ff05f2cf9f29ef86a6db9955e7d28c9035e1bf4
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 26905b746efb0bfcc877e0fa8fad797672bb6447
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376963"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483217"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン
 
@@ -69,7 +69,7 @@ Azure では、VM のサイズおよびオペレーティング システムに�
 サブスクリプションにはそれぞれ既定の[クォータ制限](../../azure-resource-manager/management/azure-subscription-service-limits.md)が設けられており、プロジェクトで多数の VM をデプロイする場合に、その点が影響する可能性があります。 現在は、リージョンあたり 20 VM の制限がサブスクリプションごとに設けられています。 制限は、[サポート チケットで引き上げを依頼する](../../azure-portal/supportability/resource-manager-core-quotas-request.md)ことによって引き上げることができます。
 
 ### <a name="operating-system-disks-and-images"></a>オペレーティング システム ディスクおよびイメージ
-仮想マシンは、[仮想ハード ディスク (VHD)](../managed-disks-overview.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) を使用して、オペレーティング システム (OS) およびデータを格納します。 VHD は、OS をインストールするために選択できるイメージの保存にも使用できます。 
+仮想マシンは、[仮想ハード ディスク (VHD)](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用して、オペレーティング システム (OS) およびデータを格納します。 VHD は、OS をインストールするために選択できるイメージの保存にも使用できます。 
 
 Azure には、Windows Server オペレーティング システムのさまざまなバージョンと種類で使用できる [Marketplace イメージ](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images%3Bwindows&page=1)が多数用意されています。 Marketplace イメージは、イメージの発行元、プラン、SKU、およびバージョン (通常は最新バージョンとして指定) によって識別されます。 64 ビットのオペレーティング システムのみがサポートされています。 サポートされているゲストのオペレーティング システム、ロール、機能の詳細については、「[Microsoft Azure 仮想マシンのマイクロソフト サーバー ソフトウェアのサポート](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)」を参照してください。
 

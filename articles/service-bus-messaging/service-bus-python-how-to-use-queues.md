@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 11/18/2020
 ms.author: spelluru
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 2b54b167413b0fcbe7022eab4bbbf34b37225be5
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 7275e33e44c20ece6eb7d620e2c1e8032be41a7b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95810601"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498661"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-python"></a>Azure Service Bus キューとの間でメッセージを送受信する (Python)
 この記事では、Python を使用して、Azure Service Bus キューとの間でメッセージを送受信する方法について説明します。 
@@ -208,5 +208,4 @@ Azure portal で、使用する Service Bus 名前空間に移動します。 **
 - [サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples)。 
     - **sync_samples** フォルダーには、Service Bus を同期的な方法で扱う方法を紹介したサンプルが格納されています。 このクイック スタートで使用したのは、こちらの方法です。 
     - **async_samples** フォルダーには、Service Bus を非同期的な方法で扱う方法を紹介したサンプルが格納されています。 
-- [azure-servicebus のリファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-servicebus/azure.servicebus?view=azure-python-preview&preserve-view=true)
-
+- [azure-servicebus のリファレンス ドキュメント](/python/api/azure-servicebus/azure.servicebus?preserve-view=true&view=azure-python-preview)

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: 56bed63a9030135966a208dd1ad9b4c45cde328d
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: aac3b6339c318c76e9b0c9abd0bc3778f2563a6f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95811695"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498695"
 ---
 # <a name="quickstart-service-bus-topics-and-subscriptions-with-nodejs-and-the-preview-azureservice-bus-package"></a>クイックスタート: Service Bus のトピックとサブスクリプションを Node.js およびプレビューの azure/service-bus パッケージで使用する
 このチュートリアルでは、JavaScript プログラムの [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) パッケージを使用して、Service Bus トピックにメッセージを送信したり、そのトピックの Service Bus サブスクリプションからメッセージを受信したりする方法について説明します。
@@ -208,4 +208,4 @@ Azure portal で Service Bus 名前空間に移動し、下のペインでトピ
 
 - [Python 用の Azure Service Bus クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
 - [サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples)。 JavaScript のサンプルは **javascript** フォルダーに、TypeScript のサンプルは **typescript** フォルダーに格納されています。 
-- [azure-servicebus のリファレンス ドキュメント](https://docs.microsoft.com/javascript/api/overview/azure/service-bus)
+- [azure-servicebus のリファレンス ドキュメント](/javascript/api/overview/azure/service-bus)

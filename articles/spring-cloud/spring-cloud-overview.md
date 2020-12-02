@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 159851f5b1ca38cc34da785b39229a6a91e1e4dd
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 74ebdafb835aff75f282b9d6ac02d8ccf672a2be
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090694"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501092"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Azure Spring Cloud とは
 
@@ -48,7 +48,7 @@ Azure Spring Cloud では、Azure Spring Cloud ダッシュボードで、マイ
 
 ## <a name="application-monitoring"></a>アプリケーションの監視
 
-Spring Cloud の分散トレース ツールを使用すると、開発者はアプリケーション内のマイクロサービス間の複雑な相互接続をデバッグおよび監視できます。  [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) と Azure の [Application Insights](../azure-monitor/insights/insights-overview.md) が統合され、Azure portal から強力な分散トレース機能を利用できます。  詳細を学習するには、この[チュートリアル](spring-cloud-tutorial-distributed-tracing.md)を完了してください。
+Spring Cloud の分散トレース ツールを使用すると、開発者はアプリケーション内のマイクロサービス間の複雑な相互接続をデバッグおよび監視できます。  [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) と Azure の [Application Insights](../azure-monitor/monitor-reference.md) が統合され、Azure portal から強力な分散トレース機能を利用できます。  詳細を学習するには、この[チュートリアル](spring-cloud-tutorial-distributed-tracing.md)を完了してください。
 
 ## <a name="next-steps"></a>次のステップ
 

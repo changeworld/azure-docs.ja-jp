@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a62aa9df818bb6ff7026d95daa625acabe66b990
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: f8900db8ed43b8c255915bf5429e1211f04e7338
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345637"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491963"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>クイック スタート:.NET 用 Azure Queue storage クライアント ライブラリ v12
 
@@ -34,7 +34,7 @@ ms.locfileid: "93345637"
 - [API リファレンス ドキュメント](/dotnet/api/azure.storage.queues)
 - [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
 - [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
-- [サンプル](../common/storage-samples-dotnet.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
+- [サンプル](../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -50,7 +50,7 @@ ms.locfileid: "93345637"
 
 *QueuesQuickstartV12* という名前の .NET Core アプリケーションを作成します。
 
-1. コンソール ウィンドウ (cmd、PowerShell、Bash など) 上で、`dotnet new` コマンドを使用し、 *QueuesQuickstartV12* という名前の新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイルを使用する単純な "Hello World" C# プロジェクトが作成されます。 *Program.cs* 。
+1. コンソール ウィンドウ (cmd、PowerShell、Bash など) 上で、`dotnet new` コマンドを使用し、*QueuesQuickstartV12* という名前の新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイルを使用する単純な "Hello World" C# プロジェクトが作成されます。*Program.cs*。
 
    ```console
    dotnet new console -n QueuesQuickstartV12

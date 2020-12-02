@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 8a4df7bf-be49-4198-800e-db381cda98f5
 ms.date: 10/30/2020
-ms.openlocfilehash: ce07a0667b1fd4b439f061966e4ee0b1112578c4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: bab84b12c871c621b5a317ba8b47f9b18c91bff3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413209"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500191"
 ---
 # <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上の JBoss EAP を使用してエンタープライズ Java アプリケーションを Azure にデプロイする
 
@@ -31,7 +31,7 @@ JBoss EAP と RHEL には、あらゆる環境でエンタープライズ Java �
 
   EAP のエンタイトルメントがない場合は、先に進む前に [JBoss EAP 評価サブスクリプション](https://access.redhat.com/products/red-hat-jboss-enterprise-application-platform/evaluation)を入手してください。 新しい Red Hat サブスクリプションを作成するには、[Red Hat カスタマー ポータル](https://access.redhat.com/)に移動して、アカウントを設定します。
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/overview)。
+* [Azure CLI](/cli/azure/overview)。
 
 * RHEL オプション。 従量課金制 (PAYG) またはサブスクリプション持ち込み (BYOS) のどちらかを選択します。 BYOS を選択した場合、クイックスタート テンプレートをデプロイする前に [Red Hat Cloud Access](https://access.redhat.com/) RHEL Gold Image をアクティブにする必要があります。
 
@@ -164,9 +164,9 @@ RHEL OS に BYOS を使用するには、Azure で RHEL OS を使用するため
 
    1. Azure サブスクリプションで Red Hat Gold Image が使用できる状態になるまで待ちます。 通常これらのイメージは、申請から 3 時間以内に利用できるようになります。
     
-3. RHEL BYOS イメージに対する Azure Marketplace の使用条件に同意します。 このプロセスは、以下の Azure CLI コマンドを実行することによって完了できます。 詳細については、[Azure における RHEL BYOS Gold Image](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos) に関するドキュメントを参照してください。 必ず最新バージョンの Azure CLI を実行してください。
+3. RHEL BYOS イメージに対する Azure Marketplace の使用条件に同意します。 このプロセスは、以下の Azure CLI コマンドを実行することによって完了できます。 詳細については、[Azure における RHEL BYOS Gold Image](./byos.md) に関するドキュメントを参照してください。 必ず最新バージョンの Azure CLI を実行してください。
 
-   1. Azure CLI セッションを開き、ご利用の Azure アカウントで認証を行います。 詳細については、「[Azure CLI を使用してサインインする](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)」を参照してください。
+   1. Azure CLI セッションを開き、ご利用の Azure アカウントで認証を行います。 詳細については、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli)」を参照してください。
 
    1. 次の CLI コマンドを実行して、ご利用のサブスクリプションで RHEL BYOS イメージが使用できることを確認します。 何も結果が返されない場合は、Azure サブスクリプションの RHEL BYOS イメージがアクティブになっていることを確認します。
    
@@ -203,7 +203,7 @@ Azure では、JBoss EAP が BYOS モデルでのみ提供されます。 この
   New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri <raw link to the template which can be obtained from github>
   ```
  
-  Azure PowerShell のインストールと構成については、[PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/)を参照してください。  
+  Azure PowerShell のインストールと構成については、[PowerShell のドキュメント](/powershell/azure/)を参照してください。  
 
 - **Azure CLI**。 次のコマンドを実行してテンプレートをデプロイします
 
@@ -215,7 +215,7 @@ Azure では、JBoss EAP が BYOS モデルでのみ提供されます。 この
   az group deployment create --resource-group <my-resource-group> --template-uri <raw link to the template which can be obtained from github>
   ```
 
-  Azure CLI のインストールと構成の詳細については、[CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。
+  Azure CLI のインストールと構成の詳細については、[CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 - **Azure Portal** 以下のセクションで説明する Azure クイックスタート テンプレートを使用して、Azure portal にデプロイできます。 クイックスタートに移動したら、 **[Deploy to Azure]\(Azure にデプロイ\)** または **[Browse on GitHub]\(GitHub で参照\)** ボタンを選択します。
 
@@ -231,10 +231,10 @@ Azure では、JBoss EAP が BYOS モデルでのみ提供されます。 この
 
 ## <a name="resource-links"></a>リソース リンク
 
-* [Azure ハイブリッド特典](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
-* [Azure App Service 向けの Java アプリを構成する](https://docs.microsoft.com/azure/app-service/configure-language-java)
+* [Azure ハイブリッド特典](../../windows/hybrid-use-benefit-licensing.md)
+* [Azure App Service 向けの Java アプリを構成する](../../../app-service/configure-language-java.md)
 * [JBoss EAP on Azure Red Hat OpenShift](https://azure.microsoft.com/services/openshift/)
-* [JBoss EAP on Azure App Service Linux](https://docs.microsoft.com/azure/app-service/quickstart-java)
+* [JBoss EAP on Azure App Service Linux](../../../app-service/quickstart-java.md)
 * [JBoss EAP on Azure App Service をデプロイする](https://github.com/JasonFreeberg/jboss-on-app-service)
 
 ## <a name="next-steps"></a>次のステップ
@@ -242,6 +242,6 @@ Azure では、JBoss EAP が BYOS モデルでのみ提供されます。 この
 * [JBoss EAP 7.2](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/) の詳細を確認する。
 * [JBoss EAP 7.3](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/) の詳細を確認する。
 * [Red Hat Subscription Management](https://access.redhat.com/products/red-hat-subscription-management) の詳細を確認する。
-* [Azure 上の Red Hat ワークロード](https://aka.ms/rhel-docs)について確認する。
+* [Azure 上の Red Hat ワークロード](./overview.md)について確認する。
 * [Azure Marketplace から RHEL の VM または仮想マシン スケール セットに JBoss EAP](https://aka.ms/AMP-JBoss-EAP) をデプロイする。
 * [Azure クイックスタート テンプレートから RHEL の VM または仮想マシン スケール セットに JBoss EAP](https://aka.ms/Quickstart-JBoss-EAP) をデプロイする。

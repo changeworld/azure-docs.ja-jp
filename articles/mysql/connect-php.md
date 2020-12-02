@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: b93bc4d1adfa2787f14106707b3848ebfe5c57bc
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: cb3b711c532ccf44bebf08d42b5284db458cf5b7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021203"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492660"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:PHP を使用して Azure Database for MySQL に接続してデータを照会する
 このクイックスタートでは、[PHP](https://secure.php.net/manual/intro-whatis.php) アプリケーションを使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。
@@ -21,7 +21,7 @@ ms.locfileid: "95021203"
 このクイックスタートでは、以下が必要です。
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free)。
-- Azure Database for MySQL 単一サーバーを、[Azure portal](./quickstart-create-mysql-server-database-using-azure-portal.md) <br/> [Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md) を使用して、Azure Database for PostgreSQL の単一サーバーを作成します (まだない場合)。
+- [Azure portal](./quickstart-create-mysql-server-database-using-azure-portal.md) を使用して、Azure Database for MySQL シングル サーバーを作成します <br/> [Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md) を使用して、Azure Database for PostgreSQL の単一サーバーを作成します (まだない場合)。
 - パブリック アクセスとプライベート アクセスのどちらを使用しているかに基づいて、次の **いずれか** のアクションを実行して、接続を有効にします。
 
     |アクション| 接続方法|ハウツー ガイド|
@@ -30,7 +30,7 @@ ms.locfileid: "95021203"
     | **サービス エンドポイントを構成する** | パブリック | [ポータル](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)|
     | **プライベート リンクを構成する** | プライベート | [ポータル](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) |
 
-- [データベースと管理者以外のユーザーを作成する](/azure/mysql/howto-create-users?tabs=single-server)
+- [データベースと管理者以外のユーザーを作成する](./howto-create-users.md?tabs=single-server)
 - お使いのオペレーティング システム用の最新バージョンの PHP をインストールします
     - [macOS の PHP](https://secure.php.net/manual/install.macosx.php)
     - [Linux の PHP](https://secure.php.net/manual/install.unix.php)

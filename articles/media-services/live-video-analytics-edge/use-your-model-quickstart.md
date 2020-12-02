@@ -4,12 +4,12 @@ description: このクイックスタートでは、独自の HTTP モデルを�
 ms.topic: quickstart
 ms.date: 04/27/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 07661fb1e9496aacff6f108a840e0c357f068d41
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8e3f0a5cb6a97ce55d848c2d3311ebab5151e186
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336464"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494989"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-http-model"></a>クイック スタート:独自の HTTP モデルを使用してライブ ビデオを分析する
 
@@ -86,4 +86,4 @@ ms.locfileid: "91336464"
 上級ユーザー向けのその他の課題を確認します。
 
 * RTSP シミュレーターを使用する代わりに、RTSP をサポートする [IP カメラ](https://en.wikipedia.org/wiki/IP_camera)を使用します。 RTSP をサポートする IP カメラは、[ONVIF 準拠製品](https://www.onvif.org/conformant-products/)のページで検索できます。 プロファイル G、S、または T に準拠しているデバイスを探します。
-* Azure Linux VM ではなく、AMD64 または x64 Linux デバイスを使用してください。 このデバイスは、IP カメラと同じネットワーク内にある必要があります。 [Linux への Azure IoT Edge ランタイムのインストール](../../iot-edge/how-to-install-iot-edge-linux.md)に関するページの手順を参照できます。 次に、「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](../../iot-edge/quickstart-linux.md)」の手順に従って、デバイスを Azure IoT Hub に登録します。
+* Azure Linux VM ではなく、AMD64 または x64 Linux デバイスを使用してください。 このデバイスは、IP カメラと同じネットワーク内にある必要があります。 [Linux への Azure IoT Edge ランタイムのインストール](../../iot-edge/how-to-install-iot-edge.md)に関するページの手順を参照できます。 次に、「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](../../iot-edge/quickstart-linux.md)」の手順に従って、デバイスを Azure IoT Hub に登録します。

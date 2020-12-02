@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 53a10123bf3304ab9c949146d7cad6b904c8323d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: c87290b36ec77e834a0d0fcd99e9a8bdb05675b5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317216"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494700"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>旧バージョンの Azure Migrate を使用する
 
@@ -31,7 +31,7 @@ Azure Migrate サービスのバージョンには、次の 2 つがあります
 
 ## <a name="upgrade-between-versions"></a>バージョン間でアップグレードする
 
-旧バージョンのプロジェクトやコンポーネントを新バージョンにアップグレードすることはできません。 [新しい Azure Migrate プロジェクトを作成](create-manage-projects.md)して、それに[評価と移行ツールを追加する](how-to-add-tool-first-time.md)必要があります。 チュートリアルを利用して、使用可能な評価と移行ツールの使用方法を理解してください。 Log Analytics ワークスペースがクラシック プロジェクトにアタッチされている場合は、クラシック プロジェクトを削除した後で、そのワークスペースを現在のバージョンのプロジェクトにアタッチできます。
+旧バージョンのプロジェクトやコンポーネントを新バージョンにアップグレードすることはできません。 [新しい Azure Migrate プロジェクトを作成](create-manage-projects.md)して、それに[評価と移行ツールを追加する](./create-manage-projects.md)必要があります。 チュートリアルを利用して、使用可能な評価と移行ツールの使用方法を理解してください。 Log Analytics ワークスペースがクラシック プロジェクトにアタッチされている場合は、クラシック プロジェクトを削除した後で、そのワークスペースを現在のバージョンのプロジェクトにアタッチできます。
 
 ## <a name="find-projects-from-previous-version"></a>旧バージョンのプロジェクトを探す
 
@@ -308,7 +308,7 @@ Kusto クエリを実行するには:
 4. Azure Monitor ログを使用して依存関係データを収集するためのクエリを作成します。 次のセクションでサンプル クエリを見つけます。
 5. [実行] をクリックしてクエリを実行します。 
 
-Kusto クエリの作成方法の[詳細を参照してください](../azure-monitor/log-query/get-started-portal.md)。 
+Kusto クエリの作成方法の[詳細を参照してください](../azure-monitor/log-query/log-analytics-tutorial.md)。 
 
 ### <a name="sample-azure-monitor-logs-queries"></a>Azure Monitor ログのサンプル クエリ
 

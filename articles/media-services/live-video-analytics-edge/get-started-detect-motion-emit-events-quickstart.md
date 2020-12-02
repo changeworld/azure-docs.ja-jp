@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge の概要 - Azure
 description: このクイックスタートでは、Live Video Analytics on IoT Edge の使用を開始する方法について説明します。 ライブ ビデオ ストリーム内のモーションを検出する方法について説明します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 2d426952e92951185c43b68266196a6764f4f601
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e67c717a4476ab9191471483d9aa8e8f222cd750
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125015"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498270"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>クイック スタート:はじめに - Live Video Analytics on IoT Edge
 
@@ -39,7 +39,7 @@ ms.locfileid: "92125015"
 * IoT Hub
 * ストレージ アカウント
 * Azure Media Services アカウント
-* Azure 内の Linux VM ([IoT Edge ランタイム](../../iot-edge/how-to-install-iot-edge-linux.md)がインストール済み)
+* Azure 内の Linux VM ([IoT Edge ランタイム](../../iot-edge/how-to-install-iot-edge.md)がインストール済み)
 
 このクイックスタートでは、[Live Video Analytics リソース セットアップ スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)を使用して、ご利用の Azure サブスクリプションに必要なリソースをデプロイすることをお勧めします。 これを行うには、次のステップに従います。
 
@@ -48,7 +48,11 @@ ms.locfileid: "92125015"
 1. Cloud Shell ウィンドウの左側にあるドロップダウン メニューから **[Bash]** をご利用の環境として選択します。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstarts/env-selector.png" alt-text="モーション検出に基づく Live Video Analytics"
+    > :::image type="content" source="./media/quickstarts/env-selector.png" alt-text="環境セレクター":::
+1. 次のコマンドを実行します。
+
+    ```
+    bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
 スクリプトが正常に終了すれば、必要なすべてのリソースがご利用のサブスクリプションに表示されます。 スクリプトの出力では、リソースの表に IoT ハブ名が一覧表示されます。 リソースの種類 `Microsoft.Devices/IotHubs` を探し、名前を書き留めます。 この名前は次の手順で必要になります。 
@@ -80,17 +84,17 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 1. マウスの右ボタンをクリックし、 **[拡張機能の設定]** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="モーション検出に基づく Live Video Analytics":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="拡張機能の設定":::
 1. [Show Verbose Message]\(詳細メッセージの表示\) を検索して有効にします。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="モーション検出に基づく Live Video Analytics":::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="詳細メッセージの表示":::
 1. **[表示]**  >  **[エクスプローラー]** を選択します。 または、Ctrl + Shift + E キーを押します。
 1. **[エクスプローラー]** タブの左下隅で、 **[Azure IoT Hub]** を選択します。
 1. **[その他のオプション]** アイコンを選択して、コンテキスト メニューを表示します。 次に、 **[Set IoT Hub Connection String]\(IoT Hub 接続文字列を設定する\)** を選択します。
 1. 入力ボックスが表示されたら、IoT Hub 接続文字列を入力します。 Cloud Shell では、接続文字列を *~/clouddrive/lva-sample/appsettings.json* から取得できます。
 
-接続に成功した場合、エッジ デバイスの一覧が表示されます。 少なくとも 1 つのデバイス (名前は **lva-sample-device** ) が表示されます。 これでコンテキスト メニューから IoT Edge デバイスを管理し、Azure IoT Hub を操作できるようになりました。 エッジ デバイスにデプロイされたモジュールを表示するには、 **lva-sample-device** の下の **[モジュール]** ノードを展開します。
+接続に成功した場合、エッジ デバイスの一覧が表示されます。 少なくとも 1 つのデバイス (名前は **lva-sample-device**) が表示されます。 これでコンテキスト メニューから IoT Edge デバイスを管理し、Azure IoT Hub を操作できるようになりました。 エッジ デバイスにデプロイされたモジュールを表示するには、**lva-sample-device** の下の **[モジュール]** ノードを展開します。
 
 ![lva-sample-device ノード](./media/quickstarts/lva-sample-device-node.png)
 
@@ -105,8 +109,8 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 
 モジュール内のすべての[グラフ トポロジ](media-graph-concept.md#media-graph-topologies-and-instances)を列挙するには、次のようにします。
 
-1. Visual Studio Code で、 **lvaEdge** モジュールを右クリックし、 **[Invoke Module Direct Method]\(モジュールのダイレクト メソッドを呼び出す\)** を選択します。
-1. 表示されたボックスに、「 *GraphTopologyList* 」と入力します。
+1. Visual Studio Code で、**lvaEdge** モジュールを右クリックし、 **[Invoke Module Direct Method]\(モジュールのダイレクト メソッドを呼び出す\)** を選択します。
+1. 表示されたボックスに、「*GraphTopologyList*」と入力します。
 1. 次の JSON ペイロードをコピーして、ボックスに貼り付けます。 次に、Enter キーを押します。
 
     ```

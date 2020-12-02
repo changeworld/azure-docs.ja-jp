@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: ad9f3a115ed226b492a08dae29db61029d9098eb
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 03cf20e5c796a7092dc16c466934f377c945ad48
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95556271"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509432"
 ---
 ストレージ アカウントは、Azure ファイル共有またはその他のストレージ リソース (BLOB やキューなど) をデプロイできるストレージの共有プールです。 1 つのストレージ アカウントに格納できる共有の数に制限はありません。 1 つの共有に格納できるファイルの数に制限はなく、ストレージ アカウントの容量の上限までファイルを格納できます。
 
@@ -30,7 +30,7 @@ ms.locfileid: "95556271"
     > [!NOTE]
     > このクイックスタートでは、Standard ファイル共有を作成しますが、Premium ファイル共有を使用する場合は、 **[Premium]** を選択します。
 
-1. **[アカウントの種類]** で **[StorageV2]** を選択します。 ストレージ アカウントの種類の詳細については、[Azure ストレージ アカウント](../articles/storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)に関するページを参照してください。
+1. **[アカウントの種類]** で **[StorageV2]** を選択します。 ストレージ アカウントの種類の詳細については、[Azure ストレージ アカウント](../articles/storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)に関するページを参照してください。
 
     > [!NOTE]
     > このクイックスタートでは、汎用 v2 アカウントを作成します。 Premium ファイル共有を使用する場合は、代わりに **[FileStorage]** を選択します。

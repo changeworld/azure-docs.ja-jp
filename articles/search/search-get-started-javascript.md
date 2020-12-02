@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0e1b7aa0eb56d5668b6561b36a0f63e719974573
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 69cef4c17fd17219f0221c509775ad3fd6a80a27
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698898"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498984"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-the-javascript-sdk"></a>クイックスタート: JavaScript SDK を使用して Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "94698898"
 > * [REST](search-get-started-rest.md)
 
 
-[Azure Cognitive Search 用 JavaScript (TypeScript) SDK](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme) を使用して、検索インデックスの作成、読み込み、クエリを実行するための Node.js アプリケーションを JavaScript で作成します。
+[Azure Cognitive Search 用 JavaScript (TypeScript) SDK](/javascript/api/overview/azure/search-documents-readme) を使用して、検索インデックスの作成、読み込み、クエリを実行するための Node.js アプリケーションを JavaScript で作成します。
 
 この記事では、アプリケーションを作成する方法について詳しく説明します。 代わりに、[ソース コードとデータをダウンロード](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11)して、コマンド ラインでアプリケーションを実行することもできます。
 
@@ -80,7 +80,7 @@ VS Code およびその[統合ターミナル](https://code.visualstudio.com/doc
     ```
      既定値をそのまま使用します。ただし、ライセンスは "MIT" に設定する必要があります。 
 
-3. `@azure/search-documents` ([Azure Cognitive Search 用 JavaScript (TypeScript) SDK](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme)) をインストールします。
+3. `@azure/search-documents` ([Azure Cognitive Search 用 JavaScript (TypeScript) SDK](/javascript/api/overview/azure/search-documents-readme)) をインストールします。
 
     ```cmd
     npm install @azure/search-documents

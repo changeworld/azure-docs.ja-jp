@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 50f15d041f9bcea66400eda0877e9d7914335d74
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: a19b7bc448e9a03afd122dab749352dfa21eaa5b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345722"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491895"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>クイック スタート:Python 用 Azure Queue storage クライアント ライブラリ v12
 
@@ -34,7 +34,7 @@ Python 用 Azure Queue storage クライアント ライブラリ v12 を使用�
 - [API リファレンス ドキュメント](/python/api/azure-storage-queue/index)
 - [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)
 - [パッケージ (Python Package Index)](https://pypi.org/project/azure-storage-queue/)
-- [サンプル](../common/storage-samples-python.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
+- [サンプル](../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -268,7 +268,7 @@ Azure Queue storage は、多数のメッセージを格納するためのサー
 
 このアプリは、3 つのメッセージを作成して Azure のキューに追加します。 コードでは、キュー内のメッセージを一覧表示した後にそれらを取得して削除してから、最後にキューを削除します。
 
-コンソール ウィンドウで、 *queues-quickstart-v12.py* ファイルが格納されているディレクトリに移動し、次の `python` コマンドを実行してアプリを実行します。
+コンソール ウィンドウで、*queues-quickstart-v12.py* ファイルが格納されているディレクトリに移動し、次の `python` コマンドを実行してアプリを実行します。
 
 ```console
 python queues-quickstart-v12.py
