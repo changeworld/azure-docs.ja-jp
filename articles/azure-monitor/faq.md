@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 0812716ab9d952969ccfc14fc0a1e833fae1c9e1
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 391d9562bc73265a10976f485c78e3966aa4fe83
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94653795"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536287"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
@@ -81,7 +81,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 ### <a name="how-do-i-retrieve-log-data"></a>ログ データはどのようにして取得しますか?
 すべてのデータは、Kusto クエリ言語 (KQL) で記述したログ クエリを使用して、Log Analytics ワークスペースから取得します。 独自のクエリを記述したり、特定のアプリケーションまたはサービス用のログ クエリが含まれるソリューションや分析情報を使用したりできます。 「[Azure Monitor のログ クエリの概要](log-query/log-query-overview.md)」をご覧ください。
-
+p
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Log Analytics ワークスペースのデータは削除できますか?
 データは、ワークスペースの[保有期間](platform/manage-cost-storage.md#change-the-data-retention-period)に従って削除されます。 プライバシーやコンプライアンス上の理由から、特定のデータを削除することが可能です。 詳細については、「[プライベート データをエクスポートして削除する方法](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)」を参照してください。
 
@@ -412,7 +412,7 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 - カスタム ダッシュボードとブックを再作成します。 
 - カスタム ログまたはメトリック アラートのスコープを再作成または更新します。 
 - 可用性アラートを再作成します。
-- ユーザーが新しいリソースにアクセスするために必要なカスタムのロールベースのアクセス制御 (RBAC) 設定を再作成します。 
+- ユーザーが新しいリソースにアクセスするために必要なカスタムの Azure ロールベースのアクセス制御 (Azure RBAC) 設定を再作成します。 
 - インジェスト サンプリング、データ保有、日次上限、およびカスタム メトリックの有効化を含む設定をレプリケートします。 これらの設定は、 **[使用量と推定コスト]** ペインで制御します。
 - [リリース注釈](/azure/azure-monitor/app/annotations)、[ライブ メトリックとコントロール チャネルの保護](app/live-stream.md#secure-the-control-channel)など、API キーに依存するすべての統合。新しい API キーを生成し、関連する統合を更新する必要があります。 
 - クラシック リソースの連続エクスポートを再構成する必要があります。
@@ -595,10 +595,6 @@ OpenTelemetry コレクターについては、[GitHub の readme](https://githu
 
 ## <a name="azure-monitor-for-containers"></a>コンテナーに対する Azure Monitor
 
-### <a name="health-feature-is-in-private-preview"></a>正常性機能 (プライベート プレビュー)
-
-機能を追加するための一連の変更を行い、お客様からのフィードバックに対処する予定です。 正常性機能は、2020 年 6 月末にプライベート プレビューに移行します。詳細については、[Azure 更新プログラムに関するお知らせ](https://azure.microsoft.com/updates/ci-health-limited-preview/)を参照してください。
-
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>ノード ビューで *[その他のプロセス]* は何を表していますか?
 
 **[その他のプロセス]** は、ノードのリソース使用率が高い根本原因を明確に理解するのに役立つことを目的としています。 これによって、コンテナー化されたプロセスとコンテナー化されていないプロセスで使用率を区別できます。
@@ -684,9 +680,9 @@ ContainerInventory テーブルには、停止中と実行中両方のコンテ�
 
 "**Microsoft.OperationsManagement へのサブスクリプション登録がない**" というエラーが表示される場合は、ワークスペースが定義されているサブスクリプションでリソース プロバイダー **Microsoft.OperationsManagement** を登録することで解決できます。 これを行う方法に関するドキュメントは、[こちら](../azure-resource-manager/templates/error-register-resource-provider.md)にあります。
 
-### <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>RBAC 対応の AKS クラスターはサポートされていますか
+### <a name="is-there-support-for-kubernetes-rbac-enabled-aks-clusters"></a>Kubernetes RBAC 対応の AKS クラスターはサポートされていますか。
 
-コンテナー監視ソリューションでは RBAC がサポートされていませんが、Azure Monitor for Containers ではサポートされています。 これらのクラスターのデータが示されるブレードでは、ソリューションの詳細ページに正しい情報が表示されない場合があります。
+コンテナー監視ソリューションでは Kubernetes RBAC がサポートされていませんが、Azure Monitor for Containers ではサポートされています。 これらのクラスターのデータが示されるブレードでは、ソリューションの詳細ページに正しい情報が表示されない場合があります。
 
 ### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Helm を使用して kube システム名前空間内のコンテナーのログ収集を有効にするにはどうすればよいですか
 

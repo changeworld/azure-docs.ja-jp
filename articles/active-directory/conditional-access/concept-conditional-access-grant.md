@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ef2d233024ab3e9cd086e8285e681dc9f42f3f7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a8915ae349e33390ce5bb687d7c07a21665a0258
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95904020"
+ms.locfileid: "96029406"
 ---
 # <a name="conditional-access-grant"></a>条件付きアクセス:Grant
 
@@ -108,7 +108,7 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 - 承認されたクライアント アプリは、Intune モバイル アプリケーション管理機能をサポートしています。
 - **[承認されたクライアント アプリが必要です]** 要件:
    - デバイス プラットフォームの条件に関しては、iOS と Android のみがサポートされます。
-   - デバイスを登録するには、ブローカー アプリが必要です。 iOS では、ブローカー アプリは Microsoft Authenticator であり、Android では Intune ポータル サイト アプリです。
+   - デバイスを登録するには、ブローカー アプリが必要です。 ブローカー アプリには、iOS 用の Microsoft Authenticator か、Android デバイス用の Microsoft Authenticator または Microsoft ポータル サイトを使用できます。
 - 条件付きアクセスでは、InPrivate モードの Microsoft Edge を承認されたクライアント アプリと見なすことはできません。
 
 「[方法: 条件付きアクセスを使用してクラウド アプリへのアクセスに承認されたクライアント アプリを要求する](app-based-conditional-access.md)」を参照して構成の例を確認してください。

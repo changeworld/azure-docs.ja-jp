@@ -2,19 +2,21 @@
 title: テンプレートにおける変数
 description: Azure Resource Manager テンプレートで変数を定義する方法について説明します。
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: cf135959d30702ea58b7a1d4fdd82625a39245d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: 7758451747503cb8c42566dc081a91f84bafa375
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75476165"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95916005"
 ---
 # <a name="variables-in-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの変数
 
 この記事では、Azure Resource Manager テンプレートで変数を定義および使用する方法について説明します。 変数を使用してテンプレートを簡略化します。 テンプレート全体で複雑な式を繰り返すのではなく、複雑な式を含む変数を定義します。 次に、テンプレート全体で、必要に応じてその変数を参照します。
 
 Resource Manager は、デプロイ操作を開始する前に変数を解決します。 テンプレートで変数が使用されている場合、Resource Manager はそれを解決済みの値に置き換えます。
+
+各変数の形式は、いずれかの[データ型](template-syntax.md#data-types)に一致している必要があります。
 
 ## <a name="define-variable"></a>変数を定義する
 

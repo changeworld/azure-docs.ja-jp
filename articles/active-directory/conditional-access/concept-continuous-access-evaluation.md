@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ca23c1503b01c1aa9523edc2576599d7b6ab458
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 706fa1666dc327955294fb350b673aed40d6bf48
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992808"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95520664"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 
@@ -26,7 +26,9 @@ ms.locfileid: "91992808"
 
 ポリシー違反やセキュリティの問題にタイムリーに対応するには、トークン発行元 (Azure AD など) と証明書利用者 (Exchange Online など) の間で "対話" を行う必要があります。 この双方向の対話では、2 つの重要な機能が提供されます。 証明書利用者は、変更 (新しい場所からのクライアントの移動など) が生じるとそれを認識し、トークン発行元に通知することができます。 また、アカウントの侵害、無効化、またはその他の懸念事項により、特定のユーザーのトークンへの信用を停止するよう証明書利用者に指示する方法が、トークン発行元に提供されます。 この対話のメカニズムは、継続的アクセス評価 (CAE) と呼ばれます。 目標は応答をほぼリアルタイムにすることですが、場合によっては、イベントの伝播時間が原因で最大 15 分の遅延が発生します。
 
-継続的アクセス評価の初期実装では、Exchange、Teams、SharePoint Online に重点を置いています。 
+継続的アクセス評価の初期実装では、Exchange、Teams、SharePoint Online に重点を置いています。
+
+CAE を使用するようにアプリケーションを準備する方法については、「[継続的アクセス評価が有効になった API をアプリケーションで使用する方法](/develop/app-resilience-continuous-access-evaluation.md)」を参照してください。
 
 ### <a name="key-benefits"></a>主な利点
 
@@ -71,7 +73,7 @@ Exchange と SharePoint は、重要な条件付きアクセス ポリシーを�
 
 ### <a name="client-side-claim-challenge"></a>クライアント側の要求チャレンジ
 
-継続的アクセス評価を行う前に、クライアントは、期限切れになっていない限り、常にキャッシュからアクセス トークンを再生しようとします。 CAE では、リソース プロバイダーが期限切れになっていない場合も、トークンを拒否できる新しいケースが導入されています。 キャッシュされたトークンの有効期限が切れていない場合でも、クライアントにキャッシュをバイパスするように通知するために、**要求チャレンジ**と呼ばれるメカニズムが導入されました。これは、トークンが拒否されたため、Azure AD から新しいアクセス トークンの発行を受ける必要があることを示します。 CAE で要求チャレンジを認識するには、クライアントの更新が必要です。 次のアプリケーションの最新バージョンで、要求チャレンジがサポートされています。
+継続的アクセス評価を行う前に、クライアントは、期限切れになっていない限り、常にキャッシュからアクセス トークンを再生しようとします。 CAE では、リソース プロバイダーが期限切れになっていない場合も、トークンを拒否できる新しいケースが導入されています。 キャッシュされたトークンの有効期限が切れていない場合でも、クライアントにキャッシュをバイパスするように通知するために、**要求チャレンジ** と呼ばれるメカニズムが導入されました。これは、トークンが拒否されたため、Azure AD から新しいアクセス トークンの発行を受ける必要があることを示します。 CAE で要求チャレンジを認識するには、クライアントの更新が必要です。 次のアプリケーションの最新バージョンで、要求チャレンジがサポートされています。
 
 - Outlook Windows
 - Outlook iOS
@@ -140,7 +142,7 @@ CAE 対応クライアントを使用していない場合でも、[構成可能
 CAE では、IP ベースの名前付きの場所についてのみ分析情報を得られます。 [MFA の信頼できる IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) や国ベースの場所など、他の場所の設定について分析情報は得られません。 ユーザーの場所が MFA の信頼できる IP または信頼できる場所 (MFA の信頼できる IP、国の場所など) である場合、ユーザーが別の場所に移動した後は CAE は適用されません。 このような場合は、即時 IP 適用チェックなしで 1 時間の CAE トークンが発行されます。
 
 > [!IMPORTANT]
-> 継続的アクセス評価のために場所を構成する場合は、[IP ベースの条件付きアクセスの場所の条件](../conditional-access/location-condition.md#preview-features)のみ使用し、ID プロバイダーとリソース プロバイダーが認識できる **IPv4 と IPv6 の両方を含む**すべての IP アドレスを構成してください。 Azure Multi-Factor Authentication のサービス設定ページにある国の場所の条件や信頼できる IP 機能は使用しないでください。
+> 継続的アクセス評価のために場所を構成する場合は、[IP ベースの条件付きアクセスの場所の条件](../conditional-access/location-condition.md#preview-features)のみ使用し、ID プロバイダーとリソース プロバイダーが認識できる **IPv4 と IPv6 の両方を含む** すべての IP アドレスを構成してください。 Azure AD Multi-Factor Authentication のサービス設定ページにある国の場所の条件や信頼できる IP 機能は使用しないでください。
 
 ### <a name="ip-address-configuration"></a>IP アドレスの構成
 

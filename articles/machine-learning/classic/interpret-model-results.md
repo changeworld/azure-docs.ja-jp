@@ -8,17 +8,16 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
-ms.openlocfilehash: 3cfdeaee863c8e11a76ac5842ae6c35d370e2ae2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 74210475cc8c0efd274d6e80c3f1c89b5206a97d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322548"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95509504"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) でモデル結果を解釈する
 
-**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
-
+**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としています。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 このトピックでは、Azure Machine Learning Studio (クラシック) で予測結果を視覚化および解釈する方法について説明します。 モデルのトレーニングと予測 (「モデルのスコア付け」) が完了したら、予測結果を理解し、解釈する必要があります。
 
@@ -58,7 +57,7 @@ Azure Machine Learning Studio (クラシック) には、これらの各種類�
 
 図 1. あやめの 2 クラス分類問題の実験
 
-この問題を解決するために、図 1 に示すとおり実験が実行されました。 2 クラスのブースト デシジョン ツリー モデルがトレーニングされ、スコア付けされました。 これで、 [モデルのスコア付け][score-model]モジュールの出力ポートをクリックしてから **[視覚化]** をクリックすることによって、 [モデルのスコア付け][score-model]モジュールの予測結果を視覚化できるようになりました。
+この問題を解決するために、図 1 に示すとおり実験が実行されました。 2 クラスのブースト デシジョン ツリー モデルがトレーニングされ、スコア付けされました。 これで、[モデルのスコア付け][score-model]モジュールの出力ポートをクリックしてから **[視覚化]** をクリックすることによって、[モデルのスコア付け][score-model]モジュールの予測結果を視覚化できるようになりました。
 
 ![モデルのスコア付けモジュール](./media/interpret-model-results/1_1.png)
 
@@ -107,7 +106,7 @@ Web サービスを実行し、テスト インスタンスの特徴の値を入
 
 図 6: 文字認識の多クラス分類問題の実験
 
-[モデルのスコア付け][score-model]モジュールの出力ポートをクリックしてから **[視覚化]** をクリックすることによって、 [モデルのスコア付け][score-model]モジュールの結果を視覚化すると、図 7 に示す内容が表示されます。
+[モデルのスコア付け][score-model]モジュールの出力ポートをクリックしてから **[視覚化]** をクリックすることによって、[モデルのスコア付け][score-model]モジュールの結果を視覚化すると、図 7 に示す内容が表示されます。
 
 ![モデルのスコア付けの結果](./media/interpret-model-results/7.png)
 
@@ -185,7 +184,7 @@ Web サービスを実行して返された結果は、図 14 のようになり
 
 クラスタリングは、トレーニング データ セットがグランドトルースのラベルを単独で持たない点で、分類とは異なります。 クラスタリングでは、トレーニング データセットのインスタンスを個別のクラスターにグループ化します。 トレーニング プロセス中に、モデルは特徴ごとの違いを学習してエントリにラベルを付けます。 その後、トレーニング済みモデルを使用して、後続のエントリをさらに分類できます。 クラスタリング問題で使用する結果には 2 つのパートがあります。 最初のパートでは、トレーニング データセットにラベルを付け、2 つ目のパートでは、トレーニング済みモデルを使用して新しいデータセットを分類します。
 
-結果の最初のパートは、 [クラスタリング モデルのトレーニング][train-clustering-model]の左の出力ポートをクリックしてから **[視覚化]** をクリックすることによって視覚化できます。 図 16 は、その視覚化を示しています。
+結果の最初のパートは、[クラスタリング モデルのトレーニング][train-clustering-model]の左の出力ポートをクリックしてから **[視覚化]** をクリックすることによって視覚化できます。 図 16 は、その視覚化を示しています。
 
 ![クラスタリング結果](./media/interpret-model-results/16.png)
 

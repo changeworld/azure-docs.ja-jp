@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: devx-track-js
-ms.openlocfilehash: d1d3ad94957e791b2178b6c60d4c7debdec2b391
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e680bc601b7f230314c1063523a003e95a849c0a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91283430"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024400"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Azure 上に Ethereum Proof-of-Authority Consortium ソリューションをデプロイする
 
@@ -48,7 +48,9 @@ Ethereum ソリューション テンプレートを使用して、単一また�
 * ログとパフォーマンスの統計情報を集約するための Azure Monitor
 * プライベート VNet 間の VPN 接続を可能にするための VNet ゲートウェイ (オプション)
 
-既定では、サブスクリプションとクラウド間の接続を簡単にするために、RPC とピアリング エンドポイントにはパブリック IP を使用してアクセスできます。 アプリケーション レベルのアクセス制御には、[Parity のアクセス許可コントラクト](https://wiki.parity.io/Permissioning)を使用できます。 サブスクリプション間接続に VNet ゲートウェイを利用する、VPN の背後にデプロイされたネットワークがサポートされています。 VPN と VNet のデプロイはより複雑であるため、ソリューションのプロトタイプを作成するときは、パブリック IP モデルから始めることをお勧めします。
+既定では、サブスクリプションとクラウド間の接続を簡単にするために、RPC とピアリング エンドポイントにはパブリック IP を使用して
+
+アクセスできます。 アプリケーション レベルのアクセス制御には、[Parity のアクセス許可コントラクト](https://openethereum.github.io/Permissioning.html)を使用できます。 サブスクリプション間接続に VNet ゲートウェイを利用する、VPN の背後にデプロイされたネットワークがサポートされています。 VPN と VNet のデプロイはより複雑であるため、ソリューションのプロトタイプを作成するときは、パブリック IP モデルから始めることをお勧めします。
 
 信頼性とモジュール性を実現するために、Docker コンテナーを使用します。 バージョン管理されたイメージを各デプロイの一部としてホストして使用するために、Azure Container Registry を使用します。 コンテナー イメージは以下で構成されます。
 
@@ -71,10 +73,10 @@ ID ストアは、生成された Ethereum ID を安全に保持するために�
 
 1. 3 人のメンバーが、MetaMask を使用してそれぞれ Ethereum アカウントを生成します
 1. *メンバー A* が、パブリック Ethereum アドレスを指定して Ethereum PoA をデプロイします
-1. *メンバー A* が、*メンバー B* と*メンバー C* にコンソーシアムの URL を提供します
-1. *メンバー B* と*メンバー C* が、自分たちのパブリック Ethereum アドレスと*メンバー A* のコンソーシアムの URL を入力して Ethereum PoA をデプロイします
+1. *メンバー A* が、*メンバー B* と *メンバー C* にコンソーシアムの URL を提供します
+1. *メンバー B* と *メンバー C* が、自分たちのパブリック Ethereum アドレスと *メンバー A* のコンソーシアムの URL を入力して Ethereum PoA をデプロイします
 1. *メンバー A* が、*メンバー B* を管理者とする投票をします
-1. *メンバー A* と*メンバー B* の両方が、*メンバー C* を管理者とする投票をします
+1. *メンバー A* と *メンバー B* の両方が、*メンバー C* を管理者とする投票をします
 
 以下のセクションでは、ネットワークで最初のメンバーのフットプリントを構成する方法について説明します。
 
@@ -223,7 +225,7 @@ Transaction Permission Contract\(トランザクションのアクセス許可�
 * **[Join existing]\(既存に参加\)** を選択します
 * 公正な代表制を保証するために、残りのメンバーと同数の検証ノードを選択します
 * 同じ管理者 Ethereum アドレスを使用します
-* *[Ethereum Settings]\(Ethereum の設定\)* で提供された*コンソーシアム データの URL* を使用します
+* *[Ethereum Settings]\(Ethereum の設定\)* で提供された *コンソーシアム データの URL* を使用します
 * ネットワークの残りの部分が VPN の背後にある場合は、詳細セクションで **[Private VNet]\(プライベート VNet\)** を選択します
 
 ### <a name="connecting-vnet-gateways"></a>VNet ゲートウェイの接続
@@ -685,7 +687,7 @@ Truffle では、移行スクリプトを使用して、スマート コント�
 
 ## <a name="webassembly-wasm-support"></a>WebAssembly (WASM) のサポート
 
-新しくデプロイされた PoA ネットワークでは、WebAssembly のサポートが既に有効になっています。 これにより、Web-Assembly (Rust、C、C++) にトランスパイルされる任意の言語でスマート コントラクトの開発を実行できます。 詳細については、次を参照してください。[Parity による WebAssembly の概要](https://wiki.parity.io/WebAssembly-Home)および[Parity Technologies 提供のチュートリアル](https://github.com/paritytech/pwasm-tutorial)
+新しくデプロイされた PoA ネットワークでは、WebAssembly のサポートが既に有効になっています。 これにより、Web-Assembly (Rust、C、C++) にトランスパイルされる任意の言語でスマート コントラクトの開発を実行できます。 詳細については、次を参照してください。[Parity による WebAssembly の概要](https://openethereum.github.io/WebAssembly-Home.html)および[Parity Technologies 提供のチュートリアル](https://github.com/paritytech/pwasm-tutorial)
 
 ## <a name="faq"></a>よく寄せられる質問
 

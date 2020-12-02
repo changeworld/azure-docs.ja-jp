@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: 6ee6d88b5247209d5628c7f85f1985507d53811d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 2e5edb0ccf20ab0dba14864487f2b2ddef7d57e7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913723"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544209"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Private Link のよく寄せられる質問 (FAQ)
 
@@ -69,8 +69,8 @@ Private Link サービスは、次のいくつかの方法でスケーリング�
 ### <a name="how-should-i-control-the-exposure-of-my-private-link-service"></a>Private Link サービスの公開を制御するにはどうすればよいですか。
 公開を制御するには、Private Link サービスの可視性構成を使用します。 可視性では、次の 3 つの設定がサポートされます。
 
-- **[なし]** - RBAC アクセス権を持つサブスクリプションでのみ、サービスを見つけることができます。 
-- **制限** - 承認され、RBAC アクセス権を持つサブスクリプションでのみ、サービスを見つけることができます。 
+- **[なし]** - Azure RBAC アクセス権を持つサブスクリプションでのみ、サービスを見つけることができます。 
+- **[制限]** - 承認され、Azure RBAC アクセス権を持つサブスクリプションでのみ、サービスを見つけることができます。 
 - **[すべて]** - すべてのユーザーがサービスを見つけることができます。 
  
 ### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Basic Load Balancer で Private Link サービスを作成することはできますか。 

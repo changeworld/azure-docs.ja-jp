@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: baa0aa01c94c4deb35db8a59f7b4f81224ae1fd3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5f529e6148463ae384791985659378cb9d0a5046
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836990"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168867"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory の認証管理の運用リファレンス ガイド
 
@@ -160,7 +160,7 @@ Windows 10 では、[Windows Hello for Business](/windows/security/identity-prot
 > [!NOTE]
 > 組織内の管理されていないアプリケーションを検出するメカニズムがない場合は、[Microsoft Cloud App Security](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security) などのクラウド アクセス セキュリティ ブローカー ソリューション (CASB) を使用して検出プロセスを実装することをお勧めします。
 
-最後に、Azure AD アプリ ギャラリーがあり、Azure AD で SSO をサポートするアプリケーションを使用している場合は、[アプリ ギャラリーでアプリケーションを一覧表示する](../azuread-dev/howto-app-gallery-listing.md)ことをお勧めします。
+最後に、Azure AD アプリ ギャラリーがあり、Azure AD で SSO をサポートするアプリケーションを使用している場合は、[アプリ ギャラリーでアプリケーションを一覧表示する](../develop/v2-howto-app-gallery-listing.md)ことをお勧めします。
 
 #### <a name="single-sign-on-recommended-reading"></a>シングル サインオンに関する推奨資料
 
@@ -255,7 +255,7 @@ Microsoft Intune アプリケーション管理 (MAM) を使用すると、ス�
 
 #### <a name="conditional-access-recommended-reading"></a>条件付きアクセスに関する推奨資料
 
-- [Azure Active Directory の条件付きアクセスのベスト プラクティス](../conditional-access/best-practices.md)
+- [Azure Active Directory の条件付きアクセスのベスト プラクティス](../conditional-access/overview.md)
 - [ID とデバイスのアクセスの構成](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Azure Active Directory の条件付きアクセス設定に関するリファレンス](../conditional-access/concept-conditional-access-conditions.md)
 - [一般的な条件付きアクセス ポリシー](../conditional-access/concept-conditional-access-policy-common.md)

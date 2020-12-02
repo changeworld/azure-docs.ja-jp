@@ -3,16 +3,17 @@ title: Azure 仮想マシン (VM) 上で IBM Db2 HADR を設定する | Microsof
 description: Azure 仮想マシン (VM) 上で IBM Db2 LUW の高可用性を実現します。
 author: msjuergent
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 88a84cd90efb42ea096cad647d75f1c3736426f4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0cd1458c90970e219f2929e26423e455ba647a28
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146441"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015113"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Pacemaker による SUSE Linux Enterprise Server 上の Azure VM での IBM Db2 LUW の高可用性
 
@@ -97,7 +98,7 @@ IBM Db2 構成をデプロイするには、これらの手順に従う必要が
 | Azure リソース グループを定義する | VM、VNet、Azure Load Balancer、およびその他のリソースをデプロイするリソース グループ。 既存のものでも、新しいものでもかまいません。 |
 | 仮想ネットワークまたはサブネットの定義 | IBM Db2 の VM と Azure Load Balancer のデプロイ先。 既存のものでも、新たに作成したものでもかまいません。 |
 | IBM Db2 LUW をホストしている仮想マシン | VM サイズ、ストレージ、ネットワーク、IP アドレス。 |
-| IBM Db2 データベースの仮想ホスト名と仮想 IP| SAP アプリケーション サーバーの接続に使用される仮想 IP またはホスト名。 **db-virt-hostname** 、 **db-virt-ip** 。 |
+| IBM Db2 データベースの仮想ホスト名と仮想 IP| SAP アプリケーション サーバーの接続に使用される仮想 IP またはホスト名。 **db-virt-hostname**、**db-virt-ip**。 |
 | Azure フェンス | Azure フェンスまたは SBD フェンス (強く推奨)。 スプリット ブレインの状況を回避するための方法。 |
 | SBD VM | SBD 仮想マシンのサイズ、ストレージ、ネットワーク。 |
 | Azure Load Balancer | Basic または Standard (推奨)、Db2 データベース向けのプローブ ポート **probe-port** (62500 を推奨) の使用。 |
@@ -131,7 +132,7 @@ IBM Db2 LUW のリソース エージェントは、SUSE Linux Enterprise Server
 
 ## <a name="create-the-pacemaker-cluster"></a>Pacemaker クラスターを作成する
     
-この IBM Db2 サーバー用に基本的な Pacemaker クラスターを作成する場合は、「 [Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする][sles-pacemaker]」を参照してください。 
+この IBM Db2 サーバー用に基本的な Pacemaker クラスターを作成する場合は、「[Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする][sles-pacemaker]」を参照してください。 
 
 ## <a name="install-the-ibm-db2-luw-and-sap-environment"></a>IBM Db2 LUW と SAP 環境をインストールする
 
@@ -401,7 +402,7 @@ Azure Load Balancer を構成する場合は、[Azure Standard Load Balancer SKU
 
    a. Azure portal で Azure Load Balancer を開き、 **[フロントエンド IP プール]** を選んでから、 **[追加]** を選択します。
 
-   b. 新規のフロントエンド IP プールの名前を入力します (例: **Db2-connection** )。
+   b. 新規のフロントエンド IP プールの名前を入力します (例: **Db2-connection**)。
 
    c. **[割り当て]** を **[静的]** に設定し、最初に定義した IP アドレス **Virtual-IP** を入力します。
 
@@ -413,7 +414,7 @@ Azure Load Balancer を構成する場合は、[Azure Standard Load Balancer SKU
 
    a. Azure portal で Azure Load Balancer を開き、 **[バックエンド プール]** を選んでから、 **[追加]** を選択します。
 
-   b. 新しいバックエンド プールの名前を入力します (例: **Db2-backend** )。
+   b. 新しいバックエンド プールの名前を入力します (例: **Db2-backend**)。
 
    c. **[Add a virtual machine]\(仮想マシンの追加\)** を選択します。
 
@@ -427,7 +428,7 @@ Azure Load Balancer を構成する場合は、[Azure Standard Load Balancer SKU
 
    a. Azure portal で Azure Load Balancer を開き、 **[正常性プローブ]** を選び、 **[追加]** を選択します。
 
-   b. 新しい正常性プローブの名前を入力します (例: **Db2-hp** )。
+   b. 新しい正常性プローブの名前を入力します (例: **Db2-hp**)。
 
    c. プロトコルとして **[TCP]** を選択し、ポート **62500** を選択します。 **[間隔]** の値を **[5]** に設定したままにし、 **[異常のしきい値]** の値を **[2]** に設定したままにします。
 
@@ -437,15 +438,15 @@ Azure Load Balancer を構成する場合は、[Azure Standard Load Balancer SKU
 
    a. Azure portal で Azure Load Balancer を開き、 **[負荷分散規則]** を選んでから、 **[追加]** を選択します。
 
-   b. 新しいロード バランサー規則の名前を入力します (例: **Db2-SID** )。
+   b. 新しいロード バランサー規則の名前を入力します (例: **Db2-SID**)。
 
-   c. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **Db2-frontend** )。
+   c. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **Db2-frontend**)。
 
-   d. **[プロトコル]** の設定は **[TCP]** のままにして、ポート < *データベース通信ポート* > を入力します。
+   d. **[プロトコル]** の設定は **[TCP]** のままにして、ポート <*データベース通信ポート*> を入力します。
 
    e. **[idle timeout]\(アイドル タイムアウト\)** を 30 分に増やします
 
-   f. **Floating IP を有効にします** 。
+   f. **Floating IP を有効にします**。
 
    g. **[OK]** を選択します。
 
@@ -475,7 +476,7 @@ Db2 HADR 構成を作成する前にインストールを行った場合は、�
 J2EE Config ツールを使用して JDBC URL を確認または更新します。 J2EE Config ツールはグラフィカル ツールであるため、X サーバーがインストールされている必要があります。
  
 1. J2EE インスタンスのプライマリ アプリケーション サーバーにサインインし、`sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`を実行します。
-1. 左側のフレームで、 **セキュリティ ストア** を選択します。
+1. 左側のフレームで、**セキュリティ ストア** を選択します。
 1. 右側のフレームで、キー jdbc/pool/\<SAPSID>/url を選択します。
 1. JDBC URL のホスト名を仮想ホスト名に変更します。
      `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
@@ -504,8 +505,8 @@ HADR 設定の Db2 ログ アーカイブを構成するには、すべてのロ
 
 すべてのテスト ケースの初期状態は次のとおりです (crm_mon -r または crm status)。
 
-- **crm status** : 実行時の Pacemaker 状態のスナップショット 
-- **crm_mon -r** : Pacemaker 状態の連続出力
+- **crm status**: 実行時の Pacemaker 状態のスナップショット 
+- **crm_mon -r**: Pacemaker 状態の連続出力
 
 <pre><code>2 nodes configured
 5 resources configured
@@ -597,7 +598,7 @@ azibmdb01:~ # kill -9 2374
 
 ### <a name="test-a-manual-takeover"></a>手動での引き継ぎをテストする
 
-手動での引き継ぎをテストするには、 *azibmdb01* ノードで Pacemaker サービスを停止します。
+手動での引き継ぎをテストするには、*azibmdb01* ノードで Pacemaker サービスを停止します。
 <pre><code>service pacemaker stop</code></pre>
 
 *azibmdb02* の状態
@@ -839,7 +840,7 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb02
      Masters: [ azibmdb01 ]
      Slaves: [ azibmdb02 ]</code></pre>
 
-次の手順は、 *スプリット ブレイン* の状況を確認することです。 プライマリ データベース インスタンスを最後に実行したノードがダウンしていることが、最後まで残ったノードで確認された後、リソースのフェールオーバーが実行されます。
+次の手順は、*スプリット ブレイン* の状況を確認することです。 プライマリ データベース インスタンスを最後に実行したノードがダウンしていることが、最後まで残ったノードで確認された後、リソースのフェールオーバーが実行されます。
 <pre><code>2 nodes configured
 5 resources configured
 

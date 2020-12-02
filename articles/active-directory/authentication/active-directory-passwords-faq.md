@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 078b24e7fc3668e9b5832f0bfa46024db9b33848
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c154952d41db742c4d33899094a49a65fae72f26
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965558"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840102"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>セルフサービス パスワード リセットについてよく寄せられる質問
 
@@ -38,7 +38,7 @@ ms.locfileid: "91965558"
 
   > **A:** はい。 パスワード リセットが有効になっており、ユーザーにライセンスが付与されている場合は、パスワード リセット登録ポータル (https://aka.ms/ssprsetup) で、認証情報を登録できます。 ユーザーは、アクセス パネル (https://myapps.microsoft.com) で登録することもできます。 アクセス パネルで登録するには、自分のプロフィール画像を選び、 **[プロファイル]** を選んで、 **[パスワード リセットの登録]** オプションを選ぶ必要があります。
   >
-  > [統合された登録](concept-registration-mfa-sspr-combined.md)を有効にすると、ユーザーは SSPR と Azure Multi-Factor Authentication の両方に同時に登録できます。
+  > [統合された登録](concept-registration-mfa-sspr-combined.md)を有効にすると、ユーザーは SSPR と Azure AD Multi-Factor Authentication の両方に同時に登録できます。
 * **Q:グループに対してパスワード リセットを有効にし、その後全員に対してパスワード リセットを有効にする場合、ユーザーは再登録する必要がありますか。**
 
   > **A:** いいえ。 認証データを設定したユーザーは、再登録する必要はありません。
@@ -76,7 +76,7 @@ ms.locfileid: "91965558"
   >
 * **Q:ユーザーが登録されたと見なされるのはどのタイミングですか。**
 
-  > **A:** ユーザーは、お客様が [Azure portal](https://portal.azure.com) で設定した数以上、パスワードの**リセットに必要な方法**を登録した場合に、SSPR に登録されたと見なされます。
+  > **A:** ユーザーは、お客様が [Azure portal](https://portal.azure.com) で設定した数以上、パスワードの **リセットに必要な方法** を登録した場合に、SSPR に登録されたと見なされます。
   >
   >
 
@@ -192,7 +192,7 @@ ms.locfileid: "91965558"
 
 * **Q:ユーザーが自分のパスワードを変更するにはどこにアクセスすればよいですか。**
 
-  > **A:** ユーザーは [Office 365](https://portal.office.com) ポータルや[アクセス パネル](https://myapps.microsoft.com)など、右上隅にプロファイル画像やアイコンが表示されるページであればどこでもパスワードを変更できます。 ユーザーは[アクセス パネルのプロファイル ページ](https://account.activedirectory.windowsazure.com/r#/profile)からパスワードを変更できます。 また、パスワードの有効期限が切れている場合は、Azure AD のサインイン ページで自動的にパスワードを変更するように求められます。 最終的には、ユーザーは [Azure AD のパスワード変更ポータル](https://account.activedirectory.windowsazure.com/ChangePassword.aspx)を表示して、パスワードを変更できます。
+  > **A:** ユーザーは [Office 365](https://portal.office.com) ポータルや [アクセス パネル](https://myapps.microsoft.com)など、右上隅にプロファイル画像やアイコンが表示されるページであればどこでもパスワードを変更できます。 ユーザーは[アクセス パネルのプロファイル ページ](https://account.activedirectory.windowsazure.com/r#/profile)からパスワードを変更できます。 また、パスワードの有効期限が切れている場合は、Azure AD のサインイン ページで自動的にパスワードを変更するように求められます。 最終的には、ユーザーは [Azure AD のパスワード変更ポータル](https://account.activedirectory.windowsazure.com/ChangePassword.aspx)を表示して、パスワードを変更できます。
   >
   >
 * **Q:ユーザーのオンプレミスのパスワードの有効期限が切れたときに Office ポータルに通知できますか。**

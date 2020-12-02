@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 4ed290e861a0fdebeb76b9e08e62c03eda52be82
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8ef8b9d3350d0599ab00dfdbb018cf8dd900e316
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93375989"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95556122"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Azure Portal を使用して更新プログラムをインストールするには
 
@@ -23,29 +23,29 @@ ms.locfileid: "93375989"
 
 3. ソフトウェアの更新プログラムが利用可能な場合は、メッセージが表示されます。 更新プログラムを確認するには、 **[スキャン]** をクリックします。 実行しているソフトウェアのバージョンをメモしておきます。 
 
-    ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate3m1.png)
+    ![[デバイスの更新プログラム] ウィンドウに、"新しい更新プログラムを利用できます"、および "最終スキャン日 / 6/22/2018 2:46 PM / ソフトウェア バージョン / 10.0.10296.0" と表示されます。 バージョンが強調表示されます。](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate3m1.png)
 
     スキャンが開始され、正常に完了すると、その旨が通知されます。
  
 4. 更新プログラムのスキャンが完了したら、 **[更新プログラムのダウンロード]** をクリックします。 **[新しい更新プログラム]** で、リリース ノートを確認します。 更新プログラムをダウンロードしたら、インストールを確認する必要があることにもご注意ください。 **[OK]** をクリックします。
 
-    ![デバイスの更新 2](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate6m.png)
+    ![[デバイスの更新プログラム] に、[更新プログラムのダウンロード] ボタンが強調表示されます。 [新しい更新プログラム] に、リリース ノートへのリンクと、更新プログラムがダウンロードされた後のインストールを確認するメッセージが表示されます。 [OK] ボタンがある。](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate6m.png)
 
     アップロードが開始され、正常に完了すると、その旨が通知されます。
 
-5. **[デバイスの更新プログラム]** で、 **[インストール]** をクリックします。
+5. **[デバイスの更新プログラム]** で、**[インストール]** をクリックします。
 
-     ![デバイスの更新 3](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate11m1.png)
+     ![[デバイスの更新プログラム] に、"更新プログラムのインストールを確認してください" と表示されます。 [インストール] ボタンとソフトウェア バージョンが強調表示されます。](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate11m1.png)
 
 6. **[新しい更新プログラム]** で、更新には中断が伴うという警告が表示されます。 仮想アレイが単一ノード デバイスであるため、更新された後にデバイスが再起動されます。 これにより、進行中の IO が中断されます。 **[OK]** をクリックして、更新プログラムをインストールします。
 
-    ![デバイスの更新 4](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate12m.png)
+    ![[新しい更新プログラム] に、"デバイスでは、これらの更新プログラムのインストール時にダウンタイムが発生します" と表示されます。 リリース ノートへのリンクと [OK] ボタンが表示されます。](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate12m.png)
 
     インストール ジョブの開始されると、その旨が通知されます。
 
-7.  インストール ジョブが正常に完了したら、 **[ジョブの表示]** リンクをクリックします。 **[更新プログラムのインストール]** ブレードに移動します。 ここでは、ジョブの詳細情報を確認できます。 
+7.  インストール ジョブが正常に完了したら、**[ジョブの表示]** リンクをクリックします。 **[更新プログラムのインストール]** ブレードに移動します。 ここでは、ジョブの詳細情報を確認できます。 
 
-    ![デバイスの更新 5](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate16m1.png)
+    ![[デバイスの更新プログラム] には、"更新プログラムをインストールしています。 ジョブの表示" というリンクが表示されます。](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate16m1.png)
 
 8. Update 1 (10.0.10296.0) のソフトウェア バージョンを実行している仮想アレイで開始した場合は、この時点で Update 1.1 が実行されており、アップデートは完了となります。 残りの手順を省略できます。 
 

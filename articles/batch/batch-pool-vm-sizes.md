@@ -1,30 +1,30 @@
 ---
-title: プールの VM サイズを選択する
-description: Azure Batch プールのコンピューティング ノード用に使用可能な VM サイズを選択する方法
+title: プールの VM サイズとイメージを選択する
+description: Azure Batch プールのコンピューティング ノード用に使用可能な VM サイズと OS バージョンを選択する方法
 ms.topic: conceptual
-ms.date: 10/23/2020
+ms.date: 11/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd093006a9eb0c9746a19cb5f91b280145ddfb7e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8bb54a4db62f56f442f7cec81e6768241a05ffee
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517057"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95895232"
 ---
-# <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズを選択する
+# <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズとイメージを選択する
 
 Azure Batch プールのノード サイズを選択するときは、Azure で使用可能なほぼすべての VM サイズを選択することができます。 Azure では、さまざまなワークロードに対応する Linux および Windows VM の幅広いサイズが提供されています。
 
-VM サイズを選択する際には次のような例外と制限事項があります。
-
-* Batch ではサポートされていない VM シリーズまたは VM サイズもあります。
-* いくつかの VM サイズは制限されており、割り当てる前に個別に有効化する必要があります。
-
 ## <a name="supported-vm-series-and-sizes"></a>サポートされている VM シリーズおよびサイズ
+
+Batch プールの VM サイズを選択するには、次のような例外と制限事項があります。
+
+- Batch ではサポートされていない VM シリーズまたは VM サイズもあります。
+- いくつかの VM サイズは制限されており、割り当てる前に個別に有効化する必要があります。
 
 ### <a name="pools-in-virtual-machine-configuration"></a>仮想マシン構成のプール
 
-仮想マシン構成の Batch プールでは、ほぼすべての VM サイズ ([Linux](../virtual-machines/sizes.md)、[Windows](../virtual-machines/sizes.md)) がサポートされています。 サポートされているサイズと制限の詳細については、次の表を参照してください。
+仮想マシン構成の Batch プールでは、ほぼすべての [VM サイズ](../virtual-machines/sizes.md)がサポートされています。 サポートされているサイズと制限の詳細については、次の表を参照してください。
 
 | VM シリーズ  | サポートされるサイズ |
 |------------|---------|
@@ -71,6 +71,7 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 <sup>2</sup> これらの VM シリーズは第 2 世代の VM イメージでのみ使用できます。
 
 ### <a name="using-generation-2-vm-images"></a>第 2 世代 VM イメージの使用
+
 [Mv2](../virtual-machines/mv2-series.md) など、一部の VM シリーズは[第 2 世代の VM イメージ](../virtual-machines/generation-2.md)でのみ使用できます。 第 2 世代 VM イメージは、あらゆる VM イメージと同様に、["imageReference"](/rest/api/batchservice/pool/add#imagereference) 構成の "sku" プロパティを利用して指定されます。"sku" 文字列には、"-g2" や "-gen2" のようなサフィックスが与えられます。 第 2 世代 VM イメージを含め、Batch でサポートされている VM イメージの一覧を取得するには、["list supported images"](/rest/api/batchservice/account/listsupportedimages) API、[PowerShell](/powershell/module/az.batch/get-azbatchsupportedimage)、[Azure CLI](/cli/azure/batch/pool/supported-images) を使用します。
 
 ### <a name="pools-in-cloud-service-configuration"></a>クラウド サービス構成のプール
@@ -84,19 +85,27 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 
 ## <a name="size-considerations"></a>サイズの考慮事項
 
-* **アプリケーションの要件** - ノード上で実行するアプリケーションの特性と要件を考慮してください。 アプリケーションがマルチスレッドであるかどうかや、どのくらいのメモリが消費されるかという点が、最も適切でコスト効率の高いノード サイズを選ぶうえでのヒントになります。 マルチインスタンスの [MPI ワークロード](batch-mpi.md)または CUDA アプリケーションについては、それぞれ特別な [HPC](../virtual-machines/sizes-hpc.md) または [GPU 対応](../virtual-machines/sizes-gpu.md)の VM サイズを検討してください。 (「[Batch プールでの RDMA 対応または GPU 対応インスタンスの使用](batch-pool-compute-intensive-sizes.md)」を参照してください。)
+- **アプリケーションの要件** - ノード上で実行するアプリケーションの特性と要件を考慮してください。 アプリケーションがマルチスレッドであるかどうかや、どのくらいのメモリが消費されるかという点が、最も適切でコスト効率の高いノード サイズを選ぶうえでのヒントになります。 マルチインスタンスの [MPI ワークロード](batch-mpi.md)または CUDA アプリケーションについては、それぞれ特別な [HPC](../virtual-machines/sizes-hpc.md) または [GPU 対応](../virtual-machines/sizes-gpu.md)の VM サイズを検討してください。 詳細については、「[Batch プールでの RDMA 対応または GPU 対応インスタンスの使用](batch-pool-compute-intensive-sizes.md)」を参照してください。
 
-* **ノードあたりのタスク数** - ノードのサイズは、そこで一度に実行されるタスクが 1 つであるという想定で選択するのが一般的です。 しかしジョブの実行中に、コンピューティング ノードで複数のタスク (ひいては複数のアプリケーション インスタンス) が[並列実行](batch-parallel-node-tasks.md)できるとメリットがあります。 そのような場合は、タスクを並列に実行するという需要の増大に対応するために、マルチコア ノード サイズを選ぶことが基本です。
+- **ノードあたりのタスク数** - ノードのサイズは、そこで一度に実行されるタスクが 1 つであるという想定で選択するのが一般的です。 しかしジョブの実行中に、コンピューティング ノードで複数のタスク (ひいては複数のアプリケーション インスタンス) が[並列実行](batch-parallel-node-tasks.md)できるとメリットがあります。 そのような場合は、タスクを並列に実行するという需要の増大に対応するために、マルチコア ノード サイズを選ぶことが基本です。
 
-* **さまざまなタスクの負荷水準** - プール内のすべてのノードは同じサイズです。 システム要件や負荷水準の異なる複数のアプリケーションを実行する場合は、プールを分けることをお勧めします。
+- **さまざまなタスクの負荷水準** - プール内のすべてのノードは同じサイズです。 システム要件や負荷水準の異なる複数のアプリケーションを実行する場合は、プールを分けることをお勧めします。
 
-* **利用可能なリージョン** - Batch アカウントを作成したリージョンで、VM シリーズまたはサイズが利用できない場合があります。 特定のサイズが使用可能かどうかを確認するには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。
+- **利用可能なリージョン** - Batch アカウントを作成したリージョンで、VM シリーズまたはサイズが利用できない場合があります。 特定のサイズが使用可能かどうかを確認するには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。
 
-* **クォータ** - Batch アカウントの [コア クォータ](batch-quota-limit.md#resource-quotas)により、Batch プールに追加できる指定されたサイズのノードの数を制限できます。 クォータの引き上げを要求するには、[この記事](batch-quota-limit.md#increase-a-quota)をご覧ください。 
+- **クォータ** - Batch アカウントの [コア クォータ](batch-quota-limit.md#resource-quotas)により、Batch プールに追加できる指定されたサイズのノードの数を制限できます。 必要に応じて、[クォータの増量を要求](batch-quota-limit.md#increase-a-quota)できます。
 
-* **プールの構成** - 一般的に、仮想マシン構成のプールを作成する際は、クラウド サービス構成と比較して VM サイズ オプションが増えます。
+- **プールの構成** - 一般的に、仮想マシン構成のプールを作成する際は、クラウド サービス構成と比較して VM サイズ オプションが増えます。
+
+## <a name="supported-vm-images"></a>サポートされている VM イメージ
+
+次のいずれかの API を使用すると、Batch で現在サポートされている Windows および Linux の VM イメージの一覧 (各イメージのノード エージェント SKU ID を含む) が返されます。
+
+- Batch Service REST API:[サポートされているイメージの一覧表示](/rest/api/batchservice/account/listsupportedimages)
+- PowerShell:[Get-AzBatchSupportedImage](/powershell/module/az.batch/get-azbatchsupportedimage)
+- Azure CLI: [az batch pool supported-images](/cli/azure/batch/pool/supported-images)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Batch サービスのワークフローと主要なリソース](batch-service-workflow-features.md) (プール、ノード、ジョブ、タスクなど) について学習します。
-* コンピューティング集中型 VM のサイズを使用する方法について詳しくは、「[Batch プールでの RDMA 対応または GPU 対応インスタンスの使用](batch-pool-compute-intensive-sizes.md)」をご覧ください。
+- [Batch サービスのワークフローと主要なリソース](batch-service-workflow-features.md) (プール、ノード、ジョブ、タスクなど) について学習します。
+- コンピューティング集中型 VM のサイズを使用する方法について詳しくは、「[Batch プールでの RDMA 対応または GPU 対応インスタンスの使用](batch-pool-compute-intensive-sizes.md)」をご覧ください。

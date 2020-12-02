@@ -6,20 +6,23 @@ author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 10/16/2020
-ms.author: euang
+ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: fbcc7ffbde49acfd9afc180418d618060eb923c1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8d478b35b702e02f303358972526c091ceb3657e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313533"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95917127"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark 用のライブラリを管理する
 
 ライブラリでは、プログラムまたはプロジェクトに含めることができる再利用可能なコードが提供されます。 サードパーティのコードまたはローカル環境でビルドされたコードをアプリケーションで使用できるようにするには、いずれかのサーバーレス Apache Spark プール (プレビュー) にライブラリをインストールします。 Spark プールにインストールされたライブラリは、同じプールを使用するすべてのセッションで使用できるようになります。 
 
+## <a name="before-you-begin"></a>開始する前に
+- ライブラリをインストールおよび更新するには、Azure Synapse Analytics ワークスペースにリンクされているプライマリ Gen2 ストレージ アカウントに対して、**ストレージ BLOB データ共同作成者** または **ストレージ BLOB データ所有者** のアクセス許可が必要です。
+  
 ## <a name="default-installation"></a>既定のインストール
 Azure Synapse Analytics の Apache Spark には、Anacondas の完全インストールと追加のライブラリがあります。 完全なライブラリの一覧については、[Apache Spark のバージョンのサポート](apache-spark-version-support.md)に関するページを参照してください。 
 
@@ -35,6 +38,7 @@ Spark アプリケーションで使用したいライブラリが見つかっ�
 > - インストールするパッケージが大きいか、インストールに時間がかかる場合、これは Spark インスタンスのアップタイムに影響します。
 > - インストール時にコンパイラのサポートを必要とするパッケージ (GCC など) はサポートされていません。
 > - パッケージのダウングレードはできません。追加またはアップグレードのみが可能です。
+> - ライブラリをインストールするには、Synapse ワークスペースにリンクされているプライマリ Gen2 ストレージ アカウントに対して、ストレージ BLOB データ共同作成者またはストレージ BLOB データ所有者のアクセス許可が必要です。
 
 ### <a name="requirements-format"></a>要件の形式
 
@@ -92,9 +96,9 @@ Azure portal から Spark プール (プレビュー) にライブラリを直�
 正しいライブラリの正しいバージョンがインストールされているかどうかを検証するには、次のコードを実行します。
 
 ```python
-import pip #needed to use the pip functions
-for i in pip.get_installed_distributions(local_only=True):
-    print(i)
+import pkg_resources
+for d in pkg_resources.working_set:
+     print(d)
 ```
 ### <a name="update-python-packages"></a>Python パッケージを更新する
 セッションとセッションの間のいつでも、パッケージを追加または変更できます。 新しいパッケージ構成ファイルをアップロードすると、既存のパッケージとバージョンが上書きされます。  

@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: 2dc3df81a62e9a844db2d951b9146b08bdae5ed9
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 4753f7c0b8b5e515d33da3f9df48a2cdd9d921cc
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360804"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96017578"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>SQL API アカウントで Azure Cosmos DB Java SDK v4 を使用する場合の問題のトラブルシューティング
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,9 +35,9 @@ Azure Cosmos DB Java SDK v4 には、Azure Cosmos DB SQL API にアクセスす�
 次の一覧から開始します。
 
 * この記事の[一般的な問題と対処法]のセクションを確認します。
-* Azure Cosmos DB 中央リポジトリにある Java SDK を参照してください。これは、[GitHub のオープン ソース](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos)として利用可能です。 アクティブに監視されている[問題セクション](https://github.com/Azure/azure-sdk-for-java/issues)があります。 回避策が既に提出済みの同様の問題がないか確認します。 役に立つヒントの 1 つは、 *cosmos:v4-item* タグによって問題をフィルター処理することです。
+* Azure Cosmos DB 中央リポジトリにある Java SDK を参照してください。これは、[GitHub のオープン ソース](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos)として利用可能です。 アクティブに監視されている[問題セクション](https://github.com/Azure/azure-sdk-for-java/issues)があります。 回避策が既に提出済みの同様の問題がないか確認します。 役に立つヒントの 1 つは、*cosmos:v4-item* タグによって問題をフィルター処理することです。
 * Azure Cosmos DB Java SDK v4 の[パフォーマンスに関するヒント](performance-tips-java-sdk-v4-sql.md)を確認し、推奨される方法に従います。
-* この記事の残りの部分を読みます。解決策が見つからない場合は、 [GitHub の問題](https://github.com/Azure/azure-sdk-for-java/issues)を提出します。 GitHub の問題にタグを追加するオプションがある場合は、 *cosmos:v4-item* タグを追加します。
+* この記事の残りの部分を読みます。解決策が見つからない場合は、 [GitHub の問題](https://github.com/Azure/azure-sdk-for-java/issues)を提出します。 GitHub の問題にタグを追加するオプションがある場合は、*cosmos:v4-item* タグを追加します。
 
 ## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>一般的な問題と対処法
 
@@ -136,7 +136,7 @@ mvn dependency:tree
 ```
 詳細については、[maven の依存関係ツリー ガイド](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)を参照してください。
 
-プロジェクトの依存関係のうち、古いバージョンに依存しているものがどれかわかったら、次の例に従って、pom ファイル内でその lib に対する依存関係を変更し、推移的な依存関係を排除します (例は " *リアクター コア* " が古い依存関係であることを前提としています)。
+プロジェクトの依存関係のうち、古いバージョンに依存しているものがどれかわかったら、次の例に従って、pom ファイル内でその lib に対する依存関係を変更し、推移的な依存関係を排除します (例は "*リアクター コア*" が古い依存関係であることを前提としています)。
 
 ```xml
 <dependency>

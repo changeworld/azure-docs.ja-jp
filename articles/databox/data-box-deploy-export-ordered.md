@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 11/23/2020
 ms.author: alkohli
-ms.openlocfilehash: ad8a5a23361e721fd5d8d55d3555f51def94e768
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: b132368982e0013bfe6f3ffd52e7aacb7b1274eb
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442023"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96003176"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>チュートリアル:Azure Data Box のエクスポート注文を作成する (プレビュー)
 
@@ -80,7 +80,7 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
 
    ![Data Box の容量の選択](media/data-box-deploy-export-ordered/azure-data-box-export-order-capacity.png)
 
-6. **[Order]\(注文\)** で **[Basic]\(基本\)** の注文情報を指定します。 次の情報を入力または選択し、 **[次へ]** を選択します。
+6. **[Order]\(注文\)** で **[Basic]\(基本\)** の注文情報を指定します。 次の情報を入力または選択します。
 
     |設定  |値  |
     |---------|---------|
@@ -88,13 +88,13 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
     |Resource group | 前に選択したリソース グループ。 |
     |Export order name (エクスポート注文名)     |  注文を追跡するためのフレンドリ名を指定します。 <br> 名前の長さは 3 ～ 24 文字で、文字、数字、ハイフンを使うことができます。 <br> 名前の最初と最後は、文字か数字とする必要があります。      |
 
-    ![Export order basics (エクスポート注文の基本)](media/data-box-deploy-export-ordered/azure-data-box-export-order-storage-account-export-type.png)
+    ![Export order basics (エクスポート注文の基本)](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics-order-name.png)
 
     **[Next:Data Selection]\(次へ: データの選択\)** を選択して続行します。
 
 7. **[Data Selection]\(データの選択\)** で、 **[Add storage account and export type]\(ストレージ アカウントとエクスポートの種類を追加\)** を選択します。
 
-    ![ストレージ アカウントとエクスポートの種類を追加](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics.png)
+    ![ストレージ アカウントとエクスポートの種類を追加](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics-add-storage.png)
 
 8. **[Select export option]\(エクスポート オプションの選択\)** で、エクスポート オプションの詳細を指定します。 次の情報を入力または選択し、 **[追加]** を選択します。
 
@@ -115,15 +115,88 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
 
    XML 入力の例については、[XML 入力のサンプル](data-box-deploy-export-ordered.md#sample-xml-file)を参照してください
 
-9. **[Data Selection]\(データの選択\)** で、設定を確認し、 **[Next:Security>]\(次へ: セキュリティ\)** を選択します。
+9. **[Data Selection]\(データの選択\)** で、設定を確認し、 **[Next:Security>]\(次へ: セキュリティ>\)** を選択して続行します。
 
    ![エクスポート注文、データ選択](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-selection.png)
 
-10. **[セキュリティ]** で、ソフトウェアベースの二重暗号化を有効にしたい場合は、 **[Enable double encryption for the order]\(この注文に関して二重暗号化を有効にする\)** を選択します。 
+    **[セキュリティ]** 画面では、自分の暗号化キーを使用でき、二重暗号化の使用を選択できます。
+
+    **[セキュリティ]** 画面の設定はすべてオプションです。 設定を変更しない場合は、既定の設定が適用されます。
+
+    ![Data Box インポート注文ウィザードの [セキュリティ] 画面](media/data-box-deploy-export-ordered/data-box-export-security-01.png)
+
+10. 独自のカスタマー マネージド キーを使用して新しいリソースのロック解除パスキーを保護する場合は、 **[暗号化の種類]** を展開します。
+
+    Azure Data Box のカスタマー マネージド キーの構成は省略可能です。 Data Box では、既定で Microsoft マネージド キーを使用してロック解除パスキーが保護されます。
+
+    カスタマー マネージド キーは、デバイス上のデータの暗号化方法には影響しません。 キーは、デバイスのロック解除パスキーを暗号化するためにのみ使用されます。
+
+    カスタマー マネージド キーを使用しない場合は、手順 16 に進んでください。
+
+    ![[暗号化の種類] 設定を示すセキュリティ画面](./media/data-box-deploy-export-ordered/customer-managed-key-01.png)
+
+11. キーの種類として **[カスタマー マネージド キー]** を選択します。 次に、 **[キー コンテナーとキーを選択します]** を選択します。
+   
+    ![セキュリティ画面。カスタマー マネージド キーの設定](./media/data-box-deploy-export-ordered/customer-managed-key-02.png)
+
+12. **[Azure Key Vault からのキーの選択]** 画面で、サブスクリプションが自動的に設定されます。
+
+    - **[キー コンテナー]** で、ドロップダウン リストから既存のキー コンテナーを選択できます。
+
+      ![[Azure Key Vault からのキーの選択] 画面](./media/data-box-deploy-export-ordered/customer-managed-key-03.png)
+
+    - **[新規作成]** を選択して、新しいキー コンテナーを作成することもできます。 **[キー コンテナーの作成]** 画面で、リソース グループとキー コンテナーの名前を入力します。 **[論理的な削除]** と **[消去保護]** が有効になっていることを確認します。 他のすべての既定値をそのまま使用し、 **[確認および作成]** を選択します。
+
+      ![新しい Azure キー コンテナーの作成設定](./media/data-box-deploy-export-ordered/customer-managed-key-04.png)
+
+      キー コンテナーの情報を確認し、 **[作成]** を選択します。 キー コンテナーの作成が完了するまで数分待ちます。
+
+      ![新しい Azure キー コンテナーの確認画面](./media/data-box-deploy-export-ordered/customer-managed-key-05.png)
+
+13. **[Azure Key Vault からのキーの選択]** 画面では、キー コンテナー内の既存のキーを選択できます。
+
+    ![Azure Key Vault から既存のキーを選択する](./media/data-box-deploy-export-ordered/customer-managed-key-06.png)
+
+    新しいキーを作成する場合は、 **[新規作成]** を選択します。 RSA キーを使用する必要があります。 サイズは 2,048 以上にすることができます。 新しいキーの名前を入力し、他の既定値をそのまま使用して、 **[作成]** を選択します。
+
+      ![新しいキーの作成オプション](./media/data-box-deploy-export-ordered/customer-managed-key-07.png)
+
+      キーがキー コンテナーに作成されると通知されます。
+
+14. 使用するキーの **[バージョン]** を選択して、 **[選択]** を選択します。
+
+      ![キー コンテナーで作成された新しいキー](./media/data-box-deploy-export-ordered/customer-managed-key-08.png)
+
+    新しいキー バージョンを作成する場合は、 **[新規作成]** を選択します。
+
+    ![新しいキー バージョンを作成するためのダイアログ ボックスを開く](./media/data-box-deploy-export-ordered/customer-managed-key-08-a.png)
+
+    **[Create new key]\(新しいキーの作成\)** 画面で、新しいキー バージョンの設定を選択し、 **[作成]** を選択します。
+
+    ![新しいキー バージョンを作成する](./media/data-box-deploy-export-ordered/customer-managed-key-08-b.png)
+
+    **[セキュリティ]** 画面の **[暗号化の種類]** 設定に、キー コンテナーとキーが表示されます。
+
+    ![カスタマー マネージド キーのキーとキー コンテナー](./media/data-box-deploy-export-ordered/customer-managed-key-09.png)
+
+15. このリソースへのアクセスを管理するために使用するユーザー ID を選択します。 **[Select a user identity]\(ユーザー ID を選択する\)** を選択します。 右側のパネルで、使用するサブスクリプションとマネージド ID を選択します。 次に **[選択]** を選択します。
+
+    ユーザー割り当てマネージド ID は、複数のリソースを管理するために使用できるスタンドアロンの Azure リソースです。 詳細については、「[マネージド ID の種類](/azure/active-directory/managed-identities-azure-resources/overview)」を参照してください。  
+
+    新しいマネージド ID を作成する必要がある場合は、「[Azure portal を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除したり、それにロールを割り当てたりする](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)」のガイダンスに従ってください。
+    
+    ![ユーザー ID を選択する](./media/data-box-deploy-export-ordered/customer-managed-key-10.png)
+
+    ユーザー ID が **[暗号化の種類]** の設定に表示されます。
+
+    **[暗号化の種類]** の設定は折りたたんでかまいません。
+
+    ![選択したユーザー ID が [暗号化の種類] の設定に表示される](./media/data-box-deploy-export-ordered/customer-managed-key-11.png)
+
+16. ソフトウェアベースの二重暗号化を有効にしたい場合は、 **[Double encryption (for high-security environments)]\(二重暗号化 (高度にセキュリティ保護された環境用)\)** を展開し、 **[Enable double encryption for the order]\(この注文に関して二重暗号化を有効にする\)** を選択します。 
 
     Data Box 上のデータに対し、AES-256 ビットの暗号化に加えて、ソフトウェアベースの暗号化が実行されます。
 
-   
     > [!NOTE]
     > このオプションを有効にすると、注文の処理とデータのコピーにかかる時間が長くなることがあります。 注文後に、このオプションを変更することはできません。
 

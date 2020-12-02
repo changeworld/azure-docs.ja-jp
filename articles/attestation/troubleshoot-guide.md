@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 46e3521a54f6bfdfbfb25634a09b8c8e0cfdcac0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: fe347983e2143c7a4bdf00ca0207356c881c66ac
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342864"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95891284"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure Attestation のトラブルシューティング ガイド
 
@@ -64,7 +64,7 @@ PowerShell でロールを確認するには、次のように実行します。
 
 a. PowerShell を起動し、"Connect-AzAccount" コマンドレットを使用して Azure にログインします。
 
-b. RBAC ロールの割り当て設定の確認
+b. Azure ロールの割り当て設定を確認します。
 
 
   ```powershell

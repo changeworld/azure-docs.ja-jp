@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
-ms.openlocfilehash: 7b27aae712843ece27fd61927c4bfecff00399fa
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 99a3c9a9c26eebe8dfdf11baf718fd13f7539607
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747018"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025278"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service でのアプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -25,7 +25,7 @@ Azure では、組み込みの診断機能により、 [App Service アプリ](o
 
 |Type|プラットフォーム|場所|説明|
 |-|-|-|-|
-| アプリケーションのログ記録 | Windows、Linux | App Service ファイル システムおよび Azure Storage BLOB | アプリケーションのコードによって生成されたメッセージがログに記録されます。 メッセージは、選択した Web フレームワークによって、またはお使いの言語の標準ログ パターンを使用してアプリケーションのコードから直接、生成できます。 各メッセージには、次のいずれかのカテゴリが割り当てられます: **重大** 、 **エラー** 、 **警告** 、 **情報** 、 **デバッグ** 、 **トレース** 。 アプリケーションのログ記録を有効にするときに、重大度レベルを設定することにより、ログ記録の詳細さを指定できます。|
+| アプリケーションのログ記録 | Windows、Linux | App Service ファイル システムおよび Azure Storage BLOB | アプリケーションのコードによって生成されたメッセージがログに記録されます。 メッセージは、選択した Web フレームワークによって、またはお使いの言語の標準ログ パターンを使用してアプリケーションのコードから直接、生成できます。 各メッセージには、次のいずれかのカテゴリが割り当てられます: **重大**、**エラー**、**警告**、**情報**、**デバッグ**、**トレース**。 アプリケーションのログ記録を有効にするときに、重大度レベルを設定することにより、ログ記録の詳細さを指定できます。|
 | Web サーバーのログ記録| Windows | App Service ファイル システムまたは Azure Storage BLOB| [W3C 拡張ログ ファイル形式](/windows/desktop/Http/w3c-logging)の生 HTTP 要求データ。 各ログ メッセージには、HTTP メソッド、リソース URI、クライアント IP、クライアント ポート、ユーザー エージェント、応答コードなどのデータが含まれます。 |
 | 詳細なエラー メッセージ| Windows | App Service ファイル システム | クライアントのブラウザーに送信された *.htm* エラー ページのコピー。 セキュリティ上の理由から、詳細なエラー ページを運用環境のクライアントに送信することはできませんが、App Service では、HTTP コード 400 以上のアプリケーション エラーが発生するたびにエラー ページを保存できます。 ページには、サーバーによってエラー コードが返される理由を特定するのに役立つ情報が記録されている場合があります。 |
 | 失敗した要求トレース | Windows | App Service ファイル システム | 要求の処理に使用された IIS コンポーネントのトレースや各コンポーネントにかかった時間など、失敗した要求の詳細なトレース情報。 これは、サイトのパフォーマンスを向上させたり、特定の HTTP エラーを分離したりする場合に役立ちます。 失敗した要求ごとに 1 つのフォルダーが生成され、それには、XML ログ ファイルと、ログ ファイルを表示するための XSL スタイルシートが含まれます。 |
@@ -46,7 +46,7 @@ Azure では、組み込みの診断機能により、 [App Service アプリ](o
 
 **[アプリケーション ログ (ファイル システム)]** と **[アプリケーション ログ (Blob)]** の一方または両方で、 **[オン]** を選択します。 
 
-**ファイル システム** オプションは、一時的なデバッグ用であり、12 時間で自動的にオフになります。 **Blob** オプションは、長期的なログ記録用であり、ログを書き込む BLOB ストレージ コンテナーが必要です。  **Blob** オプションには、ログ メッセージの生成元 VM インスタンスの ID (`InstanceId`)、スレッド ID (`Tid`)、さらに細かいタイムスタンプ ( [`EventTickCount`](/dotnet/api/system.datetime.ticks)) など、ログ メッセージの追加情報も含まれます。
+**ファイル システム** オプションは、一時的なデバッグ用であり、12 時間で自動的にオフになります。 **Blob** オプションは、長期的なログ記録用であり、ログを書き込む BLOB ストレージ コンテナーが必要です。  **Blob** オプションには、ログ メッセージの生成元 VM インスタンスの ID (`InstanceId`)、スレッド ID (`Tid`)、さらに細かいタイムスタンプ ([`EventTickCount`](/dotnet/api/system.datetime.ticks)) など、ログ メッセージの追加情報も含まれます。
 
 > [!NOTE]
 > 現在、Blob Storage には .NET アプリケーションのログのみ書き込むことができます。 Java、PHP、Node.js、Python のアプリケーション ログは、App Service ファイル システムにのみ保存できます (外部ストレージにログを書き込むためのコードの変更は必要ありません)。
@@ -187,14 +187,16 @@ Windows アプリの場合、ZIP ファイルには、App Service ファイル �
 
 | ログのタイプ | Windows | Windows コンテナー | Linux | Linux コンテナー | 説明 |
 |-|-|-|-|-|-|
-| AppServiceConsoleLogs | TBA | TBA | はい | はい | 標準出力と標準エラー |
-| AppServiceHTTPLogs | はい | TBA | はい | はい | Web サーバー ログ |
+| AppServiceConsoleLogs | Java SE および Tomcat | はい | はい | はい | 標準出力と標準エラー |
+| AppServiceHTTPLogs | はい | はい | はい | はい | Web サーバー ログ |
 | AppServiceEnvironmentPlatformLogs | はい | 該当なし | はい | はい | App Service Environment: スケーリング、構成変更、および状態ログ|
-| AppServiceAuditLogs | はい | TBA | はい | はい | FTP および Kudu 経由のログイン アクティビティ |
-| AppServiceFileAuditLogs | はい | TBA | TBA | TBA | サイト コンテンツに行われたファイルの変更。Premium レベル以上でのみ使用可能 |
-| AppServiceAppLogs | ASP .NET | TBA | Java SE および Tomcat | Java SE および Tomcat | アプリケーション ログ |
-| AppServiceIPSecAuditLogs  | はい | TBA | はい | はい | IP ルールからの要求 |
-| AppServicePlatformLogs  | TBA | TBA | はい | はい | コンテナーの操作ログ |
+| AppServiceAuditLogs | はい | はい | はい | はい | FTP および Kudu 経由のログイン アクティビティ |
+| AppServiceFileAuditLogs | はい | はい | TBA | TBA | サイト コンテンツに行われたファイルの変更。Premium レベル以上でのみ使用可能 |
+| AppServiceAppLogs | ASP .NET | ASP .NET | Java SE & Tomcat Blessed Images <sup>1</sup> | Java SE & Tomcat Blessed Images <sup>1</sup> | アプリケーション ログ |
+| AppServiceIPSecAuditLogs  | はい | はい | はい | はい | IP ルールからの要求 |
+| AppServicePlatformLogs  | TBA | はい | はい | はい | コンテナーの操作ログ |
+
+<sup>1</sup> Java SE アプリの場合は、アプリ設定に "$WEBSITE_AZMON_PREVIEW_ENABLED" を追加し、それを 1 または true に設定します。
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> 次のステップ
 * [Azure Monitor でログにクエリを実行する](../azure-monitor/log-query/log-query-overview.md)

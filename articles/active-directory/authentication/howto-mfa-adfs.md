@@ -1,6 +1,6 @@
 ---
-title: Azure MFA と ADFS を使用してリソースをセキュリティで保護する - Azure Active Directory
-description: クラウドで Azure MFA および AD FS を開始する方法について説明する Azure Multi-Factor Authentication のページです。
+title: Azure AD MFA と ADFS を使用してリソースをセキュリティで保護する - Azure Active Directory
+description: クラウドで Azure AD MFA および AD FS を開始する方法について説明する Azure AD Multi-Factor Authentication のページです。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5167d9041e8edfd6e829bdd1a78f826f73eea4d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 999fb350aaa5f11510db0d4ecc036e188d76e20f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964589"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839337"
 ---
-# <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護
+# <a name="securing-cloud-resources-with-azure-ad-multi-factor-authentication-and-ad-fs"></a>Azure AD Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護
 
-組織が Azure Active Directory を使用している場合には、Azure Multi-Factor Authentication または Active Directory フェデレーション サービス (AD FS) を使って、Azure AD がアクセスするリソースをセキュリティで保護できます。 以下では、Azure Multi-factor Authentication または Active Directory フェデレーション サービス (AD FS) を使って Azure Active Directory リソースのセキュリティを確保する方法を紹介します。
+組織が Azure Active Directory とフェデレーションされている場合は、Azure AD Multi-Factor Authentication または Active Directory フェデレーション サービス (AD FS) を使用して、Azure AD によってアクセスされるリソースをセキュリティで保護します。 Azure AD Multi-Factor Authentication または Active Directory フェデレーション サービス (AD FS) を使用して Azure Active Directory リソースをセキュリティで保護するには、次の手順に従います。
 
 ## <a name="secure-azure-ad-resources-using-ad-fs"></a>AD FS を使って Azure AD リソースのセキュリティを確保する
 
@@ -48,7 +48,7 @@ ms.locfileid: "91964589"
 
 ## <a name="trusted-ips-for-federated-users"></a>フェデレーション ユーザー用の信頼できる IP
 
-管理者は、信頼できる IP を使用すると、特定の IP アドレスまたはイントラネット内から要求が送信されているフェデレーション ユーザーの 2 段階認証をバイパスできます。 次のセクションで、要求がフェデレーション ユーザーのイントラネット内から送信されている場合に、信頼できる IP とフェデレーション ユーザーを Azure Multi-Factor Authentication にどのように構成し、2 段階認証をどのようにバイパスするかについて説明します。 これは、要求の種類 [企業ネットワーク内] で [入力方向の要求をパス スルーまたはフィルター処理] テンプレートを使用するように AD FS を構成することによって実現されます。
+管理者は、信頼できる IP を使用すると、特定の IP アドレスまたはイントラネット内から要求が送信されているフェデレーション ユーザーの 2 段階認証をバイパスできます。 次のセクションでは、フェデレーション ユーザーを使用して Azure AD Multi-Factor Authentication の信頼できる IP を構成する方法、およびフェデレーション ユーザーのイントラネット内から要求が送信される場合に 2 段階認証をバイパスする方法について説明します。 これは、要求の種類 [企業ネットワーク内] で [入力方向の要求をパス スルーまたはフィルター処理] テンプレートを使用するように AD FS を構成することによって実現されます。
 
 ここで示す例では、証明書利用者信頼で Microsoft 365 を使用します。
 
@@ -84,7 +84,7 @@ ms.locfileid: "91964589"
 15. **[OK]** をクリックします。
 16. AD FS 管理を閉じます。
 
-### <a name="configure-azure-multi-factor-authentication-trusted-ips-with-federated-users"></a>Azure Multi-Factor Authentication の信頼できる IP とフェデレーション ユーザーを構成する
+### <a name="configure-azure-ad-multi-factor-authentication-trusted-ips-with-federated-users"></a>フェデレーション ユーザーを使用して Azure AD Multi-Factor Authentication の信頼できる IP を構成する
 
 これで要求が準備できたので、信頼できる IP を構成できます。
 

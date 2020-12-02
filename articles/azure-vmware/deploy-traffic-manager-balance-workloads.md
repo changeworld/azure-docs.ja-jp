@@ -3,12 +3,12 @@ title: Azure VMware Solution (AVS) ワークロードを分散するために Tr
 description: Traffic Manager を Azure VMware Solution (AVS) と統合して、異なるリージョンにある複数のエンドポイント間でアプリケーションのワークロードを分散する方法について説明します。
 ms.topic: how-to
 ms.date: 08/14/2020
-ms.openlocfilehash: 076d9c77d68df3d8acb7b531b3dfbea40fb3cedd
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: ed74bb0dfc533abadd50af32afc06c9cb4106193
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593138"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874308"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-avs-workloads"></a>Azure VMware Solution (AVS) ワークロードを分散するために Traffic Manager をデプロイする
 
@@ -30,7 +30,7 @@ Azure Traffic Manager は、世界中の Azure リージョン間でサービス
 
 2 つの AVS プライベート クラウド リージョン、米国西部と西ヨーロッパ、およびオンプレミス サーバー (米国東部) 間の仮想ネットワーク経由の接続では、ExpressRoute ゲートウェイが使用されます。   
 
-![Traffic Manager と Azure VMware Solution との統合アーキテクチャの図](media/traffic-manager/traffic-manager-topology.png)
+:::image type="content" source="media/traffic-manager/traffic-manager-topology.png" alt-text="Traffic Manager と Azure VMware Solution との統合のアーキテクチャの図" lightbox="media/traffic-manager/traffic-manager-topology.png" border="false":::
  
 ## <a name="prerequisites"></a>前提条件
 
@@ -75,7 +75,7 @@ NSX-T Manager で作成されたネットワーク セグメントは、vCenter 
 
 1. 構成されているセグメントを表示するには、 **[セグメント]** を選択します。 この例では、Contoso-segment1 が Contoso-T01 ゲートウェイ (第 1 層のフレキシブル ルーター) に接続されていることがわかります。
 
-    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="NSX-T Manager のセグメント プロファイルを示すスクリーンショット。":::    
+    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="NSX-T Manager のセグメント プロファイルを示すスクリーンショット。" lightbox="media/traffic-manager/nsx-t-segment-avs.png":::    
 
 2. **[Tier-1 Gateways]\(第 1 層ゲートウェイ\)** を選択して、リンクされたセグメントの数を含む第 1 層ゲートウェイの一覧を表示します。 Contoso-T01 にリンクされているセグメントを選択します。 第 01 層ルーターで構成されている論理インターフェイスを示すウィンドウが開きます。 これは、セグメントに接続されているバックエンド プール メンバー仮想マシンへのゲートウェイとして機能します。
 
@@ -83,7 +83,7 @@ NSX-T Manager で作成されたネットワーク セグメントは、vCenter 
 
 3. VM vSphere クライアントで、仮想マシンを選択して詳細を表示します。 その IP アドレスは、前のセクションの手順 3 で確認したもの (172.29.1.10) と一致します。
 
-    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="VSphere クライアントの VM の詳細を示すスクリーンショット。":::    
+    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="VSphere クライアントの VM の詳細を示すスクリーンショット。" lightbox="media/traffic-manager/nsx-t-vm-details.png":::    
 
 4. 仮想マシンを選択し、 **[アクション] > [設定の編集]** の順に選択して、NSX-T セグメントへの接続を確認します。
 
@@ -103,7 +103,7 @@ NSX-T Manager で作成されたネットワーク セグメントは、vCenter 
 
 3. **[概要]** を選択します。 **[DNS 名]** の下にある URL をコピーします。
 
-   :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="DNS 名が強調表示されている Traffic Manager エンドポイントの概要を示すスクリーンショット。"::: 
+   :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="DNS 名が強調表示されている Traffic Manager エンドポイントの概要を示すスクリーンショット。" lightbox="media/traffic-manager/traffic-manager-endpoints.png"::: 
 
 4. DNS 名の URL をブラウザーに貼り付けます。 次のスクリーンショットは、西ヨーロッパ リージョンへのトラフィックを示しています。
 

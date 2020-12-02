@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: ecb066c7269217af3f8cc84e0f59ab29b4b39a9e
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 45ebd793d96ed8cf0edf88d5631353fb6cd6a982
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331514"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96008771"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Azure Data Factory を視覚的に監視する
 
@@ -62,7 +62,7 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 
 リスト ビューには、各パイプラインの実行に対応するアクティビティの実行が表示されます。 特定のアクティビティの実行にマウス ポインターを合わせると、JSON 入力、JSON 出力、アクティビティ固有の詳細な監視エクスペリエンスなどの実行固有の情報を取得できます。
 
-![アクティビティの実行を監視するためのリスト ビュー](media/monitor-visually/activity-runs.png)
+![SalesAnalyticsMLPipeline に関する情報に続いて、アクティビティの実行の一覧が表示されます。](media/monitor-visually/activity-runs.png)
 
 | **列名** | **説明** |
 | --- | --- |
@@ -79,7 +79,7 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 
 アクティビティが失敗した場合、エラー列のアイコンをクリックすると、詳細なエラー メッセージを確認できます。 
 
-![アクティビティの実行を監視するためのリスト ビュー](media/monitor-visually/activity-run-error.png)
+![エラー コード、エラーの種類、エラーの詳細などのエラー詳細が含まれる通知が表示されます。](media/monitor-visually/activity-run-error.png)
 
 ### <a name="promote-user-properties-to-monitor"></a>監視対象のユーザー プロパティを昇格する
 

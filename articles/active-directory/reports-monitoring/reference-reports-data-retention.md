@@ -17,12 +17,12 @@ ms.date: 11/05/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98b9a2da11ad32e35704a49cfcf1788f95276dda
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: bc5f902d75084d649f211d589e53041f1eb37f0e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393457"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012716"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD にレポート データが保存される期間
 
@@ -65,7 +65,7 @@ ms.locfileid: "93393457"
 | :--                    | :--           | :--                 | :--                 |
 | 監査ログ             | 7 日        | 30 日             | 30 日             |
 | サインイン               | 7 日        | 30 日             | 30 日             |
-| Azure MFA の使用状況        | 30 日       | 30 日             | 30 日             |
+| Azure AD MFA の使用状況        | 30 日       | 30 日             | 30 日             |
 
 監査およびサインイン アクティビティ データは、Azure Monitor を使用して Azure ストレージ アカウントにルーティングすることで、上記で説明した既定の保有期間よりも長く保持することができます。 詳細については、「[Azure AD のログを Azure ストレージ アカウントにアーカイブする](quickstart-azure-monitor-route-logs-to-storage-account.md)」をご覧ください。
 

@@ -2,17 +2,17 @@
 title: Azure Data Factory でセルフホステッド統合ランタイムのトラブルシューティングを行う
 description: Azure Data Factory でセルフホステッド統合ランタイムの問題をトラブルシューティングする方法について説明します。
 services: data-factory
-author: nabhishek
+author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/29/2020
+ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: ca8d359638d97f77377f02d47d824fa216acdcc8
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 93c35828444ec93a974769ed3a2f1981c0ec4368
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928112"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96013462"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムのトラブルシューティング
 
@@ -48,6 +48,21 @@ ms.locfileid: "92928112"
 
 ## <a name="self-hosted-ir-general-failure-or-error"></a>セルフホステッド IR の一般的な障害またはエラー
 
+### <a name="out-of-memory-issue"></a>メモリ不足の問題
+
+#### <a name="symptoms"></a>現象
+
+"OutOfMemoryException" 問題は、リンクされた IR またはセルフホステッド IR を使用して検索アクティビティを試行するときに発生します。
+
+#### <a name="cause"></a>原因
+
+その時点での IR マシンのメモリ使用率が高い場合は、新しいアクティビティが OOM (OutOfMemory) 問題の原因となります。 この問題は、アクティビティの大規模な同時実行によって引き起こされます。このエラーは、設計によるものです。
+
+#### <a name="resolution"></a>解決方法
+
+IR ノードでの、リソース使用量、およびアクティビティの同時実行を確認してください。 同時に同じ IR ノードで実行される処理が過剰にならないように、アクティビティの実行の内部時間とトリガー時間を調整します。
+
+
 ### <a name="tlsssl-certificate-issue"></a>TLS/SSL 証明書の問題
 
 #### <a name="symptoms"></a>現象
@@ -72,8 +87,8 @@ Azure Data Factory v2 セルフホステッド IR では、ワイルドカード
 
 #### <a name="symptoms"></a>現象
 
-Azure Data Factory の UI からコンカレント ジョブの制限を引き上げようとすると、" *更新中* " のまま、いつまでも応答しない状態になります。
-コンカレント ジョブの最大値が 24 に設定されていたので、ジョブの実行速度を上げるために、この数を増やそうと考えています。 入力できる最小値は 3 で、入力できる最大値は 32 です。 UI でこの値を 24 から 32 に増やして " *更新* " ボタンを押したところ、下図のように " *更新中* " でスタックしてしまいました。 最新の情報に更新した後も表示される値は 24 のまま変わらず、結局 32 には更新されませんでした。
+Azure Data Factory の UI からコンカレント ジョブの制限を引き上げようとすると、"*更新中*" のまま、いつまでも応答しない状態になります。
+コンカレント ジョブの最大値が 24 に設定されていたので、ジョブの実行速度を上げるために、この数を増やそうと考えています。 入力できる最小値は 3 で、入力できる最大値は 32 です。 UI でこの値を 24 から 32 に増やして "*更新*" ボタンを押したところ、下図のように "*更新中*" でスタックしてしまいました。 最新の情報に更新した後も表示される値は 24 のまま変わらず、結局 32 には更新されませんでした。
 
 ![状態の更新中](media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png)
 
@@ -164,7 +179,7 @@ SSL/TLS ハンドシェイクに関連した症状に対応していると、証
 
 > [!TIP] 
 > 以下のスクリーンショットのようにフィルターを設定できます。
-> これは、 **System.ValueTuple** という DLL が、GAC 関連フォルダーにも、 *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway* にも、 *C:\Program Files\Microsoft Integration Runtime\4.0\Shared* フォルダーにも存在しないことを表しています。
+> これは、**System.ValueTuple** という DLL が、GAC 関連フォルダーにも、*C:\Program Files\Microsoft Integration Runtime\4.0\Gateway* にも、*C:\Program Files\Microsoft Integration Runtime\4.0\Shared* フォルダーにも存在しないことを表しています。
 > 基本的に DLL は、まず *GAC* フォルダーから読み込まれ、次に *Shared* フォルダーから、最後に *Gateway* フォルダーから読み込まれます。 したがって、そのいずれかのパスに DLL を配置することで状況が改善する場合があります。
 
 ![フィルターを設定する](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
@@ -201,7 +216,7 @@ GAC の詳細については、[こちらの記事](/dotnet/framework/app-domain
 
 #### <a name="resolution"></a>解決方法
 
-上記のどちらの原因も該当しない場合、 *%programdata%\Microsoft\Data Transfer\DataManagementGateway* フォルダーに移動し、 **Configurations** という名前のファイルが削除されているかどうかを確認してください。 削除されている場合、だれがファイルを削除したのかを[こちら](https://www.netwrix.com/how_to_detect_who_deleted_file.html)の手順に従って監査できます。
+上記のどちらの原因も該当しない場合、 *%programdata%\Microsoft\Data Transfer\DataManagementGateway* フォルダーに移動し、**Configurations** という名前のファイルが削除されているかどうかを確認してください。 削除されている場合、だれがファイルを削除したのかを[こちら](https://www.netwrix.com/how_to_detect_who_deleted_file.html)の手順に従って監査できます。
 
 ![構成ファイルを確認する](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
 
@@ -210,7 +225,7 @@ GAC の詳細については、[こちらの記事](/dotnet/framework/app-domain
 
 #### <a name="symptoms"></a>現象
 
-ソースとターゲット両方のデータ ストアにセルフホステッド IR を作成した後、その 2 つの IR を接続してコピーを完了したいと考えています。 データ ストアが別々の VNET に構成されている場合や、ゲートウェイのメカニズムを認識しない場合、" *the driver of source cannot be found in destination IR (ソースのドライバーがターゲット IR に見つかりません)* " や " *the source cannot be accessed by the destination IR (ターゲット IR がソースにアクセスできません)* " などのエラーが発生します。
+ソースとターゲット両方のデータ ストアにセルフホステッド IR を作成した後、その 2 つの IR を接続してコピーを完了したいと考えています。 データ ストアが別々の VNET に構成されている場合や、ゲートウェイのメカニズムを認識しない場合、"*the driver of source cannot be found in destination IR (ソースのドライバーがターゲット IR に見つかりません)* " や "*the source cannot be accessed by the destination IR (ターゲット IR がソースにアクセスできません)* " などのエラーが発生します。
  
 #### <a name="cause"></a>原因
 
@@ -305,7 +320,7 @@ Integration Runtime のイベント ログにアクセスしてエラーを確�
         1. 現在のセルフホステッド IR を完全にアンインストールします。
         1. セルフホステッド IR ビットをインストールします。
         1. 下記の手順に従ってサービス アカウントを変更します。 
-            1. セルフホステッド IR のインストール フォルダーに移動し、 *Microsoft Integration Runtime\4.0\Shared* フォルダーに切り替えます。
+            1. セルフホステッド IR のインストール フォルダーに移動し、次のフォルダーに切り替えます。*Microsoft Integration Runtime\4.0\Shared*.
             1. 昇格された特権を使用してコマンド ラインを開始します。 *\<user>* と *\<password>* を実際のユーザー名とパスワードに置き換えて、次のコマンドを実行します。
                        
                 ```
@@ -325,7 +340,7 @@ Integration Runtime のイベント ログにアクセスしてエラーを確�
             1. IR サービスのログオン アカウントには、ローカルまたはドメインのユーザーを使用できます。            
         1. Integration Runtime を登録します。
 
-" *サービス 'Integration Runtime Service' (DIAHostService) が開始できませんでした。システム サービスを開始するための十分な特権があるか確認してください* " というエラーが表示された場合は、次の手順に従います。
+"*サービス 'Integration Runtime Service' (DIAHostService) が開始できませんでした。システム サービスを開始するための十分な特権があるか確認してください*" というエラーが表示された場合は、次の手順に従います。
 
 1. Windows サービス パネルで *DIAHostService* ログオン サービス アカウントを確認します。
    
@@ -402,6 +417,47 @@ Localhost 127.0.0.1 を使用してファイルをホストすれば、この問
 - CPU 使用率が高すぎる
 - ネットワークの速度が遅い場所で MSI ファイルがホストされている
 - 一部のシステム ファイルまたはレジストリに意図しないアクセスがあった
+
+
+### <a name="ir-service-account-failed-to-fetch-certificate-access"></a>IR サービス アカウントで証明書のアクセス権を取得できなかった
+
+#### <a name="symptoms"></a>現象
+
+Microsoft Integration Runtime 構成マネージャーを使用してセルフホステッド IR をインストールすると、信頼された CA を含む証明書が生成されます。 2 つのノード間の通信を暗号化するために、証明書を適用することができませんでした。 
+
+エラー情報が次のように表示されます。 
+
+`Failed to change Intranet communication encryption mode: Failed to grant Integration Runtime service account the access of to the certificate 'XXXXXXXXXX'. Error code 103`
+
+![IR サービス アカウント証明書のアクセス権を付与できなかった](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-account-certificate-error.png)
+
+#### <a name="cause"></a>原因
+
+証明書には KSP (キー格納プロバイダー) が使用されていますが、これはまだサポートされていません。 これまで、SHIR は、CSP (暗号化サービス プロバイダー) 証明書のみをサポートしています。
+
+#### <a name="resolution"></a>解決方法
+
+この場合、CSP 証明書をお勧めします。
+
+**解決策 1:** 次のコマンドを実行して証明書をインポートします。
+
+```
+Certutil.exe -CSP "CSP or KSP" -ImportPFX FILENAME.pfx 
+```
+
+![certutil を使用します](media/self-hosted-integration-runtime-troubleshoot-guide/use-certutil.png)
+
+**解決策 2:** 証明書の変換。
+
+openssl pkcs12 -in .\xxxx.pfx -out .\xxxx_new.pem -password pass: *\<EnterPassword>*
+
+openssl pkcs12 -export -in .\xxxx_new.pem -out xxxx_new.pfx
+
+変換前と変換後:
+
+![証明書の変換前](media/self-hosted-integration-runtime-troubleshoot-guide/before-certificate-change.png)
+
+![証明書の変更後](media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png)
 
 
 ## <a name="self-hosted-ir-connectivity-issues"></a>セルフホステッド IR の接続の問題
@@ -549,7 +605,7 @@ Netmon トレースを取得して、さらに分析します。
 - 次に、フィルターを削除することにより、次のクライアントと Data Factory サーバー間の変換を取得できます。
 
     ![メッセージ交換の取得](media/self-hosted-integration-runtime-troubleshoot-guide/get-conversation.png)
-- 収集された netmon トレースに基づき、TTL (TimeToLive) の合計が 64 であることがわかります。 [この記事](https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/)に記載されている「 **既定の TTL とホップの制限値** 」(下に抜粋) によると、パッケージをリセットして切断を発生させたのは Linux システムであることがわかります。
+- 収集された netmon トレースに基づき、TTL (TimeToLive) の合計が 64 であることがわかります。 [この記事](https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/)に記載されている「**既定の TTL とホップの制限値**」(下に抜粋) によると、パッケージをリセットして切断を発生させたのは Linux システムであることがわかります。
 
     既定の TTL とホップの制限値は、オペレーティング システムによって異なります。既定値の一部を次に示します。
     - Linux カーネル 2.4 (2001 年ごろ):TCP、UDP、および ICMP の場合は 255
@@ -569,7 +625,7 @@ Netmon トレースを取得して、さらに分析します。
  
     *Linux システム A からの TTL 64 のネットワーク パッケージ -> B TTL 64-1 = 63 -> C TTL 63-1 = 62 -> TTL 62-1 = 61 セルフホステッド IR*
 
-- 理想的な状況では、TTL は 128 になります。これは、Windows システムで Data Factory が実行されていることを意味します。 次の例に示すように、 *128 – 107 = 21 ホップ* になります。つまり、TCP 3 ハンドシェイク中に、そのパッケージに関して 21 ホップが Data Factory からセルフホステッド IR に送信されたことを意味します。
+- 理想的な状況では、TTL は 128 になります。これは、Windows システムで Data Factory が実行されていることを意味します。 次の例に示すように、*128 – 107 = 21 ホップ* になります。つまり、TCP 3 ハンドシェイク中に、そのパッケージに関して 21 ホップが Data Factory からセルフホステッド IR に送信されたことを意味します。
  
     ![TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
 
@@ -675,7 +731,7 @@ ADF サービスのサーバー証明書は、次のように確認できます�
 - ADF サービスのサーバー証明書のルート CA は、SHIR がインストールされているコンピューターで信頼されていません。 
 - お使いの環境でプロキシを使用していて、ADF サービスのサーバー証明書がプロキシによって置き換えられていますが、置き換えられたサーバー証明書は、SHIR がインストールされているコンピューターで信頼されていません。
 
-#### <a name="solution"></a>解決策
+#### <a name="resolution"></a>解決方法
 
 - 理由 1 の場合、ADF サーバー証明書とその証明書チェーンが、SHIR がインストールされているコンピューターによって信頼されていることを確認してください。
 - 理由 2 の場合、SHIR マシンで置き換えられたルート CA を信頼するか、ADF サーバー証明書を置き換えないようにプロキシを構成します。
@@ -688,6 +744,7 @@ DigiCert から署名された、新しい SSL 証明書がロールアウトさ
   ![DigiCert Global Root G2](media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png)
 
 存在しない場合は、[こちら](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt )からダウンロードできます。 
+
 
 ## <a name="self-hosted-ir-sharing"></a>セルフホステッド IR の共有
 

@@ -11,12 +11,12 @@ ms.date: 08/13/2019
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a5bfdada12229070568bb9b0556471ea5aab306f
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: a2c39d9809204328a6eba30c073b1fa81795924a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94575953"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840289"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での言語のカスタマイズ
 
@@ -200,7 +200,7 @@ Chrome と Firefox はどちらも、それぞれに設定されている言語�
 
 ## <a name="supported-languages"></a>サポートされている言語
 
-Azure AD B2C では、以下の言語がサポートされています。 ユーザー フローの言語は、Azure AD B2C によって提供されます。 Multi-Factor Authentication (MFA) 通知の言語は、[Azure MFA](../active-directory/authentication/concept-mfa-howitworks.md) によって提供されます。
+Azure AD B2C では、以下の言語がサポートされています。 ユーザー フローの言語は、Azure AD B2C によって提供されます。 Multi-Factor Authentication (MFA) 通知の言語は、[Azure AD MFA](../active-directory/authentication/concept-mfa-howitworks.md) によって提供されます。
 
 | Language              | 言語コード | ユーザー フロー         | MFA 通知  |
 |-----------------------| :-----------: | :----------------: | :----------------: |

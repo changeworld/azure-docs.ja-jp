@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: eeda43b972e30c573743c8c59f75cfae61d7ee85
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 26a5537496d9e881ece135437c403baf4a4fd67c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413146"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016636"
 ---
 現時点では、Ultra Disk には次のような追加の制限があります。
 
@@ -67,7 +67,7 @@ Ultra ディスクが利用できるリージョンとそれに該当する可�
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 - Ultra Disk がサポートされているすべてのリージョンで、すべての VM サイズを使用できるわけではありません。
 - データ ディスクとしてのみ使用できます。 
-- 既定で 4k の物理セクター サイズがサポートされます。 512E セクター サイズは一般公開されているオファリングとして利用できますが、[サインアップ](https://aka.ms/ultradisk512e)する必要があります。 ほとんどのアプリケーションは 4k のセクター サイズと互換性がありますが、512 バイトのセクター サイズが必要になる場合があります。 1 つの例が、Oracle Database です。この場合、4k のネイティブ ディスクをサポートするには、リリース 12.2 以降が必要です。 以前のバージョンの Oracle DB では、512 バイトのセクター サイズが必要となります。
+- 既定で 4k の物理セクター サイズがサポートされます。 512E セクター サイズは一般提供オファリングとして使用できますが (セットアップ不要)、現在のところ、CLI または PowerShell からのみ使用できます。 ほとんどのアプリケーションは 4k のセクター サイズと互換性がありますが、512 バイトのセクター サイズが必要になる場合があります。 1 つの例が、Oracle Database です。この場合、4k のネイティブ ディスクをサポートするには、リリース 12.2 以降が必要です。 以前のバージョンの Oracle DB では、512 バイトのセクター サイズが必要となります。
 - 空のディスクとしてのみ作成できます。
 - ディスク スナップショット、VM イメージ、可用性セット、Azure 専用ホスト、Azure Disk Encryption は現在のところサポートされていません。
 - Azure Backup または Azure Site Recovery との統合は現在のところサポートされていません。

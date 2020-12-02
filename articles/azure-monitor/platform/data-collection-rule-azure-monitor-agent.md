@@ -1,18 +1,19 @@
 ---
 title: Azure Monitor エージェント用のデータ収集の構成 (プレビュー)
-description: ''
+description: Azure Monitor エージェントを使用して、仮想マシンからデータを収集するデータ収集ルールを作成する方法について説明します。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: cd29bfafe2d37b6a34031e6962cc27bfff0006c1
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 94c926c555a4bc96ac3c6fbe773650e16554bcf2
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108016"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95315704"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Azure Monitor エージェント用のデータ収集の構成 (プレビュー)
+
 データ収集ルール (DCR) では、Azure Monitor に入ってくるデータを定義し、そのデータの送信先を指定します。 この記事では、Azure Monitor エージェントを使用して、仮想マシンからデータを収集するデータ収集ルールを作成する方法について説明します。
 
 データ収集ルールの詳細については、「[Azure Monitor のデータ収集ルール (プレビュー)](data-collection-rule-overview.md)」を参照してください。
@@ -20,15 +21,18 @@ ms.locfileid: "92108016"
 > [!NOTE]
 > この記事では、現在プレビューの段階にある Azure Monitor エージェントで仮想マシンのデータを構成する方法について説明します。 一般公開されているエージェントの説明と、それらを使用してデータを収集する方法については、「[Azure Monitor エージェントの概要](agents-overview.md)」を参照してください。
 
+## <a name="data-collection-rule-associations"></a>データ収集ルールの関連付け
 
-## <a name="dcr-associations"></a>DCR の関連付け
 DCR を仮想マシンに適用するには、仮想マシンの関連付けを作成します。 仮想マシンには複数の DCR への関連付けを指定できます。また、DCR に複数の仮想マシンを関連付けることもできます。 これにより、それそれが特定の要件に一致する一連の DCR を定義し、それらが該当する仮想マシンにのみそれらを適用することができます。 
 
 たとえば、基幹業務アプリケーションを実行している一連の仮想マシンと SQL Server を実行しているほかの仮想マシンがある環境について考えてみます。 すべての仮想マシンに適用する 1 つの既定のデータ収集ルールと、基幹業務アプリケーション用と SQL Server 用に特別にデータを収集する個別のデータ収集ルールを指定することができます。 データ収集ルールへの仮想マシンの関連付けは、次の図のようになります。
 
 ![基幹業務アプリケーションと SQL Server をホストしている仮想マシンを示す図。基幹業務アプリケーションは central-it-default および lob-app、SQL Server は central-it-default および sql という名前のデータ収集ルールに関連付けられています。](media/data-collection-rule-azure-monitor-agent/associations.png)
 
-## <a name="create-using-the-azure-portal"></a>Azure Portal を使用した作成
+
+
+## <a name="create-rule-and-association-in-azure-portal"></a>Azure portal でルールと関連付けを作成する
+
 Azure portal を使用してデータ収集ルールを作成し、サブスクリプション内の仮想マシンをそのルールに関連付けることができます。 Azure Monitor エージェントは自動的にインストールされ、まだそれがインストールされていないすべての仮想マシンに対して、マネージド ID が作成されます。
 
 Azure portal の **[Azure Monitor]** メニューで、 **[設定]** セクションから **[データ収集ルール]** を選択します。 **[追加]** をクリックして、新しいデータ収集ルールと割り当てを追加します。
@@ -39,7 +43,7 @@ Azure portal の **[Azure Monitor]** メニューで、 **[設定]** セクシ�
 
 [![データ収集ルールの基本](media/azure-monitor-agent/data-collection-rule-basics.png)](media/azure-monitor-agent/data-collection-rule-basics.png#lightbox)
 
-**[仮想マシン]** タブで、データ収集ルールを適用する必要がある仮想マシンを追加します。 Azure Monitor エージェントが、まだインストールされていない仮想マシンにインストールされます。
+**[仮想マシン]** タブで、データ収集ルールを適用する必要がある仮想マシンを追加します。 環境内の Azure 仮想マシンと Azure Arc 対応サーバーの両方が一覧表示されます。 Azure Monitor エージェントが、まだインストールされていない仮想マシンにインストールされます。
 
 [![データ収集ルール仮想マシン](media/azure-monitor-agent/data-collection-rule-virtual-machines.png)](media/azure-monitor-agent/data-collection-rule-virtual-machines.png#lightbox)
 
@@ -61,13 +65,23 @@ Azure portal の **[Azure Monitor]** メニューで、 **[設定]** セクシ�
 > [!NOTE]
 > データ収集ルールと関連付けが作成されたら、データが送信先に送信されるまでに最大で 5 分かかることがあります。
 
-## <a name="create-using-rest-api"></a>REST API を使用して作成する
-REST API を使用して DCR と関連付けを作成するには、次の手順に従います。  
-1. 1.
-2.   [サンプル DCR](data-collection-rule-overview.md#sample-data-collection-rule) に示されている JSON 形式を使用して、DCR ファイルを手動で作成します。
-3. 2.
 
-## <a name="next-steps"></a>  [REST API](/rest/api/monitor/datacollectionrules/create#examples) を使用してルールを作成します。
+## <a name="create-rule-and-association-using-rest-api"></a>REST API を使用したルールと関連付けを作成する
 
-- 3.
--   [REST API](/rest/api/monitor/datacollectionruleassociations/create#examples) を使用して、データ収集ルールと各仮想マシンの関連付けを作成します。
+以下の手順に従って、REST API を使用したデータ収集ルールと関連付けを作成します。
+
+1. [サンプル DCR](data-collection-rule-overview.md#sample-data-collection-rule) に示されている JSON 形式を使用して、DCR ファイルを手動で作成します。
+
+2. [REST API](/rest/api/monitor/datacollectionrules/create#examples) を使用してルールを作成します。
+
+3. [REST API](/rest/api/monitor/datacollectionruleassociations/create#examples) を使用して、データ収集ルールと各仮想マシンの関連付けを作成します。
+
+
+## <a name="create-association-using-resource-manager-template"></a>Resource Manager テンプレートを使用して関連付けを作成する
+
+Resource Manager テンプレートを使用してデータ収集ルールを作成することはできませんが、Resource Manager テンプレートを使用して Azure 仮想マシンまたは Azure Arc 対応サーバー間の関連付けを作成することはできます。 サンプル テンプレートについては、「[Azure Monitor のデータ収集ルールの Resource Manager テンプレート サンプル](../samples/resource-manager-data-collection-rules.md)」を参照してください。
+
+## <a name="next-steps"></a>次の手順
+
+- [Azure Monitor エージェント](azure-monitor-agent-overview.md)の詳細を確認します。
+- [データ収集ルール](data-collection-rule-overview.md)の詳細を確認します。

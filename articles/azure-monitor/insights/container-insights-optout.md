@@ -4,12 +4,12 @@ description: この記事では、コンテナー用の Azure Monitor で Azure 
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: af5f49dfe5e668f39f105a62ad20858e273b34cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15ec102632258870745f510a98773f70242118be
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87489488"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96011644"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>コンテナー用の Azure Monitor で Azure Kubernetes Service (AKS) の監視を停止する方法
 
@@ -35,7 +35,7 @@ az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMan
 * [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)
 
 >[!NOTE]
->テンプレートはクラスターの同じリソース グループ内にデプロイする必要があります。 このテンプレートの使用時にその他のいずれかのプロパティまたはアドオンを省略すると、それらがクラスターから削除される場合があります。 たとえば、ご利用のクラスターに実装されている RBAC ポリシーの "*enableRBAC*" が挙げられるほか、AKS クラスターにタグが指定されている場合は "*aksResourceTagValues*" が該当します。  
+>テンプレートはクラスターの同じリソース グループ内にデプロイする必要があります。 このテンプレートの使用時にその他のいずれかのプロパティまたはアドオンを省略すると、それらがクラスターから削除される場合があります。 たとえば、ご利用のクラスターに実装されている Kubernetes RBAC ポリシーの *enableRBAC* が挙げられるほか、AKS クラスターにタグが指定されている場合は *aksResourceTagValues* が該当します。  
 >
 
 Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.27 以降を実行する必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。

@@ -8,11 +8,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: c4e5dedf2075a2e13cc91c5eed2c0f03ba498b97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962555"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021522"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service 環境での内部ロード バランサーの使用
 
@@ -58,12 +58,12 @@ ILB ASE の作成は、ASE を作成する通常の方法と特に変わりま�
 
 [Virtual Network] ウィンドウに、外部 VIP または内部 VIP を選択できる VNet 構成オプションがあります。 既定値は[外部] です。 [外部] に設定した場合、ASE は、インターネット アクセス可能な VIP を使用します。 [内部] を選択した場合、ASE は、VNet 内の IP アドレスの ILB で構成されます。 
 
-[内部] を選択すると、ASE に IP アドレスを追加する機能がなくなり、代わりに ASE のサブドメインを指定する必要があります。 外部 VIP の ASE では、その ASE で作成されるアプリのためのサブドメイン内で ASE の名前が使用されます。 ASE の名前が ***contosotest*** で、その ASE 内のアプリの名前が ***mytest*** の場合、サブドメインの形式は ***contosotest.p.azurewebsites.net*** となり、そのアプリの URL は ***mytest.contosotest.p.azurewebsites.net*** になります。 VIP タイプを [内部] に設定すると、ASE 名はその ASE のサブドメイン内で使用されません。 サブドメインを明示的に指定します。 ご使用のサブドメインが ***contoso.corp.net*** で、その ASE 内に ***timereporting*** という名前のアプリを作成した場合、そのアプリの URL は ***timereporting.contoso.corp.net*** になります。
+[内部] を選択すると、ASE に IP アドレスを追加する機能がなくなり、代わりに ASE のサブドメインを指定する必要があります。 外部 VIP の ASE では、その ASE で作成されるアプリのためのサブドメイン内で ASE の名前が使用されます。 ASE の名前が *_contosotest_* で、その ASE 内のアプリの名前が _*_mytest_*_ の場合、サブドメインの形式は _*_contosotest.p.azurewebsites.net_*_ となり、そのアプリの URL は _*_mytest.contosotest.p.azurewebsites.net_*_ になります。 VIP タイプを [内部] に設定すると、ASE 名はその ASE のサブドメイン内で使用されません。 サブドメインを明示的に指定します。 ご使用のサブドメインが _*_contoso.corp.net_*_ で、その ASE 内に _*_timereporting_*_ という名前のアプリを作成した場合、そのアプリの URL は _*_timereporting.contoso.corp.net_*_ になります。
 
 ## <a name="apps-in-an-ilb-ase"></a>ILB ASE 内のアプリ
 ILB ASE でのアプリの作成は、通常の ASE でのアプリの作成と同じです。 
 
-1. Azure Portal で、 **[リソースの作成] -> [Web + モバイル] -> [Web]** の順に選択するか、 **[モバイル]** または **[API アプリ]** を選択します。
+1. Azure portal で、 *[リソースの作成] -> [Web + モバイル] -> [Web]* の順に選択するか、 **[モバイル]** または **[API アプリ]** を選択します。
 2. アプリの名前を入力します。
 3. サブスクリプションを選択します。
 4. リソース グループを選択または作成します。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 7d92cbc25411f5cc2d528ccf6ecec4539494d380
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84ae5f6adfe2a02f62b5d4b1e776d8b5ac1d731b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533276"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95975354"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Monitor でのロール、アクセス許可、セキュリティ
 
@@ -68,7 +68,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 > 
 
 ## <a name="monitoring-permissions-and-azure-custom-roles"></a>アクセス許可と Azure カスタム ロールの監視
-上記の組み込みの役割がチームの正確なニーズに対応していない場合は、[Azure カスタム ロールを作成](../../role-based-access-control/custom-roles.md)して、さらに細かくアクセス許可を指定できます。 一般的な Azure Monitor RBAC 操作とその説明を次に示します。
+上記の組み込みの役割がチームの正確なニーズに対応していない場合は、[Azure カスタム ロールを作成](../../role-based-access-control/custom-roles.md)して、さらに細かくアクセス許可を指定できます。 Azure Monitor での一般的な Azure RBAC 操作とその説明を次に示します。
 
 | 操作 | 説明 |
 | --- | --- |
@@ -135,7 +135,7 @@ $token = New-AzStorageAccountSASToken -ResourceType Service -Service Blob -Permi
 
 その後、ストレージ アカウントからの読み取りが必要なエンティティにトークンを割り当てることができます。これにより、そのストレージ アカウントのすべての BLOB からの表示と読み取りが可能になります。
 
-また、このアクセス許可を RBAC で制御する必要がある場合は、そのエンティティに、特定のストレージ アカウントの Microsoft.Storage/storageAccounts/listkeys/action 権限を付与します。 これは、診断設定またはログ プロファイルを、ストレージ アカウントにアーカイブされるように設定しなければならないユーザーに必要です。 たとえば、1 つのストレージ アカウントからの読み取りのみが必要なユーザーまたはアプリケーションに対しては、次の Azure カスタム ロールを作成できます。
+また、このアクセス許可を Azure RBAC で制御する必要がある場合は、そのエンティティに、特定のストレージ アカウントの Microsoft.Storage/storageAccounts/listkeys/action のアクセス許可を付与します。 これは、診断設定またはログ プロファイルを、ストレージ アカウントにアーカイブされるように設定しなければならないユーザーに必要です。 たとえば、1 つのストレージ アカウントからの読み取りのみが必要なユーザーまたはアプリケーションに対しては、次の Azure カスタム ロールを作成できます。
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -159,7 +159,7 @@ New-AzRoleDefinition -Role $role
 同様のパターンの後にイベント ハブを続けることができますが、最初は、専用 Listen 承認規則を作成する必要があります。 監視関連のイベント ハブのリッスンのみが必要なアプリケーションについて、アクセス権を付与する必要がある場合は、次の操作を行います。
 
 1. Listen 要求のみの監視データをストリーミングするために、作成されたイベント ハブで共有アクセス ポリシーを作成します。 この操作は、ポータルで行うことができます。 たとえば、これを "monitoringReadOnly" と呼ぶとします。 可能な場合は、そのキーをコンシューマーに直接提供し、次の手順をスキップします。
-2. コンシューマーがアドホックでキーを取得する必要がある場合は、そのイベント ハブの ListKeys アクションをユーザーに付与します。 これは、診断設定またはログ プロファイルを、イベント ハブにストリーミングされるように設定しなければならないユーザーにも必要です。 たとえば、RBAC ルールを作成する場合があります。
+2. コンシューマーがアドホックでキーを取得する必要がある場合は、そのイベント ハブの ListKeys アクションをユーザーに付与します。 これは、診断設定またはログ プロファイルを、イベント ハブにストリーミングされるように設定しなければならないユーザーにも必要です。 たとえば、Azure RBAC ルールを作成する場合があります。
    
    ```powershell
    $role = Get-AzRoleDefinition "Reader"
@@ -187,6 +187,6 @@ New-AzRoleDefinition -Role $role
 詳細については、[ネットワーク セキュリティと Azure Storage](../../storage/common/storage-network-security.md) に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-* [Resource Manager で RBAC とアクセス許可を確認します](../../role-based-access-control/overview.md)
+* [Resource Manager で Azure RBAC とアクセス許可を確認します](../../role-based-access-control/overview.md)
 * [Azure で監視の概要を確認します](../overview.md)
 

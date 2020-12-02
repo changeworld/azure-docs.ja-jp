@@ -3,32 +3,32 @@ title: Azure IoT Central ソリューションでプロパティを使用する
 description: Azure IoT Central ソリューションで読み取り専用および書き込み可能なプロパティを使用する方法について説明します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/12/2020
+ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1cc4f40374fce83589d2dc10a0422b91f5178c0b
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: aeb1e5ee00bd52ebb4bd93dec2f4a1eacb002fb9
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123785"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94986533"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Azure IoT Central ソリューションでプロパティを使用する
 
 この記事では、Azure IoT Central アプリケーションでデバイス テンプレートに定義されているデバイス プロパティを使用する方法について説明します。
 
-プロパティは、特定の時点の値を表します。 たとえば、デバイスはプロパティを使用して、到達しようとしているターゲット温度を報告できます。 プロパティを使用して、デバイスと Azure IoT Central アプリケーションとの間で状態を同期させることもできます。 Azure IoT Central から、書き込み可能なプロパティを設定できます。
+プロパティは、特定の時点の値を表します。 たとえば、デバイスはプロパティを使用して、到達しようとしているターゲット温度を報告できます。 既定では、IoT Central でのデバイスのプロパティは読み取り専用です。 書き込み可能なプロパティを使用すると、デバイスと Azure IoT Central アプリケーションの間で状態を同期することができます。
 
 Azure IoT Central アプリケーションで、クラウドのプロパティを定義することもできます。 クラウドのプロパティ値は、デバイスと交換されることはなく、この記事の範囲外です。
 
 ## <a name="define-your-properties"></a>プロパティを定義する
 
-プロパティは、デバイスの状態を表すデータ フィールドです。 プロパティは、デバイスのオンまたはオフの状態など、デバイスの持続的状態を表すために使用します。 プロパティでは、デバイスのソフトウェア バージョンなど、デバイスの基本的なプロパティを表すこともできます。 プロパティは、読み取り専用または書き込み可能として宣言できます。
+プロパティは、デバイスの状態を表すデータ フィールドです。 プロパティは、デバイスのオンまたはオフの状態など、デバイスの持続的状態を表すために使用します。 プロパティでは、デバイスのソフトウェア バージョンなど、デバイスの基本的なプロパティを表すこともできます。 プロパティを読み取り専用または書き込み可能として宣言します。
 
 次のスクリーンショットは、Azure IoT Central アプリケーションでのプロパティ定義を示しています。
 
-![Azure IoT Central アプリケーションでのプロパティ定義を示すスクリーンショット。](./media/howto-use-properties/property-definition.png)
+:::image type="content" source="media/howto-use-properties/property-definition.png" alt-text="Azure IoT Central アプリケーションでのプロパティ定義を示すスクリーンショット。":::
 
 プロパティ機能の構成設定を次の表に示します。
 
@@ -40,9 +40,9 @@ Azure IoT Central アプリケーションで、クラウドのプロパティ�
 | セマンティックの種類   | テレメトリのセマンティックの種類 (温度、状態、イベントなど)。 セマンティックの種類の選択によって、次のどのフィールドを使用できるかが決まります。                                                                       |
 | スキーマ          | プロパティのデータ型 (double、string、vector など)。 使用できる選択肢は、セマンティックの種類によって決まります。 スキーマは、イベントおよび状態のセマンティックの種類には使用できません。                                               |
 | 書き込み可能       | プロパティが書き込み可能でない場合、デバイスから Azure IoT Central にプロパティ値を報告することができます。 プロパティが書き込み可能な場合、デバイスから Azure IoT Central にプロパティ値を報告することができます。 この場合は Azure IoT Central からデバイスにプロパティの更新を送信できます。 |
-| 重大度        | イベントのセマンティックの種類にのみ使用できます。 重大度は、**エラー**、**情報**、または**警告**です。                                                                                                                         |
+| 重大度        | イベントのセマンティックの種類にのみ使用できます。 重大度は、**エラー**、**情報**、または **警告** です。                                                                                                                         |
 | 状態の値    | 状態のセマンティックの種類にのみ使用できます。 考えられる状態の値を定義します。それぞれに表示名、名前、列挙型、および値があります。                                                                                   |
-| ユニット            | プロパティ値の単位 (**mph**、 **%** 、 **&deg; C** など)。                                                                                                                                                              |
+| ユニット            | プロパティ値の単位 (**mph**、 **%** 、または **&deg;C** など)。                                                                                                                                                              |
 | 表示単位    | ダッシュボードとフォームで使用する表示単位。                                                                                                                                                                                    |
 | 解説         | プロパティ機能に関するコメント。                                                                                                                                                                                        |
 | 説明     | プロパティ機能の説明。                                                                                                                                                                                          |
@@ -51,83 +51,63 @@ Azure IoT Central アプリケーションで、クラウドのプロパティ�
 
 ``` json
 {
-  "@type": "Property",
-  "displayName": "Device State",
-  "description": "The state of the device. Two states online/offline are available.",
-  "name": "state",
-  "schema": "boolean"
-},
-{
-  "@type": "Property",
-  "displayName": "Customer Name",
-  "description": "The name of the customer currently operating the device.",
-  "name": "name",
-  "schema": "string",
+  "@type": [
+    "Property",
+    "Temperature"
+  ],
+  "name": "targetTemperature",
+  "schema": "double",
+  "displayName": "Target Temperature",
+  "description": "Allows to remotely specify the desired target temperature.",
+  "unit" : "degreeCelsius",
   "writable": true
 },
 {
- "@type": "Property",
- "displayName": "Date ",
- "description": "The date on which the device is currently operating",
- "name": "date",
- "writable": true,
- "schema": "date"
-},
-{ 
- "@type": "Property",
- "displayName": "Location",
- "description": "The current location of the device",
- "name": "location",
- "writable": true,
- "schema": "geopoint"
-},
-{
- "@type": "Property",
- "displayName": "Vector Level",
- "description": "The Vector level of the device",
- "name": "vector",
- "writable": true,
- "schema": "vector"
+  "@type": [
+    "Property",
+    "Temperature"
+  ],
+  "name": "maxTempSinceLastReboot",
+  "schema": "double",
+  "unit" : "degreeCelsius",
+  "displayName": "Max temperature since last reboot.",
+  "description": "Returns the max temperature since last device reboot."
 }
 ```
 
-この例には 5 つのプロパティがあります。 次に示すように、これらのプロパティは、UI のプロパティ定義に関連付けることができます。
+この例では、2 つのプロパティを示します。 これらのプロパティは、UI のプロパティ定義に関連しています。
 
-* 機能の種類 `Property` を指定する `@type`
-* プロパティ値の `name`。
-* `schema` はプロパティのデータ型を指定します。 この値は、double、integer、Boolean、string などのプリミティブ型にすることができます。 複合オブジェクト型、配列、およびマップもサポートされています。
+* `@type` では、機能の種類 `Property` を指定します。 前の例では、両方のプロパティのセマンティックの種類 `Temperature` も示しています。
+* プロパティの `name`。
+* `schema` では、プロパティのデータ型を指定します。 この値は、double、integer、Boolean、string などのプリミティブ型にすることができます。 複合オブジェクト型、配列、およびマップもサポートされています。
 * `writable`: 既定では、プロパティは読み取り専用です。 このフィールドを使用することで、プロパティを書き込み可能としてマークできます。
 
 表示名や説明などのオプション フィールドを使用すると、インターフェイスや機能に詳細を追加できます。
 
-プロパティを作成するときには、Object や Enum などの複雑な**スキーマ**型を指定できます。
+プロパティを作成するときには、**Object** や **Enum** などの複雑なスキーマ型を指定できます。
 
 ![機能を追加する方法を示すスクリーンショット。](./media/howto-use-properties/property.png)
 
-**Object** などの複雑な**スキーマ**を選択するときには、オブジェクトも定義する必要があります。
+**Object** などの複雑な **スキーマ** を選択するときには、オブジェクトも定義する必要があります。
 
-![オブジェクトを定義する方法を示すスクリーンショット。](./media/howto-use-properties/object.png)
+:::image type="content" source="media/howto-use-properties/object.png" alt-text="オブジェクトを定義する方法を示すスクリーンショット":::
 
 次のコードは、Object プロパティ型の定義を示しています。 このオブジェクトには、文字列型と整数型の 2 つのフィールドがあります。
 
 ``` json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "ObjectProperty"
   },
   "name": "ObjectProperty",
   "schema": {
-    "@id": "<element id>",
     "@type": "Object",
     "displayName": {
       "en": "Object"
     },
     "fields": [
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Field1"
         },
@@ -135,8 +115,6 @@ Azure IoT Central アプリケーションで、クラウドのプロパティ�
         "schema": "integer"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Field2"
         },
@@ -150,15 +128,14 @@ Azure IoT Central アプリケーションで、クラウドのプロパティ�
 
 ## <a name="implement-read-only-properties"></a>読み取り専用プロパティを実装する
 
-既定では、プロパティは読み取り専用です。 読み取り専用のプロパティは、デバイスがプロパティ値の更新を Azure IoT Central アプリケーションに報告することを意味します。 Azure IoT Central アプリケーションでは、読み取り専用のプロパティの値を設定することはできません。
+既定では、プロパティは読み取り専用です。 読み取り専用のプロパティを使用すると、デバイスによって、プロパティ値の更新が Azure IoT Central アプリケーションに報告されます。 Azure IoT Central アプリケーションでは、読み取り専用のプロパティの値を設定することはできません。
 
 Azure IoT Central では、デバイス ツインを使用して、デバイスと Azure IoT Central アプリケーションの間でプロパティ値を同期します。 デバイスのプロパティ値では、デバイス ツインによってレポートされるプロパティが使用されます。 詳細については、[デバイス ツイン](../../iot-hub/tutorial-device-twins.md)に関するページを参照してください。
 
-デバイス機能モデルからの次のスニペットは、読み取り専用のプロパティ型の定義を示しています。
+デバイス モデルの次のスニペットは、読み取り専用のプロパティ型の定義を示しています。
 
 ``` json
 {
-  "@type": "Property",
   "name": "model",
   "displayName": "Device model",
   "schema": "string",
@@ -166,7 +143,7 @@ Azure IoT Central では、デバイス ツインを使用して、デバイス�
 }
 ```
 
-読み取り専用プロパティは、デバイスによって Azure IoT Central に送信されます。 これらのプロパティは JSON ペイロードとして送信されます。 詳細については、[ペイロード](./concepts-telemetry-properties-commands.md)に関するページを参照してください。
+プロパティの更新は、デバイスによって、JSON ペイロードとして送信されます。 詳細については、[ペイロード](./concepts-telemetry-properties-commands.md)に関するページを参照してください。
 
 Azure IoT device SDK を使用して、Azure IoT Central アプリケーションにプロパティの更新を送信できます。
 
@@ -187,16 +164,17 @@ hubClient.getTwin((err, twin) => {
 
 * [クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する (Node.js)](tutorial-connect-device-nodejs.md)
 * [クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する (Python)](tutorial-connect-device-python.md)
+* [クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する (Java)](tutorial-connect-device-java.md)
 
 Azure IoT Central アプリケーションの次のビューは、表示できるプロパティを示しています。 このビューでは、 **[デバイス モデル]** プロパティは自動的に "_読み取り専用のデバイス プロパティ_" になります。
 
-![読み取り専用のプロパティのビューを示すスクリーンショット。](./media/howto-use-properties/read-only.png)
+:::image type="content" source="media/howto-use-properties/read-only.png" alt-text="読み取り専用のプロパティのビューを示すスクリーンショット":::
 
 ## <a name="implement-writable-properties"></a>書き込み可能なプロパティを実装する
 
 書き込み可能なプロパティは、フォーム上の Azure IoT Central アプリケーションの演算子によって設定されます。 このプロパティは Azure IoT Central からデバイスに送信されます。 Azure IoT Central では、デバイスからの確認応答を待機します。
 
-デバイス機能モデルからの次のスニペットは、書き込み可能なプロパティ型の定義を示しています。
+デバイス モデルの次のスニペットは、書き込み可能なプロパティ型の定義を示しています。
 
 ``` json
 {
@@ -207,12 +185,6 @@ Azure IoT Central アプリケーションの次のビューは、表示でき�
   "writable": true,
   "schema": "long"
 }
-```
-
-デバイス クライアントは、次の例のような JSON ペイロードを、デバイス ツインの reported プロパティとして送信する必要があります。
-
-``` json
-{ "Brightness Level": 2 }
 ```
 
 デバイス側で応答する書き込み可能なプロパティを定義して処理するに、次のコードを使用できます。
@@ -248,7 +220,6 @@ hubClient.getTwin((err, twin) => {
 | `'ac': 202` または `'ac': 201` | Pending | プロパティの変更操作が保留中または進行中です。 |
 | `'ac': 4xx` | エラー | 要求されたプロパティの変更は、有効でなかったか、エラーが発生しました。 |
 | `'ac': 5xx` | エラー | 要求された変更の処理中に、デバイスで予期しないエラーが発生しました。 |
-
 
 デバイス ツインの詳細については、「[バックエンド サービスからデバイスを構成する](../../iot-hub/tutorial-device-twins.md)」を参照してください。
 

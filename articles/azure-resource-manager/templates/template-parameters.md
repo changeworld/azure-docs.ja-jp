@@ -2,19 +2,21 @@
 title: テンプレート内のパラメーター
 description: Azure Resource Manager テンプレートでパラメーターを定義する方法について説明します。
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: 89c6984c587e8dae59c1825a99d4f8da1c06dafb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: 8cdc95037967a32c2d8464f4dc39b1e7369102bb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76122425"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95911415"
 ---
 # <a name="parameters-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのパラメーター
 
 この記事では、Azure Resource Manager テンプレートでパラメーターを定義および使用する方法について説明します。 パラメーターに異なる値を指定することにより、さまざまな環境でテンプレートを再利用できます。
 
 Resource Manager は、デプロイ操作を開始する前にパラメーター値を解決します。 テンプレートでパラメーターが使用されている場合、Resource Manager はそれを解決済みの値に置き換えます。
+
+各パラメーターは、いずれかの[データ型](template-syntax.md#data-types)に設定する必要があります。
 
 ## <a name="define-parameter"></a>パラメーターを定義する
 

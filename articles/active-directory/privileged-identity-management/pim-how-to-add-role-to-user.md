@@ -13,16 +13,16 @@ ms.subservice: pim
 ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69884b9e07172e9b25f4c14884be8713da23cbdb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e0e230a975748fe2f737c4b8fe8491887351d387
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369830"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004672"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールを割り当てる
 
-全体管理者は、Azure Active Directory (Azure AD) を使用して、 **永続的** な Azure AD 管理者ロールの割り当てを行うことができます。 こうしたロールの割り当ては、[Azure portal](../roles/permissions-reference.md) または [PowerShell のコマンド](/powershell/module/azuread#directory_roles) を使用して作成できます。
+全体管理者は、Azure Active Directory (Azure AD) を使用して、**永続的** な Azure AD 管理者ロールの割り当てを行うことができます。 こうしたロールの割り当ては、[Azure portal](../roles/permissions-reference.md) または [PowerShell のコマンド](/powershell/module/azuread#directory_roles) を使用して作成できます。
 
 永続的な管理ロールの割り当ては、特権ロール管理者が Azure AD Privileged Identity Management (PIM) サービスを使用して行うこともできます。 さらに、特権ロール管理者は、ユーザーを Azure AD 管理者ロールの **候補** にすることもできます。 管理者候補は必要なときにロールをアクティブ化できます。作業が完了すると、そのアクセス許可は期限切れになります。
 
@@ -147,7 +147,7 @@ ms.locfileid: "92369830"
 
 1. これで、そのユーザーがロールの対象となりました。ユーザーに、[Privileged Identity Management での自分の Azure AD ロールのアクティブ化](pim-how-to-activate-role.md)に関するページの手順に従ってロールをアクティブ化できることを知らせてください。
 
-    臨時管理者は、アクティブ化時に Azure Multi-Factor Authentication への登録を求められます。 ユーザーが MFA に登録できない場合、または Microsoft アカウント (@outlook.com など) を使用している場合は、すべてのロールでこのユーザーを永続化する必要があります。
+    臨時管理者には、アクティブ化時に Azure AD Multi-Factor Authentication への登録が求められます。 ユーザーが MFA に登録できない場合、または Microsoft アカウント (@outlook.com など) を使用している場合は、すべてのロールでこのユーザーを永続化する必要があります。
 
 ## <a name="make-a-role-assignment-permanent"></a>ロールの割り当てを永続化する
 

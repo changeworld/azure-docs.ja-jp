@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 11/19/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 498934c01970b296c1491e7ccd36ad947324306a
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 81bcfdf5e63d49280fb798773559310cbd912a26
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445338"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013583"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>クエリでオートコンプリートと候補の結果を有効にする suggester を作成する
 
@@ -40,9 +40,11 @@ suggester は、部分的なクエリで一致するプレフィックスを格�
 
 suggester を作成するには、それを[インデックス定義](/rest/api/searchservice/create-index)に追加します。 suggester によって、先行入力エクスペリエンスが有効になっているフィールドの名前とコレクションが取得されます。 [各プロパティを設定します](#property-reference)。 suggester の作成に最適なタイミングは、それを使用するフィールドを定義するときです。
 
-+ 文字列フィールドのみを使用する
++ 文字列フィールドのみを使用します。
 
-+ フィールドで既定の標準 Lucene アナライザー (`"analyzer": null`) または [言語アナライザー](index-add-language-analyzers.md) (たとえば、`"analyzer": "en.Microsoft"`) を使用する
++ 文字列フィールドが複合型 (Address 内にある City フィールドなど) の一部である場合は、フィールドに親を含めます。`"Address/City"` (REST、および C# と Python)、または `["Address"]["City"]` (JavaScript)。
+
++ フィールドで、既定の標準 Lucene アナライザー (`"analyzer": null`) または [言語アナライザー](index-add-language-analyzers.md) (`"analyzer": "en.Microsoft"` など) を使用します。
 
 既存のフィールドを使用して suggester を作成しようとすると、API ではそれは許可されません。 プレフィックスは、インデックス作成の間に、2 つ以上の文字の組み合わせから成る部分的な用語が完全な用語と並行してトークン化されるときに生成されます。 既存のフィールドが既にトークン化されている場合、それらを suggester に追加するには、インデックスを再構築する必要があります。 詳細については、[Azure Cognitive Search インデックスを再構築する方法](search-howto-reindex.md)に関するページを参照してください。
 
@@ -117,7 +119,7 @@ REST API では、[インデックス作成](/rest/api/searchservice/create-inde
 
 ## <a name="create-using-net"></a>.NET を使用して作成する
 
-C# で、[SearchSuggester オブジェクト](/dotnet/api/azure.search.documents.indexes.models.searchsuggester)を定義します。 `Suggesters` は SearchIndex オブジェクトのコレクションですが、1 つのアイテムのみを受け取ることができます。 
+C# で、[SearchSuggester オブジェクト](/dotnet/api/azure.search.documents.indexes.models.searchsuggester)を定義します。 `Suggesters` は SearchIndex オブジェクトのコレクションですが、1 つのアイテムのみを受け取ることができます。 インデックスの定義に suggester を追加します。
 
 ```csharp
 private static void CreateIndex(string indexName, SearchIndexClient indexClient)
@@ -125,12 +127,9 @@ private static void CreateIndex(string indexName, SearchIndexClient indexClient)
     FieldBuilder fieldBuilder = new FieldBuilder();
     var searchFields = fieldBuilder.Build(typeof(Hotel));
 
-    //var suggester = new SearchSuggester("sg", sourceFields = "HotelName", "Category");
-
     var definition = new SearchIndex(indexName, searchFields);
 
-    var suggester = new SearchSuggester("sg", new[] { "HotelName", "Category"});
-
+    var suggester = new SearchSuggester("sg", new[] { "HotelName", "Category", "Address/City", "Address/StateProvince" });
     definition.Suggesters.Add(suggester);
 
     indexClient.CreateOrUpdateIndex(definition);

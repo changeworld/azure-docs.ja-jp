@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 94cf1f34db590abeb084c5e95367781e50c85efc
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: fa7292d423d8b716ffd75a1a20431fb5a79bbf96
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94650099"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237342"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>クラウド プロビジョニングのトラブルシューティング
 
@@ -124,40 +124,17 @@ Azure がポート 443 でリッスンしていて、お使いのエージェン
 
 ### <a name="log-files"></a>ログ ファイル
 
-既定では、エージェントによって発行されるエラー メッセージとスタック トレース情報は最小限に抑えられています。 これらのトレース ログは、*C:\ProgramData\Microsoft\Azure AD Connect Provisioning Agent\Trace* フォルダーにあります。
+既定では、エージェントによって発行されるエラー メッセージとスタック トレース情報は最小限に抑えられています。 これらのトレース ログは、**C:\ProgramData\Microsoft\Azure AD Connect Provisioning Agent\Trace** フォルダーにあります。
 
 エージェント関連の問題をトラブルシューティングするための追加の詳細情報を収集するには、次の手順に従います。
 
-1. **Microsoft Azure AD Connect プロビジョニング エージェント** サービスを停止します。
-1. 元の構成ファイル *C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\AADConnectProvisioningAgent.exe.config* のコピーを作成します。
-1. 既存の `<system.diagnostics>` セクションを以下に置き換えます。これにより、すべてのトレース メッセージは *ProvAgentTrace.log* ファイルに送られます。
+1.  [こちら](reference-powershell.md#install-the-aadcloudsynctools-powershell-module)の説明に従って、AADCloudSyncTools PowerShell モジュールをインストールします。
+2. `Export-AADCloudSyncToolsLogs` PowerShell コマンドレットを使用して情報をキャプチャします。  データ コレクションを微調整するには、次のスイッチを使用できます。
+      - SkipVerboseTrace: 詳細ログをキャプチャせずに現在のログのみをエクスポートします (既定値 = false)
+      - TracingDurationMins: 別のキャプチャ期間を指定します (既定値 = 3 分)
+      - OutputPath: 別の出力パスを指定します (既定値 = ユーザーのドキュメント)
 
-   ```xml
-     <system.diagnostics>
-         <sources>
-         <source name="AAD Connect Provisioning Agent">
-             <listeners>
-             <add name="console"/>
-             <add name="etw"/>
-             <add name="textWriterListener"/>
-             </listeners>
-         </source>
-         </sources>
-         <sharedListeners>
-         <add name="console" type="System.Diagnostics.ConsoleTraceListener" initializeData="false"/>
-         <add name="etw" type="System.Diagnostics.EventLogTraceListener" initializeData="Azure AD Connect Provisioning Agent">
-             <filter type="System.Diagnostics.EventTypeFilter" initializeData="All"/>
-         </add>
-         <add name="textWriterListener" type="System.Diagnostics.TextWriterTraceListener" initializeData="C:/ProgramData/Microsoft/Azure AD Connect Provisioning Agent/Trace/ProvAgentTrace.log"/>
-         </sharedListeners>
-     </system.diagnostics>
-    
-   ```
-1. **Microsoft Azure AD Connect プロビジョニング エージェント** サービスを開始します。
-1. 次のコマンドを使用して、ファイルを追跡し、問題をデバッグします。 
-    ```
-    Get-Content “C:/ProgramData/Microsoft/Azure AD Connect Provisioning Agent/Trace/ProvAgentTrace.log” -Wait
-    ```
+
 ## <a name="object-synchronization-problems"></a>オブジェクトの同期に関する問題
 
 次のセクションでは、オブジェクトの同期に関するトラブルシューティングについて説明します。
@@ -203,6 +180,22 @@ Azure portal では、プロビジョニング ログを使用して、オブジ
   次の要求を使用します。
  
   `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`
+
+## <a name="repairing-the-the-cloud-sync-service-account"></a>クラウド同期サービス アカウントの修復
+クラウド同期サービス アカウントを修復する必要がある場合は、`Repair-AADCloudSyncToolsAccount` を使用できます。  
+
+
+   1.  [こちら](reference-powershell.md#install-the-aadcloudsynctools-powershell-module)に記載されているインストール手順を使用して開始し、残りの手順を続行します。
+   2.  管理者特権を持つ Windows PowerShell セッションから、次を入力するかコピーして貼り付けます。 
+    ```
+    Connect-AADCloudSyncTools
+    ```  
+   3. ご自分の Azure AD グローバル管理者の資格情報を入力します。
+   4. 次を入力するか、コピーして貼り付けます。 
+    ```
+    Repair-AADCloudSyncToolsAccount
+    ```  
+   5. これを完了すると、アカウントが正常に修復されたことが示されます。
 
 ## <a name="next-steps"></a>次のステップ 
 

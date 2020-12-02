@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 05/31/2020
+ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: cb5984ba5d5764ee2ffa3f28e2d95612c14f7e27
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: bd5c56ef74fbe0c60a9d395a7b8a0fbc496e773c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025937"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95534842"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>チュートリアル:ニューヨークのタクシー データセットを読み込む
 
@@ -24,9 +24,6 @@ ms.locfileid: "93025937"
 
 > [!div class="checklist"]
 >
-> * Azure portal で SQL プールを作成する
-> * Azure Portal でサーバーレベルのファイアウォール規則を設定する
-> * SSMS でデータ ウェアハウスに接続する
 > * データを読み込むように指定されたユーザーを作成する
 > * サンプル データセット用のテーブルを作成する 
 > * COPY T-SQL ステートメントを使ってデータをデータ ウェアハウスに読み込む
@@ -36,128 +33,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このチュートリアルを始める前に、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) をダウンロードしてインストールします。
+このチュートリアルを始める前に、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) をダウンロードしてインストールします。  
 
-## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
-
-[Azure Portal](https://portal.azure.com/) にログインします。
-
-## <a name="create-a-blank-database"></a>空のデータベースの作成
-
-SQL プールは、定義された一連の[コンピューティング リソース](memory-concurrency-limits.md)を使用して作成されます。 データベースは、[Azure リソース グループ](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)内と[論理 SQL サーバー](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に作成されます。
-
-次の手順に従って、空のデータベースを作成します。
-
-1. Azure Portal の左上隅にある **[リソースの作成]** を選択します。
-
-2. **[新規]** ページの **[データベース]** を選択し、 **[新規]** ページの **[おすすめ]** で **[Azure Synapse Analytics]** を選択します。
-
-    ![スクリーンショットには、Azure portal 内のデータベースから選択された SQL Data Warehouse が示されています。](./media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
-
-3. フォームに次の情報を入力します。
-
-   | 設定            | 推奨値       | 説明                                                  |
-   | ------------------ | --------------------- | ------------------------------------------------------------ |
-   | *[名前]* *            | mySampleDataWarehouse | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。 |
-   | **サブスクリプション**   | 該当するサブスクリプション     | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
-   | **リソース グループ** | myResourceGroup       | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関するページを参照してください。 |
-   | **ソースの選択**  | 空のデータベース        | 空のデータベースの作成を指定します。 データ ウェアハウスはデータベースの一種です。 |
-
-    ![スクリーンショットには、これらの値を入力できる [SQL Data Warehouse] ウィンドウが示されています。](./media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
-
-4. **[サーバー]** を選択して、新しいデータベース用の新しいサーバーを作成して構成します。 **[新しいサーバー]** フォームには次の情報を入力してください。
-
-    | 設定                | 推奨値          | 説明                                                  |
-    | ---------------------- | ------------------------ | ------------------------------------------------------------ |
-    | **サーバー名**        | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関するページを参照してください。 |
-    | **サーバー管理者ログイン** | 有効な名前           | 有効なログイン名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。 |
-    | **パスワード**           | 有効なパスワード       | パスワードには 8 文字以上が使用され、大文字、小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。 |
-    | **場所**           | 有効な場所       | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |
-
-    ![サーバーを作成する](./media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
-
-5. **[選択]** を選択します。
-
-6. **[パフォーマンス レベル]** を選択し、データ ウェアハウスが Gen1 または Gen2 のいずれであるかということと、データ ウェアハウス ユニットの数を指定します。
-
-7. このチュートリアルでは、SQL プールの **[Gen2]** を選択します。 スライダーは、既定で **[DW1000c]** に設定されています。  上下に動かしてどうなるか試してみてください。
-
-    ![パフォーマンスを構成する](./media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
-
-8. **[適用]** を選択します。
-9. [プロビジョニング] ブレードで、空のデータベース用の **[照合順序]** を選びます。 このチュートリアルでは、既定の値を使います。 照合順序の詳細については、「[Collations (照合順序)](/sql/t-sql/statements/collations?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。
-
-10. これでフォームの入力が完了したので、 **[作成]** をクリックして、データベースをプロビジョニングします。 プロビジョニングには数分かかります。
-
-11. デプロイ プロセスを監視するために、ツール バーの **[通知]** を選択します。
-  
-     ![スクリーンショットは、[デプロイ中] と表示された [通知] ペインが開いている Azure portal を示しています。](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
-
-## <a name="create-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則を作成する
-
-サーバーレベルのファイアウォールにより、外部のアプリケーションとツールは、サーバーやサーバー上のすべてのデータベースに接続できなくなります。 接続できるようにするには、特定の IP アドレスに接続を許可するファイアウォール規則を追加します。  次の手順に従って、クライアントの IP アドレスに対する[サーバーレベルのファイアウォール規則](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を作成します。
-
-> [!NOTE]
-> Azure Synapse Analytics の通信は、ポート 1433 で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、サーバーに接続することはできません。
-
-1. デプロイが完了したら、左側のメニューから **[SQL データベース]** を選択し、 **[SQL データベース]** ページで、 **[mySampleDatabase]** を選択します。 このデータベースの概要ページが開くと、完全修飾サーバー名 ( **mynewserver-20180430.database.windows.net** など) や追加の構成オプションが表示されます。
-
-2. この完全修飾サーバー名をコピーします。以降のクイック スタートでサーバーとそのデータベースに接続する際に必要となります。 次に、サーバー名を選択して、サーバー設定を開きます。
-
-    ![サーバー名を検索する](././media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)
-
-3. サーバー名を選択して、サーバー設定を開きます。
-
-    ![サーバー設定](./media/load-data-from-azure-blob-storage-using-polybase/server-settings.png)
-
-4. **[ファイアウォール設定の表示]** を選択します。 サーバーの **[ファイアウォール設定]** ページが開きます。
-
-    ![サーバーのファイアウォール規則](./media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png)
-
-5. ツール バーの **[クライアント IP の追加]** を選択し、現在の IP アドレスを新しいファイアウォール規則に追加します。 ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
-
-6. **[保存]** を選択します。 サーバー上でポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
-
-7. **[OK]** を選択し、 **[ファイアウォール設定]** ページを閉じます。
-
-これで、この IP アドレスを使って、サーバーとそのデータ ウェアハウスに接続できるようになりました。 接続するには、SQL Server Management Studio または他の適当なツールを使います。 接続するときは、前に作成した ServerAdmin アカウントを使います。  
-
-> [!IMPORTANT]
-> 既定では、すべての Azure サービスで、SQL Database ファイアウォール経由のアクセスが有効になります。 このページの **[オフ]** を選択した後、 **[保存]** を選択して、すべての Azure サービスに対してファイアウォールを無効にします。
-
-## <a name="get-the-fully-qualified-server-name"></a>完全修飾サーバー名を取得する
-
-Azure portal 上で、サーバーの完全修飾サーバー名を取得します。 後でサーバーに接続するときに、完全修飾名を使います。
-
-1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. 左側のメニューから **[Azure Synapse Analytics]** を選択し、 **[Azure Synapse Analytics]** ページで目的のデータベースを選択します。
-3. そのデータベースの Azure Portal ページの **[基本]** ウィンドウで、 **サーバー名** を見つけてコピーします。 この例の完全修飾名は mynewserver-20180430.database.windows.net です。
-
-    ![接続情報](././media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
-
-## <a name="connect-to-the-server-as-server-admin"></a>サーバー管理者としてサーバーに接続する
-
-このセクションでは、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) を使って、サーバーへの接続を確立します。
-
-1. SQL Server Management Studio を開きます。
-
-2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
-
-    | 設定        | 推奨値                            | 説明                                                  |
-    | -------------- | ------------------------------------------ | ------------------------------------------------------------ |
-    | サーバーの種類    | データベース エンジン                            | この値は必須です                                       |
-    | サーバー名    | 完全修飾サーバー名            | 名前は **mynewserver-20180430.database.windows.net** のような形式で指定する必要があります。 |
-    | 認証 | SQL Server 認証                  | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
-    | ログイン          | サーバー管理者アカウント                   | これはサーバーを作成したときに指定したアカウントです。 |
-    | Password       | サーバー管理者アカウントのパスワード | これはサーバーを作成したときに指定したパスワードです。 |
-
-    ![[サーバーに接続]](./media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
-
-3. **[接続]** を選択します。 SSMS で [オブジェクト エクスプローラー] ウィンドウが開きます。
-
-4. オブジェクト エクスプローラーで、 **[データベース]** を展開します。 **[システム データベース]** 、 **[master]** の順に展開し、マスター データベースのオブジェクトを表示します。  **mySampleDatabase** を展開して、新しいデータベースのオブジェクトを表示します。
-
-    ![データベース オブジェクト](./media/load-data-from-azure-blob-storage-using-polybase/connected.png)
+このチュートリアルでは、次の[チュートリアル](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/create-data-warehouse-portal#connect-to-the-server-as-server-admin)から SQL 専用プールを既に作成しているものと想定しています。
 
 ## <a name="create-a-user-for-loading-data"></a>データを読み込むためのユーザーを作成する
 
@@ -165,7 +43,7 @@ Azure portal 上で、サーバーの完全修飾サーバー名を取得しま�
 
 データの読み込みに専用のログインとユーザーを作成することをお勧めします。 その後、適切な最大メモリ割り当てを有効にする[リソース クラス](resource-classes-for-workload-management.md)に読み込みユーザーを追加します。
 
-現在はサーバー管理者として接続しているので、ログインとユーザーを作成することができます。 以下の手順を使って、 **LoaderRC20** という名前のログインとユーザーを作成します。 その後、そのユーザーを **staticrc20** リソース クラスに割り当てます。
+ログインとユーザーを作成できるようにサーバー管理者として接続します。 以下の手順を使って、**LoaderRC20** という名前のログインとユーザーを作成します。 その後、そのユーザーを **staticrc20** リソース クラスに割り当てます。
 
 1. SSMS で **[master]** を右クリックしてドロップダウン メニューを表示し、 **[新しいクエリ]** を選びます。 新しいクエリ ウィンドウが開きます。
 
@@ -202,7 +80,7 @@ Azure portal 上で、サーバーの完全修飾サーバー名を取得しま�
 
     ![新しいログインで接続する](./media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
 
-2. 完全修飾サーバー名を入力し、ログインとして「 **LoaderRC20** 」と入力します。  LoaderRC20 のパスワードを入力します。
+2. 完全修飾サーバー名を入力し、ログインとして「**LoaderRC20**」と入力します。  LoaderRC20 のパスワードを入力します。
 
 3. **[接続]** を選択します。
 
@@ -511,7 +389,7 @@ Azure portal 上で、サーバーの完全修飾サーバー名を取得しま�
 
 4. 作成したサーバーを削除するには、前の図の **mynewserver-20180430.database.windows.net** を選び、 **[削除]** を選択します。  サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、注意してください。
 
-5. リソース グループを削除するには、 **myResourceGroup** を選択して、 **[リソース グループの削除]** を選択します。
+5. リソース グループを削除するには、**myResourceGroup** を選択して、 **[リソース グループの削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

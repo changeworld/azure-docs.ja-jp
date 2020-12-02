@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/22/2020
+ms.date: 11/24/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d61d49fdd90f1f916141ca636e2c2a4dbe0b9bcd
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 935c0bf76e298ab1e2e4d25fab8685ac4ce617db
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657742"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95916167"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure の従来のサブスクリプション管理者
 
@@ -99,25 +99,25 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azu
 
 サブスクリプションのサービス管理者を変更できるのは、アカウント管理者のみです。 既定の設定では、Azure サブスクリプションにサインアップした時点では、サービス管理者とアカウント管理者は同じです。 アカウント管理者ロールのユーザーには、Azure portal へのアクセス権が与えられません。 サービス管理者ロールのユーザーには、Azure portal へのフル アクセス権が与えられます。 アカウント管理者とサービス管理者が同じユーザーの場合、サービス管理者を別のユーザーに変更すると、アカウント管理者は Azure portal にアクセスできなくなります。 ただし、アカウント管理者はいつでもアカウント センターを使用して、サービス管理者を自身に戻すことができます。
 
-**Account Center** でサービス管理者を変更するには、次の手順に従います。
-
-### <a name="account-center"></a>アカウント センター
+Azure portal でサービス管理者を変更するには、次の手順に従います。
 
 1. [サービス管理者を変更するための制限事項](#limitations-for-changing-the-service-administrator)を確認して、使用するシナリオがサポートされていることを確認してください。
 
-1. アカウント管理者として [Azure センター](https://account.windowsazure.com/subscriptions)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
 
-1. サブスクリプションをクリックします。
+1. [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) を開き、サブスクリプションを選択します。
 
-1. 右側にある **[サブスクリプション詳細の編集]** をクリックします。
+1. 次に、左側のナビゲーションで、 **[プロパティ]** をクリックします。
 
-    ![アカウント センターの [サブスクリプションの編集] ボタンを示すスクリーン ショット](./media/classic-administrators/editsub.png)
+1. **[サービス管理者]** をクリックします。
 
-1. **[サービス管理者]** ボックスに、新しいサービス管理者の電子メール アドレスを入力します。
+    ![Azure portal でサブスクリプションの [プロパティ] を示すスクリーンショット](./media/classic-administrators/service-admin.png)
 
-    ![サービス管理者の電子メールを変更する、ボックスを示すスクリーン ショット](./media/classic-administrators/change-service-admin.png)
+1. **[サービス管理者の編集]** ページで、新しいサービス管理者のメール アドレスを入力します。
 
-1. チェックマークをクリックして、変更を保存します。
+    ![[サービス管理者の編集] ページを示すスクリーンショット](./media/classic-administrators/service-admin-edit.png)
+
+1. **[OK]** をクリックして変更を保存します。
 
 ### <a name="limitations-for-changing-the-service-administrator"></a>サービス管理者の変更に関する制限事項
 
@@ -142,7 +142,7 @@ Microsoft アカウントと Azure AD アカウントの詳細については、
 
 1. [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) を開き、サブスクリプションを選択します。
 
-1. **[プロパティ]** をクリックします。
+1. 次に、左側のナビゲーションで、 **[プロパティ]** をクリックします。
 
     サブスクリプションのアカウント管理者が、 **[アカウント管理者]** ボックスに表示されます。
 

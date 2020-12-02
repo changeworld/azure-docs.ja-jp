@@ -7,34 +7,34 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: sql-dw
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fa5025e0a2bd260adeb23b4ab7c4d5f8bd83a43a
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 041751b5b23dbb3153f1ae638303579a860c0e5b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026804"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020165"
 ---
-# <a name="how-to-monitor-the-gen2-cache"></a>Gen2 キャッシュを監視する方法
+# <a name="how-to-monitor-the-adaptive-cache"></a>アダプティブ キャッシュを監視する方法
 
-この記事では、ワークロードが Gen2 キャッシュを最適に活用しているかどうかを判断することで、パフォーマンスが遅いクエリを監視し、トラブルシューティングする方法について説明します。
+この記事では、ワークロードが専用 SQL プールのアダプティブ キャッシュを最適に活用しているかどうかを判断することで、パフォーマンスが遅いクエリを監視し、トラブルシューティングする方法について説明します。
 
-Gen2 ストレージ アーキテクチャでは、Gen2 データ ウェアハウス用に設計された NVMe ベースの SSD に搭載されているキャッシュ内で、最も頻繁に照会される列ストア セグメントを自動的に階層化します。 キャッシュに常駐しているセグメントをクエリが取得すると、より優れたパフォーマンスが実現します。
+専用 SQL プール ストレージ アーキテクチャでは、NVMe ベースの SSD に搭載されているキャッシュ内で、最も頻繁に照会される列ストア セグメントが自動的に階層化されます。 クエリでキャッシュに常駐しているセグメントを取得すると、パフォーマンスが向上します。
  
 ## <a name="troubleshoot-using-the-azure-portal"></a>Azure Portal を使用したトラブルシューティング
 
-Azure Monitor を使用すれば、Gen2 キャッシュ メトリックを表示して、クエリのパフォーマンスをトラブルシューティングできます。 まず Azure portal に移動し、 **[監視]** 、 **[メトリック]** 、 **[+ スコープの選択]** の順にクリックします。
+Azure Monitor を使用すれば、キャッシュ メトリックを表示して、クエリのパフォーマンスをトラブルシューティングできます。 まず Azure portal に移動し、 **[監視]** 、 **[メトリック]** 、 **[+ スコープの選択]** の順にクリックします。
 
 ![スクリーンショットには、Azure portal の [メトリック] で選択された [スコープの選択] が示されています。](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
 
-検索バーとドロップダウン バーを使用して、お使いのデータ ウェアハウスを見つけます。 次に、[適用] を選択します。
+検索バーとドロップダウン バーを使用して、お使いの専用 SQL プールを見つけます。 次に、[適用] を選択します。
 
 ![スクリーンショットには、使用しているデータ ウェアハウスを選択できる [スコープの選択] ウィンドウが示されています。](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
 
-Gen2 キャッシュをトラブルシューティングするための主要なメトリックは、 **[キャッシュ ヒット率]** と **[キャッシュ使用率]** です。 **[キャッシュ ヒット率]** を選択した後、 **[メトリックの追加]** ボタンをクリックして **[キャッシュの使用率]** を追加します。 
+キャッシュをトラブルシューティングするための主要なメトリックは、 **[キャッシュ ヒット率]** と **[キャッシュ使用率]** です。 **[キャッシュ ヒット率]** を選択した後、 **[メトリックの追加]** ボタンをクリックして **[キャッシュの使用率]** を追加します。 
 
 ![キャッシュ メトリック](./media/sql-data-warehouse-how-to-monitor-cache/cache-2.png)
 

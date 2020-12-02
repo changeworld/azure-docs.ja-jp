@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/04/2019
-ms.openlocfilehash: ef34dbfd3af326dbf2d82e09a4c5c8c8e4a91a84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/11/2020
+ms.openlocfilehash: 5aa379f6601bc324bd08c53f251b2097141eec69
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319798"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95911636"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics データのセキュリティ
 このドキュメントでは、[Azure セキュリティ センター](https://www.microsoft.com/en-us/trust-center?rtc=1)の情報に加えて、Azure Monitor の機能である Log Analytics に固有の情報を提供することを目的としています。  
@@ -26,6 +26,12 @@ Log Analytics サービスは次の方法でクラウドベースのデータを
 * インシデント管理
 * コンプライアンス
 * セキュリティ基準認定
+
+Azure Monitor と Log Analytics に組み込まれている追加のセキュリティ機能を使用することもできます。 これらの機能を利用すると、より多くの管理者の管理が必要になります。 
+* カスタマー マネージド (セキュリティ) キー
+* Azure プライベート ストレージ
+* Private Link ネットワーク 
+* Azure ロックボックスによって設定された Azure サポートのアクセス制限
 
 セキュリティ ポリシーを含め、次の情報に関するご質問やご提案、問題がある場合は、[Azure のサポート オプション](https://azure.microsoft.com/support/options/)に関するページを参照してください。
 
@@ -166,10 +172,19 @@ Windows または管理サーバー エージェントのキャッシュされ�
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3.Log Analytics サービスでデータを受信して処理する
 Log Analytics サービスでは、Azure 認証で証明書とデータの整合性を検証することにより、入力されるデータが信頼できる発行元からのものであることを確認します。 未処理の生データは、リージョンの Azure Event Hub に格納され、データは最終的に保存されます。 保存されているデータの種類は、インポートしてデータを収集するために使用したソリューションの種類によって異なります。 次に、Log Analytics サービスは、生データを処理してデータベースに取り込みます。
 
-データベースに格納されている収集済みデータのリテンション期間は、選択された料金プランによって異なります。 *無料*プランの場合、収集されたデータは 7 日間使用できます。 "*有料*" プランの場合、収集したデータは既定で 31 日間利用でき、730 日まで延長できます。 データは、データの機密性を保証するために、Azure ストレージに暗号化され保存されます。そして、そのデータは、ローカル冗長ストレージ (LRS) を使用してローカルのリージョン内にレプリケートされます。 過去 2 週間以内のデータは SSD ベースのキャッシュにも格納されます。このキャッシュは暗号化されます。
+データベースに格納されている収集済みデータのリテンション期間は、選択された料金プランによって異なります。 *無料* プランの場合、収集されたデータは 7 日間使用できます。 "*有料*" プランの場合、収集したデータは既定で 31 日間利用でき、730 日まで延長できます。 データは、データの機密性を保証するために、Azure ストレージに暗号化され保存されます。そして、そのデータは、ローカル冗長ストレージ (LRS) を使用してローカルのリージョン内にレプリケートされます。 過去 2 週間以内のデータは SSD ベースのキャッシュにも格納されます。このキャッシュは暗号化されます。
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4.Log Analytics を使用してデータにアクセスする
 Log Analytics ワークスペースにアクセスするには、設定済みの組織アカウントまたは Microsoft アカウントを使用して Azure Portal にサインインします。 ポータルと Log Analytics サービス間のすべてのトラフィックは、セキュリティで保護された HTTPS チャネル経由で送信されます。 ポータルを使用する場合、セッション ID がユーザーのクライアント (Web ブラウザー) で生成され、データはセッションが終了するまでローカル キャッシュに保存されます。 セッションが終了すると、キャッシュが削除されます。 個人を特定できる情報が含まれないクライアント側の Cookie は、自動的に削除されません。 セッションの Cookie は HTTPOnly としてマークされ、セキュリティで保護されます。 あらかじめ決められたアイドル期間の後は、Azure Portal セッションが終了します。
+
+
+## <a name="additional-security-features"></a>追加のセキュリティ機能
+これらの追加のセキュリティ機能を使用して、Azure Monitor または Log Analytics 環境のセキュリティをさらに強化することができます。 これらの機能を利用すると、より多くの管理者の管理が必要になります。 
+- [カスタマー マネージド (セキュリティ) キー](customer-managed-keys.md) - カスタマー マネージド キーを使用して、Log Analytics ワークスペースに送信されるデータを暗号化できます。 Azure Key Vault を使用する必要があります。 
+- [プライベート/ユーザー マネージド ストレージ](private-storage.md) - 個人の暗号化されたストレージ アカウントを管理し、それを使用して監視データを格納するように Log Analytics に指示します 
+- [Private Link ネットワーク](private-link-security.md) - Azure Private Link を使用すると、プライベート エンドポイントを使用して Azure PaaS サービス (Azure Monitor を含む) をご使用の仮想ネットワークに安全に接続できます。 
+- [Azure カスタマー ロックボックス](/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview) - Microsoft Azure 用カスタマー ロックボックスには、お客様が顧客データへのアクセス要求を承認または拒否するインターフェイスが用意されています。 これは、Microsoft のエンジニアがサポート リクエストの際に顧客データにアクセスする必要がある場合に使用されます。
+
 
 ## <a name="next-steps"></a>次のステップ
 * Log Analytics で Azure VM のデータを収集する方法については、[Azure VM のクイック スタート](../learn/quick-collect-azurevm.md)に関するページをご覧ください。  

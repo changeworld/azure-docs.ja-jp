@@ -1,23 +1,23 @@
 ---
 title: Azure Cosmos DB Emulator 証明書をエクスポートする
-description: Java、Python、および Node.js アプリで使用する Azure Cosmos DB エミュレーター証明書をエクスポートする方法について説明します 証明書をエクスポートし、Windows 証明書ストアを使用しない言語およびランタイム環境で使用する必要があります。
+description: Java、Python、および Node.js アプリで使用する Azure Cosmos DB エミュレーター証明書をエクスポートする方法について説明します。 証明書をエクスポートし、Windows 証明書ストアを使用しない言語およびランタイム環境で使用する必要があります。
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java, contperfq1
-ms.openlocfilehash: 79e2b58ea342c9449faba108881c65d0bd8de856
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 23d9c6730857cf4ed7f8b8062d5529bedd8e2740
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085804"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95997173"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>Java、Python、および Node.js アプリで使用する Azure Cosmos DB エミュレーター証明書のエクスポート
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB エミュレーターでは、Azure Cosmos DB サービスを開発目的でエミュレートするローカル環境を利用できます。 Azure Cosmos エミュレーターでは、TLS 接続を介したセキュリティで保護された通信のみがサポートされます。
+Azure Cosmos DB Emulator では、Azure Cosmos DB サービスを開発目的でエミュレートするローカル環境を利用できます。 Azure Cosmos エミュレーターは、TLS 接続経由の、セキュリティで保護された通信のみをサポートします。
 
 Azure Cosmos DB ローカル エミュレーターの証明書は、エミュレーターを初めて実行したときに生成されます。 証明書は 2 つあります。 その 1 つはローカル エミュレーターへの接続に使用され、もう 1 つはエミュレーター内のエミュレーター データの既定の暗号化を管理するために使用されます。 エクスポートする証明書は、"DocumentDBEmulatorCertificate" というフレンドリ名の接続証明書です。
 
@@ -31,7 +31,7 @@ Azure Cosmos DB ローカル エミュレーターの証明書は、エミュレ
 
 Windows 証明書ストアと統合されていない言語およびランタイム環境からエミュレーター エンドポイントを正常に使用するには、エミュレーター証明書をエクスポートする必要があります。 Windows 証明書マネージャーを使用して証明書をエクスポートできます。 次の手順に従って、"DocumentDBEmulatorCertificate" 証明書を BASE-64 でエンコードされた X.509 (.cer) ファイルとしてエクスポートします。
 
-1. certlm.msc を実行して Windows 証明書マネージャーを起動します。次に、Personal フォルダー、Certificates フォルダーの順に移動して、 **DocumentDbEmulatorCertificate** というフレンドリ名の証明書を開きます。
+1. certlm.msc を実行して Windows 証明書マネージャーを起動します。次に、Personal フォルダー、Certificates フォルダーの順に移動して、**DocumentDbEmulatorCertificate** というフレンドリ名の証明書を開きます。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-1.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 1":::
 
@@ -55,7 +55,7 @@ Windows 証明書ストアと統合されていない言語およびランタイ
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 6":::
 
-1. 証明書に名前を付けます。 ここでは「 **documentdbemulatorcert** 」と入力し、 **[次へ]** をクリックします。
+1. 証明書に名前を付けます。 ここでは「**documentdbemulatorcert**」と入力し、 **[次へ]** をクリックします。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 7":::
 

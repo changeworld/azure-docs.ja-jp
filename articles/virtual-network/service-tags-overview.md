@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 60d3607a543cac5b8ce71819eb60394d8b8827bf
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: d99ed9304612d5c1d3cbdc56a76cee751f2a4d3f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331130"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017935"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
@@ -64,6 +64,7 @@ ms.locfileid: "94331130"
 | **AzureDataExplorerManagement** | Azure Data Explorer 管理。 | 受信 | いいえ | いいえ |
 | **AzureDataLake** | Azure Data Lake Storage Gen1。 | 送信 | いいえ | はい |
 | **AzureDevSpaces** | Azure Dev Spaces。 | 送信 | いいえ | いいえ |
+| **AzureDevOps** | Azure Dev Ops。<br/><br/>*注: 現在、このタグは Azure portal 経由で構成できません。*| 受信 | いいえ | はい |
 | **AzureDigitalTwins** | Azure Digital Twins。<br/><br/>*注:* このタグ、またはこのタグによってカバーされる IP アドレスを使用すれば、イベント ルート用に構成されたエンドポイントへのアクセスを制限することができます。 *現在、このタグは Azure portal 経由で構成できません。* | 受信 | いいえ | はい |
 | **AzureEventGrid** | Azure Event Grid。 | 両方 | いいえ | いいえ |
 | **AzureFrontDoor.Frontend** <br/> **AzureFrontDoor.Backend** <br/> **AzureFrontDoor.FirstParty**  | Azure Front Door。 | 両方 | いいえ | いいえ |

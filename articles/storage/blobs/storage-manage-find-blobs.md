@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: 8f1ea67605be3aee6257c293aea3db617d885645
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4f84c3c2f6fc671a8cb6ac70313361540e3dd815
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370255"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95523282"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)
 
@@ -44,14 +44,14 @@ BLOB インデックスの使用方法の例については、[BLOB インデッ
 - *logs/2020/01/01/logfile.txt*
 
 
-これらの BLOB は、" *コンテナー/仮想フォルダー/BLOB 名* " のプレフィックスを使用して分離されています。 これらの 5 つの BLOB に対して `Project = Contoso` というインデックス タグ属性を設定することで、現在のプレフィックス編成を維持しながら、それらをまとめて分類することができます。 インデックス タグを追加すると、インデックスを使用してデータをフィルター処理および検索する機能が提供されるため、データを移動する必要がなくなります。
+これらの BLOB は、"*コンテナー/仮想フォルダー/BLOB 名*" のプレフィックスを使用して分離されています。 これらの 5 つの BLOB に対して `Project = Contoso` というインデックス タグ属性を設定することで、現在のプレフィックス編成を維持しながら、それらをまとめて分類することができます。 インデックス タグを追加すると、インデックスを使用してデータをフィルター処理および検索する機能が提供されるため、データを移動する必要がなくなります。
 
 ## <a name="setting-blob-index-tags"></a>BLOB インデックス タグの設定
 
 BLOB インデックス タグは、ストレージ アカウント内の新規または既存のオブジェクトに適用できるキー値属性です。 アップロード プロセスの間にインデックス タグを指定するには、[Put Blob](/rest/api/storageservices/put-blob)、[Put Block List](/rest/api/storageservices/put-block-list)、または [Copy Blob](/rest/api/storageservices/copy-blob) 操作と、省略可能な `x-ms-tags` ヘッダーを使用します。 ストレージ アカウントに BLOB が既にある場合は、[Set Blob Tags](/rest/api/storageservices/set-blob-tags) を呼び出し、要求の本文でフォーマット済みの XML ドキュメントとインデックス タグを渡します。
 
 > [!IMPORTANT]
-> BLOB インデックス タグの設定は、[ストレージ BLOB データ所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)と、BLOB のタグにアクセスするためのアクセス許可 (`t` SAS アクセス許可) が割り当てられた Shared Access Signature を持つ任意のユーザーが実行できます。
+> BLOB インデックス タグの設定は、[ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)と、BLOB のタグにアクセスするためのアクセス許可 (`t` SAS アクセス許可) が割り当てられた Shared Access Signature を持つ任意のユーザーが実行できます。
 >
 > さらに、`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` アクセス許可を持つ RBAC ユーザーも、この操作を実行できます。
 
@@ -87,7 +87,7 @@ BLOB インデックス タグには次の制限が適用されます。
 BLOB インデックス タグは BLOB データと共にサブリソースとして格納され、基になる BLOB データ コンテンツとは別に取得できます。 1 つの BLOB に対する BLOB インデックス タグは、[Get Blob Tags](/rest/api/storageservices/get-blob-tags) 操作で取得できます。 `include:tags` パラメーターを指定した [List Blobs](/rest/api/storageservices/list-blobs) 操作でも、コンテナー内のすべての BLOB が、BLOB インデックス タグと共に返されます。
 
 > [!IMPORTANT]
-> BLOB インデックス タグの取得と列挙は、[ストレージ BLOB データ所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)と、BLOB のタグにアクセスするためのアクセス許可 (`t` SAS アクセス許可) が割り当てられた Shared Access Signature を持つ任意のユーザーが実行できます。
+> BLOB インデックス タグの取得と列挙は、[ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)と、BLOB のタグにアクセスするためのアクセス許可 (`t` SAS アクセス許可) が割り当てられた Shared Access Signature を持つ任意のユーザーが実行できます。
 >
 > さらに、`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` アクセス許可を持つ RBAC ユーザーも、この操作を実行できます。
 
@@ -100,7 +100,7 @@ BLOB インデックス タグは BLOB データと共にサブリソースと�
 [Find Blobs by Tags](/rest/api/storageservices/find-blobs-by-tags) 操作を使用すると、指定したクエリ式に一致するインデックス タグを持つ BLOB のセットをフィルター処理して取得できます。 `Find Blobs by Tags` を使用すると、ストレージ アカウント内のすべてのコンテナーをフィルター処理することも、フィルター処理のスコープを 1 つのコンテナーだけに限定することもできます。 すべてのインデックス タグのキーと値は文字列であるため、関係演算子により辞書式の並べ替えが使用されます。
 
 > [!IMPORTANT]
-> BLOB インデックス タグを使用したデータの検索は、[ストレージ BLOB データ所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)と、タグを使用して BLOB を検索するためのアクセス許可 (`f` SAS アクセス許可) が割り当てられた Shared Access Signature を持つ任意のユーザーが実行できます。
+> BLOB インデックス タグを使用したデータの検索は、[ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)と、タグを使用して BLOB を検索するためのアクセス許可 (`f` SAS アクセス許可) が割り当てられた Shared Access Signature を持つ任意のユーザーが実行できます。
 >
 > さらに、`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` アクセス許可を持つ RBAC ユーザーも、この操作を実行できます。
 
@@ -162,9 +162,9 @@ BLOB インデックス タグを使用すると、BLOB データの分類、管
 
 `blobIndexMatch` をライフサイクル管理のルール フィルターとして使用すると、BLOB に適用されるインデックス タグに基づいて、データをよりクールな層に移動したり、データを削除したりできます。 ルールをより細かく設定でき、指定したタグ条件に一致する場合にのみ BLOB を移動または削除することができます。
 
-BLOB インデックス一致をライフサイクル ルールのスタンドアロン フィルター セットとして設定して、タグ付きデータにアクションを適用することができます。 または、プレフィックスと BLOB インデックスの両方を組み合わせて、より具体的なデータ セットに一致させることができます。 ライフサイクル ルールで複数のフィルターを指定すると、論理 AND 演算が適用されます。 " *すべての* " フィルター条件に一致する場合にのみ、アクションが適用されます。
+BLOB インデックス一致をライフサイクル ルールのスタンドアロン フィルター セットとして設定して、タグ付きデータにアクションを適用することができます。 または、プレフィックスと BLOB インデックスの両方を組み合わせて、より具体的なデータ セットに一致させることができます。 ライフサイクル ルールで複数のフィルターを指定すると、論理 AND 演算が適用されます。 "*すべての*" フィルター条件に一致する場合にのみ、アクションが適用されます。
 
-次のライフサイクル管理ルールの例は、 *videofiles* という名前のコンテナー内のブロック BLOB に適用されます。 データが `"Status" == 'Processed' AND "Source" == 'RAW'` の BLOB インデックス タグ条件と一致する場合にのみ、ルールにより BLOB はストレージをアーカイブするために階層化されます。
+次のライフサイクル管理ルールの例は、*videofiles* という名前のコンテナー内のブロック BLOB に適用されます。 データが `"Status" == 'Processed' AND "Source" == 'RAW'` の BLOB インデックス タグ条件と一致する場合にのみ、ルールにより BLOB はストレージをアーカイブするために階層化されます。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -235,7 +235,7 @@ BLOB インデックス タグは、BLOB データに対するサブリソース
 | [BLOB タグの取得](/rest/api/storageservices/get-blob-tags)           | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read     |
 | [タグによる BLOB の検索](/rest/api/storageservices/find-blobs-by-tags) | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action |
 
-インデックス タグの操作には、基になる BLOB データとは別に、追加のアクセス許可が必要です。 [ストレージ BLOB データ所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)ロールには、3 つの BLOB インデックス タグ操作すべてに対するアクセス許可が付与されます。 [ストレージ BLOB データ閲覧者](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)には、`Find Blobs by Tags` 操作と `Get Blob Tags` 操作に対するアクセス許可のみが付与されます。
+インデックス タグの操作には、基になる BLOB データとは別に、追加のアクセス許可が必要です。 [ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)ロールには、3 つの BLOB インデックス タグ操作すべてに対するアクセス許可が付与されます。 [ストレージ BLOB データ閲覧者](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)には、`Find Blobs by Tags` 操作と `Get Blob Tags` 操作に対するアクセス許可のみが付与されます。
 
 ### <a name="sas-permissions"></a>SAS のアクセス許可
 
@@ -327,6 +327,7 @@ az provider register --namespace 'Microsoft.Storage'
 - フィルター処理が単一のコンテナーにスコープされている場合、フィルター式のすべてのインデックス タグが等値チェック (キー = 値) である場合にのみ `@container` を渡すことができます。
 - `AND` 条件で範囲演算子を使用する場合は、同じインデックス タグ キー名のみを指定できます (`"Age" > '013' AND "Age" < '100'`)。
 - バージョン管理と BLOB インデックスはサポートされていません。 BLOB インデックス タグはバージョンに対して保持されますが、BLOB インデックス エンジンには渡されません。
+- インデックス タグにインデックスが付けられているかどうかを判断する API はありません。
 - アカウントのフェールオーバーはサポートされていません。 フェールオーバー後に BLOB インデックスが正しく更新されない可能性があります。
 - ライフサイクル管理によってサポートされているのは、BLOB インデックス一致による等値チェックのみです。
 - `Copy Blob` を使用しても、BLOB インデックス タグはコピー元 BLOB から新しいコピー先 BLOB にコピーされません。 コピー操作中にコピー先 BLOB に適用するタグを指定できます。

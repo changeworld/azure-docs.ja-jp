@@ -16,12 +16,12 @@ ms.date: 07/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e794b66341d4e7c478fd526107cc35c7c745fa7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe92f761ac0b16da7c3cc3c69c1fa4b00f4e7579
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85358329"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996595"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory パススルー認証: 技術的な詳細
 この記事は、Azure Active Directory (Azure AD) パススルー認証のしくみの概要です。 技術とセキュリティの詳細情報については、[セキュリティの詳細](how-to-connect-pta-security-deep-dive.md)に関する記事をご覧ください。
@@ -34,7 +34,7 @@ ms.locfileid: "85358329"
 ユーザーが Azure AD で保護されているアプリケーションにサインインしようとし、テナントでパススルー認証が有効になっている場合、次の手順が発生します。
 
 1. ユーザーが [Outlook Web アプリ](https://outlook.office365.com/owa/)などのアプリケーションへのアクセスを試みます。
-2. まだサインインしていない場合、ユーザーは Azure AD の**ユーザー サインイン** ページにリダイレクトされます。
+2. まだサインインしていない場合、ユーザーは Azure AD の **ユーザー サインイン** ページにリダイレクトされます。
 3. ユーザーが Azure AD サインイン ページにユーザー名を入力し、 **[次へ]** ボタンを選択します。
 4. ユーザーが Azure AD サインイン ページにパスワードを入力し、 **[サインイン]** ボタンを選択します。
 5. サインインの要求を受け取った Azure AD が、(認証エージェントの公開キーを使用して暗号化された) ユーザー名とパスワードをキューに入れます。
@@ -43,7 +43,7 @@ ms.locfileid: "85358329"
 8. エージェントは、標準の Windows API を使用して Active Directory に対してユーザー名とパスワードを検証しますが、これは Active Directory フェデレーション サービス (AD FS) が使用しているのと同様のメカニズムです。 ユーザー名には、オンプレミスの既定のユーザー名 (通常は `userPrincipalName`) か、Azure AD Connect (`Alternate ID` とも呼ばれる) で構成された別の属性を指定できます。
 9. オンプレミスの Active Directory ドメイン コントローラー (DC) が要求を評価し、適切な応答をエージェントに返します (成功、失敗、パスワードの期限切れ、またはユーザーがロックアウト)。
 10. 次に、認証エージェントがこの応答を Azure AD に返します。
-11. Azure AD が応答を評価し、ユーザーに適宜応答します。 たとえば、Azure AD はすぐにユーザーをサインインさせるか、または Azure Multi-Factor Authentication を要求します。
+11. Azure AD が応答を評価し、ユーザーに適宜応答します。 たとえば、Azure AD によって、ユーザーのサインインが直ちに行われるか、Azure AD Multi-Factor Authentication が要求されます。
 12. ユーザーはサインインが成功すると、アプリケーションにアクセスできます。
 
 次の図に、すべてのコンポーネントと必要な手順を示します。

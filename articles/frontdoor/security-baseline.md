@@ -4,15 +4,15 @@ description: Azure Front Door セキュリティ ベースラインでは、Azur
 author: msmbaldwin
 ms.service: frontdoor
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2b5995478d1c9e65916f76c70c8af374ce82ca54
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 6d6a392d25aa96ab9b4dbb7763b37c1021db71aa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94631320"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026286"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>Azure Front Door 用の Azure セキュリティ ベースライン
 
@@ -23,22 +23,6 @@ Azure Front Door を完全に Azure セキュリティ ベンチマークにマ�
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
 *詳細については、[Azure セキュリティ ベンチマークの「ネットワークのセキュリティ](/azure/security/benchmarks/security-controls-v2-network-security)」を参照してください。*
-
-### <a name="ns-2-connect-private-networks-together"></a>NS-2: プライベート ネットワークをまとめて接続する
-
-**ガイダンス**:適用なし。Azure Front Door は、プライベート ネットワークにデプロイする、またはプライベート ネットワークに対してセキュリティで保護するようには設計されていません。この制御は、ネットワーク接続を説明するためのものであり、適用されません。
-
-**Azure Security Center の監視**: 適用なし
-
-**責任**: 未設定。 作業項目に値を指定してください。
-
-### <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3: Azure サービスへのプライベート ネットワーク アクセスを確立する
-
-**ガイダンス**:適用なし。Azure Front Door は、プライベート ネットワーク アクセスのために仮想ネットワークにデプロイする、または仮想ネットワークによってセキュリティで保護するようには設計されていません。
-
-**Azure Security Center の監視**: 適用なし
-
-**責任**: 未設定。 作業項目に値を指定してください。
 
 ### <a name="ns-4-protect-applications-and-services-from-external-network-attacks"></a>NS-4: 外部ネットワーク攻撃からアプリケーションやサービスを保護する
 
@@ -134,19 +118,21 @@ Azure RBAC を使用してリソースに割り当てられたロールベース
 
 ### <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4:転送中の機密情報を暗号化する
 
-**ガイダンス**:暗号化を使用して、外部ネットワークとパブリック ネットワーク上のトラフィックを保護します。これは、データ保護に不可欠であるためです。 追加として:
+**ガイダンス**:転送中のデータが攻撃者に簡単に読み取られたり変更されたりしないよう、暗号化を使用して "帯域外" 攻撃 (トラフィックのキャプチャなど) から保護し、アクセス制御を補完する必要があります。
 
-- アクセス制御の使用は、
+Front Door では、TLS バージョン 1.0、1.1、1.2 がサポートされます。 TLS 1.3 はまだサポートされていません。 2019 年 9 月以降に作成されたすべての Front Door プロファイルでは、既定の最小値として TLS 1.2 が使用されます。
 
-- 暗号化を使用して "帯域外" 攻撃 (トラフィック キャプチャなど) に対して転送中のデータを保護し、攻撃者がデータの読み取りや変更を簡単に行うことができないようにします。
-- ご自分の Azure リソースに接続するすべてのクライアントの HTTP トラフィックのネゴシエートには、確実に TLS v1.2 以降を使用してください。
-- リモート管理には、暗号化されていないプロトコルではなく、SSH (Linux の場合) または RDP/TLS (Windows の場合) を使用します。
+これはプライベート ネットワーク上のトラフィックでは省略できますが、外部ネットワークとパブリック ネットワーク上のトラフィックには重要です。 ご自分の Azure リソースに接続するすべてのクライアントの HTTP トラフィックのネゴシエートには、確実に TLS v1.2 以上を使用してください。 リモート管理には、暗号化されていないプロトコルではなく、(Linux の場合) SSH または (Windows の場合) RDP/TLS を使用します。 SSL、TLS、SSH の古いバージョンとプロトコル、および弱い暗号は無効にする必要があります。
 
-- SSL、TLS、または SSH の古いバージョンとプロトコル、および弱い暗号は無効にします。
-
-既定では Azure によって、Azure のデータ センター間の転送中のデータ トラフィックが暗号化されます。 
+既定では Azure によって、Azure のデータ センター間の転送データが暗号化されます。
 
 - [チュートリアル - Front Door カスタム ドメインで HTTPS を構成する方法](front-door-custom-domain-https.md)
+
+- [Azure での転送中の暗号化の概要](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) 
+
+- [TLS セキュリティに関する情報](/security/engineering/solving-tls1-problem) 
+
+- [転送中の Azure データの二重暗号化](../security/fundamentals/double-encryption.md#data-in-transit)
 
 **Azure Security Center の監視**: はい
 
@@ -206,7 +192,7 @@ Azure Monitor を使用して、承認されていないサービスが検出さ
 
 ### <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4:アセット ライフサイクル管理のセキュリティを確保する
 
-**ガイダンス**:適用なし。Azure Front Door は、ライフサイクル管理プロセスの資産のセキュリティを確保するためには使用できません。 影響が大きいと見なされる資産の属性とネットワーク構成を維持することは、お客様の責任です。 
+**ガイダンス**:影響が大きいと見なされる Azure Front Door 資産の属性とネットワーク構成を維持することは、お客様の責任です。
 
 お客様は、属性とネットワーク構成の変更をキャプチャするプロセスを作成し、変更の影響を測定し、必要に応じて修復タスクを作成することをお勧めします。
 
@@ -216,7 +202,7 @@ Azure Monitor を使用して、承認されていないサービスが検出さ
 
 ## <a name="logging-and-threat-detection"></a>ログと脅威検出
 
-*詳細については、[Azure セキュリティ ベンチマークの「ログと脅威検出](/azure/security/benchmarks/security-controls-v2-logging-threat-protection)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ログと脅威検出](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)」を参照してください。*
 
 ### <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3:Azure ネットワーク アクティビティのログ記録を有効にする
 
@@ -352,7 +338,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 ## <a name="posture-and-vulnerability-management"></a>体制と脆弱性の管理
 
-*詳細については、[Azure セキュリティ ベンチマークの「体制と脆弱性の管理](/azure/security/benchmarks/security-controls-v2-vulnerability-management)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「体制と脆弱性の管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)」を参照してください。*
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>PV-3: コンピューティング リソースにセキュリティで保護された構成を確立する
 
@@ -423,7 +409,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 - [Azure のセキュリティの基礎 - Azure のデータ セキュリティ、暗号化、ストレージ](../security/fundamentals/encryption-overview.md)
 
-- [Azure セキュリティ ベンチマーク - データ保護](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure セキュリティ ベンチマーク - データ保護](/azure/security/benchmarks/security-controls-v2-data-protection)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -451,7 +437,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 **ガイダンス**:個々の資産とそれらがホストされている環境に対するリスクを継続的に測定し、軽減します。 高い価値を持つ資産と、攻撃に晒される可能性の高い対象領域 (公開されたアプリケーション、ネットワークのイングレス ポイントとエグレス ポイント、ユーザーと管理者のエンドポイントなど) を優先します。
 
-- [Azure セキュリティ ベンチマーク - 体制と脆弱性の管理](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure セキュリティ ベンチマーク - 体制と脆弱性の管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -493,7 +479,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 - [Azure のセキュリティのベスト プラクティス 11 - アーキテクチャ。単一の統合セキュリティ戦略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure セキュリティ ベンチマーク - ネットワーク セキュリティ](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Azure セキュリティ ベンチマーク - ネットワーク セキュリティ](/azure/security/benchmarks/security-controls-v2-network-security)
 
 - [Azure のネットワーク セキュリティの概要](../security/fundamentals/network-overview.md)
 
@@ -519,9 +505,9 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 詳細については、次のリファレンスを参照してください。
 
-- [Azure セキュリティ ベンチマーク - ID 管理](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure セキュリティ ベンチマーク - ID 管理](/azure/security/benchmarks/security-controls-v2-identity-management)
 
-- [Azure セキュリティ ベンチマーク - 特権アクセス](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure セキュリティ ベンチマーク - 特権アクセス](/azure/security/benchmarks/security-controls-v2-privileged-access)
 
 - [Azure のセキュリティのベスト プラクティス 11 - アーキテクチャ。単一の統合セキュリティ戦略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -553,9 +539,9 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 詳細については、参照リンクをご覧ください。
 
-- [Azure セキュリティ ベンチマーク - ログと脅威検出](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure セキュリティ ベンチマーク - ログと脅威検出](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure セキュリティ ベンチマーク - インシデント対応](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure セキュリティ ベンチマーク - インシデント対応](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Azure のセキュリティのベスト プラクティス 4 - プロセス: クラウドのインシデント対応プロセスを更新する](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 

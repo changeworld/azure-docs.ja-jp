@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 406371325ddf8b555ede481582e19635b85abe49
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 10a2ae71d8c26d82a4a730bab3ba16e7c62d1243
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461568"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95911738"
 ---
 # <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>Azure Monitor で Log Analytics エージェントを使用してカスタム ログを収集する
 
@@ -30,6 +30,7 @@ Azure Monitor の Log Analytics エージェントのカスタム ログ デー�
 
 - ログ ファイルでは、新しいエントリでファイルが上書きされる巡回ログまたはログ ローテーションを許可しないでください。
 - ログ ファイルでは、ASCII または UTF-8 エンコードを使用する必要があります。  UTF-16 など他の形式はサポートされていません。
+- Linux の場合、タイム ゾーン変換はログのタイム スタンプではサポートされていません。
 
 >[!NOTE]
 > ログ ファイルに重複するエントリがあると、Azure Monitor によりその重複が収集されます。 ただし、フィルター結果に示されるイベント数がクエリ結果の件数より多いという矛盾が生じます。 重要になるのは、ログを検証して、そのログを作成したアプリケーションがこの動作を引き起こしているかどうか、また、これに対処できるかどうかを、カスタム ログ収集の定義を作成する前に判断することです。  
@@ -73,7 +74,7 @@ Azure Monitor の Log Analytics エージェントのカスタム ログ デー�
 ### <a name="step-3-add-log-collection-paths"></a>手順 3. ログのコレクション パスを追加する
 エージェントに 1 つまたは複数のパスを定義する必要があります。エージェントがカスタム ログを見つける場所です。  ログ ファイルの特定のパスか名前を入力するか、名前にワイルドカードを含むパスを指定できます。 毎日新しいファイルを作成するアプリケーションに対応し、1 つのファイルが一定のサイズに到達した場合にも対応します。 また、1 つのログ ファイルに複数のパスを指定できます。
 
-たとえば、ログ ファイルを毎日作成するアプリケーションがあります。log20100316.txt のように、名前に日付を含めます。 このようなログのパターンは、たとえば、 *log\*.txt* になります。このアプリケーションの命名規則に従うあらゆるログ ファイルに適用されます。
+たとえば、ログ ファイルを毎日作成するアプリケーションがあります。log20100316.txt のように、名前に日付を含めます。 このようなログのパターンは、たとえば、*log\*.txt* になります。このアプリケーションの命名規則に従うあらゆるログ ファイルに適用されます。
 
 次の表は、異なるログ ファイルを指定する有効なパターンの例をまとめたものです。
 
@@ -104,7 +105,7 @@ Azure Monitor がカスタム ログから収集を始めると、そのレコ�
 > RawData プロパティがクエリに表示されない場合、ブラウザーを閉じて再び開いてみてください。
 
 ### <a name="step-6-parse-the-custom-log-entries"></a>手順 6. カスタム ログ エントリを解析する
-ログ エントリ全体は、 **RawData** と呼ばれる 1 つのプロパティに格納されます。  それぞれのエントリに含まれる異なる情報を、各レコードの個別のプロパティに分けたいと考えるケースが大半でしょう。 **RawData** を解析して複数のプロパティに格納する方法については、 [Azure Monitor でのテキスト データの解析](../log-query/parse-text.md)に関するページを参照してください。
+ログ エントリ全体は、 **RawData** と呼ばれる 1 つのプロパティに格納されます。  それぞれのエントリに含まれる異なる情報を、各レコードの個別のプロパティに分けたいと考えるケースが大半でしょう。 **RawData** を解析して複数のプロパティに格納する方法については、[Azure Monitor でのテキスト データの解析](../log-query/parse-text.md)に関するページを参照してください。
 
 ## <a name="removing-a-custom-log"></a>カスタム ログの削除
 Azure Portal で次のプロセスを使用して、これまでに定義したカスタム ログを削除します。
@@ -145,7 +146,7 @@ Azure Monitor は約 5 分おきに各カスタム ログから新しいエン�
 ![サンプル ログをアップロードし、解析する](media/data-sources-custom-logs/delimiter.png)
 
 ### <a name="add-log-collection-paths"></a>ログのコレクション パスを追加する
-ログ ファイルは *C:\MyApp\Logs* に置かれます。  新しいファイルが毎日作成されます。名前には日付が含まれ、 *appYYYYMMDD.log* というパターンになります。  このログには *C:\MyApp\Logs\\\*.log* というパターンを使えばよいでしょう。
+ログ ファイルは *C:\MyApp\Logs* に置かれます。  新しいファイルが毎日作成されます。名前には日付が含まれ、*appYYYYMMDD.log* というパターンになります。  このログには *C:\MyApp\Logs\\\*.log* というパターンを使えばよいでしょう。
 
 ![ログのコレクション パス](media/data-sources-custom-logs/collection-path.png)
 

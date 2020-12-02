@@ -10,18 +10,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: 532f045233f26a9a2933a19ae7a0a893195ad33f
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 1a554177bf7084b9a7f4c413dbe82271b3ab6b3a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94384056"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545535"
 ---
 # <a name="create-a-connection-monitor-using-powershell"></a>PowerShell を使用して接続モニターを作成する
 
 リソース間の通信を監視するために、PowerShell を使用して接続モニターを作成する方法について説明します。
+
 
 ## <a name="before-you-begin"></a>開始する前に 
 
@@ -80,7 +81,7 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
 
 * エンドポイント
     * name – 各エンドポイントの一意の名前
-    * resourceId – Azure エンドポイントの場合、リソース ID は仮想マシンの Azure Resource Manager リソース ID を示します。Azure 以外のエンドポイントの場合、リソース ID は、Azure 以外のエージェントにリンクされている Log Analytics ワークスペースの Azure Resource Manager のリソース ID を示します。
+    * resourceId – Azure エンドポイントの場合、リソース ID は仮想マシンの Azure Resource Manager リソース ID を示します。Azure 以外のエンドポイントの場合、リソース ID は、Azure 以外のエージェントにリンクされている Log Analytics ワークスペースの Azure Resource Manager リソース ID を示します。
     * address – リソース ID が指定されていない場合、またはリソース ID が Log Analytics ワークスペースである場合にのみ適用されます。 Log Analytics リソース ID と共に使用される場合、これは監視に使用できるエージェントの FQDN を示します。 リソース ID なしで使用される場合、これは、任意のパブリック エンドポイントの URL または IP とすることができます。
     * filter – Azure 以外のエンドポイントの場合は、フィルターを使用して、接続モニター リソース内で監視に使用される Log Analytics ワークスペースからエージェントを選択します。 フィルターが設定されていない場合、Log Analytics ワークスペースに属するすべてのエージェントを監視に使用できます。
         * type – type は "エージェント アドレス" として設定します。
@@ -89,7 +90,7 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
 * テスト グループ
     * name – テスト グループの名前を指定します。
     * testConfigurations - テスト構成であり、これに基づいてソース エンドポイントはターゲット エンドポイントに接続されます。
-    * sources - 上記で作成したエンドポイントから選択します。 Azure ベースのソース エンドポイントには Azure Network Watcher 拡張機能がインストールされている必要があり、Azure 以外をベースとしたソース エンドポイントには Azure Log Analytics エージェントがインストールされている必要があります。 ソース用のエージェントをインストールするには、「[監視エージェントをインストールする](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents)」を参照してください。
+    * sources - 上記で作成したエンドポイントから選択します。 Azure ベースのソース エンドポイントには Azure Network Watcher 拡張機能がインストールされている必要があり、Azure 以外をベースとしたソース エンドポイントには Azure Log Analytics エージェントがインストールされている必要があります。 ソース用のエージェントをインストールするには、「[監視エージェントをインストールする](./connection-monitor-overview.md#install-monitoring-agents)」を参照してください。
     * destinations - 前述で作成したエンドポイントから選択します。 Azure VM または任意のエンドポイント (パブリック IP、URL、FQDN) をターゲットとして指定すると、それらへの接続を監視できます。 1 つのテスト グループに、Azure VM、Office 365 URL、Dynamics 365 URL、カスタム エンドポイントを追加できます。
     * disable - このフィールドを使用すると、テスト グループで指定されているすべてのソースとターゲットに対する監視を無効にできます。
 
@@ -100,6 +101,10 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
         * preferHTTPS - HTTP 経由で HTTPS を使用するかどうかを指定します。
         * port - 任意の宛先ポートを指定します。
         * disableTraceRoute - これは、プロトコルが TCP または ICMP であるテスト グループに適用されます。 これによって、ソースでのトポロジとホップバイホップ RTT の検出が停止します。
+        * method - これは、プロトコルが HTTP であるテスト構成に適用されます。 HTTP 要求メソッド (GET または POST) を選択します
+        * path - URL に追加するパス パラメーターを指定します
+        * validStatusCodes - 該当するステータス コードを選択します。 応答コードがこの一覧と一致しない場合は、診断メッセージが表示されます
+        * requestHeaders - 宛先に渡されるカスタム要求ヘッダー文字列を指定します
     * successThreshold - 以下のネットワーク パラメーターにしきい値を設定できます。
         * checksFailedPercent - 指定した条件で行われるソースによるターゲットへの接続の確認で、失敗してもかまわないチェックの割合を設定します。 TCP または ICMP プロトコルでは、失敗したチェックの割合はパケット損失の割合と同等と考えられます。 HTTP プロトコルでは、このフィールドは、応答を受け取らなかった HTTP 要求の割合を表します。
         * roundTripTimeMs - テスト構成でソースがターゲットに接続するのにかかるラウンドトリップ時間をミリ秒で設定します。
@@ -115,5 +120,5 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
 
 ## <a name="next-steps"></a>次のステップ
 
-* [監視データを分析してアラートを設定する方法](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#analyze-monitoring-data-and-set-alerts)を確認する
-* [ネットワークの問題を診断する方法](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#diagnose-issues-in-your-network)を確認する
+* [監視データを分析してアラートを設定する方法](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts)を確認する
+* [ネットワークの問題を診断する方法](./connection-monitor-overview.md#diagnose-issues-in-your-network)を確認する

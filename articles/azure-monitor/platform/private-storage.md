@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: a487e6989792c63aaf5baf9ddb3875df549561a4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7cb427c83345a4603c6fe7727c1cc42c1943c456
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143982"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908253"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics でのカスタマー マネージド ストレージ アカウントの使用
 
-Log Analytics は、さまざまなシナリオで Azure Storage に依存しています。 この使用は、通常、自動的に管理されます。 ただし、場合によっては、独自のストレージ アカウント (カスタマー マネージド ストレージ アカウントとも呼ばれます) を提供して管理することが必要になります。 このドキュメントでは、WAD/LAD ログのインジェスト、Private Link 固有のシナリオ、および CMK 暗号化に対するカスタマー マネージド ストレージの使用について詳しく説明します。 
+Log Analytics は、さまざまなシナリオで Azure Storage に依存しています。 この使用は、通常、自動的に管理されます。 ただし、場合によっては、独自のストレージ アカウント (カスタマー マネージド ストレージ アカウントとも呼ばれます) を提供して管理することが必要になります。 このドキュメントでは、WAD/LAD ログのインジェスト、Private Link 固有のシナリオ、およびカスタマー マネージド キー (CMK) 暗号化に対するカスタマー マネージド ストレージの使用について詳しく説明します。 
 
 > [!NOTE]
 > 書式と内容が変更される可能性があるため、Log Analytics によってカスタマー マネージド ストレージにアップロードされたコンテンツには依存しないことをお勧めします。

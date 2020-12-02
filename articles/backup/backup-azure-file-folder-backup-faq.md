@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services (MARS) エージェント – FAQ
 description: Azure Backup を使用したファイルとフォルダーのバックアップに関する一般的な質問に対応します。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 9fb9e3993d6f56833e43a4d451c0865b7fd732d3
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 1edfaed99e60409774496c5ae75df8be99a8fe1f
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172511"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917360"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>よく寄せられる質問 - Microsoft Azure Recovery Services (MARS) エージェント
 
@@ -71,6 +71,10 @@ Azure portal で、お使いのコンテナーの **[プロパティ]** に移�
 ### <a name="do-i-need-administrator-permissions-to-install-and-configure-the-mars-agent"></a>MARS エージェントのインストールと構成に管理者のアクセス許可は必要ですか。
 
 必要です。MARS エージェントのインストールと MARS コンソールを使用したバックアップの構成は、保護されるサーバー上のローカル管理者が行う必要があります。
+
+### <a name="what-is-the-impact-on-mars-agent-backups-of-transferring-the-vault-subscription-to-a-different-azure-ad-directory"></a>コンテナーのサブスクリプションを別の Azure AD ディレクトリに転送した場合の MARS エージェントのバックアップには、どのような影響がありますか?
+
+Azure AD ディレクトリの変更は、MARS エージェントのバックアップに影響しません。 
 
 ## <a name="manage-backups"></a>バックアップの管理
 

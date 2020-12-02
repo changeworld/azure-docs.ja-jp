@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: ce438ad0725aff677f897a635a0cd32d92bbbdbe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cb828eeb408a170b93ffc73b58f14b3f7a883cc4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265471"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95247236"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Azure Active Directory を使ってアプリケーションに対するグループ要求を構成する
 
@@ -144,8 +144,9 @@ Azure AD objectID ではなく、Active Directory から同期されている Ac
 |----------|-------------|
 | **"All"** | セキュリティ グループ、配布リスト、ロールを出力します |
 | **"SecurityGroup"** | グループ要求の中で、ユーザーがメンバーになっているセキュリティ グループを出力します。 |
-| **"DirectoryRole** | ユーザーがディレクトリ ロールに割り当てられている場合は、"wids" 要求として出力されます (グループ要求は出力されません) |
-| **"ApplicationGroup** | アプリケーションに明示的に割り当てられ、ユーザーがメンバーになっているグループのみを出力します |
+| **"DirectoryRole"** | ユーザーがディレクトリ ロールに割り当てられている場合は、"wids" 要求として出力されます (グループ要求は出力されません) |
+| **"ApplicationGroup"** | アプリケーションに明示的に割り当てられ、ユーザーがメンバーになっているグループのみを出力します |
+| **"None"** | グループは返されません (大文字と小文字は区別されないため、何も機能しません。アプリケーション マニフェストで直接設定できます)。 |
 
    次に例を示します。
 

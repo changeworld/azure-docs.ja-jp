@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
-ms.openlocfilehash: fef1870c396055cb9121aa5d8c7859440d107f98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 882df9d0dcb01d6321455b845fed087a5e14ccc6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88002327"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016167"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>プレビュー:Azure Active Directory 認証を使用して Azure の Linux 仮想マシンにログインする
 
@@ -119,9 +119,9 @@ Azure のロールベース アクセス制御 (Azure RBAC) ポリシーは、VM
 - **仮想マシンのユーザー ログイン**:このロールが割り当てられたユーザーは正規ユーザーの権限を持つユーザーとして Azure 仮想マシンにログインできます。
 
 > [!NOTE]
-> SSH 経由でユーザーが VM にログインできるようにするには、*仮想マシンの管理者ログイン*または*仮想マシンのユーザー ログイン* ロールのいずれかを割り当てる必要があります。 VM の*所有者*または*共同作成者*ロールが割り当てられた Azure ユーザーに、SSH 経由で VM にログインする権限は自動的には付与されません。
+> SSH 経由でユーザーが VM にログインできるようにするには、*仮想マシンの管理者ログイン* または *仮想マシンのユーザー ログイン* ロールのいずれかを割り当てる必要があります。 VM の *所有者* または *共同作成者* ロールが割り当てられた Azure ユーザーに、SSH 経由で VM にログインする権限は自動的には付与されません。
 
-次の例では、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用して、VM に対する*仮想マシンの管理者ログイン* ロールを現在の Azure ユーザーに割り当てます。 [az account show](/cli/azure/account#az-account-show) を使用して、アクティブな Azure アカウントのユーザー名を取得し、[az vm show](/cli/azure/vm#az-vm-show) を使用して前の手順で作成された VM に*スコープ*が設定されています。 スコープは、リソース グループまたはサブスクリプション レベルで割り当てることもでき、Azure RBAC における通常の継承アクセス許可が適用されます。 詳細については、[Azure RBAC](../../role-based-access-control/overview.md) に関するページを参照してください
+次の例では、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用して、VM に対する *仮想マシンの管理者ログイン* ロールを現在の Azure ユーザーに割り当てます。 [az account show](/cli/azure/account#az-account-show) を使用して、アクティブな Azure アカウントのユーザー名を取得し、[az vm show](/cli/azure/vm#az-vm-show) を使用して前の手順で作成された VM に *スコープ* が設定されています。 スコープは、リソース グループまたはサブスクリプション レベルで割り当てることもでき、Azure RBAC における通常の継承アクセス許可が適用されます。 詳細については、[Azure RBAC](../../role-based-access-control/overview.md) に関するページを参照してください
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)
@@ -138,7 +138,7 @@ az role assignment create \
 
 Azure RBAC を使用して、Azure サブスクリプション リソースへのアクセスを管理する方法の詳細については、[Azure CLI](../../role-based-access-control/role-assignments-cli.md)、[Azure portal](../../role-based-access-control/role-assignments-portal.md)、または [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md) の使用に関するページを参照してください。
 
-Linux 仮想マシンにサインインする特定のユーザーに対して多要素認証を要求するように Azure AD を構成することもできます。 詳細については、「[クラウドでの Azure Multi-Factor Authentication の概要](../../active-directory/authentication/howto-mfa-getstarted.md)」を参照してください。
+Linux 仮想マシンにサインインする特定のユーザーに対して多要素認証を要求するように Azure AD を構成することもできます。 詳細については、[クラウドで Azure AD Multi-Factor Authentication を始める](../../active-directory/authentication/howto-mfa-getstarted.md)方法に関するページを参照してください。
 
 ## <a name="log-in-to-the-linux-virtual-machine"></a>Linux 仮想マシンにログインする
 
@@ -162,7 +162,7 @@ ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 
 ブラウザー ウィンドウを閉じ、SSH プロンプト ウィンドウに戻り、**Enter** キーを押します。 
 
-これで、*VM ユーザー*または *VM 管理者*などの、割り当てられたロール権限を持つユーザーとして、Azure Linux 仮想マシンにサインインしました。 ご自分のユーザー アカウントに*仮想マシンの管理者ログイン*ロールが割り当てられている場合は、`sudo` を使用してルート権限を必要とするコマンドを実行できます。
+これで、*VM ユーザー* または *VM 管理者* などの、割り当てられたロール権限を持つユーザーとして、Azure Linux 仮想マシンにサインインしました。 ご自分のユーザー アカウントに *仮想マシンの管理者ログイン* ロールが割り当てられている場合は、`sudo` を使用してルート権限を必要とするコマンドを実行できます。
 
 ## <a name="sudo-and-aad-login"></a>sudo と AAD ログイン
 
@@ -185,7 +185,7 @@ Azure AD の資格情報を使用して SSH 経由でログインしようとし
 
 ### <a name="access-denied-azure-role-not-assigned"></a>アクセスが拒否されました:Azure ロールが割り当てられていません
 
-SSH プロンプトで次のエラーが表示された場合は、対象の VM に対して、*仮想マシンの管理者ログイン*または*仮想マシンのユーザー ログイン* ロールのいずれかをユーザーに付与する Azure RBAC ポリシーが構成済みであることを確認してください。
+SSH プロンプトで次のエラーが表示された場合は、対象の VM に対して、*仮想マシンの管理者ログイン* または *仮想マシンのユーザー ログイン* ロールのいずれかをユーザーに付与する Azure RBAC ポリシーが構成済みであることを確認してください。
 
 ```output
 login as: azureuser@contoso.onmicrosoft.com

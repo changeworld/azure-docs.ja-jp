@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: f2a50872fdb71419a0c3f068712ec67523a098e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b664dcd1cb12808960ffacf91c6d02d58632c4e
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708375"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95243139"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>リージョン間レプリケーションを使用するための要件と考慮事項 
 
@@ -38,12 +38,14 @@ Azure NetApp Files [ボリュームのリージョン間レプリケーション
 * 現時点では、スナップショットから作成されたソース ボリュームについてボリューム レプリケーションを構成することはサポートされていません。
 * リージョン間レプリケーションを設定したら、ソース ボリュームと宛先ボリューム間に参照を提供するための "*snapmirror スナップショット*" がレプリケーション プロセスによって作成されます。 snapmirror スナップショットは、増分転送ごとに新しいスナップショットが作成されると、毎回自動的に循環されます。 レプリケーション リレーションシップとボリュームが削除されるまで、snapmirror スナップショットを削除することはできません。 
 * レプリケーション リレーションシップがアクティブであるかまたは切断されている場合、またレプリケーション リレーションシップが削除された後でも、レプリケーション リレーションシップのソース ボリューム上の手動スナップショットを削除できます。 レプリケーション リレーションシップが切断されるまで、宛先ボリュームの手動スナップショットを削除することはできません。
+* レプリケーション先のボリュームが作成される前に取得されたスナップショットに戻すことはできません。
 
-## <a name="next-steps"></a>次の手順
-* [レプリケーション ピアリングの作成](cross-region-replication-create-peering.md)
+## <a name="next-steps"></a>次のステップ
+* [ボリューム レプリケーションを作成する](cross-region-replication-create-peering.md)
 * [レプリケーション関係の正常性状態を表示する](cross-region-replication-display-health-status.md)
 * [ディザスター リカバリーの管理](cross-region-replication-manage-disaster-recovery.md)
 * [ボリューム レプリケーション メトリック](azure-netapp-files-metrics.md#replication)
+* [ボリューム レプリケーションまたはボリュームを削除する](cross-region-replication-delete.md)
 * [リージョン間レプリケーションのトラブルシューティング](troubleshoot-cross-region-replication.md)
 
 

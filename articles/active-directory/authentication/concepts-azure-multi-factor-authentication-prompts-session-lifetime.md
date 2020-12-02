@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor Authentication のプロンプトとセッションの有効期間
-description: Azure Multi-Factor Authentication での再認証プロンプトの推奨構成と、セッションの有効期間の適用方法について説明します。
+title: Azure AD Multi-Factor Authentication のプロンプトとセッションの有効期間
+description: Azure AD Multi-Factor Authentication での再認証プロンプトの推奨構成と、セッションの有効期間の適用方法について説明します。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a759d4e686f43133716cc1c40237db74a015210
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 87b30b12e75a583ccee9780f97a6492961365cca
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964946"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839677"
 ---
-# <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>再認証プロンプトを最適化し、Azure Multi-Factor Authentication のセッションの有効期間を理解する
+# <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>再認証プロンプトを最適化し、Azure AD Multi-Factor Authentication のセッションの有効期間について理解する
 
 Azure Active Directory (Azure AD) には、ユーザーが再認証を必要とする頻度を決定する設定が複数あります。 この再認証は、パスワード、FIDO、パスワードレス Microsoft Authenticator などの第 1 要素を使用するか、多要素認証 (MFA) を実行するためである場合があります。 これらの再認証の設定は、必要に応じて、独自の環境と目的のユーザー エクスペリエンスに合わせて構成することができます。
 
@@ -70,7 +70,7 @@ Azure AD Join または Hybrid Azure AD Join を使用して Azure AD に参加�
 
 ![サインインしたままの状態を続けるよう求めるメッセージの例のスクリーンショット](./media/concepts-azure-multi-factor-authentication-prompts-session-lifetime/stay-signed-in-prompt.png)
 
-Azure AD Premium 1 のライセンスをお持ちの場合は、*永続ブラウザー セッション*の条件付きアクセス ポリシーを使用することをお勧めします。 このポリシーは、 *[サインインの状態を維持]* の設定を上書きして、ユーザー エクスペリエンスを向上させます。 Azure AD Premium 1 のライセンスをお持ちでない場合は、ユーザーの [サインインの状態を維持] 設定を有効にすることをお勧めします。
+Azure AD Premium 1 のライセンスをお持ちの場合は、*永続ブラウザー セッション* の条件付きアクセス ポリシーを使用することをお勧めします。 このポリシーは、 *[サインインの状態を維持]* の設定を上書きして、ユーザー エクスペリエンスを向上させます。 Azure AD Premium 1 のライセンスをお持ちでない場合は、ユーザーの [サインインの状態を維持] 設定を有効にすることをお勧めします。
 
 ユーザーがサインインしたままの状態を続けるためのオプションの構成の詳細については、「[Azure AD サインイン ページをカスタマイズする](../fundamentals/customize-branding.md#customize-your-azure-ad-sign-in-page)」を参照してください。
 
@@ -90,13 +90,13 @@ Azure AD Premium 1 のライセンスをお持ちの場合は、*永続ブラウ
 
 **[サインインの頻度]** では、管理者は、クライアントとブラウザーの両方の第 1 要素と第 2 要素の両方に適用されるサインインの頻度を選択できます。 重要なビジネス アプリケーションなどで認証セッションを制限する必要があるシナリオでは、マネージド デバイスの使用と共にこれらの設定を使用することをお勧めします。
 
-**永続的なブラウザー セッション**では、ユーザーはブラウザー ウィンドウを閉じてから再度開いた後でもサインインした状態を維持できます。 *[Remain signed-in] (サインインしたままの状態を続ける)* 設定と同様に、これによりブラウザーに永続的な Cookie が設定されます。 ただし、管理者によって構成されているので、ユーザーが *[サインインしたままにする]* オプションで **[はい]** を選択する必要がないため、ユーザー エクスペリエンスが向上します。 *[Remain signed-in] (サインインしたままの状態を続ける)* オプションを使用する場合は、代わりに **[永続的ブラウザー セッション]** ポリシーを有効にすることをお勧めします。
+**永続的なブラウザー セッション** では、ユーザーはブラウザー ウィンドウを閉じてから再度開いた後でもサインインした状態を維持できます。 *[Remain signed-in] (サインインしたままの状態を続ける)* 設定と同様に、これによりブラウザーに永続的な Cookie が設定されます。 ただし、管理者によって構成されているので、ユーザーが *[サインインしたままにする]* オプションで **[はい]** を選択する必要がないため、ユーザー エクスペリエンスが向上します。 *[Remain signed-in] (サインインしたままの状態を続ける)* オプションを使用する場合は、代わりに **[永続的ブラウザー セッション]** ポリシーを有効にすることをお勧めします。
 
 詳しくは、 「[条件付きアクセスを使用して認証セッション管理を構成する](../conditional-access/howto-conditional-access-session-lifetime.md)」を参照してください。
 
 ### <a name="configurable-token-lifetimes"></a>構成可能なトークンの有効期間
 
-この設定により、Azure Active Directory によって発行されたトークンの有効期間を構成できます。 このポリシーは、「*条件付きアクセスを使用した認証セッション管理*」に置き換えられます。 現在、*構成可能なトークンの有効期間*を使用している場合は、条件付きアクセス ポリシーへの移行を開始することをお勧めします。
+この設定により、Azure Active Directory によって発行されたトークンの有効期間を構成できます。 このポリシーは、「*条件付きアクセスを使用した認証セッション管理*」に置き換えられます。 現在、*構成可能なトークンの有効期間* を使用している場合は、条件付きアクセス ポリシーへの移行を開始することをお勧めします。
 
 ## <a name="review-your-tenant-configuration"></a>テナント構成を確認する  
 
@@ -113,7 +113,7 @@ Multi-Factor Authentication の設定を記憶するには、次の手順を実�
 1. Azure AD portal で、 *[Azure Active Directory]* を検索して選択します。
 1. **セキュリティ** を選択してから、**MFA** を選択します。
 1. **[構成]** で、 **[追加のクラウドベースの MFA 設定]** を選択します。
-1. *Multi-Factor Authentication サービス設定*のページで、**Multi-Factor Authentication の設定の記憶**までスクロールします。 このチェック ボックスをオフにして、設定を無効にします。
+1. *Multi-Factor Authentication サービス設定* のページで、**Multi-Factor Authentication の設定の記憶** までスクロールします。 このチェック ボックスをオフにして、設定を無効にします。
 
 サインインの頻度と永続的なブラウザー セッションの条件付きアクセス ポリシーを構成するには、次の手順を実行します。
 
@@ -136,4 +136,4 @@ Multi-Factor Authentication の設定を記憶するには、次の手順を実�
 
 ## <a name="next-steps"></a>次のステップ
 
-まずは、[Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保](tutorial-enable-azure-mfa.md)したり、[ユーザー サインインのリスク検出を使用して、Azure Multi-Factor Authentication をトリガーしたりする](tutorial-risk-based-sspr-mfa.md)ためのチュートリアルを参照してください。
+作業を開始するには、[Azure AD Multi-Factor Authentication を使用したユーザーのサインイン イベントのセキュリティ保護](tutorial-enable-azure-mfa.md)、または [Azure AD Multi-Factor Authentication をトリガーすることを目的としたユーザーのサインインのユーザー リスク検出](tutorial-risk-based-sspr-mfa.md)に関するチュートリアルを完了します。

@@ -1,5 +1,5 @@
 ---
-title: 接続モニター | Microsoft Docs
+title: Azure の接続モニター | Microsoft Docs
 description: 接続モニターを使用して分散環境でネットワーク通信を監視する方法について説明します。
 services: network-watcher
 documentationcenter: na
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/27/2020
+ms.date: 11/23/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 5dbb8d508fe824d0264043625c988f43092f3f78
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c5c3f8dedad47a819ce3648a0b81ffa3e65a1a1e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699238"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544889"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>接続モニターによるネットワーク接続の監視
 
@@ -34,7 +34,7 @@ ms.locfileid: "94699238"
 - ハイブリッド アプリケーションで Azure Storage エンドポイントに接続する必要がある。 オンプレミスのサイトと Azure アプリケーションは、同じ Azure Storage エンドポイントに接続する。 オンプレミス サイトの待機時間と、Azure アプリケーションの待機時間を比較したい。
 - オンプレミスのセットアップと、クラウド アプリケーションがホストされている Azure VM 間の接続を確認したい。
 
-接続モニターは 2 つの機能の長所を兼ね備えています。Network Watcher の[接続モニター (クラシック)](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) 機能と、Network Performance Monitor (NPM) の[サービス接続モニター](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity)、[ExpressRoute 監視](https://docs.microsoft.com/azure/expressroute/how-to-npm)、[パフォーマンス モニター](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-performance-monitor)機能です。
+接続モニターは 2 つの機能の長所を兼ね備えています。Network Watcher の[接続モニター (クラシック)](./network-watcher-monitoring-overview.md#monitor-communication-between-a-virtual-machine-and-an-endpoint) 機能と、Network Performance Monitor (NPM) の[サービス接続モニター](../azure-monitor/insights/network-performance-monitor-service-connectivity.md)、[ExpressRoute 監視](../expressroute/how-to-npm.md)、[パフォーマンス モニター](../azure-monitor/insights/network-performance-monitor-performance-monitor.md)機能です。
 
 以下に、接続モニターの利点をいくつか示します。
 
@@ -65,7 +65,7 @@ ms.locfileid: "94699238"
 
 接続モニターにより Azure VM が監視ソースとして認識されるようにするには、Network Watcher エージェント仮想マシン拡張機能を VM にインストールします。 この拡張機能は、"*Network Watcher 拡張機能*" とも呼ばれます。 Azure 仮想マシンでは、エンドツーエンドの監視とその他の高度な機能をトリガーするために拡張機能が必要です。 
 
-[VM を作成する](https://docs.microsoft.com/azure/network-watcher/connection-monitor#create-the-first-vm)ときに、Network Watcher 拡張機能をインストールできます。 また、[Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-linux) 用と [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-windows) 用の Network Watcher 拡張機能を別々に、インストール、構成、トラブルシューティングすることもできます。
+[VM を作成する](./connection-monitor.md#create-the-first-vm)ときに、Network Watcher 拡張機能をインストールできます。 また、[Linux](../virtual-machines/extensions/network-watcher-linux.md) 用と [Windows](../virtual-machines/extensions/network-watcher-windows.md) 用の Network Watcher 拡張機能を別々に、インストール、構成、トラブルシューティングすることもできます。
 
 ネットワーク セキュリティ グループ (NSG) またはファイアウォールの規則により、ソースとターゲットの間の通信がブロックされる場合があります。 接続モニターを使うと、この問題を検出し、トポロジに診断メッセージとして表示できます。 接続監視を有効にするには、NSG とファイアウォール規則で、ソースとターゲットの間の TCP または ICMP 経由のパケットが許可されるようにします。
 
@@ -73,7 +73,7 @@ ms.locfileid: "94699238"
 
 接続モニターで、オンプレミスのコンピューターが監視のソースとして認識されるようにするには、コンピューターに Log Analytics エージェントをインストールします。 その後、Network Performance Monitor ソリューションを有効にします。 これらのエージェントは Log Analytics ワークスペースにリンクされているので、監視を開始するには、ワークスペース ID とプライマリ キーをセットアップする必要があります。
 
-Windows コンピューター用の Log Analytics エージェントをインストールする方法については、「[Windows 用の Azure Monitor 仮想マシン拡張機能](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows)」を参照してください。
+Windows コンピューター用の Log Analytics エージェントをインストールする方法については、「[Windows 用の Azure Monitor 仮想マシン拡張機能](../virtual-machines/extensions/oms-windows.md)」を参照してください。
 
 パスにファイアウォールまたはネットワーク仮想アプライアンス (NVA) が含まれている場合は、ターゲットに到達可能であることを確認します。
 
@@ -81,7 +81,7 @@ Windows コンピューター用の Log Analytics エージェントをインス
 
 仮想ネットワークが含まれるすべてのサブスクリプションは、Network Watcher で有効になります。 サブスクリプションで仮想ネットワークを作成すると、その仮想ネットワークのリージョンとサブスクリプションで、Network Watcher が自動的に有効になります。 この自動有効化により、リソースが影響を受けたり、料金が発生したりすることはありません。 Network Watcher がサブスクリプションで明示的に無効になっていないことを確認してください。 
 
-詳細については、[Network Watcher の有効化](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)に関する記事をご覧ください。
+詳細については、[Network Watcher の有効化](./network-watcher-create.md)に関する記事をご覧ください。
 
 ## <a name="create-a-connection-monitor"></a>接続モニターを作成する 
 
@@ -111,7 +111,7 @@ Windows コンピューター用の Log Analytics エージェントをインス
 
  ![テスト グループとテストの関係が定義されている接続モニターを示す図](./media/connection-monitor-2-preview/cm-tg-2.png)
 
-[Azure portal](connection-monitor-preview-create-using-portal.md) または [ARMClient](connection-monitor-preview-create-using-arm-client.md) を使用して、接続モニターを作成できます
+[Azure portal](./connection-monitor-create-using-portal.md) または [ARMClient](./connection-monitor-create-using-template.md) を使用して、接続モニターを作成できます
 
 テスト グループに追加したすべてのソース、ターゲット、テスト構成は、個々のテストに分割されます。 ソースとターゲットの分割方法の例を次に示します。
 
@@ -213,7 +213,7 @@ Network Watcher から接続モニターに移動したときには、以下の�
 接続モニターでターゲットが outlook.office365.com である失敗したテストだけを表示するには:
 1. ビューを **[テスト]** に変更します。
 1. 状態ベースのフィルターで、 **[失敗]** を選択します。
-1. 検索フィールドに、「*outlook.office365.com*」と入力します
+1. 検索フィールドに、「*office.live.com*」と入力します。
 1. 最上位フィルターの **[範囲]** で、 **[宛先]** を選択します。
   
   :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="ターゲット Outlook.Office365.com に対する失敗したテストのみを表示するようにフィルター処理されたビューを示すスクリーンショット" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
@@ -348,5 +348,5 @@ Azure ネットワークの問題は、ネットワーク トポロジで確認�
 
 ## <a name="next-steps"></a>次の手順
     
-   * [Azure portal を使用して接続モニターを作成する方法](connection-monitor-preview-create-using-portal.md)を確認する  
-   * [ARMClient を使用して接続モニターを作成する方法](connection-monitor-preview-create-using-arm-client.md)を確認する  
+   * [Azure portal を使用して接続モニターを作成する方法](./connection-monitor-create-using-portal.md)を確認する  
+   * [ARMClient を使用して接続モニターを作成する方法](./connection-monitor-create-using-template.md)を確認する

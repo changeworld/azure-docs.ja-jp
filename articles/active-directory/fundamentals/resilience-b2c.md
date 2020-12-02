@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fda9378a41e0d98276957a6fad75db2c20e6e4e9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ba7b8ff2555fd7014cf16f66745721c6425ff868
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919170"
+ms.locfileid: "96029525"
 ---
 # <a name="build-resilience-in-your-customer-identity-and-access-management-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して顧客 ID およびアクセス管理で回復性を強化する
 
@@ -46,10 +46,6 @@ ms.locfileid: "95919170"
 
 - [監視と分析](resilience-with-monitoring-alerting.md): 重要な指標を監視してサービスの正常性を評価し、アラートを使用して障害とパフォーマンスの中断を検出します。
 
-- AD B2C 開発者向けの回復性に関するリソース
-  - [回復性があるエンドユーザー エクスペリエンス](resilient-end-user-experience.md)
-  - [回復性がある外部プロセスとのインターフェイス](resilient-external-processes.md)
-  - [開発者のベスト プラクティスによる回復性](resilience-b2c-developer-best-practices.md)
-  - [監視と分析による回復性](resilience-with-monitoring-alerting.md)
 - [認証インフラストラクチャで回復性を強化する](resilience-in-infrastructure.md)
+
 - [アプリケーションで認証と認可の回復性を向上させる](resilience-app-development-overview.md)

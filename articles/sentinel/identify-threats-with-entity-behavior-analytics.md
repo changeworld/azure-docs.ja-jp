@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 657221a2acbf592a56cb4659ced2199023bc5e5b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a0a677342534cd92d5530199076e3d2e7084134d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658793"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95494779"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel のユーザーとエンティティの行動分析 (UEBA) を使用して高度な脅威を特定する
 
@@ -205,7 +205,7 @@ Azure Sentinel GitHub リポジトリで提供されている [Jupyter ノート
 
 アクセス許可分析は、攻撃者による組織資産の侵害の潜在的な影響を特定するために役立ちます。 この影響は、資産の "影響範囲" とも呼ばれます。 セキュリティ アナリストは、この情報を使用して、調査やインシデント処理に優先順位を付けることができます。
 
-Azure Sentinel は、ユーザーが直接、またはグループやサービス プリンシパル経由でアクセスできる Azure サブスクリプションを評価することによって、Azure リソースへの特定のユーザーによって保持されている直接および推移的なアクセス権を特定します。 この情報や、そのユーザーの Azure AD セキュリティ グループ メンバーシップの完全な一覧は、その後 **UserAccessAnalytics** テーブルに格納されます。 次のスクリーンショットは、ユーザー Alex Johnson に関する UserAccessAnalytics テーブル内のサンプル行を示しています。 **[ソース エンティティ]** はユーザーまたはサービス プリンシパル アカウントであり、 **[ターゲット エンティティ]** はソース エンティティがアクセスできるリソースです。 **[アクセス レベル]** と **[アクセスの種類]** の値は、ターゲット エンティティのアクセス制御モデルによって異なります。 Alex が Azure サブスクリプション *Contoso Hotels Tenant* に対する共同作成者のアクセス権を持っていることがわかります。 このサブスクリプションのアクセス制御モデルは RBAC です。   
+Azure Sentinel は、ユーザーが直接、またはグループやサービス プリンシパル経由でアクセスできる Azure サブスクリプションを評価することによって、Azure リソースへの特定のユーザーによって保持されている直接および推移的なアクセス権を特定します。 この情報や、そのユーザーの Azure AD セキュリティ グループ メンバーシップの完全な一覧は、その後 **UserAccessAnalytics** テーブルに格納されます。 次のスクリーンショットは、ユーザー Alex Johnson に関する UserAccessAnalytics テーブル内のサンプル行を示しています。 **[ソース エンティティ]** はユーザーまたはサービス プリンシパル アカウントであり、 **[ターゲット エンティティ]** はソース エンティティがアクセスできるリソースです。 **[アクセス レベル]** と **[アクセスの種類]** の値は、ターゲット エンティティのアクセス制御モデルによって異なります。 Alex が Azure サブスクリプション *Contoso Hotels Tenant* に対する共同作成者のアクセス権を持っていることがわかります。 このサブスクリプションのアクセス制御モデルは Azure RBAC です。   
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="ユーザー アクセス分析テーブルのスクリーンショット":::
 

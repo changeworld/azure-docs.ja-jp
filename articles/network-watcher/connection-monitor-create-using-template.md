@@ -1,5 +1,5 @@
 ---
-title: 接続モニターを作成する - ARMClient
+title: 接続モニターを作成する - ARM テンプレート
 titleSuffix: Azure Network Watcher
 description: ARMClient を使用して接続モニターを作成する方法について説明します。
 services: network-watcher
@@ -10,18 +10,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: 929a2feeb53e8903d675644dcb72b422eceb2858
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c3b228d2652d5f7dcf7c6596ee5425b3f5f9a4d8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699102"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544005"
 ---
-# <a name="create-a-connection-monitor-using-the-armclient"></a>ARMClient を使用して接続モニターを作成する
+# <a name="create-a-connection-monitor-using-the-arm-template"></a>ARM テンプレートを使用して接続モニターを作成する
 
 ARMClient を使用して接続モニターを作成し、リソース間の通信を監視する方法について説明します。 これにより、ハイブリッド デプロイおよび Azure クラウド デプロイがサポートされます。
+
 
 ## <a name="before-you-begin"></a>開始する前に 
 
@@ -368,7 +369,7 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 * テスト グループ
     * name – テスト グループの名前を指定します。
     * testConfigurations - テスト構成であり、これに基づいてソース エンドポイントはターゲット エンドポイントに接続されます。
-    * sources - 上記で作成したエンドポイントから選択します。 Azure ベースのソース エンドポイントには Azure Network Watcher 拡張機能がインストールされている必要があり、Azure 以外をベースとしたソース エンドポイントには Azure Log Analytics エージェントがインストールされている必要があります。 ソース用のエージェントをインストールするには、「[監視エージェントをインストールする](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents)」を参照してください。
+    * sources - 上記で作成したエンドポイントから選択します。 Azure ベースのソース エンドポイントには Azure Network Watcher 拡張機能がインストールされている必要があり、Azure 以外をベースとしたソース エンドポイントには Azure Log Analytics エージェントがインストールされている必要があります。 ソース用のエージェントをインストールするには、「[監視エージェントをインストールする](./connection-monitor-overview.md#install-monitoring-agents)」を参照してください。
     * destinations - 前述で作成したエンドポイントから選択します。 Azure VM または任意のエンドポイント (パブリック IP、URL、FQDN) をターゲットとして指定すると、それらへの接続を監視できます。 1 つのテスト グループに、Azure VM、Office 365 URL、Dynamics 365 URL、カスタム エンドポイントを追加できます。
     * disable - このフィールドを使用すると、テスト グループで指定されているすべてのソースとターゲットに対する監視を無効にできます。
 
@@ -377,12 +378,12 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
     * testFrequencySec - 指定したプロトコルとポートでソースがターゲットに ping を実行する頻度を指定します。 30 秒、1 分、5 分、15 分、30 分のいずれかを選択できます。 ソースでは、選択した値に基づいて、ターゲットへの接続がテストされます。 たとえば、30 秒を選択すると、ソースにより、少なくとも 30 秒に 1 回、ターゲットへの接続が確認されます。
     * protocol - TCP、ICMP、HTTP、または HTTPS を選択できます。 プロトコルによっては、いくつかのプロトコル固有の構成を行うことができます。
     
-        * preferHTTPS - 使用されているポートが 80 と 443 のどちらでもない場合に、HTTP よりも HTTPS を優先して使用するかどうかを指定します
+        * preferHTTPS - 使用されるポートが 80 でも 443 でもないとき、HTTP 経由で HTTPS を使用するかどうかを指定します
         * port - 任意の宛先ポートを指定します。
         * disableTraceRoute - これは、プロトコルが TCP または ICMP であるテスト構成に適用されます。 これによって、ソースでのトポロジとホップバイホップ RTT の検出が停止します。
         * method - これは、プロトコルが HTTP であるテスト構成に適用されます。 HTTP 要求メソッド (GET または POST) を選択します
         * path - URL に追加するパス パラメーターを指定します
-        * validStatusCodes - 該当する状態コードを選択します。 応答コードがこの一覧と一致しない場合は、診断メッセージが表示されます
+        * validStatusCodes - 該当するステータス コードを選択します。 応答コードがこの一覧と一致しない場合は、診断メッセージが表示されます
         * requestHeaders - 宛先に渡されるカスタム要求ヘッダー文字列を指定します
         
     * successThreshold - 以下のネットワーク パラメーターにしきい値を設定できます。
@@ -400,5 +401,5 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 
 ## <a name="next-steps"></a>次の手順
 
-* [監視データを分析してアラートを設定する方法](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#analyze-monitoring-data-and-set-alerts)を確認する
-* [ネットワークの問題を診断する方法](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#diagnose-issues-in-your-network)を確認する
+* [監視データを分析してアラートを設定する方法](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts)を確認する
+* [ネットワークの問題を診断する方法](./connection-monitor-overview.md#diagnose-issues-in-your-network)を確認する

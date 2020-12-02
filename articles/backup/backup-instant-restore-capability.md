@@ -4,18 +4,18 @@ description: Azure のインスタント リストア機能と、VM バックア
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 95de22d8493181f098e480afc4f319c44c633e42
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 147fadc92429157ed2f9ba3eb68297a3e1d08d24
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173923"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96014450"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
 
 > [!NOTE]
-> ユーザーからのフィードバックに基づき、Azure Stack 機能との混同を避けるため、名前を **VM バックアップ スタック V2** から**インスタント リストア**に変更しています。
-> すべての Azure Backup ユーザーは、**インスタント リストア**にアップグレードされました。
+> ユーザーからのフィードバックに基づき、Azure Stack 機能との混同を避けるため、名前を **VM バックアップ スタック V2** から **インスタント リストア** に変更しています。
+> すべての Azure Backup ユーザーは、**インスタント リストア** にアップグレードされました。
 
 インスタント リストアの新しいモデルでは、次の機能が強化されています。
 
@@ -24,7 +24,7 @@ ms.locfileid: "92173923"
 * 最大 32 TB のディスク サイズがサポートされます。 Azure Backup では、ディスクのサイズ変更は推奨されません。
 * Standard HDD ディスクおよび Premium SSD ディスクと共に Standard SSD ディスクがサポートされます。
 * 復元時に、(ディスクごとの) アンマネージド VM の元のストレージ アカウントを使用できます。 この機能は、ストレージ アカウント間に分散しているディスクが VM にある場合でも使用できます。 さまざまな VM 構成で復元操作が速くなります。
-* ストレージ アカウントで管理されていない premium ディスクを使用している VM のバックアップについては、インスタント リストアを使用して、割り当てられた合計ストレージ領域の *50%* の空き領域 (最初のバックアップに**のみ**必要) を割り当てることをお勧めします。 最初のバックアップが完了した後は、バックアップに 50% の空き領域は不要になります。
+* ストレージ アカウントで管理されていない premium ディスクを使用している VM のバックアップについては、インスタント リストアを使用して、割り当てられた合計ストレージ領域の *50%* の空き領域 (最初のバックアップに **のみ** 必要) を割り当てることをお勧めします。 最初のバックアップが完了した後は、バックアップに 50% の空き領域は不要になります。
 
 ## <a name="whats-new-in-this-feature"></a>この機能の更新点
 
@@ -117,3 +117,8 @@ VM の変化によって異なります。 安定状態では、コストの増�
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>インスタント リストア機能は必要ありません。 無効にすることはできますか。
 
 インスタント リストア機能はすべてのユーザーに対して有効になっており、無効にすることはできません。 スナップショットのリテンション期間は、最小で 1 日に短縮することができます。
+
+### <a name="is-it-safe-to-restart-the-vm-during-the-transfer-process-which-can-take-many-hours-will-restarting-the-vm-interrupt-or-slow-down-the-transfer"></a>(数時間かかる可能性がある) 転送プロセス中に VM を再起動しても問題ありませんか。 VM を再起動すると、転送が中断されますか。あるいは遅くなりますか。
+
+問題ありません。データ転送の速度にはまったく影響が出ません。
+

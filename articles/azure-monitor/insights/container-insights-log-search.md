@@ -3,12 +3,12 @@ title: Azure Monitor for containers からログを照会する方法 |Microsoft
 description: Azure Monitor for containers は、メトリックとログ データを収集します。この記事では、レコードについて説明し、サンプル クエリを紹介します。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: a540ae828b14f231b3b327b714876550cc744a7e
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 08c42fab84cb5180497f8da4f077b9bd82283ad4
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994013"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95747681"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Azure Monitor for containers からログを照会する方法
 
@@ -16,7 +16,7 @@ Azure Monitor for containers では、コンテナー ホストおよびコン�
 
 ## <a name="container-records"></a>コンテナー レコード
 
-次の表では、Azure Monitor for containers で収集されるレコードの詳細について説明します。 
+次の表で、Azure Monitor for containers で収集されるレコードの詳細について説明します。 列の説明の一覧については、[ContainerInventory](/azure/azure-monitor/reference/tables/containerinventory) と [ContainerLog](/azure/azure-monitor/reference/tables/containerlog) のテーブルのリファレンスを参照してください。
 
 | Data | データ ソース | データ型 | フィールド |
 |------|-------------|-----------|--------|
@@ -31,7 +31,7 @@ Azure Monitor for containers では、コンテナー ホストおよびコン�
 | Kubernetes クラスターのコンテナー部分のパフォーマンス メトリック | 使用状況メトリックは cAdvisor から、制限は Kube API から取得されます | Perf &#124; where ObjectName == "K8SContainer" | CounterName &#40;cpuRequestNanoCores、memoryRequestBytes、cpuLimitNanoCores、memoryWorkingSetBytes、restartTimeEpoch、cpuUsageNanoCores、memoryRssBytes&#41;、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
 | カスタム メトリック ||`InsightsMetrics` | Computer、Name、Namespace、Origin、SourceSystem、Tags<sup>1</sup>、TimeGenerated、Type、Va、_ResourceId | 
 
-<sup>1</sup>*Tags* プロパティは、対応するメトリックの[複数のディメンション](../platform/data-platform-metrics.md#multi-dimensional-metrics)を表します。 `InsightsMetrics` テーブルに収集されて格納されているメトリックの詳細と、レコードのプロパティの説明については、[InsightsMetrics の概要](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md)に関するページを参照してください。
+<sup>1</sup>*Tags* プロパティは、対応するメトリックの [複数のディメンション](../platform/data-platform-metrics.md#multi-dimensional-metrics)を表します。 `InsightsMetrics` テーブルに収集されて格納されているメトリックの詳細と、レコードのプロパティの説明については、[InsightsMetrics の概要](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md)に関するページを参照してください。
 
 ## <a name="search-logs-to-analyze-data"></a>データを分析するためのログの検索
 

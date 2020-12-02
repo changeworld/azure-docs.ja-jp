@@ -1,5 +1,5 @@
 ---
-title: Azure NetApp Files のレプリケーション ピアリングを作成する | Microsoft Docs
+title: Azure NetApp Files のボリューム レプリケーションを作成する | Microsoft Docs
 description: Azure NetApp Files のボリューム レプリケーション ピアリングを作成して、リージョン間レプリケーションを設定する方法について説明します。
 services: azure-netapp-files
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: df70f8a37a7223119068afd323583ea6126ca542
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 412724a072bfc03a67bf1005173702f757c6fdf4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708383"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95249939"
 ---
-# <a name="create-replication-peering-for-azure-netapp-files"></a>Azure NetApp Files のレプリケーション ピアリングを作成する
+# <a name="create-volume-replication-for-azure-netapp-files"></a>Azure NetApp Files のボリューム レプリケーションを作成する
 
 > [!IMPORTANT]
 > リージョン間レプリケーションの機能は、現在パブリック プレビュー段階です。 [Azure NetApp Files のリージョン間レプリケーションの順番待ち送信ページ](https://aka.ms/anfcrrpreviewsignup)から、機能にアクセスするための順番待ちリクエストを送信する必要があります。 Azure NetApp Files チームからの正式な確認メールを待ってからリージョン間レプリケーション機能を使用してください。
@@ -113,5 +113,6 @@ NFS プロトコルの場合、エクスポート ポリシー ルールが、�
 * [レプリケーション関係の正常性状態を表示する](cross-region-replication-display-health-status.md)
 * [ボリューム レプリケーション メトリック](azure-netapp-files-metrics.md#replication)
 * [ディザスター リカバリーの管理](cross-region-replication-manage-disaster-recovery.md)
+* [ボリューム レプリケーションまたはボリュームを削除する](cross-region-replication-delete.md)
 * [リージョン間レプリケーションのトラブルシューティング](troubleshoot-cross-region-replication.md)
 

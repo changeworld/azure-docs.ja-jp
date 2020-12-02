@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperfq2
 ms.date: 10/30/2020
-ms.openlocfilehash: ed2ce13ab10c09dc738e522566742078819e8341
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 4c0d12e4c37476b9ae71962251105ef92aa39120
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148390"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004281"
 ---
 # <a name="configure-hdinsight-clusters-for-active-directory-integration-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して Active Directory 統合用に HDInsight クラスターを構成する
 
@@ -48,7 +48,7 @@ Azure AD DS が有効の場合、すべてのユーザーとオブジェクト�
 
 Azure AD DS で使用するドメイン名は、HDInsight で動作するように、39 文字以下とする必要があります。
 
-必要に応じて、アクセスが必要なグループのみを HDInsight クラスターと同期させることができます。 特定のグループのみを同期するこのオプションは、" *範囲指定された同期* " と呼ばれます。 手順については、[Azure AD からご利用のマネージド ドメインまで範囲指定された同期の構成](../../active-directory-domain-services/scoped-synchronization.md)に関するページを参照してください。
+必要に応じて、アクセスが必要なグループのみを HDInsight クラスターと同期させることができます。 特定のグループのみを同期するこのオプションは、"*範囲指定された同期*" と呼ばれます。 手順については、[Azure AD からご利用のマネージド ドメインまで範囲指定された同期の構成](../../active-directory-domain-services/scoped-synchronization.md)に関するページを参照してください。
 
 セキュリティで保護された LDAP を有効にする場合は、サブジェクト名にドメイン名を入力します。 およびサブジェクトの別名を証明書に入力します。 ドメイン名が *contoso100.onmicrosoft.com* の場合は、自分の証明書サブジェクト名とサブジェクトの別名にその正確な名前が存在することを確認します。 詳細については、「[Azure AD ドメイン サービスの管理対象ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成](../../active-directory-domain-services/tutorial-configure-ldaps.md)」を参照してください。
 
@@ -62,9 +62,9 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 ```
 
 > [!NOTE]  
-> Azure AD DS を有効にする特権が与えられているのはテナント管理者だけです。 クラスター記憶域が Azure Data Lake Storage Gen1 または Gen2 の場合、基本的な Kerberos 認証を使用してクラスターにアクセスする必要があるユーザーに対してのみ、Azure Multi-Factor Authentication を無効にする必要があります。
+> Azure AD DS を有効にする特権が与えられているのはテナント管理者だけです。 クラスター記憶域が Azure Data Lake Storage Gen1 または Gen2 の場合、基本的な Kerberos 認証を使用してクラスターにアクセスする必要があるユーザーに対してのみ、Azure AD Multi-Factor Authentication を無効にする必要があります。
 >
-> [信頼済み IP](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) または [条件付きアクセス](../../active-directory/conditional-access/overview.md)を使用して特定のユーザーに対して Multi-Factor Authentication を無効にすることができるのは、それらが HDInsight クラスターの仮想ネットワーク用の IP 範囲にアクセスしている場合 " *のみ* " です。 条件付きアクセスを使用している場合は、Active Directory サービス エンドポイントが HDInsight 仮想ネットワーク上で有効になっていることを確認します。
+> [信頼済み IP](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) または [条件付きアクセス](../../active-directory/conditional-access/overview.md)を使用して特定のユーザーに対して Multi-Factor Authentication を無効にすることができるのは、それらが HDInsight クラスターの仮想ネットワーク用の IP 範囲にアクセスしている場合 "*のみ*" です。 条件付きアクセスを使用している場合は、Active Directory サービス エンドポイントが HDInsight 仮想ネットワーク上で有効になっていることを確認します。
 >
 > クラスター記憶域が Azure Blob Storage である場合は、Multi-Factor Authentication を無効にしないでください。
 
@@ -76,13 +76,13 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 
 ### <a name="create-and-authorize-a-managed-identity"></a>マネージド ID の作成と承認
 
-セキュリティで保護されたドメイン サービスの操作を簡略化するには、" *ユーザー割り当てマネージド ID* " を使用します。 **HDInsight ドメイン サービス共同作成者** ロールをマネージド ID に割り当てると、ドメイン サービス操作を読み取り、作成、変更、および削除できるようになります。
+セキュリティで保護されたドメイン サービスの操作を簡略化するには、"*ユーザー割り当てマネージド ID*" を使用します。 **HDInsight ドメイン サービス共同作成者** ロールをマネージド ID に割り当てると、ドメイン サービス操作を読み取り、作成、変更、および削除できるようになります。
 
 OU やサービス プリンシパルの作成など、一部のドメイン サービス操作が HDInsight Enterprise セキュリティ パッケージに必要です。 マネージド ID は、どのサブスクリプションでも作成できます。 一般的なマネージド ID の詳細については、「[Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md)」をご覧ください。 Azure HDInsight でマネージド ID がどのように機能するかに関する詳細は、「[Azure HDInsight のマネージド ID](../hdinsight-managed-identities.md)」を参照してください。
 
 ESP クラスターを設定するには、まだ作成していない場合は、ユーザー割り当てマネージド ID を作成します。 [`Create, list, delete, or assign a role to a user-assigned managed identity by using the Azure portal`](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)に関するページを参照してください。
 
-次に、 **HDInsight ドメイン サービス共同作成者** ロールを、Azure AD DS の **アクセス制御** でマネージド ID に割り当てます。 このロールの割り当てを行うには、Azure AD DS 管理特権が必要です。
+次に、**HDInsight ドメイン サービス共同作成者** ロールを、Azure AD DS の **アクセス制御** でマネージド ID に割り当てます。 このロールの割り当てを行うには、Azure AD DS 管理特権が必要です。
 
 ![Azure Active Directory Domain Services のアクセス制御](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-configure-managed-identity.png)
 
@@ -90,7 +90,7 @@ ESP クラスターを設定するには、まだ作成していない場合は�
 
 マネージド ID がロールに与えられると、Azure AD DS 管理者がそれを使用するユーザーを管理します。 まず、管理者がポータルでマネージド ID を選択します。 次に、 **[概要]** で **[アクセス制御 (IAM)]** を選択します。 管理者が **マネージド ID オペレーター** ロールを、ESP クラスターを作成するユーザーまたはグループに割り当てます。
 
-たとえば、Azure AD DS 管理者は、 **sjmsi** マネージド ID 用にこのロールを **MarketingTeam** グループに割り当てることができます。 次の図に例を示します。 この割り当てにより、組織内の適切なユーザーがマネージド ID を使用して ESP クラスターを確実に作成できるようになります。
+たとえば、Azure AD DS 管理者は、**sjmsi** マネージド ID 用にこのロールを **MarketingTeam** グループに割り当てることができます。 次の図に例を示します。 この割り当てにより、組織内の適切なユーザーがマネージド ID を使用して ESP クラスターを確実に作成できるようになります。
 
 ![HDInsight のマネージド ID オペレーター ロールの割り当て](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png)
 
@@ -115,7 +115,7 @@ Azure AD DS インスタンスと HDInsight クラスターは、どちらも同
 
 ご自分の HDInsight サブネット内でネットワーク セキュリティ グループ (NSG) 規則を使用している場合は、インバウンドおよびアウトバウンドの両方のトラフィックに対して[必須 IP](../hdinsight-management-ip-addresses.md) を許可する必要があります。
 
-ご利用のネットワークが設定されていることをテストするには、Windows VM を HDInsight 仮想ネットワークまたはサブネットに参加させ、ドメイン名に対して ping を実行します (IP に解決されるはずです)。 **ldp.exe** を実行して、Azure AD DS ドメインにアクセスします。 次に、この Windows VM をドメインに参加させて、必要なすべての RPC 呼び出しがクライアントとサーバー間で成功していることを確認します。
+ご利用のネットワークが設定されていることをテストするには、Windows VM を HDInsight 仮想ネットワークまたはサブネットに参加させ、ドメイン名に対して ping を実行します (IP に解決されるはずです)。**ldp.exe** を実行して、Azure AD DS ドメインにアクセスします。 次に、この Windows VM をドメインに参加させて、必要なすべての RPC 呼び出しがクライアントとサーバー間で成功していることを確認します。
 
 **nslookup** を使用して、自分のストレージ アカウントへのネットワーク アクセスを確認します。 または、使用する可能性のある任意の外部データベース (外部 Hive メタストアや Rangers DB など)。 NSG によって Azure AD DS がセキュリティで保護されている場合は、Azure AD DS サブネットの NSG 規則で[必須ポート](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers)が許可されていることを確認します。 この Windows VM のドメイン参加に成功した場合、次の手順を続行して ESP クラスターを作成することができます。
 
@@ -136,11 +136,11 @@ ESP を有効にすると、Azure AD DS に関連する一般的な構成ミス�
 
 ESP を使用する HDInsight クラスターを作成する場合は、次のパラメーターを指定する必要があります。
 
-* **クラスター管理者ユーザー** : 同期された Azure AD DS インスタンスから、クラスターの管理者を選択します。 このドメイン アカウントは、同期済みであり、Azure AD DS で使用できなければなりません。
+* **クラスター管理者ユーザー**: 同期された Azure AD DS インスタンスから、クラスターの管理者を選択します。 このドメイン アカウントは、同期済みであり、Azure AD DS で使用できなければなりません。
 
-* **クラスターのアクセス グループ** : ユーザーをクラスターに同期させてアクセスさせるセキュリティ グループが、Azure AD DS で使用できる必要があります。 たとえば、HiveUsers グループです。 詳細については、「[Azure Active Directory でグループを作成し、メンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
+* **クラスターのアクセス グループ**: ユーザーをクラスターに同期させてアクセスさせるセキュリティ グループが、Azure AD DS で使用できる必要があります。 たとえば、HiveUsers グループです。 詳細については、「[Azure Active Directory でグループを作成し、メンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
-* **LDAPS URL** : たとえば `ldaps://contoso.com:636` です。
+* **LDAPS URL**: たとえば `ldaps://contoso.com:636` です。
 
 作成したマネージド ID は、新しいクラスターを作成するときに、 **[ユーザー割り当てマネージド ID]** ドロップダウン リストから選択することができます。
 

@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 10/26/2020
-ms.openlocfilehash: 1485f06af2bb3c4912df3e34cb23c409b7db3dc2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 39119f62fa938f5f4f6529539d4ca9a84bdf8fd7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780361"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989192"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL Database と SQL Managed Instance のセキュリティ機能の概要
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -41,31 +41,31 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
 [仮想ネットワーク規則](vnet-service-endpoint-rule-overview.md)を使用すると、Azure SQL Database は、仮想ネットワーク内の選択されたサブネットから送信される通信のみを受け入れるようにすることができます。
 
 > [!NOTE]
-> ファイアウォール規則でのアクセスの制御は、 **SQL Managed Instance** には適用され " *ません* "。 必要なネットワーク構成について詳しくは、「[マネージド インスタンスへの接続](../managed-instance/connect-application-instance.md)」を参照してください
+> ファイアウォール規則でのアクセスの制御は、**SQL Managed Instance** には適用され "*ません*"。 必要なネットワーク構成について詳しくは、「[マネージド インスタンスへの接続](../managed-instance/connect-application-instance.md)」を参照してください
 
 ## <a name="access-management"></a>アクセス管理
 
 > [!IMPORTANT]
-> Azure 内でのデータベースとサーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 この記事の詳細については、「[Azure portal でのロール ベースのアクセス制御](../../role-based-access-control/overview.md)」を参照してください。
+> Azure 内でのデータベースとサーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 この記事の詳細については、[Azure portal での Azure ロールベースのアクセス制御](../../role-based-access-control/overview.md)に関する記事を参照してください。
 
 ### <a name="authentication"></a>認証
 
 認証は、ユーザーが本人の主張どおりの人物であることを証明するプロセスです。 Azure SQL Database と SQL Managed Instance では、次の 2 種類の認証がサポートされています。
 
-- **SQL 認証** :
+- **SQL 認証**:
 
-    SQL 認証とは、ユーザーがユーザー名とパスワードを使用して Azure SQL Database または Azure SQL Managed Instance に接続するときに、そのユーザーを認証することを指します。 サーバーの作成時には、ユーザー名とパスワードを使用して **サーバー管理者** ログインを指定する必要があります。 これらの資格情報を使用することで、 **サーバー管理者** はデータベース所有者として、そのサーバーまたはインスタンスにある任意のデータベースを認証できます。 その後、サーバー管理者は、追加の SQL ログインとユーザーを作成できます。これにより、ユーザーはユーザー名とパスワードを使用して接続できるようになります。
+    SQL 認証とは、ユーザーがユーザー名とパスワードを使用して Azure SQL Database または Azure SQL Managed Instance に接続するときに、そのユーザーを認証することを指します。 サーバーの作成時には、ユーザー名とパスワードを使用して **サーバー管理者** ログインを指定する必要があります。 これらの資格情報を使用することで、**サーバー管理者** はデータベース所有者として、そのサーバーまたはインスタンスにある任意のデータベースを認証できます。 その後、サーバー管理者は、追加の SQL ログインとユーザーを作成できます。これにより、ユーザーはユーザー名とパスワードを使用して接続できるようになります。
 
-- **Azure Active Directory 認証** :
+- **Azure Active Directory 認証**:
 
     Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を使用して [Azure SQL Database](sql-database-paas-overview.md)、[Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。 Azure AD 認証では、管理者は、データベース ユーザーの ID とアクセス許可を他の Azure サービスと共に一元管理できます。 これにはパスワード ストレージの最小化が含まれます。また、これにより一元化されたパスワードのローテーション ポリシーが有効になります。
 
-     SQL Database で Azure AD 認証を使用するには、 **Active Directory 管理者** と呼ばれるサーバー管理者を作成する必要があります。 詳細については、[Azure Active Directory 認証を使用した SQL Database への接続](authentication-aad-overview.md)に関するページを参照してください。 Azure AD 認証では、マネージド アカウントとフェデレーション アカウントの両方がサポートされます。 フェデレーション アカウントでは、Azure AD とフェデレーションされた顧客ドメインの Windows ユーザーとグループがサポートされます。
+     SQL Database で Azure AD 認証を使用するには、**Active Directory 管理者** と呼ばれるサーバー管理者を作成する必要があります。 詳細については、[Azure Active Directory 認証を使用した SQL Database への接続](authentication-aad-overview.md)に関するページを参照してください。 Azure AD 認証では、マネージド アカウントとフェデレーション アカウントの両方がサポートされます。 フェデレーション アカウントでは、Azure AD とフェデレーションされた顧客ドメインの Windows ユーザーとグループがサポートされます。
 
     使用できる追加の Azure AD 認証オプションには、[多要素認証](../../active-directory/authentication/concept-mfa-howitworks.md)と[条件付きアクセス](conditional-access-configure.md)を含む、[SQL Server Management Studio 用の Active Directory ユニバーサル認証](authentication-mfa-ssms-overview.md)接続があります。
 
 > [!IMPORTANT]
-> Azure 内でのデータベースとサーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 この記事の詳細については、「[Azure Portal でのロール ベースのアクセス制御](../../role-based-access-control/overview.md)」を参照してください。 ファイアウォール規則でのアクセスの制御は、 **SQL Managed Instance** には適用され " *ません* "。 必要なネットワーク構成の詳細については、[マネージド インスタンスへの接続](../managed-instance/connect-application-instance.md)に関する次の記事をご覧ください。
+> Azure 内でのデータベースとサーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 この記事の詳細については、[Azure portal での Azure ロールベースのアクセス制御](../../role-based-access-control/overview.md)に関する記事を参照してください。 ファイアウォール規則でのアクセスの制御は、**SQL Managed Instance** には適用され "*ません*"。 必要なネットワーク構成の詳細については、[マネージド インスタンスへの接続](../managed-instance/connect-application-instance.md)に関する次の記事をご覧ください。
 
 ## <a name="authorization"></a>承認
 
@@ -103,7 +103,7 @@ SQL Database、SQL Managed Instance、Azure Synapse Analytics では、すべて
 
 ベスト プラクティスとして、アプリケーションで使用される接続文字列に、暗号化接続を指定し、サーバー証明書を信頼 _**しない**_ ことをお勧めします。 これにより、アプリケーションはサーバー証明書を強制的に検証するため、アプリケーションの man in the middle 攻撃に対する脆弱性を防ぎます。
 
-たとえば、ADO.NET ドライバーを使用している場合、これは、 **Encrypt=True** と **TrustServerCertificate=False** によって達成されます。 Azure portal から接続文字列を取得する場合は、正しい設定になっています。
+たとえば、ADO.NET ドライバーを使用している場合、これは、**Encrypt=True** と **TrustServerCertificate=False** によって達成されます。 Azure portal から接続文字列を取得する場合は、正しい設定になっています。
 
 > [!IMPORTANT]
 > Microsoft 以外のドライバーは、機能するために、既定で TLS を使用しないか、または TLS の以前のバージョン (1.2 未満) に依存している場合があります。 この場合も、サーバーは引き続きデータベースへの接続を許可します。 ただし、特に機密データを格納する場合には、そのようなドライバーとアプリケーションによる SQL Database への接続許可について、セキュリティ上のリスクを評価することをお勧めします。
@@ -124,7 +124,7 @@ Azure では、新しく作成されたすべてのデータベースが既定�
 
 ![Always Encrypted 機能の基本を示す図。 ロックを使用する SQL データベースへは、キーが含まれるアプリからのみアクセスできます。](./media/security-overview/azure-database-ae.png)
 
-[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) は、特定のデータベース列に格納された機微なデータ (クレジット カード番号、国民識別番号、 _知る必要性_ に基づくデータなど) がアクセスされないようにすることを目的とした機能です。 これには、データベース管理者や、管理タスクを実行するためにデータベースへのアクセスを許可されているものの、暗号化された列の特定のデータには業務上、アクセスする必要がない他の特権ユーザーが含まれます。 データは常に暗号化されます。つまり、暗号化されたデータは、暗号化キーにアクセスできるクライアント アプリケーションによって処理される場合にのみ、暗号化解除されます。 暗号化キーは SQL Database または SQL Managed Instance に公開されることはなく、[Windows 証明書ストア](always-encrypted-certificate-store-configure.md)または [Azure Key Vault](always-encrypted-azure-key-vault-configure.md) に格納できます。
+[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) は、特定のデータベース列に格納された機微なデータ (クレジット カード番号、国民識別番号、_知る必要性_ に基づくデータなど) がアクセスされないようにすることを目的とした機能です。 これには、データベース管理者や、管理タスクを実行するためにデータベースへのアクセスを許可されているものの、暗号化された列の特定のデータには業務上、アクセスする必要がない他の特権ユーザーが含まれます。 データは常に暗号化されます。つまり、暗号化されたデータは、暗号化キーにアクセスできるクライアント アプリケーションによって処理される場合にのみ、暗号化解除されます。 暗号化キーは SQL Database または SQL Managed Instance に公開されることはなく、[Windows 証明書ストア](always-encrypted-certificate-store-configure.md)または [Azure Key Vault](always-encrypted-azure-key-vault-configure.md) に格納できます。
 
 ### <a name="dynamic-data-masking"></a>動的データ マスク
 

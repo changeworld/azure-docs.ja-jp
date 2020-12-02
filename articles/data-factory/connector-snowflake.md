@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/28/2020
-ms.openlocfilehash: 5bb5599c6ab6e630e0f26c6d4a13e9c9af8a15a7
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.date: 11/24/2020
+ms.openlocfilehash: c0d0e3154360d787bfc2072c5ae1fe878fa1d138
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405175"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96003661"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Azure Data Factory を使用して Snowflake のデータをコピーして変換する
 
@@ -37,8 +37,6 @@ ms.locfileid: "91405175"
 - Snowflake からのデータのコピー。Snowflake の [COPY into [location]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html) コマンドを利用して、最適なパフォーマンスを実現します。
 - Snowflake へのデータのコピー。Snowflake の [COPY into [table]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html) コマンドを利用して、最適なパフォーマンスを実現します。 Azure 上の Snowflake がサポートされています。 
 
-Azure Synapse Analytics ワークスペースを使用する場合、シンクとしての Snowflake はサポートされません。
-
 ## <a name="get-started"></a>はじめに
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -52,7 +50,7 @@ Snowflake のリンクされたサービスでは、次のプロパティがサ�
 | プロパティ         | 説明                                                  | 必須 |
 | :--------------- | :----------------------------------------------------------- | :------- |
 | type             | type プロパティは **Snowflake** に設定する必要があります。              | はい      |
-| connectionString | Snowflake インスタンスに接続するために必要な情報を指定します。 Azure Key Vault には、パスワードまたは接続文字列全体を格納できます。 詳しくは、表の下の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事をご覧ください。<br><br>いくつかの一般的な設定:<br>- **アカウント名:** Snowflake アカウントの[完全なアカウント名](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (リージョンとクラウド プラットフォームを識別する追加のセグメントを含む)。xy12345.east-us-2.azure など。<br/>- **ユーザー名:** 接続に対するユーザーのログイン名。<br>- **パスワード:** ユーザーのパスワードです。<br>- **データベース:** 接続後に使用する既定のデータベース。 指定したロールが特権を持っている既存のデータベースである必要があります。<br>- **ウェアハウス:** 接続後に使用する仮想ウェアハウス。 指定したロールが特権を持っている既存のウェアハウスである必要があります。<br>- **ロール:** Snowflake セッションで使用する既定のアクセス制御ロール。 指定するロールは、指定したユーザーに既に割り当てられている既存のロールである必要があります。 既定のロールは PUBLIC です。 | はい      |
+| connectionString | Snowflake インスタンスに接続するために必要な情報を指定します。 Azure Key Vault には、パスワードまたは接続文字列全体を格納できます。 詳しくは、表の下の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事をご覧ください。<br><br>いくつかの一般的な設定:<br>- **アカウント名:** Snowflake アカウントの [完全なアカウント名](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (リージョンとクラウド プラットフォームを識別する追加のセグメントを含む)。xy12345.east-us-2.azure など。<br/>- **ユーザー名:** 接続に対するユーザーのログイン名。<br>- **パスワード:** ユーザーのパスワードです。<br>- **データベース:** 接続後に使用する既定のデータベース。 指定したロールが特権を持っている既存のデータベースである必要があります。<br>- **ウェアハウス:** 接続後に使用する仮想ウェアハウス。 指定したロールが特権を持っている既存のウェアハウスである必要があります。<br>- **ロール:** Snowflake セッションで使用する既定のアクセス制御ロール。 指定するロールは、指定したユーザーに既に割り当てられている既存のロールである必要があります。 既定のロールは PUBLIC です。 | はい      |
 | connectVia       | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたはセルフホステッド統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ       |
 
 **例:**
@@ -152,7 +150,7 @@ Snowflake からデータをコピーするために、コピー アクティビ
 | type                         | コピー アクティビティのソースの type プロパティは **SnowflakeSource** に設定する必要があります。 | はい      |
 | query          | Snowflake からデータを読み取る SQL クエリを指定します。 スキーマ、テーブル、および列の名前に小文字が含まれている場合は、クエリでオブジェクト識別子を引用符で囲みます (例: `select * from "schema"."myTable"`)。<br>ストアド プロシージャの実行はサポートされていません。 | いいえ       |
 | exportSettings | Snowflake からデータを取得するために使用される詳細設定。 COPY into コマンドでサポートされるものを構成できます。これは、ステートメントを呼び出すときに Data Factory によって渡されます。 | いいえ       |
-| ***`exportSettings` の下:*** |  |  |
+| * **`exportSettings` の下:** _ |  |  |
 | type | エクスポート コマンドの type を **SnowflakeExportCopyCommand** に設定します。 | はい |
 | additionalCopyOptions | 追加のコピー オプション。キーと値のペアのディクショナリとして指定されます。 例 :MAX_FILE_SIZE、OVERWRITE。 詳細については、「[Snowflake コピー オプション](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions)」を参照してください。 | いいえ |
 | additionalFormatOptions | キーと値のペアのディクショナリとして COPY コマンドに指定される、追加のファイル形式オプション。 例 :DATE_FORMAT、TIME_FORMAT、TIMESTAMP_FORMAT。 詳細については、「[Snowflake 形式の種類のオプション](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions)」を参照してください。 | いいえ |
@@ -161,12 +159,12 @@ Snowflake からデータをコピーするために、コピー アクティビ
 
 シンクのデータ ストアと形式がこのセクションで説明する基準を満たす場合は、コピー アクティビティを使用して、Snowflake からシンクに直接コピーできます。 Data Factory によって設定が確認され、次の条件が満たされない場合は、コピー アクティビティの実行が失敗します。
 
-- **シンクのリンクされたサービス**が、**Shared Access Signature** 認証を使用する [**Azure Blob Storage**](connector-azure-blob-storage.md) です。
+- **シンクのリンクされたサービス** が、**Shared Access Signature** 認証を使用する [**Azure Blob Storage**](connector-azure-blob-storage.md) です。
 
-- **シンク データ形式**が、次のように構成された **Parquet**、**区切りテキスト**、または **JSON** です。
+- **シンク データ形式** が、次のように構成された **Parquet**、**区切りテキスト**、または **JSON** です。
 
     - **Parquet** 形式の場合は、圧縮コーデックが **None**、**Snappy**、または **Lzo** です。
-    - **区切りテキスト**形式の場合:
+    - **区切りテキスト** 形式の場合:
         - `rowDelimiter` が **\r\n** または任意の 1 文字です。
         - `compression` が、**no compression**、**gzip**、**bzip2**、または **deflate** です。
         - `encodingName` が既定値のままか、**utf-8** に設定されている。
@@ -283,7 +281,7 @@ Snowflake にデータをコピーするために、コピー アクティビテ
 | type              | コピー アクティビティの sink の type プロパティは、**SnowflakeSink** に設定します。 | はい                                           |
 | preCopyScript     | コピー アクティビティの毎回の実行で、データを Snowflake に書き込む前に実行する SQL クエリを指定します。 前に読み込まれたデータをクリーンアップするには、このプロパティを使います。 | いいえ                                            |
 | importSettings | Snowflake にデータを書き込むために使用される詳細設定。 COPY into コマンドでサポートされるものを構成できます。これは、ステートメントを呼び出すときに Data Factory によって渡されます。 | いいえ |
-| ***`importSettings` の下:*** |                                                              |  |
+| **_`importSettings` の下:_* _ |                                                              |  |
 | type | インポート コマンドの type を **SnowflakeImportCopyCommand** に設定します。 | はい |
 | additionalCopyOptions | 追加のコピー オプション。キーと値のペアのディクショナリとして指定されます。 例 :ON_ERROR、FORCE、LOAD_UNCERTAIN_FILES。 詳細については、「[Snowflake コピー オプション](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions)」を参照してください。 | いいえ |
 | additionalFormatOptions | キーと値のペアのディクショナリとして COPY コマンドに指定される、追加のファイル形式オプション。 例 :DATE_FORMAT、TIME_FORMAT、TIMESTAMP_FORMAT。 詳細については、「[Snowflake 形式の種類のオプション](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions)」を参照してください。 | いいえ |
@@ -292,13 +290,13 @@ Snowflake にデータをコピーするために、コピー アクティビテ
 
 ソースのデータ ストアと形式がこのセクションで説明する基準を満たす場合は、コピー アクティビティを使用して、ソースから Snowflake に直接コピーできます。 Azure Data Factory によって設定が確認され、次の条件が満たされない場合は、コピー アクティビティの実行が失敗します。
 
-- **ソースのリンクされたサービス**が、**Shared Access Signature** 認証を使用する [**Azure Blob Storage**](connector-azure-blob-storage.md) です。
+- **ソースのリンクされたサービス** が、**Shared Access Signature** 認証を使用する [**Azure Blob Storage**](connector-azure-blob-storage.md) です。
 
-- **ソース データ形式**が、次のように構成された **Parquet**、**区切りテキスト**、または **JSON** です。
+- **ソース データ形式** が、次のように構成された **Parquet**、**区切りテキスト**、または **JSON** です。
 
-    - **Parquet** 形式の場合は、圧縮コーデックが **None** または**Snappy**です。
+    - **Parquet** 形式の場合は、圧縮コーデックが **None** または **Snappy** です。
 
-    - **区切りテキスト**形式の場合:
+    - **区切りテキスト** 形式の場合:
         - `rowDelimiter` が **\r\n** または任意の 1 文字です。 行区切りが "\r\n" でない場合、`firstRowAsHeader` を **false** に指定する必要があります。`skipLineCount` は指定されません。
         - `compression` が、**no compression**、**gzip**、**bzip2**、または **deflate** です。
         - `encodingName` が既定値のままになっているか、"UTF-8"、"UTF-16"、"UTF-16BE"、"UTF-32"、"UTF-32BE"、"BIG5"、"EUC-JP"、"EUC-KR"、"GB18030"、"ISO-2022-JP"、"ISO-2022-KR"、"ISO-8859-1"、"ISO-8859-2"、"ISO-8859-5"、"ISO-8859-6"、"ISO-8859-7"、"ISO-8859-8"、"ISO-8859-9"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255" に設定されています。

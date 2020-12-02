@@ -2,19 +2,19 @@
 title: Azure Migrate に移行ツールを追加する
 description: Azure Migrate に移行ツールを追加する方法を説明します。
 ms.topic: article
-ms.date: 04/26/2020
-ms.openlocfilehash: b6ac8ed64d3f12783cc16f0428874a19d027adf9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/23/2020
+ms.openlocfilehash: 5ff5fb54e077896fb6169ad53ce29483cd2c2f89
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86109809"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545336"
 ---
 # <a name="add-migration-tools"></a>移行ツールの追加
 
 この記事では、[Azure Migrate](./migrate-services-overview.md) 内で移行ツールを追加する方法について説明します。
 
-- 移行ツールの追加を希望し、まだ Azure Migrate プロジェクトを設定していない場合は、この[記事](how-to-add-tool-first-time.md)に従ってください。
+- 移行ツールの追加を希望し、まだ Azure Migrate プロジェクトを設定していない場合は、この[記事](create-manage-projects.md)に従ってください。
 - 移行に ISV ツールを追加した場合は、[手順に従って](prepare-isv-movere.md)、ツールを使用するための準備を行います。
 
 ## <a name="select-a-migration-scenario"></a>移行シナリオの選択
@@ -23,46 +23,69 @@ ms.locfileid: "86109809"
 2. 使用する移行シナリオを選択します。
 
     - Azure にマシンやワークロードを移行するには、 **[サーバーの評価と移行]** を選択します。
-    - オンプレミスの SQL Server データベースを移行するには、 **[Assess and migrate databases] (データベースの評価と移行)** を選択します。
-    - オンプレミスの Web アプリを移行するには、 **[Web アプリの評価と移行]** を選択します。
-    - オンプレミスの大量のデータを Azure にオフライン モードで移行するには、 **[Data Box の注文]** を選択します。
+    - オンプレミスのデータベースを移行するには、 **[データベースの評価と移行]** を選択します。
+    - オンプレミスの Web アプリを移行するには、 **[さらに探索]**  >  **[Web Apps]** の順に選択します。
+    - Data Box を使用して Azure にデータを移行するには、 **[さらに探索]**  >  **[Data Box]** の順に選択します。
 
-    ![評価シナリオ](./media/how-to-migrate/assess-scenario.png)
+    ![移行シナリオを選択するためのオプション](./media/how-to-migrate/migrate-scenario.png)
+
 
 ## <a name="select-a-server-migration-tool"></a>サーバー移行ツールの選択
 
-1. **[サーバーの評価と移行]** をクリックします。
-2. **[Azure Migrate - Servers]\(Azure Migrate - サーバー\)** で、移行ツールをまだ追加していない場合は、 **[移行ツール]** の下の **[Click here to add a migration tool]\(移行ツールを追加するにはここをクリックしてください\)** を選択します。 移行ツールを既に追加している場合は、 **[移行ツールをさらに追加しますか]** で **[変更]** を選択します。
+1. ツールを追加する:
 
-    > [!NOTE]
-    > 別のプロジェクトに移動する必要がある場合は、 **[Azure Migrate - Servers] (Azure Migrate - サーバー)** で、 **[See details for a different 移行プロジェクト] (別の移行プロジェクトの詳細を確認する)** の横にある **[ここをクリックしてください]** をクリックします。
+    - ポータルの **[サーバーの評価と移行]** オプションを使用して Azure Migrate プロジェクトを作成してある場合は、Azure Migrate Server Migration ツールがプロジェクトに自動的に追加されます。 移行ツールをさらに追加するには、 **[サーバー]** 内の **[移行ツール]** の横にある **[ツールをさらに追加する]** を選択します。
+    
+         ![さらに移行ツールを追加するためのボタン](./media/how-to-migrate/add-migration-tools.png)
 
-3. **[Azure Migrate]** で、使用する移行ツールを選択します。
-    - Azure Migrate Server Migration を使用する場合は、Azure Migrate プロジェクト内で直接、移行を設定して実行できます。
-    - サードパーティ評価ツールを使用する場合は、ISV 用に用意されているリンクに移動し、提供されている指示に従って移行を実行します。
+    - 別のオプションを使用してプロジェクトを作成していて、移行ツールをまだ用意していない場合は、 **[サーバー]**  >  **[移行ツール]** で、 **[ここをクリックしてください]** を選択します。
+
+    ![最初の移行ツールを追加するためのボタン](./media/how-to-migrate/no-migration-tool.png)
+
+2. **[Azure Migrate]**  >  **[ツールの追加]** で、追加するツールを選択します。 次に、 **[ツールの追加]** を選択します。
+
+    ![一覧から評価ツールを選択する](./media/how-to-migrate/select-migration-tool.png)
+
 
 ## <a name="select-a-database-migration-tool"></a>データベース移行ツールの選択
 
-1. **[データベースの評価と移行]** をクリックします
-2. **[データベース]** で、 **[ツールの追加]** をクリックします。
-3. [ツールの追加] > **[移行ツールの選択]** で、データベースの移行に使用するツールを選択します。
+ポータルの **[データベースの評価と移行]** オプションを使用して Azure Migrate プロジェクトを作成してある場合は、Database Migration ツールがプロジェクトに自動的に追加されます。 
+
+1. Database Migration ツールがプロジェクトに含まれていない場合は、 **[データベース]**  >  **[評価ツール]** で、 **[ここをクリックしてください]** を選択します。
+    
+    ![データベース移行ツールを追加する](./media/how-to-migrate/no-database-migration-tool.png)
+
+
+2. **[Azure Migrate]**  >  **[ツールの追加]** で、Database Migration ツールを選択します。 次に、 **[ツールの追加]** を選択します。
+
+    ![一覧から Database Migration ツールを選択する](./media/how-to-migrate/select-database-migration-tool.png)
+
+    
 
 ## <a name="select-a-web-app-migration-tool"></a>Web アプリ移行ツールの選択
 
-1. **[Assess and migrate web apps] (Web アプリの評価と移行)** をクリックします。
-2. Azure App Service の Migration ツールへのリンクに従います。 この移行ツールを使用して、次のことを行います。
+ポータルの **[さらに探索]**  >  **[Web Apps]** オプションを使用して Azure Migrate プロジェクトを作成してある場合は、Web アプリ移行ツールがプロジェクトに自動的に追加されます。 
 
-    - **オンラインでアプリを評価する**: Azure App Service Migration Assistant を使用して、オンラインでパブリック URL を使用してアプリを評価し、移行することができます。
-    - **.NET/PHP**: 内部の .NET および PHP アプリの場合は、Migration Assistant をダウンロードして実行できます。
+1. Web アプリ移行ツールがプロジェクトに含まれていない場合は、 **[Web Apps]**  >  **[評価ツール]** で、 **[ここをクリックしてください]** を選択します。
+
+    ![Web アプリ移行ツールを追加する](./media/how-to-migrate/no-web-app-migration-tool.png)
+ 
+
+2. **[Azure Migrate]**  >  **[ツールの追加]** で、Web アプリ移行ツールを選択します。 次に、 **[ツールの追加]** を選択します。
+
+    ![一覧から webapp 評価ツールを選択する](./media/how-to-migrate/select-web-app-migration-tool.png)
+
 
 ## <a name="order-an-azure-data-box"></a>Azure Data Box の注文
 
-大量のデータを Azure に移行するには、オフライン データ転送用に Azure DAta Box を注文できます。
+大量のデータを Azure に移行するには、オフライン データ転送用の Azure Data Box を注文できます。
 
-1. **[Data Box の注文]** をクリックします。
-2. **[Azure Data Box の選択]** で、ご自身のサブスクリプションを指定します。 
-3. 転送は、Azure へのインポートになります。 データ ソースと、データの Azure リージョンの宛先を指定します。
+1. **[概要]** で、 **[さらに探索]** を選択します。
+2. **[さらに探索]** で、 **[Data Box]** を選択します。
+3. **[Data Box の使用を開始する]** で、Data Box を注文するときに使用するサブスクリプションとリソース グループを選択します。
+4. **[転送の種類]** は、Azure へのインポートになります。 データが存在する国と、データの転送先とする Azure リージョンを指定します。 
+5. **[適用]** をクリックして、設定を保存します。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Migrate Server Migration を使用して、[Hyper-V](tutorial-migrate-hyper-v.md) または [VMware](tutorial-migrate-vmware.md) VM の移行を試します。
+Azure Migrate Server Migration ツールを使用して、[Hyper-V](tutorial-migrate-hyper-v.md) または [VMware](tutorial-migrate-vmware.md) VM の移行を試します。

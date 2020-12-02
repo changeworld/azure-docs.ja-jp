@@ -5,20 +5,19 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 11/15/2020
+ms.date: 11/17/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cac88e57ce0135295ac4b7078111102fa69e6838
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e51dc4ff61069bffadc4f95caee9e0f3c76d88ec
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646595"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95488472"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Azure Active Directory でゲストのアクセス許可を制限する (プレビュー)
 
@@ -155,7 +154,8 @@ PS C:\WINDOWS\system32> Set-AzureADMSAuthorizationPolicy -GuestUserRoleId '2af84
 Question | Answer
 -------- | ------
 これらのアクセス許可はどこに適用されますか。 | これらのディレクトリ レベルのアクセス許可は、Microsoft Graph、PowerShell v2、Azure portal、マイ アプリ ポータルなどの Azure AD サービスとポータルに適用されます。 コラボレーション シナリオに Microsoft 365 グループを利用する Microsoft 365 サービスも、特に Outlook、Microsoft Teams、および SharePoint が影響を受けます。
-この機能によって影響を受けるのは、マイ アプリ ポータルのどの部分ですか。 | マイ アプリ ポータルのグループ機能では、これらの新しいアクセス許可が優先されます。 これには、マイ アプリのグループ一覧とグループ メンバーシップを表示するためのすべてのパスが含まれます。 グループ タイルの可用性に変更は加えられていません。 グループ タイルの可用性は、Azure 管理ポータルの既存のグループ設定によって引き続き制御されます。
+制限付きアクセス許可は、ゲストが表示できるグループにどのように影響しますか。 | 既定または制限付きのゲスト アクセス許可に関係なく、ゲストはグループまたはユーザーの一覧を列挙できません。 ゲストは、アクセス許可に応じて、Azure portal とマイ アプリ ポータルの両方で自身がメンバーであるグループを表示できます。<li>**既定のアクセス許可**:ゲストが Azure portal でメンバーであるグループを見つけるには、 **[すべてのユーザー]** 一覧でオブジェクト ID を検索し、 **[グループ]** を選択する必要があります。 ここでは、名前やメール アドレスなど、グループのすべての詳細を含め、メンバーであるグループの一覧を確認できます。 マイ アプリ ポータルでは、所有しているグループとメンバーであるグループの一覧を確認できます。</li><li>**制限付きのゲスト アクセス許可**:Azure portal では、[すべてのユーザー] 一覧でオブジェクト ID を検索し、[グループ] を選択することで、メンバーであるグループの一覧を確認できます。 グループについて確認できるのは、ごく限られた詳細 (特にオブジェクト ID) のみです。 仕様として、[名前] と [メール] の列は空白であり、[グループの種類] は "認識不可" です。 マイ アプリ ポータルでは、所有しているグループまたはメンバーであるグループの一覧にアクセスできません。</li><br>Graph API から取得するディレクトリ アクセス許可の詳細な比較については、[既定のユーザー アクセス許可](../fundamentals/users-default-permissions.md#member-and-guest-users)に関するページを参照してください。
+この機能によって影響を受けるのは、マイ アプリ ポータルのどの部分ですか。 | マイ アプリ ポータルのグループ機能では、これらの新しいアクセス許可が優先されます。 これには、マイ アプリのグループ一覧とグループ メンバーシップを表示するためのすべてのパスが含まれます。 グループ タイルの可用性に変更は加えられていません。 グループ タイルの可用性は、Azure portal の既存のグループ設定によって引き続き制御されます。
 これらのアクセス許可は、SharePoint または Microsoft Teams のゲスト設定をオーバーライドしますか。 | いいえ。 これらの既存の設定は、引き続きこれらのアプリケーションのエクスペリエンスとアクセスを制御します。 たとえば、SharePoint で問題が発生した場合は、外部共有の設定を再確認してください。
 Planner と Yammer には、互換性に関する既知の問題がありますか。 | <li>アクセス許可が "制限" に設定されている場合、Planner アプリにログインしたゲスト、または Microsoft Teams の Planner にアクセスしているゲストは、プランやタスクにアクセスすることはできません。<li>アクセス許可が "制限" に設定されている場合、Yammer にログインしたゲストはグループから脱退できません。
 テナントの既存のゲスト アクセス許可は変更されますか。 | 現在の設定に変更は加えられていません。 既存の設定との下位互換性が維持されています。 変更を行うタイミングを決定してください。

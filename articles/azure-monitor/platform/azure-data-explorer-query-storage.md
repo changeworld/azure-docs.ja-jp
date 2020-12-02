@@ -7,12 +7,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: b3ab711f6d324c6d49eda0dccd88a3f2ac939eb5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8710e0cdd6c930338009fb2b7f3bd98fafcfad3e
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461585"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95411565"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>Azure Data Explorer を使用して Azure Monitor からエクスポートされたデータのクエリを実行する (プレビュー)
 Azure Monitor から Azure ストレージ アカウントにデータをエクスポートすると、低コストのリテンション期間が有効になり、ログを別のリージョンに再割り当てすることができます。 Azure Data Explorer を使用して、Log Analytics ワークスペースからエクスポートされたデータのクエリを実行します。 構成されると、ワークスペースから Azure ストレージ アカウントに送信されるサポートされているテーブルが、Azure Data Explorer のデータ ソースとして使用できるようになります。
@@ -43,7 +43,7 @@ Azure Monitor ログは、次のいずれかのオプションを使用して Az
 
 参照を作成するには、エクスポートされたテーブルのスキーマが必要です。 Log Analytics から [getschema](/azure/data-explorer/kusto/query/getschemaoperator) 演算子を使用して、テーブルの列とそのデータ型を含むこの情報を取得します。
 
-:::image type="content" source="media\azure-data-explorer-query-storage\exported-data-map-schema.jpg" alt-text="Azure Data Explorer のエクスポートされたデータのクエリ フロー。":::
+:::image type="content" source="media\azure-data-explorer-query-storage\exported-data-map-schema.jpg" alt-text="Log Analytics テーブル スキーマ。":::
 
 これで、出力を使用して、外部テーブルを構築するための Kusto クエリを作成できました。
 「[Azure Storage または Azure Data Lake の外部テーブルを作成および変更する](/azure/data-explorer/kusto/management/external-tables-azurestorage-azuredatalake)」のガイダンスに従って、JSON 形式で外部テーブルを作成してから、Azure Data Explorer データベースからクエリを実行します。
@@ -56,12 +56,12 @@ Azure Monitor ログは、次のいずれかのオプションを使用して Az
 ```powershell
 PARAM(
     $resourcegroupname, #The name of the Azure resource group
-    $TableName, # The log lanlyics table you wish to convert to external table
+    $TableName, # The Log Analytics table you wish to convert to external table
     $MapName, # The name of the map
     $subscriptionId, #The ID of the subscription
-    $WorkspaceId, # The log lanlyics WorkspaceId
-    $WorkspaceName, # The log lanlyics workspace name
-    $BlobURL, # The Blob URL where to save
+    $WorkspaceId, # The Log Analytics WorkspaceId
+    $WorkspaceName, # The Log Analytics workspace name
+    $BlobURL, # The Blob URL where the data is saved
     $ContainerAccessKey, # The blob container Access Key (Option to add a SAS url)
     $ExternalTableName = $null # The External Table name, null to use the same name
 )
@@ -116,12 +116,13 @@ Write-Host -ForegroundColor Green $createMapping
 
 次の図に、出力の例を示します。
 
-:::image type="content" source="media/azure-data-explorer-query-storage/external-table-create-command-output.png" alt-text="Azure Data Explorer のエクスポートされたデータのクエリ フロー。":::
+:::image type="content" source="media/azure-data-explorer-query-storage/external-table-create-command-output.png" alt-text="ExternalTable create コマンドの出力。":::
 
 [![出力例](media/azure-data-explorer-query-storage/external-table-create-command-output.png)](media/azure-data-explorer-query-storage/external-table-create-command-output.png#lightbox)
 
 >[!TIP]
->Azure Data Explorer クライアント ツールにスクリプトの出力をコピーして貼り付けてから、実行して、テーブルとマッピングを作成します。
+>* Azure Data Explorer クライアント ツールにスクリプトの出力をコピーして貼り付けてから、実行して、テーブルとマッピングを作成します。
+>* コンテナー内のすべてのデータを使用する場合は、スクリプトを変更し、URL を 'https://your.blob.core.windows.net/containername;SecKey' に変更することができます
 
 ## <a name="query-the-exported-data-from-azure-data-explorer"></a>Azure Data Explorer からエクスポートされたデータのクエリを実行する 
 

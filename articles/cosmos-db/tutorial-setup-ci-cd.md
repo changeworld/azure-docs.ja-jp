@@ -8,17 +8,17 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2b74198f83ef972540038269d83048bfd1adda62
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a5b8842718aa2d9f90ac06283abc5fe2fdd925cb
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073895"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95997003"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps で Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB エミュレーターでは、Azure Cosmos DB サービスを開発目的でエミュレートするローカル環境を利用できます。 エミュレーターを使用すれば、Azure サブスクリプションを作成したりコストをかけたりせずに、アプリケーションをローカルで開発してテストできます。 
+Azure Cosmos DB Emulator では、Azure Cosmos DB サービスを開発目的でエミュレートするローカル環境を利用できます。 エミュレーターを使用すれば、Azure サブスクリプションを作成したりコストをかけたりせずに、アプリケーションをローカルで開発してテストできます。 
 
 Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクでは、CI 環境で同じことができます。 ビルド タスクを使用すると、ビルドとリリースのワークフローの一環として、エミュレーターに対してテストを実行できます。 タスクによって、既に実行中のエミュレーターが含まれた Docker コンテナーが起動され、ビルド定義の残りの部分で使用されるエンドポイントが提供されます。 エミュレーターのインスタンスは必要な数だけ作成して開始できます。これらのインスタンスはそれぞれ、別のコンテナーで実行されます。 
 
@@ -45,16 +45,16 @@ Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクで
 
    :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="新しいビルド パイプラインを作成する":::
 
-2. 目的の **ソース** 、 **チーム プロジェクト** 、 **リポジトリ** 、および **手動のビルドとスケジュールされたビルドの既定のブランチ** を選択します。 必要なオプションを選択した後、 **[続行]** を選択します
+2. 目的の **ソース**、**チーム プロジェクト**、**リポジトリ**、および **手動のビルドとスケジュールされたビルドの既定のブランチ** を選択します。 必要なオプションを選択した後、 **[続行]** を選択します
 
    :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="ビルド パイプラインのチーム プロジェクト、リポジトリ、およびブランチを選択する":::
 
-3. 最後に、ビルド パイプラインに使用したいテンプレートを選択します。 このチュートリアルでは、 **ASP.NET** テンプレートを選択します。 これで、Azure Cosmos DB エミュレーター ビルド タスクを使用するために設定できるビルド パイプラインが作成されました。 
+3. 最後に、ビルド パイプラインに使用したいテンプレートを選択します。 このチュートリアルでは、**ASP.NET** テンプレートを選択します。 これで、Azure Cosmos DB エミュレーター ビルド タスクを使用するために設定できるビルド パイプラインが作成されました。 
 
 > [!NOTE]
 > CI の一環として前のタスクで手動でインストールしていない場合、この CI 用に選択するエージェント プールには Docker for Windows をインストールしておく必要があります。 エージェント プールの選択については、[Microsoft によってホストされているエージェント](/azure/devops/pipelines/agents/hosted?preserve-view=true&tabs=yaml&view=azure-devops)に関する記事を参照してください。`Hosted VS2017` から始めることをお勧めします。
 
-Azure Cosmos DB エミュレーターは現在、ホステッド VS2019 エージェント プールをサポートしません。 ただし、エミュレーターにはあらかじめ VS2019 がインストールされており、次の PowerShell コマンドレットでエミュレーターを起動することによって使用できます。 VS2019 の使用中に問題が発生した場合は、[Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) チームにお問い合わせください。
+Azure Cosmos DB エミュレーターは現在、ホステッド VS2019 エージェント プールをサポートしていません。 ただし、エミュレーターにはあらかじめ VS2019 がインストールされており、次の PowerShell コマンドレットでエミュレーターを起動することによって使用できます。 VS2019 の使用中に問題が発生した場合は、[Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) チームにお問い合わせください。
 
 ```powershell
 Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
@@ -65,7 +65,7 @@ Start-CosmosDbEmulator
 
 1. ビルド パイプラインにタスクを追加する前に、エージェント ジョブを追加する必要があります。 ビルド パイプラインに移動します。 **[...]** を選択し、 **[エージェント ジョブを追加する]** を選択します。
 
-1. 次に、エミュレーター ビルド タスクを追加するために、エージェント ジョブの横にある **[+]** 記号を選択します。 検索ボックスで **cosmos** を検索し、 **Azure Cosmos DB Emulator** を選択してエージェント ジョブに追加します。 このビルド タスクは、Cosmos DB エミュレーターのインスタンスが既に実行されている状態でコンテナーを起動します。 Azure Cosmos DB Emulator タスクは、エミュレーターが実行状態であることを想定している他のタスクの前に配置する必要があります。
+1. 次に、エミュレーター ビルド タスクを追加するために、エージェント ジョブの横にある **[+]** 記号を選択します。 検索ボックスで **cosmos** を検索し、**Azure Cosmos DB Emulator** を選択してエージェント ジョブに追加します。 このビルド タスクは、Cosmos DB エミュレーターのインスタンスが既に実行されている状態でコンテナーを起動します。 Azure Cosmos DB Emulator タスクは、エミュレーターが実行状態であることを想定している他のタスクの前に配置する必要があります。
 
    :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="エミュレーター ビルド タスクをビルド定義に追加する":::
 
@@ -93,7 +93,7 @@ Start-CosmosDbEmulator
 
 次に、エミュレーターを使用するテストを構成します。 エミュレーター ビルド タスクによって、"CosmosDbEmulator.Endpoint" という環境変数がエクスポートされます。ビルド パイプライン内の後続のタスクは、このエンドポイントに対して要求を発行できます。 
 
-このチュートリアルでは、 [Visual Studio Test タスク](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md)を使用して、 **.runsettings** ファイルを通じて構成された単体テストを実行します。 単体テストの設定の詳細については、[ドキュメント](/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?preserve-view=true&view=vs-2017)を参照してください。 このドキュメントで使用する Todo アプリケーションの完全なコード サンプルは [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-todo-app) から入手できます
+このチュートリアルでは、[Visual Studio Test タスク](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md)を使用して、 **.runsettings** ファイルを通じて構成された単体テストを実行します。 単体テストの設定の詳細については、[ドキュメント](/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?preserve-view=true&view=vs-2017)を参照してください。 このドキュメントで使用する Todo アプリケーションの完全なコード サンプルは [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-todo-app) から入手できます
 
 以下は、アプリケーションの単体テストに渡されるパラメーターを定義する **.runsettings** ファイルの例です。 使用されている `authKey` 変数が、エミュレーターの[既知のキー](./local-emulator.md#authenticate-requests)であることに注意してください。 この `authKey` はエミュレーター ビルド タスクで必要なキーであり、 **.runsettings** ファイルで定義する必要があります。
 

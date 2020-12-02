@@ -3,14 +3,14 @@ title: Runbook から Azure Automation の Update Management を有効にする
 description: この記事では、Runbook から Update Management を有効にする方法について説明します。
 services: automation
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 11/24/2020
 ms.custom: mvc
-ms.openlocfilehash: ec102015355e3312f5dc15fa526fa543da75e0de
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 5a9f12a823a22bfb48ccb4482d3402464aa77fea
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221719"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908364"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Runbook から Update Management を有効にする
 
@@ -34,7 +34,7 @@ ms.locfileid: "92221719"
     * *LASolutionSubscriptionId*:Log Analytics ワークスペースが配置されているサブスクリプション ID。
     * *LASolutionWorkspaceId*:Automation アカウントにリンクされている Log Analytics ワークスペースのワークスペース ID。
 
-    これらの変数は、オンボード VM のワークスペースを構成するために使用されます。 これらが指定されていない場合、最初にサブスクリプションによって Update Management にオンボードされている VM、次に Automation アカウントが含まれているサブスクリプション、次にユーザー アカウントがアクセスできる他のすべてのサブスクリプションがスクリプトによって検索されます。 適切に構成されていない場合、マシンがランダムな Log Analytics ワークスペースにオンボードされる可能性があります。
+    これらの変数は、オンボード VM のワークスペースを構成するために使用され、手動で作成する必要があります。 これらが指定されていない場合、最初にサブスクリプションによって Update Management にオンボードされている VM、次に Automation アカウントが含まれているサブスクリプション、次にユーザー アカウントがアクセスできる他のすべてのサブスクリプションがスクリプトによって検索されます。 適切に構成されていない場合、マシンがランダムな Log Analytics ワークスペースにオンボードされる可能性があります。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -52,7 +52,7 @@ ms.locfileid: "92221719"
 
 ## <a name="install-and-update-modules"></a>モジュールのインストールと更新
 
-Runbook を使用する VM の Update Management を正常に有効にするには、最新の Azure モジュールに更新し、[Az.OperationalInsights](/powershell/module/az.operationalinsights) モジュールをインポートする必要があります。
+Runbook を使用する VM の Update Management を正常に有効にするには、最新の Azure モジュールに更新し、[AzureRM.OperationalInsights](/powershell/module/azurerm.operationalinsights) モジュールをインポートする必要があります。
 
 1. Automation アカウントで、 **[共有リソース]** の **[モジュール]** を選択します。
 
@@ -66,9 +66,9 @@ Runbook を使用する VM の Update Management を正常に有効にするに�
 
 5. **[ギャラリーの参照]** を選択して、モジュール ギャラリーを開きます。
 
-6. `Az.OperationalInsights` を検索し、このモジュールを Automation アカウントにインポートします。
+6. `AzureRM.OperationalInsights` を検索し、このモジュールを Automation アカウントにインポートします。
 
-    ![OperationalInsights モジュールのインポート](media/enable-from-runbook/import-operational-insights-module.png)
+    ![OperationalInsights モジュールのインポート](media/enable-from-runbook/import-operational-insights-module-azurerm.png)
 
 ## <a name="select-azure-vm-to-manage"></a>管理する Azure VM の選択
 
@@ -91,7 +91,7 @@ Update Management が有効になると、更新プログラムを受け取る A
 
 2. **[ギャラリーの参照]** を選択します。
 
-3. **更新プログラムと変更履歴**を探します。
+3. **更新プログラムと変更履歴** を探します。
 
 4. Runbook を選択し、 **[ソースの表示]** ページの **[インポート]** をクリックします。
 

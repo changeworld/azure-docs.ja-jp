@@ -2,17 +2,19 @@
 title: テンプレート内の出力
 description: Azure Resource Manager テンプレートで出力値を定義する方法について説明します。
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 203bfc66e9515ef14a5fe1315ef5b9ee07075041
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: 8f782a78e523ebc55faac98344643982172476fa
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79460026"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95911432"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの出力
 
 この記事では、Azure Resource Manager テンプレートで出力値を定義する方法について説明します。 デプロイされたリソースから値を返す必要がある場合に出力を使用します。
+
+各出力値の形式は、いずれかの[データ型](template-syntax.md#data-types)と一致している必要があります。
 
 ## <a name="define-output-values"></a>出力値の定義
 

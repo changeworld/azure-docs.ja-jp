@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor Authentication のアプリ パスワードを構成する - Azure Active Directory
-description: Azure Multi-Factor Authentication でレガシ アプリケーションのアプリ パスワードを構成して使用する方法について説明します
+title: Azure AD Multi-Factor Authentication のアプリ パスワードを構成する - Azure Active Directory
+description: Azure AD Multi-Factor Authentication でレガシ アプリケーションのアプリ パスワードを構成して使用する方法について説明します
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85031896a196dd742868466243dd401345b0bc97
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 282bf6a30d8ff70440999ff3763c0d5544ef428d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964504"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839269"
 ---
-# <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>アプリ パスワードを使用して、レガシ アプリケーションで Azure Multi-Factor Authentication を有効にして使用する
+# <a name="enable-and-use-azure-ad-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>アプリ パスワードを使用して、レガシ アプリケーションで Azure AD Multi-Factor Authentication を有効にして使用する
 
-一部の古い非ブラウザー アプリ (Office 2010 以前や iOS 11 より前の Apple Mail など) では、認証プロセスの一時停止や中断が認識されません。 ユーザーが Azure Multi-Factor Authentication を有効にしていて、このような古い非ブラウザー アプリのいずれかを使用しようとすると、通常は正常に認証できません。 ユーザーアカウントに対して Azure Multi-Factor Authentication を有効にした安全な方法で、これらのアプリケーションを使用するには、アプリ パスワードを使用できます。 これらのアプリ パスワードは従来のパスワードを置き換えて、アプリが多要素認証をバイパスして正常に動作できるようにします。
+一部の古い非ブラウザー アプリ (Office 2010 以前や iOS 11 より前の Apple Mail など) では、認証プロセスの一時停止や中断が認識されません。 ユーザーが Azure AD Multi-Factor Authentication を有効にしていて、これらの古い非ブラウザー アプリのいずれかを使用しようとする場合、アプリによる認証が正常に行われないことがあります。 ユーザー アカウントに対して有効になっている Azure AD Multi-Factor Authentication を使用した安全な方法でこれらのアプリケーションを使用するには、アプリ パスワードを使用できます。 これらのアプリ パスワードは従来のパスワードを置き換えて、アプリが多要素認証をバイパスして正常に動作できるようにします。
 
 Microsoft Office 2013 クライアント以降向けの最新の認証がサポートされています。 Office 2013 クライアント (Outlook を含む) は、最新の認証プロトコルをサポートしており、2 段階認証で機能するように有効にできます。 クライアントを有効にした場合、そのクライアントではアプリ パスワードは必要ありません。
 
@@ -31,7 +31,7 @@ Microsoft Office 2013 クライアント以降向けの最新の認証がサポ�
 
 ## <a name="overview-and-considerations"></a>概要と考慮事項
 
-Azure Multi-Factor Authentication で、ユーザー アカウントが有効にされると、追加の検証の要求によって、通常のサインイン プロンプトが中断されます。 一部の古いアプリケーションでは、サインイン プロセスのこの中断を認識しないため、認証が失敗します。 ユーザー アカウントのセキュリティを維持し、Azure Multi-Factor Authentication を有効のままにするには、ユーザーの通常のユーザー名とパスワードの代わりにアプリ パスワードを使用できます。 サインイン時にアプリ パスワードを使用すると、追加の検証プロンプトが表示されないため、認証は成功します。
+ユーザー アカウントが Azure AD Multi-Factor Authentication で有効にされると、追加の検証の要求によって、通常のサインイン プロンプトが中断されます。 一部の古いアプリケーションでは、サインイン プロセスのこの中断を認識しないため、認証が失敗します。 ユーザー アカウントのセキュリティを維持し、Azure AD Multi-Factor Authentication を有効のままにするには、ユーザーの通常のユーザー名とパスワードの代わりにアプリ パスワードを使用できます。 サインイン時にアプリ パスワードを使用すると、追加の検証プロンプトが表示されないため、認証は成功します。
 
 アプリ パスワードは自動的に生成され、ユーザーが指定しません。 この自動的に生成されたパスワードの方が攻撃者から推測されづらく、より安全です。 アプリ パスワードはアプリケーションごとに 1 回入力するだけであるため、ユーザーはパスワードを追跡したり、毎回それらを入力したりする必要がありません。
 
@@ -39,7 +39,7 @@ Azure Multi-Factor Authentication で、ユーザー アカウントが有効に
 
 * ユーザー 1 人あたりのアプリ パスワード数の上限は 40 個である。
 * パスワードをキャッシュし、オンプレミス シナリオで使用しているアプリケーションでは、職場または学校アカウント以外で、アプリ パスワードが不明であるため、失敗する可能性があります。 このシナリオの例として、オンプレミスだが、アーカイブ メールはクラウド内にある Exchange メールがあります。 このシナリオでは、同じパスワードは機能しません。
-* ユーザーのアカウントで Azure Multi-Factor Authentication を有効にしたら、Outlook や Microsoft Skype for Business などのほとんどの非ブラウザー クライアントでアプリ パスワードを使用できます。 ただし、Windows PowerShell などの非ブラウザー アプリケーションからアプリ パスワードを使用して、管理操作を実行することはできません。 ユーザーが管理者アカウントを持っている場合でも、操作を実行することはできません。
+* ユーザーのアカウントで Azure AD Multi-Factor Authentication を有効にすると、Outlook や Microsoft Skype for Business などのほとんどの非ブラウザー クライアントでアプリ パスワードを使用できます。 ただし、Windows PowerShell などの非ブラウザー アプリケーションからアプリ パスワードを使用して、管理操作を実行することはできません。 ユーザーが管理者アカウントを持っている場合でも、操作を実行することはできません。
     * PowerShell スクリプトを実行するには、サービス アカウントを強固なパスワードで作成します。そのアカウントで 2 段階認証を有効にしないでください。
 * ユーザー アカウントが侵害された疑いがあり、アカウント パスワードを取り消すか、またはリセットした場合は、アプリ パスワードも更新する必要があります。 ユーザー アカウントのパスワードが取り消されるか、またはリセットされても、アプリ パスワードは自動的には取り消されません。 ユーザーは既存のアプリ パスワードを削除し、新しいアプリ パスワードを作成する必要があります。
    * 詳細については、「[[追加のセキュリティ確認] ページを使用してアプリ パスワードを作成および削除する](../user-help/multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page)」を参照してください。
@@ -55,7 +55,7 @@ Azure Multi-Factor Authentication で、ユーザー アカウントが有効に
 
 ## <a name="federated-or-single-sign-on-app-passwords"></a>フェデレーション (シングル サインオン) アプリ パスワード
 
-Azure AD では、オンプレミスの Active Directory ドメイン サービス (AD DS) とのフェデレーション (シングル サインオン (SSO)) がサポートされています。 組織が Azure AD とフェデレーションされており、Azure Multi-factor Authentication を使用している場合は、次のアプリ パスワードの考慮事項が適用されます。
+Azure AD では、オンプレミスの Active Directory ドメイン サービス (AD DS) とのフェデレーション (シングル サインオン (SSO)) がサポートされています。 組織が Azure AD とフェデレーションされており、Azure AD Multi-factor Authentication を使用している場合は、次のアプリ パスワードの考慮事項が適用されます。
 
 >[!NOTE]
 > 次の点はフェデレーション (SSO) 顧客にのみ適用されます。
@@ -72,7 +72,7 @@ Azure AD では、オンプレミスの Active Directory ドメイン サービ�
 * Active Directory のオンプレミスのインスタンスが Azure AD とフェデレーションしている。
 * Exchange Online を使用している。
 * Skype for Business をオンプレミスで使用している。
-* Azure Multi-Factor Authentication を使用している。
+* Azure AD Multi-Factor Authentication を使用している。
 
 このシナリオでは、次の資格情報を使用します。
 
@@ -99,10 +99,10 @@ Azure AD では、オンプレミスの Active Directory ドメイン サービ�
 
 ## <a name="create-an-app-password"></a>アプリケーション パスワードの作成
 
-ユーザーが Azure Multi-Factor Authentication の初期登録を完了すると、登録プロセスの最後にアプリ パスワードを作成するオプションがあります。
+ユーザーが Azure AD Multi-Factor Authentication の初期登録を完了すると、登録プロセスの最後にアプリ パスワードを作成するオプションがあります。
 
-ユーザーによるアプリ パスワードの作成は、登録後も可能です。 アプリ パスワードの詳細と、ユーザーが実行する手順については、「[Azure Multi-Factor Authentication のアプリ パスワードとは](../user-help/multi-factor-authentication-end-user-app-passwords.md)」を参照してください。
+ユーザーによるアプリ パスワードの作成は、登録後も可能です。 ユーザー向けの情報と詳細な手順については、[Azure AD Multi-Factor Authentication でのアプリ パスワードの概要](../user-help/multi-factor-authentication-end-user-app-passwords.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-ユーザーが Azure Multi-Factor Authentication に迅速に登録できるようにする方法の詳細については、「[統合されたセキュリティ情報の登録の概要](concept-registration-mfa-sspr-combined.md)」を参照してください。
+ユーザーが Azure AD Multi-Factor Authentication に迅速に登録できるようにする方法の詳細については、[統合されたセキュリティ情報の登録の概要](concept-registration-mfa-sspr-combined.md)に関する記事を参照してください。

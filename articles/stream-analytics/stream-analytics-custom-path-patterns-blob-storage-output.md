@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: b6d6838779d4f219a8ce10b2cf3ae6cd620762a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72718285ff83a23acd21a5e29001ea96e1f061c8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317856"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95531357"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割
 
@@ -25,7 +25,7 @@ Azure Stream Analytics は、カスタム フィールドまたは属性およ�
 
 ### <a name="partition-key-options"></a>パーティション キーのオプション
 
-入力データをパーティション分割するために使用されるパーティション キー (または列名) には、ハイフン、アンダースコア、およびスペースを含む英数字を含めることができます。 入れ子になったフィールドは、別名と共に使用されない限り、パーティション キーとして使用できません。 パーティション キーは NVARCHAR(MAX) である必要があります。
+入力データをパーティション分割するために使用されるパーティション キー (または列名) には、ハイフン、アンダースコア、およびスペースを含む英数字を含めることができます。 入れ子になったフィールドは、別名と共に使用されない限り、パーティション キーとして使用できません。 パーティション キーは NVARCHAR(MAX)、BIGINT、FLOAT、または BIT (互換性レベル 1.2 以上) にする必要があります。 詳細については、[Azure Stream Analytics のデータ型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)に関するページをご覧ください。
 
 ### <a name="example"></a>例
 
@@ -62,6 +62,8 @@ REST API を使用すると、その要求に使用される JSON ファイル�
 2. パーティション キーは大文字と小文字が区別されないため、"John" や "john" などのパーティション キーは同等です。 また、式もパーティション キーとして使用できません。 たとえば、 **{columnA + columnB}** は機能しません。  
 
 3. 入力ストリームが 8000 未満のパーティション キーのカーディナリティを含むレコードで構成されている場合、レコードは既存の BLOB に追加され、新しい BLOB は必要な場合にのみ作成されます。 カーディナリティが 8000 を超える場合、既存の BLOB に書き込まれる保証はなく、同じパーティション キーを含む任意数のレコードに対して新しい BLOB は作成されません。
+
+4. BLOB 出力が[不変として構成されている](../storage/blobs/storage-blob-immutable-storage.md)場合、データが送信されるたびに Stream Analytics によって新しい BLOB が作成されます。
 
 ## <a name="custom-datetime-path-patterns"></a>カスタム DateTime パス パターン
 

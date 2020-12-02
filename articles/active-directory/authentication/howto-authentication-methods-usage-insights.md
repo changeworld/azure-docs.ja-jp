@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03989e37ac05228dade2fdcda43856e8a5240865
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: fe8a916f4c3ce8869b6b487e33dcdecc061f8cbf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964912"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839592"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>認証方法の使用状況と分析情報 (プレビュー)
 
-使用状況と分析情報を使うと、Azure Multi-Factor Authentication やセルフサービス パスワード リセット などの機能の認証方法が組織内でどのように機能しているかについて理解を深めることができます。 このレポート機能は、組織が登録中の方法や各方法の使用状況を確認するための手段となるものです。
+使用状況と分析情報を使用すると、Azure AD Multi-Factor Authentication やセルフサービス パスワード リセットなどの機能の認証方法が組織内でどのように機能しているかについて理解することができます。 このレポート機能は、組織が登録中の方法や各方法の使用状況を確認するための手段となるものです。
 
 ## <a name="permissions-and-licenses"></a>アクセス許可とライセンス
 
@@ -31,7 +31,7 @@ ms.locfileid: "91964912"
 - セキュリティ管理者
 - レポート閲覧者
 
-使用状況と分析情報にアクセスするうえで追加のライセンスは必要ありません。 Azure Multi-Factor Authentication とセルフサービス パスワード リセット (SSPR) のライセンス情報は、[Azure Active Directory の価格に関するサイト](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
+使用状況と分析情報にアクセスするうえで追加のライセンスは必要ありません。 Azure AD Multi-Factor Authentication とセルフサービス パスワード リセット (SSPR) のライセンス情報は、[Azure Active Directory の価格に関するサイト](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
 
 ## <a name="how-it-works"></a>しくみ
 
@@ -92,7 +92,7 @@ ms.locfileid: "91964912"
 
 これらのレポートに表示されるデータには、最大 60 分のタイム ラグが存在します。 Azure portal には、ご自分のデータがどの程度新しいかを確認できる [最終更新日時] フィールドがあります。
 
-使用状況と分析情報のデータは、Azure Multi-Factor Authentication のアクティビティ レポートや、Azure AD のサインイン レポートに含まれる情報の代わりとなるものではありません。
+使用状況と分析情報のデータは、Azure AD Multi-Factor Authentication のアクティビティ レポート、または Azure AD のサインイン レポートに含まれる情報の代わりとなるものではありません。
 
 現在、外部ユーザーを除外するためにレポートをフィルター処理することはできません。
 

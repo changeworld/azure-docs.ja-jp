@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: e823322803958f092cee3b6d77e6a0ca7bc6e3f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 72566987068729efef4310ce145c30584c4895b0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074252"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011406"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure Stream Analytics でのデータ保護 
 
@@ -73,7 +73,7 @@ Stream Analytics ポータルを使用しても、ストレージ アカウン�
 
    ![プライベート データ ストレージ アカウントの設定](./media/data-protection/storage-account-create.png)
 
-## <a name="private-data-assets-that-are-stored"></a>格納されるプライベート データ資産
+## <a name="private-data-assets-that-are-stored-by-stream-analytics"></a>Stream Analytics によって格納されるプライベート データ資産
 
 Stream Analytics で存続する必要があるプライベート データは、ストレージ アカウントに格納されます。 プライベート データ資産の例を次に示します。 
 

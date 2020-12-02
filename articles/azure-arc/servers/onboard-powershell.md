@@ -3,12 +3,12 @@ title: PowerShell を使用してハイブリッド マシンを Azure に接続
 description: この記事では、Azure Arc 対応サーバーを使用して、エージェントをインストールし、マシンを Azure に接続する方法について説明します。 これは PowerShell で行うことができます。
 ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: f85e2564b2e5b194d306ef4bad2269982331a7d4
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 0218235179e1a8a883360d0061e685c04079cbf4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422775"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95492943"
 ---
 # <a name="connect-hybrid-machines-to-azure-by-using-powershell"></a>PowerShell を使用してハイブリッド マシンを Azure に接続する
 
@@ -45,13 +45,13 @@ Install-Module -Name Az.ConnectedMachine
     * Azure と直接通信できる Connected Machine エージェントをターゲット マシンにインストールするには、次を実行します。
 
         ```azurepowershell
-        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region>
         ```
     
     * プロキシ サーバー経由で通信するターゲット コンピューターに Connected Machine エージェントをインストールするには、次を実行します。
         
         ```azurepowershell
-        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e -proxy http://<proxyURL>:<proxyport>
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -Proxy http://<proxyURL>:<proxyport>
         ```
 
 セットアップの完了後にエージェントが起動しない場合は、詳細なエラー情報のログを確認します。 Windows で、次のファイルをチェックします: *%ProgramData%\AzureConnectedMachineAgent\Log\himds.log*。 Linux の場合は、次のファイルを確認します: */var/opt/azcmagent/log/himds.log*。
@@ -64,20 +64,20 @@ Azure Arc 対応サーバーで 1 つ以上の Windows サーバーを構成す�
 
 2. コマンド `Connect-AzAccount` を実行して、Azure にサインインします。
 
-3. Connected Machine エージェントをインストールするには、`Connect-AzConnectedMachine` を `-Name`、`-ResourceGroupName`、および `-Location` のパラメーターと共に使用します。 サインイン後に作成された Azure コンテキストの結果として、既定のサブスクリプションをオーバーライドするには、`-SubscriptionId` パラメーターを使用します。
+3. Connected Machine エージェントをインストールするには、`Connect-AzConnectedMachine` を `-ResourceGroupName` および `-Location` のパラメーターと共に使用します。 Azure リソース名には、各サーバーのホスト名が自動的に使用されます。 サインイン後に作成された Azure コンテキストの結果として、既定のサブスクリプションをオーバーライドするには、`-SubscriptionId` パラメーターを使用します。
 
     * Azure と直接通信できる Connected Machine エージェントをターゲット マシンにインストールするには、次のコマンドを実行します。
     
         ```azurepowershell
-        $session = Connect-PSSession -ComputerName myMachineName
-        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
+        $sessions = New-PSSession -ComputerName myMachineName
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Location <region> -PSSession $sessions
         ```
     
     * Connected Machine エージェントを複数のリモート マシンに同時にインストールするには、コンマで区切ったリモート マシン名の一覧を追加します。
 
         ```azurepowershell
-        $session = Connect-PSSession -ComputerName myMachineName1, myMachineName2, myMachineName3
-        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
+        $sessions = New-PSSession -ComputerName myMachineName1, myMachineName2, myMachineName3
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Location <region> -PSSession $sessions
         ```
 
     次の例は、1 台のマシンをターゲットにしたコマンドの結果を示しています。

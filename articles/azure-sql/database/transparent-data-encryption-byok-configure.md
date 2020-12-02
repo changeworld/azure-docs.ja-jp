@@ -12,17 +12,20 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 38be8b97b3255e4e63301e693d2a5f295e8d801b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8881dc3f67ac1c9f699bd2bf7bcf1dbbcd5e9c0c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779970"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95905329"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell と Azure CLI:Azure Key Vault のユーザー管理キーを使用して Transparent Data Encryption を有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 この記事では、Azure SQL Database または Azure Synapse Analytics (旧称 SQL Data Warehouse) で、Transparent Data Encryption (TDE) に Azure Key Vault のキーを使用する方法について説明します。 Bring Your Own Key (BYOK) のサポートのため、Azure Key Vault と統合される TDE の詳細については、[Azure Key Vault のユーザー管理キーを使用する TDE](transparent-data-encryption-byok-overview.md) に関するページを参照してください。
+
+> [!NOTE] 
+> Azure SQL では、マネージド HSM に格納されている RSA キーを TDE プロテクターとして使用できるようになりました。 この機能は **パブリック プレビュー** 段階にあります。 Azure Key Vault Managed HSM は、フル マネージド、高可用性、シングル テナント、標準準拠を特徴とするクラウド サービスで、FIPS 140-2 レベル 3 適合の HSM を使用してクラウド アプリケーションの暗号化キーを保護することができます。 [マネージド HSM](../../key-vault/managed-hsm/index.yml) の詳細を参照してください。
 
 ## <a name="prerequisites-for-powershell"></a>PowerShell の前提条件
 
@@ -36,7 +39,8 @@ ms.locfileid: "92779970"
 - TDE に使用するには、キーに次の属性が必要です。
   - 有効期限がない
   - 無効化されていない
-  - " *取得* "、" *キーのラップ* "、" *キーのラップ解除* " の各操作を実行できる
+  - "*取得*"、"*キーのラップ*"、"*キーのラップ解除*" の各操作を実行できる
+- **(プレビュー段階)** Managed HSM キーを使用するには、[こちら](../../key-vault/managed-hsm/quick-create-cli.md)の指示に従って、Azure CLI を使用して Managed HSM を作成およびアクティブ化します
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -70,6 +74,8 @@ Key Vault の詳細については、「[PowerShell を使用した Key Vault �
    Set-AzKeyVaultAccessPolicy -VaultName <KeyVaultName> `
        -ObjectId $server.Identity.PrincipalId -PermissionsToKeys get, wrapKey, unwrapKey
    ```
+Managed HSM 上のサーバーにアクセス許可を追加するには、"Managed HSM 暗号化サービスの暗号化" ローカル RBAC ロールをサーバーに追加します。 これにより、Managed HSM 内のキーに対してサーバーによってキーの取得、キーを折り返す、キーの折り返しを解除の操作を実行できます。
+[Managed HSM でサーバー アクセスをプロビジョニングするための手順](../../key-vault/managed-hsm/role-management.md)
 
 ## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Key Vault キーをサーバーに追加し、TDE 保護機能を設定する
 
@@ -79,10 +85,15 @@ Key Vault の詳細については、「[PowerShell を使用した Key Vault �
 - [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) コマンドレットを使用して、TDE 保護機能が意図したとおりに構成されていることを確認します。
 
 > [!NOTE]
+> **(プレビュー段階)** Managed HSM キーには、Az.Sql 2.11.1 バージョンの PowerShell を使用します。
+
+> [!NOTE]
 > キー コンテナー名とキー名を組み合わせた長さは 94 文字以下である必要があります。
 
 > [!TIP]
-> Key Vault の KeyId の例: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+> Key Vault の KeyId の例: <br/>https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+>
+> Managed HSM の KeyId の例:<br/>https://contosoMHSM.managedhsm.azure.net/keys/myrsakey
 
 ```powershell
 # add the key from Key Vault to the server
@@ -239,7 +250,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
 - 新しいキーをサーバーに追加できない場合や、新しいキーを TDE 保護機能として更新できない場合は、以下を確認します。
    - キーに有効期限がないこと。
-   - キーで、" *取得* "、" *キーのラップ* "、" *キーのラップ解除* " の各操作が有効になっている必要があります。
+   - キーで、"*取得*"、"*キーのラップ*"、"*キーのラップ解除*" の各操作が有効になっている必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

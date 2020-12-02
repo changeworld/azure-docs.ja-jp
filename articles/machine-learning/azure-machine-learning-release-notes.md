@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 54b15d5865b1abb0d624628ed4b5c9892ab04d41
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 53a30f92adaf25d87897e98834cda2d5f92b874c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542135"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012273"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
@@ -210,7 +210,7 @@ ms.locfileid: "94542135"
     + AzureML MLflow のドキュメントとノートブックのサンプルを更新しました 
     + AzureML バックエンドでの MLflow プロジェクトの新しいサポート
     + MLflow モデル レジストリのサポート
-    + AzureML-MLflow 操作に対する RBAC のサポートを追加しました 
+    + AzureML-MLflow 操作に対する Azure RBAC サポートを追加しました 
     
   + **azureml-pipeline-core**
     + PipelineOutputFileDataset.parse_* メソッドのドキュメントを改善しました。

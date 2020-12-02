@@ -12,18 +12,18 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 2c056bd4d5fa9037ce00588269c0da2937ff57ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c26cbf55c1e3883605d4c65659511af20cf02c7f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705335"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996680"
 ---
 # <a name="what-are-security-defaults"></a>セキュリティの既定値群とは
 
 パスワード スプレー、リプレイ、フィッシングなど、ID 関連の一般的な攻撃がますます広まる中で、セキュリティの管理に困難をきたす場合があります。 セキュリティの既定値群では、次のような構成済みのセキュリティ設定を使用して、これらの攻撃から組織を容易に保護できます。
 
-- すべてのユーザーに対して Azure Multi-Factor Authentication への登録を必須にします。
+- すべてのユーザーに対して、Azure AD Multi-Factor Authentication への登録を必須にします。
 - 管理者に多要素認証の実行を要求します。
 - レガシ認証プロトコルをブロックします。
 - 必要に応じてユーザーに多要素認証の実行を要求します。
@@ -52,13 +52,13 @@ Microsoft は、誰もがセキュリティの既定値群を利用できるよ�
 
 ### <a name="unified-multi-factor-authentication-registration"></a>多要素認証の登録手続きの統一
 
-テナント内のすべてのユーザーは、Azure Multi-Factor Authentication のフォームを使用して多要素認証 (MFA) に登録する必要があります。 ユーザーは 14 日以内に Microsoft Authenticator アプリを使用して Azure Multi-Factor Authentication に登録する必要があります。 14 日が経過すると、ユーザーは登録が完了するまでサインインできなくなります。 14 日の期間は、セキュリティの既定値群が有効になった後、それぞれのユーザーの対話型サインインが最初に成功した時点から始まります。
+テナント内のすべてのユーザーは、Azure AD Multi-Factor Authentication のフォームを使用して、多要素認証 (MFA) に登録する必要があります。 ユーザーは、14 日以内に Microsoft Authenticator アプリを使用して、Azure AD Multi-Factor Authentication に登録する必要があります。 14 日が経過すると、ユーザーは登録が完了するまでサインインできなくなります。 14 日の期間は、セキュリティの既定値群が有効になった後、それぞれのユーザーの対話型サインインが最初に成功した時点から始まります。
 
 ### <a name="protecting-administrators"></a>管理者の保護
 
 特権アクセスを持つユーザーは、より自由に環境にアクセスできます。 これらのアカウントには権限があるので、特別な注意を払って対処する必要があります。 特権アカウントの保護を強化するための一般的な方法の 1 つは、サインイン時に、強力な形式のアカウント検証を必須にすることです。 Azure AD では、多要素認証を必須にすることで、アカウント検証を強力にすることができます。
 
-次の 9 つの Azure AD 管理者ロールについては、Azure Multi-Factor Authentication への登録が完了した後、サインインのたびに追加の認証を実行する必要があります。
+次の 9 つの Azure AD 管理者ロールについては、Azure AD Multi-Factor Authentication への登録が完了した後、サインインのたびに追加の認証を実行する必要があります。
 
 - 全体管理者
 - SharePoint 管理者
@@ -120,7 +120,7 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 
 ### <a name="authentication-methods"></a>認証方法
 
-これらの無料のセキュリティの既定値群を使用すると、**通知を使用する Microsoft Authenticator アプリのみを使用して**、Azure Multi-Factor Authentication の登録と使用を行うことができます。 条件付きアクセスでは、管理者が有効にする任意の認証方法を使用できます。
+これらの無料のセキュリティの既定値群を使用すると、**通知を使用する Microsoft Authenticator アプリのみを使用して**、Azure AD Multi-Factor Authentication の登録と使用を行うことができます。 条件付きアクセスでは、管理者が有効にする任意の認証方法を使用できます。
 
 | Method | セキュリティの既定値群 | 条件付きアクセス |
 | --- | --- | --- |
@@ -130,12 +130,12 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 | 電話の呼び出し |   | X |
 | アプリ パスワード |   | X*** |
 
-- ** ユーザーは Microsoft Authenticator アプリの確認コードを使用できますが、通知オプションを使用した場合のみ登録できます。
+- ** ユーザーは Microsoft Authenticator アプリの確認コードを使用できますが、通知オプションを使用した場合にのみ登録できます。
 - *** アプリ パスワードは、管理者が有効にした場合にのみ、レガシ認証シナリオでのユーザーごとの MFA でのみ使用できます。
 
 ### <a name="disabled-mfa-status"></a>無効な MFA の状態
 
-組織がユーザー ベースの Azure Multi-Factor Authentication の以前のユーザーである場合は、多要素認証の状態のページを確認したときに、 **[有効]** 状態または **[強制]** 状態にあるユーザーが表示されなくても問題ありません。 **[無効]** は、セキュリティの既定値群または条件付きアクセス ベースの Azure Multi-Factor Authentication を使用しているユーザーにとって適切な状態です。
+組織が以前からユーザー ベースの Azure AD Multi-Factor Authentication のユーザーである場合は、多要素認証の状態のページを確認したときに、 *[有効]* 状態または **[強制]** 状態にあるユーザーが表示されなくても問題ありません。 セキュリティの既定値群または条件付きアクセス ベースの Azure AD Multi-Factor Authentication を使用しているユーザーの場合は、 **[無効]** が適切な状態です。
 
 ### <a name="conditional-access"></a>条件付きアクセス
 
@@ -149,7 +149,7 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 - [Azure 管理のために MFA を必須にする](../conditional-access/howto-conditional-access-policy-azure-management.md)
 - [レガシ認証をブロックする](../conditional-access/howto-conditional-access-policy-block-legacy.md)
 - [すべてのユーザーに対して MFA を必須にする](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
-- [Azure MFA への登録を必須とする](../identity-protection/howto-identity-protection-configure-mfa-policy.md) - Azure AD Premium P2 の Azure AD Identity Protection 部分が必要です
+- [Azure AD MFA への登録を必須にする](../identity-protection/howto-identity-protection-configure-mfa-policy.md) - Azure AD Premium P2 の Azure AD Identity Protection 部分が必要です。
 
 ## <a name="enabling-security-defaults"></a>セキュリティの既定値群の有効化
 

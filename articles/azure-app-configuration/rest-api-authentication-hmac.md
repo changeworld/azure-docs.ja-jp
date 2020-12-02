@@ -1,38 +1,38 @@
 ---
 title: Azure App Configuration REST API - HMAC 認証
-description: REST API を通して HMAC を使用して Azure App Configuration に対して認証する
+description: REST API を使用して、Azure App Configuration に HMAC を使用して認証する
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 236670cb59a98ee097baaeb35174489d66e6e786
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4171155f5a9f72ef0c021bd0e37fe4ec2f206646
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423727"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95253356"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>HMAC 認証 - REST API リファレンス
 
-HTTP 要求は、**HMAC-SHA256** 認証スキームを使用して認証される場合があります。 これらの要求は、TLS で送信する必要があります。
+HTTP 要求は、HMAC SHA256 認証スキームを使用して認証できます (HMAC とは、ハッシュ ベースのメッセージ認証コードを指します)。これらの要求は、TLS で送信する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
 - **資格情報** - \<Access Key ID\>
 - **シークレット** - base64 でデコードされたアクセス キー値。 ``base64_decode(<Access Key Value>)``
 
-資格情報 ("ID" とも呼ばれます) とシークレット ("値" とも呼ばれます) の値は、Azure App Configuration インスタンスから取得する必要があります。これは、[Azure portal](https://portal.azure.com) または [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) を使用して実行できます。
+資格情報 (`id` とも呼ばれます) とシークレット (`value` とも呼ばれます) の値は Azure App Configuration のインスタンスから取得する必要があります。 これを行うには、[Azure portal](https://portal.azure.com) または [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) を使用します。
 
-それぞれの要求には、認証に必要なすべての HTTP ヘッダーを指定します。 最低限必要なのは以下のとおりです。
+要求ごとに、認証に必要なすべての HTTP ヘッダーを指定します。 最低限必要なのは以下のとおりです。
 
 |  要求ヘッダー | 説明  |
 | --------------- | ------------ |
-| **Host** | インターネット ホストとポート番号。 セクション [3.2.2](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.2.2) を参照してください |
-| **Date** | 要求が開始された日時。 現在の GMT から 15 分より長く隔たっていてはいけません。 値は、セクション [3.3.1](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1) で説明されているように、HTTP-date です
-| **x-ms-date** | 上の ```Date``` と同じです。 エージェントが ```Date``` 要求ヘッダーに直接アクセスできない場合や、それがプロキシに変更される場合は、代わりに使用できます。 ```x-ms-date``` と ```Date``` の両方が指定された場合は、```x-ms-date``` が優先されます。 |
+| **Host** | インターネット ホストとポート番号。 詳細については、セクション [3.2.2](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.2.2) を参照してください。 |
+| **日付** | 要求の発生日時。 現在の協定世界時 (グリニッジ標準時) から 15 分を超えてはいけません。 値は HTTP-date (セクション [3.3.1](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1) を参照) です。
+| **x-ms-date** | 上の ```Date``` と同じです。 エージェントが ```Date``` 要求ヘッダーに直接アクセスできない場合や、プロキシによって変更される場合に、代わりに使用できます。 ```x-ms-date``` と ```Date``` の両方が指定された場合は、```x-ms-date``` が優先されます。 |
 | **x-ms-content-sha256** | base64 でエンコードされた、要求本文の SHA256 ハッシュ。 本文がない場合でも指定する必要があります。 ```base64_encode(SHA256(body))```|
-| **承認** | **HMAC SHA256** スキームに必要な認証情報。 形式と詳細については下で説明します。 |
+| **承認** | HMAC SHA256 スキームに必要な認証情報。 形式と詳細については、この記事の後半で説明します。 |
 
 **例:**
 
@@ -43,7 +43,7 @@ x-ms-content-sha256: {SHA256 hash of the request body}
 Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;host;x-ms-content-sha256&Signature={Signature}
 ```
 
-## <a name="authorization-header"></a>Authorization ヘッダー
+## <a name="authorization-header"></a>Authorization header (Authorization ヘッダー)
 
 ### <a name="syntax"></a>構文
 
@@ -51,18 +51,18 @@ Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;ho
 
 |  引数 | 説明  |
 | ------ | ------ |
-| **HMAC-SHA256** | 認可スキーム _("必須")_ |
-| **資格情報** | 署名を計算するのに使用するアクセス キーの ID。 _("必須")_ |
+| **HMAC-SHA256** | 承認スキームを設けます。 _("必須")_ |
+| **資格情報** | 署名の計算に使用されるアクセス キーの ID。 _("必須")_ |
 | **SignedHeaders** | 署名に追加される HTTP 要求ヘッダー。 _("必須")_ |
-| **Signature** | base64 でエンコードされた HMACSHA256 である **署名対象文字列**。 _("必須")_|
+| **Signature** | base64 でエンコードされた HMACSHA256 である署名対象文字列。 _("必須")_|
 
 ### <a name="credential"></a>資格情報
 
-**署名** を計算するのに使用するアクセス キーの ID。
+署名の計算に使用されるアクセス キーの ID。
 
-### <a name="signed-headers"></a>署名済みヘッダー
+### <a name="signed-headers"></a>署名されるヘッダー
 
-要求に署名するために必要な、セミコロン区切りの HTTP 要求ヘッダー名。 これらの HTTP ヘッダーは、要求でも正しく指定される必要があります。 **空白は使用しないでください**。
+HTTP 要求ヘッダーの名前をセミコロンで区切ります。要求に署名するために必要です。 これらの HTTP ヘッダーは、要求でも正しく指定される必要があります。 空白は使用しないでください。
 
 ### <a name="required-http-request-headers"></a>必須の HTTP 要求ヘッダー
 
@@ -76,7 +76,7 @@ x-ms-date;host;x-ms-content-sha256;```Content-Type```;```Accept```
 
 ### <a name="signature"></a>署名
 
-base64 でエンコードされた HMACSHA256 ハッシュである、`Credential` によって識別されるアクセス キーを使用する **署名対象文字列**。
+Base64 でエンコードされた HMACSHA256 ハッシュの署名文字列。 `Credential` によって識別されるアクセス キーを使用します。
 ```base64_encode(HMACSHA256(String-To-Sign, Secret))```
 
 ### <a name="string-to-sign"></a>署名対象文字列
@@ -89,9 +89,9 @@ _String-To-Sign=_
 
 |  引数 | 説明  |
 | ------ | ------ |
-| **HTTP_METHOD** | 要求で使用される、大文字の HTTP メソッド名。 [セクション 9](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) を参照してください |
-|**path_and_query** | 要求の絶対 URI パスとクエリ文字列を連結したもの。 [セクション 3.3](https://tools.ietf.org/html/rfc3986#section-3.3) を参照してください。
-| **signed_headers_values** | **SignedHeaders** に一覧表示されているすべての HTTP 要求ヘッダーのセミコロン区切りの値。 形式は、**SignedHeaders** セマンティックに従います。 |
+| **HTTP_METHOD** | 要求で使用される、大文字の HTTP メソッド名。 詳細については、[セクション 9](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) を参照してください。 |
+|**path_and_query** | 要求の絶対 URI パスとクエリ文字列を連結したもの。 詳細については、[セクション 3.3](https://tools.ietf.org/html/rfc3986#section-3.3) を参照してください。
+| **signed_headers_values** | `SignedHeaders` 内に列挙したすべての HTTP 要求ヘッダーのセミコロン区切りの値。 形式は `SignedHeaders` セマンティクスに従います。 |
 
 **例:**
 
@@ -110,16 +110,18 @@ HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256, Bearer
 ```
 
-**理由:** Authorization 要求ヘッダーが、HMAC SHA256 スキームで指定されていません。
-**解決方法:** 有効な ```Authorization``` HTTP 要求ヘッダーを指定してください
+**理由:** HMAC SHA256 スキームで Authorization 要求ヘッダーが指定されていません。
+
+**解決方法:** 有効な ```Authorization``` HTTP 要求ヘッダーを指定してください。
 
 ```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="The access token has expired", Bearer
 ```
 
-**理由:** ```Date``` または ```x-ms-date``` 要求ヘッダーが、現在の GMT 時刻から 15 分 より長く隔たっています。
-**解決方法:** 正しい日時を指定してください
+**理由:** ```Date``` または ```x-ms-date``` 要求ヘッダーが、現在の協定世界時 (グリニッジ標準時) から 15 分を超えています。
+
+**解決方法:** 正しい日時を指定してください。
 
 
 ```http
@@ -127,14 +129,14 @@ HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Invalid access token date", Bearer
 ```
 
-**理由:** ```Date``` または ```x-ms-date``` 要求ヘッダーが見つからないか無効です
+**理由:** ```Date``` または ```x-ms-date``` 要求ヘッダーが見つからないか無効です。
 
 ```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="[Credential][SignedHeaders][Signature] is required", Bearer
 ```
 
-**理由:** ```Authorization``` 要求ヘッダーに必須パラメーターがありません
+**理由:** ```Authorization``` 要求ヘッダーに必須パラメーターがありません。
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -142,7 +144,8 @@ WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Invalid C
 ```
 
 **理由:** 指定された [```Host```]/[アクセス キー ID] が見つかりません。
-**解決方法:** ```Authorization``` 要求ヘッダーの ```Credential``` パラメーターを調べて、それが有効なアクセス キー ID であることを確認してください。 ```Host``` ヘッダーが、登録済みのアカウントを指していることを確認してください。
+
+**解決方法:** ```Authorization``` 要求ヘッダーの ```Credential``` パラメーターを確認してください。 有効なアクセスキー ID であることを確認し、```Host``` ヘッダーが登録済みアカウントを指していることを確認してください。
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -150,7 +153,8 @@ WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Invalid S
 ```
 
 **理由:** 指定された ```Signature``` は、サーバーで必要なものと一致しません。
-**解決方法:** ```String-To-Sign``` が正しいことを確認してください。 ```Secret``` が正しく、適切に使用されている (使用する前に base64 でデコードされている) ことを確認してください。 **例** に関するセクションを参照してください。
+
+**解決方法:** ```String-To-Sign``` が正しいことを確認してください。 ```Secret``` が正しく、適切に使用されている (使用する前に base64 でデコードされている) ことを確認してください。
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -158,7 +162,8 @@ WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Signed re
 ```
 
 **理由:** ```Authorization``` ヘッダーの ```SignedHeaders``` パラメーターに必要な要求ヘッダーがありません。
-**解決方法:** 正しい値で必要なヘッダーを指定してください。
+
+**解決方法:** 正しい値を使って、必要なヘッダーを指定してください。
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -166,7 +171,8 @@ WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="XXX is re
 ```
 
 **理由:** ```SignedHeaders``` のパラメーターが不足しています。
-**解決方法:** **署名済みヘッダー** の最小要件を確認してください。
+
+**解決方法:** 署名済みヘッダーの最小要件を確認してください。
 
 ## <a name="code-snippets"></a>コード スニペット
 
@@ -362,7 +368,7 @@ import (
     "time"
 )
 
-//SignRequest Setup the auth header for accessing Azure AppConfiguration service
+//SignRequest Setup the auth header for accessing Azure App Configuration service
 func SignRequest(id string, secret string, req *http.Request) error {
     method := req.Method
     host := req.URL.Host

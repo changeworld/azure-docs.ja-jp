@@ -4,12 +4,12 @@ description: Azure App Services のアプリケーション パフォーマン�
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: f46d00f97dab18b0c7c1d4a5742a87308f814e9e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c0ee68659f4729ed8f63b9ea990343adf51513bd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832900"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186373"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
@@ -372,7 +372,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
     * `AppAlreadyInstrumented`、`AppContainsDiagnosticSourceAssembly`、および `AppContainsAspNetTelemetryCorrelationAssembly` のエントリがないことを確認します。
         * これらのエントリのいずれかが存在する場合は、アプリケーションから `Microsoft.ApplicationInsights`、`System.Diagnostics.DiagnosticSource`、および `Microsoft.AspNet.TelemetryCorrelation` のパッケージを削除します。
-        * ASP.NET Core アプリのみ: アプリケーションが Application Insights パッケージを参照している場合 (たとえば、以前に [ASP.NET Core SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) を使用してアプリをインストルメント化した場合 (またはインストルメント化しようとした場合))、App Service の統合が有効にならず、データが Application Insights に表示されないことがあります。 この問題を解決するには、ポータルで [Interop with Application Insights SDK]\(Application Insights SDK との相互運用\) をオンにすると、Application Insights にデータが表示されます。 
+        * ASP.NET Core アプリのみ: アプリケーションが Application Insights パッケージを参照している場合 (たとえば、以前に [ASP.NET Core SDK](./asp-net-core.md) を使用してアプリをインストルメント化した場合 (またはインストルメント化しようとした場合))、App Service の統合が有効にならず、データが Application Insights に表示されないことがあります。 この問題を解決するには、ポータルで [Interop with Application Insights SDK]\(Application Insights SDK との相互運用\) をオンにすると、Application Insights にデータが表示されます。 
         > [!IMPORTANT]
         > この機能はプレビュー状態です 
 
@@ -432,4 +432,3 @@ Azure App Services Web アプリで ASP.NET または ASP.NET Core に対する�
 * 操作イベントが発生したり、メトリックがしきい値を超えたりするたびに、[アラート通知を受け取り](../platform/alerts-overview.md)ます。
 * [JavaScript のアプリや Web ページに Application Insights](javascript.md) を使用して、Web ページを参照しているブラウザーからクライアント テレメトリを取得します。
 * [可用性 Web テストを設定](monitor-web-app-availability.md) して、サイトがダウンした場合にアラートを送信するようにします。
-

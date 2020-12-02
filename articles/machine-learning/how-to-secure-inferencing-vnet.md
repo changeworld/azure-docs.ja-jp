@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 6508db654cd27ca4b3844f6037f13fb504173e11
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 3bd4d328c6b0b73a51f325adde988c8f0988ea8a
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361167"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873813"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning 推論環境をセキュリティで保護する
 
@@ -115,6 +115,8 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 作成プロセスが完了すると、仮想ネットワークの背後にある AKS クラスターで推論 (モデルのスコアリング) を実行できるようになります。 詳細については、[AKS へのデプロイ方法](how-to-deploy-and-where.md)に関するページをご覧ください。
 
+Kubernetes でロールベースのアクセス制御を使用する方法の詳細については、「[Kubernetes 認可に Azure RBAC を使用する](../aks/manage-azure-rbac.md)」を参照してください。
+
 ## <a name="network-contributor-role"></a>ネットワーク共同作成者ロール
 
 > [!IMPORTANT]
@@ -122,7 +124,7 @@ aks_target = ComputeTarget.create(workspace=ws,
 >
 > ネットワーク共同作成者として ID を追加するには、次の手順に従います。
 
-1. AKS のサービス プリンシパルまたはマネージド ID を検索するには、次の Azure CLI コマンドを使用します。 `<aks-cluster-name>` をクラスターの名前に置き換えます。 `<resource-group-name>` を、 _AKS クラスターが含まれている_ リソース グループの名前に置き換えます。
+1. AKS のサービス プリンシパルまたはマネージド ID を検索するには、次の Azure CLI コマンドを使用します。 `<aks-cluster-name>` をクラスターの名前に置き換えます。 `<resource-group-name>` を、_AKS クラスターが含まれている_ リソース グループの名前に置き換えます。
 
     ```azurecli-interactive
     az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
@@ -134,7 +136,7 @@ aks_target = ComputeTarget.create(workspace=ws,
     az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
     ```
 
-1. 仮想ネットワークが含まれているリソース グループの ID を検索するには、次のコマンドを使用します。 `<resource-group-name>` を、 _仮想ネットワークが含まれている_ リソース グループの名前に置き換えます。
+1. 仮想ネットワークが含まれているリソース グループの ID を検索するには、次のコマンドを使用します。 `<resource-group-name>` を、_仮想ネットワークが含まれている_ リソース グループの名前に置き換えます。
 
     ```azurecli-interactive
     az group show -n <resource-group-name> --query id
@@ -151,8 +153,8 @@ AKS での内部ロードバランサーの使用の詳細については、「[
 
 AKS クラスターと仮想ネットワークの間のトラフィックを分離するには、次の 2 つの方法があります。
 
-* __プライベート AKS クラスター__ : この方法では、Azure Private Link を使用して、デプロイまたは管理操作用のクラスターとの通信をセキュリティで保護します。
-* __内部 AKS ロード バランサー__ : この方法では、AKS へのデプロイのエンドポイントが、仮想ネットワーク内でプライベート IP を使用するように構成します。
+* __プライベート AKS クラスター__: この方法では、Azure Private Link を使用して、デプロイまたは管理操作用のクラスターとの通信をセキュリティで保護します。
+* __内部 AKS ロード バランサー__: この方法では、AKS へのデプロイのエンドポイントが、仮想ネットワーク内でプライベート IP を使用するように構成します。
 
 > [!WARNING]
 > 内部ロード バランサーは、kubenet を使用する AKS クラスターでは機能しません。 内部ロード バランサーとプライベート AKS クラスターを同時に使用する場合は、Azure Container Networking Interface (CNI) を使用してプライベート AKS クラスターを構成します。 詳細については、「[Azure Kubernetes Service で Azure CNI ネットワークを構成する](../aks/configure-azure-cni.md)」を参照してください。
@@ -170,14 +172,14 @@ AKS クラスターと仮想ネットワークの間のトラフィックを分�
 
 既定では、AKS のデプロイでは[パブリック ロード バランサー](../aks/load-balancer-standard.md)が使用されます。 このセクションでは、内部ロード バランサーを使用するように AKS を構成する方法について説明します。 内部 (プライベート) ロード バランサーは、プライベート IP のみがフロントエンドとして許可される場合に使用されます。 内部ロード バランサーは、仮想ネットワーク内でトラフィックを負荷分散させるために使用されます
 
-プライベート ロード バランサーを有効にするには、" _内部ロード バランサー_ " を使用するように AKS を構成します。 
+プライベート ロード バランサーを有効にするには、"_内部ロード バランサー_" を使用するように AKS を構成します。 
 
 #### <a name="enable-private-load-balancer"></a>プライベート ロード バランサーを有効にする
 
 > [!IMPORTANT]
 > Azure Machine Learning スタジオで Azure Kubernetes Service クラスターを作成しているときに、プライベート IP を有効にすることはできません。 Python SDK を使用する場合、または機械学習用の Azure CLI 拡張機能を使用する場合は、内部ロード バランサーを使用して作成できます。
 
-次の例では、SDK と CLI を使用して、 __プライベート IP または内部ロード バランサーで新しい AKS クラスターを作成する__ 方法を示します。
+次の例では、SDK と CLI を使用して、__プライベート IP または内部ロード バランサーで新しい AKS クラスターを作成する__ 方法を示します。
 
 # <a name="python"></a>[Python](#tab/python)
 

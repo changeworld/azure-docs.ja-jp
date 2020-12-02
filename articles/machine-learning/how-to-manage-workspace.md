@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 29c378d40e3a4f92852f433677125a9e8a6d1133
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 9524577d40c3b6b65bb3c3c8ff9e257b015ed90d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540129"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012954"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning ワークスペースを作成して管理する 
 
@@ -27,6 +27,10 @@ ms.locfileid: "94540129"
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 * Python SDK を使用する場合は、[その SDK をインストール](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)します。
+
+## <a name="limitations"></a>制限事項
+
+* 新しいワークスペースを作成するときに、ワークスペースで自動的に必要な Azure サービスが作成されるようにするか、既存のサービスを提供することができます。 既存のサービスを提供する場合、これらのすべてのサービスがワークスペースと同じ Azure サブスクリプションに含まれている必要があります。
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 
@@ -131,8 +135,12 @@ ms.locfileid: "94540129"
    サブスクリプション |使用する Azure サブスクリプションを選択します。
    Resource group | サブスクリプションの既存のリソース グループを使用するか、任意の名前を入力して新しいリソース グループを作成します。 リソース グループは、Azure ソリューションの関連するリソースを保持します。 この例では、**docs-aml** を使用します。 既存のリソース グループを使用するには、*共同作成者* または *所有者* のロールが必要です。  アクセスの詳細については、「[Azure Machine Learning ワークスペースへのアクセスの管理](how-to-assign-roles.md)」の記事をご覧ください。
    リージョン | ユーザーとデータ リソースに最も近い Azure リージョンを選択し、ワークスペースを作成します。
+   | ストレージ アカウント | ワークスペースの既定のストレージ アカウント。 既定では、新しいものが作成されます。 |
+   | Key Vault | ワークスペースで使用される Azure Key Vault。 既定では、新しいものが作成されます。 |
+   | Application Insights | ワークスペースの Application Insights インスタンス。 既定では、新しいものが作成されます。 |
+   | Container Registry | ワークスペースの Azure Container Registry。 既定では、新しいものは、ワークスペース用に最初に作成されたものでは "_ありません_"。 これは、トレーニングまたはデプロイ中に Docker イメージを作成するときに必要になったときに作成されます。 |
 
-    ![ワークスペースを構成する](./media/how-to-manage-workspace/create-workspace-form.png)
+   :::image type="content" source="media/how-to-manage-workspace/create-workspace-form.png" alt-text="ワークスペースを構成する。":::
 
 1. ワークスペースの構成が完了したら、 **[確認および作成]** を選択します。 必要に応じて、[ネットワーク](#networking)に関するセクションと[詳細設定](#advanced)に関するセクションを使用し、ワークスペースに対してさらに多くの設定を行います。
 

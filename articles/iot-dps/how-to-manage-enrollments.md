@@ -3,55 +3,74 @@ title: Azure portal で Azure IoT Hub Device Provisioning Service に対する�
 description: Azure portal 上でデバイス プロビジョニング サービス (DPS) 用にデバイス登録を管理する方法
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/05/2018
+ms.date: 11/17/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 2fbcacd7f2094f9b0b9dcea3fea4d804fd96923e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+manager: eliotgra
+ms.openlocfilehash: 6ec146a05df1b896f8ca594d29cf13341b70765a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165317"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010964"
 ---
-# <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Azure Portal でデバイス登録を管理する方法
+# <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Azure portal でデバイス登録を管理する方法
 
-"*デバイス登録*" では、1 つのデバイスまたはデバイス グループのレコードを作成して、ある時点で Azure IoT Hub Device Provisioning Service に登録できるようにします。 登録レコードには、必要な IoT ハブを含む、目的のデバイス初期構成がその登録の一部として含まれます。 この記事では、プロビジョニング サービス用にデバイス登録を管理する方法を説明します。
+"*デバイス登録*" では、1 つのデバイスまたはデバイス グループのレコードを作成して、ある時点で Azure IoT Hub Device Provisioning Service に登録できるようにします。 登録レコードには、デバイスの初期構成がその登録の一部として含まれます。 構成には、デバイスが割り当てられる IoT ハブ、またはハブのセットからハブを構成する割り当てポリシーが含まれます。 この記事では、プロビジョニング サービス用にデバイス登録を管理する方法を説明します。
 
 
 ## <a name="create-a-device-enrollment"></a>デバイス登録を作成する
 
 プロビジョニング サービスにデバイスを登録する方法には次の 2 つがあります。
 
-* **登録グループ**は、X.509 証明書の共通の構成証明メカニズムを共有するデバイス グループのエントリです。同じ署名証明書 ([ルート証明書](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate)または[中間証明書](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)になる場合があります) によって署名され、物理デバイスのデバイス証明書を生成するために使用されます。 必要な初期構成を共有する多数のデバイスがある場合や、すべてのデバイスが同じテナントに配置される場合は、登録グループを使用することをお勧めします。 
+* **登録グループ** は、共通の構成証明メカニズムを共有するデバイスのグループに対するエントリです。 初期構成を共有するデバイスが多数ある場合や、デバイスがすべて同じテナントに属する予定の場合は、登録グループを使用することをお勧めします。 [対称キー](concepts-symmetric-key-attestation.md)または [X.509 証明書](concepts-x509-attestation.md)を使用しているデバイスがサポートされます。 
 
-    次の手順を使用して、任意のデバイス グループ用に、ポータルで登録グループを作成できます。
+    対称キーで登録グループを作成して使用する詳細な手順については、[対称キーによるデバイスのプロビジョニング](how-to-legacy-device-symm-key.md)に関するチュートリアルを参照してください。
 
-  1. Azure Portal にログインし、左側のメニューにある **[すべてのリソース]** をクリックします。  
-  1. リソースの一覧から、デバイスを登録する Device Provisioning Service をクリックします。  
-  1. 目的のプロビジョニング サービスで、次の手順を実行します。  
-     a. **[登録を管理します]** をクリックし、**[登録グループ]** タブを選択します。  
-     b. 上部にある **[追加]** をクリックします。  
-     c. [Add Enrollment Group]\(登録グループの追加\) パネルが表示されたら、登録リストのエントリ情報を入力します。  **グループ名**は必須です。 **[証明書の種類]** に "[CA] または [中間]" を選択し、デバイス グループのルートの **[Primary certificate]/(プライマリ証明書/)** をアップロードします。  
-     d. **[保存]** をクリックします。 登録グループの作成に成功すると、**[Enrollment Groups]\(登録グループ\)** タブにグループ名が表示されます。  
+    ポータルでデバイスのグループ用の登録グループを作成するには、次の手順のようにします。
 
-     [![ポータルでの登録グループ](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
+    1. Azure Portal にログインし、左側のメニューにある **[すべてのリソース]** をクリックします。  
+    1. リソースの一覧から、デバイスを登録する Device Provisioning Service をクリックします。  
+    1. プロビジョニング サービスで、 **[登録を管理します]** をクリックし、上部の **[登録グループの追加]** ボタンをクリックします。  
+     
+        ![ポータルでの登録グループ](./media/how-to-manage-enrollments/add-group-enrollment.png)
+        
+    1. [登録グループの追加] パネルが表示されたら、登録の情報を入力して、 **[保存]** をクリックします。  
+     
+        [![ポータルで登録グループを追加する](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
+        
+        | フィールド | 説明 |
+        | :--- | :--- |
+        | **グループ名** | デバイスのグループに必要な名前。 |
+        | **構成証明の種類** | デバイスで使用する構成証明の方法に応じて、構成証明の種類で **[証明書]** または **[対称キー]** をクリックします。 |
+        | **証明書の種類** | 証明書の構成証明を使用する場合に使用できます。 デバイス証明書への署名に使用された証明書に基づいて、 **[CA 証明書]** または **[中間証明書]** を選択します。 |
+        | **プライマリ証明書** | ルート CA 証明書を使用してデバイス証明書に署名している場合、そのルート CA 証明書は[所有証明](how-to-verify-certificates.md)が完了している必要があります。 その後で、デバイス グループの **プライマリ証明書** として選択できます。<br><br>中間証明書を使用してデバイス証明書に署名している場合は、アップロード ボタンが使用できるようになり、中間証明書をアップロードできます。 中間証明書に署名した証明書についても、[所有証明](how-to-verify-certificates.md)が完了している必要があります。 |
+
+        
     
 
-* **個別登録**は、登録する単一のデバイスのエントリです。 個別登録では、構成証明メカニズムとして x509 証明書または (実際の TPM または仮想 TPM の) SAS トークンを使用できます。 固有の初期構成を必要とするデバイスや、TPM または仮想 TPM を介した SAS トークンのみを構成証明メカニズムとして使用できるデバイスには、個別登録を使用することをお勧めします。 個別登録では、必要な IoT ハブ デバイス ID が指定されている場合があります。
+* **[個別の登録]** は、IoT ハブに割り当てることができる単一のデバイス用のエントリです。 [対称キー](concepts-symmetric-key-attestation.md)、[X.509 証明書](concepts-x509-attestation.md)、[TPM 構成証明](concepts-tpm-attestation.md)を使用しているデバイスがサポートされます。 
 
     個別登録は、次の手順を使用してポータルで作成できます。
 
     1. Azure Portal にログインし、左側のメニューにある **[すべてのリソース]** をクリックします。
     1. リソースの一覧から、デバイスを登録する Device Provisioning Service をクリックします。
-    1. 目的のプロビジョニング サービスで、次の手順を実行します。  
-       a. **[登録を管理します]** をクリックし、**[個々の登録]** タブを選択します。  
-       b. 上部にある **[追加]** をクリックします。   
-       c. [Add Enrollment]\(登録の追加\) パネルが表示されたら、登録リストのエントリ情報を入力します。 まず、デバイスの構成証明の **[メカニズム]** を選択します (X.509 または TPM)。 X.509 証明書では、デバイスのリーフ **プライマリ証明書**をアップロードする必要があります。 TPM では、デバイスの**構成証明キー**と**登録 ID** を入力する必要があります。  
-       d. **[保存]** をクリックします。 登録グループの作成に成功すると、**[Individual Enrollments]\(個別登録)** タブにデバイスが表示されます。  
+    1. プロビジョニング サービスで、 **[登録を管理します]** をクリックし、上部の **[個別登録の追加]** ボタンをクリックします。   
 
-       [![ポータルでの個別登録](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
+       [![ポータルで個別登録を追加する](./media/how-to-manage-enrollments/add-individual-enrollment.png)](./media/how-to-manage-enrollments/add-individual-enrollment.png#lightbox)
+
+    1. [登録の追加] パネルが表示されたら、個々のデバイスの登録情報を入力して、 **[保存]** をクリックします。 
+     
+        [![ポータルでの個別登録](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
+    
+        | フィールド | 説明 |
+        | :--- | :--- |
+        | **メカニズム** | デバイスで使用する構成証明の方法に応じて、使用する構成証明メカニズムを **[X.509]** 、 **[TPM]** 、 **[対称キー]** から選択します。 |
+        | 構成証明に関する設定 | 対称キーまたは X.509 証明書で個別登録を作成して使用する詳細な手順については、[対称デバイスのプロビジョニング](quick-create-simulated-device-symmetric-key-java.md#create-a-device-enrollment)または [X.509 証明書デバイスのプロビジョニング](quick-create-simulated-device-x509-java.md#create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry)に関するクイックスタートを参照してください。<br><br>TPM 構成証明で個別登録を作成して使用する詳細な手順については、[シミュレートされた TPM デバイスのプロビジョニング](quick-create-simulated-device-tpm-java.md#create-a-device-enrollment-entry)に関するサンプルのいずれかを参照してください。|
+        | **IoT Hub のデバイス ID** |  この ID はデバイスを表します。 デバイス ID の規則に従う必要があります。 詳細については、「[デバイス ID のプロパティ](../iot-hub/iot-hub-devguide-identity-registry.md#device-identity-properties)」を参照してください。<br><br>X.509 証明書を使用する場合、このテキストは、登録用にアップロードするデバイス証明書のサブジェクト名である必要があります。 そのサブジェクト名は、デバイス ID の規則に準拠している必要があります。|
+            
+
 
 ## <a name="update-an-enrollment-entry"></a>登録エントリを更新する
 既存の登録エントリは、次の手順を使用して、ポータルで更新できます。
@@ -72,5 +91,3 @@ ms.locfileid: "92165317"
 1. アクションが完了すると、デバイス登録の一覧からエントリが削除されたことがわかります。 
  
     ![ポータルで登録を削除する](./media/how-to-manage-enrollments/remove-enrollment.png)
-
-

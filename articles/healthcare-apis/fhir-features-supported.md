@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: cavoeg
-ms.openlocfilehash: 609bd01e8dcb0e9202d1d9dbe1d1fc1a01cac550
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 3aea2322129c383a385168c54001464da5dae276
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368283"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95520086"
 ---
 # <a name="features"></a>特徴
 
@@ -100,9 +100,9 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 |-------------------------|-----------|-----------|-----------|---------|
 | `_sort`                 | Partial        | 部分的   | 部分的        |   `_sort=_lastUpdated` がサポートされています       |
 | `_count`                | はい       | はい       | はい       | `_count` の上限は 100 文字です。 100 より大きい値に設定すると、100 個だけが返され、バンドルで警告が返されます。 |
-| `_include`              | いいえ        | はい       | いいえ        |         |
-| `_revinclude`           | いいえ        | はい       | いいえ        | 含まれる項目は 100 に制限されています。 |
-| `_summary`              | Partial   | 部分的   | 部分的   | `_summary=count` がサポートされています |
+| `_include`              | はい       | はい       | Yes       |含まれる項目は 100 に制限されています。 Cosmos DB 上の PaaS や OSS に含めても :iterate のサポートは含まれません。|
+| `_revinclude`           | はい       | はい       | Yes       | 含まれる項目は 100 に制限されています。 Cosmos DB 上の PaaS や OSS に含めても :iterate のサポートは含まれません。|
+| `_summary`              | Partial   | Partial   | Partial   | `_summary=count` がサポートされています |
 | `_total`                | Partial   | Partial   | Partial   | _total=non および _total=accurate      |
 | `_elements`             | はい       | はい       | はい       |         |
 | `_contained`            | いいえ        | いいえ        | いいえ        |         |
@@ -132,6 +132,27 @@ Cosmos DB は、グローバル分散型のマルチモデル (SQL API、MongoDB
 FHIR Server は、アクセス制御のために [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) を使用します。 特に、`FhirServer:Security:Enabled` 構成パラメーターが `true` に設定され、FHIR Server へのすべての要求 (`/metadata` を除く) で `Authorization` 要求ヘッダーが `Bearer <TOKEN>` に設定されている必要がある場合は、ロールベースのアクセス制御 (RBAC) が適用されます。 トークンには、`roles` 要求で定義されている 1 つ以上のロールが含まれている必要があります。 トークンに、指定されたリソースに対する指定されたアクションを許可するロールが含まれている場合は、要求が許可されます。
 
 現在、特定のロールに対して許可されるアクションは API で *グローバルに* 適用されます。
+
+## <a name="service-limits"></a>サービスの制限
+
+* [**要求ユニット (RU)** ](https://docs.microsoft.com/azure/cosmos-db/concepts-limits) - Azure API for FHIR のポータルで最大 10,000 RU を構成できます。 少なくとも 400 RU か 10 RU/GB が必要になります (大きい方)。 必要な単位が 10,000 RU を超える場合、サポート チケットを発行して増やすことができます。 利用できる最大値は 1,000,000 です。
+
+* **コンカレント接続** と **インスタンス** - 既定では、クラスター内の 2 つのインスタンス上で 5 つのコンカレント接続が用意されています (同時要求は合計で 10)。 同時要求がさらに必要であると思われる場合、サポート チケットを開き、ニーズの詳細を含めてください。
+
+* **バンドル サイズ** - 各バンドルは 500 項目に制限されています。
+
+* **データ サイズ** - データとドキュメントはそれぞれ 2 MB より少しばかり少なくする必要があります。
+
+## <a name="performance-expectations"></a>パフォーマンスの期待値
+
+システムのパフォーマンスは、RU の数、コンカレント接続、実行している操作の種類 (Put や Post など) に依存します。 構成された RU に基づく期待値の一般的範囲は以下のようになります。 一般的に、RU を増やせば、パフォーマンスが直線的に上がります。
+
+| RU の数 | リソース/sec |
+|----------|---------------|
+| 400      | 5-10          |
+| 1,000    | 100-150       |
+| 10,000   | 225-400       |
+| 100,000  | 2,500-4,000   |
 
 ## <a name="next-steps"></a>次のステップ
 

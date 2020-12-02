@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: 8f184de8953e8e8bfe982d2502ca476fb54a66c9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7fd9e504448d55b4a2ef8c10b4ba1176cb2e3402
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95903714"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172637"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>すべてのアプリを Azure AD と統合するための 5 つの手順
 
@@ -38,7 +38,7 @@ Azure Active Directory (Azure AD) には、簡単に開始できるようにす�
 - [AWS](../saas-apps/amazon-web-service-tutorial.md)
 - [Slack](../saas-apps/slack-tutorial.md)
 
-さらに、組織に既に存在するアプリケーションや、Azure AD ギャラリーにまだ属していないベンダーの任意のサードパーティ アプリケーションなど、[ギャラリーにないアプリケーションを統合する](../manage-apps/view-applications-portal.md)こともできます。 また、[ギャラリーに存在していないアプリを追加する](../azuread-dev/howto-app-gallery-listing.md)こともできます。
+さらに、組織に既に存在するアプリケーションや、Azure AD ギャラリーにまだ属していないベンダーの任意のサードパーティ アプリケーションなど、[ギャラリーにないアプリケーションを統合する](../manage-apps/view-applications-portal.md)こともできます。 また、[ギャラリーに存在していないアプリを追加する](../develop/v2-howto-app-gallery-listing.md)こともできます。
 
 最後に、社内で開発したアプリを統合することもできます。 これについては、このガイドの手順 5 で説明します。
 

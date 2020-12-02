@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 15026c378c4c399915e99b0910f1e6518f5adfc8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c8ed791fc9496e67acdcfbfafddad9170ac47535
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151857"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522585"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>Azure Monitor 用の Azure セキュリティ ベースライン
 
-このセキュリティ ベースラインは、[Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)のガイダンスを Azure Monitor に適用します。 Azure セキュリティ ベンチマークには、Azure 上のクラウド ソリューションをセキュリティで保護する方法に関する推奨事項がまとめてあります。 内容は、**セキュリティ制御**によってグループ化されています。これは、Azure セキュリティ ベンチマークと、Azure Monitor に適用できる関連ガイダンスによって定義されています。 Azure Monitor に適用できない**制御**は、除外されています。 Azure Monitor を完全に Azure セキュリティ ベンチマークにマップする方法については、[完全な Azure Monitor セキュリティ ベースライン マッピング ファイル](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)を参照してください。
+このセキュリティ ベースラインは、[Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)のガイダンスを Azure Monitor に適用します。 Azure セキュリティ ベンチマークには、Azure 上のクラウド ソリューションをセキュリティで保護する方法に関する推奨事項がまとめてあります。 内容は、**セキュリティ制御** によってグループ化されています。これは、Azure セキュリティ ベンチマークと、Azure Monitor に適用できる関連ガイダンスによって定義されています。 Azure Monitor に適用できない **制御** は、除外されています。 Azure Monitor を完全に Azure セキュリティ ベンチマークにマップする方法については、[完全な Azure Monitor セキュリティ ベースライン マッピング ファイル](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)を参照してください。
 
 Azure Monitor は Azure のコア サービスの一部であり、Azure Monitor サービスをサービスとして個別にデプロイすることはできません。 Azure Monitor コンポーネントはリソースと共にデプロイできますが、そうすることでそれらのリソースのセキュリティ態勢に影響が生じる可能性があります。
 
@@ -324,7 +324,7 @@ Private Link で Azure Monitor を使用すると、'プライベート エン�
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2:機密情報を格納または処理するシステムを分離する
 
-**ガイダンス**: 環境の種類やデータの機密度レベルなど、個々のセキュリティ ドメイン用の個別のサブスクリプションと管理グループを使用して分離を実装します。 アプリケーションやエンタープライズ環境で必要とされる Azure Monitor と関連リソースへのアクセス レベルを制限できます。 Azure Monitor へのアクセスは、Azure Active Directory のロールベースのアクセス制御を使用して制御できます。
+**ガイダンス**: 環境の種類やデータの機密度レベルなど、個々のセキュリティ ドメイン用の個別のサブスクリプションと管理グループを使用して分離を実装します。 アプリケーションやエンタープライズ環境で必要とされる Azure Monitor と関連リソースへのアクセス レベルを制限できます。 Azure ロールベースのアクセス制御を使用して、Azure Monitor へのアクセスを制御できます。
 
 - [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
@@ -361,7 +361,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure のロールベースのアクセス制御 (RBAC) を使用して、Azure Monitor へのアクセスを管理します。
+**ガイダンス**:Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Monitor へのアクセスを管理します。
 
 - [Azure Monitor でのロール、アクセス許可、セキュリティ](platform/roles-permissions-security.md)
 
@@ -685,7 +685,7 @@ Log Analytics ワークスペースなどの、適用可能な Azure Monitor 関
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: バックアップとカスタマー マネージド キーの保護を保証する
 
-**ガイダンス**: Azure DevOps を使用して、Azure ポリシー、Azure Resource Manager テンプレートなどのコードを安全に格納し、管理します。 Azure DevOps で管理するリソースを保護するには、Azure Active Directory (Azure AD) で定義された (Azure DevOps に統合されている場合)、または Active Directory で定義された (TFS に統合されている場合) 特定のユーザー、組み込みのセキュリティ グループ、またはグループにアクセス許可を付与したり、そのアクセス許可を拒否したりできます。   ロールベースのアクセス制御を使用して、カスタマー マネージド キーを保護します。 
+**ガイダンス**: Azure DevOps を使用して、Azure ポリシー、Azure Resource Manager テンプレートなどのコードを安全に格納し、管理します。 Azure DevOps で管理するリソースを保護するには、Azure Active Directory (Azure AD) で定義された (Azure DevOps に統合されている場合)、または Active Directory で定義された (TFS に統合されている場合) 特定のユーザー、組み込みのセキュリティ グループ、またはグループにアクセス許可を付与したり、そのアクセス許可を拒否したりできます。   Azure ロールベースのアクセス制御を使用して、カスタマー マネージド キーを保護します。 
 
 また、Key Vault で論理的な削除と消去保護を有効にして、偶発的または悪意のある削除からキーを保護します。 Azure Storage を使用して Azure Resource Manager テンプレート バックアップを格納した場合、BLOB または BLOB のスナップショットが削除されたときに、論理的な削除機能でデータを保存および復旧することができます。 
 

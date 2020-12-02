@@ -5,18 +5,18 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 01/31/2020
+ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: efd35cfe2660f4597ec0c95dc29bcb4b839da680
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2cc935e81e867609159b5c150b6ee7c346bb9f8e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306941"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026150"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>メンテナンス コントロールと Azure PowerShell による更新をコントロールする
 
-メンテナンス コントロールを使用すると、分離された VM や Azure 専用ホストに更新プログラムを適用するタイミングを決定できます。 このトピックでは、メンテナンス コントロール用の Azure PowerShell オプションについて説明します。 メンテナンス コントロールを使用する利点、その制限、およびその他の管理オプションの詳細については、「[メンテナンス コントロールを使用したプラットフォーム更新プログラムの管理](maintenance-control.md)」を参照してください。
+メンテナンス コントロールを使用すると、分離された VM や Azure 専用ホストのホスト インフラストラクチャにプラットフォームの更新プログラムを適用するタイミングを決定できます。 このトピックでは、メンテナンス コントロール用の Azure PowerShell オプションについて説明します。 メンテナンス コントロールを使用する利点、その制限、およびその他の管理オプションの詳細については、「[メンテナンス コントロールを使用したプラットフォーム更新プログラムの管理](maintenance-control.md)」を参照してください。
  
 ## <a name="enable-the-powershell-module"></a>PowerShell モジュールを有効にする
 
@@ -34,12 +34,12 @@ Install-Module -Name Az.Maintenance
 
 ローカルにインストールする場合は、管理者として、PowerShell プロンプトを開いてください。
 
-*信頼されていないリポジトリ*からインストールするかどうかを確認するメッセージが表示される場合もあります。 モジュールをインストールするには、`Y` を入力するか、 **[すべてはい]** を選択します。
+*信頼されていないリポジトリ* からインストールするかどうかを確認するメッセージが表示される場合もあります。 モジュールをインストールするには、`Y` を入力するか、 **[すべてはい]** を選択します。
 
 
 ## <a name="create-a-maintenance-configuration"></a>メンテナンス構成を作成する
 
-構成のコンテナーとして、リソースグループを作成します。 この例では、*myMaintenanceRG*という名前のリソース グループが、*eastus* に作成されます。 使用するリソース グループが既にある場合は、この部分をスキップし、残りの例のリソース グループ名を自分の所有者に置き換えることができます。
+構成のコンテナーとして、リソースグループを作成します。 この例では、*myMaintenanceRG* という名前のリソース グループが、*eastus* に作成されます。 使用するリソース グループが既にある場合は、この部分をスキップし、残りの例のリソース グループ名を自分の所有者に置き換えることができます。
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -67,15 +67,9 @@ $config = New-AzMaintenanceConfiguration `
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 ```
 
-### <a name="create-a-maintenance-configuration-with-scheduled-window-in-preview"></a>日程計画された期間でメンテナンス構成を作成する (プレビュー)
+### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>日程計画された期間でメンテナンス構成を作成する
 
-
-> [!IMPORTANT]
-> 期間の日程計画機能はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-Azure でお使いのリソースに更新プログラムが適用されるとき、New-AzMaintenanceConfiguration を使用し、日程計画された期間でメンテナンス構成を作成します。 この例では、毎月第 4 月曜日に 5 時間という日程計画で myConfig という名前のメンテナンス構成が作成されます。 日程計画された期間を作成すると、更新プログラムを手動で適用する必要がなくなります。
+Azure でリソースに更新プログラムを適用する日程計画された期間を宣言することもできます。 この例では、毎月第 4 月曜日に 5 時間という日程計画で myConfig という名前のメンテナンス構成が作成されます。 日程計画された期間を作成すると、更新プログラムを手動で適用する必要がなくなります。
 
 ```azurepowershell-interactive
 $config = New-AzMaintenanceConfiguration `
@@ -89,10 +83,13 @@ $config = New-AzMaintenanceConfiguration `
    -RecurEvery "Month Fourth Monday"
 ```
 > [!IMPORTANT]
-> メンテナンスの**期間**は、"*2 時間*" 以上である必要があります。 メンテナンスの**繰り返し**は少なくとも 35 日間に 1 回に行われるように設定する必要があります。
+> メンテナンスの **期間** は、"*2 時間*" 以上である必要があります。 メンテナンスの **繰り返し** は少なくとも 35 日間に 1 回に行われるように設定する必要があります。
 
-メンテナンスの**繰り返し**は、日、週、月単位のスケジュールで表すことができます。 日単位のスケジュールは、たとえば、recurEvery: Day, recurEvery:3Days になります。 週単位のスケジュールは、たとえば、recurEvery: 3Weeks, recurEvery:Week Saturday,Sunday になります。 月単位のスケジュールは、たとえば、recurEvery: Month day23,day24, recurEvery:Month Last Sunday, recurEvery:Month Fourth Monday になります。
-
+メンテナンスの **繰り返し** は、日、週、月単位で表すことができます。 いくつかの例を次に示します。
+ - **毎日** - RecurEvery "Day" **または** "3Days" 
+ - **毎週** - RecurEvery "3Weeks" **または** "Week Saturday,Sunday" 
+ - **毎月** - - RecurEvery "Month day23,day24" **または** "Month Last Sunday" **または** "Month Fourth Monday"  
+      
 
 ## <a name="assign-the-configuration"></a>構成を割り当てる
 

@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2020
-ms.openlocfilehash: bab74a1db04bb557aa6604fe76c05ba3d087f8c0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d231de8e262194cd7dda2462a3f54d7d531eb63c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540792"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542084"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Azure Machine Learning データの監視のリファレンス
 
@@ -79,7 +79,7 @@ Azure Machine Learning では、次のディメンションがメトリックに
 
 | Dimension | 説明 |
 | ---- | ---- |
-| クラスター名 | コンピューティング インスタンスの名前。 すべてのクォータ メトリックで使用できます。 |
+| クラスター名 | コンピューティング クラスター リソースの名前。 すべてのクォータ メトリックで使用できます。 |
 | VM ファミリ名 | クラスターによって使用される VM ファミリの名前。 クォータ使用率で使用できます。 |
 | VM 優先度 | VM の優先度。 クォータ使用率で使用できます。
 | CreatedTime | CpuUtilization と GpuUtilization でのみ使用できます。 |

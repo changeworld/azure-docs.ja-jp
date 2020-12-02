@@ -6,12 +6,12 @@ author: markwolff
 ms.author: marwolff
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5b15492a36032a53ac81929eb55bce0bc70e040c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6403ecd534d17298a10ffcf8f089a2b010fa3a51
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335133"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536457"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>JavaScript アプリケーションに対するソース マップのサポート
 
@@ -67,7 +67,7 @@ Application Insights リソースにリンクされているストレージ ア�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-### <a name="required-role-based-access-control-rbac-settings-on-your-blob-container"></a>BLOB コンテナーで必要なロールベースのアクセス制御 (RBAC) の設定
+### <a name="required-azure-role-based-access-control-azure-rbac-settings-on-your-blob-container"></a>BLOB コンテナーで必要な Azure ロールベースのアクセス制御 (Azure RBAC) の設定
 
 ポータルでこの機能を使用するすべてのユーザーには、少なくとも、BLOB コンテナーに対する[ストレージ BLOB データ閲覧者][storage blob data reader]が割り当てられている必要があります。 この機能を通じてソース マップを使用する他のすべてのユーザーに、このロールを割り当てる必要があります。
 

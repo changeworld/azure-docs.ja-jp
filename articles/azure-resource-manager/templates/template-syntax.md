@@ -2,13 +2,13 @@
 title: テンプレートの構造と構文
 description: 宣言型 JSON 構文を使用した Azure Resource Manager テンプレートの構造とプロパティについて説明します。
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: ae2c5a5fe1440c3adbae475cd4c7652a3b01c285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: b7cf30741cfd2b85046f64fddf01c414676a97e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86116541"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95911500"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>ARM テンプレートの構造と構文について
 
@@ -45,6 +45,62 @@ ms.locfileid: "86116541"
 | [outputs](#outputs) |いいえ |デプロイ後に返される値。 |
 
 各要素には、設定できるプロパティがあります。 この記事では、テンプレートのセクションについて詳しく説明します。
+
+## <a name="data-types"></a>データ型
+
+ARM テンプレート内では、次のデータ型を使用できます。
+
+* string
+* securestring
+* INT
+* [bool]
+* object
+* secureObject
+* array
+
+次のテンプレートは、データ型の形式を示しています。 各型には、正しい形式の既定値があります。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "stringParameter": {
+      "type": "string",
+      "defaultValue": "option 1"
+    },
+    "intParameter": {
+      "type": "int",
+      "defaultValue": 1
+    },
+    "boolParameter": {
+        "type": "bool",
+        "defaultValue": true
+    },
+    "objectParameter": {
+      "type": "object",
+      "defaultValue": {
+        "one": "a",
+        "two": "b"
+      }
+    },
+    "arrayParameter": {
+      "type": "array",
+      "defaultValue": [ 1, 2, 3 ]
+    }
+  },
+  "resources": [],
+  "outputs": {}
+}
+```
+
+セキュリティで保護された文字列では文字列と同じ形式が使用され、セキュリティで保護されたオブジェクトではオブジェクトと同じ形式が使用されます。 パラメーターをセキュリティで保護された文字列またはセキュリティで保護されたオブジェクトに設定した場合、パラメーターの値はデプロイ履歴に保存されず、ログにも記録されません。 ただし、セキュリティで保護された値を、セキュリティで保護された値を想定していないプロパティに設定した場合、その値は保護されません。 たとえば、セキュリティで保護された文字列をタグに設定すると、その値はプレーンテキストとして格納されます。 パスワードとシークレットにはセキュリティで保護された文字列を使用します。
+
+インライン パラメーターとして渡される整数の場合、値の範囲はデプロイに使用する SDK またはコマンドライン ツールによって制限されることがあります。 たとえば、PowerShell を使用してテンプレートをデプロイする場合、整数型は -2147483648 から 2147483647 の範囲で指定できます。 この制限を回避するには、[パラメーター ファイル](parameter-files.md)で大きな整数値を指定します。 リソースの種類によって、整数プロパティに独自の制限が適用されます。
+
+テンプレートでブール値と整数値を指定する場合は、値を引用符で囲まないでください。 文字列値は二重引用符で始めて終わります。
+
+オブジェクトは左中かっこで始めて、右中かっこで終わります。 配列は左大かっこで始めて、右大かっこで終わります。
 
 ## <a name="parameters"></a>パラメーター
 
@@ -83,21 +139,9 @@ ms.locfileid: "86116541"
 
 パラメーターの使用方法の例については、「[Azure Resource Manager テンプレートのパラメーター](template-parameters.md)」を参照してください。
 
-### <a name="data-types"></a>データ型
-
-インライン パラメーターとして渡される整数の場合、値の範囲はデプロイに使用する SDK またはコマンドライン ツールによって制限されることがあります。 たとえば、PowerShell を使用してテンプレートをデプロイする場合、整数型は -2147483648 から 2147483647 の範囲で指定できます。 この制限を回避するには、[パラメーター ファイル](parameter-files.md)で大きな整数値を指定します。 リソースの種類によって、整数プロパティに独自の制限が適用されます。
-
-テンプレートでブール値と整数値を指定する場合は、値を引用符で囲まないでください。 文字列値は二重引用符で始めて終わります。
-
-オブジェクトは左中かっこで始めて、右中かっこで終わります。 配列は左大かっこで始めて、右大かっこで終わります。
-
-パラメーターをセキュリティで保護された文字列またはセキュリティで保護されたオブジェクトに設定した場合、パラメーターの値はデプロイ履歴に保存されず、ログにも記録されません。 ただし、セキュリティで保護された値を、セキュリティで保護された値を想定していないプロパティに設定した場合、その値は保護されません。 たとえば、セキュリティで保護された文字列をタグに設定すると、その値はプレーンテキストとして格納されます。 パスワードとシークレットにはセキュリティで保護された文字列を使用します。
-
-データ型の書式設定のサンプルについては、「[パラメーターの型の形式](parameter-files.md#parameter-type-formats)」を参照してください。
-
 ## <a name="variables"></a>変数
 
-テンプレート内で使用できる値は、variables セクションで構築します。 必ずしも変数を定義する必要はありませんが、変数を定義することによって複雑な式が減り、テンプレートが単純化されることはよくあります。
+テンプレート内で使用できる値は、variables セクションで構築します。 必ずしも変数を定義する必要はありませんが、変数を定義することによって複雑な式が減り、テンプレートが単純化されることはよくあります。 各変数の形式は、いずれかの[データ型](#data-types)に一致します。
 
 次の例では、変数の定義に使用できるオプションを示します。
 
@@ -325,7 +369,7 @@ Visual Studio Code では、[Azure Resource Manager ツール拡張機能](quick
   },
 ```
 
-**パラメーター**の場合、`description` プロパティを使って `metadata` オブジェクトを追加します。
+**パラメーター** の場合、`description` プロパティを使って `metadata` オブジェクトを追加します。
 
 ```json
 "parameters": {
@@ -341,7 +385,7 @@ Visual Studio Code では、[Azure Resource Manager ツール拡張機能](quick
 
 ![パラメーター ヒントの表示](./media/template-syntax/show-parameter-tip.png)
 
-**リソース**の場合、`comments` 要素またはメタデータ オブジェクトを追加します。 次の例は、コメント要素とメタデータ オブジェクトの両方を示しています。
+**リソース** の場合、`comments` 要素またはメタデータ オブジェクトを追加します。 次の例は、コメント要素とメタデータ オブジェクトの両方を示しています。
 
 ```json
 "resources": [
@@ -367,7 +411,7 @@ Visual Studio Code では、[Azure Resource Manager ツール拡張機能](quick
 ]
 ```
 
-**出力**の場合、メタデータ オブジェクトを出力値に追加します。
+**出力** の場合、メタデータ オブジェクトを出力値に追加します。
 
 ```json
 "outputs": {

@@ -2,21 +2,21 @@
 title: Azure Event Grid から HTTP エンドポイントへのイベントの受信
 description: HTTP エンドポイントを検証した後、Azure Event Grid からのイベントを受信して逆シリアル化する方法について説明します
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 11/19/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 42cf237f0c2fbe091307625fde70613ab9173b0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75c80fb85d39298f1130537971bc700897c039d0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326475"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96023723"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>HTTP エンドポイントへのイベントの受信
 
 この記事では、イベント サブスクリプションからイベントを受信する [HTTP エンドポイントを検証](webhook-event-delivery.md)した後、イベントを逆シリアル化する方法を説明します。 この記事では、デモンストレーション用に Azure 関数を使用しますが、アプリケーションがどこでホストされている場合でも、同じ概念を適用できます。
 
 > [!NOTE]
-> Event Grid で Azure 関数をトリガーするときは、[Event Grid トリガー](../azure-functions/functions-bindings-event-grid.md)を使用することを**強く**お勧めします。 ここでの汎用 WebHook トリガーの使用はデモンストレーションが目的です。
+> Event Grid で Azure 関数をトリガーするときは、[Event Grid トリガー](../azure-functions/functions-bindings-event-grid.md)を使用することを **強く** お勧めします。 ここでの汎用 WebHook トリガーの使用はデモンストレーションが目的です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -140,9 +140,11 @@ module.exports = function (context, req) {
 }]
 ```
 
-[実行] をクリックすると、200 OK と、本文に `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` が出力されます。
+[実行] をクリックすると、200 OK と、本文に `{"validationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` が出力されます。
 
-![検証の応答](./media/receive-events/validation-response.png)
+:::image type="content" source="./media/receive-events/validation-request.png" alt-text="検証要求":::
+
+:::image type="content" source="./media/receive-events/validation-output.png" alt-text="検証の出力":::
 
 ## <a name="handle-blob-storage-events"></a>BLOB ストレージ イベントを処理する
 
@@ -394,6 +396,8 @@ module.exports = function (context, req) {
 ```
 
 この機能は、[カスタム イベントと CURL をポータルから送信する](./custom-event-quickstart-portal.md)か、[Postman](https://www.getpostman.com/) などのエンドポイントに POST できる任意のサービスまたはアプリケーションを使用して[カスタム トピックを投稿する](./post-to-custom-topic.md)ことで、ライブでテストすることもできます。 エンドポイントが関数 URL として設定されたカスタム トピックとイベント サブスクリプションを作成します。
+
+[!INCLUDE [event-grid-message-headers](../../includes/event-grid-message-headers.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,31 +1,31 @@
 ---
 title: Azure Active Directory REST API - 認証
-description: REST API を通して Azure Active Directory を使用して Azure App Configuration に対して認証する
+description: REST API を使用して、Azure App Configuration に Azure Active Directory を使用して認証する
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: fb3d00fb79c55e29d578f5e068e4ae025414a935
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 78344bd3896ca7d00c9f761c586b6f5142dc1e58
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423728"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95253407"
 ---
 # <a name="azure-active-directory-authentication"></a>Azure Active Directory 認証
 
-HTTP 要求は、Azure Active Directory (Azure AD) から取得したトークンが使われる **ベアラー** 認証スキームを使用して認証できます。 これらの要求は、TLS で送信する必要があります。
+HTTP 要求は、`Bearer` 認証スキームで、Azure Active Directory (Azure AD) から取得したトークンを使用して認証できます。 これらの要求は、トランスポート層セキュリティ (TLS) 経由で送信する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure AD トークンを要求するために使用されるプリンシパルは、適切な [App Configuration ロール](./rest-api-authorization-azure-ad.md)の 1 つに割り当てられている必要があります。
+Azure AD トークンの要求に使用されるプリンシパルを、該当する [Azure App Configuration ロール](./rest-api-authorization-azure-ad.md)の 1 つに割り当てる必要があります。
 
-それぞれの要求には、認証に必要なすべての HTTP ヘッダーを指定します。 最低限必要なのは以下のとおりです。
+要求ごとに、認証に必要なすべての HTTP ヘッダーを指定します。 最小要件は次のとおりです。
 
 |  要求ヘッダー | 説明  |
 | --------------- | ------------ |
-| **承認** | **ベアラー** スキームに必要な認証情報。 形式と詳細については下で説明します。 |
+| `Authorization` | `Bearer` スキームに必要な認証情報。 |
 
 **例:**
 
@@ -34,37 +34,40 @@ Host: {myconfig}.azconfig.io
 Authorization: Bearer {{AadToken}}
 ```
 
-## <a name="azure-active-directory-token-acquisition"></a>Azure Active Directory トークンの取得
+## <a name="azure-ad-token-acquisition"></a>Azure AD トークンの取得
 
-Azure AD トークンを取得する前に、ユーザーを何として認証するのか、トークンの対象ユーザー、どの Azure AD エンドポイント (機関) を使用する必要があるかを特定する必要があります。
+Azure AD トークンを取得する前に、どのユーザーとして認証するのか、トークン要求する対象ユーザー、どの Azure AD エンドポイント (機関) を使用するのかを指定する必要があります。
 
 ### <a name="audience"></a>対象ユーザー
 
-Azure AD トークンは、適切な対象ユーザーを指定して要求する必要があります。 Azure App Configuration では、トークンの要求時には以下の対象ユーザーのいずれかを指定する必要があります。 対象ユーザーは、トークンの要求対象になっている "リソース" と呼ばれることもあります。
+適切な対象ユーザーを指定して Azure AD トークンを要求します。 Azure App Configuration には、次のいずれかの対象ユーザーを使用します。 対象ユーザーは、トークンの要求対象になっている "*リソース*" と呼ばれることもあります。
 
 - {configurationStoreName}.azconfig.io
 - *.azconfig.io
 
 > [!IMPORTANT]
-> 要求された対象ユーザーが {configurationStoreName}.azconfig.io の場合、それは、要求の送信に使用される "Host" 要求ヘッダー (大文字と小文字が区別されます) と完全に一致している必要があります。
+> 要求された対象ユーザーが `{configurationStoreName}.azconfig.io` の場合、要求の送信に使用される `Host` 要求ヘッダーと完全に一致 (大文字と小文字が区別されます) している必要があります。
 
 ### <a name="azure-ad-authority"></a>Azure AD 機関
 
-Azure AD 機関は、Azure AD トークンを取得するために使用されるエンドポイントです。 形式は `https://login.microsoftonline.com/{tenantId}` です。 `{tenantId}` セグメントは、認証しようとしているユーザーまたはアプリケーションが属している、Azure Active Directory テナント ID を指します。
+Azure AD 機関は、Azure AD トークンを取得するために使用するエンドポイントです。 これは `https://login.microsoftonline.com/{tenantId}` の形式です。 `{tenantId}` セグメントは、認証しようとしているユーザーまたはアプリケーションが属している Azure AD テナント ID を指します。
 
 ### <a name="authentication-libraries"></a>認証ライブラリ
 
-Azure AD トークンを取得するプロセスを簡素化するため、Azure には、Azure Active Directory 認証ライブラリ (ADAL) と呼ばれるライブラリのセットが用意されています。 これらのライブラリは、複数言語用に構築されています。 ドキュメントは[ここ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)にあります。
+Azure AD トークンを取得するプロセスを簡素化するため、Azure には、Azure Active Directory 認証ライブラリと呼ばれるライブラリのセットが用意されています。 これらの Azure ライブラリは、複数言語用に構築されています。 詳細については、[ドキュメント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)を参照してください。
 
-## <a name="errors"></a>**エラー**
+## <a name="errors"></a>エラー
+
+次のエラーが発生することがあります。
 
 ```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256, Bearer
 ```
 
-**理由:** ベアラー スキームでの Authorization 要求ヘッダーが指定されていません。
-**解決方法:** 有効な ```Authorization``` HTTP 要求ヘッダーを指定してください
+**理由:** `Bearer` スキームで承認要求ヘッダーが指定されていません。
+
+**解決方法:** 有効な `Authorization` HTTP 要求ヘッダーを指定してください。
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -72,7 +75,8 @@ WWW-Authenticate: HMAC-SHA256, Bearer error="invalid_token", error_description="
 ```
 
 **理由:** Azure AD トークンが有効ではありません。
-**解決方法:** Azure AD 機関から Azure AD トークンを取得し、適切な対象ユーザーが使用されていることを確認してください。
+
+**解決方法:** Azure AD 機関から Azure AD トークンを取得し、適切な対象ユーザーを確実に使用してください。
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -80,4 +84,5 @@ WWW-Authenticate: HMAC-SHA256, Bearer error="invalid_token", error_description="
 ```
 
 **理由:** Azure AD トークンが有効ではありません。
-**解決方法:** Azure AD 機関から Azure AD トークンを取得し、Azure AD テナントが、構成ストアが属しているサブスクリプションに関連付けられているものであることを確認してください。 このエラーは、プリンシパルが複数の Azure AD テナントに属している場合に表示される場合があります。
+
+**解決方法:** Azure AD 機関から Azure AD トークンを取得します。 Azure AD テナントが、構成ストアが属しているサブスクリプションに確実に関連付けられているようします。 このエラーは、プリンシパルが複数の Azure AD テナントに属している場合に表示されることがあります。

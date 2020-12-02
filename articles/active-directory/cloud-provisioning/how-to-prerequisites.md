@@ -7,33 +7,38 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/06/2019
+ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dbdd5153186ee47e37856637eac16d6d450cc5a
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 5f6c5985c16875e263f2494f56636abb4d4e980d
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695182"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237257"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect クラウド プロビジョニングの前提条件
 この記事では、ID ソリューションとして Azure Active Directory (Azure AD) クラウド プロビジョニングを選択して使用する方法に関するガイダンスを示します。
 
-
-
 ## <a name="cloud-provisioning-agent-requirements"></a>クラウド プロビジョニング エージェントの要件
 Azure AD Connect クラウド プロビジョニングを使用するには、次のものが必要です。
-    
+
+- エージェント サービスを実行する Azure AD Connect Cloud Sync gMSA (グループ管理サービス アカウント) を作成するためのドメイン管理者またはエンタープライズ管理者の資格情報。 
 - ゲスト ユーザーではない、Azure AD テナントのハイブリッド ID 管理者アカウント。
 - Windows 2012 R2 以降を搭載した、プロビジョニング エージェント用のオンプレミス サーバー  このサーバーは、[Active Directory 管理層モデル](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)に基づいた階層 0 のサーバーである必要があります。
 - オンプレミスのファイアウォールの構成
 
->[!NOTE]
->現在、プロビジョニング エージェントは、英語の言語サーバーにのみインストールできます。 英語以外のサーバーに英語の言語パックをインストールすることは有効な回避策ではなく、エージェントのインストールが失敗します。 
+## <a name="group-managed-service-accounts"></a>Group Managed Service Accounts
+グループ管理サービス アカウントは、パスワードの自動管理、簡略化されたサービス プリンシパル名 (SPN) の管理、管理を他の管理者に委任する機能を提供し、またこの機能を複数のサーバーに拡張する、マネージド ドメイン アカウントです。  Azure AD Connect Cloud Sync では、エージェントを実行するための gMSA がサポートされ、使用されています。  このアカウントを作成するために、セットアップ中に管理者資格情報の入力を求められます。  このアカウントは、(domain\provAgentgMSA$) として表示されます。  gMSA の詳細については、[グループ管理サービス アカウント](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)に関するページを参照してください。 
 
-ここからは、これらの前提条件に関する詳細な手順について説明します。
+### <a name="prerequisites-for-gmsa"></a>gMSA の前提条件:
+1.  gMSA ドメインのフォレスト内の Active Directory スキーマを Windows Server 2012 に更新する必要があります。
+2.  ドメイン コントローラー上の [PowerShell RSAT モジュール](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools)
+3.  ドメイン内の少なくとも 1 つのドメイン コントローラーで Windows Server 2012 が実行されている必要があります。
+4.  エージェントをインストールするドメイン参加済みサーバーは、Windows Server 2012 以降である必要があります。
+
+gMSA アカウントを使用するように既存のエージェントをアップグレードする手順については、「[グループ管理サービス アカウント](how-to-install.md#group-managed-service-accounts)」を参照してください。
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>Azure Active Directory 管理センター
 
@@ -57,7 +62,9 @@ Azure AD Connect クラウド プロビジョニングを使用するには、�
         | --- | --- |
         | **80** | TLS/SSL 証明書を検証する際に、証明書失効リスト (CRL) をダウンロードします。  |
         | **443** | サービスを使用したすべての送信方向の通信を処理します。 |
+        |**8082**|インストール、および HIS 管理 API を構成する場合に必要です。  このポートは、エージェントのインストール後、および API の使用を計画していない場合は削除できます。   |
         | **8080** (省略可能) | ポート 443 が使用できない場合、エージェントは、ポート 8080 経由で 10 分おきにその状態をレポートします。 この状態は Azure AD ポータルに表示されます。 |
+   
      
    - ご利用のファイアウォールが送信元ユーザーに応じて規則を適用している場合は、ネットワーク サービスとして実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。
    - ファイアウォールまたはプロキシで安全なサフィックスの指定が許可されている場合は、\*.msappproxy.net および \*.servicebus.windows.net への接続を追加します。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。
@@ -66,6 +73,8 @@ Azure AD Connect クラウド プロビジョニングを使用するには、�
 
 >[!NOTE]
 > Windows Server Core へのクラウド プロビジョニング エージェントのインストールはサポートされていません。
+
+
 
 
 ### <a name="additional-requirements"></a>その他の要件
@@ -91,24 +100,6 @@ TLS 1.2 を有効にするには、次の手順に従います。
 
 1. サーバーを再起動します。
 
-## <a name="known-limitations"></a>既知の制限事項
-既知の制限事項には、次のようなものがあります。
-
-### <a name="delta-synchronization"></a>差分同期
-
-- 差分同期のグループ スコープ フィルターは、メンバーが 1,500 を超えるとサポートしません。
-- グループ スコープ フィルターの一部として使用されているグループを削除すると、そのグループのメンバーであるユーザーが削除されません。 
-- スコープ内の OU またはグループの名前を変更すると、差分同期を実行してもユーザーが削除されません。
-
-### <a name="provisioning-logs"></a>プロビジョニング ログ
-- プロビジョニング ログを使用すると、作成操作と更新操作が明確に区別されません。  更新時に作成操作、および作成時に更新操作が表示される場合があります。
-
-### <a name="cross-domain-references"></a>クロス ドメイン参照
-- メンバー参照を持つユーザーが別のドメインに存在する場合、そのユーザーは、そのユーザーの現在のドメイン同期の一部として同期されることはありません。 
-- (例: 同期しているユーザーのマネージャーがドメイン B に存在し、そのユーザーはドメイン A に存在しています。ドメイン A とドメイン B の両方を同期している場合、それらは同期されますが、ユーザー マネージャーによって引き継がれることはありません)。
-
-### <a name="group-re-naming-or-ou-re-naming"></a>グループ名の変更または OU 名の変更
-- 特定の構成のスコープ内にある AD でグループまたは OU の名前を変更すると、クラウド プロビジョニング ジョブによって AD での名前の変更が認識されなくなります。 ジョブは検疫されず、正常な状態のままになります。
 
 
 

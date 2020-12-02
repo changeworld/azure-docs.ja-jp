@@ -9,17 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: b7c442aaf6484e8e47bd6d00c91023fba43af75d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bca2f0229a15f44ff8f3589a9c1e80032036b97c
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325021"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95507210"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>R での Azure Machine Learning Studio (classic) の使用を開始する
 
-**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![いいえ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
-
+**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としています。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 <!-- Stephen F Elston, Ph.D. -->
 このチュートリアルでは、Azure Machine Learning スタジオを使用して R コードを作成、テスト、実行する方法について説明します。 最終的には、予測ソリューションが完成します。
@@ -122,9 +121,9 @@ maml.mapOutputPort("data.set")
 
 RStudio は、広く使用されている R 向けの IDE です。このガイドで使用される R コードの一部は、RStudio を使用して編集、テスト、デバッグします。 R コードをテストして準備ができたら、RStudio エディターで切り取って、Machine Learning スタジオの [Execute R Script][execute-r-script] モジュールに貼り付けることができます。
 
-デスクトップ コンピューターに R プログラミング言語がインストールされていない場合は、今すぐ行います。 オープンソースの R 言語の無料ダウンロードが、[包括的な R アーカイブ ネットワーク (CRAN)](https://www.r-project.org/) で入手できます。 Windows、Mac OS、Linux/UNIX で利用できるダウンロードが用意されています。 お近くのミラー サイトを選択し、ダウンロードの指示に従ってください。 さらに、CRAN には、多くの便利な分析とデータ操作のパッケージが用意されています。
+デスクトップ コンピューターに R プログラミング言語がインストールされていない場合は、今すぐ行います。 オープンソースの R 言語の無料ダウンロードが、[包括的な R アーカイブ ネットワーク (CRAN)](https://www.r-project.org/) で入手できます。 Windows、macOS、Linux/UNIX で利用できるダウンロードが用意されています。 お近くのミラー サイトを選択し、ダウンロードの指示に従ってください。 さらに、CRAN には、多くの便利な分析とデータ操作のパッケージが用意されています。
 
-RStudio を初めて使用する場合は、デスクトップ バージョンをダウンロードしてインストールします。 Windows、Mac OS、Linux/UNIX 向けの RStudio ダウンロードが [RStudio](http://www.rstudio.com/products/RStudio/) にあります。 指示に従って、RStudio をデスクトップ コンピューターにインストールします。
+RStudio を初めて使用する場合は、デスクトップ バージョンをダウンロードしてインストールします。 Windows、macOS、Linux/UNIX 向けの RStudio ダウンロードが [RStudio](http://www.rstudio.com/products/RStudio/) にあります。 指示に従って、RStudio をデスクトップ コンピューターにインストールします。
 
 RStudio のチュートリアル入門書が「[Using the RStudio IDE (RStudio IDE の使用)](https://support.rstudio.com/hc/sections/200107586-Using-RStudio)」で入手できます。
 
@@ -140,7 +139,7 @@ RStudio の使用方法の詳細については、「[RStudio ドキュメント
 
 #### <a name="load-the-dataset"></a><a id="loading"></a>データセットの読み込み
 
-最初に、 **csdairydata.csv** ファイルを Machine Learning スタジオに読み込みます。
+最初に、**csdairydata.csv** ファイルを Machine Learning スタジオに読み込みます。
 
 1. Machine Learning スタジオ環境を起動します。
 1. 画面の左下の **[+ 新規]** を選択し、 **[データセット]** を選択します。
@@ -154,12 +153,12 @@ RStudio の使用方法の詳細については、「[RStudio ドキュメント
 いくつかのデータを Machine Learning スタジオに読み込んだので、分析をするために実験を作成する必要があります。  
 
 1. 画面の左下の **[+ 新規]** を選択し、 **[Experiments]\(実験\)**  >  **[Blank Experiment]\(空の実験\)** を選択します。
-1. 実験を選択し、ページ上部のタイトル **[... に関して作成された実験]** を変更することで、実験に名前を付けます。 たとえば、「 **カリフォルニア乳製品分析** 」に変更します。
+1. 実験を選択し、ページ上部のタイトル **[... に関して作成された実験]** を変更することで、実験に名前を付けます。 たとえば、「**カリフォルニア乳製品分析**」に変更します。
 1. 実験ページの左側で、 **[保存済みのデータセット]**  >  **[マイ データセット]** の順に選択します。 前にアップロードした **cadairydata.csv** ファイルが表示されます。
 1. **csdairydata.csv データセット** を実験にドラッグします。
-1. 左側のペインの上部にある **[実験項目の検索]** ボックスで、「 [Execute R Script][execute-r-script]」と入力します。 検索一覧に、モジュールが表示されます。
+1. 左側のペインの上部にある **[実験項目の検索]** ボックスで、「[Execute R Script][execute-r-script]」と入力します。 検索一覧に、モジュールが表示されます。
 1. [Execute R Script][execute-r-script] モジュールを、パレットにドラッグします。
-1. **csdairydata.csv データセット** の出力を、 [Execute R Script][execute-r-script] の左端の入力 ( **データセット 1** ) に接続します。
+1. **csdairydata.csv データセット** の出力を、[Execute R Script][execute-r-script] の左端の入力 (**データセット 1**) に接続します。
 1. **[保存]** を選択します。
 
 この時点で、実験はこの例のように表示されます。
@@ -169,7 +168,7 @@ RStudio の使用方法の詳細については、「[RStudio ドキュメント
 
 #### <a name="check-on-the-data"></a>データのチェック
 
-実験に読み込んだデータを調べましょう。 実験で、 **cadairydata.csv データセット** の出力を選択し、 **[視覚化]** を選択します。 こちらのような結果が表示されます。
+実験に読み込んだデータを調べましょう。 実験で、**cadairydata.csv データセット** の出力を選択し、 **[視覚化]** を選択します。 こちらのような結果が表示されます。
 
 ![cadairydata.csv データセットのサマリーを示すスクリーンショット。](./media/r-quickstart/fig4.png)
 
@@ -231,13 +230,13 @@ load("src/yourData.rdata") # Reads a zipped R data file
    maml.mapOutputPort('cadairydata')
    ```
 
-1. zip ファイルを作成し、スクリプトをこの zip ファイルにコピーします。 Windows の場合、ファイルを右クリックし、 **[送る]**  >  **[圧縮フォルダー]** の順に選択します。 この操作により、 **simpleplot.R** ファイルを含む新しい zip ファイルが作成されます。
+1. zip ファイルを作成し、スクリプトをこの zip ファイルにコピーします。 Windows の場合、ファイルを右クリックし、 **[送る]**  >  **[圧縮フォルダー]** の順に選択します。 この操作により、**simpleplot.R** ファイルを含む新しい zip ファイルが作成されます。
 
 1. ファイルを、Machine Learning スタジオの **データセット** に追加し、種類を **zip** に指定します。 データセットに zip ファイルが表示されるようになります。
 
 1. この zip ファイルを **データセット** から **ML スタジオのキャンバス** にドラッグします。
 
-1. **zip データ アイコン** の出力を、 [R スクリプトの実行][execute-r-script]モジュールの **スクリプト バンドル** 入力に接続します。
+1. **zip データ アイコン** の出力を、[R スクリプトの実行][execute-r-script]モジュールの **スクリプト バンドル** 入力に接続します。
 
 1. [Execute R Script][execute-r-script] モジュールのコード ウィンドウに、`source()` 関数を zip ファイル名を指定して入力します。 この例では、「`source("src/simpleplot.R")`」と入力しました。
 
@@ -255,7 +254,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 cadairydata <- maml.mapInputPort(1)
 ```
 
-**[実行]** ボタンを選択して、実験を実行します。 実行が完了したら、 [[Execute R Script]][execute-r-script] モジュールを選択し、プロパティ ペインの **[出力ログの表示]** を選択します。 ブラウザーで新しいページが開き、output.log ファイルの内容が表示されます。 下へスクロールすると、次のような出力が表示されます。
+**[実行]** ボタンを選択して、実験を実行します。 実行が完了したら、[[Execute R Script]][execute-r-script] モジュールを選択し、プロパティ ペインの **[出力ログの表示]** を選択します。 ブラウザーで新しいページが開き、output.log ファイルの内容が表示されます。 下へスクロールすると、次のような出力が表示されます。
 
 ```output
 [ModuleOutput] InputDataStructure
@@ -404,7 +403,7 @@ maml.mapOutputPort('cadairydata')
 [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 ```
 
-Month の型は、 **Factor w/ 14 levels** になりました。 1 年には 12 か月しかないため、この型は問題です。 また、結果データセット ポートの **[視覚化]** における型が **Categorical** であることもチェックできます。
+Month の型は、**Factor w/ 14 levels** になりました。 1 年には 12 か月しかないため、この型は問題です。 また、結果データセット ポートの **[視覚化]** における型が **Categorical** であることもチェックできます。
 
 問題は、Month 列が体系的にコード化されなかったことです。 ある月が April と呼ばれる場合もあれば、Apr と省略される場合もあります。この問題は、文字列を 3 文字にトリミングすることで解決できます。 コード行は、次の例のようになります。
 
@@ -453,7 +452,7 @@ R データフレームは、強力なフィルター処理機能をサポート
 このデータセットに適用する必要があるフィルター処理はわずかです。 cadairydata データフレームの列を調べると、2 つの不要な列があるのがわかります。 最初の列には行番号が含まれ、あまり役に立ちません。 二番目の Year.Month 列には、重複する情報が含まれています。 次の R コードを使用して、これらの列を簡単に除外できます。
 
 > [!NOTE]
-> これからこのセクションで、[Execute R Script][execute-r-script] モジュールに追加するコードを示します。 `str()` 関数の " *前* " に、新しく各行を追加します。 この関数を使用し、Machine Learning スタジオで結果を検証します。
+> これからこのセクションで、[Execute R Script][execute-r-script] モジュールに追加するコードを示します。 `str()` 関数の "*前*" に、新しく各行を追加します。 この関数を使用し、Machine Learning スタジオで結果を検証します。
 
 次の行を、[Execute R Script][execute-r-script]モジュールの R コードに追加します。
 
@@ -1276,9 +1275,9 @@ maml.mapOutputPort('RMS.df')
 
 RStudio はドキュメントが整っています。 ここでは、使用を開始するための RStudio ドキュメントの重要なセクションに対するリンクをいくつか示します。
 
-* **プロジェクトの作成** :RStudio を使用して、R コードをプロジェクトに編成して管理できます。 詳細については、「[プロジェクトの使用](https://support.rstudio.com/hc/articles/200526207-Using-Projects)」をご覧ください。 これらの手順に従って、この記事の R コードの例に関するプロジェクトを作成します。
-* **R コードの編集と実行** :RStudio は、R コードを編集し実行するための統合環境を提供します。 詳細については、「[コードの編集と実行](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code)」をご覧ください。
-* **Debug** : RStudio には、強力なデバッグ機能が搭載されています。 デバッグ機能の詳細については、「[RStudio でのデバッグ](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio)」をご覧ください。 ブレークポイントのトラブルシューティング機能の詳細については、「[Breakpoint Troubleshooting (ブレークポイントのトラブルシューティング)](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)」を参照してください。
+* **プロジェクトの作成**:RStudio を使用して、R コードをプロジェクトに編成して管理できます。 詳細については、「[プロジェクトの使用](https://support.rstudio.com/hc/articles/200526207-Using-Projects)」をご覧ください。 これらの手順に従って、この記事の R コードの例に関するプロジェクトを作成します。
+* **R コードの編集と実行**:RStudio は、R コードを編集し実行するための統合環境を提供します。 詳細については、「[コードの編集と実行](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code)」をご覧ください。
+* **Debug**: RStudio には、強力なデバッグ機能が搭載されています。 デバッグ機能の詳細については、「[RStudio でのデバッグ](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio)」をご覧ください。 ブレークポイントのトラブルシューティング機能の詳細については、「[Breakpoint Troubleshooting (ブレークポイントのトラブルシューティング)](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)」を参照してください。
 
 ## <a name="further-reading"></a><a id="appendixb"></a>参考資料
 
@@ -1289,12 +1288,12 @@ RStudio はドキュメントが整っています。 ここでは、使用を�
 
 R の使用を開始するのに役立つ書籍は、多数存在します。
 
-* Norman Matloff による『 **The Art of R Programming: A Tour of Statistical Software Design** 』は、R のプログラミングに関する優れた入門書です。
-* Paul Teetor による『 **R Cookbook** 』は、R の使用に関する問題と解決のアプローチが記載されています。
-* Robert Kabacoff による『 **R in Action** 』はもう 1 つの有用な入門書です。 手引書 [Quick R Web サイト](https://www.statmethods.net/)は有効なリソースです。
-* Patrick Burns による『 **R Inferno** 』は、R でのプログラミングで発生する可能性のあるいくつかの厄介で困難なトピックに対処している、驚くほどユーモアにあふれた本です。この本は、「 [The R Inferno](https://www.burns-stat.com/documents/books/the-r-inferno/)」で無料で入手できます。
-* Hadley Wickham による『 **Advanced R** 』では、R の高度なトピックが詳しく説明されています。この本のオンライン版は、「 [Advanced R](http://adv-r.had.co.nz/)」で無料で入手できます。
-* Paul Cowpertwait と Andrew Metcalfe による書籍『 **Introductory Time Series with R** 』は、時系列分析で R を使用する際の入門書です。 さらに多くの理論的テキストが、R の例を提供しています。
+* Norman Matloff による『**The Art of R Programming: A Tour of Statistical Software Design**』は、R のプログラミングに関する優れた入門書です。
+* Paul Teetor による『**R Cookbook**』は、R の使用に関する問題と解決のアプローチが記載されています。
+* Robert Kabacoff による『**R in Action**』はもう 1 つの有用な入門書です。 手引書 [Quick R Web サイト](https://www.statmethods.net/)は有効なリソースです。
+* Patrick Burns による『**R Inferno**』は、R でのプログラミングで発生する可能性のあるいくつかの厄介で困難なトピックに対処している、驚くほどユーモアにあふれた本です。この本は、「[The R Inferno](https://www.burns-stat.com/documents/books/the-r-inferno/)」で無料で入手できます。
+* Hadley Wickham による『**Advanced R**』では、R の高度なトピックが詳しく説明されています。この本のオンライン版は、「[Advanced R](http://adv-r.had.co.nz/)」で無料で入手できます。
+* Paul Cowpertwait と Andrew Metcalfe による書籍『**Introductory Time Series with R**』は、時系列分析で R を使用する際の入門書です。 さらに多くの理論的テキストが、R の例を提供しています。
 
 役に立つインターネット リソースをいくつか紹介します。
 

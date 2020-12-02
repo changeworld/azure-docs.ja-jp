@@ -11,12 +11,12 @@ ms.date: 9/25/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 60fb258fe2c6063b9b9a3ced0f4ba5f71ffd9d7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ead3393218255808eb67983251fcf9f2561c82c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449497"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020182"
 ---
 # <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Azure Synapse Analytics での Azure Stream Analytics の使用
 
@@ -26,13 +26,13 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Stream Analytics ジョブ - Azure Stream Analytics ジョブを作成するには、「 [Azure Stream Analytics の使用](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 」チュートリアルの手順に従ってください。  
+* Azure Stream Analytics ジョブ - Azure Stream Analytics ジョブを作成するには、[Azure Stream Analytics の使用](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関するチュートリアルの手順に従ってください。  
 
     1. Event Hub 入力の作成
     2. イベント ジェネレーター アプリケーションの構成と起動
     3. Stream Analytics のジョブの準備
     4. ジョブの入力とクエリの指定
-* データ ウェアハウスの Azure Synapse SQL プール - 新しいデータ ウェアハウスを作成するには、「[新しいデータ ウェアハウス作成クイックスタート](create-data-warehouse-portal.md)」の手順に従ってください。
+* データ ウェアハウスの Synapse 専用 SQL プール - 新しいデータ ウェアハウスを作成するには、[新しいデータ ウェアハウスを作成するクイックスタート](create-data-warehouse-portal.md)に関するページの手順に従ってください。
 
 ## <a name="specify-streaming-output-to-point-to-your-data-warehouse"></a>データ ウェアハウスを指すストリーミング出力の指定
 
@@ -52,8 +52,8 @@ Azure portal から Stream Analytics ジョブにアクセスし、**ジョブ �
 
 * *[出力のエイリアス]* :このジョブの出力のフレンドリ名を入力します。
 * *サブスクリプション*:
-  * データ ウェアハウスが Stream Analytics ジョブと同じサブスクリプション内にある場合は、***[サブスクリプションから Azure Synapse Analytics を選択]*** をクリックします。
-  * データ ウェアハウスが別のサブスクリプションにある場合は、[Azure Synapse Analytics 設定を手動で行う] をクリックします。
+  * データ ウェアハウスが Stream Analytics ジョブと同じサブスクリプション内にある場合は、 **[サブスクリプションから Azure Synapse Analytics を選択]** をクリックします。
+  データ ウェアハウスが別のサブスクリプションにある場合は、[Azure Synapse Analytics 設定を手動で行う] をクリックします。
 * *データベース*:次に、ドロップ ダウン リストから同期先にデータベースを選択します。
 * *User Name*:データベースの書き込みアクセス許可を持つアカウントのユーザー名を指定します。
 * *パスワード*:指定したユーザー アカウントのパスワードを入力します。
@@ -100,23 +100,23 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 ### <a name="step-5"></a>手順 5.
 
-Azure Portal の Stream Analytics ジョブで、ジョブ名をクリックします。  ***出力の詳細*** ペインで ***テスト*** ボタンをクリックします。
+Azure Portal の Stream Analytics ジョブで、ジョブ名をクリックします。  _*_[出力の詳細]_*_ ペインで *_[テスト]_* ボタンをクリックします。
 
 ![出力の詳細上の [テスト] ボタン](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) データベースへの接続が成功すると、ポータルに通知が表示されます。
 
 ### <a name="step-6"></a>手順 6.
 
-***ジョブ トポロジ*** の下にある ***クエリ*** メニューをクリックし、クエリを変更して、作成したストリーム出力にデータを挿入します。  クエリをテストするには ***選択したクエリのテスト*** をクリックします。  クエリ テストが成功した場合は ***クエリの保存*** ボタンをクリックします。
+_*_[ジョブ トポロジ]_*_ の下にある _*_[クエリ]_*_ メニューをクリックし、クエリを変更して、作成したストリーム出力にデータを挿入します。  クエリをテストするには _*_[Test selected query]\(選択したクエリをテストする\)_*_ をクリックします。  クエリ テストが成功した場合は _*_[クエリの保存]_*_ ボタンをクリックします。
 
 ![クエリを保存する](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
 
 ### <a name="step-7"></a>手順 7.
 
-Azure Stream Analytics ジョブを開始します。  ***概要*** メニューの ***開始*** ボタンをクリックします。
+Azure Stream Analytics ジョブを開始します。  _*_[概要]_*_ メニューの _*_[開始]_*_ ボタンをクリックします。
 
 ![Stream Analytics ジョブを開始する](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
 
-[ジョブの開始] ウィンドウの ***[開始]*** ボタンをクリックします。
+[ジョブの開始] ウィンドウの *_[開始]_* ボタンをクリックします。
 
 ![[開始] をクリックする](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
 

@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/28/2020
-ms.openlocfilehash: 8937cfa5a48903ab53f3015b056a4915240bc525
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/24/2020
+ms.openlocfilehash: 3eb43c98ae2697ece5ded8ae0df451a6cf5f272d
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633129"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96007207"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Databricks Delta Lake をコピー先またはコピー元としてデータをコピーする
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Databricks Delta Lake をコピー先またはコピー元としてデータをコピーする方法について説明します。 コピー アクティビティの概要が説明されている「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」という記事を基に作成されています。
 
@@ -31,7 +31,7 @@ ms.locfileid: "92633129"
 - [サポートされるソース/シンク マトリックス](copy-activity-overview.md)で表の[コピー アクティビティ](copy-activity-overview.md)
 - [Lookup アクティビティ](control-flow-lookup-activity.md)
 
-一般に、Azure Data Factory では、さまざまなニーズを満たすために、次の機能を備えた Delta Lake がサポートされています。
+一般に、Azure Data Factory は、さまざまなニーズを満たすために、次の機能を備えた Delta Lake をサポートしています。
 
 - コピー アクティビティでは、サポートされている任意のソース データ ストアから Azure Databricks Delta Lake テーブル、および Delta Lake テーブルからサポートされている任意のシンク データ ストアにデータをコピーするために、Azure Databricks Delta Lake コネクタがサポートされています。 Databricks クラスターを活用してデータ移動を実行します。詳細については、「[前提条件](#prerequisites)」セクションを参照してください。
 - [マッピング データ フロー](concepts-data-flow-overview.md)では、ソースおよびシンクとして Azure Storage の汎用[差分形式](format-delta.md)がサポートされています。これにより、コーディング不要の ETL の差分ファイルの読み取りと書き込みが可能になり、マネージド Azure Integration Runtime で実行されます。
@@ -77,11 +77,11 @@ Databricks クラスターは、Azure Blob または Azure Data Lake Storage Gen
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
-Azure Databricks Delta Lake のリンクされたサービスでは、次のプロパティがサポートされます。
+Azure Databricks Delta Lake のリンクされたサービスに対して、次のプロパティがサポートされています。
 
 | プロパティ    | 説明                                                  | 必須 |
 | :---------- | :----------------------------------------------------------- | :------- |
-| type        | type プロパティは、 **AzureDatabricksDeltaLake** に設定する必要があります。 | はい      |
+| type        | type プロパティは、**AzureDatabricksDeltaLake** に設定する必要があります。 | はい      |
 | domain      | Azure Databricks ワークスペースの URL を指定します (例: `https://adb-xxxxxxxxx.xx.azuredatabricks.net`)。 |          |
 | clusterId   | 既存のクラスターのクラスター ID を指定します。 これは作成済みの対話型クラスターでなければなりません。 <br>対話型クラスターのクラスター ID は Databricks ワークスペース -> クラスター -> 対話型クラスター名 -> 構成 -> タグで見つけることができます。 [詳細については、こちらを参照してください](/azure/databricks/clusters/configure#cluster-tags)。 |          |
 | accessToken | Data Factory の Azure Databricks の認証にはアクセス トークンが必要です。 アクセス トークンは、Databricks ワークスペースから生成する必要があります。 アクセス トークンを見つける詳細な手順については、[こちら](/azure/databricks/dev-tools/api/latest/authentication#generate-token)を参照してください。 |          |
@@ -114,7 +114,7 @@ Azure Databricks Delta Lake データセットでは、次のプロパティが�
 
 | プロパティ  | 説明                                                  | 必須                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| type      | データセットの type プロパティには、 **AzureDatabricksDeltaLakeDataset** を設定する必要があります。 | はい                         |
+| type      | データセットの type プロパティには、**AzureDatabricksDeltaLakeDataset** を設定する必要があります。 | はい                         |
 | database | データベースの名前です。 |ソースの場合はいいえ、シンクの場合ははい  |
 | table | デルタ テーブルの名前。 |ソースの場合はいいえ、シンクの場合ははい  |
 
@@ -160,16 +160,16 @@ Azure Databricks Delta Lake からデータをコピーするために、コピ�
 
 シンクのデータ ストアと形式がこのセクションで説明する基準を満たす場合は、コピー アクティビティを使用して、Azure Databricks Delta テーブルからシンクに直接コピーできます。 Data Factory によって設定が確認され、次の条件が満たされない場合は、コピー アクティビティの実行が失敗します。
 
-- **シンクのリンクされたサービス** は、 [Azure Blob Storage](connector-azure-blob-storage.md) または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) です。 アカウントの資格情報は Azure Databricks クラスター構成で事前に構成されている必要があります。詳細については、「[前提条件](#prerequisites)」を参照してください。
+- **シンクのリンクされたサービス** は、[Azure Blob Storage](connector-azure-blob-storage.md) または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) です。 アカウントの資格情報は Azure Databricks クラスター構成で事前に構成されている必要があります。詳細については、「[前提条件](#prerequisites)」を参照してください。
 
-- **シンク データ形式** は、次のように構成された **Parquet** 、 **区切りテキスト** 、または **Avro** であり、ファイルではなくフォルダーを指しています。
+- **シンク データ形式** は、次のように構成された **Parquet**、**区切りテキスト**、または **Avro** であり、ファイルではなくフォルダーを指しています。
 
-    - **Parquet** 形式の場合は、圧縮コーデックが **none** 、 **snappy** 、または **gzip** です。
+    - **Parquet** 形式の場合は、圧縮コーデックが **none**、**snappy**、または **gzip** です。
     - **区切りテキスト** 形式の場合:
         - `rowDelimiter` は任意の 1 文字です。
-        - `compression` には **none** 、 **bzip2** 、 **gzip** を指定できます。
+        - `compression` には **none**、**bzip2**、**gzip** を指定できます。
         - `encodingName` UTF-7 はサポートされていません。
-    - **Avro** 形式の場合は、圧縮コーデックが **none** 、 **deflate** 、または **snappy** です。
+    - **Avro** 形式の場合は、圧縮コーデックが **none**、**deflate**、または **snappy** です。
 
 - コピー アクティビティ ソースでは、`additionalColumns` が指定されていません。
 - 区切りテキストにデータをコピーする場合、コピー アクティビティ シンクでは、`fileExtension` は ".csv" である必要があります。
@@ -262,7 +262,7 @@ Azure Databricks Delta Lake にデータをコピーするために、コピー 
 
 | プロパティ      | 説明                                                  | 必須 |
 | :------------ | :----------------------------------------------------------- | :------- |
-| type          | コピー アクティビティのシンクの type プロパティ。 **AzureDatabricksDeltaLakeSink** に設定します。 | はい      |
+| type          | コピー アクティビティのシンクの type プロパティ。**AzureDatabricksDeltaLakeSink** に設定します。 | はい      |
 | preCopyScript | コピー アクティビティの毎回の実行で、データを Databricks Delta テーブルに書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップしたり、TRUNCATE TABLE ステートメントまたは VACUUM ステートメントを追加したりできます。 | いいえ       |
 | importSettings | デルタ テーブルにデータを書き込むために使用される詳細設定。 | いいえ |
 | **_`importSettings` の下:_* _ |                                                              |  |
@@ -274,16 +274,16 @@ Azure Databricks Delta Lake にデータをコピーするために、コピー 
 
 ソースのデータ ストアと形式がこのセクションで説明する基準を満たす場合は、コピー アクティビティを使用して、ソースから Azure Databricks Delta Lake に直接コピーできます。 Azure Data Factory によって設定が確認され、次の条件が満たされない場合は、コピー アクティビティの実行が失敗します。
 
-- **ソースのリンクされたサービス** は、 [Azure Blob Storage](connector-azure-blob-storage.md) または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) です。 アカウントの資格情報は Azure Databricks クラスター構成で事前に構成されている必要があります。詳細については、「[前提条件](#prerequisites)」を参照してください。
+- **ソースのリンクされたサービス** は、[Azure Blob Storage](connector-azure-blob-storage.md) または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) です。 アカウントの資格情報は Azure Databricks クラスター構成で事前に構成されている必要があります。詳細については、「[前提条件](#prerequisites)」を参照してください。
 
-- **ソース データ形式** は、次のように構成された **Parquet** 、 **区切りテキスト** 、または **Avro** であり、ファイルではなくフォルダーを指しています。
+- **ソース データ形式** は、次のように構成された **Parquet**、**区切りテキスト**、または **Avro** であり、ファイルではなくフォルダーを指しています。
 
-    - **Parquet** 形式の場合は、圧縮コーデックが **none** 、 **snappy** 、または **gzip** です。
+    - **Parquet** 形式の場合は、圧縮コーデックが **none**、**snappy**、または **gzip** です。
     - **区切りテキスト** 形式の場合:
         - `rowDelimiter` は既定値または任意の 1 文字です。
-        - `compression` には **none** 、 **bzip2** 、 **gzip** を指定できます。
+        - `compression` には **none**、**bzip2**、**gzip** を指定できます。
         - `encodingName` UTF-7 はサポートされていません。
-    - **Avro** 形式の場合は、圧縮コーデックが **none** 、 **deflate** 、または **snappy** です。
+    - **Avro** 形式の場合は、圧縮コーデックが **none**、**deflate**、または **snappy** です。
 
 - コピー アクティビティ ソース内: 
 

@@ -8,12 +8,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 782abee06c5ab0f985e8bd90dbbecae18b1dfe02
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 2df401f7871d631ba317fb670783cad086b9a351
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442329"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "96017561"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Azure Cosmos DB の "見つかりません" 例外を診断してトラブルシューティングする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -25,6 +25,11 @@ HTTP 状態コード 404 は、リソースがもう存在しないことを表�
 
 ## <a name="a-not-found-exception-was-returned-for-an-item-that-should-exist-or-does-exist"></a>存在しているはず、または実際に存在している項目に対して "見つかりません" 例外が返された
 項目が存在しているはず、または実際に存在している場合に状態コード 404 が返される理由は、次のとおりです。
+
+### <a name="the-read-session-is-not-available-for-the-input-session-token"></a>入力セッション トークンでは読み取りセッションを使用できません
+
+#### <a name="solution"></a>解決方法:
+1. 現在の SDK を、入手できる最新版に更新します。 この特定のエラーの最も一般的な原因は最新版の SDK で解決されています。
 
 ### <a name="race-condition"></a>競合状態
 複数の SDK クライアント インスタンスがあり、書き込みの前に読み取りが発生しました。

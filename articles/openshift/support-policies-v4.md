@@ -1,17 +1,17 @@
 ---
 title: Azure Red Hat OpenShift 4 クラスターのサポート ポリシー
-description: Red Hat OpenShift 4 のサポート ポリシー要件について説明します。
+description: Red Hat OpenShift 4 のサポート ポリシー要件について説明します
 author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 04/24/2020
-ms.openlocfilehash: e396cfa032a3030467b2e2318d61393713894cd4
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 11/23/2020
+ms.openlocfilehash: c8d52609043f173e896668eadeb8c59493739859
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628222"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521140"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift のサポート ポリシー
 
@@ -23,7 +23,7 @@ Azure Red Hat OpenShift 4 クラスターの一部の構成は、クラスター
 ## <a name="cluster-configuration-requirements"></a>クラスター構成の要件
 
 * すべての OpenShift Cluster オペレーターは、管理された状態のままである必要があります。 `oc get clusteroperators` を実行して、クラスター オペレーターの一覧を返すことができます。
-* クラスターには、少なくとも 1 つのワーカー ノードが必要です。 クラスター ワーカーをゼロにスケーリングしないでください。
+* クラスターには、少なくとも 2 つのワーカー ノードが必要です。 クラスター ワーカーをゼロに変更しないでください。また、クラスターをグレースフル シャットダウンしないでください。
 * クラスターの Prometheus および Alertmanager サービスを削除または変更しないでください。
 * Service Alertmanager ルールを削除しないでください。
 * Azure Red Hat OpenShift サービス ログ (mdsd ポッド) を削除または変更しないでください。

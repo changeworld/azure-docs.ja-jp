@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 5b60082db53b458adc53ac23d98731ad1c97b52b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 5c2763112b1aa2d58f5dc57cea72a3d0bdea961e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563649"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545671"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Azure Front Door Service の Azure Web アプリケーション ファイアウォールに関してよく寄せられる質問
 
@@ -57,6 +57,17 @@ Front Door の送信 IP アドレス範囲のみを許可し、インターネ�
 
 Azure に WAF ポリシーを適用する場合、2 つの選択肢があります。 Azure Front Door を使用した WAF は、グローバルに分散したエッジ セキュリティ ソリューションです。 Application Gateway を使用した WAFは、リージョンの専用ソリューションです。 全体的なパフォーマンスとセキュリティの要件に基づいてソリューションを選択することをお勧めします。 詳細については、「[Azure のアプリケーション配信スイートでの負荷分散](../../frontdoor/front-door-lb-with-azure-app-delivery-suite.md)」を参照してください。
 
+## <a name="whats-the-recommended-approach-to-enabling-waf-on-front-door"></a>Front Door での WAF の有効化に向けて推奨されるアプローチには、どのようなものがありますか?
+
+既存のアプリケーションで WAF を有効にする場合、正当なトラフィックが WAF ルールによって脅威として検知されるという誤検知が発生するのは一般的なことです。 ユーザーへの影響のリスクを最小限に抑えるには、次のプロセスをお勧めします。
+
+* このプロセスの実行中に WAF によって要求がブロックされないようにするには、[**検出** モード](./waf-front-door-create-portal.md#change-mode)で WAF を有効にします。
+  > [!IMPORTANT]
+  > このプロセスでは、アプリケーションのユーザーにもたらされる支障を最小限に抑えることが最優先される場合に、新規または既存のソリューションで WAF を有効にする方法について説明します。 攻撃を受けている場合や、脅威が発生している場合は、代わりに、**防止** モードで WAF を直ちにデプロイし、チューニング プロセスを使用して時間をかけて WAF を監視および調整することをお勧めします。 これにより、正当なトラフィックの一部がブロックされてしまうおそれがあります。脅威を受けている場合にのみこれを行うようにお勧めするのは、このような理由からです。
+* [WAF のチューニングに関するガイダンス](./waf-front-door-tuning.md)に従ってください。 このプロセスでは、診断ログを有効にし、ログを定期的に確認して、ルールの除外やその他の軽減策を追加する必要があります。
+* このプロセス全体を繰り返し実行し、正当なトラフィックがブロックされていないことを確認できるまで、ログを定期的に確認します。 プロセス全体を実行するには、数週間かかることがあります。 チューニングを変更するたびに、誤検知が減ることが理想的です。
+* 最後に、**防止モード** で WAF を有効にします。
+* 運用環境で WAF を実行している場合でも、他の誤検知を特定するために、ログの監視を続ける必要があります。 また、ログを定期的に確認することで、ブロックされている本物の攻撃を特定しやすくなります。
 
 ## <a name="do-you-support-same-waf-features-in-all-integrated-platforms"></a>すべての統合プラットフォームで同じ WAF 機能がサポートされますか?
 
