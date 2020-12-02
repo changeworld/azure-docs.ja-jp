@@ -8,16 +8,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
-author: juliemsft
-ms.author: jrasnick
+author: WilliamDAssafMSFT
+ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 04/19/2020
-ms.openlocfilehash: b76390efaed94003a792b04836d6850e6b7a7ead
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 480e9f9031481621ac9d568a7bd97b942f47b947
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789558"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493644"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>動的管理ビューを使用した Microsoft Azure SQL Database および Azure SQL Managed Instance のパフォーマンスの監視
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,14 +34,14 @@ Microsoft Azure SQL Database および Azure SQL Managed Instance では、動�
 
 ## <a name="permissions"></a>アクセス許可
 
-Azure SQL Database で、動的管理ビューに対してクエリを実行するには、 **VIEW DATABASE STATE** アクセス許可が必要です。 **VIEW DATABASE STATE** アクセス許可は、現在のデータベース内のすべてのオブジェクトに関する情報を返します。
+Azure SQL Database で、動的管理ビューに対してクエリを実行するには、**VIEW DATABASE STATE** アクセス許可が必要です。 **VIEW DATABASE STATE** アクセス許可は、現在のデータベース内のすべてのオブジェクトに関する情報を返します。
 **VIEW DATABASE STATE** アクセス許可を特定のデータベース ユーザーに付与するには、次のクエリを実行します。
 
 ```sql
 GRANT VIEW DATABASE STATE TO database_user;
 ```
 
-Azure SQL Managed Instance で、動的管理ビューに対してクエリを実行するには、 **VIEW SERVER STATE** アクセス許可が必要です。 詳細については、「[システム動的管理ビュー](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views#required-permissions)」を参照してください。
+Azure SQL Managed Instance で、動的管理ビューに対してクエリを実行するには、**VIEW SERVER STATE** アクセス許可が必要です。 詳細については、「[システム動的管理ビュー](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views#required-permissions)」を参照してください。
 
 SQL Server のインスタンスおよび Azure SQL Managed Instance では、動的管理ビューにサーバーの状態についての情報が返されます。 Azure SQL Database では、現在の論理データベースに関する情報のみが返されます。
 
@@ -581,7 +581,7 @@ HAVING AVG(avg_cpu_percent) >= 80
 データベース エンジンでは、各アクティブ データベースの使用済みリソース情報が、各サーバーの **master** データベースの **sys.resource_stats** ビューで公開されます。 テーブルのデータは 5 分おきに集計されます。 Basic、Standard、Premium のサービス レベルでは、データをテーブルに表示するのに 5 分を超える時間がかかる可能性があります。このため、このデータはほぼリアルタイムの分析よりも過去の分析に役に立ちます。 **sys.resource_stats** ビューに照会すると、データベースの最近の履歴が表示され、選択した予約で必要なときに望ましいパフォーマンスが発揮されたかどうかを検証できます。
 
 > [!NOTE]
-> Azure SQL Database で、次の例の **sys.resource_stats** にクエリを実行するには、 **master** データベースに接続する必要があります。
+> Azure SQL Database で、次の例の **sys.resource_stats** にクエリを実行するには、**master** データベースに接続する必要があります。
 
 次の例は、このビューのデータが表示されているところです。
 
@@ -594,7 +594,7 @@ ORDER BY start_time DESC
 
 ![The sys.resource_stats catalog view](./media/monitoring-with-dmvs/sys_resource_stats.png)
 
-次の例では、 **sys.resource_stats** カタログ ビューを使用して、データベースでのリソースの使用状況に関する情報を取得するさまざまな方法を示します。
+次の例では、**sys.resource_stats** カタログ ビューを使用して、データベースでのリソースの使用状況に関する情報を取得するさまざまな方法を示します。
 
 1. データベース userdb1 の過去 1 週間のリソース使用率を確認するには、このクエリを実行します。
 
@@ -606,7 +606,7 @@ ORDER BY start_time DESC
     ORDER BY start_time DESC;
     ```
 
-2. ワークロードがコンピューティング サイズにどの程度適合しているかを評価するには、リソース メトリックの各側面を分析する必要があります。つまり、CPU、読み取り、書き込み、ワーカー数、セッション数です。 次に、 **sys.resource_stats** を使用してこれらのリソース メトリックの平均値と最大値を報告するように修正したクエリを示します:
+2. ワークロードがコンピューティング サイズにどの程度適合しているかを評価するには、リソース メトリックの各側面を分析する必要があります。つまり、CPU、読み取り、書き込み、ワーカー数、セッション数です。 次に、**sys.resource_stats** を使用してこれらのリソース メトリックの平均値と最大値を報告するように修正したクエリを示します:
 
     ```sql
     SELECT
@@ -624,7 +624,7 @@ ORDER BY start_time DESC
     WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
     ```
 
-3. 各リソース メトリックの平均値と最大値に関するこの情報に基づいて、選択したコンピューティング サイズにワークロードが適合しているかどうかを評価できます。 通常、 **sys.resource_stats** からの平均値が目標サイズに対する有効な基準となります。 これを主要なものさしとしてください。 たとえば、S2 コンピューティング サイズで Standard サービス レベルを使用しているとします。 CPU と IO の読み取り/書き込みの平均使用率が 40% を下回り、ワーカーの平均数が 50 を下回り、セッションの平均数が 200 を下回っています。 このワークロードには、S1 コンピューティング サイズが適している可能性があります。 データベースがワーカーとセッションの制限内に収まるかどうかは簡単にわかります。 CPU、読み取り、書き込みに関して、データベースが下位のコンピューティング サイズに適合するかどうかを確認するには、下位コンピューティング サイズの DTU 数を現在のコンピューティング サイズの DTU 数で割り、その計算結果に 100 を掛けます。
+3. 各リソース メトリックの平均値と最大値に関するこの情報に基づいて、選択したコンピューティング サイズにワークロードが適合しているかどうかを評価できます。 通常、**sys.resource_stats** からの平均値が目標サイズに対する有効な基準となります。 これを主要なものさしとしてください。 たとえば、S2 コンピューティング サイズで Standard サービス レベルを使用しているとします。 CPU と IO の読み取り/書き込みの平均使用率が 40% を下回り、ワーカーの平均数が 50 を下回り、セッションの平均数が 200 を下回っています。 このワークロードには、S1 コンピューティング サイズが適している可能性があります。 データベースがワーカーとセッションの制限内に収まるかどうかは簡単にわかります。 CPU、読み取り、書き込みに関して、データベースが下位のコンピューティング サイズに適合するかどうかを確認するには、下位コンピューティング サイズの DTU 数を現在のコンピューティング サイズの DTU 数で割り、その計算結果に 100 を掛けます。
 
     `S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40`
 
@@ -714,7 +714,7 @@ WHERE D.name = 'MyDatabase'
 
 ここでも、これらのクエリはある時点の数を返します。 時間をかけて複数のサンプルを集めると、セッションの使用状況を正確に把握できます。
 
-[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) ビューにクエリを実行し、 **active_session_count** 列を確認して、セッションの過去の統計値を取得できます。
+[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) ビューにクエリを実行し、**active_session_count** 列を確認して、セッションの過去の統計値を取得できます。
 
 ## <a name="monitoring-query-performance"></a>クエリのパフォーマンスの監視
 

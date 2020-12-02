@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: b2f3635c8280bdd95e8ad1259fe4ae35f8b531a4
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: dd9c1c23bddf78eb1bdb8fc07f2cb6f8a7faa859
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042820"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491215"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-the-azure-portal"></a>Azure portal を使用して VM 用にルーティング優先設定を構成する
 
@@ -28,12 +28,6 @@ ms.locfileid: "93042820"
 > [!IMPORTANT]
 > 現在、ルーティング優先設定はパブリック プレビューの段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-## <a name="register-the-feature-for-your-subscription"></a>サブスクリプションに機能を登録する
-現在、ルーティング優先設定の機能はプレビューの段階です。 次のように Azure PowerShell を使用して、サブスクリプションに機能を登録する必要があります。
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNamespace Microsoft.Network
-```
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -56,7 +50,7 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNa
 
 4. VM のサイズを選択して、 **[選択]** を選択します。
 5. **[ネットワーク]** タブで、 **[パブリック IP アドレス]** の **[新規作成]** をクリックします。
-6. 次の図に示すように、「 *myPublicIpAddress* 」と入力し、SKU として **[Standard]** を選択し、ルーティング優先設定として **[インターネット]** を選択して、 **[OK]** をクリックします。
+6. 次の図に示すように、「*myPublicIpAddress*」と入力し、SKU として **[Standard]** を選択し、ルーティング優先設定として **[インターネット]** を選択して、 **[OK]** をクリックします。
 
    ![[静的] の選択](./media/tutorial-routing-preference-virtual-machine-portal/routing-preference-internet-new.png)
 
@@ -66,7 +60,7 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNa
 
 7. 残りの既定値を受け入れて、 **[OK]** を選択します。
 8. **[概要]** ページで、 **[作成]** を選択します。 仮想マシンのデプロイには、数分かかります。
-9. 仮想マシンをデプロイしたら、ポータルの上部にある検索ボックスに「 *myPublicIpAddress* 」と入力します。 検索結果に **myPublicIpAddress** が表示されたら、それを選びます。
+9. 仮想マシンをデプロイしたら、ポータルの上部にある検索ボックスに「*myPublicIpAddress*」と入力します。 検索結果に **myPublicIpAddress** が表示されたら、それを選びます。
 10. 次の図に示すように、割り当てられているパブリック IP アドレスと、そのアドレスが **myVM** 仮想マシンに割り当てられていることが表示されます。
 
     ![スクリーンショットは、ネットワーク インターフェイス mynic の NIC パブリック IP を示しています。](./media/tutorial-routing-preference-virtual-machine-portal/pip-properties-new.png)
@@ -79,9 +73,9 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNa
 
 リソース グループとそれに含まれるすべてのリソースが不要になったら、それらを削除します。
 
-1. ポータル上部の **[検索]** ボックスに「 *myResourceGroup* 」と入力します。 検索結果に **[myResourceGroup]** が表示されたら、それを選択します。
+1. ポータル上部の **[検索]** ボックスに「*myResourceGroup*」と入力します。 検索結果に **[myResourceGroup]** が表示されたら、それを選択します。
 2. **[リソース グループの削除]** を選択します。
-3. **[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:\)** に「 *myResourceGroup* 」と入力し、 **[削除]** を選択します。
+3. **[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:\)** に「*myResourceGroup*」と入力し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 - [ルーティング優先設定が指定されたパブリック IP アドレス](routing-preference-overview.md)について詳しく学習する。

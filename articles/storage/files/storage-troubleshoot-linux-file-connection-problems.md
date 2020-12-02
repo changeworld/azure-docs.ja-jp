@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 19fe6be0487772524516172bd32e0562512c4e3c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e680ba10c507ef83591b56652ee8e95c4d665dda
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630177"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492065"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Linux での Azure Files に関する問題のトラブルシューティング (SMB)
 
@@ -107,7 +107,7 @@ Linux では、次のようなエラー メッセージが表示されます。
 
 - 特定の最小 I/O サイズ要件がない場合は、最適なパフォーマンスを得るために I/O サイズとして 1 MiB を使用することをお勧めします。
 - 次のように適切なコピー方法を使用します。
-    - 2 つのファイル共有間の転送には、[AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) を使用します。
+    - 2 つのファイル共有間の転送には、[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) を使用します。
     - Parallel と一緒に cp または dd を使用することで、コピー速度が向上し、スレッド数はユース ケースとワークロードで決まります。 次の例では、6 を使用しています。 
     - cp の例 (cp はファイル システムの既定のブロック サイズをチャンク サイズとして使用します): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`。
     - dd の例 (このコマンドは、チャンク サイズを明示的に 1 MiB に設定します): `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: cd0d4c2dc550beef1b5fceb373a4cb96ed75a172
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 688786fd60d7945340e0a027cf6ee28e6dc2bb32
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544498"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492473"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Network Performance Monitor から接続モニターに移行する
 
@@ -74,5 +74,5 @@ Network Performance Monitor から接続モニターにテストを移行する�
 ## <a name="next-steps"></a>次の手順
 
 接続モニターの詳細については、以下を参照してください。
-* [接続モニターから接続モニターに移行する](/azure/network-watcher/migrate-to-connection-monitor-from-connection-monitor-classic)
+* [接続モニターから接続モニターに移行する](./migrate-to-connection-monitor-from-connection-monitor-classic.md)
 * [Azure portal を使用して接続モニターを作成する](./connection-monitor-create-using-portal.md)

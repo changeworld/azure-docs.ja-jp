@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 53111ccd634c516d0db10c0e2dd41768aba43f41
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: a0415133bf3168c846e1105efe992c2c48c57ff2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629242"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492184"
 ---
 # <a name="how-to-deploy-azure-files"></a>Azure Files のデプロイ方法
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の SMB プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。 この記事では、実際に組織内で Azure Files をデプロイする方法を示します。
@@ -22,7 +22,7 @@ ms.locfileid: "94629242"
 ## <a name="prerequisites"></a>前提条件
 この記事では、次の手順がすでに完了していることを前提としています。
 
-- 目的のリージョンに、必要な回復性と暗号化のオプションで Azure Storage アカウントを作成していること。 ストレージ アカウントの詳しい作成手順については、[ストレージ アカウントの作成](../common/storage-account-create.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)に関するページを参照してください。
+- 目的のリージョンに、必要な回復性と暗号化のオプションで Azure Storage アカウントを作成していること。 ストレージ アカウントの詳しい作成手順については、[ストレージ アカウントの作成](../common/storage-account-create.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)に関するページを参照してください。
 - ストレージ アカウントに、目的のクォータで Azure ファイル共有を作成していること。 ファイル共有の詳しい作成手順については、[ファイル共有の作成](storage-how-to-create-file-share.md)に関するページを参照してください。
 
 ## <a name="transfer-data-into-azure-files"></a>Azure Files へのデータ転送
@@ -63,7 +63,7 @@ Azure Import/Export サービスを使うと、ハード ディスク ドライ�
     "F:\shares\scratch\","MyAzureFileShare/",file,rename,"None",None
     ```
 
-    1 つのストレージ アカウントを使用して複数の共有を指定する場合があります。 詳細については[データセット CSV ファイルの準備](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)を参照してください。
+    1 つのストレージ アカウントを使用して複数の共有を指定する場合があります。 詳細については[データセット CSV ファイルの準備](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)を参照してください。
 
 5. ドライブセット CSV ファイルを作成します。 ドライブセット CSV ファイルには、オンプレミスのエクスポート エージェントが使用可能なディスクが一覧表示されます。 たとえば、次のドライブセット CSV ファイルでは、オンプレミスのエクスポート ジョブで使用される `X:`、`Y:`、および `Z:` ドライブが一覧表示されます。
 
@@ -74,7 +74,7 @@ Azure Import/Export サービスを使うと、ハード ディスク ドライ�
     Z,Format,SilentMode,Encrypt,
     ```
     
-    詳細については[ドライブセット CSV ファイルの準備](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)を参照してください。
+    詳細については[ドライブセット CSV ファイルの準備](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)を参照してください。
 
 6. [WAImportExport ツール](https://www.microsoft.com/download/details.aspx?id=55280)を使用して、1 台以上のハード ドライブにデータをコピーします。
 
@@ -120,7 +120,7 @@ AzCopy は、最高のパフォーマンスの単純なコマンドを使って 
     azcopy --source <path-to-local-share> --destination https://<storage-account>.file.core.windows.net/<file-share>/ --dest-key <storage-account-key> --recursive
     ```
 
-    AzCopy には、必要に応じてコピー動作を変更するオプションが多数あります。 詳細については、「[AzCopy を使ってみる](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)」を参照してください。
+    AzCopy には、必要に応じてコピー動作を変更するオプションが多数あります。 詳細については、「[AzCopy を使ってみる](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」を参照してください。
 
 ## <a name="automatically-mount-on-needed-pcsservers"></a>必要な PC/サーバーで自動的にマウントされます。
 オンプレミスのファイル共有を置き換える場合は、使用するマシン上で共有をあらかじめマウントしておくことをお勧めします。 これは、マシンの一覧で自動的に実行できます。

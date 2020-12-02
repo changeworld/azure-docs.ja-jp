@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 1b29565e18b2da2087cc15966b30b433a42fb603
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 32aa94c986c90b7bd46b9f5561021c34c0f142af
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629803"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492094"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 
@@ -368,7 +368,7 @@ Microsoft の社内ウイルス対策ソリューションである Windows Defe
 > ウイルス対策ソフトウェア ベンダーは、その製品と Azure File Sync との間の互換性を、[Azure File Sync Antivirus Compatibility Test Suite](https://www.microsoft.com/download/details.aspx?id=58322) を使用して確認することができます。これは、Microsoft ダウンロード センターでダウンロードできます。
 
 ## <a name="backup"></a>バックアップ 
-クラウドを使った階層化が有効になっている場合、サーバー エンドポイント、またはサーバー エンドポイントが配置されている VM を直接バックアップするソリューションは使用しないでください。 クラウドを使った階層化では、データのサブセットのみがサーバー エンドポイントに格納され、完全なデータセットは Azure ファイル共有に保存されます。 使用されるバックアップ ソリューションによっては、階層化されたファイルはスキップされ、バックアップされないか (FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性が設定されているため)、ディスクに再呼び出しされるため、エグレス料金が高額になります。 Azure ファイル共有を直接バックアップするには、クラウド バックアップ ソリューションを使用することをお勧めします。 詳細については、「[Azure ファイル共有のバックアップについて](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)」を参照するか、バックアップ プロバイダーに問い合わせて、Azure ファイル共有のバックアップがサポートされているかどうかを確認してください。
+クラウドを使った階層化が有効になっている場合、サーバー エンドポイント、またはサーバー エンドポイントが配置されている VM を直接バックアップするソリューションは使用しないでください。 クラウドを使った階層化では、データのサブセットのみがサーバー エンドポイントに格納され、完全なデータセットは Azure ファイル共有に保存されます。 使用されるバックアップ ソリューションによっては、階層化されたファイルはスキップされ、バックアップされないか (FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性が設定されているため)、ディスクに再呼び出しされるため、エグレス料金が高額になります。 Azure ファイル共有を直接バックアップするには、クラウド バックアップ ソリューションを使用することをお勧めします。 詳細については、「[Azure ファイル共有のバックアップについて](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」を参照するか、バックアップ プロバイダーに問い合わせて、Azure ファイル共有のバックアップがサポートされているかどうかを確認してください。
 
 オンプレミス バックアップ ソリューションを使用する場合、クラウドを使った階層化が無効な同期グループ内のサーバーに対してバックアップを実行する必要があります。 復元を実行するときは、ボリューム レベルまたはファイル レベルの復元オプションを使用します。 ファイル レベルの復元オプションを使用して復元されたファイルは、同期グループ内のすべてのエンドポイントに同期され、既存のファイルはバックアップから復元されたバージョンに置き換えられます。  ボリューム レベルの復元では、Azure ファイル共有やその他のサーバー エンドポイントの新しいファイル バージョンに置き換えられません。
 

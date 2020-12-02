@@ -4,12 +4,12 @@ description: Azure Migrate を使用して VMware VM のエージェントベー
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: ffdbdba0aeae33b04195c5a6bf6aeaff5658424b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 46f23953e6572b752f8773bc9db86be946ccf212
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012239"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492999"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM を Azure に移行する (エージェントベース)
 
@@ -133,36 +133,6 @@ VMware サーバーと VM が、Azure への移行の要件に準拠している
 
 > [!NOTE]
 > Azure Migrate Server Migration を使用したエージェントベースの移行は、Azure Site Recovery サービスの機能に基づいています。 一部の要件は、Site Recovery のドキュメントにリンクされている場合があります。
-
-
-
-## <a name="add-the-azure-migrateserver-migration-tool"></a>Azure Migrate:Server Migration ツールを追加する
-
-Azure Migrate プロジェクトがまだない場合は、ここで[プロジェクトを設定](how-to-add-tool-first-time.md)して、Server Migration ツールを追加してください。
-
-プロジェクトが存在する場合は、次の手順に従ってツールを追加します。
-
-1. Azure portal の **[すべてのサービス]** で、**Azure Migrate** を検索します。
-2. **[サービス]** で **[Azure Migrate]** を選択します。
-
-    ![Azure Migrate の設定](./media/tutorial-migrate-vmware-agent/azure-migrate-search.png)
-
-3. **[概要]** で **[サーバーの評価と移行]** をクリックします。
-4. **[サーバーの検出、評価、移行]** で、 **[サーバーの評価と移行]** をクリックします。
-
-    ![サーバーの検出と評価](./media/tutorial-migrate-vmware-agent/assess-migrate.png)
-
-1. **[サーバーの検出、評価、移行]** で、 **[ツールの追加]** をクリックします。
-2. **[移行プロジェクト]** で、自分の Azure サブスクリプションを選択し、リソース グループがない場合は作成します。
-3. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したい地域を指定し、 **[次へ]** をクリックします。 [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
-
-    ![Azure Migrate プロジェクトの作成](./media/tutorial-migrate-vmware-agent/migrate-project.png)
-
-
-4. **[評価ツールの選択]** で、 **[今は評価ツールの追加をスキップします]**  >  **[次へ]** の順に選択します。
-5. **[移行ツールの選択]** で、次を選択します: **[Azure Migrate: Server Migration]**  >  **[次へ]** 。
-6. **[ツールの確認と追加]** で設定を確認し、 **[ツールの追加]** をクリックします
-7. ツールを追加すると、Azure Migrate プロジェクトの **[サーバー]**  >  **[移行ツール]** に表示されます。
 
 ## <a name="set-up-the-replication-appliance"></a>レプリケーション アプライアンスを設定する
 

@@ -6,18 +6,18 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: e756e033c8e5b2508dca9bde76ad16be26a940fa
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 42bbe1c9f4056ae0dae0ccd59b452db90a7c63c5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505786"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493663"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>ダンプと復元を使用した PostgreSQL データベースのアップグレード
 
 次の方法を使用してデータベースを上位のメジャー バージョンへ移行し、Azure Database for PostgreSQL - 単一サーバーにデプロイされている PostgreSQL サーバーをアップグレードできます。
 * PostgreSQL [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) と [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) を使用した **オフライン** の方法。データを移行するためのダウンタイムが発生します。 このドキュメントでは、このアップグレードまたは移行の方法について説明します。
-* [Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal) (DMS) を使用した **オンライン** の方法。 この方法では、移行におけるダウンタイムが短縮され、ターゲット データベースとソースの同期が維持され、カットオーバーのタイミングを選択できます。 ただし、DMS を使用するために対処する必要があるいくつかの前提条件と制限があります。 詳細については、[DMS のドキュメント](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal)をご覧ください。 
+* [Database Migration Service](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) (DMS) を使用した **オンライン** の方法。 この方法では、移行におけるダウンタイムが短縮され、ターゲット データベースとソースの同期が維持され、カットオーバーのタイミングを選択できます。 ただし、DMS を使用するために対処する必要があるいくつかの前提条件と制限があります。 詳細については、[DMS のドキュメント](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md)をご覧ください。 
 
  次の表に、データベースのサイズとシナリオに基づく推奨事項をいくつか示します。
 
@@ -28,7 +28,7 @@ ms.locfileid: "94505786"
 | 中小規模の DB (10 GB から 100 GB) | X | X |
 | 大規模なデータベース (100 GB より大きい) |  | X |
 | アップグレードするためのダウンタイムを許容できる (データベースのサイズに関係なく) | X |  |
-| 再起動を含む DMS の[前提条件](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal#prerequisites)に対処できるか? |  | X |
+| 再起動を含む DMS の[前提条件](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md#prerequisites)に対処できるか? |  | X |
 | アップグレード プロセス中に DDL とログに記録されていないテーブルを回避できるか? | |  X |
 
 このガイドでは、オフラインの移行方法と例を示して、ソース サーバーから、上位バージョンの PostgreSQL を実行するターゲット サーバーへの移行方法を説明します。

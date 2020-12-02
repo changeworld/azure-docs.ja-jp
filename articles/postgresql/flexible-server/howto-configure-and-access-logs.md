@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 319b7a40a87d29454b22a26088df313ef524dc56
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3b54fe1ffd49c12db82a038ad449190a0049133f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545822"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492354"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL のログの構成とアクセス - フレキシブル サーバー
 
@@ -36,7 +36,7 @@ Azure portal を使用してリソース ログを有効にするには
 4. 任意の優先エンドポイント (ストレージ アカウント、イベント ハブ、ログ分析) を選択します。 
 
 5. ログの種類 **PostgreSQLLogs** を選択します。
-   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="[診断設定の追加] ボタン":::
+   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="PostgreSQL のログを選択する":::
 
 7. 設定を保存します。
 
@@ -71,5 +71,5 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Log Analytics クエリの使用方法](../../azure-monitor/log-query/get-started-portal.md)
+- [Log Analytics クエリの使用方法](../../azure-monitor/log-query/log-analytics-tutorial.md)
 - [Azure Event Hubs](../../event-hubs/event-hubs-about.md) について

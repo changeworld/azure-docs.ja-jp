@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 8ceb6d4dddb76148be1e82ebc8c1994886a11da3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcdc05ae696a207546eb62160fe89ea38d307058
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362816"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492269"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的なエラーと警告のトラブルシューティング
 
@@ -348,8 +348,8 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 
 ## <a name="warning-cosmos-db-collection-x-has-a-lazy-indexing-policy-some-data-may-be-lost"></a>警告:Cosmos DB コレクション "X" には、Lazy インデックス作成ポリシーがあります。 一部のデータが失われるおそれがあります
 
-[Lazy](/azure/cosmos-db/index-policy#indexing-mode) インデックス作成ポリシーを持つコレクションには、一貫性のあるクエリを実行できません。そのため、インデクサーにはデータがありません。 この警告を回避するには、インデックス作成ポリシーを Consistent に変更します。
+[Lazy](../cosmos-db/index-policy.md#indexing-mode) インデックス作成ポリシーを持つコレクションには、一貫性のあるクエリを実行できません。そのため、インデクサーにはデータがありません。 この警告を回避するには、インデックス作成ポリシーを Consistent に変更します。
 
 ## <a name="warning-the-document-contains-very-long-words-longer-than-64-characters-these-words-may-result-in-truncated-andor-unreliable-model-predictions"></a>警告:The document contains very long words (longer than 64 characters).(ドキュメントに非常に長い単語が含まれています (64 文字を超えています)。) These words may result in truncated and/or unreliable model predictions. (これらの単語は切り捨てられたり、モデルの予測の信頼性が低下したりする可能性があります。)
 
-この警告は Text Analytics サービスから渡されます。  ドキュメントに長い URL が含まれている (多くの場合、キー フレーズや影響力のあるセンチメントなどではない) などの場合、この警告を無視しても安全です。  単語が 64 文字を超えると、64 文字に切り捨てられるため、モデルの予測に影響を与える可能性があります。  
+この警告は Text Analytics サービスから渡されます。  ドキュメントに長い URL が含まれている (多くの場合、キー フレーズや影響力のあるセンチメントなどではない) などの場合、この警告を無視しても安全です。  単語が 64 文字を超えると、64 文字に切り捨てられるため、モデルの予測に影響を与える可能性があります。
