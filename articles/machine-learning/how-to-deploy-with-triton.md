@@ -11,12 +11,12 @@ ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: cfa40332c45eac23d062b83bb789c25f1906ae24
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b47b8f9d9429f38fb8b5da6d8f9083736f230fcb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831635"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458267"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton 推論サーバーを使用した高パフォーマンスのサービス (プレビュー) 
 
@@ -53,7 +53,7 @@ Triton は、"*推論用に最適化された*" フレームワークです。 G
 
 ### <a name="setting-the-number-of-workers"></a>worker の数の設定
 
-デプロイ内の worker の数を設定するには、環境変数 `WORKER_COUNT` を設定します。 `env` と呼ばれる [Environment](https://docs.microsoft.compython/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) オブジェクトがあると仮定した場合、以下を実行できます。
+デプロイ内の worker の数を設定するには、環境変数 `WORKER_COUNT` を設定します。 `env` と呼ばれる [Environment](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) オブジェクトがあると仮定した場合、以下を実行できます。
 
 ```{py}
 env.environment_variables["WORKER_COUNT"] = "1"

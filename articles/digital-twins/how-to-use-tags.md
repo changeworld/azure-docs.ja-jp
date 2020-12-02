@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 59f68909e2f3704fea5c38e3f1535f5996b284ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2620b52c426871b0ec85e3db237be2d373d42f1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87095404"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458691"
 ---
 # <a name="add-tags-to-digital-twins"></a>デジタル ツインにタグを追加する 
 
@@ -24,7 +24,7 @@ ms.locfileid: "87095404"
 
 ## <a name="marker-tags"></a>マーカー タグ 
 
-**マーカー タグ**は、デジタル ツインをマークまたは分類するために使用される単純な文字列です ("blue"、"red" など)。 この文字列はタグの名前であり、マーカー タグには意味のある値がありません。タグは存在すること (または存在しないこと) によってのみ意味を持ちます。 
+**マーカー タグ** は、デジタル ツインをマークまたは分類するために使用される単純な文字列です ("blue"、"red" など)。 この文字列はタグの名前であり、マーカー タグには意味のある値がありません。タグは存在すること (または存在しないこと) によってのみ意味を持ちます。 
 
 ### <a name="add-marker-tags-to-model"></a>モデルにマーカー タグを追加する 
 
@@ -69,18 +69,18 @@ entity-03: "tags": { "red": true, "large": true }
 "Red" とタグ付けされているすべてのツインを取得するクエリを次に示します。 
 
 ```sql
-select * from digitaltwins where is_defined(tags.red) 
+SELECT * FROM digitaltwins WHERE is_defined(tags.red) 
 ```
 
 さらに複雑なクエリの場合は、タグを組み合わせることもできます。 red ではなく、round であるすべてのツインを取得するクエリを次に示します。 
 
 ```sql
-select * from digitaltwins where not is_defined(tags.red) and is_defined(tags.round) 
+SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND is_defined(tags.round) 
 ```
 
 ## <a name="value-tags"></a>値タグ 
 
-**値タグ**は、各タグに値を設定するために使用されるキーと値のペアです (`"color": "blue"`、`"color": "red"` など)。 値タグが作成されたら、タグの値を無視することによって、マーカー タグとして使用することもできます。 
+**値タグ** は、各タグに値を設定するために使用されるキーと値のペアです (`"color": "blue"`、`"color": "red"` など)。 値タグが作成されたら、タグの値を無視することによって、マーカー タグとして使用することもできます。 
 
 ### <a name="add-value-tags-to-model"></a>モデルに値タグを追加する 
 
@@ -127,13 +127,13 @@ entity-03: "tags": { "red": "", "size": "small" }
 上記の例では、`red` がマーカー タグとして使用されています。 "Red" とタグ付けされているすべてのツインを取得するクエリを次に示します。 
 
 ```sql
-select * from digitaltwins where is_defined(tags.red) 
+SELECT * FROM digitaltwins WHERE is_defined(tags.red) 
 ```
 
 red ではなく、small (値タグ) であるすべてのエンティティを取得するクエリを次に示します。 
 
 ```sql
-select * from digitaltwins where not is_defined(tags.red) and tags.size = 'small' 
+SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND tags.size = 'small' 
 ```
 
 ## <a name="next-steps"></a>次のステップ

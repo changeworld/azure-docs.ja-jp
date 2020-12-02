@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 003bf5241611df450fa6d0ecadff264c4d5de243
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 891366060cddaf2a046de36fa9300432977ec903
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842857"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457723"
 ---
 # <a name="azure-security-baseline-for-azure-iot-hub"></a>Azure IoT Hub 用の Azure セキュリティ ベースライン
 
@@ -33,7 +33,7 @@ Microsoft Azure IoT Hub 用の Azure セキュリティ ベースラインには
 望ましくないアクセスを回避するために、デバイスの開かれているハードウェア ポートを最小限に抑えます。 さらに、デバイスの物理的な改ざんを防止または検出するためのメカニズムを構築します。
 
 - [IoT 仮想ネットワークのサポート](virtual-network-support.md)
-- [IoT ネットワークのベスト プラクティス](../iot-fundamentals/security-recommendations.md?context=azure%252fiot-hub%252frc%252frc#networking)
+- [IoT ネットワークのベスト プラクティス](../iot-fundamentals/security-recommendations.md?context=azure%2fiot-hub%2frc%2frc#networking)
 - [Azure Private Link の概要](../private-link/private-link-overview.md)
 - [Azure ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)
 
@@ -73,7 +73,7 @@ Azure DDoS Protection Basic は既に有効になっており、IoT Hub の一�
 
 - [Azure Security Center for IoT の疑わしい IP アドレスの通信](../defender-for-iot/concept-security-alerts.md)
 
-- [Azure DDoS Protection Basic を管理する](../virtual-network/ddos-protection-overview.md)
+- [Azure DDoS Protection Basic を管理する](../ddos-protection/ddos-protection-overview.md)
 
 - [Azure Security Center での脅威の防止](../security-center/azure-defender.md)
 
@@ -220,7 +220,7 @@ Azure DDoS Protection Basic は既に有効になっており、IoT Hub の一�
 - [Azure IoT の正常性の監視](monitor-iot-hub.md)
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
   
-- [Log Analytics クエリの使用方法](../azure-monitor/log-query/get-started-portal.md)
+- [Log Analytics クエリの使用方法](../azure-monitor/log-query/log-analytics-tutorial.md)
    
 - [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
 

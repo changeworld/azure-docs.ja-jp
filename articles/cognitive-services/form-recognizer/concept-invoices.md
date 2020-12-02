@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: af3935bab5cd4d6a2aa4a9e3250f6beec19a8ea4
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: eb1be4c78be0eb7fb943700b168fa82ede4d3861
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736681"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458396"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Form Recognizer の事前構築済み請求書モデル
 
-Azure Form Recognizer を使用すると、事前構築済みの請求書モデルを使用して、販売請求書から情報を分析して抽出できます。 Invoice API を使用すると、お客様は、さまざまな形式の請求書を受け取り、構造化されたデータを返すことで、請求書の処理を自動化することができます。 強力な[光学式文字認識 (OCR)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) 機能と、請求書を解釈するディープ ラーニング モデルを組み合わせて、英語の請求書から重要な情報を抽出します。 顧客、仕入先、請求書 ID、請求書の期限、合計、請求金額、課税額、出荷先、請求先などのテキスト、テーブル、情報が抽出されます。 Form Recognizer v2.1 プレビューでは、事前構築済みの Invoice API が一般公開されています。
+Azure Form Recognizer を使用すると、事前構築済みの請求書モデルを使用して、販売請求書から情報を分析して抽出できます。 Invoice API を使用すると、お客様は、さまざまな形式の請求書を受け取り、構造化されたデータを返すことで、請求書の処理を自動化することができます。 強力な[光学式文字認識 (OCR)](../computer-vision/concept-recognizing-text.md) 機能と、請求書を解釈するディープ ラーニング モデルを組み合わせて、英語の請求書から重要な情報を抽出します。 顧客、仕入先、請求書 ID、請求書の期限、合計、請求金額、課税額、出荷先、請求先などのテキスト、テーブル、情報が抽出されます。 Form Recognizer v2.1 プレビューでは、事前構築済みの Invoice API が一般公開されています。
 
 ## <a name="what-does-the-invoice-service-do"></a>請求書サービスの機能
 
@@ -45,7 +45,7 @@ Form Recognizer の請求書サービスを試すには、Azure サブスクリ�
 
 ## <a name="the-analyze-invoice-operation"></a>請求書分析操作
 
-[請求書分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeInvoiceAsync)操作に請求書の画像または PDF を入力として渡すと、目的の値が抽出されます。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用される結果 ID を含む URL です。
+[請求書分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291)操作に請求書の画像または PDF を入力として渡すと、目的の値が抽出されます。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用される結果 ID を含む URL です。
 
 |応答ヘッダー| 結果の URL |
 |:-----|:----|
@@ -53,7 +53,7 @@ Form Recognizer の請求書サービスを試すには、Azure サブスクリ�
 
 ## <a name="the-get-analyze-invoice-result-operation"></a>請求書分析結果取得操作
 
-2 番目の手順では、[請求書分析結果取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeInvoiceResult)操作を呼び出します。 この操作には、請求書分析操作によって作成された結果 ID を入力として渡します。 これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。 **succeeded** の値が返されるまで、この操作を対話形式で呼び出します。 1 秒あたりの要求数 (RPS) を超えないようにするために、間隔は 3 - 5 秒あけてください。
+2 番目の手順では、[請求書分析結果取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9acb78c40a2533aee83)操作を呼び出します。 この操作には、請求書分析操作によって作成された結果 ID を入力として渡します。 これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。 **succeeded** の値が返されるまで、この操作を対話形式で呼び出します。 1 秒あたりの要求数 (RPS) を超えないようにするために、間隔は 3 - 5 秒あけてください。
 
 |フィールド| 型 | 設定可能な値 |
 |:-----|:----:|:----|
@@ -113,4 +113,3 @@ JSON 出力には次の 3 つの部分があります。
 
 * [Form Recognizer とは](./overview.md)
 * [REST API リファレンス ドキュメント](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeInvoiceAsync)
-
