@@ -3,12 +3,12 @@ title: 委任されたリソースを大規模に監視する
 description: 管理下にある顧客テナント全体を対象に、スケーラブルな方法で効率よく Azure Monitor ログを使用する方法について説明します。
 ms.date: 10/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 3e5c98b3b62a8fbc953a29cf51ac527e5de21110
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 96ca05faf2b3da8f214c14ae57eb186c7b71e1b3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735841"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461528"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>委任されたリソースを大規模に監視する
 
@@ -44,7 +44,7 @@ Log Analytics ワークスペースを作成したら、診断データが各テ
 
 ## <a name="next-steps"></a>次のステップ
 
-- 複数の Log Analytics ワークスペースに [Update Management ログを問い合わせる](../../automation/update-management/update-mgmt-query-logs.md)ことで、パッチ コンプライアンス レポートを追跡するこの [MVP ビルト サンプル ワークブック](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks)を試してみます。 
+- 複数の Log Analytics ワークスペースに [Update Management ログを問い合わせる](../../automation/update-management/query-logs.md)ことで、パッチ コンプライアンス レポートを追跡するこの [MVP ビルト サンプル ワークブック](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks)を試してみます。 
 - [Azure Monitor](../../azure-monitor/index.yml) について学習する。
 - [Azure Monitor ログ](../../azure-monitor/platform/data-platform-logs.md)について学習する。
 - [テナント間の管理エクスペリエンス](../concepts/cross-tenant-management-experience.md)について学習します。

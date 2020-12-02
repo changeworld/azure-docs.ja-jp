@@ -62,7 +62,7 @@
   items:
     - name: リモート監視
       items:
-        - name: Architecture
+        - name: アーキテクチャ
           href: iot-accelerators-remote-monitoring-architectural-choices.md
         - name: デバイス モデル スキーマ
           href: iot-accelerators-remote-monitoring-device-schema.md
@@ -255,7 +255,7 @@
       href: /azure/architecture/reference-architectures/iot
       items:
         - name: ダウンロード
-          href: 'https://aka.ms/iotrefarchitecture'
+          href: /azure/architecture/reference-architectures/iot
         - name: パートナー実装
           items:
             - name: Intel コネクテッド ロジスティクス プラットフォーム

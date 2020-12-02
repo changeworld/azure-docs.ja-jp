@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ee915346a93a600ea352be42dc14e0464525c025
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 699a7321646167b0a9fb20a77a40999ec33b14f0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312284"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461337"
 ---
-# <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>プライベート リンクを使用して Azure Synapse ワークスペースに接続する (プレビュー)
+# <a name="connect-to-your-azure-synapse-workspace-using-private-links"></a>プライベート リンクを使用して Azure Synapse ワークスペースに接続する
 
 この記事では、Azure Synapse ワークスペースへのプライベート エンドポイントを作成する方法について説明します。 詳細については、[プライベート リンクとプライベート エンドポイント](https://docs.microsoft.com/azure/private-link/)に関するページを参照してください。
 

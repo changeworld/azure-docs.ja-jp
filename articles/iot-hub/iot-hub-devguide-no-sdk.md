@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 3968f19329536169c3fb3eb1fbbaff99e99c293d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ae8b01522a248b8b1dbdd255a9fcd55f16cf2369
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079624"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461713"
 ---
 # <a name="develop-without-using-an-azure-iot-hub-sdk"></a>Azure IoT Hub SDK を使用しないで開発する
 
@@ -48,7 +48,7 @@ Azure IoT SDK を使用しないで以下のプロトコルを使用する場合
 
 * **MQTT** でのデバイス アプリについては、[MQTT のサポート](iot-hub-mqtt-support.md)に関する記事を参照してください。 このトピックの大部分は、MQTT プロトコルの直接使用に関するものです。 また、[IoT MQTT サンプル リポジトリ](https://github.com/Azure-Samples/IoTMQTTSample)の使用に関する情報も含まれます。 このリポジトリには、Eclipse Mosquitto ライブラリを使用して IoT Hub にメッセージを送信する C サンプルが含まれています。
 
-* **HTTPS** でのデバイス アプリまたはバックエンド アプリについては、[Azure IoT Hub REST API](https://docs.microsoft.com/rest/api/iothub/) に関する記事を参照してください。 「[開発の前提条件](#development-prerequisites)」で説明されているように、HTTPS で X.509 証明機関 (CA) 認証を使用することはできません。
+* **HTTPS** でのデバイス アプリまたはバックエンド アプリについては、[Azure IoT Hub REST API](/rest/api/iothub/) に関する記事を参照してください。 「[開発の前提条件](#development-prerequisites)」で説明されているように、HTTPS で X.509 証明機関 (CA) 認証を使用することはできません。
 
 デバイスでサポートされている場合は、MQTT を使用することを強くお勧めします。
 

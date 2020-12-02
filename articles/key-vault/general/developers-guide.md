@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 596de459b888bb9973aca1c7d72f2f9e24c966eb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6fa9f5d86d3640bf3ae0233e7d6d8a00752f5b6d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013974"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460806"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
 
@@ -120,7 +120,7 @@ Key Vault データ プレーンのセキュリティの詳細については、
 - Key Vault から VM に証明書をデプロイする方法 - [Windows](../../virtual-machines/extensions/key-vault-windows.md)、[Linux](../../virtual-machines/extensions/key-vault-linux.md) - Azure の VM で実行するクラウド アプリケーションには証明書が必要です。 今すぐこの VM で証明書を取得する方法を説明します。
 - [Key Vault を介して Azure Web アプリ証明書をデプロイする](../../app-service/configure-ssl-certificate.md#import-a-certificate-from-key-vault)
 - アクセス ポリシーを割り当てます ([CLI](assign-access-policy-cli.md) | [PowerShell](assign-access-policy-powershell.md) | [ポータル](assign-access-policy-portal.md))。 
-- 「[CLI で Key Vault の論理的な削除を使用する方法](soft-delete-cli.md)」では、キー コンテナーの使用方法とライフサイクルおよび論理的な削除が有効な各種キー コンテナー オブジェクトを紹介します。
+- 「[CLI で Key Vault の論理的な削除を使用する方法](./key-vault-recovery.md)」では、キー コンテナーの使用方法とライフサイクルおよび論理的な削除が有効な各種キー コンテナー オブジェクトを紹介します。
 - [デプロイ時にセキュリティで保護された値 (パスワードなど) を渡す方法](../../azure-resource-manager/templates/key-vault-parameter.md) - デプロイメント時にパラメーターとしてセキュリティで保護された値 (パスワードなど) を渡す必要がある場合、Azure Key Vault にシークレットとしてその値を格納し、他のリソース マネージャー テンプレートで値を参照することができます。
 
 ## <a name="integrated-with-key-vault"></a>Key Vault との統合

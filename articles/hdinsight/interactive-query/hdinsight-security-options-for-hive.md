@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/02/2020
-ms.openlocfilehash: 8573ba99b7aef13025b4f175640ac9583ad5a679
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f8296018a9534d5e2ce5dd7b84ebcad49cac00b3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545958"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460018"
 ---
 # <a name="security-options-for-hive-in-azure-hdinsight"></a>Azure HDInsight の Hive のセキュリティ オプション
 
@@ -41,6 +41,6 @@ ESP クラスターの場合、既定で Ranger を使用した認可が有効�
 
 ## <a name="next-steps"></a>次の手順
 * [HiveServer2 認証の概要](https://cwiki.apache.org/confluence/display/Hive/Setting+up+HiveServer2#SettingUpHiveServer2-Authentication/SecurityConfiguration)
-* [HiveServer2 認可の概要](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Authorization#:~:text=%20Overview%20of%20Authorization%20Modes%20%201%201,and%20Apache%20Sentry%20are%20apache%20projects...%20More%20)
+* [HiveServer2 認可の概要](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Authorization)
 * [SQL 標準ベースの Hive 認可を有効にする](https://community.cloudera.com/t5/Community-Articles/Getting-started-with-SQLStdAuth/ta-p/244263)
 * [Hive を使用した Apache Ranger](../domain-joined/apache-domain-joined-run-hive.md)

@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: reference
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 03941c3abe833deb218844cc60e2f04556fccc22
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 609c44991e7deca183321758fabdef80b71210c5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078205"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460856"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Azure IoT Hub の監視データのリファレンス
 
@@ -23,9 +23,9 @@ Azure IoT Hub の監視データの収集と分析の詳細については、「
 
 次のサブセクションでは、IoT Hub プラットフォーム メトリックを一般カテゴリ別に分類し、Azure portal に表示される表示名で一覧表示しています。 各サブセクションに示すメトリックに関連する情報も提供します。
 
-また、Azure Monitor ドキュメントの「[Microsoft.Devices/IotHubs](/azure/azure-monitor/platform/metrics-supported#microsoftdevicesiothubs)」には、すべての IoT Hub プラットフォーム メトリックがメトリック名で一覧表示された 1 つの表があります。 この表には、[サポートされる集計](#supported-aggregations)など、この記事に含まれている一部のメトリックの情報が提供されていないことに注意してください。
+また、Azure Monitor ドキュメントの「[Microsoft.Devices/IotHubs](../azure-monitor/platform/metrics-supported.md#microsoftdevicesiothubs)」には、すべての IoT Hub プラットフォーム メトリックがメトリック名で一覧表示された 1 つの表があります。 この表には、[サポートされる集計](#supported-aggregations)など、この記事に含まれている一部のメトリックの情報が提供されていないことに注意してください。
 
-他の Azure サービスでサポートされているメトリックについては、「[Azure Monitor のサポートされるメトリック](/azure/azure-monitor/platform/metrics-supported)」を参照してください。
+他の Azure サービスでサポートされているメトリックについては、「[Azure Monitor のサポートされるメトリック](../azure-monitor/platform/metrics-supported.md)」を参照してください。
 
 **このセクションのトピック**
 
@@ -51,9 +51,9 @@ Azure IoT Hub の監視データの収集と分析の詳細については、「
 
 ほとんどのメトリックでは、すべての集計の種類が有効です。ただし、カウント メトリック ( **[ユニット]** 列の値が **[Count]** のもの) については、一部の集計のみが有効です。 カウント メトリックには、次の 2 種類があります。
 
-* **シングルポイント** カウント メトリックの場合、測定されている操作が発生するたびに、IoT Hub により 1 つのデータ ポイント (基本的に 1) が登録されます。 次に、Azure Monitor によって、指定された粒度でこれらのデータ ポイントが合計されます。 **シングルポイント** メトリックの例としては、" *送信済みテレメトリ メッセージ* " や " *C2D メッセージ配信完了* " があります。 これらのメトリックでは、関連する集計の種類は合計 (Sum) のみです。 ポータルを使用すると、Minimum、Maximum、Average を選択できます。ただし、これらの値は常に 1 になります。
+* **シングルポイント** カウント メトリックの場合、測定されている操作が発生するたびに、IoT Hub により 1 つのデータ ポイント (基本的に 1) が登録されます。 次に、Azure Monitor によって、指定された粒度でこれらのデータ ポイントが合計されます。 **シングルポイント** メトリックの例としては、"*送信済みテレメトリ メッセージ*" や "*C2D メッセージ配信完了*" があります。 これらのメトリックでは、関連する集計の種類は合計 (Sum) のみです。 ポータルを使用すると、Minimum、Maximum、Average を選択できます。ただし、これらの値は常に 1 になります。
 
-* **スナップショット** カウント メトリックの場合、測定されている操作が発生すると、IoT Hub によって合計数が登録されます。 現時点では、IoT Hub によって出力される **スナップショット** メトリックとしては、" *使用されているメッセージの合計数* "、" *デバイスの合計数 (プレビュー)* "、" *接続されているデバイス (プレビュー)* " の 3 つがあります。 これらのメトリックは、出力されるたびに "合計" 数量を示すので、指定された粒度でそれらを合計することは意味がありません。 Azure Monitor では、これらのメトリックに対する集計の種類として Minimum、Maximum、Average を選択するように制限されています。
+* **スナップショット** カウント メトリックの場合、測定されている操作が発生すると、IoT Hub によって合計数が登録されます。 現時点では、IoT Hub によって出力される **スナップショット** メトリックとしては、"*使用されているメッセージの合計数*"、"*デバイスの合計数 (プレビュー)* "、"*接続されているデバイス (プレビュー)* " の 3 つがあります。 これらのメトリックは、出力されるたびに "合計" 数量を示すので、指定された粒度でそれらを合計することは意味がありません。 Azure Monitor では、これらのメトリックに対する集計の種類として Minimum、Maximum、Average を選択するように制限されています。
 
 ### <a name="cloud-to-device-command-metrics"></a>クラウドからデバイスへのコマンドのメトリック
 
@@ -106,7 +106,7 @@ Azure IoT Hub の監視データの収集と分析の詳細については、「
 |デバイス データの合計使用量 (プレビュー)|deviceDataUsageV2|バイト|合計|Iot Hub に接続されているデバイスとの間で転送されたバイト数|なし|
 |使用されているメッセージの合計数|dailyMessageQuotaUsed|Count|Average|現在使用されているメッセージの合計数。 これは累積値であり、毎日 00 時 00 分 (UTC) になるとゼロにリセットされます。|なし|
 
-" *使用されているメッセージの合計数* " では、Minimum、Maximum、Average の集計のみがサポートされています。 詳細については、「[サポートされる集計](#supported-aggregations)」を参照してください。
+"*使用されているメッセージの合計数*" では、Minimum、Maximum、Average の集計のみがサポートされています。 詳細については、「[サポートされる集計](#supported-aggregations)」を参照してください。
 
 ### <a name="device-metrics"></a>デバイス メトリック
 
@@ -117,11 +117,11 @@ Azure IoT Hub の監視データの収集と分析の詳細については、「
 |デバイスの合計数 (プレビュー)|totalDeviceCount|Count|Average|IoT Hub に登録されたデバイスの数|なし|
 |接続されているデバイス (プレビュー)|connectedDeviceCount|Count|Average|IoT Hub に接続されているデバイスの数|なし|
 
-" *デバイスの総数 (非推奨)* " と " *接続されているデバイス (非推奨)* " では、合計 (Sum) の集計のみが有効です。 Minimum、Maximum、Average の集計では、常に 1 が返されます。 詳細については、「[サポートされる集計](#supported-aggregations)」を参照してください。
+"*デバイスの総数 (非推奨)* " と "*接続されているデバイス (非推奨)* " では、合計 (Sum) の集計のみが有効です。 Minimum、Maximum、Average の集計では、常に 1 が返されます。 詳細については、「[サポートされる集計](#supported-aggregations)」を参照してください。
 
-" *デバイスの合計数 (プレビュー)* " と " *接続されているデバイス (プレビュー)* " では、Minimum、Maximum、Average の集計のみが有効です。 詳細については、「[サポートされる集計](#supported-aggregations)」を参照してください。
+"*デバイスの合計数 (プレビュー)* " と "*接続されているデバイス (プレビュー)* " では、Minimum、Maximum、Average の集計のみが有効です。 詳細については、「[サポートされる集計](#supported-aggregations)」を参照してください。
 
-" *接続されているデバイス (プレビュー)* " と " *デバイスの合計数 (プレビュー)* " は、診断設定を使用してエクスポートすることはできません。
+"*接続されているデバイス (プレビュー)* " と "*デバイスの合計数 (プレビュー)* " は、診断設定を使用してエクスポートすることはできません。
 
 ### <a name="device-telemetry-metrics"></a>デバイス テレメトリのメトリック
 
@@ -150,8 +150,8 @@ Azure IoT Hub の監視データの収集と分析の詳細については、「
 
 |メトリックの表示名|メトリック|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
-|Event Grid の配信数 (プレビュー)|EventGridDeliveries|Count|合計|Event Grid に発行された IoT Hub イベントの数。 成功および失敗した要求の数には、Result ディメンションを使用します。 EventType ディメンションはイベントの種類 (https://aka.ms/ioteventgrid) ) を示します。|Result、<br/>EventType<br>" *詳細については、「 [メトリック ディメンション](#metric-dimensions)」を参照してください。* "|
-|Event Grid の待機時間 (プレビュー)|EventGridLatency|ミリ秒|Average|oT Hub イベントが生成されてから、そのイベントが Event Grid に発行されるまでの平均待機時間 (ミリ秒)。 この数は、すべてのイベントの種類の間の平均値です。 特定の種類のイベントの待機時間を確認するには、EventType ディメンションを使用します。|EventType<br>" *詳細については、「 [メトリック ディメンション](#metric-dimensions)」を参照してください。* "|
+|Event Grid の配信数 (プレビュー)|EventGridDeliveries|Count|合計|Event Grid に発行された IoT Hub イベントの数。 成功および失敗した要求の数には、Result ディメンションを使用します。 EventType ディメンションはイベントの種類 (https://aka.ms/ioteventgrid) ) を示します。|Result、<br/>EventType<br>"*詳細については、「[メトリック ディメンション](#metric-dimensions)」を参照してください。* "|
+|Event Grid の待機時間 (プレビュー)|EventGridLatency|ミリ秒|Average|oT Hub イベントが生成されてから、そのイベントが Event Grid に発行されるまでの平均待機時間 (ミリ秒)。 この数は、すべてのイベントの種類の間の平均値です。 特定の種類のイベントの待機時間を確認するには、EventType ディメンションを使用します。|EventType<br>"*詳細については、「[メトリック ディメンション](#metric-dimensions)」を参照してください。* "|
 
 **[ユニット]** 値が **Count** のメトリックの場合、合計 (Sum) の集計のみが有効です。 Minimum、Maximum、Average の集計では、常に 1 が返されます。 詳細については、「[サポートされる集計](#supported-aggregations)」を参照してください。
 
@@ -178,9 +178,9 @@ Azure IoT Hub の監視データの収集と分析の詳細については、「
 
 |メトリックの表示名|メトリック|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
-| Routing Delivery Attempts (ルーティングの配信試行) (プレビュー) |RoutingDeliveries | Count | 合計 |これはルーティングの配信に関するメトリックです。 ディメンションを使用して、特定のエンドポイントまたは特定のルーティング ソースに向けた配信の状態を特定します。| Result、<br>RoutingSource、<br>endpointType、<br>FailureReasonCategory、<br>EndpointName<br>" *詳細については、「 [メトリック ディメンション](#metric-dimensions)」を参照してください。* " |
-| Routing Delivery Data Size In Bytes (バイト単位でのルーティング配信のデータ サイズ) (プレビュー)|RoutingDataSizeInBytesDelivered| バイト | 合計 |IoT Hub によってカスタム エンドポイントと組み込みエンドポイントにルーティングされた合計バイト数。 ディメンションを使用して、特定のエンドポイントまたは特定のルーティング ソースに向けてルーティングされたデータ サイズを特定します。| RoutingSource、<br>EndpointType<br>EndpointName<br>" *詳細については、「 [メトリック ディメンション](#metric-dimensions)」を参照してください。* "|
-| Routing Latency (ルーティングの待機時間) (プレビュー) |RoutingDeliveryLatency| ミリ秒 | Average |これはルーティングの配信待機時間に関するメトリックです。 ディメンションを使用して、特定のエンドポイントまたは特定のルーティング ソースに向けた待機時間を特定します。| RoutingSource、<br>endpointType、<br>EndpointName<br>" *詳細については、「 [メトリック ディメンション](#metric-dimensions)」を参照してください。* "|
+| Routing Delivery Attempts (ルーティングの配信試行) (プレビュー) |RoutingDeliveries | Count | 合計 |これはルーティングの配信に関するメトリックです。 ディメンションを使用して、特定のエンドポイントまたは特定のルーティング ソースに向けた配信の状態を特定します。| Result、<br>RoutingSource、<br>endpointType、<br>FailureReasonCategory、<br>EndpointName<br>"*詳細については、「[メトリック ディメンション](#metric-dimensions)」を参照してください。* " |
+| Routing Delivery Data Size In Bytes (バイト単位でのルーティング配信のデータ サイズ) (プレビュー)|RoutingDataSizeInBytesDelivered| バイト | 合計 |IoT Hub によってカスタム エンドポイントと組み込みエンドポイントにルーティングされた合計バイト数。 ディメンションを使用して、特定のエンドポイントまたは特定のルーティング ソースに向けてルーティングされたデータ サイズを特定します。| RoutingSource、<br>EndpointType<br>EndpointName<br>"*詳細については、「[メトリック ディメンション](#metric-dimensions)」を参照してください。* "|
+| Routing Latency (ルーティングの待機時間) (プレビュー) |RoutingDeliveryLatency| ミリ秒 | Average |これはルーティングの配信待機時間に関するメトリックです。 ディメンションを使用して、特定のエンドポイントまたは特定のルーティング ソースに向けた待機時間を特定します。| RoutingSource、<br>endpointType、<br>EndpointName<br>"*詳細については、「[メトリック ディメンション](#metric-dimensions)」を参照してください。* "|
 |ルーティング: ストレージに配信された BLOB|d2c.endpoints.egress.storage.blobs|Count|合計|IoT Hub ルーティングで BLOB がストレージ エンドポイントに配信された回数。|なし|
 |ルーティング: ストレージに配信されたデータ|d2c.endpoints.egress.storage.bytes|バイト|合計|IoT Hub ルーティングでストレージ エンドポイントに配信されたデータの量 (バイト)。|なし|
 |ルーティング: Event Hub のメッセージの待機時間|d2c.endpoints.latency.eventHubs|ミリ秒|Average|IoT Hub への受信メッセージと、カスタム エンドポイント型の Event Hub への受信メッセージの間の平均待機時間 (ミリ秒)。 これには、組み込みエンドポイントへのメッセージ ルート (イベント) は含まれません。|なし|
@@ -219,17 +219,17 @@ Azure IoT Hub には、ルーティングと Event Grid の一部のメトリッ
 |---|---|
 ||
 |**EndpointName**| エンドポイント名。|
-|**EndpointType**|次のいずれかになります: **eventHubs** 、 **serviceBusQueues** 、 **cosmosDB** 、 **serviceBusTopics** 、 **builtin** 、または **blobStorage** 。|
-|**EventType**| 次に示す Event Grid イベントの種類のいずれかになります: **Microsoft.Devices.DeviceCreated** 、 **Microsoft.Devices.DeviceDeleted** 、 **Microsoft.Devices.DeviceConnected** 、 **Microsoft.Devices.DeviceDisconnected** 、または **Microsoft.Devices.DeviceTelemetry** 。 詳細については、「[イベントの種類](iot-hub-event-grid.md#event-types)」を参照してください。|
-|**FailureReasonCategory**| 次のいずれかになります: **invalid** 、 **dropped** 、 **orphaned** 、または **null** 。|
-|**結果**| **success** または **failure** 。|
+|**EndpointType**|次のいずれかになります: **eventHubs**、**serviceBusQueues**、**cosmosDB**、**serviceBusTopics**、 **builtin**、または **blobStorage**。|
+|**EventType**| 次に示す Event Grid イベントの種類のいずれかになります: **Microsoft.Devices.DeviceCreated**、 **Microsoft.Devices.DeviceDeleted**、**Microsoft.Devices.DeviceConnected**、**Microsoft.Devices.DeviceDisconnected**、または **Microsoft.Devices.DeviceTelemetry**。 詳細については、「[イベントの種類](iot-hub-event-grid.md#event-types)」を参照してください。|
+|**FailureReasonCategory**| 次のいずれかになります: **invalid**、**dropped**、**orphaned**、または **null**。|
+|**結果**| **success** または **failure**。|
 |**RoutingSource**| デバイス メッセージ<br>ツイン変更イベント<br>デバイス ライフサイクル イベント|
 
-メトリック ディメンションの詳細については、「[多次元メトリック](/azure/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics)」を参照してください。
+メトリック ディメンションの詳細については、「[多次元メトリック](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics)」を参照してください。
 
 ## <a name="resource-logs"></a>リソース ログ
 
-このセクションには、Azure IoT Hub 用に収集されるすべてのリソース ログ カテゴリの種類とスキーマの一覧が表示されています。 すべての IoT Hub ログのリソース プロバイダーと種類は、[Microsoft.Devices/IotHubs](/azure/azure-monitor/platform/resource-logs-categories#microsoftdevicesiothubs) です。
+このセクションには、Azure IoT Hub 用に収集されるすべてのリソース ログ カテゴリの種類とスキーマの一覧が表示されています。 すべての IoT Hub ログのリソース プロバイダーと種類は、[Microsoft.Devices/IotHubs](../azure-monitor/platform/resource-logs-categories.md#microsoftdevicesiothubs) です。
 
 **このセクションのトピック**
 
@@ -384,7 +384,7 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつクラウド�
 
 ### <a name="routes"></a>ルート
 
-[メッセージ ルーティング](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) カテゴリでは、メッセージ ルートの評価時に発生するエラーと、IoT Hub によって認識されるエンドポイントの正常性を追跡します。 このカテゴリには、以下のようなイベントが含まれます。
+[メッセージ ルーティング](./iot-hub-devguide-messages-d2c.md) カテゴリでは、メッセージ ルートの評価時に発生するエラーと、IoT Hub によって認識されるエンドポイントの正常性を追跡します。 このカテゴリには、以下のようなイベントが含まれます。
 
 * "未定義" に評価されるルール、
 * IoT Hub がエンドポイントをデッドとしてマークしている、または
@@ -559,7 +559,7 @@ IoT Hub では、有効なトレース プロパティを含むメッセージ�
 
 ここで、IoT Hub のクロックがデバイスのクロックと同期していない可能性があり、経過時間を計算すると誤解を招く場合があるので、`durationMs` は計算されません。 `properties` セクションのタイムスタンプを使用するロジックを記述して、device-to-cloud 待機時間のスパイクをキャプチャすることをお勧めします。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Integer | device-to-cloud メッセージのサイズ (バイト単位) |
 | **deviceId** | ASCII の 7 ビットの英数字の文字列 | デバイスの ID |
@@ -593,7 +593,7 @@ IoT Hub では、有効なトレース プロパティを含むメッセージ�
 
 `properties` セクションでは、このログにはメッセージのイングレスに関する追加情報が含まれています
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | String | true または false。IoT Hub でメッセージのルーティングが有効になっているかどうかを示します |
 | **parentSpanId** | String | 親メッセージの [span-id](https://w3c.github.io/trace-context/#parent-id)。この場合は、D2C のメッセージ トレースです |
@@ -625,7 +625,7 @@ IoT Hub では、有効なトレース プロパティを含むメッセージ�
 
 `properties` セクションでは、このログにはメッセージのイングレスに関する追加情報が含まれています
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **endpointName** | String | ルーティング エンドポイントの名前 |
 | **endpointType** | String | ルーティング エンドポイントの種類 |
@@ -689,4 +689,4 @@ IoT Hub 構成ログでは、自動デバイス管理機能セットのイベン
 ## <a name="see-also"></a>参照
 
 * Azure IoT Hub の監視については、[Azure IoT Hub の監視](monitor-iot-hub.md)に関するページを参照してください。
-* Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](/azure/azure-monitor/insights/monitor-azure-resource)」を参照してください。
+* Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/insights/monitor-azure-resource.md)」を参照してください。

@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 09/04/2020
-ms.openlocfilehash: 3b2fc1ea37b09f6e4813d2a3c2333bc6d744293d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 08c5b5d8351105744f7a912b352a940df3b4baa7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006508"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462125"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure Marketplace の掲載に関するガイドライン
 
@@ -93,5 +93,5 @@ ms.locfileid: "96006508"
 * Azure Marketplace でのさまざまなオファーの種類について学習する。
   * [SaaS アプリ](./plan-saas-offer.md)
   * [Containers](./marketplace-containers.md)
-  * [コンサルティング サービス](./consulting-services.md)
+  * [コンサルティング サービス](./plan-consulting-service-offer.md)
 * [公開オプションを選定する](./determine-your-listing-type.md)

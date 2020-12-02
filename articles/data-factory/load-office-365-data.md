@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: de0224c51debe4d0203400b55721208ce7093649
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 05f336af62bc0869249d5b32700ea3515ac5994f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636291"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459702"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Azure Data Factory を使用して Office 365 からデータを読み込む
 
@@ -34,10 +34,10 @@ ms.locfileid: "92636291"
       
    ![[新しいデータ ファクトリ] ページ](./media/load-office-365-data/new-azure-data-factory.png)
  
-    * **Name** :Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 *LoadFromOffice365Demo* は利用できません" というエラーを受信した場合は、データ ファクトリに別の名前を入力します。 たとえば、 _**yourname**_ **LoadFromOffice365Demo** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
-    * **サブスクリプション** :データ ファクトリを作成する Azure サブスクリプションを選択します。 
-    * **リソース グループ** :ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
-    * **バージョン** : **[V2]** を選択します。
+    * **Name**:Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 *LoadFromOffice365Demo* は利用できません" というエラーを受信した場合は、データ ファクトリに別の名前を入力します。 たとえば、 _**yourname**_ **LoadFromOffice365Demo** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
+    * **サブスクリプション**:データ ファクトリを作成する Azure サブスクリプションを選択します。 
+    * **リソース グループ**:ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
+    * **バージョン**: **[V2]** を選択します。
     * **[場所]** :データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 このようなデータ ストアには、Azure Data Lake Store、Azure Storage、Azure SQL Database などがあります。
 
 3. **［作成］** を選択します
@@ -130,7 +130,7 @@ ms.locfileid: "92636291"
 
 ![アクティビティを監視する](./media/load-office-365-data/activity-status.png) 
 
-このコンテキスト (アクセスされるデータ テーブル、データが読み込まれる宛先アカウント、データ アクセス要求を行っているユーザー ID の組み合わせ) にデータを要求するのはこれが初めての場合は、コピー アクティビティの状態が " **In Progress** " (進行中) として表示され、[アクション] の下にある [詳細] リンクをクリックしたときにのみ、状態は " **RequesetingConsent** " と表示されます。  データの抽出を進めるには、データ アクセス承認者グループのメンバーが、Privileged Access Management で要求を承認する必要があります。
+このコンテキスト (アクセスされるデータ テーブル、データが読み込まれる宛先アカウント、データ アクセス要求を行っているユーザー ID の組み合わせ) にデータを要求するのはこれが初めての場合は、コピー アクティビティの状態が "**In Progress**" (進行中) として表示され、[アクション] の下にある [詳細] リンクをクリックしたときにのみ、状態は "**RequesetingConsent**" と表示されます。  データの抽出を進めるには、データ アクセス承認者グループのメンバーが、Privileged Access Management で要求を承認する必要があります。
 
 _同意を要求しているときの状態:_ 
 ![アクティビティ実行の詳細 - 同意の要求](./media/load-office-365-data/activity-details-request-consent.png) 
@@ -147,7 +147,7 @@ _データを抽出しているときの状態:_
 
 ## <a name="next-steps"></a>次のステップ
 
-次の資料に進んで、Azure Synapse Analytics (旧称 SQL Data Warehouse) のサポートを確認します。 
+次の資料に進んで、Azure Synapse Analytics のサポートを確認します。 
 
 > [!div class="nextstepaction"]
 >[Office 365 コネクタ](connector-office-365.md)

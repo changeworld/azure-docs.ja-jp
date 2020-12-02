@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 09/29/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a543f03cb73d9eae8eaa81eeb3a37fd59e4e6a81
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 9ae13b88d767e43c425ceb86d0be455cebc0e6ac
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685802"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462532"
 ---
 # <a name="common-error-codes-for-azure-key-vault"></a>Azure Key Vault の一般的なエラー コード
 
@@ -22,7 +22,7 @@ Azure Key Vault に対して操作を実行した結果、返される可能性�
 
 | エラー コード | ユーザー メッセージ |
 |--|--|
-| VaultAlreadyExists |  指定された名前で新しいキー コンテナーを作成しようとしましたが、その名前が既に使用されているため作成できませんでした。 この名前のキー コンテナーを最近削除した場合は、まだ論理的な削除状態である可能性があります。 論理的に削除された状態かどうかは、[こちら](https://docs.microsoft.com/azure/key-vault/general/key-vault-recovery?tabs=azure-portal#list-recover-or-purge-a-soft-deleted-key-vault)で確認できます |
+| VaultAlreadyExists |  指定された名前で新しいキー コンテナーを作成しようとしましたが、その名前が既に使用されているため作成できませんでした。 この名前のキー コンテナーを最近削除した場合は、まだ論理的な削除状態である可能性があります。 論理的に削除された状態かどうかは、[こちら](./key-vault-recovery.md?tabs=azure-portal#list-recover-or-purge-a-soft-deleted-key-vault)で確認できます |
 | VaultNameNotValid |  コンテナー名は 24 文字の英数字で、アルファベットで始める必要があります |
 | AccessDenied |  この操作を行うためのアクセス許可がアクセス ポリシーにない可能性があります。 |
 | ForbiddenByFirewall |  クライアント アドレスは承認されておらず、呼び出し元は信頼できるサービスではありません。 |
