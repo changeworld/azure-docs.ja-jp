@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 7ddceb2808874e531cfda81e5a9ce74be3a4fab4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 951dbb6c1a44e3c081f682db49458be165e9e930
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517083"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555313"
 ---
 ## <a name="configure-your-local-environment"></a>ローカル環境を構成する
 
@@ -42,7 +42,7 @@ ms.locfileid: "92517083"
 + [.NET Core SDK 3.1](https://www.microsoft.com/net/download)
 ::: zone-end
 ::: zone pivot="programming-language-java"  
-+ [Java Developer Kit](https://aka.ms/azure-jdks)、バージョン 8 または 11。 
++ [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support)、バージョン 8 または 11。 
 
 + [Apache Maven](https://maven.apache.org) バージョン 3.0 以降。
 

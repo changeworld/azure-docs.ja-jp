@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 10/20/2020
+ms.date: 11/20/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 394bad6623eeb4ce4b43cadd9bef53934ed7e852
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: dc4ec31a307d559fad84392522e6847aab1e3873
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311611"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94986970"
 ---
 |名前 |説明 |ポリシー |Version |
 |---|---|---|---|
@@ -18,7 +18,7 @@ ms.locfileid: "92311611"
 |[Azure セキュリティ ベンチマーク](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |このイニシアチブには、Azure セキュリティ ベンチマークの推奨事項のサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/azsecbm](https://aka.ms/azsecbm) を参照してください。 |136 |6.1.0-preview |
 |[カナダ連邦の PBMM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |このイニシアチブには、カナダ連邦 PBMM コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/canadafederalpbmm-blueprint](https://aka.ms/canadafederalpbmm-blueprint) を参照してください。 |60 |3.0.0 |
 |[CIS Microsoft Azure Foundations Benchmark 1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json) |このイニシアチブには、CIS Microsoft Azure Foundations Benchmark の推奨事項のサブセットに対応する監査ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/cisazure-blueprint](https://aka.ms/cisazure-blueprint) を参照してください。 |87 |7.1.0 |
-|[FedRAMP High](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |このイニシアチブには、FedRAMP H コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/fedramph-blueprint](https://aka.ms/fedramph-blueprint) を参照してください。 |72 |3.0.0 |
+|[FedRAMP High](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |このイニシアチブには、FedRAMP H コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/fedramph-blueprint](https://aka.ms/fedramph-blueprint) を参照してください。 |72 |3.0.1 |
 |[FedRAMP (中)](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_M_audit.json) |このイニシアチブには、FedRAMP M コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/fedrampm-blueprint](https://aka.ms/fedrampm-blueprint) を参照してください。 |62 |3.0.0 |
 |[HITRUST/HIPAA](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |このイニシアチブには、HITRUST/HIPAA コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/hipaa-blueprint](https://aka.ms/hipaa-blueprint) を参照してください。 |121 |4.1.0 |
 |[IRS1075 September 2016](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/IRS1075_audit.json) |このイニシアチブには、IRS1075 (2016 年 9 月) コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/irs1075-blueprint](https://aka.ms/irs1075-blueprint) を参照してください。 |62 |3.0.0 |
