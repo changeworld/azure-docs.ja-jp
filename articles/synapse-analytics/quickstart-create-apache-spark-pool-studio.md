@@ -1,5 +1,5 @@
 ---
-title: 'クイックスタート: Synapse Studio を使用してサーバーレス Apache Spark プール (プレビュー) を作成する'
+title: 'クイックスタート:'
 description: このガイドの手順に従って、Synapse Studio を使用してサーバーレス Apache Spark プールを作成します。
 services: synapse-analytics
 author: saveenr
@@ -9,21 +9,21 @@ ms.subservice: spark
 ms.date: 10/16/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 313ad0c620fe06158e96c208ae265702134b58d1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d280e96b354f38a86545ed5f6bcaa6c9a314c46b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324157"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462030"
 ---
-# <a name="quickstart-create-a-serverless-apache-spark-pool-preview-using-synapse-studio"></a>クイックスタート: Synapse Studio を使用してサーバーレス Apache Spark プール (プレビュー) を作成する
+# <a name="quickstart-create-a-serverless-apache-spark-pool-using-synapse-studio"></a>クイックスタート:
 
 Azure Synapse Analytics には、データの取り込み、変換、モデル化、分析、および提供に役立つさまざまな分析エンジンが用意されています。 Apache Spark プールは、オープンソースのビッグ データ コンピューティング機能を提供します。 お使いの Synapse ワークスペースに Apache Spark プールを作成した後、データを読み込み、モデル化し、処理し、提供して分析情報を得ることができます。  
 
 このクイックスタートでは、Synapse Studio を使用して Synapse ワークスペースで Apache Spark プールを作成する手順を説明します。
 
 > [!IMPORTANT]
-> Spark インスタンスの料金は、それを使用しているかどうかに関係なく、分単位で課金されます。 必ず、Spark インスタンスの使用を終了した後にシャットダウンするか、短いタイムアウトを設定してください。 詳しくは、この記事の「 **リソースのクリーンアップ** 」をご覧ください。
+> Spark インスタンスの料金は、それを使用しているかどうかに関係なく、分単位で課金されます。 必ず、Spark インスタンスの使用を終了した後にシャットダウンするか、短いタイムアウトを設定してください。 詳しくは、この記事の「**リソースのクリーンアップ**」をご覧ください。
 
 Azure サブスクリプションをお持ちでない場合は、[開始する前に無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 1. Synapse ワークスペースに移動します。ここでは、検索バーにサービス名 (またはリソース名を直接) 入力して、Apache Spark プールを作成します。
 
     ![「Synapse ワークスペース」と入力されている Azure portal の検索バー。](media/quickstart-create-sql-pool/create-sql-pool-00a.png)
-1. ワークスペースの一覧で、開くワークスペースの名前 (または名前の一部) を入力します。 この例では、 **contosoanalytics** という名前のワークスペースを使用します。
+1. ワークスペースの一覧で、開くワークスペースの名前 (または名前の一部) を入力します。 この例では、**contosoanalytics** という名前のワークスペースを使用します。
 
     ![名前に Contoso を含むワークスペースを表示するためにフィルター処理された Synapse ワークスペースの一覧。](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
 
@@ -100,7 +100,7 @@ Synapse Studio を使用してワークスペースから Apache Spark プール
 Apache Spark プールを削除する場合は、次の手順を実行します。
 
 1. Synapse Studio で管理ハブにある Apache Spark プールに移動します。
-1. 削除する Apache プールの横にある省略記号 (この場合は、 **contosospark** ) を選択して、Apache Spark プールのコマンドを表示します。
+1. 削除する Apache プールの横にある省略記号 (この場合は、**contosospark**) を選択して、Apache Spark プールのコマンドを表示します。
 
     ![Apache Spark プールの一覧。最近作成されたプールが選択されています。](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-29.png)
 
