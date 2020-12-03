@@ -4,12 +4,12 @@ description: Azure Custom Vision を使用して、おもちゃのトラック�
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 685aab603b2589a97b4c80ef0f8c5860617f1147
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b4d9f82d99542bde216f0eaa1459d0f6c1a52659
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358317"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498338"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>チュートリアル:Live Video Analytics on IoT Edge と Azure Custom Vision でライブ ビデオを分析する
 
@@ -62,7 +62,7 @@ ms.locfileid: "94358317"
 ## <a name="review-the-sample-video"></a>サンプル ビデオを確認する
 
 
-このチュートリアルでは、[おもちゃの車の推論ビデオ](https://lvamedia.blob.core.windows.net/public/t2.mkv) ファイルを使用してライブ ストリームをシミュレートします。 このビデオは、[VLC media player](https://www.videolan.org/vlc/) などのアプリケーションを使用して確認できます。 [Ctrl+N](https://lvamedia.blob.core.windows.net/public/t2.mkv) キーを押し、 **おもちゃの車の推論ビデオ** へのリンクを貼り付けて、再生を開始します。 ビデオを見ると、36 秒の時点でおもちゃのトラックがビデオに出てくることがわかります。 このカスタム モデルは、この特定のおもちゃのトラックを検出するようにトレーニングされています。 このチュートリアルでは、Live Video Analytics on IoT Edge を使用して、このようなおもちゃのトラックを検出し、関連付けられた推論イベントを IoT Edge ハブに発行します。
+このチュートリアルでは、[おもちゃの車の推論ビデオ](https://lvamedia.blob.core.windows.net/public/t2.mkv) ファイルを使用してライブ ストリームをシミュレートします。 このビデオは、[VLC media player](https://www.videolan.org/vlc/) などのアプリケーションを使用して確認できます。 [Ctrl+N](https://lvamedia.blob.core.windows.net/public/t2.mkv) キーを押し、**おもちゃの車の推論ビデオ** へのリンクを貼り付けて、再生を開始します。 ビデオを見ると、36 秒の時点でおもちゃのトラックがビデオに出てくることがわかります。 このカスタム モデルは、この特定のおもちゃのトラックを検出するようにトレーニングされています。 このチュートリアルでは、Live Video Analytics on IoT Edge を使用して、このようなおもちゃのトラックを検出し、関連付けられた推論イベントを IoT Edge ハブに発行します。
 
 ## <a name="overview"></a>概要
 
@@ -203,8 +203,8 @@ Live Video Analytics デバイスを右クリックし、 **[組み込みイベ�
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="[Show Verbose Message]\(詳細メッセージの表示\) を示すスクリーンショット。":::
-1. デバッグ セッションを開始するには、 **F5** キーを押します。 **[ターミナル]** ウィンドウにメッセージが出力されるのを確認できます。
-1. operations.json コードは、ダイレクト メソッド `GraphTopologyList` および `GraphInstanceList` の呼び出しから始まります。 前のクイックスタートを完了した後にリソースをクリーンアップした場合、このプロセスは空のリストを返した後に一時停止します。 続行するには、 **Enter** キーを押します。
+1. デバッグ セッションを開始するには、**F5** キーを押します。 **[ターミナル]** ウィンドウにメッセージが出力されるのを確認できます。
+1. operations.json コードは、ダイレクト メソッド `GraphTopologyList` および `GraphInstanceList` の呼び出しから始まります。 前のクイックスタートを完了した後にリソースをクリーンアップした場合、このプロセスは空のリストを返した後に一時停止します。 続行するには、**Enter** キーを押します。
     
    **[ターミナル]** ウィンドウに、次の一連のダイレクト メソッド呼び出しが表示されます。
     
@@ -245,7 +245,7 @@ Live Video Analytics デバイスを右クリックし、 **[組み込みイベ�
     
 1. **[ターミナル]** ウィンドウの出力が、 **[続行するには Enter キーを押してください]** というプロンプトで一時停止されます。 **Enter** キーはまだ押さないでください。 上へスクロールして、呼び出したダイレクト メソッドの JSON 応答のペイロードを確認します。
 1. Visual Studio Code の **[出力]** ウィンドウに切り替えます。 Live Video Analytics on IoT Edge モジュールから IoT ハブに送信されているメッセージが表示されます。 このチュートリアルの次のセクションでは、これらのメッセージについて説明します。
-1. メディア グラフは引き続き実行され、結果が出力されます。 RTSP シミュレーターによって、ソース ビデオがループ処理され続けます。 メディア グラフを停止するには、 **[ターミナル]** ウィンドウに戻り、 **Enter** キーを押します。
+1. メディア グラフは引き続き実行され、結果が出力されます。 RTSP シミュレーターによって、ソース ビデオがループ処理され続けます。 メディア グラフを停止するには、 **[ターミナル]** ウィンドウに戻り、**Enter** キーを押します。
 次の一連の呼び出しによって、リソースがクリーンアップされます。
     
    * `GraphInstanceDeactivate` の呼び出しによって、グラフ インスタンスが非アクティブ化されます。
@@ -391,6 +391,6 @@ HTTP 拡張プロセッサ ノードは、Custom Vision コンテナーから推
 上級ユーザー向けのその他の課題を確認します。
 
 * RTSP シミュレーターを使用する代わりに、RTSP をサポートする [IP カメラ](https://en.wikipedia.org/wiki/IP_camera)を使用します。 RTSP をサポートする IP カメラは、[ONVIF 準拠製品](https://www.onvif.org/conformant-products/)のページで検索できます。 プロファイル G、S、または T に準拠しているデバイスを探します。
-* Azure Linux VM ではなく、AMD64 または x64 Linux デバイスを使用してください。 このデバイスは、IP カメラと同じネットワーク内にある必要があります。 [Linux への Azure IoT Edge ランタイムのインストール](../../iot-edge/how-to-install-iot-edge-linux.md)に関するページの手順を参照できます。
+* Azure Linux VM ではなく、AMD64 または x64 Linux デバイスを使用してください。 このデバイスは、IP カメラと同じネットワーク内にある必要があります。 [Linux への Azure IoT Edge ランタイムのインストール](../../iot-edge/how-to-install-iot-edge.md)に関するページの手順を参照できます。
 
 次に、「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](../../iot-edge/quickstart-linux.md)」の手順に従って、デバイスを Azure IoT Hub に登録します。

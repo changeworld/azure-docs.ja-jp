@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 10/18/2020
-ms.openlocfilehash: 93bbd84c25f02ac1653a46ebb4a70c1dfa90c744
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: c8a5b682e2ac4879d2181bdb069cf554bad512d9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686396"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498287"
 ---
 # <a name="tutorial-use-customer-managed-keys-or-byok-with-media-services-rest-api"></a>チュートリアル:Media Services REST API でカスタマー マネージド キーまたは BYOK を使用する
 
@@ -43,8 +43,8 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 
 ### <a name="register-a-service-principal-with-the-needed-permissions"></a>必要なアクセス許可を付与したサービス プリンシパルを登録する
 
-1. [サービス プリンシパルを作成します](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
-1. 「[オプション 2: 新しいアプリケーション シークレットを作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#authentication-two-options)」に移動して、サービス プリンシパル シークレットを取得します。
+1. [サービス プリンシパルを作成します](../../active-directory/develop/howto-create-service-principal-portal.md)。
+1. 「[オプション 2: 新しいアプリケーション シークレットを作成する](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)」に移動して、サービス プリンシパル シークレットを取得します。
 
    > [!IMPORTANT]
    >後で使用するためにシークレットをコピーして保存します。 ポータルでシークレット ページから離れた後に、シークレットにアクセスすることはできません。

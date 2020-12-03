@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f327749d1bdfb8cf2cba00cf4c5f68b4b2b77999
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 50a65583c41dd94b174a33432afcf42b31e67df0
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379555"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437050"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>チュートリアル:カスタム アクションおよびリソースを備えたマネージド アプリケーションを作成する
 
@@ -353,6 +353,6 @@ Azure Managed Applications に関して不明な点がある場合には、[Stac
 
 ## <a name="next-steps"></a>次のステップ
 
-マネージド アプリケーションを Microsoft Azure Marketplace に発行するには、「[Marketplace の Azure マネージド アプリケーション](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)」を参照してください。
+マネージド アプリケーションを Microsoft Azure Marketplace に発行するには、「[Marketplace の Azure マネージド アプリケーション](../../marketplace/create-new-azure-apps-offer.md)」を参照してください。
 
 [Azure カスタム プロバイダー](../custom-providers/overview.md)について学習します。

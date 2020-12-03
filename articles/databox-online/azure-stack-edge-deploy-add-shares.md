@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: aeb5bceca11f595c1582596aeea401fe5f9b239f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64fe65019a66013323b1c6d27055051badb47cee
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883480"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350315"
 ---
 # <a name="tutorial-transfer-data-with-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro を使用してデータを転送する
 
@@ -62,7 +62,7 @@ ms.locfileid: "90883480"
     c. 共有を配置するストレージ アカウントを指定します。 
 
     > [!IMPORTANT]
-    > Azure Stack Edge Pro または Data Box Gateway デバイスで Azure Storage アカウントを使用する場合、そのアカウントに不変ポリシーが設定されていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)」を参照してください。
+    > Azure Stack Edge Pro または Data Box Gateway デバイスで Azure Storage アカウントを使用する場合、そのアカウントに不変ポリシーが設定されていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](../storage/blobs/storage-blob-immutability-policies-manage.md)」を参照してください。
     
     d. **[ストレージ サービス]** ドロップダウン リストで、 **[ブロック BLOB]** 、 **[ページ BLOB]** 、 **[ファイル]** のいずれかを選択します。  
     お客様が選択するサービスの種類は、Azure で使用したいデータの形式によって変わります。 この例では、データをブロック BLOB として Azure に格納したいため、 **[ブロック BLOB]** を選択します。 **ページ BLOB** を選択する場合は、お客様のデータが 512 バイトでアラインされるようにします。 たとえば、VHDX は常に 512 バイトでアラインされています。
@@ -116,7 +116,7 @@ ms.locfileid: "90883480"
 
 3. キーボードの Windows キーを押しながら R キーを押します。
 
-4. **実行**ウィンドウで、`\\<device IP address>` を指定し、 **[OK]** を選択します。  
+4. **実行** ウィンドウで、`\\<device IP address>` を指定し、 **[OK]** を選択します。  
    エクスプローラーが開きます。 これで、お客様が作成した共有をフォルダーとして確認できます。 エクスプローラーで共有 (フォルダー) をダブルクリックすると、内容が表示されます。
  
     ![SMB 共有に接続する](./media/azure-stack-edge-deploy-add-shares/connect-to-share2.png)
@@ -162,5 +162,3 @@ Azure Stack Edge Pro を使用してデータを変換する方法について�
 
 > [!div class="nextstepaction"]
 > [Azure Stack Edge Pro でデータを変換する](./azure-stack-edge-deploy-configure-compute.md)
-
-

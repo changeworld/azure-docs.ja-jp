@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: cshoe
-ms.openlocfilehash: 80a48a948c70db7344ac9cbc20474177309bd909
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0086f7f68fd05d6925d19c7ab457fbc125e36be4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024230"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350230"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>チュートリアル:Azure Static Web Apps での Blazor を使用した静的 Web アプリのビルド
 
@@ -64,7 +64,7 @@ Azure Static Web Apps を使用して、サーバーレス バックエンドで
 この記事では、簡単に作業を開始できるように、GitHub テンプレート リポジトリを使用します。 テンプレートには、Azure Static Web Apps にデプロイされるスターター アプリが含まれます。
 
 1. GitHub にサインインしていることを確認し、次の場所に移動して新しいリポジトリを作成します。
-    - https://github.com/staticwebdev/blazor-starter/generate
+    - [https://github.com/staticwebdev/blazor-starter/generate](https://github.com/login?return_to=/staticwebdev/blazor-starter/generate)
 1. リポジトリの名前を **my-first-static-blazor-app** に設定します
 
 ## <a name="create-a-static-web-app"></a>静的 Web アプリを作成する

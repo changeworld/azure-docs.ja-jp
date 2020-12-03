@@ -3,12 +3,12 @@ title: コンテナー内の .NET アプリを Azure Service Fabric にデプロ
 description: Visual Studio を使って既存の .NET アプリケーションをコンテナーに格納し、Service Fabric 内のコンテナーをローカルでデバッグする方法を紹介します。 コンテナーに格納されたアプリケーションは Azure のコンテナー レジストリにプッシュされ、Service Fabric クラスターにデプロイされます。 Azure にデプロイされたアプリケーションは、データの保持に Azure SQL DB を使用します。
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: b7c841c1185cb2e289a230eb1078a13d4ccd48f8
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8be9de495fa6bc5689a2dba5384f5df3112cbb38
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92889937"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485537"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>チュートリアル:Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする
 
@@ -30,14 +30,14 @@ ms.locfileid: "92889937"
 1. Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成します。
 2. Windows 10 でコンテナーを実行できるように、[Docker CE for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description) をインストールします。
 3. [Service Fabric ランタイムのバージョン 6.2 以降](service-fabric-get-started.md)と、[Service Fabric SDK のバージョン 3.1](service-fabric-get-started.md) 以降をインストールします。
-4. [Visual Studio 2019 のバージョン 16.1](https://www.visualstudio.com/) 以降をインストールし、 **Azure の開発** ワークロードと **ASP.NET と Web 開発** ワークロードをインストールします。
+4. [Visual Studio 2019 のバージョン 16.1](https://www.visualstudio.com/) 以降をインストールし、**Azure の開発** ワークロードと **ASP.NET と Web 開発** ワークロードをインストールします。
 5. [Azure PowerShell][link-azure-powershell-install] をインストールする
 
 ## <a name="download-and-run-fabrikam-fiber-callcenter"></a>Fabrikam Fiber CallCenter をダウンロードして実行する
 
 1. [Fabrikam Fiber CallCenter][link-fabrikam-github] というサンプル アプリケーションをダウンロードします。  **[download archive]\(アーカイブのダウンロード\)** リンクをクリックします。  *fabrikam.zip* ファイルの *sourceCode* ディレクトリにある *sourceCode.zip* ファイルを展開してから、お使いのコンピューターに *VS2015* ディレクトリを展開します。
 
-2. Fabrikam Fiber CallCenter アプリケーションがビルドされ、問題なく実行できていることを確認します。  Visual Studio を **管理者** として起動し、 [FabrikamFiber.CallCenter.sln][link-fabrikam-github] ファイルを開きます。  F5 キーを押して、アプリケーションをデバッグおよび実行します。
+2. Fabrikam Fiber CallCenter アプリケーションがビルドされ、問題なく実行できていることを確認します。  Visual Studio を **管理者** として起動し、[FabrikamFiber.CallCenter.sln][link-fabrikam-github] ファイルを開きます。  F5 キーを押して、アプリケーションをデバッグおよび実行します。
 
    ![ローカル ホストで実行されている Fabrikam Fiber CallCenter アプリケーション ホーム ページのスクリーンショット。 このページには、サポート コールの一覧が含まれるダッシュボードが表示されます。][fabrikam-web-page]
 
@@ -109,7 +109,7 @@ Write-Host "Server name is $servername"
 
 ## <a name="update-the-web-config"></a>Web 構成の更新
 
-**FabrikamFiber.Web** プロジェクトに戻り、 **web.config** ファイル内の接続文字列を更新し、コンテナー内の SQL Server を指定します。  前のスクリプトで作成したサーバー名の接続文字列の *Server* の部分を更新します。 "fab-fiber-751718376.database.windows.net" のようになっている必要があります。 次の XML では、更新する必要があるのは `connectionString` 属性だけです。`providerName` 属性と `name` 属性を変更する必要はありません。
+**FabrikamFiber.Web** プロジェクトに戻り、**web.config** ファイル内の接続文字列を更新し、コンテナー内の SQL Server を指定します。  前のスクリプトで作成したサーバー名の接続文字列の *Server* の部分を更新します。 "fab-fiber-751718376.database.windows.net" のようになっている必要があります。 次の XML では、更新する必要があるのは `connectionString` 属性だけです。`providerName` 属性と `name` 属性を変更する必要はありません。
 
 ```xml
 <add name="FabrikamFiber-Express" connectionString="Server=<server name>,1433;Initial Catalog=call-center-db;Persist Security Info=False;User ID=ServerAdmin;Password=Password@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />
@@ -118,7 +118,7 @@ Write-Host "Server name is $servername"
 ```
 
 >[!NOTE]
->ローカル デバッグには、ホストからアクセスできる範囲であれば好きな SQL Server を使用できます。 ただし、 **localdb** は `container -> host` 通信をサポートしていません。 Web アプリケーションのリリース ビルドを作成するときに別の SQL データベースを使用する場合は、 *web.release.config* ファイルに別の接続文字列を追加します。
+>ローカル デバッグには、ホストからアクセスできる範囲であれば好きな SQL Server を使用できます。 ただし、**localdb** は `container -> host` 通信をサポートしていません。 Web アプリケーションのリリース ビルドを作成するときに別の SQL データベースを使用する場合は、*web.release.config* ファイルに別の接続文字列を追加します。
 
 ## <a name="run-the-containerized-application-locally"></a>コンテナーに格納されたアプリケーションをローカルで実行する
 
@@ -169,7 +169,7 @@ Service Fabric アプリケーションは、ネットワークに接続され�
     d. **[VM の詳細]** タブを選択します。クラスターを構成する仮想マシン (VM) に使用したいパスワードを指定します。 ユーザー名とパスワードは、VM へのリモート接続に使用できます。 また、VM マシン サイズを選択できるほか、必要に応じて VM イメージを変更できます。
 
     > [!IMPORTANT]
-    > 実行中のコンテナーをサポートする SKU を選択します。 クラスター ノード上の Windows Server OS は、コンテナーの Windows Server OS と互換性を持っている必要があります。 詳細については、[Windows Server コンテナーの OS とホスト OS の互換性](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility)に関するページを参照してください。 このチュートリアルでは、既定では Windows Server 2016 LTSC に基づいて Docker イメージを作成します。 このイメージに基づくコンテナーは、コンテナー搭載 Windows Server 2016 Datacenter で作成されたクラスター上で実行されます。 ただし、Windows Server の別のバージョンに基づいて、クラスターを作成するか、既存のクラスターを使用する場合は、コンテナーの基になる OS イメージを変更する必要があります。 **FabrikamFiber.Web** プロジェクトの **dockerfile** を開き、以前のバージョンの Windows Server に基づいている既存のすべての `FROM` ステートメントをコメントアウトし、[Windows Server Core DockerHub ページ](https://hub.docker.com/_/microsoft-windows-servercore)の目的のバージョンのタグに基づく `FROM` ステートメントを追加します。 Windows Server Core リリース、サポート タイムライン、およびバージョンの追加情報については、「[Windows Server のリリース情報](https://docs.microsoft.com/windows-server/get-started/windows-server-release-info)」を参照してください。 
+    > 実行中のコンテナーをサポートする SKU を選択します。 クラスター ノード上の Windows Server OS は、コンテナーの Windows Server OS と互換性を持っている必要があります。 詳細については、[Windows Server コンテナーの OS とホスト OS の互換性](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility)に関するページを参照してください。 このチュートリアルでは、既定では Windows Server 2016 LTSC に基づいて Docker イメージを作成します。 このイメージに基づくコンテナーは、コンテナー搭載 Windows Server 2016 Datacenter で作成されたクラスター上で実行されます。 ただし、Windows Server の別のバージョンに基づいて、クラスターを作成するか、既存のクラスターを使用する場合は、コンテナーの基になる OS イメージを変更する必要があります。 **FabrikamFiber.Web** プロジェクトの **dockerfile** を開き、以前のバージョンの Windows Server に基づいている既存のすべての `FROM` ステートメントをコメントアウトし、[Windows Server Core DockerHub ページ](https://hub.docker.com/_/microsoft-windows-servercore)の目的のバージョンのタグに基づく `FROM` ステートメントを追加します。 Windows Server Core リリース、サポート タイムライン、およびバージョンの追加情報については、「[Windows Server のリリース情報](/windows-server/get-started/windows-server-release-info)」を参照してください。 
 
     e. **[詳細]** タブで、クラスターをデプロイする際にロード バランサーで開放するアプリケーション ポートを列挙します。 これは、クラスターの作成を始める前にメモしておいたポートです。 さらに、アプリケーション ログ ファイルのルーティングに使用される既存の Application Insights キーを追加することもできます。
 

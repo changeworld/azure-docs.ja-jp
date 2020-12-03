@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 46c5271c8ded970442d1ae4022573473997d98af
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: cdfd012d5015e156439a1afa89e818bf82b64dc6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427002"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449338"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro の配置を準備する 
 
@@ -66,7 +66,7 @@ Azure Stack Edge Pro の配置では、最初に環境を準備する必要が�
 
 開始する前に次の点を確認します。
 
-- ご利用の Microsoft Azure サブスクリプションで Azure Stack Edge リソースが有効になっていること。 [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/)、[クラウド ソリューション プロバイダー (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)、[Microsoft Azure スポンサープラン](https://azure.microsoft.com/offers/ms-azr-0036p/)など、サポートされているサブスクリプションを使用していることを確認してください。 従量課金制のサブスクリプションには対応していません。 所有している Azure サブスクリプションの種類を特定するには、「[Azure プランとは](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer)」を参照してください。
+- ご利用の Microsoft Azure サブスクリプションで Azure Stack Edge リソースが有効になっていること。 [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/)、[クラウド ソリューション プロバイダー (CSP)](/partner-center/azure-plan-lp)、[Microsoft Azure スポンサープラン](https://azure.microsoft.com/offers/ms-azr-0036p/)など、サポートされているサブスクリプションを使用していることを確認してください。 従量課金制のサブスクリプションには対応していません。 所有している Azure サブスクリプションの種類を特定するには、「[Azure プランとは](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer)」を参照してください。
 - Azure Stack Edge Pro/Data Box Gateway、IoT Hub、および Azure Storage の各リソースに対して、リソース グループ レベルで所有者または共同作成者のアクセス許可を持っていること。
 
     - Azure Stack Edge/Data Box Gateway のリソースを作成するには、リソース グループ レベルにスコープ指定された共同作成者 (以上) のアクセス許可を持っている必要があります。 
@@ -74,7 +74,7 @@ Azure Stack Edge Pro の配置では、最初に環境を準備する必要が�
         - リソース プロバイダーを登録するには、Azure portal で、 **[ホーム] > [サブスクリプション] > お使いのサブスクリプション > [リソース プロバイダー]** と移動します。 
         - 特定のリソース プロバイダー (`Microsoft.DataBoxEdge` など) を検索し、そのリソース プロバイダーを登録します。 
     - Storage アカウントのリソースを作成するには、ここでも、リソース グループ レベルにスコープ指定された共同作成者以上のアクセス許可が必要になります。 Azure Storage は、既定で、登録されたリソース プロバイターになっています。
-- アクティブ化キーの生成や、ストレージ アカウントを使用する共有の作成などの資格情報の操作のために、Azure Active Directory Graph API に対する管理者またはユーザーのアクセス権を持っていること。 詳細については、[Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) に関するページをご覧ください。
+- アクティブ化キーの生成や、ストレージ アカウントを使用する共有の作成などの資格情報の操作のために、Azure Active Directory Graph API に対する管理者またはユーザーのアクセス権を持っていること。 詳細については、[Azure Active Directory Graph API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) に関するページをご覧ください。
 
 
 ### <a name="for-the-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスの前提条件
@@ -126,7 +126,7 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
     |設定  |値  |
     |---------|---------|
     |サブスクリプション    |事前に選択した内容に応じて自動的に設定されます。 サブスクリプションは、課金アカウントにリンクされます。 |
-    |Resource group  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/resource-group-overview.md)をご覧ください。     |
+    |Resource group  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/management/overview.md)をご覧ください。     |
 
 7. 次の **インスタンス情報** を入力または選択します。
 
@@ -207,6 +207,3 @@ Azure Stack Edge リソースが起動して実行中になったら、アクテ
 
 > [!div class="nextstepaction"]
 > [Azure Stack Edge Pro を設置する](./azure-stack-edge-gpu-deploy-install.md)
-
-
-

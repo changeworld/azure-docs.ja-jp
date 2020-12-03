@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: cd288926e6f7a3f454be2788479b5c9d414b167a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68cac756a3c84d0360d475a4bf88a392e3961f1d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440283"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447572"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>チュートリアル:Azure Stack Edge Pro GPU を使用して共有経由でデータを転送する
 
@@ -66,7 +66,7 @@ ms.locfileid: "91440283"
     お客様が選択するサービスの種類は、Azure で使用したいデータの形式によって変わります。 この例では、データをブロック BLOB として Azure に格納したいため、 **[ブロック BLOB]** を選択します。 **ページ BLOB** を選択する場合は、お客様のデータが 512 バイトでアラインされるようにします。 たとえば、VHDX は常に 512 バイトでアラインされています。
 
    > [!IMPORTANT]
-   > Azure Stack Edge Pro または Data Box Gateway デバイスで Azure Storage アカウントを使用する場合、そのアカウントに不変ポリシーが設定されていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)」を参照してください。
+   > Azure Stack Edge Pro または Data Box Gateway デバイスで Azure Storage アカウントを使用する場合、そのアカウントに不変ポリシーが設定されていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](../storage/blobs/storage-blob-immutability-policies-manage.md)」を参照してください。
 
     e. 新しい BLOB コンテナーを作成するか、ドロップダウン リストから既存の BLOB コンテナーを選択します。 BLOB コンテナーを作成する場合は、コンテナー名を入力します。 コンテナーがまだ存在しない場合は、新しく作成された共有の名前が付いたものがストレージ アカウントに作成されます。
    
@@ -104,7 +104,7 @@ ms.locfileid: "91440283"
 
 デバイスへの接続に使用している Windows クライアントで、次の手順を実行します。
 
-1. **メモ帳**を管理者として起動し、`C:\Windows\System32\Drivers\etc` にある **hosts** ファイルを開きます。
+1. **メモ帳** を管理者として起動し、`C:\Windows\System32\Drivers\etc` にある **hosts** ファイルを開きます。
 
     ![エクスプローラーの hosts ファイル](media/azure-stack-edge-j-series-deploy-add-shares/client-hosts-file-1.png)
 
@@ -146,7 +146,7 @@ ms.locfileid: "91440283"
 
 3. キーボードの Windows キーを押しながら R キーを押します。
 
-4. **実行**ウィンドウで、`\\<device name>` を指定し、 **[OK]** を選択します。  
+4. **実行** ウィンドウで、`\\<device name>` を指定し、 **[OK]** を選択します。  
 
     ![Windows の [ファイル名を指定して実行] ダイアログ](media/azure-stack-edge-j-series-deploy-add-shares/run-window-1.png)
 
@@ -198,5 +198,3 @@ Azure Stack Edge Pro を使用してデータを変換する方法について�
 
 > [!div class="nextstepaction"]
 > [Azure Stack Edge Pro でデータを変換する](./azure-stack-edge-j-series-deploy-configure-compute.md)
-
-

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/02/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 5fe8bf70374a2eec639a0a9365f7d227cf259d06
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 5a55a330f6f4fefb86f2c056cd0ca3b2ba5f4b29
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91667250"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499596"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して検索結果を並べ替える
 
@@ -443,7 +443,7 @@ ms.locfileid: "91667250"
     OrderBy = new[] { $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') asc" },
     ```
 
-1. Azure Cognitive Search によって距離フィルターを使用して結果が返されましたが、データと指定された地点の間の計算された距離は_返されません_。 この値を結果に表示したい場合、ビューまたはコントローラーで値を再計算します。
+1. Azure Cognitive Search によって距離フィルターを使用して結果が返されましたが、データと指定された地点の間の計算された距離は _返されません_。 この値を結果に表示したい場合、ビューまたはコントローラーで値を再計算します。
 
     次のコードは、2 つの緯度/経度点の間で距離を計算します。
 
@@ -965,7 +965,7 @@ ms.locfileid: "91667250"
 
 ### <a name="resources"></a>リソース
 
-詳細については、次の「[スコアリング プロファイルを Azure Cognitive Search のインデックスに追加する](/azure/search/index-add-scoring-profiles)」を参照してください。
+詳細については、次の「[スコアリング プロファイルを Azure Cognitive Search のインデックスに追加する](./index-add-scoring-profiles.md)」を参照してください。
 
 ## <a name="takeaways"></a>重要なポイント
 

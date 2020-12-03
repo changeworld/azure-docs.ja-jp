@@ -5,13 +5,13 @@ author: cherylmc
 ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 10/23/2020
-ms.openlocfilehash: 74000322372652b90e0d0db07d687f8e57c4f88e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.date: 12/01/2020
+ms.openlocfilehash: e2df34b7897ee2543d967d147317859ab26971e9
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518247"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510483"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>チュートリアル:Azure portal を使用して VPN ゲートウェイを作成、管理する
 
@@ -41,9 +41,9 @@ Azure VPN ゲートウェイは、お客様のオンプレミスと Azure 間の
 * **[リソース グループ]:** TestRG1
 * **[名前]:** VNet1
 * **[リージョン]:** (米国) 米国東部
-* **[IPv4 アドレス空間]:** 10.1.0.0/16
+* **IPv4 アドレス空間:** 10.1.0.0/16
 * **サブネット名:** FrontEnd
-* **[サブネット アドレス空間]:** 10.1.0.0/24
+* **サブネット アドレス空間:** 10.1.0.0/24
 
 [!INCLUDE [Create a virtual network](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
@@ -57,13 +57,13 @@ Azure VPN ゲートウェイは、お客様のオンプレミスと Azure 間の
 * **[リージョン]:** 米国東部
 * **ゲートウェイの種類:** VPN
 * **VPN の種類:** ルート ベース
-* **[SKU]:** VpnGw1
-* **[世代]:** Generation1
+* **SKU:** VpnGw1
+* **世代:** Generation1
 * **仮想ネットワーク:** VNet1
 * **ゲートウェイ サブネットのアドレス範囲:** 10.1.255.0/27
 * **[パブリック IP アドレス]** : 新規作成
 * **パブリック IP アドレス名:** VNet1GWpip
-* **[アクティブ/アクティブ モードの有効化]:** 無効
+* **アクティブ/アクティブ モードの有効化:** 無効
 * **[Configure BGP]\(BGP の構成\):** 無効
 
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
@@ -74,7 +74,7 @@ Azure VPN ゲートウェイは、お客様のオンプレミスと Azure 間の
 
 ゲートウェイのパブリック IP アドレスは、ご利用のゲートウェイの **[概要]** ページで確認できます。
 
-:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="VNet と VPN ゲートウェイの図":::
+:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="[概要] ページ":::
 
 パブリック IP アドレス オブジェクトに関する詳しい情報を表示するには、 **[パブリック IP アドレス]** の横にある名前 (または IP アドレス) リンクをクリックします。
 

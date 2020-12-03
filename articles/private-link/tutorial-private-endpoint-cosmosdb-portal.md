@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: a544d0c5fafbdaf9d272fed552fb38eda613292f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c9866ac2c14e4deb29326ffdd1a93a7d8eae1ea3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522143"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484806"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>チュートリアル:Azure プライベート エンドポイントを使用して Azure Cosmos アカウントに接続する
 
@@ -97,7 +97,7 @@ bastion ホストは、プライベート エンドポイントをテストす�
    
 2. **[仮想マシンの作成]** の **[Basic]** タブに、値を入力するか選択します。
 
-    | 設定 | [値]                                          |
+    | 設定 | 値                                          |
     |-----------------------|----------------------------------|
     | **プロジェクトの詳細** |  |
     | サブスクリプション | Azure サブスクリプションを選択します。 |
@@ -118,7 +118,7 @@ bastion ホストは、プライベート エンドポイントをテストす�
   
 4. [ネットワーク] タブで、次を選択または入力します。
 
-    | 設定 | [値] |
+    | 設定 | 値 |
     |-|-|
     | **ネットワーク インターフェイス** |  |
     | 仮想ネットワーク | **myVNet** |
@@ -139,7 +139,7 @@ bastion ホストは、プライベート エンドポイントをテストす�
 
 2. **[Cosmos DB アカウントの作成]** の **[基本]** タブで、次の情報を入力または選択します。
 
-    | 設定 | [値]                                          |
+    | 設定 | 値                                          |
     |-----------------------|----------------------------------|
     | **プロジェクトの詳細** |  |
     | サブスクリプション | Azure サブスクリプションを選択します。 |
@@ -169,7 +169,7 @@ bastion ホストは、プライベート エンドポイントをテストす�
 
 6. **[プライベート エンドポイントの作成]** で、次の情報を入力または選択します。
 
-    | 設定 | [値]                                          |
+    | 設定 | 値                                          |
     |-----------------------|----------------------------------|
     | サブスクリプション | Azure サブスクリプションを選択します。 |
     | リソース グループ | **[myResourceGroup]** を選択します |
@@ -248,7 +248,7 @@ bastion ホストは、プライベート エンドポイントをテストす�
 
     Cosmos DB アカウント名に対応する **10.1.0.5** というプライベート IP アドレスが返されます。  このアドレスは、先ほど作成した仮想ネットワークのサブネット内に存在します。
 
-9. 仮想マシンに [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%252fazure%252fstorage%252fblobs%252ftoc.json) をインストールします。
+9. 仮想マシンに [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) をインストールします。
 
 10. **Microsoft Azure Storage Explorer** のインストール後、 **[完了]** を選択します。  アプリケーションを開くため、チェック ボックスはオンのままにしてください。
 

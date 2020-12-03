@@ -2,8 +2,8 @@
 title: Azure Data Factory パイプラインでの分岐
 description: アクティビティの分岐と連鎖によって Azure Data Factory 内のデータのフローを制御する方法を説明します。
 services: data-factory
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 0a6fc68ddcb86c7ba768f59519cfb4273d381fab
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: ab7d17ee61d733483b6d3573e9bd69b1628c7940
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637702"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496944"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 
@@ -54,11 +54,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 現在 Data Factory が利用可能な Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」を参照してください。 データ ストアとコンピューティングは、別のリージョンに配置できます。 ストアには、Azure Storage と Azure SQL Database が含まれます。 コンピューティングには、Data Factory で使用される HDInsight が含まれます。
 
-「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)」の説明に従って、アプリケーションを作成します。 同じ記事の手順に従って、このアプリケーションを **共同作成者** ロールに割り当てます。 このチュートリアルの後の方で、 **アプリケーション (クライアント) ID** や **ディレクトリ (テナント) ID** など、いくつかの値が必要になります。
+「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)」の説明に従って、アプリケーションを作成します。 同じ記事の手順に従って、このアプリケーションを **共同作成者** ロールに割り当てます。 このチュートリアルの後の方で、**アプリケーション (クライアント) ID** や **ディレクトリ (テナント) ID** など、いくつかの値が必要になります。
 
 ### <a name="create-a-blob-table"></a>BLOB テーブルを作成する
 
-1. テキスト エディターを開きます。 次のテキストをコピーし、 *input.txt* としてローカルに保存します。
+1. テキスト エディターを開きます。 次のテキストをコピーし、*input.txt* としてローカルに保存します。
 
    ```
    Ethel|Berg
@@ -234,7 +234,7 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 }
 ```
 
-Azure BLOB 内のソース データを表すデータセットを定義します。 この BLOB データセットは、前の手順でサポートされていた Azure Storage のリンクされたサービスを参照します。 BLOB データセットには、コピー元の BLOB の場所が記述されます。 *FolderPath* と *FileName* が使用されます。
+Azure BLOB 内のソース データを表すデータセットを定義します。 この BLOB データセットは、前の手順でサポートされていた Azure Storage のリンクされたサービスを参照します。 BLOB データセットには、コピー元の BLOB の場所が記述されます。*FolderPath* と *FileName* が使用されます。
 
 *FolderPath* ではパラメーターが使用されていることに注意してください。 `sourceBlobContainer` はパラメーターの名前であり、この式はパイプラインの実行で渡された値に置き換えられます。 パラメーターを定義する構文は `@pipeline().parameters.<parameterName>` です。
 
@@ -308,7 +308,7 @@ C# プロジェクトで、`EmailRequest` という名前のクラスを作成�
 
 ### <a name="success-email-workflow"></a>成功電子メールのワークフロー
 
-[Azure portal](https://portal.azure.com) で、 *CopySuccessEmail* という名前の Logic Apps ワークフローを作成します。 ワークフロー トリガーを `When an HTTP request is received` として定義します。 要求トリガー用に、`Request Body JSON Schema` に次の JSON を入力します。
+[Azure portal](https://portal.azure.com) で、*CopySuccessEmail* という名前の Logic Apps ワークフローを作成します。 ワークフロー トリガーを `When an HTTP request is received` として定義します。 要求トリガー用に、`Request Body JSON Schema` に次の JSON を入力します。
 
 ```json
 {

@@ -7,16 +7,16 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ca2319a78fb4c0c720a21e97944d5b75ada9d008
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ad5c6f205fc832eb125e52b4135990fc58742e62
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014987"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453235"
 ---
 # <a name="preview-tutorial-create-and-connect-to-time-series-insights-gen2-to-store-visualize-and-analyze-iot-plug-and-play-device-telemetry"></a>プレビュー チュートリアル: Time Series Insights Gen2 を作成し、それに接続することで IoT プラグ アンド プレイのデバイス テレメトリを格納、視覚化、分析する
 
-このチュートリアルでは、[Azure Time Series Insights Gen2](https://docs.microsoft.com/azure/time-series-insights/overview-what-is-tsi) (TSI) 環境を作成し、IoT プラグ アンド プレイ ソリューションと連携するよう正しく構成する方法について説明します。 TSI を使用すると、モノのインターネット (IoT) 規模で時系列データを収集、処理、格納、照会、視覚化できます。
+このチュートリアルでは、[Azure Time Series Insights Gen2](../time-series-insights/overview-what-is-tsi.md) (TSI) 環境を作成し、IoT プラグ アンド プレイ ソリューションと連携するよう正しく構成する方法について説明します。 TSI を使用すると、モノのインターネット (IoT) 規模で時系列データを収集、処理、格納、照会、視覚化できます。
 
 まず、TSI 環境をプロビジョニングし、ストリーミング イベント ソースとして IoT ハブを接続します。 次に、モデルの同期を行い、温度コントローラーおよびサーモスタット デバイスに使用した [DTDL (Digital Twins Definition Language)](https://github.com/Azure/opendigitaltwins-dtdl) のサンプル モデル ファイルに基づいて、[時系列モデル](../time-series-insights/concepts-model-overview.md)を作成します。
 
@@ -39,7 +39,7 @@ Azure CLI をローカルにインストールする必要がないようにす�
 
 ## <a name="prepare-your-event-source"></a>イベント ソースの準備
 
-先ほど作成した IoT ハブが TSI 環境の[イベント ソース](https://docs.microsoft.com/azure/time-series-insights/concepts-streaming-ingestion-event-sources)になります。
+先ほど作成した IoT ハブが TSI 環境の[イベント ソース](../time-series-insights/concepts-streaming-ingestion-event-sources.md)になります。
 
 > [!IMPORTANT]
 > 既存の IoT Hub ルートをすべて無効にします。 [ルーティング](../iot-hub/iot-hub-devguide-messages-d2c.md#routing-endpoints)が構成された TSI イベント ソースとして IoT ハブを使用する場合は、既知の問題があります。 すべてのルーティング エンドポイントを一時的に無効にし、IoT ハブが TSI に接続されたら、再度有効にできます。
@@ -67,7 +67,7 @@ IoT プラグ アンド プレイ デバイス モデルで現在コンポーネ
 
 次のコマンドで、以下を行います。
 
-* ご利用の環境の[コールド ストア](https://docs.microsoft.com/azure/time-series-insights/concepts-storage#cold-store)用の Azure ストレージ アカウントを作成します。これは、履歴データの長期保有と分析を意図したものです。
+* ご利用の環境の[コールド ストア](../time-series-insights/concepts-storage.md#cold-store)用の Azure ストレージ アカウントを作成します。これは、履歴データの長期保有と分析を意図したものです。
   * `mytsicoldstore` は、実際のコールド ストレージ アカウントの一意の名前に置き換えます。
 * 保持期間が 7 日間のウォーム ストレージと無期限のコールド ストレージを含んだ Azure Time Series Insights Gen2 環境を作成します。
   * `my-tsi-env` は、実際の TSI 環境の一意の名前に置き換えます。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 94dc70d184de27b1c44f9817686630e04da830f9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9a62576b65be04414580b42377398e27c4aa389c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521664"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353563"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-web-cargo-air"></a>チュートリアル:Web Cargo Air との Azure Active Directory シングル サインオン (SSO) 統合
 
@@ -37,7 +37,7 @@ ms.locfileid: "92521664"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Web Cargo Air では、 **SP** Initiated SSO がサポートされます
+* Web Cargo Air では、**SP** Initiated SSO がサポートされます
 
 
 ## <a name="adding-web-cargo-air-from-the-gallery"></a>ギャラリーから Web Cargo Air を追加する
@@ -48,7 +48,7 @@ Azure AD への Web Cargo Air の統合を構成するには、ギャラリー�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Web Cargo Air** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Web Cargo Air**」と入力します。
 1. 結果パネルから **[Web Cargo Air]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -86,9 +86,9 @@ Web Cargo Air に対して Azure AD SSO を構成してテストするには、�
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値を実際のサインオン URL、識別子、および応答 URL で更新してください。 これらの値を取得するには、[Web Cargo Air クライアント サポート チーム](mailto:support@webcargonet.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. . **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/certificatebase64.png)
+    ![The Certificate download link](common/certificatebase64.png)
 
 1. **[Web Cargo Air のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 

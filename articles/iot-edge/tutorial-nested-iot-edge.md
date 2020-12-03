@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: db77df29d1b9b0adf07c7da377c028dee5312617
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 28b34ecaf51406b35c67d3838714691390f5adf7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579200"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453047"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>チュートリアル:IoT Edge デバイスの階層を作成する (プレビュー)
 
@@ -50,10 +50,10 @@ ms.locfileid: "94579200"
 IoT Edge デバイスの階層を作成するには、以下のものが必要です。
 
 * インターネットに接続できるコンピューター (Windows または Linux)。
-* IoT Edge デバイスとして構成する 2 つの Linux デバイス。 使用できるデバイスがない場合は、[Azure 仮想マシン](https://docs.microsoft.com/azure/virtual-machines/linux/)を使用できます。
-* 有効なサブスクリプションがある Azure アカウント。 [Azure サブスクリプション](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
+* IoT Edge デバイスとして構成する 2 つの Linux デバイス。 使用できるデバイスがない場合は、[Azure 仮想マシン](../virtual-machines/linux/index.yml)を使用できます。
+* 有効なサブスクリプションがある Azure アカウント。 [Azure サブスクリプション](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
-* Azure IoT 拡張機能 v0.10.6 以降がインストールされている Azure CLI v2.3.1。 このチュートリアルでは、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用します。 Azure Cloud Shell に馴染みのない方は、[クイックスタートで詳細を確認](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#use-azure-cloud-shell)してください。
+* Azure IoT 拡張機能 v0.10.6 以降がインストールされている Azure CLI v2.3.1。 このチュートリアルでは、[Azure Cloud Shell](../cloud-shell/overview.md) を使用します。 Azure Cloud Shell に馴染みのない方は、[クイックスタートで詳細を確認](./quickstart-linux.md#use-azure-cloud-shell)してください。
 
 このシナリオは、[産業用 IoT 向け Azure IoT Edge サンプル](https://aka.ms/iotedge-nested-sample)の手順で試してみることもできます。このサンプルでは、事前構成済みのデバイスとしての Azure 仮想マシンをデプロイし、工場環境をシミュレートします。
 
@@ -188,8 +188,8 @@ Linux デバイスでデモ証明書を作成するには、生成スクリプ�
 1. hsmlib と IoT Edge デーモンをインストールします <!-- Update with proper image links on release -->
 
    ```bash
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0.rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/iotedge_1.2.0_rc1-1_debian9_amd64.deb -o iotedge.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc2/libiothsm-std_1.2.0.rc2-1-1_debian9_amd64.deb -o libiothsm-std.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc2/iotedge_1.2.0_rc2-1_debian9_amd64.deb -o iotedge.deb
    sudo dpkg -i ./libiothsm-std.deb
    sudo dpkg -i ./iotedge.deb
    ```
@@ -261,7 +261,7 @@ Linux デバイスでデモ証明書を作成するには、生成スクリプ�
      type: "docker"
      env: {}
      config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1"
+       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
        auth: {}
    ```
 
@@ -273,7 +273,7 @@ Linux デバイスでデモ証明書を作成するには、生成スクリプ�
      type: "docker"
      env: {}
      config:
-       image: "<parent_device_fqdn_or_ip>:8000/azureiotedge-agent:1.2.0-rc1"
+       image: "<parent_device_fqdn_or_ip>:8000/azureiotedge-agent:1.2.0-rc2"
        auth: {}
    ```
 
@@ -305,7 +305,7 @@ IoT Edge ランタイムの構成を完了し、ワークロードをデプロ�
 
 1. 歯車アイコンの横の **[ランタイムの設定]** を選択します。
 
-1. **[Edge Hub]** の下の [イメージ] フィールドに、「`mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1`」と入力します。
+1. **[Edge Hub]** の下の [イメージ] フィールドに、「`mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2`」と入力します。
 
    ![Edge Hub のイメージを編集する](./media/tutorial-nested-iot-edge/edge-hub-image.png)
 
@@ -318,7 +318,7 @@ IoT Edge ランタイムの構成を完了し、ワークロードをデプロ�
 
    ![Edge Hub の環境変数を編集する](./media/tutorial-nested-iot-edge/edge-hub-environment-variables.png)
 
-1. **[Edge エージェント]** の下の [イメージ] フィールドに、「`mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1`」と入力します。 **[保存]** を選択します。
+1. **[Edge エージェント]** の下の [イメージ] フィールドに、「`mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2`」と入力します。 **[保存]** を選択します。
 
 1. 最上位レイヤー デバイスに Docker レジストリ モジュールを追加します。 **[+ 追加]** を選択し、ドロップダウンで **[IoT Edge モジュール]** を選択します。 Docker レジストリ モジュールに名前 `registry` を指定し、イメージ URI に「`registry:latest`」と入力します。 次に、環境変数を追加し、Microsoft コンテナー レジストリのローカル レジストリ モジュールを参照するオプションを作成します。そこからコンテナー イメージがダウンロードされ、それらのイメージが registry:5000 で提供されます。
 
@@ -412,14 +412,14 @@ IoT Edge ランタイムの構成を完了し、ワークロードをデプロ�
                    "systemModules": {
                        "edgeAgent": {
                            "settings": {
-                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1",
+                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2",
                                "createOptions": ""
                            },
                            "type": "docker"
                        },
                        "edgeHub": {
                            "settings": {
-                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1",
+                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2",
                                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                            },
                            "type": "docker",
@@ -478,7 +478,7 @@ IoT Edge ランタイムの構成を完了し、ワークロードをデプロ�
 
 1. 歯車アイコンの横の **[ランタイムの設定]** を選択します。
 
-1. **[Edge Hub]** の下の [イメージ] フィールドに、「`$upstream:8000/azureiotedge-hub:1.2.0-rc1`」と入力します。
+1. **[Edge Hub]** の下の [イメージ] フィールドに、「`$upstream:8000/azureiotedge-hub:1.2.0-rc2`」と入力します。
 
 1. Edge Hub モジュールに、以下の環境変数を追加します。
 
@@ -487,7 +487,7 @@ IoT Edge ランタイムの構成を完了し、ワークロードをデプロ�
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. **[Edge エージェント]** の下の [イメージ] フィールドに、「`$upstream:8000/azureiotedge-agent:1.2.0-rc1`」と入力します。 **[保存]** を選択します。
+1. **[Edge エージェント]** の下の [イメージ] フィールドに、「`$upstream:8000/azureiotedge-agent:1.2.0-rc2`」と入力します。 **[保存]** を選択します。
 
 1. 温度センサー モジュールを追加します。 **[+ 追加]** を選択し、ドロップダウンで **[Marketplace モジュール]** を選択します。 `Simulated Temperature Sensor` を検索し、モジュールを選択します。
 
@@ -534,14 +534,14 @@ IoT Edge ランタイムの構成を完了し、ワークロードをデプロ�
                    "systemModules": {
                        "edgeAgent": {
                            "settings": {
-                               "image": "$upstream:8000/azureiotedge-agent:1.2.0-rc1",
+                               "image": "$upstream:8000/azureiotedge-agent:1.2.0-rc2",
                                "createOptions": ""
                            },
                            "type": "docker"
                        },
                        "edgeHub": {
                            "settings": {
-                               "image": "$upstream:8000/azureiotedge-hub:1.2.0-rc1",
+                               "image": "$upstream:8000/azureiotedge-hub:1.2.0-rc2",
                                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                            },
                            "type": "docker",

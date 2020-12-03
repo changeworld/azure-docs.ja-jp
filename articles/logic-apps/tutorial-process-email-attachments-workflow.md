@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 38b4713383368f0c64983738f2ed65f60edb9e67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e58dcf8206ae9feab4d8a09517bf9efda244dd5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334091"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451577"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>チュートリアル:Azure Logic Apps、Azure Functions、Azure Storage を使用してメール処理のタスクを自動化する
 
@@ -53,7 +53,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 
-1. ストレージ コンテナーを作成する前に、Azure portal の **[基本]** タブで次の設定の[ストレージ アカウントを作成](../storage/common/storage-account-create.md)します。
+1. ストレージ コンテナーを作成する前に、Azure portal の **[基本]** タブで次の設定の [ストレージ アカウントを作成](../storage/common/storage-account-create.md)します。
 
    | 設定 | 値 | 説明 |
    |---------|-------|-------------|
@@ -152,7 +152,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
    | **Application Insights** | Disable | [Application Insights](../azure-monitor/app/app-insights-overview.md) を使ったアプリケーションの監視を有効にします。ただしこのチュートリアルでは、 **[無効]**  >  **[適用]** を選択します。 |
    ||||
 
-   デプロイ後に関数アプリが自動的に表示されない場合は、[Azure portal](https://portal.azure.com) の検索ボックスで、**関数アプリ**を検索して選択してください。 **[関数アプリ]** で、使用する関数アプリを選択します。
+   デプロイ後に関数アプリが自動的に表示されない場合は、[Azure portal](https://portal.azure.com) の検索ボックスで、**関数アプリ** を検索して選択してください。 **[関数アプリ]** で、使用する関数アプリを選択します。
 
    ![関数アプリの選択](./media/tutorial-process-email-attachments-workflow/select-function-app.png)
 
@@ -160,7 +160,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
    ![作成された関数アプリ](./media/tutorial-process-email-attachments-workflow/function-app-created.png)
 
-   関数アプリは、[Azure CLI](../azure-functions/functions-create-first-azure-function-azure-cli.md)、または [PowerShell と Resource Manager テンプレート](../azure-resource-manager/templates/deploy-powershell.md)を使用して作成することもできます。
+   関数アプリは、[Azure CLI](../azure-functions/create-first-function-cli-csharp.md)、または [PowerShell と Resource Manager テンプレート](../azure-resource-manager/templates/deploy-powershell.md)を使用して作成することもできます。
 
 1. **[関数アプリ]** の一覧で、関数アプリをまだ展開していない場合は展開します。 該当する関数アプリの下の **[関数]** を選択します。 関数ツール バーの **[新しい関数]** を選択します。
 
@@ -220,7 +220,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
    {"updatedBody":"{\"name\": \"Testing my function\"}"}
    ```
 
-関数が正しく機能していることが確認できたら、ロジック アプリを作成します。 このチュートリアルでは、メールから HTML を削除する関数の作成方法を紹介していますが、Logic Apps には **HTML をテキストに変換**するコネクタも用意されています。
+関数が正しく機能していることが確認できたら、ロジック アプリを作成します。 このチュートリアルでは、メールから HTML を削除する関数の作成方法を紹介していますが、Logic Apps には **HTML をテキストに変換** するコネクタも用意されています。
 
 ## <a name="create-your-logic-app"></a>ロジック アプリを作成する
 
