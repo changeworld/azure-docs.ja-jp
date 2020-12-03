@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 1fbc68570fb59be14947755a241ab9b005841e99
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8f6f8d5a2cc9dc17d08486125fc2e44307c1be46
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542509"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436659"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure Database for MariaDB を設計する
 
@@ -30,11 +30,9 @@ Azure Database for MariaDB は、Microsoft クラウドにおける、MariaDB �
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 
-このチュートリアルのコード ブロックを実行するには、ブラウザーで Azure Cloud Shell を使用するか、お使いのコンピューターに [Azure CLI をインストール]( /cli/azure/install-azure-cli)します。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
-
-CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
+- この記事では、Azure CLI のバージョン 2.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。 
 
 複数のサブスクリプションをお持ちの場合は、リソースが存在するか、課金の対象となっている適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account#az-account-set) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。
 ```azurecli-interactive
@@ -70,7 +68,7 @@ sku-name パラメーターの値は、次の例のように、{価格レベル}
 
 
 ## <a name="configure-firewall-rule"></a>ファイアウォール規則の構成
-`az mariadb server firewall-rule create` コマンドを使用して Azure Database for MariaDB サーバーレベルのファイアウォール規則を作成します。 サーバーレベルのファイアウォール規則により、 **mysql** コマンド ライン ツールや MySQL Workbench などの外部アプリケーションが、Azure MariaDB サービスのファイアウォールを経由してサーバーに接続できるようになります。
+`az mariadb server firewall-rule create` コマンドを使用して Azure Database for MariaDB サーバーレベルのファイアウォール規則を作成します。 サーバーレベルのファイアウォール規則により、**mysql** コマンド ライン ツールや MySQL Workbench などの外部アプリケーションが、Azure MariaDB サービスのファイアウォールを経由してサーバーに接続できるようになります。
 
 次の例では、特定の IP アドレス 192.168.0.1 からの接続を許可する、`AllowMyIP` と呼ばれるファイアウォール規則を作成しています。 実際の接続元となる場所に対応する IP アドレスまたは IP アドレスの範囲に置き換えてください。
 
@@ -177,7 +175,7 @@ SELECT * FROM inventory;
 - 復元ポイント: サーバーが変更される前の日時を選択します。 ソース データベースの最も古いバックアップと同じか、それよりも前の値にする必要があります。
 - 対象サーバー: 復元先の新しいサーバー名を指定します。
 - ソース サーバー: 復元するサーバーの名前を指定します。
-- 場所:リージョンを選択することはできません。既定では、ソース サーバーと同じ場所になります。
+- 場所: リージョンを選択することはできません。既定では、ソース サーバーと同じ場所になります。
 
 ```azurecli-interactive
 az mariadb server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver

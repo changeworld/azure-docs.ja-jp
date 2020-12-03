@@ -25,10 +25,6 @@
           href: spring-cloud-quickstart-logs-metrics-tracing.md
 - name: チュートリアル
   items:
-    - name: アプリを手動でスケーリングする
-      href: spring-cloud-tutorial-scale-manual.md
-    - name: アプリを自動スケーリングする
-      href: spring-cloud-tutorial-setup-autoscale.md
     - name: アラートとアクション グループ
       href: spring-cloud-tutorial-alerts-action-groups.md
     - name: サーキット ブレーカー ダッシュボード
@@ -83,6 +79,12 @@
           href: spring-cloud-howto-start-stop-delete.md
         - name: 永続的ストレージを使用する
           href: spring-cloud-howto-persistent-storage.md
+    - name: スケール
+      items:
+        - name: アプリを手動でスケーリングする
+          href: spring-cloud-tutorial-scale-manual.md
+        - name: アプリを自動スケーリングする
+          href: spring-cloud-tutorial-setup-autoscale.md
         - name: 送信パブリック IP アドレスの識別
           href: spring-cloud-howto-outbound-public-ip.md
     - name: モニター
@@ -132,7 +134,19 @@
         - name: Spring Boot
           href: /azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud
         - name: Tomcat
-          href: /azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud
+          href: 'https://docs.microsoft.com/azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud'
+- name: DevOps の展開
+  items:
+    - name: Azure DevOps を使用した CI/CD
+      href: spring-cloud-howto-cicd.md
+    - name: GitHub Actions を使用した CI/CD
+      href: spring-cloud-howto-github-actions.md
+    - name: GitHub Actions での Key Vault を使用した認証
+      href: spring-cloud-github-actions-key-vault.md
+- name: トラブルシューティング
+  items:
+    - name: トラブルシューティング ガイド
+      href: spring-cloud-troubleshoot.md
 - name: リファレンス
   items:
     - name: Azure CLI プラグイン

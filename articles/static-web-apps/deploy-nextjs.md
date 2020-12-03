@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: 20a3337ab054ca1feefc2f5f08f8e6398417fb9e
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6f96b74726684d37795c94be74e48611b4145402
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441615"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350213"
 ---
 # <a name="deploy-static-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>静的にレンダリングされた Next.js の Web サイトを Azure Static Web Apps プレビューにデプロイする
 
@@ -29,9 +29,9 @@ ms.locfileid: "94441615"
 
 Next.js CLI を使用してアプリを作成するのではなく、既存の Next.js アプリを含むスターター リポジトリを使用できます。 このリポジトリには動的ルートを使用する Next.js アプリが用意されており、デプロイに関する一般的な問題が明らかになっています。 動的ルートには、後で詳しく説明する追加のデプロイ構成が必要です。
 
-最初に、お使いの GitHub アカウントに、テンプレート リポジトリから新しいリポジトリを作成します。 
+最初に、お使いの GitHub アカウントに、テンプレート リポジトリから新しいリポジトリを作成します。
 
-1. <http://github.com/staticwebdev/nextjs-starter/generate> に移動します
+1. [https://github.com/staticwebdev/nextjs-starter/generate](https://github.com/login?return_to=/staticwebdev/nextjs-starter/generate) に移動します
 1. リポジトリに **nextjs-starter** という名前を設定します
 1. 次に、新しいリポジトリをお使いのコンピューターに複製します。 `<YOUR_GITHUB_ACCOUNT_NAME>` をアカウント名に置き換えます。
 

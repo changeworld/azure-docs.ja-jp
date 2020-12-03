@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: bc11dd6113bbf5b07e19b83735c83e4895e4a796
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 919688a05081c6f0b717fa4a524da769f2a281fd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323598"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351624"
 ---
 # <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>サーバーでレンダリングされた Nuxt.js の Web サイトを Azure Static Web Apps プレビューにデプロイする
 
@@ -30,7 +30,7 @@ ms.locfileid: "91323598"
 `create-nuxt-app` を使用して、新しい Nuxt.js プロジェクトを設定できます。 このチュートリアルでは、新しいプロジェクトではなく、既存のリポジトリを複製することで始めます。 このリポジトリは、動的 Nuxt.js アプリを静的サイトとしてデプロイする方法がわかるように設定されています。
 
 1. お使いの GitHub アカウントに、テンプレート リポジトリから新しいリポジトリを作成します。
-1. <http://github.com/staticwebdev/nuxtjs-starter/generate> に移動します
+1. [http://github.com/staticwebdev/nuxtjs-starter/generate](https://github.com/login?return_to=/staticwebdev/nuxtjs-starter/generate) に移動します
 1. リポジトリに **nuxtjs-starter** という名前を設定します
 1. 次に、新しいリポジトリをお使いのコンピューターに複製します。 <YOUR_GITHUB_ACCOUNT_NAME> は、必ず自分のアカウント名に置き換えてください。
 
@@ -62,7 +62,7 @@ ms.locfileid: "91323598"
 
 フレームワークまたはライブラリをクリックすると、選択した項目に関する詳細ページが表示されます。
 
-:::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-details.png" alt-text="Nuxt.js アプリを開始する":::
+:::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-details.png" alt-text="詳細ページ":::
 
 ## <a name="generate-a-static-website-from-nuxtjs-build"></a>Nuxt.js のビルドから静的 Web サイトを生成する
 
@@ -130,7 +130,7 @@ Azure Static Web Apps により、GitHub リポジトリからアプリがデプ
 1. *[リージョン]* ドロップダウンで、最も近いリージョンを選択します。
 1. [SKU] ドロップダウンから **[Free]** を選択します。
 
-   :::image type="content" source="media/deploy-nuxtjs/create-static-web-app.png" alt-text="Nuxt.js アプリを開始する":::
+   :::image type="content" source="media/deploy-nuxtjs/create-static-web-app.png" alt-text="静的 Web アプリを作成する":::
 
 ### <a name="add-a-github-repository"></a>GitHub リポジトリを追加する
 
@@ -141,7 +141,7 @@ Azure Static Web Apps により、GitHub リポジトリからアプリがデプ
 1. 前に作成したリポジトリの名前を探して選択します。
 1. *[ブランチ]* ドロップダウンから、ブランチとして **master** を選択します。
 
-   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="Nuxt.js アプリを開始する":::
+   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="GitHub に接続する":::
 
 ### <a name="configure-the-build-process"></a>ビルド プロセスを構成する
 
@@ -149,7 +149,7 @@ Azure Static Web Apps は、npm モジュールのインストールや、各デ
 
 1. **[ビルド]** タブをクリックして、静的な出力フォルダーを構成します。
 
-      :::image type="content" source="media/deploy-nuxtjs/build-tab.png" alt-text="Nuxt.js アプリを開始する":::
+      :::image type="content" source="media/deploy-nuxtjs/build-tab.png" alt-text="[ビルド] タブ":::
 
 1. *[App artifact location]\(アプリ成果物の場所\)* テキスト ボックスに「**dist**」と入力します。
 
@@ -178,7 +178,7 @@ https://github.com/<YOUR_GITHUB_USERNAME>/nuxtjs-starter/actions
 
 新しくデプロイされたサイトに移動し、フレームワークまたはライブラリのロゴの 1 つをクリックします。 詳細ページは表示されず、代わりに 404 エラー ページが表示されます。
 
-:::image type="content" source="media/deploy-nuxtjs/404-in-production.png" alt-text="Nuxt.js アプリを開始する":::
+:::image type="content" source="media/deploy-nuxtjs/404-in-production.png" alt-text="動的ルートでの 404":::
 
 その理由は、Nuxt.js ではホーム ページに対してのみ静的サイトが生成されているためです。 Nuxt.js では、すべての `.vue` ページ ファイルに対して同等の静的 `.html` ファイルを生成できますが、1 つ例外があります。 
 
@@ -215,7 +215,7 @@ https://github.com/<YOUR_GITHUB_USERNAME>/nuxtjs-starter/actions
 
 2. 新しい変更を GitHub リポジトリにプッシュし、GitHub Actions によってサイトが再度ビルドされるまで数分待ちます。 ビルドが完了すると、404 エラーは表示されなくなります。
 
-   :::image type="content" source="media/deploy-nuxtjs/404-in-production-fixed.png" alt-text="Nuxt.js アプリを開始する":::
+   :::image type="content" source="media/deploy-nuxtjs/404-in-production-fixed.png" alt-text="修正された動的ルートでの 404":::
 
 > [!div class="nextstepaction"]
 > [カスタム ドメインの設定](custom-domain.md)

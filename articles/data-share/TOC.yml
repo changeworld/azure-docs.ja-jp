@@ -25,7 +25,7 @@
       displayName: 'Azure CLI, az datashare consumer invitation, az datashare consumer share-subscription'
 - name: 概念
   items:
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -45,7 +45,7 @@
       items:
         - name: Azure Storage からの共有
           href: how-to-share-from-storage.md
-        - name: Azure SQL Database または Synapse Analytics からの共有
+        - name: Azure SQL Database または Azure Synapse Analytics からの共有
           href: how-to-share-from-sql.md
         - name: Azure Data Explorer からの共有
           href: /azure/data-explorer/data-share

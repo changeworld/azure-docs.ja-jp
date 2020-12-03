@@ -1,12 +1,12 @@
-- name: Azure Synapse (旧称 SQL DW)
-  href: index.yml
-- name: Azure Synapse に切り替える (ワークスペース プレビュー)
+- name: 専用 SQL プール (旧称 SQL DW)
+  href: sql-data-warehouse-overview-what-is.md
+- name: Azure Synapse に切り替える
   href: ../overview-what-is.md
 - name: 概要
   items:
-    - name: Azure Synapse Analytics とは
+    - name: 専用 SQL プールとは
       href: sql-data-warehouse-overview-what-is.md
-    - name: Azure Synapse Analytics のアーキテクチャ
+    - name: 専用 SQL プールのアーキテクチャ
       href: massively-parallel-processing-mpp-architecture.md
     - name: データ ウェアハウス ユニット
       href: what-is-a-data-warehouse-unit-dwu-cdwu.md
@@ -74,6 +74,12 @@
           href: pause-and-resume-compute-powershell.md
 - name: 概念
   items:
+    - name: Synapse ワークスペース エクスペリエンス
+      items:
+        - name: 概要
+          href: workspace-connected-experience.md
+        - name: サポートされているリージョン
+          href: workspace-connected-regions.md
     - name: セキュリティ
       items:
         - name: 概要
@@ -260,7 +266,7 @@
           href: sql-data-warehouse-concept-resource-utilization-query-activity.md
         - name: データ保護
           href: backup-and-restore.md
-        - name: Recommendations
+        - name: 推奨事項
           href: sql-data-warehouse-concept-recommendations.md
         - name: トラブルシューティング
           href: sql-data-warehouse-troubleshoot.md
@@ -272,6 +278,10 @@
           href: sql-data-warehouse-overview-integrate.md
 - name: 操作方法ガイド
   items:
+    - name: Synapse ワークスペース エクスペリエンス
+      items:
+        - name: Synapse ワークスペースを作成する
+          href: workspace-connected-create.md
     - name: セキュリティで保護
       items:
         - name: Azure AD 認証の構成
@@ -384,9 +394,9 @@
       items:
         - name: 完全なリファレンス
           href: /sql/t-sql/language-reference?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
-        - name: Azure Synapse Analytics の TSQL 言語要素
+        - name: T-SQL 言語要素
           href: sql-data-warehouse-reference-tsql-language-elements.md
-        - name: Azure Synapse Analytics の TSQL ステートメント
+        - name: T-SQL ステートメント
           href: sql-data-warehouse-reference-tsql-statements.md
     - name: システム ビュー
       href: sql-data-warehouse-reference-tsql-system-views.md
@@ -394,6 +404,9 @@
       href: sql-data-warehouse-reference-powershell-cmdlets.md
     - name: REST API
       href: sql-data-warehouse-manage-compute-rest-api.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md
 - name: リソース
   items:
     - name: Azure のロードマップ

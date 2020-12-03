@@ -106,6 +106,8 @@
       href: azure-advisor.md
     - name: 推奨事項を解決する
       href: azure-advisor-recommendations.md
+    - name: Windows Virtual Desktop 向けの Azure Monitor を使用する
+      href: azure-monitor.md
     - name: ディザスター リカバリー プランを設定する
       href: disaster-recovery.md
 - name: 概念
@@ -150,6 +152,8 @@
           href: app-attach-glossary.md
         - name: よく寄せられる質問
           href: app-attach-faq.md
+    - name: Azure Monitor 用語集
+      href: azure-monitor-glossary.md
     - name: データの場所
       href: data-locations.md
 - name: トラブルシューティング
@@ -170,6 +174,8 @@
       href: troubleshoot-powershell.md
     - name: グラフィックスのパフォーマンスの問題の診断
       href: remotefx-graphics-performance-counters.md
+    - name: Azure Monitor
+      href: troubleshoot-azure-monitor.md
 - name: リファレンス
   items:
     - name: セキュリティの運用方法

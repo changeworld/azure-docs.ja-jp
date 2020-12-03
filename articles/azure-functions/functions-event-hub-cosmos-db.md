@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: c5510a66f48007d629d23a96d17205b489ab6a5c
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: aa9e7612a5b3b9655b0c1981fbba87645526b3a2
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95999129"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327204"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>チュートリアル:イベント ハブ トリガーと Azure Cosmos DB 出力バインドを使用して Java で関数を作成する
 
@@ -61,7 +61,9 @@ Cloud Shell を使用していない場合は、Azure CLI をローカルで使�
 
 次に、作成するリソースの名前と場所の環境変数を作成します。 次のコマンドを使用して、`<value>` のプレースホルダーを選択した値に置き換えます。 値は、[Azure リソースの名前付け規則と制限事項](/azure/architecture/best-practices/resource-naming)に準拠している必要があります。 `LOCATION` 変数には、`az functionapp list-consumption-locations` コマンドによって生成された値のいずれかを使用します。
 
-```azurecli-interactive
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```bash
 RESOURCE_GROUP=<value>
 EVENT_HUB_NAMESPACE=<value>
 EVENT_HUB_NAME=<value>
@@ -72,6 +74,21 @@ FUNCTION_APP=<value>
 LOCATION=<value>
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+set RESOURCE_GROUP=<value>
+set EVENT_HUB_NAMESPACE=<value>
+set EVENT_HUB_NAME=<value>
+set EVENT_HUB_AUTHORIZATION_RULE=<value>
+set COSMOS_DB_ACCOUNT=<value>
+set STORAGE_ACCOUNT=<value>
+set FUNCTION_APP=<value>
+set LOCATION=<value>
+```
+
+---
+
 このチュートリアルの残りの部分では、これらの変数を使用します。 これらの変数は、現在の Azure CLI または Cloud Shell セッションの間のみ持続することに注意してください。 別のローカル ターミナル ウィンドウを使用するか、Cloud Shell セッションがタイムアウトした場合は、これらのコマンドを再度実行する必要があります。
 
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
@@ -80,15 +97,29 @@ Azure では、リソース グループを使ってアカウント内のすべ�
 
 次のコマンドを使用して、リソース グループを作成します。
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```azurecli-interactive
 az group create \
     --name $RESOURCE_GROUP \
     --location $LOCATION
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az group create ^
+    --name %RESOURCE_GROUP% ^
+    --location %LOCATION%
+```
+
+---
+
 ### <a name="create-an-event-hub"></a>イベント ハブの作成
 
 次に、次のコマンドを使用して Azure Event Hubs 名前空間、イベント ハブ、および承認規則を作成します。
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 az eventhubs namespace create \
@@ -107,33 +138,78 @@ az eventhubs eventhub authorization-rule create \
     --rights Listen Send
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az eventhubs namespace create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %EVENT_HUB_NAMESPACE%
+az eventhubs eventhub create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %EVENT_HUB_NAME% ^
+    --namespace-name %EVENT_HUB_NAMESPACE% ^
+    --message-retention 1
+az eventhubs eventhub authorization-rule create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %EVENT_HUB_AUTHORIZATION_RULE% ^
+    --eventhub-name %EVENT_HUB_NAME% ^
+    --namespace-name %EVENT_HUB_NAMESPACE% ^
+    --rights Listen Send
+```
+
+---
+
 Event Hubs 名前空間には、実際のイベント ハブとその承認規則が含まれています。 関数にこの承認規則を使うと、ハブにメッセージを送信し、対応するイベントをリッスンできます。 1 つの関数からは、テレメトリ データを表すメッセージが送信されます。 もう 1 つの関数では、イベントのリッスン、イベント データの分析、Azure Cosmos DB への結果の格納を行います。
 
 ### <a name="create-an-azure-cosmos-db"></a>Azure Cosmos DB を作成する
 
 次に、次のコマンドを使用して、Azure Cosmos DB アカウント、データベース、およびコレクションを作成します。
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```azurecli-interactive
 az cosmosdb create \
     --resource-group $RESOURCE_GROUP \
     --name $COSMOS_DB_ACCOUNT
-az cosmosdb database create \
-    --resource-group-name $RESOURCE_GROUP \
-    --name $COSMOS_DB_ACCOUNT \
-    --db-name TelemetryDb
-az cosmosdb collection create \
-    --resource-group-name $RESOURCE_GROUP \
-    --name $COSMOS_DB_ACCOUNT \
-    --collection-name TelemetryInfo \
-    --db-name TelemetryDb \
+az cosmosdb sql database create \
+    --resource-group $RESOURCE_GROUP \
+    --account-name $COSMOS_DB_ACCOUNT \
+    --name TelemetryDb
+az cosmosdb sql container create \
+    --resource-group $RESOURCE_GROUP \
+    --account-name $COSMOS_DB_ACCOUNT \
+    --database-name TelemetryDb \
+    --name TelemetryInfo \
     --partition-key-path '/temperatureStatus'
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az cosmosdb create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %COSMOS_DB_ACCOUNT%
+az cosmosdb sql database create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --account-name %COSMOS_DB_ACCOUNT% ^
+    --name TelemetryDb
+az cosmosdb sql container create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --account-name %COSMOS_DB_ACCOUNT% ^
+    --database-name TelemetryDb ^
+    --name TelemetryInfo ^
+    --partition-key-path "/temperatureStatus"
+```
+
+---
 
 `partition-key-path` 値によって、各項目の `temperatureStatus` 値に基づいてデータが分割されます。 パーティション キーを使い、データを独立してアクセスできる個別のサブセットに分割することで、Cosmos DB のパフォーマンスを向上させることができます。
 
 ### <a name="create-a-storage-account-and-function-app"></a>ストレージ アカウントと関数アプリを作成する
 
 次に、Azure Functions に必要な Azure Storage アカウントを作成してから、関数アプリを作成します。 次のコマンドを使用します。
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 az storage account create \
@@ -145,8 +221,27 @@ az functionapp create \
     --name $FUNCTION_APP \
     --storage-account $STORAGE_ACCOUNT \
     --consumption-plan-location $LOCATION \
-    --runtime java
+    --runtime java \
+    --functions-version 2
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az storage account create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %STORAGE_ACCOUNT% ^
+    --sku Standard_LRS
+az functionapp create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %FUNCTION_APP% ^
+    --storage-account %STORAGE_ACCOUNT% ^
+    --consumption-plan-location %LOCATION% ^
+    --runtime java ^
+    --functions-version 2
+```
+
+---
 
 `az functionapp create` コマンドを使って関数アプリを作成すると、同じ名前の Application Insights リソースも作成されます。 Application Insights に接続する `APPINSIGHTS_INSTRUMENTATIONKEY` という名前の設定で、関数アプリが自動的に構成されます。 このチュートリアルで後述するように、Azure に関数をデプロイすると、アプリのテレメトリを表示できます。
 
@@ -157,6 +252,8 @@ az functionapp create \
 ### <a name="retrieve-resource-connection-strings"></a>リソースの接続文字列を取得する
 
 次のコマンドを使用して、ストレージ、イベント ハブ、および Cosmos DB の接続文字列を取得し、環境変数に保存します。
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 AZURE_WEB_JOBS_STORAGE=$( \
@@ -184,11 +281,40 @@ COSMOS_DB_CONNECTION_STRING=$( \
 echo $COSMOS_DB_CONNECTION_STRING
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+FOR /F "delims=" %X IN (' ^
+    az storage account show-connection-string ^
+        --name %STORAGE_ACCOUNT% ^
+        --query connectionString ^
+        --output tsv') DO SET AZURE_WEB_JOBS_STORAGE=%X
+FOR /F "delims=" %X IN (' ^
+    az eventhubs eventhub authorization-rule keys list ^
+        --resource-group %RESOURCE_GROUP% ^
+        --name %EVENT_HUB_AUTHORIZATION_RULE% ^
+        --eventhub-name %EVENT_HUB_NAME% ^
+        --namespace-name %EVENT_HUB_NAMESPACE% ^
+        --query primaryConnectionString ^
+        --output tsv') DO SET EVENT_HUB_CONNECTION_STRING=%X
+FOR /F "delims=" %X IN (' ^
+    az cosmosdb keys list ^
+        --resource-group %RESOURCE_GROUP% ^
+        --name %COSMOS_DB_ACCOUNT% ^
+        --type connection-strings ^
+        --query connectionStrings[0].connectionString ^
+        --output tsv') DO SET COSMOS_DB_CONNECTION_STRING=%X
+```
+
+---
+
 これらの変数は、Azure CLI コマンドから取得した値に設定されます。 各コマンドには、返された JSON ペイロードから接続文字列を抽出するために JMESPath クエリが使用されます。 また、`echo` を使用すると接続文字列が表示されるため、正常に取得されたことを確認できます。
 
 ### <a name="update-your-function-app-settings"></a>関数アプリの設定を更新する
 
 次に、次のコマンドを使用して、接続文字列の値を Azure Functions アカウントのアプリ設定に転送します。
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 az functionapp config appsettings set \
@@ -200,6 +326,20 @@ az functionapp config appsettings set \
         CosmosDBConnectionString=$COSMOS_DB_CONNECTION_STRING
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az functionapp config appsettings set ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %FUNCTION_APP% ^
+    --settings ^
+        AzureWebJobsStorage=%AZURE_WEB_JOBS_STORAGE% ^
+        EventHubConnectionString=%EVENT_HUB_CONNECTION_STRING% ^
+        CosmosDBConnectionString=%COSMOS_DB_CONNECTION_STRING%
+```
+
+---
+
 これで Azure リソースが作成され、適切に連携するように構成されます。
 
 ## <a name="create-and-test-your-functions"></a>関数を作成してテストする
@@ -208,14 +348,27 @@ az functionapp config appsettings set \
 
 Cloud Shell を使用してリソースを作成した場合、ローカルで Azure に接続することはできません。 この場合は、`az login` コマンドを使用してブラウザーベースのログイン プロセスを起動します。 必要に応じて、`az account set --subscription` に続けてサブスクリプション ID を指定して既定のサブスクリプションを設定します。 最後に、次のコマンドを実行して、ローカル コンピューター上でいくつかの環境変数を再作成します。 `<value>` プレースホルダーを以前に使用したものと同じ値に置き換えます。
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```bash
 RESOURCE_GROUP=<value>
 FUNCTION_APP=<value>
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+set RESOURCE_GROUP=<value>
+set FUNCTION_APP=<value>
+```
+
+---
+
 ### <a name="create-a-local-functions-project"></a>ローカル関数プロジェクトを作成する
 
 次の Maven コマンドを使用して関数プロジェクトを作成し、必要な依存関係を追加します。
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 mvn archetype:generate --batch-mode \
@@ -227,6 +380,20 @@ mvn archetype:generate --batch-mode \
     -DartifactId=telemetry-functions
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+mvn archetype:generate --batch-mode ^
+    -DarchetypeGroupId=com.microsoft.azure ^
+    -DarchetypeArtifactId=azure-functions-archetype ^
+    -DappName=%FUNCTION_APP% ^
+    -DresourceGroup=%RESOURCE_GROUP% ^
+    -DgroupId=com.example ^
+    -DartifactId=telemetry-functions
+```
+
+---
+
 このコマンドによって、`telemetry-functions` フォルダー内にいくつかのファイルが生成されます。
 
 * Maven に使用するための `pom.xml` ファイル
@@ -237,18 +404,39 @@ mvn archetype:generate --batch-mode \
 
 コンパイル エラーを回避するには、テスト ファイルを削除する必要があります。 次のコマンドを実行して、新しいプロジェクト フォルダーに移動し、テスト フォルダーを削除します。
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```bash
 cd telemetry-functions
 rm -r src/test
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+cd telemetry-functions
+rmdir /s /q src\test
+```
+
+---
+
 ### <a name="retrieve-your-function-app-settings-for-local-use"></a>ローカルで使用するために関数アプリの設定を取得する
 
 ローカル テストの場合、関数プロジェクトには、このチュートリアルの前半で Azure Functions アプリに追加した接続文字列が必要です。 次の Azure Functions Core Tools コマンドを使用します。これにより、クラウドに保存されているすべての関数アプリ設定が取得され、それらが `local.settings.json` ファイルに追加されます。
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```bash
 func azure functionapp fetch-app-settings $FUNCTION_APP
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+func azure functionapp fetch-app-settings %FUNCTION_APP%
+```
+
+---
 
 ### <a name="add-java-code"></a>Java コードを追加する
 
@@ -394,10 +582,21 @@ public class TelemetryItem {
 
 次の Maven コマンドを使用して、関数をビルドして実行します。
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```bash
 mvn clean package
 mvn azure-functions:run
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+mvn clean package
+mvn azure-functions:run
+```
+
+---
 
 いくつかのビルドおよび起動メッセージの後、関数が実行されるたびに次の例のような出力が表示されます。
 
@@ -412,7 +611,7 @@ mvn azure-functions:run
 [10/22/19 4:01:38 AM] Executed 'Functions.processSensorData' (Succeeded, Id=1cf0382b-0c98-4cc8-9240-ee2a2f71800d)
 ```
 
-次に [Azure portal](https://portal.azure.com) に移動し、Azure Cosmos DB アカウントに移動できます。 データを受け取ったら、 **[データ エクスプローラー]** を選択し、**TelemetryInfo** を展開してから、 **[項目]** を選択して表示します。
+次に [Azure portal](https://portal.azure.com) に移動し、Azure Cosmos DB アカウントに移動できます。 データを受け取ったら、**[データ エクスプローラー]** を選択し、**TelemetryInfo** を展開してから、**[項目]** を選択して表示します。
 
 ![Cosmos DB Data Explorer](media/functions-event-hub-cosmos-db/data-explorer.png)
 
@@ -422,9 +621,19 @@ mvn azure-functions:run
 
 次のコマンドを使用して、プロジェクトを Azure にデプロイします。
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```bash
 mvn azure-functions:deploy
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+mvn azure-functions:deploy
+```
+
+---
 
 関数は Azure で実行されるようになります。データは引き続き Azure Cosmos DB に蓄積します。 次のスクリーンショットに示すように、デプロイされた関数アプリを Azure portal で表示し、接続された Application Insights リソースを介してアプリのテレメトリを表示できます。
 
@@ -440,9 +649,19 @@ mvn azure-functions:deploy
 
 このチュートリアルで作成した Azure リソースの使用が完了したら、次のコマンドを使用して削除できます。
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az group delete --name %RESOURCE_GROUP%
+```
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

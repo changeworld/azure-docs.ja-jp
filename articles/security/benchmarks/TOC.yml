@@ -129,6 +129,8 @@
       href: ../../load-balancer/security-baseline.md
     - name: Azure Machine Learning のセキュリティ ベースライン
       href: ../../machine-learning/security-baseline.md
+    - name: Azure Managed Applications のセキュリティ ベースライン
+      href: ../../azure-resource-manager/managed-applications/security-baseline.md
     - name: Azure Monitor のセキュリティ ベースライン
       href: ../../azure-monitor/security-baseline.md
     - name: Azure Migrate Learning のセキュリティ ベースライン
@@ -201,7 +203,7 @@
       href: ../../site-recovery/security-baseline.md
     - name: Stream Analytics のベースライン
       href: ../../stream-analytics/security-baseline.md
-    - name: Synapse Analytics のセキュリティ ベースライン
+    - name: Azure Synapse Analytics のセキュリティ ベースライン
       href: ../../synapse-analytics/security-baseline.md
     - name: Traffic Manager のセキュリティ ベースライン
       href: ../../traffic-manager/security-baseline.md

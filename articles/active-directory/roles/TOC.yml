@@ -2,8 +2,10 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Azure AD ロール
+    - name: Azure AD RBAC とは
       href: custom-overview.md
+    - name: Azure AD ロールについて
+      href: concept-understand-roles.md
 - name: クイックスタート
   items:
     - name: 無制限のアプリの登録の作成
@@ -50,8 +52,6 @@
     - name: カスタム ロール
       expanded: true
       items:
-        - name: カスタム ロールの概要
-          href: custom-overview.md
         - name: カスタム ロールの作成
           href: custom-create.md
         - name: カスタム ロールの割り当ての表示

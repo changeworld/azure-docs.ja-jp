@@ -151,9 +151,9 @@
           href: security-center-network-recommendations.md
         - name: ID とアクセス権限の保護
           href: security-center-identity-access.md
-    - name: Azure Defender アラート
+    - name: セキュリティ アラートの詳細
       items:
-        - name: Azure Defender アラートの概要
+        - name: セキュリティ アラートの概要
           href: security-center-alerts-overview.md
         - name: アラートの参照リスト
           href: alerts-reference.md
@@ -244,7 +244,7 @@
           href: continuous-export.md
         - name: すべてのアラートの CSV レポートをダウンロードする
           href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations
-    - name: Azure Defender アラートを処理する
+    - name: セキュリティ アラートの処理
       items:
         - name: セキュリティ アラートの管理
           href: security-center-managing-and-responding-alerts.md

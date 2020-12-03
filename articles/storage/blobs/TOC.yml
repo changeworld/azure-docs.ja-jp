@@ -205,8 +205,6 @@
                   href: scalability-targets-premium-page-blobs.md
                 - name: ストレージ リソース プロバイダー
                   href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: コンカレンシー
-          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: BLOB データを検索して理解する
           items:
             - name: BLOB インデックス タグを使用して BLOB データを管理および検索する
@@ -457,6 +455,8 @@
               href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: アカウントのフェールオーバーを開始する
               href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: コンカレンシーの管理
+          href: concurrency-manage.md
         - name: ストレージ エミュレーターを使用する
           items:
             - name: Azurite オープンソース エミュレーターを使用する
@@ -767,7 +767,7 @@
           items:
             - name: AzCopy
               items:
-                - name: 作業開始
+                - name: はじめに
                   href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Data Lake Storage の使用
                   href: ../common/storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json

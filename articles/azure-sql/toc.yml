@@ -617,7 +617,7 @@
                           items:
                             - name: SQL Database を使用した場合
                               href: database/saas-tenancy-tenant-analytics.md
-                            - name: Azure Synapse Analytics (旧称 SQL Data Warehouse) を使用した場合
+                            - name: Azure Synapse Analytics を使用した場合
                               href: database/saas-tenancy-tenant-analytics-adf.md
                     - name: geo 復元を使用したディザスター リカバリー
                       href: database/saas-dbpertenant-dr-geo-restore.md

@@ -1,14 +1,14 @@
 ---
 title: Connected Machine Windows エージェントの概要
 description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、使用可能な Azure Arc 対応サーバー エージェントの詳細な概要を提供します。
-ms.date: 09/30/2020
+ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8a66f99f535013b8aac52fdee43b91a8c734b10a
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 1bc9546e6db35153424ba670f8157adb86d19b71
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577585"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452951"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの概要
 
@@ -31,7 +31,7 @@ Azure Connected Machine エージェント パッケージには、まとめて�
     * ゲスト割り当ては 14 日間ローカルに格納されます。 14 日の期間内に Connected Machine エージェントがサービスに再接続した場合は、ポリシー割り当てが再適用されます。
     * 割り当ては 14 日後に削除され、14 日の期間の後にマシンに再割り当てされることはありません。
 
-* 拡張エージェントは VM 拡張機能 (インストール、アンインストール、アップグレードなど) を管理します。 拡張機能は Azure からダウンロードされ、Windows では `%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads` フォルダー、Linux の場合は `/opt/GC_Ext/downloads` にコピーされます。 Windows では、拡張機能はパス `%SystemDrive%\Packages\Plugins\<extension>` にインストールされます。Linux では、拡張機能は `/var/lib/waagent/<extension>` にインストールされます。
+* 拡張エージェントは VM 拡張機能 (インストール、アンインストール、アップグレードなど) を管理します。 拡張機能は Azure からダウンロードされ、Windows では `%SystemDrive%\%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads` フォルダー、Linux の場合は `/opt/GC_Ext/downloads` にコピーされます。 Windows では、拡張機能はパス `%SystemDrive%\Packages\Plugins\<extension>` にインストールされます。Linux では、拡張機能は `/var/lib/waagent/<extension>` にインストールされます。
 
 ## <a name="download-agents"></a>エージェントをダウンロードする
 
@@ -170,9 +170,9 @@ Windows 用 Connected Machine エージェントをインストールした後�
     |%ProgramData%\AzureConnectedMachineAgent |エージェント構成ファイルが含まれています。|
     |%ProgramData%\AzureConnectedMachineAgent\Tokens |取得したトークンが含まれています。|
     |%ProgramData%\AzureConnectedMachineAgent\Config |サービスへの登録情報を記録する `agentconfig.json` エージェント構成ファイルが含まれています。|
-    |%SystemDrive%\Program Files\ArcConnectedMachineAgent\ExtensionService\GC | ゲスト構成エージェント ファイルを含むインストール パス。 |
+    |%ProgramFiles%\ArcConnectedMachineAgent\ExtensionService\GC | ゲスト構成エージェント ファイルを含むインストール パス。 |
     |%ProgramData%\GuestConfig |Azure からの (適用された) ポリシーが含まれています。|
-    |%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads | 拡張機能は Azure からダウンロードされ、ここにコピーされます。|
+    |%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads | 拡張機能は Azure からダウンロードされ、ここにコピーされます。|
 
 * エージェントのインストール中に、次の Windows サービスがターゲット マシン上に作成されます。
 
@@ -196,14 +196,14 @@ Windows 用 Connected Machine エージェントをインストールした後�
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |詳細 (-v) 引数が使用されている場合は、azcmagent ツール コマンドの出力が含まれます。|
     |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent.log |DSC サービス アクティビティの詳細を記録します<br> (特に、HIMDS サービスと Azure Policy の間の接続)。|
     |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent_telemetry.txt |DSC サービス テレメトリと詳細ログの詳細を記録します。|
-    |%SystemDrive%\ProgramData\GuestConfig\ext_mgr_logs|拡張エージェント コンポーネントに関する詳細を記録します。|
-    |%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>|インストールされた拡張機能の詳細を記録します。|
+    |%ProgramData%\GuestConfig\ext_mgr_logs|拡張エージェント コンポーネントに関する詳細を記録します。|
+    |%ProgramData%\GuestConfig\extension_logs<ph id="ph1">\&lt;Extension&gt;</ph>|インストールされた拡張機能の詳細を記録します。|
 
 * ローカル セキュリティ グループの **ハイブリッド エージェント拡張アプリケーション** が作成されます。
 
 * エージェントのアンインストール中に、次の成果物は削除されません。
 
-    * *%ProgramData%\AzureConnectedMachineAgent\Log
+    * %ProgramData%\AzureConnectedMachineAgent\Log
     * %ProgramData%\AzureConnectedMachineAgent とサブディレクトリ
     * %ProgramData%\GuestConfig
 

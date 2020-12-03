@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: e706649957bf427cd577d7995fb9ce104c687f4b
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: ef1ca41f54a15554a04fa3edf608bb13f5fb3398
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378994"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182021"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday-mobile-application"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workday モバイル アプリケーションの統合
 
@@ -33,13 +33,13 @@ ms.locfileid: "93378994"
 作業を開始するには:
 
 * Workday と Azure AD を統合します。
-* [Azure Active Directory シングル サインオン (SSO) と Workday の統合](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-tutorial)に関する記事を参照します。
+* [Azure Active Directory シングル サインオン (SSO) と Workday の統合](./workday-tutorial.md)に関する記事を参照します。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、Workday モバイル アプリケーションで Azure AD の条件付きアクセス ポリシーと Intune を構成し、テストします。
 
-シングル サインオン (SSO) を有効にするために、Azure AD で Workday フェデレーション アプリケーションを構成できます。 詳細については、[Azure Active Directory シングル サインオン (SSO) と Workday の統合](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-tutorial)に関する記事をご覧ください。
+シングル サインオン (SSO) を有効にするために、Azure AD で Workday フェデレーション アプリケーションを構成できます。 詳細については、[Azure Active Directory シングル サインオン (SSO) と Workday の統合](./workday-tutorial.md)に関する記事をご覧ください。
 
 > [!NOTE] 
 > Workday では、Intune のアプリ保護ポリシーはサポートされていません。 条件付きアクセスを使用するには、モバイル デバイス管理を使用する必要があります。
@@ -182,4 +182,3 @@ iOS デバイスがモバイル デバイス管理によって管理されてい
 6. **[プラットフォーム]** で、 **[Android]** を選択します。
 7. **[関連アプリ]** で、追加した Android 用 Workday アプリを選択します。
 8. **[構成設定]** を選択します。 **[構成設定の形式]** で、 **[JSON データを入力する]** を選択します。
-

@@ -2,14 +2,14 @@
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: a71762010984928b93c19c7256c2ba4f0fe0f64b
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e7b7fae094ad15bc1732778b6a4a3259fb4dd3b5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504139"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027056"
 ---
 | リソース | Standard ファイル共有\* | Premium ファイル共有 |
 |----------|---------------|------------------------------------------|
@@ -27,6 +27,7 @@ ms.locfileid: "94504139"
 | オブジェクト (ディレクトリとファイル) の名前の最大長 | 2,048 文字 | 2,048 文字 |
 | 最大パス名コンポーネント (パス \A\B\C\D 内。各文字はコンポーネント) | 255 文字 | 255 文字 |
 | ハード リンクの制限 (NFS のみ) | N/A | 178 |
+| SMB マルチチャネルの最大チャネル数 | 該当なし | 4 |
 
 \* Standard ファイル共有で使用可能な 3 つの階層 (トランザクションの最適化、ホット、クール) すべてに Standard ファイル共有の制限が適用されます。
 
