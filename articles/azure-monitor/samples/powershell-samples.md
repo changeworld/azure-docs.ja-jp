@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 74211df6f925aaa09a4c87a518056e8ef3206b87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f7ddf94bbd077912cf0d7c2adef2eac548274ca
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078403"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532280"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Monitor PowerShell のサンプル
 この記事では、Azure Monitor の機能にアクセスするために役立つ PowerShell のサンプル コマンドを紹介します。
@@ -94,13 +94,13 @@ Get-AzLog -Caller 'myname@company.com'
 次のコマンドは、アクティビティ ログから最後の 1000 件のイベントを取得します。
 
 ```powershell
-Get-AzLog -MaxRecord 10
+Get-AzLog -MaxRecord 1000
 ```
 
 `Get-AzLog` は、他にも多くのパラメーターをサポートしています。 詳細については、 `Get-AzLog` のリファレンスをご覧ください。
 
 > [!NOTE]
-> `Get-AzLog` は、15 日間の履歴のみを提供します。 **-MaxRecords** パラメーターを使用すると、15 日間を超えて最後の N 件のイベントを照会できます。 15 日より前のイベントにアクセスするには、REST API または SDK (SDK を使用した C# のサンプル) を使用します。 **StartTime** を指定しない場合、既定値は **EndTime** から 1 時間引いた値になります。 **EndTime**を指定しない場合、既定値は現在の時刻です。 時刻はすべて UTC 形式です。
+> `Get-AzLog` は、15 日間の履歴のみを提供します。 **-MaxRecords** パラメーターを使用すると、15 日間を超えて最後の N 件のイベントを照会できます。 15 日より前のイベントにアクセスするには、REST API または SDK (SDK を使用した C# のサンプル) を使用します。 **StartTime** を指定しない場合、既定値は **EndTime** から 1 時間引いた値になります。 **EndTime** を指定しない場合、既定値は現在の時刻です。 時刻はすべて UTC 形式です。
 > 
 > 
 
@@ -187,7 +187,7 @@ Add-AzMetricAlertRule -Name vmcpu_gt_1 -Location "East US" -ResourceGroup myrg1 
 Get-AzAlertRule -Name vmcpu_gt_1 -ResourceGroup myrg1 -DetailedOutput
 ```
 
-Add アラート コマンドレットは、指定されたプロパティのアラート ルールが既に存在する場合に、そのルールの更新も実行します。 アラート ルールを無効にするには、 **-DisableRule**パラメーターを含めます。
+Add アラート コマンドレットは、指定されたプロパティのアラート ルールが既に存在する場合に、そのルールの更新も実行します。 アラート ルールを無効にするには、 **-DisableRule** パラメーターを含めます。
 
 ## <a name="get-a-list-of-available-metrics-for-alerts"></a>アラートで使用可能なメトリックのリストの取得
 `Get-AzMetricDefinition` コマンドレットを使用して、特定のリソースのすべてのメトリックのリストを表示できます。
