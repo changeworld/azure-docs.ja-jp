@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: 3df96f5576829694b5eb12fd1811de112279884d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5481dbfe1f7b185e87ee13f26f23ea563350b0fa
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963229"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171791"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメインに Windows Server 仮想マシンを参加させる
 
@@ -139,7 +139,7 @@ VM に対して安全に接続するために、Azure Bastion ホストを使用
 
 VM を作成し、Azure Bastion を使用して Web ベースの RDP 接続を確立したので、Windows Server 仮想マシンをマネージド ドメインに参加させましょう。 このプロセスは、通常のオンプレミスの Active Directory Domain Services ドメインに接続しているコンピューターと同じです。
 
-1. VM にサインインしたときに**サーバー マネージャー**が既定で開かない場合は、 **[スタート]** メニューを選択し、 **[サーバー マネージャー]** を選択します。
+1. VM にサインインしたときに **サーバー マネージャー** が既定で開かない場合は、 **[スタート]** メニューを選択し、 **[サーバー マネージャー]** を選択します。
 1. **[サーバー マネージャー]** ウィンドウの左側のウィンドウで、 **[ローカル サーバー]** を選択します。 右側のウィンドウの **[プロパティ]** で、 **[ワークグループ]** を選択します。
 
     ![VM でサーバー マネージャーを開き、ワークグループのプロパティを編集する](./media/join-windows-vm/server-manager.png)
@@ -246,5 +246,5 @@ Windows Server VM が再起動すると、マネージド ドメインで適用�
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [password-sync]: ./tutorial-create-instance.md
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
-[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[azure-bastion]: ../bastion/tutorial-create-host-portal.md
 [set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension

@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 5489feeeec64c7b3d4b5fc28eddfe8b780308796
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 09e922ffddcce732d9213eb91026561528c0728a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979880"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169139"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>チュートリアル:Blazor WebAssembly アプリでユーザーのサインインを行い、保護された API を呼び出す
 
@@ -26,7 +26,7 @@ ms.locfileid: "94979880"
 > [!div class="checklist"]
 >
 > * Microsoft ID プラットフォームを使用して、[認証と承認](authentication-vs-authorization.md)に Azure Active Directory (Azure AD) を使用するように構成された新しい Blazor WebAssembly アプリを作成する
-> * 保護された Web API (この場合は [Microsoft Graph](https://docs.microsoft.com/graph/overview)) からデータを取得する
+> * 保護された Web API (この場合は [Microsoft Graph](/graph/overview)) からデータを取得する
 
 ## <a name="prerequisites"></a>前提条件
 

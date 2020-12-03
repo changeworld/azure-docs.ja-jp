@@ -11,18 +11,18 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 705df6ddc6b665ac3d0d62ec3dad93e38f5e513e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6a9f3b864bd8aba2140c7d32d4b5474ff7b95f88
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953102"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171230"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>チュートリアル:Azure AD B2C を使用してシングルページ アプリケーションで認証を有効にする
 
 このチュートリアルでは、Azure Active Directory B2C (Azure AD B2C) を使用してシングルページ アプリケーション (SPA) でユーザーをサインアップおよびサインインする方法を説明します。次のいずれかを使用します。
-* [OAuth 2.0 認証コード フロー](https://docs.microsoft.com/azure/active-directory-b2c/authorization-code-flow) ([MSAL.js 2.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) 使用)
-* [OAuth 2.0 の暗黙的な許可のフロー](https://docs.microsoft.com/azure/active-directory-b2c/implicit-flow-single-page-application) ([MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core) 使用)
+* [OAuth 2.0 認証コード フロー](./authorization-code-flow.md) ([MSAL.js 2.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) 使用)
+* [OAuth 2.0 の暗黙的な許可のフロー](./implicit-flow-single-page-application.md) ([MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core) 使用)
 
 2 部構成のシリーズの最初の部分であるこのチュートリアルでは、次の作業を行います。
 
@@ -51,7 +51,7 @@ ms.locfileid: "94953102"
 
 ## <a name="update-the-application"></a>アプリケーションの更新
 
-前提条件の一環として完了した [2 番目のチュートリアル](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-spa)で、Azure AD B2C にシングルページ アプリケーションを登録しました。 このチュートリアルのコード サンプルとの通信を可能にするには、アプリケーションの登録に応答 URL (リダイレクト URI とも呼ばれます) を追加します。
+前提条件の一環として完了した [2 番目のチュートリアル](./tutorial-register-spa.md)で、Azure AD B2C にシングルページ アプリケーションを登録しました。 このチュートリアルのコード サンプルとの通信を可能にするには、アプリケーションの登録に応答 URL (リダイレクト URI とも呼ばれます) を追加します。
 
 Azure AD B2C テナントでアプリケーションを更新するには、Microsoft の新しい統合 **アプリの登録** エクスペリエンスか以前の **アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](./app-registrations-training-guide.md)。
 
