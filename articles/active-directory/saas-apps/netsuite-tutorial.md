@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 9bebb11c3a1162a0a7b72140f7d3812f86f793ce
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 9272114dd472717e59680b40c07d8435dea19682
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95791360"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181970"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>チュートリアル:Azure AD シングル サインオン (SSO) を NetSuite と統合する
 
@@ -253,7 +253,7 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 
 - Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した NetSuite に自動的にサインインされます
 
-- Microsoft マイ アプリを使用することができます。 マイ アプリ上で [NetSuite] タイルをクリックすると、SSO を設定した NetSuite に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+- Microsoft マイ アプリを使用することができます。 マイ アプリ上で [NetSuite] タイルをクリックすると、SSO を設定した NetSuite に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

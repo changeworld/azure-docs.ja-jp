@@ -9,19 +9,18 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 59567cf2dc03952a78852f3288e78ba06aa769ee
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 557c624b6ed683f701b6a8d38854cd8604e05b31
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325684"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325266"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>チュートリアル 2:信用リスク モデルをトレーニングする - Azure Machine Learning Studio (クラシック)
 
-**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (クラシック)   ![これは × 印です。つまり、この記事は Azure Machine Learning を対象としています。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-
-このチュートリアルでは、予測分析ソリューションを開発するプロセスについて詳しく説明します。 Machine Learning Studio (クラシック) で単純なモデルを開発します。  その後、そのモデルを Azure Machine Learning Web サービスとしてデプロイします。  このデプロイ モデルは、新しいデータを使用して予測を行うことができます。 このチュートリアルは、 **3 部構成のチュートリアル シリーズのパート 2** です。
+このチュートリアルでは、予測分析ソリューションを開発するプロセスについて詳しく説明します。 Machine Learning Studio (クラシック) で単純なモデルを開発します。  その後、そのモデルを Azure Machine Learning Web サービスとしてデプロイします。  このデプロイ モデルは、新しいデータを使用して予測を行うことができます。 このチュートリアルは、**3 部構成のチュートリアル シリーズのパート 2** です。
 
 クレジットの申請書に記入する情報に基づいて個人のクレジット リスクを予測する必要があるとします。  
 
@@ -179,7 +178,7 @@ SVM モデルを設定するには、次の操作を行います。
 ![両方のモデルの評価](./media/tutorial-part2-credit-risk-train/final-experiment.png)
 
 
-結果を確認するには、 [モデルの評価][evaluate-model]モジュールの出力ポートをクリックし、 **[視覚化]** を選択します。  
+結果を確認するには、[モデルの評価][evaluate-model]モジュールの出力ポートをクリックし、 **[視覚化]** を選択します。  
 
 [モデルの評価][evaluate-model]モジュールによって生成される曲線と測定値のペアを使用して、スコア付けされた 2 つのモデルの結果を比較できるようになります。 結果は、Receiver Operator Characteristic (ROC) 曲線、Precision/Recall 曲線、または Lift 曲線で表示できます。 表示されるその他の情報には、混同行列、累積の AUC (曲線下面積) 値、その他の測定値があります。 スライダーを左右に移動してしきい値を変更することで、変更が測定値に与える影響を確認することもできます。  
 

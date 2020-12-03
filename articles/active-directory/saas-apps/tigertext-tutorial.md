@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 6831e96ebd8fd2db51d640ff3d93955b1a9f1477
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516377"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182157"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigerconnect-secure-messenger"></a>チュートリアル:Azure Active Directory と TigerConnect Secure Messenger の統合
 
@@ -41,7 +41,7 @@ TigerConnect Secure Messenger と Azure AD の統合を構成するには、次�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストし、TigerConnect Secure Messenger を Azure AD と統合します。
 
-* TigerConnect Secure Messenger では、 **SP** Initiated SSO がサポートされます
+* TigerConnect Secure Messenger では、**SP** Initiated SSO がサポートされます
 * TigerConnect Secure Messenger を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-tigerconnect-secure-messenger-from-the-gallery"></a>ギャラリーからの TigerConnect Secure Messenger の追加
@@ -52,12 +52,12 @@ Azure AD への TigerConnect Secure Messenger の統合を構成するには、�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **TigerConnect Secure Messenger** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**TigerConnect Secure Messenger**」と入力します。
 1. 結果パネルから **[TigerConnect Secure Messenger]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、TigerConnect Secure Messenge で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと TigerConnect Secure Messenge 内の関連ユーザーとの間にリンク関係を確立する必要があります。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、TigerConnect Secure Messenge で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと TigerConnect Secure Messenge 内の関連ユーザーとの間にリンク関係を確立する必要があります。
 
 TigerConnect Secure Messenge で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 

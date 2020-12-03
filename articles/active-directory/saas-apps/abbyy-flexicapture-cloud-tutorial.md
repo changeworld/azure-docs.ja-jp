@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 0fdcf3266893990572e5c44ad8bb03ff08b69305
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e79ef69d97c9f8f32af4dd993da61553c5d962cf
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548382"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181133"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-abbyy-flexicapture-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ABBYY FlexiCapture Cloud の統合
 
@@ -37,8 +37,8 @@ ms.locfileid: "92548382"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* ABBYY FlexiCapture Cloud によって、 **SP/IDP** -initiated SSO がサポートされています
-* ABBYY FlexiCapture Cloud によって、 **Just-In-Time** ユーザー プロビジョニングがサポートされています
+* ABBYY FlexiCapture Cloud によって、**SP/IDP**-initiated SSO がサポートされています
+* ABBYY FlexiCapture Cloud によって、**Just-In-Time** ユーザー プロビジョニングがサポートされています
 
 ## <a name="adding-abbyy-flexicapture-cloud-from-the-gallery"></a>ギャラリーからの ABBYY FlexiCapture Cloud の追加
 
@@ -48,7 +48,7 @@ Azure AD への ABBYY FlexiCapture Cloud の統合を構成するには、ギャ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **ABBYY FlexiCapture Cloud** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**ABBYY FlexiCapture Cloud**」と入力します。
 1. 結果のパネルから **[ABBYY FlexiCapture Cloud]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -141,10 +141,8 @@ ABBYY FlexiCapture Cloud に対して Azure AD SSO を構成してテストす�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した ABBYY FlexiCapture Cloud に自動的にサインインされるはずです 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで [ABBYY FlexiCapture Cloud] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した ABBYY FlexiCapture Cloud に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで [ABBYY FlexiCapture Cloud] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した ABBYY FlexiCapture Cloud に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-ABBYY FlexiCapture Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+ABBYY FlexiCapture Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

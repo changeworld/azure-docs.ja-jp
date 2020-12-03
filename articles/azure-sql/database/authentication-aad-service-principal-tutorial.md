@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/21/2020
-ms.openlocfilehash: 6231e4631c19aa3595fa85ca0aa7997861de65a3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e068ad01c07af4e5833399c0053da3362cd6aaa6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675034"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185642"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>チュートリアル:Azure AD アプリケーションを使用して Azure AD ユーザーを作成する
 
@@ -44,7 +44,7 @@ Azure SQL に対する Azure AD 認証の詳細については、記事「[Azure
 
 ## <a name="assign-an-identity-to-the-azure-sql-logical-server"></a>Azure SQL 論理サーバーに ID を割り当てる
 
-1. Azure Active Directory に接続します。 テナント ID を見つける必要があります。 これを見つけるには、 [Azure portal](https://portal.azure.com) から **Azure Active Directory** リソースにアクセスします。 **[概要]** ペインに **[テナント ID]** が表示されます。 次の PowerShell コマンドを実行します。
+1. Azure Active Directory に接続します。 テナント ID を見つける必要があります。 これを見つけるには、[Azure portal](https://portal.azure.com) から **Azure Active Directory** リソースにアクセスします。 **[概要]** ペインに **[テナント ID]** が表示されます。 次の PowerShell コマンドを実行します。
 
     - `<TenantId>` は、実際の **テナント ID** に置き換えます。
 
@@ -155,17 +155,17 @@ if ($selDirReader -eq $null) {
 > [!NOTE]
 > 目的の ID に対してディレクトリ閲覧者のアクセス許可が付与されたかどうかは、このスクリプトの出力を見るとわかります。 アクセス許可が付与されたかどうかが定かでない場合は、スクリプトを再実行してください。
 
-SQL Managed Instance に **ディレクトリ閲覧者** のアクセス許可を設定する方法に関する同様のアプローチについては、「 [Azure AD 管理者 (SQL Managed Instance) をプロビジョニングする](authentication-aad-configure.md#powershell)」を参照してください。
+SQL Managed Instance に **ディレクトリ閲覧者** のアクセス許可を設定する方法に関する同様のアプローチについては、「[Azure AD 管理者 (SQL Managed Instance) をプロビジョニングする](authentication-aad-configure.md#powershell)」を参照してください。
 
 ## <a name="create-a-service-principal-an-azure-ad-application-in-azure-ad"></a>Azure AD にサービス プリンシパル (Azure AD アプリケーション) を作成する
 
 1. こちらのガイドに従って[アプリを登録し、アクセス許可を設定](active-directory-interactive-connect-azure-sql-db.md#register-your-app-and-set-permissions)します。
 
-    必ず、 **アプリケーションのアクセス許可** と **委任されたアクセス許可** を追加してください。
+    必ず、**アプリケーションのアクセス許可** と **委任されたアクセス許可** を追加してください。
 
-    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="オブジェクト ID":::
+    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="Azure Active Directory の [アプリの登録] ページを示すスクリーンショット。表示名が AppSP のアプリが強調表示されています。":::
 
-    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-app-registration-api-permissions.png" alt-text="オブジェクト ID":::
+    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-app-registration-api-permissions.png" alt-text="API のアクセス許可":::
 
 2. サインインに使用するクライアント シークレットも作成する必要があります。 こちらのガイドに従って、[証明書をアップロードするか、サインイン用のシークレットを作成](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)してください。
 
@@ -173,17 +173,17 @@ SQL Managed Instance に **ディレクトリ閲覧者** のアクセス許可�
     - **アプリケーション ID**
     - **テナント ID** - 先ほどと同じ値を使用します
 
-このチュートリアルでは、メイン サービス プリンシパルとして *AppSP* を、2 つ目のサービス プリンシパル ユーザーとして *myapp* を使用します。myapp は、 *AppSP* によって Azure SQL に作成されます。 *AppSP* と *myapp* の 2 つのアプリケーションを作成する必要があります。
+このチュートリアルでは、メイン サービス プリンシパルとして *AppSP* を、2 つ目のサービス プリンシパル ユーザーとして *myapp* を使用します。myapp は、*AppSP* によって Azure SQL に作成されます。 *AppSP* と *myapp* の 2 つのアプリケーションを作成する必要があります。
 
 Azure AD アプリケーションの作成方法について詳しくは、「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../../active-directory/develop/howto-create-service-principal-portal.md)」の記事を参照してください。
 
 ### <a name="permissions-required-to-set-or-unset-the-azure-ad-admin"></a>Azure AD 管理者を設定または設定解除するために必要なアクセス許可
 
-サービス プリンシパルが Azure SQL の Azure AD 管理者を設定または解除するには、追加の API のアクセス許可が必要です。 [Directory.Read.All](https://docs.microsoft.com/graph/permissions-reference#application-permissions-18) アプリケーション API アクセス許可を、Azure AD 内で対象のアプリケーションに追加する必要があります。
+サービス プリンシパルが Azure SQL の Azure AD 管理者を設定または解除するには、追加の API のアクセス許可が必要です。 [Directory.Read.All](/graph/permissions-reference#application-permissions-18) アプリケーション API アクセス許可を、Azure AD 内で対象のアプリケーションに追加する必要があります。
 
-:::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="オブジェクト ID":::
+:::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="Azure AD 内の Directory.Reader.All アクセス許可":::
 
-サービス プリンシパルには、 [**SQL Server 共同作成者**](../../role-based-access-control/built-in-roles.md#sql-server-contributor)ロール (SQL Database の場合) または [**SQL Managed Instance の共同作成者**](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)ロール (SQL Managed Instance の場合) も必要になります。
+サービス プリンシパルには、[**SQL Server 共同作成者**](../../role-based-access-control/built-in-roles.md#sql-server-contributor)ロール (SQL Database の場合) または [**SQL Managed Instance の共同作成者**](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)ロール (SQL Managed Instance の場合) も必要になります。
 
 > [!NOTE]
 > Azure AD Graph API は非推奨とされていますが、このチュートリアルには引き続き **Directory.Reader.All** アクセス許可が適用されます。 Microsoft Graph API は、このチュートリアルには適用されません。

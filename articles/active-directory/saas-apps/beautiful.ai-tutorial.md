@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 7a85cd0936a0a566e51721930ab6d7c0227e0aae
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a3adce53e391ad85e2b38376759778f53a860161
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548379"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180321"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beautifulai"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Beautiful.ai の統合
 
@@ -37,8 +37,8 @@ ms.locfileid: "92548379"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Beautiful.ai では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Beautiful.ai では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Beautiful.ai では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Beautiful.ai では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-beautifulai-from-the-gallery"></a>ギャラリーからの Beautiful.ai の追加
 
@@ -48,7 +48,7 @@ Azure AD への Beautiful.ai の統合を構成するには、ギャラリーか
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Beautiful.ai** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Beautiful.ai**」と入力します。
 1. 結果のパネルから **[Beautiful.ai]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-beautifulai"></a>Beautiful.ai の Azure AD SSO の構成とテスト
@@ -112,7 +112,7 @@ Beautiful.ai で Azure AD SSO を構成してテストするには、次の手�
 
 ## <a name="configure-beautifulai-sso"></a>Beautiful.ai の SSO の構成
 
-**Beautiful.ai** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Beautiful.ai サポート チーム](mailto:support@beautiful.ai)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Beautiful.ai** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Beautiful.ai サポート チーム](mailto:support@beautiful.ai)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-beautifulai-test-user"></a>Beautiful.ai のテスト ユーザーの作成
 
@@ -132,9 +132,9 @@ Beautiful.ai で Azure AD SSO を構成してテストするには、次の手�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Beautiful.ai に自動的にサインインします 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネル上で Beautiful.ai タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Beautiful.ai に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネル上で Beautiful.ai タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Beautiful.ai に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Beautiful.ai を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Beautiful.ai を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

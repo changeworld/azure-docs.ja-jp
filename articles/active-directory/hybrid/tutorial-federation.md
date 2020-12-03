@@ -15,11 +15,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4410708905610562feb15804277021950eb1edeb
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826527"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176292"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>チュートリアル:単一の AD フォレスト環境をクラウドに統合する
 
@@ -202,12 +202,12 @@ New-SelfSignedCertificate -DnsName $DNSname -CertStoreLocation $Location
 次に、ユーザーをクラウドに同期できるよう、Azure AD テナントを作成する必要があります。  新しい Azure AD テナントを作成するには、以下を実行します。
 
 1. [Azure portal](https://portal.azure.com) に移動し、Azure サブスクリプションがあるアカウントを使ってサインインします。
-2. **プラス (+) アイコン**を選択し、**Azure Active Directory** を検索します。
+2. **プラス (+) アイコン** を選択し、**Azure Active Directory** を検索します。
 3. 検索結果で **[Azure Active Directory]** を選択します。
 4. **［作成］** を選択します</br>
 ![Azure AD テナントの作成方法を示すスクリーンショット。](media/tutorial-password-hash-sync/create1.png)</br>
-5. **組織の名前**と**初期ドメイン名**を入力します。 **[作成]** を選択します。 これにより、ディレクトリが作成されます。
-6. これが完了したら、**こちら**のリンクをクリックし、ディレクトリを管理します。
+5. **組織の名前** と **初期ドメイン名** を入力します。 **[作成]** を選択します。 これにより、ディレクトリが作成されます。
+6. これが完了したら、**こちら** のリンクをクリックし、ディレクトリを管理します。
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Azure AD でグローバル管理者を作成する
 Azure AD テナントを作成したので、次は全体管理者アカウントを作成します。  このアカウントは、Azure AD Connect のインストール時に Azure AD コネクタ アカウントを作成するために使用されます。  Azure AD コネクタ アカウントは、Azure AD に情報を書き込むために使用されます。   全体管理者アカウントを作成するには、以下を実行します。
@@ -237,7 +237,7 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 次に、Azure AD Connect をダウンロードしてインストールします。  インストールが完了したら、高速インストールを実行します。  次の操作を行います。
 
 1. [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) をダウンロードします。
-2. **AzureADConnect.msi**を検索し、ダブルクリックします。
+2. **AzureADConnect.msi** を検索し、ダブルクリックします。
 3. [ようこそ] 画面で、ライセンス条項に同意するチェック ボックスをオンにし、 **[続行]** をクリックします。  
 4. [簡単設定] 画面で、 **[カスタマイズ]** をクリックします。  
 5. [必須コンポーネントのインストール] 画面で、 **[インストール]** をクリックします。  

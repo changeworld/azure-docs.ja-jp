@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 852fabfd1fe496064e6d13c21ba052ee6f96b79e
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: ccf945f8bfec85a18493d515dce48f4cb3e3b612
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93243050"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182359"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Software AG Cloud の統合
 
@@ -151,10 +151,8 @@ Software AG Cloud に対して Azure AD SSO を構成してテストするには
 
 2. Software AG Cloud のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Software AG Cloud] タイルをクリックすると、Software AG Cloud サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、「[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)」を参照してください
+3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Software AG Cloud] タイルをクリックすると、Software AG Cloud サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、「[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)」を参照してください
 
 ## <a name="next-steps"></a>次の手順
 
-Software AG Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+Software AG Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

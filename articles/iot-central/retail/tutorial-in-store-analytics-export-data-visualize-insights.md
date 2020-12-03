@@ -12,11 +12,11 @@ ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
 ms.openlocfilehash: f00448f19cc0a2118477a9527005548fea25537e
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651447"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187274"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>チュートリアル:Azure IoT Central からデータをエクスポートし、Power BI で分析情報を視覚化する
 
@@ -67,11 +67,11 @@ ms.locfileid: "91651447"
     * IoT Central アプリケーションに使用したものと同じ場所を選択します。
     * **［作成］** を選択します システムによってリソースが完全にプロビジョニングされるまで、数分間待たなければならない場合があります。
 1. ポータルで、**retail-store-analysis** リソース グループに移動します。 デプロイが完了するまで待ちます。 場合によっては、 **[最新の情報に更新]** を選択してデプロイの状態を更新する必要があります。 また、 **[通知]** で、イベント ハブ名前空間の作成の状態を確認することもできます。
-1. **retail-store-analysis** リソース グループで、 **[Event Hubs 名前空間]** を選択します。 ポータルで **Event Hubs 名前空間**のホーム ページが表示されます。
+1. **retail-store-analysis** リソース グループで、 **[Event Hubs 名前空間]** を選択します。 ポータルで **Event Hubs 名前空間** のホーム ページが表示されます。
 
-**Event Hubs 名前空間**が作成されたので、IoT Central アプリケーションで使用する**イベント ハブ**を作成できます。
+**Event Hubs 名前空間** が作成されたので、IoT Central アプリケーションで使用する **イベント ハブ** を作成できます。
 
-1. ポータルの **Event Hubs 名前空間**のホーム ページで、 **[+ イベント ハブ]** を選択します。
+1. ポータルの **Event Hubs 名前空間** のホーム ページで、 **[+ イベント ハブ]** を選択します。
 1. **[イベント ハブの作成]** ページで、名前として「_store-telemetry_」と入力し、 **[作成]** を選択します。
 
 これで、IoT Central アプリケーションからのデータ エクスポートを構成するときに使用できるイベント ハブが作成されました。
@@ -163,7 +163,7 @@ Power BI ではストリーミング データにフィルターを適用でき�
 1. [Azure portal](https://portal.azure.com) にサインインし、画面の左上にある **[リソースの作成]** を選択します。
 1. **[Marketplace を検索]** に「_Logic App_」と入力し、**Enter** キーを押します。
 1. **[Logic App]** ページで、 **[作成]** を選択します。
-1. **ロジック アプリ**の作成ページで次のようにします。
+1. **ロジック アプリ** の作成ページで次のようにします。
     * ロジック アプリの一意の名前を入力します (_yourname-retail-store-analysis_ など)。
     * IoT Central アプリケーションの作成に使用したものと同じ **[サブスクリプション]** を選択します。
     * **retail-store-analysis** リソース グループを選択します。

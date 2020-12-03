@@ -10,12 +10,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
-ms.openlocfilehash: c763f761d77ac05d9f6b45e5656436faa5697e88
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d805fb926131e047572887758b10506e4edd5944
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310062"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183381"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>チュートリアル:新しい子 DNS ゾーンの作成
 
@@ -34,7 +34,7 @@ ms.locfileid: "92310062"
 * アクティブなサブスクリプションが含まれる Azure アカウント。  アカウントを持っていない場合は、[無料でアカウントを作成する](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)ことができます。
 * 既存の親 Azure DNS ゾーン。  
 
-このチュートリアルでは、親ゾーンとして contoso.com を使用し、子ドメイン名として subdomain.contoso.com を使用します。  *contoso.com* を実際の親ドメイン名に、*subdomain* を実際の子ドメインに置き換えてください。  親 DNS ゾーンを作成していない場合は、[Azure portal を使用して DNS ゾーンを作成する](https://docs.microsoft.com/azure/dns/dns-getstarted-portal#create-a-dns-zone)ための手順を参照してください。 
+このチュートリアルでは、親ゾーンとして contoso.com を使用し、子ドメイン名として subdomain.contoso.com を使用します。  *contoso.com* を実際の親ドメイン名に、*subdomain* を実際の子ドメインに置き換えてください。  親 DNS ゾーンを作成していない場合は、[Azure portal を使用して DNS ゾーンを作成する](./dns-getstarted-portal.md#create-a-dns-zone)ための手順を参照してください。 
 
 
 ## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
@@ -74,14 +74,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1.  Azure portal の **[すべてのリソース]** で、**MyResourceGroup** リソース グループの *contoso.com* DNS ゾーンを開きます。 **[名前でフィルター]** ボックスに「*contoso.com*」と入力すると簡単に見つけることができます。
 1.  DNS ゾーンの概要ページで、 **[+Child Zone]\(+ 子ゾーン\)** ボタンを選択します。
 
-      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-inline.png" alt-text="[DNS ゾーンの作成] ページのスクリーンショット。" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-expanded.png":::
+      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-inline.png" alt-text="[Child Zone]\(子ゾーン\) ボタンのスクリーンショット。" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-expanded.png":::
 
 1.  [DNS ゾーンの作成] ページが開きます。 [Child zone]\(子ゾーン\) オプションは既にオンになっており、親ゾーンのサブスクリプションと親ゾーンがこのページに既に設定されています。
 1.  このチュートリアルの例では、名前として「*child*」と入力します。 親 DNS ゾーンの名前 contoso.com が、プレフィックスとして名前に自動的に追加されることに注意してください。
 1.  **タグ**、**次へ:確認と作成** をクリックします。
 1.  **[確認および作成]** タブで概要を確認し、検証エラーを修正してから、 **[作成]** を選択します。
 
-    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="[DNS ゾーンの作成] ページのスクリーンショット。" border="true"  lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="選択された子ゾーンのスクリーンショット" border="true"  lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
 ## <a name="verify-child-dns-zone"></a>子 DNS ゾーンを検証する
 これで、新しい子 DNS ゾーン *subdomain.contoso.com* が作成されました。 委任が正しく行われたことを確認するには、以下で説明するように、子ゾーンのネーム サーバー (NS) レコードが親ゾーンにあることを確認します。  
 
@@ -90,7 +90,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1.  Azure portal の **[すべてのリソース]** で、**MyResourceGroup** リソース グループの *subdomain.contoso.com* DNS ゾーンを開きます。 **[名前でフィルター]** ボックスに「*subdomain.contoso.com*」と入力すると簡単に見つけることができます。
 1.  DNS ゾーンの概要ページでネーム サーバーを取得します。 この例では、ゾーン contoso.net に、ネーム サーバー *ns1-08.azure-dns.com、ns2-08.azure-dns.net、ns3-08.azure-dns.org、* *ns4-08.azure-dns.info* が割り当てられています。
 
-      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-inline.png" alt-text="[DNS ゾーンの作成] ページのスクリーンショット。" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-expanded.png":::
+      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-inline.png" alt-text="子ゾーンのネーム サーバーのスクリーンショット" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-expanded.png":::
 **親 DNS ゾーンで NS レコードを確認する:**
 
 このステップでは、親 DNS ゾーン *contoso.com* に移動し、子ゾーンのネーム サーバーに対する NS レコード セット エントリが作成されていることを確認します。
@@ -99,7 +99,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1.  *contoso.com* DNS ゾーンの概要ページで、レコード セットを確認します。
 1.  種類が NS で名前が subdomain のレコード セットが、親 DNS ゾーンに既に作成されていることがわかります。 このレコード セットの値を確認します。上のステップで子 DNS ゾーンから取得したネーム サーバーのリストに似ています。
 
-     :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-inline.png" alt-text="[DNS ゾーンの作成] ページのスクリーンショット。" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-expanded.png":::
+     :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-inline.png" alt-text="子ゾーンのネーム サーバーの検証のスクリーンショット" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-expanded.png":::
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 このチュートリアルで作成したリソースが必要なくなったら、**MyResourceGroup** リソース グループを削除することで削除できます。 **MyResourceGroup** リソース グループを開き、**[リソース グループの削除]** を選択します。
 

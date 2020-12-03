@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 68acc1ad45605512232ee3dae6f5027133270c01
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 903150a199bac1189274cadc9755b38873cde73e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686365"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182106"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timu"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と TIMU の統合
 
@@ -148,11 +148,9 @@ TIMU に対して Azure AD SSO を構成してテストするには、次の手�
 
 * TIMU のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft アクセス パネルを使用することができます。 アクセス パネルで [TIMU] タイルをクリックすると、TIMU サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+* Microsoft アクセス パネルを使用することができます。 アクセス パネルで [TIMU] タイルをクリックすると、TIMU サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-TIMU を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+TIMU を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
 ms.openlocfilehash: eb7062b745ae6eb97dc2cd4ba2051cc221031630
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92453775"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179165"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と ExpenseIn の統合
 
@@ -38,7 +38,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 
-* ExpenseIn では、 **SP と IDP** によって開始される SSO がサポートされます。
+* ExpenseIn では、**SP と IDP** によって開始される SSO がサポートされます。
 * ExpenseIn を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 
@@ -50,7 +50,7 @@ Azure AD への ExpenseIn の統合を構成するには、ギャラリーから
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **ExpenseIn** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**ExpenseIn**」と入力します。
 1. 結果ウィンドウで **[ExpenseIn]** を選択し、アプリケーションを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-expensein"></a>ExpenseIn の Azure AD SSO の構成とテスト
@@ -123,7 +123,7 @@ ExpenseIn で Azure AD SSO を構成してテストするには、次の構成�
 
 ## <a name="configure-expensein-sso"></a>ExpenseIn の SSO の構成
 
-1. ExpenseIn 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
+1. ExpenseIn 内での構成を自動化するには、**[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -169,9 +169,9 @@ Azure AD ユーザーが ExpenseIn にサインインできるようにするに
 
     ![ExpenseIn の構成](./media/expenseIn-tutorial/config04.png)
 
-    a. **[名]** ボックスに、ユーザーの名を入力します (例: **B** )。
+    a. **[名]** ボックスに、ユーザーの名を入力します (例: **B**)。
 
-    b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon** )。
+    b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon**)。
 
     c. **[電子メール]** ボックスに、ユーザーのメール アドレスを入力します (例: `B.Simon@contoso.com`)。
 

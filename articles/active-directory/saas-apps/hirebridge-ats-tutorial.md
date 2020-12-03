@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/29/2020
 ms.author: jeedes
-ms.openlocfilehash: 68ebd88be1a8c68df65557ae29fd50639df0aef5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e421efc4076ab075984022ccb5281d4b9e250c26
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133370"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96178323"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hirebridge-ats"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Hirebridge ATS の統合
 
@@ -123,10 +123,8 @@ Hirebridge ATS に対して Azure AD SSO を構成してテストするには、
 
 1. Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Hirebridge ATS に自動的にサインインされます
 
-1. Microsoft アクセス パネルを使用することができます。 アクセス パネル上で [Hirebridge ATS] タイルをクリックすると、SSO を設定した Hirebridge ATS に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+1. Microsoft アクセス パネルを使用することができます。 アクセス パネル上で [Hirebridge ATS] タイルをクリックすると、SSO を設定した Hirebridge ATS に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Hirebridge ATS を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+Hirebridge ATS を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

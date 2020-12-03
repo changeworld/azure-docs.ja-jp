@@ -10,11 +10,11 @@ ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: 711da24b3edf08f4867109d0d70165955236c39a
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743422"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184656"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-pro-gpu-device"></a>チュートリアル:Azure Stack Edge Pro GPU デバイスにコンピューティングを構成する
 
@@ -76,7 +76,7 @@ Azure Stack Edge Pro にコンピューティングを構成するには、Azure
     
 Edge デバイスで Edge コンピューティング ロールが設定されると、2 つのデバイスが作成されます (IoT デバイスと IoT Edge デバイス)。 IoT Hub リソースでは、両方のデバイスを表示できます。 IoT Edge ランタイムは、この IoT Edge デバイス上でも動作しています。 現時点では、お客様の IoT Edge デバイスに対して使用できるのは Linux プラットフォームのみです。
 
-背後で仮想マシンと Kubernetes クラスターが作成されているため、コンピューティングの構成には 20 分から 30 分かかることがあります。 
+背後で仮想マシンと Kubernetes クラスターが作成されているため、コンピューティングの構成には 20 分から 30 分かかることがあります。 
 
 Azure portal でコンピューティングを正常に構成すると、Kubernetes クラスターと、IoT 名前空間 (Azure Stack Edge Pro によって制御されるシステム名前空間) に関連付けられた既定のユーザーが作成されます。 
 

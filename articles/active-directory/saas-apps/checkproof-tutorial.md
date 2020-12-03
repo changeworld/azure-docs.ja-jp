@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 5a5b10d61d3381389b08e5df7e9e70c92494dd75
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b0afcf00a95b46472c902b24c6d4b287c1c6a482
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548341"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181019"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-checkproof"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と CheckProof の統合
 
@@ -37,7 +37,7 @@ ms.locfileid: "92548341"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* CheckProof では、 **IDP** Initiated SSO がサポートされます
+* CheckProof では、**IDP** Initiated SSO がサポートされます
 
 ## <a name="adding-checkproof-from-the-gallery"></a>ギャラリーからの CheckProof の追加
 
@@ -47,7 +47,7 @@ Azure AD への CheckProof の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **CheckProof** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**CheckProof**」と入力します。
 1. 結果のパネルから **[CheckProof]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -142,11 +142,9 @@ CheckProof で Azure AD SSO を構成してテストするには、次の手順�
 
 1. Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した CheckProof に自動的にサインインします
 
-1. Microsoft アクセス パネルを使用することができます。 アクセス パネル上で [CheckProof] タイルをクリックすると、SSO を設定した CheckProof に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+1. Microsoft アクセス パネルを使用することができます。 アクセス パネル上で [CheckProof] タイルをクリックすると、SSO を設定した CheckProof に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-CheckProof を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+CheckProof を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: jeedes
-ms.openlocfilehash: ef49a8a3ac1779071a4d4906bfd053530063102d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: b70c50e7c2900f884dd4d91c6650205bc626326e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984466"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96178043"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>チュートリアル: Azure Active Directory と Keeper Password Manager & Digital Vault の統合
 
@@ -157,7 +157,7 @@ Azure AD ユーザーが Keeper Password Manager & Digital Vault にサインイ
 
 * アプリケーションのサインオン URL に直接移動し、そこからサインインを開始できます。
 
-* Microsoft アクセス パネルを使用することができます。 アクセス パネルで **[Keeper Password Manager & Digital Vault]** タイルを選択すると、アプリケーションのサインオン URL にリダイレクトされます。 アクセス パネルの詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)」をご覧ください。
+* Microsoft アクセス パネルを使用することができます。 アクセス パネルで **[Keeper Password Manager & Digital Vault]** タイルを選択すると、アプリケーションのサインオン URL にリダイレクトされます。 アクセス パネルの詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](../user-help/my-apps-portal-end-user-access.md)」をご覧ください。
 
 
 ## <a name="next-steps"></a>次のステップ

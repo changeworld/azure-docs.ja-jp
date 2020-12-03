@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 26424106098a8385faff5ab6d3de33d98576ef4e
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: a7f4682be2f7fbf308aba32768efa932f27b7a87
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381305"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181708"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-roadmunk"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Roadmunk の統合
 
@@ -171,12 +171,10 @@ Roadmunk に対して Azure AD SSO を構成してテストする方法の概要
 
 このセクションでは、アクセス パネルを使用して Azure AD SSO の構成をテストします。
 
-マイ アプリ ポータルで **[Roadmunk]** タイルをクリックすると、SSO を設定した Roadmunk アカウントに自動的にサインインします。 詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)」を参照してください。
+マイ アプリ ポータルで **[Roadmunk]** タイルをクリックすると、SSO を設定した Roadmunk アカウントに自動的にサインインします。 詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 Roadmunk を構成した後、セッション制御を適用できます。 セッション制御により、組織の機密データの流出と侵入をリアルタイムで保護することができます。 セッション制御は、条件付きアクセスを拡張したものです。 
 
-[Microsoft Cloud App Security を使用してセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)を確認してください。
-
-
+[Microsoft Cloud App Security を使用してセッション制御を適用する方法](/cloud-app-security/proxy-deployment-any-app)を確認してください。

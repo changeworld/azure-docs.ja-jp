@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
 ms.openlocfilehash: 7bb74732074482c12d3bc760e259bb014ccf006f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454190"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179289"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ekarda の統合
 
@@ -52,7 +52,7 @@ Azure AD への ekarda の統合を構成するには、ギャラリーからマ
 1. 左側のペインで、 **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **ekarda** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**ekarda**」と入力します。
 1. 結果パネルから **[ekarda]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-ekarda"></a>ekarda の Azure AD シングル サインオンの構成とテスト
@@ -80,7 +80,7 @@ Azure portal で次の手順に従って、Azure AD SSO を有効にします。
 
    ![鉛筆アイコンが強調表示された [SAML によるシングル サインオンの設定] ページのスクリーンショット。](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、 **サービス プロバイダーのメタデータ ファイル** が表示される場合は、次の手順を行います。
+1. **[基本的な SAML 構成]** セクションで、**サービス プロバイダーのメタデータ ファイル** が表示される場合は、次の手順を行います。
     1. **[メタデータ ファイルをアップロードする]** を選択します。
     1. フォルダー アイコンを選択してメタデータ ファイルを選択し、 **[アップロード]** を選択します。
     1. メタデータ ファイルが正常にアップロードされると、 **[識別子]** と **[応答 URL]** の値が、ekarda セクションのテキスト ボックスに自動的に設定されます。

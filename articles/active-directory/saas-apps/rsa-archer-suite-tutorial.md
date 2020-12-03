@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
 ms.openlocfilehash: 397d59c60ed90e0e25df671baa3d46660eff1d47
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520610"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181579"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rsa-archer-suite"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と RSA Archer Suite の統合
 
@@ -37,8 +37,8 @@ ms.locfileid: "92520610"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* RSA Archer Suite では、 **SP** Initiated SSO がサポートされています
-* RSA Archer Suite では、 **Just-In-Time** ユーザー プロビジョニングがサポートされています
+* RSA Archer Suite では、**SP** Initiated SSO がサポートされています
+* RSA Archer Suite では、**Just-In-Time** ユーザー プロビジョニングがサポートされています
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -51,7 +51,7 @@ Azure AD への RSA Archer Suite の統合を構成するには、ギャラリ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **RSA Archer Suite** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**RSA Archer Suite**」と入力します。
 1. 結果のパネルから **[RSA Archer Suite]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 

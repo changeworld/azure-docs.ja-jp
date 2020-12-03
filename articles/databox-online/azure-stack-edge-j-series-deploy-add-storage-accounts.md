@@ -10,11 +10,11 @@ ms.date: 08/31/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: c24970b30e522d593a491194dbbabb0421ad7f4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891050"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185563"
 ---
 # <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-pro-gpu"></a>チュートリアル:Azure Stack Edge Pro GPU でストレージ アカウントを使用してデータを転送する 
 
@@ -163,7 +163,7 @@ Azure Storage Explorer に証明書をインポートするには、次の手順
 
 ### <a name="configure-and-verify-connection"></a>接続を構成して確認する
 
-[*http* 経由での接続時に使用した接続の構成と確認](#verify-connection)の手順に従います。 唯一の違いは、*http を使用するオプション*をオフにしておく必要があることです。
+[*http* 経由での接続時に使用した接続の構成と確認](#verify-connection)の手順に従います。 唯一の違いは、*http を使用するオプション* をオフにしておく必要があることです。
 
 ## <a name="next-steps"></a>次のステップ
 

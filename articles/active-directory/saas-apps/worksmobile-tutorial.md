@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: jeedes
-ms.openlocfilehash: dbc8d126cabae249db8b5e5be5e311d232395c83
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a8b344cd9e4428c3508534edaec4fd98fb67d832
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910731"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182043"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-line-works"></a>チュートリアル: Azure Active Directory と LINE WORKS の統合
 
@@ -38,7 +38,7 @@ Azure AD と LINE WORKS の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* LINE WORKS では、 **SP** によって開始される SSO がサポートされます
+* LINE WORKS では、**SP** によって開始される SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -51,7 +51,7 @@ Azure AD への LINE WORKS の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **LINE WORKS** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**LINE WORKS**」と入力します。
 1. 結果のパネルから **[LINE WORKS]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
@@ -120,7 +120,7 @@ LINE WORKS に対して Azure AD SSO を構成してテストするには、次�
 
 ## <a name="configure-line-works-sso"></a>LINE WORKS SSO の構成
 
-**LINE WORKS** 側でシングル サインオンを構成する場合は、 [LINE WORKS SSO のドキュメント](https://developers.worksmobile.com/jp/document/1001080101)を参照し、LINE WORKS 設定を構成してください。
+**LINE WORKS** 側でシングル サインオンを構成する場合は、[LINE WORKS SSO のドキュメント](https://developers.worksmobile.com/jp/document/1001080101)を参照し、LINE WORKS 設定を構成してください。
 
 > [!NOTE]
 > .cert to .pem からダウンロードした証明書ファイルを変換する必要があります。
@@ -138,9 +138,8 @@ LINE WORKS に対して Azure AD SSO を構成してテストするには、次�
 
 2. LINE WORKS のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [LINE WORKS] タイルをクリックすると、LINE WORKS サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [LINE WORKS] タイルをクリックすると、LINE WORKS サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-LINE WORKS を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
+LINE WORKS を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

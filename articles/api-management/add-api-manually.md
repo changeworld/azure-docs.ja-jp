@@ -13,15 +13,15 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 39a3b9d7dd9efbda93de0b5d7c5f9938922d0012
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631292"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183863"
 ---
 # <a name="add-an-api-manually"></a>手動による API の追加
 
-この記事の手順では、Azure portal を使用して API Management (APIM) インスタンスに手動で API を追加する方法を示します。 空の API を作成して手動で定義する必要のある一般的なシナリオは、モック API を作成する場合です。 モック API の作成について詳しくは、[API の応答の模擬テストの実行](mock-api-responses.md)に関するページをご覧ください。
+この記事の手順では、Azure Portal を使用して API Management (APIM) インスタンスに手動で API を追加する方法を示します。 空の API を作成して手動で定義する必要のある一般的なシナリオは、モック API を作成する場合です。 モック API の作成について詳しくは、[API の応答の模擬テストの実行](mock-api-responses.md)に関するページをご覧ください。
 
 既存の API をインポートする場合は、「[関連トピック](#related-topics)」セクションをご覧ください。
 
@@ -61,7 +61,7 @@ ms.locfileid: "91631292"
 
 ### <a name="test-an-operation"></a>操作のテスト
 
-Azure Portal で操作をテストします。 または、**開発者ポータル**内でテストすることもできます。
+Azure Portal で操作をテストします。 または、**開発者ポータル** 内でテストすることもできます。
 
 1. **[テスト]** タブを選びます。
 2. **FetchData** を選びます。
@@ -83,7 +83,7 @@ Azure Portal で操作をテストします。 または、**開発者ポータ�
 
 ### <a name="test-the-operation"></a>操作のテスト 
 
-Azure Portal で操作をテストします。  または、**開発者ポータル**内でテストすることもできます。
+Azure Portal で操作をテストします。  または、**開発者ポータル** 内でテストすることもできます。
 
 1. **[テスト]** タブを選びます。
 2. **GetStatus** を選びます。 既定では、コード値は "*200*" に設定されます。 値を変更して他の値をテストできます。 たとえば、「*418*」と入力します。

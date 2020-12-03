@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 069c8a8e2a595248afe45bbb90de877b3b6fc87d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc05e83ac6c7f0f7c5e9a571c1fa7397af858f44
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849345"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180100"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>チュートリアル:自動的にユーザーをプロビジョニングするための Cisco Webex の構成
 
@@ -91,21 +91,21 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    :::image type="content" source="common/provisioning-automatic.png" alt-text="Azure portal のメニューのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
+    :::image type="content" source="common/provisioning-automatic.png" alt-text="[自動] が強調表示されている、[プロビジョニング モード] リスト ボックスのスクリーンショット。" border="false":::
 
 5. **[管理者資格情報]** セクションで、Cisco Webex のアカウントの **[テナントの URL]** と **[シークレット トークン]** を入力します。
 
-    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/secrettoken1.png" alt-text="Azure portal のメニューのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
+    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/secrettoken1.png" alt-text="[管理者資格情報] セクションのスクリーンショット。[テナントの U R L] および [シークレット トークン] ボックスが強調表示されていますが、空です。" border="false":::
 
 6.  **[テナントの URL]** フィールドに `https://api.ciscospark.com/v1/scim/[OrgId]` という形式で値を入力します。 `[OrgId]` を取得するには、[Cisco Webex Control Hub](https://admin.webex.com/login) にサインインします。 左下にある組織名をクリックし、 **[組織 ID]** の値をコピーします。 
 
-    * **[シークレット トークン]** の値を取得するには、この [[URL]](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fauth%252Fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose) に移動します。 表示される webex サインイン ページから、組織の完全な Cisco Webex 管理者アカウントでサインインします。 サイトに到達できないというエラー ページが表示されますが、これは正常です。
+    * **[シークレット トークン]** の値を取得するには、この [[URL]](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%2f%2flocalhost%253A3000%2fauth%2fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose) に移動します。 表示される webex サインイン ページから、組織の完全な Cisco Webex 管理者アカウントでサインインします。 サイトに到達できないというエラー ページが表示されますが、これは正常です。
 
-        :::image type="content" source="./media/cisco-webex-provisioning-tutorial/test.png" alt-text="Azure portal のメニューのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
+        :::image type="content" source="./media/cisco-webex-provisioning-tutorial/test.png" alt-text="エラー メッセージを表示している Web ページのスクリーンショット。メッセージは、サイトに到達できないという内容で、トラブルシューティングのヒントがいくつか示されています。" border="false":::
  
     * 次に示すように、生成されたベアラー トークンの値を URL からコピーします。 このトークンは 365 日間有効です。
         
-        :::image type="content" source="./media/cisco-webex-provisioning-tutorial/test1.png" alt-text="Azure portal のメニューのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
+        :::image type="content" source="./media/cisco-webex-provisioning-tutorial/test1.png" alt-text="長い U R L を示すスクリーンショット。アドレスの一部は解読できませんが、強調表示され、[ベアラー トークン] というラベルが付いています。" border="false":::
 
 7. 手順 5 のフィールドに入力したら、 **[テスト接続]** をクリックして Azure AD が Cisco Webex に接続できることを確認します。 接続できない場合は、使用中の Cisco Webex アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
@@ -119,11 +119,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 10. **[マッピング]** セクションで **[Synchronize Azure Active Directory Users to Cisco Webex]\(Azure Active Directory ユーザーを Cisco Webex に同期する\)** を選択します。
 
-    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/usermapping.png" alt-text="Azure portal のメニューのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
+    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/usermapping.png" alt-text="Azure portal の [マッピング] セクションのスクリーンショット。[名前] の下で、[Synchronize Azure Active Directory Users to CiscoSpark]\(Azure Active Directory ユーザーを CiscoSpark に同期する\) が強調表示されています。" border="false":::
 
 11. **[属性マッピング]** セクションで、Azure AD から Cisco Webex に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Cisco Webex のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/usermappingattributes.png" alt-text="Azure portal のメニューのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
+    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/usermappingattributes.png" alt-text="Azure Active Directory 属性、対応する CiscoSpark 属性、および一致するステータスを示す、[属性マッピング] セクションのスクリーンショット。" border="false":::
 
 12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 

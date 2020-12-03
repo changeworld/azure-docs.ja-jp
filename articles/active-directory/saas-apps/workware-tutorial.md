@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: f3f48695f0ef26b6e54073dbfc4bb0c61802fe58
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: f4996943fd95252be45f7a270d143f14e7f2d48a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92904800"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181275"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workware"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workware の統合
 
@@ -37,7 +37,7 @@ ms.locfileid: "92904800"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Workware では、 **IDP** Initiated SSO がサポートされます
+* Workware では、**IDP** Initiated SSO がサポートされます
 
 ## <a name="adding-workware-from-the-gallery"></a>ギャラリーからの Workware の追加
 
@@ -47,7 +47,7 @@ Azure AD への Workware の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Workware** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Workware**」と入力します。
 1. 結果のパネルから **Workware** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -164,11 +164,9 @@ Workware で SSO 機能を使用するには、次の設定を完了する必要
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Workware に自動的にサインインされます
 
-* Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Workware] タイルをクリックすると、SSO を設定した Workware に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+* Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Workware] タイルをクリックすると、SSO を設定した Workware に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Workware を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+Workware を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

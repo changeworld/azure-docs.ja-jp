@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 12/02/2019
 ms.author: alkohli
 ms.openlocfilehash: 203c977fe9109cd8b2b6de561e975e20aacf700e
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93375967"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185580"
 ---
 Storage Explorer の初回使用時は、次の手順を実行する必要があります。
 

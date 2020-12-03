@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: e367e4f2a704d8c718551fb031164520b3ff5bb3
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 75e3886e31592b0672487bacd5ff2266e07e39cd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579132"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182507"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>チュートリアル:Azure Functions のプライベート サイト アクセスを設定する
 
@@ -113,7 +113,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     | _サブネット_ | AzureBastionSubnet | 新しい Bastion ホスト リソースがデプロイされるご利用の仮想ネットワークのサブネットです。 名前の値の **AzureBastionSubnet** を使用して、サブネットを作成する必要があります。 この値によって、Azure でリソースをデプロイするサブネットを把握できます。 **/27** かそれより大きいサブネットを使用する必要があります (/27、/26 など)。 |
 
     > [!NOTE]
-    > Azure Bastion リソースを作成するための詳細なステップ バイ ステップ ガイドについては、[Azure Bastion ホストの作成](../bastion/bastion-create-host-portal.md)に関するチュートリアルを参照してください。
+    > Azure Bastion リソースを作成するための詳細なステップ バイ ステップ ガイドについては、[Azure Bastion ホストの作成](../bastion/tutorial-create-host-portal.md)に関するチュートリアルを参照してください。
 
 1. Azure Bastion ホストのプロビジョニング先として使用できるサブネットを作成します。 **[サブネット構成の管理]** を選択すると新しいペインが表示され、そこで新しいサブネットを定義することができます。  新しいサブネットを作成するには、 **[+ サブネット]** を選択します。
 1. サブネットの名前は **AzureBastionSubnet** とし、サブネットのプレフィックスは **/27** 以上にしてください。  **[OK]** を選択してサブネットを作成します。
@@ -194,9 +194,9 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. 次のいずれかのクイックスタートに従って、Azure Functions アプリを作成、デプロイします。
 
-    * [Visual Studio Code](./functions-create-first-function-vs-code.md)
+    * [Visual Studio Code](./create-first-function-vs-code-csharp.md)
     * [Visual Studio](./functions-create-your-first-function-visual-studio.md)
-    * [コマンド ライン](./functions-create-first-azure-function-azure-cli.md)
+    * [コマンド ライン](./create-first-function-cli-csharp.md)
     * [Maven (Java)](./create-first-function-cli-java.md?tabs=bash,browser)
 
 1. Azure Functions プロジェクトを発行するときに、このチュートリアルの中で作成した関数アプリ リソースを選択します。

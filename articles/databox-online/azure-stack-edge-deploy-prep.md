@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/22/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 224131d1b17c4ed34ee847638633a5a1a494ccaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12879b22e255384701b0cd265b50ed34d5e198c9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90894139"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345544"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro の配置を準備する  
 
@@ -53,18 +53,18 @@ Azure Stack Edge Pro を配置するには、次の順序どおりにチュー�
 
 開始する前に次の点を確認します。
 
-* ご利用の Microsoft Azure サブスクリプションで Azure Stack Edge リソースが有効になっていること。 [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/)、[クラウド ソリューション プロバイダー (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)、[Microsoft Azure スポンサープラン](https://azure.microsoft.com/offers/ms-azr-0036p/)など、サポートされているサブスクリプションを使用していることを確認してください。 従量課金制のサブスクリプションには対応していません。
+* ご利用の Microsoft Azure サブスクリプションで Azure Stack Edge リソースが有効になっていること。 [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/)、[クラウド ソリューション プロバイダー (CSP)](/partner-center/azure-plan-lp)、[Microsoft Azure スポンサープラン](https://azure.microsoft.com/offers/ms-azr-0036p/)など、サポートされているサブスクリプションを使用していることを確認してください。 従量課金制のサブスクリプションには対応していません。
 
 * Azure Stack Edge/Data Box Gateway、IoT Hub、および Azure Storage のリソースに対してリソース グループ レベルで所有者または共同作成者のアクセス許可を持っていること。
 
-  * 共同作成者アクセス権を付与するには、サブスクリプション レベルで**所有者**である必要があります。 他のユーザーに共同作成者アクセス権を付与するには、Azure portal で、 **[すべてのサービス]**  >  **[サブスクリプション]**  >  **[アクセス制御 (IAM)]**  >  **[+ 追加]**  >  **[ロールの割り当ての追加]** に移動します。 詳細については、[Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)」を参照してください。
+  * 共同作成者アクセス権を付与するには、サブスクリプション レベルで **所有者** である必要があります。 他のユーザーに共同作成者アクセス権を付与するには、Azure portal で、 **[すべてのサービス]**  >  **[サブスクリプション]**  >  **[アクセス制御 (IAM)]**  >  **[+ 追加]**  >  **[ロールの割り当ての追加]** に移動します。 詳細については、[Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する](../role-based-access-control/quickstart-assign-role-user-portal.md)」を参照してください。
 
   * Azure Stack Edge/Data Box Gateway のリソースを作成するには、リソース グループ レベルにスコープ指定された共同作成者 (以上) のアクセス許可を持っている必要があります。 また、`Microsoft.DataBoxEdge` リソースプロバイダーが登録されていることを確認する必要もあります。 リソースプロバイダーの登録方法については、「[リソースプロバイダーを登録する](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」を参照してください。
   * IoT Hub リソースを作成するには、Microsoft.Devices プロバイダーが登録されていることを確認します。 登録方法の詳細については、「[リソース プロバイダーの登録](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」をお読みください。
   * Storage アカウントのリソースを作成するには、ここでも、リソース グループ レベルにスコープ指定された共同作成者以上のアクセス許可が必要になります。 Azure Storage は、既定で、登録されたリソース プロバイターになっています。
-* Azure Active Directory Graph API に対して管理者またはユーザーのアクセス権を持っていること。 詳細については、[Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) に関するページをご覧ください。
+* Azure Active Directory Graph API に対して管理者またはユーザーのアクセス権を持っていること。 詳細については、[Azure Active Directory Graph API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) に関するページをご覧ください。
 * アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
-* システム管理者が設定した Azure ポリシーによってブロックされていない。 ポリシーの詳細については、「[クイックスタート: 準拠していないリソースを識別するためのポリシー割り当てを作成する](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal)」を参照してください。
+* システム管理者が設定した Azure ポリシーによってブロックされていない。 ポリシーの詳細については、「[クイックスタート: 準拠していないリソースを識別するためのポリシー割り当てを作成する](../governance/policy/assign-policy-portal.md)」を参照してください。
 
 ### <a name="for-the-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスの前提条件
 
@@ -96,7 +96,7 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
 1. Microsoft Azure の資格情報を使用して、次のサイトにサインインします。 
 
     - Azure portal (URL: [https://portal.azure.com](https://portal.azure.com))。
-    - または、Azure Government ポータル (URL: [https://portal.azure.us](https://portal.azure.us))。 詳細については、[ポータルを使用して Azure Government に接続する](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)方法に関するページを参照してください。
+    - または、Azure Government ポータル (URL: [https://portal.azure.us](https://portal.azure.us))。 詳細については、[ポータルを使用して Azure Government に接続する](../azure-government/documentation-government-get-started-connect-with-portal.md)方法に関するページを参照してください。
 
 2. 左側のウィンドウで、 **[+ リソースの作成]** を選択します。 **[Azure Stack Edge/Data Box Gateway]** を検索して選択します。 **［作成］** を選択します
 3. Azure Stack Edge Pro デバイスに使用するサブスクリプションを選択します。 Azure Stack Edge リソースをデプロイするリージョンを選択します。 Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関するページを参照してください。
@@ -107,14 +107,14 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
 
     ![Azure Stack Edge サービスを検索する](media/azure-stack-edge-deploy-prep/data-box-edge-sku.png)
 
-3. **[基本]** タブで、次の**プロジェクト情報**を入力または選択します。
+3. **[基本]** タブで、次の **プロジェクト情報** を入力または選択します。
     
     |設定  |[値]  |
     |---------|---------|
     |サブスクリプション    |事前に選択した内容に応じて自動的に設定されます。 サブスクリプションは、課金アカウントにリンクされます。 |
-    |Resource group  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/resource-group-overview.md)をご覧ください。     |
+    |Resource group  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/management/overview.md)をご覧ください。     |
 
-4. 次の**インスタンス情報**を入力または選択します。
+4. 次の **インスタンス情報** を入力または選択します。
 
     |設定  |値  |
     |---------|---------|

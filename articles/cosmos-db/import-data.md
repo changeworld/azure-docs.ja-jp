@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: dech
-ms.openlocfilehash: 7823c63cf618808cb1ab4400c39f4bc64b7af338
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 1cee4d2ad1bc7f362a045a5991624ec43521b8d2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427549"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341650"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>チュートリアル:データ移行ツールを使用して Azure Cosmos DB にデータを移行する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "94427549"
 
 * **[SQL API](./introduction.md)** - データ移行ツールで提供される任意のソース オプションを使用して、小規模のデータをインポートできます。 [大規模なデータをインポートするための移行方法については、こちらを参照してください](cosmosdb-migrationchoices.md)。
 * **[Table API](table-introduction.md)** - データ移行ツールまたは [AzCopy](table-import.md#migrate-data-by-using-azcopy) を使用してデータをインポートできます。 詳細については、「[Azure Cosmos DB Table API で使用するデータのインポート](table-import.md)」を参照してください。
-* **[Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md)** - データ移行ツールでは、Azure Cosmos DB の MongoDB 用 API はソースやターゲットとしてサポートされていません。 Azure Cosmos DB のコレクションに、またはコレクションから、データを移行する必要がある場合は、[MongoDB のデータを Azure Cosmos DB の MongoDB 用 API で Cosmos データベースに移行する方法](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)に関する記事を参照してください。 なお、データ移行ツールを使用して MongoDB から Azure Cosmos DB SQL API コレクションにデータをエクスポートし、SQL API で使用することは可能です。
+* **[Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md)** - データ移行ツールでは、Azure Cosmos DB の MongoDB 用 API はソースやターゲットとしてサポートされていません。 Azure Cosmos DB のコレクションに、またはコレクションから、データを移行する必要がある場合は、[MongoDB のデータを Azure Cosmos DB の MongoDB 用 API で Cosmos データベースに移行する方法](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)に関する記事を参照してください。 なお、データ移行ツールを使用して MongoDB から Azure Cosmos DB SQL API コレクションにデータをエクスポートし、SQL API で使用することは可能です。
 * **[Cassandra API](graph-introduction.md)** - Cassandra API アカウントのインポート ツールとしてデータ移行ツールはサポートされていません。 [Cassandra API にデータをインポートするための移行方法を参照してください](cosmosdb-migrationchoices.md#azure-cosmos-db-cassandra-api)
 * **[Gremlin API](graph-introduction.md)** - 現時点では、Gremlin API アカウントのインポート ツールとしてデータ移行ツールはサポートされていません。 [Gremlin API にデータをインポートするための移行方法を参照してください](cosmosdb-migrationchoices.md#other-apis) 
 
@@ -70,8 +70,8 @@ ms.locfileid: "94427549"
 
 移行ツールのソース コードは、GitHub の[このリポジトリ](https://github.com/azure/azure-documentdb-datamigrationtool)で入手できます。 ソリューションをローカルにダウンロードしてコンパイルするか、[プリコンパイル済みのバイナリをダウンロード](https://aka.ms/csdmtool)してから、次のいずれかを実行できます。
 
-* **Dtui.exe** : グラフィカル インターフェイス バージョンのツール
-* **Dt.exe** : コマンド ライン バージョンのツール
+* **Dtui.exe**: グラフィカル インターフェイス バージョンのツール
+* **Dt.exe**: コマンド ライン バージョンのツール
 
 ## <a name="select-data-source"></a>データ ソースの選択
 
@@ -100,7 +100,7 @@ JSON ファイル ソース インポーター オプションを使用すると
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>`
 
-* `<CosmosDB Endpoint>` はエンドポイント URI です。 この値は Azure portal から取得できます。 Azure Cosmos アカウントに移動します。 **[概要]** ウィンドウを開き、 **URI** 値をコピーします。
+* `<CosmosDB Endpoint>` はエンドポイント URI です。 この値は Azure portal から取得できます。 Azure Cosmos アカウントに移動します。 **[概要]** ウィンドウを開き、**URI** 値をコピーします。
 * `<AccountKey>` は "パスワード" または **プライマリ キー** です。 この値は Azure portal から取得できます。 Azure Cosmos アカウントに移動します。 **[接続文字列]** または **[キー]** ウィンドウを開き、"パスワード" または **プライマリ キー** 値をコピーします。
 * `<CosmosDB Database>` は CosmosDB データベース名です。
 
@@ -131,7 +131,7 @@ dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t
 ## <a name="import-from-mongodb"></a><a id="MongoDB"></a>MongoDB からのインポート
 
 > [!IMPORTANT]
-> Azure Cosmos DB の MongoDB 用 API で構成されている Cosmos アカウントにインポートする場合は、こちらの[指示](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)に従ってください。
+> Azure Cosmos DB の MongoDB 用 API で構成されている Cosmos アカウントにインポートする場合は、こちらの[指示](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)に従ってください。
 
 MongoDB ソース インポーター オプションを使用すると、単一の MongoDB コレクションからインポートすることができます。必要に応じて、クエリを使用してドキュメントをフィルター処理したり、プロジェクションを使用してドキュメント構造を変更したりすることもできます。  
 
@@ -159,7 +159,7 @@ dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<po
 ## <a name="import-mongodb-export-files"></a><a id="MongoDBExport"></a>MongoDB エクスポート ファイルのインポート
 
 > [!IMPORTANT]
-> MongoDB 対応の Azure Cosmos DB アカウントにインポートする場合は、こちらの[指示](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)に従ってください。
+> MongoDB 対応の Azure Cosmos DB アカウントにインポートする場合は、こちらの[指示](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)に従ってください。
 
 MongoDB エクスポート JSON ファイル ソース インポーター オプションを使用して、mongoexport ユーティリティによって生成された 1 つ以上の JSON ファイルをインポートできます。  
 
@@ -386,7 +386,7 @@ Azure Cosmos DB アカウントの接続文字列は、「[Azure Cosmos DB ア�
 > [!NOTE]
 > [確認] を使用して、[接続文字列] フィールドで指定した Azure Cosmos DB インスタンスにアクセスできることを確認してください。
 
-1 つのコレクションにインポートするには、データのインポート元のコレクション名を入力し、[追加] ボタンをクリックします。 複数のコレクションにインポートするには、各コレクション名を個別に入力するか、次の構文を使用して複数のコレクションを指定します。 *collection_prefix* [<開始インデックス> - <終了インデックス>]。 前述の構文を使用して複数のコレクションを指定する場合は、次のガイドラインに留意してください。
+1 つのコレクションにインポートするには、データのインポート元のコレクション名を入力し、[追加] ボタンをクリックします。 複数のコレクションにインポートするには、各コレクション名を個別に入力するか、次の構文を使用して複数のコレクションを指定します。*collection_prefix*[<開始インデックス> - <終了インデックス>]。 前述の構文を使用して複数のコレクションを指定する場合は、次のガイドラインに留意してください。
 
 1. 範囲名のパターンでサポートされるのは整数のみです。 たとえば、collection[0-3] と指定すると、collection0、collection1、collection2、collection3 が作成されます。
 2. 省略構文を使用することができます。collection[3] は、手順 1. で説明したのと同じコレクションのセットを生成します。
@@ -445,7 +445,7 @@ Azure Cosmos DB アカウントの接続文字列は、[Azure Cosmos DB アカ�
 > [!NOTE]
 > [確認] を使用して、[接続文字列] フィールドで指定した Azure Cosmos DB インスタンスにアクセスできることを確認してください。
 
-1 つのコレクションにインポートするには、データのインポート先となるコレクションの名前を入力し、[追加] ボタンをクリックします。 複数のコレクションにインポートする場合は、各コレクションの名前を個別に入力してください。 または、 *collection_prefix* [<開始インデックス> - <終了インデックス>] という構文を使用して複数のコレクションを指定することもできます。 前述の構文を使用して複数のコレクションを指定する場合は、次のガイドラインに留意してください。
+1 つのコレクションにインポートするには、データのインポート先となるコレクションの名前を入力し、[追加] ボタンをクリックします。 複数のコレクションにインポートする場合は、各コレクションの名前を個別に入力してください。 または、*collection_prefix*[<開始インデックス> - <終了インデックス>] という構文を使用して複数のコレクションを指定することもできます。 前述の構文を使用して複数のコレクションを指定する場合は、次のガイドラインに留意してください。
 
 1. 範囲名のパターンでサポートされるのは整数のみです。 たとえば、collection[0-3] と指定すると、collection0、collection1、collection2、collection3 が作成されます。
 2. 省略構文を使用することができます。collection[3] は、手順 1. で説明したのと同じコレクションのセットを生成します。

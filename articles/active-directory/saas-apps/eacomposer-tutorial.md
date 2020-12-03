@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: b137fa2123480ae47132164073643f414eb6c946
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ab7263cd2b4988a83d8eae67264705dd09f28456
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548368"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180950"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eacomposer"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と EAComposer の統合
 
@@ -37,8 +37,8 @@ ms.locfileid: "92548368"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* EAComposer では、 **SP** Initiated SSO がサポートされます
-* EAComposer では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* EAComposer では、**SP** Initiated SSO がサポートされます
+* EAComposer では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-eacomposer-from-the-gallery"></a>ギャラリーから EAComposer を追加する
 
@@ -48,7 +48,7 @@ Azure AD への EAComposer の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **EAComposer** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**EAComposer**」と入力します。
 1. 結果のパネルから **[EAComposer]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -116,7 +116,7 @@ EAComposer で Azure AD SSO を構成してテストするには、次の手順�
 
 ## <a name="configure-eacomposer-sso"></a>EAComposer の SSO の構成
 
-**EAComposer** 側でシングル サインオンを構成するには、 **サムプリントの値** と Azure portal からコピーした適切な URL を [EAComposer サポート チーム](mailto:support@eacomposer.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**EAComposer** 側でシングル サインオンを構成するには、**サムプリントの値** と Azure portal からコピーした適切な URL を [EAComposer サポート チーム](mailto:support@eacomposer.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-eacomposer-test-user"></a>EAComposer のテスト ユーザーの作成
 
@@ -130,11 +130,9 @@ EAComposer で Azure AD SSO を構成してテストするには、次の手順�
 
 2. EAComposer のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネル上で [EAComposer] タイルをクリックすると、EAComposer サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+3. Microsoft アクセス パネルを使用することができます。 アクセス パネル上で [EAComposer] タイルをクリックすると、EAComposer サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-EAComposer を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+EAComposer を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
