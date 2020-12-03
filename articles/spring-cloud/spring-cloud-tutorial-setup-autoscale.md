@@ -1,20 +1,20 @@
 ---
-title: チュートリアル - マイクロサービス アプリケーションの自動スケーリングを設定する
+title: マイクロサービス アプリケーションの自動スケーリングを設定する
 description: この記事では、Microsoft Azure portal または Azure CLI を使用してアプリケーションの自動スケーリングの設定をセットアップする方法について説明します。
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 6023d1ebd27ebaccacfce85ce0f49b7ef87e17ad
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d59d5de0d98380be215747c7daa33721fcebf33c
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742673"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533827"
 ---
-# <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>チュートリアル:マイクロサービス アプリケーションの自動スケーリングを設定する
+# <a name="set-up-autoscale-for-microservice-applications"></a>マイクロサービス アプリケーションの自動スケーリングを設定する
 
 **この記事の適用対象:** ✔️ Java ✔️ C#
 
@@ -34,7 +34,7 @@ ms.locfileid: "92742673"
 2. Azure Spring Cloud の **[概要]** ページに移動します。
 3. サービスが含まれるリソース グループを選択します。
 4. 左側のナビゲーション ペインのメニューにある **[設定]** の **[アプリ]** タブを選択します。
-5. 自動スケーリングを設定するアプリケーションを選択します。 この例では、 **demo** という名前のアプリケーションを選択します。 アプリケーションの **[概要]** ページが表示されます。
+5. 自動スケーリングを設定するアプリケーションを選択します。 この例では、**demo** という名前のアプリケーションを選択します。 アプリケーションの **[概要]** ページが表示されます。
 6. 左側のナビゲーション ペインのメニューにある **[設定]** の **[スケールアウト]** タブに移動します。
 7. 自動スケーリングを設定するデプロイを選択します。 次のセクションで示す自動スケーリングのオプションが表示されます。
 
