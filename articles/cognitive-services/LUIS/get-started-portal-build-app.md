@@ -4,29 +4,29 @@ description: このクイックスタートでは、アプリの基本パーツ�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/19/2020
-ms.openlocfilehash: 74866c65111fae9e6fb3b79d9b59819b14b03c16
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/30/2020
+ms.openlocfilehash: a5443dce9fc8bc028232f66f45b537a46858f35a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131474"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436676"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータルで新しいアプリを作成する
 
-このクイック スタートでは、LUIS ポータルで新しいアプリを構築します。 まず、アプリ、 **意図** 、および **エンティティ** の基本パーツを作成します。 次いで、インタラクティブ テスト パネルにユーザーの発話例を入力し、予測される意図を取得して、アプリをテストします。
+このクイック スタートでは、LUIS ポータルで新しいアプリを構築します。 まず、アプリ、**意図**、および **エンティティ** の基本パーツを作成します。 次いで、インタラクティブ テスト パネルにユーザーの発話例を入力し、予測される意図を取得して、アプリをテストします。
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-an-app"></a>アプリを作成する
 
-アプリケーションを作成するには、 **[+ 新しいアプリ]** をクリックします。 
+アプリケーションを作成するには、 **[+ 新しいアプリ]** を選択します。 
 
 表示されたウィンドウで、次の情報を入力します。
 
 |名前  |説明  |
 |---------|---------|
-|名前     | アプリの名前。 たとえば、"home automation" など。 必須。        |
+|名前     | アプリの名前。 たとえば、"home automation"。 必須。        |
 |カルチャ     | アプリによって認識され、話される言語。 必須。   |
 |説明 | アプリの説明。 省略可能。
 |予測リソース | クエリを受け取る予測リソース。 省略可能。 |
@@ -46,7 +46,7 @@ LUIS アプリを作成したら、意図を作成する必要があります。
 
 アプリの 2 つの _目的_ は次の意図に対応しています。
 
-|Intent|ユーザーから発せられたテキストの例<br>" _発話_ " と呼ばれる|
+|Intent|ユーザーから発せられたテキストの例<br>"_発話_" と呼ばれる|
 |--|--|
 |ApplyForJob|`I want to apply for the new software engineering position in Cairo.`|
 |FindForm|`Where is the job transfer form hrf-123456?`|
@@ -125,7 +125,7 @@ LUIS アプリを作成したら、意図を作成する必要があります。
    |`Barking dogs are annoying`|
    |`Penguins in the ocean`|
 
-   このアプリの場合、これらの発話の例は、ドメイン外です。 ドメインに動物または海洋が含まれる場合、 **None** 意図には別の発話の例を使用する必要があります。
+   このアプリの場合、これらの発話の例は、ドメイン外です。 ドメインに動物または海洋が含まれる場合、**None** 意図には別の発話の例を使用する必要があります。
 
 ## <a name="train-the-app"></a>アプリをトレーニングする
 
@@ -133,7 +133,7 @@ LUIS アプリを作成したら、意図を作成する必要があります。
 
 ## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>発話の例内の正規表現エンティティを見る
 
-1. 左側のメニューから **[意図]** を選択して、エンティティが **FindForm** 意図内にあることを確認します。 その後、 **FindForm** 意図を選択します。
+1. 左側のメニューから **[意図]** を選択して、エンティティが **FindForm** 意図内にあることを確認します。 その後、**FindForm** 意図を選択します。
 
    エンティティは、発話の例の中の出現箇所でマークされます。
 

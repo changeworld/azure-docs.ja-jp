@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 4cc345eda8a8d51fb61cbbbd5cf0bf84633ccf0b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e25469e23358ade32e050bed0818338dc290e71f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676098"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451385"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL Database と Azure SQL Managed Instance の接続とクエリに関する記事
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "92676098"
 | クイック スタート | 説明 |
 |---|---|
 |[SQL Server Management Studio](connect-query-ssms.md)|このクイック スタートでは、SSMS を使用してデータベースに接続し、Transact-SQL ステートメントを使用してデータベース内のデータに対してクエリ、挿入、更新、削除を実行する方法について説明します。|
-|[Azure Data Studio](/sql/azure-data-studio/quickstart-sql-database?toc=%252fazure%252fsql-database%252ftoc.json)|このクイック スタートでは、Azure Data Studio を使用してデータベースに接続した後、Transact-SQL (T-SQL) ステートメントを使用して、Azure Data Studio チュートリアルで使用される TutorialDB を作成する方法を示します。|
+|[Azure Data Studio](/sql/azure-data-studio/quickstart-sql-database?toc=%2fazure%2fsql-database%2ftoc.json)|このクイック スタートでは、Azure Data Studio を使用してデータベースに接続した後、Transact-SQL (T-SQL) ステートメントを使用して、Azure Data Studio チュートリアルで使用される TutorialDB を作成する方法を示します。|
 |[Azure Portal](connect-query-portal.md)|このクイック スタートでは、クエリ エディターを使用してデータベース (Azure SQL Database のみ) に接続し、Transact-SQL ステートメントを使用してデータベース内のデータに対してクエリ、挿入、更新、および削除を実行する方法について説明します。|
 |[Visual Studio Code](connect-query-vscode.md)|このクイック スタートでは、Visual Studio Code を使ってデータベースに接続し、Transact-SQL ステートメントを使ってデータベース内のデータに対してクエリ、挿入、更新、削除を実行する方法について説明します。|
 |[Visual Studio での .NET](connect-query-dotnet-visual-studio.md)|このクイックスタートでは、Visual Studio で .NET Framework を使って C# プログラムを作成してデータベースに接続し、Transact-SQL ステートメントを使用してデータに対してクエリを実行する方法について説明します。|
@@ -60,7 +60,7 @@ Microsoft 以外のドライバーは、既定では TLS を使用しない場�
 
 さまざまなライブラリとフレームワークを使用して、Azure SQL Database または Azure SQL Managed Instance に接続できます。 C#、Java、Node.js、PHP、Python などのプログラミング言語を手軽に始めるには、[開始にあたってのチュートリアル](https://aka.ms/sqldev)をご覧ください。 次に Linux、Windows、または macOS 上の Docker で SQL Server を使用してアプリを構築します。
 
-次の表は、クライアント アプリケーションがさまざまな言語から SQL Server への接続に使用できる接続ライブラリや *ドライバー* を示しています。クライアント アプリケーションはオンプレミスおよびクラウドで実行される SQL Server と共にこれらを使用できます。 Linux、Windows、または Docker でこれらを使用して、Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse Analytics (旧称 SQL Data Warehouse) に接続できます。
+次の表は、クライアント アプリケーションがさまざまな言語から SQL Server への接続に使用できる接続ライブラリや *ドライバー* を示しています。クライアント アプリケーションはオンプレミスおよびクラウドで実行される SQL Server と共にこれらを使用できます。 Linux、Windows、または Docker でこれらを使用して、Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse Analytics に接続できます。
 
 | Language | プラットフォーム | その他のリソース | ダウンロード | はじめに |
 | :-- | :-- | :-- | :-- | :-- |

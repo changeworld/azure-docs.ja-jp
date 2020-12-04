@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 37239f9c7857a8e72bb293cfa3caeb429962a542
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 095f2c3ed17042bb616fb091d1af52a64c913709
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363342"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460504"
 ---
 # <a name="getting-started"></a>作業の開始
 
@@ -37,13 +37,13 @@ ms.locfileid: "94363342"
 
 アプリケーションまたはワークロードで大規模なデータセットが使用されている場合、プライベート ネットワークが必要な場合、またはクラウドに接続できない場合は、クラウド サービスと通信できない可能性があります。 このような状況で、コンテナー化された Cognitive Services には次のような利点があります。
 
-* **低い接続性** :コンテナー化された Cognitive Services は、クラウド内とクラウド外の両方のコンピューティング環境にデプロイできます。 アプリケーションがクラウドに接続できない場合、コンテナー化された Cognitive Services をアプリケーションにデプロイすることを検討してください。
+* **低い接続性**:コンテナー化された Cognitive Services は、クラウド内とクラウド外の両方のコンピューティング環境にデプロイできます。 アプリケーションがクラウドに接続できない場合、コンテナー化された Cognitive Services をアプリケーションにデプロイすることを検討してください。
 
-* **低待機時間** :コンテナー化されたサービスはクラウドとの間のラウンドトリップ通信を必要としないため、応答が返されるときの待機時間が非常に短くなります。
+* **低待機時間**:コンテナー化されたサービスはクラウドとの間のラウンドトリップ通信を必要としないため、応答が返されるときの待機時間が非常に短くなります。
 
-* **プライバシーとデータ セキュリティ** :コンテナー化されたサービスをプライベート ネットワークに展開して、機密データがネットワークから出ないようにすることができます。
+* **プライバシーとデータ セキュリティ**:コンテナー化されたサービスをプライベート ネットワークに展開して、機密データがネットワークから出ないようにすることができます。
 
-* **高いスケーラビリティ** :コンテナー化されたサービスには "レート制限" がなく、ユーザーが管理するコンピューター上で実行されます。 そのため、より大規模なワークロードを処理するために、Cognitive Services を際限なく拡張できます。
+* **高いスケーラビリティ**:コンテナー化されたサービスには "レート制限" がなく、ユーザーが管理するコンピューター上で実行されます。 そのため、より大規模なワークロードを処理するために、Cognitive Services を際限なく拡張できます。
 
 コンテナー化された Cognitive Service を作成するには、[こちらガイド](../cognitive-services-container-support.md?tabs=luis)に従ってください。
 
@@ -65,14 +65,14 @@ Azure Databricks は、Apache Spark ベースの分析プラットフォーム�
     * ライブラリをクラスターにインストールします  
       <img src="media/install-library.png" alt="Install Library on Cluster" width="50%"/>
 
-### <a name="synapse-analytics-optional"></a>Synapse Analytics (オプション)
+### <a name="azure-synapse-analytics-optional"></a>Azure Synapse Analytics (オプション)
 
-必要に応じて、Synapse Analytics を使用して Spark クラスターを作成できます。 Azure Synapse Analytics では、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられています。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを大規模に使用しながら、各自の条件で自由にデータのクエリを実行できます。 Synapse Analytics の使用を開始するには、次の手順を実行します。
+必要に応じて、Synapse Analytics を使用して Spark クラスターを作成できます。 Azure Synapse Analytics では、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられています。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを大規模に使用しながら、各自の条件で自由にデータのクエリを実行できます。 Azure Synapse Analytics の使用を開始するには、次の手順を行います。
 
 1. [Synapse ワークスペースを作成する (プレビュー)](../../synapse-analytics/quickstart-create-workspace.md)。
 1. [Azure portal を使用して、新しいサーバーレス Apache Spark プール (プレビュー) を作成する](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)。
 
-Synapse Analytics では、ビッグ データ向けの Cognitive Services が既定でインストールされています。
+Azure Synapse Analytics には、ビッグ データ向けの Cognitive Services が既定でインストールされています。
 
 ### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 

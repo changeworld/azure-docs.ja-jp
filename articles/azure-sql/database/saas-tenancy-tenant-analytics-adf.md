@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 97dc53c9870112dc5d547ab477e54f15f802cc05
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: dc47c996748b126841cbeff1ea3f6f18f423951f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310652"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457650"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Azure SQL Database、Azure Synapse Analytics、Data Factory、Power BI による SaaS 分析を調べる
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "93310652"
 このチュートリアルでは、分析シナリオについて最初から最後まで説明します。 このシナリオでは、テナント データを分析することでソフトウェア ベンダーのスマートな意思決定能力がどのように向上するのかを説明します。 各テナント データベースから抽出されたデータを使用した分析によって、テナントの動作 (Wingtip Tickets SaaS サンプル アプリケーションの使用など) に関する洞察を獲得します。 このシナリオには、次の 3 つの手順が含まれます。
 
 1. 各テナント データベースから分析ストア (この場合は専用 SQL プール) に **データを抽出** します。
-2. 分析処理のために、 **抽出されたデータを最適化** します。
+2. 分析処理のために、**抽出されたデータを最適化** します。
 3. **ビジネス インテリジェンス** ツールを使用して、意思決定を支援する有益な洞察を引き出します。
 
 このチュートリアルで学習する内容は次のとおりです。
@@ -45,7 +45,7 @@ SaaS アプリケーションは、クラウドに膨大な量のテナント �
 
 すべてのデータが 1 つのマルチテナント データベースに存在する場合は、すべてのテナントのデータに簡単にアクセスできます。 しかし、何千ものデータベースに分散している場合、アクセスは複雑になります。 この複雑さを軽減する 1 つの方法として、クエリ用の分析データベースまたはデータ ウェアハウスにデータを抽出します。
 
-このチュートリアルでは、Wingtip Tickets アプリケーションのエンド ツー エンドの分析シナリオを紹介します。 最初に、[Azure Data Factory (ADF)](../../data-factory/introduction.md) をオーケストレーション ツールとして使って、各テナント データベースからチケットの販売および関連するデータを抽出します。 このデータは、分析ストアのステージング テーブルに読み込まれます。 分析ストアには、SQL Database または専用 SQL プールを使用できます。 このチュートリアルでは、分析ストアとして [Azure Synapse Analytics (旧称 SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) を使います。
+このチュートリアルでは、Wingtip Tickets アプリケーションのエンド ツー エンドの分析シナリオを紹介します。 最初に、[Azure Data Factory (ADF)](../../data-factory/introduction.md) をオーケストレーション ツールとして使って、各テナント データベースからチケットの販売および関連するデータを抽出します。 このデータは、分析ストアのステージング テーブルに読み込まれます。 分析ストアには、SQL Database または専用 SQL プールを使用できます。 このチュートリアルでは、分析ストアとして [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) を使用します。
 
 次に、抽出されたデータを変換して一連の[スター スキーマ](https://www.wikipedia.org/wiki/Star_schema) テーブルに読み込みます。 これらのテーブルは、中央のファクト テーブルと関連するディメンション テーブルで構成されます。
 
@@ -73,31 +73,31 @@ SaaS アプリケーションは、クラウドに膨大な量のテナント �
 - Wingtip Tickets SaaS Database Per Tenant アプリケーションをデプロイします。 5 分未満でデプロイする方法については、[Wingtip SaaS アプリケーションのデプロイと確認](./saas-dbpertenant-get-started-deploy.md)に関するページを参照してください。
 - Wingtip Tickets SaaS Database Per Tenant のスクリプトとアプリケーション [ソース コード](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/)を GitHub からダウンロードします。 ダウンロードの手順を参照してください。 内容を抽出する前に、必ず *ZIP ファイルのブロックを解除* してください。
 - Power BI Desktop をインストールします。 [Power BI Desktop をダウンロードします](https://powerbi.microsoft.com/downloads/)。
-- 追加のテナントのバッチをプロビジョニングします。 [**テナントのプロビジョニングに関するチュートリアル**](./saas-dbpertenant-provision-and-catalog.md)をご覧ください。
+- 追加のテナントのバッチをプロビジョニングします。[**テナントのプロビジョニングに関するチュートリアル**](./saas-dbpertenant-provision-and-catalog.md)をご覧ください。
 
 ### <a name="create-data-for-the-demo"></a>デモ用のデータを作成する
 
-このチュートリアルでは、チケット販売データの分析を調べます。 この手順では、すべてのテナントのチケット データを生成します。 後の手順で、分析用にこのデータを抽出します。 ある程度の範囲の異なるチケット購入パターンが示されるのに十分なデータがあるように、(前述のように) " _テナントのバッチをプロビジョニングしてください_ "。
+このチュートリアルでは、チケット販売データの分析を調べます。 この手順では、すべてのテナントのチケット データを生成します。 後の手順で、分析用にこのデータを抽出します。 ある程度の範囲の異なるチケット購入パターンが示されるのに十分なデータがあるように、(前述のように) "_テナントのバッチをプロビジョニングしてください_"。
 
 1. PowerShell ISE で *…\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1* を開き、次の値を設定します。
-    - **$DemoScenario** = **1** : すべての会場でイベントのチケットを購入
+    - **$DemoScenario** = **1**: すべての会場でイベントのチケットを購入
 2. **F5** キーを押してスクリプトを実行し、すべての会場のチケット購入履歴を作成します。 20 のテナントについて、スクリプトは数万件のチケットを生成し、10 分以上かかる場合があります。
 
 ### <a name="deploy-azure-synapse-analytics-data-factory-and-blob-storage"></a>Azure Synapse Analytics、Data Factory、Blob Storage をデプロイする
 
-Wingtip Tickets アプリでは、テナントのトランザクション データは多くのデータベースに分散されます。 Azure Data Factory (ADF) を使って、データ ウェアハウスへのこのデータの抽出、読み込み、変換 (ELT) を調整します。 最も効率的に Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを読み込むため、ADF は中間 BLOB ファイルにデータを抽出した後、[PolyBase](../../synapse-analytics/sql-data-warehouse/design-elt-data-loading.md) を使ってデータ ウェアハウスにデータを読み込みます。
+Wingtip Tickets アプリでは、テナントのトランザクション データは多くのデータベースに分散されます。 Azure Data Factory (ADF) を使って、データ ウェアハウスへのこのデータの抽出、読み込み、変換 (ELT) を調整します。 最も効率的に Azure Synapse Analytics にデータを読み込むため、ADF は中間 BLOB ファイルにデータを抽出した後、[PolyBase](../../synapse-analytics/sql-data-warehouse/design-elt-data-loading.md) を使ってデータ ウェアハウスにデータを読み込みます。
 
-この手順において、チュートリアルで使われるその他のリソースをデプロイします。つまり、 _tenantanalytics_ という名前の専用 SQL プール、 _dbtodwload-\<user\>_ という名前の Azure Data Factory、 _wingtipstaging\<user\>_ という名前の Azure ストレージ アカウントです。 ストレージ アカウントは、抽出されたデータ ファイルを、データ ウェアハウスに読み込む前に、BLOB として一時的に保持するために使われます。 この手順では、データ ウェアハウス スキーマもデプロイし、ELT プロセスを調整する ADF パイプラインを定義します。
+この手順において、チュートリアルで使われるその他のリソースをデプロイします。つまり、_tenantanalytics_ という名前の専用 SQL プール、_dbtodwload-\<user\>_ という名前の Azure Data Factory、_wingtipstaging\<user\>_ という名前の Azure ストレージ アカウントです。 ストレージ アカウントは、抽出されたデータ ファイルを、データ ウェアハウスに読み込む前に、BLOB として一時的に保持するために使われます。 この手順では、データ ウェアハウス スキーマもデプロイし、ELT プロセスを調整する ADF パイプラインを定義します。
 
 1. PowerShell ISE で *…\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1* を開き、次のように設定します。
-    - **$DemoScenario** = **2** : テナント分析データ ウェアハウス、BLOB ストレージ、データ ファクトリをデプロイする
+    - **$DemoScenario** = **2**: テナント分析データ ウェアハウス、BLOB ストレージ、データ ファクトリをデプロイする
 1. **F5** キーを押してデモ スクリプトを実行し、Azure リソースをデプロイします。
 
 次に、デプロイした Azure リソースを確認します。
 
 #### <a name="tenant-databases-and-analytics-store"></a>テナント データベースと分析ストア
 
-[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) を使って、 **tenants1-dpt-&lt;ユーザー&gt;** および **catalog-dpt-&lt;ユーザー&gt;** サーバーに接続します。 &lt;ユーザー&gt; は、アプリをデプロイしたときに使った値に置き換えます。 ログインには *developer* を、パスワードには *P\@ssword1* を使います。 詳しいガイダンスについては、[入門チュートリアル](./saas-dbpertenant-wingtip-app-overview.md)をご覧ください。
+[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) を使って、**tenants1-dpt-&lt;ユーザー&gt;** および **catalog-dpt-&lt;ユーザー&gt;** サーバーに接続します。 &lt;ユーザー&gt; は、アプリをデプロイしたときに使った値に置き換えます。 ログインには *developer* を、パスワードには *P\@ssword1* を使います。 詳しいガイダンスについては、[入門チュートリアル](./saas-dbpertenant-wingtip-app-overview.md)をご覧ください。
 
 ![SSMS から SQL Database に接続する](./media/saas-tenancy-tenant-analytics-adf/ssmsSignIn.JPG)
 
@@ -107,8 +107,8 @@ Wingtip Tickets アプリでは、テナントのトランザクション デー
 1. [データベース] ノードを展開し、テナント データベースの一覧を表示します。
 1. *catalog-dpt-&lt;ユーザー&gt;* サーバーを展開します。
 1. 次のオブジェクトを含む分析ストアが表示されることを確認します。
-    1. テーブル **raw_Tickets** 、 **raw_Customers** 、 **raw_Events** 、 **raw_Venues** は、テナント データベースから抽出された生のデータを保持します。
-    1. スター スキーマ テーブルは、 **fact_Tickets** 、 **dim_Customers** 、 **dim_Venues** 、 **dim_Events** 、 **dim_Dates** です。
+    1. テーブル **raw_Tickets**、**raw_Customers**、**raw_Events**、**raw_Venues** は、テナント データベースから抽出された生のデータを保持します。
+    1. スター スキーマ テーブルは、**fact_Tickets**、**dim_Customers**、**dim_Venues**、**dim_Events**、**dim_Dates** です。
     1. ストアド プロシージャ **sp_transformExtractedData** は、データを変換してスター スキーマ テーブルに読み込むために使われます。
 
 ![オブジェクト エクスプローラーを示すスクリーンショット。テーブルが展開され、さまざまなデータベース オブジェクトが表示されています。](./media/saas-tenancy-tenant-analytics-adf/DWtables.JPG)
@@ -126,25 +126,25 @@ Wingtip Tickets アプリでは、テナントのトランザクション デー
 
 #### <a name="azure-data-factory-adf"></a>Azure Data Factory (ADF)
 
-[Azure portal](https://ms.portal.azure.com) のリソース グループで、 _dbtodwload-\<user\>_ という名前の Azure Data Factory が追加されていることを確認します。
+[Azure portal](https://ms.portal.azure.com) のリソース グループで、_dbtodwload-\<user\>_ という名前の Azure Data Factory が追加されていることを確認します。
 
  ![adf_portal](./media/saas-tenancy-tenant-analytics-adf/adf-data-factory-portal.png)
 
 このセクションで、作成されたデータ ファクトリを調べます。
 以下の手順でデータ ファクトリを起動します。
 
-1. ポータルで、 **dbtodwload-\<user\>** という名前のデータ ファクトリをクリックします。
+1. ポータルで、**dbtodwload-\<user\>** という名前のデータ ファクトリをクリックします。
 2. **[作成と監視]** タイルをクリックして、別のタブで Data Factory デザイナーを起動します。
 
 ## <a name="extract-load-and-transform-data"></a>データの抽出、読み込み、変換
 
-Azure Data Factory は、データの抽出、読み込み、変換の調整に使われます。 このチュートリアルでは、 **rawTickets** 、 **rawCustomers** 、 **rawEvents** 、 **rawVenues** の各テナント データベースからの 4 つの異なる SQL ビューからデータを抽出します。 これらのビューには会場 ID が含まれるので、データ ウェアハウス内の各会場からのデータを識別できます。 データは、データ ウェアハウス内の対応するステージング テーブル **raw_Tickets** 、 **raw_customers** 、 **raw_Events** 、 **raw_Venue** に読み込まれます。 その後、ストアド プロシージャが生データを変換し、スター スキーマ テーブル **fact_Tickets** 、 **dim_Customers** 、 **dim_Venues** 、 **dim_Events** 、および **dim_Dates** を設定します。
+Azure Data Factory は、データの抽出、読み込み、変換の調整に使われます。 このチュートリアルでは、**rawTickets**、**rawCustomers**、**rawEvents**、**rawVenues** の各テナント データベースからの 4 つの異なる SQL ビューからデータを抽出します。 これらのビューには会場 ID が含まれるので、データ ウェアハウス内の各会場からのデータを識別できます。 データは、データ ウェアハウス内の対応するステージング テーブル **raw_Tickets**、**raw_customers**、**raw_Events**、**raw_Venue** に読み込まれます。 その後、ストアド プロシージャが生データを変換し、スター スキーマ テーブル **fact_Tickets**、**dim_Customers**、**dim_Venues**、**dim_Events**、および **dim_Dates** を設定します。
 
 前のセクションでは、データ ファクトリを含む、必要な Azure リソースをデプロイして初期化しました。 デプロイされたデータ ファクトリには、テナント データの抽出、読み込み、変換に必要なパイプライン、データセット、リンクされたサービスなどが含まれます。 これらのオブジェクトをさらに詳しく調べた後、パイプラインをトリガーして、テナント データベースからデータ ウェアハウスにデータを移動します。
 
 ### <a name="data-factory-pipeline-overview"></a>Data Factory パイプラインの概要
 
-このセクションでは、データ ファクトリに作成されたオブジェクトを調べます。 次の図では、このチュートリアルで使われる ADF パイプラインの全体的なワークフローについて説明します。 パイプラインを調べるのは後にして、先に結果を見たい場合は、次の「 **パイプラインの実行をトリガーする** 」に進んでください。
+このセクションでは、データ ファクトリに作成されたオブジェクトを調べます。 次の図では、このチュートリアルで使われる ADF パイプラインの全体的なワークフローについて説明します。 パイプラインを調べるのは後にして、先に結果を見たい場合は、次の「**パイプラインの実行をトリガーする**」に進んでください。
 
 ![adf_overview](./media/saas-tenancy-tenant-analytics-adf/adf-data-factory.PNG)
 
@@ -153,11 +153,11 @@ Azure Data Factory は、データの抽出、読み込み、変換の調整に�
 
 入れ子になった 3 つのパイプラインは、SQLDBToDW、DBCopy、および TableCopy です。
 
-**パイプライン 1 - SQLDBToDW** は、カタログ データベース (テーブル名: [__ShardManagement].[ShardsGlobal]) に格納されているテナント データベースの名前を調べて、テナント データベースごとに、 **DBCopy** パイプラインを実行します。 完了すると、提供されている **sp_TransformExtractedData** ストアド プロシージャのスキーマが実行されます。 このストアド プロシージャは、ステージング テーブルに読み込まれたデータを変換し、スター スキーマのテーブルに設定します。
+**パイプライン 1 - SQLDBToDW** は、カタログ データベース (テーブル名: [__ShardManagement].[ShardsGlobal]) に格納されているテナント データベースの名前を調べて、テナント データベースごとに、**DBCopy** パイプラインを実行します。 完了すると、提供されている **sp_TransformExtractedData** ストアド プロシージャのスキーマが実行されます。 このストアド プロシージャは、ステージング テーブルに読み込まれたデータを変換し、スター スキーマのテーブルに設定します。
 
-**パイプライン 2 - DBCopy** は、BLOB ストレージに格納されている構成ファイルから、ソース テーブルと列の名前を調べます。  その後、 **TableCopy** パイプラインが TicketFacts、CustomerFacts、EventFacts、および VenueFacts の 4 つの各テーブルに対して実行されます。 **[Foreach](../../data-factory/control-flow-for-each-activity.md)** アクティビティが、20 個のデータベースすべてに対して並列に実行します。 ADF では、最大 20 のループ イテレーションが並列に実行できます。 データベースを増やす場合は、複数のパイプラインを作成することを検討します。
+**パイプライン 2 - DBCopy** は、BLOB ストレージに格納されている構成ファイルから、ソース テーブルと列の名前を調べます。  その後、**TableCopy** パイプラインが TicketFacts、CustomerFacts、EventFacts、および VenueFacts の 4 つの各テーブルに対して実行されます。 **[Foreach](../../data-factory/control-flow-for-each-activity.md)** アクティビティが、20 個のデータベースすべてに対して並列に実行します。 ADF では、最大 20 のループ イテレーションが並列に実行できます。 データベースを増やす場合は、複数のパイプラインを作成することを検討します。
 
-**パイプライン 3 - TableCopy** は、SQL Database の行バージョン番号 ( _rowversion_ ) を使って、変更または更新された行を識別します。 このアクティビティは、ソース テーブルから行を抽出するために開始と終了の行バージョンを検索します。 各テナント データベースに格納されている **CopyTracker** テーブルは、各実行において各ソース テーブルから抽出された最後の行を追跡します。 新しい行または変更された行は、データ ウェアハウス内の対応するステージング テーブル **raw_Tickets** 、 **raw_Customers** 、 **raw_Venues** 、 **raw_Events** にコピーされます。 最後に、次の抽出の最初の行バージョンとして使われるために、最後の行バージョンが **CopyTracker** テーブルに保存されます。
+**パイプライン 3 - TableCopy** は、SQL Database の行バージョン番号 (_rowversion_) を使って、変更または更新された行を識別します。 このアクティビティは、ソース テーブルから行を抽出するために開始と終了の行バージョンを検索します。 各テナント データベースに格納されている **CopyTracker** テーブルは、各実行において各ソース テーブルから抽出された最後の行を追跡します。 新しい行または変更された行は、データ ウェアハウス内の対応するステージング テーブル **raw_Tickets**、**raw_Customers**、**raw_Venues**、**raw_Events** にコピーされます。 最後に、次の抽出の最初の行バージョンとして使われるために、最後の行バージョンが **CopyTracker** テーブルに保存されます。
 
 また、3 つのリンクされたサービスがパラメーター化されており、データ ファクトリをソース SQL Database、ターゲット専用 SQL プール、および中間 Blob Storage にそれぞれリンクしています。 **[作成者]** タブで **[接続]** をクリックして、次の図のように、リンクされたサービスを調べます。
 
@@ -167,7 +167,7 @@ Azure Data Factory は、データの抽出、読み込み、変換の調整に�
   
 ### <a name="data-warehouse-pattern-overview"></a>データ ウェアハウスのパターンの概要
 
-Azure Synapse (旧称 SQL Data Warehouse) は、テナント データに対して集計を実行するための分析ストアとして使われます。 このサンプルでは、データ ウェアハウスにデータを読み込むには PolyBase が使用されます。 生データが読み込まれるステージング テーブルには、スター スキーマ テーブルに変換された行を追跡するための ID 列があります。 次の図は、読み込みパターンを示しています。![データベース テーブルの読み込みパターンを示す図。](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
+Azure Synapse は、テナント データに対して集計を実行するための分析ストアとして使われます。 このサンプルでは、データ ウェアハウスにデータを読み込むには PolyBase が使用されます。 生データが読み込まれるステージング テーブルには、スター スキーマ テーブルに変換された行を追跡するための ID 列があります。 次の図は、読み込みパターンを示しています。![データベース テーブルの読み込みパターンを示す図。](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
 
 緩やかに変化するディメンション (SCD) タイプ 1 のディメンション テーブルが、この例では使用されます。 各ディメンションでは、ID 列を使って代理キーが定義されています。 ベスト プラクティスとして、時間を節約するため日付ディメンション テーブルはあらかじめ設定されています。 他のディメンション テーブルについては、CREATE TABLE AS SELECT...(CTAS) ステートメントを使って、既存の変更された行と変更されていない行および代理キーを格納する一時テーブルが作成されます。 これは、IDENTITY_INSERT=ON で行われます。 その後、新しい行が IDENTITY_INSERT=OFF でテーブルに挿入されます。 ロールバックが簡単なように、既存のディメンション テーブルの名前が変更された後、一時テーブルの名前が変更されて新しいディメンション テーブルになります。 各実行の前に、古いディメンション テーブルが削除されます。
 
@@ -197,22 +197,22 @@ Azure Synapse (旧称 SQL Data Warehouse) は、テナント データに対し�
 
 ### <a name="visualize-tenant-data"></a>テナント データを視覚化する
 
-スター スキーマ内のデータは、分析に必要なすべてのチケット販売データを提供します。 データをグラフィックに視覚化すると、大きなデータ セットでの傾向を把握しやすくなります。 このセクションでは、 **Power BI** を使って、データ ウェアハウス内のテナント データの操作と視覚化を行います。
+スター スキーマ内のデータは、分析に必要なすべてのチケット販売データを提供します。 データをグラフィックに視覚化すると、大きなデータ セットでの傾向を把握しやすくなります。 このセクションでは、**Power BI** を使って、データ ウェアハウス内のテナント データの操作と視覚化を行います。
 
 次の手順に従って、Power BI に接続し、以前に作成したビューをインポートします。
 
 1. Power BI Desktop を起動します。
 2. [ホーム] リボンの **[データを取得]** をクリックし、メニューの **[その他…]** を選択します。
 3. **[データの取得]** ウィンドウで、 **[Azure SQL Database]** を選びます。
-4. データベース ログイン ウィンドウで、サーバー名 ( **catalog-dpt-&lt;ユーザー&gt;.database.windows.net** ) を入力します。 **[データ接続モード]** で **[インポート]** を選び、 **[OK]** をクリックします。
+4. データベース ログイン ウィンドウで、サーバー名 (**catalog-dpt-&lt;ユーザー&gt;.database.windows.net**) を入力します。 **[データ接続モード]** で **[インポート]** を選び、 **[OK]** をクリックします。
 
     ![sign-in-to-power-bi](./media/saas-tenancy-tenant-analytics-adf/powerBISignIn.PNG)
 
-5. 左側のウィンドウで **[データベース]** を選択し、ユーザー名として「 *developer* 」、パスワードとして「 *P\@ssword1* 」を入力します。 **[Connect]** をクリックします。  
+5. 左側のウィンドウで **[データベース]** を選択し、ユーザー名として「*developer*」、パスワードとして「*P\@ssword1*」を入力します。 **[Connect]** をクリックします。  
 
     ![database-sign-in](./media/saas-tenancy-tenant-analytics-adf/databaseSignIn.PNG)
 
-6. **[ナビゲーター]** ウィンドウで、分析データベースのスター スキーマ テーブル **fact_Tickets** 、 **dim_Events** 、 **dim_Venues** 、 **dim_Customers** 、 **dim_Dates** を選びます。 **[読み込み]** を選択します。
+6. **[ナビゲーター]** ウィンドウで、分析データベースのスター スキーマ テーブル **fact_Tickets**、**dim_Events**、**dim_Venues**、**dim_Customers**、**dim_Dates** を選びます。 **[読み込み]** を選択します。
 
 お疲れさまでした。 Power BI にデータを正常に読み込みました。 次に、興味深い視覚化を調べてテナントの分析情報を取得します。 分析が Wingtip Tickets ビジネス チームにデータ駆動型のレコメンデーションを提供する方法を見ていきます。 これらの推奨事項は、ビジネス モデルとカスタマー エクスペリエンスの最適化に役立ちます。
 
@@ -256,7 +256,7 @@ AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[V
 
 ## <a name="embedding-analytics-in-your-apps"></a>アプリへの分析の埋め込み
 
-このチュートリアルでは、ソフトウェア ベンダーのテナントの理解を向上させるために使用されるテナント間の分析に注目しました。 分析では、業務効率的化の管理に役立つ " _テナント_ " に関する分析情報も提供できます。
+このチュートリアルでは、ソフトウェア ベンダーのテナントの理解を向上させるために使用されるテナント間の分析に注目しました。 分析では、業務効率的化の管理に役立つ "_テナント_" に関する分析情報も提供できます。
 
 Wingtip Tickets の例では、チケット販売の傾向が予測可能なパターンに従うことを発見しました。 この分析情報は、成績の悪い会場のチケット販売を増やすのに役立つ可能性があります。 おそらく、機械学習技法を導入してイベントのチケット販売を予測する機会があります。 価格変更の影響をモデル化して、割引を行った場合の影響を予測できます。 Power BI Embedded をイベント管理アプリケーションに統合して、チケットの総収益や販売数の少ないイベントの収益への割引の影響など、予測される販売を視覚化できる可能性があります。 Power BI Embedded を使うと、チケット価格に対する割引の実際の適用を、視覚化エクスペリエンスに統合することさえできます。
 

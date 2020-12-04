@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center のすべての Azure Defender アラートの参照テーブル
+title: Azure Security Center のすべてのセキュリティ アラートの参照テーブル
 description: この記事では、Azure Security Center の Azure Defender ダッシュボードで表示されるセキュリティ アラートの一覧を示します。
 services: security-center
 documentationcenter: na
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6d001e638b00cace1dd81d9631f498a911ca19a4
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: c5ee275fb92ff2c3787bef7868665c19fea2109c
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96014603"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436778"
 ---
 # <a name="security-alerts---a-reference-guide"></a>セキュリティ アラート - リファレンス ガイド
 
-この記事では、Azure Defender から受け取る可能性があるセキュリティ アラートの一覧を示します。 お使いの環境で示されるアラートは、保護対象のリソースとサービスおよびカスタマイズした構成によって異なります。
+この記事では、Azure Security Center から発せられることがあるセキュリティ アラートと、Azure Defender プランを有効にしている場合はそれもリストアップします。 お使いの環境で示されるアラートは、保護対象のリソースとサービスおよびカスタマイズした構成によって異なります。
 
 これらのアラートに対応する方法については、「[Azure Security Center でのセキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md)」を参照してください。
 

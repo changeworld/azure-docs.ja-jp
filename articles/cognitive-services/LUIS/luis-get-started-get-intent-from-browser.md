@@ -1,18 +1,18 @@
 ---
-title: クイック スタート:ブラウザーを使用して予測を照会する - LUIS
-description: このクイックスタートでは、利用可能なパブリック LUIS アプリを使用して、ブラウザーで会話形式のテキストからユーザーの意図を判断します。
+title: ブラウザーを使用して予測を照会する方法 - LUIS
+description: この記事では、利用可能なパブリック LUIS アプリを使用して、ブラウザーで会話形式のテキストからユーザーの意図を判断します。
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: quickstart
-ms.date: 04/21/2020
-ms.openlocfilehash: ce7544bee32586aa4cdeeb7f47a84744194db5da
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.topic: conceptual
+ms.date: 11/30/2020
+ms.openlocfilehash: 6aa681c8ea60cb57ac3e6d143c60cc46bc057719
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91316275"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436914"
 ---
-# <a name="quickstart-query-prediction-runtime-with-user-text"></a>クイック スタート:ユーザー テキストを使用して予測ランタイムに照会する
+# <a name="how-to-query-the-prediction-runtime-with-user-text"></a>ユーザー テキストを使用して予測ランタイムを照会する方法
 
 LUIS の予測エンドポイントから返される内容を理解するために、予測結果を Web ブラウザーで表示します。
 
@@ -22,7 +22,7 @@ LUIS の予測エンドポイントから返される内容を理解するため
 
 * お使いの Language Understanding (LUIS) リソース情報:
     * **予測キー** - [LUIS ポータル](https://www.luis.ai/)から取得できます。 まだキーを作成するサブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/cognitive-services)に登録できます。
-    * **予測エンドポイント サブドメイン** - サブドメインは、お使いの LUIS リソースの**名前**でもあります。
+    * **予測エンドポイント サブドメイン** - サブドメインは、お使いの LUIS リソースの **名前** でもあります。
 * LUIS アプリ ID - パブリック IoT アプリ ID `df67dcdb-c37d-46af-88e1-8b97951ca1c2` を使用します。 クイックスタートのコードで使用されるユーザー クエリは、そのアプリに固有のものです。
 
 ## <a name="use-the-browser-to-see-predictions"></a>ブラウザーを使用して予測を表示する
@@ -97,7 +97,7 @@ LUIS の予測エンドポイントから返される内容を理解するため
 
     #### <a name="v3-prediction-endpoint"></a>[V3 予測エンドポイント](#tab/V3-3-1)
 
-    **すべての意図を表示する**には、クエリ文字列の末尾に `show-all-intents=true` を追加します。
+    **すべての意図を表示する** には、クエリ文字列の末尾に `show-all-intents=true` を追加します。
 
     `
     https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/predict/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY&show-all-intents=true
@@ -130,7 +130,7 @@ LUIS の予測エンドポイントから返される内容を理解するため
 
     #### <a name="v2-prediction-endpoint"></a>[V2 予測エンドポイント](#tab/V2)
 
-    **すべての意図を表示する**には、クエリ文字列の末尾に `verbose=true` を追加します。
+    **すべての意図を表示する** には、クエリ文字列の末尾に `verbose=true` を追加します。
 
     `
     https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?q=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY&verbose=true

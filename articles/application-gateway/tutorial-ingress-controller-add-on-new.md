@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 3cae4591a5da53683c965d7c6ba3ec169249c87e
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 627d5b15a861c3d564cb4db33b366d3227092d37
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566131"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296252"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>チュートリアル:新しい Application Gateway インスタンスを使用して新しい AKS クラスターのイングレス コントローラー アドオン (プレビュー) を有効にする
 
@@ -34,19 +34,22 @@ Azure CLI を使用して、[Azure Kubernetes Services (AKS)](https://azure.micr
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
- - このチュートリアルには、Azure CLI のバージョン 2.0.4 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
+ - このチュートリアルには、Azure CLI のバージョン 2.0.4 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。 Azure CLI を使用する場合は、次のコマンドを使用して、CLI にプレビュー拡張機能をインストールする必要があります (まだインストールしていない場合)。
+    ```azurecli-interactive
+    az extension add --name aks-preview
+    ```
 
- - 次の例に示すように、[az feature register](https://docs.microsoft.com/cli/azure/feature#az-feature-register) コマンドを使用して、*AKS-IngressApplicationGatewayAddon* 機能フラグを登録します。 アドオンはまだプレビュー段階ですが、サブスクリプションごとに 1 回だけ、これを行う必要があります。
+ - 次の例に示すように、[az feature register](/cli/azure/feature#az-feature-register) コマンドを使用して、*AKS-IngressApplicationGatewayAddon* 機能フラグを登録します。 アドオンはまだプレビュー段階ですが、サブスクリプションごとに 1 回だけ、これを行う必要があります。
     ```azurecli-interactive
     az feature register --name AKS-IngressApplicationGatewayAddon --namespace Microsoft.ContainerService
     ```
 
-   状態が `Registered` と表示されるまでに数分かかる場合があります。 [az feature list](https://docs.microsoft.com/cli/azure/feature#az-feature-register) コマンドを使用して登録状態を確認できます。
+   状態が `Registered` と表示されるまでに数分かかる場合があります。 [az feature list](/cli/azure/feature#az-feature-register) コマンドを使用して登録状態を確認できます。
     ```azurecli-interactive
     az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
     ```
 
- - 準備ができたら、[az provider register](https://docs.microsoft.com/cli/azure/provider#az-provider-register) コマンドを使用して、Microsoft.ContainerService リソース プロバイダーの登録を更新します。
+ - 準備ができたら、[az provider register](/cli/azure/provider#az-provider-register) コマンドを使用して、Microsoft.ContainerService リソース プロバイダーの登録を更新します。
     ```azurecli-interactive
     az provider register --namespace Microsoft.ContainerService
     ```

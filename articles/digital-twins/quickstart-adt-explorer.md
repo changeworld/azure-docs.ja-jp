@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: d203cb5ccef90fd09659ba64b7bcbc8b9be9e47a
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d42a32e236eb73f2aa9f2f61d9708314783564dd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358101"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187301"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>クイック スタート - ADT Explorer を使用して、Azure Digital Twins のサンプル シナリオを精査する
 
@@ -66,6 +66,7 @@ ADT Explorer アプリケーションは、ローカル コンピューターで
 1. [こちらのインストール リンク](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)のプロセスに従って、お使いの OS に対応したインストールを完了します。
 1. お使いのコンピューターでコンソール ウィンドウを開きます。
 1. `az login` を実行し、認証プロンプトに従って Azure アカウントにサインインします。
+1. 考えられる最後の手順:このアカウントで複数の Azure サブスクリプションを使用する場合は、`az account set --subscription "<your-subscription-name-or-ID>"` (サブスクリプションの名前または ID 値のいずれか) を実行して、Azure Digital Twins インスタンスを含む Azure サブスクリプションに認証コンテキストを設定します。
 
 サインイン後、次のセクションで ADT Explorer を実行すると、Azure 資格情報が自動的に取得されます。
 
@@ -90,7 +91,7 @@ ADT Explorer アプリケーションは、ローカル コンピューターで
 
    :::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="ADT エクスプローラーのウィンドウ上部付近にあるサインイン アイコンが強調表示されている。このアイコンには、人のシンプルなシルエットに鍵のシルエットが重なるように表示されている。" lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
-1. 「前提条件」セクションで先ほど収集した "[Azure Digital Twins インスタンスの URL](#prerequisites)" を *https://{インスタンス ホスト名}* の形式で入力します。
+1. 「[Azure Digital Twins インスタンスを設定する](#set-up-an-azure-digital-twins-instance)」セクションで先ほど収集した Azure Digital Twins インスタンスの URL を *https://{インスタンス ホスト名}* の形式で入力します。
 
 >[!NOTE]
 > 同じアイコンを選択して **[サインイン]** ボックスを再び開くことで、この情報はいつでも再表示または編集できます。 指定した値は維持されます。

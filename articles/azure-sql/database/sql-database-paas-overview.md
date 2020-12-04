@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 093d470052a639ad3d4e819d08fad7c34b547d44
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 0bd6300f4b9dbcf76b5447a0fb58502b7aebf311
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789507"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451425"
 ---
 # <a name="what-is-azure-sql-database"></a>Azure SQL Database とは
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -26,18 +26,18 @@ Azure SQL Database は、アップグレード、修正プログラムの適用�
 
 Azure SQL Database を使用すると、Azure のアプリケーションやソリューションのための高可用性かつ高パフォーマンスのデータ ストレージ層を作成できます。 SQL Database を使用することで、グラフ、JSON、空間、XML などのリレーショナル データと[非リレーショナル構造](../multi-model-features.md)の両方を処理できるようになるため、さまざまな最新のクラウド アプリケーションに適しています。
 
-Azure SQL Database は、[Microsoft SQL Server データベース エンジン](/sql/sql-server/sql-server-technical-documentation?toc=%252fazure%252fsql-database%252ftoc.json)の最新の安定したバージョンに基づいています。 [高パフォーマンスのメモリ内テクノロジ](../in-memory-oltp-overview.md)や[インテリジェントなクエリ処理](/sql/relational-databases/performance/intelligent-query-processing?toc=%252fazure%252fsql-database%252ftoc.json)など、高度なクエリ処理機能を使用できます。 実際、SQL Server の最新機能のリリースは SQL Database から始まり、その後 SQL Server 自体に対してリリースされます。 修正プログラムの適用やアップグレードのオーバーヘッドなしで SQL Server の最新の機能を取得して、数百万のデータベースでテストすることができます。 
+Azure SQL Database は、[Microsoft SQL Server データベース エンジン](/sql/sql-server/sql-server-technical-documentation?toc=%2fazure%2fsql-database%2ftoc.json)の最新の安定したバージョンに基づいています。 [高パフォーマンスのメモリ内テクノロジ](../in-memory-oltp-overview.md)や[インテリジェントなクエリ処理](/sql/relational-databases/performance/intelligent-query-processing?toc=%2fazure%2fsql-database%2ftoc.json)など、高度なクエリ処理機能を使用できます。 実際、SQL Server の最新機能のリリースは SQL Database から始まり、その後 SQL Server 自体に対してリリースされます。 修正プログラムの適用やアップグレードのオーバーヘッドなしで SQL Server の最新の機能を取得して、数百万のデータベースでテストすることができます。 
 
 SQL Database を使用すると、2 つの異なる購入モデル ([仮想コアベースの購入モデル](service-tiers-vcore.md)と [DTU ベースの購入モデル](service-tiers-dtu.md)) の中でパフォーマンスを簡単に定義してスケールすることができます。 SQL Database は、高可用性、バックアップ、その他の一般的なメンテナンス操作が組み込まれた完全なマネージド サービスです。 SQL とオペレーティング システムのコードの修正プログラムの適用と更新は、すべて Microsoft で処理されます。 ユーザーが基になるインフラストラクチャを管理する必要はありません。
 
-Azure SQL Database を初めてお使いの方は、 [Azure SQL ビデオ シリーズ](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)の " *Azure SQL データベースの概要* " に関するビデオをご覧ください。
+Azure SQL Database を初めてお使いの方は、[Azure SQL ビデオ シリーズ](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)の "*Azure SQL データベースの概要*" に関するビデオをご覧ください。
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61/player]
 
 ## <a name="deployment-models"></a>デプロイ モデル
 
 Azure SQL Database には、データベースのデプロイに関して次の選択肢があります。
 
-- [単一データベース](single-database-overview.md)は、フル マネージドの分離されたデータベースを表します。 このオプションは、信頼性の高い 1 つのデータ ソースを必要とする最新のクラウド アプリケーションとマイクロサービスがある場合に使用できます。 単一データベースは、[SQL Server データベース エンジン](/sql/sql-server/sql-server-technical-documentation?toc=%252fazure%252fsql-database%252ftoc.json)内の[包含データベース](/sql/relational-databases/databases/contained-databases?toc=%252fazure%252fsql-database%252ftoc.json)に似ています。
+- [単一データベース](single-database-overview.md)は、フル マネージドの分離されたデータベースを表します。 このオプションは、信頼性の高い 1 つのデータ ソースを必要とする最新のクラウド アプリケーションとマイクロサービスがある場合に使用できます。 単一データベースは、[SQL Server データベース エンジン](/sql/sql-server/sql-server-technical-documentation?toc=%2fazure%2fsql-database%2ftoc.json)内の[包含データベース](/sql/relational-databases/databases/contained-databases?toc=%2fazure%2fsql-database%2ftoc.json)に似ています。
 - [エラスティック プール](elastic-pool-overview.md)は、CPU やメモリなどのリソースの共有セットを含む[単一データベース](single-database-overview.md)のコレクションです。 単一データベースはエラスティック プールの内外に移動できます。
 
 > [!IMPORTANT]
@@ -96,9 +96,9 @@ Azure SQL Database には、ワークロードの特性に関する詳細な分�
 
 Azure には、パフォーマンス評価と組み合わせた[組み込みのパフォーマンス監視](performance-guidance.md)と[アラート](alerts-insights-configure-portal.md)のツールが用意されています。これにより、何千ものデータベースの状態を監視できます。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、スケールアップとスケールダウンの影響をすばやく評価することができます。 さらに、SQL Database では、監視を容易にするために[メトリックとリソース ログを出力する](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)ことができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
 
-- **Azure Storage** :大量の利用統計情報を低価格でアーカイブします。
-- **Azure Event Hubs** :SQL Database の利用統計情報を、カスタム監視ソリューションまたはホット パイプラインと統合します。
-- **Azure Monitor ログ** : レポート機能、アラート機能、および緩和機能を備えた組み込みの監視ソリューション用です。
+- **Azure Storage**:大量の利用統計情報を低価格でアーカイブします。
+- **Azure Event Hubs**:SQL Database の利用統計情報を、カスタム監視ソリューションまたはホット パイプラインと統合します。
+- **Azure Monitor ログ**: レポート機能、アラート機能、および緩和機能を備えた組み込みの監視ソリューション用です。
 
 ![Azure の監視アーキテクチャの図](./media/sql-database-paas-overview/architecture.png)
 
@@ -149,8 +149,8 @@ SQL Database 上で [SaaS マルチテナント アプリ](saas-tenancy-app-desi
 
 [SQL Database では](automatic-tuning-overview.md)、次の 2 つの自動チューニングを使用できます。
 
-- **インデックスの自動管理** :データベースに追加するインデックスと削除するインデックスを識別します。
-- **プランの自動修正** :問題のあるプランを識別し、SQL プランのパフォーマンスに関する問題を修正します。
+- **インデックスの自動管理**:データベースに追加するインデックスと削除するインデックスを識別します。
+- **プランの自動修正**:問題のあるプランを識別し、SQL プランのパフォーマンスに関する問題を修正します。
 
 ### <a name="adaptive-query-processing"></a>アダプティブ クエリ処理
 
@@ -200,7 +200,7 @@ SQL Database は、アプリケーションの開発と管理をより簡単で�
 |[Azure Data Studio](/sql/azure-data-studio/)|Windows、macOS、Linux で実行されるクロスプラットフォーム データベース ツールです。|
 |[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)|SQL Server から SQL Database まで、あらゆる SQL インフラストラクチャを管理するための、無料でダウンロードできるクライアント アプリケーションです。|
 |[Visual Studio の SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt)|SQL Server リレーショナル データベース、Azure SQL Database 内のデータベース、Integration Services パッケージ、Analysis Services データ モデル、Reporting Services レポートを開発するための、ダウンロード可能な無料のクライアント アプリケーションです。|
-|[Visual Studio Code](https://code.visualstudio.com/docs)|Windows、macOS、Linux 向けの無料でダウンロードできるオープンソースのコード エディターです。 Microsoft SQL Server、Azure SQL Database、および Azure Synapse Analytics (旧称 SQL Data Warehouse) のデータを照会するための [mssql 拡張機能](https://aka.ms/mssql-marketplace)を含む拡張機能をサポートします。|
+|[Visual Studio Code](https://code.visualstudio.com/docs)|Windows、macOS、Linux 向けの無料でダウンロードできるオープンソースのコード エディターです。 Microsoft SQL Server、Azure SQL Database、Azure Synapse Analytics にクエリを実行するための [mssql 拡張機能](https://aka.ms/mssql-marketplace)を含む拡張機能をサポートします。|
 
 SQL Database は、macOS、Linux、および Windows での Python、Java、Node.js、PHP、Ruby、および .NET によるアプリケーションの構築をサポートします。 SQL Database は、SQL Server と同じ[接続ライブラリ](connect-query-content-reference-guide.md#libraries)をサポートします。
 

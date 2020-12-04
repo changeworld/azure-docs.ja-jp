@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: e6708874fee3e15349b4389f1ecafa3d48a628dd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2fbc74304cdb71d9cb3e1ea476af8c92eb99b7e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95917199"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458842"
 ---
 # <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>チュートリアル:Azure Automated ML と Apache Spark を使用した実験の実行
 
@@ -72,7 +72,7 @@ df = spark.read.parquet(wasbs_path)
 
 ```
 
-3. Spark プール (プレビュー) のサイズによっては、生データが大きすぎるか、その操作に時間がかかりすぎる可能性があります。 ```start_date``` および ```end_date``` フィルターを使用して、このデータをさらに絞り込むことができます。 これにより、1 か月分のデータを返すフィルターが適用されます。 データフレームをフィルター処理したら、新しいデータフレームに対して ```describe()``` 関数も実行して、各フィールドの概要の統計を確認します。 
+3. Spark プールのサイズによっては、生データが大きすぎるか、その操作に時間がかかりすぎる可能性があります。 ```start_date``` および ```end_date``` フィルターを使用して、このデータをさらに絞り込むことができます。 これにより、1 か月分のデータを返すフィルターが適用されます。 データフレームをフィルター処理したら、新しいデータフレームに対して ```describe()``` 関数も実行して、各フィールドの概要の統計を確認します。 
 
    概要の統計に基づいて、データに多少の不規則性と外れ値があることがわかります。 たとえば、最小乗車距離が 0 未満であると統計で示されています。 これらの不規則なデータ ポイントを除外する必要があります。
    

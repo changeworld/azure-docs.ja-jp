@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: a93e2a88201f32ed99698f2bfbab631c81ed8b35
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: da3ad4f70e0cc41fe95327eb74093c1471c877bd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357710"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351573"
 ---
 # <a name="tutorial-configure-zscaler-private-access-zpa-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Zscaler Private Access (ZPA) を構成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "94357710"
 
 ## <a name="assigning-users-to-zscaler-private-access-zpa"></a>Zscaler Private Access (ZPA) へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Azure AD のどのユーザーまたはグループに Zscaler Private Access (ZPA) へのアクセスが必要かを決定する必要があります。 決定したら、次の手順に従って、これらのユーザーまたはグループを Zscaler Private Access (ZPA) に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -78,7 +78,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Zscaler Private Access (ZPA) のトークンの作成](media/zscaler-private-access-provisioning-tutorial/token.png)
 
-8.  **[テナント URL]** を見つけるには、 **[管理] > [IdP Configuration] (IdP 構成)** に移動します。 このページに表示されている新しく追加された IdP 構成の名前をクリックします。
+8.  **[テナント URL]** を見つけるには、 **[管理] > [IdP Configuration]\(IdP 構成\)** に移動します。 このページに表示されている新しく追加された IdP 構成の名前をクリックします。
 
     ![Zscaler Private Access (ZPA) の Idp 名](media/zscaler-private-access-provisioning-tutorial/idpname.png)
 
@@ -105,7 +105,7 @@ Azure AD での自動ユーザー プロビジョニング用に Zscaler Private
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Zscaler Private Access (ZPA)** 」と入力します。結果ウィンドウの **[Zscaler Private Access (ZPA)]** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Zscaler Private Access (ZPA)** 」と入力します。結果ウィンドウの **[Zscaler Private Access (ZPA)]** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Zscaler Private Access (ZPA)](common/search-new-app.png)
 

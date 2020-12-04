@@ -67,6 +67,8 @@
       items:
         - name: QnA ペアの編集
           href: How-To/edit-knowledge-base.md
+        - name: メタデータ タグの追加
+          href: Quickstarts/add-question-metadata-portal.md
         - name: フォローアップ プロンプトの追加
           href: How-To/multiturn-conversation.md
           displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'

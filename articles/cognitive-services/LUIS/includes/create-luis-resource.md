@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/07/2020
+ms.date: 11/20/2020
 ms.author: aahi
-ms.openlocfilehash: a077d255648ff07cc88b43dece889a221c46c11f
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: ee7fd384a198c5eff672b14b6cb479aac26cfe54
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561512"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972516"
 ---
 <a name="create-luis-resources"></a>
 
@@ -37,7 +37,7 @@ ms.locfileid: "94561512"
     > [![[作成] の下の [基本] タブを示すスクリーンショット。](../media/luis-how-to-azure-subscription/create-resource-in-azure-small.png)](../media/luis-how-to-azure-subscription/create-resource-in-azure-small.png#lightbox)
 
 1. **[確認と作成]** を選択して、リソースが作成されるまで待ちます。
-1. 両方のリソースが作成された後、引き続き Azure portal で新しい作成リソースを選択します。 次に、 **[クイックスタート]** を選択して、プログラムで作成を行うための作成 **エンドポイント URL** および **キー** を取得します。
+1. 両方のリソースが作成された後、引き続き Azure portal で新しい作成リソースを選択します。 次に、 **[キーとエンドポイント]** を選択して、プログラムで作成を行うための作成 **エンドポイント URL** および **キー** を取得します。
 
 > [!TIP]
 > リソースを使用するには、LUIS ポータルで[リソースを割り当て](../luis-how-to-azure-subscription.md#assign-an-authoring-resource-in-the-luis-portal-for-all-apps)ます。

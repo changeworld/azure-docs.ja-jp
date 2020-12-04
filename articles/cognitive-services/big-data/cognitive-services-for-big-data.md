@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: overview
 ms.date: 07/09/2020
 ms.author: marhamil
-ms.openlocfilehash: 1b08925db12edffdaf5c85f1fa6f5934a412d81f
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: aaade03edbbb109656fb7371a063cdc2512c5a20
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363308"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461630"
 ---
 # <a name="azure-cognitive-services-for-big-data"></a>ビッグ データ向けの Azure Cognitive Services
 
@@ -84,11 +84,11 @@ Scala および Java ベースの Spark API は、[Microsoft ML for Apache Spark
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-[Azure Synapse Analytics](/azure/databricks/data/data-sources/azure/synapse-analytics) (旧称 SQL Data Warehouse) は、大規模な並列処理を使用するエンタープライズ データ ウェアハウスです。 Synapse Analytics を使用すると、ペタバイト単位のデータに対して複雑なクエリをすばやく実行できます。 Azure Synapse Analytics は、直感的な Jupyter Notebook インターフェイスを使用して Spark ジョブを実行するマネージド Spark プールを提供します。
+[Azure Synapse Analytics](/azure/databricks/data/data-sources/azure/synapse-analytics) は、大規模な並列処理を使用するエンタープライズ データ ウェアハウスです。 Synapse Analytics を使用すると、ペタバイト単位のデータに対して複雑なクエリをすばやく実行できます。 Azure Synapse Analytics は、直感的な Jupyter Notebook インターフェイスを使用して Spark ジョブを実行するマネージド Spark プールを提供します。
 
 ### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-[Azure Kubernetes Service (AKS)](../../aks/index.yml) は、Docker コンテナーと分散アプリケーションを大規模なスケールで調整します。 AKS は、Azure での Kubernetes の使用を簡略化するマネージド Kubernetes オファリングです。 Kubernetes を使用すると、Cognitive Service のスケール、待機時間、およびネットワークをきめ細かく制御できます。 ただし、Apache Spark に慣れていない場合は、Azure Databricks または Synapse Analytics を使用することをお勧めします。
+[Azure Kubernetes Service (AKS)](../../aks/index.yml) は、Docker コンテナーと分散アプリケーションを大規模なスケールで調整します。 AKS は、Azure での Kubernetes の使用を簡略化するマネージド Kubernetes オファリングです。 Kubernetes を使用すると、Cognitive Service のスケール、待機時間、およびネットワークをきめ細かく制御できます。 ただし、Apache Spark に慣れていない場合は、Azure Databricks または Azure Synapse Analytics を使用することをお勧めします。
 
 ### <a name="data-connectors"></a>データ コネクタ
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 3d17d4dd88e29440304989b8c37eaa81125d1812
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 8eccc3be7da201ee1e2af046c6b515871ef05adc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357557"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350774"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>チュートリアル:BitaBIZ を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "94357557"
 
 ## <a name="assigning-users-to-bitabiz"></a>BitaBIZ へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、BitaBIZ へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを BitaBIZ に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -83,7 +83,7 @@ Azure AD で自動ユーザー プロビジョニング用に BitaBIZ を構成�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **BitaBIZ** 」と入力し、結果パネルで **[BitaBIZ]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**BitaBIZ**」と入力し、結果パネルで **[BitaBIZ]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果リストの BitaBIZ](common/search-new-app.png)
 
@@ -92,7 +92,7 @@ Azure AD で自動ユーザー プロビジョニング用に BitaBIZ を構成�
 このセクションでは、Azure AD でのユーザーやグループの割り当てに基づいて BitaBIZ のユーザーやグループを作成、更新、無効化するように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 > [!TIP]
-> BitaBIZ では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[BitaBIZ シングル サインオンのチュートリアル](BitaBIZ-tutorial.md)に関するページで説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> BitaBIZ で SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[BitaBIZ シングル サインオンのチュートリアル](BitaBIZ-tutorial.md)に関するページで説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-bitabiz-in-azure-ad"></a>Azure AD で BitaBIZ の自動ユーザー プロビジョニングを構成するには:
 
@@ -151,7 +151,7 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 ## <a name="connector-limitations"></a>コネクタの制限事項
 
-* BitaBIZ には、必須属性として **userName** 、 **email** 、 **firstName** 、 **lastName** が必要です。 
+* BitaBIZ には、必須属性として **userName**、**email**、**firstName**、**lastName** が必要です。 
 * BitaBIZ では、物理的な削除は現在サポートされていません。
 
 ## <a name="additional-resources"></a>その他のリソース

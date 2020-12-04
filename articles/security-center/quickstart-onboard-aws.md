@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3a2de9b167fcbe9dc603d33fd816e70d5c3705e5
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 7aa65cb8e37ce48a59c276fdf2631f75397d3236
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372780"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122514"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Azure Security Center への AWS アカウントの接続
 
@@ -60,7 +60,7 @@ AWS アカウントを Security Center にオンボードすると、AWS Securit
     1. [AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-settingup.html) を有効にします。
     1. Security Hub にデータが流れていることを確認します。
 
-        Security Hub を初めて有効にする場合は、データが使用可能になるまで数時間かかることがあります。
+        Security Hub を初めて有効にするときは、データが使用可能になるまで数時間かかることがあります。
 
 ### <a name="step-2-set-up-authentication-for-security-center-in-aws"></a>手順 2. AWS で Security Center に対する認証を設定する
 
@@ -77,7 +77,7 @@ Security Center が AWS に対して認証を行えるようにするには、2 
 1. **[別の AWS アカウント]** を選択します。
 1. 次の詳細を入力します。
 
-    - **アカウント ID** - Security Center の AWS コネクタ ページに示されているように、Microsoft アカウント ID ( **158177204117** ) を入力します。
+    - **アカウント ID** - Security Center の AWS コネクタ ページに示されているように、Microsoft アカウント ID (**158177204117**) を入力します。
     - **外部 ID が必要** - 選択する必要があります
     - **外部 ID** - Security Center の AWS コネクタ ページに示されているように、サブスクリプション ID を入力します 
 
@@ -123,7 +123,7 @@ Security Center が AWS に対して認証を行えるようにするには、2 
     - Microsoft.HybridCompute
     - Microsoft.GuestConfiguration
 
-1. 大規模なオンボーディング用にサービス プリンシパルを作成します。 「 [大規模なオンボーディング用にサービス プリンシパルを作成する](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)」で説明されているように、オンボードに使用するサブスクリプションの **所有者** として、Azure Arc オンボード用サービス プリンシパルを作成します。
+1. 大規模なオンボーディング用にサービス プリンシパルを作成します。 「[大規模なオンボーディング用にサービス プリンシパルを作成する](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)」で説明されているように、オンボードに使用するサブスクリプションの **所有者** として、Azure Arc オンボード用サービス プリンシパルを作成します。
 
 
 ### <a name="step-5-connect-aws-to-security-center"></a>手順 5. AWS を Security Center に接続する
@@ -135,12 +135,12 @@ Security Center が AWS に対して認証を行えるようにするには、2 
     1. コネクタの **表示名** を入力します。
     1. サブスクリプションが正しいことを確認します。 これは、コネクタと AWS Security Hub の推奨事項が追加されるサブスクリプションです。
     1. 「[手順 2. AWS で Security Center に対する認証を設定する](#step-2-set-up-authentication-for-security-center-in-aws)」で選択した認証オプションに応じて、次の操作を行います。
-        - **[Assume Role]\(ロールを想定\)** を選択し、「 [Security Center の IAM ロールを作成する](#create-an-iam-role-for-security-center)」から ARN を貼り付けます。
+        - **[Assume Role]\(ロールを想定\)** を選択し、「[Security Center の IAM ロールを作成する](#create-an-iam-role-for-security-center)」から ARN を貼り付けます。
             :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Azure portal で AWS 接続ウィザードの関連フィールドに ARN ファイルを貼り付ける":::
 
             OR
 
-        - **資格情報** を選択し、「 [Security Center の AWS ユーザーを作成する](#create-an-aws-user-for-security-center)」で保存した .csv ファイルから **アクセス キー** と **秘密鍵** を貼り付けます。
+        - **資格情報** を選択し、「[Security Center の AWS ユーザーを作成する](#create-an-aws-user-for-security-center)」で保存した .csv ファイルから **アクセス キー** と **秘密鍵** を貼り付けます。
 1. **[次へ]** を選択します。
 1. **[Azure Arc Configuration]\(Azure Arc 構成\)** タブでオプションを構成します。
 
@@ -150,7 +150,7 @@ Security Center が AWS に対して認証を行えるようにするには、2 
     > サポートされるオペレーティング システムの一覧については、FAQ の「[自身の EC2 インスタンスではどのオペレーティングシステムがサポートされていますか?](#what-operating-systems-for-my-ec2-instances-are-supported)」を参照してください。
 
     1. 選択したサブスクリプションで、検出された AWS EC2 がオンボードされる **リソース グループ** と **Azure リージョン** を選択します。
-    1. こちらの「 [大規模なオンボーディング用にサービス プリンシパルを作成する](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)」で説明されているように、Azure Arc の **サービス プリンシパル ID** と **サービス プリンシパルのクライアント シークレット** を入力します
+    1. こちらの「[大規模なオンボーディング用にサービス プリンシパルを作成する](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)」で説明されているように、Azure Arc の **サービス プリンシパル ID** と **サービス プリンシパルのクライアント シークレット** を入力します
     1. マシンがプロキシ サーバー経由でインターネットに接続している場合は、プロキシ サーバーの IP アドレスか、マシンがプロキシ サーバーとの通信に使用する名前とポート番号を指定します。 ```http://<proxyURL>:<proxyport>``` の形式で値を入力します。
     1. **[Review + create]\(レビュー + 作成\)** を選択します。
 

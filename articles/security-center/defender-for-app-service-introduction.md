@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2ac4f41a36a2a18a65816be5ea74e88d0b364294
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: bb0e073d5ccf73434d05c801b9a8727c1d19fa47
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789065"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122239"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>Azure Defender for App Service の概要
 
@@ -45,12 +45,12 @@ Azure Defender for App Service で Azure App Service プランを保護するに
 
 - 確実に専用のコンピューターに関連付けられた、サポートされている App Service プランを利用します。 サポートされているプランは、上記の「[可用性](#availability)」に記載されています。
 
-- [Azure Security Center の価格](security-center-pricing.md)に関する記事で説明されているように、サブスクリプションで **Azure Defender** を有効にします (必要に応じて、 **Azure Defender for App Service** プランのみを有効にできます)。
+- [Azure Security Center の価格](security-center-pricing.md)に関する記事で説明されているように、サブスクリプションで **Azure Defender** を有効にします (必要に応じて、**Azure Defender for App Service** プランのみを有効にできます)。
 
 Security Center は App Service とネイティブで統合されており、デプロイやオンボーディングの必要がありません。統合は透過的となっています。
 
 >[!NOTE]
-> 価格と設定のページには、 **リソース数量** に対するインスタンスの数が記載されています。 これは、このサブスクリプションのすべての App Service プランに含まれるコンピューティング リソースのうち、価格レベルのページを開いたときに実行されていたコンピューティング リソースの総数を表しています。
+> 価格と設定のページには、**リソース数量** に対するインスタンスの数が記載されています。 これは、このサブスクリプションのすべての App Service プランに含まれるコンピューティング リソースのうち、価格レベルのページを開いたときに実行されていたコンピューティング リソースの総数を表しています。
 >
 > Azure App Service にはさまざまなプランがあります。 App Service プランによって、Web アプリを実行するための一連のコンピューティング リソースが決まります。 そのようなリソースは、従来の Web ホスティングのサーバー ファームに相当します。 1 つまたは複数のアプリを同じコンピューティング リソース (または、同じ App Service プラン) で実行するように構成することができます。
 >

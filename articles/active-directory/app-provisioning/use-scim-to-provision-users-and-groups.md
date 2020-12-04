@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 5e2f323f705a891f06cee1d25779351d02a91572
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: ddce982f43a3c730d8c25527f4354983c36e89e8
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695267"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530828"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>チュートリアル - SCIM エンドポイントの構築と Azure AD を使用したユーザー プロビジョニングの構成
 
@@ -154,7 +154,7 @@ SCIM RFC では複数のエンドポイントが定義されています。 /Use
 * [SCIM プロトコルのセクション 3.4.2](https://tools.ietf.org/html/rfc7644#section-3.4.2) に従って、ユーザーまたはグループのクエリをサポートする。  既定では、ユーザーの取得には `id`、ユーザーのクエリには `username` と `externalId`、グループのクエリには `displayName` が使用されます。  
 * SCIM プロトコルのセクション 3.4.2 に従って、ID と管理者によるユーザーの照会をサポートする。  
 * SCIM プロトコルのセクション 3.4.2 に従って、ID とメンバーによるグループの照会をサポートする。  
-* グループ リソースの照会時には、SCIM プロトコルのセクション 3.4.2.5 に従ってフィルター [excludedAttributes=members](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group) をサポートする。
+* グループ リソースの照会時には、SCIM プロトコルのセクション 3.4.2.5 に従ってフィルター [excludedAttributes=members](#get-group) をサポートする。
 * アプリケーションに対する Azure AD の認証と承認のために、単一のベアラー トークンを受け入れる。
 * ユーザー `active=false` の論理削除とユーザー `active=true` の復元をサポートする (ユーザーがアクティブかどうかに関係なく、要求でユーザー オブジェクトが返される必要があります)。 ユーザーが返されないのは、アプリケーションから完全削除されているときです。 
 
@@ -199,29 +199,21 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
   - [ユーザーの作成](#create-user) ([要求](#request) / [応答](#response))
   - [ユーザーの取得](#get-user) ([要求](#request-1) / [応答](#response-1))
   - [クエリによるユーザーの取得](#get-user-by-query) ([要求](#request-2) / [応答](#response-2))
-  - [クエリによるユーザーの取得 - 0 件の結果](#get-user-by-query---zero-results) ([要求](#request-3)
-/ [応答](#response-3))
-  - [ユーザーの更新 [複数値のプロパティ]](#update-user-multi-valued-properties) ([要求](#request-4) /  [応答](#response-4))
-  - [ユーザーの更新 [単一値のプロパティ]](#update-user-single-valued-properties) ([要求](#request-5)
-/ [応答](#response-5)) 
-  - [ユーザーの無効化](#disable-user) ([要求](#request-14) / 
-[応答](#response-14))
-  - [ユーザーの削除](#delete-user) ([要求](#request-6) / 
-[応答](#response-6))
+  - [クエリによるユーザーの取得 - 0 件の結果](#get-user-by-query---zero-results) ([要求](#request-3) / [応答](#response-3))
+  - [ユーザーの更新 [複数値のプロパティ]](#update-user-multi-valued-properties) ([要求](#request-4) / [応答](#response-4))
+  - [ユーザーの更新 [単一値のプロパティ]](#update-user-single-valued-properties) ([要求](#request-5) / [応答](#response-5)) 
+  - [ユーザーの無効化](#disable-user) ([要求](#request-14) / [応答](#response-14))
+  - [ユーザーの削除](#delete-user) ([要求](#request-6) / [応答](#response-6))
 
 
 [グループ操作](#group-operations)
-  - [グループの作成](#create-group) ( [要求](#request-7) / [応答](#response-7))
-  - [グループの取得](#get-group) ( [要求](#request-8) / [応答](#response-8))
+  - [グループの作成](#create-group) ([要求](#request-7) / [応答](#response-7))
+  - [グループの取得](#get-group) ([要求](#request-8) / [応答](#response-8))
   - [displayName でのグループの取得](#get-group-by-displayname) ([要求](#request-9) / [応答](#response-9))
-  - [グループの更新 [非メンバー属性]](#update-group-non-member-attributes) ([要求](#request-10) /
- [応答](#response-10))
-  - [グループの更新 [メンバーの追加]](#update-group-add-members) ( [要求](#request-11) /
-[応答](#response-11))
-  - [グループの更新 [メンバーの削除]](#update-group-remove-members) ([要求](#request-12) /
-[応答](#response-12))
-  - [グループの削除](#delete-group) ([要求](#request-13) /
-[応答](#response-13))
+  - [グループの更新 [非メンバー属性]](#update-group-non-member-attributes) ([要求](#request-10) / [応答](#response-10))
+  - [グループの更新 [メンバーの追加]](#update-group-add-members) ([要求](#request-11) / [応答](#response-11))
+  - [グループの更新 [メンバーの削除]](#update-group-remove-members) ([要求](#request-12) / [応答](#response-12))
+  - [グループの削除](#delete-group) ([要求](#request-13) / [応答](#response-13))
 
 ### <a name="user-operations"></a>ユーザー操作
 
@@ -1173,7 +1165,7 @@ Azure AD は、割り当てられたユーザーとグループを、[SCIM 2.0 �
 
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>手順 5:Azure AD アプリケーション ギャラリーにアプリケーションを発行する
 
-複数のテナントによって使用されるアプリケーションを作成する場合は、Azure AD アプリケーション ギャラリーで使用可能にできます。 これにより、組織でアプリケーションを見つけて、プロビジョニングを構成することが簡単になります。 簡単に、Azure AD ギャラリーにアプリを発行し、他のユーザーがプロビジョニングできるようにすることができます。 手順は、 [こちら](../azuread-dev/howto-app-gallery-listing.md)で確認してください。 Microsoft はお客様と協力して、お客様のアプリケーションをギャラリーに統合し、エンドポイントをテストし、顧客が使用できるオンボード [ドキュメント](../saas-apps/tutorial-list.md)をリリースします。 
+複数のテナントによって使用されるアプリケーションを作成する場合は、Azure AD アプリケーション ギャラリーで使用可能にできます。 これにより、組織でアプリケーションを見つけて、プロビジョニングを構成することが簡単になります。 簡単に、Azure AD ギャラリーにアプリを発行し、他のユーザーがプロビジョニングできるようにすることができます。 手順は、 [こちら](../develop/v2-howto-app-gallery-listing.md)で確認してください。 Microsoft はお客様と協力して、お客様のアプリケーションをギャラリーに統合し、エンドポイントをテストし、顧客が使用できるオンボード [ドキュメント](../saas-apps/tutorial-list.md)をリリースします。
 
 ### <a name="gallery-onboarding-checklist"></a>ギャラリーのオンボードのチェックリスト
 アプリケーションの迅速なオンボードと顧客のスムーズなデプロイ エクスペリエンスを確実なものとするために、以下のチェックリストに従ってください。 ギャラリーにオンボードする際に、ご自身から情報が収集されます。 
@@ -1248,3 +1240,4 @@ OAuth コード付与フローの手順は次のとおりです。
 * [ユーザー プロビジョニング用のフィルターのスコープ](define-conditional-rules-for-provisioning-user-accounts.md)
 * [アカウント プロビジョニング通知](user-provisioning.md)
 * [SaaS アプリを統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)
+

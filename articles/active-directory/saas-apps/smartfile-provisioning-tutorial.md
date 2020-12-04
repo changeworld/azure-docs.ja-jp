@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: fca18a58ccb8d4e2f10b5db606ad01a97c2d5bac
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 03c7efd390d4714680ed2ccd54d297b8137aaafc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359932"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348672"
 ---
 # <a name="tutorial-configure-smartfile-for-automatic-user-provisioning"></a>チュートリアル:SmartFile を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "94359932"
 
 ## <a name="assigning-users-to-smartfile"></a>SmartFile へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、SmartFile へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定したら、次の手順に従って、これらのユーザーやグループを SmartFile に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -56,7 +56,7 @@ Azure AD での自動ユーザー プロビジョニング用に SmartFile を�
 
     ![SmartFile 管理コンソール](media/smartfile-provisioning-tutorial/login.png)
 
-2. ベアラー トークンを生成するには、 **プロダクト キー** と **プロダクト パスワード** をコピーします。 それらをメモ帳に貼り付け、間にコロンを入れます。
+2. ベアラー トークンを生成するには、**プロダクト キー** と **プロダクト パスワード** をコピーします。 それらをメモ帳に貼り付け、間にコロンを入れます。
     
      ![[プロダクト キー] セクションのスクリーンショット。[プロダクト キー] と [プロダクト パスワード] のテキスト ボックスが選択されています。](media/smartfile-provisioning-tutorial/auth.png)
 
@@ -80,7 +80,7 @@ Azure AD で自動ユーザー プロビジョニング用に SmartFile を構�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **SmartFile** 」と入力し、結果ウィンドウで **[SmartFile]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**SmartFile**」と入力し、結果ウィンドウで **[SmartFile]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果一覧の SmartFile](common/search-new-app.png)
 

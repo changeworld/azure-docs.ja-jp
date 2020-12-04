@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/18/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3bfcd652572b989e98bf4c7cb717cb314dfbaaeb
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: c1bab9b40766fe22baa94497d71d3f8757e1c210
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359886"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348791"
 ---
 # <a name="tutorial-configure-airstack-for-automatic-user-provisioning"></a>チュートリアル:Airstack を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "94359886"
 
 ## <a name="assigning-users-to-airstack"></a>Airstack へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Airstack へのアクセスが必要な Azure AD 内のユーザーやグループを決定しておく必要があります。 決定した後、次の手順に従い、これらのユーザー、グループ、またはその両方を Airstack に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -80,7 +80,7 @@ Azure AD での自動ユーザー プロビジョニング用に Airstack を構
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Airstack** 」と入力し、結果ウィンドウで **[Airstack]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Airstack**」と入力し、結果ウィンドウで **[Airstack]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果リストの Airstack](common/search-new-app.png)
 
@@ -89,7 +89,7 @@ Azure AD での自動ユーザー プロビジョニング用に Airstack を構
 このセクションでは、Azure AD でのユーザー、グループ、またはその両方の割り当てに基づいて、Airstack でユーザー、グループ、またはその両方が作成、更新、および無効化されるように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 > [!TIP]
-> Airstack では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Airstack シングル サインオンのチュートリアル](./airstack-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> Airstack で SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Airstack シングル サインオンのチュートリアル](./airstack-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-airstack-in-azure-ad"></a>Azure AD で Airstack の自動ユーザー プロビジョニングを構成するには、次の操作を実行します。
 

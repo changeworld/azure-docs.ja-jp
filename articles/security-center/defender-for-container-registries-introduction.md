@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d587c4dbdd8f46d6e098ff96f464d456fffc9ccf
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ad880b7c23c687530a79ca1123474e94c923e150
+ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95529989"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96310393"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Azure Defender for container registries の概要
 
@@ -85,6 +85,8 @@ Security Center では、スキャナーによる検出結果がフィルター�
 
 [統合された脆弱性評価ツールからの結果を無効にするルールを作成する方法について確認してください](defender-for-container-registries-usage.md#disable-specific-findings-preview)。
 
+### <a name="why-is-security-center-alerting-me-to-vulnerabilities-about-an-image-that-isnt-in-my-registry"></a>レジストリに含まれていないイメージに関する脆弱性に対して、Security Center の警告が表示されるのはなぜですか。
+レジストリにプッシュまたはプルされたすべてのイメージに対して、Security Center による脆弱性評価が提供されています。 イメージの中には、既にスキャンされたイメージのタグを再利用しているものもあります。 たとえば、ダイジェストにイメージを追加するたびに "Latest" (最新) タグを再割り当てする場合があります。 このような場合は、"古い" イメージは引き続きレジストリに存在し、そのダイジェストによってプルされる可能性があります。 イメージにセキュリティの調査結果があり、プルされた場合は、セキュリティの脆弱性が明らかになります。
 
 
 ## <a name="next-steps"></a>次のステップ

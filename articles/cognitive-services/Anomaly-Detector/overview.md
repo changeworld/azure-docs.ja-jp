@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 11/23/2020
 ms.author: mbullwin
 keywords: 異常検出, 機械学習, アルゴリズム
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 9b540f2e04ae8533a00f79d05e220d99964d9a34
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 1a13b962a000e6e3b2143dc23f94b63c122bd963
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016605"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95999104"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomaly Detector API とは
 
@@ -85,6 +85,10 @@ Microsoft によって開発された SR-CNN アルゴリズムの詳細につ�
 
 
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
+
+## <a name="deploy-on-premises-using-docker-containers"></a>Docker コンテナーを使用してオンプレミスにデプロイする
+
+[Anomaly Detector コンテナーを使用](anomaly-detector-container-howto.md)して、API 機能をオンプレミスにデプロイします。 Docker コンテナーを使用すると、コンプライアンス、セキュリティ、またはその他の運用上の理由から、データにより近いところでサービスを使用できます。
 
 ## <a name="join-the-anomaly-detector-community"></a>Anomaly Detector コミュニティに参加する
 

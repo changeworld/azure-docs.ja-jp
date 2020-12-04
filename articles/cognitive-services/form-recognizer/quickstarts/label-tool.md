@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: ドキュメントの処理
-ms.openlocfilehash: 5df8ced885768308369599d94c5734fa0620c507
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 7671d8d58ffbd0fca444eefe53c46c99a4e76d37
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360872"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96009332"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>サンプル ラベル付けツールを使用したラベルによる Form Recognizer モデルのトレーニング
 
@@ -42,8 +42,17 @@ ms.locfileid: "93360872"
 
 Form Recognizer サンプル ラベル付けツールをオンラインで試すには、[FOTT の Web サイト](https://fott-preview.azurewebsites.net/)にアクセスします。
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)
 > [!div class="nextstepaction"]
-> [Form Recognizer サンプル ラベル付けツール](https://fott-preview.azurewebsites.net/)
+> [事前構築済みモデルを試す](https://fott.azurewebsites.net/)
+
+# <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1)
+> [!div class="nextstepaction"]
+> [事前構築済みモデルを試す](https://fott-preview.azurewebsites.net/)
+
+---
+
+Form Recognizer サービスを試すには、Azure サブスクリプション ([無料で作成](https://azure.microsoft.com/free/cognitive-services)) と [Form Recognizer リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) エンドポイントおよびキーが必要です。 
 
 
 ## <a name="set-up-the-sample-labeling-tool"></a>サンプル ラベル付けツールを設定する
@@ -68,8 +77,6 @@ Form Recognizer サンプル ラベル付けツールをオンラインで試す
 
 
 
-
-
 1. `docker pull` コマンドを使用して、サンプル ラベル付けツールのコンテナーを取得します。
 
     # <a name="v20"></a>[v2.0](#tab/v2-0)    
@@ -78,7 +85,7 @@ Form Recognizer サンプル ラベル付けツールをオンラインで試す
     ```
     # <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1)    
     ```
-    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview
     ```
 
     ---
@@ -91,7 +98,7 @@ Form Recognizer サンプル ラベル付けツールをオンラインで試す
     ```
     # <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1)    
     ```
-    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview eula=accept    
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview eula=accept    
     ```
 
     --- 
@@ -193,7 +200,7 @@ Form Recognizer サンプル ラベル付けツールをオンラインで試す
    1. **+** をクリックして、新しいタグを作成します。
    1. タグ名を入力します。
    1. Enter キーを押して、タグを保存します。
-1. メインのエディターで、強調表示されたテキスト要素から単語を選択します。 "_v2.1 プレビュー_" では、キーと値のペアとして、オプション ボタンやチェック ボックスに似た "_選択マーク_" をクリックして選択することもできます。 選択マークの値が "選択済み" と "未選択" のどちらであるかが Form Recognizer によって識別されます。
+1. メインのエディターで、強調表示されたテキスト要素から単語を選択します。 _v2.1 preview.2_ では、キーと値のペアとして、オプション ボタンやチェック ボックスに似た "_選択マーク_" をクリックして選択することもできます。 選択マークの値が "選択済み" と "未選択" のどちらであるかが Form Recognizer によって識別されます。
 1. 適用するタグをクリックするか、対応するキーボード キーを押します。 数字キーは、最初の 10 個のタグのホットキーとして割り当てられます。 タグの順序は、タグ エディター ペインの上矢印と下矢印のアイコンを使用して変更できます。
     > [!Tip]
     > フォームにラベルを付けるときは、次のヒントに留意してください。
