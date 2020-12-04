@@ -39,6 +39,8 @@
       href: restart-resize-error-troubleshooting.md
     - name: サービスの再起動、シャットダウン、または停止
       href: boot-error-troubleshoot-windows.md
+    - name: Linux 仮想マシンのフル OS ディスクに関する問題
+      href: os-disk-full-linux.md
 - name: 予期しない再起動
   items:
     - name: 接続された VHD による VM の予期しない再起動

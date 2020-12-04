@@ -51,98 +51,6 @@
       href: tutorial-iis-sql.md
     - name: 16 - SSL による Web サーバーのセキュリティ保護
       href: tutorial-secure-web-server.md
-- name: サンプル
-  items:
-    - name: PowerShell インデックス
-      href: powershell-samples.md
-    - name: PowerShell
-      items:
-        - name: 作成
-          items:
-            - name: クイック
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md
-            - name: 完全に構成された VM
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm.md
-            - name: 高可用性 VM
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-nlb-vm.md
-            - name: カスタム スクリプトの例
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md
-            - name: DSC の使用
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-iis-using-dsc.md
-            - name: VHD からの VM のアップロード
-              href: ./../scripts/virtual-machines-windows-powershell-upload-generalized-script.md
-            - name: OS ディスクのアタッチ
-              href: ./../scripts/virtual-machines-powershell-sample-create-vm-from-managed-os-disks.md
-            - name: スナップショットからの VM
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md
-        - name: ストレージの管理
-          items:
-            - name: VHD からマネージド ディスクを作成する
-              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-vhd.md
-            - name: スナップショットからマネージド ディスクを作成する
-              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md
-            - name: マネージド ディスクをコピーする
-              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
-            - name: ストレージ アカウントに VHD としてスナップショットをエクスポートする
-              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md
-            - name: ストレージ アカウントにマネージド ディスクの VHD をエクスポートする
-              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md
-            - name: VHD からスナップショットを作成する
-              href: ../scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd.md
-            - name: スナップショットをコピーする
-              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md
-        - name: セキュリティで保護
-          items:
-            - name: VM とそのデータ ディスクを暗号化する
-              href: ./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?
-        - name: モニター
-          items:
-            - name: Azure Monitor
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md
-            - name: サブスクリプション内のすべての VM に関する詳細情報を収集する
-              href: ../scripts/virtual-machines-powershell-sample-collect-vm-details.md
-    - name: Azure CLI インデックス
-      href: cli-samples.md
-    - name: CLI
-      items:
-        - name: 作成
-          items:
-            - name: クイック
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-quick-create.md
-            - name: 完全に構成された VM
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm.md
-            - name: 高可用性 VM
-              href: ./../scripts/virtual-machines-windows-cli-sample-nlb.md
-            - name: カスタム スクリプトの例
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-iis.md
-            - name: DSC 構成の使用
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-iis-using-dsc.md
-        - name: ストレージの管理
-          items:
-            - name: VHD からマネージド ディスクを作成する
-              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd.md
-            - name: スナップショットからマネージド ディスクを作成する
-              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-snapshot.md
-            - name: マネージド ディスクのコピー
-              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
-            - name: ストレージ アカウントに VHD としてスナップショットをエクスポートする
-              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md
-            - name: ストレージ アカウントにマネージド ディスクの VHD をエクスポートする
-              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md
-            - name: スナップショットのコピー
-              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-same-or-different-subscription.md
-        - name: ネットワーク
-          items:
-            - name: VM 間のネットワーク トラフィックのセキュリティ保護
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-nsg.md
-        - name: セキュリティで保護
-          items:
-            - name: VM とデータ ディスクを暗号化する
-              href: ./../scripts/virtual-machines-windows-cli-sample-encrypt-vm.md
-        - name: モニター
-          items:
-            - name: Azure Monitor
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
 - name: 概念
   items:
     - name: イメージ
@@ -672,9 +580,6 @@
           href: change-drive-letter.md
         - name: 可用性セットの変更
           href: change-availability-set.md
-        - name: Resource Manager テンプレートのエクスポート
-          displayName: Azure Resource Manager
-          href: download-template.md
         - name: Azure VM エージェント
           href: ../extensions/agent-windows.md
         - name: 予測実行の軽減
@@ -951,6 +856,8 @@
           href: find-unattached-disks.md
         - name: アタッチされていないディスクの検出 - ポータル
           href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Azure ディスクをゲスト ディスクにマップする
+          href: azure-to-guest-disk-mapping.md
         - name: ディスクに関する FAQ
           href: ../faq-for-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: ネットワークの管理

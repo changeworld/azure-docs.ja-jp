@@ -68,7 +68,7 @@
             - name: 基本
               href: data-lake-analytics-u-sql-get-started.md
             - name: 言語のリファレンス
-              href: /u-sql/
+              href: 'https://docs.microsoft.com/u-sql'
             - name: Catalog
               href: data-lake-analytics-u-sql-catalog.md
             - name: ユーザー定義演算子
@@ -79,8 +79,6 @@
               href: data-lake-analytics-u-sql-r-extensions.md
             - name: Cognitive 拡張機能
               href: data-lake-analytics-u-sql-cognitive.md
-            - name: プログラミング ガイド
-              href: data-lake-analytics-u-sql-programmability-guide.md
         - name: "Visual\_Studio"
           items:
             - name: インストール
@@ -115,6 +113,28 @@
               href: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
             - name: ローカルの実行とデバッグ
               href: data-lake-tools-for-vscode-local-run-and-debug.md
+        - name: プログラミング ガイド
+          items:
+            - name: プログラミング ガイドの概要
+              href: data-lake-analytics-u-sql-programmability-guide.md
+            - name: プログラミング ガイド - UDT および UDAGG
+              href: data-lake-analytics-u-sql-programmability-guide-UDT-AGG.md
+            - name: プログラミング ガイド - UDO
+              items:
+                - name: ユーザー定義オブジェクトの概要
+                  href: data-lake-analytics-u-sql-programmability-guide-UDO.md
+                - name: ユーザー定義エクストラクターを使用する
+                  href: data-lake-analytics-u-sql-programmability-guide-extractor.md
+                - name: ユーザー定義アウトプッターを使用する
+                  href: data-lake-analytics-u-sql-programmability-guide-outputter.md
+                - name: ユーザー定義プロセッサを使用する
+                  href: data-lake-analytics-u-sql-programmability-guide-processor.md
+                - name: ユーザー定義アプライヤーを使用する
+                  href: data-lake-analytics-u-sql-programmability-guide-applier.md
+                - name: ユーザー定義コンバイナーを使用する
+                  href: data-lake-analytics-u-sql-programmability-guide-combiner.md
+                - name: ユーザー定義レジューサーを使用する
+                  href: data-lake-analytics-u-sql-programmability-guide-reducer.md
     - name: U-SQL ジョブのスケジュール設定
       items:
         - name: SSIS を使用したジョブのスケジュール設定

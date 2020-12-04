@@ -1305,7 +1305,7 @@
           href: tutorial-setup-ci-cd.md
         - name: Azure Storage Explorer を使用する
           href: storage-explorer.md
-        - name: Azure Cosmos Explorer を使用する
+        - name: Azure Cosmos DB Explorer を使用する
           href: data-explorer.md
     - name: Azure Synapse Link を使用した分析と BI
       items:

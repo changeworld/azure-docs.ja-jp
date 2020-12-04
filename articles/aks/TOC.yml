@@ -146,6 +146,8 @@
           href: reduce-latency-ppg.md
         - name: ノード イメージのアップグレード
           href: node-image-upgrade.md
+        - name: ノード イメージを GitHub Actions で自動的にアップグレード
+          href: node-upgrade-github-actions.md
         - name: ノードの OS の更新プログラムの処理
           href: node-updates-kured.md
         - name: AKS クラスターの構成

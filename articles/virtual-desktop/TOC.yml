@@ -124,7 +124,7 @@
           href: shortpath.md
         - name: サービスの品質 (QoS) を実装する
           href: rdp-quality-of-service-qos.md
-        - name: 安全な URL リスト
+        - name: 必要な URL リスト
           href: safe-url-list.md
         - name: 帯域幅に関する考慮事項
           href: rdp-bandwidth.md
