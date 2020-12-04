@@ -50,7 +50,7 @@
         - name: 共同販売のパートナー エンゲージメント
           href: marketplace-co-sell.md
         - name: 'パートナー センターの [共同販売] オプション'
-          href: partner-center-portal/commercial-marketplace-co-sell.md
+          href: commercial-marketplace-co-sell.md
         - name: CSP パートナーによる再販
           href: cloud-solution-providers.md
         - name: コネクト プログラムのオンボード ガイド
@@ -382,9 +382,9 @@
     - name: サポートされている国とリージョン
       href: sell-from-countries.md
     - name: 共同販売国とリージョン コード
-      href: partner-center-portal/commercial-marketplace-co-sell-countries.md
+      href: commercial-marketplace-co-sell-countries.md
     - name: 共同販売の州コード
-      href: partner-center-portal/commercial-marketplace-co-sell-states.md
+      href: commercial-marketplace-co-sell-states.md
     - name: カテゴリとサブカテゴリ
       href: categories.md
     - name: サポートされる HTML タグ

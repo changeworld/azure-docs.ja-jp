@@ -145,7 +145,11 @@
     - name: ピアリングの管理
       items:
         - name: ピアリングの有効化と無効化
-          href: expressroute-howto-reset-peering.md
+          items:
+            - name: Azure portal
+              href: expressroute-howto-reset-peering-portal.md
+            - name: Azure PowerShell
+              href: expressroute-howto-reset-peering.md
         - name: パブリック ピアリングから Microsoft ピアリングに移行する
           href: how-to-move-peering.md
     - name: 回線を介したトラフィックの暗号化
