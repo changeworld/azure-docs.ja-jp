@@ -37,8 +37,10 @@
       href: workflow.md
     - name: 監査ログの表示
       href: audit-logs.md
-- name: 参考資料
+- name: リファレンス
   items:
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation'
     - name: よく寄せられる質問
       href: faq.md
     - name: REST
