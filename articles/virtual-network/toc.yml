@@ -71,12 +71,18 @@
           href: ../expressroute/cross-network-connectivity.md?toc=%2fazure%2fvirtual-network%2ftoc.json
         - name: ピアリング
           href: virtual-network-peering-overview.md
-    - name: Azure サービス向けの統合
+    - name: Azure サービスの統合
       items:
-        - name: サービス エンドポイント
-          href: virtual-network-service-endpoints-overview.md
+        - name: 概要
+          href: vnet-integration-for-azure-services.md
         - name: 専用サービスのデプロイ
           href: virtual-network-for-azure-services.md
+        - name: Private Link
+          href: ../private-link/private-link-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: サービス エンドポイント
+          href: virtual-network-service-endpoints-overview.md
+        - name: サービス タグ
+          href: service-tags-overview.md
     - name: IP サービス
       items:
         - name: パブリック IP
@@ -99,6 +105,8 @@
           href: security-baseline.md
         - name: Virtual Network NAT のセキュリティ ベースライン
           href: nat-security-baseline.md
+        - name: Azure サービスのネットワークの分離
+          href: vnet-integration-for-azure-services.md
         - name: ネットワーク セキュリティ グループ
           items:
             - name: 概要

@@ -134,6 +134,8 @@
           href: how-to-request-real-time-data.md
         - name: リアルタイムの天気予報データを要求する
           href: how-to-request-weather-data.md
+        - name: 標高データを要求する
+          href: how-to-request-elevation-data.md
     - name: Web SDK を使った開発
       items:
         - name: マップ コントロール

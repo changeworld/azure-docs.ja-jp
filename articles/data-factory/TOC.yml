@@ -145,6 +145,10 @@
           href: tutorial-deploy-ssis-packages-azure-powershell.md
         - name: 仮想ネットワークに参加する
           href: tutorial-deploy-ssis-virtual-network.md
+    - name: 系列
+      items:
+        - name: Data Factory 系列データを Azure Purview にプッシュする
+          href: turorial-push-lineage-to-purview.md
     - name: エンド ツー エンドのラボ
       items:
         - name: データ ファクトリとデータ共有を使用したデータ統合
@@ -688,6 +692,10 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: タンブリング ウィンドウ トリガーの依存関係の作成
           href: tumbling-window-trigger-dependency.md
+    - name: 系列
+      items:
+        - name: Data Factory を Azure Purview に接続する
+          href: connect-data-factory-to-azure-purview.md
     - name: シナリオ
       items:
         - name: データ レイクおよび EDW のデータ移行

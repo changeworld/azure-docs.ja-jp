@@ -1055,6 +1055,8 @@
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: 記憶域を UltraSSD に移行する
                   href: virtual-machines/windows/storage-migrate-to-ultradisk.md
+                - name: SQL 脆弱性評価を有効にする
+                  href: virtual-machines/windows/sql-vulnerability-assessment-enable.md
                 - name: SQL IaaS Agent 拡張機能をインストールする
                   displayName: 'resource provider, registration, sql vm rp'
                   items:

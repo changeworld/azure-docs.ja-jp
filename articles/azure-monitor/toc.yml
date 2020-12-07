@@ -131,7 +131,7 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: アラート
+    - name: 警告
       items:
         - name: 概要
           href: platform/alerts-overview.md
@@ -274,6 +274,8 @@
                   href: log-query/resource-expression.md
                 - name: アプリケーション データ リソースの統合
                   href: log-query/unify-app-resource-data.md
+                - name: Azure Monitor から Azure Data Explorer にクエリを実行する
+                  href: platform/azure-monitor-data-explorer-proxy.md
         - name: データのエクスポート
           items:
             - name: ワークスペースのデータのエクスポート
@@ -349,7 +351,7 @@
       items:
         - name: 概要
           href: platform/agents-overview.md
-        - name: よく寄せられる質問
+        - name: よくあるご質問
           href: faq.md#agents
         - name: Azure Monitor エージェント
           items:
@@ -550,7 +552,7 @@
               href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: Service Manager Web アプリを作成する
               href: platform/itsmc-service-manager-script.md
-            - name: ServiceNow ITSM の同期の問題を修正する
+            - name: ITSM Connector での問題のトラブルシューティング
               href: platform/itsmc-resync-servicenow.md
         - name: クラシック アラート ルールを移行する
           items:

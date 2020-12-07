@@ -61,7 +61,7 @@
           href: load-balancer-insights.md
         - name: Standard Load Balancer のメトリックと診断
           href: load-balancer-standard-diagnostics.md
-        - name: Basic Load Balancer の Azure Monitor ログ
+        - name: Load Balancer 用の Azure Monitor のログ
           href: load-balancer-monitor-log.md
         - name: REST を使用して Load Balancer のメトリックを取得する
           href: load-balancer-query-metrics-rest-api.md

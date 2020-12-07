@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure Stack Edge と Azure Data Box Gateway のドキュメント - オンライン転送
-summary: ネットワーク経由でハイ パフォーマンスのデータ転送を行うには、Azure Stack Edge および Azure Data Box Gateway デバイスを使用します。 データを Azure に移動する前に、そのデータのフィルター処理、分析、変換を行う場合は、コンピューティング アクセラレーション ハードウェアを備えた Azure Stack Edge Pro デバイスを使用します。 クラウド アーカイブ、ディザスター リカバリー、またはクラウド規模でのデータ処理のためにデータを送信する場合は、Data Box Gateway を選択します。
+title: Azure Stack Edge のドキュメント - オンライン転送
+summary: ネットワーク経由で高パフォーマンスのデータ転送を行うには、Azure Stack Edge デバイスを使用します。 データを Azure に移動する前に、そのデータのフィルター処理、分析、変換を行う場合は、コンピューティング アクセラレーション ハードウェアを備えた Azure Stack Edge Pro デバイスを使用します。
 metadata:
-  title: Azure Stack Edge と Azure Data Box Gateway のドキュメント - オンライン転送
-  description: Azure に対してネットワーク経由でハイ パフォーマンスのデータ転送を行うための Data Box Gateway と Azure Stack Edge のドキュメント。
+  title: Azure Stack Edge のドキュメント - オンライン転送
+  description: Azure に対してネットワーク経由でハイ パフォーマンスのデータ転送を行うための Azure Stack Edge のドキュメント。
   services: databox
   ms.service: databox
   ms.subservice: edge
@@ -11,15 +11,15 @@ metadata:
   ms.collection: collection
   author: alkohli
   ms.author: alkohli
-  ms.date: 09/08/2020
-  ms.openlocfilehash: 03072f5a30cdf73e1bdde695d3c034ac201aea3e
-  ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+  ms.date: 10/27/2020
+  ms.openlocfilehash: 2ee9153bc500c7d5184e32712e0707d1c0f2507e
+  ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/01/2020
-  ms.locfileid: "96451090"
+  ms.lasthandoff: 12/03/2020
+  ms.locfileid: "96574192"
 landingContent:
-- title: Azure Stack Edge と Data Box Gateway について
+- title: Azure Stack Edge について
   linkLists:
   - linkListType: overview
     links:
@@ -31,8 +31,6 @@ landingContent:
       url: azure-stack-edge-j-series-overview.md
     - text: Azure Stack Edge Mini とは
       url: azure-stack-edge-k-series-overview.md
-    - text: Data Box Gateway とは
-      url: data-box-gateway-overview.md
   - linkListType: architecture
     links:
     - text: Azure のデータ転送オプションの選択
@@ -41,8 +39,8 @@ landingContent:
       url: ../storage/common/storage-solution-large-dataset-low-network.md#offline-transfer-or-network-transfer
   - linkListType: whats-new
     links:
-    - text: 2009 リリース ノート
-      url: azure-stack-edge-gpu-2008-release-notes.md
+    - text: 2011 リリース ノート
+      url: azure-stack-edge-gpu-2011-release-notes.md
 - title: 要件と制限
   linkLists:
   - linkListType: concept
@@ -51,12 +49,8 @@ landingContent:
       url: azure-stack-edge-gpu-system-requirements.md
     - text: Azure Stack Edge Pro FPGA の要件
       url: azure-stack-edge-gpu-system-requirements.md
-    - text: Data Box Gateway の要件
-      url: data-box-gateway-system-requirements.md
     - text: Azure Stack Edge Pro の制限
       url: azure-stack-edge-limits.md
-    - text: Data Box Gateway の制限
-      url: data-box-gateway-limits.md
 - title: 配置
   linkLists:
   - linkListType: tutorial
@@ -65,8 +59,6 @@ landingContent:
       url: azure-stack-edge-gpu-deploy-checklist.md
     - text: Azure Stack Edge Pro GPU
       url: azure-stack-edge-gpu-deploy-prep.md
-    - text: Data Box Gateway
-      url: data-box-gateway-deploy-prep.md
     - text: Marketplace 経由の GPU モジュール
       url: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
     - text: IoT Edge 経由の Kubernetes ワークロード
@@ -87,8 +79,6 @@ landingContent:
     links:
     - text: Azure Stack Edge Pro の共有
       url: azure-stack-edge-manage-shares.md
-    - text: Data Box Gateway の共有
-      url: data-box-gateway-manage-shares.md
     - text: Edge コンピューティング
       url: azure-stack-edge-manage-compute.md
     - text: Edge ストレージ アカウント
@@ -99,8 +89,6 @@ landingContent:
     links:
     - text: Azure Stack Edge GPU
       url: azure-stack-edge-gpu-troubleshoot.md
-    - text: Data Box Gateway
-      url: data-box-gateway-troubleshoot.md
     - text: Edge コンピューティング モジュール
       url: azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge
     - text: Azure Stack Edge GPU を返却する

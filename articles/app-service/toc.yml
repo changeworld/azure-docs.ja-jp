@@ -108,7 +108,7 @@
       href: deploy-best-practices.md
     - name: セキュリティ
       items:
-        - name: Recommendations
+        - name: 推奨事項
           href: security-recommendations.md
         - name: 認証と権限承認
           href: overview-authentication-authorization.md
@@ -223,6 +223,8 @@
               href: configure-authentication-provider-twitter.md
             - name: OpenID Connect プロバイダーを使用した認証 (プレビュー)
               href: configure-authentication-provider-openid-connect.md
+            - name: Apple でのサインインを使用した認証 (プレビュー)
+              href: configure-authentication-provider-apple.md
         - name: 高度な認証
           href: app-service-authentication-how-to.md
         - name: アクセスを制限する

@@ -167,6 +167,12 @@
           href: iot-hub-devguide-sdks.md
         - name: MQTT サポート
           href: iot-hub-mqtt-support.md
+        - name: MQTT 5 サポート (プレビュー)
+          items:
+            - name: MQTT 5 の概要
+              href: iot-hub-mqtt-5.md
+            - name: MQTT 5 API リファレンス
+              href: iot-hub-mqtt-5-reference.md
         - name: AMQP のサポート
           href: iot-hub-amqp-support.md
         - name: 用語集
