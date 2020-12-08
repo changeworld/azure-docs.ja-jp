@@ -33,7 +33,9 @@
               href: create-first-function-vs-code-python.md
             - name: TypeScript
               href: create-first-function-vs-code-typescript.md
-        - name: Visual Studio
+            - name: その他 (Go/Rust)
+              href: create-first-function-vs-code-other.md
+        - name: "Visual\_Studio"
           href: functions-create-your-first-function-visual-studio.md
         - name: コマンド ライン
           expanded: false
@@ -57,7 +59,7 @@
       items:
         - name: Visual Studio Code
           href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: Visual Studio
+        - name: "Visual\_Studio"
           href: functions-add-output-binding-storage-queue-vs.md
         - name: コマンド ライン
           href: functions-add-output-binding-storage-queue-cli.md

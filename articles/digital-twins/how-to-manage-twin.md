@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9e00e0e5a34eecd6974e8919ce0d0e16f48757f3
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ba444a497fa4fccab6b8dec1fadb3383420e4d49
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540970"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452964"
 ---
 # <a name="manage-digital-twins"></a>デジタル ツインを管理する
 
@@ -99,7 +99,7 @@ Console.WriteLine("The twin is created successfully");
 ```csharp
 object result = await client.GetDigitalTwin(id);
 ```
-この呼び出しからは、ツイン データが `BasicDigitalTwin` のような厳密に型指定されたオブジェクト型として返されます。 これを使用してツインの詳細を表示する方法の例を次に示します。
+この呼び出しからは、ツイン データが `BasicDigitalTwin` のような厳密に型指定されたオブジェクト型として返されます。 `BasicDigitalTwin` は、SDK に含まれているシリアル化ヘルパー クラスであり、ツインのコア メタデータとプロパティが解析済みの形で返されます。 これを使用してツインの詳細を表示する方法の例を次に示します。
 
 ```csharp
 Response<BasicDigitalTwin> twin = client.GetDigitalTwin("myRoomId");
@@ -176,21 +176,7 @@ foreach (string prop in twin.Contents.Keys)
     - 書き込み可能な各プロパティの同期の状態。 これは、サービスとデバイスの状態が異なる可能性がある場合 (デバイスがオフラインの場合など) に、デバイスで最も役立ちます。 現在、このプロパティは IoT Hub に接続されている物理デバイスにのみ適用されます。 メタデータ セクションのデータにより、プロパティの完全な状態と、最終変更のタイムスタンプを把握できます。 同期の状態の詳細については、デバイスの状態の同期に関する[こちらの IoT Hub チュートリアル](../iot-hub/tutorial-device-twins.md)をご覧ください。
     - IoT Hub や Azure Digital Twins などのサービス固有のメタデータ。 
 
-`System.Text.Json` など、任意の JSON 解析ライブラリを使用して、返されたツインの JSON を解析できます。
-
-SDK に含まれているシリアル化ヘルパー クラスの `BasicDigitalTwin` を使用することもできます。この場合、ツインのコア メタデータとプロパティが解析済みの形で返されます。 たとえば次のようになります。
-
-```csharp
-Response<BasicDigitalTwin> twin = client.GetDigitalTwin(twin_Id);
-Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-foreach (string prop in twin.Contents.Keys)
-{
-    if (twin.Contents.TryGetValue(prop, out object value))
-        Console.WriteLine($"Property '{prop}': {value}");
-}
-```
-
-シリアル化ヘルパー クラスの詳細については、"[*Azure Digital Twins の API および SDK を使用する方法*](how-to-use-apis-sdks.md)" に関するページで参照してください。
+`BasicDigitalTwin` などのシリアル化ヘルパー クラスの詳細については、"[*Azure Digital Twins の API および SDK を使用する方法*](how-to-use-apis-sdks.md)" に関するページで参照してください。
 
 ## <a name="view-all-digital-twins"></a>すべてのデジタル ツインを表示する
 

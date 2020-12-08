@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: オンプレミス、OCR、Docker、コンテナー
-ms.openlocfilehash: 33fc13722a4d0f26c71aa85809a605188b610014
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b89d02107365872471f1dd5a7df07902b08f2031
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539013"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96006910"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Read OCR Docker コンテナー (プレビュー) をインストールする 
 
@@ -27,12 +27,12 @@ ms.locfileid: "94539013"
 
 *Read* OCR コンテナーを使用すると、JPEG、PNG、BMP、PDF、TIFF の各ファイル形式をサポートするイメージとドキュメントから、印刷されたテキストおよび手書きのテキストを抽出できます。 詳細については、[Read API のドキュメント](concept-recognizing-text.md#read-api)に関する記事を参照してください。
 
-## <a name="read-31-container"></a>Read 3.1 コンテナー
+## <a name="read-32-preview-container"></a>Read 3.2-preview コンテナー
 
 > [!NOTE]
 > Read 3.0-preview コンテナーは非推奨となりました。 
 
-Read 3.1-preview コンテナーは、次のものを備えています。
+Read 3.2-preview コンテナーは、次のものを備えています。
 * 精度の向上のための新しいモデル。
 * 同じドキュメント内での複数言語のサポート
 * サポート対象:オランダ語、英語、フランス語、ドイツ語、イタリア語、ポルトガル語、およびスペイン語。
@@ -92,16 +92,16 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 | コンテナー | コンテナー レジストリ / リポジトリ / イメージ名 |
 |-----------|------------|
 | Read 2.0-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Read 3.1-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
+| Read 3.2-プレビュー | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1` |
 
 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して、コンテナー イメージをダウンロードします。
 
 ### <a name="docker-pull-for-the-read-container"></a>読み取りコンテナー用の Docker pull
 
-# <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[Version 3.2-preview](#tab/version-3-2)
 
 ```bash
-docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1
 ```
 
 # <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
@@ -127,11 +127,11 @@ docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview
 
 `docker run` コマンドの[例](computer-vision-resource-container-config.md#example-docker-run-commands)を利用できます。
 
-# <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[Version 3.2-preview](#tab/version-3-2)
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -169,9 +169,9 @@ ApiKey={API_KEY}
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
 
-より高いスループットが必要な場合 (複数ページのファイルを処理する場合など)、[Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-create) と [Azure Queue](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction) を使用して、[Kubernetes クラスターに](deploy-computer-vision-on-premises.md)複数のコンテナーをデプロイすることを検討してください。
+より高いスループットが必要な場合 (複数ページのファイルを処理する場合など)、[Azure Storage](../../storage/common/storage-account-create.md) と [Azure Queue](../../storage/queues/storage-queues-introduction.md) を使用して、[Kubernetes クラスターに](deploy-computer-vision-on-premises.md)複数のコンテナーをデプロイすることを検討してください。
 
-処理用のイメージを格納するために Azure Storage を使用している場合は、コンテナーを呼び出すときに使用する[接続文字列](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string)を作成できます。
+処理用のイメージを格納するために Azure Storage を使用している場合は、コンテナーを呼び出すときに使用する[接続文字列](../../storage/common/storage-configure-connection-string.md)を作成できます。
 
 接続文字列を見つけるには
 
@@ -189,9 +189,9 @@ ApiKey={API_KEY}
 
 コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。 
 
-# <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[Version 3.2-preview](#tab/version-3-2)
 
-コンテナー API には、ホストの `http://localhost:5000` を使用します。 Swagger パスは `http://localhost:5000/swagger/vision-v3.1-preview-read/swagger.json` で確認できます。
+コンテナー API には、ホストの `http://localhost:5000` を使用します。 Swagger パスは `http://localhost:5000/swagger/vision-v3.2-preview-read/swagger.json` で確認できます。
 
 # <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
 
@@ -202,9 +202,9 @@ ApiKey={API_KEY}
 ### <a name="asynchronous-read"></a>非同期読み取り
 
 
-# <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[Version 3.2-preview](#tab/version-3-2)
 
-Computer Vision サービスで該当する REST 操作を使用する方法と同じように、`POST /vision/v3.1/read/analyze` 操作と `GET /vision/v3.1/read/operations/{operationId}` 操作を同時に使用して、画像を非同期に読み取ることができます。 非同期 POST メソッドでは、HTTP GET 要求に対する識別子として使用される `operationId` が返されます。
+Computer Vision サービスで該当する REST 操作を使用する方法と同じように、`POST /vision/v3.2/read/analyze` 操作と `GET /vision/v3.2/read/operations/{operationId}` 操作を同時に使用して、画像を非同期に読み取ることができます。 非同期 POST メソッドでは、HTTP GET 要求に対する識別子として使用される `operationId` が返されます。
 
 
 Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開します。 次に、 **[Try it out]\(試してみる\)**  >  **[Choose file]\(ファイルの選択\)** を選択します。 この例では、次の画像を使用します。
@@ -216,7 +216,7 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
 ```http
  content-length: 0
  date: Fri, 04 Sep 2020 16:23:01 GMT
- operation-location: http://localhost:5000/vision/v3.1/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
+ operation-location: http://localhost:5000/vision/v3.2/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
  server: Kestrel
 ```
 
@@ -228,7 +228,7 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
   "createdDateTime": "2020-09-02T10:30:14Z",
   "lastUpdatedDateTime": "2020-09-02T10:30:15Z",
   "analyzeResult": {
-    "version": "3.1.0",
+    "version": "3.2.0",
     "readResults": [
       {
         "page": 1,
@@ -344,15 +344,15 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
 ---
 
 > [!IMPORTANT]
-> ロード バランサーの背後に複数の読み取りコンテナーをデプロイする場合は (たとえば、Docker Compose または Kubernetes の下)、外部キャッシュが必要です。 処理コンテナーと GET 要求コンテナーは同じではない可能性があるため、外部キャッシュによって結果が格納され、コンテナーとの間で共有されます。 キャッシュ設定の詳細については、「[Computer Vision Docker コンテナーを構成する](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config)」を参照してください。
+> ロード バランサーの背後に複数の読み取りコンテナーをデプロイする場合は (たとえば、Docker Compose または Kubernetes の下)、外部キャッシュが必要です。 処理コンテナーと GET 要求コンテナーは同じではない可能性があるため、外部キャッシュによって結果が格納され、コンテナーとの間で共有されます。 キャッシュ設定の詳細については、「[Computer Vision Docker コンテナーを構成する](./computer-vision-resource-container-config.md)」を参照してください。
 
 ### <a name="synchronous-read"></a>同期読み取り
 
 次の操作を使用して、画像を同期的に読み取ることができます。 
 
-# <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[Version 3.2-preview](#tab/version-3-2)
 
-`POST /vision/v3.1/read/syncAnalyze` 
+`POST /vision/v3.2/read/syncAnalyze` 
 
 # <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
 

@@ -87,10 +87,12 @@
       href: supported-map-styles.md
     - name: ズーム レベルとタイル グリッド
       href: zoom-levels-and-tile-grid.md
-    - name: Mobility Service のデータ構造
+    - name: モビリティ サービス
       href: mobility-service-data-structure.md
-    - name: 天気サービスの概念
+    - name: Weather Service の概念
       href: weather-services-concepts.md
+    - name: Weather Service の FAQ
+      href: weather-services-faq.md
 - name: 操作方法ガイド
   items:
     - name: Maps のアカウントを管理する

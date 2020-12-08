@@ -8,11 +8,9 @@
   expanded: true
   items:
     - name: VPN ゲートウェイを作成して管理する
-      items:
-        - name: Azure portal
-          href: tutorial-create-gateway-portal.md
-        - name: Azure PowerShell
-          href: vpn-gateway-tutorial-create-gateway-powershell.md
+      href: tutorial-create-gateway-portal.md
+    - name: サイト間接続を構成する
+      href: tutorial-site-to-site-portal.md
 - name: サンプル
   items:
     - name: Azure PowerShell
@@ -88,7 +86,7 @@
         - name: サイト間接続の構成
           items:
             - name: Azure portal
-              href: vpn-gateway-howto-site-to-site-resource-manager-portal.md
+              href: tutorial-site-to-site-portal.md
             - name: Azure PowerShell
               href: vpn-gateway-create-site-to-site-rm-powershell.md
             - name: Azure CLI

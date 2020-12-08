@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Azure Digital Twins データのエンドポイントとイベント ルートを設定し、管理する方法について説明します。
 author: alexkarcher-msft
 ms.author: alkarche
-ms.date: 10/12/2020
+ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0b8bd9006482daf7c9218f0f3dbb16d2e08359bf
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3db475b5eb0c584f86c8810e9c993e4d5d7b497e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533754"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452907"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure Digital Twins のエンドポイントとルートを管理する (API と CLI)
 
@@ -90,18 +90,31 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 エンドポイントでは、一定期間内にイベントを配信できない場合や、イベントの配信を一定回数試行した後も配信できない場合、未配信イベントをストレージ アカウントに送信できます。 このプロセスは **配信不能処理** と呼ばれます。
 
-配信不能処理が有効なエンドポイントを作成するには、[ARM API](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) を使用してエンドポイントを作成する必要があります。 
-
-配信不能の場所を設定するには、コンテナーを含むストレージ アカウントが必要です。 エンドポイントの作成時に、このコンテナーの URL を指定します。 配信不能メッセージは、コンテナーの URL として、SAS トークンで提供されます。 このトークンには、ストレージ アカウント内の送信先コンテナーに対する `write` アクセス許可のみが必要です。 完全な形式の URL は次の形式になります: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
-
-SAS トークンの詳細については、次を参照してください:[共有アクセス署名 (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](/azure/storage/common/storage-sas-overview)
-
 配信不能処理の詳細については、[*イベント ルートの概念*](concepts-route-events.md#dead-letter-events)に関するページを参照してください。
 
-#### <a name="configuring-the-endpoint"></a>エンドポイントの構成
+#### <a name="set-up-storage-resources"></a>ストレージ リソースを設定する
 
-エンドポイントの作成時には、要求の本文で `properties` オブジェクトに `deadLetterSecret` を追加します。これには、ストレージ アカウントのコンテナー URL と SAS トークンが含まれます。
+配信不能の場所を設定するには、ご使用の Azure アカウントに[コンテナー](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)が設定された[ストレージ アカウント](../storage/common/storage-account-create.md?tabs=azure-portal)が必要です。 後でエンドポイントを作成する際に、このコンテナーの URL を指定します。
+配信不能メッセージは、コンテナーの URL として、[SAS トークン](../storage/common/storage-sas-overview.md)で提供されます。 このトークンには、ストレージ アカウント内の送信先コンテナーに対する `write` アクセス許可のみが必要です。 完全な形式の URL は次の形式になります: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
+以下の手順に従って、Azure アカウントでこれらのストレージ リソースを設定し、次のセクションでエンドポイント接続の設定を準備します。
+
+1. [この記事](../storage/common/storage-account-create.md?tabs=azure-portal)の手順に従ってストレージ アカウントを作成し、後で使用するためにストレージ アカウント名を保存します。
+2. [この記事](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)を使用してコンテナーを作成し、コンテナー名を保存します。これは後でコンテナーとエンドポイント間の接続を設定するときに使用します。
+3. 次に、ストレージ アカウントの SAS トークンを作成します。 まず、[Azure portal](https://ms.portal.azure.com/#home) でご自分のストレージ アカウントに移動します (ポータルの検索バーを使って名前で見つけることができます)。
+4. ストレージ アカウントのページで、左側のナビゲーション バーの _[Shared Access Signature]_ リンクを選択し、SAS トークンを生成するための適切なアクセス許可を選択します。
+5. _[使用できるサービス]_ と _[使用できるリソースの種類]_ に必要な設定を選択します。 カテゴリごとに少なくとも 1 つのボックスを選択する必要があります。 [与えられているアクセス許可] に、 **[書き込み]** を選択します (必要に応じて他のアクセス許可を選択することもできます)。
+残りの設定は必要に応じて設定してください。
+6. 次に、 _[SAS と接続文字列を生成する]_ ボタンを選択して SAS トークンを生成します。 これにより、同じページの下部の選択した設定の下に、いくつかの SAS と接続文字列の値が生成されます。 下にスクロールして値を表示し、[クリップボードにコピー] アイコンを使用して **SAS トークン** 値をコピーします。 後で使用するために保存します。
+
+:::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token.png" alt-text="SAS トークンを生成するためのすべての設定の選択が示されている Azure portal のストレージ アカウントのページ。" lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token.png":::
+
+:::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="配信不能メッセージのシークレットで使用する SAS トークンをコピーします。" lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
+
+#### <a name="configure-the-endpoint"></a>エンドポイントを構成する
+
+配信不能メッセージのエンドポイントは Azure Resource Manager API を使用して作成されます。 エンドポイントの作成時に、[Azure Resource Manager API のドキュメント](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate)を使用して、必要な要求パラメーターを入力します。 また、要求の **本文** でプロパティ オブジェクトに `deadLetterSecret` を追加します。これには、ストレージ アカウントのコンテナー URL と SAS トークンが含まれます。
+      
 ```json
 {
   "properties": {
@@ -113,8 +126,7 @@ SAS トークンの詳細については、次を参照してください:[共�
   }
 }
 ```
-
-詳細については、次の Azure Digital Twins REST API ドキュメントを参照してください:「[エンドポイント - DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate)」。
+この要求の構造化に関する詳細については、次の Azure Digital Twins REST API のドキュメントを参照してください:「[エンドポイント - DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate)」。
 
 ### <a name="message-storage-schema"></a>メッセージ ストレージ スキーマ
 
@@ -158,8 +170,8 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 
 **前提条件**:ルートの作成に進む前に、この記事の前出の説明に従ってエンドポイントを作成する必要があります。 エンドポイントの設定が完了したら、イベント ルートの作成に進むことができます。
 
->[!NOTE]
->エンドポイントを最近デプロイした場合は、新しいイベント ルートでそれらの使用を試みる **前に**、それらのデプロイが完了していることを確認します。 エンドポイントの準備ができていないためにルートのデプロイが失敗する場合は、数分待ってからやり直してください。
+> [!NOTE]
+> エンドポイントを最近デプロイした場合は、新しいイベント ルートでそれらの使用を試みる **前に**、それらのデプロイが完了していることを確認します。 エンドポイントの準備ができていないためにルートのデプロイが失敗する場合は、数分待ってからやり直してください。
 >
 > このフローをスクリプト化する場合は、ルートの設定に進む前に、エンドポイント サービスのデプロイが完了するまでの 2 ～ 3 分の待機時間を組み込んで、このことを考慮に入れておくことを推奨します。
 
@@ -181,7 +193,7 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 ```csharp
 string eventFilter = "$eventType = 'DigitalTwinTelemetryMessages' or $eventType = 'DigitalTwinLifecycleNotification'";
 var er = new DigitalTwinsEventRoute("<your-endpointName>", eventFilter);
-await CreateOrReplaceEventRouteAsync(client, "routeName", er);
+await client.CreateOrReplaceEventRouteAsync("routeName", er);
 ```
     
 > [!TIP]
@@ -229,7 +241,7 @@ private async static Task CreateEventRoute(DigitalTwinsClient client, String rou
 
 イベント ルートにエンドポイントの **フィルター** を追加することで、送信されるイベントを制限できます。
 
-フィルターを追加するために、次の本文を含む PUT 要求を *https://{YourHost}/EventRoutes/myNewRoute?api-version=2020-10-31* に対して使用できます。
+フィルターを追加するために、次の本文を含む PUT 要求を *https://{Your-azure-digital-twins-hostname}/eventRoutes/{event-route-name}?api-version=2020-10-31* に対して使用できます。
 
 ```json  
 {
@@ -237,7 +249,6 @@ private async static Task CreateEventRoute(DigitalTwinsClient client, String rou
     "filter": "<filter-text>"
 }
 ``` 
-
 サポートされているルート フィルターを次に示します。 「*フィルター テキスト スキーマ*」列の情報を使用して、上記の要求本文の `<filter-text>` プレースホルダーを置き換えてください。
 
 [!INCLUDE [digital-twins-route-filters](../../includes/digital-twins-route-filters.md)]

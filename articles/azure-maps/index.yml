@@ -9,12 +9,12 @@ metadata:
   author: anastasia-ms
   ms.author: v-stharr
   ms.date: 1/15/2020
-  ms.openlocfilehash: 49de6739fe4d084bc119ffeaa0ffb3e8156f935b
-  ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+  ms.openlocfilehash: 1b1752db80f99c35e2b1b0876eef7a15184c6abf
+  ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/03/2020
-  ms.locfileid: "96546303"
+  ms.lasthandoff: 12/06/2020
+  ms.locfileid: "96745844"
 landingContent:
 - title: Azure Maps について
   linkLists:
@@ -214,7 +214,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: モビリティ サービスのデータ構造
+    - text: モビリティ サービス
       url: mobility-service-data-structure.md
   - linkListType: how-to-guide
     links:
@@ -226,12 +226,14 @@ landingContent:
     links:
     - text: モビリティ サービス
       url: /rest/api/maps/mobility
-- title: 天気サービスを使用した開発
+- title: Weather Service を使用した開発
   linkLists:
   - linkListType: concept
     links:
-    - text: 天気サービスの概念
+    - text: Weather Service の概念
       url: weather-services-concepts.md
+    - text: Weather Service の FAQ
+      url: weather-services-faq.md
   - linkListType: tutorial
     links:
     - text: Azure Notebooks (Python) を使用した気象データの分析
@@ -242,5 +244,5 @@ landingContent:
       url: how-to-request-weather-data.md
   - linkListType: reference
     links:
-    - text: 天気サービス
+    - text: Weather Service
       url: /rest/api/maps/weather

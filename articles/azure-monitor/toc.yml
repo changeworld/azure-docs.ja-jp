@@ -274,6 +274,8 @@
                   href: log-query/resource-expression.md
                 - name: アプリケーション データ リソースの統合
                   href: log-query/unify-app-resource-data.md
+                - name: Azure Monitor と Azure Data Explorer 間のサービス間クエリの概要
+                  href: platform/azure-data-explorer-monitor-cross-service-query.md
                 - name: Azure Monitor から Azure Data Explorer にクエリを実行する
                   href: platform/azure-monitor-data-explorer-proxy.md
         - name: データのエクスポート
@@ -351,7 +353,7 @@
       items:
         - name: 概要
           href: platform/agents-overview.md
-        - name: よくあるご質問
+        - name: よく寄せられる質問
           href: faq.md#agents
         - name: Azure Monitor エージェント
           items:

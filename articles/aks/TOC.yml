@@ -152,6 +152,8 @@
           href: node-updates-kured.md
         - name: AKS クラスターの構成
           href: cluster-configuration.md
+        - name: カスタム ノード構成 (プレビュー)
+          href: custom-node-configuration.md
         - name: ACR と AKS クラスターの統合
           href: cluster-container-registry-integration.md
         - name: 仮想ノードの作成

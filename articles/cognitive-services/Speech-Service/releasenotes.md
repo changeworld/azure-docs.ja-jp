@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 18d228af5c162159d52b5583613d4449d1195af2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c6cc033e4814553020957310224a8ed4cdacbc8e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95894237"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483956"
 ---
 # <a name="speech-service-release-notes"></a>Speech Service リリース ノート
 
@@ -40,14 +40,13 @@ ms.locfileid: "95894237"
 
 **新機能**
 - **Linux**:Debian 10 および Ubuntu 20.04 LTS のサポートを追加しました。
-- **Python、Objective-C**: `KeywordRecognizer` API のサポートを追加しました。 ドキュメントは[こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-keyword-basics)です。
+- **Python、Objective-C**: `KeywordRecognizer` API のサポートを追加しました。 ドキュメントは[こちら](./custom-keyword-basics.md)です。
 - **C++、Java、C#** : `ServicePropertyChannel::HttpHeader` を使用して任意の `HttpHeader` のキーと値を設定するためのサポートを追加しました。
-- **JavaScript**:`ConversationTranscriber` API のサポートを追加しました。 [こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-conversation-transcription?pivots=programming-language-javascript)のドキュメントを参照してください。 
-- **C++、C#** : 新しい `AudioDataStream FromWavFileInput` メソッド (.WAV ファイル読み取り用) を[こちら (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/audiodatastream)と[こちら (C#)](
-https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet) に追加しました。
--  **C++、C#、Java、Python、Objective-C、Swift**: テキスト読み上げを停止する `stopSpeakingAsync()` メソッドを追加しました。 [こちら (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace)、[こちら (C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet)、[こちら (Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech)、[こちら (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)、および[こちら (Objective-C、Swift)](https://docs.microsoft.com/objectivec/cognitive-services/speech/) のリファレンス ドキュメントを参照してください。
-- **C#、C++、Java**: `DialogServiceConnector` の接続および切断イベントを監視するために使用できる `FromDialogServiceConnector()` 関数を `Connection` クラスに追加しました。 [こちら (C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet)、[こちら (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)、および[こちら (Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection) のリファレンス ドキュメントを参照してください。
-<!-- - **C++/C#/Java/Python/Objective-C/Swift**: Added support for Pronunciation Assessment, which evaluates speech pronunciation and gives speakers feedback on the accuracy and fluency of spoken audio. Read the documentation [here](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment). -->
+- **JavaScript**:`ConversationTranscriber` API のサポートを追加しました。 [こちら](./how-to-use-conversation-transcription.md?pivots=programming-language-javascript)のドキュメントを参照してください。 
+- **C++、C#** : 新しい `AudioDataStream FromWavFileInput` メソッド (.WAV ファイル読み取り用) を [こちら (C++)](/cpp/cognitive-services/speech/audiodatastream)と [こちら (C#)](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet) に追加しました。
+-  **C++、C#、Java、Python、Objective-C、Swift**: テキスト読み上げを停止する `stopSpeakingAsync()` メソッドを追加しました。 [こちら (C++)](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace)、[こちら (C#)](/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet)、[こちら (Java)](/java/api/com.microsoft.cognitiveservices.speech)、[こちら (Python)](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)、および[こちら (Objective-C、Swift)](/objectivec/cognitive-services/speech/) のリファレンス ドキュメントを参照してください。
+- **C#、C++、Java**: `DialogServiceConnector` の接続および切断イベントを監視するために使用できる `FromDialogServiceConnector()` 関数を `Connection` クラスに追加しました。 [こちら (C#)](/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet)、[こちら (C++)](/cpp/cognitive-services/speech/connection)、および[こちら (Java)](/java/api/com.microsoft.cognitiveservices.speech.connection) のリファレンス ドキュメントを参照してください。
+- **C++、C#、Java、Python、Objective-C、Swift**: 発音評価のサポートが追加されました。これはスピーチの発音を評価し、話された音声の正確性と流暢性に関するフィードバックを話者に提供します。 [こちら](how-to-pronunciation-assessment.md)のドキュメントをお読みください。
 
 **重大な変更**
 - **JavaScript**:PullAudioOutputStream.read() の戻り値の型が、内部の Promise からネイティブな JavaScript の Promise に変更されました。
@@ -73,7 +72,7 @@ https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audioda
 **サンプル**
 - **ObjectiveC**: キーワード認識のサンプルを [こちら](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/speech-samples)に追加しました。
 - **C#、JavaScript**: 会話の文字起こしのクイックスタートを [こちら (C#)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/conversation-transcription) と [こちら (JavaScript)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/conversation-transcription) に追加しました。
-<!-- - **C++/C#/Java/Python/Swift/ObjectiveC**: Added sample for pronunciation assessment [here](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples) -->
+- **C++、C#、Java、Python、Swift、ObjectiveC**: 発音評価のサンプルを[こちら](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples)に追加しました。
 - **Xamarin**:クイックスタートを最新の Visual Studio テンプレートに [こちら](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/xamarin)で更新しました。
 
 **既知の問題**
@@ -83,7 +82,7 @@ https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audioda
 皆様の健康をお祈りします！
 
 ## <a name="speech-cli-also-known-as-spx-2020-october-release"></a>Speech CLI (別名 SPX): 2020-October リリース
-SPX は、コードを記述せずに Azure 音声サービスを使用するためのコマンド ライン インターフェイスです。 最新バージョンは、[こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics)からダウンロードできます。 <br>
+SPX は、コードを記述せずに Azure 音声サービスを使用するためのコマンド ライン インターフェイスです。 最新バージョンは、[こちら](./spx-basics.md)からダウンロードできます。 <br>
 
 **新機能**
 - `spx csr dataset upload --kind audio|language|acoustic` – URL からだけではなく、ローカル データからデータセットを作成します。

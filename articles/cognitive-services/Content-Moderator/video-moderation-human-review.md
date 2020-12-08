@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 392cc06c6e0bce7ec2304da61033fc508d940bbb
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 079d5ea0259a436100b81489043b71a81ec1a330
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93143769"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327221"
 ---
 # <a name="video-moderation-with-the-review-tool"></a>レビュー ツールによるビデオ モデレーション
 
@@ -26,7 +26,7 @@ Content Moderator のコンピューター支援型[ビデオ モデレーショ
 ダッシュボードで、ビデオのコンテンツの種類内に存在するレビュー キューのどれかを選択します。 これにより、レビューが開始され、ビデオのコンテンツ モデレーション ページが開きます。
 
 > [!div class="mx-imgBorder"]
-> ![レビュー ツールのビデオ モデレーション詳細ビュー](./Review-Tool-User-Guide/images/video-moderation-detailed.png)
+> ![Content Moderator (プレビュー) で、スライダーが強調表示され、4 レビューに設定されています。 [Blur all]\(すべてぼかす\) スイッチと [Black and white]\(白黒\) スイッチが強調表示されており、両方とも設定されています。](./Review-Tool-User-Guide/images/video-moderation-detailed.png)
 
 ### <a name="review-count"></a>レビュー数
 
@@ -55,7 +55,7 @@ Content Moderator のコンピューター支援型[ビデオ モデレーショ
 * **[履歴]** タブを選択して、いつ作成されたのか、および変更内容などのレビューの履歴を表示します。
 
 > [!div class="mx-imgBorder"]
-> ![ビデオ モデレーションの一括タグ ボタン](./Review-Tool-User-Guide/images/video-moderation-video-details.png)
+> ![右のウィンドウが強調表示され、[メモ] タブが選択されています。 [メモの追加] というラベルが付いたテスト領域があります。](./Review-Tool-User-Guide/images/video-moderation-video-details.png)
 
 ## <a name="apply-moderation-tags"></a>モデレーション タグを適用する
 
@@ -66,7 +66,7 @@ Content Moderator のコンピューター支援型[ビデオ モデレーショ
 **[Bulk Tags]\(一括タグ\)** ツールバーを使用すると、選択した複数のビデオに一度にタグを追加できます。 1 つまたは複数のビデオを選択してから、適用するタグを選択し、 **[送信]** をクリックします。 
 
 > [!div class="mx-imgBorder"]
-> ![ビデオ モデレーションの一括タグ ボタン](./Review-Tool-User-Guide/images/video-moderation-bulk-tags.png)
+> ![[Bulk Tags]\(一括タグ\) ウィンドウで + ボタンが強調表示されています。](./Review-Tool-User-Guide/images/video-moderation-bulk-tags.png)
 
 
 ### <a name="key-frame-tagging"></a>キー フレームのタグ付け
@@ -77,7 +77,7 @@ Content Moderator のコンピューター支援型[ビデオ モデレーショ
 > サービスでキー フレームを抽出できなかった場合は、キー フレーム タイル ウィンドウに **[No frames available]\(使用可能なフレームがありません\)** と表示され、キー フレームを選択するオプションが淡色表示されます。この場合は、( **[ビデオ タグ +]** ボタンを使用して) ビデオ全体にのみタグを適用することができます。
 
 > [!div class="mx-imgBorder"]
-> ![レビュー ツールのビデオ モデレーション詳細ビュー](./Review-Tool-User-Guide/images/video-moderation-tagging-options.png)
+> ![タイル ウィンドウ、動画プレーヤー、キーフレーム タグ ウィンドウ、ビデオ タグ ウィンドウがすべて確認できます。 [キーフレーム タグ] と [ビデオ タグ] の + ボタンが強調表示されています。](./Review-Tool-User-Guide/images/video-moderation-tagging-options.png)
 
 ## <a name="put-a-review-on-hold"></a>レビューを保留にする
 
@@ -86,7 +86,7 @@ Content Moderator のコンピューター支援型[ビデオ モデレーショ
 画面の上部にある **[保留]** ボタンをクリックすると、保留中のビデオを表示できます。 [保留] ウィンドウが右側に表示されます。 ここでは、保留中の複数のレビューを選択し、それらを解放してキューに戻したり、有効期限を設定したりすることができます。 事前に構成された時間が経過すると、保留中のレビューは解放されてキューに戻されます。 **[保存]** を選択して、現在選択されている有効期限のカウントを開始します。
 
 > [!div class="mx-imgBorder"]
-> ![レビュー ツールのビデオ モデレーション詳細ビュー](./Review-Tool-User-Guide/images/video-moderation-hold.png)
+> ![ビデオ ウィンドウの [保留] ボタンが強調表示されています。 ウィンドウの一番下で、[Hold Time]\(保留時間\) コンボ ボックスが [解除] ボタンと [保存] ボタンと共に強調表示されています。](./Review-Tool-User-Guide/images/video-moderation-hold.png)
 
 ## <a name="submit-a-review"></a>レビューを送信する
 

@@ -10,16 +10,16 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: mbullwin
-ms.openlocfilehash: de8d5d8e9fc5ce1df05cfd4c67ef146760e2c7e9
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: fb6eaf44967732d3a41ea92b0896540a40f694e3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043172"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184724"
 ---
 # <a name="how-to-manage-your-data-feeds"></a>方法:データ フィードを管理する
 
-Metrics Advisor でオンボード データ フィードを管理する方法について説明します。 この記事では、メトリックの監視でデータ フィードを管理する手順について説明します。
+Metrics Advisor でオンボード データ フィードを管理する方法について説明します。 この記事では、Metrics Advisor でデータ フィードを管理する手順について説明します。
 
 ## <a name="edit-a-data-feed"></a>データ フィードを編集する
 
@@ -106,7 +106,7 @@ Metrics Advisor を使用すると、さまざまなデータ フィードに対
 
 アクション リンク テンプレートは、実行可能な HTTP URL を事前に定義するために使用されます。これは、プレースホルダー `%datafeed`、`%metric`、`%timestamp`、`%detect_config`、および `%tagset` で構成されます。 テンプレートを使用して、異常またはインシデントから特定の URL にリダイレクトし、ドリルダウンすることができます。
 
-:::image type="content" source="../media/action-link-template.png" alt-text="データ フィードをバックフィルする" lightbox="../media/action-link-template.png":::
+:::image type="content" source="../media/action-link-template.png" alt-text="アクション リンク テンプレート" lightbox="../media/action-link-template.png":::
 
 アクション リンクを入力したら、インシデントの一覧のアクション オプションで **[Go to action link]\(アクション リンクに移動\)** をクリックし、インシデント ツリーの右クリック メニューをクリックします。 アクション リンク テンプレート内のプレースホルダーを、異常またはインシデントの対応する値に置き換えます。
 
