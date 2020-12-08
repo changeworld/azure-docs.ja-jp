@@ -890,8 +890,6 @@
               items:
                 - name: Web アプリおよびサービスの詳細な診断
                   href: app/devops.md
-                - name: Web アプリケーションのパフォーマンスを監視する
-                  href: app/web-monitor-performance.md
                 - name: 開発、テスト、運用の分離
                   href: app/separate-resources.md
                 - name: Application Insights での作業

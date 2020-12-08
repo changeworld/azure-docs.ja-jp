@@ -101,12 +101,14 @@ items:
                 displayName: Register and scan Azure SQL DB Managed Instance
               - name: Azure Synapse Analytics
                 href: register-scan-azure-synapse-analytics.md
+              - name: オンプレミスの SQL サーバー
+                href: register-scan-on-premises-sql-server.md
               - name: Power BI のテナント - ポータル
                 href: register-scan-power-bi-tenant.md
               - name: Power BI のテナント - PowerShell
                 href: powershell-register-scan-power-bi.md
-              - name: オンプレミスの SQL サーバー
-                href: register-scan-on-premises-sql-server.md
+              - name: Teradata
+                href: register-scan-teradata-source.md
       - name: ビジネス用語集
         items:
           - name: 用語集の用語の作成、インポート、エクスポート

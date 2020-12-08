@@ -71,9 +71,9 @@
         - name: プロビジョニング
           href: provisioning.md
         - name: 共有イメージ ギャラリー
-          href: shared-image-galleries.md
+          href: ../shared-image-galleries.md
         - name: Image Builder
-          href: image-builder-overview.md
+          href: ../image-builder-overview.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: リージョン
@@ -493,7 +493,7 @@
           href: ../managed-disk-from-image-version.md
     - name: VM のセキュリティ保護
       items:
-        - name: 推奨事項
+        - name: Recommendations
           href: ../security-recommendations.md
         - name: ジャストインタイム アクセス
           href: ../../security-center/security-center-just-in-time.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json

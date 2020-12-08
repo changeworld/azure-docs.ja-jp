@@ -10,12 +10,12 @@ metadata:
   author: cherylmc
   ms.author: cherylmc
   ms.date: 08/28/2019
-  ms.openlocfilehash: 4e01ee4a4dc065e88bf69bc8347867cdea9108cf
-  ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+  ms.openlocfilehash: 8619e0948cc08d06d27a09864bbff13ad6ad3791
+  ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/17/2020
-  ms.locfileid: "94660561"
+  ms.lasthandoff: 12/07/2020
+  ms.locfileid: "96780333"
 landingContent:
 - title: VPN Gateway について
   linkLists:
@@ -38,12 +38,12 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: VPN ゲートウェイを作成して管理する
-      url: vpn-gateway-tutorial-create-gateway-powershell.md
+      url: tutorial-create-gateway-portal.md
+    - text: サイト間 VPN 接続の作成
+      url: tutorial-site-to-site-portal.md
   - linkListType: how-to-guide
     links:
-    - text: サイト間接続を作成する
-      url: vpn-gateway-howto-site-to-site-resource-manager-portal.md
-    - text: ポイント対サイト接続を作成する
+    - text: ポイント対サイト VPN 接続を作成する
       url: vpn-gateway-howto-point-to-site-resource-manager-portal.md
 - title: VPN デバイス
   linkLists:
@@ -63,10 +63,10 @@ landingContent:
     links:
     - text: ゲートウェイ構成の設定
       url: vpn-gateway-about-vpn-gateway-settings.md
-    - text: ポイント対サイト ルーティング
-      url: vpn-gateway-about-point-to-site-routing.md
     - text: Gateway の SKU
       url: vpn-gateway-about-vpn-gateway-settings.md#gwsku
+    - text: ポイント対サイト ルーティング
+      url: vpn-gateway-about-point-to-site-routing.md
   - linkListType: how-to-guide
     links:
     - text: VPN ゲートウェイの確認

@@ -14,6 +14,7 @@
         - name: Azure CLI
           href: quick-setup-auto-provision-cli.md
         - name: ARM テンプレート
+          displayName: Resource Manager
           href: quick-setup-auto-provision-rm.md
     - name: 対称キー デバイスをプロビジョニングする
       items:
