@@ -1,6 +1,6 @@
 ---
 title: サーバーレス SQL プールからクエリの結果を格納する
-description: この記事では、サーバーレス SQL プール (プレビュー) を使用してクエリの結果をストレージに格納する方法を学習します。
+description: この記事では、サーバーレス SQL プールを使用してクエリの結果をストレージに格納する方法を学習します。
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 50897d81ed5ef2fc33e458bd46d9229f6184fea8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: dd989d5925da864728e944e84962086c0cfb08ea
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322611"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462317"
 ---
-# <a name="store-query-results-to-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プール (プレビュー) を使用してクエリの結果をストレージに格納する
+# <a name="store-query-results-to-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用してクエリの結果をストレージに格納する
 
-この記事では、サーバーレス SQL プール (プレビュー) を使用してクエリの結果をストレージに格納する方法を学習します。
+この記事では、サーバーレス SQL プールを使用してクエリの結果をストレージに格納する方法を学習します。
 
 ## <a name="prerequisites"></a>前提条件
 

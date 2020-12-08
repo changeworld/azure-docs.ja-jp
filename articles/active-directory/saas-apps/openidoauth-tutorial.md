@@ -12,20 +12,20 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.custom: has-adal-ref
-ms.openlocfilehash: ce4cccba678a934780dc987f1441ea658a70f8eb
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 17d78b4d6db9e65868995d8ea7835a0d911e8589
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996620"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348698"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Azure AD アプリ ギャラリーの OpenID および OAuth アプリケーションを構成する
 
 ## <a name="process-of-adding-an-openid-application-from-the-gallery"></a>ギャラリーから OpenID アプリケーションを追加する手順
 
-1. [Azure Portal](https://portal.azure.com) の左側のウィンドウで、 **[Azure Active Directory]** を選択します。
+1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]** を選択します。
 
-    ![Azure Active Directory のボタン](common/select-azuread.png))
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
 2. **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に移動します。
 
@@ -39,17 +39,23 @@ ms.locfileid: "91996620"
 
     ![結果一覧の Openid](common/search-new-app.png)
 
-    > [!NOTE]
-    > OpenID Connect と OAuth アプリでは、 **[追加]** ボタンは既定で無効になっています。 ここでテナント管理者は、サインアップ ボタンを選択して、アプリケーションに同意する必要があります。 これでアプリケーションが顧客テナントに追加され、必要な構成を行うことができます。 アプリケーションを明示的に追加する必要はありません。
+
+1. [アプリケーション名] ページで **[サインアップ]** ボタンをクリックします。
 
     ![[追加] ボタン](./media/openidoauth-tutorial/addbutton.png)
 
-5. サインアップ リンクを選択すると、サインイン資格情報の Azure Active Directory (Azure AD) ページにリダイレクトされます。
+    > [!NOTE]
+    > ここでテナント管理者は、サインアップ ボタンを選択して、アプリケーションに同意する必要があります。 これでアプリケーションが顧客テナントに追加され、必要な構成を行うことができます。 アプリケーションを明示的に追加する必要はありません。
+
+5. サインイン資格情報のために、アプリケーションのログイン ページまたは Azure Active Directory (Azure AD) ページにリダイレクトされます。
 
 6. 認証に成功したら、同意ページで同意を受け入れます。 その後、アプリケーションのホーム ページが表示されます。
 
     > [!NOTE]
     > 追加できるアプリケーションのインスタンスは 1 つだけです。 既に 1 つ追加しているときに再び同意を試みたとしても、再度テナントに追加されることはありません。 そのため論理的には、テナント内で使用できるのは 1 つのアプリ インスタンスのみです。
+
+1. 下のビデオに従って、ギャラリーから OpenID アプリケーションを追加します。
+    >[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4HoNI]
 
 ## <a name="authentication-flow-using-openid-connect"></a>OpenID Connect を使用する認証フロー
 
@@ -151,3 +157,7 @@ Azure AD のユーザーとグループや、Microsoft クラウド サービス
 *prompt=admin_consent* パラメーターは、管理者の同意を必要としないアクセス許可を要求するアプリケーションでも使用できます。 たとえば、テナント管理者が 1 回 "サインアップする" と、その時点からは他のユーザーが同意を求められないエクスペリエンスを必要とするアプリケーションが該当します。
 
 アプリケーションが管理者の同意を必要とし、*prompt=admin_consent* パラメーターが送信されることなく、管理者がサインインすることを想像してみてください。 管理者がアプリケーションへの同意に成功したとき、それが適用されるのは、自分のユーザー アカウントだけです。 通常のユーザーは、アプリケーションへのサインインも同意も実行できないままです。 この機能は、他のユーザーのアクセスを許可する前に、テナント管理者がアプリケーションを確認できるようにしたい場合に役立ちます。
+
+## <a name="next-steps"></a>次の手順
+
+[Azure Active Directory (Azure AD) テナント内のアプリケーションへの OIDC ベースのシングル サインオン (SSO) を設定する](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal-setup-oidc-sso)

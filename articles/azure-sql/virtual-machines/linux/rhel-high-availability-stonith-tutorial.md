@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: 06442e861a247f545ca6f22ecc82e5f5dc910553
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9a6faec2542337eedbe4aafb69f1061582f92cc7
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790238"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531583"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>チュートリアル:Azure の RHEL 仮想マシンで SQL Server の可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -263,7 +263,7 @@ az vm availability-set create \
 > [!IMPORTANT]
 > 上記のコマンドで作成される既定のイメージでは、既定で 32 GB の OS ディスクが作成されます。 この既定のインストールでは、領域が不足する可能性があります。 たとえば、パラメーター `--os-disk-size-gb 128` を上記の `az vm create` コマンドに追加して使用すると、128 GB の OS ディスクを作成できます。
 >
-> その後、インストールに合わせて適切なフォルダー ボリュームを拡張する必要がある場合は、[論理ボリューム マネージャー (LVM) を構成](../../../virtual-machines/linux/configure-lvm.md)できます。
+> その後、インストールに合わせて適切なフォルダー ボリュームを拡張する必要がある場合は、[論理ボリューム マネージャー (LVM) を構成](/previous-versions/azure/virtual-machines/linux/configure-lvm)できます。
 
 ### <a name="test-connection-to-the-created-vms"></a>作成された VM への接続をテストする
 
@@ -373,7 +373,7 @@ ssh <username>@publicipaddress
 
     **RHEL8**
 
-    RHEL 8 では、ノードを個別に認証する必要があります。 プロンプトが表示されたら、 **hacluster** のユーザー名とパスワードを手動で入力します。
+    RHEL 8 では、ノードを個別に認証する必要があります。 プロンプトが表示されたら、**hacluster** のユーザー名とパスワードを手動で入力します。
 
     ```bash
     sudo pcs host auth <node1> <node2> <node3>
@@ -601,7 +601,7 @@ sudo firewall-cmd --reload
 ## <a name="install-sql-server-and-mssql-tools"></a>SQL Server と mssql-tools をインストールする
 
 > [!NOTE]
-> SQL Server 2019 が RHEL8-HA にプレインストールされた VM を作成した場合、以下の SQL Server と mssql-tools をインストールする手順はスキップしてください。すべての VM で `sudo /opt/mssql/bin/mssql-conf set-sa-password` コマンドを実行し、すべての VM に sa パスワードを設定した後、「 **可用性グループを構成する** 」セクションに進んでください。
+> SQL Server 2019 が RHEL8-HA にプレインストールされた VM を作成した場合、以下の SQL Server と mssql-tools をインストールする手順はスキップしてください。すべての VM で `sudo /opt/mssql/bin/mssql-conf set-sa-password` コマンドを実行し、すべての VM に sa パスワードを設定した後、「**可用性グループを構成する**」セクションに進んでください。
 
 次のセクションを使用して、SQL Server と mssql-tools を VM にインストールします。 以下のいずれかのサンプルを選択して、SQL Server 2017 を RHEL 7 にインストールするか、SQL Server 2019 を RHEL 8 にインストールしてください。 すべてのノードでこれらのアクションをそれぞれ実行します。 詳細については、[Red Hat VM への SQL Server のインストール](/sql/linux/quickstart-install-connect-red-hat)に関するページを参照してください。
 
@@ -699,7 +699,7 @@ sudo systemctl restart mssql-server
 
 現在、AG エンドポイントに対する AD 認証はサポートされていません。 そのため、AG エンドポイントの暗号化には証明書を使用する必要があります。
 
-1. SQL Server Management Studio (SSMS) または SQL CMD を使用して、 **すべてのノード** に接続します。 次のコマンドを実行して、AlwaysOn_health セッションを有効にし、マスター キーを作成します。
+1. SQL Server Management Studio (SSMS) または SQL CMD を使用して、**すべてのノード** に接続します。 次のコマンドを実行して、AlwaysOn_health セッションを有効にし、マスター キーを作成します。
 
     > [!IMPORTANT]
     > 自分の SQL Server インスタンスにリモートで接続する場合は、ファイアウォールでポート 1433 を開いておく必要があります。 さらに、各 VM の NSG でポート 1433 へのインバウンド接続を許可する必要があります。 インバウンド セキュリティ規則の作成の詳細については、「[セキュリティ規則を作成する](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)」を参照してください。
@@ -1132,6 +1132,34 @@ Daemon Status:
     sudo pcs resource move ag_cluster-clone <VM2> --master
     ```
 
+   また、リソースを目的のノードに移動するために作成された一時的な制約を自動的に無効にし、下の手順 2. および 3. を実行する必要がなくなるように、追加のオプションを指定することもできます。
+
+   **RHEL 7**
+
+    ```bash
+    sudo pcs resource move ag_cluster-master <VM2> --master lifetime=30S
+    ```
+
+   **RHEL 8**
+
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master lifetime=30S
+    ```
+
+   また、下の手順 2. および 3. を自動化する別の方法もあります。これにより、リソース移動コマンド自体で一時的な制約が解除されます。そのためには、複数のコマンドを 1 行に結合します。 
+
+   **RHEL 7**
+
+    ```bash
+    sudo pcs resource move ag_cluster-master <VM2> --master && sleep 30 && pcs resource clear ag_cluster-master
+    ```
+
+   **RHEL 8**
+
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master && sleep 30 && pcs resource clear ag_cluster-clone
+    ```
+    
 2. もう一度制約を確認すると、手動フェールオーバーが理由で別の制約が追加されたことがわかります。
     
     **RHEL 7**

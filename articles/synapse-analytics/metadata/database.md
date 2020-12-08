@@ -1,6 +1,6 @@
 ---
 title: 共有データベース
-description: Azure Synapse Analytics は、サーバーレス Apache Spark プールでデータベースを作成することでサーバーレス SQL プール (プレビュー) エンジンと SQL プール エンジンからアクセスできるようにする共有メタデータ モデルを提供します。
+description: Azure Synapse Analytics は、サーバーレス Apache Spark プールでデータベースを作成することでサーバーレス SQL プール エンジンと SQL プール エンジンからアクセスできるようにする共有メタデータ モデルを提供します。
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,20 +10,18 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e17eb44a5f4f4aace9ce9d541b8218b35db0f5d3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 14ae8b8670db53761d085bc019711e829633601b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317839"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451808"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure Synapse Analytics の共有データベース
 
-Azure Synapse Analytics では、さまざまな計算ワークスペース エンジンが、サーバーレス Apache Spark プール (プレビュー) とサーバーレス SQL プール (プレビュー) エンジンの間でデータベースとテーブルを共有できます。
+Azure Synapse Analytics では、さまざまな計算ワークスペース エンジンが、サーバーレス Apache Spark プールとサーバーレス SQL プール エンジンの間でデータベースとテーブルを共有できます。
 
-[!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
-
-Spark ジョブを使用して作成されたデータベースは、その同じ名前で、サーバーレス SQL プール エンジンも含め、ワークスペース内の現在および将来のすべての Spark プール (プレビュー) から参照できるようになります。
+Spark ジョブを使用して作成されたデータベースは、その同じ名前で、サーバーレス SQL プール エンジンも含め、ワークスペース内の現在および将来のすべての Spark プールから参照できるようになります。
 
 Spark の既定のデータベース (`default` と呼ばれる) は、`default` と呼ばれるデータベースとしてサーバーレス SQL プール コンテキストにも表示されます。
 

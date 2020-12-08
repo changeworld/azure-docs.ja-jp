@@ -1,24 +1,24 @@
 ---
-title: チュートリアル - terraform を使用して Azure Spring Cloud インスタンスをプロビジョニングする
+title: terraform を使用して Azure Spring Cloud インスタンスをプロビジョニングする
 description: Terraform を使用して Azure Spring Cloud インスタンスをプロビジョニングします。
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: ed66da991df4dbe89c327a9a28ee28527c3da87b
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 060ef2d08b849706b47b24748142c608292971b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091646"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533793"
 ---
-# <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>チュートリアル:Terraform を使用して Azure Spring Cloud インスタンスをプロビジョニングする
+# <a name="provision-an-azure-spring-cloud-instance-with-terraform"></a>Terraform を使用して Azure Spring Cloud インスタンスをプロビジョニングする
 
 **この記事の適用対象:** ✔️ Java ✔️ C#
 
-このチュートリアルでは、Terraform を使用して Azure Spring Cloud インスタンスを作成します。 一連の手順を通じて次のリソースを作成します。
+この例では、Terraform を使用して Azure Spring Cloud インスタンスを作成します。 一連の手順を通じて次のリソースを作成します。
 
 > [!div class="checklist"]
 > * リソース グループ
@@ -161,7 +161,7 @@ ms.locfileid: "92091646"
 
 この記事で作成したリソースが不要になったら、削除してください。
 
-このチュートリアルで作成した Azure リソースを削除するには、[terraform destroy](https://www.terraform.io/docs/commands/destroy.html) コマンドを実行します。
+この演習で作成した Azure リソースを削除するには、[terraform destroy](https://www.terraform.io/docs/commands/destroy.html) コマンドを実行します。
 
 ```bash
 terraform destroy -auto-approve

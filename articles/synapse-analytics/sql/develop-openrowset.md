@@ -1,6 +1,6 @@
 ---
-title: サーバーレス SQL プール (プレビュー) で OPENROWSET を使用する方法
-description: この記事では、サーバーレス SQL プール (プレビュー) での OPENROWSET の構文について説明し、引数の使用方法について解説します。
+title: サーバーレス SQL プールで OPENROWSET を使用する方法
+description: この記事では、サーバーレス SQL プールでの OPENROWSET の構文について説明し、引数の使用方法について解説します。
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2458b5f3f0c0091bb6ec24e62a1d5614e4e1ecd8
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 97ee6c17d62a924686e3e4f4717d7bb7f4375988
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888591"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446681"
 ---
-# <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プール (プレビュー) を使う際の OPENROWSET の使用方法
+# <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使う際の OPENROWSET の使用方法
 
-`OPENROWSET(BULK...)` 関数を使用すると、Azure Storage 内のファイルにアクセスできます。 `OPENROWSET` 関数は、リモート データ ソース (ファイルなど) の内容を読み取って行のセットとして返します。 サーバーレス SQL プール (プレビュー) リソース内では、OPENROWSET 関数を呼び出し、BULK オプションを指定することによって、OPENROWSET BULK 行セット プロバイダーにアクセスします。  
+`OPENROWSET(BULK...)` 関数を使用すると、Azure Storage 内のファイルにアクセスできます。 `OPENROWSET` 関数は、リモート データ ソース (ファイルなど) の内容を読み取って行のセットとして返します。 サーバーレス SQL プール リソース内では、OPENROWSET 関数を呼び出し、BULK オプションを指定することによって、OPENROWSET BULK 行セット プロバイダーにアクセスします。  
 
 `OPENROWSET` 関数は、テーブル名 `OPENROWSET` であるかのように、クエリの `FROM` 句で参照できます。 組み込みの BULK プロバイダーによる一括操作がサポートされ、ファイルのデータを行セットとして読み取り、返すことができます。
 
@@ -147,7 +147,7 @@ unstructured_data_path をフォルダーとして指定すると、サーバー
 
 WITH 句を使用すると、ファイルから読み取る列を指定できます。
 
-- CSV データ ファイルの場合、すべての列を読み取るには、列名とそのデータ型を指定します。 列のサブセットが必要な場合は、序数を使用して、元のデータ ファイルから序数で列を選択します。 列は、序数の指定によってバインドされます。 
+- CSV データ ファイルの場合、すべての列を読み取るには、列名とそのデータ型を指定します。 列のサブセットが必要な場合は、序数を使用して、元のデータ ファイルから序数で列を選択します。 列は、序数の指定によってバインドされます。 HEADER_ROW = TRUE を使用すると、序数位置ではなく列名によって列バインドが行われます。
     > [!TIP]
     > CSV ファイルの場合は WITH 句を省略することもできます。 データ型は、ファイルの内容から自動的に推論されます。 HEADER_ROW 引数を使用してヘッダー行の存在を指定することができます。この場合、列名はヘッダー行から読み取られます。 詳細については、「[スキーマの自動検出](#automatic-schema-discovery)」を参照してください。
     
@@ -231,7 +231,7 @@ CSV パーサー バージョン 2.0 の詳細:
 
 HEADER_ROW = { TRUE | FALSE }
 
-CSV ファイルにヘッダー行を含めるかどうかを指定します。 既定値は FALSE です。 PARSER_VERSION='2.0' でサポートされています。 TRUE の場合、列名は、FIRSTROW 引数に従って最初の行から読み取られます。
+CSV ファイルにヘッダー行を含めるかどうかを指定します。 既定値は FALSE です。 PARSER_VERSION='2.0' でサポートされています。 TRUE の場合、列名は、FIRSTROW 引数に従って最初の行から読み取られます。 TRUE であり、WITH を使用してスキーマを指定すると、列名のバインドは序数位置ではなく列名によって行われます。
 
 DATAFILETYPE = { 'char' | 'widechar' }
 

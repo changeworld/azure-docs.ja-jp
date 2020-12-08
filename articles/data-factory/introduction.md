@@ -3,18 +3,18 @@ title: Azure Data Factory の概要
 description: データの移動と変換を調整、自動化するクラウド データ統合サービスである Azure Data Factory について説明します。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 730141d22b318d79c8c2b7d995b98ee1c311aaf5
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: d8b6a852ff0aeb287b12d63bfa689a38a56d418f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491275"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485057"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure Data Factory とは何ですか。
 
@@ -28,7 +28,7 @@ ms.locfileid: "94491275"
 
 これらのログを分析するには、顧客情報やゲーム情報、マーケティング キャンペーン情報など、オンプレミスのデータ ストアにある参照データを使用する必要があります。 この会社は、オンプレミスのデータ ストアにあるこれらのデータを、クラウドのデータ ストアにある追加のログ データと統合して活用しようと考えています。 
 
-分析情報を抽出するために、クラウドの Spark クラスターを使用して結合されたデータを処理し (Azure HDInsight)、変換したデータを Azure Synapse Analytics (旧称: SQL Data Warehouse) などのクラウドのデータ ウェアハウスに公開して、これに基づくレポートを簡単に作成できるようにすることを希望しています。 このワークフローを自動化し、日単位のスケジュールに従って監視、管理することが目標となります。 それを実行するタイミングは、BLOB ストア コンテナーにファイルが到着したときとします。
+分析情報を抽出するために、クラウドの Spark クラスターを使用して統合したデータを処理し (Azure HDInsight)、変換したデータを Azure Synapse Analytics などのクラウド データ ウェアハウスに公開して、これらのデータに基づくレポートを簡単に作成できるようにすることを希望しています。 このワークフローを自動化し、日単位のスケジュールに従って監視、管理することが目標となります。 それを実行するタイミングは、BLOB ストア コンテナーにファイルが到着したときとします。
 
 Azure Data Factory は、このようなデータ シナリオを解決するプラットフォームです。 *クラウドベースの ETL およびデータ統合サービスを通じて、データの移動と変換を大規模に制御するデータ ドリブンのワークフローを作成できます*。 Azure Data Factory を使えば、各種のデータ ストアからデータを取り込むことができるデータ主導型のワークフロー (パイプライン) を作成し、スケジューリングできます。 コンピューティング サービス (Azure HDInsight Hadoop、Azure Databricks、Azure SQL Database など) やデータ フローを使用してデータを変換する複雑な ETL プロセスを視覚的に作成できます。 
 

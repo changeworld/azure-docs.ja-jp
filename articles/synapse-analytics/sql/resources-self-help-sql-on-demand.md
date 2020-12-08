@@ -1,6 +1,6 @@
 ---
-title: サーバーレス SQL プール (プレビュー) のセルフヘルプ
-description: このセクションには、サーバーレス SQL プール (プレビュー) に関する問題のトラブルシューティングに役立つ情報が含まれています。
+title: サーバーレス SQL プールのセルフヘルプ
+description: このセクションには、サーバーレス SQL プールに関する問題のトラブルシューティングに役立つ情報が含まれています。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: aefdb90c3e6c8d3abc3924ecebb2aa46739e99ad
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 12ff369cb931eb36014b7c9598b036afdc158750
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682623"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457180"
 ---
-# <a name="self-help-for-serverless-sql-pool-preview"></a>サーバーレス SQL プール (プレビュー) のセルフヘルプ
+# <a name="self-help-for-serverless-sql-pool"></a>サーバーレス SQL プールのセルフヘルプ
 
-この記事には、Azure Synapse Analytics のサーバーレス SQL プール (プレビュー) でよく発生する問題のトラブルシューティング方法に関する情報が含まれています。
+この記事には、Azure Synapse Analytics のサーバーレス SQL プールでよく発生する問題のトラブルシューティング方法に関する情報が含まれています。
 
 ## <a name="serverless-sql-pool-is-grayed-out-in-synapse-studio"></a>Synapse Studio でサーバーレス SQL プールがグレー表示される
 
@@ -37,7 +37,7 @@ Synapse Studio がサーバーレス SQL プールへの接続を確立できな
 
 - 適切なサイズのデータ型が使用されていることを確認してください。 また、文字列型の列の場合は既定で VARCHAR (8000) になるため、Parquet ファイルのスキーマを指定します。 
 
-- 対象のクエリが CSV ファイルをターゲットとしている場合は、[統計を作成する](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview)ことを検討してください。 
+- 対象のクエリが CSV ファイルをターゲットとしている場合は、[統計を作成する](develop-tables-statistics.md#statistics-in-serverless-sql-pool)ことを検討してください。 
 
 - クエリを最適化するには、[サーバーレス SQL プールのパフォーマンスのベスト プラクティス](best-practices-sql-on-demand.md)に関するページを参照してください。  
 

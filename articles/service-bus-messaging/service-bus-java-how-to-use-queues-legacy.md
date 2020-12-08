@@ -5,12 +5,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 68d8270c4ca3cff07f3a70c6022b963f750ad4e9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 774f9e485c58712ea8648a148c92b6f9ef6a58c0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022109"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452608"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>クイック スタート:Java で Azure Service Bus キューを使用してメッセージを送受信する
 
@@ -18,7 +18,8 @@ ms.locfileid: "96022109"
 このチュートリアルでは、Java アプリケーションを作成して、Azure Service Bus キューとの間でメッセージを送受信する方法を学習します。 
 
 > [!WARNING]
->  このクイックスタートでは、現在の一般提供 (GA) 版の azure-servicebus パッケージを使用します。 **プレビュー** 版の新しい azure-messaging-servicebus パッケージを使用するクイックスタートについては、[azure-messaging-servicebus を使用したメッセージの送受信](service-bus-java-how-to-use-queues.md)に関するページを参照してください。 
+>  このクイックスタートでは、以前の azure-servicebus パッケージを使用します。 最新の azure-messaging-servicebus パッケージを使用するクイックスタートについては、[azure-messaging-servicebus を使用したメッセージの送受信](service-bus-java-how-to-use-queues.md)に関するページを参照してください。 
+
 
 ## <a name="prerequisites"></a>前提条件
 1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。

@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 11/17/2020
-ms.openlocfilehash: ae7b15bf2e2efd72184110a105f68815516569ab
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9014469ca063ca52be0965ecbd4e8b21709d10a0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843912"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455170"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>専用の SQL プールを使用してデータを分析する
 
@@ -94,8 +94,9 @@ Azure Synapse Analytics には、専用 SQL プールを使用してデータを
 
     このクエリは、合計乗車距離と平均乗車距離が乗客数とどのように関係しているかを示します。
 1. SQL スクリプトの結果ウィンドウで、 **[ビュー]** を **[グラフ]** に変更して、結果を折れ線グラフとして視覚的に表示します。
-
-
+    
+    > [!NOTE]
+    > ワークスペース対応の専用 SQL プール (以前の SQL DW) は、データ ハブ内のツール ヒントを介して識別できます。
 
 ## <a name="next-steps"></a>次のステップ
 

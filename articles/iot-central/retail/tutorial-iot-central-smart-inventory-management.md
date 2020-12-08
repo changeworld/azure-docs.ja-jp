@@ -7,18 +7,18 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 827d571a6545d0aaffb0f96134fcf094eaa5f26b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1b7069cb723bffd758c3603cc957329dd6d2a9b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980602"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463274"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>チュートリアル:スマート インベントリの管理アプリケーション テンプレートをデプロイして調べる
 
 
 
-このチュートリアルでは、IoT Central の**スマート インベントリの管理**アプリケーション テンプレートをデプロイする方法について説明します。 テンプレートをデプロイする方法、既定で含まれるもの、次にできることについて説明します。
+このチュートリアルでは、IoT Central の **スマート インベントリの管理** アプリケーション テンプレートをデプロイする方法について説明します。 テンプレートをデプロイする方法、既定で含まれるもの、次にできることについて説明します。
 
 このチュートリアルで学習する内容は次のとおりです。 
 * スマート インベントリの管理アプリケーションを作成する 
@@ -35,22 +35,19 @@ ms.locfileid: "90980602"
 
 1. Azure IoT Central のアプリケーション マネージャー Web サイトに移動します。 左側のナビゲーションバーから **[ビルド]** を選択し、 **[Retail]\(小売り\)** タブをクリックします。
 
-    > [!div class="mx-imgBorder"]
-    > ![スマート インベントリの管理アプリケーション テンプレートの選択方法を示す画面のスクリーンショット](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
+    :::image type="content" source="media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png" alt-text="スマート インベントリの管理アプリケーション テンプレートの選択方法を示す画面のスクリーンショット":::
 
 2. **[小売業]** タブを選択し、 **[スマート在庫管理]** の下にある **[アプリの作成]** を選択します
 
 3. **[アプリの作成]** を選択すると、[新しいアプリケーション] フォームが開き、次のように要求された詳細が設定されます。
-   **[アプリケーション名]** : 既定の推奨名を使用するか、わかりやすいアプリケーション名を入力できます。
-   **[URL]** : 既定の推奨 URL を使用するか、わかりやすい一意の URL を入力できます。 次に、Azure サブスクリプションが既にある場合は、既定の設定をお勧めします。 7 日間の無料試用版料金プランから始め、無料試用版が期限切れになる前に、いつでも標準の料金プランに変換することもできます。
-   **課金情報**:リソースをプロビジョニングするには、ディレクトリ、Azure サブスクリプション、リージョンの詳細が必要です。
-   **作成**:ページの下部にある [作成] を選択して、アプリケーションをデプロイします。
+    **[アプリケーション名]** : 既定の推奨名を使用するか、わかりやすいアプリケーション名を入力できます。
+    **[URL]** : 既定の推奨 URL を使用するか、わかりやすい一意の URL を入力できます。 次に、Azure サブスクリプションが既にある場合は、既定の設定をお勧めします。 7 日間の無料試用版料金プランから始め、無料試用版が期限切れになる前に、いつでも標準の料金プランに変換することもできます。
+    **課金情報**:リソースをプロビジョニングするには、ディレクトリ、Azure サブスクリプション、リージョンの詳細が必要です。
+    **作成**:ページの下部にある [作成] を選択して、アプリケーションをデプロイします。
 
-    > [!div class="mx-imgBorder"]
-    > ![スマート インベントリの管理アプリケーション テンプレートの作成方法を示す画面のスクリーンショット](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
+    :::image type="content" source="media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png" alt-text="スマート インベントリの管理アプリケーション テンプレートの作成方法を示す画面のスクリーンショット":::
 
-    > [!div class="mx-imgBorder"]
-    > ![アプリケーション作成時の課金オプションを示す画面のスクリーンショット](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
+    :::image type="content" source="media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png" alt-text="アプリケーション作成時の課金オプションを示す画面のスクリーンショット":::
 
 ## <a name="walk-through-the-application"></a>アプリケーションを調べる 
 

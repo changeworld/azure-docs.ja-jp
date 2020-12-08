@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 84f04d2f1f8c9b54a1f2a2a13cc97954ac5add90
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2d31c5b90f37f336b48118e4f4adde4777f8cf4a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995320"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493136"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM を Azure に移行する 
 
@@ -43,23 +43,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2. Hyper-V ホストの移行の要件と、VM 移行のために Hyper-V ホストおよびクラスターがアクセスする必要がある Azure URL を[確認](migrate-support-matrix-hyper-v-migration.md#hyper-v-host-requirements)します。
 3. Azure に移行する Hyper-V VM の要件を[確認](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms)します。
 4. [Hyper-V VM を評価](tutorial-assess-hyper-v.md)したうえで Azure に移行することをお勧めしますが、必須ではありません。
-
-   
-## <a name="add-the-azure-migrateserver-migration-tool"></a>Azure Migrate:Server Migration ツールを追加する
-
-Azure Migrate Server Migration ツールを追加します。 Azure Migrate プロジェクトがまだない場合は、[先にプロジェクトを作成](how-to-add-tool-first-time.md)してから Azure Migrate プロジェクトを設定してください。 プロジェクトの作成時に Azure Migrate:Server Migration ツールを追加します。
-
-プロジェクトの設定が済んでいる場合は、次の手順に従ってツールを追加します。
-
-1. Azure Migrate プロジェクトで、 **[概要]** をクリックします。 
-2. **[サーバーの検出、評価、移行]** で、 **[サーバーの評価と移行]** をクリックします。
-3. **[移行ツール]** で、 **[Click here to add a migration tool when you are ready to migrate]\(移行する準備ができたら、ここをクリックして移行ツールを追加してください\)** を選択します。
-
-    ![ツールの選択](./media/tutorial-migrate-hyper-v/select-migration-tool.png)
-
-4. ツールの一覧で、次を選択します: **[Azure Migrate: Server Migration]**  >  **[ツールを追加]**
-
-    ![Server Migration ツール](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
+5. 既に作成されているプロジェクトに移動するか、[新しいプロジェクトを作成](https://docs.microsoft.com/azure/migrate/create-manage-projects)します。
+6. ご使用の Azure アカウントのアクセス許可を確認します。Azure アカウントには、VM を作成し、Azure マネージド ディスクに書き込むためのアクセス許可が必要です。
 
 ## <a name="download-and-install-the-provider"></a>プロバイダーをダウンロードしてインストールする
 

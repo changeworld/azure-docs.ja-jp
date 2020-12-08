@@ -1,5 +1,5 @@
 ---
-title: 'クイックスタート: Azure portal を使用して専用 SQL プール (プレビュー) を作成する'
+title: 'クイックスタート: Azure portal を使用して専用 SQL プールを作成する'
 description: このガイドの手順に従って、Azure portal を使用して新しい専用 SQL プールを作成します。
 services: synapse-analytics
 author: julieMSFT
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: b558e34d3f5d224515eee669dfa7b8f2c6bbb3cd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3537b126adf082c8b00a02d999789d8a32b3f51d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541013"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462015"
 ---
-# <a name="quickstart-create-a-dedicated-sql-pool-preview-using-the-azure-portal"></a>クイックスタート: Azure portal を使用して専用 SQL プール (プレビュー) を作成する
+# <a name="quickstart-create-a-dedicated-sql-pool-using-the-azure-portal"></a>クイックスタート: Azure portal を使用して専用 SQL プールを作成する
 
 Azure Synapse Analytics には、データの取り込み、変換、モデル化、分析に役立つさまざまな分析エンジンが用意されています。 専用 SQL プールには、T-SQL ベースのコンピューティングとストレージの機能が用意されています。 お使いの Synapse ワークスペースに専用 SQL プールを作成した後、データを読み込み、モデル化し、処理し、提供して、分析情報を迅速に得ることができます。
 

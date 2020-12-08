@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 0b80db15e4fafd5e5c63a4194039fbeca21d429b
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 7d59c0e751054522f4c54fe059f19aa0a941464e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900390"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490004"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Azure Security Center での追加の脅威の防止
 組み込みの [Azure Defender の保護](azure-defender.md)に加えて、Azure Security Center によって次の脅威の防止機能も提供されています。
@@ -29,7 +29,7 @@ ms.locfileid: "92900390"
 ## <a name="threat-protection-for-azure-network-layer"></a>Azure ネットワーク レイヤーの脅威の防止 <a name="network-layer"></a>
 Security Center のネットワーク レイヤー分析は、サンプルの [IPFIX データ](https://en.wikipedia.org/wiki/IP_Flow_Information_Export)に基づくものであり、Azure コア ルーターによって収集されるパケット ヘッダーです。 このデータ フィードに基づき、Security Center は機械学習モデルを使用して、悪意のあるトラフィック アクティビティを特定し、それらにフラグを設定します。 IP アドレスを強化するために、Security Center では、Microsoft の脅威インテリジェンス データベースも使用します。
 
-ネットワーク構成によっては、Security Center が疑わしいネットワーク アクティビティに対してアラートを生成することを制限する場合があります。 Security Center でネットワーク アラートを生成するには、次のことを確認してください。
+Security Center が疑わしいネットワーク アクティビティに対してアラートを生成することを制限するネットワーク構成もあります。 Security Center でネットワーク アラートを生成するには、次のことを確認してください。
 - 仮想マシンにパブリック IP アドレスがある (または、仮想マシンがパブリック IP アドレスを持つロード バランサー上にある)。
 - 仮想マシンのネットワーク エグレス トラフィックが、外部 ID ソリューションによってブロックされていない。
 
@@ -89,7 +89,7 @@ Azure WAF のライセンスをお持ちの場合は、WAF アラートが Secur
 
 DDoS 攻撃では、アプリケーションのリソースを使い果たし、正当なユーザーがアプリケーションを使用できなくなるようにすることが試みられます。 DDoS 攻撃では、インターネットを介して到達できるあらゆるエンドポイントが対象になる可能性があります。
 
-DDoS 攻撃を防ぐには、Azure DDoS Protection のライセンスを購入し、アプリケーションの設計に関するベスト プラクティスに従っていることを確認します。 DDoS Protection では、各種のサービス レベルが提供されます。 詳細については、[Azure DDoS Protection の概要](../virtual-network/ddos-protection-overview.md)に関する記事を参照してください。
+DDoS 攻撃を防ぐには、Azure DDoS Protection のライセンスを購入し、アプリケーションの設計に関するベスト プラクティスに従っていることを確認します。 DDoS Protection では、各種のサービス レベルが提供されます。 詳細については、[Azure DDoS Protection の概要](../ddos-protection/ddos-protection-overview.md)に関する記事を参照してください。
 
 Azure DDoS Protection アラートの一覧については、[アラートのリファレンス表](alerts-reference.md#alerts-azureddos)に関するページを参照してください。
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4239b5400e919621dfff001ca7e6cb9de1626658
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: da698a1a8d91273321d4633abd683a06cb4cf403
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686210"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451628"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して Synapse SQL に接続する
 > [!div class="op_single_selector"]
@@ -26,9 +26,9 @@ ms.locfileid: "94686210"
 > 
 > 
 
-[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) からサーバーレス SQL プール (プレビュー) または専用 SQL プール リソースを使用して、Azure Synapse Analytics の Synapse SQL に接続し、クエリを実行することができます。 
+[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) からサーバーレス SQL プールまたは専用 SQL プール リソースを使用して、Azure Synapse Analytics の Synapse SQL に接続し、クエリを実行することができます。 
 
-### <a name="supported-tools-for-serverless-sql-pool-preview"></a>サーバーレス SQL プール (プレビュー) でサポートされるツール
+### <a name="supported-tools-for-serverless-sql-pool"></a>サーバーレス SQL プールでサポートされるツール
 
 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) は、バージョン 1.18.0 以降、完全にサポートされます。 SSMS は、バージョン 18.5 以降、部分的にサポートされています。接続してクエリを実行する場合にのみ使用できます。
 
@@ -63,7 +63,7 @@ ms.locfileid: "94686210"
     ![AdventureWorksDW を探索する 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 
-### <a name="serverless-sql-pool-preview"></a>サーバーレス SQL プール (プレビュー)
+### <a name="serverless-sql-pool"></a>サーバーレス SQL プール
 
 サーバーレス SQL プールを使用して Synapse SQL に接続するには、次の手順に従います。 
 

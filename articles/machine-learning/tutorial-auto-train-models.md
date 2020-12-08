@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 4f6e194f04789fbcaf24d69965dfa8ac61b20a38
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: e1a5370501fe73fb783db9a039d9f060acdb0a35
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886330"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511034"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>チュートリアル:自動機械学習を使用してタクシー料金を予測する
 
@@ -210,7 +210,7 @@ x_train, x_test = train_test_split(final_df, test_size=0.2, random_state=223)
 
 |プロパティ| このチュートリアルの値 |説明|
 |----|----|---|
-|**iteration_timeout_minutes**|2|各イテレーションの分単位での時間制限。 合計実行時間を短縮するには、この値を減らします。|
+|**iteration_timeout_minutes**|10|各イテレーションの分単位での時間制限。 各イテレーションにより多くの時間を必要とする大規模なデータセットの場合は、この値を大きくします。|
 |**experiment_timeout_hours**|0.3|すべてのイテレーションを組み合わせて、実験が終了するまでにかかる最大時間 (時間単位)。|
 |**enable_early_stopping**|True|短期間でスコアが向上していない場合に、早期終了を有効にするフラグ。|
 |**primary_metric**| spearman_correlation | 最適化したいメトリック。 このメトリックに基づいて、最適なモデルが選択されます。|
@@ -222,7 +222,7 @@ x_train, x_test = train_test_split(final_df, test_size=0.2, random_state=223)
 import logging
 
 automl_settings = {
-    "iteration_timeout_minutes": 2,
+    "iteration_timeout_minutes": 10,
     "experiment_timeout_hours": 0.3,
     "enable_early_stopping": True,
     "primary_metric": 'spearman_correlation',

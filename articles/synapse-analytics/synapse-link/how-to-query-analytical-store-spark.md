@@ -9,14 +9,14 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2e06f0918ce23beded7475f644e7cc6019facacc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 28af603c0969419cd2e7b8683373faf3838e2242
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322585"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458938"
 ---
-# <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>Azure Synapse Link (プレビュー) で Apache Spark を使用して Azure Cosmos DB と対話する
+# <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>Azure Synapse Link で Apache Spark を使用して Azure Cosmos DB と対話する
 
 この記事では、Synapse Apache Spark を使用して Azure Cosmos DB と対話する方法について説明します。 Scala、Python、SparkSQL、C# が完全にサポートされることで、Synapse Apache Spark は [Azure Synapse Link for Azure Cosmos DB](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) の分析、データ エンジニアリング、データ サイエンス、データ探索のシナリオの中核となります。
 
@@ -37,7 +37,7 @@ Azure Cosmos DB 分析ストアに対してクエリを実行するために使�
 
 **Spark DataFrame に読み込む** 場合、フェッチされたメタデータは Spark セッションの有効期間を通じてキャッシュされるため、DataFrame の作成時に、そのDataFrame で呼び出される後続のアクションが分析ストアのスナップショットに対して評価されます。
 
-一方、 **Spark テーブルを作成する** 場合、分析ストアの状態のメタデータは Spark にキャッシュされず、Spark テーブルに対して SparkSQL のクエリが実行されるたびに再読み込みが行われます。
+一方、**Spark テーブルを作成する** 場合、分析ストアの状態のメタデータは Spark にキャッシュされず、Spark テーブルに対して SparkSQL のクエリが実行されるたびに再読み込みが行われます。
 
 このため、Spark DataFrame に読み込むことと、Spark テーブルを作成することは、Spark 分析を分析ストアの固定スナップショットに対して評価するか、分析ストアの最新のスナップショットに対して評価するかに基づいて選択できます。
 

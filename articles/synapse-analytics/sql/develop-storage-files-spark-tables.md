@@ -1,6 +1,6 @@
 ---
-title: サーバーレス SQL プール (プレビュー) で Apache Spark の外部テーブル定義を同期する
-description: サーバーレス SQL プール (プレビュー) を使用して Spark テーブルに対してクエリを実行する方法の概要
+title: サーバーレス SQL プールで Apache Spark の外部テーブル定義を同期する
+description: サーバーレス SQL プールを使用して Spark テーブルに対してクエリを実行する方法の概要
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea4e7cd009be8a78faa0dcfab44371a350b6a200
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 057a69881b8b407e5d75fa3510ca1c3eb1830bc7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315836"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446492"
 ---
-# <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-serverless-sql-pool-preview"></a>サーバーレス SQL プール (プレビュー) で Apache Spark for Azure Synapse の外部テーブル定義を同期する
+# <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-serverless-sql-pool"></a>サーバーレス SQL プールで Apache Spark for Azure Synapse の外部テーブル定義を同期する
 
-サーバーレス SQL プール (プレビュー) では、Apache Spark からメタデータを自動的に同期することができます。 サーバーレス Apache Spark プール (プレビュー) に存在するデータベースごとに、サーバーレス SQL プール データベースが作成されます。 
+サーバーレス SQL プールにより、Apache Spark からメタデータを自動的に同期することができます。 サーバーレス Apache Spark プール内にあるデータベースごとに、サーバーレス SQL プール データベースが作成されます。 
 
 Parquet に基づく、Azure Storage に配置された各 Spark 外部テーブルに対して、サーバーレス SQL プール データベースに外部テーブルが作成されます。 そのため、Spark プールをシャットダウンしても、サーバーレス SQL プールから Spark 外部テーブルに対するクエリを引き続き実行できます。
 

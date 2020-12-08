@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 3a523421c128ea26503c0848ad8fcf7d74636a04
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: bd8c5c31579ac22cd6c77dffd31103680e393f69
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341331"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187172"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>クイック スタート:Azure Security Center を設定する
 
@@ -49,7 +49,7 @@ Azure Security Center は、ハイブリッド クラウド ワークロード�
 
 Security Center を初めて起動してから数分以内に、以下の項目が表示されます。
 
-- 接続されているリソースのセキュリティを向上させる方法についての **推奨事項** 。
+- 接続されているリソースのセキュリティを向上させる方法についての **推奨事項**。
 - Security Center によって現在評価されているリソースとそれぞれのセキュリティの状態のインベントリ。
 
 Security Center をフルに活用するには、次の手順に従って Azure Defender にアップグレードし、Log Analytics エージェントをインストールする必要があります。
@@ -63,7 +63,7 @@ Security Center のクイックスタートおよびチュートリアルの目�
 
 1. Security Center のサイドバーで、 **[作業の開始]** を選択します。
 
-    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="Security Center の概要ダッシュボード"::: 
+    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="[はじめに] ページの [アップグレード] タブ"::: 
 
     **[アップグレード]** タブに、オンボードの対象となるサブスクリプションとワークスペースが一覧表示されます。
 
@@ -84,7 +84,7 @@ Log Analytics エージェントの自動プロビジョニングを有効にす
 1. **[データ収集]** ページで、 **[自動プロビジョニング]** を **[オン]** に設定します。
 1. **[保存]** を選択します。
 
-    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Security Center の概要ダッシュボード":::
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Log Analytics エージェントの自動プロビジョニングの有効化":::
 
 >[!TIP]
 > ワークスペースをプロビジョニングする必要がある場合は、エージェントのインストールに最大で 25 分かかることがあります。

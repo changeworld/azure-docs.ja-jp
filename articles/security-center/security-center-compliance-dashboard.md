@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2020
 ms.author: memildin
-ms.openlocfilehash: 3108dd32b9d7338e418a1d10684115ad7265702e
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: bbc36dbb2a17d379d31a9a235898500aea36247d
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951198"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533912"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>チュートリアル:規制に対するコンプライアンスの向上
 
-Azure Security Center では、**規制コンプライアンス ダッシュボード**を使用して、規制に対するコンプライアンス要件を満たすプロセスを効率化できます。 このダッシュボードでは、お客様の Azure 環境の継続的評価に基づき、お客様のコンプライアンス体制についての分析情報が Security Center から得られます。 Security Center を使うと、セキュリティのベスト プラクティスに従って、ハイブリッド クラウド環境のリスク要因を分析できます。 それらの評価は、サポートされている一連の標準のコンプライアンス制御に対応付けられます。 規制コンプライアンス ダッシュボードでは、お客様の環境におけるすべての評価の状態を、特定の標準または規制のコンテキストで把握することができます。 推奨事項に基づいて行動し、お客様の環境内のリスク要因を減らしていくと、コンプライアンス体制は強化されます。
+Azure Security Center では、**規制コンプライアンス ダッシュボード** を使用して、規制に対するコンプライアンス要件を満たすプロセスを効率化できます。 このダッシュボードでは、お客様の Azure 環境の継続的評価に基づき、お客様のコンプライアンス体制についての分析情報が Security Center から得られます。 Security Center を使うと、セキュリティのベスト プラクティスに従って、ハイブリッド クラウド環境のリスク要因を分析できます。 それらの評価は、サポートされている一連の標準のコンプライアンス制御に対応付けられます。 規制コンプライアンス ダッシュボードでは、お客様の環境におけるすべての評価の状態を、特定の標準または規制のコンテキストで把握することができます。 推奨事項に基づいて行動し、お客様の環境内のリスク要因を減らしていくと、コンプライアンス体制は強化されます。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -34,7 +34,10 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルで説明されている機能を実行するには、[Azure Defender](azure-defender.md) が有効になっている必要があります。 Azure Defender は 30 日間無料でお試しいただけます。
+このチュートリアルで説明されている機能を実行するには、以下が必要です。
+
+- [Azure Defender](azure-defender.md) が有効になっている必要があります。 Azure Defender は 30 日間無料でお試しいただけます。
+- ポリシーのコンプライアンス データへの閲覧者アクセス権が付与されたアカウントを使用してサインインする必要があります (**セキュリティ閲覧者** では不十分です)。 サブスクリプションの **グローバル閲覧者** ロールは有効です。 少なくとも、**リソース ポリシーの共同作成者** および **セキュリティ管理者** のロールが割り当てられている必要があります。
 
 ##  <a name="assess-your-regulatory-compliance"></a>規制に対するコンプライアンスを評価する
 
@@ -45,7 +48,7 @@ Security Center では、お客様のリソースの構成を継続的に評価�
 >[!NOTE]
 > 既定では、Security Center でサポートされている規制標準は、Azure CIS、PCI DSS 3.2、ISO 27001、SOC TSP です。 
 >
-> [動的コンプライアンス パッケージ (プレビュー)](update-regulatory-compliance-packages.md) 機能を使うと、規制コンプライアンス ダッシュボードに表示される標準を新しい*動的*パッケージにアップグレードすることができます。 また、同じプレビュー機能を使用して、新しいコンプライアンス パッケージを追加したり、その他の標準でコンプライアンスを監視したりすることもできます。 
+> [動的コンプライアンス パッケージ (プレビュー)](update-regulatory-compliance-packages.md) 機能を使うと、規制コンプライアンス ダッシュボードに表示される標準を新しい *動的* パッケージにアップグレードすることができます。 また、同じプレビュー機能を使用して、新しいコンプライアンス パッケージを追加したり、その他の標準でコンプライアンスを監視したりすることもできます。 
 
 1. Security Center のメニューから、 **[規制コンプライアンス]** を選択します。 <br>
 画面の上部に、お客様のコンプライアンス状態の概要とサポートされる一連のコンプライアンス規制が記載されたダッシュボードが表示されます。 お客様の全体的なコンプライアンス スコアのほか、それぞれの標準に関連した合否評価の件数を確認できます。
@@ -54,13 +57,13 @@ Security Center では、お客様のリソースの構成を継続的に評価�
 
 1. お客様に関連するコンプライアンス標準のタブを選択します (1)。 標準が適用されているサブスクリプション (2) と、その標準に関するすべての制御の一覧 (3) が表示されます。 該当する制御について、その制御に関連付けられた合否評価の詳細 (4) と、影響を受けたリソースの数 (5) を確認できます。 一部の制御は淡色表示されます。それらの制御には、Security Center の評価が関連付けられていません。 これらの要件を確認し、実際の環境でそれらを評価してください。 そうしたものの中には、技術的なものではなくプロセスに関連したものがあります。
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-drilldown.png" alt-text="規制コンプライアンス ダッシュボード":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-drilldown.png" alt-text="特定の標準に対するコンプライアンスの詳細を調べる":::
 
 1. 特定の標準についての現在のコンプライアンス ステータスを要約した PDF レポートをダウンロードするには、 **[レポートのダウンロード]** をクリックします。
 
-    このレポートは、Security Center の評価データに基づいて、選択した標準のコンプライアンス ステータスの概要を提供し、その特定の標準の制御に従って編成されています。 レポートは直接の利害関係者と共有することができ、内部および外部の監査員に対して証拠を提供するために利用できます。
+    このレポートは、Security Center の評価データに基づいて、選択した標準のコンプライアンス ステータスの概要を提供し、その特定の標準の制御に従って編成されています。 レポートは直接の利害関係者と共有することができ、内部および外部の監査員に対する証拠を提供するために利用できます。
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="規制コンプライアンス ダッシュボード":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="コンプライアンス レポートのダウンロード":::
 
 ## <a name="improve-your-compliance-posture"></a>コンプライアンス体制を強化する
 
@@ -68,13 +71,13 @@ Security Center では、お客様のリソースの構成を継続的に評価�
 
 1.  ダッシュボードに表示されている評価のうち、不合格になっているものをどれかクリックして、その推奨事項の詳細を表示します。 それぞれの推奨事項には、問題を解決するために従うべき一連の修復手順が含まれています。
 
-1.  特定のリソースを選択すると、そのリソースの情報をさらに詳しく表示して、推奨事項を解決することができます。 <br>たとえば、**Azure CIS 1.1.0 (新しい) 標準**では、**仮想マシンでディスク暗号化を適用する必要がある**という推奨事項を選択できます。
+1.  特定のリソースを選択すると、そのリソースの情報をさらに詳しく表示して、推奨事項を解決することができます。 <br>たとえば、**Azure CIS 1.1.0 (新しい) 標準** では、**仮想マシンでディスク暗号化を適用する必要がある** という推奨事項を選択できます。
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/sample-recommendation.png" alt-text="規制コンプライアンス ダッシュボード":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/sample-recommendation.png" alt-text="標準から推奨事項を選択すると、推奨事項の詳細ページに直接移動します":::
 
 1. この例では、推奨事項の詳細ページから **[アクションの実行]** を選択すると、Azure portal の Azure Virtual Machine ページが表示されます。ここで、 **[セキュリティ]** タブを開いて暗号化を有効にすることができます。
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/encrypting-vm-disks.png" alt-text="規制コンプライアンス ダッシュボード":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/encrypting-vm-disks.png" alt-text="推奨事項の詳細ページにある [アクションの実行] ボタンをクリックすると、修復オプションが表示されます":::
 
     レコメンデーションの適用方法の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」を参照してください。
 

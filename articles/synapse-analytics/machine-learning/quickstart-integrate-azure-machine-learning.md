@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 2597aa1f0589fea75af0a3ac41244e3718d5eb3e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a5d84b936679cdd5ebd5bec4938d6db7fcb641e7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307953"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455502"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>クイック スタート:Synapse で Azure Machine Learning のリンクされたサービスを新規作成する
 
-このクイックスタートでは、Synapse Analytics ワークスペースを Azure Machine Learning ワークスペースにリンクします。 これらのワークスペースをリンクすると、Synapse のさまざまなエクスペリエンスから Azure Machine Learning を利用できるようになります。
+このクイックスタートでは、Azure Synapse Analytics ワークスペースを Azure Machine Learning ワークスペースにリンクします。 これらのワークスペースをリンクすると、Synapse のさまざまなエクスペリエンスから Azure Machine Learning を利用できるようになります。
 
 たとえば、Azure Machine Learning ワークスペースにリンクすると、次のようなエクスペリエンスが可能になります。
 
@@ -80,4 +80,4 @@ ms.locfileid: "93307953"
 ## <a name="next-steps"></a>次の手順
 
 - [チュートリアル: 機械学習モデル スコアリング ウィザード - 専用 SQL プール](tutorial-sql-pool-model-scoring-wizard.md)
-- [Azure Synapse Analytics の Machine Learning 機能 (ワークスペース プレビュー)](what-is-machine-learning.md)
+- [Azure Synapse Analytics の機械学習機能](what-is-machine-learning.md)

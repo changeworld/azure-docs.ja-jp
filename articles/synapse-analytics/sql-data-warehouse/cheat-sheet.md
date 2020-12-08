@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics (旧称 SQL DW) のチート シート
-description: Azure Synapse Analytics (旧称 SQL DW) ソリューションをすばやく構築するためのリンクとベスト プラクティスを見つけてください。
+title: 専用 SQL プール (以前の SQL DW) のチート シート
+description: Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) をすばやく構築するためのリンクとベスト プラクティスをご覧いただけます。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 648f06ef1af5d6dce9fa3583c6358d3bd173f209
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a236cf99d3131e83619cfab06e8ec028938a87ba
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319667"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454598"
 ---
-# <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (旧称 SQL DW) のチート シート
+# <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) のチート シート
 
-このチート シートは、Azure Synapse ソリューションを構築するための役立つヒントとベスト プラクティスを提供します。
+このチート シートでは、専用 SQL プール (以前の SQL DW) ソリューションを構築するうえで役立つヒントとベスト プラクティスを紹介します。
 
-次の図は、データ ウェアハウスを設計するプロセスを示しています。
+次の図は、専用 SQL プール (以前の SQL DW) を使用してデータ ウェアハウスを設計するプロセスを示しています。
 
 ![概要](./media/cheat-sheet/picture-flow.png)
 
@@ -109,7 +109,7 @@ ELT を必要とするステージング テーブルでは、パーティショ
 
 ## <a name="maintain-statistics"></a>統計を管理する
 
-データに *大幅な* 変更が発生したときに統計を更新することが重要です。 " *大幅な* " 変更が発生したかどうかを判断するには、「 [統計の更新](sql-data-warehouse-tables-statistics.md#update-statistics)」をご覧ください。 更新された統計により、クエリ プランが最適化されます。 すべての統計の管理に時間がかかりすぎる場合は、統計を作成する列を限定します。
+データに *大幅な* 変更が発生したときに統計を更新することが重要です。 "*大幅な*" 変更が発生したかどうかを判断するには、「[統計の更新](sql-data-warehouse-tables-statistics.md#update-statistics)」をご覧ください。 更新された統計により、クエリ プランが最適化されます。 すべての統計の管理に時間がかかりすぎる場合は、統計を作成する列を限定します。
 
 更新の頻度を定義することもできます。 たとえば、毎日新しい値が追加される可能性がある日付列を更新する場合があります。 結合に含まれる列、WHERE 句で使われている列、および GROUP BY に含まれている列に関する統計を作成すると、最も大きなメリットが得られます。
 
@@ -121,13 +121,13 @@ ELT を必要とするステージング テーブルでは、パーティショ
 
 クエリに時間がかかりすぎる場合は、ユーザーが大きいリソース クラスで実行していないことを確認します。 大きいリソース クラスは、多くのコンカレンシー スロットを消費します。 それにより、他のクエリが待機する可能性があります。
 
-最後に、Gen2 の [SQL プール](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse)を使用して、各リソース クラスが Gen1 の 2.5 倍のメモリを取得します。
+最後に、Gen2 の[専用 SQL プール (以前の SQL DW)](sql-data-warehouse-overview-what-is.md) を使用して、各リソース クラスが Gen1 の 2.5 倍のメモリを取得します。
 
 詳しくは、[リソース クラスとコンカレンシー](resource-classes-for-workload-management.md)の操作方法に関するページをご覧ください。
 
 ## <a name="lower-your-cost"></a>コストの削減
 
-Azure Synapse の重要な機能は、[コンピューティング リソースを管理する](sql-data-warehouse-manage-compute-overview.md)能力です。 使用していない SQL プールは一時停止できます。それにより、コンピューティング リソースの課金が停止されます。 パフォーマンスのニーズに合わせてリソースを拡大縮小することができます。 一時停止するには、[Azure Portal](pause-and-resume-compute-portal.md) または [PowerShell](pause-and-resume-compute-powershell.md) を使用します。 拡大縮小するには、[Azure Portal](quickstart-scale-compute-portal.md)、[Powershell](quickstart-scale-compute-powershell.md)、[T-SQL](quickstart-scale-compute-tsql.md)、または [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute) を使用します。
+Azure Synapse の重要な機能は、[コンピューティング リソースを管理する](sql-data-warehouse-manage-compute-overview.md)能力です。 使用していない専用 SQL プール (以前の SQL DW) は一時停止できます。それにより、コンピューティング リソースの課金が停止されます。 パフォーマンスのニーズに合わせてリソースを拡大縮小することができます。 一時停止するには、[Azure Portal](pause-and-resume-compute-portal.md) または [PowerShell](pause-and-resume-compute-powershell.md) を使用します。 拡大縮小するには、[Azure portal](quickstart-scale-compute-portal.md)、[PowerShell](quickstart-scale-compute-powershell.md)、[T-SQL](quickstart-scale-compute-tsql.md)、または [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute) を使用します。
 
 Azure Functions では自動スケールを利用できます。
 
@@ -137,8 +137,8 @@ Azure Functions では自動スケールを利用できます。
 
 SQL Database と Azure Analysis Services はハブとスポークのアーキテクチャにすることを検討するようお勧めします。 このソリューションは、異なるユーザー グループ間のワークロードを分離しながら、SQL Database と Azure Analysis Services の高度なセキュリティ機能も使用できます。 また、無制限のコンカレンシーをユーザーに提供することもできます。
 
-詳細については、[Azure Synapse を利用する一般的なアーキテクチャ](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/)に関するページを参照してください。
+詳細については、[Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) を利用する一般的なアーキテクチャ](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/)に関するページを参照してください。
 
-SQL プールから SQL データベースにスポークを 1 回のクリックでデプロイします。
+専用 SQL プール (以前の SQL DW) から SQL データベースにスポークを 1 回のクリックでデプロイします。
 
 [![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json)

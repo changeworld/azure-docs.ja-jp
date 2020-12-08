@@ -9,21 +9,20 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 946435175ea5cd366103bc1254bae0d9afe0926e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 62cecc011980c2d11e6f99895c90b0ced744039a
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325797"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325351"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>チュートリアル 1:信用リスクの予測 - Azure Machine Learning Studio (クラシック)
 
-**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
-
+**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (クラシック)   ![これは × 印です。つまり、この記事は Azure Machine Learning を対象としています。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
-このチュートリアルでは、予測分析ソリューションを開発するプロセスについて詳しく説明します。 Machine Learning Studio (クラシック) で単純なモデルを開発します。  その後、そのモデルを Azure Machine Learning Web サービスとしてデプロイします。  このデプロイ モデルは、新しいデータを使用して予測を行うことができます。 このチュートリアルは、 **3 部構成のチュートリアル シリーズの第 1 部** です。
+このチュートリアルでは、予測分析ソリューションを開発するプロセスについて詳しく説明します。 Machine Learning Studio (クラシック) で単純なモデルを開発します。  その後、そのモデルを Azure Machine Learning Web サービスとしてデプロイします。  このデプロイ モデルは、新しいデータを使用して予測を行うことができます。 このチュートリアルは、**3 部構成のチュートリアル シリーズの第 1 部** です。
 
 クレジットの申請書に記入する情報に基づいて個人のクレジット リスクを予測する必要があるとします。  
 
@@ -44,7 +43,7 @@ ms.locfileid: "93325797"
 
 このチュートリアルでは、これまでに少なくとも 1 回は Machine Learning Studio (クラシック) を使用したことがあり、機械学習の概念をある程度理解していることを前提としています。 いずれにしても専門家ではないことを想定しています。
 
-**Azure Machine Learning Studio (クラシック)** をまだ使用したことがない場合は、 [Azure Machine Learning Studio (クラシック) で初めてのデータ サイエンス実験を作成する](create-experiment.md)クイック スタートから始めることをお勧めします。 そのクイック スタートでは、Machine Learning Studio (クラシック) を初めて使用する場合の手順を示しながら、 実験にモジュールをドラッグ アンド ドロップして互いに結び付け、実験を実行して結果を確認する方法の基本について説明します。
+**Azure Machine Learning Studio (クラシック)** をまだ使用したことがない場合は、[Azure Machine Learning Studio (クラシック) で初めてのデータ サイエンス実験を作成する](create-experiment.md)クイック スタートから始めることをお勧めします。 そのクイック スタートでは、Machine Learning Studio (クラシック) を初めて使用する場合の手順を示しながら、 実験にモジュールをドラッグ アンド ドロップして互いに結び付け、実験を実行して結果を確認する方法の基本について説明します。
 
 
 > [!TIP] 
@@ -75,7 +74,7 @@ Machine Learning Studio (クラシック) を使用するには、Microsoft Azur
 
 **german.data** という名前のファイルを使用します。 このファイルをローカル ハード ドライブにダウンロードします。  
 
-この **german.data** データセットの行には、信用貸付の過去 1,000 人の申請者に関する 20 の変数が含まれています。 これらの 20 の変数は、データセットの特徴セット ( *特徴ベクトル* ) を表し、それぞれの信用貸付申請者を識別する特徴を提供します。 各行の追加の列は、申請者について計算された信用リスクを表し、700 人の申請者が低リスクとして、300 人が高リスクとして識別されています。
+この **german.data** データセットの行には、信用貸付の過去 1,000 人の申請者に関する 20 の変数が含まれています。 これらの 20 の変数は、データセットの特徴セット (*特徴ベクトル*) を表し、それぞれの信用貸付申請者を識別する特徴を提供します。 各行の追加の列は、申請者について計算された信用リスクを表し、700 人の申請者が低リスクとして、300 人が高リスクとして識別されています。
 
 UCI Web サイトは、このデータの特徴ベクトルの属性についての詳細を提供します。 このデータには、財務情報、クレジット履歴、雇用状況、個人情報が含まれます。 各申請者について、申請者の信用リスクの高低を示す二項評価が与えられています。 
 
@@ -111,7 +110,7 @@ cat german.data | %{$_ -replace " ",","} | sc german.csv
 sed 's/ /,/g' german.data > german.csv
 ```
 
-いずれの場合も、コンマ区切りに変換されたデータが、 **german.csv** という名前のファイルに作成されます。このファイルは実験で使用できます。
+いずれの場合も、コンマ区切りに変換されたデータが、**german.csv** という名前のファイルに作成されます。このファイルは実験で使用できます。
 
 ### <a name="upload-the-dataset-to-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) にデータセットをアップロードする
 
@@ -119,7 +118,7 @@ sed 's/ /,/g' german.data > german.csv
 
 1. Machine Learning Studio (クラシック) のホーム ページ ([https://studio.azureml.net](https://studio.azureml.net)) を開きます。 
 
-2. ウィンドウの左上隅にある ![[メニュー]](./media/tutorial-part1-credit-risk/menu.png) をクリックします。 **[Azure Machine Learning]** をクリックし、 **[Studio]** を選択してサインインします。
+2. ウィンドウの左上隅にあるメニュー ![これは、メニューのアイコンです - 三重線です。](./media/tutorial-part1-credit-risk/menu.png) をクリックし、 **[Azure Machine Learning]** をクリックしてから **[Studio]** を選択してサインインします。
 
 3. ウィンドウの下部にある **[+新規]** をクリックします。
 
@@ -179,7 +178,7 @@ Studio (クラシック) にアップロードしたデータセットは、Stud
 
 データの最初の 100 行とデータセット全体の統計情報を表示できます。データセットの出力ポート (下部の小さな円) をクリックし、 **[視覚化]** を選択します。  
 
-データ ファイルには列見出しがないため、Studio (クラシック) では汎用の見出し (Col1、Col2 " *など* ") が付けられます。 適切な見出しはモデルを作成するために絶対に必要なものではありませんが、実験のデータを操作する際に便利です。 また、最終的にこのモデルを Web サービスに発行する際に、見出しは、サービスのユーザーが列を特定するのに役立ちます。  
+データ ファイルには列見出しがないため、Studio (クラシック) では汎用の見出し (Col1、Col2 "*など*") が付けられます。 適切な見出しはモデルを作成するために絶対に必要なものではありませんが、実験のデータを操作する際に便利です。 また、最終的にこのモデルを Web サービスに発行する際に、見出しは、サービスのユーザーが列を特定するのに役立ちます。  
 
 [メタデータの編集][edit-metadata]モジュールを使用して、列見出しを追加できます。
 
@@ -226,7 +225,7 @@ Studio (クラシック) にアップロードしたデータセットは、Stud
    ![メタデータの編集のプロパティ](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
 
    > [!TIP]
-   > 列見出しを検証する場合は、実験を実行します (実験キャンバスの下の **[Run (実行)]** をクリックします)。 実行が終了したら ( [メタデータの編集][edit-metadata]上に緑のチェック マークが表示されたら)、 [メタデータの編集][edit-metadata]モジュールの出力ポートをクリックし、 **[視覚化]** を選択します。 すべてのモジュールで、この方法によって実験データの進捗状況を確認することができます。
+   > 列見出しを検証する場合は、実験を実行します (実験キャンバスの下の **[Run (実行)]** をクリックします)。 実行が終了したら ([メタデータの編集][edit-metadata]上に緑のチェック マークが表示されたら)、[メタデータの編集][edit-metadata]モジュールの出力ポートをクリックし、 **[視覚化]** を選択します。 すべてのモジュールで、この方法によって実験データの進捗状況を確認することができます。
    > 
    > 
 

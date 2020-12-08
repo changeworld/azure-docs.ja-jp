@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: 0314f5e55a476cd1cd1f8a31bd918e0ebb64c75f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 611d2163e242d7851398821344c3ed595df364cb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95254240"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460268"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Synapse Knowledge Center を探索する
 
@@ -56,7 +56,10 @@ Synapse Studio で Knowledge Center を検索するには、次の 2 つの方�
 1. **[実行]**
 1. これにより、すべてのニューヨーク市のタクシー データに対して複数のテーブルが作成され、T-SQL COPY コマンドを使用して読み込まれます。
 
-## <a name="next-steps"></a>次のステップ
+    > [!NOTE] 
+    > 専用 SQL プール (以前の SQL DW) に対する SQL スクリプトのサンプル ギャラリーを使用する場合、使用できるのは、既存の専用 SQL プール (以前の SQL DW) だけです。
+
+## <a name="next-steps"></a>次の手順
 
 * [Azure Synapse Analytics の使用を開始する](get-started.md)
 * [ワークスペースを作成する](quickstart-create-workspace.md)

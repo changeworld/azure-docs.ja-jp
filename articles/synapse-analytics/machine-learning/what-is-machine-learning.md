@@ -9,16 +9,14 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 382ba871f95b3b36c3f819de8d582ba2c5dc358a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 20f095a058434c36373c30ed2a633db12643814d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316087"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448285"
 ---
-# <a name="machine-learning-capabilities-in-azure-synapse-analytics-workspaces-preview"></a>Azure Synapse Analytics の Machine Learning 機能 (ワークスペース プレビュー)
-
-[!INCLUDE [preview](../includes/note-preview.md)]
+# <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Azure Synapse Analytics の機械学習機能
 
 Azure Synapse Analytics では、さまざまな機械学習の機能を提供しています。 この記事では、Azure Synapse のコンテキストで Machine Learning を適用する方法について概要を示します。
 
@@ -48,11 +46,11 @@ Azure Synapse のネイティブに統合されているパーツである [Azur
 
 機械学習プロセスにおいて、探索と視覚化によってデータについて理解することは重要な部分となります。
 
-データの格納場所に応じて、Synapse には、分析と機械学習のためにデータを探索し、準備するためのさまざまなツールが用意されています。 データ探索を開始する最も簡単な方法の 1 つは、データ レイク内のデータに対して、Apache Spark または Synapse SQL サーバーレス プールを直接使用することです。
+データの格納場所に応じて、Synapse には、分析と機械学習のためにデータを探索し、準備するためのさまざまなツールが用意されています。 データ探索を開始する最も簡単な方法の 1 つは、データ レイク内のデータに対して、Apache Spark またはサーバーレス SQL プールを直接使用することです。
 
 * [Apache Spark for Azure Synapse](../spark/apache-spark-overview.md) には、大規模なデータの変換、準備、および探索を行う機能が用意されています。 これらの Spark プールでは、大規模なデータ処理のための PySpark/Python、Scala、.NET などのツールが提供されています。 強力な視覚化ライブラリを使用することで、データ探索のエクスペリエンスを向上させ、データの理解を深めることができます。 Spark を使用して Synapse のデータを探索し、視覚化する方法については、[こちらの記事](../get-started-analyze-spark.md)を参照してください。
 
-* [Synapse SQL サーバーレス プール](../sql/on-demand-workspace-overview.md)では、データ レイクに対して TSQL を直接使用してデータを探索する方法が提供されます。 Synapse SQL サーバーレス プールには、Synapse Studio で使用する組み込みの視覚化機能がいくつか用意されています。 Synapse SQL サーバーレス プールを使用してデータを探索する方法については、[こちらの記事](../get-started-analyze-sql-on-demand.md)を参照してください。
+* [サーバーレス SQL プール](../sql/on-demand-workspace-overview.md)では、データ レイクに対して TSQL を直接使用してデータを探索する方法が提供されます。 サーバーレス SQL プールには、Synapse Studio で使用する組み込みの視覚化機能もいくつか用意されています。 [サーバーレス SQL プールを使用してデータを探索する方法について学習してください](../get-started-analyze-sql-on-demand.md)。
 
 ### <a name="modeling"></a>モデリング
 

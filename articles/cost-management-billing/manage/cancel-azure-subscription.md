@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 12/01/2020
 ms.author: banders
-ms.openlocfilehash: f90d1fe22ae2f46fdc6d764ce98db8e0f48b8b35
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3182da0d04d61d5bad4ce3e41f213ecc3be7ecaf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408024"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444451"
 ---
 # <a name="cancel-your-azure-subscription"></a>Azure サブスクリプションの取り消し
 
@@ -38,6 +38,9 @@ ms.locfileid: "94408024"
     ![[キャンセル] ボタンを示すスクリーン ショット](./media/cancel-azure-subscription/cancel_ibiza.png)
 1. 画面の指示に従って、取り消しを完了します。
 
+> [!NOTE]
+> パートナーは、顧客から要求された場合、または未払いや不正行為があった場合に、サブスクリプションを中断または取り消すことができます。 詳細については、「[サブスクリプションを中断または取り消す](/partner-center/create-a-new-subscription#suspend-or-cancel-a-subscription)」セクションを参照してください。
+
 ## <a name="who-can-cancel-a-subscription"></a>サブスクリプションを取り消すことができるユーザー
 
 次の表では、サブスクリプションを取り消すために必要なアクセス許可について説明します。
@@ -48,7 +51,7 @@ ms.locfileid: "94408024"
 |[Microsoft Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) と [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  サブスクリプションの所有者とアカウント所有者       |
 |[Azure プラン](https://azure.microsoft.com/offers/ms-azr-0017g/)と [DevTest 用 Azure プラン](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  サブスクリプションの所有者      |
 
-## <a name="what-happens-after-i-cancel-my-subscription"></a>サブスクリプションの取り消し後の流れ
+## <a name="what-happens-after-subscription-cancellation"></a>サブスクリプションの取り消し後は、どうなりますか?
 
 取り消し後は、課金がただちに停止されます。 ただし、取り消しがポータルに反映されるまでに最大で 10 分かかります。 請求期間の途中でキャンセルした場合、期間終了後の一般的な請求日に、最終的な課金内容が送信されます。
 
@@ -65,7 +68,7 @@ Microsoft では、サブスクリプションが取り消された後、お客�
 1. 削除するサブスクリプションを選択します。
 1. **[概要]** を選択し、 **[サブスクリプションの削除]** を選択します。
 
-## <a name="reactivate-subscription"></a>サブスクリプションの再アクティブ化
+## <a name="reactivate-a-subscription"></a>サブスクリプションの再アクティブ化
 
 従量課金制のサブスクリプションを誤って取り消した場合は、[アカウント センターで再アクティブ化](subscription-disabled.md)することができます。
 
@@ -73,7 +76,7 @@ Microsoft では、サブスクリプションが取り消された後、お客�
 
 ## <a name="why-dont-i-see-the-cancel-subscription-option-on-the-azure-portal"></a>Azure portal にサブスクリプション取り消しオプションが表示されないのはなぜですか? 
 
-サブスクリプションを取り消すために必要なアクセス許可がない可能性があります。 さまざまな種類のサブスクリプションを取り消すことができるユーザーについては、「[サブスクリプションを取り消すことができるユーザー](https://docs.microsoft.com/azure/cost-management-billing/manage/cancel-azure-subscription#who-can-cancel-a-subscription)」を参照してください。
+サブスクリプションを取り消すために必要なアクセス許可がない可能性があります。 さまざまな種類のサブスクリプションを取り消すことができるユーザーについては、「[サブスクリプションを取り消すことができるユーザー](#who-can-cancel-a-subscription)」を参照してください。
 
 ## <a name="how-do-i-delete-my-azure-account"></a>Azure アカウントを削除するにはどうすればよいですか?
 
@@ -85,7 +88,7 @@ Microsoft では、サブスクリプションが取り消された後、お客�
 
 ## <a name="how-do-i-cancel-a-visual-studio-professional-account"></a>Visual Studio Professional アカウントを取り消すにはどうすればよいですか?
 
-「[更新とキャンセル](https://docs.microsoft.com/visualstudio/subscriptions/faq/admin/renewal-cancellation)」の記事を参照してください。 Visual Studio Azure サブスクリプションを持っている場合は、それも取り消して削除する必要があります。
+「[更新とキャンセル](/visualstudio/subscriptions/faq/admin/renewal-cancellation)」の記事を参照してください。 Visual Studio Azure サブスクリプションを持っている場合は、それも取り消して削除する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

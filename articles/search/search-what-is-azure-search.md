@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/24/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 19be1155476ca7c295e2d0311e8285bc2128dd1d
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: c36a88317f71d08094b43d06cc7ba86985a73ca0
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030766"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511850"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Cognitive Search とは
 
@@ -23,9 +23,10 @@ Azure Cognitive Search ([旧称 Azure Search](whats-new.md#new-service-name)) �
 Cognitive Search サービスを作成すると、次の機能が利用できます。
 
 + インデックス作成とクエリの実行を担う検索エンジン
-+ AI を使用した分析と変換。インデックス作成の過程で、画像や未区分のテキストを AI を使用して分析したり変換したりします。
 + 自分で作成、管理する検索インデックスの永続的ストレージ
 + 単純なものから複雑なものまでさまざまなクエリを作成するための照会言語
++ 画像、生のテキスト、アプリケーション ファイルから検索可能なコンテンツを作成する、AI による分析
++ データのインポートと更新を自動化する、検索インデクサーを使用した Azure データとの統合
 
 アーキテクチャ上、検索サービスは、インデックスが設定されていないデータを含む外部データ ストアと、検索インデックスにクエリ要求を送信して応答を処理するクライアント アプリとの間に配置されます。
 
@@ -61,16 +62,16 @@ Azure Cognitive Search は、次のアプリケーション シナリオに適�
 
 次の 4 つのステップにより、主要な検索機能をエンド ツー エンドで試すことができます。
 
-1. 他のサブスクライバーと共有する Free レベルの [**検索サービスを作成**](search-create-service-portal.md)します。または、自分のサービス専用にリソースを使用できる[有料レベル](https://azure.microsoft.com/pricing/details/search/)を選択することもできます。 すべてのクイック スタートとチュートリアルは、無料のサービスで完了できます。
+1. 他のサブスクライバーと共有する Free レベルの [**検索サービスを作成**](search-create-service-portal.md)します。または、自分のサービス専用にリソースを使用できる [有料レベル](https://azure.microsoft.com/pricing/details/search/)を選択することもできます。 すべてのクイック スタートとチュートリアルは、無料のサービスで完了できます。
 
-1. ポータル、[REST API](/rest/api/searchservice/create-index)、[.NET SDK](search-what-is-an-index.md)、または他の SDK を使用して [**検索インデックスを作成**](search-what-is-an-index.md)します。 <bpt id="p1">[</bpt>.NET SDK<ept id="p1">](search-howto-dotnet-sdk.md)</ept>, or another SDK. 検索可能なコンテンツの構造は、インデックス スキーマによって定義されます。
+1. ポータル、[REST API](/rest/api/searchservice/create-index)、[.NET SDK](search-what-is-an-index.md)、または他の SDK を使用して [**検索インデックスを作成**](search-what-is-an-index.md)します。 [.NET SDK](search-howto-dotnet-sdk.md)、または別の SDK。 検索可能なコンテンツの構造は、インデックス スキーマによって定義されます。
 
 1. インデックスに [**コンテンツをアップロード**](search-what-is-data-import.md)します。 ["プッシュ" モデル](tutorial-optimize-indexing-push-api.md)を使用して任意のソースから JSON ドキュメントをプッシュします。または、ソース データが Azure 上にある場合は ["プル" モデル (インデクサー)](search-indexer-overview.md) を使用します。
 
 1. ポータルの [検索エクスプローラー](search-explorer.md)、[REST API](search-get-started-rest.md)、[.NET SDK](/dotnet/api/azure.search.documents.searchclient.search)、または他の SDK を使用して、[**インデックスを照会**](search-query-overview.md)します。
 
 > [!TIP]
-> まずは、[**データ インポート ウィザード**](search-get-started-portal.md)と Azure データ ソースを使ってみましょう。必要な手順を統合し、インデックスの作成、読み込み、照会を数分で行うことができます。
+> [**データ インポート ウィザード**](search-get-started-portal.md)と Azure データ ソースの使用から始めることによって手順を最小限に抑え、インデックスの作成、読み込み、照会を数分で行うことができます。
 
 ## <a name="how-it-compares"></a>他のソリューションとの比較
 
@@ -78,7 +79,7 @@ Azure Cognitive Search は、次のアプリケーション シナリオに適�
 
 | 比較対象 | 主な相違点 |
 |-------------|-----------------|
-| Microsoft Search | [Microsoft Search](https://docs.microsoft.com/microsoftsearch/overview-microsoft-search) は、SharePoint 内のコンテンツに対してクエリを実行する必要がある、Microsoft 365 の認証済みユーザーを対象としています。 すぐに使用できる検索環境として提供され、管理者によって有効にされて構成が行われます。Microsoft や他のソースから提供されているコネクタを通じて外部コンテンツを受け入れることができます。 それが目的に合致していれば、Microsoft Search と Microsoft 365 は、試す価値のある選択肢となります。<br/><br/>これに対し、Azure Cognitive Search は、所有するデータやドキュメントを、多くの場合さまざまなソースから取り込んで定義したインデックスに対してクエリを実行します。 Azure Cognitive Search は[インデクサー](search-indexer-overview.md)により複数の Azure データ ソースに対するクローラー機能を備えていますが、インデックス スキーマに準拠している任意の JSON ドキュメントを 1 つの統合された検索可能なリソースにプッシュできます。 また、機械学習と字句解析器を含むようにインデックス作成パイプラインをカスタマイズすることもできます。 Cognitive Search は、より大きなソリューションのプラグイン コンポーネントとなるように作成されているため、プラットフォームにかかわらず、ほぼすべてのアプリに検索機能を統合することができます。|
+| Microsoft Search | [Microsoft Search](/microsoftsearch/overview-microsoft-search) は、SharePoint 内のコンテンツに対してクエリを実行する必要がある、Microsoft 365 の認証済みユーザーを対象としています。 すぐに使用できる検索環境として提供され、管理者によって有効にされて構成が行われます。Microsoft や他のソースから提供されているコネクタを通じて外部コンテンツを受け入れることができます。 それが目的に合致していれば、Microsoft Search と Microsoft 365 は、試す価値のある選択肢となります。<br/><br/>これに対し、Azure Cognitive Search は、所有するデータやドキュメントを、多くの場合さまざまなソースから取り込んで定義したインデックスに対してクエリを実行します。 Azure Cognitive Search は[インデクサー](search-indexer-overview.md)により複数の Azure データ ソースに対するクローラー機能を備えていますが、インデックス スキーマに準拠している任意の JSON ドキュメントを 1 つの統合された検索可能なリソースにプッシュできます。 また、機械学習と字句解析器を含むようにインデックス作成パイプラインをカスタマイズすることもできます。 Cognitive Search は、より大きなソリューションのプラグイン コンポーネントとなるように作成されているため、プラットフォームにかかわらず、ほぼすべてのアプリに検索機能を統合することができます。|
 |Bing | [Bing Web Search API](../cognitive-services/bing-web-search/index.yml) は Bing.com のインデックスで送信された語句と一致するものを検索します。 インデックスは、公開サイトの HTML、XML、および他の Web コンテンツから構築されます。 同じ基板上に構築されている [Bing Custom Search](/azure/cognitive-services/bing-custom-search/) は、個々の Web サイトに範囲指定して、各 Web コンテンツ タイプに対して同じクローラー テクノロジを提供します。<br/><br/>Cognitive Search では、インデックスを自分で定義してデータを投入することができます。 [インデクサー](search-indexer-overview.md)を使用して Azure データ ソース上のデータをクロールしたり、インデックスに適合する JSON ドキュメントを検索サービスにプッシュしたりすることができます。 |
 |データベース検索 | 多くのデータベース プラットフォームには、組み込みの検索エクスペリエンスが含まれます。 SQL Server には[フル テキスト検索](/sql/relational-databases/search/full-text-search)があります。 Cosmos DB や同種のテクノロジには、クエリ可能なインデックスがあります。 検索とストレージを結合する製品を評価するとき、採用する方法を決めるのが困難な場合があります。 多くのソリューションでは両方が採用され、ストレージには DBMS が、専用の検索機能には Azure Cognitive Search が使用されています。<br/><br/>DBMS 検索と比較すると、Azure Cognitive Search は異種ソースからのコンテンツを格納し、[56 言語](/rest/api/searchservice/language-support)で言語対応のテキスト処理 (語幹検索、レンマ化、語形) などの専用のテキスト処理機能を提供します。 また、スペルミスの単語のオート コレクト、[シノニム](/rest/api/searchservice/synonym-map-operations)、[候補](/rest/api/searchservice/suggestions)、[スコアリング コントロール](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)、[ファセット](./search-filters-facets.md)、および[カスタムトークン化](/rest/api/searchservice/custom-analyzers-in-azure-search)もサポートしています。 Azure Cognitive Search の[フル テキスト検索エンジン](search-lucene-query-architecture.md)は情報取得の業界標準である Apache Lucene に基づいて構築されています。 ただし、Azure Cognitive Search では逆インデックスの形式でデータを保持しますが、真のデータ ストレージの代わりにはならないため、その役割として使用することはお勧めしません。 詳しくは、こちらの[フォーラム投稿](https://stackoverflow.com/questions/40101159/can-azure-search-be-used-as-a-primary-database-for-some-data)をご覧ください。 <br/><br/>リソース使用率も、このカテゴリで別途考慮する必要があります。 インデックス付けと一部のクエリ操作は、多くの場合、計算を大量に使用します。 DBMS からクラウドの専用ソリューションに検索をオフロードすることにより、トランザクション処理用のシステム リソースを保持します。 さらに、検索を外部化することで、クエリのボリュームに合わせてスケールを簡単に調整できます。|
 |専用の検索ソリューション | 全機能を持つ専用の検索を使用する場合、最後の比較カテゴリはオンプレミス ソリューションかクラウド サービスかです。 多くの検索テクノロジには、インデックスの作成とクエリ パイプラインの管理、豊富なクエリとフィルター構文へのアクセス、ランクと関連性の管理、自主的な高度な検索の機能が用意されています。 <br/><br/>クラウド サービスは、オーバーヘッドとメンテナンスが最小限で済み、スケールが調整可能なターンキー ソリューションを望むお客様に最適の選択肢です。 <br/><br/>クラウドの枠組みでは、複数のプロバイダーがフルテキスト検索、地理空間検索、検索入力の程度のあいまいさを処理する機能など、同等の基本機能を備えるソリューションを提供しています。 使用環境に最も合うものを判断する場合、通常は、[特化した機能](search-features-list.md)か、API、ツール、管理の容易さと全体的な単純さが決め手になります。 |

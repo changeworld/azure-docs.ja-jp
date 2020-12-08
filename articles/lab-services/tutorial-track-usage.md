@@ -3,12 +3,12 @@ title: Azure Lab Services でラボの使用状況を追跡する | Microsoft Do
 description: このチュートリアルでは、ラボの使用状況をその作成者/所有者として追跡します。
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: a9a9b49b568decc621be1969a8578d61ac7e4861
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a3ca9e011eb89b3db8b202bab11d14f10d74e7e
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445034"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434619"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>チュートリアル: Azure Lab Services でラボの使用状況を追跡する
 このチュートリアルでは、ラボの作成者/所有者がラボの使用状況を追跡する方法について説明します。
@@ -50,4 +50,4 @@ ms.locfileid: "85445034"
 > 教師が学生用 VM をオンにしても、学生のクォータは影響を受けません。 ユーザーのクォータによって指定されるのは、スケジュールされたクラス時間外にユーザーが使用できるラボ時間数です。 クォータの詳細については、「[ユーザーのクォータを設定する](how-to-configure-student-usage.md?#set-quotas-for-users)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-クラスルーム ラボの詳細については、[攻略ガイド](how-to-manage-lab-accounts.md)の各記事を参照してください。
+ラボの詳細については、[攻略ガイド](how-to-manage-lab-accounts.md)の各記事を参照してください。

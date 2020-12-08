@@ -1,6 +1,6 @@
 ---
 title: 'クイックスタート: サーバーレス SQL プールを使用する'
-description: このクイックスタートでは、サーバーレス SQL プール (プレビュー) を使用してさまざまな種類のファイルに簡単にクエリを実行する方法について説明します。
+description: このクイックスタートでは、サーバーレス SQL プールを使用してさまざまな種類のファイルに簡単にクエリを実行する方法について説明します。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 270942392e028964c7e9b1c110e4d9f118bd4953
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: e75bab664bdd0d6a4ac898905226c9956f62b4ff
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682980"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450498"
 ---
 # <a name="quickstart-use-serverless-sql-pool"></a>クイックスタート: サーバーレス SQL プールを使用する
 
-Synapse サーバーレス SQL プール (プレビュー) は、Azure Storage に配置されたファイルに対して SQL クエリを実行できるサーバーレス クエリ サービスです。 このクイックスタートでは、サーバーレス SQL プールを使用してさまざまな種類のファイルにクエリを実行する方法について説明します。 サポートされている形式の一覧については、[OPENROWSET](sql/develop-openrowset.md) のページを参照してください。
+Synapse サーバーレス SQL プールは、Azure Storage に配置されたファイルに対して SQL クエリを実行できるサーバーレス クエリ サービスです。 このクイックスタートでは、サーバーレス SQL プールを使用してさまざまな種類のファイルにクエリを実行する方法について説明します。 サポートされている形式の一覧については、[OPENROWSET](sql/develop-openrowset.md) のページを参照してください。
 
 このクイックスタートでは、CSV、Apache Parquet、および JSON ファイルに対してクエリを実行します。
 

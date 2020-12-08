@@ -1,5 +1,5 @@
 ---
-title: 用語 - Azure Synapse Analytics (ワークスペース プレビュー)
+title: 用語 - Azure Synapse Analytics
 description: Azure Synapse Analytics をユーザーに紹介するリファレンス ガイド
 services: synapse-analytics
 author: saveenr
@@ -9,16 +9,14 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c58ee46a608ccdcbb01a082ee278d9e0f8a07f6e
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7f0ca83c194aae6f4a8d04d70c2d4f3746ad2ca5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030681"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446714"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Azure Synapse Analytics の用語
-
-[!INCLUDE [preview](includes/note-preview.md)]
 
 このドキュメントでは、Azure Synapse Analytics の基本的な概念を紹介します。
 
@@ -36,8 +34,7 @@ ms.locfileid: "96030681"
 
 **Synapse SQL** は、Synapse ワークスペースで T-SQL に基づいて分析するための機能です。 Synapse SQL には、専用とサーバーレスという 2 つの消費モデルがあります。  専用モデルの場合、**専用の SQL プール** を使用します。 ワークスペースには、このようなプールをいくらでも与えることができます。 サーバーレスモデルを使用するには、**サーバーレス SQL プール** を使用します。 ワークスペースごとにこのようなプールが 1 つ与えられます。
 
-* **SQL 要求** - 専用 SQL プールまたはサーバーレス SQL プールを介して実行されるクエリなどの操作。
-* **SQL スクリプト** - ファイルに保存された SQL コマンドのセット。 1 つの SQL スクリプトに 1 つまたは複数の SQL ステートメントを含めることができます。 専用 SQL プールまたはサーバーレス SQL プールを介して SQL 要求を実行するために使用できます。
+Synapse Studio 内で、**SQL スクリプト** を作成および実行することによって、SQL プールを操作できます。
 
 ## <a name="apache-spark-for-synapse"></a>Synapse 用の Apache Spark
 
@@ -47,19 +44,13 @@ Synapse では、次の 2 とおりの方法で Spark を使用できます。
 * **Spark Notebooks**。データ サイエンスやエンジニアリングを行う用途で、Scala、PySpark、C#、SparkSQL が使用されます。
 * **Spark ジョブ定義**。jar ファイルを使用したバッチ Spark ジョブの実行に使用されます。
 
-バージョンのサポート:
-* Spark 2.4
-* Python 3.6.1
-* Scala 2.11.12
-* .NET for Apache Spark 1.0
-* Delta Lake 0.3  
-
 ## <a name="pipelines"></a>パイプライン
 
-* **データ統合** - さまざまなソース間でデータを取り込み、ワークスペース内またはワークスペース外で実行されるアクティビティを調整する機能を提供します。
-* **データ フロー** - ビッグ データの変換を行うために、コーディングを必要としない、完全に視覚的なエクスペリエンスを提供します。 すべての最適化と実行は、サーバーレス方式で処理されます。
-* **パイプライン** - 1 つのタスクを連携して実行するアクティビティの論理的なグループ。
-* **アクティビティ** - データのコピー、ノートブックや SQL スクリプトの実行など、データに対して実行するアクションを定義します。
+Azure Synapse では、パイプラインを使用してデータ統合を提供します。これにより、サービス間でデータを移動したり、アクティビティを調整したりすることができます。
+
+* **パイプライン** は、1 つのタスクを連携して実行するアクティビティの論理的なグループです。
+* **アクティビティ** は、データのコピー、ノートブックや SQL スクリプトの実行など、データに対して実行する、パイプライン内のアクションを定義します。
+* **データ フロー** は、内部的に Synapse Spark を使用するデータ変換を実行するための、コードなしのエクスペリエンスを提供する、特定の種類のアクティビティです。
 * **トリガー** - パイプラインを実行します。 手動または自動で実行できます (スケジュール、タンブリング ウィンドウ、またはイベントベース)
 * **統合データセット** - アクティビティで入力および出力として使用されるデータを単にポイントまたは参照する、データの名前付きビュー。 リンクされたサービスに属します。
 

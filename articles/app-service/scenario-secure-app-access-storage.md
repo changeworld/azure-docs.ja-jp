@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: 250e95b33b985aedcc1b1537f57338d29e848451
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: azureday1
+ms.openlocfilehash: 72b1d4fe864c23c0ac065e47d96ab0c78866defa
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96020213"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435843"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>チュートリアル:Web アプリから Azure Storage にアクセスする
 
@@ -23,7 +24,7 @@ ms.locfileid: "96020213"
 
 :::image type="content" alt-text="ストレージにアクセスする方法を示す図。" source="./media/scenario-secure-app-access-storage/web-app-access-storage.svg" border="false":::
 
-Web アプリから Azure データ プレーン (Azure Storage、Azure SQL Database、Azure Key Vault、またはその他のサービス) へのアクセスを追加するとします。 共有キーを使用することもできますが、その場合、シークレットを作成、デプロイ、および管理できるユーザーの運用上のセキュリティについて配慮する必要があります。 また、キーが GitHub にチェックインされる可能性もあります。ハッカーはそのスキャン方法を知っています。 Web アプリにデータへのアクセスを許可するより安全な方法では、[マネージド ID](/azure/active-directory/managed-identities-azure-resources/overview) を使用します。
+Web アプリから Azure データ プレーン (Azure Storage、Azure SQL Database、Azure Key Vault、またはその他のサービス) へのアクセスを追加するとします。 共有キーを使用することもできますが、その場合、シークレットを作成、デプロイ、および管理できるユーザーの運用上のセキュリティについて配慮する必要があります。 また、キーが GitHub にチェックインされる可能性もあります。ハッカーはそのスキャン方法を知っています。 Web アプリにデータへのアクセスを許可するより安全な方法では、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用します。
 
 Azure Active Directory (Azure AD) のマネージド ID を使用すると、App Service は、アプリの資格情報を必要とせずに、ロールベースのアクセス制御 (RBAC) を使用してリソースにアクセスできます。 マネージド ID を対象の Web アプリに割り当てると、Azure では証明書の作成と配布が行われます。 シークレットまたはアプリの資格情報の管理について心配する必要はありません。
 
@@ -211,6 +212,8 @@ az role assignment create --assignee $spID --role 'Storage Blob Data Contributor
 
 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) クラスは、Azure Storage に対する要求をコードで承認するためにトークン資格情報を取得する際に使用されます。 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) クラスのインスタンスを作成します。これは、マネージド ID を使用し、トークンを取得してサービス クライアントにアタッチします。 次のコード例では、認証済みのトークン資格情報を取得し、それを使用して、新しい BLOB をアップロードするサービス クライアント オブジェクトを作成します。
 
+このコードをサンプル アプリケーションの一部として見る場合は、[GitHub 上のサンプル](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/1-WebApp-storage-managed-identity)を参照してください。
+
 ### <a name="install-client-library-packages"></a>クライアント ライブラリ パッケージをインストールする
 
 Blob Storage を使用するための [Blob Storage NuGet パッケージ](https://www.nuget.org/packages/Azure.Storage.Blobs/)と、Azure AD の資格情報で認証するための [.NET 用 Azure Identity クライアント ライブラリ NuGet パッケージ](https://www.nuget.org/packages/Azure.Identity/)をインストールします。 クライアント ライブラリは、.NET Core コマンド ライン インターフェイスまたは Visual Studio のパッケージ マネージャー コンソールを使用してインストールします。
@@ -289,7 +292,7 @@ static public async Task UploadBlob(string accountName, string containerName, st
 
 このチュートリアルを完了し、Web アプリや関連するリソースが不要になった場合は、[作成したリソースをクリーンアップ](scenario-secure-app-clean-up-resources.md)します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、次の作業を行う方法を学びました。
 

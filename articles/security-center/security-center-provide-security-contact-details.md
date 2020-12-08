@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2020
+ms.date: 12/01/2020
 ms.author: memildin
-ms.openlocfilehash: 6b54f02b39e233dcf35f0d18682ca102883d76c3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 85dffd4d96a78bab9dd890d9ad37572f3e524f06
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791870"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487934"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>セキュリティ アラートの電子メール通知を構成する 
 
@@ -26,14 +26,14 @@ ms.locfileid: "92791870"
 
 通知用電子メールに独自の設定を定義するには、Azure Security Center の **[電子メール通知]** 設定ページで以下を選択できます。
 
-- **通知する必要がある " _ユーザー_ "** - 電子メールは、選択した個人、またはサブスクリプションに指定された Azure ロールを持つ任意のユーザーに送信できます。 
-- **通知する必要がある " _内容_ "** - Security Center から通知を送信する必要がある重大度レベルを変更します。
+- **通知する必要がある "_ユーザー_"** - 電子メールは、選択した個人、またはサブスクリプションに指定された Azure ロールを持つ任意のユーザーに送信できます。 
+- **通知する必要がある "_内容_"** - Security Center から通知を送信する必要がある重大度レベルを変更します。
 
 アラート疲れを避けるため、Security Center では送信メールの量が制限されています。 各サブスクリプションについて、Security Center では以下のように送信が行われます。
 
-- **重要度が高い** アラートに関しては、1 日あたり最大 **4 通** のメール
-- **重要度が中程度** のアラートに関しては、1 日あたり最大 **2 通** のメール
-- **重要度が低い** アラートに関しては、1 日あたり最大 **1 通** のメール
+- **重大度が高い** アラートの場合、**6 時間** ごとに最大 1 通 (1 日あたり 4 通) のメール
+- **重大度が中程度** のアラートの場合、**12 時間** ごとに最大 1 通 (1 日あたり 2 通) のメール
+- **重大度が低い** アラートの場合、**24 時間** ごとに最大 1 通のメール
 
 :::image type="content" source="./media/security-center-provide-security-contacts/email-notification-settings.png" alt-text="セキュリティ アラートに関する電子メールを受信する連絡先の詳細を構成しています。" :::
  
@@ -62,10 +62,9 @@ ms.locfileid: "92791870"
 1. セキュリティ連絡先の情報をサブスクリプションに適用するには、 **[保存]** を選択します。
 
 
-## <a name="next-steps"></a>次のステップ
-
+## <a name="see-also"></a>関連項目
 セキュリティ アラートの詳細については、次のページを参照してください。
 
 - [セキュリティ アラート - リファレンス ガイド](alerts-reference.md) -- Azure Security Center の Threat Protection モジュールで表示される可能性のあるセキュリティ アラートについて学習します
 - [Azure Security Center でのセキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md) -- セキュリティ アラートの管理と対応の方法について学習します
-- [Security Center のトリガーへの応答を自動化する](workflow-automation.md) -- オートメーションを使用して、Security Center のトリガーにカスタム通知ロジックで応答します
+- [ワークフローの自動化](workflow-automation.md) -- カスタム通知ロジックを使用してアラートに対する応答を自動化します

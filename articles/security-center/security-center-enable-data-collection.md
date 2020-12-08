@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 7d96b03598f90b45b7ecf88027be7408d8f161ea
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: f5cf432e3824ca0bb441a458a08fc7353291cf1f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638769"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490059"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Azure Security Center からのエージェントと拡張機能の自動プロビジョニング
 
@@ -138,7 +138,7 @@ Windows セキュリティ イベント データを保存するには、Azure D
 Log Analytics にデータを格納すると、データ ストレージに対して追加料金が発生する可能性があります。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
 ### <a name="information-for-azure-sentinel-users"></a>Azure Sentinel ユーザー向けの情報 
-Azure Sentinel のユーザー: 単一ワークスペースのコンテキスト内でのセキュリティ イベントの収集は、Azure Security Center と Azure Sentinel のどちらか一方からのみ構成できます。両方からは不可能です。 既に Azure Security Center から Azure Defender アラートを取得しており、なおかつセキュリティ イベントを収集するように設定されているワークスペースに Azure Sentinel を追加する予定の場合、次の 2 つの選択肢があります。
+Azure Sentinel のユーザー: 単一ワークスペースのコンテキスト内でのセキュリティ イベントの収集は、Azure Security Center と Azure Sentinel のどちらか一方からのみ構成できます。両方からは不可能です。 Azure Security Center から既にアラートを取得しており、セキュリティ イベントを収集するように設定されているワークスペースに Azure Sentinel を追加する予定の場合、次の 2 つの選択肢があります。
 - Azure Security Center でのセキュリティ イベントの収集をそのまま使用する。 それらのイベントは、Azure Security Center だけでなく Azure Defender でも照会、分析できるようになります。 ただし、Azure Sentinel でコネクタの接続状態を監視したり、その構成を変更したりすることはできません。 この点が問題となる場合は、2 つ目の選択肢を検討してください。
 - Azure Security Center でセキュリティ イベントの収集を無効にします (自分の Log Analytics エージェントの構成で、 **[Windows セキュリティ イベント]** を **[なし]** に設定します)。 次に、Azure Sentinel でセキュリティ イベント コネクタを追加します。 1 つ目の選択肢と同様、イベントの照会と分析は、Azure Sentinel と Azure Defender/ASC の両方で行えますが、コネクタの接続状態を監視したりその構成を変更したりする作業は、Azure Sentinel でしか行えません。
 
@@ -211,8 +211,8 @@ Log Analytics エージェントを手動でインストールするには:
 
 1. PowerShell を使用してエージェントをデプロイするには、仮想マシンのドキュメントの手順を使用します。
 
-    - [Windows マシンの場合](../virtual-machines/extensions/oms-windows.md?toc=%252fazure%252fazure-monitor%252ftoc.json#powershell-deployment)
-    - [Linux マシンの場合](../virtual-machines/extensions/oms-linux.md?toc=%252fazure%252fazure-monitor%252ftoc.json#azure-cli-deployment)
+    - [Windows マシンの場合](../virtual-machines/extensions/oms-windows.md?toc=%2fazure%2fazure-monitor%2ftoc.json#powershell-deployment)
+    - [Linux マシンの場合](../virtual-machines/extensions/oms-linux.md?toc=%2fazure%2fazure-monitor%2ftoc.json#azure-cli-deployment)
 
 > [!TIP]
 > PowerShell を使用して Security Center をオンボードする方法については、「[Automate onboarding of Azure Security Center using PowerShell](security-center-powershell-onboarding.md)」 (PowerShell を使用して Azure Security Center のオンボードを自動化する) を参照してください。

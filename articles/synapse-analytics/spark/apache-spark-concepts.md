@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: d29fa6454839b0c34830374282b8abb5fa6e4c51
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8df7a2ecd2a6732a011267eb0efe00e8eaf2bef4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313400"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458755"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Azure Synapse Analytics の Apache Spark の主要な概念
 
@@ -22,15 +22,15 @@ Apache Spark は、ビッグデータ分析アプリケーションのパフォ�
 
 Azure Synapse では、Spark の機能を Azure に簡単に作成して構成することができます。 Azure Synapse には異なる Spark 機能の実装が備わっており、このドキュメントではそれらの機能について取り上げています。
 
-## <a name="spark-pools-preview"></a>Spark プール (プレビュー)
+## <a name="spark-pools"></a>Spark プール
 
-サーバーレス Apache Spark プール (プレビュー) は Azure portal で作成します。 インスタンス化時、データを処理する Spark インスタンスの作成には、Spark プールの定義が使用されます。 作成した Spark プールはメタデータとしてのみ存在します。リソースが消費されたり実行されたりすることはなく、課金されることもありません。 Spark プールには、Spark インスタンスの特性を制御する一連のプロパティがあります。 そのような特性には、名前、サイズ、拡大縮小動作、有効期限がありますがそれらに限定されません。
+サーバーレス Apache Spark プールは Azure portal で作成します。 インスタンス化時、データを処理する Spark インスタンスの作成には、Spark プールの定義が使用されます。 作成した Spark プールはメタデータとしてのみ存在します。リソースが消費されたり実行されたりすることはなく、課金されることもありません。 Spark プールには、Spark インスタンスの特性を制御する一連のプロパティがあります。 そのような特性には、名前、サイズ、拡大縮小動作、有効期限がありますがそれらに限定されません。
 
 Spark プールは、その作成に関して料金もリソース コストも発生しないので、異なる構成でいくつでも作成することができます。 Spark プールにアクセス許可を適用することで、ユーザーが利用できる Spark プールを限定することもできます。
 
 ベスト プラクティスとして、開発とデバッグ用に作成する Spark プールは小さく、運用環境のワークロードの実行用に作成する Spark プールは大きくすることをお勧めします。
 
-Spark プールの作成方法とそのすべてのプロパティは、[Synapse Analytics の Spark プールの概要](../quickstart-create-apache-spark-pool-portal.md)に関するページでご覧いただけます。
+Spark プールの作成方法とそのすべてのプロパティは、[Azure Synapse Analytics の Spark プールの概要](../quickstart-create-apache-spark-pool-portal.md)に関するページでご覧いただけます。
 
 ## <a name="spark-instances"></a>Spark インスタンス
 

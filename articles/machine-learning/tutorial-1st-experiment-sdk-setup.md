@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 6eb76c9d8cc8447755e045972a7aceddefd1604a
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ebde8048c26364d77d95b9c7b34f9d1d7a4a20ee
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532972"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326293"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>チュートリアル:Jupyter Notebook で Azure Machine Learning の作業を開始する
 
@@ -80,7 +80,7 @@ Azure Machine Learning では、インストール不要であらかじめ構成
     > [!IMPORTANT]
     > **samples** フォルダー内のノートブックを表示できますが、そこからノートブックを実行することはできません。 ノートブックを実行するには、必ず **[User Files]\(ユーザー ファイル\)** セクションにあるノートブックの複製バージョンを開いてください。
     
-1. **tutorials/image-classification-mnist-data** フォルダー内の **tutorial-1st-experiment-sdk-train.ipynb** ファイルを選択します。
+1. **tutorials/image-classification-mnist-data** フォルダーの **img-classification-part1-training.ipynb** ファイルを選択します。
 
     :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="tutorials フォルダーを開いたところを示すスクリーンショット。":::
 

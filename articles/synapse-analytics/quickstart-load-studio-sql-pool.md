@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8d70a45b89142f6f9c6990fdbb4b79751c82275f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 312c57c103bf733bc72c5de1d22ab3239d5b5e96
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237478"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484661"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>クイックスタート:Synapse SQL を使用したデータの一括読み込み
 
-Synapse Studio の一括読み込みウィザードを使用すると、データの読み込みがかつてないほど簡単になります。 このウィザードの手順に従うと、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)を使用して、データを一括で読み込むための T-SQL スクリプトを作成できます。 
+Synapse Studio の一括読み込みウィザードを使用すると、データを簡単に読み込むことができます。 一括読み込みウィザードの手順に従うと、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)を使用してデータを一括で読み込むための T-SQL スクリプトを作成できます。 
 
 ## <a name="entry-points-to-the-bulk-load-wizard"></a>一括読み込みウィザードへのエントリ ポイント
 

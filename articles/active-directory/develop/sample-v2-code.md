@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: de25aafcfefee195e8d674c60ebdbaf79cb1ae10
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: a3f2eb8fe3da9b272c5fe61ef5dd66726cf7764d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95406890"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348436"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft ID プラットフォームのコード サンプル (v2.0 エンドポイント)
 
@@ -48,6 +48,7 @@ GitHub でサンプルに協力することもできます。 その方法につ
 | ![React のロゴを示す画像](media/sample-v2-code/logo_react.png) [React (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core)| SPA からカスタム Web API を呼び出し、そこから Microsoft Graph を呼び出します。  | [ms-identity-javascript-react-spa-dotnetcore-webapi-obo](https://github.com/Azure-Samples/ms-identity-javascript-react-spa-dotnetcore-webapi-obo) |
 | ![JavaScript のロゴを示す画像](media/sample-v2-code/logo_js.png) [JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | SPA からカスタム Web API を呼び出し、そこから Microsoft Graph を呼び出します  | [ms-identity-javascript-tutorial-chapter4-obo](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/4-AdvancedGrants/4-1-call-api-graph) |
 | ![Angular のロゴを示す画像](media/sample-v2-code/logo_angular.png) [Angular (MSAL-Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | SPA からアプリのロールとセキュリティ グループを使用してカスタム Web API を呼び出します。 |[ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups) |
+| ![この画像は、Blazor ロゴを示しています](media/sample-v2-code/logo-blazor.png) [Blazor WebAssembly (MSAL-JS)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | Azure Active Directory を使用してユーザーをサインインし、API を呼び出す Blazor WebAssembly チュートリアル |[ms-identity-blazor-wasm](https://github.com/Azure-Samples/ms-identity-blazor-wasm) |
 
 ## <a name="web-applications"></a>Web アプリケーション
 
@@ -64,7 +65,7 @@ GitHub でサンプルに協力することもできます。 その方法につ
 | ![Python のロゴを示す画像](media/sample-v2-code/logo_python.png)  | [Python Flask Web アプリ](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md)のユーザーのサインインに関するチュートリアル                   | [Python Flask Web アプリ](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md)のユーザーのサインインと Graph の呼び出しに関するチュートリアル |
 | ![Python のロゴを示す画像](media/sample-v2-code/logo_python.png)  | [Python Flask Web アプリ](https://github.com/Azure-Samples/ms-identity-b2c-python-flask-webapp-authentication/blob/main/README.md)の B2C でのユーザーのサインイン                    |  |
 | ![Ruby のロゴを示す画像](media/sample-v2-code/logo_ruby.png) |                   | [msgraph-training-rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
-
+| ![この画像は、Blazor ロゴを示しています](media/sample-v2-code/logo-blazor.png)</p>Blazor サーバー | [Blazor Server アプリのユーザーのサインインに関するチュートリアル](https://github.com/Azure-Samples/ms-identity-blazor-server/tree/main/WebApp-OIDC) | [Blazor Server app calls Microsoft Graph (Blazor Server アプリが Microsoft Graph を呼び出す)](https://github.com/Azure-Samples/ms-identity-blazor-server/tree/main/WebApp-graph-user/Call-MSGraph)</p>チャプター形式のチュートリアル:[Blazor Server app to sign-in users and call APIs with Azure Active Directory (Azure Active Directory を使用してユーザーをサインインさせ API を呼び出す Blazor Server アプリ)](https://github.com/Azure-Samples/ms-identity-blazor-server) |
 
 ## <a name="desktop-and-mobile-public-client-apps"></a>デスクトップおよびモバイルのパブリック クライアント アプリ
 

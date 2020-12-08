@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
-ms.openlocfilehash: ad6a4d075ea861068ad0c929d92cd2f12efa6121
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 78324cfa58a8ac015b085052bdec7e3793befc1b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516105"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348417"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>チュートリアル:Azure Active Directory と Signagelive の統合
 
@@ -48,7 +48,7 @@ Azure AD への Signagelive の統合を構成するには、まず、ギャラ�
 
 ギャラリーから Signagelive を追加するには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com) の左側のウィンドウで、 **Azure Active Directory** アイコンを選択します。
+1. [Azure Portal](https://portal.azure.com) の左側のウィンドウで、**Azure Active Directory** アイコンを選択します。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
@@ -60,7 +60,7 @@ Azure AD への Signagelive の統合を構成するには、まず、ギャラ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Signagelive** 」と入力します。 
+4. 検索ボックスに「**Signagelive**」と入力します。 
 
      ![結果リストの Signagelive](common/search-new-app.png)
 
@@ -68,7 +68,7 @@ Azure AD への Signagelive の統合を構成するには、まず、ギャラ�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Signagelive で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Signagelive で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Signagelive 内の関連ユーザーとの間にリンク関係を確立する必要があります。
 
 Signagelive で Azure AD でのシングル サインオンを構成してテストするには、まず、次の構成要素を完了します。
@@ -141,7 +141,7 @@ Signagelive 側でシングル サインオンを構成するには、ダウン�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、この場合は、「BrittaSimon@contoso.com」と入力できます。
 

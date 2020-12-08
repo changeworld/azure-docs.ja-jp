@@ -8,12 +8,12 @@ ms.author: tamram
 ms.topic: quickstart
 ms.date: 12/02/2019
 ms.subservice: tables
-ms.openlocfilehash: d592dd6ac705d0f1a0b3ed55e115d06023b0a511
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 93c6cb0f61185457ef0684d2a1ba691a0534aa13
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88236269"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326779"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>クイック スタート: Azure portal で Azure Storage テーブルを作成する 
 
@@ -31,15 +31,15 @@ Azure portal で Table service を使用して、テーブルを作成するこ�
 
 1. [概要] > [テーブル] をクリックします。
 
-   ![Azure portal](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
+   ![ストレージ アカウントの vmamcgestorage で、[概要] タブが強調表示されています。 [概要] ペインの [サービス] の下にある [テーブル] が強調表示されています。](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
 
 2. **[+ テーブル]** をクリックします。
 
-   ![Azure portal](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
+   ![vmamcgestorage の Table service で、[+ テーブル] オプションが強調表示されています。](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
 
 3. **[テーブル名]** ボックスにテーブルの名前を入力し、**[OK]** をクリックします。 
 
-   ![Azure portal](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
+   ![Table service の [テーブルの追加] タブで、[テーブル名] が「My Table」と入力され、強調表示されています。 [OK] ボタンが選択され、強調表示されています。](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
 
 ## <a name="next-steps"></a>次のステップ
 

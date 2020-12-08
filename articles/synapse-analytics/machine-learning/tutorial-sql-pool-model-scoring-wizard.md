@@ -9,14 +9,14 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: f5c5edc067b3f7b525fd129462c48ca50fdafc8f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 605a5f2f74ca6fb46d851c41f60001c48a95be95
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314028"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450881"
 ---
-# <a name="tutorial-machine-learning-model-scoring-wizard-for-dedicated-sql-pools"></a>チュートリアル:専用 SQL プール向けの機械学習モデル スコアリング ウィザード
+# <a name="tutorial-machine-learning-model-scoring-wizard-preview-for-dedicated-sql-pools"></a>チュートリアル:専用 SQL プール向けの機械学習モデル スコアリング ウィザード (プレビュー)
 
 予測機械学習モデルを使用して、専用 SQL プールのデータを簡単に強化する方法について説明します。  データ科学者が作成したモデルは、予測分析のためにデータ専門家から簡単にアクセスできるようになりました。 Synapse のデータ専門家は、Synapse SQL プールに配置するために Azure Machine Learning モデル レジストリからモデルを選択し、予測を開始するだけで、データを強化できます。
 
@@ -31,8 +31,8 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 ## <a name="prerequisites"></a>前提条件
 
 - ADLS Gen2 ストレージ アカウントが既定のストレージとして構成されている [Synapse Analytics ワークスペース](../get-started-create-workspace.md)。 使用する ADLS Gen2 ファイル システムの **ストレージ BLOB データ共同作成者** である必要があります。
-- Synapse Analytics ワークスペースの専用 SQL プール。 詳細については、[専用 SQL プールの作成](../quickstart-create-sql-pool-studio.md)に関する記事をご覧ください。
-- Synapse Analytics ワークスペースにおける Azure Machine Learning のリンクされたサービス。 詳細については、「[Synapse での Azure Machine Learning ワークスペースの作成](quickstart-integrate-azure-machine-learning.md)」を参照してください。
+- Azure Synapse Analytics ワークスペースの専用 SQL プール。 詳細については、[専用 SQL プールの作成](../quickstart-create-sql-pool-studio.md)に関する記事をご覧ください。
+- Azure Synapse Analytics ワークスペースの Azure Machine Learning のリンクされたサービス。 詳細については、「[Synapse での Azure Machine Learning ワークスペースの作成](quickstart-integrate-azure-machine-learning.md)」を参照してください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -149,4 +149,4 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 ## <a name="next-steps"></a>次の手順
 
 - [クイック スタート: Synapse で Azure Machine Learning のリンクされたサービスを新規作成する](quickstart-integrate-azure-machine-learning.md)
-- [Azure Synapse Analytics の Machine Learning 機能 (ワークスペース プレビュー)](what-is-machine-learning.md)
+- [Azure Synapse Analytics の機械学習機能](what-is-machine-learning.md)

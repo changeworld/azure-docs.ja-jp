@@ -4,12 +4,12 @@ description: Azure Migrate を使用して VMware VM のエージェントレス
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 3e263306cf18dfebe4b73f8d940b8eb5c99ed16f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 202886bc0a7738f8211cfea6d90a380c7bac82b8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310630"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492949"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM を Azure に移行する (エージェントレス)
 
@@ -38,31 +38,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [最初のチュートリアルを完了](./tutorial-discover-vmware.md)して、移行のために Azure と VMware を準備します。
 2. 2 番目のチュートリアルを完了して、Azure に移行する前に [VMware VM を評価](./tutorial-assess-vmware-azure-vm.md)しておくことをお勧めしますが、必須ではありません。 
-
-
-## <a name="add-the-azure-migrate-server-migration-tool"></a>Azure Migrate Server Migration ツールを追加する
-
-Azure Migrate プロジェクトをまだ設定していない場合は、ツールを追加する前に[それを行ってください](how-to-add-tool-first-time.md)。 プロジェクトの設定が済んでいる場合は、次の手順に従ってツールを追加します。
-
-1. Azure Migrate プロジェクトで、 **[概要]** をクリックします。 
-2. **[サーバーの検出、評価、移行]** で、 **[サーバーの評価と移行]** をクリックします。
-
-     ![サーバーの評価と移行](./media/tutorial-migrate-vmware/assess-migrate.png)
-
-3. **[移行ツール]** で、 **[Click here to add a migration tool when you are ready to migrate]\(移行する準備ができたら、ここをクリックして移行ツールを追加してください\)** を選択します。
-
-    ![ツールの選択](./media/tutorial-migrate-vmware/select-migration-tool.png)
-
-4. ツールの一覧で、次を選択します: **[Azure Migrate: Server Migration]**  >  **[ツールを追加]**
-
-    ![Server Migration ツール](./media/tutorial-migrate-vmware/server-migration-tool.png)
+3. 既に作成されているプロジェクトに移動するか、[新しいプロジェクトを作成](./create-manage-projects.md)します。
+4. ご使用の Azure アカウントのアクセス許可を確認します。Azure アカウントには、VM を作成し、Azure マネージド ディスクに書き込むためのアクセス許可が必要です。
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Azure Migrate アプライアンスを設定する
 
 Azure Migrate Server Migration は、VMware VM の検出、評価、エージェントレス移行に使用される軽量の VMware VM アプライアンスを実行します。 [評価のチュートリアル](./tutorial-assess-vmware-azure-vm.md)に従っている場合、アプライアンスは既に設定されています。 まだ設定していない場合は、次のいずれかの方法を使用して設定します。
 
-- **OVA テンプレート**:ダウンロードした OVA テンプレートを使用して VMware VM 上に[設定](how-to-set-up-appliance-vmware.md)します。
-- **Script**: PowerShell インストーラ スクリプトを使用して VMware VM 上または物理マシン上に[設定](deploy-appliance-script.md)します。 OVA テンプレートを使用して VM を設定できない場合や、Azure Government をご利用の場合は、この方法を使用してください。
+- **OVA テンプレート**:ダウンロードした OVA テンプレートを使用して VMware VM 上に [設定](how-to-set-up-appliance-vmware.md)します。
+- **Script**: PowerShell インストーラ スクリプトを使用して VMware VM 上または物理マシン上に [設定](deploy-appliance-script.md)します。 OVA テンプレートを使用して VM を設定できない場合や、Azure Government をご利用の場合は、この方法を使用してください。
 
 アプライアンスの作成後、Azure Migrate:Server Assessment に接続できることを確認し、最初の構成を行い、Azure Migrate プロジェクトに登録します。
 
@@ -170,7 +154,7 @@ Azure Migrate Server Migration は、VMware VM の検出、評価、エージェ
     ![テスト移行](./media/tutorial-migrate-vmware/test-migrate.png)
 
 3. **[テスト移行]** で、移行後に Azure VM が配置される Azure VNet を選択します。 非運用環境の VNet を使用することをお勧めします。
-4. **テスト移行**ジョブが開始されます。 ポータルの通知でジョブを監視します。
+4. **テスト移行** ジョブが開始されます。 ポータルの通知でジョブを監視します。
 5. 移行の完了後、Azure portal の **[仮想マシン]** で、移行された Azure VM を確認します。 マシン名には、サフィックス **-Test** が含まれています。
 6. テストが完了したら、 **[マシンのレプリケート]** で Azure VM を右クリックし、 **[テスト移行をクリーンアップ]** をクリックします。
 

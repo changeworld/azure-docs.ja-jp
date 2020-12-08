@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 08c1b415ac075429a9bc89098233fffb8c25b710
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 69a0272061d8518119114e8fe7b023c889639844
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369258"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171562"
 ---
 # <a name="managed-hsm-disaster-recovery"></a>Managed HSM のディザスター リカバリー
 
@@ -35,7 +35,7 @@ ms.locfileid: "94369258"
 1. 新しい HSM のバックアップを作成します。 HSM が空である場合でも、復元する前にバックアップが必要です。 バックアップによって、簡単にロールバックできます。
 1. ソース HSM から最新の HSM バックアップを復元します。
 
-Key Vault のコンテンツは、リージョン内と、同じ地域内の 150 マイル (約 241 km) 以上離れたセカンダリ リージョンにレプリケートされます。 この機能により、キーとシークレットの高い持続性が保たれます。 特定のリージョン ペアの詳細については、「[Azure のペアになっているリージョン](../../best-practices-availability-paired-regions.md)」ドキュメントを参照してください。
+以上の手順によって、HSM の内容を他のリージョンに手動でレプリケートできるようになります。 HSM の名前 (およびサービス エンドポイント URI) は異なるため、これらのキーを別の場所から利用するためには、アプリケーションの構成を変更する必要があります。
 
 ## <a name="create-a-new-managed-hsm"></a>新しいマネージド HSM を作成する
 
@@ -48,7 +48,7 @@ Key Vault のコンテンツは、リージョン内と、同じ地域内の 150
 - Azure の場所。
 - 初期管理者のリスト。
 
-次の例では、 **ContosoMHSM** という名前の HSM を、リソース グループ **ContosoResourceGroup** に作成します。これは **米国東部 2** に存在し、 **現在サインインしているユーザー** が唯一の管理者となります。
+次の例では、**ContosoMHSM** という名前の HSM を、リソース グループ **ContosoResourceGroup** に作成します。これは **米国東部 2** に存在し、**現在サインインしているユーザー** が唯一の管理者となります。
 
 ```azurecli-interactive
 oid=$(az ad signed-in-user show --query objectId -o tsv)
@@ -60,8 +60,8 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 
 このコマンドの出力は、作成したマネージド HSM のプロパティを示します。 最も重要な 2 つのプロパティは、次のとおりです。
 
-* **name** :この例では、名前は ContosoMHSM です。 この名前を他の Key Vault コマンドに使用できます。
-* **hsmUri** : この例では、URI は "https://contosohsm.managedhsm.azure.net" です。 REST API から HSM を使用するアプリケーションでは、この URI を使用する必要があります。
+* **name**:この例では、名前は ContosoMHSM です。 この名前を他の Key Vault コマンドに使用できます。
+* **hsmUri**: この例では、URI は "https://contosohsm.managedhsm.azure.net" です。 REST API から HSM を使用するアプリケーションでは、この URI を使用する必要があります。
 
 これで、お使いの Azure アカウントは、このマネージド HSM に対して任意の操作を実行できるようになりました。 現在のところ、誰も承認されていません。
 
@@ -86,7 +86,7 @@ az keyvault security-domain init-recovery --hsm-name ContosoMHSM2 --sd-exchange-
 - 前の手順でダウンロードしたセキュリティ ドメイン交換キーで暗号化された、セキュリティ ドメインのアップロード BLOB を作成する。
 - セキュリティ ドメインのアップロード BLOB を HSM にアップロードして、セキュリティ ドメインの回復を完了する。
 
-次の例では、 **ContosoMHSM** のセキュリティ ドメインと、対応する 2 つの秘密キーを使用して、セキュリティ ドメインの受信を待機している **ContosoMHSM2** にアップロードします。 
+次の例では、**ContosoMHSM** のセキュリティ ドメインと、対応する 2 つの秘密キーを使用して、セキュリティ ドメインの受信を待機している **ContosoMHSM2** にアップロードします。 
 
 ```azurecli-interactive
 az keyvault security-domain upload --hsm-name ContosoMHSM2 --sd-exchange-key ContosoMHSM-SDE.cer --sd-file ContosoMHSM-SD.json --sd-wrapping-keys cert_0.key cert_1.key

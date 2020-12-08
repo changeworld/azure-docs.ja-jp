@@ -1,18 +1,18 @@
 ---
 title: Azure Data Factory と Azure Data Share を使用したデータ統合
 description: Azure Data Factory と Azure Data Share を使用してデータをコピー、変換、共有します
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 11f4e7c50acc8256722949a50760c574d3b9d9e9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0a578f1edb51efd5f0905e663d42bf5a6fbfc783
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318247"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489039"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Azure Data Factory と Azure Data Share を使用したデータ統合
 
@@ -22,23 +22,23 @@ ms.locfileid: "93318247"
 
 コーディングが不要な ETL (または ELT) の実現からデータに対する包括的なビューの作成まで、Azure Data Factory の強化によって、データ エンジニアはより多くのデータを安心して取り込むことができるようになり、ひいては、会社により大きな価値をもたらすことができます。 Azure Data Share を使用すれば、統制された形で企業間の共有を行えます。
 
-このワークショップでは、Azure Data Factory (ADF) を使用して Azure SQL Database から Azure Data Lake Storage Gen2 (ADLS Gen2) にデータを取り込みます。 レイクにデータを配置したら、データ ファクトリのネイティブ変換サービスであるマッピング データ フローを介してそれを変換し、Azure Synapse Analytics (旧称 SQL DW) に書き込みます。 その後、Azure Data Share を使用して、変換済みのデータが含まれたテーブルを別のいくつかのデータと共に共有します。 
+このワークショップでは、Azure Data Factory (ADF) を使用して Azure SQL Database から Azure Data Lake Storage Gen2 (ADLS Gen2) にデータを取り込みます。 レイクにデータを配置したら、データ ファクトリのネイティブ変換サービスであるマッピング データ フローを介してそれを変換し、Azure Synapse Analytics にシンクします。 その後、Azure Data Share を使用して、変換済みのデータが含まれたテーブルを別のいくつかのデータと共に共有します。 
 
 このラボで使用されるデータは、ニューヨーク市のタクシーのデータです。 これを SQL Database のデータベースにインポートするために、[taxi-data.bacpac ファイル](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac)をダウンロードしてください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション** :Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+* **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
-* **Azure SQL Database** :SQL DB がない場合は、 [SQL DB アカウントの作成](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal)方法を確認してください。
+* **Azure SQL Database**:SQL DB がない場合は、[SQL DB アカウントの作成](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal)方法を確認してください。
 
-* **Azure Data Lake Storage Gen2 ストレージ アカウント** : ADLS Gen2 ストレージ アカウントがない場合は、 [ADLS Gen2 ストレージ アカウントの作成](../storage/common/storage-account-create.md)方法を確認してください。
+* **Azure Data Lake Storage Gen2 ストレージ アカウント**: ADLS Gen2 ストレージ アカウントがない場合は、[ADLS Gen2 ストレージ アカウントの作成](../storage/common/storage-account-create.md)方法を確認してください。
 
-* **Azure Synapse Analytics (旧称 SQL DW)** : Azure Synapse Analytics (旧称 SQL DW) がない場合は、 [Azure Synapse Analytics インスタンスの作成](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)方法を確認してください。
+* **Azure Synapse Analytics (旧称 SQL DW)** : Azure Synapse Analytics (旧称 SQL DW) がない場合は、[Azure Synapse Analytics インスタンスの作成](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)方法を確認してください。
 
-* **Azure Data Factory** : データ ファクトリを作成していない場合は、 [データ ファクトリの作成](./quickstart-create-data-factory-portal.md)方法を確認してください。
+* **Azure Data Factory**: データ ファクトリを作成していない場合は、[データ ファクトリの作成](./quickstart-create-data-factory-portal.md)方法を確認してください。
 
-* **Azure Data Share** : データ共有を作成していない場合は、 [データ共有の作成](../data-share/share-your-data.md#create-a-data-share-account)方法を確認してください。
+* **Azure Data Share**: データ共有を作成していない場合は、[データ共有の作成](../data-share/share-your-data.md#create-a-data-share-account)方法を確認してください。
 
 ## <a name="set-up-your-azure-data-factory-environment"></a>Azure Data Factory 環境を設定する
 
@@ -97,9 +97,9 @@ Azure Data Factory では、リンクされたサービスによって外部リ�
 
 ### <a name="turn-on-data-flow-debug-mode"></a>データ フローのデバッグ モードを有効にする
 
-「 *マッピング データ フローを使用してデータを変換する* 」セクションでは、マッピング データ フローを作成します。 マッピング データ フローを作成する前に、デバッグ モードを有効にしておくことをお勧めします。これにより、アクティブな Spark クラスターで変換ロジックを数秒でテストできます。
+「*マッピング データ フローを使用してデータを変換する*」セクションでは、マッピング データ フローを作成します。 マッピング データ フローを作成する前に、デバッグ モードを有効にしておくことをお勧めします。これにより、アクティブな Spark クラスターで変換ロジックを数秒でテストできます。
 
-デバッグを有効にするには、ファクトリ上部のバーにある **[Data flow debug]\(データ フローのデバッグ\)** スライダーをクリックします。 確認のダイアログがポップアップ表示されたら [OK] をクリックします。 クラスターの起動には、5 分から 7 分程度かかります。 初期化されている間に、" *コピー アクティビティを使用して Azure SQL DB から ADLS Gen2 にデータを取り込む* " 方法に関するセクションに進んでください。
+デバッグを有効にするには、ファクトリ上部のバーにある **[Data flow debug]\(データ フローのデバッグ\)** スライダーをクリックします。 確認のダイアログがポップアップ表示されたら [OK] をクリックします。 クラスターの起動には、5 分から 7 分程度かかります。 初期化されている間に、"*コピー アクティビティを使用して Azure SQL DB から ADLS Gen2 にデータを取り込む*" 方法に関するセクションに進んでください。
 
 ![ポータルの構成 10](media/lab-data-flow-data-share/configure10.png)
 
@@ -209,7 +209,7 @@ Azure Data Lake Storage にデータを正しくコピーできたら、その�
 1. このソースには "TripFaresSQL" という名前を付けます。 ソース データセット フィールドの横にある **[New]\(新規\)** をクリックして、新しい SQL DB データセットを作成します。
 
     ![ポータルのデータ フロー 9](media/lab-data-flow-data-share/dataflow9.png)
-1. **[Azure SQL Database]** タイルを選択して [続行] をクリックします。 *注意事項: お気付きかもしれませんが、データ ファクトリにあるコネクタの多くが、マッピング データ フローではサポート対象外となっています。これらのソースのいずれかからデータを変換するには、コピー アクティビティを使用して、サポート対象のソースにデータを取り込んでください* 。
+1. **[Azure SQL Database]** タイルを選択して [続行] をクリックします。 *注意事項: お気付きかもしれませんが、データ ファクトリにあるコネクタの多くが、マッピング データ フローではサポート対象外となっています。これらのソースのいずれかからデータを変換するには、コピー アクティビティを使用して、サポート対象のソースにデータを取り込んでください*。
 
     ![ポータルのデータ フロー 10](media/lab-data-flow-data-share/dataflow10.png)
 1. データセットに "TripFares" という名前を付けます。 リンクされたサービスとして、[SQLDB] を選択してください。 [テーブル名] ドロップダウンから "dbo.TripFares" というテーブル名を選択します。 **[From connection/store]\(接続/ストアから\)** スキーマをインポートします。 完了したら、[OK] をクリックします。
@@ -308,19 +308,19 @@ Azure Data Lake Storage にデータを正しくコピーできたら、その�
 
 ## <a name="share-data-using-azure-data-share"></a>Azure Data Share を使用したデータの共有
 
-このセクションでは、Azure portal を使用して、新しいデータ共有を設定する方法について説明します。 これには、Azure Data Lake Store Gen2 と Azure Synapse Analytics (旧称 SQL Data Warehouse) からのデータセットを格納する新しいデータ共有を作成する作業が伴います。 その後、スナップショット スケジュールを構成します。データ コンシューマーは、自分に共有されたデータを必要に応じて自動的に更新することができます。 さらに、データ共有に受信者を招待してみましょう。 
+このセクションでは、Azure portal を使用して、新しいデータ共有を設定する方法について説明します。 これには、Azure Data Lake Store Gen2 と Azure Synapse Analytics からのデータセットを格納する新しいデータ共有を作成する作業が伴います。 その後、スナップショット スケジュールを構成します。データ コンシューマーは、自分に共有されたデータを必要に応じて自動的に更新することができます。 さらに、データ共有に受信者を招待してみましょう。 
 
-データ共有を作成したら、" *データ コンシューマー* " の立場に入れ替わります。 データ コンシューマーとして、データ共有の招待状を受け取るフローをひととおり行いながら、データの受信場所を構成し、異なる保存場所にデータセットをマッピングします。 その後、スナップショットをトリガーすると、共有されたデータが、指定した保存先にコピーされます。 
+データ共有を作成したら、"*データ コンシューマー*" の立場に入れ替わります。 データ コンシューマーとして、データ共有の招待状を受け取るフローをひととおり行いながら、データの受信場所を構成し、異なる保存場所にデータセットをマッピングします。 その後、スナップショットをトリガーすると、共有されたデータが、指定した保存先にコピーされます。 
 
 ### <a name="sharing-data-data-provider-flow"></a>データを共有する (データ プロバイダーのフロー)
 
 1. Microsoft Edge または Google Chrome で Azure portal を開きます。
 
-1. ページの上部にある検索バーを使用して、 **Data Shares** を検索します。
+1. ページの上部にある検索バーを使用して、**Data Shares** を検索します。
 
     ![ポータルの広告](media/lab-data-flow-data-share/portal-ads.png)
 
-1. 名前に "Provider" を含むデータ共有アカウントを選択します (例: **DataProvider0102** )。 
+1. 名前に "Provider" を含むデータ共有アカウントを選択します (例: **DataProvider0102**)。 
 
 1. **[Start sharing your data]\(データの共有を開始する\)** を選択します。
 
@@ -342,7 +342,7 @@ Azure Data Lake Storage にデータを正しくコピーできたら、その�
 
     ![データセットの追加 1](media/lab-data-flow-data-share/add-dataset.png)
 
-1. Azure Synapse Analytics からテーブルを選択するため、ADF の変換結果が格納される **[Azure Synapse Analytics]** (旧称 SQL Data Warehouse) を選択します。
+1. ADF の変換結果が格納される Azure Synapse Analytics からテーブルを選択するため、 **[Azure Synapse Analytics]** を選択します。
 
     ![データセットの追加 SQL](media/lab-data-flow-data-share/add-dataset-sql.png)
 
@@ -398,7 +398,7 @@ Azure Data Lake Storage にデータを正しくコピーできたら、その�
 
     これでアクティブなデータ共有が完成しました。 データ プロバイダーとしてデータ共有を作成する際に何が見えるか確認してみましょう。 
 
-1. 作成したデータ共有 ( **DataProvider** ) を選択します。 **[Data Share]** の **[送信した共有]** を選択して移動できます。 
+1. 作成したデータ共有 (**DataProvider**) を選択します。 **[Data Share]** の **[送信した共有]** を選択して移動できます。 
 
 1. [スナップショット スケジュール] をクリックします。 スナップショット スケジュールは、必要に応じて無効にすることもできます。 
 
@@ -434,7 +434,7 @@ Azure Data Lake Storage にデータを正しくコピーできたら、その�
 
 1. **[Data share account]\(データ共有アカウント\)** で **[DataConsumer]** を選択します。 新しいデータ共有アカウントを作成することもできます。 
 
-1. **[Received share name]\(受信した共有名\)** の横を見ると、既定の共有名が、データ プロバイダーによって指定された名前になっていることがわかります。 受信しようとしているデータを表すわかりやすい共有名を付けてください (例: **TaxiDataShare** )。
+1. **[Received share name]\(受信した共有名\)** の横を見ると、既定の共有名が、データ プロバイダーによって指定された名前になっていることがわかります。 受信しようとしているデータを表すわかりやすい共有名を付けてください (例: **TaxiDataShare**)。
 
     ![招待の受け入れ](media/lab-data-flow-data-share/consumer-accept.png)
 

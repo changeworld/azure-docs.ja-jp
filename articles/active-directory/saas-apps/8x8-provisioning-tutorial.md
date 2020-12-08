@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0ed56d200c2b5a472dbf93d45ad25156ea02a884
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 90e3464ac9ddf1e839c3a731f79ac2c0771c37ea
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181154"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532708"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>チュートリアル:8x8 を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -50,17 +50,17 @@ ms.locfileid: "96181154"
 
 ### <a name="to-configure-a-user-provisioning-access-token-in-8x8-configuration-manager"></a>8x8 Configuration Manager でユーザー プロビジョニング アクセス トークンを構成するには、次の操作を実行します。
 
-1. [Configuration Manager](https://vo-cm.8x8.com) にサインインします。 **[ID 管理]** を選択します。
+1. [管理コンソール](https://admin.8x8.com)にサインインします。 **[ID 管理]** を選択します。
 
-   ![ID 管理](./media/8x8-provisioning-tutorial/8x8-identity-management.png)
+   ![[Admin]](./media/8x8-provisioning-tutorial/8x8-identity-management.png)
 
 2. **[Show user provisioning information]\(ユーザー プロビジョニング情報を表示する\)** リンクをクリックして、トークンを生成します。
 
-   ![ユーザープロビジョニングを表示する](./media/8x8-provisioning-tutorial/8x8-show-user-provisioning.png)
+   ![表示](./media/8x8-provisioning-tutorial/8x8-show-user-provisioning.png)
 
 3. **8x8 URL** 値と **8x8 API トークン** 値をコピーします。 これらの値は、Azure portal の 8x8 アプリケーションの [プロビジョニング] タブにある **[テナントの URL]** フィールドと **[シークレット トークン]** フィールドにそれぞれ入力します。
 
-   ![URL およびトークンをコピーする](./media/8x8-provisioning-tutorial/8x8-copy-url-token.png)
+   ![トークン](./media/8x8-provisioning-tutorial/8x8-copy-url-token.png)
 
 ## <a name="step-3-add-8x8-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから 8x8 を追加する
 

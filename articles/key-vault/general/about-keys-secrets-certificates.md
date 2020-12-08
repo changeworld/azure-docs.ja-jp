@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 78f228a5e188bc930a9e7484f4c982ba746331dd
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e0a45bde32fed651c4b38d203b3c75a6d928e7c5
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357778"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327085"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Azure Key Vault のキー、シークレット、証明書の概要
 
@@ -46,10 +46,10 @@ HSM で保護されたキー|/keys|サポートされています|サポート�
 証明書|/certificates|サポートされています|サポートされていません
 ストレージ アカウント キー|/storageaccount|サポートされています|サポートされていません
 |||
-- **暗号化キー** : 複数のキーの種類とアルゴリズムをサポートし、ソフトウェアによって保護されるキーと HSM によって保護されるキーを使用できるようにします。 詳細については、[キーについて](../keys/about-keys.md)のページを参照してください。
-- **シークレット** : パスワードやデータベース接続文字列などのシークレットのセキュリティで保護されたストレージを提供します。 詳細については、[シークレットについて](../secrets/about-secrets.md)のページを参照してください。
+- **暗号化キー**: 複数のキーの種類とアルゴリズムをサポートし、ソフトウェアによって保護されるキーと HSM によって保護されるキーを使用できるようにします。 詳細については、[キーについて](../keys/about-keys.md)のページを参照してください。
+- **シークレット**: パスワードやデータベース接続文字列などのシークレットのセキュリティで保護されたストレージを提供します。 詳細については、[シークレットについて](../secrets/about-secrets.md)のページを参照してください。
 - **[Certificates]\(証明書\)** : キーとシークレットを基に構築され、自動更新機能を追加します。 詳細については、[証明書について](../certificates/about-certificates.md)のページを参照してください。
-- **Azure ストレージ アカウント キー** : Azure Storage アカウントのキーを自動的に管理できます。 内部的には、Key Vault は Azure ストレージ アカウントのキーを一覧表示し (同期)、定期的にキーを再生成 (ローテーション) できます。 詳細については、[Key Vault を使用してストレージ アカウント キーを管理する方法](../secrets/overview-storage-keys.md)に関するページを参照してください。
+- **Azure ストレージ アカウント キー**: Azure Storage アカウントのキーを自動的に管理できます。 内部的には、Key Vault は Azure ストレージ アカウントのキーを一覧表示し (同期)、定期的にキーを再生成 (ローテーション) できます。 詳細については、[Key Vault を使用してストレージ アカウント キーを管理する方法](../secrets/overview-storage-keys.md)に関するページを参照してください。
 
 Key Vault の一般的な情報については、「[Azure Key Vault について](overview.md)」を参照してください。 Managed HSM プールの詳細については、「[Azure Key Vault Managed HSM とは](../managed-hsm/overview.md)」を参照してください
 
@@ -75,15 +75,16 @@ Key Vault に格納されるオブジェクトは、オブジェクトの新し�
 
 Key Vault 内のオブジェクトを指す場合、バージョンを指定することができます。現在のバージョンのオブジェクトに対する操作の場合は、バージョン指定を省略することもできます。 たとえば、キーの名前を `MasterKey` とした場合、バージョンを指定せずに操作を実行すると、システムは使用可能な最新のバージョンを使用します。 バージョン固有の識別子を指定して操作を実行すると、システムはオブジェクトの特定のバージョンを使用します。  
 
+### <a name="vault-name-and-object-name"></a>Vault-name と Object-name
 Key Vault 内のオブジェクトは、URL を使用して一意に識別されます。 地理的場所に関係なく、システム内の複数のオブジェクトが同じ URL を持つことはありません。 オブジェクトの完全な URL は、オブジェクト識別子と呼ばれます。 URL は、Key Vault を示すプレフィックス、オブジェクトの種類、ユーザー指定のオブジェクト名、およびオブジェクトのバージョンで構成されます。 オブジェクト名は大文字と小文字が区別されず、変更できません。 オブジェクトのバージョンを含まない識別子は、ベース識別子と呼ばれます。  
 
 詳しくは、「[Authentication, requests, and responses](authentication-requests-and-responses.md)」(認証、要求、応答) をご覧ください。
 
 オブジェクト識別子の一般的な形式は次のとおりです (コンテナーの種類に依存)。  
 
-- **コンテナーの場合** : `https://{vault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
+- **コンテナーの場合**: `https://{vault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
 
-- **Managed HSM プールの場合** : `https://{hsm-name}.managedhsm.azure.net/{object-type}/{object-name}/{object-version}`  
+- **Managed HSM プールの場合**: `https://{hsm-name}.managedhsm.azure.net/{object-type}/{object-name}/{object-version}`  
 
 > [!NOTE]
 > 各コンテナーの種類でサポートされているオブジェクトの種類については、[オブジェクトの種類のサポート](#object-types)に関するセクションを参照してください。

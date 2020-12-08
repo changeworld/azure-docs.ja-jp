@@ -4,12 +4,12 @@ description: この記事では、Azure Migrate を使用して、GCP VM を Azu
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 2caebb5dda87a34d003f7f2bd208fff427c98431
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0093bb453131eb87172021a976b8019a23e445f1
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315881"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302597"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Google Cloud Platform (GCP) VM の検出、評価、および Azure への移行
 
@@ -44,12 +44,12 @@ Azure に移行する前に、VM の検出と移行の評価を行うことが�
         - Linux マシンの場合:
             1. 各 Linux マシンにサインインします。
             2. 次のようにして sshd_config ファイルを開きます。vi /etc/ssh/sshd_config
-            3. ファイルで、 **PasswordAuthentication** 行を見つけ、値を **yes** に変更します。
+            3. ファイルで、**PasswordAuthentication** 行を見つけ、値を **yes** に変更します。
             4. ファイルを保存して閉じます。 sshdサービスを再起動します。
     - ルート ユーザーを使用して Linux VM を検出する場合、VM でルート ログインが許可されることを確認してください。
         1. 各 Linux マシンにサインインします。
         2. 次のようにして sshd_config ファイルを開きます。vi /etc/ssh/sshd_config
-        3. ファイルで、 **PermitRootLogin** 行を見つけ、値を **yes** に変更します。
+        3. ファイルで、**PermitRootLogin** 行を見つけ、値を **yes** に変更します。
         4. ファイルを保存して閉じます。 sshdサービスを再起動します。
 
 2. 次に、[このチュートリアル](./tutorial-assess-gcp.md)に従って Azure Migrate プロジェクトとアプライアンスを設定し、対象の GCP VM を検出して評価します。
@@ -74,7 +74,7 @@ Azure Migrate: Server Migration ツールを使用した移行のために Azure
 
 **タスク** | **詳細**
 --- | ---
-**Azure Migrate プロジェクトの作成** | Azure アカウントには、プロジェクトを作成するために共同作成者または所有者のアクセス許可が必要です。
+**Azure Migrate プロジェクトの作成** | Azure アカウントには、[新規プロジェクトを作成する](https://docs.microsoft.com/azure/migrate/create-manage-projects)ために共同作成者または所有者のアクセス許可が必要です。
 **Azure アカウントのアクセス許可の確認** | ご使用の Azure アカウントには、VM を作成するためのアクセス許可と Azure マネージド ディスクへの書き込みアクセス許可が必要です。
 
 ### <a name="assign-permissions-to-create-project"></a>プロジェクトを作成するためのアクセス許可を割り当てる
@@ -105,8 +105,8 @@ GCP から Azure への移行を準備するために、移行用のレプリケ
 
 Azure Migrate: Server Migration では、レプリケーション アプライアンスを使用してマシンを Azure にレプリケートします。 レプリケーション アプライアンスは、次のコンポーネントを実行します。
 
-- **構成サーバー** : 構成サーバーは、GCP VM と Azure の間の通信を調整し、データのレプリケーションを管理します。
-- **プロセス サーバー** :プロセス サーバーはレプリケーション ゲートウェイとして機能します。 レプリケーション データを受信し、キャッシュ、圧縮、暗号化を使用してそれを最適化して、Azure のキャッシュ ストレージ アカウントに送信します。
+- **構成サーバー**: 構成サーバーは、GCP VM と Azure の間の通信を調整し、データのレプリケーションを管理します。
+- **プロセス サーバー**:プロセス サーバーはレプリケーション ゲートウェイとして機能します。 レプリケーション データを受信し、キャッシュ、圧縮、暗号化を使用してそれを最適化して、Azure のキャッシュ ストレージ アカウントに送信します。
 
 次のようにして、アプライアンスのデプロイの準備をします。
 
@@ -122,30 +122,6 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 
 - レプリケーション アプライアンスでは MySQL が使用されます。 アプライアンスに MySQL をインストールするためのいくつかの[方法](migrate-replication-appliance.md#mysql-installation)を確認します。
 - [パブリック](migrate-replication-appliance.md#url-access) クラウドおよび[政府機関向け](migrate-replication-appliance.md#azure-government-url-access)クラウドにアクセスするレプリケーション アプライアンスに必要な Azure URL を確認します。
-
-## <a name="add-the-server-migration-tool"></a>Server Migration ツールを追加する
-
-Azure Migrate プロジェクトを設定し、そこに Server Migration ツールを追加します。
-
-1. Azure portal の **[すべてのサービス]** で、 **Azure Migrate** を検索します。
-2. **[サービス]** で **[Azure Migrate]** を選択します。
-3. **[概要]** で **[サーバーの評価と移行]** をクリックします。
-4. **[サーバーの検出、評価、移行]** で、 **[サーバーの評価と移行]** をクリックします。
-
-    ![サーバーの検出と評価](./media/tutorial-migrate-physical-virtual-machines/assess-migrate.png)
-
-5. **[サーバーの検出、評価、移行]** で、 **[ツールの追加]** をクリックします。
-6. **[移行プロジェクト]** で、自分の Azure サブスクリプションを選択し、リソース グループがない場合は作成します。
-7. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したい地域を指定し、 **[次へ]** をクリックします。 [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
-    - プロジェクトの地理的な場所は、GCP マシンから収集されたメタデータを格納するためにのみ使用されます。
-    - 移行を実行するときは、任意のターゲット リージョンを選択できます。
-
-    ![Azure Migrate プロジェクトの作成](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
-
-8. **[評価ツールの選択]** で、 **[今は評価ツールの追加をスキップします]**  >  **[次へ]** の順に選択します。
-9. **[移行ツールの選択]** で、次を選択します: **[Azure Migrate: Server Migration]**  >  **[次へ]** 。
-10. **[ツールの確認と追加]** で設定を確認し、 **[ツールの追加]** をクリックします
-11. ツールを追加すると、Azure Migrate プロジェクトの **[サーバー]**  >  **[移行ツール]** に表示されます。
 
 ## <a name="set-up-the-replication-appliance"></a>レプリケーション アプライアンスを設定する
 
@@ -275,10 +251,10 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
 
 12. **[コンピューティング]** で、VM の名前、サイズ、OS ディスクの種類、および可用性構成 (前の手順で選択した場合) を確認します。 VM は [Azure の要件](migrate-support-matrix-physical-migration.md#azure-vm-requirements)に準拠している必要があります。
 
-    - **VM サイズ** : 評価の推奨事項を使用している場合は、[VM サイズ] ドロップダウンに推奨サイズが表示されます。 それ以外の場合は、Azure Migrate によって、Azure サブスクリプション内の最も近いサイズが選択されます。 または、 **[Azure VM サイズ]** でサイズを手動で選択します。
-    - **OS ディスク** :VM の OS (ブート) ディスクを指定します。 OS ディスクは、オペレーティング システムのブートローダーとインストーラーがあるディスクです。
-    - **可用性ゾーン** :使用する可用性ゾーンを指定します。
-    - **可用性セット** :使用する可用性セットを指定します。
+    - **VM サイズ**: 評価の推奨事項を使用している場合は、[VM サイズ] ドロップダウンに推奨サイズが表示されます。 それ以外の場合は、Azure Migrate によって、Azure サブスクリプション内の最も近いサイズが選択されます。 または、 **[Azure VM サイズ]** でサイズを手動で選択します。
+    - **OS ディスク**:VM の OS (ブート) ディスクを指定します。 OS ディスクは、オペレーティング システムのブートローダーとインストーラーがあるディスクです。
+    - **可用性ゾーン**:使用する可用性ゾーンを指定します。
+    - **可用性セット**:使用する可用性セットを指定します。
 
 ![コンピューティングの設定](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
@@ -301,7 +277,7 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
 
 ジョブの状態は、ポータルの通知で追跡できます。
 
-レプリケーションの状態を監視するには、 **サーバーをレプリケートしています** をクリックします ( **Azure Migrate: Server Migration** 内)。  
+レプリケーションの状態を監視するには、**サーバーをレプリケートしています** をクリックします (**Azure Migrate: Server Migration** 内)。  
 
 ![レプリケーションを監視します](./media/tutorial-migrate-physical-virtual-machines/replicating-servers.png)
 

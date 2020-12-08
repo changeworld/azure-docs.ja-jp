@@ -1,6 +1,6 @@
 ---
 title: Power BI Professional で Synapse SQL に接続する
-description: このチュートリアルでは、Power BI Desktop をサーバーレス SQL プール (プレビュー) に接続する手順について説明します。
+description: このチュートリアルでは、Power BI Desktop をサーバーレス SQL プールに接続する手順について説明します。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: c26e2bd27c0c3187768252fd922c31a2cc23d735
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: b33edb99109b7516e1792497a936031cf954bc15
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682090"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451602"
 ---
 # <a name="connect-to-serverless-sql-pool-with-power-bi-professional"></a>Power BI Professional でサーバーレス SQL プールに接続する
 
@@ -26,7 +26,7 @@ ms.locfileid: "94682090"
 > - [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
-このチュートリアルでは、Power BI Desktop をサーバーレス SQL プール (プレビュー) に接続する手順について説明します。
+このチュートリアルでは、Power BI Desktop をサーバーレス SQL プールに接続する手順について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

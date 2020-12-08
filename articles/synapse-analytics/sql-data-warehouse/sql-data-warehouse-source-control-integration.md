@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 766837cacb4ef2acf874c2872b347b6d35633faa
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 862fa839c56746042c072ae3100832fb2b78451a
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700999"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296908"
 ---
 # <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールを対象としたソース管理の統合
 
@@ -38,11 +38,13 @@ ms.locfileid: "94700999"
    ![接続の管理](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "接続の管理")
 
 3. **[接続の管理]** 、 **[Connect to a project]\(プロジェクトに接続\)** の順に選択してプロジェクトに接続します。
- ![Connect1](./media/sql-data-warehouse-source-control-integration/3-connect-project.png "接続する")
+ 
+    ![Connect1](./media/sql-data-warehouse-source-control-integration/3-connect-project.png "接続する")
 
 
 4. 手順 1 で作成したプロジェクトを探し、 **[接続]** を選択します。
-![Connect2](./media/sql-data-warehouse-source-control-integration/3.5-connect.png "接続する")
+ 
+    ![Connect2](./media/sql-data-warehouse-source-control-integration/3.5-connect.png "接続する")
 
 
 3. プロジェクトからお使いのローカル コンピューターに Azure DevOps リポジトリを複製します
@@ -85,7 +87,7 @@ Visual Studio を使用したプロジェクトの接続の詳細については
 
    ![確認](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "変更を確認する")
 
-4. (**省略可能**) SSDT を使用し、Schema Compare を使用してターゲット データ ウェアハウスへの変更を更新し、Azure Repo リポジトリおよびローカル リポジトリ内のオブジェクト定義に確実にデータ ウェアハウスが反映されるようにします。
+4. (**省略可能**) SSDT を使用し、Schema Compare を使用してターゲット専用 SQL プールへの変更を更新し、Azure Repo リポジトリおよびローカル リポジトリ内のオブジェクト定義に確実に専用 SQL プールが反映されるようにします。
 
 ## <a name="next-steps"></a>次のステップ
 

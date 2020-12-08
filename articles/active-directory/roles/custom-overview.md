@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory でのカスタム管理者ロール | Microsoft Docs
-description: ロールベースのアクセス制御とリソース スコープを使用する Azure Active Directory (Azure AD) での Azure AD カスタム ロールを理解する方法について説明します。
+title: Azure Active Directory のロールベースのアクセス制御 (RBAC) の概要
+description: Azure Active Directory のロールの割り当てと制限スコープの部分について説明します。
 services: active-directory
 author: curtand
 manager: daveba
@@ -8,25 +8,26 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: overview
-ms.date: 11/05/2020
+ms.date: 11/20/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0785d8070a60ae7594ea0b182a0238bf6b4b6a58
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4f694a46fddbc84968b3267842aa19108d051590
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95899464"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499239"
 ---
-# <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Azure Active Directory でのカスタム管理者ロール (プレビュー)
+# <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Azure Active Directory のロールベースのアクセス制御の概要
 
-この記事では、ロールベースのアクセス制御とリソース スコープを使用する Azure Active Directory (Azure AD) での Azure AD カスタム ロールを理解する方法について説明します。 カスタム Azure AD ロールでは、独自のカスタム ロールを作成して整理できるように、[組み込みロール](permissions-reference.md)の基になっているアクセス許可が公開されています。 この方法では、必要なときは常に、組み込みロールよりきめ細かな方法でアクセスを許可できます。 Azure AD カスタム ロールのこの最初のリリースには、アプリ登録管理用のアクセス許可を割り当てるためのロールを作成する機能が含まれています。 今後、エンタープライズ アプリケーション、ユーザー、デバイスなど、組織のリソースに対するアクセス許可がさらに追加されます。  
+この記事では、Azure Active Directory (Azure AD) のロールベースのアクセス制御について説明します。 Azure AD ロールを使用すると、最小限の特権の原則に従って、管理者に詳細なアクセス許可を付与できます。 Azure AD の組み込みロールとカスタム ロールは、[Azure リソースのロールベースのアクセス制御システム](../../role-based-access-control/overview.md) (Azure ロール) と同様の概念で動作します。 [この 2 つのロールベースのアクセス制御システムの違い](../../role-based-access-control/rbac-and-directory-admin-roles.md)は次のとおりです。
 
-さらに、Azure AD カスタム ロールでは、従来の組織全体の割り当てに加えて、リソースごとの割り当てがサポートされています。 この方法を利用すると、すべてのリソース (すべてのアプリの登録) にアクセスすることなく、一部のリソース (たとえば 1 つのアプリの登録) を管理するアクセスを許可することができます。
+- Azure AD ロールでは、Graph API を使用して、ユーザー、グループ、アプリケーションなどの Azure AD リソースへのアクセスを制御します
+- Azure ロールでは、Azure Resource Management を使用して、仮想マシンやストレージなどの Azure リソースへのアクセスを制御します
 
-Azure AD のロールベースのアクセス制御は Azure AD のパブリック プレビュー機能であり、すべての有料 Azure AD ライセンス プランで利用できます。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+どちらのシステムにも、同様に使用されるロールの定義とロールの割り当ての概念が含まれています。 ただし、Azure AD ロールのアクセス許可を Azure カスタム ロールで使用することはできません。その逆も同様です。
 
 ## <a name="understand-azure-ad-role-based-access-control"></a>Azure AD のロールベースのアクセス制御を理解する
 
@@ -41,22 +42,18 @@ Azure AD の組み込みロールとカスタム ロールは、[Azure のロー
 管理リソースへのアクセス権をユーザーが持っているかどうかを判断するために Azure AD が使用する手順の概要を次に示します。 この情報を使用して、アクセスに関する問題のトラブルシューティングを行います。
 
 1. ユーザー (またはサービス プリンシパル) が、Microsoft Graph または Azure AD Graph エンドポイントへのトークンを取得します。
-
 1. ユーザーは、発行されたトークンを使用して Microsoft Graph または Azure AD Graph 経由で Azure Active Directory (Azure AD) に対する API 呼び出しを行います。
-
 1. 状況に応じて、Azure AD は次のいずれかのアクションを実行します。
-
-    - ユーザーのアクセス トークン内の [wids 要求](../../active-directory-b2c/access-tokens.md)に基づいて、ユーザーのロール メンバーシップを評価します。
-    - アクションが実行されるリソースに対して直接またはグループ メンバーシップを介してユーザーに適用されるすべてのロールの割り当てを取得します。
-
+   - ユーザーのアクセス トークン内の [wids 要求](../../active-directory-b2c/access-tokens.md)に基づいて、ユーザーのロール メンバーシップを評価します。
+   - アクションが実行されるリソースに対して直接またはグループ メンバーシップを介してユーザーに適用されるすべてのロールの割り当てを取得します。
 1. Azure AD は、API 呼び出しでのアクションが、このリソースに対してユーザーが持っているロールに含まれるかどうかを判別します。
 1. 要求されたスコープでのアクションを含むロールをユーザーが持っていない場合、アクセスは許可されません。 それ以外の場合、アクセスは許可されます。
 
-### <a name="role-assignments"></a>ロールの割り当て
+## <a name="role-assignment"></a>ロール割り当て
 
-ロールの割り当てとは、Azure AD リソースへのアクセスを許可するために、特定のスコープでユーザーにロールの定義を関連付けるオブジェクトです。 アクセスは、ロールの割り当てを作成することによって許可され、ロールの割り当てを削除することによって取り消されます。 ロールの割り当ての核心は、次の 3 つの要素で構成されます。
+ロールの割り当ては、Azure AD リソースへのアクセスを許可するために、特定の "*スコープ*" で "*ユーザー*" に "*ロールの定義*" を関連付ける Azure AD リソースです。 アクセスは、ロールの割り当てを作成することによって許可され、ロールの割り当てを削除することによって取り消されます。 ロールの割り当ての核心は、次の 3 つの要素で構成されます。
 
-- ユーザー (Azure Active Directory 内にプロファイルを持つ個人)
+- Azure AD ユーザー
 - ロール定義
 - リソースのスコープ
 
@@ -68,7 +65,7 @@ Azure AD の組み込みロールとカスタム ロールは、[Azure のロー
 
 ### <a name="security-principal"></a>セキュリティ プリンシパル
 
-セキュリティ プリンシパルとは、Azure AD リソースへのアクセスが割り当てられるユーザーまたはサービス プリンシパルを表します。 "*ユーザー*" は、Azure Active Directory 内にプロファイルを持つ個人です。
+セキュリティ プリンシパルとは、Azure AD リソースへのアクセスが割り当てられるユーザーまたはサービス プリンシパルを表します。 "ユーザー" は、Azure Active Directory 内にプロファイルを持つ個人です。
 
 ### <a name="role"></a>Role
 
@@ -81,15 +78,12 @@ Azure AD の組み込みロールとカスタム ロールは、[Azure のロー
 
 スコープとは、ロールの割り当ての一部として特定の Azure AD リソースに対して許可されるアクションの制限です。 ロールを割り当てるときに、特定のリソースに対する管理者のアクセスを制限するスコープを指定できます。 たとえば、開発者にカスタム ロールを付与し、特定のアプリケーション登録の管理だけを許可したい場合は、ロールの割り当てでスコープとして特定のアプリケーション登録を含めることができます。
 
-  > [!Note]
-  > カスタム ロールは、ディレクトリ スコープとリソース スコープで割り当てることができます。 管理単位のスコープで割り当てることはまだできません。
-  > 組み込みロールは、ディレクトリ スコープと、場合によっては管理単位のスコープで、割り当てることができます。 Azure AD リソースのスコープで割り当てることはまだできません。
-
 ## <a name="required-license-plan"></a>必要とされるライセンス プラン
 
 [!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
+- [Azure AD ロールを理解する](concept-understand-roles.md)
 - [Azure portal、Azure AD PowerShell、および Graph API](custom-create.md) を使用して、カスタム ロールの割り当てを作成する
 - [カスタム ロールの割り当てを表示する](custom-view-assignments.md)

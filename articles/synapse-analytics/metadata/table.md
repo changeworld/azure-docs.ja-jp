@@ -1,6 +1,6 @@
 ---
 title: 共有メタデータ テーブル
-description: Azure Synapse Analytics には共有メタデータ モデルが用意されていて、サーバーレス Apache Spark プールでテーブルを作成することにより、データを複製しなくても、サーバーレス SQL プール (プレビュー) と専用 SQL プールからそのテーブルにアクセスできるようになります。
+description: Azure Synapse Analytics には共有メタデータ モデルが用意されていて、サーバーレス Apache Spark プールでテーブルを作成することにより、データを複製しなくても、サーバーレス SQL プールと専用 SQL プールからそのテーブルにアクセスできるようになります。
 services: sql-data-warehouse
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,18 +10,17 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f269217908bea4b5e8ef3c0004a9cec9d5d682c7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9ee18edd563d94a85dedf48b7a4d6df394c09707
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314532"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461379"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics の共有メタデータ テーブル
 
-[!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Azure Synapse Analytics では、さまざまなワークスペース計算エンジンが、Apache Spark プール (プレビュー) とサーバーレス SQL プール (プレビュー) の間でデータベースと Parquet でサポートされたテーブルを共有できます。
+Azure Synapse Analytics では、さまざまなワークスペース計算エンジンが、Apache Spark プールとサーバーレス SQL プールの間でデータベースと Parquet でサポートされたテーブルを共有できます。
 
 Spark ジョブによってデータベースが作成されると、Spark を使用してその内部にテーブルを作成できます (ストレージ形式として Parquet を使用)。 これらのテーブルではすぐに、任意の Azure Synapse ワークスペース Spark プールによってクエリを実行できるようになります。 これらは、アクセス許可の対象となる任意の Spark ジョブから使用することもできます。
 

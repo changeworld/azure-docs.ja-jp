@@ -8,20 +8,20 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 00920f30061832bd1d685f04113a63781df718b4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b605c2c9f3c7468d0fe1f2cccd8c3602c556714b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313701"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501075"
 ---
-# <a name="azure-synapse-analytics-managed-virtual-network-preview"></a>Azure Synapse Analytics のマネージド仮想ネットワーク (プレビュー)
+# <a name="azure-synapse-analytics-managed-virtual-network"></a>Azure Synapse Analytics のマネージド仮想ネットワーク
 
 この記事では、Azure Synapse Analytics のマネージド仮想ネットワークについて説明します。
 
 ## <a name="managed-workspace-virtual-network"></a>マネージド ワークスペース仮想ネットワーク
 
-Azure Synapse ワークスペースを作成するときに、そのワークスペースを Microsoft Azure 仮想ネットワークに関連付けることを選択できます。 ワークスペースに関連付けられた仮想ネットワークは、Azure Synapse によって管理されます。 この仮想ネットワークは、" *マネージド ワークスペース仮想ネットワーク* " と呼ばれます。
+Azure Synapse ワークスペースを作成するときに、そのワークスペースを Microsoft Azure 仮想ネットワークに関連付けることを選択できます。 ワークスペースに関連付けられた仮想ネットワークは、Azure Synapse によって管理されます。 この仮想ネットワークは、"*マネージド ワークスペース仮想ネットワーク*" と呼ばれます。
 
 マネージド ワークスペース仮想ネットワークによってもたらされる価値として、次の 4 つの点が挙げられます。
 
@@ -52,8 +52,6 @@ Azure Synapse ワークスペースを作成するときに、そのワークス
 
 ![マネージド ワークスペース仮想ネットワークを有効にする](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
 
->[!NOTE]
->マネージド プライベート エンドポイントを経由した場合を除き、マネージド ワークスペース仮想ネットワークからのアウトバウンド トラフィックは将来すべてブロックされます。 Azure のデータ ソースとの接続にはすべて、ワークスペースに外部となるマネージド プライベート エンドポイントを作成することをお勧めします。 
 
 Azure Synapse ワークスペースがマネージド ワークスペース仮想ネットワークに関連付けられているかどうかは、Azure portal の **[概要]** を選択することで確認できます。
 

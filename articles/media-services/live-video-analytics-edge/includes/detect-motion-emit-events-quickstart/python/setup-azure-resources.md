@@ -1,17 +1,17 @@
 ---
-ms.openlocfilehash: 67d90836c382728f989ab2cb4fde4d81bac9eb25
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5fa8377b3cdddb2818c04c5a75e347ff73dc07d8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88691189"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509318"
 ---
 このチュートリアルでは、次の Azure リソースが必要です。
 
 * IoT Hub
 * ストレージ アカウント
 * Azure Media Services アカウント
-* Azure 上の Linux VM ([IoT Edge ランタイム](../../../../../iot-edge/how-to-install-iot-edge-linux.md)がインストール済み)
+* Azure 上の Linux VM ([IoT Edge ランタイム](../../../../../iot-edge/how-to-install-iot-edge.md)がインストール済み)
 
 このクイックスタートでは、[Live Video Analytics リソース セットアップ スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)を使用して、ご利用の Azure サブスクリプションに必要なリソースをデプロイすることをお勧めします。 これを行うには、次のステップに従います。
 
@@ -29,10 +29,9 @@ ms.locfileid: "88691189"
     スクリプトが正常に終了すれば、必要なすべてのリソースがご利用のサブスクリプションに表示されます。
 1. スクリプトが完了したら、中かっこを選択してフォルダー構造を展開します。 *~/clouddrive/lva-sample* ディレクトリに、いくつかのファイルがあるのを確認できます。 このクイックスタートで注目するのは、次のものです。
 
-     * ***~/clouddrive/lva-sample/edge-deployment/.env*** - このファイルには、Visual Studio Code がエッジ デバイスにモジュールをデプロイする際に使用するプロパティが格納されています。
-     * ***~/clouddrive/lva-sample/appsetting.json*** - Visual Studio Code は、このファイルを使用してサンプル コードを実行します。
+     * * **~/clouddrive/lva-sample/edge-deployment/.env** - このファイルには、Visual Studio Code がエッジ デバイスにモジュールをデプロイする際に使用するプロパティが格納されています。
+     _ ***~/clouddrive/lva-sample/appsetting.json*** - Visual Studio Code は、このファイルを使用してサンプル コードを実行します。
      
     これらのファイルは、次のセクションで Visual Studio Code に開発環境を設定するときに必要になります。 差し当たりローカル ファイルとしてコピーしておいてください。
     
     ![アプリケーション設定](../../../media/quickstarts/clouddrive.png)
-    

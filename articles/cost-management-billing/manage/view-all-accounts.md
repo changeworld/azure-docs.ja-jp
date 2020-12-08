@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/30/2020
 ms.author: banders
-ms.openlocfilehash: 0049efda603532099cc9bf24dc9d9411b5aaa389
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 3df6b694f3a40cef17c6e0114464ad4aa2fa30ce
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132127"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344336"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure portal での課金アカウントとスコープ
 
@@ -33,6 +33,12 @@ Azure portal では、次の種類の課金アカウントがサポートされ�
 
 ## <a name="scopes-for-billing-accounts"></a>課金アカウントのスコープ
 スコープとは、ユーザーが請求先を表示および管理する際に使用する、課金アカウント内のノードです。 ユーザーが課金データ、支払い、請求書を管理し、アカウントの全般的な管理を行う場所です。
+
+課金アカウントを表示または管理するためのアクセスができない場合は、アクセスする権限がない可能性があります。 課金アカウントの管理者に連絡して、アクセス権を付与してもらうことができます。 詳細については、次の記事を参照してください。
+
+- [Microsoft オンライン サービス プログラム アクセス](manage-billing-access.md)
+- [Microsoft 顧客契約アクセス](understand-mca-roles.md)
+- [マイクロソフト エンタープライズ契約アクセス](understand-ea-roles.md)
 
 ### <a name="microsoft-online-services-program"></a>Microsoft Online Services Program
 

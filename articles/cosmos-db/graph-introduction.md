@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 07/10/2020
+ms.date: 11/25/2020
 ms.author: chrande
-ms.openlocfilehash: d0bd94037a75db8d69cfd44820a80ae8b403c9ea
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: c2165ea6273ad90cfb95242dfe72538c0a5ef64c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357081"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350060"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB での Gremlin API の概要
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -24,6 +24,9 @@ ms.locfileid: "93357081"
 この記事では、Azure Cosmos DB Gremlin API の概要と、これを使用して何十億もの頂点と辺のある大規模なグラフを保存する方法について説明します。 ミリ秒の待機時間でグラフを照会したり、グラフ構造を簡単に改善したりできます。 Azure Cosmos DB の Gremlin API は、[Apache TinkerPop](https://tinkerpop.apache.org) というグラフ コンピューティング フレームワークに基づいて構築されています。 Azure Cosmos DB の Gremlin API では、Gremlin クエリ言語を使用します。
 
 Azure Cosmos DB の Gremlin API は、グラフ データベース アルゴリズムの機能を非常にスケーラブルなマネージド インフラストラクチャと結合して、柔軟性の不足に関連する最も一般的なデータの問題への一意で柔軟な解決策と、リレーショナル アプローチを提供します。
+
+> [!NOTE]
+> Azure Cosmos DB の Gremlin API で[サーバーレス容量モード](serverless.md)が利用できるようになりました。
 
 ## <a name="features-of-azure-cosmos-dbs-gremlin-api"></a>Azure Cosmos DB の Gremlin API の機能
  
@@ -53,7 +56,7 @@ Azure Cosmos DB Gremlin API で提供される差別化された機能は、次�
 
 * **インデックスの自動作成**
 
-  Azure Cosmos DB では、グラフのノード (頂点とも呼ばれます) や辺内のすべてのプロパティのインデックスが既定で自動的に作成されるため、スキーマや、セカンダリ インデックスの作成は不要です。 詳細については、[Azure Cosmos DB のインデックス作成](/azure/cosmos-db/index-overview)に関する記事をご覧ください。
+  Azure Cosmos DB では、グラフのノード (頂点とも呼ばれます) や辺内のすべてのプロパティのインデックスが既定で自動的に作成されるため、スキーマや、セカンダリ インデックスの作成は不要です。 詳細については、[Azure Cosmos DB のインデックス作成](./index-overview.md)に関する記事をご覧ください。
 
 * **Apache TinkerPop との互換性**
 
@@ -109,21 +112,21 @@ Azure Cosmos DB のグラフ サポートが役立つ場合があるいくつか
 
 :::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="ユーザー、デバイス、関心事を示すサンプル データベース" border="false"::: 
 
-このグラフには、次の " *頂点* " の種類 (Gremlin では "ラベル" とも呼ばれます) が含まれています。
+このグラフには、次の "*頂点*" の種類 (Gremlin では "ラベル" とも呼ばれます) が含まれています。
 
-* **ユーザー** : このグラフには、Robin、Thomas、Ben の 3 人のユーザーが含まれています。
-* **関心** : 各ユーザーの関心事。この例では、フットボールの試合です。
+* **ユーザー**: このグラフには、Robin、Thomas、Ben の 3 人のユーザーが含まれています。
+* **関心**: 各ユーザーの関心事。この例では、フットボールの試合です。
 * **[デバイス]** : ユーザーが使用しているデバイスです。
-* **オペレーティング システム** : 各デバイスが実行されているオペレーティング システムです。
-* **場所** : デバイスにアクセスする場所です
+* **オペレーティング システム**: 各デバイスが実行されているオペレーティング システムです。
+* **場所**: デバイスにアクセスする場所です
 
-次の " *辺* " の種類によって、これらのエンティティの関係を表します。
+次の "*辺*" の種類によって、これらのエンティティの関係を表します。
 
-* **知り合い** : たとえば、"Thomas は Robin を知っている" ことが示されています。
-* **関心あり** : このグラフの各ユーザーの関心事を表します。たとえば、"Ben はフットボールに関心がある" ことが示されています。
-* **RunsOS** : ノート PC で Windows OS が実行されています。
-* **使用** : ユーザーが使用しているデバイスを表します。 たとえば、Robin はシリアル番号が 77 の Motorola Phone を使用しています。
-* **配置されている** : デバイスにアクセスする場所を表します
+* **知り合い**: たとえば、"Thomas は Robin を知っている" ことが示されています。
+* **関心あり**: このグラフの各ユーザーの関心事を表します。たとえば、"Ben はフットボールに関心がある" ことが示されています。
+* **RunsOS**: ノート PC で Windows OS が実行されています。
+* **使用**: ユーザーが使用しているデバイスを表します。 たとえば、Robin はシリアル番号が 77 の Motorola Phone を使用しています。
+* **配置されている**: デバイスにアクセスする場所を表します
 
 Gremlin コンソールは Apache TinkerPop が提供する対話型ターミナルで、このターミナルを使用してグラフ データを操作します。 詳細については、[Gremlin コンソールの使用方法](create-graph-gremlin-console.md)に関するクイックスタート ドキュメントを参照してください。 これらの操作は、任意のプラットフォーム (Java、Node.js、Python、または .NET) で Gremlin ドライバーを使用して実行することもできます。 次の例は、Gremlin コンソールを使用して、このグラフ データに対してクエリを実行する方法を示しています。
 

@@ -5,12 +5,12 @@ author: emaher
 ms.topic: overview
 ms.date: 09/16/2020
 ms.author: enewman
-ms.openlocfilehash: ac390fb6624ffc762f77b676c778165e7382f73f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 71d59e8bcf7b4078255d6b119e9d62f366e46033
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334040"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437322"
 ---
 # <a name="architecture-fundamentals-in-azure-lab-services"></a>Azure Lab Services のアーキテクチャの基礎
 
@@ -20,7 +20,7 @@ Azure Lab Services には、Lab Services と組み合わせて独自のリソー
 
 次に示すのは、クラスルーム ラボの基本的なアーキテクチャです。  ラボ アカウントはお使いのサブスクリプションでホストされます。 学生用 VM は、VM をサポートするために必要なリソースと共に、Lab Services が所有するサブスクリプションでホストされます。 次に、Lab Services のサブスクリプションの内容について詳しく説明していきます。
 
-![クラスルーム ラボの基本アーキテクチャ](./media/classroom-labs-fundamentals/labservices-basic-architecture.png)
+![ラボの基本アーキテクチャ](./media/classroom-labs-fundamentals/labservices-basic-architecture.png)
 
 ## <a name="hosted-resources"></a>ホストされるリソース
 

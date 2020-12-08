@@ -1,6 +1,6 @@
 ---
-title: サーバーレス SQL プール (プレビュー) でストレージ上のファイルにアクセスする
-description: Azure Synapse Analytics のサーバーレス SQL プール (プレビュー) を使用してストレージ ファイルにクエリを実行する方法について説明します。
+title: サーバーレス SQL プールでストレージ上のファイルにアクセスする
+description: Azure Synapse Analytics のサーバーレス SQL プールを使用してストレージ ファイルにクエリを実行する方法について説明します。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 64148cd8fd467be6a5f09ee723e230bdc8181d2d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 82a4ded3a64a8a8bbc62f99a8854eb6d2b5f0d0b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685683"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446577"
 ---
-# <a name="access-external-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プール (プレビュー) を使用して外部ストレージにアクセスする
+# <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用して外部ストレージにアクセスする
 
 このドキュメントでは、ユーザーがサーバーレス SQL プールで、Azure Storage に格納されているファイルからデータを読み取る方法について説明します。 ユーザーは、ストレージにアクセスするための次のオプションを使用できます。
 

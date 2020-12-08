@@ -7,18 +7,18 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: a76df67d1ef9d203d5e5d54cb95bb8fc90f70180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d19310dbd54c8bd5f9854ff86af051b68c5cd378
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980740"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463288"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>チュートリアル:デジタル配布センター アプリケーション テンプレートを展開して調べる
 
 
 
-このチュートリアルでは、IoT Central の**デジタル配布センター** アプリケーション テンプレートをデプロイする方法について説明します。 テンプレートをデプロイする方法、既定で含まれるもの、次にできることについて説明します。
+このチュートリアルでは、IoT Central の **デジタル配布センター** アプリケーション テンプレートをデプロイする方法について説明します。 テンプレートをデプロイする方法、既定で含まれるもの、次にできることについて説明します。
 
 このチュートリアルで学習する内容は次のとおりです。 
 * デジタル配布センター アプリケーションを作成する 
@@ -34,8 +34,7 @@ ms.locfileid: "90980740"
 
 1. Azure IoT Central のアプリケーション マネージャー Web サイトに移動します。 左側のナビゲーションバーから **[ビルド]** を選択し、 **[Retail]\(小売り\)** タブをクリックします。
 
-    > [!div class="mx-imgBorder"]
-    > ![デジタル流通センター アプリケーション テンプレートを選択する方法を示す画面のスクリーンショット](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+    :::image type="content" source="media/tutorial-iot-central-ddc/iotc-retail-homepage.png" alt-text="デジタル配布センター アプリケーション テンプレート":::
 
 2. **[小売業]** タブを選択し、 **[デジタル流通センター]** の下にある **[アプリの作成]** を選択します
 
@@ -45,11 +44,9 @@ ms.locfileid: "90980740"
    **課金情報**:リソースをプロビジョニングするには、ディレクトリ、Azure サブスクリプション、リージョンの詳細が必要です。
    **作成**:ページの下部にある [作成] を選択して、アプリケーションをデプロイします。
 
-    > [!div class="mx-imgBorder"]
-    > ![デジタル流通センター アプリケーション テンプレートからのアプリの作成方法を示すスクリーンショット](./media/tutorial-iot-central-ddc/ddc-create.png)
+   :::image type="content" source="media/tutorial-iot-central-ddc/ddc-create.png" alt-text="デジタル流通センター アプリケーション テンプレートからのアプリの作成方法を示すスクリーンショット":::
 
-    > [!div class="mx-imgBorder"]
-    > ![アプリケーション作成時の課金オプションを示す画面のスクリーンショット](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
+   :::image type="content" source="media/tutorial-iot-central-ddc/ddc-create-billinginfo.png" alt-text="アプリケーション作成時の課金オプションを示す画面のスクリーンショット":::
 
 ## <a name="walk-through-the-application-dashboard"></a>アプリケーション ダッシュボードを調べる 
 

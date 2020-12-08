@@ -1,6 +1,6 @@
 ---
 title: sqlcmd を使用して Synapse SQL に接続する
-description: sqlcmd コマンド ライン ユーティリティを使用してサーバーレス SQL プール (プレビュー) および専用 SQL プールに接続し、クエリを実行します。
+description: sqlcmd コマンド ライン ユーティリティを使用してサーバーレス SQL プールおよび専用 SQL プールに接続し、クエリを実行します。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,23 +9,23 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43fae026f91e4430fbce0d01141a86a913db089d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 88ee95789bdc1c6ee9884a021067318caab203d4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686142"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451651"
 ---
 # <a name="connect-to-synapse-sql-with-sqlcmd"></a>sqlcmd を使用して Synapse SQL に接続する
 
 > [!div class="op_single_selector"]
-> * [Azure Data Studio (プレビュー)](get-started-azure-data-studio.md)
+> * [Azure Data Studio)](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 > * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-[sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) コマンド ライン ユーティリティを使用して、Synapse SQL 内のサーバーレス SQL プール (プレビュー) および専用 SQL プールに接続し、クエリを実行することができます。  
+[sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) コマンド ライン ユーティリティを使用して、Synapse SQL 内のサーバーレス SQL プールおよび専用 SQL プールに接続し、クエリを実行することができます。  
 
 ## <a name="1-connect"></a>1.接続する
 [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) の使用を開始するには、コマンド プロンプトを開いて「**sqlcmd**」と入力し、続けて Synapse SQL データベースの接続文字列を入力します。 接続文字列では、次のパラメーターが必要になります。

@@ -11,14 +11,14 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 691cdcb525f8e9e3d1fb914372b9f62366f4bfba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4c761404ab5a95bc0189407cc97ce779b66356fe
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85213025"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460691"
 ---
-# <a name="quickstart-create-a-synapse-sql-pool-workload-classifier-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Synapse SQL プールのワークロード分類子を作成する
+# <a name="quickstart-create-a-dedicated-sql-pool-workload-classifier-using-the-azure-portal"></a>クイックスタート: Azure portal を使用して専用 SQL プールのワークロード分類子を作成する
 
 このクイックスタートでは、ワークロード グループにクエリを割り当てるための[ワークロード分類子](sql-data-warehouse-workload-classification.md)を作成します。  分類子によって、`ELTLogin` SQL ユーザーからの要求が `DataLoads` ワークロード グループに割り当てられます。   [クイックスタート: ワークロードの分離の構成](quickstart-configure-workload-isolation-portal.md)チュートリアルに従って、`DataLoads` ワークロード グループを作成します。  このチュートリアルでは、WLM_LABEL オプションを使用してワークロード分類子を作成し、さらに正確に要求を分類できるようにします。  分類子では、これらの要求に `HIGH` [ワークロードの重要度](sql-data-warehouse-workload-importance.md)も割り当てます。
 
@@ -31,16 +31,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 [Azure portal](https://portal.azure.com/) にサインインします。
 
 > [!NOTE]
-> Azure Synapse Analytics に SQL プール インスタンスを作成すると、新しい課金対象サービスが発生する可能性があります。  詳細については、「[Azure Synapse Analytics の価格](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)」を参照してください。
+> Azure Synapse Analytics に専用 SQL プール インスタンスを作成すると、新しい課金対象サービスが発生する可能性があります。  詳細については、「[Azure Synapse Analytics の価格](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイックスタートは、Synapse SQL の SQL プール インスタンスが既に用意されていて、CONTROL DATABASE アクセス許可を持っていることを前提としています。 作成する必要がある場合は、[ポータルでの作成と接続](create-data-warehouse-portal.md)に関する記事に従って、**mySampleDataWarehouse** という名前のデータ ウェアハウスを作成してください。
+このクイックスタートは、専用 SQL プール インスタンスが既に用意されていて、CONTROL DATABASE アクセス許可があることを前提としています。 作成する必要がある場合は、[ポータルでの作成と接続](create-data-warehouse-portal.md)に関する記事に従って、**mySampleDataWarehouse** という名前の専用 SQL プールを作成してください。
 <br><br>
 ワークロード グループ `DataLoads` が存在すること。  ワークロード グループを作成するには、[クイックスタート: ワークロードの分離の構成](quickstart-configure-workload-isolation-portal.md)チュートリアルを参照してください。
 <br><br>
 >[!IMPORTANT] 
->ワークロード管理を構成するには、SQL プールがオンラインになっている必要があります。 
+>ワークロード管理を構成するには、専用 SQL プールがオンラインになっている必要があります。 
 
 
 ## <a name="create-a-login-for-eltlogin"></a>ELTLogin 用のログインを作成する
@@ -72,18 +72,17 @@ END
 分類を使用すると、一連のルールに基づいて要求をワークロード グループにルーティングできます。  [クイックスタート: ワークロードの分離の構成](quickstart-configure-workload-isolation-portal.md)チュートリアルでは、`DataLoads` ワークロード グループを作成しました。  ここでは、ワークロード分類子を作成して、`DataLoads` ワークロード グループにクエリをルーティングします。
 
 
-1.  Azure portal の左側のページで **[Azure Synapse Analytics (以前の SQL DW)]** をクリックします。
-2.  **[Azure Synapse Analytics (以前の SQL DW)]** ページから **[mySampleDataWarehouse]** を選択します。 SQL プールが開きます。
-3.  **[ワークロード管理]** をクリックします。
+1.  **mySampleDataWarehouse** 専用 SQL プールのページに移動します。
+3.  **[ワークロード管理]** を選択します。
 
     ![メニューをクリックする](./media/quickstart-create-a-workload-classifier-portal/menu.png)
 
-4.  `DataLoads` ワークロード グループの右側にある **[設定と分類子]** をクリックします。
+4.  `DataLoads` ワークロード グループの右側にある **[設定と分類子]** を選択します。
 
     ![Create をクリックしてください。](./media/quickstart-create-a-workload-classifier-portal/settings-classifiers.png)
 
-5. **[分類子]** をクリックします。
-6. **[分類子の追加]** をクリックします。
+5. [分類子] 列の **[未構成]** を選択します。
+6. **[+ 分類子の追加]** を選択します。
 
     ![[追加] をクリックします。](./media/quickstart-create-a-workload-classifier-portal/add-wc.png)
 
@@ -91,8 +90,8 @@ END
 8.  **[メンバー]** に「`ELTLogin`」と入力します。
 9.  **[要求の重要度]** では `High` を選択します  ("*省略可能*"。既定では通常の重要度になっています)。
 10. **[ラベル]** に「`fact_loads`」と入力します。
-11. **[追加]** をクリックします。
-12. **[保存]** をクリックします。
+11. **[追加]** を選択します。
+12. **[保存]** を選択します。
 
     ![構成をクリックする](./media/quickstart-create-a-workload-classifier-portal/config-wc.png)
 
@@ -135,8 +134,6 @@ WHERE [label] = 'fact_loads'
 ORDER BY submit_time DESC
 ```
 
-
-
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで作成した `ELTLoginDataLoads` ワークロード分類子を削除するには、次のようにします。
@@ -152,24 +149,20 @@ ORDER BY submit_time DESC
 
     ![[保存] をクリックします。](./media/quickstart-create-a-workload-classifier-portal/delete-save-wc.png)
 
-データ ウェアハウス ユニットと、データ ウェアハウスに格納されているデータに対して課金されます。 これらのコンピューティングとストレージのリソースは別々に請求されます。
+データ ウェアハウス ユニットと専用 SQL プールに格納されているデータに対して課金されます。 これらのコンピューティングとストレージのリソースは別々に請求されます。
 
-- データをストレージに保持しておく場合は、データ ウェアハウスを使わない間、コンピューティング リソースを一時停止できます。 コンピューティングを一時停止すると、データ ストレージに対してのみ課金されます。 データを使用する準備ができたら、コンピューティングを再開します。
-- それ以上課金されないようにする場合は、データ ウェアハウスを削除できます。
+- データをストレージに保持しておく場合は、専用 SQL プールを使わない間、コンピューティング リソースを一時停止できます。 コンピューティングを一時停止すると、データ ストレージに対してのみ課金されます。 データを使用する準備ができたら、コンピューティングを再開します。
+- それ以上課金されないようにする場合は、専用 SQL プールを削除できます。
 
 以下の手順に従ってリソースをクリーンアップします。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、データ ウェアハウスを選択します。
+1. [Azure portal](https://portal.azure.com) にサインインし、専用 SQL プールを選択します。
 
     ![リソースをクリーンアップする](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. コンピューティング リソースを一時停止するには、 **[一時停止]** ボタンを選択します。 データ ウェアハウスが一時停止すると、ボタンの表示が **[開始]** になります。  コンピューティング リソースを再開するには、 **[開始]** を選択します。
+2. コンピューティング リソースを一時停止するには、 **[一時停止]** ボタンを選択します。 専用 SQL プールが一時停止すると、ボタンの表示が **[開始]** になります。  コンピューティング リソースを再開するには、 **[開始]** を選択します。
 
-3. コンピューティング リソースやストレージに課金されないようにデータ ウェアハウスを削除するには、 **[削除]** を選択します。
-
-4. 作成した SQL Server を削除するには、前の画像の **sqlpoolservername.database.windows.net** を選択して、 **[削除]** を選択します。  サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、削除には注意してください。
-
-5. リソース グループを削除するには、**myResourceGroup** を選択して、 **[リソース グループの削除]** を選択します。
+3. コンピューティング リソースやストレージに課金されないように専用 SQL プールを削除するには、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

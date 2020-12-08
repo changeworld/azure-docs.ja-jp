@@ -2,13 +2,13 @@
 title: チュートリアル - VMware HCX をデプロイして構成する
 description: Azure VMware Solution プライベート クラウドのために VMware HCX ソリューションをデプロイして構成する方法について説明します。
 ms.topic: tutorial
-ms.date: 11/18/2020
-ms.openlocfilehash: afb5c653ce7c4b4a453a4031c5664042357de6c0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.date: 11/25/2020
+ms.openlocfilehash: e50454c2299ed0f7e249563eecac1935a29a9c47
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95999631"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352467"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX をデプロイして構成する
 
@@ -16,8 +16,8 @@ ms.locfileid: "95999631"
 
 VMware HCX Advanced コネクタは、Azure VMware Solution にあらかじめデプロイされています。 最大 3 つのサイト接続 (オンプレミスからクラウド、またはクラウドからクラウド) がサポートされます。 3 つを超えるサイト接続が必要な場合は、[VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) アドオンを有効にするために[サポート リクエスト](https://portal.azure.com/#create/Microsoft.Support)を送信してください。 このアドオンは現在、プレビュー段階です。 
 
->[!Note]
->VMware Configuration Maximums ツールでは、オンプレミスの Connector と Cloud Manager との間におけるサイト ペアの最大数は 25 と説明されていますが、この場合も、ライセンスにより、Advanced Edition では 3 に、Enterprise Edition では 10 に制限されます。
+>[!TIP]
+>VMware Configuration Maximums ツールでは、オンプレミスの Connector と Cloud Manager との間におけるサイト ペアの最大数は 25 と説明されていますが、ライセンスにより、Advanced Edition では 3 に、Enterprise Edition では 10 に制限されます。
 
 >[!NOTE]
 >VMware HCX Enterprise は、Azure VMware Solution でプレビュー サービスとして使用できます。 これは無料で、プレビュー サービスの使用条件が適用されます。 VMware HCX Enterprise サービスが一般提供されると、課金に切り替わるという通知が 30 日前に届きます。 サービスを無効にするかオプトアウトするオプションも用意されます。 VMware HCX Enterprise から VMware HCX Advanced への単純なダウングレード パスはありません。 ダウングレードする場合は、再デプロイする必要があり、ダウンタイムが発生します。
@@ -79,7 +79,7 @@ VMware HCX Enterprise を使用する場合は、Azure VMware Solution のサポ
 1. **[管理]**  >  **[ID]** の順に選択し、 **[vCenter admin password]\(vCenter 管理者パスワード\)** を選択して、パスワードを特定します。
 
    > [!TIP]
-   > vCenter パスワードは、プライベート クラウドを設定したときに定義されました。これは、Azure VMware Solution HCX Manager にサインインするときに使用するパスワードと同じです。
+   > VCenter のパスワードは、プライベート クラウドの設定時に定義されました。 これは、Azure VMware Solution HCX Manager にサインインするときに使用するパスワードと同じです。
 
    :::image type="content" source="media/tutorial-vmware-hcx/hcx-admin-password.png" alt-text="hcx パスワードを見つけます。" lightbox="media/tutorial-vmware-hcx/hcx-admin-password.png":::
 
@@ -91,7 +91,7 @@ VMware HCX Enterprise を使用する場合は、Azure VMware Solution のサポ
 
 ## <a name="deploy-the-vmware-hcx-connector-ova-on-premises"></a>VMware HCX コネクタ OVA をオンプレミスにデプロイする
 
-1. オンプレミスの vCenter で、HCX コネクタをオンプレミスの vCenter にデプロイするための [OVF テンプレート](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-17BEDA21-43F6-41F4-8FB2-E01D275FE9B4.html)を選択します。 
+1. オンプレミスの vCenter で、VMware HCX コネクタをオンプレミスの vCenter にデプロイするための [OVF テンプレート](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-17BEDA21-43F6-41F4-8FB2-E01D275FE9B4.html)を選択します。 
 
    > [!TIP]
    > 前のセクションでダウンロードした OVA ファイルを選択します。  
@@ -111,12 +111,12 @@ VMware HCX Enterprise を使用する場合は、Azure VMware Solution のサポ
 
    :::image type="content" source="media/tutorial-vmware-hcx/customize-template.png" alt-text="テンプレートをカスタマイズするためのボックスのスクリーンショット。" lightbox="media/tutorial-vmware-hcx/customize-template.png":::
 
-1. 構成を確認してから **[完了]** を選択して、HCX コネクタ OVA をデプロイします。
+1. 構成を確認してから **[完了]** を選択して、VMware HCX コネクタ OVA をデプロイします。
    
    > [!IMPORTANT]
    > 仮想アプライアンスを手動で有効にする必要があります。  電源投入後、10 分から 15 分待ってから、次の手順に進みます。
 
-この手順全体の概要については、動画「[Azure VMware Solution: HCX アプライアンスのデプロイ](https://www.youtube.com/embed/BwSnQeefnso)」を参照してください。 
+この手順全体の概要については、動画「[Azure VMware Solution: HCX アプライアンスのデプロイ](https://www.youtube.com/embed/UKmSTYrL6AY)」を参照してください。 
 
 
 ## <a name="activate-vmware-hcx"></a>VMware HCX をアクティブにする
@@ -152,7 +152,7 @@ VMware HCX コネクタ OVA をオンプレミスにデプロイし、アプラ�
 1. **[Configure SSO/PSC]\(SSO/PSC の構成\)** で、Platform Services Controller の FQDN または IP アドレスを入力してから、 **[Continue]\(続行\)** を選択します。
    
    > [!NOTE]
-   > 一般に、このエントリは vCenter の FQDN または IP アドレスと同じです。
+   > 一般に、これは vCenter の FQDN または IP アドレスと同じです。
 
 1. 入力した情報が正しいことを確認し、 **[再起動]** を選択します。
     
@@ -163,7 +163,7 @@ VMware HCX コネクタ OVA をオンプレミスにデプロイし、アプラ�
 
 :::image type="content" source="media/tutorial-vmware-hcx/activation-done.png" alt-text="vCenter の状態が緑色のダッシュボードのスクリーンショット。" lightbox="media/tutorial-vmware-hcx/activation-done.png":::  
 
-この手順全体の概要については、動画「[Azure VMware Solution: HCX をアクティブにする](https://www.youtube.com/embed/BkAV_TNYxdE)」を参照してください。
+この手順全体の概要については、動画「[Azure VMware Solution: HCX をアクティブにする](https://www.youtube.com/embed/jzQZawslF8w)」を参照してください。
 
    > [!IMPORTANT]
    > VMware HCX Advanced と VMware HCX Enterprise のどちらを使用しているかにかかわらず、VMware の[サポート技術情報の記事 81558](https://kb.vmware.com/s/article/81558) からパッチをインストールする必要がある場合があります。 
@@ -174,7 +174,7 @@ VMware HCX コネクタ OVA をオンプレミスにデプロイし、アプラ�
 
 ### <a name="add-a-site-pairing"></a>サイトのペアリングを追加する
 
-Azure VMware Solution で、VMware HCX Cloud Manager をデータセンターの VMware HCX Manager コネクタと接続 (ペアリング) できます。 
+Azure VMware Solution で、VMware HCX Cloud Manager をデータセンターの VMware HCX Manager コネクタと接続またはペアリングできます。 
 
 1. オンプレミスの vCenter にサインインし、 **[ホーム]** の下の **[HCX]** を選択します。
 
@@ -183,15 +183,16 @@ Azure VMware Solution で、VMware HCX Cloud Manager をデータセンターの
 1. 前にメモしておいた Azure VMware Solution HCX Cloud Manager の URL または IP アドレス (`https://x.x.x.9`)、Azure VMware Solution の cloudadmin@vsphere.local のユーザー名、およびパスワードを入力します。 次に、 **[接続]\(Connect\)** を選択します。
 
    > [!NOTE]
-   > サイト ペアを正常に確立するには、HCX コネクタがポート 443 経由で HCX Cloud Manager IP にルーティングできる必要があります。
+   > サイト ペアを正常に確立するには、次のようにします。
+   > * VMware HCX コネクタがポート 443 経由で HCX Cloud Manager IP にルーティングできる必要があります。
    >
-   > パスワードは、vCenter へのサインインに使用したのと同じパスワードです。 このパスワードは、最初のデプロイ画面で定義したものです。
+   > * vCenter へのサインインに使用したのと同じパスワードを使用します。 このパスワードは、最初のデプロイ画面で定義したものです。
 
-   Azure VMware Solution の HCX Cloud Manager とオンプレミスの HCX コネクタが接続 (ペアリング) されたことを示す画面が表示されます。
+   Azure VMware Solution の VMware HCX Cloud Manager とオンプレミスの VMware HCX コネクタが接続 (ペアリング) されたことを示す画面が表示されます。
 
-   :::image type="content" source="media/tutorial-vmware-hcx/site-pairing-complete.png" alt-text="Azure VMware Solution の HCX Manager と HCX コネクタのペアリングを示すスクリーンショット。":::
+   :::image type="content" source="media/tutorial-vmware-hcx/site-pairing-complete.png" alt-text="Azure VMware Solution の HCX Manager と VMware HCX コネクタのペアリングを示すスクリーンショット。":::
 
-この手順全体の概要については、動画「[Azure VMware Solution: HCX サイトのペアリング](https://www.youtube.com/embed/sKizDCRHOko)」を参照してください。
+この手順全体の概要については、動画「[Azure VMware Solution: HCX サイトのペアリング](https://www.youtube.com/embed/iTJtjbiwvsw)」を参照してください。
 
 ### <a name="create-network-profiles"></a>ネットワーク プロファイルを作成する
 
@@ -212,7 +213,7 @@ VMware HCX コネクタによって、複数の IP セグメントを必要と�
 
    :::image type="content" source="media/tutorial-vmware-hcx/example-configurations-network-profile.png" alt-text="新しいネットワーク プロファイルの詳細のスクリーンショット。":::
 
-この手順全体の概要については、動画「[Azure VMware Solution: HCX ネットワーク プロファイル](https://www.youtube.com/embed/NhyEcLco4JY)」を参照してください。
+この手順全体の概要については、動画「[Azure VMware Solution: HCX ネットワーク プロファイル](https://www.youtube.com/embed/O0rU4jtXUxc)」を参照してください。
 
 
 ### <a name="create-a-compute-profile"></a>コンピューティング プロファイルを作成する
@@ -274,18 +275,20 @@ VMware HCX コネクタによって、複数の IP セグメントを必要と�
 
    :::image type="content" source="media/tutorial-vmware-hcx/compute-profile-done.png" alt-text="コンピューティング プロファイル情報を示すスクリーンショット。" lightbox="media/tutorial-vmware-hcx/compute-profile-done.png":::
 
-この手順全体の概要については、動画「[Azure VMware Solution: コンピューティング プロファイル](https://www.youtube.com/embed/qASXi5xrFzM)」を参照してください。
+この手順全体の概要については、動画「[Azure VMware Solution: コンピューティング プロファイル](https://www.youtube.com/embed/e02hsChI3b8)」を参照してください。
 
 ### <a name="create-a-service-mesh"></a>サービス メッシュを作成する
 
 ここで、オンプレミスと Azure VMware Solution SDDC の間のサービス メッシュを構成します。
 
-   > [!NOTE]
-   > Azure VMware Solution を使用してサービス メッシュを正常に確立するには:
-   >
-   > オンプレミスの HCX コネクタで定義された "アップリンク" ネットワーク プロファイル アドレスと Azure VMware Solution HCX クラウドの "アップリンク" ネットワーク プロファイル アドレスの間で、ポート UDP 500/4500 を開きます。
-   >
-   > [HCX の必須ポート](https://ports.vmware.com/home/VMware-HCX)を確認してください。
+
+
+> [!NOTE]
+> Azure VMware Solution を使用してサービス メッシュを正常に確立するには:
+>
+> * オンプレミスの VMware HCX コネクタの "アップリンク" ネットワーク プロファイル アドレスと Azure VMware Solution HCX クラウドの "アップリンク" ネットワーク プロファイル アドレスの間で、ポート UDP 500/4500 を開きます。
+>
+> * [VMware HCX の必須ポート](https://ports.vmware.com/home/VMware-HCX)を確認してください。
 
 1. **[インフラストラクチャ]** で、 **[相互接続]**  >  **[サービス メッシュ]**  >  **[サービス メッシュの作成]** と選択します。    
 
@@ -312,6 +315,10 @@ VMware HCX コネクタによって、複数の IP セグメントを必要と�
   
 1. **[詳細構成 - ネットワーク拡張機能アプライアンスのスケールアウト]** で、内容を見直して **[続行]** を選択します。 
 
+   アプライアンスあたり最大 8 個の VLAN を設定できますが、もう 1 つのアプライアンスをデプロイしてさらに 8 個の VLAN を追加できます。 また、追加のアプライアンスに対処するための IP 空間が必要です。アプライアンスごとに 1 つの IP アドレスが必要になります。  詳細については、「[VMware HCX Configuration Limits (VMware HCX の構成の制限)](https://configmax.vmware.com/guest?vmwareproduct=VMware%20HCX&release=VMware%20HCX&categories=41-0,42-0,43-0,44-0,45-0)」を参照してください。
+   
+   :::image type="content" source="media/tutorial-vmware-hcx/extend-networks-increase-vlan.png" alt-text="VLAN 数を増やす場所を示すスクリーンショット。" lightbox="media/tutorial-vmware-hcx/extend-networks-increase-vlan.png":::
+
 1. **[Advanced Configuration - Traffic Engineering]\(詳細構成 - トラフィック エンジニアリング\)** で、内容を見直して必要と思われる変更を加えたら、 **[Continue]\(続行\)** を選択します。
 
 1. トポロジのプレビューを確認し、 **[Continue]\(続行\)** を選択します。
@@ -332,7 +339,7 @@ VMware HCX コネクタによって、複数の IP セグメントを必要と�
 
    :::image type="content" source="media/tutorial-vmware-hcx/interconnect-appliance-state.png" alt-text="アプライアンスの状態を確認するための選択を示すスクリーンショット。" lightbox="media/tutorial-vmware-hcx/interconnect-appliance-state.png":::
 
-この手順全体の概要については、動画「[Azure VMware Solution: サービス メッシュ](https://www.youtube.com/embed/FyZ0d3P_T24)」を参照してください。
+この手順全体の概要については、動画「[Azure VMware Solution: サービス メッシュ](https://www.youtube.com/embed/COY3oIws108)」を参照してください。
 
 ### <a name="optional-create-a-network-extension"></a>(省略可能) ネットワーク拡張機能を作成する
 
@@ -354,7 +361,7 @@ VMware HCX コネクタによって、複数の IP セグメントを必要と�
 
    :::image type="content" source="media/tutorial-vmware-hcx/extension-complete.png" alt-text="拡張完了の状態を示すスクリーンショット。" lightbox="media/tutorial-vmware-hcx/extension-complete.png":::
 
-この手順全体の概要については、ビデオ「[Azure VMware Solution: ネットワーク拡張機能](https://www.youtube.com/embed/cNlp0f_tTr0)」を参照してください。
+この手順全体の概要については、ビデオ「[Azure VMware Solution: ネットワーク拡張機能](https://www.youtube.com/embed/gYR0nftKui0)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
@@ -364,5 +371,5 @@ VMware HCX コネクタによって、複数の IP セグメントを必要と�
 HCX の使用の詳細については、VMware のテクニカル ドキュメントを参照してください。
 
 * [VMware HCX のドキュメント](https://docs.vmware.com/en/VMware-HCX/index.html)
-* [VMware HCX で仮想マシンを移行する](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)
+* [VMware HCX での仮想マシンの移行](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)
 * [HCX の必須ポート](https://ports.vmware.com/home/VMware-HCX)

@@ -1,6 +1,6 @@
 ---
-title: サーバーレス SQL プール (プレビュー) のストレージ アカウント アクセスを制御する
-description: サーバーレス SQL プール (プレビュー) が Azure Storage にアクセスする方法と、Azure Synapse Analytics でサーバーレス SQL プールのストレージ アクセスを制御する方法について説明します。
+title: サーバーレス SQL プールのストレージ アカウント アクセスを制御する
+description: サーバーレス SQL プールが Azure Storage にアクセスする方法と、Azure Synapse Analytics でサーバーレス SQL プールのストレージ アクセスを制御する方法について説明します。
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 958f371a0018d20331e73d0eabba9354614d121c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 631aaf3c6a99e093f6ed59089f7ce99803f3f054
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315737"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446628"
 ---
-# <a name="control-storage-account-access-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プール (プレビュー) のストレージ アカウント アクセスを制御する
+# <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールのストレージ アカウント アクセスを制御する
 
 サーバーレス SQL プールのクエリは、Azure Storage から直接ファイルを読み取ります。 Azure Storage 上のファイルへのアクセス許可は次の 2 つのレベルで制御されます。
 - **ストレージ レベル** - ユーザーには、基になるストレージ ファイルにアクセスするためのアクセス許可が必要です。 ストレージの管理者は、ファイルの読み取り/書き込み、またはストレージへのアクセスに使用される SAS キーの生成を Azure AD プリンシパルに許可する必要があります。
-- **SQL サービス レベル** - ユーザーには、 [外部テーブル](develop-tables-external-tables.md)からデータを読み取るための `SELECT` 権限、または `OPENROWSET` を実行するための `ADMINISTER BULK ADMIN` 権限が必要です。また、ストレージへのアクセスに使用される資格情報を使用する権限も必要です。
+- **SQL サービス レベル** - ユーザーには、[外部テーブル](develop-tables-external-tables.md)からデータを読み取るための `SELECT` 権限、または `OPENROWSET` を実行するための `ADMINISTER BULK ADMIN` 権限が必要です。また、ストレージへのアクセスに使用される資格情報を使用する権限も必要です。
 
 この記事では、使用できる資格情報の種類と、SQL および Azure AD のユーザーに対して資格情報の参照がどのように実行されるかについて説明します。
 
@@ -46,7 +46,7 @@ ms.locfileid: "93315737"
 
 **Shared Access Signature (SAS)** を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 SAS を使用すると、お客様はアカウント キーを共有することなく、クライアントにストレージ アカウントのリソースへのアクセス権を付与できます。 SAS を使用すると、有効期間、付与されるアクセス許可、許容される IP アドレス範囲、受け入れ可能なプロトコル (https/http) など、SAS を使用しているクライアントに付与するアクセス権の種類をきめ細かく制御できます。
 
-SAS トークンを取得するには、 **Azure portal -> [ストレージ アカウント] -> [Shared Access Signature] -> [アクセス許可の構成] -> [Generate SAS and connection string]\(SAS と接続文字列を生成する\)** に移動します。
+SAS トークンを取得するには、**Azure portal -> [ストレージ アカウント] -> [Shared Access Signature] -> [アクセス許可の構成] -> [Generate SAS and connection string]\(SAS と接続文字列を生成する\)** に移動します。
 
 > [!IMPORTANT]
 > SAS トークンが生成されると、トークンの先頭に疑問符 ("?") が含まれます。 サーバーレス SQL プールでトークンを使用するには、資格情報を作成するときに疑問符 ("?") を削除する必要があります。 次に例を示します。
@@ -119,7 +119,7 @@ GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 
 ## <a name="server-scoped-credential"></a>サーバースコープ資格情報
 
-サーバースコープ資格情報が使用されるのは、`DATA_SOURCE` が指定されない `OPENROWSET` 関数を SQL ログインが呼び出して、ストレージ アカウント上のファイルを読み取るときです。 サーバースコープ資格情報の名前は、Azure Storage の URL と一致する **必要があります** 。 資格情報を追加するには、[CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を実行します。 CREDENTIAL NAME 引数の指定が必要になります。 それは、ストレージ内のデータへのパスの一部またはパス全体に一致している必要があります (下記参照)。
+サーバースコープ資格情報が使用されるのは、`DATA_SOURCE` が指定されない `OPENROWSET` 関数を SQL ログインが呼び出して、ストレージ アカウント上のファイルを読み取るときです。 サーバースコープ資格情報の名前は、Azure Storage の URL と一致する **必要があります**。 資格情報を追加するには、[CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を実行します。 CREDENTIAL NAME 引数の指定が必要になります。 それは、ストレージ内のデータへのパスの一部またはパス全体に一致している必要があります (下記参照)。
 
 > [!NOTE]
 > 引数 `FOR CRYPTOGRAPHIC PROVIDER` はサポートされていません。
@@ -144,7 +144,7 @@ SQL ユーザーが Azure AD 認証を使用してストレージにアクセス
 
 次のスクリプトによって作成されるサーバーレベル資格情報は、`OPENROWSET` 関数が SAS トークンを使用して Azure Storage 上の任意のファイルにアクセスするために使用できます。 この資格情報を作成すると、`OPENROWSET` 関数を実行する SQL プリンシパルが有効になり、資格情報名の URL と一致する Azure Storage 上の SAS キーで保護されたファイルを読み取ります。
 
-< *mystorageaccountname* > は、実際のストレージ アカウント名に、< *mystorageaccountcontainername* > は、実際のコンテナー名に置き換えてください。
+<*mystorageaccountname*> は、実際のストレージ アカウント名に、<*mystorageaccountcontainername*> は、実際のコンテナー名に置き換えてください。
 
 ```sql
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]

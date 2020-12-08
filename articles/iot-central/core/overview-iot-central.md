@@ -3,17 +3,17 @@ title: Azure IoT Central とは | Microsoft Docs
 description: Azure IoT Central は、IoT ソリューションの作成を簡素化し、IoT の管理、運用、開発の負担とコストを削減するのに役立つ IoT アプリケーション プラットフォームです。 この記事では、Azure IoT Central の機能について概要を紹介します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/10/2019
+ms.date: 11/23/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: b62a0da7074676787b7e1c0182ca7588b83cdbe0
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 55f187781a0f11417b0c918034dcfe3362be4468
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985044"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457669"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central とは
 
@@ -137,7 +137,7 @@ IoT Central アプリケーションは、Microsoft によって完全にホス�
 7 日間の無料試用版を使用して IoT Central アプリケーションを作成することも、標準の料金プランを使用することもできます。
 
 - "*無料*" のプランを使用して作成したアプリケーションは 7 日間無料で、最大 5 台のデバイスがサポートされます。 期限切れになるまでは、いつでも標準の料金プランを使用するように変換できます。
-- "*標準*" のプランを使用して作成したアプリケーションは、デバイス単位で課金されます。**Standard 1** または **Standard 2** 料金プランから選択でき、どちらも最初の 2 つのデバイスが無料となります。 [IoT Central の価格](https://aka.ms/iotcentral-pricing) についての詳細をご覧ください。
+- "*標準*" のプランを使用して作成したアプリケーションは、デバイス単位で課金されます。**Standard 0**、**Standard 1**、**Standard 2** のいずれかの価格プランから選択でき、どちらも最初の 2 つのデバイスが無料となります。 [IoT Central の価格](https://aka.ms/iotcentral-pricing) についての詳細をご覧ください。
 
 ## <a name="quotas"></a>Quotas (クォータ)
 
@@ -157,7 +157,7 @@ IoT Central アプリケーションは、Microsoft によって完全にホス�
 これで IoT Central の概要を把握できました。推奨される次の手順のいくつかを次に示します。
 
 - [IoT ソリューションを作成するための Azure のテクノロジとサービス](../../iot-fundamentals/iot-services-and-technologies.md)を把握する。
-- デバイス開発者がコードの内容を詳しく知りたい場合は、次の手順として、[クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](./tutorial-connect-device-nodejs.md)ことをお勧めします。
+- デバイス開発者がコードの内容を詳しく知りたい場合は、次の手順として、[クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](./tutorial-connect-device.md)ことをお勧めします。
 - [Azure IoT Central の UI](overview-iot-central-tour.md) に慣れる。
 - 実際に [Azure IoT Central アプリケーションを作成](quick-deploy-iot-central.md)してみる。
 - [Azure IoT Edge デバイスを接続する](./tutorial-add-edge-as-leaf-device.md)方法について学習する。

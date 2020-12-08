@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7518d6ac8bc0cde515ab8da2f3d9c1496cb93f08
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b8b0ac002cb52acdc043e4e8ca4fa91daae4e665
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311723"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457984"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Azure Active Directory 認証を使用して Synapse SQL での認証を行う
 
@@ -36,7 +36,7 @@ Azure AD 認証を使用すると、Azure Synapse にアクセスできるユー
 
 1. Azure AD を作成して設定します。
 2. Azure Active Directory ID を作成します
-3. Synapse ワークスペース (プレビュー) で作成された Azure Active Directory ID にロールを割り当てます
+3. Synapse ワークスペースで作成された Azure Active Directory ID にロールを割り当てます
 4. Azure AD ID を使用して Synapse Studio に接続します。
 
 ## <a name="azure-ad-pass-through-in-azure-synapse-analytics"></a>Azure Synapse Analytics での Azure AD パススルー
@@ -65,7 +65,7 @@ Azure AD 認証を使用すると、Synapse SQL の管理者アカウントは�
 
 Azure AD の管理者ログインには、Azure AD ユーザーまたは Azure AD グループを使用できます。 管理者がグループ アカウントである場合、グループの任意のメンバーがこれを使用できるため、その Synapse SQL インスタンスに対して複数の Azure AD 管理者を配置できます。 
 
-グループ アカウントを管理者として使用すると、Synapse Analytics ワークスペースでユーザーまたはアクセス許可を変更することなく Azure AD でグループ メンバーを一元的に追加および削除できるため、より管理しやすくなります。 いつでも構成できる Azure AD 管理者 (ユーザーまたはグループ) は 1 つだけです。
+グループ アカウントを管理者として使用すると、Azure Synapse Analytics ワークスペースでユーザーまたはアクセス許可を変更することなく Azure AD でグループ メンバーを一元的に追加および削除できるため、より管理しやすくなります。 いつでも構成できる Azure AD 管理者 (ユーザーまたはグループ) は 1 つだけです。
 
 ![admin structure](./media/aad-authentication/3-admin-structure.png)
 
@@ -109,7 +109,7 @@ Azure Active Directory 認証では、Azure AD の ID を使用してデータ�
 - MFA による Azure Active Directory ユニバーサル
 - アプリケーション トークン認証を使用する
 
-Azure AD サーバー プリンシパル (ログイン) では、次の認証方法がサポートされています ( **パブリック プレビュー** )。
+Azure AD サーバー プリンシパル (ログイン) では、次の認証方法がサポートされています。
 
 - Azure Active Directory パスワード
 - Azure Active Directory 統合
@@ -119,7 +119,7 @@ Azure AD サーバー プリンシパル (ログイン) では、次の認証方
 
 - さらに管理しやすくするには、管理者として専用の Azure AD グループをプロビジョニングすることをお勧めします。
 - Synapse SQL プール用に構成できる Azure AD 管理者 (ユーザーまたはグループ) は常に 1 つだけです。
-  - Synapse SQL (プレビュー) 用の Azure AD サーバー プリンシパル (ログイン) の追加により、`sysadmin` ロールに追加できる複数の Azure AD サーバー プリンシパル (ログイン) を作成できる可能性があります。
+  - Synapse SQL 用の Azure AD サーバー プリンシパル (ログイン) の追加により、`sysadmin` ロールに追加できる複数の Azure AD サーバー プリンシパル (ログイン) を作成できる可能性があります。
 - Azure Active Directory アカウントを使用して Synapse SQL に最初に接続できるのは、Synapse SQL の Azure AD 管理者だけです。 Active Directory 管理者は、それ以降の Azure AD のデータベース ユーザーを構成できます。
 - 接続のタイムアウトを 30 秒に設定することをお勧めします。
 - SQL Server 2016 Management Studio と SQL Server Data Tools for Visual Studio 2015 (バージョン 14.0.60311.1April 2016 以降) では、Azure Active Directory 認証がサポートされています (Azure AD 認証は、 **.NET Framework Data Provider for SqlServer** (.NET Framework 4.6 以降のバージョン) でサポートされています)。 したがって、これらのツールとデータ層アプリケーション (DAC および BACPAC) の最新バージョンでは、Azure AD 認証を使用できます。

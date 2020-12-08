@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: a7b8ca309bf5710ddbd88413935bef5e97a1ed9f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.custom: azureday1
+ms.openlocfilehash: facc6a4ab8344f9f72fc7abc27433c18ab435504
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95999673"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436540"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-app"></a>チュートリアル:セキュリティで保護されたアプリからアプリとして Microsoft Graph にアクセスする
 
@@ -23,7 +24,7 @@ Azure App Service で実行されている Web アプリから Microsoft Graph �
 
 :::image type="content" alt-text="Microsoft Graph へのアクセスを示す図" source="./media/scenario-secure-app-access-microsoft-graph/web-app-access-graph.svg" border="false":::
 
-Web アプリに代わって Microsoft Graph を呼び出すとします。 Web アプリにデータへのアクセスを提供するより安全な方法は、[システム割り当てマネージド ID](/azure/active-directory/managed-identities-azure-resources/overview) を使用することです。 Azure Active Directory のマネージド ID を使用すると、App Service は、アプリの資格情報を必要とせずに、ロールベースのアクセス制御 (RBAC) を使用してリソースにアクセスできます。 マネージド ID を対象の Web アプリに割り当てると、Azure では証明書の作成と配布が行われます。 シークレットまたはアプリの資格情報の管理について心配する必要はありません。
+Web アプリに代わって Microsoft Graph を呼び出すとします。 Web アプリにデータへのアクセスを提供するより安全な方法は、[システム割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用することです。 Azure Active Directory のマネージド ID を使用すると、App Service は、アプリの資格情報を必要とせずに、ロールベースのアクセス制御 (RBAC) を使用してリソースにアクセスできます。 マネージド ID を対象の Web アプリに割り当てると、Azure では証明書の作成と配布が行われます。 シークレットまたはアプリの資格情報の管理について心配する必要はありません。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -120,6 +121,8 @@ az rest --method post --uri $uri --body $body --headers "Content-Type=applicatio
 ## <a name="call-microsoft-graph-net"></a>Microsoft Graph を呼び出す (.NET)
 
 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) クラスは、Microsoft Graph に対する要求をコードで承認するためにトークン資格情報を取得する際に使用されます。 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) クラスのインスタンスを作成します。これは、マネージド ID を使用し、トークンを取得してサービス クライアントにアタッチします。 次のコード例では、認証済みのトークン資格情報を取得し、それを使用して、グループ内のユーザーを取得するサービス クライアント オブジェクトを作成します。
+
+このコードをサンプル アプリケーションの一部として見る場合は、[GitHub 上のサンプル](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/3-WebApp-graphapi-managed-identity)を参照してください。
 
 ### <a name="install-the-microsoftgraph-client-library-package"></a>Microsoft.Graph クライアント ライブラリ パッケージをインストールする
 

@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 4a9aaca8128570af74370213e9848e26dec25156
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a9a5f6a4644717227d0b659407e9ba0bc56675
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89490260"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452415"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>PowerShell を使用し、Azure Data Factory を使用して複数のテーブルを一括コピーする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、**Azure SQL Database から Azure Synapse Analytics (旧称 SQL Data Warehouse) への多数のテーブルのコピー**について説明します。 同じパターンは他のコピー シナリオでも適用できます。 たとえば、SQL Server/Oracle から Azure SQL Database/Data Warehouse/Azure BLOB にテーブルをコピーしたり、BLOB から Azure SQL Database テーブルにさまざまなパスをコピーしたりするシナリオが該当します。
+このチュートリアルでは、**Azure SQL Database から Azure Synapse Analytics に多数のテーブルをコピーする方法** について説明します。 同じパターンは他のコピー シナリオでも適用できます。 たとえば、SQL Server/Oracle から Azure SQL Database/Data Warehouse/Azure BLOB にテーブルをコピーしたり、BLOB から Azure SQL Database テーブルにさまざまなパスをコピーしたりするシナリオが該当します。
 
 このチュートリアルは大まかに次の手順で構成されます。
 
@@ -69,7 +69,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="azure-services-to-access-sql-server"></a>SQL サーバーにアクセスするための Azure サービス
 
-SQL Database と Azure Synapse Analytics の両方について、SQL サーバーへのアクセスを Azure サービスに許可します。 ご利用のサーバーで **[Azure サービスへのアクセスを許可]** 設定を**オン**にしてください。 この設定により、Data Factory サービスで Azure SQL Database からデータを読み取ったり、Azure Synapse Analytics にデータを書き込んだりすることができます。 この設定を確認して有効にするには、次の手順を実行します。
+SQL Database と Azure Synapse Analytics の両方について、SQL サーバーへのアクセスを Azure サービスに許可します。 ご利用のサーバーで **[Azure サービスへのアクセスを許可]** 設定を **オン** にしてください。 この設定により、Data Factory サービスで Azure SQL Database からデータを読み取ったり、Azure Synapse Analytics にデータを書き込んだりすることができます。 この設定を確認して有効にするには、次の手順を実行します。
 
 1. 左側にある **[すべてのサービス]** をクリックし、 **[SQL Server]** をクリックします。
 2. サーバーを選択し、 **[設定]** の **[ファイアウォール]** をクリックします。
@@ -77,7 +77,7 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-1. **PowerShell**を起動します。 Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
+1. **PowerShell** を起動します。 Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
 
     次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
         
@@ -263,7 +263,7 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlTableDataset
     ```
 
-### <a name="create-a-dataset-for-sink-synapse-analytics"></a>シンク Synapse Analytics 用のデータセットを作成する
+### <a name="create-a-dataset-for-sink-azure-synapse-analytics"></a>シンク Azure Synapse Analytics 用のデータセットを作成する
 
 1. 次の内容を記述した **AzureSqlDWDataset.json** という名前の JSON ファイルを **C:\ADFv2TutorialBulkCopy** フォルダーに作成します。"tableName" はパラメーターとして設定されています。後で、このデータセットを参照するコピー アクティビティを使用して、実際の値をデータセットに渡します。
 

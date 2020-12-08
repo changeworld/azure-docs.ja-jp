@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - Azure Toolkit for IntelliJ (Spark アプリケーション)
-description: チュートリアル - Azure Toolkit for IntelliJ を使用して Scala で記述された Spark アプリケーションを開発し、サーバーレス Apache Spark プール (プレビュー) に送信します。
+description: チュートリアル - Azure Toolkit for IntelliJ を使用して Scala で記述された Spark アプリケーションを開発し、サーバーレス Apache Spark プールに送信します。
 services: synapse-analytics
 author: hrasheed-msft
 ms.author: jejiang
@@ -9,16 +9,16 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 5a9fcf3e13c2f86a11e9626be486a585ec659044
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 75cc23df41741a95e87ad64d168aea4fa4f45733
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013770"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451051"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>チュートリアル:IntelliJ で Synapse ワークスペースを使用して Apache Spark アプリケーションを作成する
 
-このチュートリアルでは、Azure Toolkit for IntelliJ プラグインを使用して、[Scala](https://www.scala-lang.org/) で記述された Apache Spark アプリケーションを開発し、それを IntelliJ 統合開発環境 (IDE) からサーバーレス Apache Spark プール (プレビュー) に直接送信する方法について説明します。 このプラグインには、次のような使い方があります。
+このチュートリアルでは、Azure Toolkit for IntelliJ プラグインを使用して、[Scala](https://www.scala-lang.org/) で記述された Apache Spark アプリケーションを開発し、それを IntelliJ 統合開発環境 (IDE) からサーバーレス Apache Spark プールに直接送信する方法について説明します。 このプラグインには、次のような使い方があります。
 
 - Scala Spark アプリケーションを開発して Spark プール に送信する。
 - Spark プール リソースにアクセスする。

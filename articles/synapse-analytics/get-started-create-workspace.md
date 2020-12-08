@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/21/2020
-ms.openlocfilehash: 42b586062378c59b66ca945880bf723418264071
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 949992418cb19c5c69ed8da92e9c2f0fc5f2f791
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95241932"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445429"
 ---
 # <a name="creating-a-synapse-workspace"></a>Synapse ワークスペースの作成
 
@@ -28,7 +28,7 @@ ms.locfileid: "95241932"
 ## <a name="create-a-synapse-workspace-in-the-azure-portal"></a>Azure portal で Synapse ワークスペースを作成する
 
 1. [Azure portal](https://portal.azure.com) を開き、上部で **Synapse** を検索します。
-1. 検索結果の **[サービス]** で、 **[Azure Synapse Analytics (ワークスペース プレビュー)]** を選択します。
+1. 検索結果の **[サービス]** で、 **[Azure Synapse Analytics]** を選択します。
 1. **[追加]** を選択してワークスペースを作成します。
 1. **[基本]** で、使用する **[サブスクリプション]** 、 **[リソース グループ]** 、 **[リージョン]** を入力し、ワークスペース名を選択します。 このチュートリアルでは、**myworkspace** を使用します。
 1. **[Data Lake Storage Gen 2 の選択]** に移動します。 
@@ -36,6 +36,10 @@ ms.locfileid: "95241932"
 1. **[ファイル システム]** をクリックし、**users** という名前を付けます。 これにより、**users** というコンテナーが作成されます。
 1. ワークスペースでは、このストレージ アカウントを Spark テーブルおよび Spark アプリケーション ログの "プライマリ" ストレージ アカウントとして使用します。
 1. **[確認と作成]**  >  **[作成]** の順に選択します。 ワークスペースの準備は数分で完了します。
+
+> [!NOTE]
+> 既存の専用 SQL プール (以前の SQL DW) のワークスペース機能を有効にするには、[専用の SQL プール (以前の SQL DW) 用のワークスペースを有効にする方法](./sql-data-warehouse/workspace-connected-create.md)に関するページを参照してください。
+
 
 ## <a name="open-synapse-studio"></a>Synapse Studio を開く
 
@@ -53,6 +57,9 @@ Azure Synapse ワークスペースが作成された後、Synapse Studio を開
 1. **[確認と作成]**  >  **[作成]** の順に選択します。 専用 SQL プールの準備は数分で完了します。 専用 SQL プールは、**SQLPOOL1** とも呼ばれる専用 SQL プール データベースに関連付けられます。
 
 専用 SQL プールがアクティブである限り、課金対象のリソースが消費されます。 コストを削減するために、後でプールを一時停止できます。
+
+> [!NOTE] 
+> ワークスペースに新しい専用 SQL プール (以前の SQL DW) を作成すると、専用の SQL プールのプロビジョニング ページが開きます。 プロビジョニングは、論理 SQL サーバー上で行われます。
 
 ## <a name="create-a-serverless-apache-spark-pool"></a>サーバーレス Apache Spark プールを作成する
 

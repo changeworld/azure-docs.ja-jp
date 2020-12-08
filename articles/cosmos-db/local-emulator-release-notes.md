@@ -1,22 +1,22 @@
 ---
-title: Azure Cosmos Emulator ダウンロードとリリース ノート
-description: さまざまなバージョンの Azure Cosmos エミュレーターのリリース ノートとダウンロード情報を入手します。
+title: Azure Cosmos DB Emulator のダウンロードとリリース ノート
+description: さまざまなバージョンの Azure Cosmos DB Emulator のリリース ノートとダウンロード情報を入手します。
 ms.service: cosmos-db
 ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: e9f28aeb2a47c2ce7b439cbe46dcc39df3011c33
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 42259b36f1a9bfe243df47cc08b33fe8c46d819d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95997156"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493068"
 ---
-# <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos Emulator - リリース ノートとダウンロード情報
+# <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB Emulator - リリース ノートとダウンロード情報
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-この記事では、Azure Cosmos エミュレーター リリース ノートを各リリースで行われた機能更新プログラムを示して説明します。 また、ダウンロードして使用するためのエミュレーターの最新バージョンも記載しています。
+この記事では、Azure Cosmos DB Emulator の各リリースで行われた機能の更新をまとめたリリース ノートを示します。 また、ダウンロードして使用するためのエミュレーターの最新バージョンも記載しています。
 
 ## <a name="download"></a>ダウンロード
 

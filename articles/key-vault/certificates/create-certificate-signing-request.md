@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: c8f11f17c9e110509dcbcda291194f9b8d928c50
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6d66648680aa14baa53372732df52a6c247a0117
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658963"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483765"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Key Vault での CSR の作成とマージ
 
@@ -42,12 +42,14 @@ Key Vault は、証明書の作成を簡素化するために、次の 2 つの�
 
 
 
-1.  最初に、**証明書ポリシーを作成します**。 このシナリオで選択した CA はサポートされていないため、Key Vault はユーザーの代わりに発行者に対して証明書を登録または更新しません。そのため、発行者名は不明に設定されます。
+1. 最初に、**証明書ポリシーを作成します**。 このシナリオで選択した CA はサポートされていないため、Key Vault はユーザーの代わりに発行者に対して証明書を登録または更新しません。そのため、発行者名は不明に設定されます。
 
-    ```azurepowershell
-    $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=www.contosoHRApp.com" -ValidityInMonths 1  -IssuerName Unknown
-    ```
-
+   ```azurepowershell
+   $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=www.contosoHRApp.com" -ValidityInMonths 1  -IssuerName Unknown
+   ```
+    
+   > [!NOTE]
+   > 値にコンマ (,) が含まれた相対識別名 (RDN) を使用している場合は、単一引用符を使用し、特殊文字を含む値を二重引用符で囲みます。 例: `$policy = New-AzKeyVaultCertificatePolicy -SubjectName 'OU="Docs,Contoso",DC=Contoso,CN=www.contosoHRApp.com' -ValidityInMonths 1  -IssuerName Unknown`. この例では、`OU` 値は **Docs, Contoso** になります。 この形式は、コンマを含むすべての値に使用できます。
 
 2. **証明書署名要求** を作成します。
 
@@ -56,7 +58,7 @@ Key Vault は、証明書の作成を簡素化するために、次の 2 つの�
    $csr.CertificateSigningRequest
    ```
 
-3. **CA によって署名された CSR 要求** を取得する。`$certificateOperation.CertificateSigningRequest` は、証明書の base4 でエンコードされた証明書署名要求です。 この BLOB を取得し、発行者の証明書要求 Web サイトにダンプできます。 この手順は CA によって異なりますが、この手順を実行する方法については、CA のガイドラインを参照することをお勧めします。 また、certreq や openssl などのツールを使用して、証明書要求に署名し、証明書を生成するプロセスを完了することもできます。
+3. **CA によって署名された CSR 要求** を取得する。`$csr.CertificateSigningRequest` は、証明書の base4 でエンコードされた証明書署名要求です。 この BLOB を取得し、発行者の証明書要求 Web サイトにダンプできます。 この手順は CA によって異なりますが、この手順を実行する方法については、CA のガイドラインを参照することをお勧めします。 また、certreq や openssl などのツールを使用して、証明書要求に署名し、証明書を生成するプロセスを完了することもできます。
 
 
 4. Key Vault で **署名済み要求をマージする**。証明書要求が発行者によって署名された後、署名された証明書を戻して、Azure Key Vault で作成された最初の公開キーと秘密キーのペアにマージできます。
@@ -79,15 +81,23 @@ Key Vault は、証明書の作成を簡素化するために、次の 2 つの�
     - **[件名]:** `"CN=www.contosoHRApp.com"`
     - 必要に応じて、他の値を選択します。 **Create** をクリックしてください。
 
-    ![証明書のプロパティ](../media/certificates/create-csr-merge-csr/create-certificate.png)
+    ![証明書のプロパティ](../media/certificates/create-csr-merge-csr/create-certificate.png)  
+
+
 6.  証明書が [証明書] の一覧に追加されていることがわかります。 先ほど作成した新しい証明書を選択します。 証明書の現在の状態は、CA によってまだ発行されていないため、"無効" になります。
 7. **[証明書の操作]** タブをクリックし、 **[CSR のダウンロード]** を選択します。
- ![[CSR のダウンロード] ボタンが強調表示されているスクリーンショット。](../media/certificates/create-csr-merge-csr/download-csr.png)
 
+   ![[CSR のダウンロード] ボタンが強調表示されているスクリーンショット。](../media/certificates/create-csr-merge-csr/download-csr.png)
+ 
 8.  要求が署名されるように、.csr ファイルを CA に持っていきます。
 9.  CA によって要求が署名されたら、証明書ファイルを戻し、同じ [証明書の操作] 画面で **署名された要求をマージ** します。
 
 証明書要求が正常にマージされました。
+
+> [!NOTE]
+> RDN 値にコンマが含まれている場合は、手順 4. に示すように、値を二重引用符で囲んで **[サブジェクト]** フィールドに追加することもできます。
+> たとえば、[サブジェクト] のエントリが `DC=Contoso,OU="Docs,Contoso",CN=www.contosoHRApp.com` であるとします。この例では、RDN の `OU` には、名前にコンマを含む値が含まれています。 `OU` の結果の出力は、**Docs, Contoso** になります。
+
 
 ## <a name="adding-more-information-to-csr"></a>CSR への詳細情報の追加
 
@@ -102,8 +112,8 @@ CSR を作成する際に、次のような詳細情報を追加する必要が�
     ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
     ```
 
->[!Note]
->CSR でこれらの詳細情報がすべて含まれた DV 証明書を要求している場合、CA では要求内のすべての情報を検証できるとは限らないため、要求が拒否される可能性があります。 OV 証明書を要求している場合は、その情報すべてを CSR に追加する方が適切です。
+> [!NOTE]
+> CSR でこれらの詳細情報がすべて含まれた DV 証明書を要求している場合、CA では要求内のすべての情報を検証できるとは限らないため、要求が拒否される可能性があります。 OV 証明書を要求している場合は、その情報をすべて CSR に追加する方が適切です。
 
 
 ## <a name="troubleshoot"></a>トラブルシューティング
@@ -116,6 +126,8 @@ CSR を作成する際に、次のような詳細情報を追加する必要が�
 - 発行された証明書が Azure portal で "無効" 状態になっている場合は、 **[証明書の操作]** に進み、その証明書のエラー メッセージを確認してください。
 
 詳しくは、[Key Vault REST API リファレンス内の証明書の操作](/rest/api/keyvault)の説明をご覧ください。 アクセス許可の設定については、「[Vaults - Create or Update](/rest/api/keyvault/vaults/createorupdate)」(コンテナー - 作成または更新) および「[Vaults - Update Access Policy](/rest/api/keyvault/vaults/updateaccesspolicy)」(コンテナー -アクセス ポリシーの更新) をご覧ください。
+
+- **エラーの種類 "The subject name provided is not a valid X500 name"\(指定されたサブジェクト名は有効な X500 名ではありません\)** このエラーは、SubjectName の値に "特殊文字" が含まれている場合に発生する可能性があります。 Azure portal と PowerShell の手順の「注意」をそれぞれ参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

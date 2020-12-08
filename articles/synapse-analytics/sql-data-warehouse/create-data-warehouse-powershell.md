@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Azure PowerShell を使用して Synapse SQL プールを作成する
-description: Azure PowerShell からサーバーレベルのファイアウォール規則を使用して、Synapse SQL プールをすばやく作成します。
+title: 'クイックスタート: Azure PowerShell で専用 SQL プール (以前の SQL DW) を作成する'
+description: Azure PowerShell からサーバーレベルのファイアウォール規則を使用して、専用 SQL プール (以前の SQL DW) をすばやく作成します。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,23 +11,23 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse    , devx-track-azurepowershell
-ms.openlocfilehash: 5408944f16509f83c30b9ee066d6f0a93dab95f0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0ce94b62d67048896cdf7355043ec2dde7f2df79
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91567657"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456592"
 ---
-# <a name="quickstart-create-a-synapse-sql-pool-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Synapse SQL プールを作成する
+# <a name="quickstart-create-a-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>クイックスタート: Azure PowerShell で専用 SQL プール (以前の SQL DW) を作成する
 
-Azure PowerShell を使用して、Azure Synapse Analytics で Synapse SQL プール (データ ウェアハウス) を作成します。
+Azure PowerShell を使用して、Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) を作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 > [!IMPORTANT]
-> SQL プールを作成すると、新しい課金対象サービスを使用することになる場合があります。  詳細については、「[Azure Synapse Analytics の価格](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)」を参照してください。
+> 専用 SQL プール (以前の SQL DW) を作成すると、課金対象のサービスが新たに生じることがあります。  詳細については、「[Azure Synapse Analytics の価格](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)」を参照してください。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -93,7 +93,7 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則の構成
 
-[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) コマンドを使用して[サーバーレベルのファイアウォール規則](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を作成します。 サーバーレベルのファイアウォール規則を作成すると、SQL Server Management Studio や SQLCMD ユーティリティのような外部アプリケーションから、SQL プール サービスのファイアウォールを介して SQL プールに接続できます。
+[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) コマンドを使用して[サーバーレベルのファイアウォール規則](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を作成します。 サーバーレベルのファイアウォール規則を作成すると、専用 SQL プール (以前の SQL DW) に対し、SQL Server Management Studio や SQLCMD ユーティリティのような外部アプリケーションから、専用 SQL プール サービスのファイアウォールを介して接続できます。
 
 次の例では、他の Azure リソースに対してのみファイアウォールを開放しています。 外部から接続できるようにするには、実際の環境に合わせて IP アドレスを変更してください。 すべての IP アドレスを開放するには、開始 IP アドレスとして 0.0.0.0 を、終了アドレスとして 255.255.255.255 を使用します。
 
@@ -107,9 +107,9 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 > SQL エンドポイントの通信は、ポート 1433 で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、サーバーに接続することはできません。
 >
 
-## <a name="create-a-sql-pool"></a>SQL プールを作成する
+## <a name="create-a-dedicated-sql-pool-formerly-sql-dw"></a>専用 SQL プール (以前の SQL DW) を作成する
 
-次の例では、以前に定義した変数を使用して SQL プールを作成します。  サービス目標には DW100c を指定します。これは、SQL プール用の低コストの開始点です。
+次の例では、以前に定義した変数を使用して専用 SQL プール (以前の SQL DW) を作成します。  サービス目標には DW100c を指定します。これは、専用 SQL プール (以前の SQL DW) 用の低コストの開始点です。
 
 ```Powershell
 New-AzSqlDatabase `
@@ -124,11 +124,11 @@ New-AzSqlDatabase `
 
 必要なパラメーターは以下のとおりです。
 
-* **RequestedServiceObjectiveName**:要求する[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)の量。 この量を増やすと、コンピューティング コストが増加します。 サポートされている値の一覧については、[メモリとコンカレンシーの制限](memory-concurrency-limits.md)に関する記事をご覧ください。
-* **DatabaseName**:作成する SQL プールの名前。
+* **RequestedServiceObjectiveName**:要求する [データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)の量。 この量を増やすと、コンピューティング コストが増加します。 サポートされている値の一覧については、[メモリとコンカレンシーの制限](memory-concurrency-limits.md)に関する記事をご覧ください。
+* **DatabaseName**:作成する専用 SQL プール (以前の SQL DW) の名前。
 * **ServerName**:作成の際に使用するサーバーの名前。
 * **ResourceGroupName**:使用するリソース グループ。 サブスクリプションで使用可能なリソース グループを調べるには Get-AzureResource を使用します。
-* **Edition**:SQL プールを作成するには、"DataWarehouse" に設定する必要があります。
+* **Edition**:専用 SQL プール (以前の SQL DW) を作成するには "DataWarehouse" にする必要があります。
 
 省略可能なパラメーターは次のとおりです。
 
@@ -151,4 +151,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>次のステップ
 
-ここでは SQL プールを作成し、ファイアウォール規則を作成し、SQL プールに接続しました。 理解をさらに深めるために、[SQL プールへのデータの読み込み](load-data-from-azure-blob-storage-using-polybase.md)に関する記事に進んでください。
+専用 SQL プール (以前の SQL DW) を作成し、ファイアウォール規則を作成して専用 SQL プールに接続しました。 理解をさらに深めるために、[専用 SQL プールへのデータの読み込み](load-data-from-azure-blob-storage-using-polybase.md)に関する記事に進んでください。

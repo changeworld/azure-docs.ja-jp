@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: ea8fcb602f49dec61187260e08d3ccd1b148cee8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 791cab369dcbf9cab8d1256377cfee4a433c21b9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95918940"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450889"
 ---
 # <a name="tutorial-create-a-power-bi-report-using-apache-spark-and-azure-synapse-analytics"></a>チュートリアル:Apache Spark と Azure Synapse Analytics を使用して Power BI レポートを作成する
 
@@ -69,9 +69,12 @@ ms.locfileid: "95918940"
                                     & (filtered_df.paymentType.isin({"1", "2"})))
     ```
 4. 最後に、Apache Spark の ```saveAsTable``` メソッドを使用してデータフレームを保存します。 そうすることで、後でサーバーレス SQL プールを使用して、同じテーブルに対してクエリを実行したり接続したりすることができます。
+  ```python
+     taxi_df.write.mode("overwrite").saveAsTable("NycTlcTutorial.nyctaxi")
+  ```
    
 ## <a name="query-data-using-serverless-sql-pools"></a>サーバーレス SQL プールを使用してデータに対してクエリを実行する
-Azure Synapse Analytics では、さまざまなワークスペース計算エンジンが、サーバーレス Apache Spark プール (プレビュー) とサーバーレス SQL プール (プレビュー) の間でデータベースとテーブルを共有できます。 それを支えているのが、Synapse の[共有メタデータ管理](../metadata/overview.md)機能です。 結果として、Spark によって作成されたデータベースと Parquet でサポートされるテーブルは、ワークスペースのサーバーレス SQL プールに表示されるようになります。
+Azure Synapse Analytics では、さまざまなワークスペース計算エンジンが、サーバーレス Apache Spark プールとサーバーレス SQL プールの間でデータベースとテーブルを共有できます。 それを支えているのが、Synapse の[共有メタデータ管理](../metadata/overview.md)機能です。 結果として、Spark によって作成されたデータベースと Parquet でサポートされるテーブルは、ワークスペースのサーバーレス SQL プールに表示されるようになります。
 
 サーバーレス SQL プールを使用して Apache Spark テーブルに対してクエリを実行するには:
    1. Apache Spark テーブルを保存したら、 **[データ]** タブに切り替えます。

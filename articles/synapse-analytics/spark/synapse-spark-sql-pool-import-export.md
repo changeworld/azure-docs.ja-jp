@@ -1,30 +1,33 @@
 ---
-title: サーバーレス Apache Spark プール (プレビュー) と SQL プールの間でのデータのインポートとエクスポート
-description: この記事では、専用 SQL プールとサーバーレス Apache Spark プール (プレビュー) の間でデータを移動するためにカスタム コネクタを使用する方法について説明します。
+title: サーバーレス Apache Spark プールと SQL プールの間でのデータのインポートとエクスポート
+description: この記事では、カスタム コネクタを使用して、専用 SQL プールとサーバーレス Apache Spark プールの間でデータを移動する方法について説明します。
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: spark
-ms.date: 04/15/2020
+ms.date: 11/19/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: ee82fbaa9687e064747908600c7e5c9017f8f1a9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e0bdfa4a451269e82b73194e921f9067d848868e
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323887"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511085"
 ---
 # <a name="introduction"></a>はじめに
 
-Synapse SQL コネクタへの Azure Synapse の Apache Spark は、Azure Synapse のサーバーレス Apache Spark プール (プレビュー) と SQL プールの間でデータを効率的に転送するように設計されています。 Synapse SQL コネクタへの Azure Synapse の Apache Spark は、専用 SQL プールでのみ機能し、サーバーレス SQL プールでは機能しません。
+Azure Synapse Apache Spark から Synapse SQL へのコネクタは、Azure Synapse のサーバーレス Apache Spark プールと専用 SQL プールの間でデータを効率的に転送するように設計されています。 Synapse SQL コネクタへの Azure Synapse の Apache Spark は、専用 SQL プールでのみ機能し、サーバーレス SQL プールでは機能しません。
+
+> [!WARNING]
+> **sqlanalytics()** という関数名が **synapsesql()** に変更されました。 sqlanalytics 関数は引き続き機能しますが、今後非推奨となります。  将来中断が発生しないように、すべての参照を **sqlanalytics()** から **synapsesql()** に変更してください。
 
 ## <a name="design"></a>デザイン
 
 Spark プールと SQL プールの間でのデータの転送は、JDBC を使用して行うことができます。 ただし、Spark プールや SQL プールといった 2 つの分散システムでは、JDBC はシリアル データ転送のボトルネックになる傾向があります。
 
-Synapse SQL コネクタへの Azure Synapse の Apache Spark プールは、Apache Spark 用のデータ ソースの実装です。 これにより、Azure Data Lake Storage Gen2 と専用 SQL プールの PolyBase が使用され、Spark クラスターと Synapse SQL インスタンスの間でデータが効率的に転送されます。
+Synapse SQL コネクタへの Azure Synapse の Apache Spark プールは、Apache Spark 用のデータ ソースの実装です。 これにより、Azure Data Lake Storage Gen2 と専用 SQL プールの PolyBase が使用され、Spark クラスターと Synapse の専用 SQL インスタンスの間でデータが効率的に転送されます。
 
 ![コネクタ アーキテクチャ](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
@@ -37,10 +40,12 @@ Synapse SQL コネクタへの Azure Synapse の Apache Spark プールは、Apa
 ## <a name="constraints"></a>制約
 
 - このコネクタは Scala でのみ動作します。
+- PySpark の詳細については、[Python の使用](#use-pyspark-with-the-connector)に関するセクションを参照してください。
+- このコネクタでは、SQL ビューに対するクエリの実行はサポートされません。
 
 ## <a name="prerequisites"></a>前提条件
 
-- データの転送先および転送元となるデータベースおよび SQL プールにある、 **db_exporter** ロールのメンバーである必要があります。
+- データの転送先および転送元となるデータベースおよび SQL プールにある、**db_exporter** ロールのメンバーである必要があります。
 - 既定のストレージ アカウントのストレージ BLOB データ共同作成者ロールのメンバーである必要があります。
 
 ユーザーを作成するには、SQL プール データベースに接続し、これらの例に従います。
@@ -80,7 +85,7 @@ import ステートメントは必要ありません。ノートブック エク
 #### <a name="read-api"></a>Read API
 
 ```scala
-val df = spark.read.sqlanalytics("<DBName>.<Schema>.<TableName>")
+val df = spark.read.synapsesql("<DBName>.<Schema>.<TableName>")
 ```
 
 上記の API は、SQL プールの内部 (マネージド) テーブルと外部テーブルの両方に対して機能します。
@@ -88,7 +93,7 @@ val df = spark.read.sqlanalytics("<DBName>.<Schema>.<TableName>")
 #### <a name="write-api"></a>Write API
 
 ```scala
-df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
+df.write.synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 Write API では、専用 SQL プールにテーブルを作成してから、Polybase を呼び出してデータを読み込みます。  テーブルは専用 SQL プールに存在することはできません。存在する場合、"... という名前のオブジェクトが既に存在します" という内容のエラーが返されます。
@@ -101,7 +106,7 @@ TableType の値
 SQL プールのマネージド テーブル
 
 ```scala
-df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
+df.write.synapsesql("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 ```
 
 SQL プールの外部テーブル
@@ -130,7 +135,7 @@ WITH (
 df.write.
     option(Constants.DATA_SOURCE, <DataSourceName>).
     option(Constants.FILE_FORMAT, <FileFormatName>).
-    sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.EXTERNAL)
+    synapsesql("<DBName>.<Schema>.<TableName>", Constants.EXTERNAL)
 
 ```
 
@@ -149,7 +154,7 @@ df.write.
 ```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
-sqlanalytics("<DBName>.<Schema>.<TableName>")
+synapsesql("<DBName>.<Schema>.<TableName>")
 ```
 
 #### <a name="write-api"></a>Write API
@@ -157,7 +162,7 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```scala
 df.write.
 option(Constants.SERVER, "samplews.database.windows.net").
-sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
+synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 ### <a name="use-sql-auth-instead-of-azure-ad"></a>Azure AD ではなく SQL 認証を使用する
@@ -171,7 +176,7 @@ val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
 option(Constants.USER, <SQLServer Login UserName>).
 option(Constants.PASSWORD, <SQLServer Login Password>).
-sqlanalytics("<DBName>.<Schema>.<TableName>")
+synapsesql("<DBName>.<Schema>.<TableName>")
 ```
 
 #### <a name="write-api"></a>Write API
@@ -181,10 +186,10 @@ df.write.
 option(Constants.SERVER, "samplews.database.windows.net").
 option(Constants.USER, <SQLServer Login UserName>).
 option(Constants.PASSWORD, <SQLServer Login Password>).
-sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
+synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="use-the-pyspark-connector"></a>PySpark コネクタを使用する
+### <a name="use-pyspark-with-the-connector"></a>PySpark とコネクタを使用する
 
 > [!NOTE]
 > この例は、ノートブック エクスペリエンスのみを考慮して提供されています。
@@ -203,7 +208,7 @@ pyspark_df.createOrReplaceTempView("pysparkdftemptable")
 %%spark
 val scala_df = spark.sqlContext.sql ("select * from pysparkdftemptable")
 
-scala_df.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
+scala_df.write.synapsesql("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 ```
 
 同様に、読み取りシナリオでは Scala を使用してデータを読み取り、それを一時テーブルに書き込んでから、PySpark の Spark SQL を使用して一時テーブルをデータフレームに照会します。
@@ -234,6 +239,7 @@ scala_df.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 
 > [!IMPORTANT]
 > 意図しない場合は、"既定" を選択しないようにしてください。
+
 
 ## <a name="next-steps"></a>次のステップ
 

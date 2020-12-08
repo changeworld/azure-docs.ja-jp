@@ -10,16 +10,16 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/17/2020
-ms.openlocfilehash: f55e266b548ea3b43a50d9500a427dfe1199b73f
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: b1339a0ab5be9004643cf2e9f86203eba9a2cc72
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699765"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445062"
 ---
 # <a name="get-started-with-azure-synapse-analytics"></a>Azure Synapse Analytics の使用を開始する
 
-このチュートリアルは、Azure Synapse Analytics の主な機能領域に関するステップバイステップ ガイドです。 このチュートリアルは、Azure Synapse Analytics の主要なシナリオに関するガイド ツアーを希望する方にとって理想的な出発点となります。 このチュートリアルの各ステップを実行すると、完全に機能する Synapse ワークスペースが作成されます。このワークスペースでは、専用 SQL プール、サーバーレス SQL プール、または Apache Spark を使用してデータの分析を開始できます。
+このチュートリアルは、Azure Synapse Analytics の主な機能領域に関するステップバイステップ ガイドです。 このチュートリアルは、Azure Synapse Analytics の主要なシナリオに関するガイド ツアーを希望する方にとって理想的な出発点となります。 チュートリアルの手順に従うと、Synapse ワークスペースが作成されます。 このチュートリアルには、[専用の SQL プール (以前の SQL DW) 用のワークスペースを有効にする](./sql-data-warehouse/workspace-connected-create.md)手順も含まれています。 ワークスペースが作成されたら、専用の SQL プール、サーバーレス SQL プール、またはサーバーレス Apache Spark プールを使用して、データの分析を開始できます。
 
 次に示す "*順番に*" 各ステップを実行すると、さまざまな機能を確認して、コア機能を実行する方法を学ぶことができます。
 

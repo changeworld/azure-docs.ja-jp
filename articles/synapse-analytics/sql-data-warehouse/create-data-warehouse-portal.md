@@ -1,6 +1,6 @@
 ---
-title: クイックスタート:Synapse SQL プールを作成してクエリを実行する (Azure portal)
-description: Azure portal を使用して Synapse SQL プールを作成し、クエリを実行する
+title: 'クイックスタート: 専用 SQL プールを作成してクエリを実行する (Azure portal)'
+description: Azure portal から専用 SQL プールを作成してクエリを実行します
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 05/28/2019
 ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 470892aa46d3f75ce8e17200f7d0549ae14b0e86
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3d4884fd64c773647f78a98dc7aeb1063d539edf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023788"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456752"
 ---
-# <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Synapse SQL プールを作成し、クエリを実行する
+# <a name="quickstart-create-and-query-a-dedicated-sql-pool-in-azure-synapse-analytics-using-the-azure-portal"></a>クイックスタート: Azure portal から Azure Synapse Analytics の専用 SQL プールを作成し、クエリを実行する
 
-Azure portal を使用して Azure Synapse Analytics (旧称 SQL DW) の Synapse SQL プール (データ ウェアハウス) をすばやく作成し、クエリを実行します。
+Azure portal を使用して Azure Synapse Analytics の Synapse SQL プール (データ ウェアハウス) をすばやく作成し、クエリを実行します。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -4,12 +4,12 @@ description: この記事では、Azure Migrate を使用して、AWS VM を Azu
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 62bfad2cc92e7af61a10360878ebaa3093897e97
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 12785d1e65caf11b24102d2a9c186fe0adcb1fd3
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310732"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302658"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) の VM を検出して評価し、Azure に移行する
 
@@ -77,14 +77,14 @@ Azure Migrate: Server Migration ツールを使用した移行のために Azure
 
 **タスク** | **詳細**
 --- | ---
-**Azure Migrate プロジェクトの作成** | Azure アカウントには、プロジェクトを作成するために共同作成者または所有者のアクセス許可が必要です。
+**Azure Migrate プロジェクトの作成** | Azure アカウントには、[新規プロジェクトを作成する](https://docs.microsoft.com/azure/migrate/create-manage-projects)ために共同作成者または所有者のアクセス許可が必要です。
 **Azure アカウントのアクセス許可の確認** | ご使用の Azure アカウントには、VM を作成するためのアクセス許可と Azure マネージド ディスクへの書き込みアクセス許可が必要です。
 
 ### <a name="assign-permissions-to-create-project"></a>プロジェクトを作成するためのアクセス許可を割り当てる
 
 1. Azure portal でサブスクリプションを開き、 **[アクセス制御 (IAM)]** を選択します。
 2. **[アクセスの確認]** で関連するアカウントを探し、それをクリックしてアクセス許可を表示します。
-3. **共同作成者**または**所有者**のアクセス許可を持っている必要があります。
+3. **共同作成者** または **所有者** のアクセス許可を持っている必要があります。
     - 無料の Azure アカウントを作成したばかりであれば、自分のサブスクリプションの所有者になっています。
     - サブスクリプションの所有者でない場合は、所有者と協力してロールを割り当てます。
 
@@ -125,30 +125,6 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 
 - レプリケーション アプライアンスでは MySQL が使用されます。 アプライアンスに MySQL をインストールするためのいくつかの[方法](migrate-replication-appliance.md#mysql-installation)を確認します。
 - [パブリック](migrate-replication-appliance.md#url-access) クラウドおよび[政府機関向け](migrate-replication-appliance.md#azure-government-url-access)クラウドにアクセスするレプリケーション アプライアンスに必要な Azure URL を確認します。
-
-## <a name="add-the-server-migration-tool"></a>Server Migration ツールを追加する
-
-Azure Migrate プロジェクトを設定し、そこに Server Migration ツールを追加します。
-
-1. Azure portal の **[すべてのサービス]** で、**Azure Migrate** を検索します。
-2. **[サービス]** で **[Azure Migrate]** を選択します。
-3. **[概要]** で **[サーバーの評価と移行]** をクリックします。
-4. **[サーバーの検出、評価、移行]** で、 **[サーバーの評価と移行]** をクリックします。
-
-    ![サーバーの検出と評価](./media/tutorial-migrate-physical-virtual-machines/assess-migrate.png)
-
-5. **[サーバーの検出、評価、移行]** で、 **[ツールの追加]** をクリックします。
-6. **[移行プロジェクト]** で、自分の Azure サブスクリプションを選択し、リソース グループがない場合は作成します。
-7. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したい地域を指定し、 **[次へ]** をクリックします。 [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
-    - プロジェクトの地理的な場所は、AWS マシンから収集されたメタデータを格納するためにのみ使用されます。
-    - 移行を実行するときは、任意のターゲット リージョンを選択できます。
-
-    ![Azure Migrate プロジェクトの作成](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
-
-8. **[評価ツールの選択]** で、 **[今は評価ツールの追加をスキップします]**  >  **[次へ]** の順に選択します。
-9. **[移行ツールの選択]** で、次を選択します: **[Azure Migrate: Server Migration]**  >  **[次へ]** 。
-10. **[ツールの確認と追加]** で設定を確認し、 **[ツールの追加]** をクリックします
-11. ツールを追加すると、Azure Migrate プロジェクトの **[サーバー]**  >  **[移行ツール]** に表示されます。
 
 ## <a name="set-up-the-replication-appliance"></a>レプリケーション アプライアンスを設定する
 
@@ -256,7 +232,7 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
 2. **[レプリケート]** で、 **[ソースの設定]**  >  **[マシンは仮想化されていますか?]** で、 **[非仮想化/その他]** を選択します。
 3. **[オンプレミスのアプライアンス]** で、自分が設定した Azure Migrate アプライアンスの名前を選択します。
 4. **[プロセス サーバー]** で、レプリケーション アプライアンスの名前を選択します。 
-5. **[ゲストの資格情報]** では、前の[レプリケーション インストーラーのセットアップ](#download-the-replication-appliance-installer)の間に作成したダミー アカウントを選択して、Mobility Service を手動でインストールしてください (プッシュ インストールはサポートされていません)。 その後、 **[次へ:仮想マシン]** をクリックします。   
+5. **[ゲストの資格情報]** では、前の [レプリケーション インストーラーのセットアップ](#download-the-replication-appliance-installer)の間に作成したダミー アカウントを選択して、Mobility Service を手動でインストールしてください (プッシュ インストールはサポートされていません)。 その後、 **[次へ:仮想マシン]** をクリックします。   
  
     ![[レプリケート] 設定](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 6. **[仮想マシン]** の **[評価から移行設定をインポートしますか?]** は、既定の設定である **[いいえ。移行設定を手動で指定します]** のままにしておきます。
@@ -327,7 +303,7 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
     ![テスト移行](./media/tutorial-migrate-physical-virtual-machines/test-migrate.png)
 
 3. **[テスト移行]** で、移行後に Azure VM が配置される Azure VNet を選択します。 非運用環境の VNet を使用することをお勧めします。
-4. **テスト移行**ジョブが開始されます。 ポータルの通知でジョブを監視します。
+4. **テスト移行** ジョブが開始されます。 ポータルの通知でジョブを監視します。
 5. 移行の完了後、Azure portal の **[仮想マシン]** で、移行された Azure VM を確認します。 マシン名には、サフィックス **-Test** が含まれています。
 6. テストが完了したら、 **[マシンのレプリケート]** で Azure VM を右クリックし、 **[テスト移行をクリーンアップ]** をクリックします。
 

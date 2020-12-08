@@ -1,6 +1,6 @@
 ---
 title: サーバーレス SQL プールを使用してデータ ストレージにクエリを実行する
-description: この記事では、Azure Synapse Analytics 内のサーバーレス SQL プール (プレビュー) リソースを使用して、Azure のストレージに対してクエリを実行する方法について説明します。
+description: この記事では、Azure Synapse Analytics 内のサーバーレス SQL プール リソースを使用して、Azure のストレージに対してクエリを実行する方法について説明します。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: c7a8fb63f775a76342849957f070861fd200a9d3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 967250cf29d1f0248f296cb545a764bd8e611773
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998925"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462662"
 ---
-# <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プール (プレビュー) を使用してストレージ ファイルにクエリを実行する
+# <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用してストレージ ファイルにクエリを実行する
 
-サーバーレス SQL プール (プレビュー) を使用すると、データ レイク内のデータに対してクエリを実行できます。 これには、半構造化と非構造化のデータのクエリに対応する T-SQL クエリ領域が用意されています。 クエリでは、次の T-SQL の側面がサポートされています。
+サーバーレス SQL プールを使用すると、データ レイク内のデータに対してクエリを実行できます。 これには、半構造化と非構造化のデータのクエリに対応する T-SQL クエリ領域が用意されています。 クエリでは、次の T-SQL の側面がサポートされています。
 
 - 大部分の [SQL 関数と演算子](overview-features.md)を含む、完全な [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 領域。
 - CREATE EXTERNAL TABLE AS SELECT ([CETAS](develop-tables-cetas.md)) は、[外部テーブル](develop-tables-external-tables.md)を作成し、次に並行して、Transact-SQL SELECT ステートメントの結果を Azure Storage にエクスポートします。
@@ -47,7 +47,7 @@ Parquet ソース データに対してクエリを実行するには、FORMAT =
 ```syntaxsql
 SELECT * FROM
 OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net//mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
-WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
+WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 ```
 
 使用例については、[Parquet ファイルに対するクエリの実行](query-parquet-files.md)に関する記事を参照してください。
@@ -59,7 +59,7 @@ CSV ソース データに対してクエリを実行するには、FORMAT = 'CS
 ```sql
 SELECT * FROM
 OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.csv', FORMAT = 'CSV', PARSER_VERSION='2.0') 
-WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
+WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 ```
 
 解析規則をカスタム CSV 形式に合わせて調整するために使用できる追加オプションがいくつかあります。
@@ -85,7 +85,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolde
 WITH (
       C1 int, 
       C2 varchar(20),
-      C3 as varchar(max)
+      C3 varchar(max)
 ) as rows
 ```
 
@@ -222,7 +222,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*
 ### <a name="tools"></a>ツール
 
 クエリを発行するために必要なツール:
-    - Azure Synapse Studio (プレビュー)
+    - Azure Synapse Studio 
     - Azure Data Studio
     - SQL Server Management Studio
 

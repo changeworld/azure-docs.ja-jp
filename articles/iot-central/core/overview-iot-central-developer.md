@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 82818c8db326889079948cd2b32b2ed0be6ab50d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: e33f48c9496ffa3cca9d8b1aa71d524be9a311bb
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990756"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122254"
 ---
 # <a name="iot-central-device-development-overview"></a>IoT Central デバイスの開発の概要
 
@@ -135,7 +135,7 @@ IoT プラグ アンド プレイ規則の詳細については、「[IoT プラ
 
 デバイス テンプレートの役割の詳細については、「[デバイス テンプレートとは](./concepts-device-templates.md)」を参照してください。
 
-サンプル コードについては、[Node.js クライアント アプリケーションの作成と接続](./tutorial-connect-device-nodejs.md)に関するページ、または[Python クライアント アプリケーションの作成と接続](./tutorial-connect-device-python.md)に関するページを参照してください。
+サンプル コードについては、[クライアント アプリケーションの作成と接続](./tutorial-connect-device.md)に関するページを参照してください。
 
 ### <a name="languages-and-sdks"></a>言語と SDK
 
@@ -143,6 +143,6 @@ IoT プラグ アンド プレイ規則の詳細については、「[IoT プラ
 
 ## <a name="next-steps"></a>次のステップ
 
-デバイス開発者がコードの内容を詳しく知りたい場合は、次の手順として、[クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](./tutorial-connect-device-nodejs.md)ことをお勧めします。
+デバイス開発者がコードの内容を詳しく知りたい場合は、次の手順として、[クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](./tutorial-connect-device.md)ことをお勧めします。
 
 IoT Central の詳細な使用方法については、次の手順として、クイックスタートの「[Azure IoT Central アプリケーションの作成](./quick-deploy-iot-central.md)」から始めることをお勧めします。

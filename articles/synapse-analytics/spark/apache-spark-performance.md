@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: bb64fb3c9e25e629a0bcb36fe60fd5ae2d7fc906
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b94ece73d5f9dc9b8343e45fb1f616599b9a1c1f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368606"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450936"
 ---
-# <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark ジョブ (プレビュー) を最適化する
+# <a name="optimize-apache-spark-jobs-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark ジョブを最適化する
 
 [Apache Spark](https://spark.apache.org/) クラスター構成を特定のワークロード用に最適化する方法について説明します。  最もよくある課題は、不適切な構成 (特に不適切なサイズの実行プログラム)、実行時間の長い操作、およびデカルト演算を生じるタスクが原因の、メモリ不足です。 ジョブは、適切なキャッシュを使用し、[データ スキュー](#optimize-joins-and-shuffles)を可能にすることで、高速化することができます。 最適なパフォーマンスを得るためには、実行時間が長くリソースを多く消費する Spark ジョブの実行を監視し、確認します。
 
@@ -52,7 +52,7 @@ ms.locfileid: "92368606"
 
 Spark では、csv、json、xml、parquet、orc、avro など、多くの形式がサポートされています。 Spark は、外部データ ソースを使用して他の多くの形式をサポートするように拡張できます。詳細については、[Apache Spark パッケージ](https://spark-packages.org)を参照してください。
 
-パフォーマンスのために最適な形式は *Snappy で圧縮* した Parquet であり、これが Spark 2.x の既定値です。 Parquet はデータを列形式で格納し、Spark で高度に最適化されています。 また、" *snappy 圧縮* " では、gzip 圧縮よりもファイルが大きくなる場合があります。 これらのファイルは性質上、分割可能であるため、より速く圧縮解除されます。
+パフォーマンスのために最適な形式は *Snappy で圧縮* した Parquet であり、これが Spark 2.x の既定値です。 Parquet はデータを列形式で格納し、Spark で高度に最適化されています。 また、"*snappy 圧縮*" では、gzip 圧縮よりもファイルが大きくなる場合があります。 これらのファイルは性質上、分割可能であるため、より速く圧縮解除されます。
 
 ## <a name="use-the-cache"></a>キャッシュの使用
 

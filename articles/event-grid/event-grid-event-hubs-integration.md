@@ -4,15 +4,15 @@ description: チュートリアル:Azure Event Grid と Event Hubs を使用し�
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e6dfcac17d79edd417af07179224fdf922906c4e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 42a2f7fd557970328f6d88b08e296317cecd8c66
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841356"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462144"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>チュートリアル:ビッグ データをデータ ウェアハウスにストリーミングする
-Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (イベント) への対応を可能にするインテリジェントなイベント ルーティング サービスです。 たとえば、Azure BLOB ストレージや Azure Data Lake Storage にキャプチャされた Event Hubs データを処理する Azure 関数をトリガーして、データを別のデータ リポジトリに移行できます。 この [Event Hubs と Event Grid の統合のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)では、Event Hubs と Event Grid を使用して、キャプチャされた Event Hubs データを BLOB ストレージから Azure Synapse Analytics (旧称、SQL Data Warehouse) にシームレスに移行する方法を説明しています。
+Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (イベント) への対応を可能にするインテリジェントなイベント ルーティング サービスです。 たとえば、Azure BLOB ストレージや Azure Data Lake Storage にキャプチャされた Event Hubs データを処理する Azure 関数をトリガーして、データを別のデータ リポジトリに移行できます。 この [Event Hubs と Event Grid の統合のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)では、Event Hubs と Event Grid を使用して、キャプチャされた Event Hubs データを BLOB ストレージから Azure Synapse Analytics にシームレスに移行する方法を説明しています。
 
 ![アプリケーションの概要](media/event-grid-event-hubs-integration/overview.png)
 
@@ -27,8 +27,8 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
 この記事では、次の手順を実行します。
 
 > [!div class="checklist"]
-> * Azure Resource Manager テンプレートを使用して、インフラストラクチャ (イベント ハブ、ストレージ アカウント、関数アプリ、Synapse Analytics) をデプロイする。
-> * データ ウェアハウスのテーブルを作成する。
+> * Azure Resource Manager テンプレートを使用して、インフラストラクチャ (イベント ハブ、ストレージ アカウント、関数アプリ、専用 SQL プール) をデプロイする。
+> * 専用 SQL プールにテーブルを作成する。
 > * 関数アプリにコードを追加する。
 > * イベントをサブスクライブする。 
 > * イベント ハブにデータを送信するアプリを実行する。

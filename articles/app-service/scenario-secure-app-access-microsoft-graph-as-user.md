@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: d3706c26d9b15e9ea607996ace222b29ccd84458
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: azureday1
+ms.openlocfilehash: e07ec17a4e14f0099d82bd444f2ee8d37abe9908
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95999656"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435008"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>チュートリアル:セキュリティで保護されたアプリからユーザーとして Microsoft Graph にアクセスする
 
@@ -75,10 +76,12 @@ Web アプリで認証と承認を有効にしたので、その Web アプリ�
 
 Web アプリに必要なアクセス許可が付与され、さらに Microsoft Graph のクライアント ID がログイン パラメーターに追加されました。 Web アプリは、[Microsoft.Identity.Web ライブラリ](https://github.com/AzureAD/microsoft-identity-web/)を使用して、Microsoft Graph による認証のためにアクセス トークンを取得します。 バージョン 1.2.0 以降の Microsoft.Identity.Web ライブラリは、App Service 認証および承認モジュールと統合され、一緒に実行できます。 Microsoft.Identity.Web は、この Web アプリが App Service でホストされていることを検出すると、App Service の認証および承認モジュールからアクセス トークンを取得します。 その後、このアクセス トークンは、Microsoft Graph API を使用して、認証された要求に渡されます。
 
+このコードをサンプル アプリケーションの一部として見る場合は、[GitHub 上のサンプル](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/2-WebApp-graphapi-on-behalf)を参照してください。
+
 > [!NOTE]
 > Web アプリで基本認証および承認を使用する場合、または Microsoft Graph を使用して要求を認証する場合には、Microsoft.Identity.Web ライブラリは不要です。 App Service の認証および承認モジュールだけを有効にした状態で、[ダウンストリームの API を安全に呼び出す](tutorial-auth-aad.md#call-api-securely-from-server-code)ことができます。
 > 
-> ただし、App Service の認証および承認は、さらに多くの基本認証シナリオ向けに設計されています。 より複雑なシナリオ (カスタム要求の処理など) では、Microsoft.Identity.Web ライブラリまたは [Microsoft Authentication Library](/azure/active-directory/develop/msal-overview) が必要です。 最初は設定および構成作業がもう少しありますが、Microsoft.Identity.Web ライブラリは App Service の認証および承認モジュールと並行して実行できます。 後で Web アプリでより複雑なシナリオへの対応が必要になったときに、App Service の認証および承認モジュールを無効にすることができ、Microsoft.Identity.Web は既にアプリの一部になっています。
+> ただし、App Service の認証および承認は、さらに多くの基本認証シナリオ向けに設計されています。 より複雑なシナリオ (カスタム要求の処理など) では、Microsoft.Identity.Web ライブラリまたは [Microsoft Authentication Library](../active-directory/develop/msal-overview.md) が必要です。 最初は設定および構成作業がもう少しありますが、Microsoft.Identity.Web ライブラリは App Service の認証および承認モジュールと並行して実行できます。 後で Web アプリでより複雑なシナリオへの対応が必要になったときに、App Service の認証および承認モジュールを無効にすることができ、Microsoft.Identity.Web は既にアプリの一部になっています。
 
 ### <a name="install-client-library-packages"></a>クライアント ライブラリ パッケージをインストールする
 

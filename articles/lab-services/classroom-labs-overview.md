@@ -1,19 +1,19 @@
 ---
-title: Azure Lab Services のクラスルーム ラボについて | Microsoft Docs
+title: Azure Lab Services のラボについて | Microsoft Docs
 description: クラウドにクラスルーム ラボ環境をすばやく設定する方法を紹介します。具体的には、ラボにクラスで必要になるソフトウェアを備えたテンプレート VM を構成し、その VM のコピーをクラスの学生全員分作成します。
 ms.topic: overview
 ms.date: 06/26/2020
-ms.openlocfilehash: e6ff56a831282c3abf5eec644573b9a3e88c6543
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 79d6f1cc9f2a6d8d8be872359a4677b36602eea5
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85445629"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434806"
 ---
-# <a name="introduction-to-classroom-labs"></a>クラスルーム ラボの概要
+# <a name="introduction-to-labs"></a>ラボの概要
 Azure Lab Services を使用すると、クラウド内にクラスルーム ラボ環境をすばやく設定することができます。 教師はクラスルーム ラボを作成し、Windows または Linux 仮想マシンをプロビジョニングし、必要なソフトウェアとツール ラボをクラスにインストールし、学生が利用できるようにします。 クラスの学生はラボの仮想マシン (VM) に接続し、プロジェクト、課題、教室での演習に使用します。 
 
-クラスルーム ラボは、Azure によって管理されているマネージド ラボの種類です。 仮想マシン (VM) の作成から、エラーの処理やインフラストラクチャのスケーリングまで、マネージド ラボの種類用のインフラストラクチャの管理はすべてサービス自体が担当します。 ユーザーは、必要なインフラストラクチャの種類を指定し、クラスに必要なツールやソフトウェアをインストールします。 
+ラボは、Azure によって管理されているマネージド ラボの種類です。 仮想マシン (VM) の作成から、エラーの処理やインフラストラクチャのスケーリングまで、マネージド ラボの種類用のインフラストラクチャの管理はすべてサービス自体が担当します。 ユーザーは、必要なインフラストラクチャの種類を指定し、クラスに必要なツールやソフトウェアをインストールします。 
 
 ## <a name="automatic-management-of-azure-infrastructure-and-scale"></a>Azure のインフラストラクチャとスケールの自動管理 
 Azure Lab Services はマネージド サービスです。つまり、ラボの基盤となるインフラストラクチャのプロビジョニングと管理が、サービスによって自動的に処理されます。 管理者は、ユーザーにとって適切なラボ体験を準備することだけに集中できます。 その他の処理と、対象者に対するラボの仮想マシンのロールアウトはサービスにお任せください。 クリック 1 つで、ラボを数百もの仮想マシンにスケーリングできます。

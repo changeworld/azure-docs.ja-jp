@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:ワークロードの分離を構成する - ポータル
-description: Azure portal を使用して、ワークロードの分離を構成します。
+description: Azure portal を使用して、専用 SQL プールのワークロードの分離を構成します。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 30862a0c16995e143df72f2a243419819941f54e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 302249b7d8490e43b841116c52500e686626433d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85213042"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460638"
 ---
-# <a name="quickstart-configure-synapse-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>クイック スタート:Azure portal でワークロード グループを使用して Synapse SQL プールのワークロードの分離を構成する
+# <a name="quickstart-configure-dedicated-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>クイックスタート: Azure portal でワークロード グループを使用して専用 SQL プールのワークロードの分離を構成する
 
 このクイックスタートでは、リソースを予約するためのワークロード グループを作成することによって、[ワークロードの分離](sql-data-warehouse-workload-isolation.md)を構成します。  このチュートリアルでは、`DataLoads` と呼ばれるデータ読み込み用のワークロード グループを作成します。 このワークロード グループによって、システム リソースの 20% が予約されます。  データの読み込み用に 20% が分離されるため、SLA の達成を可能にするリソースが保証されます。  ワークロード グループを作成したら、[ワークロード分類子](quickstart-create-a-workload-classifier-portal.md)を作成して、このワークロード グループにクエリを割り当てます。
 
@@ -31,24 +31,24 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 [Azure portal](https://portal.azure.com/) にサインインします。
 
 > [!NOTE]
-> Azure Synapse Analytics に SQL プール インスタンスを作成すると、新しい課金対象サービスが発生する可能性があります。  詳細については、「[Azure Synapse Analytics の価格](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)」を参照してください。
+> Azure Synapse Analytics に専用 SQL プール インスタンスを作成すると、新しい課金対象サービスが発生する可能性があります。  詳細については、「[Azure Synapse Analytics の価格](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイックスタートは、Synapse SQL の SQL プール インスタンスが既に用意されていて、CONTROL DATABASE アクセス許可を持っていることを前提としています。 作成する必要がある場合は、[ポータルでの作成と接続](create-data-warehouse-portal.md)に関する記事に従って、**mySampleDataWarehouse** という名前のデータ ウェアハウスを作成してください。
+このクイックスタートは、Synapse SQL の専用 SQL プール インスタンスが既に用意されていて、CONTROL DATABASE アクセス許可があることを前提としています。 作成する必要がある場合は、[クイックスタートのポータルでの専用 SQL プールの作成](../quickstart-create-sql-pool-portal.md)に関するページを参照して、**mySampleDataWarehouse** という名前のデータ ウェアハウスを作成してください。
 
 >[!IMPORTANT] 
->ワークロード管理を構成するには、SQL プールがオンラインになっている必要があります。 
+>ワークロード管理を構成するには、専用 SQL プールがオンラインになっている必要があります。 
 
 ## <a name="configure-workload-isolation"></a>ワークロードの分離を構成する
-ワークロード グループを作成することによって、SQL プールのリソースを特定のワークロード用に分離して予約できます。  ワークロード グループがワークロードの管理にどのように役立つかの詳細については、[ワークロードの分離](sql-data-warehouse-workload-isolation.md)の概念に関するドキュメントを参照してください。  [ポータルを使用した作成と接続](create-data-warehouse-portal.md)に関するクイックスタートでは、**mySampleDataWarehouse** を作成して 400 DWU で初期化しました。 次の手順では、**mySampleDataWarehouse** にワークロード グループを作成します。
+
+ワークロード グループを作成することによって、専用 SQL プールのリソースを特定のワークロード用に分離して予約できます。  ワークロード グループがワークロードの管理にどのように役立つかの詳細については、[ワークロードの分離](sql-data-warehouse-workload-isolation.md)の概念に関するドキュメントを参照してください。  [ポータルを使用した作成と接続](create-data-warehouse-portal.md)に関するクイックスタートでは、**mySampleDataWarehouse** を作成して DW100c で初期化しました。 次の手順では、**mySampleDataWarehouse** にワークロード グループを作成します。
 
 20% の分離でワークロード グループ作成するには、次のようにします。
-1.  Azure portal の左側のページで **[Azure Synapse Analytics (以前の SQL DW)]** をクリックします。
-2.  **[Azure Synapse Analytics (以前の SQL DW)]** ページから **[mySampleDataWarehouse]** を選択します。 SQL プールが開きます。
-3.  **[ワークロード管理]** をクリックします。
-4.  **[新しいワークロード グループ]** をクリックします。
-5.  **[カスタム]** をクリックします。
+1.  **mySampleDataWarehouse** 専用 SQL プールのページに移動します。
+1.  **[ワークロード管理]** を選択します。
+1.  **[新しいワークロード グループ]** を選択します。
+1.  **[カスタム]** を選択します。
 
     ![[カスタム] をクリックする](./media/quickstart-configure-workload-isolation-portal/create-wg.png)
 
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 7.  **[最小リソース (%)]** に「`20`」と入力します。
 8.  **[要求ごとの最小リソース (%)]** に「`5`」と入力します。
 9.  **[上限リソース (%)]** に「`100`」と入力します。
-10.   **[保存]** をクリックします。
+10. **[保存]** を選択します。
 
    ![[保存] をクリックします。](./media/quickstart-configure-workload-isolation-portal/configure-wg.png)
 
@@ -83,17 +83,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 以下の手順に従ってリソースをクリーンアップします。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、データ ウェアハウスを選択します。
+1. [Azure portal](https://portal.azure.com) にサインインし、専用 SQL プールを選択します。
 
     ![リソースをクリーンアップする](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
 2. コンピューティング リソースを一時停止するには、 **[一時停止]** ボタンを選択します。 データ ウェアハウスが一時停止すると、ボタンの表示が **[開始]** になります。  コンピューティング リソースを再開するには、 **[開始]** を選択します。
 
 3. コンピューティング リソースやストレージに課金されないようにデータ ウェアハウスを削除するには、 **[削除]** を選択します。
-
-4. 作成した SQL Server を削除するには、前の画像の **sqlpoolservername.database.windows.net** を選択して、 **[削除]** を選択します。  サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、削除には注意してください。
-
-5. リソース グループを削除するには、**myResourceGroup** を選択して、 **[リソース グループの削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
