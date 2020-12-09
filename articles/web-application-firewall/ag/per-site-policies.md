@@ -5,15 +5,15 @@ description: Azure PowerShell を使用し、アプリケーション ゲート�
 services: web-application-firewall
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 09/16/2020
+ms.date: 12/08/2020
 ms.author: victorh
-ms.topic: conceptual
-ms.openlocfilehash: 3ac0540856d8cb8ccba6f1d176292d634d2dc80f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: how-to
+ms.openlocfilehash: f282cfa6347dd6e6d591ac5cd8b1785e405c6c02
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856604"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905980"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>Azure PowerShell を使用してサイト別 WAF ポリシーを構成する
 
@@ -28,7 +28,7 @@ WAF ポリシーをリスナーに適用することによって、すべての�
 * ネットワークのセットアップ
 * WAF ポリシーを作成する
 * WAF 対応のアプリケーション ゲートウェイの作成
-* WAF ポリシーをグローバルに、サイト別に、URI 別に適用する (プレビュー)
+* WAF ポリシーをグローバルに、サイト別に、URI 別に適用する 
 * 仮想マシン スケール セットを作成する
 * ストレージ アカウントの作成と診断の構成
 * アプリケーション ゲートウェイのテスト
@@ -249,7 +249,7 @@ $appgw = New-AzApplicationGateway `
   -FirewallPolicy $wafPolicyGlobal
 ```
 
-### <a name="apply-a-per-uri-policy-preview"></a>URI 別ポリシーを適用する (プレビュー)
+### <a name="apply-a-per-uri-policy"></a>URI 別ポリシーを適用する
 
 URI 別ポリシーを適用するには、新しいポリシーを作成し、それをパス ルール構成に適用します。 
 

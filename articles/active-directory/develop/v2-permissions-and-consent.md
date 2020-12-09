@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperfq1, identityplatformtop40
-ms.openlocfilehash: 9c8a911bef5fb92f5bf9aa447e9e810a85317208
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1b8b7b16a354fba482fcefe8f306f949f9a952ea
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95974155"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902648"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意
 
@@ -304,7 +304,7 @@ response_type=token            //code or a hybrid flow is also possible here
 
 ### <a name="client-credentials-grant-flow-and-default"></a>クライアント資格情報付与フローと /.default
 
-`./default` のもう 1 つの用途は、Web API を呼び出すための [クライアント資格情報](v2-oauth2-client-creds-grant-flow.md)付与フローを使用するデーモン アプリのような非対話型アプリケーションで、アプリケーションのアクセス許可 (または "*ロール*") を要求する場合です。
+`/.default` のもう 1 つの用途は、Web API を呼び出すための [クライアント資格情報](v2-oauth2-client-creds-grant-flow.md)付与フローを使用するデーモン アプリのような非対話型アプリケーションで、アプリケーションのアクセス許可 (または "*ロール*") を要求する場合です。
 
 Web API についてのアプリケーションのアクセス許可 (ロール) を作成する方法については、「[ご利用のアプリケーションにアプリ ロールを追加する](howto-add-app-roles-in-azure-ad-apps.md)」を参照してください。
 

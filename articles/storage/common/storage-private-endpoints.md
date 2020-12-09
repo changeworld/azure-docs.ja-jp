@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 96e6b7a672e2967403626cb9ba7db87fc4dd795c
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 0da970724a5d6f0ad42ba64939f316ec1ada855b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980203"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905555"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Azure Storage のプライベート エンドポイントを使用する
 
@@ -125,10 +125,6 @@ StorageAccountA の DNS リソース レコードは、プライベート エン
 ## <a name="known-issues"></a>既知の問題
 
 Azure Storage のプライベート エンドポイントに関する以下の既知の問題に注意してください。
-
-### <a name="copy-blob-support"></a>Copy Blob のサポート
-
-ストレージ アカウントがファイアウォールで保護され、プライベート エンドポイントからアクセスされる場合、そのアカウントは、[コピー BLOB](/rest/api/storageservices/copy-blob) 操作のソースとしては機能できません。
 
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>プライベート エンドポイントがある VNet 内のクライアントに対するストレージ アクセスの制約
 
