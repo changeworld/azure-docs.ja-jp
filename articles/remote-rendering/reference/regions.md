@@ -5,12 +5,13 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 45949ae11a59ad9b5459dbc3ec049743b40e55ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.openlocfilehash: 1b20f7134f1b39853a78ee5b709e732ccf35acac
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80678945"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571115"
 ---
 # <a name="regions"></a>リージョン
 
@@ -18,7 +19,13 @@ ms.locfileid: "80678945"
 
 | 名前 | リージョン | URL |
 |-----------|:-----------|:-----------|
-| 米国西部 2 | westus2 | `https://remoterendering.westus2.mixedreality.azure.com` |
+| オーストラリア東部 | australiaeast | `https://remoterendering.australiaeast.mixedreality.azure.com` |
 | 米国東部 | eastus | `https://remoterendering.eastus.mixedreality.azure.com` |
-| 西ヨーロッパ | westeurope | `https://remoterendering.westeurope.mixedreality.azure.com` |
+| 米国東部 2 | eastus2 | `https://remoterendering.eastus2.mixedreality.azure.com` |
+| 東日本 | japaneast | `https://remoterendering.japaneast.mixedreality.azure.com` |
+| 北ヨーロッパ | northeurope | `https://remoterendering.northeurope.mixedreality.azure.com` |
+| 米国中南部 | southcentralus | `https://remoterendering.southcentralus.mixedreality.azure.com` |
 | 東南アジア | southeastasia | `https://remoterendering.southeastasia.mixedreality.azure.com` |
+| 英国南部 | uksouth | `https://remoterendering.uksouth.mixedreality.azure.com` |
+| 西ヨーロッパ | westeurope | `https://remoterendering.westeurope.mixedreality.azure.com` |
+| 米国西部 2 | westus2 | `https://remoterendering.westus2.mixedreality.azure.com` |

@@ -306,7 +306,7 @@
           href: /rest/api/maps/timezone
         - name: Traffic Service
           href: /rest/api/maps/traffic
-        - name: 天気サービス
+        - name: Weather Service
           href: /rest/api/maps/weather
         - name: Maps Creator サービス
           items:

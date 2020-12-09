@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 38133a63d65e45a4d1c83e9752dcaa01a86da33e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e0736e58983d4c28b8f2f4a20241cd36ac84fdfa
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782894"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445372"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Azure SQL Database と Azure Synapse の論理 SQL サーバーとは何ですか。
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -26,7 +26,7 @@ Azure SQL Database と Azure Synapse Analytics では、サーバーは、デー
 
 このサーバーは、オンプレミス環境でなじみのある SQL Server インスタンスとは異なります。 具体的には、データベースまたはデータ ウェアハウス データベースを管理するサーバーとの関係において、データベースまたはデータ ウェアハウス データベースの場所についての保証はありません。 さらに、Azure SQL Database も Azure Synapse も、インスタンス レベルのアクセスや機能を公開しません。 対照的に、マネージド インスタンスのインスタンス データベースは、オンプレミス環境または仮想マシン環境の SQL Server と同じ方法で、すべて物理的に同じ場所に配置されます。
 
-サーバーを作成するとき、サーバーのログイン アカウント/パスワードを指定します。このアカウントには、そのサーバー上のマスター データベースとそのサーバーで作成されるすべてのデータベースに対する管理特権が与えられます。 この初回アカウントは SQL ログイン アカウントです。 Azure SQL Database と Synapse Analytics では認証のために SQL 認証と Azure Active Directory 認証がサポートされています。 ログインと認証の詳細については、「[Azure SQL Database におけるデータベースとログインの管理](logins-create-manage.md)」をご覧ください。 Windows 認証はサポートされません。
+サーバーを作成するとき、サーバーのログイン アカウント/パスワードを指定します。このアカウントには、そのサーバー上のマスター データベースとそのサーバーで作成されるすべてのデータベースに対する管理特権が与えられます。 この初回アカウントは SQL ログイン アカウントです。 Azure SQL Database と Azure Synapse Analytics では認証のために SQL 認証と Azure Active Directory 認証がサポートされています。 ログインと認証の詳細については、「[Azure SQL Database におけるデータベースとログインの管理](logins-create-manage.md)」をご覧ください。 Windows 認証はサポートされません。
 
 SQL Database と Azure Synapse のサーバーは、以下のような特長を持ちます。
 
@@ -68,9 +68,9 @@ SQL Database と Azure Synapse のサーバーは、以下のような特長を�
 
 ### <a name="manage-an-existing-server"></a>既存のサーバーを管理する
 
-既存のサーバーを管理するには、さまざまな方法を利用してサーバーに移動します。たとえば、特定のデータベース ページ、 **SQL サーバー** ページ、 **すべてのリソース** ページから移動します。
+既存のサーバーを管理するには、さまざまな方法を利用してサーバーに移動します。たとえば、特定のデータベース ページ、**SQL サーバー** ページ、**すべてのリソース** ページから移動します。
 
-既存のデータベースを管理するには、 **SQL データベース** ページに移動し、管理するデータベースをクリックします。 次のスクリーンショットでは、データベースの **概要** ページからデータベースにサーバーレベルのファイアウォールを設定する方法を確認できます。
+既存のデータベースを管理するには、**SQL データベース** ページに移動し、管理するデータベースをクリックします。 次のスクリーンショットでは、データベースの **概要** ページからデータベースにサーバーレベルのファイアウォールを設定する方法を確認できます。
 
    ![サーバーのファイアウォール規則](./media/single-database-create-quickstart/server-firewall-rule.png)
 
@@ -102,7 +102,7 @@ Azure PowerShell を利用してサーバー、データベース、ファイア
 |[Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule)|サーバーのファイアウォール規則を取得します。|
 |[Set-AzSqlServerFirewallRule](/powershell/module/az.sql/set-azsqlserverfirewallrule)|サーバーのファイアウォール規則を変更します。|
 |[Remove-AzSqlServerFirewallRule](/powershell/module/az.sql/remove-azsqlserverfirewallrule)|サーバーからファイアウォール規則を削除します。|
-| New-AzSqlServerVirtualNetworkRule | 仮想ネットワーク サービス エンドポイントであるサブネットに基づいて、 [*仮想ネットワーク規則*](vnet-service-endpoint-rule-overview.md)を作成します。 |
+| New-AzSqlServerVirtualNetworkRule | 仮想ネットワーク サービス エンドポイントであるサブネットに基づいて、[*仮想ネットワーク規則*](vnet-service-endpoint-rule-overview.md)を作成します。 |
 
 > [!TIP]
 > PowerShell クイックスタートについては、[PowerShell を使用した Azure SQL Database 内のデータベースの作成](single-database-create-quickstart.md)に関する記事を参照してください。 PowerShell のスクリプトの例については、[PowerShell を使用した Azure SQL Database 内のデータベースの作成とファイアウォール規則の構成](scripts/create-and-configure-database-powershell.md)に関する記事と、[PowerShell を使用した Azure SQL Database 内のデータベースの監視およびスケーリング](scripts/monitor-and-scale-database-powershell.md)に関する記事を参照してください。

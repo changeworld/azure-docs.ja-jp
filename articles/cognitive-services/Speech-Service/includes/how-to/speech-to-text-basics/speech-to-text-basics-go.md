@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/15/2020
 ms.author: trbye
-ms.openlocfilehash: f3a3d897d5cc5a22340dccf3aeeac8d52158a3a0
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: f87db54b43f0ece49b940521bea34737da676a31
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425525"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96912376"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して文字起こしをする機能です (多くの場合、音声テキスト変換と呼ばれます)。 このクイックスタートでは、アプリや製品で Speech SDK を使用し、高品質の音声テキスト変換を実行する方法について説明します。
 
@@ -30,6 +30,8 @@ Speech Service の中核となる機能の 1 つは、人間の音声を認識�
 既定のデバイスのマイクから音声認識を実行するには、以下のコード サンプルを使用します。 `subscription` 変数と `region` 変数は、ご利用のサブスクリプション キーとリージョン キーに置き換えてください。 スクリプトを実行すると、既定のマイクで認識セッションが開始されてテキストが出力されます。
 
 ```go
+package main
+
 import (
     "bufio"
     "fmt"
@@ -104,6 +106,8 @@ func main() {
 オーディオ ファイルから音声認識を実行するには、以下のサンプルを使用します。 `subscription` 変数と `region` 変数は、ご利用のサブスクリプション キーとリージョン キーに置き換えてください。 加えて、変数 `file` を .wav ファイルのパスに置き換えます。 スクリプトを実行すると、ファイルからの音声が認識され、結果がテキストとして出力されます。
 
 ```go
+package main
+
 import (
     "fmt"
     "time"

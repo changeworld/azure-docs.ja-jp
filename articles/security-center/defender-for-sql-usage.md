@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 236a604c2c1cecfb18a2d82c3796a88cc4341a34
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: a80747a88087e1ad3a70f198a260e41a6848e34f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636386"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445660"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender for SQL servers on machines 
 
@@ -48,7 +48,7 @@ ms.locfileid: "94636386"
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>手順 1. SQL サーバーのホストで Log Analytics エージェントをプロビジョニングする
 
-- **Azure VM 上の SQL Server** - SQL マシンが Azure VM でホストされている場合は、[Log Analytics エージェントの自動プロビジョニングを有効にする<a name="auto-provision-mma"></a>](security-center-enable-data-collection.md#auto-provision-mma)ことができます。 または、手動の手順に従って [Azure Stack VM をオンボードする](quickstart-onboard-machines.md#onboard-your-azure-stack-vms)こともできます。
+- **Azure VM 上の SQL Server** - SQL マシンが Azure VM でホストされている場合は、[Log Analytics エージェントの自動プロビジョニングを有効にする <a name="auto-provision-mma"></a>](security-center-enable-data-collection.md#auto-provision-mma)ことができます。 または、手動の手順に従って [Azure Stack VM をオンボードする](quickstart-onboard-machines.md#onboard-your-azure-stack-vms)こともできます。
 - **Azure Arc 上の SQL Server** - SQL Server が [Azure Arc](../azure-arc/index.yml) 対応サーバーによって管理されている場合は、Security Center のレコメンデーション [Log Analytics agent should be installed on your Windows-based Azure Arc machines (Preview)] (Log Analytics エージェントを Windows ベースの Azure Arc マシンにインストールする必要があります (プレビュー)) を使用して、Log Analytics エージェントをデプロイできます。 または、[Azure Arc のドキュメント](../azure-arc/servers/manage-vm-extensions.md)に記載されたインストール方法に従うこともできます。
 
 - **オンプレミスの SQL Server** - SQL Server が Azure Arc を使用しないオンプレミスの Windows マシンでホストされている場合は、Azure に接続するためのオプションが 2 つあります。
@@ -108,11 +108,11 @@ ms.locfileid: "94636386"
     各ビューでは、セキュリティ チェックが **重要度** 順に表示されます。 特定のセキュリティ チェックをクリックすると詳細ウィンドウが表示され、**説明**、**修復方法**、およびその他の関連情報 (**影響** や **ベンチマーク** など) が表示されます。
 
 ## <a name="azure-defender-for-sql-alerts"></a>Azure Defender for SQL のアラート
-普段は見られない、潜在的に有害な SQL マシンへのアクセスが試行されると、あるいは SQL マシンの悪用が試行されると、アラートが生成されます。 これらのイベントが発生すると、[アラート リファレンス ページの「SQL Database および Azure Synapse Analytics (旧称 SQL Data Warehouse) のアラート」セクション](alerts-reference.md#alerts-sql-db-and-warehouse)で示されるアラートがトリガーされます。
+普段は見られない、潜在的に有害な SQL マシンへのアクセスが試行されると、あるいは SQL マシンの悪用が試行されると、アラートが生成されます。 これらのイベントが発生すると、[アラート リファレンス ページの「SQL Database および Azure Synapse Analytics のアラート」セクション](alerts-reference.md#alerts-sql-db-and-warehouse)で示されるアラートがトリガーされます。
 
 ## <a name="explore-and-investigate-security-alerts"></a>セキュリティ通知について調査する
 
-Azure Defender のアラートは、Security Center のアラート ページ、リソースのセキュリティ タブ、[Azure Defender ダッシュボード](azure-defender-dashboard.md)、またはアラート メールの直接リンクで使用できます。
+Azure Defender for SQL のアラートは、Security Center のアラート ページ、リソースのセキュリティ タブ、[Azure Defender ダッシュボード](azure-defender-dashboard.md)、またはアラート メールの直接リンクで使用できます。
 
 1. アラートを表示するには、Security Center のメニューで **[セキュリティ アラート]** を選択し、アラートを選択します。
 
@@ -128,7 +128,7 @@ Azure Defender のアラートは、Security Center のアラート ページ、
 
 関連資料については、次の記事をご覧ください。
 
-- [SQL Database および Microsoft Azure Synapse Analytics (旧称 SQL Data Warehouse) のセキュリティ アラート](alerts-reference.md#alerts-sql-db-and-warehouse)
+- [SQL Database と Azure Synapse Analytics のセキュリティ アラート](alerts-reference.md#alerts-sql-db-and-warehouse)
 - [セキュリティ アラートのメール通知を設定する](security-center-provide-security-contact-details.md)
 - [Azure Sentinel に関する詳細](../sentinel/index.yml)
 - [Azure Security Center のデータ セキュリティ パッケージ](../azure-sql/database/azure-defender-for-sql.md)

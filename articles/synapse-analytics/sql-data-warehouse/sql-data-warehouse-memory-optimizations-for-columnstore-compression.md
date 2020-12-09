@@ -1,6 +1,6 @@
 ---
-title: 列ストア インデックスのパフォーマンスの向上
-description: メモリ要件を減らすか、使用可能なメモリを増やして、各行グループ内の行の数を最大化します。
+title: 専用 SQL プールの列ストア インデックスのパフォーマンスを向上させる
+description: メモリ要件を減らすか、使用可能なメモリを増やして、専用 SQL プールの各行グループ内の行の数を最大化します。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 5308599f43788b35dbe278ddbbea2253c2f94cb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6984ad41c07f7790a746dbd197c18dce2aa83e2f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797770"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453714"
 ---
-# <a name="maximizing-rowgroup-quality-for-columnstore"></a>列ストアの行グループの品質を最大限にする
+# <a name="maximizing-rowgroup-quality-for-columnstore-indexes-in-dedicated-sql-pool"></a>専用 SQL プールの列ストア インデックスの行グループの品質を最大限に高める 
 
 行グループの品質は、行グループ内の行数によって決まります。 使用できるメモリを増やすと、列ストア インデックスが各行グループに圧縮する行数を最大化できます。  これらのメソッドを使用して、列ストア インデックスの圧縮率およびクエリ パフォーマンスを向上させます。
 
@@ -97,9 +97,9 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 > [!NOTE]
 > 短い文字列の列は 32 バイト以下の文字列データを使用し、長い文字列の列は 32 バイト超の文字列データを使用します。
 
-長い文字列は、テキストの圧縮に指定されている圧縮方法で圧縮されます。 この圧縮方法では、*ディクショナリ*を使用してテキスト パターンを格納します。 ディクショナリの最大サイズは 16 MB です。 ディクショナリは、行グループ内の長い文字列の列ごとに 1 つだけです。
+長い文字列は、テキストの圧縮に指定されている圧縮方法で圧縮されます。 この圧縮方法では、*ディクショナリ* を使用してテキスト パターンを格納します。 ディクショナリの最大サイズは 16 MB です。 ディクショナリは、行グループ内の長い文字列の列ごとに 1 つだけです。
 
-列ストアのメモリ要件の詳細については、[Synapse SQL プールのスケーリング: 構成とガイダンス](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)に関するビデオをご覧ください。
+列ストアのメモリ要件の詳細については、[専用 SQL プールのスケーリング: 構成とガイダンス](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)に関するビデオをご覧ください。
 
 ## <a name="ways-to-reduce-memory-requirements"></a>メモリ要件を軽減する方法
 
@@ -122,7 +122,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 ### <a name="avoid-over-partitioning"></a>過剰なパーティション分割の回避
 
-列ストア インデックスは、パーティションごとに 1 つまたは複数の行グループを作成します。 Azure Synapse Analytics の SQL プールでは、データが分散されており、それぞれのディストリビューションがパーティション分割されているため、パーティションの数が急速に増加します。
+列ストア インデックスは、パーティションごとに 1 つまたは複数の行グループを作成します。 Azure Synapse Analytics の専用 SQL プールでは、データが分散されており、それぞれのディストリビューションがパーティション分割されているため、パーティションの数が急速に増加します。
 
 テーブルに多数のパーティションがある場合は、行グループを入力するのに十分な行がない可能性があります。 行の欠如によって、圧縮時にメモリの負荷が発生することはありません。 ただし、行グループの最適な列ストア クエリ パフォーマンスが実現しなくなります。
 
@@ -165,4 +165,4 @@ DWU のサイズとユーザー リソースのクラスによって、ユーザ
 
 ## <a name="next-steps"></a>次のステップ
 
-SQL プールのパフォーマンスを向上させるその他の方法については、[パフォーマンスの概要](cheat-sheet.md)に関する記事を参照してください。
+専用 SQL プールのパフォーマンスを向上させるその他の方法については、[パフォーマンスの概要](cheat-sheet.md)に関する記事を参照してください。

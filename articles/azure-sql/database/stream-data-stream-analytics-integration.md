@@ -11,12 +11,12 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: b796d6689db143cf59ae4ca0a180c2c7c317b7bd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 36a96a1927aeedb5f841083241d487e0c61d6813
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789439"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454028"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Azure Stream Analytics 統合を使用して Azure SQL Database にデータをストリーム配信する (プレビュー)
 
@@ -31,7 +31,7 @@ ms.locfileid: "92789439"
 - プレビュー データによる使いやすさの向上:イベント ソース (イベント ハブ/IoT ハブ) から受信したデータを選択したテーブルのコンテキストでプレビューできます
 
 > [!IMPORTANT]
-> Azure Stream Analytics ジョブは、Azure SQL Database、Azure SQL Managed Instance、または Azure Synapse Analytics (旧称 SQL Data Warehouse) に出力できます。 詳細については、「[出力](../../stream-analytics/stream-analytics-define-outputs.md)」を参照してください。
+> Azure Stream Analytics ジョブは、Azure SQL Database、Azure SQL Managed Instance、または Azure Synapse Analytics に出力できます。 詳細については、「[出力](../../stream-analytics/stream-analytics-define-outputs.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,8 +55,8 @@ ms.locfileid: "92789439"
 4. イベント ソースの詳細を入力し、 **[Next:Output]\(次へ: 出力\)** を選択します。
 
    - **[Input type]\(入力の種類\)** :イベントハブ/IoT ハブ
-   - **入力のエイリアス** :イベント ソースを識別する名前を入力してください
-   - **サブスクリプション** :Azure SQL Database のサブスクリプションと同じです
+   - **入力のエイリアス**:イベント ソースを識別する名前を入力してください
+   - **サブスクリプション**:Azure SQL Database のサブスクリプションと同じです
    - **[イベント ハブの名前空間]** :名前空間の名前
    - **[イベント ハブ名]** : 選択した名前空間内のイベント ハブの名前
    - **[イベント ハブ ポリシー名]** \(既定では新規作成):ポリシー名を指定します
@@ -69,7 +69,7 @@ ms.locfileid: "92789439"
 5. ストリーミング データを取り込むテーブルを選択します。 完了したら、 **[作成]** を選択します。
 
    - **[ユーザー名]** 、 **[パスワード]** :SQL サーバー認証用の資格情報を入力します。 **[検証]** を選択します。
-   - **テーブル** : **[新規作成]** または **[既存のデータを使用する]** を選択します。 このフローでは、 **[作成]** を選択します。 これにより、Stream Analytics ジョブの開始時に新しいテーブルが作成されます。
+   - **テーブル**: **[新規作成]** または **[既存のデータを使用する]** を選択します。 このフローでは、 **[作成]** を選択します。 これにより、Stream Analytics ジョブの開始時に新しいテーブルが作成されます。
 
      ![Stream Analytics ジョブを作成する](./media/stream-data-stream-analytics-integration/create.png)
 

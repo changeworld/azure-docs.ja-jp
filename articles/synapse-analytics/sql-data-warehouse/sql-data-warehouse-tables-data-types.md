@@ -1,6 +1,6 @@
 ---
-title: 専用 SQL プールでのテーブルのデータ型
-description: 専用 SQL プールにおけるテーブルのデータ型の定義に関するレコメンデーション。
+title: 専用 SQL プール (旧称 SQL DW) のテーブルのデータ型
+description: Azure Synapse Analytics で専用 SQL プール (旧称　SQL DW) のテーブルのデータ型を定義するためのレコメンデーション。
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 01/06/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 5bb1d10978171b93ee697b37ee9ac0702d3f898c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6526ae2c15bd53af69854309632c83fa65af8d85
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313083"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449697"
 ---
-# <a name="table-data-types-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールのテーブルのデータ型 
+# <a name="table-data-types-for-dedicated-sql-pool-formerly--sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のテーブルのデータ型 
 
 この記事では、専用 SQL プールでテーブルのデータ型を定義する場合のレコメンデーションについて説明します。
 
 ## <a name="supported-data-types"></a>サポートされるデータ型
 
-専用 SQL プールを使用すると、一般的に使用されるほとんどのデータ型がサポートされます。 サポートされるデータ型の一覧については、CREATE TABLE ステートメントの[データ型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#DataTypes)を参照してください。
+専用 SQL プール (旧称 SQL DW) を使用すると、一般的に使用されるほとんどのデータ型がサポートされます。 サポートされるデータ型の一覧については、CREATE TABLE ステートメントの[データ型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#DataTypes)を参照してください。
 
 ## <a name="minimize-row-length"></a>行の長さを最小化する
 
@@ -51,7 +51,7 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 
 ## <a name="workarounds-for-unsupported-data-types"></a><a name="unsupported-data-types"></a>サポートされていないデータ型の対処法
 
-以下のリストには、専用 SQL プールでサポートされていないデータ型と、サポートされていないデータ型の代わりに使用できるデータ型が示されています。
+次のリストには、専用 SQL プール (旧称 SQL DW) でサポートされていないデータ型と、サポートされていないデータ型の代わりに使用できるものが示されています。
 
 | サポートされていないデータ型 | 回避策 |
 | --- | --- |

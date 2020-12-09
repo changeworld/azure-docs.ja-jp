@@ -3,12 +3,12 @@ title: Microsoft Teams 内の Azure Lab Services
 description: Microsoft Teams 内での Azure Lab Services の使用の概要を示します。
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 0c7defdb6f801a10c5fadfdca805381a31f39378
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f39613427ed174dfca80d4a48be9473ab7025e79
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047830"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433915"
 ---
 # <a name="azure-lab-services-within-microsoft-teams"></a>Microsoft Teams 内の Azure Lab Services
 
@@ -23,7 +23,7 @@ Azure Lab Services は、**Azure Lab Services** Teams アプリを使用して�
 
 Azure Lab Services の Microsoft Teams との統合によって、教師が教室の環境を設定して、チーム (クラス) 内での仮想ラボ環境を提供できます。 
 
-* 教師は、学生が Teams 内から各自の VM にアクセスできるように、教室のラボを設定できます。これにより、Teams から離れたり、[Azure Lab Services Web サイト](https://labs.azure.com)に移動したりする必要がなくなります。
+* 教師は、学生が Teams 内から各自の VM にアクセスできるように、ラボを設定できます。これにより、Teams から離れたり、[Azure Lab Services Web サイト](https://labs.azure.com)に移動したりする必要がなくなります。
 * Teams から Azure Lab Services へのシングル サインオン (SSO)。
 * チームとラボの所有者は、クラス名簿を 2 つの異なるシステムに保持する必要はありません。ラボ ユーザーのリストはチーム メンバーシップから自動入力され、同期は 24 時間ごとに自動的に実行されます。 
 * テンプレート VM の初期発行後、ラボの容量 (つまり、ラボ内の VM の数) は、チーム メンバーシップからのユーザーの追加/削除に基づいて自動的に調整されます。 

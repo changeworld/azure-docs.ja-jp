@@ -3,12 +3,12 @@ title: Teams 内での Azure Lab Services ラボの概要と作成
 description: Teams 内での Azure Lab Services ラボの概要と作成について説明します。
 ms.topic: article
 ms.date: 10/08/2020
-ms.openlocfilehash: e17b0be223a1630402fc4f32c692d7ecfe184783
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: cc4ad604bdf250cc6e4ba2c50c2f7143c921e906
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217084"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433973"
 ---
 # <a name="get-started-and-create-a-lab-services-lab-within-teams"></a>Teams 内での Lab Services ラボの概要と作成
 
@@ -40,18 +40,18 @@ Teams 内で Azure Lab Services を使用する際の一般的なワークフロ
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/integrate-with-teams/add.png" alt-text="タブを追加する":::
-1. このチームのクラスルーム ラボの作成に使用する Lab Services アカウントを選択します。 
+1. このチームのラボの作成に使用する Lab Services アカウントを選択します。 
 
     Azure Lab Services では、シングル サインオンを使用し、[Azure Lab Services の Web サイト](https://labs.azure.com)からアクセス権を持つすべてのラボ アカウントをプルします。 
 
-    Teams と同じテナントに属する、 **所有者** 、 **共同作成者** 、または **作成者** のアクセスがあるアカウントが表示されます。 
+    Teams と同じテナントに属する、**所有者**、**共同作成者**、または **作成者** のアクセスがあるアカウントが表示されます。 
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/integrate-with-teams/welcome.png" alt-text="タブを追加する":::
+    > :::image type="content" source="./media/integrate-with-teams/welcome.png" alt-text="ALS へようこそ":::
 1. **[保存]** を押すと、タブがチャンネルに追加されます。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/integrate-with-teams/created.png" alt-text="タブを追加する":::
+    > :::image type="content" source="./media/integrate-with-teams/created.png" alt-text="作成された ALS タブ":::
 
     これで、お使いのチャネルから **[Azure Lab Services]** タブを選択し、次の記事に従ってラボの管理を開始できます。
 

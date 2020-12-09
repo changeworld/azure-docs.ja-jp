@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/19/2020
   ms.author: trbye
-  ms.openlocfilehash: e79798adf31a0d1e4f9880f0dac81ba27e33756d
-  ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+  ms.openlocfilehash: c4a765c14815015bcf70a4718fe8d189fe0d0c49
+  ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/02/2020
-  ms.locfileid: "96483877"
+  ms.lasthandoff: 12/05/2020
+  ms.locfileid: "96620965"
 landingContent:
 - title: 音声テキスト変換について
   linkLists:
@@ -46,6 +46,8 @@ landingContent:
       url: ./custom-speech-overview.md
     - text: 圧縮音声入力形式を使用する
       url: how-to-use-codec-compressed-audio-input-streams.md
+    - text: v2.0 から v3.0 への移行
+      url: migrate-v2-to-v3.md
   - linkListType: tutorial
     links:
     - text: テナント モデルを使用して精度を向上させる

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cd813c6db9d03b0b7c84497e5b44f6ecdb591437
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 4f98eac4305333ec7225c90da2777b7e02f050a0
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912856"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853534"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>C# で好ましくない要素を検出するためにビデオ コンテンツを分析する
 
@@ -55,7 +55,7 @@ Azure Media Services エクスプローラーは、AMS のユーザー フレン
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトの作成
 
-1. Visual Studio で、新しい **コンソール アプリ (.NET Framework)** プロジェクトを作成し、 **VideoModeration** という名前を付けます。 
+1. Visual Studio で、新しい **コンソール アプリ (.NET Framework)** プロジェクトを作成し、**VideoModeration** という名前を付けます。 
 1. ソリューションに他のプロジェクトがある場合は、これを単一のスタートアップ プロジェクトとして選択します。
 1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーでプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。次のパッケージを見つけてインストールします。
     - windowsazure.mediaservices
@@ -365,9 +365,9 @@ static void StateChanged(object sender, JobStateChangedEventArgs e)
 Content Moderation ジョブが完了したら、JSON 応答を分析します。 以下の要素で構成されます。
 
 - ビデオ情報の概要
-- " **フラグメント** " としての **Shots**
-- " **イベント** " としての **Key frames** と、 **Adult** スコアおよび **Racy** スコアに基づく **reviewRecommended"** (= true または false)" フラグ
-- **start** 、 **duration** 、 **totalDuration** 、 **timestamp** は "ティック" 単位です。 秒単位で表される数値を得るために、 **timescale** で割り算します。
+- "**フラグメント**" としての **Shots**
+- "**イベント**" としての **Key frames** と、**Adult** スコアおよび **Racy** スコアに基づく **reviewRecommended"** (= true または false)" フラグ
+- **start**、**duration**、**totalDuration**、**timestamp** は "ティック" 単位です。 秒単位で表される数値を得るために、**timescale** で割り算します。
  
 > [!NOTE]
 > - `adultScore` は、特定の状況で、性的に露骨な表現または成人向けの表現であると考えられるコンテンツの存在の可能性および予測スコアを表します。
@@ -430,9 +430,5 @@ Content Moderation ジョブが完了したら、JSON 応答を分析します�
 ## <a name="next-steps"></a>次のステップ
 
 モデレーション出力から[ビデオ レビュー](video-reviews-quickstart-dotnet.md)を生成する方法について説明する。
-
-ビデオ レビューに[トランスクリプト モデレーション](video-transcript-moderation-review-tutorial-dotnet.md)を追加する。
-
-[完全なビデオおよびトランスクリプト モデレーション ソリューション](video-transcript-moderation-review-tutorial-dotnet.md)をビルドする方法に関する詳細なチュートリアルを確認する。
 
 .NET 用のこのクイック スタートや他の Content Moderator のクイックスタートの [Visual Studio ソリューションをダウンロードする](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)。

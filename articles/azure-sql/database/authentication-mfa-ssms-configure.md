@@ -12,20 +12,20 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 094e40fe55e1ba51b0539d740ecb449a8327d6a6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4f90299daed46d06dad9ab37103e3b8f53763ed4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841242"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454377"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>SQL Server Management Studio と Azure AD 用に多要素認証を構成する
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-この記事では、Azure Active Directory (Azure AD) の多要素認証 (MFA) と SQL Server Management Studio (SSMS) を使用する方法について説明します。 Azure AD MFA は、SSMS または SqlPackage.exe を [Azure SQL Database](sql-database-paas-overview.md)、[Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、および [Azure Synapse Analytics (旧称 SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するときに使用できます。 多要素認証の概要については、[SQL Database、SOL Managed Instance、Azure Synapse でのユニバーサル認証 (MFA 対応の SSMS サポート)](../database/authentication-mfa-ssms-overview.md) に関するページを参照してください。
+この記事では、Azure Active Directory (Azure AD) の多要素認証 (MFA) と SQL Server Management Studio (SSMS) を使用する方法について説明します。 Azure AD MFA は、SSMS または SqlPackage.exe を [Azure SQL Database](sql-database-paas-overview.md)、[Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、および [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するときに使用できます。 多要素認証の概要については、[SQL Database、SOL Managed Instance、Azure Synapse でのユニバーサル認証 (MFA 対応の SSMS サポート)](../database/authentication-mfa-ssms-overview.md) に関するページを参照してください。
 
 > [!IMPORTANT]
-> Azure SQL Database、Azure SQL Managed Instance、Azure Synapse (旧称 SQL Data Warehouse) のデータベースは、この記事の残りの部分ではまとめてデータベースと呼ばれています。また、サーバーは、Azure SQL Database と Azure Synapse のデータベースをホストする[サーバー](logical-servers.md)を指しています。
+> Azure SQL Database、Azure SQL Managed Instance、Azure Synapse のデータベースは、この記事の残りの部分ではまとめてデータベースと呼ばれています。また、サーバーは、Azure SQL Database と Azure Synapse のデータベースをホストする[サーバー](logical-servers.md)を指しています。
 
 ## <a name="configuration-steps"></a>構成の手順
 

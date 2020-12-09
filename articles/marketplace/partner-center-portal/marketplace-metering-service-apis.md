@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: e29aeb7570ad6daba9d6fc652291471fa246bf0a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: b75964f8cfc41efc35858284dbffded3aa406eb6
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674631"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436064"
 ---
 # <a name="marketplace-metered-billing-apis"></a>マーケットプレースの従量制課金 API
 
@@ -20,7 +20,7 @@ ms.locfileid: "92674631"
 
 SaaS のカスタム測定ディメンションを作成する方法の詳細については、「[マーケットプレース測定サービスを使用した従量制課金](saas-metered-billing.md)」を参照してください。
 
-マネージド アプリ プランを使用して Azure アプリケーション オファーのカスタム測定ディメンションを作成する方法の詳細については、[「Azure アプリケーション オファーを作成する」の「技術的な構成」セクション](create-new-azure-apps-offer.md#technical-configuration)を参照してください。
+マネージド アプリ プランを使用して Azure アプリケーション オファーのカスタム測定ディメンションを作成する方法の詳細については、「[Azure アプリケーション オファーのセットアップの詳細を構成する](../create-new-azure-apps-offer.md#configure-your-azure-application-offer-setup-details)」を参照してください。
 
 ## <a name="enforcing-tls-12-note"></a>TLS 1.2 Note を適用する
 
@@ -34,7 +34,7 @@ TLS バージョン 1.2 バージョンは、HTTPS 通信の最小バージョ�
 
 カレンダー日の 1 時間ごとに生成できる使用状況イベントはリソースあたり 1 つだけです。 1 時間に複数のユニットが消費される場合は、その時間内に消費されるすべてのユニットを累積し、1 つのイベントで生成します。 使用状況イベントは過去 24 時間のみ生成できます。 使用状況イベントを 8:00 と 8:59:59 の間の任意の時点で生成した (かつ受け入れられた) 場合、同じ日の 8:00 と 8:59:59 の間に追加のイベントを送信すると、重複として拒否されます。
 
-**POST** : `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**POST**: `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *クエリ パラメーター:*
 

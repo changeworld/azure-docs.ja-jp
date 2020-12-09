@@ -1,24 +1,21 @@
 ---
-title: Azure Cosmos DB の分析ストア (プレビュー) とは
+title: Azure Cosmos DB 分析ストアとは
 description: Azure Cosmos DB のトランザクション (行ベース) ストアと分析 (列ベース) ストアについて説明します。 分析ストアの利点、大規模なワークロードのパフォーマンスへの影響、トランザクション ストアから分析ストアへのデータの自動同期などです
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 9cde9586d453632ceaa61de7c095a5f95d1ea2e4
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 5dc233348188791404f826870b235d2bdfa4c202
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337408"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452844"
 ---
-# <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB の分析ストア (プレビュー) とは
+# <a name="what-is-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析ストアとは
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
-
-> [!IMPORTANT]
-> Azure Cosmos DB の分析ストアは現在プレビュー段階にあります。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 Azure Cosmos DB の分析ストアは、トランザクション ワークロードに影響を与えることなく、Azure Cosmos DB 内の運用データに対する大規模な分析を可能にするための、完全に分離された列ストアです。 
 
@@ -36,7 +33,7 @@ Azure Cosmos DB コンテナー内のマルチモデルの運用データは、�
 
 Azure Cosmos DB の分析ストアでは、従来の ETL パイプラインで発生する複雑さと待機時間の問題が対処されています。 Azure Cosmos DB の分析ストアでは、オペレーショナル データを別の列ストアに自動的に同期させることができます。 列ストアの形式は、最適化された方法で実行される大規模な分析クエリに適しているため、このようなクエリの待機時間が向上します。
 
-Azure Synapse Link を使用すると、Synapse Analytics から Azure Cosmos DB の分析ストアに直接リンクすることで、ETL なしの HTAP ソリューションを構築できます。 これにより、オペレーショナル データに対してほぼリアルタイムの大規模な分析を実行できます。
+Azure Synapse Link を使用すると、Azure Synapse Analytics から Azure Cosmos DB の分析ストアに直接リンクすることで、ETL なしの HTAP ソリューションを構築できます。 これにより、オペレーショナル データに対してほぼリアルタイムの大規模な分析を実行できます。
 
 ## <a name="features-of-analytical-store"></a>分析ストアの機能 
 
@@ -181,10 +178,10 @@ salary: 1000000
 
 分析ストアは、コンピューティング ランタイムに依存せずに、分析ワークロードに対してスケーラビリティ、弾力性、パフォーマンスを提供するように最適化されています。 ストレージ テクノロジは、手作業を必要とせずに分析ワークロードを最適化するように、自己管理されています。
 
-分析ストレージ システムを分析コンピューティング システムから切り離すことによって、Azure Cosmos DB 分析ストア内のデータのクエリを、Azure Synapse Analytics でサポートされている異なる分析ランタイムから同時に実行できます。 現在、Synapse Analytics では、Apache Spark と SQL サーバーレスが Azure Cosmos DB 分析ストアでサポートされています。
+分析ストレージ システムを分析コンピューティング システムから切り離すことによって、Azure Cosmos DB 分析ストア内のデータのクエリを、Azure Synapse Analytics でサポートされている異なる分析ランタイムから同時に実行できます。 現在、Azure Synapse Analytics では、Apache Spark とサーバーレス SQL プールが Azure Cosmos DB 分析ストアでサポートされています。
 
 > [!NOTE]
-> Synapse Analytics のランタイムを使用すると、分析ストアからの読み取りのみが可能です。 トランザクション ストアへのデータの書き戻しは、サービス レイヤーとして行うことができます。
+> Azure Synapse Analytics のランタイムを使用すると、分析ストアからの読み取りのみが可能です。 トランザクション ストアへのデータの書き戻しは、サービス レイヤーとして行うことができます。
 
 ## <a name="pricing"></a><a id="analytical-store-pricing"></a> 価格
 
@@ -194,10 +191,7 @@ salary: 1000000
 
 * 分析の書き込み操作: トランザクション ストアから分析ストアへのオペレーショナル データの更新のフル マネージドの同期 (自動同期)
 
-* 分析の読み取り操作: Synapse Analytics Spark および SQL サーバーレスのランタイムから分析ストアに対して実行された読み取り操作。
-
-> [!NOTE]
-> Azure Cosmos DB の分析ストアは、現在パブリック プレビューであり、無料で利用できます。
+* 分析の読み取り操作: Azure Synapse Analytics Spark プールおよびサーバーレス SQL プールのランタイムから分析ストアに対して実行された読み取り操作。
 
 分析ストアの価格は、トランザクション ストアの価格モデルとは別のものです。 分析ストアには、プロビジョニングされた RU の概念はありません。 分析ストアの価格モデルの詳細については、[Azure Cosmos DB の価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。
 

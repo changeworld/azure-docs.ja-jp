@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: a3715abdebce319979d867d12764a22b4ed16c35
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c452d51018ef3f204cd7281971c07fb6337d39bf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323616"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449714"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics で専用 SQL プールを使用して分散テーブルを設計するためのガイダンス
 
@@ -44,7 +44,7 @@ ms.locfileid: "93323616"
 
 ![分散テーブル](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "分散テーブル")  
 
-同一値は常に同じディストリビューションにハッシュされるため、データ ウェアハウスには行の位置情報に関する組み込みのナレッジがあります。 専用 SQL プールではこのナレッジを使用して、クエリ時のデータ移動を最小化し、クエリ パフォーマンスを向上させます。
+同一値は常に同じディストリビューションにハッシュされるため、SQL Analytics には行の位置情報に関する組み込みのナレッジがあります。 専用 SQL プールではこのナレッジを使用して、クエリ時のデータ移動を最小化し、クエリ パフォーマンスを向上させます。
 
 ハッシュ分散テーブルは、スター スキーマにある大規模なファクト テーブルに適しています。 非常に多数の行を格納し、その上で高度なパフォーマンスを実現できます。 もちろん、期待通りの分散システムのパフォーマンスを得るために役立つ設計上の考慮事項はいくつかあります。 適切なディストリビューション列を選択することはそのような考慮事項の 1 つであり、この記事で説明されています。
 
@@ -118,8 +118,8 @@ WITH
 データ移動を最小化するために、以下のようなディストリビューション列を選択します。
 
 - `JOIN`、`GROUP BY`、`DISTINCT`、`OVER`、および `HAVING` 句で使用されている。 2 つの大規模なファクト テーブルで頻繁に結合が生じる場合、両方のテーブルを結合列の 1 つに分散させると、クエリのパフォーマンスが向上します。  あるテーブルが結合に使用されない場合、`GROUP BY` 句に頻繁に出現する列でそのテーブルを分散させることを検討します。
-- `WHERE` 句で使用 *されていない* 。 これによりクエリを絞り込み、すべてのディストリビューションでは実行されないようにすることができます。
-- 日付列 *ではない* 。 WHERE 句は多くの場合、日付別にフィルター処理されます。  この場合、すべての処理が、少数のディストリビューションのみで実行される可能性があります。
+- `WHERE` 句で使用 *されていない*。 これによりクエリを絞り込み、すべてのディストリビューションでは実行されないようにすることができます。
+- 日付列 *ではない*。 WHERE 句は多くの場合、日付別にフィルター処理されます。  この場合、すべての処理が、少数のディストリビューションのみで実行される可能性があります。
 
 ### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>ディストリビューション列として適切な列がない場合の対処方法
 

@@ -3,16 +3,16 @@ title: Azure Lab Services ラボを Teams から削除する
 description: Azure Lab Services ラボを Teams から削除する方法について説明します。
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: 1d2fe73d33a88e595f42b47c1e7122dcbdfe1063
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 8d1e20f8f676eb9863187b550a3c0400871d670c
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094207"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433956"
 ---
 # <a name="delete-labs-within-teams"></a>Teams 内でラボを削除する
 
-この記事では、 **Azure Lab Services** アプリからラボを削除する方法について説明します。
+この記事では、**Azure Lab Services** アプリからラボを削除する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -21,7 +21,7 @@ ms.locfileid: "92094207"
 
 ## <a name="delete-labs"></a>ラボの削除
 
-Teams に作成したラボは、「[Azure Lab Services でクラスルーム ラボを管理する](how-to-manage-classroom-labs.md)」の説明に従い、[Lab Services の Web サイト](https://labs.azure.com)で削除できます。 
+Teams に作成したラボは、「[Azure Lab Services でラボを管理する](how-to-manage-classroom-labs.md)」の説明に従い、[Lab Services の Web サイト](https://labs.azure.com)で削除できます。 
 
 チームを削除する場合にも、ラボの削除がトリガーされます。 ラボが作成されているチームが削除されると、24 時間後にユーザー一覧の同期が自動でトリガーされるとき、ラボが自動的に削除されます。 
 

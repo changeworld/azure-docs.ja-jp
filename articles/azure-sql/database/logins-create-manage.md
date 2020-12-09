@@ -13,19 +13,19 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: 940ea0ac471604b22c64dc008eebd8b580121cf7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d03bce1566d4f56a576c980723571f587296236f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782741"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452418"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL Database、SQL Managed Instance、Azure Synapse Analytics へのデータベース アクセスを承認する
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 この記事では、次の内容について説明します。
 
-- Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics (旧称 SQL Data Warehouse) を構成して、ユーザーが管理タスクを実行し、これらのデータベースに格納されているデータにアクセスできるようにするためのオプション。
+- Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics を構成して、ユーザーが管理タスクを実行し、これらのデータベースに格納されているデータにアクセスできるようにするためのオプション。
 - 最初に新しいサーバーを作成した後のアクセスと承認の構成。
 - マスター データベースとユーザー アカウントにログインとユーザー アカウントを追加し、これらのアカウントに管理アクセス許可を付与する方法。
 - ログインに関連付けられているユーザー アカウントまたは包含ユーザー アカウントとして、ユーザー データベースにユーザー アカウントを追加する方法。
@@ -41,12 +41,12 @@ ms.locfileid: "92782741"
 
 - [SQL 認証。](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
-  この認証方法では、ユーザーはユーザー アカウント名と、関連付けられたパスワードを送信して接続を確立します。 このパスワードは、ログインにリンクされているユーザー アカウントのマスター データベースに格納されているか、ログインにリンクされて " *いない* " ユーザー アカウントが含まれるデータベースに格納されています。
+  この認証方法では、ユーザーはユーザー アカウント名と、関連付けられたパスワードを送信して接続を確立します。 このパスワードは、ログインにリンクされているユーザー アカウントのマスター データベースに格納されているか、ログインにリンクされて "*いない*" ユーザー アカウントが含まれるデータベースに格納されています。
 - [Azure Active Directory 認証](authentication-aad-overview.md)
 
   この認証方法では、ユーザーはユーザー アカウント名を送信し、サービスでは Azure Active Directory (Azure AD) に格納されている資格情報を使用するように要求します。
 
-**ログインとユーザー** :データベース内のユーザー アカウントをマスター データベースに格納されているログインに関連付けることや、個々のデータベースに格納されているユーザー名をユーザー アカウントにすることができます。
+**ログインとユーザー**:データベース内のユーザー アカウントをマスター データベースに格納されているログインに関連付けることや、個々のデータベースに格納されているユーザー名をユーザー アカウントにすることができます。
 
 - **ログイン** はマスター データベース内の個々のアカウントであり、それに対して 1 つ以上のデータベース内のユーザー アカウントをリンクできます。 ログインの使用時には、ユーザー アカウントの資格情報はログインと共に格納されます。
 - **ユーザー アカウント** はデータベース内の個々のアカウントであり、ログインにリンクされていることもありますが、必ずしもそうする必要はありません。 ログインにリンクされていないユーザー アカウントの使用時には、資格情報はユーザー アカウントと共に格納されます。
@@ -55,7 +55,7 @@ ms.locfileid: "92782741"
 
 ## <a name="existing-logins-and-user-accounts-after-creating-a-new-database"></a>新規データベース作成後の既存のログインとユーザー アカウント
 
-Azure SQL を初めてデプロイするときに、管理者ログインと、そのログインに関連付けられているパスワードを指定します。 この管理者アカウントは、 **サーバー管理者** と呼ばれます。マスター データベースとユーザー データベースにおける以下のログインとユーザーの構成は、デプロイ時に行われます。
+Azure SQL を初めてデプロイするときに、管理者ログインと、そのログインに関連付けられているパスワードを指定します。 この管理者アカウントは、**サーバー管理者** と呼ばれます。マスター データベースとユーザー データベースにおける以下のログインとユーザーの構成は、デプロイ時に行われます。
 
 - 管理特権を持つ SQL ログインは、ユーザーが指定したログイン名を使用して作成されます。 [ログイン](/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login)は、SQL Database、SQL Managed Instance、および Azure Synapse にログインするための個々のユーザー アカウントです。
 - このログインには、[サーバー レベルのプリンシパル](/sql/relational-databases/security/authentication-access/principals-database-engine)としての、すべてのデータベースに対する完全な管理アクセス許可が付与されます。 このログインは使用可能なすべてのアクセス許可を持ち、制限することはできません。 SQL Managed Instance では、このログインは [sysadmin 固定サーバー ロール](/sql/relational-databases/security/authentication-access/server-level-roles)に追加されます (このロールは、Azure SQL Database には存在しません)。
@@ -68,7 +68,7 @@ Azure SQL を初めてデプロイするときに、管理者ログインと、�
 ![[プロパティ] メニュー オプションが強調表示されているスクリーンショット。](./media/logins-create-manage/sql-admins2.png)
 
 > [!IMPORTANT]
-> 管理者のログイン名は、作成された後に変更することはできません。 サーバー管理者のパスワードをリセットするには、 [Azure portal](https://portal.azure.com) にアクセスし、 **[SQL Server]** をクリックし、一覧からサーバーを選択して、 **[パスワードのリセット]** をクリックします。 SQL Managed Instance のパスワードをリセットするには、Azure portal にアクセスし、インスタンスをクリックして、 **[パスワードのリセット]** をクリックします。 PowerShell または Azure CLI を使用することもできます。
+> 管理者のログイン名は、作成された後に変更することはできません。 サーバー管理者のパスワードをリセットするには、[Azure portal](https://portal.azure.com) にアクセスし、 **[SQL Server]** をクリックし、一覧からサーバーを選択して、 **[パスワードのリセット]** をクリックします。 SQL Managed Instance のパスワードをリセットするには、Azure portal にアクセスし、インスタンスをクリックして、 **[パスワードのリセット]** をクリックします。 PowerShell または Azure CLI を使用することもできます。
 
 ## <a name="create-additional-logins-and-users-having-administrative-permissions"></a>追加のログインと管理アクセス許可を持つユーザーを作成する
 
@@ -76,7 +76,7 @@ Azure SQL を初めてデプロイするときに、管理者ログインと、�
 
 - **完全な管理アクセス許可を持つ Azure Active Directory 管理者アカウントを作成する**
 
-  Azure Active Directory 認証を有効にして、Azure AD 管理者ログインを作成します。 1 つの Azure Active Directory アカウントを、完全な管理アクセス許可を持つ、Azure SQL デプロイの管理者として構成できます。 このアカウントは、個人のアカウントまたはセキュリティ グループのアカウントのいずれかです。 SQL Database、SQL Managed Instance、または Azure Synapse への接続に Azure AD アカウントを使用する場合は、Azure AD 管理者を構成する **必要があります** 。 すべての種類の Azure SQL デプロイに対して Azure AD 認証を有効にすることの詳細については、以下の記事を参照してください。
+  Azure Active Directory 認証を有効にして、Azure AD 管理者ログインを作成します。 1 つの Azure Active Directory アカウントを、完全な管理アクセス許可を持つ、Azure SQL デプロイの管理者として構成できます。 このアカウントは、個人のアカウントまたはセキュリティ グループのアカウントのいずれかです。 SQL Database、SQL Managed Instance、または Azure Synapse への接続に Azure AD アカウントを使用する場合は、Azure AD 管理者を構成する **必要があります**。 すべての種類の Azure SQL デプロイに対して Azure AD 認証を有効にすることの詳細については、以下の記事を参照してください。
 
   - [Azure Active Directory 認証を使用して SQL を認証する](authentication-aad-overview.md)
   - [SQL による Azure Active Directory 認証の構成と管理](authentication-aad-configure.md)
@@ -94,7 +94,7 @@ Azure SQL を初めてデプロイするときに、管理者ログインと、�
   - [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql) ステートメントを使用して、ユーザー アカウントを `master` データベース内の `dbmanager` ロールと `loginmanager` ロールのいずれかまたは両方に追加します (Azure Synapse の場合は、[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ステートメントを使用します)。
 
   > [!NOTE]
-  > `dbmanager` ロールと `loginmanager` ロールは、SQL Managed Instance のデプロイには関係 **ありません** 。
+  > `dbmanager` ロールと `loginmanager` ロールは、SQL Managed Instance のデプロイには関係 **ありません**。
 
   Azure SQL Database のためのこれらの[特別なマスター データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles#special-roles-for--and-)のメンバーには、データベースを作成して管理する権限や、ログインを作成して管理する権限があります。 `dbmanager` ロールのメンバーであるユーザーによって作成されたデータベースでは、そのメンバーは `db_owner` 固定データベース ロールにマップされており、`dbo` ユーザー アカウントを使用してそのデータベースにログインし、管理することができます。 これらのロールは、マスター データベースの外では明示的アクセス許可を持ちません。
 
@@ -137,7 +137,7 @@ Azure SQL を初めてデプロイするときに、管理者ログインと、�
 
 - **固定データベース ロール**
 
-  ユーザー アカウントを[固定データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles)に追加します。 9 つの固定データベース ロールがあり、それぞれが定義済みのアクセス許可のセットを持っています。 最も一般的な固定データベース ロールは、 **db_owner** 、 **db_ddladmin** 、 **db_datawriter** 、 **db_datareader** 、 **db_denydatawriter** 、 **db_denydatareader** です。 **db_owner** は、少数のユーザーのみに完全なアクセス許可を付与する際によく使用されます。 他の固定データベース ロールは、開発段階の単純なデータベースをすばやく取得するには便利ですが、運用段階のほとんどのデータベースには推奨されません。 たとえば、 **db_datareader** 固定データベース ロールでは、データベース内のすべてのテーブルへの読み取りアクセスが許可されますが、これは必ず必要なレベルを上回っています。
+  ユーザー アカウントを[固定データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles)に追加します。 9 つの固定データベース ロールがあり、それぞれが定義済みのアクセス許可のセットを持っています。 最も一般的な固定データベース ロールは、**db_owner**、**db_ddladmin**、**db_datawriter**、**db_datareader**、**db_denydatawriter**、**db_denydatareader** です。 **db_owner** は、少数のユーザーのみに完全なアクセス許可を付与する際によく使用されます。 他の固定データベース ロールは、開発段階の単純なデータベースをすばやく取得するには便利ですが、運用段階のほとんどのデータベースには推奨されません。 たとえば、**db_datareader** 固定データベース ロールでは、データベース内のすべてのテーブルへの読み取りアクセスが許可されますが、これは必ず必要なレベルを上回っています。
 
   - 固定データベース ロールにユーザーを追加するには:
 

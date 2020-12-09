@@ -7,33 +7,33 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 07/12/2019
-ms.author: anjangsh
+ms.date: 11/13/2020
+ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7496cedd127182482bccf97909cc0a0a4a78253f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4683bd84873506483209f4a0eb3751a1b163ed48
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313415"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449834"
 ---
 # <a name="geo-restore-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics で専用 SQL プールを geo リストアする
 
-この記事では、Azure portal と PowerShell を使用して geo バックアップから専用 SQL プールを復元する方法について説明します。
+この記事では、Azure portal と PowerShell を使用して geo バックアップから専用 SQL プール (以前の SQL DW) を復元する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**DTU 容量を確認します。** 各専用 SQL プールは、既定の DTU クォータが割り当てられている[論理 SQL サーバー](../../azure-sql/database/logical-servers.md) (例: myserver.database.windows.net) によってホストされます。 データベースを復元するための十分な DTU クォータが SQL Server に残っていることを確認する必要があります。 必要な DTU を計算する方法と DTU を要求する方法については、 [DTU クォータの変更の要求](sql-data-warehouse-get-started-create-support-ticket.md)に関するトピックをご覧ください。
+**DTU 容量を確認します。** 各専用 SQL プール (以前の SQL DW) は、既定の DTU クォータが割り当てられている[論理 SQL サーバー](../../azure-sql/database/logical-servers.md) (例: myserver.database.windows.net) によってホストされます。 データベースを復元するための十分な DTU クォータが SQL Server に残っていることを確認する必要があります。 必要な DTU を計算する方法と DTU を要求する方法については、 [DTU クォータの変更の要求](sql-data-warehouse-get-started-create-support-ticket.md)に関するトピックをご覧ください。
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>PowerShell を使用して Azure 地理的リージョンから復元する
 
 Geo バックアップから復元するには、[Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) および [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) コマンドレットを使用します。
 
 > [!NOTE]
-> Gen2 への geo リストアを行うことができます。 そのためには、省略可能なパラメーターとして Gen2 の ServiceObjectiveName (例: DW1000 **c** ) を指定します。
+> Gen2 への geo リストアを行うことができます。 そのためには、省略可能なパラメーターとして Gen2 の ServiceObjectiveName (例: DW1000 **c**) を指定します。
 >
 
 1. 開始する前に、必ず [Azure PowerShell をインストール](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)してください。
@@ -74,28 +74,24 @@ $GeoRestoredDatabase.status
 
 ## <a name="restore-from-an-azure-geographical-region-through-azure-portal"></a>Azure portal を使用して Azure 地理的リージョンから復元する
 
-次の手順に従って、geo バックアップから専用 SQL プールを復元します。
+下の手順に従って、geo バックアップから専用 SQL プール (以前の SQL DW) を復元します。
 
 1. [Azure portal](https://portal.azure.com/) アカウントにサインインします。
-2. **[+ リソースの作成]** をクリックします。
+1. **専用 SQL プール (以前の SQL DW)** を検索します。
 
-   ![新しい DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
+   ![新しい DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
-3. **[データベース]** をクリックしてから、 **[Azure Synapse Analytics (以前の SQL DW)]** をクリックします。
-
-   ![新しい DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
-
-4. **[基本]** タブで要求された情報を入力し、 **[次へ: 追加設定]** を選択します。
+1. [追加] をクリックして、 **[基本]** タブで要求された情報を入力し、 **[次へ: 追加設定]** を選択します。
 
    ![基本](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
-5. **[既存のデータを使用します]** パラメーターで、 **[バックアップ]** を選択し、スクロール ダウン オプションから適切なバックアップを選択します。 **[Review + Create]\(レビュー + 作成\)** をクリックします。
+1. **[既存のデータを使用します]** パラメーターで、 **[バックアップ]** を選択し、スクロール ダウン オプションから適切なバックアップを選択します。 **[Review + Create]\(レビュー + 作成\)** をクリックします。
 
    ![バックアップ (backup)](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 
-6. データ ウェアハウスが復元されたら、 **[状態]** がオンラインになっていることを確認します。
+1. データ ウェアハウスが復元されたら、 **[状態]** がオンラインになっていることを確認します。
 
 ## <a name="next-steps"></a>次の手順
 
-- [既存の専用 SQL プールを復元する](sql-data-warehouse-restore-active-paused-dw.md)
-- [削除された専用 SQL プールを復元する](sql-data-warehouse-restore-deleted-dw.md)
+- [既存の専用 SQL プール (以前の SQL DW) を復元する](sql-data-warehouse-restore-active-paused-dw.md)
+- [削除された専用 SQL プール (以前の SQL DW) を復元する](sql-data-warehouse-restore-deleted-dw.md)

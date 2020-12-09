@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 117b0db4f04c3fd631f6692d288945019507f5c6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 819f84eeb7540050fb001111690fb6d2ba484b2a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632806"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452311"
 ---
 # <a name="managed-identity-for-data-factory"></a>Data Factory のマネージド ID
 
@@ -32,7 +32,7 @@ ms.locfileid: "92632806"
 Data Factory のマネージド ID は次の機能に役立ちます。
 
 - [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)。この場合、データ ファクトリのマネージド ID は Azure Key Vault の認証に使用されます。
-- [Azure Blob Storage](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure SQL Database](connector-azure-sql-database.md)、および [Azure Synapse Analytics (旧称 SQL Data Warehouse)](connector-azure-sql-data-warehouse.md) を含むコネクタ。
+- [Azure Blob Storage](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure SQL Database](connector-azure-sql-database.md)、および [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) を含むコネクタ。
 - [Web アクティビティ](control-flow-web-activity.md)。
 
 ## <a name="generate-managed-identity"></a>マネージド ID の生成
@@ -79,7 +79,7 @@ ProvisioningState : Succeeded
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2018-06-01
 ```
 
-**要求本文** : add "identity": { "type":"SystemAssigned" } を追加します。
+**要求本文**: add "identity": { "type":"SystemAssigned" } を追加します。
 
 ```json
 {
@@ -92,7 +92,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-**応答** : マネージド ID が自動的に作成され、これに応じて "identity" セクションが設定されます。
+**応答**: マネージド ID が自動的に作成され、これに応じて "identity" セクションが設定されます。
 
 ```json
 {
@@ -117,7 +117,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 
 ### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用したマネージド ID の生成
 
-**テンプレート** : add "identity": { "type":"SystemAssigned" } を追加します。
+**テンプレート**: add "identity": { "type":"SystemAssigned" } を追加します。
 
 ```json
 {
@@ -201,7 +201,7 @@ Type                  : ServicePrincipal
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}?api-version=2018-06-01
 ```
 
-**応答** :次の例のような応答が返されます。 "identity" セクションに値が適宜入力されます。
+**応答**:次の例のような応答が返されます。 "identity" セクションに値が適宜入力されます。
 
 ```json
 {

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 079d5ea0259a436100b81489043b71a81ec1a330
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 05ece4d8ea24fb9da106ec3daa2cc1a63706dab9
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327221"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853500"
 ---
 # <a name="video-moderation-with-the-review-tool"></a>レビュー ツールによるビデオ モデレーション
 
@@ -103,4 +103,3 @@ Content Moderator のコンピューター支援型[ビデオ モデレーショ
 - [ビデオのモデレートのクイック スタート](video-moderation-api.md)を開始する。
 - モデレート済みの出力からレビュー担当者のために[ビデオのレビュー](video-reviews-quickstart-dotnet.md)を生成する方法を学ぶ。
 - [ビデオ トランスクリプト レビュー](video-transcript-reviews-quickstart-dotnet.md)をビデオのレビューに追加する。
-- [完全なビデオ モデレーション ソリューション](video-transcript-moderation-review-tutorial-dotnet.md)を開発する方法に関する詳細なチュートリアルを確認する。

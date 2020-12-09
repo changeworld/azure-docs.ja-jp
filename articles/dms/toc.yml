@@ -28,6 +28,10 @@
           href: resource-network-topologies.md
         - name: カスタム ロール
           href: resource-custom-roles-sql-db-managed-instance.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
 - name: チュートリアル
   expanded: true
   items:

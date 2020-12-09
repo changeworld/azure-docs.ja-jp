@@ -73,7 +73,7 @@
     - name: コンテンツ モデルのカスタマイズ
       items:
         - name: アニメーション化された文字
-          href: animated-characters-recognition.md
+          href: animated-characters-recognition-how-to.md
         - name: Person
           items:
             - name: Video Indexer Web サイトの使用

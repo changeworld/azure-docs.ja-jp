@@ -1,6 +1,6 @@
 ---
-title: 認証
-description: Azure Active Directory (Azure AD) または SQL Server 認証を使用して Azure Synapse Analytics に対して認証する方法について説明します。
+title: 専用 SQL プール (旧称 SQL DW) の認証
+description: Azure Active Directory (Azure AD) または SQL Server 認証を使用して、Azure Synapse Analytics で専用 SQL プール (旧称 SQL DW) に対して認証する方法について説明します。
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,24 +12,24 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: 29709dc03ee3a06bdf2aec2587909a08ee13504e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2b5ca024046c5bc46fff756c55688d3ff0cfea1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85206732"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451965"
 ---
-# <a name="authenticate-to-azure-synapse-analytics"></a>Azure Synapse Analytics に対する認証
+# <a name="authenticate-to-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プール (旧称 SQL DW) に対する認証
 
-Azure Active Directory (AAD) または SQL Server 認証を使用して Azure Synapse の Synapse SQL に対して認証する方法について説明します。
+Azure Active Directory (Azure AD) または SQL Server 認証を使用して、Azure Synapse で専用 SQL プール (旧称 SQL DW) に対して認証する方法について説明します。
 
-SQL プールに接続するには、認証のためにセキュリティ資格情報を渡す必要があります。 接続の確立時に、特定の接続の設定が、クエリ セッションの構築の一環として構成されます。  
+専用 SQL プール (旧称 SQL DW) に接続するには、認証のためにセキュリティ資格情報を渡す必要があります。 接続の確立時に、特定の接続の設定が、クエリ セッションの構築の一環として構成されます。  
 
-セキュリティの詳細と、データ ウェアハウスへの接続を有効にする方法の詳細については、[データベースのセキュリティ保護](sql-data-warehouse-overview-manage-security.md)に関するドキュメントを参照してください。
+セキュリティの詳細と、専用 SQL プール (旧称 SQL DW) への接続を有効にする方法の詳細については、[データベースのセキュリティ保護に関するドキュメント](sql-data-warehouse-overview-manage-security.md)を参照してください。
 
 ## <a name="sql-authentication"></a>SQL 認証
 
-SQL プールに接続するには、次の情報を指定する必要があります。
+専用 SQL プール (旧称 SQL DW) に接続するには、次の情報を指定する必要があります。
 
 * 完全修飾サーバー名
 * SQL 認証の指定
@@ -45,9 +45,9 @@ SQL プールに接続するには、次の情報を指定する必要があり�
 > [!NOTE]
 > 接続目的でデータベースを切り替えるための TRANSACT-SQL ステートメント **USE MyDatabase;** はサポートされていません。 SSDT を使用して SQL プールに接続する方法については、[Visual Studio を使用したクエリ](sql-data-warehouse-query-visual-studio.md)に関する記事を参照してください。
 
-## <a name="azure-active-directory-aad-authentication"></a>Azure Active Directory (AAD) 認証
+## <a name="azure-active-directory-authentication"></a>Azure Active Directory 認証
 
-[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 認証は、Azure Active Directory (Azure AD) の ID を使用して SQL プールに接続するメカニズムです。 Azure Active Directory 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。 ID の一元管理では、1 か所で Azure Synapse ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。
+[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 認証は、Azure Active Directory (Azure AD) の ID を使用して SQL プールに接続するメカニズムです。 Azure Active Directory 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。 ID の一元管理では、1 か所で 専用 SQL プール (旧称 SQL DW) ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。
 
 ### <a name="benefits"></a>メリット
 

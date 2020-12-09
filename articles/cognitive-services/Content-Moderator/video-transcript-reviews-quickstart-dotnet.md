@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e3f7b877818056fc73f10d54b94a6b6c26c605e8
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 326fc2cc162a2ab54b40888250fbeef55ad8800a
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911275"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853460"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>.NET を使用してビデオ トランスクリプト レビューを作成する
 
@@ -81,7 +81,7 @@ using Newtonsoft.Json;
 
 ### <a name="add-private-properties"></a>プライベート プロパティを追加する
 
-名前空間 **VideoTranscriptReviews** 、クラス **Program** に次のプライベート プロパティを追加します。 エンドポイント URL とサブスクリプション キーの値を使用して、`AzureEndpoint` および `CMSubscriptionKey` フィールドを更新します。 これらは、Azure portal 内のリソースの **[クイック スタート]** タブで確認できます。
+名前空間 **VideoTranscriptReviews**、クラス **Program** に次のプライベート プロパティを追加します。 エンドポイント URL とサブスクリプション キーの値を使用して、`AzureEndpoint` および `CMSubscriptionKey` フィールドを更新します。 これらは、Azure portal 内のリソースの **[クイック スタート]** タブで確認できます。
 
 ```csharp
 namespace VideoReviews
@@ -148,12 +148,12 @@ public static ContentModeratorClient NewClient()
 1. **IList\<CreateVideoReviewsBodyItem>** オブジェクト。 各 **CreateVideoReviewsBodyItem** オブジェクトはビデオ レビューを表します。 このクイック スタートでは、一度に 1 つのレビューを作成します。
 
 **CreateVideoReviewsBodyItem** にはいくつかのプロパティがあります。 少なくとも、次のプロパティを設定してください。
-- **Content** 。 レビューするビデオの URL。
-- **ContentId** 。 ビデオ レビューに割り当てる ID。
-- **Status** 。 値を "Unpublished" に設定します。 設定しない場合は既定で "Pending" になります。これはビデオ レビューが公開済みで、人間によるレビュー待ちであることを意味します。 ビデオ レビューが公開されると、ビデオ フレーム、トランスクリプト、トランスクリプトのモデレート結果を追加できなくなります。
+- **Content**。 レビューするビデオの URL。
+- **ContentId**。 ビデオ レビューに割り当てる ID。
+- **Status**。 値を "Unpublished" に設定します。 設定しない場合は既定で "Pending" になります。これはビデオ レビューが公開済みで、人間によるレビュー待ちであることを意味します。 ビデオ レビューが公開されると、ビデオ フレーム、トランスクリプト、トランスクリプトのモデレート結果を追加できなくなります。
 
 > [!NOTE]
-> **CreateVideoReviews** は IList\<string> を返します。 これらの文字列には、それぞれビデオ レビューの ID が含まれています。 これらの ID は GUID であり、 **ContentId** プロパティの値とは異なります。
+> **CreateVideoReviews** は IList\<string> を返します。 これらの文字列には、それぞれビデオ レビューの ID が含まれています。 これらの ID は GUID であり、**ContentId** プロパティの値とは異なります。
 
 名前空間 VideoReviews、クラス Program に次のメソッド定義を追加します。
 
@@ -229,21 +229,21 @@ static void AddTranscript(ContentModeratorClient client, string review_id, strin
 
 ## <a name="add-a-transcript-moderation-result-to-video-review"></a>レビューのビデオ トランスクリプト モデレーション結果を追加する
 
-ビデオ レビューにトランスクリプトを追加するだけでなく、そのトランスクリプトをモデレートした結果も追加します。 これを行うには、 **ContentModeratorClient.Reviews.AddVideoTranscriptModerationResult** を使用します。 詳細については、[API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b93ce7151f0b10d451ff)に関するページを参照してください。
+ビデオ レビューにトランスクリプトを追加するだけでなく、そのトランスクリプトをモデレートした結果も追加します。 これを行うには、**ContentModeratorClient.Reviews.AddVideoTranscriptModerationResult** を使用します。 詳細については、[API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b93ce7151f0b10d451ff)に関するページを参照してください。
 
 **AddVideoTranscriptModerationResult** では、次のパラメーターが必要です。
 1. MIME の種類が含まれる文字列。"application/json" にしてください。 
 1. Content Moderator のチーム名。
 1. **CreateVideoReviews** によって返されるビデオ レビュー ID。
 1. An IList\<TranscriptModerationBodyItem>。 **TranscriptModerationBodyItem** には次のプロパティがあります。
-1. **Terms** 。 An IList\<TranscriptModerationBodyItemTermsItem>。 **TranscriptModerationBodyItemTermsItem** には次のプロパティがあります。
-1. **Index** 。 用語のゼロベースのインデックスです。
-1. **Term** 。 用語を含む文字列です。
-1. **Timestamp** 。 用語が見つかったトランスクリプトの時間 (秒単位) を含む文字列です。
+1. **Terms**。 An IList\<TranscriptModerationBodyItemTermsItem>。 **TranscriptModerationBodyItemTermsItem** には次のプロパティがあります。
+1. **Index**。 用語のゼロベースのインデックスです。
+1. **Term**。 用語を含む文字列です。
+1. **Timestamp**。 用語が見つかったトランスクリプトの時間 (秒単位) を含む文字列です。
 
 トランスクリプトは、WebVTT 形式である必要があります。 詳細については、[WebVTT: Web ビデオ テキスト トラック形式](https://www.w3.org/TR/webvtt1/)に関するページをご覧ください。
 
-名前空間 VideotranscriptReviews、クラス Program に次のメソッドの定義を追加します。 このメソッドは、 **ContentModeratorClient.TextModeration.ScreenText** メソッドにトランスクリプトを送信します。 また、IList\<TranscriptModerationBodyItem> に結果を変換し、 **AddVideoTranscriptModerationResult** に送信します。
+名前空間 VideotranscriptReviews、クラス Program に次のメソッドの定義を追加します。 このメソッドは、**ContentModeratorClient.TextModeration.ScreenText** メソッドにトランスクリプトを送信します。 また、IList\<TranscriptModerationBodyItem> に結果を変換し、**AddVideoTranscriptModerationResult** に送信します。
 
 ```csharp
 /// <summary>
@@ -381,5 +381,3 @@ Press any key to close the application.
 [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) と、.NET 用のこのクイック スタートや他の Content Moderator のクイックスタートのための [Visual Studio ソリューション](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)をダウンロードする。
 
 レビュー ツールで[ビデオ レビュー](video-reviews-quickstart-dotnet.md)を生成する方法について学習する。
-
-[完全なビデオ モデレーション ソリューション](video-transcript-moderation-review-tutorial-dotnet.md)を開発する方法に関する詳細なチュートリアルを確認する。

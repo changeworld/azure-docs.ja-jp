@@ -280,7 +280,7 @@
     - name: Microsoft Authentication Library の使用
       displayName: MSAL
       items:
-        - Name: すべてのプラットフォーム
+        - name: すべてのプラットフォーム
           items:
             - name: サポートされている認証フロー
               href: msal-authentication-flows.md
