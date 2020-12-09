@@ -10,10 +10,10 @@ ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
 ms.openlocfilehash: 660b5751e3b3cbc632331e99d797af3392a8aea4
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 12/05/2020
 ms.locfileid: "91371968"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management のデータへのアクセス許可を割り当てる
@@ -37,11 +37,11 @@ Azure EA サブスクリプションのコスト データを表示するには�
 | **スコープ** | **定義場所** | **データの表示に必要なアクセス許可** | **前提条件となる EA 設定** | **データの統合先** |
 | --- | --- | --- | --- | --- |
 | 課金アカウント<sup>1</sup> | [https://ea.azure.com](https://ea.azure.com/) | エンタープライズ管理者 | なし | マイクロソフト エンタープライズ契約のすべてのサブスクリプション |
-| 部署 | [https://ea.azure.com](https://ea.azure.com/) | 部門管理者 | **DA ビューの請求額**の有効化 | 部署にリンクされている、登録アカウントに属しているすべてのサブスクリプション |
-| 登録アカウント<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | アカウント所有者 | **AO ビューの請求額**の有効化 | 登録アカウントのすべてのサブスクリプション |
-| 管理グループ | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または閲覧者) | **AO ビューの請求額**の有効化 | 管理グループ下のすべてのサブスクリプション |
-| サブスクリプション | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または閲覧者) | **AO ビューの請求額**の有効化 | サブスクリプションに含まれているすべてのリソース/リソース グループ |
-| Resource group | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または閲覧者) | **AO ビューの請求額**の有効化 | リソース グループに含まれるすべてのリソース |
+| 部署 | [https://ea.azure.com](https://ea.azure.com/) | 部門管理者 | **DA ビューの請求額** の有効化 | 部署にリンクされている、登録アカウントに属しているすべてのサブスクリプション |
+| 登録アカウント<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | アカウント所有者 | **AO ビューの請求額** の有効化 | 登録アカウントのすべてのサブスクリプション |
+| 管理グループ | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または閲覧者) | **AO ビューの請求額** の有効化 | 管理グループ下のすべてのサブスクリプション |
+| サブスクリプション | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または閲覧者) | **AO ビューの請求額** の有効化 | サブスクリプションに含まれているすべてのリソース/リソース グループ |
+| Resource group | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または閲覧者) | **AO ビューの請求額** の有効化 | リソース グループに含まれるすべてのリソース |
 
 <sup>1</sup> 請求先アカウントも、"マイクロソフト エンタープライズ契約" または "登録" と呼ばれます。
 
@@ -75,7 +75,7 @@ Azure portal でオプションを有効にするには、次の手順に従い�
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>EA ポータルでのコストへのアクセスを有効にする
 
-部署のスコープの場合、EA ポータルで **[DA ビューの請求額]** オプションを**有効化する**必要があります。 このオプションは、Azure portal または EA Portal で構成します。 それ以外のすべてのスコープでは、EA ポータルで **AO ビューの請求額**オプションを**有効化する**必要があります。
+部署のスコープの場合、EA ポータルで **[DA ビューの請求額]** オプションを **有効化する** 必要があります。 このオプションは、Azure portal または EA Portal で構成します。 それ以外のすべてのスコープでは、EA ポータルで **AO ビューの請求額** オプションを **有効化する** 必要があります。
 
 EA Portal でオプションを有効にするには、次の手順に従います。
 
@@ -128,7 +128,7 @@ EA Portal でオプションを有効にするには、次の手順に従いま�
 2. 左側のウィンドウで、 **[管理]** を選択します。
 3. **[登録]** タブで、管理する登録を選択します。
 4. **[アカウント]** タブを選択し、 **[アカウントの追加]** を選択します。
-5. [アカウントの追加] ボックスで、アカウントが関連付けられている**部署**を選択するか、未割り当てのままにしておきます。
+5. [アカウントの追加] ボックスで、アカウントが関連付けられている **部署** を選択するか、未割り当てのままにしておきます。
 6. 認証の種類を選択し、アカウント名を入力します。
 7. ユーザーの電子メール アドレスを入力し、必要に応じてコスト センターを入力します。
 8. **[追加]** を選択してアカウントを作成します。  
@@ -182,7 +182,7 @@ EA Portal でオプションを有効にするには、次の手順に従いま�
 
 ## <a name="cross-tenant-authentication-issues"></a>テナント間の認証の問題
 
-現在、Azure Cost Management では、テナント間の認証のサポートが制限されています。 テナント間で認証しようとした場合、状況によっては、コスト分析で**アクセス拒否**エラーが表示される場合があります。 この問題は、別のテナントのサブスクリプションに Azure のロールベースのアクセス制御 (Azure RBAC) を構成した後でコストのデータを表示しようとした場合に発生する可能性があります。
+現在、Azure Cost Management では、テナント間の認証のサポートが制限されています。 テナント間で認証しようとした場合、状況によっては、コスト分析で **アクセス拒否** エラーが表示される場合があります。 この問題は、別のテナントのサブスクリプションに Azure のロールベースのアクセス制御 (Azure RBAC) を構成した後でコストのデータを表示しようとした場合に発生する可能性があります。
 
 "*回避策は次のとおりです*": テナント間の Azure RBAC を構成した後、1 時間待機します。 その後、コスト分析でコストを表示するか、両方のテナントのユーザーに Cost Management へのアクセス権を付与します。  
 
