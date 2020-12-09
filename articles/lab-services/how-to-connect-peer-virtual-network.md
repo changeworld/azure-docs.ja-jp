@@ -3,12 +3,12 @@ title: Azure Lab Services でピア ネットワークに接続する | Microsof
 description: ラボのネットワークと別のネットワークをピアとして接続する方法について説明します。 たとえば、オンプレミスの組織/大学のネットワークと Azure のラボの仮想ネットワークを接続します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 169160005b27f6ab9575749e4a72a26d2df4000b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 99ea72f11c8f389a15171a1fe3b376646494903a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647989"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434245"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Azure Lab Services でラボのネットワークとピア仮想ネットワークを接続する
 
@@ -26,7 +26,7 @@ ms.locfileid: "94647989"
 特定のオンプレミスのネットワークは [ExpressRoute](../expressroute/expressroute-introduction.md) または [Virtual Network ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md)のどちらかを使用して Azure Virtual Network に接続しています。 これらのサービスは、Azure Lab Services の外部で設定する必要があります。 ExpressRoute を使用してオンプレミスネットワークを Azure に接続する方法の詳細については、[ExpressRoute の概要](../expressroute/expressroute-introduction.md)を参照してください。 Virtual Network ゲートウェイを使用してオンプレミスと接続するには、ゲートウェイ、指定された仮想ネットワーク、ラボのアカウントがすべて同じリージョンにある必要があります。
 
 > [!NOTE]
-> ラボ アカウントとピアリングされる予定の Azure Virtual Network の作成時には、クラスルーム ラボが作成される場所に、仮想ネットワークのリージョンがどのように影響するかを理解しておくことが重要です。  詳細については、管理者ガイドの「[リージョン (場所)](./administrator-guide.md#regionslocations)」セクションを参照してください。
+> ラボ アカウントとピアリングされる予定の Azure Virtual Network の作成時には、ラボが作成される場所に、仮想ネットワークのリージョンがどのように影響するかを理解しておくことが重要です。  詳細については、管理者ガイドの「[リージョン (場所)](./administrator-guide.md#regionslocations)」セクションを参照してください。
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>ラボ アカウントの作成時に構成する
 

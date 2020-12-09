@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: c869069e40780b1fd399758e84b0ffba311398e3
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 7b52a066f80b686a0e424d8f63d520d46691a72a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334193"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187818"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Azure Cosmos DB アカウントのノートブックを有効にする (プレビュー)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,7 +31,7 @@ Azure Cosmos DB の組み込みの Jupyter ノートブックを使用すると�
     :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks.png" alt-text="Azure Cosmos DB の作成ブレードで [Notebooks] オプションを選択する":::
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[ネットワーク]** オプションと **[タグ]** オプションはスキップできます。 
-1. アカウントの設定を確認し、 **[作成]** を選択します。 アカウントの作成には数分かかります。 ポータル ページに " **デプロイが完了しました** " と表示されるまで待ちます。 
+1. アカウントの設定を確認し、 **[作成]** を選択します。 アカウントの作成には数分かかります。 ポータル ページに "**デプロイが完了しました**" と表示されるまで待ちます。 
 
    :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks-complete.png" alt-text="Azure portal の [通知] ペイン":::
 
@@ -59,7 +59,7 @@ Azure Cosmos DB の組み込みの Jupyter ノートブックを使用すると�
 
 ノートブックを使用できることを確認するには、[サンプル ノートブック] でいずれかのノートブックを選択します。 これにより、ノートブックのコピーがご利用のワークスペースに保存され、それを開きます。
 
-この例では、 **GettingStarted.ipynb** を使用します。 
+この例では、**GettingStarted.ipynb** を使用します。 
 
 :::image type="content" source="media/enable-notebooks/select-getting-started-notebook.png" alt-text="GettingStarted.ipynb ノートブックの表示":::
 
@@ -76,4 +76,4 @@ Azure Cosmos DB の組み込みの Jupyter ノートブックを使用すると�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Cosmos DB Jupyter ノートブック](cosmosdb-jupyter-notebooks.md)の長所について学習する
+- [Azure Cosmos DB Jupyter Notebooks](cosmosdb-jupyter-notebooks.md) の長所について学習する

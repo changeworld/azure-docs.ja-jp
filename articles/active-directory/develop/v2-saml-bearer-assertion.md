@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 6e7e4dd6383b1f264ff2da7893d9f86a3708217d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47b036f558628d51242a78c00d2ee17332816d25
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89227918"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348761"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 SAML ベアラー アサーション フロー
 OAuth 2.0 SAML ベアラー アサーション フローでは、クライアントが既存の信頼関係を使用する必要があるときに、SAML アサーションを使用して OAuth アクセス トークンを要求することができます。 SAML アサーションに適用される署名は、承認されたアプリの認証を提供します。 SAML アサーションは、ID プロバイダーによって発行され、サービス プロバイダーによって使用される XML セキュリティ トークンです。 サービス プロバイダーは、セキュリティ関連の目的でアサーションの対象を識別するために、そのコンテンツに依存します。
@@ -32,7 +32,7 @@ OAuth SAML ベアラー アサーション フローは、Azure Active Directory
 ![OAuth フロー](./media/v2-saml-bearer-assertion/1.png)
 
 ## <a name="call-graph-using-saml-bearer-assertion"></a>SAML ベアラー アサーションを使用して Graph を呼び出す
-ここで、実際にプログラムで SAML アサーションを取得する方法について説明します。 この方法は、ADFS を使用してテストされます。 ただし、これが機能するのは、プログラムで SAML アサーションが返されるのをサポートしている ID プロバイダーを使用した場合になります。 基本的なプロセスとしては、SAML アサーションを取得し、アクセス トークンを取得して、Microsoft Graph にアクセスします。
+ここで、実際にプログラムで SAML アサーションをフェッチする方法について説明します。 この方法は、ADFS を使用してテストされます。 ただし、これが機能するのは、プログラムで SAML アサーションが返されることをサポートしている ID プロバイダーを使用した場合になります。 基本的なプロセスとしては、SAML アサーションを取得し、アクセス トークンを取得して、Microsoft Graph にアクセスします。
 
 ### <a name="prerequisites"></a>前提条件
 

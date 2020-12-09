@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 10/30/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 1a08aa4261e8d2546d16bb60394829c83604b4cd
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e71ab0293dade56c14dce7318fc96021a040b102
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019961"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433309"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>方法:アプリに省略可能な要求を提供する
 
@@ -58,7 +58,7 @@ ms.locfileid: "95019961"
 | `verified_secondary_email` | ユーザーの SecondaryAuthoritativeEmail が送信元です   | JWT        |           |        |
 | `vnet`                     | VNET 指定子情報。 | JWT        |           |      |
 | `fwd`                      | IP アドレス。| JWT    |   | 要求側クライアントの元の IPv4 アドレスを追加します (VNET 内の場合) |
-| `ctry`                     | ユーザーの国またはリージョン | JWT、SAML |  | Azure AD は、存在する場合、`ctry` の省略可能な要求を返します。フィールドの値は、FR、JP、SZ などの標準の 2 文字の国またはリージョン番号です。 |
+| `ctry`                     | ユーザーの国またはリージョン | JWT |  | Azure AD は、存在する場合、`ctry` の省略可能な要求を返します。フィールドの値は、FR、JP、SZ などの標準の 2 文字の国またはリージョン番号です。 |
 | `tenant_ctry`              | リソース テナントの国 | JWT | | 管理者がテナント レベルを設定することを除き `ctry` と同じです。また、標準の 2 文字値にする必要があります。 |
 | `xms_pdl`             | 優先されるデータの場所   | JWT | | Multi-Geo テナントの場合、優先されるデータの場所は、ユーザーがどの地域にいるかを示す 3 文字のコードです。 詳細については、[優先されるデータの場所に関する Azure AD Connect のドキュメント](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md)を参照してください。<br/>たとえば、アジア太平洋の場合は `APC` です。 |
 | `xms_pl`                   | ユーザーの優先する言語  | JWT ||ユーザーの優先する言語 (設定されている場合)。 ゲスト アクセスのシナリオの場合、ソースはホーム テナントです。 LL-CC ("en-us") という形式です。 |
@@ -67,7 +67,7 @@ ms.locfileid: "95019961"
 | `email`                    | このユーザーのアドレス指定可能なメール アドレス (ユーザーが持っている場合)。  | JWT、SAML | MSA、Azure AD | ユーザーがテナントのゲストである場合、この値は既定で含まれます。  マネージド ユーザー (テナント内のユーザー) の場合は、この省略可能な要求により、または OpenID スコープで (v2.0 の場合のみ)、それを要求する必要があります。  マネージド ユーザーの場合、メール アドレスは [Office 管理ポータル](https://portal.office.com/adminportal/home#/users)で設定する必要があります。|
 | `acct`                | テナント内のユーザー アカウントの状態 | JWT、SAML | | ユーザーがテナントのメンバーである場合、値は `0` です。 ユーザーがゲストの場合、値は `1` です。 |
 | `groups`| グループ要求の省略可能な形式 |JWT、SAML| |[アプリケーション マニフェスト](reference-app-manifest.md) の GroupMembershipClaims 設定と共に使用されます (こちらも設定する必要があります)。 詳細については、後述の[グループ要求](#configuring-groups-optional-claims)に関する説明を参照してください。 グループ要求の詳細については、[グループ要求の構成方法](../hybrid/how-to-connect-fed-group-claims.md)に関する記事を参照してください
-| `upn`                      | UserPrincipalName | JWT、SAML  |           | username_hint パラメーターで使用できるユーザーの識別子。  そのユーザーの持続的な識別子ではないため、ユーザー情報の一意な識別 (データベース キーとして、など) には使用しません。 代わりに、ユーザー オブジェクト ID (`oid`) をデータベース キーとして使用します。 [代替ログイン ID](/azure/active-directory/authentication/howto-authentication-use-email-signin) を使用してサインインするユーザーには、ユーザー プリンシパル名 (UPN) は表示されません。 代わりに、サインイン状態をユーザーに表示するには、ID トークン要求 (v1 トークンの場合は `preferred_username` または `unique_name`、v2 トークンの場合は `preferred_username`) を使用します。 この要求は自動的に含まれますが、省略可能な要求として、ゲスト ユーザーの場合に動作を変更するために追加のプロパティをアタッチする要求を指定することもできます。  |
+| `upn`                      | UserPrincipalName | JWT、SAML  |           | username_hint パラメーターで使用できるユーザーの識別子。  そのユーザーの持続的な識別子ではないため、ユーザー情報の一意な識別 (データベース キーとして、など) には使用しません。 代わりに、ユーザー オブジェクト ID (`oid`) をデータベース キーとして使用します。 [代替ログイン ID](../authentication/howto-authentication-use-email-signin.md) を使用してサインインするユーザーには、ユーザー プリンシパル名 (UPN) は表示されません。 代わりに、サインイン状態をユーザーに表示するには、ID トークン要求 (v1 トークンの場合は `preferred_username` または `unique_name`、v2 トークンの場合は `preferred_username`) を使用します。 この要求は自動的に含まれますが、省略可能な要求として、ゲスト ユーザーの場合に動作を変更するために追加のプロパティをアタッチする要求を指定することもできます。  |
 | `idtyp`                    | トークンの種類   | JWT のアクセス トークン | 特殊: アプリ専用アクセス トークンのみ |  トークンがアプリ専用トークンの場合、値は `app` です。 API を使用してトークンがアプリ トークンかアプリ + ユーザー トークンかを判断する場合、これが最も正確な方法です。|
 
 ## <a name="v20-specific-optional-claims-set"></a>v2.0 固有の省略可能な要求セット
@@ -85,7 +85,7 @@ ms.locfileid: "95019961"
 | `in_corp`     | 企業ネットワーク内        | クライアントが企業ネットワークからログインしている場合に通知します。 そうでない場合、この要求は含まれません。   |  MFA の[信頼できる IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) の設定に基づきます。    |
 | `family_name` | 姓                       | ユーザー オブジェクトで定義されたユーザーの姓を示します。 <br>"family_name":"Miller" | MSA と Azure AD でサポートされています。 `profile` スコープが必要です。   |
 | `given_name`  | 名                      | ユーザー オブジェクトに設定されたユーザーの名を示します。<br>"given_name":"Frank"                   | MSA と Azure AD でサポートされています。  `profile` スコープが必要です。 |
-| `upn`         | ユーザー プリンシパル名 | username_hint パラメーターで使用できるユーザーの識別子。  そのユーザーの持続的な識別子ではないため、ユーザー情報の一意な識別 (データベース キーとして、など) には使用しません。 代わりに、ユーザー オブジェクト ID (`oid`) をデータベース キーとして使用します。 [代替ログイン ID](/azure/active-directory/authentication/howto-authentication-use-email-signin) を使用してサインインするユーザーには、ユーザー プリンシパル名 (UPN) は表示されません。 代わりに、サインイン状態をユーザーに表示するには、ID トークン要求 (v1 トークンの場合は `preferred_username` または `unique_name`、v2 トークンの場合は `preferred_username`) を使用します。 | 要求の構成については、下の[追加のプロパティ](#additional-properties-of-optional-claims)を参照してください。 `profile` スコープが必要です。|
+| `upn`         | ユーザー プリンシパル名 | username_hint パラメーターで使用できるユーザーの識別子。  そのユーザーの持続的な識別子ではないため、ユーザー情報の一意な識別 (データベース キーとして、など) には使用しません。 代わりに、ユーザー オブジェクト ID (`oid`) をデータベース キーとして使用します。 [代替ログイン ID](../authentication/howto-authentication-use-email-signin.md) を使用してサインインするユーザーには、ユーザー プリンシパル名 (UPN) は表示されません。 代わりに、サインイン状態をユーザーに表示するには、ID トークン要求 (v1 トークンの場合は `preferred_username` または `unique_name`、v2 トークンの場合は `preferred_username`) を使用します。 | 要求の構成については、下の[追加のプロパティ](#additional-properties-of-optional-claims)を参照してください。 `profile` スコープが必要です。|
 
 ### <a name="additional-properties-of-optional-claims"></a>省略可能な要求の追加のプロパティ
 
@@ -139,7 +139,7 @@ UI またはアプリケーション マニフェストを使用して、アプ�
 1. **[追加]** を選択します。
 
 > [!NOTE]
-> UI オプション **[トークン構成]** ブレードは、現在、Azure AD B2C テナントに登録されているアプリでは使用できません。 B2C テナントに登録されているアプリケーションの場合、アプリケーション マニフェストを変更することによってオプションの要求を構成できます。 詳細については、「[Azure Active Directory B2C のカスタム ポリシーを使用した要求の追加とユーザー入力のカスタマイズ](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-configure-user-input)」を参照してください。 
+> UI オプション **[トークン構成]** ブレードは、現在、Azure AD B2C テナントに登録されているアプリでは使用できません。 B2C テナントに登録されているアプリケーションの場合、アプリケーション マニフェストを変更することによってオプションの要求を構成できます。 詳細については、「[Azure Active Directory B2C のカスタム ポリシーを使用した要求の追加とユーザー入力のカスタマイズ](../../active-directory-b2c/custom-policy-configure-user-input.md)」を参照してください。 
 
 **アプリケーションマニフェストを使用した省略可能な要求の構成：**
 
@@ -186,7 +186,7 @@ UI またはアプリケーション マニフェストを使用して、アプ�
 
 **表 5:OptionalClaims 型のプロパティ**
 
-| 名前          | Type                       | 説明                                           |
+| 名前          | 種類                       | 説明                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | コレクション (OptionalClaim) | JWT ID トークンで返される省略可能な要求。     |
 | `accessToken` | コレクション (OptionalClaim) | JWT アクセス トークンで返される省略可能な要求。 |
@@ -199,7 +199,7 @@ UI またはアプリケーション マニフェストを使用して、アプ�
 
 **表 6:OptionalClaim 型のプロパティ**
 
-| 名前                   | Type                    | 説明                                                                                                                                                                                                                                                                                                   |
+| 名前                   | 種類                    | 説明                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | 省略可能な要求の名前。                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | 要求のソース (ディレクトリ オブジェクト)。 定義済みの要求と、拡張プロパティのユーザー定義の要求があります。 ソース値が null の場合、この要求は定義済みの省略可能な要求です。 ソース値が user の場合、name プロパティの値はユーザー オブジェクトの拡張プロパティです。 |

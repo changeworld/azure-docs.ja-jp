@@ -3,12 +3,12 @@ title: Azure Backup の新着情報
 description: Azure Backup の新機能について説明しています。
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: e48a7df1e42591843c30b77026a4d8656773a57d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ba29ddea5d5f096640f2bfc012c44ab06bb3e131
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511376"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309666"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure Backup の新着情報
 
@@ -19,6 +19,7 @@ Azure Backup は常に改善が行われ、Azure でのデータの保護を強�
 ## <a name="updates-summary"></a>更新の概要
 
 - 2020 年 11 月
+  - [Azure ファイル共有 (AFS) バックアップ用の Azure Resource Manager テンプレート](#azure-resource-manager-template-for-afs-backup)
   - [Azure VM 上の SAP HANA データベースの増分バックアップ](#incremental-backups-for-sap-hana-databases)
 - 2020 年 9 月
   - [バックアップ センター](#backup-center)
@@ -30,6 +31,12 @@ Azure Backup は常に改善が行われ、Azure でのデータの保護を強�
   - [RHEL の Azure 仮想マシンでの SAP HANA のバックアップ](#backup-sap-hana-in-rhel-azure-virtual-machines)
   - [バックアップ データ用のゾーン冗長ストレージ (ZRS)](#zone-redundant-storage-zrs-for-backup-data)
   - [Azure VM での SQL Server および SAP HANA ワークロードの論理的な削除](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-resource-manager-template-for-afs-backup"></a>AFS バックアップ用の Azure Resource Manager テンプレート
+
+Azure Backup では、Azure Resource Manager (ARM) テンプレートを使用した既存の Azure ファイル共有のバックアップの構成をサポートするようになりました。 このテンプレートでは、Recovery Services コンテナーとバックアップ ポリシーの適切な詳細を指定することによって、既存の Azure ファイル共有の保護を構成できます。 必要に応じて、新しい Recovery Services コンテナーとバックアップ ポリシーが作成され、ファイル共有を含むストレージ アカウントが Recovery Services コンテナーに登録されます。
+
+詳細については、「[Azure Backup 用 Azure Resource Manager テンプレート](backup-rm-template-samples.md)」を参照してください。
 
 ## <a name="incremental-backups-for-sap-hana-databases"></a>SAP HANA データベースの増分バックアップ
 
@@ -99,6 +106,6 @@ Azure Storage を使用すると、さまざまな冗長性オプションによ
 
 詳細については、「[Azure VM での SQL Server の論理的な削除、および Azure VM ワークロードの SAP HANA の論理的な削除](soft-delete-sql-saphana-in-azure-vm.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure Backup のガイダンスとベスト プラクティス](guidance-best-practices.md)

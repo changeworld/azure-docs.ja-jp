@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c14f406e5671e1eefb43f0208044f9945e446267
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a775ce6b7c560783a22697c5dd92288c5d5b7d4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226575"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343707"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory における属性マッピングの式の書き方
 クラウド プロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 
@@ -289,7 +289,7 @@ InStr 関数は文字列内の最初の部分文字列を検索します。
 
 `num InStr(str stringcheck, str stringmatch)`  
 `num InStr(str stringcheck, str stringmatch, num start)`  
-`num InStr(str stringcheck, str stringmatch, num start , enum compare)`
+`num InStr(str stringcheck, str stringmatch, num start, enum compare)`
 
 * stringcheck: 検索対象の文字列
 * stringmatch: 検出対象の文字列
@@ -501,8 +501,8 @@ RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意
    | --- | --- | --- | --- |
    | **source** |必須 |String |通常は、**source** オブジェクトの属性の名前。 |
    | **oldValue** |省略可能 |String |**source** または **template** に含まれる置換前の値。 |
-   | **regexPattern** |省略可能 |String |**source**に含まれる置換前の値の正規表現パターン。 または、**replacementPropertyName** が使われるときは、**replacementPropertyName** から値を抽出するパターン。 |
-   | **regexGroupName** |省略可能 |String |**regexPattern**内のグループの名前。 **replacementPropertyName** を使用した場合にのみ、このグループの値が **replacementPropertyName** から **replacementValue** として抽出されます。 |
+   | **regexPattern** |省略可能 |String |**source** に含まれる置換前の値の正規表現パターン。 または、**replacementPropertyName** が使われるときは、**replacementPropertyName** から値を抽出するパターン。 |
+   | **regexGroupName** |省略可能 |String |**regexPattern** 内のグループの名前。 **replacementPropertyName** を使用した場合にのみ、このグループの値が **replacementPropertyName** から **replacementValue** として抽出されます。 |
    | **replacementValue** |省略可能 |String |古い値を置き換える新しい値。 |
    | **replacementAttributeName** |省略可能 |String |置換値に使用する属性の名前 |
    | **template** |省略可能 |String |**template** の値を指定した場合、template 内で **oldValue** が検索され、**source** の値で置換されます。 |
@@ -582,7 +582,7 @@ StringFromSid 関数は、セキュリティ識別子が含まれるバイト配
 
    | 名前 | 必須/繰り返し | Type | Notes |
    | --- | --- | --- | --- |
-   | **source** |必須 |String |確認する**source** 値。 |
+   | **source** |必須 |String |確認する **source** 値。 |
    | **defaultValue** |省略可能 |String |source がどの key とも一致しないときに使用される既定値。 空の文字列 ("") を指定できます。 |
    | **key** |必須 |String |**source** 値と比較する **key**。 |
    | **value** |必須 |String |key と一致する **source** の置換値。 |
@@ -712,7 +712,7 @@ Split([extensionAttribute5], ",")
 
 **サンプル入力/出力:** <br>
 
-* **INPUT** (extensionAttribute5):"PermissionSetOne, PermisionSetTwo"
+* **INPUT** (extensionAttribute5):"PermissionSetOne, PermissionSetTwo"
 * **OUTPUT**:  ["PermissionSetOne", "PermissionSetTwo"]
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>特定の形式の文字列として日付を出力する

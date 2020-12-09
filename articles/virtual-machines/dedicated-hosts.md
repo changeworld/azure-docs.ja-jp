@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 07/28/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 0b0e198075455f697c87ad48741a770e6f78b5a5
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: a42b07254deaf19d253f7523631018bfe7166a57
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542152"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339593"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 専用ホスト
 
@@ -165,6 +165,8 @@ SKU はホストに対して定義され、VM サイズ シリーズとタイプ
 
 サイズとハードウェアの種類はリージョンによって異なります。 詳しくは、ホストの[価格のページ](https://aka.ms/ADHPricing) を参照してください。
 
+> [!NOTE]
+> 専用ホストをプロビジョニングした後に、サイズや種類を変更することはできません。 サイズや種類の異なるホストが必要な場合は、新しいホストを作成する必要があります。  
 
 ## <a name="host-life-cycle"></a>ホストのライフ サイクル
 

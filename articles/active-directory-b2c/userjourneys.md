@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 10/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fda57ae152efbb04a793c6acf63465fe8d406a1a
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 5b89126b837f9c197a8babf81abb17bfd98002e4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998655"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344999"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -64,7 +64,7 @@ ms.locfileid: "91998655"
 | 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | `Order` | はい | オーケストレーション手順の順序。 |
-| `Type` | はい | オーケストレーション手順の種類。 指定できる値 <ul><li>**ClaimsProviderSelection** -オーケストレーション手順が、様々な要求プロバイダーをユーザーに選択肢として表示することを示します。</li><li>**CombinedSignInAndSignUp** - オーケストレーション手順がサインインとローカル アカウントのサインアップ ページを結合ソーシャル プロバイダーに提示することを示します。</li><li>**ClaimsExchange** - オーケストレーション手順が要求プロバイダーと要求を交換することを示します。</li><li>**GetClaims** - オーケストレーション手順で、`InputClaims` 構成を使用して、証明書利用者から Azure AD B2C に送信される要求データを処理するように指定します。</li><li>**InvokeSubJourney** - オーケストレーション手順によって要求が[サブ体験](subjourneys.md)と交換されることを示します (パブリック プレビュー段階)。</li><li>**SendClaims** - オーケストレーション手順が証明書利用者に対して、要求発行者によって発行されたトークンを使用して要求を送信することを示します。</li></ul> |
+| `Type` | はい | オーケストレーション手順の種類。 指定できる値 <ul><li>**ClaimsProviderSelection** -オーケストレーション手順が、様々な要求プロバイダーをユーザーに選択肢として表示することを示します。</li><li>**CombinedSignInAndSignUp** - オーケストレーション手順がサインインとローカル アカウントのサインアップ ページを結合ソーシャル プロバイダーに提示することを示します。</li><li>**ClaimsExchange** - オーケストレーション手順が要求プロバイダーと要求を交換することを示します。</li><li>**GetClaims** - オーケストレーション手順で、`InputClaims` 構成を使用して、証明書利用者から Azure AD B2C に送信される要求データを処理するように指定します。</li><li>**InvokeSubJourney** - オーケストレーション手順によって要求が [サブ体験](subjourneys.md)と交換されることを示します (パブリック プレビュー段階)。</li><li>**SendClaims** - オーケストレーション手順が証明書利用者に対して、要求発行者によって発行されたトークンを使用して要求を送信することを示します。</li></ul> |
 | ContentDefinitionReferenceId | No | このオーケストレーション手順に関連付けられた[コンテンツ定義](contentdefinitions.md)の識別子。 通常、コンテンツ定義参照識別子は、セルフアサート技術プロファイルで定義されます。 ただし、Azure AD B2C が技術プロファイルなしで何かを表示することが必要となる場合もあります。 2 つの例があります。オーケストレーション手順の種類が `ClaimsProviderSelection` または `CombinedSignInAndSignUp` の場合、Azure AD B2C は技術的なプロファイルを持たずに ID プロバイダーの選択を表示する必要があります。 |
 | CpimIssuerTechnicalProfileReferenceId | No | オーケストレーション手順の種類は `SendClaims` です。 このプロパティは、証明書利用者のトークンを発行する要求プロバイダーの技術プロファイル識別子を定義します。  省略すると、証明書利用者のトークンは作成されません。 |
 
@@ -172,7 +172,7 @@ Preconditions では複数の前提条件を確認できます。 次の例で�
 
 | 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| DisplayOption| No | 単一の要求プロバイダーの選択が可能な場合の動作を制御します。 使用可能な値: `DoNotShowSingleProvider` (既定値)。ユーザーはフェデレーション ID プロバイダーに直ちにリダイレクトされます。 または、 `ShowSingleProvider` Azure AD B2C では、単一の ID プロバイダーの選択があるサインイン ページが表示されます。 この属性を使用するには、[コンテンツ定義のバージョン](page-layout.md)が  `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` 以上になっている必要があります。|
+| DisplayOption| No | 単一の要求プロバイダーの選択が可能な場合の動作を制御します。 使用可能な値: `DoNotShowSingleProvider` (既定値)。ユーザーはフェデレーション ID プロバイダーに直ちにリダイレクトされます。 または、`ShowSingleProvider`。Azure AD B2C では、単一の ID プロバイダーの選択があるサインイン ページが表示されます。 この属性を使用するには、[コンテンツ定義のバージョン](page-layout.md)が `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` 以上になっている必要があります。|
 
 **ClaimsProviderSelection** 要素には、次の属性が含まれています。
 

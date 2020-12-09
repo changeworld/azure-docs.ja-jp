@@ -3,14 +3,14 @@ title: Azure Automation Update Management の概要
 description: この記事では、Windows および Linux マシンの更新プログラムを実装する Update Management 機能について概要を説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 11/23/2020
+ms.date: 11/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: eadceb17d01b40deab656bdd6223cb8f0844f54f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 37ab05ce7e963ab7fdc4d2b02e254adaa205446c
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95528246"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327493"
 ---
 # <a name="update-management-overview"></a>Update Management の概要
 
@@ -79,7 +79,7 @@ Update Management では、同期先として構成されたソースに基づ�
 |CentOS 6 および 7 (x64)      | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。 分類に基づく修正プログラムでは、CentOS の RTM リリースには含まれていないセキュリティ データを返すための `yum` が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux の更新プログラムの分類](view-update-assessments.md#linux)に関する記事を参照してください。          |
 |Red Hat Enterprise 6 および 7 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。        |
 |SUSE Linux Enterprise Server 12 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。        |
-|Ubuntu 14.04 LTS、16.04 LTS、18.04 (x64)      |Linux エージェントでは、更新リポジトリへのアクセス権が必要です。         |
+|Ubuntu 14.04 LTS、16.04 LTS、および 18.04 LTS (x64)      |Linux エージェントでは、更新リポジトリへのアクセス権が必要です。         |
 
 > [!NOTE]
 > Azure 仮想マシン スケール セットは、Update Management を使用して管理できます。 Update Management は、基本イメージではなくインスタンス自体で動作します。 すべての VM インスタンスを一度に更新しないように、段階的に更新をスケジュールする必要があります。 仮想マシン スケールセットのノードを追加するには、「[Azure 以外のマシンを Change Tracking とインベントリに追加する](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory)」の手順に従ってください。

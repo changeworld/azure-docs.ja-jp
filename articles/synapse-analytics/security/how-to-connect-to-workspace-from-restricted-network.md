@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 55ec8be176dc7274a3b9a1feca53726d57eeb422
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2e96cbf0c1464e27b0a384e8a813118056103b91
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024467"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296687"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>制限されたネットワークからのワークスペース リソースへの接続
 
@@ -46,14 +46,11 @@ ms.locfileid: "95024467"
 
 次に、Azure portal からプライベート リンク ハブを作成します。 ポータルでこれを見つけるには *Azure Synapse Analytics (プライベート リンク ハブ)* を検索し、必要な情報を入力して作成します。 
 
-> [!Note]
-> **[リージョン]** の値が、Azure Synapse Analytics ワークスペースと同じであることを確認します。
-
 ![Synapse プライベート リンク ハブの作成のスクリーンショット。](./media/how-to-connect-to-workspace-from-restricted-network/private-links.png)
 
-## <a name="step-3-create-a-private-endpoint-for-your-gateway"></a>手順 3:ゲートウェイのプライベート エンドポイントの作成
+## <a name="step-3-create-a-private-endpoint-for-your-synapse-studio"></a>手順 3:Synapse Studio のプライベート エンドポイントの作成
 
-Azure Synapse Analytics Studio ゲートウェイにアクセスするには、Azure portal からプライベート エンドポイントを作成する必要があります。 ポータルでこれを見つけるには、*Private Link* を検索します。 **Private Link センター** で、 **[プライベート エンドポイントの作成]** を選択し、作成するために必要な情報を入力します。 
+Azure Synapse Analytics Studio にアクセスするには、Azure portal からプライベート エンドポイントを作成する必要があります。 ポータルでこれを見つけるには、*Private Link* を検索します。 **Private Link センター** で、 **[プライベート エンドポイントの作成]** を選択し、作成するために必要な情報を入力します。 
 
 > [!Note]
 > **[リージョン]** の値が、Azure Synapse Analytics ワークスペースと同じであることを確認します。
@@ -118,6 +115,43 @@ Azure Synapse Analytics Studio ワークスペースのストレージ エクス
 このエンドポイントを作成すると、承認状態に **[保留中]** の状態が表示されます。 このストレージ アカウントの所有者からの承認を要求するには、Azure portal 内のこのストレージ アカウントの **[プライベート エンドポイント接続]** タブで行います。 承認されると、このストレージ アカウントで、リンクされたストレージ リソースにノートブックからアクセスできるようになります。
 
 これで、すべてが設定されました。 Azure Synapse Analytics Studio ワークスペース リソースにアクセスできます。
+
+## <a name="appendix-dns-registration-for-private-endpoint"></a>付録: プライベート エンドポイントの DNS 登録
+
+次のスクリーンショットのように、プライベート エンドポイントの作成中に [プライベート DNS ゾーンとの統合] が有効になっていない場合は、プライベート エンドポイントごとに "**プライベート DNS ゾーン**" を作成する必要があります。
+![Synapse プライベート DNS ゾーンの作成 1 のスクリーンショット。](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-1.png)
+
+ポータルで **プライベート DNS ゾーン** を見つけるには、 *[プライベート DNS ゾーン]* で検索します。 **[プライベート DNS ゾーン]** で、作成に必要な以下の情報を入力します。
+
+* **[名前]** には、次のように特定のプライベート エンドポイントのプライベート DNS ゾーン専用の名前を入力します。
+  * **`privatelink.azuresynapse.net`** は、Azure Synapse Analytics Studio ゲートウェイにアクセスするためのプライベート エンドポイント用です。 この種類のプライベート エンドポイントの作成については、手順 3 を参照してください。
+  * **`privatelink.sql.azuresynapse.net`** は、SQL プールおよび組み込みプールで SQL クエリを実行するためのこの種類のプライベート エンドポイント用です。 エンドポイントの作成については、手順 4 を参照してください。
+  * **`privatelink.dev.azuresynapse.net`** は、Azure Synapse Analytics Studio ワークスペース内の他のすべてにアクセスするためのこの種類のプライベート エンドポイント用です。 この種類のプライベート エンドポイントの作成については、手順 4 を参照してください。
+  * **`privatelink.dfs.core.windows.net`** は、Azure Data Lake Storage Gen2 にリンクされたワークスペースにアクセスするためのプライベート エンドポイント用です。 この種類のプライベート エンドポイントの作成については、手順 5 を参照してください。
+  * **`privatelink.blob.core.windows.net`** は、Azure Blob Storage にリンクされたワークスペースにアクセスするためのプライベート エンドポイント用です。 この種類のプライベート エンドポイントの作成については、手順 5 を参照してください。
+
+![Synapse プライベート DNS ゾーンの作成 2 のスクリーンショット。](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-2.png)
+
+**プライベート DNS ゾーン** を作成した後、作成したプライベート DNS ゾーンを入力し、 **[仮想ネットワーク リンク]** を選択して仮想ネットワークへのリンクを追加します。 
+
+![Synapse プライベート DNS ゾーンの作成 3 のスクリーンショット。](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-3.png)
+
+必須フィールドを次のように入力します。
+* **[リンク名]** には、リンクの名前を入力します。
+* **[仮想ネットワーク]** では、お使いの仮想ネットワークを選択します。
+
+![Synapse プライベート DNS ゾーンの作成 4 のスクリーンショット。](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-4.png)
+
+仮想ネットワーク リンクが追加されたら、前に作成した **プライベート DNS ゾーン** に DNS レコード セットを追加する必要があります。
+
+* **[名前]** には、別のプライベート エンドポイント専用の名前文字列を入力します。 
+  * **web** は、Azure Synapse Analytics Studio にアクセスするためのプライベート エンドポイント用です。
+  * "***YourWorkSpaceName**_" は、SQL プールで SQL クエリを実行するためのプライベート エンドポイント用で、Azure Synapse Analytics Studio ワークスペース内の他のすべてにアクセスするためのプライベート エンドポイント用でもあります _ "*** YourWorkSpaceName*-ondemand**" は、組み込みプールで SQL クエリを実行するためのプライベート エンドポイント用です。
+* **[種類]** では、DNS レコードの種類 **[A]** のみを選択します。 
+* **[IP アドレス]** には、各プライベート エンドポイントの対応する IP アドレスを入力します。 プライベート エンドポイントの概要の **[ネットワーク インターフェイス]** で IP アドレスを取得できます。
+
+![Synapse プライベート DNS ゾーンの作成 5 のスクリーンショット。](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-5.png)
+
 
 ## <a name="next-steps"></a>次のステップ
 

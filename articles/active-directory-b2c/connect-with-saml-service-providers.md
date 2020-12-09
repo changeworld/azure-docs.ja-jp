@@ -12,12 +12,12 @@ ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4426a305d72fdd86ee58b3f4a05153593515d4b5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7c6ba79a82fe3d291008f3317ddce7df4adcda0a
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949651"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309649"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML アプリケーションを Azure AD B2C に登録する
 
@@ -453,7 +453,7 @@ SAML トークンは、サインインが成功した後に Azure AD B2C によ�
 |`<Response>` `<Assertion>` `<Subject>` `<NameID>`     |         |トークンによって情報がアサートされるプリンシパルです (ユーザー オブジェクト ID など)。 この値は変更不可で、再割り当ても再利用もできません。 そのため、この値を使用すると、トークンを使用してリソースにアクセスする場合などに安全に承認チェックができます。 既定では、サブジェクト要求には、ディレクトリ内のユーザーのオブジェクト ID が設定されます。|
 |`<Response>` `<Assertion>` `<Subject>` `<NameID>`     | `Format` | 文字列ベースの識別子情報の分類を表す URI 参照。 既定では、このプロパティは省略されます。 証明書利用者 [SubjectNamingInfo](relyingparty.md#subjectnaminginfo) を設定して、`urn:oasis:names:tc:SAML:2.0:nameid-format:transient` などの `NameID` 形式を指定できます。 |
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |トークンが有効になる時刻。 時刻値は UTC でエンコードされます。 アプリケーションでは、この要求を使用してトークンの有効期間の有効性を確認する必要があります。 トークンの有効期間の設定を変更するには、SAML トークン発行の技術プロファイルの `TokenNotBeforeSkewInSeconds` [メタデータ](saml-issuer-technical-profile.md#metadata)を設定します。 |
-|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | トークンが無効になる時刻。 アプリケーションでは、この要求を使用してトークンの有効期間の有効性を確認する必要があります。 この値は `NotBefore` の 15 分後であり、変更することはできません。|
+|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | トークンが無効になる時刻。 アプリケーションでは、この要求を使用してトークンの有効期間の有効性を確認する必要があります。 既定値は `NotBefore` の 5 分後で、SAML トークン発行の技術プロファイルの `TokenLifeTimeInSeconds` [メタデータ](saml-issuer-technical-profile.md#metadata)を追加することによって更新できます。|
 |`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |対象ユーザーを識別する URI 参照。 トークンの受信者を示します。 値は、SAML 要求 `AssertionConsumerServiceURL` と同じです。|
 |`<Response>` `<Assertion>` `<AttributeStatement>` `<Attribute>` の コレクション | | [証明書利用者の技術プロファイル](relyingparty.md#technicalprofile)出力要求で構成されているアサーション コレクション (要求)。 出力要求の `PartnerClaimType` を設定することにより、アサーションの名前を構成できます。 |
 

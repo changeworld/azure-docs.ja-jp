@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/25/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5cbedad360e5270238225503e7802d571820c871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 084a8e247ab8bb3e6e6c75cf8cfe8e204384f549
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388155"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345152"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して LinkedIn アカウントでのサインインを設定する
 
@@ -38,11 +38,11 @@ Azure AD B2C で ID プロバイダーとして LinkedIn を使用するには�
 
 1. LinkedIn アカウントの資格情報を使用して、[LinkedIn アプリケーション管理](https://www.linkedin.com/secure/developer?newapp=) の Web サイトにサインインします。
 1. **[Create app]\(アプリの作成\)** を選択します。
-1. **アプリ名**を入力します。
-1. LinkedIn ページ名に対応する**会社**名を入力します。 LinkedIn ページがまだない場合は、作成します。
+1. **アプリ名** を入力します。
+1. LinkedIn ページ名に対応する **会社** 名を入力します。 LinkedIn ページがまだない場合は、作成します。
 1. (省略可能) **プライバシー ポリシーの URL** を入力します。 これは、有効な URL である必要がありますが、到達可能なエンドポイントである必要はありません。
-1. **勤務先の電子メール**を入力します。
-1. **アプリ ロゴ**の画像をアップロードします。 ロゴの画像は正方形である必要があり、その大きさは 100 x 100 ピクセル以上である必要があります。
+1. **勤務先の電子メール** を入力します。
+1. **アプリ ロゴ** の画像をアップロードします。 ロゴの画像は正方形である必要があり、その大きさは 100 x 100 ピクセル以上である必要があります。
 1. **[Products]\(製品\)** セクションは既定値のままにしておいてください。
 1. **[Legal terms]\(法律条項\)** に記載されている情報を確認します。 条項に同意する場合は、チェック ボックスをオンにします。
 1. **[Create app]\(アプリの作成\)** を選択します。
@@ -51,8 +51,8 @@ Azure AD B2C で ID プロバイダーとして LinkedIn を使用するには�
 
 1. **[Auth]\(認証\)** タブを選択します。
 1. **クライアント ID** を書き留めます。
-1. **クライアント シークレット**を表示して記録します。
-1. **[OAuth 2.0 settings]\(OAuth 2.0 設定\)** で、次の**リダイレクト URL** を追加します。 `your-tenant` をテナントの名前に置き換えます。 テナント名には、Azure AD B2C に大文字で定義されている場合でも、**すべて小文字**を使用します。
+1. **クライアント シークレット** を表示して記録します。
+1. **[OAuth 2.0 settings]\(OAuth 2.0 設定\)** で、次の **リダイレクト URL** を追加します。 `your-tenant` をテナントの名前に置き換えます。 テナント名には、Azure AD B2C に大文字で定義されている場合でも、**すべて小文字** を使用します。
 
     `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp`
 
@@ -65,8 +65,8 @@ Azure AD B2C テナントで前に記録したクライアント シークレッ
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 5. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
-6. **オプション**については、`Manual`を選択します。
-7. ポリシー キーの**名前**を入力します。 たとえば、「 `LinkedInSecret` 」のように入力します。 プレフィックス *B2C_1A_* がキーの名前に自動的に追加されます。
+6. **オプション** については、`Manual`を選択します。
+7. ポリシー キーの **名前** を入力します。 たとえば、「 `LinkedInSecret` 」のように入力します。 プレフィックス *B2C_1A_* がキーの名前に自動的に追加されます。
 8. **[シークレット]** に、前に記録したクライアント シークレットを入力します。
 9. **[キー使用法]** として [`Signature`] を選択します。
 10. **Create** をクリックしてください。
@@ -77,8 +77,8 @@ Azure AD B2C テナントで前に記録したクライアント シークレッ
 
 LinkedIn アカウントをクレーム プロバイダーとして定義するには、それをポリシーの拡張ファイル内の **ClaimsProviders** 要素に追加します。
 
-1. エディターで *SocialAndLocalAccounts/ **TrustFrameworkExtensions.xml*** ファイルを開きます。 このファイルは、前提条件の 1 つの一部としてダウンロードした[カスタム ポリシー スターター パック][starter-pack]に含まれています。
-1. **ClaimsProviders** 要素を見つけます。 存在しない場合は、それをルート要素の下に追加します。
+1. エディターで *SocialAndLocalAccounts/**TrustFrameworkExtensions.xml** _ ファイルを開きます。 このファイルは、前提条件の 1 つの一部としてダウンロードした[カスタム ポリシー スターター パック][starter-pack]に含まれています。
+1. _ *ClaimsProviders** 要素を見つけます。 存在しない場合は、それをルート要素の下に追加します。
 1. 新しい **ClaimsProvider** を次のように追加します。
 
     ```xml
@@ -99,7 +99,7 @@ LinkedIn アカウントをクレーム プロバイダーとして定義する�
             <Item Key="external_user_identity_claim_id">id</Item>
             <Item Key="BearerTokenTransmissionMethod">AuthorizationHeader</Item>
             <Item Key="ResolveJsonPathsInJsonTokens">true</Item>
-            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="UsePolicyInRedirectUri">false</Item>
             <Item Key="client_id">Your LinkedIn application client ID</Item>
           </Metadata>
           <CryptographicKeys>

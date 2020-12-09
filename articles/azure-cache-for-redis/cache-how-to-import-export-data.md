@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: e8bb1457bbf5d610518c3bc84768186972734099
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 9ee3b447b2b5f6dfa8972749c3c46ae01f79bfdc
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536863"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327510"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Azure Cache for Redis でデータをインポートまたはエクスポートする
 Import/Export は Azure Cache for Redis のデータ管理操作です。Azure Cache for Redis データベース (RDB) のスナップショットを Premium キャッシュと Azure Storage アカウント内の BLOB の間でインポートとエクスポートを行うことで、データを Azure Cache for Redis にインポートしたり、Azure Cache for Redis からエクスポートしたりすることができます。
@@ -66,7 +66,7 @@ Export では、Azure Cache for Redis に格納されたデータを、Redis と
 
 1. キャッシュの現在の内容をストレージにエクスポートするには、Azure Portal で [キャッシュを参照](cache-configure.md#configure-azure-cache-for-redis-settings)し、 **[リソース]** メニューの **[データのエクスポート]** をクリックします。
 
-    ![[ストレージ コンテナーの選択]](./media/cache-how-to-import-export-data/cache-export-data-choose-storage-container.png)
+    ![Contoso5premium のナビゲーション ウィンドウで、[管理] 一覧の [データのエクスポート] オプションが強調表示されています。](./media/cache-how-to-import-export-data/cache-export-data-choose-storage-container.png)
 2. **[ストレージ コンテナーの選択]** をクリックし、目的のストレージ アカウントを選択します。 ストレージ アカウントは、キャッシュと同じサブスクリプションおよびリージョン内にある必要があります。
 
    > [!IMPORTANT]
@@ -76,7 +76,7 @@ Export では、Azure Cache for Redis に格納されたデータを、Redis と
     ![ストレージ アカウント](./media/cache-how-to-import-export-data/cache-export-data-choose-account.png)
 3. 目的の BLOB コンテナーを選び、 **[選択]** をクリックします。 新しいコンテナーを使用するには、まず **[コンテナーの追加]** をクリックして新しいコンテナーを追加したうえで、一覧からそれを選択します。
 
-    ![[ストレージ コンテナーの選択]](./media/cache-how-to-import-export-data/cache-export-data-container.png)
+    ![Contoso55 の [コンテナー] で、+ 記号の [コンテナー] オプションが強調表示されています。 一覧には cachesaves という 1 つのコンテナーがあり、選択されて強調表示されています。 [選択] オプションが選択されて強調表示されています。](./media/cache-how-to-import-export-data/cache-export-data-container.png)
 4. **BLOB 名のプレフィックス** を入力し、 **[エクスポート]** をクリックしてエクスポート処理を開始します。 BLOB 名のプレフィックスは、このエクスポート操作によって生成されるファイル名のプレフィックスとして使用されます。
 
     ![[エクスポート]](./media/cache-how-to-import-export-data/cache-export-data.png)
@@ -152,6 +152,6 @@ The request to import data into cache 'contoso55' failed with status 'error' and
 Export は、ページ BLOB として格納されている RDB ファイルでのみ機能します。 それ以外のタイプの BLOB は、ホット層とクール層の BLOB ストレージ アカウントも含め、現時点ではサポートされていません。 詳細については、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-Azure Cache for Redis 機能について詳しく確認します。
+Azure Cache for Redis の機能について
 
 * [Azure Cache for Redis サービス レベル](cache-overview.md#service-tiers)

@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 9a2bda0a526c307ae17d8415f6f24423ddf51b63
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: c6bc5ca748a35b17c61d314e96f7284d30e7fc3b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917768"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338131"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID ブローカー (HIB)
 
@@ -140,13 +140,13 @@ Beeline と Livy を使用する場合は、[こちら](https://github.com/Azure
 
 ## <a name="faq"></a>よく寄せられる質問
 ### <a name="what-app-is-created-by-hdinsight-in-aad"></a>AAD では HDInsight によってどのようなアプリが作成されますか?
-クラスターごとに、サード パーティのアプリケーションが、identifierUri (https://clustername.azurehdinsight.net など) としてクラスター URI と共に AAD に登録されます。
+クラスターごとに、サード パーティのアプリケーションが、identifierUri (`https://clustername.azurehdinsight.net` など) としてクラスター URI とともに AAD に登録されます。
 
 ### <a name="why-are-users-prompted-for-consent-before-using-hib-enabled-clusters"></a>HIB 対応クラスターを使用する前にユーザーに同意を求めるのはなぜですか?
 AAD では、ユーザーを認証したり、データにアクセスしたりする前に、すべてのサード パーティのアプリケーションに同意を求めます。
 
 ### <a name="can-the-consent-be-approved-programatically"></a>同意はプログラムによって承認できますか?
-Microsoft Graph API を使用すると、同意を自動化できます。[API のドキュメント](https://docs.microsoft.com/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0)を参照してください。同意を自動化する順序は、以下のとおりです。
+Microsoft Graph API を使用すると、同意を自動化できます。[API のドキュメント](/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0)を参照してください。同意を自動化する順序は、以下のとおりです。
 
 * アプリを登録し、Microsoft Graph にアクセスするための Application.ReadWrite.All アクセス許可をそのアプリに付与します
 * クラスターが作成されたら、識別子 URI に基づいてクラスター アプリを照会します

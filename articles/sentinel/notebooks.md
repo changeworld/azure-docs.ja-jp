@@ -10,14 +10,14 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: ded332813a840892f640aa6f6e48debbfe381b4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5d182276cd77493be5184503a1afc47934bf8ea
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90889237"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344195"
 ---
-# <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Jupyter のノートブックを使用してセキュリティの脅威を検出する
+# <a name="use-jupyter-notebook-to-hunt-for-security-threats"></a>Jupyter Notebook を使用してセキュリティの脅威を検出する
 
 Azure Sentinel の基盤となるのは、ハイ パフォーマンス クエリと動的スキーマを併用して大規模なデータ ボリュームまでスケーリングするデータ ストアです。 Azure portal とすべての Azure Sentinel ツールでは、このデータ ストアにアクセスする際に、共通の API が使用されます。 同じ API を [Jupyter](https://jupyter.org/) Notebook や Python などの外部ツールでも使用できます。 ポータルでは多くの一般的なタスクを実行できますが、Jupyter では、データに対して、より幅広い処理が可能です。 高度なプログラミング性と膨大なライブラリ コレクションを組み合わせて、機械学習、視覚化、データ解析を行えます。 こうした特性から、Jupyter は、セキュリティの調査や検出にうってつけのツールとなっています。
 
@@ -140,7 +140,7 @@ Azure Sentinel ノートブックでは、pandas、matplotlib、bokeh など、�
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Azure Sentinel 内で Jupyter ノートブックを使い始める方法を学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+この記事では、Azure Sentinel 内で Jupyter Notebook を使い始める方法を学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
 - [脅威を事前に検出する](hunting.md)
 - [ブックマークを使用して検出中に関心のある情報を保存する](bookmarks.md)

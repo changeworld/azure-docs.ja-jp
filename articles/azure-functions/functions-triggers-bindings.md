@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: e00fd3d1dac0a18ac7f7377e08ae8d20ae132c56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa0d78d52ec13c91b82e6a8d10720269076f59a1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652623"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353546"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
 
@@ -18,7 +18,7 @@ ms.locfileid: "91652623"
 
 トリガーは、関数が実行される原因です。 トリガーで関数の呼び出し方法が定義されます。1 つの関数には正確に 1 つのトリガーを含める必要があります。 トリガーにはデータが関連付けられていて、多くの場合、関数のペイロードとして提供されます。 
 
-関数へのバインドは、関数に別のリソースを宣言的に接続する方法です。バインドは*入力バインド* または*出力バインド*、あるいは両方として接続される場合があります。 バインドからのデータは、パラメーターとして関数に提供されます。
+関数へのバインドは、関数に別のリソースを宣言的に接続する方法です。バインドは *入力バインド* または *出力バインド*、あるいは両方として接続される場合があります。 バインドからのデータは、パラメーターとして関数に提供されます。
 
 ニーズに合わせて、さまざまなバインドを組み合わせることができます。 バインドは省略可能であり、関数には 1 つまたは複数の入力または出力バインドがある場合があります。
 
@@ -46,7 +46,7 @@ ms.locfileid: "91652623"
 | C# クラス ライブラリ | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C# 属性でのメソッドとパラメーターの修飾 |
 | 他のすべて (Azure portal を含む) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[function.json](./functions-reference.md) ([スキーマ](http://json.schemastore.org/function)) の更新 |
 
-ポータルではこの構成のために UI が提供されますが、関数の **[統合]** タブで使用できる **詳細エディター**を開いて直接ファイルを編集できます。
+ポータルではこの構成のために UI が提供されますが、関数の **[統合]** タブで使用できる **詳細エディター** を開いて直接ファイルを編集できます。
 
 .NET では、パラメーター型で入力データのデータ型が定義されます。 たとえば、キュー トリガーのテキストにバインドするには `string` を、バイナリとして読み取るにはバイト配列を、オブジェクトを逆シリアル化するにはカスタム型を使用します。
 
@@ -69,7 +69,7 @@ JavaScript などの動的に型指定される言語の場合は、*function.js
 
 - トリガーの場合、方向は常に `in` です
 - 入出力バインドは `in` と `out` を使用します
-- 一部のバインドは、特殊な方向の `inout` をサポートしてします。 `inout` を使用する場合、ポータルの **[統合]** タブで使用できるのは**詳細エディター**のみです。
+- 一部のバインドは、特殊な方向の `inout` をサポートしてします。 `inout` を使用する場合、ポータルの **[統合]** タブで使用できるのは **詳細エディター** のみです。
 
 [クラス ライブラリの属性](functions-dotnet-class-library.md)を使用してトリガーとバインドを構成した場合、その方向は属性コンストラクターで提供されるか、またはパラメーター型から推論されます。
 
@@ -88,6 +88,10 @@ JavaScript などの動的に型指定される言語の場合は、*function.js
 次の表を使用して、関数でバインドを使用する方法を示す特定のバインドの種類の例を参照してください。 まず、実際のプロジェクトに対応する言語のタブを選択します。 
 
 [!INCLUDE [functions-bindings-code-example-chooser](../../includes/functions-bindings-code-example-chooser.md)]
+
+## <a name="custom-bindings"></a>カスタム バインド
+
+カスタムの入力および出力バインドを作成できます。 バインドは .NET で作成する必要がありますが、サポートされている任意の言語から使用できます。 カスタム バインドの作成の詳細については、「[Creating custom input and output bindings (カスタムの入力および出力バインドの作成)](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings)」を参照してください。
 
 ## <a name="resources"></a>リソース
 - [バインド式とパターン](./functions-bindings-expressions-patterns.md)

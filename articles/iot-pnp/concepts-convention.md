@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: a58fa45f47ee8dce4ec96591551abad76c1218ee
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 86c6ea9dded423e7bd513faf73adfd293f2bd38f
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045484"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302605"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT プラグ アンド プレイ規則
 
@@ -20,10 +20,10 @@ IoT プラグ アンド プレイ デバイスは、IoT ハブとメッセージ
 
 デバイスには[モジュール](../iot-hub/iot-hub-devguide-module-twins.md)を含めるか、IoT Edge ランタイムによってホストされる [IoT Edge モジュール](../iot-edge/about-iot-edge.md)内にデバイスを実装できます。
 
-IoT プラグ アンド プレイ デバイスが実装するテレメトリ、プロパティ、コマンドを、[Digital Twins Definition Language v2 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) _モデル_で記述します。 この記事では、次の 2 種類のモデルを参照します。
+IoT プラグ アンド プレイ デバイスが実装するテレメトリ、プロパティ、コマンドを、[Digital Twins Definition Language v2 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) _モデル_ で記述します。 この記事では、次の 2 種類のモデルを参照します。
 
-- **コンポーネントなし** - コンポーネントのないモデル。 このモデルでは、テレメトリ、プロパティ、およびコマンドを、メイン インターフェイスのコンテンツ セクションで最上位レベルのプロパティとして宣言します。 Azure IoT エクスプローラー ツールでは、このモデルは 1 つの_既定のコンポーネント_として表示されます。
-- **複数のコンポーネント** - 2 つ以上のインターフェイスで構成されるモデル。 テレメトリ、プロパティ、およびコマンドを持つ_既定のコンポーネント_として表示されるメイン インターフェイス。 追加のテレメトリ、プロパティ、およびコマンドを備えたコンポーネントとして宣言された 1 つ以上のインターフェイス。
+- **コンポーネントなし** - コンポーネントのないモデル。 このモデルでは、テレメトリ、プロパティ、およびコマンドを、メイン インターフェイスのコンテンツ セクションで最上位レベルのプロパティとして宣言します。 Azure IoT エクスプローラー ツールでは、このモデルは 1 つの _既定のコンポーネント_ として表示されます。
+- **複数のコンポーネント** - 2 つ以上のインターフェイスで構成されるモデル。 テレメトリ、プロパティ、およびコマンドを持つ _既定のコンポーネント_ として表示されるメイン インターフェイス。 追加のテレメトリ、プロパティ、およびコマンドを備えたコンポーネントとして宣言された 1 つ以上のインターフェイス。
 
 詳細については、「[モデル内の IoT プラグ アンド プレイ コンポーネント](concepts-components.md)」を参照してください。
 
@@ -79,7 +79,7 @@ reported プロパティのペイロードの例:
 
 この要素からコンポーネントを参照していることを示すために、デバイスまたはモジュールは `{"__t": "c"}` マーカーを追加する必要があります。
 
-DTDL:
+コンポーネントを参照する DTDL:
 
 ```json
 {
@@ -95,7 +95,11 @@ DTDL:
     }
   ]
 }
+```
 
+コンポーネントを定義する DTDL:
+
+```json
 {
   "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:com:example:Thermostat;1",
@@ -255,7 +259,7 @@ reported プロパティの 2 番目のペイロードの例:
 
 デバイスまたはモジュールでは、reported プロパティを送信することで、プロパティを受け取ったことを確認する必要があります。
 
-DTDL:
+コンポーネントを参照する DTDL:
 
 ```json
 {
@@ -271,7 +275,11 @@ DTDL:
     }
   ]
 }
+```
 
+コンポーネントを定義する DTDL:
+
+```json
 {
   "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:com:example:Thermostat;1",

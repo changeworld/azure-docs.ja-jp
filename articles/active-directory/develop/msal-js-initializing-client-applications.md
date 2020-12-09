@@ -13,12 +13,12 @@ ms.date: 07/17/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: ea8629e53ec793b4a63c817b6ec83278a2d23871
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6b5093c5a1a45aed3493fabd7a362b0579998171
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674086"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343588"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>MSAL.js を使用してクライアント アプリケーションを初期化する
 
@@ -37,8 +37,8 @@ ms.locfileid: "92674086"
 | 値 | 必須 | 説明 |
 |:----- | :------: | :---------- |
 | アプリケーション (クライアント) ID | 必須 | Microsoft ID プラットフォーム内でアプリケーションを一意に識別する GUID。 |
-| Authority | 省略可能 | ID プロバイダーの URL ( *インスタンス* ) とアプリケーションの *サインイン対象ユーザー* 。 インスタンスとサインイン対象ユーザーが連結されると、 *Authority* が構成されます。 |
-| ディレクトリ (テナント) ID | 省略可能 | 組織専用の基幹業務アプリケーション ( *シングルテナント アプリケーション* とも呼ばれる) を構築している場合は、この値を指定します。 |
+| Authority | 省略可能 | ID プロバイダーの URL (*インスタンス*) とアプリケーションの *サインイン対象ユーザー*。 インスタンスとサインイン対象ユーザーが連結されると、*Authority* が構成されます。 |
+| ディレクトリ (テナント) ID | 省略可能 | 組織専用の基幹業務アプリケーション (*シングルテナント アプリケーション* とも呼ばれる) を構築している場合は、この値を指定します。 |
 | リダイレクト URI | 省略可能 | Web アプリを構築している場合、`redirectUri` では、ID プロバイダー (Microsoft ID プラットフォーム) が発行済みのセキュリティ トークンを返す場所を指定します。 |
 
 ## <a name="initialize-msaljs-2x-apps"></a>MSAL.js 2.x アプリの初期化
@@ -108,7 +108,7 @@ msalInstance.handleRedirectPromise().then((tokenResponse) => {
 Promise では、次の 3 つの結果が考えられます。
 
 - `.then` が呼び出され、`tokenResponse` が truthy である: リダイレクト操作が成功すると、アプリケーションに戻ります。
-- `.then` が呼び出され、`tokenResponse` が falsey (`null`) である: リダイレクト操作では、アプリケーションに戻りません。
+- `.then` が呼び出され、`tokenResponse` が falsy (`null`) である:リダイレクト操作では、アプリケーションに戻りません。
 - `.catch` が呼び出される: リダイレクト操作によりアプリケーションに戻りますが、エラーが発生しています。
 
 ## <a name="initialize-msaljs-1x-apps"></a>MSAL.js 1.x アプリの初期化

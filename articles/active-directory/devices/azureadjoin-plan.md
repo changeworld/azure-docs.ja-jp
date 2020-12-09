@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3587ef6be9d6c9969dff5d1af2181ed51aea7d29
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3acaf4929158b24ff50655aa18c05b41aeec4b53
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308279"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435452"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
@@ -90,10 +90,12 @@ ID プロバイダーによってこれらのプロトコルがサポートさ�
 
 ユーザーを以下の場所に作成する場合:
 
-- **オンプレミスの Active Directory** : [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md) を使用して Azure AD と同期する必要があります。 
-- **Azure AD** : 追加のセットアップは不要です。
+- **オンプレミスの Active Directory**: [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md) を使用して Azure AD と同期する必要があります。 
+- **Azure AD**: 追加のセットアップは不要です。
 
 Azure AD の UPN とは異なるオンプレミスの UPN は、Azure AD 参加済みデバイスでサポートされていません。 お客様のユーザーがオンプレミスの UPN を使用している場合は、Azure AD 内でプライマリ UPN を使用するように切り替えることを計画してください。
+
+UPN の変更は、Windows 10 2004 Update 以降でのみサポートされます。 この更新プログラムがインストールされたデバイスのユーザーには、UPN の変更後も問題は発生しません。 Windows 10 2004 Update より前のデバイスの場合は、ユーザーのデバイスで SSO および条件付きアクセスに関する問題が発生する可能性があります。 この問題を解決するために、ユーザーは新しい UPN を使用して [他のユーザー] タイルから Windows にサインインする必要があります。 
 
 ## <a name="assess-your-device-management"></a>デバイス管理を評価する
 
@@ -187,7 +189,7 @@ Azure AD 参加済みデバイスにリモート デスクトップ接続を行�
 Windows 10 2004 更新プログラム以降、ユーザーは Azure AD 登録済み Windows 10 デバイスから Azure AD 参加済みデバイスへのリモート デスクトップも使用できるようになります。 
 
 ## <a name="understand-your-provisioning-options"></a>プロビジョニングのオプションを把握する
-**注** :Azure AD 参加済みデバイスは、システム準備ツール (Sysprep) または同様のイメージング ツールを使用してデプロイすることはできません
+**注**:Azure AD 参加済みデバイスは、システム準備ツール (Sysprep) または同様のイメージング ツールを使用してデプロイすることはできません
 
 次のアプローチを使用して Azure AD 参加をプロビジョニングできます。
 
@@ -243,7 +245,7 @@ Azure portal では、組織内の Azure AD 参加済みデバイスのデプロ
 
 モビリティ設定を構成するには、最初に MDM プロバイダーを追加することが必要な場合があります。
 
-**MDM プロバイダーを追加するには** :
+**MDM プロバイダーを追加するには**:
 
 1. **[Azure Active Directory]** ページの **[管理]** セクションで、[`Mobility (MDM and MAM)`] をクリックします。 
 1. **[アプリケーションの追加]** をクリックします。
@@ -261,8 +263,8 @@ MDM プロバイダーを選択して関連設定を構成します。
 
 スコープに基づいて、次のいずれかのようになります。 
 
-- **ユーザーが MDM のスコープ内にいる** :Azure AD Premium のサブスクリプションがある場合は、Azure AD 参加と共に MDM の登録が自動化されます。 スコープ内のすべてのユーザーには、MDM に対する適切なライセンスが必要です。 このシナリオで MDM の登録に失敗した場合は、Azure AD 参加もロールバックされます。
-- **ユーザーが MDM のスコープ内にいない** :ユーザーが MDM のスコープ内にいない場合、Azure AD 参加は MDM 登録なしで完了します。 その結果、アンマネージド デバイスが生じます。
+- **ユーザーが MDM のスコープ内にいる**:Azure AD Premium のサブスクリプションがある場合は、Azure AD 参加と共に MDM の登録が自動化されます。 スコープ内のすべてのユーザーには、MDM に対する適切なライセンスが必要です。 このシナリオで MDM の登録に失敗した場合は、Azure AD 参加もロールバックされます。
+- **ユーザーが MDM のスコープ内にいない**:ユーザーが MDM のスコープ内にいない場合、Azure AD 参加は MDM 登録なしで完了します。 その結果、アンマネージド デバイスが生じます。
 
 ### <a name="mdm-urls"></a>MDM URL
 
@@ -284,7 +286,7 @@ MAM は、Azure AD 参加に適用されません。
 
 Azure AD に対して状態ローミングを有効にして、ユーザーがデバイス間で設定を同期できるようにするには、「[Azure Active Directory の Enterprise State Roaming を有効にする](enterprise-state-roaming-enable.md)」をご覧ください。 
 
-**推奨事項** :この設定は、ハイブリッド Azure AD 参加済みデバイスに対しても有効にしてください。
+**推奨事項**:この設定は、ハイブリッド Azure AD 参加済みデバイスに対しても有効にしてください。
 
 ## <a name="configure-conditional-access"></a>条件付きアクセスを構成する
 

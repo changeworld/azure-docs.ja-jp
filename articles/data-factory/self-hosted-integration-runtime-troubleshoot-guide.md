@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: 93c35828444ec93a974769ed3a2f1981c0ec4368
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 635178999398287649d8630fc5262a385afc48b2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96013462"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341786"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムのトラブルシューティング
 
@@ -459,6 +459,22 @@ openssl pkcs12 -export -in .\xxxx_new.pem -out xxxx_new.pfx
 
 ![証明書の変更後](media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png)
 
+### <a name="self-hosted-integration-runtime-version-5x"></a>セルフホステッド統合ランタイム バージョン 5.x
+Azure Data Factory セルフホステッド統合ランタイム バージョン 5.x にアップグレードするには、 **.NET Framework ランタイム 4.7.2** 以降が必要です。 ダウンロード ページには、最新のバージョン 4.x と最新の 2 つのバージョン 5.x のダウンロード リンクが表示されます。 
+
+
+ADF V2 のお客様の場合:
+- 自動更新がオンになっていて、.NET framework ランタイムを 4.7.2 以上に既にアップグレードしている場合、セルフホステッド統合ランタイムは最新のバージョン 5.x に自動的にアップグレードされます。
+- 自動更新がオンになっていて、.NET framework ランタイムを 4.7.2 以上にアップグレードしていない場合、セルフホステッド統合ランタイムは最新のバージョン 5.x に自動的にアップグレードされません。 セルフホステッド統合ランタイムは、現在のバージョン 4.x のままになります。 .NET framework ランタイムのアップグレードに関する警告が、ポータルとセルフホストテッド統合ランタイムのクライアントに表示されます。
+- 自動更新がオフになっていて、.NET framework ランタイムを 4.7.2 以上に既にアップグレードしている場合、最新の 5.x を手動でダウンロードして、マシンにインストールすることができます。
+- 自動更新がオフになっていて、.NET framework ランタイムを 4.7.2 以上にアップグレードしていない場合、 SHIR 5.x を手動でインストールしてキーを登録しようとすると、最初に .NET framework ランタイムをアップグレードするように求められます。
+
+
+ADF V1 のお客様の場合:
+- セルフホステッド統合ランタイム 5.x では、ADF V1 はサポートされません。
+- セルフホステッド統合ランタイムは、最新のバージョン 4.x に自動的にアップグレードされます。 最新のバージョン 4.x は期限切れになりません。 
+- セルフホステッド統合ランタイム 5.x を手動でインストールしてキーを登録しようとすると、セルフホステッド統合ランタイム 5.x では V1 がサポートされないと通知されます。
+
 
 ## <a name="self-hosted-ir-connectivity-issues"></a>セルフホステッド IR の接続の問題
 
@@ -736,7 +752,7 @@ ADF サービスのサーバー証明書は、次のように確認できます�
 - 理由 1 の場合、ADF サーバー証明書とその証明書チェーンが、SHIR がインストールされているコンピューターによって信頼されていることを確認してください。
 - 理由 2 の場合、SHIR マシンで置き換えられたルート CA を信頼するか、ADF サーバー証明書を置き換えないようにプロキシを構成します。
 
-Windows で証明書を信頼する方法の詳細については、[この記事](https://docs.microsoft.com/skype-sdk/sdn/articles/installing-the-trusted-root-certificate)を参照してください。
+Windows で証明書を信頼する方法の詳細については、[この記事](/skype-sdk/sdn/articles/installing-the-trusted-root-certificate)を参照してください。
 
 #### <a name="additional-info"></a>追加情報
 DigiCert から署名された、新しい SSL 証明書がロールアウトされています。DigiCert Global Root G2 が信頼されたルート CA に存在するかどうかを確認してください。
@@ -757,6 +773,7 @@ Azure Data Factory の UI からセルフホステッド IR を共有しよう�
 #### <a name="cause"></a>原因
 
 複数のテナントにまたがってセルフホステッド IR を共有することはできません。
+
 
 
 ## <a name="next-steps"></a>次のステップ

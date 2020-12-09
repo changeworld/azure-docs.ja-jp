@@ -1,18 +1,18 @@
 ---
 title: テンプレート内のパラメーター
-description: Azure Resource Manager テンプレートでパラメーターを定義する方法について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) でパラメーターを定義する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 8cdc95037967a32c2d8464f4dc39b1e7369102bb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ac1aeb579040b35b2a9b4cb90fb5687f91ebd3b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911415"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353512"
 ---
-# <a name="parameters-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのパラメーター
+# <a name="parameters-in-arm-templates"></a>ARM テンプレートのパラメーター
 
-この記事では、Azure Resource Manager テンプレートでパラメーターを定義および使用する方法について説明します。 パラメーターに異なる値を指定することにより、さまざまな環境でテンプレートを再利用できます。
+この記事では、Azure Resource Manager テンプレート (ARM テンプレート) でパラメーターを定義および使用する方法について説明します。 パラメーターに異なる値を指定することにより、さまざまな環境でテンプレートを再利用できます。
 
 Resource Manager は、デプロイ操作を開始する前にパラメーター値を解決します。 テンプレートでパラメーターが使用されている場合、Resource Manager はそれを解決済みの値に置き換えます。
 
@@ -159,9 +159,8 @@ Resource Manager は、デプロイ操作を開始する前にパラメーター
 |[既定値のための関数を含むパラメーター](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | パラメーターの既定値を定義する際のテンプレート関数の使用方法を説明します。 このテンプレートではリソースをデプロイしません。 パラメーターの値を作成して、その値を返します。 |
 |[パラメーター オブジェクト](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | パラメーターのオブジェクトの使用方法を示します。 このテンプレートではリソースをデプロイしません。 パラメーターの値を作成して、その値を返します。 |
 
-
 ## <a name="next-steps"></a>次のステップ
 
-* パラメーターに使用できるプロパティの詳細については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」をご覧ください。
+* パラメーターに使用できるプロパティの詳細については、「[ARM テンプレートの構造と構文について](template-syntax.md)」をご覧ください。
 * パラメーター値をファイルとして渡す方法については、「[Resource Manager パラメーター ファイルの作成](parameter-files.md)」を参照してください。
 * パラメーターの作成に関する推奨事項については、[ベスト プラクティス - パラメーター](template-best-practices.md#parameters)に関する記事をご覧ください。

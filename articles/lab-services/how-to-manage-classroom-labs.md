@@ -1,17 +1,17 @@
 ---
-title: Azure Lab Services でクラスルーム ラボを管理する | Microsoft Docs
-description: クラスルーム ラボを作成して構成したり、すべてのクラスルーム ラボを表示したり、登録リンクをラボ ユーザーと共有したり、ラボを削除したりする方法について説明します。
+title: Azure Lab Services でラボを管理する | Microsoft Docs
+description: クラスルーム ラボを作成して構成したり、すべてのラボを表示したり、登録リンクをラボ ユーザーと共有したり、ラボを削除したりする方法について説明します。
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: dd05b13a34e2be1a9d6bdc011a9aa24e79bc8dd1
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: db7a2f58f99252a7e5076dd86c37b65bbe8ea37a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148373"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434211"
 ---
-# <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボを管理する 
-この記事では、クラスルーム ラボの作成および削除方法について説明します。 また、ラボ アカウントのすべてのクラスルーム ラボを表示する方法についても説明します。 
+# <a name="manage-labs-in-azure-lab-services"></a>Azure Lab Services でラボを管理する 
+この記事では、クラスルーム ラボの作成および削除方法について説明します。 また、ラボ アカウントのすべてのラボを表示する方法についても説明します。 
 
 ## <a name="prerequisites"></a>前提条件
 ラボ アカウントでクラスルーム ラボを設定するには、ラボ アカウントにおける **ラボの作成者** ロールのメンバーであることが必要です。 ラボ アカウントを作成するために使用したアカウントは、このロールに自動的に追加されます。 ラボ所有者は、「[ユーザーをラボの作成者ロールに追加する](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)」の記事の手順に従って、他のユーザーをラボの作成者ロールに追加できます。
@@ -26,7 +26,7 @@ ms.locfileid: "93148373"
 1. **[New Lab]\(新しいラボ\)** ウィンドウで、次のようにします。 
     1. ラボの **名前** を指定します。 
     1. クラスに必要な **仮想マシンのサイズ** を選択します。 使用可能なサイズの一覧については、「[VM サイズ](#vm-sizes)」のセクションを参照してください。 
-    1. クラスルーム ラボで使用する **仮想マシン イメージ** を選択します。 Linux イメージを選択した場合は、 **リモート デスクトップ接続を有効にする** ためのオプションが表示されます。 詳細については、[Linux のリモート デスクトップ接続の有効化](how-to-enable-remote-desktop-linux.md)に関するページを参照してください。
+    1. クラスルーム ラボで使用する **仮想マシン イメージ** を選択します。 Linux イメージを選択した場合は、**リモート デスクトップ接続を有効にする** ためのオプションが表示されます。 詳細については、[Linux のリモート デスクトップ接続の有効化](how-to-enable-remote-desktop-linux.md)に関するページを参照してください。
 
         ラボ アカウント所有者の資格情報を使用してサインインした場合は、ラボ用により多くのイメージを有効にするためのオプションが表示されます。 詳細については、「[ラボの作成時にイメージを有効にする](specify-marketplace-images.md#enable-images-at-the-time-of-lab-creation)」を参照してください。
     1. ページに表示される **1 時間あたりの合計料金** を確認します。 
@@ -49,7 +49,7 @@ ms.locfileid: "93148373"
         ![新しいラボのウィンドウ](./media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
     4. 次に、 **[Virtual machine credentials]\(仮想マシンの資格情報\)** ページで **[次へ]** を選択します。 
 5. **[ラボ ポリシー]** ページで、次の手順を実行します。
-    1. ラボのスケジュールされたクラス時間外の各ユーザー ( **各ユーザーのクォータ** ) に割り当てる時間数を入力します。 
+    1. ラボのスケジュールされたクラス時間外の各ユーザー (**各ユーザーのクォータ**) に割り当てる時間数を入力します。 
     2. **[仮想マシンの自動シャットダウン]** オプションで、ユーザーの接続が切断されたときに VM を自動的にシャットダウンするかどうかを指定します。 VM が自動的にシャットダウンされる前にユーザーの再接続を待つ時間の長さを指定することもできます。 詳細については、「[切断時の VM の自動シャットダウンを有効にする](how-to-enable-shutdown-disconnect.md)」を参照してください。
     3. 次に、 **[完了]** を選択します。 
 
@@ -103,7 +103,7 @@ ms.locfileid: "93148373"
 > [!NOTE]
 > クラスルーム ラボを作成する際、これらの VM サイズの一部が一覧に表示されない場合があります。 このリストの内容は、ラボの場所の現在の容量に基づいて表示されます。 ラボ アカウントの作成者が、[ラボの作成者にラボの場所の選択を許可している](allow-lab-creator-pick-lab-location.md)場合は、ラボに対して別の場所を選択し、VM サイズが表示されるかどうかを確認してください。 
 
-## <a name="view-all-classroom-labs"></a>すべてのクラスルーム ラボを表示する
+## <a name="view-all-labs"></a>すべてのラボを表示する
 
 1. [Azure Lab Services ポータル](https://labs.azure.com)に移動します。
 1. **[サインイン]** をクリックします。 ラボ アカウントに **ラボの作成者** のメンバーである **ユーザー ID** を入力または作成し、パスワードを入力します。 Azure Lab Services では、組織アカウントと Microsoft アカウントがサポートされています。 
@@ -139,5 +139,5 @@ ms.locfileid: "93148373"
 
 - [ラボ所有者としてテンプレートを設定および発行する](how-to-create-manage-template.md)
 - [ラボ所有者としてラボの使用を構成および制御する](how-to-configure-student-usage.md)
-- [ラボ ユーザーとしてクラスルーム ラボにアクセスする](how-to-use-classroom-lab.md)
+- [ラボ ユーザーとしてラボにアクセスする](how-to-use-classroom-lab.md)
 

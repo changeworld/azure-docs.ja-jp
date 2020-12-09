@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 73c381624b69acb6fe7a6296a3153160812818bf
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: b4fb7c6fb3bbf02e5f1aba25c868e4a44e8507dd
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886415"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309632"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで SAML トークン発行者用の技術プロファイルを定義する
 
@@ -60,6 +60,8 @@ Azure Active Directory B2C (Azure AD B2C) は、各認証フローを処理す�
 | IssuerUri | いいえ | SAML 応答に表示される発行者名。 この値は、証明書利用者アプリケーションに構成されているものと同じ名前にする必要があります。 |
 | XmlSignatureAlgorithm | いいえ | SAML アサーションに署名するために Azure AD B2C で使用されるメソッド。 指定できる値: `Sha256`、`Sha384`、`Sha512`、または `Sha1`。 両方の側で同じ値の署名アルゴリズムを構成するようにします。 証明書でサポートされているアルゴリズムのみを使用してください。 SAML 応答を構成するには、[証明書利用者の SAML メタデータ](relyingparty.md#metadata)に関する記事を参照してください。|
 |TokenNotBeforeSkewInSeconds| いいえ| 有効期間の開始をマークするタイムスタンプの傾斜を整数で指定します。 この数値が大きいほど、証明書利用者に対して要求が発行された時間について、有効期間がより遡って開始されます。 たとえば、TokenNotBeforeSkewInSeconds が 60 秒に設定されていて、トークンが 13:05:10 UTC に発行された場合、トークンは 13:04:10 UTC から有効になります。 既定値は 0 です。 最大値は 3600 (1 時間) です。 |
+|TokenLifeTimeInSeconds| いいえ| SAML アサーションの有効期間を指定します。 この値は、上記の NotBefore 値からの秒数です。既定値は 300 秒 (5 分) です。 |
+
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 

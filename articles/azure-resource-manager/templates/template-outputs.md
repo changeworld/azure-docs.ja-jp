@@ -1,18 +1,18 @@
 ---
 title: テンプレート内の出力
-description: Azure Resource Manager テンプレートで出力値を定義する方法について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) で出力値を定義する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 8f782a78e523ebc55faac98344643982172476fa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6a375dfbc767bcbbfd8ec6b7f8cb9e942e275582
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911432"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353529"
 ---
-# <a name="outputs-in-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの出力
+# <a name="outputs-in-arm-templates"></a>ARM テンプレート内の出力
 
-この記事では、Azure Resource Manager テンプレートで出力値を定義する方法について説明します。 デプロイされたリソースから値を返す必要がある場合に出力を使用します。
+この記事では、Azure Resource Manager テンプレート (ARM テンプレート) で出力値を定義する方法について説明します。 デプロイされたリソースから値を返す必要がある場合に出力を使用します。
 
 各出力値の形式は、いずれかの[データ型](template-syntax.md#data-types)と一致している必要があります。
 
@@ -112,12 +112,12 @@ az deployment group show \
 
 次の例は、出力を使用するためのシナリオを示しています。
 
-|Template  |説明  |
+|テンプレート  |説明  |
 |---------|---------|
 |[Copy variables](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | 複合変数を作成し、それらの値を出力します。 リソースはデプロイしません。 |
 |[パブリック IP アドレス](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | パブリック IP アドレスを作成し、リソース ID を出力します。 |
 |[Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | 前述のテンプレートにリンクします。 ロード バランサーの作成時に出力内のリソース ID を使用します。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* 出力に使用できるプロパティの詳細については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」をご覧ください。
+* 出力に使用できるプロパティの詳細については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。

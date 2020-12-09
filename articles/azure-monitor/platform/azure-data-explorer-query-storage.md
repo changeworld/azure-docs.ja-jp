@@ -7,12 +7,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 8710e0cdd6c930338009fb2b7f3bd98fafcfad3e
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: 2735aec0f95f5e282bb1dffba6e4f42f966cf117
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95411565"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186543"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>Azure Data Explorer を使用して Azure Monitor からエクスポートされたデータのクエリを実行する (プレビュー)
 Azure Monitor から Azure ストレージ アカウントにデータをエクスポートすると、低コストのリテンション期間が有効になり、ログを別のリージョンに再割り当てすることができます。 Azure Data Explorer を使用して、Log Analytics ワークスペースからエクスポートされたデータのクエリを実行します。 構成されると、ワークスペースから Azure ストレージ アカウントに送信されるサポートされているテーブルが、Azure Data Explorer のデータ ソースとして使用できるようになります。
@@ -122,7 +122,7 @@ Write-Host -ForegroundColor Green $createMapping
 
 >[!TIP]
 >* Azure Data Explorer クライアント ツールにスクリプトの出力をコピーして貼り付けてから、実行して、テーブルとマッピングを作成します。
->* コンテナー内のすべてのデータを使用する場合は、スクリプトを変更し、URL を 'https://your.blob.core.windows.net/containername;SecKey' に変更することができます
+>* コンテナー内のすべてのデータを使用する場合は、スクリプトを変更し、URL を 'https://your.blob.core.windows.net/containername;SecKey' に変更します
 
 ## <a name="query-the-exported-data-from-azure-data-explorer"></a>Azure Data Explorer からエクスポートされたデータのクエリを実行する 
 
@@ -136,4 +136,4 @@ external_table("HBTest","map") | take 10000
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Data Explorer のクエリの記述](https://docs.microsoft.com/azure/data-explorer/write-queries)に関するページを確認してください。
+- [Azure Data Explorer のクエリの記述](/azure/data-explorer/write-queries)に関するページを確認してください。

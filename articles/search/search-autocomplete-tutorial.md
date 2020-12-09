@@ -1,5 +1,5 @@
 ---
-title: 検索ボックスにオートコンプリートと検索候補を追加する
+title: 検索ボックスにオートコンプリートを追加する
 titleSuffix: Azure Cognitive Search
 description: suggester を作成し、検索ボックスに完成した用語や語句をオートコンプリートする要求を作成することで、Azure Cognitive Search における入力と並行した検索のクエリのアクションを有効にします。 また、候補となる一致を返すこともできます。
 manager: nitinme
@@ -7,22 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 11/24/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1bf0a4a86ccc36960f218fabebda5bc82eb29019
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 25c87971455ed3c5f59c92748794720d61e599e3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426172"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339610"
 ---
-# <a name="add-autocomplete-and-suggestions-to-client-apps"></a>クライアント アプリにオートコンプリートと検索候補を追加する
+# <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Azure Cognitive Search を使用してクライアント アプリにオートコンプリートと検索候補を追加する
 
-入力と並行した検索は、ユーザーが開始したクエリの生産性を向上させるための一般的な手法です。 Azure Cognitive Search では、このエクスペリエンスが "*オートコプリート*" によってサポートされています。これにより、部分的な入力に基づいて用語または語句が補完されます (「micro」と入力すると "microsoft" が表示されます)。 もう 1 つの形式は、"*検索候補*" です。これは、一致するドキュメントの短い一覧です (詳細ページにリンクできるように、ブックのタイトルを ID と共に返します)。 オートコンプリートも検索候補も、インデックスの一致を前提としません。 このサービスは、結果が返されないクエリは提示しません。
+入力と並行した検索は、ユーザーが開始したクエリの生産性を向上させるための一般的な手法です。 Azure Cognitive Search では、このエクスペリエンスが "*オートコプリート*" によってサポートされています。これにより、部分的な入力に基づいて用語または語句が補完されます (「micro」と入力すると "microsoft" が表示されます)。 2 つ目のユーザー エクスペリエンスは、"*検索候補*"、つまり、一致するドキュメントの短い一覧です (そのブックに関する詳細ページにリンクできるように、ブックのタイトルを ID とともに返します)。 オートコンプリートも検索候補も、インデックスの一致を前提としません。 このサービスは、結果が返されないクエリは提示しません。
 
 これらのエクスペリエンスを Azure Cognitive Search に実装するには、次のものが必要です。
 
-+ バック エンドでの *suggester*。
++ インデックス スキーマに埋め込まれている *suggester* の定義。
 + 要求で [オートコンプリート](/rest/api/searchservice/autocomplete)または [検索候補](/rest/api/searchservice/suggestions)の API を指定する "*クエリ*"。
 + クライアント アプリで入力と並行した検索操作を処理するための "*UI コントロール*"。 このために既存の JavaScript ライブラリを使用することをお勧めします。
 

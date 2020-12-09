@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 68daec6bb6682d2b488abacb2f79bdfadc4ae628
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: bedf4dd2a955a8ffe648b47c1691e77ac1fdb8f5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076574"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187801"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>クラウド サービス ロールが起動しないときのトラブルシューティング
 ここでは、Azure Cloud Services ロールの起動失敗に関連した一般的な問題と解決法を取り上げます。
@@ -47,7 +47,7 @@ Web ロールの web.config でカスタム エラー モードをオフに設�
 リモート デスクトップを使用せずに詳細なエラーを表示するには
 
 1. Microsoft Visual Studio でソリューションを開きます。
-2. **ソリューション エクスプローラー**で、web.config ファイルを探して開きます。
+2. **ソリューション エクスプローラー** で、web.config ファイルを探して開きます。
 3. web.config ファイルの system.web セクションを探し、次の行を追加します。
 
     ```xml
@@ -82,7 +82,7 @@ Web サイトにアクセスすると、詳しいエラー メッセージが表
 ![Explicit Server Error in '/' Application](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
 ## <a name="diagnose-issues-by-using-the-compute-emulator"></a>コンピューティング エミュレーターを使用した問題の診断
-依存コンポーネントの不足や web.config エラーに関する問題の診断とトラブルシューティングは、Microsoft Azure コンピューティング エミュレーターを使って行うことができます。
+依存コンポーネントの不足や web.config エラーに関する問題の診断とトラブルシューティングは、Microsoft Azure コンピューティング エミュレーターを使用して行うことができます。
 
 この診断方法の効果を最大限に高めるには、Windows がクリーン インストールされたコンピューターまたは仮想マシンを使用する必要があります。 Azure 環境のシミュレーションには、Windows Server 2008 R2 x64 が最適です。
 
@@ -101,7 +101,7 @@ IntelliTrace を有効にしてサービスをデプロイするには、以下�
 
 1. Azure SDK 1.3 以上がインストールされていることを確認します。
 2. Visual Studio を使用してソリューションをデプロイします。 デプロイメント中は、 **[.NET 4 のロールに対して IntelliTrace を有効にします]** チェック ボックスをオンにしてください。
-3. インスタンスが起動したら、 **サーバー エクスプローラー**を開きます。
+3. インスタンスが起動したら、 **サーバー エクスプローラー** を開きます。
 4. **Azure\\Cloud Services** ノードを展開し、対象のデプロイを特定します。
 5. ロール インスタンスが表示されるまでデプロイメントを展開します。 いずれかのインスタンスを右クリックします。
 6. **[IntelliTrace ログの表示]** を選択します。 **[IntelliTrace の概要]** が表示されます。
@@ -114,7 +114,7 @@ IntelliTrace を有効にしてサービスをデプロイするには、以下�
 不足している DLL とアセンブリのエラーを解決するには、次の手順を実行します。
 
 1. Visual Studio でソリューションを開きます。
-2. **ソリューション エクスプローラー**で **[参照]** フォルダーを開きます。
+2. **ソリューション エクスプローラー** で **[参照]** フォルダーを開きます。
 3. エラーに表示されているアセンブリをクリックします。
 4. **[プロパティ]** ウィンドウで **[ローカル コピー]** プロパティを探し、その値を **[True]** に設定します。
 5. クラウド サービスを再デプロイします。

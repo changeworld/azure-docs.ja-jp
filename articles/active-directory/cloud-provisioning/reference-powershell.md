@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect Cloud Sync 用 AADCloudSyncTools PowerShell モジュール
+title: Azure AD Connect クラウド プロビジョニングの AADCloudSyncTools PowerShell モジュール
 description: この記事では、Azure AD Connect クラウド プロビジョニング エージェントのインストール方法について説明します。
 services: active-directory
 author: billmath
@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 11/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3ce5a7a313ab0f0680558aa60b34e3ebb9b51c9
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: ba71d3eedbb75780c20499daa890556574494a35
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255070"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348139"
 ---
-# <a name="aadcloudsynctools-powershell-module-for-azure-ad-connect-cloud-sync"></a>Azure AD Connect Cloud Sync 用 AADCloudSyncTools PowerShell モジュール
+# <a name="aadcloudsynctools-powershell-module-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect クラウド プロビジョニングの AADCloudSyncTools PowerShell モジュール
 
 パブリック プレビュー更新 2 のリリースでは、Microsoft によって AADCloudSyncTools PowerShell モジュールが導入されました。  このモジュールには、Azure AD Connect クラウド同期のデプロイを管理するために使用できる便利な一連のツールが用意されています。
 

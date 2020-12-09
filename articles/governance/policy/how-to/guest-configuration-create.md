@@ -3,12 +3,12 @@ title: Windows 用のゲスト構成ポリシーを作成する方法
 description: Windows に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: ea9b40006deefbac2c253082eda4ef2da12149a4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 124f747a1e7c7925efc2519ee826d62034e69cc5
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700681"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302698"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows 用のゲスト構成ポリシーを作成する方法
 
@@ -160,7 +160,7 @@ class ResourceName : OMI_BaseResource
 
 PowerShell コマンドレットは、パッケージの作成に役立ちます。
 ルート レベル フォルダーまたはバージョン フォルダーは必要ありません。
-パッケージ形式は .zip ファイルである必要があります。
+パッケージの形式は、.zip ファイルである必要があります。圧縮を解除されたときの合計サイズが 100 MB を超えることはできません。
 
 ### <a name="storing-guest-configuration-artifacts"></a>ゲスト構成成果物の保存
 

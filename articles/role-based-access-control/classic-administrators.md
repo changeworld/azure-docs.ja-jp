@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/24/2020
+ms.date: 11/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 935c0bf76e298ab1e2e4d25fab8685ac4ce617db
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4c758dca9f6020fd948ad8c3a8cdf014306e8ae7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95916167"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344007"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure の従来のサブスクリプション管理者
 
@@ -105,7 +105,7 @@ Azure portal でサービス管理者を変更するには、次の手順に従�
 
 1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
 
-1. [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) を開き、サブスクリプションを選択します。
+1. **Cost Management + Billing** を開き、サブスクリプションを選択します。
 
 1. 次に、左側のナビゲーションで、 **[プロパティ]** をクリックします。
 
@@ -140,7 +140,7 @@ Microsoft アカウントと Azure AD アカウントの詳細については、
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-1. [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) を開き、サブスクリプションを選択します。
+1. **Cost Management + Billing** を開き、サブスクリプションを選択します。
 
 1. 次に、左側のナビゲーションで、 **[プロパティ]** をクリックします。
 
