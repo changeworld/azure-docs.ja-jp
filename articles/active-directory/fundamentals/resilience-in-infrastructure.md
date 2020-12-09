@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad97a822aaa6477616a6661a579df6c4ec82729
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f65ab02e06319519548eaa2c02120691a0ceef02
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919131"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498559"
 ---
 # <a name="build-resilience-in-your-identity-and-access-management-infrastructure"></a>ID およびアクセス管理インフラストラクチャで回復性を強化する
 
@@ -40,18 +40,18 @@ ID インフラストラクチャのコンテキストにおいて、回復性�
 
 ## <a name="why-worry-about-disruption"></a>中断について考慮する理由
 
-認証システムへのすべての呼び出しは、Azure AD への呼び出しチェーン内のいずれかのコンポーネントで障害が発生すると中断される可能性があります。 つまり、インフラストラクチャのいずれかの部分に問題がある場合、ユーザーは必要なアプリケーションにアクセスできないため、作業が中断される可能性があります。 したがって、認証呼び出しの回数とそれらの呼び出しに含まれる依存関係の数を減らすことが、回復性にとって重要になります。 アプリケーション開発者は、トークンの要求頻度に対して何らかの制御をアサートできます。 たとえば、開発者と協力して、可能な限り、アプリケーションに Azure AD マネージド ID が使用されるようにします。 
+認証システムへのすべての呼び出しは、呼び出しのいずれかのコンポーネントで障害が発生すると中断される可能性があります。 基本コンポーネントのエラーが原因で認証が中断されると、ユーザーはアプリケーションにアクセスできなくなります。 したがって、認証呼び出しの回数とそれらの呼び出しに含まれる依存関係の数を減らすことが、回復性にとって重要になります。 アプリケーション開発者は、トークンの要求頻度に対して何らかの制御をアサートできます。 たとえば、開発者と協力して、可能な限り、アプリケーションに Azure AD マネージド ID が使用されるようにします。 
 
 Azure AD のようなトークンベースの認証システムでは、ユーザーのアプリケーション (クライアント) は、アプリケーションやその他のリソースにアクセスする前に、ID システムからセキュリティ トークンを取得する必要があります。 有効期間中、クライアントは、アプリケーションにアクセスするために、同じトークンを複数回提示できます。
 
-アプリケーションに提示されたトークンの有効期限が切れると、そのトークンはアプリケーションによって拒否され、クライアントは Azure AD から新しいトークンを取得する必要があります。 新しいトークンを取得するには、資格情報のプロンプトなどのユーザー操作が必要になる可能性があります。 有効期間が長いトークンを使用して認証呼び出しの頻度を減らすことで、このリスクが軽減されます。 ただし、トークンの有効期間と、ポリシー評価数を減らすことで生じるリスクとのバランスを取る必要があります。 トークンの有効期間の管理について詳しくは、[再認証プロンプトの最適化](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime)に関するこちらの記事を参照してください。
+アプリケーションに提示されたトークンの有効期限が切れると、そのトークンはアプリケーションによって拒否され、クライアントは Azure AD から新しいトークンを取得する必要があります。 新しいトークンを取得するには、資格情報のプロンプトなどのユーザー操作や、認証システムのその他の要件を満たすことが必要になる場合があります。 有効期間が長いトークンを使用して認証呼び出しの頻度を減らすことで、不要なやりとりが減ります。 ただし、トークンの有効期間と、ポリシー評価数を減らすことで生じるリスクとのバランスを取る必要があります。 トークンの有効期間の管理について詳しくは、[再認証プロンプトの最適化](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime)に関するこちらの記事を参照してください。
 
 ## <a name="ways-to-increase-resilience"></a>回復性を向上させる方法
 次の図は、回復性を向上させるための 6 つの具体的な方法を示しています。 各方法の詳細については、この記事の「次のステップ」部分でリンクされている記事をご覧ください。
   
 ![管理の回復性の概要を示す図](./media/resilience-in-infrastructure/admin-resilience-overview.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 管理者とアーキテクト向けの回復性に関するリソース
  
 * [資格情報管理を使用して回復性を強化する](resilience-in-credentials.md)

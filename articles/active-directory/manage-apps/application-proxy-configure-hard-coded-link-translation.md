@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ad45d5f0e313c06619fa9c998515e434de957ea
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 08c4020fc03f89b2c583a2458c70e18ecbbe0ba1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997564"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498066"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシで公開されているアプリのハードコードされたリンクをリダイレクトする
 
@@ -86,28 +86,28 @@ MyApps ブラウザー拡張機能を使用すると、アプリケーション 
 - `/claims/claims.html` のようなローカル ファイル構造の共有リソースをポイントする **相対内部リンク**。 これらのリンクは、アプリケーション プロキシ経由で公開されるアプリで自動的に動作し、リンク変換の有無にかかわらず機能し続けます。 
 - `http://expenses` のような他のオンプレミスのアプリまたは `http://expenses/logo.jpg` のような公開されたファイルへの **ハードコードされた内部リンク**。 リンク変換機能は、ハードコードされた内部リンクで機能し、リモート ユーザーが経由する必要がある外部 URL をポイントするように変更します。
 
-アプリケーション プロキシがリンク変換をサポートする HTML コード タグの完全な一覧には、以下のものが含まれます。
-* a
-* audio
-* base
-* ボタン
-* div
-* embed
-* form
-* frame
-* head
-* html
-* iframe
-* 画像
-* input
-* link
-* menuitem
-* meta
-* object
-* script
-* source
-* track
-* video
+アプリケーション プロキシがリンク変換をサポートする HTML コード タグの属性の完全な一覧には、以下のものが含まれます。
+* a (href)
+* audio (src)
+* base (href)
+* button (formaction)
+* div (data-background、style、data-src)
+* embed (src)
+* form (action)
+* frame (src)
+* head (profile)
+* html (manifest)
+* iframe (longdesc、src)
+* img (longdesc、src)
+* input (formaction、src、value)
+* link (href)
+* menuitem (icon)
+* meta (content)
+* object (archive、data、codebase)
+* script (src)
+* source (src)
+* track (src)
+* video (src、poster)
 
 さらに、CSS 内では URL 属性も変換されます。
 

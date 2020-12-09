@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fde2052078e0131e720411f91aa8ae7484338252
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40d77f4ebb897884f03377e6d9f1243a6d436766
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295024"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500208"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
@@ -35,14 +35,14 @@ Azure Active Directory (Azure AD) シームレス シングル サインオン (
 
 次の前提条件が満たされていることを確認します。
 
-* **Azure AD Connect サーバーがセットアップされている**:サインイン方法として[パススルー認証](how-to-connect-pta.md)を使用する場合、他に確認すべき前提条件はありません。 サインイン方法として[パスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)を使用する場合や、Azure AD Connect と Azure AD の間にファイアウォールがある場合は、次の点を確認してください。
+* **Azure AD Connect サーバーがセットアップされている**:サインイン方法として [パススルー認証](how-to-connect-pta.md)を使用する場合、他に確認すべき前提条件はありません。 サインイン方法として[パスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)を使用する場合や、Azure AD Connect と Azure AD の間にファイアウォールがある場合は、次の点を確認してください。
    - Azure AD Connect バージョン 1.1.644.0 以降を使用している。 
    - ファイアウォールまたはプロキシで許可している場合は、 **\*.msappproxy.net** の URL に対するポート 443 での許可リストへの接続を追加します。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。 この前提条件は、その機能を有効にした場合にのみ適用されます。 実際のユーザー サインインに必要な条件ではありません。
 
     >[!NOTE]
     >Azure AD Connect のバージョン 1.1.557.0、1.1.558.0、1.1.561.0、1.1.614.0 には、パスワード ハッシュ同期に関連する問題があります。 パスワード ハッシュ同期をパススルー認証と組み合わせて使用 _しない_ 場合の詳細については、[Azure AD Connect のリリース ノート](./reference-connect-version-history.md)をご覧ください。
 
-* **サポートされている Azure AD Connect トポロジを使用する**:使用している Azure AD Connect トポロジが[こちら](plan-connect-topologies.md)で説明されているサポートされているトポロジの 1 つであることを確認してください。
+* **サポートされている Azure AD Connect トポロジを使用する**:使用している Azure AD Connect トポロジが [こちら](plan-connect-topologies.md)で説明されているサポートされているトポロジの 1 つであることを確認してください。
 
     >[!NOTE]
     >シームレス SSO では、AD フォレスト間に AD 信頼があるかどうかを問わず、複数の AD フォレストがサポートされます。
@@ -51,7 +51,7 @@ Azure Active Directory (Azure AD) シームレス シングル サインオン (
     * Azure AD Connect を使用して Azure AD に同期している。
     * シームレス SSO を有効にさせたいユーザーが含まれている。
     
-* **先進認証を有効にする**:この機能を作動させるには、テナントで[先進認証](/office365/enterprise/modern-auth-for-office-2013-and-2016)を有効にする必要があります。
+* **先進認証を有効にする**:この機能を作動させるには、テナントで [先進認証](/office365/enterprise/modern-auth-for-office-2013-and-2016)を有効にする必要があります。
 
 * **Microsoft 365 クライアントの最新バージョンを使用する**:Microsoft 365 クライアント (Outlook、Word、Excel など) でサイレント サインオンを利用するには、ユーザーは 16.0.8730.xxxx 以上のバージョンを使用している必要があります。
 
@@ -65,7 +65,7 @@ Azure Active Directory (Azure AD) シームレス シングル サインオン (
 新しく Azure AD Connect をインストールする場合は、[カスタム インストール パス](how-to-connect-install-custom.md)を選択します。 **[ユーザー サインイン]** ページで、 **[シングル サインオンを有効にする]** チェックボックスをオンにします。
 
 >[!NOTE]
-> このオプションは、サインオンの方法が**パスワード ハッシュ同期**または**パススルー認証**の場合にのみ選択できます。
+> このオプションは、サインオンの方法が **パスワード ハッシュ同期** または **パススルー認証** の場合にのみ選択できます。
 
 ![Azure AD Connect:ユーザーのサインイン](./media/how-to-connect-sso-quick-start/sso8.png)
 
@@ -107,7 +107,7 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 また、グループ ポリシーを使用して、 **[スクリプトを介したステータス バーの更新を許可する]** というイントラネットのゾーン ポリシー設定を有効にする必要があります。 
 
 >[!NOTE]
-> 以下の手順は、Windows 上の Internet Explorer と Google Chrome (信頼済みサイト URL のセットを Internet Explorer と共有する場合) でのみ機能します。 macOS 上の Mozilla Firefox と Google Chrome をセットアップする方法については、次のセクションをご覧ください。
+> 以下の手順は、Windows 上の Internet Explorer、Microsoft Edge、Google Chrome (信頼済みサイト URL のセットを Internet Explorer と共有する場合) でのみ機能します。 macOS 上の Mozilla Firefox と Google Chrome をセットアップする方法については、次のセクションをご覧ください。
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>ユーザーのイントラネット ゾーンの設定を変更する必要がある理由
 
@@ -123,8 +123,8 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 ### <a name="group-policy-option---detailed-steps"></a>"グループ ポリシー" オプション - 詳しい手順
 
 1. グループ ポリシー管理エディター ツールを開きます。
-2. 一部またはすべてのユーザーに適用されるグループ ポリシーを編集します。 この例では、**既定のドメイン ポリシー**を使用します。
-3. **[ユーザーの構成]**  >  **[ポリシー]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[Internet Explorer]**  >  **[インターネット コントロール パネル]**  >  **[セキュリティ ページ]** の順に移動します。 次に **[サイトとゾーンの割り当て一覧]** を選択します。
+2. 一部またはすべてのユーザーに適用されるグループ ポリシーを編集します。 この例では、**既定のドメイン ポリシー** を使用します。
+3. **[ユーザーの構成]** 、 **[ポリシー]** 、 **[管理用テンプレート]** 、 **[Windows コンポーネント]** 、 **[Internet Explorer]** 、 **[インターネット コントロール パネル]** 、 **[セキュリティ ページ]** の順に移動します。 次に **[サイトとゾーンの割り当て一覧]** を選択します。
     ![[サイトとゾーンの割り当て一覧] が選択された [セキュリティ] ページを示すスクリーンショット。](./media/how-to-connect-sso-quick-start/sso6.png)
 4. ポリシーを有効にしてから、ダイアログ ボックスに次の値を入力します。
    - **[値の名前]** :Kerberos チケットの転送先となる Azure AD URL。
@@ -144,7 +144,7 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
     ![ゾーン割り当てが選択された [コンテンツの表示] ウィンドウを示すスクリーンショット。](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. **[ユーザーの構成]**  >  **[ポリシー]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[Internet Explorer]**  >  **[インターネット コントロール パネル]**  >  **[セキュリティ ページ]**  >  **[イントラネット ゾーン]** の順に移動します。 次に、 **[スクリプトを介したステータス バーの更新を許可する]** を選択します。
+6. **[ユーザーの構成]** 、 **[ポリシー]** 、 **[管理用テンプレート]** 、 **[Windows コンポーネント]** 、 **[Internet Explorer]** 、 **[インターネット コントロール パネル]** 、 **[セキュリティ ページ]** 、 **[イントラネット ゾーン]** の順に移動します。 次に、 **[スクリプトを介したステータス バーの更新を許可する]** を選択します。
 
     ![[スクリプトを介したステータス バーの更新を許可する] が選択された [イントラネット ゾーン] ページを示すスクリーンショット。](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -155,16 +155,16 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 ### <a name="group-policy-preference-option---detailed-steps"></a>"グループ ポリシーの基本設定" オプション - 詳しい手順
 
 1. グループ ポリシー管理エディター ツールを開きます。
-2. 一部またはすべてのユーザーに適用されるグループ ポリシーを編集します。 この例では、**既定のドメイン ポリシー**を使用します。
+2. 一部またはすべてのユーザーに適用されるグループ ポリシーを編集します。 この例では、**既定のドメイン ポリシー** を使用します。
 3. **[ユーザーの構成]**  >  **[基本設定]**  >  **[Windows 設定]**  >  **[レジストリ]**  >  **[新規]**  >  **[レジストリ項目]** の順に移動します。
 
     ![[レジストリ] および [レジストリ項目] が選択されていることを示すスクリーンショット。](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. 次の値を該当するフィールドに入力し、 **[OK]** をクリックします。
-   - **キー パス**:***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon***
-   - **値の名前**: ***https***
-   - **値の型**:***REG_DWORD***
-   - **値のデータ**:***00000001***
+   - **キー パス**: **_Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon_* _
+   - _*値の名前**: **_https_*_
+   - _*値の型**: **_REG_DWORD_*_
+   - _*値のデータ**: **_00000001_*_
  
      ![[新しいレジストリのプロパティ] ウィンドウを示すスクリーンショット。](./media/how-to-connect-sso-quick-start/sso16.png)
  
@@ -176,7 +176,7 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
 Mozilla Firefox は、Kerberos 認証を自動的には使用しません。 各ユーザーが、次の手順に従って、Firefox の設定に Azure AD の URL を手動で追加する必要があります。
 1. Firefox を実行し、アドレス バーに「`about:config`」と入力します。 表示されているすべての通知を無視します。
-2. **network.negotiate-auth.trusted-uris** の設定を検索します。 この設定は、Kerberos 認証用の Firefox の信頼済みサイトを一覧表示します。
+2. _ *network.negotiate-auth.trusted-uris** の設定を検索します。 この設定は、Kerberos 認証用の Firefox の信頼済みサイトを一覧表示します。
 3. 右クリックして **[変更]** を選択します。
 4. フィールドに「 `https://autologon.microsoftazuread-sso.com` 」を入力します。
 5. **[OK]** を選択してから、ブラウザーをもう一度開きます。

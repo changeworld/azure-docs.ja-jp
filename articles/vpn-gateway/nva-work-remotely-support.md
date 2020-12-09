@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: scottnap
-ms.openlocfilehash: beb59674d678ed9c61c9ee0b425da7032794ca64
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 70b5732e1293e35127a19fbe736d8562056a870b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660612"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499681"
 ---
 # <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>リモートでの作業：リモート作業でのネットワーク仮想アプライアンス (NVA) に関する考慮事項
 
@@ -64,3 +64,6 @@ Azure Marketplace のすべての主要な NVA ベンダーは、ソリューシ
 [Fortinet COVID-19 に関するカスタマーおよびパートナーへの更新情報](https://www.fortinet.com/covid-19.html "COVID-19 に関するカスタマーおよびパートナーへの更新情報")
 
 [Palo Alto Networks COVID-19 対応センター](https://live.paloaltonetworks.com/t5/COVID-19-Response-Center/ct-p/COVID-19_Response_Center "Palo Alto Networks COVID-19 対応センター")
+
+[Kemp で、ビジネス継続性のためにリモート作業とアプリの常時接続のエクスペリエンスが実現](https://kemptechnologies.com/remote-work-always-on-application-experience-business-continuity/ "Kemp で、ビジネス継続性のためにリモート作業とアプリの常時接続のエクスペリエンスが実現")
+

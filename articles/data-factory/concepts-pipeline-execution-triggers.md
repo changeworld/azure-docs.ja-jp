@@ -3,20 +3,20 @@ title: Azure Data Factory でのパイプラインの実行とトリガー
 description: この記事では、オンデマンドで、またはトリガーを作成して、Azure Data Factory でパイプラインを実行する方法に関する情報を提供します。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: 73934521cc68dc8ec2e28f29e35df833651915d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c72538de8aba60ce7ed880561b55773c22737f97
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83997011"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498627"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行とトリガー
 
@@ -179,7 +179,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 ## <a name="schedule-trigger"></a>スケジュール トリガー
 スケジュール トリガーは、実時間のスケジュールでパイプラインを実行します。 このトリガーは、定期的および高度な予定表のオプションをサポートしています。 たとえば、トリガーでは、"毎週" または "月曜日午後 5 時と木曜日午後 9 時" のような間隔がサポートされています。 スケジュール トリガーは、時系列データと非時系列データを区別せず、データセット パターンに依存しないため、柔軟性があります。
 
-スケジュール トリガーの詳細と例については、[スケジュール トリガーの作成](how-to-create-schedule-trigger.md)に関するページを参照してください。
+スケジュール トリガーに関する詳細と例については、「[スケジュールどおりにパイプラインを実行するトリガーの作成](how-to-create-schedule-trigger.md)」を参照してください。
 
 ## <a name="schedule-trigger-definition"></a>スケジュール トリガーの定義
 スケジュール トリガーを作成する場合、JSON 定義を使用してスケジュール設定と繰り返しを指定します。
@@ -239,7 +239,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | --- | --- |
 | **startTime** | 日付/時刻の値。 基本的なスケジュールの場合、**startTime** プロパティの値が最初の発生日時に適用されます。 複雑なスケジュールの場合、指定した **startTime** 値になるとすぐにトリガーが起動します。 |
 | **endTime** | トリガーの終了日時。 指定した終了日時を過ぎると、トリガーは実行されません。 このプロパティの値に過去の日時を指定することはできません。 <!-- This property is optional. --> |
-| **timeZone** | タイム ゾーン。 現在、サポートされているタイム ゾーンは UTC のみです。 |
+| **timeZone** | タイム ゾーン。 サポートされているタイム ゾーンの一覧については、「[スケジュールどおりにパイプラインを実行するトリガーの作成](how-to-create-schedule-trigger.md#time-zone-option)」を参照してください。 |
 | **recurrence** | トリガーの繰り返し規則を指定する recurrence オブジェクト。 この recurrence オブジェクトは、**frequency**、**interval** **endTime** **count**、**schedule** の各要素をサポートします。 recurrence オブジェクトを定義する場合、**frequency** 要素は必須です。 recurrence オブジェクトの他の要素は省略可能です。 |
 | **frequency** | トリガーが繰り返される頻度の単位。 サポートされる値には、"minute"、"hour"、"day"、"week"、"month" があります。 |
 | **interval** | **frequency** 値の間隔を示す正の整数。 **frequency** の値は、トリガーの実行頻度を決定します。 たとえば、**interval** が 3 で **frequency** が "week" の場合、トリガーは 3 週間ごとに繰り返されます。 |

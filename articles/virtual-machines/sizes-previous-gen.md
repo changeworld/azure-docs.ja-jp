@@ -6,14 +6,14 @@ ms.subservice: sizes
 author: mimckitt
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 10/02/2020
+ms.date: 11/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: 45bcfdb544d3951feb40a821b601ce60ecc0feaf
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 90bc98d63b45e43c9325eed4fe019b18f52d0de8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356775"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500293"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>旧世代の仮想マシンのサイズ
 
@@ -161,7 +161,7 @@ A8 ～ A11 と H シリーズのサイズは、 *コンピューティング集�
 <sup>1</sup> MPI アプリケーションの場合、専用の RDMA バックエンド ネットワークが FDR InfiniBand ネットワークによって有効になり、超低待機時間と高帯域幅を実現します。  
 
 > [!NOTE]
-> A8 – A11 VM は、2021 年 3 月で廃止される予定です。 新しい A8 – A11 VM は作成しないことを強くお勧めします。 既存の A8 – A11 VM を、H、HB、HC、HBv2 などの新しい強力なハイパフォーマンス コンピューティング VM サイズや、D、E、F などの汎用コンピューティング VM サイズに移行して、価格/パフォーマンス比を向上させてください。 詳細については、「[HPC マイグレーション ガイド](https://azure.microsoft.com/resources/hpc-migration-guide/)」を参照してください。
+> [A8 – A11 VM は、2021 年 3 月に廃止される予定です。](https://azure.microsoft.com/updates/a8-a11-azure-virtual-machine-sizes-will-be-retired-on-march-1-2021/) 新しい A8 – A11 VM は作成しないことを強くお勧めします。 既存の A8 – A11 VM を、H、HB、HC、HBv2 などの新しい強力なハイパフォーマンス コンピューティング VM サイズや、D、E、F などの汎用コンピューティング VM サイズに移行して、価格/パフォーマンス比を向上させてください。 詳細については、「[HPC マイグレーション ガイド](https://azure.microsoft.com/resources/hpc-migration-guide/)」を参照してください。
 
 <br>
 
@@ -224,7 +224,7 @@ DC シリーズでは、最新世代である 3.7 GHz の Intel XEON E-2176G プ
 
 > [!IMPORTANT]
 >
-> DC シリーズの VM は[第 2 世代の VM](./linux/generation-2.md#creating-a-generation-2-vm) であり、`Gen2` イメージのみがサポートされています。
+> DC シリーズの VM は[第 2 世代の VM](./generation-2.md#creating-a-generation-2-vm) であり、`Gen2` イメージのみがサポートされています。
 
 
 ### <a name="ds-series"></a>DS シリーズ  

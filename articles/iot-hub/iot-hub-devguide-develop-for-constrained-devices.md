@@ -10,12 +10,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9010ff582f05e81e17e280e20f180ceccf0e746f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a43eb2537ebc09ffcb524a4426d7a8c9bec560b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81733201"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500004"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Azure IoT C SDK を使用した制約のあるデバイス向けの開発
 
@@ -30,7 +30,10 @@ C SDK は apt-get、NuGet、および MBED からパッケージ形式で入手�
 
 制約のあるデバイス向けの C SDK をビルドします。
 
-### <a name="prerequisites"></a>前提条件
+> [!NOTE]
+> 埋め込み C SDK は、BYON (bring your own network) アプローチをサポートする、制約付きデバイスの代替手段です。 IoT 開発者はデバイス ソリューションを作成するために、選択した MQTT クライアント、TLS、ソケットを自由に使用することができます。 [埋め込み C SDK の詳細については、こちらを参照してください](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot)。
+
+### <a name="prerequisites"></a>[前提条件]
 
 こちらの [C SDK セットアップ ガイド](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)に従って、C SDK をビルドするための開発環境を準備します。 cmake を使用したビルドの手順に進む前に、cmake フラグを呼び出して未使用の機能を削除することができます。
 
@@ -78,11 +81,11 @@ C SDK にはオプションとして [C SDK シリアライザー](https://githu
 
 ### <a name="use-the-lower-layer-_ll_"></a>下位のレイヤーを使用する (_LL_)
 
-C SDK では 2 つのプログラミング モデルがサポートされています。 一方のセットには、下位レイヤーを意味する挿入辞 _LL_ を伴った API が含まれています。 この API セットは軽量であり、ワーカー スレッドを起動しません。このことは、ユーザーがスケジュール設定を手動で制御する必要があることを意味します。 たとえば、デバイス クライアント用の _LL_ API はこちらの[ヘッダー ファイル](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client_ll.h)で確認することができます。 
+C SDK では 2 つのプログラミング モデルがサポートされています。 一方のセットには、下位レイヤーを意味する挿入辞 _LL_ を伴った API が含まれています。 この API セットは軽量であり、ワーカー スレッドを起動しません。このことは、ユーザーがスケジュール設定を手動で制御する必要があることを意味します。 たとえば、デバイス クライアント用の _LL_ API はこちらの [ヘッダー ファイル](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client_ll.h)で確認することができます。 
 
 _LL_ インデックスを伴っていない、もう一方の API セットはコンビニエンス レイヤーと呼ばれています。この場合、ワーカー スレッドは自動的に起動します。 たとえば、デバイス クライアント用の便利なレイヤーの API はこちらの[IoT Device Client ヘッダー ファイル](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client.h)で確認できます。 余分な各スレッドによってシステム リソースの大部分が占有される可能性がある制約付きのデバイスの場合は、_LL_ API の使用を検討してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure IoT C SDK アーキテクチャの詳細について説明します。
 -    [Azure IoT C SDK ソース コード](https://github.com/Azure/azure-iot-sdk-c/)

@@ -2,13 +2,13 @@
 title: テンプレートのベスト プラクティス
 description: Azure Resource Manager テンプレートを作成するための推奨されるアプローチについて説明します。 テンプレートを使用する場合の一般的な問題を回避するための推奨事項を示します。
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 1121c66e0bcd7de39afd5bea85866fd9ad007ce4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/01/2020
+ms.openlocfilehash: c62bde8fc8cfc79330d13b7b2ff4f778dadf1339
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87809257"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497981"
 ---
 # <a name="arm-template-best-practices"></a>ARM テンプレートのベスト プラクティス
 
@@ -87,8 +87,6 @@ ms.locfileid: "87809257"
    },
    ```
 
-* リソースの種類の API バージョンにパラメーターを使用しないでください。 リソースのプロパティおよび値は、バージョン番号ごとに異なる可能性があります。 パラメーターに API バージョンが設定されると、コード エディターの IntelliSense が適切なスキーマを決定できなくなります。 代わりに、テンプレートの API バージョンをハードコーディングしてください。
-
 * `allowedValues` は慎重に使用してください。 許可されているオプションに、ある値が含まれていないことを確認する必要がある場合にのみ使用します。 `allowedValues` を盛大に使用しすぎると、ご自身の一覧が最新の状態に保たれなくなり、有効なデプロイをブロックしてしまう可能性があります。
 
 * お使いのテンプレートのパラメーター名と PowerShell デプロイ コマンドのパラメーターが同じ場合は、Resource Manager によって、ポストフィックス **FromTemplate** がテンプレート パラメーターに追加され、この名前の競合が解決されます。 たとえば、**ResourceGroupName** という名前のパラメーターをテンプレートに追加した場合、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) コマンドレットの **ResourceGroupName** パラメーターと競合します。 デプロイ中、**ResourceGroupNameFromTemplate** に値を指定するように求められます。
@@ -146,8 +144,6 @@ ms.locfileid: "87809257"
 
 * テンプレート関数を複雑に組み合わせて作成する値に対して変数を使用してください。 複雑な式が変数内にのみ表示されていると、ご自身のテンプレートが読みやすくなります。
 
-* リソースで `apiVersion` に対しては変数を使用しないでください。 リソースのスキーマは、API バージョンに応じて決まります。 多くの場合、バージョンを変更すると、リソースのプロパティも変更されます。
-
 * テンプレートの **variables** セクションでは [reference](template-functions-resource.md#reference) 関数は使用できません。 **reference** 関数は、リソースのランタイム状態からその値を取得します。 ただし、変数が解決されるのは、テンプレートの初期解析時です。 **reference** 関数を必要とする値は、テンプレートの **resources** セクションまたは **outputs** セクションに直接作成してください。
 
 * リソース名を表す変数は、一意である必要があります。
@@ -155,6 +151,16 @@ ms.locfileid: "87809257"
 * [変数のコピー ループ](copy-variables.md)を使用して、JSON オブジェクトの繰り返しパターンを作成します。
 
 * 未使用の変数を削除します。
+
+## <a name="api-version"></a>API バージョン
+
+リソースの種類に対してハードコーディングされた API バージョンを `apiVersion` プロパティに設定します。 新しいテンプレートを作成するときは、リソースの種類に最新の API バージョンを使用することをお勧めします。 使用可能な値を確認するには、[テンプレートのリファレンス](/azure/templates/)に関する記事をご覧ください。
+
+テンプレートが想定どおりに動作する場合は、同じ API バージョンを使用し続けることをお勧めします。 同じ API バージョンを使用することで、新しいバージョンで導入される可能性がある破壊的変更について気にする必要はなくなります。
+
+API バージョンにパラメーターを使用しないでください。 リソースのプロパティおよび値は、API バージョンによって異なる可能性があります。 パラメーターに API バージョンが設定されると、コード エディターの IntelliSense が適切なスキーマを決定できなくなります。 テンプレート内のプロパティと一致しない API バージョンを渡した場合、デプロイは失敗します。
+
+API バージョンに対しては変数を使用しないでください。 特に、デプロイ時に API バージョンを動的に取得するために、[プロバイダー関数](template-functions-resource.md#providers)を使用しないでください。 動的に取得された API バージョンが、テンプレート内のプロパティと一致しない可能性があります。
 
 ## <a name="resource-dependencies"></a>リソースの依存関係
 

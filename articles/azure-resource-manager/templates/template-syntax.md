@@ -1,20 +1,20 @@
 ---
 title: テンプレートの構造と構文
-description: 宣言型 JSON 構文を使用した Azure Resource Manager テンプレートの構造とプロパティについて説明します。
+description: 宣言型 JSON 構文を使用した Azure Resource Manager テンプレート (ARM テンプレート) の構造とプロパティについて説明します。
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: b7cf30741cfd2b85046f64fddf01c414676a97e4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/01/2020
+ms.openlocfilehash: ce36d725b3844fcd4c8d43a9f044423611d44fbd
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911500"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497879"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>ARM テンプレートの構造と構文について
 
-この記事では、Azure Resource Manager (ARM) テンプレートの構造について説明します。 テンプレートの各種セクションとそこで使用できるプロパティを紹介しています。
+この記事では、Azure Resource Manager テンプレート (ARM テンプレート) の構造について説明します。 テンプレートの各種セクションとそこで使用できるプロパティを紹介しています。
 
-この記事は、ARM テンプレートにある程度慣れているユーザー向けです。 テンプレートの構造に関する詳細情報を提供します。 テンプレートの作成手順について説明したチュートリアルについては、「[チュートリアル:初めての Azure Resource Manager テンプレートを作成およびデプロイする](template-tutorial-create-first-template.md)」を参照してください。
+この記事は、ARM テンプレートにある程度慣れているユーザー向けです。 テンプレートの構造に関する詳細情報を提供します。 テンプレートの作成手順について説明したチュートリアルについては、「[チュートリアル:初めての ARM テンプレートを作成してデプロイする](template-tutorial-create-first-template.md)」を参照してください。
 
 ## <a name="template-format"></a>テンプレートの形式
 
@@ -137,7 +137,7 @@ ARM テンプレート内では、次のデータ型を使用できます。
 | maxLength |いいえ |string 型、securestring 型、array 型パラメーターの長さの最大値 (この値を含む)。 |
 | description |いいえ |ポータルを通じてユーザーに表示されるパラメーターの説明。 詳しくは、[テンプレート内のコメント](#comments)に関するページをご覧ください。 |
 
-パラメーターの使用方法の例については、「[Azure Resource Manager テンプレートのパラメーター](template-parameters.md)」を参照してください。
+パラメーターの使用方法の例については、「[ARM テンプレートのパラメーター](template-parameters.md)」を参照してください。
 
 ## <a name="variables"></a>変数
 
@@ -172,7 +172,7 @@ ARM テンプレート内では、次のデータ型を使用できます。
 
 `copy` を使用して変数に複数の値を作成する方法については、「[変数の反復処理](copy-variables.md)」をご覧ください。
 
-変数の使用方法の例については、「[Azure Resource Manager テンプレートの変数](template-variables.md)」を参照してください。
+変数の使用方法の例については、「[ARM テンプレートの変数](template-variables.md)」を参照してください。
 
 ## <a name="functions"></a>関数
 
@@ -217,7 +217,7 @@ ARM テンプレート内では、次のデータ型を使用できます。
 | output-type |はい |出力値の型。 出力値では、関数入力パラメーターと同じ型がサポートされています。 |
 | output-value |はい |評価され、関数から返されるテンプレート言語式。 |
 
-カスタム関数の使用方法の例については、「[Azure Resource Manager テンプレートのユーザー定義関数](template-user-defined-functions.md)」を参照してください。
+カスタム関数の使用方法の例については、「[ARM テンプレートのユーザー定義関数](template-user-defined-functions.md)」を参照してください。
 
 ## <a name="resources"></a>リソース
 
@@ -283,11 +283,11 @@ resources セクションでは、デプロイまたは更新されるリソー�
 |:--- |:--- |:--- |
 | condition | いいえ | このデプロイの間にリソースがプロビジョニングされるかどうかを示すブール値。 `true` の場合、デプロイ時にリソースが作成されます。 `false` の場合、このデプロイでは、リソースはスキップされます。 [条件](conditional-resource-deployment.md)をご覧ください。 |
 | type |はい |リソースの種類。 この値は、リソース プロバイダーの名前空間と、リソースの種類の組み合わせです (例: **Microsoft.Storage/storageAccounts**)。 使用可能な値を確認するには、[テンプレートのリファレンス](/azure/templates/)に関する記事をご覧ください。 子リソースの場合、type の形式は、親リソース内に入れ子にされているか、親リソースの外側で定義されているかによって変わります。 [子リソースの名前と種類の設定](child-resource-name-type.md)に関する記事を参照してください。 |
-| apiVersion |はい |リソースの作成に使用する REST API バージョン。 使用可能な値を確認するには、[テンプレートのリファレンス](/azure/templates/)に関する記事をご覧ください。 |
+| apiVersion |はい |リソースの作成に使用する REST API バージョン。 新しいテンプレートを作成するときは、デプロイするリソースの最新バージョンをこの値に設定します。 テンプレートが必要に応じて動作する限り、同じ API バージョンを使用し続けてください。 同じ API バージョンを使用し続けることで、新しい API バージョンにより、テンプレートの動作方法が変更されるリスクを最小限に抑えることができます。 新しいバージョンで導入された新機能を使用する場合にのみ、API バージョンを更新することを検討してください。 使用可能な値を確認するには、[テンプレートのリファレンス](/azure/templates/)に関する記事をご覧ください。 |
 | name |はい |リソースの名前。 この名前は、RFC3986 で定義されている URI コンポーネントの制限に準拠する必要があります。 リソース名を外部に公開する Azure サービスでは、名前が別の ID になりすますことがないように、その名前を検証します。 子リソースの場合、name の形式は、親リソース内に入れ子にされているか、親リソースの外側で定義されているかによって変わります。 [子リソースの名前と種類の設定](child-resource-name-type.md)に関する記事を参照してください。 |
 | comments |いいえ |テンプレート内にドキュメント化するリソースについてのメモ。 詳しくは、[テンプレート内のコメント](template-syntax.md#comments)に関するページをご覧ください。 |
 | location |場合により異なる |指定されたリソースのサポートされている地理的な場所。 利用可能な任意の場所を選択できますが、一般的に、ユーザーに近い場所を選択します。 また、通常、相互に対話するリソースを同じリージョンに配置します。 ほとんどのリソースの種類では場所が必要となりますが、場所を必要としない種類 (ロールの割り当てなど) もあります。 [リソースの場所の設定](resource-location.md)に関するページを参照してください。 |
-| dependsOn |いいえ |このリソースが配置される前に配置される必要があるリソース。 Resource Manager により、リソース間の依存関係が評価され、リソースが正しい順序でデプロイされます。 相互依存していないリソースは、平行してデプロイされます。 値には、リソース名またはリソースの一意識別子のコンマ区切りリストを指定できます。 このテンプレートに配置されたリソースのみをリストします。 このテンプレートで定義されていないリソースは、既に存在している必要があります。 不要な依存関係は追加しないでください。こうした依存関係によりデプロイの速度が遅くなり、循環依存関係を作成されることがあります。 詳細については、[Azure Resource Manager テンプレートの依存関係の定義](define-resource-dependency.md)に関するページをご覧ください。 |
+| dependsOn |いいえ |このリソースが配置される前に配置される必要があるリソース。 Resource Manager により、リソース間の依存関係が評価され、リソースが正しい順序でデプロイされます。 相互依存していないリソースは、平行してデプロイされます。 値には、リソース名またはリソースの一意識別子のコンマ区切りリストを指定できます。 このテンプレートに配置されたリソースのみをリストします。 このテンプレートで定義されていないリソースは、既に存在している必要があります。 不要な依存関係は追加しないでください。こうした依存関係によりデプロイの速度が遅くなり、循環依存関係を作成されることがあります。 依存関係の設定のガイダンスについては、「[ARM テンプレートでのリソース デプロイ順序の定義](define-resource-dependency.md)」を参照してください。 |
 | tags |いいえ |リソースに関連付けられたタグ。 サブスクリプション間でリソースを論理的に編成するためのタグを適用します。 |
 | sku | いいえ | 一部のリソースでは、デプロイする SKU を定義する値が許可されます。 たとえば、ストレージ アカウントの冗長性の種類を指定することができます。 |
 | kind | いいえ | 一部のリソースでは、デプロイするリソースの種類を定義する値が許可されます。 たとえば、作成する Cosmos DB の種類を指定することができます。 |
@@ -322,9 +322,9 @@ resources セクションでは、デプロイまたは更新されるリソー�
 | condition |いいえ | この出力値が返されたかどうかを示すブール値。 `true` の場合、値はデプロイの出力に含まれています。 `false` の場合、このデプロイでは、出力値はスキップされます。 指定しない場合、既定値は `true` です。 |
 | type |はい |出力値の型。 出力値では、テンプレート入力パラメーターと同じ型がサポートされています。 出力の種類に **securestring** を指定した場合、値はデプロイ履歴に表示されず、他のテンプレートから取得できません。 複数のテンプレートでシークレット値を使用するには、シークレットをキー コンテナーに格納し、パラメーター ファイルでそのシークレットを参照します。 詳細については、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](key-vault-parameter.md)」を参照してください |
 | value |いいえ |評価され、出力値として返されるテンプレート言語式。 **値** または **copy** を指定します。 |
-| copy |いいえ | 出力に対して複数の値を返すために使用されます。 **値** または **copy** を指定します。 詳細については、「[Azure Resource Manager テンプレートでの出力の反復](copy-outputs.md)」を参照してください。 |
+| copy |いいえ | 出力に対して複数の値を返すために使用されます。 **値** または **copy** を指定します。 詳細については、「[ARM テンプレートでの出力の反復処理](copy-outputs.md)」を参照してください。 |
 
-出力の使用方法の例については、「[Azure Resource Manager テンプレートの出力](template-outputs.md)」を参照してください。
+出力の使用方法の例については、「[ARM テンプレートの出力](template-outputs.md)」を参照してください。
 
 <a id="comments"></a>
 
@@ -351,7 +351,7 @@ resources セクションでは、デプロイまたは更新されるリソー�
   ],
 ```
 
-Visual Studio Code では、[Azure Resource Manager ツール拡張機能](quickstart-create-templates-use-visual-studio-code.md)により、Resource Manager テンプレートが自動的に検出され、それに応じて言語モードが変更されます。 VS Code の右下隅に **[Azure Resource Manager テンプレート]** が表示されている場合は、インライン コメントを使用できます。 インライン コメントは無効としてマークされなくなります。
+Visual Studio Code では、[Azure Resource Manager ツール拡張機能](quickstart-create-templates-use-visual-studio-code.md)により、ARM テンプレートが自動的に検出され、言語モードが変更されます。 VS Code の右下隅に **[Azure Resource Manager テンプレート]** が表示されている場合は、インライン コメントを使用できます。 インライン コメントは無効としてマークされなくなります。
 
 ![Visual Studio Code での Azure Resource Manager テンプレート モード](./media/template-syntax/resource-manager-template-editor-mode.png)
 
@@ -453,7 +453,7 @@ Visual Studio Code では、[Azure Resource Manager ツール拡張機能](quick
 ## <a name="next-steps"></a>次のステップ
 
 * さまざまな種類のソリューションのテンプレートについては、「 [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」をご覧ください。
-* テンプレート内から使用できる関数の詳細については、「 [Azure Resource Manager テンプレートの関数](template-functions.md)」を参照してください。
-* デプロイ中に複数のテンプレートを結合するには、「[Azure Resource Manager でのリンクされたテンプレートの使用](linked-templates.md)」をご覧ください。
-* テンプレート作成に関する推奨事項については、「[Azure Resource Manager テンプレートのベスト プラクティス](template-best-practices.md)」を参照してください。
+* テンプレート内から使用できる関数の詳細については、「[ARM テンプレート関数](template-functions.md)」を参照してください。
+* デプロイ中に複数のテンプレートを結合するには、「[Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用](linked-templates.md)」をご覧ください。
+* テンプレートの作成に関するレコメンデーションについては、「[ARM テンプレートのベストプラクティス](template-best-practices.md)」を参照してください。
 * 一般的な質問に対する回答については、「[ARM テンプレートに関してよく寄せられる質問](frequently-asked-questions.md)」を参照してください。

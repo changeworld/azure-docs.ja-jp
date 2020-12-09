@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 8b3212dd7e1544d734c0f409bd4bcdf8ec22fbc2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 4e914b7b49393964f17cc6d9515cb2f4a3bebd2e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147604"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499987"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Azure IoT Hub SDK の概要と使用方法
 
@@ -29,9 +29,9 @@ IoT Hub を使用する場合、以下の 2 つのカテゴリのソフトウェ
 
 また、[デバイス プロビジョニング サービス](../iot-dps/about-iot-dps.md)を操作するための一連の SDK も利用できます。
 
-* **Device SDK をプロビジョニング**すると、IoT デバイス上で動作して、デバイス プロビジョニング サービスと通信するアプリを構築できます。
+* **Device SDK をプロビジョニング** すると、IoT デバイス上で動作して、デバイス プロビジョニング サービスと通信するアプリを構築できます。
 
-* **Service SDK をプロビジョニング**すると、デバイス プロビジョニング サービスで自分の登録を管理するバックエンド アプリケーションを構築できます。
+* **Service SDK をプロビジョニング** すると、デバイス プロビジョニング サービスで自分の登録を管理するバックエンド アプリケーションを構築できます。
 
 [Azure IoT SDK を使用した開発の利点](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/)について、詳細を説明します。
 
@@ -53,6 +53,14 @@ Microsoft Azure IoT device SDK には、Azure IoT Hub サービスに接続お�
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-csharp)
 * [API リファレンス](/dotnet/api/microsoft.azure.devices?view=azure-dotnet)
 * [モジュール リファレンス](/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)
+
+
+Embedded C 用 Azure IoT Hub デバイス SDK (ANSI C - C99):
+* [Embedded C SDK をコンパイルする](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot#build)
+* [ソース コード](https://github.com/Azure/azure-sdk-for-c)
+* 制約のあるデバイスの[サイズの表](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot#size-chart)。
+* [API リファレンス](https://azuresdkdocs.blob.core.windows.net/$web/c/docs/1.0.0/index.html)
+
 
 C 用 Azure IoT Hub デバイス SDK (ANSI C - C99):
 
