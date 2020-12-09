@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: a915b5a348e3167d2cf81906b19abd9850584ce9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 694f501efc565ed498c1c8d8e2e38326277e8605
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460974"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621418"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>Azure アプリケーション オファーの Azure マネージド アプリケーションを計画する
 
@@ -90,7 +90,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 JIT アクセスによって、発行元は、トラブルシューティングやメンテナンスを行うために、マネージド アプリケーションのリソースに対して昇格されたアクセス権を要求することができます。 発行元は、リソースへの読み取り専用アクセス権を常に所有していますが、特定の期間にさらに大きなアクセス権を持つことができます。 詳しくは、「[Azure Managed Applications でジャストインタイム アクセスを有効にして要求する](../azure-resource-manager/managed-applications/request-just-in-time-access.md)」をご覧ください。
 
 > [!NOTE]
-> この機能をサポートするために、SkimmingBe が `createUiDefinition.json` ファイルを確実に更新する場合でも、ユーザーが知っておく必要がある情報です。
+> この機能をサポートするには、`createUiDefinition.json` ファイルを更新する必要があります。
 
 ## <a name="deployment-mode"></a>展開モード
 

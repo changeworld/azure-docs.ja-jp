@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bf314510a8569a825ccd309ec855e3ff186bba86
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7a1b178450a1aa06db07d7b1ef525f7f781db9ef
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023379"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602820"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -114,7 +114,7 @@ deviceTRUST は、企業をコンテキスト化する Windows Virtual Desktop �
 
 この deviceTRUST は、コンテキスト セキュリティ テクノロジによって Windows Virtual Desktop の価値を拡張します。 deviceTRUST により、セキュリティで保護された Windows Virtual Desktop アクセスのための条件付きアクセス、つまり Windows Virtual Desktop 内での条件付きアプリケーション アクセスが可能になり、追加のインフラストラクチャなしで、条件付き Windows Virtual Desktop ポリシーが適用できるようになります。 deviceTRUST を使用すると、セキュリティ、コンプライアンス、および規制に関するすべての要件を満たす柔軟なモバイル ワークスペースが実現します。
 
-- [パートナーの Web サイトにアクセスする。](https://devicetrust.com/wvd)
+- [パートナーの Web サイトにアクセスする。](https://devicetrust.com/)
 
 ## <a name="ekran-system"></a>Ekran System
 

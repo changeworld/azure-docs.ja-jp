@@ -1,16 +1,14 @@
 ---
 title: 'テスト容易性: サービス通信'
 description: サービス間通信は、Service Fabric アプリケーションの重要な統合ポイントです。 この記事では、設計の考慮事項とテスト手法について説明します。
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 87b922cb9655588a22c739d26c9ce9e49d35781a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fbf889422d69d031d777acd80cf3becfb3184568
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007122"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575926"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric のテスト容易性シナリオ: サービス通信
 マイクロサービスおよびサービス指向アーキテクチャ スタイルは、Azure Service Fabric に無理なく適用できます。 このような種類の分散アーキテクチャでは、コンポーネント化されたマイクロサービス アプリケーションは、相互に通信する必要がある複数のサービスで構成されることが一般的です。 一般的に、最も単純な場合でも、相互に通信する必要があるステートレス Web サービスとステートフル データ ストレージ サービスが最低限必要です。

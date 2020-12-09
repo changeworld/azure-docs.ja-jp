@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 691bb538ea0f46e26c318a68e9f66a9a986eb5d4
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 3d84f0df44f17bdc7dd68aa9cae1f01b06d261b4
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301839"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601643"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>App Service 用の Azure セキュリティ ベースライン
 
@@ -71,7 +71,7 @@ Azure Firewall を使用して、トラフィックを送信し、サブスク�
 
 - [Azure Security Center によって提供されるネットワークのセキュリティについて](../security-center/security-center-network-recommendations.md)
 
-- [App Service の監視と保護を有効にする方法](/azure/security-center/defender-for-app-service-intro)
+- [App Service の監視と保護を有効にする方法](/azure/security-center/defender-for-app-service-introduction)
 
 **Azure Security Center の監視**: はい
 
@@ -343,7 +343,7 @@ Azure Web Application Firewall (WAF) を配置している場合は、リアル�
 
 **ガイダンス**:Azure Active Directory (Azure AD) の組み込みロールは、明示的に割り当てる必要があり、クエリ可能です。 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 - [App Service と Azure Functions でマネージド ID を使用する方法](overview-managed-identity.md?context=azure%2Factive-directory%2Fmanaged-identities-azure-resources%2Fcontext%2Fmsi-context&amp;tabs=dotnet)
 
@@ -656,7 +656,7 @@ Microsoft では、基になるプラットフォームを管理し、顧客の�
 
 App Service アプリをセキュリティで保護するための Security Center の推奨事項を確認し、それに従ってください。
 
-- [CI/CD パイプラインに継続的なセキュリティ検証を追加する方法](/azure/devops/migrate/security-validation-cicd-pipeline?amp;preserve-view=true&view=azure-devops)
+- [CI/CD パイプラインに継続的なセキュリティ検証を追加する方法](/azure/devops/migrate/security-validation-cicd-pipeline?preserve-view=true&view=azure-devops)
 
 - [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/deploy-vulnerability-assessment-vm.md)
 
@@ -686,7 +686,7 @@ App Service アプリをセキュリティで保護するための Security Cent
 
 - [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -891,7 +891,7 @@ Azure Policy を構成して、次の組み込みポリシー定義を使用し�
 
 標準化された使用のため、組み込みポリシー定義を適用するプロセスを文書化することをお勧めします。   
 
-- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -917,9 +917,9 @@ Azure Policy を構成して、次の組み込みポリシー定義を使用し�
 
 既存の継続的インテグレーション (CI) および継続的デリバリー (CD) パイプラインを使用して、既知の安全な構成をデプロイします。
 
-- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Azure Repos のドキュメント](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
+- [Azure Repos のドキュメント](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Azure Security Center の監視**: 適用なし
 

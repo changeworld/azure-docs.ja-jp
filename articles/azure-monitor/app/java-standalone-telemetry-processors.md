@@ -3,12 +3,15 @@ title: テレメトリ プロセッサ (プレビュー) - Azure Monitor Applica
 description: Azure Monitor Application Insights Java 用テレメトリ プロセッサ
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: e3c41a7a9968a7de743f0c513b1f2b194501d0df
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+author: MS-jgol
+ms.custom: devx-track-java
+ms.author: jgol
+ms.openlocfilehash: 316243e130345ce1b009e065cf9d8250c501ee84
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425798"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601035"
 ---
 # <a name="telemetry-processors-preview-for-azure-monitor-application-insights-java"></a>Azure Monitor Application Insights Java 用テレメトリ プロセッサ (プレビュー)
 

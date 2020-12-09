@@ -2,20 +2,20 @@
 title: Azure AD Domain Services のリソース フォレストの概念 | Microsoft Docs
 description: Azure Active Directory Domain Services のリソース フォレストがどのようなものであり、ユーザー認証オプションが限られたハイブリッド環境やセキュリティ上の問題があるハイブリッド環境において、組織にどのような利点をもたらすかについて説明します。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 1f8c09e7e260d22aa6864327d6a890ef3beaa039
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 79cf408bcb9060c247b97e6a81204c5a5517d384
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962515"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620003"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services のリソース フォレストの概念と機能
 
@@ -41,7 +41,7 @@ Azure AD DS マネージド ドメインでは、フォレストにはドメイ�
 
 複数のドメインを持つ組織では、多くの場合、ユーザーが別のドメインの共有リソースにアクセスする必要があります。 これらの共有リソースへのアクセスのためには、あるドメインのユーザーを別のドメインに対して認証することが必要になります。 異なるドメインにあるクライアントとサーバーの間でこのような認証と承認の機能を提供するには、2 つのドメイン間に "*信頼*" がなければなりません。
 
-ドメインの信頼を使用することで、各ドメインの認証メカニズムに他のドメインからの認証を信頼させることができます。 信頼は、受信認証要求が信頼されている機関 (*信頼される*側のドメイン) からのものであることを確認することによって、リソース ドメイン (*信頼する*側のドメイン) 内の共有リソースへのアクセスを制御するのに役立ちます。 信頼は、検証済みの認証要求のみがドメイン間を移動できるようにするブリッジとして機能します。
+ドメインの信頼を使用することで、各ドメインの認証メカニズムに他のドメインからの認証を信頼させることができます。 信頼は、受信認証要求が信頼されている機関 (*信頼される* 側のドメイン) からのものであることを確認することによって、リソース ドメイン (*信頼する* 側のドメイン) 内の共有リソースへのアクセスを制御するのに役立ちます。 信頼は、検証済みの認証要求のみがドメイン間を移動できるようにするブリッジとして機能します。
 
 信頼によって認証要求が渡される方法は、信頼がどのように構成されているかによって異なります。 信頼は、次のいずれかの方法で構成できます。
 

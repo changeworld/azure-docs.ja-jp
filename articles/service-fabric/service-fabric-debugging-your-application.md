@@ -1,17 +1,15 @@
 ---
 title: Visual Studio でアプリケーションをデバッグする
 description: Visual Studio とローカル開発クラスターを使用してサービスを開発、デバッグし、サービスの信頼性とパフォーマンスを改善します。
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 35c4875ca9bf3165fff84164eb3bb7ebe44cf932
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 0b7d08d610c883240abedc66c55abba64a74c8e3
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093397"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576317"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Visual Studio による Service Fabric アプリケーションのデバッグ
 > [!div class="op_single_selector"]
@@ -98,7 +96,7 @@ Service Fabric アプリケーションが Azure 内の Service Fabric クラス
      > 現在、サービスの実行可能ファイル名が同名の複数のインスタンスを持つ Service Fabric クラスターのデバッグはサポートされていません。
      > 
      > 
-4. アプリケーションのデバッグが完了したら、 **Cloud Explorer** でクラスターを右クリックし、 **[デバッグの無効化]** を選択して、リモート デバッグ拡張機能を無効にできます。
+4. アプリケーションのデバッグが完了したら、**Cloud Explorer** でクラスターを右クリックし、 **[デバッグの無効化]** を選択して、リモート デバッグ拡張機能を無効にできます。
    
     ![リモート デバッグの無効化][disableremotedebugging]
 
@@ -130,7 +128,7 @@ Service Fabric アプリケーションが Azure 内の Service Fabric クラス
     これで、サービスと Service Fabric によって出力されるトレースを表示できるようになりました。 特定のアプリケーションのみを表示するようにイベントをフィルター処理する場合は、フィルターにアプリケーション名を入力します。
    
     ![ストリーミング トレースの表示][viewingstreamingtraces]
-3. クラスターからのストリーミング トレースが完了したら、リモートのストリーミング トレースを無効化できます。このためには、 **Cloud Explorer** でクラスターを右クリックし、 **[ストリーミング トレースを無効にする]** を選択します。
+3. クラスターからのストリーミング トレースが完了したら、リモートのストリーミング トレースを無効化できます。このためには、**Cloud Explorer** でクラスターを右クリックし、 **[ストリーミング トレースを無効にする]** を選択します。
    
     ![リモートのストリーミング トレースの無効化][disablestreamingtraces]
 

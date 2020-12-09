@@ -3,13 +3,15 @@ title: Java Web アプリでの Azure Application Insights テレメトリのフ
 description: 監視する必要のないイベントをフィルターで除外して、テレメトリのトラフィックを削減します。
 ms.topic: conceptual
 ms.date: 3/14/2019
+author: MS-jgol
 ms.custom: devx-track-java
-ms.openlocfilehash: 329f07a530a584a14d5312631ec977773e70af29
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.author: jgol
+ms.openlocfilehash: 9a57874652fa5ee58f39483903be211305c683f2
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378195"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601239"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Java Web アプリでのテレメトリのフィルター処理
 
@@ -263,7 +265,7 @@ public TelemetryProcessor successFilter() {
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-" *フィルターが機能しません。* "
+"*フィルターが機能しません。* "
 
 * 有効なパラメーター値を指定していることを確認してください。 たとえば、期間は整数である必要があります。 無効な値を指定すると、フィルターは無視されます。 カスタム フィルターがコンストラクターまたは set メソッドから例外をスローした場合、これも無視されます。
 

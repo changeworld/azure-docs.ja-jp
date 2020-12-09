@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 11/06/2020
-ms.openlocfilehash: 1885dd76a94a7a4a6b91c67735103350c473ba44
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: bc5d2cad7b4fbf1871d2c02dc91db30daf55e855
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378433"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600729"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムのセットアップのカスタマイズ
 
@@ -311,7 +311,7 @@ Azure PowerShell を使用してカスタム セットアップで Azure-SSIS IR
 
       * *ORACLE ENTERPRISE* フォルダー。これには、ご利用の Azure SSIS IR Enterprise Edition の各ノードに Oracle コネクタおよび OCI ドライバーをインストールするためのカスタム セットアップ スクリプト (*main.cmd*) とサイレント インストール構成ファイル (*client.rsp*) が格納されています。 このセットアップでは、Oracle 接続マネージャー、ソース、および変換先を使用して、Oracle サーバーに接続できます。 
       
-        まず、Microsoft Connectors v5.0 for Oracle (*AttunitySSISOraAdaptersSetup.msi* および *AttunitySSISOraAdaptersSetup64.msi*) を [Microsoft ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=55179)から、そして最新の Oracle クライアント (たとえば、*winx64_12102_client.zip*) を [Oracle](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) からダウンロードします。 次に、これらすべてを *main.cmd* および *client.rsp* と共にご利用のコンテナーにアップロードします。 TNS を使用して Oracle に接続する場合は、*tnsnames.ora* をダウンロードし、編集して、ご利用のコンテナーにアップロードすることも必要です。 このようにして、セットアップ中に Oracle インストール フォルダーにコピーできます。
+        まず、Microsoft Connectors v5.0 for Oracle (*AttunitySSISOraAdaptersSetup.msi* および *AttunitySSISOraAdaptersSetup64.msi*) を [Microsoft ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=55179)から、そして最新の Oracle クライアント (たとえば、*winx64_12102_client.zip*) を [Oracle](https://www.oracle.com/database/technologies/oracle19c-windows-downloads.html) からダウンロードします。 次に、これらすべてを *main.cmd* および *client.rsp* と共にご利用のコンテナーにアップロードします。 TNS を使用して Oracle に接続する場合は、*tnsnames.ora* をダウンロードし、編集して、ご利用のコンテナーにアップロードすることも必要です。 このようにして、セットアップ中に Oracle インストール フォルダーにコピーできます。
 
       * *ORACLE STANDARD ADO.NET* フォルダー。これには、ご利用の Azure-SSIS IR の各ノード上に Oracle ODP.NET ドライバーをインストールするためのカスタム セットアップ スクリプト (*main.cmd*) が格納されています。 このセットアップでは、ADO.NET 接続マネージャー、ソース、および変換先を使用して、Oracle サーバーに接続できます。 
       

@@ -2,7 +2,7 @@
 title: Azure AD Domain Services でのパスワード ポリシーの作成と使用 | Microsoft Docs
 description: Azure AD DS マネージド ドメインで、細かい設定が可能なパスワード ポリシーを使用してアカウント パスワードをセキュリティで保護し、制御する方法とその理由について説明します。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 2dbc75ac4f143089db778b260bb2c4bee5b49f6a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.author: justinha
+ms.openlocfilehash: df132af1675b3f373fe1eab5685c5d2f07813445
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393168"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619234"
 ---
 # <a name="password-and-account-lockout-policies-on-azure-active-directory-domain-services-managed-domains"></a>Azure Active Directory Domain Services マネージド ドメインのパスワードとアカウントのロックアウト ポリシー
 

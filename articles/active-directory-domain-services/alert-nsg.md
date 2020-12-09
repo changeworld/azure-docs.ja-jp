@@ -2,7 +2,7 @@
 title: Azure AD DS でネットワーク セキュリティ グループのアラートを解決する | Microsoft Docs
 description: Azure Active Directory Domain Services のネットワーク セキュリティ グループ構成アラートをトラブルシューティングして解決する方法について説明します
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 95f970a7-5867-4108-a87e-471fa0910b8c
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: f8917d7bd8fc1a4091607b9a405cfefbb51bc188
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: d8f2e77b7225306844cec85363a2971eaac4eebd
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962787"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620258"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>既知の問題:Azure Active Directory Domain Services でのネットワーク構成アラート
 
@@ -65,7 +65,7 @@ ms.locfileid: "91962787"
 
 既存のセキュリティ規則を確認し、既定のポートが開いていることを確実にするには、次の手順を実行します。
 
-1. Azure portal で、**ネットワーク セキュリティ グループ**を検索して選択します。
+1. Azure portal で、**ネットワーク セキュリティ グループ** を検索して選択します。
 1. マネージド ドメインに関連付けられているネットワーク セキュリティ グループ (*AADDS-contoso.com-NSG* など) を選択します。
 1. **[概要]** ページに、既存の受信および送信のセキュリティ規則が表示されます。
 
@@ -77,7 +77,7 @@ ms.locfileid: "91962787"
 
 不足しているセキュリティ規則を追加するには、次の手順を実行します。
 
-1. Azure portal で、**ネットワーク セキュリティ グループ**を検索して選択します。
+1. Azure portal で、**ネットワーク セキュリティ グループ** を検索して選択します。
 1. マネージド ドメインに関連付けられているネットワーク セキュリティ グループ (*AADDS-contoso.com-NSG* など) を選択します。
 1. 左側のパネルの **[設定]** で、追加する必要がある規則に応じて、 *[受信セキュリティ規則]* または *[送信セキュリティ規則]* をクリックします。
 1. **[追加]** を選択し、ポート、プロトコル、方向などに基づいて必要な規則を作成します。準備ができたら **[OK]** を選択します。

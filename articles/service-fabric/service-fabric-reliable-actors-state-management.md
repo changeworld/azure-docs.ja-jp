@@ -1,17 +1,15 @@
 ---
 title: Reliable Actors の状態管理
 description: Reliable Actors の状態が、高可用性のためにどのように管理、永続化、およびレプリケートされるかについて説明します。
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d5859886dbd1211f929be1031237f7e7d9b1fc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: badfc490f26b71881e7970c2c0be3472abfec25a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89611713"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575603"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors の状態管理
 Reliable Actors は、ロジックと状態の両方をカプセル化できるシングル スレッド オブジェクトです。 アクターは Reliable Services 上で実行されるため、同じ永続化およびレプリケーション メカニズムを使用して、状態を確実に保持することができます。 このため、エラー後やガベージ コレクションに続く再アクティベーション時、リソース分散またはアップグレードのためにクラスター内のノード間を移動されたときでも、アクターは状態を失いません。
@@ -25,7 +23,7 @@ Reliable Actors は、ロジックと状態の両方をカプセル化できる�
 * **揮発状態**:状態は 3 つ以上のレプリカにレプリケートされ、メモリだけに保持されます。 揮発状態により、ノード障害時、アクター障害時、およびアップグレードとリソース分散中の回復力が得られます。 ただし、状態はディスクに保持されません。 従って、すべてのレプリカが同時に失われると状態も失われます。
 * **非永続化状態**:状態はレプリケートされず、ディスクにも書き込まれません。状態を確実に維持する必要がないアクターにのみ使用します。
 
-永続性の各レベルは、単にサービスの*状態プロバイダー*と*レプリケーション*構成が異なるだけです。 状態がディスクに書き込まれるかどうかは、状態プロバイダーによって決まります。これは、状態を格納する Reliable Service のコンポーネントです。 またレプリケーションは、サービスがデプロイされるレプリカ数によって決まります。 Reliable Services と同様に、状態プロバイダーもレプリカ数も手動で簡単に設定できます。 アクター フレームワークは、属性を提供します。これはアクターに使用された場合、既定の状態プロバイダーとレプリカ数の自動生成設定を自動的に選択して、上記の 3 つの永続性設定のいずれかを実現します。 StatePersistence 属性は、派生クラスによって継承されません。各 Actor 型は、独自の StatePersistence レベルを提供する必要があります。
+永続性の各レベルは、単にサービスの *状態プロバイダー* と *レプリケーション* 構成が異なるだけです。 状態がディスクに書き込まれるかどうかは、状態プロバイダーによって決まります。これは、状態を格納する Reliable Service のコンポーネントです。 またレプリケーションは、サービスがデプロイされるレプリカ数によって決まります。 Reliable Services と同様に、状態プロバイダーもレプリカ数も手動で簡単に設定できます。 アクター フレームワークは、属性を提供します。これはアクターに使用された場合、既定の状態プロバイダーとレプリカ数の自動生成設定を自動的に選択して、上記の 3 つの永続性設定のいずれかを実現します。 StatePersistence 属性は、派生クラスによって継承されません。各 Actor 型は、独自の StatePersistence レベルを提供する必要があります。
 
 ### <a name="persisted-state"></a>永続化状態
 ```csharp
@@ -73,9 +71,9 @@ class MyActorImpl extends FabricActor implements MyActor
 この設定は、メモリ内のみの状態プロバイダーを使用し、レプリカ数を 1 に設定します。
 
 ### <a name="defaults-and-generated-settings"></a>既定値と生成される設定
-`StatePersistence`属性を使用する場合、状態プロバイダーはアクター サービスが開始される際に、ランタイムで自動的に選択されます。 ただし、レプリカ数は、コンパイル時に Visual Studio アクター ビルド ツールによって設定されます。 ビルド ツールは自動的にアクター サービスの*既定のサービス*を ApplicationManifest.xml 内に生成します。 **最小レプリカ セット サイズ**と**ターゲット レプリカ セット サイズ**のために、パラメーターが作成されます。
+`StatePersistence`属性を使用する場合、状態プロバイダーはアクター サービスが開始される際に、ランタイムで自動的に選択されます。 ただし、レプリカ数は、コンパイル時に Visual Studio アクター ビルド ツールによって設定されます。 ビルド ツールは自動的にアクター サービスの *既定のサービス* を ApplicationManifest.xml 内に生成します。 **最小レプリカ セット サイズ** と **ターゲット レプリカ セット サイズ** のために、パラメーターが作成されます。
 
-これらのパラメーターは手動で変更できます。 ただし`StatePersistence`属性が変更されるたびに、選択された`StatePersistence`属性の既定のレプリカ セット サイズ値にパラメーターは設定され、前の値はオーバーライドされます。 つまり、`StatePersistence`属性の値を変更すると、ServiceManifest.xml に設定した値がビルド時*のみ*にオーバーライドされます。
+これらのパラメーターは手動で変更できます。 ただし`StatePersistence`属性が変更されるたびに、選択された`StatePersistence`属性の既定のレプリカ セット サイズ値にパラメーターは設定され、前の値はオーバーライドされます。 つまり、`StatePersistence`属性の値を変更すると、ServiceManifest.xml に設定した値がビルド時 *のみ* にオーバーライドされます。
 
 ```xml
 <ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">

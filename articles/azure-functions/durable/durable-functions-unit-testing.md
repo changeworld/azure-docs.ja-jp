@@ -3,12 +3,12 @@ title: Azure Durable Functions の単体テスト
 description: Durable Functions の単体テストを行う方法について説明します。
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: 86733f8b5b80799bad3e52c643ed27465dfc7641
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7786a0a2e2d31086e1938b70e63fe2374e16fe7f
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74231223"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601358"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions の単体テスト
 
@@ -25,7 +25,7 @@ ms.locfileid: "74231223"
 
 * Durable Functions
 
-* [xUnit](https://xunit.github.io/) - テスト フレームワーク
+* [xUnit](https://github.com/xunit/xunit) - テスト フレームワーク
 
 * [moq](https://github.com/moq/moq4) - モックの作成のフレームワーク
 
@@ -179,6 +179,6 @@ ms.locfileid: "74231223"
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [xUnit の詳細を確認する](https://xunit.github.io/docs/getting-started-dotnet-core)
+> [xUnit の詳細を確認する](https://xunit.net/docs/getting-started/netcore/cmdline)
 > 
 > [moq の詳細を確認する](https://github.com/Moq/moq4/wiki/Quickstart)

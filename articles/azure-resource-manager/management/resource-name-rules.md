@@ -2,13 +2,13 @@
 title: リソースの名前付けに関する制限事項
 description: Azure リソースの名前付けに関する規則と制限事項を示します。
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: 206bd6604ecd9dfece9c946c653b2720e75ff1e3
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 12/04/2020
+ms.openlocfilehash: a6aac03277a11cf671f5a618bc85ff987cfdc2dd
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347796"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608318"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure リソースの名前付け規則と制限事項
 
@@ -489,7 +489,7 @@ ms.locfileid: "93347796"
 > | azureFirewalls | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | bastionHosts | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | connections | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
-> | dnsZones | resource group | 1-63 文字<br><br>2 から 34 のラベル<br><br>各ラベルは、ピリオドで区切られた一連の文字です。 たとえば、 **contoso.com** には 2 つのラベルがあります。 | 各ラベルには、英数字、アンダースコア、およびハイフンを含めることができます。<br><br>各ラベルはピリオドで区切られます。 |
+> | dnsZones | resource group | 1-63 文字<br><br>2 から 34 のラベル<br><br>各ラベルは、ピリオドで区切られた一連の文字です。 たとえば、**contoso.com** には 2 つのラベルがあります。 | 各ラベルには、英数字、アンダースコア、およびハイフンを含めることができます。<br><br>各ラベルはピリオドで区切られます。 |
 > | expressRouteCircuits | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | firewallPolicies | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | firewallPolicies/ruleGroups | ファイアウォール ポリシー | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
@@ -502,7 +502,7 @@ ms.locfileid: "93347796"
 > | networkSecurityGroups | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | networkSecurityGroups/securityRules | ネットワーク セキュリティ グループ | 1 ～ 80 |  英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | networkWatchers | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
-> | privateDnsZones | resource group | 1-63 文字<br><br>2 から 34 のラベル<br><br>各ラベルは、ピリオドで区切られた一連の文字です。 たとえば、 **contoso.com** には 2 つのラベルがあります。 | 各ラベルには、英数字、アンダースコア、およびハイフンを含めることができます。<br><br>各ラベルはピリオドで区切られます。 |
+> | privateDnsZones | resource group | 1-63 文字<br><br>2 から 34 のラベル<br><br>各ラベルは、ピリオドで区切られた一連の文字です。 たとえば、**contoso.com** には 2 つのラベルがあります。 | 各ラベルには、英数字、アンダースコア、およびハイフンを含めることができます。<br><br>各ラベルはピリオドで区切られます。 |
 > | privateDnsZones / virtualNetworkLinks | プライベート DNS ゾーン | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | publicIPAddresses | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | publicIPPrefixes | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
@@ -551,7 +551,7 @@ ms.locfileid: "93347796"
 > [!div class="mx-tableFixed"]
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
-> | dashboards | resource group | 3-160 | 英数字とハイフン。<br><br>制限のある文字を使用するには、 **hidden-title** という名前のタグを、使用するダッシュボード名とともに追加します。 ポータルでは、ダッシュボードを表示するときにその名前が表示されます。 |
+> | dashboards | resource group | 3-160 | 英数字とハイフン。<br><br>制限のある文字を使用するには、**hidden-title** という名前のタグを、使用するダッシュボード名とともに追加します。 ポータルでは、ダッシュボードを表示するときにその名前が表示されます。 |
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
@@ -596,6 +596,7 @@ ms.locfileid: "93347796"
 > | resourcegroups | subscription | 1-90 | [正規表現ドキュメント](/rest/api/resources/resourcegroups/createorupdate)の記載と一致する英数字、アンダースコア、かっこ、ハイフン、ピリオド、および Unicode 文字。<br><br>末尾をピリオドにすることはできません。 |
 > | tagNames | resource | 1-512 | 次は使用できません:<br>`<>%&\?/` |
 > | tagNames / tagValues | タグ名 | 1-256 | すべての文字。 |
+> | templateSpecs | resource group | 1-90 | 英数字、アンダースコア、かっこ、ハイフン、およびピリオド。 |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 

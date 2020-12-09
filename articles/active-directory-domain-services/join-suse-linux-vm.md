@@ -2,20 +2,20 @@
 title: SLE VM を Azure AD Domain Services に参加させる | Microsoft Docs
 description: SUSE Linux Enterprise 仮想マシンを構成して Azure AD Domain Services のマネージド ドメインに参加させる方法について説明します。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.author: joflore
-ms.openlocfilehash: 607d3bc8eca3bd969f0f47ca95923040fb22591e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.author: justinha
+ms.openlocfilehash: f2f421d95dfc376aed373c718198db33a870d9dc
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275861"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619608"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>SUSE Linux Enterprise 仮想マシンを Azure Active Directory Domain Services のマネージド ドメインに参加させる
 
@@ -60,7 +60,7 @@ VM をデプロイした後、SSH を使用して VM に接続する手順に従
 sudo vi /etc/hosts
 ```
 
-*hosts* ファイルで、 *localhost* アドレスを更新します。 次の例では
+*hosts* ファイルで、*localhost* アドレスを更新します。 次の例では
 
 * *aaddscontoso.com* は、マネージド ドメインの DNS ドメイン名です。
 * *linux-q2gr* は、マネージド ドメインに参加している SLE VM のホスト名です。
@@ -71,7 +71,7 @@ sudo vi /etc/hosts
 127.0.0.1 linux-q2gr linux-q2gr.aaddscontoso.com
 ```
 
-終わったら、エディターの `:wq` コマンドを使用して、 *hosts* ファイルを保存して終了します。
+終わったら、エディターの `:wq` コマンドを使用して、*hosts* ファイルを保存して終了します。
 
 ## <a name="join-vm-to-the-managed-domain-using-sssd"></a>SSSD を使用して VM をマネージド ドメインに参加させる
 
@@ -85,11 +85,11 @@ sudo vi /etc/hosts
 
 1. YaST を開きます。
 
-1. 後で DNS 自動検出を正常に実行するには、マネージド ドメインの IP アドレス (" *Active Directory サーバー* ") をクライアントのネーム サーバーとして構成します。
+1. 後で DNS 自動検出を正常に実行するには、マネージド ドメインの IP アドレス ("*Active Directory サーバー*") をクライアントのネーム サーバーとして構成します。
 
     YaST で、 **[システム] > [ネットワーク設定]** の順に選択します。
 
-1. *[ホスト名/DNS]* タブを選択し、テキスト ボックス *[ネーム サーバー 1]* にマネージド ドメインの IP アドレスを入力します。 これらの IP アドレスは、ご利用のマネージド ドメインの Azure portal で *[プロパティ]* ウィンドウに表示されます (例: *10.0.2.4* 、 *10.0.2.5* )。
+1. *[ホスト名/DNS]* タブを選択し、テキスト ボックス *[ネーム サーバー 1]* にマネージド ドメインの IP アドレスを入力します。 これらの IP アドレスは、ご利用のマネージド ドメインの Azure portal で *[プロパティ]* ウィンドウに表示されます (例: *10.0.2.4*、*10.0.2.5*)。
 
     ご自分のマネージド ドメインの IP アドレスを追加し、 **[OK]** を選択します。
 
@@ -105,7 +105,7 @@ VM をマネージド ドメインに参加させるには、次の手順を行�
 
 1. ダイアログ ボックスで、 **[ドメインの追加]** を選択します。
 
-1. 正しい " *ドメイン名* " (例: *aaddscontoso.com* ) を指定し、データの識別と認証に使用するサービスを指定します。 両方について、 *[Microsoft Active Directory]* を選択します。
+1. 正しい "*ドメイン名*" (例: *aaddscontoso.com*) を指定し、データの識別と認証に使用するサービスを指定します。 両方について、 *[Microsoft Active Directory]* を選択します。
 
     *[ドメインを有効にする]* オプションが選択されていることを確認します。
 
@@ -115,11 +115,11 @@ VM をマネージド ドメインに参加させるには、次の手順を行�
 
 1. VM では、必要に応じて追加のソフトウェアがインストールされ、マネージド ドメインが使用可能かどうかが確認されます。
 
-    すべてが正しい場合、次の例のダイアログが表示され、VM によってマネージド ドメインが検出されたが、" *まだ登録されていない* " ことを示します。
+    すべてが正しい場合、次の例のダイアログが表示され、VM によってマネージド ドメインが検出されたが、"*まだ登録されていない*" ことを示します。
 
     ![YaST の Active Directory 登録ウィンドウのスクリーンショット例](./media/join-suse-linux-vm/enroll-window.png)
 
-1. ダイアログで、マネージド ドメインに参加するユーザーの *[ユーザー名]* と " *パスワード* " を指定します。 必要に応じて、[Azure AD のグループにユーザー アカウントを追加します](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
+1. ダイアログで、マネージド ドメインに参加するユーザーの *[ユーザー名]* と "*パスワード*" を指定します。 必要に応じて、[Azure AD のグループにユーザー アカウントを追加します](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
 
     現在のドメインが Samba に対して有効であることを確認するには、 *[Overwrite Samba configuration to work with this AD]\(この AD で動作するように Samba の構成を上書きする\)* をアクティブ化します。
 
@@ -133,13 +133,13 @@ VM をマネージド ドメインに登録した後、次のスクリーンシ�
 
 1. マネージド ドメインによって提供されたデータを使用したサインインを許可するには、 *[ドメイン ユーザー ログオンを許可する]* をオンにします。
 
-1. 必要に応じて、 *[ドメイン データ ソースを有効にする]* で、ご利用の環境に必要な追加のデータ ソースをオンにします。 これらのオプションとしては、 **sudo** の使用を許可するユーザーや使用可能なネットワーク ドライブなどがあります。
+1. 必要に応じて、 *[ドメイン データ ソースを有効にする]* で、ご利用の環境に必要な追加のデータ ソースをオンにします。 これらのオプションとしては、**sudo** の使用を許可するユーザーや使用可能なネットワーク ドライブなどがあります。
 
 1. マネージド ドメイン内のユーザーが VM でホーム ディレクトリを持つことを許可するには、 *[ホーム ディレクトリを作成する]* ボックスをオンにします。
 
-1. サイド バーで、 **[サービス オプション]、[名前] スイッチ** 、 *[拡張オプション]* の順に選択します。 そのウィンドウで、 *[fallback_homedir]* または *[override_homedir]* を選択し、 **[追加]** を選択します。
+1. サイド バーで、 **[サービス オプション]、[名前] スイッチ**、 *[拡張オプション]* の順に選択します。 そのウィンドウで、 *[fallback_homedir]* または *[override_homedir]* を選択し、 **[追加]** を選択します。
 
-1. ホーム ディレクトリの場所の値を指定します。 ホーム ディレクトリを */home/USER_NAME* の形式に従って作成するには、 */home/%u* を使用します。 使用可能な変数の詳細については、 *override_homedir* セクションの sssd.conf man ページ (`man 5 sssd.conf`) を参照してください。
+1. ホーム ディレクトリの場所の値を指定します。 ホーム ディレクトリを */home/USER_NAME* の形式に従って作成するには、 */home/%u* を使用します。 使用可能な変数の詳細については、*override_homedir* セクションの sssd.conf man ページ (`man 5 sssd.conf`) を参照してください。
 
 1. **[OK]** を選択します。
 
@@ -153,7 +153,7 @@ VM をマネージド ドメインに登録した後、次のスクリーンシ�
 
 1. YaST で、 **[ネットワーク サービス] > [Windows Domain Membership]** の順に選択します。
 
-1. *[Windows Domain Membership]* 画面の *[ドメインまたはワークグループ]* で、参加するドメインを入力します。 マネージド ドメイン名 (例: *aaddscontoso.com* ) を入力します。
+1. *[Windows Domain Membership]* 画面の *[ドメインまたはワークグループ]* で、参加するドメインを入力します。 マネージド ドメイン名 (例: *aaddscontoso.com*) を入力します。
 
     ![YaST の [Windows Domain Membership] ウィンドウのスクリーンショット例](./media/join-suse-linux-vm/samba-client-window.png)
 
@@ -165,7 +165,7 @@ VM をマネージド ドメインに登録した後、次のスクリーンシ�
 
 1. Samba ユーザーおよびグループの UID と GID の範囲を変更するには、 *[エキスパート設定]* を選択します。
 
-1. *[NTP 構成]* を選択して、マネージド ドメインのネットワーク タイム プロトコル (NTP) 時刻の同期を構成します。 マネージド ドメインの IP アドレスを入力します。 これらの IP アドレスは、ご利用のマネージド ドメインの Azure portal で *[プロパティ]* ウィンドウに表示されます (例: *10.0.2.4* 、 *10.0.2.5* )。
+1. *[NTP 構成]* を選択して、マネージド ドメインのネットワーク タイム プロトコル (NTP) 時刻の同期を構成します。 マネージド ドメインの IP アドレスを入力します。 これらの IP アドレスは、ご利用のマネージド ドメインの Azure portal で *[プロパティ]* ウィンドウに表示されます (例: *10.0.2.4*、*10.0.2.5*)。
 
 1. **[OK]** を選択し、入力を要求されたら、ドメイン参加を確認します。
 
@@ -312,7 +312,7 @@ VM をマネージド ドメインに登録した後、次のスクリーンシ�
     PasswordAuthentication yes
     ```
 
-    終わったら、エディターの `:wq` コマンドを使用して、 *sshd_conf* ファイルを保存して終了します。
+    終わったら、エディターの `:wq` コマンドを使用して、*sshd_conf* ファイルを保存して終了します。
 
 1. 変更を適用し、ユーザーがパスワードを使用してサインインできるようにするには、SSH サービスを再起動します。
 
@@ -322,7 +322,7 @@ VM をマネージド ドメインに登録した後、次のスクリーンシ�
 
 ## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>"AAD DC Administrators" グループに sudo 特権を付与する
 
-*AAD DC Administrators* グループのメンバーに SLE VM での管理特権を付与するには、 */etc/sudoers* にエントリを追加します。 追加した後、 *AAD DC Administrators* グループのメンバーは、SLE VM で `sudo` コマンドを使用できるようになります。
+*AAD DC Administrators* グループのメンバーに SLE VM での管理特権を付与するには、 */etc/sudoers* にエントリを追加します。 追加した後、*AAD DC Administrators* グループのメンバーは、SLE VM で `sudo` コマンドを使用できるようになります。
 
 1. *sudoers* ファイルを編集用に開きます。
 
@@ -330,7 +330,7 @@ VM をマネージド ドメインに登録した後、次のスクリーンシ�
     sudo visudo
     ```
 
-1. */etc/sudoers* ファイルの最後に、次のエントリを追加します。 *AAD DC Administrators* グループの名前に空白が含まれているため、グループ名に円記号のエスケープ文字を含めます。 独自のドメイン名 ( *aaddscontoso.com* など) を追加します。
+1. */etc/sudoers* ファイルの最後に、次のエントリを追加します。 *AAD DC Administrators* グループの名前に空白が含まれているため、グループ名に円記号のエスケープ文字を含めます。 独自のドメイン名 (*aaddscontoso.com* など) を追加します。
 
     ```console
     # Add 'AAD DC Administrators' group members as admins.
@@ -343,7 +343,7 @@ VM をマネージド ドメインに登録した後、次のスクリーンシ�
 
 VM がマネージド ドメインに正常に参加したことを確認するには、ドメイン ユーザー アカウントを使用して新しい SSH 接続を開始します。 ホーム ディレクトリが作成されていること、およびドメインのグループ メンバーシップが適用されていることを確認します。
 
-1. コンソールから新しい SSH 接続を作成します。 `ssh -l` コマンドを使用して、マネージド ドメインに属しているドメイン アカウントを使用し (例: `contosoadmin@aaddscontoso.com`)、VM のアドレス (例: *linux-q2gr.aaddscontoso.com* ) を入力します。 Azure Cloud Shell を使用する場合は、内部 DNS 名ではなく、VM のパブリック IP アドレスを使用します。
+1. コンソールから新しい SSH 接続を作成します。 `ssh -l` コマンドを使用して、マネージド ドメインに属しているドメイン アカウントを使用し (例: `contosoadmin@aaddscontoso.com`)、VM のアドレス (例: *linux-q2gr.aaddscontoso.com*) を入力します。 Azure Cloud Shell を使用する場合は、内部 DNS 名ではなく、VM のパブリック IP アドレスを使用します。
 
     ```console
     ssh -l contosoadmin@AADDSCONTOSO.com linux-q2gr.aaddscontoso.com

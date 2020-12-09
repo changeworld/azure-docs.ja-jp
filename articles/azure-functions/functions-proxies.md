@@ -3,12 +3,12 @@ title: Azure Functions でプロキシを操作する
 description: Azure Functions プロキシ の使用方法の概要
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 3e08b9cf633162cc7015f47774b043cf58c115a0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fb263239f99bcb4ec4c893b700d5c1cce078659f
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020400"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601375"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作
 
@@ -55,11 +55,11 @@ ms.locfileid: "96020400"
 ### <a name="reference-local-functions"></a><a name="reference-localhost"></a>ローカル関数を参照する
 `localhost` を使用して、往復のプロキシ要求なしで、同じ関数アプリ内の関数を直接参照することができます。
 
-`"backendurl": "https://localhost/api/httptriggerC#1"` は、ローカルの HTTP トリガーされた関数をルート `/api/httptriggerC#1` で参照します。
+`"backendUri": "https://localhost/api/httptriggerC#1"` は、ローカルの HTTP トリガーされた関数をルート `/api/httptriggerC#1` で参照します。
 
  
 >[!Note]  
->関数が "*function、admin、または sys*" の承認レベルを使用している場合は、元の関数 URL に従って code と clientId を指定する必要があります。 この場合、参照は次のようになります: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"`。これらのキーを[アプリケーション設定]に格納し、プロキシでそれらを参照することをお勧めします。 これにより、ソース コードにシークレットを格納しなくて済みます。 
+>関数が "*function、admin、または sys*" の承認レベルを使用している場合は、元の関数 URL に従って code と clientId を指定する必要があります。 この場合、参照は次のようになります: `"backendUri": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"`。これらのキーを[アプリケーション設定]に格納し、プロキシでそれらを参照することをお勧めします。 これにより、ソース コードにシークレットを格納しなくて済みます。 
 
 ### <a name="reference-request-parameters"></a><a name="request-parameters"></a>要求のパラメーターを参照する
 

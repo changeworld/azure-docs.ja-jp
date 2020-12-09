@@ -6,12 +6,12 @@ ms.topic: conceptual
 description: Azure Dev Spaces をカスタム NGINX イングレス コントローラーを使用するように構成し、そのイングレス コントローラーを使用して HTTPS を構成する方法を説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: e1918b5ce9c0fdba81174f0b36fd1ce51d0df70a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 873057e88809c1aaa8047ac02129d83ca8e9a478
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748812"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608556"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>カスタム NGINX イングレス コントローラーの使用と HTTPS の構成
 
@@ -58,7 +58,7 @@ helm install nginx stable/nginx-ingress --namespace nginx --version 1.27.0
 ```
 
 > [!NOTE]
-> 上の例では、イングレス コントローラーのパブリック エンドポイントを作成します。 代わりに、イングレス コントローラーのプライベート エンドポイントを使用する必要がある場合は、 *helm install* コマンドに *--set controller.service.annotations."service\\.beta\\.kubernetes\\.io/azure-load-balancer-internal"=true* パラメーターを追加します。 次に例を示します。
+> 上の例では、イングレス コントローラーのパブリック エンドポイントを作成します。 代わりに、イングレス コントローラーのプライベート エンドポイントを使用する必要がある場合は、*helm install* コマンドに *--set controller.service.annotations."service\\.beta\\.kubernetes\\.io/azure-load-balancer-internal"=true* パラメーターを追加します。 次に例を示します。
 > ```console
 > helm install nginx stable/nginx-ingress --namespace nginx --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.27.0
 > ```
@@ -70,7 +70,7 @@ helm install nginx stable/nginx-ingress --namespace nginx --version 1.27.0
 kubectl get svc -n nginx --watch
 ```
 
-このサンプル出力では、 *nginx* 名前空間にあるすべてのサービスの IP アドレスを示しています。
+このサンプル出力では、*nginx* 名前空間にあるすべてのサービスの IP アドレスを示しています。
 
 ```console
 NAME                                  TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                      AGE
@@ -80,7 +80,7 @@ nginx-nginx-ingress-default-backend   ClusterIP      10.0.210.231   <none>      
 nginx-nginx-ingress-controller        LoadBalancer   10.0.19.39     MY_EXTERNAL_IP   80:31314/TCP,443:30521/TCP   26s
 ```
 
-*A* レコードを、 [az network dns record-set a add-record][az-network-dns-record-set-a-add-record] を使用し、NGINX サービスの外部 IP アドレスが使用された DNS ゾーンに追加します。
+*A* レコードを、[az network dns record-set a add-record][az-network-dns-record-set-a-add-record] を使用し、NGINX サービスの外部 IP アドレスが使用された DNS ゾーンに追加します。
 
 ```azurecli
 az network dns record-set a add-record \
@@ -90,7 +90,7 @@ az network dns record-set a add-record \
     --ipv4-address MY_EXTERNAL_IP
 ```
 
-上記の例では、 *A* レコードを *MY_CUSTOM_DOMAIN* DNS ゾーンに追加します。
+上記の例では、*A* レコードを *MY_CUSTOM_DOMAIN* DNS ゾーンに追加します。
 
 この記事では、[Azure Dev Spaces 自転車シェア サンプル アプリケーション](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp)を使用して、Azure Dev Spaces の使い方のデモを行います。 GitHub からアプリケーションを複製して、そのディレクトリに移動します。
 
@@ -138,7 +138,7 @@ azds space select -n dev -y
 helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 ```
 
-サンプル アプリケーションは、上記の例では、 *dev* 名前空間にデプロイされます。
+サンプル アプリケーションは、上記の例では、*dev* 名前空間にデプロイされます。
 
 `azds list-uris` を使用してサンプル アプリケーションにアクセスするための URL を表示します。
 
@@ -155,19 +155,19 @@ http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/  Available
 http://dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
-`azds list-uris` コマンドからパブリック URL を開いて、 *bikesharingweb* サービスに移動します。 上記の例では、 *bikesharingweb* サービスのパブリック URL は `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` です。
+`azds list-uris` コマンドからパブリック URL を開いて、*bikesharingweb* サービスに移動します。 上記の例では、*bikesharingweb* サービスのパブリック URL は `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` です。
 
 > [!NOTE]
-> *bikesharingweb* サービスではなくエラー ページが表示される場合は、 *values.yaml* ファイル内で *kubernetes.io/ingress.class* 注釈とホストの **両方** を更新したことを確認してください。
+> *bikesharingweb* サービスではなくエラー ページが表示される場合は、*values.yaml* ファイル内で *kubernetes.io/ingress.class* 注釈とホストの **両方** を更新したことを確認してください。
 
-`azds space select` コマンドを使用すると、 *dev* の下に子空間を作成し、子開発空間にアクセスするための URL を列挙できます。
+`azds space select` コマンドを使用すると、*dev* の下に子空間を作成し、子開発空間にアクセスするための URL を列挙できます。
 
 ```console
 azds space select -n dev/azureuser1 -y
 azds list-uris
 ```
 
-以下は、`azds list-uris` で出力された、 *azureuser1* 子開発空間のサンプル アプリケーションにアクセスするための URL の例です。
+以下は、`azds list-uris` で出力された、*azureuser1* 子開発空間のサンプル アプリケーションにアクセスするための URL の例です。
 
 ```console
 Uri                                                  Status
@@ -176,11 +176,11 @@ http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
-`azds list-uris` コマンドからパブリック URL を開いて、 *azureuser1* 子開発空間の *bikesharingweb* サービスに移動します。 上記の例で、 *azureuser1* 子開発空間の *bikesharingweb* サービスのパブリック URL は `http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` です。
+`azds list-uris` コマンドからパブリック URL を開いて、*azureuser1* 子開発空間の *bikesharingweb* サービスに移動します。 上記の例で、*azureuser1* 子開発空間の *bikesharingweb* サービスのパブリック URL は `http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` です。
 
 ## <a name="configure-the-nginx-ingress-controller-to-use-https"></a>HTTPS を使用する NGINX イングレス コントローラーの構成
 
-[cert-manager][cert-manager] を使用して、HTTPS を使用するように NGINX イングレス コントローラーを構成するときに TLS 証明書の管理を自動化します。 `helm` を使用して、 *certmanager* チャートをインストールします。
+[cert-manager][cert-manager] を使用して、HTTPS を使用するように NGINX イングレス コントローラーを構成するときに TLS 証明書の管理を自動化します。 `helm` を使用して、*certmanager* チャートをインストールします。
 
 ```console
 kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml --namespace nginx
@@ -210,7 +210,7 @@ spec:
 ```
 
 > [!NOTE]
-> テストの場合、 *ClusterIssuer* に使用できる [ステージング サーバー][letsencrypt-staging-issuer]もあります。
+> テストの場合、*ClusterIssuer* に使用できる [ステージング サーバー][letsencrypt-staging-issuer]もあります。
 
 `kubectl` を使用して `letsencrypt-clusterissuer.yaml` を適用します。
 
@@ -328,7 +328,7 @@ Azure Dev Spaces のしくみの詳細について確認します。
 [az-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record
-[custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-the-domain
+[custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain
 [dns-zone]: ../../dns/dns-getstarted-cli.md
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free

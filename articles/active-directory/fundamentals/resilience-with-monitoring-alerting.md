@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcb63931f883c6061ded996621a09aacbacd14af
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 766fd80ae5f7450c8e45d10afa4612a788a8d5fc
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919115"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602158"
 ---
 # <a name="resilience-through-monitoring-and-analytics"></a>監視と分析による回復性
 
@@ -41,7 +41,7 @@ ms.locfileid: "95919115"
 
   - **成功率 (%)** : 成功した要求の数 / 要求の総数。
 
-  Azure AD B2C ポリシー ベースのログ、[監査ログ](https://docs.microsoft.coms/azure/active-directory-b2c/analytics-with-application-insights)、およびサインイン ログが格納される [Application Insights](https://docs.microsoft.com/azure/active-directory-b2c/analytics-with-application-insights) で、[主要指標](https://docs.microsoft.com/azure/active-directory-b2c/view-audit-logs)にアクセスします。  
+  Azure AD B2C ポリシー ベースのログ、[監査ログ](https://docs.microsoft.com/azure/active-directory-b2c/analytics-with-application-insights)、およびサインイン ログが格納される [Application Insights](https://docs.microsoft.com/azure/active-directory-b2c/analytics-with-application-insights) で、[主要指標](https://docs.microsoft.com/azure/active-directory-b2c/view-audit-logs)にアクセスします。  
 
    - **視覚化**:Log Analytics のビルド ダッシュボードを使用して、主要指標を視覚的に監視します。
 
@@ -49,7 +49,7 @@ ms.locfileid: "95919115"
 
    - **前の期間**:参照目的で、前の期間 (先週など) における要求の総数と成功率 (%) の変化を示す一時的なグラフを作成します。
 
-- **アラート**:Log Analytics を使用して、主要指標が急激に変化したときにトリガーされる[アラート](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)を定義します。 このような変化は SLO に悪影響を与える可能性があります。 アラートには、電子メール、SMS、Webhook などのさまざまな形式の通知方法が使用されます。 まず、アラートがトリガーされるしきい値として機能する条件を定義します。 次に例を示します。
+- **アラート**:Log Analytics を使用して、主要指標が急激に変化したときにトリガーされる [アラート](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)を定義します。 このような変化は SLO に悪影響を与える可能性があります。 アラートには、電子メール、SMS、Webhook などのさまざまな形式の通知方法が使用されます。 まず、アラートがトリガーされるしきい値として機能する条件を定義します。 次に例を示します。
   - 要求の総数の急激な減少に対するアラート: 要求の総数が急激に減少したときにアラートをトリガーします。 たとえば、要求の総数が直前の期間と比べて 25% 減少した場合にアラートを生成します。  
   - 成功率 (%) の著しい低下に対するアラート: 選択したポリシーの成功率が著しく低下したときにアラートをトリガーします。
   - アラートを受信したら、[Log Analytics](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views)、[Application Insights](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-with-application-insights#:~:text=Setup%20Application%20Insights%201%20Go%20to%20the%20Azure,left-menu%2C%20and%20click%20on%20it.%20More%20items...%20)、および Azure AD B2C 用 [VS Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)を使用して問題のトラブルシューティングを行います。 問題を解決し、更新したアプリケーションやポリシーをデプロイした後は、通常の範囲に戻るまで主要指標の監視が継続されます。
@@ -68,4 +68,4 @@ ms.locfileid: "95919115"
   - [回復性がある外部プロセスとのインターフェイス](resilient-external-processes.md)
   - [開発者のベスト プラクティスで回復性を実現する](resilience-b2c-developer-best-practices.md)
 - [認証インフラストラクチャの回復性を強化する](resilience-in-infrastructure.md)
-- [アプリケーションで認証と認可の回復性を強化する](resilience-app-development-overview.md)
+- [アプリケーションで認証と認可の回復性を向上させる](resilience-app-development-overview.md)

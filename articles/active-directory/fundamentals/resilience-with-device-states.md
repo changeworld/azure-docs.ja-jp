@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4075cb71cb4dae7ac506c16e3987070cfa10bb09
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: faa334c21e23ecddad287846d34aaf0d72af66cc
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919119"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602186"
 ---
 # <a name="build-resilience-with-device-states"></a>デバイスの状態を使用して回復性を強化する
 
@@ -44,7 +44,7 @@ ms.locfileid: "95919119"
 
 * 個人または会社が所有する iOS デバイスと Android デバイスでは、[Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)をデプロイします。 Microsoft Authenticator アプリは、多要素認証機能とパスワードレス サインイン機能に加えて、エンドユーザーに対する認証プロンプトが少ない[ブローカー認証](../develop/brokered-auth.md)を使用して、ネイティブ アプリケーション全体でシングル サインオンを有効にします。
 
-* 個人または会社が所有する iOS デバイスと Android デバイスでは、[モバイル アプリケーション管理](https://docs.microsoft.com/mem/intune/apps/app-management.md)を使用して、少ない認証要求で会社のリソースに安全にアクセスできるようにします。 
+* 個人または会社が所有する iOS デバイスと Android デバイスでは、[モバイル アプリケーション管理](https://docs.microsoft.com/mem/intune/apps/app-management)を使用して、少ない認証要求で会社のリソースに安全にアクセスできるようにします。 
 
 * [Apple デバイス用の Microsoft Enterprise SSO プラグイン (プレビュー) を使用します](../develop/apple-sso-plugin.md)。 これは、デバイスを登録するとともに、ブラウザーとネイティブ Azure AD アプリケーション全体で SSO を実現します。 
 
@@ -55,7 +55,7 @@ ms.locfileid: "95919119"
 
 * [継続的アクセス評価 (CAE) を使用して回復性を強化する](resilience-with-continuous-access-evaluation.md)
 
-* [外部ユーザー認証で回復性を強化する](resilience-b2b-authentication.md)
+* [外部ユーザー認証の回復性を強化する](resilience-b2b-authentication.md)
 
 * [ハイブリッド認証で回復性を強化する](resilience-in-hybrid.md)
 

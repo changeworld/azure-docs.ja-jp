@@ -2,7 +2,7 @@
 title: Azure AD Domain Services の中断されたドメイン | Microsoft Docs
 description: Azure AD DS マネージド ドメインのさまざまな正常性状態と、中断されたドメインの復元方法について説明します。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 95e1d8da-60c7-4fc1-987d-f48fde56a8cb
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: 9bcecdfaf3121ea024fee567dbe83544229373be
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: b0b48e7ad494386052e6d94c32d7215b3f4f0202
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967700"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618826"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の正常性状態の理解と中断されたドメインの解決
 

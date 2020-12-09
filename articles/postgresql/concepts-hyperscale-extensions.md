@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 2e4a09ba07a5fa5eb3a5af7aa88e092feb3e7efc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 000f8a1457298901dcfc94bc5e0923e94ba35dc7
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487978"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620904"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) での PostgreSQL 拡張機能
 
@@ -35,8 +35,8 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 > |---|---|
 > | [citext](https://www.postgresql.org/docs/current/static/citext.html) | 大文字と小文字が区別されない文字列型を提供します。 |
 > | [cube](https://www.postgresql.org/docs/current/static/cube.html) | 多次元キューブのデータ型を提供します。 |
-> | [hstore](https://www.postgresql.org/docs/current/static/hstore.html) | キーと値のペアのセットを格納するデータ型を提供します。 |
 > | [hll](https://github.com/citusdata/postgresql-hll) | HyperLogLog データ構造を提供します。 |
+> | [hstore](https://www.postgresql.org/docs/current/static/hstore.html) | キーと値のペアのセットを格納するデータ型を提供します。 |
 > | [isn](https://www.postgresql.org/docs/current/static/isn.html) | 国際対応の製品番号規格のデータ型を提供します。 |
 > | [lo](https://www.postgresql.org/docs/current/lo.html) | ラージ オブジェクトのメンテナンス。 |
 > | [ltree](https://www.postgresql.org/docs/current/static/ltree.html) | 階層ツリー状の構造体のデータ型を提供します。 |
@@ -65,9 +65,9 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 > | [intagg](https://www.postgresql.org/docs/current/intagg.html) | 整数のアグリゲーターと列挙子 (廃止)。 |
 > | [intarray](https://www.postgresql.org/docs/current/static/intarray.html) | 整数の null を含まない配列を操作する関数と演算子を提供します。 |
 > | [moddatetime](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.9) | 最終変更時刻を追跡するための関数。 |
-> | [pgcrypto](https://www.postgresql.org/docs/current/static/pgcrypto.html) | 暗号化関数を提供します。 |
 > | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | 時刻または ID によってパーティション テーブルを管理します。 |
 > | [pg\_trgm](https://www.postgresql.org/docs/current/static/pgtrgm.html) | trigram 一致に基づいて英数字テキストの類似性を特定する関数と演算子を提供します。 |
+> | [pgcrypto](https://www.postgresql.org/docs/current/static/pgcrypto.html) | 暗号化関数を提供します。 |
 > | [refint](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.5) | 参照整合性を実装するための関数 (廃止)。 |
 > | session\_analytics | hstore 配列のクエリを実行するための関数。 |
 > | [tablefunc](https://www.postgresql.org/docs/current/static/tablefunc.html) | クロス集計を含む、テーブル全体を操作する関数を提供します。 |
@@ -81,7 +81,6 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 > | **拡張子** | **説明** |
 > |---|---|
 > | [citus](https://github.com/citusdata/citus) | Citus 分散型データベース。 |
-> | shard\_rebalancer | ノードの追加または削除が行われた場合にサーバー グループ内のデータを安全に再調整します。 |
 
 ### <a name="index-types-extensions"></a>インデックス型の拡張機能
 
@@ -106,6 +105,7 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 > |---|---|
 > | [adminpack](https://www.postgresql.org/docs/current/adminpack.html) | PostgreSQL の管理関数。 |
 > | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | 関係の整合性を検証するための関数。 |
+> | [dblink](https://www.postgresql.org/docs/current/dblink.html) | データベース セッション内から他の PostgreSQL データベースへの接続をサポートするモジュール。 この拡張機能については、「dblink and postgres_fdw」のセクションを参照してください。 |
 > | [file\_fdw](https://www.postgresql.org/docs/current/file-fdw.html) | フラット ファイルのアクセスのための外部データ ラッパー。 |
 > | [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) | 低レベルでデータベース ページの内容を検査します。 |
 > | [pg\_buffercache](https://www.postgresql.org/docs/current/static/pgbuffercache.html) | リアルタイムで共有バッファー キャッシュの動作を確認する手段を提供します。 |
@@ -120,8 +120,6 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 > | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) | TLS または SSL 証明書に関する情報。 |
 > | [tsm\_system\_rows](https://www.postgresql.org/docs/current/tsm-system-rows.html) | 行数を制限として受け取る TABLESAMPLE メソッド。 |
 > | [tsm\_system\_time](https://www.postgresql.org/docs/current/tsm-system-time.html) | ミリ秒単位の時間を制限として受け取る TABLESAMPLE メソッド。 |
-> | [hypopg](https://hypopg.readthedocs.io/en/latest/) | CPU やディスク コストのない仮定のインデックスを作成する手段の提供。 |
-> | [dblink](https://www.postgresql.org/docs/current/dblink.html) | データベース セッション内から他の PostgreSQL データベースへの接続をサポートするモジュール。 この拡張機能については、「dblink and postgres_fdw」のセクションを参照してください。 |
 > | [xml2](https://www.postgresql.org/docs/current/xml2.html) | XPath のクエリの実行と XSLT。 |
 
 

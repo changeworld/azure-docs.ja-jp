@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のクラスター用の Azure Activ
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 7f62c7dc7aacf9be4a59498aa5c556e9991ad578
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e95eae3ab8d992bc169e54700e7e31715e72102e
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85298550"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607825"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
@@ -23,7 +23,7 @@ Azure AD サービス プリンシパルを作成するには、アプリケー�
 
 別の Azure AD テナントのサービス プリンシパルを使用している場合は、クラスターのデプロイ時に使用できるアクセス許可について追加の考慮事項があります。 ディレクトリ情報の読み取りと書き込みを行うために適切なアクセス許可がない可能性があります。 詳細については、「[Azure Active Directory の既定のユーザー アクセス許可とは][azure-ad-permissions]」を参照してください。
 
-また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>サービス プリンシパルを自動的に作成して使用する
 
@@ -105,7 +105,6 @@ Azure Container Registry (ACR) をコンテナーのイメージ ストアとし
 - [カスタム ロール][rbac-custom-role]を作成し、次のロールのアクセス許可を定義します。
   - *Microsoft.Network/virtualNetworks/subnets/join/action*
   - *Microsoft.Network/virtualNetworks/subnets/read*
-  - *Microsoft.Network/virtualNetworks/subnets/write*
   - *Microsoft.Network/publicIPAddresses/join/action*
   - *Microsoft.Network/publicIPAddresses/read*
   - *Microsoft.Network/publicIPAddresses/write*
@@ -134,7 +133,7 @@ AKS と Azure AD サービス プリンシパルを使用する場合は、以�
 - Kubernetes のサービス プリンシパルは、クラスター構成の一部です。 ただし、クラスターのデプロイに ID を使用しないでください。
 - 既定では、このサービス プリンシパル資格情報は 1 年間有効です。 [サービス プリンシパルの資格情報はいつでも更新または回転][update-credentials]できます。
 - すべてのサービス プリンシパルは、Azure AD アプリケーションに関連付けられています。 Kubernetes クラスターのサービス プリンシパルは、有効な任意の Azure AD アプリケーション名 (たとえば *https://www.contoso.org/example* ) に関連付けることができます。 アプリケーションの URL は、実際のエンドポイントである必要はありません。
-- サービス プリンシパルの**クライアント ID** を指定するときには、`appId` の値を使用します。
+- サービス プリンシパルの **クライアント ID** を指定するときには、`appId` の値を使用します。
 - Kubernetes クラスター内のエージェント ノード VM では、サービス プリンシパルの資格情報が `/etc/kubernetes/azure.json` ファイルに格納されます
 - [az aks create][az-aks-create] コマンドを使用してサービス プリンシパルを自動的に生成すると、サービス プリンシパルの資格情報は、コマンドの実行に使用されたコンピューター上の `~/.azure/aksServicePrincipal.json` ファイルに書き込まれます。
 - 追加の AKS CLI コマンドでサービス プリンシパルを明示的に渡さない場合は、`~/.azure/aksServicePrincipal.json` にある既定のサービス プリンシパルが使用されます。  

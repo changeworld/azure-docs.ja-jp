@@ -1,17 +1,15 @@
 ---
 title: Service Fabric Reliable Actors の概要
 description: Virtual Actor のパターンに基づく Service Fabric Reliable Actors のプログラミング モデルの概要です。
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: adb15d995cd2a9fd604aa6b91360adc88a2804e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a8a7003a69deaf6b74d6fbb8a3cf84b0a78eecf
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89007929"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576385"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors の概要
 Reliable Actors は、[Virtual Actor](https://research.microsoft.com/en-us/projects/orleans/) パターンに基づく Service Fabric アプリケーション フレームワークです。 Reliable Actors API は、Service Fabric による拡張性と信頼性の保証の上に構築された、シングル スレッドのプログラミング モデルを提供します。
@@ -43,7 +41,7 @@ Service Fabric アクターは仮想アクターです。つまり、その有�
 * Reliable Actors では暗黙的にアクター オブジェクトが作成されますが、ユーザーが明示的にアクターとその状態を削除できます。
 
 ## <a name="distribution-and-failover"></a>分散とフェールオーバー
-Service Fabric アクターは、拡張性と信頼性を実現するために、クラスター全体にアクターを分散し、障害が発生したノードのアクターを、正常に稼働しているノードに必要に応じて自動的に移行します。 これは、 [パーティション分割された、ステートフルな Reliable Service](service-fabric-concepts-partitioning.md)の抽象化です。 分散、拡張性、信頼性、および自動フェールオーバーは、アクターが *Actor Service*と呼ばれるステートフルな Reliable Service 内で実行されていることによって、すべてが実現されています。
+Service Fabric アクターは、拡張性と信頼性を実現するために、クラスター全体にアクターを分散し、障害が発生したノードのアクターを、正常に稼働しているノードに必要に応じて自動的に移行します。 これは、 [パーティション分割された、ステートフルな Reliable Service](service-fabric-concepts-partitioning.md)の抽象化です。 分散、拡張性、信頼性、および自動フェールオーバーは、アクターが *Actor Service* と呼ばれるステートフルな Reliable Service 内で実行されていることによって、すべてが実現されています。
 
 アクターは Actor Service のパーティション全体に分散され、これらのパーティションは Service Fabric クラスター内のノード全体に分散されます。 各サービス パーティションには、アクターのセットが含まれています。 Service Fabric は、分散とサービス パーティションのフェールオーバーを管理します。
 
@@ -125,12 +123,12 @@ Reliable Actors ランタイムは、アクター メソッドにアクセスす
 次のような、考慮すべき重要な点がいくつかあります。
 
 * クライアント要求 *xyz789* に応じて *ActorId2* の代わりに *Method1* を実行しているときに、*ActorId2* に *Method1* を実行するように求める別のクライアント要求 (*abc123*) が到着する場合があります。 しかし、*Method1* の 2 回目の実行は、前の実行が完了するまで開始されません。 同様に、*Method1* がクライアント要求 *xyz789* に応じて実行されている間に、*ActorId2* によって登録されたアラームが開始されます。 アラームのコールバックが実行されるのは、*Method1* の両方の実行が完了した場合のみです。 これはすべてターンごとのコンカレンシーが *ActorId2* に対して強制されるためです。
-* 同様に、ターンごとのコンカレンシーは *ActorId1* に対しても強制されます。図に示されているように、*ActorId1* の代わりに *Method1*、*Method2*およびタイマーのコールバックが順次実行されます。
+* 同様に、ターンごとのコンカレンシーは *ActorId1* に対しても強制されます。図に示されているように、*ActorId1* の代わりに *Method1*、*Method2* およびタイマーのコールバックが順次実行されます。
 * *ActorId1* の代理としての *Method1* の実行は、*ActorId2* の代理としての実行と重複しています。 これは、ターンごとのコンカレンシーが、アクター全体ではなくアクター内でのみ強制されるためです。
 * メソッドやコールバックのいくつかの実行では、メソッドやコールバックによって返される `Task`(C#)/`CompletableFuture`(Java) は、メソッドが応答した後に完了します。 その他の実行では、メソッドやコールバックが応答するまでに非同期操作は既に完了しています。 いずれの場合でも、アクターごとのロックは、メソッドとコールバックが応答し、非同期操作が完了した後にのみ解放されます。
 
 ### <a name="reentrancy"></a>再入
-アクター ランタイムでは、既定で再入が許可されます。 つまり、*アクター A* のアクター メソッドが*アクター B* に対してメソッドを呼び出してから、アクター B が*アクター A* に対して別のメソッドを呼び出す場合、実行が許可されます。 これは、メソッドが同じ論理呼び出しチェーン コンテキストの一部であるためです。 すべてのタイマーとアラームの呼び出しは新しい論理呼び出しコンテキストで始まります。 詳細については、「 [Reliable Actors の再入](service-fabric-reliable-actors-reentrancy.md) 」を参照してください。
+アクター ランタイムでは、既定で再入が許可されます。 つまり、*アクター A* のアクター メソッドが *アクター B* に対してメソッドを呼び出してから、アクター B が *アクター A* に対して別のメソッドを呼び出す場合、実行が許可されます。 これは、メソッドが同じ論理呼び出しチェーン コンテキストの一部であるためです。 すべてのタイマーとアラームの呼び出しは新しい論理呼び出しコンテキストで始まります。 詳細については、「 [Reliable Actors の再入](service-fabric-reliable-actors-reentrancy.md) 」を参照してください。
 
 ### <a name="scope-of-concurrency-guarantees"></a>コンカレンシーの保証の範囲
 アクター ランタイムは、これらのメソッドの呼び出しを制御する状況でこのようなコンカレンシーを保証します。 たとえば、クライアント要求の受信に対する応答として行われるメソッド呼び出しおよびタイマーとアラームのコールバックに対して、このような保証を提供します。 ただし、アクター コードがアクター ランタイムによって提供されるメカニズム以外でこれらのメソッドを直接呼び出す場合、ランタイムはコンカレンシーを保証できません。 たとえば、メソッドが、アクター メソッドによって返されるタスクに関連付けられていない一部のタスクのコンテキストで呼び出される場合、ランタイムはコンカレンシーを保証することはできません。 アクターが独自に作成するスレッドからメソッドが呼び出される場合、ランタイムはコンカレンシーを保証できません。 そのため、バックグラウンド操作を実行するには、アクターは、ターンごとのコンカレンシーを優先する [アクターのタイマーおよびアクターのアラーム](service-fabric-reliable-actors-timers-reminders.md) を使用する必要があります。

@@ -2,7 +2,7 @@
 title: テンプレートを使用して Windows VM を Azure AD DS に参加させる | Microsoft Docs
 description: Azure Resource Manager テンプレートを使用して、新規または既存の Windows Server VM を Azure Active Directory Domain Services のマネージド ドメインに参加させる方法について説明します。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 4eabfd8e-5509-4acd-86b5-1318147fddb5
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: 988f009527f26a9f2be965b635d57f0bc38913c2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: e7245e8e468ea051ee095d97cc250ad303aa80a5
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960696"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619438"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure Active Directory Domain Services マネージド ドメインに Windows Server 仮想マシンを参加させる
 

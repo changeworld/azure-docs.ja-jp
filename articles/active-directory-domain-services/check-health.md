@@ -2,7 +2,7 @@
 title: Azure Active Directory Domain Services の正常性を確認する | Microsoft Docs
 description: Azure portal を使用して、Azure Active Directory Domain Services (Azure AD DS) マネージド ドメインの正常性を確認し、ステータス メッセージについて理解する方法を学習します。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: bf65657ea60e94f167bfbb6585026702b64e9658
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 92cc6157c590d3e05b4002e0f071c08e4ec23a16
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962736"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620326"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインの正常性を確認する
 
@@ -76,9 +76,9 @@ Azure Active Directory Domain Services (Azure AD DS) では、いくつかのバ
 
 正常性状態のアラートは、次の重大度レベルに分類されます。
 
- * **重大なアラート**は、マネージド ドメインに深刻な影響を与える問題です。 これらのアラートは直ちに対処する必要があります。 Azure プラットフォームでは、問題が解決されるまで、マネージド ドメインの監視、管理、修正プログラムの適用、および同期を行うことはできません。
- * **警告アラート**では、問題が解決しない場合にマネージド ドメインの操作に影響する可能性がある問題を通知します。 これらのアラートでは、マネージド ドメインをセキュリティで保護するための推奨事項も提供されます。
- * **情報アラート**は、マネージド ドメインに悪影響を与えない通知です。 情報アラートで、マネージド ドメインで何が起こっているかについて洞察できます。
+ * **重大なアラート** は、マネージド ドメインに深刻な影響を与える問題です。 これらのアラートは直ちに対処する必要があります。 Azure プラットフォームでは、問題が解決されるまで、マネージド ドメインの監視、管理、修正プログラムの適用、および同期を行うことはできません。
+ * **警告アラート** では、問題が解決しない場合にマネージド ドメインの操作に影響する可能性がある問題を通知します。 これらのアラートでは、マネージド ドメインをセキュリティで保護するための推奨事項も提供されます。
+ * **情報アラート** は、マネージド ドメインに悪影響を与えない通知です。 情報アラートで、マネージド ドメインで何が起こっているかについて洞察できます。
 
 ## <a name="next-steps"></a>次のステップ
 

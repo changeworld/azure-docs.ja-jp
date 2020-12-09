@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 08/26/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e661bd24acbb15ced9f5bb0a0fba7eec51eae06
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7099de23b825fa7af203dff9696bb53e23a099c8
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363540"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741118"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>Azure Active Directory でセルフサービス パスワード リセットをトラブルシューティングする
 
@@ -127,22 +127,22 @@ Azure AD やセルフサービス パスワード リセットに関する一般
 
 適切なサポートを提供するため、ケースをオープンする際はできるだけ詳しい情報のご提供をお願いいたします。 これらの詳細には、次の内容が含まれています。
 
-* **エラーの一般的な説明** : どのようなエラーですか。 どのような動作が見られましたか。 エラーを再現することはできますか。 できるだけ詳しくお知らせください。
-* **ページ** : エラーが表示されたときに、どのページを表示していましたか。 可能な場合はそのページの URL とスクリーンショットをお送りください。
-* **サポート コード** : エラーが表示されたときに生成されたサポート コードをお知らせください。
+* **エラーの一般的な説明**: どのようなエラーですか。 どのような動作が見られましたか。 エラーを再現することはできますか。 できるだけ詳しくお知らせください。
+* **ページ**: エラーが表示されたときに、どのページを表示していましたか。 可能な場合はそのページの URL とスクリーンショットをお送りください。
+* **サポート コード**: エラーが表示されたときに生成されたサポート コードをお知らせください。
    * このコードを見つけるには、エラーを再現してから、画面の下部にある **サポート コード** のリンクを選択し、生成された GUID をサポート エンジニアに送信します。
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-support-code.png" alt-text="サポート コードは、Web ブラウザー ウィンドウの右下にあります。&quot;:::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-support-code.png" alt-text="サポート コードは、Web ブラウザー ウィンドウの右下にあります。":::
 
   * ページの下部にサポート コードが表示されない場合は、F12 キーを押して SID と CID を検索し、この 2 つの結果をサポート エンジニアに送信します。
-* **日付、時刻、タイム ゾーン** : エラーが発生した正確な日付、時刻、&quot; *タイム ゾーン* " をお知らせください。
-* **ユーザー ID** : エラーが表示されたユーザーをお知らせください。 たとえば、 *user\@contoso.com* です。
+* **日付、時刻、タイム ゾーン**: エラーが発生した正確な日付、時刻、"*タイム ゾーン*" をお知らせください。
+* **ユーザー ID**: エラーが表示されたユーザーをお知らせください。 たとえば、*user\@contoso.com* です。
    * このユーザーは、フェデレーション ユーザーですか。
    * このユーザーは、パススルー認証ユーザーですか。
    * このユーザーは、パスワード ハッシュ同期ユーザーですか。
    * このユーザーは、クラウド限定ユーザーですか。
-* **ライセンス** : ユーザーに Azure AD のライセンスが割り当てられていますか。
-* **アプリケーション イベント ログ** : パスワード ライトバックの使用中に、ご利用のオンプレミスのインフラストラクチャでエラーが発生した場合は、Azure AD Connect サーバーからのアプリケーション イベント ログのコピーを圧縮してお送りください。
+* **ライセンス**: ユーザーに Azure AD のライセンスが割り当てられていますか。
+* **アプリケーション イベント ログ**: パスワード ライトバックの使用中に、ご利用のオンプレミスのインフラストラクチャでエラーが発生した場合は、Azure AD Connect サーバーからのアプリケーション イベント ログのコピーを圧縮してお送りください。
 
 ## <a name="next-steps"></a>次の手順
 

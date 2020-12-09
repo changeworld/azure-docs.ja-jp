@@ -2,20 +2,20 @@
 title: Azure AD Domain Services のレプリカ セットの概念 | Microsoft Docs
 description: Azure Active Directory Domain Services のレプリカ セットと、これが ID サービスを必要とするアプリケーションにどのようにして冗長性を提供するかについて説明します。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.author: joflore
-ms.openlocfilehash: 499f4df303993d97ebb4eb38de98828b085aff00
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 5359a955ea97b559b7e3d244bfb6c4fb09e8681b
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961070"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620037"
 ---
 # <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services-preview"></a>Azure Active Directory Domain Services (プレビュー) のレプリカ セットの概念と機能
 
@@ -54,7 +54,7 @@ Azure Active Directory Domain Services (Azure AD DS) のマネージド ドメ�
 
 ## <a name="deployment-considerations"></a>デプロイに関する考慮事項
 
-マネージド ドメインの既定の SKU は *Enterprise* SKU で、複数のレプリカ セットをサポートします。 *Standard* SKU に変更した場合に追加のレプリカ セットを作成するには、マネージド ドメインを *Enterprise* または *Premium* に[アップグレード](change-sku.md)します。
+マネージド ドメインの既定の SKU は *Enterprise* SKU で、複数のレプリカ セットをサポートします。 *Standard* SKU に変更した場合に追加のレプリカ セットを作成するには、マネージド ドメインを *Enterprise* または *Premium* に [アップグレード](change-sku.md)します。
 
 プレビュー期間中にサポートされるレプリカ セットの最大数は 4 です。これには、マネージド ドメインの作成時に作成された最初のレプリカが含まれます。
 
