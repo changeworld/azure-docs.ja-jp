@@ -12,17 +12,17 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 8881dc3f67ac1c9f699bd2bf7bcf1dbbcd5e9c0c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b4480f3d28cb89165a6ba3c5b26b10b1aba9765c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95905329"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461847"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell と Azure CLI:Azure Key Vault のユーザー管理キーを使用して Transparent Data Encryption を有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-この記事では、Azure SQL Database または Azure Synapse Analytics (旧称 SQL Data Warehouse) で、Transparent Data Encryption (TDE) に Azure Key Vault のキーを使用する方法について説明します。 Bring Your Own Key (BYOK) のサポートのため、Azure Key Vault と統合される TDE の詳細については、[Azure Key Vault のユーザー管理キーを使用する TDE](transparent-data-encryption-byok-overview.md) に関するページを参照してください。
+この記事では、Azure SQL Database または Azure Synapse Analytics で、Transparent Data Encryption (TDE) に Azure Key Vault のキーを使用する方法について説明します。 Bring Your Own Key (BYOK) のサポートのため、Azure Key Vault と統合される TDE の詳細については、[Azure Key Vault のユーザー管理キーを使用する TDE](transparent-data-encryption-byok-overview.md) に関するページを参照してください。
 
 > [!NOTE] 
 > Azure SQL では、マネージド HSM に格納されている RSA キーを TDE プロテクターとして使用できるようになりました。 この機能は **パブリック プレビュー** 段階にあります。 Azure Key Vault Managed HSM は、フル マネージド、高可用性、シングル テナント、標準準拠を特徴とするクラウド サービスで、FIPS 140-2 レベル 3 適合の HSM を使用してクラウド アプリケーションの暗号化キーを保護することができます。 [マネージド HSM](../../key-vault/managed-hsm/index.yml) の詳細を参照してください。
@@ -46,7 +46,7 @@ ms.locfileid: "95905329"
 
 Az モジュールのインストール手順については、[Azure PowerShell のインストール](/powershell/azure/install-az-ps)を参照してください。 具体的なコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。
 
-Key Vault の詳細については、「[PowerShell を使用した Key Vault の操作](../../key-vault/secrets/quick-create-powershell.md)」と「[PowerShell で Key Vault の論理的な削除を使用する方法](../../key-vault/general/soft-delete-powershell.md)」を参照してください。
+Key Vault の詳細については、「[PowerShell を使用した Key Vault の操作](../../key-vault/secrets/quick-create-powershell.md)」と「[PowerShell で Key Vault の論理的な削除を使用する方法](../../key-vault/general/key-vault-recovery.md)」を参照してください。
 
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager (RM) モジュールは引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 AzureRM モジュールのバグ修正は、少なくとも 2020 年 12 月までは引き続き受け取ることができます。  Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 その互換性の詳細については、「[新しい Azure PowerShell Az モジュールの概要](/powershell/azure/new-azureps-module-az)」を参照してください。
@@ -136,7 +136,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 必要なバージョンの Azure CLI (バージョン 2.0 以降) をインストールして Azure サブスクリプションに接続するには、[Azure クロスプラットフォーム コマンド ライン インターフェイス 2.0 のインストールと構成](/cli/azure/install-azure-cli)に関する記事をご覧ください。
 
-Key Vault の詳細については、[CLI 2.0 を使用した Key Vault の管理](../../key-vault/general/manage-with-cli2.md)と [CLI で Key Vault の論理的な削除を使用する方法](../../key-vault/general/soft-delete-cli.md)に関する記事をご覧ください。
+Key Vault の詳細については、[CLI 2.0 を使用した Key Vault の管理](../../key-vault/general/manage-with-cli2.md)と [CLI で Key Vault の論理的な削除を使用する方法](../../key-vault/general/key-vault-recovery.md)に関する記事をご覧ください。
 
 ## <a name="assign-an-azure-ad-identity-to-your-server"></a>Azure AD ID をサーバーに割り当てる
 

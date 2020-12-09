@@ -4,16 +4,16 @@ description: データを復旧したり誤削除を回避したりできるよ�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 12/01/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 7defa8611080027a67a0d1db1daa4c4a9d44edfe
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ea98b2d9812fb5c848c7e13b94d46a4142595cd4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126143"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492167"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Azure ファイル共有で論理的な削除を有効にする
 
@@ -33,11 +33,29 @@ Azure Storage では、アプリケーションまたは他のストレージ �
 
 :::image type="content" source="media/storage-how-to-recover-deleted-account/enable-soft-delete-files.png" alt-text="ストレージ アカウントの論理的な削除の設定ペインのスクリーンショット。ファイル共有セクション、有効トグル、保有期間の設定、および保存が強調表示されています。これにより、ストレージ アカウント内のすべてのファイル共有に対して論理的な削除が有効になります。":::
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+論理的な削除のコマンドレットは、バージョン 2.1.3 以降の [Azure CLI モジュール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)で使用できます。
+
+## <a name="getting-started-with-cli"></a>CLI の概要
+
+論理的な削除を有効にするには、ファイル クライアントのサービスのプロパティを更新する必要があります。 次の例では、ストレージ アカウント内のすべてのファイル共有に対して論理的な削除が有効になります。
+
+```azurecli
+az storage account file-service-properties update --enable-delete-retention true -n yourStorageaccount -g yourResourceGroup
+```
+
+次のコマンドを使用すると、論理的な削除が有効になっているかどうかを確認して、その保有ポリシーを表示できます。
+
+```azurecli
+az storage account file-service-properties show -n yourStorageaccount -g yourResourceGroup
+```
+
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ## <a name="prerequisite"></a>前提条件
 
-論理的な削除のコマンドレットは、Az.Storage モジュールの [3.0.0](https://www.powershellgallery.com/packages/Az.Storage/3.0.0) バージョンで使用できます。 
+論理的な削除のコマンドレットは、Az.Storage モジュールの 4.8.0 以降のバージョンで使用できます。 
 
 ## <a name="getting-started-with-powershell"></a>PowerShell の概要
 
@@ -76,9 +94,29 @@ Get-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName 
 
     :::image type="content" source="media/storage-how-to-recover-deleted-account/restored-file-share.png" alt-text="[状態] 列 ([名前] 列の隣の列) が [アクティブ] に設定されている場合、ファイル共有は復元されています。":::
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+論理的な削除のコマンドレットは、Azure CLI の 2.1.3 バージョンで使用できます。 論理的に削除されたファイル共有を復元するには、まず共有の `--deleted-version` 値を取得する必要があります。 この値を取得するには、次のコマンドを使用して、ストレージ アカウントの削除されたすべての共有を一覧表示します。
+
+```azurecli
+az storage share-rm list --storage-account yourStorageaccount --include-deleted
+```
+
+復元する共有を特定したら、次のコマンドでそれを使用して復元できます。
+
+```azurecli
+az storage share-rm restore -n deletedshare --deleted-version 01D64EB9886F00C4 -g yourResourceGroup --storage-account yourStorageaccount
+```
+
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-論理的な削除のコマンドレットは、Az.Storage モジュールの 3.0.0 バージョンで使用できます。 論理的に削除されたファイル共有を復元するには、次のコマンドを使用します。
+論理的な削除のコマンドレットは、Az.Storage モジュールの 4.8.0 以降のバージョンで使用できます。 論理的に削除されたファイル共有を復元するには、まず共有の `-DeletedShareVersion` 値を取得する必要があります。 この値を取得するには、次のコマンドを使用して、ストレージ アカウントの削除されたすべての共有を一覧表示します。
+
+```azurepowershell-interactive
+Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $accountName -IncludeDeleted
+```
+
+復元する共有を特定したら、次のコマンドでそれを使用して復元できます。
 
 ```azurepowershell-interactive
 Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $accountName -DeletedShareVersion 01D5E2783BDCDA97
@@ -97,9 +135,16 @@ Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $account
 
     :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="論理的な削除を無効にすると、ストレージ アカウント内のすべてのファイル共有を、必要なときにすぐ完全に削除することができます。":::
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+論理的な削除のコマンドレットは、Azure CLI の 2.1.3 バージョンで使用できます。 次のコマンドを使用して、ストレージ アカウントで論理的な削除を無効にすることができます。
+
+```azurecli
+az storage account file-service-properties update --enable-delete-retention false -n yourStorageaccount -g yourResourceGroup
+```
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-論理的な削除のコマンドレットは、Az.Storage モジュールの 3.0.0 バージョンで使用できます。 次のコマンドを使用して、ストレージ アカウントで論理的な削除を無効にすることができます。
+論理的な削除のコマンドレットは、Az.Storage モジュールの 4.8.0 以降のバージョンで使用できます。 次のコマンドを使用して、ストレージ アカウントで論理的な削除を無効にすることができます。
 
 ```azurepowershell-interactive
 Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName $accountName -EnableShareDeleteRetentionPolicy $false

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 12/01/2020
 ms.author: victorh
-ms.openlocfilehash: 3c09e75a98e5342ab54710e05466755d86705b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 923c6b685d20ff68788e7d9cfcb45ebaecb535e3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399433"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490110"
 ---
 # <a name="what-are-security-partner-providers"></a>セキュリティ パートナー プロバイダーとは
 
@@ -22,7 +22,7 @@ Azure Firewall Manager の "*セキュリティ パートナー プロバイダ�
 
 複数の Azure リージョンで任意のセキュリティ パートナーを使用して構成されたセキュリティで保護されているハブをデプロイし、世界中のリージョンのあらゆる場所でユーザーの接続性とセキュリティを確保できます。 インターネット/SaaS アプリケーションのトラフィックではセキュリティ パートナーのオファリングを、セキュリティで保護されたハブのプライベート トラフィックでは Azure Firewall を使用でき、グローバルに分散されたユーザーとアプリケーションに近い Azure でのセキュリティ エッジの構築を開始できるようになりました。
 
-サポートされているセキュリティ パートナーは、**ZScaler**、**Check Point** (プレビュー)、**iboss** (プレビュー) です。
+サポートされているセキュリティ パートナーは、**Zscaler**、 **[Check Point](check-point-overview.md)** 、**iboss** です。
 
 ![セキュリティ パートナー プロバイダー](media/trusted-security-partners/trusted-security-partners.png)
 

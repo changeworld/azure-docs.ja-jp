@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a77a4808390f816bc3a6646520f4b542bee89d4c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fa6e19fd9759d6e489d0945b5521a2e0ae3881e0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001743"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462651"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -31,7 +31,7 @@ ms.locfileid: "96001743"
 この記事では、Azure Data Factory のコピー アクティビティを使って、Azure Blob Storage との間でデータをコピーする方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
 ## <a name="overview"></a>概要
-サポートされる任意のソース データ ストアのデータを、Azure Blob Storage にコピーしたり、Azure Blob Storage のデータを、サポートされる任意のシンク データ ストアにコピーしたりできます。 次の表は、コピー アクティビティによってコピー元またはシンクとしてサポートされているデータ ストアの一覧です。 たとえば、SQL Server データベースまたは Azure SQL Database のデータベース **から** Azure Blob Storage **に** データを移動できます。 また、Azure Blob Storage **から** Azure Synapse Analytics (旧称 SQL Data Warehouse) または Azure Cosmos DB コレクション **に** データをコピーできます。
+サポートされる任意のソース データ ストアのデータを、Azure Blob Storage にコピーしたり、Azure Blob Storage のデータを、サポートされる任意のシンク データ ストアにコピーしたりできます。 次の表は、コピー アクティビティによってコピー元またはシンクとしてサポートされているデータ ストアの一覧です。 たとえば、SQL Server データベースまたは Azure SQL Database のデータベース **から** Azure Blob Storage **に** データを移動できます。 また、Azure Blob Storage **から** Azure Synapse Analytics または Azure Cosmos DB コレクション **に** データをコピーできます。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

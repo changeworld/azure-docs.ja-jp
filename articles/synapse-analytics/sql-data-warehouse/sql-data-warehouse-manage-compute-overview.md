@@ -1,6 +1,6 @@
 ---
-title: SQL プールのコンピューティング リソースを管理する
-description: Azure Synapse Analytics SQL プールのパフォーマンス スケールアウト機能について説明します。 DWU を調整してスケールアウトしたり、データ ウェアハウスを一時停止してコストを削減したりします。
+title: 専用 SQL プール (旧称 SQL DW) のコンピューティング リソースを管理する
+description: Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のパフォーマンス スケールアウト機能について説明します。 DWU を調整してスケールアウトしたり、専用 SQL プールを一時停止してコストを削減したりします。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,28 +11,28 @@ ms.date: 11/12/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 90815d52e6884efe6cff9a7860c093b4b5c1bc94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 300759b4ab6f806c02e748ff4c9a63a6a772bff4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85204543"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461072"
 ---
-# <a name="manage-compute-in-azure-synapse-analytics-data-warehouse"></a>Azure Synapse Analytics データ ウェアハウスでコンピューティングを管理する
+# <a name="manage-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プール (旧称 SQL DW) のコンピューティングを管理する
 
-Azure Synapse Analytics SQL プールでコンピューティングを管理する方法について説明します。 SQL プールを一時停止してコストを削減したり、パフォーマンス需要に応じてデータ ウェアハウスをスケーリングしたりします。
+Azure Synapse Analytics で専用 SQL プール (旧称 SQL DW) におけるコンピューティングの管理について説明します。 専用 SQL プールを一時停止してコストを削減したり、パフォーマンス需要に応じて専用 SQL プールをスケーリングしたりします。
 
 ## <a name="what-is-compute-management"></a>コンピューティングの管理とは
 
-データ ウェアハウスのアーキテクチャではストレージとコンピューティングが分離され、それぞれを個別にスケーリングすることができます。 その結果、データ ストレージとは無関係に、パフォーマンス需要に応じてコンピューティングをスケーリングできます。 コンピューティング リソースは、一時停止して再開することもできます。 このアーキテクチャでは、当然、コンピューティングとストレージに対する[課金](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)は別々に行われます。 データ ウェアハウスをしばらく使用する必要がない場合は、コンピューティングを一時停止して、コンピューティング コストを節約できます。
+専用 SQL プール (旧称 SQL DW) のアーキテクチャではストレージとコンピューティングを分離して、それぞれを個別にスケーリングできます。 その結果、データ ストレージとは無関係に、パフォーマンス需要に応じてコンピューティングをスケーリングできます。 コンピューティング リソースは、一時停止して再開することもできます。 このアーキテクチャでは、当然、コンピューティングとストレージに対する[課金](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)は別々に行われます。 専用 SQL プール (旧称 SQL DW) をしばらく使用する必要がない場合は、コンピューティングを一時停止して、コンピューティング コストを節約できます。
 
 ## <a name="scaling-compute"></a>コンピューティングのスケーリング
 
-コンピューティングをスケールアウトまたはスケールバックするには、SQL プールの[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)設定を調整します。 データ ウェアハウス ユニットを追加していくと、読み込みとクエリのパフォーマンスが直線的に増加していきます。
+コンピューティングをスケールアウトまたはスケールバックするには、専用 SQL プール (旧称 SQL DW) の[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)設定を調整します。 データ ウェアハウス ユニットを追加していくと、読み込みとクエリのパフォーマンスが直線的に増加していきます。
 
 スケールアウトの手順については、[Azure Portal](quickstart-scale-compute-portal.md)、[PowerShell](quickstart-scale-compute-powershell.md)、または [T-SQL](quickstart-scale-compute-tsql.md) のクイックスタートに関する記事を参照してください。 [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute) を使用して、スケールアウト操作を実行することもできます。
 
-スケール操作を実行する場合、SQL プールは、最初にすべての受信クエリを中止し、次にトランザクションをロールバックして一貫性のある状態を確保します。 スケーリングは、トランザクションのロールバックが完了して初めて実行されます。 スケール操作では、コンピューティング ノードからストレージ レイヤーがデタッチされ、コンピューティング ノードが追加され、ストレージ レイヤーがコンピューティング レイヤーに再アタッチされます。 各 SQL プールは、60 のディストリビューションとして保存され、これがコンピューティング ノードに均等に分配されます。 コンピューティング ノードを追加していくと、コンピューティング能力も向上していきます。 コンピューティング ノードの数が増加すると、それにつれてコンピューティング ノードあたりのディストリビューションの数が減少し、クエリ用のコンピューティング能力がより多く得られます。 同様に、データ ウェアハウス ユニットを減らすと、コンピューティング ノードの数が減少し、クエリ用のコンピューティング リソースが減ります。
+スケール操作を実行する場合、専用 SQL プール (旧称 SQL DW) は、最初にすべての受信クエリを中止し、次にトランザクションをロールバックして一貫性のある状態を確保します。 スケーリングは、トランザクションのロールバックが完了して初めて実行されます。 スケール操作では、コンピューティング ノードからストレージ レイヤーがデタッチされ、コンピューティング ノードが追加され、ストレージ レイヤーがコンピューティング レイヤーに再アタッチされます。 各専用 SQL プール (旧称 SQL DW) は、60 のディストリビューションとして保存され、これがコンピューティング ノードに均等に分配されます。 コンピューティング ノードを追加していくと、コンピューティング能力も向上していきます。 コンピューティング ノードの数が増加すると、それにつれてコンピューティング ノードあたりのディストリビューションの数が減少し、クエリ用のコンピューティング能力がより多く得られます。 同様に、データ ウェアハウス ユニットを減らすと、コンピューティング ノードの数が減少し、クエリ用のコンピューティング リソースが減ります。
 
 次の表は、データ ウェアハウス ユニットが変化すると、コンピューティング ノードあたりのディストリビューションの数がどのように変化するかを示しています。  DW30000c は、60 のコンピューティング ノードを提供し、DW100c よりはるかに高いクエリ パフォーマンスを達成します。
 
@@ -57,11 +57,11 @@ Azure Synapse Analytics SQL プールでコンピューティングを管理す�
 
 ## <a name="finding-the-right-size-of-data-warehouse-units"></a>データ ウェアハウス ユニットの適正サイズの確認
 
-スケールアウトのパフォーマンス上のメリット (特に、大規模なデータ ウェアハウス ユニットのスケールアウトのパフォーマンス上の メリット) を確認するには、少なくとも 1 TB のデータ セットを使用する必要があります。 SQL プールの最適なデータ ウェアハウス ユニット数を確認するには、スケールアップとスケールダウンを試します。 データを読み込んだ後、さまざまなデータ ウェアハウス ユニット数でいくつかのクエリを実行します。 スケーリングは簡単に行えるので、1 時間以内でさまざまなパフォーマンス レベルを試すことができます。
+スケールアウトのパフォーマンス上のメリット (特に、大規模なデータ ウェアハウス ユニットのスケールアウトのパフォーマンス上の メリット) を確認するには、少なくとも 1 TB のデータ セットを使用する必要があります。 専用 SQL プール (旧称 SQL DW) の最適なデータ ウェアハウス ユニット数を確認するには、スケールアップとスケールダウンを試します。 データを読み込んだ後、さまざまなデータ ウェアハウス ユニット数でいくつかのクエリを実行します。 スケーリングは簡単に行えるので、1 時間以内でさまざまなパフォーマンス レベルを試すことができます。
 
 最適なデータ ウェアハウス ユニット数を確認する際の推奨事項を以下に示します。
 
-- 開発中の SQL プールの場合は、少ない数のデータ ウェアハウス ユニットを選択することから始めます。  手始めとしては、DW400c または DW200c が適しています。
+- 開発中の専用 SQL プール (旧称 SQL DW) の場合は、少ない数のデータ ウェアハウス ユニットを選択することから始めます。  手始めとしては、DW400c または DW200c が適しています。
 - アプリケーションのパフォーマンスを監視し、選択したデータ ウェアハウス ユニットの数に対するパフォーマンスの変化を観察します。
 - 線形スケールを想定し、データ ウェアハウス ユニットをどれだけ増減する必要があるかを確認します。
 - ビジネス要件に応じた最適なパフォーマンス レベルに到達するまで調整を行います。
@@ -86,21 +86,21 @@ Azure Synapse Analytics SQL プールでコンピューティングを管理す�
 ## <a name="pausing-and-resuming-compute"></a>コンピューティングの一時停止と再開
 
 コンピューティングを一時停止すると、ストレージ レイヤーがコンピューティング ノードからデタッチされます。 コンピューティング リソースがアカウントから解放されます。 コンピューティングが一時停止中は、コンピューティングに対する課金はありません。 コンピューティングを再開すると、ストレージがコンピューティング ノードに再アタッチされ、コンピューティングの課金が再開されます。
-SQL プールを一時停止すると、次のようになります。
+専用 SQL プール (旧称 SQL DW) を一時停止する場合:
 
 - コンピューティング リソースとメモリ リソースは、データ センターで使用可能なリソースのプールに返されます。
 - 一時停止の期間中、データ ウェアハウス ユニットのコストは 0 になります。
 - データ ストレージは影響を受けず、データはそのまま残ります。
 - 実行中またはキューに入れられたすべての操作が取り消されます。
 
-SQL プールを再開すると、次のようになります。
+専用 SQL プール (旧称 SQL DW) を再開する場合:
 
-- SQL プールがデータ ウェアハウス ユニット設定のコンピューティングとメモリのリソースを取得します。
+- 専用 SQL プール (旧称 SQL DW) がデータ ウェアハウス ユニット設定のコンピューティングとメモリのリソースを取得します。
 - データ ウェアハウス ユニットのコンピューティングの課金が再開されます。
 - データが使用可能になります。
-- SQL プールがオンラインになった後、ワークロード クエリを再開する必要があります。
+- 専用 SQL プール (旧称 SQL DW) がオンラインになった後、ワークロード クエリを再開する必要があります。
 
-常に SQL プールにアクセスできることが必要な場合は、一時停止ではなく、最小サイズへのスケールダウンを検討してください。
+常に専用 SQL プール (旧称 SQL DW) にアクセスできるようにする場合は、一時停止ではなく、最小サイズへのスケールダウンを検討してください。
 
 一時停止と再開の手順については、[Azure Portal](pause-and-resume-compute-portal.md) または [PowerShell](pause-and-resume-compute-powershell.md) のクイックスタートに関する記事を参照してください。 [一時停止 REST API](sql-data-warehouse-manage-compute-rest-api.md#pause-compute) または [再開 REST API](sql-data-warehouse-manage-compute-rest-api.md#resume-compute) を使用することもできます。
 
@@ -108,7 +108,7 @@ SQL プールを再開すると、次のようになります。
 
 一時停止操作またはスケール操作を開始する前に、既存のトランザクションを完了することをお勧めします。
 
-SQL プールを一時停止またはスケーリングすると、一時停止またはスケーリング要求を開始したときに、バックグラウンドでクエリが取り消されます。 単純な SELECT クエリの取り消しは、短時間で終わる処理であるため、インスタンスを一時停止またはスケールするのにかかる時間にほとんど影響しません。  ただし、データやデータ構造を変更するトランザクション クエリは、すぐに停止できない場合があります。 **トランザクション クエリについては、当然、すべてが完了するか、変更をロールバックする必要があります。** トランザクション クエリが完了した作業をロールバックするには、クエリが元の変更の適用にかかった時間と同じか、それよりも長くかかる場合があります。 たとえば、行の削除を既に 1 時間実行しているクエリを取り消した場合、削除された行を挿入し直すのに 1 時間かかる可能性があります。 トランザクションの実行中に一時停止またはスケールを実行した場合、一時停止またはスケールするには、ロールバックが完了するのを待機する必要があるため、時間がかかることがあります。
+専用 SQL プール (旧称 SQL DW) を一時停止またはスケーリングすると、一時停止またはスケーリング要求を開始したときに、バックグラウンドでクエリが取り消されます。 単純な SELECT クエリの取り消しは、短時間で終わる処理であるため、インスタンスを一時停止またはスケールするのにかかる時間にほとんど影響しません。  ただし、データやデータ構造を変更するトランザクション クエリは、すぐに停止できない場合があります。 **トランザクション クエリについては、当然、すべてが完了するか、変更をロールバックする必要があります。** トランザクション クエリが完了した作業をロールバックするには、クエリが元の変更の適用にかかった時間と同じか、それよりも長くかかる場合があります。 たとえば、行の削除を既に 1 時間実行しているクエリを取り消した場合、削除された行を挿入し直すのに 1 時間かかる可能性があります。 トランザクションの実行中に一時停止またはスケールを実行した場合、一時停止またはスケールするには、ロールバックが完了するのを待機する必要があるため、時間がかかることがあります。
 
 [トランザクションの概要](sql-data-warehouse-develop-transactions.md)と[トランザクションの最適化](sql-data-warehouse-develop-best-practices-transactions.md)に関するページも参照してください。
 
@@ -116,13 +116,13 @@ SQL プールを一時停止またはスケーリングすると、一時停止�
 
 コンピューティングの管理操作を自動化するには、[Azure の機能を使用したコンピューティングの管理に関する記事](manage-compute-with-azure-functions.md)を参照してください。
 
-スケール アウト、一時停止、再開の各操作は、完了するのに数分かかる場合があります。 スケーリング、一時停止、または再開を自動化する場合は、別のアクションに進む前に特定の操作を確実に完了させるロジックを実装することをお勧めします。 さまざまなエンドポイントを通じて SQL プールの状態を確認することで、このような操作の自動化を適切に実装できます。
+スケール アウト、一時停止、再開の各操作は、完了するのに数分かかる場合があります。 スケーリング、一時停止、または再開を自動化する場合は、別のアクションに進む前に特定の操作を確実に完了させるロジックを実装することをお勧めします。 さまざまなエンドポイントを通じて専用 SQL プール (旧称 SQL DW) の状態を確認することで、このような操作の自動化を適切に実装できます。
 
-SQL プールの状態を確認するには、[PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) または [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) のクイックスタートに関する記事を参照してください。 [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state) を使用して、SQL プールの状態を確認することもできます。
+専用 SQL プール (旧称 SQL DW) の状態を確認するには、[PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) または [T-SQL](quickstart-scale-compute-tsql.md#check-dedicated-sql-pool-formerly-sql-dw-state) のクイックスタートに関する記事を参照してください。 また、[REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state) で専用 SQL プール (旧称 SQL DW) の状態を確認することもできます。
 
 ## <a name="permissions"></a>アクセス許可
 
-SQL プールをスケーリングするには、[ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) に関するページで説明されているアクセス許可が必要です。  一時停止と再開には、[SQL DB Contributor](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#sql-db-contributor) のアクセス許可、具体的には Microsoft.Sql/servers/databases/action が必要です。
+専用 SQL プール (旧称 SQL DW) をスケーリングするには、[ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) に関するページで説明されているアクセス許可が必要です。  一時停止と再開には、[SQL DB Contributor](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#sql-db-contributor) のアクセス許可、具体的には Microsoft.Sql/servers/databases/action が必要です。
 
 ## <a name="next-steps"></a>次のステップ
 

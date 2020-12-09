@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
-ms.author: duau
-ms.openlocfilehash: d533b8fed47b1790cc35429613179f440f1fac51
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/23/2020
+ms.author: yuajia
+ms.openlocfilehash: cd99be40700ab1c34176f2bf7497e4debf5cd424
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961750"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483799"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Azure Front Door でのメトリックとログの監視
 
@@ -61,7 +61,7 @@ Azure Front Door を使用すると、次の方法でリソースを監視でき
 
 アクティビティ ログは、Azure リソースに対して行われた操作に関する分析情報を提供します。 診断ログは、自分のリソースが実行した操作に関する分析情報を提供します。 詳細については、[Azure Monitor の診断ログ](../azure-monitor/platform/platform-logs-overview.md)に関するドキュメントを参照してください。
 
-:::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="アクティビティ ログ":::
+:::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="診断ログ":::
 
 Front Door の診断ログを構成するには、以下の手順を実行します。
 
@@ -91,10 +91,11 @@ Front Door の診断ログを構成するには、以下の手順を実行しま
 | RulesEngineMatchNames | 要求が一致した規則の名前。 |
 | SecurityProtocol | 要求によって使用された TLS/SSL プロトコルのバージョン。暗号化がない場合は、null 値。 |
 | SentToOriginShield </br> (非推奨) * **次のセクションの非推奨に関する注意事項を参照してください。**| true の場合、要求は、エッジ ポップではなく、オリジン シールド キャッシュから応答されました。 オリジン シールドは、キャッシュ ヒット率を向上させる目的で使用される親キャッシュです。 |
-| isReceivedFromClient | true の場合、要求はクライアントから送信されます。 false の場合、要求はエッジ (子 POP) で不成功となり、オリジン シールド (親 POP) から応答されます。 
+| isReceivedFromClient | true の場合、要求はクライアントから送信されます。 false の場合、要求はエッジ (子 POP) で不成功となり、オリジン シールド (親 POP) から応答されます。 |
 | TimeTaken | Front Door への要求の最初のバイトから、出される応答の最後のバイトまでの時間の長さ (秒単位)。 |
 | TrackingReference | Front Door によって提供された要求を識別する一意の参照文字列。X-Azure-Ref ヘッダーとしてクライアントにも送信されます。 アクセス ログで特定の要求の詳細を検索するために必要です。 |
 | UserAgent | クライアントで使用されたブラウザーの種類。 |
+| ErrorInfo | このフィールドには、詳細なトラブルシューティングのための特定の種類のエラーが含まれています。 </br> 次の値を指定できます。 </br> **NoError**:エラーが見つからなかったことを示します。 </br> **CertificateError**:一般的な SSL 証明書エラー。</br> **CertificateNameCheckFailed**:SSL 証明書のホスト名が無効であるか、一致しません。 </br> **ClientDisconnected**:クライアント ネットワーク接続による要求の失敗。 </br> **UnspecifiedClientError**:一般的なクライアント エラー。 </br> **InvalidRequest**:無効な要求。 ヘッダー、本文、URL の形式が間違っていることが原因で発生する可能性があります。 </br> **DNSFailure**:DNS エラー。 </br> **DNSNameNotResolved**:サーバーの名前またはアドレスを解決できませんでした。 </br> **OriginConnectionAborted**:配信元との接続が突然停止しました。 </br> **OriginConnectionError**:一般的な配信元接続エラー。 </br> **OriginConnectionRefused**:配信元との接続を確立できませんでした。 </br> **OriginError**:一般的な配信元エラー。 </br> **OriginInvalidResponse**:配信元から無効な応答または認識できない応答が返されました。 </br> **OriginTimeout**:配信元要求のタイムアウト期間が経過しました。 </br> **ResponseHeaderTooBig**:配信元から返された応答ヘッダーが大きすぎます。 </br> **RestrictedIP**:制限付き IP のため、要求はブロックされました。 </br> **SSLHandshakeError**:SSL ハンドシェイク エラーのため、配信元との接続を確立できません。 </br> **UnspecifiedError**:テーブルのいずれのエラーにも適合しなかったエラーが発生しました。 |
 
 ### <a name="sent-to-origin-shield-deprecation"></a>Sent to origin shield の非推奨化
 生ログのプロパティ **isSentToOriginShield** は非推奨化され、新しいフィールド **isReceivedFromClient** に置き換えられました。 非推奨化されたフィールドを既に使用している場合は、新しいフィールドを使用してください。 

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 03e89b0da25a915a00c70a9a87bd0f675b8e12d6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bfe8af8c30bbc2bc66c363fbd85f6764a48c28a1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997530"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488070"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 
@@ -130,9 +130,11 @@ Windows 7 または 10 のコンピューターで Internet Explorer を使用�
 
 | 認証方法 | サポートされているクライアント構成 |
 | --------------------- | ------------------------------ |
-| 事前認証    | RD Web: Internet Explorer または [Edge Chromium IE モード](/deployedge/edge-ie-mode)と RDS ActiveX アドオンを使用する Windows 7 または 10 |
+| 事前認証    | RD Web: Internet Explorer* または [Edge Chromium IE モード](/deployedge/edge-ie-mode)と RDS ActiveX アドオンを使用する Windows 7 または 10 |
 | 事前認証    | RD Web クライアント: Microsoft Edge、Internet Explorer 11、Google Chrome、Safari、Mozilla Firefox (v55.0 以降) などの HTML5 互換 Web ブラウザー |
 | パススルー | Microsoft リモート デスクトップ アプリケーションをサポートするその他の任意のオペレーティング システム |
+
+*Edge Chromium IE モードは、リモート デスクトップ アプリにアクセスする目的でマイ アプリ ポータルが使用されているときに必要になります。  
 
 事前認証フローでは、パススルー フローよりも高い安全性が提供されます。 事前認証では、オンプレミスのリソースにシングル サインオン、条件付きアクセス、2 段階認証などの Azure AD 認証機能を使用できます。 また、認証されたトラフィックのみが、ネットワークに到達できます。
 

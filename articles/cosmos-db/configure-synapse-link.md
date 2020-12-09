@@ -1,26 +1,23 @@
 ---
-title: Azure Cosmos DB の Azure Synapse Link (プレビュー) を構成して使用する
+title: Azure Synapse Link for Azure Cosmos DB を構成して使用する
 description: Azure Cosmos DB アカウントの Synapse Link を有効にする方法、分析ストアを有効にしたコンテナーを作成する方法、Synapse ワークスペースに Azure Cosmos データベースを接続する方法、クエリを実行する方法について説明します。
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: a487d984fe4b8f5d6313e181863872c4ea150059
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 32b64cd0d83c51a77b7bc58bde80e00e1980c233
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334541"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463320"
 ---
-# <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB の Azure Synapse Link (プレビュー) を構成して使用する
+# <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB を構成して使用する
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 [Azure Synapse Link for Azure Cosmos DB](synapse-link.md) は、クラウド ネイティブのハイブリッド トランザクションと分析処理 (HTAP) の機能です。これを使用すると、Azure Cosmos DB のオペレーショナル データに対してリアルタイムに近い分析を実行できます。 Synapse Link によって、Azure Cosmos DB と Azure Synapse Analytics の間の緊密でシームレスな統合が実現します。
-
-> [!IMPORTANT]
-> Azure Synapse Link を使用するには、サポートされているリージョンのいずれかで Azure Cosmos DB アカウントと Azure Synapse Analytics ワークスペースを確実にプロビジョニングしてください。 Azure Synapse Link は現在、次の Azure リージョンでご利用いただけます。米国中西部、米国東部、米国西部 2、北ヨーロッパ、西ヨーロッパ、米国中南部、東南アジア、オーストラリア東部、米国東部 2、英国南部。
 
 Azure Synapse Link は、Azure Cosmos DB SQL API コンテナーまたは Mongo DB コレクション用の Azure Cosmos DB API で使用できます。 Azure Cosmos DB の Azure Synapse Link を使用して分析クエリを実行するには、次の手順に従います。
 
@@ -28,8 +25,8 @@ Azure Synapse Link は、Azure Cosmos DB SQL API コンテナーまたは Mongo 
 * [分析ストアが有効な Azure Cosmos DB コンテナーを作成する](#create-analytical-ttl)
 * [Azure Cosmos DB データベースを Synapse ワークスペースに接続する](#connect-to-cosmos-database)
 * [Synapse Spark を使用して分析ストアにクエリを実行する](#query-analytical-store-spark)
-* [Synapse SQL サーバーレスを使用して分析ストアのクエリを実行する](#query-analytical-store-sql-on-demand)
-* [Synapse SQL サーバーレスを使用して Power BI のデータを分析して視覚化する](#analyze-with-powerbi)
+* [サーバーレス SQL プールを使用して分析ストアのクエリを実行する](#query-analytical-store-sql-on-demand)
+* [サーバーレス SQL プールを使用して Power BI のデータを分析して視覚化する](#analyze-with-powerbi)
 
 ## <a name="enable-azure-synapse-link-for-azure-cosmos-db-accounts"></a><a id="enable-synapse-link"></a>Azure Cosmos DB アカウントの Azure Synapse Link を有効にする
 
@@ -43,7 +40,7 @@ Azure Synapse Link は、Azure Cosmos DB SQL API コンテナーまたは Mongo 
 
 1. 機能一覧から **[Synapse Link]** を選択します。
 
-   :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="Synapse Link プレビュー機能の検索":::
+   :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="Synapse Link 機能の検索":::
 
 1. 次に、ご利用のアカウントで Synapse Link を有効にするように求めるメッセージが表示されます。 **[有効化]** を選択します。 処理が完了するまでに 1 ～ 5 分かかることがあります。
 
@@ -63,7 +60,7 @@ Azure Synapse Link は、Azure Cosmos DB SQL API コンテナーまたは Mongo 
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure portal](https://portal.azure.com/) または [Azure Cosmos Explorer](https://cosmos.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) または [Azure Cosmos DB Explorer](https://cosmos.azure.com/) にサインインします。
 
 1. Azure Cosmos DB アカウントに移動して、 **[データ エクスプローラー]** タブを開きます。
 
@@ -171,7 +168,7 @@ except exceptions.CosmosResourceExistsError:
 
 Azure portal を使用して分析ストアが有効なコンテナーを作成した場合は、それに -1 の既定の分析 TTL が含まれます。 この値を更新するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) または [Azure Cosmos Explorer](https://cosmos.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) または [Azure Cosmos DB Explorer](https://cosmos.azure.com/) にサインインします。
 
 1. Azure Cosmos DB アカウントに移動して、 **[データ エクスプローラー]** タブを開きます。
 
@@ -218,11 +215,11 @@ Synapse Spark を使用してクエリを実行する方法については、[Az
 
 ## <a name="query-the-analytical-store-using-serverless-sql-pool-in-azure-synapse-analytics"></a><a id="query-analytical-store-sql-on-demand"></a> Azure Synapse Analytics でサーバーレス SQL プールを使用して分析ストアにクエリを実行する
 
-サーバーレス SQL プールを使用すると、Azure Synapse Link で有効になっている Azure Cosmos DB コンテナー内のデータに対してクエリと分析を行うことができます。 トランザクション ワークロードのパフォーマンスに影響を与えることなく、凖リアルタイムでデータを分析できます。 T-SQL インターフェイスを使用して分析ストアおよび統合された接続からさまざまな BI やアドホック クエリ ツールへのデータのクエリを実行するために、使い慣れた T-SQL 構文が用意されています。 詳細については、[Synapse SQL サーバーレスを使用した分析ストアのクエリ](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)に関する記事を参照してください。
+サーバーレス SQL プールを使用すると、Azure Synapse Link で有効になっている Azure Cosmos DB コンテナー内のデータに対してクエリと分析を行うことができます。 トランザクション ワークロードのパフォーマンスに影響を与えることなく、凖リアルタイムでデータを分析できます。 T-SQL インターフェイスを使用して分析ストアおよび統合された接続からさまざまな BI やアドホック クエリ ツールへのデータのクエリを実行するために、使い慣れた T-SQL 構文が用意されています。 詳細については、[サーバーレス SQL プールを使用した分析ストアのクエリ](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)に関する記事を参照してください。
 
-## <a name="use-synapse-sql-serverless-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>Synapse SQL サーバーレスを使用して Power BI のデータを分析して視覚化する
+## <a name="use-serverless-sql-pool-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>サーバーレス SQL プールを使用して Power BI のデータを分析して視覚化する
 
-Synapse Link for Azure Cosmos DB 上に Synapse SQL サーバーレス データベースおよびビューを構築できます。 後で、Azure Cosmos コンテナーのクエリを実行してから、これらのビュー上で Power BI を使用してモデルを構築して、そのクエリを反映させることができます。 詳細については、[Synapse Link で Synapse SQL サーバーレスを使用して Azure Cosmos DB データを分析する](synapse-link-power-bi.md)方法に関する記事を参照してください。
+Synapse Link for Azure Cosmos DB 上にサーバーレス SQL プール データベースおよびビューを構築できます。 後で、Azure Cosmos コンテナーのクエリを実行してから、これらのビュー上で Power BI を使用してモデルを構築して、そのクエリを反映させることができます。 詳細については、[Synapse Link でサーバーレス SQL プールを使用して Azure Cosmos DB データを分析する](synapse-link-power-bi.md)方法に関する記事を参照してください。
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 
@@ -244,4 +241,4 @@ Azure Synapse Link の使用を開始する場合、[GitHub](https://aka.ms/cosm
 
 * [Azure Synapse Analytics での Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md)。
 
-* [Azure Synapse Analytics の SQL サーバーレス ランタイム サポート](../synapse-analytics/sql/on-demand-workspace-overview.md)。
+* [Azure Synapse Analytics のサーバーレス SQL プール ランタイム サポート](../synapse-analytics/sql/on-demand-workspace-overview.md)。

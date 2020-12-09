@@ -10,15 +10,15 @@ ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 2e76f48466d084d448cceea0490e44041e7d062e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: f61f2932ad9c6342a81ec05df335e9ea4d659fce
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212141"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461981"
 ---
-# <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>sqlcmd を使用して Synapse SQL プールに接続する
+# <a name="connect-to-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>sqlcmd を使用して Azure Synapse Analytics の SQL プールに接続する
 
 > [!div class="op_single_selector"]
 >
@@ -32,10 +32,10 @@ ms.locfileid: "85212141"
 
 ## <a name="1-connect"></a>1.接続する
 
-[sqlcmd][sqlcmd] の使用を開始するには、コマンド プロンプトを開いて「**sqlcmd**」と入力し、続けて SQL プール データベースの接続文字列を入力します。 接続文字列では、次のパラメーターが必要になります。
+[sqlcmd][sqlcmd] の使用を開始するには、コマンド プロンプトを開いて「**sqlcmd**」と入力し、続けて SQL プールの接続文字列を入力します。 接続文字列では、次のパラメーターが必要になります。
 
 * **サーバー (-S):** サーバー。`<`Server Name`>`.database.windows.net の形式で指定します。
-* **データベース (-d):** データベース名。
+* **データベース (-d):** SQL プール名。
 * **引用符で囲まれた ID の有効化 (-I):** SQL プール インスタンスに接続するには、引用符で囲まれた ID を有効にする必要があります。
 
 SQL Server 認証を使用するには、ユーザー名とパスワードのパラメーターを追加する必要があります。

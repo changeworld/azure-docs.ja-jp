@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 11/03/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 44d17bafe534fea2d408c92a3a01efb699250a78
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: afebb6a67b4c8a33e812c0e51ff225f16cd35356
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95974427"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461468"
 ---
 # <a name="ingest-data-into-a-dedicated-sql-pool"></a>専用 SQL プールにデータを取り込む
 
@@ -73,4 +73,4 @@ Azure Synapse Analytics で、リンクされたサービスとは、他のサ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Synapse Analytics におけるデータ統合の詳細については、記事「[Azure Data Lake Storage Gen2 へのデータの取り込み](data-integration-data-lake.md)」を参照してください。
+Azure Synapse Analytics におけるデータ統合の詳細については、記事「[Azure Data Lake Storage Gen2 へのデータの取り込み](data-integration-data-lake.md)」を参照してください。

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b684123068889e422080605fb9c50ef9aed0cb76
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: aef332e54fa650e1abbebe671560238d7eb318de
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630160"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492048"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Windows での Azure Files に関する問題のトラブルシューティング (SMB)
 
@@ -147,7 +147,7 @@ Azure Files は、SMB だけでなく、REST もサポートしています。 R
 
 ### <a name="solution"></a>解決策
 
-ハンドルをいくつか閉じて、同時に開いているハンドルの数を減らしてから、再試行します。 詳細については、「[Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../blobs/storage-performance-checklist.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)」を参照してください。
+ハンドルをいくつか閉じて、同時に開いているハンドルの数を減らしてから、再試行します。 詳細については、「[Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../blobs/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」を参照してください。
 
 ファイル共有、ディレクトリ、またはファイルの開いているハンドルを表示するには、[Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) PowerShell コマンドレットを使用します。  
 
@@ -176,7 +176,7 @@ Azure Files は、SMB だけでなく、REST もサポートしています。 R
 Azure ファイル共有が置かれたストレージ アカウントを参照して、 **[アクセス制御 (IAM)]** をクリックし、ユーザー アカウントにストレージ アカウントへのアクセス権があることを確認します。 詳しくは、[ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントをセキュリティで保護する方法](../blobs/security-recommendations.md#data-protection)に関するページをご覧ください。
 
 <a id="open-handles"></a>
-## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Azure ファイル共有のファイルまたはディレクトリを削除できない
+## <a name="unable-to-modify-moverename-or-delete-a-file-or-directory"></a>ファイルまたはディレクトリの変更、移動、名前の変更、または削除を行うことができません
 ファイル共有の主な目的の 1 つは、複数のユーザーおよびアプリケーションが、共有内のファイルとディレクトリを同時に操作できることです。 このようなやり取りを支援するために、ファイル共有は、ファイルとディレクトリへのアクセスを複数の方法で提供します。
 
 SMB 経由でマウントされた Azure ファイル共有からファイルを開くと、アプリケーションまたはオペレーティング システムは、ファイルを参照するファイル ハンドルを要求します。 特に、Azure Files が強制するファイルへの排他アクセスのレベルを指定するファイル ハンドルをアプリケーションが要求するときに、アプリケーションでファイル共有モードが指定されます。 
@@ -262,7 +262,7 @@ Azure のファイル サービスにファイルを転送しようとした場�
 - 特定の最小 I/O サイズ要件がない場合は、最適なパフォーマンスを得るために I/O サイズとして 1 MiB を使用することをお勧めします。
 -   書き込みによって大きくなるファイルの最終サイズがわかっており、まだ書き込まれていないファイル末尾にゼロが含まれていてもソフトウェアに互換性の問題がない場合は、書き込みごとにサイズを増やすのではなく、事前にファイル サイズを設定します。
 -   次のように適切なコピー方法を使用します。
-    -   2 つのファイル共有間の転送には、[AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) を使用します。
+    -   2 つのファイル共有間の転送には、[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) を使用します。
     -   オンプレミス コンピューター上のファイル共有間では、[Robocopy](./storage-files-deployment-guide.md#robocopy) を使用します。
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Windows 8.1 または Windows Server 2012 R2 に関する考慮事項
@@ -401,7 +401,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 コマンドレットでは、以下のチェックが順番に実行されて、障害に関するガイダンスが提供されます。
 1. CheckADObjectPasswordIsCorrect: ストレージ アカウントを表す AD ID に対して構成されているパスワードが、ストレージ アカウントの kerb1 キー、または kerb2 キーのパスワードと確実に一致しているようにします。 パスワードが正しくない場合、[Update-AzStorageAccountADObjectPassword](./storage-files-identity-ad-ds-update-password.md) を実行してパスワードをリセットできます。 
 2. CheckADObject: ストレージ アカウントを表すオブジェクトが Active Directory にあり、正しい SPN (サービス プリンシパル名) を持っていることを確認します。 SPN が正しくセットアップされていない場合、デバッグ コマンドレットで返される Set-AD コマンドレットを実行して SPN を構成してください。
-3. CheckDomainJoined: クライアント コンピューターが AD にドメイン参加していることを検証します。 クライアント コンピューターが AD にドメイン参加していない場合、ドメイン参加方法についてはこちらの[記事](/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK)を参照してください。
+3. CheckDomainJoined: クライアント コンピューターが AD にドメイン参加していることを検証します。 クライアント コンピューターが AD にドメイン参加していない場合、ドメイン参加方法についてはこちらの[記事](/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain)を参照してください。
 4. CheckPort445Connectivity: SMB 接続に対してポート 445 が開いていることを確認します。 必要なポートが開いていない場合、Azure Files の接続問題について、トラブルシューティング ツール [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) を参照してください。
 5. CheckSidHasAadUser: ログオンしている AD ユーザーが Azure AD と同期されていることを確認します。 特定の AD ユーザーが Azure AD に同期されているかどうかを調べる場合は、入力パラメーターに -UserName と -Domain を指定します。 
 6. CheckGetKerberosTicket: ストレージ アカウントに接続するための Kerberos チケットの取得を試みます。 有効な Kerberos トークンがない場合、klist get cifs/storage-account-name.file.core.windows.net コマンドレットを実行し、エラー コードを調べ、チケット取得失敗の根本原因を探ります。

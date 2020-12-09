@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: how-to
-ms.date: 06/30/2020
+ms.date: 12/01/2020
 ms.author: victorh
-ms.openlocfilehash: 3323f73c137905fbe677c68d3830d7f609fa0172
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 906687e08c9f31890a9ecec9154079e704512832
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85611579"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485724"
 ---
 # <a name="deploy-a-security-partner-provider"></a>セキュリティ パートナー プロバイダーのデプロイ
 
@@ -21,7 +21,11 @@ Azure Firewall Manager の "*セキュリティ パートナー プロバイダ�
 サポートされているシナリオとベスト プラクティスのガイドラインの詳細については、「[セキュリティ パートナー プロバイダーとは](trusted-security-partners.md)」を参照してください。
 
 
-すべての Azure パブリック クラウド リージョンで、統合されたサードパーティのサービスとしてのセキュリティ (SECaaS) パートナーを利用できるようになりました。 **Zscaler** との統合は、2020 年 7 月 3 日に一般提供される予定です。 **Check Point** は、サポートされている SECaaS パートナーであり、2020 年 7 月 3 日にプレビュー段階に入ります。 **iboss** との統合は、2020 年 7 月 31 日に一般提供される予定です。
+統合されたサードパーティのサービスとしてのセキュリティ (SECaaS) パートナーを利用できるようになりました。 
+
+- **Zscaler**
+- **[Check Point](check-point-overview.md)**
+- **iboss**
 
 ## <a name="deploy-a-third-party-security-provider-in-a-new-hub"></a>サード パーティのセキュリティ プロバイダーを新しいハブにデプロイする
 
@@ -53,7 +57,7 @@ VPN ゲートウェイのデプロイには 30 分以上かかることがあり
 
 ## <a name="deploy-a-third-party-security-provider-in-an-existing-hub"></a>サード パーティのセキュリティ プロバイダーを既存のハブにデプロイする
 
-また、Virtual WAN 内の既存のハブを選択し、それを*セキュリティ保護付き仮想ハブ*に変換することもできます。
+また、Virtual WAN 内の既存のハブを選択し、それを *セキュリティ保護付き仮想ハブ* に変換することもできます。
 
 1. **[はじめに]** で、 **[View secured virtual hubs]\(セキュリティで保護された仮想ハブの表示\)** を選択します。
 2. **[Convert Existing Hubs]\(既存のハブの変換)** を選択します。
@@ -81,8 +85,8 @@ VPN ゲートウェイのデプロイには 30 分以上かかることがあり
 1. パートナーから提供された手順に従って、セットアップを完了します。 これには、ハブの検出と接続、エグレス ポリシーの更新、および接続の状態とログの確認を行うための AAD 情報の送信が含まれます。
 
    - [Zscaler: Microsoft Azure Virtual WAN との統合を構成する](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration)。
-   - [Check Point (プレビュー): Microsoft Azure Virtual WAN との統合を構成する](https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/CloudGuard-Connect-Azure-Virtual-WAN/Default.htm)。
-   - [iboss (プレビュー): Microsoft Azure Virtual WAN との統合を構成する](https://www.iboss.com/blog/securing-microsoft-azure-with-iboss-saas-network-security)。 
+   - [Check Point:Microsoft Azure Virtual WAN との統合を構成する](https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/CloudGuard-Connect-Azure-Virtual-WAN/Default.htm)。
+   - [iboss:Microsoft Azure Virtual WAN との統合を構成する](https://www.iboss.com/blog/securing-microsoft-azure-with-iboss-saas-network-security)。 
    
 2. Azure の Azure Virtual WAN ポータルで、トンネル作成の状態を確認できます。 トンネルが Azure とパートナー ポータルの両方で **[connected]\(接続済み\)** と表示されたら、次の手順に進み、ルートを設定してパートナーにインターネット トラフィックを送信するブランチと VNet を選択します。
 
@@ -94,14 +98,14 @@ VPN ゲートウェイのデプロイには 30 分以上かかることがあり
    サード パーティ プロバイダーがハブに接続できることを確認してください。 VPN ゲートウェイのトンネルは、 **[connected]\(接続済み\)** 状態である必要があります。 この状態は、以前の状態と比較して、ハブとサード パーティ パートナー間の接続の正常性をより反映します。
 3. ハブを選択し、 **[Route Settings]\(ルート設定\)** に移動します。
 
-   ハブにサード パーティ プロバイダーをデプロイすると、ハブが*セキュリティ保護付き仮想ハブ*に変換されます。 これにより、サード パーティ プロバイダーがハブへの 0.0.0.0/0 (既定) ルートをアドバタイズします。 ただし、どの接続がこの既定のルートを取得すべきかを選択しない限り、VNet 接続とハブに接続されているサイトはこのルートを取得しません。
+   ハブにサード パーティ プロバイダーをデプロイすると、ハブが *セキュリティ保護付き仮想ハブ* に変換されます。 これにより、サード パーティ プロバイダーがハブへの 0.0.0.0/0 (既定) ルートをアドバタイズします。 ただし、どの接続がこの既定のルートを取得すべきかを選択しない限り、VNet 接続とハブに接続されているサイトはこのルートを取得しません。
 4. **[Internet traffic]\(インターネット トラフィック\)** で、 **[VNet-to-Internet]\(VNet - インターネット間\)** または **[Branch-to-Internet]\(ブランチ - インターネット間\)** 、あるいはその両方を選択し、ルートがサード パーティによって送信されるように構成します。
 
    これはハブにルーティングする必要があるトラフィックの種類のみを指定しますが、VNet またはブランチのルートには影響しません。 これらのルートは、既定ではハブにアタッチされているすべての VNet およびブランチには反映されません。
 5. **[secure connections]\(セキュリティ保護付きの接続\)** を選択し、これらのルートを設定する接続を選択する必要があります。 これは、サード パーティ プロバイダーへのインターネット トラフィックの送信を開始できる VNet およびブランチを指定します。
-6. **[Route Settings]\(ルート設定\)** から、[Internet traffic]\(インターネット トラフィック\) の **[Secure connections]\(セキュリティ保護付きの接続\)** を選択し、セキュリティで保護する VNet またはブランチ (Virtual WAN 内の*サイト*) を選択します。 **[Secure Internet traffic]\(セキュリティで保護されたインターネット トラフィック\)** を選択します。
+6. **[Route Settings]\(ルート設定\)** から、[Internet traffic]\(インターネット トラフィック\) の **[Secure connections]\(セキュリティ保護付きの接続\)** を選択し、セキュリティで保護する VNet またはブランチ (Virtual WAN 内の *サイト*) を選択します。 **[Secure Internet traffic]\(セキュリティで保護されたインターネット トラフィック\)** を選択します。
    ![[Secure Internet traffic]\(セキュリティ保護付きのインターネット トラフィック\)](media/deploy-trusted-security-partner/secure-internet-traffic.png)
-7. [ハブ] ページに戻ります。 ハブの**セキュリティ パートナー プロバイダー**の状態は、 **[Secured]\(セキュリティ保護付き\)** となっているはずです。
+7. [ハブ] ページに戻ります。 ハブの **セキュリティ パートナー プロバイダー** の状態は、 **[Secured]\(セキュリティ保護付き\)** となっているはずです。
 
 ## <a name="branch-or-vnet-internet-traffic-via-third-party-service"></a>サード パーティのサービス経由のブランチまたは VNet のインターネット トラフィック
 

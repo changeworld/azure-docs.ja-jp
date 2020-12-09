@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 3827fa7a98cef9358db0ee102925586bce97fae6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2ce57911434aa0fdf1a5e624090633e75d98a5ad
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965240"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484245"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>SUSE Linux Enterprise Server for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド
 
@@ -94,7 +94,7 @@ ms.locfileid: "94965240"
 
 高可用性を実現するには、SAP NetWeaver に高可用性の NFS 共有が必要です。 この例では、SAP NFS 共有が次のどちらかであることを前提としています。共有は高可用性の [NFS ファイル サーバー](./high-availability-guide-suse-nfs.md)でホストされており、複数の SAP システムで使用できます。 または、[Azure NetApp Files NFS ボリューム](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)に共有がデプロイされます。  
 
-![SAP NetWeaver の高可用性の概要](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
+![Pacemaker クラスターは、2 つのマルチ SID クラスター (msidcl1 と msidcl2) に関する詳しい情報を示しています。](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
 
 > [!IMPORTANT]
 > Azure VM でゲスト オペレーティング システムとして SUSE Linux を使用する SAP ASCS/ERS のマルチ SID クラスタリングのサポートでは、同じクラスター上の SAP SID は **5 個** に制限されています。 新しい SID が追加されるたびに、複雑さが増します。 SAP エンキュー レプリケーション サーバー 1 とエンキュー レプリケーション サーバー 2 を同じクラスター上に配置することは、**サポートされていません**。 マルチ SID クラスタリングとは、1 つの Pacemaker クラスター内での異なる SID を持つ複数の SAP ASCS/ERS インスタンスのインストールを指します。 現在、マルチ SID クラスタリングは ASCS/ERS に対してのみサポートされています。  
@@ -147,7 +147,7 @@ NFS サーバー、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、
   * (A)SCS/ERS クラスターに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み
 
 > [!IMPORTANT]
-> フローティング IP は、負荷分散シナリオの NIC セカンダリ IP 構成ではサポートされていません。 詳細については、[Azure Load Balancer の制限事項](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)に関する記事を参照してください。 VM に追加の IP アドレスが必要な場合は、2 つ目の NIC をデプロイします。  
+> フローティング IP は、負荷分散シナリオの NIC セカンダリ IP 構成ではサポートされていません。 詳細については、[Azure Load Balancer の制限事項](../../../load-balancer/load-balancer-multivip-overview.md#limitations)に関する記事を参照してください。 VM に追加の IP アドレスが必要な場合は、2 つ目の NIC をデプロイします。  
 
 > [!Note]
 > パブリック IP アドレスのない VM が、内部 (パブリック IP アドレスがない) Standard の Azure Load Balancer のバックエンド プール内に配置されている場合、パブリック エンドポイントへのルーティングを許可するように追加の構成が実行されない限り、送信インターネット接続はありません。 送信接続を実現する方法の詳細については、「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)」を参照してください。  

@@ -1,6 +1,6 @@
 ---
-title: サーバーレス SQL プール (プレビュー) を使用して、フォルダーと複数のファイルに対してクエリを実行する
-description: サーバーレス SQL プール (プレビュー) では、Windows OS で使用されるワイルドカードとよく似たワイルドカードを使用して複数のファイルまたはフォルダーを読み取ることができます。
+title: サーバーレス SQL プールを使用して、フォルダーと複数のファイルに対してクエリを実行する
+description: サーバーレス SQL プールでは、Windows OS で使用されるワイルドカードとよく似たワイルドカードを使用して複数のファイルまたはフォルダーを読み取ることができます。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9d15d681a114b0f364e8e33adc786b4d0ba7df0e
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 83c4d88e1a87f6b546e26dd55da338a36f16ebe4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684561"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462629"
 ---
 # <a name="query-folders-and-multiple-files"></a>クエリ フォルダーと複数のファイル  
 
-この記事では、Azure Synapse Analytics のサーバーレス SQL プール (プレビュー) を使用してクエリを作成する方法について説明します。
+この記事では、Azure Synapse Analytics のサーバーレス SQL プールを使用してクエリを作成する方法について説明します。
 
 サーバーレス SQL プールでは、Windows OS で使用されるワイルドカードとよく似たワイルドカードを使用して複数のファイルまたはフォルダーを読み取ることができます。 しかし、複数のワイルドカードを使用できるため、柔軟性がより高くなります。
 

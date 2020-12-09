@@ -3,18 +3,18 @@ title: 'Azure Data Factory: よく寄せられる質問 '
 description: Azure Data Factory についてよく寄せられる質問とその回答を紹介します。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: ba3cc376edef1e6dc8fbf859e456219a1fd3ca60
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 2d1b9f0e25c460b7f26c31c3d2c6ebe51d958017
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635764"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485035"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 
@@ -95,9 +95,9 @@ SSIS ワークロードを移動する場合は、データ ファクトリを�
 ## <a name="what-is-the-integration-runtime"></a>統合ランタイムについて
 統合ランタイムは、さまざまなネットワーク環境間で以下のデータ統合機能を提供するために Azure Data Factory で使用されるコンピューティング インフラストラクチャです。
 
-- **データ移動** :データ移動では、統合ランタイムは移動元と移動先のデータ ストア間でデータを移動しながら、組み込みのコネクタ、形式変換、列マッピング、および高性能でスケーラブルなデータ転送のサポートを提供します。
-- **アクティビティの送信** : 変換では、統合ランタイムは、SSIS パッケージをネイティブに実行する機能を提供します。
-- **SSIS パッケージの実行** : 統合ランタイムは、マネージド Azure コンピューティング環境で SSIS パッケージをネイティブに実行します。 統合ランタイムでは、Azure HDInsight、Azure Machine Learning、SQL Database、SQL Server などのさまざまなコンピューティング サービス上で実行される変換アクティビティのディスパッチや監視もサポートされています。
+- **データ移動**:データ移動では、統合ランタイムは移動元と移動先のデータ ストア間でデータを移動しながら、組み込みのコネクタ、形式変換、列マッピング、および高性能でスケーラブルなデータ転送のサポートを提供します。
+- **アクティビティの送信**: 変換では、統合ランタイムは、SSIS パッケージをネイティブに実行する機能を提供します。
+- **SSIS パッケージの実行**: 統合ランタイムは、マネージド Azure コンピューティング環境で SSIS パッケージをネイティブに実行します。 統合ランタイムでは、Azure HDInsight、Azure Machine Learning、SQL Database、SQL Server などのさまざまなコンピューティング サービス上で実行される変換アクティビティのディスパッチや監視もサポートされています。
 
 データの移動と変換に必要な 1 つ以上の統合ランタイム インスタンスをデプロイできます。 統合ランタイムは、Azure パブリック ネットワークまたはプライベート ネットワーク (オンプレミス、Azure Virtual Network、またはアマゾン ウェブ サービス Virtual Private Cloud (VPC)) 上で実行できます。 
 
@@ -126,7 +126,7 @@ SSIS ワークロードを移動する場合は、データ ファクトリを�
 
 Data Factory では、リンクされたサービスは 2 つの目的に使用されます。
 
-- SQL Server インスタンス、Oracle データベース インスタンス、ファイル共有、Azure Blob Storage アカウント、その他の " *データ ストア* " を表すため。 サポートされるデータ ストアの一覧については、「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を参照してください。
+- SQL Server インスタンス、Oracle データベース インスタンス、ファイル共有、Azure Blob Storage アカウント、その他の "*データ ストア*" を表すため。 サポートされるデータ ストアの一覧については、「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を参照してください。
 - アクティビティの実行をホストできる *コンピューティング リソース* を表すため。 たとえば、HDInsight Hive アクティビティは HDInsight Hadoop クラスターで実行されます。 変換アクティビティとサポートされているコンピューティング環境の一覧については、「[Azure Data Factory でデータを変換する](transform-data.md)」を参照してください。
 
 ### <a name="triggers"></a>トリガー
@@ -190,7 +190,7 @@ Microsoft では、データ フローに関するサポートやトラブルシ
 
 ### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>Data Factory で他の 90 個のデータセット型を使用してデータにアクセスする方法はありますか?
 
-現在、マッピング データ フロー機能では、ネイティブのソースおよびシンクとして、Azure SQL Database、Azure Synapse Analytics (旧称 SQL Data Warehouse) のほか、Azure Blob Storage または Azure Data Lake Storage Gen2 からの区切りテキスト ファイル、および BLOB ストレージまたは Data Lake Storage Gen2 からの Parquet ファイルが許可されています。 
+現在、マッピング データ フロー機能では、ネイティブのソースおよびシンクとして、Azure SQL Database、Azure Synapse Analytics のほか、Azure Blob Storage または Azure Data Lake Storage Gen2 からの区切りテキスト ファイル、および BLOB ストレージまたは Data Lake Storage Gen2 からの Parquet ファイルが許可されています。 
 
 コピー アクティビティを使用して、データを他の任意のコネクタから段階的に送り、Data Flow のアクティビティを実行してステージングの後にデータを変換します。 たとえば、まずパイプラインを BLOB ストレージにコピーし、次に Data Flow のアクティビティでソースのデータセットを使用して、データを変換します。
 

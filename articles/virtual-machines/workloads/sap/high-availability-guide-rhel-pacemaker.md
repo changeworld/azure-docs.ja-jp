@@ -13,14 +13,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 09/29/2020
+ms.date: 12/01/2020
 ms.author: radeltch
-ms.openlocfilehash: 6e906e6c86d615852191e2fd65a2b1a58695ed34
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b111dae035e7a055628642fe7c460734199ff608
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968555"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486344"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Azure の Red Hat Enterprise Linux に Pacemaker をセットアップする
 
@@ -69,6 +69,7 @@ ms.locfileid: "94968555"
   * [Microsoft Azure 上で Red Hat Enterprise Linux 7.4 (およびそれ以降) の高可用性クラスターをインストールして構成する](https://access.redhat.com/articles/3252491)
   * [RHEL 8 の導入に関する考慮事項 - 高可用性とクラスター](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/high-availability-and-clusters_considerations-in-adopting-rhel-8)
   * [RHEL 7.6 上の Pacemaker で SAP S/4HANA ASCS/ERS と Standalone Enqueue Server 2 (ENSA2) を構成する](https://access.redhat.com/articles/3974941)
+  * [Azure 上の RHEL for SAP オファリング](https://access.redhat.com/articles/5456301)
 
 ## <a name="cluster-installation"></a>クラスターのインストール
 
@@ -80,7 +81,7 @@ ms.locfileid: "94968555"
 
 次の各手順の先頭には、 **[A]** - 全ノードが該当、 **[1]** - ノード 1 のみ該当、 **[2]** - ノード 2 のみ該当、のいずれかが付いています。
 
-1. **[A]** 登録します。 RHEL 8.x の HA が有効になっているイメージを使用する場合、この手順は必要ありません。  
+1. **[A]** 登録します。 RHEL SAP の HA が有効になっているイメージを使用する場合、この手順は必要ありません。  
 
    使用する仮想マシンを登録し、それを、RHEL 7 リポジトリを含むプールに追加します。
 
@@ -90,9 +91,9 @@ ms.locfileid: "94968555"
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   Azure Marketplace PAYG RHEL イメージにプールをアタッチすると、RHEL の使用に対して二重に請求されることになります。これは、PAYG イメージに対して 1 回、アタッチするプールの RHEL エンタイトルメントに対して 1 回です。 これを防ぐ目的で、Azure では BYOS RHEL イメージが提供されるようになりました。 詳細については[こちら](../redhat/byos.md)を参照してください。
+   Azure Marketplace PAYG RHEL イメージにプールをアタッチすると、RHEL の使用に対して二重に請求されることになります。これは、PAYG イメージに対して 1 回、アタッチするプールの RHEL エンタイトルメントに対して 1 回です。 これを防ぐ目的で、Azure では BYOS RHEL イメージが提供されるようになりました。 詳細については[こちら](../redhat/byos.md)を参照してください。  
 
-1. **[A]** SAP のリポジトリ用に RHEL を有効にします。 RHEL 8.x の HA が有効になっているイメージを使用する場合、この手順は必要ありません。  
+1. **[A]** SAP のリポジトリ用に RHEL を有効にします。 RHEL SAP の HA が有効になっているイメージを使用する場合、この手順は必要ありません。  
 
    必要なパッケージをインストールするには、次のリポジトリを有効にします。
 

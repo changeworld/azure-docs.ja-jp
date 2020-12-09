@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 09/21/2020
+ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: ab974b0f68e831e672329f8af5ae1cb6a5fdbd4c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c3f1209c2c903399617bd60258cc152a6ce90b80
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672087"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462064"
 ---
 # <a name="data-discovery--classification"></a>データの検出と分類
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -55,8 +55,8 @@ ms.locfileid: "92672087"
 
 分類には、次の 2 つのメタデータ属性が含まれます。
 
-- **ラベル** :列に格納されるデータの機密レベルを定義するために使用される、主な分類属性。  
-- **情報の種類** :列に格納されているデータの型に関するより詳細な情報を提供する属性。
+- **ラベル**:列に格納されるデータの機密レベルを定義するために使用される、主な分類属性。  
+- **情報の種類**:列に格納されているデータの型に関するより詳細な情報を提供する属性。
 
 ### <a name="define-and-customize-your-classification-taxonomy"></a>分類法を定義してカスタマイズする
 
@@ -77,7 +77,9 @@ Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行�
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 
-1. [Azure SQL Database] ペインの [セキュリティ] 見出しの下の **[データの検出と分類]** に移動します。 [概要] タブには、データベースの現在の分類状態の概要が表示されます。 この概要には、分類済みのすべての列の詳細なリストが含まれ、これをフィルター処理して、特定のスキーマの部分、情報の種類、ラベルのみを表示することもできます。 まだどの列も分類していない場合は、[手順 4. に進みます](#step-4)。
+1. [Azure SQL Database] ペインの **[セキュリティ]** 見出しの下の **[データの検出と分類]** に移動します。 [概要] タブには、データベースの現在の分類状態の概要が表示されます。 この概要には、分類済みのすべての列の詳細なリストが含まれ、これをフィルター処理して、特定のスキーマの部分、情報の種類、ラベルのみを表示することもできます。 まだどの列も分類していない場合は、[手順 4. に進みます](#step-4)。
+
+    ![概要](./media/data-discovery-and-classification-overview/data-discovery-and-classification.png)
 
 1. Excel 形式でレポートをダウンロードするには、ペイン上部のメニューの **[エクスポート]** を選択します。
 
@@ -93,6 +95,8 @@ Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行�
 
    - 選択した推奨事項を適用するには、 **[選択した推奨事項を受け入れます]** を選択します。
 
+   ![分類に関する推奨事項](./media/data-discovery-and-classification-overview/recommendation.png)
+
 1. 代わりに、列を手動で分類することもできます。さらに、推奨事項ベースの分類について、次の操作を実行することもできます。
 
    1. ペインの上部のメニューで **[分類の追加]** を選択します。
@@ -101,7 +105,10 @@ Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行�
 
    1. コンテキスト ウィンドウの下部にある **[分類の追加]** をクリックします。
 
-1. 分類を完了し、新しい分類メタデータでデータベース列に永続的にラベル (タグ) を付けるには、ウィンドウの上部のメニューで **[保存]** を選択します。
+   ![分類を手動で追加する](./media/data-discovery-and-classification-overview/manually-add-classification.png)
+
+
+1. 分類を完了し、新しい分類メタデータでデータベース列に永続的にラベル (タグ) を付けるには、 **[分類]** ページで **[保存]** を選択します。
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>機密データへのアクセスを監査する
 

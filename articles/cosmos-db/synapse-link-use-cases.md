@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 7621a19b510d302454465f9fcbacec27a14dddf9
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9855a53ebdf7501907b3e1e63d59823d3a0b0209
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340177"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463113"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link for Azure Cosmos DB:凖リアルタイム分析のユース ケース
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -53,9 +53,9 @@ ms.locfileid: "93340177"
 
   Synapse Link for Azure Cosmos DB では、高度なビジネス インテリジェンス (BI)/レポート シナリオを利用できます。
 
-  * Synapse SQL サーバーレスとのネイティブ統合と T-SQL 言語の豊富な表現力を使用して、Azure Cosmos DB 分析ストアからオペレーション データのクエリを実行します。
+  * サーバーレス SQL プールとのネイティブ統合と T-SQL 言語の豊富な表現力を使用して、Azure Cosmos DB 分析ストアからオペレーション データのクエリを実行します。
 
-  * Synapse SQL サーバーレスによる使い慣れた BI ツールのサポートを通じて、Azure Cosmos DB の BI ダッシュボードの自動更新をモデル化し、発行します。 たとえば、Azure Analysis Services、Power BI Premium などです。
+  * サーバーレス SQL プールによる使い慣れた BI ツールのサポートを通じて、Azure Cosmos DB の BI ダッシュボードの自動更新をモデル化し、発行します。 たとえば、Azure Analysis Services、Power BI Premium などです。
 
 次に、Azure Cosmos DB へのバッチおよびストリーミング データのデータ統合に関するガイダンスを示します。
 
@@ -143,4 +143,4 @@ Azure Synapse Link を使用すると、Azure Cosmos DB でトランザクショ
 
 * [Azure Synapse Analytics での Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md)
 
-* [Azure Synapse Analytics の SQL サーバーレス ランタイム サポート](../synapse-analytics/sql/on-demand-workspace-overview.md)
+* [Azure Synapse Analytics のサーバーレス SQL プール ランタイム サポート](../synapse-analytics/sql/on-demand-workspace-overview.md)

@@ -1,5 +1,5 @@
 ---
-title: Synapse SQL プールでのトランザクションの使用
+title: Azure Synapse Analytics SQL プールでトランザクションを使用する
 description: この記事には、Synapse SQL プールでトランザクションを実装し、ソリューションを開発するためのヒントが記載されています。
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 03/22/2019
 ms.author: xiaoyul
+ms.custom: azure-synapse
 ms.reviewer: igorstan
-ms.openlocfilehash: 40a9e5268b7fccc5c01775c10e55eee47f1aaf3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5a3c0863bb35f0988d7928bb9a2857f6aceded6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213382"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463211"
 ---
-# <a name="use-transactions-in-synapse-sql-pool"></a>Synapse SQL プールでのトランザクションの使用
+# <a name="use-transactions-in-a-sql-pool-in-azure-synapse"></a>Azure Synapse の SQL プールでトランザクションを使用する 
 
 この記事には、SQL プールでトランザクションを実装し、ソリューションを開発するためのヒントが記載されています。
 
@@ -27,7 +28,7 @@ ms.locfileid: "85213382"
 
 ## <a name="transaction-isolation-levels"></a>トランザクション分離レベル
 
-SQL プールは、ACID トランザクションを実装します。 トランザクションサポートの分離レベルは、既定では READ UNCOMMITTED になります。  これは READ COMMITTED SNAPSHOT ISOLATION に変更できます。それには、マスター データベースに接続する際にユーザー データベースの READ_COMMITTED_SNAPSHOT データベース オプションをオンにします。  
+SQL プールは、ACID トランザクションを実装します。 トランザクションサポートの分離レベルは、既定では READ UNCOMMITTED になります。  これは READ COMMITTED SNAPSHOT ISOLATION に変更できます。それには、マスター データベースに接続する際にユーザー SQL プールの READ_COMMITTED_SNAPSHOT データベース オプションをオンにします。  
 
 有効になると、このデータベース内のすべてのトランザクションが READ COMMITTED SNAPSHOT ISOLATION の下で実行され、セッション レベルで READ UNCOMMITTED を設定しても受け入れられません。 詳細については、「[ALTER DATABASE の SET オプション (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を確認してください。
 

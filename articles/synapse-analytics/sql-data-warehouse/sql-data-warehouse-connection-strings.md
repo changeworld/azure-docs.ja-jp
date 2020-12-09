@@ -10,19 +10,19 @@ ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019, devx-track-csharp
-ms.openlocfilehash: 637078cf67a2880e452ff02be63f3908bd601158
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: azure-synapse, seo-lt-2019, devx-track-csharp
+ms.openlocfilehash: c7377ea82ed4e36daeb2347fa3e9b1931acdbfa9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016293"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462827"
 ---
-# <a name="connection-strings-for-synapse-sql-pool"></a>Synapse SQL プールの接続文字列
+# <a name="connection-strings-for-sql-pools-in-azure-synapse"></a>Azure Synapse における SQL プールの接続文字列
 
-[ADO.NET](/dotnet/framework/data/adonet?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)、[ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[PHP](/sql/connect/php/overview-of-the-php-sql-driver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、および [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) などの各種アプリケーション プロトコルを使用して、SQL プールに接続できます。 各プロトコルの接続文字列の例を以下に示します。  接続文字列は、Azure ポータルを使用してビルドすることもできます。  
+[ADO.NET](/dotnet/framework/data/adonet?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)、[ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[PHP](/sql/connect/php/overview-of-the-php-sql-driver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、および [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) などの各種アプリケーション プロトコルを使用して、Azure Synapse の SQL プールに接続できます。 各プロトコルの接続文字列の例を以下に示します。  接続文字列は、Azure ポータルを使用してビルドすることもできます。  
 
-Azure Portal を使用して接続文字列をビルドするには、データベースのブレードに移動して、 *[要点]* の下にある *[データベース接続文字列の表示]* をクリックします。
+Azure portal を使用して接続文字列をビルドするには、SQL プール ブレードに移動して、 *[要点]* の下にある *[データベース接続文字列の表示]* をクリックします。
 
 ## <a name="sample-adonet-connection-string"></a>ADO.NET 接続文字列の例
 

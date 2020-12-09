@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 55a27dbb6c2ec3569bae9d6fb96fcd8087f08daf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 99c7490c4bf842da119a3a0abd4623c64d720ac8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001679"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462225"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure Data Factory コピー ウィザード
 
@@ -48,7 +48,7 @@ Azure Data Factory コピー ウィザードを使用すると、通常はエン
 入力データのスキーマは、場合によっては出力データのスキーマと一致しない可能性があります。 このシナリオでは、ソース スキーマの列を宛先スキーマの列にマップする必要があります。
 
 > [!TIP]
-> SQL Server または Azure SQL Database から Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータをコピーするとき、コピー先ストアにテーブルが存在しない場合は、Data Factory でコピー元のスキーマを使ったテーブルの自動作成がサポートされます。 詳しくは、[Azure Data Factory を使用した Azure Synapse Analytics 間でのデータの移動](./data-factory-azure-sql-data-warehouse-connector.md)に関する記事をご覧ください。
+> SQL Server または Azure SQL Database から Azure Synapse Analytics にデータをコピーするとき、コピー先ストアにテーブルが存在しない場合、Data Factory ではコピー元のスキーマを使ったテーブルの自動作成がサポートされています。 詳しくは、[Azure Data Factory を使用した Azure Synapse Analytics 間でのデータの移動](./data-factory-azure-sql-data-warehouse-connector.md)に関する記事をご覧ください。
 
 ドロップダウン リストを使用して、宛先スキーマの列にマップするソース スキーマの列を選択します。 コピー ウィザードは、列のマッピングに関するユーザーのパターンを理解しようとします。 ユーザーがそれぞれの列を個別に選択しなくてもスキーマのマッピングが完了するように、同じパターンを残りの列にも適用します。 適用されたマッピングは、ドロップダウン リストを使用して 1 列ずつマップすることにより、必要に応じてオーバーライドできます。 マップする列が増えるにつれ、パターンはさらに正確になります。 このパターンはコピー ウィザードによって常に更新され、最終的にはユーザーが望む正しい列マッピングのパターンになります。     
 
@@ -94,7 +94,7 @@ Azure Data Factory コピー ウィザードを使用すると、通常はエン
 このセクションでは、Azure Data Factory のコピー ウィザードの一般的なトラブルシューティング方法について説明します。
 
 > [!NOTE] 
-> これらのトラブルシューティングのヒントは、Data Factory のバージョン 1 のコピー ウィザードに適用されます。 Data Factory v2 については、トラブルシューティング ガイドの [Azure Data Factory のトラブルシューティング](https://docs.microsoft.com/azure/data-factory/data-factory-ux-troubleshoot-guide)に関する記事を参照してください。
+> これらのトラブルシューティングのヒントは、Data Factory のバージョン 1 のコピー ウィザードに適用されます。 Data Factory v2 については、トラブルシューティング ガイドの [Azure Data Factory のトラブルシューティング](../data-factory-ux-troubleshoot-guide.md)に関する記事を参照してください。
 
 ### <a name="error-code-unable-to-validate-in-copy-wizard"></a>エラー コード:コピー ウィザードの "Unable to validate" (検証できません)
 

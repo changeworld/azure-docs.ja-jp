@@ -1,6 +1,6 @@
 ---
-title: サーバーレス SQL プール (プレビュー) を使用して Parquet ファイルに対してクエリを実行する
-description: この記事では、サーバーレス SQL プール (プレビュー) を使用して Parquet ファイルに対してクエリを実行する方法について説明します。
+title: サーバーレス SQL プールを使用して Parquet ファイルに対してクエリを実行する
+description: この記事では、サーバーレス SQL プールを使用して Parquet ファイルに対してクエリを実行する方法について説明します。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 97b34d85e4628c0ef01dd02d3a9be85da7f8291e
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 20bfbaeea48711a680877e4d5d8f618e84eb12d7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685615"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462580"
 ---
-# <a name="query-parquet-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プール (プレビュー) を使用して Parquet ファイルのクエリを実行する
+# <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使用して Parquet ファイルのクエリを実行する
 
-この記事では、Parquet ファイルを読み取るサーバーレス SQL プール (プレビュー) を使用してクエリを作成する方法について説明します。
+この記事では、Parquet ファイルを読み取るサーバーレス SQL プールを使用してクエリを作成する方法について説明します。
 
 ## <a name="quickstart-example"></a>クイック スタートの例
 
@@ -38,7 +38,7 @@ from openrowset(
 このファイルにアクセスできることを確認します。 ファイルが SAS キーまたはカスタム Azure ID で保護されている場合は、[SQL ログインのためのサーバーレベルの資格情報](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)を設定する必要があります。
 
 > [!IMPORTANT]
-> PARQUET ファイル内の文字列値が UTF-8 エンコードを使用してエンコードされているため、必ず何らかの UTF-8 データベース照合順序 (`Latin1_General_100_CI_AS_SC_UTF8` など) を使用するようにしてください。
+> PARQUET ファイル内の文字列値が UTF-8 エンコードを使用してエンコードされているため、UTF-8 データベース照合順序 (`Latin1_General_100_CI_AS_SC_UTF8` など) を使用するようにしてください。
 > PARQUET ファイル内のテキスト エンコードと照合順序が一致しないと、予期しない変換エラーが発生する可能性があります。
 > 現在のデータベースの既定の照合順序は、`alter database current collate Latin1_General_100_CI_AI_SC_UTF8` という T-SQL ステートメントを使用して簡単変更できます。
 

@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/06/2020
+ms.date: 12/01/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref, devx-track-azurecli
-ms.openlocfilehash: c41ec06b1f985296377d27dcbe72b5f41224809b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4d7debce83928e21072c981b007e8048bfc4c594
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835409"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460934"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID に関する FAQ と既知の問題
 
@@ -74,7 +74,7 @@ ID のセキュリティ境界は、ID のアタッチ先リソースです。 �
 
 いいえ。 サブスクリプションを別のディレクトリに移動する場合、お客様が手動でそれらを再作成し、再度 Azure ロールの割り当てを許可する必要があります。
 - システム割り当てマネージドID の場合、無効にしてから最有効化します。 
-- ユーザー割り当てマネージド ID の場合、削除、再作成の後、必要なリソース (例： 仮想マシン) へ再度添付します。
+- ユーザー割り当てマネージド ID の場合、削除、再作成の後、必要なリソース (例： 仮想マシン) へ再度アタッチします
 
 ### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>マネージド ID を使って違うディレクトリやテナント内のリソースへアクセスできますか?
 
@@ -85,6 +85,46 @@ ID のセキュリティ境界は、ID のアタッチ先リソースです。 �
 - システム割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンには Microsoft.Compute/virtualMachines/write が必要です。 このアクションは、[Virtual Machine Contributor](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) などのリソース固有の組み込みロールに含まれています。
 - ユーザー割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンには Microsoft.Compute/virtualMachines/write が必要です。 さらにマネージド ID に対する [Managed Identity Operator](../../role-based-access-control/built-in-roles.md#managed-identity-operator) ロールの割り当て。
 
+### <a name="how-do-i-prevent-the-creation-of-user-assigned-managed-identities"></a>ユーザー割り当てマネージド ID を作成できないようにするにはどうすればよいですか。
+
+[Azure Policy](../../governance/policy/overview.md) を使用して、ユーザー割り当てマネージド ID をユーザーが作成できないようにすることができます
+
+- [Azure portal](https://portal.azure.com) に移動し、 **[ポリシー]** に移動します。
+- **[定義]** を選択します。
+- **[+ ポリシー定義]** を選択し、必要な情報を入力します。
+- ポリシー規則セクションに、次を貼り付けます。
+
+```json
+{
+  "mode": "All",
+  "policyRule": {
+    "if": {
+      "field": "type",
+      "equals": "Microsoft.ManagedIdentity/userAssignedIdentities"
+    },
+    "then": {
+      "effect": "deny"
+    }
+  },
+  "parameters": {}
+}
+
+```
+
+ポリシーを作成したら、使用するリソース グループに割り当てます。
+
+- リソース グループに移動します。
+- テスト用に使用しているリソース グループを見つけます。
+- 左側のメニューから **[ポリシー]** を選択します。
+- **[ポリシーの割り当て]** を選択します。
+- **[基本]** セクションで、次を指定します。
+    - **[Scope]\(スコープ\)** : テスト用に使用しているリソース グループ
+    - **[ポリシー定義]** :前に作成したポリシー。
+- 他のすべての設定は既定値のままにして、 **[確認と作成]** を選択します
+
+この時点で、リソース グループ内でユーザー割り当てマネージド ID を作成しようとすると失敗します。
+
+  ![ポリシー違反](./media/known-issues/policy-violation.png)
 
 ## <a name="known-issues"></a>既知の問題
 
@@ -127,7 +167,7 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 別のディレクトリに移動されたサブスクリプションのマネージド ID の回避策:
 
  - システム割り当てマネージドID の場合、無効にしてから最有効化します。 
- - ユーザー割り当てマネージド ID の場合、削除、再作成の後、必要なリソース (例： 仮想マシン) へ再度添付します。
+ - ユーザー割り当てマネージド ID の場合、削除、再作成の後、必要なリソース (例： 仮想マシン) へ再度アタッチします
 
 詳細については、「[Azure サブスクリプションを別の Azure AD ディレクトリに移転する](../../role-based-access-control/transfer-subscription.md)」を参照してください。
 

@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/05/2020
+ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4f104accad2b23b907d888ce3d0da083f1fa019a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: e07876f9e28e7f3245f2524b5ef5da08de085ec1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964832"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486472"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -80,11 +80,12 @@ SAP アプリケーション レイヤーと DBMS の高可用性に関する詳
 
 ## <a name="change-log"></a>変更履歴
 
-- 2020 年 11 月 5 日:[SAP HANA Azure 仮想マシン ストレージ構成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)での HANA でサポートされるファイル システムの種類に関する新しい SAP ノートへのリンクを変更 
-- 2020 年 10 月 26 日:「[SAP HANA Azure 仮想マシンのストレージ構成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)」におけるプロビジョニング済みおよびバースト スループットを明確にするため、Azure Premium Storage 構成のテーブルをいくつか変更
+- 11/26/2020:[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)と [SAP ワークロード用の Azure Storage タイプ](./planning-guide-storage.md)を変更後のシングル [VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) に合わせて調整する
+- 2020 年 11 月 5 日:[SAP HANA Azure 仮想マシン ストレージ構成](./hana-vm-operations-storage.md)での HANA でサポートされるファイル システムの種類に関する新しい SAP ノートへのリンクを変更 
+- 2020 年 10 月 26 日:「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」におけるプロビジョニング済みおよびバースト スループットを明確にするため、Azure Premium Storage 構成のテーブルをいくつか変更
 - 2020 年 10 月 22 日:net.ipv4.tcp_keepalive_time の推薦事項を調整するため、[SLES for SAP Applications 上の Azure VM での SAP NW の HA](./high-availability-guide-suse.md)、[ANF を使用した SLES 上の Azure VM 上の SAP NW の HA](./high-availability-guide-suse-netapp-files.md)、[RHEL for SAP Applications 上の Azure VM 上の SAP NW の HA](./high-availability-guide-rhel.md) および [ANF を使用した RHEL 上の Azure VM 上の SAP NW の HA](./high-availability-guide-rhel-netapp-files.md) に関する記事を変更  
 - 2020 年 10 月 16 日:セカンダリ IP での負荷分散シナリオではフローティング IP がサポートされないという説明を追加する変更が、[Pacemaker を使用する SLES 上の Azure VM での IBM Db2 LUW の HA](./dbms-guide-ha-ibm.md)、[SAP アプリケーション用 RHEL 上の Azure VM での SAP NW 向け HA](./high-availability-guide-rhel.md)、[RHEL 上の Azure VM での IBM Db2 LUW の HA](./high-availability-guide-rhel-ibm-db2-luw.md)、[RHEL マルチ SID 上の Azure VM での SAP NW に向けた HA ガイド](./high-availability-guide-rhel-multi-sid.md)、[ANF を使用する RHEL 上の Azure VM での SAP NW 向け HA](./high-availability-guide-rhel-netapp-files.md)、[SAP アプリケーション用 SLES 上の Azure VM での SAP NW 向け HA](./high-availability-guide-suse.md)、[SLES マルチ SID 上の Azure VM での SAP NNW に向けた HA ガイド](./high-availability-guide-suse-multi-sid.md)、[SAP アプリケーション用の ANF を使用する SLES 上の Azure VM での SAP NW 向け HA](./high-availability-guide-suse-netapp-files.md)、[SLES 上の Azure VM での NFS 向け HA ](./high-availability-guide-suse-nfs.md)、[SLES 上の Azure VM での SAP HANA の HA](./sap-hana-high-availability.md)、[RHEL 上で ANF を使用する SAP HANA のスケールアップ向け HA](./sap-hana-high-availability-netapp-files-red-hat.md)、[RHEL 上の Azure VM での SAP HANA の HA](./sap-hana-high-availability-rhel.md)、[RHEL 上の Azure VM で Pacemaker を使用する SAP HANA スケールアウトの HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md)、[WSFC と共有ディスクを使用する SAP ASCS/SCS 向けの Azure インフラストラクチャの準備](./sap-high-availability-infrastructure-wsfc-shared-disk.md)、[WSFC と Azure 共有ディスクを使用する SAP ASCS/SCS 向けのマルチ SID HA ガイド](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md)、および [WSFC と共有ディスクを使用する SAP ASCS/SCS 向けのマルチ SID HA ガイド](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md)に加えられています 
-- 2020 年 10 月 16 日:「[HANA Large Instances 上の SAP HANA のバックアップと復元](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore)」に、HANA Large Instances のストレージ スナップショットを制御するためのドキュメントが追加されています
+- 2020 年 10 月 16 日:「[HANA Large Instances 上の SAP HANA のバックアップと復元](./hana-backup-restore.md)」に、HANA Large Instances のストレージ スナップショットを制御するためのドキュメントが追加されています
 - 2020 年 10 月 15 日:Azure 上の SAP BusinessObjects BI プラットフォームに関するドキュメント、「[Azure での SAP BusinessObjects BI プラットフォームの計画および実装ガイド](businessobjects-deployment-guide.md)」、「[Azure での Linux 向け SAP BusinessObjects BI プラットフォームのデプロイ ガイド](businessobjects-deployment-guide-linux.md)」のリリース
 - 2020 年 10 月 5 日:[RHEL における Azure VM での Pacemaker を使用した SAP HANA スケールアウト HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md) に関する構成ガイドのリリース
 - 2020 年 9 月 30 日:[RHEL 上の Azure VM での SAP HANA の高可用性](./sap-hana-high-availability-rhel.md)、[RHEL での ANF を使用した SAP HANA の高可用性のスケールアップ](./sap-hana-high-availability-netapp-files-red-hat.md)、[Azure での RHEL に対する Pacemaker の設定](./high-availability-guide-rhel-pacemaker.md)に関するページでの変更。RHEL 8.1 用の指示に適合するためのものです

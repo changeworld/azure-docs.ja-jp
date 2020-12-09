@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: c7f4cba10117efef4099b3524b49cae313593a9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecf3c3954bd77962e56ee289b623806efb352410
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442716"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461260"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>ファイルからデータベースへの一括コピー
 
@@ -38,11 +38,11 @@ ms.locfileid: "89442716"
 
 ## <a name="how-to-use-this-solution-template"></a>このソリューション テンプレートの使用方法
 
-1. **[Bulk Copy from Files to Database]\(ファイルからデータベースへの一括コピー\)** テンプレートに移動します。 ソース Gen2 ストアへの **新しい**接続を作成します。 "GetMetadataDataset" と "SourceDataset" は、ソース ファイル ストアの同じ接続への参照であることに注意してください。
+1. **[Bulk Copy from Files to Database]\(ファイルからデータベースへの一括コピー\)** テンプレートに移動します。 ソース Gen2 ストアへの **新しい** 接続を作成します。 "GetMetadataDataset" と "SourceDataset" は、ソース ファイル ストアの同じ接続への参照であることに注意してください。
 
     ![ソース データ ストアへの新しい接続の作成](media/solution-template-bulk-copy-from-files-to-database/source-connection.png)
 
-2. データのコピー先であるシンク データ ストアへの**新しい**接続を作成します。
+2. データのコピー先であるシンク データ ストアへの **新しい** 接続を作成します。
 
     ![シンク データ ストアへの新しい接続の作成](media/solution-template-bulk-copy-from-files-to-database/destination-connection.png)
     
@@ -55,7 +55,7 @@ ms.locfileid: "89442716"
     ![パイプラインのレビュー](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
 
     > [!NOTE]
-    > 前述の **手順 2** のデータのコピー先として **Azure Synapse Analytics (旧称 SQL DW)** を選択した場合、Azure Synapse Analytics (旧称 SQL Data Warehouse) Polybase で必要とされる、ステージングのための Azure Blob Storage への接続を入力する必要があります。 次のスクリーンショットに示すように、このテンプレートは BLOB ストレージの "*ストレージ パス*" を自動的に生成します。 パイプラインの実行後、コンテナーが作成されているかどうかを確認してください。
+    > 前述の **手順 2** のデータのコピー先として **Azure Synapse Analytics (旧称 SQL DW)** を選択した場合、Azure Synapse Analytics の Polybase で必要とされる、ステージングのための Azure BLOB ストレージへの接続を入力する必要があります。 次のスクリーンショットに示すように、このテンプレートは BLOB ストレージの "*ストレージ パス*" を自動的に生成します。 パイプラインの実行後、コンテナーが作成されているかどうかを確認してください。
         
     ![Polybase 設定](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
 

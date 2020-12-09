@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: monhaber
 ms.author: ronmat
 ms.reviewer: vanto, sstein
-ms.date: 09/21/2020
+ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: f83b9515e16fcf2c2158586297545206d57e1a6e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 931e914cd3c184136395a9bb9a7e148a90e9fb91
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785121"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461938"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Azure SQL Database、SQL Managed Instance、Azure Synapse Analytics のための Advanced Threat Protection
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -35,7 +35,7 @@ Advanced Threat Protection で提供される新しいセキュリティ階層�
 
 ## <a name="alerts"></a>警告
 
-Advanced Threat Protection for Azure SQL Database では、データベースへのアクセスや悪用を試みる、通常とは異なる、害を及ぼす可能性がある異常なアクティビティが検出されます。 Azure SQL Database のアラートの一覧については、[Azure Security Center の SQL Database および Azure Synapse Analytics (旧称 SQL Data Warehouse) のアラート](../../security-center/alerts-reference.md#alerts-sql-db-and-warehouse)に関するセクションを参照してください。
+Advanced Threat Protection for Azure SQL Database では、データベースへのアクセスや悪用を試みる、通常とは異なる、害を及ぼす可能性がある異常なアクティビティが検出されます。 Azure SQL Database のアラートの一覧については、[Azure Security Center の SQL Database および Azure Synapse Analytics のアラート](../../security-center/alerts-reference.md#alerts-sql-db-and-warehouse)に関するセクションを参照してください。
 
 ## <a name="explore-detection-of-a-suspicious-event"></a>疑わしいイベントの検出を試す
 
@@ -58,6 +58,10 @@ Advanced Threat Protection for Azure SQL Database では、データベースへ
 Advanced Threat Protection では、アラートが [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合されています。 データベース内のライブ SQL Advanced Threat Protection タイルと Azure portal の SQL Azure Defender ブレードでは、アクティブな脅威の状態を追跡できます。
 
 **[Advanced Threat Protection アラート]** をクリックすると、Azure Security Center のアラート ページが起動され、データベースに対して検出されたアクティブな SQL 脅威の概要が表示されます。
+
+:::image type="content" source="media/azure-defender-for-sql/advanced-threat-protection-alerts.png" alt-text="データベースでの Advanced Threat Protection のアラートに関する概要":::
+
+:::image type="content" source="media/azure-defender-for-sql/advanced-threat-protection.png" alt-text="Security Center での脅威の防止":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: be3b82765f2f5268a75147e8e1ef6de34aeb8ff2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d1ff372009c6158f2148847dd77126bcb4d189f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441070"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461226"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>制御テーブルを使用してデータベースから一括コピーを行う
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Oracle サーバー、Netezza、Teradata、または SQL Server 内のデータ ウェアハウスから Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータをコピーするには、複数のテーブルから膨大な量のデータを読み込む必要があります。 通常は、複数のスレッドを並列して使用して単一のテーブルから行が読み込まれるように、各テーブルでデータをパーティション化する必要があります。 この記事では、これらのシナリオで使用するテンプレートについて説明します。
+Oracle サーバー、Netezza、Teradata、または SQL Server 内のデータ ウェアハウスから Azure Synapse Analytics にデータをコピーするには、複数のテーブルから膨大な量のデータを読み込む必要があります。 通常は、複数のスレッドを並列して使用して単一のテーブルから行が読み込まれるように、各テーブルでデータをパーティション化する必要があります。 この記事では、これらのシナリオで使用するテンプレートについて説明します。
 
  >注: データのボリュームが比較的小さい少数のテーブルからデータを Azure Synapse Analytics にコピーする場合、[Azure Data Factory のデータ コピー ツール](copy-data-tool.md)を使用するのがより効率的です。 この記事で説明するテンプレートは、そのシナリオで必要とするものより大きくなっています。
 
@@ -31,7 +31,7 @@ Oracle サーバー、Netezza、Teradata、または SQL Server 内のデータ 
 このテンプレートでは、外部制御テーブルからコピーするソース データベース パーティションの一覧が取得されます。 次に、ソース データベース内の各パーティションが反復処理され、宛先にデータがコピーされます。
 
 このテンプレートには、3 つのアクティビティが含まれています。
-- **ルックアップ**では、外部制御テーブルからデータベース パーティションの一覧が確実に取得されます。
+- **ルックアップ** では、外部制御テーブルからデータベース パーティションの一覧が確実に取得されます。
 - **ForEach** では、ルックアップ アクティビティからパーティションの一覧が取得され、各パーティションがコピー アクティビティに対して反復処理されます。
 - **コピー** では各パーティションがソース データベース ストアから宛先ストアにコピーされます。
 
@@ -68,15 +68,15 @@ Oracle サーバー、Netezza、Teradata、または SQL Server 内のデータ 
             (5, 'project_table','select * from project_table where ID >= 1000 and ID < 2000');
     ```
 
-2. **[データベースからの一括コピー]** テンプレートに移動します。 手順 1 で作成した外部制御テーブルへの**新しい**接続を作成します。
+2. **[データベースからの一括コピー]** テンプレートに移動します。 手順 1 で作成した外部制御テーブルへの **新しい** 接続を作成します。
 
     ![制御テーブルへの新しい接続の作成](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png)
 
-3. データのコピー元であるソース データベースへの**新しい**接続を作成します。
+3. データのコピー元であるソース データベースへの **新しい** 接続を作成します。
 
     ![ソース データベースへの新しい接続の作成](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
     
-4. データのコピー先である宛先データ ストアへの**新しい**接続を作成します。
+4. データのコピー先である宛先データ ストアへの **新しい** 接続を作成します。
 
     ![宛先ストアへの新しい接続の作成](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
 

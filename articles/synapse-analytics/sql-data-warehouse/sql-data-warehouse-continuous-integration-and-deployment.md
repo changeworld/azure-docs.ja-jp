@@ -1,6 +1,6 @@
 ---
-title: 継続的インテグレーションとデプロイ
-description: エンタープライズ クラス データベースの DevOps エクスペリエンスと、Azure Pipelines を使用した継続的インテグレーションおよび継続的デプロイの組み込みサポートによってデータ ウェアハウジングを実現します。
+title: 専用 SQL プールのための継続的インテグレーションと継続的デプロイ
+description: Azure Pipelines を使用した継続的インテグレーションおよび継続的デプロイの組み込みサポートによって Azure Synapse Analytics の専用 SQL プールでエンタープライズ クラス データベースの DevOps エクスペリエンスを実現します。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 061be5addd0c236db5d982e6103e3cf455b9c361
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 35f503e7214fa91962c91c35611fc9447302f9fc
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480532"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462812"
 ---
-# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>データ ウェアハウジングのための継続的インテグレーションと継続的デプロイ
+# <a name="continuous-integration-and-deployment-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールのための継続的インテグレーションと継続的デプロイ
 
 この簡単なチュートリアルでは、SQL Server Data tools (SSDT) データベース プロジェクトを Azure DevOps と統合し、Azure Pipelines を利用して継続的インテグレーションとデプロイを設定する方法の概要を説明します。 このチュートリアルは、データ ウェアハウジングのための継続的インテグレーションと継続的デプロイのパイプラインを構築するための 2 番目の手順です。
 
@@ -60,7 +60,7 @@ ms.locfileid: "92480532"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Synapse SQL プール アーキテクチャ](massively-parallel-processing-mpp-architecture.md)について理解を深める
-- [SQL プールの簡易作成](create-data-warehouse-portal.md)
+- [専用 SQL プール (旧称 SQL DW) アーキテクチャ](massively-parallel-processing-mpp-architecture.md)を探索する
+- [専用 SQL プール (旧称 SQL DW) をすばやく作成](create-data-warehouse-portal.md)する
 - [サンプル データを読み込む](load-data-from-azure-blob-storage-using-polybase.md)
 - [ビデオ](sql-data-warehouse-videos.md)を確認する

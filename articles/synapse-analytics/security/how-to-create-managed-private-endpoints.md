@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 919b8fb89e9189df7cb1964cbe0149dc6945ad2d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e0309b4c96b2ae25eb568e390717ba76cfd84fa5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323158"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461324"
 ---
-# <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>データ ソースへのマネージド プライベート エンドポイントを作成する (プレビュー)
+# <a name="create-a-managed-private-endpoint-to-your-data-source"></a>データ ソースへのマネージド プライベート エンドポイントを作成する
 
 この記事では、Azure でデータ ソースへのマネージド プライベート エンドポイントを作成する方法について説明します。 詳細については、[マネージド プライベート エンドポイント](./synapse-workspace-managed-private-endpoints.md)に関するページを参照してください。
 

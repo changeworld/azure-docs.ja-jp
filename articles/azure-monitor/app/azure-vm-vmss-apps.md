@@ -3,12 +3,12 @@ title: Azure VM のパフォーマンスを監視する - Azure Application Insi
 description: Azure VM および Azure 仮想マシン スケール セットに対するアプリケーション パフォーマンス監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 8b025c5196d65234a632bd1f939bc1116b72dce0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bc70b3d9a1a7a2d3fffb71ad28f2cf64cbd323b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87024634"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461732"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Azure 仮想マシンと Azure 仮想マシン スケール セットに Azure Monitor Application Insights エージェントをデプロイする
 
@@ -17,8 +17,8 @@ ms.locfileid: "87024634"
 この記事では、Application Insights エージェントを使用した Application Insights 監視の有効化について説明した後、大規模なデプロイのプロセスを自動化するための事前ガイダンスを提供します。
 
 > [!IMPORTANT]
-> .NET 用の Azure Application Insights エージェントは、現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 一部の機能は、サポートされていなかったり、制限されていたりする場合があります。
+> **Azure VM と VMSS** で実行される ASP.NET アプリケーション用の Azure Application Insights エージェントは、現在パブリック プレビューの段階にあります。 **オンプレミス** で実行されている ASP.Net アプリケーションを監視するには、[オンプレミス サーバー用の Azure Application Insights エージェント](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)を使用します。これは一般提供されていて完全にサポートされます。
+> Azure VM と VMSS のプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めしません。 一部の機能は、サポートされていなかったり、制限されていたりする場合があります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="enable-application-insights"></a>Application Insights を有効にする
@@ -175,6 +175,6 @@ Azure 仮想マシンと仮想マシン スケール セット上で実行され
 C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.ApplicationMonitoringWindows\<version>\
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure 仮想マシン スケール セットにアプリケーションをデプロイする](../../virtual-machine-scale-sets/virtual-machine-scale-sets-deploy-app.md)方法について学習します。
 * エンドポイントがダウンしている場合に警告を受信するようにするには、[可用性 Web テストを設定](monitor-web-app-availability.md)します。

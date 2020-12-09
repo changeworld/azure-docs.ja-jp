@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse の列レベルのセキュリティとは
+title: 専用 SQL プールの列レベルのセキュリティ
 description: 列レベルのセキュリティでは、ユーザーの実行コンテキストまたはグループ メンバーシップに基づいてデータベース テーブルの列へのアクセスを制御し、アプリケーションのセキュリティの設計とコーディングを簡略化し、列に制限を実装することができます。
 services: synapse-analytics
 author: julieMSFT
@@ -12,19 +12,19 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: f8bb40f9c80a0785c81c7aeacf783553bf73aa90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 817a912dabfc5365eabe8e0dabd7e0b40e40c525
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259885"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462501"
 ---
 # <a name="column-level-security"></a>列レベルのセキュリティ
 
 列レベルのセキュリティでは、ユーザーの実行コンテキストまたはグループ メンバーシップに基づいて、テーブルの列へのアクセスを制御できます。
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-このビデオは投稿された後に、[行レベルのセキュリティ](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)が Azure Synapse で使用できるようになりました。
+この動画が投稿された後に、[行レベルのセキュリティ](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)が Azure Synapse の専用 SQL プールで使用できるようになりました。
 
 列レベルのセキュリティにより、アプリケーションのセキュリティの設計とコーディングが簡略化されるため、列のアクセスを制限して機密データを保護することができます。 たとえば、特定のユーザーが、所属する部門に関連するテーブルの一定の列にのみアクセスできるようにします。 アクセスの制限のロジックは、別のアプリケーション層のデータから離れてではなく、データベース層にあります。 任意の階層からデータ アクセスが試行されるたびに、データベースによってアクセス制限が適用されます。 この制限により、セキュリティ全体の外部からのアクセスが減り、そのシステムの信頼性と堅牢性が向上します。 さらに、列レベルのセキュリティは、列を除外してユーザーにアクセス制限を課すためのビューの導入も不要にします。
 
@@ -85,5 +85,5 @@ SELECT * FROM Membership;
 
 現在、列レベルのセキュリティを使用する方法の例を次に示します。
 
-- 金融サービス会社は、アカウント マネージャーだけが、顧客の社会保障番号 (SSN) や電話番号などの個人を特定できる情報 (PII) にアクセスできるようにします。
+- 金融サービス会社は、アカウント マネージャーだけが、顧客の社会保障番号 (SSN) や電話番号などの個人情報にアクセスできるようにします。
 - 医療機関は、医師と看護師だけが機密の医療記録にアクセスできるようにする一方で、請求担当部門のメンバーがそのようなデータを表示できないようにします。

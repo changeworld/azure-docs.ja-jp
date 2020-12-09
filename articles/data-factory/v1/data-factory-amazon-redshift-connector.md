@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 290990e312a7f591539686ecce1eec1ac742dd60
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c0dcaec9c8e9a310af1fd6fc319e0784694610e2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999299"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463093"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -101,7 +101,7 @@ ms.locfileid: "95999299"
 
 Amazon Redshift の [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) コマンドでは、クエリの結果が Amazon S3 上の 1 つ以上のファイルにアンロードされます。 このコマンドは、Redshift から大きなデータセットをコピーするための方法として Amazon から推奨されています。
 
-**例:Amazon Redshift から Azure Synapse Analytics (旧称: SQL Data Warehouse) へのデータのコピー**
+**例:Amazon Redshift から Azure Synapse Analytics へデータをコピーする**
 
 この例では、Amazon Redshift から Azure Synapse Analytics にデータをコピーします。 この例では、Redshift の **UNLOAD** コマンド、ステージングされたコピー データ、Microsoft PolyBase を使用しています。
 

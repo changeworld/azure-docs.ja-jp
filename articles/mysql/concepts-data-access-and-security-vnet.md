@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: 225afcbafeaf7213b4f040a07d709d33e46b44f4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 364d9c20c0bfce1f31103ddf6df0c8d7b228eca2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996289"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461768"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Azure Database for MySQL の仮想ネットワーク サービス エンドポイントと規則を使用する
 
@@ -112,7 +112,7 @@ Azure Database for MySQL の場合、仮想ネットワーク規則機能には�
 
 - 仮想ネットワーク規則は[クラシック デプロイ モデル][arm-deployment-model-568f] ネットワークではなく、Azure Resource Manager の仮想ネットワークのみに適用されます。
 
-- **Microsoft.Sql**  サービス タグを使用して Azure Database for MySQL への仮想ネットワーク サービス エンドポイントをオンにすると、次のすべての Azure Database サービスのエンドポイントも有効になります: Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL Database、Azure Synapse Analytics (旧称 SQL Data Warehouse)。
+- **Microsoft.Sql**  サービス タグを使用して Azure Database for MySQL への仮想ネットワーク サービス エンドポイントをオンにすると、次のすべての Azure Database サービスのエンドポイントも有効になります: Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL Database、および Azure Synapse Analytics。
 
 - VNet サービス エンドポイントは、汎用サーバーとメモリ最適化サーバーでのみサポートされています。
 

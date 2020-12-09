@@ -1,30 +1,30 @@
 ---
 title: 動的 SQL の使用
-description: Synapse SQL プールで動的 SQL を使用する開発ソリューションのヒント。
+description: Azure Synapse Analytics の専用 SQL プールに動的 SQL を使用する開発ソリューションに関するヒント。
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: bce79b8e18b3ec6f1fd139af280086281bbdda98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 52bc7bdc63f754d52bf4a69097c1dd309a6dc3ec
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213467"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462779"
 ---
-# <a name="dynamic-sql-in-synapse-sql-pool"></a>Synapse SQL プールの動的 SQL
+# <a name="dynamic-sql-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールで使用する場合の動的 SQL
 
-この記事には、SQL プールで動的 SQL を使用する開発ソリューションのヒントが記載されています。
+この記事には、専用 SQL プールで動的 SQL を使用する開発ソリューションのヒントが記載されています。
 
 ## <a name="dynamic-sql-example"></a>動的 SQL の例
 
-SQL プールのアプリケーション コードを開発する際に、柔軟性が高く汎用的なモジュール ソリューションを提供するための動的 SQL を使用する必要が生じる場合があります。 現時点では、SQL プールでは BLOB データ型はサポートされていません。
+専用 SQL プールのアプリケーション コードを開発する際に、柔軟性が高く汎用的なモジュール ソリューションを提供するための動的 SQL を使用する必要が生じる場合があります。 現時点では、専用 SQL プールでは BLOB データ型はサポートされていません。
 
 BLOB データ型には varchar(max) および nvarchar(max) が含まれるため、BLOB データ型がサポートされないと、使用する文字列のサイズが制限される場合があります。
 

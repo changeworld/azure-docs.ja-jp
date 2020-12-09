@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: efb86dbcbe7619ff6727c5e7374835dc3fc7d731
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: ed4b4d9c1de1e9024e8ea86d4661b42d6c68b0ae
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220501"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460992"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Data Share のロールと要件 
 
@@ -26,7 +26,7 @@ Azure Data Share リソースのマネージド ID には、Azure データ ス�
 Azure データ ストアからデータを共有または受信するには、ユーザーに少なくとも以下のアクセス許可が必要です。 SQL ベースの共有には追加のアクセス許可が必要です。
 
 * その Azure データ ストアに対する書き込みアクセス許可。 通常、このアクセス許可は **共同作成者** ロールにあります。
-* その Azure データ ストアでロールの割り当てを作成するためのアクセス許可。 通常、ロールの割り当てを作成するためのアクセス許可は、 **所有者** ロール、ユーザー アクセス管理者ロール、または Microsoft.Authorization/ロールの割り当て/書き込みのアクセス許可が割り当てられているカスタム ロールにあります。 データ共有リソースのマネージド ID に Azure データ ストアへのアクセス権が既に付与されている場合は、このアクセス許可は必要ありません。 必要なロールについては、以下の表を参照してください。
+* その Azure データ ストアでロールの割り当てを作成するためのアクセス許可。 通常、ロールの割り当てを作成するためのアクセス許可は、**所有者** ロール、ユーザー アクセス管理者ロール、または Microsoft.Authorization/ロールの割り当て/書き込みのアクセス許可が割り当てられているカスタム ロールにあります。 データ共有リソースのマネージド ID に Azure データ ストアへのアクセス権が既に付与されている場合は、このアクセス許可は必要ありません。 必要なロールについては、以下の表を参照してください。
 
 Data Share リソースのマネージド ID に割り当てられるロールの概要を次に示します。
 
@@ -43,7 +43,7 @@ SQL ベースの共有を行う場合、Azure SQL Database に、Azure Data Shar
 |**SQL データベースの種類**|**データ プロバイダーの SQL ユーザーのアクセス許可**|**データ コンシューマーの SQL ユーザーのアクセス許可**|
 |---|---|---|
 |Azure SQL データベース | db_datareader | db_datareader、db_datawriter、db_ddladmin
-|Azure Synapse Analytics (旧称 SQL DW) | db_datareader | db_datareader、db_datawriter、db_ddladmin
+|Azure Synapse Analytics | db_datareader | db_datareader、db_datawriter、db_ddladmin
 |
 
 ### <a name="data-provider"></a>データ プロバイダー
@@ -61,11 +61,11 @@ Azure Data Share にデータセットを追加するには、プロバイダー
 1. **[ロールの割り当てを追加する]** を選択します。
 1. *[ロール]* の下で、上記のロールの割り当て表に記載されているロールを選択します (たとえば、ストレージ アカウントの場合は、 *[ストレージ BLOB データ閲覧者]* を選択します)。
 1. *[選択]* の下に、使用する Azure Data Share リソースの名前を入力します。
-1. [ *保存* ] をクリックします。
+1. [*保存*] をクリックします。
 
 ロールの割り当ての詳細については、[Azure portal を使用した Azure のロールの割り当ての追加または削除](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)に関するページを参照してください。 REST API を使用してデータを共有している場合は、「[REST API を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-rest.md)」を参照することによって、API を使用してロールの割り当てを作成できます。 
 
-SQL ベースのソースの場合は、Azure Active Directory 認証を使用して SQL データベースに接続する一方で、SQL Database に、Azure Data Share リソースと同じ名前を使用して、外部プロバイダーから SQL ユーザーを作成する必要があります。 このユーザーには *db_datareader* アクセス許可を付与する必要があります。 サンプル スクリプトと、SQL ベースの共有に必要なその他の前提条件については、「[Azure SQL Database または Synapse Analytics からの共有](how-to-share-from-sql.md)」のチュートリアルを参照してください。 
+SQL ベースのソースの場合は、Azure Active Directory 認証を使用して SQL データベースに接続する一方で、SQL Database に、Azure Data Share リソースと同じ名前を使用して、外部プロバイダーから SQL ユーザーを作成する必要があります。 このユーザーには *db_datareader* アクセス許可を付与する必要があります。 サンプル スクリプトと、SQL ベースの共有に必要なその他の前提条件については、「[Azure SQL Database または Azure Synapse Analytics からの共有](how-to-share-from-sql.md)」のチュートリアルを参照してください。 
 
 ### <a name="data-consumer"></a>データ コンシューマー
 データを受信するには、コンシューマーのデータ共有リソースのマネージド ID に、ターゲット Azure データ ストアへのアクセス権が付与されている必要があります。 たとえば、ストレージ アカウントを使用する場合は、データ共有リソースのマネージド ID にストレージ BLOB データ共同作成者ロールが付与されます。 
@@ -81,11 +81,11 @@ SQL ベースのソースの場合は、Azure Active Directory 認証を使用�
 1. **[ロールの割り当てを追加する]** を選択します。
 1. *[ロール]* の下で、上記のロールの割り当て表に記載されているロールを選択します (たとえば、ストレージ アカウントの場合は、 *[ストレージ BLOB データ閲覧者]* を選択します)。
 1. *[選択]* の下に、使用する Azure Data Share リソースの名前を入力します。
-1. [ *保存* ] をクリックします。
+1. [*保存*] をクリックします。
 
 ロールの割り当ての詳細については、[Azure portal を使用した Azure のロールの割り当ての追加または削除](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)に関するページを参照してください。 REST API を使用してデータを受信している場合は、「[REST API を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-rest.md)」を参照することによって、API を使用してロールの割り当てを作成できます。 
 
-SQL ベースのターゲットの場合は、Azure Active Directory 認証を使用して SQL データベースに接続する一方で、SQL Database に、Azure Data Share リソースと同じ名前を使用して、外部プロバイダーから SQL ユーザーを作成する必要があります。 このユーザーには、 *db_datareader、db_datawriter、db_ddladmin* アクセス許可を付与する必要があります。 サンプル スクリプトと、SQL ベースの共有に必要なその他の前提条件については、「[Azure SQL Database または Synapse Analytics からの共有](how-to-share-from-sql.md)」のチュートリアルを参照してください。 
+SQL ベースのターゲットの場合は、Azure Active Directory 認証を使用して SQL データベースに接続する一方で、SQL Database に、Azure Data Share リソースと同じ名前を使用して、外部プロバイダーから SQL ユーザーを作成する必要があります。 このユーザーには、*db_datareader、db_datawriter、db_ddladmin* アクセス許可を付与する必要があります。 サンプル スクリプトと、SQL ベースの共有に必要なその他の前提条件については、「[Azure SQL Database または Azure Synapse Analytics からの共有](how-to-share-from-sql.md)」のチュートリアルを参照してください。 
 
 ## <a name="resource-provider-registration"></a>リソース プロバイダーの登録 
 
@@ -95,7 +95,7 @@ SQL ベースのターゲットの場合は、Azure Active Directory 認証を�
 * Azure Data Share リソースとは異なる Azure サブスクリプションで、Azure データ ストアからのデータを共有する
 * Azure Data Share リソースとは異なる Azure サブスクリプションで、Azure データ ストアへのデータを受信する
 
-Microsoft.DataShare リソース プロバイダーを Azure サブスクリプションに登録するには、次の手順に従います。 リソース プロバイダーを登録するには、Azure サブスクリプションへの " *共同作成者* " アクセス権が必要です。
+Microsoft.DataShare リソース プロバイダーを Azure サブスクリプションに登録するには、次の手順に従います。 リソース プロバイダーを登録するには、Azure サブスクリプションへの "*共同作成者*" アクセス権が必要です。
 
 1. Azure portal で、 **[サブスクリプション]** に移動します。
 1. Azure Data Share に使っているサブスクリプションを選択します。

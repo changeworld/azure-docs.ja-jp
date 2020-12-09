@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: b8ef1c14089744defaf6de5b3cf9e72d281452b6
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: ef5b065425fa05d016c1b1c1688cc28508f32d30
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027110"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462049"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -46,8 +46,9 @@ ExpressRoute 接続では、公共のインターネットを利用できませ�
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>特定の帯域幅の ExpressRoute 回線に対して料金を支払っている場合、購入した帯域幅を超えて使用することはできますか。
 
-はい。ExpressRoute 回線のセカンダリ接続で使用可能な帯域幅を使用して、購入した帯域幅上限の 2 倍まで使用できます。 回線の組み込みの冗長化は、2 つの Microsoft Enterprise Edge ルーター (MSEE) への、それぞれ購入した帯域幅であるプライマリ接続とセカンダリ接続を使用して構成されます。 セカンダリ接続経由で使用できる帯域幅は、必要に応じて追加のトラフィックに使用できます。 ただし、セカンダリ接続は冗長性を目的としているため、それは保証されず、長期間の追加トラフィックには使用しないでください。 両方の接続を使用して、トラフィックを送信する方法の詳細については、[こちら](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending)を参照してください。
-プライマリ接続のみを使用してトラフィックを送信する予定である場合は、接続の帯域幅が固定され、オーバーサブスクライブしようとすると、パケットのドロップが増加します。 トラフィックが ExpressRoute ゲートウェイを通過する場合、SKU の帯域幅は固定され、かつバーストに対応していません。
+はい。ExpressRoute 回線のセカンダリ接続で使用可能な帯域幅を使用して、購入した帯域幅上限の 2 倍まで使用できます。 回線の組み込みの冗長化は、2 つの Microsoft Enterprise Edge ルーター (MSEE) への、それぞれ購入した帯域幅であるプライマリ接続とセカンダリ接続を使用して構成されます。 セカンダリ接続経由で使用できる帯域幅は、必要に応じて追加のトラフィックに使用できます。 ただし、セカンダリ接続は冗長性を目的としているため、それは保証されず、長期間の追加トラフィックには使用しないでください。 両方の接続を使用して、トラフィックを送信する方法の詳細については、「[AS PATH プリペンドの使用](./expressroute-optimize-routing.md#solution-use-as-path-prepending)」を参照してください。
+
+プライマリ接続のみを使用してトラフィックを送信する予定である場合は、接続の帯域幅が固定され、オーバーサブスクライブしようとすると、パケットのドロップが増加します。 トラフィックが ExpressRoute ゲートウェイを通過する場合、ゲートウェイ SKU の帯域幅は固定され、かつバーストに対応していません。 各ゲートウェイ SKU の帯域幅については、「[ExpressRoute の仮想ネットワーク ゲートウェイについて](expressroute-about-virtual-network-gateways.md#aggthroughput)」を参照してください。
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>同じプライベート ネットワーク接続を、仮想ネットワークや他の Azure サービスに同時に使用できますか。
 
@@ -55,7 +56,7 @@ ExpressRoute 接続では、公共のインターネットを利用できませ�
 
 ### <a name="how-are-vnets-advertised-on-expressroute-private-peering"></a>ExpressRoute プライベート ピアリングで VNet はどのようにアドバタイズされますか?
 
-ExpressRoute ゲートウェイでは、Azure VNet の " *アドレス空間* " がアドバタイズされます。サブネット レベルで含めたり除外したりすることはできません。 アドバタイズされるのは、常に VNet アドレス空間です。 また、VNet ピアリングが使用され、ピアリングされた VNet で [リモート ゲートウェイを使用する] が有効な場合、ピアリングされた VNet のアドレス空間もアドバタイズされます。
+ExpressRoute ゲートウェイでは、Azure VNet の "*アドレス空間*" がアドバタイズされます。サブネット レベルで含めたり除外したりすることはできません。 アドバタイズされるのは、常に VNet アドレス空間です。 また、VNet ピアリングが使用され、ピアリングされた VNet で [リモート ゲートウェイを使用する] が有効な場合、ピアリングされた VNet のアドレス空間もアドバタイズされます。
 
 ### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>ExpressRoute プライベート ピアリングで VNet からオンプレミスにアドバタイズできるプレフィックスの数はどのくらいですか?
 
@@ -123,7 +124,7 @@ Microsoft は、指定された 'アドバタイズされたパブリック プ�
 Dynamics 365 および Common Data Service (CDS) 環境は Azure でホストされているため、お客様はその基礎となっている Azure リソース向け ExpressRoute のサポートを利用できます。 このサービス エンドポイントに接続できるのは、Dynamics 365/CD(CDS) 環境がホストされている Azure リージョンが、ルーター フィルターに含まれている場合です。
 
 > [!NOTE]
-> ExpressRoute 回線が同じ [地政学的リージョン](./expressroute-locations-providers.md#expressroute-locations)内にデプロイされている場合、Azure ExpressRoute 経由の Dynamics 365 接続には [ExpressRoute Premium](#expressroute-premium) は必要 **ありません** 。
+> ExpressRoute 回線が同じ [地政学的リージョン](./expressroute-locations-providers.md#expressroute-locations)内にデプロイされている場合、Azure ExpressRoute 経由の Dynamics 365 接続には [ExpressRoute Premium](#expressroute-premium) は必要 **ありません**。
 
 ## <a name="data-and-connections"></a>データおよび接続
 

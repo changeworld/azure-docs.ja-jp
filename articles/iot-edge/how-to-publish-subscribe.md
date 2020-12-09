@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 1ace40098e1d53c6199accea755ffb6969781663
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: acde6f401404596212b713f248bb6d11c25b4671
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015665"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461426"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Aure IoT Edge を使用した発行とサブスクライブ
 
@@ -27,7 +27,7 @@ Azure IoT Edge MQTT ブローカーを使用して、メッセージの発行と
 ## <a name="pre-requisites"></a>前提条件
 
 - 有効なサブスクリプションがある Azure アカウント
-- `azure-iot` CLI 拡張機能がインストールされている [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)。 詳細については、[Azure CLI 用の Azure IoT 拡張機能のインストール手順](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot)に関するページを参照してください。
+- `azure-iot` CLI 拡張機能がインストールされている [Azure CLI](/cli/azure/)。 詳細については、[Azure CLI 用の Azure IoT 拡張機能のインストール手順](/cli/azure/azure-cli-reference-for-iot)に関するページを参照してください。
 - SKU (F1、S1、S2、S3 のいずれか) の **IoT Hub**。
 - **バージョン 1.2 以上の IoT Edge デバイス** があること。 IoT Edge MQTT ブローカーは現在パブリック プレビュー段階であるため、edgeHub コンテナーで次の環境変数を true に設定して、MQTT ブローカーを有効にします。
 
@@ -36,7 +36,7 @@ Azure IoT Edge MQTT ブローカーを使用して、メッセージの発行と
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__mqttBrokerEnabled` | `true` |
 
-- IoT Edge デバイスにインストールされている **Mosquitto クライアント**。 この記事では、[MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) および [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html) を含む一般的な Mosquitto クライアントを使用します。 代わりに他の MQTT クライアントを使用することもできます。 Ubuntu デバイスに Mosquitto クライアントをインストールするには、次のコマンドを実行します。
+- IoT Edge デバイスにインストールされている **Mosquitto クライアント**。 この記事では、一般的な Mosquitto クライアント [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) と [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html) を使用します。 代わりに他の MQTT クライアントを使用することもできます。 Ubuntu デバイスに Mosquitto クライアントをインストールするには、次のコマンドを実行します。
 
     ```cmd
     sudo apt-get update && sudo apt-get install mosquitto-clients
@@ -64,37 +64,37 @@ TLS を有効にするため、クライアントがポート 8883 (MQTTS) で M
 
 MQTT クライアントが自動認証を行うには、まず、CONNECT パケットを MQTT ブローカーに送信して、その名前で接続を開始する必要があります。 このパケットは、`client identifier`、`username`、`password` の 3 つの認証情報を提供します。
 
--   `client identifier` フィールドは、IoT Hub のデバイスまたはモジュールの名前です。 このツールでは、次の構文が使用されます。
+- `client identifier` フィールドは、IoT Hub のデバイスまたはモジュールの名前です。 このツールでは、次の構文が使用されます。
 
-    - デバイスの場合: `<device_name>`
+  - デバイスの場合: `<device_name>`
 
-    - モジュールの場合: `<device_name>/<module_name>`
+  - モジュールの場合: `<device_name>/<module_name>`
 
    MQTT ブローカーに接続するには、デバイスまたはモジュールを IoT Hub に登録する必要があります。
 
-   ブローカーでは、同じ資格情報を使用して 2 つのクライアントを接続することはできないことに注意してください。 2 つ目のクライアントが同じ資格情報を使用して接続すると、ブローカーは、既に接続されているクライアントを切断します。
+   ブローカーでは、同じ資格情報を使用して複数のクライアントを接続することはできません。 2 つ目のクライアントが同じ資格情報を使用して接続すると、ブローカーは、既に接続されているクライアントを切断します。
 
 - `username` フィールドは、デバイスまたはモジュールの名前と、デバイスが属している IoT Hub の名前から、次の構文を使用して取得されます。
 
-    - デバイスの場合: `<iot_hub_name>.azure-devices.net/<device_name>/?api-version=2018-06-30`
+  - デバイスの場合: `<iot_hub_name>.azure-devices.net/<device_name>/?api-version=2018-06-30`
 
-    - モジュールの場合: `<iot_hub_name>.azure-devices.net/<device_name>/<module_name>/?api-version=2018-06-30`
+  - モジュールの場合: `<iot_hub_name>.azure-devices.net/<device_name>/<module_name>/?api-version=2018-06-30`
 
 - CONNECT パケットの `password` フィールドは、認証モードによって異なります。
 
-    - [対称キー認証](how-to-authenticate-downstream-device.md#symmetric-key-authentication)の場合、`password` フィールドは SAS トークンです。
-    - [x.509 自己署名認証](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)の場合、`password` フィールドは存在しません。 この認証モードでは、TLS チャネルが必要です。 クライアントは、TLS 接続を確立するためにポート 8883 に接続する必要があります。 TLS ハンドシェイク中、MQTT ブローカーはクライアント証明書を要求します。 この証明書は、クライアントの ID を確認するために使用されます。そのため、後で CONNECT パケットが送信されるときに `password` フィールドが必要になることはありません。 クライアント証明書とパスワード フィールドの両方を送信すると、エラーが発生し、接続が閉じられます。 MQTT ライブラリと TLS クライアント ライブラリは、通常、接続を開始するときにクライアント証明書を送信する方法を備えています。 詳細な例については、[クライアント認証での X509 証明書の使用](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)に関するセクションを参照してください。
+  - [対称キー認証](how-to-authenticate-downstream-device.md#symmetric-key-authentication)を使用する場合、`password` フィールドは SAS トークンです。
+  - [x.509 自己署名認証](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)を使用する場合、`password` フィールドは存在しません。 この認証モードでは、TLS チャネルが必要です。 クライアントは、TLS 接続を確立するためにポート 8883 に接続する必要があります。 TLS ハンドシェイク中、MQTT ブローカーはクライアント証明書を要求します。 この証明書は、クライアントの ID を確認するために使用されます。そのため、後で CONNECT パケットが送信されるときに `password` フィールドが必要になることはありません。 クライアント証明書とパスワード フィールドの両方を送信すると、エラーが発生し、接続が閉じられます。 MQTT ライブラリと TLS クライアント ライブラリは、通常、接続を開始するときにクライアント証明書を送信する方法を備えています。 詳細な例については、[クライアント認証での X509 証明書の使用](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)に関するセクションを参照してください。
 
 IoT Edge によってデプロイされたモジュールは[対称キー認証](how-to-authenticate-downstream-device.md#symmetric-key-authentication)を使用し、ローカルの [IoT Edge ワークロード API](https://github.com/Azure/iotedge/blob/40f10950dc65dd955e20f51f35d69dd4882e1618/edgelet/workload/README.md) を呼び出して、オフラインのときでもプログラムによって SAS トークンを取得できます。
 
 ### <a name="authorization"></a>承認
 
-MQTT クライアントが IoT Edge ハブに対して認証された後、接続を承認する必要があります。 接続された後は、特定のトピックを発行またはサブスクライブすることを承認する必要があります。 これらの承認は、承認ポリシーに基づいて、IoT Edge ハブによって付与されます。 承認ポリシーは、ツインを介して IoT Edge ハブに送信される JSON 構造として表現される一連のステートメントです。 IoT Edge ハブのツインを編集して、その承認ポリシーを構成します。
+MQTT クライアントが IoT Edge ハブに対して認証された後、接続を認可する必要があります。 接続された後は、特定のトピックを発行またはサブスクライブすることを承認する必要があります。 これらの承認は、承認ポリシーに基づいて、IoT Edge ハブによって付与されます。 承認ポリシーは、ツインを介して IoT Edge ハブに送信される JSON 構造として表現される一連のステートメントです。 IoT Edge ハブのツインを編集して、その承認ポリシーを構成します。
 
 > [!NOTE]
-> パブリック プレビューの場合、MQTT ブローカーの承認ポリシーの編集は、Visual Studio、Visual Studio Code または Azure CLI でのみ可能です。 Azure portal は、現在、IoT Edge ハブのツインとその承認ポリシーの編集をサポートしていません。
+> パブリック プレビューの場合、MQTT ブローカーの認可ポリシーの編集は、Visual Studio、Visual Studio Code または Azure CLI でのみ可能です。 Azure portal は、現在、IoT Edge ハブのツインとその承認ポリシーの編集をサポートしていません。
 
-各承認ポリシー ステートメントは、`identities`、`allow` または `deny` の結果、`operations` および `resources` の組み合わせで構成されています。
+各認可ポリシー ステートメントは、`identities`、`allow` または `deny` の結果、`operations` および `resources` の組み合わせで構成されています。
 
 - `identities` はポリシーの件名を記述します。 これは CONNECT パケット内のクライアントから送信された `client identifier` にマップする必要があります。
 - `allow` または `deny` の結果は、操作を許可するか拒否するかを定義します。
@@ -163,16 +163,18 @@ MQTT クライアントが IoT Edge ハブに対して認証された後、接�
 ```
 
 承認ポリシーを作成するときは、留意すべき点がいくつかあります。
+
 - `$edgeHub` ツイン スキーマ バージョン 1.2 が必要です
 - 既定では、すべての操作が拒否されます。
-- 承認ステートメントは、JSON 定義に出現する順序で評価されます。 まず、`identities` を確認してから、要求に一致する最初の allow または deny ステートメントを選択します。 allow と deny のステートメントの間で競合が発生した場合は、deny ステートメントが優先されます。
-- 承認ポリシーでは、いくつかの変数 (置換など) を使用できます。
-    - `{{iot:identity}}` は、現在接続されているクライアントの ID を表します。 たとえば、デバイスの場合は `myDevice`、モジュールの場合は `myEdgeDevice/SampleModule` です。
-    - `{{iot:device_id}}` は、現在接続されているデバイスの ID を表します。 たとえば、デバイスの場合は `myDevice`、モジュールの場合は `myEdgeDevice` です。
-    - `{{iot:module_id}}` は、現在接続されているモジュールの ID を表します。 たとえば、デバイスの場合は ``、モジュールの場合は `SampleModule` です。
-    - `{{iot:this_device_id}}` は、承認ポリシーを実行している IoT Edge デバイスの ID を表します。 たとえば、「 `myIoTEdgeDevice` 」のように指定します。
+- 認可ステートメントは、JSON 定義に出現する順序で評価されます。 まず、`identities` を確認してから、要求に一致する最初の allow または deny ステートメントを選択します。 allow と deny のステートメントの間で競合が発生した場合は、deny ステートメントが優先されます。
+- 認可ポリシーでは、いくつかの変数 (置換など) を使用できます。
+    - `{{iot:identity}}` は、現在接続されているクライアントの ID を表します。 たとえば、`myDevice` のようなデバイス ID や、`myEdgeDevice/SampleModule` のようなモジュール ID です。
+    - `{{iot:device_id}}` は、現在接続されているデバイスの ID を表します。 たとえば、`myDevice` のようなデバイス ID や、`myEdgeDevice` のようなモジュールが実行されているデバイスの ID です。
+    - `{{iot:module_id}}` は、現在接続されているモジュールの ID を表します。 この変数は、接続されているデバイスの場合は空白、または `SampleModule` のようなモジュール ID になります。
+    - `{{iot:this_device_id}}` は、承認ポリシーを実行している IoT Edge デバイスの ID を表します。 たとえば、「 `myIoTEdgeDevice` 」のように入力します。
 
-IoT ハブのトピックの承認は、ユーザー定義のトピックとは少し異なる方法で処理されます。 注意すべき重要な点は次のとおりです。
+IoT ハブのトピックの認可は、ユーザー定義のトピックとは少し異なる方法で処理されます。 注意すべき重要な点は次のとおりです。
+
 - IoT Edge ハブの MQTT ブローカーに接続するには、Azure IoT デバイスまたはモジュールに明示的な承認規則が必要です。 既定の接続承認ポリシーは次のとおりです。
 - Azure IoT デバイスまたはモジュールは、既定では明示的な承認規則なしで独自の IoT ハブのトピックにアクセスできます。 ただし、この場合、承認は親/子関係から生じ、これらの関係を設定する必要があります。 IoT Edge モジュールは自動的にその IoT Edge デバイスの子として設定されますが、デバイスはその IoT Edge ゲートウェイの子として明示的に設定する必要があります。
 - Azure IoT のデバイスまたはモジュールは、適切な明示的な承認規則が定義されている場合は、他のデバイスまたはモジュールのトピック (IoT ハブのトピックを含む) にアクセスできます。
@@ -327,7 +329,7 @@ mosquitto_sub \
 
 クライアントが IoT Edge と同じデバイスで実行されているため、この例では `<edge_device_address>` = `localhost` です。
 
-この最初の例では、たとえば TLS を使用せずに、ポート 1883 (MQTT) を使用することに注意してください。 次のセクションでは、ポート 8883 (MQTTS) を使用したもう 1 つの例 (TLS が有効になっているなど) について説明します。
+この最初の例では、TLS を使用せずに、ポート 1883 (MQTT) を使用することに注意してください。 次のセクションでは、ポート 8883 (MQTTS) を使用したもう 1 つの例 (TLS が有効になっている) について説明します。
 
 これで **sub_client** MQTT クライアントが開始され、`test_topic` で受信メッセージを待機しています。
 
@@ -384,7 +386,7 @@ TLS を有効にするには、ポートを 1883 (MQTT) から 8883 (MQTTS) に�
 
 ### <a name="receive-direct-methods"></a>ダイレクト メソッドを受信する
 
-ダイレクト メソッドを受信することは、完全なツインを受け取ることと非常によく似ていますが、加えてクライアントが呼び出しを受信したことを確認する必要があります。 まず、クライアントは、IoT ハブの特殊なトピック `$iothub/methods/POST/#` をサブスクライブします。 次に、このトピックでダイレクト メソッドを受信した後、クライアントはダイレクト メソッドを受信したサブトピックから要求識別子 `rid` を抽出し、最後に IoT ハブの特別なトピック `$iothub/methods/res/200/<request_id>` に確認メッセージを発行する必要があります。
+ダイレクト メソッドを受信することは、完全なツインを受け取ることと似ていますが、加えてクライアントが呼び出しを受信したことを確認する必要があります。 まず、クライアントは、IoT ハブの特殊なトピック `$iothub/methods/POST/#` をサブスクライブします。 次に、このトピックでダイレクト メソッドを受信した後、クライアントはダイレクト メソッドを受信したサブトピックから要求識別子 `rid` を抽出し、最後に IoT ハブの特別なトピック `$iothub/methods/res/200/<request_id>` に確認メッセージを発行する必要があります。
 
 ### <a name="send-direct-methods"></a>ダイレクト メソッドを送信する
 

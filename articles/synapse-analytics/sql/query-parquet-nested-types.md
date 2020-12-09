@@ -1,6 +1,6 @@
 ---
-title: サーバーレス SQL プール (プレビュー) を使用して Parquet の入れ子にされた型に対するクエリを実行する
-description: この記事では、サーバーレス SQL プール (プレビュー) を使用して Parquet の入れ子にされた型に対してクエリを実行する方法について説明します。
+title: サーバーレス SQL プールを使用して Parquet の入れ子にされた型に対するクエリを実行する
+description: この記事では、サーバーレス SQL プールを使用して Parquet の入れ子にされた型に対してクエリを実行する方法について説明します。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 426c95638422fa4260508aa81bb47a7c9565e6eb
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 91f612ba7f19deb739dbb6004e275ea044a5a3d3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685717"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462550"
 ---
-# <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プール (プレビュー) を使用して Parquet および JSON ファイルで入れ子にされた型に対してクエリを実行する
+# <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用して Parquet および JSON ファイルで入れ子にされた型に対してクエリを実行する
 
-この記事では、Azure Synapse Analytics のサーバーレス SQL プール (プレビュー) を使用してクエリを作成する方法について説明します。 このクエリでは、Parquet の入れ子にされた型が読み取られます。
+この記事では、Azure Synapse Analytics のサーバーレス SQL プールを使用してクエリを作成する方法について説明します。 このクエリでは、Parquet の入れ子にされた型が読み取られます。
 入れ子になった型は、オブジェクトまたは配列を表す複雑な構造体です。 入れ子になった型は、次のように格納できます。 
 - [Parquet](query-parquet-files.md): 配列とオブジェクトを含む複数の複合列を格納できます。
 - 階層型の [JSON ファイル](query-json-files.md): 複雑な JSON ドキュメントを 1 つの列として読み取ることができます。

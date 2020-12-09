@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/05/2020
+ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: af2eac929e3e3f40e1ac1cd384c943b1e09171a8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8c4aa608e892867daaf954284a9dfce997a9ae1f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967467"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484279"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 仮想マシンのストレージ構成
 
@@ -112,7 +112,7 @@ LVM または mdadm を使用して、複数の Azure Premium ディスクにま
 
 
 ### <a name="azure-burst-functionality-for-premium-storage"></a>Premium Storage の Azure バースト機能
-容量が 512 GiB 以下の Azure Premium Storage ディスクの場合、バースト機能が提供されます。 ディスク バーストの動作の詳細については、「[ディスク バースト](../../linux/disk-bursting.md)」をご覧ください。 この記事を読むと、I/O ワークロードがディスクの公称 IOPS およびスループットを下回っているときの、IOPS とスループットの蓄積の概念を理解できます (公称スループットの詳細については、「[Managed Disks の価格」をご覧ください](https://azure.microsoft.com/pricing/details/managed-disks/))。 現在の使用量とディスクの公称値との差分だけ、IOPS とスループットが蓄積されます。 バーストは最大 30 分に制限されています。
+容量が 512 GiB 以下の Azure Premium Storage ディスクの場合、バースト機能が提供されます。 ディスク バーストの動作の詳細については、「[ディスク バースト](../../disk-bursting.md)」をご覧ください。 この記事を読むと、I/O ワークロードがディスクの公称 IOPS およびスループットを下回っているときの、IOPS とスループットの蓄積の概念を理解できます (公称スループットの詳細については、「[Managed Disks の価格」をご覧ください](https://azure.microsoft.com/pricing/details/managed-disks/))。 現在の使用量とディスクの公称値との差分だけ、IOPS とスループットが蓄積されます。 バーストは最大 30 分に制限されています。
 
 このバースト機能を計画できる理想的なケースとして、別の DBMS のデータ ファイルを含むボリュームまたはディスクが考えられます。 特に、小規模から中規模のシステムで、これらのボリュームに対して予想される I/O ワークロードは次のとおりです。
 
@@ -134,7 +134,7 @@ LVM または mdadm を使用して、複数の Azure Premium ディスクにま
 > Azure M シリーズ仮想マシンの SAP HANA 認定は、 **/hana/log** ボリュームに Azure 書き込みアクセラレータを使用している場合に限定されます。 そのため、運用環境シナリオでの Azure M シリーズ仮想マシンへの SAP HANA のデプロイは、 **/hana/log** ボリュームに Azure 書き込みアクセラレータを使用して構成することが求められます。  
 
 > [!NOTE]
-> Azure Premium Storage を含むシナリオでは、バースト機能が構成に実装されます。 ストレージ テスト ツールを使おうとしているときには、その内容を問わず、[Azure Premium ディスクのバースト動作](../../linux/disk-bursting.md)を考慮に入れてください。 SAP HWCCT または HCMT ツールによって提供されるストレージ テストを実行する場合、一部のテストが、蓄積できるバースト クレジットを超えるため、すべてのテストが基準を満たすことは想定されていません (特に、すべてのテストが中断なく連続して実行される場合)。
+> Azure Premium Storage を含むシナリオでは、バースト機能が構成に実装されます。 ストレージ テスト ツールを使おうとしているときには、その内容を問わず、[Azure Premium ディスクのバースト動作](../../disk-bursting.md)を考慮に入れてください。 SAP HWCCT または HCMT ツールによって提供されるストレージ テストを実行する場合、一部のテストが、蓄積できるバースト クレジットを超えるため、すべてのテストが基準を満たすことは想定されていません (特に、すべてのテストが中断なく連続して実行される場合)。
 
 
 > [!NOTE]
@@ -273,7 +273,7 @@ HANA 用 ANF の詳細については、「[SAP HANA 用 Azure NetApp Files 上�
 
 
 ## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Azure Premium Storage を使用する、コストを意識したソリューション
-これまでこのドキュメントの「[Azure M シリーズ仮想マシン用の Azure 書き込みアクセラレータおよび Premium Storage を使用するソリューション](#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines)」セクションで説明した Azure Premium Storage ソリューションは、SAP HANA の運用がサポートされるシナリオに向けられていました。 運用のサポートが可能な構成の特性の 1 つは、SAP HANA データと再実行ログのボリュームを 2 つの異なるボリュームに分離することです。 このような分離の理由として、これらのボリュームでのワークロード特性が異なっていることが挙げられます。 また、推奨される運用構成では、さまざまな種類のキャッシュ、または異なる種類の Azure ブロック ストレージが必要とされる場合があります。 Azure ブロック ストレージを使用する運用がサポートされる構成は、[Azure Virtual Machines 向けの単一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に準拠することもターゲットになります。  運用環境以外のシナリオの場合、運用システムでは考慮される考慮事項の一部が、よりローエンドの非運用システムには当てはまらない可能性があります。 結果として、HANA のデータとログ ボリュームを組み合わせることができます。 ただし、運用システムで必要とされている一定のスループットや待機時間の KPI を結局満たせないなど、最終的に何らかの問題が生じることがあります。 このような環境でコストを削減するために考えられる別の方法は、[Azure Standard SSD ストレージ](./planning-guide-storage.md#azure-standard-ssd-storage)を使用することです。 ただしこれは、[Azure Virtual Machines 向けの単一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) を無効にする選択肢です。 
+これまでこのドキュメントの「[Azure M シリーズ仮想マシン用の Azure 書き込みアクセラレータおよび Premium Storage を使用するソリューション](#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines)」セクションで説明した Azure Premium Storage ソリューションは、SAP HANA の運用がサポートされるシナリオに向けられていました。 運用のサポートが可能な構成の特性の 1 つは、SAP HANA データと再実行ログのボリュームを 2 つの異なるボリュームに分離することです。 このような分離の理由として、これらのボリュームでのワークロード特性が異なっていることが挙げられます。 また、推奨される運用構成では、さまざまな種類のキャッシュ、または異なる種類の Azure ブロック ストレージが必要とされる場合があります。 運用環境以外のシナリオの場合、運用システムでは考慮される考慮事項の一部が、よりローエンドの非運用システムには当てはまらない可能性があります。 結果として、HANA のデータとログ ボリュームを組み合わせることができます。 ただし、運用システムで必要とされている一定のスループットや待機時間の KPI を結局満たせないなど、最終的に何らかの問題が生じることがあります。 このような環境でコストを削減するために考えられる別の方法は、[Azure Standard SSD ストレージ](./planning-guide-storage.md#azure-standard-ssd-storage)を使用することです。 Standard SSD または Standard HDD Azure ストレージを選択すると、「[仮想マシンの SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)」という記事に記載されているように、シングル VM SLA に影響が出ることにご留意ください。
 
 このような構成に向けた、より低コストの代替構成は次のようになります。
 

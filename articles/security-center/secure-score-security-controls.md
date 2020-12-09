@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/21/2020
+ms.date: 11/10/2020
 ms.author: memildin
-ms.openlocfilehash: b7c4c0565d17e62226a518bc443223df8339faec
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3cd536d051f3e227ba86429ae3f1633bf6c2e82f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949379"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490535"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure Security Center 内のセキュリティ スコア
 
@@ -70,8 +70,6 @@ Security Center は、セキュリティの問題について、リソース、�
 
     :::image type="content" source="./media/secure-score-security-controls/score-on-recommendations-page.png" alt-text="Security Center の [推奨事項] ページのセキュリティ スコア":::
 
-
-
 ### <a name="get-your-secure-score-from-the-rest-api"></a>REST API からセキュリティ スコアを取得する
 
 スコアには、Secure Scores API (現在プレビュー段階) を使用してアクセスできます。 この API メソッドを使用すると、データに対してクエリを実行したり、一定期間のセキュリティ スコアをレポートする独自のメカニズムを構築したりするための柔軟性が得られます。 たとえば、[Secure Scores API](/rest/api/securitycenter/securescores) を使用して、特定のサブスクリプションのスコアを取得できます。 また、[Secure Score Controls API](/rest/api/securitycenter/securescorecontrols) を使用して、サブスクリプションのセキュリティ コントロールと現在のスコアを一覧表示できます。
@@ -80,11 +78,9 @@ Security Center は、セキュリティの問題について、リソース、�
 
 Secure Scores API を使用して構築されたツールの例については、[GitHub コミュニティのセキュリティ スコアの領域](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)を参照してください。 
 
-
-
 ### <a name="get-your-secure-score-from-azure-resource-graph-arg"></a>Azure Resource Graph (ARG) からセキュリティ スコアを取得する
 
-Azure Resource Graph を使用すると、堅牢なフィルター処理、グループ化、および並べ替え機能を使用して、クラウド環境全体のリソース情報にすばやくアクセスできます。 これは、Azure サブスクリプション全体の情報を、プログラムから、または Azure portal 内ですばやく効率的に照会する方法です。 [Azure Resource Graph の詳細についてさらに学習します](https://docs.microsoft.com/azure/governance/resource-graph/)。
+Azure Resource Graph を使用すると、堅牢なフィルター処理、グループ化、および並べ替え機能を使用して、クラウド環境全体のリソース情報にすばやくアクセスできます。 これは、Azure サブスクリプション全体の情報を、プログラムから、または Azure portal 内ですばやく効率的に照会する方法です。 [Azure Resource Graph の詳細についてさらに学習します](../governance/resource-graph/index.yml)。
 
 ARG を使用して複数のサブスクリプションのセキュリティ スコアにアクセスするには:
 
@@ -114,13 +110,34 @@ ARG を使用して複数のサブスクリプションのセキュリティ ス
 
 1. **[クエリの実行]** を選択します。
 
+
+
+
+## <a name="tracking-your-secure-score-over-time"></a>セキュリティ スコアの経時的な追跡
+
+Pro アカウントを使用している Power BI ユーザーの場合は、 **[Secure Score Over Time]\(経時的なセキュリティ スコア\)** Power BI ダッシュボードを使用して、セキュリティ スコアを経時的に追跡し、変更がないか調査できます。
+
+> [!TIP]
+> このダッシュボードや、セキュリティ スコアをプログラムで操作する他のツールは、GitHub の Azure Security Center コミュニティの専用領域を参照してください: https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score
+
+ダッシュボードには、セキュリティの状態を分析するために役立つ次の 2 つのレポートが含まれています。
+
+- **[リソースの概要]** - リソースの正常性に関する概要データが提供されます。
+- **[Secure Score Summary]\(セキュリティ スコアの概要\)** - スコアの進捗状況に関する集計データが提供されます。 スコアの変化を確認するには、[Secure score over time per subscription]\(サブスクリプションごとの経時的なセキュリティ スコア\) グラフを使用します。 スコアが大幅に変化した場合は、[detected changes that may affect your secure score]\(検出された変更の中でセキュリティ スコアに影響する可能性のあるもの\) の表を調べ、変更の原因となった可能性のある変更を確認します。 この表は、削除されたリソース、新しくデプロイされたリソース、または推奨事項のいずれかについてセキュリティの状態が変化したリソースを示しています。
+
+:::image type="content" source="./media/secure-score-security-controls/power-bi-secure-score-dashboard.png" alt-text="経時的なセキュリティ スコアを追跡し、変更を調査するためのオプションの [Secure Score Over Time]\(経時的なセキュリティ スコア\) PowerBI ダッシュボード":::
+
+
+
+
+
 ## <a name="how-your-secure-score-is-calculated"></a>セキュリティ スコアの計算方法 
 
 総合的なセキュリティ スコアに対する各セキュリティ コントロールの影響は、[推奨事項] ページで明確に示されています。
 
 [![強化されたセキュリティ スコアによるセキュリティ コントロールの導入](media/secure-score-security-controls/security-controls.png)](media/secure-score-security-controls/security-controls.png#lightbox)
 
-セキュリティ コントロールで取得可能なポイントをすべて取得するには、すべてのリソースがセキュリティ コントロール内のすべてのセキュリティの推奨事項に準拠している必要があります。 たとえば、Security Center には、管理ポートをセキュリティで保護する方法に関する推奨事項が複数あります。 以前は、これらの相互に依存する推奨事項の一部を修復して一部を未解決のまま残していても、セキュリティ スコアを上げることができました。 客観的に見れば、すべてを解決するまでセキュリティが改善されないことは明白です。 今後は、セキュリティ スコアを改善するには、これらをすべて修復する必要があります。
+セキュリティ コントロールで取得可能なポイントをすべて取得するには、すべてのリソースがセキュリティ コントロール内のすべてのセキュリティの推奨事項に準拠している必要があります。 たとえば、Security Center には、管理ポートをセキュリティで保護する方法に関する推奨事項が複数あります。 今後は、セキュリティ スコアを改善するには、これらをすべて修復する必要があります。
 
 たとえば、"システム更新プログラムの適用" というセキュリティ コントロールのスコアは最大 6 ポイントです。これは、コントロールの潜在的な増加値に関するヒントに表示されます。
 
@@ -137,9 +154,9 @@ ARG を使用して複数のサブスクリプションのセキュリティ ス
 
 |メトリック|式と例|
 |-|-|
-|**セキュリティ コントロールの現在のスコア**|<br>![セキュリティ コントロールの現在のスコアを計算するための式](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>セキュリティ スコアは、個々のセキュリティ コントロールを基にしています。 コントロールの現在のスコアは、コントロール内の推奨事項によって影響を受ける各リソースを基にしています。 各コントロールの現在のスコアは、コントロール *内* でリソースの状態を測定したものです。<br>![セキュリティ コントロールの現在のスコアを計算するときに使用される値を示すヒント](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>この例では、最大スコア 6 は、正常なリソースと異常なリソースの合計値である 78 で割ることになります。<br>6 / 78 = 0.0769<br>これを正常なリソースの数 (4) で乗算すると、次に示す現在のスコアになります。<br>0.0769 * 4 = **0.31**<br><br>|
-|**セキュリティ スコア**<br>1 つのサブスクリプション|<br>![現在のセキュリティ スコアを計算するための式](media/secure-score-security-controls/secure-score-equation.png)<br><br>![すべてのコントロールを有効にした単一サブスクリプションのセキュア スコア](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>この例では、すべてのセキュリティ コントロールを適用可能な 1 つのサブスクリプションがあります (潜在的な最大スコアは 60 ポイントです)。 スコアには取得可能な 60 ポイントのうち 28 ポイントが示され、残りの 32 ポイントは、セキュリティ コントロールの "潜在的な増加スコア" の数値に反映されます。<br>![コントロールの一覧と潜在的な増加スコア](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
-|**セキュリティ スコア**<br>複数のサブスクリプション|<br>すべてのサブスクリプションのすべてのリソースの現在のスコアが加算され、1 つのサブスクリプションの場合と同じ方法で計算されます<br><br>複数のサブスクリプションを表示する場合、セキュリティ スコアは、すべての有効なポリシー内のすべてのリソースを評価し、各セキュリティ コントロールの最大スコアに対するその組み合わせの影響をグループ化します。<br>![すべてのコントロールが有効な複数のサブスクリプションのセキュリティ スコア](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>結合されたスコアは平均では **ありません**。これは、すべてのサブスクリプションのすべてのリソースの状態の体制を評価したものです。<br>ここでも、[推奨事項] ページにアクセスして、取得可能なポイントを追加すると、現在のスコア (24) と利用可能な最大スコア (60) の差を確認できます。|
+|**セキュリティ コントロールの現在のスコア**|<br>![セキュリティ コントロールのスコアを計算するための式](media/secure-score-security-controls/secure-score-equation-single-control.png)<br><br>セキュリティ スコアは、個々のセキュリティ コントロールを基にしています。 コントロールの現在のスコアは、コントロール内の推奨事項によって影響を受ける各リソースを基にしています。 各コントロールの現在のスコアは、コントロール *内* でリソースの状態を測定したものです。<br>![セキュリティ コントロールの現在のスコアを計算するときに使用される値を示すヒント](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>この例では、最大スコア 6 は、正常なリソースと異常なリソースの合計値である 78 で割ることになります。<br>6 / 78 = 0.0769<br>これを正常なリソースの数 (4) で乗算すると、次に示す現在のスコアになります。<br>0.0769 * 4 = **0.31**<br><br>|
+|**セキュリティ スコア**<br>1 つのサブスクリプション|<br>![サブスクリプションのセキュリティ スコアを計算するための式](media/secure-score-security-controls/secure-score-equation-single-sub.png)<br><br>![すべてのコントロールを有効にした単一サブスクリプションのセキュア スコア](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>この例では、すべてのセキュリティ コントロールを適用可能な 1 つのサブスクリプションがあります (潜在的な最大スコアは 60 ポイントです)。 スコアには取得可能な 60 ポイントのうち 28 ポイントが示され、残りの 32 ポイントは、セキュリティ コントロールの "潜在的な増加スコア" の数値に反映されます。<br>![コントロールの一覧と潜在的な増加スコア](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
+|**セキュリティ スコア**<br>複数のサブスクリプション|<br>![複数のサブスクリプションのセキュリティ スコアを計算するための式](media/secure-score-security-controls/secure-score-equation-multiple-subs.png)<br><br>複数のサブスクリプションに対して結合されたスコアを計算する場合、Security Center には各サブスクリプションの "*重み*" が含まれます。 サブスクリプションの相対的な重みは、リソースの数などの要素に基づいて Security Center によって決定されます。<br>各サブスクリプションの現在のスコアは、1 つのサブスクリプションの場合と同じ方法で計算されますが、式に示されているように重みが適用されます。<br>複数のサブスクリプションを表示する場合、セキュリティ スコアは、すべての有効なポリシー内のすべてのリソースを評価し、各セキュリティ コントロールの最大スコアに対するその組み合わせの影響をグループ化します。<br>![すべてのコントロールが有効な複数のサブスクリプションのセキュリティ スコア](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>結合されたスコアは平均では **ありません**。これは、すべてのサブスクリプションのすべてのリソースの状態の体制を評価したものです。<br>ここでも、[推奨事項] ページにアクセスして、取得可能なポイントを追加すると、現在のスコア (24) と利用可能な最大スコア (60) の差を確認できます。|
 ||||
 
 ### <a name="which-recommendations-are-included-in-the-secure-score-calculations"></a>セキュリティ スコアの計算に含まれる推奨事項
@@ -271,3 +288,4 @@ Security Center の既定のセキュリティ イニシアティブは業界の
 
 - [推奨事項のさまざまな要素に関する詳細](security-center-recommendations.md)
 - [推奨事項を修復する方法を確認する](security-center-remediate-recommendations.md)
+- [セキュリティ スコアを使用してプログラムで作業するための GitHub ベースのツールを表示する](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)
