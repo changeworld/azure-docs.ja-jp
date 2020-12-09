@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b33524acd09cbf565127dc81ef2b5bfa16b4504d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 6bbf87689b577eda7de491744156e63eaa3b440c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339769"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546881"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 を使用するようにアプリケーションを移行する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -46,9 +46,9 @@ ms.locfileid: "93339769"
 
 ### <a name="rxjava-is-replaced-with-reactor-in-azure-cosmos-db-java-sdk-versions-3xx-and-40"></a>RxJava が Azure Cosmos DB Java SDK バージョン 3.x.x および 4.0 ではリアクターに置き換えられている
 
-非同期プログラミングまたはリアクティブ プログラミングに慣れていない場合、非同期プログラミングとプロジェクト リアクターの概要については、「[リアクター パターン ガイド](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md)」を参照してください。 このガイドは、以前に Azure Cosmos DB Sync Java SDK 2.x.x または Azure Cosmos DB Java SDK 3.x.x Sync API を使用している場合に役立つことがあります。
+非同期プログラミングまたはリアクティブ プログラミングに慣れていない場合、非同期プログラミングとプロジェクト リアクターの概要については、「[リアクター パターン ガイド](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-pattern-guide.md)」を参照してください。 このガイドは、以前に Azure Cosmos DB Sync Java SDK 2.x.x または Azure Cosmos DB Java SDK 3.x.x Sync API を使用している場合に役立つことがあります。
 
-Azure Cosmos DB Async Java SDK 2.x.x を使用していて、4.0 SDK への移行を計画している場合、リアクターを使用するように RxJava のコードを変換するガイダンスについては、「[リアクターと RxJava の比較ガイド](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md)」を参照してください。
+Azure Cosmos DB Async Java SDK 2.x.x を使用していて、4.0 SDK への移行を計画している場合、リアクターを使用するように RxJava のコードを変換するガイダンスについては、「[リアクターと RxJava の比較ガイド](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md)」を参照してください。
 
 ### <a name="azure-cosmos-db-java-sdk-v4-has-direct-connectivity-mode-in-both-async-and-sync-apis"></a>Azure Cosmos DB Java SDK v4 は、Async API と Sync API の両方に対する直接接続モードを備えている
 
@@ -376,5 +376,5 @@ SalesOrder salesOrder = new SalesOrder(
 ## <a name="next-steps"></a>次のステップ
 
 * V4 SDK を使用して Azure Cosmos DB SQL API データを管理するための [Java アプリを作成する](create-sql-api-java.md)
-* [リアクター ベースの Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) について学習する
-* 「[リアクターと RxJava の比較ガイド](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md)」で、RxJava の非同期コードをリアクターの非同期コードに変換する方法について学習する
+* [リアクター ベースの Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-pattern-guide.md) について学習する
+* 「[リアクターと RxJava の比較ガイド](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md)」で、RxJava の非同期コードをリアクターの非同期コードに変換する方法について学習する

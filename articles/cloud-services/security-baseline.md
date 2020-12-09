@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7deee88210acf700916961be7c4ccaf9477accf8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 100871ab2188aa638c4c9f2b058021706c7741bb
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353444"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531906"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Azure Cloud Services の Azure セキュリティ ベースライン
 
@@ -36,7 +36,7 @@ Microsoft Azure Cloud Services (クラシック) を Azure Resource Manager 仮�
 
 - [ネットワーク セキュリティ グループの概要](../virtual-network/network-security-groups-overview.md)
 
-- [仮想ネットワーク ピアリング](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
+- [仮想ネットワーク ピアリング](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -58,7 +58,7 @@ Microsoft Azure Cloud Services (クラシック) を Azure Resource Manager 仮�
 
 - [Cloud Services 構成ファイル](schema-cscfg-file.md)
 
-- [Azure Policy によってサポートされるサービスの一覧](/cli/azure/azure-services-the-azure-cli-can-manage?amp;preserve-view=)
+- [Azure Policy によってサポートされるサービスの一覧](/cli/azure/azure-services-the-azure-cli-can-manage?preserve-view=)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -89,9 +89,9 @@ Cloud Services の既定の URL または名前 (例: *.cloudapp.net) への着�
 
 従来のサブスクリプション管理者の割り当てに対して、拒否の適用ルールを構成します。 既定では、内部エンドポイントを定義すると、任意のロールから別のロールの内部エンドポイントに、無制限で通信を行うことができます。 通信を制限するには、サービス定義ファイル内で、NetworkTrafficRules 要素を ServiceDefinition 要素に追加する必要があります。
 
-- [自分のクラウド サービスの既定の URL への着信トラフィックをブロックまたは無効にするにはどうすればよいですか](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
+- [自分のクラウド サービスの既定の URL への着信トラフィックをブロックまたは無効にするにはどうすればよいですか](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
 
-- [Azure DDOS protection](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
+- [Azure DDOS protection](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
 
 - [特定の IP アドレスをブロックする](cloud-services-startup-tasks-common.md#block-a-specific-ip-address)
 
@@ -107,7 +107,7 @@ Cloud Services の既定の URL または名前 (例: *.cloudapp.net) への着�
 
 - [ネットワーク セキュリティ グループでフローのログ記録を構成する](../virtual-machines/extensions/network-watcher-linux.md)
 
-- [フロー ログの構成の詳細については、こちらを参照してください](/cli/azure/azure-services-the-azure-cli-can-manage?amp;preserve-view=)
+- [フロー ログの構成の詳細については、こちらを参照してください](/cli/azure/azure-services-the-azure-cli-can-manage?preserve-view=)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -231,13 +231,13 @@ Azure Monitor 内のアクティビティ ログでいくつかのイベント�
 
 Azure Cloud Services の可用性、パフォーマンス、障害、および使用状況は、Application Insights で監視できます。 カスタム グラフを Application Insights に追加して、最も重要なデータを確認できます。 ロール インスタンスのデータは、Azure Cloud Services プロジェクトで Application Insights SDK を使用して収集できます。 
 
-- [デプロイ前に Visual Studio で診断を有効にする](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?amp;preserve-view=#to-turn-on-diagnostics-in-visual-studio-before-deployment)
+- [デプロイ前に Visual Studio で診断を有効にする](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
 - [変更履歴を表示する](../azure-monitor/platform/activity-log.md#view-change-history)
 
 - [Azure クラウド サービス (クラシック) 向けの Application Insights](../azure-monitor/app/cloudservices.md)
 
-- [Azure クラウド サービス (クラシック) と仮想マシンに対する診断を設定する](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?amp;preserve-view=true&toc=%2fazure%2fcloud-services%2ftoc.json)
+- [Azure クラウド サービス (クラシック) と仮想マシンに対する診断を設定する](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true&toc=%2fazure%2fcloud-services%2ftoc.json)
 
 **Azure Security Center の監視**: はい
 
@@ -289,7 +289,7 @@ Azure 診断拡張機能では、データを収集して Azure Storage アカ�
 
 **ガイダンス**:Azure 向けの Microsoft Antimalware によって、Azure Cloud Services および仮想マシンが保護されます。 お客様は、Web アプリケーション ファイアウォール、ネットワーク ファイアウォール、マルウェア対策、侵入検出/防御システム (IDS または IPS) などのサード パーティ製のセキュリティ ソリューションを必要に応じてデプロイすることができます。
 
-- [Azure の基本的な IPS/IDS と DDoS が提供する機能には何がありますか](./cloud-services-configuration-and-management-faq.md?amp;preserve-view=#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
+- [Azure の基本的な IPS/IDS と DDoS が提供する機能には何がありますか](./cloud-services-configuration-and-management-faq.md?preserve-view=true#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -840,7 +840,7 @@ Azure Cloud Services のスタートアップ タスクで PowerShell スクリ�
 
 自動化されたインテリジェントなエンドツーエンドのソリューションである Azure Security Center で、適応型アプリケーション制御機能を選択します。 マルウェアからコンピューターを保護し、悪意のあるアプリケーション (マルウェア対策ソリューションでは見逃される可能性のあるものを含む) の実行が試行されるのをブロックまたは警告することができます。
 
-- [Azure Cloud Services にマルウェア対策拡張機能を自動的に追加する方法を教えてください](./cloud-services-configuration-and-management-faq.md?amp;preserve-view=#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
+- [Azure Cloud Services にマルウェア対策拡張機能を自動的に追加する方法を教えてください](./cloud-services-configuration-and-management-faq.md?preserve-view=true#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
 
 - [マルウェア対策のデプロイ シナリオ](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)
 

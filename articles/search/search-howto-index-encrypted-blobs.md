@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
-ms.openlocfilehash: f0295c27f1d193b0dcd7829a11b4aabe0edb659b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4bab8def514df21d948d67f3cfba846c43917be2
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286349"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530937"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Azure Cognitive Search で BLOB インデクサーとスキルセットを使用して暗号化された BLOB にインデックスを付ける方法
 
@@ -35,8 +35,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 この例では、既にファイルを Azure Blob Storage にアップロードし、その過程で暗号化されているものとします。 最初にファイルをアップロードして暗号化する方法についてのヘルプが必要な場合は、[このチュートリアル](../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md)で方法を確認してください。
 
 + [Azure ストレージ](https://azure.microsoft.com/services/storage/)
-+ Azure Cognitive Search と同じサブスクリプションにある [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。 キー コンテナーでは、 **論理的な削除** と **消去保護** が有効になっている必要があります。
-+ [請求可能なレベル](search-sku-tier.md#tiers) (Basic 以上、任意のリージョン) の [Azure Cognitive Search](search-create-service-portal.md)
++ Azure Cognitive Search と同じサブスクリプションにある [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。 キー コンテナーでは、**論理的な削除** と **消去保護** が有効になっている必要があります。
++ [請求可能なレベル](search-sku-tier.md#tier-descriptions) (Basic 以上、任意のリージョン) の [Azure Cognitive Search](search-create-service-portal.md)
 + [Azure 関数](https://azure.microsoft.com/services/functions/)
 + [Postman デスクトップ アプリ](https://www.getpostman.com/)
 
@@ -82,7 +82,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     
         ![関数の URL](media/indexing-encrypted-blob-files/function-uri.jpg "Azure 関数の URL を探す場所")
 
-    1. ホスト キー コード。 **[アプリ キー]** に移動し、 **default** キーをクリックして表示し、値をコピーします。
+    1. ホスト キー コード。 **[アプリ キー]** に移動し、**default** キーをクリックして表示し、値をコピーします。
      
         ![関数のホスト キー コード](media/indexing-encrypted-blob-files/function-host-key.jpg "Azure 関数のホスト キー コードを探す場所")
 
@@ -128,29 +128,28 @@ Postman をインストールして設定します。
 
 ![Postman アプリの [variables]\(変数\) タブ](media/indexing-encrypted-blob-files/postman-variables-window.jpg "Postman の [variables]\(変数\) ウィンドウ")
 
-
 | 変数    | 情報の入手元 |
 |-------------|-----------------|
 | `admin-key` | Azure Cognitive Search サービスの **[キー]** ページ上。  |
-| `search-service-name` | Azure Cognitive Search サービスの名前。 URL は `https://{{search-service-name}}.search.windows.net` です。 | 
-| `storage-connection-string` | ストレージ アカウントの **[アクセス キー]** タブで、 **[key1]**  >  **[接続文字列]** を選択します。 | 
-| `storage-container-name` | インデックスを付ける暗号化されたファイルが含まれる BLOB コンテナーの名前。 | 
-| `function-uri` |  メイン ページの **[基本]** の下にある Azure 関数内。 | 
-| `function-code` | Azure 関数で、 **[アプリ キー]** に移動し、 **default** キーをクリックして表示し、値をコピー。 | 
+| `search-service-name` | Azure Cognitive Search サービスの名前。 URL は `https://{{search-service-name}}.search.windows.net` です。 |
+| `storage-connection-string` | ストレージ アカウントの **[アクセス キー]** タブで、 **[key1]**  >  **[接続文字列]** を選択します。 |
+| `storage-container-name` | インデックスを付ける暗号化されたファイルが含まれる BLOB コンテナーの名前。 |
+| `function-uri` |  メイン ページの **[基本]** の下にある Azure 関数内。 |
+| `function-code` | Azure 関数で、 **[アプリ キー]** に移動し、**default** キーをクリックして表示し、値をコピー。 |
 | `api-version` | **2020-06-30** のままにします。 |
-| `datasource-name` | **encrypted-blobs-ds** のままにします。 | 
-| `index-name` | **encrypted-blobs-idx** のままにします。 | 
-| `skillset-name` | **encrypted-blobs-ss** のままにします。 | 
-| `indexer-name` | **encrypted-blobs-ixr** のままにします。 | 
+| `datasource-name` | **encrypted-blobs-ds** のままにします。 |
+| `index-name` | **encrypted-blobs-idx** のままにします。 |
+| `skillset-name` | **encrypted-blobs-ss** のままにします。 |
+| `indexer-name` | **encrypted-blobs-ixr** のままにします。 |
 
 ### <a name="review-the-request-collection-in-postman"></a>Postman の要求コレクションの確認
 
-このガイドを実行するときは、4 つの HTTP 要求を発行する必要があります。 
+このガイドを実行するときは、4 つの HTTP 要求を発行する必要があります。
 
-- **インデックスを作成するための PUT 要求** :このインデックスでは、Azure Cognitive Search で使用され、返されるデータが保持されます。
-- **データソースを作成するための POST 要求** :このデータソースにより、Azure Cognitive Search Service がストレージ アカウント、したがって暗号化された BLOB ファイルに接続されます。 
-- **スキルセットを作成するための PUT 要求** :スキルセットにより、BLOB ファイルのデータを解読する Azure 関数のカスタム スキル定義と、解読された後の各ドキュメントからテキストを抽出するための [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) が指定されます。
-- **インデクサーを作成するための PUT 要求** :インデクサーを実行すると、データの読み取り、スキルセットの適用、結果の格納が行われます。 この要求は最後に実行する必要があります。
+- **インデックスを作成するための PUT 要求**:このインデックスでは、Azure Cognitive Search で使用され、返されるデータが保持されます。
+- **データソースを作成するための POST 要求**:このデータソースにより、Azure Cognitive Search Service がストレージ アカウント、したがって暗号化された BLOB ファイルに接続されます。 
+- **スキルセットを作成するための PUT 要求**:スキルセットにより、BLOB ファイルのデータを解読する Azure 関数のカスタム スキル定義と、解読された後の各ドキュメントからテキストを抽出するための [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) が指定されます。
+- **インデクサーを作成するための PUT 要求**:インデクサーを実行すると、データの読み取り、スキルセットの適用、結果の格納が行われます。 この要求は最後に実行する必要があります。
 
 [ソース コード](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json)には、4 つの要求を保持する Postman コレクションと、いくつかの便利なフォローアップ要求が含まれています。 要求を発行するには、Postman で要求のタブを選択し、それぞれに対して **[送信]** を選択します。
 

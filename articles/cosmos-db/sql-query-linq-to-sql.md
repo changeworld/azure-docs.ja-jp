@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: tisande
-ms.openlocfilehash: 35f212ea246e03be02fa082ef1b55dcb7cae1575
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 122c95fe9ac017ad7a6957dcdb8323837be34f21
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538650"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545385"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ から SQL への変換
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,7 +34,7 @@ Azure Cosmos DB クエリ プロバイダーは、LINQ クエリから Cosmos DB
     family.children[n].grade; //n is an int variable
   ```
   
-- 算術式。数値およびブール値に対する共通の算術式を含みます。 完全な一覧については、[Azure Cosmos DB SQL の仕様](sql-query-system-functions.md)に関するページを参照してください。
+- 算術式。数値およびブール値に対する共通の算術式を含みます。 完全な一覧については、[Azure Cosmos DB SQL の仕様](sql-query-aggregate-functions.md)に関するページを参照してください。
   
   ```
     2 * family.children[0].grade;
@@ -85,7 +85,7 @@ SQL .NET SDK に含まれる LINQ プロバイダーでは、次の演算子が�
 - **Where**:フィルターによって [WHERE](sql-query-where.md) に変換します。また、`&&`、`||`、および `!` から SQL 演算子への変換をサポートしています
 - **SelectMany**:[JOIN](sql-query-join.md) 句に対して配列をアンワインドできます。 配列要素に関してフィルターする式を連結または入れ子にするために使用します。
 - **OrderBy** と **OrderByDescending**:ASC または DESC で [ORDER BY](sql-query-order-by.md) に変換します。
-- [集計](sql-query-aggregates.md)のための **Count**、**Sum**、**Min**、**Max**、**Average** 演算子と非同期でそれに相当する **CountAsync**、**SumAsync**、**MinAsync**、**MaxAsync**、**AverageAsync** 演算子。
+- [集計](sql-query-aggregate-functions.md)のための **Count**、**Sum**、**Min**、**Max**、**Average** 演算子と非同期でそれに相当する **CountAsync**、**SumAsync**、**MinAsync**、**MaxAsync**、**AverageAsync** 演算子。
 - **CompareTo**:範囲比較に変換します。 .NET では比較できないので、一般的に文字列に使用されます。
 - **Skip** と **Take**:クエリからの結果を制限して改ページ位置の自動修正を実行するために、[OFFSET および LIMIT](sql-query-offset-limit.md) に変換されます。
 - **数学関数**:.NET `Abs`、`Acos`、`Asin`、`Atan`、`Ceiling`、`Cos`、`Exp`、`Floor`、`Log`、`Log10`、`Pow`、`Round`、`Sign`、`Sin`、`Sqrt`、`Tan`、および `Truncate` から同等の [組み込み数学関数](sql-query-mathematical-functions.md)への変換をサポートします。

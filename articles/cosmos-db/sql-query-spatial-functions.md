@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 690a5cef2141af75412eaca207a16c59b37aa3ac
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: c9bc614aa044ace0224086c7f18b54783757711a
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93335383"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549142"
 ---
 # <a name="spatial-functions-azure-cosmos-db"></a>空間関数 (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,4 +40,4 @@ Cosmos DB は、以下の Open Geospatial Consortium (OGC) 組み込み関数を
 - [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)
 - [Azure Cosmos DB の概要](introduction.md)
 - [ユーザー定義関数](sql-query-udfs.md)
-- [集計](sql-query-aggregates.md)
+- [集計](sql-query-aggregate-functions.md)

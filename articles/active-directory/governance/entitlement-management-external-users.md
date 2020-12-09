@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dd1234e13f77f1ea95327a0a489e9a97cdc0ffd
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0fae7a62f062478c5fee45d172b88d0132f3a8f8
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362503"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546133"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理で外部ユーザーのアクセスを管理する
 
@@ -51,7 +51,7 @@ Azure AD のエンタイトルメント管理では、[Azure AD 企業間 (B2B)]
 
 1. 外部組織の連絡先に[マイ アクセス ポータルのリンク](entitlement-management-access-package-settings.md)を送信し、アクセス パッケージを要求するためにユーザーと共有できるようにします。
 
-1. 外部ユーザー (この例では **要求者 A** ) は、マイ アクセス ポータルのリンクを使用して、アクセス パッケージへの [アクセスを要求](entitlement-management-request-access.md)します。 ユーザーのサインイン方法は、接続された組織で定義されているディレクトリまたはドメインの認証の種類によって異なります。
+1. 外部ユーザー (この例では **要求者 A**) は、マイ アクセス ポータルのリンクを使用して、アクセス パッケージへの [アクセスを要求](entitlement-management-request-access.md)します。 ユーザーのサインイン方法は、接続された組織で定義されているディレクトリまたはドメインの認証の種類によって異なります。
 
 1. 承認者が[要求を承認します](entitlement-management-request-approve.md) (または、要求が自動承認されます)。
 
@@ -84,7 +84,7 @@ Azure AD のエンタイトルメント管理では、[Azure AD 企業間 (B2B)]
 - ゲストが他のゲストをディレクトリに招待できるようにすることは、エンタイトルメント管理の外部でゲストの招待が発生する可能性があることを意味します。 **[ゲストは招待ができる]** を **[いいえ]** に設定して、適切に管理された招待のみを許可することをお勧めします。
 - B2B 許可リストを使用している場合は、エンタイトルメント管理を使用してパートナーにするドメインがリストに追加されていることを確認する必要があります。 または、B2B 拒否リストを使用している場合は、パートナーにするドメインがリストに追加されていないことを確認する必要があります。
 - **すべてのユーザー** (すべての接続されている組織と新しい外部ユーザー) にエンタイトルメント管理ポリシーを作成し、ユーザーがディレクトリ内の接続されている組織に属していない場合は、パッケージを要求するときに、接続されている組織が自動的に作成されます。 お使いの B2B の許可または拒否リストの設定が優先されます。 したがって、このポリシーに含めるドメインを、許可リストを使用している場合は許可リストに含め、拒否リストを使用している場合は拒否リストから除外するようにしてください。
-- **すべてのユーザー** (すべての接続されている組織とすべての新しい外部ユーザーを含む) のエンタイトルメント管理ポリシーを作成する場合は、まず、ディレクトリに対してメールのワンタイム パスコード認証を有効にする必要があります。 詳細については、「[電子メール ワンタイム パスコード認証 (プレビュー)](../external-identities/one-time-passcode.md#opting-in-to-the-preview)」を参照してください。
+- **すべてのユーザー** (すべての接続されている組織とすべての新しい外部ユーザーを含む) のエンタイトルメント管理ポリシーを作成する場合は、まず、ディレクトリに対してメールのワンタイム パスコード認証を有効にする必要があります。 詳細については、「[電子メール ワンタイム パスコード認証 (プレビュー)](../external-identities/one-time-passcode.md)」を参照してください。
 - Azure AD B2B の外部コラボレーション設定の詳細については、「[B2B 外部コラボレーションを有効にしてゲストを招待できるユーザーを管理する](../external-identities/delegate-invitations.md)」を参照してください。
 
     ![Azure AD の外部コラボレーション設定](./media/entitlement-management-external-users/collaboration-settings.png)

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2241049e5c3cb5039a73c0f7637f7e3553d2e227
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 878d59445dde839ca9e702ac0c49af676e48a42f
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326877"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531192"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>移行の概要: SQL Server から SQL Managed Instance
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -28,9 +28,9 @@ SQL Server を Azure SQL Managed Instance に移行するためのさまざま�
 - アマゾン ウェブ サービス (AWS) EC2 
 - Amazon Relational Database Service (AWS RDS) 
 - Compute Engine (Google Cloud Platform - GCP)  
-- Cloud SQL for SQL Server (Google Cloud Platform – GCP) 
+- Cloud SQL for SQL Server (Google Cloud Platform - GCP) 
 
-その他のシナリオについては、「[データベース移行ガイド](https://datamigration.microsoft.com/)」を参照してください。 
+その他のシナリオについては、[データベース移行ガイド](https://datamigration.microsoft.com/)を参照してください。 
 
 ## <a name="overview"></a>概要
 
@@ -63,7 +63,7 @@ SQL Server を SQL Managed Instance に移行する主な利点の 1 つは、�
 デプロイ時にコンピューティング リソースとストレージ リソースを選択できます。その後、[Azure portal](../../database/scale-resources.md) を使用して、アプリケーションのダウンタイムなしにそれらを変更できます。 
 
 > [!IMPORTANT]
-> [Managed Instance の仮想ネットワーク要件](../../managed-instance/connectivity-architecture-overview.md#network-requirements)の不一致があると、新しいインスタンスを作成することや、既存のインスタンスを使用することができない場合があります。  [新しいネットワークの作成](../../managed-instance/virtual-network-subnet-create-arm-template.md?branch=release-ignite-arc-data) および [既存のネットワークの構成](../../managed-instance/vnet-existing-add-subnet.md?branch=release-ignite-arc-data) についてご確認ください。 
+> [Managed Instance の仮想ネットワーク要件](../../managed-instance/connectivity-architecture-overview.md#network-requirements)の不一致があると、新しいインスタンスを作成することや、既存のインスタンスを使用することができない場合があります。  [新しいネットワークの作成](../../managed-instance/virtual-network-subnet-create-arm-template.md) および [既存のネットワークの構成](../../managed-instance/vnet-existing-add-subnet.md?branch=release-ignite-arc-data) についてご確認ください。 
 
 ### <a name="sql-server-vm-alternative"></a>代替手段 としての SQL Server VM
 
@@ -114,7 +114,7 @@ SQL Server を SQL Managed Instance に移行する主な利点の 1 つは、�
 
 |移行オプション  |使用する場合  |考慮事項  |
 |---------|---------|---------|
-|[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | - 単一のデータベースまたは複数のデータベースを大規模に移行する。 </br> - 移行プロセス中のダウンタイムを許容できる。 </br> </br> サポートされるソース: </br> - オンプレミスの SQL Server (2005 - 2019) または Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP Compute SQL Server VM |  - 大規模な移行を [PowerShell](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md) を使用して自動化できます。 </br> - 移行が完了するまでの時間は、データベースのサイズによって異なり、バックアップと復元の時間に左右されます。 </br> - 十分なダウンタイムが必要になる可能性があります。 |
+|[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | - 単一のデータベースまたは複数のデータベースを大規模に移行する。 </br> - 移行プロセス中のダウンタイムを許容できる。 </br> </br> サポートされているソース: </br> - オンプレミスの SQL Server (2005 - 2019) または Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM |  - 大規模な移行を [PowerShell](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md) を使用して自動化できます。 </br> - 移行が完了するまでの時間は、データベースのサイズによって異なり、バックアップと復元の時間に左右されます。 </br> - 十分なダウンタイムが必要になる可能性があります。 |
 |[ネイティブ バックアップと復元](../../managed-instance/restore-sample-database-quickstart.md) | - 個々の基幹業務アプリケーション データベースを移行する。  </br> - 個別の移行サービスまたはツールを使用せずに素早く簡単に移行する。  </br> </br> サポートされるソース: </br> - オンプレミスの SQL Server (2005 - 2019) または Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP Compute SQL Server VM | - データベース バックアップでは、Azure Blob Storage へのデータ転送を最適化するために複数のスレッドが使用されますが、ISV 帯域幅とデータベース サイズが転送速度に影響する可能性があります。 </br> - ダウンタイムには、完全バックアップと復元を実行するために必要な時間 (データ操作のサイズ) を考慮する必要があります。| 
 | | | |
 
@@ -124,9 +124,9 @@ SQL Server を SQL Managed Instance に移行する主な利点の 1 つは、�
 
 |方法/テクノロジ |使用する場合 |考慮事項  |
 |---------|---------|---------|
-|[トランザクション レプリケーション](../../managed-instance/replication-transactional-overview.md) | - ソース データベース テーブルからターゲット SQL Managed Instance データベース テーブルに変更を継続的にパブリッシュすることで移行する。 </br> - データベースを完全に、または選択したテーブル (データベースのサブセット) について部分的に移行する。  </br> </br> サポートされるソース: </br> - SQL Server (2012 - 2019) (一部制限あり) </br> - AWS EC2  </br> - GCP Compute SQL Server VM | </br> - セットアップは、他の移行オプションと比べて比較的複雑です。   </br> - (データベースをオフラインにせずに) データを移行するための継続的なレプリケーション オプションを使用できます。</br> - トランザクション レプリケーションには、ソース SQL Server でパブリッシャーを設定するときに考慮する必要がある制限がいくつかあります。 詳細については、「[オブジェクトのパブリッシュに関する制限事項](/sql/relational-databases/replication/publish/publish-data-and-database-objects#limitations-on-publishing-objects)」を参照してください。  </br> - [レプリケーション アクティビティを監視](/sql/relational-databases/replication/monitor/monitoring-replication)する機能を利用できます。    |
-|[一括コピー](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| - 完全または部分的にデータを移行する。 </br> - ダウンタイムを許容できる。 </br> </br> サポートされるソース: </br> - オンプレミスの SQL Server (2005 - 2019) または Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP Compute SQL Server VM   | - データをソースからエクスポートするため、およびターゲットにインポートするためのダウンタイムが必要です。 </br> - エクスポート/インポートで使用するファイル形式とデータ型は、テーブル スキーマと一致している必要があります。 |
-|[インポートおよびエクスポート ウィザード/BACPAC](../../database/database-import.md)| - 個々の基幹業務アプリケーション データベースを移行する。 </br>- 比較的小規模なデータベースに適している。  </br>  個別の移行サービスやツールを必要としない。 </br> </br> サポートされるソース: </br> - オンプレミスの SQL Server (2005 - 2019) または Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP Compute SQL Server VM  |   </br> - データをソースでエクスポートし、転送先でインポートする必要があるため、ダウンタイムが必要です。   </br> - 切り捨てエラーやデータ型の不一致エラーを回避するために、エクスポート/インポートで使用するファイル形式とデータ型は、テーブル スキーマと一致している必要があります。 </br> - 多数のオブジェクトを含むデータベースをエクスポートする場合、エクスポート時間が大幅に長くなる可能性があります。 |
+|[トランザクション レプリケーション](../../managed-instance/replication-transactional-overview.md) | - ソース データベース テーブルからターゲット SQL Managed Instance データベース テーブルに変更を継続的にパブリッシュすることで移行する。 </br> - データベースを完全に、または選択したテーブル (データベースのサブセット) について部分的に移行する。  </br> </br> サポートされるソース: </br> - SQL Server (2012 - 2019) (一部制限あり) </br> - AWS EC2  </br> - GCP コンピューティングの SQL Server VM | </br> - セットアップは、他の移行オプションと比べて比較的複雑です。   </br> - (データベースをオフラインにせずに) データを移行するための継続的レプリケーション オプションが提供されます。</br> - トランザクション レプリケーションには、ソース SQL Server にパブリッシャーを設定するときに考慮べきいくつかの制限があります。 詳細については、「[オブジェクトのパブリッシュに関する制限事項](/sql/relational-databases/replication/publish/publish-data-and-database-objects#limitations-on-publishing-objects)」を参照してください。  </br> - [レプリケーション アクティビティを監視](/sql/relational-databases/replication/monitor/monitoring-replication)する機能を利用できます。    |
+|[一括コピー](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| - 完全または部分的にデータを移行する。 </br> - ダウンタイムを許容できる。 </br> </br> サポートされているソース: </br> - オンプレミスの SQL Server (2005 - 2019) または Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM   | - データをソースからエクスポートするため、およびターゲットにインポートするためのダウンタイムが必要です。 </br> - エクスポート/インポートで使用するファイル形式とデータ型は、テーブル スキーマと一致している必要があります。 |
+|[インポートおよびエクスポート ウィザード/BACPAC](../../database/database-import.md)| - 個々の基幹業務アプリケーション データベースを移行する。 </br>- 比較的小規模なデータベースに適している。  </br>  個別の移行サービスやツールを必要としない。 </br> </br> サポートされるソース: </br> - オンプレミスの SQL Server (2005 - 2019) または Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM  |   </br> - データをソースでエクスポートし、転送先でインポートする必要があるため、ダウンタイムが必要です。   </br> - 切り捨てやデータ型不一致のエラーを回避するために、エクスポート/インポートで使用されるファイル形式とデータ型は、テーブル スキーマと一致している必要があります。 </br> - 多数のオブジェクトを含むデータベースをエクスポートする場合、エクスポート時間が大幅に長くなる可能性があります。 |
 |[Azure Data Factory (ADF)](../../../data-factory/connector-azure-sql-managed-instance.md)| - ソース SQL Server データベースからデータを移行/変換する。</br> - 複数のデータ ソースのデータを Azure SQL Managed Instance にマージする (通常はビジネス インテリジェンス (BI) ワークロードの目的で)。   </br> - ソースからターゲットにデータを移動するために、ADF でデータ移動パイプラインを作成する必要がある。   </br> - [コスト](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)が重要な考慮事項であり、パイプライン トリガー回数、アクティビティの実行数、データ移動の期間などに応じて変わる。 |
 | | | |
 
@@ -226,10 +226,10 @@ Azure SQL Managed Instance への SQL Server の移行を開始するには、�
    - [Azure 総保有コスト計算ツール](https://azure.microsoft.com/pricing/tco/calculator/) 
 
 
-- クラウド移行のためのフレームワークと導入サイクルの詳細については、次を参照してください。
+- クラウド移行のためのフレームワークと導入サイクルの詳細については、以下を参照してください
    -  [Azure 向けのクラウド導入フレームワーク](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Azure に移行するワークロードの料金計算とサイズ設定のベスト プラクティス](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
 
 
 - アプリケーション アクセス層を評価するには、「[Data Access Migration Toolkit (プレビュー)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)」を参照してください。
-- データ アクセス層の A/B テストの実行方法について詳しくは、「[Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview)」を参照してください。
+- データ アクセス レイヤーの A/B テストの実行方法について詳しくは、[Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) についてのページを参照してください。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 5ac49491d8cb8fc81fe01d6f3d0d85456b190ed9
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 47d994a572d2fb0a76e1b6a713b61b70cccbd659
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329538"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509137"
 ---
 ここでは、Azure Active Directory (Azure AD) サービスの使用上の制約およびその他のサービスの制限を説明します。
 
@@ -22,7 +22,7 @@ ms.locfileid: "94329538"
 | テナント | 1 人のユーザーは、最大 500 の Azure AD テナントにメンバーまたはゲストとして属することができます。<br/>1 人のユーザーは、最大で 200 個のディレクトリを作成できます。 |
 | ドメイン | 追加できるマネージド ドメイン名は 900 個以下です。 オンプレミス Active Directory とのフェデレーションをすべてのドメインに設定した場合、各テナントには 450 を超えるドメイン名を追加できません。 |
 |リソース |<ul><li>Azure Active Directory の Free エディションのユーザーは、既定で 1 つのテナントに最大 50,000 個の Azure AD リソースを作成できます。 検証済みドメインが少なくとも 1 つある場合は、組織の既定の Azure AD サービス クォータは 300,000 個の Azure AD リソースに拡張されます。 内部管理者の引き継ぎを実行し、少なくとも 1 つの確認済みドメインを持つマネージド テナントに組織が変換された後も、セルフサービス サインアップによって作成された組織の Azure AD サービス クォータは、50,000 個の Azure AD リソースのままになります。 このサービス制限は、Azure AD の価格ページに記載されている 500,000 リソースの価格レベル制限とは関係ありません。 既定のクォータを超えるためには、Microsoft サポートに連絡する必要があります。</li><li>管理者以外のユーザーは、最大 250 個の Azure AD リソースを作成できます。 アクティブ リソースと復元可能な削除済みリソースの両方が、このクォータに加算されます。 30 日未満に削除された削除済み Azure AD リソースのみが復元可能です。 復元できなくなった削除済み Azure AD リソースは、30 日間、 4 分の 1 の値でこのクォータに加算されます。 通常の作業で、このクォータを繰り返し超過する可能性のある開発者がいる場合は、無制限の数のアプリ登録を作成できる権限を持った[カスタムロールを作成して割り当てる](../articles/active-directory/roles/quickstart-app-registration-limits.md)こともできます。</li></ul> |
-| スキーマの拡張機能 |<ul><li>文字列型の拡張の最大文字数は 256 文字です。 </li><li>バイナリ型の拡張は 256 バイトに制限されます。</li><li>1 つの Azure AD リソースに対して書き込める拡張値は、( *すべて* の型と *すべて* のアプリケーションで合計) 100 個のみです。</li><li>文字列型またはバイナリ型の単一値の属性を使用して拡張できるのは、User、Group、TenantDetail、Device、Application、および ServicePrincipal エンティティのみです。</li><li>スキーマ拡張は、Graph API バージョン 1.21 プレビューでのみ使用できます。 拡張を登録するには、アプリケーションに書き込みアクセス権を付与する必要があります。</li></ul> |
+| スキーマの拡張機能 |<ul><li>文字列型の拡張の最大文字数は 256 文字です。 </li><li>バイナリ型の拡張は 256 バイトに制限されます。</li><li>1 つの Azure AD リソースに対して書き込める拡張値は、(*すべて* の型と *すべて* のアプリケーションで合計) 100 個のみです。</li><li>文字列型またはバイナリ型の単一値の属性を使用して拡張できるのは、User、Group、TenantDetail、Device、Application、および ServicePrincipal エンティティのみです。</li><li>スキーマ拡張は、Graph API バージョン 1.21 プレビューでのみ使用できます。 拡張を登録するには、アプリケーションに書き込みアクセス権を付与する必要があります。</li></ul> |
 | アプリケーション |最大 100 人のユーザーが 1 つのアプリケーションの所有者になれます。 |
 |アプリケーション マニフェスト |アプリケーション マニフェストには、最大で 1200 のエントリを追加できます。 |
 | グループ |<ul><li>管理者以外のユーザーは、Azure AD 組織に最大 250 個のグループを作成できます。 組織内のグループを管理できる Azure AD 管理者であれば、グループを無制限に作成することもできます (Azure AD オブジェクトの上限まで)。 ユーザーの制限を削除するためのロールを割り当てる場合は、ユーザー管理者やグループ管理者など、特権の低い組み込みロールに割り当ててください。</li><li>Azure AD 組織には、最大 5000 個の動的グループを含めることができます。<li>最大 100 人のユーザーが 1 つのグループの所有者になれます。</li><li>任意の数の Azure AD リソースが 1 つのグループのメンバーになることができます。</li><li>ユーザーは任意の数のグループのメンバーになることができます。</li><li>既定では、Azure AD Connect を使用してオンプレミスの Active Directory から Azure Active Directory に同期できるグループ内のメンバーの数は、50,000 ユーザーに制限されています。 この制限を超えるグループ メンバーを同期する必要がある場合、[Azure AD Connect 同期 V2 エンドポイント API](../articles/active-directory/hybrid/how-to-connect-sync-endpoint-api-v2.md) をオンボードしなければなりません。</li><li>Azure AD の入れ子になったグループは、すべてのシナリオにおいてサポートされていません</li></ul><br/> 現時点で、入れ子になったグループでサポートされるシナリオを次に示します。<ul><li> 1 つのグループを別のグループのメンバーとして追加することができるため、グループの入れ子を実現できます。</li><li> グループ メンバーシップ クレーム (アプリがトークンでグループ メンバーシップ クレームを受信するように構成されている場合は、サインインしているユーザーがメンバーになっている入れ子になったグループが含まれます)</li><li>条件付きアクセス (条件付きアクセス ポリシーにグループのスコープが設定されている場合)</li><li>セルフサービスのパスワード リセットへのアクセスの制限</li><li>Azure AD Join とデバイス登録を実行できるユーザーの制限</li></ul><br/>次のシナリオでは、入れ子になったグループはサポートされません。<ul><li> アプリ ロールの割り当て (アプリへのグループの割り当てはサポートされていますが、直接割り当てられたグループ内で入れ子になっているグループにはアクセス権はありません)。アクセス権とプロビジョニングの両方</li><li>グループベースのライセンス (グループのすべてのメンバーにライセンスを自動的に割り当てます)</li><li>Microsoft 365 グループ。</li></ul> |
@@ -30,4 +30,4 @@ ms.locfileid: "94329538"
 | アクセス パネル |割り当てられたライセンスに関係なく、各ユーザーのアクセス パネルに表示できるアプリケーション数に制限はありません。  |
 | Reports | いずれのレポートでも、最大 1,000 行を表示またはダウンロードできます。 それを超えるデータは切り捨てられます。 |
 | 管理単位 | Azure AD リソースは最大 30 個の管理単位のメンバーにすることができます。 |
-| Azure AD ロールとアクセス許可 | <ul><li>Azure AD 組織ごとに、最大 30 個の [Azure AD カスタム ロール](https://docs.microsoft.com/azure/active-directory//users-groups-roles/roles-custom-overview?context=azure/active-directory/users-groups-roles/context/ugr-context)を作成できます。</li><li>グループを[グループ所有者](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership)として追加することはできません。</li><li>ユーザーが他のユーザーのテナント情報を読み取ることができる権限は、管理者以外の全ユーザーがすべてのテナント情報にアクセスできないようにする、Azure AD 組織全体のスイッチでのみ制限できます (これは推奨されません)。 詳細については、「[メンバー ユーザーの既定のアクセス許可を制限するには](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users)」を参照してください。</li><li>管理者ロールのメンバーシップの追加や失効が有効になるには、最大 15 分またはサインアウト/サインインが必要になることがあります。</li></ul> |
+| Azure AD ロールとアクセス許可 | <ul><li>Azure AD 組織ごとに、最大 30 個の [Azure AD カスタム ロール](/azure/active-directory//users-groups-roles/roles-custom-overview?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)を作成できます。</li><li>グループを[グループ所有者](../articles/active-directory/fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context#object-ownership)として追加することはできません。</li><li>ユーザーが他のユーザーのテナント情報を読み取ることができる権限は、管理者以外の全ユーザーがすべてのテナント情報にアクセスできないようにする、Azure AD 組織全体のスイッチでのみ制限できます (これは推奨されません)。 詳細については、「[メンバー ユーザーの既定のアクセス許可を制限するには](../articles/active-directory/fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context#restrict-member-users-default-permissions)」を参照してください。</li><li>管理者ロールのメンバーシップの追加や失効が有効になるには、最大 15 分またはサインアウト/サインインが必要になることがあります。</li></ul> |

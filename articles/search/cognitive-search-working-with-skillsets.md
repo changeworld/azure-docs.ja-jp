@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/15/2020
-ms.openlocfilehash: f1d8715fcadeda5ccd1a98192a70939b0c359c88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5a893ee1923ba4b2bec53b20fb164337bd65902
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84976678"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558115"
 ---
 # <a name="skillset-concepts-in-azure-cognitive-search"></a>Azure Cognitive Search のスキルセットの概念
 
@@ -89,7 +89,7 @@ ms.locfileid: "84976678"
 
 ### <a name="enrichment-tree"></a>強化ツリー
 
-[エンリッチメント パイプラインの手順](cognitive-search-concept-intro.md#enrichment-steps)の進行中、コンテンツ処理はテキストと画像がソースから抽出される*ドキュメント解析*フェーズに従います。 画像コンテンツは画像処理を指定するスキルにルーティングされ、テキスト コンテンツはテキスト処理のためキューに登録されます。 大量のテキストが含まれているソース ドキュメントの場合は、インデクサーで*解析モード*を設定して、より最適な処理を行えるようテキストをより小さなチャンクに分割することができます。 
+[エンリッチメント パイプラインの手順](cognitive-search-concept-intro.md#enrichment-steps)の進行中、コンテンツ処理はテキストと画像がソースから抽出される *ドキュメント解析* フェーズに従います。 画像コンテンツは画像処理を指定するスキルにルーティングされ、テキスト コンテンツはテキスト処理のためキューに登録されます。 大量のテキストが含まれているソース ドキュメントの場合は、インデクサーで *解析モード* を設定して、より最適な処理を行えるようテキストをより小さなチャンクに分割することができます。 
 
 ![パイプラインにおけるナレッジ ストアの図](./media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg "パイプラインにおけるナレッジ ストアの図")
 
@@ -195,7 +195,7 @@ Azure Cognitive Search では、インデクサーによって作成された出
 
 ### <a name="projections"></a>プロジェクション
 
-ナレッジ ストアを対象とするコンテンツについては、コンテンツをどのように構造化するかを検討する必要があります。 *プロジェクション*とは、強化ツリーからノードを選択し、ナレッジ ストアにそのノードの物理的な表現を作成するプロセスです。 プロジェクションとは、テーブルのプロジェクションまたはオブジェクトのプロジェクションとして出力できるドキュメント (コンテンツと強化) のカスタム形状です。 プロジェクションの使用について詳しくは、[プロジェクションの操作](knowledge-store-projection-overview.md)に関する記事をご覧ください。
+ナレッジ ストアを対象とするコンテンツについては、コンテンツをどのように構造化するかを検討する必要があります。 *プロジェクション* とは、強化ツリーからノードを選択し、ナレッジ ストアにそのノードの物理的な表現を作成するプロセスです。 プロジェクションとは、テーブルのプロジェクションまたはオブジェクトのプロジェクションとして出力できるドキュメント (コンテンツと強化) のカスタム形状です。 プロジェクションの使用について詳しくは、[プロジェクションの操作](knowledge-store-projection-overview.md)に関する記事をご覧ください。
 
 ![フィールド マッピング オプション](./media/cognitive-search-working-with-skillsets/field-mapping-options.png "エンリッチメント パイプラインのフィールド マッピング オプション")
 
@@ -222,8 +222,6 @@ Shaper による方法は、インライン整形より手間がかかります�
 この例を拡張するには、インライン整形を削除し、Shaper スキルを使用してキー フレーズ用の新しいノードを作成することができます。 以下のセクションでは、3 つのテーブル `hotelReviewsDocument`、`hotelReviewsPages`、`hotelReviewsKeyPhrases` に射影される形状を作成する 2 つのオプションについて説明します。
 
 #### <a name="shaper-skill-and-projection"></a>Shaper スキルとプロジェクション
-
-This 
 
 > [!Note]
 > 簡潔にするため、この例ではドキュメント テーブルの一部の列が削除されています。

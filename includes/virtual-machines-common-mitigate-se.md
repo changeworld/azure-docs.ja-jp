@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 6668d9753d0b93ab907d37cdeff8315f488cff7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9146099951aba223a7b201c1613e1ec0ba617d4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73935877"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509141"
 ---
 **ドキュメントの最終更新日**:2019 年 11 月 12 日午前 10:00 (PST)。
 
@@ -21,16 +21,16 @@ ms.locfileid: "73935877"
 
 Microsoft は、クラウド サービス全体に軽減策を展開しました。 Azure を実行し、顧客ワークロードを互いに分離するインフラストラクチャは保護されています。 つまり同じインフラストラクチャを使用する潜在的な攻撃者が、これらの脆弱性を利用してお客様のアプリケーションを攻撃することはできません。
 
-Azure では、可能な限り[メモリ保持メンテナンス](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-that-doesnt-require-a-reboot)を利用することで、お客様への影響を極力少なくし、再起動を不要にしています。 システム全体に及ぶ更新をホストに対して行う際は、引き続きこうした手法を活用しながらお客様を保護してまいります。
+Azure では、可能な限り[メモリ保持メンテナンス](../articles/virtual-machines/maintenance-and-updates.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json%252c%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json%253ftoc%253d%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#maintenance-that-doesnt-require-a-reboot)を利用することで、お客様への影響を極力少なくし、再起動を不要にしています。 システム全体に及ぶ更新をホストに対して行う際は、引き続きこうした手法を活用しながらお客様を保護してまいります。
 
-Azure にさまざまな角度から組み込まれているセキュリティについて詳しくは、「[Azure のセキュリティのドキュメント](https://docs.microsoft.com/azure/security/)」サイトをご覧ください。 
+Azure にさまざまな角度から組み込まれているセキュリティについて詳しくは、「[Azure のセキュリティのドキュメント](../articles/security/index.yml)」サイトをご覧ください。 
 
 > [!NOTE] 
 > このドキュメントが初めて公開されて以来、この脆弱性クラスについて同様の記事がいくつか開示されてきました。 Microsoft は今後もお客様の保護とガイダンスの提供に積極的に投資していく予定です。 引き続き解決策を公開していくために、このページは随時更新されます。 
 > 
 > 2019 年 11 月 12 日、[Intel](https://software.intel.com/security-software-guidance/insights/deep-dive-intel-transactional-synchronization-extensions-intel-tsx-asynchronous-abort) は、[CVE-2019-11135](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-11135) が割り当てられた Intel® Transactional Synchronization Extensions (Intel® TSX) Transaction Asynchronous Abort (TAA) の脆弱性に関する技術勧告を公開しました。 この脆弱性が影響を及ぼすのは Intel® Core® プロセッサと Intel® Xeon® プロセッサです。  Microsoft Azure はオペレーティング システムの更新プログラムをリリースしており、この脆弱性からお客様を保護するために、Intel から公開された新しいマイクロコードをすべてのフリートでデプロイしています。   Azure は Intel と緊密に連携し、プラットフォーム上での正式なリリース前に新しいマイクロコードのテストと検証を行っています。 
 >
-> **VM 内で信頼されていないコードを実行しているお客様**は、すべての投機的実行サイド チャネルの脆弱性に関する追加のガイダンス (Microsoft アドバイザリ ADV [180002](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)、[180018](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/adv180018)、および [190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)) を参照し、この脆弱性から保護するための対策を講じる必要があります。
+> **VM 内で信頼されていないコードを実行しているお客様** は、すべての投機的実行サイド チャネルの脆弱性に関する追加のガイダンス (Microsoft アドバイザリ ADV [180002](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)、[180018](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/adv180018)、および [190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)) を参照し、この脆弱性から保護するための対策を講じる必要があります。
 >
 > それ以外のお客様は、多層防御の観点から脆弱性を評価し、選択した構成のセキュリティとパフォーマンスに関する関連事項を考慮する必要があります。
 > 
@@ -43,7 +43,7 @@ Azure 上で実行するアプリケーションを他の Azure ユーザーか�
 
 | サービス | 推奨される操作  |
 |----------|---------------------|
-| Azure クラウド サービス  | [自動更新](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal)を有効にするか、最新のゲスト OS を実行していることを確認します。 |
+| Azure クラウド サービス  | [自動更新](../articles/cloud-services/cloud-services-how-to-configure-portal.md)を有効にするか、最新のゲスト OS を実行していることを確認します。 |
 | Azure Linux Virtual Machines | オペレーティング システムの提供元から入手した更新プログラムをインストールします。 詳細については、このドキュメントで後述する [Linux](#linux) に関する情報を参照してください。 |
 | Azure Windows Virtual Machines  | 最新のセキュリティ ロールアップをインストールします。
 | その他の Azure PaaS サービス | これらのサービスを使用している顧客がとる必要のある操作はありません。 Azure では、お使いの OS バージョンが自動的に最新に保たれます。 |
@@ -72,7 +72,7 @@ Azure 上で実行するアプリケーションを他の Azure ユーザーか�
 そうした追加的なセキュリティ機能を有効にするためには、対象のオペレーティング システムが最新の状態にあることが必要です。 投機的実行のサイドチャネルに関しては、さまざまな軽減策が既定で有効になっていますが、ここで説明する追加的な機能は手動で有効にする必要があり、またパフォーマンスに影響を及ぼすことがあります。 
 
 
-**ステップ 1:VM 上でハイパースレッディングを無効にする** - ハイパースレッド化された VM 上で信頼されていないコードを実行しているお客様は、ハイパースレッディングを無効にするか、ハイパースレッド化されていない VM サイズに移す必要があります。 ハイパースレッド化された VM サイズの一覧については[こちらのドキュメント](https://docs.microsoft.com/azure/virtual-machines/windows/acu)を参照してください (ここで、vCPU とコアの比率は 2:1 です)。 VM でハイパースレッディングが有効になっているかどうかを確認するには、VM 内で Windows コマンド ラインを使用して以下のスクリプトを参照してください。
+**ステップ 1:VM 上でハイパースレッディングを無効にする** - ハイパースレッド化された VM 上で信頼されていないコードを実行しているお客様は、ハイパースレッディングを無効にするか、ハイパースレッド化されていない VM サイズに移す必要があります。 ハイパースレッド化された VM サイズの一覧については[こちらのドキュメント](../articles/virtual-machines/acu.md)を参照してください (ここで、vCPU とコアの比率は 2:1 です)。 VM でハイパースレッディングが有効になっているかどうかを確認するには、VM 内で Windows コマンド ラインを使用して以下のスクリプトを参照してください。
 
 対話型インターフェイスを起動するには、`wmic` と入力します。 次に、以下を入力して、VM 上の物理および論理プロセッサの量を表示します。
 
@@ -108,10 +108,10 @@ Windows OS support for TAA mitigation is enabled: True
 **手順 3**:カーネル仮想アドレス シャドウ処理 (KVAS) とブランチ ターゲット インジェクション (BTI) の OS サポートを有効にするには、[KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の指示に従い、`Session Manager` のレジストリ キーを使用して保護を有効にします。 再起動が必要となります。
 
 
-**手順 4**:[入れ子式の仮想化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)でデプロイする場合 (D3 と E3 のみ):これらの手順は、Hyper-V ホストとして使用している VM 内で適用されます。
+**手順 4**:[入れ子式の仮想化](../articles/virtual-machines/windows/nested-virtualization.md)でデプロイする場合 (D3 と E3 のみ):これらの手順は、Hyper-V ホストとして使用している VM 内で適用されます。
 
 1.  [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の指示に従い、`MinVmVersionForCpuBasedMitigations` のレジストリ キーを使用して保護を有効にします。
-2.  [こちら](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types)の手順に従って、ハイパーバイザーのスケジューラの種類を `Core` に設定します。
+2.  [こちら](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types)の手順に従って、ハイパーバイザーのスケジューラの種類を `Core` に設定します。
 
 
 ### <a name="linux"></a>Linux
@@ -119,7 +119,7 @@ Windows OS support for TAA mitigation is enabled: True
 <a name="linux"></a>追加的なセキュリティ機能一式を内部で有効にするためには、対象のオペレーティング システムが完全に最新の状態にあることが必要です。 一部の軽減策については、既定で有効になります。 次のセクションで説明している内容は、既定でオフになっている機能や、ハードウェア サポート (マイクロコード) に依存している機能が対象となります。 これらの機能を有効にすると、パフォーマンスに影響が生じることがあります。 詳しい手順については、オペレーティング システムの提供元のドキュメントを参照してください。
 
 
-**ステップ 1:VM 上でハイパースレッディングを無効にする** - ハイパースレッド化された VM 上で信頼されていないコードを実行しているお客様は、ハイパースレッディングを無効にするか、ハイパースレッド化されていない VM に移す必要があります。  ハイパースレッド化された VM サイズの一覧については[こちらのドキュメント](https://docs.microsoft.com/azure/virtual-machines/linux/acu)を参照してください (ここで、vCPU とコアの比率は 2:1 です)。 ハイパースレッド化された VM を実行しているかどうかを確認するには、Linux VM で `lscpu` コマンドを実行します。 
+**ステップ 1:VM 上でハイパースレッディングを無効にする** - ハイパースレッド化された VM 上で信頼されていないコードを実行しているお客様は、ハイパースレッディングを無効にするか、ハイパースレッド化されていない VM に移す必要があります。  ハイパースレッド化された VM サイズの一覧については[こちらのドキュメント](../articles/virtual-machines/acu.md)を参照してください (ここで、vCPU とコアの比率は 2:1 です)。 ハイパースレッド化された VM を実行しているかどうかを確認するには、Linux VM で `lscpu` コマンドを実行します。 
 
 `Thread(s) per core = 2` の場合、ハイパースレッディングが有効になっています。 
 
@@ -179,11 +179,3 @@ NUMA node(s):          1
 
 Transactional Synchronization Extensions (Intel® TSX) Transaction Asynchronous Abort:  
 - [CVE-2019-11135](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-11135) – TSX Transaction Asynchronous Abort (TAA)
-
-
-
-
-
-
-
-

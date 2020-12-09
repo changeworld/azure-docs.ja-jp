@@ -13,16 +13,19 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 24f1332e940929cff6aeb6a0d5d3c43e28d36f22
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 9b870e21ffd5c6a8261b6731b939b5dff558256d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149166"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501194"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C 用 Azure IoT device SDK
 
-**Azure IoT device SDK** は、**Azure IoT Hub** サービスとのメッセージの送受信プロセスを簡略化するために設計された一連のライブラリです。 SDK にはさまざまなバリエーションがあり、それぞれが特定のプラットフォームを対象としていますが、この記事では、 **C 用 Azure IoT device SDK**について説明します。
+**Azure IoT device SDK** は、**Azure IoT Hub** サービスとのメッセージの送受信プロセスを簡略化するために設計された一連のライブラリです。 SDK にはさまざまなバリエーションがあり、それぞれが特定のプラットフォームを対象としていますが、この記事では、 **C 用 Azure IoT device SDK** について説明します。
+
+> [!NOTE]
+> Embedded C SDK は、制約のあるデバイスの代替手段であり、BYON (bring your own network) アプローチをサポートします。 IoT 開発者はデバイス ソリューションを作成するために、任意の MQTT クライアント、TLS、ソケットを自由に使用できます。 [Embedded C SDK の詳細については、こちらを参照してください](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot)。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -74,7 +77,7 @@ C 用 Azure IoT device SDK のサンプルを実行する前に、Azure サブ�
 
 ### <a name="obtain-the-device-credentials"></a>デバイスの資格情報を取得する
 
-これでサンプル ソース コートが手に入ったので、次にデバイスの資格情報のセットを取得します。 デバイスを IoT ハブにアクセスできるようにするには、まず、そのデバイスを IoT Hub ID レジストリに追加する必要があります。 デバイスを追加すると、そのデバイスから IoT ハブに接続するために必要な、デバイスの資格情報のセットが得られます。 次のセクションで確認するサンプル アプリケーションでは、これらの資格情報は**デバイスの接続文字列**の形式であると想定しています。
+これでサンプル ソース コートが手に入ったので、次にデバイスの資格情報のセットを取得します。 デバイスを IoT ハブにアクセスできるようにするには、まず、そのデバイスを IoT Hub ID レジストリに追加する必要があります。 デバイスを追加すると、そのデバイスから IoT ハブに接続するために必要な、デバイスの資格情報のセットが得られます。 次のセクションで確認するサンプル アプリケーションでは、これらの資格情報は **デバイスの接続文字列** の形式であると想定しています。
 
 IoT ハブの管理に役立つオープン ソース ツールがいくつかあります。
 
@@ -96,9 +99,9 @@ IoT ハブの管理に役立つオープン ソース ツールがいくつか�
 
    ![Device Explorer ツインのスクリーンショット](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinConfigTab.png)
 
-1. **IoT Hub の接続文字列**を最初のフィールドに入力し、 **[更新]** をクリックします。 この手順により、IoT Hub と通信できるようにツールが構成されます。 
+1. **IoT Hub の接続文字列** を最初のフィールドに入力し、 **[更新]** をクリックします。 この手順により、IoT Hub と通信できるようにツールが構成されます。 
 
-**接続文字列**は、 **[IoT Hub サービス]**  >  **[設定]**  >  **[共有アクセス ポリシー]**  >  **[iothubowner]** で確認できます。
+**接続文字列** は、 **[IoT Hub サービス]**  >  **[設定]**  >  **[共有アクセス ポリシー]**  >  **[iothubowner]** で確認できます。
 
 1. IoT Hub の接続文字列を構成したら、 **[管理]** タブをクリックします。
 
@@ -415,7 +418,7 @@ END_NAMESPACE(WeatherStation);
 
 **BEGIN\_NAMESPACE** と **END\_NAMESPACE** の両方のマクロは、モデルの名前空間を引数として取得します。 これらのマクロの間には、モデルの定義とモデルが使用するデータ構造があることが想定されます。
 
-この例では、 **ContosoAnemometer**という単一のモデルがあります。 このモデルは、デバイスが IoT Hub に送信できる、**DeviceId** と **WindSpeed** という 2 つのデータを定義します。 また、デバイスが受信できる、**TurnFanOn**、**TurnFanOff**、および **SetAirResistance** の 3 つのアクション (メッセージ) も定義されます。 各データ要素には型があり、各アクションには名前 (また、必要に応じて一連のパラメーター) があります。
+この例では、 **ContosoAnemometer** という単一のモデルがあります。 このモデルは、デバイスが IoT Hub に送信できる、**DeviceId** と **WindSpeed** という 2 つのデータを定義します。 また、デバイスが受信できる、**TurnFanOn**、**TurnFanOff**、および **SetAirResistance** の 3 つのアクション (メッセージ) も定義されます。 各データ要素には型があり、各アクションには名前 (また、必要に応じて一連のパラメーター) があります。
 
 モデルで定義されたデータとアクションは、IoT Hub へのメッセージの送信とデバイスに送信されたメッセージへの応答に使用できる API へのアクセスを定義します。 このモデルの使用については、例を通じて理解するのが一番です。
 
@@ -444,7 +447,7 @@ else
 }
 ```
 
-このコードは、デバイスからクラウドへのデータをシリアル化して、(**送信先**によって参照される) バッファーに格納します。 次に、**sendMessage** 関数を呼び出して、メッセージを IoT Hub に送信します。
+このコードは、デバイスからクラウドへのデータをシリアル化して、(**送信先** によって参照される) バッファーに格納します。 次に、**sendMessage** 関数を呼び出して、メッセージを IoT Hub に送信します。
 
 ```c
 static void sendMessage(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size)
@@ -562,7 +565,7 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 
 関数の名前はモデル内のアクションの名前に一致し、関数のパラメーターはアクションに対して指定されたパラメーターに一致することに注意してください。 最初のパラメーターは常に必要であり、モデルのインスタンスへのポインターが含まれます。
 
-デバイスがこのシグネチャと一致するメッセージを受信すると、対応する関数が呼び出されます。 したがって、 **IoTHubMessage**の定型コードを含める必要があることを除けば、メッセージの受信は、モデルで定義されている各アクションに単純な関数を定義する処理のみで実行できます。
+デバイスがこのシグネチャと一致するメッセージを受信すると、対応する関数が呼び出されます。 したがって、 **IoTHubMessage** の定型コードを含める必要があることを除けば、メッセージの受信は、モデルで定義されている各アクションに単純な関数を定義する処理のみで実行できます。
 
 ### <a name="uninitialize-the-library"></a>ライブラリの初期化を解除する
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: b8883d7040ad5c73a376838f7cb1aaa1b558bfbd
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 71dc5b84deda04c02b6d1722b11abf6631e9aa03
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340832"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546371"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>システム関数 (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,4 +47,4 @@ Cosmos DB 関数と ANSI SQL 関数の主な違いとして、Cosmos DB 関数�
 - [文字列関数](sql-query-string-functions.md)
 - [型チェック関数](sql-query-type-checking-functions.md)
 - [ユーザー定義関数](sql-query-udfs.md)
-- [集計](sql-query-aggregates.md)
+- [集計](sql-query-aggregate-functions.md)

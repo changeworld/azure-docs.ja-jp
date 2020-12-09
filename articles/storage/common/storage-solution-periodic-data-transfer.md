@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 19a4645e2bde4cf6b9f9a78123b334c290581ac4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: a15ebd43861e2116ddbb2d9055b289645962e203
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484534"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573920"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>定期的なデータの転送用のソリューション
  
@@ -68,6 +68,6 @@ ms.locfileid: "96484534"
 - [AzCopy を使用してデータを転送する](./storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
 - [Storage REST API を使用したデータ転送の詳細](/dotnet/api/overview/azure/storage)。
 - 以下の方法を理解します。
-    - [Data Box Gateway を使用してデータを転送する](../../databox-online/data-box-gateway-deploy-add-shares.md)します。
+    - [Data Box Gateway を使用してデータを転送する](../../databox-gateway/data-box-gateway-deploy-add-shares.md)します。
     - [Azure に送信する前に Data Box Edge を使用してデータを変換する](../../databox-online/azure-stack-edge-deploy-configure-compute.md)。
 - [Azure Data Factory を使用してデータを転送する方法を学習します](../../data-factory/tutorial-bulk-copy-portal.md)。

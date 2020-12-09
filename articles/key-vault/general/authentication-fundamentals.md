@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 30c26fcc48b1051944c181c0d24ae9e3c89ce477
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 6de0fc52ae265a47ca7f52d46e5f44b74c1277aa
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565825"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530920"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault 認証の基礎
 
@@ -116,8 +116,6 @@ Key Vault のロールの割り当ては、キー、シークレット、証明�
 * Azure RBAC のアクセス許可は、サブスクリプション、リソース グループ、または個々のキー コンテナーのレベルで、ユーザーにこれらのロールの割り当てを許可することにより、大規模に管理できます。 ユーザーには、Azure RBAC 割り当てのスコープ内のすべてのキー コンテナーに対するデータ プレーン アクセス許可が付与されます。 これにより、キー コンテナーごとに個々のユーザーやアプリケーションに対して、個別のアクセス ポリシーのアクセス許可を割り当てる必要がなくなります。
 
 * Azure RBAC のアクセス許可は、Privileged Identity Management (PIM) と互換性があります。 これにより、Key Vault 管理者などの特権ロールに対して Just-In-Time のアクセスの制御を構成できます。 これは、セキュリティ上のベスト プラクティスであり、キー コンテナーへの継続的なアクセスを排除することで、最小限の特権のプリンシパルに従うことになります。
-
-* Azure RBAC のアクセス許可は、オブジェクト単位の細かさのアクセス許可と互換性があるため、ユーザーに一部のキー コンテナー オブジェクトに対する操作の実行だけを制限できます。 これにより、複数のアプリケーションで 1 つのキー コンテナーを共有できるようにしながら、アプリケーション間のアクセスを分離できます。
 
 Key Vault 用の Azure RBAC の詳細については、次のドキュメントをご覧ください。
 

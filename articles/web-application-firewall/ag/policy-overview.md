@@ -7,21 +7,16 @@ author: winthrop28
 ms.service: web-application-firewall
 ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: b546b043b856fd6ec69acd63fd69a01c48d0553b
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 59ca0b85ba2aff29bdb2ad3379c1054041d2b4cb
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990127"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518738"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web アプリケーション ファイアウォール (WAF) ポリシーの概要
 
 Web アプリケーション ファイアウォール ポリシーには、すべての WAF 設定と構成が含まれています。 これには、除外、カスタム ルール、マネージド ルールなどがあります。 これらのポリシーは、アプリケーション ゲートウェイ (グローバル)、リスナー (サイトごと)、またはパスベースのルール (URI ごと) に関連付けられ、有効になります。
-
-> [!NOTE]
-> Azure Web アプリケーション ファイアウォール (WAF) と URI ごとのポリシーは、パブリック プレビュー段階です。
-> 
-> このパブリック プレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 作成できるポリシーの数に制限はありません。 ポリシーを作成した場合は、アプリケーション ゲートウェイに関連付けて有効にする必要があります。 アプリケーション ゲートウェイ、リスナー、およびパスベースのルールの任意の組み合わせと関連付けることができます。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 10/01/2020
 ms.author: inhenkel
-ms.openlocfilehash: 23baa6ed92aa01251b4c7ccf34ef784910a0321f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 14544f58bcda56a55cef33de8fe0a70d5859b589
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019836"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510949"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services v2 対 v3
 
@@ -80,7 +80,6 @@ v3 API には v2 API に関して次の機能ギャップがあります。 ギ�
     * アセットの結合
     * オーバーレイ
     * トリミング
-    * サムネイル スプライト
     * 音声が入力されない場合に、無音オーディオ トラックを挿入する
     * 入力に映像が含まれていない場合に、ビデオ トラックを挿入する
 * 現在、コード変換を使用するライブ イベントでは、ストリーム中のスレート挿入および API 呼び出しによる Ad マーカー挿入はサポートされていません。 

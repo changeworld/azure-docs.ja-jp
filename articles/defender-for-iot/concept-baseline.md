@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: d97fa4c3c57f6f0dcc5c55b76d839308156c40fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75c6841b7fed354843b955a971f02946be349a02
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931466"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548887"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>Azure Defender for IoT のベースラインとカスタム チェック
 
@@ -30,7 +30,7 @@ ms.locfileid: "90931466"
 
 ## <a name="baseline-custom-checks"></a>ベースラインのカスタム チェック
 
-ベースラインのカスタム チェックでは、デバイスの**モジュール ID ツイン**を使用して、各デバイスのベースラインに対するカスタム チェック リストが確立されます。
+ベースラインのカスタム チェックでは、デバイスの **モジュール ID ツイン** を使用して、各デバイスのベースラインに対するカスタム チェック リストが確立されます。
 
 ## <a name="setting-baseline-properties"></a>ベースライン プロパティの設定
 
@@ -63,7 +63,7 @@ ms.locfileid: "90931466"
 ## <a name="baseline-custom-check-properties"></a>ベースラインのカスタム チェックのプロパティ
 
 | 名前| Status | 有効な値| 既定値| 説明 |
-|----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
+|------|-----|------|-----|-----|
 |baselineCustomChecksEnabled|必須: true |有効な値: **Boolean** |既定値: **false** |優先度の高いメッセージが送信されるまでの最大時間間隔。|
 |baselineCustomChecksFilePath |必須: true|有効な値: **String**、**null** |既定値: **null** |ベースラインの xml 構成の完全パス|
 |baselineCustomChecksFileHash |必須: true|有効な値: **String**、**null** |既定値: **null** |xml 構成ファイルの `sha256sum`。 追加情報については [sha256sum リファレンス](https://linux.die.net/man/1/sha256sum)を使用してください。 |

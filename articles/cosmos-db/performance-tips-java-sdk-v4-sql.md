@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java, contperfq2
-ms.openlocfilehash: 6b87a06620a6e20ff67bde6fde9ed01aaef7fc9e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1359d01136067b6a939efd1cc0cd7db36f4dc2d6
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339718"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545470"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 のパフォーマンスに関するヒント
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +40,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 * **接続モード:** 直接モードを使用する
 <a id="direct-connection"></a>
     
-    Java SDK の既定の接続モードは直接です。 下の画像のように、 *directMode()* または *gatewayMode()* メソッドを利用し、クライアント ビルダーで接続モードを構成できます。 既定の設定でいずれかのモードを構成するには、引数を指定せずにいずれかのメソッドを呼び出します。 それ以外の場合は、構成設定クラス インスタンスを引数として渡します ( *directMode()* の場合は *DirectConnectionConfig* 、 *gatewayMode()* の場合は *GatewayConnectionConfig* )。 さまざまな接続オプションについては、[接続モード](sql-sdk-connection-modes.md)に関する記事を参照してください。
+    Java SDK の既定の接続モードは直接です。 下の画像のように、*directMode()* または *gatewayMode()* メソッドを利用し、クライアント ビルダーで接続モードを構成できます。 既定の設定でいずれかのモードを構成するには、引数を指定せずにいずれかのメソッドを呼び出します。 それ以外の場合は、構成設定クラス インスタンスを引数として渡します (*directMode()* の場合は *DirectConnectionConfig*、*gatewayMode()* の場合は *GatewayConnectionConfig*)。 さまざまな接続オプションについては、[接続モード](sql-sdk-connection-modes.md)に関する記事を参照してください。
     
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
@@ -58,7 +58,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
     --- 
 
-    *directMode()* メソッドには、次の理由により、追加のオーバーライドがあります。 データベースやコンテナーの CRUD などのコントロール プレーン操作は、 *常に* ゲートウェイ モードを利用します。ユーザーがデータ プレーン操作に直接モードを構成した場合、コントロール プレーン操作では既定のゲートウェイ モード設定が使用されます。 これはほとんどのユーザーに適しています。 ただし、データ プレーン操作の直接モードとコントロール プレーンのゲートウェイ モードパラメーターの調整機能を必要とするユーザーは、次の *directMode()* オーバーライドを使用できます。
+    *directMode()* メソッドには、次の理由により、追加のオーバーライドがあります。 データベースやコンテナーの CRUD などのコントロール プレーン操作は、*常に* ゲートウェイ モードを利用します。ユーザーがデータ プレーン操作に直接モードを構成した場合、コントロール プレーン操作では既定のゲートウェイ モード設定が使用されます。 これはほとんどのユーザーに適しています。 ただし、データ プレーン操作の直接モードとコントロール プレーンのゲートウェイ モードパラメーターの調整機能を必要とするユーザーは、次の *directMode()* オーバーライドを使用できます。
 
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
@@ -89,7 +89,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
 パフォーマンスを最大限に高めるために、手順に従って Windows ([クリックして手順を参照](../virtual-network/create-vm-accelerated-networking-powershell.md)) または Linux ([クリックして手順を参照](../virtual-network/create-vm-accelerated-networking-cli.md)) Azure VM で高速ネットワークを有効にすることをお勧めします。
 
-高速ネットワークを使用しない場合、Azure VM と他の Azure リソース間を通過する IO は、VM とそのネットワーク カードの間にあるホストと仮想スイッチを介して不必要にルーティングされる可能性があります。 データパスにインラインでホストと仮想スイッチがあると、通信チャネルで待機時間とジッターが増加するだけでなく、VM から CPU サイクルが奪われます。 高速ネットワークを使用すると、VM は中継なしで NIC と直接やり取りします。ホストと仮想スイッチによって処理されていたネットワーク ポリシーの詳細は、NIC のハードウェアで処理されるようになり、ホストと仮想スイッチはバイパスされます。 通常、高速ネットワークを有効にすると、待機時間の短縮とスループットの向上だけでなく、より " *一貫した* " 待機時間と CPU 使用率の削減が期待できます。
+高速ネットワークを使用しない場合、Azure VM と他の Azure リソース間を通過する IO は、VM とそのネットワーク カードの間にあるホストと仮想スイッチを介して不必要にルーティングされる可能性があります。 データパスにインラインでホストと仮想スイッチがあると、通信チャネルで待機時間とジッターが増加するだけでなく、VM から CPU サイクルが奪われます。 高速ネットワークを使用すると、VM は中継なしで NIC と直接やり取りします。ホストと仮想スイッチによって処理されていたネットワーク ポリシーの詳細は、NIC のハードウェアで処理されるようになり、ホストと仮想スイッチはバイパスされます。 通常、高速ネットワークを有効にすると、待機時間の短縮とスループットの向上だけでなく、より "*一貫した*" 待機時間と CPU 使用率の削減が期待できます。
 
 制限事項: 高速ネットワークは、VM の OS でサポートされている必要があり、VM が停止され、割り当てが解除されている場合にのみ有効にすることができます。 Azure Resource Manager を使用して VM をデプロイすることはできません。
 
@@ -108,13 +108,13 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
 * **アプリケーションに必要な最低の整合性レベルを使用する**
 
-    *CosmosClient* を作成するときに、明示的に設定されていない場合に使用される既定の整合性は " *Session (セッション)* " です。 アプリケーション ロジックで " *Session (セッション)* " 整合性が必要とされない場合は、" *Consistency (整合性)* " を " *Eventual (最終的)* " に設定します。 注: Azure Cosmos DB 変更フィード プロセッサを使用するアプリケーションでは、少なくとも " *Session (セッション)* " 整合性を使用することをお勧めします。
+    *CosmosClient* を作成するときに、明示的に設定されていない場合に使用される既定の整合性は "*Session (セッション)* " です。 アプリケーション ロジックで "*Session (セッション)* " 整合性が必要とされない場合は、"*Consistency (整合性)* " を "*Eventual (最終的)* " に設定します。 注: Azure Cosmos DB 変更フィード プロセッサを使用するアプリケーションでは、少なくとも "*Session (セッション)* " 整合性を使用することをお勧めします。
 
 * **非同期 API を使用してプロビジョニングされたスループットを最大化する**
 
     Azure Cosmos DB Java SDK v4 には、同期と非同期の 2 つの API がバンドルされています。 大まかに言うと、非同期 API は SDK 機能を実装し、同期 API は非同期 API のブロッキング呼び出しを行うシン ラッパーです。 これは、非同期のみであった以前の Azure Cosmos DB Async Java SDK v2 や、同期のみで、まったく別の実装を備えていた以前の Azure Cosmos DB Sync Java SDK v2 とは対照的です。 
     
-    API の選択は、クライアントの初期化中に決定されます。 *CosmosAsyncClient* では非同期 API がサポートされ、 *CosmosClient* では同期 API がサポートされます。 
+    API の選択は、クライアントの初期化中に決定されます。*CosmosAsyncClient* では非同期 API がサポートされ、*CosmosClient* では同期 API がサポートされます。 
     
     非同期 API は非ブロッキング IO を実装しており、Azure Cosmos DB に要求を発行するときにスループットを最大化することが目標である場合に最適な選択肢です。 
     
@@ -124,7 +124,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
     
     同期 API を使用する場合、地理的な併置によって、より高いより一貫したスループットが得られますが (「[パフォーマンスを確保するために同じ Azure リージョン内にクライアントを併置する](#collocate-clients)」を参照)、非同期 API で達成可能なスループットを超えることはやはり期待できません。
 
-    一部のユーザーは、Azure Cosmos DB Java SDK v4 の非同期 API を実装するために使用される Reactive Streams フレームワークである、[Project Reactor](https://projectreactor.io/) に詳しくない場合もあります。 これが懸念される場合は、入門用の「[Reactor pattern guide (Reactor パターン ガイド)](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md)」を読んでから、こちらの「[Introduction to Reactive Programming (Reactive プログラミングの概要)](https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro)」を読んで理解を深めてください。 非同期インターフェイスで Azure Cosmos DB を既に使用しており、使用していた SDK が Azure Cosmos DB Async Java SDK v2 の場合、[ReactiveX](http://reactivex.io/)/[RxJava](https://github.com/ReactiveX/RxJava) を使い慣れているかもしれませんが、Project Reactor での変更点がわからない可能性があります。 その場合は、「[Reactor vs. RxJava guide (Reactor と RxJava の比較ガイド)](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md)」を参照して理解を深めてください。
+    一部のユーザーは、Azure Cosmos DB Java SDK v4 の非同期 API を実装するために使用される Reactive Streams フレームワークである、[Project Reactor](https://projectreactor.io/) に詳しくない場合もあります。 これが懸念される場合は、入門用の「[Reactor pattern guide (Reactor パターン ガイド)](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-pattern-guide.md)」を読んでから、こちらの「[Introduction to Reactive Programming (Reactive プログラミングの概要)](https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro)」を読んで理解を深めてください。 非同期インターフェイスで Azure Cosmos DB を既に使用しており、使用していた SDK が Azure Cosmos DB Async Java SDK v2 の場合、[ReactiveX](http://reactivex.io/)/[RxJava](https://github.com/ReactiveX/RxJava) を使い慣れているかもしれませんが、Project Reactor での変更点がわからない可能性があります。 その場合は、「[Reactor vs. RxJava guide (Reactor と RxJava の比較ガイド)](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md)」を参照して理解を深めてください。
 
     次のコード スニペットは、それぞれ非同期 API または同期 API 操作で Azure Cosmos DB クライアントを初期化する方法を示しています。
 
@@ -154,7 +154,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
         :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="直接モード アーキテクチャの図" border="false":::
 
-        直接モードで使用されるクライアント側のアーキテクチャにより、予測可能なネットワーク使用率と Azure Cosmos DB レプリカへの多重アクセスが可能になります。 上の図は、直接モードで Cosmos DB バックエンドのレプリカにクライアント要求をルーティングする方法を示しています。 直接モード アーキテクチャでは、クライアント側で DB レプリカあたり最大 10 個の _ *チャネル* * が割り当てられます。 チャネルは、要求バッファーが先行する TCP 接続であり、要求の深さは 30 個です。 レプリカに属するチャネルは、レプリカの **サービス エンドポイント** によって、必要に応じて動的に割り当てられます。 ユーザーが直接モードで要求を発行すると、 **TransportClient** により、パーティション キーに基づいて要求が適切なサービス エンドポイントにルーティングされます。 **要求キュー** では、サービス エンドポイントの前に要求がバッファリングされます。
+        直接モードで使用されるクライアント側のアーキテクチャにより、予測可能なネットワーク使用率と Azure Cosmos DB レプリカへの多重アクセスが可能になります。 上の図は、直接モードで Cosmos DB バックエンドのレプリカにクライアント要求をルーティングする方法を示しています。 直接モード アーキテクチャでは、クライアント側で DB レプリカあたり最大 10 個の _ *チャネル** が割り当てられます。 チャネルは、要求バッファーが先行する TCP 接続であり、要求の深さは 30 個です。 レプリカに属するチャネルは、レプリカの **サービス エンドポイント** によって、必要に応じて動的に割り当てられます。 ユーザーが直接モードで要求を発行すると、**TransportClient** により、パーティション キーに基づいて要求が適切なサービス エンドポイントにルーティングされます。 **要求キュー** では、サービス エンドポイントの前に要求がバッファリングされます。
 
     * ***直接モード用の構成オプション** _
 
@@ -176,13 +176,13 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
     Azure Cosmos DB Java SDK v4 では、パーティション分割コレクションに対してクエリを並列で実行できるようにするために、並列クエリがサポートされています。 詳細については、Azure Cosmos DB Java SDK v4 の操作に関連した[コード サンプル](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)を参照してください。 並列クエリは、シリアル クエリよりもクエリの待機時間とスループットを向上させるように設計されています。
 
-    * ***setMaxDegreeOfParallelism の調整\:** _
+    * "***setMaxDegreeOfParallelism の調整\:** _"
     
         並列クエリは、複数のパーティションに並列にクエリを実行することによって機能します。 ただし、個々のパーティション分割されたコレクションからのデータは、クエリごとに順番に取得されます。 そのため、setMaxDegreeOfParallelism を使ってパーティションの数を設定すると、その他のすべてのシステムの条件が変わらなければ、クエリのパフォーマンスを最大にできる可能性が最大になります。 パーティションの数が不明な場合は、setMaxDegreeOfParallelism を使って大きな数を設定すると、システムが並列処理の最大限度として最小値 (パーティションの数、ユーザー指定の入力) を選びます。
 
         並列クエリが最も有効に機能するのは、クエリに対するデータがすべてのパーティションに均等に分散している場合であることに注意する必要があります。 パーティション分割されたコレクションが、クエリによって返されるすべてまたは大部分のデータがわずかな数のパーティション (最悪の場合は 1 つのパーティション) に集中するように分割されている場合、クエリのパフォーマンスに関してこれらのパーティションがボトルネックになるでしょう。
 
-    _ * **setMaxBufferedItemCount の調整\:** _
+    _ ***setMaxBufferedItemCount の調整\:** _
     
         Parallel query is designed to pre-fetch results while the current batch of results is being processed by the client. The pre-fetching helps in overall latency improvement of a query. setMaxBufferedItemCount limits the number of pre-fetched results. Setting setMaxBufferedItemCount to the expected number of results returned (or a higher number) enables the query to receive maximum benefit from pre-fetching.
 
@@ -198,7 +198,7 @@ _ **クライアント ワークロードをスケールアウトする**
 
 * **パフォーマンスを向上させるために、クエリ/読み取りフィードのページ サイズを調整する**
 
-    読み取りフィード機能 ( *readItems* など) を使用してドキュメントの一括読み取りを実行するときや、SQL クエリ ( *queryItems* ) を発行するときに、結果セットが大きすぎる場合は、セグメント化された形式で結果が返されます。 既定では、100 項目または 1 MB (先に達した方) のチャンク単位で結果が返されます。
+    読み取りフィード機能 (*readItems* など) を使用してドキュメントの一括読み取りを実行するときや、SQL クエリ (*queryItems*) を発行するときに、結果セットが大きすぎる場合は、セグメント化された形式で結果が返されます。 既定では、100 項目または 1 MB (先に達した方) のチャンク単位で結果が返されます。
 
     アプリケーションが Azure Cosmos DB にクエリを発行し、アプリケーションがタスクを完了するためにクエリ結果の完全なセットが必要であるとします。 該当するすべての結果を取得するために必要なネットワーク ラウンド トリップの回数を減らすために、[x-ms-max-item-count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 要求ヘッダー フィールドを調整して、ページ サイズを増やすことができます。 
 
@@ -208,7 +208,7 @@ _ **クライアント ワークロードをスケールアウトする**
     
     一部のアプリケーションでは、クエリ結果の完全なセットを必要としない場合があります。 ごく少数の結果を表示する必要がある場合は (ユーザー インターフェイスやアプリケーション API が一度に 10 件しか結果を返さない場合など)、読み取りとクエリに使用されるスループットを減らすために、ページ サイズを 10 に減らすこともできます。
 
-    REST ヘッダー フィールドを直接変更するのではなく、 *byPage* メソッドの優先ページ サイズ引数を設定することもできます。 [x-ms-max-item-count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) または *byPage* の優先ページ サイズ引数は、絶対条件ではなく、ページ サイズの上限を設定するだけであることに注意してください。そのため、さまざまな理由から、Azure Cosmos DB から返されるページが優先ページ サイズよりも小さくなる場合があります。 
+    REST ヘッダー フィールドを直接変更するのではなく、*byPage* メソッドの優先ページ サイズ引数を設定することもできます。 [x-ms-max-item-count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) または *byPage* の優先ページ サイズ引数は、絶対条件ではなく、ページ サイズの上限を設定するだけであることに注意してください。そのため、さまざまな理由から、Azure Cosmos DB から返されるページが優先ページ サイズよりも小さくなる場合があります。 
 
 * **適切なスケジューラを使用する (イベント ループの IO Netty スレッドを盗まない)**
 
@@ -237,7 +237,7 @@ _ **クライアント ワークロードをスケールアウトする**
 
         同期ロガーの待機時間は、要求を生成するスレッドの全体的な待機時間の計算に必ず含まれます。 高パフォーマンスのアプリケーション スレッドからログのオーバーヘッドを分離するために、[log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0) などの非同期ロガーが推奨されます。
 
-    _ * **netty のログを無効にする** _
+    _ ***netty のログを無効にする** _
 
         Netty library logging is chatty and needs to be turned off (suppressing sign in the configuration may not be enough) to avoid additional CPU costs. If you are not in debugging mode, disable netty's logging altogether. So if you are using log4j to remove the additional CPU costs incurred by ``org.apache.log4j.Category.callAppenders()`` from netty add the following line to your codebase:
 

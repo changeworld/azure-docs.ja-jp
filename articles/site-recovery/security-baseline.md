@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f6d17b007fcccd87aed17a9ec3ca039b9559ab6d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 860bc9440547a4c62336ccc573859ec56b3400b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492235"
+ms.locfileid: "96533861"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Site Recovery 用の Azure セキュリティ ベースライン
 
@@ -164,9 +164,9 @@ Log Analytics でクエリを実行して、用語の検索し、傾向の特定
 
 **ガイダンス**:ロールは既定では割り当てられません。 ビジネス ニーズに基づいて明示的に割り当てる必要があります。 すべてのロールの割り当ては、PowerShell CLI または Azure Active Directory (Azure AD) を使用して確認でき、これにより、管理グループのメンバーであるアカウントを検出できます。
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?amp;preserve-view=true&view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **Azure Security Center の監視**: はい
 
@@ -237,7 +237,7 @@ Azure AD のリスク検出機能を使用して、危険なユーザー動作�
 
 - [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Azure AD のリスク検出の概要](../active-directory/identity-protection/overview-identity-protection.md)
+- [Azure AD のリスク検出について](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center の監視**: はい
 
@@ -431,7 +431,7 @@ Site Recovery では、データの保存時の暗号化がサポートされて
 
 - [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -530,7 +530,7 @@ Azure でポリシーを作成および管理する方法を理解すること�
 **ガイダンス**: Azure Policy を使用して、Recovery Services コンテナーの標準的なセキュリティ構成を定義して実装します。 
 
 "Microsoft RecoveryServices" 名前空間で Azure Policy エイリアスを使用して、Site Recovery サービスの Recovery Services コンテナー リソースの構成を監査または適用するためのカスタム ポリシーを作成します。
-- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -553,9 +553,9 @@ Azure でポリシーを作成および管理する方法を理解すること�
 
 **ガイダンス**:Recovery Services コンテナーと関連リソースにカスタム Azure Policy 定義を使用している場合は、Azure Repos を選択して、コードを安全に格納して管理します。
 
-- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Azure Repos のドキュメント](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
+- [Azure Repos のドキュメント](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -656,7 +656,7 @@ Site Recovery サービス メタデータによって使用される、構成�
 
 これは顧客のスコープ外であり、Site Recovery チームによって内部で処理されます。 顧客は、Azure でキー コンテナーのキーをバックアップできます。
 
-- [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
+- [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -666,7 +666,7 @@ Site Recovery サービス メタデータによって使用される、構成�
 
 **ガイダンス**:バックアップされたカスタマー マネージド キーの復元を定期的にテストします。
 
-- [Azure でキー コンテナーのキーを復元する方法](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
+- [Azure でキー コンテナーのキーを復元する方法](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure Security Center の監視**: 適用なし
 

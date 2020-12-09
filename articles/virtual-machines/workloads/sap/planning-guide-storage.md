@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/23/2020
+ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1cd6f5f7865d18461ac7a635530e9aabfde380a6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6982b782fdd6b5b269c1562c54be3478c58bbce9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955414"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500999"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>SAP ワークロードの Azure Storage の種類
 Azure には、機能、スループット、待機時間、価格が大幅に異なるさまざまな種類のストレージがあります。 ストレージの種類の中には、SAP シナリオでは使用できないものや、制限付きで使用できるものがあります。 一方、いくつかの Azure Storage の種類が、特定の SAP ワークロードのシナリオ用として適切であるか、または最適化されています。 特に SAP HANA に関して、一部の Azure Storage の種類は SAP HANA での使用の認定を受けています。 このドキュメントでは、さまざまな種類のストレージを取り上げて、SAP ワークロードと SAP コンポーネントに対する機能と使用可能性について説明します。
@@ -34,6 +34,8 @@ Azure には、機能、スループット、待機時間、価格が大幅に�
 Standard HDD、Standard SSD、Azure Premium Storage、Ultra Disk からなる Microsoft Azure Storage では、ベース VHD (OS を含む) と VM にアタッチされたデータ ディスクまたは VHD が、3 つの異なるストレージ ノード上の 3 つのコピーに保持されます。 記憶域ノード障害が発生した場合の、別のレプリカへのフェールオーバーと新しいレプリカのシード処理は透過的です。 この冗長性の結果、複数の Azure ディスクにわたるどのような種類のストレージ冗長レイヤーも使用する必要は **ありません**。 これは、ローカル冗長ストレージ (LRS) と呼ばれます。 LRS は、Azure 内のこれらの種類のストレージの既定になっています。 [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) では、他のネイティブ Azure Storage と同じ SLA を実現する十分な冗長性が提供されます。
 
 この他に、Azure で提供されるさまざまなストレージの種類の一部に適用されるいくつかの冗長化の方法があり、それらはすべて [Azure Storage のレプリケーション](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)に関する記事で説明されています。 
+
+「[仮想マシンの SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)」でリリースされたシングル VM 可用性 SLA にさまざまな種類の Azure ストレージが影響を与えることにもご留意ください。
 
 ### <a name="azure-managed-disks"></a>Azure Managed Disks
 
@@ -131,7 +133,6 @@ Azure Premium SSD は、以下のことを実現する目的で導入されま�
 - このストレージの I/O スループットは、ディスク カテゴリのサイズに対して線形ではありません。 容量 65 GiB と 128 GiB の間のカテゴリのような小容量ディスクの場合、スループットは約 780 KB/GiB です。 一方、32,767 GiB ディスクのような非常に大容量のディスクでは、スループットは約 28 KB/GiB です。
 - ディスクの容量を変更せずに IOPS とスループットの SLA を変更することはできません。
 
-Azure には、Azure Premium ストレージまたは Azure Ultra Disk ストレージの使用に関連付けられた、99.9% の単一インスタンス VM SLA があります。 その SLA は、「[仮想マシンの SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)」に記載されています。 この単一 VM SLA に準拠するには、ベース VHD ディスクと、アタッチされている **すべての** ディスクが、Azure Premium ストレージまたは Azure Ultra Disk ストレージのいずれかである必要があります。
 
 SAP ワークロードの機能マトリックスは次のようになります。
 
@@ -163,7 +164,7 @@ Azure Premium Storage では、Azure Premium Storage で提供される一般的
 
 
 ### <a name="azure-burst-functionality-for-premium-storage"></a>Premium Storage の Azure バースト機能
-容量が 512 GiB 以下の Azure Premium Storage ディスクの場合、バースト機能が提供されます。 ディスク バーストの動作の詳細については、「[ディスク バースト](../../linux/disk-bursting.md)」をご覧ください。 この記事を読むと、I/O ワークロードがディスクの公称 IOPS およびスループットを下回っているときの、IOPS とスループットの蓄積の概念を理解できます (公称スループットの詳細については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks/)」をご覧ください)。 現在の使用量とディスクの公称値との差分だけ、IOPS とスループットが蓄積されます。 バーストは最大 30 分に制限されています。
+容量が 512 GiB 以下の Azure Premium Storage ディスクの場合、バースト機能が提供されます。 ディスク バーストの動作の詳細については、「[ディスク バースト](../../disk-bursting.md)」をご覧ください。 この記事を読むと、I/O ワークロードがディスクの公称 IOPS およびスループットを下回っているときの、IOPS とスループットの蓄積の概念を理解できます (公称スループットの詳細については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks/)」をご覧ください)。 現在の使用量とディスクの公称値との差分だけ、IOPS とスループットが蓄積されます。 バーストは最大 30 分に制限されています。
 
 このバースト機能を計画できる理想的なケースとして、別の DBMS のデータ ファイルを含むボリュームまたはディスクが考えられます。 特に、小規模から中規模のシステムで、これらのボリュームに対して予想される I/O ワークロードは次のとおりです。
 
@@ -375,4 +376,3 @@ Azure Premium Storage を使用して優れた価格/パフォーマンス比を
 
 - [SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](./dbms_guide_general.md)
 - [SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)
- 

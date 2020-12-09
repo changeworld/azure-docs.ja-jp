@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: e3234289fe56286cb5ff0791d983dee6ec2aa4d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9528fa3b434a0bc09d191fe6808214feb8245ae4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91544870"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509395"
 ---
 > [!NOTE]
-> 現在、Azure Security Center ではプライベート エンドポイント、選択したサブネット、または IP アドレスへのアクセスを制限するレジストリで[イメージの脆弱性のスキャン](../articles/security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)を実行することはできません。 Azure DevOps Services や Azure Container Instances を含む特定の Azure サービスのインスタンスも、ネットワークが制限されたコンテナー レジストリにアクセスすることはできません。
+> 現在、Azure Security Center ではプライベート エンドポイント、選択したサブネット、または IP アドレスへのアクセスを制限するレジストリで[イメージの脆弱性のスキャン](../articles/security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json)を実行することはできません。 Azure DevOps Services や Azure Container Instances を含む特定の Azure サービスのインスタンスも、ネットワークが制限されたコンテナー レジストリにアクセスすることはできません。

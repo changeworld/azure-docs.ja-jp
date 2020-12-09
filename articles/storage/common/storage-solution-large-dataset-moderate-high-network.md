@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 962bb7a4484f28d52ffd4f0cae985140ec2f0d28
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f1ded1ce87df1cb57960bbc99cd950ed7b3f97ee
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006032"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573937"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>中速から高速のネットワーク帯域幅での大規模なデータセットのデータ転送
  
@@ -102,7 +102,7 @@ ms.locfileid: "96006032"
     - [Data Box を使用してデータを転送する](../../databox/data-box-quickstart-portal.md)。
 - [AzCopy を使用してデータを転送する](./storage-use-azcopy-v10.md)。
 - 以下の方法を理解します。
-    - [Data Box Gateway を使用してデータを転送する](../../databox-online/data-box-gateway-deploy-add-shares.md)します。
+    - [Data Box Gateway を使用してデータを転送する](../../databox-gateway/data-box-gateway-deploy-add-shares.md)します。
     - [Azure に送信する前に Data Box Edge を使用してデータを変換する](../../databox-online/azure-stack-edge-deploy-configure-compute.md)。
 - [Azure Data Factory を使用してデータを転送する方法を学習します](../../data-factory/quickstart-create-data-factory-portal.md)。
 - REST API を使用してデータ転送する

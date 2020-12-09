@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 1459c80c857a436c8369d3ebe89794e0b69c33b1
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: f4dce87533927eebef792987b87d148e6a5268b4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980883"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500616"
 ---
 # <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure ハイブリッド特典 - Linux Virtual Machines に適用する方法
 
@@ -155,9 +155,13 @@ A:いいえ、できません。 Azure ハイブリッド特典では、従量�
 
 A:いいえ、できません。 Azure ハイブリッド特典では、従量課金制のイメージでの変換のみがサポートされています。
 
-*Q:オンプレミス (ASR 経由またはそれ以外) から Azure に独自の RHEL イメージをアップロードしました。これらのイメージの課金を BYOS から PAYG に変換することはできますか。*
+*Q:オンプレミス (Azure Migrate、ASR、またはそれ以外の方法で) から Azure に独自の RHEL イメージをアップロードしました。これらのイメージの課金を BYOS から PAYG に変換することはできますか。*
 
 A:いいえ、できません。 Azure ハイブリッド特典機能は、現在、RHEL および SLES の Marketplace イメージでのみ使用できます。 
+
+*Q:オンプレミス (Azure Migrate、ASR、またはそれ以外の方法で) から Azure に独自の RHEL イメージをアップロードしました。Azure ハイブリッド特典の特典を得るために何かを行う必要がありますか。*
+
+A:必要ありません。 アップロードした RHEL イメージは既に BYOS と見なされており、Azure インフラストラクチャのコストに対してのみ課金されます。 オンプレミス環境の場合と同じように、RHEL サブスクリプションのコストについて責任を負います。 
 
 *Q:Marketplace の RHEL および SLES の SAP イメージからデプロイされた VM で Azure ハイブリッド特典を使用できますか。*
 
@@ -184,4 +188,4 @@ A:いいえ、できません。 これらのサポートは計画されてい�
 | "The action could not be completed because our records show that you have not successfully enabled Red Hat Cloud Access on your Azure subscription…."\(お使いの Azure サブスクリプションで Red Hat Cloud Access が正常に有効化されていないと記録されているため、この操作を完了できませんでした……\) | RHEL VM で特典を使用するには、まず Azure サブスクリプションを Red Hat Cloud Access に登録する必要があります。 Azure サブスクリプションを Red Hat Cloud Access に登録する方法の詳細については、こちらのリンクをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-* Azure CLI を使用して、VM を作成および更新し、Azure ハイブリッド特典のライセンスの種類 (RHEL_BYOS、SLES_BYOS) を追加する方法については、[こちら](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest&preserve-view=true)をご覧ください。
+* Azure CLI を使用して、VM を作成および更新し、Azure ハイブリッド特典のライセンスの種類 (RHEL_BYOS、SLES_BYOS) を追加する方法については、[こちら](/cli/azure/vm?preserve-view=true&view=azure-cli-latest)をご覧ください。

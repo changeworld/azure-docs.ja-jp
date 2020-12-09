@@ -3,18 +3,18 @@ title: Azure Automation で資格情報を管理する
 description: この記事では、資格情報資産を作成し、Runbook または DSC 構成でそれを使用する方法について説明します。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 12/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4fbcf74c2c70d3dffd86728132d58430472271b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec35653f67c46a7032e834020d8e2ca4ab3125c8
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004666"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558839"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Azure Automation で資格情報を管理する
 
-Automation 資格情報資産は、ユーザー名とパスワードなどのセキュリティ資格情報を含むオブジェクトを保持しています。 Runbook と DSC 構成では、認証のための [PSCredential](/dotnet/api/system.management.automation.pscredential) オブジェクトを受け入れるコマンドレットを使用します。 または、`PSCredential` オブジェクトのユーザー名とパスワードを抽出して、認証を必要とする一部のアプリケーションまたはサービスに提供することもできます。 
+Automation 資格情報資産は、ユーザー名とパスワードなどのセキュリティ資格情報を含むオブジェクトを保持しています。 Runbook と DSC 構成では、認証のための [PSCredential](/dotnet/api/system.management.automation.pscredential) オブジェクトを受け入れるコマンドレットを使用します。 または、`PSCredential` オブジェクトのユーザー名とパスワードを抽出して、認証を必要とする一部のアプリケーションまたはサービスに提供することもできます。
 
 >[!NOTE]
 >Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Azure Automation に保存されます。 Azure Automation では、キーはシステムによって管理される Key Vault に格納されます。 セキュリティで保護された資産を保存する前に、Automation によって Key Vault からキーが読み込まれ、それを使用して資産が暗号化されます。 
@@ -44,7 +44,7 @@ PowerShell を使用して Automation 資格情報を作成および管理する
 
 コード内の `PSCredential` オブジェクトを取得するには、`Orchestrator.AssetManagement.Cmdlets` モジュールをインポートする必要があります。 詳細については、「[Azure Automation でモジュールを管理する](modules.md)」をご覧ください。
 
-```azurepowershell
+```powershell
 Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 ```
 
@@ -69,15 +69,15 @@ Azure portal または Windows PowerShell を使用して、新しい資格情�
 ### <a name="create-a-new-credential-asset-with-the-azure-portal"></a>Azure portal での新しい資格情報資産の作成
 
 1. [Automation アカウント] から、左側のペインで、 **[共有リソース]** の **[資格情報]** を選択します。
-1. **[資格情報]** ページで、 **[資格情報の追加]** を選択します。
-2. [新しい資格情報] ウィンドウで、命名規則に従って、適切な資格情報名を入力します。
-3. **[ユーザー名]** フィールドにアクセス ID を入力します。
-4. 両方のパスワード フィールドに、シークレット アクセス キーを入力します。
+2. **[資格情報]** ページで、 **[資格情報の追加]** を選択します。
+3. [新しい資格情報] ウィンドウで、命名規則に従って、適切な資格情報名を入力します。
+4. **[ユーザー名]** フィールドにアクセス ID を入力します。
+5. 両方のパスワード フィールドに、シークレット アクセス キーを入力します。
 
     ![新しい資格情報を作成する](../media/credentials/credential-create.png)
 
-5. [多要素認証] チェックボックスがオンになっている場合は、オフにします。
-6. **[作成]** をクリックして、新しい資格情報資産を保存します。
+6. [多要素認証] チェックボックスがオンになっている場合は、オフにします。
+7. **[作成]** をクリックして、新しい資格情報資産を保存します。
 
 > [!NOTE]
 > Azure Automation では、多要素認証を使用するユーザー アカウントをサポートしていません。
@@ -106,8 +106,7 @@ Runbook または DSC 構成では、内部の `Get-AutomationPSCredential` コ�
 
 次の例では、Runbook で PowerShell 資格情報を使用する方法を示しています。 資格情報を取得して、そのユーザー名とパスワードを変数に割り当てます。
 
-
-```azurepowershell
+```powershell
 $myCredential = Get-AutomationPSCredential -Name 'MyCredential'
 $userName = $myCredential.UserName
 $securePassword = $myCredential.Password
@@ -116,14 +115,13 @@ $password = $myCredential.GetNetworkCredential().Password
 
 資格情報を使用して [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) で Azure を認証することもできます。 ほとんどの状況下では、[[実行アカウント]](../manage-runas-account.md) を使用して、[Get-AzAutomationConnection](../automation-connections.md) との接続を取得する必要があります。
 
-
-```azurepowershell
+```powershell
 $myCred = Get-AutomationPSCredential -Name 'MyCredential'
 $userName = $myCred.UserName
 $securePassword = $myCred.Password
 $password = $myCred.GetNetworkCredential().Password
 
-$myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$password)
+$myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$securePassword)
 
 Connect-AzAccount -Credential $myPsCred
 ```
@@ -145,7 +143,6 @@ Azure Automation の DSC 構成では、`Get-AutomationPSCredential` を使用�
 ## <a name="use-credentials-in-a-python-2-runbook"></a>Python 2 Runbook で資格情報を使用する
 
 次の例では、Python 2 Runbook で資格情報にアクセスする例を示しています。
-
 
 ```python
 import automationassets

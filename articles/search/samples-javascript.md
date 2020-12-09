@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: 234c70fffb6f353c670d23624cc446fdaf6bd886
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 09a9ca2ad1b1f1e5578ecc5d35a85c81b32a5b1a
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498967"
+ms.locfileid: "96511748"
 ---
 # <a name="javascript-code-samples-for-azure-cognitive-search"></a>Azure Cognitive Search の JavaScript コード サンプル
 
@@ -25,7 +25,7 @@ Azure Cognitive Search の機能を示す JavaScript コード サンプルに�
 | [Azure-Samples/azure-search-javascript-samples](https://github.com/Azure-Samples/azure-search-javascript-samples) | ハウツー記事に付随するコード サンプル。"[クイック スタート:JavaScript で検索インデックスを作成する](search-get-started-javascript.md)" のような記事。|
 
 > [!Tip]
-> Github で製品、サービス、言語でフィルター処理された Microsoft コード サンプルを検索するために、[サンプル ブラウザー](/samples/browse/?languages=csharp&products=azure-cognitive-search)を試してください。
+> Github で製品、サービス、言語でフィルター処理された Microsoft コード サンプルを検索するために、[サンプル ブラウザー](/samples/browse/?languages=javascript&products=azure-cognitive-search)を試してください。
 
 ## <a name="javascript-sdk-samples"></a>JavaScript SDK サンプル
 
@@ -55,7 +55,7 @@ SDK では、利便性のため、ここに記載されている TypeScript の�
 
 ## <a name="documentation-samples"></a>ドキュメントとサンプル
 
-以下のサンプルには、「[Azure Cognitive Search のドキュメント](./index.yml)」に関連記事があります。
+次のサンプルには、関連記事が 「[Azure Cognitive Search のドキュメント](./index.yml)」にあります。
 
 | サンプル | 説明 | 
 |---------|-------------|

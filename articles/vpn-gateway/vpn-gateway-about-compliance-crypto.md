@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 12/02/2020
 ms.author: yushwang
-ms.openlocfilehash: a77ee3c4301d278f98b571402514663dcfc9ca52
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 47d14c5ee7f6c4816bf15351e9cb28a2aaa72b4c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657926"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546847"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>暗号化要件と Azure VPN ゲートウェイについて
 
@@ -29,6 +29,8 @@ IKEv1 および IKEv2 接続が同じ VPN ゲートウェイに適用されて�
 ## <a name="about-ipsec-and-ike-policy-parameters-for-azure-vpn-gateways"></a>Azure VPNゲートウェイの IPsec/IKE ポリシーのパラメーターについて
 
 IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさまざまな組み合わせでサポートしています。 暗号化アルゴリズムとパラメーターの特定の組み合わせを要求しない場合、Azure VPN ゲートウェイは一連の既定の提案を使用します。 既定の構成では、幅広いサード パーティ製 VPN デバイスとの相互運用性を最大化できるように、既定のポリシー セットが選択されています。 そのため、ポリシーと提案の数は、使用可能な暗号化アルゴリズムとキーの強度の可能な組み合わせのすべてには対応できません。
+
+### <a name="default-policy"></a>既定のポリシー
 
 Azure VPN ゲートウェイの既定のポリシー セットは、「[サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて](vpn-gateway-about-vpn-devices.md)」のドキュメントに示されています。
 
