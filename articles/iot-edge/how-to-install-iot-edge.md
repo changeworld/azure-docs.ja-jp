@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: kgremban
-ms.openlocfilehash: 7ab62b04f8bea76c7efb587665f87ccaf123da24
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a7794bcdfa4f82698fdc5875bc94dcf52b70166e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109002"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185098"
 ---
 # <a name="install-or-uninstall-the-azure-iot-edge-runtime"></a>Azure IoT Edge ランタイムをインストールまたはアンインストールする
 
@@ -39,19 +39,19 @@ Microsoft インストール パッケージにアクセスするようにデバ
 
 1. デバイスのオペレーティング システムに対応するリポジトリ構成をインストールします。
 
-   * **Ubuntu Server 16.04** :
+   * **Ubuntu Server 16.04**:
 
      ```bash
      curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
      ```
 
-   * **Ubuntu Server 18.04** :
+   * **Ubuntu Server 18.04**:
 
      ```bash
      curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
      ```
 
-   * **Raspbian Stretch** :
+   * **Raspberry Pi OS Stretch**:
 
      ```bash
      curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
@@ -150,13 +150,13 @@ IoT Edge セキュリティ デーモンによって、IoT Edge デバイス上�
    apt list -a iotedge
    ```
 
-最新バージョンのセキュリティ デーモンをインストールするには、次のコマンドを使用します。これにより、 **libiothsm-std** パッケージの最新バージョンもインストールされます。
+最新バージョンのセキュリティ デーモンをインストールするには、次のコマンドを使用します。これにより、**libiothsm-std** パッケージの最新バージョンもインストールされます。
 
    ```bash
    sudo apt-get install iotedge
    ```
 
-特定のバージョンのセキュリティ デーモンをインストールする場合は、apt リスト出力から該当するバージョンを指定します。 また、 **libiothsm-std** パッケージにも同じバージョンを指定します。そうしないと、最新バージョンがインストールされます。 たとえば、次のコマンドでは、1.0.8 リリースの最新バージョンがインストールされます。
+特定のバージョンのセキュリティ デーモンをインストールする場合は、apt リスト出力から該当するバージョンを指定します。 また、**libiothsm-std** パッケージにも同じバージョンを指定します。そうしないと、最新バージョンがインストールされます。 たとえば、次のコマンドでは、1.0.8 リリースの最新バージョンがインストールされます。
 
    ```bash
    sudo apt-get install iotedge=1.0.8* libiothsm-std=1.0.8*
@@ -343,10 +343,10 @@ IoT Edge ランタイムをインストールした後は、IoT Hub と接続す
 
 使用する認証の種類に基づいて、次の記事を選択してください。
 
-* **対称キー** : IoT Hub と IoT Edge デバイスの両方に、セキュリティで保護されたキーのコピーがあります。 デバイスが IoT Hub に接続すると、キーが一致しているかどうかがチェックされます。 この認証方法は比較的すばやく開始できますが、それほど安全ではありません。
+* **対称キー**: IoT Hub と IoT Edge デバイスの両方に、セキュリティで保護されたキーのコピーがあります。 デバイスが IoT Hub に接続すると、キーが一致しているかどうかがチェックされます。 この認証方法は比較的すばやく開始できますが、それほど安全ではありません。
 
   [Azure IoT Edge デバイスに対称キー認証を設定する](how-to-manual-provision-symmetric-key.md)
 
-* **X.509 自己署名** : IoT Edge デバイスには X.509 ID 証明書があり、IoT Hub には証明書の拇印が提供されます。 デバイスが IoT Hub に接続すると、証明書がその拇印と比較されます。 この認証方法はより安全であり、運用環境のシナリオの場合に推奨されます。
+* **X.509 自己署名**: IoT Edge デバイスには X.509 ID 証明書があり、IoT Hub には証明書の拇印が提供されます。 デバイスが IoT Hub に接続すると、証明書がその拇印と比較されます。 この認証方法はより安全であり、運用環境のシナリオの場合に推奨されます。
 
   [Azure IoT Edge デバイスに X.509 証明書認証を設定する](how-to-manual-provision-x509.md)

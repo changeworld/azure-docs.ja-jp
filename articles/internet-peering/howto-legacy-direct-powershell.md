@@ -84,7 +84,7 @@ ProvisioningState          : Succeeded
 
 &nbsp;
 > [!IMPORTANT]
-> レガシのピアリングを Azure リソースに変換する場合、変更はサポートされません。 [https://github.com/mysqljs/mysql/](&nbsp;)
+> レガシのピアリングを Azure リソースに変換する場合、変更はサポートされません。 &nbsp;
 
 次のコマンドを使用して、レガシの Direct ピアリングを Azure リソースに変換します。
 

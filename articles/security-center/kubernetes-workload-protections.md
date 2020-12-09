@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: ed9c3c86336a7b0a2fe989cbe9bd0dd825c5575b
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 08bcb74fd50be0eeb7a73c0743db2c4f3a57be32
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372627"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030851"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes ワークロードを保護する
 
@@ -27,7 +27,7 @@ Azure Defender を有効にすると、Security Center でより多くのコン�
 - [Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md) を使用して、K8s クラスターのリアルタイムの脅威検出アラートを取得する
 
 > [!TIP]
-> 表示される可能性がある、Kubernetes クラスターおよびノードに関する " *すべての* " セキュリティの推奨事項の一覧については、推奨事項リファレンス表の [コンテナー セクション](recommendations-reference.md#recs-containers)をご覧ください。
+> 表示される可能性がある、Kubernetes クラスターおよびノードに関する "*すべての*" セキュリティの推奨事項の一覧については、推奨事項リファレンス表の [コンテナー セクション](recommendations-reference.md#recs-containers)をご覧ください。
 
 
 
@@ -45,25 +45,34 @@ Azure Defender を有効にすると、Security Center でより多くのコン�
 
 ## <a name="set-up-your-workload-protection"></a>ワークロード保護を設定する
 
-Azure Security Center には、 **Kubernetes 用の Azure Policy アドオン** がインストールされている場合に使用できる推奨事項のバンドルが含まれています。
+Azure Security Center には、**Kubernetes 用の Azure Policy アドオン** がインストールされている場合に使用できる推奨事項のバンドルが含まれています。
 
-1. 推奨事項を構成するには、まず、このアドオンをインストールする必要があります。
+### <a name="step-1-deploy-the-add-on"></a>手順 1:アドオンをデプロイする
 
-    1. 推奨事項ページで、 **Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要があります** という名前の推奨事項を検索します。
+推奨設定を構成するために、**Kubernetes 用の Azure Policy アドオン** をインストールします。 
+
+- 「[拡張機能の自動プロビジョニングの有効化](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)」で説明されているように、このアドオンは自動的にデプロイできます。 アドオンの自動プロビジョニングが "オン" に設定されている場合は、既存のクラスターおよび今後作成されるクラスターすべて (アドオンのインストール要件を満たすもの) で、拡張機能が既定で有効になります。
+
+- アドオンを手動でデプロイするには:
+
+    1. 推奨事項ページで、"**Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要があります**" という推奨事項を検索します。 
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes.png" alt-text="推奨事項 **Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要があります**":::
 
         > [!TIP]
         > この推奨事項は 5 つの異なるセキュリティ コントロールに含まれていますが、次の手順でどれを選択してもかまいません。
 
-    1. いずれかのセキュリティ コントロールから、推奨事項を選択して、アドオンをインストールできるリソースを確認し、 **[修復]** を選択します。 
+    1. いずれかのセキュリティ コントロールから、推奨事項を選択して、アドオンをインストールできるリソースを確認します。
+    1. 関連するクラスターを選択し、 **[修復]** を選択します。
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="**Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要があります** という推奨事項の詳細ページ":::
+
+### <a name="step-2-view-and-configure-the-bundle-of-13-recommendations"></a>手順 2:13 個の推奨事項のバンドルを表示および構成する
 
 1. アドオンのインストールが完了してから約 30 分後に、Security Center は、関連する各セキュリティ コントロールに、次の推奨事項についてのクラスターの正常性状態を表示します。
 
     > [!TIP]
-    > 一部の推奨事項にはパラメーターが含まれており、それらを効果的に使用するために、Azure Policy を使用してカスタマイズする必要があります。 たとえば、 **コンテナー イメージは信頼されたレジストリからのみデプロイする必要があります** という推奨事項のメリットを得るには、信頼されたレジストリを定義する必要があります。
+    > 一部の推奨事項にはパラメーターが含まれており、それらを効果的に使用するために、Azure Policy を使用してカスタマイズする必要があります。 たとえば、**コンテナー イメージは信頼されたレジストリからのみデプロイする必要があります** という推奨事項のメリットを得るには、信頼されたレジストリを定義する必要があります。
     > 
     > 構成を必要とする推奨事項に必要なパラメーターを入力していない場合、ワークロードは異常と表示されます。
 
@@ -82,6 +91,7 @@ Azure Security Center には、 **Kubernetes 用の Azure Policy アドオン** 
     | ホスト ネットワークとポートの使用を制限する必要がある                     | 承認されていないネットワーク アクセスの制限     | **はい**                |
     | コンテナーの AppArmor プロファイルのオーバーライドまたは無効化を制限する必要がある | セキュリティ構成の修復        | **はい**                |
     | コンテナー イメージは信頼されたレジストリからのみデプロイする必要がある            | 脆弱性の修復                | **はい**                |
+    |||
 
 
 1. カスタマイズする必要があるパラメーターが含まれた推奨事項では、次のようにパラメーターを設定します。
@@ -118,7 +128,7 @@ Azure Security Center には、 **Kubernetes 用の Azure Policy アドオン** 
 1. 適用をテストするには、次の 2 つの Kubernetes デプロイを使用します。
 
     - 1 つは、ワークロード保護の推奨事項のバンドルに準拠した正常なデプロイ用です。
-    - もう 1 つは、推奨事項の " *いずれか* " に準拠していない異常なデプロイ用です。
+    - もう 1 つは、推奨事項の "*いずれか*" に準拠していない異常なデプロイ用です。
 
     サンプル .yaml ファイルをそのままデプロイするか、独自のワークロードを修復するための参照として使用します (手順 VIII)。  
 

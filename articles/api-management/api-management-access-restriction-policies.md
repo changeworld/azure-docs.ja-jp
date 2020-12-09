@@ -4,21 +4,17 @@ description: Azure API Management で使用できるアクセス制限ポリシ�
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: erikre
-editor: ''
 ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 11/23/2020
 ms.author: apimpm
-ms.openlocfilehash: 711a973f13c8e292578703518df4c4302c31eb57
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 70be2000d3b01e55cd52d161072c3249870310b9
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071389"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122577"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management のアクセス制限ポリシー
 
@@ -26,13 +22,13 @@ ms.locfileid: "92071389"
 
 ## <a name="access-restriction-policies"></a><a name="AccessRestrictionPolicies"></a> アクセス制限ポリシー
 
--   [HTTP ヘッダーを確認する](api-management-access-restriction-policies.md#CheckHTTPHeader) - HTTP ヘッダーの存在と値の両方、またはそのどちらかを適用します。
--   [呼び出しレートをサブスクリプション別に制限する](api-management-access-restriction-policies.md#LimitCallRate) - 呼び出しレートをサブスクリプションに基づいて制限することで、API の使用量の急増を防ぎます。
+-   [HTTP ヘッダーを確認する](#CheckHTTPHeader) - HTTP ヘッダーの存在と値の両方、またはそのどちらかを適用します。
+-   [呼び出しレートをサブスクリプション別に制限する](#LimitCallRate) - 呼び出しレートをサブスクリプションに基づいて制限することで、API の使用量の急増を防ぎます。
 -   [呼び出しレートをキー別に制限する](#LimitCallRateByKey) - 呼び出しレートをキーに基づいて制限することで、API の使用量の急増を防ぎます。
--   [呼び出し元 IP を制限する](api-management-access-restriction-policies.md#RestrictCallerIPs) - 特定の IP アドレスとアドレス範囲の両方、またはそのどちらかからの呼び出しをフィルター処理 (許可/拒否) します。
--   [使用量のクォータをサブスクリプション別に設定する](api-management-access-restriction-policies.md#SetUsageQuota) - 更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをサブスクリプションに基づいて適用できます。
+-   [呼び出し元 IP を制限する](#RestrictCallerIPs) - 特定の IP アドレスとアドレス範囲の両方、またはそのどちらかからの呼び出しをフィルター処理 (許可/拒否) します。
+-   [使用量のクォータをサブスクリプション別に設定する](#SetUsageQuota) - 更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをサブスクリプションに基づいて適用できます。
 -   [使用量のクォータをキー別に設定する](#SetUsageQuotaByKey) - 更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをキーに基づいて適用できます。
--   [JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT) - 指定された HTTP ヘッダーまたは指定されたクエリ パラメーターから抽出した JWT の存在と有効性を適用します。
+-   [JWT を検証する](#ValidateJWT) - 指定された HTTP ヘッダーまたは指定されたクエリ パラメーターから抽出した JWT の存在と有効性を適用します。
 
 > [!TIP]
 > さまざまな目的に応じて異なるスコープでアクセス制限ポリシーを使用できます。 たとえば、API 全体を AAD 認証を使用して保護するには、`validate-jwt` ポリシーを API レベルに適用します。または、これを API 操作レベルに適用して、`claims` を使用してきめ細かい制御を行うこともできます。
@@ -148,7 +144,7 @@ ms.locfileid: "92071389"
 ## <a name="limit-call-rate-by-key"></a><a name="LimitCallRateByKey"></a> 呼び出しレートをキー別に制限する
 
 > [!IMPORTANT]
-> この機能は、API Management の**従量課金**レベルでは使用できません。
+> この機能は、API Management の **従量課金** レベルでは使用できません。
 
 `rate-limit-by-key` ポリシーは、指定期間あたりの呼び出しレートを指定数に制限することで、キーごとに API 使用量の急増を防ぎます。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。 必要に応じて増分条件を追加し、制限に対してカウントする要求を指定することもできます。 このポリシーがトリガーされると、呼び出し元は `429 Too Many Requests` 応答状態コードを受け取ります。
 
@@ -321,7 +317,7 @@ ms.locfileid: "92071389"
 ## <a name="set-usage-quota-by-key"></a><a name="SetUsageQuotaByKey"></a> 使用量のクォータをキー別に設定する
 
 > [!IMPORTANT]
-> この機能は、API Management の**従量課金**レベルでは使用できません。
+> この機能は、API Management の **従量課金** レベルでは使用できません。
 
 `quota-by-key` ポリシーは、更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをキーに基づいて適用します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。 必要に応じて増分条件を追加し、クォータに対してカウントする要求を指定することもできます。 複数のポリシーによって同じキー値が増分される場合は、要求ごとに 1 回だけ増分されます。 この呼び出し制限に達すると、呼び出し元は `403 Forbidden` 応答状態コードを受信します。
 
@@ -384,12 +380,12 @@ ms.locfileid: "92071389"
 
 ## <a name="validate-jwt"></a><a name="ValidateJWT"></a> JWT を検証する
 
-`validate-jwt` ポリシーは、指定した HTTP ヘッダーまたは指定したクエリ パラメーターのどちらかから抽出した JWT が存在し、有効であることを必須にします。
+`validate-jwt` ポリシーは、指定した HTTP ヘッダーまたは指定したクエリ パラメーターのどちらかから抽出した JSON Web トークン (JWT) が存在し、有効であることを必須にします。
 
 > [!IMPORTANT]
 > `validate-jwt` ポリシーは、`require-expiration-time` 属性を指定し `false` に設定した場合を除いて、`exp` 登録クレームが JWT トークンに含まれていることを必須にします。
-> `validate-jwt` ポリシーでは HS256 署名アルゴリズムと RS256 署名アルゴリズムがサポートされています。 HS256 の場合、キーをポリシー内に base64 エンコード形式でインライン指定する必要があります。 RS256 の場合、キーは Open ID 構成エンドポイントを介して指定する必要があります。
-> `validate-jwt` ポリシーでは、暗号化アルゴリズム A128CBC-HS256、A192CBC-HS384、A256CBC-HS512 を使用して対称キーで暗号化されたトークンがサポートされます。
+> `validate-jwt` ポリシーでは HS256 署名アルゴリズムと RS256 署名アルゴリズムがサポートされています。 HS256 の場合、キーをポリシー内に base64 エンコード形式でインライン指定する必要があります。 RS256 の場合、キーは Open ID 構成エンドポイント経由で提供されるか、公開キーまたは公開キーのモジュラスとエクスポーネントのペアを含むアップロードされた証明書の ID を提示することによって提供されます。
+> `validate-jwt` ポリシーでは、暗号化アルゴリズムA128CBC-HS256、A192CBC-HS384、A256CBC-HS512 を使用して対称キーで暗号化されたトークンがサポートされます。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
@@ -440,6 +436,22 @@ ms.locfileid: "92071389"
 <validate-jwt header-name="Authorization" require-scheme="Bearer">
     <issuer-signing-keys>
         <key>{{jwt-signing-key}}</key>  <!-- signing key specified as a named value -->
+    </issuer-signing-keys>
+    <audiences>
+        <audience>@(context.Request.OriginalUrl.Host)</audience>  <!-- audience is set to API Management host name -->
+    </audiences>
+    <issuers>
+        <issuer>http://contoso.com/</issuer>
+    </issuers>
+</validate-jwt>
+```
+
+#### <a name="token-validation-with-rsa-certificate"></a>RSA 証明書を使用したトークン検証
+
+```xml
+<validate-jwt header-name="Authorization" require-scheme="Bearer">
+    <issuer-signing-keys>
+        <key certficate-id="my-rsa-cert" />  <!-- signing key specified as certificate ID, enclosed in double-quotes -->
     </issuer-signing-keys>
     <audiences>
         <audience>@(context.Request.OriginalUrl.Host)</audience>  <!-- audience is set to API Management host name -->
@@ -519,8 +531,8 @@ ms.locfileid: "92071389"
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | validate-jwt        | ルート要素。                                                                                                                                                                                                                                                                                                                                         | はい      |
 | audiences           | トークン上に存在する可能性がある、許容される対象ユーザー クレームの一覧を記載します。 対象ユーザー値が複数存在する場合は、すべての値が消費される (この場合検証は失敗します) かいずれかの値の検証が成功するまで、各値について検証が行われます。 少なくとも 1 つの対象ユーザーを指定する必要があります。                                                                     | いいえ       |
-| issuer-signing-keys | 署名付きトークンの検証に使用する base64 でエンコードされたセキュリティ キーの一覧。 セキュリティ キーが複数存在する場合は、すべてのキーが消費される (この場合検証は失敗します) かいずれかのキーの検証が成功する (トークンのロールオーバーに使用されます) まで、各キーについて検証が行われます。 キー要素には、`kid` クレームとの照合に使用される `id` 属性を必要に応じて設定できます。               | いいえ       |
-| decryption-keys     | トークンの暗号化を解除するために使用される Base64 でエンコードされたキーの一覧。 セキュリティ キーが複数存在する場合は、すべてのキーが消費される (この場合検証は失敗します) かいずれかのキーの検証が成功するまで、各キーについて検証が行われます。 キー要素には、`kid` クレームとの照合に使用される `id` 属性を必要に応じて設定できます。                                                 | いいえ       |
+| issuer-signing-keys | 署名付きトークンの検証に使用する base64 でエンコードされたセキュリティ キーの一覧。 セキュリティ キーが複数存在する場合は、すべてのキーが処理される (この場合検証は失敗します) かいずれかのキーの検証が成功する (トークンのロールオーバーに使用されます) まで、各キーについて検証が行われます。 キー要素には、`kid` クレームとの照合に使用される `id` 属性を必要に応じて設定できます。 <br/><br/>または、次のものを使用して発行者の署名キーを指定します。<br/><br/> - `<key certificate-id="mycertificate" />` という形式の `certificate-id` を使用して、API Management に[アップロードされた](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity#Add)証明書エンティティの識別子を指定します<br/>- `<key n="<modulus>" e="<exponent>" />` という形式の RSA のモジュラス `n` とエクスポーネント `e` のペアを使用して、base64url エンコード形式で RSA パラメーターを指定します               | いいえ       |
+| decryption-keys     | トークンの暗号化を解除するために使用される Base64 でエンコードされたキーの一覧。 セキュリティ キーが複数存在する場合は、すべてのキーが処理される (この場合検証は失敗します) かいずれかのキーの検証が成功するまで、各キーについて検証が行われます。 キー要素には、`kid` クレームとの照合に使用される `id` 属性を必要に応じて設定できます。<br/><br/>または、次のものを使用して復号化キーを指定します。<br/><br/> - `<key certificate-id="mycertificate" />` という形式の `certificate-id` を使用して、API Management に[アップロードされた](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity#Add)証明書エンティティの識別子を指定します                                                 | いいえ       |
 | issuers             | トークンを発行した、許容されるプリンシパルの一覧。 発行者の値が複数存在する場合は、すべての値が消費される (この場合検証は失敗します) かいずれかの値の検証が成功するまで、各値について検証が行われます。                                                                                                                                         | いいえ       |
 | openid-config       | 署名キーと発行者を取得可能な準拠している Open ID 構成エンドポイントを指定するために使用する要素。                                                                                                                                                                                                                        | いいえ       |
 | required-claims     | トークン上に存在すると予測される、有効とみなすクレームの一覧を記載します。 `match` 属性を `all` に設定した場合、検証が成功するにはポリシー内のクレーム値がすべてトークン内に存在する必要があります。 `match` 属性を `any` に設定した場合、検証が成功するには少なくとも 1 つのクレームがトークン内に存在する必要があります。 | いいえ       |

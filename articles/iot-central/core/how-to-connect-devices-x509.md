@@ -8,22 +8,22 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 33d837f63fca2062ec930fcf0d64ee01ea822c99
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: d36cf2344891bb70ab5499e77699b111429a936b
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989532"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96121835"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>IoT Central アプリケーション用の Node.js デバイス SDK を使用して、x.509 証明書を使用するデバイスを接続する方法
 
-IoT Central では、デバイスとアプリケーションの間の通信をセキュリティで保護するために、共有アクセス署名 (SAS) と X.509 証明書の両方がサポートされています。 SAS は、「[クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](./tutorial-connect-device-nodejs.md)」チュートリアルで使用されます。 この記事では、X.509 を使用するようにコード サンプルを変更する方法について説明します。  運用環境では、X.509 証明書はお勧めしません。 詳細については、「[Azure IoT Central に接続する](./concepts-get-connected.md)」を参照してください。
+IoT Central では、デバイスとアプリケーションの間の通信をセキュリティで保護するために、共有アクセス署名 (SAS) と X.509 証明書の両方がサポートされています。 SAS は、「[クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](./tutorial-connect-device.md)」チュートリアルで使用されます。 この記事では、X.509 を使用するようにコード サンプルを変更する方法について説明します。  運用環境では、X.509 証明書はお勧めしません。 詳細については、「[Azure IoT Central に接続する](./concepts-get-connected.md)」を参照してください。
 
 この記事では、X.509 の 2 つの使用方法を示します。通常は運用環境で使用される[グループ登録](how-to-connect-devices-x509.md#use-a-group-enrollment)と、テストに役立つ[個別登録](how-to-connect-devices-x509.md#use-an-individual-enrollment)です。
 
 ## <a name="prerequisites"></a>前提条件
 
-- 「[クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する (Node.js)](./tutorial-connect-device-nodejs.md)」チュートリアルの完了。
+- 「[クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する (JavaScript)](./tutorial-connect-device.md)」チュートリアルの完了。
 - [Git](https://git-scm.com/download/).
 - [OpenSSL](https://www.openssl.org/) のダウンロードとインストール。 Windows を使用している場合は、[SourceForge の OpenSSL ページ](https://sourceforge.net/projects/openssl/)からバイナリを使用できます。
 
@@ -97,7 +97,7 @@ filename | 目次
 
 ## <a name="run-sample-device-code"></a>サンプル デバイス コードを実行する
 
-1. **sampleDevice01_key.pem** と **sampleDevice01_cert.pem** ファイルを **simple_thermostat.js** アプリケーションが格納されている _azure-iot-sdk-node/device/samples/pnp_ フォルダーにコピーします。 このアプリケーションは、[デバイスの接続 (Node.js) に関するチュートリアル](./tutorial-connect-device-nodejs.md)の完了時に使用しました。
+1. **sampleDevice01_key.pem** と **sampleDevice01_cert.pem** ファイルを **simple_thermostat.js** アプリケーションが格納されている _azure-iot-sdk-node/device/samples/pnp_ フォルダーにコピーします。 このアプリケーションは、[デバイスの接続 (JavaScript) に関するチュートリアル](./tutorial-connect-device.md)の完了時に使用しました。
 
 1. **simple_thermostat.js** アプリケーションが格納されている _azure-iot-sdk-node/device/samples/pnp_ フォルダーに移動し、次のコマンドを実行して X.509 パッケージをインストールします。
 
@@ -149,7 +149,7 @@ filename | 目次
     ```
 
     > [!TIP]
-    > その他の必要な環境変数は、[クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続](./tutorial-connect-device-nodejs.md)に関するチュートリアルを完了したときに設定しています。
+    > その他の必要な環境変数は、[クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続](./tutorial-connect-device.md)に関するチュートリアルを完了したときに設定しています。
 
 1. スクリプトを実行し、デバイスが正常にプロビジョニングされたことを確認します。
 
@@ -197,7 +197,7 @@ filename | 目次
 
 ## <a name="run-a-sample-individual-enrollment-device"></a>サンプルの個別登録デバイス実行する
 
-1. _mytestselfcertprimary_key.pem_ と _mytestselfcertprimary_cert.pem_ ファイルを **simple_thermostat.js** アプリケーションが格納されている _azure-iot-sdk-node/device/samples/pnp_ フォルダーにコピーします。 このアプリケーションは、[デバイスの接続 (Node.js) に関するチュートリアル](./tutorial-connect-device-nodejs.md)の完了時に使用しました。
+1. _mytestselfcertprimary_key.pem_ と _mytestselfcertprimary_cert.pem_ ファイルを **simple_thermostat.js** アプリケーションが格納されている _azure-iot-sdk-node/device/samples/pnp_ フォルダーにコピーします。 このアプリケーションは、[デバイスの接続 (JavaScript) に関するチュートリアル](./tutorial-connect-device.md)の完了時に使用しました。
 
 1. 使用した環境変数を次のように変更します。
 
@@ -219,6 +219,6 @@ filename | 目次
 
 _mytestselfcertsecondary_ 証明書に対して、上記の手順を繰り返すことができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 これで、X.509 証明書を使用するデバイスを接続する方法を学習できました。推奨される次の手順は、[Azure CLI を使用してデバイスの接続を監視する](howto-monitor-devices-azure-cli.md)方法を確認することです。

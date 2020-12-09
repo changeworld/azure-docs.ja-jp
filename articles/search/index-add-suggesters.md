@@ -7,18 +7,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 11/24/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 81bcfdf5e63d49280fb798773559310cbd912a26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4390291eb96c11b8fb7fdb48eb92abaf802b80c0
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013583"
+ms.locfileid: "96030783"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>クエリでオートコンプリートと候補の結果を有効にする suggester を作成する
 
-Azure Cognitive Search では、[検索インデックス](search-what-is-an-index.md)に追加された **suggester** コンストラクトによって、"逐次検索" が有効になります。 suggester では、2 つのエクスペリエンスがサポートされています。部分的な入力を補完して用語クエリ全体を作成する "*オートコンプリート*" と、特定の一致へのクリック スルーを促す "*候補*" です。 オートコンプリートでは、クエリが生成されます。 候補では、一致するドキュメントが生成されます。
+Azure Cognitive Search では、*suggester* によって "逐次検索" が有効になります。 suggester は、フィールド コレクションで構成される内部データ構造体です。 フィールドでは追加のトークン化が行われ、部分的な用語での一致をサポートするプレフィックス シーケンスが生成されます。
+
+たとえば、suggester に City フィールドが含まれる場合、"Seattle" という用語に対して "sea"、"seat"、"seatt"、"seattl" のプレフィックスの組み合わせが作成されます。 プレフィックスは、suggester フィールド コレクションで指定された各フィールドに 1 つずつ、逆インデックスで格納されます。
+
+## <a name="typeahead-experiences-in-cognitive-search"></a>Cognitive Search の先行入力エクスペリエンス
+
+suggester では、2 つのエクスペリエンスがサポートされています。部分的な入力を補完して用語クエリ全体を作成する "*オートコンプリート*" と、特定の一致へのクリック スルーを促す "*候補*" です。 オートコンプリートでは、クエリが生成されます。 候補では、一致するドキュメントが生成されます。
 
 次のスクリーンショットは、[C# で初めてアプリを作成する](tutorial-csharp-type-ahead-and-suggestions.md)方法に関するページのものですが、その両方を示しています。 オートコンプリートを使用すると、可能性のある語句が予測され、"tw" に "in" が補完されます。 候補はミニ検索結果であり、ホテル名のようなフィールドには、インデックスから一致するホテルの検索ドキュメントが表示されます。 候補については、説明的な情報を提供する任意のフィールドを表示できます。
 
@@ -31,10 +37,6 @@ Azure Cognitive Search では、[検索インデックス](search-what-is-an-ind
 + [以下に一覧されているいずれかの API](#how-to-use-a-suggester) を使用して、候補要求またはオートコンプリート要求の形式で suggester 対応クエリを呼び出します。
 
 文字列フィールドの場合、フィールドごとに逐次検索のサポートが有効になります。 スクリーンショットに示したものと同様のエクスペリエンスを求めているのであれば、同じ検索ソリューション内に両方の先行入力の動作を実装できます。 どちらの要求でも特定のインデックスの *documents* コレクションをターゲットとし、ユーザーが入力文字列を 3 文字以上指定した時点から応答が返されます。
-
-## <a name="what-is-a-suggester"></a>suggester とは
-
-suggester は、部分的なクエリで一致するプレフィックスを格納することにより、search-as-you-type (入力と並行して検索する) 動作をサポートする内部データ構造です。 トークン化された用語と同様に、プレフィックスは、suggester フィールド コレクションで指定された各フィールドに 1 つずつ、逆インデックスで格納されます。
 
 ## <a name="how-to-create-a-suggester"></a>suggester を作成する方法
 

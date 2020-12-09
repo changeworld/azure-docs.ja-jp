@@ -3,14 +3,14 @@ title: Azure Automation で使用される Azure データセンターの DNS �
 description: この記事では、その Automation アカウントをホストしている特定の Azure リージョンへの通信を制限するときに Azure Automation 機能に必要とされる DNS レコードについて説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 07/23/2020
+ms.date: 11/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 17d0857a8979cfcc632ab8951fb255f97229a665
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4b8f48afc75c0a96937575bdad5bb884d0cb4d8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87117185"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183721"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>Azure Automation によって使用される Azure リージョンの DNS レコード
 
@@ -89,6 +89,9 @@ DNS レコードの `<accountId>` は、**URL** の値の Automation アカウ�
 ![Automation アカウントの主キーのページ](./media/automation-region-dns-records/automation-account-keys.png)
 
 **[URL]** フィールド - `https://<GUID>.agentsvc.<region>.azure-automation.net/accounts/<GUID>` から、*accounts/* の後の値をコピーします。
+
+> [!NOTE]
+> Webhook および agentservice DNS のすべてのレコードは、Private Link をサポートするために新しいスタイルの DNS レコードに更新されています。 JRDS DNS レコードの場合、古いスタイルと新しいスタイル両方の DNS レコードがサポートされます。 Private Link を使用していない場合は、古いスタイルの DNS レコードが表示されますが、Private Link を使用している場合は、新しいスタイルの DNS レコードが表示されます。
 
 [例外](../automation-runbook-execution.md#exceptions)を定義するときは、一覧に示されているアドレスを使用することをお勧めします。 リージョン名の代わりにリージョン IP アドレスの一覧を入手するには、Microsoft ダウンロード センターから次のクラウド環境の JSON ファイルをダウンロードします。
 

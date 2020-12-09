@@ -4,14 +4,14 @@ description: Azure Monitor のメトリック警告に関する一般的な問�
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 10/05/2020
+ms.date: 11/25/2020
 ms.subservice: alerts
-ms.openlocfilehash: 2e68a780890b8ddf857bf8f52a0ecf9a4c24b36c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 5a57e8b7f3bf2c3e820a3befee0ee69c48a2afa9
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342129"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029878"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor のメトリック警告に関する問題のトラブルシューティング 
 
@@ -44,7 +44,7 @@ Azure Monitor のアラートは、監視データで重要な状態が見つか
 
 メトリック警告が発生してはならないことが確実な場合に発生した場合は、次の手順が問題の解決に役立つことがあります。
 
-1. [発生した警告の一覧](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2)を調べて発生した警告を見つけ、クリックしてその詳細を表示します。 **[Why did this alert fire?]\(この警告が発生した理由\)** で提供される情報を調べて、警告がトリガーされた時点でのメトリック グラフ、 **メトリック値** 、および **しきい値** を確認します。
+1. [発生した警告の一覧](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2)を調べて発生した警告を見つけ、クリックしてその詳細を表示します。 **[Why did this alert fire?]\(この警告が発生した理由\)** で提供される情報を調べて、警告がトリガーされた時点でのメトリック グラフ、**メトリック値**、および **しきい値** を確認します。
 
     > [!NOTE] 
     > 動的しきい値条件の種類を使用しているとき、使用されているしきい値が正しくないと思われる場合は、問題点、改善点を報告するためのアイコンを使って、フィードバックをお寄せください。 このフィードバックは、機械学習のアルゴリズムの研究に影響を与え、将来の検出の改善に役立ちます。
@@ -101,12 +101,12 @@ Azure リソースを削除しても、関連付けられているメトリッ�
 
 1. 削除されたリソースが定義されたリソース グループを開きます。
 1. リソースが表示されている一覧で、 **[非表示の型の表示]** チェックボックスをオンにします。
-1. 型「 **microsoft.insights/metricalerts** 」で一覧をフィルター処理します。
+1. 型「**microsoft.insights/metricalerts**」で一覧をフィルター処理します。
 1. 関連する警告ルールを選択し、 **[削除]** を選択します
 
 ## <a name="make-metric-alerts-occur-every-time-my-condition-is-met"></a>条件が満たされるたびにメトリック警告が発生するようにする
 
-メトリック警告は既定ではステートフルです。そのため、特定の時系列に対して既に警告が発生している場合、追加の警告は発生しません。 特定のメトリック警告ルールをステートレスにして、警告の条件が満たされるすべての評価で警告を受け取る場合は、プログラムで ( [Resource Manager](./alerts-metric-create-templates.md)、 [PowerShell](/powershell/module/az.monitor/?view=azps-3.6.1)、 [REST](/rest/api/monitor/metricalerts/createorupdate)、 [CLI](/cli/azure/monitor/metrics/alert?view=azure-cli-latest) を使用するなどして) 警告ルールを作成し、 *autoMitigate* プロパティを "False" に設定すします。
+メトリック警告は既定ではステートフルです。そのため、特定の時系列に対して既に警告が発生している場合、追加の警告は発生しません。 特定のメトリック警告ルールをステートレスにして、警告の条件が満たされるすべての評価で警告を受け取る場合は、プログラムで ([Resource Manager](./alerts-metric-create-templates.md)、[PowerShell](/powershell/module/az.monitor/?view=azps-3.6.1)、[REST](/rest/api/monitor/metricalerts/createorupdate)、[CLI](/cli/azure/monitor/metrics/alert?view=azure-cli-latest) を使用するなどして) 警告ルールを作成し、*autoMitigate* プロパティを "False" に設定すします。
 
 > [!NOTE] 
 > メトリック警告ルールをステートレスにすると、発生した警告は解決されません。そのため、条件が満たされなくなっても、発生した警告は 30 日の保有期間まで発生状態のままになります。
@@ -156,7 +156,7 @@ Azure リソースを削除しても、関連付けられているメトリッ�
 3. クォータ制限を増やす必要がある場合は、サポート リクエストを開き、次の情報を提供します。
 
     - クォータ制限を増やす必要があるサブスクリプション ID
-    - クォータを引き上げるリソースの種類: **メトリック警告** または **メトリック警告 (クラシック)**
+    - クォータを引き上げるリソースの種類:**メトリック警告** または **メトリック警告 (クラシック)**
     - 要求されるクォータ制限
 
 ## <a name="check-total-number-of-metric-alert-rules"></a>メトリック警告ルールの合計数を確認する
@@ -210,7 +210,7 @@ Resource Manager テンプレート、REST API、PowerShell、または Azure �
 
 - `Metric not found` エラーが発生している場合は、次のようにします。
 
-   - プラットフォーム メトリックの場合: **メトリックの表示名** ではなく、 [Azure Monitor でサポートされているメトリックのページ](./metrics-supported.md)の **メトリック** 名を使用していることを確認します
+   - プラットフォーム メトリックの場合: **メトリックの表示名** ではなく、[Azure Monitor でサポートされているメトリックのページ](./metrics-supported.md)の **メトリック** 名を使用していることを確認します
 
    - カスタム メトリックの場合: メトリックが既に出力されていること (まだ存在していないカスタム メトリックに対してアラート ルールを作成することはできません)、およびカスタム メトリックの名前空間を指定していることを確認します ([ここ](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)にある Resource Manager テンプレートの例を参照)。
 
@@ -241,6 +241,8 @@ Resource Manager テンプレート、REST API、PowerShell、または Azure �
 - メトリック警告ルール名に次の文字を含めることはできません: * # & +: < >? @ % { } \ / 
 - メトリック警告ルール名の末尾の文字をスペースやピリオドにすることはできません
 
+> [!NOTE] 
+> 警告ルール名にアルファベットまたは数字以外の文字 (スペース、句読点、記号など) が含まれている場合、これらの文字は、特定のクライアントによって取得されるときに URL エンコードされることがあります。
 
 ## <a name="restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions"></a>複数の条件を含むメトリック警告ルールでディメンションを使用する場合の制限事項
 
@@ -254,7 +256,7 @@ Resource Manager テンプレート、REST API、PowerShell、または Azure �
     - ストレージ アカウントで定義され、次の 2 つの条件を監視するメトリック警告ルールを考えてみます。
         * 合計 **Transactions** > 5
         * 平均 **SuccessE2ELatency** > 250 ミリ秒
-    - この最初の条件を更新し、 **ApiName** ディメンションが *"GetBlob"* と等しいトランザクションのみを監視したいと考えています。
+    - この最初の条件を更新し、**ApiName** ディメンションが *"GetBlob"* と等しいトランザクションのみを監視したいと考えています。
     - **Transactions** と **SuccessE2ELatency** のメトリックではどちらも **ApiName** ディメンションがサポートされているため、両方の条件を更新して、 *"GetBlob"* 値を含む **ApiName** ディメンションをその両方に指定する必要があります。
 
 ## <a name="setting-the-alert-rules-period-and-frequency"></a>警告ルールの期間と頻度の設定

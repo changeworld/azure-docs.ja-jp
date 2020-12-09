@@ -1,5 +1,5 @@
 ---
-title: Web サービスのデプロイのトラブルシューティング
+title: リモート Web サービスのデプロイのトラブルシューティング
 titleSuffix: Azure Machine Learning
 description: Azure Kubernetes Service と Azure Container Instances での一般的な Docker デプロイ エラーの回避、解決、またはトラブルシューティング方法について説明します。
 services: machine-learning
@@ -8,29 +8,26 @@ ms.subservice: core
 author: gvashishtha
 ms.author: gopalv
 ms.reviewer: jmartens
-ms.date: 11/02/2020
+ms.date: 11/25/2020
 ms.topic: troubleshooting
-ms.custom: contperfq4, devx-track-python, deploy
-ms.openlocfilehash: dfbfea22738e6aeb0df31ad941b2ff10e53795a4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: contperfq4, devx-track-python, deploy, contperfq2
+ms.openlocfilehash: 0b8da0be16adc79b606b59f394b223b001453607
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311292"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185064"
 ---
 # <a name="troubleshoot-model-deployment"></a>モデル デプロイのトラブルシューティング
 
-Azure Machine Learning を使用する Azure Container Instances (ACI) と Azure Kubernetes Service (AKS) での一般的な Docker デプロイ エラーをトラブルシューティング、解決、または回避する方法について説明します。
+Azure Machine Learning を使用する Azure Container Instances (ACI) と Azure Kubernetes Service (AKS) での一般的なリモート Docker デプロイ エラーをトラブルシューティング、解決、または回避する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション** 。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+* **Azure サブスクリプション**。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
 * [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
 * [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 * [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
-* ローカルでデバッグするには、ローカル システム上に機能する Docker のインストールが必要です。
-
-    Docker のインストールを確認するには、ターミナルまたはコマンド プロンプトからコマンド `docker run hello-world` を使用します。 Docker のインストール、または Docker のエラーのトラブルシューティングについては、[Docker のドキュメント](https://docs.docker.com/)を参照してください。
 
 ## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>機械学習モデルの Docker デプロイの手順
 
@@ -79,94 +76,8 @@ print(service.get_logs())
 
 ## <a name="debug-locally"></a>ローカル デバッグ
 
-モデルを ACI または AKS にデプロイする際に問題が発生した場合は、ローカル Web サービスとしてデプロイしてください。 ローカル Web サービスを使用すると、問題のトラブルシューティングが簡単になります。
+モデルを ACI または AKS にデプロイする際に問題が発生した場合は、ローカル Web サービスとしてデプロイしてください。 ローカル Web サービスを使用すると、問題のトラブルシューティングが簡単になります。 ローカルでのデプロイのトラブルシューティングについては、[ローカルでのトラブルシューティングに関する記事](./how-to-troubleshoot-deployment-local.md)を参照してください。
 
-[MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks) リポジトリにあるサンプル[ローカル展開ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb)から、実行可能な例を探索します。
-
-> [!WARNING]
-> ローカル Web サービスのデプロイは、運用シナリオではサポートされていません。
-
-ローカルにデプロイするには、`LocalWebservice.deploy_configuration()` を使用してデプロイ構成を作成するようにコードを変更します。 次に、`Model.deploy()` を使用して、サービスをデプロイします。 次の例では、モデル (モデル変数に含まれる) をローカル Web サービスとしてデプロイします。
-
-```python
-from azureml.core.environment import Environment
-from azureml.core.model import InferenceConfig, Model
-from azureml.core.webservice import LocalWebservice
-
-
-# Create inference configuration based on the environment definition and the entry script
-myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
-inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-# Create a local deployment, using port 8890 for the web service endpoint
-deployment_config = LocalWebservice.deploy_configuration(port=8890)
-# Deploy the service
-service = Model.deploy(
-    ws, "mymodel", [model], inference_config, deployment_config)
-# Wait for the deployment to complete
-service.wait_for_deployment(True)
-# Display the port that the web service is available on
-print(service.port)
-```
-
-独自の conda 仕様 YAML を定義する場合、pip の依存関係として 1.0.45 以降のバージョンの azureml-defaults を列挙します。 このパッケージは、Web サービスとしてモデルをホストするために必要です。
-
-この時点で、通常どおりにサービスを操作できます。 次のコードは、サービスにデータを送信する方法を示しています。
-
-```python
-import json
-
-test_sample = json.dumps({'data': [
-    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
-]})
-
-test_sample = bytes(test_sample, encoding='utf8')
-
-prediction = service.run(input_data=test_sample)
-print(prediction)
-```
-
-Python 環境のカスタマイズの詳細については、[トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)に関するページを参照してください。 
-
-### <a name="update-the-service"></a>サービスの更新
-
-ローカル テスト中に、ログ記録を追加したり、発見した問題の解決を試みるために、`score.py` ファイルを更新する必要がある場合があります。 変更を `score.py` ファイルに再度読み込むには、`reload()` を使用します。 たとえば、次のコードは、サービスのスクリプトを再度読み込み、サービスにデータを送信します。 データは、更新された `score.py` ファイルを使用してスコア付けされます。
-
-> [!IMPORTANT]
-> `reload` メソッドは、ローカル デプロイでのみ使用できます。 デプロイを別のコンピューティング先に更新する方法については、[Web サービスを更新する方法](how-to-deploy-update-web-service.md)に関する記事を参照してください。
-
-```python
-service.reload()
-print(service.run(input_data=test_sample))
-```
-
-> [!NOTE]
-> スクリプトは、サービスによって使用される `InferenceConfig` オブジェクトによって指定された場所から再度読み込まれます。
-
-モデル、Conda の依存関係、またはデプロイ構成を変更するには、[update()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueupdate--args-) を使用します。 次の例では、サービスで使用されるモデルを更新します。
-
-```python
-service.update([different_model], inference_config, deployment_config)
-```
-
-### <a name="delete-the-service"></a>サービスの削除
-
-サービスを削除するには、[delete()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--) を使用します。
-
-### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> Docker ログの確認
-
-サービス オブジェクトから詳細な Docker エンジン ログ メッセージを出力できます。 ACI、AKS、およびローカル デプロイのログを表示できます。 次の例は、ログを出力する方法を示しています。
-
-```python
-# if you already have the service object handy
-print(service.get_logs())
-
-# if you only know the name of the service (note there might be multiple services with the same name but different version number)
-print(ws.webservices['mysvc'].get_logs())
-```
-ログに `Booting worker with pid: <pid>` の行が何度も表示されている場合、これはワーカーを起動するのに十分なメモリがないことを意味します。
-このエラーを解決するには、`deployment_config` にある `memory_gb` の値を増やします
- 
 ## <a name="container-cannot-be-scheduled"></a>コンテナーをスケジュールできない
 
 Azure Kubernetes Service コンピューティング ターゲットにサービスをデプロイするときに、Azure Machine Learning では、要求された量のリソースを使用してサービスをスケジュールすることを試みます。 5 分後、適切な量のリソースがある利用可能なノードがクラスターにない場合、デプロイは失敗します。 エラー メッセージは `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` です。 このエラーに対処するには、ノードを追加するか、ノードの SKU を変更するか、またはサービスのリソース要件を変更します。 
@@ -177,7 +88,7 @@ Azure Kubernetes Service コンピューティング ターゲットにサービ
 
 イメージが正常にビルドされると、デプロイ構成を使用して、コンテナーの起動が試行されます。 コンテナーの起動プロセスの一部として、スコアリング スクリプトの `init()` 関数が呼び出されます。 `init()` 関数でキャッチされない例外がある場合、エラー メッセージに **CrashLoopBackOff** エラーが表示されることがあります。
 
-「[Docker ログの確認](#dockerlog)」セクションの情報を使用して、ログを確認します。
+[Docker ログの検査](how-to-troubleshoot-deployment-local.md#dockerlog)に関する記事の情報を使用してください。
 
 ## <a name="function-fails-get_model_path"></a>get_model_path() 関数が失敗する
 
@@ -211,7 +122,7 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 
-**注** :`run(input_data)` 呼び出しからエラー メッセージを返すことは、デバッグ目的のみで行ってください。 セキュリティ上の理由から、運用環境ではこの方法でエラー メッセージを返さないでください。
+**注**:`run(input_data)` 呼び出しからエラー メッセージを返すことは、デバッグ目的のみで行ってください。 セキュリティ上の理由から、運用環境ではこの方法でエラー メッセージを返さないでください。
 
 ## <a name="http-status-code-502"></a>HTTP 状態コード 502
 
@@ -219,7 +130,7 @@ def run(input_data):
 
 ## <a name="http-status-code-503"></a>HTTP 状態コード 503
 
-Azure Kubernetes Service のデプロイでは、自動スケールがサポートされているため、レプリカを加えて、追加の負荷に対応することができます。 自動スケールは、 **段階的な** 負荷の変化に対処するように設計されています。 1 秒あたりに受信する要求の量が急増した場合、クライアントは HTTP 状態コード 503 を受信する可能性があります。 オートスケーラーは迅速に反応しますが、AKS で追加のコンテナーを作成するにはかなりの時間がかかります。
+Azure Kubernetes Service のデプロイでは、自動スケールがサポートされているため、レプリカを加えて、追加の負荷に対応することができます。 自動スケールは、**段階的な** 負荷の変化に対処するように設計されています。 1 秒あたりに受信する要求の量が急増した場合、クライアントは HTTP 状態コード 503 を受信する可能性があります。 オートスケーラーは迅速に反応しますが、AKS で追加のコンテナーを作成するにはかなりの時間がかかります。
 
 スケールアップ/スケールダウンの決定は、コンテナーの現在のレプリカの使用率に基づきます。 ビジー状態 (要求を処理中) のレプリカの数を現在のレプリカの総数で除算した数が、現在の使用率です。 この数が `autoscale_target_utilization` を超えると、さらにレプリカが作成されます。 これが下回ると、レプリカが減少します。 レプリカの追加は、集中的かつ迅速に決定されます (約 1 秒)。 レプリカの削除は慎重に決定されます (約 1 分)。 既定では、自動スケールの目標使用率は **70%** に設定されています。これは、1 秒あたりに受信する要求の量 (RPS) が **最大 30%** 増加した場合まで対処できることを意味します。
 
@@ -281,3 +192,4 @@ Azure Kubernetes Service のデプロイでは、自動スケールがサポー�
 
 * [デプロイする方法とその場所](how-to-deploy-and-where.md)
 * [チュートリアル:モデルのトレーニングとデプロイ](tutorial-train-models-with-aml.md)
+* [ローカルで実験を実行およびデバッグする方法](./how-to-debug-visual-studio-code.md)

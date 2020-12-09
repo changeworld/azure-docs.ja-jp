@@ -16,12 +16,12 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a0765f5279eb41324691c431c5973bb55a8b52d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74bc659c11c4f43ab3cf85cdc53f704cd07a1cde
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662482"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172369"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同期: ディレクトリ拡張機能
 ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure Active Directory (Azure AD) のスキーマを拡張できます。 この機能により、オンプレミスで引き続き管理する属性を使用して LOB アプリを構築できます。 これらの属性は、[拡張機能](/graph/extensibility-overview
@@ -70,6 +70,9 @@ Azure AD のオブジェクトでは、ディレクトリ拡張機能に対し�
 > Microsoft Graph API で、属性が返されるように要求する必要があります。 次のような属性を明示的に選択します: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`。
 >
 > 詳細については、[Microsoft Graph: クエリ パラメーターの使用](/graph/query-parameters#select-parameter)に関するトピックをご覧ください。
+
+>[!NOTE]
+> AADConnect からの属性値を、AADConnect によって作成されていない拡張属性に同期させることはサポートされていません。 これを行うと、パフォーマンスの問題が発生し、予期しない結果が生じる可能性があります。 同期では、上記のように作成された拡張属性のみがサポートされます。
 
 ## <a name="use-the-attributes-in-dynamic-groups"></a>動的グループで属性を使用する
 
