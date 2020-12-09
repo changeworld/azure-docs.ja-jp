@@ -1,6 +1,6 @@
 ---
-title: Azure Stream Analytics の使用
-description: リアルタイム ソリューション開発のための、Azure Synapse での Azure Stream Analytics のデータ ウェアハウスとの使用に関するヒント。
+title: 専用 SQL プールで Azure Stream Analytics を使用する
+description: リアルタイム ソリューション開発のために Azure Synapse の専用 SQL プールで Azure Stream Analytics を使用するためのヒント。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 9/25/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 3ead3393218255808eb67983251fcf9f2561c82c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8fbe546beb1004214e544f8eb160884c0f64ef9e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020182"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458224"
 ---
-# <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Azure Synapse Analytics での Azure Stream Analytics の使用
+# <a name="use-azure-stream-analytics-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールで Azure Stream Analytics を使用する
 
 Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド内のデータのストリーミング データに対する拡張性の高い複雑なイベント処理を実現する、フル マネージドのサービスです。 基本事項については、「 [Azure Stream Analytics の概要](../../stream-analytics/stream-analytics-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)」をお読みください。 その後で、「 [Azure Stream Analytics の使用](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 」チュートリアルに従って、Stream Analytics を使用してエンド ツー エンド ソリューションを作成する方法を知ることができます。
 
-この記事では、データウェア ハウスを出力シンクとして使用して、Azure Stream Analytics ジョブを使用した高スループットのデータ インジェストを行う方法について説明します。
+この記事では、専用 SQL プールを出力シンクとして使用して、Azure Stream Analytics ジョブで高スループットのデータ インジェストを行う方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,9 +32,9 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
     2. イベント ジェネレーター アプリケーションの構成と起動
     3. Stream Analytics のジョブの準備
     4. ジョブの入力とクエリの指定
-* データ ウェアハウスの Synapse 専用 SQL プール - 新しいデータ ウェアハウスを作成するには、[新しいデータ ウェアハウスを作成するクイックスタート](create-data-warehouse-portal.md)に関するページの手順に従ってください。
+* 専用 SQL プール - 新しい専用 SQL プールを作成するには、 次に関する記事の手順に従います。[クイック スタート:専用 SQL プールを作成する](../quickstart-create-sql-pool-portal.md)。
 
-## <a name="specify-streaming-output-to-point-to-your-data-warehouse"></a>データ ウェアハウスを指すストリーミング出力の指定
+## <a name="specify-streaming-output-to-point-to-your-dedicated-sql-pool"></a>専用 SQL プールを指すストリーミング出力を指定する
 
 ### <a name="step-1"></a>手順 1
 
@@ -52,8 +52,8 @@ Azure portal から Stream Analytics ジョブにアクセスし、**ジョブ �
 
 * *[出力のエイリアス]* :このジョブの出力のフレンドリ名を入力します。
 * *サブスクリプション*:
-  * データ ウェアハウスが Stream Analytics ジョブと同じサブスクリプション内にある場合は、 **[サブスクリプションから Azure Synapse Analytics を選択]** をクリックします。
-  データ ウェアハウスが別のサブスクリプションにある場合は、[Azure Synapse Analytics 設定を手動で行う] をクリックします。
+  * 専用 SQL プールが Stream Analytics ジョブと同じサブスクリプション内にある場合は、 **[Azure Synapse Analytics をサブスクリプションから選択する]** をクリックします。
+  専用 SQL プールが別のサブスクリプションにある場合は、[Azure Synapse Analytics の設定を手動で行う] をクリックします。
 * *データベース*:次に、ドロップ ダウン リストから同期先にデータベースを選択します。
 * *User Name*:データベースの書き込みアクセス許可を持つアカウントのユーザー名を指定します。
 * *パスワード*:指定したユーザー アカウントのパスワードを入力します。
@@ -64,7 +64,7 @@ Azure portal から Stream Analytics ジョブにアクセスし、**ジョブ �
 
 ### <a name="step-4"></a>手順 4.
 
-テストを実行する前に、データ ウェアハウスに表を作成する必要があります。  SQL Server Management Studio (SSMS) または任意のクエリ ツールを使用して、次の表作成スクリプトを実行します。
+テストを実行する前に、専用 SQL プールにテーブルを作成する必要があります。  SQL Server Management Studio (SSMS) または任意のクエリ ツールを使用して、次の表作成スクリプトを実行します。
 
 ```sql
 CREATE TABLE SensorLog
@@ -123,4 +123,4 @@ Azure Stream Analytics ジョブを開始します。  _*_[概要]_*_ メニュ�
 ## <a name="next-steps"></a>次のステップ
 
 統合の概要については、[その他のサービスの統合](sql-data-warehouse-overview-integrate.md)に関する記事を参照してください。
-開発に関するその他のヒントについては、[データ ウェアハウスの設計上の決定とコーディング技法](sql-data-warehouse-overview-develop.md)に関する記事を参照してください。
+開発に関するその他のヒントについては、[専用 SQL プールの設計上の決定とコーディング技法](sql-data-warehouse-overview-develop.md)に関する記事を参照してください。

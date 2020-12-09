@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory 認証
-description: Azure Active Directory を使用して Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics を認証する方法について説明します
+description: Azure Active Directory を使用して Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics の Synapse SQL を認証する方法について説明します
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
@@ -11,18 +11,18 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
-ms.openlocfilehash: a57de3d6beda5336f480f20137a9ccaa014b012d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a636c0e2a41b636f30ada14d4f16a022f2890b71
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675088"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454293"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Azure Active Directory 認証を使用する
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure Active Directory (Azure AD) 認証は、Azure AD の ID を使用して [Azure SQL Database](sql-database-paas-overview.md)、[Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、[Azure Synapse Analytics (旧称 SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。
+Azure Active Directory (Azure AD) 認証は、Azure AD の ID を使用して [Azure SQL Database](sql-database-paas-overview.md)、[Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、[Azure Synapse Analytics の Synapse SQL](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。
 
 > [!NOTE]
 > この記事は、Azure SQL Database、SQL Managed Instance、Azure Synapse Analytics に当てはまります。
@@ -39,7 +39,7 @@ Azure AD 認証を使用すると、データベース ユーザーの ID や他
 - Azure AD 認証のサポート対象:
   - Azure AD クラウド専用 ID。
   - 以下をサポートする Azure AD ハイブリッド ID:
-    - シームレス シングル サインオン (SSO) と 2 つのオプション ( **パススルー** 認証と **パスワード ハッシュ** 認証) を組み合わせたクラウド認証。
+    - シームレス シングル サインオン (SSO) と 2 つのオプション (**パススルー** 認証と **パスワード ハッシュ** 認証) を組み合わせたクラウド認証。
     - フェデレーション認証。
   - Azure AD の認証方法と、どれを選択すべきかに関する詳細については、次の記事を参照してください。
     - [Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](../../active-directory/hybrid/choose-ad-authn.md)
@@ -61,7 +61,7 @@ Azure AD 認証を使用すると、データベース ユーザーの ID や他
 6. Azure AD の ID を使用してデータベースに接続します。
 
 > [!NOTE]
-> Azure AD を作成して設定した後、Azure SQL Database、SQL Managed Instance、Azure Synapse で Azure AD を構成する方法については、[Azure SQL Database での Azure AD の構成](authentication-aad-configure.md)に関するページを参照してください。
+> Azure AD を作成して設定した後、Azure SQL Database、SQL Managed Instance、Azure Synapse Analytics の Synapse SQL で Azure AD を構成する方法については、[Azure SQL Database での Azure AD の構成](authentication-aad-configure.md)に関するページを参照してください。
 
 ## <a name="trust-architecture"></a>信頼のアーキテクチャ
 

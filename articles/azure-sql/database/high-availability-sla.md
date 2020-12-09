@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: sstein, sashan
 ms.date: 10/28/2020
-ms.openlocfilehash: c0c925f68e8edbae00f980d9445c59d7213a4b25
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e5e58f8592fcf8627870c3a574335bbe34394064
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901311"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452463"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,8 +28,8 @@ Azure SQL Database と SQL Managed Instance での高可用性アーキテクチ
 
 高可用性アーキテクチャ モデルには、次の 2 つがあります。
 
-- 計算とストレージの分離に基づく **Standard 可用性モデル** 。  リモート ストレージ層の高可用性と信頼性に依存します。 このアーキテクチャでは、メンテナンス作業中に一定のパフォーマンス低下を許容できる予算重視のビジネス アプリケーションを対象とします。
-- データベース エンジン プロセスのクラスターに基づく **Premium 可用性モデル** 。 利用可能なデータベース エンジン ノードのクォーラムが常にあるという事実に依存します。 このアーキテクチャでは、高い IO パフォーマンス、高いトランザクション レートを備えたミッション クリティカル なアプリケーションを対象とし、メンテナンス作業中のワークロードに対するパフォーマンスの影響を最小限に抑えることを保証します。
+- 計算とストレージの分離に基づく **Standard 可用性モデル**。  リモート ストレージ層の高可用性と信頼性に依存します。 このアーキテクチャでは、メンテナンス作業中に一定のパフォーマンス低下を許容できる予算重視のビジネス アプリケーションを対象とします。
+- データベース エンジン プロセスのクラスターに基づく **Premium 可用性モデル**。 利用可能なデータベース エンジン ノードのクォーラムが常にあるという事実に依存します。 このアーキテクチャでは、高い IO パフォーマンス、高いトランザクション レートを備えたミッション クリティカル なアプリケーションを対象とし、メンテナンス作業中のワークロードに対するパフォーマンスの影響を最小限に抑えることを保証します。
 
 SQL Database と SQL Managed Instance は、どちらも最新の安定したバージョンの SQL Server データベース エンジンおよび Windows オペレーティング システム上で実行されています。また、ほとんどのユーザーが認識することなく、アップグレードが継続的に実行されています。
 
@@ -94,7 +94,7 @@ Premium および Business Critical サービス レベルでは、Premium 可�
 
 ## <a name="hyperscale-service-tier-availability"></a>Hyperscale サービス レベルの可用性
 
-ハイパースケール サービス レベルのアーキテクチャは「[分散機能アーキテクチャ](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#distributed-functions-architecture)」で説明されており、現在は SQL Managed Instance ではなく SQL Database でのみ使用できます。
+ハイパースケール サービス レベルのアーキテクチャは「[分散機能アーキテクチャ](./service-tier-hyperscale.md#distributed-functions-architecture)」で説明されており、現在は SQL Managed Instance ではなく SQL Database でのみ使用できます。
 
 ![Hyperscale 機能のアーキテクチャ](./media/high-availability-sla/hyperscale-architecture.png)
 
@@ -102,17 +102,17 @@ Hyperscale の可用性モデルには、次の 4 つのレイヤーが含まれ
 
 - ステートレス計算レイヤー。`sqlservr.exe` プロセスを実行しており、一時的なデータとキャッシュ データのみ (カバーしない RBPEX キャッシュ、TempDB、アタッチされた SSD 上のモデル データベースなど、およびメモリ内のプラン キャッシュ、バッファー プール、列ストア プールなど) が含まれています。 このステートレス レイヤーには、プライマリ計算レプリカと、必要に応じて、フェールオーバー ターゲットとして機能できる多くのセカンダリ計算レプリカが含まれています。
 - ページ サーバーによって形成されるステートレス ストレージ レイヤー。 このレイヤーは、計算レプリカで実行されている `sqlservr.exe` プロセス用の分散ストレージ エンジンです。 各ページ サーバーには、アタッチされた SSD 上のカバーする RBPEX キャッシュ、メモリにキャッシュされたデータ ページなど、一時的なデータとキャッシュされたデータのみが含まれます。 各ページ サーバーでは、負荷分散、冗長性、高可用性を提供するためのアクティブ/アクティブ構成にペアのページ サーバーがあります。
-- ステートフルなトランザクション ログのストレージ レイヤー。ログ サービス プロセス、トランザクション ログのランディング ゾーン、およびトランザクション ログの長期保存を実行する計算ノードによって形成されます。 ランディング ゾーンと長期保存では Azure Storage を使用します。これにより、トランザクション ログの可用性と[冗長性](https://docs.microsoft.com/azure/storage/common/storage-redundancy)が提供され、コミットされたトランザクションのデータの持続性が確保されます。
-- ステートフルなデータ ストレージ レイヤー。Azure Storage に格納され、ページ サーバーによって更新される、データベース ファイル (.mdf/.ndf) が含まれます。 このレイヤーでは、Azure Storage のデータの可用性と[冗長性](https://docs.microsoft.com/azure/storage/common/storage-redundancy)の機能を使用します。 これにより、Hyperscale アーキテクチャの他のレイヤーのプロセスがクラッシュした場合や、計算ノードで障害が発生した場合でも、データ ファイル内のすべてのページが保持されることが保証されます。
+- ステートフルなトランザクション ログのストレージ レイヤー。ログ サービス プロセス、トランザクション ログのランディング ゾーン、およびトランザクション ログの長期保存を実行する計算ノードによって形成されます。 ランディング ゾーンと長期保存では Azure Storage を使用します。これにより、トランザクション ログの可用性と[冗長性](../../storage/common/storage-redundancy.md)が提供され、コミットされたトランザクションのデータの持続性が確保されます。
+- ステートフルなデータ ストレージ レイヤー。Azure Storage に格納され、ページ サーバーによって更新される、データベース ファイル (.mdf/.ndf) が含まれます。 このレイヤーでは、Azure Storage のデータの可用性と[冗長性](../../storage/common/storage-redundancy.md)の機能を使用します。 これにより、Hyperscale アーキテクチャの他のレイヤーのプロセスがクラッシュした場合や、計算ノードで障害が発生した場合でも、データ ファイル内のすべてのページが保持されることが保証されます。
 
 すべての Hyperscale レイヤー内の計算ノードは、Azure Service Fabric で実行されます。これにより、各ノードの正常性が制御され、必要に応じて使用できる正常なノードへのフェールオーバーが行われます。
 
-Hyperscale の高可用性の詳細については、「[ハイパースケールでのデータベースの高可用性](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#database-high-availability-in-hyperscale)」を参照してください。
+Hyperscale の高可用性の詳細については、「[ハイパースケールでのデータベースの高可用性](./service-tier-hyperscale.md#database-high-availability-in-hyperscale)」を参照してください。
 
 
 ## <a name="accelerated-database-recovery-adr"></a>高速データベース復旧 (ADR)
 
-[高速データベース復旧 (ADR)](../accelerated-database-recovery.md) は、特に実行時間の長いトランザクションがある場合に、データベースの可用性を大幅に向上させる、新しいデータベース エンジン機能です。 ADR は、現時点では Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse Analytics (旧称 SQL Data Warehouse) で使用できます。
+[高速データベース復旧 (ADR)](../accelerated-database-recovery.md) は、特に実行時間の長いトランザクションがある場合に、データベースの可用性を大幅に向上させる、新しいデータベース エンジン機能です。 ADR は現在、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics で使用可能です。
 
 ## <a name="testing-application-fault-resiliency"></a>アプリケーションの障害回復性のテスト
 

@@ -1,5 +1,5 @@
 ---
-title: Synapse Studio (プレビュー) のトラブルシューティング
+title: Synapse Studio のトラブルシューティング
 description: Azure Synapse Studio のトラブルシューティング
 author: julieMSFT
 ms.service: synapse-analytics
@@ -8,18 +8,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3fe31f83ccc0dcbd2d61a7c70d40a64da08d13a1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a96709c7538bda6d6b338c29dc512902e9ca2c87
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321024"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445841"
 ---
-# <a name="azure-synapse-studio-preview-troubleshooting"></a>Azure Synapse Studio (プレビュー) のトラブルシューティング
+# <a name="azure-synapse-studio-troubleshooting"></a>Azure Synapse Studio のトラブルシューティング
 
 このトラブルシューティング ガイドでは、ネットワーク接続の問題についてサポート チケットを開くときに入力する情報について説明します。 適切な情報があれば、問題をより迅速に解決できる可能性があります。
 
-## <a name="serverless-sql-pool-preview-service-connectivity-issue"></a>サーバーレス SQL プール (プレビュー) サービスの接続の問題
+## <a name="serverless-sql-pool-service-connectivity-issue"></a>サーバーレス SQL プール サービスの接続の問題
 
 ### <a name="symptom-1"></a>現象 1
 
@@ -61,7 +61,7 @@ URL 列が次のパターンに一致する項目を探します。
 
 `https://[*A*]-ondemand.database.windows.net:1443/databases/[*B*]/query?api-version=2018-08-01-preview&application=ArcadiaSqlOnDemandExplorer`
 
-ここで、[ *A* ] はワークスペース名で、"-ondemand" は "-sqlod" などになります。[ *B* ] はデータベース名 ("master" など) である必要があります。 URL の値が同じでメソッドの値が異なる (OPTIONS と POST) 項目は、最大 2 つである必要があります。 この 2 つの項目の状態列に "200" または "20x" が表示されているかどうかを確認します。"x" は任意の 1 桁の数字です。
+ここで、[*A*] はワークスペース名で、"-ondemand" は "-sqlod" などになります。[*B*] はデータベース名 ("master" など) である必要があります。 URL の値が同じでメソッドの値が異なる (OPTIONS と POST) 項目は、最大 2 つである必要があります。 この 2 つの項目の状態列に "200" または "20x" が表示されているかどうかを確認します。"x" は任意の 1 桁の数字です。
 
 いずれか一方に "20x" 以外のものが含まれている場合は、次のようになります。
 

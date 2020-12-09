@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: negoe
-ms.reviewer: negoe,celested
+ms.reviewer: marsma, negoe,celested
 ms.custom: aaddev,references_regions
-ms.openlocfilehash: d27498748f03fb101d165351ec80c77d57f78f1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da1ea6462d22242d23629bcec192d7760314dfed
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88141501"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444810"
 ---
 # <a name="national-clouds"></a>各国のクラウド
 
@@ -60,8 +60,8 @@ ms.locfileid: "88141501"
 
 適切なリージョン固有のベース URL を使用して、Azure AD 承認またはトークン エンドポイントへの要求を構成できます。 例として、Azure Germany の場合を示します。
 
-  - 承認共通エンドポイントは `https://login.microsoftonline.de/common/oauth2/v2.0/authorize` です。
-  - トークン共通エンドポイントは `https://login.microsoftonline.de/common/oauth2/v2.0/token` です。
+- 承認共通エンドポイントは `https://login.microsoftonline.de/common/oauth2/v2.0/authorize` です。
+- トークン共通エンドポイントは `https://login.microsoftonline.de/common/oauth2/v2.0/token` です。
 
 シングルテナント アプリケーションの場合は、前の URL にある "common" をテナント ID またはテナント名に置き換えます。 たとえば `https://login.microsoftonline.de/contoso.com` です。
 
@@ -76,9 +76,10 @@ Microsoft ID プラットフォームを使用してアプリケーションを�
 
 ## <a name="next-steps"></a>次のステップ
 
-各項目の詳細情報
+「[国内クラウド環境で Microsoft Authentication Library (MSAL) を使用する](msal-national-cloud.md)」方法について学習する。
+
+国内クラウドのドキュメント:
 
 - [Azure Government](../../azure-government/index.yml)
 - [Azure China 21Vianet](/azure/china/)
 - [Azure Germany](../../germany/index.yml)
-- [Azure AD 認証の基本](./authentication-vs-authorization.md)

@@ -1,6 +1,6 @@
 ---
-title: VSTS を使用して接続する
-description: Visual Studio を使用して Azure Synapse Analytics に対してクエリを実行します。
+title: VSTS を使用して専用 SQL プール (旧称 SQL DW) に接続する
+description: Visual Studio を使用して Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) にクエリを実行する
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 59e0aed3ceda369909c6a4aecd03637a82a2dd1b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c55f8483ba54ecf9778693b364603d642ddb3deb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305380"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452331"
 ---
-# <a name="connect-to-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Visual Studio と SSDT を使用して Azure Synapse Analytics に接続する
+# <a name="connect-to-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Visual Studio および SSDT を使用して Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) に接続する
 
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](../sql/get-started-azure-data-studio.md)
@@ -29,16 +29,16 @@ ms.locfileid: "93305380"
 > 
 > 
 
-Visual Studio を使用して、わずか数分で Azure Synapse 内の専用 SQL プールに対してクエリを実行します。 この方法では、Visual Studio 2019 の SQL Server Data Tools (SSDT) 拡張機能が使用されます。 
+Visual Studio を使用して、わずか数分で Azure Synapse 内の専用 SQL プール (旧称 SQL DW) に対してクエリを実行します。 この方法では、Visual Studio 2019 の SQL Server Data Tools (SSDT) 拡張機能が使用されます。 
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを使用するには、次のものが必要です。
 
-* 既存の専用 SQL プール。 作成するには、[専用 SQL プールの作成](create-data-warehouse-portal.md)に関するページを参照してください。
+* 既存の専用 SQL プール (旧称 SQL DW)。 作成するには、[専用 SQL プール (旧称 SQL DW) の作成](create-data-warehouse-portal.md)に関するページを参照してください。
 * Visual Studio 用の SSDT。 Visual Studio を使用している場合は、既に Visual Studio 用の SSDT を持っている可能性があります。 インストールの手順とオプションの詳細については、 [Visual Studio と SSDT のインストール](sql-data-warehouse-install-visual-studio.md)に関するページを参照してください。
-* 完全修飾 SQL サーバー名。 この情報については、[専用 SQL プールへの接続](../sql/connect-overview.md)に関するページを参照してください。
+* 完全修飾 SQL サーバー名。 この情報については、[専用 SQL プール (旧称 SQL DW) への接続](sql-data-warehouse-connect-overview.md)に関するページを参照してください。
 
-## <a name="1-connect-to-your-dedicated-sql-pool"></a>1. 専用 SQL プールに接続する
+## <a name="1-connect-to-your-dedicated-sql-pool-formerly-sql-dw"></a>1.専用 SQL プール (旧称 SQL DW) への接続
 1. Visual Studio 2019 を開きます。
 2. **[表示]**  >  **[SQL Server オブジェクト エクスプローラー]** を選択して SQL Server オブジェクト エクスプローラーを開きます。
    
@@ -80,4 +80,4 @@ Visual Studio を使用して、わずか数分で Azure Synapse 内の専用 SQ
 ## <a name="next-steps"></a>次のステップ
 これで接続してクエリを実行することができます。[Power BI でデータを視覚化](sql-data-warehouse-get-started-visualize-with-power-bi.md)してみてください。
 
-Azure Active Directory 認証を使用するために環境を構成する方法については、[専用 SQL プールの認証](sql-data-warehouse-authentication.md)に関するページを参照してください。
+Azure Active Directory 認証を使用するために環境を構成する方法については、[専用 SQL プール (旧称 SQL DW) の認証](sql-data-warehouse-authentication.md)に関するページを参照してください。

@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: dac2a60b6b9db082a10d2473eb22b86d8097eee0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7f0eff28533d8cf736d032aff61454a49bcf379e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313137"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449731"
 ---
 # <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールの容量制限
 
@@ -26,8 +26,8 @@ Azure Synapse Analytics の専用 SQL プールのさまざまなコンポーネ
 
 | カテゴリ | 説明 | 最大値 |
 |:--- |:--- |:--- |
-| [Data Warehouse ユニット (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |1 つの専用 SQL プール (Data Warehouse) ユニットに対する最大 DWU | Gen1:DW6000<br></br>Gen2:DW30000c |
-| [Data Warehouse ユニット (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |サーバーあたりの既定の DTU |54,000<br></br>既定では、各 SQL Server (myserver.database.windows.net など) の DTU クォータは 54,000 に設定されており、最大 DW5000c が許可されます。 このクォータは単に安全上の制限です。 クォータを引き上げるには、 [サポート チケットを作成](sql-data-warehouse-get-started-create-support-ticket.md)し、要求の種類として *[クォータ]* を選択します。  実際に必要な DTU を計算するには、必要とされる DWU の合計に 7.5 を掛けるか、必要とされる cDWU の合計に 9.5 を掛けます。 次に例を示します。<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW5000c x 9.5 = 47,500 DTU<br></br>現在の DTU 消費量は、ポータルで SQL Server オプションから確認できます。 DTU クォータには、一時停止しているデータベースと一時停止していないデータベースの両方が考慮されます。 |
+| [Data Warehouse ユニット (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |1 つの専用 SQL プールに対する最大 DWU  | Gen1:DW6000<br></br>Gen2:DW30000c |
+| [Data Warehouse ユニット (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |サーバーあたりの既定の DTU |54,000<br></br>既定では、各 SQL Server (myserver.database.windows.net など) の DTU クォータは 54,000 に設定されており、最大 DW5000c が許可されます。 このクォータは単に安全上の制限です。 クォータを引き上げるには、[サポート チケットを作成](sql-data-warehouse-get-started-create-support-ticket.md)し、要求の種類として *[クォータ]* を選択します。  実際に必要な DTU を計算するには、必要とされる DWU の合計に 7.5 を掛けるか、必要とされる cDWU の合計に 9.5 を掛けます。 次に例を示します。<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW5000c x 9.5 = 47,500 DTU<br></br>現在の DTU 消費量は、ポータルで SQL Server オプションから確認できます。 DTU クォータには、一時停止しているデータベースと一時停止していないデータベースの両方が考慮されます。 |
 | データベース接続 |同時に開かれる最大セッション数 |1024<br/><br/>同時に開かれるセッションの数は、選択した DWU によって異なります。 DWU600c 以降では、最大で 1,024 の開かれているセッションがサポートされます。 DWU500c 以前では、同時に開かれるセッションの上限が 512 です。 同時に実行できるクエリ数については、制限があるので注意してください。 コンカレンシーの制限を超えると、要求は内部キューに送られ、処理の順番が来るまで待機します。 |
 | データベース接続 |準備されたステートメントに対する最大メモリ容量 |20 MB |
 | [ワークロードの管理](resource-classes-for-workload-management.md) |同時クエリの最大数 |128<br/><br/>  最大 128 個の同時実行クエリが実行され、残りのクエリはキューに入れられます。<br/><br/>同時実行クエリの数は、ユーザーがより高いリソース クラスに割り当てられるか、または [Data Warehouse ユニット](memory-concurrency-limits.md)の設定が下げられたときに減少する場合があります。 一部のクエリ (DMV クエリなど) は、常に実行を許可され、同時実行クエリの制限に影響しません。 コンカレント クエリの情報については、[コンカレンシーの最大値](memory-concurrency-limits.md)に関する記事を参照してください。 |
@@ -43,7 +43,7 @@ Azure Synapse Analytics の専用 SQL プールのさまざまなコンポーネ
 | テーブル |データベースごとのテーブル数 | 100,000 |
 | テーブル |テーブルごとの列数 |1,024 列 |
 | テーブル |列あたりのバイト数 |列の[データ型](sql-data-warehouse-tables-data-types.md)によって決まります。 上限は、char データ型では 8000 GB、nvarchar データ型では 4000 GB、MAX データ型では 2 GB です。 |
-| テーブル |行あたりのバイト数 (定義されたサイズ) |8060 バイト<br/><br/>行あたりのバイト数は、ページ圧縮を有効にした SQL Server の場合と同様に計算されます。 SQL Server と同様に、行オーバーフロー ストレージがサポートされるため、 **可変長列** を行外にプッシュできます。 可変長行を行外にプッシュする場合、メイン レコードには 24 バイト ルートのみが格納されます。 詳細については、「[8 KB を超える場合の行オーバーフロー データ](https://msdn.microsoft.com/library/ms186981.aspx)」を参照してください。 |
+| テーブル |行あたりのバイト数 (定義されたサイズ) |8060 バイト<br/><br/>行あたりのバイト数は、ページ圧縮を有効にした SQL Server の場合と同様に計算されます。 SQL Server と同様に、行オーバーフロー ストレージがサポートされるため、**可変長列** を行外にプッシュできます。 可変長行を行外にプッシュする場合、メイン レコードには 24 バイト ルートのみが格納されます。 詳細については、「[8 KB を超える場合の行オーバーフロー データ](https://msdn.microsoft.com/library/ms186981.aspx)」を参照してください。 |
 | テーブル |テーブルあたりのパーティション数 |15,000<br/><br/>高パフォーマンスを実現するには、ビジネス要件を満たしながら、必要なパーティション数を最小限に抑えることをお勧めします。 パーティションの数が増えるに従い、データ定義言語 (DDL) およびデータ操作言語 (DML) の操作のオーバーヘッドが拡大し、パフォーマンスの低下を引き起こします。 |
 | テーブル |パーティション境界値あたりの文字数 |4000 |
 | インデックス |テーブルあたりの非クラスター化インデックス数 |50<br/><br/>行ストア テーブルのみに適用されます。 |
@@ -62,7 +62,7 @@ Azure Synapse Analytics の専用 SQL プールのさまざまなコンポーネ
 | カテゴリ | 説明 | 最大値 |
 |:--- |:--- |:--- |
 | Polybase 読み込み |行あたりの MB 数 |1<br/><br/>Polybase では、1 MB 未満の行を読み込みます。 クラスター化列ストア インデックス (CCI) を使用して LOB データ型をテーブルに読み込むことはサポートされていません。<br/> |
-|Polybase 読み込み|ファイルの総数|1,000,000<br/><br/>Polybase では、1,000,000 ファイルを超えて読み込むことはできません。 次のようなエラーが発生することがあります。 **分割数が上限の 1,000,000 を超えたため、操作に失敗しました。** 。|
+|Polybase 読み込み|ファイルの総数|1,000,000<br/><br/>Polybase では、1,000,000 ファイルを超えて読み込むことはできません。 次のようなエラーが発生することがあります。**分割数が上限の 1,000,000 を超えたため、操作に失敗しました。** 。|
 
 ## <a name="queries"></a>クエリ
 

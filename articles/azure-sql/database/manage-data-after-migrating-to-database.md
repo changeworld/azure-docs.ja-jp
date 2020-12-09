@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: fe49dce276a15d9d7bc8ddaa5618c0e43dec62e9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b34ac24cb26bf5db4a49a5ad5b531deb252f4695
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841225"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446112"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>クラウドの新しい DBA – 移行後の Azure SQL Database の管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -106,7 +106,7 @@ SQL Database では 2 種類の認証方法が提供されています。
 
 従来の Windows 認証はサポートされていません。 Azure Active Directory (Azure AD) は、ID とアクセスの集中管理サービスです。 組織内のすべての担当者にシングル サインオン (SSO) アクセスを非常に簡単に提供できます。 つまり、認証が簡単なように、資格情報はすべての Azure サービスで共有されます。 
 
-Azure AD は [Azure AD Multi-Factor Authentication](authentication-mfa-ssms-overview.md) をサポートします。[数クリック](../../active-directory/hybrid/how-to-connect-install-express.md)で Azure AD を Windows Server Active Directory と統合できます。 SQL 認証はこれまでとまったく同じように動作します。 ユーザー名とパスワードを提供すると、特定のサーバーの任意のデータベースでユーザーを認証できます。 これを使用すると、SQL Database および Azure Synapse Analytics (旧称 SQL Data Warehouse) で、Azure AD ドメイン内において Multi-Factor Authentication とゲスト ユーザー アカウントを提供できます。 既に Active Directory をオンプレミスで使用している場合、そのディレクトリを Azure Active Directory とフェデレーションして Azure へ拡張できます。
+Azure AD は [Azure AD Multi-Factor Authentication](authentication-mfa-ssms-overview.md) をサポートします。[数クリック](../../active-directory/hybrid/how-to-connect-install-express.md)で Azure AD を Windows Server Active Directory と統合できます。 SQL 認証はこれまでとまったく同じように動作します。 ユーザー名とパスワードを提供すると、特定のサーバーの任意のデータベースでユーザーを認証できます。 これを使用すると、SQL Database および Azure Synapse Analytics で、Azure AD ドメイン内において Multi-Factor Authentication とゲスト ユーザー アカウントを提供できます。 既に Active Directory をオンプレミスで使用している場合、そのディレクトリを Azure Active Directory とフェデレーションして Azure へ拡張できます。
 
 |**ユーザーの条件**|**SQL Database / Azure Synapse Analytics**|
 |---|---|

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2020
-ms.openlocfilehash: 30521e85feda0fc19329364dcb710d322ae8cfc1
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 9c453219638b9586d4ad2cc2a89311b1f2bdeefe
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95323228"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450096"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor エージェントの概要
 
@@ -81,8 +81,8 @@ Log Analytics エージェントは、次のような場合に使用します。
 * Azure の内部または外部の仮想または物理マシンからログとパフォーマンス データを収集する。 
 * データを Log Analytics ワークスペースに送信して、[ログ クエリ](../log-query/log-query-overview.md)など、[Azure Monitor ログ](data-platform-logs.md)でサポートされている機能を活用する。
 * 仮想マシンを大規模に監視し、そのプロセスや他のリソースおよび外部プロセスに対する依存関係を監視できる [Azure Monitor for VMs](../insights/vminsights-overview.md) を使用する。  
-* [Azure Security Center](../../security-center/security-center-intro.md) または [Azure Sentinel](../../sentinel/overview.md) を使用して、ご利用の仮想マシンのセキュリティを管理する。
-* [Azure Automation Update Management](../../automation/update-management/update-mgmt-overview.md)、[Azure Automation State Configuration](../../automation/automation-dsc-overview.md)、または [Azure Automation Change Tracking および Inventory](../../automation/change-tracking/overview.md) を使用して、Azure VM の包括的な管理を提供する
+* [Azure Security Center](../../security-center/security-center-introduction.md) または [Azure Sentinel](../../sentinel/overview.md) を使用して、ご利用の仮想マシンのセキュリティを管理する。
+* [Azure Automation Update Management](../../automation/update-management/overview.md)、[Azure Automation State Configuration](../../automation/automation-dsc-overview.md)、または [Azure Automation Change Tracking および Inventory](../../automation/change-tracking/overview.md) を使用して、Azure VM の包括的な管理を提供する
 * さまざまな[ソリューション](../monitor-reference.md#insights-and-core-solutions)を使用して、特定のサービスまたはアプリケーションを監視する。
 
 Log Analytics エージェントの制限事項は次のとおりです。
@@ -176,10 +176,11 @@ Telegraf エージェントは、次のような場合に使用します。
 | Red Hat Enterprise Linux Server 7                        | X | X | X | X |
 | Red Hat Enterprise Linux Server 6                        |   | x | X |   |
 | Red Hat Enterprise Linux Server 6.7 以降                     |   | X | X | X |
-| SUSE Linux Enterprise Server 15                          | X | x |   |   |
-| SUSE Linux Enterprise Server 12                          | X | X | X | X |
-| Ubuntu 20.04 LTS                                         |   | x |   |   |
-| Ubuntu 18.04 LTS                                         | X | X | X | x |
+| SUSE Linux Enterprise Server 15.1                        |   | X |   |   |
+| SUSE Linux Enterprise Server 15                          | X | X |   |   |
+| SUSE Linux Enterprise Server 12                          | X | X | X | x |
+| Ubuntu 20.04 LTS                                         |   | X |   |   |
+| Ubuntu 18.04 LTS                                         | X | x | X | X |
 | Ubuntu 16.04 LTS                                         | X | X | X | X |
 | Ubuntu 14.04 LTS                                         |   | X |   | X |
 

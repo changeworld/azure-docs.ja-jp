@@ -1,6 +1,6 @@
 ---
-title: ワークロード分類
-description: Azure Synapse Analytics で分類を使用してクエリのコンカレンシー、重要度、コンピューティング リソースを管理するためのガイダンスです。
+title: 専用 SQL プールのワークロード分類
+description: Azure Synapse Analytics で分類を使用して、専用 SQL プールのクエリのコンカレンシー、重要度、コンピューティング リソースを管理するためのガイダンスです。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6b66b8a9fb3b5eb7dc78c00ba084e8609877dec7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bf19e2d1674d0a0c2102280b28b5549505c1dfab
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323871"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447770"
 ---
-# <a name="azure-synapse-analytics-workload-classification"></a>Azure Synapse Analytics ワークロードの分類
+# <a name="workload-classification-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールのワークロード分類
 
 この記事では、Azure Synapse の専用 SQL プールを使用してワークロード グループと重要度を受信要求に割り当てるための、ワークロード分類プロセスについて説明します。
 
@@ -36,7 +36,7 @@ ms.locfileid: "93323871"
 
 ## <a name="classification-process"></a>分類プロセス
 
-現在、Azure Synapse の専用 SQL プールでの分類は、[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して、対応するリソース クラスが割り当てられたロールにユーザーを割り当てることで実現されます。 1 つのリソース クラスへのログインを超えて要求を特徴付けることは、この機能によって制限されます。 より高度な分類方法として、[CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 構文を利用できるようになりました。  専用 SQL プール ユーザーは、この構文で `workload_group` パラメーターを使用して、要求に重要度を割り当て、割り当てるシステム リソース量を指定できます。
+現在、専用 SQL プールでの分類は、[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して、対応するリソース クラスが割り当てられたロールにユーザーを割り当てることで実現されます。 1 つのリソース クラスへのログインを超えて要求を特徴付けることは、この機能によって制限されます。 より高度な分類方法として、[CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 構文を利用できるようになりました。  専用 SQL プール ユーザーは、この構文で `workload_group` パラメーターを使用して、要求に重要度を割り当て、割り当てるシステム リソース量を指定できます。
 
 > [!NOTE]
 > 分類は要求単位で評価されます。 1 つのセッション内の複数の要求を別々に分類できます。

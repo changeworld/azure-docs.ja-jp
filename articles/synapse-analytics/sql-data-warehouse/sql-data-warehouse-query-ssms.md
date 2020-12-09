@@ -1,6 +1,6 @@
 ---
-title: SSMS との接続
-description: SQL Server Management Studio (SSMS) を使用して Azure Synapse Analytics の専用 SQL プールに接続し、クエリを実行します。
+title: SSMS を使用して専用 SQL プール (旧称 SQL DW) に接続する
+description: SQL Server Management Studio (SSMS) を使用して Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) に接続し、クエリを実行します。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c2fab8f02f31897a2e3d38094b9bd365f8e921e9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 950cb4c40a534f252ec8b0daa5a57eb87c098450
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325328"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450477"
 ---
-# <a name="connect-to-a-dedicated-sql-pool-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して Azure Synapse Analytics の専用 SQL プールに接続する
+# <a name="connect-to-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) に接続する
 
 > [!div class="op_single_selector"]
 >
@@ -28,17 +28,17 @@ ms.locfileid: "93325328"
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-SQL Server Management Studio (SSMS) を使用して、Azure Synapse 内のデータ ウェアハウスに接続し、クエリを実行します。
+SQL Server Management Studio (SSMS) を使用して専用 SQL プール (旧称 SQL DW) に接続し、クエリを実行します。
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを使用するには、次のものが必要です。
 
-* 既存の専用 SQL プール。 作成するには、[専用 SQL プールの作成](create-data-warehouse-portal.md)に関するページを参照してください。
+* 既存の専用 SQL プール。 作成するには、[専用 SQL プール (旧称 SQL DW) の作成](create-data-warehouse-portal.md)に関するページを参照してください。
 * SQL Server Management Studio (SSMS) をインストールしている。 [SSMS をダウンロード](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)していない場合はダウンロードします (無料)。
-* 完全修飾 SQL サーバー名。 この情報については、[専用 SQL プールへの接続](sql-data-warehouse-connect-overview.md)に関するページを参照してください。
+* 完全修飾 SQL サーバー名。 この情報については、[専用 SQL プール (旧称 SQL DW)](sql-data-warehouse-connect-overview.md) に関するページを参照してください。
 
-## <a name="1-connect-to-your-dedicated-sql-pool"></a>1.専用 SQL プールに接続する
+## <a name="1-connect-to-your-dedicated-sql-pool-formerly-sql-dw"></a>1.専用 SQL プール (旧称 SQL DW) への接続
 
 1. SSMS を開きます。
 2. **[ファイル]**  >  **[オブジェクト エクスプローラーを接続]** を選択してオブジェクト エクスプローラーを開きます。

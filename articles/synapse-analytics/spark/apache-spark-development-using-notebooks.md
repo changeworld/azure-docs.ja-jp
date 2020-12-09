@@ -1,6 +1,6 @@
 ---
 title: Synapse Studio ノートブック
-description: この記事では、データの準備と視覚化を行うために、Azure Synapse Studio (プレビュー) ノートブックを作成および開発する方法について学習します。
+description: この記事では、データの準備と視覚化を行うために、Azure Synapse Studio ノートブックを作成および開発する方法について学習します。
 services: synapse analytics
 author: ruixinxu
 ms.service: synapse-analytics
@@ -10,16 +10,16 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: c35ee7bcdefa5091d9c887430182638f066cb9fa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bfb822481e00e84fa17bd4b1fcb58c1d4b89a124
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95900895"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450858"
 ---
-# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Synapse Studio (プレビュー) ノートブックを作成、開発、管理する
+# <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Synapse Studio ノートブックを作成、開発、管理する
 
-Synapse Studio (プレビュー) ノートブックは、ライブ コード、視覚化、および説明テキストを含むファイルを作成するための Web インターフェイスです。 ノートブックは、アイデアを確認し、簡単な実験を使用してデータから分析情報を得るのに最適な場所です。 また、ノートブックは、データの準備、データの視覚化、機械学習、およびその他のビッグ データのシナリオで広く使用されています。
+Synapse Studio ノートブックは、ライブ コード、視覚化、および説明テキストを含むファイルを作成するための Web インターフェイスです。 ノートブックは、アイデアを確認し、簡単な実験を使用してデータから分析情報を得るのに最適な場所です。 また、ノートブックは、データの準備、データの視覚化、機械学習、およびその他のビッグ データのシナリオで広く使用されています。
 
 Azure Synapse Studio ノートブックでは、次のことができます。
 
@@ -33,7 +33,7 @@ Azure Synapse Studio ノートブックでは、次のことができます。
 ## <a name="preview-of-the-new-notebook-experience"></a>新しいノートブック エクスペリエンスのプレビュー
 Synapse チームは、Microsoft のお客様に一貫したノートブック エクスペリエンスを提供し、検出可能性、生産性、共有、コラボレーションを最大化するための新しいノートブック コンポーネントを Synapse Studio に導入しました。 この新しいノートブック エクスペリエンスのプレビュー版が利用可能になりました。 ノートブック ツールバーの **[プレビュー機能]** ボタンをオンにしてください。 次の表では、既存のノートブック ("従来のノートブック") と新しいプレビュー版の機能を比較します。  
 
-|特徴量|従来のノートブック|プレビュー版ノートブック|
+|機能|従来のノートブック|プレビュー版ノートブック|
 |--|--|--|
 |%run| サポートされていません | &#9745;|
 |%history| サポートされていません |&#9745;
@@ -549,7 +549,7 @@ Jupyter Notebook と同様に、Azure Synapse Studio ノートブックにはモ
 
 ## <a name="next-steps"></a>次のステップ
 - [Synapse サンプル ノートブックをチェックアウトする](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
-- [クイック スタート: Web ツールを使用して Azure Synapse Analytics で Apache Spark プール (プレビュー) を作成する](../quickstart-apache-spark-notebook.md)
+- [クイック スタート:Web ツールを使用して Azure Synapse Analytics で Apache Spark プールを作成する](../quickstart-apache-spark-notebook.md)
 - [Azure Synapse Analytics の Apache Spark とは](apache-spark-overview.md)
 - [Azure Synapse Analytics で .NET for Apache Spark を使用する](spark-dotnet.md)
 - [.NET for Apache Spark のドキュメント](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

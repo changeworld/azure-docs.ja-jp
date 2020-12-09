@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a2597a4bc6c5ed44f0e0050be3f69d7e840665e5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c4fe512ff6db24498148ffa724c3144a2f61823f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323850"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451707"
 ---
 # <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールでトランザクションを使用する
 
@@ -27,7 +27,7 @@ ms.locfileid: "93323850"
 
 ## <a name="transaction-isolation-levels"></a>トランザクション分離レベル
 
-SQL プールは、ACID トランザクションを実装します。 トランザクションサポートの分離レベルは、既定では READ UNCOMMITTED になります。  これは READ COMMITTED SNAPSHOT ISOLATION に変更できます。それには、マスター データベースに接続する際にユーザー データベースの READ_COMMITTED_SNAPSHOT データベース オプションをオンにします。  
+専用 SQL プールは、ACID トランザクションを実装します。 トランザクションサポートの分離レベルは、既定では READ UNCOMMITTED になります。  これは READ COMMITTED SNAPSHOT ISOLATION に変更できます。それには、マスター データベースに接続する際にユーザー データベースの READ_COMMITTED_SNAPSHOT データベース オプションをオンにします。  
 
 有効になると、このデータベース内のすべてのトランザクションが READ COMMITTED SNAPSHOT ISOLATION の下で実行され、セッション レベルで READ UNCOMMITTED を設定しても受け入れられません。 詳細については、「[ALTER DATABASE の SET オプション (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest&preserve-view=true)」を確認してください。
 
@@ -89,7 +89,7 @@ SQL プールは、ACID トランザクションを実装します。 トラン�
 
 ## <a name="transaction-state"></a>トランザクションの状態
 
-SQL プールでは、XACT_STATE() 関数を使い、値 -2 を使用して、失敗したトランザクションを報告します。 この値は、トランザクションが失敗し、ロールバックのためにのみマークされていることを意味します。
+専用 SQL プールでは、XACT_STATE() 関数を使い、値 -2 を使用して、失敗したトランザクションを報告します。 この値は、トランザクションが失敗し、ロールバックのためにのみマークされていることを意味します。
 
 > [!NOTE]
 > 失敗したトランザクションを示すために XACT_STATE 関数の -2 を使用するのは、SQL Server とは異なる動作です。 SQL Server では、コミットできないトランザクションを表すために値 -1 を使用します。 SQL Server では、コミット不可としてマークしなくても、トランザクション内で一部のエラーを許容できます。 たとえば、`SELECT 1/0` はエラーになりますが、トランザクションが強制的にコミット不可状態になることはありません。 また、SQL Server では、コミットできないトランザクションでの読み取りも許可されます。 ただし、専用 SQL プールではこれを実行できません。 専用 SQL プールのトランザクション内でエラーが発生した場合は、-2 の状態が自動的に入力され、ステートメントがロールバックされるまで、SELECT ステートメントをそれ以上実行できなくなります。 したがって、コードを変更する必要がある場合は、アプリケーション コードを調べて、XACT_STATE() を使用しているかどうかを確認することが重要です。
@@ -193,7 +193,7 @@ THROW は、専用 SQL プールで例外を発生させるための最新の実
 
 ## <a name="limitations"></a>制限事項
 
-SQL プールには、トランザクションに関する他の制限事項がいくつかあります。 制限事項は次のとおりです。
+専用 SQL プールには、トランザクションに関する他の制限事項がいくつかあります。 制限事項は次のとおりです。
 
 * 分散トランザクションは使用できません。
 * 入れ子になったトランザクションは使用できません。
@@ -204,4 +204,4 @@ SQL プールには、トランザクションに関する他の制限事項が�
 
 ## <a name="next-steps"></a>次のステップ
 
-トランザクションの最適化について詳しくは、[トランザクションのベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事をご覧ください。 [SQL プール](best-practices-sql-pool.md)と[サーバーレス SQL プール (プレビュー)](best-practices-sql-on-demand.md) のベスト プラクティス ガイドも用意されています。
+トランザクションの最適化について詳しくは、[トランザクションのベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事をご覧ください。 [専用 SQL プール](best-practices-sql-pool.md)と[サーバーレス SQL プール](best-practices-sql-on-demand.md) のベスト プラクティス ガイドも用意されています。

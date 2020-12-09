@@ -1,6 +1,6 @@
 ---
-title: 専用 SQL プールのシステム ビュー
-description: Azure Synapse Analytics の専用 SQL プールのシステム ビューのドキュメントへのリンク。
+title: 専用 SQL プール (旧称 SQL DW) のシステム ビュー
+description: Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のシステム ビューに対するドキュメントへのリンク。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 01/06/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 81ce875b5ee9baa96fe9aaa9fa4ea99a730d307e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9149238099704a3567a8d7f34eddbc99ee8f304e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313362"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449912"
 ---
-# <a name="system-views-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールのシステム ビュー
+# <a name="system-views-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のシステム　ビュー
 
-専用 SQL プールでサポートされている T-SQL ステートメントのドキュメントへのリンク。
+専用 SQL プール (旧称 SQL DW) でサポートされている T-SQL ステートメントに対するドキュメントへのリンク。
 
-## <a name="dedicated-sql-pool-catalog-views"></a>専用 SQL プールのカタログ ビュー
+## <a name="dedicated-sql-pool-formerly-sql-dw-catalog-views"></a>専用 SQL プール (旧称 SQL DW) のカタログ ビュー
 
 * [sys.pdw_column_distribution_properties](/sql/relational-databases/system-catalog-views/sys-pdw-column-distribution-properties-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.pdw_distributions](/sql/relational-databases/system-catalog-views/sys-pdw-distributions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -48,7 +48,7 @@ ms.locfileid: "93313362"
 * [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.workload_management_workload_groups](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-groups-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="dedicated-sql-pool-dynamic-management-views-dmvs"></a>専用 SQL プールの動的管理ビュー (DMV)
+## <a name="dedicated-sql-pool-formerly-sql-dw-dynamic-management-views-dmvs"></a>専用 SQL プール (旧称 SQL DW) の動的管理ビュー (DMV)
 
 * [sys.dm_pdw_dms_cores](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-cores-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_pdw_dms_external_work](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-external-work-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -70,9 +70,9 @@ ms.locfileid: "93313362"
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-applicable-to-dedicated-sql-pool"></a>専用 SQL プールに適用可能な SQL Server DMV
+## <a name="sql-server-dmvs-applicable-to-dedicated-sql-pool-formerly-sql-dw"></a>専用 SQL プール (旧称 SQL DW) に適用可能な SQL Server DMV
 
-次の DMV は専用 SQL プールに適用できますが、 **マスター** データベースに接続して実行する必要があります。
+次の DMV は専用 SQL プール (旧称 SQL DW) に適用できますが、**マスター** データベースに接続して実行する必要があります。
 
 * [sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -152,16 +152,16 @@ ms.locfileid: "93313362"
 * [sys.types](/sql/relational-databases/system-catalog-views/sys-types-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.views](/sql/relational-databases/system-catalog-views/sys-views-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-available-in-dedicated-sql-pool"></a>専用 SQL プールで使用できる SQL Server DMV
+## <a name="sql-server-dmvs-available-in-dedicated-sql-pool-formerly-sql-dw"></a>専用 SQL プール (旧称 SQL DW) で使用できる SQL Server DMV
 
-専用 SQL プールには、SQL Server の動的管理ビュー (DMV) の多くが表示されます。 これらのビューは、専用 SQL プールでクエリされると、ディストリビューションで実行されている SQL Database の状態を報告します。
+専用 SQL プール (旧称 SQL DW) には、SQL Server の動的管理ビュー (DMV) の多くが表示されます。 これらのビューは、専用 SQL プール (旧称 SQL DW) でクエリされると、ディストリビューションで実行されている SQL Database の状態を報告します。
 
-専用 SQL プールと Parallel Data Warehouse (PDW) には、同じシステム ビューが使用されます。 各 DMV には pdw_node_id という列があります。これは、コンピューティング ノードの識別子です。
+専用 SQL プール (旧称 SQL DW) と Parallel Data Warehouse (PDW) には、同じシステム ビューが使用されます。 各 DMV には pdw_node_id という列があります。これは、コンピューティング ノードの識別子です。
 
 > [!NOTE]
 > これらのビューを使用するには、次の表に示すように "pdw_nodes_" を名前に挿入します。
 
-| 専用 SQL プールでの DMV 名 | SQL Server Transact-SQL の記事|
+| 専用 SQL プール (旧称 SQL DW) の DMV 名 | SQL Server Transact-SQL の記事|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
@@ -223,9 +223,9 @@ ms.locfileid: "93313362"
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-session-transactions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-top-version-generators-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-dedicated-sql-pool"></a>専用 SQL プールで使用できる SQL Server 2016 PolyBase DMV
+## <a name="sql-server-2016-polybase-dmvs-available-in-dedicated-sql-pool-formerly-sql-dw"></a>専用 SQL プール (旧称 SQL DW) で使用できる SQL Server 2016 PolyBase DMV
 
-次の DMV は専用 SQL プールに適用できますが、 **マスター** データベースに接続して実行する必要があります。
+次の DMV は専用 SQL プール (旧称 SQL DW) に適用できますが、**マスター** データベースに接続して実行する必要があります。
 
 * [sys.dm_exec_compute_node_errors](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-errors-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_exec_compute_node_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-status-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -252,4 +252,4 @@ ms.locfileid: "93313362"
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、[専用 SQL プールの T-SQL ステートメント](sql-data-warehouse-reference-tsql-statements.md)に関するページ、および[専用 SQL プールの T-SQL 言語要素](sql-data-warehouse-reference-tsql-language-elements.md)に関するページを参照してください。
+詳細については、[専用 SQL プール (旧称 SQL DW) の T-SQL ステートメント](sql-data-warehouse-reference-tsql-statements.md)に関するページ、および[専用 SQL プール (旧称 SQL DW) の T-SQL 言語要素](sql-data-warehouse-reference-tsql-language-elements.md)に関するページを参照してください。

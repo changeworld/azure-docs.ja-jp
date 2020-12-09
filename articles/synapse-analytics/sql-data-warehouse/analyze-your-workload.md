@@ -1,6 +1,6 @@
 ---
-title: ワークロードの分析
-description: Azure Synapse Analytics でのワークロードに対するクエリの優先順位付けを分析するための手法。
+title: 専用 SQL プールのワークロードを分析する
+description: Azure Synapse Analytics での専用 SQL プールに対するクエリの優先順位付けを分析するための手法。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,24 +11,24 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c547263be8c61d75491d1517b58c03b6365ef929
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14c3ad30bac7cec4c11822d825323bb9db2ba440
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85208401"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454541"
 ---
-# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Azure Synapse Analytics でワークロードを分析する
+# <a name="analyze-your-workload-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics で専用 SQL プールのワークロードを分析する
 
-Azure Synapse Analytics で Synapse SQL ワークロードを分析するための手法。 
+Azure Synapse Analytics で専用 SQL プールのワークロードを分析するための手法。 
 
 ## <a name="resource-classes"></a>リソース クラス
 
-Synapse SQL には、システム リソースをクエリに割り当てるリソース クラスが用意されています。  リソース クラスの詳細については、[「ワークロード管理とリソース クラス](resource-classes-for-workload-management.md)」を参照してください。  クエリに割り当てられたリソース クラスが現在利用可能なリソースより多くを必要とする場合、クエリは待機します。
+専用 SQL プールには、システム リソースをクエリに割り当てるリソース クラスが用意されています。  リソース クラスの詳細については、[「ワークロード管理とリソース クラス](resource-classes-for-workload-management.md)」を参照してください。  クエリに割り当てられたリソース クラスが現在利用可能なリソースより多くを必要とする場合、クエリは待機します。
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>キューに配置されたクエリの検出とその他の DMV
 
-`sys.dm_pdw_exec_requests` DMV を使用すると、コンカレンシー キューで待機中のクエリを特定できます。 コンカレンシー スロットを待機しているクエリは、**中断**状態になります。
+`sys.dm_pdw_exec_requests` DMV を使用すると、コンカレンシー キューで待機中のクエリを特定できます。 コンカレンシー スロットを待機しているクエリは、**中断** 状態になります。
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -63,7 +63,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-Synapse SQL の待機の種類は次のとおりです。
+専用 SQL プールの待機の種類は次のとおりです。
 
 * **LocalQueriesConcurrencyResourceType**: コンカレンシー スロットのフレームワークの外に配置されたクエリ。 DMV クエリと、 `SELECT @@VERSION` のようなシステム関数は、ローカル クエリの例です。
 * **UserConcurrencyResourceType**: コンカレンシー スロットのフレームワーク内に配置されたクエリ。 エンドユーザー テーブルに対するクエリは、このリソースの種類を使用した例です。
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>次のステップ
 
-データベース ユーザーの管理とセキュリティの詳細については、[Synapse SQL でのデータベース保護](sql-data-warehouse-overview-manage-security.md)に関する記事を参照してください。 大規模なリソース クラスを使用して、クラスター化された列ストア インデックスの品質を向上させる方法については、「[セグメントの品質を向上させるためのインデックスの再構築](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)」を参照してください。
+データベース ユーザーの管理とセキュリティの詳細については、[専用 SQL プール (以前の SQL DW) のセキュリティ保護](sql-data-warehouse-overview-manage-security.md)に関する記事を参照してください。 大規模なリソース クラスを使用して、クラスター化された列ストア インデックスの品質を向上させる方法については、「[セグメントの品質を向上させるためのインデックスの再構築](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)」を参照してください。

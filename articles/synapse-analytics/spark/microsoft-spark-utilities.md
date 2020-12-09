@@ -1,6 +1,6 @@
 ---
 title: Microsoft Spark Utilities の概要
-description: Azure Synapse Analytics ノートブックでの MSSparkutils の使用に関するチュートリアルです。
+description: チュートリアル:Azure Synapse Analytics ノートブックでの MSSparkutils
 author: ruxu
 services: synapse-analytics
 ms.service: synapse-analytics
@@ -10,14 +10,14 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 3c4e062393f9d75d478720041436c2e0f54485a3
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: fee7e244e26a59a773a5d5c9c74e23acd4113ee6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95795067"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446702"
 ---
-# <a name="introduction-of-microsoft-spark-utilities"></a>Microsoft Spark Utilities の概要
+# <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark Utilities の概要
 
 Microsoft Spark Utilities (MSSparkUtils) は、一般的なタスクをより簡単に実行できるようにする組み込みパッケージです。 MSSparkUtils を使用すると、ファイル システムを操作し、環境変数を取得し、シークレットを操作できます。 MSSparkUtils は、`PySpark (Python)`、`Scala`、および `.NET Spark (C#)` ノートブックと Synapse パイプラインで使用できます。
 
@@ -879,6 +879,6 @@ Env.GetClusterId()
 ## <a name="next-steps"></a>次のステップ
 
 - [Synapse サンプル ノートブックをチェックアウトする](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
-- [クイック スタート: Web ツールを使用して Azure Synapse Analytics で Apache Spark プール (プレビュー) を作成する](../quickstart-apache-spark-notebook.md)
+- [クイック スタート:Web ツールを使用して Azure Synapse Analytics で Apache Spark プールを作成する](../quickstart-apache-spark-notebook.md)
 - [Azure Synapse Analytics の Apache Spark とは](apache-spark-overview.md)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

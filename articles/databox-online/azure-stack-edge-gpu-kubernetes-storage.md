@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 11/04/2020
 ms.author: alkohli
-ms.openlocfilehash: ff2a473ca008e9b283d03ebb05f35122473d778a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34165071238ca3edf78ab9cca43639c23ce5ed2a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899261"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448702"
 ---
 # <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスでの Kubernetes ストレージ管理
 
@@ -41,7 +41,7 @@ Kubernetes のストレージの管理方法を理解するには、次の 2 つ
 
 ストレージのプロビジョニングは、静的または動的に行うことができます。 各プロビジョニングの種類については、以降のセクションで説明します。
 
-## <a name="staticprovisioning"></a>静的プロビジョニング
+## <a name="static-provisioning"></a>静的プロビジョニング
 
 Kubernetes クラスター管理者は、ストレージを静的にプロビジョニングできます。 これを行うには、SMB/NFS ファイルシステムに基づくストレージ バックエンドを使用することも、オンプレミス環境でネットワークを介してローカルに接続する iSCSI ディスクを使用することも、またはクラウドで Azure Files または Azure ディスクを使用することもできます。 この種類のストレージは既定ではプロビジョニングされないため、クラスター管理者がこのプロビジョニングを計画して管理する必要があります。 
  
@@ -58,7 +58,7 @@ Kubernetes クラスター管理者は、ストレージを静的にプロビジ
 1. **PVC をコンテナーにマウントする**: PVC が PV にバインドされると、コンテナー内のパスにこの PVC をマウントできます。 コンテナー内のアプリケーション ロジックによってこのパスから読み取りまたはこのパスに書き込みが行われると、データが SMB ストレージに書き込まれます。
  
 
-## <a name="dynamicprovisioning"></a>動的プロビジョニング
+## <a name="dynamic-provisioning"></a>動的プロビジョニング
 
 次の図は、静的にプロビジョニングされたストレージが Kubernetes でどのように使用されるかを示しています。 
 
@@ -104,6 +104,26 @@ spec:
 ```
 
 詳細については、[kubectl を使用した Azure Stack Edge Pro での静的プロビジョニングによるステートフル アプリケーションのデプロイ](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md)に関する記事をご覧ください。
+
+同じ静的にプロビジョニングされたストレージにアクセスするには、IoT のストレージ バインドに対応するボリューム マウント オプションは次のとおりです。 `/home/input` は、コンテナー内でボリュームにアクセスできるパスです。
+
+```
+{
+"HostConfig": {
+"Mounts": [
+{
+"Target": "/home/input",
+"Source": "<nfs-or-smb-share-name-here>",
+"Type": "volume"
+},
+{
+"Target": "/home/output",
+"Source": "<nfs-or-smb-share-name-here>",
+"Type": "volume"
+}]
+}
+}
+```
 
 Azure Stack Edge Pro には、Kubernetes ノードに接続されているデータ ディスク ストレージを使用する `ase-node-local` と呼ばれる組み込みの `StorageClass` もあります。 この `StorageClass` では動的プロビジョニングがサポートされています。 ポッド アプリケーションで `StorageClass` 参照を作成し、PV が自動的に作成されるようにすることができます。 詳細については、[Kubernetes ダッシュボード](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)で `ase-node-local StorageClass` を照会してください。
 

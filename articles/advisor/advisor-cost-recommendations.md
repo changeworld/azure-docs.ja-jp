@@ -3,12 +3,12 @@ title: Azure Advisor を使用してサービス コストを削減する
 description: Azure Advisor を使用して、Azure のデプロイにかかるコストを最適化します。
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 454ed02c06511b55f9f592bbe6fe5ab08605d752
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 767c82c818535304552c1c98ff50a252acc0d08a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075911"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458520"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Azure Advisor を使用してサービス コストを削減する
 
@@ -40,7 +40,7 @@ Advisor は使用状況を分析し、MariaDB、MySQL、または PostgreSQL デ
 
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>プロビジョニングが解除された ExpressRoute 回線を排除してコストを削減する
 
-Advisor により、Azure ExpressRoute 回線が 1 か月を超えてプロバイダー内で**未プロビジョニング**状態であることが検出されました。 接続プロバイダーで回線をプロビジョニングする予定がない場合は、回線を削除することが推奨されます。
+Advisor により、Azure ExpressRoute 回線が 1 か月を超えてプロバイダー内で **未プロビジョニング** 状態であることが検出されました。 接続プロバイダーで回線をプロビジョニングする予定がない場合は、回線を削除することが推奨されます。
 
 ## <a name="reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways"></a>アイドル状態の仮想ネットワーク ゲートウェイを削除または再構成してコストを削減する
 
@@ -71,7 +71,7 @@ Advisor は、過去30日間の Azure Blob Storage と Azure Data Lake ストレ
 ### <a name="mariadb-mysql-and-postgresql-reserved-capacity"></a>MariaDB、MySQL、および PostgreSQL の予約容量
 Advisor は、過去 30 日間の Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL の使用パターンを分析します。 その後、コストを最適化するための予約容量の購入が推奨されます。 予約容量を使用すると、MariaDB、MySQL、および PostgreSQL の時間単位の使用量を事前に購入することで、現在のコストを削減できます。 予約容量は課金特典であり、新規および既存のデプロイに対して自動的に適用されます。 Advisor では、個々のサブスクリプションに対する削減の見積もりを計算するために、3 年分の予約価格と過去 30 日間に観察された使用パターンが使用されます。 予約容量の購入では、共有スコープの推奨事項を利用できるため、さらにコストを削減することができます。
 
-### <a name="azure-synapse-analytics-formerly-sql-data-warehouse-reserved-capacity"></a>Azure Synapse Analytics (旧称 SQL Data Warehouse) の予約容量
+### <a name="azure-synapse-analytics-reserved-capacity"></a>Azure Synapse Analytics の予約容量
 Advisor は過去 30 日間の Azure Synapse Analytics の使用パターンを分析し、コストを最適化する予約容量の購入を推奨します。 予約容量を使用すると、Synapse Analytics の時間単位の使用量を事前に購入することで、オンデマンドのコストを削減できます。 予約容量は課金特典であり、新規および既存のデプロイに対して自動的に適用されます。 Advisor では、個々のサブスクリプションに対する削減の見積もりを計算するために、3 年分の予約価格と過去 30 日間に観察された使用パターンが使用されます。 予約容量の購入では、共有スコープの推奨事項を利用できるため、さらにコストを削減することができます。
 
 ## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>関連付けられていないパブリック IP アドレスのコスト節約のための削除
@@ -103,7 +103,7 @@ Advisor で、テーブル キャッシュ ポリシーを短くすることに�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-1. 任意のページから [ **[Advisor]** ](https://aka.ms/azureadvisordashboard) を検索して選択します。
+1. 任意のページから [ **[Advisor]**](https://aka.ms/azureadvisordashboard) を検索して選択します。
 
 1. **[Advisor]** ダッシュボードで、 **[コスト]** タブをクリックします。
 

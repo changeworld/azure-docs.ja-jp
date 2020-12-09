@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: 7bfd951d7cec27e0b8264aaabf9bc3a17875256a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 17648b9bc973285764bb0bd6242506122a043780
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000727"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454262"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor のカスタマー マネージド キー 
 
@@ -72,11 +72,27 @@ Azure Monitor は、システム割り当てのマネージド ID を活用し�
 1. Key Vault へのアクセス許可の付与
 1. Log Analytics ワークスペースのリンク
 
-カスタマー マネージド キーの構成は Azure portal でサポートされておらず、プロビジョニングは [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/)、[CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics)、または [REST](https://docs.microsoft.com/rest/api/loganalytics/) の要求を使用して実行されます。
+カスタマー マネージド キーの構成は Azure portal でサポートされておらず、プロビジョニングは [PowerShell](/powershell/module/az.operationalinsights/)、[CLI](/cli/azure/monitor/log-analytics)、または [REST](/rest/api/loganalytics/) の要求を使用して実行されます。
 
 ### <a name="asynchronous-operations-and-status-check"></a>非同期操作と状態のチェック
 
-構成手順の一部はすぐに完了できないため、非同期的に実行されます。 REST を使用している場合、応答では最初に HTTP 状態コード 200 (OK) が返され、受け入れられたときに *Azure-AsyncOperation* プロパティを持つヘッダーが返されます。
+構成手順の一部はすぐに完了できないため、非同期的に実行されます。 応答の `status` には、次のいずれかが含まれます。'InProgress'、'Updating'、'Deleting'、'Succeeded、'Failed' (エラー コードを伴う)。
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+N/A
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+N/A
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+該当なし
+
+# <a name="rest"></a>[REST](#tab/rest)
+
+REST を使用している場合、応答では最初に HTTP 状態コード 200 (OK) が返され、受け入れられたときに *Azure-AsyncOperation* プロパティを持つヘッダーが返されます。
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
@@ -87,7 +103,7 @@ GET https://management.azure.com/subscriptions/subscription-id/providers/microso
 Authorization: Bearer <token>
 ```
 
-応答の `status` には、次のいずれかが含まれます。'InProgress'、'Updating'、'Deleting'、'Succeeded、'Failed' (エラー コードを伴う)。
+---
 
 ### <a name="allowing-subscription"></a>サブスクリプションを許可する
 
@@ -107,7 +123,7 @@ Azure Key Vault を作成するか既存のものを使用して、データの�
 
 ### <a name="create-cluster"></a>クラスターの作成
 
-[専用クラスターに関する記事](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters#creating-a-cluster)で示されている手順に従います。 
+[専用クラスターに関する記事](../log-query/logs-dedicated-clusters.md#creating-a-cluster)で示されている手順に従います。 
 
 > [!IMPORTANT]
 > これらの詳細は次の手順で必要になるため、応答をコピーして保存してください。
@@ -137,16 +153,25 @@ Azure Key Vault で現在のバージョンのキーを選択して、キー識�
 
 操作は非同期であり、完了するまでに時間がかかることがあります。
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+N/A
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
 az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --key-name "key-name" --key-vault-uri "key-uri" --key-version "key-version"
 ```
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version"
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 ```rst
-PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name"?api-version=2020-08-01
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name?api-version=2020-08-01
 Authorization: Bearer <token> 
 Content-type: application/json
  
@@ -200,6 +225,8 @@ Content-type: application/json
 }
 ```
 
+---
+
 ### <a name="link-workspace-to-cluster"></a>ワークスペースをクラスターにリンクする
 
 この操作を実行するには、ワークスペースとクラスターの両方に対して、以下のアクションが含まれる "書き込み" アクセス許可が必要です。
@@ -212,7 +239,7 @@ Content-type: application/json
 
 この操作は非同期であり、完了するまでに時間が掛かります。
 
-[専用クラスターに関する記事](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters#link-a-workspace-to-the-cluster)で示されている手順に従います。
+[専用クラスターに関する記事](../log-query/logs-dedicated-clusters.md#link-a-workspace-to-the-cluster)で示されている手順に従います。
 
 ## <a name="key-revocation"></a>キーの失効
 
@@ -250,15 +277,25 @@ Bring Your Own Storage (BYOS) を使用して、それをワークスペース�
 
 "*クエリ*" 用のストレージ アカウントをワークスペースにリンクします。"*保存された検索条件*" のクエリはストレージ アカウントに保存されます。 
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+N/A
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
 $storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
 az monitor log-analytics workspace linked-storage create --type Query --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Query -StorageAccountIds $storageAccount.Id
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Query?api-version=2020-08-01
@@ -276,21 +313,33 @@ Content-type: application/json
 }
 ```
 
+---
+
 構成が完了すると、新しい *保存された検索条件* クエリがストレージに保存されます。
 
 **ログ アラートのクエリ用の BYOS を構成する**
 
 "*アラート*" 用のストレージ アカウントをワークスペースにリンクします。"*ログ アラート*" のクエリはストレージ アカウントに保存されます。 
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+N/A
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
 $storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
 az monitor log-analytics workspace linked-storage create --type ALerts --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Alerts -StorageAccountIds $storageAccount.Id
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Alerts?api-version=2020-08-01
@@ -308,9 +357,12 @@ Content-type: application/json
 }
 ```
 
+---
+
 構成が完了すると、新しいアラート クエリがストレージに保存されます。
 
 ## <a name="customer-lockbox-preview"></a>カスタマー ロックボックス (プレビュー)
+
 お客様は、ロックボックスを使用して、サポート リクエストへの対応時の Microsoft のエンジニアによる顧客データへのアクセス要求を承認または拒否できます。
 
 Azure Monitor を使用すると、Log Analytics 専用クラスターにリンクされているワークスペースのデータに対してこの制御権が与えられます。 ロックボックス コントロールは Log Analytics 専用クラスターに格納されているデータに適用され、ロックボックスで保護されているサブスクリプションの下にあるクラスターのストレージ アカウントに分離されたままになります。  
@@ -321,13 +373,23 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
 
 - **リソース グループ内のすべてのクラスターを取得する**
   
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
   ```azurecli
   az monitor log-analytics cluster list --resource-group "resource-group-name"
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
@@ -369,15 +431,27 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
   }
   ```
 
+  ---
+
 - **サブスクリプション内のすべてのクラスターを取得する**
+
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
   ```azurecli
   az monitor log-analytics cluster list
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Get-AzOperationalInsightsCluster
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
@@ -388,17 +462,29 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
     
   "リソース グループ内のクラスター" に対するものと同じ応答ですが、サブスクリプション スコープです。
 
+  ---
+
 - **クラスターの "*容量予約*" を更新する**
 
   リンクされたワークスペースへのデータ量が時間の経過と共に変化し、容量予約のレベルを適切に更新することが必要になる場合があります。 [クラスターの更新](#update-cluster-with-key-identifier-details)の手順に従って、新しい容量の値を指定してください。 これは 1 日あたり 1000 GB から 3000 GB の範囲で、100 刻みで指定できます。 1 日あたり 3000 GB を超えるレベルの場合は、Microsoft の担当者に有効化を依頼してください。 完全な REST 要求本文を指定する必要はなく、sku を含める必要があることに注意してください。
+
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
   ```azurecli
   az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --sku-capacity daily-ingestion-gigabyte
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity daily-ingestion-gigabyte
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
@@ -413,6 +499,8 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
   }
   ```
 
+  ---
+
 - **クラスターの *billingType* を更新する**
 
   *billingType* プロパティによって、クラスターとそのデータの課金の属性が決まります。
@@ -420,6 +508,20 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
   - *workspaces* - 課金は、ワークスペースをホストするサブスクリプションに比例的に帰属します
   
   [クラスターの更新](#update-cluster-with-key-identifier-details)の手順に従って、新しい billingType の値を指定してください。 完全な REST 要求本文を指定する必要はなく、*billingType* を含める必要があることに注意してください。
+
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+  N/A
+
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+  該当なし
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
@@ -433,36 +535,67 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
   }
   ``` 
 
+  ---
+
 - **ワークスペースのリンクを解除する**
 
   この操作を実行するには、ワークスペースおよびクラスターに対する "書き込み" アクセス許可が必要です。 いつでもクラスターからワークスペースのリンクを解除することができます。 リンク解除操作後に新しく取り込まれたデータは、Log Analytics ストレージに格納され、Microsoft キーで暗号化されます。 クラスターがプロビジョニングされ、有効な Key Vault キーで構成されている場合は、リンク解除の前および後にワークスペースに取り込まれたデータに対してシームレスにクエリを実行できます。
 
   この操作は非同期であり、完了までに時間が掛かります。
 
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
   ```azurecli
   az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --name "cluster-name" --workspace-name "workspace-name"
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Remove-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -Name "workspace-name" -LinkedServiceName cluster
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rest
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
 
-  - **ワークスペースのリンク状態を確認する**
+  ---
+
+- **ワークスペースのリンク状態を確認する**
   
   ワークスペースで Get 操作を実行し、応答の *features* の下に *clusterResourceId* プロパティが存在するかどうかを確認します。 リンクされたワークスペースには、*clusterResourceId* プロパティが存在します。
+
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
   ```azurecli
   az monitor log-analytics cluster show --resource-group "resource-group-name" --name "cluster-name"
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
+
+   ```rest
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>?api-version=2020-08-01
+  Authorization: Bearer <token>
+  ```
+
+  ---
 
 - **クラスターを削除する**
 
@@ -470,18 +603,30 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
   
   リンク解除操作は非同期であり、完了するまでに最大 90 分かかることがあります。
 
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
   ```azurecli
   az monitor log-analytics cluster delete --resource-group "resource-group-name" --name "cluster-name"
   ```
- 
+
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
+
+  ---
   
 - **クラスターとデータを回復する** 
   
@@ -511,6 +656,12 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
 
 - 別のクラスターにリンクされている場合、クラスターへのワークスペースのリンクは失敗します。
 
+- ロックボックスは、現在、中国では使用できません。 
+
+- [二重暗号化](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)は、サポートされているリージョンで 2020 年 10 月以降に作成されたクラスターに対して自動的に構成されます。 クラスターが二重暗号化されるように構成されているかどうかを確認するには、クラスターに対して GET 要求を行い、`"isDoubleEncryptionEnabled"` プロパティの値を検査します。二重暗号化が有効になっているクラスターの場合は `true` です。 
+  - クラスターを作成したときに、「<リージョン名> ではクラスターの二重暗号化がサポートされていません」というエラーが表示された場合でも、二重暗号化なしでクラスターを作成できます。 REST 要求本文に `"properties": {"isDoubleEncryptionEnabled": false}` プロパティを追加します。
+  - クラスターの作成後に、二重暗号化の設定を変更することはできません。
+
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 - Key Vault の可用性に関する動作
@@ -537,8 +688,6 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
 - クラスターの作成、クラスターのキーの更新、クラスターの削除などの一部の操作には長時間かかるため、完了までにしばらく時間がかかる場合があります。 操作の状態を確認するには、次の 2 つの方法があります。
   1. REST を使用している場合、応答から Azure-AsyncOperation URL 値をコピーし、「[非同期操作と状態のチェック](#asynchronous-operations-and-status-check)」に従います。
   2. GET 要求をクラスターまたはワークスペースに送信し、応答を観察します。 たとえば、リンクされていないワークスペースには、*features* の下に *clusterResourceId* が存在しません。
-
-- [二重暗号化](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)は、2020 年 10 月以降、リージョンで二重暗号化が導入された後に作成されたクラスターに対して自動的に構成されます。 クラスターを作成したときに、「<リージョン名> はクラスターの二重暗号化をサポートしていません」というエラーが表示された場合でも、クラスターを作成できますが、二重暗号化は無効になります。 クラスターが作成された後に、有効/無効を切り替えることはできません。 リージョンで二重暗号化がサポートされていない場合にクラスターを作成するには、REST 要求本文に `"properties": {"isDoubleEncryptionEnabled": false}` を追加します。
 
 - エラー メッセージ
   

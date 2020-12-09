@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Studio (プレビュー) 内の SQL スクリプト
-description: Azure Synapse Studio (プレビュー) の SQL スクリプトの概要
+title: Synapse Studio での SQL スクリプト
+description: Azure Synapse Analytics での Synapse Studio SQL スクリプトの概要。
 services: synapse-analytics
 author: pimorano
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 3f3009799889bd6b118f586676e22338d821d37c
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 077815d117af0328a3466346727e135caaf8ff21
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635291"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458004"
 ---
-# <a name="using-sql-scripts-in-azure-synapse-studio-preview"></a>Azure Synapse Studio (プレビュー) での SQL スクリプトの使用
+# <a name="synapse-studio-sql-scripts-in-azure-synapse-analytics"></a>Azure Synapse Analytics での Synapse Studio SQL スクリプト 
 
-Azure Synapse Studio (プレビュー) は、SQL クエリを作成するための SQL スクリプト Web インターフェイスを提供します。 SQL プール (プレビュー) に接続できます。 
+Synapse Studio は、SQL クエリを作成するための SQL スクリプト Web インターフェイスを提供します。 
 
 ## <a name="begin-authoring-in-sql-script"></a>SQL スクリプトの作成を開始する 
 

@@ -1,7 +1,7 @@
 ---
 title: ネットワーク アクセス制御
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Azure SQL Database と Azure Synapse Analytics (旧称 SQL Data Warehouse) のネットワーク アクセスを管理および制御する方法の概要。
+description: Azure SQL Database と Azure Synapse Analytics のネットワーク アクセスを管理および制御する方法の概要。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: be327fabdffc0f98dc0449b51e7e4d73651d80d8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 90bc57af3aaf0d11cd354bfe7163014f836a72e8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789490"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460009"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL Database と Azure Synapse Analytics のネットワーク アクセスの制御
 
@@ -34,7 +34,7 @@ Azure SQL Database と Azure Synapse Analytics の論理 Azure SQL Server を [A
 - Private Link:この機能を使用して、特定の仮想ネットワーク内に[論理 SQL サーバー](logical-servers.md)のプライベート エンドポイントを作成します
 
 > [!IMPORTANT]
-> この記事は、 **SQL Managed Instance** には適用され " *ません* "。 ネットワーク構成の詳細については、[Azure SQL Managed Instance への接続](../managed-instance/connect-application-instance.md)に関するページを参照してください。
+> この記事は、**SQL Managed Instance** には適用され "*ません*"。 ネットワーク構成の詳細については、[Azure SQL Managed Instance への接続](../managed-instance/connect-application-instance.md)に関するページを参照してください。
 
 これらのアクセス制御とその機能の概要については、以下のビデオをご覧ください。
 
@@ -60,8 +60,8 @@ Azure SQL Database と Azure Synapse Analytics の論理 Azure SQL Server を [A
 
 ### <a name="data-sync"></a>データ同期
 
-**[Azure サービスにサーバーへのアクセスを許可する]** を **[オフ]** に設定してデータ同期機能を使用するには、 **ハブ** データベースをホストしているリージョンの **SQL サービス タグ** から [IP アドレスを追加する](firewall-create-server-level-portal-quickstart.md)、個々のファイアウォール規則エントリを作成する必要があります。
-これらのサーバーレベルのファイアウォール規則を、 **ハブ** と **メンバー** の両方のデータベース (異なるリージョンに存在する可能性がある) をホストするサーバーに追加します。
+**[Azure サービスにサーバーへのアクセスを許可する]** を **[オフ]** に設定してデータ同期機能を使用するには、**ハブ** データベースをホストしているリージョンの **SQL サービス タグ** から [IP アドレスを追加する](firewall-create-server-level-portal-quickstart.md)、個々のファイアウォール規則エントリを作成する必要があります。
+これらのサーバーレベルのファイアウォール規則を、**ハブ** と **メンバー** の両方のデータベース (異なるリージョンに存在する可能性がある) をホストするサーバーに追加します。
 
 次の PowerShell スクリプトを使用して、米国西部リージョンの SQL サービス タグに対応する IP アドレスを生成します。
 
@@ -110,7 +110,7 @@ IP ベースのファイアウォールは、Azure の論理 SQL サーバーの
 
 ## <a name="virtual-network-firewall-rules"></a>仮想ネットワーク ファイアウォールの規則
 
-サーバー ファイアウォールでは、IP 規則だけでなく、" *仮想ネットワーク規則* " を定義することもできます。  
+サーバー ファイアウォールでは、IP 規則だけでなく、"*仮想ネットワーク規則*" を定義することもできます。  
 詳細については、[Azure SQL Database の仮想ネットワーク サービス エンドポイントと規則](vnet-service-endpoint-rule-overview.md)に関する記事をお読みいただくか、この動画をご覧ください。
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--Demo--Vnet-Firewall-Rules-for-SQL-Database/player?WT.mc_id=dataexposed-c9-niner]
@@ -129,9 +129,9 @@ IP ベースのファイアウォールは、Azure の論理 SQL サーバーの
 
 ## <a name="ip-vs-virtual-network-firewall-rules"></a>IP 規則と仮想ネットワーク ファイアウォールの規則
 
-Azure SQL Database のファイアウォールでは、SQL Database への通信が許可される IP アドレス範囲を指定できます。 この方法は、Azure プライベート ネットワークの外部にある安定した IP アドレスに適しています。 ただし、Azure プライベート ネットワーク内の仮想マシン (VM) では、" *動的* " IP アドレスが構成されます。 VM を再起動したときに動的 IP アドレスが変化し、その結果 IP ベースのファイアウォール規則が無効になることがあります。 運用環境では、ファイアウォール規則に動的 IP アドレスを指定することは、賢明ではありません。
+Azure SQL Database のファイアウォールでは、SQL Database への通信が許可される IP アドレス範囲を指定できます。 この方法は、Azure プライベート ネットワークの外部にある安定した IP アドレスに適しています。 ただし、Azure プライベート ネットワーク内の仮想マシン (VM) では、"*動的*" IP アドレスが構成されます。 VM を再起動したときに動的 IP アドレスが変化し、その結果 IP ベースのファイアウォール規則が無効になることがあります。 運用環境では、ファイアウォール規則に動的 IP アドレスを指定することは、賢明ではありません。
 
-この制限は、VM の " *静的* " IP アドレスを取得することで回避できます。 詳細については、「[Azure portal を使用して静的パブリック IP アドレスを持つ仮想マシンを作成する](../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md)」を参照してください。 ただし、静的 IP の方法は管理が困難になる場合があり、大規模に実行した場合、コストがかかります。
+この制限は、VM の "*静的*" IP アドレスを取得することで回避できます。 詳細については、「[Azure portal を使用して静的パブリック IP アドレスを持つ仮想マシンを作成する](../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md)」を参照してください。 ただし、静的 IP の方法は管理が困難になる場合があり、大規模に実行した場合、コストがかかります。
 
 仮想ネットワーク規則は、対象の VM を含む特定のサブネットからのアクセスを確立および管理するためのより簡単な代替手段です。
 
@@ -140,7 +140,7 @@ Azure SQL Database のファイアウォールでは、SQL Database への通信
 
 ## <a name="private-link"></a>Private Link
 
-プライベート リンクを使用すると、 **プライベート エンドポイント** 経由でサーバーに接続できます。 プライベート エンドポイントは、特定の[仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)およびサブネット内のプライベート IP アドレスです。
+プライベート リンクを使用すると、**プライベート エンドポイント** 経由でサーバーに接続できます。 プライベート エンドポイントは、特定の[仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)およびサブネット内のプライベート IP アドレスです。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -150,7 +150,7 @@ Azure SQL Database のファイアウォールでは、SQL Database への通信
 
 - オープンソースまたはサードパーティ製のアプリケーションから SQL Database のデータベースに接続する方法のヘルプについては、[SQL Database のクライアント クイックスタート コード サンプル](/previous-versions/azure/ee336282(v=azure.100))に関するページを参照してください。
 
-- 他に開くことが必要な可能性のあるポートの詳細については、 **SQL Database の外部と内部** に関するセクションを、 [ADO.NET 4.5 と SQL Database における 1433 以外のポート](adonet-v12-develop-direct-route-ports.md)に関する記事で確認してください。
+- 他に開くことが必要な可能性のあるポートの詳細については、**SQL Database の外部と内部** に関するセクションを、[ADO.NET 4.5 と SQL Database における 1433 以外のポート](adonet-v12-develop-direct-route-ports.md)に関する記事で確認してください。
 
 - Azure SQL Database 接続の概要については、「[Azure SQL の接続アーキテクチャ](connectivity-architecture.md)」を参照してください
 

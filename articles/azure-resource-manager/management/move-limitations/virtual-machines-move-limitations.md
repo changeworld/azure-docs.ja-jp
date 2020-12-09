@@ -2,13 +2,13 @@
 title: 新しいサブスクリプションまたはリソース グループへ Azure VM を移動する
 description: Azure Resource Manager を使用して、新しいリソース グループまたはサブスクリプションに仮想マシンを移動します。
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: 219a8b438d2715f6e97085a527b386e51759ec2c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 12/01/2020
+ms.openlocfilehash: b1032b5a632bcac82cb9ae1f1b3df7b49f5463f5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317108"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456319"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>仮想マシンの移動に関するガイダンス
 
@@ -19,8 +19,8 @@ ms.locfileid: "91317108"
 次のシナリオはまだサポートされていません。
 
 * Standard SKU Load Balancer または Standard SKU パブリック IP を使用した仮想マシン スケール セットを移動することはできません。
-* プランが添付された Marketplace リソースから作成された仮想マシンは、サブスクリプションの間で移動できません。 現在のサブスクリプションでの仮想マシンをプロビジョニング解除し、新しいサブスクリプションに再デプロイしてください。
 * 仮想ネットワーク内のすべてのリソースを移動しない場合、既存の仮想ネットワーク内の仮想マシンを新しいサブスクリプションに移動することはできません。
+* プランが添付された Marketplace リソースから作成された仮想マシンは、サブスクリプションの間で移動できません。 考えられる回避策については、「[Marketplace のプランを使用した仮想マシン」](#virtual-machines-with-marketplace-plans)を参照してください。
 * 低優先度の仮想マシンと低優先度の仮想マシン スケール セットは、リソース グループまたはサブスクリプション間で移動することはできません。
 * 可用性セット内の仮想マシンを個別に移動することはできません。
 
@@ -35,6 +35,24 @@ az vm encryption disable --resource-group demoRG --name myVm1
 ```azurepowershell-interactive
 Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
 ```
+
+## <a name="virtual-machines-with-marketplace-plans"></a>Marketplace のプランを使用した仮想マシン
+
+プランが添付された Marketplace リソースから作成された仮想マシンは、サブスクリプションの間で移動できません。 この制限を回避するには、現在のサブスクリプションでの仮想マシンのプロビジョニングを解除し、新しいサブスクリプションに再デプロイします。 次の手順により、新しいサブスクリプションで仮想マシンを再作成できます。 ただし、一部のシナリオでは機能しない可能性があります。 そのプランが Marketplace で使用できなくなった場合、これらの手順は機能しなくなります。
+
+1. プランに関する情報をコピーします。
+
+1. OS ディスクを変換先サービスに複製するか、変換元サービスから仮想マシンを削除した後に元のディスクを移動します。
+
+1. 変換先サービスで、ご利用のプランの Marketplace 使用条件に同意します。 次の PowerShell コマンドを実行して、使用条件に同意することができます。
+
+   ```azurepowershell
+   Get-AzMarketplaceTerms -Publisher {publisher} -Product {product/offer} -Name {name/SKU} | Set-AzMarketplaceTerms -Accept
+   ```
+
+   または、ポータルを使用して、そのプランを使用した仮想マシンの新しいインスタンスを作成することもできます。 新しいサブスクリプションの使用条件に同意した後に、その仮想マシンを削除することができます。
+
+1. 変換先サービスで、PowerShell、CLI、または Azure Resource Manager テンプレートを使用して、複製された OS ディスクから仮想マシンを再作成します。 ディスクに接続されているマーケットプレース プランを含めます。 プランに関する情報は、新しいサブスクリプションで購入したプランと一致している必要があります。
 
 ## <a name="virtual-machines-with-azure-backup"></a>Azure Backup を利用した仮想マシン
 

@@ -16,12 +16,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e8258aeef33be9192608f0d4cb29b46f08da64e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f8de6389a04448579672b84e91f0bb4dd0f4ce2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89010632"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460467"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>APNS のトークンベース (HTTP/2) 認証
 
@@ -78,7 +78,7 @@ APNS の証明書の資格情報の使用から移行した場合、トークン
 
 * **キー ID**:Apple Developer ポータルで生成された秘密キーの識別子。たとえば、`2USFGKSKLT` です。
 * **チーム ID**:"プレフィックス" または "アプリのプレフィックス" とも呼ばれます。 これは、Apple Developer ポータルの組織の識別子です。たとえば、`S4V3D7CHJR` です。
-* **[Bundle ID]\(バンドル ID\)** : "アプリ ID" とも呼ばれます。 これは、アプリケーションのバンドル識別子です。たとえば、`com.example.myapp` です。 1 つのキーを複数のアプリで使用できることに注意してください。 この値は、通知の送信時に `apns-topic` HTTP ヘッダーにマップされ、特定のアプリケーションを対象とするために使用されます。 `apns-topic` の値は明示的に設定できないことに注意してください。
+* **[Bundle ID]\(バンドル ID\)** : "アプリ ID" とも呼ばれます。 これは、アプリケーションのバンドル識別子です。たとえば、`com.example.myapp` です。 1 つのアプリには、1 つのキーのみを使用できることに注意してください。 この値は、通知の送信時に `apns-topic` HTTP ヘッダーにマップされ、特定のアプリケーションを対象とするために使用されます。 `apns-topic` の値は明示的に設定できません。
 * **トークン**:"キー" または "秘密キー" とも呼ばれます。 これは、Apple Developer ポータルで生成された .p8 ファイルから取得されます。 キーで APNS が有効になっている必要があります (キーの生成時に Apple Developer ポータルで選択されます)。 この値を NH ポータルや API に指定するときは、その値から PEM ヘッダー/フッターを削除する必要があります。
 * **エンドポイント**: これは、Notification Hubs ポータル ブレードのトグルであり、API の文字列フィールドです。 有効な値は `https://api.development.push.apple.com:443/3/device` または `https://api.sandbox.push.apple.com:443/3/device`です。 Notification Hubs は、通知を送信するために、この値を運用またはサンドボックスのいずれかの環境で使用します。 これは、アプリの `aps-environment` エンタイトルメントと一致する必要があります。一致しないと、生成された APNS デバイス トークンが環境と一致せず、通知の送信に失敗します。
 

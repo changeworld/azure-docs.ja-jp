@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: e80f7d26fb7ab598651d08b4c1b6478b2ae75e3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7405824d2477d2d39c45a56ae545e58a090c321
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563060"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436608"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Azure Sentinel を AWS CloudTrail に接続する
 
@@ -66,7 +66,7 @@ Azure Sentinel ワークスペースへの書き込みアクセス許可が必�
 
     ![AWS6](./media/connect-aws/aws-6.png)
 
-1.  次に、**ロール名**を入力し、 **[ロールの作成]** を選択します。
+1.  次に、**ロール名** を入力し、 **[ロールの作成]** を選択します。
 
     ![AWS7](./media/connect-aws/aws-7.png)
 
@@ -80,11 +80,11 @@ Azure Sentinel ワークスペースへの書き込みアクセス許可が必�
 
 1. Log Analytics で AWS イベントに関連するスキーマを使用するには、**AWSCloudTrail** を検索します。
 
-
+    > [!IMPORTANT]
+    > 2020 年 12 月 1 日以降では、**AwsRequestId** フィールドは **AwsRequestId_** フィールドに置き換えられています (アンダースコアが追加されていることに注意してください)。 以前の **AwsRequestId** フィールドのデータは、お客様が指定したデータ保有期間が終了するまで保持されます。
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、AWS CloudTrail を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
 - [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
-

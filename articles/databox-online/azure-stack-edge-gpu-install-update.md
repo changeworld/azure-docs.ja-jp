@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 10/13/2020
+ms.date: 11/30/2020
 ms.author: alkohli
-ms.openlocfilehash: b0377d7b209da76b03a115dc82831eeb00e1ff95
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 8d17528728c5519244210217b35d6cd6a3afe715
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047082"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448960"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU を更新する 
 
@@ -22,9 +22,9 @@ ms.locfileid: "92047082"
 この記事で説明されている手順は別バージョンのソフトウェアで実行されましたが、現行バージョンのソフトウェアでもプロセスは同じです。
 
 > [!IMPORTANT]
-> - Update **2010** は、デバイス上ではソフトウェア バージョン **2.1.1377.2170** になります。 この更新プログラムの詳細については、[リリース ノート](azure-stack-edge-gpu-2009-release-notes.md)を参照してください。
+> - 更新プログラム **2011** が最新の更新プログラムです。 <!--and corresponds to **2.1.1377.2170** software version on your device.--> この更新プログラムの詳細については、[リリース ノート](azure-stack-edge-gpu-2011-release-notes.md)を参照してください。
 >
-> - 更新プログラムまたは修正プログラムをインストールすると、デバイスが再起動されることに注意してください。 この更新プログラムでは、2 つの更新プログラムを順番に適用する必要があります。 まずデバイス ソフトウェアの更新プログラムを適用してから、Kubernetes の更新プログラムを適用します。 Azure Stack Edge Pro が単一ノード デバイスである場合、進行中のすべての I/O が中断され、デバイス ソフトウェアの更新のために、デバイスで最大 30 分のダウンタイムが発生します。
+> - 更新プログラムまたは修正プログラムをインストールすると、デバイスが再起動されることに注意してください。 この更新プログラムには、デバイス ソフトウェアの更新プログラムと Kubernetes の更新プログラムが含まれています。 Azure Stack Edge Pro が単一ノード デバイスである場合、進行中のすべての I/O が中断され、更新のためにデバイスで最大 30 分のダウンタイムが発生します。
 
 デバイスに更新プログラムをインストールするには、まず更新サーバーの場所を構成する必要があります。 更新サーバーを構成した後は、Azure portal UI またはローカル Web UI を使用して更新プログラムを適用できます。
 
@@ -44,14 +44,14 @@ ms.locfileid: "92047082"
     
     WSUS サーバーは、管理コンソールを使用して更新プログラムを管理および配布するために使用されます。 WSUS サーバーには、組織内で他の WSUS サーバーの更新ソースことができます。 更新プログラムの供給元として機能する WSUS サーバーは、"アップストリーム サーバー" と呼ばれます。 WSUS 実装では、ネットワーク上の少なくとも 1 つの WSUS サーバーは、利用可能な更新情報を取得する Microsoft Update に接続できる必要があります。 管理者は、指定できます - ネットワーク セキュリティと構成 - に基づくその他の WSUS サーバーの数に直接接続 Microsoft Update。
     
-    詳細については、「[Windows Server Update Services (WSUS)](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus)」を参照してください。
+    詳細については、「[Windows Server Update Services (WSUS)](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus)」を参照してください。
 
 ## <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
 Azure portal から更新プログラムをインストールすることをお勧めします。 デバイスでは 1 日に 1 回、更新プログラムのスキャンが自動的に行われます。 更新プログラムが利用可能になると、ポータルに通知が表示されます。 その後、更新プログラムをダウンロードしてインストールすることができます。 
 
 > [!NOTE]
-> 更新プログラムのインストールを続行する前に、デバイスが正常であり、状態が**オンライン**と表示されていることを確認します。
+> 更新プログラムのインストールを続行する前に、デバイスが正常であり、状態が **オンライン** と表示されていることを確認します。
 
 1. ご使用のデバイスで更新プログラムが利用可能になると、通知が表示されます。 通知を選択するか、上部のコマンド バーで **[デバイスの更新]** を選択します。 これにより、デバイスのソフトウェア更新プログラムが適用できるようになります。
 
@@ -59,7 +59,7 @@ Azure portal から更新プログラムをインストールすることをお�
 
 2. **[デバイスの更新プログラム]** ブレードで、リリース ノートの新機能に関連付けられているライセンス条項を確認したことを示すチェック ボックスをオンにします。
 
-    更新プログラムを**ダウンロードしてインストール**するか、単に更新プログラムを**ダウンロード**するかを選択できます。 後でこれらの更新プログラムのインストールを選択できます。
+    更新プログラムを **ダウンロードしてインストール** するか、単に更新プログラムを **ダウンロード** するかを選択できます。 後でこれらの更新プログラムのインストールを選択できます。
 
     ![更新後のソフトウェア バージョン 2](./media/azure-stack-edge-gpu-install-update/portal-update-2a.png)    
 
@@ -88,12 +88,12 @@ Azure portal から更新プログラムをインストールすることをお�
   
     ![更新後のソフトウェア バージョン 8](./media/azure-stack-edge-gpu-install-update/portal-update-7.png)
 
-5. インストールが進行中であることが通知されます。
+5. インストールが進行中であることが通知されます。 
 
     ![更新後のソフトウェア バージョン 9](./media/azure-stack-edge-gpu-install-update/portal-update-8.png)
-
+ 
     ポータルには、インストールが進行中であることを示す情報アラートも表示されます。 デバイスがオフラインになり、メンテナンス モードになります。
-    
+   
     ![更新後のソフトウェア バージョン 10](./media/azure-stack-edge-gpu-install-update/portal-update-9.png)
 
 6. これは 1 ノードのデバイスなので、更新プログラムのインストール後にデバイスが再起動されます。 再起動中に重大なアラートが発生すると、デバイスのハートビートが失われたことが示されます。
@@ -109,7 +109,7 @@ Azure portal から更新プログラムをインストールすることをお�
 
     上部のコマンド バーから **[デバイスの更新]** を選択すると、更新プログラムの進行状況を確認できます。   
 
-8. 更新プログラムがインストールされると、デバイスの状態が**オンライン**に更新されます。 
+8. 更新プログラムがインストールされると、デバイスの状態が **オンライン** に更新されます。 
 
     ![更新後のソフトウェア バージョン 13](./media/azure-stack-edge-gpu-install-update/portal-update-14.png)
 
@@ -117,27 +117,25 @@ Azure portal から更新プログラムをインストールすることをお�
 
     ![更新後のソフトウェア バージョン 14](./media/azure-stack-edge-gpu-install-update/portal-update-15.png)
 
-9. 更新プログラムが利用可能であるという通知が再び表示されます。 これらは Kubernetes の更新プログラムです。 通知を選択するか、上部のコマンド バーで **[デバイスの更新]** を選択します。
+<!--9. You will again see a notification that updates are available. These are the Kubernetes updates. Select the notification or select **Update device** from the top command bar.
 
-    ![更新後のソフトウェア バージョン 15](./media/azure-stack-edge-gpu-install-update/portal-update-16.png)
+    ![Software version after update 15](./media/azure-stack-edge-gpu-install-update/portal-update-16.png)
 
-10. Kubernetes の更新プログラムをダウンロードします。 前の更新プログラム パッケージと比較すると、パッケージのサイズが異なることがわかります。
+10. Download the Kubernetes updates. You can see that the package size is different when compared to the previous update package.
 
-    ![更新後のソフトウェア バージョン 16](./media/azure-stack-edge-gpu-install-update/portal-update-17.png)
+    ![Software version after update 16](./media/azure-stack-edge-gpu-install-update/portal-update-17.png)
 
-    インストールのプロセスは、デバイスの更新プログラムと同じです。 まず更新プログラムがダウンロードされます。
+    The process of installation is identical to that of device updates. First the updates are downloaded.
 
-    ![更新後のソフトウェア バージョン 17](./media/azure-stack-edge-gpu-install-update/portal-update-18.png)    
+    ![Software version after update 17](./media/azure-stack-edge-gpu-install-update/portal-update-18.png)    
     
-11. 更新プログラムがダウンロードされたら、その更新プログラムをインストールできます。 
+11. Once the updates are downloaded, you can then install the updates. 
 
-    ![更新後のソフトウェア バージョン 18](./media/azure-stack-edge-gpu-install-update/portal-update-19.png)
+    ![Software version after update 18](./media/azure-stack-edge-gpu-install-update/portal-update-19.png)
 
-    更新プログラムがインストールされると、デバイスはメンテナンス モードになります。 Kubernetes の更新プログラムの場合、デバイスは再起動されません。 
+    As the updates are installed, the device is put into maintenance mode. The device does not restart for the Kubernetes updates. -->
 
-    Kubernetes の更新プログラムが正常にインストールされると、その他の更新プログラムは必要ないため、バナー通知は表示されなくなります。 デバイスのデバイス ソフトウェアと Kubernetes が最新バージョンになりました。
-
-    ![更新後のソフトウェア バージョン 19](./media/azure-stack-edge-gpu-install-update/portal-update-20.png)
+デバイス ソフトウェアと Kubernetes の更新プログラムが正常にインストールされると、バナー通知は表示されなくなります。 デバイスのデバイス ソフトウェアと Kubernetes が最新バージョンになりました。
 
 
 ## <a name="use-the-local-web-ui"></a>ローカル Web UI を使用する
@@ -163,7 +161,7 @@ Azure portal から更新プログラムをインストールすることをお�
 
 2. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号または更新プログラムの用語を入力します。 たとえば、「**Azure Stack Edge Pro**」と入力し、 **[検索]** をクリックします。
    
-    更新プログラムの一覧に **Azure Stack Edge Update 2010** と表示されます。
+    更新プログラムの一覧に **Azure Stack Edge Update 2011** と表示されます。
    
     <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)-->
 
@@ -198,7 +196,7 @@ Azure portal から更新プログラムをインストールすることをお�
 
 5. 更新プログラムが開始します。 デバイスが正常に更新されると、再起動されます。 この期間は、ローカル UI にはアクセスできません。
    
-6. 再起動が完了したら、 **サインイン** ページが表示されます。 デバイス ソフトウェアが更新されたことを確認するには、ローカル Web UI で、 **[メンテナンス]**  >  **[ソフトウェア更新プログラム]** に移動します。 現行リリースについては、表示されるソフトウェア バージョンは **2.1.1377.2170** になるはずです。
+6. 再起動が完了したら、 **サインイン** ページが表示されます。 デバイス ソフトウェアが更新されたことを確認するには、ローカル Web UI で、 **[メンテナンス]**  >  **[ソフトウェア更新プログラム]** に移動します。 現行リリースについては、表示されるソフトウェア バージョンは **Azure Stack Edge 2011** になるはずです。
 
    <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)--> 
 

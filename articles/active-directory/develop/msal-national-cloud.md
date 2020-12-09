@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: negoe
-ms.reviewer: nacanuma
+ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 0b54a8227594a81c17dcaaaaa6c599d70217c498
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f631ad650b20110084ff902043447f26c2d4ab3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705862"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453598"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>国内クラウド環境で MSAL を使用する
 
@@ -49,13 +49,13 @@ Azure Active Directory (Azure AD) は、グローバル クラウドの他に�
 
 ### <a name="get-an-azure-government-subscription"></a>Azure Government サブスクリプションを取得する
 
-Azure Government サブスクリプションを取得するには、「[Managing and connecting to your subscription in Azure Government (Azure Government でのサブスクリプションの管理と接続)](../../azure-government/documentation-government-manage-subscriptions.md)」を参照してください。
+Azure Government サブスクリプションを取得するには、「[Managing and connecting to your subscription in Azure Government (Azure Government でのサブスクリプションの管理と接続)](../../azure-government/compare-azure-government-global-azure.md)」を参照してください。
 
 Azure Government サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/global-infrastructure/government/request/)を作成してください。
 
 特定のプログラミング言語で国内クラウドを使用する方法の詳細については、お使いの言語に一致するタブを選択してください。
 
-## <a name="net"></a>[.NET](#tab/donet)
+## <a name="net"></a>[.NET](#tab/dotnet)
 
 MSAL.NET を使用して、国内クラウドへのユーザーのサインインを実行し、トークンを取得し、Microsoft Graph API を呼び出すことができます。
 
@@ -122,10 +122,10 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 
 このコードでは:
 
-- `Enter_the_Application_Id_here` は、登録したアプリケーションの**アプリケーション (クライアント) ID** の値です。
+- `Enter_the_Application_Id_here` は、登録したアプリケーションの **アプリケーション (クライアント) ID** の値です。
 - `Enter_the_Tenant_Info_Here` には、次のオプションのいずれかが設定されます。
-    - アプリケーションで**この組織のディレクトリ内のアカウント**がサポートされる場合は、この値をテナント ID またはテナント名 (例: contoso.microsoft.com) に置き換えます。
-    - アプリケーションで**任意の組織のディレクトリ内のアカウント**がサポートされる場合は、この値を `organizations` に置き換えます。
+    - アプリケーションで **この組織のディレクトリ内のアカウント** がサポートされる場合は、この値をテナント ID またはテナント名 (例: contoso.microsoft.com) に置き換えます。
+    - アプリケーションで **任意の組織のディレクトリ内のアカウント** がサポートされる場合は、この値を `organizations` に置き換えます。
 
     すべての国内クラウドの認証エンドポイントを見つけるには、「[Azure AD 認証エンドポイント](./authentication-national-cloud.md#azure-ad-authentication-endpoints)」を参照してください。
 
@@ -150,9 +150,9 @@ const myMSALObj = new UserAgentApplication(msalConfig);
     "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
     ```
 
-- Microsoft Graph を呼び出すには、使用しているクラウドに応じた特定の Graph エンドポイント URL が必要です。 すべての国内クラウド用の Microsoft Graph エンドポイントを見つけるには、「[Microsoft Graph および Graph エクスプローラー サービスのルート エンドポイント](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)」を参照してください。
+- Microsoft Graph API を呼び出すには、使用しているクラウドに固有のエンドポイント URL が必要です。 すべての国内クラウド用の Microsoft Graph エンドポイントを見つけるには、「[Microsoft Graph および Graph エクスプローラー サービスのルート エンドポイント](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)」を参照してください。
 
-    次に示すのは、Graph エンドポイントとスコープの例です。
+    次に示すのは、Microsoft Graph エンドポイントとスコープの例です。
 
     ```json
     "endpoint" : "https://graph.microsoft.us/v1.0/me"
@@ -173,7 +173,7 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
 ```
 
-- Microsoft Graph を呼び出すには、使用しているクラウドに応じた特定の Graph エンドポイント URL が必要です。 すべての国内クラウド用の Microsoft Graph エンドポイントを見つけるには、「[Microsoft Graph および Graph エクスプローラー サービスのルート エンドポイント](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)」を参照してください。
+- Microsoft Graph API を呼び出すには、使用しているクラウドに固有のエンドポイント URL が必要です。 すべての国内クラウド用の Microsoft Graph エンドポイントを見つけるには、「[Microsoft Graph および Graph エクスプローラー サービスのルート エンドポイント](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)」を参照してください。
 
 次に示すのは、Graph エンドポイントとスコープの例です。
 
@@ -222,9 +222,10 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 ## <a name="next-steps"></a>次のステップ
 
-各項目の詳細情報
+各クラウドの Azure portal の URL とトークン エンドポイントの一覧については、[国内クラウドの認証エンドポイント](authentication-national-cloud.md)に関する記事を参照してください。
 
-- [各国のクラウドでの認証](authentication-national-cloud.md)
+国内クラウドのドキュメント:
+
 - [Azure Government](../../azure-government/index.yml)
 - [Azure China 21Vianet](/azure/china/)
 - [Azure Germany](../../germany/index.yml)

@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 3cbca82ba88baf5ddda2a6d7a6cdd35b62f28b8e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8293ed1bfb53895b9631d9730fb75a2364457180
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647938"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452374"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>GPU 仮想マシンを使用してラボを設定する
 
@@ -37,7 +37,7 @@ ms.locfileid: "94647938"
 | サイズ | コア | RAM | 説明 | 
 | ---- | ----- | --- | ----------- | 
 | Small GPU (視覚化) | -&nbsp;6&nbsp;コア<br>-&nbsp;56&nbsp;GB&nbsp;RAM  | [Standard_NV6](../virtual-machines/nv-series.md) | このサイズは、OpenGL や DirectX などのフレームワークを使用するリモート視覚化、ストリーミング、ゲーム、エンコードに最適です。 |
-| Medium GPU (視覚化) | -&nbsp;12&nbsp;コア<br>-&nbsp;112&nbsp;GB&nbsp;RAM  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | このサイズは、OpenGL や DirectX などのフレームワークを使用するリモート視覚化、ストリーミング、ゲーム、エンコードに最適です。 |
+| Medium GPU (視覚化) | -&nbsp;12&nbsp;コア<br>-&nbsp;112&nbsp;GB&nbsp;RAM  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | このサイズは、OpenGL や DirectX などのフレームワークを使用するリモート視覚化、ストリーミング、ゲーム、エンコードに最適です。 |
 
 > [!NOTE]
 > クラスルーム ラボを作成する際、これらの VM サイズの一部が一覧に表示されない場合があります。 このリストの内容は、ラボの場所の現在の容量に基づいて表示されます。 ラボ アカウントの作成者が、[ラボの作成者にラボの場所の選択を許可している](allow-lab-creator-pick-lab-location.md)場合は、ラボに対して別の場所を選択し、VM サイズが表示されるかどうかを確認してください。 VM を利用できるリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/?products=virtual-machines)」を参照してください。
@@ -76,7 +76,7 @@ ms.locfileid: "94647938"
 1. ドライバーと、クラスに必要な他のソフトウェアをインストールした後、 **[発行]** を選択して学生の VM を作成します。
 
 > [!NOTE]
-> Linux イメージを使用している場合は、インストーラーをダウンロードした後、[Linux への CUDA ドライバーのインストール](../virtual-machines/linux/n-series-driver-setup.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#install-cuda-drivers-on-n-series-vms)に関するページの手順に従って、ドライバーをインストールします。
+> Linux イメージを使用している場合は、インストーラーをダウンロードした後、[Linux への CUDA ドライバーのインストール](../virtual-machines/linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#install-cuda-drivers-on-n-series-vms)に関するページの手順に従って、ドライバーをインストールします。
 
 #### <a name="install-the-visualization-gpu-drivers"></a>視覚化 GPU ドライバーをインストールする
 
@@ -86,7 +86,7 @@ ms.locfileid: "94647938"
 1. ラボが作成された後、テンプレート VM に接続して、適切なドライバーをインストールします。
 1. お使いのオペレーティング システムの指示に従って、Microsoft から提供されている GRID ドライバーをテンプレート VM にインストールします。
    -  [Windows NVIDIA GRID ドライバー](../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers)
-   -  [Linux NVIDIA GRID ドライバー](../virtual-machines/linux/n-series-driver-setup.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#nvidia-grid-drivers)
+   -  [Linux NVIDIA GRID ドライバー](../virtual-machines/linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#nvidia-grid-drivers)
   
 1. テンプレート VM を再起動します。
 1. 「[インストールされているドライバーを検証する](how-to-setup-lab-gpu.md#validate-the-installed-drivers)」セクションの手順に従って、ドライバーが正しくインストールされていることを検証します。
@@ -115,6 +115,6 @@ ms.locfileid: "94647938"
 ## <a name="next-steps"></a>次のステップ
 次の記事をご覧ください。
 
-- [クラスルーム ラボを作成して管理する](how-to-manage-classroom-labs.md)
+- [ラボを作成して管理する](how-to-manage-classroom-labs.md)
 - [SOLIDWORKS のコンピューター支援設計 (CAD) クラスの種類](class-type-solidworks.md)
 - [MATLAB (matrix laboratory) クラスの種類](class-type-matlab.md)

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 10476544e513b52567eb0ca0182039f2c5f482c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd0f389615c95ef9b9bc8280b6486740ddba4fb4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441631"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456834"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure Data Factory での反復可能なコピー
 
@@ -25,7 +25,7 @@ ms.locfileid: "89441631"
 リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み込まれることを確認する必要があります。  
  
 > [!NOTE]
-> 以下の例は Azure SQL 向けですが、四角形のデータセットをサポートする任意のデータ ストアに適用できます。 ソースの**種類**とデータ ストアの **query** プロパティ (例: sqlReaderQuery の代わりに query) の調整が必要になる場合があります。   
+> 以下の例は Azure SQL 向けですが、四角形のデータセットをサポートする任意のデータ ストアに適用できます。 ソースの **種類** とデータ ストアの **query** プロパティ (例: sqlReaderQuery の代わりに query) の調整が必要になる場合があります。   
 
 通常は、リレーショナル ストアからの読み取り時に、そのスライスに対応するデータのみを読み込む必要があります。 これを行うには、Azure Data Factory で使用可能な、WindowStart と WindowEnd システム変数を使用します。 Azure Data Factory の変数と関数については、「[Azure Data Factory - 関数およびシステム変数](data-factory-functions-variables.md)」を参照してください。 例: 
 
@@ -104,7 +104,7 @@ ID    Product        Quantity    ModifiedDate
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>メカニズム 2: sliceIdentifierColumnName の使用
 > [!IMPORTANT]
-> 現在、Azure Synapse Analytics (旧称 SQL Data Warehouse) では sliceIdentifierColumnName はサポートされていません。 
+> 現在、sliceIdentifierColumnName は Azure Synapse Analytics ではサポートされていません。 
 
 再現性を実現するための 2 つ目のメカニズムは、対象のテーブルに専用の列 (sliceIdentifierColumnName) を用意する方法です。 この列は、Azure Data Factory がソースと対象の同期状態を保つために使用されます。 この手法は、対象の SQL テーブル スキーマを変更または定義する際に柔軟性がある場合に機能します。 
 

@@ -1,16 +1,16 @@
 ---
-title: クラスルーム ラボの概念 - Azure Lab Services | Microsoft Docs
+title: ラボの概念 - Azure Lab Services | Microsoft Docs
 description: Lab Services の基本概念と、それを使用してラボの作成および管理を容易にする方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 38dd77df7a80ad252b553b6afa8b52d7fee753a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa3a8dad195b4b3cbf0786c8923c8b330d148898
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85443708"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435520"
 ---
-# <a name="classroom-labs-concepts"></a>クラスルーム ラボの概念
+# <a name="labs-concepts"></a>ラボの概念
 
 次の一覧に、Lab Services の主要な概念と定義を記載しています。
 
@@ -48,7 +48,7 @@ ms.locfileid: "85443708"
 
 ### <a name="educator"></a>教師
 
-通常、教師やオンライン トレーナーなどのユーザーは、ラボ アカウントでクラスルーム ラボを作成します。 教師は、次のタスクを実行します。
+通常、教師やオンライン トレーナーなどのユーザーは、ラボ アカウントでラボを作成します。 教師は、次のタスクを実行します。
 
 - クラスルーム ラボを作成する。
 - ラボに仮想マシンを作成します。

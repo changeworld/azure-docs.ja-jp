@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/01/2020
+ms.date: 11/12/2020
 ms.author: alkohli
-ms.openlocfilehash: c38b0b1d3a2e71502ac86bf46771ecfb637ba15d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 342f6a2c4761104823694f2181b3ffa8726a441e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952218"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449411"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイス上の Kubernetes クラスターで Azure Arc を有効にする
 
 この記事では、Azure Stack Edge Pro デバイス上の既存の Kubernetes クラスターで Azure Arc を有効にする方法について説明します。 
 
-この手順は、[Azure Stack Edge Pro デバイス上の Kubernetes ワークロード](azure-stack-edge-gpu-kubernetes-workload-management.md)に関する記事を確認し、[Azure Arc 対応 Kubernetes (プレビュー)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview) の概念を理解しているユーザーを対象としています。
+この手順は、[Azure Stack Edge Pro デバイス上の Kubernetes ワークロード](azure-stack-edge-gpu-kubernetes-workload-management.md)に関する記事を確認し、[Azure Arc 対応 Kubernetes (プレビュー)](../azure-arc/kubernetes/overview.md) の概念を理解しているユーザーを対象としています。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -39,14 +39,13 @@ Kubernetes クラスターで Azure Arc を有効にする前に、Azure Stack E
 
 1. Azure Stack Edge Pro デバイスへのアクセスに使用される Windows クライアント システムがある。
   
-    - クライアントでは、Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、「[Windows PowerShell のインストール](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)」を参照してください。
+    - クライアントでは、Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、「[Windows PowerShell のインストール](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows)」を参照してください。
     
     - [オペレーティング システムがサポートされている](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 
     
 1. [Azure Stack Edge Pro デバイス上の Kubernetes クラスターへのアクセス](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関する記事で説明されている手順を完了している。 完了した内容:
     
-    - クライアントに `kubectl` がインストールされている  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
-    
+    - クライアントに `kubectl` がインストールされている。    
     - `kubectl` クライアントのバージョンと、Azure Stack Edge Pro デバイスで実行されている Kubernetes マスターのバージョンの差が 1 未満であることを確認する。 
       - クライアントで実行されている kubectl のバージョンを確認するには、`kubectl version` を使用します。 完全なバージョン番号をメモしておきます。
       - Azure Stack Edge Pro デバイスのローカル UI で、 **[ソフトウェア更新プログラム]** に移動し、Kubernetes サーバーのバージョン番号をメモします。 
@@ -55,7 +54,6 @@ Kubernetes クラスターで Azure Arc を有効にする前に、Azure Stack E
       
       - これら 2 つのバージョンに互換性があることを確認します。 
 
-<!-- az cli version requirements-->
 
 ## <a name="register-kubernetes-resource-providers"></a>Kubernetes リソース プロバイダーを登録する
 
@@ -90,7 +88,7 @@ Kubernetes クラスターで Azure Arc を有効にする前に、サブスク�
 
     `az ad sp create-for-rbac --skip assignment --name "<Informative name for service principal>"`  
 
-    `az cli` にログインする方法については、[Azure portal で Cloud Shell を開始する](../cloud-shell/quickstart-powershell.md?view=azure-cli-latest#start-cloud-shell)方法に関する記事を参照してください。
+    `az cli` にログインする方法については、[Azure portal で Cloud Shell を開始する](../cloud-shell/quickstart-powershell.md#start-cloud-shell)方法に関する記事を参照してください。
 
     次に例を示します。 
     
@@ -129,7 +127,7 @@ Kubernetes クラスターで Azure Arc を有効にする前に、サブスク�
     }
     PS /home/user>
     ```
-    サービス プリンシパルを作成してロールの割り当てを実行する方法の詳細については、「[Azure Arc 対応オンボード サービス プリンシパルの作成](https://docs.microsoft.com/azure/azure-arc/kubernetes/create-onboarding-service-principal)」の手順を参照してください。
+    サービス プリンシパルを作成してロールの割り当てを実行する方法の詳細については、「[Azure Arc 対応オンボード サービス プリンシパルの作成](../azure-arc/kubernetes/create-onboarding-service-principal.md)」の手順を参照してください。
 
 
 ## <a name="enable-arc-on-kubernetes-cluster"></a>Kubernetes クラスターで Arc を有効にする
@@ -142,7 +140,10 @@ Azure Arc 管理用に Kubernetes クラスターを構成するには、次の�
 
     `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>" -ClientSecret "<Password of service principal>"`
 
-    Azure Stack Edge Pro デバイスに Azure Arc を展開するには、[Azure Arc でサポートされているリージョン](../azure-arc/kubernetes/overview.md#supported-regions)を使用していることを確認してください。現在、Azure Arc はプレビュー段階です。 `az account list-locations` コマンドを使用して、コマンドレットで渡すリージョンの正確な名前を確認することもできます。
+
+    > [!NOTE]
+    > - お使いのデバイスに Azure Arc を展開するには、[Azure Arc でサポートされているリージョン](../azure-arc/kubernetes/overview.md#supported-regions)を使用していることを確認してください。 
+    > - `az account list-locations` コマンドを使用して、`Set-HcsKubernetesAzureArcAgent` コマンドレットで渡す正確な場所の名前を確認します。 場所の名前は通常、スペースなしの形式が使用されます。
     
     たとえば次のようになります。
    
@@ -221,6 +222,9 @@ Azure Arc 管理を削除するには、次の手順を実行します。
 
     `Remove-HcsKubernetesAzureArcAgent` 
 
+
+> [!NOTE]
+> Git リポジトリからリソース `yamls` を削除した場合、既定で Kubernetes クラスターから対応するリソースは削除されません。 Git リポジトリから削除したときにリソースが削除されるようにするには、Arc OperatorParams に `--sync-garbage-collection` を設定する必要があります。 詳細については、「[構成を削除する](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

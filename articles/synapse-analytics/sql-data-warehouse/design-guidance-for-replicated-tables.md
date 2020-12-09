@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 036cb15cf16b5f90dc17ccdce378a073a398d403
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cf40990d59aff984226244f520e6f8f937713fd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86181337"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456490"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>Synapse SQL プールでレプリケート テーブルを使用するための設計ガイダンス
 
@@ -26,13 +26,13 @@ ms.locfileid: "86181337"
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、SQL プールのデータ分散とデータ移動の概念を理解していることを前提としています。  詳細については、[アーキテクチャ](massively-parallel-processing-mpp-architecture.md)に関する記事を参照してください。
+この記事では、SQL プールのデータ分散とデータ移動の概念を理解していることを前提としています。    詳細については、[アーキテクチャ](massively-parallel-processing-mpp-architecture.md)に関する記事を参照してください。
 
-テーブル設計の一環として、ご利用のデータと、そのデータを照会する方法についてできる限り理解してください。  たとえば、次のような質問を考えてみます。
+テーブル設計の一環として、ご利用のデータと、そのデータを照会する方法についてできる限り理解してください。    たとえば、次のような質問を考えてみます。
 
 - テーブルの大きさはどの程度か。
 - どの程度の頻度でテーブルが更新されるか。
-- SQL プール データベース内にファクト テーブルとディメンション テーブルがあるか。
+- SQL プール内にファクトおよびディメンションのテーブルがあるか。
 
 ## <a name="what-is-a-replicated-table"></a>レプリケート テーブルとは
 
@@ -51,8 +51,8 @@ ms.locfileid: "86181337"
 
 次の場合、レプリケート テーブルでは最適なクエリ パフォーマンスが得られない可能性があります。
 
-- テーブルで、頻繁な挿入、更新、削除操作が行われる。 これらのデータ操作言語 (DML) 操作では、レプリケート テーブルを再構築する必要があります。 頻繁に再構築すると、パフォーマンスが低下する場合があります。
-- SQL プールは頻繁にスケーリングされます。 SQL プール データベースをスケーリングすると、コンピューティング ノードの数が変わるため、レプリケート テーブルの再構築が発生します。
+- テーブルで、頻繁な挿入、更新、削除操作が行われる。  これらのデータ操作言語 (DML) 操作では、レプリケート テーブルを再構築する必要があります。  頻繁に再構築すると、パフォーマンスが低下する場合があります。
+- SQL プールは頻繁にスケーリングされます。 SQL プールをスケーリングすると、コンピューティング ノードの数が変わるため、レプリケート テーブルの再構築が発生します。
 - テーブルに多数の列があっても、通常、データ操作でアクセスする列はごく少数である。 このシナリオでは、テーブル全体をレプリケートするのではなく、テーブルを分散し、頻繁にアクセスする列にインデックスを作成する方が効果的であると考えられます｡ クエリでデータ移動が必要な場合、SQL プールでは、要求された列のデータのみが移動されます。
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>単純なクエリ述語でレプリケート テーブルを使用する
@@ -174,8 +174,8 @@ SQL プールでは、テーブルのマスター バージョンを保持する
 
 ```sql
 SELECT [ReplicatedTable] = t.[name]
-  FROM sys.tables t  
-  JOIN sys.pdw_replicated_table_cache_state c  
+  FROM sys.tables t  
+  JOIN sys.pdw_replicated_table_cache_state c  
     ON c.object_id = t.object_id
   JOIN sys.pdw_table_distribution_properties p
     ON p.object_id = t.object_id

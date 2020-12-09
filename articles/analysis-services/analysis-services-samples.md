@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 920cc5142d14308fce412ad44543ddc46dc1663e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0ab0e64d9a088a332ba037dccf01dc445998ebfb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324375"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457558"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services のサンプル
 
@@ -28,7 +28,7 @@ GitHub の「[Adventure Works for Analysis Services](https://github.com/Microsof
 
 ## <a name="sample-database-on-azure"></a>Azure 上のサンプル データベース
 
-Azure Synapse Analytics (旧称 SQL Data Warehouse) には、プロビジョニングされたリソースに含めることができる、サンプルの AdventureWorksDW データベースが用意されています。 詳しくは、「[クイック スタート: Azure Synapse Analytics で専用 SQL プールを作成し、クエリを実行する](/azure/sql-data-warehouse/create-data-warehouse-portal)」を参照してください。
+Azure Synapse Analytics には、プロビジョニングされたリソースに含めることができるサンプルの AdventureWorksDW データベースが用意されています。 詳しくは、「[クイック スタート: Azure Synapse Analytics で専用 SQL プールを作成し、クエリを実行する](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)」を参照してください。
 
 ## <a name="sample-databases-on-github"></a>GitHub 上のサンプル データベース
 

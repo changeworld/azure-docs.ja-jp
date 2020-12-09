@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 2ea9fdcb11bd88755c0972fa166d1d94068ce60e
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: 64fa6c72e3bc37276dd108e3981bbefb5a2021a7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638816"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444519"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>FAQ - データ収集、エージェント、およびワークスペースに関する質問
 
@@ -86,9 +86,9 @@ Windows または Linux IaaS VM は、次の条件で適格とします。
 - オーストラリアの VM の場合、ワークスペースの場所はオーストラリアです
 
 
-## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Log Analytics エージェントによって収集されるのはどのようなデータですか?
+## <a name="what-security-events-are-collected-by-the-log-analytics-agent"></a>Log Analytics エージェントではどのようなセキュリティ イベントが収集されますか?
 
-エージェントによって監視されるアプリケーションとサービスの完全な一覧については、「[Azure Monitor によって監視される内容](../azure-monitor/monitor-reference.md#azure-services)」を参照してください。
+エージェントによって収集されるセキュリティ イベントの完全な一覧については、["共通" と "最小" のセキュリティ イベント設定で保存されるイベントの種類](security-center-enable-data-collection.md#what-event-types-are-stored-for-common-and-minimal)に関するページを参照してください。
 
 > [!IMPORTANT]
 > Azure Firewall などの一部のサービスでは、ログ記録を有効にし、頻度の高いリソースをログ記録するよう選択した場合 (たとえば、ログを *verbose* に設定した場合)、Log Analytics ワークスペースのストレージ ニーズに大きな影響を与える可能性があります。 

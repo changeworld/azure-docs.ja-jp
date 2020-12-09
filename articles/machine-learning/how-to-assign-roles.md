@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 90abd46e73ecb50b5e6de40218571d0ec899752e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0719f2d9200741798c798aca4b4196812f1229c9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012960"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458449"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
 
@@ -27,7 +27,7 @@ ms.locfileid: "95012960"
 >
 > * [Azure Kubernetes クラスター リソースへのアクセスを制御する](../aks/azure-ad-rbac.md)
 > * [Kubernetes 認可に Azure RBAC を使用する](../aks/manage-azure-rbac.md)
-> * [Azure RBAC を使用して BLOB データにアクセスする](/azure/storage/common/storage-auth-aad-rbac-portal)
+> * [Azure RBAC を使用して BLOB データにアクセスする](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!WARNING]
 > 一部のロールを適用すると、他のユーザーが Azure Machine Learning スタジオを使用するときに UI 機能が制限されることがあります。 たとえば、ユーザーのロールにコンピューティング インスタンスを作成する機能がない場合、コンピューティング インスタンスを作成するオプションをスタジオで使用できません。 この動作は想定されており、アクセス拒否エラーが返される操作をユーザーが実行できないようにしています。
@@ -175,7 +175,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 | 新しいコンピューティング クラスターの作成 | 必要なし | 必要なし | 所有者、共同作成者、または `/workspaces/computes/write` が可能なカスタム ロール |
 | 新しいコンピューティング インスタンスの作成 | 必要なし | 必要なし | 所有者、共同作成者、または `/workspaces/computes/write` が可能なカスタム ロール |
 | 任意の種類の実行を送信する | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` が可能なカスタム ロール |
-| パイプライン エンドポイントを公開する | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` が可能なカスタム ロール |
+| パイプラインとエンドポイントの公開 | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` が可能なカスタム ロール |
 | AKS/ACI リソースに登録済みモデルを配置する | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/services/aks/write", "/workspaces/services/aci/write"` が可能なカスタム ロール |
 | 配置された AKS エンドポイントに対するスコアリング | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (Azure Active Directory 認証を使用していない場合) または `"/workspaces/read"` (トークン認証を使用している場合) が可能なカスタム ロール |
 | 対話型ノートブックを使用してストレージにアクセスする | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*", "/workspaces/listKeys/action"` が可能なカスタム ロール |

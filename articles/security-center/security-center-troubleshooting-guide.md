@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 6646b8a563cfe156a23b47011a769c6df015a286
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 64b39dfa581b242fbb490d61b388f2bf260976ef
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340344"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460422"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center トラブルシューティング ガイド
 
@@ -29,7 +29,7 @@ Security Center では、データの収集と格納に Log Analytics エージ�
 
 * 仮想マシンの動作分析 (VMBA)
 * ネットワーク分析
-* SQL Database および Azure Synapse Analytics (旧称 SQL Data Warehouse) の分析
+* SQL Database および Azure Synapse の分析
 * コンテキスト情報
 
 アラートの種類に応じて、お客様は次のリソースを使用して、アラートを調査するために必要な情報を収集することができます。
@@ -62,7 +62,7 @@ Security Center では、Log Analytics エージェントを使用して、Azure
 
 ![サービス](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
 
-エージェントのバージョンを確認するには、**タスク マネージャー**を開き、 **[プロセス]** タブで **Log Analytics エージェント サービス**を見つけます。サービスを右クリックし、 **[プロパティ]** をクリックします。 **[詳細]** タブで、次のようなファイルのバージョンを確認します。
+エージェントのバージョンを確認するには、**タスク マネージャー** を開き、 **[プロセス]** タブで **Log Analytics エージェント サービス** を見つけます。サービスを右クリックし、 **[プロパティ]** をクリックします。 **[詳細]** タブで、次のようなファイルのバージョンを確認します。
 
 ![ファイル](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
@@ -132,7 +132,7 @@ Security Center ダッシュボードを読み込む際に問題が発生した�
 
 ## <a name="contacting-microsoft-support"></a>Microsoft サポートへの問い合わせ
 
-一部の問題は、この記事に示したガイドラインを使用して特定できます。その他の問題については、Security Center パブリック [Microsoft Q&A ページ](/answers/topics/azure-security-center.html)でドキュメントを見つけることもできます。 ただし、さらにトラブルシューティングが必要な場合は、次に示すように **Azure ポータル**を使用して新しいサポート要求を開くことができます。
+一部の問題は、この記事に示したガイドラインを使用して特定できます。その他の問題については、Security Center パブリック [Microsoft Q&A ページ](/answers/topics/azure-security-center.html)でドキュメントを見つけることもできます。 ただし、さらにトラブルシューティングが必要な場合は、次に示すように **Azure ポータル** を使用して新しいサポート要求を開くことができます。
 
 ![Microsoft サポート](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 

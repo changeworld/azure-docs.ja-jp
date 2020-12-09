@@ -11,13 +11,13 @@ ms.author: memildin
 manager: rkarlin
 author: memildin
 ms.reviewer: vanto
-ms.date: 09/21/2020
-ms.openlocfilehash: d147303df43c4f86843df518c71316e6a97b6671
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 12/01/2020
+ms.openlocfilehash: 4bb7f2fd5823a9d8ebf4234f3bb41d955574b838
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678077"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451554"
 ---
 # <a name="azure-defender-for-sql"></a>Azure Defender for SQL
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -41,12 +41,14 @@ Azure Defender の使用を始める手順は以下のとおりです。
 
 ## <a name="enable-azure-defender"></a>Azure Defender を有効にする
 
-Azure Defender には、[Azure portal](https://portal.azure.com) からアクセスできます。 Azure Defender を有効にするには、ご使用のサーバーまたはマネージド インスタンスの **[セキュリティ]** 見出しの下の **[セキュリティ センター]** に移動します。
+Azure Defender には、[Azure portal](https://portal.azure.com) からアクセスできます。 Azure Defender を有効にするには、ご使用のサーバーまたはマネージド インスタンスの **[セキュリティ]** 見出しの下の **[Security Center]** に移動します。
 
 > [!NOTE]
-> ストレージ アカウントが自動的に作成され、 **脆弱性評価** のスキャン結果を格納するように構成されます。 同じリソース グループおよびリージョン内の別のサーバー用に Azure Defender を既に有効にしてある場合は、既存のストレージ アカウントが使用されます。
+> ストレージ アカウントが自動的に作成され、**脆弱性評価** のスキャン結果を格納するように構成されます。 同じリソース グループおよびリージョン内の別のサーバー用に Azure Defender を既に有効にしてある場合は、既存のストレージ アカウントが使用されます。
 >
 > Azure Defender のコストは、ノード (マネージド インスタンスまたはサーバー全体) あたりの Azure Security Center Standard レベルの価格に合わせて設定されています。 したがって、1 回お支払いいただければ、サーバーまたはマネージド インスタンス上のすべてのデータベースが Azure Defender で保護されます。 最初は無料試用版で Azure Defender をお試しいただけます。
+
+:::image type="content" source="media/azure-defender-for-sql/enable-azure-defender.png" alt-text="Azure Defender を有効にする":::
 
 ## <a name="start-tracking-vulnerabilities-and-investigating-threat-alerts"></a>脆弱性の追跡と脅威アラートの調査を開始する
 
@@ -54,15 +56,19 @@ Azure Defender には、[Azure portal](https://portal.azure.com) からアクセ
 
 ## <a name="manage-azure-defender-settings"></a>Azure Defender の設定を管理する
 
-Azure Defender の設定を表示および管理するには、ご使用のサーバーまたはマネージド インスタンスの **[セキュリティ]** 見出しの下の **[セキュリティ センター]** に移動します。 このページでは、Azure Defender を有効または無効にしたり、サーバーまたはマネージド インスタンス全体に対する脆弱性評価や Advanced Threat Protection の設定を変更したりできます。
+Azure Defender の設定を表示および管理するには、ご使用のサーバーまたはマネージド インスタンスの **[セキュリティ]** 見出しの下の **[Security Center]** に移動します。 このページでは、Azure Defender を有効または無効にしたり、サーバーまたはマネージド インスタンス全体に対する脆弱性評価や Advanced Threat Protection の設定を変更したりできます。
+
+:::image type="content" source="media/azure-defender-for-sql/security-server-settings.png" alt-text="サーバーのセキュリティの設定":::
 
 ## <a name="manage-azure-defender-settings-for-a-database"></a>データベースの Azure Defender の設定を管理する
 
-特定のデータベースに対する Azure Defender の設定をオーバーライドするには、 **[データベース レベルで Azure Defender for SQL を有効にします]** チェック ボックスをオンにします。 このオプションは、サーバーまたはマネージド インスタンス上の全データベースについて受け取る通知の代わりに、またはそれに加えて、個別のデータベースに対する Advanced Threat Protection アラートまたは脆弱性評価結果を別に受け取る特定の要件がある場合にのみ使用します。
+特定のデータベースに対する Azure Defender の設定をオーバーライドするには、データベースの **[Security Center]** の設定で **[データベース レベルで Azure Defender for SQL を有効にします]** チェック ボックスをオンにします。 このオプションは、サーバーまたはマネージド インスタンス上の全データベースについて受け取る通知の代わりに、またはそれに加えて、個別のデータベースに対する Advanced Threat Protection アラートまたは脆弱性評価結果を別に受け取る特定の要件がある場合にのみ使用します。
 
 チェック ボックスをオンにすると、このデータベースに対して関連する設定を構成することができます。
 
-サーバーまたはマネージド インスタンス用の Azure Defender for SQL 設定には、Azure Defender のデータベース ペインからもアクセスできます。 メインの Azure Defender ペインで **[設定]** をクリックし、 **[Azure Defender for SQL Server 設定を表示します]** をクリックします。
+:::image type="content" source="media/azure-defender-for-sql/enable-for-database-level.png" alt-text="データベース レベルで Azure Defender を有効にする":::
+
+サーバーまたはマネージド インスタンス用の Azure Defender for SQL 設定には、Azure Defender のデータベース ペインからもアクセスできます。 メインの [Security Center] ペインで **[設定]** をクリックし、 **[Azure Defender for SQL Server 設定を表示します]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 

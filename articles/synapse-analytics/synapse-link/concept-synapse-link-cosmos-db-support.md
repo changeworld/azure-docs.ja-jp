@@ -9,14 +9,14 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: fa05f8a8b05a0acddae906a93c90c42424466969
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3d12e60e2aeee667b89d56589870d53366772014
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322599"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459040"
 ---
-# <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Azure Cosmos DB 用の Azure Synapse Link (プレビュー) でサポートされる機能
+# <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>Azure Cosmos DB 用の Azure Synapse Link でサポートされる機能
 
 この記事では、Azure Cosmos DB 用の Azure Synapse Link で現在サポートされている機能について説明します。
 
@@ -31,9 +31,9 @@ Azure Cosmos DB には、次の 2 種類のコンテナーがあります。
 
 Synapse Link を有効にしなくても、Azure Cosmos DB コンテナーに接続できます。 このシナリオでは、トランザクション ストアに対して読み取り/書き込みのみを行うことができます。 Azure Cosmos DB 用の Synapse Link 内で現時点でサポートされている機能の一覧を次に示します。 
 
-| カテゴリ              | 説明 |[Spark](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) | [SQL サーバーレス](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) |
+| カテゴリ              | 説明 |[Apache Spark プール](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) | [サーバーレス SQL プール](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- |
-| **ランタイム サポート** |Azure Cosmos DB にアクセスするためにサポートされている Azure Synapse ランタイム| ✓ | ✓ |
+| **ランタイム サポート** |Azure Cosmos DB にアクセスするためにサポートされている Azure Synapse ランタイム| ✓ | プレビュー |
 | **Azure Cosmos DB API サポート** | サポートされている Azure Cosmos DB API の種類 | SQL / MongoDB | SQL / MongoDB |
 | **Object**  |Azure Cosmos DB コンテナーを直接指す、作成できるテーブルなどのオブジェクト| データフレーム、ビュー、テーブル | 表示 |
 | **読み取り**    | 読み取り可能な Azure Cosmos DB コンテナーのタイプ | OLTP / HTAP | HTAP  |
@@ -53,12 +53,12 @@ Synapse Link を有効にしなくても、Azure Cosmos DB コンテナーに接
 | **コンテナーへのストリーミング データフレームの書き込み** |Azure Cosmos DB の変更フィードを使用してデータをストリーミングします|✓| ✓ |
 
 
-## <a name="supported-code-generated-actions-for-sql-serverless"></a>SQL サーバーレスに対してサポートされているコード生成アクション
+## <a name="supported-code-generated-actions-for-serverless-sql-pool"></a>サーバーレス SQL プールに対してサポートされているコード生成アクション
 
 | ジェスチャ              | 説明 |OLTP |HTAP |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
 | **データの探索** |使い慣れた T-SQL 構文と自動スキーマ推論を使用してコンテナーからデータを探索する|X| ✓ |
-| **ビューの作成と BI レポートの作成** |SQL ビューを作成して、Synapse SQL サーバーレスで BI 用コンテナーに直接アクセス可能 |X| ✓ |
+| **ビューの作成と BI レポートの作成** |SQL ビューを作成して、サーバーレス SQL プールで BI 用コンテナーに直接アクセス可能 |X| ✓ |
 | **Cosmos DB データおよびさまざまなデータ ソースの結合** | CETAS を使用して、Azure Blob Storage または Azure Data Lake Storage のデータと共に、Cosmos DB コンテナーからデータを読み取るクエリの結果を格納する |X| ✓ |
 
 ## <a name="next-steps"></a>次のステップ

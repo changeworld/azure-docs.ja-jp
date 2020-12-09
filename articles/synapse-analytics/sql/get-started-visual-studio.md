@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: a284e453a621860c0aebf68bef13d30e77971f88
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ef8e2a3d1a6b78e8f2b6b9a900ed2485c1a4a5d7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686159"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451597"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Visual Studio と SSDT を使用して Synapse SQL に接続する
 
@@ -30,7 +30,7 @@ ms.locfileid: "94686159"
 Visual Studio を使用して Azure Synapse Analytics を使用した専用 SQL プールに対するクエリを実行します。 この方法では、Visual Studio 2019 の SQL Server Data Tools (SSDT) 拡張機能が使用されます。 
 
 > [!NOTE]
-> サーバーレス SQL プール (プレビュー) は、SSDT ではサポートされていません。
+> サーバーレス SQL プールは、SSDT ではサポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
 

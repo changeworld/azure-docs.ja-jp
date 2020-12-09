@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics (旧称 SQL DW) のよく寄せられる質問
-description: この記事では、Azure Synapse Analytics (旧称 SQL DW) に関してお客様と開発者からよく寄せられる質問の一覧を示します。
+title: 専用 SQL プール (以前の SQL DW) についてよく寄せられる質問
+description: この記事では、Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) に関してお客様と開発者からよく寄せられる質問の一覧を示します。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,14 +10,14 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d1e2f82ecd80579d19f3a8793db64f6b8a17a440
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c8f8ae81f6f030245899ec82dbe16b29846dab23
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323598"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460515"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (旧称 SQL DW) のよく寄せられる質問
+# <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-frequently-asked-questions"></a>Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) についてよく寄せられる質問
 
 ## <a name="general"></a>全般
 
@@ -27,11 +27,11 @@ A. Azure Synapse は、データ ウェアハウスとビッグ データ分析�
 
 Q. Azure SQL Data Warehouse はどうなりましたか
 
-A. Azure Synapse は、Azure SQL Data Warehouse の進化版です。 業界をリードする同じデータ ウェアハウスに、まったく新しいレベルのパフォーマンスと機能を搭載しました。 Azure Synapse を使用すると、運用環境で既存のデータ ウェアハウスのワークロードを引き続き実行できます。 詳しくは、[Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md) に関する記事をご覧ください。
+A. Azure Synapse は、Azure SQL Data Warehouse の進化版です。 業界をリードする同じデータ ウェアハウスに、まったく新しいレベルのパフォーマンスと機能を搭載しました。 Azure Synapse の専用 SQL プール (以前の SQL DW) を使用すると、運用環境で既存のデータ ウェアハウスのワークロードを引き続き実行できます。 詳しくは、[Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md) に関する記事をご覧ください。
 
-Q. 専用 SQL プールとは
+Q. Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) とは
 
-A. 専用 SQL プールは、Azure Synapse で一般提供されているエンタープライズ データ ウェアハウス機能を指します。 詳しくは、[Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md) に関する記事をご覧ください。
+A. 専用 SQL プール (以前の SQL DW) は、Azure Synapse で一般提供されているエンタープライズ データ ウェアハウス機能を指します。 詳しくは、[Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md) に関する記事をご覧ください。
 
 Q. Azure Synapse の使用を開始する方法
 
@@ -49,7 +49,7 @@ Q. Power BI は接続できますか
 
 A. はい。 Power BI は Azure Synapse での直接クエリをサポートしますが、多数のユーザーまたはリアルタイム データを意図したものではありません。 Power BI のパフォーマンスをさらに最適化したい場合は、Azure Analysis Services または Analysis Services IaaS 上で Power BI を使用することを検討してください。
 
-Q. 専用 SQL プールの容量制限とは
+Q. 専用 SQL プール (以前の SQL DW) の容量制限はどのくらいですか。
 
 A. [容量制限に関するページ](sql-data-warehouse-service-capacity-limits.md)をご覧ください。
 
@@ -83,15 +83,15 @@ A. 多くの機能がサポートされています。 サポートされてい�
 
 ## <a name="tooling-and-administration"></a>ツールと管理
 
-Q. 専用 SQL プールは REST API をサポートしていますか。
+Q. 専用 SQL プール (以前の SQL DW) は REST API をサポートしていますか。
 
-A. はい。 SQL Database で使用できるほとんどの REST 機能は、専用 SQL プールでも使用できます。 API の情報については、REST のドキュメントまたは[データベース](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)をご覧ください。
+A. はい。 SQL Database で使用できるほとんどの REST 機能は、専用 SQL プール (以前の SQL DW) でも使用できます。 API の情報については、REST のドキュメントまたは[データベース](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)をご覧ください。
 
 ## <a name="loading"></a>読み込み
 
 Q. どのようなクライアント ドライバーをサポートしていますか。
 
-A. 専用 SQL プールのドライバー サポートについては、[接続文字列](../sql/connection-strings.md)に関するページをご覧ください
+A. 専用 SQL プール (以前の SQL DW) のドライバー サポートについては、[接続文字列](sql-data-warehouse-connection-strings.md)に関するページを参照してください
 
 Q:PolyBase ではどのようなファイル形式がサポートされていますか
 
@@ -107,8 +107,8 @@ A:いいえ、PolyBase は記憶域コンポーネントのみを操作します
 
 Q:HDI に接続できますか。
 
-A:HDI は、HDFS レイヤーとして ADLS または WASB を使うことができます。 HDFS レイヤーとしていずれかがある場合は、専用 SQL プールにそのデータを読み込むことができます。 ただし、HDI インスタンスに対するプッシュダウン計算を生成することはできません。
+A:HDI は、HDFS レイヤーとして ADLS または WASB を使うことができます。 HDFS レイヤーとしていずれかがある場合は、専用 SQL プール (以前の SQL DW) にそのデータを読み込むことができます。 ただし、HDI インスタンスに対するプッシュダウン計算を生成することはできません。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Synapse の詳細については、「[概要](sql-data-warehouse-overview-faq.md)」ページをご覧ください。
+Azure Synapse の専用 SQL プール (以前の SQL DW) の詳細については、[概要](sql-data-warehouse-overview-what-is.md)に関するページを参照してください。

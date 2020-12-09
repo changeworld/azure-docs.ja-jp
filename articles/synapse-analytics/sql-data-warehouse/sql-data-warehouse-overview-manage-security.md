@@ -1,6 +1,6 @@
 ---
-title: データベースの保護
-description: Azure Synapse Analytics での専用 SQL プールのセキュリティ保護とソリューションの開発に関するヒント。
+title: 専用 SQL プール (旧称 SQL DW) をセキュリティで保護する
+description: Azure Synapse Analytics での専用 SQL プール (旧称 SQL DW) のセキュリティ保護とソリューションの開発に関するヒント。
 author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
@@ -11,14 +11,14 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: f6c1370cab573926183a937b8e749ef490c19334
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ce09488e2323aada5f99494ef3920681b685ec0b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317702"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453637"
 ---
-# <a name="secure-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics で専用 SQL プールをセキュリティで保護する
+# <a name="secure-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) をセキュリティで保護する
 
 > [!div class="op_single_selector"]
 >
@@ -27,7 +27,7 @@ ms.locfileid: "93317702"
 > * [暗号化 (ポータル)](sql-data-warehouse-encryption-tde.md)
 > * [暗号化 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
-この記事では、専用 SQL プールをセキュリティで保護するための基本事項について説明します。 特にこの記事では、専用 SQL プールを使用してアクセスの制限、データの保護、アクティビティの監視を行うためのリソースの概要を説明します。
+この記事では、専用 SQL プール (旧称 SQL DW) をセキュリティで保護するための基本事項について説明します。 特にこの記事では、専用 SQL プール (旧称 SQL DW) を使用してアクセスの制限、データの保護、アクティビティの監視を行うためのリソースの概要を説明します。
 
 ## <a name="connection-security"></a>接続のセキュリティ
 
@@ -35,15 +35,15 @@ ms.locfileid: "93317702"
 
 ファイアウォール規則は[論理 SQL サーバー](../../azure-sql/database/logical-servers.md)とそのデータベースの両方で使用され、明示的に承認されていない IP アドレスからの接続試行を拒否します。 アプリケーションまたはクライアント コンピューターのパブリック IP アドレスからの接続を許可するには、まず Azure Portal、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。
 
-ベスト プラクティスとして、可能な限りサーバーレベルのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。  ローカル コンピューターから専用 SQL プールにアクセスするには、TCP ポート 1433 での発信を許可するようにネットワークのファイアウォールとローカル コンピューターを設定します。  
+ベスト プラクティスとして、可能な限りサーバーレベルのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。  ローカル コンピューターから専用 SQL プール (旧称 SQL DW) にアクセスするには、TCP ポート 1433 での発信を許可するようにネットワークとローカル コンピューターのファイアウォールを設定します。  
 
-Azure Synapse Analytics は、サーバー レベルの IP ファイアウォール規則を使用します。 データベース レベルの IP ファイアウォール規則はサポートされていません。 詳細については、「[Azure SQL Database ファイアウォール規則](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)」を参照してください
+専用 SQL プール (旧称 SQL DW) では、サーバー レベルの IP ファイアウォール規則が使用されます。 データベース レベルの IP ファイアウォール規則はサポートされていません。 詳細については、「[Azure SQL Database ファイアウォール規則](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)」を参照してください
 
-専用 SQL プールへの接続は、既定で暗号化されます。  暗号化を無視するように接続の設定を変更しても、その変更は無視されます。
+専用 SQL プール (旧称 SQL DW) への接続は、既定で暗号化されます。  暗号化を無視するように接続の設定を変更しても、その変更は無視されます。
 
 ## <a name="authentication"></a>認証
 
-認証とは、データベースへの接続時に ID を証明する方法のことです。 専用 SQL プールでは現在、ユーザー名とパスワードを使用した SQL Server 認証と、Azure Active Directory による認証がサポートされています。
+認証とは、データベースへの接続時に ID を証明する方法のことです。 専用 SQL プール (旧称 SQL DW) では現在、ユーザー名とパスワードを使用した SQL Server 認証と、Azure Active Directory による認証がサポートされています。
 
 データベースのサーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定しています。 これらの資格情報を使用すると、データベース所有者、つまり "dbo" として、そのサーバーにある任意のデータベースを SQL Server 認証を通して認証できます。
 
@@ -57,7 +57,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-次に、サーバー管理者ログインを使用して **専用 SQL プール データベース** に接続し、先ほど作成したサーバー ログインに基づいてデータベース ユーザーを作成します。
+次に、サーバー管理者ログインを使用して **専用 SQL プール (旧称 SQL DW)** に接続し、作成したサーバー ログインに基づいてデータベース ユーザーを作成します。
 
 ```sql
 -- Connect to the database and create a database user
@@ -104,4 +104,4 @@ SQL Database では、データベース暗号化キーは組み込まれてい�
 
 ## <a name="next-steps"></a>次のステップ
 
-さまざまなプロトコルでのウェアハウスへの接続の詳細と例については、[専用 SQL プールへの接続](../sql/connect-overview.md)に関するページを参照してください。
+さまざまなプロトコルでのウェアハウスへの接続の詳細と例については、[専用 SQL プール (旧称 SQL DW) への接続](sql-data-warehouse-connect-overview.md)に関するページを参照してください。

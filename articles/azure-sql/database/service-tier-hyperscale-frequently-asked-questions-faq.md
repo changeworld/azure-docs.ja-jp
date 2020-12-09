@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: 400dd66827e82c1ede496526c49977e6f5383487
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4ea1982e7545f4ac39a5ecd15dc9e19a582ae31c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780191"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459635"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database ハイパースケールに関する FAQ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -118,7 +118,7 @@ Hyperscale サービス レベルの対象として意図されているのは�
 
 現在、SQL Server をデータ ウェアハウスとして使用して対話型分析クエリを実行している場合、ハイパースケールがオプションとして優れています。小規模および中規模データ ウェアハウス (数 TB から最大 100 TB) をホスティングするコストを抑えることができ、最小限の T-SQL コードの変更で SQL Server データ ウェアハウス ワークロードをハイパースケールに移行できます。
 
-複雑なクエリおよび持続的に 100 MB/秒を超えるデータ インジェスト速度で大規模にデータ分析を実行している場合、または Parallel Data Warehouse (PDW)、Teradata またはその他の超並列処理 (MPP) データ ウェアハウスを使用している場合は、Azure Synapse Analytics (旧称 SQL Data Warehouse) が最適な選択肢となるでしょう。
+複雑なクエリおよび 100 MB/s を超える持続的なインジェスト速度で大規模に Data Analytics を実行しているか、Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列処理 (MPP) データ ウェアハウスを使用している場合は、Azure Synapse Analytics が最適な選択肢である可能性があります。
   
 ## <a name="hyperscale-compute-questions"></a>ハイパースケールのコンピューティングに関する質問
 

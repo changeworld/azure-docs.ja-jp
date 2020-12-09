@@ -10,18 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: dd285e8029d8e140380b0f90c60081d0e1f8dd56
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 06faa1da71331c299245a93af96166880e7732de
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305040"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451772"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Synapse SQL の一時テーブル
 
 この記事では、Synapse SQL 内のセッション レベルの一時テーブルの原則を中心に、一時テーブルの基本的な利用方法について説明します。 
 
-専用 SQL プールとサーバーレス SQL プール (プレビュー) の両方のリソースで、一時テーブルを利用できます。 サーバーレス SQL プールにはいくつかの制限事項があり、それについては、この記事の最後で説明しています。 
+専用 SQL プールとサーバーレス SQL プールの両方のリソースで、一時テーブルを利用できます。 サーバーレス SQL プールにはいくつかの制限事項があり、それについては、この記事の最後で説明しています。 
 
 ## <a name="temporary-tables"></a>一時テーブル
 
@@ -226,7 +226,7 @@ DROP TABLE #stats_ddl;
 - 一時テーブルでビューを作成することはできません。
 - 一時テーブルは、ハッシュまたはラウンド ロビン ディストリビューションでのみ作成できます。  レプリケートされた一時テーブルのディストリビューションはサポートされていません。 
 
-## <a name="temporary-tables-in-serverless-sql-pool-preview"></a>サーバーレス SQL プール内の一時テーブル (プレビュー)
+## <a name="temporary-tables-in-serverless-sql-pool"></a>サーバーレス SQL プール内の一時テーブル
 
 サーバーレス SQL プール内の一時テーブルはサポートされていますが、その使用法は制限されています。 一時テーブルは、ファイルを対象とするクエリでは使用できません。 
 

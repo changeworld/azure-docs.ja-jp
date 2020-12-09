@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: jmartens
 author: j-martens
 ms.date: 11/16/2020
-ms.openlocfilehash: 2abad31173992a891e908bdbb61c37e905907d69
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 0afbf32f80a3d19f6db457f398a213a634cfa3d4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697580"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447055"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Visual Studio Code で Azure Machine Learning コンピューティング インスタンスに接続する (プレビュー)
 
@@ -41,7 +41,7 @@ Visual Studio Code からコンピューティング インスタンスに接続
 1. 統合ノートブックのエクスペリエンスが読み込まれたら、**Jupyter Server** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > ![Launch Azure Machine Learning のリモート Jupyter Notebook サーバー ドロップダウン](media/how-to-set-up-vs-code-remote/launch-server-selection-dropdown.png)
+    > ![Azure Machine Learning のリモート Jupyter Notebook サーバー ドロップダウンの表示](media/how-to-set-up-vs-code-remote/launch-server-selection-dropdown.png)
 
     または、次のようにコマンド パレットを使用することもできます。
 

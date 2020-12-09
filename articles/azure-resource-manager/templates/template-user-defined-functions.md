@@ -1,20 +1,20 @@
 ---
 title: テンプレートでのユーザー定義関数
-description: Azure Resource Manager テンプレートでユーザー定義関数を定義して使用する方法について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) でユーザー定義関数を定義して使用する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 69f4e98d389cc8dbe5cd3f4b628189676c501106
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12199aca788438e4558ed2c607b866f0dc723e2a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84672937"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436965"
 ---
-# <a name="user-defined-functions-in-azure-resource-manager-template"></a>Azure Resource Manager テンプレートのユーザー定義関数
+# <a name="user-defined-functions-in-arm-template"></a>ARM テンプレートでのユーザー定義関数
 
 テンプレート内で、独自の関数を作成できます。 これらの関数は、テンプレートで使用可能です。 ユーザー定義関数は、テンプレート内で自動的に使用可能になる[標準テンプレート関数](template-functions.md)とは別のものです。 テンプレートで繰り返し使用される複雑な式がある場合は、独自の関数を作成します。
 
-この記事では、Azure Resource Manager テンプレートにユーザー定義関数を追加する方法について説明します。
+この記事では、Azure Resource Manager テンプレート (ARM テンプレート) にユーザー定義関数を追加する方法について説明します。
 
 ## <a name="define-the-function"></a>関数を定義する
 
@@ -103,8 +103,7 @@ ms.locfileid: "84672937"
 * 関数では、[reference](template-functions-resource.md#reference) 関数、またはいずれの [list](template-functions-resource.md#list) 関数も使用できません。
 * 関数のパラメーターでは既定値を指定できません。
 
-
 ## <a name="next-steps"></a>次のステップ
 
-* ユーザー定義関数で使用できるプロパティの詳細については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」をご覧ください。
-* 使用可能なテンプレート関数の一覧については、「[Azure Resource Manager テンプレートの関数](template-functions.md)」をご覧ください。
+* ユーザー定義関数で使用できるプロパティの詳細については、「[ARM テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
+* 使用可能なテンプレート関数の一覧については、「[ARM テンプレート関数](template-functions.md)」を参照してください。

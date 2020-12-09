@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: ca167a2ae313c29581d40fe921a8742b9b6b61fe
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 983b1a5e024a44733fab418a67375f232e66cfe4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686057"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457161"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアクセスと ID オプション
 
@@ -46,7 +46,7 @@ ClusterRole は、リソースへのアクセス許可を付与するのと同�
 
 ### <a name="rolebindings-and-clusterrolebindings"></a>RoleBinding と ClusterRoleBinding
 
-リソースへのアクセス許可を付与するロールを定義したら、*RoleBinding* を使用して、これらの Kubernetes の RBAC アクセス許可を割り当てます。 AKS クラスターが [Azure Active Directory と統合されている](#azure-active-directory-integration)場合、バインドは、クラスター内でアクションを実行するためのアクセス許可が Azure AD ユーザーにどのように付与されるかを示します。方法については、[Kubernetes ロールベースのアクセス制御と Azure Active Directory ID を使用したクラスター リソースへのアクセスの制限](azure-ad-rbac.md)に関する記事をご覧ください。
+リソースへのアクセス許可を付与するロールを定義したら、*RoleBinding* を使用して、これらの Kubernetes の RBAC アクセス許可を割り当てます。 AKS クラスターが [Azure Active Directory (Azure AD) と統合されている](#azure-active-directory-integration)場合、バインドは、クラスター内でアクションを実行するためのアクセス許可が Azure AD ユーザーにどのように付与されるかを示します。方法については、[Kubernetes ロールベースのアクセス制御と Azure Active Directory ID を使用したクラスター リソースへのアクセスの制限](azure-ad-rbac.md)に関する記事をご覧ください。
 
 ロールのバインドを使用して、特定の名前空間に対してロールを割り当てます。 このアプローチによって、1 つの AKS クラスターを論理的に分離でき、ユーザーは各自に割り当てられた名前空間内のアプリケーション リソースにのみアクセスが可能になります。 クラスター全体または特定の名前空間の外部のクラスター リソースにロールをバインドする必要がある場合は、代わりに *ClusterRoleBinding* を使用できます。
 
@@ -144,6 +144,22 @@ AKS には、次の 4 つの組み込みロールがあります。 これらは
 | Azure Kubernetes Service RBAC クラスター管理者  | 任意のリソースに対して任意のアクションを実行できるスーパー ユーザー アクセスが許可されます。 これにより、クラスター内およびすべての名前空間内のすべてのリソースを完全に制御できます。 |
 
 **Kubernetes 認可に Azure RBAC を有効にする方法については、[こちらを参照してください](manage-azure-rbac.md)。**
+
+## <a name="summary"></a>まとめ
+
+次の表は Azure AD 統合が有効になっている場合にユーザーが Kubernetes に対して認証する方法をまとめたものです。  すべての場合において、ユーザーのコマンド実行順序は次のようになります。
+1. `az login` を実行して Azure に対して認証を行います。
+1. `az aks get-credentials` を実行して、クラスターの資格情報を `.kube/config` にダウンロードします。
+1. `kubectl` のコマンドを実行します (このうちの最初のものによって、次の表に示すように、 ブラウザーベースの認証がトリガーされ、クラスターに対して認証を行うことができます)。
+
+2 番目の列に記載されているロール付与は、Azure portal の **[Access Control]** タブに表示される Azure RBAC ロール付与です。 クラスター管理 Azure AD グループは、ポータルの **[構成]** タブに表示されます (または、Azure CLI でパラメーター名 `--aad-admin-group-object-ids` を指定します)。
+
+| 説明        | ロール付与が必要| クラスター管理 Azure AD グループ | 使用する場合 |
+| -------------------|------------|----------------------------|-------------|
+| クライアント証明書を使用した、レガシの管理者ログイン| **Azure Kubernetes 管理者ロール**。 このロールにより、`--admin` フラグを指定して `az aks get-credentials` を使用できます。これを実行すると、[レガシ (非 Azure AD) クラスター管理用証明書](control-kubeconfig-access.md)がユーザーの `.kube/config` にダウンロードされます。 これが、"Azure Kubernetes 管理者ロール" の唯一の目的です。|該当なし|お使いのクラスターへのアクセス権を持つ有効な Azure AD グループへのアクセス権がないため、永続的にブロックされている場合。| 
+| 手動の (Cluster)RoleBindings を使用した Azure AD| **Azure Kubernetes ユーザー ロール**。 "ユーザー" ロールにより、`--admin` フラグなしで `az aks get-credentials` を使用できます。 (これが、"Azure Kubernetes ユーザー ロール" の唯一の目的です。)この結果、Azure AD 対応のクラスターで、[空のエントリ](control-kubeconfig-access.md)が `.kube/config` にダウンロードされ、それが最初に `kubectl`によって使用されたときにブラウザーベースの認証がトリガーされます。| ユーザーはこれらのグループのいずれにも属しません。 ユーザーがどのクラスター管理グループにも属さないため、その権利は全面的に、クラスター管理者が設定した任意の RoleBindings または ClusterRoleBindings によって制御されます。 (Cluster)RoleBindings により、その `subjects` として[Azure AD ユーザーまたは Azure AD グループが指名されます](azure-ad-rbac.md)。 このようなバインドが設定されていない場合、ユーザーはどの `kubectl` コマンドも行できません。|きめ細かなアクセス制御が必要で、Kubernetes 認可に Azure RBAC を使用しない場合。 バインドを設定するユーザーは、この表に記載されている他の方法のいずれかでログインする必要があることに注意してください。|
+| 管理グループのメンバーによる Azure AD| 同上|ユーザーは、こちらに一覧表示されているいずれかのグループのメンバーです。 一覧表示されているすべてのグループを `cluster-admin` Kubernetes ロールにバインドする ClusterRoleBinding が自動的に生成されます。 そのため、これらのグループのユーザーは、すべての `kubectl` コマンドを `cluster-admin`として実行できます。|ユーザーに完全な管理者権限を簡単に付与する必要があり、Kubernetes 認可に Azure RBAC を使用 "_しない_" 場合。|
+| Kubernetes 認可に Azure RBAC を使用した Azure AD|2 つのロール:1 つ目は、**Azure Kubernetes ユーザー ロール** (上記と同じ)。 2 つ目は、上記の "Azure Kubernetes Service **RBAC**..."ロールのいずれか、または代わりとなる独自のカスタム ロール。|Kubernetes 認可に対する Azure RBAC が有効になっている場合、[構成] タブの [管理者ロール] フィールドは関係ありません。|Kubernetes 認可に Azure RBAC を使用しない場合。 この方法を使用すると、RoleBindings バインドや ClusterRoleBindings を設定することなく、きめ細かく制御できます。|
 
 ## <a name="next-steps"></a>次のステップ
 

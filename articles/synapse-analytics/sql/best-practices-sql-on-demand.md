@@ -1,6 +1,6 @@
 ---
-title: サーバーレス SQL プール (プレビュー) のベスト プラクティス
-description: サーバーレス SQL プール (プレビュー) の使用に関する推奨事項とベストプラクティス。
+title: サーバーレス SQL プールのベスト プラクティス
+description: サーバーレス SQL プールの使用に関する推奨事項とベストプラクティス。
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ddf9d689316d3c95c322aa3a967af53621a2e00f
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: b8b93471b6d7f2555cfd71e524718ed0ea1ee191
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638871"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457893"
 ---
-# <a name="best-practices-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プール (プレビュー) のベスト プラクティス
+# <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールのベスト プラクティス
 
-この記事では、サーバーレス SQL プール (プレビュー) の使用に関する一連のベスト プラクティスについて説明します。 サーバーレス SQL プールは、Azure Synapse Analytics 内のリソースです。
+この記事では、サーバーレス SQL プールの使用に関する一連のベスト プラクティスについて説明します。 サーバーレス SQL プールは、Azure Synapse Analytics 内のリソースです。
 
 ## <a name="general-considerations"></a>一般的な考慮事項
 
@@ -129,7 +129,7 @@ CSV ファイルに対してクエリを実行するときに、パフォーマ�
 
 ## <a name="manually-create-statistics-for-csv-files"></a>CSV ファイルの統計を手動で作成する
 
-サーバーレス SQL プールでは、統計に基づいて最適なクエリ実行プランを生成します。 必要時に、Parquet ファイルの列に対して統計が自動的に作成されます。 現時点では、CSV ファイルの列に対して統計は自動的には作成されず、クエリで使用する列 (特に、DISTINCT、JOIN、WHERE、ORDER BY、GROUP BY で使用される列) については、統計を手動で作成する必要があります。 詳細については、[サーバーレス SQL プールの統計情報](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview)に関するトピックを確認してください。
+サーバーレス SQL プールでは、統計に基づいて最適なクエリ実行プランを生成します。 必要時に、Parquet ファイルの列に対して統計が自動的に作成されます。 現時点では、CSV ファイルの列に対して統計は自動的には作成されず、クエリで使用する列 (特に、DISTINCT、JOIN、WHERE、ORDER BY、GROUP BY で使用される列) については、統計を手動で作成する必要があります。 詳細については、[サーバーレス SQL プールの統計](develop-tables-statistics.md#statistics-in-serverless-sql-pool) をご覧ください。
 
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>CETAS を使用してクエリのパフォーマンスと結合を強化する
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 3abfffcfb47a9530b6a04762624eee9d6ee9bc81
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 09651ed5c7472c12d82108fdbd450cca6e84349f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780463"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447087"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL Database によるテナントごとのデータベース パターンを使用するマルチテナント SaaS アプリケーションの概要
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ Wingtip SaaS アプリでは、テナントごとのデータベース モデル
 
 ## <a name="sql-database-wingtip-saas-tutorials"></a>SQL Database Wingtip SaaS のチュートリアル
 
-アプリをデプロイしたら、初期デプロイを前提とする以下のチュートリアルを参照してください。 これらのチュートリアルでは、SQL Database、Azure Synapse Analytics (旧称 SQL Data Warehouse)、およびその他の Azure サービスに組み込まれた機能を活用する一般的な SaaS パターンを確認できます。 チュートリアルには、PowerShell スクリプトと詳細な説明が含まれています。 説明を参照することで、同じ SaaS 管理パターンの理解とアプリケーションでの実装が容易になります。
+アプリをデプロイしたら、初期デプロイを前提とする以下のチュートリアルを参照してください。 これらのチュートリアルで、SQL Database、Azure Synapse Analytics、およびその他の Azure サービスに組み込まれた機能を活用する一般的な SaaS パターンを確認できます。 チュートリアルには、PowerShell スクリプトと詳細な説明が含まれています。 説明を参照することで、同じ SaaS 管理パターンの理解とアプリケーションでの実装が容易になります。
 
 
 | チュートリアル | 説明 |

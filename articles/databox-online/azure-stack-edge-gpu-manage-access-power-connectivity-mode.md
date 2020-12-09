@@ -6,18 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 11/04/2020
 ms.author: alkohli
-ms.openlocfilehash: b66a184abce53c31fade19fc9e10ffe4c7ff8415
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 38dcb32b2993838f8c3f13334e0bc44e9146f113
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532445"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448553"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU のアクセス、電源、接続モードを管理する
 
 この記事では、GPU 搭載 Azure Stack Edge Pro デバイスのアクセス、電源、接続モードを管理する方法について説明します。 これらの操作は、ローカル Web UI または Azure portal を使用して実行されます。
+
+この記事は、Azure Stack Edge Pro GPU、Azure Stack Edge Pro R、および Azure Stack Edge Mini R デバイスに適用されます。
+
 
 この記事では、次のことについて説明します。
 
@@ -31,6 +34,8 @@ ms.locfileid: "94532445"
 ## <a name="manage-device-access"></a>デバイスのアクセスを管理する
 
 Azure Stack Edge Pro デバイスへのアクセスは、デバイスのパスワードを使用して制御されます。 パスワードは、ローカル Web UI を使用して変更できます。 また、Azure portal ではデバイスのパスワードをリセットすることもできます。
+
+デバイス ディスク上のデータへのアクセスは、保存時の暗号化キーによっても制御されます。
 
 ### <a name="change-device-password"></a>デバイスのパスワードを変更する
 
@@ -54,6 +59,40 @@ Azure Stack Edge Pro デバイスへのアクセスは、デバイスのパス�
 
 2. 新しいパスワードを入力し、それを確認します。 指定するパスワードは 8 ～ 16 文字にする必要があります。 パスワードには、大文字、小文字、数字、および特殊文字のうち 3 種類の文字を使用する必要があります。 **[リセット]** を選択します。
 
+    ![パスワードのリセット 2](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
+
+### <a name="manage-access-to-device-data"></a>デバイス データへのアクセスを管理する
+
+Azure Stack Edge Pro R と Azure Stack Edge Mini R デバイスでは、デバイス データへのアクセスは、デバイス　ドライブの保存時の暗号化キーを使用して制御されます。 保存時の暗号化用にデバイスを正常に構成すると、デバイスのローカル UI で、保存時の暗号化キーのローテーション オプションが使用できるようになります。 
+
+この操作により、BitLocker ボリュームの `HcsData` と `HcsInternal`、およびデバイス上のすべての自己暗号化ドライブのキーを変更できます。
+
+保存時の暗号化キーのローテーションを行うには、これらの手順に従います。
+
+1. デバイスのローカル UI で、 **[開始]** ページに移動します。 **[セキュリティ]** タイルで、 **[保存時の暗号化:][Rotate keys]\(キーのローテーション\)** オプションを選択します。 このオプションは、保存時の暗号化キーを正常に構成した後でのみ使用できます。
+
+    ![[開始] ページの [保存時の暗号化] で [Rotate keys]\(キーのローテーション\) を選択する](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-1.png)
+
+1. 独自の BitLocker キーを使用することも、システム生成のキーを使用することもできます。  
+
+    独自のキーを指定する場合は、32 文字の Base-64 でエンコードされた文字列を入力します。 この入力は、保存時の暗号化を初めて構成するときに指定する内容に似ています。
+
+    ![独自の保存時の暗号化キーを使用する](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-2.png)
+
+    システム生成のキーの使用を選択することもできます。
+
+    ![システム生成の保存時の暗号化キーを使用する](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-3.png)
+
+1. **[適用]** を選択します。 キー プロテクターがローテーションされます。
+
+    ![新しい保存時の暗号化キーを適用する](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-4.png)
+
+1. キー ファイルをダウンロードして保存するように求めるメッセージが表示されたら、 **[Download and continue]\(ダウンロードして続行\)** を選択します。 
+
+    ![キー ファイルをダウンロードして続行する](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-5.png)
+
+    `.json` キー ファイルを安全な場所に保存します。 このファイルは、将来発生する可能性があるデバイスの復旧作業を容易にするために使用されます。
+
     ![スクリーンショットに、[デバイスのパスワードをリセットします] ダイアログ ボックスが表示されてます。](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>リソース アクセスの管理
@@ -69,7 +108,7 @@ Azure Stack Edge Pro デバイスのアクティブ化キーを生成すると�
 
 `Read all directory objects` を実行できる必要があるため、Active Directory テナントに対する `User` アクセス権が必要です。 Guest ユーザーは `Read all directory objects` を実行するアクセス許可がないため、使用できません。 ゲストである場合は、アクティブ化キーの生成、Azure Stack Edge Pro デバイス上の共有の作成、ユーザーの作成、Edge コンピューティング ロールの構成、デバイス パスワードのリセットなどの操作はすべて失敗します。
 
-Microsoft Graph API へのアクセスをユーザーに提供する方法の詳細については、「[Microsoft Graph のアクセス許可のリファレンス](https://docs.microsoft.com/graph/permissions-reference)」を参照してください。
+Microsoft Graph API へのアクセスをユーザーに提供する方法の詳細については、「[Microsoft Graph のアクセス許可のリファレンス](/graph/permissions-reference)」を参照してください。
 
 ### <a name="register-resource-providers"></a>リソース プロバイダーを登録する
 

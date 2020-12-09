@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 647256949d1f8f13439a0a5db87f3b02d697d32b
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 20d38e5caee67ca8bb13877d3162401fa245dc2d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95318135"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444775"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Azure Monitor for VMs のゲストの正常性 (プレビュー) を有効にする
 Azure Monitor for VMs のゲストの正常性を使用すると、一定間隔でサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 この記事では、サブスクリプションでこの機能を有効にする方法と、仮想マシンごとにゲストの監視を有効にする方法について説明します。
@@ -87,7 +87,7 @@ Azure Resource Manager を使用して仮想マシンを有効にするには、
 > [!NOTE]
 > Azure portal を使用して仮想マシンを有効にすると、ここで説明されているデータ収集ルールが自動的に作成されます。 この場合、この手順を実行する必要はありません。
 
-Azure Monitor for VMs のゲストの正常性でのモニターの構成は、[データ収集ルール (DCR)](../platform/data-collection-rule-overview.md) に格納されます。 下の Resource Manager テンプレートで定義されているデータ収集ルールをインストールして、ゲストの正常性拡張機能を備えた仮想マシンのすべてのモニターを有効にします。 ゲストの正常性拡張機能を備えた各仮想マシンには、このルールとの関連付けが必要です。
+Azure Monitor for VMs のゲストの正常性でのモニターの構成は、[データ収集ルール (DCR)](../platform/data-collection-rule-overview.md) に格納されます。 ゲストの正常性拡張機能を備えた各仮想マシンには、このルールとの関連付けが必要です。
 
 > [!NOTE]
 > 「[Azure Monitor for VMs のゲストの正常性 (プレビュー) で監視を構成する](vminsights-health-configure.md)」の説明に従って、追加のデータ収集ルールを作成して、モニターの既定の構成を変更することができます。
@@ -115,7 +115,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
 
 ---
 
-
+次の Resource Manager テンプレートで定義されているデータ収集ルールは、ゲストの正常性拡張機能を備えた仮想マシンのすべてのモニターを有効にします。 これには、モニターによって使用される各パフォーマンス カウンターのデータソースが含まれている必要があります。
 
 ```json
 {
@@ -138,7 +138,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
     "dataCollectionRuleLocation": {
       "type": "string",
       "metadata": {
-        "description": "The location code in which the data colleciton rule should be deployed. Examples: eastus, westeurope, etc"
+        "description": "The location code in which the data collection rule should be deployed. Examples: eastus, westeurope, etc"
       }
     }
   },
@@ -151,6 +151,19 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
       "properties": {
         "description": "Data collection rule for VM Insights health.",
         "dataSources": {
+          "performanceCounters": [
+              {
+                  "name": "VMHealthPerfCounters",
+                  "streams": [ "Microsoft-Perf" ],
+                  "scheduledTransferPeriod": "PT1M",
+                  "samplingFrequencyInSeconds": 60,
+                  "counterSpecifiers": [
+                      "\\LogicalDisk(*)\\% Free Space",
+                      "\\Memory\\Available Bytes",
+                      "\\Processor(_Total)\\% Processor Time"
+                  ]
+              }
+          ],
           "extensions": [
             {
               "name": "Microsoft-VMInsights-Health",
@@ -170,7 +183,11 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
                     }
                   }
                 ]
-              }
+              },
+              "inputDataSources": [
+                  "VMHealthPerfCounters"
+              ]
+
             }
           ]
         },
@@ -181,7 +198,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
               "name": "Microsoft-HealthStateChange-Dest"
             }
           ]
-        },
+        },                  
         "dataFlows": [
           {
             "streams": [
@@ -205,7 +222,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-      "healthDataCollectionRuleResourceId": {
+      "destinationWorkspaceResourceId": {
         "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"
       },
       "dataCollectionRuleLocation": {
@@ -217,7 +234,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
 
 
 
-## <a name="install-guest-health-extension-and-associate-with-data-collection-rule"></a>ゲストの正常性拡張機能をインストールし、データ収集ルールに関連付ける
+### <a name="install-guest-health-extension-and-associate-with-data-collection-rule"></a>ゲストの正常性拡張機能をインストールし、データ収集ルールに関連付ける
 次の Resource Manager テンプレートを使用して、ゲストの正常性について仮想マシンを有効にします。 これにより、ゲストの正常性拡張機能がインストールされ、データ収集ルールとの関連付けが作成されます。 [Resource Manager テンプレートのどのデプロイ方法](../../azure-resource-manager/templates/deploy-powershell.md)を使用しても、このテンプレートをデプロイすることができます。
 
 
@@ -370,9 +387,6 @@ az deployment group create --name GuestHealthDeployment --resource-group my-reso
       },
       "healthDataCollectionRuleResourceId": {
         "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.Insights/dataCollectionRules/Microsoft-VMInsights-Health"
-      },
-      "healthExtensionVersion": {
-        "value": "private-preview"
       }
   }
 }

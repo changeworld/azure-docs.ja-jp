@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 11/18/2020
 ms.custom: generated
-ms.openlocfilehash: ceb1aea1edcc4916fdd802673c3145b12de01801
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 8225d50e9991ff632fb831c63e194551dbe02b31
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980917"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451890"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure リソース プロバイダーの操作
 
@@ -3862,7 +3862,7 @@ Azure サービス:[Azure Cosmos DB](../cosmos-db/index.yml)
 
 ### <a name="microsoftsql"></a>Microsoft.Sql
 
-Azure サービス:[Azure SQL Database](../azure-sql/database/index.yml)、[Azure SQL Managed Instance](../azure-sql/managed-instance/index.yml)、[Azure Synapse Analytics (旧称 SQL Data Warehouse)](../synapse-analytics/sql-data-warehouse/index.yml)
+Azure サービス:[Azure SQL Database](../azure-sql/database/index.yml)、[Azure SQL Managed Instance](../azure-sql/managed-instance/index.yml)、[Azure Synapse Analytics](../synapse-analytics/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |

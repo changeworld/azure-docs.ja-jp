@@ -11,16 +11,16 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: cb10eb0f89ce37bc484c8570995ebaa098c696f1
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 492d1370a228fc4fc80880102899c9207a514f57
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541302"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447198"
 ---
 # <a name="configure-and-submit-training-runs"></a>トレーニングの実行を構成して送信する
 
-この記事では、モデルをトレーニングするために Azure Machine Learning の実行を構成して送信する方法について説明します。
+この記事では、モデルをトレーニングするために Azure Machine Learning の実行を構成して送信する方法について説明します。 コード スニペットでは、トレーニング スクリプトの構成と送信の主要な部分について説明します。  その後、[ノートブックの例](#notebooks)のいずれかを使用して、完全なエンドツーエンドの作業例を見つけます。
 
 トレーニングの場合は、ローカル コンピューター上で開始し、後でクラウドベースのクラスターにスケール アウトするのが一般的です。 Azure Machine Learning では、トレーニング スクリプトを変更しなくても、さまざまなコンピューティング先でスクリプトを実行できます。
 
@@ -164,7 +164,7 @@ run.wait_for_completion(show_output=True)
 
 ソース ディレクトリがローカル Git リポジトリであるトレーニング実行を開始すると、リポジトリに関する情報が実行履歴に格納されます。 詳細については、「[Azure Machine Learning との Git 統合](concept-train-model-git-integration.md)」を参照してください。
 
-## <a name="notebook-examples"></a>ノートブックの例
+## <a name="notebook-examples"></a><a name="notebooks"></a>ノートブックの例
 
 さまざまなトレーニング シナリオでの実行の構成例については、次のノートブックを参照してください。
 * [さまざまなコンピューティング ターゲット上でのトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)

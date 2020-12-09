@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 37b2414252a7011444617ecc08c9dd7d081b7441
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d45ab771f90c0174f24d5f0d39921f93f72be850
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425506"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451062"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の仮想ネットワーク サービス エンドポイントと規則を使用する
 
@@ -52,7 +52,7 @@ ms.locfileid: "92425506"
 
 ### <a name="b-ip-rules"></a>B. IP 規則
 
-Azure Database for PostgreSQL のファイアウォールでは、Azure Database for PostgreSQL Database への通信が許可される IP アドレス範囲を指定できます。 この方法は、Azure プライベート ネットワークの外部にある安定した IP アドレスに適しています。 しかし、Azure プライベート ネットワーク内にある多数のノードは、 *動的* IP アドレスで構成されています。 動的 IP アドレスは、VM が再起動されたときなどに変更される場合があります。 運用環境では、ファイアウォール規則に動的 IP アドレスを指定することは、賢明ではありません。
+Azure Database for PostgreSQL のファイアウォールでは、Azure Database for PostgreSQL Database への通信が許可される IP アドレス範囲を指定できます。 この方法は、Azure プライベート ネットワークの外部にある安定した IP アドレスに適しています。 しかし、Azure プライベート ネットワーク内にある多数のノードは、*動的* IP アドレスで構成されています。 動的 IP アドレスは、VM が再起動されたときなどに変更される場合があります。 運用環境では、ファイアウォール規則に動的 IP アドレスを指定することは、賢明ではありません。
 
 お使いの VM 用に *静的* IP アドレスを取得することで、IP のオプションを復旧することができます。 詳細については、「[Azure portal を使用して仮想マシンのプライベート IP アドレスを構成する][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]」をご覧ください。
 
@@ -106,7 +106,7 @@ Azure Database for PostgreSQL の場合、仮想ネットワーク規則機能�
 
 - 仮想ネットワーク規則は[クラシック デプロイ モデル][arm-deployment-model-568f] ネットワークではなく、Azure Resource Manager の仮想ネットワークのみに適用されます。
 
-- **Microsoft.Sql**  サービス タグを使用して Azure Database for PostgreSQL への仮想ネットワーク サービス エンドポイントをオンにすると、次のすべての Azure Database サービスのエンドポイントも有効になります:Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL Database、Azure Synapse Analytics (旧称 SQL Data Warehouse)。
+- **Microsoft.Sql**  サービス タグを使用して Azure Database for PostgreSQL への仮想ネットワーク サービス エンドポイントをオンにすると、次のすべての Azure Database サービスのエンドポイントも有効になります:Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL Database、および Azure Synapse Analytics。
 
 - VNet サービス エンドポイントは、汎用サーバーとメモリ最適化サーバーでのみサポートされています。
 
@@ -124,7 +124,7 @@ Azure Database for PostgreSQL の場合、仮想ネットワーク規則機能�
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>VNET サービス エンドポイントをオンにすることなく VNET ファイアウォール規則をサーバーに追加する
 
-単に VNet ファイアウォール規則を設定するだけでは、VNet へのサーバーのセキュリティ保護には役立ちません。 セキュリティを有効にするには、VNet サービス エンドポイントを **オン** にする必要もあります。 サービス エンドポイントを **オン** にする場合、 **オフ** から **オン** への切り替えが完了するまで VNet サブネットでダウンタイムが発生します。 これは、大規模 VNet のコンテキストに特に当てはまります。 **IgnoreMissingServiceEndpoint** フラグを使用すると、切り替え中のダウンタイムを軽減または除去できます。
+単に VNet ファイアウォール規則を設定するだけでは、VNet へのサーバーのセキュリティ保護には役立ちません。 セキュリティを有効にするには、VNet サービス エンドポイントを **オン** にする必要もあります。 サービス エンドポイントを **オン** にする場合、**オフ** から **オン** への切り替えが完了するまで VNet サブネットでダウンタイムが発生します。 これは、大規模 VNet のコンテキストに特に当てはまります。 **IgnoreMissingServiceEndpoint** フラグを使用すると、切り替え中のダウンタイムを軽減または除去できます。
 
 **IgnoreMissingServiceEndpoint** フラグは、Azure CLI またはポータルを使用して設定できます。
 

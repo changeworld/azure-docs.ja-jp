@@ -11,16 +11,16 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: b3e1c4b8dec0e62bb2a77939a36e38b61837033a
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: 52e3ea3e07a81495f64f70f72686154a02a654af
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638854"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451797"
 ---
 # <a name="statistics-in-synapse-sql"></a>Synapse SQL の統計
 
-この記事では、Synapse SQL リソースの専用 SQL プールとサーバーレス SQL プール (プレビュー)を使用してクエリ最適化統計を作成および更新するためのレコメンデーションと例を示します。
+この記事では、Synapse SQL リソースの専用 SQL プールとサーバーレス SQL プールを使用してクエリ最適化統計を作成および更新するためのレコメンデーションと例を示します。
 
 ## <a name="statistics-in-dedicated-sql-pool"></a>専用 SQL プールの統計
 
@@ -557,7 +557,7 @@ SQL Server に比べ、専用 SQL プールには、`DBCC SHOW_STATISTICS()` が
 - カスタム エラー 2767 はサポートされていません。
 
 
-## <a name="statistics-in-serverless-sql-pool-preview"></a>サーバーレス SQL プールの統計 (プレビュー)
+## <a name="statistics-in-serverless-sql-pool"></a>サーバーレス SQL プールの統計
 
 統計は、特定のデータセット (ストレージ パス) の特定の列ごとに作成されます。
 
@@ -566,7 +566,7 @@ SQL Server に比べ、専用 SQL プールには、`DBCC SHOW_STATISTICS()` が
 
 ### <a name="why-use-statistics"></a>統計を使用する理由
 
-サーバーレス SQL プール (プレビュー) にあるデータに関する情報が多ければ多いほど、それに対するクエリをより高速に実行できます。 データに関する統計情報を収集することが、クエリの最適化のために実行できる最も重要なことの 1 つです。 
+サーバーレス SQL プールにあるデータに関する情報が多ければ多いほど、それに対するクエリをより高速に実行できます。 データに関する統計情報を収集することが、クエリの最適化のために実行できる最も重要なことの 1 つです。 
 
 サーバーレス SQL プール クエリ オプティマイザーは、コストベースのオプティマイザーです。 オプティマイザーでは、さまざまなクエリ プランのコストが比較されて、最も低コストのプランが選択されます。 多くの場合、それは最も高速に実行されるプランが選択されます。 
 

@@ -6,19 +6,19 @@ author: matt1883
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: monitoring
-ms.date: 10/27/2020
+ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 61d860def7209908e65e9456a4bcde87eed522fc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: dbd890117c78274392d5745e0563332371b404c5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746373"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452579"
 ---
 # <a name="use-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>Synapse Studio を使用してワークスペースのパイプラインの実行を監視する
 
-Azure Synapse Analytics では、ソリューション内のデータ移動、データ変換、コンピューティングのアクティビティを自動化および統合する複雑なパイプラインを作成できます。 これらのパイプラインを作成して監視するには、Synapse Studio (プレビュー) を使用します。
+Azure Synapse Analytics では、ソリューション内のデータ移動、データ変換、コンピューティングのアクティビティを自動化および統合する複雑なパイプラインを作成できます。 これらのパイプラインを作成して監視するには、Synapse Studio を使用します。
 
 この記事では、パイプラインの実行を監視する方法を説明します。これにより、パイプラインの最新の状態、問題、進捗状況を監視することができます。
 
@@ -41,8 +41,6 @@ Azure Synapse Analytics では、ソリューション内のデータ移動、�
 パイプラインの実行の一覧をフィルター処理して、関心のあるものだけに絞り込むことができます。 画面の上部にあるフィルターを使用して、フィルター処理を行うフィールドを指定できます。
 
 たとえば、ビューをフィルター処理して、"holiday" という名前のパイプラインのパイプラインの実行のみを表示できます。
-
-![[フィルター] ボタン](./media/common/filter-button.png)
 
 ![サンプルのフィルター](./media/how-to-monitor-pipeline-runs/filter-example.png)
 

@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0b8a64d24242e6fb34c963b14429fdfee2398f62
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: cee6d030a9639a7203a32a3c0957733cecb1f8b6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557426"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445313"
 ---
 # <a name="troubleshoot-connectivity-between-azure-synapse-analytics-synapse-studio-and-storage"></a>Azure Synapse Analytics の Synapse Studio とストレージ間の接続のトラブルシューティング
 
-Synapse Studio (プレビュー) では、リンクされたストレージにあるデータ リソースを調べることができます。 このガイドは、データ リソースへのアクセス試行時に発生する接続の問題を解決するのに役立ちます。 
+Synapse Studio では、リンクされたストレージにあるデータ リソースを調べることができます。 このガイドは、データ リソースへのアクセス試行時に発生する接続の問題を解決するのに役立ちます。 
 
 ## <a name="case-1-storage-account-lacks-proper-permissions"></a>ケース 1:ストレージ アカウントに適切なアクセス許可がない
 

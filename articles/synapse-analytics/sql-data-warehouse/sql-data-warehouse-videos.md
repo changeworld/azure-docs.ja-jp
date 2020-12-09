@@ -11,16 +11,16 @@ ms.date: 02/15/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b0b3a924008d4180c045455aecda8ec109845939
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: eaf41e903f1a55dd85c6b6282617564a32087707
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320993"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447818"
 ---
-# <a name="azure-synapse-analytics---dedicated-sql-pool-videos"></a>Azure Synapse Analytics - 専用 SQL プールの動画
+# <a name="azure-synapse-analytics---dedicated-sql-pool--formerly-sql-dw-videos"></a>Azure Synapse Analytics - 専用 SQL プール (旧称 SQL DW) のビデオ
 
-新機能とパフォーマンスの向上の詳細については、最新の専用 SQL プールに関する動画をご覧ください。 
+新機能とパフォーマンスの向上の詳細については、最新の専用 SQL プール (旧称 SQL DW) に関するビデオを参照してください。 
 
 最初に、下の概要動画を選択して、専用 SQL プールに対する新しい更新について学習してください。 また、サイバー犯罪などの実際のシナリオに取り組むために、最新のデータ ウェアハウス パターンの使用方法についても説明します。
 </br>

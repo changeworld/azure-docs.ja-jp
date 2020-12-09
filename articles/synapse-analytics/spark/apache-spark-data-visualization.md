@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 09/13/2020
-ms.openlocfilehash: 523356947d6d5f93fa8ef2202ad6e7d235c6afdd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 73b18d15ad054f1c485d6f61cdefe54993148bc4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919095"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450536"
 ---
 # <a name="visualize-data"></a>データの視覚化
 Azure Synapse は、データ ウェアハウスやビッグ データ分析システム全体にわたって分析情報を取得する時間を早める統合分析サービスです。 データの視覚化は、ご利用のデータに関する分析情報を取得するうえで重要なコンポーネントです。 大規模および小規模のデータを、人間が理解しやすくするのに役立ちます。 また、データのグループ内のパターン、傾向、および外れ値を容易に検出できるようになります。 
@@ -37,7 +37,7 @@ Azure Synapse notebook を使用する場合は、グラフのオプションを
    | 構成 | 説明 |
    |--|--| 
    | [グラフの種類] | ```display``` 関数では、横棒グラフ、散布図、折れ線グラフなど、さまざまな種類のグラフがサポートされています。 |
-   | キー | X 軸の値の範囲を指定します|
+   | Key | X 軸の値の範囲を指定します|
    | 値 | Y 軸の値の範囲を指定します |
    | 系列グループ | 集計のグループを決定するために使用されます。 | 
    | 集計 | 視覚化でデータを集計する方法| 
@@ -227,9 +227,9 @@ plt.show()
 ## <a name="connect-to-power-bi-using-apache-spark--sql-on-demand"></a>Apache Spark および SQL オンデマンドを使用して Power BI に接続する
 Azure Synapse Analytics と Power BI は密に統合されるため、データ エンジニアは、分析ソリューションを構築することができます。
 
-Azure Synapse Analytics では、さまざまなワークスペース計算エンジンが、Spark プール (プレビュー) と SQL オンデマンド エンジン (プレビュー) の間でデータベースとテーブルを共有できます。 [共有メタデータ モデル](https://docs.microsoft.com/azure/synapse-analytics/metadata/overview)を使用すると、SQL オンデマンドにより Apache Spark テーブルに対してクエリを実行することができます。 完了したら、SQL オンデマンド エンドポイントを Power BI に接続することで、同期された Spark テーブルに対するクエリを容易に実行できるようになります。
+Azure Synapse Analytics では、さまざまなワークスペース計算エンジンが、Spark プールとサーバーレス SQL プールの間でデータベースとテーブルを共有できます。 [共有メタデータ モデル](https://docs.microsoft.com/azure/synapse-analytics/metadata/overview)を使用すると、SQL オンデマンドにより Apache Spark テーブルに対してクエリを実行することができます。 完了したら、SQL オンデマンド エンドポイントを Power BI に接続することで、同期された Spark テーブルに対するクエリを容易に実行できるようになります。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - Spark SQL DW コネクタを設定する方法の詳細については、次を参照してください。[Synapse SQL コネクタ](./spark/../synapse-spark-sql-pool-import-export.md)
 - 既定のライブラリを確認します: [Azure Synapse Analytics ランタイム](../spark/apache-spark-version-support.md)

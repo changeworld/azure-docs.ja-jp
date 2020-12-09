@@ -5,22 +5,36 @@ description: Microsoft ID プラットフォームの新規および更新され
 services: active-directory
 author: mmacy
 manager: CelesteDG
-ms.date: 11/03/2020
+ms.date: 12/01/2020
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: d5865810dafef9ce2bb525a8f1b6cdbdb1a86566
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 108cd5f74b7b560534baf8f55f7d07ebb6557e7f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322561"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457150"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft ID プラットフォームに関するドキュメント:新機能
 
 Microsoft ID プラットフォームに関するドキュメントの新着情報へようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。
+
+## <a name="november-2020"></a>2020 年 11 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [継続的アクセス評価が有効になった API をアプリケーションで使用する方法](app-resilience-continuous-access-evaluation.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [Microsoft ID プラットフォーム アクセス トークン](access-tokens.md)
+- [アプリケーション構成オプション (MSAL)](msal-client-application-configuration.md)
+- [方法:アプリに省略可能な要求を提供する](active-directory-optional-claims.md)
+- [アプリを Azure AD アプリ ギャラリーで公開する](v2-howto-app-gallery-listing.md)
+- [方法: アプリケーションにアプリ ロールを追加してトークンで受け取る](howto-add-app-roles-in-azure-ad-apps.md)
 
 ## <a name="october-2020"></a>2020 年 10 月
 
@@ -67,23 +81,3 @@ Microsoft ID プラットフォームに関するドキュメントの新着情�
 - [クイック スタート:Web API にアクセスするようにクライアント アプリケーションを構成する](quickstart-configure-app-access-web-apis.md)
 - [クイック スタート:Web API を公開するようにアプリケーションを構成する](quickstart-configure-app-expose-web-apis.md)
 - [クイック スタート: Microsoft ID プラットフォームにアプリケーションを登録する](quickstart-register-app.md)
-
-## <a name="august-2020"></a>2020 年 8 月
-
-### <a name="new-articles"></a>新しい記事
-
-- [ブローカーを使用する Android アプリケーションを ADAL.NET から MSAL.NET に移行する](msal-net-migration-android-broker.md)
-- [Android 用の MSAL で例外とエラーを処理する](msal-android-handling-exceptions.md)
-
-### <a name="updated-articles"></a>更新された記事
-
-- [Microsoft Authenticator を使用する iOS アプリケーションを ADAL.NET から MSAL.NET に移行する](msal-net-migration-ios-broker.md)
-- [Xamarin アプリケーションで Microsoft Authenticator または Intune ポータル サイトを使用する](msal-net-use-brokers-with-xamarin-apps.md)
-- [MSAL.NET を使用した Xamarin Android の構成要件とトラブルシューティングのヒント](msal-net-xamarin-android-considerations.md)
-- [Web API を呼び出すモバイル アプリを構成する](scenario-mobile-app-configuration.md)
-- [方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)](active-directory-claims-mapping.md)
-- [Microsoft ID プラットフォーム アプリケーションの認証証明書資格情報](active-directory-certificate-credentials.md)
-- [リダイレクト URI (応答 URL) に関する制約と制限](reply-url.md)
-- [クイック スタート:Web API を公開するようにアプリケーションを構成する](quickstart-configure-app-expose-web-apis.md)
-- [Microsoft ID プラットフォームのビデオ](identity-videos.md)
-- [クイック スタート:Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す](quickstart-v2-dotnet-native-aspnet.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 10/20/2020
 ms.author: midesa
-ms.openlocfilehash: 820dd8b607f5ec2fdc44d25063e0a941f76237ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8735514b639cb0322a83ffb19d661027327c0f73
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919204"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458766"
 ---
 # <a name="analyze-data-with-apache-spark"></a>Apache Spark を使用してデータを分析する
 
@@ -99,7 +99,7 @@ ORDER BY day_of_month ASC
 
 > [!Note]
 > 
-> 既定では、どの Azure Synapse Analytics Apache Spark プールにも、一般的に使用されるライブラリと既定のライブラリのセットが含まれています。 [Azure Synapse ランタイム](../spark/apache-spark-version-support.md)に関する記事でライブラリの全一覧を表示できます。 ドキュメントを参照してください。 さらに、サード パーティのコードまたはローカル環境でビルドされたコードをアプリケーションで使用できるようにするには、いずれかの Spark プール (プレビュー) に[ライブラリをインストール](../spark/apache-spark-azure-portal-add-libraries.md)します。
+> 既定では、どの Azure Synapse Analytics Apache Spark プールにも、一般的に使用されるライブラリと既定のライブラリのセットが含まれています。 [Azure Synapse ランタイム](../spark/apache-spark-version-support.md)に関する記事でライブラリの全一覧を表示できます。 ドキュメントを参照してください。 さらに、サード パーティのコードまたはローカル環境でビルドされたコードをアプリケーションで使用できるようにするには、いずれかの Spark プールに[ライブラリをインストール](../spark/apache-spark-azure-portal-add-libraries.md)します。
 >
 
 1. 開発を容易にし、コストを削減するために、データセットをダウンサンプリングします。 組み込みの Apache Spark サンプリング機能を使用します。 さらに、Seaborn と Matplotlib の両方に、Pandas データフレームまたは Numpy 配列が必要です。 Pandas データフレームを取得するには、```toPandas()``` コマンドを使用してデータフレームを変換します。

@@ -9,18 +9,18 @@ ms.topic: how-to
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
-ms.date: 09/21/2020
-ms.openlocfilehash: 68ab5c820f3a67a7fd332557d47918d2a7aa4b62
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 12/01/2020
+ms.openlocfilehash: 1425003c718ca52c0bea712e9d25cd3e4c035cf1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789422"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453963"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-sql-database"></a>Advanced Threat Protection for Azure SQL Database を構成する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[Advanced Threat Protection](threat-detection-overview.md) for Azure SQL Database では、データベースへのアクセスや悪用を試みる、通常とは異なる、害を及ぼす可能性がある異常なアクティビティが検出されます。 Advanced Threat Protection によって、 **SQL インジェクションの可能性** 、 **通常とは異なる場所またはデータ センターからのアクセス** 、 **通常とは異なるプリンシパルまたは有害な可能性があるアプリケーションからのアクセス** 、 **SQL 資格情報に対するブルート フォース攻撃** を特定できます。詳細については、 [Advanced Threat Protectionアラート](threat-detection-overview.md#alerts)に関する記事を参照してください。
+[Advanced Threat Protection](threat-detection-overview.md) for Azure SQL Database では、データベースへのアクセスや悪用を試みる、通常とは異なる、害を及ぼす可能性がある異常なアクティビティが検出されます。 Advanced Threat Protection によって、**SQL インジェクションの可能性**、**通常とは異なる場所またはデータ センターからのアクセス**、**通常とは異なるプリンシパルまたは有害な可能性があるアプリケーションからのアクセス**、**SQL 資格情報に対するブルート フォース攻撃** を特定できます。詳細については、[Advanced Threat Protectionアラート](threat-detection-overview.md#alerts)に関する記事を参照してください。
 
 検出された脅威に関する通知は、[電子メールの通知](threat-detection-overview.md#explore-detection-of-a-suspicious-event)または [Azure portal](threat-detection-overview.md#explore-alerts-in-the-azure-portal) で受け取ることができます。
 
@@ -30,10 +30,12 @@ ms.locfileid: "92789422"
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 保護するサーバーの構成ページに移動します。 セキュリティ設定で、 **[セキュリティ センター]** を選択します。
-3. **Azure Defender** の構成ページで、以下の操作を行います。
+3. **Azure Defender for SQL** の構成ページで、以下の操作を行います
 
-   - サーバー上で Azure Defender を有効にします。
+   - サーバー上で **Azure Defender for SQL** を有効にします。
    - **[Advanced Threat Protection 設定]** の **[アラートの送信先]** テキスト ボックスで、異常なデータベース アクティビティが検出されたときにセキュリティ アラートを受け取るメール アドレスの一覧を指定します。
+   
+   :::image type="content" source="media/azure-defender-for-sql/set-up-advanced-threat-protection.png" alt-text="Advanced Threat Protection の設定":::
 
 ## <a name="set-up-advanced-threat-protection-using-powershell"></a>PowerShell を使用して Advanced Threat Protection を設定する
 
