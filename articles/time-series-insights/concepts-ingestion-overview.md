@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 12/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 57c23ba4acdbde1a5dfac39d89a09dfcef6b25a1
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 2b76490ab23cb14755f6f90a27ec8b176bb30a11
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460902"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780027"
 ---
 # <a name="azure-time-series-insights-gen2-data-ingestion-overview"></a>Azure Time Series Insights Gen2 のデータ インジェストの概要
 

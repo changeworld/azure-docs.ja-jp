@@ -1,20 +1,15 @@
 ---
-title: Azure サポート要求を作成する方法 | Microsoft Docs
+title: Azure サポート要求を作成する方法
 description: サポートが必要なお客様は、Azure portal を使用して、セルフサービス ソリューションを見つけたり、サポート リクエストを作成および管理したりできます。
-services: Azure Supportability
-author: mgblythe
-manager: scotthit
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
-ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
-ms.author: mblythe
-ms.openlocfilehash: f937b03b2f838f69f56a4b132d0ea7a7e298b532
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 11ca7925ce1664b5586ab8ec0fb523a2d562ee80
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372125"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745589"
 ---
 # <a name="create-an-azure-support-request"></a>Azure サポート要求を作成する
 
@@ -29,9 +24,9 @@ Azure では、サポート要求 (サポート チケットとも呼ばれる) 
 
 サポート リクエスト エクスペリエンスでは、主に次の 3 つの目標に重点を置いています。
 
-* **合理化** :サポートとトラブルシューティングを見つけやすくして、サポート リクエストの送信方法を簡略化します。
-* **統合** :Azure リソースに関する問題のトラブルシューティングを行う際に、コンテキストを切り替えずに、サポート リクエストを容易に開くことができます。
-* **効率性** : 問題を効率的に解決するためにサポート エンジニアが必要とする重要な情報を集めます。
+* **合理化**:サポートとトラブルシューティングを見つけやすくして、サポート リクエストの送信方法を簡略化します。
+* **統合**:Azure リソースに関する問題のトラブルシューティングを行う際に、コンテキストを切り替えずに、サポート リクエストを容易に開くことができます。
+* **効率性**: 問題を効率的に解決するためにサポート エンジニアが必要とする重要な情報を集めます。
 
 Azure は、サブスクリプション管理 (請求、割り当て調整、アカウント振り替えなど) に無制限のサポートを提供します。 技術的なサポートについては、サポート プランが必要になります。 詳細については、「[サポート プランの比較](https://azure.microsoft.com/support/plans)」を参照してください。
 

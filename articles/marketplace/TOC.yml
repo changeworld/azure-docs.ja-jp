@@ -51,6 +51,8 @@
           href: marketplace-co-sell.md
         - name: 'パートナー センターの [共同販売] オプション'
           href: commercial-marketplace-co-sell.md
+        - name: OCP GTM からの共同販売ソリューションの移行
+          href: co-sell-solution-migration.md
         - name: CSP パートナーによる再販
           href: cloud-solution-providers.md
         - name: コネクト プログラムのオンボード ガイド

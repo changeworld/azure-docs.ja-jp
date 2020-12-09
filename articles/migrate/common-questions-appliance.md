@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate アプライアンスの FAQ
 description: Azure Migrate アプライアンスに関する一般的な質問の回答を示します。
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 7be6260a7d3eb25ce2854f6949554e2c66019980
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9badbfe6cfe12d67e07f0889d175ed32bc455321
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337593"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753877"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate アプライアンス:一般的な質問
 
@@ -66,9 +69,9 @@ Azure Migrate アプライアンスでは、パフォーマンス データを�
 
 Azure Migrate アプライアンスが VM 上で収集するデータの詳細については、次の記事を参照してください。
 
-- **VMware VM** :収集データを [レビュー](migrate-appliance.md#collected-data---vmware)します。
-- **Hyper-V VM** :収集データを [レビュー](migrate-appliance.md#collected-data---hyper-v)します。
-- **物理サーバーまたは仮想サーバー** : 収集データを [レビュー](migrate-appliance.md#collected-data---physical)します。
+- **VMware VM**:収集データを [レビュー](migrate-appliance.md#collected-data---vmware)します。
+- **Hyper-V VM**:収集データを [レビュー](migrate-appliance.md#collected-data---hyper-v)します。
+- **物理サーバーまたは仮想サーバー**: 収集データを [レビュー](migrate-appliance.md#collected-data---physical)します。
 
 ## <a name="how-is-data-stored"></a>データをどのように格納するか
 

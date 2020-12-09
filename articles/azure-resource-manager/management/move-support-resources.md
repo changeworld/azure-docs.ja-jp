@@ -2,13 +2,13 @@
 title: リソースの種類別の移動操作のサポート
 description: 新しいリソース グループまたはサブスクリプションに移動できる Azure リソースの種類を一覧表示します。
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: 5b71c991136533096604c8a35af7989a227b6d2a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.date: 12/07/2020
+ms.openlocfilehash: 226686e51c8b59b6963609a95a2cb3c2cc03d621
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364231"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780996"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 
@@ -347,8 +347,8 @@ ms.locfileid: "94364231"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | automationaccounts | はい | はい |
-> | automationaccounts/configurations | はい | はい |
+> | automationaccounts | ○ | はい |
+> | automationaccounts/configurations | ○ | はい |
 > | automationaccounts/runbooks | はい | はい |
 
 ## <a name="microsoftavs"></a>Microsoft.AVS
@@ -399,7 +399,7 @@ ms.locfileid: "94364231"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | batchaccounts | はい | はい |
+> | batchaccounts | はい | ○ |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
@@ -606,20 +606,20 @@ ms.locfileid: "94364231"
 > | availabilitysets | はい | はい |
 > | diskaccesses | いいえ | いいえ |
 > | diskencryptionsets | いいえ | いいえ |
-> | disks | はい | はい |
+> | disks | はい | ○ |
 > | galleries | いいえ | いいえ |
 > | galleries/images | いいえ | いいえ |
 > | galleries/images/versions | いいえ | いいえ |
 > | hostgroups | いいえ | いいえ |
 > | hostgroups/hosts | いいえ | いいえ |
 > | images | はい | はい |
-> | proximityplacementgroups | はい | はい |
+> | proximityplacementgroups | はい | ○ |
 > | restorepointcollections | いいえ | いいえ |
 > | restorepointcollections / restorepoints | いいえ | いいえ |
 > | sharedvmextensions | いいえ | いいえ |
 > | sharedvmimages | いいえ | いいえ |
 > | sharedvmimages/versions | いいえ | いいえ |
-> | スナップショット | はい | はい |
+> | スナップショット | はい | ○ |
 > | sshpublickeys | いいえ | いいえ |
 > | virtualmachines | はい | はい |
 > | virtualmachines/extensions | はい | はい |
@@ -754,7 +754,7 @@ ms.locfileid: "94364231"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | availableskus | いいえ | いいえ |
-> | databoxedgedevices | はい | はい |
+> | databoxedgedevices | はい | ○ |
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 
@@ -768,7 +768,7 @@ ms.locfileid: "94364231"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | catalogs | はい | はい |
+> | catalogs | はい | ○ |
 > | datacatalogs | × | いいえ |
 
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
@@ -882,8 +882,8 @@ ms.locfileid: "94364231"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | applicationgroups | はい | はい |
-> | hostpools | はい | はい |
-> | workspaces | はい | はい |
+> | hostpools | はい | ○ |
+> | workspaces | ○ | はい |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
@@ -892,7 +892,7 @@ ms.locfileid: "94364231"
 > | ------------- | ----------- | ---------- |
 > | elasticpools | いいえ | いいえ |
 > | elasticpools/iothubtenants | いいえ | いいえ |
-> | iothubs | はい | はい |
+> | iothubs | はい | ○ |
 > | provisioningservices | はい | はい |
 
 ## <a name="microsoftdevops"></a>Microsoft.DevOps
@@ -914,11 +914,11 @@ ms.locfileid: "94364231"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | labcenters | いいえ | いいえ |
+> | labcenters | いいえ | × |
 > | labs | はい | × |
 > | labs/environments | はい | はい |
 > | labs/servicerunners | はい | はい |
-> | labs/virtualmachines | はい | いいえ |
+> | labs/virtualmachines | はい | × |
 > | schedules | はい | はい |
 
 ## <a name="microsoftdigitaltwins"></a>Microsoft.DigitalTwins
@@ -926,7 +926,7 @@ ms.locfileid: "94364231"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | digitaltwinsinstances | いいえ | いいえ |
+> | digitaltwinsinstances | × | いいえ |
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
@@ -942,7 +942,7 @@ ms.locfileid: "94364231"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | domains | はい | はい |
-> | generatessorequest | いいえ | いいえ |
+> | generatessorequest | いいえ | × |
 > | topleveldomains | いいえ | × |
 > | validatedomainregistrationinformation | いいえ | × |
 
@@ -962,7 +962,7 @@ ms.locfileid: "94364231"
 > | eventsubscriptions | いいえ - 個別に移動できませんが、サブスクライブしたリソースで自動的に移動されます。 | いいえ - 個別に移動できませんが、サブスクライブしたリソースで自動的に移動されます。 |
 > | extensiontopics | いいえ | いいえ |
 > | partnernamespaces | はい | はい |
-> | partnerregistrations | いいえ | いいえ |
+> | partnerregistrations | × | いいえ |
 > | partnertopics | はい | はい |
 > | systemtopics | はい | はい |
 > | topics | はい | はい |
@@ -974,29 +974,29 @@ ms.locfileid: "94364231"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | clusters | はい | はい |
-> | namespaces | はい | はい |
-> | sku | いいえ | いいえ |
+> | namespaces | ○ | はい |
+> | sku | いいえ | × |
 
 ## <a name="microsoftexperimentation"></a>Microsoft.Experimentation
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | experimentworkspaces | いいえ | いいえ |
+> | experimentworkspaces | × | いいえ |
 
 ## <a name="microsoftfalcon"></a>Microsoft.Falcon
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | namespaces | はい | はい |
+> | namespaces | ○ | はい |
 
 ## <a name="microsoftfeatures"></a>Microsoft.Features
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | featureproviders | いいえ | いいえ |
+> | featureproviders | いいえ | × |
 > | features | いいえ | × |
 > | providers | いいえ | × |
 > | subscriptionfeatureregistrations | いいえ | × |
@@ -1006,7 +1006,7 @@ ms.locfileid: "94364231"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | accounts | いいえ | いいえ |
+> | accounts | × | いいえ |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
@@ -1025,15 +1025,15 @@ ms.locfileid: "94364231"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | hanainstances | いいえ | いいえ |
-> | sapmonitors | はい | はい |
+> | hanainstances | いいえ | × |
+> | sapmonitors | いいえ | × |
 
 ## <a name="microsofthardwaresecuritymodules"></a>Microsoft.HardwareSecurityModules
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | dedicatedhsms | いいえ | いいえ |
+> | dedicatedhsms | × | いいえ |
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
@@ -1100,13 +1100,13 @@ ms.locfileid: "94364231"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | actiongroups | はい | はい |
+> | actiongroups | ○ | ○ |
 > | activitylogalerts | いいえ | いいえ |
-> | alertrules | はい | はい |
-> | autoscalesettings | はい | はい |
-> | baseline | いいえ | いいえ |
+> | alertrules | はい | ○ |
+> | autoscalesettings | はい | ○ |
+> | baseline | × | いいえ |
 > | components | はい | はい |
-> | datacollectionrules | いいえ | いいえ |
+> | datacollectionrules | × | いいえ |
 > | diagnosticsettings | いいえ | いいえ |
 > | diagnosticsettingscategories | × | いいえ |
 > | eventcategories | × | いいえ |
@@ -1133,8 +1133,8 @@ ms.locfileid: "94364231"
 > | トポロジ | いいえ | いいえ |
 > | トランザクション | × | いいえ |
 > | vminsightsonboardingstatuses | × | いいえ |
-> | webtests | はい | はい |
-> | webtests / gettestresultfile | いいえ | いいえ |
+> | webtests | ○ | はい |
+> | webtests / gettestresultfile | × | いいえ |
 > | Workbooks | はい | はい |
 > | workbooktemplates | はい | はい |
 
@@ -1229,7 +1229,7 @@ ms.locfileid: "94364231"
 > | ------------- | ----------- | ---------- |
 > | commitmentplans | いいえ | いいえ |
 > | webservices | はい | いいえ |
-> | workspaces | はい | はい |
+> | workspaces | ○ | はい |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
 
@@ -1379,7 +1379,7 @@ ms.locfileid: "94364231"
 > | holographicsbroadcastaccounts | いいえ | いいえ |
 > | objectunderstandingaccounts | いいえ | いいえ |
 > | remoterenderingaccounts | はい | はい |
-> | spatialanchorsaccounts | はい | はい |
+> | spatialanchorsaccounts | はい | ○ |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
@@ -1411,7 +1411,7 @@ ms.locfileid: "94364231"
 > | expressroutecircuits | いいえ | いいえ |
 > | expressroutegateways | いいえ | いいえ |
 > | expressrouteserviceproviders | いいえ | いいえ |
-> | firewallpolicies | はい | はい |
+> | firewallpolicies | はい | ○ |
 > | frontdoors | いいえ | いいえ |
 > | ipallocations | はい | はい |
 > | ipgroups | はい | はい |
@@ -1419,13 +1419,13 @@ ms.locfileid: "94364231"
 > | localnetworkgateways | はい | はい |
 > | natgateways | いいえ | いいえ |
 > | networkexperimentprofiles | いいえ | いいえ |
-> | networkintentpolicies | はい | はい |
-> | networkinterfaces | はい | はい |
+> | networkintentpolicies | はい | ○ |
+> | networkinterfaces | はい | ○ |
 > | networkprofiles | いいえ | いいえ |
 > | networksecuritygroups | はい | はい |
 > | networkwatchers | はい | いいえ |
-> | networkwatchers/connectionmonitors | はい | いいえ |
-> | networkwatchers/flowlogs | はい | いいえ |
+> | networkwatchers/connectionmonitors | ○ | いいえ |
+> | networkwatchers/flowlogs | ○ | いいえ |
 > | networkwatchers/pingmeshes | はい | いいえ |
 > | p2svpngateways | いいえ | いいえ |
 > | privatednszones | はい | はい |
@@ -1435,18 +1435,18 @@ ms.locfileid: "94364231"
 > | privateendpoints | いいえ | いいえ |
 > | privatelinkservices | いいえ | いいえ |
 > | publicipaddresses | はい - Basic SKU<br>はい - Standard SKU | はい - Basic SKU<br>いいえ - Standard SKU |
-> | publicipprefixes | はい | はい |
+> | publicipprefixes | はい | ○ |
 > | routefilters | いいえ | いいえ |
-> | routetables | はい | はい |
-> | securitypartnerproviders | はい | はい |
-> | serviceendpointpolicies | はい | はい |
+> | routetables | はい | ○ |
+> | securitypartnerproviders | はい | ○ |
+> | serviceendpointpolicies | はい | ○ |
 > | trafficmanagergeographichierarchies | いいえ | いいえ |
-> | trafficmanagerprofiles | はい | はい |
+> | trafficmanagerprofiles | はい | ○ |
 > | trafficmanagerprofiles / heatmaps | いいえ | いいえ |
 > | trafficmanagerusermetricskeys | いいえ | いいえ |
 > | virtualhubs | いいえ | いいえ |
-> | virtualnetworkgateways | はい | はい |
-> | virtualnetworks | はい | はい |
+> | virtualnetworkgateways | はい | ○ |
+> | virtualnetworks | はい | ○ |
 > | virtualnetworktaps | いいえ | いいえ |
 > | virtualrouters | はい | はい |
 > | virtualwans | いいえ | いいえ |
@@ -1459,7 +1459,7 @@ ms.locfileid: "94364231"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | namespaces | はい | はい |
+> | namespaces | ○ | はい |
 > | namespaces/notificationhubs | はい | はい |
 
 ## <a name="microsoftobjectstore"></a>Microsoft.ObjectStore
@@ -1467,7 +1467,7 @@ ms.locfileid: "94364231"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | osnamespaces | はい | はい |
+> | osnamespaces | はい | ○ |
 
 ## <a name="microsoftoffazure"></a>Microsoft.OffAzure
 
@@ -1493,7 +1493,7 @@ ms.locfileid: "94364231"
 > | deletedworkspaces | いいえ | いいえ |
 > | linktargets | いいえ | いいえ |
 > | storageinsightconfigs | いいえ | いいえ |
-> | workspaces | はい | はい |
+> | workspaces | ○ | はい |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -1598,7 +1598,7 @@ ms.locfileid: "94364231"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | namespaces | はい | はい |
+> | namespaces | ○ | はい |
 
 ## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
 
@@ -1743,7 +1743,7 @@ ms.locfileid: "94364231"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | namespaces | はい | はい |
+> | namespaces | ○ | はい |
 > | premiummessagingregions | いいえ | いいえ |
 > | sku | いいえ | いいえ |
 
@@ -1769,10 +1769,10 @@ ms.locfileid: "94364231"
 > | ------------- | ----------- | ---------- |
 > | applications | はい | はい |
 > | containergroups | いいえ | いいえ |
-> | gateways | はい | はい |
-> | networks | はい | はい |
-> | secrets | はい | はい |
-> | volumes | はい | はい |
+> | gateways | はい | ○ |
+> | networks | はい | ○ |
+> | secrets | はい | ○ |
+> | volumes | はい | ○ |
 
 ## <a name="microsoftservices"></a>Microsoft.Services
 
@@ -1820,7 +1820,7 @@ ms.locfileid: "94364231"
 > | servers / databases / backuplongtermretentionpolicies | はい | はい |
 > | servers/elasticpools | はい | はい |
 > | servers/jobaccounts | はい | はい |
-> | servers/jobagents | はい | はい |
+> | servers/jobagents | ○ | はい |
 > | virtualclusters | はい | はい |
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
@@ -1829,7 +1829,7 @@ ms.locfileid: "94364231"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | sqlvirtualmachinegroups | はい | はい |
-> | sqlvirtualmachines | はい | はい |
+> | sqlvirtualmachines | はい | ○ |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
@@ -1912,7 +1912,7 @@ ms.locfileid: "94364231"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | workspaces | はい | はい |
+> | workspaces | ○ | はい |
 > | workspaces / bigdatapools | はい | はい |
 > | workspaces / sqlpools | はい | はい |
 
@@ -1921,8 +1921,8 @@ ms.locfileid: "94364231"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | 環境 | はい | はい |
-> | environments/eventsources | はい | はい |
+> | 環境 | ○ | はい |
+> | environments/eventsources | ○ | はい |
 > | environments/referencedatasets | はい | はい |
 
 ## <a name="microsofttoken"></a>Microsoft.Token
@@ -2000,9 +2000,9 @@ ms.locfileid: "94364231"
 > | availablestacks | いいえ | いいえ |
 > | billingmeters | いいえ | いいえ |
 > | certificates | いいえ | はい |
-> | connectiongateways | はい | はい |
+> | connectiongateways | はい | ○ |
 > | connections | はい | はい |
-> | customapis | はい | はい |
+> | customapis | はい | ○ |
 > | deletedsites | いいえ | いいえ |
 > | deploymentlocations | いいえ | いいえ |
 > | georegions | いいえ | いいえ |

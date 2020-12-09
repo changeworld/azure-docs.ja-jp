@@ -1,14 +1,17 @@
 ---
 title: Azure Government で Azure Migrate アプライアンスを設定する
 description: Azure Government で Azure Migrate アプライアンスを設定する方法について説明します
-ms.topic: article
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 1060bda13cc593980850bc6563555cf5dd4b7fd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f31211c4448ad5bbe8d839b2ec86b0b61970f568
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450030"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752194"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Azure Government でアプライアンスを設定する 
 
@@ -158,7 +161,7 @@ VMware 用のアプライアンスを設定するには、Azure portal から ZI
 
 3. 最新のアプライアンス バージョンとハッシュ値を確認します。
 
-    **シナリオ** | **ダウンロード*** | **ハッシュ値**
+    **シナリオ** | **ダウンロード** _ | _ *ハッシュ値**
     --- | --- | ---
     物理 (85 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140338) | cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
           

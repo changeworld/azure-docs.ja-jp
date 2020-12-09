@@ -125,10 +125,12 @@
       items:
         - name: フローを作成する
           items:
-            - name: サインアップまたはサインイン
-              href: tutorial-create-user-flows.md
+            - name: ユーザー フローを作成する
+              href: create-user-flow.md
             - name: リソース所有者のパスワード資格情報
               href: configure-ropc.md
+            - name: 電話認証の設定
+              href: phone-authentication-user-flows.md
             - name: セルフサービス パスワードのリセットの設定
               href: user-flow-self-service-password-reset.md
         - name: 条件付きアクセスの追加

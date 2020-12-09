@@ -1,20 +1,14 @@
 ---
-title: トラブルシューティングのためにブラウザー トレースをキャプチャする | Microsoft Docs
+title: トラブルシューティングのためにブラウザー トレースをキャプチャする
 description: Azure portal での問題のトラブルシューティングに役立つように、ブラウザー トレースからネットワーク情報をキャプチャします。
-services: azure-portal
-keywords: ''
-author: mgblythe
-ms.author: mblythe
 ms.date: 05/11/2020
 ms.topic: troubleshooting
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: aac7357939ab2d14949c967630840ed6d267d251
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 504a32fb63022f97e8049c7c1ccc7721bbac31ab
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145737"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745997"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>トラブルシューティングのためにブラウザー トレースをキャプチャする
 
@@ -24,13 +18,13 @@ Azure portal での問題のトラブルシューティングを行っていて�
 
 Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オープンソース プロジェクト](https://www.chromium.org/Home)が基になっています。 次の手順では、開発者ツールを使用する方法について説明します。これらのツールは、2 つのブラウザーで非常によく似ています。 詳細については、「[Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools)」および「[Microsoft Edge (Chromium) 開発者ツール](/microsoft-edge/devtools-guide-chromium)」を参照してください。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_ " サインインすることが重要です。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_" サインインすることが重要です。 
 
 1. [ステップ記録ツール](https://support.microsoft.com/help/22878/windows-10-record-steps)を使用して、ポータルで実行した手順の記録を始めます。
 
 1. ポータルで、問題が発生した直前のステップに移動します。
 
-1. F12 キーを押すか、![ブラウザー設定アイコンを示すスクリーンショット](media/capture-browser-trace/chromium-icon-settings.png)を選択します。 > **その他のツール** > **開発者ツール** 。
+1. F12 キーを押すか、![ブラウザー設定アイコンを示すスクリーンショット](media/capture-browser-trace/chromium-icon-settings.png)を選択します。 > **その他のツール** > **開発者ツール**。
 
 1. 既定では、ブラウザーで現在読み込まれているページのトレース情報のみが保持されます。 再現するには複数のページを移動する必要がある場合であっても、次のオプションを設定して、すべてのトレース情報が保持されるようにします。
 
@@ -70,13 +64,13 @@ Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オー�
 
 次の手順では、Microsoft Edge (EdgeHTML) の開発者ツールを使用する方法について説明します。 詳細については、「[Microsoft Edge (EdgeHTML) 開発者ツール](/microsoft-edge/devtools-guide)」を参照してください。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_ " サインインすることが重要です。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_" サインインすることが重要です。 
 
 1. [ステップ記録ツール](https://support.microsoft.com/help/22878/windows-10-record-steps)を使用して、ポータルで実行した手順の記録を始めます。
 
 1. ポータルで、問題が発生した直前のステップに移動します。
 
-1. F12 キーを押すか、![ブラウザー設定アイコンのスクリーンショット](media/capture-browser-trace/edge-icon-settings.png)を選択します。 > **その他のツール** > **開発者ツール** 。
+1. F12 キーを押すか、![ブラウザー設定アイコンのスクリーンショット](media/capture-browser-trace/edge-icon-settings.png)を選択します。 > **その他のツール** > **開発者ツール**。
 
 1. 既定では、ブラウザーで現在読み込まれているページのトレース情報のみが保持されます。 再現するには複数のページを移動する必要がある場合であっても、次のオプションを設定して、すべてのトレース情報が保持されるようにします。
 
@@ -126,7 +120,7 @@ Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オー�
 
         ![Safari の詳細設定のスクリーンショット](media/capture-browser-trace/safari-show-develop-menu.png)
 
-1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_ " サインインすることが重要です。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_" サインインすることが重要です。 
 
 1. ポータルで実行した手順の記録を始めます。 詳細については、「[Mac の画面を記録する方法](https://support.apple.com/HT208721)」を参照してください。
 
@@ -170,7 +164,7 @@ Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オー�
 
 次の手順では、Firefox の開発者ツールを使用する方法について説明します。 詳細については、[Firefox の開発者ツール](https://developer.mozilla.org/docs/Tools)に関するページを参照してください。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_ " サインインすることが重要です。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_" サインインすることが重要です。 
 
 1. ポータルで実行した手順の記録を始めます。 Windows で [ステップ記録ツール](https://support.microsoft.com/help/22878/windows-10-record-steps)を使用するか、「[Mac で画面を収録する方法](https://support.apple.com/HT208721)」を参照してください。
 

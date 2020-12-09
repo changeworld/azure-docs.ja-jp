@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate レプリケーション アプライアンス
 description: エージェントベースの VMWare の移行のための Azure Migrate レプリケーション アプライアンスについて説明します。
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: af9e45e47c2f0645d81a571161f15f7d69cfec61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec277bcc3e361561f54e72c54526d65487c113b4
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532122"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754098"
 ---
 # <a name="replication-appliance"></a>レプリケーション アプライアンス
 

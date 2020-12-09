@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9563ed283229eb6f43d036629cfe8b84fcde25fc
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1cc5227cb4b5de02cba65a60dd469da93d3767e5
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839881"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744059"
 ---
 # <a name="how-it-works-azure-ad-multi-factor-authentication"></a>動作のしくみ: Azure AD Multi-Factor Authentication
 

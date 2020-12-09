@@ -138,7 +138,7 @@
       href: service-fabric-content-roadmap.md
     - name: アプリケーションのシナリオ
       href: service-fabric-application-scenarios.md
-    - name: Architecture
+    - name: アーキテクチャ
       href: service-fabric-architecture.md
     - name: セキュリティ
       items:
@@ -201,7 +201,7 @@
           items:
             - name: Reliable Actors の概要
               href: service-fabric-reliable-actors-introduction.md
-            - name: Architecture
+            - name: アーキテクチャ
               href: service-fabric-reliable-actors-platform.md
             - name: サービスレベルの機能の実装
               href: service-fabric-reliable-actors-using.md
@@ -330,7 +330,7 @@
           items:
             - name: Cluster Resource Manager の概要
               href: service-fabric-cluster-resource-manager-introduction.md
-            - name: Architecture
+            - name: アーキテクチャ
               href: service-fabric-cluster-resource-manager-architecture.md
             - name: クラスターについて説明する
               href: service-fabric-cluster-resource-manager-cluster-description.md
@@ -687,7 +687,7 @@
                   href: service-fabric-how-to-remove-node-type.md
             - name: アップグレード
               items:
-                - name: 管理対象クラスター ノードの種類に VM スケールセット拡張機能を追加する
+                - name: 管理対象クラスター ノードの種類に仮想マシン スケール セット拡張機能を追加する
                   href: how-to-managed-cluster-vmss-extension.md
                 - name: Service Fabric バージョンのアップグレード
                   href: service-fabric-cluster-upgrade-version-azure.md
@@ -797,6 +797,8 @@
               href: configure-existing-cluster-enable-managed-identity-token-service.md
             - name: マネージド ID を使用して新しい Azure Service Fabric クラスターを構成する
               href: configure-new-azure-service-fabric-enable-managed-identity.md
+            - name: マネージド ID を使用して Service Fabric マネージド クラスターを構成する
+              href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
         - name: アプリケーションのセットアップ
           items:
             - name: マネージド ID を持つアプリケーションのデプロイ方法

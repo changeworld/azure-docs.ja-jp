@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate Server Assessment でエージェントベースの依存関係の分析を設定する
 description: この記事では、Azure Migrate Server Assessment でエージェントベースの依存関係の分析を設定する方法について説明します。
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 1ab5d639d68b5ce2298f907ef8346488e16b4020
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d4bf635c57bcef41cd0f3285d8a91bae4b3e0415
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483472"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752024"
 ---
 # <a name="set-up-dependency-visualization"></a>依存関係の視覚化を設定する
 

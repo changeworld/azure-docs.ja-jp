@@ -1,24 +1,15 @@
 ---
 title: Azure Portal でのダッシュボードの作成と共有
 description: この記事では、Azure portal でダッシュボードを作成、カスタマイズ、発行、共有する方法について説明します。
-services: azure-portal
-documentationcenter: ''
-author: sewatson
-manager: mtillman
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
-ms.service: azure-portal
-ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: na
 ms.date: 03/23/2020
-ms.author: mblythe
-ms.openlocfilehash: b4241e51f186ea973702562ab27bb7f13a77de57
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 10c322c9d9d18f7b79a4419bd9efa2e366a5b7c3
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089487"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745827"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Azure Portal でのダッシュボードの作成と共有
 
@@ -89,7 +80,7 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
 ### <a name="additional-tile-configuration"></a>タイルの追加構成
 
-一部のタイルには必要な情報を表示するため詳細な構成が必要となる場合があります。 たとえば、 **[メトリックのグラフ]** タイルは、 **Azure Monitor** のメトリックを表示するように設定する必要があります。 また、タイル データをカスタマイズして、ダッシュボードの既定の時間設定を上書きすることもできます。
+一部のタイルには必要な情報を表示するため詳細な構成が必要となる場合があります。 たとえば、 **[メトリックのグラフ]** タイルは、**Azure Monitor** のメトリックを表示するように設定する必要があります。 また、タイル データをカスタマイズして、ダッシュボードの既定の時間設定を上書きすることもできます。
 
 設定が必要なタイルには、タイルをカスタマイズするまで **[タイルの構成]** バナーが表示されます。 タイルをカスタマイズするには:
 

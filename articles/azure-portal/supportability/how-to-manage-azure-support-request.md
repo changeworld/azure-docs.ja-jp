@@ -1,19 +1,16 @@
 ---
 title: Azure サポート リクエストを管理する
 description: サポート リクエストの表示、メッセージの送信、リクエストの重大度の変更、Azure サポートとの診断情報の共有、クローズされたサポート リクエストの再開、およびファイルのアップロードの方法について説明します。
-author: mgblythe
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
-ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.author: mblythe
-ms.openlocfilehash: f3b4806bf46750d74a54f68bd2ab58e402e75091
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9dd703dc0a3f5e8f85b1022fa2a71ff9a8c295d
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85852169"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745572"
 ---
 # <a name="manage-an-azure-support-request"></a>Azure サポート リクエストを管理する
 
@@ -45,17 +42,17 @@ ms.locfileid: "85852169"
 
 1. **[サポート リクエスト]** ページで、 **[変更]** を選択します。
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="すべてのサポート リクエスト":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="サポート リクエストの重大度を変更する":::
 
 1. リクエストが既にサポート エンジニアに割り当てられているかによって、Azure portal に 2 つの画面のいずれかが表示されます。
 
     - リクエストが割り当てられていない場合は、次のような画面が表示されます。 新しい重大度レベルを選択して、 **[変更]** を選択します。
 
-        :::image type="content" source="media/how-to-manage-azure-support-request/unassigned-can-change-severity.png" alt-text="すべてのサポート リクエスト":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/unassigned-can-change-severity.png" alt-text="新しい重大度レベルを選択する":::
 
-    - リクエストが割り当てられている場合は、次のような画面が表示されます。 **[OK]** を選択してから、重大度レベルの変更を要求する[新しいメッセージ](#send-a-message)を作成します。
+    - リクエストが割り当てられている場合は、次のような画面が表示されます。 **[OK]** を選択してから、重大度レベルの変更を要求する [新しいメッセージ](#send-a-message)を作成します。
 
-        :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="すべてのサポート リクエスト":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="新しい重大度レベルを選択できない":::
 
 ## <a name="share-diagnostic-information-with-azure-support"></a>Azure サポートと診断情報を共有する
 
@@ -69,7 +66,7 @@ ms.locfileid: "85852169"
     
     1. **[サポート リクエスト]** ページで、 **[アクセス許可の付与]** を選択してから、 **[はい]** と **[OK]** を選択します。
     
-        :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="すべてのサポート リクエスト":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="診断情報に対してアクセス許可を付与する":::
 
 ## <a name="upload-files"></a>ファイルをアップロードする
 
@@ -79,7 +76,7 @@ ms.locfileid: "85852169"
 
 1. **[サポート リクエスト]** ページで、目的のファイルを参照して見つけてから、 **[アップロード]** を選択します。 ファイルが複数存在する場合は、この手順を繰り返します。
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="すべてのサポート リクエスト":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="ファイルをアップロードする":::
 
 ### <a name="file-upload-guidelines"></a>ファイルのアップロードのガイドライン
 

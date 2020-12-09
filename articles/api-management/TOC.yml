@@ -58,6 +58,8 @@
           href: api-management-howto-policies.md
         - name: ポリシー リファレンスのインデックス
           href: api-management-policies.md
+        - name: エラー処理
+          href: api-management-error-handling-policies.md
     - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
@@ -70,8 +72,6 @@
       href: api-management-revisions.md
     - name: Automation を使用して管理する
       href: automation-manage-api-management.md
-    - name: エラー処理
-      href: api-management-error-handling-policies.md
     - name: API のインポートに関する制限事項
       href: api-management-api-import-restrictions.md
     - name: セルフホステッド ゲートウェイの概要
@@ -240,6 +240,8 @@
           href: api-management-howto-create-groups.md
         - name: IP アドレスを取得する
           href: api-management-howto-ip-addresses.md
+        - name: API 分析を取得する
+          href: howto-use-analytics.md
         - name: イベントを Azure Event Hubs にログ記録する
           href: api-management-howto-log-event-hubs.md
         - name: Azure Application Insights でログを要求する
@@ -305,5 +307,9 @@
       href: /azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
     - name: API 実装ガイダンス
       href: /azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json
-    - name: '"ホスト名の更新の失敗" エラーに関するトラブルシューティング'
-      href: api-management-troubleshoot-cannot-add-custom-domain.md
+    - name: トラブルシューティング
+      items:
+        - name: '"ホスト名の更新の失敗" エラーに関するトラブルシューティング'
+          href: api-management-troubleshoot-cannot-add-custom-domain.md
+        - name: 応答のタイムアウトとエラーのトラブルシューティング
+          href: troubleshoot-response-timeout-and-errors.md

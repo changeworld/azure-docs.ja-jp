@@ -2,13 +2,16 @@
 title: Azure Migrate Server Assessment での依存関係の分析
 description: Azure Migrate Server Assessment を使用して、評価のために依存関係の分析を使用する方法について説明します。
 ms.topic: conceptual
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.date: 09/15/2020
-ms.openlocfilehash: a284d549f13595e0ce8a5d06cc017602e559b648
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f198d47191e7893e74b072ae8fd10546e3a6ee7
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530252"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752211"
 ---
 # <a name="dependency-analysis"></a>依存関係の分析
 

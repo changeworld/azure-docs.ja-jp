@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/16/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7df994efd15a6e91b60d7a1e836364e3646cc5b3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2c5c68ecb645307d25b91e952a99ae5c16c9289c
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995485"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96842322"
 ---
 Azure ファイル共有の SMB マルチチャネルは、現在、次のリージョンでのみご利用いただけます。
 
@@ -23,6 +23,9 @@ Azure ファイル共有の SMB マルチチャネルは、現在、次のリー
 - インド中部
 - フランス中部
 - ドイツ中西部
+- 米国中北部
 - 米国中南部
 - アラブ首長国連邦北部
+- 英国南部
+- 米国中西部
 - インド西部

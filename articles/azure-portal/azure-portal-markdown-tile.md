@@ -1,21 +1,15 @@
 ---
 title: Azure ダッシュボードでカスタムのマークダウン タイルを使用する
 description: マークダウン タイルを Azure ダッシュボードに追加して、静的コンテンツを表示する方法について説明します
-services: azure-portal
-keywords: ''
-author: mgblythe
-ms.author: mblythe
 ms.date: 01/08/2020
 ms.topic: how-to
 ms.custom: devx-track-js
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 2d9344d8b97d9a6ba361a337e0c6165438c04897
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 5121142ecf568aa1ac9a7ec19f7211c6f9a6253f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94745090"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745759"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Azure ダッシュボードでマークダウン タイルを使用して、カスタム コンテンツを表示する
 
@@ -48,7 +42,7 @@ ms.locfileid: "94745090"
       ![URL の入力を示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
 
       > [!NOTE]
-      > セキュリティを強化するために、マークダウン ファイルを作成して[暗号化が有効になっている Azure ストレージ アカウント BLOB](../storage/common/storage-service-encryption.md) に保存し、URL オプションを使用してそのファイルを指定できます。 マークダウン コンテンツは、ストレージ アカウントの暗号化オプションを使用して暗号化されます。 そのファイルに対するアクセス許可を持つユーザーのみが、ダッシュボードでマークダウン コンテンツを表示できます。 Azure portal ( _https://portal.azure.com/_ ) で BLOB のマークダウン ファイルにアクセスできるよう、ストレージ アカウントに[クロスオリジン リソース共有 (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) ルールを設定することが必要な場合があります。
+      > セキュリティを強化するために、マークダウン ファイルを作成して[暗号化が有効になっている Azure ストレージ アカウント BLOB](../storage/common/storage-service-encryption.md) に保存し、URL オプションを使用してそのファイルを指定できます。 マークダウン コンテンツは、ストレージ アカウントの暗号化オプションを使用して暗号化されます。 そのファイルに対するアクセス許可を持つユーザーのみが、ダッシュボードでマークダウン コンテンツを表示できます。 Azure portal ( _https://portal.azure.com/_ ) で BLOB のマークダウン ファイルにアクセスできるよう、ストレージ アカウントに [クロスオリジン リソース共有 (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) ルールを設定することが必要な場合があります。
 
 1. **[完了]** を選択して、**[マークダウンの編集]** ウィンドウを閉じます。 コンテンツが [マークダウン] タイルに表示されます。これは、右下隅のハンドルをドラッグしてサイズ変更できます。
 

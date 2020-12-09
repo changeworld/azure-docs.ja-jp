@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate での Hyper-V の評価のサポート
 description: Azure Migrate Server Assessment を使用した Hyper-V の評価のサポートについて説明します。
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 4c50bd2bdd0e5a0d68b545a914582352d7b34421
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 5b5c85b599f02cedc3bb1bda84c28ef2169c8e2d
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331976"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754047"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-V の評価のサポート マトリックス
 
@@ -46,7 +49,7 @@ Hyper-V VM の評価を設定するには、Azure Migrate プロジェクトを�
 | :----------------------------- | :------------------- |
 | **オペレーティング システム** | すべてのオペレーティング システムを、移行のために評価することができます。  |
 | **統合サービス**       | オペレーティング システム情報をキャプチャするには、評価する VM で [Hyper-V 統合サービス](/virtualization/hyper-v-on-windows/reference/integration-services)が実行されている必要があります。 |
-| **記憶域** | ローカル ディスク、DAS、JBOD、記憶域スペース、CSV、SMB。 VHD/VHDX が格納されているこれらの Hyper-V ホスト記憶域がサポートされています。 <br/> IDE および SCSI 仮想コントローラーがサポートされています| 
+| **Storage** | ローカル ディスク、DAS、JBOD、記憶域スペース、CSV、SMB。 VHD/VHDX が格納されているこれらの Hyper-V ホスト記憶域がサポートされています。 <br/> IDE および SCSI 仮想コントローラーがサポートされています| 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate アプライアンスの要件
 

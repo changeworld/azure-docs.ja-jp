@@ -1,18 +1,17 @@
 ---
 title: Azure Migrate を使用して Azure への移行について多数の物理サーバーを評価する | Microsoft Docs
 description: Azure Migrate サービスを使用して Azure への移行について多数の物理サーバーを評価する方法について説明します。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
-ms.topic: conceptual
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 01/19/2020
-ms.author: hamusa
-ms.openlocfilehash: 6009975337f8f4caaf43e4b8b715e42c6ce2ffdc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 45954a42613fb1716e3b66305c0485a3966b8e37
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494581"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753690"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Azure への移行について多数の物理サーバーを評価する
 

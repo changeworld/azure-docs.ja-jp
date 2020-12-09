@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate アプライアンス
 description: Azure Migrate アプライアンスに対するサポートの概要について説明します。
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f3357fcc070ca4ca2212cf0424e4baf8208a3ca1
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008703"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754132"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 

@@ -1,20 +1,15 @@
 ---
-title: Azure portal の設定と基本設定を管理する | Microsoft Docs
+title: Azure portal の設定を管理する
 description: 独自の基本設定を実現するために Azure portal の既定の設定を変更できます。 設定には、非アクティブ セッションのタイムアウト、既定のビュー、メニュー モード、コントラスト、テーマ、通知、言語と地域の形式が含まれます
-services: azure-portal
 keywords: 設定, タイムアウト, 言語, 地域
-author: mgblythe
-ms.author: mblythe
 ms.date: 08/05/2020
 ms.topic: how-to
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 0f94f694163ba836091e522a29f73cabd64e22b5
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 07dd3eb5cb132adf87852f29d867be772294d189
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145941"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745640"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Azure portal の設定を管理する
 
@@ -100,11 +95,11 @@ Azure portal にサインインするときに、既定で開かれるページ�
 
 グローバル管理者として、Azure portal のすべてのユーザーに対してアイドル タイムアウト設定を適用する場合は、これらの手順に従います。
 
-1. リンク テキスト「 **ディレクトリ レベルのタイムアウトの構成** 」を選択します。
+1. リンク テキスト「**ディレクトリ レベルのタイムアウトの構成**」を選択します。
 
     ![リンク テキストが強調表示されたポータル設定を示すスクリーンショット](./media/set-preferences/settings-admin.png)
 
-1. **[ディレクトリ レベルの非アクティブ タイムアウトの構成]** ページで、 **[Azure portal のディレクトリ レベルのアイドル タイムアウトを有効にする]** を選択して設定をオンにします。
+1. **[ディレクトリ レベルの非アクティブ タイムアウトの構成]** ページで、**[Azure portal のディレクトリ レベルのアイドル タイムアウトを有効にする]** を選択して設定をオンにします。
 
 1. 次に、セッションが自動的にサインアウトになる前までのユーザーの最大アイドル時間について **[時間]** と **[分]** を入力します。
 
@@ -136,7 +131,7 @@ Azure portal の設定に変更を加えて、それらを破棄する場合は�
 
 ![設定のエクスポートを示すスクリーンショット](./media/set-preferences/useful-links-export-settings.png)
 
-設定をエクスポートすると、配色テーマ、お気に入り、プライベート ダッシュボードなどのユーザー設定が含まれる *.json* ファイルが作成されます。 ユーザー設定の動的な性質とデータが破損するリスクのため、 *.json* ファイルから設定をインポートすることはできません。
+設定をエクスポートすると、配色テーマ、お気に入り、プライベート ダッシュボードなどのユーザー設定が含まれる *.json* ファイルが作成されます。 ユーザー設定の動的な性質とデータが破損するリスクのため、*.json* ファイルから設定をインポートすることはできません。
 
 ## <a name="delete-user-settings-and-dashboards"></a>ユーザー設定とダッシュボードを削除する
 

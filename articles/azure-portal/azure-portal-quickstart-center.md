@@ -1,20 +1,14 @@
 ---
 title: Azure クイックスタート センターの概要
 description: Azure クイックスタート センターのガイド付きエクスペリエンスを使用して、Azure の使用を開始します。 セットアップ、移行、およびイノベーションについて説明します。
-services: azure-portal
-keywords: ''
-author: mgblythe
-ms.author: mblythe
 ms.date: 01/29/2020
 ms.topic: conceptual
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 21dd43b5179d0752699bb56b51a2c08976aa037b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2b64e52ed0a15db216d5fb298b66d8ec03fc2f42
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000846"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745708"
 ---
 # <a name="get-started-with-the-azure-quickstart-center"></a>Azure クイックスタート センターの概要
 

@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate での移行に向けた Windows Server 2003 サーバーの準備
 description: Azure Migrate での移行に向けて Windows Server 2003 サーバーを準備する方法について説明します。
+author: rahulg1190
+ms.author: rahugup
+ms.manager: bsiva
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 350eab98a2b40d5ca1382bbfc24245e7cb47b48e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: f8d3dea970d07d951467a44661e12000ba413f72
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146843"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753751"
 ---
 # <a name="prepare-windows-server-2003-machines-for-migration"></a>移行に向けた Windows Server 2003 コンピューターの準備
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate でエージェントレス VMware 移行を自動化する
 description: スクリプトを使用して Azure Migrate で多数の VMware VM を移行する方法について説明します
-author: rahulgup
-ms.service: azure-migrate
-ms.topic: article
-ms.date: 10/30/2020
+author: rahulg1190
 ms.author: rahugup
-ms.openlocfilehash: 4ef4d3989f063e9d31718bc7143662c4f20cc90b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.manager: bsiva
+ms.topic: how-to
+ms.date: 10/30/2020
+ms.openlocfilehash: cdae1fe13f8e08cb6b817f8ec6431c77013020d7
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500820"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754268"
 ---
 # <a name="scale-migration-of-vmware-vms"></a>VMware VM のスケール移行 
 

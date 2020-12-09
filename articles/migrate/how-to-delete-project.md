@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate プロジェクトの削除
 description: この記事では、Azure portal を使用して Azure Migrate プロジェクトを作成する方法について説明します。
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
+author: ms-psharma
+ms.author: panshar
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 10/22/2019
-ms.author: raynew
-ms.openlocfilehash: c58081e7cf88ac4820aa7d4f367b7344f3340a77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: face3d02ee72d1e05c6c08330dae4fffc2fd0e0b
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307876"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754251"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Azure Migrate プロジェクトの削除
 
@@ -39,7 +39,7 @@ ms.locfileid: "91307876"
     - Azure Migrate プロジェクトのリソースの種類は **Microsoft.Migrate/migrateprojects** です。
     - 次のセクションでは、Azure Migrate プロジェクトで検出、評価、移行のために作成されたリソースを確認します。
     - リソース グループに Azure Migrate プロジェクトしか含まれていない場合は、リソース グループ全体を削除できます。
-    - 以前のバージョンの Azure Migrate からプロジェクトを削除する場合、手順は同じです。 これらのプロジェクトのリソースの種類は、**移行プロジェクト**です。
+    - 以前のバージョンの Azure Migrate からプロジェクトを削除する場合、手順は同じです。 これらのプロジェクトのリソースの種類は、**移行プロジェクト** です。
 
 
 ## <a name="created-resources"></a>作成されたリソース

@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 650ee1fc9e0e1941a7a3655bca1c75950ab878dd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 98cc72f85499481ba3841ce82fe307740d5e9fab
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492116"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96842710"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) は、サーバーレスの Azure ファイル共有を直接マウントすることと、Azure File Sync を使用してオンプレミスで Azure ファイル共有をキャッシュすることの 2 つの主な方法でデプロイできます。選択するデプロイ オプションによって、デプロイを計画する際に考慮する必要がある内容が変わります。 
@@ -114,23 +114,6 @@ Advanced Threat Protection (ATP) for Azure Storage には、ストレージ ア�
 
 ## <a name="storage-tiers"></a>ストレージ層
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
-
-一般に、Azure Files の機能とその他のサービスとの相互運用性は Premium ファイル共有と Standard ファイル共有 (トランザクションの最適化、ホットとクールのファイル共有を含む) で同じですが、重要な違いがいくつかあります。
-- **課金モデル**
-    - Premium ファイル共有は、プロビジョニングされた課金モデルを使用して課金されます。これは、使用するストレージの量ではなく、プロビジョニングするストレージの量に対して固定価格を支払うことを意味します。 保存されているトランザクションとメタデータに追加コストはかかりません。
-    - Standard ファイル共有は従量課金制モデルを使用して課金されます。これには、実際に消費しているストレージの量に対するストレージの基本コストと、共有の使用方法に基づく追加のトランザクション コストが含まれます。 Standard ファイル共有では、Azure ファイル共有の使用 (読み取り、書き込み、マウント) 量が増えると、課金が増加します。
-- **冗長オプション**
-    - Premium ファイル共有は、ローカル冗長 (LRS) およびゾーン冗長 (ZRS) ストレージでのみ使用できます。
-    - Standard ファイル共有は、ローカル冗長、ゾーン冗長、geo 冗長 (GRS)、および geo ゾーン冗長 (GZRS) ストレージで使用できます。
-- **ファイル共有の最大サイズ**
-    - Premium ファイル共有の場合、追加作業なしで最大 100 TiB のプロビジョニングが可能です。
-    - 既定では、Standard ファイル共有は最大 5 TiB にのみまたがることができますが、"*大きいファイルの共有*" ストレージ アカウント機能フラグを選択することで、共有の制限を 100 TiB に増やすことができます。 ローカル冗長ストレージ アカウントまたはゾーン冗長ストレージ アカウントの場合、Standard ファイル共有は最大 100 TiB にのみまたがることができます。 ファイル共有サイズの増加の詳細については、「[大きなファイル共有の有効化と作成](./storage-files-how-to-create-large-file-share.md)」を参照してください。
-- **リージョン別の提供状況**
-    - Premium ファイル共有は、ほとんどの Azure リージョンで使用できますが、いくつかのリージョンは例外です。 ゾーン冗長のサポートは、リージョンのサブセットで利用できます。 ご自分のリージョンで現在 Premium ファイル共有を使用できるかどうかを見つけるには、Azure の [[リージョン別の利用可能な製品]](https://azure.microsoft.com/global-infrastructure/services/?products=storage) ページを参照してください。 ZRS をサポートしているリージョンを確認するには、「[ゾーン冗長ストレージ](../common/storage-redundancy.md#zone-redundant-storage)」を参照してください。 この[アンケート](https://aka.ms/pfsfeedback)にご記入ください。新しいリージョンと機能に優先順位を付けるために役立ちます。
-    - Standard ファイル共有は、すべての Azure リージョンで使用できます。
-- Azure Kubernetes Service (AKS) では、バージョン 1.13 以降での Premium ファイル共有がサポートされています。
-
-ファイル共有が Premium または Standard ファイル共有として作成されると、他のレベルに自動的に変換することはできません。 他のレベルに切り替える場合は、そのレベルで新しいファイル共有を作成し、作成した新しい共有に元の共有から手動でデータをコピーする必要があります。 Windows の場合は `robocopy` を、macOS と Linux の場合は `rsync` を使用して、そのコピーを実行することをお勧めします。
 
 ### <a name="understanding-provisioning-for-premium-file-shares"></a>Premium ファイル共有のプロビジョニングについて
 Premium ファイル共有は、固定 GiB/IOPS/スループット比に基づいてプロビジョニングされます。 すべての共有のサイズは、最小ベースラインまたはスループットが提供され、バーストが許可されます。 プロビジョニングされた GiB ごとに、共有は、最小の IOPS/スループットと 1 IOPS と 0.1 MiB/s のスループットから、共有ごとの最大限度まで発行されます。 最小許容プロビジョニングは 100 GiB で、最小の IOPS/スループットになります。 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4802c4faf245819f57f9885129fa876110407dd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8f5df1cb158821fb0cd85d90f9ba3b79d80adf45
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965235"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743923"
 ---
 # <a name="enforce-on-premises-azure-ad-password-protection-for-active-directory-domain-services"></a>Active Directory Domain Services にオンプレミスの Azure AD パスワード保護を適用する
 
@@ -28,7 +28,7 @@ Azure AD パスワード保護は、次の原則を考慮して設計されて�
 
 * ドメイン コントローラー (DC) はインターネットと直接通信する必要がありません。
 * DC で新しいネットワーク ポートが開かれません。
-* AD DS スキーマの変更は必要ありません。 このソフトウェアは、既存の AD DS *コンテナー*および *serviceConnectionPoint* スキーマ オブジェクトを使用します。
+* AD DS スキーマの変更は必要ありません。 このソフトウェアは、既存の AD DS *コンテナー* および *serviceConnectionPoint* スキーマ オブジェクトを使用します。
 * 最小限の AD DS ドメインまたはフォレスト機能レベル (DFL\FFL) は必要ありません。
 * このソフトウェアは、保護する AD DS ドメイン内にアカウントを作成せず、要求もしません。
 * ユーザーのクリア テキスト パスワードは、パスワード検証操作のときも、他のどのようなときでも、ドメイン コントローラーの外部に出ることはありません。
@@ -51,7 +51,7 @@ Azure AD パスワード保護 DC エージェント ソフトウェアがパス
 
 * Azure AD パスワード保護プロキシ サービスは、現在の AD DS フォレスト内のドメインに参加しているすべてのマシン上で実行されています。 このサービスの主な目的は、パスワード ポリシーのダウンロード要求を DC から Azure AD に転送し、Azure AD から DC に応答を返すことです。
 * DC エージェントのパスワード フィルター DLL は、オペレーティング システムからユーザーのパスワード検証要求を受け取り、 このフィルターは、DC でローカルで実行されている DC エージェント サービスにそれらを転送します。
-* Azure AD パスワード保護の DC エージェント サービスは、DC エージェントのパスワード フィルター DLL からパスワード検証要求を受け取ります。 DC エージェント サービスは、現在の (ローカルで使用できる) パスワード ポリシーを使用してそれらを処理し、結果 (*合格*または*失敗*) を返します。
+* Azure AD パスワード保護の DC エージェント サービスは、DC エージェントのパスワード フィルター DLL からパスワード検証要求を受け取ります。 DC エージェント サービスは、現在の (ローカルで使用できる) パスワード ポリシーを使用してそれらを処理し、結果 (*合格* または *失敗*) を返します。
 
 ## <a name="how-azure-ad-password-protection-works"></a>Azure AD パスワード保護のしくみ
 

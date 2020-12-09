@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 08/19/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5cc6847332765419001eadc5944905f55a425ef
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 98cb990ede7c4d6e261bba05b0b8c97d758e6c32
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964793"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743532"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad-preview"></a>Azure AD でのハイブリッド FIDO2 セキュリティ キー (プレビュー) のデプロイに関してよく寄せられる質問 (FAQ)
 
@@ -185,11 +185,11 @@ Azure AD Kerberos サーバーは、オンプレミスの AD DS 環境ではド�
 
 * *CN=AzureADKerberos,OU=Domain Controllers,\<domain-DN>*
     
-    AD DS で読み取り専用ドメイン コントローラー (RODC) を表す*コンピューター* オブジェクト。 このオブジェクトに関連付けられているコンピューターはありません。 むしろ、これは DC の論理的な表現です。
+    AD DS で読み取り専用ドメイン コントローラー (RODC) を表す *コンピューター* オブジェクト。 このオブジェクトに関連付けられているコンピューターはありません。 むしろ、これは DC の論理的な表現です。
 
 * *CN=krbtgt_AzureAD,CN=Users,\<domain-DN>*
 
-    RODC Kerberos チケット保証チケット (TGT) 暗号化キーを表す*ユーザー* オブジェクト。
+    RODC Kerberos チケット保証チケット (TGT) 暗号化キーを表す *ユーザー* オブジェクト。
 
 * *CN=900274c4-b7d2-43c8-90ee-00a9f650e335,CN=AzureAD,CN=System,\<domain-DN>*
 

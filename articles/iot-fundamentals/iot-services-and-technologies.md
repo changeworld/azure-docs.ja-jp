@@ -7,20 +7,19 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: 0678b2c36d341b2bc2bd9be755b9a6213acdd462
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0cd98705d2d6947ff766f528e4e92f1e51bcc42d
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206086"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852814"
 ---
 # <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>IoT ソリューションを作成するために Azure のどのようなテクノロジとサービスを利用できるか
 
 Azure IoT のテクノロジとサービスでは、組織のデジタル変革を実現するさまざまな IoT ソリューションを作成する方法を提供しています。 たとえば、次のように操作できます。
 
-- マネージド IoT アプリケーション プラットフォームである [Azure IoT Central](https://apps.azureiotcentral.com) を使用して、エンタープライズレベルの安全な IoT ソリューションを作成してデプロイする。 IoT Central は、ソリューション開発プロセスを能率化する、業界 (小売、医療など) ごとの一連のアプリケーション テンプレートを備えています。
-- Azure IoT [ソリューション アクセラレータ](https://www.azureiotsolutions.com)用にオープンソース コード ベースを拡張し、リモート監視や予測メンテナンスなどの一般的な IoT シナリオを実装する。
-- [Azure IoT Hub](../iot-hub/about-iot-hub.md) や [Azure IoT device SDK](../iot-hub/iot-hub-devguide-sdks.md) などの Azure IoT プラットフォーム サービスを使用して、カスタム IoT ソリューションをゼロから作成する。
+* マネージド IoT アプリケーション プラットフォームである [Azure IoT Central](https://apps.azureiotcentral.com) を使用して、エンタープライズレベルの安全な IoT ソリューションを作成してデプロイする。 IoT Central は、ソリューション開発プロセスを能率化する、業界 (小売、医療など) ごとの一連のアプリケーション テンプレートを備えています。
+* [Azure IoT Hub](../iot-hub/about-iot-hub.md) や [Azure IoT device SDK](../iot-hub/iot-hub-devguide-sdks.md) などの Azure IoT プラットフォーム サービスを使用して、カスタム IoT ソリューションをゼロから作成する。
 
 ![Azure IoT のテクノロジ、サービス、ソリューション](./media/iot-services-and-technologies/iot-technologies-services.png)
 
@@ -40,10 +39,8 @@ Azure IoT Central は、カスタム IoT ソリューションの作成に使用
 
 Azure IoT ソリューション アクセラレータは、IoT ソリューションを高度に制御する手段となります。 一般的な IoT シナリオを想定した事前構築済みのソリューションがソリューション アクセラレータには含まれており、ご利用の Azure サブスクリプションにそれらを数分でデプロイすることができます。 このシナリオには以下が含まれます。
 
-  - リモート監視
-  - コネクテッド ファクトリ
-  - 予測的なメンテナンス
-  - デバイスのシミュレーション
+* コネクテッド ファクトリ
+* デバイスのシミュレーション
 
 すべてのソリューション アクセラレータのオープンソースのコード ベースは GitHub で入手できます。 コードをダウンロードし、実際の IoT 要件に合わせてソリューション アクセラレータをカスタマイズしてください。
 
@@ -92,4 +89,3 @@ IoT デバイスは、一般的に、センサーからの温度の測定値な�
 
 - [Azure IoT Central アプリケーションの作成](../iot-central/core/quick-deploy-iot-central.md)
 - [デバイスから IoT ハブへのテレメトリの送信](../iot-hub/quickstart-send-telemetry-cli.md)
-- [クラウドベースのリモート監視ソリューションを試す](../iot-accelerators/quickstart-remote-monitoring-deploy.md)

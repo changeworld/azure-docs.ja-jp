@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 906adb5b9535ee66fd7bc4a22c5c30a86b561547
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 383bdaebaa8a1795a9bfddb7da23e172aea111a0
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910255"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762936"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>認証フローとアプリケーションのシナリオ
 
@@ -42,8 +42,8 @@ Microsoft ID プラットフォーム (v2.0) エンドポイントは、さま�
 
 認証シナリオには、次の 2 つのアクティビティが含まれます。
 
-- **保護された Web API のセキュリティ トークンの取得** :トークンの取得には、 [Microsoft がサポートするクライアント ライブラリ](reference-v2-libraries.md#microsoft-supported-client-libraries)の使用をお勧めします。 特に、Microsoft 認証ライブラリ (MSAL) ファミリが推奨されます。
-- **Web API (または Web アプリ) の保護** :これらのリソースの保護に関する課題の 1 つに、セキュリティ トークンの検証があります。 Microsoft では、一部のプラットフォームについて[ミドルウェア ライブラリ](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)を提供しています。
+- **保護された Web API のセキュリティ トークンの取得**:トークンの取得には、[Microsoft がサポートするクライアント ライブラリ](reference-v2-libraries.md#microsoft-supported-client-libraries)の使用をお勧めします。 特に、Microsoft 認証ライブラリ (MSAL) ファミリが推奨されます。
+- **Web API (または Web アプリ) の保護**:これらのリソースの保護に関する課題の 1 つに、セキュリティ トークンの検証があります。 Microsoft では、一部のプラットフォームについて[ミドルウェア ライブラリ](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)を提供しています。
 
 ### <a name="with-users-or-without-users"></a>ユーザーありまたはユーザーなし
 
@@ -59,14 +59,14 @@ Microsoft ID プラットフォーム (v2.0) エンドポイントは、さま�
 
 セキュリティ トークンは、さまざまなアプリケーションから取得できます。 そのようなアプリケーションは多くの場合、次の 3 つのカテゴリに分類されます。 それぞれ、併用するライブラリとオブジェクトが異なります。
 
-- **シングルページ アプリケーション** :SPA とも呼ばれる Web アプリで、ブラウザーで実行している JavaScript または TypeScript アプリからトークンを取得します。 モダン アプリケーションには、主に JavaScript で記述されたシングルページのアプリケーションがフロントエンドに備わっていることが少なくありません。 アプリケーションで Angular、React、Vue などのフレームワークを使用することもよくあります。 MSAL.js は、シングルページ アプリケーションをサポートする唯一の Microsoft 認証ライブラリです。
+- **シングルページ アプリケーション**:SPA とも呼ばれる Web アプリで、ブラウザーで実行している JavaScript または TypeScript アプリからトークンを取得します。 モダン アプリケーションには、主に JavaScript で記述されたシングルページのアプリケーションがフロントエンドに備わっていることが少なくありません。 アプリケーションで Angular、React、Vue などのフレームワークを使用することもよくあります。 MSAL.js は、シングルページ アプリケーションをサポートする唯一の Microsoft 認証ライブラリです。
 
-- **パブリック クライアント アプリケーション** :このカテゴリのアプリは、常にユーザーをサインインさせます。たとえば、次のタイプのアプリがあります。
+- **パブリック クライアント アプリケーション**:このカテゴリのアプリは、常にユーザーをサインインさせます。たとえば、次のタイプのアプリがあります。
   - サインイン ユーザーの代わりに Web API を呼び出すデスクトップ アプリケーション
   - モバイル アプリ
   - ブラウザーがインストールされていないデバイス (IoT 上で運用されているデバイスなど) で稼働しているアプリ
   
-- **機密クライアント アプリケーション** :このカテゴリには、次のようなアプリが該当します。
+- **機密クライアント アプリケーション**:このカテゴリには、次のようなアプリが該当します。
   - Web API を呼び出す Web アプリ
   - Web API を呼び出す Web API
   - デーモン アプリケーション (Linux デーモンや Windows サービスのようにコンソール サービスとして実装されている場合も含む)
@@ -168,7 +168,7 @@ ASP.NET または ASP.NET Core Web API を保護する場合は、アクセス �
 
 ### <a name="web-api-that-calls-another-web-api-on-behalf-of-a-user"></a>ユーザーに代わって別の Web API を呼び出す Web API
 
-保護された Web API から、ユーザーに代わって別の Web API を呼び出すには、アプリでダウンストリームの Web API のトークンを取得する必要があります。 このような呼び出しは、" *サービス間* " 呼び出しと呼ばれることがあります。 他の Web API を呼び出す Web API では、カスタム キャッシュのシリアル化を提供する必要があります。
+保護された Web API から、ユーザーに代わって別の Web API を呼び出すには、アプリでダウンストリームの Web API のトークンを取得する必要があります。 このような呼び出しは、"*サービス間*" 呼び出しと呼ばれることがあります。 他の Web API を呼び出す Web API では、カスタム キャッシュのシリアル化を提供する必要があります。
 
 ![別の Web API を呼び出す Web API](media/scenarios/web-api.svg)
 
@@ -243,7 +243,7 @@ ASP.NET または ASP.NET Core Web API を保護する場合は、アクセス �
   <tr>
    <td><a href="scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser"><img alt="Browserless application" src="media/scenarios/device-code-flow-app.svg"></a></td>
    <td><a href="v2-oauth2-device-code.md">デバイス コード</a></td>
-   <td>職場または学校アカウント</td>
+   <td>職場または学校アカウント、個人用アカウント、Azure AD B2C</td>
  </tr>
 
  <tr>

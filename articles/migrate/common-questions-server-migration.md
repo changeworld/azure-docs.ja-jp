@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate Server Migration についてよく寄せられる質問
 description: Azure Migrate Server Migration を使用したマシンの移行についてよく寄せられる質問の回答を示します。
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: b62110e6b2ce97cdd80ed91ee4b1e75d119c7c7d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1f32e9788b2255be373a4db8c159ef2a6b6ccf04
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180695"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753843"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server Migration:一般的な質問
 

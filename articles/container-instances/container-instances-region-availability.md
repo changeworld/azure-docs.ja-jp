@@ -4,12 +4,12 @@ description: さまざまな Azure リージョンにある Azure Container Inst
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 2a833c93c80d932305f47b6e292e5e5df4d0cb95
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8651a1cc2c2ba41e2c28e9f63dc78c091a6af61d
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576616"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763895"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure リージョンの Azure Container Instances のリソースの可用性
 
@@ -81,9 +81,9 @@ ms.locfileid: "94576616"
 
 | リージョン | 1B/2B の最大 CPU | 1B/2B の最大メモリ (GB) |3B の最大 CPU | 3B の最大メモリ (GB) | ストレージ (GB) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: |
-| オーストラリア東部 | 2 | 8 | 2 | 3.5 | 20 |
+| オーストラリア東部 | 2 | 8 | 2 | 8 | 20 |
 | ブラジル南部 | 4 | 16 | 4 | 16 | 20 |
-| カナダ中部 | 2 | 3.5 | 2 | 3.5 | 20 |
+| カナダ中部 | 2 | 8 | 2 | 3.5 | 20 |
 | インド中部 | 2 | 3.5 | 2 | 3.5 | 20 |
 | 米国中部 | 2 | 3.5 | 2 | 3.5 | 20 |
 | 東アジア | 2 | 3.5 | 2 | 3.5 | 20 |
@@ -92,15 +92,15 @@ ms.locfileid: "94576616"
 | 東日本 | 4 | 16 | 4 | 16 | 20 |
 | 韓国中部 | 4 | 16 | 4 | 16 | 20 |
 | 米国中北部 | 4 | 16 | 4 | 16 | 20 |
-| 北ヨーロッパ | 2 | 3.5 | 2 | 8 | 20 |
-| 米国中南部 | 2 | 3.5 | 2 | 3.5 | 20 |
+| 北ヨーロッパ | 2 | 8 | 2 | 8 | 20 |
+| 米国中南部 | 2 | 3.5 | 2 | 8 | 20 |
 | 東南アジア | 該当なし | 該当なし | 2 | 3.5 | 20 |
 | インド南部 | 2 | 3.5 | 2 | 3.5 | 20 |
 | 英国南部 | 2 | 8 | 2 | 3.5 | 20 |
-| 米国中西部 | 4 | 16 | 4 | 16 | 20 |
+| 米国中西部 | 4 | 16 | 2 | 8 | 20 |
 | 西ヨーロッパ | 4 | 16 | 4 | 16 | 20 |
 | 米国西部 | 4 | 16 | 2 | 8 | 20 |
-| 米国西部 2 | 2 | 3.5 | 2 | 3.5 | 20 |
+| 米国西部 2 | 2 | 8 | 2 | 3.5 | 20 |
 
 
 ### <a name="windows-server-2019-ltsc"></a>Windows Server 2019 LTSC
