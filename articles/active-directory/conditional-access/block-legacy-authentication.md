@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e85f36f1b970a4848ee132fe37bd1b0f4f4fdc82
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: d8bc1a96109eda9cc2ee1f86cec892cc5ce9308d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489524"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860322"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>方法:条件付きアクセスを使用して Azure AD へのレガシ認証をブロックする   
 
@@ -119,7 +119,7 @@ Azure AD では、レガシ認証を含め、最も広く使用されている�
 
 ### <a name="sharepoint-online-and-b2b-guest-users"></a>SharePoint Online と B2B のゲスト ユーザー
 
-B2B ユーザーが従来の認証で SharePoint Online にアクセスすることを禁止するには、組織は `Set-SPOTenant` PowerShell コマンドを使用し、`-LegacyAuthProtocolsEnabled` パラメーターを `$false` に設定することで SharePoint の従来の認証を無効にする必要があります。 このパラメーターの詳しい設定方法は、[Set-SPOTenant](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps) に関する SharePoint PowerShell リファレンス ドキュメントにあります。
+B2B ユーザーが従来の認証で SharePoint Online にアクセスすることを禁止するには、組織は `Set-SPOTenant` PowerShell コマンドを使用し、`-LegacyAuthProtocolsEnabled` パラメーターを `$false` に設定することで SharePoint の従来の認証を無効にする必要があります。 このパラメーターの詳しい設定方法は、[Set-SPOTenant](/powershell/module/sharepoint-online/set-spotenant) に関する SharePoint PowerShell リファレンス ドキュメントにあります。
 
 ## <a name="next-steps"></a>次のステップ
 

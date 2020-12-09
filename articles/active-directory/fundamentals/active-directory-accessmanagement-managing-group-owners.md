@@ -12,12 +12,12 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2847678c78aec4a287427463a9aeeb8bd82c6771
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 358a551908a7263f3258f47dfe1cceeffe2307b1
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371938"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860492"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Azure Active Directory でグループ所有者を追加または削除する
 Azure Active Directory (Azure AD) グループを所有および管理するのはグループ所有者です。 グループ所有者には、ユーザーまたはサービス プリンシパルがなることができ、メンバーシップを含むグループを管理できます。 既存のグループ所有者またはグループを管理する管理者のみがグループ所有者を割り当てることができます。 グループ所有者は、グループのメンバーである必要はありません。
@@ -25,12 +25,12 @@ Azure Active Directory (Azure AD) グループを所有および管理するの�
 グループに所有者がいない場合、まだグループを管理する管理者がグループを管理できます。 すべてのグループに少なくとも 1 人の所有者を割り当てることをお勧めします。 所有者がグループに割り当てられた後は、そのグループの最後の所有者を削除することはできません。 グループから最後の所有者を削除する前に、必ず別の所有者を選択してください。
 
 ## <a name="add-an-owner-to-a-group"></a>グループに所有者を追加する
-次に、Azure AD portal を使用して、グループの所有者としてユーザーを追加する方法を示します。 グループ所有者としてサービス プリンシパルを追加するには、[PowerShell](/powershell/module/Azuread/Add-AzureADGroupOwner?view=azureadps-2.0) を使用してそれを実行する手順に従ってください。
+次に、Azure AD portal を使用して、グループの所有者としてユーザーを追加する方法を示します。 グループ所有者としてサービス プリンシパルを追加するには、[PowerShell](/powershell/module/Azuread/Add-AzureADGroupOwner) を使用してそれを実行する手順に従ってください。
 
 ### <a name="to-add-a-group-owner"></a>グループ所有者を追加するには
 1. ディレクトリのグローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。
 
-2. **[Azure Active Directory]** を選択し、 **[グループ]** を選択して、所有者を削除するグループ (この例では、 *MDM policy - West* ) を選択します。
+2. **[Azure Active Directory]** を選択し、 **[グループ]** を選択して、所有者を削除するグループ (この例では、*MDM policy - West*) を選択します。
 
 3. **[MDM policy - West の概要]** ページで、 **[所有者]** を選択します。
 
@@ -48,7 +48,7 @@ Azure AD を使用してグループから所有者を削除します。
 ### <a name="to-remove-an-owner"></a>所有者を削除するには
 1. ディレクトリのグローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。
 
-2. **[Azure Active Directory]** を選択し、 **[グループ]** を選択して、所有者を削除するグループ (この例では、 *MDM policy - West* ) を選択します。
+2. **[Azure Active Directory]** を選択し、 **[グループ]** を選択して、所有者を削除するグループ (この例では、*MDM policy - West*) を選択します。
 
 3. **[MDM policy - West の概要]** ページで、 **[所有者]** を選択します。
 

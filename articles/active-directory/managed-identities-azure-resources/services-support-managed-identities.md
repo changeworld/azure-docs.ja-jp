@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: c77f0e93e9f0084f335df39d2878871d66af0aac
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2da0407f848b0795414b071b9e082c7ed60a633d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498032"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861886"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -45,8 +45,8 @@ Azure API Management のために (それが提供されているリージョン
 
 | マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 利用不可 | 利用不可 |
-| ユーザー割り当て済み | ![利用可能][check] | ![利用可能][check]  | 利用不可  | 利用不可 |
+| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 利用不可 | ![利用可能][check] |
+| ユーザー割り当て済み | ![利用可能][check] | ![利用可能][check]  | 利用不可  | ![利用可能][check] |
 
 Azure App Configuration のために (提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
@@ -252,7 +252,7 @@ Azure Policy のために (それが提供されているリージョンで) マ
 
 - [Azure Portal](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
 - [PowerShell](../../governance/policy/how-to/remediate-resources.md#create-managed-identity-with-powershell)
-- [Azure CLI](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)
+- [Azure CLI](/cli/azure/policy/assignment#az-policy-assignment-create)
 - [Azure リソース マネージャーのテンプレート](/azure/templates/microsoft.authorization/policyassignments)
 - [REST](/rest/api/resources/policyassignments/create)
 
@@ -274,7 +274,7 @@ Azure Policy のために (それが提供されているリージョンで) マ
 
 | マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | ![利用可能][check] | 利用不可 | 利用不可 | 利用不可 |
+| システム割り当て済み | ![利用可能][check] | 利用不可 | 利用不可 | ![利用可能][check] |
 | ユーザー割り当て済み | 利用不可 | 利用不可 | 利用不可 | 利用不可 |
 
 

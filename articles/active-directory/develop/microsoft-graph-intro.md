@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: 13cbeca909b445d75fcbcf7b3751183421479d42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a799d7c32ad632303931adf838ca8e2e715b2adc
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052564"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860186"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
@@ -34,7 +34,7 @@ Microsoft Graph では、次の Microsoft 365 サービスのデータにアク�
 
 ベータ版 API の使用を始めるには、「[Microsoft Graph ベータ版のエンドポイント リファレンス](/graph/api/overview?view=graph-rest-beta)」をご覧ください。
 
-v1.0 API の使用を始めるには、「[Microsoft Graph REST API v1.0 リファレンス](/graph/api/overview?view=graph-rest-1.0)」をご覧ください。
+v1.0 API の使用を始めるには、「[Microsoft Graph REST API v1.0 リファレンス](/graph/api/overview)」をご覧ください。
 
 ## <a name="get-started"></a>はじめに
 

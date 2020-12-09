@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 55934e8c33b74740b7398be1ae18a3ef899aee74
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 22acfc5095b1ffcad382fa2b665a86d382645e7a
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651279"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861679"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Azure Active Directory のアプリに対するユーザー割り当ての管理
 
@@ -81,11 +81,11 @@ Graph API を使用して、アプリのユーザーとグループを割り当�
     # Assign the user to the app role
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
-アプリケーション ロールにユーザーを割り当てる方法の詳細については、「[AzureADUserAppRoleAssignment](/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0)」のドキュメントをご覧ください。
+アプリケーション ロールにユーザーを割り当てる方法の詳細については、「[AzureADUserAppRoleAssignment](/powershell/module/azuread/new-azureaduserapproleassignment)」のドキュメントをご覧ください。
 
 グループをエンタープライズ アプリに割り当てるには、`Get-AzureADUser` を `Get-AzureADGroup` に置き換え、`New-AzureADUserAppRoleAssignment` を `New-AzureADGroupAppRoleAssignment` に置き換える必要があります。
 
-アプリケーション ロールにグループを割り当てる方法の詳細については、「[AzureADGroupAppRoleAssignment](/powershell/module/azuread/new-azureadgroupapproleassignment?view=azureadps-2.0)」のドキュメントをご覧ください。
+アプリケーション ロールにグループを割り当てる方法の詳細については、「[AzureADGroupAppRoleAssignment](/powershell/module/azuread/new-azureadgroupapproleassignment)」のドキュメントをご覧ください。
 
 ### <a name="example"></a>例
 

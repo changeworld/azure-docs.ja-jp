@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 10/05/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ed2366884f53eafe89800e7ae60a6a560dc292b4
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: ed93944c2a94370250fb75a679c1ac37a2a8418c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165003"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861155"
 ---
 # <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>Azure Active Directory セルフサービス パスワード リセット (SSPR) のユーザー認証連絡先情報の事前設定
 
@@ -125,7 +125,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 ### <a name="use-powershell-version-2"></a>PowerShell バージョン 2 を使う
 
-始めるには、[Azure AD バージョン 2 PowerShell モジュールをダウンロードしてインストールします](/powershell/module/azuread/?view=azureadps-2.0)。
+始めるには、[Azure AD バージョン 2 PowerShell モジュールをダウンロードしてインストールします](/powershell/module/azuread/)。
 
 `Install-Module` をサポートする PowerShell の最新バージョンから簡単にインストールするには、次のコマンドを実行します。 最初の行では、モジュールが既にインストールされているかどうかを確認しています。
 

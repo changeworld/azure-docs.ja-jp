@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 706fa1666dc327955294fb350b673aed40d6bf48
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: b7519b6c7e1f3381be77b9a0734ddda250228e7d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95520664"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860305"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 
@@ -28,7 +28,7 @@ ms.locfileid: "95520664"
 
 継続的アクセス評価の初期実装では、Exchange、Teams、SharePoint Online に重点を置いています。
 
-CAE を使用するようにアプリケーションを準備する方法については、「[継続的アクセス評価が有効になった API をアプリケーションで使用する方法](/develop/app-resilience-continuous-access-evaluation.md)」を参照してください。
+CAE を使用するようにアプリケーションを準備する方法については、「[継続的アクセス評価が有効になった API をアプリケーションで使用する方法](/azure/active-directory/develop/app-resilience-continuous-access-evaluation)」を参照してください。
 
 ### <a name="key-benefits"></a>主な利点
 
@@ -105,7 +105,7 @@ CAE 対応クライアントを使用していない場合でも、[構成可能
 
 1. CAE 対応のクライアントが、Azure AD に対して資格情報または更新トークンを提示し、何らかのリソースのアクセス トークンを要求します。
 1. アクセス トークンは、他の成果物と共にクライアントに返されます。
-1. 管理者は、[ユーザーのすべての更新トークンを明示的に失効](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)します。 失効イベントは、Azure AD からリソース プロバイダーに送信されます。
+1. 管理者は、[ユーザーのすべての更新トークンを明示的に失効](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)します。 失効イベントは、Azure AD からリソース プロバイダーに送信されます。
 1. リソース プロバイダーにアクセス トークンが提示されます。 リソース プロバイダーは、トークンの有効性を評価し、ユーザーの失効イベントがあるかどうかを確認します。 リソース プロバイダーは、この情報を使用して、リソースへのアクセスを許可するかどうかを決定します。
 1. この場合、リソース プロバイダーはアクセスを拒否し、401+ 要求チャレンジをクライアントに送り返します。
 1. CAE 対応クライアントは、401+ 要求チャレンジを認識します。 キャッシュをバイパスし、手順 1 に戻り、要求チャレンジと共に更新トークンを Azure AD に送り返します。 その後、Azure AD ですべての条件が再評価され、この場合はユーザーに再認証を求めるメッセージが表示されます。

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: d83b69ea7c2a4459d30c4ceb90f62ab6a1a10cc2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 49dd8b65db771a182138f13218adda2f0e7f7396
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648176"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858231"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>ID 管理用の Azure AD テナントを使用してアプリを表示する
 「[アプリケーション管理のクイックスタート シリーズ](view-applications-portal.md)」では、基本情報を紹介します。 ID 管理用の Azure AD テナントを使用して、すべてのアプリを表示する方法について説明します。 この記事では、表示されるアプリの種類についてもう少し詳しく説明します。
@@ -31,7 +31,7 @@ ms.locfileid: "94648176"
 - [アプリケーション レジストリ](../develop/quickstart-register-app.md)でカスタム開発アプリケーションを作成して、新しいアプリケーション登録を追加する場合
 - [V2.0 アプリケーション登録ポータル](../develop/quickstart-register-app.md)でカスタム開発アプリケーションを作成して、新しいアプリケーション登録を追加する場合
 - Visual Studio の [ASP.NET の認証方法](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)または [接続済みサービス](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/)を使用して開発しているアプリケーションを追加する場合
-- [Azure AD PowerShell モジュール](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)を使用してサービス プリンシパル オブジェクトを作成する場合
+- [Azure AD PowerShell モジュール](/powershell/azure/active-directory/install-adv2)を使用してサービス プリンシパル オブジェクトを作成する場合
 - 管理者としてテナントのデータを[アプリケーションが使用することに同意](../develop/howto-convert-app-to-be-multi-tenant.md)する場合
 - テナントのデータを[アプリケーションが使用することにユーザーが同意](../develop/howto-convert-app-to-be-multi-tenant.md)する場合
 - 特定のサービスがテナントにデータを格納できるようにする場合。 一例として、パスワード リセット ポリシーを安全に格納するためにサービス プリンシパルとしてモデル化されるパスワード リセットがあります。

@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 04/17/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fa6c28eaa75485e0b45bb4404e685b6ee223b46
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a5f9b96fe9ee0781803bbbd86316e8783b60a6f1
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965592"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861325"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS での Azure Active Directory の証明書ベースの認証
 
@@ -75,7 +75,7 @@ Azure AD でクライアント証明書を失効させるには、ADFS トーク
 
 先進認証が有効にされている一部の Office アプリでは、要求で `prompt=login` が Azure AD に送信されます。 既定では、Azure AD は、ADFS への要求で `prompt=login` を `wauth=usernamepassworduri` (ADFS に U/P 認証を実行するように要求) と `wfresh=0` (ADFS に SSO 状態を無視して、新しい認証を実行するように要求) に変換します。 これらのアプリに対して証明書ベースの認証を有効にするには、既定の Azure AD の動作を変更します。
 
-既定の動作は、フェデレーション ドメインの設定で "*PromptLoginBehavior*" を "*無効*" に設定することによって更新します。 次の例のように、[MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) コマンドレットを使用してこのタスクを実行できます。
+既定の動作は、フェデレーション ドメインの設定で "*PromptLoginBehavior*" を "*無効*" に設定することによって更新します。 次の例のように、[MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings) コマンドレットを使用してこのタスクを実行できます。
 
 ```powershell
 Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled

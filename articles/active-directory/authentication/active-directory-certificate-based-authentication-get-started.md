@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ddff11caba9d83e9ed21748fd50a3480d866d8a9
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3ba84bb3ee38981217e72f8372a836b03647083d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174566"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861342"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory の証明書ベースの認証の概要
 
@@ -93,7 +93,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
     }
 ```
 
-構成には、[Azure Active Directory PowerShell バージョン 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) を使用できます。
+構成には、[Azure Active Directory PowerShell バージョン 2](/powershell/azure/active-directory/install-adv2) を使用できます。
 
 1. Windows PowerShell を管理者特権で起動します。
 2. Azure AD モジュール バージョン [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) 以降をインストールします。
@@ -106,7 +106,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 ### <a name="connect"></a>接続する
 
-テナントとの接続を確立するには、[Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) コマンドレットを使用します。
+テナントとの接続を確立するには、[Connect-AzureAD](/powershell/module/azuread/connect-azuread) コマンドレットを使用します。
 
 ```azurepowershell
     Connect-AzureAD
@@ -114,7 +114,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 ### <a name="retrieve"></a>取得
 
-ディレクトリに定義されている信頼された証明機関を取得するには、[Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) コマンドレットを使用します。
+ディレクトリに定義されている信頼された証明機関を取得するには、[Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority) コマンドレットを使用します。
 
 ```azurepowershell
     Get-AzureADTrustedCertificateAuthority
@@ -122,7 +122,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 ### <a name="add"></a>追加
 
-信頼された証明機関を作成するには、[New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) コマンドレットを使用し、**crlDistributionPoint** 属性に正しい値を設定します。
+信頼された証明機関を作成するには、[New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority) コマンドレットを使用し、**crlDistributionPoint** 属性に正しい値を設定します。
 
 ```azurepowershell
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"
@@ -135,7 +135,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 ### <a name="remove"></a>[削除]
 
-信頼された証明機関を削除するには、[Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) コマンドレットを使用します。
+信頼された証明機関を削除するには、[Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority) コマンドレットを使用します。
 
 ```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
@@ -144,7 +144,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 ### <a name="modify"></a>変更
 
-信頼された証明機関を変更するには、[Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) コマンドレットを使用します。
+信頼された証明機関を変更するには、[Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority) コマンドレットを使用します。
 
 ```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority

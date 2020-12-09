@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eb656e46ce5e26fca5ae5c094f9b8bb85819caa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d33b419e0f24201d661ad0f5f1373022ea6e9e9f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89275778"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861750"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect 同期: userCertificate 属性が原因で発生した LargeObject エラーの処理
 
@@ -44,17 +44,17 @@ LargeObject エラーが解決されるまで、同じオブジェクトで他�
 
  * Azure AD Connect をビルド 1.1.524.0 以降にアップグレードします。 Azure AD Connect ビルド 1.1.524.0 では、属性値が 15 個を超える場合は userCertificate 属性と userSMIMECertificate 属性をエクスポートしないように、標準のルールが更新されています。 Azure AD Connect をアップグレードする方法の詳細については、「[Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする](./how-to-upgrade-previous-version.md)」を参照してください。
 
- * Azure AD Connect で、**証明書の値が 15 を超えるオブジェクトに対して実際の値ではなく null 値**をエクスポートする**送信同期規則**を実装します。 このオプションは、証明書の値が 15 を超えるオブジェクトに対して、どの値も Azure AD にエクスポートする必要がない場合に適しています。 この同期規則を実装する方法の詳細については、次のセクション [userCertificate 属性のエクスポートを制限する同期規則を実装する](#implementing-sync-rule-to-limit-export-of-usercertificate-attribute)を参照してください。
+ * Azure AD Connect で、**証明書の値が 15 を超えるオブジェクトに対して実際の値ではなく null 値** をエクスポートする **送信同期規則** を実装します。 このオプションは、証明書の値が 15 を超えるオブジェクトに対して、どの値も Azure AD にエクスポートする必要がない場合に適しています。 この同期規則を実装する方法の詳細については、次のセクション [userCertificate 属性のエクスポートを制限する同期規則を実装する](#implementing-sync-rule-to-limit-export-of-usercertificate-attribute)を参照してください。
 
  * 組織で使用されなくなった値を削除することにより、オンプレミスの AD オブジェクトの証明書の値の数を減らします (15 以下)。 これは、有効期限が切れた、または使用されていない証明書が原因で属性が肥大化した場合に適しています。 [使用可能な PowerShell スクリプト](https://gallery.technet.microsoft.com/Remove-Expired-Certificates-0517e34f)を使用して、オンプレミスの AD で有効期限が切れた証明書を検出、バックアップ、削除できます。 証明書を削除する前に、組織内の公開鍵基板管理者に確認することをお勧めします。
 
  * userCertificate 属性が Azure AD にエクスポートされないように Azure AD Connect を構成します。 この属性は Microsoft Online Services で特定のシナリオを有効にする場合に使用される可能性があるため、通常はこのオプションを使用しないことをお勧めします。 特に次の点に違いがあります。
-    * User オブジェクトの userCertificate 属性は、メッセージの署名と暗号化を行うために Exchange Online と Outlook クライアントによって使用されます。 この機能の詳細については、[S/MIME によるメッセージの署名と暗号化](/microsoft-365/security/office-365-security/s-mime-for-message-signing-and-encryption?view=o365-worldwide)の記事を参照してください。
+    * User オブジェクトの userCertificate 属性は、メッセージの署名と暗号化を行うために Exchange Online と Outlook クライアントによって使用されます。 この機能の詳細については、[S/MIME によるメッセージの署名と暗号化](/microsoft-365/security/office-365-security/s-mime-for-message-signing-and-encryption)の記事を参照してください。
 
     * Computer オブジェクトの userCertificate 属性は、Windows 10 オンプレミス ドメインに参加しているデバイスが Azure AD に接続できるようにするために、Azure AD で使用されます。 この機能の詳細については、[Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](../devices/hybrid-azuread-join-plan.md)を参照してください。
 
 ## <a name="implementing-sync-rule-to-limit-export-of-usercertificate-attribute"></a>UserCertificate 属性のエクスポートを制限するための同期規則の実装
-userCertificate 属性が原因で発生した LargeObject エラーを解決するには、Azure AD Connect で、**証明書の値が 15 を超えるオブジェクトに対して実際の値ではなく、null 値**をエクスポートする送信同期規則を実装します。 このセクションでは、**User** オブジェクトの同期規則を実装するために必要な手順について説明しています。 この手順は、**Contact** および **Computer** オブジェクトに適用できます。
+userCertificate 属性が原因で発生した LargeObject エラーを解決するには、Azure AD Connect で、**証明書の値が 15 を超えるオブジェクトに対して実際の値ではなく、null 値** をエクスポートする送信同期規則を実装します。 このセクションでは、**User** オブジェクトの同期規則を実装するために必要な手順について説明しています。 この手順は、**Contact** および **Computer** オブジェクトに適用できます。
 
 > [!IMPORTANT]
 > null 値をエクスポートすると、以前に Azure AD にエクスポートされた証明書の値は正常に削除されます。
@@ -84,7 +84,7 @@ userCertificate 属性が原因で発生した LargeObject エラーを解決す
 1. **[操作]** タブに進み、状態が *「進行中」* になっている操作がないことを確認します。
 
 ### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>手順 2. UserCertificate 属性の既存の送信同期規則を検索する
-既存の同期規則が有効になっており、User オブジェクトの userCertificate 属性を Azure AD にエクスポートするように構成されている必要があります。 この同期規則を見つけ、**優先順位**と**スコープ フィルター**の構成を以下のように検索します。
+既存の同期規則が有効になっており、User オブジェクトの userCertificate 属性を Azure AD にエクスポートするように構成されている必要があります。 この同期規則を見つけ、**優先順位** と **スコープ フィルター** の構成を以下のように検索します。
 
 1. [スタート]、[Synchronization Rules Editor] の順に移動して、**Synchronization Rules Editor** を起動します。
 
@@ -99,11 +99,11 @@ userCertificate 属性が原因で発生した LargeObject エラーを解決す
     | MV 属性 |**userCertificate** |
 
 3. Azure AD コネクタに OOB (標準) の同期規則を使用しており、User オブジェクトの userCertficiate 属性をエクスポートする場合は、 *[Out to AAD – User ExchangeOnline]* 規則に戻す必要があります。
-4. この同期規則の**優先順位**値をメモします。
+4. この同期規則の **優先順位** 値をメモします。
 5. 同期規則を選択し、 **[編集]** をクリックします。
 6. *[Edit Reserved Rule Confirmation] \(予約済みのルール編集の確認)* ポップアップ ダイアログで、 **[いいえ]** をクリックします。 (問題ありません。この同期規則は変更されません)。
 7. [編集] 画面で、 **[スコープ フィルター]** タブを選択します。
-8. スコープ フィルターの構成をメモします。 OOB 同期規則を使用している場合、**2 つの句を含む 1 つのスコープ フィルター グループ**が存在する必要があります。これには、以下が含まれます。
+8. スコープ フィルターの構成をメモします。 OOB 同期規則を使用している場合、**2 つの句を含む 1 つのスコープ フィルター グループ** が存在する必要があります。これには、以下が含まれます。
 
     | 属性 | 演算子 | 値 |
     | --- | --- | --- |
@@ -111,9 +111,9 @@ userCertificate 属性が原因で発生した LargeObject エラーを解決す
     | cloudMastered | NOTEQUAL | True |
 
 ### <a name="step-3-create-the-outbound-sync-rule-required"></a>手順 3. 必要な送信同期規則を作成する
-新しい同期規則には、同じ**スコープ フィルター**と、既存の同期規則よりも**高い優先順位**が設定されている必要があります。 これにより、新しい同期規則が既存の同期規則と同じオブジェクトのセットに適用され、userCertificate 属性の既存の同期規則をオーバーライドします。 同期規則を作成するには、以下のようにします。
+新しい同期規則には、同じ **スコープ フィルター** と、既存の同期規則よりも **高い優先順位** が設定されている必要があります。 これにより、新しい同期規則が既存の同期規則と同じオブジェクトのセットに適用され、userCertificate 属性の既存の同期規則をオーバーライドします。 同期規則を作成するには、以下のようにします。
 1. 同期規則エディターで、 **[新しい規則の追加]** ボタンをクリックします。
-2. **[説明] タブ**で、次の構成を指定します。
+2. **[説明] タブ** で、次の構成を指定します。
 
     | 属性 | 値 | 詳細 |
     | --- | --- | --- |

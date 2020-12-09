@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: b1583307771dd58053128d71cb0ae5dd7e709f68
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a53b193d16a2cefbde7877fd930e5fa73b0c6a36
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174383"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861274"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーとアカウント制限
 
@@ -95,7 +95,7 @@ Azure AD のパスワード ポリシーは、*EnforceCloudPasswordPolicyForPass
 * Azure AD テナント用に、*contoso.com* のようなカスタム ドメインが構成されている、または
 * Azure AD Connect がオンプレミスのディレクトリからの ID を同期している
 
-[Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) PowerShell コマンドレットを使用して、管理者アカウントに対する SSPR の使用を無効にすることができます。 `-SelfServePasswordResetEnabled $False` パラメーターを使用すると、管理者の SSPR は無効になります。
+[Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings) PowerShell コマンドレットを使用して、管理者アカウントに対する SSPR の使用を無効にすることができます。 `-SelfServePasswordResetEnabled $False` パラメーターを使用すると、管理者の SSPR は無効になります。
 
 ### <a name="exceptions"></a>例外
 
@@ -107,7 +107,7 @@ Azure AD のパスワード ポリシーは、*EnforceCloudPasswordPolicyForPass
 
 ## <a name="password-expiration-policies"></a><a name="set-password-expiration-policies-in-azure-ad"></a>パスワードの有効期限のポリシー
 
-"*グローバル管理者*" または "*ユーザー管理者*" は、[Windows PowerShell 用 Microsoft Azure AD モジュール](/powershell/module/Azuread/?view=azureadps-2.0)を使用して、ユーザーのパスワード有効期限が切れないように設定できます。
+"*グローバル管理者*" または "*ユーザー管理者*" は、[Windows PowerShell 用 Microsoft Azure AD モジュール](/powershell/module/Azuread/)を使用して、ユーザーのパスワード有効期限が切れないように設定できます。
 
 また、PowerShell コマンドレットを使用すると、期限が切れない構成を削除したり、期限が切れないように設定されているユーザー パスワードを確認したりすることもできます。
 
@@ -118,13 +118,13 @@ Azure AD のパスワード ポリシーは、*EnforceCloudPasswordPolicyForPass
 
 ### <a name="set-or-check-the-password-policies-by-using-powershell"></a>PowerShell を使用したパスワード ポリシーの設定または確認
 
-操作を開始するには、[Azure AD PowerShell モジュールをダウンロードしてインストール](/powershell/module/Azuread/?view=azureadps-2.0)し、[それをお使いの Azure AD テナントに接続](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples)します。
+操作を開始するには、[Azure AD PowerShell モジュールをダウンロードしてインストール](/powershell/module/Azuread/)し、[それをお使いの Azure AD テナントに接続](/powershell/module/azuread/connect-azuread#examples)します。
 
 モジュールがインストールされたら、次の手順を使用して、各タスクを必要に応じて完了します。
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>パスワードの有効期限ポリシーを確認する
 
-1. PowerShell プロンプトを開き、"*グローバル管理者*" アカウントまたは "*ユーザー管理者*" アカウントを使用して [Azure AD テナントに接続](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples)します。
+1. PowerShell プロンプトを開き、"*グローバル管理者*" アカウントまたは "*ユーザー管理者*" アカウントを使用して [Azure AD テナントに接続](/powershell/module/azuread/connect-azuread#examples)します。
 1. 個々のユーザーまたはすべてのユーザーに対して、次のいずれかのコマンドを実行します。
 
    * 1 人のユーザーのパスワードが無期限に設定されているかどうかを確認するには、次のコマンドレットを実行します。 `<user ID>` を、確認したいユーザーのユーザー ID (*driley\@contoso.onmicrosoft.com* など) に置き換えます。
@@ -141,7 +141,7 @@ Azure AD のパスワード ポリシーは、*EnforceCloudPasswordPolicyForPass
 
 ### <a name="set-a-password-to-expire"></a>パスワードを期限付きに設定する
 
-1. PowerShell プロンプトを開き、"*グローバル管理者*" アカウントまたは "*ユーザー管理者*" アカウントを使用して [Azure AD テナントに接続](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples)します。
+1. PowerShell プロンプトを開き、"*グローバル管理者*" アカウントまたは "*ユーザー管理者*" アカウントを使用して [Azure AD テナントに接続](/powershell/module/azuread/connect-azuread#examples)します。
 1. 個々のユーザーまたはすべてのユーザーに対して、次のいずれかのコマンドを実行します。
 
    * 1 人のユーザーのパスワードを期限付きに設定するには、次のコマンドレットを実行します。 `<user ID>` を、確認したいユーザーのユーザー ID (*driley\@contoso.onmicrosoft.com* など) に置き換えます。
@@ -158,7 +158,7 @@ Azure AD のパスワード ポリシーは、*EnforceCloudPasswordPolicyForPass
 
 ### <a name="set-a-password-to-never-expire"></a>パスワードを無期限に設定する
 
-1. PowerShell プロンプトを開き、"*グローバル管理者*" アカウントまたは "*ユーザー管理者*" アカウントを使用して [Azure AD テナントに接続](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples)します。
+1. PowerShell プロンプトを開き、"*グローバル管理者*" アカウントまたは "*ユーザー管理者*" アカウントを使用して [Azure AD テナントに接続](/powershell/module/azuread/connect-azuread#examples)します。
 1. 個々のユーザーまたはすべてのユーザーに対して、次のいずれかのコマンドを実行します。
 
    * 1 人のユーザーのパスワードを無期限に設定するには、次のコマンドレットを実行します。 `<user ID>` を、確認したいユーザーのユーザー ID (*driley\@contoso.onmicrosoft.com* など) に置き換えます。

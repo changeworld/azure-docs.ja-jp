@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db8774d6868d55c7d040b1894c4a14d989cb2702
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4a8fcb14ac397791822c3a9065275dbfb2b3b7dd
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371870"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860424"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Active Directory についてよくあるご質問
 Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
@@ -130,7 +130,7 @@ Microsoft 365 ユーザーの場合は、「[ユーザー パスワードの再�
 Azure AD アカウントの場合、管理者は、次のいずれかの方法を使用してパスワードをリセットできます。
 
 - [Azure Portal でアカウントをリセットする](active-directory-users-reset-password-azure-portal.md)
-- [PowerShell の使用](/powershell/module/msonline/set-msoluserpassword?view=azureadps-1.0)
+- [PowerShell の使用](/powershell/module/msonline/set-msoluserpassword)
 
 
 ---

@@ -5,14 +5,14 @@ author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 12/07/2020
 ms.author: makromer
-ms.openlocfilehash: 7fc3a63f841a88451746d088a527a41d756e711f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e3152f1dff4a80ce3ae8bd121215ceb2595b9ee2
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015173"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854008"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory での Common Data Model 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -20,9 +20,6 @@ ms.locfileid: "95015173"
 Common Data Model (CDM) メタデータ システムを使用すると、データとその意味をアプリケーションやビジネス プロセス間で簡単に共有できます。 詳しくは、「[Common Data Model](/common-data-model/)」の概要を参照してください。
 
 Azure Data Factory では、マッピング データ フローを使用して、[Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) に格納されている model.json およびマニフェスト形式の両方の CDM エンティティのデータの変換を行うことができます。 また、データをパーティション分割されたフォルダーに CSV または Parquet 形式で格納する CDM エンティティ参照を使用して、データを CDM 形式でシンクすることもできます。 
-
-> [!NOTE]
-> ADF データ フロー用の Common Data Model (CDM) 形式コネクタは、現在パブリック プレビューとして利用できます。
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
@@ -37,7 +34,7 @@ Common Data Model は、マッピング データ フローの[インライン �
 
 | 名前 | 説明 | 必須 | 使用できる値 | データ フロー スクリプトのプロパティ |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Format | [形式] は必ず `cdm` | はい | `cdm` | format |
+| Format | 形式は `cdm` である必要があります | はい | `cdm` | format |
 | メタデータ形式 | データへのエンティティ参照が置かれている場所。 CDM バージョン 1.0 を使用する場合は、manifest を選択します。 1\.0 より前のバージョンの CDM を使用している場合は、model.json を選択します。 | はい | `'manifest'` または `'model'` | manifestType |
 | ルートの場所: コンテナー | CDM フォルダーのコンテナー名 | はい | String | fileSystem |
 | ルートの場所: フォルダー パス | CDM フォルダーのルート フォルダーの場所 | はい | String | folderPath |
@@ -88,7 +85,6 @@ CDM はインライン データセットとしてのみ利用でき、既定で
 2. partitions.Location プロパティを検索する 
 3. "blob.core.windows.net" を "dfs.core.windows.net" に変更する
 4. URL の "% 2F" エンコードを "/" に修正する
- 
 
 ### <a name="cdm-source-data-flow-script-example"></a>CDM ソース データ フロー スクリプトの例
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: devx-track-csharp
 ms.reviewer: sdash
-ms.openlocfilehash: 642a382f2ec5da7821c9d709bd27d592ced31c8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3383b4a3c2eab1f62d180c31e278f07b92c649c5
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90974021"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853517"
 ---
 # <a name="application-map-triage-distributed-applications"></a>アプリケーション マップ:分散アプリケーションのトリアージ
 
@@ -84,7 +84,7 @@ ms.locfileid: "90974021"
 
 ## <a name="set-or-override-cloud-role-name"></a>クラウド ロール名を設定またはオーバーライドする
 
-アプリケーション マップでは、**クラウド ロール名**プロパティを使用して、マップ上のコンポーネントが識別されます。 クラウド ロール名を手動で設定またはオーバーライドし、アプリケーション マップ上に表示される内容を変更するには、次のようにします。
+アプリケーション マップでは、**クラウド ロール名** プロパティを使用して、マップ上のコンポーネントが識別されます。 クラウド ロール名を手動で設定またはオーバーライドし、アプリケーション マップ上に表示される内容を変更するには、次のようにします。
 
 > [!NOTE]
 > Application Insights SDK または Agent では、Azure App Service 環境のコンポーネントで生成されたテレメトリにクラウド ロール名プロパティが自動的に追加されます。
@@ -165,10 +165,8 @@ ASP.NET Web アプリのもう 1 つの方法は、Global.aspx.cs などのコ�
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "roleName": "my cloud role name"
-    }
+  "role": {
+    "name": "my cloud role name"
   }
 }
 ```
@@ -229,7 +227,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 ### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>アプリケーション マップのコンテキスト内でのクラウド ロール名の理解
 
-**クラウド ロール名**をどのように考えるかに関する限り、複数のクラウド ロール名が存在するアプリケーション マップを調べると役に立つ可能性があります。
+**クラウド ロール名** をどのように考えるかに関する限り、複数のクラウド ロール名が存在するアプリケーション マップを調べると役に立つ可能性があります。
 
 ![アプリケーション マップのスクリーンショット](media/app-map/cloud-rolename.png)
 
@@ -249,7 +247,7 @@ appInsights.addTelemetryInitializer((envelope) => {
     715: string      CloudRoleInstance = "ai.cloud.roleInstance";
 ```
 
-または、**クラウド ロール名**によって Web フロント エンドのどこかに問題があることが通知されたが、Web フロント エンドは複数の負荷分散サーバーで実行されているため、Kusto クエリによってレイヤーを深くドリルインして、問題がすべての Web フロント エンド サーバー/インスタンスに影響するのか、1 つだけに影響するのかを知ることが非常に重要なシナリオでは、**クラウド ロール インスタンス**が有用である可能性があります。
+または、**クラウド ロール名** によって Web フロント エンドのどこかに問題があることが通知されたが、Web フロント エンドは複数の負荷分散サーバーで実行されているため、Kusto クエリによってレイヤーを深くドリルインして、問題がすべての Web フロント エンド サーバー/インスタンスに影響するのか、1 つだけに影響するのかを知ることが非常に重要なシナリオでは、**クラウド ロール インスタンス** が有用である可能性があります。
 
 コンテナー化された環境でアプリが実行されている場合は、個々のサーバーを知るだけでは特定の問題を見つけられない可能性があり、クラウド ロール インスタンスの値をオーバーライドした方がよいシナリオです。
 

@@ -6,19 +6,20 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aa4e112d182eb41c3d0c262289a2d3263c17ef0
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 70387717c15dade349a323e663ac0fd31935a15f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95488575"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859880"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 
@@ -27,7 +28,7 @@ ms.locfileid: "95488575"
 > [!IMPORTANT]
 > 一部の設定には、Azure Active Directory Premium P1 ライセンスが必要です。 詳細については、「[テンプレート設定](#template-settings)」の表を参照してください。
 
-管理者でないユーザーがセキュリティ グループを作成できないようにするには、「[Set-MSOLCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)」に記載されているように `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` を設定します。
+管理者でないユーザーがセキュリティ グループを作成できないようにするには、「[Set-MSOLCompanySettings](/powershell/module/msonline/set-msolcompanysettings)」に記載されているように `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` を設定します。
 
 Microsoft 365 グループの設定は、Settings オブジェクトおよび SettingsTemplate オブジェクトを使用して構成されます。 最初は、ディレクトリには Settings オブジェクトが表示されません。これは、ディレクトリが既定の設定で構成されているためです。 既定の設定を変更するには、Settings テンプレートを使用して新しい Settings オブジェクトを作成する必要があります。 Settings テンプレートは、Microsoft によって定義されます。 複数の Settings テンプレートがサポートされています。 ディレクトリの Microsoft 365 グループ設定を構成するには、"Group.Unified" という名前のテンプレートを使用します。 1 つのグループの Microsoft 365 グループ設定を構成するには、"Group.Unified.Guest" という名前のテンプレートを使用します。 このテンプレートは、Microsoft 365 グループへのゲストのアクセスを管理するために使用します。 
 
@@ -318,7 +319,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
    ```
 
 ## <a name="cmdlet-syntax-reference"></a>コマンドレット構文リファレンス
-Azure Active Directory PowerShell のその他のドキュメントについては、 [Azure Active Directory コマンドレット](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)を参照してください。
+Azure Active Directory PowerShell のその他のドキュメントについては、 [Azure Active Directory コマンドレット](/powershell/azure/active-directory/install-adv2)を参照してください。
 
 ## <a name="additional-reading"></a>その他の情報
 

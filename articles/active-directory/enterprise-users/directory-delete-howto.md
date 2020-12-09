@@ -6,19 +6,20 @@ documentationcenter: ''
 author: curtand
 manager: mtillman
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be40a3cea5aa7abfa257c4e5a2db61c514892dd5
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 2edc6fb98359c5360836bc369e5ae1928464df92
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503630"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861032"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Azure Active Directory でテナントを削除する
 
@@ -84,7 +85,7 @@ Microsoft 365 管理センターを使用して、サブスクリプションを
 
    ![サブスクリプションを削除するための [削除] リンク](./media/directory-delete-howto/delete-command.png)
 
-6. **[サブスクリプションの削除]** を選択してサブスクリプションを削除し、使用条件に同意します。 すべてのデータは 3 日以内に完全に削除されます。 気が変わった場合は、3 日の間に[サブスクリプションを再アクティブ化する](/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide)ことができます。
+6. **[サブスクリプションの削除]** を選択してサブスクリプションを削除し、使用条件に同意します。 すべてのデータは 3 日以内に完全に削除されます。 気が変わった場合は、3 日の間に[サブスクリプションを再アクティブ化する](/office365/admin/subscriptions-and-billing/reactivate-your-subscription)ことができます。
   
    ![使用条件を慎重に読みます](./media/directory-delete-howto/delete-terms.png)
 
@@ -96,7 +97,7 @@ Microsoft 365 管理センターを使用して、サブスクリプションを
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>削除をブロックする試用版サブスクリプションがある
 
-Microsoft Power BI、Rights Management サービス、Microsoft Power Apps、Dynamics 365 などの[セルフサービス サインアップ製品](/office365/admin/misc/self-service-sign-up?view=o365-worldwide)では、個々のユーザーが Microsoft 365 を通じてサインアップできるだけでなく、Azure AD 組織内に認証用のゲスト ユーザーを作成することもできます。 これらのセルフサービスの製品では、データ損失を回避するために、組織から製品が完全に削除されるまでディレクトリの削除がブロックされます。 これらを削除できるのは、ユーザーが個別にサインアップしたか、製品を割り当てられたかに関係なく、Azure AD 管理者のみです。
+Microsoft Power BI、Rights Management サービス、Microsoft Power Apps、Dynamics 365 などの[セルフサービス サインアップ製品](/office365/admin/misc/self-service-sign-up)では、個々のユーザーが Microsoft 365 を通じてサインアップできるだけでなく、Azure AD 組織内に認証用のゲスト ユーザーを作成することもできます。 これらのセルフサービスの製品では、データ損失を回避するために、組織から製品が完全に削除されるまでディレクトリの削除がブロックされます。 これらを削除できるのは、ユーザーが個別にサインアップしたか、製品を割り当てられたかに関係なく、Azure AD 管理者のみです。
 
 セルフサービス サインアップ製品の割り当て方法は 2 とおりあります。 
 
@@ -105,9 +106,9 @@ Microsoft Power BI、Rights Management サービス、Microsoft Power Apps、Dyn
 
 セルフサービス サインアップ製品の削除を開始すると、データは完全に削除され、そのサービスへのユーザー アクセスもすべて削除されます。 その後、個別または組織レベルでオファーが割り当てられたユーザーは、サインインしたり既存のデータにアクセスしたりできないようにブロックされます。 [Microsoft Power BI ダッシュボード](/power-bi/service-export-to-pbix)や [Rights Management サービス ポリシー構成](/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy)などのセルフサービス サインアップ製品でのデータ損失を防止したい場合は、データを別の場所にバックアップして保存しておくようにしてください。
 
-現在使用可能なセルフサービス サインアップ製品およびサービスの詳細については、「[利用可能なセルフサービス プログラム](/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs)」を参照してください。
+現在使用可能なセルフサービス サインアップ製品およびサービスの詳細については、「[利用可能なセルフサービス プログラム](/office365/admin/misc/self-service-sign-up#available-self-service-programs)」を参照してください。
 
-試用版の Microsoft 365 サブスクリプション (有償のパートナー/CSP、Enterprise Agreement、ボリューム ライセンスは含まれません) の有効期限が切れたときに起こることについては、次の表を参照してください。 Microsoft 365 のデータ保有とサブスクリプションのライフ サイクルの詳細については、「[一般法人向け Microsoft 365 のサブスクリプションが終了したとき、データとアクセスはどうなりますか?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)」を参照してください。
+試用版の Microsoft 365 サブスクリプション (有償のパートナー/CSP、Enterprise Agreement、ボリューム ライセンスは含まれません) の有効期限が切れたときに起こることについては、次の表を参照してください。 Microsoft 365 のデータ保有とサブスクリプションのライフ サイクルの詳細については、「[一般法人向け Microsoft 365 のサブスクリプションが終了したとき、データとアクセスはどうなりますか?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires)」を参照してください。
 
 製品の状態 | Data | データへのアクセス
 ------------- | ---- | --------------

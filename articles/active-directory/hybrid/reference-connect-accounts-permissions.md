@@ -17,12 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1efafd353bea20ea1ada0b5e92a9e6df00deb78
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c075e19422341ad7ccfd3ad951517876ab26a495
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273602"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858418"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect:アカウントとアクセス許可
 
@@ -50,7 +50,7 @@ Azure AD Connect を実行するためのこれら 3 つのアカウントに加
 
 
 >[!IMPORTANT]
-> ビルド 1.4.###.# 以降では、エンタープライズ管理者アカウントまたはドメイン管理者アカウントを AD DS コネクタ アカウントとして使用することはサポートされません。  **既存のアカウントを使用**するよう指定するときにエンタープライズ管理者アカウントまたはドメイン管理者アカウントを入力しようとすると、エラーが発生します。
+> ビルド 1.4.###.# 以降では、エンタープライズ管理者アカウントまたはドメイン管理者アカウントを AD DS コネクタ アカウントとして使用することはサポートされません。  **既存のアカウントを使用** するよう指定するときにエンタープライズ管理者アカウントまたはドメイン管理者アカウントを入力しようとすると、エラーが発生します。
 
 > [!NOTE]
 > ESAE 管理フォレスト ("Red Forest" とも呼ばれます) からの Azure AD Connect で使用される管理アカウントの管理がサポートされています。
@@ -135,7 +135,7 @@ AD DS コネクタ アカウントは、Windows Server AD の読み取りと書�
 >
 >詳しくは、「[Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成](how-to-connect-configure-ad-ds-connector-account.md)」を参照してください。
 
-**[ディレクトリの接続]** ページで指定するアカウントは、インストールの前に Active Directory に存在している必要があります。  Azure AD Connect バージョン 1.1.524.0 以降には、Azure AD Connect ウィザードが Active Directory への接続に使う **AD DS コネクタ アカウント**を作成できるオプションがあります。  
+**[ディレクトリの接続]** ページで指定するアカウントは、インストールの前に Active Directory に存在している必要があります。  Azure AD Connect バージョン 1.1.524.0 以降には、Azure AD Connect ウィザードが Active Directory への接続に使う **AD DS コネクタ アカウント** を作成できるオプションがあります。  
 
 また、必要なアクセス許可を付与されている必要があります。 インストール ウィザードではアクセス許可は検証されません。問題があれば、同期中に検出されます。
 
@@ -149,7 +149,7 @@ AD DS コネクタ アカウントは、Windows Server AD の読み取りと書�
 | Exchange メールのパブリック フォルダー |パブリック フォルダーに関して、「[Exchange メールのパブリック フォルダー](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)」に記載された属性への読み取りアクセス許可。 | 
 | パスワードの書き戻し |ユーザー向けの「[パスワード管理の概要](../authentication/tutorial-enable-sspr-writeback.md)」に記載された属性への書き込みアクセス許可。 |
 | デバイスの書き戻し |「[デバイスの書き戻し](how-to-connect-device-writeback.md)」に説明されているように、PowerShell スクリプトを使用して付与されたアクセス許可。 |
-| グループの書き戻し |**Microsoft 365 グループ**を Exchange がインストールされているフォレストに書き戻すことができます。|
+| グループの書き戻し |**Microsoft 365 グループ** を Exchange がインストールされているフォレストに書き戻すことができます。|
 
 ## <a name="upgrade"></a>アップグレード
 Azure AD Connect のいずれかのバージョンから新しいリリースにアップグレードする場合、次のアクセス許可が必要です。
@@ -191,8 +191,8 @@ Azure AD Connect のいずれかのバージョンから新しいリリースに
 
 凡例:
 
-- **太字**は既定のオプションを示し、ほとんどの場合、推奨されるオプションです。
-- *斜体*は既定のオプションではないが、推奨されるオプションを示します。
+- **太字** は既定のオプションを示し、ほとんどの場合、推奨されるオプションです。
+- *斜体* は既定のオプションではないが、推奨されるオプションを示します。
 - 2008 - Windows Server 2008 にインストールした場合の既定のオプション
 - 太字でない部分 - サポートされているオプション
 - ローカル アカウント - サーバー上のローカル ユーザー アカウント
@@ -215,7 +215,7 @@ VSA は、同期エンジンと SQL が同じサーバー上にあるシナリ�
 この機能では、Windows Server 2008 R2 以降が必要です。 Windows Server 2008 に Azure AD Connect をインストールする場合、インストールは代わりに[ユーザー アカウント](#user-account)を使用してフォールバックします。
 
 #### <a name="group-managed-service-account"></a>グループの管理されたサービス アカウント
-リモートの SQL サーバーを使う場合は、**グループの管理されたサービス アカウント**を使うことをお勧めします。 グループの管理されたサービス アカウント用の Active Directory を準備する方法について詳しくは、「[グループの管理されたサービス アカウントの概要](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))」をご覧ください。
+リモートの SQL サーバーを使う場合は、**グループの管理されたサービス アカウント** を使うことをお勧めします。 グループの管理されたサービス アカウント用の Active Directory を準備する方法について詳しくは、「[グループの管理されたサービス アカウントの概要](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))」をご覧ください。
 
 このオプションを使用するには、[[必須コンポーネントのインストール]](how-to-connect-install-custom.md#install-required-components) ページで **[既存のサービス アカウントを使用する]** を選択し、 **[管理されたサービス アカウント]** を選択します。  
 ![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
@@ -245,14 +245,14 @@ Azure AD のアカウントは、同期サービスで使用するために作�
 
 アカウントが使用されるサーバーの名前は、ユーザー名の 2 番目の部分で識別できます。 図では、サーバー名は DC1 です。 ステージング サーバーがある場合、各サーバーに独自のアカウントが指定されます。
 
-アカウントの作成時には、有効期限のない長く複雑なパスワードが設定されます。 このアカウントには、ディレクトリ同期タスクの実行権限のみを持つ特別なロール **ディレクトリ同期アカウント** が付与されます。 この特別な組み込みロールを Azure AD Connect ウィザードの外部で付与することはできません。 Azure Portal ではこのアカウントには**ユーザー** ロールが表示されます。
+アカウントの作成時には、有効期限のない長く複雑なパスワードが設定されます。 このアカウントには、ディレクトリ同期タスクの実行権限のみを持つ特別なロール **ディレクトリ同期アカウント** が付与されます。 この特別な組み込みロールを Azure AD Connect ウィザードの外部で付与することはできません。 Azure Portal ではこのアカウントには **ユーザー** ロールが表示されます。
 
 Azure AD での同期サービスのアカウント数の上限は 20 です。 Azure AD で既存の Azure AD サービス アカウントの一覧を取得するには、次の Azure AD PowerShell コマンドレットを実行します。`Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 
 使用されていない Azure AD サービス アカウントを削除するには、次の Azure AD PowerShell コマンドレットを実行します。`Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 >[!NOTE]
->上記の PowerShell コマンドを使用する前に、[Graph モジュール用の Azure Active Directory PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) をインストールし、Azure AD のインスタンスを [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) を使用して接続する必要があります。
+>上記の PowerShell コマンドを使用する前に、[Graph モジュール用の Azure Active Directory PowerShell](/powershell/azure/active-directory/install-adv2#installing-the-azure-ad-module) をインストールし、Azure AD のインスタンスを [Connect-AzureAD](/powershell/module/azuread/connect-azuread) を使用して接続する必要があります。
 
 Azure AD コネクタ アカウントのパスワードの管理またはリセット方法の詳細については、「[Azure AD Connect アカウントの管理](how-to-connect-azureadaccount.md)」を参照してください。
 

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e46dabc665d383279a12fc6bd8eb67475d88a2ea
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 82f0408b7e46493f6c3ec62d48a992e87f196f78
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896074"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860611"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>カスタム承認ワークフローをセルフサービス サインアップに追加する
 
@@ -34,7 +34,7 @@ ms.locfileid: "92896074"
 1. [Azure Portal](https://portal.azure.com) に Azure AD 管理者としてサインインします。
 2. **[Azure サービス]** で **[Azure Active Directory]** を選択します。
 3. 左のメニューで、 **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
-4. アプリケーションの **名前** を入力します ( _Sign-up Approvals_ など)。
+4. アプリケーションの **名前** を入力します (_Sign-up Approvals_ など)。
 
    <!-- ![Register an application for the approval system](./self-service-sign-up-add-approvals/approvals/register-an-approvals-application.png) -->
 
@@ -50,7 +50,7 @@ ms.locfileid: "92896074"
 
 9. **[API のアクセス許可]** ページで、 **[(テナント名) に管理者の同意を与えます]** を選択し、 **[はい]** を選択します。
 10. 左のメニューの **[管理]** で **[証明書とシークレット]** を選択してから、 **[新しいクライアント シークレット]** を選択します。
-11. シークレットの **[説明]** を入力し (たとえば、 _Approvals client secret (承認クライアント シークレット)_ )、クライアント シークレットが **期限切れになる** までの期間を選択します。 その後、 **[追加]** を選択します。
+11. シークレットの **[説明]** を入力し (たとえば、_Approvals client secret (承認クライアント シークレット)_ )、クライアント シークレットが **期限切れになる** までの期間を選択します。 その後、 **[追加]** を選択します。
 12. クライアント シークレットの値をコピーします。
 
     ![承認システムで使用するクライアント シークレットをコピーする](media/self-service-sign-up-add-approvals/client-secret-value-copy.png)
@@ -81,8 +81,8 @@ ms.locfileid: "92896074"
 4. **[User flows (Preview)]\(ユーザー フロー (プレビュー)\)** を選択し、API コネクタを有効にするユーザー フローを選択します。
 5. **[API connectors]\(API コネクタ\)** を選択し、ユーザー フローの次の手順で呼び出す API エンドポイントを選択します。
 
-   - **ID プロバイダーを使用してサインインした後** :承認状態 API コネクタを選択します。たとえば、 _[Check approval status]\(承認状態の確認\)_ を選択します。
-   - **ユーザーを作成する前** :承認要求 API コネクタを選択します。たとえば、 _[要求の承認]_ を選択します。
+   - **ID プロバイダーを使用してサインインした後**:承認状態 API コネクタを選択します。たとえば、 _[Check approval status]\(承認状態の確認\)_ を選択します。
+   - **ユーザーを作成する前**:承認要求 API コネクタを選択します。たとえば、 _[要求の承認]_ を選択します。
 
    ![API をユーザー フローに追加する](./media/self-service-sign-up-add-approvals/api-connectors-user-flow-api.png)
 
@@ -270,7 +270,7 @@ Content-type: application/json
 > [!IMPORTANT]
 > この方法を使用するには、承認システムは、`identities`、`identities[0]`、および `identities[0].issuer` が存在し、 `identities[0].issuer` が 'facebook' または 'google' に一致することを明示的に確認する必要があります。
 
-ユーザーが Google または Facebook アカウントを使用してサインインした場合は、[ユーザー作成 API](/graph/api/user-post-users?tabs=http&view=graph-rest-1.0) を使用できます。
+ユーザーが Google または Facebook アカウントを使用してサインインした場合は、[ユーザー作成 API](/graph/api/user-post-users?tabs=http) を使用できます。
 
 1. 承認システムはユーザー フローから HTTP 要求を受信します。
 
@@ -330,7 +330,7 @@ Content-type: application/json
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>フェデレーション Azure Active Directory ユーザーの場合
 
-ユーザーがフェデレーション Azure Active Directory アカウントを使用してサインインする場合は、[招待 API](/graph/api/invitation-post?view=graph-rest-1.0) を使用してユーザーを作成し、必要に応じて[ユーザー更新 API](/graph/api/user-update?view=graph-rest-1.0) を使用してユーザーに追加の属性を割り当てる必要があります。
+ユーザーがフェデレーション Azure Active Directory アカウントを使用してサインインする場合は、[招待 API](/graph/api/invitation-post) を使用してユーザーを作成し、必要に応じて[ユーザー更新 API](/graph/api/user-update) を使用してユーザーに追加の属性を割り当てる必要があります。
 
 1. 承認システムはユーザー フローから HTTP 要求を受信します。
 

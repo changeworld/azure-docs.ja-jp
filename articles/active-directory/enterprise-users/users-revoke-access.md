@@ -3,21 +3,22 @@ title: Azure Active Directory で緊急時にユーザー アクセスを取り�
 description: Azure Active Directory でユーザーのすべてのアクセスを取り消す方法
 services: active-directory
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
 author: curtand
 ms.author: curtand
 manager: daveba
 ms.reviewer: krbain
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 491e4f996d91fe267593e36b7ff06200c91b93f8
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 826ca9fc20d8bbcf9a5f90ccc895b9f9867a6be1
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95490699"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860577"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Azure Active Directory でユーザー アクセスを取り消す
 
@@ -59,13 +60,13 @@ ms.locfileid: "95490699"
 
 Active Directory の管理者として、オンプレミス ネットワークに接続し、PowerShell を開き、次の操作を実行します。
 
-1. Active Directory でユーザーを無効にします。 「[Disable-ADAccount](/powershell/module/addsadministration/disable-adaccount?view=win10-ps)」を参照してください。
+1. Active Directory でユーザーを無効にします。 「[Disable-ADAccount](/powershell/module/addsadministration/disable-adaccount)」を参照してください。
 
     ```PowerShell
     Disable-ADAccount -Identity johndoe  
     ```
 
-1. Active Directory でユーザーのパスワードを 2 回リセットします。 「[Set-ADAccountPassword](/powershell/module/addsadministration/set-adaccountpassword?view=win10-ps)」を参照してください。
+1. Active Directory でユーザーのパスワードを 2 回リセットします。 「[Set-ADAccountPassword](/powershell/module/addsadministration/set-adaccountpassword)」を参照してください。
 
     > [!NOTE]
     > ユーザーのパスワードを 2 回変更する理由は、特にオンプレミスのパスワード レプリケーションで遅延が発生した場合に、Pass-the-Hash のリスクを軽減するためです。 このアカウントが侵害されていないと想定できる場合は、パスワードのリセットを 1 回だけにすることができます。
@@ -82,18 +83,18 @@ Active Directory の管理者として、オンプレミス ネットワーク�
 
 Azure Active Directory の管理者として、PowerShell を開き、``Connect-AzureAD`` を実行して、次の操作を実行します。
 
-1. Azure AD でユーザーを無効にします。 「[Set-AzureADUser](/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0)」を参照してください。
+1. Azure AD でユーザーを無効にします。 「[Set-AzureADUser](/powershell/module/azuread/Set-AzureADUser)」を参照してください。
 
     ```PowerShell
     Set-AzureADUser -ObjectId johndoe@contoso.com -AccountEnabled $false
     ```
-1. ユーザーの Azure AD 更新トークンを取り消します。 「[Revoke-AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)」を参照してください。
+1. ユーザーの Azure AD 更新トークンを取り消します。 「[Revoke-AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)」を参照してください。
 
     ```PowerShell
     Revoke-AzureADUserAllRefreshToken -ObjectId johndoe@contoso.com
     ```
 
-1. ユーザーのデバイスを無効にします。 「[Get-AzureADUserRegisteredDevice](/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0)」を参照してください。
+1. ユーザーのデバイスを無効にします。 「[Get-AzureADUserRegisteredDevice](/powershell/module/azuread/get-azureaduserregistereddevice)」を参照してください。
 
     ```PowerShell
     Get-AzureADUserRegisteredDevice -ObjectId johndoe@contoso.com | Set-AzureADDevice -AccountEnabled $false

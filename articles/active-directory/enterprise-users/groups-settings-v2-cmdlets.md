@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61c445a7df05eda578fb6b3de6de915a94402049
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 12613362d9fc67dea14b41ece19a34febb489dda
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647071"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860645"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>グループ管理用の Azure Active Directory バージョン 2 のコマンドレット
 
@@ -50,7 +50,7 @@ Azure AD PowerShell モジュールをインストールするには、次のコ
     Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 ```
 
-これで、モジュールのコマンドレットの使用を開始できます。 Azure AD モジュールのコマンドレットについて詳しくは、[Azure Active Directory PowerShell バージョン 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) に関するオンライン リファレンス ドキュメントをご覧ください。
+これで、モジュールのコマンドレットの使用を開始できます。 Azure AD モジュールのコマンドレットについて詳しくは、[Azure Active Directory PowerShell バージョン 2](/powershell/azure/active-directory/install-adv2) に関するオンライン リファレンス ドキュメントをご覧ください。
 
 > [!NOTE]
 > Azure AD PowerShell コマンドレットは .Net Core をベースにしているため、新しい PowerShell 7 では動作しません。 この点は把握しており、更新に取り組んでいます。 現時点では、Azure AD の PowerShell の操作には、Windows PowerShell 5.x を使用することを推奨します。 
@@ -338,7 +338,7 @@ Microsoft 365 のグループの書き戻しは Azure Active Directory (Azure AD
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Active Directory PowerShell のその他のドキュメントについては、 [Azure Active Directory コマンドレット](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)を参照してください。
+Azure Active Directory PowerShell のその他のドキュメントについては、 [Azure Active Directory コマンドレット](/powershell/azure/active-directory/install-adv2)を参照してください。
 
 * [Azure Active Directory グループによるリソースへのアクセス管理](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [オンプレミス ID と Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

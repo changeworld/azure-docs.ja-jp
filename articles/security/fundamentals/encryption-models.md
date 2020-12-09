@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a00dc5beb2bde02f71b40f6eb374502136c37c67
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 141daa485fae5aba2db23647fada30ba5b621cd0
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410489"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854616"
 ---
 # <a name="data-encryption-models"></a>データ暗号化モデル
 
@@ -159,7 +159,7 @@ Azure Key Vault のユーザー管理キーを使用するサーバー側暗号�
 | Translator Text                  | はい                | はい                | -                  |
 | Power BI                         | はい                | はい、RSA 4096 ビット  | -                  |
 | **Analytics**                    |                    |                    |                    |
-| Azure Stream Analytics           | はい                | 該当なし\*              | -                  |
+| Azure Stream Analytics           | はい                | はい\*\*            | -                  |
 | Event Hubs                       | はい                | はい                | -                  |
 | 関数                        | はい                | はい                | -                  |
 | Azure Analysis Services          | はい                | -                  | -                  |
@@ -215,7 +215,7 @@ Azure Key Vault のユーザー管理キーを使用するサーバー側暗号�
 | Azure Site Recovery              | はい                | -                  | -                  |
 | Azure Migrate                    | はい                | はい                | -                  |
 | **メディア**                        |                    |                    |                    |
-| Media Services                   | はい                | -                  | はい                |
+| Media Services                   | はい                | はい                | はい                |
 | **Security**                     |                    |                    |                    |
 | Azure Security Center for IoT    | はい                | はい                | -                  |
 | Azure Sentinel                   | はい                | はい                | -                  |

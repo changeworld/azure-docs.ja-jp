@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f9cd421224ad134b4df853b06b3bc34333a0613
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8a5b800e78448afcc970010535ba12b543d3cc74
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896108"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860509"
 ---
 # <a name="self-service-for-azure-ad-b2b-collaboration-sign-up"></a>Azure AD B2B コラボレーションのサインアップのためのセルフサービス
 
@@ -28,7 +28,7 @@ ms.locfileid: "92896108"
 
 ## <a name="azure-active-directory-b2b-invitation-api"></a>Azure Active Directory B2B の招待 API
 
-組織は、[Microsoft Graph 招待マネージャー API](/graph/api/resources/invitation?view=graph-rest-1.0) を使用して、B2B ゲスト ユーザー向けの独自のオンボード エクスペリエンスを構築できます。 セルフサービス B2B ゲスト ユーザーのサインアップを提供する場合は、[Azure AD のエンタイトルメント管理](../governance/entitlement-management-overview.md)を使用することをお勧めします。 ただし、独自のエクスペリエンスを構築する場合は、[招待状の作成 API](/graph/api/invitation-post?tabs=http&view=graph-rest-1.0) を使用して、たとえば、カスタマイズされた招待メールを自動的に B2B ユーザーに直接送信できます。 また、アプリは、作成応答で返された inviteRedeemUrl を使用して、(選択した通信メカニズムを介して) 招待するユーザーに対して独自の招待状を作成できます。
+組織は、[Microsoft Graph 招待マネージャー API](/graph/api/resources/invitation) を使用して、B2B ゲスト ユーザー向けの独自のオンボード エクスペリエンスを構築できます。 セルフサービス B2B ゲスト ユーザーのサインアップを提供する場合は、[Azure AD のエンタイトルメント管理](../governance/entitlement-management-overview.md)を使用することをお勧めします。 ただし、独自のエクスペリエンスを構築する場合は、[招待状の作成 API](/graph/api/invitation-post?tabs=http) を使用して、たとえば、カスタマイズされた招待メールを自動的に B2B ユーザーに直接送信できます。 また、アプリは、作成応答で返された inviteRedeemUrl を使用して、(選択した通信メカニズムを介して) 招待するユーザーに対して独自の招待状を作成できます。
 
 ## <a name="next-steps"></a>次のステップ
 

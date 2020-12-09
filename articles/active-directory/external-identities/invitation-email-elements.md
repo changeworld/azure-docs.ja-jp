@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1e1bbdfe1cb83f9b479861840081cd0bb138957
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: bb134a2fb784e02f5e00c9e88ab0df1794489e0c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441880"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860594"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B コラボレーションの招待メールの要素 - Azure Active Directory
 
@@ -85,8 +85,8 @@ ms.locfileid: "92441880"
 
 招待電子メール内のゲスト ユーザーに表示される言語は、次の設定によって決定されます。 これらの設定は、優先順位の順に一覧表示されています。 ある設定が構成されていない場合は、一覧内の次の設定によって言語が決定されます。
 
-- 招待の作成 API が使用されている場合は、 [invitedUserMessageInfo](/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) オブジェクトの **messageLanguage** プロパティ
--   ゲストの [ユーザー オブジェクト](/graph/api/resources/user?view=graph-rest-1.0)で指定されている **preferredLanguage** プロパティ
+- 招待の作成 API が使用されている場合は、[invitedUserMessageInfo](/graph/api/resources/invitedusermessageinfo) オブジェクトの **messageLanguage** プロパティ
+-   ゲストの [ユーザー オブジェクト](/graph/api/resources/user)で指定されている **preferredLanguage** プロパティ
 -   ゲスト ユーザーのホーム テナントのプロパティで設定されている **通知言語** (Azure AD テナントの場合のみ)
 -   リソース テナントのプロパティで設定されている **通知言語**
 
