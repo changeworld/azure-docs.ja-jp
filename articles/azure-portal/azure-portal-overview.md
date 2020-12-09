@@ -1,20 +1,15 @@
 ---
-title: Azure Portal の概要 | Microsoft Docs
+title: Azure Portal の概要
 description: Azure portal は、Azure サービスの管理に使用できるグラフィカル ユーザー インターフェイスです。 Azure portal でリソース間を移動およびリソースを検索する手順について説明します。
-services: azure-portal
 keywords: ポータル
-author: mgblythe
-ms.author: mblythe
 ms.date: 12/20/2019
 ms.topic: overview
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 4a00c1dcf973098895e80d5e3d656efd4a35d0d0
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 1e9cf1a9609b9d4f30e51094f1d0542335ead0e2
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147047"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745929"
 ---
 # <a name="azure-portal-overview"></a>Azure Portal の概要
 

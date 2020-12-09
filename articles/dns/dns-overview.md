@@ -6,18 +6,18 @@ ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
 ms.author: rohink
-ms.openlocfilehash: 5df2c2f686a1993dcd25d5391d5b553f2b42d937
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7c3aa5505ca15238b2f9e84069de58ab6b700521
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965648"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608489"
 ---
 # <a name="what-is-azure-dns"></a>Azure DNS とは
 
 Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 
-Azure DNS を使用してドメイン名を購入することはできません。 年会費をお支払いになると、[App Service のドメイン](../app-service/manage-custom-dns-buy-domain.md#buy-the-domain)またはサードパーティのドメイン名レジストラーを使用して、ドメイン名を購入できます。 購入したドメインは、Azure DNS でホストし、レコードを管理できます。 詳細については、「[Azure DNS へのドメインの委任](dns-domain-delegation.md)」を参照してください。
+Azure DNS を使用してドメイン名を購入することはできません。 年会費をお支払いになると、[App Service のドメイン](../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain)またはサードパーティのドメイン名レジストラーを使用して、ドメイン名を購入できます。 購入したドメインは、Azure DNS でホストし、レコードを管理できます。 詳細については、「[Azure DNS へのドメインの委任](dns-domain-delegation.md)」を参照してください。
 
 Azure DNS には、次の機能が含まれています。
 

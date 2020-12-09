@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: e491b89ec5e6488228dd8befed669a13842f9d15
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 9cbce00e2c2743aec57cd857b6f38d20bce33698
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288562"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532909"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault の仮想ネットワーク サービス エンドポイント
 
@@ -42,7 +42,7 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 1. 詳細なアクセスログを表示するように [Key Vault のログ記録](logging.md)を有効にします。 これは、ファイアウォールと仮想ネットワーク規則によってキー コンテナーにアクセスできない場合の診断に役立ちます。 (このステップは省略可能ですが、強くお勧めします。)
 2. ターゲット仮想ネットワークとサブネットの **キー コンテナーのサービス エンドポイント** を有効にします。
 3. 特定の仮想ネットワーク、サブネット、および IPv4 アドレス範囲からキー コンテナーへのアクセスを制限するようにキー コンテナーのファイアウォールと仮想ネットワーク規則を設定します。
-4. すべての信頼できる Microsoft サービスからこのキー コンテナーにアクセスできるようにする必要がある場合は、 **信頼できる Azure サービス** がキー コンテナーに接続できるようにするオプションを有効にします。
+4. すべての信頼できる Microsoft サービスからこのキー コンテナーにアクセスできるようにする必要がある場合は、**信頼できる Azure サービス** がキー コンテナーに接続できるようにするオプションを有効にします。
 
 詳細については、「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](network-security.md)」を参照してください。
 
@@ -54,7 +54,7 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 > 構成に関する次の制限事項に注意してください。
 > * 最大で 127 個の仮想ネットワーク規則と 127 個の IPv4 ルールを指定できます。 
 > * "/31" や "/32" のプレフィックス サイズを使用する小さいアドレス範囲はサポートされていません。 これらの範囲を構成するには、個別の IP アドレス ルールを使用します。
-> * IP ネットワーク ルールは、パブリック IP アドレスに対してのみ許可されます。 プライベート ネットワーク用に予約されている IP アドレス範囲 (RFC 1918 で定義) は、IP ルールでは許可されません。 プライベート ネットワークには、 **10.** 、 **172.16-31** 、および **192.168.** で始まるアドレスが含まれます。 
+> * IP ネットワーク ルールは、パブリック IP アドレスに対してのみ許可されます。 プライベート ネットワーク用に予約されている IP アドレス範囲 (RFC 1918 で定義) は、IP ルールでは許可されません。 プライベート ネットワークには、**10.** 、**172.16-31**、および **192.168.** で始まるアドレスが含まれます。 
 > * 現時点でサポートされているのは、IPv4 アドレスのみです。
 
 ## <a name="trusted-services"></a>信頼できるサービス
@@ -71,7 +71,7 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 |Exchange Online と SharePoint Online|[カスタマー キー](/microsoft-365/compliance/customer-key-overview)を使用する Azure Storage サービス暗号化のためにカスタマー キーへのアクセスを許可する。|
 |Azure Information Protection|[Azure Information Protection](/azure/information-protection/what-is-information-protection) のテナント キーへのアクセスを許可する。|
 |Azure App Service|[Key Vault を介して Azure Web アプリ証明書をデプロイする](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html)。|
-|Azure SQL データベース|[Azure SQL Database と Azure Synapse Analytics (旧称 SQL Data Warehouse) に対する Transparent Data Encryption での Bring Your Own Key のサポート](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|
+|Azure SQL データベース|[Azure SQL Database と Azure Synapse Analytics に対する Transparent Data Encryption での Bring Your Own Key のサポート](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|
 |Azure Storage|[Azure Key Vault で顧客が管理するキーを Storage Service Encryption に使用する](../../storage/common/customer-managed-keys-configure-key-vault.md)。|
 |Azure Data Lake Store|顧客が管理するキーによる [Azure Data Lake Store 内のデータの暗号化](../../data-lake-store/data-lake-store-encryption.md)。|
 |Azure Databricks|[高速で使いやすい、コラボレーション対応の Apache Spark ベースの分析サービス](/azure/databricks/scenarios/what-is-azure-databricks)|
@@ -80,7 +80,7 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 |Azure Event Hubs|[カスタマー マネージト キーのシナリオでキー コンテナーへのアクセスを許可する](../../event-hubs/configure-customer-managed-key.md)|
 |Azure Service Bus|[カスタマー マネージト キーのシナリオでキー コンテナーへのアクセスを許可する](../../service-bus-messaging/configure-customer-managed-key.md)|
 |Azure Import/Export| [Azure Key Vault でユーザーが管理するキーを Import/Export サービスのために使用する](../../storage/common/storage-import-export-encryption-key-portal.md)
-|Azure Container Registry|[カスタマー マネージド キーを使用したレジストリの暗号化](../../container-registry/container-registry-customer-managed-keys.md)<br><br/>[成果物を別のレジストリに転送する](../../container-registry/container-registry-transfer-images.md)
+|Azure Container Registry|[カスタマー マネージド キーを使用したレジストリの暗号化](../../container-registry/container-registry-customer-managed-keys.md)
 
 > [!NOTE]
 > 対応するサービスがキー コンテナーにアクセスできるように、関連するキー コンテナー アクセス ポリシーを設定する必要があります。

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: sumuth
 ms.date: 10/23/2020
-ms.openlocfilehash: 3eccb3fb4f4c65896f3956e265509258525c1ac9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 542528bb0a3f76705e61f28338ccf1460159871d
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535758"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96749081"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---flexible-server"></a>クイック スタート:ARM テンプレートを使用して Azure Database for PostgreSQL - フレキシブル サーバーを作成する
 
@@ -55,14 +55,11 @@ _postgres-flexible-server-template.json_ ファイルを作成し、そこに次
     "serverEdition": {
       "type": "String"
     },
-    "vCores": {
-      "type": "Int"
-    },
     "storageSizeMB": {
       "type": "Int"
     },
-    "standbyCount": {
-      "type": "Int"
+    "haEnabled": {
+      "type": "string"
     },
     "availabilityZone": {
       "type": "String"
@@ -90,8 +87,8 @@ _postgres-flexible-server-template.json_ ファイルを作成し、そこに次
     "api": "2020-02-14-privatepreview",
     "firewallRules": "[parameters('firewallRules').rules]",
     "publicNetworkAccess": "[if(empty(parameters('vnetData')), 'Enabled', 'Disabled')]",
-    "vnetDataSet": "[if(empty(parameters('vnetData')), json('{ \"vnetId\": \"\", \"vnetName\": \"\", \"vnetResourceGroup\": \"\", \"subnetName\": \"\" }'), parameters('vnetData'))]",
-    "finalVnetData": "[json(concat('{ \"DelegatedVnetID\": \"', variables('vnetDataSet').vnetId, '\", \"DelegatedVnetName\": \"', variables('vnetDataSet').vnetName, '\", \"DelegatedVnetResourceGroup\": \"', variables('vnetDataSet').vnetResourceGroup, '\", \"DelegatedSubnetName\": \"', variables('vnetDataSet').subnetName, '\"}'))]"
+    "vnetDataSet": "[if(empty(parameters('vnetData')), json('{ \"subnetArmResourceId\": \"\" }'), parameters('vnetData'))]",
+    "finalVnetData": "[json(concat('{ \"subnetArmResourceId\": \"', variables('vnetDataSet').subnetArmResourceId, '\"}'))]"
   },
   "resources": [
     {
@@ -100,9 +97,8 @@ _postgres-flexible-server-template.json_ ファイルを作成し、そこに次
       "name": "[parameters('serverName')]",
       "location": "[parameters('location')]",
       "sku": {
-        "name": "GP_D4s_v3",
-        "tier": "[parameters('serverEdition')]",
-        "capacity": "[parameters('vCores')]"
+        "name": "Standard_D4ds_v4",
+        "tier": "[parameters('serverEdition')]"        
       },
       "tags": "[parameters('tags')]",
       "properties": {
@@ -110,8 +106,8 @@ _postgres-flexible-server-template.json_ ファイルを作成し、そこに次
         "administratorLogin": "[parameters('administratorLogin')]",
         "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
         "publicNetworkAccess": "[variables('publicNetworkAccess')]",
-        "VnetInjArgs": "[if(empty(parameters('vnetData')), json('null'), variables('finalVnetData'))]",
-        "standbyCount": "[parameters('standbyCount')]",
+        "DelegatedSubnetArguments": "[if(empty(parameters('vnetData')), json('null'), variables('finalVnetData'))]",
+        "haEnabled": "[parameters('haEnabled')]",
         "storageProfile": {
           "storageMB": "[parameters('storageSizeMB')]",
           "backupRetentionDays": "[parameters('backupRetentionDays')]"
@@ -120,15 +116,9 @@ _postgres-flexible-server-template.json_ ファイルを作成し、そこに次
       }
     },
     {
-      "condition": "[greater(length(variables('firewallRules')), 0)]",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2019-08-01",
       "name": "[concat('firewallRules-', copyIndex())]",
-      "copy": {
-        "name": "firewallRulesIterator",
-        "count": "[if(greater(length(variables('firewallRules')), 0), length(variables('firewallRules')), 1)]",
-        "mode": "Serial"
-      },
       "dependsOn": [
         "[concat('Microsoft.DBforPostgreSQL/flexibleServers/', parameters('serverName'))]"
       ],
@@ -149,7 +139,13 @@ _postgres-flexible-server-template.json_ ファイルを作成し、そこに次
             }
           ]
         }
-      }
+      },
+      "copy": {
+        "name": "firewallRulesIterator",
+        "count": "[if(greater(length(variables('firewallRules')), 0), length(variables('firewallRules')), 1)]",
+        "mode": "Serial"
+      },
+      "condition": "[greater(length(variables('firewallRules')), 0)]"
     }
   ]
 }
@@ -187,7 +183,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-1. [Azure portal](https://portal.azure.com) 上で、 **Azure Database for PostgreSQL フレキシブル サーバー (プレビュー)** を検索して選択します。
+1. [Azure portal](https://portal.azure.com) 上で、**Azure Database for PostgreSQL フレキシブル サーバー (プレビュー)** を検索して選択します。
 1. データベースの一覧で、新しいサーバーを選択し、サーバーを管理するための **[概要]** ページを表示します。
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)

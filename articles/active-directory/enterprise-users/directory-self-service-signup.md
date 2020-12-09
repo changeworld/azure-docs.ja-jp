@@ -7,19 +7,20 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.topic: overview
 ms.workload: identity
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01de8ab86ff5f511fd5e45c4a6e88febdb4fbb15
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 95625886ed11256a40e5993540d7e545134d6dd6
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340868"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860866"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Azure Active Directory のセルフサービス サインアップについて
 
@@ -76,13 +77,13 @@ Flow および Power Apps の試用版サインアップの詳細については
 
 ![セルフサービス サインアップ コントロールのフローチャート](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
 
-この設定の詳細は、PowerShell コマンドレット Get-MsolCompanyInformation で取得できます。 この詳細については、「[Get-MsolCompanyInformation](/powershell/module/msonline/get-msolcompanyinformation?view=azureadps-1.0)」を参照してください。
+この設定の詳細は、PowerShell コマンドレット Get-MsolCompanyInformation で取得できます。 この詳細については、「[Get-MsolCompanyInformation](/powershell/module/msonline/get-msolcompanyinformation)」を参照してください。
 
 ```powershell
     Get-MsolCompanyInformation | Select AllowEmailVerifiedUsers, AllowAdHocSubscriptions
 ```
 
-これらのパラメーターの使用方法についての詳細は、「 [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)」を参照してください。
+これらのパラメーターの使用方法についての詳細は、「 [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -90,5 +91,5 @@ Flow および Power Apps の試用版サインアップの詳細については
 * [Azure PowerShell のインストールと構成の方法](/powershell/azure/)
 * [Azure PowerShell](/powershell/azure/)
 * [Azure コマンドレット リファレンス](/powershell/azure/get-started-azureps)
-* [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
+* [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings)
 * [アンマネージド Azure Active Directory の職場または学校アカウントを削除する](users-close-account.md)

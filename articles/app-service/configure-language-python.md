@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: f12ed42755af64f024fdcb0452173134f7b58482
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7589b5c66bf4fa86db243574f551ec585ccccea1
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183738"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855058"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service 向けの Linux Python アプリを構成する
 
@@ -101,19 +101,19 @@ App Service で Linux の Python アプリを実行、ビルドする方法の�
 1. **ソース リポジトリ**: ソース コードを GitHub などの適切なリポジトリに保持します。これにより、このプロセスの後半で継続的なデプロイを設定することができます。
     1. App Service が必要なパッケージを自動的にインストールできるようにするには、*requirements.txt* ファイルがリポジトリのルートにある必要があります。    
 
-1. **データベース**:アプリがデータベースに依存している場合は、Azure 上に必要なリソースをプロビジョニングします。 「[チュートリアル:PostgreSQL を使用して Django Web アプリをデプロイする方法のチュートリアルの、データベースの作成に関するセクション](tutorial-python-postgresql-app.md#create-postgres-database-in-azure)の例を参照してください。
+1. **データベース**:アプリがデータベースに依存している場合は、Azure 上に必要なリソースをプロビジョニングします。 「[チュートリアル:PostgreSQL を使用して Django Web アプリをデプロイする方法のチュートリアルの、データベースの作成に関するセクション](tutorial-python-postgresql-app.md#3-create-postgres-database-in-azure)の例を参照してください。
 
-1. **App Service リソース**: 対象のアプリケーションをホストするためのリソース グループ、App Service プラン、および App Service Web アプリを作成します。 これは、Azure CLI コマンド `az webapp up` を使用してコードの初期デプロイを実行することで最も簡単に行うことができます。[PostgreSQL を使用して Django Web アプリをデプロイする方法のチュートリアルの、コードのデプロイに関するセクション](tutorial-python-postgresql-app.md#deploy-the-code-to-azure-app-service)を参照してください。 リソース グループ、App Service プラン、および Web アプリの名前を、対象のアプリケーションにより適した名前に置き換えます。
+1. **App Service リソース**: 対象のアプリケーションをホストするためのリソース グループ、App Service プラン、および App Service Web アプリを作成します。 これは、Azure CLI コマンド `az webapp up` を使用してコードの初期デプロイを実行することで最も簡単に行うことができます。[PostgreSQL を使用して Django Web アプリをデプロイする方法のチュートリアルの、コードのデプロイに関するセクション](tutorial-python-postgresql-app.md#4-deploy-the-code-to-azure-app-service)を参照してください。 リソース グループ、App Service プラン、および Web アプリの名前を、対象のアプリケーションにより適した名前に置き換えます。
 
 1. **環境変数**:対象のアプリケーションが環境変数を必要とする場合は、同等の [App Service アプリケーション設定](configure-common.md#configure-app-settings)を作成します。 これらの App Service 設定は、[環境変数へのアクセス](#access-app-settings-as-environment-variables)に関するセクションで説明されているように、環境変数としてコードに示されます。
-    - たとえば、データベース接続は、多くの場合、このような設定によって管理されます。[PostgreSQL を使用して Django Web アプリをデプロイする方法のチュートリアルの、データベースに接続するための変数の構成に関するセクション](tutorial-python-postgresql-app.md#configure-environment-variables-to-connect-the-database)を参照してください。
+    - たとえば、データベース接続は、多くの場合、このような設定によって管理されます。[PostgreSQL を使用して Django Web アプリをデプロイする方法のチュートリアルの、データベースに接続するための変数の構成に関するセクション](tutorial-python-postgresql-app.md#42-configure-environment-variables-to-connect-the-database)を参照してください。
     - 一般的な Django アプリの特定の設定については、「[Django アプリの運用設定](#production-settings-for-django-apps)」を参照してください。
 
 1. **アプリの起動**: この記事の後半の「[コンテナーのスタートアップ プロセス](#container-startup-process)」セクションを参照して、App Service がアプリを実行する方法を理解します。 App Service では、既定で Gunicorn Web サーバーを使用します。このサーバーは、対象のアプリ オブジェクトまたは *wsgi.py* フォルダーを見つけることができる必要があります。 必要に応じて、[スタートアップ コマンドをカスタマイズ](#customize-startup-command)することができます。
 
 1. **継続的なデプロイ**:「[Azure App Service への継続的デプロイ](deploy-continuous-deployment.md)」(Azure Pipelines または Kudu デプロイを使用している場合) または「[GitHub Actions を使用した App Service へのデプロイ](deploy-github-actions.md)」(GitHub アクションを使用している場合) の説明に従って、継続的デプロイを設定します。
 
-1. **カスタム アクション**: 対象のアプリをホストする App Service コンテナー内で Django データベースの移行などのアクションを実行するには、[SSH 経由でコンテナーに接続](configure-linux-open-ssh-session.md)します。 Django データベースの移行を実行する例については、[PostgreSQL を使用して Django Web アプリをデプロイする方法のチュートリアルの、データベースの移行の実行に関するセクション](tutorial-python-postgresql-app.md#run-django-database-migrations)を参照してください。
+1. **カスタム アクション**: 対象のアプリをホストする App Service コンテナー内で Django データベースの移行などのアクションを実行するには、[SSH 経由でコンテナーに接続](configure-linux-open-ssh-session.md)します。 Django データベースの移行を実行する例については、[PostgreSQL を使用して Django Web アプリをデプロイする方法のチュートリアルの、データベースの移行の実行に関するセクション](tutorial-python-postgresql-app.md#43-run-django-database-migrations)を参照してください。
     - 継続的デプロイを使用している場合は、前の「[ビルドの自動化のカスタマイズ](#customize-build-automation)」で説明したように、ビルド後コマンドを使用してこれらのアクションを実行できます。
 
 これらの手順を完了すると、変更をソース リポジトリにコミットし、それらの更新を App Service に自動的にデプロイできるようになります。

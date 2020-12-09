@@ -6,19 +6,20 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: overview
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf5a06cf906084e3f87d5f56748476a26587ff17
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: c60d54a905f460eb5c26c2f183cd22b175a5b3c4
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95490733"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860815"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -340,7 +341,7 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>拡張機能プロパティとカスタム拡張機能プロパティ
 
-拡張機能属性とカスタム拡張機能プロパティは、動的メンバーシップ ルールで文字列プロパティとしてサポートされています。 [拡張属性](/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0)はオンプレミスの Window Server AD から同期され、"ExtensionAttributeX" という形式です (X は 1 ～ 15)。 プロパティとして拡張機能属性を使用するルールの例を示します。
+拡張機能属性とカスタム拡張機能プロパティは、動的メンバーシップ ルールで文字列プロパティとしてサポートされています。 [拡張属性](/graph/api/resources/onpremisesextensionattributes)はオンプレミスの Window Server AD から同期され、"ExtensionAttributeX" という形式です (X は 1 ～ 15)。 プロパティとして拡張機能属性を使用するルールの例を示します。
 
 ```
 (user.extensionAttribute15 -eq "Marketing")

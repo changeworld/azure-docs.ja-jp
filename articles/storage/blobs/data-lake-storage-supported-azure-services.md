@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: e96fa932185a6689c360fe86d519a45581059118
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 66efc02990c958ba056b6e678cdbf2815f10078c
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912639"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600389"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 がサポートされている Azure のサービス
 
@@ -37,13 +37,14 @@ Azure のサービスを使用して、データを取り込み、分析を実�
 |Azure Stream Analytics|一般公開|はい|はい|[クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](../../stream-analytics/stream-analytics-quick-create-portal.md) <br> [Azure Data Lake Gen2 に出力する](../../stream-analytics/stream-analytics-define-outputs.md)|
 |Data Box|一般公開|いいえ|はい|[Azure Data Box を使用してオンプレミス HDFS ストアから Azure Storage にデータを移行する](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|
 |HDInsight |一般公開|はい|はい|[Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[Data Lake Storage Gen2 で HDFS CLI を使用する](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[チュートリアル:Azure HDInsight の Apache Hive を使用したデータの抽出、変換、および読み込み](data-lake-storage-tutorial-extract-transform-load-hive.md)|
-|IoT Hub |一般公開|いいえ|はい|[IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する](../../iot-hub/iot-hub-devguide-messages-d2c.md)|
+|IoT Hub |一般公開|はい|はい|[IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する](../../iot-hub/iot-hub-devguide-messages-d2c.md)|
 |Power BI|一般公開|はい|はい|[Power BI を使用して Data Lake Storage Gen2 のデータを分析する](/power-query/connectors/datalakestorage)|
-|Azure Synapse Analytics (旧称 SQL Data Warehouse)|一般公開|はい|はい|[Azure Synapse Analytics (旧称 SQL Data Warehouse) と共に使用する](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|SQL Server Integration Services (SSIS)|一般公開|はい|はい|[Azure Storage 接続マネージャー](/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-2017)|
+|Azure Synapse Analytics (旧称 SQL Data Warehouse)|一般公開|はい|はい|[Azure Synapse Analytics で使用する](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|SQL Server Integration Services (SSIS)|一般公開|はい|はい|[Azure Storage 接続マネージャー](/sql/integration-services/connection-manager/azure-storage-connection-manager)|
 |Azure Data Explorer|一般公開|はい|はい|[Azure Data Explorer を使用して Azure Data Lake でデータのクエリを実行する](/azure/data-explorer/data-lake-query-data)|
 |Azure Cognitive Search|プレビュー|はい|はい|[Azure Data Lake Storage Gen2 ドキュメントのインデックスと検索 (プレビュー)](../../search/search-howto-index-azure-data-lake-storage.md)|
 |Azure Content Delivery Network|まだサポートされていません|適用なし|適用なし|[Azure Data Lake Storage Gen2 ドキュメントのインデックスと検索 (プレビュー)](../../cdn/cdn-overview.md)|
+|Azure SQL Database|まだサポートされていません|適用なし|適用できません|[Azure SQL Database とは何ですか?](/azure/azure-sql/database/sql-database-paas-overview.md)|
 
 ## <a name="see-also"></a>関連項目
 

@@ -6,19 +6,20 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 458fbdf4cdfa40da871d34a62101020330c79265
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: a4c1c30e4651136ada7264cad8ff4d3921c3aeeb
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95488795"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547918"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory での Microsoft 365 グループに対する名前付けポリシーの適用
 
@@ -47,7 +48,7 @@ ms.locfileid: "95488795"
 
 #### <a name="fixed-strings"></a>固定文字列
 
-文字列を使用すると、グローバル アドレス一覧やグループ ワークロードの左側のナビゲーション リンクでグループのスキャンと区別が容易になります。 一般的なプレフィックスとして、"Grp\_Name"、"\#Name"、"\_Name" などのキーワードがあります。
+文字列を使用すると、グローバル アドレス一覧やグループ ワークロードの左側のナビゲーション リンクでグループのスキャンと区別が容易になります。 一般的なプレフィックスとして、"Grp\_Name"、"\#Name"、"\_Name" などのキーワードがあります
 
 #### <a name="user-attributes"></a>ユーザー属性
 
@@ -79,7 +80,6 @@ ms.locfileid: "95488795"
 - Partner Tier 1 サポート
 - Partner Tier 2 サポート
 - ユーザー管理者
-- ディレクトリ ライター
 
 ## <a name="configure-naming-policy-in-azure-portal"></a>Azure portal で名前付けポリシーを構成する
 
@@ -205,7 +205,7 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 ### <a name="remove-the-naming-policy-using-azure-portal"></a>Azure portal を使用して名前付けポリシーを削除する
 
-1. **[名前付けポリシー]** ページで、 **[ポリシーの削除]** を選択します。
+1. **[名前付けポリシー]** ページで、**[ポリシーの削除]** を選択します。
 1. 削除を確定すると、すべてのプレフィックス/サフィックス名前付けポリシーとカスタムのブロックされている単語を含め、名前付けポリシーが削除されます。
 
 ### <a name="remove-the-naming-policy-using-azure-ad-powershell"></a>Azure AD PowerShell を使用して名前付けポリシーを削除する

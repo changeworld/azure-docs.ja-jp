@@ -3,12 +3,12 @@ title: Azure Lab Services の概要
 description: この記事では、Azure Lab Services の使用を開始する方法について説明します。
 ms.topic: article
 ms.date: 11/18/2020
-ms.openlocfilehash: bdc4f4af06d70a1798e7409b78f6b47530ddd7f4
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 44afe13fb6f555b12dfce939ce8e88e3af8dc7ef
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917105"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602667"
 ---
 # <a name="get-started-with-lab-services"></a>Lab Services の概要 
 
@@ -48,7 +48,7 @@ VM を管理するときに覚えておく必要がある最も重要な点は�
 
 ### <a name="overview"></a>概要
 
-Azure Lab Services のクラスルーム ラボ用のダッシュボードでは、VM 情報、割り当て済みおよび未割り当て VM の数、登録および登録解除されたユーザーの数、ラボのスケジュールに関する情報など、特定のラボのさまざまなアスペクトのスナップショットが提供されます。 
+Azure Lab Services のラボ用のダッシュボードでは、VM 情報、割り当て済みおよび未割り当て VM の数、登録および登録解除されたユーザーの数、ラボのスケジュールに関する情報など、特定のラボのさまざまなアスペクトのスナップショットが提供されます。 
 
 > [!NOTE]
 > ダッシュボードと [Azure Lab Services Web サイト](https://labs.azure.com/)のほとんどの管理アスペクトは教師に表示されますが、自分のロールに固有のアクセス許可が、ダッシュボードの特定の条件を変更できるかどうかに影響を与える可能性があります。 特定のラボのセットアップで問題が発生した場合は、CTE 管理者に連絡してください。
@@ -115,12 +115,8 @@ VM への接続の問題を学生が経験している場合、または他の�
 
 1. [Azure Lab Services Web サイト](https://labs.azure.com/)から、ウィンドウの左側にある **[ユーザー]** クリックします。
 1. ウィンドウの上部で、 **[ユーザーの追加]** をクリックし、 **[メール アドレスによる追加]** を選択します。 
-
-    :::image type="content" source="./media/how-to-configure-student-usage/add-users-button.png" alt-text="[ユーザーの追加] ボタン":::
 1. 右側に表示される **[ユーザーの追加]** ウィンドウで、学生のメール アドレスを別個の行に入力します。または、セミコロンで区切って 1 行に入力します。
 1. **[保存]** をクリックします。
-
-    :::image type="content" source="./media/get-started-manage-labs/add-students.png" alt-text="ラボに学生を追加する":::
 1. これで、ユーザーの一覧がメール アドレス、状態、招待、クォータ時間で更新されます。
 
     学生がラボに登録されると、その名前が Azure Active Directory の姓と名で更新されます。

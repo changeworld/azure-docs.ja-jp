@@ -3,12 +3,15 @@ title: Azure Monitor Application Insights Java
 description: コードを変更することなく、任意の環境で実行されている Java アプリケーションのアプリケーション パフォーマンスを監視します。 分散トレースとアプリケーション マップです。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 8423443abac90b87349a4a80fce0ec33a8b686da
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+author: MS-jgol
+ms.custom: devx-track-java
+ms.author: jgol
+ms.openlocfilehash: 4b29e5375c10fc3c1aaa203df720fdd24090d11e
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444743"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601137"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor Application Insights を監視する Java のコード不要のアプリケーション
 
@@ -127,118 +130,124 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 * マイクロメーター (Spring Boot アクチュエータ メトリックを含む)
 * JMX メトリック
 
-## <a name="sending-custom-telemetry-from-your-application"></a>アプリケーションからカスタム テレメトリを送信する
+## <a name="send-custom-telemetry-from-your-application"></a>アプリケーションからカスタム テレメトリを送信する
 
 3\.0 以降での目標は、標準 API を使用してカスタム テレメトリを送信できるようにすることです。
 
-Micrometer、OpenTelemetry API、および一般的なログ記録フレームワークがサポートされています。 Application Insights Java 3.0 を使用すると、テレメトリが自動的にキャプチャされ、自動収集されたすべてのテレメトリと連動して、関連付けが行われます。
+現時点では、Micrometer、一般的なログ記録フレームワーク、および Application Insights Java 2.x SDK をサポートしています。
+Application Insights Java 3.0 を使用すると、これらの API を使用して送信されたテレメトリが自動的にキャプチャされ、自動収集されたテレメトリと関連付けられます。
 
 ### <a name="supported-custom-telemetry"></a>サポートされているカスタム テレメトリ
 
-次の表は、現在サポートされているカスタム テレメトリの種類を示しています。これを有効にすると、Java 3.0 エージェントを補完することができます。 要約すると、カスタム メトリックはマイクロメーターを通じてサポートされ、カスタムの例外とトレースはログ記録フレームワークを使用して有効にできます。また、カスタム テレメトリの種類は、[Application Insights Java 2.x SDK](#sending-custom-telemetry-using-application-insights-java-sdk-2x) を通じてサポートされます。 
+次の表は、現在サポートされているカスタム テレメトリの種類を示しています。これを有効にすると、Java 3.0 エージェントを補完することができます。 要約すると、カスタム メトリックはマイクロメーターを通じてサポートされ、カスタムの例外とトレースはログ記録フレームワークを使用して有効にできます。また、カスタム テレメトリの種類は、[Application Insights Java 2.x SDK](#send-custom-telemetry-using-application-insights-java-2x-sdk) を通じてサポートされます。
 
 |                     | Micrometer | Log4j、logback、JUL | 2.x SDK |
 |---------------------|------------|---------------------|---------|
 | **[カスタム イベント]**   |            |                     |  Yes    |
 | **カスタム メトリック**  |  はい       |                     |  はい    |
 | **依存関係**    |            |                     |  Yes    |
-| **例外**      |            |  はい                |  Yes    |
+| **例外**      |            |  Yes                |  はい    |
 | **ページ ビュー**      |            |                     |  はい    |
 | **要求**        |            |                     |  Yes    |
 | **トレース**          |            |  はい                |  はい    |
 
 現時点では、Application Insights 3.0 を使用した SDK をリリースする予定はありません。
 
-Application Insights Java 3.0 では、Application Insights Java SDK 2.x に送信されるテレメトリを既にリッスンしています。 この機能は、既存の 2.x ユーザーのアップグレード ストーリーの重要な部分であり、OpenTelemetry API が GA になるまでの、カスタム テレメトリ サポートの重要なギャップを埋めるものです。
+Application Insights Java 3.0 では、Application Insights Java 2.x SDK に送信されるテレメトリを既にリッスンしています。 この機能は、既存の 2.x ユーザーのアップグレード ストーリーの重要な部分であり、OpenTelemetry API が GA になるまでの、カスタム テレメトリ サポートの重要なギャップを埋めるものです。
 
-## <a name="sending-custom-telemetry-using-application-insights-java-sdk-2x"></a>Application Insights Java SDK 2.x を使用するカスタム テレメトリを送信する
+### <a name="send-custom-metrics-using-micrometer"></a>Micrometer を使用してカスタム　メトリックを送信する
+
+アプリケーションに Micrometer を追加します。
+
+```xml
+<dependency>
+  <groupId>io.micrometer</groupId>
+  <artifactId>micrometer-core</artifactId>
+  <version>1.6.1</version>
+</dependency>
+```
+
+Micrometer の[グローバル レジストリ](https://micrometer.io/docs/concepts#_global_registry)を使用して、メーターを作成します。
+
+```java
+static final Counter counter = Metrics.counter("test_counter");
+```
+
+次に、それを使用してメトリックを記録します。
+
+```java
+counter.increment();
+```
+
+### <a name="send-custom-traces-and-exceptions-using-your-favorite-logging-framework"></a>お気に入りのログ記録フレームワークを使用してカスタム トレースと例外を送信する
+
+Log4j、Logback、java.util.logging は自動的にインストルメント化され、これらのログ記録フレームワークを介して実行されるログは、トレースおよび例外テレメトリとして自動収集されます。
+
+既定では、INFO レベル以上でログ記録が実行された場合にのみ、ログが収集されます。
+このレベルを変更する方法については、[構成オプション](./java-standalone-config.md#auto-collected-logging)に関する記事を参照してください。
+
+カスタム ディメンションをログに添付する場合は、[Log4j 1 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html)、[Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)、または [Logback MDC](http://logback.qos.ch/manual/mdc.html) を使用できます。また、Application Insights Java 3.0 を使用すると、トレースおよび例外テレメトリでそれらの MDC プロパティがカスタム ディメンションとして自動的にキャプチャされます。
+
+### <a name="send-custom-telemetry-using-application-insights-java-2x-sdk"></a>Application Insights Java 2.x SDK を使用するカスタム テレメトリの送信
 
 アプリケーションに `applicationinsights-core-2.6.0.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
 
 ```xml
-  <dependency>
-    <groupId>com.microsoft.azure</groupId>
-    <artifactId>applicationinsights-core</artifactId>
-    <version>2.6.0</version>
-  </dependency>
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-core</artifactId>
+  <version>2.6.0</version>
+</dependency>
 ```
 
 TelemetryClient を作成します。
 
   ```java
-private static final TelemetryClient telemetryClient = new TelemetryClient();
+static final TelemetryClient telemetryClient = new TelemetryClient();
 ```
 
-また、これを使用して、カスタム テレメトリを送信します。
+次に、それを使用して、カスタム テレメトリを送信します。
 
-### <a name="events"></a>events
+##### <a name="events"></a>events
 
-  ```java
+```java
 telemetryClient.trackEvent("WinGame");
 ```
-### <a name="metrics"></a>メトリック
 
-[Micrometer](https://micrometer.io) を使用して、メトリック テレメトリを送信できます。
-
-```java
-  Counter counter = Metrics.counter("test_counter");
-  counter.increment();
-```
-
-または、Application Insights Java SDK 2.x を使用することもできます。
+##### <a name="metrics"></a>メトリック
 
 ```java
-  telemetryClient.trackMetric("queueLength", 42.0);
+telemetryClient.trackMetric("queueLength", 42.0);
 ```
 
-### <a name="dependencies"></a>依存関係
+##### <a name="dependencies"></a>依存関係
 
 ```java
-  boolean success = false;
-  long startTime = System.currentTimeMillis();
-  try {
-      success = dependency.call();
-  } finally {
-      long endTime = System.currentTimeMillis();
-      RemoteDependencyTelemetry telemetry = new RemoteDependencyTelemetry();
-      telemetry.setTimestamp(new Date(startTime));
-      telemetry.setDuration(new Duration(endTime - startTime));
-      telemetryClient.trackDependency(telemetry);
-  }
+boolean success = false;
+long startTime = System.currentTimeMillis();
+try {
+    success = dependency.call();
+} finally {
+    long endTime = System.currentTimeMillis();
+    RemoteDependencyTelemetry telemetry = new RemoteDependencyTelemetry();
+    telemetry.setTimestamp(new Date(startTime));
+    telemetry.setDuration(new Duration(endTime - startTime));
+    telemetryClient.trackDependency(telemetry);
+}
 ```
 
-### <a name="logs"></a>ログ
-お気に入りのログ記録フレームワークを介してカスタム ログ テレメトリを送信できます。
-
-または、Application Insights Java SDK 2.x を使用することもできます。
+##### <a name="logs"></a>ログ
 
 ```java
-  telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
+telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
-### <a name="exceptions"></a>例外
-お気に入りのログ記録フレームワークを介してカスタム例外テレメトリを送信できます。
-
-または、Application Insights Java SDK 2.x を使用することもできます。
+##### <a name="exceptions"></a>例外
 
 ```java
-  try {
-      ...
-  } catch (Exception e) {
-      telemetryClient.trackException(e);
-  }
+try {
+    ...
+} catch (Exception e) {
+    telemetryClient.trackException(e);
+}
 ```
-
-## <a name="upgrading-from-application-insights-java-sdk-2x"></a>Application Insights Java SDK 2.x からのアップグレード
-
-アプリケーションで Application Insights Java SDK 2.x を既に使用している場合は、削除する必要はありません。
-Java 3.0 エージェントによって、Java SDK 2.x を介して送信しているカスタム テレメトリの検出、キャプチャ、関連付けが行われます。一方で、テレメトリの重複を防止するために、Java SDK 2.x によって実行される自動収集が抑制されます。
-
-Application Insights 2.x エージェントを使用していた場合は、2.x エージェントを指す `-javaagent:` JVM 引数を削除する必要があります。
-
-> [!NOTE]
-> 3\.0 エージェントを使用している場合、Java SDK 2.x TelemetryInitializers と TelemetryProcessors は実行されません。
-> 以前にこれらを必要としていたユース ケースの多くは、3.0 で[カスタム ディメンション](./java-standalone-config.md#custom-dimensions)を構成するか、[テレメトリ プロセッサ](./java-standalone-telemetry-processors.md)を構成することによって解決できます。
-
-> [!NOTE]
-> 3.0 では、1 つの JVM で複数のインストルメンテーション キーがまだサポートされていません。

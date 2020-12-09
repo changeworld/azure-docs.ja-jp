@@ -9,15 +9,15 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 01/09/2020
+ms.date: 12/04/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 0da4127960450a13b64ec23908b4a4fd4c69bd7e
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ec006636ed7e975b696aa32300b32089e3209bb5
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542016"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600474"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python でのトレーニングの実行の開始、監視、およびキャンセル
 
@@ -278,7 +278,7 @@ with exp.start_logging() as parent_run:
 
 ### <a name="submit-child-runs"></a>子実行を送信する
 
-親実行から子実行を送信することもできます。 そうすることで、親実行と子実行の階層を作成できます。 
+親実行から子実行を送信することもできます。 そうすることで、親実行と子実行の階層を作成できます。 親のない子実行を作成することはできません。親実行で子実行が起動されただけであっても、階層を作成する必要があります。 すべての実行の状態は独立しています。1 つ以上の子実行が取り消されたか失敗した場合でも、親は正常に `"Completed"` の状態になります。  
 
 子実行で、親実行と異なる実行構成を使用することを望む場合があります。 たとえば、子に GPU ベースの構成を使用しながら、親に対して非力な CPU ベースの構成を使用できます。 他の一般的な目的は、各子に異なる引数とデータを渡すことです。 子実行をカスタマイズするには、子実行の `ScriptRunConfig` オブジェクトを作成します。 下のコードにより、次のことが行われます。
 
@@ -327,6 +327,24 @@ child_run.parent.id
 ```python
 print(parent_run.get_children())
 ```
+
+### <a name="log-to-parent-or-root-run"></a>親またはルートの実行にログを記録する
+
+`Run.parent` フィールドを使用すると、現在の子実行を開始した実行にアクセスできます。 一般的なユースケースは、ログ結果を 1 か所に統合する場合です。 子実行は非同期に実行され、子実行が完了するまで待機する親の機能を超えた順序付けや同期の保証はないことに注意してください。
+
+```python
+# in child (or even grandchild) run
+
+def root_run(self : Run) -> Run :
+    if self.parent is None : 
+        return self
+    return root_run(self.parent)
+
+current_child_run = Run.get_context()
+root_run(current_child_run).log("MyMetric", f"Data from child run {current_child_run.id}")
+
+```
+
 
 ## <a name="tag-and-find-runs"></a>実行のタグ付けおよび検索
 

@@ -1,18 +1,15 @@
 ---
 title: PowerShell を使用して Azure portal ダッシュボードを作成する
 description: Azure PowerShell を使用して Azure portal でダッシュボードを作成する方法について説明します。
-author: mgblythe
-ms.service: azure-portal
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.author: mblythe
 ms.date: 07/24/2020
-ms.openlocfilehash: de0394f9b3254931537441d9f44606d16392a62d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 02e243a7296555d73427f8e31c4abdf9c3e56735
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073888"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745742"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-powershell"></a>クイック スタート:PowerShell を使用して Azure portal ダッシュボードを作成する
 

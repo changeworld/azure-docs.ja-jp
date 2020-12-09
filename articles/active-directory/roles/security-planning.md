@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a62aafd8073b5f1a35ba340c48c80f498be2c2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3a7304ffbb7718205ead48e27989d4a169375997
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94834457"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861988"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -93,7 +93,7 @@ Azure AD Privileged Identity Management を有効にした後、次の Azure AD 
 * Exchange 管理者
 * SharePoint 管理者
 
-Azure AD Privileged Identity Management が組織内にない場合は、[PowerShell API](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0) を使用できます。 全体管理者は、組織がサブスクライブしているすべてのクラウド サービスで同じアクセス許可を持つため、全体管理者ロールから始めます。 これらのアクセス許可は、Microsoft 365 管理センター、Azure portal、または Microsoft PowerShell の Azure AD モジュールのいずれで割り当てられた場合でも付与されます。
+Azure AD Privileged Identity Management が組織内にない場合は、[PowerShell API](/powershell/module/azuread/get-azureaddirectoryrolemember) を使用できます。 全体管理者は、組織がサブスクライブしているすべてのクラウド サービスで同じアクセス許可を持つため、全体管理者ロールから始めます。 これらのアクセス許可は、Microsoft 365 管理センター、Azure portal、または Microsoft PowerShell の Azure AD モジュールのいずれで割り当てられた場合でも付与されます。
 
 このようなロールの不要になったアカウントがあれば削除します。 次に、管理者ロールに割り当てられている残りのアカウントを分類します。
 

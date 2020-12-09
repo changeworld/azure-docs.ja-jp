@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/26/2019
+ms.date: 12/01/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: bccdb830fba4d55266dc9eff8f06c5ac4e3f2a34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f6fd0160988802e198ff9388cfeb3232b34b100
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706185"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861121"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>アプリケーションを Azure AD に追加する方法と理由
 
@@ -104,7 +104,7 @@ Azure AD と統合するアプリケーションのパブリッシャー/ベン�
   * 要求変換ルール
   * 属性マッピング (ユーザーのプロビジョニング)
 * サービス プリンシパル オブジェクトおよびアプリケーション オブジェクトの詳細については、Microsoft Graph API のリファレンス ドキュメントを参照してください。
-  * [Application](/graph/api/resources/application?view=graph-rest-1.0)
+  * [Application](/graph/api/resources/application)
   * [サービス プリンシパル](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>アプリケーションを Azure AD と統合する理由
@@ -118,6 +118,7 @@ Azure AD と統合するアプリケーションのパブリッシャー/ベン�
 * ロール ベースのアクセス制御 - ディレクトリを使用して、アプリケーション内でロールに基づく承認チェックを実行するためのアプリケーション ロールを定義します。
 * OAuth 承認サービス (Microsoft 365 や他の Microsoft アプリケーションによって API/リソースへのアクセスを承認するために使用されます)
 * アプリケーションの発行とプロキシ。プライベート ネットワークからインターネットにアプリケーションを発行します。
+* ディレクトリ スキーマ拡張機能属性 - [サービス プリンシパルとユーザー オブジェクトのスキーマを拡張し](active-directory-schema-extensions.md)、Azure AD で追加データを格納します。 
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Azure AD インスタンスにアプリケーションを追加する権限のあるユーザー
 

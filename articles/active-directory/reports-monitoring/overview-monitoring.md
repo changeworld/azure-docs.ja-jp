@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa4b625afb641209d3920c8663ed810ee27e1ad
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 427cf2614f81a086dcb174db06cd636df4876c7e
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89228649"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778497"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>Azure Active Directory 監視とは
 
@@ -39,6 +39,22 @@ Azure Active Directory (Azure AD) 監視を使用すると、Azure AD のアク�
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="licensing-and-prerequisites-for-azure-ad-reporting-and-monitoring"></a>Azure AD のレポートと監視のライセンスと前提条件
+
+Azure AD サインイン ログにアクセスするには、Azure AD プレミアム ライセンスが必要になります。
+
+機能とライセンスの詳細については、[Azure Active Directory 料金ガイド](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
+
+Azure AD の監視とレポートをデプロイするには、Azure AD テナントのグローバル管理者またはセキュリティ管理者であるユーザーが必要になります。
+
+ログ データの最終転送先によっては、次のいずれかが必要になります。
+
+* ListKeys アクセス許可が付与された Azure ストレージ アカウント。 BLOB ストレージ アカウントではなく、一般的なストレージ アカウントを使用することをお勧めします。 ストレージの料金情報については、[Azure Storage の料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=storage)を参照してください。
+
+* サードパーティ製の SIEM ソリューションと統合するための Azure Event Hubs の名前空間。
+
+* Azure Monitor ログにログを送信する Azure Log Analytics ワークスペース。
 
 ## <a name="diagnostic-settings-configuration"></a>診断設定を構成する
 

@@ -1,6 +1,6 @@
 ---
 title: アラート抑制ルールを使用することにより、Azure Security Center で擬陽性や、その他の不要なセキュリティ アラートが発生するのを抑制できます。
-description: この記事では、Azure Security Center の抑制ルールを使用して、不要な Azure Defender アラートが表示されないようにする方法を説明します
+description: この記事では、Azure Security Center の抑制ルールを使用して、不要なセキュリティ アラートが表示されないようにする方法を説明します
 author: memildin
 manager: rkarlin
 services: security-center
@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: b954d6ed29074aa9261611f0d1bb79b5917d03f2
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 1ca2ded69b0279a60d8ed83cf310a58dadf1a337
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372661"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751990"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Azure Defender のアラートの抑制
 
@@ -23,7 +23,7 @@ ms.locfileid: "94372661"
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|プレビュー<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|リリース状態:| 一般公開 |
 |価格:|Free<br>(セキュリティ アラートのほとんどが Azure Defender でのみ使用できます)|
 |必要なロールとアクセス許可:|**セキュリティ管理者** および **所有者** は、ルールを作成および削除できます。<br>**セキュリティ閲覧者** および **閲覧者** は、ルールを表示できます。|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
@@ -69,8 +69,8 @@ Azure portal で直接ルールを作成するには:
         ![[新しい抑制ルールの作成]** ボタン](media/alerts-suppression-rules/create-new-suppression-rule.png)
 
 1. [新しい抑制ルール] ペインで、作成した新しいルールの詳細を入力します。
-    - ルールでは、 **すべてのリソース** でそのアラートを無視して、今後はこれと同様のアラートが一切表示されないようにすることができます。     
-    - ルールでは、アラートが特定の IP アドレス、プロセス名、ユーザー アカウント、Azure リソース、または場所に関係する場合など、 **特定の条件** でそのアラートを無視することもできます。
+    - ルールでは、**すべてのリソース** でそのアラートを無視して、今後はこれと同様のアラートが一切表示されないようにすることができます。     
+    - ルールでは、アラートが特定の IP アドレス、プロセス名、ユーザー アカウント、Azure リソース、または場所に関係する場合など、**特定の条件** でそのアラートを無視することもできます。
 
     > [!TIP]
     > 特定のアラートから新しいルールのページを開いた場合は、そのアラートとサブスクリプションが新しいルールに自動的に構成されます。 **[新しい抑制ルールの作成]** リンクを使用した場合は、選択したサブスクリプションはポータルの現在のフィルターと一致します。
@@ -127,9 +127,9 @@ Security Center の REST API を使用して、アラート抑制ルールを作
 
 抑制ルールに関連する REST API の HTTP メソッドは次のとおりです。
 
-- **PUT** : 指定されたサブスクリプションで抑制ルールを作成または更新する。
+- **PUT**: 指定されたサブスクリプションで抑制ルールを作成または更新する。
 
-- **GET** :
+- **GET**:
 
     - 指定されたサブスクリプションに対して構成されているすべてのルールを一覧表示する。 このメソッドは、該当するルールの配列を返します。
 
@@ -137,7 +137,7 @@ Security Center の REST API を使用して、アラート抑制ルールを作
 
     - 設計フェーズのままで、抑制ルールの影響をシミュレートする。 この呼び出しは、そのルールがアクティブだったなら無視されていたはずの既存のアラートを識別します。
 
-- **DELETE** : 既存のルールを削除します (ただし、そのルールによって既に無視されているアラートの状態は変更されません)。
+- **DELETE**: 既存のルールを削除します (ただし、そのルールによって既に無視されているアラートの状態は変更されません)。
 
 詳細と使用例については、[API のドキュメント](/rest/api/securitycenter/)を参照してください。 
 

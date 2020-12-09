@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1709bd42fb77bd4f18b8a5e9d1af6e07be67b6c4
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 101a2071d4f7c78d1a8df392172dc83c4028af1e
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043077"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859217"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory とは
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) は Microsoft が提供するクラウドベ�
 
 - 企業ネットワークとイントラネット上のアプリや、自分の組織で開発したクラウド アプリなどの内部リソース。 組織のテナント作成の詳細については、「[クイック スタート:Azure Active Directory で新しいテナントを作成する](active-directory-access-create-new-tenant.md)」を参照してください。
 
-Azure AD と Active Directory Domain Services の違いについては、「[Active Directory と Azure Active Directory の比較](active-directory-compare-azure-ad-to-ad.md)」を参照してください。 また、[エンタープライズ アーキテクトのための Microsoft Cloud シリーズ](/microsoft-365/solutions/cloud-architecture-models?view=o365-worldwide)の各種ポスターを使用すると、Azure、Azure AD、および Microsoft 365 の中核を成す ID サービスについて、より深く理解することができます。
+Azure AD と Active Directory Domain Services の違いについては、「[Active Directory と Azure Active Directory の比較](active-directory-compare-azure-ad-to-ad.md)」を参照してください。 また、[エンタープライズ アーキテクトのための Microsoft Cloud シリーズ](/microsoft-365/solutions/cloud-architecture-models)の各種ポスターを使用すると、Azure、Azure AD、および Microsoft 365 の中核を成す ID サービスについて、より深く理解することができます。
 
 ## <a name="who-uses-azure-ad"></a>Azure AD の利用者
 

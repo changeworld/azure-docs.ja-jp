@@ -3,12 +3,12 @@ title: Azure Service Bus メッセージングの概要 | Microsoft Docs
 description: この記事では、フル マネージド エンタープライズ統合メッセージ ブローカーである Azure Service Bus の概要を簡単に説明します。
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: ca04b4a41489fba61e7c0ee2bb3f4f7f0b8b80f4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b795d0c5b429a812d90e0759fbcde3d348b86e22
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489481"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602718"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus とは
 Microsoft Azure Service Bus は、メッセージ キューとパブリック サブスクライブ トピックを備えたフル マネージド エンタープライズ統合メッセージ ブローカーです。 Service Bus は、アプリケーションとサービスを相互に分離するために使用され、次のような利点があります。
@@ -32,7 +32,7 @@ Microsoft Azure Service Bus は、メッセージ キューとパブリック �
     2. 処理の結果を 1 つ以上の異なるキューにポストする。
     3. 元のキューから入力メッセージを移動する。 
     
-    結果は、入力メッセージの正常な解決など、成功した場合にのみ、ダウンストリーム コンシューマーから確認できるようになり、これにより、1 回限りの処理セマンティクスが可能になります。 このトランザクション モデルは、より大きなソリューション コンテキストにおける[補正トランザクション](https://docs.microsoft.com/azure/architecture/patterns/compensating-transaction.md) パターンの堅牢な基盤です。 
+    結果は、入力メッセージの正常な解決など、成功した場合にのみ、ダウンストリーム コンシューマーから確認できるようになり、これにより、1 回限りの処理セマンティクスが可能になります。 このトランザクション モデルは、より大きなソリューション コンテキストにおける[補正トランザクション](https://docs.microsoft.com/azure/architecture/patterns/compensating-transaction) パターンの堅牢な基盤です。 
 * *メッセージ セッション*。 厳密なメッセージの順序付けやメッセージの遅延を必要とする、ワークフローと多重転送の高スケールな調整を実装します。
 
 Apache ActiveMQ などの他のメッセージ ブローカーに慣れている場合、Service Bus の概念はご存じの概念と似ています。 Service Bus はサービスとしてのプラットフォーム (PaaS) であるため、重要な違いは、次のアクションについて心配する必要がないことです。 これらの作業は Azure が代わりに行います。 

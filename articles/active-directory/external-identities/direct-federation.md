@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb0223b338457ad5eeea0b0bb40593f57a0d3aa
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5beae56a5d38c4620481c27c3f42c52602984e6b
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442084"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860628"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>ゲスト ユーザーのための AD FS およびサード パーティ プロバイダーとの直接フェデレーション (プレビュー)
 
@@ -45,7 +45,7 @@ ms.locfileid: "92442084"
 ## <a name="limitations"></a>制限事項
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>Azure AD での DNS 検証済みドメイン
-フェデレーションを行うドメインは、Azure AD で DNS 検証済み* **でない** _ことが必要です。 直接フェデレーションは、アンマネージド (電子メールで検証済み、または "バイラル") の Azure AD テナントで設定できます。理由は、それらが DNS で検証されないためです。
+フェデレーションを行うドメインは、Azure AD で DNS 検証済み***でない** _ことが必要です。 直接フェデレーションは、アンマネージド (電子メールで検証済み、または "バイラル") の Azure AD テナントで設定できます。理由は、それらが DNS で検証されないためです。
 
 ### <a name="authentication-url"></a>認証 URL
 直接フェデレーションをポリシーで使用できるのは、認証 URL のドメインがターゲット ドメインと一致する場合か、認証 URL がこれらの許可されている ID プロバイダーのうちの 1 つである場合のみです (この一覧は変更される場合があります)。
@@ -66,7 +66,7 @@ ms.locfileid: "92442084"
 ID プロバイダーの設定でメタデータ URL を指定した場合、署名証明書が有効期限切れになると、Azure AD によって自動的に更新されます。 ただし、証明書が有効期限切れになる前に何らかの理由でローテーションされた場合、またはメタデータ URL を指定しなかった場合には、Azure AD による更新はできません。 この場合、署名証明書を手動で更新する必要があります。
 
 ### <a name="limit-on-federation-relationships"></a>フェデレーション リレーションシップの制限
-現在のところ、最大 1000 のフェデレーション リレーションシップがサポートされています。 この制限には、[内部フェデレーション](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)と直接フェデレーションの両方が含まれます。
+現在のところ、最大 1000 のフェデレーション リレーションシップがサポートされています。 この制限には、[内部フェデレーション](/powershell/module/msonline/set-msoldomainfederationsettings)と直接フェデレーションの両方が含まれます。
 
 ### <a name="limit-on-multiple-domains"></a>複数のドメインに対する制限
 現在、同じテナントからの複数のドメインとの直接フェデレーションはサポートされていません。

@@ -6,12 +6,12 @@ ms.author: nimag
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 652566efda4d4f274dc5700d35bcf45c1ebfb9e2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: d35e51d097c2d5e0b66c23efa27ae70c065d547c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92346896"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96584602"
 ---
 このクイックスタートでは、JavaScript 用の Azure Communication Services 通話クライアント ライブラリを使用して、通話を開始する方法について説明します。
 
@@ -32,7 +32,7 @@ ms.locfileid: "92346896"
 mkdir calling-quickstart && cd calling-quickstart
 ```
 
-既定の設定で `npm init -y` を実行して、 **package.json** ファイルを作成します。
+既定の設定で `npm init -y` を実行して、**package.json** ファイルを作成します。
 
 ```console
 npm init -y
@@ -55,17 +55,17 @@ npm install @azure/communication-calling --save
 "webpack-dev-server": "^3.10.3"
 ```
 
-`--save` オプションを使用すると、 **package.json** ファイル内の依存関係としてライブラリが表示されます。
+`--save` オプションを使用すると、**package.json** ファイル内の依存関係としてライブラリが表示されます。
 
 ### <a name="set-up-the-app-framework"></a>アプリのフレームワークを設定する
 
-このクイックスタートでは、webpack を使用してアプリケーション資産をバンドルします。 次のコマンドを実行して、webpack、webpack-cli、および webpack-dev-server npm パッケージをインストールし、 **package.json** 内の開発依存関係として表示します。
+このクイックスタートでは、webpack を使用してアプリケーション資産をバンドルします。 次のコマンドを実行して、webpack、webpack-cli、および webpack-dev-server npm パッケージをインストールし、**package.json** 内の開発依存関係として表示します。
 
 ```console
-npm install webpack webpack-cli webpack-dev-server --save-dev
+npm install webpack@4.42.0 webpack-cli@3.3.11 webpack-dev-server@3.10.3 --save-dev
 ```
 
-自分のプロジェクトのルート ディレクトリに、 **index.html** ファイルを作成します。 このファイルを使用して、ユーザーが Azure 通信ボットに電話をかけることができるようにする基本的なレイアウトを構成します。
+自分のプロジェクトのルート ディレクトリに、**index.html** ファイルを作成します。 このファイルを使用して、ユーザーが Azure 通信ボットに電話をかけることができるようにする基本的なレイアウトを構成します。
 
 次にコードを示します。
 
@@ -98,7 +98,7 @@ npm install webpack webpack-cli webpack-dev-server --save-dev
 </html>
 ```
 
-このクイックスタートのアプリケーション ロジックを格納するために、 **client.js** という名前のファイルを自分のプロジェクトのルート ディレクトリに作成します。 次のコードを追加して、通話クライアントをインポートし、ビジネス ロジックをアタッチできるように DOM 要素への参照を取得します。 
+このクイックスタートのアプリケーション ロジックを格納するために、**client.js** という名前のファイルを自分のプロジェクトのルート ディレクトリに作成します。 次のコードを追加して、通話クライアントをインポートし、ビジネス ロジックをアタッチできるように DOM 要素への参照を取得します。 
 
 ```javascript
 import { CallClient, CallAgent } from "@azure/communication-calling";
