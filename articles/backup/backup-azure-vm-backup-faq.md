@@ -4,12 +4,12 @@ description: この記事では、Azure Backup サービスを使用した Azure
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 74e2facfd9fd6073acc1f939c3d2ba922e3ac931
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 0f4f990654cc23fde7cf1ad2e37ba1ada76d94e3
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925579"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324790"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>よく寄せられる質問 - Azure VM のバックアップ
 
@@ -83,15 +83,15 @@ Azure Backup では、ResourcePointCollections オブジェクトを格納する
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>Azure Backup は Standard SSD マネージド ディスクをサポートしていますか。
 
-はい、Azure Backup では、[Standard SSD マネージド ディスク](https://docs.microsoft.com/azure/virtual-machines/disks-types#standard-ssd)がサポートされています。
+はい、Azure Backup では、[Standard SSD マネージド ディスク](../virtual-machines/disks-types.md#standard-ssd)がサポートされています。
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>書き込みアクセラレータ (WA) 対応ディスクを使用して VM をバックアップできますか。
 
-WA 対応ディスクでスナップショットを作成することはできません。 ただし、Azure Backup サービスでは、WA 対応ディスクをバックアップから除外できます。
+スナップショットは、WA が有効で OS ディスクではないデータ ディスクに対してのみ作成できます。 そのため、WA が有効になっているデータ ディスクのみ保護できます。
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>書き込みアクセラレータ (WA) ディスク と SAP HANA がインストールされている VM があります。 バックアップするには、どうすればよいですか。
 
-Azure Backup では WA 対応ディスクをバックアップできませんが、バックアップから除外することはできます。 ただし、バックアップによってデータベース整合性が維持されなくなります。WA 対応ディスクの情報がバックアップされないためです。 オペレーティング システム ディスクのバックアップ、および WA 対応ではないディスクのバックアップが必要な場合は、この構成でディスクをバックアップできます。
+Azure Backup は、WA 対応のデータ ディスクをバックアップできます。 ただし、バックアップによってデータベースの整合性が確保されるわけではありません。
 
 Azure Backup は、SAP HANA データベース用に RPO が 15 分のストリーミング バックアップ ソリューションを提供します。 これは、SAP による Backint 認定がされており、SAP HANA のネイティブ API を活用してネイティブ バックアップ サポートを提供します。 [Azure VM での SAP HANA データベースのバックアップ](./sap-hana-db-about.md)について参照してください。
 
@@ -149,7 +149,7 @@ PowerShell でこれを行う方法の詳細については、[こちら](backup
 
 ### <a name="how-do-i-restore-a-vm-to-the-same-availability-sets"></a>同じ可用性セットに VM を復元するには、どうすればよいですか。
 
-マネージド ディスクの Azure VM については、マネージド ディスクとして復元しているときに、可用性セットへの復元オプションがテンプレートに提供されます。 このテンプレートには、 **可用性セット** と呼ばれる入力パラメーターがあります。
+マネージド ディスクの Azure VM については、マネージド ディスクとして復元しているときに、可用性セットへの復元オプションがテンプレートに提供されます。 このテンプレートには、**可用性セット** と呼ばれる入力パラメーターがあります。
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>復元のパフォーマンスを高めるには、どうすればよいですか。
 
@@ -184,9 +184,9 @@ VM のバックアップは、変更されたポリシーまたは新しいポ�
 2. Azure Backup で構成された仮想マシンを移動するには、次の手順を実行します。
 
    1. 仮想マシンの場所を探します。
-   2. 名前付けパターン `AzureBackupRG_<location of your VM>_1` を持つリソース グループを探します。 たとえば、 *AzureBackupRG_westus2_1* となります
+   2. 名前付けパターン `AzureBackupRG_<location of your VM>_1` を持つリソース グループを探します。 たとえば、*AzureBackupRG_westus2_1* となります
    3. Azure portal で、 **[非表示の型の表示]** をオンにします。
-   4. `AzureBackup_<name of your VM that you're trying to move>_###########` という名前パターンを持つ、 **Microsoft.Compute/restorePointCollections** 型のリソースを検索します。
+   4. `AzureBackup_<name of your VM that you're trying to move>_###########` という名前パターンを持つ、**Microsoft.Compute/restorePointCollections** 型のリソースを検索します。
    5. このリソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
    6. 削除操作が完了したら、仮想マシンを移動できます。
 

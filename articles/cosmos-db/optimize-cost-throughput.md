@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 76f4f9ddaa1e4aec9409e96a0088ec51b8c2645e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 86de3e1199b00dff4e03f3b4292f86e6c19ea491
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097466"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296541"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でプロビジョニング済みのスループット コストを最適化する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -137,7 +137,7 @@ Azure Cosmos DB では既定で、すべてのレコードのすべてのプロ�
 
 新しいワークロードのプロビジョニング済みスループットを決定するには、次の手順を使用できます。 
 
-1. 最初に容量計画ツールを使用して大まかに評価し、Azure portal で Azure Cosmos Explorer を使用して見積もりを調整します。 
+1. 最初に容量計画ツールを使用して大まかに評価し、Azure portal で Azure Cosmos DB Explorer を使用して見積もりを調整します。 
 
 2. 予想より高いスループットでコンテナーを作成し、必要に応じてスケールダウンすることをお勧めします。 
 

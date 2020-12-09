@@ -8,12 +8,12 @@ author: ShaneBala-keyvault
 ms.author: sudbalas
 manager: ravijan
 ms.date: 09/30/2020
-ms.openlocfilehash: fbeb6f5f223642c09183c149188c6717c1f33a8e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 86190fa307133360c411aafc070412e7d527039e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748490"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324960"
 ---
 # <a name="how-to-enable-soft-delete-and-purge-protection"></a>論理的な削除と消去保護を有効にする方法
 
@@ -23,9 +23,9 @@ ms.locfileid: "92748490"
 
 論理的な削除と消去保護は、Key Vault の 2 つの異なる回復機能です。
 > [!IMPORTANT]
-> すべてのキー コンテナーで、論理的な削除を有効にする必要があります。 論理的な削除による保護を無効にする機能は、2020 年 12 月までに非推奨となる予定です。 詳細については、 [**こちら**](soft-delete-change.md)を参照してください。
+> すべてのキー コンテナーで、論理的な削除を有効にする必要があります。 論理的な削除による保護を無効にする機能は、2020 年 12 月までに非推奨となる予定です。 詳細については、[**こちら**](soft-delete-change.md)を参照してください。
 
-**論理的な削除** は、キー コンテナーおよびキー コンテナー内に格納されているキー、シークレット、証明書が誤って削除されるのを防ぐように設計されています。 論理的な削除はごみ箱のようなものと考えることができます。 キー コンテナーまたはキー コンテナー オブジェクトを削除すると、ユーザーが構成可能な保持期間または既定の 90 日の間、回復可能な状態に維持されます。 論理的に削除された状態のキー コンテナーは、 **消去** することもできます。これは、完全に削除されることを意味します。 これにより、同じ名前でキー コンテナーとキー コンテナー オブジェクトを作成し直すことができます。 キー コンテナーとオブジェクトの回復と削除のどちらについても、昇格されたアクセス ポリシーのアクセス許可が必要です。 **いったん有効にした論理的な削除を、無効にすることはできません。**
+**論理的な削除** は、キー コンテナーおよびキー コンテナー内に格納されているキー、シークレット、証明書が誤って削除されるのを防ぐように設計されています。 論理的な削除はごみ箱のようなものと考えることができます。 キー コンテナーまたはキー コンテナー オブジェクトを削除すると、ユーザーが構成可能な保持期間または既定の 90 日の間、回復可能な状態に維持されます。 論理的に削除された状態のキー コンテナーは、**消去** することもできます。これは、完全に削除されることを意味します。 これにより、同じ名前でキー コンテナーとキー コンテナー オブジェクトを作成し直すことができます。 キー コンテナーとオブジェクトの回復と削除のどちらについても、昇格されたアクセス ポリシーのアクセス許可が必要です。 **いったん有効にした論理的な削除を、無効にすることはできません。**
 
 **キー コンテナーの名前はグローバルに一意である** ことに注意してください。そのため、論理的に削除された状態のキー コンテナーと同じ名前のキー コンテナーを作成することはできません。 同様に、キー、シークレット、証明書の名前は、キー コンテナー内で一意です。 論理的に削除された状態の別のものと同じ名前で、シークレット、キー、または証明書を作成することはできません。
 
@@ -44,7 +44,7 @@ ms.locfileid: "92748490"
 1. 論理的な削除の横にあるオプション ボタンが、"回復を有効にする" に設定されているかどうかを確認します。
 1. キー コンテナーで論理的な削除が有効になっていない場合は、オプション ボタンをクリックして論理的な削除を有効にし、[保存] をクリックします。
 
-:::image type="content" source="../media/key-vault-recovery-1.png" alt-text="<Azure portal のスクリーンショット>":::
+:::image type="content" source="../media/key-vault-recovery-1.png" alt-text="[プロパティ] では、有効にするための値として [論理的な削除] が強調表示されます。":::
 
 ## <a name="grant-access-to-a-service-principal-to-purge-and-recover-deleted-secrets"></a>削除されたシークレットを消去および回復するためのアクセス権をサービス プリンシパルに許可する
 
@@ -56,7 +56,7 @@ ms.locfileid: "92748490"
 1. ドロップダウンの一番下までスクロールし、[回復] と [削除] をクリックします
 1. セキュリティ プリンシパルがほとんどの操作を実行するには、取得と一覧表示の機能も必要です。
 
-:::image type="content" source="../media/key-vault-recovery-2.png" alt-text="<Azure portal のスクリーンショット>":::
+:::image type="content" source="../media/key-vault-recovery-2.png" alt-text="左側のナビゲーション ウィンドウで、[アクセス ポリシー] が強調表示されます。[アクセス ポリシー] には [Secret Positions]\(シークレット位置\) のドロップダウン リストが表示され、4 つの項目が選択されます: 取得、一覧表示、回復、消去":::
 
 ## <a name="list-recover-or-purge-a-soft-deleted-key-vault"></a>論理的に削除されたキー コンテナーを一覧表示、回復、または消去する
 
@@ -72,9 +72,9 @@ ms.locfileid: "92748490"
 1. キー コンテナーを回復する場合は、コンテキスト ペインの下部にある回復オプションを選択します。
 1. キー コンテナーを完全に削除する場合は、消去オプションを選択します。
 
-:::image type="content" source="../media/key-vault-recovery-3.png" alt-text="<Azure portal のスクリーンショット>":::
+:::image type="content" source="../media/key-vault-recovery-3.png" alt-text="キー コンテナーで、[Manage deleted vaults]\(削除されたコンテナーの管理\) オプションが協調表示されます。":::
 
-:::image type="content" source="../media/key-vault-recovery-4.png" alt-text="<Azure portal のスクリーンショット>":::
+:::image type="content" source="../media/key-vault-recovery-4.png" alt-text="[Manage deleted vaults]\(削除されたコンテナーの管理\) では、表示された唯一のキー コンテナーが選択された状態で強調表示され、[回復] が強調表示されます。":::
 
 ## <a name="list-recover-or-purge-soft-deleted-secrets-keys-and-certificates"></a>論理的に削除されたシークレット、キー、証明書を一覧表示、回復、または消去する
 
@@ -87,7 +87,7 @@ ms.locfileid: "92748490"
 1. 管理するシークレット、キー、または証明書を選択します。
 1. コンテキスト ペインの下部にある回復または消去のオプションを選択します。
 
-:::image type="content" source="../media/key-vault-recovery-5.png" alt-text="<Azure portal のスクリーンショット>":::
+:::image type="content" source="../media/key-vault-recovery-5.png" alt-text="[キー] では、[Manage deleted keys]\(削除されたキーの管理\) オプションが協調表示されます。":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

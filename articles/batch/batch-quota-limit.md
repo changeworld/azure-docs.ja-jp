@@ -4,12 +4,12 @@ description: 既定の Azure Batch のクォータ、制限、および制約と
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8ca08d43f07633b58cf6f7067c1a8fcd58350678
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: b2039794a0c8a13070c9d81b83869ca4097bd02e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107540"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325972"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -23,15 +23,33 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 
 ## <a name="resource-quotas"></a>リソース クォータ
 
-クォータは、容量の保証ではなく、クレジット制限です。 大規模な容量が必要な場合は、Azure サポートにお問い合わせください。
+クォータは、容量の保証ではなく、制限です。 大規模な容量が必要な場合は、Azure サポートにお問い合わせください。
 
 また、クォータは保証された値でないことに注意してください。 クォータは、Batch サービスからの変更や、クォータ値を変更するユーザー要求によって異なる場合があります。
 
 [!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
+## <a name="core-quotas"></a>コア クォータ
+
+### <a name="cores-quotas-in-batch-service-mode"></a>Batch サービス モードでのコア クォータ
+
+専用コア クォータの適用が強化されました。変更は各ステージで使用可能になり、2020 年 12 月の終わりまでにすべての Batch アカウントに対してこの措置が完了します。
+
+コア クォータは、Batch でサポートされる各 VM シリーズに存在し、ポータルの **クォータ** ページに表示されます。 次に説明するように、VM シリーズのクォータ制限はサポート要求で更新できます。
+
+既存のメカニズムが段階的に廃止されると、VM シリーズのクォータ制限はチェックされず、アカウントの合計クォータ制限のみが適用されます。 つまり、VM シリーズのクォータで示されているよりも多くのコアを、アカウントの合計クォータ制限まで、VM シリーズに割り当てることができます。
+
+更新されたメカニズムにより、アカウントの合計クォータに加えて、VM シリーズのクォータが適用されます。 新しいメカニズムへの移行の一環として、割り当てエラーを防ぐために、VM シリーズのクォータ値が更新される可能性があります。最近の数か月間に使用されたすべての VM シリーズでは、アカウントの合計クォータに一致するように VM シリーズのクォータが更新されます。 この変更によって、既に使用可能な容量を超えて使用できるようになることはありません。
+
+次を確認することで、Batch アカウントに対して VM シリーズのクォータの適用が有効になっているかどうかを確認できます。
+
+* Batch アカウント [dedicatedCoreQuotaPerVMFamilyEnforced](/rest/api/batchmanagement/batchaccount/get#batchaccount) API プロパティ。
+
+* ポータルの Batch アカウント **クォータ** ページのテキスト。
+
 ### <a name="cores-quotas-in-user-subscription-mode"></a>ユーザー サブスクリプション モードでのコア クォータ
 
-プール割り当てモードを**ユーザー サブスクリプション**に設定した [Batch アカウント](accounts.md)を作成した場合、クォータの適用が異なります。 このモードでは、プールの作成時に、Batch VM とその他のリソースがサブスクリプションに直接作成されます。 このモードで作成されたアカウントには、Azure Batch のコア クォータは適用されません。 代わりに、リージョンのコンピューティング コアとその他のリソースにはサブスクリプションのクォータが適用されます。
+プール割り当てモードを **ユーザー サブスクリプション** に設定して [Batch アカウント](accounts.md)を作成した場合、Batch VM とその他のリソースは、プールの作成時またはサイズ変更時に直接サブスクリプションに作成されます。 Azure Batch コア クォータは適用されず、リージョンのコンピューティング コア、シリーズごとのコンピューティング コア、およびその他のリソースに対するサブスクリプションのクォータが使用され、適用されます。
 
 これらのクォータの詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
 
@@ -44,7 +62,7 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 | **[ノード間通信に対応するプール](batch-mpi.md)内の計算ノード**  ||
 | バッチ サービス プール割り当てモード | 100 |
 | バッチ サブスクリプション プール割り当てモード | 80 |
-| **マネージド イメージ リソースで作成されたプール[内の計算ノード](batch-custom-images.md)** <sup>1</sup> ||
+| **マネージド イメージ リソースで作成されたプール [内の計算ノード](batch-custom-images.md)** <sup>1</sup> ||
 | 専用ノード | 2000 |
 | 優先順位の低いノード | 1000 |
 
@@ -73,7 +91,7 @@ Batch アカウントのクォータを [Azure portal](https://portal.azure.com)
 1. Batch アカウントのメニューで **[クォータ]** を選びます。
 1. Batch アカウントに現在適用されているクォータを確認します。
 
-    ![Batch アカウントのクォータ][account_quotas]
+:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="Batch アカウントのクォータ":::
 
 ## <a name="increase-a-quota"></a>クォータを増やす
 
@@ -113,7 +131,7 @@ Batch アカウントのクォータを [Azure portal](https://portal.azure.com)
 
 1. **[連絡先情報]** で次のようにします。
    
-    1. **希望連絡方法**を選択します。
+    1. **希望連絡方法** を選択します。
    
     1. 必要な連絡先情報を確認および入力します。
    

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 372ff1dc53f15a1338cad933fec64746b6736f40
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5645a2e0449a1929421f9444bf645f08ad0525e9
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368089"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296813"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Security Center の統合 EDR ソリューションを使用してエンドポイントを保護する: Microsoft Defender for Endpoint
 
@@ -33,7 +33,7 @@ Microsoft Defender for Endpoint は、クラウドで提供される包括的な
 > [!TIP]
 > 元々は **Windows Defender ATP** として提供されたこのエンドポイントでの検出と対応 (EDR) 製品は、2019 年に名前が **Microsoft Defender ATP** に変更されました。
 >
-> Ignite 2020 で、 [Microsoft Defender XDR スイート](https://www.microsoft.com/security/business/threat-protection)の提供が開始されました。この EDR コンポーネントの名前は、 **Microsoft Defender for Endpoint** に変更されました。
+> Ignite 2020 で、[Microsoft Defender XDR スイート](https://www.microsoft.com/security/business/threat-protection)の提供が開始されました。この EDR コンポーネントの名前は、**Microsoft Defender for Endpoint** に変更されました。
 
 
 ## <a name="availability"></a>可用性
@@ -44,7 +44,7 @@ Microsoft Defender for Endpoint は、クラウドで提供される包括的な
 | 価格:                        | [Azure Defender for servers](security-center-pricing.md) が必要                                                                                                                                                                                                                                             |
 | サポート対象のプラットフォーム:            | ![はい](./media/icons/yes-icon.png) Windows を実行している Azure マシン<br>![はい](./media/icons/yes-icon.png) Windows を実行している Azure Arc マシン|
 | サポート対象の Windows のバージョン:  | Defender for Endpoint は、Windows 10 1703 (およびそれ以降) と Windows Server 2019 に組み込まれています。<br>Windows Server 2016、2012 R2、2008 R2 SP1 での検出が Security Center でサポートされています。<br>この統合を使用したサーバー エンドポイントの監視は、Office 365 GCC のお客様に対して無効になっています。 |
-| 必要なロールとアクセス許可: | 統合を有効または無効にするには: **セキュリティ管理者** または **所有者**<br>Security Center の MDATP アラートを表示するには: **セキュリティ閲覧者** 、 **閲覧さ** 、 **リソース グループの共同作成者** 、 **リソース グループの所有者** 、 **セキュリティ管理者** 、 **サブスクリプションの所有者** 、または **サブスクリプションの共同作成者**                         |
+| 必要なロールとアクセス許可: | 統合を有効または無効にするには: **セキュリティ管理者** または **所有者**<br>Security Center の MDATP アラートを表示するには: **セキュリティ閲覧者**、**閲覧さ**、**リソース グループの共同作成者**、**リソース グループの所有者**、**セキュリティ管理者**、**サブスクリプションの所有者**、または **サブスクリプションの共同作成者**                         |
 | クラウド:                         | ![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![いいえ](./media/icons/no-icon.png) グローバルな Azure クラウドでワークロードを実行している GCC の顧客<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
@@ -53,17 +53,17 @@ Microsoft Defender for Endpoint は、クラウドで提供される包括的な
 
 Microsoft Defender for Endpoint では次のものが提供されます。
 
-- **高度な侵害後検出センサー** 。 Windows マシン用の Defender for Endpoint のセンサーにより、ありとあらゆる動作の信号が収集されます。
+- **高度な侵害後検出センサー**。 Windows マシン用の Defender for Endpoint のセンサーにより、ありとあらゆる動作の信号が収集されます。
 
-- **分析に基づくクラウド利用の侵害後検出** 。 Defender for Endpoint は、脅威の変化にすばやく適応します。 高度な分析とビッグ データを使用します。 Windows、Azure、Office 全体の信号を使用したインテリジェント セキュリティ グラフによって強化され、これにより未知の脅威が検出されます。 アクションにつながるアラートを提供し、迅速に対応できるようにします。
+- **分析に基づくクラウド利用の侵害後検出**。 Defender for Endpoint は、脅威の変化にすばやく適応します。 高度な分析とビッグ データを使用します。 Windows、Azure、Office 全体の信号を使用したインテリジェント セキュリティ グラフによって強化され、これにより未知の脅威が検出されます。 アクションにつながるアラートを提供し、迅速に対応できるようにします。
 
-- **脅威インテリジェンス** 。 Defender for Endpoint によって攻撃者のツール、テクニック、およびプロシージャが識別されると、アラートが生成されます。 Microsoft の脅威ハンターおよびセキュリティ チームによって生成され、パートナーによって提供されるインテリジェンスによって強化されたデータを使用します。
+- **脅威インテリジェンス**。 Defender for Endpoint によって攻撃者のツール、テクニック、およびプロシージャが識別されると、アラートが生成されます。 Microsoft の脅威ハンターおよびセキュリティ チームによって生成され、パートナーによって提供されるインテリジェンスによって強化されたデータを使用します。
 
 Defender for Endpoint を Security Center と統合すると、次の追加機能を利用することができます。
 
-- **自動オンボード** 。 Security Center によって監視されているすべての Windows サーバー向けの Microsoft Defender for Endpoint センサーが、Security Center によって自動的に有効にされます (Windows Server 2019 を実行している場合を除く)。
+- **自動オンボード**。 Security Center によって監視されているすべての Windows サーバー向けの Microsoft Defender for Endpoint センサーが、Security Center によって自動的に有効にされます。 ローカル スクリプト、グループ ポリシー オブジェクト (GPO)、または [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/mem/configmgr/) (旧称 SCCM) を介してオンボードする必要がある、Windows Server 2019 を実行しているものは除外されます。
 
-- **1 つのウィンドウ** 。 Security Center コンソールには、Microsoft Defender for Endpoint のアラートが表示されます。 さらに調査するには、Microsoft Defender for Endpoint 独自のポータル ページを使用します。ここには、アラート プロセス ツリーやインシデント グラフなどの追加情報が表示されます。 最大 6 か月前まで遡って、すべての動作を示す詳細なマシン タイムラインを見ることもできます。
+- **1 つのウィンドウ**。 Security Center コンソールには、Microsoft Defender for Endpoint のアラートが表示されます。 さらに調査するには、Microsoft Defender for Endpoint 独自のポータル ページを使用します。ここには、アラート プロセス ツリーやインシデント グラフなどの追加情報が表示されます。 最大 6 か月前まで遡って、すべての動作を示す詳細なマシン タイムラインを見ることもできます。
 
     :::image type="content" source="./media/security-center-wdatp/microsoft-defender-security-center.png" alt-text="Microsoft Defender for Endpoint 独自の Security Center" lightbox="./media/security-center-wdatp/microsoft-defender-security-center.png":::
 
@@ -123,7 +123,7 @@ Microsoft Defender for Endpoint で無害なテスト アラートを生成す�
 
 ### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Microsoft Defender for Endpoint のライセンス要件はどのようなものですか?
 
-Defender for Endpoint は、 **Azure Defender for server** に追加料金なしで含まれています。 別の方法として、50 台以上のマシンに対して個別に購入することもできます。
+Defender for Endpoint は、**Azure Defender for server** に追加料金なしで含まれています。 別の方法として、50 台以上のマシンに対して個別に購入することもできます。
 
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>サードパーティ製の EDR ツールから切り替える方法は?

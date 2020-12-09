@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 99cad2a4218995ad10488d97ce19eeef36b642ae
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 961dae4cd35c7529a5661d1ddc7d0d1f6e4db634
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636998"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029117"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Cosmos DB 用の Azure セキュリティ ベースライン
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -445,11 +445,11 @@ Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: サポート シナリオで関連する顧客データに Microsoft がアクセスできるようにする
 
-**ガイダンス**: 現在使用できません。カスタマー ロックボックスでは、Azure Database for Cosmos DB はまだサポートされていません。
+**ガイダンス**:カスタマー ロックボックスは、Cosmos DB には適用されません。  Microsoft の従業員は、顧客から許可されていてもデータ リソースにアクセスできません。
 
 カスタマー ロックボックスでサポートされているサービスの一覧: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: 適用なし
 
 **責任**: 適用なし
 

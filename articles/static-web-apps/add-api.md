@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: e0af8e0674a15c98fadbedfa42f735d269b3de2b
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 53be2ee9b6b3ab46f081747aec58b9c99fc54f0d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920493"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349958"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Azure Functions を使用して Azure Static Web Apps プレビューに API を追加する
 
@@ -32,7 +32,7 @@ Azure Functions との統合を使用して、Azure Static Web Apps にサーバ
 
 次の手順では、新しいリポジトリを作成し、お使いのコンピューターにファイルを複製する方法を示します。
 
-1. GitHub にログインしていることを確認し、 https://github.com/staticwebdev/vanilla-basic/generate に移動して新しいリポジトリを作成します。
+1. GitHub にログインしていることを確認し、[https://github.com/staticwebdev/vanilla-basic/generate](https://github.com/login?return_to=/staticwebdev/vanilla-basic/generate) に移動して新しいリポジトリを作成します。
 1. _[リポジトリ名]_ ボックスに、「**my-vanilla-api**」と入力します。
 1. **[Create repository from template]\(テンプレートからリポジトリを作成する\)** をクリックします。
 

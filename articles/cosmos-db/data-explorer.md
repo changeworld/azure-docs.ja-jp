@@ -1,22 +1,22 @@
 ---
-title: Azure Cosmos DB エクスプローラーを使用してデータを管理する
-description: Azure Cosmos DB エクスプローラーは、スタンドアロンの Web ベースのインターフェイスで、Azure Cosmos DB に格納されたデータを表示および管理することができます。
+title: Azure Cosmos DB Explorer を使用してデータを管理する
+description: Azure Cosmos DB Explorer は、スタンドアロンの Web ベースのインターフェイスで、Azure Cosmos DB に格納されたデータを表示および管理することができます。
 author: deborahc
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: dech
-ms.openlocfilehash: 691a2e56230d312416aed3d68bffd361f1d63558
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d4baa92fe4aa2ed402c394198684c4deec2bf9f1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008584"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348604"
 ---
-# <a name="work-with-data-using-azure-cosmos-explorer"></a>Azure Cosmos Explorer を使ってデータを操作する 
+# <a name="work-with-data-using-azure-cosmos-db-explorer"></a>Azure Cosmos DB Explorer を使ってデータを操作する 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB エクスプローラーは、スタンドアロンの Web ベースのインターフェイスで、Azure Cosmos DB に格納されたデータを表示および管理することができます。 Azure Cosmos DB エクスプローラーは、Azure Cosmos DB アカウントを作成するときに Azure portal で使用できる既存の **[データ エクスプローラー]** タブと同じです。 既存のデータ エクスプローラーよりも優れた Azure Cosmos DB エクスプローラーの主な利点は、次のとおりです。
+Azure Cosmos DB Explorer は、スタンドアロンの Web ベースのインターフェイスで、Azure Cosmos DB に格納されたデータを表示および管理することができます。 Azure Cosmos DB Explorer は、Azure Cosmos DB アカウントを作成するときに Azure portal で使用できる既存の **[データ エクスプローラー]** タブと同じです。 既存のデータ エクスプローラーよりも優れた Azure Cosmos DB Explorer の主な利点は、次のとおりです。
 
 * データの表示、クエリの実行、ストアド プロシージャ、トリガー、およびそれらの結果を表示するための全画面表示があります。  
 
@@ -24,13 +24,13 @@ Azure Cosmos DB エクスプローラーは、スタンドアロンの Web ベ�
 
 * クエリの結果は、Azure portal へのアクセスまたはサブスクリプションを持たない他のユーザーと共有できます。  
 
-## <a name="access-azure-cosmos-db-explorer"></a>Azure Cosmos DB エクスプローラーへのアクセス
+## <a name="access-azure-cosmos-db-explorer"></a>Azure Cosmos DB Explorer へのアクセス
 
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。 
 
 2. **[すべてのリソース]** から、自分の Azure Cosmos DB アカウントを見つけて移動し、キーを選択して、**プライマリ接続文字列** をコピーします。  
 
-3. [https://cosmos.azure.com/](https://cosmos.azure.com/ ) にアクセスし、接続文字列を貼り付けて、 **[接続]** を選択します。 接続文字列を使用すると、時間制限なく Azure Cosmos DB エクスプローラーにアクセスできます。  
+3. [https://cosmos.azure.com/](https://cosmos.azure.com/ ) にアクセスし、接続文字列を貼り付けて、 **[接続]** を選択します。 接続文字列を使用すると、時間制限なく Azure Cosmos DB Explorer にアクセスできます。  
 
    自分の Azure Cosmos DB アカウントへの一時的なアクセスを他のユーザーに提供するには、読み取り/書き込みアクセス URL および読み取りアクセス URL を使用ます。 
 
@@ -42,7 +42,7 @@ Azure Cosmos DB エクスプローラーは、スタンドアロンの Web ベ�
 
    アカウントを開くためのアクセスの種類を選択し、 **[開く]** をクリックします。 エクスプローラーが開いた後は、Azure portal の [データ エクスプローラー] タブでのエクスペリエンスと同じです。
 
-   :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Azure Cosmos DB エクスプローラーを開く":::
+   :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Azure Cosmos DB Explorer を開く":::
 
 ## <a name="known-issues"></a>既知の問題
 
@@ -54,6 +54,6 @@ Azure Cosmos DB エクスプローラーは、スタンドアロンの Web ベ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Cosmos DB エクスプローラーでのデータの管理方法を学んだので、次の段階に進みましょう。
+Azure Cosmos DB Explorer でのデータの管理方法を学んだので、次の段階に進みましょう。
 
 * SQL 構文を使用して[クエリ](./sql-query-getting-started.md)の定義を開始し、ストアド プロシージャ、UDF、トリガーを使用して[サーバー側プログラミング](stored-procedures-triggers-udfs.md)を実行します。

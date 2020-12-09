@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: e3f0a9f0b7fdef26cf1ef2b145ede1826fda6ebd
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d24ae1f42c685589309506b2d5e0eab157b2bc42
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685598"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299617"
 ---
 # <a name="use-file-metadata-in-serverless-sql-pool-queries"></a>サーバーレス SQL プール クエリでファイルのメタデータを使用する
 
@@ -76,7 +76,7 @@ ORDER BY
 
 filepath 関数からは、完全なパスまたは部分的なパスが返されます。
 
-- パラメーターを指定せずに呼び出した場合、行の生成元である完全なファイル パスが返されます。
+- パラメーターを指定せずに呼び出した場合、行の生成元である完全なファイル パスが返されます。 OPENROWSET で DATA_SOURCE を使用すると、DATA_SOURCE を基準とした相対パスが返されます。 
 - パラメーターを指定して呼び出すと、パラメーターで指定した位置にあるワイルドカードと一致するパスの一部が返されます。 たとえば、パラメーター値 1 の場合は、最初のワイルドカードと一致するパスの一部が返されます。
 
 次のサンプルでは、2017 年の過去 3 か月間について、NYC イエロー タクシーのデータ ファイルが読み取られます。 ファイル パスごとの乗車数が返されます。 クエリの OPENROWSET 部分では、読み取るファイルを指定します。

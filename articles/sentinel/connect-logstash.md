@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 247abafd7abec38e43794b76268ee52538aee508
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 63b9d74fbbb1a79dd4f3d3e7c5fb094a372282e0
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655682"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299634"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Logstash を使用して Azure Sentinel にデータ ソースを接続する
 
@@ -57,7 +57,7 @@ Logstash 用の Azure Sentinel 出力プラグインは、Log Analytics HTTP デ
 
 Azure Sentinel 出力プラグインは、Logstash コレクションで使用できます。
 
-- Logstash の [プラグインの操作](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html)に関するドキュメントに記載されている手順に従って、*_microsoft-logstash-output-azure-loganalytics_* _ プラグインをインストールします。
+- Logstash の [プラグインの操作](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html)に関するドキュメントに記載されている手順に従って、**_[microsoft-logstash-output-azure-loganalytics](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)_* _ プラグインをインストールします。
    
 - Logstash システムがインターネットにアクセスできない場合は、Logstash の[オフライン プラグイン管理](https://www.elastic.co/guide/en/logstash/current/offline-plugins.html)に関するドキュメントに記載されている手順に従って、オフライン プラグイン パックを準備して使用します。 (この場合、インターネットにアクセスできる別の Logstash システムを構築する必要があります)。
 

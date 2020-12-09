@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5322e5ce1bb124387931eac666cf9e5510cb2463
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 4c4ba11dabc8e805f3604afc2fc4388840ac67cf
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237640"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348536"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Azure AD Connect クラウド プロビジョニング エージェントのインストール
 このドキュメントでは、Azure Active Directory (Azure AD) Connect プロビジョニング エージェントのインストール プロセスと、それを Azure portal で最初に構成する方法について説明します。
@@ -32,7 +32,7 @@ Azure AD Connect プロビジョニングのインストールと構成は、次
 
 
 ## <a name="group-managed-service-accounts"></a>Group Managed Service Accounts
-グループ管理サービス アカウントは、パスワードの自動管理、簡略化されたサービス プリンシパル名 (SPN) の管理、および管理を他の管理者に委任する機能を提供し、またこの機能を複数のサーバーに拡張する、マネージド ドメイン アカウントです。  Azure AD Connect Cloud Sync では、エージェントの実行にグループ管理サービス アカウントを使用することがサポートされ、またこれが推奨されています。  gMSA の詳細については、[グループ管理サービス アカウント](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)に関するページを参照してください 
+グループ管理サービス アカウントは、パスワードの自動管理、簡略化されたサービス プリンシパル名 (SPN) の管理、および管理を他の管理者に委任する機能を提供し、またこの機能を複数のサーバーに拡張する、マネージド ドメイン アカウントです。  Azure AD Connect Cloud Sync では、エージェントの実行にグループ管理サービス アカウントを使用することがサポートされ、またこれが推奨されています。  gMSA の詳細については、[グループ管理サービス アカウント](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)に関するページを参照してください 
 
 
 ### <a name="upgrading-an-existing-agent-to-use-the-gmsa-account"></a>gMSA アカウントを使用するよう既存のエージェントをアップグレードする
@@ -57,7 +57,7 @@ Azure AD Connect プロビジョニングのインストールと構成は、次
  10. ドメイン管理者の資格情報を入力して、エージェント サービスを実行するために使用されるグループ管理サービス アカウントを作成します。 **[次へ]** をクリックします。  
    ![gMSA の作成](media/how-to-install/install-12.png)</br>
  11. **[Active Directory の接続]** 画面で、 **[ディレクトリの追加]** を選択します。 次に、Active Directory 管理者アカウントでサインインします。 この操作によってオンプレミス ディレクトリが追加されます。 
- 12. 必要に応じて、 **[Select domain controller priority]\(ドメイン コントローラーの優先順位を選択する\)** を選択し、ドメイン コントローラーの一覧を並べ替えることによって、エージェントによって使用されるドメイン コントローラーの優先順位を管理できます。   [**OK**] をクリックします。
+ 12. 必要に応じて、 **[Select domain controller priority]\(ドメイン コントローラーの優先順位を選択する\)** を選択し、ドメイン コントローラーの一覧を並べ替えることによって、エージェントによって使用されるドメイン コントローラーの優先順位を管理できます。   **[OK]** をクリックします。
   ![ドメイン コントローラーの並び替え](media/how-to-install/install-2a.png)</br>
  13. **[次へ]** を選択します。
   ![[Active Directory の接続] 画面](media/how-to-install/install-3a.png)</br>
@@ -107,4 +107,3 @@ Azure AD Connect プロビジョニングのインストールと構成は、次
 
 - [プロビジョニングとは](what-is-provisioning.md)
 - [Azure AD Connect クラウド プロビジョニングとは](what-is-cloud-provisioning.md)
- 

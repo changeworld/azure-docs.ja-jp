@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3bf65fd2cc6feb338c1cd7d0742fb3d2a4289eff
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c695a08e25512720c542c2a94048c5390b452591
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287184"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171002"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C の ISV パートナー
 
@@ -37,6 +37,7 @@ ISV パートナー ネットワークは、Microsoft のソリューション�
 | ![Jumio ロゴのスクリーンショット。](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) は ID 検証サービスです。リアルタイムの自動 ID 検証が可能になり、顧客データが保護されます。 |
 | ![LexisNexis ロゴのスクリーンショット。](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) は、ユーザー ID を検証し、ユーザーのデバイスに基づいて包括的なリスク評価を提供する、プロファイルと ID 検証のプロバイダーです。 |
 | ![N8 Identity のロゴのスクリーンショット。](./media/partner-gallery/n8identity-logo.png) | [N8 Identity](./partner-n8identity.md) はサービスとしての ID ガバナンス プラットフォームであり、Microsoft Azure で実行されている顧客アカウントの移行とカスタマー サービス要求 (CSR) の管理に対処するためのソリューションが提供されます。 |
+| ![Nevis ロゴのスクリーンショット。](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) は、Nevis Access アプリでモバイルファーストの完全にブランド化されたエンド ユーザー エクスペリエンスを提供して、強力な顧客認証を実現するとともに、Payment Services Directive 2 (PSD2) のトランザクション要件を遵守します。 |
 | ![Onfido ロゴのスクリーンショット。](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) は、ドキュメント ID および顔の生体認証検証ソリューションであり、企業は *Know Your Customer* (顧客確認) と ID 要件をリアルタイムで満たすことができます。  |
 | ![Saviynt ロゴのスクリーンショット。](./media/partner-gallery/saviynt-logo.png) | [Saviynt](./partner-saviynt.md) クラウドネイティブ プラットフォームは、インテリジェント分析を使用し、アプリケーション間の統合機能を提供することで、IT 最新化の効率を高め、セキュリティ、ガバナンス、コンプライアンスを向上させます。 ビジネスの最新化により、企業がアクセス要求を確認し、アクセス レビューとレポート分析を行い、認定キャンペーンを効率化する方法が変革されます。  |
 | ![Strata のロゴのスクリーンショット。](./media/partner-gallery/strata-logo.png) | [Strata](./partner-strata.md) は、一貫性のあるアクセス ポリシーを適用し、ID の同期を維持し、レガシ ID システムから Azure AD B2C によって提供される標準ベースの認証とアクセス制御にアプリケーションを簡単に移行できるようにすることで、オンプレミスのアプリケーションを保護します。 |

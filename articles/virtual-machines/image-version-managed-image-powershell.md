@@ -1,6 +1,6 @@
 ---
-title: マネージド イメージを Shared Image Gallery に移行する
-description: Azure PowerShell を使用して、マネージド イメージから Shared Image Gallery のイメージ バージョンに移行する方法について説明します。
+title: マネージド イメージを Shared Image Gallery に複製する
+description: Azure PowerShell を使用して、マネージド イメージから Shared Image Gallery のイメージ バージョンに複製する方法について説明します。
 author: cynthn
 ms.topic: how-to
 ms.service: virtual-machines
@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1c57d9d283714da6905335fd3167c4f8a69292f8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 92cae59978b172993c779e9a486ff67d82309800
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964883"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349924"
 ---
-# <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>マネージド イメージから Shared Image Gallery イメージに移行する
+# <a name="clone-a-managed-image-to-a-shared-image-gallery-image"></a>マネージド イメージを Shared Image Gallery に複製する
 
-Shared Image Gallery に移行したい既存のマネージド イメージがある場合は、マネージド イメージから直接 Shared Image Gallery イメージを作成できます。 新しいイメージをテストしたら、ソースのマネージド イメージを削除できます。 [Azure CLI](image-version-managed-image-cli.md) を使用して、マネージド イメージから Shared Image Gallery に移行することもできます。
+Shared Image Gallery に複製して移行する既存のマネージド イメージがある場合は、マネージド イメージから直接 Shared Image Gallery イメージを作成できます。 新しいイメージをテストしたら、ソースのマネージド イメージを削除できます。 [Azure CLI](image-version-managed-image-cli.md) を使用して、マネージド イメージから Shared Image Gallery に移行することもできます。
 
 イメージ ギャラリー内のイメージには 2 つのコンポーネントがあります。この例ではそれを作成します。
 - **イメージ定義** には、イメージに関する情報とそれを使用するための要件が含まれます。 これには、イメージの OS (Windows または Linux)、形態 (特殊化または一般化)、リリース ノート、最小メモリ要件、最大メモリ要件が含まれます。 これは、イメージの種類の定義です。 

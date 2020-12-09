@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 18e32a0387119d235294d1126d869186ae28d2b2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: abc4529d6076496b34859eec2b931a8dcbd1ce93
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488981"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296592"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front Door についてよく寄せられる質問
 
@@ -91,13 +91,13 @@ Front Door のルートには順序はなく、特定のルートは最適な一
 
 - 使用するバックエンドが、Azure Front Door のバックエンド IP アドレス空間と Azure のインフラストラクチャ サービスからのトラフィックのみを受け入れるように IP ACL 処理を構成します。 バックエンドに対する ACL については、以下の IP の詳細を参照してください。
  
-    - Front Door の IPv4 バックエンド IP アドレスの範囲については、「 [Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)」の「 *AzureFrontDoor.Backend* 」セクションを参照してください。または、 [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md#security-rules)でサービス タグ *AzureFrontDoor.Backend* を使用することもできます。
+    - Front Door の IPv4 バックエンド IP アドレスの範囲については、「[Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)」の「*AzureFrontDoor.Backend*」セクションを参照してください。または、[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md#security-rules)でサービス タグ *AzureFrontDoor.Backend* を使用することもできます。
     - 仮想化されたホスト IP アドレスを通した Azure の[基本的なインフラストラクチャ サービス](../virtual-network/network-security-groups-overview.md#azure-platform-considerations): `168.63.129.16` および `169.254.169.254`
 
     > [!WARNING]
     > Front Door のバックエンド IP 空間は後で変更される可能性があります。ただし Microsoft はその前に、[Azure IP 範囲およびサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)との統合が確実に行われるようにします。 変更または更新について知るために、[Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)をサブスクライブすることをお勧めします。
 
--    API バージョン `2020-01-01` 以降を使用して、Front Door で GET 操作を実行します。 API 呼び出しで、`frontdoorID` フィールドを探します。 Front Door からバックエンドに送信された受信ヘッダー " **X-Azure-FDID** " を、フィールド `frontdoorID` の値でフィルター処理します。 `Front Door ID` の値は、Front Door ポータル ページの [概要] セクションでも確認できます。 
+-    API バージョン `2020-01-01` 以降を使用して、Front Door で GET 操作を実行します。 API 呼び出しで、`frontdoorID` フィールドを探します。 Front Door からバックエンドに送信された受信ヘッダー "**X-Azure-FDID**" を、フィールド `frontdoorID` の値でフィルター処理します。 `Front Door ID` の値は、Front Door ポータル ページの [概要] セクションでも確認できます。 
 
 - バックエンド Web サーバーでルール フィルターを適用して、結果の "X-Azure-FDID" ヘッダー値に基づいてトラフィックを制限します。
 
@@ -126,7 +126,7 @@ Front Door のルートには順序はなく、特定のルートは最適な一
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>エニーキャスト IP は、Front Door の有効期間を通じて変更できますか?
 
-Front Door のフロントエンド エニーキャスト IP は、通常は変更すべきでなく、Front Door の有効期間を通じて静的のままにしておくことができます。 ただし、同じであることの **保証はありません** 。 IP アドレスへの直接的な依存関係は存在しないようにしてください。
+Front Door のフロントエンド エニーキャスト IP は、通常は変更すべきでなく、Front Door の有効期間を通じて静的のままにしておくことができます。 ただし、同じであることの **保証はありません**。 IP アドレスへの直接的な依存関係は存在しないようにしてください。
 
 ### <a name="does-azure-front-door-support-static-or-dedicated-ips"></a>Azure Front Door では静的または専用 IP アドレスがサポートされていますか?
 
@@ -241,16 +241,16 @@ Azure portal または [Azure REST API](/rest/api/frontdoorservice/frontdoor/fro
 
 いいえ。Front Door では自己署名証明書はサポートされておらず、両方に制限が適用されます。
 
-1. **バックエンド** : HTTPS または HTTPS 正常性プローブとしてトラフィックを転送するとき、またはキャッシュが有効になっているルーティング規則で配信元からキャッシュに格納するときは、自己署名証明書を使用できません。
-2. **フロントエンド** : カスタム ドメインで HTTPS を有効にするために独自のカスタム TLS/SSL 証明書を使用している場合は、自己署名証明書を使用できません。
+1. **バックエンド**: HTTPS または HTTPS 正常性プローブとしてトラフィックを転送するとき、またはキャッシュが有効になっているルーティング規則で配信元からキャッシュに格納するときは、自己署名証明書を使用できません。
+2. **フロントエンド**: カスタム ドメインで HTTPS を有効にするために独自のカスタム TLS/SSL 証明書を使用している場合は、自己署名証明書を使用できません。
 
 ### <a name="why-is-https-traffic-to-my-backend-failing"></a>バックエンドへの HTTPS トラフィックが失敗するのはなぜですか?
 
 正常性プローブか転送要求かに関係なく、バックエンドに正常に HTTPS 接続した場合、HTTPS トラフィックが失敗する原因は 2 つあります。
 
-1. **証明書のサブジェクト名の不一致** : HTTPS 接続の場合、Front Door では、バックエンドからバックエンドのホスト名と一致するサブジェクト名を持つ有効な CA からの証明書が提示されることを前提としています。 例として、バックエンドのホスト名が `myapp-centralus.contosonews.net` に設定されており、TLS ハンドシェイク中にバックエンドが提供する証明書のサブジェクト名に `myapp-centralus.contosonews.net` も `*myapp-centralus*.contosonews.net` も含まれていない場合、Front Door はその接続を拒否してエラーを生成します。 
-    1. **解決策** :コンプライアンスの観点からは推奨されませんが、Front Door で証明書のサブジェクト名のチェックを無効にすることで、このエラーを回避できます。 これは、Azure portal の [設定]、および API の BackendPoolsSettings で設定できます。
-2. **無効な CA からのバックエンド ホスティング証明書** : Front Door のバックエンドでは、 [有効な CA](./front-door-troubleshoot-allowed-ca.md) からの証明書のみを使用できます。 内部 CA からの証明書または自己署名証明書は許可されません。
+1. **証明書のサブジェクト名の不一致**: HTTPS 接続の場合、Front Door では、バックエンドからバックエンドのホスト名と一致するサブジェクト名を持つ有効な CA からの証明書が提示されることを前提としています。 例として、バックエンドのホスト名が `myapp-centralus.contosonews.net` に設定されており、TLS ハンドシェイク中にバックエンドが提供する証明書のサブジェクト名に `myapp-centralus.contosonews.net` も `*myapp-centralus*.contosonews.net` も含まれていない場合、Front Door はその接続を拒否してエラーを生成します。 
+    1. **解決策**:コンプライアンスの観点からは推奨されませんが、Front Door で証明書のサブジェクト名のチェックを無効にすることで、このエラーを回避できます。 これは、Azure portal の [設定]、および API の BackendPoolsSettings で設定できます。
+2. **無効な CA からのバックエンド ホスティング証明書**: Front Door のバックエンドでは、[有効な CA](./front-door-troubleshoot-allowed-ca.md) からの証明書のみを使用できます。 内部 CA からの証明書または自己署名証明書は許可されません。
 
 ### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>Azyre Front Door でクライアント/相互認証を使用できますか?
 

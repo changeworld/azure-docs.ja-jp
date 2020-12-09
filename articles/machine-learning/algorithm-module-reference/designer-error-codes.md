@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
-ms.date: 04/16/2020
-ms.openlocfilehash: 569cf130b464d97e0ac10904ffd86365b57610a5
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 11/25/2020
+ms.openlocfilehash: af7ac49fd6c1a31a8363c4ba0bf925787613ecc2
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420837"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030409"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>デザイナーの例外とエラー コード
 
@@ -281,11 +281,18 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 
  このエラーは、列に含まれる一意の値の数が多すぎる場合に発生します。  たとえば、列がカテゴリ データとして処理するように指定されていても、列の一意の値が多すぎて処理を完了できない場合、このエラーが発生する可能性があります。 また、2 つの入力の間で一意の値の数が一致していない場合にも、このエラーが発生する可能性があります。   
 
+次の条件の **両方** を満たした場合に、一意の値が許可される数を上回るエラーが発生します。
+
+- 1 つの列の 97% を超えるインスタンスが一意の値であるため、ほぼすべてのカテゴリが互いに異なっています。
+- 1 つの列に 1,000 個を超える一意の値が含まれています。
+
 **解決策:**
 
 エラーが発生したモジュールを開き、入力として使用されている列を特定します。 一部のモジュールでは、データセット入力を右クリックして **[視覚化]** を選択し、一意の値の数とその分布が含まれる個々の列の統計情報を取得できます。
 
 グループ化または分類に使用する列の場合は、列の一意の値の数を減らすための手順を実行します。 列のデータ型に応じて、さまざまな方法で減らすことができます。 
+
+通常このシナリオでは、エラーになった列は、モデルをトレーニングする機能として意味がありません。 そのため、[[メタデータの編集]](../algorithm-module-reference/edit-metadata.md) を使用してその列を **[Clear feature]\(特徴のクリア\)** としてマークすれば、モデルのトレーニングで使用されなくなります。 
 <!--
 + For text data, you might be able to use [Preprocess Text](preprocess-text.md) to collapse similar entries. 
 + For numeric data, you can create a smaller number of bins using [Group Data into Bins](group-data-into-bins.md), remove or truncate values using [Clip Values](clip-values.md), or use machine learning methods such as [Principal Component Analysis](principal-component-analysis.md) or [Learning with Counts](data-transformation-learning-with-counts.md) to reduce the dimensionality of the data.  
@@ -372,7 +379,7 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 
  要件およびデータをどうすればよいか確認するには、入力としてデータセットを使用するモジュールのヘルプ トピックをご覧ください。  
 
- <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->。  
+ <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->.  
 
 |例外メッセージ|
 |------------------------|

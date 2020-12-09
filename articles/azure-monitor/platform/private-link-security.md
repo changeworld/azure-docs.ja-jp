@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 61073ce7e8d3abc43d1db031608da72e6d3e0791
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 8633aba2f7cda5dec4a48e9f7132283f8235f746
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926803"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317522"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する
 
@@ -79,10 +79,10 @@ Private Link の構成を計画するときには、考慮に入れる必要の�
 * 1 つの AMPLS オブジェクトは、最大 10 個のプライベート エンドポイントに接続できます。
 
 下記のトポロジの場合:
-* 各 VNet は 1 つの AMPLS オブジェクトに接続するので、他の AMPLS には接続できません。
-* AMPLS B は 2 つの Vnet に接続しています。使用可能なプライベート エンドポイント接続 10 のうち 2 つを使用しています。
-* AMPLS A は 2 つのワークスペースと 1 つの Application Insights コンポーネントに接続しています。使用可能な Azure Monitor リソース 50 個のうち 3 個を使用しています。
-* ワークスペース 2 は AMPLS A と AMPLS B に接続しています。使用可能な AMPLS 接続 5 つのうち 2 つを使用しています。
+* 各 VNet は **1** つの AMPLS オブジェクトにのみ接続します。
+* AMPLS B は、使用可能なプライベート エンドポイント接続 10 個のうち 2 個 (20%) を使用して、2 つの VNet (VNet2 と VNet3) のプライベート エンドポイントに接続します。
+* AMPLS A は、使用可能な Azure Monitor リソース接続 50 個のうち 3 個 (6%) を使用して、2 つのワークスペースと 1 つの Application Insights コンポーネントに接続します。
+* ワークスペース 2 は、使用可能な AMPLS 接続 5 個のうち 2 個 (40%) を使用して、AMPLS A と AMPLS B に接続します。
 
 ![AMPLS の制限に関する図](./media/private-link-security/ampls-limits.png)
 
@@ -90,7 +90,7 @@ Private Link の構成を計画するときには、考慮に入れる必要の�
 
 まず、Azure Monitor Private Link Scope リソースを作成します。
 
-1. Azure portal で **[リソースの作成]** に移動して、「 **Azure Monitor Private Link Scope** 」を検索します。
+1. Azure portal で **[リソースの作成]** に移動して、「**Azure Monitor Private Link Scope**」を検索します。
 
    ![Azure Monitor Private Link スコープを検索する](./media/private-link-security/ampls-find-1c.png)
 
@@ -103,9 +103,9 @@ Private Link の構成を計画するときには、考慮に入れる必要の�
 
 6. 検証をパスしたら、 **[作成]** をクリックします。
 
-## <a name="connect-azure-monitor-resources"></a>Azure Monitor リソースの接続
+### <a name="connect-azure-monitor-resources"></a>Azure Monitor リソースの接続
 
-最初に AMPLS をプライベート エンドポイントに接続してから Azure Monitor リソースに接続することも、その逆を行うこともできますが、Azure Monitor リソースから始めることで接続プロセスが高速になります。 Azure Monitor Log Analytics ワークスペースと Application Insights コンポーネントを AMPLS に接続する方法を次に示します。
+Azure Monitor リソース (Log Analytics ワークスペースと Application Insights コンポーネント) を AMPLS に接続します。
 
 1. Azure Monitor Private Link Scope で、左側のメニューの **[Azure Monitor リソース]** をクリックします。 **[追加]** をクリックします。
 2. ワークスペースまたはコンポーネントを追加します。 **[追加]** ボタンをクリックするとダイアログが表示され、Azure Monitor リソースを選択できます。 サブスクリプションとリソース グループを参照するか、名前を入力してフィルターを適用できます。 ワークスペースまたはコンポーネントを選択し、 **[適用]** をクリックしてスコープに追加します。
@@ -131,7 +131,7 @@ Private Link の構成を計画するときには、考慮に入れる必要の�
 
    a. Azure Monitor プライベート スコープ リソースを含む **[サブスクリプション]** を選択します。 
 
-   b. **[リソースの種類]** には、 **Microsoft.insights/privateLinkScopes** を選択してください。 
+   b. **[リソースの種類]** には、**Microsoft.insights/privateLinkScopes** を選択してください。 
 
    c. **[リソース]** ドロップダウンから、前に作成した Private Link スコープを選択します。 
 
@@ -144,7 +144,7 @@ Private Link の構成を計画するときには、考慮に入れる必要の�
  
    b.    **[プライベート DNS ゾーンとの統合]** で **[はい]** を選択して、新しいプライベート DNS ゾーンを自動で作成します。 実際の DNS ゾーンは、下のスクリーンショットに示されているものとは異なる場合があります。 
    > [!NOTE]
-   > **[いいえ]** を選択して DNS レコードを手動で管理する場合は、最初に、このプライベート エンドポイントと AMPLS 構成を含め、プライベート リンクの設定を完了させます。 次に、「[Azure プライベート エンドポイントの DNS 構成](https://docs.microsoft.com/azure/private-link/private-endpoint-dns)」の手順に従って、DNS を構成します。 プライベート リンクの設定の準備で、空のレコードを作成しないようにしてください。 作成する DNS レコードによって、既存の設定がオーバーライドされ、Azure Monitor との接続が影響を受ける可能性があります。
+   > **[いいえ]** を選択して DNS レコードを手動で管理する場合は、最初に、このプライベート エンドポイントと AMPLS 構成を含め、プライベート リンクの設定を完了させます。 次に、「[Azure プライベート エンドポイントの DNS 構成](../../private-link/private-endpoint-dns.md)」の手順に従って、DNS を構成します。 プライベート リンクの設定の準備で、空のレコードを作成しないようにしてください。 作成する DNS レコードによって、既存の設定がオーバーライドされ、Azure Monitor との接続が影響を受ける可能性があります。
  
    c.    **[Review + create]\(レビュー + 作成\)** をクリックします。
  
@@ -158,16 +158,19 @@ Private Link の構成を計画するときには、考慮に入れる必要の�
 
 ## <a name="configure-log-analytics"></a>Log Analytics の構成
 
-Azure Portal にアクセスします。 Log Analytics ワークスペース リソースの左側に、 **[ネットワークの分離]** というメニュー項目があります。 このメニューから、2 つの異なる状態を制御できます。 
+Azure Portal にアクセスします。 Log Analytics ワークスペース リソースの左側に、 **[ネットワークの分離]** というメニュー項目があります。 このメニューから、2 つの異なる状態を制御できます。
 
 ![LA ネットワークの分離](./media/private-link-security/ampls-log-analytics-lan-network-isolation-6.png)
 
-まず、この Log Analytics リソースを、アクセス権を持つ任意の Azure Monitor Private Link Scope に接続できます。 **[追加]** をクリックし、[Azure Monitor Private Link Scope] を選択します。  **[適用]** をクリックして接続します。 接続されているすべてのスコープがこの画面に表示されます。 この接続を確立すると、接続された仮想ネットワーク内のネットワーク トラフィックがこのワークスペースに接続できるようになります。 接続の確立は、[Azure Monitor リソースの接続](#connect-azure-monitor-resources)の場合と同じように、スコープから接続するのと同じ効果があります。  
+### <a name="connected-azure-monitor-private-link-scopes"></a>接続されている Azure Monitor プライベート リンク スコープ
+このワークスペースに接続されているすべてのスコープが、この画面に表示されます。 スコープ (AMPLS) に接続すると、各 AMPLS に接続されている仮想ネットワークからのネットワーク トラフィックがこのワークスペースに到達できます。 ここから接続を確立すると、[Azure Monitor リソースの接続](#connect-azure-monitor-resources)の場合のように、スコープから接続するのと同じ効果があります。 新しい接続を追加するには、 **[追加]** をクリックし、Azure Monitor プライベート リンク スコープを選択します。 **[適用]** をクリックして接続します。 「[制限を考慮に入れる](#consider-limits)」で説明しているように、ワークスペースは 5 つの AMPLS オブジェクトに接続できます。 
 
-次に、このリソースに対して、上記の Pivate Link スコープの外部からアクセスする方法を制御できます。 **[Allow public network access for ingestion]\(取り込みにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、接続されているスコープ外のマシンは、このワークスペースにデータをアップロードできません。 **[Allow public network access for queries]\(クエリにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、スコープ外のマシンは、このワークスペースのデータにアクセスできません。 このデータには、ブック、ダッシュボード、クエリ API ベースのクライアント エクスペリエンス、Azure portal の分析情報などへのアクセスが含まれます。 Azure portal の外部で実行され、Log Analytics データにクエリを発行するエクスペリエンスも、プライベート リンク VNET 内で実行する必要があります。
+### <a name="access-from-outside-of-private-links-scopes"></a>プライベート リンク スコープ外からのアクセス
+このページの下部にある設定では、パブリック ネットワークからのアクセスを制御します。つまり、上に示したスコープではネットワークに接続されません。 **[Allow public network access for ingestion]\(取り込みにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、接続されているスコープ外のマシンは、このワークスペースにデータをアップロードできません。 **[Allow public network access for queries]\(クエリにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、スコープ外のマシンは、このワークスペースのデータにアクセスできず、ワークスペースのデータをクエリできません。 これには、ブック、ダッシュボード、API ベースのクライアント エクスペリエンス、Azure portal の分析情報などへのクエリが含まれます。 Azure portal の外部で実行され、Log Analytics データにクエリを発行するエクスペリエンスも、プライベート リンク VNET 内で実行する必要があります。
 
-このような方法でのアクセスの制限は Azure Resource Manager には適用されないため、次のような制限事項があります。
-* データへのアクセス - パブリック ネットワークからのクエリのブロックは、ほとんどの Log Analytics エクスペリエンスに適用されますが、一部のエクスペリエンスでは、Azure Resource Manager を介してデータのクエリが実行されるため、Private Link の設定が Resource Manager にも適用される (機能は近日公開予定) 場合を除き、データのクエリを実行することはできません。 たとえば、Azure Monitor ソリューション、ブックと分析情報、LogicApp コネクタなどがこれに含まれます。
+### <a name="exceptions"></a>例外
+これまで説明したアクセスの制限は Azure Resource Manager には適用されないため、次のような制限事項があります。
+* データへのアクセス - パブリック ネットワークからのクエリのブロック/許可は、ほとんどの Log Analytics エクスペリエンスに適用されますが、一部のエクスペリエンスでは、Azure Resource Manager を介してデータのクエリが実行されるため、プライベート リンクの設定が Resource Manager にも適用される (機能は近日公開予定) 場合を除き、データのクエリを実行することはできません。 たとえば、Azure Monitor ソリューション、ブックと分析情報、LogicApp コネクタなどがこれに含まれます。
 * ワークスペースの管理 - ワークスペースの設定と構成の変更 (これらのアクセス設定をオンまたはオフにするなど) は、Azure Resource Manager によって管理されます。 適切なロール、アクセス許可、ネットワーク制御、および監査を使用して、ワークスペースの管理へのアクセスを制限します。 詳細については、[Azure Monitor のロール、アクセス許可、およびセキュリティ](roles-permissions-security.md)に関するページを参照してください。
 
 > [!NOTE]
@@ -240,11 +243,11 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="azure-portal"></a>Azure portal
 
-Application Insights や Log Analytics などの Azure Monitor ポータル エクスペリエンスを使用するには、プライベート ネットワークで Azure portal および Azure Monitor の拡張機能にアクセスできるようにする必要があります。 **AzureActiveDirectory** 、 **AzureResourceManager** 、 **AzureFrontDoor.FirstParty** 、および **AzureFrontdoor.Frontend** [サービス タグ](../../firewall/service-tags.md)をネットワーク セキュリティ グループに追加します。
+Application Insights や Log Analytics などの Azure Monitor ポータル エクスペリエンスを使用するには、プライベート ネットワークで Azure portal および Azure Monitor の拡張機能にアクセスできるようにする必要があります。 **AzureActiveDirectory**、**AzureResourceManager**、**AzureFrontDoor.FirstParty**、および **AzureFrontdoor.Frontend** [サービス タグ](../../firewall/service-tags.md)をネットワーク セキュリティ グループに追加します。
 
 ### <a name="programmatic-access"></a>プログラムによるアクセス
 
-REST API、 [CLI](/cli/azure/monitor?view=azure-cli-latest) または PowerShell をプライベート ネットワーク上の Azure Monitor で使用するには、 [サービスタグ](../../virtual-network/service-tags-overview.md) **AzureActiveDirectory** と **AzureResourceManager** をファイアウォールに追加します。
+REST API、[CLI](/cli/azure/monitor?view=azure-cli-latest) または PowerShell をプライベート ネットワーク上の Azure Monitor で使用するには、[サービスタグ](../../virtual-network/service-tags-overview.md) **AzureActiveDirectory** と **AzureResourceManager** をファイアウォールに追加します。
 
 これらのタグを追加すると、ログ データのクエリ、Log Analytics ワークスペースや AI コンポーネントの作成と管理などの操作を実行できます。
 

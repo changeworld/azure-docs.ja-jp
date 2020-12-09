@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bcee951dc85d9c317bad481ebdb91ff6c761371c
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 834df29597abaaadad98b232ce75b32a6431cfc2
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653674"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574736"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>チュートリアル:リモートでレンダリングされたモデルの表示
 
@@ -76,7 +76,7 @@ Unity プロジェクト フォルダーにある `Packages/manifest.json` フ�
 
 マニフェストに変更を加えて保存すると、Unity が自動的に更新されます。 *[プロジェクト]* ウィンドウにパッケージが読み込まれたことを確認します。
 
-:::image type="content" source="./media/confirm-packages.png" alt-text="新しい Unity プロジェクト":::
+:::image type="content" source="./media/confirm-packages.png" alt-text="パッケージのインポートを確認する":::
 
 パッケージが読み込まれない場合は、Unity コンソールでエラーを確認してください。 エラーが発生していないのに、 **[Packages]\(パッケージ\)** フォルダーにパッケージが表示されない場合は、パッケージの表示トグル ボタンを確認します。
 ![パッケージ表示トグル ボタンを指し示す矢印を含むスクリーンショット。](./media/unity-package-visibility.png)
@@ -128,7 +128,7 @@ Unity プロジェクト フォルダーにある `Packages/manifest.json` フ�
     > *HybridRenderingPipeline* アセットを [Render Pipeline Asset]\(パイプライン アセットのレンダリング\) フィールドにドラッグ アンド ドロップできない場合 (おそらくフィールドが存在しないことが理由)、パッケージ構成に `com.unity.render-pipelines.universal` パッケージが含まれていることを確認します。
 
 1. 左側のリスト メニューから **[Player]\(プレーヤー\)** を選択します
-1. Windows アイコンとして表示されている**ユニバーサル Windows プラットフォームの設定**タブを選択します。
+1. Windows アイコンとして表示されている **ユニバーサル Windows プラットフォームの設定** タブを選択します。
 1. Windows Mixed Reality をサポートするように、 **[XR Settings]\(XR 設定\)** を次のように変更します。
     1. **[Virtual Reality Supported]\(サポートされている仮想現実\)** を有効にします。
     1. [+] ボタンを押して **[Windows Mixed Reality]** を追加します
@@ -171,7 +171,7 @@ Unity プロジェクト フォルダーにある `Packages/manifest.json` フ�
 
 1. *[Project]\(プロジェクト\)* ペインの **[Assets]\(アセット\)** の下に、*RemoteRenderingCore* という名前の新しいフォルダーを作成します。 次に、*RemoteRenderingCore* 内に *Scripts* という名前の別のフォルダーを作成します。
 
-1. **RemoteRenderingCoordinator** という名前の[新しい C# スクリプト](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html)を作成します。
+1. **RemoteRenderingCoordinator** という名前の [新しい C# スクリプト](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html)を作成します。
 プロジェクトはこのようになります。
 
     ![プロジェクトの階層](./media/project-structure.png)
@@ -220,7 +220,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     public static RemoteRenderingCoordinator instance;
 
     // AccountDomain must be '<region>.mixedreality.azure.com' - if no '<region>' is specified, connections will fail
-    // For most people '<region>' is either 'westus2' or 'westeurope'
+    // The list of regions is available at https://docs.microsoft.com/azure/remote-rendering/reference/regions
     [SerializeField]
     private string accountDomain = "westus2.mixedreality.azure.com";
     public string AccountDomain
@@ -545,11 +545,11 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
 ## <a name="initialize-azure-remote-rendering"></a>Azure Remote Rendering を初期化する
 
-コーディネーターのフレームワークが用意されたので、4 つの各ステージのうち、**Remote Rendering の初期化**から実装を始めていきます。
+コーディネーターのフレームワークが用意されたので、4 つの各ステージのうち、**Remote Rendering の初期化** から実装を始めていきます。
 
 ![ARR スタック 1](./media/remote-render-stack-1.png)
 
-**初期化**によって、どのカメラ オブジェクトをレンダリングに使用するかが Azure Remote Rendering に伝えられ、状態機械が **NotAuthorized** に進みます。 つまり、初期化されていても、セッションに接続する権限はまだありません。 ARR セッションを開始するとコストが発生するため、続行するかどうかをユーザーに確認する必要があります。
+**初期化** によって、どのカメラ オブジェクトをレンダリングに使用するかが Azure Remote Rendering に伝えられ、状態機械が **NotAuthorized** に進みます。 つまり、初期化されていても、セッションに接続する権限はまだありません。 ARR セッションを開始するとコストが発生するため、続行するかどうかをユーザーに確認する必要があります。
 
 **NotAuthorized** 状態に入ると、**CheckAuthorization** が呼び出されます。これにより、**RequestingAuthorization** イベントが呼び出され、どのアカウントの資格情報を使用するかが決定されます (**AccountInfo** はクラスの先頭付近で定義されており、上記の手順で Unity インスペクターを介して定義した資格情報が使用されます)。
 

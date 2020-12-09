@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 61ae446d180a86b42bc52ac3244b96b7b347b68f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5b09ce48226b3c31efce4966ec776c10931cc391
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010573"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348655"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>Azure Storage Explorer を使用して Azure Cosmos DB リソースを管理する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -22,7 +22,7 @@ Azure Storage Explorer を使用して、Azure Cosmos DB に接続できます�
 さまざまな Azure エンティティを、同じツールを使用して 1 か所で管理します。 ストレージ BLOB やキューなど、他の Azure エンティティと一緒に Azure Cosmos DB エンティティの管理、データの操作、ストアド プロシージャとトリガーの更新を実行できます。 Azure Storage Explorer では、SQL、MongoDB、Graph、Table API に構成された Cosmos アカウントがサポートされます。
 
 > [!NOTE]
-> Storage Explorer との Azure Cosmos DB 統合は、非推奨になりました。 既存の機能は、このリリースから最低 1 年間は削除されません。 代わりに、[Azure portal](https://portal.azure.com/)、[Azure Portal デスクトップ アプリ](https://portal.azure.com/App/Download)、またはスタンドアロンの [Azure Cosmos エクスプローラー](data-explorer.md)を使用してください。 代替のオプションには、Storage Explorer で現在サポートされていない多くの新機能が含まれています。
+> Storage Explorer との Azure Cosmos DB 統合は、非推奨になりました。 既存の機能は、このリリースから最低 1 年間は削除されません。 代わりに、[Azure portal](https://portal.azure.com/)、[Azure Portal デスクトップ アプリ](https://portal.azure.com/App/Download)、またはスタンドアロンの [Azure Cosmos DB Explorer](data-explorer.md) を使用してください。 代替のオプションには、Storage Explorer で現在サポートされていない多くの新機能が含まれています。
 
 ## <a name="prerequisites"></a>前提条件
 

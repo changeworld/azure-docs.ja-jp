@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: sideeksh
-ms.openlocfilehash: 53c5dc4920b6c50ee3c900db9626f4d283f7b846
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42d3c74229ab7eeec0ac716073a9e631775fd002
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426420"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187342"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションに使用されるモビリティ サービスの自動更新
 
@@ -63,13 +63,13 @@ Site Recovery で拡張機能の更新を管理するには、いくつかの方
 
 1. **[保存]** を選択します。
 
-:::image type="content" source="./media/azure-to-azure-autoupdate/vault-toggle.png" alt-text="拡張機能の設定":::
+:::image type="content" source="./media/azure-to-azure-autoupdate/vault-toggle.png" alt-text="拡張機能の更新の設定":::
 
 > [!IMPORTANT]
 > **[Site Recovery に管理を許可]** を選択した場合は、コンテナー内のすべての VM にこの設定が適用されます。
 
 > [!NOTE]
-> どちらのオプションでも、更新の管理に使用される Automation アカウントが通知されます。 コンテナーでこの機能を初めて使用する場合は、既定で新しい Automation アカウントが作成されます。 あるいは、この設定をカスタマイズして、既存の Automation アカウントを選択できます。 同じコンテナー内でレプリケーションを有効にするための後続のすべてのタスクでは、以前に作成された Automation アカウントが使用されます。 現在、ドロップダウン メニューには、コンテナーと同じリソース グループ内にある Automation アカウントのみが表示されます。
+> どちらのオプションでも、更新の管理に使用される Automation アカウントが通知されます。 コンテナーでこの機能を初めて使用する場合は、既定で新しい Automation アカウントが作成されます。 あるいは、この設定をカスタマイズして、既存の Automation アカウントを選択できます。 定義すると、同じコンテナー内でレプリケーションを有効にするための後続のすべてのアクションでは、選択した Automation アカウントが使用されます。 現在、ドロップダウン メニューには、コンテナーと同じリソース グループ内にある Automation アカウントのみが表示されます。
 
 > [!IMPORTANT]
 > 次のスクリプトは、Automation アカウントのコンテキストで実行する必要があります。
@@ -460,12 +460,12 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 1. VM にインストールされているモビリティ サービスに新しい更新プログラムがある場合、次の通知が表示されます。**Site Recovery レプリケーション エージェントの新しい更新プログラムが利用可能です。クリックしてインストールしてください。**
 
-   :::image type="content" source="./media/vmware-azure-install-mobility-service/replicated-item-notif.png" alt-text="拡張機能の設定":::
+   :::image type="content" source="./media/vmware-azure-install-mobility-service/replicated-item-notif.png" alt-text="[レプリケートされたアイテム] ウィンドウ":::
 
 1. この通知を選択して、VM の選択ページを開きます。
 1. アップグレードする VM を選択してから、 **[OK]** を選択します。 選択した VM ごとに、モビリティ サービスの更新が開始されます。
 
-   :::image type="content" source="./media/vmware-azure-install-mobility-service/update-okpng.png" alt-text="拡張機能の設定":::
+   :::image type="content" source="./media/vmware-azure-install-mobility-service/update-okpng.png" alt-text="[レプリケートされたアイテム] VM リスト":::
 
 ## <a name="common-issues-and-troubleshooting"></a>一般的な問題とトラブルシューティング
 
@@ -479,15 +479,15 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
   自動更新を有効にした後に発生する問題の大半を修正するには、 **[修復]** を選択します。 [修復] ボタンが使用できない場合は、拡張機能の更新設定ウィンドウに表示されているエラー メッセージを確認してください。
 
-  :::image type="content" source="./media/azure-to-azure-autoupdate/repair.png" alt-text="拡張機能の設定":::
+  :::image type="content" source="./media/azure-to-azure-autoupdate/repair.png" alt-text="拡張機能の更新設定に表示される Site Recovery サービスの [修復] ボタン":::
 
 - **Error**: 実行アカウントに Recovery Services リソースにアクセスするためのアクセス許可がありません。
 
-  **推奨される操作:** 実行アカウントを削除してから[再作成](../automation/manage-runas-account.md)します。 または、Automation 実行アカウントの Azure Active Directory アプリケーションが Recovery Services リソースにアクセスできることを確認します。
+  **推奨される操作:** 実行アカウントを削除してから [再作成](../automation/manage-runas-account.md)します。 または、Automation 実行アカウントの Azure Active Directory アプリケーションが Recovery Services リソースにアクセスできることを確認します。
 
 - **Error**: 実行アカウントが見つかりません。 Azure Active Directory アプリケーション、サービス プリンシパル、ロール、Automation 証明書資産、Automation 接続資産のいずれかが削除されたか、作成されていません。または、証明書と接続の拇印が一致しません。
 
-  **推奨される操作:** 実行アカウントを削除してから[再作成](../automation/manage-runas-account.md)します。
+  **推奨される操作:** 実行アカウントを削除してから [再作成](../automation/manage-runas-account.md)します。
 
 - **Error**: Automation アカウントで使用されている Azure 実行証明書の有効期限がまもなく切れます。
 
@@ -495,7 +495,7 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
   **推奨される操作:** この問題を解決するには、 **[修復]** をクリックし、次に **[証明書の更新]** をクリックします。
 
-  :::image type="content" source="./media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG" alt-text="拡張機能の設定":::
+  :::image type="content" source="./media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG" alt-text="証明書の更新":::
 
   > [!NOTE]
   > 証明書を更新した後、ページを更新して現在の状態を表示します。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 24fbe347aeb0b47ffd1ba694f761d909ff2950f8
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 5b1bbce68be19c2dbb08f7d69611b719b450a370
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989549"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96121764"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>テレメトリ、プロパティ、およびコマンドのペイロード
 
@@ -36,7 +36,7 @@ Azure IoT Central のデバイス テンプレートは、以下を定義する�
 
 デバイス モデルを定義する JSON ファイルでは、[デジタル ツイン定義言語 (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) が使用されます。
 
-使用中のこれらのペイロードの一部を示すサンプル デバイス コードについては、チュートリアルの「[クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する (Node.js)](tutorial-connect-device-nodejs.md)」と「[クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する (Python)](tutorial-connect-device-python.md)」を参照してください。
+使用中のこれらのペイロードの一部を示すサンプル デバイス コードについては、チュートリアルの「[クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](tutorial-connect-device.md)」を参照してください。
 
 ## <a name="view-raw-data"></a>生データを表示する
 

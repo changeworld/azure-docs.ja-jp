@@ -11,14 +11,14 @@ ms.date: 09/22/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58b7aa0bf8c82990a00b4e41041145a67ee2f02b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e272c402cac803d10d9998298ce6d3370d0e000
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91636990"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348805"
 ---
-# <a name="azure-ad-connect-cloud-provisioning-attibute-mapping"></a>Azure AD Connect クラウド プロビジョニング属性マッピング
+# <a name="azure-ad-connect-cloud-provisioning-attribute-mapping"></a>Azure AD Connect クラウド プロビジョニング属性マッピング
 
 Azure AD Connect クラウド プロビジョニングには新しい機能が導入されました。これを使用すると、オンプレミスのユーザーまたはグループ オブジェクトと Azure AD 内のオブジェクトの間に属性を簡単にマップすることができます。  この機能は、クラウド プロビジョニング構成に追加されています。
 
@@ -34,7 +34,7 @@ Azure AD Connect クラウド プロビジョニングには新しい機能が�
   詳細については、[属性マッピングの式の書き方](reference-expressions.md)に関するページを参照してください。
 - **なし** - ターゲットの属性を変更しません。 ただし、ターゲットの属性が空の場合は、指定した既定値が設定されます。
 
-これら 4 つの基本的な種類とともに、カスタム属性マッピングではオプションの**既定**値の割り当てという概念をサポートします。 既定値の割り当てでは、Azure AD にもターゲット オブジェクトにも値がない場合にも、ターゲットの属性には必ず値が設定されます。 最も一般的な構成では、これを空白のままにします。
+これら 4 つの基本的な種類とともに、カスタム属性マッピングではオプションの **既定** 値の割り当てという概念をサポートします。 既定値の割り当てでは、Azure AD にもターゲット オブジェクトにも値がない場合にも、ターゲットの属性には必ず値が設定されます。 最も一般的な構成では、これを空白のままにします。
 
 ## <a name="understanding-attribute-mapping-properties"></a>属性マッピングのプロパティの概要
 
@@ -87,7 +87,7 @@ Azure AD Connect クラウド プロビジョニングには新しい機能が�
 3.  **[プロビジョニングの管理]** を選択します。
 4. **[構成]** の下で、自分の構成を選択します。
 5. **[検証]** で、 **[ユーザーのプロビジョニング]** ボタンをクリックします。 
-6. [オンデマンド プロビジョニング] 画面上で。  ユーザーまたはグループの**識別名**を入力し、 **[プロビジョニング]** ボタンをクリックします。  
+6. [オンデマンド プロビジョニング] 画面上で。  ユーザーまたはグループの **識別名** を入力し、 **[プロビジョニング]** ボタンをクリックします。  
 7. 完了すると、成功の画面と、正常にプロビジョニングされたことを示す 4 つの緑色のチェック ボックスが表示されます。  
   ![プロビジョニングの成功](media/how-to-attribute-mapping/mapping4.png)
 1. **[アクションの実行]** で **[詳細の表示]** をクリックします。  右側を見ると、新しい属性が同期され、式が適用されていることがわかります。

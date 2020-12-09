@@ -5,18 +5,18 @@ ms.subservice: pod
 ms.topic: include
 ms.date: 09/git14/2020
 ms.author: alkohli
-ms.openlocfilehash: 91f91b1260cc445f90c2608fc5259ad61acd37ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25c2ea04cd062554a975c63aae9b97846e646d68
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90533358"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027249"
 ---
-Data Box デバイスでサポートされるストレージ アカウントとストレージの種類の一覧を次に示します。 ストレージ アカウントのすべての種類とそれらの完全な機能のすべての一覧については、「[ストレージ アカウントの種類](/azure/storage/common/storage-account-overview#types-of-storage-accounts)」を参照してください。
+Data Box デバイスでサポートされるストレージ アカウントとストレージの種類の一覧を次に示します。 ストレージ アカウントのすべての種類とそれらの完全な機能のすべての一覧については、「[ストレージ アカウントの種類](../articles/storage/common/storage-account-overview.md#types-of-storage-accounts)」を参照してください。
 
 インポート注文については、サポートされているストレージ アカウントを次の表に示します。
 
-| **ストレージ アカウント/サポートされるストレージの種類** | **ブロック BLOB** |**ページ BLOB*** |**Azure Files** |**メモ**|
+| **ストレージ アカウント/サポートされるストレージの種類** | **ブロック BLOB** |**ページ BLOB** _ |_ *Azure Files** |**メモ**|
 | --- | --- | -- | -- | -- |
 | クラシック Standard | Y | Y | Y |
 | 汎用 v1 Standard  | Y | Y | Y | ホットとクールの両方がサポートされます。|
@@ -29,7 +29,7 @@ Data Box デバイスでサポートされるストレージ アカウントと�
 
 エクスポートの順序については、サポートされているストレージ アカウントを次の表に示します。
 
-| **ストレージ アカウント/サポートされるストレージの種類** | **ブロック BLOB** |**ページ BLOB*** |**Azure Files** |**サポートされているアクセス層**|
+| **ストレージ アカウント/サポートされるストレージの種類** | **ブロック BLOB** |**ページ BLOB** _ |_ *Azure Files** |**サポートされているアクセス層**|
 | --- | --- | -- | -- | -- |
 | クラシック Standard | Y | Y | Y | |
 | 汎用 v1 Standard  | Y | Y | Y | ホット、クール|
@@ -47,5 +47,3 @@ Data Box デバイスでサポートされるストレージ アカウントと�
 > - ページ BLOB にアップロードされるデータは、VHD など、512 バイトに揃えられている必要があります。
 > - 最大 80 TB をエクスポートできます。
 > - ファイル履歴と BLOB スナップショットはエクスポートされません。
-
-

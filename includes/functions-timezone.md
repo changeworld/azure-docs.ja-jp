@@ -1,10 +1,15 @@
 ---
-ms.openlocfilehash: dba7a3cc7a68d360fd6e56511b71ae364f624646
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: ggailey777
+ms.service: azure-functions
+ms.topic: include
+ms.date: 09/20/2020
+ms.author: glenga
+ms.openlocfilehash: 7d1bf8dd2d1c8feab8b051a8edad7d5e570ee11b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569282"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026637"
 ---
 CRON 式で使用する既定のタイム ゾーンは、協定世界時 (UTC) です。 別のタイム ゾーンに基づく CRON 式を使うには、Function App 用に `WEBSITE_TIME_ZONE` という名前のアプリ設定を作成します。 
 
@@ -12,22 +17,16 @@ CRON 式で使用する既定のタイム ゾーンは、協定世界時 (UTC) �
 
 |オペレーティング システム |プラン |値 |
 |-|-|-|
-| **Windows** |All | この値を、[Microsoft のタイム ゾーン インデックス](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc749073(v=ws.10))に関するページに示されている目的のタイム ゾーンの名前に設定します。 |
+| **Windows** |All | Windows コマンド `tzutil.exe /L` によって指定された各ペアの 2 行目に指定されているように、この値を目的のタイム ゾーンの名前に設定します。 |
 | **Linux** |Premium<br/>専用 |この値を、[tz データベース](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)に関するページに示されている目的のタイム ゾーンの名前に設定します。 |
 
 > [!NOTE]
 > Linux 従量課金プランでは、現在 `WEBSITE_TIME_ZONE` はサポートされていません。
 
-たとえば、*Eastern Standard Time* (Windows) と *America/New_York* (Linux) は UTC-05:00 です。 タイマー トリガーが毎日東部標準時の午前 10 時に発生するように設定するには、UTC タイム ゾーンを考慮した次の NCRONTAB 式を使用できます。
-
-```
-"0 0 15 * * *"
-``` 
-
-または、関数アプリのアプリ設定を `WEBSITE_TIME_ZONE` という名前で作成し、その値を `Eastern Standard Time` (Windows) または `America/New_York` (Linux) に設定して、次の NCRONTAB 式を使用します。 
+たとえば、米国の東部標準時 (`Eastern Standard Time` (Windows) または `America/New_York` (Linux)) では現在、標準時では UTC-05:00、夏時間では UTC-04:00 を使用します。 タイマー トリガーが毎日東部標準時の午前 10 時に発生するように設定するには、関数アプリのアプリ設定を `WEBSITE_TIME_ZONE` という名前で作成し、その値を `Eastern Standard Time` (Windows) または `America/New_York` (Linux) に設定して、次の NCRONTAB 式を使用します。 
 
 ```
 "0 0 10 * * *"
 ``` 
 
-`WEBSITE_TIME_ZONE` を使用すると、夏時間などの特定のタイムゾーンでの時間変更に対応するように、時刻が調整されます。 
+`WEBSITE_TIME_ZONE` を使用すると、夏時間などの特定のタイムゾーンでの時間変更や標準時での変更に対応するように、時刻が調整されます。

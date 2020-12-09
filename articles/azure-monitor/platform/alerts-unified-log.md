@@ -6,28 +6,28 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 8081c60833c3c02d55ae66ca695ba106dba01450
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9f8004b41e8048dfc97fb61bb67a634963c0c575
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995082"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317556"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor でのログ アラート
 
 ## <a name="overview"></a>概要
 
-ログ アラートは、[Azure アラート](./alerts-overview.md)でサポートされているアラートの種類の 1 つです。 ログ アラートにより、ユーザーは [Log Analytics](../log-query/get-started-portal.md) クエリを使用して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。 [アクション グループ](./action-groups.md)を使用することで、ルールによって 1 つ以上のアクションをトリガーできます。
+ログ アラートは、[Azure アラート](./alerts-overview.md)でサポートされているアラートの種類の 1 つです。 ログ アラートにより、ユーザーは [Log Analytics](../log-query/log-analytics-tutorial.md) クエリを使用して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。 [アクション グループ](./action-groups.md)を使用することで、ルールによって 1 つ以上のアクションをトリガーできます。
 
 > [!NOTE]
-> [Log Analytics ワークスペース](../log-query/get-started-portal.md)からのログ データを、Azure Monitor メトリック ストアに送信することもできます。 各メトリック アラートの[動作](alerts-metric-overview.md)は異なります。これは、操作するデータによっては、より望ましい場合があります。 メトリックにルーティングできるログとその方法については、[ログのメトリック アラート](alerts-metric-logs.md)に関するページを参照してください。
+> [Log Analytics ワークスペース](../log-query/log-analytics-tutorial.md)からのログ データを、Azure Monitor メトリック ストアに送信することもできます。 各メトリック アラートの[動作](alerts-metric-overview.md)は異なります。これは、操作するデータによっては、より望ましい場合があります。 メトリックにルーティングできるログとその方法については、[ログのメトリック アラート](alerts-metric-logs.md)に関するページを参照してください。
 
 > [!NOTE]
 > 現時点では、API バージョン `2020-05-01-preview` とリソース中心のログ アラートに関して追加料金は発生しません。  プレビュー段階にある機能の価格は、後で発表され、課金が始まる前に通知されます。 通知期間後も新しい API バージョンとリソース中心ログ アラートを引き続き使用することを選択した場合は、該当する料金が適用されます。
 
 ## <a name="prerequisites"></a>前提条件
 
-ログ アラートで、Log Analytics データに対するクエリを実行します。 最初に、[ログ データの収集](resource-logs.md)を開始し、ログ データで問題を照会する必要があります。 検出できることを理解したり、[独自のクエリの記述を開始](../log-query/get-started-portal.md)したりするには、Log Analytics での[アラートのクエリの例に関するトピック](../log-query/saved-queries.md)を使用してください。
+ログ アラートで、Log Analytics データに対するクエリを実行します。 最初に、[ログ データの収集](resource-logs.md)を開始し、ログ データで問題を照会する必要があります。 検出できることを理解したり、[独自のクエリの記述を開始](../log-query/log-analytics-tutorial.md)したりするには、Log Analytics での[アラートのクエリの例に関するトピック](../log-query/example-queries.md)を使用してください。
 
 [Azure 監視共同作成者](./roles-permissions-security.md)は、ログ アラートの作成、変更、更新に必要な一般的なロールです。 リソース ログに対するアクセスとクエリ実行の権限も必要です。 リソース ログに部分的にアクセスすると、クエリが失敗したり、部分的な結果が返されたりすることがあります。 [Azure でのログ アラートの構成に関する詳細を確認してください](./alerts-log.md)。
 
@@ -44,7 +44,7 @@ ms.locfileid: "95995082"
 以下のセクションでは、上記のロジックを設定するために使用できるさまざまなパラメーターについて説明します。
 
 ### <a name="log-query"></a>Log query
-ルールの評価に使用される [Log Analytics](../log-query/get-started-portal.md) クエリ。 このクエリによって返される結果を使用して、アラートをトリガーするかどうかが決まります。 クエリのスコープは次のように設定できます。
+ルールの評価に使用される [Log Analytics](../log-query/log-analytics-tutorial.md) クエリ。 このクエリによって返される結果を使用して、アラートをトリガーするかどうかが決まります。 クエリのスコープは次のように設定できます。
 
 - 仮想マシンなどの特定のリソース。
 - サブスクリプションやリソース グループなどの大きなリソース。
@@ -90,7 +90,7 @@ requests
 | where resultCode == "500"
 ```
 
-- **期間:** 約 15 分
+- **期間/集約粒度:** 約 15 分
 - **アラートの頻度:** 約 15 分
 - **しきい値:** 0 より大きい
 
@@ -145,7 +145,7 @@ requests
 - **リソース ID 列:** _ResourceId (アラート ルールでのリソース ID 列による分割は、現在、サブスクリプションとリソース グループでのみ使用可能)
 - **ディメンションと集計対象:**
   - Computer = VM1、VM2 (アラート ルール定義のフィルター値は、現在、ワークスペースと Application Insights では使用できません。 クエリ テキストをフィルター処理します。)
-- **期間:** 約 15 分
+- **期間/集約粒度:** 約 15 分
 - **アラートの頻度:** 約 15 分
 - **しきい値:** 0 より大きい
 
@@ -209,4 +209,3 @@ requests
 * [Azure のログ アラートの Webhook](alerts-log-webhook.md) について理解する。
 * [Azure アラート](./alerts-overview.md)について学習します。
 * [Log Analytics](../log-query/log-query-overview.md) についてさらに学習します。
-

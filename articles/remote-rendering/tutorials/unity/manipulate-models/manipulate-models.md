@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 003203ef1a25102f9fd3c50001603dbd5d33ce5a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 48c835070329b5cb0892b10760d37708e46bfa1d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565972"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559135"
 ---
 # <a name="tutorial-manipulating-models"></a>チュートリアル:モデルの操作
 
@@ -176,7 +176,7 @@ Unity オブジェクトで境界を厳密に指定して、ローカル **BoxCo
 1. Unity の [Play]\(再生\) ボタンを押してシーンを再生し、**AppMenu** 内の **[Model Tools]\(モデル ツール\)** メニューを開きます。
 ![ビュー コントローラー](./media/model-with-view-controller.png)
 
-**AppMenu** には、モデルとのバインドに使用されるビュー コントローラーを実装した **[Model Tools]\(モデル ツール\)** サブメニューがあります。 この GameObject に **RemoteBounds** コンポーネントが含まれている場合、[**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html) コンポーネント (**BoxCollider** を使用してオブジェクトの周囲に境界ボックスをレンダリングする MRTK コンポーネント) がビュー コントローラーによって追加されます。 ハンド インタラクションは、[**ObjectManipulator**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/api/Microsoft.MixedReality.Toolkit.Experimental.UI.ObjectManipulator.html?q=ObjectManipulator) が担います。 これらのスクリプトを組み合わせることで、リモートでレンダリングされたモデルの移動、回転、拡大縮小を行うことができます。
+**AppMenu** には、モデルとのバインドに使用されるビュー コントローラーを実装した **[Model Tools]\(モデル ツール\)** サブメニューがあります。 この GameObject に **RemoteBounds** コンポーネントが含まれている場合、[**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html) コンポーネント (**BoxCollider** を使用してオブジェクトの周囲に境界ボックスをレンダリングする MRTK コンポーネント) がビュー コントローラーによって追加されます。 ハンド インタラクションは、[**ObjectManipulator**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/api/Microsoft.MixedReality.Toolkit.UI.ObjectManipulator.html) が担います。 これらのスクリプトを組み合わせることで、リモートでレンダリングされたモデルの移動、回転、拡大縮小を行うことができます。
 
 1. ゲーム パネルにマウスを移動し、その中でクリックしてフォーカスを設定します。
 1. [MRTK のハンド シミュレーション](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/InputSimulation/InputSimulationService.html#hand-simulation)を使用して、左 Shift キーを長押しします。
