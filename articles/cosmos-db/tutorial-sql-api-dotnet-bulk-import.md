@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/21/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6e50fe1f5b1658458a2d561f8157f04d1cbceb41
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 6cf0e77657175449b126eeca02a12c164478e568
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341244"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548071"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>.NET SDK を使用して Azure Cosmos DB SQL API アカウントにデータを一括インポートする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -46,7 +46,7 @@ Azure portal から [Azure Cosmos DB SQL API アカウントを作成](create-co
 
 ## <a name="step-2-set-up-your-net-project"></a>手順 2:.NET プロジェクトを設定する
 
-ローカル コンピューターから Windows コマンド プロンプトまたはターミナル ウィンドウを開きます。 次のセクションではコマンド プロンプトまたはターミナルからすべてのコマンドを実行します。 次の dotnet new コマンドを実行して、 *bulk-import-demo* という名前の新しいアプリを作成します。 `--langVersion` パラメーターによって、作成されたプロジェクト ファイル内に *LangVersion* プロパティが設定されます。
+ローカル コンピューターから Windows コマンド プロンプトまたはターミナル ウィンドウを開きます。 次のセクションではコマンド プロンプトまたはターミナルからすべてのコマンドを実行します。 次の dotnet new コマンドを実行して、*bulk-import-demo* という名前の新しいアプリを作成します。 `--langVersion` パラメーターによって、作成されたプロジェクト ファイル内に *LangVersion* プロパティが設定されます。
 
    ```bash
    dotnet new console –langVersion:8 -n bulk-import-demo
@@ -175,7 +175,7 @@ Azure Cosmos DB Emulator を使用している場合は、[こちらの記事か
 
 このチュートリアルの手順を実行する時間がない場合や、コード サンプルをダウンロードするだけの場合は、[GitHub](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer) から入手できます。
 
-プロジェクトを複製したら、[Program.cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/master/src/Program.cs#L25) 内の必要な資格情報を必ず更新してください。
+プロジェクトを複製したら、[Program.cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/main/src/Program.cs#L25) 内の必要な資格情報を必ず更新してください。
 
 サンプルを実行するには、リポジトリ ディレクトリに変更し、`dotnet` を使用します。
 
