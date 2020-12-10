@@ -1,21 +1,24 @@
 ---
 title: Azure Migrate Server Assessment を使用して VMware VM を検出する
 description: Azure Migrate Server Assessment ツールを使用して、オンプレミスの VMware VM を検出する方法について説明します。
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 8a09f4583bd5cdae977b927be9649897a2d24ee6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ff82b90189e134db7d39b259c2c135489d14595d
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832655"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752789"
 ---
 # <a name="tutorial-discover-vmware-vms-with-server-assessment"></a>チュートリアル:Server Assessment を使用して VMware VM を検出する
 
 Azure への移行の一環として、オンプレミスのインベントリとワークロードを検出します。 
 
-このチュートリアルでは、オンプレミスの VMware 仮想マシン (VM) を軽量の Azure Migrate アプライアンスを使用して、Azure Migrate: Server Assessment ツールで検出する方法について説明します。 アプライアンスを VMware VM としてデプロイして、VM とパフォーマンスのメタデータ、VM で実行されているアプリ、VM の依存関係を継続的に検出します。
+このチュートリアルでは、軽量の Azure Migrate アプライアンスを使用して、Azure Migrate: Server Assessment ツールでオンプレミスの VMware 仮想マシン (VM) を検出する方法について説明します。 アプライアンスを VMware VM としてデプロイして、VM とパフォーマンスのメタデータ、VM で実行されているアプリ、VM の依存関係を継続的に検出します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -232,7 +235,7 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
-1. ポータルからコピーした **Azure Migrate プロジェクト キー** を貼り付けます。 このキーがない場合は、 **[Server Assessment] > [検出] > [Manage existing appliances]\(既存のアプライアンスの管理\)** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
+1. ポータルからコピーした **Azure Migrate プロジェクト キー** を貼り付けます。 このキーがない場合は、 **[Server Assessment] > [検出] > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
 1. **[ログイン]** をクリックします。 新しいブラウザー タブで Azure ログイン プロンプトが開きます。表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
 1. 新しいタブで、Azure のユーザー名とパスワードを使用してサインインします。
    

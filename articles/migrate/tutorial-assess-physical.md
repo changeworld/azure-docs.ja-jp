@@ -1,15 +1,18 @@
 ---
 title: Azure に移行するために Azure Migrate Server Assessment を使用して物理サーバーを評価する
 description: Azure Migrate Server Assessment を使用して、Azure に移行するためにオンプレミスの物理サーバーを評価する方法について説明します。
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 3669658100681d08e754c19377b82faff5bce1ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca50f41f1f0eadbc9cfb916a7f68a90712bef52e
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090455"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753197"
 ---
 # <a name="tutorial-assess-physical-servers-for-migration-to-azure"></a>チュートリアル:Azure への移行のために物理サーバーを評価する
 

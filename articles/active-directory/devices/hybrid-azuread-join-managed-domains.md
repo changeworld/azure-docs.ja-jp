@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56b0685dee518399ae8328ddac18f03e82918a38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 303f02e0c6b72b7061a996b3ce8e70799954b435
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268419"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861053"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル:マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -110,8 +110,8 @@ Azure AD Connect を使用して Hybrid Azure AD Join を構成するには:
 
 1. **[SCP の構成]** で、Azure AD Connect で SCP を構成するフォレストごとに次の手順を実行し、 **[次へ]** を選択します。
 
-   1. **フォレスト**を選択します。
-   1. **認証サービス**を選択します。
+   1. **フォレスト** を選択します。
+   1. **認証サービス** を選択します。
    1. **[追加]** を選択して、エンタープライズ管理者の資格情報を入力します。
 
    ![SCP](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-scp-configuration.png)
@@ -176,15 +176,15 @@ Azure AD クラウド認証方法として[パスワード ハッシュ同期](.
 1. [直接リンク](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)を使用して、デバイス ページに移動します。
 2. デバイスを特定する方法については、[Azure portal を使用してデバイス ID を管理する方法](./device-management-azure-portal.md)に関するページをご覧ください。
 3. **[登録済み]** 列に **[保留中]** と表示されている場合、Hybrid Azure AD Join は完了していません。
-4. **[登録済み]** 列に**日付/時刻**が含まれている場合、Hybrid Azure AD Join は完了しています。
+4. **[登録済み]** 列に **日付/時刻** が含まれている場合、Hybrid Azure AD Join は完了しています。
 
 ### <a name="using-powershell"></a>PowerShell の使用
 
-**[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** を使用して、Azure テナントのデバイス登録状態を確認します。 このコマンドレットは、[Azure Active Directory PowerShell モジュール](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0)内にあります。
+**[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** を使用して、Azure テナントのデバイス登録状態を確認します。 このコマンドレットは、[Azure Active Directory PowerShell モジュール](/powershell/azure/active-directory/install-msonlinev1)内にあります。
 
 **Get-MSolDevice** コマンドレットを使用してサービスの詳細を確認する場合:
 
-- Windows クライアントの ID と一致する**デバイス ID** を備えたオブジェクトが存在する必要があります。
+- Windows クライアントの ID と一致する **デバイス ID** を備えたオブジェクトが存在する必要があります。
 - **DeviceTrustType** の値は **[ドメイン参加済み]** です。 この設定は、Azure AD ポータルの **[デバイス]** ページの **[ハイブリッド Azure AD 参加済み]** 状態に相当します。
 - 条件付きアクセスで使用されるデバイスの場合、**Enabled** の値は **True**、**DeviceTrustLevel** の値は **Managed** です。
 

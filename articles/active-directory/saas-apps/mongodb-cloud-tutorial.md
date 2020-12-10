@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
-ms.openlocfilehash: f76f6bc77a26a8574218a07321ab72acc9280569
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: af1c0702929e7cd700c8d19ab24e40f9c6f43a21
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517992"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602174"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mongodb-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と MongoDB Cloud の統合
 
@@ -39,8 +39,8 @@ ms.locfileid: "92517992"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* MongoDB Cloud では、 **SP** Initiated SSO と **IDP** Initiated SSO がサポートされます。
-* MongoDB Cloud では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます。
+* MongoDB Cloud では、**SP** Initiated SSO と **IDP** Initiated SSO がサポートされます。
+* MongoDB Cloud では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 * MongoDB Cloud を構成した後、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 詳細については、[Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)に関するページを参照してください。
 
 ## <a name="add-mongodb-cloud-from-the-gallery"></a>ギャラリーからの MongoDB Cloud の追加
@@ -51,7 +51,7 @@ Azure AD への MongoDB Cloud の統合を構成するには、ギャラリー�
 1. 左側のペインで、 **[Azure Active Directory]** を選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **MongoDB Cloud** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**MongoDB Cloud**」と入力します。
 1. 結果から **[MongoDB Cloud]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -162,7 +162,7 @@ MongoDB Cloud では、Just-In-Time ユーザー プロビジョニングがサ�
 
 - [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
-- [MongoDB Atlas on Azure にサインアップする](https://azuremarketplace.microsoft.com/marketplace/apps/mongodb.mongodb_atlas_may_2020?tab=Overview)
+- [MongoDB Atlas on Azure にサインアップする](https://azuremarketplace.microsoft.com/marketplace/apps/mongodb.mdb_atlas_oct2020?tab=Overview)
 
 - [Azure AD で MongoDB Cloud を試す](https://aad.portal.azure.com/)
 

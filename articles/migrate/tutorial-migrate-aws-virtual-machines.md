@@ -1,15 +1,18 @@
 ---
 title: アマゾン ウェブ サービス (AWS) の EC2 VM を検出して評価し、Azure に移行する
 description: この記事では、Azure Migrate を使用して、AWS VM を Azure に移行する方法について説明します。
+author: deseelam
+ms.author: deseelam
+ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 12785d1e65caf11b24102d2a9c186fe0adcb1fd3
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 10b5f84677deb221bf763870b188ef30ee87e9c2
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302658"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752857"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) の VM を検出して評価し、Azure に移行する
 

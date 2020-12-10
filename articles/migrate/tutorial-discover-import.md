@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate Server Assessment でインポートされた CSV ファイルを使用してオンプレミスのサーバーを評価する
 description: Azure Migrate Server Assessment でインポートされた CSV ファイルを使用して、Azure への移行のためにオンプレミスのサーバーを検出する方法について説明します。
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
-ms.openlocfilehash: 30f17bb6b22d4d19cf225aa52d8284f5306a44ee
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: dfa7ee941e2c373b02fe5fb2f2a648a60a677670
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308385"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753111"
 ---
 # <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>チュートリアル:インポートされた CSV ファイルを使用してサーバーを評価する
 
@@ -177,14 +180,14 @@ CSV テンプレートに情報を追加したら、CSV ファイルを Server A
 
 ## <a name="update-server-information"></a>サーバー情報を更新する
 
-サーバーの情報を更新するには、同じ**サーバー名**を使用してサーバーのデータをもう一度インポートします。 **[サーバー名]** フィールドを変更することはできません。 サーバーの削除は現在サポートされていません。
+サーバーの情報を更新するには、同じ **サーバー名** を使用してサーバーのデータをもう一度インポートします。 **[サーバー名]** フィールドを変更することはできません。 サーバーの削除は現在サポートされていません。
 
 ## <a name="verify-servers-in-the-portal"></a>ポータルでサーバーを確認する
 
 検出後にサーバーが Azure portal に表示されることを確認するには:
 
 1. Azure Migrate ダッシュボードを開きます。
-2. **[Azure Migrate - サーバー]**  >  **[Azure Migrate: Server Assessment]** ページで、**検出済みサーバー**の数を表示するアイコンを選択します。
+2. **[Azure Migrate - サーバー]**  >  **[Azure Migrate: Server Assessment]** ページで、**検出済みサーバー** の数を表示するアイコンを選択します。
 3. **[Import based]\(インポート ベース\)** タブを選択します。
 
 

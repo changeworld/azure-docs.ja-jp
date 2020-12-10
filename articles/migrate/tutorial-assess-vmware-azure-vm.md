@@ -1,15 +1,18 @@
 ---
 title: Azure Migrate の Server Assessment を使用して Azure VM に移行する VMware VM を評価する
 description: Server Assessment を使用して、Azure VM に移行する VMware VM を評価する方法について説明します。
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 01db7128cd990098caa25ba2cd79f2f2a2b28d78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aad1e2a1c8d7ce6a1b6219c42893b1f4a59c6f42
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90108304"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753146"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-azure-vms"></a>チュートリアル:Azure VM への移行のために VMware VM を評価する
 

@@ -1,15 +1,18 @@
 ---
 title: Azure VMware Solution (AVS) に移行する VMware VM を Azure Migrate で評価する
 description: AVS に移行する VMware VM を Azure Migrate Server Assessment で評価する方法について説明します。
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 29f7f824d96aedd80e490ba84c390be4d9493683
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6d3c6f77b062939a88e7277cb7f0ab6ecff9fcb
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604242"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753078"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>チュートリアル:AVS への移行のために VMware VM を評価する
 
@@ -57,7 +60,7 @@ AVS に移行するマシンをこのチュートリアルに従って評価す�
 
 2. **Azure Migrate:Server Assessment** で、**評価** をクリックします。
 
-3. **[サーバーの評価]**  >  **[サーバーの評価]** で、**Azure VMware Solution (AVS) プレビュー**を選択します。
+3. **[サーバーの評価]**  >  **[サーバーの評価]** で、**Azure VMware Solution (AVS) プレビュー** を選択します。
 4. **[検出ソース]** で次の操作を行います。
 
     - アプライアンスを使用してマシンを検出した場合、 **[Azure Migrate アプライアンスから検出されたマシン]** を選択します。
@@ -75,7 +78,7 @@ AVS に移行するマシンをこのチュートリアルに従って評価す�
        - サイズとコストは、指定した場所に基づいて推奨されます。
        - 現在、評価の対象にできるリージョンは、米国東部、米国西部、西ヨーロッパの 3 つです。
    - **[ストレージの種類]** は **[vSAN]** のままにします。 AVS プライベート クラウドでは、これが既定のストレージの種類となります。
-   - AVS ノードでは現在、**予約インスタンス**はサポートされません。
+   - AVS ノードでは現在、**予約インスタンス** はサポートされません。
 8. **[VM サイズ]** では:
     - **[ノードの種類]** で、オンプレミス VM で実行しているワークロードに基づいてノードの種類を選択します。
         - VM を AVS に移行する必要のあるノードが Azure Migrate によって推奨されます。

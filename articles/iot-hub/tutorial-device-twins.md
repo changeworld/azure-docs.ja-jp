@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 74d5e5395853bcba20b2012e54dd8f9fea03afe6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9ec2c51f01d6b13f33bc2d537a8f73a6721967d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748543"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572526"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -28,7 +28,7 @@ ms.locfileid: "92748543"
 
 場合によっては、デバイスからテレメトリを受信するだけでなく、バックエンド サービスからデバイスを構成する必要があります。 デバイスに必要な構成を送信するときに、それらのデバイスから状態とコンプライアンスの更新を受信したい場合もあります。 たとえば、デバイスの目標動作温度範囲を設定する場合や、デバイスからファームウェアのバージョン情報を収集する場合などです。
 
-デバイスと IoT ハブ間で状態情報を同期するには、 _デバイス ツイン_ を使用します。 [デバイス ツイン](iot-hub-devguide-device-twins.md)は、特定のデバイスに関連付けられた JSON ドキュメントであり、IoT Hub によってクラウドに格納されます。また、デバイス ツインに対して[クエリ](iot-hub-devguide-query-language.md)を実行することができます。 デバイス ツインには、 _必要なプロパティ_ 、 _報告されたプロパティ_ 、および _タグ_ が含まれています。 必要なプロパティは、バックエンド アプリケーションによって設定され、デバイスから読み取られます。 報告されたプロパティは、デバイスによって設定され、バックエンド アプリケーションによって読み取られます。 タグはバックエンド アプリケーションによって設定され、デバイスに送信されることはありません。 タグはデバイスの整理に使用します。 このチュートリアルでは、必要なプロパティと報告されたプロパティを使用して状態情報を同期する方法について説明します。
+デバイスと IoT ハブ間で状態情報を同期するには、_デバイス ツイン_ を使用します。 [デバイス ツイン](iot-hub-devguide-device-twins.md)は、特定のデバイスに関連付けられた JSON ドキュメントであり、IoT Hub によってクラウドに格納されます。また、デバイス ツインに対して[クエリ](iot-hub-devguide-query-language.md)を実行することができます。 デバイス ツインには、_必要なプロパティ_、_報告されたプロパティ_、および _タグ_ が含まれています。 必要なプロパティは、バックエンド アプリケーションによって設定され、デバイスから読み取られます。 報告されたプロパティは、デバイスによって設定され、バックエンド アプリケーションによって読み取られます。 タグはバックエンド アプリケーションによって設定され、デバイスに送信されることはありません。 タグはデバイスの整理に使用します。 このチュートリアルでは、必要なプロパティと報告されたプロパティを使用して状態情報を同期する方法について説明します。
 
 ![ツインの概要](media/tutorial-device-twins/DeviceTwins.png)
 
@@ -39,11 +39,9 @@ ms.locfileid: "92748543"
 > * 必要なプロパティを使用して、シミュレートされたデバイスに状態情報を送信する。
 > * 報告されたプロパティを使用して、シミュレートされたデバイスから状態情報を受信する。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="prerequisites"></a>前提条件
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 このクイック スタートで実行する 2 つのサンプル アプリケーションは、Node.js を使って書かれています。 開発用コンピューター上に Node.js v10.x.x 以降が必要です。
 
@@ -63,7 +61,7 @@ node --version
 
 このチュートリアルを完了するには、Azure サブスクリプションに、デバイスがデバイス ID レジストリに追加されている IoT ハブが含まれている必要があります。 デバイス ID レジストリにエントリがあることで、このチュートリアルで実行するシミュレートされたデバイスがハブに接続できます。
 
-サブスクリプションで IoT ハブをまだ設定していない場合は、次の CLI スクリプトを使用して IoT ハブを設定できます。 このスクリプトでは、IoT ハブに **tutorial-iot-hub** という名前を使用していますが、実行時にはこの名前を一意の名前に置き換える必要があります。 このスクリプトで、 **米国中部** リージョンにリソース グループとハブが作成されますが、より近いリージョンに変更することもできます。 このスクリプトで、IoT ハブ サービス接続文字列が取得されます。この文字列をバックエンド サンプルで使用して IoT ハブに接続します。
+サブスクリプションで IoT ハブをまだ設定していない場合は、次の CLI スクリプトを使用して IoT ハブを設定できます。 このスクリプトでは、IoT ハブに **tutorial-iot-hub** という名前を使用していますが、実行時にはこの名前を一意の名前に置き換える必要があります。 このスクリプトで、**米国中部** リージョンにリソース グループとハブが作成されますが、より近いリージョンに変更することもできます。 このスクリプトで、IoT ハブ サービス接続文字列が取得されます。この文字列をバックエンド サンプルで使用して IoT ハブに接続します。
 
 ```azurecli-interactive
 hubname=tutorial-iot-hub
@@ -83,7 +81,7 @@ az iot hub show-connection-string --name $hubname --policy-name service -o table
 
 ```
 
-このチュートリアルでは、 **MyTwinDevice** というシミュレートされたデバイスを使用します。 次のスクリプトで、このデバイスは ID レジストリに追加され、接続文字列が取得されます。
+このチュートリアルでは、**MyTwinDevice** というシミュレートされたデバイスを使用します。 次のスクリプトで、このデバイスは ID レジストリに追加され、接続文字列が取得されます。
 
 ```azurecli-interactive
 # Set the name of your IoT hub:
@@ -120,7 +118,7 @@ az iot hub device-identity show-connection-string --device-id MyTwinDevice --hub
 
 ### <a name="sample-desired-properties"></a>必要なプロパティのサンプル
 
-アプリケーションに適した方法で必要なプロパティを構成することができます。 この例では、 **fanOn** という 1 つの最上位プロパティを使用し、その他のプロパティを個別の **コンポーネント** にグループ化します。 次の JSON スニペットは、このチュートリアルで使用する必要なプロパティの構造を示しています。
+アプリケーションに適した方法で必要なプロパティを構成することができます。 この例では、**fanOn** という 1 つの最上位プロパティを使用し、その他のプロパティを個別の **コンポーネント** にグループ化します。 次の JSON スニペットは、このチュートリアルで使用する必要なプロパティの構造を示しています。
 
 [!code[Sample desired properties](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/desired.json "Sample desired properties")]
 
@@ -136,7 +134,7 @@ JSON 階層内のさまざまなレベルの更新に反応して必要なプロ
 
 ### <a name="handlers-for-multiple-properties"></a>複数のプロパティのハンドラー
 
-前に示した必要なプロパティの JSON の例では、 **components** の **climate** ノードに **minTemperature** と **maxTemperature** という 2 つのプロパティが含まれています。
+前に示した必要なプロパティの JSON の例では、**components** の **climate** ノードに **minTemperature** と **maxTemperature** という 2 つのプロパティが含まれています。
 
 デバイスのローカルの **twin** オブジェクトには、必要なプロパティと報告されたプロパティの完全なセットが格納されています。 バックエンドから送信された **delta** で、必要なプロパティのサブセットのみが更新される可能性があります。 次のコード スニペットでは、シミュレートされたデバイスが **minTemperature** と **maxTemperature** のいずれかの更新を受信した場合に、ローカルの twin の値をもう一方の値に使用し、デバイスを構成します。
 
@@ -148,7 +146,7 @@ JSON 階層内のさまざまなレベルの更新に反応して必要なプロ
 
 バックエンドから送信される必要なプロパティは、特定の必要なプロパティに対して実行されている操作を示していません。 コードで、ローカルに格納されている現在の必要なプロパティとハブから送信された変更のセットから、操作を推測する必要があります。
 
-次のスニペットは、シミュレートされたデバイスが、必要なプロパティの **components** のリストに対して挿入、更新、および削除操作を処理する方法を示しています。 コンポーネントを削除する必要があることを示すために、 **null** 値を使用する方法も確認できます。
+次のスニペットは、シミュレートされたデバイスが、必要なプロパティの **components** のリストに対して挿入、更新、および削除操作を処理する方法を示しています。 コンポーネントを削除する必要があることを示すために、**null** 値を使用する方法も確認できます。
 
 [!code-javascript[Handle components](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=components&highlight=2,6,13 "Handle components")]
 

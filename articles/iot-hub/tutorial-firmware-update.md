@@ -15,18 +15,18 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 432cc733ee31bdaa18d555d9a6aeb6aee9879a44
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b4de685accf665c7555a454ef247ddf589c6ba5f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748529"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572339"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>チュートリアル:デバイス ファームウェアの更新プロセスを実装する
 
 場合によっては、IoT ハブに接続されているデバイスのファームウェアを更新する必要があります。 たとえば、ファームウェアに新しい機能を追加したり、セキュリティ パッチを適用したりできます。 多くの IoT シナリオでは、対象のデバイスに物理的にアクセスして、手動でファームウェア更新を適用することは現実的ではありません。 このチュートリアルでは、ハブに接続されたバックエンド アプリケーションを介してファームウェアの更新プロセスをリモートで開始および監視する方法を示します。
 
-このチュートリアルのバックエンド アプリケーションでは、ファームウェアの更新プロセスを作成および監視するために、IoT ハブに " _構成_ " を作成します。 IoT Hub の [自動デバイス管理](./iot-hub-automatic-device-management.md)では、この構成を使用して、すべての冷却装置上の " _デバイス ツインの必要なプロパティ_ " のセットを更新します。 必要なプロパティは、必要なファームウェアの更新の詳細を指定します。 冷却装置でファームウェアの更新プロセスが実行されている間、" _デバイス ツインの報告されたプロパティ_ " を使用して、バックエンド アプリケーションに状態が報告されます。 バックエンド アプリケーションは、この構成を使用して、デバイスから送信された報告されたプロパティを監視し、ファームウェアの更新プロセスを完了まで追跡できます。
+このチュートリアルのバックエンド アプリケーションでは、ファームウェアの更新プロセスを作成および監視するために、IoT ハブに "_構成_" を作成します。 IoT Hub の [自動デバイス管理](./iot-hub-automatic-device-management.md)では、この構成を使用して、すべての冷却装置上の "_デバイス ツインの必要なプロパティ_" のセットを更新します。 必要なプロパティは、必要なファームウェアの更新の詳細を指定します。 冷却装置でファームウェアの更新プロセスが実行されている間、"_デバイス ツインの報告されたプロパティ_" を使用して、バックエンド アプリケーションに状態が報告されます。 バックエンド アプリケーションは、この構成を使用して、デバイスから送信された報告されたプロパティを監視し、ファームウェアの更新プロセスを完了まで追跡できます。
 
 ![ファームウェアの更新プロセス](media/tutorial-firmware-update/Process.png)
 
@@ -38,11 +38,9 @@ ms.locfileid: "92748529"
 > * デバイスでのファームウェアの更新プロセスをシミュレートする。
 > * ファームウェアの更新の進行状況に応じてデバイスから状態の更新を受信する。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="prerequisites"></a>前提条件
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 このクイック スタートで実行する 2 つのサンプル アプリケーションは、Node.js を使って書かれています。 開発用コンピューター上に Node.js v10.x.x 以降が必要です。
 
@@ -62,7 +60,7 @@ node --version
 
 このチュートリアルを完了するには、Azure サブスクリプションに、デバイスがデバイス ID レジストリに追加されている IoT ハブが含まれている必要があります。 デバイス ID レジストリにエントリがあることで、このチュートリアルで実行するシミュレートされたデバイスがハブに接続できます。
 
-サブスクリプションで IoT ハブをまだ設定していない場合は、次の CLI スクリプトを使用して IoT ハブを設定できます。 このスクリプトでは、IoT ハブに **tutorial-iot-hub** という名前を使用していますが、実行時にはこの名前を一意の名前に置き換える必要があります。 このスクリプトで、 **米国中部** リージョンにリソース グループとハブが作成されますが、より近いリージョンに変更することもできます。 このスクリプトでは、IoT ハブ サービス接続文字列が取得されます。この文字列をバックエンド サンプル アプリケーションで使用して IoT ハブに接続します。
+サブスクリプションで IoT ハブをまだ設定していない場合は、次の CLI スクリプトを使用して IoT ハブを設定できます。 このスクリプトでは、IoT ハブに **tutorial-iot-hub** という名前を使用していますが、実行時にはこの名前を一意の名前に置き換える必要があります。 このスクリプトで、**米国中部** リージョンにリソース グループとハブが作成されますが、より近いリージョンに変更することもできます。 このスクリプトでは、IoT ハブ サービス接続文字列が取得されます。この文字列をバックエンド サンプル アプリケーションで使用して IoT ハブに接続します。
 
 ```azurecli-interactive
 hubname=tutorial-iot-hub
@@ -82,7 +80,7 @@ az iot hub show-connection-string --name $hubname --policy-name service -o table
 
 ```
 
-このチュートリアルでは、 **MyFirmwareUpdateDevice** というシミュレートされたデバイスを使用します。 次のスクリプトを実行すると、このデバイスがデバイス ID レジストリに追加され、タグ値が設定され、接続文字列が取得されます。
+このチュートリアルでは、**MyFirmwareUpdateDevice** というシミュレートされたデバイスを使用します。 次のスクリプトを実行すると、このデバイスがデバイス ID レジストリに追加され、タグ値が設定され、接続文字列が取得されます。
 
 ```azurecli-interactive
 # Set the name of your IoT hub
@@ -147,7 +145,7 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 
 ## <a name="update-the-firmware"></a>ファームウェアを更新する
 
-更新を実行するのは **initiateFirmwareUpdateFlow** 関数です。 この関数は、 **waterfall** 関数を使用して、更新プロセスの各フェーズを順番に実行します。 この例では、ファームウェアの更新には 4 つのフェーズがあります。 最初のフェーズでイメージをダウンロードし、2 番目のフェーズでチェックサムを使用してイメージを検証します。3 番目のフェーズでイメージを適用し、最後のフェーズでデバイスを再起動します。
+更新を実行するのは **initiateFirmwareUpdateFlow** 関数です。 この関数は、**waterfall** 関数を使用して、更新プロセスの各フェーズを順番に実行します。 この例では、ファームウェアの更新には 4 つのフェーズがあります。 最初のフェーズでイメージをダウンロードし、2 番目のフェーズでチェックサムを使用してイメージを検証します。3 番目のフェーズでイメージを適用し、最後のフェーズでデバイスを再起動します。
 
 [!code-javascript[Firmware update flow](~/iot-samples-node/iot-hub/Tutorials/FirmwareUpdate/SimulatedDevice.js?name=firmwareupdateflow "Firmware update flow")]
 

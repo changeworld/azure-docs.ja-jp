@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 1a52fc28d99e0f072323e5042257baec9bf98ecb
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a693b22c609829f3bf6e76637eac5793d73703e6
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518384"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862311"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>チュートリアル:Azure Active Directory シングル サインオンと SharePoint オンプレミスの統合
 
@@ -52,7 +52,7 @@ Azure AD への SharePoint オンプレミスの統合を構成するには、�
 
 1. 新しいアプリケーションを追加するには、ダイアログ ボックスの上部の **[新しいアプリケーション]** を選択します。
 
-1. 検索ボックスに、「 **SharePoint on-premises** 」と入力します。 結果ペインで **[SharePoint on-premises]\(SharePoint オンプレミス\)** を選択します。
+1. 検索ボックスに、「**SharePoint on-premises**」と入力します。 結果ペインで **[SharePoint on-premises]\(SharePoint オンプレミス\)** を選択します。
 
     <kbd>![結果リストの SharePoint オンプレミス](./media/sharepoint-on-premises-tutorial/search-new-app.png)</kbd>
 
@@ -89,7 +89,7 @@ SharePoint オンプレミスで Azure AD SSO を構成するには
 
 1. **[シングル サインオン方式の選択]** ダイアログ ボックスで、 **[SAML]** モードを選択して SSO を有効にします。
  
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **編集** アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、**編集** アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
 
 1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
@@ -133,7 +133,7 @@ SharePoint オンプレミスで Azure AD SSO を構成するには
     次のコマンドを実行して、信頼できる ID プロバイダーを新しく構成します。
 
     > [!TIP]
-    > PowerShell を使用した経験がない場合、または PowerShell の動作の詳細については、[SharePoint PowerShell](/powershell/sharepoint/overview?view=sharepoint-ps) に関する記事をご覧ください。
+    > PowerShell を使用した経験がない場合、または PowerShell の動作の詳細については、[SharePoint PowerShell](/powershell/sharepoint/overview) に関する記事をご覧ください。
 
 
     ```
@@ -152,7 +152,7 @@ SharePoint オンプレミスで Azure AD SSO を構成するには
 
     1. リボンの **[認証プロバイダー]** を選択し、使用するゾーンを選択します。
 
-    1. **[信頼できる ID プロバイダー]** を選択し、 *AzureAD* という名前で先ほど登録した ID プロバイダーを選択します。
+    1. **[信頼できる ID プロバイダー]** を選択し、*AzureAD* という名前で先ほど登録した ID プロバイダーを選択します。
 
     1. **[OK]** を選択します。
 
@@ -168,7 +168,7 @@ SharePoint オンプレミスで Azure AD SSO を構成するには
 
 1. **[ユーザーの作成]** を選択し、ユーザーのプロパティで次の手順を実行します。 テナントのサフィックスまたは任意の検証済みドメインを使用して、自分の Azure AD にユーザーを作成できる場合があります。 
 
-    1. **[名前]** ボックスにユーザー名を入力します。 ここでは、「 **TestUser** 」を使用しました。
+    1. **[名前]** ボックスにユーザー名を入力します。 ここでは、「**TestUser**」を使用しました。
   
     1. **[ユーザー名]** ボックスに「`TestUser@yourcompanydomain.extension`」と入力します。 この例では、`TestUser@contoso.com` が示されます。
 
@@ -192,7 +192,7 @@ SharePoint オンプレミスで Azure AD SSO を構成するには
 
 ### <a name="grant-permissions-to-an-azure-ad-account-in-sharepoint-on-premises"></a>SharePoint オンプレミスで Azure AD アカウントにアクセス許可を付与する
 
-SharePoint オンプレミスで Azure AD ユーザーにアクセス権を付与するには、サイト コレクションを共有するか、サイト コレクションのグループのいずれかに Azure AD ユーザーを追加します。 これで、ユーザーは Azure AD の ID を使用して SharePoint 201x にサインインできるようになりましたが、ユーザー エクスペリエンスを改善する余地がまだあります。 たとえば、ユーザーを検索すると、ユーザーの選択ウィンドウに複数の検索結果が表示されます。 要求のマッピングで作成された要求の種類ごとに検索結果が表示されます。 ユーザー ピッカーを使用してユーザーを選択するには、ユーザー名を正確に入力し、 **名前** 要求結果を選択する必要があります。
+SharePoint オンプレミスで Azure AD ユーザーにアクセス権を付与するには、サイト コレクションを共有するか、サイト コレクションのグループのいずれかに Azure AD ユーザーを追加します。 これで、ユーザーは Azure AD の ID を使用して SharePoint 201x にサインインできるようになりましたが、ユーザー エクスペリエンスを改善する余地がまだあります。 たとえば、ユーザーを検索すると、ユーザーの選択ウィンドウに複数の検索結果が表示されます。 要求のマッピングで作成された要求の種類ごとに検索結果が表示されます。 ユーザー ピッカーを使用してユーザーを選択するには、ユーザー名を正確に入力し、**名前** 要求結果を選択する必要があります。
 
 ![要求検索結果](./media/sharepoint-on-premises-tutorial/claims-search-results.png)
 

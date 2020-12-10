@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: f4fe368e9a56e5ac4c9dfa2648ce4af15a1b5ac0
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: a4bfe2b87f3f2242189a78d9a31a89d82720fd37
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684442"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862073"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>チュートリアル:Azure AD シングル サインオンと Maverics Identity Orchestrator SAML Connector を統合する
 
@@ -165,7 +165,7 @@ Azure portal または Azure CLI のいずれかを使用して、Azure Key Vaul
 
 **Azure CLI の使用**
 
-1. [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) を開き、次のコマンドを入力します。
+1. [Azure CLI](/cli/azure/install-azure-cli) を開き、次のコマンドを入力します。
 
     ```shell
     az login
