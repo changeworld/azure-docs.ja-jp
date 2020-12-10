@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.custom: automl
-ms.openlocfilehash: 866be6a2449f3b10d200968782b90653e1363906
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 4b2769139e74289c4760b5c398c80380afea351f
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359801"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921882"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>チュートリアル:Azure Machine Learning の自動 ML で分類モデルを作成する
 
@@ -76,11 +76,11 @@ https://ml.azure.com で Azure Machine Learning Studio を使用して、次の�
 
 1. 新しいデータセットを作成するには、 **[+ データセットの作成]** ドロップダウンで **[From local files]\(ローカル ファイルから\)** を選択します。 
 
-    1. **[基本情報]** フォームでデータセットに名前を付け、必要に応じて説明を入力します。 自動 ML インターフェイスでは、現在、TabularDatasets だけがサポートされています。そのため、データセットの種類は既定で " *表形式* " に設定されます。
+    1. **[基本情報]** フォームでデータセットに名前を付け、必要に応じて説明を入力します。 自動 ML インターフェイスでは、現在、TabularDatasets だけがサポートされています。そのため、データセットの種類は既定で "*表形式*" に設定されます。
 
     1. 左下の **[次へ]** を選択します
 
-    1. **[データストアとファイルの選択]** フォームで、ワークスペースの作成時に自動的に設定された既定のデータストア、 **workspaceblobstore (Azure Blob Storage)** を選択します。 データ ファイルは、ここにアップロードすることで、ワークスペースから利用できるようになります。
+    1. **[データストアとファイルの選択]** フォームで、ワークスペースの作成時に自動的に設定された既定のデータストア、**workspaceblobstore (Azure Blob Storage)** を選択します。 データ ファイルは、ここにアップロードすることで、ワークスペースから利用できるようになります。
 
     1. **[参照]** を選択します。
     
@@ -102,7 +102,7 @@ https://ml.azure.com で Azure Machine Learning Studio を使用して、次の�
         列見出し| データセットの見出しがある場合、それがどのように処理されるかを示します。| すべてのファイルのヘッダーを同じものにする
         行のスキップ | データセット内でスキップされる行がある場合、その行数を示します。| なし
 
-    1. **[スキーマ]** フォームを使用すると、この実験用にデータをさらに構成できます。 この例では、 **day_of_week** 特徴のトグル スイッチを選択して、この実験に含めないようにします。 **[次へ]** を選択します。
+    1. **[スキーマ]** フォームを使用すると、この実験用にデータをさらに構成できます。 この例では、**day_of_week** 特徴のトグル スイッチを選択して、この実験に含めないようにします。 **[次へ]** を選択します。
 
         ![[プレビュー] タブの構成](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
 
@@ -163,8 +163,8 @@ https://ml.azure.com で Azure Machine Learning Studio を使用して、次の�
 1. **[完了]** を選択して実験を実行します。 実験の準備が開始されると、 **[Run Detail]\(実行の詳細\)** 画面が開いて、一番上に **[Run status]\(実行の状態\)** が表示されます。
 
 >[!IMPORTANT]
-> 実験の実行の準備に、 **10 から 15 分** かかります。
-> 実行の開始後、 **各イテレーションのためにさらに 2、3 分** かかります。  
+> 実験の実行の準備に、**10 から 15 分** かかります。
+> 実行の開始後、**各イテレーションのためにさらに 2、3 分** かかります。  
 > 実験の進行に応じて実行の状態を確認するには、 **[最新の情報に更新]** を定期的に選択します。
 >
 > 運用環境では、しばらく席を離れるかもしれません。 ただし、このチュートリアルでは、他のイテレーションが実行中でも、アルゴリズムのテストが終わりしだい、 **[モデル]** タブで調査することをお勧めします。 
@@ -187,7 +187,7 @@ https://ml.azure.com で Azure Machine Learning Studio を使用して、次の�
 
 実験の実行が完了したかどうかを確認します。 これを行うには、画面の上部にある **[Run 1]\(実行 1\)** を選択して、親の実行ページに戻ります。 画面の左上に **完了** 状態が表示されます。 
 
-実験の実行が完了すると、 **[詳細]** ページに **[Best model summary]\(最適なモデルの概要\)** セクションが設定されます。 この実験では、 **VotingEnsemble** は **AUC_weighted** メトリックに基づいて最適なモデルと見なされます。  
+実験の実行が完了すると、 **[詳細]** ページに **[Best model summary]\(最適なモデルの概要\)** セクションが設定されます。 この実験では、**VotingEnsemble** は **AUC_weighted** メトリックに基づいて最適なモデルと見なされます。  
 
 このモデルをデプロイしますが、デプロイには完了まで約 20 分かかることにご留意ください。 デプロイ プロセスには、モデルを登録したり、リソースを生成したり、Web サービス用にそれらを構成したりすることを含む、いくつかの手順が伴います。
 
@@ -213,7 +213,7 @@ https://ml.azure.com で Azure Machine Learning Studio を使用して、次の�
     
 これで、予測を生成するための実稼働 Web サービスが作成されました。 
 
-新しい Web サービスの使い方、Azure Machine Learning サポートに組み込まれている Power BI を使用した予測のテスト方法の詳細については、 [**次のステップ**](#next-steps)に進みます。
+新しい Web サービスの使い方、Azure Machine Learning サポートに組み込まれている Power BI を使用した予測のテスト方法の詳細については、[**次のステップ**](#next-steps)に進みます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -241,7 +241,7 @@ https://ml.azure.com で Azure Machine Learning Studio を使用して、次の�
 > [Web サービスを使用する](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + [自動機械学習](concept-automated-ml.md)についてさらに理解を深める。
-+ 分類メトリックとグラフの詳細については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md#classification)」の記事を参照してください。
++ 分類メトリックとグラフの詳細については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md)」の記事を参照してください。
 + [特徴付け](how-to-configure-auto-features.md#featurization)についてさらに理解を深める。
 + [データ プロファイル](how-to-connect-data-ui.md#profile)についてさらに理解を深める。
 

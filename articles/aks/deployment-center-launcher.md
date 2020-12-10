@@ -5,12 +5,12 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-ms.openlocfilehash: 36b2e829e56cf4d3b5ace64af989fa7f71725c44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15b0413eabcfae7e3a4b28243caf2a708260ccae
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360839"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932219"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Azure Kubernetes のデプロイ センター
 
@@ -56,7 +56,7 @@ Azure DevOps のデプロイ センターを利用すると、アプリケーシ
 
    ![デプロイ センターを指す矢印が記載された Azure portal を示すスクリーンショット。](media/deployment-center-launcher/settings.png)
 
-1. コードの場所を選択し、 **[次へ]** を選択します。 次に、現在サポートされているリポジトリのいずれかを選択します: **[Azure Repos](/azure/devops/repos/index?view=azure-devops)** または **GitHub**。
+1. コードの場所を選択し、 **[次へ]** を選択します。 次に、現在サポートされているリポジトリのいずれかを選択します: **[Azure Repos](/azure/devops/repos/index)** または **GitHub**。
 
     Azure Repos は、コードを管理するのに役立つバージョン管理ツールのセットです。 ソフトウェア プロジェクトが大きいか小さいかにかかわらず、できるだけ早期にバージョン管理を使用することをお勧めします。
 
@@ -77,7 +77,7 @@ Azure DevOps のデプロイ センターを利用すると、アプリケーシ
 
     ![リポジトリで Dockerfile が見つからなかったというメッセージが表示されたデプロイ センターを示すスクリーンショット。](media/deployment-center-launcher/dockerfile.png)
 
-1. 既存のコンテナー レジストリを選択するか作成し、 **[完了]** を選択します。 パイプラインが自動的に作成され、[Azure Pipelines](/azure/devops/pipelines/index?view=azure-devops) のキューにビルドが配置されます。
+1. 既存のコンテナー レジストリを選択するか作成し、 **[完了]** を選択します。 パイプラインが自動的に作成され、[Azure Pipelines](/azure/devops/pipelines/index) のキューにビルドが配置されます。
 
     Azure Pipelines は、コード プロジェクトを自動的にビルドしてテストし、他のユーザーが使用できるようにするクラウド サービスです。 Azure Pipelines では、継続的インテグレーションと継続的デリバリーが組み合わされ、コードが継続的に一貫してテストおよびビルドされて、任意のターゲットに出荷されます。
 

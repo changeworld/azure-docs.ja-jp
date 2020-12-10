@@ -3,8 +3,7 @@ title: .NET Core アプリでの機能フラグの使用に関するチュート
 description: このチュートリアルでは、.NET Core アプリで機能フラグを実装する方法について説明します。
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,14 +11,14 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 09/17/2020
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 6da2aa645549920cce2f5c0cfe8a32c98dc04708
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8c0dd9713c673ad676058acc7dbbb3cb5a65362e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746126"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929193"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリ内で機能フラグを使用する
 
@@ -130,11 +129,11 @@ config.AddAzureAppConfiguration(options => {
 
 ## <a name="feature-flag-declaration"></a>機能フラグの宣言
 
-各機能フラグには 2 つの部分があります。1 つは名前で、もう 1 つは、機能の状態が " *オン* " である (つまり、その値が `True` である) かどうかの評価に使用される 1 つ以上のフィルターの一覧です。 フィルターは、機能をオンにするタイミングに関するユース ケースを定義します。
+各機能フラグには 2 つの部分があります。1 つは名前で、もう 1 つは、機能の状態が "*オン*" である (つまり、その値が `True` である) かどうかの評価に使用される 1 つ以上のフィルターの一覧です。 フィルターは、機能をオンにするタイミングに関するユース ケースを定義します。
 
-機能フラグに複数のフィルターがある場合は、フィルターのいずれかが、機能を有効にする必要があると判断するまで、フィルター一覧が順番に走査されます。 その時点で、機能フラグが " *オン* " になり、残りのフィルターの結果はすべてスキップされます。 どのフィルターも、機能を有効にする必要があると示していない場合、機能フラグは " *オフ* " になります。
+機能フラグに複数のフィルターがある場合は、フィルターのいずれかが、機能を有効にする必要があると判断するまで、フィルター一覧が順番に走査されます。 その時点で、機能フラグが "*オン*" になり、残りのフィルターの結果はすべてスキップされます。 どのフィルターも、機能を有効にする必要があると示していない場合、機能フラグは "*オフ*" になります。
 
-機能マネージャーは、 *appsettings.json* を機能フラグの構成ソースとしてサポートしています。 次の例は、JSON ファイルでの機能フラグの設定方法を示しています。
+機能マネージャーは、*appsettings.json* を機能フラグの構成ソースとしてサポートしています。 次の例は、JSON ファイルでの機能フラグの設定方法を示しています。
 
 ```JSON
 "FeatureManagement": {
@@ -155,9 +154,9 @@ config.AddAzureAppConfiguration(options => {
 
 慣例により、この JSON ドキュメントの `FeatureManagement` セクションが機能フラグの設定に使用されます。 前述の例は、`EnabledFor` プロパティにフィルターが定義されている 3 つの機能フラグを示しています。
 
-* `FeatureA` は " *オン* " です。
-* `FeatureB` は " *オフ* " です。
-* `FeatureC` は、`Parameters` プロパティとともに `Percentage` という名前のフィルターを指定します。 `Percentage` は、構成可能なフィルターです。 この例で、`Percentage` は、`FeatureC` フラグが " *オン* " になる確率を 50% に指定しています。
+* `FeatureA` は "*オン*" です。
+* `FeatureB` は "*オフ*" です。
+* `FeatureC` は、`Parameters` プロパティとともに `Percentage` という名前のフィルターを指定します。 `Percentage` は、構成可能なフィルターです。 この例で、`Percentage` は、`FeatureC` フラグが "*オン*" になる確率を 50% に指定しています。
 
 ## <a name="feature-flag-references"></a>機能フラグの参照
 
@@ -174,7 +173,7 @@ public enum MyFeatureFlags
 
 ## <a name="feature-flag-checks"></a>機能フラグのチェック
 
-機能管理の基本的なパターンでは、最初に機能フラグが " *オン* " に設定されているかどうかをチェックします。 そうなっている場合は、機能マネージャーが、機能に含まれているアクションを実行します。 次に例を示します。
+機能管理の基本的なパターンでは、最初に機能フラグが "*オン*" に設定されているかどうかをチェックします。 そうなっている場合は、機能マネージャーが、機能に含まれているアクションを実行します。 次に例を示します。
 
 ```csharp
 IFeatureManager featureManager;
@@ -203,7 +202,7 @@ public class HomeController : Controller
 
 ## <a name="controller-actions"></a>コントローラー アクション
 
-MVC コントローラーでは、`FeatureGate` 属性を使用して、コントローラー クラス全体を有効にするか、特定のアクションを有効にするかを制御できます。 次の `HomeController` コントローラーでは、コントローラー クラスに含まれるアクションを実行するには、`FeatureA` が " *オン* " になっている必要があります。
+MVC コントローラーでは、`FeatureGate` 属性を使用して、コントローラー クラス全体を有効にするか、特定のアクションを有効にするかを制御できます。 次の `HomeController` コントローラーでは、コントローラー クラスに含まれるアクションを実行するには、`FeatureA` が "*オン*" になっている必要があります。
 
 ```csharp
 using Microsoft.FeatureManagement.Mvc;
@@ -215,7 +214,7 @@ public class HomeController : Controller
 }
 ```
 
-次の `Index` アクションを実行するには、`FeatureA` が " *オン* " になっている必要があります。
+次の `Index` アクションを実行するには、`FeatureA` が "*オン*" になっている必要があります。
 
 ```csharp
 using Microsoft.FeatureManagement.Mvc;
@@ -227,7 +226,7 @@ public IActionResult Index()
 }
 ```
 
-制御する機能フラグが " *オフ* " であるために MVC コントローラーまたはアクションがブロックされている場合、登録されている `IDisabledFeaturesHandler` インターフェイスが呼び出されます。 既定の `IDisabledFeaturesHandler` インターフェイスは、応答本文なしで 404 状態コードをクライアントに返します。
+制御する機能フラグが "*オフ*" であるために MVC コントローラーまたはアクションがブロックされている場合、登録されている `IDisabledFeaturesHandler` インターフェイスが呼び出されます。 既定の `IDisabledFeaturesHandler` インターフェイスは、応答本文なしで 404 状態コードをクライアントに返します。
 
 ## <a name="mvc-views"></a>MVC ビュー
 

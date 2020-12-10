@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
 ms.custom: automl
-ms.openlocfilehash: 5577a0d9270f3e4566bf57876b8abc3d1a3ae4be
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8b354abb98c56a572badf2421b0d7dbbd25f7a63
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356503"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921850"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>チュートリアル:自動機械学習を使用して需要を予測する
 
@@ -64,7 +64,7 @@ ms.locfileid: "93356503"
     
     1. 左下の **[次へ]** を選択します
 
-    1. **[データストアとファイルの選択]** フォームで、ワークスペースの作成時に自動的に設定された既定のデータストア、 **workspaceblobstore (Azure Blob Storage)** を選択します。 これは、データ ファイルをアップロードするストレージの場所です。 
+    1. **[データストアとファイルの選択]** フォームで、ワークスペースの作成時に自動的に設定された既定のデータストア、**workspaceblobstore (Azure Blob Storage)** を選択します。 これは、データ ファイルをアップロードするストレージの場所です。 
 
     1. **[参照]** を選択します。 
     
@@ -86,9 +86,9 @@ ms.locfileid: "93356503"
 
     1. **[スキーマ]** フォームを使用すると、この実験用にデータをさらに構成できます。 
     
-        1. この例では、 **casual** と **registered** 列を無視するように選択します。 これらの列は **cnt** 列の内訳であるため、それらを含めません。
+        1. この例では、**casual** と **registered** 列を無視するように選択します。 これらの列は **cnt** 列の内訳であるため、それらを含めません。
 
-        1. また、この例では、 **Properties** と **Type** の既定値をそのまま使用します。 
+        1. また、この例では、**Properties** と **Type** の既定値をそのまま使用します。 
         
         1. **[次へ]** を選択します。
 
@@ -145,7 +145,7 @@ ms.locfileid: "93356503"
     主要メトリック| 機械学習アルゴリズムを測定される評価メトリック。|正規化された平均平方二乗誤差
     最適なモデルの説明| 自動 ML で作成された最適なモデルの説明を自動的に表示します。| 有効化
     ブロックされたアルゴリズム | トレーニング ジョブから除外するアルゴリズム| 極端なランダム ツリー
-    その他の予測設定| これらの設定は、モデルの精度を向上させるのに役立ちます <br><br> _**[Forecast target lags]\(予測ターゲットのラグ\)**_ : ターゲット変数のラグをどの程度さかのぼって作成するかを指定します <br> _**ターゲットのローリング ウィンドウ**_ : *max、min* 、 *sum* などの特徴が生成されるローリング ウィンドウのサイズを指定します。 | <br><br>予測&nbsp;ターゲットの&nbsp;ラグ:なし <br> ターゲットの&nbsp;ローリング&nbsp;ウィンドウ&nbsp;サイズ:なし
+    その他の予測設定| これらの設定は、モデルの精度を向上させるのに役立ちます <br><br> _**[Forecast target lags]\(予測ターゲットのラグ\)**_: ターゲット変数のラグをどの程度さかのぼって作成するかを指定します <br> _**ターゲットのローリング ウィンドウ**_: *max、min*、*sum* などの特徴が生成されるローリング ウィンドウのサイズを指定します。 | <br><br>予測&nbsp;ターゲットの&nbsp;ラグ:なし <br> ターゲットの&nbsp;ローリング&nbsp;ウィンドウ&nbsp;サイズ:なし
     終了条件| 条件が満たされると、トレーニング ジョブが停止します。 |トレーニング&nbsp;ジョブ時間 (時間):&nbsp;3 <br> メトリック&nbsp;スコアしきい値:&nbsp;なし
     検証 | クロス検証タイプとテストの回数を選択します。|検証タイプ:<br>&nbsp;k 分割交差検証&nbsp; <br> <br> 検証の数: 5
     コンカレンシー| イテレーションごとに実行される並列イテレーションの最大数| &nbsp;最大同時イテレーション数:&nbsp;6
@@ -157,8 +157,8 @@ ms.locfileid: "93356503"
 実験を実行するには、 **[終了]** を選択します。 **[実行の詳細]** 画面が開き、上部の実行番号の横に **[実行の状態]** が表示されます。 この状態は、実験の進行に応じて更新されます。
 
 >[!IMPORTANT]
-> 実験の実行の準備に、 **10 から 15 分** かかります。
-> 実行の開始後、 **各イテレーションのためにさらに 2、3 分** かかります。  <br> <br>
+> 実験の実行の準備に、**10 から 15 分** かかります。
+> 実行の開始後、**各イテレーションのためにさらに 2、3 分** かかります。  <br> <br>
 > 実稼働環境では、このプロセスには時間がかかるため、しばらくお待ちください。 待機している間に、アルゴリズムのテストが終わり次第、 **[モデル]** タブで調査を開始することをお勧めします。 
 
 ##  <a name="explore-models"></a>モデルを調査する
@@ -205,7 +205,7 @@ Azure Machine Learning Studio で自動機械学習を使用すると、わず�
     
 デプロイに成功すると、予測を生成するための実稼働 Web サービスが作成されます。 
 
-新しい Web サービスの使い方、Azure Machine Learning サポートに組み込まれている Power BI を使用した予測のテスト方法の詳細については、 [**次のステップ**](#next-steps)に進みます。
+新しい Web サービスの使い方、Azure Machine Learning サポートに組み込まれている Power BI を使用した予測のテスト方法の詳細については、[**次のステップ**](#next-steps)に進みます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -235,7 +235,7 @@ Azure Machine Learning Studio で自動機械学習を使用すると、わず�
 > [Web サービスを使用する](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + [自動機械学習](concept-automated-ml.md)についてさらに理解を深める。
-+ 分類メトリックとグラフの詳細については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md#classification)」の記事を参照してください。
++ 分類メトリックとグラフの詳細については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md)」の記事を参照してください。
 + [特徴付け](how-to-configure-auto-features.md#featurization)についてさらに理解を深める。
 + [データ プロファイル](how-to-connect-data-ui.md#profile)についてさらに理解を深める。
 
