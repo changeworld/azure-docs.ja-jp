@@ -27,7 +27,7 @@
           href: virtual-wan-locations-partners.md
         - name: パートナー向けの自動化ガイドライン
           href: virtual-wan-configure-automation-providers.md
-    - name: Architecture
+    - name: アーキテクチャ
       items:
         - name: Virtual WAN に移行する
           href: migrate-from-hub-spoke-topology.md

@@ -99,7 +99,7 @@
           href: routing-preference-overview.md
         - name: パブリック IP のセキュリティ ベースライン
           href: public-ip-security-baseline.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: Virtual Network のセキュリティ ベースライン
           href: security-baseline.md
@@ -272,7 +272,7 @@
                       href: configure-routing-preference-virtual-machine-powershell.md
                     - name: Azure CLI
                       href: configure-routing-preference-virtual-machine-cli.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: ネットワーク トラフィックのフィルター処理
           items:
