@@ -16,10 +16,10 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7e03ba5e7a4a24ee3114946230f78a64ea3d42cf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265683"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD アクセス レビューでグループおよびアプリケーションに対するアクセスをレビューする
@@ -138,7 +138,7 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
    2. **[レビューの開始]** リンクをクリックして、アクセス レビューを開きます。
 
 >[!NOTE]
->[レビューの開始] をクリックすると、**マイ アプリ**に移動する場合は、前述の「**マイ アプリ ポータル**」というタイトルのセクションに記載されている手順に従ってください。
+>[レビューの開始] をクリックすると、**マイ アプリ** に移動する場合は、前述の「**マイ アプリ ポータル**」というタイトルのセクションに記載されている手順に従ってください。
 
 ### <a name="navigate-to-my-access-directly"></a>マイ アクセスに直接移動する
 

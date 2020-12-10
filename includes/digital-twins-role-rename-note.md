@@ -13,4 +13,4 @@ ms.lasthandoff: 10/23/2020
 ms.locfileid: "92478891"
 ---
 >[!NOTE]
-> このロールは最近、プレビュー段階で使用されていた名前から変更されました。 " _**Azure Digital Twins データ所有者**_ " の旧称は " *Azure Digital Twins 所有者 (プレビュー)* " です。
+> このロールは最近、プレビュー段階で使用されていた名前から変更されました。 "_**Azure Digital Twins データ所有者**_" の旧称は "*Azure Digital Twins 所有者 (プレビュー)* " です。

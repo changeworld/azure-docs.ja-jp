@@ -55,7 +55,7 @@ https://portal.azure.com で Azure にサインインします。
 
 1. **[保存]** をクリックして、Runbook の下書きのコピーを保存します。
 
-    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-edit-runbook.png" alt-text="[PowerShell Runbook の編集] ページのスクリーンショット。":::
+    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-edit-runbook.png" alt-text="右側のウィンドウにコード例が表示されている [PowerShell Runbook の編集] ページのスクリーンショット。":::
 
 ## <a name="test-the-runbook"></a>Runbook をテストする
 
@@ -65,13 +65,13 @@ Runbook が作成されたら、Runbook をテストして動作することを�
 
 1. **[名前]** の値を入力し、 **[開始]** をクリックします。 テスト ジョブが開始され、ジョブの状態と出力が表示されます。
 
-    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-test-runbook.png" alt-text="[PowerShell Runbook の編集] ページのスクリーンショット。":::
+    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-test-runbook.png" alt-text="名前フィールドにサンプル値が表示されている [テスト] ペインのスクリーンショット。":::
 
 1. 右上の **[X]** をクリックして、[テスト] ペインを閉じます。 表示されるポップアップで **[OK]** を選択します。
 
 1. [PowerShell Runbook の編集] ページで **[発行]** をクリックして、アカウントの Runbook の公式バージョンとして Runbook を発行します。
 
-   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png" alt-text="[PowerShell Runbook の編集] ページのスクリーンショット。":::
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png" alt-text="[発行] ボタンが選択されている [PowerShell Runbook の編集] ページのスクリーンショット。":::
 
 ## <a name="run-the-runbook"></a>Runbook を実行する
 
@@ -79,15 +79,15 @@ Runbook が公開されると、概要ページが表示されます。
 
 1. Runbook の概要ページで、 **[開始]** をクリックしてこの Runbook の [Runbook の開始] 構成ページを開きます。
 
-   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png" alt-text="[PowerShell Runbook の編集] ページのスクリーンショット。":::
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png" alt-text="[Runbook の開始] 構成ページのスクリーンショット。":::
 
 1. 既定値が使用されるように **[名前]** を空白のままにして、 **[OK]** をクリックします。 Runbook ジョブが送信され、ジョブ ページが表示されます。
 
-   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-job-page.png" alt-text="[PowerShell Runbook の編集] ページのスクリーンショット。":::
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-job-page.png" alt-text="[出力] ボタンが選択されているジョブ ページのスクリーンショット。":::
 
 1. [ジョブの状態] が `Running` または `Completed` に変わったら、 **[出力]** をクリックして [出力] ペインを開き、Runbook の出力を確認します。
 
-   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png" alt-text="[PowerShell Runbook の編集] ページのスクリーンショット。":::
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png" alt-text="Runbook の出力を表示している [出力] ペインのスクリーンショット。":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

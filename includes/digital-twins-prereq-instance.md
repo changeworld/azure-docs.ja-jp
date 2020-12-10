@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/29/2020
 ms.author: baanders
 ms.openlocfilehash: 8ea371e25f149c52412153aa0b9c3b7475dc77fd
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2020
+ms.lasthandoff: 12/04/2020
 ms.locfileid: "96303578"
 ---
 この記事で Azure Digital Twins を操作するには、まず **Azure Digital Twins インスタンス** とそれを使用するために必要なアクセス許可を設定する必要があります。 以前の作業で Azure Digital Twins インスタンスが既に設定されている場合は、そのインスタンスを使用できます。
