@@ -25,7 +25,7 @@ ms.locfileid: "91812717"
    * **[名前]** - 仮想ハブの呼び出しに使う名前を入力します。
    * **[ハブ プライベート アドレス空間]** - CIDR 表記のハブのアドレス範囲。
 
-   :::image type="content" source="media/virtual-wan-p2s-hub/create-hub.jpg" alt-text="新しいハブ":::
+   :::image type="content" source="media/virtual-wan-p2s-hub/create-hub.jpg" alt-text="仮想ハブを作成する":::
 
 1. [ポイント対サイト] タブで、次のフィールドを入力します。
 
@@ -34,7 +34,7 @@ ms.locfileid: "91812717"
    * **[クライアント アドレス プール]** - リモート ユーザーに使用されます。
    * **カスタム DNS サーバーの IP**
 
-   :::image type="content" source="media/virtual-wan-p2s-hub/hub-with-p2s.png" alt-text="新しいハブ":::
+   :::image type="content" source="media/virtual-wan-p2s-hub/hub-with-p2s.png" alt-text="ポイント対サイトを持つハブ":::
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
 1. **[検証に成功しました]** ページで **[作成]** を選択します。

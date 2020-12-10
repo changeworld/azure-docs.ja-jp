@@ -27,7 +27,7 @@ az extension list
    az extension update --name azure-iot
    ```
 
-* 一覧に `azure-iot` が含まれ**ない**場合: 拡張機能をインストールする必要があります。 次のコマンドを実行します。
+* 一覧に `azure-iot` が含まれ **ない** 場合: 拡張機能をインストールする必要があります。 次のコマンドを実行します。
 
     ```azurecli
     az extension add --name azure-iot

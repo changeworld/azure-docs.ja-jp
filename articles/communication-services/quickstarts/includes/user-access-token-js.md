@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: c1c6478948aaf207f0ca1adf367840ca3db34649
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: a64d26ad11911e2cb9dcdec027b3ab3e4d22984b
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325301"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96584533"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -119,12 +119,11 @@ console.log(token);
 
 ## <a name="refresh-access-tokens"></a>アクセス トークンの更新
 
-アクセス トークンを更新するには、`CommunicationUser` オブジェクトを使用して再発行します。
+アクセス トークンの更新は、トークンの発行に使用されたものと同じ ID を使用して `issueToken` を呼び出すだけです。 また、更新されたトークンの `scopes` も指定する必要があります。 
 
-```javascript  
-// Value existingIdentity represents identity of Azure Communication Services stored during identity creation
-identityResponse = new CommunicationUser(existingIdentity);
-tokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
+```javascript
+// // Value of identityResponse represents the Azure Communication Services identity stored during identity creation and then used to issue the tokens being refreshed
+let refreshedTokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
 ```
 
 

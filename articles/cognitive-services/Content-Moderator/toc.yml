@@ -12,7 +12,7 @@
   items:
     - name: Web 上で Content Moderator を試す
       href: quick-start.md
-    - name: クライアント ライブラリの使用
+    - name: クライアント ライブラリまたは REST API を使用する
       href: client-libraries.md
 - name: チュートリアル
   items:
@@ -20,8 +20,6 @@
       href: ecommerce-retail-catalog-moderation.md
     - name: Facebook コンテンツのモデレート
       href: facebook-post-moderation.md
-    - name: ビデオとトランスクリプトのモデレーション
-      href: video-transcript-moderation-review-tutorial-dotnet.md
 - name: 概念
   items:
     - name: 画像のモデレート
@@ -38,7 +36,7 @@
   items:
     - name: コンテンツの調整
       items:
-        - name: REST API
+        - name: API コンソール
           items:
             - name: イメージ - API コンソール
               href: try-image-api.md
@@ -60,7 +58,7 @@
       items:
         - name: レビュー ツール (ブラウザー)
           href: Review-Tool-User-Guide/Review-Moderated-Images.md
-        - name: REST API
+        - name: API コンソール
           href: try-review-api-review.md
         - name: ビデオ レビュー (.NET)
           href: video-reviews-quickstart-dotnet.md
@@ -70,11 +68,11 @@
       items:
         - name: レビュー ツール (ブラウザー)
           href: Review-Tool-User-Guide/Workflows.md
-        - name: REST API
+        - name: API コンソール
           href: try-review-api-workflow.md
     - name: ジョブの定義と使用
       items:
-        - name: REST API
+        - name: API コンソール
           href: try-review-api-job.md
         - name: .NET SDK
           href: moderation-jobs-quickstart-dotnet.md

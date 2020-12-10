@@ -22,4 +22,4 @@ portal のホームページで、Azure Digital Twins インスタンスを検�
 
 ここから、インスタンスのメトリックを表示したり、カスタム ビューを作成したりできます。
 
-Azure Digital Twins メトリックの表示について詳しくは、 [*Azure Monitor でメトリックを表示する方法*](../articles/digital-twins/troubleshoot-metrics.md)に関するページを参照してください。
+Azure Digital Twins メトリックの表示について詳しくは、[*Azure Monitor でメトリックを表示する方法*](../articles/digital-twins/troubleshoot-metrics.md)に関するページを参照してください。
