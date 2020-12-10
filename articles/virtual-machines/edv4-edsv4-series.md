@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 5d02085fe4850dacf6e876b42cf301df2ea76713
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: d21c75218fdd43ffcf977a1d70bc325ce5154919
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043323"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96606941"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4 および Edsv4 シリーズ
 
@@ -68,9 +68,11 @@ Edsv4 シリーズのサイズは、Intel&reg; Xeon&reg; Platinum 8272CL (Cascad
 | Standard_E32ds_v4 | 32 | 256 | 1200 | 32 | 308000/1936(800) | 51200/768  | 8|16000 |
 | Standard_E48ds_v4 | 48 | 384 | 1800 | 32 | 462000/2904(1200) | 76800/1152 | 8|24000 |
 | Standard_E64ds_v4 <sup>1</sup> | 64 | 504 | 2400 | 32 | 615000/3872(1600) | 80000/1200 | 8|30000 |
+| Standard_E80ids_v4 <sup>2</sup> | 80 | 504 | 2400 | 32 | 615000/3872(1600) | 80000/1200 | 8|30000 |
 
 <sup>1</sup> [コア数を制限したサイズも提供しています](./constrained-vcpu.md)。
 
+<sup>2</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

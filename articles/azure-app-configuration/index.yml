@@ -4,17 +4,17 @@ summary: 開発者が自分のアプリケーションおよび機能設定を�
 metadata:
   title: Azure App Configuration のドキュメント
   description: 開発者が自分のアプリケーションおよび機能設定をシンプルかつ安全に一元化するのに役立つマネージド サービス、Azure App Configuration を使用する方法について説明します。
-  author: lisaguthrie
-  ms.author: lcozzens
+  author: AlexandraKemperMS
+  ms.author: alkemper
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 02/03/2020
-  ms.openlocfilehash: be59fa95c92fc5913360b967a338ef108946dd02
-  ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+  ms.openlocfilehash: 45b249dbe8e95a063cdeb30c3b7389eb1dcf2001
+  ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/06/2020
-  ms.locfileid: "93422282"
+  ms.lasthandoff: 12/09/2020
+  ms.locfileid: "96929533"
 landingContent:
 - title: Azure App Configuration について
   linkLists:

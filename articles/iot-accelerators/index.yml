@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure IoT ソリューション アクセラレータのドキュメント
-summary: Azure IoT ソリューション アクセラレータは、リモート監視などの一般的な IoT シナリオが実装され、必要な要素がすべて揃った、すぐにデプロイできる IoT ソリューションです。
+summary: Azure IoT Solution Accelerators は、接続済みファクトリなどの一般的な IoT シナリオが実装され、必要な要素がすべて揃った、すぐにデプロイできる IoT ソリューションです。
 metadata:
   title: Azure IoT ソリューション アクセラレータのドキュメント
-  description: IoT ソリューション アクセラレータは、一般的な IoT シナリオが実装され、必要な要素がすべて揃った、すぐにデプロイできる IoT ソリューションです。 これらのシナリオは、リモート監視、接続済みファクトリ、予測メンテナンス、デバイス シミュレーションをカバーしています。 ソリューション アクセラレータをデプロイすると、そのデプロイには、必要なクラウド ベースのサービスと、必要なアプリケーション コードがすべて含まれています。
+  description: IoT ソリューション アクセラレータは、一般的な IoT シナリオが実装され、必要な要素がすべて揃った、すぐにデプロイできる IoT ソリューションです。 このシナリオには、接続済みファクトリとデバイスのシミュレーションが含まれます。 ソリューション アクセラレータをデプロイすると、そのデプロイには、必要なクラウド ベースのサービスと、必要なアプリケーション コードがすべて含まれています。
   services: iot-accelerators
   ms.service: iot-accelerators
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   manager: philmea
   ms.date: 09/16/2019
-  ms.openlocfilehash: cdad55cb8972e54f613319e890f052c26d94f0ef
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 8f1b539e7201ffc31956ef48b4a155674385b97f
+  ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "84687040"
+  ms.lasthandoff: 12/08/2020
+  ms.locfileid: "96854548"
 landingContent:
 - title: IoT ソリューション アクセラレータについて
   linkLists:
@@ -26,22 +26,6 @@ landingContent:
       url: about-iot-accelerators.md
     - text: AzureIoTSolutions.com サイト
       url: iot-accelerators-permissions.md
-- title: リモート監視を開始する
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: リモート監視ソリューション アクセラレータの概要
-      url: iot-accelerators-remote-monitoring-sample-walkthrough.md
-  - linkListType: quickstart
-    links:
-    - text: クラウドベースのリモート監視ソリューションを試す
-      url: quickstart-remote-monitoring-deploy.md
-  - linkListType: tutorial
-    links:
-    - text: デバイスを監視する
-      url: iot-accelerators-remote-monitoring-monitor.md
-    - text: デバイスの問題を検出する
-      url: iot-accelerators-remote-monitoring-automate.md
 - title: 産業用 IoT を使ってみる
   linkLists:
   - linkListType: overview
@@ -66,23 +50,9 @@ landingContent:
     links:
     - text: デバイス シミュレーション ソリューション アクセラレータの概要
       url: iot-accelerators-device-simulation-overview.md
-  - linkListType: quickstart
-    links:
-    - text: デバイス シミュレーション ソリューションを試す
-      url: quickstart-device-simulation-deploy.md
   - linkListType: tutorial
     links:
     - text: IoT デバイス シミュレーションを作成して実行する
       url: iot-accelerators-device-simulation-create-simulation.md
     - text: シミュレートされたカスタム デバイスの作成
       url: iot-accelerators-device-simulation-create-custom-device.md
-- title: 予測的なメンテナンスを使ってみる
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 予測メンテナンスのソリューション アクセラレータの概要
-      url: iot-accelerators-predictive-walkthrough.md
-  - linkListType: quickstart
-    links:
-    - text: 予測メンテナンス ソリューションを試す
-      url: quickstart-predictive-maintenance-deploy.md

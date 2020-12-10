@@ -29,10 +29,6 @@
           href: learn/quick-collect-windows-computer.md
     - name: アプリケーションの監視
       items:
-        - name: .NET アプリケーション
-          href: learn/quick-monitor-portal.md
-        - name: .NET Core アプリケーション
-          href: learn/dotnetcore-quick-start.md
         - name: Node.js アプリケーション
           href: learn/nodejs-quick-start.md
         - name: モバイル アプリケーション
@@ -680,8 +676,10 @@
                       href: app/java-standalone-telemetry-processors.md
                     - name: JVM 引数の設定
                       href: app/java-standalone-arguments.md
-                    - name: 2.x からのアップグレード
+                    - name: 2.x SDK からのアップグレード
                       href: app/java-standalone-upgrade-from-2x.md
+                    - name: トラブルシューティング
+                      href: app/java-standalone-troubleshoot.md
             - name: オンプレミスのサーバー
               items:
                 - name: ASP.NET
@@ -1014,6 +1012,8 @@
           href: insights/container-insights-deployment-hpa-metrics.md
         - name: 永続ボリューム (PV) の監視
           href: insights/container-insights-persistent-volumes.md
+        - name: '[レポート] タブ'
+          href: insights/container-insights-reports.md
         - name: ライブ データを表示する
           items:
             - name: ライブ データ (プレビュー) の概要
