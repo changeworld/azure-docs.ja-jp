@@ -90,6 +90,8 @@
               href: data-box-local-web-ui-admin.md
             - name: 自己管理の出荷の使用
               href: data-box-portal-customer-managed-shipping.md
+            - name: 独自の証明書を持ち込む
+              href: data-box-bring-your-own-certificates.md
             - name: カスタマー マネージド キーの有効化
               href: data-box-customer-managed-encryption-key-portal.md
             - name: カスタマー ロックボックスを使用する

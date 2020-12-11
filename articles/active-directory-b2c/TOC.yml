@@ -418,6 +418,8 @@
           href: partner-typingdna.md
         - name: WhoIAM
           href: partner-whoiam.md
+        - name: Zscaler
+          href: partner-zscaler.md
     - name: b2clogin.com の使用
       items:
         - name: b2clogin.com の概要
