@@ -179,7 +179,7 @@
         - name: Terraform を使用した AKS のデプロイ
           href: /azure/developer/terraform/create-k8s-cluster-with-tf-and-aks
           maintainContext: true
-        - name: Kubernetes リソース ビューアーの使用 (プレビュー)
+        - name: Azure Portal Kubernetes リソース ビュー
           href: kubernetes-portal.md
         - name: Kubernetes ダッシュボードの使用
           href: kubernetes-dashboard.md

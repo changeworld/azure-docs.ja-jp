@@ -563,10 +563,10 @@
             - name: OAuth 2.0 リソース所有者パスワード資格情報の付与
               displayName: ROPC
               href: v2-oauth-ropc.md
-            - name: OAuth 2.0 SAML ベアラー アサーション フロー
-              href: v2-saml-bearer-assertion.md
             - name: 署名キーのロールオーバー
               href: active-directory-signing-key-rollover.md
+            - name: トークン交換シナリオ
+              href: scenario-token-exchange-saml-oauth.md
             - name: ID トークン
               href: id-tokens.md
             - name: アクセス トークン
