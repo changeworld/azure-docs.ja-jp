@@ -440,7 +440,7 @@ $accessToken = $tokenResponse.access_token
 
 ### <a name="using-the-microsoftazureservicesappauthentication-library-for-net"></a><a name="asal"></a>.NET 用の Microsoft.Azure.Services.AppAuthentication ライブラリの使用
 
-.NET アプリケーションと Functions の場合、マネージド ID を使用する最も簡単な方法は、Microsoft.Azure.Services.AppAuthentication パッケージを利用することです。 このライブラリを使うと、Visual Studio、[Azure CLI](/cli/azure)、または Active Directory 統合認証のユーザー アカウントを使って、開発用コンピューターでローカルにコードをテストすることもできます。 クラウドでホストされている場合は、システムによって割り当てられた ID が既定で使用されますが、この動作は、ユーザー割り当て ID のクライアント ID を参照する接続文字列環境変数を使用してカスタマイズできます。 このライブラリでの開発オプションについて詳しくは、[Microsoft.Azure.Services.AppAuthentication の参照]に関する記事をご覧ください。 このセクションでは、コードでライブラリを使い始める方法を示します。
+.NET アプリケーションと Functions の場合、マネージド ID を使用する最も簡単な方法は、Microsoft.Azure.Services.AppAuthentication パッケージを利用することです。 このライブラリを使うと、Visual Studio、[Azure CLI](/cli/azure)、または Active Directory 統合認証のユーザー アカウントを使って、開発用コンピューターでローカルにコードをテストすることもできます。 クラウドでホストされている場合は、システムによって割り当てられた ID が既定で使用されますが、この動作は、ユーザー割り当て ID のクライアント ID を参照する接続文字列環境変数を使用してカスタマイズできます。 このライブラリでの開発オプションについて詳しくは、[Microsoft.Azure.Services.AppAuthentication reference]に関する記事をご覧ください。 このセクションでは、コードでライブラリを使い始める方法を示します。
 
 1. [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) とその他の必要な NuGet パッケージに対する参照をアプリケーションに追加します。 下の例では [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) も使用されています。
 
@@ -466,7 +466,7 @@ $accessToken = $tokenResponse.access_token
     var azureServiceTokenProvider2 = new AzureServiceTokenProvider(identityConnectionString2);
 ```
 
-AzureServiceTokenProvider の構成とそれによって公開される操作の詳細については、[Microsoft.Azure.Services.AppAuthentication の参照]に関するページと [MSI .NET での App Service と KeyVault のサンプル](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)に関するページをご覧ください。
+AzureServiceTokenProvider の構成とそれによって公開される操作の詳細については、[Microsoft.Azure.Services.AppAuthentication reference]に関するページと [MSI .NET での App Service と KeyVault のサンプル](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)に関するページをご覧ください。
 
 ### <a name="using-the-azure-sdk-for-java"></a>Azure SDK for Java を使用する
 

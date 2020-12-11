@@ -55,7 +55,7 @@ pip install azure-storage-queue==2.1.0
 > [!NOTE]
 > Azure Storage SDK for Python 0.36 以前のバージョンからアップグレードする場合は、`pip uninstall azure-storage` を使用して以前の SDK をアンインストールしてから、最新のパッケージをインストールします。
 
-別のインストール方法については、「[Azure SDK for Python]」をご覧ください。
+別のインストール方法については、[Azure SDK for Python]をご覧ください。
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 

@@ -3,16 +3,15 @@ title: Microsoft コマーシャル マーケットプレースとは何です�
 description: Microsoft コマーシャル マーケットプレースにソリューションを登録する Microsoft パートナーにとっての利点とオプションの概要。
 author: mingshen-ms
 ms.author: mingshen
-ms.reviewer: dsindona
 ms.service: marketplace
 ms.topic: overview
 ms.date: 10/15/2020
-ms.openlocfilehash: a559c8613af97251ea6e85ef2a16121a89ffb6ad
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 099515eb1160b131f2d56fd02f300999d5ddfd16
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94739770"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780316"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースとは何ですか?
 
@@ -24,7 +23,7 @@ Microsoft コマーシャル マーケットプレースは、ISV (独立系ソ�
 
 Microsoft コマーシャル マーケットプレースには、[Microsoft AppSource](https://appsource.microsoft.com/) と [Azure Marketplace](https://azuremarketplace.microsoft.com/) の 2 つのオンライン ストアがあります。 Microsoft AppSource にはビジネス ソリューションが、Azure Marketplace には IT ソリューションが掲載されます。 コマーシャル マーケットプレースのソフトウェアとサービスが、Microsoft 365、Dynamics 365、Microsoft Power Platform、Azure などの Microsoft の製品に含まれている場合もあります。 Microsoft のオンライン ストアと製品内エクスペリエンスが、毎月何百万という潜在顧客を呼び込んでいます。 それぞれのオンライン ストアで異なるシナリオが提供されているため、皆様のソリューションまたはサービスを、それを必要とする顧客に確実に届けることができます。
 
-パートナー センターでコマーシャル マーケットプレース オファーを作成すると、オファーの種類やカテゴリなど、選択したオプションに応じて、どちらか一方または両方のオンライン ストアにそのオファーが登録されます。 まれに、オファーが両方のオンライン ストアのユーザーに関係することがありますが、その場合は両方に表示されます。 詳細については、「[オンライン ストアごとのリスト オプションと価格オプション](determine-your-listing-type.md#listing-and-pricing-options-by-online-store)」および「[A Buyer's Guide to Microsoft AppSource and Azure Marketplace (Microsoft AppSource および Azure Marketplace の購入者ガイド)](https://aka.ms/MarketplaceBuyerGuide)」を参照してください。
+パートナー センターでコマーシャル マーケットプレース オファーを作成すると、オファーの種類やカテゴリなど、選択したオプションに応じて、どちらか一方または両方のオンライン ストアにそのオファーが登録されます。 まれに、オファーが両方のオンライン ストアのユーザーに関係することがありますが、その場合は両方に表示されます。 詳細については、「[オンライン ストアごとのリスト オプションと価格オプション](determine-your-listing-type.md#listing-and-pricing-options-by-online-store)」および [Microsoft AppSource および Azure Marketplace の購入者ガイド](https://aka.ms/MarketplaceBuyerGuide)を参照してください。
 
 ### <a name="microsoft-appsource"></a>Microsoft AppSource
 

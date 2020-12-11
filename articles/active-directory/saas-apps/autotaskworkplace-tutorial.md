@@ -45,7 +45,7 @@ Azure AD と Autotask Workplace の統合を構成するには、次のものが
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Autotask Workplace では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Autotask Workplace では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-autotask-workplace-from-the-gallery"></a>ギャラリーからの Autotask Workplace の追加
 
@@ -65,13 +65,13 @@ Azure AD への Autotask Workplace の統合を構成するには、ギャラリ
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Autotask Workplace** 」と入力し、結果ウィンドウで **[Autotask Workplace]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Autotask Workplace**」と入力し、結果ウィンドウで **[Autotask Workplace]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
      ![結果一覧の Autotask Workplace](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Autotask Workplace で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Autotask Workplace で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Autotask Workplace 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Autotask Workplace で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -172,9 +172,9 @@ Autotask Workplace で Azure AD シングル サインオンを構成するに�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
