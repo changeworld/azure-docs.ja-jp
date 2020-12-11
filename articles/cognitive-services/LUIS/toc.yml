@@ -21,14 +21,8 @@
           displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
     - name: ブラウザーの使用
       href: luis-get-started-get-intent-from-browser.md
-    - name: SDK の使用
-      href: azure-sdk-quickstart.md
-    - name: REST API の使用
-      items:
-        - name: 意図の取得
-          href: luis-get-started-rest-get-intent.md
-        - name: モデルの変更
-          href: luis-get-started-rest-get-model.md
+    - name: クライアント ライブラリと REST API の使用
+      href: client-libraries-rest-api.md
 - name: チュートリアル
   items:
     - name: 分解可能なアプリの作成

@@ -44,7 +44,7 @@ ms.locfileid: "92015687"
 * GPU アクセラレーションを備えた [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/)。  
     GPU アクセラレーションを備えた Azure Stack Edge を使用することをお勧めしますが、コンテナーは [NVIDIA Tesla T4 GPU](https://www.nvidia.com/en-us/data-center/tesla-t4/) を使用する他のデバイス上で実行されます。 
 * 空間分析のための [Azure Cognitive Service Computer Vision コンテナー](https://azure.microsoft.com/services/cognitive-services/computer-vision/)。  
-    このコンテナーを使用するには、関連付けられている **API キー**および **エンドポイント URI** を取得するための Computer Vision リソースが必要です。 この API キーは、Azure portal の Computer Vision の [概要] および [キー] ページで入手できます。 キーとエンドポイントは、コンテナーを開始するために必要です。
+    このコンテナーを使用するには、関連付けられている **API キー** および **エンドポイント URI** を取得するための Computer Vision リソースが必要です。 この API キーは、Azure portal の Computer Vision の [概要] および [キー] ページで入手できます。 キーとエンドポイントは、コンテナーを開始するために必要です。
 
 ## <a name="overview"></a>概要
 
@@ -53,14 +53,14 @@ ms.locfileid: "92015687"
  
 この図は、このチュートリアルでのシグナルの流れを示しています。 [エッジ モジュール](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)は、リアルタイム ストリーミング プロトコル (RTSP) サーバーをホストする IP カメラをシミュレートします。 [RTSP ソース](media-graph-concept.md#rtsp-source) ノードは、このサーバーからビデオ フィードをプルし、[フレーム レート フィルター プロセッサ](media-graph-concept.md#frame-rate-filter-processor) ノードにビデオ フレームを送信します。 このプロセッサは、 MediaGraphCognitiveServicesVisionExtension プロセッサ ノードに到達するビデオ ストリームのフレーム レートを制限します。
 
-MediaGraphCognitiveServicesVisionExtension ノードは、プロキシの役割を果たします。 ビデオ フレームを、指定した画像の種類に変換します。 次に、画像を**共有メモリ**経由で、gRPC エンドポイントの背後で AI 操作を実行する別のエッジ モジュールに転送します。 この例では、このエッジ モジュールは spatial-analysis モジュールです。 MediaGraphCognitiveServicesVisionExtension プロセッサ ノードでは、次の 2 つの処理が行われます。
+MediaGraphCognitiveServicesVisionExtension ノードは、プロキシの役割を果たします。 ビデオ フレームを、指定した画像の種類に変換します。 次に、画像を **共有メモリ** 経由で、gRPC エンドポイントの背後で AI 操作を実行する別のエッジ モジュールに転送します。 この例では、このエッジ モジュールは spatial-analysis モジュールです。 MediaGraphCognitiveServicesVisionExtension プロセッサ ノードでは、次の 2 つの処理が行われます。
 
 * 結果を収集し、イベントを [IoT Hub シンク](media-graph-concept.md#iot-hub-message-sink) ノードに発行します。 次に、このノードはこれらのイベントを [IoT Edge Hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub) に送信します。 
 * また、[シグナル ゲート プロセッサ](media-graph-concept.md#signal-gate-processor)を使用して RTSP ソースから 30 秒のビデオ クリップをキャプチャし、それを Media Services アセットとして格納します。
 
 ## <a name="create-the-computer-vision-resource"></a>Computer Vision リソースを作成する
 
-[Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) または Azure CLI を使用して、Computer Vision という種類の Azure リソースを作成する必要があります。 コンテナーへのアクセス要求が承認され、Azure サブスクリプション ID が登録されると、リソースを作成できるようになります。 https://aka.ms/csgate にアクセスして、ユース ケースと Azure のサブスクリプション ID を送信します。  アクセス要求フォームに記載されているものと同じ Azure サブスクリプションを使用して、Azure リソースを作成する必要があります。
+[Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) または Azure CLI を使用して、Computer Vision という種類の Azure リソースを作成する必要があります。 コンテナーへのアクセス要求が承認され、Azure サブスクリプション ID が登録されると、リソースを作成できるようになります。  https://aka.ms/csgate にアクセスして、ユース ケースと Azure のサブスクリプション ID を送信します。  アクセス要求フォームに記載されているものと同じ Azure サブスクリプションを使用して、Azure リソースを作成する必要があります。
 
 ### <a name="gathering-required-parameters"></a>必須パラメーターの収集
 
@@ -71,7 +71,7 @@ spatial-analysis コンテナーなど、すべての Cognitive Services のコ�
 キーは spatial-analysis コンテナーを起動するために使用され、Azure portal の対応する Cognitive Service リソースの `Keys and Endpoint` ページで入手できます。 そのページに移動し、キーとエンドポイント URI を見つけます。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/spatial-analysis-tutorial/keys-endpoint.png" alt-text="空間分析の概要":::
+> :::image type="content" source="./media/spatial-analysis-tutorial/keys-endpoint.png" alt-text="エンドポイント URL":::
 
 ## <a name="set-up-azure-stack-edge"></a>Azure Stack Edge を設定する
 
@@ -169,17 +169,32 @@ spatial-analysis コンテナーなど、すべての Cognitive Services のコ�
 1. [Azure IoT Hub] ペインの横にある [その他のアクション] アイコンを選択して、IoT Hub 接続文字列を設定します。 この文字列は、src/cloud-to-device-console-app/appsettings.json ファイルからコピーすることができます。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="空間分析の概要":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="空間分析: 接続文字列":::
 1. `src/edge/deployment.spatialAnalysis.template.json` を右クリックし、[Generate IoT Edge Deployment Manifest]\(IoT Edge 配置マニフェストの生成\) を選択します。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-template-json.png" alt-text="空間分析の概要":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-template-json.png" alt-text="空間分析: 展開 amd64 json":::
     
     このアクションによって、deployment.amd64.json という名前のマニフェスト ファイルが src/edge/config フォルダーに作成されます。
 1. `src/edge/config/deployment.spatialAnalysis.amd64.json` を右クリックし、[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\) を選択して、エッジ デバイスの名前を選択します。
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-amd64-json.png" alt-text="空間分析の概要" になっています。
+    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-amd64-json.png" alt-text="空間分析: 展開テンプレート json":::   
+1. IoT Hub デバイスを選択するように求めるメッセージが表示されたら、ドロップダウン メニューから Azure Stack Edge 名を選択します。
+1. 約 30 秒後に、ウィンドウの左下隅で Azure IoT Hub を最新の情報に更新します。 エッジ デバイスには、次のデプロイ済みモジュールが表示されます。
+    
+    * Live Video Analytics on IoT Edge (モジュール名 lvaEdge)。
+    * リアルタイム ストリーミング プロトコル (RTSP) シミュレーター (モジュール名 rtspsim)。
+    * 空間分析 (モジュール名 spatialAnalysis)。
+    
+デプロイが正常に行われると、次のようなメッセージが出力に表示されます。
+
+```
+[Edge] Start deployment to device [<Azure Stack Edge name>]
+[Edge] Deployment succeeded.
+```
+
+また、[Devices/Modules]\(デバイス/モジュール\) の下に `lvaEdge`、`rtspsim`、`spatialAnalysis`、`rtspsim` のモジュールがあり、それらの状態は "実行中" になっています。
 
 ## <a name="prepare-to-monitor-events"></a>イベントの監視の準備をする
 
@@ -189,17 +204,17 @@ spatial-analysis コンテナーなど、すべての Cognitive Services のコ�
 1. マウスの右ボタンをクリックし、 **[拡張機能の設定]** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="空間分析の概要":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="拡張機能の設定":::
 1. [Show Verbose Message]\(詳細メッセージの表示\) を検索して有効にします。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="空間分析の概要":::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="詳細メッセージの表示":::
 1. [Explorer] ペインを開き、左下隅にある [Azure IoT Hub] を探します。
 1. [Devices] ノードを展開します。
 1. Azure Stack Edge を右クリックして、[組み込みイベント エンドポイントの監視を開始する] を選択します。
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/start-monitoring.png" alt-text="空間分析の概要":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/start-monitoring.png" alt-text="空間分析: 監視の開始":::
      
 ## <a name="run-the-program"></a>プログラムの実行
 
