@@ -12,6 +12,10 @@
           href: concepts-certificate-rotation.md
 - name: 共有ドキュメント
   items:
+    - name: データベースのデプロイ
+      items:
+        - name: GitHub のアクション
+          href: quickstart-mysql-github-actions.md
     - name: 移行
       items:
         - name: mysqldump または phpmyadmin でデータを移行する
@@ -88,8 +92,6 @@
               href: connect-cpp.md
             - name: Go
               href: connect-go.md
-            - name: GitHub のアクション
-              href: quickstart-mysql-github-actions.md
     - name: チュートリアル
       items:
         - name: データベースの設計

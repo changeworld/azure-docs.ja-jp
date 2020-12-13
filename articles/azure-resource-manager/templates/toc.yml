@@ -515,6 +515,8 @@
       href: /python/api/overview/azure/resources?view=azure-python
 - name: リソース
   items:
+    - name: Microsoft Learn でスキルを身に付ける
+      href: /learn/paths/deploy-manage-resource-manager-templates/
     - name: Azure のクイック スタート テンプレート
       href: 'https://azure.microsoft.com/resources/templates/'
     - name: Azure のロードマップ
