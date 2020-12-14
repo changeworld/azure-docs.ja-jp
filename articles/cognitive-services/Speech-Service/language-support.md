@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 27cf5fef027b1e4786c0ff77f9f673bafea15f98
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9ef585d83c0606bedaf4c0a05c6c87fd52423b9a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487271"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575535"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -41,12 +41,14 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |アラビア語 (バーレーン)、現代標準  |`ar-BH` | 言語モデル                                   |
 |アラビア語 (エジプト)                     |`ar-EG` | 言語モデル                                   |
 |アラビア語 (イラク)                      |`ar-IQ` | 言語モデル                                   |
+|アラビア語 (イスラエル)                              |`ar-IL` | 言語モデル                                                   |
 |アラビア語 (ヨルダン)                    |`ar-JO` | 言語モデル                                   |
 |アラビア語 (クウェート)                    |`ar-KW` | 言語モデル                                   |
 |アラビア語 (レバノン)                   |`ar-LB` | 言語モデル                                   |
 |アラビア語 (オマーン)                      |`ar-OM` | 言語モデル                                   |
 |アラビア語 (カタール)                     |`ar-QA` | 言語モデル                                   |
 |アラビア語 (サウジアラビア)              |`ar-SA` | 言語モデル                                   |
+|アラビア語 (パレスチナ自治政府)            |`ar-PS` | 言語モデル                                   |
 |アラビア語 (シリア)                     |`ar-SY` | 言語モデル                                   |
 |アラビア語 (アラブ首長国連邦)      |`ar-AE` | 言語モデル                                   |
 |ブルガリア語 (ブルガリア)               |`bg-BG` | 言語モデル                                   |
@@ -64,6 +66,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |英語 (インド)                    |`en-IN` | 音響モデル<br>言語モデル                 |
 |英語 (アイルランド)                  |`en-IE` | 言語モデル                                   |
 |英語 (ニュージーランド)              |`en-NZ` | 音響モデル<br>言語モデル                 |
+|英語 (ナイジェリア)                          |`en-NG` | 言語モデル                                                     |
 |英語 (フィリピン)              |`en-PH` | 言語モデル                                   |
 |英語 (シンガポール)                |`en-SG` | 言語モデル                                   |
 |英語 (南アフリカ)             |`en-ZA` | 言語モデル                                   |
@@ -103,6 +106,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |スペイン語 (ドミニカ共和国)       |`es-DO` | 言語モデル                                   |
 |スペイン語 (エクアドル)                  |`es-EC` | 言語モデル                                   |
 |スペイン語 (エルサルバドル)              |`es-SV` | 言語モデル                                   |
+|スペイン語 (赤道ギニア)            |`es-GQ` | 言語モデル                                   |
 |スペイン語 (グアテマラ)                |`es-GT` | 言語モデル                                   |
 |スペイン語 (ホンジュラス)                 |`es-HN` | 言語モデル                                   |
 |スペイン語 (メキシコ)                   |`es-MX` | 音響モデル<br>言語モデル                 |

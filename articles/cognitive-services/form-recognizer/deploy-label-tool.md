@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: df800938d568af0b94cfb1d368ef32e9b085b6eb
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: abc8cffa3d5b9dffb55beabc90cdaecb3adc647f
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913111"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852525"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>サンプル ラベル付けツールのデプロイ
 
@@ -100,6 +100,9 @@ Azure portal を使用して新しいリソースを作成するには、次の�
 > [!NOTE]
 > Web アプリを作成するときに、承認と認証を構成することもできます。 これは、開始するために必要なことではありません。 
 
+> [!IMPORTANT]
+> Web アプリが `https` アドレスで表示されるようにするために、TLS を有効にしなければならない場合があります。 [TLS エンドポイントを有効にする](https://docs.microsoft.com/azure/container-instances/container-instances-container-group-ssl)ための手順に従って、Web アプリの TLS/SSL を有効にするサイドカー コンテナーを設定してください。
+
 ### <a name="azure-cli"></a>Azure CLI
 
 Azure portal を使用する代わりに、Azure CLI を使用してリソースを作成することもできます。 続ける前に、[Azure CLI](/cli/azure/install-azure-cli) をインストールする必要があります。 既に Azure CLI を使用している場合は、このステップを省略できます。 
@@ -136,7 +139,7 @@ DNS_NAME_LABEL=aci-demo-$RANDOM
 az container create \
   --resource-group <resource_group_name> \
   --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \

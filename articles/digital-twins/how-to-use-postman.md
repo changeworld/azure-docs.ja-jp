@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: f9be9dd94aad8c206b562f2c984ec944f70d3957
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: fe79797aeef2b0c148aece0319d6b340b663b184
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188049"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763725"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Postman を使用して Azure Digital Twins API に要求を送信する方法
 
@@ -130,7 +130,7 @@ Azure Digital Twins API のいずれかに対する Postman 要求を行うに�
 
 クエリの例に進み、この記事ではクエリ API (およびその[リファレンス ドキュメント](/rest/api/digital-twins/dataplane/query/querytwins)) を使用して、インスタンス内のすべてのデジタル ツインを照会します。
 
-1. リファレンス ドキュメントから要求 URL と種類を取得します。 クエリ API の場合、これは *POST https://digitaltwins-name.digitaltwins.azure.net/query?api-version=2020-10-31* です。
+1. リファレンス ドキュメントから要求 URL と種類を取得します。 クエリ API の場合、現在これは *POST `https://digitaltwins-hostname/query?api-version=2020-10-31`* です。
 1. Postman で要求の種類を設定し、要求 URL を入力します。必要に応じて URL のプレースホルダーに入力します。 ここでは、「[*前提条件*](#prerequisites)」セクションにあるインスタンスの **ホスト名** を使用します。
     
    :::image type="content" source="media/how-to-use-postman/postman-request-url.png" alt-text="新しい要求の詳細で、リファレンス ドキュメントにあるクエリ URL が要求 URL のボックスに入力されています。" lightbox="media/how-to-use-postman/postman-request-url.png":::

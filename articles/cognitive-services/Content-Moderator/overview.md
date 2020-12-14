@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: コンテンツ モデレーター, azure コンテンツ モデレーター, オンライン モデレーター, コンテンツ フィルター ソフトウェア, コンテンツ モデレーション サービス, コンテンツ モデレーション
-ms.openlocfilehash: aa1f4c1fab9b3d8a1b5db0e965f1608e694646b2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c7c996ae49bdf7aa72873322f11af754843fd835
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596847"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905249"
 ---
 # <a name="what-is-azure-content-moderator"></a>Azure Content Moderator とは
 
@@ -81,4 +81,4 @@ Cognitive Services 全般に言えることですが、Content Moderator サー�
 
 ## <a name="next-steps"></a>次のステップ
 
-Web ポータルで Content Moderator の使用を開始するには、「[Web 上で Content Moderator を試す](quick-start.md)」の手順に従います。 あるいは、[クライアント ライブラリのクイックスタート](client-libraries.md)を完了し、コードに基本シナリオを実装します。
+Web ポータルで Content Moderator の使用を開始するには、「[Web 上で Content Moderator を試す](quick-start.md)」の手順に従います。 または、[クライアント ライブラリや REST API クイックスタート](client-libraries.md)を完了し、コードに基本シナリオを実装します。

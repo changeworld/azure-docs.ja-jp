@@ -13,13 +13,14 @@ ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
+- contperfq2
 keywords: computer vision, computer vision アプリケーション, computer vision サービス
-ms.openlocfilehash: 1b4768781c45733590639b4a382fecfdb02adf48
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 09c3d10425e7688e84be7ddd845648def3e5cc39
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95532292"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852865"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
 
@@ -114,4 +115,4 @@ Cognitive Services 全般に言えることですが、Computer Vision サービ
 
 使用する開発言語のクイックスタート ガイドに従って、Computer Vision の使用を開始します。
 
-- [クイック スタート:Computer Vision クライアント ライブラリ](./quickstarts-sdk/client-library.md)
+- [クイック スタート: Computer Vision REST API またはクライアント ライブラリ](./quickstarts-sdk/client-library.md)

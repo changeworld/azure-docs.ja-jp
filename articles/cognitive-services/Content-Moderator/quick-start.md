@@ -12,12 +12,12 @@ ms.date: 09/29/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Content Moderator, コンテンツ モデレーション
-ms.openlocfilehash: d1d9315986f7a6c57c1da012b9034e4f1a3730bc
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: c026c42fe3c7a7f3f0d6b80e3123904077c104cf
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93143699"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905215"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>クイック スタート:Web 上で Content Moderator を試す
 
@@ -88,6 +88,6 @@ Content Moderator レビュー ツールを使用する方法についてさら�
 ## <a name="next-steps"></a>次のステップ
 
 アプリで Moderation API 自体を使用する方法を学習します。
-- 画像のモデレートを実装します。 [API コンソール](try-image-api.md)を使用するか、または [クライアント ライブラリ クイックスタート](client-libraries.md)に従って、画像をスキャンして、タグ、信頼度スコア、および他の抽出された情報を使用することによって、成人向けまたはわいせつな可能性のあるコンテンツを検出します。
-- テキストのモデレートを実装します。 [API コンソール](try-text-api.md)または[クライアント ライブラリ クイック スタート](client-libraries.md)を使用して、潜在的な不適切表現、マシン支援の不要なテキスト分類 (プレビュー)、および個人データに関してテキスト コンテンツをスキャンします。
+- 画像のモデレートを実装します。 [API コンソール](try-image-api.md)を使用するか、[クライアント ライブラリまたは REST API クイックスタート](client-libraries.md)に従って、画像をスキャンして、タグ、信頼度スコア、他の抽出された情報を使用することによって、成人向けまたはわいせつな可能性のあるコンテンツを検出します。
+- テキストのモデレートを実装します。 [API コンソール](try-text-api.md)を使用するか、[クライアント ライブラリまたは REST API クイック スタート](client-libraries.md)に従って、潜在的な不適切表現、マシン支援の不要なテキスト分類 (プレビュー)、個人データに関してテキスト コンテンツをスキャンします。
 - ビデオのモデレートを実装します。 [C# 用のビデオのモデレートに関するハウツー ガイド](video-moderation-api.md)に関するページ従ってビデオをスキャンし、成人向けやきわどいコンテンツの可能性があるものを検出します。 

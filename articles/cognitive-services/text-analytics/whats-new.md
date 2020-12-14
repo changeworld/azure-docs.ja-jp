@@ -8,19 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 12/02/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 8743e765a050bfc4a2ba93a1b3e0344a960edb76
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 157bef31b375db54f294284ca0a5d97cd7035b17
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966889"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558965"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Text Analytics API の新機能
 
 Text Analytics API は継続的に更新されます。 常に最新の開発情報を把握していただけるよう、この記事では新しいリリースと機能に関する情報を提供します。
+
+## <a name="december-2020"></a>2020 年 12 月
+
+* Text Analytics API の[価格の詳細が更新されました](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)
 
 ## <a name="november-2020"></a>2020 年 11 月
 

@@ -15,27 +15,30 @@ ms.custom:
 - devx-track-js
 - devx-track-csharp
 - cog-serv-seo-aug-2020
-zone_pivot_groups: programming-languages-set-one
+zone_pivot_groups: programming-languages-computer-vision
 keywords: computer vision, computer vision サービス
-ms.openlocfilehash: c0ed1d534ce76f870b34c626b1b21f7745aa3247
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 20378eff09abed0eb4d7587211f576de6313ea1d
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91309824"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533307"
 ---
 # <a name="quickstart-use-the-computer-vision-client-library"></a>クイック スタート:Computer Vision クライアント ライブラリを使用する
 
-Computer Vision クライアント ライブラリを使用開始しましょう。 Computer Vision サービスは、画像を処理し、その視覚的特徴に関する情報を返す AI アルゴリズムを提供します。 以下の手順に従って、パッケージを自分のアプリケーションにインストールし、基本タスクのコード例を試してみましょう。
+Computer Vision REST API またはクライアント ライブラリの使用を開始します。 Computer Vision サービスは、画像を処理し、その視覚的特徴に関する情報を返す AI アルゴリズムを提供します。 以下の手順に従って、パッケージを自分のアプリケーションにインストールし、基本タスクのコード例を試してみましょう。
 
-Computer Vision クライアント ライブラリは次に使用できます。
 
-* タグ、テキストの説明、顔、成人向けコンテンツなどについて、画像を分析します。
-* Read API を使用して、印刷されたテキストと手書きのテキストを読み取ります。
 
 ::: zone pivot="programming-language-csharp"
 
 [!INCLUDE [C# SDK quickstart](../includes/quickstarts-sdk/csharp-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+[!INCLUDE [Python SDK quickstart](../includes/quickstarts-sdk/python-sdk.md)]
 
 ::: zone-end
 
@@ -51,14 +54,14 @@ Computer Vision クライアント ライブラリは次に使用できます。
 
 ::: zone-end
 
-::: zone pivot="programming-language-python"
-
-[!INCLUDE [Python SDK quickstart](../includes/quickstarts-sdk/python-sdk.md)]
-
-::: zone-end
-
 ::: zone pivot="programming-language-go"
 
 [!INCLUDE [Go SDK quickstart](../includes/quickstarts-sdk/go-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-rest-api"
+
+[!INCLUDE [REST API quickstart](../includes/curl-quickstart.md)]
 
 ::: zone-end

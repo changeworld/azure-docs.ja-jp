@@ -504,6 +504,8 @@
       href: how-to-use-logging.md
     - name: メモリ使用量の追跡
       href: how-to-track-speech-sdk-memory-usage.md
+    - name: プライベート エンドポイントを有効化
+      href: speech-services-private-link.md
     - name: Linux 用 OpenSSL の構成
       displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
       href: how-to-configure-openssl-linux.md

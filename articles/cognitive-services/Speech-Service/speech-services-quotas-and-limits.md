@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 12/07/2020
 ms.author: alexeyo
-ms.openlocfilehash: a304628e05054124fde6ffe5c2b63177991d8cfd
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 9b923ba208dd2a5111a59f67401b1e4f080b7187
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345399"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754166"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Speech Services のクォータと制限
 
@@ -24,7 +24,7 @@ ms.locfileid: "93345399"
 ## <a name="quotas-and-limits-quick-reference"></a>クォータと制限のクイック リファレンス
 [テキスト読み上げのクォータと制限](#text-to-speech-quotas-and-limits-per-speech-resource)へ移動する
 ### <a name="speech-to-text-quotas-and-limits-per-speech-resource"></a>Speech リソースごとの音声テキスト変換のクォータと制限
-次の表の "調整可能" 行のないパラメーターは、すべての価格レベルで調整可能 **ではありません** 。
+次の表の "調整可能" 行のないパラメーターは、すべての価格レベルで調整可能 **ではありません**。
 
 #### <a name="online-transcription"></a>オンライン文字起こし
 
@@ -54,11 +54,11 @@ ms.locfileid: "93345399"
 | データ インポートの最大発音データセット ファイル サイズ | 1 KB | 1 MB |
 | [モデルの作成](https://westcentralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateModel/) API 要求で `text` パラメーターを使用する場合のテキストの最大サイズ | 200 KB | 500 KB |
 
-<sup>1</sup> **Free (F0)** 価格レベルについては、 [価格ページ](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)で月額料金に関するページを参照してください。<br/>
+<sup>1</sup> **Free (F0)** 価格レベルについては、[価格ページ](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)で月額料金に関するページを参照してください。<br/>
 <sup>2</sup> [その他の説明](#detailed-description-quota-adjustment-and-best-practices)、[ベスト プラクティス](#general-best-practices-to-mitigate-throttling-during-autoscaling)、および[調整手順](#speech-to-text-increasing-online-transcription-concurrent-request-limit)に関するセクションを参照してください。<br/> 
 
 ### <a name="text-to-speech-quotas-and-limits-per-speech-resource"></a>Speech リソースごとのテキスト読み上げのクォータと制限
-次の表の "調整可能" 行のないパラメーターは、すべての価格レベルで調整可能 **ではありません** 。
+次の表の "調整可能" 行のないパラメーターは、すべての価格レベルで調整可能 **ではありません**。
 
 | Quota | Free (F0)<sup>3</sup> | Standard (S0) |
 |--|--|--|
@@ -75,7 +75,7 @@ ms.locfileid: "93345399"
 | **Rest API の制限** | 1 分あたり 20 要求 | 5 秒あたり 25 要求 |
 
 
-<sup>3</sup> **Free (F0)** 価格レベルについては、 [価格ページ](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)で月額料金に関するページを参照してください。<br/>
+<sup>3</sup> **Free (F0)** 価格レベルについては、[価格ページ](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)で月額料金に関するページを参照してください。<br/>
 <sup>4</sup> [その他の説明](#detailed-description-quota-adjustment-and-best-practices)および[ベスト プラクティス](#general-best-practices-to-mitigate-throttling-during-autoscaling)に関するセクションを参照してください。<br/>
 <sup>5</sup> [その他の説明](#detailed-description-quota-adjustment-and-best-practices)、[ベスト プラクティス](#general-best-practices-to-mitigate-throttling-during-autoscaling)、および[調整手順](#text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice)に関するセクションを参照してください。<br/> 
 
@@ -89,7 +89,7 @@ ms.locfileid: "93345399"
 *例:* アプリケーションでは、テキスト読み上げが使用されており、現在のワークロードは 5 TPS (1 秒あたりのトランザクション数) です。 次の 1 秒間で、負荷を 20 TPS (4 倍以上) に増やしたとします。 この新しい負荷に対応するため、サービスでは直ちにスケールアップが開始されますが、おそらく 1 秒以内に処理することはできないため、一部の要求では応答コード 429 が返されます。   
 - さまざまな負荷増加パターンをテストします
   - [音声テキスト変換の例](#speech-to-text-example-of-a-workload-pattern-best-practice)を参照してください
-- 同じまたは異なるリージョンに追加の Speech リソースを作成し、"ラウンド ロビン" 手法を用いてそれらの間でワークロードを分散させます。 これは、 **テキスト読み上げの TPS (1 秒あたりのトランザクション数)** のパラメーターで特に重要で、これは Speech リソースあたり 200 に設定されており、調整することはできません  
+- 同じまたは異なるリージョンに追加の Speech リソースを作成し、"ラウンド ロビン" 手法を用いてそれらの間でワークロードを分散させます。 これは、**テキスト読み上げの TPS (1 秒あたりのトランザクション数)** のパラメーターで特に重要で、これは Speech リソースあたり 200 に設定されており、調整することはできません  
 
 次のセクションでは、クォータを調整する特定のケースについて説明します。<br/>
 「[テキスト読み上げ:Custom Voice における文字起こしの同時要求の上限を上げる](#text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice)」に移動する
@@ -97,14 +97,14 @@ ms.locfileid: "93345399"
 ### <a name="speech-to-text-increasing-online-transcription-concurrent-request-limit"></a>音声テキスト変換: オンライン文字起こしの同時要求の上限を上げる
 既定では、同時要求の数は Speech リソース (ベース モデル) あたり、またはカスタム エンドポイント (カスタム モデル) あたり 20 に制限されています。 Standard 価格レベルでは、この数を増やすことができます。 要求を送信する前に、[こちらのセクション](#detailed-description-quota-adjustment-and-best-practices)の資料について理解していること、およびこれらの[ベスト プラクティス](#general-best-practices-to-mitigate-throttling-during-autoscaling)を把握していることを確認してください。
 
-同時要求の上限を上げても、コストに直接影響することは **ありません** 。 Speech Services では、"使用した分だけ支払う" モデルを使用しています。 この制限によって、要求のスロットリングが開始される前に、サービスがどの程度スケーリングされるかが定義されます。
+同時要求の上限を上げても、コストに直接影響することは **ありません**。 Speech Services では、"使用した分だけ支払う" モデルを使用しています。 この制限によって、要求のスロットリングが開始される前に、サービスがどの程度スケーリングされるかが定義されます。
 
-**ベース** と **カスタム** モデルの同時要求の上限は、 **個別に** 調整する必要があります。
+**ベース** と **カスタム** モデルの同時要求の上限は、**個別に** 調整する必要があります。
 
-同時要求の上限パラメーターの既存の値は、Azure portal、コマンドライン ツール、または API 要求では表示 **されません** 。 既存の値を確認するには、Azure サポート リクエストを作成します。
+同時要求の上限パラメーターの既存の値は、Azure portal、コマンドライン ツール、または API 要求では表示 **されません**。 既存の値を確認するには、Azure サポート リクエストを作成します。
 
 >[!NOTE]
->[Speech コンテナー](speech-container-howto.md)は、ホストされているハードウェアの CPU によってのみ制限されるため、コンテナーで同時要求の上限を上げる必要はありません。
+>[Speech コンテナー](speech-container-howto.md)は、ホストされているハードウェアの CPU によってのみ制限されるため、コンテナーで同時要求の上限を上げる必要はありません。 ただし、Speech コンテナーには、考慮すべき独自の容量制限があります。 *「オンプレミスの音声テキスト変換コンテナーの容量計画とコストの見積もりはどうすればいいでしょうか。」* という質問を [Speech コンテナー FAQ](speech-container-faq.md) でご覧ください。
 
 #### <a name="have-the-required-information-ready"></a>以下の必要な情報を準備します。
 - **ベース モデル** の場合:
@@ -117,7 +117,7 @@ ms.locfileid: "93345399"
 - **情報を取得する方法 (ベース モデル)** :  
   - [Azure portal](https://portal.azure.com/) に移動します
   - 同時実行要求の制限を増やす Speech リソースを選択します
-  - *プロパティ* ( *リソース管理* グループ) を選択します 
+  - *プロパティ* (*リソース管理* グループ) を選択します 
   - 次のフィールドの値をコピーして保存しておきます。
     - **リソース ID**
     - **場所** (エンドポイントのリージョン)
@@ -165,9 +165,9 @@ Speech リソースの同時要求の上限が 300 に設定されていると�
 ### <a name="text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice"></a>テキスト読み上げ: Custom Voice における文字起こしの同時要求の上限を上げる
 既定では、Custom Voice エンドポイントの同時要求の数は 10 に制限されています。 Standard 価格レベルでは、この数を増やすことができます。 要求を送信する前に、[こちらのセクション](#detailed-description-quota-adjustment-and-best-practices)の資料について理解していること、およびこれらの[ベスト プラクティス](#general-best-practices-to-mitigate-throttling-during-autoscaling)を把握していることを確認してください。
 
-同時要求の上限を上げても、コストに直接影響することは **ありません** 。 Speech Services では、"使用した分だけ支払う" モデルを使用しています。 この制限によって、要求のスロットリングが開始される前に、サービスがどの程度スケーリングされるかが定義されます。
+同時要求の上限を上げても、コストに直接影響することは **ありません**。 Speech Services では、"使用した分だけ支払う" モデルを使用しています。 この制限によって、要求のスロットリングが開始される前に、サービスがどの程度スケーリングされるかが定義されます。
 
-同時要求の上限パラメーターの既存の値は、Azure portal、コマンドライン ツール、または API 要求では表示 **されません** 。 既存の値を確認するには、Azure サポート リクエストを作成します。
+同時要求の上限パラメーターの既存の値は、Azure portal、コマンドライン ツール、または API 要求では表示 **されません**。 既存の値を確認するには、Azure サポート リクエストを作成します。
 
 >[!NOTE]
 >[Speech コンテナー](speech-container-howto.md)は、ホストされているハードウェアの CPU によってのみ制限されるため、コンテナーで同時要求の上限を上げる必要はありません。

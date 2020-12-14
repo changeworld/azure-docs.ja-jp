@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3db475b5eb0c584f86c8810e9c993e4d5d7b497e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7016abc9d52aa12b497d29f605fe351ee3f6a2dd
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452907"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519115"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure Digital Twins のエンドポイントとルートを管理する (API と CLI)
 
@@ -90,47 +90,59 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 エンドポイントでは、一定期間内にイベントを配信できない場合や、イベントの配信を一定回数試行した後も配信できない場合、未配信イベントをストレージ アカウントに送信できます。 このプロセスは **配信不能処理** と呼ばれます。
 
-配信不能処理の詳細については、[*イベント ルートの概念*](concepts-route-events.md#dead-letter-events)に関するページを参照してください。
+配信不能処理の詳細については、[*イベント ルートの概念*](concepts-route-events.md#dead-letter-events)に関するページを参照してください。 配信不能処理を構成してエンドポイントを設定する方法については、このセクションの残りの部分を読み進めます。
 
 #### <a name="set-up-storage-resources"></a>ストレージ リソースを設定する
 
-配信不能の場所を設定するには、ご使用の Azure アカウントに[コンテナー](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)が設定された[ストレージ アカウント](../storage/common/storage-account-create.md?tabs=azure-portal)が必要です。 後でエンドポイントを作成する際に、このコンテナーの URL を指定します。
-配信不能メッセージは、コンテナーの URL として、[SAS トークン](../storage/common/storage-sas-overview.md)で提供されます。 このトークンには、ストレージ アカウント内の送信先コンテナーに対する `write` アクセス許可のみが必要です。 完全な形式の URL は次の形式になります: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
+配信不能の場所を設定するには、ご使用の Azure アカウントに[コンテナー](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)が設定された[ストレージ アカウント](../storage/common/storage-account-create.md?tabs=azure-portal)が必要です。 
+
+後でエンドポイントを作成する際に、このコンテナーの URL を指定します。 配信不能の場所は、[SAS トークン](../storage/common/storage-sas-overview.md)を含むコンテナー URL としてエンドポイントに提供されます。 このトークンには、ストレージ アカウント内の宛先コンテナーに対する `write` アクセス許可が必要です。 完全な形式の URL は `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>` の形式になります。
 
 以下の手順に従って、Azure アカウントでこれらのストレージ リソースを設定し、次のセクションでエンドポイント接続の設定を準備します。
 
-1. [この記事](../storage/common/storage-account-create.md?tabs=azure-portal)の手順に従ってストレージ アカウントを作成し、後で使用するためにストレージ アカウント名を保存します。
-2. [この記事](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)を使用してコンテナーを作成し、コンテナー名を保存します。これは後でコンテナーとエンドポイント間の接続を設定するときに使用します。
-3. 次に、ストレージ アカウントの SAS トークンを作成します。 まず、[Azure portal](https://ms.portal.azure.com/#home) でご自分のストレージ アカウントに移動します (ポータルの検索バーを使って名前で見つけることができます)。
-4. ストレージ アカウントのページで、左側のナビゲーション バーの _[Shared Access Signature]_ リンクを選択し、SAS トークンを生成するための適切なアクセス許可を選択します。
-5. _[使用できるサービス]_ と _[使用できるリソースの種類]_ に必要な設定を選択します。 カテゴリごとに少なくとも 1 つのボックスを選択する必要があります。 [与えられているアクセス許可] に、 **[書き込み]** を選択します (必要に応じて他のアクセス許可を選択することもできます)。
-残りの設定は必要に応じて設定してください。
-6. 次に、 _[SAS と接続文字列を生成する]_ ボタンを選択して SAS トークンを生成します。 これにより、同じページの下部の選択した設定の下に、いくつかの SAS と接続文字列の値が生成されます。 下にスクロールして値を表示し、[クリップボードにコピー] アイコンを使用して **SAS トークン** 値をコピーします。 後で使用するために保存します。
+1. 「[*ストレージ アカウントを作成する*](../storage/common/storage-account-create.md?tabs=azure-portal)」の手順に従って、Azure サブスクリプションに **ストレージ アカウント** を作成します。 後で使用するために、そのストレージ アカウント名を書き留めておきます。
+2. 「[*コンテナーを作成する*](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)」の手順に従って、新しいストレージ アカウント内に **コンテナー** を作成します。 後で使用するために、そのコンテナー名を書き留めておきます。
+3. 次に、ストレージ アカウント用に **SAS トークン** を作成して、エンドポイントからアクセスするときにこれを使用できるようにします。 まず、[Azure portal](https://ms.portal.azure.com/#home) でご自分のストレージ アカウントに移動します (ポータルの検索バーを使って名前で見つけることができます)。
+4. ストレージ アカウントのページで、左側のナビゲーション バーの _[Shared Access Signature]_ リンクを選択し、SAS トークンの設定を開始します。
 
-:::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token.png" alt-text="SAS トークンを生成するためのすべての設定の選択が示されている Azure portal のストレージ アカウントのページ。" lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token.png":::
+    :::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token-1.png" alt-text="Azure portal の [ストレージ アカウント] ページ" lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token-1.png":::
 
-:::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="配信不能メッセージのシークレットで使用する SAS トークンをコピーします。" lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
+1. *Shared Access Signature のページ* の *[使用できるサービス]* と *[使用できるリソースの種類]* で、目的の設定を選択します。 カテゴリごとに少なくとも 1 つのボックスを選択する必要があります。 *[与えられているアクセス許可]* で **[書き込み]** を選択します (必要に応じて他のアクセス許可を選択することもできます)。
+1. 残りの設定には、任意の値を設定します。
+1. 完了後、 _[SAS と接続文字列を生成する]_ ボタンを選択して SAS トークンを生成します。 
 
+    :::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token-2.png" alt-text="Azure portal の [ストレージ アカウント] ページで SAS トークンを生成するためのすべての設定の選択が示されている。[SAS と接続文字列を生成する] ボタンが強調表示されている" lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token-2.png"::: 
+
+1. これにより、同じページの下部の選択した設定の下に、いくつかの SAS と接続文字列の値が生成されます。 下にスクロールして値を表示し、 *[クリップボードにコピー]* アイコンを使用して **SAS トークン** 値をコピーします。 後で使用するために保存します。
+
+    :::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="配信不能メッセージのシークレットで使用する SAS トークンをコピーします。" lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
+    
 #### <a name="configure-the-endpoint"></a>エンドポイントを構成する
 
-配信不能メッセージのエンドポイントは Azure Resource Manager API を使用して作成されます。 エンドポイントの作成時に、[Azure Resource Manager API のドキュメント](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate)を使用して、必要な要求パラメーターを入力します。 また、要求の **本文** でプロパティ オブジェクトに `deadLetterSecret` を追加します。これには、ストレージ アカウントのコンテナー URL と SAS トークンが含まれます。
+配信不能処理が有効になっているエンドポイントを作成するには、Azure Resource Manager API を使用してエンドポイントを作成する必要があります。 
+
+1. 最初に、[Azure Resource Manager API のドキュメント](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate)を使用して、エンドポイントを作成するための要求を設定し、必要な要求パラメーターを入力します。 
+
+1. 次に、要求の **本文** で `deadLetterSecret` フィールドをプロパティ オブジェクトに追加します。 この値を以下のテンプレートに従って設定します。これにより、[前のセクション](#set-up-storage-resources)で収集したストレージ アカウント名、コンテナー名、SAS トークンの値から URL が生成されます。
       
-```json
-{
-  "properties": {
-    "endpointType": "EventGrid",
-    "TopicEndpoint": "https://contosoGrid.westus2-1.eventgrid.azure.net/api/events",
-    "accessKey1": "xxxxxxxxxxx",
-    "accessKey2": "xxxxxxxxxxx",
-    "deadLetterSecret":"https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>"
-  }
-}
-```
+    ```json
+    {
+      "properties": {
+        "endpointType": "EventGrid",
+        "TopicEndpoint": "https://contosoGrid.westus2-1.eventgrid.azure.net/api/events",
+        "accessKey1": "xxxxxxxxxxx",
+        "accessKey2": "xxxxxxxxxxx",
+        "deadLetterSecret":"https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>"
+      }
+    }
+    ```
+1. 要求を送信してエンドポイントを作成します。
+
 この要求の構造化に関する詳細については、次の Azure Digital Twins REST API のドキュメントを参照してください:「[エンドポイント - DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate)」。
 
 ### <a name="message-storage-schema"></a>メッセージ ストレージ スキーマ
 
-配信不能メッセージは、次の形式でストレージ アカウントに格納されます。
+配信不能処理を行うエンドポイントが設定されると、配信不能メッセージが次の形式でストレージ アカウントに格納されます。
 
 `{container}/{endpointName}/{year}/{month}/{day}/{hour}/{eventId}.json`
 

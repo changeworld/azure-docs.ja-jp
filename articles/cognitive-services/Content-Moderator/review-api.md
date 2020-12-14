@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: e2d87d4322ac6b91a19a4775c23ceec75d528030
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 43c39c40af6e02861211a8666fefa57c34072f32
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325334"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905198"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>コンテンツ モデレーションのレビュー、ワークフロー、ジョブ
 
@@ -42,7 +42,7 @@ Content Moderator は、マシン支援型モデレーションと人間参加�
 > [!div class="mx-imgBorder"]
 > ![検索ツール バーが表示されています。 レビューの状態やタグなどの検索基準を入力するためのさまざまなコンボ ボックスがあります。](./Review-Tool-user-Guide/images/review-search.png)
 
-レビューの作成を開始する方法については、[レビュー ツール ガイド](./review-tool-user-guide/review-moderated-images.md)のページを参照してください。プログラムでの実行方法については、[REST API ガイド](./try-review-api-review.md)のページを参照してください。
+レビューの作成を開始する方法については、[レビュー ツール ガイド](./review-tool-user-guide/review-moderated-images.md)を参照してください。プログラムでの実行方法については、[API コンソール ガイド](./try-review-api-review.md)を参照してください。
 
 ## <a name="workflows"></a>ワークフロー
 
@@ -80,13 +80,13 @@ Content Moderator は、マシン支援型モデレーションと人間参加�
 }
 ```
 
-ワークフローの作成と使用を開始する方法については、[レビュー ツール ガイド](./review-tool-user-guide/workflows.md)のページを参照してください。プログラムでの実行方法については、[REST API ガイド](./try-review-api-workflow.md)のページを参照してください。
+ワークフローの作成と使用を開始する方法については、[レビュー ツール ガイド](./review-tool-user-guide/workflows.md)を参照してください。プログラムでの実行方法については、[API コンソール ガイド](./try-review-api-workflow.md)を参照してください。
 
 ## <a name="jobs"></a>ジョブ
 
 モデレーション ジョブはコンテンツ モデレーション、ワークフロー、レビューの機能に対するある種のラッパーとして機能します。 このジョブは、Content Moderator の画像モデレーション API やテキスト モデレーション API を使用してコンテンツをスキャンし、指定したワークフローに対して確認します。 ワークフローの結果に基づいて、[レビュー ツール](./review-tool-user-guide/human-in-the-loop.md)でコンテンツのレビューを作成する場合と作成しない場合があります。 レビューとワークフローの両方をそれぞれの API を使用して作成および構成することができますが、ジョブ API を使用すると、プロセス全体の詳細なレポートを取得できます (指定したコールバック エンドポイントに送信できます)。
 
-ジョブの使用を開始する方法については、[REST API ガイド](./try-review-api-job.md)のページを参照してください。
+ジョブの使用を開始する方法については、[API コンソール ガイド](./try-review-api-job.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

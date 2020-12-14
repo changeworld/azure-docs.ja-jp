@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 11/11/2020
+ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 2c592a959dfb9d4e93f97488a9ac1b1f6683c23e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0437704709e863cdbc62321c8a4b79015564e362
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968273"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558761"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>方法: 感情分析とオピニオン マイニング
 
-Text Analytics API の感情分析機能には、肯定的および否定的センチメントを検出するための 2 つの方法が用意されています。 感情分析要求を送信すると、文とドキュメントのレベルでセンチメント ラベル ("negative"、"neutral"、"positive" など) と信頼度スコアが API から返されます。 また、感情分析エンドポイントを使用してオピニオン マイニング要求を送信することもできます。これにより、テキスト内のアスペクト (製品やサービスの属性など) に関連した意見に関する詳細な情報が提供されます。
+Text Analytics API の感情分析機能には、肯定的および否定的センチメントを検出するための 2 つの方法が用意されています。 感情分析要求を送信すると、文とドキュメントのレベルでセンチメント ラベル ("negative"、"neutral"、"positive" など) と信頼度スコアが API から返されます。 また、感情分析エンドポイントを使用してオピニオン マイニング要求を送信することもできます。これにより、テキスト内のアスペクト (製品やサービスの属性など) に関連した意見に関する詳細な情報が提供されます。 
 
 API で使用される AI モデルはサービスによって提供されるため、分析対象のコンテンツを送信するだけで済みます。
 
@@ -51,13 +51,14 @@ API で使用される AI モデルはサービスによって提供されるた
 
 ## <a name="opinion-mining"></a>オピニオン マイニング
 
-オピニオン マイニングは、バージョン 3.1-preview.1 以降の感情分析の機能です。 この機能は、自然言語処理 (NLP) ではアスペクトベースの感情分析とも呼ばれます。テキストに含まれるアスペクト (製品やサービスの属性など) に関連した意見について、より粒度の細かい情報が得られます。
+オピニオン マイニングは、バージョン 3.1-preview.1 以降の感情分析の機能です。 この機能は、自然言語処理 (NLP) ではアスペクトベースの感情分析とも呼ばれます。テキストに含まれるアスペクト (製品やサービスの属性など) に関連した意見について、より粒度の細かい情報が得られます。 
 
 たとえば、あるホテルについて "The room was great, but the staff was unfriendly (部屋はすばらしいのですが、スタッフが無愛想でした)" のようなフィードバックを利用者が残した場合、そのテキストに含まれるアスペクトと、それに関連する意見と感情がオピニオン マイニングによって特定されます。 感情分析では、否定的な感情のみが報告される可能性があります。
 
 :::image type="content" source="../media/how-tos/opinion-mining.png" alt-text="オピニオン マイニング例の図" lightbox="../media/how-tos/opinion-mining.png":::
 
-オピニオン マイニングを結果に含めるには、感情分析の要求に `opinionMining=true` フラグを含める必要があります。 オピニオン マイニングの結果が感情分析の応答に含められます。
+オピニオン マイニングを結果に含めるには、感情分析の要求に `opinionMining=true` フラグを含める必要があります。 オピニオン マイニングの結果が感情分析の応答に含められます。 オピニオン マイニングは感情分析の拡張機能であり、現在の[価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)に含まれています。
+
 
 ## <a name="sending-a-rest-api-request"></a>REST API 要求の送信 
 

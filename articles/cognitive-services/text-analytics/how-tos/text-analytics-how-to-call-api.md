@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 2977946b2e1f37aa356ee075d2caac237170df0f
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 3d3c452dd883316520e0c28f01c241af74d597c8
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "95993341"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602786"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Text Analytics REST API を呼び出す方法
 
@@ -52,11 +52,11 @@ v3.1-preview.3 以降の Text Analytics API には、2 つの非同期エンド�
 
 
 > [!NOTE]
-> `/analyze` または `/health` エンドポイントを使用する場合は、Standard (S) [価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)を使用する Text Analytics リソースが必要です。
+> * `/analyze` または `/health` エンドポイントを使用する場合は、Standard (S) [価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)を使用する Text Analytics リソースが必要です。
 
-1.  まだ持っていない場合は、最初に、[Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) にアクセスして新しい Text Analytics リソースを作成します。 `/analyze` または `/health` エンドポイントを使用する場合は、Standard (S) 価格レベルを選択します。
+1.  まだ持っていない場合は、最初に、[Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) にアクセスして新しい Text Analytics リソースを作成します。 `/analyze` または `/health` のいずれかのエンドポイントを使用する場合は、**Standard (S) 価格レベル** を選択します。 `/analyze` エンドポイントは、ご使用の[価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)に含まれています。
 
-2.  エンドポイントを使用するリージョンを選択します。
+2.  エンドポイントに使用するリージョンを選択します。  `/analyze` と `/health` のエンドポイントは、次のリージョンでのみご利用いただけます。米国西部 2、米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ。
 
 3.  Text Analytics リソースを作成し、ページの左側にある "キーとエンドポイントのブレード" に移動します。 後で API を呼び出すときに使用するキーをコピーします。 後で `Ocp-Apim-Subscription-Key` ヘッダーの値としてこの値を追加します。
 
@@ -260,6 +260,8 @@ API 要求を送信します。 同期エンドポイントを呼び出した場
 3. `Operation-Location` を要求に追加します。
 
 4. 応答は、要求で指定した各ドキュメント ID の項目が含まれる単一の JSON ドキュメントです。
+
+非同期の `/analyze` または `/health` の両方の操作について、上記の手順 2 の GET 要求の結果は、ジョブが作成されてから 24 時間使用できます。  この時間は、GET 応答の `expirationDateTime` 値によって表されます。  この時間が経過すると、結果は消去され、取得できなくなります。    
 
 ## <a name="example-api-responses"></a>API 応答の例
  

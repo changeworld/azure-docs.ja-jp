@@ -10,16 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: bead348e64fcee4cc5b790f975c9da5200ee796b
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: acc19d9a04909dcf0e79c93e0c8a3fb8225ee1b4
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422401"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546908"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Speech CLI の基本を学ぶ
 
-この記事では、Speech CLI の基本的な使用パターンについて説明します。これは、コードを記述せずに音声サービスを使用できるコマンド ライン ツールです。 開発環境を作成したり、コードを記述したりせずに、音声サービスの主な機能をすばやくテストして、ユースケースが適切に合致しているかどうかを確認できます。 また、Speech CLI は実稼働準備が整っており、`.bat` またはシェル スクリプトを使用して、音声サービスの単純なワークフローを自動化するために使用できます。
+この記事では、Speech CLI の基本的な使用パターンについて説明します。これは、コードを記述せずに音声サービスを使用できるコマンド ライン ツールです。 開発環境を作成したり、コードを記述したりせずに、音声サービスの主な機能をすばやくテストして、ユースケースが適切に合致しているかどうかを確認できます。 Speech CLI は実稼働準備が整っており、`.bat` またはシェル スクリプトを使用して、音声サービスの単純なワークフローを自動化するために使用できます。
+
+この記事では、コマンド プロンプト、ターミナル、PowerShell に関する実用的な知識があることを前提としています。
 
 [!INCLUDE [](includes/spx-setup.md)]
 
@@ -45,11 +47,24 @@ recognize コマンドのオプションを表示するには、次のコマン�
 spx help recognize
 ```
 
-次に、次のコマンドを実行して、Speech サービスを使用して既定のマイクによる音声認識を実行します。
+次に、Speech CLI を使用して、システムの既定のマイクで音声認識を実行しましょう。 
+
+>[!WARNING]
+> Docker コンテナーを使用している場合、このコマンドは機能しません。
+
+次のコマンドを実行します。
 
 ```shell
 spx recognize --microphone
 ```
+
+Speech CLI を使用すると、オーディオ ファイルから音声を認識することもできます。
+
+```shell
+spx recognize --file /path/to/file.wav
+```
+> [!TIP]
+> Docker コンテナー内のオーディオ ファイルから音声を認識している場合、前の手順でマウントしたディレクトリにオーディオ ファイルがあることをご確認ください。
 
 コマンドを入力すると、SPX により、現在のアクティブな入力デバイスでオーディオのリッスンが開始され、`ENTER` キーを押すと停止します。 録音した音声が認識され、コンソール出力でテキストに変換されます。 Speech CLI を使用すると、テキスト読み上げ合成も簡単に実行できます。 
 

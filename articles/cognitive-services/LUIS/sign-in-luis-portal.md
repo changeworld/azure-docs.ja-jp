@@ -7,85 +7,50 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 09/08/2020
 ms.topic: how-to
-ms.author: a-sakand
-author: skandil
-ms.openlocfilehash: d801971ca62c416c66608b40aab3e8052fe941a1
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.author: nitinme
+author: nitinme
+ms.openlocfilehash: 3235f6285edb99776b42014678cd2b6c60d17f62
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931412"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763845"
 ---
 # <a name="sign-in-to-luis-portal"></a>LUIS ポータルにサインインする
 
-新しいユーザーが LUIS ポータルにサインインする場合、現在のユーザー アカウントに基づいてサインイン エクスペリエンスが若干異なるものになります。
-  * Azure サブスクリプションに関連付けられている
-  * Azure サブスクリプションに関連付けられていない
+この記事では、LUIS ポータルの概要とオーサリング リソースの作成について説明します。 この記事の手順を完了すると、LUIS アプリを作成して発行できるようになります。
 
-## <a name="determine-account-type"></a>アカウントの種類の決定
-
-LUIS ポータルに初めてサインインするときは、次のビジュアル インジケーターを使用してアカウントの種類を決定します。
-
-### <a name="account-without-azure-subscription"></a>Azure サブスクリプションのないアカウント
-
-Azure サブスクリプションに関連付けられていないアカウントでは、右上のナビゲーション バーに Azure アイコンが表示されます。 関連付けられているアカウントの種類に移行すると、そのアイコンは表示されなくなります。
-
-:::image type="content" source="media/sign-in/sign-in-with-account-without-azure-subscription.png" alt-text="Azure アイコンが含まれている LUIS ナビゲーション バーの部分的なスクリーンショット。":::
-
-### <a name="account-with-azure-subscription"></a>Azure サブスクリプションのある Azure アカウント
-
-Azure サブスクリプションに関連付けられているアカウントでは、使用するサブスクリプションとリソースを選択できます。
-
-:::image type="content" source="media/sign-in/resource-selection.png" alt-text="Azure アイコンが含まれている LUIS ナビゲーション バーの部分的なスクリーンショット。":::
-
-## <a name="sign-in-with-account-associated-with-an-azure-subscription"></a>Azure サブスクリプションに関連付けられているアカウントを使用したサインイン
-
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、使用条件に同意します。
-
-1. 次の 2 つの方法でサインアップできます。
-
-    * Azure リソースを引き続き使用する。これは推奨されるパスであり、近いうちに使用可能な唯一のパスになる予定です。 このパスでは、サブスクリプション内の既存のリソースを選択するか新しいリソースを作成してサインアップすると同時に、LUIS アカウントを Azure オーサリング リソースにリンクすることができます。 これは、後で[移行プロセス](luis-migration-authoring.md#what-is-migration)を実行する必要もなく移行されたサインアップと同じです。 すべてのユーザーは、2020 年 11 月 2 日までに移行する必要があります。
-
-    * スターターまたは試用版キーを引き続き使用する。 このパスでは、リソースを作成しなくても、提供されているスターターまたは試用版のリソースで LUIS にサインインできます。 このパスを選択した場合は、最終的に[アカウントを移行](luis-migration-authoring.md#migration-steps)し、アプリケーションをオーサリング リソースにリンクする必要があります。 そのため、Azure リソースが引き続き使用されるパスを選択することが推奨されます。
-
-    [オーサリングおよびスターター キーの詳細をご確認ください](luis-how-to-azure-subscription.md#luis-resources)。 どちらのリソースでも、100 万件のオーサリング トランザクション と 1000 件の予測エンドポイント トランザクション が無料で提供されます。
-
-    :::image type="content" source="media/sign-in/signup-landing-page.png" alt-text="Azure アイコンが含まれている LUIS ナビゲーション バーの部分的なスクリーンショット。":::
-
-1. 既存のオーサリング リソースを使用して移行します
-
-    :::image type="content" source="media/sign-in/signup-choose-resource.png" alt-text="Azure アイコンが含まれている LUIS ナビゲーション バーの部分的なスクリーンショット。":::
-
-    サブスクリプションに LUIS のオーサリング リソースが既にあり、サインイン中に LUIS アカウントに関連付ける場合は、 **[既存のオーサリング リソースを使用]** オプションを選択して、次の情報を指定します。
-
-    * **[Tenant]\(テナント\)** - Azure サブスクリプションが関連付けられているテナント。 既存のウィンドウからテナントを切り替えることはできません。 テナントを切り替えるには、上部バーにイニシャルが含まれている、右端のアバターを選択します。
-    * **[Subscription name]\(サブスクリプション名)** - リソースに関連付けられるサブスクリプション。 テナントに属しているサブスクリプションが複数ある場合は、ドロップダウン リストから目的のサブスクリプションを選択します。
-    * **[リソース名]** - アカウントが関連付けられるオーサリング リソース。
-
-    > [!Note]
-    > 目的のオーサリング リソースがドロップダウンリストでグレー表示されている場合は、別のリージョンのポータルにサインインしていることを意味します。 [リージョン別のポータルの概念について理解してください](luis-reference-regions.md#luis-authoring-regions)。
-
-1. 新しいオーサリング リソースを作成します
-
-    :::image type="content" source="media/sign-in/signup-create-resource.png" alt-text="Azure アイコンが含まれている LUIS ナビゲーション バーの部分的なスクリーンショット。" というメッセージが表示されるまで数秒かかることがあります。 **[続行]** を選択して完了します。
-
-    :::image type="content" source="media/sign-in/signup-confirm-2.png" alt-text="Azure アイコンが含まれている LUIS ナビゲーション バーの部分的なスクリーンショット。":::
-
-    > [!Note]
-    > サブスクリプションを持っていて、ポータルでサインアップしているものと同じオーサリング リソースがリージョン内に少なくとも 1 つある場合は、進むパスを選択しなくても、移行されてリソースに関連付けられた LUIS に自動的にサインインされる可能性があります。
+## <a name="access-the-portal"></a>ポータルへのアクセス
 
 
-## <a name="sign-in-with-user-account-not-associated-with-an-azure-subscription"></a>Azure サブスクリプションに関連付けられていないユーザー アカウントを使用したサインイン
+1. LUIS を使ってみるには、[LUIS ポータル](https://www.luis.ai)にアクセスします。 まだサブスクリプションをお持ちでない場合は、[無料アカウントを作成](https://azure.microsoft.com//free/cognitive-services/)してからポータルに戻るように求められます。
+2. ページを最新の情報に更新します。新規作成したサブスクリプションが更新結果に反映されます
+3. ドロップダウン リストからサブスクリプションを選択します
 
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、利用規約に同意していることを確認します。
+    > [!div class="mx-imgBorder"]
+    > ![サブスクリプションの選択](./media/migrate-authoring-key/select-subscription-sign-in-2.png)
 
-1. **[続行]** を選択して完了します。 試用版/スターター キーを使用して自動的にサインインされます。 これは、最終的に[アカウントを移行](luis-migration-authoring.md#migration-steps)し、アプリケーションをオーサリング リソースにリンクする必要があることを意味します。 移行プロセスを実行するには、[Azure の無料試用版](https://azure.microsoft.com/free/)にサインインする必要があります。
+4. サブスクリプションが別のテナントに存在する場合、既存のウィンドウからテナントを切り替えることはできません。 テナントを切り替えるには、このウィンドウを閉じて、上部バーの右端にあるイニシャルの含まれたアバターを選択してください。 上部にある **[別のオーサリング リソースの選択]** をクリックして、このウィンドウを再び開きます。
 
-    :::image type="content" source="media/sign-in/signup-no-subscription.png" alt-text="Azure アイコンが含まれている LUIS ナビゲーション バーの部分的なスクリーンショット。":::
+    > [!div class="mx-imgBorder"]
+    > ![ディレクトリの切り替え](./media/migrate-authoring-key/switch-directories.png)
+
+5. サブスクリプションに関連付けられている既存の LUIS オーサリング リソースがある場合は、ドロップダウン リストから選択します。 このオーサリング リソースの下で作成したすべてのアプリケーションが表示されます。
+6. 表示されない場合は、このモーダルの下部にある **[新しいオーサリング リソースの作成]** をクリックします。
+7.  新しい作成リソースを作成するときは、次の情報を指定します。
+
+    > [!div class="mx-imgBorder"]
+    > ![新しいリソースの作成](./media/migrate-authoring-key/create-new-authoring-resource-2.png)
+
+    * **[テナント名]** - Azure サブスクリプションが関連付けられているテナント。 既存のウィンドウからテナントを切り替えることはできません。 テナントを切り替えるには、このウィンドウを閉じて、画面の右上隅にあるイニシャルの含まれたアバターを選択してください。 上部にある **[別のオーサリング リソースの選択]** を選択して、このウィンドウを再び開きます。
+    * **[Azure リソース グループ名]** - サブスクリプションで選択したカスタム リソース グループの名前。 リソース グループを使用すると、アクセスと管理のために Azure リソースをグループ化できます。 現在サブスクリプション内にリソース グループがない場合、LUIS ポータルでそれを作成することはできません。 [Azure portal](https://ms.portal.azure.com/#create/Microsoft.ResourceGroup) にアクセスしてそれを作成してから、LUIS にアクセスしてサインイン プロセスを続行します。
+    * **[Azure リソース名]** - 選択したカスタム名。オーサリング トランザクションの URL の一部として使用されます。 リソース名には英数字と `-` のみを含めることができ、先頭または末尾に `-` を使用することはできません。 名前に他の記号が含まれている場合は、リソースの作成に失敗します。
+    * **[場所]** - LUIS で現在サポートされている次の [3 つのオーサリング場所](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions)のいずれかでアプリケーションを作成することを選択します:米国西部、西ヨーロッパ、オーストラリア東部
+    * **[価格レベル]** - 既定では、推奨されているように F0 authoring 価格レベルが選択されています。 セキュリティをさらに強化する必要がある場合は、Azure portal から[カスタマー マネージド キー](https://docs.microsoft.com/azure/cognitive-services/luis/luis-encryption-of-data-at-rest#customer-managed-keys-for-language-understanding)を作成します。
+8. これで、LUIS に正常にサインインしました。 アプリケーションの作成を開始できます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-* サインインしているポータルとは異なるリージョンにある Azure portal からオーサリング リソースを作成した場合、そのオーサリング リソースはグレー表示されます。
 * 新しいリソースを作成するときは、リソース名に英数字と "-" のみが含まれていること、および先頭または末尾に "-" を使用できないことを確認してください。 アクティブなインスタンスがある場合、ファイルは正しく実行されません。
 * [Azure リソース作成するための、サブスクリプションに対する適切なアクセス許可](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)があることを確認します。 適切なアクセス許可がない場合は、ご使用のサブスクリプションの管理者に連絡して、十分なアクセス許可を付与してもらってください。
 
