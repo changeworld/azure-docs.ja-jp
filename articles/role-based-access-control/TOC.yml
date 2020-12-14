@@ -9,7 +9,7 @@
       href: rbac-and-directory-admin-roles.md
 - name: クイックスタート
   items:
-    - name: ユーザーのアクセス権の表示
+    - name: ユーザーのアクセスを確認
       href: check-access.md
     - name: ARM テンプレート
       displayName: Resource Manager

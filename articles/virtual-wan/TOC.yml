@@ -135,12 +135,14 @@
               href: virtual-wan-route-table-nva-portal.md
             - name: Azure PowerShell
               href: virtual-wan-route-table-nva.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: Azure Firewall をハブにデプロイする
           href: howto-firewall.md
         - name: Private Link の接続の構成
           href: howto-private-link.md
+        - name: リソースへのアクセス管理 - スポーク VNet P2S
+          href: manage-secure-access-resources-spoke-p2s.md
     - name: 監視
       items:
         - name: ログとメトリック

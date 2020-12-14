@@ -42,13 +42,13 @@
               href: /sql/azdata/install/deploy-install-azdata-pip?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
     - name: データ コントローラーの作成
       items:
-        - name: データ コントローラーの作成 (Azure Data Studio)
+        - name: Azure Data Studio
           href: create-data-controller-azure-data-studio.md
-        - name: データ コントローラー リソースの作成 (ポータル)
+        - name: Azure portal
           href: create-data-controller-resource-in-azure-portal.md
-        - name: データ コントローラーの作成 (Azure Data CLI)
+        - name: Azure Data CLI (azdata)
           href: create-data-controller-using-azdata.md
-        - name: Kubernetes を使用したデータ コントローラーの作成
+        - name: Kubernetes のツール
           href: create-data-controller-using-kubernetes-native-tools.md
     - name: Azure Arc 対応データ サービス全般に共通するエクスペリエンス
       items:
@@ -80,6 +80,8 @@
           href: view-arc-data-services-inventory-in-azure-portal.md
         - name: データ コントローラーのユーザー名とパスワードの取得
           href: retrieve-the-username-password-for-data-controller.md
+        - name: サービス プリンシパルの資格情報を更新
+          href: update-service-principal-credentials.md
     - name: トラブルシューティング
       items:
         - name: ガイド

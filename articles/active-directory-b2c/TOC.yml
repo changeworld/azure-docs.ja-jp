@@ -155,6 +155,25 @@
           href: identity-provider-wechat.md
         - name: Weibo
           href: identity-provider-weibo.md
+    - name: UX のカスタマイズ
+      items:
+        - name: ユーザー入力の構成
+          href: configure-user-input.md
+        - name: 会社のブランド化を使用して UI をカスタマイズする
+          href: company-branding.md
+        - name: HTML テンプレートを使用して UI をカスタマイズする
+          href: customize-ui-with-html.md
+        - name: JavaScript とページ レイアウト
+          href: javascript-and-page-layout.md
+        - name: 言語をカスタマイズする
+          href: language-customization.md
+        - name: パスワードの複雑さ
+          href: password-complexity.md
+        - name: メールの確認を無効にする
+          href: disable-email-verification.md
+        - name: MFA の有効化
+          href: multi-factor-authentication.md
+          displayName: multi-factor auth
     - name: ユーザー フロー
       items:
         - name: フローを作成する
@@ -167,21 +186,6 @@
               href: user-flow-self-service-password-reset.md
         - name: 条件付きアクセスの追加
           href: conditional-access-user-flow.md
-        - name: UX のカスタマイズ
-          items:
-            - name: UI のカスタマイズ
-              href: customize-ui-overview.md
-            - name: JavaScript とページ レイアウト
-              href: user-flow-javascript-overview.md
-            - name: 言語をカスタマイズする
-              href: user-flow-language-customization.md
-            - name: パスワードの複雑さ
-              href: user-flow-password-complexity.md
-            - name: メールの確認を無効にする
-              href: user-flow-disable-email-verification.md
-            - name: MFA の有効化
-              href: custom-policy-multi-factor-authentication.md
-              displayName: multi-factor auth
         - name: トークンおよびセッション管理
           items:
             - name: トークンを構成する
@@ -219,29 +223,13 @@
             - name: 電話でのサインアップとサインイン
               href: phone-authentication.md
               displayName: 'otp, passwordless, phone number'
-        - name: UX のカスタマイズ
+        - name: カスタム メール確認
           items:
-            - name: ユーザー入力の構成
-              href: custom-policy-configure-user-input.md
-              displayName: 'ui, ux'
-            - name: UI のカスタマイズ
-              href: custom-policy-ui-customization.md
-              displayName: 'ux, input, cors, html, css'
-            - name: 言語をカスタマイズする
-              href: custom-policy-localization.md
-            - name: カスタム メール確認
-              items:
-                - name: Mailjet
-                  href: custom-email-mailjet.md
-                - name: SendGrid
-                  href: custom-email-sendgrid.md
-              displayName: verification
-            - name: メールの確認を無効にする
-              href: custom-policy-disable-email-verification.md
-            - name: JavaScript を有効にする
-              href: javascript-samples.md
-            - name: パスワードの複雑さ
-              href: custom-policy-password-complexity.md
+            - name: Mailjet
+              href: custom-email-mailjet.md
+            - name: SendGrid
+              href: custom-email-sendgrid.md
+          displayName: verification
         - name: トークンおよびセッション管理
           items:
             - name: トークンのカスタマイズ

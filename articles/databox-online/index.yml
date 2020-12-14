@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Azure Stack Edge のドキュメント - オンライン転送
-summary: ネットワーク経由で高パフォーマンスのデータ転送を行うには、Azure Stack Edge デバイスを使用します。 データを Azure に移動する前に、そのデータのフィルター処理、分析、変換を行う場合は、コンピューティング アクセラレーション ハードウェアを備えた Azure Stack Edge Pro デバイスを使用します。
+title: Azure Stack Edge のドキュメント
+summary: Azure Stack Edge デバイスを使用して、コンピューティング、ストレージ、ネットワーク、ハードウェアアクセラレータによる機械学習などの Azure の機能を任意のエッジ ロケーションに提供します。
 metadata:
-  title: Azure Stack Edge のドキュメント - オンライン転送
+  title: Azure Stack Edge のドキュメント
   description: Azure に対してネットワーク経由でハイ パフォーマンスのデータ転送を行うための Azure Stack Edge のドキュメント。
   services: databox
   ms.service: databox
@@ -12,12 +12,12 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.date: 10/27/2020
-  ms.openlocfilehash: 2ee9153bc500c7d5184e32712e0707d1c0f2507e
-  ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+  ms.openlocfilehash: e0b1c488635314a8583f216d966a75095ac5e279
+  ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/03/2020
-  ms.locfileid: "96574192"
+  ms.lasthandoff: 12/12/2020
+  ms.locfileid: "97356091"
 landingContent:
 - title: Azure Stack Edge について
   linkLists:
@@ -29,7 +29,7 @@ landingContent:
       url: azure-stack-edge-overview.md
     - text: Azure Stack Edge R とは
       url: azure-stack-edge-j-series-overview.md
-    - text: Azure Stack Edge Mini とは
+    - text: Azure Stack Edge Mini R とは
       url: azure-stack-edge-k-series-overview.md
   - linkListType: architecture
     links:
@@ -39,8 +39,8 @@ landingContent:
       url: ../storage/common/storage-solution-large-dataset-low-network.md#offline-transfer-or-network-transfer
   - linkListType: whats-new
     links:
-    - text: 2011 リリース ノート
-      url: azure-stack-edge-gpu-2011-release-notes.md
+    - text: 2012 リリース ノート
+      url: azure-stack-edge-gpu-2012-release-notes.md
 - title: 要件と制限
   linkLists:
   - linkListType: concept

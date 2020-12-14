@@ -5,15 +5,15 @@ services: lighthouse
 author: JnHs
 ms.service: lighthouse
 ms.topic: include
-ms.date: 03/30/2020
+ms.date: 12/11/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: be8aae6308e712449402b002576974743bc125ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0056e18b6cb3aad2a4504bbe20b3b3421793489e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80986655"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356271"
 ---
 これらのサンプルでは、Azure Monitor を使用して、Azure の委任されたリソース管理用にオンボードされたサブスクリプションのアラートを作成する方法を示します。
 
@@ -23,3 +23,4 @@ ms.locfileid: "80986655"
 | [alert-using-actiongroup](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/alert-using-actiongroup) | このテンプレートは、Azure アラートを作成し、既存のアクション グループに接続します。|
 | [multiple-loganalytics-alerts](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/multiple-loganalytics-alerts) | Kusto クエリに基づいてログ警告を複数作成します。|
 | [delegation-alert-for-customer](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegation-alert-for-customer) | ユーザーが管理テナントにサブスクリプションを委任するときに、テナントにアラートをデプロイします。|
+| [workbook-activitylogs-by-domain](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) | サブスクリプション全体の Azure のアクティビティ ログを、ドメイン名でフィルター処理するオプションを使用して表示します。 |

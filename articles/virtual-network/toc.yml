@@ -39,6 +39,8 @@
       href: template-samples.md
 - name: 概念
   items:
+    - name: 概念とベスト プラクティス
+      href: concepts-and-best-practices.md
     - name: ビジネス継続性
       href: virtual-network-disaster-recovery-guidance.md
     - name: 接続
@@ -99,7 +101,7 @@
           href: routing-preference-overview.md
         - name: パブリック IP のセキュリティ ベースライン
           href: public-ip-security-baseline.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: Virtual Network のセキュリティ ベースライン
           href: security-baseline.md
@@ -272,7 +274,7 @@
                       href: configure-routing-preference-virtual-machine-powershell.md
                     - name: Azure CLI
                       href: configure-routing-preference-virtual-machine-cli.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: ネットワーク トラフィックのフィルター処理
           items:

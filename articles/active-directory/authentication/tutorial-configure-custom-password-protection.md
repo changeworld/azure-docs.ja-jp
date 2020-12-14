@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03a5f355263b80ef2e5e1c829877dc96ca55787a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 89abdcf4c76c92c2ed967594527d323b2cd8be32
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837891"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741186"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>チュートリアル:Azure Active Directory のパスワードを保護するためのカスタムの禁止パスワードを構成する
 
@@ -72,7 +72,7 @@ Azure AD には、グローバル禁止パスワードの一覧が用意され�
 
     * カスタムの禁止パスワードの一覧には、最大 1,000 個の用語を含めることができます。
     * カスタム禁止パスワード リストでは、大文字と小文字は区別されません。
-    * カスタムの禁止パスワードの一覧では、一般的な文字の置き換え ("o" と "0" や "a" と "@" など) が考慮されています。
+    * カスタムの禁止パスワードの一覧では、一般的な文字の置き換え ("o" と "0" や "a" と "\@" など) が考慮されています。
     * 最小文字数は 4 文字で、最大文字数は 16 文字です。
 
     次の例に示すように、禁止する独自のカスタム パスワードを指定します

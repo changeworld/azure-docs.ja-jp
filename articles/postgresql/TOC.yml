@@ -12,6 +12,10 @@
           href: concepts-certificate-rotation.md
 - name: 共有ドキュメント
   items:
+    - name: データベースのデプロイ
+      items:
+        - name: Github Actions
+          href: how-to-deploy-github-action.md
     - name: 移行
       items:
         - name: pg_dump と pg_restore でデータを移行する
@@ -202,6 +206,8 @@
               displayName: 'query store, performance, optimize, recommendations'
         - name: アプリケーション開発
           items:
+            - name: ベスト プラクティス
+              href: application-best-practices.md
             - name: 接続ライブラリ
               href: concepts-connection-libraries.md
               displayName: 'libraries, drivers'
@@ -416,10 +422,16 @@
               href: flexible-server/connect-python.md
     - name: チュートリアル
       items:
-        - name: 仮想ネットワークに Web アプリを作成する
-          href: flexible-server/tutorial-webapp-server-vnet.md
-        - name: Django アプリをデプロイする
-          href: flexible-server/tutorial-django-app-service-postgres.md
+        - name: AKS を使用してビルドする
+          items:
+            - name: Kubernetes での Python アプリのデプロイ
+              href: flexible-server/tutorial-django-aks-database.md
+        - name: App Services を使用してビルドする
+          items:
+            - name: 仮想ネットワークに Web アプリを作成する
+              href: flexible-server/tutorial-webapp-server-vnet.md
+            - name: App Service で Django アプリをデプロイする
+              href: flexible-server/tutorial-django-app-service-postgres.md
     - name: 概念
       items:
         - name: サーバー
@@ -466,6 +478,8 @@
               href: flexible-server/how-to-manage-server-portal.md
             - name: Azure CLI
               href: flexible-server/how-to-manage-server-cli.md
+            - name: 接続とクエリのガイド
+              href: flexible-server/how-to-connect-query-guide.md
         - name: 予定メンテナンス
           items:
             - name: Azure portal

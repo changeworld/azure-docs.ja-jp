@@ -322,9 +322,10 @@
               href: msal-net-migration-ios-broker.md
             - name: Web ブラウザーの考慮事項
               href: msal-net-web-browsers.md
-            - name: エラーと例外を処理する
-              href: msal-handling-exceptions.md?tabs=dotnet
-            - name: ログ記録
+            - name: MSAL.NET におけるエラーと例外の処理
+              href: msal-error-handling-dotnet.md
+              displayName: 'handling, catch'
+            - name: MSAL.NET でのログ
               href: msal-logging.md?tabs=dotnet
             - name: キャッシュからトークンを取得する
               href: msal-net-acquire-token-silently.md
@@ -363,9 +364,10 @@
               href: msal-js-use-ie-browser.md
             - name: 既知の問題 - IE と Microsoft Edge
               href: msal-js-known-issues-ie-edge-browsers.md
-            - name: エラーと例外を処理する
-              href: msal-handling-exceptions.md?tabs=javascript
-            - name: ログ記録
+            - name: MSAL.js におけるエラーと例外の処理
+              href: msal-error-handling-js.md
+              displayName: 'handling, catch'
+            - name: MSAL.js でのログ記録
               href: msal-logging.md?tabs=javascript
         - name: iOS および macOS 用の MSAL
           items:
@@ -392,9 +394,10 @@
               href: sso-between-adal-msal-apps-macos-ios.md
             - name: SSL に関する問題のトラブルシューティング (MSAL iOS/macOS)
               href: ssl-issues.md
-            - name: エラーと例外を処理する
-              href: msal-handling-exceptions.md?tabs=iosmacos
-            - name: ログ記録
+            - name: iOS および macOS 用の MSAL におけるエラーと例外の処理
+              href: msal-error-handling-ios.md
+              displayName: 'handling, catch'
+            - name: iOS および macOS 用の MSAL でのログ記録
               href: msal-logging.md?tabs=swift
         - name: MSAL for Python
           items:
@@ -404,9 +407,10 @@
               href: migrate-python-adal-msal.md
             - name: MSAL for Python での ADFS のサポート
               href: msal-python-adfs-support.md
-            - name: エラーと例外を処理する
-              href: msal-handling-exceptions.md?tabs=python
-            - name: ログ記録
+            - name: Python 用の MSAL におけるエラーと例外の処理
+              href: msal-error-handling-python.md
+              displayName: 'handling, catch'
+            - name: Python 用の MSAL でのログ記録
               href: msal-logging.md?tabs=python
         - name: MSAL for Java
           items:
@@ -418,9 +422,10 @@
               href: migrate-adal-msal-java.md
             - name: MSAL for Java での ADFS のサポート
               href: msal-java-adfs-support.md
-            - name: エラーと例外を処理する
-              href: msal-handling-exceptions.md?tabs=java
-            - name: ログ記録
+            - name: Java 用の MSAL におけるエラーと例外の処理
+              href: msal-error-handling-java.md
+              displayName: 'handling, catch'
+            - name: MSAL for Java でのログ記録
               href: msal-logging.md?tabs=java
         - name: MSAL for Android
           items:
@@ -437,10 +442,10 @@
               displayName: 'firstline worker, frontline worker, flw'
             - name: 単一および複数アカウントのパブリック クライアント アプリ
               href: single-multi-account.md
-            - name: エラーと例外を処理する
+            - name: Android 用の MSAL におけるエラーと例外の処理
               href: msal-android-handling-exceptions.md
-              displayName: 'android, mobile'
-            - name: ログ記録
+              displayName: 'android, mobile, handling, catch'
+            - name: Android 用の MSAL でのログ記録
               href: msal-logging.md?tabs=android
     - name: トークンと要求のカスタマイズ
       items:

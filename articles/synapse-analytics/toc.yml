@@ -1095,9 +1095,9 @@
         - name: 専用 SQL プール向けのスコアリング ウィザードを使用する
           href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
-        - name: Azure AutoML を使用してコーディングなしでモデルをトレーニングする
+        - name: 自動 ML でコードが不要なモデルをトレーニングする
           href: ./machine-learning/tutorial-automl.md
-        - name: Azure AutoML を使用して Python でモデルをトレーニングする
+        - name: 自動 ML で Python のモデルをトレーニングする
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
           displayname: machine learning
         - name: Apache Spark MLlib でモデルを作成する
