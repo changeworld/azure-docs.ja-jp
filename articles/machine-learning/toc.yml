@@ -503,7 +503,7 @@
       displayName: pipelines
       items:
         - name: ML パイプラインを作成する (Python)
-          href: how-to-create-your-first-pipeline.md
+          href: how-to-create-machine-learning-pipelines.md
         - name: ML パイプラインのステップ間でのデータの移動 (Python)
           href: how-to-move-data-in-out-of-pipelines.md
         - name: ML パイプラインをデプロイする (Python)
