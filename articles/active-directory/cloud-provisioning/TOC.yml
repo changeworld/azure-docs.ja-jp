@@ -48,6 +48,8 @@
       items:
         - name: エージェントの自動アップグレード
           href: how-to-automatic-upgrade.md
+        - name: エージェントの登録オプション
+          href: how-to-manage-registry-options.md
     - name: 開発
       items:
         - name: 変換

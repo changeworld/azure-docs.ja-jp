@@ -256,9 +256,11 @@
       items:
         - name: クエリの種類と構成
           href: search-query-overview.md
-        - name: 簡単なクエリを作成する
+        - name: 基本的なクエリの作成
+          href: search-query-create.md
+        - name: 単純な構文の使用 (例)
           href: search-query-simple-examples.md
-        - name: 完全な Lucene 構文を使用する
+        - name: 完全な Lucene の使用 (例)
           href: search-query-lucene-examples.md
         - name: 部分的な語句と特殊文字
           href: search-query-partial-matching.md
@@ -536,6 +538,8 @@
           href: 'https://wolterskluwereap.azurewebsites.net/'
         - name: JFK ファイルのデモ
           href: 'https://www.microsoft.com/en-us/ai/ai-lab-jfk-files'
+        - name: NYC ジョブのデモ
+          href: 'https://azjobsdemo.azurewebsites.net/'
     - name: トレーニング
       items:
         - name: 入門 (Microsoft Learn)

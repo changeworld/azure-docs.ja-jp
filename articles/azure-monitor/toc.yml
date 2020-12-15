@@ -1175,6 +1175,8 @@
               href: platform/workbooks-automate.md
             - name: グループ
               href: platform/workbooks-groups.md
+            - name: Bring your own storage
+              href: platform/workbooks-bring-your-own-storage.md
             - name: JSONPath を使用して JSON データを変換する
               href: platform/workbooks-jsonpath.md
             - name: 別のリージョンへのブックの移動

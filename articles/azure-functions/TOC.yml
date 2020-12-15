@@ -59,7 +59,7 @@
       items:
         - name: Visual Studio Code
           href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: "Visual\_Studio"
+        - name: Visual Studio
           href: functions-add-output-binding-storage-queue-vs.md
         - name: コマンド ライン
           href: functions-add-output-binding-storage-queue-cli.md
@@ -533,7 +533,16 @@
               href: functions-bindings-storage-queue-output.md
               displayName: Queue storage
         - name: RabbitMQ
-          href: 'https://github.com/azure/azure-functions-rabbitmq-extension'
+          items:
+            - name: 概要
+              href: functions-bindings-rabbitmq.md
+              displayName: RabbitMQ
+            - name: トリガー
+              href: functions-bindings-rabbitmq-trigger.md
+              displayName: RabbitMQ
+            - name: 出力
+              href: functions-bindings-rabbitmq-output.md
+              displayName: RabbitMQ
         - name: SendGrid
           href: functions-bindings-sendgrid.md
         - name: Service Bus

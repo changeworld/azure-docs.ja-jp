@@ -54,6 +54,8 @@ items:
         href: concept-business-glossary.md
       - name: データの分析情報
         href: concept-insights.md
+      - name: サポートされているブラウザー
+        href: supported-browsers.md
       - name: よく寄せられる質問
         href: frequently-asked-questions.md
   - name: 操作方法ガイド
@@ -110,6 +112,8 @@ items:
             href: how-to-create-import-export-glossary.md
           - name: 用語テンプレートの管理
             href: how-to-manage-term-templates.md
+          - name: 用語集の用語を割り当てるために、アセットを一括編集する
+            href: how-to-bulk-edit-assets.md
       - name: 分類
         items:
           - name: カスタム分類と分類規則の作成
