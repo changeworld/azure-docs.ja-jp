@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/29/2019
   ms.author: aahi
-  ms.openlocfilehash: 61372ede98bcd39ba3ad667dffc549783f67b035
-  ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+  ms.openlocfilehash: 5b1955d1de44ca66613d4e577f587b193aa31b38
+  ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/20/2020
-  ms.locfileid: "94990824"
+  ms.lasthandoff: 12/15/2020
+  ms.locfileid: "97504867"
 landingContent:
 - title: Text Analytics API について
   linkLists:
@@ -41,15 +41,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: C# の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-csharp#sentiment-analysis
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-csharp#sentiment-analysis
     - text: Python の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-python#sentiment-analysis
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-python#sentiment-analysis
     - text: Node.js の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-javascript#sentiment-analysis
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-javascript#sentiment-analysis
     - text: Go の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-go#sentiment-analysis
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-go#sentiment-analysis
     - text: Ruby の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-ruby#sentiment-analysis
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-ruby#sentiment-analysis
   - linkListType: tutorial
     links:
     - text: Power BI を統合して顧客のセンチメントを分析する
@@ -65,15 +65,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: C# の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-csharp#language-detection
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-csharp#language-detection
     - text: Python の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-python#language-detection
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-python#language-detection
     - text: Node.js の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-javascript#language-detection
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-javascript#language-detection
     - text: Go の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-go#language-detection
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-go#language-detection
     - text: Ruby の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-ruby#language-detection
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-ruby#language-detection
   - linkListType: how-to-guide
     links:
     - text: 言語検出
@@ -83,15 +83,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: C# の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-csharp#key-phrase-extraction
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-csharp#key-phrase-extraction
     - text: Python の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-python#key-phrase-extraction
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-python#key-phrase-extraction
     - text: Node.js の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-javascript#key-phrase-extraction
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-javascript#key-phrase-extraction
     - text: Go の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-go#key-phrase-extraction
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-go#key-phrase-extraction
     - text: Ruby の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-ruby#key-phrase-extraction
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-ruby#key-phrase-extraction
   - linkListType: how-to-guide
     links:
     - text: キーワード抽出
@@ -101,15 +101,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: C# の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-csharp#named-entity-recognition-ner
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-csharp#named-entity-recognition-ner
     - text: Python の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-python#named-entity-recognition-ner
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-python#named-entity-recognition-ner
     - text: Node.js の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-nodejs#named-entity-recognition-ner
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-nodejs#named-entity-recognition-ner
     - text: Go の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-go#named-entity-recognition-ner
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-go#named-entity-recognition-ner
     - text: Ruby の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-ruby#named-entity-recognition-ner
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-ruby#named-entity-recognition-ner
   - linkListType: how-to-guide
     links:
     - text: エンティティの認識

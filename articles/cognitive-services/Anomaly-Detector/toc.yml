@@ -30,6 +30,8 @@
   items:
     - name: データの異常を特定する
       href: how-to/identify-anomalies.md
+    - name: IoT Edge にデプロイする
+      href: how-to/deploy-anomaly-detection-on-iot-edge.md
     - name: コンテナーの使用
       items:
         - name: コンテナーのインストールと実行
