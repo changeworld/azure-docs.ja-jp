@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Azure Dev Spaces についての一般的ないくつかの質問にお答えします
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: a25ebd88d022ff278b3e3d9cc9cbf4d8b9b670cd
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: e83bed86714e4b92c63f4e7b7eb55df7a2a7eaff
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636097"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548836"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Azure Dev Spaces についてよく寄せられる質問
 
@@ -20,7 +20,7 @@ Azure Dev Spaces についてよく寄せられる質問に回答します。
 
 ## <a name="what-versions-of-kubernetes-are-supported-for-azure-dev-spaces"></a>Azure Dev Spaces では、どのバージョンの Kubernetes がサポートされていますか。
 
-Azure Dev Spaces では、[AKS で現在サポートされている Kubernetes の一般提供 (GA) バージョン][aks-supported-k8s]がすべてサポーされます。
+Azure Dev Spaces では、[AKS で現在サポートされている Kubernetes の、1.18 までの一般提供 (GA) バージョン][aks-supported-k8s]がサポーされます。 AKS の Kubernetes 1.19 以降では、コンテナー ランタイムとして ContainerD が使用されていますが、これは Azure Dev Spaces では機能しません。
 
 ## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>現在はどの Azure リージョンで Azure Dev Spaces が提供されていますか。
 

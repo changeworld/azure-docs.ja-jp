@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 9/30/2020
+ms.date: 12/3/2020
 ms.subservice: alerts
-ms.openlocfilehash: d1a1a31d5894338e0deeed27fabcde9fdbf6f588
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: dfcc1f15ebec1337cfa7d484319c7b942ff052b2
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566488"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548241"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Monitor のメトリック アラートでサポートされるリソース
 
@@ -85,8 +85,9 @@ Azure Monitor が[新しいタイプのメトリック アラート](./alerts-ov
 |Microsoft.Network/applicationGateways | はい | いいえ | [アプリケーション ゲートウェイ](./metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Microsoft.Network/azurefirewalls | はい | × | [ファイアウォール](./metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Microsoft.Network/dnsZones | × | いいえ | [DNS Zones](./metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft.Network/expressRouteCircuits | 該当なし | × |[Express Route 回線](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
-|Microsoft.Network/loadBalancers (Standard SKU に対してのみ)| はい| いいえ | [Load Balancers](./metrics-supported.md#microsoftnetworkloadbalancers) |
+|Microsoft.Network/expressRouteCircuits | ○ | × |[ExpressRoute 回線](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft.Network/expressRoutePorts | ○ | いいえ |[ExpressRoute Direct](./metrics-supported.md#microsoftnetworkexpressrouteports) |
+|Microsoft.Network/loadBalancers (Standard SKU に対してのみ)| はい| × | [Load Balancers](./metrics-supported.md#microsoftnetworkloadbalancers) |
 |Microsoft.Network/natGateways| いいえ | × | |
 |Microsoft.Network/privateEndpoints| いいえ | × | |
 |Microsoft.Network/privateLinkServices| いいえ | × |
@@ -95,18 +96,21 @@ Azure Monitor が[新しいタイプのメトリック アラート](./alerts-ov
 |Microsoft.OperationalInsights/workspaces| はい | いいえ | [Log Analytics ワークスペース](./metrics-supported.md#microsoftoperationalinsightsworkspaces)|
 |Microsoft.Peering/peerings | はい | いいえ | [ピアリング](./metrics-supported.md#microsoftpeeringpeerings) |
 |Microsoft.Peering/peeringServices | はい | いいえ | [Peering Services](./metrics-supported.md#microsoftpeeringpeeringservices) |
-|Microsoft.PowerBIDedicated/capacities | いいえ | いいえ | [Capacities](./metrics-supported.md#microsoftpowerbidedicatedcapacities) |
-|Microsoft.Relay/namespaces | はい | × | [リレー](./metrics-supported.md#microsoftrelaynamespaces) |
-|Microsoft.Search/searchServices | × | いいえ | [検索サービス](./metrics-supported.md#microsoftsearchsearchservices) |
+|Microsoft.PowerBIDedicated/capacities | いいえ | × | [Capacities](./metrics-supported.md#microsoftpowerbidedicatedcapacities) |
+|Microsoft.Relay/namespaces | はい | いいえ | [リレー](./metrics-supported.md#microsoftrelaynamespaces) |
+|Microsoft.Search/searchServices | いいえ | いいえ | [検索サービス](./metrics-supported.md#microsoftsearchsearchservices) |
 |Microsoft.ServiceBus/namespaces | はい | いいえ | [Service Bus](./metrics-supported.md#microsoftservicebusnamespaces) |
 |Microsoft.Sql/managedInstances | × | ○ | [SQL マネージド インスタンス](./metrics-supported.md#microsoftsqlmanagedinstances) |
 |Microsoft.Sql/servers/databases | いいえ | ○ | [SQL Database](./metrics-supported.md#microsoftsqlserversdatabases) |
 |Microsoft.Sql/servers/elasticPools | いいえ | ○ | [SQL エラスティック プール](./metrics-supported.md#microsoftsqlserverselasticpools) |
-|Microsoft.Storage/storageAccounts |はい | × | [ストレージ アカウント](./metrics-supported.md#microsoftstoragestorageaccounts)|
+|Microsoft.Storage/storageAccounts |はい | いいえ | [ストレージ アカウント](./metrics-supported.md#microsoftstoragestorageaccounts)|
 |Microsoft.Storage/storageAccounts/services | はい| いいえ | [Blob service](./metrics-supported.md#microsoftstoragestorageaccountsblobservices)、[ファイル サービス](./metrics-supported.md#microsoftstoragestorageaccountsfileservices)、[Queue サービス](./metrics-supported.md#microsoftstoragestorageaccountsqueueservices)、および [Table service](./metrics-supported.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft.StorageCache/caches | はい | × | |
 |Microsoft.StorageSync/storageSyncServices | はい | いいえ | [ストレージ同期サービス](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
 |Microsoft.StreamAnalytics/streamingjobs | はい | いいえ | [Stream Analytics](./metrics-supported.md#microsoftstreamanalyticsstreamingjobs) |
+|Microsoft.Synapse ワークスペース | はい | いいえ | [Synapse Analytics](./metrics-supported.md#microsoftsynapseworkspaces) |
+|Microsoft.Synapse/workspaces/bigDataPools | はい | いいえ | [Synapse Analytics Apache Spark プール](./metrics-supported.md#microsoftsynapseworkspacesbigdatapools) |
+|Microsoft.Synapse/workspaces/sqlPools | はい | いいえ | [Synapse Analytics SQL プール](./metrics-supported.md#microsoftsynapseworkspacessqlpools) |
 |Microsoft.VMWareCloudSimple/virtualMachines | はい | いいえ | [CloudSimple 仮想マシン](./metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines) |
 |Microsoft.Web/hostingEnvironments/multiRolePools | はい | いいえ | [App Service Environment マルチロール プール](./metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
 |Microsoft.Web/hostingEnvironments/workerPools | はい | いいえ | [App Service Environment ワーカー プール](./metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|

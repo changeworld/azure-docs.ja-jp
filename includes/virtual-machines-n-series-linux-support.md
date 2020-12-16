@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 86f687bd4fd8be93efbf77c883c723046c2c96d8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5bfe077a99a3e89efe5fe4257a646484fb3810da
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016135"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96536930"
 ---
 ## <a name="supported-distributions-and-drivers"></a>サポートされているディストリビューションとドライバー
 
@@ -31,9 +31,11 @@ Microsoft では、仮想ワークステーションまたは仮想アプリケ�
 
 Azure によって再頒布された GRID ドライバーは、NV シリーズ以外の VM (NC、NCv2、NCv3、ND、NDv2 シリーズの VM など) では機能しません。
 
-| Distribution | Driver |
+|Distribution|Driver|
 | --- | -- |
-|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.6 から 7.8、8.0、8.1<br/><br/>CentOS-based 7.6、7.7、8.0、8 (1911)<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA GRID 11.1、ドライバー ブランチ [R450](https://go.microsoft.com/fwlink/?linkid=874272)(.exe)|
+|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.6 から 7.8、8.0、8.1<br/><br/>CentOS-based 7.6、7.7、8.0、8 (1911)<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA GRID 11.2、ドライバー ブランチ [R450](https://go.microsoft.com/fwlink/?linkid=874272)(.exe)|
+
+以前のすべての Nvidia GRID ドライバー リンクの完全な一覧については、[GitHub](https://github.com/Azure/azhpc-extensions/blob/master/NvidiaGPU/resources.json) を参照してください。
 
 > [!WARNING] 
 > サード パーティ製ソフトウェアを Red Hat 製品にインストールすると、Red Hat サポート条件に影響を与えることがあります。 [Red Hat のサポート技術情報記事](https://access.redhat.com/articles/1067)を参照してください。

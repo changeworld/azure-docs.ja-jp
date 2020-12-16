@@ -4,12 +4,12 @@ description: Linux コンテナーを作成して、Azure Service Fabric で Apa
 ms.topic: conceptual
 ms.date: 6/08/2018
 ms.author: pepogors
-ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3de97bc277195dff2daf5868c0eb9aec5d6e27c0
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75614419"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96534031"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Linux 上で Apache Tomcat を実行して Service Fabric コンテナーを作成する
 Apache Tomcat は、Java サーブレットと Java サーバー テクノロジの一般的なオープンソースの実装です。 この記事では、Apache Tomcat とシンプルな Web アプリケーションでコンテナーをビルドし、Linux を実行している Service Fabric クラスターにコンテナーをデプロイして、Web アプリケーションに接続する方法を示します。  
@@ -52,9 +52,10 @@ Apache Tomcat の詳細については、[Apache Tomcat のホームページ](h
    詳細については、[Dockerfile のリファレンス](https://docs.docker.com/engine/reference/builder/)を参照してください。
 
 
-4. `docker build` コマンドを実行して、Web アプリケーションを実行するイメージを作成します。
+4. Docker にログインし、`docker build` コマンドを実行して、Web アプリケーションを実行するイメージを作成します。
 
    ```bash
+   docker login
    docker build . -t tomcattest
    ```
 
@@ -99,7 +100,7 @@ Apache Tomcat の詳細については、[Apache Tomcat のホームページ](h
    ```
 
 ## <a name="push-the-tomcat-image-to-your-container-registry"></a>コンテナー レジストリに Tomcat イメージをプッシュする
-Tomcat イメージがデプロイ コンピューター上のコンテナーで実行されていることを確認して、コンテナー レジストリのリポジトリにプッシュします。 この記事では、Azure Container Registry を使用してイメージを保存しますが、手順の一部を変更して、選択した任意のコンテナー レジストリを使用することができます。 この記事では、レジストリ名は *myregistry* であると推定され、完全なレジストリ名は myregistry.azurecr.io になります。 ご自分のシナリオに合わせてこれらを適切に変更してください。 
+Tomcat イメージが開発コンピューター上のコンテナーで実行されていることを確認したので、コンテナー レジストリのリポジトリにそれをプッシュして、イメージ開発とデプロイ ワークフローの[中断を削減](../container-registry/buffer-gate-public-content.md)します。 この記事では、Azure Container Registry を使用してイメージを保存しますが、手順の一部を変更して、選択した任意のコンテナー レジストリを使用することができます。 この記事では、レジストリ名は *myregistry* であると推定され、完全なレジストリ名は myregistry.azurecr.io になります。 ご自分のシナリオに合わせてこれらを適切に変更してください。 
 
 1. `docker login` を実行し、ご自分の[レジストリの資格情報](../container-registry/container-registry-authentication.md)を使用してお使いのコンテナー レジストリにサインインします。
 

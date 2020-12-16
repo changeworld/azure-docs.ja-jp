@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: a3ef198c79683786a7d6fb36a46cd0c989071c9e
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 0ff6bcd2e50b64993966f2780c6c8118aea2694f
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346895"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505173"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>例:Text Analytics を使用して言語を検出する
 
@@ -78,7 +78,7 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
 + 要求本文で、この分析のために準備した JSON ドキュメントのコレクションを提供します。
 
 > [!Tip]
-> [Postman](text-analytics-how-to-call-api.md) を使用するか、 [ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)に記載されている **API テスト コンソール** を開き、要求を構造化して POST でサービスに投稿します。
+> [Postman](text-analytics-how-to-call-api.md) を使用するか、[ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)に記載されている **API テスト コンソール** を開き、要求を構造化して POST でサービスに投稿します。
 
 ## <a name="step-2-post-the-request"></a>手順 2:要求を投稿する
 
@@ -303,5 +303,5 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
 ## <a name="see-also"></a>関連項目
 
 * [Text Analytics の概要](../overview.md)
-* [Text Analytics クライアント ライブラリの使用](../quickstarts/text-analytics-sdk.md)
+* [Text Analytics クライアント ライブラリの使用](../quickstarts/client-libraries-rest-api.md)
 * [新機能](../whats-new.md)

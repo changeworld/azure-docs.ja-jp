@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+ms.date: 12/02/2020
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f6c4d0defbaeb484f66593e112587c16c46eed2f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c3ce69dc9364d71a501f122a7150ad4a59869422
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491606"
+ms.locfileid: "96534014"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-cli"></a>Azure CLI を使用してパブリック IP アドレスのルーティング優先設定を構成する
 
@@ -52,7 +52,7 @@ ms.locfileid: "96491606"
 ```
 ## <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
 
-次に示すような形式の [az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) コマンドを使用し、種類が "インターネット" のルーティング優先設定でパブリック IP アドレスを作成します。
+次に示すような形式の [az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) コマンドを使用し、種類が **インターネット** のルーティング優先設定でパブリック IP アドレスを作成します。
 
 次のコマンドを実行すると、**米国東部** Azure リージョンに **インターネット** をルーティング優先設定にして新しいパブリック IP アドレスが作成されます。
 

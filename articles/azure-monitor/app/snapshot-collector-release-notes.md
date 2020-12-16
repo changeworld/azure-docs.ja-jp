@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: 89c13566c3710e56a4cd737d9aa03c6fb57edc93
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 73fea1e1928cf4e1bd5342aa0a4c885ccb5cf137
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542730"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548173"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>Microsoft.ApplicationInsights.SnapshotCollector のリリース ノート
 
@@ -22,6 +22,11 @@ ms.locfileid: "94542730"
 
 ## <a name="release-notes"></a>リリース ノート
 
+## <a name="1374"></a>[1.3.7.4](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.4)
+Azure App Service のコードなしアタッチ シナリオのテストで検出された問題に対処するポイント リリース。
+### <a name="changes"></a>[変更点]
+- netcoreapp3.0 ターゲットが、Microsoft.ApplicationInsights.AspNetCore >= 2.1.1 (以前は >= 2.1.2) に依存するようになりました。
+
 ## <a name="1373"></a>[1.3.7.3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.3)
 影響の大きい 2 つの問題を解決するためのポイント リリース。
 ### <a name="bug-fixes"></a>バグの修正
@@ -30,9 +35,9 @@ ms.locfileid: "94542730"
 
 ## <a name="137"></a>[1.3.7](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7)
 ### <a name="changes"></a>[変更点]
-SnapshotCollector の netcoreapp2.0 ターゲットは、Microsoft.ApplicationInsights.AspNetCore >= 2.1.1 に (再度) 依存します。 これにより、1.3.5 前の動作に戻ります。 1\.3.6 でアップグレードしようとしましたが、一部の Azure App Service シナリオが破損しました。
+- SnapshotCollector の netcoreapp2.0 ターゲットは、Microsoft.ApplicationInsights.AspNetCore >= 2.1.1 に (再度) 依存します。 これにより、1.3.5 前の動作に戻ります。 1\.3.6 でアップグレードしようとしましたが、一部の Azure App Service シナリオが破損しました。
 ### <a name="new-features"></a>新機能
-Snapshot Collector が、APPLICATIONINSIGHTS_CONNECTION_STRING 環境変数または TelemetryConfiguration から ConnectionString を読み取り、解析するようになりました。 これは主に、スナップショット サービスに接続する際にエンドポイントを設定するために使用されます。 詳細については、[接続文字列に関するドキュメント](./sdk-connection-string.md)を参照してください。
+- Snapshot Collector が、APPLICATIONINSIGHTS_CONNECTION_STRING 環境変数または TelemetryConfiguration から ConnectionString を読み取り、解析するようになりました。 これは主に、スナップショット サービスに接続する際にエンドポイントを設定するために使用されます。 詳細については、[接続文字列に関するドキュメント](./sdk-connection-string.md)を参照してください。
 ### <a name="bug-fixes"></a>バグの修正
 - 互換性のない SecurityProtocol (TLS 1.2 が必要) が原因で、一部の環境で WebRequest が失敗していたため、net45 を除くすべてのターゲットに対して HttpClient を使用するように切り替えました。
 
