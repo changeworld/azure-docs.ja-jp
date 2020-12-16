@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: dcd9ec52992da8037bb498dc09701879c4c94667
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 439714f8fe4a6373f2ffce80e744802dd19b67f0
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572577"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928785"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS クラスターの構成
 
@@ -46,13 +46,13 @@ az extension list
 az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
 ```
 
-状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) コマンドを使用して登録状態を確認できます。
+状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature#az-feature-list) コマンドを使用して登録状態を確認できます。
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
+状態が登録済みと表示されたら、[az provider register](/cli/azure/provider#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -125,14 +125,14 @@ az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.Cont
 
 ```
 
-状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) コマンドを使用して登録状態を確認できます。
+状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature#az-feature-list) コマンドを使用して登録状態を確認できます。
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedContainerRuntime')].{Name:name,State:properties.state}"
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
+状態が登録済みと表示されたら、[az provider register](/cli/azure/provider#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -194,13 +194,13 @@ Gen2 VM は、特定の SKU とサイズでのみサポートされています�
 az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
 ```
 
-状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) コマンドを使用して登録状態を確認できます。
+状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature#az-feature-list) コマンドを使用して登録状態を確認できます。
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
 ```
 
-状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
+状態が登録済みと表示されたら、[az provider register](/cli/azure/provider#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService

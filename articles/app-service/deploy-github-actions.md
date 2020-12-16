@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 16a21acabfd199ba16068e507919b564f01a76d5
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: b94e35f504a4c4d6e934ec01b06105f749031e35
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763912"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007383"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub Actions を使用した App Service へのデプロイ
 
@@ -80,7 +80,7 @@ GitHub Actions 用の Azure App Services での認証で推奨される方法は
 
 # <a name="service-principal"></a>[サービス プリンシパル](#tab/userlevel)
 
-[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)は、[Azure CLI](/cli/azure/) で [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) コマンドを使用して作成できます。 このコマンドは、Azure portal で [Azure Cloud Shell](https://shell.azure.com/) を使用するか、 **[試してみる]** ボタンを選択して実行します。
+[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)は、[Azure CLI](/cli/azure/) で [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) コマンドを使用して作成できます。 このコマンドは、Azure portal で [Azure Cloud Shell](https://shell.azure.com/) を使用するか、 **[試してみる]** ボタンを選択して実行します。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \

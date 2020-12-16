@@ -5,12 +5,12 @@ services: automation
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: e8fc2a840ce019282625f286a6d54b132a1806c8
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: c6d0f38eaa25f2fe033a5e2cf48ee6daa51fcbe6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751259"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929278"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Update Management に関する問題のトラブルシューティング
 
@@ -19,7 +19,7 @@ ms.locfileid: "96751259"
 >[!NOTE]
 >Windows マシンに Update Management をデプロイしているときに問題が発生した場合は、Windows イベント ビューアーを開き、ローカル コンピューターの **[アプリケーションとサービス ログ]** の下にある **Operations Manager** イベント ログを確認します。 イベント ID が 4502 でイベントの詳細に `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` が含まれるイベントを探します。
 
-## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a>シナリオ:Linux 更新プログラムが保留中として表示され、インストールされる更新プログラムが異なる
+## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a><a name="updates-linux-installed-different"></a>シナリオ:Linux 更新プログラムが保留中として表示され、インストールされる更新プログラムが異なる
 
 ### <a name="issue"></a>問題
 
@@ -29,7 +29,7 @@ Linux マシンの場合、Update Management には、 **[セキュリティ]** 
 
 お使いの Linux マシンに対して保留になっている OS 更新プログラムの評価が終わると、Linux ディストリビューション ベンダーが提供する [Open Vulnerability and Assessment Language](https://oval.mitre.org/) (OVAL) が分類のために Update Management によって使用されます。 セキュリティの問題または脆弱性に対処する更新プログラムについて明記された OVAL ファイルに基づき、Linux 更新プログラムが **[セキュリティ]** か **[その他]** として分類されます。 ただし、更新プログラムが実行されるとき、YUM、APT、ZYPPER などの適切なパッケージ マネージャーを使用し、Linux マシン上で実行され、インストールされます。 Linux ディストリビューションのパッケージ マネージャーには、更新プログラムを分類する別のメカニズムが与えられていることがあります。結果は、Update Management によって OVAL ファイルから取得されるものと異なる場合があります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解決方法
 
 Linux マシン、適用できる更新プログラム、ディストリビューションのパッケージ マネージャー別のその分類を手動で確認できます。 お使いのパッケージ マネージャーによって **[セキュリティ]** として分類された更新プログラムを理解するには、次のコマンドを実行します。
 
