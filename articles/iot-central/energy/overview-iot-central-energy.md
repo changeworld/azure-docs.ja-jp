@@ -3,22 +3,19 @@ title: IoT Central を使用してエネルギー ソリューションを構築
 description: Azure IoT Central アプリケーション テンプレートを使用してエネルギー ソリューションを構築する方法について説明します。
 author: op-ravi
 ms.author: omravi
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 0cc9fd5836371a925be531de773ea9c2e276c0eb
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ff7b98908296714a59aa9a24767e80e212e00e68
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127354"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516644"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>IoT Central を使用してエネルギー ソリューションを構築する 
-
-
-
 
 スマート メーターとソーラー パネルは、エネルギー業界の変革において重要な役割を果たしています。 スマート メーターを使うと、エネルギー消費を細かく制御し、リアルタイムの分析情報を得ることができます。また、ソーラー パネルの増加が再生可能エネルギー生成の飛躍的な進歩を促進しています。 スマート メーターおよびソーラー パネル監視アプリは、さまざまな機能を紹介するサンプル テンプレートです。 パートナーは、これらのテンプレートを活用して、特定のニーズに応じて IoT Central を使ったエネルギー ソリューションを構築できます。 新しいコーディングは不要であり、これらのアプリケーションをデプロイして使用するための追加コストは必要ありません。 エネルギー アプリケーション テンプレートとその機能について説明します。
 
