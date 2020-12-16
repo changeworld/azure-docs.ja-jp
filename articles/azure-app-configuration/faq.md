@@ -2,17 +2,17 @@
 title: Azure App Configuration の FAQ
 description: Azure App Configuration のよくあるご質問 (FAQ) に対して、それが Azure Key Vault とどのように違うかなど、回答します。
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.author: lcozzens
-ms.openlocfilehash: 5d74b17bdd9c264a983bfdd2e374001dd4a0e2c0
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.author: alkemper
+ms.openlocfilehash: 4e19574e5848d1ee86d13aa02a9cf583b92eff02
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242111"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929567"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure App Configuration の FAQ
 
@@ -86,16 +86,16 @@ App Configuration のどちらのレベルにも、構成設定、機能フラ�
 
 レベルを選択する際の考慮事項を次に示します。
 
-- **サブスクリプションあたりのリソース数** : リソースは、1 つの構成ストアで構成されます。 Free レベルでは、各サブスクリプションの構成ストアは 1 つに制限されています。 Standard レベルでは、サブスクリプションに無制限の数の構成ストアを含めることができます。
-- **リソースごとのストレージ** : Free レベルでは、各構成ストアのストレージは 10 MB に制限されています。 Standard レベルでは、各構成ストアで最大 1 GB のストレージを使用できます。
-- **リビジョン履歴** :App Configuration では、キーに加えられたすべての変更の履歴が格納されます。 Free レベルでは、この履歴は 7 日間保存されます。 Standard レベルでは、この履歴は 30 日間保存されます。
-- **要求のクォータ** :Free レベルのストアでは、1 日あたりの要求数が 1000 件に制限されています。 要求数が 1,000 件に達すると、ストアからは、UTC の午前 0 時まですべての要求に対して HTTP 状態コード 429 が返されます。
+- **サブスクリプションあたりのリソース数**: リソースは、1 つの構成ストアで構成されます。 Free レベルでは、各サブスクリプションの構成ストアは 1 つに制限されています。 Standard レベルでは、サブスクリプションに無制限の数の構成ストアを含めることができます。
+- **リソースごとのストレージ**: Free レベルでは、各構成ストアのストレージは 10 MB に制限されています。 Standard レベルでは、各構成ストアで最大 1 GB のストレージを使用できます。
+- **リビジョン履歴**:App Configuration では、キーに加えられたすべての変更の履歴が格納されます。 Free レベルでは、この履歴は 7 日間保存されます。 Standard レベルでは、この履歴は 30 日間保存されます。
+- **要求のクォータ**:Free レベルのストアでは、1 日あたりの要求数が 1000 件に制限されています。 要求数が 1,000 件に達すると、ストアからは、UTC の午前 0 時まですべての要求に対して HTTP 状態コード 429 が返されます。
 
     Standard レベルのストアでは、1 時間あたりの要求数が 20,000 件に制限されています。 クォータを使い果たした後は、その 1 時間が終わるまで、すべての要求に対して HTTP 状態コード 429 が返されます。
 
-- **サービス レベル アグリーメント** : Standard レベルには、99.9% の可用性の SLA があります。 Free レベルには SLA がありません。
-- **セキュリティ機能** : どちらのレベルにも、Microsoft のマネージド キーを使用した暗号化、HMAC または Azure Active Directory を介した認証、Azure RBAC サポート、およびマネージド ID、サービス タグなどの基本的なセキュリティ機能が含まれています。 Standard レベルでは、Private Link のサポートや、カスタマー マネージド キーによる暗号化など、より高度なセキュリティ機能が提供されます。
-- **コスト** : Standard レベルのストアには、毎日の使用料金があります。 1 日あたりで最初の 200,000 件の要求は、1 日の料金に含まれています。 また、1 日の割り当てを超えた要求に対しては超過料金が発生します。 Free レベルのストアを使用する場合、コストはかかりません。
+- **サービス レベル アグリーメント**: Standard レベルには、99.9% の可用性の SLA があります。 Free レベルには SLA がありません。
+- **セキュリティ機能**: どちらのレベルにも、Microsoft のマネージド キーを使用した暗号化、HMAC または Azure Active Directory を介した認証、Azure RBAC サポート、およびマネージド ID、サービス タグなどの基本的なセキュリティ機能が含まれています。 Standard レベルでは、Private Link のサポートや、カスタマー マネージド キーによる暗号化など、より高度なセキュリティ機能が提供されます。
+- **コスト**: Standard レベルのストアには、毎日の使用料金があります。 1 日あたりで最初の 200,000 件の要求は、1 日の料金に含まれています。 また、1 日の割り当てを超えた要求に対しては超過料金が発生します。 Free レベルのストアを使用する場合、コストはかかりません。
 
 ## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>ストアを Free レベルから Standard レベルにアップグレードすることはできますか? ストアを Standard レベルから Free レベルにダウングレードすることはできますか?
 

@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 766da55f2589e2a8eb09e0f1b1c9a0a5027c8c3c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 09a4dc8467b9b3c11c8daeb5ca8c62a0e26e79de
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002767"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575008"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Windows Data Science Virtual Machine を使用したデータ サイエンス
 
@@ -25,7 +25,7 @@ DSVM は Azure サービスと密接に連携します。 Azure 上の Azure Syn
 
 この記事では、DSVM を使用してデータ サイエンス タスクを実行したり、他の Azure サービスとやりとりしたりする方法について説明します。 DSVM では次のことを実行できます。
 
-- Jupyter ノートブックを使用して、Python 2、Python 3、Microsoft R を使用して、ご自分のデータをブラウザーで実験します (Microsoft R は、パフォーマンスを考慮して設計された、エンタープライズ対応の R バージョンです)。
+- Jupyter Notebook を使用し、Python 2、Python 3、Microsoft R を使用してご自分のデータをブラウザーで実験します。 (Microsoft R は、パフォーマンスを考慮して設計された、エンタープライズ対応の R バージョンです)。
 - DSVM 上で Microsoft Machine Learning Server および Python を使用してデータの探索およびモデルの開発をローカルで行います。
 - Azure portal または PowerShell を使用して Azure リソースを管理します。
 - ご利用の DSVM にマウント可能なドライブとして Azure Files 共有を作成することによってストレージ スペースを拡張し、大規模なデータセット/コードをチーム全体で共有します。
@@ -49,7 +49,7 @@ DSVM は Azure サービスと密接に連携します。 Azure 上の Azure Syn
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 
-## <a name="use-jupyter-notebooks"></a>Jupyter Notebook の使用
+## <a name="use-jupyter-notebooks"></a>Jupyter Notebook を使用する
 Jupyter Notebook には、データ探索とモデリング用のブラウザーベースの IDE が用意されています。 Jupyter Notebook では Python 2、Python 3、R (オープン ソースおよび Microsoft R Server の両方) のいずれを使用することもできます。
 
 Jupyter Notebook を開始するには、 **[スタート]** メニューまたはデスクトップで **[Jupyter Notebook]** アイコンを選択します。 また、DSVM コマンド プロンプトで既存の Notebook が配置されているディレクトリ、または新しいノートブックを作成するディレクトリから、コマンド ```jupyter notebook``` を実行することもできます。  
@@ -201,7 +201,7 @@ Azure Storage Explorer を使用して、ご利用の VM 内のローカル フ�
 
 #### <a name="read-data-from-an-azure-blob-python-odbc"></a>Azure BLOB からデータを読み取る: Python ODBC
 
-BlobService ライブラリを使用すると、Jupyter ノートブックまたは Python プログラムで BLOB から直接データを読み取ることができます。
+BlobService ライブラリを使用すると、Jupyter Notebook または Python プログラムで BLOB から直接データを読み取ることができます。
 
 まず、必須のパッケージをインポートします。
 
@@ -252,8 +252,8 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 ![データの最初の 10 行のスクリーンショット](./media/vm-do-ten-things/IPNB_data_readin.png)
 
 
-### <a name="azure-synapse-analytics-formerly-sql-dw-and-databases"></a>Azure Synapse Analytics (旧称 SQL DW) およびデータベース
-Azure Synapse Analytics (旧称 SQL DW) は、エンタープライズ規模の SQL Server エクスペリエンスを備えた、サービスとしてのエラスティック データ ウェアハウスです。
+### <a name="azure-synapse-analytics-and-databases"></a>Azure Synapse Analytics とデータベース
+Azure Synapse Analytics は、エンタープライズ規模の SQL Server エクスペリエンスを備えた、サービスとしてのエラスティック データ ウェアハウスです。
 
 Azure Synapse Analytics をプロビジョニングするには、こちらの[記事](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)に記載されている手順に従ってください。 Azure Synapse Analytics をプロビジョニングした後、[こちらのチュートリアル](../team-data-science-process/sqldw-walkthrough.md)を利用して、Azure Synapse Analytics 内のデータを使用してデータのアップロード、探索、およびモデリングを行うことができます。
 

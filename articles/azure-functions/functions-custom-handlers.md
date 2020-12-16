@@ -1,18 +1,18 @@
 ---
-title: Azure Functions のカスタム ハンドラー (プレビュー)
+title: Azure Functions のカスタム ハンドラー
 description: 任意の言語またはランタイム バージョンで Azure Functions を使用する方法について説明します。
 author: anthonychu
 ms.author: antchu
-ms.date: 8/18/2020
+ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: 402ce1e9e92ab87689abe9c18a503a479d7421f9
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 099f90ba8c5d9dabb6c4c505e50d8c077e3eaf0f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164552"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746031"
 ---
-# <a name="azure-functions-custom-handlers-preview"></a>Azure Functions のカスタム ハンドラー (プレビュー)
+# <a name="azure-functions-custom-handlers"></a>Azure Functions のカスタム ハンドラー
 
 すべての関数アプリは、言語固有のハンドラーによって実行されます。 Azure Functions では多くの[言語ハンドラー](./supported-languages.md)が既定でサポートされていますが、他の言語やランタイムを使用したい場合もあります。
 
@@ -24,6 +24,8 @@ ms.locfileid: "92164552"
 - Deno など、現在サポートされていないランタイムで関数アプリを実装する。
 
 カスタム ハンドラーを使用すると、[拡張バンドル](./functions-bindings-register.md)を介して、[トリガーと入出力バインド](./functions-triggers-bindings.md)を使用できます。
+
+[Go および Rust のクイックスタート](create-first-function-vs-code-other.md)を使用して Azure Functions カスタム ハンドラーの使用を開始します。
 
 ## <a name="overview"></a>概要
 
@@ -103,7 +105,7 @@ ms.locfileid: "92164552"
 
 ##### <a name="bindings-support"></a>バインドのサポート
 
-標準トリガーと入出力バインドは、*host.json* ファイル内の[拡張バンドル](./functions-bindings-register.md)を参照することによって利用できます。
+標準トリガーと入出力バインドは、*host.json* ファイル内の [拡張バンドル](./functions-bindings-register.md)を参照することによって利用できます。
 
 #### <a name="localsettingsjson"></a>local.settings.json
 
@@ -583,3 +585,7 @@ Azure では、ログ メッセージを表示するには [Application Insights
 カスタム ハンドラーがある関数アプリに関するヘルプが必要な場合は、通常のサポート チャネルを通じてリクエストを送信できます。 ただし、カスタム ハンドラー アプリのビルドにはさまざまな言語が使用されるため、サポートは無制限ではありません。
 
 Functions ホストの起動またはカスタム ハンドラー プロセスとの通信に問題がある場合は、サポートを利用できます。 選択した言語またはフレームワークに関する問題など、カスタム ハンドラー プロセスの内部動作に固有の問題については、このコンテキストでサポート チームが支援を行うことができません。
+
+## <a name="next-steps"></a>次のステップ
+
+[カスタム ハンドラーのクイックスタート](create-first-function-vs-code-other.md)を使用して、Go または Rust での Azure Functions アプリの構築を開始します。

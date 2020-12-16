@@ -8,16 +8,23 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f261db8d40e1a1cc1737ff6a3f5c50da661b73e6
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: d86a273a69203a92a9b437f021486feb3bcb31da
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433475"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932372"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>チュートリアル:IoT Edge 上に機械学習用の環境を設定する
 
 この記事は、開発およびデプロイ用の環境の準備に役立ちます。 最初に、必要なすべてのツールがインストールされた開発用マシンを設定します。 次に、必要なクラウド リソースを Azure に作成します。
+
+チュートリアルのこのセクションで学習する内容は次のとおりです。
+
+> [!div class="checklist"]
+>
+> * 開発用の仮想マシンを設定する。
+> * 開発環境で使用する IoT Hub とクラウド ストレージを設定する。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -210,15 +217,13 @@ Azure IoT Hub は、IoT デバイスとクラウドとの間の安全な通信�
 
 1. このページは編集していないので、そのまま閉じます。
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このチュートリアルはセットの一部であり、各記事は前の記事の作業が行われたことが前提になっています。 最後のチュートリアルを完了するまで、リソースのクリーンアップはしないでください。
+
 ## <a name="next-steps"></a>次のステップ
 
 この記事では、IoT ハブを作成し、Azure Storage アカウントへのルートを構成しました。 次に、シミュレートされたデバイスのセットから IoT ハブを通じてストレージ アカウントにデータを送信します。 後のチュートリアルでは、IoT Edge デバイスおよびモジュールを構成した後、ルートを再確認し、ルーティング クエリについてもう少し詳しく確認します。
-
-IoT Edge での Machine Learning チュートリアルのこの部分で説明されているステップの詳細については、次を参照してください。
-
-* [Azure IoT の基礎](../iot-fundamentals/index.yml)
-* [IoT Hub を使用してメッセージ ルーティングを構成する](../iot-hub/tutorial-routing.md)
-* [Azure Portal を使用して IoT Hub を作成する](../iot-hub/iot-hub-create-through-portal.md)
 
 次の記事に進んで、監視対象にするシミュレートされたデバイスを作成してください。
 

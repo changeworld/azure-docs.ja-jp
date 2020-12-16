@@ -1,21 +1,25 @@
 ---
-title: Azure Maps Creator 屋内マップの動的スタイル設定を実装する
-description: Creator の屋内マップに動的スタイル設定を実装する方法について説明します
+title: Azure Maps Creator (プレビュー) の屋内マップに動的スタイル設定を実装する
+description: Creator (プレビュー) の屋内マップに動的スタイル設定を実装する方法について説明します
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b9ce0d0770c7e6c4579469cc16d8c76c309a33d1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 266dc5d62f6224495075546528ad71d806d415ac
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895377"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903447"
 ---
-# <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Creator の屋内マップに動的スタイル設定を実装する
+# <a name="implement-dynamic-styling-for-creator-preview-indoor-maps"></a>Creator (プレビュー) の屋内マップに動的スタイル設定を実装する
+
+> [!IMPORTANT]
+> Azure Maps Creator サービスは、現在パブリック プレビューの段階にあります。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 Azure Maps Creator [Feature State サービス](/rest/api/maps/featurestate)を使用すると、屋内マップ データ地物の動的プロパティに基づいてスタイルを適用できます。  たとえば、施設の会議室を特定の色でレンダリングして、占有状態を反映できます。 この記事では、[Feature State サービス](/rest/api/maps/featurestate)と [Indoor Web モジュール](how-to-use-indoor-module.md)を使用して、屋内マップ地物を動的にレンダリングする方法について説明します。
 
@@ -23,7 +27,7 @@ Azure Maps Creator [Feature State サービス](/rest/api/maps/featurestate)を�
 
 1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
-3. [Creator リソースを作成します](how-to-manage-creator.md)
+3. [Creator (プレビュー) リソースを作成します](how-to-manage-creator.md)
 4. [サンプル Drawing パッケージ](https://github.com/Azure-Samples/am-creator-indoor-data-examples)をダウンロードします。
 5. [屋内マップを作成](tutorial-creator-indoor-maps.md)して、`tilesetId` と `statesetId` を取得します。
 6. [Indoor Maps モジュールの使用方法](how-to-use-indoor-module.md)の手順に従って、Web アプリケーションを構築します。
@@ -36,7 +40,7 @@ Azure Maps Creator [Feature State サービス](/rest/api/maps/featurestate)を�
 
 ### <a name="select-features"></a>機能を選択する
 
-動的スタイル設定を実装するには、会議室やカンファレンス ルームなどの地物をその地物 `id` から参照する必要があります。 地物 `id` を使用して、その地物の動的プロパティまたは " *状態* " を更新します。 データセットで定義されている地物を表示するには、次のいずれかの方法を使用できます。
+動的スタイル設定を実装するには、会議室やカンファレンス ルームなどの地物をその地物 `id` から参照する必要があります。 地物 `id` を使用して、その地物の動的プロパティまたは "*状態*" を更新します。 データセットで定義されている地物を表示するには、次のいずれかの方法を使用できます。
 
 * WFS API (Web Feature Service)。 データセットにクエリを実行するには、WFS API を使用します。 WFS は Open Geospatial Consortium API の地物に従います。 WFS API は、データセット内の地物のクエリに役立ちます。 たとえば、WFS を使用して、特定の施設とレベルの中規模の会議室をすべて検索することができます。
 
@@ -60,7 +64,7 @@ map.events.add("click", function(e){
 
 [屋内マップの作成](tutorial-creator-indoor-maps.md)チュートリアルでは、`occupancy` の状態の更新を受け入れるように地物状態セットを構成しました。
 
-次のセクションでは、オフィス `UNIT26` の占有 " *状態* " を `true` に設定します。 一方、オフィス `UNIT27` は `false` に設定されます。
+次のセクションでは、オフィス `UNIT26` の占有 "*状態*" を `true` に設定します。 一方、オフィス `UNIT27` は `false` に設定されます。
 
 ### <a name="set-occupancy-status"></a>占有状態を設定する
 
@@ -113,7 +117,7 @@ map.events.add("click", function(e){
 詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [屋内マップ用の Creator](creator-indoor-maps.md)
+> [屋内マップ用の Creator (プレビュー)](creator-indoor-maps.md)
 
 この記事で触れられている API のリファレンスを参照してください。
 

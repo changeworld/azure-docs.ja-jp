@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: c689c83e50a42885900f62d1a65d0aa75f36f2ec
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 188bc14de502640ae05f1d1eb55330d86cee50b4
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014030"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621481"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtual WAN パートナーと仮想ハブの場所
 
@@ -43,7 +43,7 @@ Azure Virtual WAN に接続するデバイスには、接続の自動化が組�
 次のパートナーは、パートナーのデバイスと Azure Virtual WAN VPN Gateway 間の IPsec 接続の自動化作業の範囲を示す、両社間で締結された条件概要書に基づき、当社のロードマップに記載されています:128 Technologies、Arista、F5 Networks、Oracle SD-WAN (Talari)、SharpLink。
 
 ## <a name="partners-with-integrated-virtual-hub-offerings"></a>仮想ハブ サービスを統合しているパートナー
-ブランチ オフィス IPSec 接続を自動化していることに加え、一部のパートナーは、Azure 仮想 WAN ハブに直接統合できる**ネットワーク仮想アプライアンス (NVA)** を提供しています。  これにより、お客様は仮想ハブ内の互換性のあるサードパーティ アプライアンスへのブランチ接続を終了することができます。  
+ブランチ オフィス IPSec 接続を自動化していることに加え、一部のパートナーは、Azure 仮想 WAN ハブに直接統合できる **ネットワーク仮想アプライアンス (NVA)** を提供しています。  これにより、お客様は仮想ハブ内の互換性のあるサードパーティ アプライアンスへのブランチ接続を終了することができます。  
 
 仮想 WAN ハブで NVA を提供するパートナーは、次のことを行う必要があります。
 
@@ -53,14 +53,14 @@ Azure Virtual WAN に接続するデバイスには、接続の自動化が組�
 パートナーが仮想ハブ サービスのマネージド NVA について質問がある場合、vwannvaonboarding@microsoft.com にメールを送り、お問い合わせください。
 
 ## <a name="integrated-virtual-hub-nva-partners"></a>仮想ハブ NVA を統合したパートナー
-これらのパートナーの**マネージド アプリケーション** サービスは仮想 WAN ハブにデプロイできるようになりました。
+これらのパートナーの **マネージド アプリケーション** サービスは仮想 WAN ハブにデプロイできるようになりました。
 
 |パートナー|構成/方法/デプロイ ガイド|
 |---|---|
 |[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Barracuda CloudGen WAN デプロイ ガイド](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
 |[Cisco Cloud Service Router (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| Cisco Cloud Services (CSR) WAN を VWAN ハブに導入するパブリック プレビューの間、Cisco により、vwan_public_preview@external.cisco.com にメールを送り、vManage Deployment Guide をリクエストして Cisco EFT (Early Field Trial) 顧客として登録することがエンド カスタマーに求められます。 |
 
-次のパートナーは、近い将来、仮想ハブで NVA を提供する予定です。Citrix、Versa Networks、VeloCloud。
+次のパートナーは、近い将来、仮想ハブで NVA を提供する予定です。Aviatrix、Citrix、VeloCloud、Versa Networks。
 
 ## <a name="locations"></a><a name="locations"></a>場所
 

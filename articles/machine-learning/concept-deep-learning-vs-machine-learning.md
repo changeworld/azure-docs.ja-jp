@@ -10,12 +10,12 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 09/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 43b03abb2aac13358a2187a0a5dc570c1e45934e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c612e2a95e2596b2732ed8282037c8ded908a0a0
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458503"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571387"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure Machine Learning におけるディープ ラーニングと機械学習の違い
 
@@ -93,8 +93,6 @@ Azure Machine Learning でオープンソース フレームワークの画像�
 
 企業では、インサイダー取引を検出したり、政府の規制を遵守したりするために、ディープ ラーニングを使用してテキスト分析が行われます。 もう 1 つの一般的な例である保険金詐欺では、大量のドキュメントを分析して、不正な保険請求の可能性を認識するために、テキスト分析がよく使用されています。 
 
-Azure Machine Learning で TensorFlow モデルを使用する方法について説明します。[TensorFlow モデルを使用して手書きの数字を分類する](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri)
-
 ## <a name="artificial-neural-networks"></a>人工ニューラル ネットワーク
 
 人工ニューラル ネットワークは、接続されたノードのレイヤーによって形成されます。 ディープ ラーニング モデルでは、多数のレイヤーを持つニューラル ネットワークが使用されます。 
@@ -115,9 +113,12 @@ Azure Machine Learning で TensorFlow モデルを使用する方法について
 
 畳み込みニューラル ネットワークは、ビデオ認識、画像認識、レコメンダー システムなどの分野で使用されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Machine Learning](./index.yml?WT.mc_id=docs-article-lazzeri) には、オープンソース ディープ ラーニング モデルの使用に関連するオプションが他にもあります。次の記事でそれらを紹介します。
+
+
+- [TensorFlow モデルを使用して手書きの数字を分類する](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri) 
 
 - [TensorFlow エスティメーターと Keras を使用して手書きの数字を分類する](./how-to-train-keras.md?WT.mc_id=docs-article-lazzeri)
 

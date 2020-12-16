@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: aa9e7612a5b3b9655b0c1981fbba87645526b3a2
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 20792d58ab259f93d7725fbafda1507f9eddc740
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327204"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862158"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>チュートリアル:イベント ハブ トリガーと Azure Cosmos DB 出力バインドを使用して Java で関数を作成する
 
@@ -30,17 +30,14 @@ ms.locfileid: "96327204"
 
 このチュートリアルを完了するには、以下をインストールする必要があります。
 
-* [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support)、バージョン 8
-* [Apache Maven](https://maven.apache.org)、バージョン 3.0 以降
-* Cloud Shell を使用しない場合は [Azure CLI](/cli/azure/install-azure-cli)
-* [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) バージョン 2.6.666 以降
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support)、バージョン 8
+- [Apache Maven](https://maven.apache.org)、バージョン 3.0 以降
+- [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) バージョン 2.6.666 以降[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 > [!IMPORTANT]
 > このチュートリアルを完了するには、`JAVA_HOME` 環境変数を JDK のインストール場所に設定する必要があります。
 
 このチュートリアルのコードを直接使用する場合は、[java-functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) サンプル リポジトリを参照してください。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-azure-resources"></a>Azure リソースを作成する
 
@@ -53,17 +50,13 @@ ms.locfileid: "96327204"
 
 次のセクションでは、Azure CLI を使用してこれらのリソースを作成する方法について説明します。
 
-### <a name="log-in-to-azure"></a>Azure にログインする
-
-Cloud Shell を使用していない場合は、Azure CLI をローカルで使用してアカウントにアクセスする必要があります。 Bash プロンプトから `az login` コマンドを使用して、ブラウザーベースのログイン エクスペリエンスを起動します。 複数の Azure サブスクリプションにアクセスできる場合は、`az account set --subscription` に続けてサブスクリプション ID を指定して既定値を設定します。
-
 ### <a name="set-environment-variables"></a>環境変数の設定
 
 次に、作成するリソースの名前と場所の環境変数を作成します。 次のコマンドを使用して、`<value>` のプレースホルダーを選択した値に置き換えます。 値は、[Azure リソースの名前付け規則と制限事項](/azure/architecture/best-practices/resource-naming)に準拠している必要があります。 `LOCATION` 変数には、`az functionapp list-consumption-locations` コマンドによって生成された値のいずれかを使用します。
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 RESOURCE_GROUP=<value>
 EVENT_HUB_NAMESPACE=<value>
 EVENT_HUB_NAME=<value>
@@ -350,7 +343,7 @@ Cloud Shell を使用してリソースを作成した場合、ローカルで A
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 RESOURCE_GROUP=<value>
 FUNCTION_APP=<value>
 ```
@@ -370,7 +363,7 @@ set FUNCTION_APP=<value>
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 mvn archetype:generate --batch-mode \
     -DarchetypeGroupId=com.microsoft.azure \
     -DarchetypeArtifactId=azure-functions-archetype \
@@ -406,7 +399,7 @@ mvn archetype:generate --batch-mode ^
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 cd telemetry-functions
 rm -r src/test
 ```
@@ -426,7 +419,7 @@ rmdir /s /q src\test
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 func azure functionapp fetch-app-settings $FUNCTION_APP
 ```
 
@@ -584,7 +577,7 @@ public class TelemetryItem {
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 mvn clean package
 mvn azure-functions:run
 ```
@@ -623,7 +616,7 @@ mvn azure-functions:run
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 mvn azure-functions:deploy
 ```
 

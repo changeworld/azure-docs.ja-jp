@@ -4,12 +4,12 @@ description: このチュートリアルでは、Site Recovery サービスを�
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 90527ad39055e438e4970ad4686f204f72d20cd2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 6d07082b4a9c18461d5cc74de8844be803da7168
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394102"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922479"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-azure-vms"></a>チュートリアル:Azure VM のディザスター リカバリーを設定する
 
@@ -56,7 +56,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ### <a name="verify-target-settings"></a>ターゲットの設定を確認する
 
-ディスカバリー リカバリー中は、ソース リージョンからフェールオーバーしたときに、ターゲット リージョンに VM が作成されます。 
+ディザスター リカバリー中は、ソース リージョンからフェールオーバーしたときに、ターゲット リージョンに VM が作成されます。 
 
 ご利用のサブスクリプションに、ターゲット リージョンに十分なリソースが存在することを確認します。 ソース リージョン内の VM と同じサイズの VM を作成できることが必要です。 ディザスター リカバリーを設定すると、Site Recovery によって、ターゲット VM に対して同じサイズまたは最も近いサイズが選択されます。
 

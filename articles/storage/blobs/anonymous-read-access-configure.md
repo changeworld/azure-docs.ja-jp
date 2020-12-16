@@ -10,12 +10,12 @@ ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: a808a6bb0d4dc75f02147bbfdd74d17b34e96f6e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: feac7b890c973b1541c5362f860432687082953f
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313971"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533878"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>コンテナーと BLOB の匿名パブリック読み取りアクセスを構成する
 
@@ -53,7 +53,7 @@ Azure Storage では、コンテナーと BLOB へのオプションの匿名パ
 
 ストレージ アカウントのパブリック アクセスを許可または禁止するには、アカウントの **AllowBlobPublicAccess** プロパティを構成します。 このプロパティは、Azure Resource Manager デプロイ モデルで作成されたすべてのストレージ アカウントで使用できます。 詳細については、「[ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
 
-**AllowBlobPublicAccess** プロパティは既定では未設定で、明示的に設定されるまで値を返しません。 プロパティ値が **null** か **true** の場合、ストレージ アカウントによってパブリック アクセスが許可されます。
+既定では、ストレージ アカウントに **AllowBlobPublicAccess** プロパティは設定されておらず、明示的に設定されるまで値を返しません。 プロパティ値が **null** か **true** の場合、ストレージ アカウントによってパブリック アクセスが許可されます。
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -129,12 +129,12 @@ az storage account show \
 
 # <a name="template"></a>[テンプレート](#tab/template)
 
-テンプレートを使用したストレージ アカウントのパブリック アクセスを許可または禁止するには、 **AllowBlobPublicAccess** プロパティを **true** または **false** に設定してテンプレートを作成します。 次の手順は、Azure portal でテンプレートを作成する方法について説明しています。
+テンプレートを使用したストレージ アカウントのパブリック アクセスを許可または禁止するには、**AllowBlobPublicAccess** プロパティを **true** または **false** に設定してテンプレートを作成します。 次の手順は、Azure portal でテンプレートを作成する方法について説明しています。
 
 1. Azure portal で、 **[リソースの作成]** を選択します。
-1. **[Marketplace を検索]** で「 **template deployment** 」と入力し、 **Enter** キーを押します。
+1. **[Marketplace を検索]** で「**template deployment**」と入力し、**Enter** キーを押します。
 1. **[テンプレートのデプロイ] (カスタム テンプレートを使用したデプロイ) (プレビュー)** 、 **[作成]** 、 **[エディターで独自のテンプレートを作成する]** の順に選択します。
-1. テンプレート エディターで、次の JSON を貼り付けて新しいアカウントを作成し、 **AllowBlobPublicAccess** プロパティを **true** または **false** に設定します。 山かっこ内のプレースホルダーは、実際の値に置き換えてください。
+1. テンプレート エディターで、次の JSON を貼り付けて新しいアカウントを作成し、**AllowBlobPublicAccess** プロパティを **true** または **false** に設定します。 山かっこ内のプレースホルダーは、実際の値に置き換えてください。
 
     ```json
     {
@@ -165,7 +165,7 @@ az storage account show \
     ```
 
 1. テンプレートを保存します。
-1. リソース グループ パラメーターを指定し、 **[レビューと作成]** ボタンを選択してテンプレートをデプロイし、 **allowBlobPublicAccess** プロパティが構成されたストレージ アカウントを作成します。
+1. リソース グループ パラメーターを指定し、 **[レビューと作成]** ボタンを選択してテンプレートをデプロイし、**allowBlobPublicAccess** プロパティが構成されたストレージ アカウントを作成します。
 
 ---
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 383cd286f89bde13f5e557792e980f0455e00917
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 472c1770e2793d8da4e8fc76fafbf3b9073b746d
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876754"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763428"
 ---
 ## <a name="deploy-and-configure-azure-media-services"></a>Azure Media Services をデプロイして構成する
 
@@ -23,18 +23,26 @@ Media Services アカウントを作成する際:
 
 - アカウント名、Azure サブスクリプション、場所、リソース グループ、ストレージ アカウントを指定する必要があります。 Media Services アカウントを作成するときに、既定の設定を使用して新しいストレージ アカウントを作成してください。
 
-- 場所には**米国東部**リージョンを選択します。
+- 場所には **米国東部** リージョンを選択します。
 
-- Media Services とストレージ アカウント用に *lva-rg* という新しいリソース グループを**米国東部**リージョンに作成します。 チュートリアルを終えたら、*lva-rg* リソース グループを削除することで、すべてのリソースを簡単に削除できます。
+- Media Services とストレージ アカウント用に *lva-rg* という新しいリソース グループを **米国東部** リージョンに作成します。 チュートリアルを終えたら、*lva-rg* リソース グループを削除することで、すべてのリソースを簡単に削除できます。
 
 [Azure portal で Media Services アカウント](https://portal.azure.com/?r=1#create/Microsoft.MediaService)を作成します。
 
 > [!TIP]
-> これらのチュートリアルでは、すべての例で**米国東部**リージョンを使用しています。 必要に応じて最寄りのリージョンを使用してかまいません。
+> これらのチュートリアルでは、すべての例で **米国東部** リージョンを使用しています。 必要に応じて最寄りのリージョンを使用してかまいません。
 
 *scratchpad.txt* ファイルに **Media Services** アカウントの名前を書き留めます。
 
-デプロイが完了したら、**Media Services** アカウントの **[プロパティ]** ページに移動します。 **リソース ID** を *scratchpad.txt* ファイルに書き留めます。この値は、後で IoT Edge モジュールを構成する際に使用します。
+デプロイが完了したら、Cloud Shell を開き、次のコマンドを実行して、対象のメディア サービス アカウントの **リソース ID** を取得します。
+
+```azurecli
+az resource list --resource-group lva-rg --resource-type microsoft.media/mediaservices --output table --query "[].{ResourceID:id}"
+```
+
+:::image type="content" source="media/iot-central-video-analytics-part2/get-resource-id.png" alt-text="Cloud Shell を使用してリソース ID を取得する":::
+
+**リソース ID** を *scratchpad.txt* ファイルに書き留めます。この値は、後で IoT Edge モジュールを構成する際に使用します。
 
 次に、Media Services リソースに使用する Azure Active Directory サービス プリンシパルを構成します。 **[API アクセス]** を選択し、 **[サービス プリンシパルの認証]** を選択します。 Media Services リソースと同じ名前で新しい Azure Active Directory アプリを作成し、"*IoT Edge アクセス*" という説明でシークレットを作成します。
 
@@ -63,18 +71,18 @@ Media Services アカウントを作成する際:
 
 1. **ビデオ分析 (物体とモーションの検出)** アプリケーション テンプレートを選択します。 このテンプレートには、チュートリアルで使用するデバイス用のデバイス テンプレートが含まれています。 このテンプレートには、カメラの監視や管理などのタスクを実行するためにオペレーターが使用できるサンプル ダッシュボードが含まれています。
 
-1. 必要に応じて、わかりやすい**アプリケーション名**を選びます。 このアプリケーションは、Northwind Traders という架空の小売店に基づいています。 このチュートリアルでは、*Northwind Traders video analytics* という**アプリケーション名**を使用します。
+1. 必要に応じて、わかりやすい **アプリケーション名** を選びます。 このアプリケーションは、Northwind Traders という架空の小売店に基づいています。 このチュートリアルでは、*Northwind Traders video analytics* という **アプリケーション名** を使用します。
 
     > [!NOTE]
-    > わかりやすい**アプリケーション名**を使用する場合でも、アプリケーションの **URL** には一意の値を使用する必要があります。
+    > わかりやすい **アプリケーション名** を使用する場合でも、アプリケーションの **URL** には一意の値を使用する必要があります。
 
-1. Azure サブスクリプションをお持ちの場合は、 **[ディレクトリ]** と **[Azure サブスクリプション]** を選択し、 **[場所]** として **[米国]** を選択します。 サブスクリプションをお持ちでない場合は、**7 日間の無料試用版**を有効にし、必須の連絡先情報を入力できます。 このチュートリアルでは、カメラ 2 台と IoT Edge デバイス 1 台の計 3 台のデバイスを使用します。そのため、無料試用版を使用していない場合、使用量に応じて課金されます。
+1. Azure サブスクリプションをお持ちの場合は、 **[ディレクトリ]** と **[Azure サブスクリプション]** を選択し、 **[場所]** として **[米国]** を選択します。 サブスクリプションをお持ちでない場合は、**7 日間の無料試用版** を有効にし、必須の連絡先情報を入力できます。 このチュートリアルでは、カメラ 2 台と IoT Edge デバイス 1 台の計 3 台のデバイスを使用します。そのため、無料試用版を使用していない場合、使用量に応じて課金されます。
 
     ディレクトリ、サブスクリプション、場所の詳細については、[アプリケーションの作成のクイックスタート](../articles/iot-central/core/quick-deploy-iot-central.md)に関するページを参照してください。
 
 1. **［作成］** を選択します
 
-    :::image type="content" source="./media/iot-central-video-analytics-part2/new-application.png" alt-text="Azure Media Services 用の Azure AD アプリを構成する":::
+    :::image type="content" source="./media/iot-central-video-analytics-part2/new-application.png" alt-text="Azure IoT Central の [Create Application]\(アプリケーションの作成\) ページ":::
 
 ### <a name="retrieve-the-configuration-data"></a>構成データを取得する
 
@@ -82,8 +90,14 @@ Media Services アカウントを作成する際:
 
 **[管理]** セクションで **[お客様のアプリケーション]** を選択し、 **[アプリケーション URL]** と **[アプリケーション ID]** を *scratchpad.txt* ファイルに書き留めます。
 
-:::image type="content" source="./media/iot-central-video-analytics-part2/administration.png" alt-text="Azure Media Services 用の Azure AD アプリを構成する":::
+:::image type="content" source="./media/iot-central-video-analytics-part2/administration.png" alt-text="ビデオ分析ページの [管理] ペインのスクリーンショット。[アプリケーション URL] と [アプリケーション ID] が強調表示されている。":::
 
 **[API トークン]** を選択し、**オペレーター** ロール用に **LVAEdgeToken** という新しいトークンを生成します。
 
-:::image type="content" source="./media/iot-central-video-analytics-part2/token.png" alt-text="Azure Media Services 用の Azure AD アプリを構成する" は、後で IoT Edge デバイスを構成する際に使用します。
+:::image type="content" source="./media/iot-central-video-analytics-part2/token.png" alt-text="トークンの生成":::
+
+このトークンを後で使用できるよう、*scratchpad.txt* ファイルに書き留めます。 ダイアログを閉じた後に、再びトークンを確認することはできません。
+
+**[管理]** セクションで **[デバイス接続]** を選択し、 **[SAS-IoT-Devices]** を選択します。
+
+*scratchpad.txt* ファイルにデバイスの **プライマリ キー** を書き留めます。 この "*プライマリ グループ Shared Access Signature トークン*" は、後で IoT Edge デバイスを構成する際に使用します。

@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperfq1
-ms.date: 11/10/2020
+ms.date: 12/03/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: e714e88e47ec20adec44a104c659d03e62d8010a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: fc68170a89a3d9a359ae9cb2c0d5543af301e738
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658385"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573036"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
@@ -70,7 +70,8 @@ TCP/UDP 以外のプロトコル (ICMP など) に関するネットワーク �
 |カスタム DNS が強制トンネリングで正しく機能しない|強制トンネリングが有効になっている場合、カスタム DNS は正しく機能しません。|解決策を調査中です。|
 |複数の Availability Zones に対する新しいパブリック IP アドレス サポート|2 つの可用性ゾーン (1 と 2、2 と 3、1 と 3 のいずれか) があるファイアウォールをデプロイするときは新しいパブリック IP アドレスを追加できません。|これはパブリック IP アドレス リソースの制限です。|
 |強制トンネリング モードで構成されたファイアウォールで開始と停止が機能しない|強制トンネリング モードで構成された Azure ファイアウォールで、開始と停止が機能しません。 強制トンネリングが構成された Azure Firewall を起動しようとすると、次のエラーが発生します。<br><br>*Set-AzFirewall: AzureFirewall FW-xx management IP configuration cannot be added to an existing firewall. Redeploy with a management IP configuration if you want to use forced tunneling support. (Set-AzFirewall: AzureFirewall FW-xx の管理 IP 構成を既存のファイアウォールに追加できません。強制トンネリング機能を使用したい場合は、管理 IP 構成で再デプロイしてください。)<br>StatusCode: 400<br>ReasonPhrase: Bad Request (無効な要求)*|調査中。<br><br>この問題は、既存のファイアウォールを削除してから、同じパラメーターで新しいファイアウォールを作成することで回避できます。|
-|ポータルを使用してファイアウォール ポリシー タグを追加できない|Azure Firewall ポリシーにはパッチ サポートの制限があり、Azure portal を使用してタグを追加することはできません。 次のエラーが発生します: "*リソースのタグを保存できませんでした*"。|解決策を調査中です。 代わりに、Azure PowerShell のコマンドレット `Set-AzFirewallPolicy` を使用してタグを更新することができます。
+|ポータルを使用してファイアウォール ポリシー タグを追加できない|Azure Firewall ポリシーにはパッチ サポートの制限があり、Azure portal を使用してタグを追加することはできません。 次のエラーが発生します: "*リソースのタグを保存できませんでした*"。|解決策を調査中です。 代わりに、Azure PowerShell のコマンドレット `Set-AzFirewallPolicy` を使用してタグを更新することができます。|
+|IPv6 はまだサポートされていません|IPv6 アドレスをルールに追加した場合、ファイアウォールのエラーが発生します。|IPv4 アドレスのみを使用してください。 IPv6 のサポートは調査中です|
 
 
 ## <a name="next-steps"></a>次のステップ

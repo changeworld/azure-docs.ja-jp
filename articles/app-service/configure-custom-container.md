@@ -4,12 +4,12 @@ description: Azure App Service でカスタム コンテナーを構成する方
 ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 9f71efbf7cc606efd598880e90ade3a549402245
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2aece0550d7b78ac4312e71b2671de4a64e4b86b
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787059"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96557928"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Azure App Service のカスタム コンテナーを構成する
 
@@ -139,7 +139,17 @@ IIS または .NET Framework (4.0 以降) ベースのコンテナーの場合�
 
 永続的ストレージが無効になっている場合、`C:\home` ディレクトリへの書き込みは保持されません。 [Docker ホスト ログとコンテナー ログ](#access-diagnostic-logs)は、コンテナーに接続されていない既定の永続的な共有ストレージに保存されます。 永続的ストレージが有効になっている場合、`C:\home` ディレクトリへのすべての書き込みは保持され、スケールアウトされたアプリのすべてのインスタンスからアクセスでき、`C:\home\LogFiles` でログにアクセスできます。
 
-既定では、永続的ストレージは " *無効* " になっており、この設定はアプリケーション設定では公開されていません。 これを有効にするには、[Cloud Shell](https://shell.azure.com) を使用して `WEBSITES_ENABLE_APP_SERVICE_STORAGE` アプリ設定を指定します。 Bash では次のとおりです。
+::: zone-end
+
+::: zone pivot="container-linux"
+
+アプリのファイル システムの */home* ディレクトリを使用して、再起動間でファイルを永続化し、インスタンス間でそれらを共有することができます。 アプリの `/home` は、コンテナー アプリが永続的ストレージにアクセスできるようにするために指定されます。
+
+永続的ストレージが無効になると、`/home` ディレクトリへの書き込みは、アプリの再起動後、または複数のインスタンス間で保持されません。 唯一の例外は `/home/LogFiles` ディレクトリであり、これは Docker およびコンテナーのログを格納するために使用されます。 永続的ストレージが有効になると、`/home` ディレクトリへのすべての書き込みは存続し、スケールアウトされたアプリのすべてのインスタンスからアクセスできます。
+
+::: zone-end
+
+既定では、永続的ストレージは無効になっており、この設定はアプリケーション設定では公開されていません。 これを有効にするには、[Cloud Shell](https://shell.azure.com) を使用して `WEBSITES_ENABLE_APP_SERVICE_STORAGE` アプリ設定を指定します。 Bash では次のとおりです。
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=true
@@ -150,28 +160,6 @@ PowerShell では次のとおりです。
 ```azurepowershell-interactive
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_ENABLE_APP_SERVICE_STORAGE"=true}
 ```
-
-::: zone-end
-
-::: zone pivot="container-linux"
-
-アプリのファイル システムの */home* ディレクトリを使用して、再起動間でファイルを永続化し、インスタンス間でそれらを共有することができます。 アプリの `/home` は、コンテナー アプリが永続的ストレージにアクセスできるようにするために指定されます。
-
-永続的ストレージが無効になると、`/home` ディレクトリへの書き込みは、アプリの再起動後、または複数のインスタンス間で保持されません。 唯一の例外は `/home/LogFiles` ディレクトリであり、これは Docker およびコンテナーのログを格納するために使用されます。 永続的ストレージが有効になると、`/home` ディレクトリへのすべての書き込みは存続し、スケールアウトされたアプリのすべてのインスタンスからアクセスできます。
-
-既定では、永続的ストレージが *有効* になり、設定はアプリケーション設定では公開されません。 これを無効にするには、[Cloud Shell](https://shell.azure.com) を使用して `WEBSITES_ENABLE_APP_SERVICE_STORAGE` アプリ設定を指定します。 Bash では次のとおりです。
-
-```azurecli-interactive
-az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
-```
-
-PowerShell では次のとおりです。
-
-```azurepowershell-interactive
-Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_ENABLE_APP_SERVICE_STORAGE"=false}
-```
-
-::: zone-end
 
 > [!NOTE]
 > [独自の永続的ストレージを構成](configure-connect-to-azure-storage.md)することもできます。
@@ -197,7 +185,7 @@ App Service は、フロントエンドで TLS/SSL を終了します。 つま�
 - デバッグ コンソールでは、PowerShell セッションの開始、レジストリ キーの検査、コンテナー ファイル システム全体での移動など、対話型のコマンドを実行できます。
 - その上にあるグラフィカル ブラウザー ([共有ストレージ](#use-persistent-shared-storage)内のファイルのみを表示) とは別に機能します。
 - スケールアウトされたアプリでは、デバッグ コンソールはコンテナー インスタンスのいずれかに接続されています。 上部のメニューの **[インスタンス]** ドロップダウンから別のインスタンスを選択できます。
-- コンソール内からコンテナーに対して行った変更は、Docker イメージの一部ではないため、アプリの再起動時には存続 " *しません* " (共有ストレージ内の変更は除きます)。 レジストリ設定やソフトウェアのインストールなどの変更を保持するには、Dockerfile の一部にします。
+- コンソール内からコンテナーに対して行った変更は、Docker イメージの一部ではないため、アプリの再起動時には存続 "*しません*" (共有ストレージ内の変更は除きます)。 レジストリ設定やソフトウェアのインストールなどの変更を保持するには、Dockerfile の一部にします。
 
 ## <a name="access-diagnostic-logs"></a>診断ログにアクセスする
 
@@ -216,7 +204,7 @@ Docker ログは、ポータル内のご自分のアプリの **[コンテナー
 
 ### <a name="from-the-kudu-console"></a>Kudu コンソールから
 
-`https://<app-name>.scm.azurewebsites.net/DebugConsole` に移動し、 **LogFiles** フォルダーをクリックして、個々のログ ファイルを表示します。 **LogFiles** ディレクトリ全体をダウンロードするには、ディレクトリ名の左側にある **ダウンロード** アイコンをクリックします。 このフォルダーには、FTP クライアントを使用してアクセスすることもできます。
+`https://<app-name>.scm.azurewebsites.net/DebugConsole` に移動し、**LogFiles** フォルダーをクリックして、個々のログ ファイルを表示します。 **LogFiles** ディレクトリ全体をダウンロードするには、ディレクトリ名の左側にある **ダウンロード** アイコンをクリックします。 このフォルダーには、FTP クライアントを使用してアクセスすることもできます。
 
 コンソール ターミナルでは、永続的な共有ストレージが有効になっていないため、既定では `C:\home\LogFiles` フォルダーにアクセスできません。 コンソール ターミナルでこの動作を有効にするには、[永続的な共有ストレージを有効にします](#use-persistent-shared-storage)。
 
@@ -242,7 +230,7 @@ PowerShell では次のとおりです。
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITE_MEMORY_LIMIT_MB"=2000}
 ```
 
-この値は MB 単位で定義されており、ホストの合計物理メモリ以下である必要があります。 たとえば、8 GB の RAM を備えた App Service プランでは、すべてのアプリの累積合計 `WEBSITE_MEMORY_LIMIT_MB` が 8 GB を超えないようにする必要があります。 各価格レベルで使用できるメモリ量に関する情報については、「 [App Service の価格](https://azure.microsoft.com/pricing/details/app-service/windows/)」の **Premium コンテナー (Windows) プラン** に関するセクションを参照してください。
+この値は MB 単位で定義されており、ホストの合計物理メモリ以下である必要があります。 たとえば、8 GB の RAM を備えた App Service プランでは、すべてのアプリの累積合計 `WEBSITE_MEMORY_LIMIT_MB` が 8 GB を超えないようにする必要があります。 各価格レベルで使用できるメモリ量に関する情報については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/windows/)」の **Premium コンテナー (Windows) プラン** に関するセクションを参照してください。
 
 ## <a name="customize-the-number-of-compute-cores"></a>コンピューティング コアの数をカスタマイズする
 
@@ -268,7 +256,7 @@ Get-ComputerInfo | ft CsNumberOfLogicalProcessors # Total number of enabled logi
 Get-ComputerInfo | ft CsNumberOfProcessors # Number of physical processors.
 ```
 
-プロセッサは、マルチコアまたはハイパースレッディングのプロセッサにすることができます。 各価格レベルで使用できるコア数に関する情報については、「 [App Service の価格](https://azure.microsoft.com/pricing/details/app-service/windows/)」の **Premium コンテナー (Windows) プラン** に関するセクションを参照してください。
+プロセッサは、マルチコアまたはハイパースレッディングのプロセッサにすることができます。 各価格レベルで使用できるコア数に関する情報については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/windows/)」の **Premium コンテナー (Windows) プラン** に関するセクションを参照してください。
 
 ## <a name="customize-health-ping-behavior"></a>正常性 ping の動作をカスタマイズする
 
@@ -292,7 +280,7 @@ Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"CO
 | - | - |
 | **修復** | 3 回連続して可用性チェックを実行した後にコンテナーを再起動する |
 | **ReportOnly** | 既定値。 コンテナーを再起動しないが、3 回連続して可用性チェックを実行した後、そのコンテナーについて Docker ログに報告します。 |
-| " **オフ** " | 可用性を確認しません。 |
+| "**オフ**" | 可用性を確認しません。 |
 
 ## <a name="support-for-group-managed-service-accounts"></a>グループの管理されたサービス アカウントのサポート
 
@@ -318,7 +306,7 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
 
     この構成は、コンテナーへの外部接続を許可しません。 SSH は `https://<app-name>.scm.azurewebsites.net` を通じてのみ利用でき、公開用の資格情報で認証されます。
 
-- [この sshd_config ファイル](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config)をイメージ リポジトリに追加し、 [COPY](https://docs.docker.com/engine/reference/builder/#copy) 命令を使用してファイルを */etc/ssh/* ディレクトリにコピーします。 *sshd_config* ファイルの詳細については、 [OpenBSD ドキュメント](https://man.openbsd.org/sshd_config)を参照してください。
+- [この sshd_config ファイル](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config)をイメージ リポジトリに追加し、[COPY](https://docs.docker.com/engine/reference/builder/#copy) 命令を使用してファイルを */etc/ssh/* ディレクトリにコピーします。 *sshd_config* ファイルの詳細については、[OpenBSD ドキュメント](https://man.openbsd.org/sshd_config)を参照してください。
 
     ```Dockerfile
     COPY sshd_config /etc/ssh/

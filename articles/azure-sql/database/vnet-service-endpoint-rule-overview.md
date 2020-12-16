@@ -11,17 +11,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 97be3bf0ecec20c4bf2e1633f893c9aa0d9ba49d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: c5839589c35ea5a9c52303801a8767fc598434fc
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020284"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905878"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL Database のサーバー用の仮想ネットワーク サービス エンドポイントと規則の使用
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-"*仮想ネットワーク規則*" は 1 つのファイアウォール セキュリティ機能であり、[Azure SQL Database](sql-database-paas-overview.md) 内のデータベースおよびエラスティック プール用、または [Azure Synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 内のデータベース用のサーバーが、仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御します。 この記事では、仮想ネットワーク規則機能が、場合によっては Azure SQL Database と Azure Synapse Analytics (以前の SQL Data Warehouse) のデータベースへの通信を安全に許可するための最適な選択肢となる理由を説明します。
+"*仮想ネットワーク規則*" は 1 つのファイアウォール セキュリティ機能であり、[Azure SQL Database](sql-database-paas-overview.md) 内のデータベースおよびエラスティック プール用、または [Azure Synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 内のデータベース用のサーバーが、仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御します。 この記事では、仮想ネットワーク規則機能が、場合によっては Azure SQL Database のデータベースと Azure Synapse Analytics への通信を安全に許可するための最適な選択肢となる理由を説明します。
 
 > [!NOTE]
 > この記事は、Azure SQL Database と Azure Synapse Analytics の両方に適用されます。 単純にするために、"データベース" という言葉で Azure SQL Database と Azure Synapse Analytics の両方のデータベースを表すことにします。 同様に、"サーバー" という言葉は、Azure SQL Database と Azure Synapse Analytics をホストする[論理 SQL サーバー](logical-servers.md)を表しています。
@@ -95,7 +95,7 @@ Azure SQL Database のサービス エンドポイントを使用する場合、
 ### <a name="expressroute"></a>ExpressRoute
 
 パブリック ピアリングまたは Microsoft ピアリングのためにオンプレミスから [ExpressRoute](../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使用している場合、使用されている NAT の IP アドレスを識別する必要があります。 パブリック ピアリングの場合、既定で、Azure サービスのトラフィックが Microsoft Azure のネットワーク バックボーンに入ったときに適用される 2 つの NAT IP アドレスが各 ExpressRoute 回線に使用されます。 Microsoft ピアリングの場合、使用される NAT の IP アドレスは、ユーザーが指定するか、サービス プロバイダーが指定します。 サービス リソースへのアクセスを許可するには、リソースの IP ファイアウォール設定でこれらのパブリック IP アドレスを許可する必要があります。 パブリック ピアリングの ExpressRoute 回線の IP アドレスを確認するには、Azure Portal から [ExpressRoute のサポート チケットを開いて](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)ください。 詳細については、[ExpressRoute のパブリック ピアリングと Microsoft ピアリングの NAT](../../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering) に関するセクションを参照してください。
-  
+
 回線から Azure SQL Database への通信を許可するには、NAT のパブリック IP アドレスに対する IP ネットワーク規則を作成する必要があります。
 
 <!--
@@ -122,7 +122,7 @@ PolyBase と COPY ステートメントは、高スループットのデータ �
 
 #### <a name="steps"></a>手順
 
-1. PowerShell で、Azure Synapse をホストしている **サーバーを、Azure Active Directory (AAD) に登録します**。
+1. スタンドアロンの専用 SQL プールがある場合は、PowerShell を使用して SQL サーバーを Azure Active Directory (AAD) に登録します。 
 
    ```powershell
    Connect-AzAccount
@@ -130,6 +130,14 @@ PolyBase と COPY ステートメントは、高スループットのデータ �
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
+   Synapse ワークスペース内の専用 SQL プールでは、この手順は必要ありません。
+
+1. Synapse ワークスペースがある場合は、以下のようにワークスペースのシステム マネージド ID を登録します。
+
+   1. Azure portal で Synapse ワークスペースにアクセスします
+   2. [マネージド ID] ブレードにアクセスします 
+   3. [パイプラインの許可] オプションが有効になっていることを確認します
+   
 1. この [ガイド](../../storage/common/storage-account-create.md)を使用して、**汎用 v2 ストレージ アカウント** を作成します。
 
    > [!NOTE]
@@ -137,7 +145,7 @@ PolyBase と COPY ステートメントは、高スループットのデータ �
    > - 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この [ガイド](../../storage/common/storage-account-upgrade.md)を使用して、**最初に v2 にアップグレードする** 必要があります。
    > - Azure Data Lake Storage Gen2 に関する既知の問題については、この[ガイド](../../storage/blobs/data-lake-storage-known-issues.md)をご覧ください。
 
-1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 手順 1 で Azure Active Directory (AAD) に登録した Azure Synapse Analytics をホストするサーバーに、**ストレージ BLOB データ共同作成者** Azure ロールを割り当てます。
+1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 Azure Active Directory (AAD) に登録した専用 SQL プールをホストしているサーバーまたはワークスペースに、**ストレージ BLOB データ共同作成者** Azure ロールを割り当てます。
 
    > [!NOTE]
    > ストレージ アカウントの所有者特権を持つメンバーのみが、この手順を実行できます。 さまざまな Azure の組み込みロールについては、こちらの[ガイド](../../role-based-access-control/built-in-roles.md)をご覧ください。

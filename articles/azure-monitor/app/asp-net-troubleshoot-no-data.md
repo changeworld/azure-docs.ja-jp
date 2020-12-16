@@ -4,12 +4,12 @@ description: Auzre Application Insights にデータが表示されない場合�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 9c053796dd887722d1d767229621c0a1ae004b5c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 26ba586715c7b76ff8972c6574c3c29b837713a1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083169"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904467"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET、Application Insights for .NET Core
 
@@ -39,12 +39,44 @@ ms.locfileid: "93083169"
 
 * 「 [Status Monitor のトラブルシューティング](./monitor-performance-live-website-now.md#troubleshoot)」を参照してください。
 
+> [!IMPORTANT]
+> 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 [接続文字列](./sdk-connection-string.md?tabs=net)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
+
+
+## <a name="filenotfoundexception-could-not-load-file-or-assembly-microsoftaspnet-telemetrycorrelation"></a>FileNotFoundException:ファイルまたはアセンブリ Microsoft.AspNet TelemetryCorrelation を読み込めませんでした
+
+このエラーの詳細については、GitHub の問題 1610 (https://github.com/microsoft/ApplicationInsights-dotnet/issues/1610) ) を参照してください。
+
+(2.4) より前の SDK からアップグレードする場合は、`web.config` と `ApplicationInsights.config` に次の変更が適用されていることを確認する必要があります。
+
+1. 1 つではなく 2 つの http モジュール `web.config` には 2 つの http モジュールが必要です。 いくつかのシナリオでは、順序が重要です。
+
+    ``` xml
+    <system.webServer>
+      <modules>
+          <add name="TelemetryCorrelationHttpModule" type="Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule, Microsoft.AspNet.TelemetryCorrelation" preCondition="integratedMode,managedHandler" />
+          <add name="ApplicationInsightsHttpModule" type="Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule, Microsoft.AI.Web" preCondition="managedHandler" />
+      </modules>
+    </system.webServer>
+    ```
+
+2. `RequestTrackingTelemetryModule` に加えて `ApplicationInsights.config` には、次のテレメトリ モジュールが必要です。
+
+    ``` xml
+    <TelemetryModules>
+      <Add Type="Microsoft.ApplicationInsights.Web.AspNetDiagnosticTelemetryModule, Microsoft.AI.Web"/>
+    </TelemetryModules>
+    ```
+
+**_正常にアップグレードできないと、予期しない例外が発生したり、テレメトリが収集されなかったりする可能性があります。_* _
+
+
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Visual Studio に [Application Insights の追加] オプションが表示されない
-*ソリューション エクスプローラーで既存のプロジェクトを右クリックしたときに、Application Insights のオプションが表示されません。*
+_ソリューション エクスプローラーで既存のプロジェクトを右クリックしたときに、Application Insights のオプションが表示されません。*
 
 * このツールでは、一部の種類の .NET プロジェクトがサポートされません。 Web プロジェクトと WCF プロジェクトはサポートされます。 その他の種類のプロジェクト (デスクトップ アプリケーション、サービス アプリケーションなど) では、 [Application Insights SDK を手動でプロジェクトに追加](./windows-desktop.md)できます。
 * [Visual Studio 2013 Update 3 以降](/visualstudio/releasenotes/vs2013-update3-rtm-vs)を使用しているかご確認ください。 これは、Application Insights SDK を提供する Developer Analytics Tools と共に事前インストールされています。
-* **[ツール]** 、 **[拡張機能と更新プログラム]** の順に選択し、 **Developer Analytics Tools** がインストールされ、有効になっていることを確認します。 有効な場合は、 **[更新プログラム]** をクリックして更新プログラムが存在するかどうかを確認します。
+* **[ツール]** 、 **[拡張機能と更新プログラム]** の順に選択し、**Developer Analytics Tools** がインストールされ、有効になっていることを確認します。 有効な場合は、 **[更新プログラム]** をクリックして更新プログラムが存在するかどうかを確認します。
 * [新しいプロジェクト] ダイアログを開いて [ASP.NET Web アプリケーション] を選択します。 そこに Application Insights オプションが表示された場合、Application Insights Tools はインストールされています。 それ以外の場合は、Developer Analytics Tools をアンインストールしてから再インストールしてみてください。
 
 ## <a name="adding-application-insights-failed"></a><a name="q02"></a>Application Insights の追加に失敗する
@@ -84,7 +116,7 @@ Application Insights をインストールしているとき、またはログ �
 解決策:
 
 * Visual Studio のバージョンが 2013 Update 3 以降であることを確認してください。
-* **[ツール]** 、 **[拡張機能と更新プログラム]** の順に選択し、 **Developer Analytics Tools** がインストールされ、有効になっていることを確認します。 有効な場合は、 **[更新プログラム]** をクリックして更新プログラムが存在するかどうかを確認します。
+* **[ツール]** 、 **[拡張機能と更新プログラム]** の順に選択し、**Developer Analytics Tools** がインストールされ、有効になっていることを確認します。 有効な場合は、 **[更新プログラム]** をクリックして更新プログラムが存在するかどうかを確認します。
 * ソリューション エクスプローラーでプロジェクトを右クリックします。 **[Application Insights] > [Application Insights の構成]** コマンドが表示される場合は、そのコマンドを使用して Application Insights サービスのリソースにプロジェクトを接続します。
 
 それ以外の場合、ご使用のプロジェクトは Developer Analytics Tools で直接サポートされているプロジェクト タイプではありません。 テレメトリを表示するには、 [Azure ポータル](https://portal.azure.com)にサインインし、左側のナビゲーション バーで [Application Insights] を選択して目的のアプリケーションを選択してください。
@@ -122,7 +154,7 @@ Application Insights をインストールしているとき、またはログ �
 * Visual Studio でアプリをデバッグしているときに、[Application Insights] ボタンをクリックします。
 
 ## <a name="no-server-data-or-no-data-at-all"></a><a name="q03"></a> サーバー データが表示されない (またはデータが一切表示されない)
-*アプリを実行し、Microsoft Azure の Application Insights サービスを開きましたが、どのグラフでも、データの収集方法についての説明か、必要な構成が行われていないという内容のメッセージしか表示されません。* または、 *ページ ビューとユーザー データだけが表示され、サーバー データが表示されません。*
+*アプリを実行し、Microsoft Azure の Application Insights サービスを開きましたが、どのグラフでも、データの収集方法についての説明か、必要な構成が行われていないという内容のメッセージしか表示されません。* または、*ページ ビューとユーザー データだけが表示され、サーバー データが表示されません。*
 
 * Visual Studio で F5 キーを押し、アプリケーションをデバッグ モードで実行します。 ある程度テレメトリを生成するために、アプリケーションを使用します。 記録されたイベントが Visual Studio の出力ウィンドウに表示されていることを確認します。  
   ![Visual Studio のデバッグ モードでのアプリケーションの実行を示すスクリーンショット。](./media/asp-net-troubleshoot-no-data/output-window.png)
@@ -239,9 +271,9 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 ```
 
 以下のパラメーターは、必要に応じて変更できます。
-- **MaxCollectSec** 。 PerfView が無期限に実行され、サーバーのパフォーマンスに影響が及ぶのを防ぐには、このパラメーターを設定します。
-- **OnlyProviders** 。 SDK だけからログを収集するには、このパラメーターを設定します。 特定の調査に基づいて、この一覧をカスタマイズすることができます。 
-- **NoGui** 。 GUI なしでログを収集するには、このパラメーターを設定します。
+- **MaxCollectSec**。 PerfView が無期限に実行され、サーバーのパフォーマンスに影響が及ぶのを防ぐには、このパラメーターを設定します。
+- **OnlyProviders**。 SDK だけからログを収集するには、このパラメーターを設定します。 特定の調査に基づいて、この一覧をカスタマイズすることができます。 
+- **NoGui**。 GUI なしでログを収集するには、このパラメーターを設定します。
 
 
 詳細については、以下を参照してください。

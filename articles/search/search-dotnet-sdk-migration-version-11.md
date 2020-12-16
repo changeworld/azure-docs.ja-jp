@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 12/02/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90fc356929a9ea5713a8d359dfaa83286017b8f8
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 260df85f3e380e40d153fc17ce77bd56ca068982
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445440"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532824"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Azure Cognitive Search .NET SDK バージョン 11 へのアップグレード
 
-バージョン 10.0 以前の [.NET SDK](/dotnet/api/overview/azure/search) を使用している場合、アバージョン 11 にアップグレードするには、この記事が役に立ちます。
+バージョン 10.0 以前の [.NET SDK](/dotnet/api/overview/azure/search) を使用している場合、この記事を参考にして、バージョン 11 と **Azure.Search.Documents** クライアント ライブラリにアップグレードできます。
 
 バージョン 11 は、Azure SDK 開発チームによって完全に再設計され、リリースされたクライアント ライブラリです (以前のバージョンは、Azure Cognitive Search 開発チームによって作成されました)。 このライブラリは、他の Azure クライアント ライブラリとの整合性を高めるために再設計されました。[Azure.Core](/dotnet/api/azure.core) および [System.Text.Json](/dotnet/api/system.text.json) に依存しており、一般的なタスクにはなじみのあるアプローチを実装しています。
 
@@ -170,7 +170,7 @@ Azure Cognitive Search クライアント ライブラリの各バージョン�
 
 1. インデクサー関連オブジェクトの新しいクライアント参照を追加します。 インデクサー、データソース、またはスキルセットを使用している場合は、クライアント参照を [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient) に変更します。 このクライアントはバージョン 11 で新しく追加されたものであり、元の機能はありません。
 
-1. コレクションを見直します。 新しい SDK では、リストに null 値が含まれている場合にダウンストリームの問題が発生するのを回避するため、すべてのリストが読み取り専用になっています。 コードを変更して、リストに項目を追加するようにします。 たとえば、Select プロパティに文字列を割り当てる代わりに、次のように文字列を追加します。
+1. コレクションとリストを変更します。 新しい SDK では、リストに null 値が含まれている場合にダウンストリームの問題が発生するのを回避するため、すべてのリストが読み取り専用になっています。 コードを変更して、リストに項目を追加するようにします。 たとえば、Select プロパティに文字列を割り当てる代わりに、次のように文字列を追加します。
 
    ```csharp
    var options = new SearchOptions
@@ -188,11 +188,13 @@ Azure Cognitive Search クライアント ライブラリの各バージョン�
     options.Select.Add("LastRenovationDate");
    ```
 
+   Select、Facets、SearchFields、SourceFields、ScoringParameters、OrderBy はすべて、現在再構築が必要なリストです。
+
 1. クエリとデータ インポートのクライアント参照を更新します。 [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) のインスタンスは [SearchClient](/dotnet/api/azure.search.documents.searchclient) に変更する必要があります。 名前の混乱を避けるために、次の手順に進む前に、すべてのインスタンスをキャッチしてください。
 
-1. インデックス、インデクサー、シノニム マップ、およびアナライザー オブジェクトのクライアント参照を更新します。 [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) のインスタンスは [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) に変更する必要があります。 
+1. インデックス、シノニム マップ、およびアナライザー オブジェクトのクライアント参照を更新します。 [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) のインスタンスは [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) に変更する必要があります。 
 
-1. できる限り、新しいライブラリの API を使用するようにクラス、メソッド、およびプロパティを更新します。 [名前付けの違い](#naming-differences)のセクションから始めることができますが、[変更ログ](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)を確認することもできます。
+1. コードの残りの部分では、新しいライブラリの API を使用するようにクラス、メソッド、およびプロパティを更新します。 [名前付けの違い](#naming-differences)のセクションから始めることができますが、[変更ログ](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)を確認することもできます。
 
    同等の API が見つからない場合は、Microsoft でドキュメントを改善し、問題を調査することができるように、[https://github.com/MicrosoftDocs/azure-docs/issues](https://github.com/MicrosoftDocs/azure-docs/issues) で問題を記録することをお勧めします。
 

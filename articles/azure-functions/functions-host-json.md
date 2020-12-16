@@ -3,12 +3,12 @@ title: Azure Functions 2.x の host.json のリファレンス
 description: Azure Functions の v2 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: c12a9244cdc1a76f678578e281532c73bc9385ba
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 96d6b884e9e2c835316af01140c6fc7208ee5ab9
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917241"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746082"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 以降の host.json のリファレンス 
 
@@ -218,6 +218,28 @@ ms.locfileid: "94917241"
 ## <a name="cosmosdb"></a>cosmosDb
 
 構成設定は、[Cosmos DB のトリガーとバインディング](functions-bindings-cosmosdb-v2-output.md#host-json)に関する記事に記載されています。
+
+## <a name="customhandler"></a>customHandler
+
+カスタム ハンドラーの構成設定。 詳細については、「[Azure Functions のカスタム ハンドラー](functions-custom-handlers.md#configuration)」を参照してください。
+
+```json
+"customHandler": {
+  "description": {
+    "defaultExecutablePath": "server",
+    "workingDirectory": "handler",
+    "arguments": [ "--port", "%FUNCTIONS_CUSTOMHANDLER_PORT%" ]
+  },
+  "enableForwardingHttpRequest": false
+}
+```
+
+|プロパティ | Default | 説明 |
+| --------- | --------- | --------- |
+| defaultExecutablePath | N/A | カスタム ハンドラー プロセスとして起動する実行可能ファイル。 カスタム ハンドラーを使用する場合は必須の設定であり、その値は関数アプリのルートを基準とします。 |
+| workingDirectory | *関数アプリのルート* | カスタム ハンドラー プロセスを開始する作業ディレクトリ。 これはオプションの設定であり、その値は関数アプリのルートを基準とします。 |
+| 引数 | N/A | カスタム ハンドラー プロセスに渡すコマンド ライン引数の配列。 |
+| enableForwardingHttpRequest | false | 設定した場合、HTTP トリガーと HTTP 出力だけで構成されているすべての関数には、カスタム ハンドラーの[要求ペイロード](functions-custom-handlers.md#request-payload)ではなく、元の HTTP 要求が転送されます。 |
 
 ## <a name="durabletask"></a>durableTask
 

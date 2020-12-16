@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperfq1
-ms.openlocfilehash: ae0c4c69cf500fb352cc889e068888084d1d8f8b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: c39ce2bed63b6efb6224e0e27fdb1104ef7a5ec8
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045960"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862396"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge デバイスを構成してプロキシ サーバー経由で通信する
 
@@ -213,7 +213,7 @@ edgeAgent モジュールと edgeHub モジュールに加えて、他のモジ�
 
 ### <a name="azure-portal"></a>Azure portal
 
-**モジュールの設定**ウィザードを使用して IoT Edge デバイスの配置を作成する場合は、どのモジュールにも **[環境変数]** セクションがあり、ここでプロキシ サーバー接続を構成できます。
+**モジュールの設定** ウィザードを使用して IoT Edge デバイスの配置を作成する場合は、どのモジュールにも **[環境変数]** セクションがあり、ここでプロキシ サーバー接続を構成できます。
 
 IoT Edge エージェントおよび IoT Edge ハブ モジュールを構成するには、ウィザードの最初の手順で **[Runtime Settings]\(ランタイムの設定\)** を選択します。
 
@@ -270,6 +270,12 @@ Visual Studio Code のテンプレートを使用するか、または手動で 
     }
 }
 ```
+
+## <a name="working-with-traffic-inspecting-proxies"></a>トラフィック検査プロキシの使用
+
+使用しようとしているプロキシが TLS で保護された接続でトラフィック検査を実行している場合は、X.509 証明書を使用した認証は機能しないことに注意する必要があります。 IoT Edge は、指定された証明書とキーを使用して、エンド ツー エンドで暗号化された TLS チャネルを確立します。 トラフィック検査のためにそのチャネルが切断された場合、プロキシは適切な資格情報でチャネルを再確立することができず、IoT Hub と IoT Hub デバイス プロビジョニング サービスから `Unauthorized` エラーが返されます。
+
+トラフィック検査を実行するプロキシを使用するには、共有アクセス署名認証を使用するか、IoT Hub と IoT Hub デバイス プロビジョニング サービスを許可リストに追加して、検査を回避する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

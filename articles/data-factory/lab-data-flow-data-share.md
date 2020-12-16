@@ -6,13 +6,13 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: 0a578f1edb51efd5f0905e663d42bf5a6fbfc783
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/09/2020
+ms.openlocfilehash: bdf9cbfef7dfdcf80976641b527ddeb61368d50b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489039"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921033"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Azure Data Factory と Azure Data Share を使用したデータ統合
 
@@ -34,7 +34,7 @@ ms.locfileid: "96489039"
 
 * **Azure Data Lake Storage Gen2 ストレージ アカウント**: ADLS Gen2 ストレージ アカウントがない場合は、[ADLS Gen2 ストレージ アカウントの作成](../storage/common/storage-account-create.md)方法を確認してください。
 
-* **Azure Synapse Analytics (旧称 SQL DW)** : Azure Synapse Analytics (旧称 SQL DW) がない場合は、[Azure Synapse Analytics インスタンスの作成](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)方法を確認してください。
+* **Azure Synapse Analytics**:Azure Synapse Analytics がない場合は、[Azure Synapse Analytics インスタンスの作成](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)方法を確認してください。
 
 * **Azure Data Factory**: データ ファクトリを作成していない場合は、[データ ファクトリの作成](./quickstart-create-data-factory-portal.md)方法を確認してください。
 
@@ -79,7 +79,7 @@ Azure Data Factory では、リンクされたサービスによって外部リ�
 
 ### <a name="create-an-azure-synapse-analytics-linked-service"></a>Azure Synapse Analytics のリンクされたサービスを作成する
 
-1. 同じ手順を繰り返して、Azure Synapse Analytics のリンクされたサービスを追加します。 [接続] タブで **[新規]** をクリックします。 **[Azure Synapse Analytics (以前の SQL DW)]** タイルを選択して [続行] をクリックします。
+1. 同じ手順を繰り返して、Azure Synapse Analytics のリンクされたサービスを追加します。 [接続] タブで **[新規]** をクリックします。 **[Azure Synapse Analytics]** タイルを選択して [続行] をクリックします。
 
     ![ポータルの構成 6](media/lab-data-flow-data-share/configure6.png)
 1. リンクされたサービスの構成ペインで、リンクされたサービスの名前として「SQLDW」を入力します。 データ ファクトリが自分のデータベースに接続できるように資格情報を入力します。 SQL 認証を使用する場合は、サーバー名、データベース、自分のユーザー名とパスワードを入力します。 **[Test connection]\(接続のテスト\)** をクリックすると、接続情報が正しいことを確認できます。 完了したら **[作成]** をクリックします。
@@ -155,7 +155,7 @@ Azure Data Factory におけるパイプラインは、1 つのタスクを連�
 1. コピー アクティビティが正しく動作していることを確認するために、パイプライン キャンバスの上部にある **[デバッグ]** をクリックしてデバッグを実行します。 デバッグ実行では、データ ファクトリ サービスに発行するパイプラインを、あらかじめエンド ツー エンドで、またはブレークポイントまでテストすることができます。
 
     ![ポータルのコピー 11](media/lab-data-flow-data-share/copy11.png)
-1. デバッグ実行を監視するために、パイプライン キャンバスの **[出力]** タブに移動します。 監視画面は、[更新] ボタンを手動でクリックしたとき、または 20 秒おきに自動更新されます。 コピー アクティビティには、 **[アクション]** 列の眼鏡アイコンをクリックしてアクセスできる特殊な監視ビューが用意されています。
+1. デバッグ実行を監視するために、パイプライン キャンバスの **[出力]** タブに移動します。 監視画面は、[更新] ボタンを手動でクリックしたとき、または 20 秒おきに自動更新されます。 コピー アクティビティには、特殊な監視ビューが用意されています。このビューには、 **[アクション]** 列の眼鏡アイコンをクリックするとアクセスできます。
 
     ![ポータルのコピー 12](media/lab-data-flow-data-share/copy12.png)
 1. コピーの監視ビューには、アクティビティの実行に関する詳しい情報やパフォーマンス特性が表示されます。 読み書きされたデータ、読み書きされた行、読み書きされたファイル、スループットなどの情報を確認できます。 すべて正しく構成されていれば、ADLS シンク内の 1 つのファイルに書き込まれた 49,999 件の行が表示されるはずです。
@@ -274,7 +274,7 @@ Azure Data Lake Storage にデータを正しくコピーできたら、その�
 
     ![ポータルのシンク 2](media/lab-data-flow-data-share/sink2.png)
 
-1. **[Azure Synapse Analytics (以前の SQL DW)]** タイルを選択して [続行] をクリックします。
+1. **[Azure Synapse Analytics]** タイルを選択して [続行] をクリックします。
 
     ![ポータルのシンク 3](media/lab-data-flow-data-share/sink3.png)
 1. データセットに "AggregatedTaxiData" という名前を付けます。 リンクされたサービスとして、[SQLDW] を選択してください。 **[新しいテーブルの作成]** を選択し、新しいテーブルに dbo.AggregateTaxiData という名前を付けます。 完了したら、[OK] をクリックします。

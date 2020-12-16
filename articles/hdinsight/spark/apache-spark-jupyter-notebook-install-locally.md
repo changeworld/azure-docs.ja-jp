@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: 96b2e7deff464f00ced4457a514ac833a90bd42d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 16cb8a9c2a951c9f60640248ef74757d1e5ee200
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999894"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518925"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter Notebook をコンピューターにインストールして HDInsight の Apache Spark に接続する
 
@@ -170,7 +170,7 @@ Jupyter Notebook をインストールする前に Python をインストール�
 
 Jupyter をコンピューターにインストールしてから HDInsight 上の Apache Spark クラスターに接続する理由は次のとおりです。
 
-* ノートブックをローカルに作成し、アプリケーションを実行中のクラスターに対してテストしてから、そのノートブックをクラスターにアップロードするオプションが提供されます。 ノートブックをクラスターにアップロードするには、クラスターで実行されている Jupyter Notebook を使用してアップロードするか、またはクラスターに関連付けられているストレージ アカウント内の `/HdiNotebooks` フォルダーに保存するかのどちらかの方法を使用できます。 クラスターにノートブックを保存する方法の詳細については、 [Jupyter Notebook の格納場所](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)に関するセクションを参照してください。
+* ノートブックをローカルに作成し、アプリケーションを実行中のクラスターに対してテストしてから、そのノートブックをクラスターにアップロードするオプションが提供されます。 ノートブックをクラスターにアップロードするには、クラスターで実行されている Jupyter Notebook を使用してアップロードするか、またはクラスターに関連付けられているストレージ アカウント内の `/HdiNotebooks` フォルダーに保存するかのどちらかの方法を使用できます。 クラスターにノートブックを保存する方法の詳細については、[Jupyter Notebook の格納場所](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)に関するセクションを参照してください。
 * ノートブックがローカルで利用できると、アプリケーションの要件に応じて異なる Spark クラスターに接続することができます。
 * GitHub を使用してソース管理システムを導入し、ノートブックのバージョン管理を行うことができます。 複数のユーザーが同じノートブックで作業するコラボレーション環境を実現することもできます。
 * クラスターをセットアップしなくてもローカルでノートブックを使用できます。 クラスターは、クラスターとの間でノートブックをテストする目的でのみ必要となります。ノートブックや開発環境を手動で管理するうえでクラスターは必要ありません。

@@ -1,6 +1,6 @@
 ---
-title: リリース ノート
-description: Azure Synapse Analytics のリリース ノートです。
+title: 専用 SQL プール (旧称 SQL DW) のリリース ノート
+description: Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のリリース ノート
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
@@ -12,20 +12,20 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: b3c941139b12fdf19bf1080b4dddecb8ab761568
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: baf2734c2f3c4de86b75a20239ecf7440c61a632
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676127"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96534048"
 ---
-# <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics リリース ノート
+# <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のリリース ノート
 
-この記事では、Azure Synapse の [Synapse SQL](sql-data-warehouse-overview-what-is.md) の最新リリースにおける新機能と機能強化をまとめています。 この記事では、今回のリリースとは直接関連しないものの、同じタイム フレームで公開された注目すべきコンテンツの更新についても一覧表示しています。 他の Azure サービスの機能強化については、「[サービスの更新情報](https://azure.microsoft.com/updates)」を参照してください
+この記事では、Azure Synapse Analytics の[専用 SQL プール (旧称 SQL DW)](sql-data-warehouse-overview-what-is.md) の最新リリースで導入された新機能と機能強化をまとめています。 この記事では、今回のリリースとは直接関連しないものの、同じタイム フレームで公開された注目すべきコンテンツの更新についても一覧表示しています。 他の Azure サービスの機能強化については、「[サービスの更新情報](https://azure.microsoft.com/updates)」を参照してください
 
-## <a name="check-your-azure-synapse-version"></a>お使いの Azure Synapse バージョンの確認
+## <a name="check-your-dedicated-sql-pool-formerly-sql-dw-version"></a>お使いの専用 SQL プール (旧称 SQL DW) のバージョンの確認
 
-新機能がすべてのリージョンにロールアウトされるのに伴い、機能の可用性について、ご使用のインスタンスにデプロイされているバージョン、および最新のリリース ノートを確認してください。 バージョンを確認するには、SQL Server Management Studio (SSMS) を介してお使いの SQL プールに接続して `SELECT @@VERSION;` を実行し、現在のバージョンを返します。 このバージョンで、お使いの SQL プールに適用されているリリースを確認してください。 出力の日付によって、SQL プールに適用されるリリースの月が識別されます。 これは、サービスレベルの機能強化にのみ適用されます。 
+新機能がすべてのリージョンにロールアウトされるのに伴い、機能の可用性について、ご使用のインスタンスにデプロイされているバージョン、および最新のリリース ノートを確認してください。 バージョンを確認するには、SQL Server Management Studio (SSMS) を介してお使いの専用 SQL プール (旧称 SQL DW) に接続して `SELECT @@VERSION;` を実行し、現在のバージョンを返します。 このバージョンで、お使いの専用 SQL プール (旧称 SQL DW) に適用されているリリースを確認してください。 出力の日付によって、専用 SQL プール (旧称 SQL DW) に適用されるリリースの月が識別されます。 これは、サービスレベルの機能強化にのみ適用されます。 
 
 ツールの機能強化については、リリース ノートに適切なバージョンがインストールされていることを確認してください。 
 
@@ -35,10 +35,17 @@ ms.locfileid: "92676127"
 > ```sql
 > SELECT SERVERPROPERTY('ProductVersion')
 >
-> --To return engine edition, use this command that returns 6 for Azure Synapse Analytics (formerly SQL Data Warehouse):
+> --To return engine edition, use this command that returns 6 for Azure Synapse Analytics:
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
+
+## <a name="dec-2020"></a>2020 年 12 月
+
+| サービスの機能強化 | 詳細 |
+| --- | --- |
+|**列に対するストアド プロシージャ sp_rename (プレビュー)**|[CTAS](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-develop-ctas) なしで列の名前を変更することがより簡単になりました。 Azure Synapse SQL では、システム ストアド プロシージャ sp_rename (プレビュー) のサポートが追加され、ユーザー テーブルの非ディストリビューション列の名前を変更できるようになりました。 この機能は現在プレビュー段階であり、GA のツールでサポートされます。 詳細については、[sp_rename](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql?view=azure-sqldw-latest) を参照してください。|
+|**T-SQL Predict の追加パラメーター**|この新しいリリースでは、既存の T-SQL PREDICT ステートメントに対して、'RUNTIME' という必須の追加パラメーターが追加されています。 既存のスクリプトを更新する方法については、[T-SQL PREDICT](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest) の例を参照してください。|
 
 ## <a name="oct-2020"></a>2020 年 10 月
 
@@ -73,8 +80,8 @@ ms.locfileid: "92676127"
 |**COPY コマンドでの Parquet ファイルの自動スキーマ検出 (プレビュー)**|[COPY コマンド](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)による Parquet ファイルの読み込み時に自動スキーマ検出がサポートされるようになりました。 このコマンドでは、読み込みの前に Parquet ファイルのスキーマを自動的に検出し、テーブルを作成します。 この機能を有効にするには、メール配布リスト sqldwcopypreview@service.microsoft.com にお問い合わせください。 |
 |**COPY コマンドでの複雑な Parquet データ型の読み込み (プレビュー)**|[COPY コマンド](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)で複雑な Parquet 型の読み込みがサポートされるようになりました。 Maps や Lists などの複雑な型を文字列型の列に読み込むことができます。  この機能を有効にするには、メール配布リスト sqldwcopypreview@service.microsoft.com にお問い合わせください。 |
 |**COPY コマンドでの Parquet ファイルの自動圧縮検出**|[COPY コマンド](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)で Parquet ファイルの圧縮方法の自動検出がサポートされるようになりました。 この機能を有効にするには、メール配布リスト sqldwcopypreview@service.microsoft.com にお問い合わせください。|
-|**その他の読み込みに関する推奨事項**|Synapse SQL 向けの[読み込みに関する推奨事項](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations)が提供されるようになりました。 最大スループットのためにファイルを分割する必要がある場合にプロアクティブな通知を受け取ります。ストレージ アカウントを SQL プールと併置します。または、SQLBulkCopy API や BCP などの読み込みユーティリティを使用するときにバッチ サイズを増やします|
-|**T-SQL の更新可能なディストリビューション列 (GA)**|ユーザーは、ディストリビューション列に格納されているデータを更新できるようになりました。 詳細については、「[Synapse SQL プールでの分散テーブルの設計に関するガイダンス](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute)」を参照してください。|
+|**その他の読み込みに関する推奨事項**|Synapse SQL 向けの[読み込みに関する推奨事項](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations)が提供されるようになりました。 最大スループットを確保するためにファイルを分割する必要がある場合にプロアクティブな通知を受け取ります。ストレージ アカウントを専用 SQL プール (旧称 SQL DW)　と併置します。または、SQLBulkCopy API や BCP などの読み込みユーティリティを使用するときにバッチ サイズを増やします。|
+|**T-SQL の更新可能なディストリビューション列 (GA)**|ユーザーは、ディストリビューション列に格納されているデータを更新できるようになりました。 詳細については、[専用 SQL プール (旧称 SQL DW) での分散テーブルの設計に関するガイダンス](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute)に関する記事を参照してください。|
 |**T-SQL Update/Delete from...Join (GA)**|別のテーブルとの Join の結果に基づく Update と Delete が利用可能になりました。 詳細については、[Update](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql?view=azure-sqldw-latest) および [Delete](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql?view=azure-sqldw-latest) のドキュメントを参照してください。|
 |**T-SQL PREDICT (プレビュー)**|データ ウェアハウス内の機械学習モデルを予測することで、大規模で複雑なデータ移動を回避できるようになりました。 T-SQL PREDICT 関数は、オープン モデル フレームワークに基づき、データと機械学習モデルを入力として受け取り、予測を生成します。 詳細については、[こちらのドキュメント](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)を参照してください。|
 
@@ -120,7 +127,7 @@ ms.locfileid: "92676127"
 
 | サービスの機能強化 | 詳細 |
 | --- | --- |
-|**Azure Private Link (プレビュー)**|[Azure Private Link](https://azure.microsoft.com/blog/announcing-azure-private-link/) を使用すると、お使いの Virtual Network (VNet) にプライベート エンドポイントを作成し、お使いの SQL プールにマップできます。 これらのリソースには、VNet 内のプライベート IP アドレスを使用してアクセスできます。これにより、Azure ExpressRoute プライベート ピアリングや VPN ゲートウェイを介したオンプレミスからの接続が可能になります。 全体として、ネットワーク構成をパブリック IP アドレスに公開する必要がないため、ネットワーク構成を単純化できます。 これにより、データ流出のリスクに対する保護も可能になります。 詳細については、[概要](../../private-link/private-link-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関するページと [SQL Analytics のドキュメント](../../azure-sql/database/private-endpoint-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を参照してください。|
+|**Azure Private Link (プレビュー)**|[Azure Private Link](https://azure.microsoft.com/blog/announcing-azure-private-link/) を使用すると、お使いの Virtual Network (VNet) にプライベート エンドポイントを作成し、お使いの専用 SQL プールにマップできます。 これらのリソースには、VNet 内のプライベート IP アドレスを使用してアクセスできます。これにより、Azure ExpressRoute プライベート ピアリングや VPN ゲートウェイを介したオンプレミスからの接続が可能になります。 全体として、ネットワーク構成をパブリック IP アドレスに公開する必要がないため、ネットワーク構成を単純化できます。 これにより、データ流出のリスクに対する保護も可能になります。 詳細については、[概要](../../private-link/private-link-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関するページと [SQL Analytics のドキュメント](../../azure-sql/database/private-endpoint-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を参照してください。|
 |**データの検出と分類 (GA)**|[データの検出および分類](../../azure-sql/database/data-discovery-and-classification-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)機能は、現在、一般提供されています。 この機能によって、データベース内の機密データを **検出、分類、ラベル付け、および保護する** ための高度な能力が提供されます。|
 |**Azure Advisor とのワンクリック統合**|Azure Synapse の SQL Analytics の概要ブレードに、Azure Advisor 推奨事項が直接統合され、ワンクリックで参照できるようになりました。 Azure Advisor ブレードに移動しなくても、概要ブレードで推奨事項を表示できるようになりました。 推奨事項の詳細については、[こちら](sql-data-warehouse-concept-recommendations.md)を参照してください。|
 |**Read Committed スナップショット分離 (プレビュー)**|ALTER DATABASE を使用して、ユーザー データベースのスナップショット分離を有効または無効にすることができます。  現在のワークロードへの影響を回避するには、データベースのメンテナンス期間中にこのオプションを設定するか、データベースへの他のアクティブな接続がなくなるまで待機します。 詳細については、[ALTER DATABASE SET オプション](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)に関するページを参照してください。|
@@ -208,13 +215,13 @@ ms.locfileid: "92676127"
 |**高速データベース復旧 (ADR)**|Azure Synapse の高速データベース復旧 (ADR) がパブリック プレビューになりました。 ADR は、現在の復旧プロセスを一から再設計することで、特に実行時間の長いトランザクションがある場合などにデータベースの可用性を大幅に向上させる、新しい SQL Server エンジンです。 ADR の主な利点は、高速かつ一貫性のあるデータベースの復旧と、瞬時のトランザクション ロールバックです。|
 |**Azure Monitor リソース ログ**|Azure Synapse では、Azure Monitor リソース ログを直接統合し、分析ワークロードのより高度な分析情報を利用できるようになりました。 この新しい機能により、開発者は長期間にわたってワークロード ビヘイビアーを分析し、クエリの最適化や容量の管理に関して十分に情報を得たうえで決定を下すことができます。 データ ウェアハウスのワークロードに対する追加の分析情報を提供する [Azure Monitor リソース ログ](../../azure-monitor/platform/data-platform.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#logs)により、外部ログ プロセスを導入しました。 ボタンを 1 回クリックすることで、[Log Analytics](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) を使用して履歴クエリのパフォーマンスをトラブルシューティングするためのリソース ログを構成できます。 Azure Monitor リソース ログでは、監査目的でログをストレージ アカウントに保存することによって、カスタマイズ可能な保有期間をサポートしています。また、ほぼリアルタイムでのテレメトリの分析情報を入手するためにログをイベント ハブにストリームしたり、ログ クエリで Log Analytics を使用することによってログを分析したりすることが可能です。 リソース ログは、お使いのデータ ウェアハウスのテレメトリ ビューで構成されています。これは、よく使用される Azure Synapse の SQL Analytics でのパフォーマンス トラブルシューティングの DMV に相当します。 この最初のリリースでは、以下のシステム動的管理ビューが有効になっています。<br/><br/>&bull; &nbsp; [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
 |**列ストアのメモリ管理**|圧縮された列ストア行グループの数が増えると、その行グループ内の列セグメント メタデータを管理するために必要なメモリも増えます。  その結果、一部の列ストア動的管理ビュー (DMV) に対して実行されるクエリのパフォーマンスとクエリが低下する可能性があります。  このリリースでは、このようなケースの内部メタデータのサイズを最適化する改善が加えられ、こうしたクエリのエクスペリエンスとパフォーマンスが向上しました。|
-|**Azure Data Lake Storage Gen2 の統合 (GA)**|Synapse Analytics が、Azure Data Lake Storage Gen2 とネイティブに統合されるようになりました。 お客様は、外部テーブルを使用して ABFS から Synapse SQL プールにデータを読み込むことができるようになりました。 この機能を使用することにより、Data Lake Storage Gen2 内のデータ レイクと統合できます。|
+|**Azure Data Lake Storage Gen2 の統合 (GA)**|Synapse Analytics が、Azure Data Lake Storage Gen2 とネイティブに統合されるようになりました。 お客様は、外部テーブルを使用して、ABFS から 専用 SQL プール (旧称 SQL DW) にデータを読み込むことができるようになりました。 この機能を使用することにより、Data Lake Storage Gen2 内のデータ レイクと統合できます。|
 |**重要なバグ**|DW2000 以降のデータ ウェアハウスでの小さいリソース クラスにおける Parquet に対する CETAS のエラー - この修正により、Create External Table As 内での Parquet コード パスに対する null 参照が正しく識別されます。<br/><br/>一部の CTAS 操作で ID 列の値が失われることがある - 別のテーブルへの CTAS を行うと、ID 列の値が維持されない場合があります。 [ブログ](https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/)で報告。<br/><br/>クエリがまだ実行している間にセッションが終了されたときに発生する場合がある内部エラー - この修正では、クエリがまだ実行している間にセッションが終了されると、InvalidOperationException がトリガーされます。<br/><br/>(2018 年 11 月に配置) 顧客が Polybase を使用して複数の小さなファイルを ADLS (Gen1) からの読み込もうとしたときに、パフォーマンスは十分に最適ではありませんでした。 - AAD セキュリティ トークンの検証中のシステムのパフォーマンスがボトルネックでした。 セキュリティ トークンのキャッシュを有効にすると、パフォーマンスの問題は軽減されました。 |
 | | |
 
 ## <a name="next-steps"></a>次のステップ
 
-- [SQL プールを作成する](create-data-warehouse-portal.md)
+- [専用 SQL プール (旧称 SQL DW) を作成する](create-data-warehouse-portal.md)
 
 ## <a name="more-information"></a>詳細情報
 

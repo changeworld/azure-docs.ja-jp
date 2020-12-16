@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: bbaa44fb64becee85b29cd44bee44e593ec55bf6
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 1095222f332e7a66f684feddf1fdab17704ca658
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372644"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573546"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Azure Security Center への GCP アカウントの接続
 
@@ -44,12 +44,14 @@ GCP アカウントを Security Center にオンボードすると、GCP Securit
 
 ## <a name="connect-your-gcp-account"></a>GCP アカウントを接続する
 
+GCP クラウド コネクタを作成するには、次の手順に従います。 
+
 ### <a name="step-1-set-up-gcp-security-command-center-with-security-health-analytics"></a>手順 1. Security Health Analytics を使用して GCP Security Command Center を設定する
 
 組織内のすべての GCP プロジェクトについて、次のことも行う必要があります。
 
-1. [GCP のドキュメントに記載されたこちらの手順](https://cloud.google.com/security-command-center/docs/quickstart-scc-setup)を使用して、 **GCP Security Command Center** を設定します。
-1. [GCP のドキュメントに記載されたこちらの手順](https://cloud.google.com/security-command-center/docs/how-to-use-security-health-analytics)を使用して、 **Security Health Analytics** を有効にします。
+1. [GCP のドキュメントに記載されたこちらの手順](https://cloud.google.com/security-command-center/docs/quickstart-scc-setup)を使用して、**GCP Security Command Center** を設定します。
+1. [GCP のドキュメントに記載されたこちらの手順](https://cloud.google.com/security-command-center/docs/how-to-use-security-health-analytics)を使用して、**Security Health Analytics** を有効にします。
 1. Security Command Center にデータが流れていることを確認します。
 
 セキュリティ構成のために GCP 環境に接続するための手順は、セキュリティ構成の推奨事項を利用するための Google の推奨事項に従っています。 統合では Google Security Command Center が活用され、課金に影響する可能性のある追加のリソースが消費されます。
@@ -60,7 +62,7 @@ Security Health Analytics を初めて有効にしたときは、データが使
 ### <a name="step-2-enable-gcp-security-command-center-api"></a>手順 2. GCP Security Command Center API を有効にする
 
 1. Google の **Cloud Console API ライブラリ** から、Azure Security Center に接続するプロジェクトを選択します。
-1. API ライブラリで、 **Security Command Center API** を見つけて選択します。
+1. API ライブラリで、**Security Command Center API** を見つけて選択します。
 1. API のページで、 **[有効にする]** を選択します。
 
 Security Command Center API の詳細については、[こちら](https://cloud.google.com/security-command-center/docs/reference/rest/)をご覧ください。
@@ -99,7 +101,7 @@ Security Command Center API の詳細については、[こちら](https://cloud
     1. 選択したサブスクリプションを検証します。
     1. **[表示名]** フィールドに、コネクタの表示名を入力します。
     1. **[組織 ID]** フィールドに、組織の ID を入力します。 不明な場合は、「[組織の作成と管理](https://cloud.google.com/resource-manager/docs/creating-managing-organization)」をご覧ください。
-    1. **[秘密キー ファイル]** ボックスで、「 [手順 4. 専用サービス アカウントの秘密キーを作成する](#step-4-create-a-private-key-for-the-dedicated-service-account)」でダウンロードした JSON ファイルを参照します。
+    1. **[秘密キー ファイル]** ボックスで、「[手順 4. 専用サービス アカウントの秘密キーを作成する](#step-4-create-a-private-key-for-the-dedicated-service-account)」でダウンロードした JSON ファイルを参照します。
 
 
 ### <a name="step-6-confirmation"></a>手順 6. 確認

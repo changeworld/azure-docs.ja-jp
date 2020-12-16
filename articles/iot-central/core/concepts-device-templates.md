@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: e82a377d62184c8ae1d2e8f076b228e36005887a
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1a352849cb5bb8563a7e09500f081139a24e97ea
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992677"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750698"
 ---
 # <a name="what-are-device-templates"></a>デバイス テンプレートとは
 
@@ -225,7 +225,7 @@ DTDL を使用すると、デバイスの機能を記述することができま
 
 - 機能の種類 (`Telemetry`、`Property`、または`Command`) を指定する `@type`。  種類に、IoT Central で値の処理方法を想定できるセマンティックの種類が含まれる場合があります。
 - テレメトリ値の `name`。
-- テレメトリまたはプロパティのデータ型を指定する `schema`。 この値は、double、integer、boolean、string などのプリミティブ型にすることができます。 複合オブジェクト型、配列、およびマップもサポートされています。
+- テレメトリまたはプロパティのデータ型を指定する `schema`。 この値は、double、integer、boolean、string などのプリミティブ型にすることができます。 複合オブジェクト型およびマップもサポートされています。
 
 表示名や説明などのオプション フィールドを使用すると、インターフェイスや機能に詳細を追加できます。
 

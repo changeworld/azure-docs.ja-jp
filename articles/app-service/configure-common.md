@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
-ms.openlocfilehash: 1ab6f5e9c7b602ce124116c02584c5a48a3f597f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 76cfefa3f104ecef69e28fecd1c37fc336b0ce8c
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999979"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854650"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal で App Service アプリを構成する
 
@@ -29,7 +29,7 @@ App Service では、アプリ設定は、環境変数としてアプリケー�
 
 ![アプリケーションの設定](./media/configure-common/open-ui.png)
 
-ASP.NET および ASP.NET Core 開発者の場合、App Service でのアプリ設定の設定は *Web.config* または *appsettings.json* での `<appSettings>` の設定と同様ですが、App Service の値によって *Web.config* または *appsettings.json* でそれらがオーバーライドされます。 運用シークレット (Azure MySQL データベースのパスワードなど) を除き、*Web.config* または *appsettings.json* 内の開発設定 (ローカルの MySQL パスワードなど) を App Service で安全に保持できます。 ローカルでデバッグするときに開発設定を使用するコードと、Azure にデプロイされたときに運用シークレットを使用するコードは同じです。
+ASP.NET および ASP.NET Core 開発者の場合、App Service でのアプリ設定の設定は *Web.config* または *appsettings.json* での `<appSettings>` の設定と同様ですが、App Service の値によって *Web.config* または *appsettings.json* でそれらがオーバーライドされます。 *Web.config* または *appsettings.json* 内の開発設定 (たとえば、ローカル MySQL パスワード)、および運用シークレット (たとえば、Azure MySQL データベース パスワード) は App Service で安全に保持できます。 ローカルでデバッグするときに開発設定を使用するコードと、Azure にデプロイされたときに運用シークレットを使用するコードは同じです。
 
 同様に、他の言語スタックも実行時に環境変数としてアプリ設定を取得します。 言語スタック固有の手順については、次を参照してください。
 

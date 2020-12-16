@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/03/2020
+ms.date: 11/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 557d2eb636e51f4259bc525fe39f8c95303774cd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9a2c52674bafeb170efd41afa9c395aeecda9df8
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181035"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602123"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-clientvpn"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と AWS ClientVPN の統合
 
@@ -80,7 +80,13 @@ AWS ClientVPN に対して Azure AD SSO を構成してテストするには、�
 
     a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<LOCALHOST>`
 
-    b. **[応答 URL]** ボックスに、`https://<LOCALHOST>` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のいずれかのパターンを使用して URL を入力します。
+
+    | [応答 URL] |
+    |------------|
+    | `https://<LOCALHOST>` |
+    | `https://self-service.clientvpn.amazonaws.com/api/auth/sso/saml` |
+    |
 
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値を、実際のサインオン URL および応答 URL で更新してください。 これらの値を取得するには、[AWS ClientVPN Client クライアント サポート チーム](https://aws.amazon.com/contact-us/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -146,11 +152,11 @@ AWS ClientVPN に対して Azure AD SSO を構成してテストするには、�
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる AWS ClientVPN のサインオン URL にリダイレクトされます。 
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる AWS ClientVPN のサインオン URL にリダイレクトされます。 
 
-2. AWS ClientVPN のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* AWS ClientVPN のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [AWS ClientVPN] タイルをクリックすると、AWS ClientVPN サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [AWS ClientVPN] タイルをクリックすると、AWS ClientVPN サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

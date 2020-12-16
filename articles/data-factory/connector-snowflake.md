@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/24/2020
-ms.openlocfilehash: c0d0e3154360d787bfc2072c5ae1fe878fa1d138
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.date: 12/08/2020
+ms.openlocfilehash: 49e4a6f7f8c268669a94796257d5740ec6f4e6ff
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96003661"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902087"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Azure Data Factory を使用して Snowflake のデータをコピーして変換する
 
@@ -159,7 +159,7 @@ Snowflake からデータをコピーするために、コピー アクティビ
 
 シンクのデータ ストアと形式がこのセクションで説明する基準を満たす場合は、コピー アクティビティを使用して、Snowflake からシンクに直接コピーできます。 Data Factory によって設定が確認され、次の条件が満たされない場合は、コピー アクティビティの実行が失敗します。
 
-- **シンクのリンクされたサービス** が、**Shared Access Signature** 認証を使用する [**Azure Blob Storage**](connector-azure-blob-storage.md) です。
+- **シンクのリンクされたサービス** が、**Shared Access Signature** 認証を使用する [**Azure Blob Storage**](connector-azure-blob-storage.md) です。 サポートされている次の形式で Azure Data Lake Storage Gen2 にデータを直接コピーする場合は、ADLS Gen2 アカウントに対する SAS 認証を使用して Azure BLOB のリンクされたサービスを作成し、[Snowflake からのステージング コピー](#staged-copy-from-snowflake)を使用しないようにすることができます。
 
 - **シンク データ形式** が、次のように構成された **Parquet**、**区切りテキスト**、または **JSON** です。
 
@@ -173,7 +173,6 @@ Snowflake からデータをコピーするために、コピー アクティビ
         - `compression` が、**no compression**、**gzip**、**bzip2**、または **deflate** です。
         - `encodingName` が既定値のままか、**utf-8** に設定されている。
         - コピー アクティビティのシンクでは、`filePattern` は既定値のままにするか、**setOfObjects** に設定します。
-
 - コピー アクティビティのソースでは、`additionalColumns` は指定しません。
 - 列マッピングが指定されていません。
 
@@ -290,7 +289,7 @@ Snowflake にデータをコピーするために、コピー アクティビテ
 
 ソースのデータ ストアと形式がこのセクションで説明する基準を満たす場合は、コピー アクティビティを使用して、ソースから Snowflake に直接コピーできます。 Azure Data Factory によって設定が確認され、次の条件が満たされない場合は、コピー アクティビティの実行が失敗します。
 
-- **ソースのリンクされたサービス** が、**Shared Access Signature** 認証を使用する [**Azure Blob Storage**](connector-azure-blob-storage.md) です。
+- **ソースのリンクされたサービス** が、**Shared Access Signature** 認証を使用する [**Azure Blob Storage**](connector-azure-blob-storage.md) です。 サポートされている次の形式で Azure Data Lake Storage Gen2 からデータを直接コピーする場合は、ADLS Gen2 アカウントに対する SAS 認証を使用して Azure BLOB のリンクされたサービスを作成し、[Snowflake へのステージング コピー](#staged-copy-to-snowflake)を使用しないようにすることができます。
 
 - **ソース データ形式** が、次のように構成された **Parquet**、**区切りテキスト**、または **JSON** です。
 

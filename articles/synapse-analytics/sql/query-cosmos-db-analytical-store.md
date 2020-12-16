@@ -6,17 +6,21 @@ author: jovanpop-msft
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: eda05cbdf2f5b077fd6cf217a00cc58b1c6eda27
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 129534727248ff05b5d38da60dead7903d9a5815
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94986642"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744467"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Azure Synapse Link プレビューでサーバーレス SQL プールを使用して Azure Cosmos DB データのクエリを実行する
+
+> [!IMPORTANT]
+> Azure Synapse Link for Azure Cosmos DB のサーバーレス SQL プールのサポートは現在プレビュー段階にあります。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
 
 サーバーレス SQL プールを使用すると、トランザクション ワークロードのパフォーマンスに影響を与えることなく、[Azure Synapse Link](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) で有効になっている Azure Cosmos DB コンテナー内のデータをほぼリアルタイムで分析できます。 T-SQL インターフェイスを使用して[分析ストア](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)および統合された接続からさまざまなビジネス インテリジェンス (BI) やアドホック クエリ ツールへのデータのクエリを実行するために、使い慣れた T-SQL 構文が用意されています。
 
@@ -28,6 +32,12 @@ Azure Cosmos DB のクエリを実行する場合、[SELECT](/sql/t-sql/queries/
 > このチュートリアルでは、[Azure Cosmos DB の適切に定義されたスキーマ](../../cosmos-db/analytical-store-introduction.md#schema-representation)を持つコンテナーを使用します。 サーバーレス SQL プールによって提供される、[Azure Cosmos DB の完全に忠実なスキーマ](#full-fidelity-schema)でのクエリ エクスペリエンスの動作は、プレビューのフィードバックに基づいて変更される予定の一時的なものです。 クエリ エクスペリエンスは、適切に定義されたスキーマに基づいて調整されている可能性があるため、完全に忠実なスキーマを持つコンテナーからデータを読み取る、`WITH` 句のない `OPENROWSET` 関数の結果セット スキーマには依存しないでください。 フィードバックは、[Azure Synapse Analytics フィードバック フォーラム](https://feedback.azure.com/forums/307516-azure-synapse-analytics)に投稿できます。 [Azure Synapse Link の製品チーム](mailto:cosmosdbsynapselink@microsoft.com)に連絡して、フィードバックを提供することもできます。
 
 ## <a name="overview"></a>概要
+
+サーバーレス SQL プールを使用すると、`OPENROWSET` 関数を使用して Azure Cosmos DB 分析ストレージに対してクエリを実行できます。 
+- `OPENROWSET` とインライン キー。 この構文を使用すると、資格情報を準備せずに Azure Cosmos DB コレクションに対してクエリを実行できます。
+- Cosmos DB アカウント キーを含む資格情報を参照する `OPENROWSET`。 この構文を使用すると、Azure Cosmos DB コレクションに対してビューを作成できます。
+
+### <a name="openrowset-with-key"></a>[OPENROWSET とキー](#tab/openrowset-key)
 
 Azure Cosmos DB 分析ストア内のデータのクエリと分析をサポートするため、サーバーレス SQL プールでは次の `OPENROWSET` 構文を使用します。
 
@@ -41,17 +51,39 @@ OPENROWSET(
 
 Azure Cosmos DB の接続文字列には、Azure Cosmos DB のアカウント名、データベース名、データベース アカウント マスター キー、および `OPENROWSET` 関数に対するオプションのリージョン名を指定します。
 
-> [!IMPORTANT]
-> Azure Cosmos DB 分析ストア内の文字列値は UTF-8 テキストとしてエンコードされているため、必ず何らかの UTF-8 データベース照合順序 (`Latin1_General_100_CI_AS_SC_UTF8` など) を使用してください。
-> ファイル内のテキスト エンコードと照合順序が一致しないと、予期しないテキスト変換エラーが発生する可能性があります。
-> 現在のデータベースの既定の照合順序は、`alter database current collate Latin1_General_100_CI_AI_SC_UTF8` という T-SQL ステートメントを使用して簡単に変更できます。
-
 接続文字列は次のような形式です。
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>;key=<database account master key>'
 ```
 
 `OPENROWSET` の構文では、引用符を使用しないで Azure Cosmos DB のコンテナー名を指定します。 コンテナー名に特殊文字 (ダッシュ "-" など) が含まれている場合、`OPENROWSET` 構文では名前を角かっこ (`[]`) で囲む必要があります。
+
+### <a name="openrowset-with-credential"></a>[OPENROWSET と資格情報](#tab/openrowset-credential)
+
+資格情報を参照する `OPENROWSET` 構文を使用できます。
+
+```sql
+OPENROWSET( 
+       PROVIDER = 'CosmosDB',
+       CONNECTION = '<Azure Cosmos DB connection string without account key>',
+       OBJECT = '<Container name>',
+       [ CREDENTIAL | SERVER_CREDENTIAL ] = '<credential name>'
+    )  [ < with clause > ] AS alias
+```
+
+この場合、Azure Cosmos DB 接続文字列にはキーが含まれません。 接続文字列は次のような形式です。
+```sql
+'account=<database account name>;database=<database name>;region=<region name>'
+```
+
+データベース アカウントのマスター キーは、サーバー レベルの資格情報またはデータベース スコープの資格情報に配置されます。 
+
+---
+
+> [!IMPORTANT]
+> Azure Cosmos DB 分析ストア内の文字列値は UTF-8 テキストとしてエンコードされているため、必ず何らかの UTF-8 データベース照合順序 (`Latin1_General_100_CI_AS_SC_UTF8` など) を使用してください。
+> ファイル内のテキスト エンコードと照合順序が一致しないと、予期しないテキスト変換エラーが発生する可能性があります。
+> 現在のデータベースの既定の照合順序は、`alter database current collate Latin1_General_100_CI_AI_SC_UTF8` という T-SQL ステートメントを使用して簡単に変更できます。
 
 > [!NOTE]
 > サーバーレス SQL プールでは、Azure Cosmos DB トランザクション ストアのクエリはサポートされていません。
@@ -66,20 +98,43 @@ Azure Cosmos DB の接続文字列には、Azure Cosmos DB のアカウント名
 
 * [Azure Synapse Link が有効にされている](../../cosmos-db/configure-synapse-link.md) Azure Cosmos DB データベース アカウント。
 * `covid` という名前の Azure Cosmos DB データベース。
-* 前述のサンプル データセットが読み込まれた、`EcdcCases` および `Cord19` という名前の 2 つの Azure Cosmos DB コンテナー。
+* 前述のサンプル データセットが読み込まれた、`Ecdc` および `Cord19` という名前の 2 つの Azure Cosmos DB コンテナー。
+
+テスト目的で次の接続文字列を使用できます: `Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==`。 この接続ではパフォーマンスが保証されないことに注意してください。これは、このアカウントが Synapse SQL エンドポイントと比較してリモート リージョンに配置される可能性があるためです。
 
 ## <a name="explore-azure-cosmos-db-data-with-automatic-schema-inference"></a>自動スキーマ推論を使用して Azure Cosmos DB のデータを探索する
 
 Azure Cosmos DB のデータを探索する最も簡単な方法は、自動スキーマ推論機能を使用することです。 `OPENROWSET` ステートメントで `WITH` 句を省略すると、Azure Cosmos DB コンテナーの分析ストアのスキーマを自動検出 (推論) するように、サーバーレス SQL プールに指示できます。
 
+### <a name="openrowset-with-key"></a>[OPENROWSET とキー](#tab/openrowset-key)
+
 ```sql
 SELECT TOP 10 *
 FROM OPENROWSET( 
        'CosmosDB',
-       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases) as documents
+       'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
+       Ecdc) as documents
 ```
-この例では、Azure Cosmos DB キー (この例ではダミー) を使用して認証された Azure Cosmos DB アカウント `MyCosmosDbAccount` の `covid` データベースに接続するように、サーバーレス SQL プールに指示しています。 その後、`West US 2` リージョンのコンテナー `EcdcCases` の分析ストアにアクセスします。 特定のプロパティのプロジェクションはないため、`OPENROWSET` 関数からは、Azure Cosmos DB の項目のすべてのプロパティが返されます。
+
+### <a name="openrowset-with-credential"></a>[OPENROWSET と資格情報](#tab/openrowset-credential)
+
+```sql
+/*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
+    CREATE CREDENTIAL MyCosmosDbAccountCredential
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
+*/
+SELECT TOP 10 *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'Account=synapselink-cosmosdb-sqlsample;Database=covid',
+      OBJECT = 'Ecdc',
+      SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+
+---
+
+この例では、Azure Cosmos DB キー (この例ではダミー) を使用して認証された Azure Cosmos DB アカウント `MyCosmosDbAccount` の `covid` データベースに接続するように、サーバーレス SQL プールに指示しています。 その後、`West US 2` リージョンのコンテナー `Ecdc` の分析ストアにアクセスします。 特定のプロパティのプロジェクションはないため、`OPENROWSET` 関数からは、Azure Cosmos DB の項目のすべてのプロパティが返されます。
 
 Azure Cosmos DB コンテナー内の項目に `date_rep`、`cases`、および `geo_id` プロパティがあると仮定すると、このクエリの結果は次の表のようになります。
 
@@ -95,7 +150,7 @@ Azure Cosmos DB コンテナー内の項目に `date_rep`、`cases`、および 
 SELECT TOP 10 *
 FROM OPENROWSET( 
        'CosmosDB',
-       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+       'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
        Cord19) as cord19
 ```
 
@@ -115,15 +170,30 @@ FROM OPENROWSET(
 
 Azure Cosmos DB のこのようなフラットな JSON ドキュメントは、Synapse SQL では行と列のセットとして表すことができます。 `OPENROWSET` 関数を使用すると、読み取り対象のプロパティのサブセットと列の厳密な型を、`WITH` 句で指定できます。
 
+### <a name="openrowset-with-key"></a>[OPENROWSET とキー](#tab/openrowset-key)
 ```sql
 SELECT TOP 10 *
 FROM OPENROWSET(
       'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases
+      'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
+       Ecdc
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
-
+### <a name="openrowset-with-credential"></a>[OPENROWSET と資格情報](#tab/openrowset-credential)
+```sql
+/*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
+    CREATE CREDENTIAL MyCosmosDbAccountCredential
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
+*/
+SELECT TOP 10 *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'Account=synapselink-cosmosdb-sqlsample;Database=covid',
+      OBJECT = 'Ecdc',
+      SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+---
 このクエリの結果は次の表のようになります。
 
 | date_rep | cases | geo_id |
@@ -133,6 +203,26 @@ FROM OPENROWSET(
 | 2020-08-11 | 163 | RS |
 
 Azure Cosmos DB の値に使用する必要がある SQL 型の詳細については、記事の最後にある [SQL 型のマッピングの規則](#azure-cosmos-db-to-sql-type-mappings)を参照してください。
+
+## <a name="create-view"></a>ビューを作成する
+
+スキーマを特定したら、Azure Cosmos DB データの上にビューを準備できます。 Azure Cosmos DB アカウント キーを別の資格情報に配置し、`OPENROWSET` 関数からこの資格情報を参照する必要があります。 ビュー定義でアカウント キーを保持しないでください。
+
+```sql
+CREATE CREDENTIAL MyCosmosDbAccountCredential
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
+GO
+CREATE OR ALTER VIEW Ecdc
+AS SELECT *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'Account=synapselink-cosmosdb-sqlsample;Database=covid',
+      OBJECT = 'Ecdc',
+      SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+
+パフォーマンスに影響する可能性があるため、明示的に定義されたスキーマなしで `OPENROWSET` を使用しないでください。 列のサイズは可能な限り小さくしてください (たとえば、既定の VARCHAR(8000) ではなく VARCHAR(100))。 [UTF-8 の変換に関する問題](/troubleshoot/reading-utf8-text)を回避するために、何らかの UTF-8 照合順序を既定のデータベース照合順序として使用するか、明示的な列の照合順序として設定する必要があります。 照合順序 `Latin1_General_100_BIN2_UTF8` は、文字列型の列を使用してデータをフィルター処理する場合に最も高いパフォーマンスを提供します。
 
 ## <a name="query-nested-objects-and-arrays"></a>入れ子になったオブジェクトと配列のクエリ
 
@@ -152,41 +242,28 @@ Azure Cosmos DB を使用すると、入れ子になったオブジェクトま�
 }
 ```
 
-Azure Cosmos DB 内の入れ子になったオブジェクトと配列は、`OPENROWSET` 関数で読み取ると、クエリ結果で JSON 文字列として表されます。 これらの複合型から SQL 列として値を読み取る 1 つのオプションは、SQL JSON 関数を使用することです。
+Azure Cosmos DB 内の入れ子になったオブジェクトと配列は、`OPENROWSET` 関数で読み取ると、クエリ結果で JSON 文字列として表されます。 `WITH` 句を使用するときに、オブジェクト内の入れ子になった値へのパスを指定できます。
 
 ```sql
-SELECT
-    title = JSON_VALUE(metadata, '$.title'),
-    authors = JSON_QUERY(metadata, '$.authors'),
-    first_author_name = JSON_VALUE(metadata, '$.authors[0].first')
-FROM
-    OPENROWSET(
-      'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       Cord19
-    WITH ( metadata varchar(MAX) ) AS docs;
+SELECT TOP 10 *
+FROM OPENROWSET( 
+       'CosmosDB',
+       'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
+       Cord19)
+WITH (  paper_id    varchar(8000),
+        title        varchar(1000) '$.metadata.title',
+        metadata     varchar(max),
+        authors      varchar(max) '$.metadata.authors'
+) AS docs;
 ```
 
 このクエリの結果は次の表のようになります。
 
-| title | 作成者 | first_autor_name |
+| paper_id | title | metadata | 作成者 |
 | --- | --- | --- |
-| Supplementary Information An eco-epidemi… |   `[{"first":"Julien","last":"Mélade","suffix":"","affiliation":{"laboratory":"Centre de Recher…` | Julien |  
-
-別のオプションとして、`WITH` 句を使用するときに、オブジェクト内の入れ子になった値へのパスを指定することもできます。
-
-```sql
-SELECT
-    *
-FROM
-    OPENROWSET(
-      'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       Cord19
-    WITH ( title varchar(1000) '$.metadata.title',
-           authors varchar(max) '$.metadata.authors'
-    ) AS docs;
-```
+| bb11206963e831f… | Supplementary Information An eco-epidemi… | `{"title":"Supplementary Informati…` | `[{"first":"Julien","last":"Mélade","suffix":"","af…`| 
+| bb1206963e831f1… | The Use of Convalescent Sera in Immune-E… | `{"title":"The Use of Convalescent…` | `[{"first":"Antonio","last":"Lavazza","suffix":"", …` |
+| bb378eca9aac649… | Tylosema esculentum (Marama) Tuber and B… | `{"title":"Tylosema esculentum (Ma…` | `[{"first":"Walter","last":"Chingwaru","suffix":"",…` | 
 
 詳細については、[Azure Synapse Link での複雑なデータ型](../how-to-analyze-complex-schema.md)の分析に関するページと、[サーバーレス SQL プールでの入れ子構造](query-parquet-nested-types.md)の分析に関するページを参照してください。
 
@@ -226,7 +303,7 @@ SELECT
 FROM
     OPENROWSET(
       'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+      'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
        Cord19
     ) WITH ( title varchar(1000) '$.metadata.title',
              authors varchar(max) '$.metadata.authors' ) AS docs
@@ -276,7 +353,7 @@ SELECT *
 FROM OPENROWSET(
       'CosmosDB',
       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases
+       Ecdc
     ) as rows
 ```
 
@@ -311,7 +388,7 @@ SELECT geo_id, cases = SUM(cases)
 FROM OPENROWSET(
       'CosmosDB'
       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases
+       Ecdc
     ) WITH ( geo_id VARCHAR(50) '$.geo_id.string',
              cases INT '$.cases.int32'
     ) as rows
@@ -327,7 +404,7 @@ SELECT geo_id, cases = SUM(cases_int) + SUM(cases_bigint) + SUM(cases_float)
 FROM OPENROWSET(
       'CosmosDB',
       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases
+       Ecdc
     ) WITH ( geo_id VARCHAR(50) '$.geo_id.string', 
              cases_int INT '$.cases.int32',
              cases_bigint BIGINT '$.cases.int64',
@@ -341,13 +418,13 @@ GROUP BY geo_id
 ## <a name="known-issues"></a>既知の問題
 
 - [Azure Cosmos DB の完全な忠実性スキーマ](#full-fidelity-schema)で利用できるサーバーレス SQL プールがもたらすクエリ エクスペリエンスは、プレビューのフィードバックに基づいて変更される一時的な動作です。 クエリ エクスペリエンスは顧客フィードバックに基づいて適切に定義されたスキーマに合わせて調整されている可能性があるため、パブリック プレビュー期間中は、`WITH` 句のない `OPENROWSET` 関数によって生成されたスキーマには依存しないでください。 フィードバックを提供するには、[Azure Synapse Link の製品チーム](mailto:cosmosdbsynapselink@microsoft.com)にご連絡ください。
-- `OPENROWSET` 列の照合順序のエンコードが UTF-8 でない場合、サーバーレス SQL プールからコンパイル時のエラーは返されません。 現在のデータベースで実行されるすべての `OPENROWSET` 関数の既定の照合順序は、`alter database current collate Latin1_General_100_CI_AI_SC_UTF8` という T-SQL ステートメントを使用して簡単に変更できます。
+- `OPENROWSET` 列の照合順序のエンコードが UTF-8 でない場合、サーバーレス SQL プールからコンパイル時警告が返されます。 現在のデータベースで実行されるすべての `OPENROWSET` 関数の既定の照合順序は、`alter database current collate Latin1_General_100_CI_AS_SC_UTF8` という T-SQL ステートメントを使用して簡単に変更できます。
 
 次の表に、考えられるエラーとトラブルシューティングの操作を示します。
 
 | エラー | 根本原因 |
 | --- | --- |
-| 構文エラー:<br/> - 'Openrowset' 付近に不適切な構文があります<br/> - `...` は、認識されている BULK OPENROWSET プロバイダー オプションではありません。<br/> - `...` 付近に不適切な構文があります。 | 考えられる根本原因:<br/> - 最初のパラメーターとして CosmosDB を使用していません。<br/> - 3 番目のパラメーターで識別子の代わりに文字列リテラルを使用しています。<br/> - 3 番目のパラメーター (コンテナー名) が指定されていません。 |
+| 構文エラー:<br/> - `Openrowset` 付近に不適切な構文があります。<br/> - `...` は、`BULK OPENROWSET` プロバイダー オプションとして認識されません。<br/> - `...` 付近に不適切な構文があります。 | 考えられる根本原因:<br/> - 最初のパラメーターとして CosmosDB を使用していません。<br/> - 3 番目のパラメーターで識別子の代わりに文字列リテラルを使用しています。<br/> - 3 番目のパラメーター (コンテナー名) が指定されていません。 |
 | CosmosDB 接続文字列でエラーが発生しました。 | - アカウント、データベース、またはキーが指定されていません。 <br/> - 接続文字列に認識されないオプションがいくつかあります。<br/> - 接続文字列の末尾にセミコロン `;` が記述されています。 |
 | CosmosDB パスを解決できませんでした。エラー: "アカウント名が正しくありません" または "データベース名が正しくありません"。 | 指定されたアカウント名、データベース名、またはコンテナーが見つからないか、指定されたコレクションで分析ストレージが有効になっていません。|
 | CosmosDB パスを解決できませんでした。エラー: "シークレット値が正しくありません" または "シークレットが null または空です"。 | アカウント キーが無効であるか、存在しません。 |

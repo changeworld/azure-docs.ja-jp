@@ -3,12 +3,12 @@ title: Azure Monitor for containers での Kubernetes の監視 | Microsoft Docs
 description: この記事では、Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを表示および分析する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: de61e8e5b2716a3ca212a0a830a4d48b8bd2c3ef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a1f661089b3a6357abb3eed584401e6a8ae2e2fb
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011083"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905708"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを監視する
 
@@ -228,7 +228,7 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 
 特定のコントローラーの **[ノード]** 列の値を選択します。
 
-![パフォーマンス ビューでのノードからコントローラーへのドリルダウンの例](./media/container-insights-analyze/drill-down-controller-node.png)
+![パフォーマンス ビューでのコントローラーからノードへのドリルダウンの例](./media/container-insights-analyze/drill-down-controller-node.png)
 
 次の表では、コントローラーを表示した場合に示される情報について説明します。
 
@@ -297,31 +297,8 @@ Azure ネットワーク ポリシー マネージャーには、お客様のネ
 
 ## <a name="workbooks"></a>Workbooks
 
-ブックでは、テキスト、 [ログ クエリ](/azure/data-explorer/kusto/query/)、[メトリック](../platform/data-platform-metrics.md)、パラメーターが、内容豊富な対話型レポートに組み合わされます。 ブックは、同じ Azure リソースにアクセスできる他のチーム メンバーが編集できます。
+Workbooks では、テキスト、ログ クエリ、メトリック、パラメーターが、クラスターのパフォーマンスを分析できる内容豊富な対話型レポートに組み合わされます。 Azure Monitor for Containers に使用できる Workbooks の詳細については、[Azure Monitor for Containers の Workbooks](container-insights-reports.md) に関する記事を参照してください。
 
-Azure Monitor for containers には、開始するための次の 4 つのブックが含まれています。
-
-- **ディスク容量**:次の観点で、コンテナー内のノードに提供される各ディスクの対話型のディスク使用状況グラフが示されます。
-
-    - すべてのディスクのディスク使用率。
-    - すべてのディスクの空きディスク領域。
-    - ノードのディスクごとに、その使用済み領域 (%)、使用済み領域 (%) の傾向、空きディスク領域 (GiB)、空きディスク領域 (GiB) の傾向を示すグリッド。 テーブル内で行を選択すると、使用済み領域 (%) と空きディスク領域 (GiB) が行の下に表示されます。
-
-- **ディスク IO**:次の観点で、コンテナー内のノードに提供される各ディスクの対話型のディスク使用率グラフが示されます。
-
-    - 読み取りバイト数/秒、書き込みバイト数/秒、および読み書きバイト数/秒で、すべてのディスクにわたって集計されたディスク I/O の傾向。
-    - ディスク I/O のボトルネックの測定および特定に役立つ主要業績評価指標を示す 8 つのパフォーマンス グラフ。
-
-- **Kubelet**:キー ノードの動作統計を示す 2 つのグリッドが含まれています。
-
-    - ノード グリッドによる概要では、ノードごとの割合および傾向による、合計操作数、合計エラー数、および成功した操作数を要約します。
-    - 操作の種類ごとの概要では、割合および傾向による、合計操作数、合計エラー数、および成功した操作数を操作ごとに要約します。
-
-- **ネットワーク**:ノード ネットワーク アダプターごとの対話形式のネットワーク使用率グラフと、ご使用のネットワーク アダプターのパフォーマンスの測定に役立つ主要業績評価指標を表すグリッドを示します。
-
-**[ブックの表示]** ドロップダウン リストからそれぞれを選択することにより、これらのブックにアクセスします。
-
-![[ブックの表示] ドロップダウン リスト](./media/container-insights-analyze/view-workbooks-dropdown-list.png)
 
 ## <a name="next-steps"></a>次のステップ
 

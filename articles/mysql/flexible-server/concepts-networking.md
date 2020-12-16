@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/23/2020
-ms.openlocfilehash: eaccd0559439ce228325205f5845151f0e76bcae
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a8e2d77ff3c7cb2e4352b21cd87d630331e28660
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92484527"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906150"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL の接続およびネットワークの概念 - フレキシブル サーバー (プレビュー)
 
@@ -33,7 +33,7 @@ Azure Database for MySQL フレキシブル サーバーのネットワーク �
    * VPN または ExpressRoute を使用して Azure 以外のリソースからフレキシブル サーバーに接続する
    * フレキシブル サーバーにパブリック エンドポイントがない
 
-* **パブリック アクセス (許可されている IP アドレス)** - フレキシブル サーバーには、パブリック エンドポイントを介してアクセスされます。 パブリック エンドポイントは、パブリックに解決できる DNS アドレスです。 "許可された IP アドレス" という表現は、サーバーに対するアクセス許可を付与することを選択する、ある範囲の IP を指しています。 これらのアクセス許可は、 **ファイアウォール規則** と呼ばれます。 
+* **パブリック アクセス (許可されている IP アドレス)** - フレキシブル サーバーには、パブリック エンドポイントを介してアクセスされます。 パブリック エンドポイントは、パブリックに解決できる DNS アドレスです。 "許可された IP アドレス" という表現は、サーバーに対するアクセス許可を付与することを選択する、ある範囲の IP を指しています。 これらのアクセス許可は、**ファイアウォール規則** と呼ばれます。 
 
    次の機能が必要な場合は、パブリック アクセスの方法を選択します。
    * 仮想ネットワークをサポートしていない Azure リソースから接続する
@@ -107,6 +107,8 @@ Microsoft Azure Database for MySQL サーバー サービスに対するアク�
 
    * Azure Database for MySQL サーバーにアクセスするクライアント コンピューターに割り当てられている IP アドレス範囲については、お使いのインターネット サービス プロバイダー (ISP) に問い合わせてください。その後、その IP アドレス範囲をファイアウォール規則として追加します。
    * 代わりに、クライアント コンピューター用に静的 IP アドレスを取得し、ファイアウォール規則としてその静的 IP アドレス範囲を追加してください。
+  
+* **ファイアウォール規則が IPv6 形式で使用できない:** ファイアウォール規則は IPv4 形式である必要があります。 IPv6 形式でファイアウォール規則を指定すると、検証エラーが表示されます。
 
 
 ## <a name="hostname"></a>Hostname (ホスト名)

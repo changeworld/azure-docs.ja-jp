@@ -6,58 +6,77 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 09/23/2020
+ms.date: 12/07/2020
 ms.author: alkohli
-ms.openlocfilehash: f5bcb5c42661c375372d4d0b17571d784152dd5f
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 859eb6abd138f0660407618bba4550daf9158ab9
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337289"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855007"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>ローカル Web UI を使用して Data Box および Data Box Heavy を管理する
 
 この記事では、Data Box および Data Box Heavy デバイスで実行される一部の構成と管理タスクについて説明します。 Data Box および Data Box Heavy デバイスの管理は、Azure portal UI およびデバイスのローカル Web UI を介して行えます。 この記事では、ローカル Web UI を使用して実行されるタスクについて説明します。
 
-Data Box および Data Box Heavy のローカル Web UI は、デバイスの初期構成に使用されます。 ローカル Web UI を使用して、デバイスのシャットダウンまたは再起動、診断テストの実行、ソフトウェアの更新、コピー ログの表示、および Microsoft サポートのログ パッケージの生成を行うこともできます。 2 つの独立したノードを備えた Data Box Heavy デバイスでは、デバイスの各ノードに対応する 2 つの別個のローカル Web UI にアクセスできます。
-
-この記事には次のチュートリアルが含まれています。
-
-- サポート パッケージの生成
-- デバイスのシャットダウンと再起動
-- 部品表 (BOM) またはマニフェスト ファイルのダウンロード
-- デバイスの使用可能な容量の表示
-- チェックサム検証のスキップ
+Data Box および Data Box Heavy のローカル Web UI は、デバイスの初期構成に使用されます。 また、ローカル Web UI を使用して、デバイスのシャットダウンまたは再起動、診断テストの実行、ソフトウェアの更新、コピー ログの表示、デバイスからのローカル データの消去、および Microsoft サポートのログ パッケージの生成を行うこともできます。 2 つの独立したノードを備えた Data Box Heavy デバイスでは、デバイスの各ノードに対応する 2 つの別個のローカル Web UI にアクセスできます。
 
 [!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="generate-support-package"></a>サポート パッケージの生成
 
-デバイスの問題が発生した場合は、システム ログからサポート パッケージを作成できます。 Microsoft サポートでは、このパッケージを使用して問題のトラブルシューティングを行います。 サポート パッケージを生成するには、次の手順を実行します。
+デバイスの問題が発生した場合は、システム ログからサポート パッケージを作成できます。 Microsoft サポートでは、このパッケージを使用して問題のトラブルシューティングを行います。
 
-1. ローカル Web UI で、 **[サポートにお問い合わせ]** に移動し、 **[サポート パッケージの作成]** を選択します。
+サポート パッケージを生成するには、次の手順を実行します。
+
+1. ローカル Web UI で、 **[サポートに問い合わせる]** に移動します。 必要に応じて、 **[Include memory dumps]\(メモリ ダンプを含める\)** を選択します。 次に、 **[サポート パッケージの作成]** を選択します。
+
+    メモリ ダンプは、システム障害が発生した後に保存される、デバイスのメモリの内容です。
+
+    サポートによって要求されない限り、 **[Include memory dumps]\(メモリ ダンプを含める\)** オプションは選択しないでください。 メモリ ダンプを含むサポート パッケージを収集するには長い時間がかかり、機密データも含まれます。
 
     ![サポート パッケージの作成 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
-2. サポート パッケージが収集されます。 この操作は、数分かかります。
+    サポート パッケージが収集されます。 システム ログのみを含める場合、この操作にかかる時間は数分です。 メモリ ダンプを含める場合は、それよりもずっと長い時間がかかります。
 
     ![サポート パッケージの作成 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. サポート パッケージの作成が完了したら、 **[サポート パッケージのダウンロード]** を選択します。
+2. サポート パッケージの作成が完了したら、 **[サポート パッケージのダウンロード]** を選択します。
+
+    ![サポート パッケージの作成 3](media/data-box-local-web-ui-admin/create-support-package-3.png)
+
+3. ダウンロードする場所を参照して選択します。 フォルダを開いて内容を表示します。
 
     ![サポート パッケージの作成 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
 
-4. ダウンロードする場所を参照して選択します。 フォルダを開いて内容を表示します。
+## <a name="erase-local-data-from-your-device"></a>デバイスからローカル データを消去する
 
-    ![サポート パッケージの作成 5](media/data-box-local-web-ui-admin/create-support-package-5.png)
+Azure データセンターに戻す前に、ローカル Web UI を使用してデバイスからローカル データを消去できます。
+
+> [!IMPORTANT]
+> データの消去を元に戻すことはできません。 デバイスからローカル データを消去する前に、必ずファイルをバックアップしてください。
+
+デバイスからローカル データを消去するには、こちらの手順を実行します。
+
+1. ローカル Web UI で、 **[Data erase]\(データの消去\)** に移動します。
+2. デバイスのパスワードを入力し、 **[Erase data]\(データの消去\)** を選択します。
+
+    ![デバイスのデータ消去オプション](media/data-box-local-web-ui-admin/erase-local-data-1.png)
+
+3. 確認ダイアログで **[はい]** を選択して続行します。 データの消去には、50 分ほどかかることがあります。
+
+   デバイスから消去する前に、必ずローカル データをバックアップしてください。 データの消去を元に戻すことはできません。
+
+    ![データ消去の確認プロンプト](media/data-box-local-web-ui-admin/erase-local-data-2.png)
 
 ## <a name="shut-down-or-restart-your-device"></a>デバイスのシャットダウンと再起動
 
-ローカル Web UI を使用して、デバイスをシャットダウンしたり再起動したりできます。 再起動する前に、ホストの共有をオフラインにしてから、デバイスをオフラインにすることをお勧めします。 これにより、データ破損の可能性を最小限に抑えられます。 デバイスをシャットダウンするときに、データのコピーが進行中でないことを確認してください。
+ローカル Web UI を使用して、デバイスをシャットダウンしたり再起動したりできます。 再起動する前に、ホストの共有、デバイスの順にオフラインにすることをお勧めします。 これにより、データ破損の可能性を最小限に抑えられます。 デバイスをシャットダウンするときに、データのコピーが進行中でないことを確認してください。
 
 デバイスをシャットダウンするには、次の手順を実行します。
 
 1. ローカル Web UI で、 **[シャット ダウンまたは再起動]** に移動します。
+
 2. **[シャットダウン]** を選択します。
 
     ![Data Box のシャット ダウン 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
@@ -93,7 +112,7 @@ BOM またはマニフェスト ファイルには、Data Box または Data Box
 
     <!-- ![Select Download list of files](media/data-box-portal-admin/download-list-of-files.png) -->
 
-3. エクスプローラーで、デバイスへの接続に使用されているプロトコルと使用されている Azure Storage の種類に応じて別個のファイルの一覧が生成されたことを確認できます。
+3. エクスプローラーで、デバイスへの接続に使用されているプロトコルと使用されている Azure Storage の種類に応じて、別個のファイル一覧が生成されます。
 
     <!-- ![Files for storage type and connection protocol](media/data-box-portal-admin/files-storage-connection-type.png) -->
     ![ストレージの種類と接続プロトコル別のファイル](media/data-box-local-web-ui-admin/prepare-to-ship-5.png)
@@ -168,7 +187,7 @@ BOM またはマニフェスト ファイルには、Data Box または Data Box
 
 既定では、発送の準備をするときにデータのチェックサムが生成されます。 特定のまれなケースにおいて、データ型 (小さいファイル サイズ) によっては、パフォーマンスが低下することがあります。 このような場合は、チェックサムをスキップできます。
 
-発送準備中のチェックサム計算は、エクスポート注文ではなく、インポート注文に対してのみ実行されます。 
+発送準備中のチェックサム計算は、エクスポート注文ではなく、インポート注文に対してのみ実行されます。
 
 パフォーマンスに重大な影響がない限り、チェックサムを無効にしないことを強くお勧めします。
 
@@ -247,9 +266,9 @@ Azure Files からの ACL の転送を有効にするには、次のようにし
 
 ## <a name="enable-tls-11"></a>TLS 1.1 を有効にする
 
-既定の Azure Data Box では、トランスポート層セキュリティ (TLS) 1.1 より安全性が高いため、TLS 1.2 が暗号化に使用されます。 ただし、ユーザーまたはクライアントがブラウザーを使用して TLS 1.2 がサポートされていないデータにアクセスする場合は、TLS 1.1 を有効にすることができます。
+既定の Azure Data Box では、トランスポート層セキュリティ (TLS) 1.1 より安全性が高いため、TLS 1.2 が暗号化に使用されます。 ただし、ユーザーまたはクライアントがブラウザーを使用して、TLS 1.2 がサポートされていないデータにアクセスする場合は、TLS 1.1 を有効にできます。
 
-TLS に関する詳細については、[Azure Data Box Gateway のセキュリティ](../databox-online/data-box-gateway-security.md)に関する記事を参照してください。
+TLS に関する詳細については、[Azure Data Box Gateway のセキュリティ](../databox-gateway/data-box-gateway-security.md)に関する記事を参照してください。
 
 Azure デバイスで TLS 1.1 を有効にするには、次のようにします。
 

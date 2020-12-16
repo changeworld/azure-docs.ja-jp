@@ -1,7 +1,7 @@
 ---
 title: 'クイックスタート: Python で検索インデックスを作成する'
 titleSuffix: Azure Cognitive Search
-description: Python、Jupyter Notebook、および Azure.Documents.Search ライブラリを使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
+description: Python、ノートブック、および Azure.Documents.Search ライブラリを使用して、インデックスの作成、データの読み込み、クエリの実行を行う方法について説明します。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -9,14 +9,14 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/19/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 528d29f3b285c2583fd1bb52e1de7c24fdc9e28a
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 126fc69678148d4d478c96ff8d05f194c7e3d1b3
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917088"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861869"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>クイック スタート:Jupyter Notebook を使用して Python で Azure Cognitive Search インデックスを作成する
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>クイックスタート: Jupyter Notebook を使用して Python で Azure Cognitive Search インデックスを作成する
 
 > [!div class="op_single_selector"]
 > * [Python](search-get-started-python.md)
@@ -26,7 +26,7 @@ ms.locfileid: "94917088"
 > * [ポータル](search-get-started-portal.md)
 >
 
-Python と Azure SDK for Python の [azure-search-documents ライブラリ](/python/api/overview/azure/search-documents-readme)を使用して、Azure Cognitive Search インデックスの作成、読み込み、およびクエリを実行する Jupyter ノートブックを作成します。 この記事では、ノートブックを作成する方法を順番に説明します。 または、[完成した Jupyter Python ノートブックをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-python-samples)こともできます。
+Python と Azure SDK for Python の [azure-search-documents ライブラリ](/python/api/overview/azure/search-documents-readme)を使用して、Azure Cognitive Search インデックスの作成、読み込み、およびクエリの実行を行う Jupyter ノートブックを作成します。 この記事では、ノートブックを作成する方法を順番に説明します。 または、[完成した Jupyter Python ノートブックをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-python-samples)こともできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

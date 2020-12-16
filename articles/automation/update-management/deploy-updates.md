@@ -3,14 +3,14 @@ title: Azure Automation Update Management の更新プログラムの展開を�
 description: この記事では、更新プログラムの展開をスケジュールし、その状態を確認する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 10/27/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41ccecfb844f11a0d234271bcddc1851d3c02fda
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ec0d6d618edad87b76861ea834adb2f29531e6f5
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742293"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929669"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>更新プログラムを展開して結果を確認する方法
 
@@ -20,7 +20,7 @@ ms.locfileid: "92742293"
 
 * オペレーティング システムは、マシンの OS に基づいて自動的に事前に選択されます
 * 更新する対象マシンが自動的にターゲットに設定されます
-* スケジュールを構成するときに、 **今すぐ更新** 、1 回実行、または定期的なスケジュールの使用を指定できます。
+* スケジュールを構成するときに、**今すぐ更新**、1 回実行、または定期的なスケジュールの使用を指定できます。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -102,7 +102,7 @@ ms.locfileid: "92742293"
     * 再起動のみ (このオプションでは更新プログラムはインストールされません)
 
     > [!NOTE]
-    > **[再起動のオプション]** が **[再起動しない]** に設定されている場合、「 [再起動の管理に使われるレジストリ キー](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)」に記載されているレジストリ キーにより、再起動イベントが発生する可能性があります。
+    > **[再起動のオプション]** が **[再起動しない]** に設定されている場合、「[再起動の管理に使われるレジストリ キー](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)」に記載されているレジストリ キーにより、再起動イベントが発生する可能性があります。
 
 14. 展開スケジュールの構成が完了したら、 **[作成]** を選択します。
 

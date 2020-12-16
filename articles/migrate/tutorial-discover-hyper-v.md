@@ -1,21 +1,24 @@
 ---
 title: Azure Migrate Server Assessment を使用して Hyper-V VM を検出する
 description: Azure Migrate Server Assessment ツールを使用して、オンプレミスの Hyper-V VM を検出する方法について説明します。
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 0643a13a07572dc24ef895062593e00188a0752f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 1b860c739ab9ed9737f9f946cb13c731fa4722db
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317166"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753061"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>チュートリアル:Server Assessment を使用して Hyper-V VM を検出する
 
 Azure への移行の一環として、オンプレミスのインベントリとワークロードを検出します。 
 
-このチュートリアルでは、オンプレミスの Hyper-V 仮想マシン (VM) を軽量の Azure Migrate アプライアンスを使用して、Azure Migrate: Server Assessment ツールで検出する方法について説明します。 アプライアンスを Hyper-V VM としてデプロイし、マシンとパフォーマンスのメタデータを継続的に検出します。
+このチュートリアルでは、軽量の Azure Migrate アプライアンスを使用して、Azure Migrate: Server Assessment ツールでオンプレミスの Hyper-V 仮想マシン (VM) を検出する方法について説明します。 アプライアンスを Hyper-V VM としてデプロイし、マシンとパフォーマンスのメタデータを継続的に検出します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -73,7 +76,7 @@ Azure Migrate プロジェクトを作成し、Azure Migrate アプライアン�
 
     ![[ユーザー設定] で、ユーザーが Active Directory アプリを登録できることを確認する](./media/tutorial-discover-hyper-v/register-apps.png)
 
-9. テナントおよびグローバル管理者は、AAD アプリの登録を許可する目的で**アプリケーション開発者**ロールをアカウントに割り当てることもできます。 [詳細については、こちらを参照してください](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
+9. テナントおよびグローバル管理者は、AAD アプリの登録を許可する目的で **アプリケーション開発者** ロールをアカウントに割り当てることもできます。 [詳細については、こちらを参照してください](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ## <a name="prepare-hyper-v-hosts"></a>Hyper-V ホストを準備する
 
@@ -121,7 +124,7 @@ Hyper-V ホストに対する管理者アクセス権があるアカウントを
 2. **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[はい。Hyper-V を使用します]** を選択します。
 3. **[1:Azure Migrate プロジェクト キーを生成します]** で、Hyper-V VM の検出用に設定する Azure Migrate アプライアンスの名前を指定します。名前は 14 文字以内の英数字にする必要があります。
 1. **[キーの生成]** をクリックして、必要な Azure リソースの作成を開始します。 リソースの作成中に [マシンの検出] ページを閉じないでください。
-1. Azure リソースが正常に作成されると、**Azure Migrate プロジェクト キー**が生成されます。
+1. Azure リソースが正常に作成されると、**Azure Migrate プロジェクト キー** が生成されます。
 1. このキーはアプライアンスを設定する際、登録を完了するために必要なので、コピーしておきます。
 
 ### <a name="download-the-vhd"></a>VHD をダウンロードする
@@ -149,7 +152,7 @@ Hyper-V ホストに対する管理者アクセス権があるアカウントを
 
     - Azure Government の場合:
 
-        **シナリオ*** | **ダウンロード** | **SHA256**
+        **シナリオ** _ | _ *ダウンロード** | **SHA256**
         --- | --- | ---
         Hyper-V (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140424) |  cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
 
@@ -186,7 +189,7 @@ Hyper-V ホストに対する管理者アクセス権があるアカウントを
 3. VM に接続できる任意のマシン上でブラウザーを開き、アプライアンス Web アプリの URL を開きます (**https://*アプライアンス名または IP アドレス*:44368**)。
 
    または、アプリ ショートカットをクリックして、アプライアンス デスクトップからアプリを開くこともできます。
-1. **ライセンス条項**に同意し、サード パーティの情報を確認します。
+1. **ライセンス条項** に同意し、サード パーティの情報を確認します。
 1. Web アプリの **[前提条件のセットアップ]** で、以下を実行します。
     - **接続**:VM でインターネットにアクセスできることが、アプリによって確認されます。 VM でプロキシを使用する場合:
       - **[プロキシの設定]** をクリックし、プロキシ アドレス (http://ProxyIPAddress または http://ProxyFQDN) の形式) とリッスン ポートを指定します。
@@ -198,7 +201,7 @@ Hyper-V ホストに対する管理者アクセス権があるアカウントを
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
-1. ポータルからコピーした **Azure Migrate プロジェクト キー**を貼り付けます。 このキーがない場合は、 **[Server Assessment] > [検出] > [Manage existing appliances]\(既存のアプライアンスの管理\)** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
+1. ポータルからコピーした **Azure Migrate プロジェクト キー** を貼り付けます。 このキーがない場合は、 **[Server Assessment] > [検出] > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
 1. **[ログイン]** をクリックします。 新しいブラウザー タブで Azure ログイン プロンプトが開きます。表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
 1. 新しいタブで、Azure のユーザー名とパスワードを使用してサインインします。
    
@@ -232,7 +235,7 @@ SMB 上で VHD を実行している場合は、アプライアンスから Hype
 1. **[ステップ 1:Provide Hyper-V host credentials]\(ステップ 1: Hyper-V ホストの資格情報を指定する\)** で、 **[Add credentials]\(資格情報の追加\)** をクリックして資格情報のフレンドリ名を指定し、アプライアンスで VM の検出に使用される Hyper-V ホストまたはクラスターの **[ユーザー名]** と **[パスワード]** を追加します。 **[Save]** をクリックします。
 1. 複数の資格情報を一度に追加するには、 **[Add more]\(さらに追加\)** をクリックして資格情報を保存して追加します。 Hyper-V VM の検出では、複数の資格情報がサポートされています。
 1. **[ステップ 2:Provide Hyper-V host/cluster details]\(ステップ 2: Hyper-V ホストまたはクラスターの詳細を指定する\)** で、 **[Add discovery source]\(検出ソースの追加\)** をクリックして、Hyper-V ホストまたはクラスターの **[IP address/FQDN]\(IP アドレスまたは FQDN\)** と、ホストまたはクラスターに接続するための資格情報のフレンドリ名を指定します。
-1. 一度に **1 つの項目を追加**するか、一括で**複数の項目を追加**することができます。 また、 **[Import CSV]\(CSV のインポート\)** を使用して、Hyper-V ホストまたはクラスターの詳細を指定することもできます。
+1. 一度に **1 つの項目を追加** するか、一括で **複数の項目を追加** することができます。 また、 **[Import CSV]\(CSV のインポート\)** を使用して、Hyper-V ホストまたはクラスターの詳細を指定することもできます。
 
 
     - **[Add single item]\(1 つの項目を追加\)** を選択した場合は、資格情報のフレンドリ名と Hyper-V ホストまたはクラスターの **[IP address/FQDN]\(IP アドレスまたは FQDN\)** を指定して **[保存]** をクリックします。
@@ -245,7 +248,7 @@ SMB 上で VHD を実行している場合は、アプライアンスから Hype
     - ホストまたはクラスターを削除するには、 **[Delete]\(削除\)** をクリックします。
     - クラスターから特定のホストを削除することはできません。 削除できるのは、クラスター全体のみです。
     - クラスター内の特定のホストに問題がある場合でも、クラスターを追加できます。
-1. 検出を開始する前に、ホストまたはクラスターへの接続はいつでも**再検証**できます。
+1. 検出を開始する前に、ホストまたはクラスターへの接続はいつでも **再検証** できます。
 1. 正常に検証されたホストまたはクラスターから VM の検出を開始するには **[Start discovery]\(検出の開始\)** をクリックします。 検出が正常に開始されたら、各ホストまたはクラスターに対する検出の状態を表で確認できます。
 
 これで検出が開始されます。 検出されたサーバーのメタデータが Azure portal に表示されるまでにホストあたり約 2 分かかります。

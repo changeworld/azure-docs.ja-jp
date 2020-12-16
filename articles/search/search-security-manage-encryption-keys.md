@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4fb20b221858c4717d67e0777afbe5c067c00a69
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8295e619cfda0d4b83a7356d5fd21d4b80f83849
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499613"
+ms.locfileid: "96530886"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Azure Cognitive Search のデータ暗号化のためにカスタマー マネージド キーを構成する
 
-Azure Cognitive Search では、インデックス付きコンテンツの保存時に、[サービス マネージド キー](../security/fundamentals/encryption-atrest.md#azure-encryption-at-rest-components)を使用して自動的に暗号化します。 保護を強化する必要がある場合は、Azure Key Vault 内で作成して管理するキーを使用して、既定の暗号化を追加の暗号化レイヤーで補完できます。 この記事では、CMK 暗号化を設定する手順について説明します。
+Azure Cognitive Search では、インデックス付きコンテンツの保存時に、[サービス マネージド キー](../security/fundamentals/encryption-atrest.md#azure-encryption-at-rest-components)を使用して自動的に暗号化します。 保護を強化する必要がある場合は、Azure Key Vault 内で作成して管理するキーを使用して、既定の暗号化を追加の暗号化レイヤーで補完できます。 この記事では、カスタマー マネージド キーの暗号化を設定する手順について説明します。
 
-CMK 暗号化は、[Azure Key Vault](../key-vault/general/overview.md) に依存しています。 独自の暗号化キーを作成してキー コンテナーに格納したり、Azure Key Vault の API を使って暗号化キーを生成したりすることができます。 [ログを有効にする](../key-vault/general/logging.md)場合は、Azure Key Vault を使用してキーの使用状況を監査することもできます。  
+カスタマー マネージド キーの暗号化は、[Azure Key Vault](../key-vault/general/overview.md) に依存しています。 独自の暗号化キーを作成してキー コンテナーに格納したり、Azure Key Vault の API を使って暗号化キーを生成したりすることができます。 [ログを有効にする](../key-vault/general/logging.md)場合は、Azure Key Vault を使用してキーの使用状況を監査することもできます。  
 
 カスタマー マネージド キーを使用した暗号化は、検索サービス レベル自体で指定されるのではなく、それらのオブジェクトの作成時に個々のインデックスまたはシノニム マップに適用されます。 暗号化できるのは新しいオブジェクトだけです。 既存のコンテンツを暗号化することはできません。
 
@@ -31,7 +31,7 @@ CMK 暗号化は、[Azure Key Vault](../key-vault/general/overview.md) に依存
 
 ## <a name="double-encryption"></a>二重暗号化
 
-2020 年 8 月 1 日以降に作成され、特定のリージョン内にあるサービスの場合、CMK 暗号化のスコープには、現在以下のリージョンで使用できる[完全な二重暗号化](search-security-overview.md#double-encryption)を実現する一時ディスクが含まれています。 
+2020 年 8 月 1 日以降に作成され、特定のリージョン内にあるサービスの場合、カスタマー マネージド キーの暗号化のスコープには、現在以下のリージョンで使用できる[完全な二重暗号化](search-security-overview.md#double-encryption)を実現する一時ディスクが含まれています。 
 
 + 米国西部 2
 + 米国東部
@@ -39,13 +39,13 @@ CMK 暗号化は、[Azure Key Vault](../key-vault/general/overview.md) に依存
 + US Gov バージニア州
 + US Gov アリゾナ
 
-異なるリージョンを使用しているか、8 月 1 日より前に作成されたサービスを使用している場合、CMK 暗号化はデータ ディスクのみに限定されていて、サービスによって使用される一時ディスクは除かれています。
+異なるリージョンを使用しているか、8 月 1 日より前に作成されたサービスを使用している場合、マネージド キーの暗号化はデータ ディスクのみに限定されていて、サービスによって使用される一時ディスクは除かれています。
 
 ## <a name="prerequisites"></a>前提条件
 
 このシナリオでは、以下のツールとサービスが使用されます。
 
-+ [請求可能なレベル](search-sku-tier.md#tiers) (Basic 以上、任意のリージョン) の [Azure Cognitive Search](search-create-service-portal.md)。
++ [請求可能なレベル](search-sku-tier.md#tier-descriptions) (Basic 以上、任意のリージョン) の [Azure Cognitive Search](search-create-service-portal.md)。
 + [Azure Key Vault](../key-vault/general/overview.md)。[Azure portal](../key-vault//general/quick-create-portal.md)、[Azure CLI](../key-vault//general/quick-create-cli.md)、または [Azure PowerShell](../key-vault//general/quick-create-powershell.md) を使用して、キー コンテナーを作成できます (Azure Cognitive Search と同じサブスクリプション内)。 キー コンテナーでは、**論理的な削除** と **消去保護** が有効になっている必要があります。
 + [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)。 それがない場合は、[新しいテナントをセットアップ](../active-directory/develop/quickstart-create-new-tenant.md)してください。
 
@@ -56,7 +56,7 @@ CMK 暗号化は、[Azure Key Vault](../key-vault/general/overview.md) に依存
 
 ## <a name="1---enable-key-recovery"></a>1 - キーの回復の有効化
 
-カスタマー マネージド キーを使用する暗号化の性質上、Azure Key Vault キーが削除された場合、データを取得できません。 Key Vault キーの誤った削除によるデータ損失を防ぐため、キー コンテナーで論理的な削除と消去保護を有効にする必要があります。 論理的な削除は既定で有効になっているため、この機能を意図的に無効にした場合にのみ問題が発生します。 消去保護は既定では有効になりませんが、Azure Cognitive Search の CMK 暗号化には必須です。 詳細については、[論理的な削除](../key-vault/general/soft-delete-overview.md)と[消去保護](../key-vault/general/soft-delete-overview.md#purge-protection)の概要に関するページを参照してください。
+カスタマー マネージド キーを使用する暗号化の性質上、Azure Key Vault キーが削除された場合、データを取得できません。 Key Vault キーの誤った削除によるデータ損失を防ぐため、キー コンテナーで論理的な削除と消去保護を有効にする必要があります。 論理的な削除は既定で有効になっているため、この機能を意図的に無効にした場合にのみ問題が発生します。 消去保護は既定では有効になりませんが、Cognitive Search のカスタマー マネージド キーの暗号化には必須です。 詳細については、[論理的な削除](../key-vault/general/soft-delete-overview.md)と[消去保護](../key-vault/general/soft-delete-overview.md#purge-protection)の概要に関するページを参照してください。
 
 ポータル、PowerShell、または Azure CLI コマンドを使用して、両方のプロパティを設定できます。
 
@@ -377,7 +377,7 @@ REST API を使用した新しいインデックスの作成の詳細につい�
 
 ## <a name="work-with-encrypted-content"></a>暗号化されたコンテンツを使用する
 
-CMK 暗号化を使用すると、暗号化/暗号化解除の処理が増えるため、インデックス作成とクエリの両方で待ち時間があることに気付きます。 Azure Cognitive Search では、暗号化アクティビティはログに記録されませんが、キー コンテナーのログを通してキーへのアクセスを監視できます。 キー コンテナー構成の一環として[ログを有効](../key-vault/general/logging.md)にすることが推奨されます。
+カスタマー マネージド キーの暗号化を使用すると、暗号化/暗号化解除の処理が増えるため、インデックス作成とクエリの両方で待ち時間があることに気付きます。 Azure Cognitive Search では、暗号化アクティビティはログに記録されませんが、キー コンテナーのログを通してキーへのアクセスを監視できます。 キー コンテナー構成の一環として[ログを有効](../key-vault/general/logging.md)にすることが推奨されます。
 
 時間の経過と共に、キーのローテーションが発生すると予想されます。 キーのローテーションのたびに、次の手順に従うことが重要です。
 

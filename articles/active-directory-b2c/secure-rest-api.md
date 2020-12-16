@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 18979ba8cbc4e68bf79275059c6c1c976578c407
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3e3245053fcc9943814268835fa5ac0f40a6f94c
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953374"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750511"
 ---
 # <a name="secure-your-restful-services"></a>お使いの RESTful サービスを保護する 
 
@@ -358,6 +358,69 @@ OAuth2 ベアラー トークンを使用して REST API の技術プロファ�
       </Metadata>
       <CryptographicKeys>
         <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_RestApiBearerToken" />
+      </CryptographicKeys>
+      ...
+    </TechnicalProfile>
+  </TechnicalProfiles>
+</ClaimsProvider>
+```
+
+## <a name="api-key-authentication"></a>API キー認証
+
+API キーは、REST API エンドポイントにアクセスするユーザーを認証するために使用される一意の識別子です。 キーはカスタム HTTP ヘッダーで送信されます。 たとえば、[Azure Functions HTTP トリガー](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)は、`x-functions-key` HTTP ヘッダーを使用して要求者を識別します。  
+
+### <a name="add-api-key-policy-keys"></a>API キーのポリシー キーを追加する
+
+API キー認証を使用して REST API の技術プロファイルを構成するには、API キーを格納するために次の暗号化キーを作成します。
+
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用の Azure AD B2C ディレクトリを選択します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
+1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
+1. **[オプション]** には **[手動]** を選択します。
+1. **[名前]** に「**RestApiKey**」と入力します。
+    プレフィックス *B2C_1A_* が自動的に追加される場合があります。
+1. **[秘密]** ボックスに、REST API キーを入力します。
+1. **[キー使用法]** には **[暗号化]** を選択します。
+1. **［作成］** を選択します
+
+
+### <a name="configure-your-rest-api-technical-profile-to-use-api-key-authentication"></a>API キー認証を使用するように REST API の技術プロファイルを構成する
+
+必要なキーを作成した後、資格情報を参照するように REST API の技術プロファイル メタデータを構成します。
+
+1. 作業ディレクトリで、拡張ポリシー ファイル (TrustFrameworkExtensions.xml) を開きます。
+1. REST API の技術プロファイルを検索します。 例: `REST-ValidateProfile`、または `REST-GetProfile`。
+1. `<Metadata>` 要素を見つけます。
+1. *AuthenticationType* を `ApiKeyHeader` に変更します。
+1. *AllowInsecureAuthInProduction* を `false` に変更します。
+1. `</Metadata>` 要素の終了直後に、次の XML スニペットを追加します。
+    ```xml
+    <CryptographicKeys>
+        <Key Id="x-functions-key" StorageReferenceId="B2C_1A_RestApiKey" />
+    </CryptographicKeys>
+    ```
+
+暗号化キーの **ID** によって、HTTP ヘッダーが定義されます。 この例では、API キーは **x-functions-key** として送信されます。
+
+API キー認証で Azure 関数を呼び出すように構成された RESTful 技術プロファイルの例を次に示します。
+
+```xml
+<ClaimsProvider>
+  <DisplayName>REST APIs</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="REST-GetProfile">
+      <DisplayName>Get user extended profile Azure Function web hook</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      <Metadata>
+        <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/GetProfile?code=your-code</Item>
+        <Item Key="SendClaimsIn">Body</Item>
+        <Item Key="AuthenticationType">ApiKeyHeader</Item>
+        <Item Key="AllowInsecureAuthInProduction">false</Item>
+      </Metadata>
+      <CryptographicKeys>
+        <Key Id="x-functions-key" StorageReferenceId="B2C_1A_RestApiKey" />
       </CryptographicKeys>
       ...
     </TechnicalProfile>

@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate アプライアンスのデプロイと検出のトラブルシューティング
-description: Azure Migrate アプライアンスのデプロイとマシンの検出に関するヘルプを表示します。
-author: musa-57
+description: アプライアンスのデプロイとマシンの検出に関するヘルプを提供します。
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
-ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 0d4630cad94a30e0dd53785c512e452d7b4a7d38
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 26bb61e0c5a473a56c57391b53009419453956fd
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494445"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753418"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure Migrate アプライアンスと検出のトラブルシューティング
 

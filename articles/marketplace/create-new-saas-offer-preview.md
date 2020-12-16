@@ -8,19 +8,19 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: ed0c7ef98e70774350c9a3ff12b0cc3f4186e1bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 041df9b77e85f09d2cf680773edc995c6288acaa
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89380532"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746422"
 ---
 # <a name="how-to-add-a-preview-audience-for-your-saas-offer"></a>SaaS オファーのプレビュー対象ユーザーを追加する方法
 
 パートナー センターでサービスとしてのソフトウェア (SaaS) オファーを作成する際は、オファー リストを公開する前にレビューできる対象ユーザーを定義する必要があります。 この記事では、プレビュー対象ユーザーを構成する方法について説明します。
 
 > [!NOTE]
-> トランザクションを個別に処理することを選択した場合、このオプションは表示されません。 代わりに、「[SaaS オファーを市場に投入する方法](create-new-saas-offer-marketing.md)」に進んでください。
+> トランザクションを個別に処理することを選択した場合、このオプションは表示されません。 代わりに、「[SaaS オファーを販売する方法](create-new-saas-offer-marketing.md)」に進んでください。
 
 ## <a name="define-a-preview-audience"></a>プレビュー対象ユーザーを定義する
 

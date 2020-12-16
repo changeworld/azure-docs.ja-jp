@@ -1,17 +1,17 @@
 ---
 title: Azure App Configuration REST API - キー
 description: Azure App Configuration REST API を使用してキーを操作するためのレファレンス ページ
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: f44ecdf571791d54a78d25dde514d57053b59160
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 65ca190d7fbd6d8d4df473fbe2112eafbd031fde
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423836"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932542"
 ---
 # <a name="keys"></a>[キー]
 
@@ -149,7 +149,7 @@ Content-Type: application/problem+json; charset=utf-8
 
 ## <a name="request-specific-fields"></a>特定のフィールドの要求
 
-省略可能な `$select` クエリ文字列パラメーターを使用して、要求されるフィールドのコンマ区切りリストを指定します。 `$select` パラメーターを省略した場合、応答には既定のセットが含まれます。
+省略可能な `$select` クエリ文字列パラメーターを使用して、要求されたフィールドのコンマ区切りリストを指定します。 `$select` パラメーターを省略した場合、応答には既定のセットが含まれます。
 
 ```http
 GET /keys?$select=name&api-version={api-version} HTTP/1.1
@@ -157,7 +157,7 @@ GET /keys?$select=name&api-version={api-version} HTTP/1.1
 
 ## <a name="time-based-access"></a>時間ベースのアクセス
 
-過去の時間のものとして結果の表現を取得します。 詳しくはセクション [2.1.1](https://tools.ietf.org/html/rfc7089#section-2.1) を参照してください
+過去の時間のものとして結果の表現を取得します。 [2.1.1](https://tools.ietf.org/html/rfc7089#section-2.1) セクションを参照してください。
 
 ```http
 GET /keys&api-version={api-version} HTTP/1.1

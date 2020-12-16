@@ -3,12 +3,12 @@ title: Azure Data Box を使用したオフライン バックアップ
 description: Azure Data Box を使用して、MARS エージェントから Recovery Services コンテナーに、大規模な初期バックアップ データをオフラインでシード処理する方法について説明します。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 5a4aeebeddcca4adcac511c7c225c8809dd29c93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e789b6c9f4ff2e8cd168e6b5c138d423911d4743
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89180934"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752585"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Data Box を使用した Azure Backup のオフライン バックアップ
 
@@ -176,7 +176,7 @@ NFS プロトコルを使用して Data Box デバイスをローカル シス�
 
     ![[バックアップのスケジュール] を選択する](./media/offline-backup-azure-data-box/schedule-backup.png)
 
-1. **バックアップのスケジュール ウィザード**の手順に従います。
+1. **バックアップのスケジュール ウィザード** の手順に従います。
 
 1. **[項目の追加]** ボタンを選択して項目を追加します。 項目の合計サイズを、[注文して受け取った Azure Data Box SKU でサポートされているサイズの制限](#backup-data-size-and-supported-data-box-skus)内に収めます。
 
@@ -277,7 +277,7 @@ Microsoft Azure Recovery Services (MARS) エージェントによって、テナ
 
 #### <a name="step-1-of-workaround"></a>回避策の手順 1
 
-インポートまたはエクスポート ジョブが作成されるサブスクリプションで、管理者アクセス権がある別のアカウントを使用して、MAB UI に表示される PowerShell にサインインします。
+Data Box ジョブが作成されるサブスクリプションで、管理者アクセス権がある別のアカウントを使用して、MAB UI に表示される PowerShell にサインインします。
 
 #### <a name="step-2-of-workaround"></a>回避策の手順 2
 

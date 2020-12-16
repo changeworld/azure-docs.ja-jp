@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: sharrai
-ms.openlocfilehash: 721e09c2bc0562ba833115361cf33c3daaef380b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c804e13029dcec42a43885cbf0d9b227b3d0338f
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364033"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750804"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V から Azure へのレプリケーションおよびフェールオーバーをトラブルシューティングする
 
@@ -34,7 +34,21 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
 6. ゲスト VM 上で、最新バージョンの Integration Services が実行されていることを確認します。
     - 最新バージョンを使用していることを[確認します](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
     - Integration Services を最新の状態に[維持します](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)。
-    
+
+### <a name="cannot-enable-protection-as-the-virtual-machine-is-not-highly-available-error-code-70094"></a>仮想マシンに高可用性が確保されていないため、保護を有効にできません (エラー コード 70094)
+
+マシンのレプリケーションを有効にしているときに、マシンの高可用性が確保されていないためにレプリケーションを有効にできないというエラーが発生した場合は、次の手順を実行してください。
+
+- VMM サーバー上で VMM サービスを再起動します。
+- クラスターから仮想マシンを削除して、もう一度追加します。
+
+### <a name="the-vss-writer-ntds-failed-with-status-11-and-writer-specific-failure-code-0x800423f4"></a>VSS ライター NTDS がステータス 11、ライター固有のエラー コード0x800423F4 で失敗しました
+
+レプリケーションを有効にしようとすると、NTDS が失敗したためにレプリケーションの有効化に失敗したというメッセージが表示されることがあります。 この問題の考えられる原因の 1 つは、仮想マシンのオペレーティング システムが Windows Server 2012 であって、Windows Server 2012 R2 でないことです。 この問題を解決するには、下の手順を試してください。
+
+- 4072650が適用された Windows Server R2 にアップグレードします。
+- Hyper-v ホストも Windows 2016 以降であることを確認します。
+
 ## <a name="replication-issues"></a>レプリケーションの問題
 
 初期および進行中のレプリケーションに関する問題を次のようにトラブルシューティングします。
@@ -54,7 +68,7 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
         - Hyper-V ホスト上で、Virtual Machine Management サービス、Microsoft Azure Recovery Services Agent、および WMI Provider Host サービスが実行されていることを確認します。
         - VMM サーバー上で、System Center Virtual Machine Manager サービスが実行されていることを確認します。
 4. Hyper-V サーバーと Azure の間の接続を確認します。 接続を確認するには、Hyper V ホスト上でタスク マネージャーを開きます。 **[パフォーマンス]** タブで、 **[リソース モニターを開く]** をクリックします。 **[ネットワーク]** タブ > **[ネットワーク活動のプロセス]** で、cbengine.exe が大量 (数 MB) のデータをアクティブに送信しているかどうかを確認します。
-5. Hyper-V ホストが Azure ストレージ BLOB の URL に接続できるかどうかを確認します。 ホストが接続できるかどうかを確認するには、 **cbengine.exe** を選択して確認します。 ホストから Azure ストレージ BLOB への接続を確認するには、 **[TCP 接続]** を表示します。
+5. Hyper-V ホストが Azure ストレージ BLOB の URL に接続できるかどうかを確認します。 ホストが接続できるかどうかを確認するには、**cbengine.exe** を選択して確認します。 ホストから Azure ストレージ BLOB への接続を確認するには、 **[TCP 接続]** を表示します。
 6. 次の説明に従って、パフォーマンスの問題を確認します。
     
 ### <a name="performance-issues"></a>パフォーマンスの問題
@@ -124,7 +138,7 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
 ### <a name="vss-failing-inside-the-hyper-v-host"></a>Hyper-V ホスト内で VSS が失敗する
 
 1. VSS エラーのイベント ログと推奨事項を確認します。
-    - Hyper-V ホスト サーバー上で、 **Event Viewer** > **Applications and Services Logs** > **Microsoft** > **Windows** > **Hyper-V** > **Admin** にある Hyper-V Admin イベント ログを開きます。
+    - Hyper-V ホスト サーバー上で、**Event Viewer** > **Applications and Services Logs** > **Microsoft** > **Windows** > **Hyper-V** > **Admin** にある Hyper-V Admin イベント ログを開きます。
     - アプリ整合性スナップショットの失敗を示す何らかのイベントが存在するかどうかを確認します。
     - 代表的なエラーは次のとおりです:"Hyper-V は仮想マシン 'XYZ' の VSS スナップショット セットを生成できませんでした:ライターで一過性ではないエラーが発生しました。 サービスが無応答である場合は、VSS サービスの再起動によって問題が解決される可能性があります。"
 
@@ -144,9 +158,9 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
 
 ## <a name="collect-replication-logs"></a>レプリケーション ログを収集する
 
-Hyper-V レプリケーション イベントはすべて、 **Applications and Services Logs** > **Microsoft** > **Windows** にある Hyper-V-VMMS\Admin ログに記録されています。 さらに、次のように、Hyper-V Virtual Machine Management サービスの分析ログを有効にすることができます。
+Hyper-V レプリケーション イベントはすべて、**Applications and Services Logs** > **Microsoft** > **Windows** にある Hyper-V-VMMS\Admin ログに記録されています。 さらに、次のように、Hyper-V Virtual Machine Management サービスの分析ログを有効にすることができます。
 
-1. イベント ビューアーに分析およびデバッグ ログを表示できるようにします。 ログを使用可能にするには、イベント ビューアーで、 **[表示]**  >  **[分析およびデバッグ ログの表示]** をクリックします。 分析ログは、 **Hyper-V-VMMS** の下に表示されます。
+1. イベント ビューアーに分析およびデバッグ ログを表示できるようにします。 ログを使用可能にするには、イベント ビューアーで、 **[表示]**  >  **[分析およびデバッグ ログの表示]** をクリックします。 分析ログは、**Hyper-V-VMMS** の下に表示されます。
 2. **[操作]** ウィンドウで **[ログを有効にする]** をクリックします。 
 
     ![ログを有効にする](media/hyper-v-azure-troubleshoot/enable-log.png)

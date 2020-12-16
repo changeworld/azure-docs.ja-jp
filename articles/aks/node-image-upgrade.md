@@ -3,37 +3,69 @@ title: Azure Kubernetes Service (AKS) ノード イメージのアップグレ�
 description: AKS クラスター ノードとノード プールのイメージをアップグレードする方法について説明します。
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 211190228c1ea9c98004b55da96ad38808821d67
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.date: 11/25/2020
+ms.author: jpalma
+ms.openlocfilehash: 83d7d48922806334e2b49494fe0ef1d15e1a7a6a
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682385"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531481"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Azure Kubernetes Service (AKS) ノード イメージのアップグレード
 
 AKS では、ノード上のイメージのアップグレードがサポートされているため、最新の OS とランタイムの更新プログラムを使用して最新の状態にすることができます。 AKS は、最新の更新プログラムを使用して 1 週間に 1 つの新しいイメージを提供するため、Linux または Windows の修正プログラムを含む最新の機能については、ノードのイメージを定期的にアップグレードすることをお勧めします。 この記事では、AKS クラスター ノード イメージをアップグレードする方法と、Kubernetes のバージョンをアップグレードせずにノード プール イメージを更新する方法について説明します。
 
-AKS によって提供される最新のイメージについて知りたい場合、詳細については [AKS のリリース ノート](https://github.com/Azure/AKS/releases)をご覧ください。
+AKS によって提供される最新のイメージの詳細については、[AKS のリリース ノート](https://github.com/Azure/AKS/releases)をご覧ください。
 
 お使いのクラスターの Kubernetes バージョンのアップグレードの詳細については、「[AKS クラスターのアップグレード][upgrade-cluster]」をご覧ください。
 
-## <a name="limitations"></a>制限事項
+> [!NOTE]
+> AKS クラスターでは、ノードに仮想マシン スケール セットを使用する必要があります。
 
-* AKS クラスターでは、ノードに仮想マシン スケール セットを使用する必要があります。
+## <a name="check-if-your-node-pool-is-on-the-latest-node-image"></a>ノード プールが最新のノード イメージにあるかどうかを確認する
 
-## <a name="install-the-aks-cli-extension"></a>AKS CLI 拡張機能をインストールする
-
-次のコア CLI バージョンがリリースされる前にノード イメージ アップグレードを使用するには、*aks-preview* CLI 拡張機能が必要です。 [az extension add][az-extension-add] コマンドを使用した後、[az extension update][az-extension-update] コマンドを使用して、使用可能な更新プログラムがあるかどうかを確認します。
+次のコマンドを使用して、ノード プールで使用可能な最新のノード イメージ バージョンを確認できます。 
 
 ```azurecli
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
+az aks nodepool get-upgrades \
+    --nodepool-name mynodepool \
+    --cluster-name myAKSCluster \
+    --resource-group myResourceGroup
 ```
+
+出力には、次の例のように `latestNodeImageVersion` が表示されます。
+
+```output
+{
+  "id": "/subscriptions/XXXX-XXX-XXX-XXX-XXXXX/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster/agentPools/nodepool1/upgradeProfiles/default",
+  "kubernetesVersion": "1.17.11",
+  "latestNodeImageVersion": "AKSUbuntu-1604-2020.10.28",
+  "name": "default",
+  "osType": "Linux",
+  "resourceGroup": "myResourceGroup",
+  "type": "Microsoft.ContainerService/managedClusters/agentPools/upgradeProfiles",
+  "upgrades": null
+}
+```
+
+`nodepool1` の場合、使用可能な最新のノード イメージは `AKSUbuntu-1604-2020.10.28` です。 次のように実行することによって、ノード プールで使用中の現在のノード イメージ バージョンと最新バージョンを比較できるようになりました。
+
+```azurecli
+az aks nodepool show \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name mynodepool \
+    --query nodeImageVersion
+```
+
+出力例を次に示します。
+
+```output
+"AKSUbuntu-1604-2020.10.08"
+```
+
+したがって、この例では、現在のイメージ バージョン `AKSUbuntu-1604-2020.10.08` から最新バージョンの `AKSUbuntu-1604-2020.10.28` にアップグレードすることができます。 
 
 ## <a name="upgrade-all-nodes-in-all-node-pools"></a>すべてのノード プールのすべてのノードをアップグレードする
 
@@ -64,7 +96,7 @@ az aks show \
 
 ノード プールのイメージをアップグレードすることは、クラスター上のイメージをアップグレードすることと似ています。
 
-Kubernetes クラスターのアップグレードを実行せずにノード プールの OS イメージを更新するには、次の例の `--node-image-only` オプションを使用します。
+Kubernetes クラスターをアップグレードせずにノード プールの OS イメージを更新するには、次の例の `--node-image-only` オプションを使用します。
 
 ```azurecli
 az aks nodepool upgrade \
@@ -126,12 +158,12 @@ az aks nodepool show \
 
 - 最新のノード イメージの詳細については、[AKS のリリース ノート](https://github.com/Azure/AKS/releases)をご覧ください。
 - 「[AKS クラスターのアップグレード][upgrade-cluster]」によって Kubernetes バージョンをアップグレードする方法を確認します。
-- [Azure Kubernetes Service (AKS) の Linux ノードにセキュリティとカーネルの更新を適用します][security-update]
+- [GitHub Actions でクラスターとノード プールのアップグレードを自動的に適用します][github-schedule]
 - 複数のノード プールの詳細と、[複数のノード プールの作成と管理][use-multiple-node-pools]によってノード プールをアップグレードする方法を確認します。
 
 <!-- LINKS - internal -->
 [upgrade-cluster]: upgrade-cluster.md
-[security-update]: node-updates-kured.md
+[github-schedule]: node-upgrade-github-actions.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [max-surge]: upgrade-cluster.md#customize-node-surge-upgrade
 [az-extension-add]: /cli/azure/extension#az-extension-add

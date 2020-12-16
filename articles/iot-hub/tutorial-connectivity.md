@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: cf1c558474cfde85dd2c9ba8c85dc553fe5d9b56
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1eead9bb93fe8b753ace518cde18b240ab1a3cd4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547505"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572679"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル:シミュレートされたデバイスを使用して IoT ハブとの接続をテストする
 
@@ -36,15 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > * クラウドからデバイスへの接続を確認する
 > * デバイス ツインの同期を確認する
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="prerequisites"></a>前提条件
-
-このチュートリアルで実行する CLI スクリプトでは、[Microsoft Azure IoT Extension for Azure CLI](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) を使用します。 この拡張機能をインストールするには、次の CLI コマンドを実行します。
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -72,7 +64,7 @@ node --version
 
 ハブとの間でデータを交換するには、デバイスがハブの認証を受ける必要があります。 ポータルの **[デバイスの管理]** セクションにある **[IoT デバイス]** ツールを使用して、デバイスを管理し、使用している認証キーを確認できます。 チュートリアルのこのセクションでは、新しいテスト デバイスを追加し、そのキーを取得し、テスト デバイスがハブに接続できることを確認します。 後で、認証キーをリセットして、デバイスが古いキーを使用しようとしたときの動作を観察します。 チュートリアルのこのセクションでは、Azure Portal を使用してデバイスの作成、管理、および監視し、サンプル Node.js デバイス シミュレーターを作成します。
 
-ポータルにサインインし、IoT ハブに移動します。 次に、 **IoT デバイス** ツールに移動します。
+ポータルにサインインし、IoT ハブに移動します。 次に、**IoT デバイス** ツールに移動します。
 
 ![IoT デバイス ツール](media/tutorial-connectivity/iot-devices-tool.png)
 
@@ -86,7 +78,7 @@ node --version
 
 IoT ハブにテレメトリを送信する **MyTestDevice** をシミュレートするには、前にダウンロードした Node.js のシミュレートされたデバイス アプリケーションを実行します。
 
-開発用マシンのターミナル ウィンドウで、ダウンロードしたサンプル Node.js プロジェクトのルート フォルダーに移動します。 次に、 **iot-hub\Tutorials\ConnectivityTests** フォルダーに移動します。
+開発用マシンのターミナル ウィンドウで、ダウンロードしたサンプル Node.js プロジェクトのルート フォルダーに移動します。 次に、**iot-hub\Tutorials\ConnectivityTests** フォルダーに移動します。
 
 ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、シミュレートされたデバイス アプリケーションを実行します。 ポータルでデバイスを追加したときにメモしたデバイスの接続文字列を使用します。
 
@@ -146,7 +138,7 @@ az iot hub generate-sas-token --device-id MyTestDevice --hub-name {YourIoTHubNam
 
 生成された SAS トークンの全文をメモします。 SAS トークンは次のようになります。`SharedAccessSignature sr=tutorials-iot-hub.azure-devices.net%2Fdevices%2FMyTestDevice&sig=....&se=1524155307`
 
-開発用マシンのターミナル ウィンドウで、ダウンロードしたサンプル Node.js プロジェクトのルート フォルダーに移動します。 次に、 **iot-hub\Tutorials\ConnectivityTests** フォルダーに移動します。
+開発用マシンのターミナル ウィンドウで、ダウンロードしたサンプル Node.js プロジェクトのルート フォルダーに移動します。 次に、**iot-hub\Tutorials\ConnectivityTests** フォルダーに移動します。
 
 ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、シミュレートされたデバイス アプリケーションを実行します。
 
@@ -232,7 +224,7 @@ az iot hub invoke-device-method --device-id MyTestDevice --method-name TestMetho
 
 ## <a name="check-twin-synchronization"></a>ツインの同期を確認する
 
-デバイスは、ツインを使用してデバイスとハブ間の状態を同期します。 このセクションでは、CLI コマンドを使用して、 _必要なプロパティ_ をデバイスに送信し、デバイスによって送信された _報告されたプロパティ_ を読み取ります。
+デバイスは、ツインを使用してデバイスとハブ間の状態を同期します。 このセクションでは、CLI コマンドを使用して、_必要なプロパティ_ をデバイスに送信し、デバイスによって送信された _報告されたプロパティ_ を読み取ります。
 
 このセクションで使用するシミュレートされたデバイスは、起動されるたびに報告されたプロパティをハブに送信し、受信するたびにコンソールに必要なプロパティを出力します。
 

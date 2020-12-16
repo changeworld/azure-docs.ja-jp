@@ -2,20 +2,20 @@
 title: Azure の Active Directory ベースのサービスを比較する | Microsoft Docs
 description: この概要では、Active Directory Domain Services、Azure Active Directory、Azure Active Directory Domain Services 向けのさまざまな ID サービスを比較します。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
-ms.author: joflore
-ms.openlocfilehash: 0576fdaa9bdcc90636c3cd2bc90ba2818f1e69e7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 479cc036ed3231d970d46eef9d89daa39a0b0876
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962668"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620190"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>自己管理型の Active Directory Domain Services、Azure Active Directory、およびマネージド Azure Active Directory Domain Services の比較
 
@@ -114,6 +114,9 @@ Azure AD DS に参加しているデバイスでは、アプリケーション�
 | 管理                      | Intune などのモバイル デバイス管理 (MDM) ソフトウェア | グループ ポリシー                                                              |
 | ネットワーク                      | インターネット経由で動作                             | マネージド ドメインがデプロイされている仮想ネットワークに接続されているか、ピアリングされている必要があります |
 | 最適な対象                    | エンドユーザーのモバイルまたはデスクトップ デバイス                  | Azure にデプロイされるサーバー VM                                              |
+
+
+ADFS を使用したフェデレーション認証のために、オンプレミスの AD DS と Azure AD が構成されている場合、Azure DS で使用できる (現在の、または有効な) パスワード ハッシュはありません。 フェデレーション認証が実装される前に作成された Azure AD ユーザー アカウントには古いパスワード ハッシュがある可能性がありますが、これはオンプレミスのパスワードのハッシュと一致しないと考えられます。 そのため、Azure AD DS はユーザーの資格情報を検証できません。
 
 ## <a name="next-steps"></a>次のステップ
 

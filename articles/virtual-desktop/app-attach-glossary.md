@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6107ffea4fe4d615a42973ab1b231ca9f6b5241f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 7132eae073f3d53a104536076ae801ec9ff93e5f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674950"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518670"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX アプリのアタッチの用語集
 
@@ -109,6 +109,18 @@ Windows Virtual Desktop では、公開された MSIX パッケージは、Activ
 ## <a name="cim"></a>CIM
 
 .CIM は、複合イメージ ファイル システム (CimFS) に関連付けられた新しいファイル拡張子です。 CIM ファイルのマウントとマウント解除は、VHD ファイルよりも高速です。 また、CIM の場合、CPU とメモリの消費量が VHD よりも少なくなります。
+
+CIM ファイルは .CIM という拡張子を持ち、メタデータと、実際のデータが含まれた 6 つ以上の追加ファイルを含むファイルです。 CIM ファイル内のファイルには拡張子がありません。 次の表は、CIM 内で見つかるファイルの例を示しています。
+
+| ファイル名 | 拡張機能 | サイズ |
+|-----------|-----------|------|
+| VSC | CIM | 1 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | NA | 27 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | NA | 20 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | NA | 42 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | NA | 428 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | NA | 217 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | NA | 264,132 KB |
 
 次の表は、VHD と CimFS のパフォーマンスを比較したものです。 これらの数値は、DSv4 マシンで実行される各形式で、500 個の 300 MB のファイルを使用したテスト実行の結果です。
 

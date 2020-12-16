@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 28b34ecaf51406b35c67d3838714691390f5adf7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c1dba383f259e35b143688b2db68f05f1a67def6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453047"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938206"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>チュートリアル:IoT Edge デバイスの階層を作成する (プレビュー)
 
@@ -50,10 +50,19 @@ ms.locfileid: "96453047"
 IoT Edge デバイスの階層を作成するには、以下のものが必要です。
 
 * インターネットに接続できるコンピューター (Windows または Linux)。
-* IoT Edge デバイスとして構成する 2 つの Linux デバイス。 使用できるデバイスがない場合は、[Azure 仮想マシン](../virtual-machines/linux/index.yml)を使用できます。
 * 有効なサブスクリプションがある Azure アカウント。 [Azure サブスクリプション](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
-* Azure IoT 拡張機能 v0.10.6 以降がインストールされている Azure CLI v2.3.1。 このチュートリアルでは、[Azure Cloud Shell](../cloud-shell/overview.md) を使用します。 Azure Cloud Shell に馴染みのない方は、[クイックスタートで詳細を確認](./quickstart-linux.md#use-azure-cloud-shell)してください。
+* Azure IoT 拡張機能 v0.10.6 以降がインストールされている Azure CLI v2.3.1。 このチュートリアルでは、[Azure Cloud Shell](../cloud-shell/overview.md) を使用します。 Azure Cloud Shell に馴染みのない方は、[クイックスタートで詳細を確認](./quickstart-linux.md#prerequisites)してください。
+* IoT Edge デバイスとして構成する 2 つの Linux デバイス。 使用可能なデバイスがない場合は、次のコマンドのプレースホルダー テキストを置き換えて 2 回実行することで、2 つの Azure 仮想マシンを作成できます。
+
+   ```azurecli-interactive
+   az vm create \
+    --resource-group <REPLACE_WITH_RESOURCE_GROUP> \
+    --name <REPLACE_WITH_UNIQUE_NAMES_FOR_EACH_VM> \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --admin-password <REPLACE_WITH_PASSWORD>
+   ```
 
 このシナリオは、[産業用 IoT 向け Azure IoT Edge サンプル](https://aka.ms/iotedge-nested-sample)の手順で試してみることもできます。このサンプルでは、事前構成済みのデバイスとしての Azure 仮想マシンをデプロイし、工場環境をシミュレートします。
 
@@ -185,11 +194,11 @@ Linux デバイスでデモ証明書を作成するには、生成スクリプ�
    sudo apt-get install moby-engine
    ```
 
-1. hsmlib と IoT Edge デーモンをインストールします <!-- Update with proper image links on release -->
+1. hsmlib と IoT Edge デーモンをインストールします。 他の Linux ディストリビューションのアセットを確認するには、[GitHub リリースにアクセス](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc1)します。 <!-- Update with proper image links on release -->
 
    ```bash
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc2/libiothsm-std_1.2.0.rc2-1-1_debian9_amd64.deb -o libiothsm-std.deb
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc2/iotedge_1.2.0_rc2-1_debian9_amd64.deb -o iotedge.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0.rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/iotedge_1.2.0_rc1-1_debian9_amd64.deb -o iotedge.deb
    sudo dpkg -i ./libiothsm-std.deb
    sudo dpkg -i ./iotedge.deb
    ```
@@ -611,7 +620,7 @@ You can also view these messages through the [Azure Cloud Shell](https://shell.a
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、2 つの IoT Edge デバイスをゲートウェイとして構成し、一方をもう一方の親デバイスとして設定しました。 次に、ゲートウェイを介してコンテナー イメージを子デバイスにプルする方法を示しました。 このシナリオは、[産業用 IoT 向け Azure IoT Edge サンプル](https://aka.ms/iotedge-nested-sample)の手順で試してみることもできます。このサンプルでは、事前構成済みのデバイスとしての Azure 仮想マシンをデプロイし、工場環境をシミュレートします。
+このチュートリアルでは、2 つの IoT Edge デバイスをゲートウェイとして構成し、一方をもう一方の親デバイスとして設定しました。 次に、ゲートウェイを介してコンテナー イメージを子デバイスにプルする方法を示しました。
 
 Azure IoT Edge がビジネス ソリューションを作成する方法をさらに確認するには、他のチュートリアルに進んでください。
 

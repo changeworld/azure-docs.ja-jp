@@ -1,21 +1,27 @@
 ---
-title: チュートリアル:Creator を使用して屋内マップを作成する
-description: Azure Maps Creator を使用して屋内マップを作成する方法に関するチュートリアル
+title: チュートリアル:Microsoft Azure Maps Creator (プレビュー) を使用して屋内マップを作成する
+description: Microsoft Azure Maps Creator (プレビュー) を使用して屋内マップを作成する方法に関するチュートリアル
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 09/22/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 80d61e69b5e8d666406c378c2d3fece28c822491
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: eab8a2729209bb0023662b652f862b4fa678470e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896781"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905725"
 ---
-# <a name="tutorial-use-creator-to-create-indoor-maps"></a>チュートリアル:Creator を使用して屋内マップを作成する
+# <a name="tutorial-use-creator-preview-to-create-indoor-maps"></a>チュートリアル:Creator (プレビュー) を使用して屋内マップを作成する
+
+> [!IMPORTANT]
+> Azure Maps Creator サービスは、現在パブリック プレビューの段階にあります。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+
 
 このチュートリアルでは、屋内マップを作成する方法を示します。 このチュートリアルでは、API を使用して以下を行う方法を学習します。
 
@@ -34,7 +40,7 @@ ms.locfileid: "92896781"
 
 1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
-3. [Creator リソースを作成します](how-to-manage-creator.md)
+3. [Creator (プレビュー) リソースを作成します](how-to-manage-creator.md)
 4. [サンプル Drawing パッケージ](https://github.com/Azure-Samples/am-creator-indoor-data-examples/blob/master/Sample%20-%20Contoso%20Drawing%20Package.zip)をダウンロードします。
 
 このチュートリアルでは [Postman](https://www.postman.com/) アプリケーションを使用していますが、別の API 開発環境を選択することもできます。
@@ -111,9 +117,9 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
     ```
 
     >[!IMPORTANT]
-    > このドキュメントの API URL は、場合によっては、Creator リソースの場所に合わせて調整する必要があります。 「[Creator サービスにアクセスする](how-to-manage-creator.md#access-to-creator-services)」を参照してください。
+    > このドキュメントの API URL は、場合によっては、Creator リソースの場所に合わせて調整する必要があります。 詳細については、[Creator サービス (プレビュー) へのアクセス](how-to-manage-creator.md#access-to-creator-services)に関するセクションを参照してください。
 
-3. **[Send]\(送信\)** ボタンをクリックし、要求が処理されるまで待ちます。 要求が完了したら、応答の **[Headers]\(ヘッダー\)** タブに移動し、 **Location** キーを探します。 **Location** キーの値をコピーします。これは、変換要求の `status URL` です。 これは次の手順で使用します。
+3. **[Send]\(送信\)** ボタンをクリックし、要求が処理されるまで待ちます。 要求が完了したら、応答の **[Headers]\(ヘッダー\)** タブに移動し、**Location** キーを探します。 **Location** キーの値をコピーします。これは、変換要求の `status URL` です。 これは次の手順で使用します。
 
     :::image type="content" source="./media/tutorial-creator-indoor-maps/copy-location-uri-dialog.png" border="true" alt-text="Location キーの値をコピーする":::
 
@@ -310,7 +316,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. **POST** 要求の **[Headers]\(ヘッダー\)** で、`Content-Type` を `application/json` に設定します。 **[Body]\(本文\)** で、次のスタイルを指定して `occupied` および `temperature` " *状態* " への変更を反映します。 設定が完了したら、 **[Send]\(送信\)** をクリックします。
+3. **POST** 要求の **[Headers]\(ヘッダー\)** で、`Content-Type` を `application/json` に設定します。 **[Body]\(本文\)** で、次のスタイルを指定して `occupied` および `temperature` "*状態*" への変更を反映します。 設定が完了したら、 **[Send]\(送信\)** をクリックします。
 
     ```json
     {
@@ -404,7 +410,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 
 [Feature Get States API](/rest/api/maps/featurestate/getstatespreview) を使用すると、地物 `ID` を使用して地物状態を取得できます。 [Feature State Delete API](/rest/api/maps/featurestate/deletestatesetpreview) を使用して、状態セットとそのリソースを削除することもできます。
 
-この記事で説明するさまざまな Azure Maps Creator サービスの詳細については、[屋内マップ用の Creator](creator-indoor-maps.md) に関するページを参照してください。
+この記事で説明するさまざまな Azure Maps Creator サービス (プレビュー) の詳細については、[屋内マップ用の Creator](creator-indoor-maps.md) に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

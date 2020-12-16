@@ -1,21 +1,21 @@
 ---
 title: チュートリアル - テンプレートに出力を追加する
-description: Azure Resource Manager テンプレートに出力を追加して構文を単純化します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) に出力を追加して構文を単純化します。
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: abd5fbed4ab19135fb30ec5adda387d839df3ab6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e55638e20bceb6df4b8e74375d67836123167162
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613868"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931743"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>チュートリアル:ARM テンプレートに出力を追加する
 
-このチュートリアルでは、Azure Resource Manager (ARM) テンプレートから値を返す方法について説明します。 デプロイされたリソースから得られる値が必要なときは出力を使用します。 このチュートリアルの所要時間は **7 分**です。
+このチュートリアルでは、Azure Resource Manager テンプレート (ARM テンプレート) から値を返す方法について説明します。 デプロイされたリソースから得られる値が必要なときは出力を使用します。 このチュートリアルの所要時間は **7 分** です。
 
 ## <a name="prerequisites"></a>前提条件
 

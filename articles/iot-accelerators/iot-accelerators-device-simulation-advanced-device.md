@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 3295815be035544d27da52926e5271c2c5551f28
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 58891bdb4601744129c97454f43202d3ba07b709
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076047"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852559"
 ---
 # <a name="create-an-advanced-device-model"></a>高度なデバイス モデルを作成する
 
@@ -30,15 +30,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この攻略ガイドの手順に従うには、Azure サブスクリプションにデプロイされたデバイス シミュレーションのインスタンスが必要です。
 
-デバイス シミュレーションをまだデプロイしていない場合は、[Azure での IoT デバイス シミュレーションのデプロイと実行](quickstart-device-simulation-deploy.md)に関するクイック スタートを完了する必要があります。
+まだデバイス シミュレーションをデプロイしていない場合は、GitHub の[デバイス シミュレーションのデプロイ](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)に関する記事を参照してください。
 
 ### <a name="open-device-simulation"></a>デバイス シミュレーションを開く
 
-ご利用のブラウザーでデバイス シミュレーションを実行するには、まず、[Microsoft Azure IoT Solution Accelerators](https://www.azureiotsolutions.com) に移動します。
-
-Azure サブスクリプションの資格情報を使用してサインインするように求められる場合があります。
-
-次に、[Azure での IoT デバイス シミュレーションのデプロイと実行](quickstart-device-simulation-deploy.md)に関するクイック スタートでデプロイしたデバイス シミュレーションのタイルの **[起動]** をクリックします。
+まだデバイス シミュレーションをデプロイしていない場合は、GitHub の[デバイス シミュレーションのデプロイ](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)に関する記事を参照してください。
 
 ## <a name="device-models"></a>デバイス モデル
 

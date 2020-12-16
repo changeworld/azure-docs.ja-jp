@@ -11,22 +11,37 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 506f6a2025a61b4d9d16918b2a95de620171c46b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 9f81d059c1a71bf6349d0ef9b4aae8f7a47c161f
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147841"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938785"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する
 
-この記事では、他のデバイスが IoT Hub と通信するための透過的なゲートウェイとして機能するように IoT Edge デバイスを構成するための詳細な手順を提供します。 この記事では、 *IoT Edge ゲートウェイ* という用語は、透過的ゲートウェイとして構成された IoT Edge デバイスを指します。 詳細は、[「IoT Edge デバイスをゲートウェイとして使用する方法」](./iot-edge-as-gateway.md)を参照してください。
+この記事では、他のデバイスが IoT Hub と通信するための透過的なゲートウェイとして機能するように IoT Edge デバイスを構成するための詳細な手順を提供します。 この記事では、*IoT Edge ゲートウェイ* という用語は、透過的ゲートウェイとして構成された IoT Edge デバイスを指します。 詳細は、[「IoT Edge デバイスをゲートウェイとして使用する方法」](./iot-edge-as-gateway.md)を参照してください。
+
+<!-- 1.0.10 -->
+::: moniker range="iotedge-2018-06"
 
 >[!NOTE]
 >現時点では:
 >
 > * また、Edge 対応デバイスは、IoT Edge ゲートウェイに接続できません。
 > * ダウンストリーム デバイスではファイル アップロードを使用できません。
+
+::: moniker-end
+
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>現時点では:
+>
+> * ダウンストリーム デバイスではファイル アップロードを使用できません。
+
+::: moniker-end
 
 透過的なゲートウェイ接続を正常にセットアップするための 3 つの一般的な手順があります。 この記事では、最初の手順について説明します。
 
@@ -41,7 +56,7 @@ ms.locfileid: "92147841"
 デバイス ゲートウェイ トポロジに必要な信頼を有効にする証明書インフラストラクチャを作成できます。 この記事では、IoT Hub で [X.509 CA セキュリティ](../iot-hub/iot-hub-x509ca-overview.md)を 有効にするために使用するのと同じ証明書のセットアップを前提としています。これには、特定の IoT ハブ (IoT ハブのルート CA) に関連付けられた X.509 CA 証明書、およびこの CA と IoT Edge デバイスの CA によって署名された一連の証明書が使用されます。
 
 >[!NOTE]
->この記事全体で使用されている " *ルート CA 証明書* " という用語は、PKI 証明書チェーンの最上位機関の公開証明書を指し、必ずしもシンジケート化された認証局の証明書ルートではありません。 多くの場合、実際は中間 CA の公開証明書です。
+>この記事全体で使用されている "*ルート CA 証明書*" という用語は、PKI 証明書チェーンの最上位機関の公開証明書を指し、必ずしもシンジケート化された認証局の証明書ルートではありません。 多くの場合、実際は中間 CA の公開証明書です。
 
 次の手順では、証明書を作成し、ゲートウェイ上の適切な場所にインストールするプロセスについて説明します。 任意のマシンを使用して証明書を生成してから、その証明書をお使いの IoT Edge デバイスにコピーできます。
 
@@ -57,7 +72,7 @@ IoT Edge がインストールされている Linux または Windows デバイ�
 
 ![ゲートウェイ証明書の設定](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
-ルート CA 証明書とデバイス CA 証明書 (およびその秘密キー) が、IoT Edge ゲートウェイ デバイス上に存在し、IoT Edge の config.yaml ファイルで構成されている必要があります。 この場合の " *ルート CA 証明書* " は、この IoT Edge シナリオに対する最上位の証明機関であることに注意してください。 ゲートウェイ デバイスの CA 証明書とダウンストリーム デバイスの証明書は、同じルート CA 証明書にロールアップする必要があります。
+ルート CA 証明書とデバイス CA 証明書 (およびその秘密キー) が、IoT Edge ゲートウェイ デバイス上に存在し、IoT Edge の config.yaml ファイルで構成されている必要があります。 この場合の "*ルート CA 証明書*" は、この IoT Edge シナリオに対する最上位の証明機関であることに注意してください。 ゲートウェイ デバイスの CA 証明書とダウンストリーム デバイスの証明書は、同じルート CA 証明書にロールアップする必要があります。
 
 >[!TIP]
 >ルート CA 証明書とデバイス CA 証明書を IoT Edge デバイスにインストールするプロセスの詳細については、「[IoT Edge デバイスで証明書を管理する](how-to-manage-device-certificates.md)」も参照してください。
@@ -86,9 +101,9 @@ IoT Edge がインストールされている Linux または Windows デバイ�
    * Linux: `/etc/iotedge/config.yaml`
 
 4. ファイルの **Certificate settings** セクションを見つけます。 **certificates:** で始まる 4 行をコメント解除し、以下のプロパティの値として、3 つのファイルへのファイル URI を指定します。
-   * **device_ca_cert** : デバイス CA 証明書
-   * **device_ca_pk** : デバイス CA 秘密キー
-   * **trusted_ca_certs** : ルート CA 証明書
+   * **device_ca_cert**: デバイス CA 証明書
+   * **device_ca_pk**: デバイス CA 秘密キー
+   * **trusted_ca_certs**: ルート CA 証明書
 
    **certificates:** の行の前に空白文字がないこと、および他の行が 2 つの空白でインデントされていることを確認します。
 
@@ -125,12 +140,12 @@ IoT Edge ハブ モジュールをデプロイし、ダウンストリーム デ
 6. **[ルート]** ページで、ダウンストリーム デバイスからのメッセージを処理するためのルートが存在することを確認します。 次に例を示します。
 
    * モジュールやダウンストリーム デバイスからのすべてのメッセージを IoT Hub に送信するルート。
-       * **名前** : `allMessagesToHub`
-       * **値** : `FROM /messages/* INTO $upstream`
+       * **名前**: `allMessagesToHub`
+       * **値**: `FROM /messages/* INTO $upstream`
 
    * すべてのダウンストリーム デバイスからのすべてのメッセージを IoT Hub に送信するルート。
-      * **名前** : `allDownstreamToHub`
-      * **値** : `FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
+      * **名前**: `allDownstreamToHub`
+      * **値**: `FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
 
       IoT Edge モジュールからのメッセージとは異なり、ダウンストリーム デバイスからのメッセージにはモジュール ID が関連付けられていないため、このルートは機能します。 ルートの **WHERE** 句を使用すると、そのシステム プロパティが含まれるメッセージをフィルター処理で除外できます。
 

@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: af38f68a9709b21989ba787fb5b2c623e07dc440
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 85080c018749f9aab716eff0a4527363da987007
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541285"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620479"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
@@ -49,7 +49,7 @@ Azure Machine Learning には、次のような、開発者やデータ科学者
 
 + + [多くのモデルのソリューション アクセラレータ](https://aka.ms/many-models) (プレビュー) は Azure Machine Learning 上に構築されており、数百または数千もの機械学習モデルをトレーニング、操作、管理できます。
 
-+ [Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)
++ [Visual Studio Code ユーザー用の Machine Learning 拡張機能](tutorial-setup-vscode-extension.md)
 
 + [Machine Learning CLI](reference-azure-machine-learning-cli.md)
 

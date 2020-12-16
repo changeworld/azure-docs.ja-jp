@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 7aa65cb8e37ce48a59c276fdf2631f75397d3236
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 23609613cace2f9be90ad5c88d4d51bb1c2f1a9b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122514"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573512"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Azure Security Center への AWS アカウントの接続
 
@@ -48,6 +48,8 @@ AWS アカウントを Security Center にオンボードすると、AWS Securit
 
 
 ## <a name="connect-your-aws-account"></a>AWS アカウントを接続する
+
+以下の手順に従って AWS クラウド コネクタを作成します。 
 
 ### <a name="step-1-set-up-aws-security-hub"></a>手順 1. AWS Security Hub を設定する:
 
@@ -160,7 +162,7 @@ Security Center が AWS に対して認証を行えるようにするには、2 
 
         Azure タグの詳細については、「[タグを使用して Azure リソースと管理階層を整理する](../azure-resource-manager/management/tag-resources.md)」を参照してください。
 
-### <a name="step-7-confirmation"></a>手順 7. 確認
+### <a name="step-6-confirmation"></a>手順 6. 確認
 
 コネクタが正常に作成され、AWS Security Hub が正しく構成されたら、次のようになります。
 

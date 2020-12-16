@@ -3,12 +3,12 @@ title: 運用環境の準備状況とベスト プラクティス - Azure
 description: この記事では、運用環境で Live Video Analytics on IoT Edge モジュールを構成してデプロイする方法について説明します。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: c34e05e184cfa6f0933701a76177fae3eed70c0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 215427e3524861a842349b197668d92167960e5c
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87071935"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906337"
 ---
 # <a name="production-readiness-and-best-practices"></a>運用環境の準備状況とベスト プラクティス
 
@@ -62,9 +62,9 @@ sudo adduser --home /home/edgeuser --uid 1010 -gid 1010 edgeuser
 
 Live Video Analytics on IoT Edge モジュールでは、次の場合にローカル ファイル システムにファイルを書き込める必要があります。
 
-* モジュール ツインの [[applicationDataDirectory](module-twin-configuration-schema.md#module-twin-properties)] プロパティを使用します。構成データを格納するローカル ファイル システムのディレクトリを指定する必要があります。
+* モジュール ツインの [`applicationDataDirectory`](module-twin-configuration-schema.md#module-twin-properties) プロパティを使用する場合。ここでは、構成データを格納するローカル ファイル システムのディレクトリを指定する必要があります。
 * メディア グラフを使用してビデオをクラウドに記録します。モジュールで、エッジ デバイス上のディレクトリをキャッシュとして使用する必要があります (詳細については、記事「[継続的なビデオ記録](continuous-video-recording-concept.md)」を参照してください)。
-* [ローカル ファイルに記録する](event-based-video-recording-concept.md#video-recording-based-on-events-from-other-sources)。記録されるビデオのファイル パスを指定する必要があります。
+* [ローカル ファイルに記録する](event-based-video-recording-concept.md#video-recording-based-on-events-from-other-sources)場合。記録されるビデオのファイル パスを指定する必要があります。
 
 上記のいずれかを使用する場合は、前述のユーザー アカウントに、関連するディレクトリへのアクセス権があることを確認する必要があります。 たとえば、applicationDataDirectory を考えてみましょう。 エッジ デバイス上にディレクトリを作成し、デバイス ストレージをモジュール ストレージにリンクすることができます。 
 
@@ -124,7 +124,7 @@ sudo chown -R edgeuser /var/local/mediaservices
 同じグラフの複数のインスタンスを実行している場合は、グラフのトポロジ名とインスタンス名を使用して区別できます。 例として、アセット シンクで assetNamePattern を次のように設定できます。
 
 ```
-"assetNamePattern": "sampleAssetFromEVR-${System.GraphTopologyName}-${System.GraphInstanceName} -${System.DateTime}"
+"assetNamePattern": "sampleAssetFromEVR-${System.GraphTopologyName}-${System.GraphInstanceName}-${System.DateTime}"
 ```
 
 エッジでイベントベースのビデオ記録で生成される mp4 ビデオ クリップの場合、推奨される名前付けパターンには、DateTime を含める必要があります。また、同じグラフの複数のインスタンスがある場合は、システム変数 GraphTopologyName と GraphInstanceName を使用することが推奨されます。 例として、ファイル シンクで filePathPattern を次のように設定できます。 

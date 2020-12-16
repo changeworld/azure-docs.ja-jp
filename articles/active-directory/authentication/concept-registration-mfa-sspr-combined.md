@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/04/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 12/04/2020
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22f43c5f9848670b9df4b061c5abb6cc30912172
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c8dce284c0fffe10fe077fcb6c6713ba65c45751
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839796"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743906"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory での統合されたセキュリティ情報の登録の概要
 
 統合された登録の前、ユーザーは Azure AD Multi-Factor Authentication (MFA) とセルフサービス パスワード リセット (SSPR) の認証方法を別々に登録しました。 ユーザーは Multi-Factor Authentication と SSPR に同様の方法が使用されることに困惑しましたが、どちらの機能も登録する必要がありました。 現在では、統合された登録を使用することで、ユーザーは 1 回登録して Multi-Factor Authentication と SSPR の両方の利点を得ることができます。
 
 > [!NOTE]
-> 2020 年 8 月 15 日以降は、すべての新しい Azure AD テナントで、統合された登録が自動的に有効になります。
+> 2020 年 8 月 15 日以降は、すべての新しい Azure AD テナントで、統合された登録が自動的に有効になります。 2020 年 12 月 14 日以降は、1 人のユーザーが含まれるすべての Azure AD テナントで、統合された登録が自動的に有効になります。
 
 この記事では、統合されたセキュリティ登録の概要について説明します。 統合されたセキュリティ登録の使用を開始するには、次の記事を参照してください。
 
@@ -56,13 +56,13 @@ Azure AD の結合されたセキュリティ情報の登録は、Azure Germany 
 | Microsoft Authenticator | はい (最大 5) | いいえ | はい |
 | その他の認証アプリ | はい (最大 5) | いいえ | はい |
 | ハードウェア トークン | いいえ | いいえ | はい |
-| Phone | はい | はい | はい |
-| Alternate phone | はい | はい | はい |
-| 会社電話 | はい | はい | Yes |
-| Email | はい | はい | はい |
+| Phone | はい | ○ | はい |
+| Alternate phone | はい | ○ | はい |
+| 会社電話 | はい | ○ | はい |
+| Email | はい | ○ | はい |
 | セキュリティの質問 | はい | いいえ | はい |
 | アプリ パスワード | はい | いいえ | はい |
-| FIDO2 セキュリティ キー<br />*[[セキュリティ情報]](https://mysignins.microsoft.com/security-info) ページからの管理モードのみ*| はい | はい | はい |
+| FIDO2 セキュリティ キー<br />*[[セキュリティ情報]](https://mysignins.microsoft.com/security-info) ページからの管理モードのみ*| はい | ○ | はい |
 
 > [!NOTE]
 > アプリ パスワードは、Multi-Factor Authentication が適用されているユーザーのみが使用できます。 条件付きアクセス ポリシーによって Multi-Factor Authentication が有効になっているユーザーはアプリ パスワードを使用できません。

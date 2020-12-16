@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 90e3464ac9ddf1e839c3a731f79ac2c0771c37ea
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: a6aa4ad009d037e6ea0d1ade3cc9735351bd634a
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532708"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558863"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>チュートリアル:8x8 を構成し、自動ユーザー プロビジョニングに対応させる
 
-このチュートリアルでは、自動ユーザー プロビジョニングを構成するために 8x8 Configuration Manager と Azure Active Directory (Azure AD) の両方で行う必要がある手順について説明します。 構成すると、Azure AD では、Azure AD プロビジョニング サービスを使用して、[8x8](https://www.8x8.com) に対するユーザーとグループのプロビジョニングおよびプロビジョニング解除が自動的に行われます。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。 
+このチュートリアルでは、自動ユーザー プロビジョニングを構成するために 8x8 Admin Console と Azure Active Directory (Azure AD) の両方で実行する必要がある手順について説明します。 構成すると、Azure AD では、Azure AD プロビジョニング サービスを使用して、[8x8](https://www.8x8.com) に対するユーザーとグループのプロビジョニングおよびプロビジョニング解除が自動的に行われます。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。 
 
 ## <a name="capabilities-supported"></a>サポートされる機能
 > [!div class="checklist"]
@@ -36,7 +36,7 @@ ms.locfileid: "96532708"
 * [Azure AD テナント](../develop/quickstart-create-new-tenant.md) 
 * プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。
 * 任意のレベルの 8x8 X シリーズ サブスクリプション。
-* [Configuration Manager](https://vo-cm.8x8.com) の管理者権限を持つ 8x8 ユーザーアカウント。
+* [Admin Console](https://vo-cm.8x8.com) の管理者権限を備えた 8x8 ユーザー アカウント。
 * [Azure AD でのシングル サインオン](./8x8virtualoffice-tutorial.md)は既に構成されています。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
@@ -48,7 +48,7 @@ ms.locfileid: "96532708"
 
 このセクションでは、Azure AD でのプロビジョニングをサポートするように 8x8 を構成する手順を説明します。
 
-### <a name="to-configure-a-user-provisioning-access-token-in-8x8-configuration-manager"></a>8x8 Configuration Manager でユーザー プロビジョニング アクセス トークンを構成するには、次の操作を実行します。
+### <a name="to-configure-a-user-provisioning-access-token-in-8x8-admin-console"></a>8x8 Admin Console でユーザー プロビジョニング アクセス トークンを構成するには、次の操作を実行します。
 
 1. [管理コンソール](https://admin.8x8.com)にサインインします。 **[ID 管理]** を選択します。
 
@@ -102,7 +102,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[Admin Credentials]\(管理者の資格情報\)** セクションで、**8x8 URL** を Configuration Manager から **[テナントの URL]** にコピーします。 **8x8 API トークン** を Configuration Manager から **[シークレット トークン]** にコピーします。 **[テスト接続]** をクリックして、Azure AD から 8x8 への接続を確認します。 接続できない場合は、使用中の 8x8 アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[Admin Credentials]\(管理者の資格情報\)** セクションで、**8x8 URL** を Admin Console から **[テナントの URL]** にコピーします。 **8x8 API トークン** を Admin Console から **[シークレット トークン]** にコピーします。 **[テスト接続]** をクリックして、Azure AD から 8x8 への接続を確認します。 接続できない場合は、使用中の 8x8 アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL とシークレット トークンを入力できる場所である [管理者資格情報] ダイアログ ボックスを示すスクリーンショット。](./media/8x8-provisioning-tutorial/provisioning.png)
 

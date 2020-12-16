@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/21/2020
+ms.date: 12/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6dacb1cd910c6569d94f365b34a15494dde70a4c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6d6a152096ce4e16849542c26d1c7a675a972b89
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787688"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779075"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>クライアント アプリケーションからの要求を承認するために Azure AD からトークンを取得する
 
@@ -35,18 +35,18 @@ Azure Storage アプリケーションからセキュリティ プリンシパ�
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>アプリケーションを Azure AD テナントに登録する
 
-Azure AD を使用してストレージ リソースへのアクセスを承認する最初の手順は、[Azure portal](https://portal.azure.com) からクライアント アプリケーションを Azure AD テナントに登録することです。 クライアント アプリケーションの登録では、使用するアプリケーションに関する情報を Azure AD に提供します。 これで Azure AD から、実行時にアプリケーションを Azure AD と関連付ける際に使用するクライアント ID ( *アプリケーション ID とも呼ばれます* ) が提供されます。 クライアント ID の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。 Azure Storage アプリケーションを登録するための手順については、「[クイック スタート:Microsoft ID プラットフォームにアプリケーションを登録する](../../active-directory/develop/quickstart-configure-app-access-web-apis.md)」を参照してください。 
+Azure AD を使用してストレージ リソースへのアクセスを承認する最初の手順は、[Azure portal](https://portal.azure.com) からクライアント アプリケーションを Azure AD テナントに登録することです。 クライアント アプリケーションの登録では、使用するアプリケーションに関する情報を Azure AD に提供します。 これで Azure AD から、実行時にアプリケーションを Azure AD と関連付ける際に使用するクライアント ID (*アプリケーション ID とも呼ばれます*) が提供されます。 クライアント ID の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。 Azure Storage アプリケーションを登録するための手順については、「[クイック スタート:Microsoft ID プラットフォームにアプリケーションを登録する](../../active-directory/develop/quickstart-configure-app-access-web-apis.md)」を参照してください。 
 
 次の図は、Web アプリケーションを登録するための一般的な設定を示します。 この例では、開発環境でサンプル アプリケーションをテストするために、リダイレクト URI が `http://localhost:5000/signin-oidc` に設定されていることに注意してください。 この設定は、Azure portal に登録されたアプリケーションに合わせて **[認証]** 設定を使用して後で変更できます。
 
 :::image type="content" source="media/storage-auth-aad-app/app-registration.png" alt-text="ストレージ アプリケーションを Azure AD に登録する方法を示すスクリーンショット":::
 
 > [!NOTE]
-> アプリケーションをネイティブ アプリケーションとして登録する場合は、 **リダイレクト URI** 用に任意の有効な URI を指定できます。 ネイティブ アプリケーションの場合、この値が実際の URL である必要はありません。 Web アプリケーションの場合、リダイレクト URI はトークンが提供される URL を指定するため、有効な URI である必要があります。
+> アプリケーションをネイティブ アプリケーションとして登録する場合は、**リダイレクト URI** 用に任意の有効な URI を指定できます。 ネイティブ アプリケーションの場合、この値が実際の URL である必要はありません。 Web アプリケーションの場合、リダイレクト URI はトークンが提供される URL を指定するため、有効な URI である必要があります。
 
 アプリケーションを登録すると、 **[設定]** にアプリケーション ID (クライアント ID) が表示されます。
 
-:::image type="content" source="media/storage-auth-aad-app/app-registration-client-id.png" alt-text="ストレージ アプリケーションを Azure AD に登録する方法を示すスクリーンショット":::
+:::image type="content" source="media/storage-auth-aad-app/app-registration-client-id.png" alt-text="クライアント ID を示すスクリーンショット":::
 
 Azure AD へのアプリケーションの登録について詳しくは、「[Azure Active Directory とアプリケーションの統合](../../active-directory/develop/quickstart-register-app.md)」を参照してください。
 
@@ -59,13 +59,13 @@ Azure AD へのアプリケーションの登録について詳しくは、「[A
 1. **[API アクセス許可の要求]** ペインの **[アプリケーションに必要なアクセス許可の種類]** で、使用可能なアクセス許可の種類が **[委任されたアクセス許可]** になっていることを確認してください。 このオプションは既定で選択されています。
 1. **[アクセス許可]** で、 **[user_impersonation]** の横にあるチェックボックスをオンにし、 **[アクセス許可の追加]** ボタンを選択します。
 
-    :::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-1.png" alt-text="ストレージ アプリケーションを Azure AD に登録する方法を示すスクリーンショット":::
+    :::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-1.png" alt-text="ストレージ API のアクセス許可を示すスクリーンショット":::
 
 1. 次に、 **[既定のディレクトリに管理者の同意を与えます]** をクリックして、これらのアクセス許可に対する管理者の同意を付与します。
 
 これで、 **[API のアクセス許可]** ウィンドウに、登録済み Azure AD アプリケーションに Microsoft Graph と Azure Storage の両方の API へのアクセス権があること、およびデフォルト ディレクトリの同意が付与されたことが示されます。 アプリを Azure AD に最初に登録する際に、Microsoft Graph へのアクセス許可が自動的に付与されます。
 
-:::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-2.png" alt-text="ストレージ アプリケーションを Azure AD に登録する方法を示すスクリーンショット":::
+:::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-2.png" alt-text="登録済みアプリの API アクセス許可を示すスクリーンショット":::
 
 ### <a name="create-a-client-secret"></a>クライアント シークレットの作成
 
@@ -87,7 +87,7 @@ Azure AD へのアプリケーションの登録について詳しくは、「[A
 1. **[管理]** セクションで、 **[認証]** 設定を選択します。
 1. **[暗黙の付与]** セクションで、次の図のように、チェック ボックスをオンにして ID トークンを有効にします。
 
-    :::image type="content" source="media/storage-auth-aad-app/enable-implicit-grant-flow.png" alt-text="ストレージ アプリケーションを Azure AD に登録する方法を示すスクリーンショット":::
+    :::image type="content" source="media/storage-auth-aad-app/enable-implicit-grant-flow.png" alt-text="暗黙的な許可のフローの設定を有効にする方法を示すスクリーンショット":::
 
 ## <a name="client-libraries-for-token-acquisition"></a>トークン取得のためのクライアント ライブラリ
 
@@ -101,7 +101,7 @@ Azure AD でセキュリティ プリンシパルの認証を行うには、い�
 
 ### <a name="azure-ad-authority"></a>Azure AD 機関
 
-Microsoft パブリック クラウドの場合、基本 Azure AD 機関は次のとおりです。ここで、 *tenant-id* は実際の Active Directory テナント ID (またはディレクトリ ID) です。
+Microsoft パブリック クラウドの場合、基本 Azure AD 機関は次のとおりです。ここで、*tenant-id* は実際の Active Directory テナント ID (またはディレクトリ ID) です。
 
 `https://login.microsoftonline.com/<tenant-id>/`
 
@@ -127,10 +127,12 @@ Microsoft パブリック クラウドの場合、基本 Azure AD 機関は次�
 
 コード サンプルを実行するには、Azure Active Directory と同じサブスクリプション内にストレージ アカウントを作成します。 次に、そのストレージ アカウント内にコンテナーを作成します。 サンプル コードでは、このコンテナーにブロック BLOB が作成されます。
 
-次に、サンプル コードを実行するユーザー アカウントに、 **ストレージ BLOB データ共同作成者** ロールを明示的に割り当てます。 Azure portal でこのロールを割り当てる方法については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](storage-auth-aad-rbac-portal.md)」をご覧ください。
+次に、サンプル コードを実行するユーザー アカウントに、**ストレージ BLOB データ共同作成者** ロールを明示的に割り当てます。 Azure portal でこのロールを割り当てる方法については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](storage-auth-aad-rbac-portal.md)」をご覧ください。
 
 > [!NOTE]
 > Azure ストレージ アカウントを作成するとき、Azure AD を介してデータにアクセスするためのアクセス許可は自動的に割り当てられません。 Azure Storage の Azure ロールを自分自身に明示的に割り当てる必要があります。 これは、サブスクリプション、リソース グループ、ストレージ アカウント、あるいはコンテナーまたはキューのレベルで割り当てることができます。
+>
+> データ アクセスのためのロールを自分に割り当てる前に、Azure portal 経由でストレージ アカウントのデータにアクセスできるようになります。これは、Azure portal もデータ アクセスにアカウント キーを使用できるためです。 詳細については、「[Azure portal で BLOB データへのアクセスの承認方法を選択する](../blobs/authorize-data-operations-portal.md)」を参照してください。
 
 ### <a name="create-a-web-application-that-authorizes-access-to-blob-storage-with-azure-ad"></a>Azure AD で Blob Storage へのアクセスを承認する Web アプリケーションを作成する
 
@@ -220,7 +222,7 @@ private static async Task<string> CreateBlob(string accessToken)
 
 上の例では、.NET クライアント ライブラリによって、ブロック BLOB を作成するための要求の認可が処理されます。 他の言語の Azure Storage クライアント ライブラリでも、要求の認可が処理されます。 ただし、REST API を使って OAuth トークンを指定して Azure Storage の操作を呼び出す場合は、OAuth トークンを使って **Authorization** ヘッダーを作成する必要があります。
 
-OAuth アクセス トークンを使って Blob service および Queue サービスの操作を呼び出すには、 **ベアラー** スキームを使って **Authorization** ヘッダーでアクセス トークンを渡し、2017-11-09 以降のサービス バージョンを指定します。次の例をご覧ください。
+OAuth アクセス トークンを使って Blob service および Queue サービスの操作を呼び出すには、**ベアラー** スキームを使って **Authorization** ヘッダーでアクセス トークンを渡し、2017-11-09 以降のサービス バージョンを指定します。次の例をご覧ください。
 
 ```https
 GET /container/file.txt HTTP/1.1

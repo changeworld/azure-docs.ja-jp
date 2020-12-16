@@ -9,19 +9,16 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 7419e8667f07eec03e860634c7b3fddcac0e186b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 97b52159684eca9be59ccc711f6d2f19b5eb8d49
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95901555"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906116"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>ネットワーク ファイル システム (NFS) 3.0 プロトコル (プレビュー) を使用して Blob Storage をマウントする
 
 Windows または Linux ベースの Azure 仮想マシン (VM) か、オンプレミスで実行されている Windows または Linux システムから、NFS 3.0 プロトコルを使用して、BLOB Storage にコンテナーをマウントすることができます。 この記事では、ステップ バイ ステップ ガイダンスを提供しています。 BLOB ストレージでの NFS 3.0 プロトコルのサポートの詳細については、「[Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート (プレビュー)](network-file-system-protocol-support.md)」を参照してください。
-
-> [!NOTE]
-> Azure BLOB Storage での NFS 3.0 プロトコルのサポートはパブリック プレビュー段階であり、次のリージョンで利用できます。米国東部、米国中部、米国中西部、オーストラリア南東部、北ヨーロッパ、英国西部、韓国中部、韓国南部、カナダ中部。
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>手順 1:NFS 3.0 プロトコル機能をサブスクリプションに登録する
 
@@ -48,13 +45,7 @@ Windows または Linux ベースの Azure 仮想マシン (VM) か、オンプ�
    Register-AzProviderFeature -FeatureName AllowNFSV3 -ProviderNamespace Microsoft.Storage 
    ```
 
-5. 次のコマンドを使用して、`PremiumHns` 機能も登録します。
-
-   ```powershell
-   Register-AzProviderFeature -FeatureName PremiumHns -ProviderNamespace Microsoft.Storage  
-   ```
-
-6. 次のコマンドを使用して、リソース プロバイダーを登録します。
+5. 次のコマンドを使用して、リソース プロバイダーを登録します。
     
    ```powershell
    Register-AzResourceProvider -ProviderNamespace Microsoft.Storage   
@@ -66,7 +57,6 @@ Windows または Linux ベースの Azure 仮想マシン (VM) か、オンプ�
 
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFSV3
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumHns  
 ```
 
 ## <a name="step-3-create-an-azure-virtual-network-vnet"></a>手順 3:Azure 仮想ネットワーク (VNet) を作成する
@@ -86,20 +76,20 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 
 NFS 3.0 を使用してコンテナーをマウントするには、その機能をサブスクリプションに登録した **後に** ストレージ アカウントを作成する必要があります。 機能を登録する前に存在していたアカウントを有効にすることはできません。 
 
-この機能のプレビュー リリースでは、NFS 3.0 プロトコルは [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md) アカウントでのみサポートされています。
+この機能のプレビュー リリースでは、NFS 3.0 プロトコルは [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md) および [general-purpose V2](../common/storage-account-overview.md#general-purpose-v2-accounts) アカウントでサポートされています。
 
 アカウントを構成するときに、次の値を選択します。
 
-|設定 | 値|
-|----|---|
-|場所|次のいずれかのリージョン:米国東部、米国中部、米国中西部、オーストラリア南東部、北ヨーロッパ、英国西部、韓国中部、韓国南部、カナダ中部 |
-|パフォーマンス|Premium|
-|アカウントの種類|BlockBlobStorage|
-|レプリケーション|ローカル冗長ストレージ (LRS)|
-|接続方法|パブリック エンドポイント (選択されたネットワーク) またはプライベート エンドポイント|
-|安全な転送が必須|無効|
-|階層型名前空間|Enabled|
-|NFS V3|Enabled|
+|設定 | Premium パフォーマンス | Standard パフォーマンス  
+|----|---|---|
+|場所|利用可能なすべてのリージョン |次のいずれかのリージョン:オーストラリア東部、韓国中部、米国中南部   
+|パフォーマンス|Premium| Standard
+|アカウントの種類|BlockBlobStorage| 汎用 v2
+|レプリケーション|ローカル冗長ストレージ (LRS)| ローカル冗長ストレージ (LRS)
+|接続方法|パブリック エンドポイント (選択されたネットワーク) またはプライベート エンドポイント |パブリック エンドポイント (選択されたネットワーク) またはプライベート エンドポイント
+|安全な転送が必須|無効|無効
+|階層型名前空間|Enabled|Enabled
+|NFS V3|Enabled |Enabled 
 
 他のすべての設定については、既定値をそのまま使用できます。 
 

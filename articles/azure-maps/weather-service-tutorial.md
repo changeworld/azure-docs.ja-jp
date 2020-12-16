@@ -1,24 +1,28 @@
 ---
-title: チュートリアル:Azure Notebooks (Python) を使用して天気予報データにセンサー データを結合する | Microsoft Azure Maps
+title: チュートリアル:Microsoft Azure Maps で Azure Notebooks (Python) を使用して天気予報データにセンサー データを結合する
 description: Azure Notebooks (Python) を使用し、Microsoft Azure Maps Weather Service の天気予報データにセンサー データを結合する方法に関するチュートリアル。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/29/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: f020f3d9e23b9f834fd203f6d030656581fb4416
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 6d2ede8ab49b22a22d8959ce296182a2210640d0
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896601"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905470"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks (Python) を使用して天気予報データにセンサー データを結合する
 
-風力は、気候変動への対策として化石燃料に代わるエネルギー源です。 風はもともと一定のものではないため、風力のオペレーターは機械学習 (ML) モデルを作成して、風力発電能力を予測する必要があります。 電力需要を満たし、送電網の安定性を確保するためには、この予測が必要となります。 このチュートリアルでは、気象測定値のデモ データに Azure Maps の天気予報データを結合する方法について取り上げます。 天気予報データを要求するには、Azure Maps Weather Service を呼び出します。
+> [!IMPORTANT]
+> Azure Maps Weather Service は現在、パブリック プレビュー段階です。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+風力は、気候変動への対策として化石燃料に代わるエネルギー源です。 風はもともと一定のものではないため、風力のオペレーターは機械学習 (ML) モデルを作成して、風力発電能力を予測する必要があります。 電力需要を満たし、送電網の安定性を確保するためには、この予測が必要となります。 このチュートリアルでは、気象測定値のデモ データに Azure Maps の天気予報データを結合する方法について取り上げます。 天気予報データを要求するには、Azure Maps Weather Service (プレビュー) を呼び出します。
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -68,7 +72,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>毎日の予報データを要求する
 
-このシナリオでは、センサーの設置場所ごとの毎日の予報を要求します。 次のスクリプトでは、Azure Maps Weather Service の[毎日の予報 API](/rest/api/maps/weather/getdailyforecastpreview) を呼び出します。 この API は、現在の日付から 15 日間の天気予報を、それぞれの風力タービンについて返します。
+このシナリオでは、センサーの設置場所ごとの毎日の予報を要求します。 次のスクリプトでは、Azure Maps Weather Service (プレビュー) の[毎日の予報 API](/rest/api/maps/weather/getdailyforecastpreview) を呼び出します。 この API は、現在の日付から 15 日間の天気予報を、それぞれの風力タービンについて返します。
 
 
 ```python
@@ -82,7 +86,7 @@ years,months,days = [],[],[]
 dates_check=set()
 wind_speeds, wind_direction = [], []
 
-# Call azure maps weather service to get daily forecast data for 15 days from current date
+# Call azure maps Weather services (Preview) to get daily forecast data for 15 days from current date
 session = aiohttp.ClientSession()
 j=-1
 for i in range(0, len(coords), 2):

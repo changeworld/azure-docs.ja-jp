@@ -10,12 +10,12 @@ ms.date: 08/11/2020
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: 4eb9b0077d1d0591953a40d98a220d7aa0683de7
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fa71dc1e6b3a09827f2ad3d9f714622da5a36222
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497947"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862447"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイムを監視する
 
@@ -104,7 +104,7 @@ Azure 統合ランタイムのコンピューティング リソースは、Azur
 | オンライン | ノードはデータ ファクトリ サービスに接続されています。 |
 | オフライン | ノードはオフラインです。 |
 | アップグレード中 | ノードは自動でアップデートされています。 |
-| 制限あり | 接続の問題に起因します。 HTTP ポート 8050 の問題、サービス バス接続の問題、または資格情報の同期の問題に起因する可能性があります。 |
+| 制限あり | 接続の問題に起因します。 HTTP ポート 8060 の問題、サービス バス接続の問題、または資格情報の同期の問題に起因する可能性があります。 |
 | 非アクティブ | ノードは、多数を占める他のノードの構成とは違う構成になっています。 |
 
 他のノードに接続できない場合、ノードが非アクティブになることがあります。

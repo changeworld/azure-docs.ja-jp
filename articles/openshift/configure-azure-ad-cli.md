@@ -8,12 +8,12 @@ author: sabbour
 ms.author: asabbour
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 03ecd0e11df5fa20f134b6fd87baf788078a2203
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 0d69fa10408618fb188b42e1dd8f7b9d02820cc3
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748043"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862413"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>Azure Red Hat OpenShift 4 クラスターの Azure Active Directory 認証を構成する (CLI)
 
@@ -21,47 +21,67 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 Azure Active Directory アプリケーションの構成に使用するクラスター固有の URL を取得します。
 
-クラスターの OAuth コールバック URL を作成し、変数 **oauthCallbackURL** に格納します。 **aro-rg** を実際のリソース グループの名前に、 **aro-cluster** を実際のクラスター名に置き換えてください。
+リソース グループとクラスター名の変数を設定します。
+
+**\<resource_group>** をリソース グループの名前に置き換え、 **\<aro_cluster>** をクラスターの名前に置き換えます。
+
+```azurecli-interactive
+resource_group=<resource_group>
+aro_cluster=<aro_cluster>
+```
+
+クラスターの OAuth コールバック URL を作成し、変数 **oauthCallbackURL** に格納します。 
 
 > [!NOTE]
 > OAuth コールバック URL の `AAD` セクションは、後でセットアップする OAuth ID プロバイダー名と一致している必要があります。
 
+
 ```azurecli-interactive
-domain=$(az aro show -g aro-rg -n aro-cluster --query clusterProfile.domain -o tsv)
-location=$(az aro show -g aro-rg -n aro-cluster --query location -o tsv)
-apiServer=$(az aro show -g aro-rg -n aro-cluster --query apiserverProfile.url -o tsv)
-webConsole=$(az aro show -g aro-rg -n aro-cluster --query consoleProfile.url -o tsv)
-oauthCallbackURL=https://oauth-openshift.apps.$domain.$location.aroapp.io/oauth2callback/AAD
+domain=$(az aro show -g $resource_group -n $aro_cluster --query clusterProfile.domain -o tsv)
+location=$(az aro show -g $resource_group -n $aro_cluster --query location -o tsv)
+apiServer=$(az aro show -g $resource_group -n $aro_cluster --query apiserverProfile.url -o tsv)
+webConsole=$(az aro show -g $resource_group -n $aro_cluster --query consoleProfile.url -o tsv)
 ```
+
+oauthCallbackURL の形式は、カスタム ドメインでは少し異なります。
+
+* カスタム ドメイン (`contoso.com` など) を使用している場合は、次のコマンドを実行します。 
+
+    ```azurecli-interactive
+    oauthCallbackURL=https://oauth-openshift.apps.$domain/oauth2callback/AAD
+    ```
+
+* カスタムドメインを使用していない場合、`$domain` は 8 文字の英数字文字列になり、`$location.aroapp.io` によって拡張されます。
+
+    ```azurecli-interactive
+    oauthCallbackURL=https://oauth-openshift.apps.$domain.$location.aroapp.io/oauth2callback/AAD
+    ```
+
+> [!NOTE]
+> OAuth コールバック URL の `AAD` セクションは、後でセットアップする OAuth ID プロバイダー名と一致している必要があります。
 
 ## <a name="create-an-azure-active-directory-application-for-authentication"></a>認証用の Azure Active Directory アプリケーションを作成する
 
-Azure Active Directory アプリケーションを作成し、作成したアプリケーション識別子を取得します。 **\<ClientSecret>** をセキュリティで保護されたパスワードに置き換えます。
+**\<client_secret>** をセキュリティで保護されたアプリケーション用パスワードに置き換えます。
 
 ```azurecli-interactive
-az ad app create \
+client_secret=<client_secret>
+```
+
+Azure Active Directory アプリケーションを作成し、作成したアプリケーション識別子を取得します。
+
+```azurecli-interactive
+app_id=$(az ad app create \
   --query appId -o tsv \
   --display-name aro-auth \
   --reply-urls $oauthCallbackURL \
-  --password '<ClientSecret>'
-```
-
-次のようなものが返されます。 これは後の手順で必要になる **AppId** であるため、メモしておきます。
-
-```output
-6a4cb4b2-f102-4125-b5f5-9ad6689f7224
+  --password $client_secret)
 ```
 
 アプリケーションが含まれるサブスクリプションのテナント ID を取得します。
 
 ```azure
-az account show --query tenantId -o tsv
-```
-
-次のようなものが返されます。 これは後の手順で必要になる **TenantId** であるため、メモしておきます。
-
-```output
-72f999sx-8sk1-8snc-js82-2d7cj902db47
+tenant_id=$(az account show --query tenantId -o tsv)
 ```
 
 ## <a name="create-a-manifest-file-to-define-the-optional-claims-to-include-in-the-id-token"></a>マニフェスト ファイルを作成して、ID トークンに含める省略可能な要求を定義する
@@ -97,19 +117,15 @@ EOF
 
 ## <a name="update-the-azure-active-directory-applications-optionalclaims-with-a-manifest"></a>Azure Active Directory アプリケーションの optionalClaims をマニフェストで更新する
 
-**\<AppID>** を以前に取得した ID に置き換えます。
-
 ```azurecli-interactive
 az ad app update \
   --set optionalClaims.idToken=@manifest.json \
-  --id <AppId>
+  --id $app_id
 ```
 
 ## <a name="update-the-azure-active-directory-application-scope-permissions"></a>Azure Active Directory アプリケーション スコープのアクセス許可を更新する
 
 Azure Active Directory からユーザー情報を読み取れるようにするには、適切なスコープを定義する必要があります。
-
-**\<AppID>** を以前に取得した ID に置き換えます。
 
 **Azure Active Directory Graph.User.Read** スコープでサインインとユーザー プロファイルの読み取りを有効にする権限を追加します。
 
@@ -117,11 +133,11 @@ Azure Active Directory からユーザー情報を読み取れるようにする
 az ad app permission add \
  --api 00000002-0000-0000-c000-000000000000 \
  --api-permissions 311a71cc-e848-46a1-bdf8-97ff7156d8e6=Scope \
- --id <AppId>
+ --id $app_id
 ```
 
 > [!NOTE]
-> この Azure Active Directory のグローバル管理者として認証されていない限り、同意を与えるためのメッセージは無視することができます。これは、自分のアカウントでログインした際に、この操作が求められるためです。
+> この Azure Active Directory のグローバル管理者として認証されていない限り、同意を与えるためのメッセージは無視することができます。 標準ドメイン ユーザーは、AAD 資格情報を使用してクラスターに初めてログインするときに、同意を付与するように求められます。
 
 ## <a name="assign-users-and-groups-to-the-cluster-optional"></a>ユーザーとグループをクラスターに割り当てる (省略可能)
 
@@ -134,35 +150,27 @@ Azure Active Directory のドキュメントに記載されている手順に従
 `kubeadmin` の資格情報を取得します。 次のコマンドを実行して、`kubeadmin` ユーザーのパスワードを検索します。
 
 ```azurecli-interactive
-az aro list-credentials \
-  --name aro-cluster \
-  --resource-group aro-rg
+kubeadmin_password=$(az aro list-credentials \
+  --name $aro_cluster \
+  --resource-group $resource_group \
+  --query kubeadminPassword --output tsv)
 ```
 
-次の出力例は、パスワードが `kubeadminPassword` に含まれることを示しています。
-
-```json
-{
-  "kubeadminPassword": "<generated password>",
-  "kubeadminUsername": "kubeadmin"
-}
-```
-
-次のコマンドを使用して、OpenShift クラスターの API サーバーにログインします。 `$apiServer` 変数は、[以前]()設定されています。 **\<kubeadmin password>** を取得したパスワードに置き換えます。
+次のコマンドを使用して、OpenShift クラスターの API サーバーにログインします。 
 
 ```azurecli-interactive
-oc login $apiServer -u kubeadmin -p <kubeadmin password>
+oc login $apiServer -u kubeadmin -p $kubeadmin_password
 ```
 
-Azure Active Directory アプリケーション シークレットを格納するための OpenShift シークレットを作成し、 **\<ClientSecret>** を以前に取得したシークレットに置き換えます。
+Azure Active Directory アプリケーション シークレットを格納するための OpenShift シークレットを作成します。
 
 ```azurecli-interactive
 oc create secret generic openid-client-secret-azuread \
   --namespace openshift-config \
-  --from-literal=clientSecret=<ClientSecret>
+  --from-literal=clientSecret=$client_secret
 ```
 
-**oidc.yaml** ファイルを作成し、Azure Active Directory に対して OpenShift OpenID 認証を構成します。 **\<AppID>** と **\<TenantId>** を以前に取得した値に置き換えます。
+**oidc.yaml** ファイルを作成し、Azure Active Directory に対して OpenShift OpenID 認証を構成します。 
 
 ```bash
 cat > oidc.yaml<< EOF
@@ -176,7 +184,7 @@ spec:
     mappingMethod: claim
     type: OpenID
     openID:
-      clientID: <AppId>
+      clientID: $app_id
       clientSecret:
         name: openid-client-secret-azuread
       extraScopes:
@@ -192,7 +200,7 @@ spec:
         - name
         email:
         - email
-      issuer: https://login.microsoftonline.com/<TenantId>
+      issuer: https://login.microsoftonline.com/$tenant_id
 EOF
 ```
 
@@ -210,6 +218,6 @@ oauth.config.openshift.io/cluster configured
 
 ## <a name="verify-login-through-azure-active-directory"></a>Azure Active Directory を使用したログインの検証
 
-OpenShift Web コンソールをログアウトしてもう一度ログインしようとすると、 **AAD** でログインするための新しいオプションが表示されます。 数分待つ必要がある場合があります。
+OpenShift Web コンソールをログアウトしてもう一度ログインしようとすると、**AAD** でログインするための新しいオプションが表示されます。 数分待つ必要がある場合があります。
 
 ![Azure Active Directory オプションを使用したログイン画面](media/aro4-login-2.png)

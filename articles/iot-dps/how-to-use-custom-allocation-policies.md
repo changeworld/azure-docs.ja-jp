@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 9db4328ce6519bef05017ba697d8f0f029f2096a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 26615b82bb9dcbc1247bec9b7a06b579dfa1eb2b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967416"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571642"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>カスタム割り当てポリシーの使用方法
 
@@ -44,11 +44,11 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
 
 Windows 開発環境の前提条件は次のとおりです。 Linux または macOS については、SDK ドキュメントの「[開発環境を準備する](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)」の該当するセクションを参照してください。
 
-* [C++ によるデスクトップ開発](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
+- [C++ によるデスクトップ開発](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
 
-* [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
+- [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-the-provisioning-service-and-two-divisional-iot-hubs"></a>プロビジョニング サービスと 2 つの部門 IoT ハブを作成する
 
@@ -133,7 +133,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 7. 次のページの **関数の作成** ステップで、 **[Webhook + API]** タイルを選択してから、 **[作成]** を選択します。 **HttpTrigger1** という名前の関数が作成され、ポータルに **run.csx** コード ファイルの内容が表示されます。
 
-8. 必須の Nuget パッケージを参照します。 初期デバイス ツインを作成するために、カスタム割り当て関数では、ホスティング環境に読み込む必要がある 2 つの Nuget パッケージで定義されているクラスが使用されます。 Azure Functions では、*function.host* ファイルを使用して Nuget パッケージが参照されます。 このステップで、*function.host* ファイルを保存してアップロードします。
+8. 必須の NuGet パッケージを参照します。 初期デバイス ツインを作成するために、カスタム割り当て関数では、ホスティング環境に読み込む必要がある 2 つの NuGet パッケージで定義されているクラスが使用されます。 Azure Functions では、*function.host* ファイルを使用して NuGet パッケージが参照されます。 このステップで、*function.host* ファイルを保存してアップロードします。
 
     1. 次の行を任意のエディターにコピーし、ファイルを *function.host* としてご使用のコンピューターに保存します。
 

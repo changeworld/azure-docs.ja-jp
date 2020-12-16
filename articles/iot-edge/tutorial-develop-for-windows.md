@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 0728e5d12b13164d127941a49603836ff92fd515
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: e46105f5889f4925be9873fd8613021fe5e8ac2d
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045790"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920770"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>チュートリアル:Windows デバイス用の IoT Edge モジュールを開発する
 
@@ -22,7 +22,7 @@ Visual Studio を使用して、コードを開発し、IoT Edge を実行して
 
 クイックスタートでは、Windows 仮想マシンを使用して IoT Edge デバイスを作成し、Azure Marketplace から事前構成済みのモジュールをデプロイしました。 このチュートリアルでは、独自のコードを開発して IoT Edge デバイスにデプロイするために必要なことを順を追って説明します。 このチュートリアルは、特定のプログラミング言語や Azure サービスをより詳細に説明する他のチュートリアルにとって有用な前提条件です。
 
-このチュートリアルでは、**C# モジュールの Windows デバイスへの**デプロイ例を使用します。 この例が選択された理由は、最も一般的な開発シナリオだからです。 異なる言語での開発に関心がある場合や、Azure サービスをモジュールとしてデプロイする予定の場合でも、このチュートリアルは開発ツールの学習に役立ちます。 開発の概念を理解したら、使用する言語や Azure サービスを選択して、詳細に進むことができます。
+このチュートリアルでは、**C# モジュールの Windows デバイスへの** デプロイ例を使用します。 この例が選択された理由は、最も一般的な開発シナリオだからです。 異なる言語での開発に関心がある場合や、Azure サービスをモジュールとしてデプロイする予定の場合でも、このチュートリアルは開発ツールの学習に役立ちます。 開発の概念を理解したら、使用する言語や Azure サービスを選択して、詳細に進むことができます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -32,24 +32,6 @@ Visual Studio を使用して、コードを開発し、IoT Edge を実行して
 > * Visual Studio 用の IoT Edge Tools を使用して、新しいプロジェクトを作成する。
 > * プロジェクトをコンテナーとしてビルドして、Azure Container Registry に格納する。
 > * コードを IoT Edge デバイスにデプロイする。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="key-concepts"></a>主要な概念
-
-このチュートリアルでは、IoT Edge モジュールの開発について順を追って説明します。 *IoT Edge モジュール* (略して、単に*モジュール*と呼ばれることもある) は、実行可能コードを含むコンテナーです。 IoT Edge デバイスには 1 つ以上のモジュールをデプロイできます。 モジュールは、センサーからのデータの取り込み、データ分析操作やデータ クリーニング操作の実行、または IoT ハブへのメッセージの送信のような特定のタスクを実行します。 詳細については、「[Azure IoT Edge モジュールについて](iot-edge-modules.md)」を参照してください。
-
-IoT Edge モジュールを開発する場合は、開発マシンと、モジュールが最終的にデプロイされるターゲット IoT Edge デバイスの違いを理解することが重要です。 モジュール コードを保持するためにビルドするコンテナーは、*ターゲット デバイス*のオペレーティング システム (OS) と一致している必要があります。 Windows コンテナーの開発では、Windows コンテナーは Windows オペレーティング システムでのみ実行されるため、この概念はよりシンプルです。 ただし、たとえば Windows 開発マシンを使って、Linux IoT Edge デバイス用のモジュールをビルドできます。 そのシナリオでは、お使いの開発マシンが Linux コンテナーを実行していることを確認する必要があります。 このチュートリアルを進めていくときには、*開発マシンの OS* と*コンテナーの OS* の違いに留意してください。
-
-このチュートリアルでは、IoT Edge を実行している Windows デバイスをターゲットとしています。 Windows IoT Edge デバイスは Windows コンテナーを使用します。 Windows デバイス用の開発には Visual Studio を使用することをお勧めします。そのため、このチュートリアルでもそれを使用します。 Visual Studio Code も使用できますが、この 2 つのツールにはサポートに違いがあります。
-
-次の表に、Visual Studio Code と Visual Studio で **Windows コンテナー**に対してサポートされる開発シナリオを示します。
-
-|   | Visual Studio Code | Visual Studio 2017/2019 |
-| - | ------------------ | ------------------ |
-| **Azure サービス** | Azure Functions <br> Azure Stream Analytics |   |
-| **Languages** | C# (デバッグはサポートされていません) | C <br> C# |
-| **詳細情報** | [Visual Studio Code 用の Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Visual Studio 2017 用の Azure IoT Edge ツール](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)<br>[Visual Studio 2019 用の Azure IoT Edge ツール](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -69,6 +51,24 @@ Window 上の Azure IoT Edge デバイス:
 
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="key-concepts"></a>主要な概念
+
+このチュートリアルでは、IoT Edge モジュールの開発について順を追って説明します。 *IoT Edge モジュール* (略して、単に *モジュール* と呼ばれることもある) は、実行可能コードを含むコンテナーです。 IoT Edge デバイスには 1 つ以上のモジュールをデプロイできます。 モジュールは、センサーからのデータの取り込み、データ分析操作やデータ クリーニング操作の実行、または IoT ハブへのメッセージの送信のような特定のタスクを実行します。 詳細については、「[Azure IoT Edge モジュールについて](iot-edge-modules.md)」を参照してください。
+
+IoT Edge モジュールを開発する場合は、開発マシンと、モジュールが最終的にデプロイされるターゲット IoT Edge デバイスの違いを理解することが重要です。 モジュール コードを保持するためにビルドするコンテナーは、*ターゲット デバイス* のオペレーティング システム (OS) と一致している必要があります。 Windows コンテナーの開発では、Windows コンテナーは Windows オペレーティング システムでのみ実行されるため、この概念はよりシンプルです。 ただし、たとえば Windows 開発マシンを使って、Linux IoT Edge デバイス用のモジュールをビルドできます。 そのシナリオでは、お使いの開発マシンが Linux コンテナーを実行していることを確認する必要があります。 このチュートリアルを進めていくときには、*開発マシンの OS* と *コンテナーの OS* の違いに留意してください。
+
+このチュートリアルでは、IoT Edge を実行している Windows デバイスをターゲットとしています。 Windows IoT Edge デバイスは Windows コンテナーを使用します。 Windows デバイス用の開発には Visual Studio を使用することをお勧めします。そのため、このチュートリアルでもそれを使用します。 Visual Studio Code も使用できますが、この 2 つのツールにはサポートに違いがあります。
+
+次の表に、Visual Studio Code と Visual Studio で **Windows コンテナー** に対してサポートされる開発シナリオを示します。
+
+|   | Visual Studio Code | Visual Studio 2017/2019 |
+| - | ------------------ | ------------------ |
+| **Azure サービス** | Azure Functions <br> Azure Stream Analytics |   |
+| **Languages** | C# (デバッグはサポートされていません) | C <br> C# |
+| **詳細情報** | [Visual Studio Code 用の Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Visual Studio 2017 用の Azure IoT Edge ツール](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)<br>[Visual Studio 2019 用の Azure IoT Edge ツール](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
+
 ## <a name="install-container-engine"></a>コンテナー エンジンをインストールする
 
 IoT Edge モジュールはコンテナーとしてパッケージされるので、それらのコンテナーをビルドおよび管理するためには、開発マシン上にコンテナー エンジンが必要です。 Docker Desktop には多くの機能があり、コンテナー エンジンとして人気があるため、開発にはこれを使用することをお勧めします。 Windows コンピューターで Docker Desktop を使用すると、Linux コンテナーと Windows コンテナーを切り替えて、さまざまな種類の IoT Edge デバイス用のモジュールを容易に開発することができます。
@@ -77,7 +77,7 @@ IoT Edge モジュールはコンテナーとしてパッケージされるの�
 
 * [Install Docker Desktop for Windows](https://docs.docker.com/docker-for-windows/install/)
 
-  * Docker Desktop for Windows をインストールするときに、Linux コンテナーを使用するか Windows コンテナーを使用するかを尋ねられます。 このチュートリアルでは **Windows コンテナー**を使用します。 詳細については、「[Switch between Windows and Linux containers](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)」を参照してください。
+  * Docker Desktop for Windows をインストールするときに、Linux コンテナーを使用するか Windows コンテナーを使用するかを尋ねられます。 このチュートリアルでは **Windows コンテナー** を使用します。 詳細については、「[Switch between Windows and Linux containers](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)」を参照してください。
 
 ## <a name="set-up-visual-studio-and-tools"></a>Visual Studio とツールを設定する
 
@@ -133,7 +133,7 @@ Azure IoT Edge Tools の拡張機能により、Visual Studio でサポートさ
    | ----- | ----- |
    | Visual Studio テンプレート | **[C# モジュール]** を選択します。 |
    | モジュール名 | 既定の **IotEdgeModule1** をそのまま使用します。 |
-   | リポジトリの URL | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、モジュール プロジェクト名の値から事前に入力されています。 **localhost:5000** を、Azure Container Registry の**ログイン サーバー**の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーの値を取得できます。 <br><br> 最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/iotedgemodule1 のようになります。 |
+   | リポジトリの URL | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、モジュール プロジェクト名の値から事前に入力されています。 **localhost:5000** を、Azure Container Registry の **ログイン サーバー** の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーの値を取得できます。 <br><br> 最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/iotedgemodule1 のようになります。 |
 
       ![ターゲット デバイス、モジュールの種類、コンテナー レジストリ用にプロジェクトを構成する](./media/tutorial-develop-for-windows/add-module-to-solution.png)
 
@@ -144,7 +144,7 @@ Azure IoT Edge Tools の拡張機能により、Visual Studio でサポートさ
 * **CSharpTutorialApp** という IoT Edge プロジェクト。
   * **Modules** フォルダーには、プロジェクトに含まれるモジュールへのポインターが含まれています。 この例では、IotEdgeModule1 だけです。
   * 非表示の **.env** ファイルは、コンテナー レジストリへの資格情報を保持しています。 これらの資格情報は IoT Edge デバイスと共有されており、コンテナー イメージをプルするためにアクセスすることができます。
-  * **deployment.template.json** ファイルは、配置マニフェストの作成に役立つテンプレートです。 *配置マニフェスト*は、どのモジュールをデバイスにデプロイするか、それらをどのように構成するか、そしてそれらが互いに、およびクラウドとどのように通信するかを正確に定義するファイルです。
+  * **deployment.template.json** ファイルは、配置マニフェストの作成に役立つテンプレートです。 *配置マニフェスト* は、どのモジュールをデバイスにデプロイするか、それらをどのように構成するか、そしてそれらが互いに、およびクラウドとどのように通信するかを正確に定義するファイルです。
     > [!TIP]
     > レジストリ資格情報セクションで、アドレスは、ソリューションを作成したときに指定した情報から自動的に入力されています。 ただし、ユーザー名とパスワードは、.env ファイルに格納されている変数を参照します。 これはセキュリティのためです .env ファイルは GIT Ignore ですが、デプロイ テンプレートはそうではないからです。
 * **IotEdgeModule1** という IoT Edge モジュール プロジェクト。
@@ -179,7 +179,7 @@ IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバ
 
 作成したソリューション テンプレートには、IoT Edge モジュールのサンプル コードが含まれています。 このサンプル モジュールは、単にメッセージを受け取って渡すだけです。 パイプライン機能は、モジュールがどのようにして相互に通信を行うかという、IoT Edge での重要な概念を示します。
 
-各モジュールは、コードで宣言された複数の *入力*キューと *出力*キューを持つことができます。 デバイスで実行されている IoT Edge ハブは、1 つのモジュールの出力から、1 つ以上のモジュールの入力にメッセージをルーティングします。 入力と出力を宣言するための特定のコードは、言語によって異なりますが、その概念はすべてのモジュールで同じです。 モジュール間のルーティングの詳細については、[ルートの宣言](module-composition.md#declare-routes)に関する記事を参照してください。
+各モジュールは、コードで宣言された複数の *入力* キューと *出力* キューを持つことができます。 デバイスで実行されている IoT Edge ハブは、1 つのモジュールの出力から、1 つ以上のモジュールの入力にメッセージをルーティングします。 入力と出力を宣言するための特定のコードは、言語によって異なりますが、その概念はすべてのモジュールで同じです。 モジュール間のルーティングの詳細については、[ルートの宣言](module-composition.md#declare-routes)に関する記事を参照してください。
 
 プロジェクト テンプレートに含まれるサンプル C# コードには、.NET 用 IoT Hub SDK の [ModuleClient クラス](/dotnet/api/microsoft.azure.devices.client.moduleclient)が使用されています。
 
@@ -205,7 +205,7 @@ IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバ
 
 7. $edgeHub の必要なプロパティから **routes** プロパティを見つけます。
 
-   IoT Edge ハブ モジュールの機能の 1 つは、デプロイ内のすべてのモジュール間でメッセージをルーティングすることです。 routes プロパティの値を確認します。 1 つのルートである **IotEdgeModule1ToIoTHub** では、IotEdgeModule1 モジュールの出力キューから送信されるすべてのメッセージを対象とするために、ワイルドカード文字 ( **\*** ) を使用します。 これらのメッセージは、IoT Hub を示す予約名である *$upstream* に入ります。 もう 1 つのルートである **sensorToIotEdgeModule1** では、SimulatedTemperatureSensor モジュールから送信されたメッセージを受け取り、それらを IotEdgeModule1 モジュールの *input1* 入力キューにルーティングします。
+   IoT Edge ハブ モジュールの機能の 1 つは、デプロイ内のすべてのモジュール間でメッセージをルーティングすることです。 routes プロパティの値を確認します。 1 つのルートである **IotEdgeModule1ToIoTHub** では、IotEdgeModule1 モジュールの出力キューから送信されるすべてのメッセージを対象とするために、ワイルドカード文字 (* *\** _) を使用します。 これらのメッセージは、IoT Hub を示す予約名である _$upstream* に入ります。 もう 1 つのルートである **sensorToIotEdgeModule1** では、SimulatedTemperatureSensor モジュールから送信されたメッセージを受け取り、それらを IotEdgeModule1 モジュールの *input1* 入力キューにルーティングします。
 
    ![deployment.template.json でルートを確認する](./media/tutorial-develop-for-windows/deployment-routes.png)
 

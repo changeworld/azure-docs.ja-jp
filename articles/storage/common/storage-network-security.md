@@ -5,16 +5,16 @@ services: storage
 author: santoshc
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 12/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 2eed5a8ad783d325ef040b3a358e80a6517f08e8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 07ad0714d0294ad90150acb9df14f17bfc1f5f0d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783642"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905368"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -133,7 +133,7 @@ VNet 内の Azure Storage に対する[サービス エンドポイント](../..
 
 ### <a name="required-permissions"></a>必要なアクセス許可
 
-ストレージ アカウントに仮想ネットワーク規則を適用するには、追加されるサブネットに対する適切なアクセス許可を持っている必要があります。 必要なアクセス許可は " *サブネットにサービスを参加させる* " であり、" *ストレージ アカウント共同作成者* " 組み込みロールに含まれます。 カスタム ロール定義に追加することもできます。
+ストレージ アカウントに仮想ネットワーク規則を適用するには、追加されるサブネットに対する適切なアクセス許可を持っている必要があります。 必要なアクセス許可は "*サブネットにサービスを参加させる*" であり、"*ストレージ アカウント共同作成者*" 組み込みロールに含まれます。 カスタム ロール定義に追加することもできます。
 
 ストレージ アカウントとアクセスを許可される仮想ネットワークは、異なる Azure AD テナントの一部であるサブスクリプションなど、異なるサブスクリプションに含まれていてもかまいません。
 
@@ -241,12 +241,12 @@ VNet 内の Azure Storage に対する[サービス エンドポイント](../..
 
 パブリック インターネットの特定の IP アドレス範囲からのアクセスを許可するように、ストレージ アカウントを構成できます。 この構成では、特定のインターネット ベースのサービスとオンプレミスのネットワークにアクセスを許可し、一般的なインターネット トラフィックをブロックします。
 
-許可するインターネット アドレスの範囲は、 [CIDR 表記法](https://tools.ietf.org/html/rfc4632)を使って *16.17.18.0/24* の形式で、または *16.17.18.19* のように個々の IP アドレスとして、指定できます。
+許可するインターネット アドレスの範囲は、[CIDR 表記法](https://tools.ietf.org/html/rfc4632)を使って *16.17.18.0/24* の形式で、または *16.17.18.19* のように個々の IP アドレスとして、指定できます。
 
    > [!NOTE]
    > 「/31」や「/32」のプレフィックス サイズを使用した小さなアドレス範囲はサポートされていません。 これらの範囲は、個々の IP アドレス ルールを使用して構成する必要があります。
 
-IP ネットワーク ルールは、 **パブリック インターネット** の IP アドレスに対してのみ許可されます。 プライベート ネットワーク用に予約されている IP アドレス範囲 ([RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) で定義) は、IP ルールでは許可されません。 プライベート ネットワークには、 _10.*_ 、 _172.16.*_  - _172.31.*_ 、 _192.168.*_ で始まるアドレスが含まれます。
+IP ネットワーク ルールは、**パブリック インターネット** の IP アドレスに対してのみ許可されます。 プライベート ネットワーク用に予約されている IP アドレス範囲 ([RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) で定義) は、IP ルールでは許可されません。 プライベート ネットワークには、_10.*_ 、_172.16.*_  - _172.31.*_ 、_192.168.*_ で始まるアドレスが含まれます。
 
    > [!NOTE]
    > IP ネットワーク ルールは、ストレージ アカウントと同じ Azure リージョンから送信された要求には影響ありません。 同じリージョンの要求を許可するには、[仮想ネットワーク規則](#grant-access-from-a-virtual-network)を使用します。
@@ -358,7 +358,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 
 ## <a name="exceptions"></a>例外
 
-ネットワーク規則は、ほとんどのシナリオで、アプリケーションとデータとを接続する安全な環境の構築に役立ちます。 ただし、一部のアプリケーションは、仮想ネットワークまたは IP アドレスの規則を使用して一意に分離できない Azure サービスに依存しています。 しかし、アプリケーションが機能を完全に発揮するには、そのようなサービスにストレージへのアクセスが許可される必要があります。 このような場合、* *_[信頼された Microsoft サービスを許可]_* _ 設定を使用して、このようなサービスで、自分のデータ、ログ、分析にアクセスできるように設定できます。
+ネットワーク規則は、ほとんどのシナリオで、アプリケーションとデータとを接続する安全な環境の構築に役立ちます。 ただし、一部のアプリケーションは、仮想ネットワークまたは IP アドレスの規則を使用して一意に分離できない Azure サービスに依存しています。 しかし、アプリケーションが機能を完全に発揮するには、そのようなサービスにストレージへのアクセスが許可される必要があります。 このような場合、**_[信頼された Microsoft サービスを許可]_* _ 設定を使用して、このようなサービスで、自分のデータ、ログ、分析にアクセスできるように設定できます。
 
 ### <a name="trusted-microsoft-services"></a>信頼できる Microsoft サービス
 
@@ -390,16 +390,17 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azure API Management           | Microsoft.ApiManagement/service        | ポリシーを使用して、API Management サービスが、ファイアウォールの背後にあるストレージ アカウントにアクセスできるようにします。 [詳細については、こちらを参照してください](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy)。 |
 | Azure Cognitive Search         | Microsoft.Search/searchServices        | インデックス作成、処理、およびクエリのために、Cognitive Search サービスがストレージ アカウントにアクセスできるようになります。 |
+| Azure Cognitive Services       | Microsoft.CognitiveService             | Cognitive Services がストレージ アカウントにアクセスできるようにします。 |
 | Azure Container Registry タスク | Microsoft.ContainerRegistry/registries | ACR タスクは、コンテナー イメージを作成するときにストレージアカウントにアクセスできます。 |
 | Azure Data Factory             | Microsoft.DataFactory/factories        | ADF ランタイムを使用してストレージ アカウントへのアクセスを許可します。 |
 | Azure Data Share               | Microsoft.DataShare/accounts           | Data Share を使用してストレージ アカウントにアクセスできるようになります。 |
 | Azure IoT Hub                  | Microsoft.Devices/IotHubs              | IoT ハブからのデータを BLOB ストレージに書き込むことができます。 [詳細情報](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
 | Azure Logic Apps               | Microsoft.Logic/workflows              | ロジック アプリがストレージ アカウントにアクセスできるようにします。 [詳細については、こちらを参照してください](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。 |
 | Azure Machine Learning サービス | Microsoft.MachineLearningServices      | 承認された Azure Machine Learning ワークスペースでは、BLOB ストレージに実験の出力、モデル、およびログを書き込み、データを読み取ります。 [詳細については、こちらを参照してください](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources)。 | 
-| Azure Synapse Analytics (旧称 SQL Data Warehouse)       | Microsoft.Sql                          | COPY ステートメントまたは PolyBase を使用して、特定の SQL データベースからのデータのインポートとエクスポートを許可します。 [詳細については、こちらを参照してください](../../azure-sql/database/vnet-service-endpoint-rule-overview.md)。 |
+| Azure Synapse Analytics       | Microsoft.Sql                          | COPY ステートメントまたは PolyBase を使用して、特定の SQL データベースからのデータのインポートとエクスポートを許可します。 [詳細については、こちらを参照してください](../../azure-sql/database/vnet-service-endpoint-rule-overview.md)。 |
 | Azure SQL データベース       | Microsoft.Sql                          | ストレージ アカウントからデータの[インポート](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage)したり、ファイアウォールの背後にあるストレージ アカウントに監査データを[書き込んだり](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md)することができます。 |
 | Azure Stream Analytics         | Microsoft.StreamAnalytics             | ストリーミング ジョブからのデータを Blob Storage に書き込むことができます。 [詳細については、こちらを参照してください](../../stream-analytics/blob-output-managed-identity.md)。 |
-| Azure Synapse Analytics        | Microsoft.Synapse ワークスペース          | Synapse Analytics から Azure Storage のデータにアクセスできるようにします。 |
+| Azure Synapse Analytics        | Microsoft.Synapse ワークスペース          | Azure Synapse Analytics から Azure Storage のデータにアクセスできるようにします。 |
 
 
 ### <a name="storage-analytics-data-access"></a>ストレージ分析データ アクセス

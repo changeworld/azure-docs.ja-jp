@@ -1,21 +1,21 @@
 ---
 title: テンプレート リファレンスの使用
-description: Azure Resource Manager テンプレート リファレンスを利用してテンプレートを作成します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) リファレンスを利用してテンプレートを作成します。
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 3709511fa8da0a40f4faf4ab2dac9505d69003ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfd6311fab8d9c65fa7c82d2f707ac96549a32a9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86118513"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931420"
 ---
-# <a name="tutorial-utilize-the-resource-manager-template-reference"></a>チュートリアル:Resource Manager テンプレート リファレンスを利用する
+# <a name="tutorial-utilize-the-arm-template-reference"></a>チュートリアル:ARM テンプレート リファレンスを利用する
 
-テンプレート スキーマ情報を見つける方法のほか、その情報を使用して Azure Resource Manager (ARM) テンプレートを作成する方法について説明します。
+テンプレート スキーマ情報を見つける方法のほか、その情報を使用して Azure Resource Manager テンプレート (ARM テンプレート) を作成する方法について説明します。
 
 このチュートリアルでは、Azure クイック スタート テンプレートから入手したベース テンプレートを使用します。 テンプレート リファレンス ドキュメントを使用して、テンプレートをカスタマイズします。
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使用して ARM テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 

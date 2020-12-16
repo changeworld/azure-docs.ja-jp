@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/03/2020
+ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8273d4bbb0b58a256521cf11cacf6d1fed67e10d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2010f55a28d393086aad544cbec3f5c009801872
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345118"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750494"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OpenID Connect 技術プロファイルを定義する
 
@@ -80,6 +80,7 @@ Azure Active Directory B2C (Azure AD B2C) では、[OpenID Connect](https://open
 | IdTokenAudience | いいえ | id_token の対象ユーザー。 指定される場合、Azure AD B2C により、ID プロバイダーによって返されたトークンの `aud` クレームが IdTokenAudience メタデータで指定されているものと等しいかどうかを確認します。  |
 | METADATA | はい | OpenID の既知の構成エンドポイントとも呼ばれる OpenID Connect ID プロバイダー構成ドキュメントを指す URL。 URL には、テナント名に置き換えられる `{tenant}` 式を含めることができます。  |
 | authorization_endpoint | いいえ | OpenID Connect ID プロバイダー構成の承認エンドポイントを指す URL。 authorization_endpoint メタデータの値は、OpenID の既知の構成エンドポイントで指定された `authorization_endpoint` よりも優先されます。 URL には、テナント名に置き換えられる `{tenant}` 式を含めることができます。 |
+| end_session_endpoint | いいえ | セッションの終了エンドポイントの URL。 authorization_endpoint メタデータの値は、OpenID の既知の構成エンドポイントで指定された `end_session_endpoint` よりも優先されます。 |
 | 発行者 | いいえ | OpenID Connect ID プロバイダーの一意識別子。 issuer メタデータの値は、OpenID の既知の構成エンドポイントで指定された `issuer` よりも優先されます。  指定される場合、Azure AD B2C により、ID プロバイダーによって返されたトークンの `iss` クレームが issuer メタデータで指定されているものと等しいかどうかを確認します。 |
 | ProviderName | いいえ | ID プロバイダーの名前。  |
 | response_types | いいえ | OpenID Connect Core 1.0 仕様に準拠した応答の種類。 指定できる値: `id_token`、`code`、または `token`。 |
@@ -92,7 +93,7 @@ Azure Active Directory B2C (Azure AD B2C) では、[OpenID Connect](https://open
 | DiscoverMetadataByTokenIssuer | いいえ | JWT トークンで発行者を使用して OIDC メタデータを検出する必要があるかどうかを示します。 |
 | IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
 |token_endpoint_auth_method| No| Azure AD B2C からトークン エンドポイントに認証ヘッダーを送信する方法を指定します。 指定できる値は、`client_secret_post` (既定値) と `client_secret_basic` (パブリック プレビュー) です。 詳細については、[OpenID Connect クライアント認証](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)に関するセクションをご覧ください。 |
-
+|SingleLogoutEnabled| いいえ| サインイン中に技術プロファイルがフェデレーション ID プロバイダーからサインアウトを試行しているかどうかを示します。 詳しくは、[Azure AD B2C のセッション サインアウト](session-overview.md#sign-out)に関する記事をご覧ください。指定できる値は `true`(既定値) または`false`です。|
 
 ```xml
 <Metadata>
@@ -123,7 +124,7 @@ Azure Active Directory B2C (Azure AD B2C) では、[OpenID Connect](https://open
 
 | 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| client_secret | Yes | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。  |
+| client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。  |
 
 ## <a name="redirect-uri"></a>リダイレクト URI
 

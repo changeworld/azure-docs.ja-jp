@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/19/2020
 tags: connectors
-ms.openlocfilehash: b8f95e7e173dd6d1ad43301aab8ff3ec7cf78018
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 4997853fea97d14491bd9e9101f79f324807a6a1
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981002"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920813"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps で受信 HTTPS 要求を受信して応答する
 
@@ -42,7 +42,7 @@ ms.locfileid: "94981002"
 
 この組み込みトリガーは、HTTPS 経由で受信要求 *のみ* を処理できる、手動で呼び出し可能なエンドポイントを作成します。 呼び出し元がこのエンドポイントに要求を送信すると、[Request トリガー](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)が起動され、ロジック アプリが実行されます。 このトリガーを呼び出す方法の詳細については、[Azure Logic Apps での HTTPS エンドポイントを使用したワークフローの呼び出し、トリガー、または入れ子](../logic-apps/logic-apps-http-endpoint.md)に関するページを参照してください。
 
-ロジック アプリは、受信要求を[限られた時間](../logic-apps/logic-apps-limits-and-config.md#request-limits)だけ開いたままにします。 ロジック アプリに [Response アクション](#add-response)が含まれていると仮定すると、この時間が経過してもロジック アプリが呼び出し元に応答を戻さない場合、そのロジック アプリは呼び出し元に `504 GATEWAY TIMEOUT` 状態を返します。 ロジック アプリに Response アクションが含まれていない場合、ロジック アプリによって呼び出し元にすぐに `202 ACCEPTED` 状態が返されます。
+ロジック アプリは、受信要求を[限られた時間](../logic-apps/logic-apps-limits-and-config.md#http-limits)だけ開いたままにします。 ロジック アプリに [Response アクション](#add-response)が含まれていると仮定すると、この時間が経過してもロジック アプリが呼び出し元に応答を戻さない場合、そのロジック アプリは呼び出し元に `504 GATEWAY TIMEOUT` 状態を返します。 ロジック アプリに Response アクションが含まれていない場合、ロジック アプリによって呼び出し元にすぐに `202 ACCEPTED` 状態が返されます。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 空のロジック アプリを作成します。
 
@@ -179,7 +179,7 @@ ms.locfileid: "94981002"
 
    たとえば、[Response アクションを追加](#add-response)することによって、要求に応答することができます。Response アクションは、カスタマイズした応答を返す場合に使用できます。これについては、このトピックの後半で説明します。
 
-   ご利用のロジック アプリでは、[制限された時間](../logic-apps/logic-apps-limits-and-config.md#request-limits)のみ受信要求が開いたままになります。 ご利用のロジック アプリのワークフローに Response アクションが含まれていると仮定すると、この時間が経過してもロジック アプリから応答がない場合、ご利用のロジック アプリは呼び出し元に `504 GATEWAY TIMEOUT` を返します。 あるいは、ご利用のロジック アプリに Response アクションが含まれていない場合、ご利用のロジック アプリは呼び出し元にすぐに `202 ACCEPTED` 応答を返します。
+   ご利用のロジック アプリでは、[制限された時間](../logic-apps/logic-apps-limits-and-config.md#http-limits)のみ受信要求が開いたままになります。 ご利用のロジック アプリのワークフローに Response アクションが含まれていると仮定すると、この時間が経過してもロジック アプリから応答がない場合、ご利用のロジック アプリは呼び出し元に `504 GATEWAY TIMEOUT` を返します。 あるいは、ご利用のロジック アプリに Response アクションが含まれていない場合、ご利用のロジック アプリは呼び出し元にすぐに `202 ACCEPTED` 応答を返します。
 
 1. 完了したら、ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 

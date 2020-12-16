@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 981697211cf8ee0aff1ac0e3d0db6000c1089c00
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 398e964ad773e4c015129c6dd3d4784f1300e16b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896851"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905776"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してストア ロケーターを作成する
 
@@ -76,12 +76,12 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
 
 このデータのスクリーンショットを見ると、次のことが確認できます。
 
-* 所在地情報は、 **AddressLine** 、 **City** 、 **Municipality** (郡)、 **AdminDivision** (州)、 **PostCode** (郵便番号)、 **Country** の各列を使用して格納されています。  
+* 所在地情報は、**AddressLine**、**City**、**Municipality** (郡)、**AdminDivision** (州)、**PostCode** (郵便番号)、**Country** の各列を使用して格納されています。  
 * **Latitude** 列と **Longitude** 列には、Contoso Coffee コーヒー ショップの各所在地に対応する座標が格納されています。 座標情報がない場合は、Azure Maps の Search サービスを使用して所在地の座標を特定できます。
 * その他いくつかの列に、コーヒー ショップに関連したメタデータが格納されています。電話番号、ブール型列、店舗の開店時間と閉店時間 (24 時間形式) です。 ブール型列は、Wi-Fi と車椅子の利用の可否に使用されます。 実際の場所データとの関係がより強いメタデータを格納する列を独自に作成してもかまいません。
 
 > [!NOTE]
-> Azure Maps は、球面メルカトル図法 "EPSG:3857" でデータをレンダリングしますが、WGS84 測地系を使用する "EPSG:4325" のデータを読み取ります。
+> Azure Maps は、球面メルカトル図法 "EPSG:3857" でデータをレンダリングしますが、WGS84 測地系を使用する "EPSG:4326" のデータを読み取ります。
 
 データセットをアプリケーションに公開する方法は数多く存在します。 その 1 つが、データベースにデータを読み込んだうえで、そのデータを照会する Web サービスを公開する方法です。 その結果をユーザーのブラウザーに返すことができます。 この方法は、データセットが大きい場合や更新頻度が高い場合に最適です。 ただし、この方法は開発作業が増え、コストも大きくなります。
 
@@ -97,7 +97,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
 
 ## <a name="set-up-the-project"></a>プロジェクトのセットアップ
 
-プロジェクトの作成には、[Visual Studio](https://visualstudio.microsoft.com) または任意のコード エディターを使用できます。 プロジェクト フォルダーに、 *index.html* 、 *index.css* 、 *index.js* の 3 つのファイルを作成します。 これらのファイルによって、アプリケーションのレイアウト、スタイル、ロジックが定義されます。 *data* という名前のフォルダーを作成し、そのフォルダーに *ContosoCoffee.txt* を追加します。 *images* という名前の別のフォルダーを作成します。 このアプリケーションでは、地図上のアイコン、ボタン、マーカー用に 10 個の画像を使用します。 [これらの画像をダウンロード](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)することができます。 これでプロジェクト フォルダーは、次の図のようになります。
+プロジェクトの作成には、[Visual Studio](https://visualstudio.microsoft.com) または任意のコード エディターを使用できます。 プロジェクト フォルダーに、*index.html*、*index.css*、*index.js* の 3 つのファイルを作成します。 これらのファイルによって、アプリケーションのレイアウト、スタイル、ロジックが定義されます。 *data* という名前のフォルダーを作成し、そのフォルダーに *ContosoCoffee.txt* を追加します。 *images* という名前の別のフォルダーを作成します。 このアプリケーションでは、地図上のアイコン、ボタン、マーカー用に 10 個の画像を使用します。 [これらの画像をダウンロード](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)することができます。 これでプロジェクト フォルダーは、次の図のようになります。
 
 ![Simple Store Locator プロジェクト フォルダーのスクリーンショット](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)
 
@@ -158,7 +158,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
     </main>
     ```
 
-完成した *index.html* は、 [こちらの例の index.html ファイルのようになります](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)。
+完成した *index.html* は、[こちらの例の index.html ファイルのようになります](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)。
 
 次の手順で、CSS スタイルを定義します。 アプリケーション コンポーネントのレイアウトとアプリケーションの外観は、CSS スタイルによって定義されます。 *index.css* を開いて、次のコードを追加します。 `@media` スタイルは、画面幅が 700 ピクセルよりも狭いときに使用される代替スタイルのオプションを定義します。  
 
@@ -369,7 +369,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
 
 ## <a name="wire-the-application-with-javascript"></a>JavaScript を使用してアプリケーションを接続する
 
-ユーザー インターフェイスの設定はすべて整っています。 さらに、データを読み込んで解析した後、そのデータを地図上にレンダリングする JavaScript を追加する必要があります。 最初に、以下の手順で示すとおり、 *index.js* を開いてコードを追加します。
+ユーザー インターフェイスの設定はすべて整っています。 さらに、データを読み込んで解析した後、そのデータを地図上にレンダリングする JavaScript を追加する必要があります。 最初に、以下の手順で示すとおり、*index.js* を開いてコードを追加します。
 
 1. 設定を更新しやすいようグローバル オプションを追加します。 マップ、ポップアップ ウィンドウ、データ ソース、アイコン レイヤー、および HTML マーカーの変数を定義します。 検索領域の中心を示すように HTML マーカーを設定します。 また、Azure Maps 検索サービス クライアントのインスタンスを定義します。
 
@@ -432,7 +432,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
             }
         };
 
-        //If the user selects the My Location button, use the Geolocation API to get the user's location. Center and zoom the map on that location.
+        //If the user selects the My Location button, use the Geolocation API (Preview) to get the user's location. Center and zoom the map on that location.
         document.getElementById('myLocationBtn').onclick = setMapToUserLocation;
 
         //Wait until the map resources are ready.
@@ -472,7 +472,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
     function setMapToUserLocation() {
         //Request the user's location.
         navigator.geolocation.getCurrentPosition(function(position) {
-            //Convert the Geolocation API position to a longitude and latitude position value that the map can interpret and center the map over it.
+            //Convert the Geolocation API (Preview) position to a longitude and latitude position value that the map can interpret and center the map over it.
             map.setCamera({
                 center: [position.coords.longitude, position.coords.latitude],
                 zoom: maxClusterZoomLevel + 1

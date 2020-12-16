@@ -1,21 +1,21 @@
 ---
 title: テンプレートでの Azure Key Vault の使用
-description: Azure Key Vault を使用して Resource Manager テンプレートのデプロイ時にセキュリティで保護されたパラメーターの値を渡す方法について説明します
+description: Azure Key Vault を使用して Azure Resource Manager テンプレート (ARM テンプレート) のデプロイ時にセキュリティで保護されたパラメーターの値を渡す方法について説明します。
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 73a50c282eee023bff525bc737bd2170938de1dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75eb977559573b72883de3ddbc27391c7e299a6f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119278"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929318"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>チュートリアル:ARM テンプレートのデプロイで Azure Key Vault を統合する
 
-Azure のキー コンテナーからシークレットを取得し、Azure Resource Manager (ARM) テンプレートのデプロイ時にシークレットをパラメーターとして渡す方法を説明します。 キー コンテナー ID のみを参照するため、パラメーター値が公開されることはありません。 キー コンテナーのシークレットは、静的 ID または動的 ID を使用して参照することができます。 このチュートリアルでは、静的 ID を使用します。 静的 ID を使用する場合、テンプレート ファイルではなく、テンプレート パラメーター ファイルでキー コンテナーを参照します。 両方のアプローチの詳細については、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](./key-vault-parameter.md)」を参照してください
+Azure のキー コンテナーからシークレットを取得し、Azure Resource Manager テンプレート (ARM テンプレート) のデプロイ時にシークレットをパラメーターとして渡す方法を説明します。 キー コンテナー ID のみを参照するため、パラメーター値が公開されることはありません。 キー コンテナーのシークレットは、静的 ID または動的 ID を使用して参照することができます。 このチュートリアルでは、静的 ID を使用します。 静的 ID を使用する場合、テンプレート ファイルではなく、テンプレート パラメーター ファイルでキー コンテナーを参照します。 両方のアプローチの詳細については、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](./key-vault-parameter.md)」を参照してください
 
 「[リソースのデプロイ順序の設定](./template-tutorial-create-templates-with-dependent-resources.md)」チュートリアルでは、仮想マシン (VM) を作成します。 VM 管理者のユーザー名とパスワードを指定する必要があります。 パスワードを指定する代わりに、Azure Key Vault にパスワードを事前に格納しておき、デプロイ時にキー コンテナーからパスワードを取得するようテンプレートをカスタマイズすることができます。
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使用して ARM テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 * セキュリティを向上させるために、生成されたパスワードを VM 管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
 
     ```console

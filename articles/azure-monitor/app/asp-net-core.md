@@ -4,12 +4,12 @@ description: ASP.NET Core Web アプリケーションの可用性、パフォ�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 825cd451120f06597922c142dfc6bf8c10f5c700
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 2921c6379b34e002013b5f0087cefd502ab0ab84
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875123"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904535"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights for ASP.NET Core アプリケーション
 
@@ -25,7 +25,7 @@ ms.locfileid: "91875123"
 * **デプロイ方法**: フレームワーク依存、自己完結型。
 * **Web サーバー**: IIS (インターネット インフォメーション サーバー)、Kestrel。
 * **ホスティング プラットフォーム**: Azure App Service、Azure VM、Docker、Azure Kubernetes Service (AKS) などの Web Apps 機能。
-* **.NET Core バージョン**:正式に[サポートされている](https://dotnet.microsoft.com/download/dotnet-core)すべての .NET Core バージョン。
+* **.NET Core バージョン**:正式に [サポートされている](https://dotnet.microsoft.com/download/dotnet-core)すべての .NET Core バージョン。
 * **IDE**: Visual Studio、VS Code、コマンド ライン。
 
 > [!NOTE]
@@ -35,6 +35,10 @@ ms.locfileid: "91875123"
 
 - 機能している ASP.NET Core アプリケーション。 ASP.NET Core アプリケーションを作成する必要がある場合は、こちらの [ASP.NET Core チュートリアル](/aspnet/core/getting-started/)に従ってください。
 - 有効な Application Insights インストルメンテーション キー。 Application Insights にテレメトリを送信するには、このキーが必要です。 インストルメンテーション キーを取得するために新しい Application Insights リソースを作成する必要がある場合は、「[Application Insights リソースの作成](./create-new-resource.md)」をご覧ください。
+
+> [!IMPORTANT]
+> 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 [接続文字列](./sdk-connection-string.md?tabs=net)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
+
 
 ## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>Application Insights のサーバー側テレメトリを有効にする (Visual Studio)
 
@@ -142,7 +146,7 @@ Microsoft.ApplicationInsights.AspNetCore バージョン [2.15.0](https://www.nu
 
 ### <a name="performance-counters"></a>パフォーマンス カウンター
 
-ASP.NET Core での[パフォーマンス カウンター](./web-monitor-performance.md)のサポートは制限されています。
+ASP.NET Core での[パフォーマンス カウンター](./performance-counters.md)のサポートは制限されています。
 
 * SDK バージョン 2.4.1 以降では、アプリケーションが Azure Web Apps (Windows) で実行されている場合、パフォーマンス カウンターが収集されます。
 * SDK バージョン 2.7.1 以降では、アプリケーションが Windows で実行されていて、`NETSTANDARD2.0` 以降を対象とする場合、パフォーマンス カウンターが収集されます。
@@ -261,6 +265,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
+> [!NOTE]
+> `services.AddSingleton<ITelemetryInitializer, MyCustomTelemetryInitializer>();` は単純な初期化子に対して機能します。 それ以外には、次のものが必要です: `services.AddSingleton(new MyCustomTelemetryInitializer() { fieldName = "myfieldName" });`
+    
 ### <a name="removing-telemetryinitializers"></a>TelemetryInitializers の削除
 
 テレメトリ初期化子は既定で存在します。 すべてまたは特定のテレメトリ初期化子を削除するには、`AddApplicationInsightsTelemetry()` を呼び出した "*後*" で、次のサンプル コードを使用します。

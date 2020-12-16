@@ -9,12 +9,12 @@ ms.date: 10/14/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ab7749c93f39d0c7b630b63e0b0e68589b61ede2
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: a12fc991734fe74e450aa14a477f3a4500ba659c
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090949"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937255"
 ---
 # <a name="list-blob-containers-with-net"></a>.NET を使用して BLOB コンテナーを一覧表示する
 
@@ -42,7 +42,7 @@ Azure Storage アカウント内のコンテナーをコードから一覧表示
 
 既定では、一覧表示操作では一度に最大 5000 の結果が返されます。 返される結果セットが小さくなるようにするには、返される結果ページのサイズに 0 以外の値を指定します。
 
-ストレージ アカウントに 5000 を超えるコンテナーが含まれている場合、または一覧表示操作によってストレージ アカウント内のコンテナーのサブセットが返されるようにページ サイズを指定した場合、Azure Storage はコンテナーの一覧と共に " *継続トークン* " を返します。 継続トークンは、Azure Storage から次の結果セットを取得するために使用できる非透過の値です。
+ストレージ アカウントに 5000 を超えるコンテナーが含まれている場合、または一覧表示操作によってストレージ アカウント内のコンテナーのサブセットが返されるようにページ サイズを指定した場合、Azure Storage はコンテナーの一覧と共に "*継続トークン*" を返します。 継続トークンは、Azure Storage から次の結果セットを取得するために使用できる非透過の値です。
 
 コードでは、継続トークンの値をチェックして、それが空 (.NET v12 の場合) または null (.NET v11 以前の場合) であるかどうかを確認します。 継続トークンが null の場合、結果セットは完了しています。 継続トークンが null でない場合は、継続トークンが null になるまで、一覧表示メソッドをもう一度呼び出し、継続トークンを渡して次の結果セットを取得します。
 
@@ -52,7 +52,7 @@ Azure Storage アカウント内のコンテナーをコードから一覧表示
 
 ### <a name="return-metadata"></a>メタデータを返す
 
-結果と共にコンテナーのメタデータを返すには、 [BlobContainerTraits](/dotnet/api/azure.storage.blobs.models.blobcontainertraits) 列挙型 (.NET v12 の場合) または [ContainerListingDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) 列挙型 (.NET v11 以前の場合) の **メタデータ** 値を指定します。 Azure Storage では、返される各コンテナーにメタデータが含まれているため、コンテナーのメタデータもフェッチする必要はありません。
+結果と共にコンテナーのメタデータを返すには、[BlobContainerTraits](/dotnet/api/azure.storage.blobs.models.blobcontainertraits) 列挙型 (.NET v12 の場合) または [ContainerListingDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) 列挙型 (.NET v11 以前の場合) の **メタデータ** 値を指定します。 Azure Storage では、返される各コンテナーにメタデータが含まれているため、コンテナーのメタデータもフェッチする必要はありません。
 
 ## <a name="example-list-containers"></a>例:コンテナーの一覧表示
 
@@ -60,7 +60,7 @@ Azure Storage アカウント内のコンテナーをコードから一覧表示
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="ListContainers":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="Snippet_ListContainers":::
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 

@@ -1,17 +1,17 @@
 ---
 title: Azure App Configuration REST API - ラベル
 description: Azure App Configuration REST API を使用してラベルを操作するための参照ページ
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: e6fcc8399c1dbc36a5b2e915c726f1c2496ee2f9
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 5a59f5910d44f2a2b4cd75e7a1d51c2ed5dd51a4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423707"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932508"
 ---
 # <a name="labels"></a>ラベル
 
@@ -97,7 +97,7 @@ GET /labels?name={label-name}&api-version={api-version}
 
 ### <a name="supported-filters"></a>サポートされているフィルター
 
-|重要なフィルター|結果|
+|キー フィルター|結果|
 |--|--|
 |`name` を省略 (または `name=*`)|**任意の** ラベルに一致します|
 |`name=abc`|**abc** という名前のラベルに一致します|
@@ -112,7 +112,7 @@ GET /labels?name={label-name}&api-version={api-version}
 
 ### <a name="filter-validation"></a>フィルター検証
 
-フィルター検証エラーが発生した場合、応答は、エラーの詳細を含む HTTP `400` となります。
+フィルター検証エラーが発生した場合、応答は HTTP `400` で、次のようなエラー詳細が含まれます。
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -151,7 +151,7 @@ Content-Type: application/problem+json; charset=utf-8
 
 ## <a name="request-specific-fields"></a>要求に固有のフィールド
 
-省略可能な `$select` クエリ文字列パラメーターを使用して、要求されたフィールドのコンマ区切りリストを指定します。 `$select` パラメーターを省略した場合、応答には既定のセットが含められます。
+省略可能な `$select` クエリ文字列パラメーターを使用して、要求されたフィールドのコンマ区切りリストを指定します。 `$select` パラメーターを省略した場合、応答には既定のセットが含まれます。
 
 ```http
 GET /labels?$select=name&api-version={api-version} HTTP/1.1
@@ -159,7 +159,7 @@ GET /labels?$select=name&api-version={api-version} HTTP/1.1
 
 ## <a name="time-based-access"></a>時間ベースのアクセス
 
-過去の時点での結果の表現を取得します。 セクション [2.1.1](https://tools.ietf.org/html/rfc7089#section-2.1) を参照してください
+過去の時間のものとして結果の表現を取得します。 [2.1.1](https://tools.ietf.org/html/rfc7089#section-2.1) セクションを参照してください。
 
 ```http
 GET /labels&api-version={api-version} HTTP/1.1

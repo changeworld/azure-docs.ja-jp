@@ -10,22 +10,22 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/06/2020
+ms.date: 11/18/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38992c15c23216aa81cda566a333d8e45f90b17e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 079dcdc9d1667809779489c5d1126bc85cafb881
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004689"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511341"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールをアクティブ化する
 
 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用すると、企業における Azure AD や他の Microsoft オンライン サービス (Microsoft 365 や Microsoft Intune など) のリソースへの特権アクセスの管理が簡略化されます。  
 
-管理ロールの候補者となっている場合は、特権が必要な操作を実行する必要があるときに、ロールの割り当てをアクティブにできます。 たとえば、Microsoft 365 の機能をときどきしか管理しないユーザーは、組織の特権ロール管理者によって永続的なグローバル管理者には設定されない可能性があります。このロールは他のサービスにも影響を与えるからです。 その代わりに、Exchange Online 管理者などの Azure AD ロールが割り当てられます。 このような権限が必要な場合には、ロールをアクティブ化することを要求できます。それにより、事前に定義された期間だけ管理者権限が付与されます。
+管理ロールの *候補者* となっている場合は、特権が必要な操作を実行する必要があるときに、ロールの割り当てを *アクティブ* にできます。 たとえば、Microsoft 365 の機能をときどきしか管理しないユーザーは、組織の特権ロール管理者によって永続的なグローバル管理者には設定されない可能性があります。このロールは他のサービスにも影響を与えるからです。 その代わりに、Exchange Online 管理者などの Azure AD ロールが割り当てられます。 このような権限が必要な場合には、ロールをアクティブ化することを要求できます。それにより、事前に定義された期間だけ管理者権限が付与されます。
 
 この記事は、Privileged Identity Management で自分の Azure AD ロールをアクティブ化する必要のある管理者を対象としています。
 
@@ -56,19 +56,19 @@ Azure AD ロールを想定する必要がある場合は、Privileged Identity 
 
     ![[Azure AD ロール] - 資格があるロールの一覧](./media/pim-how-to-activate-role/activate-link.png)
 
-1. **[アクティブ化]** を選択して、[アクティブ化] ページを開きます。
+1. **[アクティブ化]** を選択して、[アクティブ化] ウィンドウを開きます。
 
     ![期間とスコープを含む Azure AD ロールのアクティブ化ページ](./media/pim-how-to-activate-role/activate-page.png)
 
-1. お使いのロールで多要素認証が必要な場合は、 **[続行する前に ID を確認してください]** をクリックします。 認証は、セッションごとに 1 回だけ行う必要があります。
-
-    ![ロールをアクティブ化する前に MFA で自分の ID を確認する](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
-
-1. **[ID を確認]** を選択し、指示に従って追加のセキュリティ確認を提供します。
+1. **[追加の検証が必要]** "** を選択し、指示に従って追加のセキュリティ確認を提供します。 認証が要求されるのは、各セッションにつき 1 回だけです。
 
     ![PIN コードなどのセキュリティ確認を提供するための画面](./media/pim-resource-roles-activate-your-roles/resources-mfa-enter-code.png)
 
-1. より狭いスコープを指定する場合は、 **[Scope]\(スコープ\)** を選択して [フィルター] ペインを開きます。 [フィルター] ペインでは、アクセス権が必要な Azure AD リソースを指定できます。 必要なリソースに対するアクセスのみを要求することをお勧めします。
+1. 多要素認証の後に、 **[続行する前にアクティブにする]** を選択します。
+
+    ![ロールをアクティブ化する前に MFA で自分の ID を確認する](./media/pim-how-to-activate-role/activate-role-mfa-banner.png)
+
+1. より狭いスコープを指定する場合は、 **[Scope]\(スコープ\)** を選択して [フィルター] ペインを開きます。 [フィルター] ペインでは、アクセス権が必要な Azure AD リソースを指定できます。 必要最低限のリソースに対するアクセスを要求することをお勧めします。
 
 1. 必要に応じて、カスタムのアクティブ化開始時刻を指定します。 Azure AD ロールは、選択した時刻になるとアクティブになります。
 
@@ -126,9 +126,9 @@ Azure AD ロールを引き受ける必要がある場合は、Privileged Identi
 
 1. **[Azure AD Privileged Identity Management]** を開きます。 ダッシュボードに [Privileged Identity Management] タイルを追加する方法については、「[Privileged Identity Management の使用開始](pim-getting-started.md)」を参照してください。
 
-1. **[Azure AD roles]\(Azure AD ロール)** をクリックします。
+1. **[Azure AD ロール]** を選択します。
 
-1. **[自分のロール]** をクリックして、対象の Azure AD ロールの一覧を表示します。
+1. **[自分のロール]** を選択して、対象の Azure AD ロールの一覧を表示します。
 
     ![資格のあるロールまたはアクティブなロールの一覧を表示した [Azure AD ロール - 自分のロール]](./media/pim-how-to-activate-role/directory-roles-my-roles.png)
 
@@ -136,17 +136,17 @@ Azure AD ロールを引き受ける必要がある場合は、Privileged Identi
 
     ![アクティブ化リンクを示す [Azure AD ロール - 自分のロール] 一覧](./media/pim-how-to-activate-role/directory-roles-my-roles-activate.png)
 
-1. **[アクティブ化]** をクリックして、[ロールのアクティブ化の詳細] ウィンドウを開きます。
+1. **[アクティブ化]** を選択して、[ロールのアクティブ化の詳細] ウィンドウを開きます。
 
 1. お使いのロールで多要素認証 (MFA) が必要な場合は、 **[続行する前に ID を確認してください]** をクリックします。 認証は、セッションごとに 1 回だけ行う必要があります。
 
     ![ロールをアクティブ化する前に MFA で自分の ID ウィンドウを確認する](./media/pim-how-to-activate-role/directory-roles-my-roles-mfa.png)
 
-1. **[ID を確認]** をクリックし、指示に従って追加のセキュリティ確認を提供します。
+1. **[ID を確認]** を選択し、指示に従って追加のセキュリティ確認を提供します。
 
     ![連絡方法を確認する追加のセキュリティ確認ページ](./media/pim-how-to-activate-role/additional-security-verification.png)
 
-1. **[アクティブ化]** をクリックして、[アクティブ化] ウィンドウを開きます。
+1. **[アクティブ化]** を選択して、[アクティブ化] ウィンドウを開きます。
 
     ![開始時刻、期間、チケット、理由を指定する [アクティブ化] ウィンドウ](./media/pim-how-to-activate-role/directory-roles-activate.png)
 
@@ -158,13 +158,13 @@ Azure AD ロールを引き受ける必要がある場合は、Privileged Identi
 
     ![カスタムの開始時刻、期間、チケット、理由を入力した [アクティブ化] ウィンドウ](./media/pim-how-to-activate-role/directory-roles-activation-pane.png)
 
-1. **[アクティブ化]** をクリックします。
+1. **[アクティブ化]** を選びます。
 
     ロールに承認が必要ない場合、 **[アクティブ化の状態]** ウィンドウが表示され、アクティブ化の状態が示されます。
 
     ![アクティブ化の 3 つのステージを表示した [アクティブ化の状態] ページ](./media/pim-how-to-activate-role/activation-status.png)
 
-    すべてのステージが完了したら、 **[サインアウト]** リンクをクリックして、Azure portal からサインアウトします。 ポータルにもう一度サインインすると、ロールを使用できるようになります。
+    すべてのステージが完了したら、 **[サインアウト]** リンクを選択して、Azure portal からサインアウトします。 ポータルにもう一度サインインすると、ロールを使用できるようになります。
 
     アクティブ化するために[ロールで承認が必要](./azure-ad-pim-approval-workflow.md)な場合は、ブラウザーの右上隅に Azure の通知が表示され、要求が承認待ちになっていることが示されます。
 
@@ -174,9 +174,9 @@ Azure AD ロールを引き受ける必要がある場合は、Privileged Identi
 
 1. Azure AD Privileged Identity Management を開きます。
 
-1. **[Azure AD roles]\(Azure AD ロール)** をクリックします。
+1. **[Azure AD ロール]** を選択します。
 
-1. **[個人の要求]** をクリックして、要求の一覧を表示します。
+1. **[個人の要求]** を選択して、要求の一覧を表示します。
 
     ![[Azure AD ロール - 個人の要求]](./media/pim-how-to-activate-role/directory-roles-my-requests.png)
 
@@ -188,13 +188,13 @@ Azure AD ロールを引き受ける必要がある場合は、Privileged Identi
 
 1. Azure AD Privileged Identity Management を開きます。
 
-1. **[Azure AD roles]\(Azure AD ロール)** をクリックします。
+1. **[Azure AD ロール]** を選択します。
 
-1. **[自分のロール]** をクリックします。
+1. **[自分のロール]** を選択します。
 
-1. **[アクティブなロール]** をクリックして、アクティブなロールの一覧を表示します。
+1. **[アクティブなロール]** を選択して、アクティブなロールの一覧を表示します。
 
-1. 使用が終了したロールを探し、 **[非アクティブ化]** をクリックします。
+1. 使用が終了したロールを探し、 **[非アクティブ化]** を選択します。
 
 ## <a name="cancel-a-pending-request-previous-version"></a>保留中の要求を取り消す (以前のバージョン)
 
@@ -202,13 +202,13 @@ Azure AD ロールを引き受ける必要がある場合は、Privileged Identi
 
 1. Azure AD Privileged Identity Management を開きます。
 
-1. **[Azure AD roles]\(Azure AD ロール)** をクリックします。
+1. **[Azure AD ロール]** を選択します。
 
-1. **[個人の要求]** をクリックします。
+1. **[My requests]\(個人の要求\)** を選択します。
 
-1. キャンセルするロールの **[キャンセル]** ボタンをクリックします。
+1. 取り消すロールの **[キャンセル]** ボタンを選択します。
 
-    [キャンセル] をクリックすると、要求が取り消されます。 ロールを再びアクティブにするには、新しいアクティブ化要求を送信する必要があります。
+    **[キャンセル]** を選択すると、要求が取り消されます。 ロールを再びアクティブにするには、新しいアクティブ化要求を送信する必要があります。
 
    ![[キャンセル] ボタンが強調表示された個人の要求の一覧](./media/pim-how-to-activate-role/directory-role-cancel.png)
 

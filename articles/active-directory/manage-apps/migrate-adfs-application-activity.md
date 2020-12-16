@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1245010ae0b21c5bb8e3ebd93a9fe851d48c858b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 77a43d5bd5f2b228d5ed4384fc1efdca76f8ea0b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835511"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573886"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>AD FS アプリケーション アクティビティ レポート (プレビュー) を使用してアプリケーションを Azure AD に移行する
 
@@ -26,9 +26,10 @@ ms.locfileid: "94835511"
 
 Azure portal の AD FS アプリケーション アクティビティ レポート (プレビュー) を使用すると、Azure AD に移行できるアプリケーションをすばやく特定できます。 Azure AD との互換性に関するすべての AD FS アプリケーションの評価、問題がないかどうかの確認、個々のアプリケーションの移行の準備に関するガイダンスの提供が行われます。 AD FS アプリケーション アクティビティ レポートでは、以下が可能です。
 
-* **AD FS アプリケーションを検出し、移行のスコープを特定する。** AD FS アプリケーション アクティビティ レポートには、組織内のすべての AD FS アプリケーションが一覧表示され、Azure AD への移行の準備状況が示されます。
+* **AD FS アプリケーションを検出し、移行のスコープを特定する。** AD FS アプリケーション アクティビティ レポートには、過去 30 日間にアクティブなユーザー ログインがあった、組織内のすべての AD FS アプリケーションが一覧表示されます。 レポートには、アプリケーションの Azure AD への移行の準備状況が示されます。 レポートには、Office 365 など、AD FS 内の Microsoft 関連の証明書利用者は表示されません。 たとえば、"urn:federation:MicrosoftOnline" という名前の証明書利用者などです。
+
 * **移行するアプリケーションに優先度を付ける。** 過去 1 日、7 日、または 30 日間にアプリケーションにサインインした一意のユーザー数を取得して、そのアプリケーションを移行する重要度またはリスクを判断する材料にします。
-* **移行テストを実行し、問題を修正する。** アプリケーションを移行する準備ができているかどうかを判断するために、レポート サービスによって自動的にテストが実行されます。 結果は移行状態として AD FS アプリケーション アクティビティ レポートに表示されます。 移行の潜在的な問題が特定された場合は、問題の解決方法について具体的なガイダンスが示されます。
+* **移行テストを実行し、問題を修正する。** アプリケーションを移行する準備ができているかどうかを判断するために、レポート サービスによって自動的にテストが実行されます。 結果は移行状態として AD FS アプリケーション アクティビティ レポートに表示されます。 AD FS 構成に Azure AD 構成との互換性がない場合は、Azure AD で構成を解決する方法について具体的なガイダンスが示されます。
 
 AD FS アプリケーション アクティビティ データは、グローバル管理者、レポート閲覧者、セキュリティ閲覧者、アプリケーション管理者、クラウド アプリケーション管理者のいずれかの管理者ロールが割り当てられているユーザーが使用できます。
 
@@ -39,6 +40,9 @@ AD FS アプリケーション アクティビティ データは、グローバ
 * Azure AD Connect Health for AD FS エージェントがインストールされている必要があります。
    * [Azure AD Connect Health の詳細を確認する](../hybrid/how-to-connect-health-adfs.md)
    * [Azure AD Connect Health のセットアップと AD FS エージェントのインストールを開始する](../hybrid/how-to-connect-health-agent-install.md)
+
+>[!IMPORTANT] 
+>Azure AD Connect Health をインストールした後、いくつかの理由により、想定しているアプリケーションの一部が表示されません。 AD FS アプリケーション アクティビティ レポートには、過去 30 日間にユーザー ログインがあった AD FS 証明書利用者のみが表示されます。 また、レポートには、Office 365 などの Microsoft 関連の証明書利用者は表示されません。
 
 ## <a name="discover-ad-fs-applications-that-can-be-migrated"></a>移行可能な AD FS アプリケーションを検出する 
 
@@ -121,6 +125,17 @@ AD FS でアプリケーションの要求規則を構成している場合は�
 |EXTERNAL_ATTRIBUTE_STORE      | 発行ステートメントで、Active Directory と異なる属性ストアが使用されています。 現在、Azure AD では、Active Directory または Azure AD と異なるストアからの要求は取得されません。 この結果によってアプリケーションの Azure AD への移行が妨げられている場合は、[ご連絡ください](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695717-allow-to-source-user-attributes-from-external-dire)。          |
 |UNSUPPORTED_ISSUANCE_CLASS      | 発行ステートメントで、受信した要求セットに要求を追加する ADD が使用されています。 Azure AD では、これを複数の要求変換として構成できます。  詳細については、[エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](../develop/active-directory-claims-mapping.md)に関するページを参照してください。         |
 |UNSUPPORTED_ISSUANCE_TRANSFORMATION      | 発行ステートメントで、出力される要求の値を変換するために正規表現が使用されています。 Azure AD で同様の機能を実現するには、Extract()、Trim()、ToLower など、事前に定義された変換を使用できます。 詳細については、[エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](../develop/active-directory-saml-claims-customization.md)に関するページを参照してください。          |
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="cant-see-all-my-ad-fs-applications-in-the-report"></a>一部の AD FS アプリケーションがレポートに表示されません
+
+ Azure AD Connect Health がインストールされているにも関わらずインストールを求めるメッセージが引き続き表示される場合、または、一部の AD FS アプリケーションがレポートに表示されない場合は、アクティブな AD FS アプリケーションがないか、AD FS アプリケーションが Microsoft アプリケーションである可能性があります。
+ 
+ AD FS アプリケーション アクティビティ レポートには、過去 30 日間にアクティブなユーザー サインインがあった、組織内のすべての AD FS アプリケーションが一覧表示されます。 また、レポートには、Office 365 など、AD FS 内の Microsoft 関連の証明書利用者は表示されません。 たとえば、"urn:federation:MicrosoftOnline"、"microsoftonline"、" microsoft:winhello:cert:prov:server" といった名前の証明書利用者は一覧に表示されません。
+
+
+
 
 
 ## <a name="next-steps"></a>次のステップ

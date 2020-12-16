@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: 3c3a20d8401affc519e118c7f2295339990e7dee
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 69fda41249ced8518e430af8305c0cb10822b214
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186509"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559067"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure Monitor ログの概要
 Azure Monitor ログは、[監視対象のリソース](../monitor-reference.md)からログとパフォーマンス データを収集して整理する Azure Monitor の機能です。 Azure サービスからの[プラットフォーム ログ](platform-logs-overview.md)、[仮想マシン エージェント](agents-overview.md)からのログとパフォーマンス データ、[アプリケーション](../app/app-insights-overview.md)からの使用状況とパフォーマンス データなど、さまざまなソースからのデータを 1 つのワークスペースに統合し、何百万ものレコードを迅速に分析できる高度なクエリ言語を使用してまとめて分析することができます。 特定のレコードのセットを取得するだけの単純なクエリを実行することも、高度なデータ分析を実行して監視データの重要なパターンを特定することもできます。 Log Analytics を使用してログ クエリとその結果を対話形式で操作したり、アラート ルールでそれらを使用して問題が事前に通知されるようにしたり、ブックやダッシュボードでその結果を視覚化したりします。
@@ -42,7 +42,7 @@ Log Analytics のワークスペースを作成したら、データを送信す
 
 
 ## <a name="log-analytics-workspaces"></a>Log Analytics ワークスペース
-Azure Monitor ログによって収集されたデータは、もう 1 つの [Log Analytics ワークスペース](./design-logs-deployment.md)に格納されます。 ワークスペースでは、データの地理的な場所、データにアクセスできるユーザーを定義するアクセス権、価格レベルやデータ保有期間などの構成設定が定義されます。  
+Azure Monitor ログによって収集されたデータは、1 つ以上の [Log Analytics ワークスペース](./design-logs-deployment.md)に格納されます。 ワークスペースでは、データの地理的な場所、データにアクセスできるユーザーを定義するアクセス権、価格レベルやデータ保有期間などの構成設定が定義されます。  
 
 Azure Monitor ログを使用するには、少なくとも 1 つのワークスペースを作成する必要があります。 すべての監視データに対して 1 つのワークスペースで十分である場合もあります。また、要件に応じて複数のワークスペースを作成することもできます。 たとえば、実稼働データ用に 1 つのワークスペースを、そしてテスト用に別のものを用意することができます。 
 

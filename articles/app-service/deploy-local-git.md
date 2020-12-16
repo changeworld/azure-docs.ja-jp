@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 9650633e1eaffdb588b3a31cd5a2f305c36e7a25
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 84e257111e8da0546cf104e0cc5d3ac95a9294ba
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741303"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558676"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service へのローカル Git デプロイ
 
@@ -31,9 +31,9 @@ ms.locfileid: "92741303"
   git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
   ```
 
-[!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 ## <a name="deploy-with-kudu-build-server"></a>Kudu ビルド サーバーを使用してデプロイする
 
@@ -80,7 +80,7 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
    git remote add azure <url>
    ```
    
-1. `git push azure master` を使用して Azure リモートにプッシュします。 
+1. `git push azure main` を使用して Azure リモートにプッシュします。 
    
 1. **[Git Credential Manager]** ウィンドウで、ご利用の Azure サインインパスワードではなく、ご利用の [デプロイ ユーザー パスワード](#configure-a-deployment-user)を入力します。
    
@@ -100,7 +100,7 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
 
 Azure Pipelines (プレビュー) を使用してアプリのローカル Git デプロイを有効にするには:
 
-1. [Azure portal](https://portal.azure.com) で、 **App Services** を検索して選択します。 
+1. [Azure portal](https://portal.azure.com) で、**App Services** を検索して選択します。 
 
 1. ご利用の Azure App Service アプリを選択し、左側のメニューで **[デプロイ センター]** を選択します。
    
@@ -131,7 +131,7 @@ Azure Pipelines (プレビュー) を使用してアプリのローカル Git �
    git remote add azure <url>
    ```
    
-1. `git push azure master` を使用して Azure リモートにプッシュします。 
+1. `git push azure main` を使用して Azure リモートにプッシュします。 
    
 1. **[Git Credential Manager]** ページで、ご自分の visualstudio.com ユーザーを使用してサインインします。 他の認証方法については、[Azure DevOps Services 認証の概要](/vsts/git/auth-overview?view=vsts)に関する記事を参照してください。
    
@@ -149,10 +149,10 @@ Git を使用して Azure の App Service アプリに発行すると、次の�
 ---|---|---|
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|アプリが稼働していません。|Azure portal でアプリを起動します。 Web アプリが停止しているとき、Git デプロイは利用できません。|
 |`Couldn't resolve host 'hostname'`|'azure' リモートのアドレス情報が正しくありません。|`git remote -v` コマンドを使用して、すべてのリモートおよび関連付けられている URL を一覧表示します。 "azure" リモートの URL が正しいことを確認します。 必要に応じて、このリモートを削除し、正しい URL を使用して再作成します。|
-|`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|`git push` の間にブランチを指定しなかったか、または `.gitconfig` に `push.default` 値を設定していません。|master ブランチを指定して、もう一度 `git push` を実行します: `git push azure master`。|
-|`src refspec [branchname] does not match any.`|"azure" リモートの master 以外のブランチにプッシュしようとしました。|master ブランチを指定して、もう一度 `git push` を実行します: `git push azure master`。|
+|`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'main'.`|`git push` の間にブランチを指定しなかったか、または `.gitconfig` に `push.default` 値を設定していません。|メイン ブランチを指定して、もう一度 `git push` を実行します: `git push azure main`。|
+|`src refspec [branchname] does not match any.`|"azure" リモートのメイン以外のブランチにプッシュしようとしました。|メイン ブランチを指定して、もう一度 `git push` を実行します: `git push azure main`。|
 |`RPC failed; result=22, HTTP code = 5xx.`|このエラーは、HTTPS 経由で大規模な Git リポジトリをプッシュしようとした場合に発生する可能性があります。|ローカル コンピューター上の Git 構成を変更して `postBuffer` を増やします。 (例: `git config --global http.postBuffer 524288000`)。|
-|`Error - Changes committed to remote repository but your web app not updated.`|追加の必須モジュールを指定する _package.json_ ファイルを使用して Node.js アプリをデプロイしました。|失敗に関する詳細なコンテキストについては、このエラーの前の `npm ERR!` エラー メッセージを確認してください。 このエラーの既知の原因と、対応する `npm ERR!` メッセージを以下に示します。<br /><br />**形式が正しくない package.json ファイル** : `npm ERR! Couldn't read dependencies.`<br /><br />**Windows 用のバイナリ配布がないネイティブ モジュール** :<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />or <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
+|`Error - Changes committed to remote repository but your web app not updated.`|追加の必須モジュールを指定する _package.json_ ファイルを使用して Node.js アプリをデプロイしました。|失敗に関する詳細なコンテキストについては、このエラーの前の `npm ERR!` エラー メッセージを確認してください。 このエラーの既知の原因と、対応する `npm ERR!` メッセージを以下に示します。<br /><br />**形式が正しくない package.json ファイル**: `npm ERR! Couldn't read dependencies.`<br /><br />**Windows 用のバイナリ配布がないネイティブ モジュール**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />or <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>その他のリソース
 

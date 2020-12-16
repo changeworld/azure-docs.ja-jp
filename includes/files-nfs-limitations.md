@@ -5,24 +5,26 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 10177dd949ac531027e13cf633b11c16674fd4ab
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 372342611265640a2a64100f003880a430d61ca0
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94386467"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620947"
 ---
 プレビュー段階では、NFS には次の制限事項があります。
 
-- 現在、NFS 4.1 では、[プロトコル仕様](https://tools.ietf.org/html/rfc5661)の必須機能のみがサポートされています。 あらゆる種類の委任とコールバック、ロックのアップグレードとダウングレード、Kerberos 認証と暗号化など、オプション機能はサポートされていません。
+- 現在、NFS 4.1 では、[プロトコル仕様](https://tools.ietf.org/html/rfc5661)のほとんどの機能がサポートされています。 あらゆる種類の委任とコールバック、ロックのアップグレードとダウングレード、Kerberos 認証と暗号化など、一部の機能はサポートされていません。
 - 要求の大部分がメタデータ中心の場合、読み取り/書き込み/更新操作と比較すると、待機時間が長くなります。
 - NFS 共有を作成するには、新しいストレージ アカウントを作成する必要があります。
 - 管理プレーン REST API のみがサポートされています。 データ プレーン REST API は使用できません。したがって、Storage Explorer などのツールが NFS 共有で動作しなくなり、Azure portal では NFS 共有データを参照できなくなります。
+- AzCopy は現在サポートされていません。
 - Premium レベルでのみ使用できます。
-- 現在、ローカル冗長ストレージ (LRS) でのみ使用できます。
+- NFS 共有は、数値 UID/GID のみを受け入れます。 クライアントが英数字の UID/GID を送信しないようにするには、ID マッピングを無効にする必要があります。
+- プライベート リンクを使用する場合は、個々の VM の 1 つのストレージ アカウントからのみ共有をマウントできます。 他のストレージ アカウントから共有をマウントしようとすると失敗します。
 
 ### <a name="azure-storage-features-not-yet-supported"></a>まだサポートされていない Azure Storage の機能
 

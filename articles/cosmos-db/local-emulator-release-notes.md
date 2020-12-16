@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 42259b36f1a9bfe243df47cc08b33fe8c46d819d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5d105ad4c2aff03dae52b340037e4c193bf82ca1
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493068"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608437"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB Emulator - リリース ノートとダウンロード情報
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,6 +26,12 @@ ms.locfileid: "96493068"
 |**開始するには**|[Azure Cosmos Emulator を使用してローカルで開発する](local-emulator.md)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="2119-3-december-2020"></a>2.11.9 (2020 年 12 月 3 日)
+
+ - このリリースでは、Azure Cosmos DB の最新の機能と改善点を反映したコンテンツの全般的な更新に加えて、Azure Cosmos DB Emulator の機能に関するいくつかの問題に対処しています。
+ * 直接モードと Java クライアント アプリケーションを使用しているときに、大きなドキュメント ペイロード要求が失敗する問題を修正しました。
+ * .NET ベースのアプリケーションの対象となる場合の MongoDB エンドポイント バージョン 3.6 での接続の問題を修正しました。
 
 ### <a name="2118-6-november-2020"></a>2.11.8 (2020 年 11 月 6 日)
 

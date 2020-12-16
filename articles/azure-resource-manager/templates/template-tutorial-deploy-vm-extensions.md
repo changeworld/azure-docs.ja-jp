@@ -1,21 +1,21 @@
 ---
 title: テンプレートを使用して VM 拡張機能をデプロイする
-description: Azure Resource Manager テンプレートを使用して仮想マシン拡張機能をデプロイする方法について説明します
+description: Azure Resource Manager テンプレート (ARM テンプレート) を使用して仮想マシン拡張機能をデプロイする方法について説明します。
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f82e0eb45f4bc7c3260554b1b1120025029336bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49bc1a77e2e25cb069a89812603ff562b8a4c1cd
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89073644"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931454"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>チュートリアル:ARM テンプレートを使用して仮想マシン拡張機能をデプロイする
 
-[Azure 仮想マシン拡張機能](../../virtual-machines/extensions/features-windows.md)を使用して、Azure VM でデプロイ後の構成タスクと自動化タスクを実行する方法について説明します。 Azure VM と共に、多くのさまざまな VM 拡張機能を使用できます。 このチュートリアルでは、Azure Resource Manager (ARM) テンプレートからカスタム スクリプト拡張機能をデプロイして、Windows VM で PowerShell スクリプトを実行します。  スクリプトによって Web サーバーが VM にインストールされます。
+[Azure 仮想マシン拡張機能](../../virtual-machines/extensions/features-windows.md)を使用して、Azure VM でデプロイ後の構成タスクと自動化タスクを実行する方法について説明します。 Azure VM と共に、多くのさまざまな VM 拡張機能を使用できます。 このチュートリアルでは、Azure Resource Manager テンプレート (ARM テンプレート) からカスタム スクリプト拡張機能をデプロイして、Windows VM で PowerShell スクリプトを実行します。 スクリプトによって Web サーバーが VM にインストールされます。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -31,14 +31,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使用して ARM テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 * セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、[ARM テンプレートのデプロイで Azure Key Vault を統合する](./template-tutorial-use-key-vault.md)」を参照してください。 また、パスワードは 3 か月ごとに更新することをお勧めします。
+    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、[ARM テンプレートのデプロイで Azure Key Vault を統合する](./template-tutorial-use-key-vault.md)方法に関するチュートリアルを参照してください。 また、パスワードは 3 か月ごとに更新することをお勧めします。
 
 ## <a name="prepare-a-powershell-script"></a>PowerShell スクリプトを準備する
 

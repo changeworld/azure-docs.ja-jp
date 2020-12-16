@@ -11,16 +11,16 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1b4ee9f06e8ed8bd47be1075070dea71b42b1cef
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 05ac0f78345e1c1d7643f24410d53b209ab7c375
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349071"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574158"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>チュートリアル:個人の開発環境で Azure Machine Learning の使用を開始する (パート 1/4)
 
-この " *4 部構成のチュートリアル シリーズ* " では、Azure Machine Learning の基礎を学び、以下のような Azure クラウド上でジョブベースの Python 機械学習タスクを実行します。 
+この "*4 部構成のチュートリアル シリーズ*" では、Azure Machine Learning の基礎を学び、以下のような Azure クラウド上でジョブベースの Python 機械学習タスクを実行します。 
 
 このチュートリアル シリーズのパート 1 では、次のことを行います。
 
@@ -32,7 +32,7 @@ ms.locfileid: "93349071"
 > * コンピューティング クラスターを設定します。
 
 > [!NOTE]
-> このチュートリアル シリーズでは、コンピューティング集約型で、再現性を必要とする Python " *ジョブベース* " の機械学習タスクに適した Azure Machine Learning の概念に焦点を当てています。 探索的ワークフローに関心がある場合は、代わりに [Azure Machine Learning コンピューティング インスタンスで Jupyter または RStudio](tutorial-1st-experiment-sdk-setup.md) を使用することができます。
+> このチュートリアル シリーズでは、コンピューティング集約型で、再現性を必要とする Python "*ジョブベース*" の機械学習タスクに適した Azure Machine Learning の概念に焦点を当てています。 探索的ワークフローに関心がある場合は、代わりに [Azure Machine Learning コンピューティング インスタンスで Jupyter または RStudio](tutorial-1st-experiment-sdk-setup.md) を使用することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -52,7 +52,10 @@ ms.locfileid: "93349071"
 pip install azureml-sdk
 ```
 
-## <a name="create-a-directory-structure-for-code"></a>コードのディレクトリ構造を作成する
+> [!div class="nextstepaction"]
+> [SDK をインストールしました](?success=install-sdk#dir) [問題が発生しました](https://www.research.net/r/7C8Z3DN?issue=install-sdk)
+
+## <a name="create-a-directory-structure-for-code"></a><a name="dir"></a>コードのディレクトリ構造を作成する
 このチュートリアルでは、次の簡単なディレクトリ構造を設定することをお勧めします。
 
 ```markdown
@@ -63,7 +66,11 @@ tutorial
 - `tutorial`: プロジェクトの最上位ディレクトリ。
 - `.azureml`: Azure Machine Learning の構成ファイルを格納するための非表示のサブディレクトリ。
 
-## <a name="create-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースの作成
+
+> [!div class="nextstepaction"]
+> [ディレクトリを作成しました](?success=create-dir#workspace) [問題が発生しました](https://www.research.net/r/7C8Z3DN?issue=create-dir)
+
+## <a name="create-an-azure-machine-learning-workspace"></a><a name="workspace"></a>Azure Machine Learning ワークスペースの作成
 
 ワークスペースは Azure Machine Learning の最上位レベルのリソースであり、次のことを行うための一元的な場所です。
 
@@ -76,7 +83,7 @@ tutorial
 コードは、対話型セッションで、または Python ファイルとして実行できます。
 
 >[!NOTE]
-> ローカルの開発環境 (コンピューターなど) を使用している場合は、次のコードを初めて実行するときに、" *デバイス コード* " を使用してワークスペースに対して認証するように求められます。 画面に表示される手順に従って操作します。
+> ローカルの開発環境 (コンピューターなど) を使用している場合は、次のコードを初めて実行するときに、"*デバイス コード*" を使用してワークスペースに対して認証するように求められます。 画面に表示される手順に従って操作します。
 
 ```python
 # tutorial/01-create-workspace.py
@@ -119,7 +126,10 @@ tutorial
 >
 > Azure Machine Learning ワークスペースと対話するには、認証が必要です。
 
-## <a name="create-an-azure-machine-learning-compute-cluster"></a>Azure Machine Learning コンピューティング クラスターの作成
+> [!div class="nextstepaction"]
+> [ワークスペースを作成しました](?success=create-workspace#cluster) [問題が発生しました](https://www.research.net/r/7C8Z3DN?issue=create-workspace)
+
+## <a name="create-an-azure-machine-learning-compute-cluster"></a><a name="cluster"></a> Azure Machine Learning コンピューティング クラスターを作成する
 
 最上位ディレクトリ (`tutorial`) に、`02-create-compute.py` という Python スクリプトを作成します。 次のコードを入力して、0 から 4 ノードの間で自動スケーリングされる Azure Machine Learning コンピューティング クラスターを作成します。
 
@@ -156,7 +166,7 @@ python ./02-create-compute.py
 
 
 > [!NOTE]
-> クラスターが作成されても、プロビジョニングされるノードは 0 個です。 クラスターでは、ジョブを送信するまでコストは発生 " *しません* "。 このクラスターは、2,400 秒 (40 分) の間、アイドル状態になったときにスケールダウンされます。
+> クラスターが作成されても、プロビジョニングされるノードは 0 個です。 クラスターでは、ジョブを送信するまでコストは発生 "*しません*"。 このクラスターは、2,400 秒 (40 分) の間、アイドル状態になったときにスケールダウンされます。
 
 フォルダー構造は次のようになります。
 
@@ -167,6 +177,9 @@ tutorial
 └──01-create-workspace.py
 └──02-create-compute.py
 ```
+
+> [!div class="nextstepaction"]
+> [コンピューティング クラスターを作成しました](?success=create-compute-cluster#next-steps)[問題が発生しました](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster)
 
 ## <a name="next-steps"></a>次のステップ
 

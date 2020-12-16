@@ -1,27 +1,33 @@
 ---
-title: Azure Maps の Mobility Service のデータ構造 | Microsoft Azure Maps
-description: Azure Maps Mobility Service で、データがどのように都市圏にまとめられているかについて説明します。 どのフィールドに、公共交通機関の停留所や路線に関する情報が格納されているかを確認します。
+title: Microsoft Azure Maps の Mobility Service (プレビュー) のデータ構造
+description: Azure Maps Mobility Service (プレビュー) で、データがどのように都市圏にまとめられているかについて説明します。 どのフィールドに、公共交通機関の停留所や路線に関する情報が格納されているかを確認します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/05/2019
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 60d45febced2f2d678d41682f7f27bf668943de2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8ffedc18ba331733723a6293756b60b733cc32cf
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896312"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904722"
 ---
-# <a name="data-structures-in-azure-maps-mobility-service"></a>Azure Maps Mobility Service のデータ構造
+# <a name="data-structures-in-azure-maps-mobility-services-preview"></a>Azure Maps Mobility Service (プレビュー) のデータ構造 
+
+> [!IMPORTANT]
+> Azure Maps Mobility Service は現在、パブリック プレビュー段階です。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+
 
 この記事では、[Azure Maps Mobility Service](/rest/api/maps/mobility) における都市圏の概念について説明します。 ここでは、このサービスで公共輸送機関の停留所や路線についてクエリを実行したときに返されるいくつかの一般的なフィールドについて説明します。 Mobility Service API を使って開発をする前に、この記事を読むことをお勧めします。
 
 ## <a name="metro-area"></a>都市圏
 
-Mobility Service データは、サポートされている都市圏によってグループ化されています。 都市圏は都市の境界に沿っていません。 1 つの都市圏に複数の都市、人口密集都市、周辺都市が含まれる場合があります。 実際、国/地域が 1 つの都市圏になる可能性があります。 
+Mobility Service (プレビュー) データは、サポートされている都市圏によってグループ化されています。 都市圏は都市の境界に沿っていません。 1 つの都市圏に複数の都市、人口密集都市、周辺都市が含まれる場合があります。 実際、国/地域が 1 つの都市圏になる可能性があります。 
 
 `metroID` は都市圏の ID であり、[Get Metro Area Info API](/rest/api/maps/mobility/getmetroareainfopreview) を呼び出すために使用できます。 Azure Maps の "Get Metro" API を使用して、輸送の種類、輸送機関、アクティブなアラート、選択した都市圏の追加情報を要求します。 サポートされている都市圏と metroID を要求することもできます。 都市圏 ID は変更されることがあります。
 
@@ -37,7 +43,7 @@ Mobility Service データは、サポートされている都市圏によって
 
 ## <a name="line-groups-and-lines"></a>路線グループと路線
 
-Mobility Service では、路線と路線グループに並列データ モデルを使用しています。 このモデルは、[GTFS](http://gtfs.org/) ルートから継承された変更と、乗車データをより適切に処理するために使用されます。
+Mobility Service (プレビュー) では、路線と路線グループに並列データ モデルを使用しています。 このモデルは、[GTFS](http://gtfs.org/) ルートから継承された変更と、乗車データをより適切に処理するために使用されます。
 
 
 ### <a name="line-groups"></a>路線グループ
@@ -54,17 +60,17 @@ Mobility Service では、路線と路線グループに並列データ モデ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Mobility Service を使用して輸送データを要求する方法について説明します。
+Mobility Service (プレビュー) を使用して輸送データを要求する方法について説明します。
 
 > [!div class="nextstepaction"]
 > [輸送データを要求する方法](how-to-request-transit-data.md)
 
-Mobility Service を使用してリアルタイム データを要求する方法について説明します。
+Mobility Service (プレビュー) を使用してリアルタイム データを要求する方法について説明します。
 
 > [!div class="nextstepaction"]
 > [リアルタイム データを要求する方法](how-to-request-real-time-data.md)
 
-Azure Maps Mobility Service API のドキュメントを確認します
+Azure Maps Mobility Service (プレビュー) API のドキュメントを確認する
 
 > [!div class="nextstepaction"]
 > [Mobility Service API ドキュメント](/rest/api/maps/mobility)

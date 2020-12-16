@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 5a35d939c12639770e25c3096c77f13d31310f85
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 90942e4deebdc65fe26ce94f04a15fe2b8c0684c
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492014"
+ms.locfileid: "96512071"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Azure ファイル共有のパフォーマンスに関する問題のトラブルシューティング
 
@@ -74,11 +74,12 @@ ms.locfileid: "96492014"
 
 ### <a name="cause"></a>原因
 
-クライアント仮想マシン (VM) がファイル共有とは異なるリージョンに配置されている可能性があります。
+クライアント仮想マシン (VM) がファイル共有とは異なるリージョンに配置されている可能性があります。 待機時間が長いその他の理由として、クライアントまたはネットワークに起因する待機時間が原因として考えられます。
 
 ### <a name="solution"></a>解決策
 
 - ファイル共有と同じリージョンに配置されている VM からアプリケーションを実行します。
+- ストレージ アカウントについては、Azure portal で **Azure Monitor** 介したトランザクション メトリック **SuccessE2ELatency** および **SuccessServerLatency** を確認してください。 SuccessE2ELatency と SuccessServerLatency のメトリック値が大きく異なる場合は、ネットワークやクライアントに起因する待機時間が原因である可能性があります。 「Azure Files 監視データのリファレンス」の「[トランザクション メトリック](storage-files-monitoring-reference.md#transaction-metrics)」を参照してください。
 
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>ネットワークでサポートされている最大スループットを達成できないクライアント
 

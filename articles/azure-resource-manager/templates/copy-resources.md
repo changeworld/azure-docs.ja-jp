@@ -1,26 +1,26 @@
 ---
 title: リソースの複数のインスタンスをデプロイする
-description: Azure Resource Manager テンプレートで copy 操作と配列を使用して、リソースの種類を複数回デプロイします。
+description: Azure Resource Manager テンプレート (ARM テンプレート) で copy 操作と配列を使用して、リソースの種類を複数回デプロイします。
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 411c92061826a6e8bc59380d0440fb69816557a4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 47f3d693b84347973889a6003360d7113c427f4d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91293970"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905912"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM テンプレートでのリソースの反復処理
 
-この記事では、Azure Resource Manager (ARM) テンプレートでリソースの複数のインスタンスを作成する方法について説明します。 テンプレートのリソース セクションに **copy** 要素を追加することで、デプロイするリソースの数を動的に設定できます。 テンプレートの構文を繰り返す必要もありません。
+この記事では、Azure Resource Manager テンプレート (ARM テンプレート) でリソースの複数のインスタンスを作成する方法について説明します。 テンプレートのリソース セクションに `copy` 要素を追加することで、デプロイするリソースの数を動的に設定できます。 テンプレートの構文を繰り返す必要もありません。
 
-[プロパティ](copy-properties.md)、[変数](copy-variables.md)、および[出力](copy-outputs.md)でもコピーを使用できます。
+[プロパティ](copy-properties.md)、[変数](copy-variables.md)、および[出力](copy-outputs.md)でも `copy` を使用できます。
 
 リソースをデプロイするかどうかを指定する必要がある場合は、[condition 要素](conditional-resource-deployment.md)に関する記述を参照してください。
 
 ## <a name="syntax"></a>構文
 
-この copy 要素には、次の一般的な形式があります。
+この `copy` 要素には、次の一般的な形式があります。
 
 ```json
 "copy": {
@@ -31,9 +31,9 @@ ms.locfileid: "91293970"
 }
 ```
 
-**name** プロパティは、ループを識別する任意の値です。 **count** プロパティは、リソースの種類に対して必要な反復の数を指定します。
+`name` プロパティは、ループを識別する任意の値です。 `count` プロパティは、リソースの種類に対して必要な反復の数を指定します。
 
-**mode** と **batchSize** プロパティを使用して、リソースを並列または順番に配置するかどうかを指定します。 これらのプロパティについては [シリアルまたは並列](#serial-or-parallel)で説明します。
+`mode` と `batchSize` プロパティを使用して、リソースを並列または順番に配置するかどうかを指定します。 これらのプロパティについては [シリアルまたは並列](#serial-or-parallel)で説明します。
 
 ## <a name="copy-limits"></a>コピー制限
 
@@ -52,7 +52,7 @@ count は負の数値にすることはできません。 Azure CLI、PowerShell
 
 ## <a name="resource-iteration"></a>リソースの反復
 
-次の例では、**storageCount** パラメーターで指定されているストレージ アカウントの数を作成します。
+次の例では、`storageCount` パラメーターで指定されているストレージ アカウントの数を作成します。
 
 ```json
 {
@@ -97,7 +97,7 @@ count は負の数値にすることはできません。 Azure CLI、PowerShell
 * storage1
 * storage2
 
-インデックス値をオフセットするには、copyIndex() 関数に値を渡します。 反復回数は copy 要素で指定されたままですが、copyIndex の値が指定された値でオフセットされます。 次の例を見てください。
+インデックス値をオフセットするには、`copyIndex()` 関数に値を渡します。 反復回数は copy 要素で指定されたままですが、`copyIndex` の値が指定された値でオフセットされます。 次の例を見てください。
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -187,7 +187,7 @@ count は負の数値にすることはできません。 Azure CLI、PowerShell
 }
 ```
 
-mode プロパティでも **parallel** が既定値として使用されます。
+`mode` プロパティでも **parallel** が既定値として使用されます。
 
 ## <a name="depend-on-resources-in-a-loop"></a>ループ内のリソースへの依存
 
@@ -291,12 +291,11 @@ mode プロパティでも **parallel** が既定値として使用されます�
 
 ## <a name="next-steps"></a>次のステップ
 
-* チュートリアルを実行するには、[チュートリアル: ARM テンプレートを使用した複数のリソース インスタンスの作成](template-tutorial-create-multiple-instances.md)に関するページを参照してください。
+* チュートリアルについては、「[チュートリアル:ARM テンプレートを使用した複数のリソース インスタンスの作成](template-tutorial-create-multiple-instances.md)」を参照してください。
 * copy 要素のその他の使用方法については、以下を参照してください。
   * [ARM テンプレートでのプロパティの反復処理](copy-properties.md)
   * [ARM テンプレートでの変数の反復処理](copy-variables.md)
   * [ARM テンプレートでの出力の反復処理](copy-outputs.md)
 * 入れ子になったテンプレートで copy を使用する方法については、「[copy の使用](linked-templates.md#using-copy)」を参照してください。
-* テンプレートのセクションの詳細については、[ARM テンプレートの作成](template-syntax.md)に関する記事を参照してください。
-* テンプレートをデプロイする方法については、[ARM テンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)に関する記事を参照してください。
-
+* テンプレートのセクションの詳細については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* テンプレートをデプロイする方法の詳細については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。

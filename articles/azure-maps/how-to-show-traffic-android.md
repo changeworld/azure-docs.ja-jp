@@ -3,17 +3,17 @@ title: Android マップに交通情報データを表示する | Microsoft Azur
 description: この記事では、Microsoft Azure Maps Android SDK を使用して、マップに交通情報データを表示する方法について説明します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 02/27/2020
+ms.date: 11/25/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bc37f2b3f603262f67a46746187df6e4b5a494b5
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 5f7e67d159c2b7dea3ebac7fd4d0856f508cb298
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895530"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532756"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用してマップに交通情報データを表示する
 
@@ -21,7 +21,9 @@ ms.locfileid: "92895530"
 
 ## <a name="prerequisites"></a>前提条件
 
-マップに交通情報を表示するには、事前に [Azure アカウントを作成](quick-demo-map-app.md#create-an-azure-maps-account)し、[サブスクリプション キーを取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)しておく必要があります。 次に、[Azure Maps Android SDK](./how-to-use-android-map-control-library.md) をインストールしてマップを読み込む必要があります。
+1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
+3. [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) をダウンロードしてインストールします。
 
 ## <a name="incidents-traffic-data"></a>インシデント交通情報データ
 
@@ -73,7 +75,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 特定の機能のインシデントを取得するには、次のコードを使用できます。 機能をクリックすると、コード ロジックによって、インシデントの発生についてチェックが行われ、インシデントに関するメッセージが作成されます。 画面の下部に、詳細を含むメッセージが表示されます。
 
-1. まず、 **res > layout > activity_main.xml** を以下に示されているように編集する必要があります。 `mapcontrol_centerLat`、`mapcontrol_centerLng`、および `mapcontrol_zoom` は、目的の値に置き換えることができます。 この場合、ズーム レベルは 0 から 22 の値になることに注意してください。 ズーム レベルが 0 の場合は、世界全体が 1 つのタイルに収まります。
+1. まず、`res > layout > activity_main.xml` を以下に示されているように編集する必要があります。 `mapcontrol_centerLat`、`mapcontrol_centerLng`、および `mapcontrol_zoom` は、目的の値に置き換えることができます。 この場合、ズーム レベルは 0 から 22 の値になることに注意してください。 ズーム レベルが 0 の場合は、世界全体が 1 つのタイルに収まります。
 
    ```XML
    <?xml version="1.0" encoding="utf-8"?>
@@ -223,11 +225,9 @@ protected void onCreate(Bundle savedInstanceState) {
 
 3. アプリケーションに上記のコードを組み込むと、機能をクリックして交通インシデントの詳細を表示できるようになります。 **activity_main.xml** ファイルで使用した緯度、経度、およびズーム レベルの値に応じて、次の図のような結果が表示されます。
 
-   <center>
 
-   ![マップ上のインシデント交通情報](./media/how-to-show-traffic-android/android-traffic.png)
+    ![マップ上のインシデント交通情報](./media/how-to-show-traffic-android/android-traffic.png)
 
-   </center>
 
 ## <a name="next-steps"></a>次のステップ
 

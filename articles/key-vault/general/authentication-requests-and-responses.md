@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 48f223a55e4a1e4db4ac7057065d67ae64fa0f2c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 58616b647affd33e96357e556ab61f85d1c62129
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288462"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752279"
 ---
 # <a name="authentication-requests-and-responses"></a>認証、要求、応答
 
@@ -134,3 +134,6 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 -   authorization:要求のアクセス トークンの取得に使用できる OAuth2 承認サービスのアドレス。  
 
 -   resource:承認要求で使用するリソースの名前 (`https://vault.azure.net`)。
+
+> [!NOTE]
+> シークレット、証明書、およびキーについて、Key Vault SDK クライアントは Key Vault への最初の呼び出しでテナント情報を取得するためのアクセス トークンを提供しません。 Key Vault SDK クライアントを使用して HTTP 401 を受け取ることが想定されています。Key Vault からアプリケーションに示されるのは、リソースを含む WWW-Authenticate ヘッダーとテナントであり、そこにアクセスしてトークンを要求する必要があります。 すべてが正しく構成されている場合、アプリケーションから Key Vault への 2 回目の呼び出しには有効なトークンが含まれているため正常に終了します。 

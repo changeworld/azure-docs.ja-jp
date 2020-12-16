@@ -1,20 +1,20 @@
 ---
 title: デプロイのトラブルシューティング
-description: Azure Resource Manager テンプレートのデプロイを監視およびトラブルシューティングする方法について学習します。 アクティビティ ログとデプロイ履歴を紹介します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) のデプロイを監視およびトラブルシューティングする方法について学習します。 アクティビティ ログとデプロイ履歴を紹介します。
 author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0da6c614572e73a00db1087621eaca3bd790aad6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 7a44edc7cd09709f14415fa0a92e63558001d46d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891807"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928530"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>チュートリアル:ARM テンプレート デプロイのトラブルシューティング
 
-Azure Resource Manager (ARM) テンプレート デプロイ エラーのトラブルシューティング方法について説明します。 このチュートリアルでは、テンプレートに 2 つのエラーを設定し、アクティビティ ログとデプロイ履歴を使用して問題を解決する方法について学習します。
+Azure Resource Manager テンプレート (ARM テンプレート) デプロイ エラーのトラブルシューティング方法について説明します。 このチュートリアルでは、テンプレートに 2 つのエラーを設定し、アクティビティ ログとデプロイ履歴を使用して問題を解決する方法について学習します。
 
 テンプレート デプロイに関連するエラーには、次の 2 種類があります。
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-- Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
+- Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使用して ARM テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 
 ## <a name="create-a-problematic-template"></a>問題のあるテンプレートの作成
 
@@ -72,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 New-AzResourceGroupDeployment : 4:29:24 PM - Error: Code=InvalidRequestContent; Message=The request content was invalid and could not be deserialized: 'Could not find member 'apiVersion1' on object of type 'TemplateResource'. Path 'properties.template.resources[0].apiVersion1', line 36, position 24.'.
 ```
 
-このエラー メッセージは、 **apiVersion1** に問題があることを示しています。
+このエラー メッセージは、**apiVersion1** に問題があることを示しています。
 
 Visual Studio Code を使用して **apiVersion1** を **apiVersion** に変更して問題を解決し、テンプレートを保存します。
 

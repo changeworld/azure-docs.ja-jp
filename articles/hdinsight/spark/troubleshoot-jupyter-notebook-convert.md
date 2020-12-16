@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight で Jupyter ノートブックを作成できない
+title: Azure HDInsight で Jupyter Notebook を作成できない
 description: Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策について説明します。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,20 +7,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/11/2020
-ms.openlocfilehash: 50a77e240315796d0d4c98fc8fba8edfc9cd2b7d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 41eefd18419969c6e8c54ba68ce6c0d1eeb7832b
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545533"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519197"
 ---
-# <a name="unable-to-create-jupyter-notebook-in-azure-hdinsight"></a>Azure HDInsight で Jupyter ノートブックを作成できない
+# <a name="unable-to-create-jupyter-notebook-in-azure-hdinsight"></a>Azure HDInsight で Jupyter Notebook を作成できない
 
 この記事では、Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策について説明します。
 
 ## <a name="issue"></a>問題
 
-Jupyter ノートブックを開始するとき、次のようなエラー メッセージが表示されます。
+Jupyter Notebook を開始するとき、次のようなエラー メッセージが表示されます。
 
 ```error
 Cannot convert notebook to v5 because that version doesn't exist
@@ -50,7 +50,7 @@ Cannot convert notebook to v5 because that version doesn't exist
     version_info = (4, 0, 3)
     ```
 
-    **Ctrl + X** 、 **Y** 、 **Enter** キーを入力して変更を保存ます。
+    **Ctrl + X**、**Y**、**Enter** キーを入力して変更を保存ます。
 
 1. Web ブラウザーから、`https://CLUSTERNAME.azurehdinsight.net/#/main/services/JUPYTER` に移動します。ここで、`CLUSTERNAME` はクラスターの名前です。
 

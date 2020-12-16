@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6c30dffbc8f97273ee59ce33ae3fe75ed730763
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: b2ce3b362d02e7acb0a11e6d93b8e94ca8e4d04e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356639"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903532"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理で新しいアクセス パッケージを作成する
 
@@ -106,6 +106,9 @@ ms.locfileid: "93356639"
     ![[アクセス パッケージ] - リソース ロールの選択](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
 1. **[次へ]** をクリックします。
+
+>[!NOTE]
+>動的なグループは、カタログおよびアクセス パッケージに追加できます。 ただし、アクセス パッケージで動的グループ リソースを管理する場合は、所有者ロールのみを選択できます。
 
 ## <a name="requests"></a>Requests
 

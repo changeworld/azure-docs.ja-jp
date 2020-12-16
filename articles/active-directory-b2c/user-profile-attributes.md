@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/20/2020
+ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 98c33d4b9e749e804f70d9dccb7198884c80dfe7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 85030285810433dc77d1f466d160c50d1f89770e
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952704"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750409"
 ---
 # <a name="user-profile-attributes"></a>ユーザー プロファイルの属性
 
@@ -75,16 +75,22 @@ Azure Active Directory (Azure AD) B2C ディレクトリのユーザー プロ�
 |streetAddress   |String|ユーザーの勤務地の番地。 最大長 1024。|はい|はい|Persisted、Output|
 |strongAuthentication AlternativePhoneNumber<sup>1</sup>|String|多要素認証に使用される、ユーザーの 2 次電話番号。|はい|いいえ|Persisted、Output|
 |strongAuthenticationEmailAddress<sup>1</sup>|String|ユーザーの SMTP アドレス。 例: "bob@contoso.com"。この属性は、ユーザー名ポリシーでのサインインで、ユーザーの電子メール アドレスを保存するために使用されます。 この電子メール アドレスは、パスワード リセット フローで使用されます。|はい|いいえ|Persisted、Output|
-|strongAuthenticationPhoneNumber<sup>1</sup>|String|多要素認証に使用される、ユーザーの 1 次電話番号。|はい|いいえ|Persisted、Output|
+|strongAuthenticationPhoneNumber<sup>2</sup>|String|多要素認証に使用される、ユーザーの 1 次電話番号。|はい|いいえ|Persisted、Output|
 |surname         |String|ユーザーの姓。 最大長 64。|はい|はい|Persisted、Output|
 |telephoneNumber (businessPhones の最初のエントリ)|String|ユーザーの勤務地の 1 次電話番号。|はい|いいえ|Persisted、Output|
 |userPrincipalName    |String|ユーザーのユーザー プリンシパル名 (UPN)。 UPN は、インターネット標準 RFC 822 に基づくユーザーのインターネット形式のログイン名です。 ドメインがテナントの確認済みドメインのコレクションに存在している必要があります。 このプロパティは、アカウントを作成するときに必要です。 変更不可。|いいえ|いいえ|Input、Persisted、Output|
 |usageLocation   |String|法的な要請のためにライセンスを割り当てられるユーザーが、各国またはリージョンでサービスを利用できるかどうかを確認するのに必要です。 NULL 値は許可されません。 2 文字の国またはリージョン番号 (ISO 標準 3166)。 例 :"US"、"JP"、"GB"。|はい|いいえ|Persisted、Output|
 |userType        |String|ディレクトリ内のユーザー タイプを分類するために使用できる文字列値。 値は Member にする必要があります。 読み取り専用です。|読み取り専用|いいえ|Persisted、Output|
-|userState (externalUserState)<sup>2</sup>|String|Azure AD B2B アカウント専用。招待が PendingAcceptance であるか Accepted であるかを示します。|いいえ|いいえ|Persisted、Output|
+|userState (externalUserState)<sup>3</sup>|String|Azure AD B2B アカウント専用。招待が PendingAcceptance であるか Accepted であるかを示します。|いいえ|いいえ|Persisted、Output|
 |userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|DateTime|UserState プロパティに対する最新の変更のタイムスタンプを示します。|いいえ|いいえ|Persisted、Output|
-|<sup>1 </sup>Microsoft Graph ではサポート対象外<br><sup>2 </sup>Azure AD B2C では使用不可||||||
 
+<sup>1 </sup>Microsoft Graph ではサポート対象外<br><sup>2 </sup>詳細については、「[MFA 電話番号属性](#mfa-phone-number-attribute)」を参照してください<br><sup>3 </sup>Azure AD B2C では使用不可
+
+## <a name="mfa-phone-number-attribute"></a>MFA 電話番号属性
+
+多要素認証 (MFA) に電話を使用する場合は、ユーザー ID を確認するために携帯電話を使用します。 新しい電話番号をプログラムによって[追加](https://docs.microsoft.com/graph/api/authentication-post-phonemethods)し、電話番号の[更新](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update)、[取得](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)、[削除](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete)を行うには、MS Graph API [phone authentication method](https://docs.microsoft.com/graph/api/resources/phoneauthenticationmethod) を使用します。
+
+Azure AD B2C の[カスタム ポリシー](custom-policy-overview.md)では、電話番号は要求の種類 `strongAuthenticationPhoneNumber` を通じて利用できます。
 
 ## <a name="extension-attributes"></a>拡張属性
 

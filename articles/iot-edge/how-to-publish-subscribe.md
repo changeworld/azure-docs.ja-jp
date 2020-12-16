@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: acde6f401404596212b713f248bb6d11c25b4671
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 005830575ba7f45d30fed71a73e7a419e4d98220
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461426"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922588"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Aure IoT Edge を使用した発行とサブスクライブ
 
@@ -177,7 +177,6 @@ IoT ハブのトピックの認可は、ユーザー定義のトピックとは�
 
 - IoT Edge ハブの MQTT ブローカーに接続するには、Azure IoT デバイスまたはモジュールに明示的な承認規則が必要です。 既定の接続承認ポリシーは次のとおりです。
 - Azure IoT デバイスまたはモジュールは、既定では明示的な承認規則なしで独自の IoT ハブのトピックにアクセスできます。 ただし、この場合、承認は親/子関係から生じ、これらの関係を設定する必要があります。 IoT Edge モジュールは自動的にその IoT Edge デバイスの子として設定されますが、デバイスはその IoT Edge ゲートウェイの子として明示的に設定する必要があります。
-- Azure IoT のデバイスまたはモジュールは、適切な明示的な承認規則が定義されている場合は、他のデバイスまたはモジュールのトピック (IoT ハブのトピックを含む) にアクセスできます。
 
 次に示す既定の承認ポリシーは、すべての Azure IoT のデバイスまたはモジュールがブローカーに **接続** できるようにするために使用できます。
 
@@ -275,7 +274,7 @@ IoT Hub に 2 つの IoT デバイスを作成し、パスワードを取得し�
                },
                {
                   "identities": [
-                     "sub_client"
+                     "<iot_hub_name>.azure-devices.net/sub_client"
                   ],
                   "allow":[
                      {
@@ -284,13 +283,13 @@ IoT Hub に 2 つの IoT デバイスを作成し、パスワードを取得し�
                         ],
                         "resources":[
                            "test_topic"
-                        ],
+                        ]
                      }
                   ],
                },
                {
                   "identities": [
-                     "pub_client"
+                     "<iot_hub_name>.azure-devices.net/pub_client"
                   ],
                   "allow":[
                      {
@@ -299,9 +298,9 @@ IoT Hub に 2 つの IoT デバイスを作成し、パスワードを取得し�
                         ],
                         "resources":[
                            "test_topic"
-                        ],
+                        ]
                      }
-                  ],
+                  ]
                }
             ]
          }

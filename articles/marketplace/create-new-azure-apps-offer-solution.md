@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 8a8b04501bf81f41fb87de8fc0ce42eb4e7fda93
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 8469cad02009d054bd8ba97fb4aabfdae84ef842
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369800"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744620"
 ---
 # <a name="configure-a-solution-template-plan"></a>ソリューション テンプレート プランを構成する
 
@@ -96,4 +96,4 @@ ms.locfileid: "94369800"
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure アプリケーション オファーをテストして発行する方法](create-new-azure-apps-offer-test-publish.md)。
-- Microsoft との共同販売や CSP プログラムを通じた再販によって、[Azure アプリケーション オファーを市場に投入する方法](create-new-azure-apps-offer-marketing.md)について学習します。
+- Microsoft との共同販売、および CSP プログラムを通じた再販によって、[Azure アプリケーション オファーを販売する方法](create-new-azure-apps-offer-marketing.md)について学習します。

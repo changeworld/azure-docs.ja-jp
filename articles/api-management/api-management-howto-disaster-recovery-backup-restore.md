@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/03/2020
+ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 1a1e9c394f3665845b1f2bbbd605322b43f5f25d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 25356e7101293fc27d4107b3a618cfc481aee969
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787229"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779585"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
 
@@ -56,7 +56,7 @@ Azure Resource Manager を使用してリソースに実行するすべてのタ
 ### <a name="create-an-azure-active-directory-application"></a>Azure Active Directory アプリケーションを作成する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. API Management サービス インスタンスを含むサブスクリプションを使用して、 **Azure Active Directory** の **[アプリの登録]** タブ (Azure Active Directory > [登録の管理/アプリの登録]) に移動します。
+2. API Management サービス インスタンスを含むサブスクリプションを使用して、**Azure Active Directory** の **[アプリの登録]** タブ (Azure Active Directory > [登録の管理/アプリの登録]) に移動します。
 
     > [!NOTE]
     > Azure Active Directory の既定のディレクトリがアカウントに表示されない場合は、必要なアクセス許可をアカウントに付与するよう Azure サブスクリプションの管理者に連絡してください。
@@ -169,26 +169,6 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 バックアップは完了までに 1 分以上かかることもある、長時間の処理です。 要求が成功してバックアップ処理が開始されると、`Location` ヘッダーのある `202 Accepted` 応答状態コードを受け取ります。 `Location` ヘッダー内の URL に "GET" 要求を出して、処理のステータスを確認します。 バックアップの進行中は、"202 Accepted" 状態コードの受け取りが続きます。 応答コードの `200 OK` は、バックアップ処理が正常に終了したことを示します。
 
-#### <a name="constraints-when-making-backup-or-restore-request"></a>バックアップまたは復元要求を行う際の制約
-
--   要求の本文に指定された **コンテナー** は、 **存在する必要があります** 。
--   バックアップの進行中は、 **サービスでの管理の変更は避けてください** (SKU のアップグレードやダウングレード、ドメイン名の変更など)。
--   バックアップの復元は、作成されたときから **30 日間だけ保証されます** 。
--   バックアップ処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われた **変更** は、 **バックアップ対象から除外され、その結果失われる可能性があります** 。
--   [ファイアウォール][azure-storage-ip-firewall]が有効になっている場合は、コントロール プレーンから Azure Storage アカウントへのアクセスを **許可** します。 お客様は、バックアップまたは復元用のストレージ アカウントで [Azure API Management コントロール プレーンの IP アドレス][control-plane-ip-address] セットを開く必要があります。 これは、Azure Storage への要求が、SNAT によってコンピューティング > (Azure API Management コントロール プレーン) からパブリック IP に変換されないためです。 リージョン間のストレージ要求は、SNAT により変換されます。
-
-#### <a name="what-is-not-backed-up"></a>バックアップされないもの
--   分析レポートの生成に使用される **使用状況データ** は、バックアップに **含まれません** 。 [Azure API Management REST API][azure api management rest api] を使用して、分析レポートを保管用に定期的に取り出します。
--   [カスタム ドメインの TLS/SSL](configure-custom-domain.md) 証明書
--   顧客によってアップロードされた中間証明書またはルート証明書を含む[カスタム CA 証明書](api-management-howto-ca-certificates.md)
--   [仮想ネットワーク](api-management-using-with-vnet.md)の統合設定
--   [マネージド ID](api-management-howto-use-managed-service-identity.md) の構成
--   [Azure Monitor 診断ログ](api-management-howto-use-azure-monitor.md)の構成
--   [プロトコルと暗号](api-management-howto-manage-protocols-ciphers.md)の設定
--   [開発者ポータル](api-management-howto-developer-portal.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management) コンテンツ。
-
-サービス バックアップを実行する頻度は、復旧ポイントの目標に影響を与えます。 その頻度を最小限に抑えるため、定期的なバックアップを実装すると共に、API Management サービスに対して変更を行った後のオンデマンドのバックアップを実行することをお勧めします。
-
 ### <a name="restore-an-api-management-service"></a><a name="step2"> </a>API Management サービスの復元
 
 以前に作成されたバックアップから API Management サービスを復元するには、次の HTTP 要求を行います。
@@ -220,14 +200,36 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 復元は、完了までに 30 分以上かかることのある長時間の操作です。 要求が成功して復元処理が開始されると、`Location` ヘッダーのある `202 Accepted` 応答状態コードを受け取ります。 `Location` ヘッダー内の URL に "GET" 要求を出して、処理のステータスを確認します。 復元の進行中は、"202 Accepted" 状態コードの受け取りが続きます。 応答コードの `200 OK` は、復元処理が正常に終了したことを示します。
 
 > [!IMPORTANT]
-> 復元先のサービスの **SKU** は、復元されるバックアップ サービスの SKU と **一致しなければなりません** 。
+> 復元先のサービスの **SKU** は、復元されるバックアップ サービスの SKU と **一致しなければなりません**。
 >
-> 復元処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われる **変更** は、 **上書きされることがあります** 。
+> 復元処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われる **変更** は、**上書きされることがあります**。
 
 <!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
 > バックアップと復元の操作は、それぞれ PowerShell の [_Backup-AzApiManagement_](/powershell/module/az.apimanagement/backup-azapimanagement) コマンドと [_Restore-AzApiManagement_](/powershell/module/az.apimanagement/restore-azapimanagement) コマンドでも実行できます。
+
+## <a name="constraints-when-making-backup-or-restore-request"></a>バックアップまたは復元要求を行う際の制約
+
+-   要求の本文に指定された **コンテナー** は、**存在する必要があります**。
+-   バックアップの進行中は、**サービスでの管理の変更は避けてください** (SKU のアップグレードやダウングレード、ドメイン名の変更など)。
+-   バックアップの復元は、作成されたときから **30 日間だけ保証されます**。
+-   バックアップ処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われた **変更** は、**バックアップ対象から除外され、その結果失われる可能性があります**。
+-   Azure ストレージ アカウントで [ファイアウォール][azure-storage-ip-firewall]が有効になっている場合、お客様は、バックアップまたは復元が機能するように、そのストレージ アカウントで [Azure API Management コントロール プレーンの IP アドレス][control-plane-ip-address]のセットを **許可する** 必要があります。 Azure ストレージ アカウントは、API Management サービスが配置されている場所を除く任意の Azure リージョンに置くことができます。 たとえば、API Management サービスが米国西部にある場合に、Azure ストレージ アカウントは米国西部 2 に置くことができます。お客様は、ファイアウォール内でコントロール プレーンの IP 13.64.39.16 (米国西部の API Management コントロール プレーンの IP) を開く必要があります。 これは、Azure Storage への要求が、同じ Azure リージョン内のコンピューティング (Azure API Management コントロール プレーン) からパブリック IP に SNAT によって変換されないためです。 リージョン間のストレージ要求は、SNAT によってパブリック IP アドレスに変換されます。
+-   [クロス オリジン リソース共有 (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) は、Azure ストレージ アカウントの Blob service で有効に **しない** でください。
+-   復元先のサービスの **SKU** は、復元されるバックアップ サービスの SKU と **一致しなければなりません**。
+
+## <a name="what-is-not-backed-up"></a>バックアップされないもの
+-   分析レポートの生成に使用される **使用状況データ** は、バックアップに **含まれません**。 [Azure API Management REST API][azure api management rest api] を使用して、分析レポートを保管用に定期的に取り出します。
+-   [カスタム ドメインの TLS/SSL](configure-custom-domain.md) 証明書
+-   お客様によってアップロードされた中間またはルートの証明書を含む[カスタム CA 証明書](api-management-howto-ca-certificates.md)
+-   [仮想ネットワーク](api-management-using-with-vnet.md)の統合設定
+-   [マネージド ID](api-management-howto-use-managed-service-identity.md) の構成
+-   [Azure Monitor 診断ログ](api-management-howto-use-azure-monitor.md)の構成
+-   [プロトコルと暗号](api-management-howto-manage-protocols-ciphers.md)の設定
+-   [開発者ポータル](api-management-howto-developer-portal.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management) コンテンツ。
+
+サービス バックアップを実行する頻度は、復旧ポイントの目標に影響を与えます。 その頻度を最小限に抑えるため、定期的なバックアップを実装すると共に、API Management サービスに対して変更を行った後のオンデマンドのバックアップを実行することをお勧めします。
 
 ## <a name="next-steps"></a>次の手順
 

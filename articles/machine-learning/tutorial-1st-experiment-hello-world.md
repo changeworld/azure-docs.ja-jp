@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 20173c4ba02f53a526167a5a8e22bd0cedc85594
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 971bac8a0b0951d4e07e139aea6c465a9159b8db
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393220"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96570962"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>チュートリアル:"Hello world!" Python スクリプトを実行する (パート 2/4) Python script (part 2 of 4)
 
@@ -61,7 +61,8 @@ tutorial
 └──02-create-compute.py
 ```
 
-### <a name="test-your-script-locally"></a>スクリプトをローカルでテストする
+
+### <a name="test-your-script-locally"></a><a name="test"></a>スクリプトをローカルでテストする
 
 コードは、好みの IDE またはターミナルを使用してローカルで実行できます。 コードのローカル実行には、コードの対話型デバッグができるというメリットがあります。
 
@@ -70,7 +71,10 @@ cd <path/to/tutorial>
 python ./src/hello.py
 ```
 
-## <a name="create-a-control-script"></a>コントロール スクリプトを作成する
+> [!div class="nextstepaction"]
+> [スクリプトをローカルで実行しました](?success=run-local#control-script) [問題が発生しました](https://www.research.net/r/7C2NTH7?issue=run-local)
+
+## <a name="create-a-control-script"></a><a name="control-script"></a> コントロール スクリプトを作成する
 
 *コントロール スクリプト* を使用すると、`hello.py` スクリプトをクラウドで実行できます。 コントロール スクリプトを使用すると、機械学習コードを実行する方法と場所を制御できます。  
 
@@ -89,6 +93,8 @@ run = experiment.submit(config)
 aml_url = run.get_portal_url()
 print(aml_url)
 ```
+
+
 
 ### <a name="understand-the-code"></a>コードの理解
 
@@ -135,7 +141,10 @@ print(aml_url)
    :::column-end:::
 :::row-end:::
 
-## <a name="submit-and-run-your-code-in-the-cloud"></a>クラウドでコードを送信して実行する
+> [!div class="nextstepaction"]
+> [コントロール スクリプトを作成しました](?success=create-control-script#submit) [問題が発生しました](https://www.research.net/r/7C2NTH7?issue=create-control-script)
+
+## <a name="submit-and-run-your-code-in-the-cloud"></a><a name="submit"></a> クラウドでコードを送信して実行する
 
 コントロール スクリプトを実行します。そうすると、[セットアップ チュートリアル](tutorial-1st-experiment-sdk-setup-local.md)で作成したコンピューティング クラスター上で `hello.py` が順に実行されます。
 
@@ -154,7 +163,10 @@ python 03-run-hello.py
 > [!TIP]
 > このコードを実行すると、サブスクリプションへのアクセス権がないというエラーが表示される場合は、認証オプションの詳細について、「[ワークスペースに接続する](how-to-manage-workspace.md?tab=python#connect-multi-tenant)」セクションを参照してください。
 
-## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a>スタジオを使用してクラウドでコードを監視する
+> [!div class="nextstepaction"]
+> [クラウドでコードを送信しました](?success=submit-to-cloud#monitor) [問題が発生しました](https://www.research.net/r/7C2NTH7?issue=submit-to-cloud)
+
+## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a><a name="monitor"></a>スタジオを使用してクラウドでコードを監視する
 
 出力には、`https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` のようなスタジオへのリンクが含まれています。
 
@@ -185,6 +197,9 @@ python 03-run-hello.py
 8 行目には、"Hello world!" の出力が表示されます。
 
 `70_driver_log.txt` ファイルには、実行からの標準出力が含まれます。 このファイルは、クラウドでのリモート実行をデバッグするときに役立ちます。
+
+> [!div class="nextstepaction"]
+> [スタジオでログを確認しました](?success=monitor-in-studio#next-steps) [問題が発生しました](https://www.research.net/r/7C2NTH7?issue=monitor-in-studio)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/17/2020
-ms.openlocfilehash: 63be912986542741359cd5e88227f06905d42647
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: da89d4fbc3f9e03e76d901c2215e4f16c5273013
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350876"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621112"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>マッピング データ フローでのシンク変換
 
@@ -103,6 +103,10 @@ Azure Data Factory から、[90 を超えるネイティブ コネクタ](connec
 > [キャッシュされた参照](./concepts-data-flow-expression-builder.md#cached-lookup)を使用する場合は、シンクの順序付けで、キャッシュされたシンクが順序付けの一番下 (または最初) である 1 に設定されるようにしてください。
 
 ![カスタム シンクの順序付け](media/data-flow/cache-2.png "カスタム シンクの順序付け")
+
+### <a name="sink-groups"></a>シンク グループ
+
+シンクをグループ化するには、一連のシンクに同じ順序番号を適用します。 ADF は、それらのシンクを並列に実行できるグループとして扱います。 並列実行のオプションは、パイプライン データ フロー アクティビティに表示されます。
 
 ## <a name="error-row-handling"></a>エラー行の処理
 

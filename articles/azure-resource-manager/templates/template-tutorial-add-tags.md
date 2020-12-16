@@ -1,21 +1,21 @@
 ---
 title: チュートリアル - テンプレートのリソースにタグを追加する
-description: Azure Resource Manager テンプレートでデプロイするリソースにタグを追加します。 タグを使用すると、リソースを論理的に整理できます。
+description: Azure Resource Manager テンプレート (ARM テンプレート) でデプロイするリソースにタグを追加します。 タグを使用すると、リソースを論理的に整理できます。
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 16fc294784d9d6ff3c2fdd920d053eae5cd4b56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4084508202fc7db5280d34c157552fe723b1dfba
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613205"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930944"
 ---
 # <a name="tutorial-add-tags-in-your-arm-template"></a>チュートリアル:ARM テンプレートにタグを追加する
 
-このチュートリアルでは、Azure Resource Manager (ARM) テンプレートでリソースにタグを追加する方法について説明します。 [タグ](../management/tag-resources.md)は、リソースを論理的に整理するために役立ちます。 タグ値はコスト レポートに表示されます。 このチュートリアルの所要時間は **8 分**です。
+このチュートリアルでは、Azure Resource Manager テンプレート (ARM テンプレート) でリソースにタグを追加する方法について説明します。 [タグ](../management/tag-resources.md)は、リソースを論理的に整理するために役立ちます。 タグ値はコスト レポートに表示されます。 このチュートリアルの所要時間は **8 分** です。
 
 ## <a name="prerequisites"></a>前提条件
 

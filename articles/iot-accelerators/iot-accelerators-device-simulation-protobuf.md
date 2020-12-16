@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 12aa18c966745b450b3c9aa55e87e576b0c3f99b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 77a795b8f704084b612a2dcbd364b8d5be0a3333
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018530"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852152"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Protocol Buffers を使用してテレメトリをシリアル化する
 
@@ -277,4 +277,4 @@ IoT Hub および Cosmos DB のインスタンスが必要でなくなった場�
 
 ## <a name="next-steps"></a>次のステップ
 
-Protobuf を使用してテレメトリを送信するようにデバイス シミュレーションをカスタマイズする方法がわかったら、次は、[カスタム イメージをクラウドにデプロイする](iot-accelerators-device-simulation-deploy-image.md)方法について学習しましょう。
+ここでは、Protobuf を使用してテレメトリを送信するようにデバイス シミュレーションをカスタマイズする方法について学習しました。次の手順では、GitHub リポジトリにアクセスし、[デバイス シミュレーション](https://github.com/Azure/device-simulation-dotnet)の詳細について説明します。

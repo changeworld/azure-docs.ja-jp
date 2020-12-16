@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure Active Directory と GitHub の統合 | Microsoft Docs
-description: Azure Active Directory と GitHub の間でシングル サインオンを構成する方法について説明します。
+title: チュートリアル:Azure Active Directory と GitHub Enterprise Cloud Organization の統合 | Microsoft Docs
+description: Azure Active Directory と GitHub Enterprise Cloud Organization の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: cb5ef751a3fc2241924eaee1c5da9507006389cc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 67a17aaa647d9aa6943b37d54fc0e3308ad8955f
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92449273"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558540"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GitHub の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-a-github-enterprise-cloud-organization"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GitHub Enterprise Cloud Organization の統合
 
-このチュートリアルでは、GitHub と Azure Active Directory (Azure AD) を統合する方法について説明します。 GitHub を Azure AD に統合すると、次のことができます。
+このチュートリアルでは、GitHub Enterprise Cloud **Organization** と Azure Active Directory (Azure AD) を統合する方法について説明します。 GitHub Enterprise Cloud Organization と Azure AD を統合すると、次のことができます。
 
 * GitHub Enterprise Cloud Organization にアクセスできるユーザーを Azure AD で制御する。
 * GitHub Enterprise Cloud Organization へのアクセスを 1 つの中央サイト (Azure portal) で管理する。
@@ -29,7 +29,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="prerequisites"></a>前提条件
 
-GitHub と Azure AD の統合を構成するには、次のものが必要です。
+GitHub Enterprise Cloud Organization と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
 * [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) に作成された GitHub 組織 ([GitHub Enterprise 課金プラン](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)が必要)
@@ -38,9 +38,9 @@ GitHub と Azure AD の統合を構成するには、次のものが必要です
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* GitHub では、 **SP** によって開始される SSO がサポートされます
+* GitHub では、**SP** によって開始される SSO がサポートされます
 
-* GitHub では、 [**自動化された** ユーザー プロビジョニング (組織の招待)](github-provisioning-tutorial.md) がサポートされます
+* GitHub では、[**自動化された** ユーザー プロビジョニング (組織の招待)](github-provisioning-tutorial.md) がサポートされます
 * GitHub を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-github-from-the-gallery"></a>ギャラリーからの GitHub の追加
@@ -51,8 +51,8 @@ Azure AD への GitHub の統合を構成するには、ギャラリーから管
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **GitHub** 」と入力します。
-1. 結果のパネルから **[GitHub]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**GitHub**」と入力します。
+1. 結果のパネルから **[GitHub Enterprise Cloud - Organization]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-github"></a>GitHub の Azure AD シングル サインオンの構成とテスト
 
@@ -165,13 +165,13 @@ GitHub で Azure AD SSO を構成してテストするには、次の構成要�
 
     a. **[シングル サインオン URL]** テキストボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    b. **[発行者]** テキストボックスに、Azure portal からコピーした、 **Azure AD ID** の値を貼り付けます。
+    b. **[発行者]** テキストボックスに、Azure portal からコピーした、**Azure AD ID** の値を貼り付けます。
 
     c. Azure Portal からダウンロードした証明書 をメモ帳で開き、その内容を **[Public Certificate]\(公開証明書\)** ボックスに貼り付けます。
 
-    d. **[Edit]\(編集\)** アイコンをクリックし、 **[Signature Method]\(署名方法\)** と **[Digest Method]\(ダイジェスト方法\)** を編集して、 **RSA-SHA1** および **SHA1** から **RSA-SHA256** および **SHA256** に変更します (下図参照)。
+    d. **[Edit]\(編集\)** アイコンをクリックし、 **[Signature Method]\(署名方法\)** と **[Digest Method]\(ダイジェスト方法\)** を編集して、**RSA-SHA1** および **SHA1** から **RSA-SHA256** および **SHA256** に変更します (下図参照)。
     
-    e. GitHub の URL が Azure アプリ登録の URL と一致するように、 **Assertion Consumer Service URL** (応答 URL) を既定の URL から更新します。
+    e. GitHub の URL が Azure アプリ登録の URL と一致するように、**Assertion Consumer Service URL** (応答 URL) を既定の URL から更新します。
 
     ![image](./media/github-tutorial/tutorial_github_sha.png)
 

@@ -1,39 +1,39 @@
 ---
 title: ARM テンプレートに関してよく寄せられる質問
-description: Azure Resource Manager テンプレートに関してよく寄せられる質問 (FAQ)。
+description: Azure Resource Manager テンプレート (ARM テンプレート) に関してよく寄せられる質問 (FAQ)。
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: af6a46e16cd888e3ff6a382be2b1a4264fcc2941
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5a23cf031b5d7cf40e2077f2e5287e10de563207
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184010"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903005"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>ARM テンプレートに関してよく寄せられる質問
 
-この記事では、Azure Resource Manager (ARM) テンプレートについてよく寄せられる質問に回答します。
+この記事では、Azure Resource Manager テンプレート (ARM テンプレート) についてよく寄せられる質問に回答します。
 
 ## <a name="getting-started"></a>作業の開始
 
 * **ARM テンプレートとは何ですか。なぜ使用する必要があるのでしょうか。**
 
   ARM テンプレートは、Azure にデプロイする対象を定義する JSON ファイルです。 テンプレートは、Azure のコードとしてのインフラストラクチャ ソリューションを実装するのに役立ちます。 組織は、必要なインフラストラクチャを別々の環境に繰り返し、確実にデプロイできます。
-  
+
   ARM テンプレートが Azure インフラストラクチャの管理をどのようにサポートするかの詳細については、「[ARM テンプレートとは](overview.md)」を参照してください。
 
 * **テンプレートの使用を開始するにはどうすればよいですか。**
 
-  ARM テンプレートの作成を簡単にするには、適切なツールが必要です。 [Visual Studio Code](https://code.visualstudio.com/) と [Azure Resource Manager ツール拡張機能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)をインストールすることをお勧めします。 これらのツールの概要紹介については、「[クイックスタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
+  ARM テンプレートの作成を簡単にするには、適切なツールが必要です。 [Visual Studio Code](https://code.visualstudio.com/) と [Azure Resource Manager ツール拡張機能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)をインストールすることをお勧めします。 これらのツールの概要紹介については、「[クイックスタート:Visual Studio Code を使用して ARM テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 
   ARM テンプレートの作成について学習する準備ができたら、[ARM テンプレートの初心者向けチュートリアル シリーズ](template-tutorial-create-first-template.md)を開始してください。 これらのチュートリアルでは、ARM テンプレートの構築プロセスを段階的に説明します。 テンプレートのさまざまなセクションと、それらがどのように連携するかについて学習します。 このコンテンツは、[Microsoft Learn モジュール](/learn/modules/authoring-arm-templates/)にも用意されています。
 
 * **ARM テンプレートまたは Terraform のどちらを使用して Azure にデプロイする必要がありますか。**
 
   お好みのオプションをお使いください。 どちらのサービスも、Azure へのデプロイを自動化するのに役立ちます。
-  
+
   他のコードとしてのインフラストラクチャ サービスと比較して、ARM テンプレートを使用することには利点があると考えられます。 これらの利点の詳細については、「[ARM テンプレートを選択する理由](overview.md#why-choose-arm-templates)」を参照してください。
 
 ## <a name="build-2020"></a>Build 2020
@@ -59,7 +59,7 @@ ms.locfileid: "96184010"
 * **ポータルを使用して環境をセットアップしました。既存のリソース グループからテンプレートを取得する方法はありますか。**
 
   はい。リソース グループから[テンプレートをエクスポート](export-template-portal.md)できます。 エクスポートされたテンプレートは、テンプレートについて理解するための出発点として適していますが、運用環境で使用する前に変更することをお勧めします。
-  
+
   テンプレートをエクスポートするときに、テンプレートに含めるリソースを選択できます。
 
 * **ARM テンプレートにリソース グループを作成し、そこにリソースをデプロイすることはできますか。**
@@ -182,11 +182,11 @@ ms.locfileid: "96184010"
 
 * **ARM テンプレートを Azure Pipelines に統合できますか。**
 
-  はい。 テンプレートとパイプラインの使用方法の詳細については、「[チュートリアル: Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション](deployment-tutorial-pipeline.md)」と「[Azure Pipelines を使用した ARM テンプレートの統合](add-template-to-azure-pipelines.md)」を参照してください。
+  はい。 テンプレートとパイプラインの使用方法の詳細については、「[チュートリアル: Azure Pipelines を使用した ARM テンプレートの継続的インテグレーション](deployment-tutorial-pipeline.md)」と「[Azure Pipelines を使用した ARM テンプレートの統合](add-template-to-azure-pipelines.md)」を参照してください。
 
 * **GitHub のアクションを使用してテンプレートをデプロイできますか。**
 
-  はい。「[GitHub Actions を使用した Azure Resource Manager テンプレートのデプロイ](deploy-github-actions.md)」を参照してください。
+  はい。「[GitHub Actions を使用した ARM テンプレートのデプロイ](deploy-github-actions.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

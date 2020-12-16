@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 09/14/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d9c4dff1e4a3ba7c7a2b11311e97eb5e66a1585
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8ac8cf172a13e7198233170634ee4a3954793cd2
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994249"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743430"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>パスワードなしのセキュリティ キー サインインを有効にする (プレビュー)
 
@@ -38,7 +38,7 @@ Web アプリやサービスへのログインにセキュリティ キーを使
 
 ## <a name="prepare-devices-for-preview"></a>プレビュー用にデバイスを準備する
 
-使用する Azure AD 参加済みデバイスでは、Windows 10 バージョン 1909 以降が動作している必要があります。 Windows 10 バージョン 1903 以降で操作することをお勧めします。
+Azure AD 参加済みデバイスでは、Windows 10 バージョン 1903 以降を使用することをお勧めします。
 
 Hybrid Azure AD 参加済みデバイスでは、Windows 10 バージョン 2004 以降が実行されている必要があります。
 

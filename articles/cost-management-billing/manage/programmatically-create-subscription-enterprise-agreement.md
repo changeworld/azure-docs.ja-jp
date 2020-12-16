@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 34fe909c7fca3c91845c58b41abb0d8885e156e6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0cdd25b2937dd1fb2cc70ef7b1c5a9e9ddaef375
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94850942"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780605"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>最新の API を使用してプログラムで Azure Enterprise Agreement サブスクリプションを作成する
 
@@ -89,7 +89,7 @@ API 応答で、自分がアクセスできるすべての登録アカウント�
 
 ```
 
-いずれかの `enrollmentAccounts` から `id` を記録しておきます。 それが、サブスクリプションの作成要求が開始される課金スコープになります。 
+課金スコープの値と `id` は同じです。 登録アカウントの `id` は、サブスクリプション要求が開始される課金スコープです。 ID は、サブスクリプションを作成するために記事の後半で使用する必須パラメーターであるため、知っておくことが重要です。
 
 <!-- 
 ### [PowerShell](#tab/azure-powershell-getEnrollments)
@@ -130,6 +130,8 @@ PUT  https://management.azure.com/providers/Microsoft.Subscription/aliases/sampl
   }
 }
 ```
+
+`Workload` に使用できる値は `Production` と `DevTest` です。
 
 #### <a name="response"></a>Response
 

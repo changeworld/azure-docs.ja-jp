@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/03/2020
+ms.date: 12/07/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: a6b72c9e6cc366d04937598f653f8ba887ce1b85
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 640098e118db87214d7364132a5119e35cb94c0a
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952184"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778718"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro 用のネットワークを構成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "91952184"
 > * 前提条件
 > * ネットワークを構成する
 > * コンピューティング ネットワークを有効にする
-> * Web プロキシを構成する
+> * Web プロキシの
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -119,14 +119,14 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 
     ![ローカル UI の [コンピューティング] ページ 3](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-3.png)
 
-1. 構成の適用には数分かかり、ブラウザーの更新が必要になる場合があります。 指定したポートでコンピューティングが有効になっていることを確認できます。 
+1. 構成の適用には数分かかり、ブラウザーを最新の情報に更新することが必要になる場合があります。 指定したポートでコンピューティングが有効になっていることを確認できます。 
  
     ![ローカル UI の [コンピューティング] ページ 4](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-4.png)
 
     **[次へ: Web プロキシ]** を選択して、Web プロキシを構成します。  
 
   
-## <a name="configure-web-proxy"></a>Web プロキシを構成する
+## <a name="configure-web-proxy"></a>Web プロキシの
 
 これはオプション構成です。
 
@@ -162,7 +162,7 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 > * 前提条件
 > * ネットワークを構成する
 > * コンピューティング ネットワークを有効にする
-> * Web プロキシを構成する
+> * Web プロキシの
 
 
 Azure Stack Edge Pro デバイスを設定する方法については、以下を参照してください。

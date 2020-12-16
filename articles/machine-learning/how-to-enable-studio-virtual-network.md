@@ -11,24 +11,25 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: df4d777ad78240b3ca84c51152b37861c4ccc486
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a90b98e8be976da9ee2669ab3b5fed4a890f0fb2
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960004"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576624"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure 仮想ネットワークで Azure Machine Learning Studio を使用する
 
-この記事では、仮想ネットワークで Azure Machine Learning Studio を使用する方法について説明します。 学習内容は次のとおりです。
+この記事では、仮想ネットワークで Azure Machine Learning Studio を使用する方法について説明します。 Studio には、AutoML、デザイナー、データのラベル付けなどの機能が含まれています。 仮想ネットワークでこれらの機能を使用するには、この記事の手順に従う必要があります。
+
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
-> - 仮想ネットワーク内のリソースから Studio にアクセスします。
-> - ストレージ アカウントのプライベート エンドポイントを構成します。
 > - 仮想ネットワーク内に格納されているデータへのアクセス権を Studio に付与します。
+> - 仮想ネットワーク内のリソースから Studio にアクセスします。
 > - Studio によるストレージのセキュリティへの影響について理解します。
 
-この記事は、Azure Machine Learning ワークフローをセキュリティで保護する手順を説明する全 5 パートからなるシリーズのパート 5 です。 まずは[パート 1:VNet の概要](how-to-network-security-overview.md)に関するページを読んで、アーキテクチャ全体を理解することを強くお勧めします。 
+この記事は、Azure Machine Learning ワークフローをセキュリティで保護する手順を説明する全 5 パートからなるシリーズのパート 5 です。 前のパートを読んで、仮想ネットワーク環境を設定することを強くお勧めします。
 
 このシリーズの他の記事は次のとおりです。
 
@@ -41,7 +42,7 @@ ms.locfileid: "94960004"
 
 ## <a name="prerequisites"></a>前提条件
 
-+ [ネットワーク セキュリティの概要](how-to-network-security-overview.md)に関するページを参照して、一般的な仮想ネットワークのシナリオと全体的な仮想ネットワーク アーキテクチャについて理解してください。
++ [ネットワーク セキュリティの概要](how-to-network-security-overview.md)に関するページを参照して、一般的な仮想ネットワークのシナリオとアーキテクチャについて理解してください。
 
 + 使用する仮想ネットワークとサブネットが既に存在すること。
 
@@ -49,21 +50,16 @@ ms.locfileid: "94960004"
 
 + [仮想ネットワークに追加された Azure ストレージ アカウント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) (既存)。
 
-## <a name="access-the-studio-from-a-resource-inside-the-vnet"></a>VNet 内のリソースから Studio にアクセスする
+## <a name="configure-data-access-in-the-studio"></a>Studio でデータ アクセスを構成する
 
-仮想ネットワーク内のリソース (コンピューティング インスタンスや仮想マシンなど) からスタジオにアクセスする場合は、仮想ネットワークからスタジオへの送信トラフィックを許可する必要があります。 
+仮想ネットワークでは、Studio の機能の一部が既定で無効になっています。 これらの機能を再度有効にするには、Studio で使用する予定のストレージ アカウントのマネージド ID を有効にする必要があります。 
 
-たとえば、ネットワーク セキュリティ グループ (NSG) を使用して送信トラフィックを制限している場合は、__AzureFrontDoor.Frontend__ の __サービス タグ__ 宛先に規則を追加します。
-
-## <a name="access-data-using-the-studio"></a>Studio を使用したデータへのアクセス
-
-[サービス エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)または[プライベート エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)が設定されている仮想ネットワークに Azure ストレージ アカウントを追加した後、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md)を使用してデータへのアクセス権を Studio に付与するようにストレージ アカウントを構成する必要があります。
-
-マネージド ID を有効にしないと、次のエラー `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` が発生し、さらに次の操作が無効になります。
+仮想ネットワークでは、次の操作が既定で無効になっています。
 
 * スタジオでのデータのプレビュー
 * デザイナーでのデータの視覚化
-* AutoML 実験の送信
+* デザイナーでのモデルのデプロイ ([既定のストレージ アカウント](#enable-managed-identity-authentication-for-default-storage-accounts))。
+* AutoML 実験の送信 ([既定のストレージ アカウント](#enable-managed-identity-authentication-for-default-storage-accounts))。
 * ラベル付けプロジェクトの開始
 
 スタジオでは、仮想ネットワーク内の次のデータストアの種類からのデータの読み取りがサポートされています。
@@ -73,34 +69,56 @@ ms.locfileid: "94960004"
 * Azure Data Lake Storage Gen2
 * Azure SQL データベース
 
-### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>ストレージ プライベート リンクにワークスペースのマネージド ID __閲覧者__ アクセス権を付与する
-
-この手順が必要なのは、[プライベート エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)を使用して Azure ストレージ アカウントを仮想ネットワークに追加した場合のみです。 詳細については、[閲覧者](../role-based-access-control/built-in-roles.md#reader)組み込みロールに関するページを参照してください。
-
 ### <a name="configure-datastores-to-use-workspace-managed-identity"></a>ワークスペースのマネージド ID を使用するようにデータストアを構成する
 
-Azure Machine Learning では、[データストア](concept-data.md#datastores)を使用してストレージ アカウントに接続します。 マネージド ID を使用するようにデータストアを構成するには、次の手順に従います。 
+[サービス エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)または[プライベート エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)が設定されている仮想ネットワークに Azure ストレージ アカウントを追加した後、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) 認証を使用するようにデータストアを構成する必要があります。 これにより、Studio でストレージ アカウント内のデータにアクセスできるようになります。
+
+Azure Machine Learning では、[データストア](concept-data.md#datastores)を使用してストレージ アカウントに接続します。 マネージド ID を使用するようにデータストアを構成するには、次の手順に従います。
 
 1. スタジオで、 __[データストア]__ を選択します。
 
-1. 新しいデータストアを作成する場合は、 __[+ 新しいデータストア]__ を選択します。
+1. 既存のデータストアを更新する場合は、そのデータストアを選択して __[資格情報の更新]__ を選択します。
 
-    既存のデータストアを更新する場合は、そのデータストアを選択して __[資格情報の更新]__ を選択します。
+    新しいデータストアを作成する場合は、 __[+ 新しいデータストア]__ を選択します。
 
-1. データストアの設定で、 __[Azure Machine Learning service がワークスペース マネージド ID を使用してストレージにアクセスするのを許可する]__ で __[はい]__ を選択します。
+1. データストアの設定で、 __[Azure Machine Learning Studio でのデータのプレビューとプロファイルにワークスペースのマネージド ID を使用する]__ で __[はい]__ を選択します。
+
+    ![ワークスペースのマネージド ID を有効にする方法を示すスクリーンショット](./media/how-to-enable-studio-virtual-network/enable-managed-identity.png)
+
+この手順により、Azure RBAC を使用して、ワークスペースのマネージド ID がストレージ サービスに __閲覧者__ として追加されます。 __閲覧者__ のアクセス権を指定することにより、ワークスペースはファイアウォールの設定を取得し、データが仮想ネットワークから離れないようにすることができます。 変更が有効になるまでに最大 10 分かかる場合があります。
+
+### <a name="enable-managed-identity-authentication-for-default-storage-accounts"></a>既定のストレージ アカウントでマネージド ID 認証を有効にする
+
+各 Azure Machine Learning ワークスペースには、ワークスペースの作成時に定義される 2 つの既定のストレージ アカウントが付属しています。 Studio では、既定のストレージ アカウントを使用して実験とモデルの成果物を格納します。これらは、Studio の特定の機能にとって重要です。
+
+次の表では、ワークスペースの既定のストレージ アカウントでマネージド ID 認証を有効にする必要がある理由について説明します。
+
+|ストレージ アカウント  | Notes  |
+|---------|---------|
+|ワークスペースの既定の BLOB ストレージ| デザイナーからのモデル アセットが格納されます。 デザイナーでモデルをデプロイするには、このストレージ アカウントでマネージド ID 認証を有効にする必要があります。 <br> <br> マネージド ID を使用するように構成されている既定以外のデータストアを使用するデザイナー パイプラインは、視覚化して実行できます。 ただし、既定のデータストアでマネージド ID を有効にせずにトレーニング済みのモデルをデプロイしようとすると、他のデータストアの使用に関係なく、デプロイは失敗します。|
+|ワークスペースの既定のファイル ストア| AutoML 実験アセットが格納されます。 AutoML 実験を送信するには、このストレージ アカウントでマネージド ID 認証を有効にする必要があります。 |
 
 
-この手順により、Azure ロールベース アクセス制御 (Azure RBAC) を使用して、ワークスペースのマネージド ID がストレージ サービスに __閲覧者__ として追加されます。 __閲覧者__ のアクセス権を指定することにより、ワークスペースはファイアウォールの設定を取得し、データが仮想ネットワークから離れないようにすることができます。
+![既定のデータストアがある場所を示すスクリーンショット](./media/how-to-enable-studio-virtual-network/default-datastores.png)
 
-> [!NOTE]
-> これらの変更は、有効になるまでに最大 10 分かかる場合があります。
+
+### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>ストレージ プライベート リンクにワークスペースのマネージド ID __閲覧者__ アクセス権を付与する
+
+Azure ストレージ アカウントでプライベート エンドポイントを使用している場合は、プライベート リンクへの **閲覧者** アクセス権をワークスペースのマネージド ID に付与する必要があります。 詳細については、[閲覧者](../role-based-access-control/built-in-roles.md#reader)組み込みロールに関するページを参照してください。 
+
+ストレージ アカウントでサービス エンドポイントを使用している場合は、この手順を省略できます。
+
+## <a name="access-the-studio-from-a-resource-inside-the-vnet"></a>VNet 内のリソースから Studio にアクセスする
+
+仮想ネットワーク内のリソース (コンピューティング インスタンスや仮想マシンなど) からスタジオにアクセスする場合は、仮想ネットワークからスタジオへの送信トラフィックを許可する必要があります。 
+
+たとえば、ネットワーク セキュリティ グループ (NSG) を使用して送信トラフィックを制限している場合は、__AzureFrontDoor.Frontend__ の __サービス タグ__ 宛先に規則を追加します。
 
 ## <a name="technical-notes-for-managed-identity"></a>マネージド ID のテクニカル ノート
 
-ストレージ サービスへのアクセス時にマネージド ID を使用すると、いくつかのセキュリティの考慮事項に影響します。 このセクションでは、ストレージ アカウントの種類ごとの変化について説明します。
+ストレージ サービスへのアクセス時にマネージド ID を使用すると、セキュリティの考慮事項に影響します。 このセクションでは、ストレージ アカウントの種類ごとの変化について説明します。 
 
-> [!IMPORTANT]
-> これらの考慮事項は、アクセスしている __ストレージ アカウントの種類__ によって異なります。
+これらの考慮事項は、アクセスしている __ストレージ アカウントの種類__ によって異なります。
 
 ### <a name="azure-blob-storage"></a>Azure BLOB ストレージ
 
@@ -124,23 +142,17 @@ Azure SQL Database の格納データにマネージド ID を使用してアク
 
 SQL 包含ユーザーを作成したら、これに対してアクセス許可を付与するため、[GRANT T-SQL コマンド](/sql/t-sql/statements/grant-object-permissions-transact-sql)を使用します。
 
-### <a name="azure-machine-learning-designer-default-datastore"></a>Azure Machine Learning デザイナーの既定のデータストア
+### <a name="azure-machine-learning-designer-intermediate-module-output"></a>Azure Machine Learning デザイナーの中間モジュール出力
 
-既定では、デザイナーはワークスペースにアタッチされているストレージ アカウントを使用して出力を格納します。 ただし、アクセスできる任意のデータストアに出力を格納するように指定することもできます。 お使いの環境で仮想ネットワークが使用されている場合は、これらの制御を使用して、データの安全とアクセス可能な状態を維持できます。
-
-パイプラインの新しい既定のストレージを設定するには:
-
-1. パイプライン ドラフトで、パイプラインのタイトルの近くにある **設定の歯車アイコン** を選択します。
-1. **[Select default datastore]\(既定のデータストアを選択する\)** を選択します。
-1. 新しいデータストアを指定します。
-
-また、既定のデータストアをモジュールごとにオーバーライドすることもできます。 これにより、個々のモジュールのストレージの場所を制御できます。
+デザイナーでは、任意のモジュールの出力場所を指定できます。 これは、セキュリティ、ログ、または監査の目的で、中間データセットを別の場所に格納する場合に使用します。 出力を指定するには、次のようにします。
 
 1. 出力を指定するモジュールを選択します。
-1. **[Output settings]\(出力設定\)** セクションを展開します。
-1. **[Override default output settings]\(既定の出力設定のオーバーライド\)** を選択します。
-1. **[Set output settings]\(出力設定の設定\)** を選択します。
-1. 新しいデータストアを指定します。
+1. 右側に表示される [モジュール設定] ウィンドウで、 **[出力設定]** を選択します。
+1. 各モジュールの出力に使用するデータストアを指定します。
+ 
+仮想ネットワーク内の中間ストレージ アカウントにアクセスできることを確認してください。 そうでない場合、パイプラインは失敗します。
+
+また、出力データを視覚化するために、中間ストレージ アカウントの[マネージド ID 認証を有効にする](#configure-datastores-to-use-workspace-managed-identity)必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

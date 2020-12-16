@@ -1,19 +1,19 @@
 ---
-title: Android マップにシンボル レイヤーを追加する | Microsoft Azure Maps
-description: マップにマーカーを追加する方法について説明します。 データ ソースのポイントベースのデータを含むシンボル レイヤーを、Azure Maps Android SDK を使用して追加する例を参照してください。
+title: Azure Maps Android SDK を使用してマップにシンボル レイヤーを追加する方法
+description: マップにマーカーを追加する方法について説明します。 データ ソースのポイントベースのデータを含むシンボル レイヤーを、Microsoft Azure Maps Android SDK を使用して追加する例を参照してください。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 04/26/2019
+ms.date: 11/24/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: acd5f06a5383308ce736f2860810ebee7e5bce28
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 300a7968b2072459d6d7709e4d89388e1bcf59f3
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897111"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531209"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用してマップにシンボル レイヤーを追加する方法
 
@@ -21,7 +21,9 @@ ms.locfileid: "92897111"
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事の手順に完全に従うには、[Azure Maps Android SDK](./how-to-use-android-map-control-library.md) をインストールしてマップを読み込む必要があります。
+1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
+3. [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) をダウンロードしてインストールします。
 
 ## <a name="add-a-symbol-layer"></a>シンボル レイヤーを追加する
 
@@ -62,7 +64,7 @@ ms.locfileid: "92897111"
         //Create a point feature and add it to the data source.
         dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64)));
     
-        //Add a custom image icon to the map resources.
+        //Add a red custom image icon to the map resources.
         map.images.add("my-icon", R.drawable.mapcontrol_marker_red);
     
         //Create a symbol layer and add it to the map.
@@ -71,8 +73,6 @@ ms.locfileid: "92897111"
         });
     
     ```
-    
-    上記のコード スニペットは、まず **onReady()** コールバック メソッドを使用して Azure Maps コントロール インスタンスを取得します。 次にこれは **DataSource** クラスを使用してデータ ソース オブジェクトを作成し、それをマップに追加します。 次にこれは、ポイント ジオメトリを含む **図形** を追加します。 シンボルのアイコンとして赤いマーカー イメージが設定されます。 **シンボル レイヤー** は、テキストまたはアイコンを使用して、マップ上のシンボルとしてデータ ソースにラップされたポイント ベースのデータをレンダリングします。 次にシンボル レイヤーが作成され、それにレンダリングするためにデータ ソースが渡され、マップのレイヤーに追加されます。
     
     上記のコード スニペットを追加したら、`MainActivity.java` は次のようになります。
     
@@ -165,19 +165,17 @@ ms.locfileid: "92897111"
         }
     }
     ```
-    
-この時点では、アプリケーションを実行すると、ここに示すように、マップ上にマーカーが表示されます。
 
-<center>
+アプリケーションを実行すると、次に示すようにマップ上にマーカーが表示されます。
 
-![Android マップのピン](./media/how-to-add-symbol-to-android-map/android-map-pin.png)</center>
+![Android のマップ ピン](./media/how-to-add-symbol-to-android-map/android-map-pin.png)
 
 > [!TIP]
 > 既定では、重なっているシンボルがシンボル レイヤーによって非表示になることで、シンボルのレンダリングが最適化されます。 拡大すると、非表示のシンボルが表示されるようになります。 この機能を無効にして、すべてのシンボルを常にレンダリングするには、`iconAllowOverlap` オプションを `true` に設定します。
 
 ## <a name="next-steps"></a>次のステップ
 
-さらに内容をマップに追加するには、次を参照してください。
+マップにさらにデータを追加するには、以下を参照してください。
 
 > [!div class="nextstepaction"]
 > [Android マップへの図形の追加](./how-to-add-shapes-to-android-map.md)

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 9714dd49e06dabf9fb4669475f96089fcfc97d73
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 7af15552a489f36d87204bfefe47e579cc19f6dc
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146741"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778822"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関する記事を参照してください。
@@ -53,7 +53,8 @@ Azure API Management は、仮想ネットワーク (VNET) の内部でデプロ
 3. **[仮想ネットワーク]** を選択します。
 4. 仮想ネットワーク内にデプロイされる API Management インスタンスを構成します。
 
-    ![API Management の [仮想ネットワーク] メニュー][api-management-using-vnet-menu]
+    :::image type="content" source="media/api-management-using-with-vnet/api-management-menu-vnet.png" alt-text="Azure portal で仮想ネットワークを選択します。":::
+    
 5. 目的のアクセスの種類を選択します。
 
     * **Off**:これは既定値です。 API Management は仮想ネットワークにデプロイされません。
@@ -73,7 +74,7 @@ Azure API Management は、仮想ネットワーク (VNET) の内部でデプロ
 
     次に、 **[適用]** を選択します。 API Management インスタンスの **[仮想ネットワーク]** ページが、新しい仮想ネットワークとサブネットの選択によって更新されます。
 
-    ![VPN の選択][api-management-setup-vpn-select]
+    :::image type="content" source="media/api-management-using-with-vnet/api-management-using-vnet-select.png" alt-text="ポータルでの仮想ネットワークの設定。":::
 
 7. 上部のナビゲーションバーで、 **[保存]** を選択し、 **[ネットワーク構成の適用]** を選択します。
 
@@ -176,6 +177,15 @@ API Management サービスを Virtual Network にデプロイするときに発
 
   > [!IMPORTANT]
   > 接続を確認したら、サブネットにデプロイされているすべてのリソースを必ず削除してから、サブネットに API Management をデプロイしてください。
+
+* **ネットワーク接続の状態の確認**:API Management をサブネットにデプロイした後、ポータルを使用して、Azure Storage などの依存関係へのインスタンスの接続を確認します。 ポータルの左側のメニューで、 **[Deployment and infrastructure]\(デプロイとインフラストラクチャ\)** の下にある **[ネットワーク接続の状態]** を選択します。
+
+   :::image type="content" source="media/api-management-using-with-vnet/verify-network-connectivity-status.png" alt-text="ポータルでネットワーク接続の状態を確認する":::
+
+    * API Management に必要な Azure サービスへの接続を確認するには、 **[必須]** を選択します。 エラーは、インスタンスが API を管理するためのコア操作を実行できないことを示します。
+    * オプションのサービスへの接続を確認するには、 **[Optional]\(オプション\)** を選択します。 すべてのエラーは、特定の機能 (SMTP など) が機能しないことのみを示します。 エラーが発生すると、API Management インスタンスの使用と監視を行ったり、確約された SLA を提供したりする機能が低下する可能性があります。
+
+接続の問題に対処するには、「[ネットワーク構成に関する一般的な問題](#network-configuration-issues)」を確認し、必要なネットワーク設定を修正します。
 
 * **増分更新**:ネットワークを変更するときは、[NetworkStatus API](/rest/api/apimanagement/2019-12-01/networkstatus) を参照して、API Management サービスが依存している重要なリソースへのアクセスが失われていないことを確認してください。 接続状態は、15 分間隔で更新されます。
 

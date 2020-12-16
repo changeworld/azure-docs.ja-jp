@@ -1,17 +1,17 @@
 ---
 title: Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する
 description: Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する
-author: nkiest
-ms.author: nikiest
+author: noakup
+ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 8633aba2f7cda5dec4a48e9f7132283f8235f746
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: a85619b4947808ba1c13df3c1543102eea7273fd
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317522"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853929"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する
 
@@ -43,7 +43,7 @@ Azure Monitor Private Link Scope は、1 つまたは複数のプライベート
 AMPLS リソースを設定する前に、ネットワークの分離要件を検討してください。 仮想ネットワークのパブリック インターネットへのアクセスと、各 Azure Monitor リソース (Application Insights コンポーネントと Log Analytics ワークスペース) のアクセス制限を評価します。
 
 > [!NOTE]
-> ハブ アンド スポーク ネットワーク、またはピアリングされたネットワークのその他のトポロジを使用すると、各 VNet にプライベート リンクを設定する代わりに、ハブ (メイン) VNet と関連する Azure Monitor リソースとの間にプライベート リンクを設定できます。 これは特に、これらのネットワークで使用される Azure Monitor リソースが共有されている場合に合理的です。 ただし、各 VNet が個別の監視リソース セットにアクセスできるようにする場合は、各ネットワークの専用 AMPLS へのプライベート リンクを作成します。
+> ハブスポーク ネットワーク、またはピアリングされたネットワークのその他のトポロジを使用すると、各 VNet にプライベート リンクを設定する代わりに、ハブ (メイン) VNet と関連する Azure Monitor リソースとの間にプライベート リンクを設定できます。 これは特に、これらのネットワークで使用される Azure Monitor リソースが共有されている場合に合理的です。 ただし、各 VNet が個別の監視リソース セットにアクセスできるようにする場合は、各ネットワークの専用 AMPLS へのプライベート リンクを作成します。
 
 ### <a name="evaluate-which-virtual-networks-should-connect-to-a-private-link"></a>プライベート リンクに接続する仮想ネットワークを評価する
 
@@ -85,6 +85,11 @@ Private Link の構成を計画するときには、考慮に入れる必要の�
 * ワークスペース 2 は、使用可能な AMPLS 接続 5 個のうち 2 個 (40%) を使用して、AMPLS A と AMPLS B に接続します。
 
 ![AMPLS の制限に関する図](./media/private-link-security/ampls-limits.png)
+
+> [!NOTE]
+> 一部のネットワーク トポロジ (主にハブスポーク) では、1 つの AMPLS に対して 10 個の VNet 制限にすぐに達してしまう場合があります。 このような場合は、別々ではなく、共有のプライベート リンク接続を使用することをお勧めします。 ハブ ネットワークに 1 つのプライベート エンドポイントを作成し、それを AMPLS にリンクして、関連するネットワークをハブ ネットワークにピアリングします。
+
+![ハブアンドスポークのシングル PE](./media/private-link-security/hub-and-spoke-with-single-private-endpoint.png)
 
 ## <a name="example-connection"></a>接続の例
 

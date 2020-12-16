@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 450d471beebbcc554a6d534fb2d5361778f158bc
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 74e9224b30ccee274eaf52ba47a0ec05573c2e9d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992320"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558727"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>データのラベル付けプロジェクトを作成してラベルをエクスポートする 
 
@@ -109,7 +109,7 @@ Azure Blob Storage に既に格納済みのデータからデータセットを�
 
 プロジェクトにさらに多くのイメージを追加するには、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、BLOB ストレージ内の適切なフォルダーにアップロードします。 
 
-プロジェクトでデータストア内の新しいデータを継続的に監視する場合は、 **[Enable incremental refresh]\(増分更新を有効にする\)** チェックボックスをオンにします。
+プロジェクトでデータストア内の新しいデータを継続的に監視する場合は、 **[Enable incremental refresh]\(増分更新を有効にする\)** チェックボックスをオンにします。 有効にした場合、このデータが 1 日 1 回プロジェクトにプルされます。
 
 データストアに表示される新しい画像をプロジェクトに追加しない場合は、このチェックボックスをオフにします。
 

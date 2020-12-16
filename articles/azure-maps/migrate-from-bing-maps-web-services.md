@@ -3,18 +3,18 @@ title: チュートリアル:Bing 地図から Web サービスを移行する |
 description: Bing 地図から Microsoft Azure Maps に Web サービスを移行する方法に関するチュートリアルです。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 9/10/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: c6e63f67aca279b64829e67e1aa06a69d312fd58
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d257c66de8fb62fb57c573d91966f3e7d8d1b123
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897026"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904960"
 ---
 # <a name="tutorial---migrate-web-service-from-bing-maps"></a>チュートリアル - Bing 地図から Web サービスを移行する
 
@@ -37,21 +37,21 @@ Azure Maps と Bing 地図では、どちらの場合も REST Web サービス�
 | Spatial Data Services (SDS)           | [検索](/rest/api/maps/search) + [ルート](/rest/api/maps/route) + その他の Azure サービス |
 | タイム ゾーン                             | [タイム ゾーン](/rest/api/maps/timezone)  |
 | トラフィック インシデント                     | [トラフィック インシデントの詳細](/rest/api/maps/traffic/gettrafficincidentdetail)                     |
+| Elevation                             | [Elevation (プレビュー)](/rest/api/maps/elevation)
 
 次のサービス API は、Azure Maps では現在使用できません。
 
--   標高 - 対応予定
 -   巡回ルートの最適化 - 対応予定。 Azure Maps ルート API は、車両が １ つの場合における巡回セールスマンの最適化には対応していません。
 -   映像メタデータ - 主に Bing 地図のタイル URL を取得する目的で使用します。 Azure Maps には、マップ タイルに直接アクセスためのスタンドアロンのサービスがあります。
 
 Azure Maps には、必要になる可能性のある追加の REST Web サービスがいくつか用意されています。
 
--   [Azure Maps Creator](./creator-indoor-maps.md) - 建物や空間のプライベートなデジタル ツインを独自に作成できます。
+-   [Azure Maps Creator (プレビュー)](./creator-indoor-maps.md) - 建物や空間のプライベートなデジタル ツインを独自に作成できます。
 -   [Spatial Operations](/rest/api/maps/spatial) - ジオフェンシングなどの複雑な空間計算や空間演算をサービスにオフロードします。
 -   [マップ タイル](/rest/api/maps/render/getmaptile) - Azure Maps のラスターおよびベクター タイル形式の道路タイルとイメージ タイルにアクセスできます。
 -   [バッチ ルート指定](/rest/api/maps/route/postroutedirectionsbatchpreview) - 1 つのバッチで一定期間にわたり最大 1,000 件のルート要求を実行できます。 処理の高速化のため、ルートはサーバー上で並列に計算されます。
 -   [トラフィック](/rest/api/maps/traffic) フロー - ラスターおよびベクター タイル形式のリアルタイムのトラフィック フロー データにアクセスできます。
--   [Geolocation API](/rest/api/maps/geolocation/getiptolocationpreview) - IP アドレスの位置情報を取得します。
+-   [位置情報 API (プレビュー)](/rest/api/maps/geolocation/getiptolocationpreview) - IP アドレスの位置情報を取得します。
 -   [Weather サービス](/rest/api/maps/weather) - リアルタイムと予測の気象データにアクセスできます。
 
 次のベスト プラクティス ガイドも確認してください。
@@ -186,7 +186,7 @@ Azure Maps のルート指定サービスでは、ルート計算用に次の AP
 
 -   [ルート計算](/rest/api/maps/route/getroutedirections): ルートが計算されます。要求はただちに処理されます。 この API では、GET 要求と POST 要求の両方がサポートされます。 大量のウェイポイントを指定する場合、または多くのルート オプションを使用する場合は、URL 要求が長くなりすぎて問題が発生することがないように POST 要求が推奨されます。
 -   [ルートのバッチ処理](/rest/api/maps/route/postroutedirectionsbatchpreview): 最大 1,000 個のルート要求を含む要求が作成されます。これらの座標は一定期間内に処理されます。 すべてのデータはサーバーで並行して処理され、完了すると、完全な結果セットをダウンロードすることができます。
--   [モビリティ サービス](/rest/api/maps/mobility): 公共輸送を使用するルートと道順が計算されます。
+-   [Mobility Service (プレビュー)](/rest/api/maps/mobility): 公共輸送を使用するルートと道順が計算されます。
 
 次の表では、Bing 地図 API パラメーターと、それに相当する Azure Maps 内の API パラメーターを相互参照で示しています。
 
@@ -614,7 +614,7 @@ Bing 地図では、1 つのバッチ ジオコーディング要求で最大 20
 
 Azure Maps にもバッチ ジオコーディング サービスはありますが、1 つの要求で渡すことのできる住所は最大 10,000 個であり、要求の処理にかかる時間は、データ セットのサイズとサービスにかかる負荷にもよりますが数秒から数分です。 要求に含まれる住所ごとに、トランザクションが生成されました。 Azure Maps でバッチ ジオコーディング サービスを利用できるのは、S1 サービス レベルのみです。
 
-Azure Maps での大量の住所のジオコーディングでは、標準の検索 API に並列要求を行う方法もあります。 これらのサービスでは、要求ごとに 1 つの住所しか受け入れられませんが、使用量制限のない S0 サービス レベルでも使用可能です。 S0 サービス レベルでは、1 つのアカウントから 1 秒あたり最大 50 個の要求を Azure Maps プラットフォームに行うことができます。 そのため、この制限の範囲内で処理を行うのであれば、1 時間に最大 18 万個の住所をジオコーディングできます。 S1 サービス レベルでは、1 つのアカウントから 1 秒あたりに実行可能なクエリの数に関する制限の規定はないため、この価格レベルでは大量のデータを短時間で処理できます。ただし、バッチ ジオコーディング サービスを使うと、転送されるデータの総量を抑え、ネットワーク トラフィックを大幅に削減できます。
+Azure Maps での大量の住所のジオコーディングでは、標準の検索 API に並列要求を行う方法もあります。 これらのサービスでは、要求ごとに 1 つの住所しか受け入れられませんが、使用量制限のない S0 サービス レベルでも使用可能です。 S0 サービス レベルでは、1 つのアカウントから 1 秒あたり最大 50 個の要求を Azure Maps プラットフォームに行うことができます。 そのため、これらの制限の範囲内で処理を行うのであれば、1 時間に最大 18 万個の住所をジオコーディングできます。 S1 サービス レベルでは、1 つのアカウントから 1 秒あたりに実行可能なクエリの数に関する制限の規定はないため、この価格レベルでは大量のデータを短時間で処理できます。ただし、バッチ ジオコーディング サービスを使うと、転送されるデータの総量を抑え、ネットワーク トラフィックを大幅に削減できます。
 
 -   [自由形式の住所のジオコーディング](/rest/api/maps/search/getsearchaddress): 1 行の住所文字列 (`"1 Microsoft way, Redmond, WA"` など) を指定します。要求は直ちに処理されます。 このサービスは、個々の住所を迅速にジオコーディングする必要がある場合に推奨されます。
 -   [構造化された住所のジオコーディング](/rest/api/maps/search/getsearchaddressstructured): 単一の住所の一部 (番地、市区町村、国、郵便番号など) を指定します。要求はただちに処理されます。 このサービスは、個々の住所を迅速にジオコーディングする必要があり、データが既に個別の住所の一部として解析されている場合に推奨されます。

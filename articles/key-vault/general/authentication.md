@@ -7,12 +7,12 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 7423114d2da23207dfcc1a329675b8c902b1f320
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 455caf0b80d82b03f8d00929addeab15a1af6d7e
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445542"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754217"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Azure Key Vault に対する認証
 
@@ -102,6 +102,9 @@ Key Vault では、パブリック IP アドレスを使用してリソースに
 次の図は、アプリケーションが Key Vault の "シークレットの取得" API を呼び出すプロセスを示したものです。
 
 ![Azure Key Vault の認証フロー](../media/authentication/authentication-flow.png)
+
+> [!NOTE]
+> シークレット、証明書、キーの Key Vault SDK クライアントは、アクセス トークンなしで Key Vault を追加で呼び出すので、テナント情報を取得する際に 401 応答が返されます。 詳細については、「[認証、要求、応答](authentication-requests-and-responses.md)」を参照してください。
 
 ## <a name="code-examples"></a>コード例
 

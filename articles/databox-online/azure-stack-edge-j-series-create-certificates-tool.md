@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 11/24/2020
 ms.author: alkohli
-ms.openlocfilehash: 5e5cb077868a224620d1a23e1ff1aac9c8d9f095
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: ab9559e1e8265b3adf08b36d1a8097a00297c61a
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874476"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96606992"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>Microsoft Azure Stack Hub 適合性チェッカー ツールを使用して Azure Stack Edge Pro の証明書を作成する 
 
@@ -23,7 +23,7 @@ ms.locfileid: "94874476"
 
 ## <a name="using-azure-stack-hub-readiness-checker-tool"></a>Azure Stack Hub 適合性チェッカー ツールを使用する
 
-Azure Stack Hub 適合性チェッカー ツールを使用して、Azure Stack Edge Pro デバイスのデプロイのための証明書署名要求 (CSR) を作成できます。 これらの要求は、Azure Stack Edge Pro デバイスの注文を行ってデバイスが届くのを待ってから作成できます。 
+Azure Stack Hub 適合性チェッカー ツールを使用して、Azure Stack Edge Pro デバイスのデプロイのための証明書署名要求 (CSR) を作成できます。 これらの要求は、Azure Stack Edge Pro デバイスの注文を行ってデバイスが届くのを待ってから作成できます。
 
 > [!NOTE]
 > このツールは、実稼働デバイスではなく、テストまたは開発目的でのみ使用してください。 
@@ -59,19 +59,19 @@ Azure Stack Edge Pro デバイスのデプロイ用の CSR を作成するには
     Install-Module -Name Microsoft.AzureStack.ReadinessChecker
     ```
 
-    インストールされているバージョンを確認するには、次のように入力します。  
+    インストールされているバージョンを表示するには、次のように入力します。  
 
     ```azurepowershell
     Get-InstalledModule -Name Microsoft.AzureStack.ReadinessChecker  | ft Name, Version 
     ```
 
-3. すべての証明書のためのディレクトリを作成します (存在しない場合)。 型: 
+3. すべての証明書用のディレクトリがまだない場合は作成します。 型: 
     
     ```azurepowershell
     New-Item "C:\certrequest" -ItemType Directory
     ``` 
     
-4. 証明書要求を作成するには、次の情報を指定します。 VPN 証明書を生成する場合、これらの入力の一部は適用されません。 
+4. 証明書要求を作成するには、次の情報を指定します。 VPN 証明書を生成する場合、これらの入力の一部は適用されません。
     
     |入力 |説明  |
     |---------|---------|
@@ -107,7 +107,7 @@ Azure Stack Edge Pro デバイスのデプロイ用の CSR を作成するには
     ```
 
     
-5. 上記の OutputRequestPath パラメーターで指定したディレクトリの下に、証明書要求ファイルがあります。 `MultipleCSR` パラメーターを使用すると、`.req` の拡張子を持つ 4 つのファイルが表示されます。 ファイルは次のようになります。
+5. 上記の OutputRequestPath パラメーターで指定したディレクトリ内に、証明書要求ファイルがあります。 `MultipleCSR` パラメーターを使用すると、`.req` の拡張子を持つ次の 4 つのファイルが表示されます。
 
     
     |ファイル名  |証明書要求の種類  |
@@ -115,7 +115,7 @@ Azure Stack Edge Pro デバイスのデプロイ用の CSR を作成するには
     |`DeviceName` で始まる     |ローカル Web UI 証明書要求      |
     |`NodeSerialNumber` で始まる     |ノード証明書要求         |
     |`login` 以降     |Azure Resource Manager エンドポイント証明書要求       |
-    |`wildcard` 以降     |BLOB ストレージ証明書要求。デバイス上に作成できるすべてのストレージ アカウントに対応するため、ワイルドカードが含まれています。          |
+    |`wildcard` 以降     |BLOB ストレージ証明書要求。 これには、デバイス上に作成できるすべてのストレージ アカウントに対応するため、ワイルドカードが含まれています。          |
     |`AzureStackEdgeVPNCertificate` 以降     |VPN クライアント証明書要求。         |
 
     INF フォルダーも表示されます。 ここには証明書の詳細を説明するクリア テキストの management.<edge-devicename> という情報ファイルが含まれています。  

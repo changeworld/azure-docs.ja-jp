@@ -6,12 +6,12 @@ ms.date: 11/10/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 adobe-target: true
-ms.openlocfilehash: b32977ac1c8cfe0c461bcd1628c08a0ca215ba93
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 7eebbe5605c0b4d70ea15c1605cff5416965e535
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506194"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780775"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Python アプリを作成する
 
@@ -64,7 +64,7 @@ az login
 
 サインイン後は、Azure CLI を使用して Azure コマンドを実行して、サブスクリプション内のリソースを操作することができます。
 
-問題がありますか。 [お知らせください。](https://aka.ms/FlaskCLIQuickstartHelp)
+問題がある場合は、 [お知らせください。](https://aka.ms/FlaskCLIQuickstartHelp)
 
 ## <a name="clone-the-sample"></a>サンプルを複製する
 
@@ -74,23 +74,11 @@ az login
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 ```
-
-次に、そのフォルダーに移動します。
-
-```terminal
-cd python-docs-hello-world
-```
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-django
-```
-
-次に、そのフォルダーに移動します。
-
-```terminal
-cd python-docs-hello-django
 ```
 ::: zone-end
 
@@ -101,7 +89,11 @@ cd python-docs-hello-django
 ## <a name="run-the-sample"></a>サンプルを実行する
 
 ::: zone pivot="python-framework-flask"
-1. *python-docs-hello world* フォルダーを開いていることを確認します。 
+1. *python-docs-hello-world* フォルダーに移動します。
+
+    ```terminal
+    cd python-docs-hello-world
+    ```
 
 1. 仮想環境を作成し、依存関係をインストールします。
 
@@ -115,7 +107,11 @@ cd python-docs-hello-django
     flask run
     ```
     
-    既定では、サーバーによって、アプリのエントリ モジュールが、サンプルで使用されている *app.py* 内にあると想定されています (別のモジュール名を使用する場合は、`FLASK_APP` 環境変数をその名前に設定します)。
+    既定では、サーバーによって、アプリのエントリ モジュールが、サンプルで使用されている *app.py* 内にあると想定されています
+
+    別のモジュール名を使用する場合は、`FLASK_APP` 環境変数をその名前に設定します。
+
+    エラー "Could not locate a Flask application. You did not provide the 'FLASK_APP' environment variable, and a 'wsgi.py' or 'app.py' module was not found in the current directory. (Flask アプリケーションが見つかりませんでした。"FLASK_APP" 環境変数を指定しておらず、"wsgi.py" または "app.py" モジュールが現在のディレクトリに見つかりませんでした。) が発生した場合は、サンプルが含まれている `python-docs-hello-world` フォルダーにいることを確認してください。
 
 1. Web ブラウザーを開き、`http://localhost:5000/` のサンプル アプリに移動します。 アプリに、**Hello World!** というメッセージが表示されます。
 
@@ -125,7 +121,11 @@ cd python-docs-hello-django
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
-1. *python-docs-hello-django* フォルダーを開いていることを確認します。 
+1. *python-docs-hello-django* フォルダーに移動します。
+
+    ```terminal
+    cd python-docs-hello-django
+    ```
 
 1. 仮想環境を作成し、依存関係をインストールします。
 
@@ -275,7 +275,7 @@ az group delete --no-wait
 
 `--no-wait` 引数を使用すると、操作が完了する前にコマンドから戻ることができます。
 
-問題がありますか。 [お知らせください。](https://aka.ms/FlaskCLIQuickstartHelp)
+問題がありますか。 [お知らせください](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 ## <a name="next-steps"></a>次のステップ
 

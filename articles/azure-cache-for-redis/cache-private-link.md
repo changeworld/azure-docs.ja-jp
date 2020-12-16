@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 1a9d5fe69cd9d853d0bf8ec971f31518bbf47c9a
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 31ae4605b6cc9e26c89beea692fe61fcbda49c4c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504698"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621503"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure Private Link を使用した Azure Cache for Redis (パブリック プレビュー)
 この記事では、Azure portal を使用して、仮想ネットワークと、プライベート エンドポイントを利用する Azure Cache for Redis インスタンスを作成する方法について学習します。 また、既存の Azure Cache for Redis インスタンスにプライベート エンドポイントを追加する方法について学習します。
@@ -111,8 +111,8 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
     
 > [!IMPORTANT]
 > 
-> `publicNetworkAccess` フラグは既定で `Enabled` に設定されています。 
-> このフラグは、パブリック エンドポイントとプライベート エンドポイントの両方に対してキャッシュへのアクセスを必要に応じて許可できるようにするためにあります (`Enabled` に設定されている場合)。 `Disabled` に設定すると、プライベート エンドポイントのアクセスのみが許可されます。 この値を `Disabled` に設定するには、次の PATCH 要求を使用します。
+> `publicNetworkAccess` フラグは既定で `Disabled` に設定されています。 
+> このフラグは、パブリック エンドポイントとプライベート エンドポイントの両方に対してキャッシュへのアクセスを必要に応じて許可できるようにするためにあります (`Enabled` に設定されている場合)。 `Disabled` に設定すると、プライベート エンドポイントのアクセスのみが許可されます。 この値を `Disabled` または `Enabled` に設定するには、次の PATCH 要求を使用します。 この値を編集して、キャッシュに適したフラグを指定します。
 > ```http
 > PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
 > {    "properties": {
@@ -212,8 +212,9 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 ### <a name="what-features-are-not-supported-with-private-endpoints"></a>プライベート エンドポイントでサポートされていない機能は何ですか。
 geo レプリケーション、ファイアウォール規則、ポータル コンソールのサポート、クラスター化されたキャッシュあたり複数のエンドポイント、ファイアウォール規則とゾーン冗長の永続化。 
 
-### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-from-public-network-access"></a>プライベート エンドポイントをパブリック ネットワーク アクセスから無効にするように変更するにはどうすればよいですか。
-`publicNetworkAccess` フラグは既定で `Enabled` に設定されています。 このフラグは、パブリック エンドポイントとプライベート エンドポイントの両方に対してキャッシュへのアクセスを必要に応じて許可できるようにするためにあります (`Enabled` に設定されている場合)。 `Disabled` に設定すると、プライベート エンドポイントのアクセスのみが許可されます。 この値を `Disabled` に設定するには、次の PATCH 要求を使用します。
+### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access"></a>プライベート エンドポイントをパブリック ネットワーク アクセスに対して無効または有効になるように変更するにはどうすればよいですか。
+`publicNetworkAccess` フラグは既定で `Disabled` に設定されています。 このフラグは、パブリック エンドポイントとプライベート エンドポイントの両方に対してキャッシュへのアクセスを必要に応じて許可できるようにするためにあります (`Enabled` に設定されている場合)。 `Disabled` に設定すると、プライベート エンドポイントのアクセスのみが許可されます。 この値を `Disabled` または `Enabled` に設定するには、次の PATCH 要求を使用します。 この値を編集して、キャッシュに適したフラグを指定します。
+
 ```http
 PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
 {    "properties": {

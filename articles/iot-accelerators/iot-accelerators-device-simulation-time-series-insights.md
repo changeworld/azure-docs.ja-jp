@@ -8,12 +8,12 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: db9ba3efe60af830c0e15310b6127c18130f00b9
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: e1409b43f0ce1fc0d8c622dda79e857ac6abdd33
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076251"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854565"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Time Series Insights を使用して、デバイス シミュレーション ソリューション アクセラレータから送信されたテレメトリを視覚化する
 
@@ -23,7 +23,7 @@ ms.locfileid: "92076251"
 
 このハウツー ガイドの手順を実行するには、アクティブな Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-このハウツー ガイドの手順は、Azure サブスクリプションにデバイス シミュレーション ソリューション アクセラレータがデプロイされているものと想定しています。 ソリューション アクセラレータをまだデプロイしていない場合は、クイック スタート「[クラウドベースのデバイス シミュレーション ソリューションをデプロイして実行する](quickstart-device-simulation-deploy.md)」の手順を実行してください。
+このハウツー ガイドの手順は、Azure サブスクリプションにデバイス シミュレーション ソリューション アクセラレータがデプロイされているものと想定しています。 まだデバイス シミュレーションをデプロイしていない場合は、GitHub の[デバイス シミュレーションのデプロイ](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)に関する記事を参照してください。
 
 この記事では、ソリューション アクセラレータの名前を **contoso-simulation** と想定しています。 以下の手順を実行するときは、**contoso-simulation** を実際のソリューション アクセラレータの名前に置き換えてください。
 

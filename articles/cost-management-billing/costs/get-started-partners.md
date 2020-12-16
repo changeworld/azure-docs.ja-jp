@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: d2b90db18a31fff4190be4f84625ad52fcaae578
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: cd3ca4d3ddf73469cd1f1fc065eccb369cf765af
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657314"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905680"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>パートナー向け Azure Cost Management の利用を開始する
 
@@ -262,7 +262,7 @@ Azure portal で、パートナー テナントにサインインし、 **[Cost 
 
 ## <a name="export-cost-data-to-azure-storage"></a>コスト データを Azure Storage にエクスポートする
 
-パートナー テナント内の課金スコープにアクセスできるパートナーは、そのコストと使用状況データを Azure Storage BLOB にエクスポートできます。 この BLOB は、共有サービス サブスクリプションや顧客のサブスクリプションではないパートナー テナント内のサブスクリプションに存在する必要があります。 コスト データのエクスポートを有効にするには、エクスポートされたコスト データをホストするための独立した従量課金制サブスクリプションをパートナー テナントに設定することをお勧めします。 エクスポート ストレージ アカウントは、従量課金制サブスクリプションでホストされている Azure Storage BLOB に作成されます。 パートナーがエクスポートを作成するスコープに基づいて、関連付けられたデータが、定期的にストレージ アカウントに自動的にエクスポートされます。
+パートナー テナント内の課金スコープにアクセスできるパートナーは、そのコストと使用状況データを Azure Storage BLOB にエクスポートできます。 この BLOB は、[共有サービス サブスクリプション](/partner-center/shared-services)や顧客のサブスクリプションではないパートナー テナント内のサブスクリプションに存在する必要があります。 コスト データのエクスポートを有効にするには、エクスポートされたコスト データをホストするための独立した従量課金制サブスクリプションをパートナー テナントに設定することをお勧めします。 エクスポート ストレージ アカウントは、従量課金制サブスクリプションでホストされている Azure Storage BLOB に作成されます。 パートナーがエクスポートを作成するスコープに基づいて、関連付けられたデータが、定期的にストレージ アカウントに自動的にエクスポートされます。
 
 サブスクリプションへの Azure RBAC アクセス権を持つユーザーは、顧客テナント内の任意のサブスクリプションでホストされている Azure Storage BLOB にコスト データをエクスポートすることもできます。
 

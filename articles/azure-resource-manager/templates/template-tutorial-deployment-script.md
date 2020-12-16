@@ -1,6 +1,6 @@
 ---
 title: テンプレートのデプロイ スクリプトを使用する | Microsoft Docs
-description: Azure Resource Manager テンプレートでデプロイ スクリプトを使用する方法を説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) でデプロイ スクリプトを使用する方法を説明します。
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.date: 08/25/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e1094befcc6b3a6e9d56ba3b603dc45fcb91ba13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc19222cf1e610c6c65d7c721a54f9949bed70ae
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88825496"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931437"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>チュートリアル:デプロイ スクリプトを使用して自己署名証明書を作成する (プレビュー)
 
-Azure Resource Manager (ARM) テンプレートでデプロイ スクリプトを使用する方法を説明します。 デプロイ スクリプトを使用すると、ARM テンプレートでは実行できないカスタム ステップを実行できます。 たとえば、自己署名証明書を作成できます。  このチュートリアルでは、Azure キー コンテナーをデプロイするためのテンプレートを作成した後、同じテンプレート内で `Microsoft.Resources/deploymentScripts` リソースを使用して証明書を作成してからその証明書をそのキー コンテナーに追加します。 デプロイ スクリプトの詳細については、[ARM テンプレートでのデプロイ スクリプトの使用](./deployment-script-template.md)に関する記事を参照してください。
+Azure Resource Manager テンプレート (ARM テンプレート) でデプロイ スクリプトを使用する方法を説明します。 デプロイ スクリプトを使用すると、ARM テンプレートでは実行できないカスタム ステップを実行できます。 たとえば、自己署名証明書を作成できます。  このチュートリアルでは、Azure キー コンテナーをデプロイするためのテンプレートを作成した後、同じテンプレート内で `Microsoft.Resources/deploymentScripts` リソースを使用して証明書を作成してからその証明書をそのキー コンテナーに追加します。 デプロイ スクリプトの詳細については、[ARM テンプレートでのデプロイ スクリプトの使用](./deployment-script-template.md)に関する記事を参照してください。
 
 > [!IMPORTANT]
 > スクリプトの実行とトラブルシューティングのため、同じリソース グループ内に 2 つのデプロイ スクリプト リソース (ストレージ アカウントとコンテナー インスタンス) が作成されます。 これらのリソースは、通常、スクリプトの実行が最終状態になるとスクリプト サービスによって削除されます。 リソースが削除されるまでは、リソースに対して請求が行われます。 詳細については、「[デプロイ スクリプト リソースのクリーンアップ](./deployment-script-template.md#clean-up-deployment-script-resources)」を参照してください。
@@ -40,7 +40,7 @@ Azure Resource Manager (ARM) テンプレートでデプロイ スクリプト�
 
 この記事を完了するには、以下が必要です。
 
-* **Resource Manager ツール拡張機能を持つ [Visual Studio Code](https://code.visualstudio.com/)** 。 「[クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](./quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
+* **Resource Manager ツール拡張機能を持つ [Visual Studio Code](https://code.visualstudio.com/)** 。 「[クイック スタート:Visual Studio Code を使用して ARM テンプレートを作成する](./quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 
 * **サブスクリプション レベルで共同作成者のロールが付与された、ユーザー割り当て済みマネージド ID**。 この ID は、デプロイ スクリプトを実行するために使用されます。 作成するには、「[ユーザー割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)」を参照してください。 この識別 ID は、テンプレートをデプロイするときに必要です。 ID の形式は次のとおりです。
 

@@ -2,13 +2,13 @@
 title: Azure Event Grid でのイベントのフィルター処理
 description: Azure Event Grid サブスクリプションを作成するときにイベントをフィルター処理する方法について説明します。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 837209d4197c271598155776b8d171a705e1f454
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/03/2020
+ms.openlocfilehash: bc3e84037693fcd909961ba409871d947ef1de7d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86120094"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574908"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid サブスクリプションでのイベントのフィルター処理を理解します
 
@@ -72,7 +72,7 @@ ms.locfileid: "86120094"
 ]
 ```
 
-複数の異なるフィルターを指定する場合、**AND** 操作が実行されます。そのため、各フィルターの条件が満たされる必要があります。 たとえば次のようになります。 
+複数の異なるフィルターを指定する場合、**AND** 操作が実行されます。そのため、各フィルターの条件が満たされる必要があります。 次に例を示します。 
 
 ```json
 "advancedFilters": [
@@ -95,7 +95,7 @@ ms.locfileid: "86120094"
 
 ### <a name="operators"></a>オペレーター
 
-**数値**に対して使用できる演算子は次のとおりです。
+**数値** に対して使用できる演算子は次のとおりです。
 
 * NumberGreaterThan
 * NumberGreaterThanOrEquals
@@ -104,10 +104,10 @@ ms.locfileid: "86120094"
 * NumberIn
 * NumberNotIn
 
-**ブール値**に対して使用できる演算子は次のとおりです。 
+**ブール値** に対して使用できる演算子は次のとおりです。 
 - BoolEquals です。
 
-**文字列**に対して使用できる演算子は次のとおりです。
+**文字列** に対して使用できる演算子は次のとおりです。
 
 * StringContains
 * StringBeginsWith
@@ -115,7 +115,24 @@ ms.locfileid: "86120094"
 * StringIn
 * StringNotIn
 
-すべての文字列の比較では、大文字と小文字は区別**されません**。
+すべての文字列の比較では、大文字と小文字は区別 **されません**。
+
+> [!NOTE]
+> イベント JSON に高度なフィルター キーが含まれていない場合、フィルターは次の演算子に対して **一致しない** と見なされます。 
+> - NumberGreaterThan
+> - NumberGreaterThanOrEquals
+> - NumberLessThan
+> - NumberLessThanOrEquals
+> - NumberIn
+> - BoolEquals です。
+> - StringContains
+> - StringBeginsWith
+> - StringEndsWith
+> - StringIn
+> 
+>フィルターは、次の演算子に対して **一致する** と見なされます。
+> - NumberNotIn
+> - StringNotIn
 
 ### <a name="key"></a>Key
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet, contperfq2
-ms.openlocfilehash: 892d73c2b23a9806cd38b188f594f129fda9303d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 7901ad4f67f6f3243a2d3b8dc25733ac68b612db
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340721"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608369"
 ---
 # <a name="azure-cosmos-db-sql-sdk-connectivity-modes"></a>Azure Cosmos DB SQL SDK の接続モード
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "93340721"
      
 :::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="Azure Cosmos DB の接続モード" border="false":::
 
-基本的に、これらの接続モードでは、データ プレーン要求 (ドキュメントの読み取りと書き込み) がクライアント マシンから Azure Cosmos DB バックエンドのパーティションに到達するまでのルートを調整します。 直接モードは、最高のパフォーマンスを得るための推奨オプションです。クライアントは、Azure Cosmos DB バックエンドのパーティションへの TCP 接続を直接開き、中継なしで要求を " *直接* " 送信できます。 これに対して、ゲートウェイ モードでは、クライアントからの要求は Azure Cosmos DB フロントエンドのいわゆる "ゲートウェイ" サーバーにルーティングされ、そこから Azure Cosmos DB バックエンドの適切なパーティションに送信されます。
+基本的に、これらの接続モードでは、データ プレーン要求 (ドキュメントの読み取りと書き込み) がクライアント マシンから Azure Cosmos DB バックエンドのパーティションに到達するまでのルートを調整します。 直接モードは、最高のパフォーマンスを得るための推奨オプションです。クライアントは、Azure Cosmos DB バックエンドのパーティションへの TCP 接続を直接開き、中継なしで要求を "*直接*" 送信できます。 これに対して、ゲートウェイ モードでは、クライアントからの要求は Azure Cosmos DB フロントエンドのいわゆる "ゲートウェイ" サーバーにルーティングされ、そこから Azure Cosmos DB バックエンドの適切なパーティションに送信されます。
 
 ## <a name="service-port-ranges"></a>ソース ポート範囲
 
@@ -47,7 +47,7 @@ ms.locfileid: "93340721"
 |接続モード  |サポートされるプロトコル  |サポートされる SDK  |API/サービス ポート  |
 |---------|---------|---------|---------|
 |Gateway  |   HTTPS    |  すべての SDK    |   SQL (443)、MongoDB (10250、10255、10256)、Table (443)、Cassandra (10350)、Graph (443) <br> ポート 10250 は、Geo レプリケーションを使用することなく、MongoDB インスタンスの既定の Azure Cosmos DB API にマップされます。 一方で、ポート 10255 と 10256 は、Geo レプリケーションを使用して、このインスタンスにマップされます。   |
-|直接    |     TCP    |  .NET SDK    | パブリック/サービス エンドポイントを使用する場合: 10000 から 20000 の範囲のポート<br>プライベート エンドポイントを使用する場合: 0 から 65535 の範囲のポート |
+|直接    |     TCP    |  .NET SDK Java SDK    | パブリック/サービス エンドポイントを使用する場合: 10000 から 20000 の範囲のポート<br>プライベート エンドポイントを使用する場合: 0 から 65535 の範囲のポート |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 11/24/2020
-ms.openlocfilehash: fe335b00df23ff132ad61b27efd733d195ee3bfb
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7ee203595a796529ae0aefe8b0c52a689ac29968
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030954"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762331"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してリージョン間 Azure ロード バランサーを作成する
 
@@ -28,6 +28,10 @@ ms.locfileid: "96030954"
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
+> [!IMPORTANT]
+> リージョンをまたがる Azure Load Balancer は、現在パブリック プレビューの段階にあります。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション。
@@ -37,8 +41,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
 
-> [!IMPORTANT]
-> 現在、リージョン間ロード バランサーはプレビュー段階であり、プレビュー ポータルでは非表示になっています。  この機能を表示してデプロイするには、 **https://preview.portal.azure.com/?feature.globallb=true** にサインインします。
+Azure プレビュー ポータルに[サインイン](https://preview.portal.azure.com)します。
 
 ## <a name="create-cross-region-load-balancer"></a>リージョン間ロード バランサーを作成する
 

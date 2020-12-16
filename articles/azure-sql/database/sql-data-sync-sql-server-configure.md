@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 9a6779f8624cf744d99c819e77784f26fb4ac799
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: f5192176a6a0e174d5878c51defce70d949c1eb1
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790221"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922315"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>チュートリアル:Azure SQL Database と SQL Server のデータベース間の SQL データ同期を設定する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ SQL データ同期の概要については、[SQL データ同期を使用し�
 PowerShell を使用した SQL データ同期の構成方法の例については、[SQL Database のデータベース間](scripts/sql-data-sync-sync-data-between-sql-databases.md)または[Azure SQL Database と SQL Server のデータベース間](scripts/sql-data-sync-sync-data-between-azure-onprem.md)の同期方法に関する記事をご覧ください
 
 > [!IMPORTANT]
-> 現時点では、SQL データ同期で Azure SQL Managed Instance はサポートされて **いません** 。
+> 現時点では、SQL データ同期で Azure SQL Managed Instance はサポートされて **いません**。
 
 ## <a name="create-sync-group"></a>同期グループを作成する
 
@@ -40,18 +40,18 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
 
 1. データ同期のハブ データベースとして使用するデータベースを選択します。
 
-    ![データベースの一覧からの選択、Microsoft Azure portal](./media/sql-data-sync-sql-server-configure/select-sql-database.png)
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/select-sql-database.png" alt-text = "Select from the database list, Microsoft Azure portal":::
 
     > [!NOTE]
     > ハブ データベースは同期トポロジの中心になるエンドポイントであり、1 つの同期グループには複数のデータベース エンドポイントが含まれます。 同期グループ内にエンドポイントがある他のすべてのメンバー データベースが、ハブ データベースと同期します。
 
 1. 選択したデータベースの **[SQL データベース]** メニューで、 **[別のデータベースに同期]** を選択します。
 
-    ![他のデータベースへの同期、Microsoft Azure portal](./media/sql-data-sync-sql-server-configure/sync-to-other-databases.png)
+    :::image type="content" source="./media/sql-data-sync-sql-server-configure/sync-to-other-databases.png" alt-text = "Sync to other databases, Microsoft Azure portal":::
 
-1. **[別のデータベースに同期]** ページで、 **[新しい同期グループ]** を選択します。 **[新しい同期グループ]** ページが開きます ( **[同期グループの作成] (手順 1)** が強調表示されています)。
+1. **[別のデータベースに同期]** ページで、 **[新しい同期グループ]** を選択します。 **[新しい同期グループ]** ページが開かれ、 **[同期グループの作成] (手順 1)** が表示されます。
 
-   ![手順 1 の設定](./media/sql-data-sync-sql-server-configure/stepone.png)
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/new-sync-group-private-link.png" alt-text = "Set up new sync group with private link":::
 
    **[データ同期グループの作成]** ページで、次の設定を変更します。
 
@@ -61,26 +61,31 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
    | **同期メタデータ データベース** | データベースを作成する (推奨) か、既存のデータベースを使用するかを選択します。<br/><br/>**[新しいデータベース]** を選択した場合は、 **[新しいデータベースの作成]** を選択します。 次に、 **[SQL データベース]** ページで、新しいデータベースの名前を指定して構成し、 **[OK]** を選択します。<br/><br/>**[既存のデータベースを使用する]** を選択した場合は、一覧からデータベースを選択します。 |
    | **自動同期** | **[オン]** または **[オフ]** を選択します。<br/><br/>**[オン]** を選択した場合は、 **[同期の頻度]** セクションで数値を入力し、 **[秒]** 、 **[分]** 、 **[時間]** 、または **[日]** を選択します。<br/> 最初の同期は、構成が保存されてから、指定した期間が経過した後に開始されます。|
    | **競合の解決** | **[Hub win]\(ハブ優先\)** または **[Member win]\(メンバー優先\)** を選択します。<br/><br/>**[Hub win]\(ハブ優先\)** とは、競合が発生した場合、ハブ データベースのデータによって、メンバー データベースの競合するデータが上書きされることを意味します。<br/><br/>**[Member win]\(メンバー優先\)** とは、競合が発生した場合、メンバー データベースのデータによって、ハブ データベースの競合するデータが上書きされることを意味します。 |
+   | **Private Link を使用する** | サービス マネージド プライベート エンドポイントを選択して、同期サービスとハブ データベースの間にセキュリティで保護された接続を確立します。 |
 
    > [!NOTE]
-   > Microsoft では、 **同期メタデータ データベース** として使用する新しい空のデータベースを作成することをお勧めしています。 データ同期は、このデータベースにテーブルを作成し、頻繁に発生するワークロードを実行します。 このデータベースは、選択したリージョンとサブスクリプション内のすべての同期グループの **同期メタデータ データベース** として共有されます。 リージョン内のすべての同期グループと同期エージェントを削除しないと、データベースまたはその名前を変更することはできません。
+   > Microsoft では、**同期メタデータ データベース** として使用する新しい空のデータベースを作成することをお勧めしています。 データ同期は、このデータベースにテーブルを作成し、頻繁に発生するワークロードを実行します。 このデータベースは、選択したリージョンとサブスクリプション内のすべての同期グループの **同期メタデータ データベース** として共有されます。 リージョン内のすべての同期グループと同期エージェントを削除しないと、データベースまたはその名前を変更することはできません。
 
    **[OK]** を選択し、同期グループが作成されてデプロイされるまで待ちます。
+   
+1. **[新しい同期グループ]** ページで、 **[Use private link]\(Private Link を使用する\)** を選択した場合は、プライベート エンドポイント接続を承認する必要があります。 情報メッセージ内のリンクを使用すると、プライベート エンドポイント接続のエクスペリエンスに移動し、そこで接続を承認できます。 
+
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/approve-private-link.png" alt-text = "Approve private link":::
 
 ## <a name="add-sync-members"></a>同期メンバーを追加する
 
 新しい同期グループが作成されてデプロイされると、 **[新しい同期グループ]** ページで **[同期メンバーの追加] (手順 2)** が強調表示されます。
 
-**[ハブ データベース]** セクションで、ハブ データベースが配置されているサーバーの既存の資格情報を入力します。 このセクションでは、" *新しい* " 資格情報を入力しないでください。
+**[ハブ データベース]** セクションで、ハブ データベースが配置されているサーバーの既存の資格情報を入力します。 このセクションでは、"*新しい*" 資格情報を入力しないでください。
 
-![手順 2 の設定](./media/sql-data-sync-sql-server-configure/steptwo.png)
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/steptwo.png" alt-text = "Enter existing credentials for the hub database server":::
 
 ### <a name="to-add-a-database-in-azure-sql-database"></a>Azure SQL Database にデータベースを追加するには
 
 **[メンバー データベース]** セクションで、必要に応じて **[Add an Azure SQL Database]\(Azure SQL Database を追加\)** を選択して、Azure SQL Database 内のデータベースを同期グループに追加します。 **[Configure Azure SQL Database]\(Azure SQL Database の構成\)** ページが開きます。
-
-  ![手順 2 - データベースの構成](./media/sql-data-sync-sql-server-configure/steptwo-configure.png)
-
+  
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/step-two-configure.png" alt-text = "Add a database to the sync group":::
+   
   **[Configure Azure SQL Database]\(Azure SQL Database の構成\)** ページで、次の設定を変更します。
 
   | 設定                       | 説明 |
@@ -90,7 +95,8 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
   | **Azure SQL Server** | 既存のサーバーを選択します。 |
   | **Azure SQL Database** | SQL Database 内の既存のデータベースを選択します。 |
   | **同期方向** | **[双方向の同期]** 、 **[ハブへ]** 、または **[ハブから]** を選択します。 |
-  | **[ユーザー名]** と **[パスワード]** | メンバー データベースが配置されているサーバーの既存の資格情報を入力します。 このセクションでは、" *新しい* " 資格情報を入力しないでください。 |
+  | **[ユーザー名]** と **[パスワード]** | メンバー データベースが配置されているサーバーの既存の資格情報を入力します。 このセクションでは、"*新しい*" 資格情報を入力しないでください。 |
+  | **Private Link を使用する** | サービス マネージド プライベート エンドポイントを選択して、同期サービスとメンバー データベースの間にセキュリティで保護された接続を確立します。 |
 
   **[OK]** を選択し、新しい同期メンバーが作成され、デプロイされるまで待ちます。
 
@@ -102,7 +108,7 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
 
 1. **[同期エージェント ゲートウェイの選択]** を選択します。 **[同期エージェントの選択]** ページが開きます。
 
-   ![同期エージェントの作成](./media/sql-data-sync-sql-server-configure/steptwo-agent.png)
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/steptwo-agent.png" alt-text = "Creating a sync agent":::
 
 1. **[同期エージェントの選択]** ページで、既存のエージェントを使用するか、エージェントを作成するかを選択します。
 
@@ -153,7 +159,7 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
 1. **[OK]** を選択して、 **[データベースの選択]** ページを閉じます。 さらに **[OK]** を選択して **[オンプレミスの構成]** ページを閉じ、新しい同期メンバーが作成およびデプロイされるまで待ちます。 最後に、 **[OK]** を選択して **[同期メンバーの選択]** ページを閉じます。
 
 > [!NOTE]
-> SQL データ同期およびローカル エージェントに接続するには、 *DataSync_Executor* ロールにユーザー名を追加します。 データ同期は、このロールを SQL Server インスタンス上に作成します。
+> SQL データ同期およびローカル エージェントに接続するには、*DataSync_Executor* ロールにユーザー名を追加します。 データ同期は、このロールを SQL Server インスタンス上に作成します。
 
 ## <a name="configure-sync-group"></a>同期グループを構成する
 
@@ -199,7 +205,7 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
 
 **同期後にデータは収束しますか?**
 
-必ずしもその必要はありません。 ハブと 3 つのスポーク (A、B、C) を持つ同期グループがあり、同期は ハブから A、ハブから B、ハブから C に対して行われるものとします。ハブから A への同期が実行された " *後* " でデータベース A が変更された場合、その変更は、次の同期タスクが実行されるまで、データベース B またはデータベース C には書き込まれません。
+必ずしもその必要はありません。 ハブと 3 つのスポーク (A、B、C) を持つ同期グループがあり、同期は ハブから A、ハブから B、ハブから C に対して行われるものとします。ハブから A への同期が実行された "*後*" でデータベース A が変更された場合、その変更は、次の同期タスクが実行されるまで、データベース B またはデータベース C には書き込まれません。
 
 **スキーマの変更を同期グループに反映するにはどうすればよいですか?**
 
@@ -218,7 +224,7 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
 
 列のデータ型を変更する場合:
 
-既存の列のデータ型を変更した場合、データ同期は新しい値が同期スキーマで定義された元のデータ型に一致する限り動作を続行します。 たとえば、同期元データベース内の型を **int** から **bigint** に変更した場合、 **int** データ型としては大きすぎる値を挿入するまで、データ同期は動作を続行します。 変更を完了するには、ハブとすべての同期メンバーに対してスキーマの変更を手動でレプリケートした後、同期スキーマを更新します。
+既存の列のデータ型を変更した場合、データ同期は新しい値が同期スキーマで定義された元のデータ型に一致する限り動作を続行します。 たとえば、同期元データベース内の型を **int** から **bigint** に変更した場合、**int** データ型としては大きすぎる値を挿入するまで、データ同期は動作を続行します。 変更を完了するには、ハブとすべての同期メンバーに対してスキーマの変更を手動でレプリケートした後、同期スキーマを更新します。
 
 **データ同期でデータベースのエクスポートとインポートを行うにはどうすればよいですか?**
 
@@ -230,6 +236,10 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
 **クライアント エージェントに関する情報はどこで見つけることができますか?**
 
 クライアント エージェントについてよく寄せられる質問については、[エージェントに関する FAQ](sql-data-sync-agent-overview.md#agent-faq) のセクションを参照してください。
+
+**プライベート リンクは、使用を開始する前に手動で承認する必要がありますか?**
+
+はい。同期グループのデプロイ中に Azure portal の [プライベート エンドポイント接続] ページで、または PowerShell を使用して、サービス マネージド プライベート エンドポイントを手動で承認する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

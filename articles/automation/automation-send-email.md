@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: c01e329e4e4ab403c8966f096239abffee1c1fc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a81ae680a5f04eca0a6cc01ee24b474cc5daabea
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185859"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005207"
 ---
 # <a name="send-an-email-from-a-runbook"></a>Runbook からメールを送信する
 
@@ -100,7 +100,7 @@ Runbook 内で Azure Key Vault を使用するには、次のモジュールを 
     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
     Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Out-Null
     $VaultName = "<Enter your vault name>"
-    $SENDGRID_API_KEY = (Get-AzKeyVaultSecret -VaultName $VaultName -Name "SendGridAPIKey").SecretValueText
+    $SENDGRID_API_KEY = (Get-AzKeyVaultSecret -VaultName $VaultName -Name "SendGridAPIKey").SecretValue
     $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
     $headers.Add("Authorization", "Bearer " + $SENDGRID_API_KEY)
     $headers.Add("Content-Type", "application/json")
@@ -136,7 +136,7 @@ Runbook 内で Azure Key Vault を使用するには、次のモジュールを 
 
 Runbook が正常に実行されることを確認するには、「[Runbook をテストする](manage-runbooks.md#test-a-runbook)」または [Runbook の開始](start-runbooks.md)に関するページの手順に従います。
 
-最初にテスト用のメールが表示されない場合は、**迷惑メール**および**スパム**のフォルダーを確認してください。
+最初にテスト用のメールが表示されない場合は、**迷惑メール** および **スパム** のフォルダーを確認してください。
 
 ## <a name="clean-up-resources-after-the-email-operation"></a>メール操作後にリソースをクリーンアップする
 

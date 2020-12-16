@@ -4,21 +4,18 @@ description: Azure portal から Azure Kubernetes Service (AKS) クラスター�
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: ae617615a8ba83e311a416581fb41d3cb6ca1b05
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: cfd09e469de68a1eee7440773347e9fe58bf8619
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635611"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571625"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Azure portal から Kubernetes リソースにアクセスする (プレビュー)
 
 Azure portal には、Azure Kubernetes Service (AKS) クラスター内の Kubernetes リソースに簡単にアクセスするための Kubernetes リソース ビューアー (プレビュー) が含まれています。 Azure portal から Kubernetes リソースを表示すると、Azure portal と `kubectl` コマンド ライン ツールの間のコンテキストの切り替えが削減されるため、Kubernetes リソースを表示および編集するためのエクスペリエンスが効率化されます。 リソース ビューアーには現在、デプロイ、ポッド、レプリカ セットなどの複数のリソースの種類が含まれています。
 
-Azure portal の Kubernetes リソース ビューによって、非推奨として設定されている [AKS ダッシュボード アドオン][kubernetes-dashboard]が置き換えられます。
-
->[!NOTE]
->この機能は現在のところ、[プライベート Azure Kubernetes Service クラスター](./private-clusters.md)ではサポートされていません。
+Azure portal の Kubernetes リソース ビューによって、非推奨となった [AKS ダッシュボード アドオン][kubernetes-dashboard]が置き換えられます。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
@@ -46,19 +43,19 @@ Kubernetes リソースを表示するには、Azure portal で AKS クラスタ
 
 YAML ファイルが追加されると、リソース ビューアーには作成された両方の Kubernetes サービス、つまり、内部サービス (azure-vote-back) と、Azure Vote アプリケーションにアクセスするための外部サービス (azure-vote-front) が表示されます。 外部サービスにはリンクされた外部 IP アドレスが含まれているため、ブラウザーでアプリケーションを簡単に表示できます。
 
-:::image type="content" source="media/kubernetes-portal/portal-services.png" alt-text="Azure portal に表示される Kubernetes ポッドの情報。" lightbox="media/kubernetes-portal/portal-services.png":::
+:::image type="content" source="media/kubernetes-portal/portal-services.png" alt-text="Azure portal に表示される Azure Vote アプリケーションの情報。" lightbox="media/kubernetes-portal/portal-services.png":::
 
 ### <a name="monitor-deployment-insights"></a>デプロイ分析情報を監視する
 
 [Azure Monitor for containers][enable-monitor] が有効になっている AKS クラスターでは、デプロイ分析情報をすばやく表示できます。 Kubernetes リソース ビューから、ユーザーは個々のデプロイのライブ状態 (CPU やメモリの使用率を含む) を表示できるほか、Azure Monitor に切り替えてより詳細な情報を確認できます。 サンプルの AKS クラスターのデプロイ分析情報の例を次に示します。
 
-:::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="Azure portal に表示される Kubernetes ポッドの情報。" lightbox="media/kubernetes-portal/deployment-insights.png":::
+:::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="Azure portal に表示されるデプロイ分析情報。" lightbox="media/kubernetes-portal/deployment-insights.png":::
 
 ## <a name="edit-yaml"></a>YAML を編集する
 
 Kubernetes リソース ビューには YAML エディターも含まれています。 組み込みの YAML エディターを使用すると、ポータル内からサービスやデプロイを更新または作成し、直ちに変更を適用できます。
 
-:::image type="content" source="media/kubernetes-portal/service-editor.png" alt-text="Azure portal に表示される Kubernetes ポッドの情報。":::
+:::image type="content" source="media/kubernetes-portal/service-editor.png" alt-text="Azure portal に表示される Kubernetes サービスの YAML エディター。":::
 
 YAML を編集した後、 **[確認と保存]** を選択し、変更を確認して、再び保存することによって変更を適用します。
 
@@ -80,7 +77,7 @@ Kubernetes リソースにアクセスするには、AKS クラスター、Kuber
 
 既存のクラスターでは、Kubernetes リソース ビューを有効にすることが必要な場合があります。 リソース ビューを有効にするには、クラスターのポータルでプロンプトに従います。
 
-:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Azure portal に表示される Kubernetes ポッドの情報。" lightbox="media/kubernetes-portal/enable-resource-view.png":::
+:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Kubernetes リソース ビューを有効にするための Azure portal のメッセージ。" lightbox="media/kubernetes-portal/enable-resource-view.png":::
 
 > [!TIP]
 > [**API サーバーの許可された IP 範囲**](api-server-authorized-ip-ranges.md)に対して AKS 機能を追加し、API サーバーのアクセスをファイアウォールのパブリック エンドポイントのみに制限できます。 このようなクラスターの別のオプションとして、`--api-server-authorized-ip-ranges` を更新して、ローカル クライアント コンピューターや (ポータルが閲覧されている) IP アドレスの範囲へのアクセスを含めることができます。 このアクセスを許可するには、コンピューターのパブリック IPv4 アドレスが必要です。 このアドレスは、下のコマンドを使用するか、インターネット ブラウザーで "what is my IP address" と検索することで確認できます。

@@ -1,19 +1,19 @@
 ---
-title: Android マップへの図形の追加 | Microsoft Azure Maps
-description: マップに図形を追加する方法について説明します。 Azure Maps Android SDK を使用してマップに線と多角形を追加するコード サンプルを参照してください。
+title: Azure Maps Android SDK を使用したマップへの図形の追加
+description: マップに図形を追加する方法について説明します。 Microsoft Azure Maps Android SDK を使用してマップに線と多角形を追加するコード サンプルを参照してください。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 04/26/2019
+ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 04773ef279717c7728cf1b07761c6e4c0726a877
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 9ef6e1910803cc18f03347e08abc4f0d836b3c0a
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897128"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532773"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用したマップへの図形の追加
 
@@ -21,24 +21,24 @@ ms.locfileid: "92897128"
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事のプロセスを完了するには、[Azure Maps Android SDK](./how-to-use-android-map-control-library.md) をインストールしてマップを読み込む必要があります。
-
+1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
+3. [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) をダウンロードしてインストールします。
 
 ## <a name="add-a-line-to-the-map"></a>マップへの線の追加
 
-**線レイヤー** を使用してマップに線を追加できます。マップ上に線を追加するには、次の手順に従います。
+次の手順に従って **線レイヤー** を使用し、マップに線を追加します。
 
-1. **res > layout > activity_main.xml** を編集すると、次のようになります。
+1. `res > layout > activity_main.xml` を編集して、次のコードのようにします。
 
     ```XML
-    <?xml version="1.0" encoding="utf-8"?>
     <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-    
+
         <com.microsoft.azure.maps.mapcontrol.MapControl
             android:id="@+id/mapcontrol"
             android:layout_width="match_parent"
@@ -47,11 +47,13 @@ ms.locfileid: "92897128"
             app:mapcontrol_centerLng="-74.004420"
             app:mapcontrol_zoom="12"
             />
-    
     </FrameLayout>
     ```
 
 2. 次のコード スニペットを `MainActivity.java` クラスの **onCreate()** メソッドにコピーします。
+
+    >[!WARNING]
+    >Android Studio に必要なクラスがインポートされていない可能性があります。  その場合、コードにいくつかの未解決の参照が存在することになります。 必要なクラスをインポートするには、未解決の各参照にマウス ポインターを置き、`Alt + Enter` (Mac では Option + Return) を押します。
 
     ```Java
     mapControl.onReady(map -> {
@@ -59,7 +61,7 @@ ms.locfileid: "92897128"
         //Create a data source and add it to the map.
         DataSource dataSource = new DataSource();
         map.sources.add(dataSource);
-    
+
         //Create a list of points.
         List<Point> points = Arrays.asList(
             Point.fromLngLat(-73.972340, 40.743270),
@@ -75,11 +77,10 @@ ms.locfileid: "92897128"
     });
 
     ```
-    
     上記のコード スニペットは、まず **onReady()** コールバック メソッドを使用して Azure Maps コントロール インスタンスを取得します。 次にこれは **DataSource** クラスを使用してデータ ソース オブジェクトを作成し、それをマップに追加します。 次にこれは **ポイント** オブジェクトの一覧を作成します。 **LineString** がポイントの一覧から作成され、データ ソースに追加されます。 **線レイヤー** は、マップ上にデータ ソースでラップされた線オブジェクトをレンダリングします。 次に線レイヤーが作成され、データ ソースがそれに追加されます。
-
-    上記のコード スニペットを追加したら、`MainActivity.java` は次のようになります。
     
+    上記のコード スニペットを追加したら、`MainActivity.java` は次のようになります。
+
     ```Java
     package com.example.myapplication;
 
@@ -174,11 +175,9 @@ ms.locfileid: "92897128"
     }
     ```
 
-これでアプリケーションを実行すると、次に示すようにマップ上に線が表示されます。
+アプリケーションを実行すると、次に示すようにマップ上に線が表示されます。
 
-<center>
-
-![Android マップにレンダリングされた線](./media/how-to-add-shapes-to-android-map/android-map-line.png)</center>
+![Android マップにレンダリングされた線](./media/how-to-add-shapes-to-android-map/android-map-line.png)</
 
 
 ## <a name="add-a-polygon-to-the-map"></a>マップに多角形を追加する
@@ -237,9 +236,7 @@ ms.locfileid: "92897128"
             strokeWidth(2f)));
     });
     ```
-
-    上記のコード スニペットは、まず **onReady()** コールバック メソッドを使用して Azure Maps コントロール インスタンスを取得します。 次にこれは **DataSource** クラスを使用してデータ ソース オブジェクトを作成し、それをマップに追加します。 **多角形** オブジェクトが **ポイント** オブジェクトの一覧から作成され、データ ソースに追加されます。 **多角形レイヤー** は、マップ上にデータ ソースでラップされたデータをレンダリングします。 次に多角形レイヤーを作成して、多角形領域をレンダリングし、それにデータ ソースを追加します。 **線レイヤー** は、データ ソースにラップされた線オブジェクトをレンダリングします。 コード スニペットの最後の部分では、多角形のアウトラインをレンダリングするための線レイヤーが作成され、それにデータ ソースが追加されます。
-
+    
     上記のコード スニペットを追加したら、`MainActivity.java` は次のようになります。
 
     ```Java
@@ -346,12 +343,9 @@ ms.locfileid: "92897128"
     }
     ```
 
-これでアプリケーションを実行すると、次に示すようにマップ上に多角形が表示されます。
+アプリケーションを実行すると、次に示すようにマップ上に多角形が表示されます。
 
-<center>
-
-![Android マップにレンダリングされた多角形](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</center>
-
+![Android マップにレンダリングされた多角形](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</
 
 ## <a name="next-steps"></a>次の手順
 

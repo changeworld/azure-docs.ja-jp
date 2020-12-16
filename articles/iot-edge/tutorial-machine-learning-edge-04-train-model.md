@@ -8,12 +8,12 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b9a29e890553d15d19853ec836f8c4296869e143
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 757e34fd45b7d3d9703aa09daa7f040c5f605637
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959630"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932389"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>チュートリアル:Azure Machine Learning モデルをトレーニングしてデプロイする
 
@@ -26,6 +26,14 @@ ms.locfileid: "94959630"
 Azure Notebooks では、機械学習モデルの実験、トレーニング、デプロイに使用される基本ブロックである Azure Machine Learning ワークスペースを利用します。
 
 一般的に、この記事の手順は、データ サイエンティストによって実行される可能性があります。
+
+チュートリアルのこのセクションで学習する内容は次のとおりです。
+
+> [!div class="checklist"]
+>
+> * 機械学習モデルをトレーニングする Azure Notebooks プロジェクトを作成する。
+> * トレーニングされた機械学習モデルをコンテナー化する。
+> * コンテナー化された機械学習モデルから Azure IoT Edge モジュールを作成する。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -179,6 +187,10 @@ Azure Notebooks プロジェクトにアップロードしたファイルを見�
 ノートブックには、値を表示するための `print()` コマンドなど、デバッグ用の Python ステートメントを挿入することができます。 定義されていない変数やオブジェクトが見つかった場合は、それらが最初に宣言またはインスタンス化されているセルを実行してください。
 
 ノートブックを再実行する必要がある場合は、先ほど作成したファイルと Azure リソースは削除する必要があります。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このチュートリアルはセットの一部であり、各記事は前の記事の作業が行われたことが前提になっています。 最後のチュートリアルを完了するまで、リソースのクリーンアップはしないでください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,21 +1,21 @@
 ---
 title: チュートリアル - テンプレートにパラメーターを追加する
-description: Azure Resource Manager テンプレートにパラメーターを追加して、そのテンプレートを再利用できるようにします。
+description: Azure Resource Manager テンプレート (ARM テンプレート) にパラメーターを追加して、そのテンプレートを再利用できるようにします。
 author: mumian
 ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9e860941c3d782498c12afa12f285f44e7e68f37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d0743d316b9d879017f3b0fbe08ee4dc2b3e1c2
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069443"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931063"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>チュートリアル:ARM テンプレートにパラメーターを追加する
 
-[前のチュートリアル](template-tutorial-add-resource.md)では、ストレージ アカウントをテンプレートに追加し、そのテンプレートをデプロイする方法について説明しました。 このチュートリアルでは、パラメーターを追加することによって Azure Resource Manager (ARM) テンプレートを改良する方法について説明します。 このチュートリアルの所要時間は約 **14 分**です。
+[前のチュートリアル](template-tutorial-add-resource.md)では、ストレージ アカウントをテンプレートに追加し、そのテンプレートをデプロイする方法について説明しました。 このチュートリアルでは、パラメーターを追加することによって Azure Resource Manager テンプレート (ARM テンプレート) を改良する方法について説明します。 このチュートリアルの所要時間は約 **14 分** です。
 
 ## <a name="prerequisites"></a>前提条件
 

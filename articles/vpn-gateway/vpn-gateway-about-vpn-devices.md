@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/01/2020
+ms.date: 12/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 92f589e6a587febc10a4b407fe3616aca42d27d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae498b39a421db19f0d4e0a8daca58730321b58c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318949"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546813"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて
 
@@ -109,16 +109,14 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | &lt;SP_AzureNetworkSubnetMask&gt; |サブネット マスクを指定します。 例:255.255.0.0 |
 | &lt;SP_OnPremisesNetworkIpRange&gt; |オンプレミスの範囲を指定します。 例:10.2.1.0 |
 | &lt;SP_OnPremisesNetworkSubnetMask&gt; |オンプレミスのサブネット マスクを指定します。 例:255.255.255.0 |
-| &lt;SP_AzureGatewayIpAddress&gt; |この情報は仮想ネットワークに固有であり、 **ゲートウェイの IP アドレス**として管理ポータルに存在しています。 |
+| &lt;SP_AzureGatewayIpAddress&gt; |この情報は仮想ネットワークに固有であり、 **ゲートウェイの IP アドレス** として管理ポータルに存在しています。 |
 | &lt;SP_PresharedKey&gt; |この情報は仮想ネットワークに固有であり、[キーの管理] として管理ポータルに存在しています。 |
 
-## <a name="ipsecike-parameters"></a><a name="ipsec"></a>IPsec/IKE パラメーター
+## <a name="default-ipsecike-parameters"></a><a name="ipsec"></a>デフォルトの IPsec/IKE パラメーター
 
-> [!IMPORTANT]
-> 1. 下の表には、Azure VPN ゲートウェイが既定の構成で使用するアルゴリズムとパラメーターの組み合わせが示されています。 Azure Resource Manager デプロイメント モデルで作成されたルートベースの VPN ゲートウェイでは、個別の接続ごとにカスタム ポリシーを指定できます。 詳細な手順については、[IPsec/IKE ポリシーの構成](vpn-gateway-ipsecikepolicy-rm-powershell.md)に関するページを参照してください。
->
-> 2. また、TCP **MSS** は **1350** で固定する必要があります。 お使いの VPN デバイスで MSS クランプがサポートされていない場合、別の方法として、トンネル インターフェイスの **MTU** を **1400** バイトに設定することができます。
->
+下の表には、Azure VPN ゲートウェイが既定の構成で使用するアルゴリズムとパラメーターの組み合わせが示されています (**既定のポリシー**)。 Azure Resource Manager デプロイメント モデルで作成されたルートベースの VPN ゲートウェイでは、個別の接続ごとにカスタム ポリシーを指定できます。 詳細な手順については、[IPsec/IKE ポリシーの構成](vpn-gateway-ipsecikepolicy-rm-powershell.md)に関するページを参照してください。
+
+また、TCP **MSS** は **1350** で固定する必要があります。 お使いの VPN デバイスで MSS クランプがサポートされていない場合、別の方法として、トンネル インターフェイスの **MTU** を **1400** バイトに設定することができます。
 
 以下の表では、次のようになっています。
 

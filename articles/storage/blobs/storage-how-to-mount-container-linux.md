@@ -1,19 +1,19 @@
 ---
 title: Linux 上で Azure Blob Storage をファイル システムとしてマウントする方法 | Microsoft Docs
 description: Linux 上の仮想ファイル システム ドライバーである blobfuse を使用して Azure Blob Storage コンテナーをマウントする方法について説明します。
-author: rishabpoh
+author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.date: 2/1/2019
-ms.author: ripohane
-ms.reviewer: dineshm
-ms.openlocfilehash: 331ceb6124463604989116ce84bc73acd8cfb22f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.author: tamram
+ms.reviewer: twooley
+ms.openlocfilehash: 8de395e34b43a4edad2affa591adb8ab34ff9e66
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483251"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921699"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法
 

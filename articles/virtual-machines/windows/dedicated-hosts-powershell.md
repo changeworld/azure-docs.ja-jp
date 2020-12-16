@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 08/01/2019
+ms.date: 11/12/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 884a9e82dacb2a0dfc6763809a2ccfd2b886df1a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2f8f2d9eb14e1272af126c9a6d6663f41aaee33f
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974177"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005088"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Azure PowerShell を使用して専用ホストに VM をデプロイする
 
@@ -28,7 +28,7 @@ Azure PowerShell バージョン 2.8.0 以降がインストールされてい�
 
 ## <a name="create-a-host-group"></a>ホスト グループを作成する
 
-**ホスト グループ**は、専用ホストのコレクションを表すリソースです。 リージョンと可用性ゾーンにホスト グループを作成し、それにホストを追加します。 高可用性を計画する場合は、追加のオプションがあります。 専用ホストでは、次のいずれかまたは両方のオプションを使用できます。 
+**ホスト グループ** は、専用ホストのコレクションを表すリソースです。 リージョンと可用性ゾーンにホスト グループを作成し、それにホストを追加します。 高可用性を計画する場合は、追加のオプションがあります。 専用ホストでは、次のいずれかまたは両方のオプションを使用できます。 
 - 複数の可用性ゾーンにまたがります。 この場合は、使用する各ゾーンにホスト グループを用意する必要があります。
 - 物理ラックにマップされる複数の障害ドメインにまたがります。 
  
@@ -53,10 +53,6 @@ $hostGroup = New-AzHostGroup `
 
 `-SupportAutomaticPlacement true` パラメーターを追加すると、VM とスケール セット インスタンスがホスト グループ内のホストに自動的に配置されるようになります。 詳しくは、[手動による配置と自動配置](../dedicated-hosts.md#manual-vs-automatic-placement)に関するページをご覧ください。
 
-> [!IMPORTANT]
-> 自動配置は現在、パブリック プレビュー段階にあります。
-> プレビューに参加するには、[https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) でプレビューのオンボードに関するアンケートにお答えください。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="create-a-host"></a>ホストを作成する
 
@@ -173,12 +169,7 @@ Location               : eastus
 Tags                   : {}
 ```
 
-## <a name="create-a-scale-set-preview"></a>スケール セットを作成する (プレビュー)
-
-> [!IMPORTANT]
-> 専用ホストでの Virtual Machine Scale Sets は現在、パブリック プレビュー段階にあります。
-> プレビューに参加するには、[https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) でプレビューのオンボードに関するアンケートにお答えください。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+## <a name="create-a-scale-set"></a>スケール セットを作成する 
 
 スケール セットをデプロイするときは、ホスト グループを指定します。
 

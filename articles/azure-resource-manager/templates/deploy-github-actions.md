@@ -1,26 +1,26 @@
 ---
 title: GitHub Actions を使用した Resource Manager テンプレートのデプロイ
-description: GitHub Actions を使用して Azure Resource Manager テンプレートをデプロイする方法について説明します。
+description: GitHub Actions を使用して Azure Resource Manager テンプレート (ARM テンプレート) をデプロイする方法について説明します。
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: cf705f68544c4c4e0db55d4a375e1e50530c8957
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4cda8307d417880469e6043b84c3ac55ed30071c
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185710"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905844"
 ---
-# <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>GitHub Actions を使用した Azure Resource Manager テンプレートのデプロイ
+# <a name="deploy-arm-templates-by-using-github-actions"></a>GitHub Actions を使用した ARM テンプレートのデプロイ
 
 [GitHub Actions](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) は GitHub の一連の機能であり、コードを格納するのと同じ場所でソフトウェア開発ワークフローを自動化したり、プル要求や問題に対して共同作業を行ったりするために使用します。
 
-[Azure Resource Manager テンプレートのデプロイ アクション](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template)を使って、Resource Manager テンプレートの Azure へのデプロイを自動化します。 
+[Azure Resource Manager テンプレートのデプロイ アクション](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template)を使って、Azure Resource Manager テンプレート (ARM テンプレート) の Azure へのデプロイを自動化します。
 
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- GitHub アカウント。 ない場合は、[無料](https://github.com/join)でサインアップしてください。  
+- GitHub アカウント。 ない場合は、[無料](https://github.com/join)でサインアップしてください。
     - Resource Manager テンプレートとワークフロー ファイルを保存するための GitHub リポジトリ。 リポジトリを作成するには、[新しいリポジトリの作成](https://help.github.com/en/enterprise/2.14/user/articles/creating-a-new-repository)に関するページをご覧ください。
 
 
@@ -40,21 +40,21 @@ ms.locfileid: "96185710"
 
 [サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)は、[Azure CLI](/cli/azure/) で [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) コマンドを使用して作成できます。 このコマンドは、Azure portal で [Azure Cloud Shell](https://shell.azure.com/) を使用するか、 **[試してみる]** ボタンを選択して実行します。
 
-リソース グループがまだない場合は、リソース グループを作成します。 
+リソース グループがまだない場合は、リソース グループを作成します。
 
 ```azurecli-interactive
     az group create -n {MyResourceGroup}
 ```
 
-`myApp` のプレースホルダーはアプリケーションの名前に置き換えます。 
+`myApp` のプレースホルダーはアプリケーションの名前に置き換えます。
 
 ```azurecli-interactive
    az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth
 ```
 
-上記の例で、プレースホルダーを実際のサブスクリプション ID とリソース グループ名に置き換えます。 これにより、以下のようなご自分の App Service アプリにアクセスするためのロールの割り当て資格情報を含む JSON オブジェクトが出力されます。 この JSON オブジェクトを後のためにコピーします。 必要なのは、`clientId`、`clientSecret`、`subscriptionId`、および `tenantId` の値を持つセクションだけです。 
+上記の例で、プレースホルダーを実際のサブスクリプション ID とリソース グループ名に置き換えます。 これにより、以下のようなご自分の App Service アプリにアクセスするためのロールの割り当て資格情報を含む JSON オブジェクトが出力されます。 この JSON オブジェクトを後のためにコピーします。 必要なのは、`clientId`、`clientSecret`、`subscriptionId`、および `tenantId` の値を持つセクションだけです。
 
-```output 
+```output
   {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -71,7 +71,7 @@ ms.locfileid: "96185710"
 
 ## <a name="configure-the-github-secrets"></a>GitHub シークレットを構成する
 
-Azure の資格情報、リソース グループ、およびサブスクリプションのシークレットを作成する必要があります。 
+Azure の資格情報、リソース グループ、およびサブスクリプションのシークレットを作成する必要があります。
 
 1. [GitHub](https://github.com/) でリポジトリを参照します。
 
@@ -79,9 +79,9 @@ Azure の資格情報、リソース グループ、およびサブスクリプ�
 
 1. Azure CLI コマンドからの JSON 出力全体をシークレットの値フィールドに貼り付けます。 シークレットに `AZURE_CREDENTIALS` と名前を付けます。
 
-1. `AZURE_RG` という名前の別のシークレットを作成します。 リソース グループの名前をシークレットの値フィールドに追加します (例: `myResourceGroup`)。 
+1. `AZURE_RG` という名前の別のシークレットを作成します。 リソース グループの名前をシークレットの値フィールドに追加します (例: `myResourceGroup`)。
 
-1. `AZURE_SUBSCRIPTION` という名前の追加のシークレットを作成します。 シークレットの値フィールドにサブスクリプション ID を追加します (例: `90fd3f9d-4c61-432d-99ba-1273f236afa2`)。 
+1. `AZURE_SUBSCRIPTION` という名前の追加のシークレットを作成します。 シークレットの値フィールドにサブスクリプション ID を追加します (例: `90fd3f9d-4c61-432d-99ba-1273f236afa2`)。
 
 ## <a name="add-resource-manager-template"></a>Resource Manager テンプレートを追加する
 
@@ -118,7 +118,7 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
         - uses: azure/login@v1
           with:
             creds: ${{ secrets.AZURE_CREDENTIALS }}
-     
+
           # Deploy ARM template
         - name: Run ARM deploy
           uses: azure/arm-deploy@v1
@@ -126,13 +126,13 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
             subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
             resourceGroupName: ${{ secrets.AZURE_RG }}
             template: ./azuredeploy.json
-            parameters: storageAccountType=Standard_LRS 
-        
+            parameters: storageAccountType=Standard_LRS
+
           # output containerName variable from template
         - run: echo ${{ steps.deploy.outputs.containerName }}
     ```
     > [!NOTE]
-    > 代わりに、ARM デプロイ アクション (例: `.azuredeploy.parameters.json`) に JSON 形式のパラメーター ファイルを指定できます。  
+    > 代わりに、ARM デプロイ アクション (例: `.azuredeploy.parameters.json`) に JSON 形式のパラメーター ファイルを指定できます。
 
     ワークフロー ファイルの最初のセクションには次のものが含まれます。
 
@@ -152,7 +152,7 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 1. メニューから **[Run ARM deploy]\(ARM デプロイを実行\)** を選択して、デプロイを確認します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
-リソース グループとリポジトリが不要になったら、リソース グループと GitHub リポジトリを削除して、デプロイしたリソースをクリーンアップします。 
+リソース グループとリポジトリが不要になったら、リソース グループと GitHub リポジトリを削除して、デプロイしたリソースをクリーンアップします。
 
 ## <a name="next-steps"></a>次の手順
 

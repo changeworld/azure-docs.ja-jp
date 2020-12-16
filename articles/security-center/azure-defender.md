@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 41d98750f3c869eff5abf7482a9bb04435407318
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 8bf3959651048a7a568df1d94aa07aa206663d50
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436761"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750987"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender の概要
 
@@ -39,6 +39,8 @@ Azure Security Center の **価格と設定** の領域から Azure Defender を
 - [Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md)
 - [Azure Defender for container registries](defender-for-container-registries-introduction.md)
 - [Azure Defender for Key Vault](defender-for-key-vault-introduction.md)
+- [Azure Defender for Resource Manager](defender-for-resource-manager-introduction.md)
+- [Azure Defender for DNS](defender-for-dns-introduction.md)
 
 これらのプランについてはそれぞれ、Security Center のドキュメントで個別に説明されています。
 
@@ -61,9 +63,9 @@ Azure 環境の防護に加えて、次のような Azure Defender 機能をハ�
 
 
 
-## <a name="security-alerts"></a>セキュリティのアラート 
+## <a name="azure-defender-security-alerts"></a>Azure Defender のセキュリティ アラート 
 
-Azure Defender により、環境のいずれかの領域で脅威が検出されると、アラートが生成されます。 これらのアラートでは、影響を受けるリソースや推奨される修復手順の詳細と、場合によっては、ロジック アプリを応答でトリガーするオプションが示されます。
+Azure Defender によって環境のいずれかの領域で脅威が検出されると、セキュリティ アラートが生成されます。 これらのアラートでは、影響を受けるリソースや推奨される修復手順の詳細と、場合によっては、ロジック アプリを応答でトリガーするオプションが示されます。
 
 アラートは、Security Center によって生成されたか、統合されているセキュリティ製品から Security Center によって受信されたかにかかわらず、エクスポートすることができます。 アラートを Azure Sentinel、サードパーティの SIEM、またはその他の外部ツールにエクスポートする場合は、「[SIEM、SOAR、または IT サービス管理ソリューションにアラートをストリーミングする](export-to-siem.md)」の手順に従ってください。
 

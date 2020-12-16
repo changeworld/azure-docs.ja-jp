@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 063ebc40fd845fe6300b008e7ca048357a2fce49
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: d2e5996da5a1fe3f5b154d57ee509f25e54e30ac
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95806666"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862362"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>Azure でのアウトバウンド SMTP 接続に関する問題のトラブルシューティング
 
@@ -39,7 +39,7 @@ Enterprise Agreement の Azure ユーザーの場合、認証済みリレーを�
 
 2017 年 11 月 15 日より前に従量課金制のサブスクリプションにサインアップした場合、アウトバウンド メール配信を試行するための技術的能力は変わりません。 これらのサブスクリプション内の Azure VM から外部のメール プロバイダーへの直接のアウトバウンド メール配信は、引き続き試行できます。Azure プラットフォームによる制限はありません。 ここでも、メール プロバイダーで特定のユーザーからの受信メールが受け入れられることは保証されません。ユーザーはメール プロバイダーと直接協力して、特定のプロバイダーに関連するメッセージ配信やスパム フィルター処理の問題を修正する必要があります。
 
-2017 年 11 月 15 日以降に作成された従量課金制サブスクリプションの場合は、技術的な制限により、これらのサブスクリプション内の VM から直接送信されるメールがブロックされます。 Azure VM から外部の電子メール プロバイダーに (認証済み SMTP リレーを使用せずに) 電子メールを直接送信する機能が必要な場合は、Azure portal の **[Diagnose and Solve]\(診断と解決\)** ブレードの **[Connectivity]\(接続\)** セクションで Azure Virtual Network リソースに対する制限を削除するようにリクエストできます。 資格がある場合は、サブスクリプションが有効になるか、次の手順に関する指示が表示されます。
+2017 年 11 月 15 日以降に作成された従量課金制サブスクリプションの場合は、技術的な制限により、これらのサブスクリプション内の VM から直接送信されるメールがブロックされます。 Azure VM から外部の電子メール プロバイダーに (認証済み SMTP リレーを使用せずに) 電子メールを直接送信する機能が必要で、支払い履歴のある良好なアカウントがある場合は、Azure portal の **[Diagnose and Solve]\(診断と解決\)** ブレードの **[Connectivity]\(接続\)** セクションで Azure Virtual Network リソースに対する制限を削除するようにリクエストできます。 資格がある場合は、サブスクリプションが有効になるか、次の手順に関する指示が表示されます。 
 
 従量課金制サブスクリプションが除外され、VM が Azure portal で一旦停止された後に開始されると、それ以降はそのサブスクリプション内のすべての VM が除外されます。 除外されるのは、リクエストされたサブスクリプションのみであり、インターネットに直接ルーティングされる VM トラフィックのみです。
 
@@ -54,13 +54,13 @@ Enterprise Agreement の Azure ユーザーの場合、認証済みリレーを�
 
 ## <a name="cloud-service-provider-csp"></a>クラウド サービス プロバイダー (CSP)
 
-CSP を介して Azure リソースを使用している場合は、Azure portal の [Diagnose and Solve]\(診断と解決\) ブレードの [Connectivity]\(接続\) セクションで Virtual Network リソースに対する制限を削除するようにリクエストできます。 資格がある場合は、サブスクリプションが有効になるか、次の手順に関する指示が表示されます。
+CSP を介して Azure リソースを使用している場合は、Azure portal の **[Diagnose and Solve]\(診断と解決\)** ブレードの **[Connectivity]\(接続\)** セクションで Virtual Network リソースに対する制限を削除するようにリクエストできます。 資格がある場合は、サブスクリプションが有効になるか、次の手順に関する指示が表示されます。
 
 ## <a name="microsoft-partner-network-mpn-bizspark-plus-or-azure-sponsorship"></a>Microsoft Partner Network (MPN)、BizSpark Plus、または Azure スポンサー プラン
 
 2017 年 11 月 15 日以降に作成された Microsoft Partner Network (MPN)、BizSpark Plus、または Azure スポンサー プランでは、技術的な制限により、これらのサブスクリプション内の VM から直接送信されるメールがブロックされます。 外部のメール プロバイダーに Azure VM から (認証済み SMTP リレーを使用せずに) 直接メールを送信する機能が必要な場合は、次の問題の種類を使用してサポート ケースを開くことによってリクエストできます。 **[Technical]\(技術\)**  >  **[仮想ネットワーク]**  >  **[接続]**  >  **[Cannot send email (SMTP/Port 25)]\(メールを送信できない (SMTP/ポート 25)\)** 。 デプロイで、認証済みリレーを使用するのではなく、メール プロバイダーに直接メールを送信する必要がある理由の詳細を必ず追加してください。 リクエストは Microsoft の裁量でレビューおよび承認されます。 リクエストは、不正行為に関する追加確認が完了した後にのみ許可されます。 
 
-従量課金制サブスクリプションが除外され、VM が Azure portal で一旦停止された後に開始されると、それ以降はそのサブスクリプション内のすべての VM が除外されます。 除外されるのは、リクエストされたサブスクリプションのみであり、インターネットに直接ルーティングされる VM トラフィックのみです。
+サブスクリプションが除外され、VM が Azure portal で一旦停止された後に開始されると、それ以降はそのサブスクリプション内のすべての VM が除外されます。 除外されるのは、リクエストされたサブスクリプションのみであり、インターネットに直接ルーティングされる VM トラフィックのみです。
 
 ## <a name="restrictions-and-limitations"></a>制限事項と制約事項
 
@@ -68,4 +68,4 @@ CSP を介して Azure リソースを使用している場合は、Azure portal
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 
-お困りの際は、問題を迅速に解決するために、次の問題の種類を使用して [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。**サブスクリプション管理** 問題の種類: **ポート 25 の電子メール フローを有効にする要求**。
+お困りの際は、問題を迅速に解決するために、次の問題の種類を使用して [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。 **[Technical]\(技術\)**  >  **[仮想ネットワーク]**  >  **[接続]**  >  **[Cannot send email (SMTP/Port 25)]\(メールを送信できない (SMTP/ポート 25)\)** 。

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: tisande
-ms.openlocfilehash: 71314e6999031f52ebbfc582b43684ab5a17a261
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d9cafc100ddd4b553577c447e82334e6ee7d1b6d
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93338800"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545453"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での GROUP BY 句
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,7 +41,7 @@ GROUP BY 句では、指定した 1 つ以上のプロパティの値に従っ�
 
 ## <a name="remarks"></a>解説
   
-  クエリで GROUP BY 句を使用する場合、SELECT 句には、GROUP BY 句に含まれるプロパティとシステム関数のサブセットのみを含めることができます。 1 つの例外として、GROUP BY 句の中に含めずに SELECT 句に指定できる[集計システム関数](sql-query-aggregates.md)があります。 SELECT 句には、常にリテラル値も含めることができます。
+  クエリで GROUP BY 句を使用する場合、SELECT 句には、GROUP BY 句に含まれるプロパティとシステム関数のサブセットのみを含めることができます。 1 つの例外として、GROUP BY 句の中に含めずに SELECT 句に指定できる[集計関数](sql-query-aggregate-functions.md)があります。 SELECT 句には、常にリテラル値も含めることができます。
 
   GROUP BY 句は、SELECT、FROM、および WHERE 句の後、OFFSET LIMIT 句の前に指定する必要があります。 現在は GROUP BY を ORDER BY 句と共に使用することはできませんが、これは計画されています。
 
@@ -192,4 +192,4 @@ GROUP BY ARRAY_CONTAINS(f.tags, {name: 'orange'}), f.version BETWEEN 0 AND 2
 
 - [作業の開始](sql-query-getting-started.md)
 - [SELECT 句](sql-query-select.md)
-- [集計関数](sql-query-aggregates.md)
+- [集計関数](sql-query-aggregate-functions.md)

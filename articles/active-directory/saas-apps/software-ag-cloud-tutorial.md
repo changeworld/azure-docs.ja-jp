@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 11/20/2020
 ms.author: jeedes
-ms.openlocfilehash: ccf945f8bfec85a18493d515dce48f4cb3e3b612
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4acc4c0cec530b8f83648042cd7a417992257543
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182359"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602021"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Software AG Cloud の統合
 
@@ -77,9 +77,9 @@ Software AG Cloud に対して Azure AD SSO を構成してテストするには
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://*.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.softwareag.cloud/auth/realms/TENANT-NAME`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://*.softwareag.cloud/auth/realms/TENANT-NAME`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Software AG Cloud クライアント サポート チーム](mailto:support@softwareag.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -121,19 +121,19 @@ Software AG Cloud に対して Azure AD SSO を構成してテストするには
 
 1.  **[Administration]\(管理\)** をクリックします。
 
-    ![Software AG Cloud の構成 1](./media/software-ag-cloud-tutorial/admin.png)
+    ![Software AG Cloud の管理の構成](./media/software-ag-cloud-tutorial/admin.png)
 
 1. **[Single-sign on]\(シングル サインオン\) > [Add identity provider]\(ID プロバイダーの追加\)** に移動します。
 
-    ![Software AG Cloud の構成 2](./media/software-ag-cloud-tutorial/add-identity-provider.png)
+    ![Software AG Cloud の ID プロバイダーの構成](./media/software-ag-cloud-tutorial/add-identity-provider.png)
 
 1. 次のページで、以下の手順を実行します。
 
-    ![Software AG Cloud の構成 3](./media/software-ag-cloud-tutorial/saml-1.png)
+    ![Software AG Cloud の構成の手順](./media/software-ag-cloud-tutorial/saml-1.png)
 
     a. **[Identity provider display name]\(ID プロバイダーの表示名\)** ボックスに、名前 (例: `azure ad`) を入力します。
 
-    b. **[Identity provider unique identifier for use in Software AG Cloud redirect URI]\(Software AG Cloud リダイレクト URI で使用する ID プロバイダーの一意識別子\)** ボックスに、Azure portal からコピーした **エンティティ ID** の値を貼り付けます。
+    b. **[Identity provider unique identifier for use in Software AG Cloud redirect URI]\(Software AG Cloud リダイレクト URI で使用する ID プロバイダーの一意識別子\)** ボックスに、ID プロバイダーの一意の名前を入力します。 **[Software AG Cloud redirect URI]\(Software AG Cloud リダイレクト URI\)** フィールドが更新され、URI が設定されます。 この URI をコピーし、それを使用して、定義されているパターンに従って Azure portal で **エンティティ ID** と他の情報を構成します。
 
     c. **[Identity provider configuration]\(ID プロバイダー構成\)** で **フェデレーション メタデータ XML** ファイルをインポートし、 **[Next]\(次へ\)** をクリックします。
 
@@ -147,11 +147,12 @@ Software AG Cloud に対して Azure AD SSO を構成してテストするには
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Software AG Cloud のサインオン URL にリダイレクトされます。 
+* Software AG Cloud で Microsoft Azure がプロバイダーとして構成されていることを前提として、`www.softwareag.cloud` に移動し、[Login]\(ログイン\) ボタンをクリックして、環境名を入力します。 次の画面で、[Log in with <IDP NAME>]\(<IDP 名> でログイン\) リンクをクリックし、資格情報を入力します。 認証されると、ログインされ、Software AG Cloud のホーム ページが表示されます。
 
-2. Software AG Cloud のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* Software AG Cloud のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Software AG Cloud] タイルをクリックすると、Software AG Cloud サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、「[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)」を参照してください
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Software AG Cloud] タイルをクリックすると、Software AG Cloud サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+
 
 ## <a name="next-steps"></a>次の手順
 

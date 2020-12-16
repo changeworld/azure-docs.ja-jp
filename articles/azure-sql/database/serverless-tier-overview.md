@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 9/17/2020
-ms.openlocfilehash: 1a51d2140528e3f6ed6da0ca699d7b71b91638ec
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.date: 12/8/2020
+ms.openlocfilehash: bd8f5a28b709a45e99e846fb4e242f774aca80c5
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743151"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902512"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database サーバーレス
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -138,6 +138,7 @@ CPU 使用率が低い場合、使用パターンによってはアクティブ�
 |透過的なデータ暗号化|透過的データ暗号化の状態またはステータスの表示|
 |脆弱性評価|アドホック スキャンと定期的なスキャン (有効な場合)|
 |クエリ (パフォーマンス) データ ストア|クエリ ストアの設定の変更または表示|
+|パフォーマンスに関する推奨事項|パフォーマンスに関する推奨事項の表示または適用|
 |自動調整|自動インデックス作成などの自動調整の推奨事項の適用と検証|
 |データベースのコピー|コピーとしてのデータベースの作成。<br>BACPAC ファイルへのエクスポート。|
 |SQL データ同期|構成可能なスケジュールまたは手動で実行される、ハブとメンバー データベースの間の同期|
@@ -314,17 +315,17 @@ az sql db show --name $databasename --resource-group $resourcegroupname --server
 
 コンピューティング請求金額は、各秒に使用された CPU およびメモリの最大量です。 CPU とメモリの使用量がそれぞれのプロビジョニング済みの最小量より少ない場合、プロビジョニング済みの量が請求されます。 請求のために CPU とメモリを比較するため、メモリは GB 単位のメモリ量を仮想コアあたり 3 GB で再スケーリングすることによって、仮想コアの単位に正規化されます。
 
-- **請求されるリソース** : CPU とメモリ
-- **請求される金額** : 仮想コア単位価格 * (最小仮想コア数、使用された仮想コア数、最小メモリ GB * 1/3、使用されたメモリ GB * 1/3) のうち最大の値 
-- **請求頻度** : 1 秒あたり
+- **請求されるリソース**: CPU とメモリ
+- **請求される金額**: 仮想コア単位価格 * (最小仮想コア数、使用された仮想コア数、最小メモリ GB * 1/3、使用されたメモリ GB * 1/3) のうち最大の値 
+- **請求頻度**: 1 秒あたり
 
 仮想コア単位価格は、1 秒あたり、仮想コアあたりのコストです。 特定のリージョンの特定の単位価格については、[Azure SQL Database の価格に関するページ](https://azure.microsoft.com/pricing/details/sql-database/single/)をご覧ください。
 
 請求されるコンピューティングの金額は、次のメトリックで示されます。
 
-- **メトリック** : app_cpu_billed (仮想コア秒数)
-- **定義** : (最小仮想コア数、使用された仮想コア数、最小メモリ GB * 1/3、使用されたメモリ GB * 1/3) のうち最大の値
-- **レポート頻度** : 1 分あたり
+- **メトリック**: app_cpu_billed (仮想コア秒数)
+- **定義**: (最小仮想コア数、使用された仮想コア数、最小メモリ GB * 1/3、使用されたメモリ GB * 1/3) のうち最大の値
+- **レポート頻度**: 1 分あたり
 
 この量が 1 秒ごとに計算され、1 分間について集計されます。
 

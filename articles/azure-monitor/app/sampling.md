@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 87e33940d927fc9116c03345011e21398384d484
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e9334d222d443679362514481ecd83b90bbda0ac
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024417"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855075"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -54,7 +54,7 @@ ms.locfileid: "95024417"
 * **インジェスト サンプリング** は、Application Insights サービス エンドポイントで動作します。 アプリケーションから受信したテレメトリの一部を、設定したサンプリング レートで破棄します。 インジェスト サンプリングはアプリから送信されるテレメトリのトラフィックを削減しませんが、トラフィックを月間のクォータ (上限) 以内で維持するのに役立ちます。 インジェスト サンプリングの主な利点は、アプリを再デプロイすることなくサンプリング レートを設定できることです。 インジェスト サンプリングは、すべてのサーバーとクライアントで一様に動作しますが、他の種類のサンプリングが動作している場合は適用されません。
 
 > [!IMPORTANT]
-> アダプティブ サンプリングまたは固定レート サンプリング方法の実行中は、インジェスト サンプリングは無効になります。
+> あるテレメトリの種類に対してアダプティブまたは固定レート サンプリング方法が有効になっている場合、そのテレメトリのインジェスト サンプリングは無効になります。 ただし、SDK レベルでサンプリングから除外されたテレメトリの種類は、引き続き、ポータルで設定されたレートでインジェスト サンプリングの対象となります。
 
 ## <a name="adaptive-sampling"></a>アダプティブ サンプリング
 
@@ -315,18 +315,12 @@ Java エージェントおよび SDK では、既定ではどのサンプリン�
 
 1. [applicationinsights-agent-3.0.0-PREVIEW.5.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar) をダウンロードします
 
-1. サンプリングを有効にするには、`ApplicationInsights.json` ファイルに以下を追加します。
+1. サンプリングを有効にするには、`applicationinsights.json` ファイルに以下を追加します。
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "sampling": {
-        "fixedRate": {
-          "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
-        }
-      }
-    }
+  "sampling": {
+    "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
   }
 }
 ```
@@ -559,7 +553,7 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 
 * インジェスト サンプリングは、SDK がサンプリングを実行していない場合に任意のテレメトリが特定の量を超えると、自動的に実行される場合があります。 この構成は、たとえば、ASP.NET SDK や Java SDK の古いバージョンを使用している場合に機能します。
 * 最新の ASP.NET または ASP.NET Core SDK (Azure または独自のサーバーのいずれかでホストされる) を使用している場合、既定ではアダプティブ サンプリングが行われますが、前述の方法で固定レートに切り替えることができます。 固定レート サンプリングの場合、ブラウザー SDK は自動的にサンプル関連のイベントに同期します。 
-* 最新の Java エージェントを使用している場合は、`ApplicationInsights.json` を構成して (Java SDK の場合は `ApplicationInsights.xml` を構成する) 固定レート サンプリングを有効にできます。 サンプリングは、既定で無効になっています。 固定レート サンプリングでは、ブラウザー SDK とサーバーは自動的にサンプル関連のイベントに同期されます。
+* 最新の Java エージェントを使用している場合は、`applicationinsights.json` を構成して (Java SDK の場合は `ApplicationInsights.xml` を構成する) 固定レート サンプリングを有効にできます。 サンプリングは、既定で無効になっています。 固定レート サンプリングでは、ブラウザー SDK とサーバーは自動的にサンプル関連のイベントに同期されます。
 
 *常に確認したい頻度の低いイベントがあります。サンプリング モジュールを使わずに確認するにはどうすればよいですか。*
 

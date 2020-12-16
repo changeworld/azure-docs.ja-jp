@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 0bb252e227e4f23388929f2fca18769e0bd02e19
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 813cb567ab3edddd6fb37cee050dc5e38ee4289f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187036"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904892"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>チュートリアル - Google Maps から Web サービスを移行する
 
@@ -40,19 +40,19 @@ Azure Maps と Google マップでは、どちらの場合も REST Web サービ
 
 | Google マップ サービス API | Azure Maps サービス API                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| 道順              | [Route](/rest/api/maps/route)                                     |
-| 距離行列         | [ルート マトリックス](/rest/api/maps/route/postroutematrixpreview)       |
-| ジオコーディング               | [Search](/rest/api/maps/search)                                   |
-| 場所の検索           | [Search](/rest/api/maps/search)                                   |
-| 場所のオートコンプリート      | [Search](/rest/api/maps/search)                                   |
-| Snap to Road            | 「[ルートと道順を計算する](#calculate-routes-and-directions)」セクションを参照してください。            |
-| Speed Limits            | 「[座標の逆ジオコーディング](#reverse-geocode-a-coordinate)」セクションを参照してください。                  |
-| 静的マップ              | [Render](/rest/api/maps/render/getmapimage)                       |
-| タイム ゾーン               | [タイム ゾーン](/rest/api/maps/timezone)                              |
+| 道順              | [Route](/rest/api/maps/route)                                     |                         
+| 距離行列         | [ルート マトリックス](/rest/api/maps/route/postroutematrixpreview)       |                         
+| ジオコーディング               | [Search](/rest/api/maps/search)                                   |                         
+| 場所の検索           | [Search](/rest/api/maps/search)                                   |                         
+| 場所のオートコンプリート      | [Search](/rest/api/maps/search)                                   |                         
+| Snap to Road            | 「[ルートと道順を計算する](#calculate-routes-and-directions)」セクションを参照してください。            
+| Speed Limits            | 「[座標の逆ジオコーディング](#reverse-geocode-a-coordinate)」セクションを参照してください。                  
+| 静的マップ              | [Render](/rest/api/maps/render/getmapimage)                       |                         
+| タイム ゾーン               | [タイム ゾーン](/rest/api/maps/timezone)                              |                         
+| Elevation               | [Elevation (プレビュー)](/rest/api/maps/elevation)                   |                         |
 
 次のサービス API は、Azure Maps では現在使用できません。
 
-- Elevation
 - 地理的位置情報
 - 場所の詳細と写真。電話番号と Web サイトの URL は、Azure Maps Search API で利用できます。
 - Map URL
@@ -203,7 +203,7 @@ Azure Maps のルート指定サービスでは、ルート指定の計算用と
 
 - [**ルート計算**](/rest/api/maps/route/getroutedirections): ルートが計算されます。要求はただちに処理されます。 この API では、GET 要求と POST 要求の両方がサポートされます。 大量のウェイポイントを指定する場合、または多くのルート オプションを使用する場合は、URL 要求が長くなりすぎて問題が発生することがないように POST 要求が推奨されます。 Azure Maps の POST Route Direction には、数千の[サポート ポイント](/rest/api/maps/route/postroutedirections#supportingpoints)を受け取り、それらを使用してポイント間の論理ルート パスを再作成するオプションがあります (Snap to Road)。 
 - [**ルートのバッチ処理**](/rest/api/maps/route/postroutedirectionsbatchpreview): 最大 1,000 個のルート要求を含む要求が作成されます。これらの座標は一定期間内に処理されます。 すべてのデータはサーバーで並行して処理され、完了すると、完全な結果セットをダウンロードすることができます。
-- [**モビリティ サービス**](/rest/api/maps/mobility): 公共輸送を使用するルートと道順が計算されます。
+- [**Mobility Service (プレビュー)**](/rest/api/maps/mobility): 公共輸送を使用するルートと道順が計算されます。
 
 次の表では、Google マップ API パラメーターと、それに相当する Azure Maps の API パラメーターを相互参照で示しています。
 
@@ -221,8 +221,8 @@ Azure Maps のルート指定サービスでは、ルート指定の計算用と
 | `origin`                       | `query`                            |
 | `region`                       | *N/A* - これはジオコーディング関連の機能です。 Azure Maps ジオコーディング API を使用する場合は、*countrySet* パラメーターを使用します。  |
 | `traffic_model`               | *N/A* - 交通情報データを *traffic* パラメーターで使用する必要がある場合のみ指定できます。 |
-| `transit_mode`                | [モビリティ サービスのドキュメント](/rest/api/maps/mobility)を参照してください。 |
-| `transit_routing_preference` | [モビリティ サービスのドキュメント](/rest/api/maps/mobility)を参照してください。 |
+| `transit_mode`                | [Mobility Service (プレビュー) のドキュメントを参照してください](/rest/api/maps/mobility) |
+| `transit_routing_preference` | [Mobility Service (プレビュー) のドキュメントを参照してください](/rest/api/maps/mobility) |
 | `units`                        | *N/A* - Azure Maps ではメートル法のみが使用されます。  |
 | `waypoints`                    | `query`                            |
 

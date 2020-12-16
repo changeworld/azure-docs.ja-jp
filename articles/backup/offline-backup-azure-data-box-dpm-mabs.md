@@ -3,12 +3,12 @@ title: DPM および MABS の Azure Data Box を使用したオフライン バ�
 description: Azure Data Box を使用して、DPM および MABS からオフラインで初期バックアップ データをシード処理することができます。
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 80b3977a9fb886b90c3d48d54f4cda1abfd77df9
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 1cfd9131099ad6a8ccd3d43e93f3d97641514f03
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172219"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752551"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>DPM および MABS の Azure Data Box を使用したオフライン シード処理 (プレビュー)
 
@@ -230,11 +230,11 @@ DPM サーバー上の Microsoft Azure Backup (MAB) エージェントによっ�
 
 この問題を解決するには、次の手順を行い、ポリシーの構成を再試行します。
 
-1. インポートまたはエクスポート ジョブが作成されるサブスクリプションで、管理者アクセス権がある別のアカウントを使用して、DPM または MABS サーバー UI に表示される Azure サイン ページにサインインします。
+1. Data Box ジョブが作成されるサブスクリプションで、管理者アクセス権がある別のアカウントを使用して、DPM または MABS サーバー UI に表示される Azure サインイン ページにサインインします。
 2. オフライン シード処理が構成されている他のサーバーがなく、`AzureOfflineBackup_<Azure User Id>` アプリケーションに依存する他のサーバーがない場合は、**Azure portal > [Azure Active Directory] > [アプリの登録]** からこのアプリケーションを削除します。
 
    > [!NOTE]
-   > アプリケーション `AzureOfflineBackup_<Azure User Id>` に他のオフライン シード処理が構成されていないこと、およびこのアプリケーションに依存している他のサーバーがないことを確認します。 [公開鍵] セクションの **[設定] > [キー]** に移動します。 他の**公開キー**は追加しないでください。 参考のために次のスクリーンショットをご覧ください。
+   > アプリケーション `AzureOfflineBackup_<Azure User Id>` に他のオフライン シード処理が構成されていないこと、およびこのアプリケーションに依存している他のサーバーがないことを確認します。 [公開鍵] セクションの **[設定] > [キー]** に移動します。 他の **公開キー** は追加しないでください。 参考のために次のスクリーンショットをご覧ください。
    >
    > ![公開キー](./media/offline-backup-azure-data-box-dpm-mabs/public-keys.png)
 

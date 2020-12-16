@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: b9e43cb9188df8274d5bafa7fd9bc90c24339237
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 81782f63199a9fe8f43f56aeefcd1c68951d57a4
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286832"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852254"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service のローカル キャッシュの概要
 
@@ -48,7 +48,7 @@ Azure App Service のローカル キャッシュ機能では、コンテンツ�
 ## <a name="enable-local-cache-in-app-service"></a>App Service でローカル キャッシュを有効にする 
 
 > [!NOTE]
-> ローカル キャッシュは、 **F1** または **D1** レベルではサポートされていません。 
+> ローカル キャッシュは、**F1** または **D1** レベルではサポートされていません。 
 
 ローカル キャッシュは、予約されたアプリケーション設定を組み合わせて使用して構成します。 このアプリケーション設定は、次の方法を使用して構成できます。
 
@@ -92,7 +92,7 @@ Azure App Service のローカル キャッシュ機能では、コンテンツ�
 ## <a name="best-practices-for-using-app-service-local-cache"></a>App Service のローカル キャッシュを使用する場合のベスト プラクティス
 ローカル キャッシュは、 [ステージング環境](../app-service/deploy-staging-slots.md) 機能と併用することをお勧めします。
 
-* 値が `Always` の " *固定の* " アプリケーション設定 `WEBSITE_LOCAL_CACHE_OPTION` を **運用** スロットに追加します。 `WEBSITE_LOCAL_CACHE_SIZEINMB`を使用する場合は、運用スロットにそれも固定の設定として追加します。
+* 値が `Always` の "*固定の*" アプリケーション設定 `WEBSITE_LOCAL_CACHE_OPTION` を **運用** スロットに追加します。 `WEBSITE_LOCAL_CACHE_SIZEINMB`を使用する場合は、運用スロットにそれも固定の設定として追加します。
 * **ステージング** スロットを作成し、ステージング スロットに発行します。 通常は、ステージングのシームレスなビルド、デプロイ、テストのライフサイクルを有効にするためにローカル キャッシュを使用するようにステージング スロットを設定しませんが、運用スロットの場合はローカル キャッシュの利点があります。
 * ステージング スロットに対してサイトをテストします。  
 * 準備ができたら、ステージング スロットと運用スロット間の [スワップ操作](../app-service/deploy-staging-slots.md#Swap) を実行します。  
@@ -120,3 +120,6 @@ Azure App Service のローカル キャッシュ機能では、コンテンツ�
 
 ### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>高速なローカル ドライブへのコピー時にローカル キャッシュで除外されるディレクトリはありますか?
 ストレージ コンテンツをコピーする手順の一環として、リポジトリという名前が付けられたフォルダーはすべて除外されます。 これは、サイトのコンテンツにアプリの日常業務で必要にならないソース管理リポジトリを含める可能性のあるシナリオで役立ちます。 
+
+### <a name="how-to-flush-the-local-cache-logs-after-a-site-management-operation"></a>サイトの管理操作後にローカル キャッシュ ログをフラッシュする方法
+ローカル キャッシュ ログをフラッシュするには、アプリを停止して再起動します。 この操作により、古いキャッシュがクリアされます。 

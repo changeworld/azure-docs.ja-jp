@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 12/03/2020
 ms.author: mlottner
-ms.openlocfilehash: aec750d246ce99fa65431e23ef68e70418db0017
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f7575697706363c082a4e6374b3df7a49e65cdf
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90932655"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548853"
 ---
 # <a name="defender-for-iot-event-aggregation"></a>Defender for IoT のイベント集計
 
@@ -26,7 +26,7 @@ Defender for IoT セキュリティ エージェントにより、ローカル �
 
 デバイスを保護しながら、追加のクォータとコストを削減するため、Defender for IoT エージェントによりこれらの種類のイベントが集計されます。
 
-イベント集計は、既定で**オン**になっており、推奨はされませんが、手動でいつでも**オフ**にすることができます。
+イベント集計は、既定で **オン** になっており、推奨はされませんが、手動でいつでも **オフ** にすることができます。
 
 集計は、現在、次の種類のイベントで使用できます。
 
@@ -36,7 +36,7 @@ Defender for IoT セキュリティ エージェントにより、ローカル �
 
 ## <a name="how-does-event-aggregation-work"></a>イベント集計のしくみ
 
-イベント集計が**オン**のままの場合、Defender for IoT エージェントにより、間隔の期間または時間枠についてイベントが集計されます。
+イベント集計が **オン** のままの場合、Defender for IoT エージェントにより、間隔の期間または時間枠についてイベントが集計されます。
 間隔の期間が経過すると、エージェントは、詳細な分析のために、集計されたイベントを Azure クラウドに送信します。
 集計されたイベントは、Azure クラウドに送信されるまでメモリに格納されます。
 
@@ -44,16 +44,16 @@ Defender for IoT セキュリティ エージェントにより、ローカル �
 
 イベントは、次の条件が満たされている場合にのみ同一と見なされます。
 
-* ProcessCreate イベント - **コマンドライン**、**実行可能ファイル**、**ユーザー名**、および**ユーザー ID** が同一である
-* ConnectionCreate イベント - **コマンドライン**、**ユーザー ID**、**方向**、**ローカル アドレス**、**リモート アドレス**、**プロトコル**、および**宛先ポート**が同一である
-* ProcessTerminate イベント - **実行可能ファイル**と**終了状態**が同一である
+* ProcessCreate イベント - **コマンドライン**、**実行可能ファイル**、**ユーザー名**、および **ユーザー ID** が同一である
+* ConnectionCreate イベント - **コマンドライン**、**ユーザー ID**、**方向**、**ローカル アドレス**、**リモート アドレス**、**プロトコル**、および **宛先ポート** が同一である
+* ProcessTerminate イベント - **実行可能ファイル** と **終了状態** が同一である
 
 ### <a name="working-with-aggregated-events"></a>集計されたイベントの操作
 
 集計中、集計されていないイベント プロパティは破棄され、値 0 でログ分析に表示されます。
 
 * ProcessCreate イベント - **processId** と **parentProcessId** は 0 に設定される
-* ConnectionCreate イベント - **processId** と**発信元ポート**は 0 に設定される
+* ConnectionCreate イベント - **processId** と **発信元ポート** は 0 に設定される
 
 ## <a name="event-aggregation-based-alerts"></a>イベント集計ベースのアラート
 
@@ -61,7 +61,7 @@ Defender for IoT セキュリティ エージェントにより、ローカル �
 
 各イベントの集計の開始時刻、終了時刻、およびヒット カウントは、Log Analytics 内のイベント **ExtraDetails** フィールドに記録されて調査時に使用されます。
 
-各集計イベントは、収集されたアラートの 24 時間分を表します。 各イベントの左上にある [イベント オプション] メニューを使用すると、集計された個々のイベントを**無視**できます。
+各集計イベントは、収集されたアラートの 24 時間分を表します。 各イベントの左上にある [イベント オプション] メニューを使用すると、集計された個々のイベントを **無視** できます。
 
 ## <a name="event-aggregation-twin-configuration"></a>イベント集計のツイン構成
 

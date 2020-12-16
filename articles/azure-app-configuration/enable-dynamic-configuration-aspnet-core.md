@@ -4,23 +4,22 @@ titleSuffix: Azure App Configuration
 description: このチュートリアルでは、ASP.NET Core アプリの構成データを動的に更新する方法を学習します。
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 02/24/2019
-ms.author: lcozzens
+ms.date: 09/1/2020
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: f98ec384876da1d30952d1c4edc1d00049e44682
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1fd495083f5f9be367dd0f125883b181e3bed27b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076999"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930553"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリで動的な構成を使用する
 
@@ -57,7 +56,7 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
 1. **[適用]** を選択します。
 
 > [!NOTE]
-> センチネル キーを使用していない場合は、監視するすべてのキーを手動で登録する必要があります。
+> センチネル キーを使用していない場合は、監視するすべてのキーを手動で登録する必要があります。
 
 ## <a name="reload-data-from-app-configuration"></a>App Configuration からデータを再度読み込む
 
@@ -161,7 +160,7 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
     ```
     ---
     > [!Tip]
-    > 構成値を読み取る際のオプション パターンの詳細については、「 [ASP.NET Core のオプション パターン](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)」を参照してください。
+    > 構成値を読み取る際のオプション パターンの詳細については、「[ASP.NET Core のオプション パターン](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)」を参照してください。
 
 4. `Configure` メソッドに `UseAzureAppConfiguration` ミドルウェアを追加して更新し、ASP.NET Core Web アプリで要求の受信が続けられている間、更新用に登録された構成設定を更新できるようにします。
 
@@ -221,6 +220,9 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
     ---
     
     ミドルウェアでは、`Program.cs` の `AddAzureAppConfiguration` メソッドで指定されている更新の構成を使って、ASP.NET Core Web アプリによって受信された各要求の更新がトリガーされます。 要求ごとに、更新操作がトリガーされ、登録されている構成設定のキャッシュされた値の有効期間が切れているかどうかが、クライアント ライブラリによって確認されます。 有効期間が過ぎていれば更新されます。
+
+    > [!NOTE]
+    > 構成を確実に更新するには、ミドルウェアをできるだけ早く要求パイプラインに追加して、アプリケーション内の別のミドルウェアによって短絡されないようにします。
 
 ## <a name="use-the-latest-configuration-data"></a>最新の構成データを使用する
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f6026680dd566bf7a13c83b37883341bff8b4570
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6845923d65b5fbe5a9f010474330ce2bbed948e1
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96354793"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780095"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>チュートリアル:登録グループを使って複数の X.509 デバイスをプロビジョニングする
 
@@ -26,7 +26,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 このチュートリアルは、登録グループを使用してデバイスのセットをプロビジョニングする方法を示した、これより前のチュートリアルに似ています。 ただし、このチュートリアルでは、対称キーの代わりに X.509 証明書を使用します。 [対称キー](./concepts-symmetric-key-attestation.md)を使用したシンプルなアプローチについては、このセクション内のこれよりも前のチュートリアルを確認してください。
 
-このチュートリアルでは、ハードウェアベースの安全なストレージとのインターフェイスとしての役割を果たすスタブを実装した[カスタム HSM サンプル](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/custom_hsm_example)をお見せします。 [ハードウェア セキュリティ モジュール (HSM)](./concepts-service.md#hardware-security-module) は、ハードウェアベースの安全なストレージとしてデバイス シークレットを保管する用途に使用します。 対称キー、X.509 証明書、または TPM の構成証明と HSM を併用すると、シークレットの安全なストレージを実現できます。 デバイス シークレットは、ハードウェアベースのストレージに保管しておくことを強くお勧めします。
+このチュートリアルでは、ハードウェアベースの安全なストレージとのインターフェイスとしての役割を果たすスタブを実装した[カスタム HSM サンプル](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/custom_hsm_example)をお見せします。 [ハードウェア セキュリティ モジュール (HSM)](./concepts-service.md#hardware-security-module) は、ハードウェアベースの安全なストレージとしてデバイス シークレットを保管する用途に使用します。 対称キー、X.509 証明書、または TPM の構成証明と HSM を併用すると、シークレットの安全なストレージを実現できます。 デバイス シークレットのハードウェアベースのストレージは、必須ではありませんが、デバイス証明書の秘密キーなどの機密情報を保護するために強くお勧めします。
 
 自動プロビジョニングの処理に慣れていない場合は、[プロビジョニング](about-iot-dps.md#provisioning-process)の概要を確認してください。 また、このチュートリアルの以降の内容に進む前に、[Azure portal での IoT Hub Device Provisioning Service の設定](quick-setup-auto-provision.md)に関するページの手順も済ませておいてください。 
 
@@ -225,7 +225,9 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 ## <a name="configure-the-custom-hsm-stub-code"></a>カスタム HSM スタブ コードを構成する
 
-実際のハードウェアベースのストレージとやり取りする際の詳細は、ハードウェアに応じて異なります。 そのため、このチュートリアルのデバイスで使用される証明書チェーンを、カスタム HSM スタブ コードにハードコードします。 実際には、機密情報のセキュリティを強化するために、実際の HSM ハードウェアに証明書チェーンが格納されます。 そのうえで、このサンプルで示したスタブ メソッドとよく似たメソッドを実装し、ハードウェアベースのストレージからシークレットを読み取れるようにします。
+実際のハードウェアベースのストレージとやり取りする際の詳細は、ハードウェアに応じて異なります。 そのため、このチュートリアルのデバイスで使用される証明書チェーンを、カスタム HSM スタブ コードにハードコードします。 実際には、機密情報のセキュリティを強化するために、実際の HSM ハードウェアに証明書チェーンが格納されます。 そのうえで、このサンプルで示したスタブ メソッドとよく似たメソッドを実装し、ハードウェアベースのストレージからシークレットを読み取れるようにします。 
+
+HSM ハードウェアは必須ではありませんが、証明書の秘密キーなどの機密情報をソース コードにチェックインすることはお勧めしません。 これにより、コードを表示できるすべてのユーザーに対してキーが公開されます。 これは、学習を支援するために、この記事でのみ行います。
 
 このチュートリアルのカスタム HSM スタブ コードを更新するには:
 
@@ -287,7 +289,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 ## <a name="verify-ownership-of-the-root-certificate"></a>ルート証明書の所有権を検証する
 
-1. 「[X.509 証明書のパブリック部分を登録して確認コードを取得する](how-to-verify-certificates.md#register-the-public-part-of-an-x509-certificate-and-get-a-verification-code)」の説明に従ってルート証明書をアップロードし、DPS から確認コードを取得します。
+1. 「[X.509 証明書のパブリック部分を登録して確認コードを取得する](how-to-verify-certificates.md#register-the-public-part-of-an-x509-certificate-and-get-a-verification-code)」の説明に従ってルート証明書 (`./certs/azure-iot-test-only.root.ca.cert.pem`) をアップロードし、DPS から確認コードを取得します。
 
 2. DPS からルート証明書の確認コードを取得したら、証明書スクリプトの作業ディレクトリから次のコマンドを実行し、検証証明書を生成します。
  
@@ -297,7 +299,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
     ./certGen.sh create_verification_certificate 1B1F84DE79B9BD5F16D71E92709917C2A1CA19D5A156CB9F    
     ```    
 
-    このスクリプトでは、ルート証明書によって署名され、サブジェクト名として確認コードが設定された証明書が作成されます。 DPS はこの証明書を使用して、ユーザーがルート証明書の秘密キーにアクセスできるかどうかを確認します。 スクリプトの出力では、検証証明書の場所に注目してください。
+    このスクリプトでは、ルート証明書によって署名され、サブジェクト名として確認コードが設定された証明書が作成されます。 DPS はこの証明書を使用して、ユーザーがルート証明書の秘密キーにアクセスできるかどうかを確認します。 スクリプトの出力では、検証証明書の場所に注目してください。 この証明書は `.pfx` 形式で生成されます。
 
     ```output
     Leaf Device PFX Certificate Generated At:

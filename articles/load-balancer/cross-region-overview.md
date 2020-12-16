@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: f0630599c7c52f11a4cf3153bae38ad2d515b6bc
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 8a2ad6cea4ab97742261b1cfd84975b243a46e87
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029763"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938717"
 ---
 # <a name="cross-region-load-balancer-preview"></a>リージョン間ロード バランサー (プレビュー)
 
@@ -35,7 +35,7 @@ Azure Standard Load Balancer では、リージョン間の負荷分散がサポ
 * 学習曲線のない、[既存のロード バランサーに基づく](#build-cross-region-solution-on-existing-azure-load-balancer)ソリューション
 
 > [!IMPORTANT]
-> 現在、リージョン間ロード バランサーはプレビュー段階であり、プレビュー ポータルでは非表示になっています。 この機能を表示してデプロイするには、 **https://preview.portal.azure.com/?feature.globallb=true** にサインインします。 </br> </br>
+> 現在、リージョン間ロード バランサーはプレビュー段階であり、プレビュー ポータルでは非表示になっています。 この機能を表示してデプロイするには、 **https://preview.portal.azure.com** にサインインします。 </br> </br>
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 リージョン間の負荷分散では、リージョンの標準的なロード バランサーと同等のハイ パフォーマンスと低待機時間の利点を得られます。 

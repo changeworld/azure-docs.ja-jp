@@ -1,6 +1,6 @@
 ---
-title: クイックスタート - シミュレートされたデバイスを C と対称キーを使用して Azure IoT Hub にプロビジョニングする
-description: このクイックスタートでは、C デバイス SDK を使用して、Azure IoT Hub Device Provisioning Service (DPS) に対称キーを使用するシミュレートされたデバイスを作成します
+title: クイックスタート - C と対称キーを使用して Azure IoT Hub にデバイスをプロビジョニングする
+description: このクイックスタートでは、C デバイス SDK を使用して、Azure IoT Hub Device Provisioning Service (DPS) で対称キーを使用するデバイスをプロビジョニングします
 author: wesmc7777
 ms.author: wesmc
 ms.date: 01/14/2020
@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ab998756f219cd7bc155f98c2d29454be8018825
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7df7c9ab6bfbc8a39050b78a76114ae2a0a9d9b7
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968215"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746507"
 ---
-# <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>クイック スタート: 対称キーを使用してシミュレートされたデバイスをプロビジョニングする
+# <a name="quickstart-provision-a-device-with-symmetric-keys"></a>クイックスタート: 対称キーを使用してデバイスをプロビジョニングする
 
-このクイック スタートでは、Windows 開発マシン上でデバイス シミュレーターを作成して実行する方法について説明します。 ここでは、Device Provisioning Service インスタンスとの認証と IoT ハブへの割り当てに対称キーを使用するように、このシミュレートされたデバイスを構成します。 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) のサンプル コードを使用して、プロビジョニングを開始するデバイスのブート シーケンスをシミュレートします。 デバイスは、プロビジョニング サービス インスタンスへの個々の登録に基づいて認識され、IoT ハブに割り当てられます。
+このクイックスタートでは、Windows 開発マシンでデバイス プロビジョニング コードを実行して、IoT デバイスとして IoT ハブに接続する方法について説明します。 Device Provisioning Service インスタンスで対称キー認証を使用し、IoT ハブに割り当てられるようにこのデバイスを構成します。 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) のサンプル コードを使用して、デバイスをプロビジョニングします。 デバイスは、プロビジョニング サービス インスタンスへの個々の登録に基づいて認識され、IoT ハブに割り当てられます。
 
 この記事では、個々の登録を使用したプロビジョニングについて説明しますが、登録グループも使用できます。 登録グループを使用する場合は、いくつかの違いがあります。 たとえば、デバイスの一意の登録 ID を持つ派生デバイス キーを使用する必要があります。 対称キー登録グループはレガシ デバイスのみには限定されませんが、[対称キーの構成証明を使用してレガシ デバイスをプロビジョニングする方法](how-to-legacy-device-symm-key.md)に関する記事に登録グループの例が記載されています。 詳細については、[対称キーの構成証明のグループ登録](concepts-symmetric-key-attestation.md#group-enrollments)に関する記事を参照してください。
 
@@ -46,7 +46,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 このセクションでは、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) のビルドに使用する開発環境を準備します。 
 
-この SDK には、シミュレートされたデバイスのサンプル コードが含まれています。 このシミュレートされたデバイスでは、デバイスのブート シーケンス中にプロビジョニングを試行します。
+この SDK には、デバイスのプロビジョニング サンプル コードが含まれています。 このコードでは、デバイスのブート シーケンス中にプロビジョニングを試行します。
 
 1. [CMake ビルド システム](https://cmake.org/download/)をダウンロードします。
 
@@ -73,7 +73,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
     cd cmake
     ```
 
-5. 次のコマンドを実行して、開発クライアント プラットフォームに固有の SDK のバージョンをビルドします。 シミュレートされたデバイスの Visual Studio ソリューションが `cmake` ディレクトリに生成されます。 
+5. 次のコマンドを実行して、開発クライアント プラットフォームに固有の SDK のバージョンをビルドします。 デバイス プロビジョニング コードの Visual Studio ソリューションが `cmake` ディレクトリに生成されます。 
 
     ```cmd
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
@@ -123,7 +123,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 <a id="firstbootsequence"></a>
 
-## <a name="simulate-first-boot-sequence-for-the-device"></a>デバイスの初回ブート シーケンスのシミュレーション
+## <a name="run-the-provisioning-code-for-the-device"></a>デバイスのプロビジョニング コードを実行する
 
 このセクションでは、デバイスのブート シーケンスを Device Provisioning Service インスタンスに送信するようにサンプル コードを更新します。 このブート シーケンスにより、デバイスが認識され、Device Provisioning Service インスタンスにリンクされた IoT ハブに割り当てられます。
 
@@ -158,7 +158,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. **prov\_dev\_client\_sample.c** で、コメントになっている `prov_dev_set_symmetric_key_info()` の呼び出しを探します。
+6. **prov\_dev\_client\_sample.c** で、コメントになっている `prov_dev_set_symmetric_key_info()` の呼び出しを見つけます。
 
     ```c
     // Set the symmetric key if using they auth type
@@ -176,9 +176,9 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 7. **prov\_dev\_client\_sample** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
 
-8. Visual Studio のメニューで **[デバッグ]** > **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、**[はい]** を選択して、プロジェクトをリビルドしてから実行します。
+8. Visual Studio のメニューで **[デバッグ]** > **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、 **[はい]** を選択して、プロジェクトをリビルドしてから実行します。
 
-    次の出力は、シミュレートされたデバイスが正常に起動し、IoT ハブに割り当てられるプロビジョニング サービス インスタンスに接続する例です。
+    次の出力は、プロビジョニング サービス インスタンスに正常に接続して IoT ハブに割り当てられているデバイスの例です。
 
     ```cmd
     Provisioning API Version: 1.2.8
@@ -194,7 +194,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
     Press enter key to exit:
     ```
 
-9. ポータルで、シミュレートされたデバイスが割り当てられた IoT ハブに移動し、 **[IoT デバイス]** タブを選択します。シミュレートされたデバイスがハブに正常にプロビジョニングされると、そのデバイス ID は、**有効** な *状態* で **[IoT デバイス]** ブレードに表示されます。 場合によっては、一番上にある **[最新の情報に更新]** を押す必要があります。 
+9. ポータルで、デバイスが割り当てられている IoT ハブに移動し、 **[IoT デバイス]** タブを選択します。デバイスがハブに正常にプロビジョニングされると、 **[IoT デバイス]** ブレードにデバイス ID が表示され、 *[状態]* に **[有効]** と示されます。 場合によっては、一番上にある **[最新の情報に更新]** を押す必要があります。 
 
     ![IoT ハブに登録されたデバイス](./media/quick-create-simulated-device-symm-key/hub-registration.png) 
 
@@ -209,7 +209,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、シミュレートされたデバイスを Windows マシン上に作成し、ポータル上の Azure IoT Hub Device Provisioning Service で対称キーを使用して IoT ハブにプロビジョニングしました。 プログラムでデバイスを登録する方法については、X.509 デバイスのプログラミングによる登録のクイックスタートに進みます。 
+このクイックスタートでは、Windows マシンでデバイス プロビジョニング コードを実行しました。  デバイスは、対称キーを使用して認証され、IoT ハブにプロビジョニングされました。 X.509 証明書デバイスをプロビジョニングする方法については、X.509 デバイスのクイックスタートに進んでください。 
 
 > [!div class="nextstepaction"]
-> [Azure クイックスタート - X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録する](quick-enroll-device-x509-java.md)
+> [Azure クイックスタート - Azure IoT C SDK を使用して X.509 デバイスをプロビジョニングする](quick-create-simulated-device-x509.md)

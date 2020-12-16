@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2c4e39ae664c89e4f6d49f2941115e5a7d44cf7b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006646"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929175"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>クイック スタート:Helm を使用して Azure Kubernetes Service (AKS) で開発する
 
@@ -22,7 +22,7 @@ ms.locfileid: "96006646"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free)を作成できます。
-* [Azure CLI がインストールされていること](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* [Azure CLI がインストールされていること](/cli/azure/install-azure-cli)。
 * [Helm v3 がインストールされていること][helm-install]。
 
 ## <a name="create-an-azure-container-registry"></a>Azure Container Registry を作成する

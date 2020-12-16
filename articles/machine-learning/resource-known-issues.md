@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperfq4
 ms.date: 11/09/2020
-ms.openlocfilehash: 46763bddd0f173ccf73edc54e5f2688d3bf6efc0
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 55ac11b7888a8e351b52554f76fb44af35633c16
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445393"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780979"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning の既知の問題とトラブルシューティング
 
@@ -211,11 +211,14 @@ ms.locfileid: "94445393"
     先頭のスラッシュ "/" を含めない場合は、データセットをマウントする場所を示すために、コンピューティング先の作業ディレクトリをプレフィックスとして付ける必要があります (たとえば、`/mnt/batch/.../tmp/dataset`)。
 
 ### <a name="mount-dataset"></a>データセットのマウント
-* **データセットの初期化に失敗しました:マウント ポイントの準備が完了するまで待っていましたがタイムアウトになりました**:この問題を軽減するため、再試行ロジックが `azureml-sdk >=1.12.0` で追加されています。 前の azureml-sdk バージョンをご利用の場合、最新版にアップグレードしてください。 既に `azureml-sdk>=1.12.0` をご利用の場合、修正プログラムで最新のパッチが適用されるよう、環境を再作成してください。
+* **データセットの初期化に失敗しました:マウント ポイントの準備が完了するまで待っていましたがタイムアウトになりました**: 
+  * 送信[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview)規則がなく、`azureml-sdk>=1.12.0` を使用している場合は、 `azureml-dataset-runtime` とその依存関係を更新して、特定のマイナー バージョンの最新版にしてください。または、それを実行で使用している場合は、修正プログラムを含む最新パッチが適用されるように、お使いの環境を再作成してください。 
+  * `azureml-sdk<1.12.0` を使用している場合は、最新バージョンにアップグレードしてください。
+  * 送信 NSG 規則がある場合は、サービス タグ `AzureResourceMonitor` のすべてのトラフィックを許可するアウトバウンド規則があることを確認してください。
 
 ### <a name="data-labeling-projects"></a>プロジェクトのラベル付けデータ
 
-|問題  |解像度  |
+|問題  |解決方法  |
 |---------|---------|
 |BLOB データストアに作成されたデータセットしか使用できない。     |  これは、現在のリリースの既知の制限です。       |
 |作成後、プロジェクトで "Initializing (初期化しています)" と長時間にわたり表示される。     | ページを手動で最新の情報に更新してください。 初期化の進行速度は、1 秒あたり約 20 データポイントです。 自動更新が実行されない問題が確認されています。         |
@@ -423,7 +426,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 次のエラーに対して、これらのアクションを実行します。
 
-|エラー  | 解像度  |
+|エラー  | 解決方法  |
 |---------|---------|
 |Web サービスのデプロイ時のイメージ構築エラー     |  イメージ構成用の pip の依存関係として "pynacl==1.2.1" を Conda ファイルに追加します。       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   デプロイで使用される VM の SKU を、メモリがより多い SKU に変更します。 |

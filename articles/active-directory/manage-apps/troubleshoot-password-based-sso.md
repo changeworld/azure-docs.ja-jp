@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 1823de88597756ba3db9aee0dc29501b1ba914a4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: d122cedbad41d6984614a0edccb2fd98269710f2
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646238"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618078"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Azure AD でのパスワードベースのシングル サインオンのトラブルシューティング
 
@@ -150,6 +150,13 @@ Microsoft には、アプリケーションの統合の破綻を自動的に検�
 - *incognito*、*inPrivate*、または *Private モード* のときに、ユーザーがマイ アプリからアプリにサインインしようとしていないことを確認します。
 - 手動キャプチャ プロセスをもう一度試します。 正しいフィールドに赤いマーカーが表示されていることを確認します。
 - 手動キャプチャ プロセスの応答が停止しているように見えるか、サインイン ページが応答しない場合は、手動キャプチャ プロセスをもう一度試します。 ただし、今回はプロセスを完了した後で F12 キーを押して、ブラウザーの開発者コンソールを開きます。 **[コンソール]** タブを選択します。「**window.location=" *&lt;アプリの構成時に指定したサインイン URL&gt;* "** 」と入力し、Enter キーを押します。 これにより、キャプチャ プロセスを終了し、キャプチャされたフィールドを格納するページ リダイレクトが強制的に実行されます。
+
+### <a name="i-cant-add-another-user-to-my-password-based-sso-app"></a>パスワードベースの SSO アプリに別のユーザーを追加できない
+
+パスワードベースの SSO アプリには、48 ユーザーの制限があります。 したがって、アプリあたりのユーザー名とパスワードのペアについても 48 キーの制限があります。
+ユーザーをさらに追加したい場合は、次のいずれかを使用できます。
+-   アプリのインスタンスをさらに追加する
+-   アプリを使用しなくなったユーザーを最初に削除する
 
 ## <a name="request-support"></a>サポートの要求 
 SSO を設定してユーザーを割り当てるときにエラー メッセージが表示される場合は、サポート チケットを開きます。 次の情報をできるだけお知らせください。

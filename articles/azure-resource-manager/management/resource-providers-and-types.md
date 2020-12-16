@@ -2,14 +2,14 @@
 title: リソース プロバイダーとリソースの種類
 description: Azure Resource Manager をサポートするリソース プロバイダーについて説明します。 ここでは、そのスキーマと利用可能な API バージョン、およびリソースをホストできるリージョンについて説明します。
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 12/04/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 702836e0dc98b06ccf6e0eeb0d0f373374c4e783
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6d114fdfae12dd9ee96a23e4dafc3847c6429d0c
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95972540"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745118"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure リソース プロバイダーと種類
 
@@ -32,9 +32,12 @@ ms.locfileid: "95972540"
 
 ## <a name="register-resource-provider"></a>リソース プロバイダーの登録
 
-リソース プロバイダーを使用する前に、Azure サブスクリプションにリソース プロバイダーを登録する必要があります。 登録により、サブスクリプションがリソース プロバイダーと連携するように構成されます。 一部のリソース プロバイダーが既定で登録されています。 その他のリソース プロバイダーは、特定のアクションを実行すると自動的に登録されます。 たとえば、ポータルを使用してリソースを作成すると、通常、リソース プロバイダーが自動的に登録されます。 他のシナリオでは、場合によっては、リソース プロバイダーを手動で登録する必要があります。
+リソース プロバイダーを使用する前に、Azure サブスクリプションにリソース プロバイダーを登録する必要があります。 登録により、サブスクリプションがリソース プロバイダーと連携するように構成されます。 一部のリソース プロバイダーが既定で登録されています。 その他のリソース プロバイダーは、特定のアクションを実行すると自動的に登録されます。 たとえば、ポータルを使用してリソースを作成すると、通常、リソース プロバイダーが自動的に登録されます。 他のシナリオでは、場合によっては、リソース プロバイダーを手動で登録する必要があります。 既定で登録されているリソース プロバイダーの一覧については、「[Azure サービスのリソース プロバイダー](azure-services-resource-providers.md)」を参照してください。
 
 この記事では、リソース プロバイダーの登録状態を確認し、必要に応じて登録する方法について説明します。 リソース プロバイダーの `/register/action` 操作を実行するためのアクセス許可が必要です。 このアクセス許可は、共同作成者ロールと所有者ロールに含まれます。
+
+> [!IMPORTANT]
+> リソース プロバイダーの登録は、それを使用する準備ができた場合のみ行ってください。 登録手順により、サブスクリプション内で最小限の特権を維持できます。 悪意のあるユーザーは、登録されていないリソース プロバイダーを使用することはできません。
 
 アプリケーション コードによって、**登録中** 状態にあるリソース プロバイダーのリソースの作成がブロックされるべきではありません。 リソース プロバイダーを登録すると、サポートされているリージョンごとに操作が個別に実行されます。 リージョンにリソースを作成する際は、そのリージョンでのみ登録を完了する必要があります。 登録中の状態にあるリソース プロバイダーがブロックされないようにすることで、すべてのリージョンの完了まで待機するよりもはるかに早くアプリケーションを続行できます。
 
@@ -42,20 +45,28 @@ ms.locfileid: "95972540"
 
 ## <a name="azure-portal"></a>Azure portal
 
+### <a name="register-resource-provider"></a>リソース プロバイダーの登録
+
 すべてのリソース プロバイダー、およびサブスクリプションの登録状態を表示するには、以下を実行します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. Azure portal のメニューで、**[すべてのサービス]** を選択します。
+1. Azure portal のメニューで **サブスクリプション** を検索します。 使用可能なオプションから、それを選択します。
 
-    ![サブスクリプションの選択](./media/resource-providers-and-types/select-all-services.png)
+   :::image type="content" source="./media/resource-providers-and-types/search-subscriptions.png" alt-text="サブスクリプションの検索":::
 
-3. **[すべてのサービス]** ボックスで **"サブスクリプション (subscription)"** と入力し、**[サブスクリプション]** を選択します。
-4. サブスクリプションの一覧から、表示するサブスクリプションを選択します。
-5. **[リソース プロバイダー]** を選択し、利用可能なリソース プロバイダーの一覧を表示します。
+1. 表示するサブスクリプションを選択します。
 
-    ![リソース プロバイダーの表示](./media/resource-providers-and-types/show-resource-providers.png)
+   :::image type="content" source="./media/resource-providers-and-types/select-subscription.png" alt-text="サブスクリプションの選択":::
 
-6. リソース プロバイダーを登録するには、**[登録]** を選択します。 前のスクリーン ショットでは、**Microsoft.Blueprint** の **[登録]** リンクが強調表示されています。
+1. 左側のメニューの **[設定]** で、 **[リソース プロバイダー]** を選択します。
+
+   :::image type="content" source="./media/resource-providers-and-types/select-resource-providers.png" alt-text="リソース プロバイダーの選択":::
+
+6. 登録するリソース プロバイダーを探し、 **[登録]** を選択します。 サブスクリプションで最小限の特権を維持するには、使用する準備ができたリソース プロバイダーのみ登録します。
+
+   :::image type="content" source="./media/resource-providers-and-types/register-resource-provider.png" alt-text="リソース プロバイダーの登録":::
+
+### <a name="view-resource-provider"></a>リソース プロバイダーの表示
 
 特定のリソース プロバイダーの情報を表示するには、以下を実行します。
 
@@ -107,7 +118,7 @@ Microsoft.CognitiveServices      Registered
  Get-AzResourceProvider -ListAvailable | Where-Object RegistrationState -eq "Registered" | Select-Object ProviderNamespace, RegistrationState | Sort-Object ProviderNamespace
 ```
 
-リソース プロバイダーを登録するには、次のコマンドを使用します。
+サブスクリプションで最小限の特権を維持するには、使用する準備ができたリソース プロバイダーのみ登録します。 リソース プロバイダーを登録するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
@@ -216,7 +227,7 @@ Microsoft.CognitiveServices      Registered
 az provider list --query "sort_by([?registrationState=='Registered'].{Provider:namespace, Status:registrationState}, &Provider)" --out table
 ```
 
-リソース プロバイダーを登録するには、次のコマンドを使用します。
+サブスクリプションで最小限の特権を維持するには、使用する準備ができたリソース プロバイダーのみ登録します。 リソース プロバイダーを登録するには、次のコマンドを使用します。
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Batch

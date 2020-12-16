@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ce068f1b43fcd6611d4abf65029cbcc5de3b7d30
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c9ee57baf63867e4dca4236d484321586cfb3b17
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311603"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862345"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>解釈可能性パッケージを使用して、Python ML モデルと予測について説明する (プレビュー)
 
@@ -47,7 +47,7 @@ ms.locfileid: "93311603"
     pip install azureml-interpret
     ```
 
-2. ローカルの Jupyter ノートブックでサンプル モデルをトレーニングします。
+2. ローカルの Jupyter Notebook でサンプル モデルをトレーニングします。
 
     ```python
     # load breast cancer dataset, a well-known small dataset that comes with scikit-learn
@@ -296,7 +296,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 ## <a name="visualizations"></a>視覚化
 
-ローカルの Jupyter ノートブックに説明をダウンロードしたら、視覚化ダッシュボードを使用してモデルを理解および解釈できます。
+ローカルの Jupyter Notebook に説明をダウンロードしたら、視覚化ダッシュボードを使用してモデルを理解および解釈できます。
 
 ### <a name="understand-entire-model-behavior-global-explanation"></a>モデルの動作全体を理解する (グローバル説明) 
 
@@ -354,7 +354,7 @@ Azure Machine Learning Studio の視覚化ダッシュボードにアクセス�
    [![AzureML studio での [実験] の視覚化ダッシュボードのローカルな特徴の重要度](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * **[モデル]** ウィンドウ
-  1. 「 [Azure Machine Learning を使用してモデルをデプロイする](./how-to-deploy-and-where.md)」の手順に従って元のモデルを登録している場合は、左側のウィンドウの **[モデル]** を選択してそれを表示できます。
+  1. 「[Azure Machine Learning を使用してモデルをデプロイする](./how-to-deploy-and-where.md)」の手順に従って元のモデルを登録している場合は、左側のウィンドウの **[モデル]** を選択してそれを表示できます。
   1. モデルを選択してから **[説明]** タブを選択して、説明の視覚化ダッシュボードを表示します。
 
 ## <a name="interpretability-at-inference-time"></a>推論時の解釈可能性

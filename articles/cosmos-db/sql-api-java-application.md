@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 774c829b3f9c36cef33f8f334825440b92582f4e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b3cb6bf56820da84d17f0b981f461a545bbe5ab6
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097313"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549261"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>チュートリアル:Azure Cosmos DB および SQL API を使用した Java Web アプリケーションの作成
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -80,7 +80,7 @@ JSP アプリケーションを作成するには:
 
 1. **[Select JSP Template]** ダイアログ ボックスで、このチュートリアルのために **[New JSP File (html)]** を選択し、 **[Finish]** をクリックします。
 
-1. *index.jsp* ファイルが Eclipse で開いたら、 **Hello World!** を表示するためのテキストを追加します 既存の `<body>` 要素に追加します。 更新した `<body>` の内容は次のようになります。
+1. *index.jsp* ファイルが Eclipse で開いたら、**Hello World!** を表示するためのテキストを追加します 既存の `<body>` 要素に追加します。 更新した `<body>` の内容は次のようになります。
 
    ```html
    <body>
@@ -138,7 +138,7 @@ SQL Java SDK とその依存関係をインストールするには、[Apache Ma
 
 ToDo 項目の永続化を Azure Cosmos DB に抽出するためのデータ アクセス オブジェクト (DAO) を作成します。 ToDo 項目をコレクションに保存するために、クライアントはどのデータベースとコレクションが永続化するかを知っている必要があります (自己リンクによって参照されます)。 一般に、データベースへの追加のラウンドト リップを回避するために、可能な場合は、データベースとコレクションをキャッシュすることをお勧めします。
 
-1. Azure Cosmos DB サービスを呼び出すには、新しい `cosmosClient` オブジェクトをインスタンス化する必要があります。 一般に、後続の要求ごとに新しいクライアントを構築するのではなく、`cosmosClient` オブジェクトを再利用することをお勧めします。 クライアントを再利用するには、`cosmosClientFactory` クラス内で定義します。 [手順 1](#CreateDB) で保存した HOST と MASTER_KEY の値を更新します。 HOST 変数と MASTER_KEY をそれぞれ、ご自分の URI とプライマリ キーに置き換えます。 次のコードを使用して、 *CosmosClientFactory.java* ファイル内に `CosmosClientFactory` クラスを作成します。
+1. Azure Cosmos DB サービスを呼び出すには、新しい `cosmosClient` オブジェクトをインスタンス化する必要があります。 一般に、後続の要求ごとに新しいクライアントを構築するのではなく、`cosmosClient` オブジェクトを再利用することをお勧めします。 クライアントを再利用するには、`cosmosClientFactory` クラス内で定義します。 [手順 1](#CreateDB) で保存した HOST と MASTER_KEY の値を更新します。 HOST 変数と MASTER_KEY をそれぞれ、ご自分の URI とプライマリ キーに置き換えます。 次のコードを使用して、*CosmosClientFactory.java* ファイル内に `CosmosClientFactory` クラスを作成します。
 
    :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/CosmosClientFactory.java":::
 
@@ -190,7 +190,7 @@ ToDo 項目の永続化を Azure Cosmos DB に抽出するためのデータ ア
 
 Azure Web Sites での Java アプリケーションのデプロイは簡単です。アプリケーションを WAR ファイルとしてエクスポートし、ソース管理 (例: Git) または FTP を使用してアップロードするだけです。
 
-1. アプリケーションを WAR ファイルとしてエクスポートするには、 **Project Explorer** でプロジェクトを右クリックし、 **[Export]\(エクスポート\)** 、 **[WAR File]\(WAR ファイル\)** の順にクリックします。
+1. アプリケーションを WAR ファイルとしてエクスポートするには、**Project Explorer** でプロジェクトを右クリックし、 **[Export]\(エクスポート\)** 、 **[WAR File]\(WAR ファイル\)** の順にクリックします。
 
 1. **[WAR Export]** ウィンドウで、次の操作を行います。
    
@@ -218,17 +218,17 @@ Azure Web Sites での Java アプリケーションのデプロイは簡単で�
 
 1. **[Source Git Repository]** 画面で、 **[URI]** ボックスに「 https://github.com/Azure-Samples/documentdb-java-todo-app.git 」と入力し、 **[Next]** をクリックします。
 
-1. **[Branch Selection]** 画面で、 **[master]** が選択されていることを確認し、 **[Next]** をクリックします。
+1. **[Branch Selection]** 画面で、 **[main]** が選択されていることを確認し、 **[Next]** をクリックします。
 
 1. **[Local Destination]** 画面で、 **[Browse]** をクリックしてリポジトリをコピーするフォルダーを選択し、 **[Next]** をクリックします。
 
 1. **[Select a wizard to use for importing projects]** 画面で、 **[Import existing projects]** が選択されていることを確認し、 **[Next]** をクリックします。
 
-1. **[Import Projects]** 画面で、 **DocumentDB** プロジェクトを選択解除し、 **[Finish]** をクリックします。 DocumentDB プロジェクトには、依存関係として追加される Azure Cosmos DB Java SDK が含まれています。
+1. **[Import Projects]** 画面で、**DocumentDB** プロジェクトを選択解除し、 **[Finish]** をクリックします。 DocumentDB プロジェクトには、依存関係として追加される Azure Cosmos DB Java SDK が含まれています。
 
 1. **Project Explorer** で、azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java を表示し、[HOST] 値と [MASTER_KEY] 値を Azure Cosmos DB アカウントの URI とプライマリ キーで置き換え、ファイルを保存します。 詳細については、「[手順 1:Azure Cosmos データベース アカウントの作成](#CreateDB)に関する説明を参照してください。
 
-1. **Project Explorer** で、 **azure-documentdb-java-sample** を右クリックし、 **[Build Path]** 、 **[Configure Build Path]** の順にクリックします。
+1. **Project Explorer** で、**azure-documentdb-java-sample** を右クリックし、 **[Build Path]** 、 **[Configure Build Path]** の順にクリックします。
 
 1. **[Java Build Path]** 画面の右ウィンドウで **[Libraries]** タブを選択し、 **[Add External JARs]** をクリックします。 lombok.jar ファイルの場所を参照し、 **[Open]** 、 **[OK]** の順にクリックします。
 

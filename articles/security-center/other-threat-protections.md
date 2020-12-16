@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 7d59c0e751054522f4c54fe059f19aa0a941464e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5b9e9f5cc5184a083f45999eaeb031eb83b17c58
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490004"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754336"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Azure Security Center での追加の脅威の防止
 組み込みの [Azure Defender の保護](azure-defender.md)に加えて、Azure Security Center によって次の脅威の防止機能も提供されています。
@@ -41,7 +41,7 @@ Azure Resource Manager に基づく Security Center の保護レイヤーは、�
 
 Security Center では、Azure のコントロール プレーンと見なされる Azure Resource Manager イベントを使用することで、追加の保護レイヤーが提供されます。 Security Center では、Azure Resource Manager のレコードを分析することで、Azure サブスクリプション環境での異常な、または害を及ぼす可能性のある操作を検出します。
 
-Azure Resource Manager (プレビュー) アラートの一覧については、[アラートのリファレンス表](alerts-reference.md#alerts-azureresourceman)に関するページを参照してください。
+Azure Defender for Resource Manager のアラートの一覧については、[アラートのリファレンス表](alerts-reference.md#alerts-resourcemanager)を参照してください。
 
 
 >[!NOTE]

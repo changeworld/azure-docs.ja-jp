@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Maps における Weather Services の概念
-description: Microsoft Azure Maps Weather Services に適用される概念について説明します。
+title: Microsoft Azure Maps における Weather Service (プレビュー) の概念
+description: Microsoft Azure Maps Weather Service (プレビュー) に適用される概念について説明します。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2020
@@ -8,20 +8,24 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ea8698b7bf402850e506ec126cd2a7bb6ce05823
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 657cb6a86122d267b86e82b6f02eb58e968cddd3
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896729"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904739"
 ---
-# <a name="weather-services-in-azure-maps"></a>Azure Maps の気象サービス
+# <a name="weather-services-preview-in-azure-maps"></a>Azure Maps の Weather Service (プレビュー)
 
-この記事では、[Azure Maps Weather Services](/rest/api/maps/weather) に適用される概念を紹介します。 Weather API の使用を開始する前に、この記事を読み通すことをお勧めします。
+> [!IMPORTANT]
+> Azure Maps Weather Service は現在、パブリック プレビュー段階です。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+この記事では、Azure Maps [Weather Service](/rest/api/maps/weather) に適用される概念を紹介します。 Weather API の使用を開始する前に、この記事を読み通すことをお勧めします。
 
 ## <a name="unit-types"></a>単位の種類
 
-気象サービス API の中には、データをメトリックとヤード単位のどちらで返すかをユーザーが指定できるものがあります。 これらの API で返される応答には、単位の変換に使用できる unitType (数値) が含まれます。 これらの値を解釈するには、次の表を参照してください。
+Weather Service (プレビュー) API の中には、データをメトリックとヤード単位のどちらで返すかをユーザーが指定できるものがあります。 これらの API で返される応答には、単位の変換に使用できる unitType (数値) が含まれます。 これらの値を解釈するには、次の表を参照してください。
 
 |unitType|説明         |
 |--------|--------------------|
@@ -52,7 +56,7 @@ ms.locfileid: "92896729"
 
 ## <a name="weather-icons"></a>天気アイコン
 
-Weather Service API の中には、応答で `iconCode` が返されるものがあります。 `iconCode` は、アイコンの定義に使用される数値です。 アプリケーションからこれらの画像に直接リンクしないでください。URL が変更される可能性があります。
+Weather Service (プレビュー) API の中には、応答で `iconCode` が返されるものがあります。 `iconCode` は、アイコンの定義に使用される数値です。 アプリケーションからこれらの画像に直接リンクしないでください。URL が変更される可能性があります。
 
 | アイコン番号 |アイコン| 日 | 夜間 | Text |
 |-------------|:----:|-----|-------|------|

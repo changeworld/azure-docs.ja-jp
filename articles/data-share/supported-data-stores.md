@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 11/12/2020
-ms.openlocfilehash: 6289395b5d508de8da3e5c8c89caebb4b0e9b817
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 12/7/2020
+ms.openlocfilehash: 566fd2c9c31933420769f7200a0434cc53f8c2f3
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592432"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853146"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure Data Share でサポートされているデータ ストア
 
@@ -30,7 +30,7 @@ Azure Data Share は、さまざまなデータ ストアとの間で共有す�
 | Azure Data Lake Storage Gen2 |✓ |✓ ||
 | Azure SQL データベース |✓ | | |
 | Azure Synapse Analytics (以前の Azure SQL DW) |✓ | | |
-| Azure Synapse Analytics (ワークスペース) SQL プール | パブリック プレビュー | | |
+| Azure Synapse Analytics (ワークスペース) の専用 SQL プール |✓ | | |
 | Azure Data Explorer | | |✓ |
 
 ## <a name="data-store-support-matrix"></a>データ ストアのサポート マトリックス
@@ -39,14 +39,14 @@ Azure Data Share では、データ コンシューマーがデータを受け�
 
 次の表では、データ共有を受け入れて構成する際にデータ コンシューマーが利用できるさまざまな組み合わせと選択肢の詳細を示しています。 データセット マッピングを構成する方法の詳細については、「[データセット マッピングを構成する方法](how-to-configure-mapping.md)」を参照してください。
 
-| データ ストア | Azure Blob Storage | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL データベース | Azure Synapse Analytics (以前の Azure SQL DW) | Azure Synapse Analytics (ワークスペース) SQL プール | Azure Data Explorer
+| データ ストア | Azure Blob Storage | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL データベース | Azure Synapse Analytics (以前の Azure SQL DW) | Azure Synapse Analytics (ワークスペース) の専用 SQL プール | Azure Data Explorer
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- | :--- |
 | Azure BLOB ストレージ | ✓ || ✓ |||
 | Azure Data Lake Storage Gen1 | ✓ | | ✓ |||
 | Azure Data Lake Storage Gen2 | ✓ | | ✓ |||
 | Azure SQL データベース | ✓ | | ✓ | ✓ | ✓ | ✓ ||
 | Azure Synapse Analytics (以前の Azure SQL DW) | ✓ | | ✓ | ✓ | ✓ | ✓ ||
-| Azure Synapse Analytics (ワークスペース) SQL プール | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Azure Synapse Analytics (ワークスペース) の専用 SQL プール | ✓ | | ✓ | ✓ | ✓ | ✓ ||
 | Azure Data Explorer ||||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>ストレージ アカウントからの共有

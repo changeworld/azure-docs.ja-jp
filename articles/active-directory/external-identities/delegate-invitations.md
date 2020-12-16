@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 11/30/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5a983931bd372931eacff2f7b21f3358f536046
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8a249102de6a5bff7354e339e604b7d2efebd4fb
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362928"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546173"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>B2B 外部コラボレーションを有効にしてゲストを招待できるユーザーを管理する
 
@@ -44,16 +44,19 @@ Azure AD B2B コラボレーションでは、テナント管理者が次の招�
 3. **[外部 ID]**  >  **[外部コラボレーションの設定]** を選択します。
 
 4. **[ゲスト ユーザーのアクセス制限 (プレビュー)]** で、ゲスト ユーザーに付与するアクセス レベルを選択します。
+  
+    ![ゲスト ユーザーのアクセス制限設定](./media/delegate-invitations/guest-user-access.png)
 
    - **Guest users have the same access as members (most inclusive) (ゲスト ユーザーにメンバーと同じアクセス権を付与する (最も包括的))** :このオプションを選択すると、ゲストがメンバー ユーザーと同じように Azure AD リソースとディレクトリ データにアクセスできるようになります。
 
    - **Guest users have limited access to properties and memberships of directory objects (ゲスト ユーザーに対してディレクトリ オブジェクトのプロパティとメンバーシップへのアクセスを制限する)** :(デフォルト) この設定を選択すると、ゲストは、特定のディレクトリ タスク (ユーザー、グループ、またはその他のディレクトリ リソースを列挙するなど) を実行できなくなります。 ゲストは、非表示でないすべてのグループのメンバーシップを表示できます。
 
    - **Guest user access is restricted to properties and memberships of their own directory objects (most restrictive) (ゲスト ユーザーのアクセスを、自分のディレクトリ オブジェクトのプロパティとメンバーシップに制限する (最も厳しい制限))** :この設定では、ゲストは自分のプロファイルのみにアクセスできます。 ゲストは、他のユーザーのプロファイル、グループ、またはグループ メンバーシップを参照することはできません。
-  
-    ![ゲスト ユーザーのアクセス制限設定](./media/delegate-invitations/guest-user-access.png)
+
 
 5. **[Guest invite settings]\(ゲスト招待の設定\)** で、適切な設定を選択します。
+
+    ![ゲスト招待の設定](./media/delegate-invitations/guest-invite-settings.png)
 
    - **[管理者とゲスト招待元ロールのユーザーは招待ができる]** : 管理者と "ゲスト招待元" ロールのユーザーがゲストを招待できるようにするには、このポリシーを **[はい]** に設定します。
 
@@ -61,17 +64,31 @@ Azure AD B2B コラボレーションでは、テナント管理者が次の招�
 
    - **[ゲストは招待ができる]** : ゲストが他のゲストを招待できるようにするには、このポリシーを **[はい]** に設定します。
 
-   - **[ゲストの電子メール ワンタイム パスコードを有効にする (プレビュー)]** : ワンタイム パスコード機能の詳細については、「 [電子メール ワンタイム パスコード認証 (プレビュー)](one-time-passcode.md)」を参照してください。
+   > [!NOTE]
+   > **[メンバーは招待ができる]** が **[いいえ]** に設定され、 **[管理者とゲスト招待元ロールのユーザーは招待ができる]** が **[はい]** に設定されている場合、**ゲスト招待元** ロールのユーザーは引き続きゲストを招待できます。
 
-   - **ユーザー フローによるゲストのセルフサービス サインアップを有効にする (プレビュー)** :この設定の詳細については、「 [セルフサービス サインアップのユーザー フローをアプリに追加する (プレビュー)](self-service-sign-up-user-flow.md)」を参照してください。
+6. **[ゲストの電子メール ワンタイム パスコード]** で、適切な設定を選択します (詳細については、「[電子メール ワンタイム パスコード認証](one-time-passcode.md)」を参照してください)。
+
+   ![電子メール ワンタイム パスコードの設定](./media/delegate-invitations/email-otp-settings.png)
+
+   - **[2021 年 3 月にゲストの電子メール ワンタイム パスコードを自動的に有効にする]** 。 (既定値) お使いのテナントで電子メール ワンタイム パスコード機能がまだ有効になっていない場合、2021 年 3 月に自動的に有効になります。 その時点でこの機能が有効になることを希望する場合、これ以上の操作は必要ありません。 この機能を既に有効または無効にしている場合、このオプションは使用できません。
+
+   - **[ゲストの電子メール ワンタイム パスコードを今すぐ有効にする]** 。 お使いのテナントに対して電子メール ワンタイム パスコード機能を有効にします。
+
+   - **[ゲストの電子メール ワンタイム パスコードを無効にする]** 。 お使いのテナントに対して電子メール ワンタイム パスコード機能を無効にし、2021 年 3 月にこの機能が有効にならないようにします。
 
    > [!NOTE]
-   > **[メンバーは招待ができる]** が **[いいえ]** に設定され、 **[管理者とゲスト招待元ロールのユーザーは招待ができる]** が **[はい]** に設定されている場合、 **ゲスト招待元** ロールのユーザーは引き続きゲストを招待できます。
+   > この機能を有効または無効にしてある場合、またはプレビューに登録済みの場合は、上記のオプションの代わりに、次のトグルが表示されます。
+   >
+   >![オプトインされた電子メール ワンタイム パスコードを有効にする](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-    ![ゲスト招待の設定](./media/delegate-invitations/guest-invite-settings.png)
+7. ユーザーがアプリにサインアップできるようにユーザー フローを作成したい場合は、 **[ユーザー フローによるゲストのセルフサービス サインアップを有効にする (プレビュー)]** で **[はい]** を選択します。 この設定の詳細については、「[セルフサービス サインアップのユーザー フローをアプリに追加する (プレビュー)](self-service-sign-up-user-flow.md)」を参照してください。
 
-6. **[コラボレーションの制限]** で、指定したドメインへの招待を許可または拒否するかを選択します。 詳細については、「[B2B ユーザーに対する特定組織からの招待を許可またはブロックする](allow-deny-list.md)」を参照してください。
+    ![ユーザー フローによるセルフサービス サインアップの設定](./media/delegate-invitations/self-service-sign-up-setting.png)
 
+7. **[コラボレーションの制限]** で、指定したドメインへの招待を許可または拒否するかを選択します。 詳細については、「[B2B ユーザーに対する特定組織からの招待を許可またはブロックする](allow-deny-list.md)」を参照してください。
+
+    ![コラボレーションの制限の設定](./media/delegate-invitations/collaboration-restrictions.png)
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>ゲスト招待元ロールをユーザーに割り当てる
 
 ゲスト招待元ロールを使用すると、個々のユーザーにグローバル管理者ロールなどの管理者ロールを割り当てなくても、ゲストを招待する機能を付与できます。 ゲスト招待元ロールを個々のユーザーに割り当てます。 次に、 **[管理者とゲスト招待元ロールのユーザーは招待ができる]** が **[はい]** に設定されていることを確認します。

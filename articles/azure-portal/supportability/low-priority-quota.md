@@ -1,18 +1,17 @@
 ---
-title: スポット仮想マシンのクォータ - Azure
+title: スポット仮想マシン クォータ
 description: Azure が必要に応じて VM を削除できるようにする代わりに、コストの削減を想定できる Azure 使用モデルを提供するスポット VM のクォータ制限を増やします。
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
 ms.topic: how-to
-ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 513bde930f9c7c8892164c50c3866ff6e948ed4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8b9a2251d7923fe1919b7b934f6c97877cd5b37
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763875"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745487"
 ---
 # <a name="spot-quota-increase-limits-for-all-vm-series"></a>スポット クォータ: すべての VM シリーズの制限を増やす
 
@@ -20,8 +19,8 @@ ms.locfileid: "84763875"
 
 Azure Resource Manager は、仮想マシンの次の 2 種類の vCPU クォータをサポートしています。
 
-* *従量課金制 VM* と*予約 VM インスタンス*には、*標準 vCPU クォータ*が適用されます。
-* *スポット VM* には、*スポット vCPU クォータ*が適用されます。
+* *従量課金制 VM* と *予約 VM インスタンス* には、*標準 vCPU クォータ* が適用されます。
+* *スポット VM* には、*スポット vCPU クォータ* が適用されます。
 
 スポット vCPU クォータの種類の場合、Resource Manager の vCPU クォータは、単一のリージョン制限として使用可能なすべての仮想マシン シリーズにわたって適用されます。
 

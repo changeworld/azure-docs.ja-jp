@@ -8,39 +8,48 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 40c1fb314a2dea653740e7f87b5caa14c759fffb
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1fd2b8461bd66c826dc4890c331b740c4703f896
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078223"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903991"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT ソリューション アクセラレータに関してよく寄せられる質問
 
-[接続済みファクトリ固有の FAQ](iot-accelerators-faq-cf.md) および [リモート監視に固有の FAQ](iot-accelerators-faq-rm-v2.md) も参照してください。
+コネクテッド ファクトリ固有の [FAQ](iot-accelerators-faq-cf.md) に関するページもご覧ください。
 
 ### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>ソリューション アクセラレータのソース コードはどこで入手できますか。
 
 ソース コードは、次の GitHub リポジトリに格納されています。
 
-* [リモート監視ソリューション アクセラレータ (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
-* [リモート監視ソリューション アクセラレータ (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
-* [予測メンテナンスのソリューション アクセラレータ](https://github.com/Azure/azure-iot-predictive-maintenance)
 * [接続済みファクトリ ソリューション アクセラレータ](https://github.com/Azure/azure-iot-connected-factory)
+* [デバイス シミュレーション ソリューション アクセラレータ](https://github.com/Azure/device-simulation-dotnet)
+
+### <a name="where-can-i-find-the-remote-monitoring-and-predictive-maintenance-solution-accelerators"></a>リモート監視と予測メンテナンスのソリューション アクセラレータはどこで入手できますか?
+
+2020 年 12 月 10 日の時点で、リモート監視と予測メンテナンスのアクセラレータは [Azure IoT Solution Accelerators ](https://www.azureiotsolutions.com/Accelerators)のサイトから削除され、新しいデプロイでは利用できなくなりました。 両方のアクセラレータの GitHub リポジトリがアーカイブされました。 コードにはだれでもアクセスできますが、リポジトリに新しい投稿が寄せられることはありません。
+
+### <a name="what-happens-to-my-existing-remote-monitoring-and-predictive-maintenance-deployments"></a>既存のリモート監視と予測メンテナンスのデプロイはどうなりますか?
+
+リモート監視と予測メンテナンスのソリューション アクセラレータが削除されても、既存のデプロイは影響を受けず、引き続き機能します。 フォークされたリポジトリも影響を受けません。 GitHub のマスター リポジトリはアーカイブされています。
+
+### <a name="how-do-i-deploy-device-simulation-solution-accelerator"></a>デバイス シミュレーション ソリューション アクセラレータはどのようにデプロイしますか?
+
+デバイス シミュレーション ソリューション アクセラレータをデプロイするには、[デバイス シミュレーション](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)の GitHub リポジトリを参照してください。
+
+### <a name="where-can-i-find-information-about-the-removed-solution-accelerators"></a>削除されたソリューション アクセラレータに関する情報はどこで入手できますか?
+
+前のバージョンのサイトの次のページを参照してください。
+
+* [リモート監視](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
+* [予測メンテナンス](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
 
 ### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>ソリューション アクセラレータ用のデバイス クライアントの開発では、どの SDK を使用できますか?
 
 [Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) GitHub リポジトリで、異なる言語 (C、.NET、Java、Node.js、Python) IoT デバイス SDK へのリンクを見つけることができます。
 
 DevKit デバイスを使用する場合は、[IoT DevKit SDK](https://github.com/Microsoft/devkit-sdk) GitHub リポジトリで、リソースとサンプルを見つけることができます。
-
-### <a name="is-the-new-microservices-architecture-available-for-all-the-three-solution-accelerators"></a>3 つのソリューション アクセラレータすべてに対して利用可能な新しいマイクロサービス アーキテクチャはありますか?
-
-現時点では、最も広範なシナリオを対象としているリモートの監視ソリューションのみがマイクロサービス アーキテクチャを使用しています。
-
-### <a name="what-advantages-does-the-new-open-sourced-microservices-based-architecture-provide-in-the-new-update"></a>新しい更新プログラムで新しいオープン ソース マイクロサービス ベースのアーキテクチャによって提供される利点はどのようなものですか?
-
-過去 2 年間、クラウド アーキテクチャは大幅に進化してきました。 マイクロサービスは、開発速度を犠牲にすることなく、拡張性と柔軟性を達成する素晴らしいパターンとして登場してきました。 いくつかの Microsoft のサービスは、このアーキテクチャ パターンを内部的に使用し、優れた信頼性とスケーラビリティの成果を出しています。 Microsoft では、学習した内容をソリューション アクセラレータで実践しており、お客様がそこからメリットを得られるようにしています。
 
 ### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-azure-ad-tenant-how-do-i-complete-this-task"></a>サービス管理者が自分のサブスクリプションと特定の Azure AD テナントの間のディレクトリ マッピングを変更するには どうすればよいですか
 
@@ -63,14 +72,6 @@ DevKit デバイスを使用する場合は、[IoT DevKit SDK](https://github.co
 
 Azure サブスクリプションが確かにある場合は、サブスクリプションのテナント マッピングを調べ、ドロップダウンで正しいテナントが選択されていることを確認してください。 テナントが正しいことを確認したら、上の図に従って、サブスクリプションとこの Azure AD テナントのマッピングを確認してください。
 
-### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>以前のバージョンのリモート監視ソリューションに関する情報はどこで入手できますか?
-
-以前のバージョンのリモート監視ソリューション アクセラレータは、IoT Suite リモート監視構成済みソリューションと呼ばれていました。 アーカイブされたドキュメントは [https://docs.microsoft.com/previous-versions/azure/iot-suite/](/previous-versions/azure/iot-suite/) で参照できます。
-
-### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>既存のソリューションと同じ地理的リージョンで、新しいソリューション アクセラレータを利用できますか?
-
-はい、新しいリモート監視は同じ地理的リージョンで利用可能です。
-
 ### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>Azure portal でのリソース グループの削除と、azureiotsolutions.com のソリューション アクセラレータで削除をクリックすることの違いは何ですか?
 
 * [azureiotsolutions.com](https://www.azureiotsolutions.com/) でソリューション アクセラレータを削除すると、ソリューション アクセラレータの作成時にデプロイしたすべてのリソースが削除されます。 リソース グループにリソースを追加してある場合、それらも削除されます。
@@ -88,10 +89,6 @@ Azure サブスクリプションが確かにある場合は、サブスクリ�
 
 50 個です。 [Azure サポート チケット](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)を作成してこの上限を引き上げることができますが、既定では、サブスクリプションごとにプロビジョニングできる Cosmos DB インスタンスは 50 個のみです。
 
-### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>サブスクリプションでプロビジョニングできる無料の Bing マップ API の数はいくつですか?
-
-2 個です。 1 つの Azure サブスクリプションでは、内部トランザクション レベル 1 のエンタープライズ向け Bing 地図プランを最大で 2 個作成できます。 リモート監視ソリューションは、既定では内部トランザクション レベル 1 のプランでプロビジョニングされます。 その結果、変更なしでサブスクリプションにプロビジョニングできるリモート監視ソリューションは最大 2 個です。
-
 ### <a name="can-i-create-a-solution-accelerator-if-i-have-microsoft-azure-for-dreamspark"></a>Microsoft Azure for DreamSpark があれば、ソリューション アクセラレータを作成できますか?
 
 > [!NOTE]
@@ -107,7 +104,5 @@ Azure サブスクリプションが確かにある場合は、サブスクリ�
 
 IoT ソリューション アクセラレータの他の機能についても学習できます。
 
-* [リモート監視ソリューション アクセラレータの機能について知る](quickstart-remote-monitoring-deploy.md)
-* [予測メンテナンスのソリューション アクセラレータの概要](./iot-accelerators-predictive-walkthrough.md)
 * [接続済みファクトリ ソリューション アクセラレータの展開](quickstart-connected-factory-deploy.md)
 * [徹底的な IoT セキュリティ](../iot-fundamentals/iot-security-ground-up.md)

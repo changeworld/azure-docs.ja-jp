@@ -1,24 +1,30 @@
 ---
 title: Azure Functions の概要
-description: スケーラブルなサーバーレス アプリの作成に Azure Functions を活用する方法について説明します。
+description: 堅牢なサーバーレス アプリの作成に Azure Functions を活用する方法について説明します。
 author: craigshoemaker
 ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperfq2
-ms.openlocfilehash: 514f2e9a82a50f95f9c054c6a54e7b5af3c0af15
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 269d911c13cbc59a054c5548e106780d630c8e2b
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96167779"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620871"
 ---
 # <a name="introduction-to-azure-functions"></a>Azure Functions の概要
 
+Azure Functions は、記述するコードと管理するインフラストラクチャを減らし、コストを節約できるサーバーレス ソリューションです。 クラウド インフラストラクチャによって、アプリケーションの実行を維持するために必要な最新のサーバーがすべて提供されるので、サーバーのデプロイや管理について心配する必要はありません。
+
+ユーザーは最も重要なコードに集中でき、残りの部分は Azure Functions が処理します。<br /><br />
+
+> [!VIDEO https://www.youtube.com/embed/8-jz5f_JyEQ]
+
 通常、システムは、一連の重大なイベントに対処できるように構築されます。 Web API の構築、データベースの変更への対応、IoT データ ストリームの処理、メッセージ キューの管理など、その目的が何であれ、どのアプリケーションにも、そうしたイベントが発生したときに、なんらかのコードを実行する手段が必要です。
 
-この要件を満たすために、Azure Functions は、"コンピューティングをオンデマンド" で、なおかつ 2 つの有効な方法で提供します。
+このニーズを満たすために、Azure Functions は、2 つの有効な方法で "コンピューティングをオンデマンドで" 提供します。
 
 まず、Azure Functions では、利用しやすいコード ブロックの中にシステムのロジックを実装することができます。 これらのコード ブロックを "関数" といいます。 重大なイベントに対応しなければならないときは、各種の関数をいつでも実行できます。
 
@@ -43,7 +49,7 @@ ms.locfileid: "96167779"
 | **スケジュールされたタスクを実行する** | [設定した時刻](./functions-bindings-timer.md)にコードを実行します |
 | **信頼性の高いメッセージ キュー システムを作成する** | [Queue Storage](./functions-bindings-storage-queue.md)、[Service Bus](./functions-bindings-service-bus.md)、[Event Hubs](./functions-bindings-event-hubs.md) のいずれかを使用してメッセージ キューを処理します |
 | **IoT データ ストリームを分析する** | [IoT デバイスからデータ](./functions-bindings-event-iot.md)を収集して処理します |
-| **データをリアルタイムで処理する** | [Functions と Signal R](./functions-bindings-signalr-service.md) を使用して、その時点のデータに対応します |
+| **データをリアルタイムで処理する** | [Functions と SignalR](./functions-bindings-signalr-service.md) を使用して、その時点のデータに対応します |
 
 実際に関数を作成するときは、次のオプションとリソースを利用できます。
 

@@ -1,22 +1,27 @@
 ---
-title: リアルタイムの公共輸送データを要求する | Microsoft Azure Maps
-description: 停留所への到着など、リアルタイムの公共輸送データを要求する方法について説明します。 この目的のために Azure Maps Mobility Service を使用する方法について参照してください。
+title: Microsoft Azure Maps Mobility Service (プレビュー) を使用してリアルタイムの公共輸送データを要求する
+description: 停留所への到着など、リアルタイムの公共輸送データを要求する方法について説明します。 この目的のために Azure Maps Mobility Service (プレビュー) を使用する方法について参照してください。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 09/06/2019
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: e6f6d0738cb1673b752e35761a112f2ca22a409e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d3e3dc4b0e3bc64a38856da8344583b744ea62b6
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895717"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906048"
 ---
-# <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-service"></a>Azure Maps Mobility Service を使用してリアルタイムの公共輸送データを要求する
+# <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-services-preview"></a>Azure Maps Mobility Service (プレビュー) を使用してリアルタイムの公共輸送データを要求する 
+
+> [!IMPORTANT]
+> Azure Maps Mobility Service は現在、パブリック プレビュー段階です。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
 
 この記事では、Azure Maps [Mobility Service](/rest/api/maps/mobility) を使用してリアルタイムの公共輸送データを要求する方法を説明します。
 
@@ -30,7 +35,7 @@ Azure Maps で公共輸送 API を呼び出すには、最初に Azure Maps ア�
 
 ## <a name="request-real-time-arrivals-for-a-stop"></a>停留所のリアルタイムの到着を要求する
 
-特定の公共輸送機関の停留所にリアルタイムの到着データを要求するには、Azure Maps [Mobility Service](/rest/api/maps/mobility) の [Real-time Arrivals API](/rest/api/maps/mobility/getrealtimearrivalspreview) に要求を送信する必要があります。 要求を完了するには **metroID** と **stopID** が必要です。 これらのパラメーターを要求する方法の詳細については、[公共輸送機関のルートの要求](./how-to-request-transit-data.md)方法に関するガイドを参照してください。
+特定の公共輸送機関の停留所にリアルタイムの到着データを要求するには、Azure Maps [Mobility Service (プレビュー)](/rest/api/maps/mobility) の [Real-time Arrivals API](/rest/api/maps/mobility/getrealtimearrivalspreview) に要求を送信する必要があります。 要求を完了するには **metroID** と **stopID** が必要です。 これらのパラメーターを要求する方法の詳細については、[公共輸送機関のルートの要求](./how-to-request-transit-data.md)方法に関するガイドを参照してください。
 
 地下鉄 ID として "522" を使用しましょう。これは、"Seattle–Tacoma–Bellevue, WA" 地域の地下鉄 ID です。 停留所 ID として "522---2060603" を使用してください。このバス停は "Ne 24th St & 162nd Ave Ne, Bellevue WA" にあります。 この停留所での次のすべてのライブ到着について、次の 5 つのリアルタイム到着データを要求するには、次の手順を行います。
 
@@ -113,12 +118,12 @@ Azure Maps で公共輸送 API を呼び出すには、最初に Azure Maps ア�
 
 ## <a name="next-steps"></a>次のステップ
 
-Mobility Service を使用して輸送データを要求する方法について説明します。
+Mobility Service (プレビュー) を使用して輸送データを要求する方法について説明します。
 
 > [!div class="nextstepaction"]
 > [輸送データを要求する方法](how-to-request-transit-data.md)
 
-Azure Maps Mobility Service API のドキュメントを確認します。
+Azure Maps Mobility Service (プレビュー) API のドキュメントを確認します。
 
 > [!div class="nextstepaction"]
 > [Mobility Service API ドキュメント](/rest/api/maps/mobility)

@@ -1,18 +1,18 @@
 ---
 title: テンプレートを使用した条件付きデプロイ
-description: Azure Resource Manager テンプレート内のリソースを条件付きでデプロイする方法について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) 内のリソースを条件付きでデプロイする方法について説明します。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: effa7fe6ee1393e44a124bc087609da5d4898210
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a31bd1fbf755046f331542b4d5952b27a793360
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84259322"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905997"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>ARM テンプレートでの条件付きデプロイ
 
-場合によっては、Azure Resource Manager (ARM) テンプレートでリソースをデプロイすることが必要となります。 リソースをデプロイするかどうかを指定するには、`condition` 要素を使用します。 この要素の値は、true または false に解決されます。 値が true の場合、リソースが作成されます。 値が false の場合、リソースは作成されません。 この要素の値は、リソース全体にのみ適用できます。
+場合によっては、Azure Resource Manager テンプレート (ARM テンプレート) でリソースをデプロイすることが必要となります。 リソースをデプロイするかどうかを指定するには、`condition` 要素を使用します。 この要素の値は、true または false に解決されます。 値が true の場合、リソースが作成されます。 値が false の場合、リソースは作成されません。 この要素の値は、リソース全体にのみ適用できます。
 
 > [!NOTE]
 > 条件付きのデプロイは[子リソース](child-resource-name-type.md)にはカスケードされません。 リソースとその子リソースを条件付きでデプロイする場合は、リソースの種類ごとに同じ条件を適用する必要があります。
@@ -86,7 +86,7 @@ ms.locfileid: "84259322"
 
 ## <a name="complete-mode"></a>完全モード
 
-[完全モード](deployment-modes.md)を使用したテンプレートをデプロイする場合で、なおかつ condition が false と評価されるためにリソースがデプロイされない場合、テンプレートをデプロイするために使用する REST API のバージョンによって結果が異なります。 2019-05-10 より前のバージョンを使用する場合、リソースは**削除されません**。 2019-05-10 以降では、リソースは**削除されます**。 最新バージョンの Azure PowerShell および Azure CLI では、condition が false の場合、リソースが削除されます。
+[完全モード](deployment-modes.md)を使用したテンプレートをデプロイする場合で、なおかつ condition が false と評価されるためにリソースがデプロイされない場合、テンプレートをデプロイするために使用する REST API のバージョンによって結果が異なります。 2019-05-10 より前のバージョンを使用する場合、リソースは **削除されません**。 2019-05-10 以降では、リソースは **削除されます**。 最新バージョンの Azure PowerShell および Azure CLI では、condition が false の場合、リソースが削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 

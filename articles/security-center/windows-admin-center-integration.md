@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: 36f519ce41ccfbfb48ca696ed2a61c6131a75998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca3dd410474af0a42a3cd5b4217c3bba90b8ff1a
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906337"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511986"
 ---
 # <a name="protect-windows-admin-center-resources-with-security-center"></a>Security Center を使用した Windows Admin Center リソースの保護
 
@@ -65,6 +65,6 @@ Azure Security Center から:
 
 * すべての Windows Admin Center サーバーのセキュリティに関する推奨事項を表示するには、[資産インベントリ](asset-inventory.md)を開き、調査するマシンの種類でフィルター処理します。 **[VM とコンピューター]** タブを選択します。
 
-* すべての Windows Admin Center サーバーのセキュリティ アラートを表示するには、 **[セキュリティ アラート]** を開きます。 **[フィルター]** をクリックし、[Azure 以外] **のみ**が選択されていることを確認します。
+* すべての Windows Admin Center サーバーのセキュリティ アラートを表示するには、 **[セキュリティ アラート]** を開きます。 **[フィルター]** をクリックし、[Azure 以外] **のみ** が選択されていることを確認します。
 
     :::image type="content" source="./media/windows-admin-center-integration/filtering-alerts-by-environment.png" alt-text="Windows Admin Center で管理されているサーバーのセキュリティ アラートをフィルター処理する" lightbox="./media/windows-admin-center-integration/filtering-alerts-by-environment.png":::

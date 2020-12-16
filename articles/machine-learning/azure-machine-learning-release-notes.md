@@ -9,18 +9,82 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 03825e0f091df01b98355dd6789eb5c9cb2897b0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4998469fa353fef9e8a91d078349150d9f739ac2
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444535"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779415"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
 この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の [**メインの SDK for Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) のリファレンス ページを参照してください。
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
+
+## <a name="2020-12-07"></a>2020-12-07
+
+### <a name="azure-machine-learning-sdk-for-python-v1190"></a>Azure Machine Learning SDK for Python v1.19.0
++ **バグの修正と機能強化**
+  + **azureml-automl-core**
+    + AutoMLStep にテスト データの実験的なサポートを追加しました。
+    + テスト セット インジェスト機能の最初のコア実装を追加しました。
+    + sklearn.externals.joblib の参照を移動して、joblib に直接依存するようにしました。
+    + "image-instance-segmentation" という新しい AutoML タスクの種類を導入します。
+  + **azureml-automl-runtime**
+    + テスト セット インジェスト機能の最初のコア実装を追加しました。
+    + テキスト列にあるすべての文字列の長さが厳密に 1 文字の場合、TfIdf ワードグラム フィーチャライザーは機能しません。そのトークナイザーでは 2 文字未満の文字列が無視されるためです。 現在のコード変更により、このユース ケースを AutoML で処理できるようになります。
+    + "image-instance-segmentation" という新しい AutoML タスクの種類を導入します。
+  + **azureml-contrib-automl-dnn-nlp**
+    + 新しい dnn-nlp パッケージの最初の PR
+  + **azureml-contrib-automl-dnn-vision**
+    + "image-instance-segmentation" という新しい AutoML タスクの種類を導入します。
+  + **azureml-contrib-automl-pipeline-steps**
+    + この新しいパッケージは、多くのモデルのトレーニング/推論シナリオに必要な手順を作成する役割を担います。 また、トレーニング/推論コードを azureml.train.automl.runtime パッケージに移動します。これにより、今後の修正プログラムは、キュレーション環境リリースを通じて自動的に使用できるようになります。
+  + **azureml-contrib-dataset**
+    + "image-instance-segmentation" という新しい AutoML タスクの種類を導入します。
+  + **azureml-core**
+    + テスト セット インジェスト機能の最初のコア実装を追加しました。
+    + azureml-core パッケージのドキュメントの xref 警告を修正しています
+    + SDK のコマンド サポート機能のドキュメント文字列の修正
+    + RunConfiguration にコマンド プロパティを追加しています。 この機能を使用すると、ユーザーは AzureML SDK を介してコンピューティングで実際のコマンドまたは実行可能ファイルを実行できます。
+    + ユーザーは、空の実験を、その実験の ID を指定して削除できます。
+  + **azureml-dataprep**
+    + Scala 2.12 で構築された Spark のデータセットのサポートを追加しました。 これは既存の 2.11 のサポートに追加されます。
+  + **azureml-mlflow**
+    + AzureML-MLflow によって、送信された実行が早期に終了しないようにする保護がリモート スクリプトに追加されます。
+  + **azureml-pipeline-core**
+    + UI で作成されたパイプライン エンドポイントの既定のパイプラインを設定するときのバグを修正しました
+  + **azureml-pipeline-steps**
+    + AutoMLStep にテスト データの実験的なサポートを追加しました。
+  + **azureml-tensorboard**
+    + azureml-core パッケージのドキュメントの xref 警告を修正しています
+  + **azureml-train-automl-client**
+    + AutoMLStep にテスト データの実験的なサポートを追加しました。
+    + テスト セット インジェスト機能の最初のコア実装を追加しました。
+    + "image-instance-segmentation" という新しい AutoML タスクの種類を導入します。
+  + **azureml-train-automl-runtime**
+    + テスト セット インジェスト機能の最初のコア実装を追加しました。
+    + validation_size 設定を使用して AutoML モデルがトレーニングされている場合の、最適な AutoML モデルの生の説明の計算を修正します。
+    + sklearn.externals.joblib の参照を移動して、joblib に直接依存するようにしました。
+  + **azureml-train-core**
+    + HyperDriveRun.get_children_sorted_by_primary_metric() はより高速に完了するようになりました
+    + HyperDrive SDK でのエラー処理が改善されました。
+    +  実験の実行を構成するために ScriptRunConfig を使用することを優先して、すべての Estimator クラスが非推奨になりました。 非推奨のクラスは次のとおりです。
+        + MMLBaseEstimator
+        + エスティメーター
+        + PyTorch 
+        + TensorFlow 
+        + Chainer 
+        + SKLearn
+    + PyTorchConfiguration を ScriptRunConfig と共に使用することを優先して、Estimator クラスの有効な入力型として Nccl と Gloo を使用することは非推奨になりました。
+    + MpiConfiguration を ScriptRunConfig と共に使用することを優先して、Estimator クラスの有効な入力型として Mpi を使用することは非推奨になりました。
+    + runconfiguration にコマンド プロパティを追加しています。 この機能を使用すると、ユーザーは AzureML SDK を介してコンピューティングで実際のコマンドまたは実行可能ファイルを実行できます。
+
+    +  実験の実行を構成するために ScriptRunConfig を使用することを優先して、すべての Estimator クラスが非推奨になりました。 非推奨のクラスは次のとおりです。+ MMLBaseEstimator + Estimator + PyTorch + TensorFlow + Chainer + SKLearn
+    + PyTorchConfiguration を ScriptRunConfig と共に使用することを優先して、Estimator クラスの有効な入力の型として Nccl と Gloo を使用することは非推奨になりました。 
+    + MpiConfiguration を ScriptRunConfig と共に使用することを優先して、Estimator クラスの有効な入力の型として Mpi を使用することは非推奨になりました。
+
 
 
 ## <a name="2020-11-09"></a>2020-11-09
@@ -47,12 +111,6 @@ ms.locfileid: "96444535"
     + リンクされたサービス API は改善されています。 リソース ID を指定する代わりに、構成で定義されている sub_id、rg、name の 3 つの個別のパラメーターがあります。
     + 顧客がトークンの破損の問題を自己解決できるようにするために、ワークスペース トークンの同期をパブリック メソッドにできるようにします。
     + この変更により、空の文字列を script_param の値として使用できるようになります。
-  + **azureml-pipeline-core**
-    + SynapseCompute 型と SynapseSparkStep をサポートする SDK。 顧客は synapse spark プールで実験とパイプラインを実行できます。
-  + **azureml-pipeline-steps**
-    + SynapseCompute 型と SynapseSparkStep をサポートする SDK。 顧客は synapse spark プールで実験とパイプラインを実行できます。
-  + **azureml-synapse**
-    + Synapse マジックと SparkMonitor を追加して、ユーザーが Synapse ジョブを送信し、ノートブックでジョブの進行状況を確認できるようにします。
   + **azureml-train-automl-client**
     +  ガウス ノイズによる埋め込みを可能にすることで、短い時系列の処理が改善されました。
   + **azureml-train-automl-runtime**
@@ -90,7 +148,6 @@ ms.locfileid: "96444535"
     + モデルを再調整した後、VotingRegressor の予測が不正確になるおそれがある問題を修正しました。
   + **azureml-core**
     + AKS のデプロイ構成と Azure Kubernetes Service の概念の間の関係について、詳細情報を追加しました。
-    + お客様は、リンクされたサービス SDK を使用して、Synapse ワークスペースを AML ワークスペースにリンクすることができます。 CRUD がサポートされています。
     + 環境クライアント ラベルがサポートされています。 ユーザーは、環境にラベルを付け、ラベルを使用してそれらを参照することができます。
   + **azureml-dataprep**
     + 現在サポートされていない Spark を Scala 2.12 と共に使用する場合のエラー メッセージを改善しました。

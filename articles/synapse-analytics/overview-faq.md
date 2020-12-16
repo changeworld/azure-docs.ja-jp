@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 838276c47085a3c7ad0f7c0a35a2578b13eb5026
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: a427c77ec23bb933f96d8aec54ca33169aee84d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511269"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576028"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure Synapse Analytics についてよく寄せられる質問
 
@@ -22,7 +22,7 @@ ms.locfileid: "96511269"
 
 ## <a name="general"></a>全般
 
-### <a name="q-what-rbac-roles-exist-and-how-do-i-use-them-to-secure-a-synapse-workspace"></a>Q:RBAC ロールにはどのようなものがありますか。また、それらをどのように使用すれば Synapse ワークスペースをセキュリティで保護できますか。
+### <a name="q-how-can-i-use-rbac-roles-to-secure-my-workspace"></a>Q:RBAC ロールを使用してワークスペースをセキュリティで保護するにはどうすればよいですか。
 
 A:Azure Synapse では、複数のロールとスコープが導入されています。これらを割り当てることで、ワークスペースを容易にセキュリティで保護できます。
 
@@ -36,8 +36,8 @@ Synapse RBAC ロール:
 * Synapse コンピューティング オペレーター (プレビュー)
 * Synapse 資格情報ユーザー (プレビュー)
 
-Synapse RBAC のスコープ:
-* ワークスペース 
+Synapse ワークスペースをセキュリティで保護するには、RBAC ロールを次の RBAC スコープに割り当てます。
+* Workspaces
 * Spark プール
 * 統合ランタイム
 * リンクされたサービス
@@ -45,7 +45,7 @@ Synapse RBAC のスコープ:
 
 さらに、専用 SQL プールでは、使い慣れたすべてのセキュリティ機能を使用できます。
 
-### <a name="q-how-can-i-cost-control-for-the-capabilities-inside-a-synapse-workspace-such-as-dedicated-sql-pools-serverless-spark-pools-and-serverless-sql-pools"></a>Q:専用 SQL プール、サーバーレス Spark プール、サーバーレス SQL プールなど、Synapse ワークスペース内の機能のコストを管理するにはどうすればよいですか。
+### <a name="q-how-do-i-control-cont-dedicated-sql-pools-serverless-sql-pools-and-serverless-spark-pools"></a>Q:専用 SQL プール、サーバーレス SQL プール、サーバーレス Spark プールのコストを管理するにはどうすればよいですか。
 
 A:Azure Synapse では、出発点として、Azure サブスクリプション レベルで利用可能な組み込みのコスト分析とコスト アラートを使用します。
 
@@ -83,7 +83,7 @@ A: 現時点ではありません。
 
 ### <a name="q-how-do-i-migrate-existing-pipelines-from-azure-data-factory-to-an-azure-synapse-workspace"></a>Q:既存のパイプラインを Azure Data Factory から Azure Synapse ワークスペースに移行するにはどうすればよいですか。
 
-A:現在は、Azure Data Factory のパイプラインおよび関連する成果物を手動で再作成する必要があります。 
+A:現時点では、元のパイプラインから JSON をエクスポートし、それを Synapse ワークスペースにインポートして、Azure Data Factory のパイプラインおよび関連する成果物を手動で再作成する必要があります。
 
 ## <a name="apache-spark"></a>Apache Spark
 

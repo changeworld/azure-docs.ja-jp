@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 61ee0b769664d1f574177e27b5b1fb10e9845035
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a67a721b8d94112347282e1cd9be4d43f4ac85da
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463096"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744637"
 ---
 # <a name="configure-a-managed-application-plan"></a>マネージド アプリケーション プランを構成する
 
@@ -188,4 +188,4 @@ USD (USD = 米国ドル) で設定された価格は、保存時の最新の為�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure アプリケーション オファーをテストして発行する方法](create-new-azure-apps-offer-test-publish.md)。
-- Microsoft との共同販売や CSP プログラムを通じた再販によって、[Azure アプリケーション オファーを市場に投入する方法](create-new-azure-apps-offer-marketing.md)について学習します。
+- Microsoft との共同販売、および CSP プログラムを通じた再販によって、[Azure アプリケーション オファーを販売する方法](create-new-azure-apps-offer-marketing.md)について学習します。

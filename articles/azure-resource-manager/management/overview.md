@@ -4,18 +4,18 @@ description: Azure Resource Manager を使用して、Azure のリソースを�
 ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperfq1
-ms.openlocfilehash: f78b6015846253d79020752522c10af96839a854
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 317d7cae9c0febcc99831b20525b9d9d2cc96651
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372274"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903192"
 ---
 # <a name="what-is-azure-resource-manager"></a>Azure Resource Manager とは
 
 Azure Resource Manager は、Azure のデプロイおよび管理サービスです。 お使いの Azure アカウント内のリソースを作成、更新、および削除できる管理レイヤーを提供します。 アクセス制御、ロック、タグなどの管理機能を使用して、デプロイ後にリソースを保護および整理します。
 
-Azure Resource Manager テンプレートについては、[テンプレートのデプロイの概要](../templates/overview.md)に関するページを参照してください。
+Azure Resource Manager テンプレート (ARM テンプレート) については、[テンプレートのデプロイの概要](../templates/overview.md)に関するページを参照してください。
 
 ## <a name="consistent-management-layer"></a>一貫性のある管理レイヤー
 
@@ -95,7 +95,7 @@ Azure には、[管理グループ](../../governance/management-groups/overview.
 
 * リソース グループの外部に存在するリソースもある。 これらのリソースは、[サブスクリプション](../templates/deploy-to-subscription.md)、[管理グループ](../templates/deploy-to-management-group.md)、または[テナント](../templates/deploy-to-tenant.md)にデプロイされます。 これらのスコープでは、特定のリソースの種類のみがサポートされます。
 
-* リソース グループを作成するには、[ポータル](manage-resource-groups-portal.md#create-resource-groups)、[PowerShell](manage-resource-groups-powershell.md#create-resource-groups)、[Azure CLI](manage-resource-groups-cli.md#create-resource-groups)、または [Azure Resource Manager (ARM) テンプレート](../templates/deploy-to-subscription.md#resource-groups)を使用できます。
+* リソース グループを作成するには、[ポータル](manage-resource-groups-portal.md#create-resource-groups)、[PowerShell](manage-resource-groups-powershell.md#create-resource-groups)、[Azure CLI](manage-resource-groups-cli.md#create-resource-groups)、または [ARM テンプレート](../templates/deploy-to-subscription.md#resource-groups)を使用できます。
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Azure Resource Manager の回復性
 

@@ -3,18 +3,18 @@ title: ラスター マップ上にカスタム データをレンダリング�
 description: ラスター マップにプッシュピン、ラベル、幾何学図形を追加する方法について説明します。 この目的のために Azure Maps で静的画像サービスを使用する方法を確認してください。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/23/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 88afb380f1aabf0c91e9d5abb0430972743eb6c2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 5c70835c11bafb3fd06645ba51099b33d1eb6149
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895751"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906082"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>ラスター マップ上にカスタム データをレンダリングする
 
@@ -223,4 +223,4 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
 
 
 * [Azure Maps Get Map Image API](/rest/api/maps/render/getmapimage) のドキュメントを確認します。
-* Azure Maps Data Service の詳細については、[サービスのドキュメント](/rest/api/maps/data)を参照してください。
+* Azure Maps Data Service (プレビュー) の詳細については、[サービス ドキュメント](/rest/api/maps/data)を参照してください。

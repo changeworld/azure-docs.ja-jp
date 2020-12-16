@@ -1,18 +1,18 @@
 ---
 title: 変数の複数のインスタンスを定義する
-description: 変数を作成するときに、Azure Resource Manager テンプレートで copy 操作を使用して、複数回、反復処理を行います。
+description: 変数を作成するときに、Azure Resource Manager テンプレート (ARM テンプレート) で copy 操作を使用して、複数回、反復処理を行います。
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: aca69dd858c7a940592e74123b97b8d364d9e11c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8acd85659b843cb482e1ccc61e28da03431db1b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84678445"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905895"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>ARM テンプレートでの変数の反復処理
 
-この記事では、Azure Resource Manager (ARM) テンプレートで 1 つの変数に対して複数の値を作成する方法について説明します。 テンプレートの変数セクションに **copy** 要素を追加することにより、デプロイ時に変数の項目数を動的に設定できます。 テンプレートの構文を繰り返す必要もありません。
+この記事では、Azure Resource Manager テンプレート (ARM テンプレート) で 1 つの変数に対して複数の値を作成する方法について説明します。 テンプレートの変数セクションに `copy` 要素を追加することにより、デプロイ時に変数の項目数を動的に設定できます。 テンプレートの構文を繰り返す必要もありません。
 
 [リソース](copy-resources.md)、[リソース内のプロパティ](copy-properties.md)、および[出力](copy-outputs.md)でもコピーを使用できます。
 
@@ -30,9 +30,9 @@ ms.locfileid: "84678445"
 ]
 ```
 
-**name** プロパティは、ループを識別する任意の値です。 **count** プロパティは、変数に必要な反復回数を指定します。
+`name` プロパティは、ループを識別する任意の値です。 `count` プロパティは、変数に必要な反復回数を指定します。
 
-**input** プロパティは、繰り返すプロパティを指定します。 **input** プロパティの値から構築される要素の配列を作成します。 それは、1 つのプロパティ (文字列など) にすることも、複数のプロパティを持つオブジェクトにすることもできます。
+`input` プロパティは、繰り返すプロパティを指定します。 `input` プロパティの値から構築された要素の配列を作成します。 それは、1 つのプロパティ (文字列など) にすることも、複数のプロパティを持つオブジェクトにすることもできます。
 
 ## <a name="copy-limits"></a>コピー制限
 
@@ -92,7 +92,7 @@ count は負の数値にすることはできません。 Azure CLI、PowerShell
 ]
 ```
 
-次の例では、name、diskSizeGB、および diskIndex という 3 つのプロパティを持つオブジェクトの配列を作成する方法を示します。
+次の例では、`name`、`diskSizeGB`、および `diskIndex` という 3 つのプロパティを持つオブジェクトの配列を作成する方法を示します。
 
 ```json
 {
@@ -160,10 +160,10 @@ count は負の数値にすることはできません。 Azure CLI、PowerShell
 ```
 
 > [!NOTE]
-> 変数の反復処理では、オフセット引数がサポートされます。 オフセットは、copyIndex('diskNames', 1) など、反復処理の名前の後に指定する必要があります。 オフセット値を指定しない場合、最初のインスタンスでは、既定値は 0 になります。
+> 変数の反復処理では、オフセット引数がサポートされます。 オフセットは、`copyIndex('diskNames', 1)` など、反復処理の名前の後に指定する必要があります。 オフセット値を指定しない場合、最初のインスタンスでは、既定値は 0 になります。
 >
 
-また、変数内で copy 要素を使用することもできます。 次の例は、配列を値の 1 つとして持つオブジェクトを作成します。
+また、変数内で `copy` 要素を使用することもできます。 次の例は、配列を値の 1 つとして持つオブジェクトを作成します。
 
 ```json
 {
@@ -236,7 +236,7 @@ count は負の数値にすることはできません。 Azure CLI、PowerShell
 }
 ```
 
-次の例では、変数で copy を使用できるさまざまな方法を示します。
+次の例では、変数で `copy` を使用できるさまざまな方法を示します。
 
 ```json
 {
@@ -321,11 +321,10 @@ count は負の数値にすることはできません。 Azure CLI、PowerShell
 
 ## <a name="next-steps"></a>次のステップ
 
-* チュートリアルを実行するには、[チュートリアル: ARM テンプレートを使用した複数のリソース インスタンスの作成](template-tutorial-create-multiple-instances.md)に関するページを参照してください。
+* チュートリアルについては、「[チュートリアル:ARM テンプレートを使用した複数のリソース インスタンスの作成](template-tutorial-create-multiple-instances.md)」を参照してください。
 * copy 要素のその他の使用方法については、以下を参照してください。
   * [ARM テンプレートでのリソースの反復処理](copy-resources.md)
   * [ARM テンプレートでのプロパティの反復処理](copy-properties.md)
   * [ARM テンプレートでの出力の反復処理](copy-outputs.md)
-* テンプレートのセクションの詳細については、[ARM テンプレートの作成](template-syntax.md)に関する記事を参照してください。
-* テンプレートをデプロイする方法については、[ARM テンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)に関する記事を参照してください。
-
+* テンプレートのセクションの詳細については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* テンプレートをデプロイする方法の詳細については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。

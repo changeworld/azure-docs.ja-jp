@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
-ms.openlocfilehash: 09a6920e0d3a50da1bdacbf2bc7a80396c885897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0d7310c4863c8dd431b991a2c249f2d8e257aeb
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61448562"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852355"
 ---
 # <a name="tutorial-create-and-run-an-iot-device-simulation"></a>チュートリアル: IoT デバイス シミュレーションを作成して実行する
 
@@ -34,15 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルを実行するには、Azure サブスクリプションにデバイス シミュレーションのインスタンスがデプロイされている必要があります。
 
-デバイス シミュレーションをまだデプロイしていない場合は、[Azure での IoT デバイス シミュレーションのデプロイと実行](quickstart-device-simulation-deploy.md)に関するクイック スタートを完了する必要があります。
-
-## <a name="open-device-simulation"></a>デバイス シミュレーションを開く
-
-ご利用のブラウザーでデバイス シミュレーションを実行するには、まず、[Microsoft Azure IoT Solution Accelerators](https://www.azureiotsolutions.com) に移動します。 
-
-Azure サブスクリプションの資格情報を使用してサインインするように求められる場合があります。
-
-次に、[クイック スタート](quickstart-device-simulation-deploy.md)でデプロイしたデバイス シミュレーションのタイル上で **[起動]** をクリックします。
+まだデバイス シミュレーションをデプロイしていない場合は、GitHub の[デバイス シミュレーションのデプロイ](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)に関する記事を参照してください。
 
 ## <a name="view-simulations"></a>シミュレーションを表示する
 
@@ -56,9 +48,9 @@ Azure サブスクリプションの資格情報を使用してサインイン�
 
 シミュレーションは、1 つまたは複数のデバイス モデルで構成されます。 デバイス モデルでは、シミュレートするデバイスの動作、テレメトリ、およびメッセージ形式を定義します。
 
-デバイス モデルを追加するには、 **[+ Add a device type]\(+ デバイスの種類の追加\)** をクリックし、一覧でデバイス モデルを選択します。 シミュレーションには、複数のデバイス モデルを指定することができます。 各デバイス モデルに、異なるデバイス数とメッセージ頻度を設定できます。
+デバイス モデルを追加するには、**[+ Add a device type]\(+ デバイスの種類の追加\)** をクリックし、一覧でデバイス モデルを選択します。 シミュレーションには、複数のデバイス モデルを指定することができます。 各デバイス モデルに、異なるデバイス数とメッセージ頻度を設定できます。
 
-新しいシミュレーションのフォームの設定を完了したら、 **[シミュレーションの開始]** をクリックしてシミュレーションを開始します。
+新しいシミュレーションのフォームの設定を完了したら、**[シミュレーションの開始]** をクリックしてシミュレーションを開始します。
 
 シミュレートされるデバイスの数によっては、シミュレーションの構成と開始に数分かかる場合があります。
 

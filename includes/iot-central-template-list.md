@@ -8,14 +8,16 @@ ms.topic: include
 ms.date: 02/11/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 182296793b46f1900744bf629625906b2d6e9b2a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 08e4fd82bea6bb1b510b127db8dee7803ee112f5
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377597"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96912228"
 ---
 **アプリケーション テンプレート**
+
+**IoT Central アプリケーション テンプレート**
 
 | Template                 | 名前        | 説明 |
 | ------------------------ | ----------- | ----------- |
@@ -33,3 +35,7 @@ ms.locfileid: "91377597"
 | iotc-quality             | 水質の監視 | 水質をデジタルに監視するアプリケーションを作成します。 |
 | iotc-store               | ストア内分析 - レジ | 店舗内の清算の流れを監視して管理するアプリケーションを作成します。 |
 | iotc-waste               | 接続された廃棄物管理 | ゴミ箱を監視し、現場作業員を派遣するアプリケーションを作成します。 |
+
+**カスタム アプリケーション テンプレート**
+
+独自のアプリケーション テンプレートを作成した場合は、それを使用して新しいアプリケーションを作成できます。 アプリケーション テンプレートの入力を求められたら、アプリの [[アプリケーション テンプレートのエクスポート]](../articles/iot-central/core/howto-use-app-templates.md#create-an-application-template) セクションにある、エクスポートされたアプリの URL の共有可能なリンクに表示されるアプリ ID を入力します。 

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9cf503f374cd2fd1ca04aad6650b2c07abebbc46
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a52188dc5058dbc74d3b03fba860b98540cd4a41
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519355"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608505"
 ---
 # <a name="communication-services-notifications"></a>Communication Services の通知
 
@@ -48,13 +48,10 @@ Communication Services はパススルー サービスとして Azure Notificati
 Notification Hubs を使用してクライアント デバイスにプッシュ通知を配信するには、Communication Services リソースと同じサブスクリプション内に[通知ハブを作成](../../notification-hubs/create-notification-hub-portal.md)します。 Microsoft Azure Notification Hubs は、使用するプラットフォーム通知サービス用に構成する必要があります。 Notification Hubs からのプッシュ通知をクライアント アプリで取得するには、[Notification Hubs の使用](../../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)に関する記事を参照し、ページの上部にあるドロップダウン リストでターゲット クライアント プラットフォームを選択します。
 
 > [!NOTE]
-> 現在、APN および FCM プラットフォームがサポートされています。
+> 現在、APN および FCM プラットフォームがサポートされています。  
+APNs プラットフォームは、トークン認証モードで構成する必要があります。 現在、証明書認証モードはサポートされません。 
 
 通知ハブを構成したら、Azure Resource Manager クライアントまたは Azure portal を使用してハブの接続文字列を指定することにより、Communication Services リソースにそれを関連付けることができます。 接続文字列には "送信" アクセス許可が含まれている必要があります。 ハブ専用の "送信" のみのアクセス許可を持つ別のアクセス ポリシーを作成することをお勧めします。 [Notification Hubs のセキュリティとアクセスのポリシー](../../notification-hubs/notification-hubs-push-notification-security.md)に関する詳細を確認してください
-
-> [!IMPORTANT]
-> これはトークン認証モードにのみ当てはまります。 現在、証明書認証モードはサポートされません。  
-APNS VOIP の通知を有効にするには、通知ハブを構成する際に、バンドル ID の値を、`.voip` というサフィックスのアプリケーション バンドル ID に設定する必要があります。 詳細については、「[Notification Hubs 経由で APNS VOIP を使用する](../../notification-hubs/voip-apns.md)」を参照してください。
 
 #### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>Azure Resource Manager クライアントを使用して通知ハブを構成する
 

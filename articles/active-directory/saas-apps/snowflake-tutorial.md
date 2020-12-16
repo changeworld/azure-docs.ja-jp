@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 26ca1fffb3932493dc7182de1b520f8c0a17d59c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 3beb4e7831ce17a46f6daaa1258f284a0caefe8e
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514845"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855135"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>チュートリアル: Azure Active Directory と Snowflake の統合
 
@@ -27,7 +27,7 @@ Snowflake と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで Snowflake に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,14 +41,14 @@ Snowflake と Azure AD の統合を構成するには、次のものが必要で
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Snowflake では、 **SP と IDP** によって開始される SSO がサポートされます
-* Snowflake では、[自動化されたユーザー プロビジョニングとプロビジョニング解除](snowflake-provisioning-tutorial.md) (推奨) がサポートされます
+- Snowflake では、**SP と IDP** によって開始される SSO がサポートされます
+- Snowflake では、[自動化されたユーザー プロビジョニングとプロビジョニング解除](snowflake-provisioning-tutorial.md) (推奨) がサポートされます
 
 ## <a name="adding-snowflake-from-the-gallery"></a>ギャラリーからの Snowflake の追加
 
 Azure AD への Snowflake の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Snowflake を追加する必要があります。
 
-**ギャラリーから Snowflake を追加するには、次の手順に従います。**
+**ギャラリーから Snowflake を追加する:**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
@@ -62,13 +62,13 @@ Azure AD への Snowflake の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Snowflake** 」と入力し、結果パネルで **[Snowflake]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Snowflake**」と入力し、結果パネルで **[Snowflake]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Snowflake](common/search-new-app.png)
+     ![結果一覧の Snowflake](common/search-new-app-snowflake.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Snowflake で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Snowflake で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Snowflake 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Snowflake で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -98,7 +98,7 @@ Snowflake で Azure AD シングル サインオンを構成するには、次�
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、 **IDP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
+4. **[基本的な SAML 構成]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
     ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
@@ -173,9 +173,9 @@ Snowflake で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -190,7 +190,7 @@ Snowflake で Azure AD シングル サインオンを構成するには、次�
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、「 **Snowflake** 」と入力して選択します。
+2. アプリケーションの一覧で、「**Snowflake**」と入力して選択します。
 
     ![アプリケーションの一覧の Snowflake のリンク](common/all-applications.png)
 

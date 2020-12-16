@@ -9,12 +9,12 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 96e10bc19d59b60824a908c67816a21ca80326d0
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4d6e02852dcd2d30a764417a4b5e0e012a1d2ab5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832808"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571098"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Azure Communication Services に対する認証
 
@@ -58,9 +58,9 @@ Authorization: "HMAC-SHA256 SignedHeaders=date;host;x-ms-content-sha256&Signatur
     URLPathAndQuery + "\n"
     DateHeaderValue + ";" + HostHeaderValue + ";" + ContentHashHeaderValue
     ```
-1. 前の手順で作成した UTF-8 エンコード文字列の HMAC-256 署名を生成します。 次に、結果を Base64 としてエンコードします。 ストレージ アカウント キーを Base64 デコードする必要もあることに注意してください。 次の形式を使用します (疑似コードとして示しています)。
+1. 前の手順で作成した UTF-8 エンコード文字列の HMAC-256 署名を生成します。 次に、結果を Base64 としてエンコードします。 アクセス キーを Base64 デコードする必要もあることに注意してください。 次の形式を使用します (疑似コードとして示しています)。
     ```
-    Signature=Base64(HMAC-SHA256(UTF8(StringToSign), Base64.decode(<your_azure_storage_account_shared_key>)))
+    Signature=Base64(HMAC-SHA256(UTF8(StringToSign), Base64.decode(<your_access_key>)))
     ```
 1. 次のように Authorization ヘッダーを指定します。
     ```

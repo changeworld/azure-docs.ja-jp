@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 031b3bfd30e0272589c5c7ee2c546b9459767b33
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5e5c59d611cb7f4b5333b9919488e6fc083611cd
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183194"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779245"
 ---
 # <a name="tutorial-monitor-published-apis"></a>チュートリアル:発行された API を監視する
 
@@ -26,6 +26,8 @@ Azure Monitor を使用すると、Azure API Management サービスのメトリ
 > * アラート ルールを設定する 
 > * アクティビティ ログを表示する
 > * リソース ログを有効にして表示する
+
+API Management の組み込みの[分析](howto-use-analytics.md)を使用して、API シリーズの使用状況とパフォーマンスを監視することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 

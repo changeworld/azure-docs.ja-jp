@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 653110b953b6947254d5063a9e389505d45ea4cb
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: e5793d21f27128162095e2d86e13006c5b6e7b7c
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149021"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007995"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service のデプロイ資格情報の構成
 [Azure App Service](./overview.md) では、[ローカル Git デプロイ](deploy-local-git.md)と [FTP/S デプロイ](deploy-ftp.md)デプロイ用の 2 種類の資格情報をサポートしています。 これらの資格情報は Azure サブスクリプションの資格情報とは異なります。
@@ -23,7 +23,7 @@ ms.locfileid: "92149021"
 
 ### <a name="in-the-cloud-shell"></a>Cloud Shell で
 
-[Cloud Shell](https://shell.azure.com) でデプロイ ユーザーを構成するには、[az webapp deployment user set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) コマンドを実行します。 \<username> と \<password> を、デプロイ ユーザーのユーザー名とパスワードで置き換えます。 
+[Cloud Shell](https://shell.azure.com) でデプロイ ユーザーを構成するには、[az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) コマンドを実行します。 \<username> と \<password> を、デプロイ ユーザーのユーザー名とパスワードで置き換えます。 
 
 - ユーザー名は、Azure 内で一意である必要があり、ローカル Git プッシュの場合は "\@" シンボルを含めることはできません。 
 - パスワードは長さが 8 文字以上で、文字、数字、記号のうち 2 つを含む必要があります。 
@@ -52,7 +52,7 @@ Azure portal で、[デプロイ資格情報] ページにアクセスするに�
 
 ![アプリの [概要] ページで Git デプロイ ユーザー名を見つける方法を示します。](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
 
-Git デプロイが構成されている場合、ページに **Git/デプロイ ユーザー名**が表示されます。構成されていない場合、**FTP/デプロイ ユーザー名**が表示されます。
+Git デプロイが構成されている場合、ページに **Git/デプロイ ユーザー名** が表示されます。構成されていない場合、**FTP/デプロイ ユーザー名** が表示されます。
 
 > [!NOTE]
 > Azure では、ユーザー レベルのデプロイ パスワードを表示しません。 パスワードを忘れた場合は、このセクションの手順に従って、資格情報をリセットできます。
@@ -96,7 +96,7 @@ WebDeploy ポートと SCM サイトへの基本認証アクセスを無効に�
 az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
-WebDeploy で発行プロファイルの資格情報がブロックされていることを確認するには、[Visual Studio 2019 を使用して Web アプリを発行](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)してみます。
+WebDeploy で発行プロファイルの資格情報がブロックされていることを確認するには、[Visual Studio 2019 を使用して Web アプリを発行](/visualstudio/deployment/quickstart-deploy-to-azure)してみます。
 
 ### <a name="disable-access-to-the-api"></a>API へのアクセスを無効にする
 

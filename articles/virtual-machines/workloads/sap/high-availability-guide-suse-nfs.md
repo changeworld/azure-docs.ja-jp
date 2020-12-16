@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 5976649ee396d897b76713b7863668d92279612e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6b0504f5e4199ee3cd8e86660b866fddf2568485
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484310"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608573"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性
 
@@ -53,6 +53,10 @@ ms.locfileid: "96484310"
 
 この記事では、仮想マシンのデプロイと構成、クラスター フレームワークのインストール、可用性の高い SAP システムの共有データを格納するために使用できる高可用性 NFS サーバーのインストールの方法について説明します。
 このガイドでは、NW1 と NW2 の 2 つの SAP システムで使用される高可用性 NFS サーバーを設定する方法について説明します。 この例のリソース (仮想マシン、仮想ネットワークなど) の名前は、リソース プレフィックスが **prod** の [SAP ファイル サーバー テンプレート][template-file-server]を使用していることを想定しています。
+
+
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "*スレーブ*" と "*マスター*" という用語への言及があります。 ソフトウェアからこれらの用語が削除された時点で、この記事から削除します。
 
 はじめに、次の SAP Note およびガイドを確認してください
 

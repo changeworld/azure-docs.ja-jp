@@ -2,21 +2,21 @@
 title: Azure Active Directory Domain Services の概要 | Microsoft Docs
 description: この概要では、Azure Active Directory Domain Services で提供されるサービスの内容と、組織でそれを使用してクラウド内のアプリケーションおよびサービスに ID サービスを提供する方法について説明します。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 08/14/2020
-ms.author: joflore
+ms.date: 12/03/2020
+ms.author: justinha
 ms.custom: contperfq1
-ms.openlocfilehash: 988119c34ab0a8ef0e20ec86a7552fb7b4643cd1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 141b59e400154ef40ebced25c69eaf162ac1787a
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967989"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619115"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とは
 
@@ -33,7 +33,7 @@ Azure AD DS は、既存の Azure AD テナントと統合されます。 この
 
 Azure AD DS のマネージド ドメインを作成するときは、一意の名前空間を定義します。 この名前空間は、ドメイン名 (*aaddscontoso.com* など) です。 2 つの Windows Server ドメイン コントローラー (DC) が、選択した Azure リージョンにデプロイされます。 この DC のデプロイは、レプリカ セットと呼ばれます。
 
-これらの DC の管理、構成、更新を自分で行う必要はありません。 DC は、Azure プラットフォームによって、バックアップなどのマネージド ドメインの一部として扱われます。
+これらの DC の管理、構成、更新を自分で行う必要はありません。 Azure プラットフォームでは、DC は、バックアップや Azure Disk Encryption を使用した保存時の暗号化を含め、マネージド ドメインの一部として扱われます。
 
 マネージド ドメインは、Azure AD からの一方向の同期を実行して、集中管理された一連のユーザー、グループ、および資格情報へのアクセスを提供するように構成されます。 マネージド ドメイン内で直接リソースを作成できますが、それらは Azure AD に同期されません。 マネージド ドメインに接続される Azure 内のアプリケーション、サービス、および VM は、共通の AD DS 機能 (ドメイン参加、グループ ポリシー、LDAP、Kerberos または NTLM 認証など) を使用することができます。
 

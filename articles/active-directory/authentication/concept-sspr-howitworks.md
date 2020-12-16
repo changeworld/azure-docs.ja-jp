@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 12/07/2020
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fae9872593b48355d4ad3711e8e5092481b16213
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e5bcc6503af5f5f685ee589ed7671b4715834fef
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174532"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779364"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフサービス パスワード リセット
 
@@ -69,11 +69,8 @@ SSPR の使用を開始するには、次のチュートリアルをご覧くだ
 > [!div class="nextstepaction"]
 > [チュートリアル:セルフサービス パスワード リセット (SSPR) を有効にする](tutorial-enable-sspr.md)
 
-## <a name="registration-options"></a>登録のオプション
 
-ユーザーは、SSPR を使用してパスワードをリセットまたは変更する前に、まず自分自身および使用する認証方法を登録する必要があります。 前のセクションで説明したように、ユーザーが SSPR に登録されていて適切なライセンスが適用されている必要があります。
-
-### <a name="require-users-to-register-when-they-sign-in"></a>サインイン時にユーザーに登録を求める
+## <a name="require-users-to-register-when-they-sign-in"></a>サインイン時にユーザーに登録を求める
 
 Azure AD を使用して任意のアプリケーションにサインインする場合は SSPR 登録を完了するようにユーザーに要求するオプションを有効にすることができます。 このワークフローには、次のアプリケーションが含まれます。
 
@@ -92,7 +89,7 @@ Azure AD を使用して任意のアプリケーションにサインインす�
 >
 > ユーザーが既にサインインしている場合、SSPR に登録するためのこの中断によりその接続が切断されることはありません。
 
-### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>ユーザーが認証情報を再確認するように求められるまでの日数を設定する
+## <a name="reconfirm-authentication-information"></a>認証情報を再確認する
 
 パスワードのリセットまたは変更が必要になったときに認証方法が正しいことを確実にするために、一定期間後にユーザーに登録情報を確認するように要求できます。 このオプションは、 **[Require users to register when signing in]\(サインイン時にユーザーに登録を要求する\)** オプションを有効にした場合にのみ使用できます。
 

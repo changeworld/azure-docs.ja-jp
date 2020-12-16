@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 35f2f82b4fe6862f0d023a70b32c964698b0c0eb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 9fa38e045bbe29e5d45587adf0d277c1414fee4c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547811"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549040"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight の管理 IP アドレス
 
@@ -28,17 +28,19 @@ ms.locfileid: "92547811"
 
 ここに記載されていないリージョンの IP アドレスが必要な場合は、 [Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) を使用して、お客様のリージョンの IP アドレスを見つけることができます。 API を使用できない場合、[サービス タグの JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)をダウンロードして、目的のリージョンを検索することもできます。
 
+HDInsight では、クラスターの作成とスケーリングに関するこれらの規則の検証を行い、さらにエラーが発生しないようにします。 検証が成功しなかった場合、作成とスケーリングは失敗します。
+
 次のセクションでは、許可する必要がある特定の IP アドレスについて説明します。
 
 ## <a name="azure-dns-service"></a>Azure DNS サービス
 
-Azure で提供される DNS サービスを使用している場合は、ポート 53 上の __168.63.129.16__ からのアクセスを許可します。 詳細については、「[Name resolution for VMs and Role instances (VM とロール インスタンスの名前解決)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。 カスタムの DNS を使用している場合は、この手順をスキップします。
+Azure で提供される DNS サービスを使用している場合は、TCP と UDP の両方に対して、ポート 53 上の __168.63.129.16__ へのアクセスを許可します。 詳細については、「[Name resolution for VMs and Role instances (VM とロール インスタンスの名前解決)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。 カスタムの DNS を使用している場合は、この手順をスキップします。
 
 ## <a name="health-and-management-services-all-regions"></a>正常性サービスと管理サービス:すべてのリージョン
 
 すべての Azure リージョンに適用される Azure HDInsight の正常性サービスと管理サービスに対して、次の IP アドレスからのトラフィックを許可します。
 
-| 送信元 IP アドレス | 宛先  | 方向 |
+| 送信元 IP アドレス | 宛先  | Direction |
 | ---- | ----- | ----- |
 | 168.61.49.99 | \*:443 | 受信 |
 | 23.99.5.239 | \*:443 | 受信 |

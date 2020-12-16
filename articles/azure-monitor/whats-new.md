@@ -5,17 +5,81 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 11/11/2020
-ms.openlocfilehash: bf15e380eb1a88acc39ca63165d18d04a260b35d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 12/04/2020
+ms.openlocfilehash: 91aa76fd3d9dbb54316f32fdb319e92ca2283b1d
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185897"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745776"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 
 この記事では、Azure Monitor に関して新たに執筆された記事または大幅に更新された記事を一覧で紹介しています。 毎月第 1 週目に更新され、前月から更新された記事が掲載されます。
+
+## <a name="november-2020"></a>2020 年 11 月
+
+### <a name="general"></a>全般
+- [Azure Monitor サービスの制限](service-limits.md) - Azure Arc をサポートするために更新しました。
+
+### <a name="agents"></a>エージェント
+- [Azure 監視エージェントの概要](platform/agents-overview.md) - Azure Arc をサポートするために更新しました。
+- [Azure Monitor エージェントをインストールする](platform/azure-monitor-agent-install.md) - 新しい記事。
+- [Azure Monitor エージェントの概要](platform/azure-monitor-agent-overview.md) - Azure Arc をサポートするために更新しました。
+- [エージェント用の Resource Manager テンプレートのサンプル](samples/resource-manager-agent.md) - Azure Arc をサポートするために更新しました。
+
+### <a name="alerts"></a>警告
+- [Azure portal でのアクション グループの作成および管理](platform/action-groups.md) - Webhook の送信元 IP アドレスを追加しました。
+
+### <a name="application-insights"></a>Application Insights
+- [Azure Monitor Application Insights を監視する Java のコード不要のアプリケーション](app/java-in-process-agent.md) - 構成例を追加しました。
+- [Application Insights JavaScript SDK の React プラグイン](app/javascript-react-plugin.md) - React フックの使用に関するセクションを追加しました。
+- [Application Insights Java 2.x SDK からのアップグレード](app/java-standalone-upgrade-from-2x.md) - 新しい記事。
+- [Microsoft.ApplicationInsights.SnapshotCollector のリリース ノート](app/snapshot-collector-release-notes.md) - 新しい記事。
+
+### <a name="autoscale"></a>自動スケール
+- [Azure での自動スケーリングの使用](platform/autoscale-get-started.md) - 別のリージョンへの自動スケーリングの移動に関するセクションを追加しました。
+
+### <a name="data-collection"></a>データ コレクション
+- [Azure Monitor エージェント用のデータ収集の構成 (プレビュー)](platform/data-collection-rule-azure-monitor-agent.md) - Azure Arc をサポートするために更新しました。
+- [Azure Monitor のデータ収集ルール (プレビュー)](platform/data-collection-rule-overview.md) - Azure Arc をサポートするために更新しました。
+- [データ収集ルールのための Resource Manager テンプレート サンプル](samples/resource-manager-data-collection-rules.md) - 新しい記事。
+
+### <a name="insights-and-solutions"></a>分析情報とソリューション
+- [セキュア エクスポートを使用して Azure を ITSM ツールに接続する](platform/it-service-management-connector-secure-webhook-connections.md) - ServiceNow への接続に関するセクションを追加しました。
+
+### <a name="logs"></a>ログ
+- [Log Analytics と Excel を統合する](log-query/log-excel.md) - 新しい記事。
+- [Log Analytics データのセキュリティ](platform/data-security.md) - 追加のセキュリティ機能に関するセクションを追加しました。
+- [Log Analytics の Power BI との統合](log-query/log-powerbi.md) - 新しい記事。
+- [Azure Monitor ログ レコード内の標準列](platform/log-standard-columns.md) - _SubscriptionId 列を追加しました。
+
+ログ クエリに関するコンテンツの再構成による新規および更新された記事
+
+- [Log Analytics のチュートリアル](log-query/log-analytics-tutorial.md)
+- [Azure Monitor でのログ クエリ](log-query/log-query-overview.md)
+- [Azure Monitor の Log Analytics の概要](log-query/log-analytics-overview.md)
+- [Azure Data Explorer と Azure Monitor でのクエリのサンプル](/azure/data-explorer/kusto/query/samples?pivots=azuremonitor)
+- [チュートリアル:Azure Data Explorer と Azure Monitor で Kusto クエリを使用する](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor)
+
+
+
+### <a name="virtual-machines"></a>仮想マシン
+
+- [Azure Monitor for VMs の有効化の概要](insights/vminsights-enable-overview.md) - サポートされているリージョンを追加しました。
+
+Azure Monitor for VMs のゲストの正常性 (プレビュー) に関する新しい記事
+
+- [Azure Monitor for VMs のゲストの正常性 (プレビュー)](insights/vminsights-health-overview.md)
+- [Azure Monitor for VMs のゲストの正常性アラート (プレビュー)](insights/vminsights-health-alerts.md)
+- [Azure Monitor for VMs のゲストの正常性 (プレビュー) で監視を構成する](insights/vminsights-health-configure.md)
+- [データ収集ルールを使用して Azure Monitor for VMs のゲストの正常性 (プレビュー) での監視を構成する](insights/vminsights-health-configure-dcr.md)
+- [Azure Monitor for VMs のゲストの正常性 (プレビュー) を有効にする](insights/vminsights-health-enable.md)
+- [Azure Monitor for VMs のゲストの正常性 (プレビュー) をトラブルシューティングする](insights/vminsights-health-troubleshoot.md)
+
+
+
+
 
 ## <a name="october-2020"></a>2020 年 10 月
 

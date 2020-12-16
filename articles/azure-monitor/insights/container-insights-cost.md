@@ -3,12 +3,12 @@ title: Azure Monitor for containers の監視コスト | Microsoft Docs
 description: この記事では、Azure Monitor for containers によって収集されるメトリックとインベントリ データの監視コストについて説明します。これにより、お客様が使用量と関連コストを管理できるようになります。
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: a03e94fa7650c56a4d3b3beda3c27283329aebbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81a20f564af68c3da6d63394e4cffe7caed91b46
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84204652"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903225"
 ---
 # <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>Azure Monitor for containers の監視コストについて
 
@@ -37,7 +37,7 @@ Azure Monitor の価格モデルは、主に、Log Analytics ワークスペー�
 
 - Prometheus メトリックのアクティブなスクレイピング
 
-- *kube-apiserver* および *kube-controller-manager* マスター コンポーネントによって生成されるログ データを分析できる、AKS クラスター内の Kubernetes マスター ノード ログの[診断ログの収集](../../aks/view-master-logs.md)。
+- *kube-apiserver* および *kube-controller-manager* マスター コンポーネントによって生成されるログ データを分析できる、AKS クラスター内の Kubernetes マスター ノード ログの [診断ログの収集](../../aks/view-master-logs.md)。
 
 ## <a name="what-is-collected-from-kubernetes-clusters"></a>Kubernetes クラスターから収集されるもの
 
@@ -127,19 +127,21 @@ Azure Monitor for containers には、Log Analytics ワークスペースにロ�
 
 ## <a name="controlling-ingestion-to-reduce-cost"></a>コスト削減のためのインジェスト制御
 
-組織の異なる部署が Kubernetes インフラストラクチャと Log Analytics ワークスペースを共有しているシナリオについて考えてみましょう。 各事業単位は、Kubernetes 名前空間で区切られています。 最近リリースされたブックを使用して、各ワークスペースに取り込まれるデータ量を視覚化できます。 [ブック ギャラリー](../platform/workbooks-overview.md#getting-started)にある **[Container Insights Usage]\(Container Insights の使用状況\)** ブックを使用すると、ドキュメントに記載されている内容から独自のクエリ ライブラリを作成しなくても、データのソースを視覚化することができます。 このブックには、次のような視点で課金対象データを表示できるグラフがあります。
+組織の異なる部署が Kubernetes インフラストラクチャと Log Analytics ワークスペースを共有しているシナリオについて考えてみましょう。 各事業単位は、Kubernetes 名前空間で区切られています。 **[データ使用状況]** Runbook を使用して、各ワークスペースで取り込まれたデータの量を視覚化できます。この Runbook は **[ブックの表示]** ドロップダウンから利用できます。
+
+[![[ブックの表示] ドロップダウン](media/container-insights-cost/workbooks-dropdown.png)](media/container-insights-cost/workbooks-dropdown.png#lightbox)
+
+
+このブックを使用すると、ドキュメントに記載されている内容から独自のクエリ ライブラリを作成しなくても、データのソースを視覚化することができます。 このブックには、次のような視点で課金対象データを表示できるグラフがあります。
 
 - ソリューションごとの取り込まれた課金対象データの合計 (GB 単位)
-
 - コンテナー ログ (アプリケーションログ) ごとの取り込まれた課金対象のデータ
-
 - Kubernetes 名前空間ごとの取り込まれた課金対象のコンテナー ログ
-
 - クラスター名別に分離された、取り込まれた課金対象のコンテナー ログ データ
-
 - ログソース エントリ別の、取り込まれた課金対象コンテナー ログ データ
-
 - 診断マスター ノード ログ別の、取り込まれた課金対象の診断データ
+
+[![[データ使用状況] ブック](media/container-insights-cost/data-usage-workbook.png)](media/container-insights-cost/data-usage-workbook.png#lightbox)
 
 ブックの権限と権限を管理する方法の詳細については、「[アクセス制御](../platform/workbooks-access-control.md)」を参照してください。
 

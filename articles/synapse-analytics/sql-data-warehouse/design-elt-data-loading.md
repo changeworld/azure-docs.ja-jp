@@ -1,37 +1,37 @@
 ---
 title: ETL の代わりに ELT を設計する
-description: Azure Synapse Analytics 内に Synapse SQL プールの柔軟なデータ読み込み戦略を実装する
+description: Azure Synapse Analytics 内に専用 SQL プールの柔軟なデータ読み込み戦略を実装します。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 05/13/2020
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 0533e76863d01675cee7aaca79e32821e5efc749
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 64ba24eb0eab581310122908fc05d1d671ac1d40
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92507805"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531575"
 ---
-# <a name="data-loading-strategies-for-synapse-sql-pool"></a>Synapse SQL プールのデータの読み込み戦略
+# <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールのデータ読み込み戦略
 
-従来の SMP SQL プールでは、データの読み込みに抽出、変換、読み込み (ETL) プロセスが使用されています。 Azure Synapse Analytics 内の Synapse SQL プールには、コンピューティング リソースとストレージ リソースのスケーラビリティと柔軟性を活用した分散クエリ処理アーキテクチャが使用されています。
+従来の SMP 専用 SQL プールでは、データの読み込みに抽出、変換、読み込み (ETL) プロセスが使用されています。 Azure Synapse Analytics 内の Synapse SQL プールには、コンピューティング リソースとストレージ リソースのスケーラビリティと柔軟性を活用した分散クエリ処理アーキテクチャが使用されています。
 
 抽出、読み込み、および変換 (ELT) プロセスを使用すると、組み込みの分散クエリ処理機能が利用され、読み込み前のデータ変換に必要なリソースを排除できます。
 
-SQL プールでは、[bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) などの一般的な SQL Server オプションを含む多くの読み込み方法がサポートされていますが、データを読み込むための最速かつ最もスケーラブルな方法は、PolyBase 外部テーブルと [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)を使用することです。
+専用 SQL プールでは、[bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) や [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) などの一般的な SQL Server オプションを含む多くの読み込み方法がサポートされていますが、データを読み込むための最速かつ最もスケーラブルな方法は、PolyBase 外部テーブルと [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)を使用する方法です。
 
 PolyBase と COPY ステートメントを使用すると、Azure Blob Storage または Azure Data Lake Store に格納されている外部データに T-SQL 言語でアクセスできます。 読み込み時の柔軟性を最大限に高めるために、COPY ステートメントを使用することをお勧めします。
 
 
 ## <a name="what-is-elt"></a>ELT とは?
 
-ELT (抽出、読み込み、変換) とは、データがソース システムから抽出されて SQL プールに読み込まれ、その後変換されるプロセスです。
+ELT (抽出、読み込み、変換) とは、データをソース システムから抽出し、専用 SQL プールに読み込んでから変換するプロセスです。
 
 ELT を実装するための基本的な手順は次のとおりです。
 
@@ -62,7 +62,7 @@ Azure Storage へのデータの移動で使用できるツールやサービス
 
 - [Azure ExpressRoute](../../expressroute/expressroute-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) サービス - ネットワークのスループット、パフォーマンス、予測可能性を向上させます。 ExpressRoute は、専用プライベート接続を通してデータを Azure にルーティングするサービスです。 ExpressRoute 接続では、パブリック インターネットを通してデータをルーティングすることはありません。 ExpressRoute 接続は、パブリック インターネットを通る一般的な接続に比べて安全性と信頼性が高く、待機時間も短く、高速です。
 - [AZCopy ユーティリティ](../../storage/common/storage-choose-data-transfer-solution.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) - パブリック インターネットを通してデータを Azure Storage に移動します。 このユーティリティは、データ サイズが 10 TB より小さい場合に機能します。 AZCopy を使用して読み込みを定期的に実行するには、ネットワーク速度をテストして、許容可能かどうかを確認してください。
-- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) - ゲートウェイをローカル サーバーにインストールできます。 その後、ローカル サーバーから Azure Storage にデータを移動するためのパイプラインを作成できます。 SQL プールで Data Factory を使用する方法については、[SQL プールのデータの読み込み](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関するページを参照してください。
+- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) - ゲートウェイをローカル サーバーにインストールできます。 その後、ローカル サーバーから Azure Storage にデータを移動するためのパイプラインを作成できます。 専用 SQL プールで Data Factory を使用する方法については、[専用 SQL プールのデータの読み込み](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関する記事を参照してください。
 
 ## <a name="3-prepare-the-data-for-loading"></a>3.読み込むデータを準備する
 
@@ -70,9 +70,9 @@ Azure Storage へのデータの移動で使用できるツールやサービス
 
 ### <a name="define-the-tables"></a>テーブルを定義する
 
-COPY ステートメントを使用する場合は、最初に SQL プールで読み込み先のテーブルを定義する必要があります。
+COPY ステートメントを使用する場合は、最初に専用 SQL プールで読み込み先のテーブルを定義する必要があります。
 
-PolyBase を使用している場合は、読み込み前に、SQL プールに外部テーブルを定義する必要があります。 PolyBase は、外部テーブルを使用して Azure Storage のデータを定義し、それにアクセスします。 外部テーブルは、データベースのビューに似ています。 外部テーブルにはテーブル スキーマが含まれており、SQL プールの外部に格納されているデータを指します。
+PolyBase を使用している場合は、読み込み前に、専用 SQL プールに外部テーブルを定義する必要があります。 PolyBase は、外部テーブルを使用して Azure Storage のデータを定義し、それにアクセスします。 外部テーブルは、データベースのビューに似ています。 外部テーブルにはテーブル スキーマが含まれており、専用 SQL プールの外部に格納されているデータを指します。
 
 外部テーブルを定義するには、データ ソース、テキスト ファイルの形式、テーブル定義を指定する必要があります。 必要な T-SQL 構文の参照記事は次のとおりです。
 
@@ -119,8 +119,9 @@ Parquet ファイルを読み込む場合、次の SQL データ型マッピン�
 | [複合型](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23maps&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=FiThqXxjgmZBVRyigHzfh5V7Z%2BPZHjud2IkUUM43I7o%3D&reserved=0) |                  MAP                  |   varchar(max)   |
 
 >[!IMPORTANT] 
-> - 現在、SQL 専用プールは、MICROS および NANOS 精度の Parquet データ型をサポートしていません。 
-> - Parquet と SQL の間で型が一致しない場合、またはサポートされていない Parquet データ型がある場合は、次のエラーが発生する可能性があります。 **"HdfsBridge::recordReaderFillBuffer - Unexpected error encountered filling record reader buffer:ClassCastException: ..." (Hdfs Bridge::recordReaderFillBuffer - レコード リーダー バッファーの読み込み中に予期しないエラーが発生しました: ClassCastException: ...)**
+>- 現在、SQL 専用プールは、MICROS および NANOS 精度の Parquet データ型をサポートしていません。 
+>- Parquet と SQL の間で型が一致しない場合、またはサポートされていない Parquet データ型がある場合は、次のエラーが発生する可能性があります。 **"HdfsBridge::recordReaderFillBuffer - Unexpected error encountered filling record reader buffer:ClassCastException: ..." (Hdfs Bridge::recordReaderFillBuffer - レコード リーダー バッファーの読み込み中に予期しないエラーが発生しました: ClassCastException: ...)**
+>- Parquet および ORC ファイル形式の tinyint 型の列に 0 ～ 127 の範囲外の値を読み込むことはサポートされていません。
 
 外部オブジェクトの作成の例については、[外部テーブルの作成](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables?tabs=sql-pool)に関する記事を参照してください。
 
@@ -130,12 +131,12 @@ PolyBase を使用する場合、定義する外部オブジェクトは、外�
 テキスト ファイルを書式設定するには、次の処理を行います。
 
 - データが非リレーショナル ソースから読み込まれる場合は、データを行と列に変換する必要があります。 データの読み込み元がリレーショナル ソースの場合も、非リレーショナル ソースの場合も、データを読み込むテーブルの列定義に合わせてデータを変換する必要があります。
-- 変換先テーブルの列とデータ型に合わせて、テキスト ファイルのデータを書式設定します。 外部テキスト ファイルと SQL プール テーブルの間でデータ型の不整合があると、読み込みの際に行が拒否されます。
+- 変換先テーブルの列とデータ型に合わせて、テキスト ファイルのデータを書式設定します。 外部テキスト ファイルと専用 SQL プール テーブルの間でデータ型の不整合があると、読み込みの際に行が拒否されます。
 - テキスト ファイル内のフィールドは終端記号で区切ります。  ソース データに含まれていない文字または文字シーケンスを使用するようにしてください。 [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) で指定した終端記号を使用します。
 
 ## <a name="4-load-the-data-using-polybase-or-the-copy-statement"></a>4.PolyBase または COPY ステートメントを使用してデータを読み込む
 
-これがステージング テーブルにデータを読み込むための最善の方法です。 ステージング テーブルを使用すると、運用環境のテーブルに支障をきたすことなく、エラーを処理することができます。 また、ステージング テーブルを使用すれば、運用環境のテーブルにデータを挿入する前に、SQL プールの並列処理アーキテクチャを使用してデータを変換することができます。
+これがステージング テーブルにデータを読み込むための最善の方法です。 ステージング テーブルを使用すると、運用環境のテーブルに支障をきたすことなく、エラーを処理することができます。 また、ステージング テーブルを使用すれば、運用環境のテーブルにデータを挿入する前に、専用 SQL プールの並列処理アーキテクチャを使用してデータを変換することができます。
 
 ### <a name="options-for-loading"></a>読み込みのオプション
 

@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
 ms.date: 06/16/2020
-ms.openlocfilehash: aac85fdab157d581285af91c4c818258a5f1790b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 092e07ed01fb870cdcd9a3fd63d46d30cef96007
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124783"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780843"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure Stream Analytics での JavaScript ユーザー定義関数
  
-Azure Stream Analytics は、JavaScript で記述されたユーザー定義関数をサポートします。 JavaScript が提供する一連の豊富な **String** 、 **RegExp** 、 **Math** 、 **Array** 、 **Date** メソッドによって、Stream Analytics ジョブを伴う複雑なデータ変換の作成が容易になります。
+Azure Stream Analytics は、JavaScript で記述されたユーザー定義関数をサポートします。 JavaScript が提供する一連の豊富な **String**、**RegExp**、**Math**、**Array**、**Date** メソッドによって、Stream Analytics ジョブを伴う複雑なデータ変換の作成が容易になります。
 
 ## <a name="overview"></a>概要
 
@@ -34,7 +34,7 @@ Stream Analytics の JavaScript ユーザー定義関数では実行できない
 * 入力/出力におけるカスタム イベントフォーマットのシリアル化または逆シリアル化の実行
 * カスタム集計の作成
 
-関数定義において禁止されているわけではありませんが、 **Date.GetDate()** や **Math.random()** などの関数の使用は避ける必要があります。 これらの関数では呼び出すたびに同じ結果が **返らず** 、Azure Stream Analytics サービスは関数呼び出しや戻り値のジャーナルを保持しません。 関数が同じイベントで異なる結果を返す場合、ユーザーや Stream Analytics サービスによってジョブが再起動された際の再現性は保証されません。
+関数定義において禁止されているわけではありませんが、**Date.GetDate()** や **Math.random()** などの関数の使用は避ける必要があります。 これらの関数では呼び出すたびに同じ結果が **返らず**、Azure Stream Analytics サービスは関数呼び出しや戻り値のジャーナルを保持しません。 関数が同じイベントで異なる結果を返す場合、ユーザーや Stream Analytics サービスによってジョブが再起動された際の再現性は保証されません。
 
 ## <a name="add-a-javascript-user-defined-function-to-your-job"></a>JavaScript のユーザー定義関数をジョブに追加する
 
@@ -61,7 +61,7 @@ JavaScript ランタイム エラーは致命的とみなされ、アクティ�
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>クエリでの JavaScript ユーザー定義関数の呼び出し
 
-JavaScript 関数は、 **udf** というプレフィックスで始まる関数のエイリアスを使用して、クエリから簡単に呼び出すことができます。 以下に示したのは、16 進値を整数に変換する JavaScript UDF を、Stream Analytics のクエリから呼び出す例です。
+JavaScript 関数は、**udf** というプレフィックスで始まる関数のエイリアスを使用して、クエリから簡単に呼び出すことができます。 以下に示したのは、16 進値を整数に変換する JavaScript UDF を、Stream Analytics のクエリから呼び出す例です。
 
 ```SQL
     SELECT
@@ -134,7 +134,7 @@ FROM
 
 ### <a name="cast-string-to-json-object-to-process"></a>文字列を処理できるように JSON オブジェクトにキャストする
 
-JSON の文字列フィールドがあり、それを JSON オブジェクトに変換して JavaScript UDF で処理する場合は、 **JSON.parse()** 関数を使って JSON オブジェクトを作成し、これを使用することができます。
+JSON の文字列フィールドがあり、それを JSON オブジェクトに変換して JavaScript UDF で処理する場合は、**JSON.parse()** 関数を使って JSON オブジェクトを作成し、これを使用することができます。
 
 **JavaScript ユーザー定義関数の定義:**
 
@@ -184,6 +184,35 @@ INTO
     output
 FROM
     input A
+```
+
+### <a name="tolocalestring"></a>toLocaleString()
+JavaScript の **toLocaleString** メソッドを使用すると、このメソッドが呼び出された日時データを表す、言語に依存する文字列を返すことができます。
+Azure Stream Analtyics でシステム タイムスタンプとして受け入れられるのは UTC 日時のみですが、このメソッドを使用して、システム タイムスタンプを別のロケールとタイムゾーンに変換できます。
+このメソッドは、Internet Explorer に用意されているものと同じ実装動作に従います。
+
+**JavaScript ユーザー定義関数の定義:**
+
+```javascript
+function main(datetime){
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    return event.toLocaleDateString('de-DE', options);
+}
+```
+
+**サンプル クエリ: datetime を入力値として渡す**
+```SQL
+SELECT
+    udf.toLocaleString(input.datetime) as localeString
+INTO
+    output
+FROM
+    input
+```
+
+このクエリの出力は、options が指定された **de-DE** の入力 datetime になります。
+```
+Samstag, 28. Dezember 2019
 ```
 
 ## <a name="next-steps"></a>次のステップ

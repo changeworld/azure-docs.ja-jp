@@ -1,18 +1,17 @@
 ---
 title: Azure Migrate での評価と依存関係の視覚化のトラブルシューティング
-description: Azure Migrate での評価と依存関係の視覚化をトラブルシューティングするためのヘルプを提供します。
-ms.service: azure-migrate
-ms.topic: troubleshooting
-author: musa-57
+description: Azure Migrate での評価と依存関係の視覚化に関するヘルプを提供します。
+author: rashi-ms
+ms.author: rajosh
 ms.manager: abhemraj
-ms.author: hamusa
+ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 4da0f40c25d322953fea968396ef33924877c2e1
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: cefcd4ce287eecfe2c764d88d5d2233cc8ac0a5c
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505225"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753447"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評価と依存関係の視覚化のトラブルシューティング
 

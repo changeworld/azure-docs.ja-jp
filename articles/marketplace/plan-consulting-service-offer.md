@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: c56d83e551265f3fb4de106cb8fa77efd6dcbabc
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7f56ff94c4dcf276accc56e8d1076266099d635d
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452121"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780707"
 ---
 # <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースでコンサルティング サービス オファーを計画する方法
 
@@ -27,10 +27,24 @@ ms.locfileid: "96452121"
 
 ## <a name="primary-products-and-online-stores"></a>主要な製品とオンライン ストア
 
-各コンサルティング サービス オファーにはその対象となる Microsoft 製品が必要であり、**主要な製品** と呼ばれます。 パートナー センターで選択された主要な製品により、Microsoft AppSource と Azure Marketplace のどちらにオファーが公開されるかが決まります。
+各コンサルティング サービスは、これらのいずれかの Microsoft 製品に焦点を当てる必要があります (オファーの **主な製品** と呼ばれます)。
 
-* コンサルティング サービスの主要な製品が Azure である場合、オファーは Azure Marketplace に掲載されます。
-* 主要な製品が Azure でない場合、オファーは AppSource に掲載されます。
+|主な製品                               |                   |
+|-------------------------------|-------------------|
+|Azure                          |Dynamics 365 Project Service Automation |
+|Dynamics 365 Business Central  |Dynamics 365 Sales |
+|Dynamics 365 Commerce          |Dynamics 365 Supply Chain Management |
+|Dynamics 365 Customer Insights |Microsoft 365 |
+|Dynamics 365 Customer Service  |Power Apps |
+|Dynamics 365 Field Service     |Power Automate |
+|Dynamics 365 Finance           |Power BI |
+|Dynamics 365 Marketing         |Power Virtual Agents |
+|    |    |
+
+パートナー センターで選択された主要な製品により、Microsoft AppSource と Azure Marketplace のどちらにオファーが公開されるかが決まります。
+
+* コンサルティング サービスの主な製品が Azure である場合、オファーは Azure Marketplace に掲載されます。
+* 主な製品が Azure でない場合、オファーは AppSource に掲載されます。
 
 AppSource と Azure Marketplace の違いの詳細については、「[コマーシャル マーケットプレースのオンライン ストア](./overview.md#commercial-marketplace-online-stores)」を参照してください。
 
@@ -91,6 +105,7 @@ CRM の接続は、オファーの作成時または作成後にいつでも追�
 |製造で Azure IoT を使ってみる |IoT の製造2 日間の評価 |
 |スマート トースターに関するワークショップ |スマート トースター:1 週間のワークショップ |
 |Contoso による SQL Server 移行 PoC |SQL の移行:3 週間の概念実証 |
+| | |
 
 **検索結果の概要**: オファーの目的または目標を 200 文字以下で記述します。 この概要は、コマーシャル マーケットプレースの登録情報の検索結果で使用されます。 タイトルと同じにすることはできません。 上位の SEO キーワードを含めることを検討してください。
 
@@ -105,6 +120,7 @@ CRM の接続は、オファーの作成時または作成後にいつでも追�
 |実装 |1 日より長くかかる実装についての詳細な日程を含め、顧客が契約の結果として期待できる、エンジニアリングの変化、技術的成果物、その他の成果物を説明します。 |
 |概念実証 |顧客が契約の結果として期待できる、エンジニアリングの変化、技術的成果物、その他の成果物を説明します。 |
 |ワークショップ |オファーの期間に応じて、日ごと、週ごと、月ごとの詳細な日程を含めます。 ワークショップの学習目標やその他の成果物を明確に示します。 |
+| | |
 
 説明を記述するためのいくつかのヒントを次に示します。
 
@@ -142,6 +158,11 @@ HTML タグを使用して説明の書式を設定できます。 このボッ�
 **Marketplace メディア – スクリーンショット**: オファーの内容がわかる画像を、少なくとも 1 つ、最大で 5 つまで追加します。 イメージはすべて、1280 x 720 ピクセルのサイズで PNG 形式である必要があります。
 
 **Marketplace メディア – 動画** (省略可能): オファーの内容がわかる動画を最大で 4 つまで追加できます。 動画は YouTube または Vimeo でホストされていて、サムネイル (1280 x 720 PNG ファイル) が付属している必要があります。
+
+## <a name="pricing-and-availability"></a>価格と可用性
+
+コンサルティング サービス オファーは、1 つ以上の国または地域で利用可能にすることができます。 パートナー センターでは、選択した市場ごとに価格を決定できます。 サポートされている市場と通貨の完全な一覧については、「[コマーシャル マーケットプレースで利用可能な地域と通貨のサポート](./marketplace-geo-availability-currencies.md)」を参照してください。
+
 
 ## <a name="next-steps"></a>次のステップ
 

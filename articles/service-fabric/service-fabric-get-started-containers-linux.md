@@ -4,12 +4,12 @@ description: Azure Service Fabric で初めての Linux コンテナー アプ�
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: d085f8704850cdbb03e21b15b3cca7c8998b96fb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0481cc2d36f7882bbd8eea9b984c3dc388de5dee
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004230"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96534082"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -87,10 +87,17 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
 ```
 
-## <a name="build-the-image"></a>イメージをビルドする
-`docker build` コマンドを実行して、Web アプリケーションを実行するイメージを作成します。 PowerShell ウィンドウを開き、*c:\temp\helloworldapp* に移動します。 次のコマンドを実行します。
+## <a name="login-to-docker-and-build-the-image"></a>Docker にログインしてイメージをビルドする
 
-```bash
+次に、Web アプリケーションを実行するイメージを作成します。 Docker からパブリック イメージをプルする場合は (Dockerfile の `python:2.7-slim` など)、匿名のプル要求を行うのではなく、Docker Hub アカウントで認証することをお勧めします。
+
+> [!NOTE]
+> 匿名のプル要求を頻繁に行うと、`ERROR: toomanyrequests: Too Many Requests.` や `You have reached your pull rate limit.` のような Docker エラーが発生することがあります。このようなエラーを防ぐには、Docker Hub に対して認証を行います。 詳細については、「[Azure Container Registry を使用してパブリック コンテンツを管理する](../container-registry/buffer-gate-public-content.md)」を参照してください。
+
+PowerShell ウィンドウを開き、Dockerfile が格納されているディレクトリに移動します。 次のコマンドを実行します。
+
+```
+docker login
 docker build -t helloworldapp .
 ```
 

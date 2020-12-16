@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 12/02/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 6374164bb5049742d63a669b4c1e552c93967977
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 396d6f69673f8758d8d1302f8d10b8a92e5f50b4
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173381"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530753"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>アプリを Azure AD アプリ ギャラリーで公開する
 
@@ -168,14 +168,25 @@ ASP.NET Core での WS-Fed の詳細については、「[ASP.NET Core で WS-Fe
 
 HTML のサインイン ページがある Web アプリケーションを作成します。 シングル サインオンが期待どおりに動作するように、アプリケーションでフォーム認証をサポートしてパスワード保管を行えることを確認します。
 
+## <a name="step-3---implement-scim-user-provisioning-in-your-app"></a>ステップ 3 - アプリに SCIM ユーザー プロビジョニングを実装する
+アプリケーションの構築において [SCIM](https://aka.ms/scimoverview) プロビジョニングのサポートは省略可能な手順ですが、強く推奨されます。 SCIM 標準のサポートは簡単に実行でき、これによってお客様は、CSV ファイルのアップロードなどの手動プロセスに依存することなく、アプリでユーザー アカウントを自動的に作成および更新することができます。 さらに、お客様が自動的にユーザーを削除したり、グループ メンバーシップの同期を維持したりすることができます。これは、SAML JIT などのソリューションでは実現できません。 
 
-## <a name="step-3---create-your-azure-tenant-and-test-your-app"></a>ステップ 3 - Azure テナントを作成してアプリをテストする
+### <a name="learn-about-scim"></a>SCIM の詳細
+お客様向けの SCIM 標準と特典の詳細については、[SCIM でのプロビジョニングの概要](https://aka.ms/scimoverview)に関するページを参照してください。
+
+### <a name="understand-the-azure-ad-scim-implementation"></a>Azure AD SCIM の実装について
+Azure AD SCIM の実装の詳細については、「[SCIM エンドポイントの構築と Azure AD を使用したユーザー プロビジョニングの構成](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)」を参照してください。
+
+### <a name="implement-scim"></a>SCIM を実装する
+Azure AD には、SCIM エンドポイントを構築するのに役立つ[参照コード](https://aka.ms/scimoverview)が用意されています。 また、サード パーティ製のライブラリや参考資料も Github に多数あります。  
+
+## <a name="step-4---create-your-azure-tenant-and-test-your-app"></a>ステップ 4 - Azure テナントを作成してアプリをテストする
 
 アプリをテストするには、Azure AD テナントが必要です。 開発環境をセットアップするには、「[クイックスタート: テナントを設定する](quickstart-create-new-tenant.md)」を参照してください。
 
 または、すべての Microsoft 365 サブスクリプションには、Azure AD テナントが付属しています。 無料の Microsoft 365 開発環境をセットアップするには、[Microsoft 365 開発者プログラムへの参加](/office/developer-program/microsoft-365-developer-program)に関するページを参照してください。
 
-テナントの用意ができたら、シングル サインオン アクセスを有効にしてテストする必要があります。 
+テナントの用意ができたら、シングル サインオンと[プロビジョニング](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client)をテストする必要があります。 
 
 **OIDC または Oath アプリケーション** の場合、マルチテナント アプリケーションとして [アプリケーションを登録](quickstart-register-app.md)します。 ‎[サポートされているアカウントの種類] で、[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント] オプションを選択します。
 
@@ -184,7 +195,7 @@ HTML のサインイン ページがある Web アプリケーションを作成
 必要に応じて、[シングルテナント アプリケーションをマルチテナントに変換](howto-convert-app-to-be-multi-tenant.md)することもできます。
 
 
-## <a name="step-4---create-and-publish-documentation"></a>ステップ 4 - ドキュメントを作成して公開する
+## <a name="step-5---create-and-publish-documentation"></a>ステップ 5 - ドキュメントを作成して公開する
 
 ### <a name="documentation-on-your-site"></a>サイト上のドキュメント
 
@@ -206,13 +217,14 @@ HTML のサインイン ページがある Web アプリケーションを作成
 * パイロット ユーザーのテスト手順
 * エラー コードとメッセージを含むトラブルシューティング情報
 * お客様のサポート メカニズム
+* サポートされているリソースと属性を含む、SCIM エンドポイントの詳細
 
 ### <a name="documentation-on-the-microsoft-site"></a>Microsoft サイト上のドキュメント
 
 Azure Active Directory アプリケーション ギャラリーにアプリケーションを登録すると (これにより、Azure Marketplace でもアプリケーションが公開されます)、Microsoft により、段階的なプロセスを説明するために、共通のお客様向けのドキュメントが生成されます。 [こちら](../saas-apps/tutorial-list.md)で例を参照できます。 このドキュメントは、ギャラリーへの送信に基づいて作成されます。GitHub アカウントを使用してアプリケーションに変更を加える場合、このドキュメントを簡単に更新できます。
 
 
-## <a name="step-5---submit-your-app"></a>ステップ 5 - アプリを送信する
+## <a name="step-6---submit-your-app"></a>ステップ 6 - アプリを送信する
 
 Azure ADでアプリケーションの統合が作動するのをテストした後、[Microsoftアプリケーションネットワークポータル](https://microsoft.sharepoint.com/teams/apponboarding/Apps)へのアクセス要求を送信してください。
 
@@ -262,7 +274,7 @@ OpenID Connect を使用してギャラリー内の一覧にご利用のアプ�
 
 ![ギャラリーでのパスワード SSO アプリケーションの一覧表示](./media/howto-app-gallery-listing/passwordsso.png)
 
-ユーザー プロビジョニングのために [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2.0 エンドポイントを実装している場合は、示されているようにオプションを選択します。 
+ユーザー プロビジョニングのために [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2.0 エンドポイントを実装している場合は、示されているようにオプションを選択します。 オンボード要求にスキーマを提供するときは、[こちら](https://docs.microsoft.com/azure/active-directory/app-provisioning/export-import-provisioning-configuration)の指示に従ってスキーマをダウンロード してください。 ギャラリー以外のアプリケーションをテストする際にユーザーが構成したスキーマがギャラリー アプリケーションのビルドに使用されます。 
 
    ![ユーザー プロビジョニングの要求](./media/howto-app-gallery-listing/user-provisioning.png)
 
@@ -301,7 +313,7 @@ OpenID Connect アプリケーションをギャラリーに一覧表示する�
 すべてのエスカレーションについては、[Azure AD SSO 統合チーム](mailto:SaaSApplicationIntegrations@service.microsoft.com)にメールでご連絡いただけば、可能な限り早く対応します。
 
 
-## <a name="step-6---join-the-microsoft-partner-network"></a>ステップ 6 - Microsoft Partner Network に参加する
+## <a name="step-7---join-the-microsoft-partner-network"></a>ステップ 7 - Microsoft Partner Network に参加する
 Microsoft Partner Network では、排他的なリソース、プログラム、ツール、接続にすばやくアクセスできます。 ネットワークに参加して、市場投入プランを作成するには、「[法人のお客様にリーチする](https://partner.microsoft.com/explore/commercial#gtm)」を参照してください。
 
 

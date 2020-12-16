@@ -4,16 +4,16 @@ description: ネットワーク ファイル システム プロトコルを使�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 7680e251d8411ce154e1f7dfb8af1d66514dd579
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 3cf22ee22c35b850aff33290a59a7043bb57c984
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629463"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620948"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS 共有を作成する方法
 
@@ -64,7 +64,7 @@ az feature register --name AllowNfsFileShares \
 az provider register --namespace Microsoft.Storage
 ```
 
-## <a name="verify-that-the-feature-is-registered"></a>機能が登録されたことを確認する
+## <a name="verify-feature-registration"></a>機能の登録を確認する
 
 登録の承認には、最大 1 時間かかります。 登録が完了したことを確認するには、次のコマンドを使用します。
 
@@ -80,6 +80,34 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNfs
 az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscription <yourSubscriptionIDHere>
 ```
 
+## <a name="verify-storage-account-kind"></a>ストレージ アカウントの種類を確認する
+
+現時点では、NFS 共有を作成できるのは FileStorage アカウントのみです。 
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+使用しているストレージ アカウントの種類を確認するには、Azure portal でそれに移動します。 次に、ストレージ アカウントから、 **[プロパティ]** を選択します。 プロパティ ブレードで、 **[アカウントの種類]** の値を確認します。この値は **FileStorage** である必要があります。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+FileStorage アカウントを所有していることを確認するために、次のコマンドを使用できます。
+
+```azurepowershell
+$accountKind=Get-AzStorageAccount -ResourceGroupName "yourResourceGroup" -Name "yourStorageAccountName"
+$accountKind.Kind
+```
+
+出力は **FileStorage** になるはずです。そうでない場合、ストレージ アカウントの種類は正しくありません。 **FileStorage** アカウントを作成するには、「[Azure Premium ファイル共有を作成する方法](storage-how-to-create-premium-fileshare.md)」を参照してください。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+FileStorage アカウントを所有していることを確認するために、次のコマンドを使用できます。
+
+```azurecli
+az storage account show -g yourResourceGroup -n yourStorageAccountName
+```
+
+出力には **"kind":"FileStorage"** が含まれるはずです。そうでない場合、ストレージ アカウントの種類は正しくありません。 **FileStorage** アカウントを作成するには、「[Azure Premium ファイル共有を作成する方法](storage-how-to-create-premium-fileshare.md)」を参照してください。
+
+---
 ## <a name="create-an-nfs-share"></a>NFS 共有を作成する
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)

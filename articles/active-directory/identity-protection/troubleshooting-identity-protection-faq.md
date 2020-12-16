@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba22745923f1b157c477dce0b5704c7e278e748e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6eb63a4a0b7b7fdefd636d3460b182f8d907dd36
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96176003"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558931"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory Identity Protection についてよく寄せられる質問
 
@@ -82,9 +82,11 @@ IP の地理的位置情報のマッピングについては、業界全体の�
 
 - このフィードバックを受けて、(ユーザーではなく) サインイン リスクの状態が **[安全であるとの確認済み]** に設定され、リスク レベルが **-** に設定されます。
 
-- さらに、リスク評価における今後の改善のために、Microsoft の機械学習システムに情報が送信されます。
+- さらに、リスク評価における今後の改善のために、Microsoft の機械学習システムに情報が送信されます。 
 
     > [!NOTE]
+    >今日、サインイン時に [安全と確認する] を選択しても、それだけでは、同じプロパティでの今後のサインインに危険としてフラグが付けられるのを防ぐことはできません。 システムをトレーニングしてユーザーのプロパティを学習させる最善の方法は、危険なサインイン ポリシーを MFA で使用することです。 危険なサインインで MFA が求められ、ユーザーが要求に正しく応答すると、サインインは成功し、正当なユーザーの行動についてシステムをトレーニングするのに役立ちます。
+    >
     > ユーザーが侵害されていないと思われる場合は、サインイン レベルで **[安全であるとの確認済み]** を使用するのではなく、ユーザー レベルで **[ユーザー リスクを無視する]** を使用してください。 ユーザー レベルで **[ユーザー リスクを無視する]** を使用すると、ユーザーリスク、および過去に発生したリスクの高いサインインとリスク検出がすべて閉じられます。
 
 ### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-detections-are-shown-in-identity-protection"></a>Identity Protection にリスクの高いサインインやリスク検出が表示されていなくても、低 (またはそれ以上の) リスク スコアを持つユーザーが表示されるのはなぜですか?

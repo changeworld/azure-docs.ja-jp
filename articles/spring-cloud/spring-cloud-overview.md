@@ -7,48 +7,64 @@ ms.topic: overview
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 74ebdafb835aff75f282b9d6ac02d8ccf672a2be
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 041ef9950300129d54c9374939e13a2f99035bc1
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501092"
+ms.locfileid: "96532850"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Azure Spring Cloud とは
 
-Azure Spring Cloud では、Spring Boot ベースのマイクロサービス アプリケーションを、コードの変更なしで簡単に Azure にデプロイできます。  Spring Cloud アプリケーションのインフラストラクチャは Azure Spring Cloud によって管理されるので、開発者は自分のコードに専念することができます。  Spring Cloud は、包括的な監視と診断、構成管理、サービス検出、CI/CD 統合、Blue-Green デプロイなどを使用して、ライフサイクル管理を提供します。
+Azure Spring Cloud では、コードを変更せずに、Spring Boot マイクロサービス アプリケーションを Azure に簡単にデプロイできます。  Spring Cloud アプリケーションのインフラストラクチャはこのサービスによって管理されるので、開発者はコードに専念できます。  Azure Spring Cloud は、包括的な監視と診断、構成管理、サービス検出、CI/CD 統合、ブルー/グリーン デプロイなどを使用して、ライフサイクル管理を提供します。
 
-Azure Spring Cloud では、Java [Spring Boot](https://spring.io/projects/spring-boot) と ASP.NET Core [Steeltoe](https://steeltoe.io/) の両方のアプリがサポートされています。 Steeltoe に対するサポートは、現在、パブリック プレビューとして提供されています。 パブリック プレビューの提供では、公式リリースの前に新機能をお試しいただけます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。  詳細については、[FAQ](https://azure.microsoft.com/support/faq/) をご覧ください。または、[サポート リクエスト](../azure-portal/supportability/how-to-create-azure-support-request.md)を提出してください。
+## <a name="why-use-azure-spring-cloud"></a>Azure Spring Cloud を使用する理由
 
-Azure エコシステムの一部として、Azure Spring Cloud は、ストレージ、データベース、監視などの他の Azure サービスに簡単にバインドできます。
+Azure Spring Cloud へのアプリケーションのデプロイには多くの利点があります。  次のようにすることができます。
+* 既存の Spring アプリを効率的に移行し、クラウドのスケーリングとコストを管理する。
+* Spring Cloud のパターンを使用してアプリを最新化することで、俊敏性とデリバリーのスピードを向上させる。
+* クラウド規模で Java を実行し、複雑なインフラストラクチャなしで使用率を高める。
+* コンテナー化の依存関係なしで迅速に開発およびデプロイする。
+* 運用ワークロードを効率的かつ簡単に監視する。
 
-この概要では、Azure Spring Cloud の次の機能について説明します。
+Azure Spring Cloud では、Java [Spring Boot](https://spring.io/projects/spring-boot) と ASP.NET Core [Steeltoe](https://steeltoe.io/) の両方のアプリがサポートされています。 Steeltoe に対するサポートは、現在、パブリック プレビューとして提供されています。 パブリック プレビューの提供では、公式リリースの前に新機能をお試しいただけます。 パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。 詳細については、[FAQ](https://azure.microsoft.com/support/faq/) をご覧ください。または、[サポート リクエスト](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)を提出してください。
 
-* 構成サーバー
-* Blue/Green デプロイ
-* アプリケーションのスケーリング
-* Azure DevOps との統合
-* アプリケーションの監視
+## <a name="service-overview"></a>サービスの概要
 
-## <a name="spring-cloud-config-server"></a>Spring Cloud Config Server
+Azure エコシステムの一部として、Azure Spring Cloud は、ストレージ、データベース、監視などの他の Azure サービスに簡単にバインドできます。  
 
-Azure Spring Cloud Config Server は、サーバー側とクライアント側の両方のサポートを備えた分散システムで、外部化された構成を提供します。  Azure Spring Cloud Config Server は、すべての環境にわたってアプリケーションのプロパティを管理するための一元的な場所です。 詳細については、[Spring Cloud Config Server のリファレンス](https://spring.io/projects/spring-cloud-config)を参照してください。 
+  ![Azure Spring Cloud の概要](media/spring-cloud-principles/azure-spring-cloud-overview.png)
 
-## <a name="bluegreen-deployments"></a>Blue/Green デプロイ
+* Azure Spring Cloud は、Spring Boot アプリ向けのフル マネージド サービスです。ユーザーはインフラストラクチャの管理に煩わされることなく、アプリの構築と実行に集中できます。
 
-Azure Spring Cloud では、運用環境に対してコードのリリースと更新を行うための Blue-Green デプロイをサポートしています。  この変更管理パターンを利用すると、開発者は必要になった場合に即時にフォールバックを実行できるセキュリティ状態で、機能とコードの変更を実装できます。  複数の運用環境で、アプリケーションを中断することなくコードを更新したり変更をロールバックしたりできるため、開発者はコードの記述に専念できます。  ステージング環境と Blue-Green デプロイの詳細については、この[ハウツー記事](spring-cloud-howto-staging-environment.md)を参照してください。
+* JAR またはコードをデプロイするだけで、Azure Spring Cloud によって、Spring サービス ランタイムと組み込みのアプリ ライフサイクルにアプリが自動的に接続されます。
 
-## <a name="cicd-pipeline-automation"></a>CI/CD パイプラインの自動化
+* 監視は簡単です。 デプロイ後、アプリのパフォーマンスを監視し、エラーを修正して、アプリケーションを迅速に改善できます。 
 
-Azure Spring Cloud では、Azure CLI を使用した Azure DevOps との統合が提供されます。  Azure DevOps を使用すると、コードの統合と Spring アプリケーションへのデプロイを自動化できます。  詳細については、この[記事](spring-cloud-howto-cicd.md)を参照してください。
+* Azure のエコシステムとサービスへの完全な統合。
 
-## <a name="application-scaling"></a>アプリケーションのスケーリング
+* Azure Spring Cloud はエンタープライズ対応であり、フル マネージド インフラストラクチャ、組み込みのライフサイクル管理、容易な監視を提供します。
 
-Azure Spring Cloud では、Azure Spring Cloud ダッシュボードで、マイクロサービスを簡単にスケーリングできます。  要件に合わせて、マイクロサービスで使用可能な vCPU の数とメモリの量の両方をスケールアップまたはスケールダウンできます。  スケーリングは数秒で有効になり、コードの変更や再デプロイは不要です。  詳細を学習するには、この[チュートリアル](spring-cloud-tutorial-scale-manual.md)を完了してください。
+## <a name="documentation-overview"></a>ドキュメントの概要
+このドキュメントには、Azure Spring Cloud サービスの使用を開始する方法とサービスを活用する方法を説明するセクションが含まれています。
 
-## <a name="application-monitoring"></a>アプリケーションの監視
-
-Spring Cloud の分散トレース ツールを使用すると、開発者はアプリケーション内のマイクロサービス間の複雑な相互接続をデバッグおよび監視できます。  [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) と Azure の [Application Insights](../azure-monitor/monitor-reference.md) が統合され、Azure portal から強力な分散トレース機能を利用できます。  詳細を学習するには、この[チュートリアル](spring-cloud-tutorial-distributed-tracing.md)を完了してください。
+* はじめに
+    * [最初のアプリを起動する](spring-cloud-quickstart.md)
+    * [Azure Spring Cloud サービスをプロビジョニングする](spring-cloud-quickstart-provision-service-instance.md)
+    * [構成サーバーを設定する]()
+    * [アプリをビルドして配置する](spring-cloud-quickstart-deploy-apps.md)
+    * [ログ、メトリック、トレースを使用する](spring-cloud-quickstart-logs-metrics-tracing.md)
+* 操作方法
+    * [開発](spring-cloud-tutorial-prepare-app-deployment.md): Azure Spring Cloud にデプロイするために、既存の Java Spring アプリケーションを準備します。 適切に構成すると、Azure Spring Cloud によって、Java Spring Cloud アプリケーションの監視、スケーリング、更新を行う堅牢なサービスが提供されます。
+    * [デプロイ](spring-cloud-howto-staging-environment.md): Azure Spring Cloud でブルー/グリーン デプロイ パターンを使用して、ステージング環境のデプロイを設定します。 ブルー/グリーン デプロイとは、新しい (グリーン) バージョンのデプロイ中に、既存 (ブルー) のバージョンを実行状態のまま保持する、Azure DevOps の継続的デリバリーのパターンです。
+    * [アプリの構成](spring-cloud-howto-start-stop-delete.md): Azure Spring Cloud アプリケーションを起動、停止、削除します。 Azure portal または Azure CLI を使用して、Azure Spring Cloud でアプリケーションの状態を変更します。
+    * [スケール](spring-cloud-tutorial-scale-manual.md):Azure portal で Azure Spring Cloud ダッシュボードを使用するか、自動スケーリング設定を使用して、マイクロサービス アプリケーションをスケーリングします。 パブリック IP は、データベース、ストレージ、キー コンテナーなど、外部リソースとの通信に使用できます。
+    * [アプリの監視](spring-cloud-tutorial-distributed-tracing.md): 分散トレース ツールにより、複雑な問題を簡単にデバッグおよび監視できます。 Azure Spring Cloud は、Spring Cloud Sleuth と Azure の Application Insights を統合します。 この統合により、Azure portal から強力な分散トレース機能を利用できます。
+    * [アプリのセキュリティ保護](spring-cloud-howto-enable-system-assigned-managed-identity.md): Azure リソースは、Azure Active Directory で自動的に管理される ID を提供します。 この ID を使用して、コードに資格情報が含まれていなくても、Azure AD の認証をサポートする任意のサービスに認証することができます。
+    * [他の Azure サービスとの統合](spring-cloud-tutorial-bind-cosmos.md): Spring Boot アプリケーションを手動で構成するのではなく、選択した Azure サービスをアプリケーションに自動的にバインドできます。たとえば、アプリケーションを Azure Cosmos DB データベースにバインドできます。
+    * [自動化](spring-cloud-howto-cicd.md): 継続的インテグレーションと継続的デリバリーのツールを使用すると、最小限の労力とリスクで、既存のアプリケーションにすばやく更新プログラムをデプロイできます。 Azure DevOps は、これらの主要なタスクの整理と制御に役立ちます。 
+    * [トラブルシューティング](spring-cloud-howto-self-diagnose-solve.md): Azure Spring Cloud 診断は、アプリのトラブルシューティングに役立つ対話型エクスペリエンスを提供します。 構成は必要ありません。 問題が見つかった場合、Azure Spring Cloud 診断によって問題点が特定され、問題のトラブルシューティングと解決に役立つ情報が示されます。
+    * [移行](https://docs.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud):既存の Spring Cloud アプリケーションまたは Spring Boot アプリケーションを移行して、Azure Spring Cloud で実行します。
 
 ## <a name="next-steps"></a>次のステップ
 

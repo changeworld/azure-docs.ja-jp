@@ -2,14 +2,14 @@
 title: 論理的な組織化のためにリソース、リソース グループ、サブスクリプションにタグを付ける
 description: タグを適用して、課金や管理のために Azure リソースを整理する方法を示します。
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 12/03/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9e9ef96a712e5ac2ba483170fb8ef9c89115b4f8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e47d3acf15ce5e4f5cb70444419b76beb21ae98b
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95972566"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558149"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>タグを使用して Azure リソースと整理階層を整理する
 
@@ -26,9 +26,11 @@ Azure リソース、リソース グループ、サブスクリプションに�
 
 ## <a name="required-access"></a>必要なアクセス
 
-リソースにタグを適用するには、**Microsoft.Resources/tags** リソースの種類に対する書き込みアクセス権が必要です。 [タグ共同作成者](../../role-based-access-control/built-in-roles.md#tag-contributor)ロールを使用すると、エンティティ自体へのアクセス権がなくても、エンティティにタグを適用できます。 現時点では、タグの共同作成者ロールでは、ポータルからリソースまたはリソース グループにタグを適用することはできません。 ポータルを使用したサブスクリプションへのタグの適用は可能です。 PowerShell と REST API によるすべてのタグ操作がサポートされます。  
+タグ リソースへの必要なアクセスを取得するには、2 つの方法があります。
 
-[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールでも、任意のエンティティにタグを適用するために必要なアクセス権が付与されます。 1 つのリソースの種類だけにタグを適用するには、そのリソースの共同作成者ロールを使用します。 たとえば、仮想マシンにタグを適用するには、[仮想マシン共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)を使用します。
+- **Microsoft.Resources/tags** リソースの種類に対する書き込みアクセス権を持つこと。 このアクセス権により、リソース自体にアクセスできない場合でも、任意のリソースにタグを付けることができます。 [タグ共同作成者](../../role-based-access-control/built-in-roles.md#tag-contributor)ロールでは、このアクセス権が付与されます。 現時点では、タグの共同作成者ロールでは、ポータルからリソースまたはリソース グループにタグを適用することはできません。 ポータルを使用したサブスクリプションへのタグの適用は可能です。 PowerShell と REST API によるすべてのタグ操作がサポートされます。  
+
+- リソース自体に対する書き込みアクセス権を持つこと。 [共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールでは、任意のエンティティにタグを適用するために必要なアクセス権が付与されます。 1 つのリソースの種類だけにタグを適用するには、そのリソースの共同作成者ロールを使用します。 たとえば、仮想マシンにタグを適用するには、[仮想マシン共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)を使用します。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -277,7 +279,7 @@ az tag create --resource-id $resource --tags Team=Compliance Environment=Product
 },
 ```
 
-既にタグがあるリソースにタグを追加するには、**az tag update** を使用します。 **--operation** パラメーターを **Merge** に設定します。
+既にタグがあるリソースにタグを追加するには、`az tag update` を使用します。 `--operation` パラメーターを `Merge` に設定します。
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Merge --tags Dept=Finance Status=Normal
@@ -313,7 +315,7 @@ az tag update --resource-id $resource --operation Merge --tags Status=Green
 },
 ```
 
-**--operation** パラメーターを **Replace** に設定すると、既存のタグが新しいタグのセットに置き換えられます。
+`--operation` パラメーターを `Replace` に設定すると、既存のタグが新しいタグのセットに置き換えられます。
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Replace --tags Project=ECommerce CostCenter=00123 Team=Web
@@ -406,7 +408,7 @@ az group list --tag Dept=Finance
 
 ### <a name="remove-tags"></a>タグを削除する
 
-特定のタグを削除するには、**az tag update** を使用し、 **--operation** を **Delete** に設定します。 削除するタグを渡します。
+特定のタグを削除するには、`az tag update` を使用し、 `--operation` を `Delete` に設定します。 削除するタグを渡します。
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Delete --tags Project=ECommerce Team=Web

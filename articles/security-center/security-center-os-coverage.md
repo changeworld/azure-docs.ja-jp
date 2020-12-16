@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: 68cb738ae6e4689a0356ea56c1de2d383ea83ad6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31ff3620bcab6b10b59582daa255ff1f259ab0d3
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449936"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852644"
 ---
 # <a name="supported-platforms"></a>サポートされているプラットフォーム 
 
@@ -44,8 +44,10 @@ Security Center は [Log Analytics エージェント](../azure-monitor/platform
 
 また、Log Analytics エージェントが [Security Center にデータを送信するように適切に構成されている](security-center-enable-data-collection.md#manual-agent)ことを確認してください
 
-> [!TIP]
-> Windows および Linux で使用できる特定の Security Center 機能の詳細については、「[マシンを対象とする機能](security-center-services.md)」を参照してください。
+Windows および Linux で使用できる特定の Security Center 機能の詳細については、「[マシンを対象とする機能](security-center-services.md)」を参照してください。
+
+> [!NOTE]
+> Azure Defender はサーバーを保護するように設計されていますが、**Azure Defender for server** の機能のほとんどは Windows 10 マシンでサポートされています。 現在サポートされていない機能の 1 つとして、[Security Center の統合 EDR ソリューション: Microsoft Defender for Endpoint](security-center-wdatp.md) があります。
 
 ## <a name="managed-virtual-machine-services"></a>マネージド仮想マシン サービス <a name="virtual-machine"></a>
 

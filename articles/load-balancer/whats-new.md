@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: 3a20b69189226486de8cfceb95e2fa79a976cb12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a30a42e8a8c4049b53274da512089dd29965e775
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841035"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573155"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>Azure Load Balancer の最新情報
 
@@ -42,7 +42,7 @@ Azure Load Balancer は定期的に更新されます。 最新のお知らせ�
 
 |問題 |説明  |対応策  |
 | ---------- |---------|---------|
-| Log Analytics のエクスポート | Log Analytics で、Standard Load Balancer に対するメトリックまたは Basic Load Balancer に対する正常性プローブ状態ログをエクスポートできません  | [Standard Load Balancer に対する多次元メトリックの場合は Azure Monitor を利用します](load-balancer-standard-diagnostics.md)。 監視に Log Analytics を使用することはできませんが、Azure Monitor により多次元メトリックの豊富なセットが視覚化されます。 Load Balancer の [分析情報] サブブレードを使用して、構成済みのメトリック ダッシュボードを利用できます。 Basic Load Balancer を使用している場合、運用レベルのメトリック監視のためには [Standard にアップグレード](upgrade-basic-standard.md)します。
+| ロード バランサーのアラート イベントと正常性プローブの状態ログ | Basic Load Balancer および Standard Load Balancer に関してロード バランサーのアラート イベントのログが機能せず、また、Basic Load Balancer に関しては正常性プローブの状態ログも機能しません  | [Standard Load Balancer に対する多次元メトリックの場合は Azure Monitor を利用します](load-balancer-standard-diagnostics.md)。 Azure Monitor により多次元メトリックの豊富なセットが視覚化されます。このメトリックをログとしてエクスポートすることもできます。 Load Balancer の [分析情報] サブブレードを使用して、構成済みのメトリック ダッシュボードを利用できます。 Basic Load Balancer を使用している場合、運用レベルのメトリック監視のためには [Standard にアップグレード](upgrade-basic-standard.md)します。
 
   
 

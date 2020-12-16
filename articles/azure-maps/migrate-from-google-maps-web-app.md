@@ -1,20 +1,20 @@
 ---
-title: チュートリアル - Google Maps から Web アプリを移行する | Microsoft Azure Maps
+title: チュートリアル - Google マップから Web アプリを移行する | Microsoft Azure Maps
 description: Google Maps から Microsoft Azure Maps に Web アプリを移行する方法についてのチュートリアルです。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 08/18/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: b95800bea4bceffabad56aa29b68a57b310c5518
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4dee8de8f42b78ecdab9d9e15bb277d58fa8ba70
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896448"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905062"
 ---
 # <a name="tutorial---migrate-a-web-app-from-google-maps"></a>チュートリアル - Google Maps から Web アプリを移行する
 
@@ -75,7 +75,7 @@ JavaScript フレームワークを開発に使用している場合は、次の
 | ジオコーダー サービス        | ✓                          |
 | 方向サービス      | ✓                          |
 | 距離マトリックス サービス | ✓                          |
-| 標高サービス       | 対応予定                     |
+| 標高サービス       | ✓                          |
 
 ## <a name="notable-differences-in-the-web-sdks"></a>Web SDK の注目すべき相違点
 
@@ -85,7 +85,7 @@ JavaScript フレームワークを開発に使用している場合は、次の
 - まず、Azure Maps で Map クラスのインスタンスを作成する必要があります。 マップの `ready` または `load` イベントが発生するのを待ってから、プログラムでマップを操作してください。 この順序により、確実にマップ リソースがすべて読み込まれ、アクセスできる状態になります。
 - どちらのプラットフォームも、基本マップには同様のタイリング システムが使用されています。 Google マップのタイルのディメンションは 256 ピクセルですが、Azure Maps のタイルのディメンションは 512 ピクセルとなります。 Google マップと同じマップ ビューを Azure Maps で取得するには、Azure Maps では、Google マップのズーム レベルから 1 減らします。
 - Google マップでは座標は `latitude,longitude` と呼ばれますが、Azure Maps では `longitude,latitude` が使用されます。 Azure Maps の形式は、ほとんどの GIS プラットフォームが準拠している標準の `[x, y]` に合わせてあります。
-- Azure Maps Web SDK の図形は、GeoJSON スキーマに基づいています。 ヘルパー クラスは、 [" *atlas.data* " 名前空間](/javascript/api/azure-maps-control/atlas.data)を通じて公開されます。 また、 [*atlas.Shape*](/javascript/api/azure-maps-control/atlas.shape) というクラスもあります。 このクラスを使用すると、GeoJSON オブジェクトをラップし、データ バインド可能な方法で簡単に更新、保守できます。
+- Azure Maps Web SDK の図形は、GeoJSON スキーマに基づいています。 ヘルパー クラスは、["*atlas.data*" 名前空間](/javascript/api/azure-maps-control/atlas.data)を通じて公開されます。 また、[*atlas.Shape*](/javascript/api/azure-maps-control/atlas.shape) というクラスもあります。 このクラスを使用すると、GeoJSON オブジェクトをラップし、データ バインド可能な方法で簡単に更新、保守できます。
 - Azure Maps の座標は、位置オブジェクトとして定義されます。 座標は、`[longitude,latitude]` 形式の数値配列として指定されます。 または、新しい atlas.data.Position(経度, 緯度) を使用して指定されます。
     > [!TIP]
     > Position クラスには、"緯度, 経度" 形式の座標をインポートするための静的ヘルパー メソッドがあります。 [atlas.data.Position.fromLatLng](/javascript/api/azure-maps-control/atlas.data.position) メソッドは、多くの場合、Google Maps のコード内の `new google.maps.LatLng` メソッドと置き換えることができます。

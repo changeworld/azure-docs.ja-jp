@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: 291586bc2e34784a7bbf29016ea1da35d51e844b
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: bb2eb36e4116c17efb20946b0da4586678838f3b
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489949"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862005"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>チュートリアル:Azure Stream Analytics ジョブから Azure Functions を実行する 
 
@@ -195,7 +195,9 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 Azure Functions へのイベントの送信中にエラーが発生した場合、Stream Analytics はほとんどの操作を再試行します。 http エラー 413 (エンティティが大きすぎます) を除き、すべての http 例外は、成功するまで再試行されます。 "エンティティが大きすぎます" エラーは、[再試行またはドロップ ポリシー](stream-analytics-output-error-policy.md)の対象となるデータ エラーとして扱われます。
 
 > [!NOTE]
-> Stream Analytics から Azure Functions への HTTP 要求のタイムアウトは、100 秒に設定されています。 Azure Functions アプリでのバッチ処理に 100 秒以上かかる場合、Stream Analytics でエラーが発生します。
+> Stream Analytics から Azure Functions への HTTP 要求のタイムアウトは、100 秒に設定されています。 Azure Functions アプリでのバッチ処理に 100 秒以上かかる場合、Stream Analytics エラーが出力され、バッチが再試行されます。
+
+タイムアウトを再試行すると、重複するイベントが出力シンクに書き込まれる可能性があります。 Stream Analytics では、失敗したバッチを再試行するときに、バッチ内のすべてのイベントが再試行されます。 たとえば、Stream Analytics から Azure Functions に送信される 20 個のイベントからなるバッチを考えてみます。 Azure Functions によってこのバッチの最初の 10 個のイベントが処理されるのに 100 秒かかるとします。 Stream Analytics は、100 秒が経過した時点で Azure Functions から肯定応答を受信していないため、要求を中断します。さらに、同じバッチに対して別の要求が送信されます。 バッチ内の最初の 10 個のイベントが Azure Functions によって再度処理され、これによって重複が発生します。 
 
 ## <a name="known-issues"></a>既知の問題
 

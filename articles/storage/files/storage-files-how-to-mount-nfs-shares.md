@@ -4,16 +4,16 @@ description: ネットワーク ファイル システム共有をマウント�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 530ae82720e6b4eb6a3e4d1021c0b37b9f4dbf5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a993d9c1de35132198de5e3becc4f16d6a2a437
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707443"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621299"
 ---
 # <a name="how-to-mount-an-nfs-file-share"></a>NFS ファイル共有をマウントする方法
 
@@ -55,9 +55,13 @@ ms.locfileid: "90707443"
 1. 使用するマウント パスを入力し、スクリプトをコピーします。
 1. クライアントに接続し、提供されたマウント スクリプトを使用します。
 
-    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/mount-nfs-file-share-script.png" alt-text="安全な転送が無効になっているストレージ アカウントの構成画面のスクリーンショット。":::
+    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/mount-nfs-file-share-script.png" alt-text="ファイル共有接続ブレードのスクリーンショット":::
 
 これで NFS 共有がマウントされました。
+
+### <a name="validate-connectivity"></a>接続の検証
+
+マウントが失敗した場合は、ご使用のプライベート エンドポイントが正しく設定されていないか、アクセスできない可能性があります。 接続の確認の詳細については、ネットワーク エンドポイントの記事の「[接続を検証する](storage-files-networking-endpoints.md#verify-connectivity)」セクションを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

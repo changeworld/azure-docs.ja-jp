@@ -1,15 +1,18 @@
 ---
 title: Azure に移行する AWS インスタンスを Azure Migrate Server Assessment を使用して評価する
-description: Azure に移行する AWS インスタンスを Azure Migrate Server Assessment を使用して評価する方法について説明します。
+description: Azure Migrate Server Assessment を使用して、Azure への移行のために AWS インスタンスにアクセスする方法について説明します。
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 14928c8a3249cca172ad088f290b54a22a125ae7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7d64d239eeb3be5bf94830a425c6e097a69a64b
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90108336"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753353"
 ---
 # <a name="tutorial-assess-aws-instances-for-migration-to-azure"></a>チュートリアル:Azure への移行のために AWS インスタンスを評価する
 

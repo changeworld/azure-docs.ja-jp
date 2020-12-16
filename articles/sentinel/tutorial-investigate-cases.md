@@ -14,19 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: c1873e21db1c586453dc9e9fe890268d8797303a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: aa9160f01ed0040123bd8ac932cfd2443f557bb6
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367008"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511731"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>チュートリアル:Azure Sentinel でインシデントを調査する
 
 > [!IMPORTANT]
-> 調査グラフは、現在、パブリック プレビュー段階にあります。
-> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> 調査グラフは、現在、**プレビュー** 段階にあります。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 
 このチュートリアルは、Azure Sentinel でインシデントを調査するためのものです。 Azure Sentinel にデータ ソースを接続した後で、不審な事態が起きたときに通知を受けるようにします。 これを実現するために、Azure Sentinel では、割り当てや調査が可能なインシデントを生成する高度なアラート ルールを作成できます。
@@ -72,18 +70,20 @@ ms.locfileid: "92367008"
   
 調査グラフには、次のものがあります。
 
-- **生データからのビジュアル コンテキスト** :ライブのビジュアル グラフには、生データから自動的に抽出されたエンティティのリレーションシップが表示されます。 これにより、さまざまなデータ ソース間の接続を簡単に確認できます。
+- **生データからのビジュアル コンテキスト**:ライブのビジュアル グラフには、生データから自動的に抽出されたエンティティのリレーションシップが表示されます。 これにより、さまざまなデータ ソース間の接続を簡単に確認できます。
 
-- **調査範囲全体の検出** :組み込みの探索クエリを使用して調査範囲を拡大し、侵害の全範囲を明らかにします。
+- **調査範囲全体の検出**:組み込みの探索クエリを使用して調査範囲を拡大し、侵害の全範囲を明らかにします。
 
-- **組み込みの調査手順** :定義済みの探索オプションを使用して、脅威の発生時に適切な質問をするようにします。
+- **組み込みの調査手順**:定義済みの探索オプションを使用して、脅威の発生時に適切な質問をするようにします。
 
 調査グラフを使用するには:
 
 1. インシデントを選択し、 **[調査]** を選択します。 これにより、調査グラフが表示されます。 グラフには、アラートに直接接続されているエンティティと、さらに接続されている各リソースのイラスト マップが示されます。
 
    > [!IMPORTANT] 
-   > インシデントの調査が可能なのは、分析ルールを設定するときにエンティティ マッピング フィールドを使用した場合のみです。 調査グラフでは、元のインシデントにエンティティが含まれている必要があります。
+   > - インシデントの調査が可能なのは、分析ルールを設定するときにエンティティ マッピング フィールドを使用した場合のみです。 調査グラフでは、元のインシデントにエンティティが含まれている必要があります。
+   >
+   > - 現在、Azure Sentinel では、**過去 30 日間まで** のインシデントの調査がサポートされています。
 
    ![マップを表示する](media/tutorial-investigate-cases/map1.png)
 
@@ -123,7 +123,7 @@ ms.locfileid: "92367008"
 
 適切な分類を選択した後、 **[コメント]** フィールドに説明文を追加します。 これは、このインシデントを参照する必要がある場合に役立ちます。 完了したら **[適用]** をクリックすると、インシデントが閉じられます。
 
-:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="[分類の選択] リストで使用できる分類が強調表示されているスクリーンショット。":::
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{alt-text}":::
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure Sentinel を使用して、インシデントの調査を開始する方法について説明しました。 [自動プレイブックを使用した脅威への対応](tutorial-respond-threats-playbook.md)に関するチュートリアルに進んでください。

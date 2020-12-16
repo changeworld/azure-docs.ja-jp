@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 199da0586a061bccdf8a6ff8a1f53df2f703512f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 25db7104e565a987f3be9e2d6f3b239cf1884ae4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959443"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932338"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>チュートリアル:カスタム IoT Edge モジュールの作成とデプロイ
 
@@ -51,6 +51,15 @@ IoT Edge デバイスで 4 つのことを達成できるようにします。
 ![IoT Edge の 3 つのモジュールのアーキテクチャ図](media/tutorial-machine-learning-edge-06-custom-modules/modules-diagram.png)
 
 この記事の手順は通常、クラウド開発者によって実行されます。
+
+チュートリアルのこのセクションで学習する内容は次のとおりです。
+
+> [!div class="checklist"]
+>
+> * カスタム コードから IoT Edge モジュールを作成する。
+> * カスタム モジュールから Docker イメージを生成する。
+> * カスタム モジュールをサポートするように IoT Hub ルーティングを再構成する。
+> * カスタム モジュールをビルド、発行、およびデプロイする。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -804,6 +813,10 @@ IoT Edge デバイス (このケースでは Linux VM) にログインすると�
    ```bash
    sudo docker exec -it avroFileWriter bash
    ```
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このチュートリアルはセットの一部であり、各記事は前の記事の作業が行われたことが前提になっています。 最後のチュートリアルを完了するまで、リソースのクリーンアップはしないでください。
 
 ## <a name="next-steps"></a>次のステップ
 

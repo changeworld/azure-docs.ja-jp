@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 7246375468b3419c3d52ee3d5a51a95aa20050a9
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 2f3e4bf640b8da31a7fa4d818b94b0372d3026b8
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876659"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763443"
 ---
 サンプル アプリケーションには、シミュレートされたデバイスが 2 つと、IoT Edge ゲートウェイが 1 つ含まれています。 ゲートウェイの機能を試して理解するために、以降のチュートリアルでは次の 2 つのアプローチを紹介しています。
 
@@ -36,6 +36,6 @@ ms.locfileid: "91876659"
 
 ## <a name="initial-setup"></a>初期セットアップ
 
-これらのチュートリアルでは、いくつかの構成ファイルを更新して使用します。 これらのファイルの初期バージョンは、[LVA-gateway](https://github.com/Azure/live-video-analytics/tree/master/ref-apps/lva-edge-iot-central-gateway) GitHub リポジトリで入手できます。 このリポジトリには、scratchpad というテキスト ファイルも用意されています。デプロイするサービスの構成値を記録する際に、ダウンロードしてご利用ください。
+これらのチュートリアルでは、いくつかの構成ファイルを更新して使用します。 これらのファイルの初期バージョンは、[LVA-gateway](https://github.com/Azure/live-video-analytics/tree/master/ref-apps/lva-edge-iot-central-gateway) GitHub リポジトリで入手できます。 このリポジトリには、[scratchpad](https://github.com/Azure/live-video-analytics/blob/master/ref-apps/lva-edge-iot-central-gateway/setup/Scratchpad.txt) というテキスト ファイルが含まれています。デプロイするサービスの構成値を記録する際に、ダウンロードしてご利用ください。 このファイルは、チュートリアルの後の手順を完了するのに役立ちます。
 
 これらのファイルのコピーを保存するための *lva-configuration* というフォルダーをローカル コンピューターに作成します。 次の各リンクを右クリックし、 **[名前を付けて保存]** を選択して、*lva-configuration* フォルダーにファイルを保存します。

@@ -3,16 +3,16 @@ title: GitHub アクションからのカスタム コンテナー CI/CD
 description: GitHub アクションを使用してカスタム Linux コンテナーを CI/CD パイプラインから App Service にデプロイする方法について説明します。
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2020
+ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 068fc9dcb9a4f4a62c2dd879bf8144097452f1e0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 76d82695f0f43638e840589c52d6713ae36c1608
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099030"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607808"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>GitHub Actions を使用した App Service へのカスタム コンテナーのデプロイ
 
@@ -31,10 +31,10 @@ Azure App Service のコンテナー ワークフロー ファイルには、次
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成する](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- GitHub アカウント。 お持ちでない場合は、[無料](https://github.com/join)でサインアップしてください。  
-- コンテナー用の作業コンテナー レジストリと Azure App Service アプリ。 この例では、Azure Container Registry を使用します。 
+- GitHub アカウント。 ない場合は、[無料](https://github.com/join)でサインアップしてください。 Azure App Service にデプロイするには、GitHub リポジトリにコードが必要です。 
+- コンテナー用の作業コンテナー レジストリと Azure App Service アプリ。 この例では、Azure Container Registry を使用します。 コンテナー用の Azure App Service への完全デプロイを確実に完了してください。 通常の Web アプリと異なり、コンテナー用の Web アプリには既定のランディング ページがありません。 実際の例を得るには、コンテナーを発行します。
     - [コンテナー化された Node.js アプリケーションを Docker を使って作成し、コンテナー イメージをレジストリにプッシュした後、イメージを Azure App Service にデプロイする方法をご確認ください](/azure/developer/javascript/tutorial-vscode-docker-node-01)
-
+        
 ## <a name="generate-deployment-credentials"></a>デプロイ資格情報を生成する
 
 GitHub Actions 用の Azure App Services での認証で推奨される方法は、発行プロファイルを使用することです。 サービス プリンシパルを使用して認証することもできますが、そのプロセスにはさらに多くの手順が必要です。 
@@ -50,7 +50,7 @@ GitHub Actions 用の Azure App Services での認証で推奨される方法は
 1. **[概要]** ページで、 **[発行プロファイルの取得]** オプションを選択します。
 
     > [!NOTE]
-    > 2020 年 10 月の時点で、Linux Web アプリでは、 **ファイルをダウンロードする前に** 、アプリ設定 `WEBSITE_WEBDEPLOY_USE_SCM` を `true` に設定する必要があります。 この要件は、今後削除される予定です。
+    > 2020 年 10 月の時点で、Linux Web アプリでは、**ファイルをダウンロードする前に**、アプリ設定 `WEBSITE_WEBDEPLOY_USE_SCM` を `true` に設定する必要があります。 この要件は、今後削除される予定です。 一般的な Web アプリの設定を構成する方法については、「[Azure portal で App Service アプリを構成する](/azure/app-service/configure-common)」を参照してください。  
 
 1. ダウンロードしたファイルを保存します。 このファイルの内容を使用して、GitHub シークレットを作成します。
 
@@ -80,21 +80,6 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 > 常に最小限のアクセス権を付与することをお勧めします。 前の例の範囲は、リソース グループ全体ではなく、特定の App Service アプリに限定されます。
 
 ---
-
-## <a name="configure-the-github-secret"></a>GitHub シークレットの構成
-
-[GitHub](https://github.com/) で、自分のリポジトリを参照し、 **[設定] > [シークレット] > [新しいシークレットの追加]** を選択します。
-
-JSON 出力の内容を、シークレット変数の値として貼り付けます。 シークレットに `AZURE_CREDENTIALS` などの名前を付けます。
-
-後でワークフロー ファイルを構成する場合は、Azure ログイン アクションの入力 `creds` にシークレットを使用します。 次に例を示します。
-
-```yaml
-- uses: azure/login@v1
-  with:
-    creds: ${{ secrets.AZURE_CREDENTIALS }}
-```
-
 ## <a name="configure-the-github-secret-for-authentication"></a>認証用の GitHub シークレットを構成する
 
 # <a name="publish-profile"></a>[発行プロファイル](#tab/publish-profile)
@@ -129,9 +114,9 @@ GitHub ワークフローを構成するときに、Azure Web アプリをデプ
 
 ## <a name="configure-github-secrets-for-your-registry"></a>レジストリ用の GitHub シークレットを構成する
 
-Docker ログイン アクションで使用するシークレットを定義します。 
+Docker ログイン アクションで使用するシークレットを定義します。 このドキュメントの例では、コンテナー レジストリ用に Azure Container Registry を使用しています。 
 
-1. Azure portal または Docker でお使いのコンテナーにアクセスし、ユーザー名とパスワードをコピーします。 
+1. Azure portal または Docker でお使いのコンテナーにアクセスし、ユーザー名とパスワードをコピーします。 Azure Container Registry のユーザー名とパスワードは、Azure portal の、お使いのレジストリの **[設定]**  >  **[アクセス キー]** で確認できます。 
 
 2. レジストリ ユーザー名のために `REGISTRY_USERNAME` という名前の新しいシークレットを定義します。 
 
@@ -163,7 +148,7 @@ jobs:
         docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
 ```
 
-また、[Docker Login](https://github.com/azure/docker-login) を使用して複数のコンテナー レジストリに同時にログインすることもできます。 この例には、docker.io を使用した認証用の 2 つの新しい GitHub シークレットが含まれています。
+また、[Docker Login](https://github.com/azure/docker-login) を使用して複数のコンテナー レジストリに同時にログインすることもできます。 この例には、docker.io を使用した認証用の 2 つの新しい GitHub シークレットが含まれています。 この例は、レジストリのルート レベルに Dockerfile があることを前提としています。 
 
 ```yml
 name: Linux Container Node Workflow
@@ -248,7 +233,7 @@ jobs:
     steps:
     # checkout the repo
     - name: 'Checkout GitHub Action' 
-      uses: actions/checkout@master
+      uses: actions/checkout@main
     
     - name: 'Login via Azure CLI'
       uses: azure/login@v1

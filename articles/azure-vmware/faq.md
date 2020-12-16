@@ -4,12 +4,12 @@ description: Azure VMware Solution についてよく寄せられる質問にお
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: dikamath
-ms.openlocfilehash: 0bc3e0ab5b3017c2d051113a57d79214ffce0836
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3033df2021a8d1780caf9b0b7cd4dbe8de2a6050
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967348"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861410"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware Solution についてよく寄せられる質問
 
@@ -188,7 +188,7 @@ Azure portal で、プライベート クラウドのインターネット接続
 
 #### <a name="do-i-need-to-restrict-access-from-the-internet-to-vms-on-logical-networks-in-a-private-cloud"></a>インターネットからプライベート クラウド内の論理ネットワーク上の VM へのアクセスを制限する必要はありますか?
 
-いいえ。 インターネットからプライベート クラウドへの直接的なインバウンド ネットワーク トラフィックは許可されません。
+いいえ。 インターネットからプライベート クラウドへの直接的なインバウンド ネットワーク トラフィックは、規定では許可されません。  ただし、Azure VMware Solution のプライベート クラウド用に Azure portal の[パブリック IP](public-ip-usage.md) オプションを使用して、Azure VMware Solution VM をインターネットに公開することはできます。
 
 #### <a name="do-i-need-to-restrict-internet-access-from-vms-on-logical-networks-to-the-internet"></a>論理ネットワーク上の VM からインターネットへのインターネット アクセスを制限する必要はありますか?
 

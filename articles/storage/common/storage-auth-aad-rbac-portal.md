@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e2d577261a1cea0bad9aab549b3669f8fdef5751
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 40003db9c3bd2c736f9cedd73b8b7a31a77f625f
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715846"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854582"
 ---
 # <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる
 
@@ -39,14 +39,14 @@ Azure ロールが Azure AD セキュリティ プリンシパルに割り当て
 
 1. Azure AD セキュリティ プリンシパルにアクセス権を付与するために、適切な Azure Storage の Azure ロールを割り当てます。
 
-1. Azure Resource Manager の[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロールを、Azure AD 資格情報を使用して Azure portal でコンテナーまたはキューにアクセスする必要があるユーザーに割り当てます。 
+1. Azure Resource Manager の[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロールを、Azure AD 資格情報を使用して Azure portal でコンテナーまたはキューにアクセスする必要があるユーザーに割り当てます。
 
 以降のセクションで、これらの手順のそれぞれについて詳しく説明します。
 
 > [!NOTE]
-> Azure Storage アカウントの所有者であっても、データへのアクセス許可が自動的に割り当てられるわけではありません。 Azure Storage の Azure ロールを自分自身に明示的に割り当てる必要があります。 これは、サブスクリプション、リソース グループ、ストレージ アカウント、あるいはコンテナーまたはキューのレベルで割り当てることができます。
+> Azure ストレージ アカウントを作成するとき、Azure AD を介してデータにアクセスするためのアクセス許可は自動的に割り当てられません。 Azure Storage の Azure ロールを自分自身に明示的に割り当てる必要があります。 これは、サブスクリプション、リソース グループ、ストレージ アカウント、あるいはコンテナーまたはキューのレベルで割り当てることができます。
 >
-> ストレージ アカウントで階層型名前空間が有効になっている場合、コンテナーまたはキューに対してスコープが指定されたロールを割り当てることはできません。
+> データ アクセスのためのロールを自分に割り当てる前に、Azure portal 経由でストレージ アカウントのデータにアクセスできるようになります。これは、Azure portal もデータ アクセスにアカウント キーを使用できるためです。 詳細については、「[Azure portal で BLOB データへのアクセスの承認方法を選択する](../blobs/authorize-data-operations-portal.md)」を参照してください。
 
 ### <a name="assign-an-azure-built-in-role"></a>Azure 組み込みロールの割り当て
 
@@ -64,24 +64,24 @@ Azure ロールが Azure AD セキュリティ プリンシパルに割り当て
 1. **[ロールの割り当ての追加]** ボタンをクリックして新しいロールを追加します。
 1. **[ロールの割り当ての追加]** ウィンドウで、割り当てる Azure Storage ロールを選択します。 次に、そのロールの割り当て先となるセキュリティ プリンシパルを検索して見つけます。
 
-    :::image type="content" source="media/storage-auth-aad-rbac-portal/add-rbac-role.png" alt-text="コンテナーのアクセス制御設定を示すスクリーンショット":::
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/add-rbac-role.png" alt-text="Azure ロールの割り当て方法を示すスクリーンショット":::
 
 1. **[保存]** をクリックします。 ロールの割り当て先となった ID が、そのロールに一覧表示されます。 たとえば次の図は、今追加されたユーザーに、*sample-container* という名前のコンテナーのデータに対する読み取りアクセス許可があることを示しています。
 
-    :::image type="content" source="media/storage-auth-aad-rbac-portal/container-scoped-role.png" alt-text="コンテナーのアクセス制御設定を示すスクリーンショット":::
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/container-scoped-role.png" alt-text="ロールに割り当てられたユーザーの一覧を示すスクリーンショット":::
 
 同じ手順を実行して、ストレージ アカウント、リソース グループ、またはサブスクリプションに対してスコープが指定されたロールを割り当てることができます。
 
 ### <a name="assign-the-reader-role-for-portal-access"></a>ポータルへのアクセス用の閲覧者ロールの割り当て
 
-セキュリティ プリンシパルに Azure Storage の組み込みまたはカスタム ロールを割り当てると、そのセキュリティ プリンシパルに、ストレージ アカウント内のデータに対する操作を実行するためのアクセス許可を付与することになります。 組み込みの**データ閲覧者**ロールがコンテナーまたはキュー内のデータの読み取りアクセス許可を提供する一方で、組み込みの**データ共同作成者**ロールは、コンテナーまたはキューに対する読み取り、書き込み、および削除のアクセス許可を提供します。 アクセス許可のスコープは指定されたリソースに指定されます。  
-たとえば、**ストレージ BLOB データ共同作成者**ロールを **sample-container** という名前のコンテナーのレベルで Mary というユーザーに割り当てると、Mary にはそのコンテナー内のすべての BLOB に対する読み取り、書き込み、および削除のアクセス権が付与されます。
+セキュリティ プリンシパルに Azure Storage の組み込みまたはカスタム ロールを割り当てると、そのセキュリティ プリンシパルに、ストレージ アカウント内のデータに対する操作を実行するためのアクセス許可を付与することになります。 組み込みの **データ閲覧者** ロールがコンテナーまたはキュー内のデータの読み取りアクセス許可を提供する一方で、組み込みの **データ共同作成者** ロールは、コンテナーまたはキューに対する読み取り、書き込み、および削除のアクセス許可を提供します。 アクセス許可のスコープは指定されたリソースに指定されます。  
+たとえば、**ストレージ BLOB データ共同作成者** ロールを **sample-container** という名前のコンテナーのレベルで Mary というユーザーに割り当てると、Mary にはそのコンテナー内のすべての BLOB に対する読み取り、書き込み、および削除のアクセス権が付与されます。
 
-ただし、Mary が Azure portal で BLOB を表示する場合、**ストレージ BLOB データ共同作成者**ロール自体は、BLOB を表示するためにポータル内でその BLOB に移動するための十分なアクセス許可を提供しません。 ポータル内で移動し、そこに表示されているその他のリソースを確認するには、Azure AD の追加のアクセス許可が必要です。
+ただし、Mary が Azure portal で BLOB を表示する場合、**ストレージ BLOB データ共同作成者** ロール自体は、BLOB を表示するためにポータル内でその BLOB に移動するための十分なアクセス許可を提供しません。 ポータル内で移動し、そこに表示されているその他のリソースを確認するには、Azure AD の追加のアクセス許可が必要です。
 
-ユーザーが Azure portal で BLOB にアクセス可能でなくてはならない場合は、それらのユーザーに、ストレージ アカウント以上のレベルで追加の Azure ロールとなる[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロールを割り当てます。 **閲覧者**ロールは Azure Resource Manager のロールであり、ユーザーにストレージ アカウントのリソースの表示を許可しますが、変更は許可しません。 これは Azure Storage 内のデータに読み取りアクセス許可を提供しませんが、アカウント管理リソースに対してのみです。
+ユーザーが Azure portal で BLOB にアクセス可能でなくてはならない場合は、それらのユーザーに、ストレージ アカウント以上のレベルで追加の Azure ロールとなる[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロールを割り当てます。 **閲覧者** ロールは Azure Resource Manager のロールであり、ユーザーにストレージ アカウントのリソースの表示を許可しますが、変更は許可しません。 これは Azure Storage 内のデータに読み取りアクセス許可を提供しませんが、アカウント管理リソースに対してのみです。
 
-ユーザーが Azure portal から BLOB にアクセスできるように**閲覧者**ロールを割り当てるには、次の手順に従います。 この例では、割り当てのスコープはストレージ アカウントに指定されています。
+ユーザーが Azure portal から BLOB にアクセスできるように **閲覧者** ロールを割り当てるには、次の手順に従います。 この例では、割り当てのスコープはストレージ アカウントに指定されています。
 
 1. [Azure portal](https://portal.azure.com) のストレージ アカウントに移動します。
 1. **[アクセス制御 (IAM)]** を選択して、ストレージ アカウントのアクセス制御設定を表示します。 **[ロールの割り当て]** タブを選択して、ロールの割り当ての一覧を表示します。
@@ -90,7 +90,7 @@ Azure ロールが Azure AD セキュリティ プリンシパルに割り当て
 1. ロールの割り当て先となるセキュリティ プリンシパルを検索して見つけます。
 1. ロールの割り当てを保存します。
 
-**閲覧者**ロールを割り当てる必要があるのは、Azure portal を使用して BLOB またはキューにアクセスする必要があるユーザーに対してのみです。
+**閲覧者** ロールを割り当てる必要があるのは、Azure portal を使用して BLOB またはキューにアクセスする必要があるユーザーに対してのみです。
 
 > [!IMPORTANT]
 > Azure portal の Storage Explorer のプレビュー バージョンでは、BLOB またはキュー データを表示および変更するための Azure AD 資格情報の使用はサポートされていません。 Azure portal の Storage Explorer では、データは常にアカウント キーを使用してアクセスされます。 Azure portal で Storage Explorer を使用するには、**Microsoft. Storage/storageAccounts/listkeys/action** を含むロールが割り当てられている必要があります。

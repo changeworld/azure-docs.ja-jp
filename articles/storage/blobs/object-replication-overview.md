@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 11/13/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4105698198e6fb7f4e3d3526ff9590ebca4898f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47a2aae39be93361e1e0e581efb56cc678b444cd
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612168"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549091"
 ---
 # <a name="object-replication-for-block-blobs"></a>ブロック BLOB のオブジェクト レプリケーション
 
@@ -43,14 +43,36 @@ ms.locfileid: "91612168"
 
 変更フィードと BLOB バージョン管理を有効にすると、追加のコストが発生する場合があります。 詳細については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)に関するページを参照してください。
 
+## <a name="how-object-replication-works"></a>オブジェクト レプリケーションのしくみ
+
+オブジェクト レプリケーションは、構成したルールに従って、コンテナー内のブロック BLOB を非同期にコピーします。 BLOB の内容、BLOB に関連付けられているすべてのバージョン、BLOB のメタデータとプロパティはすべて、ソース コンテナーから宛先コンテナーにコピーされます。
+
+> [!IMPORTANT]
+> ブロック BLOB データは非同期にレプリケートされるため、ソース アカウントと宛先アカウントはすぐには同期されません。現在、宛先アカウントにデータをレプリケートするための所要時間に関する SLA はありません。 レプリケーションが完了しているかどうかを確認するには、ソース BLOB のレプリケーションの状態を確認します。 詳細については、「[BLOB のレプリケーションの状態を確認する](object-replication-configure.md#check-the-replication-status-of-a-blob)」を参照してください。
+
+### <a name="blob-versioning"></a>BLOB バージョン管理
+
+オブジェクトのレプリケーションでは、ソース アカウントと宛先アカウントの両方で BLOB のバージョン管理が有効になっている必要があります。 ソース アカウントのレプリケート対象 BLOB が変更されると、変更前の BLOB の状態を反映する新しいバージョンの BLOB がソース アカウントに作成されます。 ソース アカウントの現在のバージョン (つまりベース BLOB) には、最新の更新が反映されています。 更新された現在のバージョンと新しい以前のバージョンの両方が、宛先アカウントにレプリケートされます。 書き込み操作が BLOB のバージョンに与える影響の詳細については、「[書き込み操作でのバージョン管理](versioning-overview.md#versioning-on-write-operations)」を参照してください。
+
+ソース アカウントの BLOB が削除される場合、現在のバージョンの BLOB が以前のバージョンにキャプチャされ、その後削除されます。 以前のバージョンの BLOB はすべて、現在のバージョンが削除された後も保持されます。 この状態は、宛先アカウントにレプリケートされます。 削除操作が BLOB のバージョンに与える影響の詳細については、「[削除操作でのバージョン管理](versioning-overview.md#versioning-on-delete-operations)」を参照してください。
+
+### <a name="snapshots"></a>スナップショット
+
+オブジェクトのレプリケーションでは、BLOB のスナップショットはサポートされていません。 ソース アカウントの BLOB のスナップショットは、宛先アカウントにレプリケートされません。
+
+### <a name="blob-tiering"></a>BLOB の階層
+
+オブジェクトのレプリケーションは、ソース アカウントと宛先アカウントがホット層またはクール層にある場合にサポートされます。 ソース アカウントと宛先アカウントが異なる層に存在していてもかまいません。 ただし、ソース アカウントまたは宛先アカウントのどちらかで BLOB がアーカイブ層に移動されている場合、オブジェクトのレプリケーションは失敗します。 BLOB 層の詳細については、「[Azure Blob Storage のアクセス層 - ホット、クール、およびアーカイブ](storage-blob-storage-tiers.md)」を参照してください。
+
+### <a name="immutable-blobs"></a>不変 BLOB
+
+オブジェクトのレプリケーションでは、不変 BLOB はサポートされていません。 ソース コンテナーまたは宛先コンテナーに時間ベースの保有ポリシーまたは訴訟ホールドが設定されている場合、オブジェクトのレプリケーションは失敗します。 不変 BLOB の詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](storage-blob-immutable-storage.md)」を参照してください。
+
 ## <a name="object-replication-policies-and-rules"></a>オブジェクト レプリケーションのポリシーとルール
 
 オブジェクト レプリケーションを構成するときに、ソース ストレージ アカウントと宛先アカウントを指定するレプリケーション ポリシーを作成します。 レプリケーション ポリシーには、ソース コンテナーと宛先コンテナーを指定し、レプリケートするソース コンテナー内のブロック BLOB を示す 1 つ以上のルールが含まれます。
 
 オブジェクト レプリケーションを構成すると、Azure Storage によってソース アカウントの変更フィードが定期的にチェックされ、書き込みまたは削除操作が宛先アカウントに非同期にレプリケートされます。 レプリケーションの待機時間は、レプリケートされるブロック BLOB のサイズによって異なります。
-
-> [!IMPORTANT]
-> ブロック BLOB データは非同期にレプリケートされるため、ソース アカウントと宛先アカウントはすぐには同期されません。現在、宛先アカウントにデータをレプリケートするための所要時間に関する SLA はありません。
 
 ### <a name="replication-policies"></a>レプリケーション ポリシー
 

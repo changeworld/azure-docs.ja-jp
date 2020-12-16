@@ -5,31 +5,32 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 11/30/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b87881ad5533724f08de3b2f348d1487f763ab04
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0f9ea8b1c1346deee9fed591493607270f18ad5b
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442169"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547765"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Azure Active Directory B2B のベスト プラクティス
 この記事には、Azure Active Directory (Azure AD) での企業間 (B2B) コラボレーションに関する推奨事項とベストプラクティスが含まれています。
 
    > [!IMPORTANT]
-   > **2021 年 3 月 31 日以降** 、Microsoft は、B2B コラボレーションのシナリオで管理されていない Azure AD アカウントとテナントを作成することによる、招待の引き換えをサポートしなくなります。 準備として、お客様は、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
+   > **2021 年 3 月以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド ("バイラル" または "Just-In-Time") Azure AD アカウントおよびテナントを作成することによる招待の利用をサポートしなくなります。 その時点で、電子メール ワンタイム パスコード機能は、既存のすべてのテナントで有効になり、新しいテナントでは既定で有効になります。 電子メール ワンタイム パスコード機能を有効にするのは、これによりゲスト ユーザーにシームレスなフォールバック認証方法が提供されるからです。 ただし、使用しないことを選択した場合は、この機能を無効にすることもできます。 詳しくは、「[電子メール ワンタイム パスコード認証](one-time-passcode.md)」をご覧ください。
+
 
 ## <a name="b2b-recommendations"></a>B2B の推奨事項
 | 推奨 | 説明 |
 | --- | --- |
 | 最適なサインイン エクスペリエンスを実現するには、ID プロバイダーとフェデレーションする | 可能な限り、ID プロバイダーと直接フェデレーションすることで、招待されたユーザーが Microsoft アカウント (MSA) または Azure AD アカウントを作成しなくても共有のアプリやリソースにサインインできるようにします。 [Google フェデレーション機能](google-federation.md)を使用すると、B2B ゲスト ユーザーが自分の Google アカウントでサインインできるようにすることができます。 また、任意の組織の ID プロバイダー (IdP) が SAML 2.0 または WS-Fed プロトコルをサポートしていれば、[直接フェデレーション (プレビュー) 機能](direct-federation.md)を使用して、その組織との直接フェデレーションを設定することもできます。 |
-| 他の手段で認証できない B2B ゲストに電子メール ワンタイム パスコード (プレビュー) 機能を使用する | [電子メール ワンタイム パスコード (プレビュー)](one-time-passcode.md) 機能では、B2B ゲスト ユーザーが Azure AD、Microsoft アカウント (MSA)、Google フェデレーションなどの他の手段で認証できないときに、ユーザーの認証が行われます。 ゲスト ユーザーは、招待に応じるか、共有リソースにアクセスするときに、自分のメール アドレスに送信される一時的なコードを要求することができます。 その後は、このコードを入力してサインインを続けます。 |
+| 他の手段で認証できない B2B ゲストに電子メール ワンタイム パスコード機能を使用する | [電子メール ワンタイム パスコード](one-time-passcode.md)機能では、B2B ゲスト ユーザーが Azure AD、Microsoft アカウント (MSA)、Google フェデレーションなどの他の手段を使用して認証できないときに、ユーザーの認証が行われます。 ゲスト ユーザーは、招待に応じるか、共有リソースにアクセスするときに、自分のメール アドレスに送信される一時的なコードを要求することができます。 その後は、このコードを入力してサインインを続けます。 |
 | サインイン ページに会社のブランドを追加する | B2B ゲスト ユーザー向けに、より直感的になるようにサインイン ページをカスタマイズできます。 [サインイン ページとアクセス パネル ページに会社のブランドを追加する](../fundamentals/customize-branding.md)方法に関するページを参照してください。 |
 | B2B ゲスト ユーザーの利用エクスペリエンスにプライバシーに関する声明を追加する | 組織のプライバシーに関する声明の URL を最初の招待の利用プロセスに追加することができます。これにより、招待されたユーザーは続行するために、プライバシー条項に同意する必要があります。 [Azure Active Directory に組織のプライバシー情報を追加する方法](../fundamentals/active-directory-properties-area.md)に関するページを参照してください。 |
 | 一括招待 (プレビュー) 機能を使用して複数の B2B ゲスト ユーザーを同時に招待する | Azure portal の一括招待のプレビュー機能を使用して、複数のゲスト ユーザーを組織に同時に招待します。 この機能を使用すると、CSV ファイルをアップロードして B2B ゲスト ユーザーを作成し、招待状を一括で送信することができます。 [B2B ユーザーを一括招待するためのチュートリアル](tutorial-bulk-invite.md)を参照してください。 |

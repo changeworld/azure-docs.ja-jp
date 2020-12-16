@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: b6b3cac51ffd4ccd138994ac65b4f96b07816970
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 3a47ba2025bcaba542d2dbec0c89643e0900f233
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368697"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746150"
 ---
 # <a name="how-to-configure-your-saas-offer-listing-details"></a>SaaS オファー登録情報の詳細を構成する方法
 
@@ -105,4 +105,4 @@ ms.locfileid: "94368697"
 ## <a name="next-steps"></a>次のステップ
 
 - Microsoft でオファーを販売している場合は、「[SaaS オファーのプレビュー対象ユーザーを追加する方法](create-new-saas-offer-preview.md)」に進んでください。 
-- それ以外の場合は、「[SaaS オファーを市場に投入する方法](create-new-saas-offer-marketing.md)」に進んでください。
+- それ以外の場合は、「[SaaS オファーを販売する方法](create-new-saas-offer-marketing.md)」に進んでください。

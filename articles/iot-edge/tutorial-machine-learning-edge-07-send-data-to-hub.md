@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f0695af6922182aa8be7acfb4b0a931bed35ef7d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 50df3424892594a6817d481aa4a3d540a342854f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959307"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932321"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>チュートリアル:透過的なゲートウェイを介してデータを送信する
 
@@ -23,6 +23,14 @@ ms.locfileid: "94959307"
 シミュレートされたデバイスがデータを送信している間、IoT Edge デバイスの動作を監視します。 デバイスの実行が終了したら、ストレージ アカウント内のデータを確認し、すべてが期待どおりに機能したことを検証します。
 
 この手順は、通常はクラウドまたはデバイス開発者によって実行されます。
+
+チュートリアルのこのセクションで学習する内容は次のとおりです。
+
+> [!div class="checklist"]
+>
+> * リーフ デバイスをビルドして実行する。
+> * 生成されたデータが Azure BLOB ストレージに格納されていることを確認する。
+> * 機械学習モデルによってデバイス データが分類されたことを検証する。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -237,10 +245,7 @@ Avro ファイルを読み取って、ファイル内のメッセージの JSON 
 
 この記事では、開発用 VM を使用して、センサーおよび運用データを IoT Edge デバイスに送信するリーフ デバイスをシミュレートしました。 エッジ デバイスのリアルタイム動作を調べ、ストレージ アカウントにアップロードされたファイルに注目することによって、デバイス上のモジュールがデータをルーティング、分類、永続化、およびアップロードしたことを検証しました。
 
-以下のページで詳しい情報を確認できます。
+IoT Edge の機能について引き続き学習するには、次のチュートリアルを試してください。
 
 > [!div class="nextstepaction"]
-> [ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する](how-to-connect-downstream-device.md)
-
-> [!div class="nextstepaction"]
-> [IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する (プレビュー)](how-to-store-data-blob.md)
+> [IoT Edge デバイスの階層を作成する (プレビュー)](tutorial-nested-iot-edge.md?view=iotedge-2020-11&preserve-view=true)

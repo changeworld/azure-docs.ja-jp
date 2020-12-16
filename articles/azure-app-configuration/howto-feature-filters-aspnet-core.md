@@ -4,16 +4,16 @@ titleSuffix: Azure App Configuration
 description: 機能フィルターを使用して条件付き機能フラグを有効にする方法について説明します。
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: af8df66e02dc9316311f36dec60374a7c4e649b8
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 9a6ae1581b3958495010b032980b0de2e267088b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554745"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931879"
 ---
 # <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>機能フィルターを使用して条件付き機能フラグを有効にする
 

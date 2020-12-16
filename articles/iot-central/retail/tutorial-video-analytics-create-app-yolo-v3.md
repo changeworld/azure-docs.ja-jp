@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 10/06/2020
-ms.openlocfilehash: 3994b05f613cbebcf6daa05cf8db3ef429b52407
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: ecc32908aea2fb474d2ebe5bd94f556527eda814
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428064"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763448"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-yolo-v3"></a>チュートリアル:Azure IoT Central でビデオ分析 (物体とモーションの検出) アプリケーションを作成する (YOLO v3)
 
@@ -24,10 +24,10 @@ ms.locfileid: "94428064"
 
 [!INCLUDE [iot-central-video-analytics-part1](../../../includes/iot-central-video-analytics-part1.md)]
 
-- [Scratchpad.txt](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/Scratchpad.txt)
+- [Scratchpad.txt](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/Scratchpad.txt) - このファイルは、これらのチュートリアルを実行する際に必要なさまざまな構成オプションを記録するのに役立ちます。
 - [deployment.amd64.json](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/deployment.amd64.json)
 - [LvaEdgeGatewayDcm.json](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/LvaEdgeGatewayDcm.json)
-- [state.json](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/state.json)
+- [state.json](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/state.json) - このファイルは、2 番目のチュートリアルで Intel NUC デバイスを使用する場合にのみダウンロードする必要があります。
 
 > [!NOTE]
 > IoT Edge モジュールである **LvaEdgeGatewayModule** と **lvaYolov3** のソース コードも GitHub リポジトリにあります。 ソース コードを使った作業について詳しくは、[LVA ゲートウェイ モジュールの作成](tutorial-video-analytics-build-module.md)に関するページを参照してください。
@@ -42,7 +42,7 @@ IoT Edge モジュールは、配置マニフェストを使用してデプロ�
 
 1. テキスト エディターを使用して、*lva-configuration* フォルダーに保存した *deployment.amd64.json* ファイルを開きます。
 
-1. `LvaEdgeGatewayModule` 設定を見つけて、次のスニペットに示すようにイメージ名を変更します。
+1. `LvaEdgeGatewayModule` 設定を見つけて、イメージの名前が次のスニペットに示されているとおりであることを確認します。
 
     ```json
     "LvaEdgeGatewayModule": {
@@ -50,7 +50,7 @@ IoT Edge モジュールは、配置マニフェストを使用してデプロ�
             "image": "mcr.microsoft.com/lva-utilities/lva-edge-iotc-gateway:1.0-amd64",
     ```
 
-1. `LvaEdgeGatewayModule` セクションの `env` ノードに、Media Services アカウントの名前を追加します。 このアカウントの名前は、*scratchpad.txt* ファイルに書き留めました。
+1. `LvaEdgeGatewayModule` セクションの `env` ノードに、Media Services アカウントの名前を追加します。 *scratchpad.txt* ファイルに Media Services アカウントの名前を書き留めました。
 
     ```json
     "env": {
@@ -58,7 +58,7 @@ IoT Edge モジュールは、配置マニフェストを使用してデプロ�
             "value": "lvaEdge"
         },
         "amsAccountName": {
-            "value": "<YOUR_AZURE_MEDIA_ACCOUNT_NAME>"
+            "value": "<YOUR_AZURE_MEDIA_SERVICES_ACCOUNT_NAME>"
         }
     }
     ```
@@ -67,7 +67,16 @@ IoT Edge モジュールは、配置マニフェストを使用してデプロ�
 
     `azureMediaServicesArmId` は、Media Services アカウントの作成時に *scratchpad.txt* ファイルに書き留めた **リソース ID** です。
 
-    `aadTenantId`、`aadServicePrincipalAppId`、`aadServicePrincipalSecret` は、Media Services アカウントのサービス プリンシパルを作成する際に *scratchpad.txt* ファイルに書き留めました。
+    次の表は、配置マニフェストで使用する必要がある、*scratchpad.txt* ファイル内の **Media Services への接続 API (JSON)** の値を示しています。
+
+    | 配置マニフェスト       | Scratchpad  |
+    | ------------------------- | ----------- |
+    | aadTenantId               | AadTenantId |
+    | aadServicePrincipalAppId  | AadClientId |
+    | aadServicePrincipalSecret | AadSecret   |
+
+    > [!CAUTION]
+    > 前の表を使用して、配置マニフェストに適切な値が追加されていることを確認してください。そうでないと、デバイスが動作しません。
 
     ```json
     {

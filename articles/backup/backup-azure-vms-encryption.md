@@ -3,12 +3,12 @@ title: 暗号化された Azure VM をバックアップおよび復元する
 description: Azure Backup サービスを使用して、暗号化された Azure VM をどのようにバックアップおよび復元するかについて説明します。
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: c4760a54d0200e48b2d6a38c963e9fc23925f7ff
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: ee7fedffd58ffb9e98f8c412833d151eb1a95530
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324926"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547153"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>暗号化された Azure 仮想マシンのバックアップと復元
 
@@ -22,7 +22,11 @@ ms.locfileid: "96324926"
 
 ## <a name="encryption-using-customer-managed-keys"></a>カスタマー マネージド キーを使用した暗号化
 
-カスタム マネージド キー (CMK) を使用してディスクを暗号化する場合は、ディスクの暗号化に使用されるキーは Azure Key Vault に格納され、ユーザーによって管理されます。 CMK を使用する Storage Service Encryption (SSE) は、Azure Disk Encryption (ADE) 暗号化とは異なります。 ADE では、オペレーティング システムの暗号化ツールを使用します。 SSE では、ストレージ サービス内のデータを暗号化することで、VM に任意の OS またはイメージを使用できます。 カスタマー マネージド キーを使用したマネージド ディスクの暗号化の詳細については、[こちらの記事](../virtual-machines/disk-encryption.md#customer-managed-keys)を参照してください。
+カスタマー マネージド キー (CMK) を使用してディスクを暗号化する場合は、ディスクの暗号化に使用されるキーは Azure Key Vault に格納され、ユーザーによって管理されます。 CMK を使用する Storage Service Encryption (SSE) は、Azure Disk Encryption (ADE) 暗号化とは異なります。 ADE では、オペレーティング システムの暗号化ツールを使用します。 SSE では、ストレージ サービス内のデータを暗号化することで、VM に任意の OS またはイメージを使用できます。
+
+ディスクの暗号化にカスタマー マネージド キーを使用する VM のバックアップまたは復元を行うために、明示的な操作は必要ありません。 コンテナーに格納されているこれらの VM のバックアップ データは、[コンテナーで使用される暗号化](encryption-at-rest-with-cmk.md)と同じ方法で暗号化されます。
+
+カスタマー マネージド キーを使用したマネージド ディスクの暗号化の詳細については、[こちらの記事](../virtual-machines/disk-encryption.md#customer-managed-keys)を参照してください。
 
 ## <a name="encryption-support-using-ade"></a>ADE を使用した暗号化のサポート
 

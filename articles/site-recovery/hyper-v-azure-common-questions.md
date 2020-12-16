@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用した Hyper-V のディザスター リカ�
 description: この記事では、Azure Site Recovery サイトを使用したオンプレミス Hyper-V VM の Azure へのディザスター リカバリーを設定する場合によくある質問をまとめます。
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: c168ba9ff14e57f238069e8ca5b0c34a8fb58015
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4f5ee71fc56cad247b57f94bf08a68bed8775f9
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87799890"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754353"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>よくある質問 - Hyper-V から Azure へのディザスター リカバリー
 
@@ -164,6 +164,10 @@ Azure にレプリケートする場合、レプリケーション トラフィ�
 ### <a name="how-often-can-i-replicate-to-azure"></a>どのくらいの頻度で Azure にレプリケートできますか?
 
 Hyper-V VM は 30 秒 (Premium Storage を除く) または 5 分ごとにレプリケートできます。
+
+### <a name="can-azure-site-recovery-and-hyper-v-replica-be-configured-together-on-a-hyper-v-machine"></a>Azure Site Recovery と Hyper-V レプリカを 1 台の Hyper-V マシンでまとめて構成できますか。
+
+はい、Azure Site Recovery と Hyper-V レプリカを 1 台のマシンでまとめて構成できます。 ただし、マシンは物理マシンとして保護される必要があり、構成/プロセス サーバーを使用して Azure にレプリケートされます。 物理マシンの保護の詳細については[こちら](https://docs.microsoft.com/azure/site-recovery/physical-azure-architecture)を参照してください。
 
 ### <a name="can-i-extend-replication"></a>レプリケーションを拡張することはできますか?
 拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)でこの機能を要求してください。

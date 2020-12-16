@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 0475e7a7b9bb40e77fe23362ff098350037bdd30
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: ca812fc7548e3c70f1faa1e1ed6a34afda3872af
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555276"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575977"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>チュートリアル:デザイナーを使用して自動車の価格を予測する
 
@@ -48,7 +48,10 @@ Azure Machine Learning パイプラインを作成するには、Azure Machine L
 
 ### <a name="create-a-new-workspace"></a>新しいワークスペースを作成する
 
-デザイナーを使用するためには、まず Azure Machine Learning ワークスペースが必要です。 ワークスペースは、Azure Machine Learning の最上位のリソースで、Azure Machine Learning で作成するすべての成果物を操作するための一元的な場所を提供します。
+デザイナーを使用するには、Azure Machine Learning ワークスペースが必要です。 ワークスペースは、Azure Machine Learning の最上位のリソースで、Azure Machine Learning で作成するすべての成果物を操作するための一元的な場所を提供します。 ワークスペースを作成する手順については、「[Azure Machine Learning ワークスペースを作成して管理する](how-to-manage-workspace.md)」を参照してください。
+
+> [!NOTE]
+> ワークスペースで仮想ネットワークを使用する場合、デザイナーを使用するには、追加の構成手順を使用する必要があります。 詳細については、「[Azure 仮想ネットワークで Azure Machine Learning スタジオを使用する](how-to-enable-studio-virtual-network.md)」を参照してください。
 
 ### <a name="create-the-pipeline"></a>パイプラインを作成する
 
@@ -275,7 +278,7 @@ Azure Machine Learning パイプラインを作成するには、Azure Machine L
     
     実行の状態と詳細は、キャンバスの右上で確認できます。
     
-    最初の実行の場合は、パイプラインの実行が完了するまでに最大 20 分かかることがあります。 既定のコンピューティング設定の最小ノード サイズは 0 です。これは、アイドル状態になった後に、デザイナーによってリソースが割り当てられる必要があることを意味します。 コンピューティング リソースが既に割り当てられているため、パイプラインの反復実行にかかる時間は短くなります。 さらにデザイナーでは、各モジュール用にキャッシュされた結果を使用して、効率を向上させます。
+    これが最初の実行の場合は、パイプラインの実行が完了するまでに最大 20 分かかることがあります。 既定のコンピューティング設定の最小ノード サイズは 0 です。これは、アイドル状態になった後に、デザイナーによってリソースが割り当てられる必要があることを意味します。 コンピューティング リソースが既に割り当てられているため、パイプラインの反復実行にかかる時間は短くなります。 さらにデザイナーでは、各モジュール用にキャッシュされた結果を使用して、効率を向上させます。
 
 ### <a name="view-scored-labels"></a>スコア付けラベルを確認する
 

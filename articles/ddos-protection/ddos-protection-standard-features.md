@@ -6,17 +6,17 @@ documentationcenter: na
 author: yitoh
 ms.service: ddos-protection
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: b3f903b69cebd22e870f7ccd5923e6f08455dff3
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 104c9dcd3b7fd931e4f54841c9de9d17cfd72353
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992388"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937323"
 ---
 # <a name="azure-ddos-protection-standard-features"></a>Azure DDoS Protection Standard の機能
 

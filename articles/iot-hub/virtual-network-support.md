@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 12/02/2020
 ms.author: jlian
-ms.openlocfilehash: fdc106a1a446f51d309ac4317062c8fd20204bae
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: f79b03884109ffbd856ff4f60909565daeb0e792
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413396"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549117"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Private Link とマネージド ID を使用した仮想ネットワークの IoT Hub サポート
 
@@ -36,7 +36,7 @@ ms.locfileid: "94413396"
 
 ## <a name="ingress-connectivity-to-iot-hub-using-azure-private-link"></a>Azure Private Link を使用した IoT Hub へのイングレス接続
 
-プライベート エンドポイントは、Azure リソースに到達可能な、顧客所有の VNet 内に割り当てられたプライベート IP アドレスです。 Azure Private Link を使用すると、IoT ハブ用にプライベート エンドポイントを設定して、IoT Hub のパブリック エンドポイントにトラフィックを送信しなくても、VNet 内のサービスが IoT Hub に到達できるようにすることができます。 同様に、オンプレミスのデバイスでは [仮想プライベート ネットワーク (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) または [ExpressRoute](https://azure.microsoft.com/services/expressroute/) ピアリングを使用して、VNet と (プライベート エンドポイント経由で) IoT Hub に接続することができます。 その結果、[IoT Hub の IP フィルター](./iot-hub-ip-filtering.md)を使用したり、[組み込みのエンドポイントにデータを送信しないようにルーティングを構成](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint)したりすることで、IoT ハブのパブリック エンドポイントへの接続を制限または完全にブロックすることができます。 この方法では、デバイスのプライベート エンドポイントを使用して、ハブへの接続を維持します。 この設定の主な対象は、オンプレミス ネットワーク内のデバイスです。 ワイドエリア ネットワークにデプロイされているデバイスには、この設定はお勧めできません。
+プライベート エンドポイントは、Azure リソースに到達可能な、顧客所有の VNet 内に割り当てられたプライベート IP アドレスです。 Azure Private Link を使用すると、IoT ハブ用にプライベート エンドポイントを設定して、IoT Hub のパブリック エンドポイントにトラフィックを送信しなくても、VNet 内のサービスが IoT Hub に到達できるようにすることができます。 同様に、オンプレミスのデバイスでは [仮想プライベート ネットワーク (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) または [ExpressRoute](https://azure.microsoft.com/services/expressroute/) ピアリングを使用して、VNet と (プライベート エンドポイント経由で) IoT Hub に接続することができます。 その結果、[IoT Hub の IP フィルター](./iot-hub-ip-filtering.md)または[パブリック ネットワーク アクセスの切り替え](iot-hub-public-network-access.md)を使用することで、IoT ハブのパブリック エンドポイントへの接続を制限または完全にブロックすることができます。 この方法では、デバイスのプライベート エンドポイントを使用して、ハブへの接続を維持します。 この設定の主な対象は、オンプレミス ネットワーク内のデバイスです。 ワイドエリア ネットワークにデプロイされているデバイスには、この設定はお勧めできません。
 
 ![IoT Hub 仮想ネットワークのエグレス](./media/virtual-network-support/virtual-network-ingress.png)
 
@@ -64,17 +64,12 @@ ms.locfileid: "94413396"
 
 1. **[確認および作成]** をクリックして、プライベート リンク リソースを作成します。
 
-### <a name="built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint"></a>組み込みのイベント ハブ互換エンドポイントでは、プライベート エンドポイント経由のアクセスがサポートされない
+### <a name="built-in-event-hub-compatible-endpoint"></a>組み込みのイベント ハブ互換エンドポイント 
 
-[組み込みのイベント ハブ互換エンドポイント](iot-hub-devguide-messages-read-builtin.md)では、プライベート エンドポイント経由のアクセスがサポートされていません。 構成されている場合、IoT ハブのプライベート エンドポイントは、イングレス接続専用になります。 組み込みのイベント ハブ互換エンドポイントからのデータの消費は、パブリック インターネット経由でのみ行えます。 
+[組み込みのイベント ハブ互換エンドポイント](iot-hub-devguide-messages-read-builtin.md)には、プライベート エンドポイント経由でもアクセスできます。 プライベート リンクを構成すると、組み込みエンドポイントの追加のプライベート エンドポイント接続が表示されます。 FQDN に `servicebus.windows.net` が含まれているものです。
 
-IoT Hub の [IP フィルター](iot-hub-ip-filtering.md) でも、組み込みのエンドポイントへのパブリック アクセスは制御されません。 IoT ハブへのパブリック ネットワーク アクセスを完全にブロックするには、次のことを行う必要があります。 
+:::image type="content" source="media/virtual-network-support/private-built-in-endpoint.png" alt-text="それぞれ IoT Hub プライベート リンクが指定されている、2 つのプライベート エンドポイントを示す画像":::
 
-1. IoT Hub 用にプライベート エンドポイント アクセスを構成する
-1. [パブリック ネットワーク アクセスを無効にする](iot-hub-public-network-access.md)、または IP フィルターを使用してすべての IP をブロックする
-1. [データを送信しないようにルーティングを設定](iot-hub-devguide-messages-d2c.md)して、組み込みのイベント ハブ エンドポイントの使用を停止する
-1. [フォールバック ルート](iot-hub-devguide-messages-d2c.md#fallback-route)を無効にする
-1. [信頼された Microsoft サービス](#egress-connectivity-from-iot-hub-to-other-azure-resources)を使用して他の Azure リソースへのエグレスを構成する
 
 ### <a name="pricing-for-private-link"></a>Private Link の価格
 

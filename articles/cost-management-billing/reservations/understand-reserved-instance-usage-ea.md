@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 12/02/2020
 ms.author: banders
-ms.openlocfilehash: 070d105785ee3ab9811188406bda56dbe6ceb558
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 874d5cb022a38b172bb37009bd86b5e6988f3204
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350893"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545606"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Enterprise Agreement の予約のコストと使用状況を取得する
 
@@ -140,9 +140,11 @@ Azure portal で [[コストの管理と請求]](https://portal.azure.com/#blade
 2. 予約コストを取得します。 _Cost_ の値を合計して、予約インスタンスに支払った金額を取得します。 これには、予約の使用済みコストと未使用コストが含まれます。
 3. 従量課金制の概算コストから予約コストを減算して、削減されるコストの推定額を取得します。
 
+予約の使用率が低い場合は、_ChargeType_ の _UnusedReservation_ エントリが考慮すべき要素になることに注意してください。 予約が十分に活用されていると、最大限の節約が可能になります。 _UnusedReservation_ の数量があると、削減額が減少します。
+
 ## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>予約購入と償却コストの分析
 
-予約コストは、[コスト分析](https://aka.ms/costanalysis)で確認できます。 既定では、コスト分析には請求書に記載されるコストである **[実際のコスト]** が表示されます。 予約購入の内訳や特典を使用したリソースとの関連を確認するには、 **[分散コスト]** に切り替えます。
+予約コストは、[コスト分析](https://aka.ms/costanalysis)で確認できます。 既定では、コスト分析には請求書に記載されるコストである **[実際のコスト]** が表示されます。 予約購入の内訳や特典を使用したリソースとの関連を確認するには、**[分散コスト]** に切り替えます。
 
 ![コスト分析で分散コストを選択する場所を示す例](./media/understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 

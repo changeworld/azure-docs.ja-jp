@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 11/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 15e5d257259bb4dfc98528cb726dbd2cc1f9a903
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f55af61a061bf3a3897569058aace728f7465b64
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498729"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862124"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>Azure Service Bus キューとの間でメッセージを送受信する (.NET)
 このチュートリアルでは、**Azure.Messaging.ServiceBus** パッケージを使用して .NET Core コンソール アプリケーションを作成し、Service Bus キューとの間でメッセージを送受信します。 
@@ -55,26 +55,9 @@ Visual Studio を起動し、C# 用の新しい **コンソール アプリ (.NE
         static string queueName = "<QUEUE NAME>";
     ```
 
-    名前空間の接続文字列を `ServiceBusConnectionString` 変数として入力します。 キュー名を入力します。
+    名前空間の接続文字列を `connectionString` 変数として入力します。 キュー名を入力します。
 
-1. `Main()` メソッドを次の **async** `Main` メソッドに置き換えます。 これは次の手順で追加する `SendMessagesAsync()` メソッドを呼び出して、キューにメッセージを送信します。 
-
-    ```csharp
-    public static async Task Main(string[] args)
-    {    
-        const int numberOfMessages = 10;
-        
-        Console.WriteLine("======================================================");
-        Console.WriteLine("Press ENTER key to exit after sending all the messages.");
-        Console.WriteLine("======================================================");
-
-        // Send messages.
-        await SendMessagesAsync(numberOfMessages);
-
-        Console.ReadKey();
-    }
-    ```
-1. `Main()` メソッドのすぐ後に、次の `SendMessagesAsync()` メソッドを追加します。`numberOfMessagesToSend` で指定された数 (現時点では 10 に設定) のメッセージを送信する処理が、このメソッドによって実行されます。
+1. `Main()` メソッドのすぐ後に、メッセージを送信する作業を行う次の `SendMessagesAsync()` メソッドを追加します。
 
     ```csharp
         static async Task SendMessageAsync()
@@ -101,9 +84,9 @@ Visual Studio を起動し、C# 用の新しい **コンソール アプリ (.NE
         {
             // create a queue containing the messages and return it to the caller
             Queue<ServiceBusMessage> messages = new Queue<ServiceBusMessage>();
-            messages.Enqueue(new ServiceBusMessage("First message"));
-            messages.Enqueue(new ServiceBusMessage("Second message"));
-            messages.Enqueue(new ServiceBusMessage("Third message"));
+            messages.Enqueue(new ServiceBusMessage("First message in the batch"));
+            messages.Enqueue(new ServiceBusMessage("Second message in the batch"));
+            messages.Enqueue(new ServiceBusMessage("Third message in the batch"));
             return messages;
         }
     ```
@@ -284,7 +267,7 @@ Stopped receiving messages
 
     :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png" alt-text="受信後のアクティブなメッセージとサイズ" lightbox="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png":::
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次のドキュメントおよびサンプルを参照してください。
 
 - [.NET 用の Azure Service Bus クライアント ライブラリ - Readme](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus)

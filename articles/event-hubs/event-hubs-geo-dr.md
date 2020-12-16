@@ -3,15 +3,15 @@ title: geo ディザスター リカバリー - Azure Event Hubs| Microsoft Docs
 description: Azure Event Hubs で地理的リージョンを使用してフェールオーバーとディザスター リカバリーを実行する方法
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 1807c22645c3246f4cf18d723fc19da475e4d4f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dd2385a6f6e61136a1284171532aedd70a9cc96
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934074"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608352"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs - geo ディザスター リカバリー 
-Azure リージョン全体またはデータ センター全体 ([可用性ゾーン](../availability-zones/az-overview.md)が使用されていない場合) にダウンタイムが発生した場合、別のリージョンまたはデータ センターでデータ処理が続行されることが重要です。 そのため、*geo ディザスター リカバリー*と *geo レプリケーション*は、どの企業にとっても重要な機能です。 Azure Event Hubs では、geo ディザスター リカバリーと geo レプリケーションの両方が名前空間レベルでサポートされています。 
+Azure リージョン全体またはデータ センター全体 ([可用性ゾーン](../availability-zones/az-overview.md)が使用されていない場合) にダウンタイムが発生した場合、別のリージョンまたはデータ センターでデータ処理が続行されることが重要です。 そのため、*geo ディザスター リカバリー* と *geo レプリケーション* は、どの企業にとっても重要な機能です。 Azure Event Hubs では、geo ディザスター リカバリーと geo レプリケーションの両方が名前空間レベルでサポートされています。 
 
 > [!NOTE]
 > geo ディザスター リカバリー機能は、[Standard SKU と専用 SKU](https://azure.microsoft.com/pricing/details/event-hubs/) にのみ使用できます。  
@@ -96,7 +96,7 @@ geo ディザスター リカバリー機能は、[Standard SKU と専用 SKU](h
 
 ## <a name="considerations"></a>考慮事項
 
-このリリースでは次の考慮事項にご注意ください。
+次の考慮事項にご注意ください。
 
 1. 設計上、Event Hubs の geo ディザスター リカバリーではデータがレプリケートされないため、セカンダリ イベント ハブでプライマリ イベント ハブの古いオフセット値を再利用することはできません。 次のいずれかの方法を使用して、イベント レシーバーを再起動することをお勧めします。
 
@@ -106,7 +106,7 @@ geo ディザスター リカバリー機能は、[Standard SKU と専用 SKU](h
 
 2. フェールオーバー計画では、時間的要因も考慮する必要があります。 たとえば、接続の喪失時間が 15 ～ 20 分を超えた場合にフェールオーバー開始の判断を下すことが考えられます。 
  
-3. レプリケートされるデータが存在しないということは、現在アクティブなセッションがレプリケートされないことを意味します。 また、重複の検出やスケジュールされたメッセージが正しく機能しない可能性があります。 新しいセッションやスケジュールされたメッセージ、新しい重複については正しく機能します。 
+3. レプリケートされるデータが存在しないということは、現在のアクティブなセッションがレプリケートされないことを意味します。 また、重複の検出やスケジュールされたメッセージが正しく機能しない可能性があります。 新しいセッションやスケジュールされたメッセージ、新しい重複については正しく機能します。 
 
 4. 複雑な分散インフラストラクチャのフェールオーバーは、少なくとも 1 回は[リハーサル](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)を行うようお勧めします。 
 

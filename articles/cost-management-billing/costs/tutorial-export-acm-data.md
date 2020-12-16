@@ -3,18 +3,18 @@ title: チュートリアル - Azure Cost Management からデータをエクス
 description: この記事では、外部システムで使用できるように Azure Cost Management データをエクスポートし、管理する方法を紹介します。
 author: bandersmsft
 ms.author: banders
-ms.date: 11/20/2020
+ms.date: 12/7/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.custom: seodec18
-ms.openlocfilehash: dcf9b925e7f0ce691a5a50850a30f723d48ec50b
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 32989b4d5c595416f82fc9d3f1cec2eddec1d6ee
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "96007224"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929261"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>チュートリアル:データをエクスポートし、管理する
 
@@ -58,20 +58,20 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com/) にサイン�
 > - サブスクリプション以外にも、リソース グループ、管理グループ、部門、および登録に対してエクスポートを作成できます。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 >- 課金アカウント スコープまたは顧客のテナントでパートナーとしてサインインしている場合は、パートナーのストレージ アカウントにリンクされている Azure Storage アカウントにデータをエクスポートすることができます。 ただし、CSP テナントにアクティブなサブスクリプションが必要です。
 
-1. **[追加]** を選択し、エクスポートの名前を入力します。 
+1. **[追加]** を選択し、エクスポートの名前を入力します。
 1. **[メトリック]** で、次のいずれかを選択します。
     - **[Actual cost (Usage and Purchases)]\(実際のコスト (使用量と購入額)\)** - 標準の使用量と購入額をエクスポートする場合に選択します
     - **[Amortized cost (Usage and Purchases)]\(分散コスト (使用量と購入額)\)** - 購入の分散コスト (Azure の予約など) をエクスポートする場合に選択します
 1. **[エクスポートの種類]** で、次のいずれかを選択します。
     - **[月度累計コストの日単位のエクスポート]** - 月度累計コストに関する新しいエクスポート ファイルが毎日提供されます。 最新のデータは、以前の毎日のエクスポートから集計されます。
-    - **[Weekly export of cost for the last 7 days]\(過去 7 日間のコストに関する週単位のエクスポート\)** - 選択した開始日からさかのぼって 7 日間のコストに関するエクスポートが週単位で作成されます。  
-    - **[Monthly export of last month's costs]\(先月のコストに関する月単位のエクスポート\)** - エクスポートを作成している月の前月のコストに関するエクスポートが提供されます。 それ以降は、スケジュールによって、毎月 5 日に前月分のコストを使用してエクスポートが実行されます。  
-    - **[One-time export]\(1 回限りのエクスポート\)** - 履歴データの日付範囲を選択して、Azure Blob Storage にエクスポートすることができます。 選択した日付から最大 90 日間の履歴コストをエクスポートできます。 このエクスポートはすぐに実行され、2 時間以内にストレージ アカウント内で利用できます。  
+    - **[Weekly export of cost for the last 7 days]\(過去 7 日間のコストに関する週単位のエクスポート\)** - 選択した開始日からさかのぼって 7 日間のコストに関するエクスポートが週単位で作成されます。
+    - **[Monthly export of last month's costs]\(先月のコストに関する月単位のエクスポート\)** - エクスポートを作成している月の前月のコストに関するエクスポートが提供されます。 それ以降は、スケジュールによって、毎月 5 日に前月分のコストを使用してエクスポートが実行されます。
+    - **[One-time export]\(1 回限りのエクスポート\)** - 履歴データの日付範囲を選択して、Azure Blob Storage にエクスポートすることができます。 選択した日付から最大 90 日間の履歴コストをエクスポートできます。 このエクスポートはすぐに実行され、2 時間以内にストレージ アカウント内で利用できます。
         エクスポートの種類に応じて、開始日を選択するか、 **[開始日]** と **[To]\(終了日\)** の日付を選択します。
-1. Azure ストレージ アカウントのサブスクリプションを指定し、お使いのリソース グループを選択するか、新しいリソース グループを作成します。 
-1. ストレージ アカウント名を選択するか、新しいアカウントを作成します。 
+1. Azure ストレージ アカウントのサブスクリプションを指定し、お使いのリソース グループを選択するか、新しいリソース グループを作成します。
+1. ストレージ アカウント名を選択するか、新しいアカウントを作成します。
 1. 場所 (Azure リージョン) を選択します。
-1. エクスポート ファイルの保存先となるストレージ コンテナーとディレクトリ パスを指定します。 
+1. エクスポート ファイルの保存先となるストレージ コンテナーとディレクトリ パスを指定します。
     :::image type="content" source="./media/tutorial-export-acm-data/basics_exports.png" alt-text="新しいエクスポートの例" lightbox="./media/tutorial-export-acm-data/basics_exports.png":::
 1. エクスポートの詳細を確認して **[作成]** を選択します。
 
@@ -132,7 +132,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com/) にサイン�
 1. [az costmanagement export update](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_update) コマンドを使用してエクスポートを更新します。
 
    ```azurecli
-   az costmanagement export update --name DemoExport 
+   az costmanagement export update --name DemoExport
       --scope "subscriptions/00000000-0000-0000-0000-000000000000" --storage-directory demodirectory02
    ```
 
@@ -145,6 +145,89 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com/) にサイン�
 
 ```azurecli
 az costmanagement export delete --name DemoExport --scope "subscriptions/00000000-0000-0000-0000-000000000000"
+```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+まず、Azure PowerShell の環境を準備します。
+
+[!INCLUDE [azure-powershell-requirements-no-header.md](../../../includes/azure-powershell-requirements-no-header.md)]
+
+* > [!IMPORTANT]
+  > **Az.CostManagement** PowerShell モジュールがプレビュー段階にある間は、`Install-Module` コマンドレットを使用して、これを別途インストールする必要があります。 この PowerShell モジュールは、一般提供されると、将来の Az PowerShell モジュール リリースに含まれ、既定で Azure Cloud Shell 内から使用できるようになります。
+
+  ```azurepowershell-interactive
+  Install-Module -Name Az.CostManagement
+  ```
+
+1. サインイン後、現在のエクスポートを表示するには、[Get-AzCostManagementExport](/powershell/module/Az.CostManagement/get-azcostmanagementexport) コマンドレットを使用します。
+
+   ```azurepowershell-interactive
+   Get-AzCostManagementExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000'
+   ```
+
+   >[!NOTE]
+   >
+   >* サブスクリプション以外にも、リソース グループおよび管理グループに対してエクスポートを作成できます。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
+   >* 課金アカウント スコープまたは顧客のテナントでパートナーとしてサインインしている場合は、パートナーのストレージ アカウントにリンクされている Azure Storage アカウントにデータをエクスポートすることができます。 ただし、CSP テナントにアクティブなサブスクリプションが必要です。
+
+1. リソース グループを作成するか、または既存のリソース グループを使用します。 リソース グループを作成するには、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用します。
+
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name TreyNetwork -Location eastus
+   ```
+
+1. エクスポートを受信するためのストレージ アカウントを作成するか、既存のストレージ アカウントを使用します。 ストレージ アカウントを作成するには、[New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) コマンドレットを使用します。
+
+   ```azurepowershell-interactive
+   New-AzStorageAccount -ResourceGroupName TreyNetwork -AccountName cmdemo -SkuName Standard_RAGRS -Location eastus
+   ```
+
+1. [New-AzCostManagementExport](/powershell/module/Az.CostManagement/new-azcostmanagementexport) コマンドレットを実行して、エクスポートを作成します。
+
+   ```azurepowershell-interactive
+   $Params = @{
+     Name = 'DemoExport'
+     DefinitionType = 'ActualCost'
+     Scope = 'subscriptions/00000000-0000-0000-0000-000000000000'
+     DestinationResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/treynetwork/providers/Microsoft.Storage/storageAccounts/cmdemo'
+     DestinationContainer = 'democontainer'
+     DefinitionTimeframe = 'MonthToDate'
+     ScheduleRecurrence = 'Daily'
+     RecurrencePeriodFrom = '2020-06-01T00:00:00Z'
+     RecurrencePeriodTo = '2020-10-31T00:00:00Z'
+     ScheduleStatus = 'Active'
+     DestinationRootFolderPath = 'demodirectory'
+     Format = 'Csv'
+   }
+   New-AzCostManagementExport @Params
+   ```
+
+   **DefinitionType** パラメーターには、`ActualCost`、`AmortizedCost`、`Usage` のいずれかを選択できます。
+
+   この例では、`MonthToDate` を使用します。 この場合、月度累計コストに関するエクスポート ファイルが毎日作成されます。 最新のデータは、当月における日単位のエクスポートをさかのぼって集計されます。
+
+1. エクスポート操作の詳細を表示するには、`Get-AzCostManagementExport` コマンドレットを使用します。
+
+   ```azurepowershell-interactive
+   Get-AzCostManagementExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000'
+   ```
+
+1. [Update-AzCostManagementExport](/powershell/module/Az.CostManagement/update-azcostmanagementexport) コマンドレットを使用して、エクスポートを更新します。
+
+   ```azurepowershell-interactive
+   Update-AzCostManagementExport -Name DemoExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000' -DestinationRootFolderPath demodirectory02
+   ```
+
+   この例では、出力ディレクトリを変更します。
+
+>[!NOTE]
+>最初は、エクスポートが実行されるまで 12 時間から 24 時間かかることがあります。 ただし、エクスポートされたファイルにデータが表示されるまでに、さらに時間がかかる場合もあります。
+
+[Remove-AzCostManagementExport](/powershell/module/Az.CostManagement/remove-azcostmanagementexport) コマンドレットを使用して、エクスポートを削除できます。
+
+```azurepowershell-interactive
+Remove-AzCostManagementExport -Name DemoExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000'
 ```
 
 ---
@@ -162,9 +245,9 @@ az costmanagement export delete --name DemoExport --scope "subscriptions/0000000
 他の種類のサブスクリプションでは、管理グループのエクスポートはサポートされません。
 
 1. まだ管理グループを作成していない場合は作成し、そのグループにサブスクリプションを割り当てます。
-1. コスト分析で、管理グループにスコープを設定し、 **[Select this management group]\(この管理グループを選択する\)** を選択します。  
+1. コスト分析で、管理グループにスコープを設定し、 **[Select this management group]\(この管理グループを選択する\)** を選択します。
     :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="[Select this management group]\(この管理グループを選択する\) オプションを示す例" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
-1. そのスコープでエクスポートを作成し、管理グループに含まれるサブスクリプションのコスト管理データを取得します。  
+1. そのスコープでエクスポートを作成し、管理グループに含まれるサブスクリプションのコスト管理データを取得します。
     :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="新しいエクスポートの作成オプションを示す例。スコープとして管理グループが設定されています":::
 
 ## <a name="verify-that-data-is-collected"></a>データが収集されたことを確認する
@@ -196,7 +279,7 @@ az costmanagement export delete --name DemoExport --scope "subscriptions/0000000
 
 [![エクスポートのダウンロード例](./media/tutorial-export-acm-data/download-export.png)](./media/tutorial-export-acm-data/download-export.png#lightbox)
 
-## <a name="view-export-run-history"></a>エクスポートの実行履歴を表示する  
+## <a name="view-export-run-history"></a>エクスポートの実行履歴を表示する
 
 エクスポートの一覧ページで個々のエクスポートを選択することによって、スケジュールされたエクスポートの実行履歴を表示できます。 エクスポートの一覧ページでは、前回のエクスポートの実行日時と、次回のエクスポートの実行日時をすばやく確認することもできます。 実行履歴の表示例を次に示します。
 

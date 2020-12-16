@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/19/2020
-ms.openlocfilehash: ee9bcedea15b039982e73304a25073c85b496635
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 56c3475ae6a03600723e7a12b3f3809f003ce7c4
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780055"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922269"
 ---
 # <a name="hyperscale-service-tier"></a>ハイパースケール サービス レベル
 
@@ -67,11 +67,11 @@ Hyperscale サービス レベルは、純粋な OLTP から純粋な分析ま�
 
 ハイパースケール サービス レベルは[仮想コア モデル](service-tiers-vcore.md)のみで提供されています。 新しいアーキテクチャに合わせて、価格モデルは General Purpose または Business Critical サービス モデルとは少し異なります。
 
-- **コンピューティング** :
+- **コンピューティング**:
 
   ハイパースケール コンピューティング ユニットの料金はレプリカ単位です。 [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)の価格が読み取りスケール レプリカに自動的に適用されます。 既定では、Hyperscale データベースごとにプライマリ レプリカと 1 つの読み取り専用レプリカを作成します。  ユーザーは、プライマリを含むレプリカの総数を、1 から 5 までの間で調整できます。
 
-- **ストレージ** :
+- **ストレージ**:
 
   ハイパースケールのデータベースを構成するときに、最大データ サイズを指定する必要はありません。 Hyperscale レベルでは、実際の割り当てに基づいてデータベースのストレージに対して課金されます。 ストレージは、40 GB から 100 TB までの間 (10 GB 単位の増分) で自動的に割り当てられます。 必要に応じて、複数のデータ ファイルを同時に拡大することができます。 ハイパースケール データベースは、10 GB の開始サイズで作成され、10分ごとに 10 GB ずつ拡大し、最終的には 40 GB のサイズに達します。
 
@@ -231,7 +231,6 @@ Azure SQL Database の Hyperscale レベルはすべてのリージョンで利�
 | インメモリ OLTP オブジェクトを使用したデータベースの移行 | Hyperscale では、メモリ最適化テーブルの型、テーブル変数、ネイティブ コンパイルされたモジュールなど、インメモリ OLTP オブジェクトのサブセットがサポートされています。 ただし、どのような種類のインメモリ OLTP オブジェクトでも移行されているデータベースに存在すると、Premium および Business Critical サービス レベルから Hyperscale に移行できません。 このようなデータベースを Hyperscale に移行するには、すべてのインメモリ OLTP オブジェクトとその依存関係を削除する必要があります。 データベースを移行した後は、これらのオブジェクトを再作成できます。 永続的と非永続的なメモリ最適化テーブルは Hyperscale で同時にサポートされず、ディスク テーブルとして再作成する必要があります。|
 | geo レプリケーション  | Azure SQL Database Hyperscale の geo レプリケーションは、まだ構成できません。 |
 | データベース コピー | Hyperscale のデータベース コピーがパブリック プレビューになりました。 |
-| TDE/AKV の統合 | Azure Key Vault を使用した Transparent Database Encryption (一般には、通常は Bring-Your-Own-Key (BYOK) と呼ばれる) は、現在パブリック プレビュー段階です。 |
 | インテリジェント データベース機能 | [プランの強制] オプションを除き、他のすべての自動チューニング オプションは Hyperscale ではまだサポートされていません。オプションは有効になっているように見えますが、推奨事項やアクションは実行されません。 |
 | Query Performance Insights | Query Performance Insight は現在、Hyperscale データベースではサポートされていません。 |
 | データベースの圧縮 | DBCC SHRINKDATABASE または DBCC SHRINKFILE は、現在、Hyperscale データベースではサポートされていません。 |

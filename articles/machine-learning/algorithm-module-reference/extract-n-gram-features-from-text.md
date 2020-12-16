@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/01/2019
-ms.openlocfilehash: c4d9c7c2cb7a0a86824a373f1b64044b6dcd6c20
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 12/08/2019
+ms.openlocfilehash: 37a10d90fa0e277fbe45d9f1377e365cb3d42996
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420803"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861462"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>テキストからの N gram 特徴抽出モジュール リファレンス
 
@@ -28,7 +28,7 @@ ms.locfileid: "93420803"
 
 * [既存のテキストの特徴のセットを使用](#use-an-existing-n-gram-dictionary)して、フリー テキスト列の特徴を抽出する。
 
-* N-gram を使用する[モデルのスコア付けや発行を行う](#score-or-publish-a-model-that-uses-n-grams)。
+* n-gram を使用する[モデルのスコア付けまたはデプロイ](#build-inference-pipeline-that-uses-n-grams-to-deploy-a-real-time-endpoint)を行う。
 
 ### <a name="create-a-new-n-gram-dictionary"></a>新しい N-gram 辞書を作成する
 
@@ -94,17 +94,23 @@ ms.locfileid: "93420803"
 
 1.  パイプラインを送信します。
 
-### <a name="score-or-publish-a-model-that-uses-n-grams"></a>N-gram を使用するモデルのスコア付けまたは発行を行う
+### <a name="build-inference-pipeline-that-uses-n-grams-to-deploy-a-real-time-endpoint"></a>n-gram を使用してリアルタイム エンドポイントをデプロイする推論パイプラインを構築する
 
-1.  **テキストからの N-gram 特徴抽出** モジュールをトレーニング データフローからスコアリング データフローにコピーします。
+テスト データセットに対して予測を行うための **[Extract N-Grams Feature From Text]\(テキストから N-Grams 特徴を抽出する\)** および **[モデルのスコア付け]** が含まれるトレーニング パイプラインは、以下のような構造で構築されています。
 
-1.  **[Result Vocabulary]\(結果のボキャブラリ\)** 出力を、トレーニング データフローからスコアリング データフローの **[Input Vocabulary]\(入力ボキャブラリ\)** に接続します。
+:::image type="content" source="./media/module/extract-n-gram-training-pipeline-score-model.png" alt-text="N-Gram の抽出のトレーニング パイプラインの例" border="true":::
 
-1.  スコアリング ワークフローで、テキストからの N-gram 特徴抽出モジュールを変更し、 **[Vocabulary mode]\(ボキャブラリ モード\)** パラメーターを **[ReadOnly]\(読み取り専用\)** に設定します。 それ以外はすべて同じままにします。
+囲まれている **[Extract N-Grams Feature From Text]\(テキストから N-Grams 特徴を抽出する\)** モジュールの **[Vocabulary mode]\(ボキャブラリ モード\)** は **[Create]\(作成\)** であり、 **[モデルのスコア付け]** モジュールに接続されているモジュールの **[Vocabulary mode]\(ボキャブラリ モード\)** は **[ReadOnly]\(読み取り専用\)** です。
 
-1.  パイプラインを発行するには、 **[結果のボキャブラリ]** をデータセットとして保存します。
+上記のトレーニング パイプラインを正常に送信した後、囲まれたモジュールの出力をデータセットとして登録できます。
 
-1.  スコアリング グラフで、保存したデータセットをテキストからの N-gram 特徴抽出モジュールに接続します。
+:::image type="content" source="./media/module/extract-n-gram-output-voc-register-dataset.png" alt-text="データセットの登録" border="true":::
+
+次に、リアルタイムの推論パイプラインを作成できます。 推論パイプラインを作成したら、次のように手動で推論パイプラインを調整する必要があります。
+
+:::image type="content" source="./media/module/extract-n-gram-inference-pipeline.png" alt-text="推論パイプライン" border="true":::
+
+次に、推論パイプラインを送信し、リアルタイム エンドポイントをデプロイします。
 
 ## <a name="results"></a>結果
 

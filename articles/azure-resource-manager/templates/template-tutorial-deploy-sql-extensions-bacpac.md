@@ -1,20 +1,20 @@
 ---
 title: テンプレートを使用して SQL BACPAC ファイルをインポートする
-description: Azure SQL Database 拡張機能を使用して Azure Resource Manager テンプレートで SQL BACPAC ファイルをインポートする方法について説明します。
+description: Azure SQL Database 拡張機能を使用して Azure Resource Manager テンプレート (ARM テンプレート) で SQL BACPAC ファイルをインポートする方法について説明します。
 author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6a56602ad5217af07d9e35872a26ddb478146d0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b798e5ceb72ece3989fb81014555f2bc0fea5926
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86101887"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931403"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>チュートリアル:ARM テンプレートを使用して SQL BACPAC ファイルをインポートする
 
-Azure SQL Database 拡張機能を使用して Azure Resource Manager (ARM) テンプレートで BACPAC ファイルをインポートする方法について説明します。 デプロイの成果物は、デプロイを完了するために必要なメイン テンプレート ファイルに加えたすべてのファイルです。 この BACPAC ファイルが成果物です。
+Azure SQL Database 拡張機能を使用して Azure Resource Manager テンプレート (ARM テンプレート) テンプレートで BACPAC ファイルをインポートする方法について説明します。 デプロイの成果物は、デプロイを完了するために必要なメイン テンプレート ファイルに加えたすべてのファイルです。 この BACPAC ファイルが成果物です。
 
 このチュートリアルでは、テンプレートを作成して[論理 SQL サーバー](../../azure-sql/database/logical-servers.md)と単一データベースをデプロイし、BACPAC ファイルをインポートします。 ARM テンプレートを使用して Azure 仮想マシン拡張機能をデプロイする方法については、「[チュートリアル: ARM テンプレートを使用して仮想マシン拡張機能をデプロイする](./template-tutorial-deploy-vm-extensions.md)」を参照してください。
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](./quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使用して ARM テンプレートを作成する](./quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 * セキュリティを向上させるために、生成されたパスワードをサーバー管理者アカウントに対して使用します。 パスワードを生成するために使用できるサンプルを次に示します。
 
     ```console

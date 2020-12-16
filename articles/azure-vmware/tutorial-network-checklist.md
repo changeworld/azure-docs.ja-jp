@@ -3,12 +3,12 @@ title: チュートリアル - ネットワーク計画のチェックリスト
 description: Azure VMware Solution の、ネットワーク要件の前提条件とネットワーク接続およびネットワーク ポートの詳細について説明します。
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 5ee70b8a297e1b8418049ff229b3c1869819145b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 52f973ada23576fd6d542c40c9a9e63e6f270df3
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948206"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575161"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Azure VMware Solution のネットワーク計画のチェックリスト 
 
@@ -47,9 +47,19 @@ AVS プライベート クラウドでは、次に示すように、サブネッ
 | ネットワークの使用法             | Subnet | 例          |
 | ------------------------- | ------ | ---------------- |
 | プライベート クラウドの管理  | `/26`  | `10.10.0.0/26`   |
+| HCX 管理の移行       | `/26`  | `10.10.0.64/26`  |
+| 予約済み Global Reach     | `/26`  | `10.10.0.128/26` |
+| 予約済み ExpressRoute     | `/27`  | `10.10.0.192/27` |
+| ExpressRoute ピアリング      | `/27`  | `10.10.0.224/27` |
+| ESXi の管理           | `/25`  | `10.10.1.0/25`   |
 | vMotion ネットワーク           | `/25`  | `10.10.1.128/25` |
-| VM ワークロード              | `/24`  | `10.10.2.0/24`   |
-| ExpressRoute ピアリング      | `/29`  | `10.10.3.8/29`   |
+| レプリケーション ネットワーク       | `/25`  | `10.10.2.0/25`   |
+| vSAN                      | `/25`  | `10.10.2.128/25` |
+| HCX アップリンク                | `/26`  | `10.10.3.0/26`   |
+| 予約済み                  | `/26`  | `10.10.3.64/26`  |
+| 予約済み                  | `/26`  | `10.10.3.128/26` |
+| 予約済み                  | `/26`  | `10.10.3.192/26` |
+
 
 
 ## <a name="required-network-ports"></a>必要なネットワーク ポート

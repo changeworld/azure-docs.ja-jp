@@ -8,19 +8,19 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 63629f32c97611fa8bc57ecdac968552375125f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 238ef9ec80b01470e28535d0eb42dbb3a377b005
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89380539"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746439"
 ---
 # <a name="how-to-create-plans-for-your-saas-offer"></a>SaaS オファーのプランを作成する方法
 
 Microsoft のコマーシャル マーケットプレースを通じて販売されるオファーには、少なくとも 1 つのプランが必要です。 同じオファー内でさまざまなオプションを使用して、さまざまなプランを作成できます。 これらのプラン (SKU とも呼ばれる) は、サービスのバージョン、収益化、またはレベルの点で異なる可能性があります。 プランの詳細なガイダンスについては、「[コマーシャル マーケットプレースのオファーのプランと価格](plans-pricing.md)」を参照してください。
 
 > [!NOTE]
-> トランザクションを個別に処理することを選択した場合、このオプションは表示されません。 代わりに、「[SaaS オファーを市場に投入する方法](create-new-saas-offer-marketing.md)」に進んでください。
+> トランザクションを個別に処理することを選択した場合、このオプションは表示されません。 代わりに、「[SaaS オファーを販売する方法](create-new-saas-offer-marketing.md)」に進んでください。
 
 ## <a name="create-a-plan"></a>プランの作成
 
@@ -152,5 +152,5 @@ Microsoft のコマーシャル マーケットプレースを通じて販売さ
 
 ## <a name="next-steps"></a>次のステップ
 
-- **Microsoft との共同販売**および **CSP による再販**プログラムを使用して [SaaS オファーを市場に投入する方法](create-new-saas-offer-marketing.md)について学習します。
+- **Microsoft との共同販売** および **CSP による再販** プログラムを使用して [SaaS オファーを市場で販売する方法](create-new-saas-offer-marketing.md)について学習します。
 - [SaaS オファーをテストしてコマーシャル マーケットプレースに公開する方法](test-publish-saas-offer.md)。

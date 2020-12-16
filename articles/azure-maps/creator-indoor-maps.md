@@ -1,21 +1,27 @@
 ---
-title: Azure Maps Creator で屋内マップを操作する
-description: この記事では、Azure Maps Creator サービスに適用される概念について説明します
+title: Azure Maps Creator (プレビュー) で屋内マップを操作する
+description: この記事では、Azure Maps Creator サービス (プレビュー) に適用される概念について説明します
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 558903ead572363c5545a4a3121f7cf61f549df6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4ab00317e71f832bb677c4c7587e2356a37cb7a1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895904"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903566"
 ---
-# <a name="creator-for-indoor-maps"></a>屋内マップ用の Creator
+# <a name="creator-preview-for-indoor-maps"></a>屋内マップ用の Creator (プレビュー)
+
+
+> [!IMPORTANT]
+> Azure Maps Creator サービスは、現在パブリック プレビューの段階にあります。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
 
 この記事では、Azure Maps Creator に適用される概念とツールについて説明します。 Azure Maps Creator API と SDK を使い始める前に、この記事を読むことをお勧めします。
 
@@ -23,15 +29,15 @@ Creator を使用すると、屋内マップ データに基づくマップ地�
 
 ![Creator のマップ データ ワークフロー](./media/creator-indoor-maps/workflow.png)
 
-## <a name="create-azure-maps-creator"></a>Azure Maps Creator を作成する
+## <a name="create-azure-maps-creator-preview"></a>Azure Maps Creator (プレビュー) を作成する 
 
-Creator サービスを使用するには、Azure Maps アカウントで Azure Maps Creator を作成する必要があります。 Azure Maps で Azure Maps Creator を作成する方法の詳細については、「[Azure Maps Creator を管理する](how-to-manage-creator.md)」を参照してください。
+Creator サービス (プレビュー) を使用するには、Azure Maps アカウントで Azure Maps Creator を作成する必要があります。 Azure Maps で Azure Maps Creator を作成する方法の詳細については、「[Azure Maps Creator を管理する](how-to-manage-creator.md)」を参照してください。
 
 ## <a name="upload-a-drawing-package"></a>Drawing パッケージをアップロードする
 
-Creator では、アップロードされた Drawing パッケージを変換することによって、屋内マップ データが収集されます。 Drawing パッケージでは、構築または再モデル化されたファシリティが表されています。 Drawing パッケージの要件については、「[Drawing パッケージの要件](drawing-requirements.md)」を参照してください。
+Creator (プレビュー) では、アップロードされた Drawing パッケージを変換することによって、屋内マップ データが収集されます。 Drawing パッケージでは、構築または再モデル化されたファシリティが表されています。 Drawing パッケージの要件については、「[Drawing パッケージの要件](drawing-requirements.md)」を参照してください。
 
-Drawing パッケージをアップロードするには、[Azure Maps Data Upload API](/rest/api/maps/data/uploadpreview) を使用します。  アップロードが正常に完了すると、Data Upload API からユーザー データ識別子 (`udid`) が返されます。 次のステップでは、`udid` を使用して、アップロードされたパッケージを屋内マップ データに変換します。
+Drawing パッケージをアップロードするには、[Azure Maps Data (プレビュー) Upload API](/rest/api/maps/data/uploadpreview) を使用します。  アップロードが正常に完了すると、Data Upload API からユーザー データ識別子 (`udid`) が返されます。 次のステップでは、`udid` を使用して、アップロードされたパッケージを屋内マップ データに変換します。
 
 ## <a name="convert-a-drawing-package"></a>Drawing パッケージを変換する
 
@@ -41,7 +47,7 @@ Drawing パッケージをアップロードするには、[Azure Maps Data Uplo
 
 ## <a name="create-indoor-map-data"></a>屋内マップ データを作成する
 
-Azure Maps Creator では、次の 3 つのサービスが提供されています。
+Azure Maps Creator (プレビュー) では、次の 3 つのサービスが提供されています。
 
 * [Dataset サービス](/rest/api/maps/dataset/createpreview)。
 変換された Drawing パッケージ データからデータセットを作成するには、Dataset サービスを使用します。
@@ -72,11 +78,11 @@ Azure Maps Creator では、次の 3 つのサービスが提供されていま�
 
 ### <a name="feature-statesets"></a>地物状態セット
 
-地物状態セットは、部屋や機器といったデータセットの地物に割り当てられた動的なプロパティ (" *状態* ") のコレクションです。 " *状態* " の例としては、温度や占有率などがあります。 各 " *状態* " は、プロパティの名前、値、および最終更新のタイムスタンプを含むキーと値のペアです。
+地物状態セットは、部屋や機器といったデータセットの地物に割り当てられた動的なプロパティ ("*状態*") のコレクションです。 "*状態*" の例としては、温度や占有率などがあります。 各 "*状態*" は、プロパティの名前、値、および最終更新のタイムスタンプを含むキーと値のペアです。
 
-[Feature State サービス](/rest/api/maps/featurestate/createstatesetpreview)を使用すると、データセットに対する地物状態セットを作成および管理できます。 状態セットは、1 つまたは複数の " *状態* " によって定義されます。 各地物 (部屋など) には、1 つの " *状態* " を関連付けることができます。
+[Feature State サービス](/rest/api/maps/featurestate/createstatesetpreview)を使用すると、データセットに対する地物状態セットを作成および管理できます。 状態セットは、1 つまたは複数の "*状態*" によって定義されます。 各地物 (部屋など) には、1 つの "*状態*" を関連付けることができます。
 
-状態セット内の各 " *状態* " の値は、IoT デバイスや他のアプリケーションで更新または取得できます。  たとえば、[Feature State Update API](/rest/api/maps/featurestate/updatestatespreview) を使用すると、空間占有量を測定するデバイスで、部屋の状態の変化を体系的に送信できます。
+状態セット内の各 "*状態*" の値は、IoT デバイスや他のアプリケーションで更新または取得できます。  たとえば、[Feature State Update API](/rest/api/maps/featurestate/updatestatespreview) を使用すると、空間占有量を測定するデバイスで、部屋の状態の変化を体系的に送信できます。
 
 アプリケーションでは、地物状態セットを使用することで、現在の状態とそれぞれのマップ スタイルに応じて、設備内の地物を動的にレンダリングできます。 地物状態セットを使用してレンダリング マップ内の地物のスタイルを設定する方法の詳細については、「[Indoor Web SDK モジュール](#indoor-maps-module)」を参照してください。
 
@@ -87,9 +93,9 @@ Azure Maps Creator では、次の 3 つのサービスが提供されていま�
 
 ### <a name="render-v2-service"></a>Render V2 サービス
 
-Azure Maps の [Render V2 サービスの Get Map Tile API](/rest/api/maps/renderv2/getmaptilepreview) は、Creator のタイルセットをサポートするようにが拡張されています。
+Azure Maps の [Render V2 サービスの Get Map Tile API (プレビュー)](/rest/api/maps/renderv2/getmaptilepreview) は、Creator (プレビュー) のタイルセットをサポートするように拡張されています。
 
-[Render V2 サービスの Get Map State Tile API](/rest/api/maps/renderv2/getmaptilepreview) を使用すると、アプリケーションでタイルセットを要求できます。 その後、タイルセットをマップ コントロールまたは SDK に統合できます。 Render V2 サービスを使用するマップ コントロールの例については、「[Indoor Maps モジュール](#indoor-maps-module)」を参照してください。
+Render V2 サービスの Get Map State Tile API を使用すると、アプリケーションでタイルセットを要求できます。 その後、タイルセットをマップ コントロールまたは SDK に統合できます。 Render V2 サービスを使用するマップ コントロールの例については、「[Indoor Maps モジュール](#indoor-maps-module)」を参照してください。
 
 ### <a name="web-feature-service-api"></a>Web Feature Service API
 
@@ -97,7 +103,7 @@ Azure Maps の [Render V2 サービスの Get Map Tile API](/rest/api/maps/rende
 
 ### <a name="indoor-maps-module"></a>Indoor Maps モジュール
 
-[Azure Maps Web SDK](./index.yml) には、Indoor Maps モジュールが含まれています。 このモジュールでは、Azure Maps の " *マップ コントロール* " ライブラリに対する拡張機能が提供されます。 Indoor Maps モジュールでは、Creator で作成された屋内マップがレンダリングされます。 ユーザーが異なるフロアを視覚化できる " *フロア ピッカー* " などのウィジェットが統合されています。
+[Azure Maps Web SDK](./index.yml) には、Indoor Maps モジュールが含まれています。 このモジュールでは、Azure Maps の "*マップ コントロール*" ライブラリに対する拡張機能が提供されます。 Indoor Maps モジュールでは、Creator (プレビュー) で作成された屋内マップがレンダリングされます。 ユーザーが異なるフロアを視覚化できる "*フロア ピッカー*" などのウィジェットが統合されています。
 
 Indoor Maps モジュールを使用すると、屋内マップ データを他の [Azure Maps サービス](./index.yml)と統合する Web アプリケーションを作成できます。 最も一般的なアプリケーションの設定としては、道路、画像、気象、交通などの他の地図から屋内マップへの知識の追加などがあります。
 
@@ -109,7 +115,7 @@ Indoor Maps モジュールを使用すると、屋内マップ データを他�
 
 ### <a name="data-maintenance"></a>データのメンテナンス
 
- Azure Maps Creator の List、Update、Delete API を使用すると、データセット、タイルセット、地物状態セットの一覧表示、更新、削除を行うことができます。
+ Azure Maps Creator (プレビュー) の List、Update、Delete API を使用すると、データセット、タイルセット、地物状態セットの一覧表示、更新、削除を行うことができます。
 
 >[!NOTE]
 >アイテムの一覧を確認して削除する場合は常に、すべての依存 API またはアプリケーションに対するその削除の影響を考慮する必要があります。 たとえば、アプリケーションによって現在使用されているタイルセットを、[Render V2 の Get Map Tile API](/rest/api/maps/renderv2/getmaptilepreview) を使用して削除する必要がある場合、そのタイルセットを削除すると、アプリケーションによるそのタイルセットのレンダリングが失敗するようになります。
@@ -129,4 +135,4 @@ Indoor Maps モジュールを使用すると、屋内マップ データを他�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Creator 屋内マップを作成する](tutorial-creator-indoor-maps.md)
+> [チュートリアル: Creator (プレビュー) の屋内マップを作成する](tutorial-creator-indoor-maps.md)

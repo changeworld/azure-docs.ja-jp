@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2020
+ms.date: 12/07/2020
 ms.author: memildin
-ms.openlocfilehash: 0dbd208cea64a3b2dc22f7603f654127e5b46294
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 3272212a857f24916acce7da5a4ee31561ec0c5a
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511765"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922927"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -37,6 +37,8 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 
 - [マシン上の SQL サーバー向け Azure Defender の一般提供開始](#azure-defender-for-sql-servers-on-machines-is-generally-available)
 - [Azure Synapse Analytics の専用 SQL プールに対する Azure Defender for SQL のサポートの一般提供開始](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
+- [グローバル管理者が自分にテナントレベルのアクセス許可を付与できるようになりました](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
+- [2 つの新しい Azure Defender プラン: Azure Defender for DNS と Azure Defender for Resource Manager (プレビュー段階)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>マシン上の SQL サーバー向け Azure Defender の一般提供開始
 
@@ -68,6 +70,31 @@ Azure Defender for SQL では、次のものを使用して専用 SQL プール�
 Azure Defender for SQL での Azure Synapse Analytics SQL プールのサポートは、Azure Security Center 内の Azure SQL データベース バンドルに自動的に追加されます。 Azure portal の [Synapse ワークスペース] ページに、新しい [Azure Defender for SQL] タブが表示されます。
 
 [Azure Defender for SQL](defender-for-sql-introduction.md) についてさらに詳しく学習します。
+
+
+### <a name="global-administrators-can-now-grant-themselves-tenant-level-permissions"></a>グローバル管理者が自分にテナントレベルのアクセス許可を付与できるようになりました
+
+Azure Active Directory ロールが **グローバル管理者** であるユーザーは、テナント全体の責任を持つ場合がありますが、Azure Security Center でその組織全体の情報を表示するための Azure アクセス許可がありません。 
+
+テナントレベルのアクセス許可を自分に割り当てるには、「[テナント全体のアクセス許可を自分に付与する](security-center-management-groups.md#grant-tenant-wide-permissions-to-yourself)」セクションの手順に従います。
+
+
+### <a name="two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview"></a>2 つの新しい Azure Defender プラン: Azure Defender for DNS と Azure Defender for Resource Manager (プレビュー段階)
+
+Azure 環境向けに、2 つの新しいクラウドネイティブ範囲の脅威防止機能が追加されました。
+
+これらの新しい保護により、脅威アクターからの攻撃に対する回復性が強化され、Azure Defender によって保護される Azure リソースの数が大幅に増加します。
+
+- **Azure Defender for Resource Manager** - 組織で実行されるすべてのリソース管理操作を自動的に監視します。 詳細については、次を参照してください。
+    - [Azure Defender for Resource Manager の概要](defender-for-resource-manager-introduction.md)
+    - [Azure Defender for Resource Manager アラートに対応する](defender-for-resource-manager-usage.md)
+    - [Azure Defender for Resource Manager で提供されるアラートの一覧](alerts-reference.md#alerts-resourcemanager)
+
+- **Azure Defender for DNS** - Azure リソースからのすべての DNS クエリを継続的に監視します。 詳細については、次を参照してください。
+    - [Azure Defender for DNS の概要](defender-for-dns-introduction.md)
+    - [Azure Defender for DNS アラートに対応する](defender-for-dns-usage.md)
+    - [Azure Defender for DNS で提供されるアラートの一覧](alerts-reference.md#alerts-dns)
+
 
 ## <a name="november-2020"></a>2020 年 11 月
 

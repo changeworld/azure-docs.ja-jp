@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 4dc5b84ff127aef173deecfd2be705004d92ee0c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 7df04bd75f3fd11b1caa702655cbd204fc2b4fda
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449918"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854884"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor の Azure ネットワーク監視ソリューション
 
@@ -37,14 +37,20 @@ Azure Monitor には、ネットワークを監視することを目的とした
 
 詳細については、[ネットワーク パフォーマンス モニター](../../networking/network-monitoring-overview.md)に関するページを参照してください。
 
-## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Azure Application Gateway とネットワーク セキュリティ グループの分析
-ソリューションを使用するには次の手順に従います。
+## <a name="network-security-group-analytics"></a>ネットワーク セキュリティ グループ分析
+
 1. 管理ソリューションを Azure Monitor に追加します。
 2. 診断を有効にして、Azure Monitor の Log Analytics ワークスペースに診断結果をリダイレクトします。 Azure Blob Storage にログを書き込む必要はありません。
 
-診断を有効にし、Application Gateway とネットワーク セキュリティ グループのいずれかまたは両方に対応するソリューションを有効にすることができます。
+診断ログが有効になっていない場合、そのリソースのダッシュボード ブレードは空白であり、エラー メッセージが表示されます。
 
-特定のリソースの種類に対する診断リソース ログを有効にせずにソリューションをインストールした場合、そのリソースに対するダッシュボード ブレードは空白になり、エラー メッセージが表示されます。
+## <a name="azure-application-gateway-analytics"></a>Azure Application Gateway 分析
+
+1. 診断を有効にして、Azure Monitor の Log Analytics ワークスペースに診断結果をリダイレクトします。
+2. Application Gateway のブック テンプレートを使用して、リソースの詳細な概要を使用します。
+
+Application Gateway に対して診断ログが有効になっていない場合は、既定のメトリック データのみがブック内に設定されます。
+
 
 > [!NOTE]
 > 2017 年 1 月、Application Gateway とネットワーク セキュリティ グループから Log Analytics ワークスペースへのログ送信をサポートする方法が変更になりました。 **Azure Networking Analytics (非推奨)** ソリューションが表示される場合は、「[旧バージョンの Networking Analytics ソリューションからの移行](#migrating-from-the-old-networking-analytics-solution)」を参照して手順に従ってください。
@@ -61,37 +67,15 @@ Azure Application Gateway とネットワーク セキュリティ グループ�
 | Azure |  |  |&#8226; |  |  |ログの際 |
 
 
-## <a name="azure-application-gateway-analytics-solution-in-azure-monitor"></a>Azure Monitor の Azure Application Gateway 分析ソリューション
-
-![Azure Application Gateway 分析のシンボル](media/azure-networking-analytics/azure-analytics-symbol.png)
-
-Application Gateway に関しては、次のログがサポートされます。
-
-* ApplicationGatewayAccessLog
-* ApplicationGatewayPerformanceLog
-* ApplicationGatewayFirewallLog
-
-Application Gateway に関しては、次のメトリックがサポートされます。
-
-
-* 5 分間のスループット
-
-### <a name="install-and-configure-the-solution"></a>ソリューションのインストールと構成
-Azure Application Gateway 分析ソリューションのインストールと構成は、次の手順で行います。
-
-1. Azure Application Gateway 分析ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Azure Monitor ソリューションの追加](./solutions.md)に関するページで説明されている手順に従って有効にします。
-2. 監視する [Application Gateway](../../application-gateway/application-gateway-diagnostics.md) の診断ログを有効にします。
-
-#### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Azure Application Gateway の診断を Azure Portal で有効にする
+### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Azure Application Gateway の診断を Azure Portal で有効にする
 
 1. Azure portal で、監視する Application Gateway リソースに移動します。
-2. *[診断ログ]* を選択して、次のページを開きます。
+2. *[診断設定]* を選択して、次のページを開きます。
 
-   ![[診断を有効にする] オプションが表示されている Application Gateway リソースの [診断ログ] ページのスクリーンショット。](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
-3. *[診断を有効にする]* をクリックして、次のページを開きます。
+   ![Application Gateway リソースの診断設定構成のスクリーンショット。](media/azure-networking-analytics/diagnostic-settings-1.png)
 
-   ![診断設定を構成するためのページのスクリーンショット。 [Log Analytics への送信] のオプションが、ログの種類 3 つとメトリック 1 つに対して選択されています。](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
-4. 診断を有効にするには、 *[状態]* の下の *[オン]* をクリックします。
+   [ ![診断設定を構成するためのページのスクリーンショット。](media/azure-networking-analytics/diagnostic-settings-2.png)](media/azure-networking-analytics/application-gateway-diagnostics-2.png#lightbox)
+
 5. *[Log Analytics への送信]* チェックボックスをオンにします。
 6. 既存の Log Analytics ワークスペースを選択するか、ワークスペースを作成します。
 7. 収集するログの種類ごとに **[ログ]** の下のチェックボックスをオンにます。
@@ -109,28 +93,33 @@ $gateway = Get-AzApplicationGateway -Name 'ContosoGateway'
 Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspaceId -Enabled $true
 ```
 
-### <a name="use-azure-application-gateway-analytics"></a>Azure Application Gateway 分析の使用
-![Azure Application Gateway 分析タイルの画像](media/azure-networking-analytics/log-analytics-appgateway-tile.png)
+#### <a name="accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights"></a>Azure Monitor Network Insights を使用した Azure Application Gateway 分析へのアクセス
 
-[概要] で **[Azure Application Gateway 分析]** タイルをクリックした後、収集されたログの概要を表示し、次のカテゴリについて詳細表示できます。
+Application Insights には、Application Gateway リソース内の [Insights]\(分析情報\) タブからアクセスできます。
 
-* Application Gateway のアクセス ログ
-  * Application Gateway のアクセス ログにおけるクライアント エラーとサーバー エラー
-  * 1 時間あたりの要求数 (Application Gateway ごと)
-  * 1 時間あたりの失敗した要求数 (Application Gateway ごと)
-  * Application Gateway のユーザー エージェントごとのエラー数
-* Application Gateway のパフォーマンス
-  * Application Gateway のホストの正常性
-  * Application Gateway の失敗した要求数の最大と 95 パーセンタイル
+![Application Gateway Insights のスクリーンショット ](media/azure-networking-analytics/azure-appgw-insights.png
+)
 
-![ゲートウェイ エラー、要求、および失敗した要求のデータが含まれているタイルを表示している Application Gateway のアクセス ログ ダッシュボードのスクリーンショット。](media/azure-networking-analytics/log-analytics-appgateway01.png)
+[詳細なメトリックの表示] タブを使用すると、Application Gateway のデータが要約された事前設定済みのブックが表示されます。
 
-![ユーザー エージェントごとのエラー、ホストの正常性、および失敗した要求のデータが含まれているタイルを表示している Application Gateway のアクセス ログ ダッシュボードのスクリーンショット。](media/azure-networking-analytics/log-analytics-appgateway02.png)
+[ ![Application Gateway ブックのスクリーンショット ](media/azure-networking-analytics/azure-appgw-workbook.png)](media/azure-networking-analytics/application-gateway-workbook.png#lightbox)
 
-**[Azure Application Gateway 分析]** ダッシュボードにあるいずれかのブレードで概要情報を確認し、ログの検索ページで、詳細情報の表示対象をクリックします。
+## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>Azure Gateway 分析ソリューションから Azure Monitor ブックへの移行
 
-どのログの検索ページでも、時間、詳細結果、ログ検索履歴を表示することができます。 結果を絞り込むファセットを使用してフィルター処理することもできます。
+> [!NOTE]
+> Azure Application Gateway 分析ソリューションは古くなっており、分析を使用するための推奨方法は、Application Gateway リソースに対して Azure Monitor Network insights を通じて公開されているブックを使用することです。
 
+* 診断設定で、Log Analytics ワークスペースへのログの格納が既に有効になっている場合、Azure Monitor Network Insights ブックでは同じ場所にあるデータを使用できます。 新しい構成は必要ありません。
+
+* 以前のすべてのデータは、診断設定が有効になった時点からブック内で既に使用可能です。 データ転送は必要ありません。
+
+* ブックに切り替えるためにアクティブな切り替えは必要ありません。 分析ソリューションと Network Insights の両方のブックを並行して動作させることができます。
+
+* Azure Monitor ブックに関連する追加コストはありません。 Log Analytics ワークスペースは、引き続き使用量に従って課金されます。
+
+* ワークスペースから Azure Gateway 分析ソリューションをクリーンアップするために、ソリューションのリソース ページからソリューションを削除できます。
+
+[ ![Azure Application Gateway 分析ソリューションの削除オプションのスクリーンショット。](media/azure-networking-analytics/azure-appgw-analytics-delete.png)](media/azure-networking-analytics/application-gateway-analytics-delete.png#lightbox)
 
 ## <a name="azure-network-security-group-analytics-solution-in-azure-monitor"></a>Azure Monitor の Azure ネットワーク セキュリティ グループ分析ソリューション
 

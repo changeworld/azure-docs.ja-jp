@@ -1,6 +1,6 @@
 ---
-title: Android マップへのタイル レイヤーの追加 | Microsoft Azure Maps
-description: マップにタイル レイヤーを追加する方法について説明します。 Azure Maps Android SDK を使用して気象レーダーのオーバーレイをマップに追加する例を参照してください。
+title: Azure Maps Android SDK を使用してマップにタイル レイヤーを追加する
+description: マップにタイル レイヤーを追加する方法について説明します。 Microsoft Azure Maps Android SDK を使用して気象レーダーのオーバーレイをマップに追加する例を参照してください。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: faa5e3e3177e18787a73c6b4c43aa04b6bc760b7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 22618a28f1a87e68c19467aedf639e96ec2fb91e
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897094"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532678"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用してマップにタイル レイヤーを追加する
 

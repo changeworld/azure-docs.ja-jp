@@ -7,14 +7,14 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: b20391c4d856a5c52b6017ae892ec0b86873dbca
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 82c5a246dca69c0723394e41058c4fc123bbb84e
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491887"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571948"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>マネージド ID を使用して Azure Data Lake Storage Gen1 に対して Stream Analytics を認証する
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>マネージド ID を使用して Azure Data Lake Storage Gen1 に対して Stream Analytics を認証する (プレビュー)
 
 Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力でのマネージド ID 認証をサポートします。 ID は、特定の Stream Analytics ジョブを表す Azure Active Directory に登録済みのマネージド アプリケーションであり、対象のリソースを認証するために使用できます。 マネージド ID は、パスワードの変更や 90 日ごとに発生するユーザー トークンの有効期限切れによる再認証の必要性などのユーザー ベースの認証方法の制限を排除します。 さらに、マネージド ID は、Azure Data Lake Storage Gen1 に出力する Stream Analytics ジョブのデプロイの自動化で役に立ちます。
 
@@ -84,7 +84,7 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
 
    * ジョブ内で使用される ADLS Gen1 プレフィックス パスへの **書き込み** と **実行** のアクセス許可を自動的に設定し、このフォルダーおよびすべての子に割り当てます。
 
-5. [Stream Analytics CI.CD Nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) バージョン 1.5.0 以上をビルド コンピューター上 (Visual Studio 外部) で使用して、次のプロパティによって Resource Manager テンプレートを生成できます。 次のセクションの Resource Manager テンプレートのデプロイに関する手順に従って、サービス プリンシパルを取得し、PowerShell によってサービス プリンシパルへのアクセスを付与します。
+5. [Stream Analytics CI.CD NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) バージョン 1.5.0 以上をビルド コンピューター上 (Visual Studio 外部) で使用して、次のプロパティによって Resource Manager テンプレートを生成できます。 次のセクションの Resource Manager テンプレートのデプロイに関する手順に従って、サービス プリンシパルを取得し、PowerShell によってサービス プリンシパルへのアクセスを付与します。
 
 ## <a name="resource-manager-template-deployment"></a>Resource Manager テンプレートの展開
 

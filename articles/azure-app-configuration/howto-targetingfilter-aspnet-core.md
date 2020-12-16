@@ -3,16 +3,16 @@ title: 対象ユーザーに対する機能の段階的なロールアウトを�
 titleSuffix: Azure App Configuration
 description: 対象ユーザーに対する機能の段階的なロールアウトを有効にする方法について説明します。
 ms.service: azure-app-configuration
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.topic: conceptual
-ms.date: 8/7/2020
-ms.openlocfilehash: d1574b8a3f8cda3341c0aaf355911e2e93a7bcab
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.date: 11/20/2020
+ms.openlocfilehash: c415eaeab2edd0a1b324bba4266266201cb50cbf
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557440"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929686"
 ---
 # <a name="enable-staged-rollout-of-features-for-targeted-audiences"></a>対象ユーザーに対する機能の段階的なロールアウトを有効にする
 

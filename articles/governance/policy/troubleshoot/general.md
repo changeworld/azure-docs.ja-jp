@@ -1,14 +1,14 @@
 ---
 title: 一般的なエラーのトラブルシューティング
 description: ポリシー定義、さまざまな SDK、および Kubernetes のアドオンの作成に関する問題をトラブルシューティングする方法について説明します。
-ms.date: 10/30/2020
+ms.date: 12/01/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 74b622dd41fb28e845a35780e5d06588189ec029
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: f3667988d527100507d308887338278e1200d454
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146281"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511000"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Azure Policy を使用してエラーを解決する
 
@@ -34,7 +34,7 @@ Azure Policy が[エイリアス](../concepts/definition-structure.md#aliases)�
 
 無効または存在しないエイリアスがポリシー定義で使用されています。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 まず、Resource Manager プロパティにエイリアスがあることを確認します。 [Visual Studio Code 用の Azure Policy 拡張機能](../how-to/extension-for-vscode.md)、[Azure Resource Graph](../../resource-graph/samples/starter.md#distinct-alias-values)、または SDK を使用して、使用可能なエイリアスを検索します。 Resource Manager プロパティのエイリアスが存在しない場合は、サポート チケットを作成します。
 
@@ -48,7 +48,7 @@ Azure Policy が[エイリアス](../concepts/definition-structure.md#aliases)�
 
 新しいポリシーまたはイニシアチブの割り当ては、適用されるまでに約 30 分かかります。 既存の割り当てのスコープ内の新規または更新されたリソースは、15 分後に使用できるようになります。 標準のコンプライアンス スキャンは、24 時間ごとに行われます。 詳細については、「[評価のトリガー](../how-to/get-compliance-data.md#evaluation-triggers)」を参照してください。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 まず、評価が完了して Azure portal または SDK でコンプライアンスの結果を利用できるようになるまで、適切な時間待機します。 Azure PowerShell または REST API を使用して新しい評価スキャンを開始するには「[オンデマンドの評価スキャン](../how-to/get-compliance-data.md#on-demand-evaluation-scan)」を参照してください。
 
@@ -78,7 +78,7 @@ Azure Policy が[エイリアス](../concepts/definition-structure.md#aliases)�
    - **現在の値** が間違っている場合は、`resources.azure.com` を介してリソース ペイロードを検証します。
 1. その他の一般的な問題と解決策については、[「適用が想定どおりでない」のトラブルシューティング](#scenario-enforcement-not-as-expected)を参照してください。
 
-複製してカスタマイズした組み込みのポリシー定義またはカスタム定義で引き続き問題が発生する場合は、問題が適切に転送されるように、" **ポリシーの作成** " についてサポート チケットを作成してください。
+複製してカスタマイズした組み込みのポリシー定義またはカスタム定義で引き続き問題が発生する場合は、問題が適切に転送されるように、"**ポリシーの作成**" についてサポート チケットを作成してください。
 
 ### <a name="scenario-enforcement-not-as-expected"></a>シナリオ:適用が想定どおりでない
 
@@ -95,7 +95,7 @@ Azure Policy によって処理される予定のリソースが処理されず�
 ポリシー割り当ての適用をトラブルシューティングするには、次の手順を実行します。
 
 1. まず、評価が完了して Azure portal または SDK でコンプライアンスの結果を利用できるようになるまで、適切な時間待機します。 Azure PowerShell または REST API を使用して新しい評価スキャンを開始するには「[オンデマンドの評価スキャン](../how-to/get-compliance-data.md#on-demand-evaluation-scan)」を参照してください。
-1. 割り当てパラメーターと割り当てスコープが正しく設定されていること、 **enforcementMode** が _Enabled_ であることを確認します。 
+1. 割り当てパラメーターと割り当てスコープが正しく設定されていること、**enforcementMode** が _Enabled_ であることを確認します。
 1. [ポリシー定義モード](../concepts/definition-structure.md#mode)を確認します。
    - すべてのリソースの種類の場合は モード "すべて"。
    - ポリシー定義によってタグまたは場所を確認する場合はモード "インデックス付き"。
@@ -103,7 +103,7 @@ Azure Policy によって処理される予定のリソースが処理されず�
 1. リソースのペイロードがポリシー ロジックと一致することを確認します。 これを行うには、[HAR トレース](../../../azure-portal/capture-browser-trace.md)をキャプチャするか、ARM テンプレートのプロパティを確認します。
 1. その他の一般的な問題と解決策については、[「コンプライアンスが想定どおりでない」のトラブルシューティング](#scenario-compliance-not-as-expected)を参照してください。
 
-複製してカスタマイズした組み込みのポリシー定義またはカスタム定義で引き続き問題が発生する場合は、問題が適切に転送されるように、" **ポリシーの作成** " についてサポート チケットを作成してください。
+複製してカスタマイズした組み込みのポリシー定義またはカスタム定義で引き続き問題が発生する場合は、問題が適切に転送されるように、"**ポリシーの作成**" についてサポート チケットを作成してください。
 
 ### <a name="scenario-denied-by-azure-policy"></a>シナリオ:Azure Policy による拒否
 
@@ -115,7 +115,7 @@ Azure Policy によって処理される予定のリソースが処理されず�
 
 新しいリソースまたは更新されたリソースが存在するスコープへのポリシー割り当てが、[Deny](../concepts/effects.md#deny) 効果が適用されているポリシー定義の条件を満たしています。 これらの定義を満たしているリソースは、作成または更新できません。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 拒否されたポリシー割り当てのエラー メッセージには、ポリシー定義とポリシー割り当て ID が含まれています。 メッセージ内のエラー情報が欠落している場合は、[アクティビティ ログ](../../../azure-monitor/platform/activity-log.md#view-the-activity-log)でも確認できます。 この情報を使用して、リソースの制限を理解し、許可された値に一致するように要求のリソース プロパティを調整します。
 
@@ -131,7 +131,7 @@ Azure Policy は、Azure Resource Manager テンプレート (ARM テンプレ�
 
 `parameter()` や `resourceGroup()` などのサポートされている関数を使用すると、ポリシー定義および Azure Policy エンジンが処理する関数を残す代わりに、デプロイメント時に関数の処理結果が得られます。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 関数をポリシー定義の一部として渡すには、プロパティが `[[resourceGroup().tags.myTag]` のようになるように `[` で文字列全体をエスケープします。 エスケープ文字により、Resource Manager によってテンプレートが処理されるときに値が文字列として扱われます。 その後 Azure Policy は関数をポリシー定義に配置し、予期したとおりに動的になるようにします。 詳細については、「[Azure Resource Manager テンプレートの構文と式](../../../azure-resource-manager/templates/template-expressions.md)」を参照してください。
 
@@ -150,7 +150,7 @@ Azure Policy は、Azure Resource Manager テンプレート (ARM テンプレ�
 
 生成されたパスワードに、Helm Chart では分割されるコンマ (`,`) が含まれています。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 `helm install azure-policy-addon` を実行する場合は、バックスラッシュ (`\`) を使用してパスワード値のコンマ (`,`) をエスケープします。
 
@@ -166,7 +166,7 @@ Azure Policy は、Azure Resource Manager テンプレート (ARM テンプレ�
 
 `azure-policy-addon` という名前の Helm Chart は、既にインストールされているか、部分的にインストールされています。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 [Kubernetes アドオンの Azure Policy を削除](../concepts/policy-for-kubernetes.md#remove-the-add-on)する指示に従ってから、`helm install azure-policy-addon` コマンドを再実行します。
 
@@ -189,24 +189,6 @@ Azure Policy は、Azure Resource Manager テンプレート (ARM テンプレ�
 [ゲスト構成の監査ポリシーに関してリリースされた重要な変更](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
 ## <a name="add-on-for-kubernetes-general-errors"></a>Kubernetes 一般的エラー用アドオン
-
-### <a name="scenario-add-on-doesnt-work-with-aks-clusters-on-version-119-preview"></a>シナリオ:バージョン 1.19 (プレビュー) の AKS クラスターでアドオンが動作しない
-
-#### <a name="issue"></a>問題
-
-バージョン 1.19 クラスターでは、ゲートキーパー コントローラーとポリシー Webhook ポッドを介してこのエラーが返されます。
-
-```
-2020/09/22 20:06:55 http: TLS handshake error from 10.244.1.14:44282: remote error: tls: bad certificate
-```
-
-#### <a name="cause"></a>原因
-
-バージョン 1.19 (プレビュー) の AKS クラスターは、Azure Policy アドオンと互換性がまだありません。
-
-#### <a name="resolution"></a>解決方法
-
-Azure Policy アドオンでは、Kubernetes 1.19 (プレビュー) の使用を避けてください。 アドオンは、1.16、1.17、1.18 など、サポートされている一般公開バージョンで使用できます。
 
 ### <a name="scenario-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-due-to-egress-restrictions"></a>シナリオ:エグレス制限のため、アドオンは Azure Policy サービス エンドポイントに接続できません
 
@@ -239,14 +221,14 @@ Azure Policy アドオンでは、Kubernetes 1.19 (プレビュー) の使用を
 
 #### <a name="cause"></a>原因
 
-このエラーは _add-pod-identity_ がクラスターにインストールされていて、 _kube-system_ ポッドが _aad-pod-identity_ で除外されていない場合に発生します。
+このエラーは _add-pod-identity_ がクラスターにインストールされていて、_kube-system_ ポッドが _aad-pod-identity_ で除外されていない場合に発生します。
 
-Azure Instance Metadata エンドポイントの呼び出しをインターセプトするよう、 _aad-pod-identity_ コンポーネントの Node Managed Identity (NMI) ポッドによりノードの iptables が変更されます。 この設定の場合、Metadata エンドポイントに要求が行われると、ポッドで _aad-pod-identity_ が使用されていない場合でも NMI により要求がインターセプトされます。
-CRD に定義されているラベルに一致するポッドから Metadata エンドポイントに要求が行われた場合、NMI で何も処理することなく、その要求をプロキシ処理することを _aad-pod-identity_ に通知するよう、 **AzurePodIdentityException CRD** を構成できます。
+Azure Instance Metadata エンドポイントの呼び出しをインターセプトするよう、_aad-pod-identity_ コンポーネントの Node Managed Identity (NMI) ポッドによりノードの iptables が変更されます。 この設定の場合、Metadata エンドポイントに要求が行われると、ポッドで _aad-pod-identity_ が使用されていない場合でも NMI により要求がインターセプトされます。
+CRD に定義されているラベルに一致するポッドから Metadata エンドポイントに要求が行われた場合、NMI で何も処理することなく、その要求をプロキシ処理することを _aad-pod-identity_ に通知するよう、**AzurePodIdentityException CRD** を構成できます。
 
 #### <a name="resolution"></a>解決方法
 
-_aad-pod-identity_ の _kube-system_ 名前空間の `kubernetes.azure.com/managedby: aks` ラベルを持つシステム ポッドを、 **AzurePodIdentityException** CRD を構成することで除外します。
+_aad-pod-identity_ の _kube-system_ 名前空間の `kubernetes.azure.com/managedby: aks` ラベルを持つシステム ポッドを、**AzurePodIdentityException** CRD を構成することで除外します。
 
 詳細については、「[特定のポッドまたはアプリケーションの AAD Pod Identity を無効にする](https://azure.github.io/aad-pod-identity/docs/configure/application_exception)」を参照してください。
 
@@ -277,10 +259,19 @@ spec:
 
 #### <a name="issue"></a>問題
 
-アドオンは Azure Policy サービス エンドポイントに接続できませんが、次のエラーが見られます。
+アドオンは Azure Policy サービス エンドポイントに接続できますが、アドオン ログに次のいずれかのエラーが見られます。
 
 ```
-The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See https://aka.ms/policy-register-subscription for how to register subscriptions.
+The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See
+https://aka.ms/policy-register-subscription for how to register subscriptions.
+```
+
+または
+
+```
+policyinsightsdataplane.BaseClient#CheckDataPolicyCompliance: Failure responding to request:
+StatusCode=500 -- Original Error: autorest/azure: Service returned an error. Status=500
+Code="InternalServerError" Message="Encountered an internal server error."
 ```
 
 #### <a name="cause"></a>原因
@@ -289,9 +280,9 @@ The resource provider 'Microsoft.PolicyInsights' is not registered in subscripti
 
 #### <a name="resolution"></a>解決方法
 
-`Microsoft.PolicyInsights` リソースプロバイダーを登録します。 手順については、[リソースプロバイダーの登録](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)に関するページを参照してください。
+クラスター サブスクリプションに `Microsoft.PolicyInsights` リソース プロバイダーを登録します。 手順については、[リソースプロバイダーの登録](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)に関するページを参照してください。
 
-### <a name="scenario-the-subscript-is-disabled"></a>シナリオ:添字が無効
+### <a name="scenario-the-subscription-is-disabled"></a>シナリオ:サブスクリプションが無効
 
 #### <a name="issue"></a>問題
 
@@ -307,7 +298,7 @@ The subscription '{subId}' has been disabled for azure data-plane policy. Please
 
 #### <a name="resolution"></a>解決方法
 
-この問題を調査して解決するには、機能チーム `azuredg@microsoft.com` にお問い合わせください。 
+この問題を調査して解決するには、機能チーム `azuredg@microsoft.com` にお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 

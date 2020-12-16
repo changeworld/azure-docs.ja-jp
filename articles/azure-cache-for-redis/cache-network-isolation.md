@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 0fda0b659dd2500e811fac1f53c99a9987276185
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ef284661d44f700cf0b5282efcd2e6f7b94fa3b6
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537475"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621520"
 ---
 # <a name="azure-cache-for-redis-network-isolation-options"></a>Azure Cache for Redis のネットワークの分離オプション 
 この記事では、ニーズに合わせて最適なネットワークの分離ソリューションを決定する方法について説明します。 Azure Private Link、Azure Virtual Network (VNet) インジェクション、Azure Firewall 規則の基本を、その利点と制限事項とともに説明します。  
@@ -22,7 +22,7 @@ Azure Private Link を使用すると、仮想ネットワークから Azure Paa
 ### <a name="advantages"></a>長所
 * Basic、Standard、および Premium の Azure Cache for Redis インスタンスに対してサポートされています。 
 * [Azure Private Link](../private-link/private-link-overview.md) を使用すると、仮想ネットワーク内のサブネットでプライベート IP アドレスが割り当てられているプライベート エンドポイント経由で、仮想ネットワークから Azure Cache インスタンスに接続できます。 これにより、キャッシュ インスタンスは VNet 内とパブリックの両方から使用できるようになります。  
-* プライベート エンドポイントが作成されたら、`publicNetworkAccess` フラグを使用してパブリック ネットワークへのアクセスを制限できます。 このフラグは既定では `Enabled` に設定されており、キャッシュへのパブリックおよびプライベート リンクの両方のアクセスを許可するオプションが提供されます。 `Disabled` に設定すると、プライベート リンクのアクセスのみが許可されます。 この値は、PATCH 要求を使用して `Disabled` に設定できます。 詳細については、「[Azure Private Link を使用した Azure Cache for Redis (パブリック プレビュー)](cache-private-link.md)」を参照してください。 
+* プライベート エンドポイントが作成されたら、`publicNetworkAccess` フラグを使用してパブリック ネットワークへのアクセスを制限できます。 このフラグは既定で、プライベート リンク アクセスのみを許可する `Disabled` に設定されています。 この値は、PATCH 要求を使用して `Enabled` または `Disabled` に設定できます。 詳細については、「[Azure Private Link を使用した Azure Cache for Redis (パブリック プレビュー)](cache-private-link.md)」を参照してください。 
 * 外部キャッシュの依存関係はすべて、VNet の NSG ルールには影響しません。
 
 ### <a name="limitations"></a>制限事項 

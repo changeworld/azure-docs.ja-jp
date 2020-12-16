@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6612e6982ae4826869134dfa46b35a3f202d4bbb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 29bcf2fdd3e20b28b1f2cb014137cfba37ccaf2e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183245"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931811"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Azure Kubernetes Service 用の Azure セキュリティ ベースライン
 
@@ -178,7 +178,7 @@ Azure Policy のタグ付けに関連したいずれかの組み込み定義 ("�
 
 ネットワーク ポリシーを使用して、名前空間とラベル セレクターに基づいてクラスター内の特定のネットワーク パスを許可するか拒否するかを選択します。 トラフィック構成規則の記述子として、これらの名前空間とラベルを使用します。 Azure PowerShell または Azure コマンド ライン インターフェイス (CLI) を使用して、タグに基づいてリソースを検索したり、リソースに対するアクションを実行したりします。
 
-- [CLI での Azure Policy](/cli/azure/policy?view=azure-cli-latest)
+- [CLI での Azure Policy](/cli/azure/policy)
 
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
@@ -382,7 +382,7 @@ Azure CLI を使用して「マネージド Kubernetes クラスターのアク�
 
 - [AKS と Azure AD を統合する方法](./azure-ad-integration-cli.md)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 - [Azure Security Center を使用して ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
@@ -735,7 +735,7 @@ Windows Server ノードは毎日の更新プログラムを受信しないた�
 
 PowerShell コマンドレット "Get-AzSecurityTask" を使用して、セキュリティ体制を強化し、脆弱性スキャンの結果を修復するために実行することが推奨される Security Center のセキュリティ タスクを自動的に取得します。
 
-- [PowerShell を使用して Azure Security Center で検出された脆弱性を表示する方法](/powershell/module/az.security/get-azsecuritytask?view=azps-3.3.0)
+- [PowerShell を使用して Azure Security Center で検出された脆弱性を表示する方法](/powershell/module/az.security/get-azsecuritytask)
 
 **Azure Security Center の監視**: はい
 
@@ -763,7 +763,7 @@ PowerShell コマンドレット "Get-AzSecurityTask" を使用して、セキ�
 
 - [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription)
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -927,15 +927,15 @@ Azure AD 統合を使用して、名前空間内またはクラスター間で�
 
 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、AKS 管理グループのメンバーであるアカウントを検出し、それを使用してアクセスを定期的に調整します。 Azure CLI を使用して「マネージド Kubernetes クラスターのアクセス資格情報の取得」などの操作を行います。 Security Center の ID とアクセス管理の推奨事項を実装します。
 
-- [Azure CLI で AKS を管理する](/cli/azure/aks?view=azure-cli-latest)
+- [Azure CLI で AKS を管理する](/cli/azure/aks)
 
 - [AKS と Azure AD の統合を理解する](concepts-identity.md)
 
 - [AKS と Azure AD を統合する方法](./azure-ad-integration-cli.md)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 - [Azure Security Center を使用して ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
@@ -1055,7 +1055,7 @@ AKS エージェント ノード ホスト OS のセキュリティ強化
 
 security-hardened-vm-host-image.md
 
-- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow)
 
 **Azure Security Center の監視**: 適用なし
 

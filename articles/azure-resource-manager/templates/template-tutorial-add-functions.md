@@ -1,21 +1,21 @@
 ---
 title: チュートリアル - テンプレート関数を追加する
-description: Azure Resource Manager テンプレートにテンプレート関数を追加して値を構築します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) にテンプレート関数を追加して値を構築します。
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: c6ced832cad6809e7cd016eee132713c6b266480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67c88e98d966a21163aafefcad8363086d5b3bf4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613851"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931046"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>チュートリアル:ARM テンプレートにテンプレート関数を追加する
 
-このチュートリアルでは、Azure Resource Manager (ARM) テンプレートに[テンプレート関数](template-functions.md)を追加する方法について説明します。 関数を使用して動的に値を構築します。 システムに備わっているテンプレート関数に加えて、[ユーザー定義関数](./template-user-defined-functions.md)を作成することもできます。 このチュートリアルの所要時間は **7 分**です。
+このチュートリアルでは、Azure Resource Manager テンプレート (ARM テンプレート) に[テンプレート関数](template-functions.md)を追加する方法について説明します。 関数を使用して動的に値を構築します。 システムに備わっているテンプレート関数に加えて、[ユーザー定義関数](./template-user-defined-functions.md)を作成することもできます。 このチュートリアルの所要時間は **7 分** です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,11 +29,11 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json":::
 
-ストレージ アカウントの場所が**米国東部**にハードコーディングされています。 しかし、ストレージ アカウントを他のリージョンにデプロイしなければならないこともあるかもしれません。 テンプレートの柔軟性の欠如という問題に再び向き合うことになります。 場所のパラメーターを追加することもできますが、単に値をハードコーディングするよりも、妥当な値を既定値にできれば便利だと思われます。
+ストレージ アカウントの場所が **米国東部** にハードコーディングされています。 しかし、ストレージ アカウントを他のリージョンにデプロイしなければならないこともあるかもしれません。 テンプレートの柔軟性の欠如という問題に再び向き合うことになります。 場所のパラメーターを追加することもできますが、単に値をハードコーディングするよりも、妥当な値を既定値にできれば便利だと思われます。
 
 ## <a name="use-function"></a>関数を使用する
 
-このシリーズの先行するチュートリアルを終えている方は、既に関数を使用しています。 **"[parameters('storageName')]"** を追加したときに、[parameters](template-functions-deployment.md#parameters) 関数を使用しているのです。 ブラケットは、その内側の構文が[テンプレート式](template-expressions.md)であることを示します。 Resource Manager では、それらがリテラル値としては扱われずに、構文として解決されます。
+このシリーズの先行するチュートリアルを終えている方は、既に関数を使用しています。 `"[parameters('storageName')]"` を追加したときに、[parameters](template-functions-deployment.md#parameters) 関数を使用しているのです。 ブラケットは、その内側の構文が[テンプレート式](template-expressions.md)であることを示します。 Resource Manager では、それらがリテラル値としては扱われずに、構文として解決されます。
 
 関数を使うことでデプロイ中に動的に値が取得されるため、テンプレートの柔軟性が増します。 このチュートリアルでは、関数を使用して、デプロイに使用するリソース グループの場所を取得します。
 

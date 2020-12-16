@@ -1,5 +1,5 @@
 ---
-title: Azure アプリケーション オファーを市場に投入する方法
+title: Azure アプリケーション オファーを販売する方法
 description: Microsoft コマーシャル マーケットプレースでの、Azure アプリケーション オファーのクラウド ソリューション プロバイダー (CSP) プログラム オプションを使用した、Microsoft との共同販売について説明します。
 author: aarathin
 ms.author: aarathin
@@ -8,22 +8,22 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: ca57c1ae4797f69c1fe7034ddc4a47a3b0c1e602
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 6ba49ebc593e67e1168f6427ade38b7d80bf7edf
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369825"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621435"
 ---
-# <a name="how-to-market-your-azure-application-offer"></a>Azure アプリケーション オファーを市場に投入する方法
+# <a name="how-to-sell-your-azure-application-offer"></a>Azure アプリケーション オファーを販売する方法
 
-この記事では、Microsoft を通じて Azure アプリケーション オファーを販売しようとしている場合に選択できる追加のマーケティング オプションについて説明します。 Microsoft とのオファーの共同販売、[クラウド ソリューション プロバイダー (CSP) プログラム](cloud-solution-providers.md)を通じたオファーの再販、またはそれらの両方が可能です。
+この記事では、Microsoft を通じて Azure アプリケーション オファーを販売しようとしている場合に選択できる追加のオプションについて説明します。 Microsoft とのオファーの共同販売、[クラウド ソリューション プロバイダー (CSP) プログラム](cloud-solution-providers.md)を通じたオファーの再販、またはそれらの両方が可能です。
 
 ## <a name="co-sell-with-microsoft"></a>Microsoft と共同販売する
 
 **[Microsoft と共同販売する]** タブでの情報入力はすべて省略できます。 しかし、"_共同販売の準備完了_" と "_IP 共同販売の準備完了_" の状態になっている必要があります。 Microsoft の営業チームでは、顧客のニーズに適合しているかどうかについてソリューションを評価する際に、この情報を使用して詳細を把握します。 このタブで入力した情報を、顧客が直接見ることはできません。
 
-**[Microsoft との共同販売]** タブの構成の詳細および手順については、「[パートナー センターの [共同販売] オプション](partner-center-portal/commercial-marketplace-co-sell.md)」を参照してください。
+**[Microsoft との共同販売]** タブの構成の詳細および手順については、「[コマーシャル マーケットプレースでの共同販売オプション](commercial-marketplace-co-sell.md)」を参照してください。
 
 ## <a name="resell-through-csps"></a>CSP を通して再販する
 

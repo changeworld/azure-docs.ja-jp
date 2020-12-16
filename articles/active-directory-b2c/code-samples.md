@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b52bfc14906d8e47c804ae15ee898f6ca00784af
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8642f4284770df54704a4e7066054d3bb4640486
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503846"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545872"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C のサンプル コード
 
@@ -68,15 +68,25 @@ ms.locfileid: "92503846"
 | [Node.js](https://github.com/Azure-Samples/active-directory-nodejs-external-identities-api-connector-azure-function-validate)   | この Node.js Azure 関数サンプルには、特定の電子メール ドメインへのサインアップを制限し、ユーザー指定の情報を検証する方法が示されています。  |
 | [Python](https://github.com/Azure-Samples/active-directory-python-external-identities-api-connector-azure-function-validate)    | この Python Azure 関数サンプルには、特定の電子メール ドメインへのサインアップを制限し、ユーザー指定の情報を検証する方法が示されています。    |
 
-### <a name="identity-verification-with-api-connectors"></a>API コネクタを使用した ID の確認
+
+### <a name="automated-fraud-protection-services--captcha"></a>自動化された不正行為防止サービスと CAPTCHA
+| サンプル                                                                                                            | 説明                                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [Arkose Labs の不正行為および不正使用防止](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose) | このサンプルでは、Arkose Labs の不正行為および不正使用防止サービスを使用して、ユーザー サインアップを保護する方法を示します。 |
+| [reCAPTCHA](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-captcha) | このサンプルでは、reCAPTCHA チャレンジを使用して、自動化された不正使用を防ぐことで、ユーザー サインアップを保護する方法を示します。 |
+
+
+### <a name="identity-verification"></a>本人確認
 
 | サンプル                                                                                                            | 説明                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| [IDology](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-idology-identity-verification) | このサンプルでは、API コネクタを使用して IDology と統合することで、セルフサービス サインアップの一部としてユーザー ID を確認する方法を示します。 |
-| [Experian](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-experian-identity-verification) | このサンプルでは、API コネクタを使用して Experian と統合することで、セルフサービス サインアップの一部としてユーザー ID を確認する方法を示します。 |
+| [IDology](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-idology-identity-verification) | このサンプルでは、API コネクタを使用して IDology と統合することで、サインアップ フローの一環としてユーザー ID を確認する方法を示します。 |
+| [Experian](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-experian-identity-verification) | このサンプルでは、API コネクタを使用して Experian と統合することで、サインアップ フローの一環としてユーザー ID を確認する方法を示します。 |
 
-### <a name="community-samples"></a>コミュニティのサンプル
+
+### <a name="other"></a>その他
 
 | サンプル                                                                                                            | 説明                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [招待コード](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-invitation-code) | このサンプルでは、招待コードを使用して、サインアップを特定の対象ユーザーに制限する方法を示します。|
 | [API コネクタのコミュニティ サンプル](https://github.com/azure-ad-b2c/api-connector-samples) | このリポジトリには、API コネクタを使用することで可能になるシナリオのサンプルがコミュニティで保持されています。|

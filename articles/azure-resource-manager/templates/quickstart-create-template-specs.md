@@ -2,15 +2,15 @@
 title: テンプレート スペックの作成とデプロイ
 description: ARM テンプレートからテンプレート スペックを作成する方法について説明します。 次に、サブスクリプションのリソース グループにテンプレート スペックをデプロイします。
 author: tfitzmac
-ms.date: 11/17/2020
+ms.date: 12/01/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 8439b1de5a69b3e5bfc22e10f089938da921c1cb
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 03cf2013f1cec9722af5d7e72285d9f11d8a6bc1
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94747504"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518959"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>クイック スタート:テンプレート スペックの作成とデプロイ (プレビュー)
 
@@ -21,15 +21,37 @@ ms.locfileid: "94747504"
 アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> Template Specs は現在プレビューの段階です。 これを使用するには、最新バージョンの PowerShell または Azure CLI をインストールする必要があります。 Azure PowerShell の場合は、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)を使用します。 Azure CLI の場合は、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
+> Template Specs は現在プレビューの段階です。 Azure PowerShell でこれを使用するには、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)をインストールする必要があります。 Azure CLI でこれを使用するには、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
 
 ## <a name="create-template-spec"></a>テンプレート スペックの作成
 
-テンプレート スペックは、**Microsoft.Resources/templateSpecs** という名前のリソースの種類です。 テンプレート スペックを作成するには、Azure PowerShell、Azure CLI、または ARM テンプレートを使用できます。 すべてのオプションで、テンプレート スペック内にパッケージ化された ARM テンプレートが必要です。
+テンプレート スペックは、**Microsoft.Resources/templateSpecs** という名前のリソースの種類です。 テンプレート スペックを作成するには、Azure portal、Azure PowerShell、Azure CLI、または ARM テンプレートを使用できます。 すべてのオプションで、テンプレート スペック内にパッケージ化された ARM テンプレートが必要です。
 
 PowerShell と CLI では、ARM テンプレートはパラメーターとしてコマンドに渡されます。 ARM テンプレートを使用すると、テンプレート スペック内にパッケージ化する ARM テンプレートがテンプレート スペック定義内に埋め込まれます。
 
 これらのオプションを次に示します。
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. 画面上部の **[Search resources, services and docs]\(リソース、サービス、ドキュメントを検索します\)** に、「**テンプレート スペック**」と入力し、 **[Template specs]\(テンプレートの仕様\)** を選択します。
+1. **[Create template spec]\(テンプレート スペックの作成\)** を選択します。
+1. 次の値を選択または入力します。
+
+    - **[名前]** : テンプレート スペックの名前を入力します。たとえば、**storageSpec**
+    - **[サブスクリプション]** : テンプレート スペックの作成に使用する Azure サブスクリプションを選択します。
+    - **[リソース グループ]** : **[新規作成]** を選択し、新しいリソース グループの名前を入力します。  たとえば、**templateSpecRG**。
+    - **場所**: リソース グループの場所を選択します。 たとえば、 **[米国西部 2]** 。
+    - **[バージョン]** : テンプレート スペックのバージョンを入力します。たとえば、**1.0** または **v1.0**。
+
+1. **Next:テンプレートの編集** を選択します。
+1. テンプレートの内容を次の JSON に置き換えます。
+
+    :::code language="json" source="~/quickstart-templates/101-storage-account-create/azuredeploy.json":::
+
+    これは、テンプレート スペック内にパッケージ化されるテンプレートです。
+1. **[確認および作成]** を選択します。
+1. **［作成］** を選択します
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -203,7 +225,23 @@ PowerShell と CLI では、ARM テンプレートはパラメーターとして
 
 ## <a name="deploy-template-spec"></a>テンプレート スペックのデプロイ
 
-テンプレート スペックをデプロイできるようになりました。テンプレート スペックのデプロイは、それが含まれているテンプレートのデプロイと同じですが、テンプレート スペックのリソース ID を渡す点が異なります。同じデプロイ コマンドを使用し、必要に応じて、テンプレート スペックのパラメーター値を渡します。
+テンプレート スペックをデプロイする準備ができました。テンプレート スペックのデプロイは、Azure PowerShell または Azure CLI でテンプレート スペックのリソース ID を渡す点を除けば、含まれているテンプレートをデプロイするのと同じです。 同じデプロイ コマンドを使用し、必要に応じて、テンプレート スペックのパラメーター値を渡します。
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+1. Azure portal で、最後の手順で作成したリソース グループを開きます。  たとえば、**templateSpecRG**。
+1. 作成したテンプレート スペックを選択します。 たとえば、**storageSpec**。
+1. **[デプロイ]** を選択します。
+1. 次の値を選択または入力します。
+
+    - **[サブスクリプション]** : リソースを作成するための Azure サブスクリプションを選択します。
+    - **[リソース グループ]** : **[新規作成]** を選択し、「**storageRG**」と入力します。
+    - **[Storage Account Type]\(ストレージ アカウントの種類\)** : **[Standard_GRS]** を選択します。
+
+    新しいリソース グループを作成し、テンプレート スペック内のテンプレートを新しいリソース グループにデプロイします。
+
+1. **[Review + create]\(レビュー + 作成\)** を選択します。
+1. **［作成］** を選択します
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

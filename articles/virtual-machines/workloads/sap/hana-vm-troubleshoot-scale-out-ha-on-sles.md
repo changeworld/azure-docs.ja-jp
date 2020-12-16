@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 7cf18e2d375d7a45c3641876b8a3ed5974882927
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 87758100299eb170a7950a1a7a2c6bd2029b27fb
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010029"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621554"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>SLES 12 SP3 での SAP HANA スケールアウトの高可用性セットアップの確認とトラブルシューティング 
 
@@ -45,6 +45,9 @@ SAP HANA システム レプリケーションおよび Pacemaker と組み合�
 SUSE では、[このパフォーマンス最適化セットアップの詳細な説明][sles-hana-scale-out-ha-paper]が公開されています。
 
 SAP HANA スケールアウトでサポートされている仮想マシンの種類については、[SAP HANA 認定 IaaS ディレクトリ][sap-hana-iaas-list]に関するページを参照してください。
+
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "*マスター*" と "*スレーブ*" という用語への言及があります。 ソフトウェアからこれらの用語が削除された時点で、この記事から削除します。
 
 複数のサブネットおよび vNIC と組み合わされた SAP HANA スケールアウト、および HSR のセットアップでは、技術的な問題が発生していました。 この問題が修正されている最新の SAP HANA 2.0 修正プログラムを使用する必要があります。 サポートされている SAP HANA のバージョンは次のとおりです。 
 

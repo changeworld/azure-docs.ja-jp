@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 12/3/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 77e34e4a18012f15b9e907e3b9efc1965b98f824
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3222c790ccd0cee936b246253a16b5c434c61c8
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612122"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602208"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft ID プラットフォーム アプリケーションの認証証明書資格情報
 
@@ -36,7 +36,7 @@ Microsoft ID プラットフォームでは、OAuth 2.0 [クライアント資�
 | --- | --- |
 | `alg` | **RS256** です |
 | `typ` | **JWT** です |
-| `x5t` | Base64 文字列値としてエンコードされた X.509 証明書ハッシュ (証明書の SHA-1 "*サムプリント*" とも呼ばれる) の 16 進数表現。 たとえば、X.509 証明書ハッシュ `84E05C1D98BCE3A5421D225B140B36E86A3D5534` (Hex) を指定した場合、`x5t` 要求は `hOBcHZi846VCHSJbFAs26Go9VTQ=` (Base64) になります。 |
+| `x5t` | Base64url 文字列値としてエンコードされた X.509 証明書ハッシュ (証明書の SHA-1 "*サムプリント*" とも呼ばれる) の 16 進数表現。 たとえば、X.509 証明書ハッシュ `84E05C1D98BCE3A5421D225B140B36E86A3D5534` (Hex) を指定した場合、`x5t` 要求は `hOBcHZi846VCHSJbFAs26Go9VTQ=` (Base64url) になります。 |
 
 ### <a name="claims-payload"></a>要求 (ペイロード)
 
@@ -131,7 +131,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 クライアント アサーションは、クライアント シークレットが使用されるあらゆる場所で使用できます。  そのため、たとえば、[認証コード フロー](v2-oauth2-auth-code-flow.md)では、`client_secret` を渡して、要求がアプリから送信されていることを証明することができます。 これを `client_assertion` パラメーターと `client_assertion_type` パラメーターに置き換えることができます。 
 
-| パラメーター | [値] | 説明|
+| パラメーター | 値 | 説明|
 |-----------|-------|------------|
 |`client_assertion_type`|`urn:ietf:params:oauth:client-assertion-type:jwt-bearer`| これは固定値であり、証明書の資格情報を使用していることを示します。 |
 |`client_assertion`| JWT |これは、上記で作成した JWT です。 |

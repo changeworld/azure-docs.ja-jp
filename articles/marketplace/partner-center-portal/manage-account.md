@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 11/02/2020
-ms.openlocfilehash: 8b372cc0fc19c6bf163d9d4e61cde6ce74cb3f28
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: cc853285e193dd3ac4e348525b8bf0db9f8cb023
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95538387"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533946"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>パートナー センターで商業マーケットプレース アカウントを管理する
 
@@ -293,7 +293,7 @@ Microsoft Azure AD でのデータの読み取り/書き込みを Azure AD ア�
 パートナー センターの商業マーケットプレース プログラムでは、以下のロールとアクセス許可を会社のユーザーに割り当てることができます。
 
 - **所有者**
-  - "これは、アカウントを最初に作成したユーザーであり、すべてのアカウント ユーザーを作成および編集したり、すべての財務およびアカウントの設定を変更したりできる、完全なアクセス権を持ちます。 通常、アカウントの所有者は 1 人だけです。"
+  - これは、アカウントを最初に作成したユーザーであり、すべてのアカウント ユーザーを作成および編集したり、すべての財務およびアカウントの設定を変更したりできる、完全なアクセス権を持ちます。 通常、アカウントの所有者は 1 人だけです。
 - **マネージャー**
   - 税と支払いの設定を除くすべての Microsoft アカウント機能にアクセスできる
   - ユーザー、ロール、職場アカウント (テナント) を管理できる

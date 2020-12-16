@@ -1,21 +1,26 @@
 ---
-title: Azure Maps Creator の Drawing パッケージの要件
+title: Microsoft Azure Maps Creator (プレビュー) の Drawing パッケージの要件
 description: 施設の設計ファイルをマップ データに変換するための Drawing パッケージの要件について説明します
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 6/12/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 2c3e46bf386e70cbe35d96728ede896d6bf0dc7d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 26b6273b4dd2371790025515e35b71d1fc863ebe
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013124"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903464"
 ---
 # <a name="drawing-package-requirements"></a>Drawing パッケージの要件
+
+
+> [!IMPORTANT]
+> Azure Maps Creator サービスは、現在パブリック プレビューの段階にあります。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 [Azure Maps Conversion サービス](/rest/api/maps/conversion)を使用することにより、アップロードした Drawing パッケージをマップ データに変換できます。 この記事では、Conversion API の Drawing パッケージの要件について説明します。 サンプル パッケージを表示するには、サンプルの [Drawing パッケージ](https://github.com/Azure-Samples/am-creator-indoor-data-examples)をダウンロードします。
 
@@ -188,7 +193,7 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 
 ### `directoryInfo`
 
-| プロパティ  | 種類 | 必須 | 説明 |
+| プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 | `name`      | string | true   |  建物の名前。 |
 | `streetAddress`|    string |    false    | 建物の住所。 |
@@ -209,7 +214,7 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 
 `buildingLevels` オブジェクトには、建物レベルの JSON 配列が含まれています。
 
-| プロパティ  | 種類 | 必須 | 説明 |
+| プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`levelName`    |string    |true |    わかりやすいレベル名。 次に例を示します。フロア 1、ロビー、ブルー パーキング、または地下。|
 |`ordinal` | 整数 (integer) |    true | レベルの垂直方向の順序を決定します。 すべての施設には、ordinal 0 のレベルが必要です。 |
@@ -219,7 +224,7 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 
 ### `georeference`
 
-| プロパティ  | 種類 | 必須 | 説明 |
+| プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`lat`    | numeric |    true |    施設図面の原点の緯度を表す 10 進数表現。 起点の座標は WGS84 Web メルカトル (`EPSG:3857`) 内にある必要があります。|
 |`lon`    |numeric|    true|    施設図面の原点の経度を表す 10 進数表現。 起点の座標は WGS84 Web メルカトル (`EPSG:3857`) 内にある必要があります。 |
@@ -227,7 +232,7 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 
 ### `dwgLayers`
 
-| プロパティ  | 種類 | 必須 | 説明 |
+| プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`exterior`    |文字列の配列|    true|    外装の建物プロファイルを定義するレイヤーの名前。|
 |`unit`|    文字列の配列|    true|    ユニットを定義するレイヤーの名前。|
@@ -241,7 +246,7 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 
 `unitProperties` オブジェクトには、ユニットのプロパティの JSON 配列が含まれています。
 
-| プロパティ  | 種類 | 必須 | 説明 |
+| プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`unitName`    |string    |true    |この `unitProperty` レコードに関連付けるユニットの名前。 このレコードは、`unitName` と一致するラベルが `unitLabel` レイヤーで見つかった場合にのみ有効です。 |
 |`categoryName`|    string|    false    |カテゴリ名。 カテゴリの完全な一覧については、[categories](https://aka.ms/pa-indoor-spacecategories) を参照してください。 |
@@ -261,7 +266,7 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 
 `zoneProperties` オブジェクトには、ゾーンのプロパティの JSON 配列が含まれています。
 
-| プロパティ  | 種類 | 必須 | 説明 |
+| プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |zoneName        |string    |true    |`zoneProperty` レコードに関連付けるゾーンの名前。 このレコードは、`zoneName` と一致するラベルがゾーンの `zoneLabel` レイヤーで見つかった場合にのみ有効です。  |
 |categoryName|    string|    false    |カテゴリ名。 カテゴリの完全な一覧については、[categories](https://aka.ms/pa-indoor-spacecategories) を参照してください。 |
@@ -407,10 +412,10 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 Drawing パッケージが要件を満たしたら、[Azure Maps Conversion サービス](/rest/api/maps/conversion)を使用してパッケージをマップ データセットに変換することができます。 次に、そのデータセットを使用し、屋内マップ モジュールを使って屋内マップを生成できます。
 
 > [!div class="nextstepaction"]
->[屋内マップ用の Creator](creator-indoor-maps.md)
+>[屋内マップ用の Creator (プレビュー)](creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Creator 屋内マップを作成する](tutorial-creator-indoor-maps.md)
+> [チュートリアル: Creator (プレビュー) の屋内マップを作成する](tutorial-creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
 > [屋内マップの動的スタイル設定](indoor-map-dynamic-styling.md)

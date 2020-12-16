@@ -3,17 +3,17 @@ title: Windows Virtual Desktop の最新情報 - Azure
 description: Windows Virtual Desktop の新機能と製品の更新プログラム。
 author: Heidilohr
 ms.topic: overview
-ms.date: 11/11/2020
+ms.date: 12/02/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: c82312b40955b392243bf616ee991c0108a13fb5
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e267de136271991446444a47a470dd52789b3613
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537392"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533963"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows Virtual Desktop の最新情報
 
@@ -25,6 +25,31 @@ Windows Virtual Desktop は定期的に更新されます。 この記事では�
 - バグの修正
 
 この記事は毎月更新されます。 こちらを頻繁に確認して、新しい更新プログラムに関する最新情報を入手してください。
+
+## <a name="november-2020"></a>2020 年 11 月
+
+### <a name="azure-portal-experience"></a>Azure portal での操作
+
+Azure portal のユーザー エクスペリエンスの 2 つのバグを修正しました。
+
+- "VM の追加" ワークフローで、デスクトップ アプリケーションのフレンドリ名が上書きされなくなりました。
+- セッション ホストがスケール セットに含まれている場合、[セッション ホスト] タブが読み込まれるようになりました。
+
+### <a name="fslogix-client-version-2009"></a>FSLogix クライアント バージョン 2009 
+
+多くの修正と機能強化が行われた新しいバージョンの FSLogix クライアントがリリースされました。 詳細については、[ブログ記事](https://social.msdn.microsoft.com/Forums/en-US/defe5828-fba4-4715-a68c-0e4d83eefa6b/release-notes-for-fslogix-apps-release-2009-29762130127?forum=FSLogix)をご覧ください。
+
+### <a name="rdp-shortpath-public-preview"></a>RDP Shortpath パブリック プレビュー
+
+RDP Shortpath では、ポイント対サイト VPN、サイト間 VPN、ExpressRoute を使用した、Windows Virtual Desktop セッション ホストへの直接接続が導入されています。 また、URCP トランスポート プロトコルも導入されています。 RDP Shortpath は、ユーザー エクスペリエンスを向上させるために、待ち時間とネットワーク ホップを削減するように設計されています。 詳細については、[Windows Virtual Desktop の RDP Shortpath](shortpath.md) に関する記事を参照してください。
+
+### <a name="azdesktopvirtualization-version-201"></a>Az.DesktopVirtualization、バージョン 2.0.1
+
+Windows Virtual Desktop コマンドレットのバージョン 2.0.1 がリリースされました。 この更新には、MSIX アプリのアタッチを管理できるコマンドレットが含まれています。 新しいバージョンは、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/Az.DesktopVirtualization/2.0.1)でダウンロードできます。
+
+### <a name="azure-advisor-updates"></a>Azure Advisor の更新
+
+Azure Advisor に、Windows Virtual Desktop での近接ガイダンスに関する新しい推奨事項が追加されました。 詳細については、[Azure Web サイト](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/)を参照してください。
 
 ## <a name="october-2020"></a>2020 年 10 月
 
@@ -174,7 +199,6 @@ Windows Virtual Desktop が Azure Resource Manager と統合されました。 �
 - 従来 PowerShell または診断サービス Web アプリを通じて実行されていた監視機能は、Azure portal の Log Analytics に移動されました。 また、レポートを視覚化するための 2 つのオプションも用意されました。 Kusto クエリを実行し、Workbooks を使用すると、ビジュアル レポートを作成できます。
 
 - Windows Virtual Desktop を使用するために Azure Active Directory (Azure AD) の同意を完了する必要がなくなりました。 この更新プログラムでは、Azure サブスクリプションの Azure AD テナントによってユーザーが認証され、管理者に Azure RBAC 制御が提供されます。
-
 
 ### <a name="powershell-support"></a>PowerShell のサポート
 

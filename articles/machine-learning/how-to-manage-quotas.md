@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
-ms.date: 10/13/2020
+ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: d82cbafbbdeb379c8eb97494ca8d3243f356b7a1
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 30859593e240c4143dc298cff446ce8bc116a993
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542118"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780588"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning を使用するリソースのクォータの管理と引き上げ
 
@@ -45,28 +45,32 @@ Azure では、不正による予算超過を防ぎ、Azure の容量の制約�
 
 このセクションでは、次のリソースの既定値とクォータの上限について説明します。
 
++ Azure Machine Learning 資産
+  + Azure Machine Learning コンピューティング
+  + Azure Machine Learning パイプライン
 + 仮想マシン
-+ Azure Machine Learning コンピューティング
-+ Azure Machine Learning パイプライン
 + Azure Container Instances
 + Azure Storage
 
 > [!IMPORTANT]
 > 制限は変更されることがあります。 最新情報については、Azure 全体に関する「[Azure のサブスクリプションとサービスの制限、クォータ、および制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」を参照してください。
 
-### <a name="virtual-machines"></a>仮想マシン
-各 Azure サブスクリプションには、すべてのサービスにわたる仮想マシン数の制限があります。 仮想マシン コアには、リージョンの合計の制限とサイズシリーズあたりのリージョンの制限があります。 どちらの制限も個別に適用されます。
+### <a name="azure-machine-learning-assets"></a>Azure Machine Learning 資産
+資産に関する次の制限は、ワークスペースごとに適用されます。 
 
-たとえば、米国東部で VM のコア上限が 30、A シリーズのコア上限が 30、D シリーズのコア上限が 30 のサブスクリプションがあるとします。 このサブスクリプションを使用すると、30 個の A1 VM、30 個の D1 VM、または合計 30 コアを超えないこれら 2 つの組み合わせをデプロイできます。
+| **リソース** | **上限** |
+| --- | --- |
+| データセット | 1,000 万 |
+| 実行 | 1,000 万 |
+| モデル | 1,000 万|
+| Artifacts | 1,000 万 |
 
-次の表に示す値を超えて仮想マシンの制限を引き上げることはできません。
-
-[!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
+さらに、最長 **実行時間** は 30 日、**実行ごとにログされるメトリック** の最大数は 100 万です。
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning コンピューティング
-[Azure Machine Learning コンピューティング](concept-compute-target.md#azure-machine-learning-compute-managed)には、サブスクリプションのリージョンごとに許可されるコアの数と一意のコンピューティング リソースの数の両方に対して、既定のクォータ制限があります。 このクォータは、前のセクションの VM コア クォータとは別のものです。
+[Azure Machine Learning コンピューティング](concept-compute-target.md#azure-machine-learning-compute-managed)には、サブスクリプションのリージョンごとに許可されるコアの数 (各 VM ファミリと累積合計コア数で分割) と一意のコンピューティング リソースの数の両方に対して、既定のクォータ制限があります。 このクォータは、Azure Machine Learning のマネージド コンピューティング リソースにのみ適用されるため、前のセクションに記載されている VM コア クォータとは異なります。
 
-[クォータの引き上げを依頼](#request-quota-increases)して、このセクションの制限を表に示されている上限まで引き上げます。
+さまざまな VM ファミリ コアのクォータ、このセクションの合計サブスクリプション コア クォータおよびリソースの制限を引き上げるには、[クォータの引き上げを依頼してください](#request-quota-increases)。
 
 使用可能なリソース:
 + **リージョンあたりの専用コア** には、サブスクリプション プランの種類に応じて、24 から 300 の既定の制限があります。 サブスクリプションあたりの専用コアの数は VM ファミリごとに引き上げることができます。 NCv2、NCv3、ND シリーズなど、特殊な VM ファミリは、ゼロ コアの既定から開始されます。
@@ -75,12 +79,19 @@ Azure では、不正による予算超過を防ぎ、Azure の容量の制約�
 
 + **リージョンあたりのクラスター** の既定の制限は 200 です。 これらは、トレーニング クラスターとコンピューティング インスタンスの間で共有されます (コンピューティング インスタンスは、クォータの目的では 1 つのノード クラスターと見なされます)。
 
-次の表は、超過できないその他の制限を示しています。
+> [!TIP]
+> クォータの引き上げを依頼する VM ファミリの詳細については、[Azure の仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/sizes)に関するページを参照してください。 たとえば、GPU VM ファミリは、ファミリ名が "N" で始まります (例: NCv3 シリーズ)
 
-| **リソース** | **上限** |
+次の表は、プラットフォームにおけるその他の制限を示しています。 例外をリクエストするには、**テクニカル** サポート チケットを通じて AzureML 製品チームに連絡してください。
+
+| **リソースまたはアクション** | **上限** |
 | --- | --- |
 | リソース グループあたりのワークスペース数 | 800 |
-| 1 つの Azure Machine Learning コンピューティング (AmlCompute) リソース内のノード数 | 100 ノード |
+| 通信が有効になっていないプールとしてセットアップされた (つまり、MPI ジョブを実行できない) 1 つの Azure Machine Learning コンピューティング (AmlCompute) **クラスター** 内のノード数 | 100 ノード。ただし、65000 ノードまで構成可能 |
+| Azure Machine Learning コンピューティング (AmlCompute) クラスターでの 1 回の並列実行ステップ **実行** 時のノード数 | 100 ノード。ただし、クラスターが上記のようにスケーリングするようにセットアップされている場合は、65000 ノードまで構成可能 |
+| 通信が有効になっているプールとしてセットアップされた 1 つの Azure Machine Learning コンピューティング (AmlCompute) **クラスター** 内のノード数 | 300 ノード。ただし、4000 ノードまで構成可能 |
+| RDMA 対応の VM ファミリ上で通信が有効になっているプールとしてセットアップされた 1 つの Azure Machine Learning コンピューティング (AmlCompute) **クラスター** 内のノード数 | 100 ノード |
+| Azure Machine Learning コンピューティング (AmlCompute) クラスターでの 1 回の MPI **実行** 時のノード数 | 100 ノード。ただし、300 ノードまで増やすことが可能 |
 | ノードあたりの GPU MPI プロセス数 | 1-4 |
 | ノードあたりの GPU worker 数 | 1-4 |
 | ジョブの有効期間 | 21 日<sup>1</sup> |
@@ -90,13 +101,22 @@ Azure では、不正による予算超過を防ぎ、Azure の容量の制約�
 <sup>1</sup> 最大有効期間は、実行が開始されてから完了するまでの期間です。 完了した実行は無期限に保持されます。 最大有効期間内に完了しなかった実行のデータにはアクセスできません。
 <sup>2</sup> 容量の制約がある場合は、優先度の低いノードのジョブをいつでも横取りできます。 ジョブにチェックポイントを実装することをお勧めします。
 
-### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning パイプライン
+#### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning パイプライン
 [Azure Machine Learning パイプライン](concept-ml-pipelines.md)には次の制限事項があります。
 
 | **リソース** | **制限** |
 | --- | --- |
 | パイプラインのステップ | 30,000 |
 | リソース グループあたりのワークスペース数 | 800 |
+
+### <a name="virtual-machines"></a>仮想マシン
+各 Azure サブスクリプションには、すべてのサービスにわたる仮想マシン数の制限があります。 仮想マシン コアには、リージョンの合計の制限とサイズシリーズあたりのリージョンの制限があります。 どちらの制限も個別に適用されます。
+
+たとえば、米国東部で VM のコア上限が 30、A シリーズのコア上限が 30、D シリーズのコア上限が 30 のサブスクリプションがあるとします。 このサブスクリプションを使用すると、30 個の A1 VM、30 個の D1 VM、または合計 30 コアを超えないこれら 2 つの組み合わせをデプロイできます。
+
+次の表に示す値を超えて仮想マシンの制限を引き上げることはできません。
+
+[!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
 
 ### <a name="container-instances"></a>Container Instances
 

@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/10/2020
+ms.date: 12/02/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2e54c0b09c3dbe398b0522d0ad9ad2314e29ed26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c90b7ce86e06669696a4b9f7e0b2f5287e9dd97e
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023842"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533198"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory コネクタのトラブルシューティング
 
@@ -205,7 +205,7 @@ ms.locfileid: "96023842"
 - **解決方法**: 数分後にコピー アクティビティを再実行します。
                   
 
-## <a name="azure-synapse-analytics-formerly-sql-data-warehouseazure-sql-databasesql-server"></a>Azure Synapse Analytics (以前の SQL Data Warehouse)/Azure SQL Database/SQL Server
+## <a name="azure-synapse-analyticsazure-sql-databasesql-server"></a>Azure Synapse Analytics/Azure SQL Database/SQL Server
 
 ### <a name="error-code--sqlfailedtoconnect"></a>エラー コード:SqlFailedToConnect
 
@@ -440,7 +440,7 @@ ms.locfileid: "96023842"
 
 - **メッセージ**: `The name of column index %index; is empty. Make sure column name is properly specified in the header row.`
 
-- **原因**:アクティビティに 'firstRowAsHeader' を設定すると、最初の行が列名として使用されます。 このエラーは、最初の行に空の値が含まれていることを意味します。 次に例を示します。'ColumnA,, ColumnB'。
+- **原因**:アクティビティに 'firstRowAsHeader' を設定すると、最初の行が列名として使用されます。 このエラーは、最初の行に空の値が含まれていることを意味します。 次に例を示します。'ColumnA, ColumnB'。
 
 - **推奨事項**:最初の行を確認し、空の値がある場合は値を修正してください。
 
@@ -488,7 +488,28 @@ ms.locfileid: "96023842"
 
 - **推奨事項**:パイプラインを再実行してください。 引き続き失敗する場合は、並列処理を減らしてください。 それでも失敗する場合は、Dynamics のサポートにお問い合わせください。
 
+## <a name="excel-format"></a>Excel 形式
 
+### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>大きな Excel ファイルを解析するときのタイムアウトまたはパフォーマンスの低下
+
+- **現象**:
+
+    1. Excel データセットの作成、接続/ストアからのスキーマのインポート、データのプレビュー、ワークシートの一覧表示または更新を行う際に、Excel ファイルのサイズが大きい場合に、タイムアウト エラーが発生することがあります。
+    2. コピー アクティビティを使用して、サイズの大きい Excel ファイル (>= 100 MB) から他のデータ ストアにデータをコピーすると、パフォーマンスが低下したり、OOM 問題が発生したりする可能性があります。
+
+- **原因**: 
+
+    1. スキーマのインポート、データのプレビュー、Excel データセットでのワークシートの一覧表示などの操作では、タイムアウトは 100 秒で静的です。 大きな Excel ファイルでは、これらの操作がタイムアウト値内で完了しないことがあります。
+
+    2. ADF コピー アクティビティは、Excel ファイル全体をメモリに読み込み、データを読み取る指定されたワークシートとセルを検索します。 ADF が使用する基盤となる SDK のために、このような動作になります。
+
+- **解決方法**: 
+
+    1. スキーマをインポートする場合は、元のファイルのサブセットとなるより小さいサンプル ファイルを生成し、[接続/ストアからスキーマをインポートする] ではなく、[サンプル ファイルからスキーマをインポートする] を選択します。
+
+    2. ワークシートを一覧表示する場合は、ワークシートのドロップダウンで [編集] をクリックし、シート名/インデックスを入力します。
+
+    3. 大きな Excel ファイル (> 100 MB) を他のストアにコピーするには、Data Flow Excel ソースを使用します。これにより、ストリーミングの読み取りとパフォーマンスが向上します。
 
 ## <a name="json-format"></a>JSON 形式
 
@@ -645,6 +666,29 @@ ms.locfileid: "96023842"
 
 - **推奨事項**:ペイロード内の 'CompressionType' を削除してください。
 
+
+## <a name="rest"></a>REST
+
+### <a name="unexpected-network-response-from-rest-connector"></a>REST コネクタからの予期しないネットワーク応答
+
+- **現象**:エンドポイントは、REST コネクタから予期しない応答 (400/401/403/500) を受け取ることがあります。
+
+- **原因**:REST ソース コネクタは、HTTP 要求を構築するときに、リンクされたサービス/データセット/コピー元からの URL および HTTP メソッド/ヘッダー/本文をパラメーターとして使用します。 この問題は、指定された 1 つ以上のパラメーターにおける何らかの誤りが原因で発生している可能性があります。
+
+- **解決方法**: 
+    - パラメーターが原因であるかどうかを確認するには、コマンド ウィンドウで "curl" を使用します (**Accept** と **User-Agent** のヘッダーを常に含める必要があります)。
+        ```
+        curl -i -X <HTTP method> -H <HTTP header1> -H <HTTP header2> -H "Accept: application/json" -H "User-Agent: azure-data-factory/2.0" -d '<HTTP body>' <URL>
+        ```
+      コマンドが同じ予期しない応答を返す場合は、予期される応答を返すまで、"curl" を使って上記のパラメーターを修正してください。 
+
+      また、"curl--help" を使用して、コマンドをより高度に使用することもできます。
+
+    - ADF REST コネクタのみが予期しない応答を返す場合、詳細なトラブルシューティングについて、Microsoft サポートにお問い合わせください。
+    
+    - "curl" は SSL 証明書の検証問題を再現するのに適さない場合があることに注意してください。 一部のシナリオでは、SSL 証明書の検証問題が発生することなく、"curl" コマンドが正常に実行されました。 しかし、同じ URL をブラウザーで実行すると、サーバーとの信頼を確立するためのクライアントの最初の場所では SSL 証明書は実際には返されません。
+
+      上記のケースでは、**Postman** や **Fiddler** などのツールを使用することをお勧めします。
 
 
 ## <a name="general-copy-activity-error"></a>一般的なコピー アクティビティのエラー

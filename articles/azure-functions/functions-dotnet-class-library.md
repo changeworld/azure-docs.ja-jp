@@ -4,12 +4,12 @@ description: C# を使用して Azure Functions を開発する方法につい�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 3c363d13933e6554a6eefbeaf02d87dc6b382628
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dc08e378d68743ed7906f4dec7c8f31202959880
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002396"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608284"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
@@ -327,6 +327,8 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
 {
     logger.LogInformation("Request for item with key={itemKey}.", id);
 ```
+
+関数がどのように `ILogger` を実装しているかについて詳しくは、「[利用統計情報の収集](functions-monitoring.md#collecting-telemetry-data)」を参照してください。 `Function` で始まるカテゴリは、`ILogger` インスタンスを使用することを前提としています。 代わりに `ILogger<T>` を使用する場合、カテゴリ名は代わりに `T` に基づいている場合があります。  
 
 ### <a name="structured-logging"></a>構造化ログ
 

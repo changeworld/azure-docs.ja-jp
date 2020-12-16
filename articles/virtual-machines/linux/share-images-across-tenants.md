@@ -1,6 +1,6 @@
 ---
 title: テナント間でギャラリー イメージを共有する
-description: 共有イメージ ギャラリーと Linux の例を使用し、Azure テナント間で VM イメージを共有する方法について説明します。
+description: 共有イメージ ギャラリーと Azure CLI を使用して Azure テナント間で VM イメージを共有する方法について説明します。
 author: axayjo
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -10,14 +10,14 @@ ms.date: 05/04/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a5e71f09179d414be84896a49a66480f19a0665d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f0192a6eb60c72c9f7ac605db492f4e5f97b76ed
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843589"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779262"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants---linux-examples"></a>Azure テナント間でギャラリー VM イメージを共有する - Linux の例
+# <a name="share-gallery-vm-images-across-azure-tenants-using-the-azure-cli"></a>Azure CLI を使用して Azure テナント間でギャラリー VM イメージを共有する
 
 共有イメージ ギャラリーでは、Azure RBAC を使用してイメージを共有できます。 Azure RBAC を使用すると、テナント内でイメージを共有できます。また、テナントの外部にいる個人と共有することもできます。 この単純な共有オプションの詳細については、「[ギャラリーを共有する](./shared-images-portal.md#share-the-gallery)」を参照してください。
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: b54e965188be51ec54110bb85d8cda8f01256836
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 461f9354bb3a6eae0af186de8fe9f39c6b5fff2c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369798"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620921"
 ---
 # <a name="how-to-test-and-publish-an-azure-application-offer"></a>Azure アプリケーション オファーをテストして公開する方法
 
@@ -72,4 +72,4 @@ ms.locfileid: "94369798"
 ## <a name="next-step"></a>次のステップ
 
 - [パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする](partner-center-portal/analytics.md)
-- Microsoft との共同販売、および CSP プログラムを通じた再販によって、[Azure アプリケーション オファーを市場に投入する方法](create-new-azure-apps-offer-marketing.md)について学習します。
+- Microsoft との共同販売、および CSP プログラムを通じた再販によって、[Azure アプリケーション オファーを販売する方法](create-new-azure-apps-offer-marketing.md)について学習します。

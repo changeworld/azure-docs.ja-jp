@@ -1,20 +1,20 @@
 ---
-title: チュートリアル:Azure Notebooks を使用して電気自動車のルートを案内する (Python) | Microsoft Azure Maps
+title: チュートリアル:Microsoft Azure Maps で Azure Notebooks (Python) を使用して電気自動車のルートを案内する
 description: Microsoft Azure Maps のルート指定 API シリーズと Azure Notebooks を使用して、電気自動車のルートを案内する方法に関するチュートリアル
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/12/2019
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 6dde7abef1769b9441c037f3727e7fd9d83ab172
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: f30b99a1d9c8303d5b2ed4b02819d0ca837946d2
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896820"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905742"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks を使用して電気自動車のルートを案内する (Python)
 
@@ -86,8 +86,8 @@ Jupyter Notebook のコードを実行するには、次の手順を実行して
 1. プロジェクト ダッシュボードで、 **[Project Settings]\(プロジェクトの設定\)** を選択します。 
 1. **[プロジェクトの設定]** ウィンドウで、 **[環境]** タブを選択し、 **[追加]** を選択します。
 1. **[Environment Setup Steps]\(環境セットアップ手順\)** で、次のようにします。   
-    a. 1 つ目のドロップダウン リストで、 **Requirements.txt** を選択します。  
-    b. 2 つ目のドロップダウン リストで、 *requirements.txt* ファイルを選択します。  
+    a. 1 つ目のドロップダウン リストで、**Requirements.txt** を選択します。  
+    b. 2 つ目のドロップダウン リストで、*requirements.txt* ファイルを選択します。  
     c. 3 つ目のドロップダウン リストで、バージョンとして **[Python Version 3.6]** を選択します。
 1. **[保存]** を選択します。
 
@@ -171,9 +171,9 @@ for loc in range(len(searchPolyResponse["results"])):
                 reachableLocations.append(location)
 ```
 
-## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>Azure Maps Data Service に到達可能範囲と充電ポイントをアップロードする
+## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service-preview"></a>Azure Maps Data Service (プレビュー) に到達可能範囲と充電ポイントをアップロードする
 
-電気自動車の最大到達可能範囲に対する充電スタンドと境界を、地図上に視覚化する必要があります。 これを行うには、境界のデータと充電スタンドのデータを GeoJSON オブジェクトとして Azure Maps Data Service にアップロードします。 [Data Upload API](/rest/api/maps/data/uploadpreview) を使用します。 
+電気自動車の最大到達可能範囲に対する充電スタンドと境界を、地図上に視覚化する必要があります。 これを行うには、境界のデータと充電スタンドのデータを GeoJSON オブジェクトとして Azure Maps Data Service (プレビュー) にアップロードします。 [Data Upload API](/rest/api/maps/data/uploadpreview) を使用します。 
 
 境界と充電ポイントのデータを Azure Maps Data Service にアップロードするには、次の 2 つのセルを実行します。
 
@@ -194,7 +194,7 @@ rangeData = {
   ]
 }
 
-# Upload the range data to Azure Maps Data Service.
+# Upload the range data to Azure Maps Data service (Preview).
 uploadRangeResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = rangeData)
 
 rangeUdidRequest = uploadRangeResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
@@ -223,7 +223,7 @@ poiData = {
   ]
 }
 
-# Upload the electric vehicle charging station data to Azure Maps Data Service.
+# Upload the electric vehicle charging station data to Azure Maps Data service (Preview).
 uploadPOIsResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = poiData)
 
 poiUdidRequest = uploadPOIsResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
@@ -336,12 +336,12 @@ routeData = {
 
 ## <a name="visualize-the-route"></a>ルートを視覚化する
 
-ルートを視覚化するにはまず、Azure Maps Data Service にルートのデータを GeoJSON オブジェクトとしてアップロードします。 そのためには、Azure Maps の [Data Upload API](/rest/api/maps/data/uploadpreview) を使用します。 次に、レンダリング サービス [Get Map Image API](/rest/api/maps/render/getmapimage) を呼び出して、マップ上にルートをレンダリングして視覚化します。
+ルートを視覚化するにはまず、Azure Maps Data Service (プレビュー) にルートのデータを GeoJSON オブジェクトとしてアップロードします。 そのためには、Azure Maps の [Data Upload API](/rest/api/maps/data/uploadpreview) を使用します。 次に、レンダリング サービス [Get Map Image API](/rest/api/maps/render/getmapimage) を呼び出して、マップ上にルートをレンダリングして視覚化します。
 
 マップ上にルートがレンダリングされた画像を取得するには、次のスクリプトを実行します。
 
 ```python
-# Upload the route data to Azure Maps Data Service.
+# Upload the route data to Azure Maps Data service (Preview).
 routeUploadRequest = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = routeData)
 
 udidRequestURI = routeUploadRequest.headers["Location"]+"&subscription-key={}".format(subscriptionKey)

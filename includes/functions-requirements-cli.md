@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 951dbb6c1a44e3c081f682db49458be165e9e930
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: f102a5dd5b7dccba6643176d06d17a2a65171c90
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95555313"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904090"
 ---
 ## <a name="configure-your-local-environment"></a>ローカル環境を構成する
 
@@ -17,8 +17,8 @@ ms.locfileid: "95555313"
 
 + アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-java"  
-+ [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#v2) バージョン 2.7.1846 以降の 2.x バージョン。
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-java,programming-language-other"  
++ [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#v2) バージョン 2.7.1846 以降のバージョン。
 ::: zone-end  
 ::: zone pivot="programming-language-python"
 + インストール済みの Python バージョンに対応する Azure Functions Core Tools バージョン。
@@ -46,4 +46,7 @@ ms.locfileid: "95555313"
 
 + [Apache Maven](https://maven.apache.org) バージョン 3.0 以降。
 
+::: zone-end
+::: zone pivot="programming-language-other"
++ 使用している言語の開発ツール。 このチュートリアルでは、例として [R プログラミング言語](https://www.r-project.org/)を使用します。
 ::: zone-end

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 5374871a51586a573e9ab41121f3f2dd95baf876
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: ead878daaab977c77b3ab36f42ccfe4d01d7bc03
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695250"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548632"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>手順 1:ログ フォワーダーをデプロイする
 
@@ -57,6 +57,9 @@ ms.locfileid: "94695250"
 1. スクリプトの実行中に、エラーまたは警告メッセージが表示されないことを確認してください。
     - *[コンピューター]* フィールドのマッピングに関する問題を修正するためのコマンドを実行するよう指示するメッセージが表示される場合があります。 詳細については、[デプロイ スクリプトの説明](#mapping-command)を参照してください。
 
+1. [手順 2 に進みます:セキュリティソリューションを構成して、CEF メッセージを転送するようにします](connect-cef-solution-config.md) 。
+
+
 > [!NOTE]
 > **同じマシンを使用してプレーンな Syslog *と* CEF メッセージの両方を転送する**
 >
@@ -67,7 +70,16 @@ ms.locfileid: "94695250"
 > 1. これらのマシンで次のコマンドを実行して、エージェントと Azure Sentinel の Syslog 構成との同期を無効にする必要があります。 これで、前の手順で構成に加えた変更が上書きされなくなります。<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
-[手順 2 に進みます:セキュリティソリューションを構成して、CEF メッセージを転送するようにします](connect-cef-solution-config.md) 。
+> [!NOTE]
+> **TimeGenerated フィールドのソースの変更**
+>
+> - 既定では、Log Analytics エージェントでは、エージェントが Syslog デーモンからイベントを受信した時刻がスキーマの *TimeGenerated* フィールドに設定されます。 その結果、ソース システムでイベントが生成された時刻は Azure Sentinel に記録されません。
+>
+> - ただし、次のコマンドを実行すると、 `TimeGenerated.py` スクリプトをダウンロードして実行できます。 このスクリプトにより、エージェントによる受信時刻ではなくソース システムの元の時刻を *TimeGenerated* フィールドに設定するように Log Analytics エージェントが構成されます。
+>
+>    ```bash
+>    wget -O TimeGenerated.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/TimeGenerated.py && python TimeGenerated.py {ws_id}
+>    ```
 
 ## <a name="deployment-script-explained"></a>デプロイ スクリプトの説明
 

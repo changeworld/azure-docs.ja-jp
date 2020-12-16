@@ -1,22 +1,27 @@
 ---
-title: Microsoft Azure Maps Mobility Service を使用して公共輸送機関のデータを要求する
-description: Azure Maps Mobility Service を使用して、都市圏 ID、輸送機関の停留所、ルート、ルートの移動プランなどの公共輸送機関のデータを要求する方法について説明します。
+title: Microsoft Azure Maps Mobility Service (プレビュー) を使用して公共輸送機関のデータを要求する
+description: Azure Maps Mobility Service (プレビュー) を使用して、都市圏 ID、輸送機関の停留所、ルート、ルートの移動プランなどの公共輸送機関のデータを要求する方法について説明します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/22/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3f6f50d0ffeb48b5f359221992cc9a51d2ebb056
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 740080d742f535f868b2ae194b24bebe5ac6ac24
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895666"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906031"
 ---
-# <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>Azure Maps Mobility Service を使用して公共輸送機関のデータを要求する
+# <a name="request-public-transit-data-using-the-azure-maps-mobility-services-preview"></a>Azure Maps Mobility Service (プレビュー) を使用して公共輸送機関のデータを要求する 
+
+> [!IMPORTANT]
+> Azure Maps Mobility Service は現在、パブリック プレビュー段階です。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
 
 この記事では、Azure Maps [Mobility Service](/rest/api/maps/mobility) を使用して公共輸送機関のデータを要求する方法について説明します。 輸送データには、停留所、ルート情報、および所要時間の見積もりが含まれます。
 
@@ -115,9 +120,9 @@ Azure Maps の [Get Nearby Transit](/rest/api/maps/mobility/getnearbytransitprev
 
 [Get Nearby Transit](/rest/api/maps/mobility/getnearbytransitpreview) に対する要求を行うには、次の手順に従います。
 
-1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「 **Get Nearby stops** 」 (近くの停留所の取得) という名前を付けます。
+1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「**Get Nearby stops**」 (近くの停留所の取得) という名前を付けます。
 
-2. [Builder]\(ビルダー\) タブで、 **GET** HTTP メソッドを選択し、API エンドポイントの次の要求 URL を入力して **[Send]\(送信\)** をクリックします。
+2. [Builder]\(ビルダー\) タブで、**GET** HTTP メソッドを選択し、API エンドポイントの次の要求 URL を入力して **[Send]\(送信\)** をクリックします。
 
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/nearby/json?subscription-key={subscription-key}&api-version=1.0&query=47.63096,-122.126&radius=300&objectType=stop
@@ -224,15 +229,15 @@ Azure Maps [Get Transit Routes API](/rest/api/maps/mobility/gettransitrouteprevi
 
 ファジー検索サービスを要求するには、次の手順に従います。
 
-1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「 **Get location coordinates** 」 (位置座標の取得) という名前を付けます。
+1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「**Get location coordinates**」 (位置座標の取得) という名前を付けます。
 
-2. [Builder]\(ビルダー\) タブで、 **GET** HTTP メソッドを選択し、次の要求 URL を入力して **[Send]\(送信\)** をクリックします。
+2. [Builder]\(ビルダー\) タブで、**GET** HTTP メソッドを選択し、次の要求 URL を入力して **[Send]\(送信\)** をクリックします。
 
     ```HTTP
     https://atlas.microsoft.com/search/fuzzy/json?subscription-key={subscription-key}&api-version=1.0&query=space needle
     ```
 
-3. 応答を注意深く見ると、スペース ニードルの検索結果に複数の場所が含まれています。 各結果には、 **位置** の位置座標が含まれています。 最初の結果の **position** の下の `lat` と `lon` をコピーします。
+3. 応答を注意深く見ると、スペース ニードルの検索結果に複数の場所が含まれています。 各結果には、**位置** の位置座標が含まれています。 最初の結果の **position** の下の `lat` と `lon` をコピーします。
 
    ```JSON
    {
@@ -331,11 +336,11 @@ Azure Maps [Get Transit Routes API](/rest/api/maps/mobility/gettransitrouteprevi
 
 ルートの要求を行うには、次の手順を実行します。
 
-1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「 **Get Route info** 」 (ルート情報の取得) という名前を付けます。
+1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「**Get Route info**」 (ルート情報の取得) という名前を付けます。
 
-2. [Builder]\(ビルダー\) タブで、 **GET** HTTP メソッドを選択し、API エンドポイントの次の要求 URL を入力して **[Send]\(送信\)** をクリックします。
+2. [Builder]\(ビルダー\) タブで、**GET** HTTP メソッドを選択し、API エンドポイントの次の要求 URL を入力して **[Send]\(送信\)** をクリックします。
 
-    `modeType` と `transitType` のパラメーターを指定することによって、バスについての公共輸送機関のルートを要求します。 要求 URL には、前のセクションで取得した場所が含まれています。 `originType` には、 **stopId** があります。 そして、`destionationType` には **position** があります。
+    `modeType` と `transitType` のパラメーターを指定することによって、バスについての公共輸送機関のルートを要求します。 要求 URL には、前のセクションで取得した場所が含まれています。 `originType` には、**stopId** があります。 そして、`destionationType` には **position** があります。
 
     [Get Transit Routes API](/rest/api/maps/mobility/gettransitroutepreview) への要求で使用できる [URI パラメーターの一覧](/rest/api/maps/mobility/gettransitroutepreview#uri-parameters)を参照してください。
   
@@ -520,15 +525,15 @@ Azure Maps [Get Transit Routes API](/rest/api/maps/mobility/gettransitrouteprevi
     }
     ```
 
-4. 注意深く観察すると、応答には複数の **bus** ルートがあります。 各ルートには、一意の **スケジュール ID** 、ルートの各区間を説明する概要、およびバス チケットの明細と合計の両方の価格を示す `itineraryFare` があります。 ルート レグは、2 つの停留所のウェイポイント間のルートの一部です。 次に、応答の `itineraryId` を使用して、最も速いルートについての詳細を要求します。
+4. 注意深く観察すると、応答には複数の **bus** ルートがあります。 各ルートには、一意の **スケジュール ID**、ルートの各区間を説明する概要、およびバス チケットの明細と合計の両方の価格を示す `itineraryFare` があります。 ルート レグは、2 つの停留所のウェイポイント間のルートの一部です。 次に、応答の `itineraryId` を使用して、最も速いルートについての詳細を要求します。
 
 ## <a name="request-fastest-route-itinerary"></a>最も速いルートの移動プランを要求する
 
-Azure Maps の [Get Transit Itinerary](/rest/api/maps/mobility/gettransititinerarypreview) サービスでは、 [Get Transit Routes API](/rest/api/maps/mobility/gettransitroutepreview) サービスによって返されるルートの **itinerary ID** を使用して、特定のルートについてのデータを要求することができます。 要求を行うには、次の手順を実行します。
+Azure Maps の [Get Transit Itinerary](/rest/api/maps/mobility/gettransititinerarypreview) サービスでは、[Get Transit Routes API](/rest/api/maps/mobility/gettransitroutepreview) サービスによって返されるルートの **itinerary ID** を使用して、特定のルートについてのデータを要求することができます。 要求を行うには、次の手順を実行します。
 
-1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「 **Get Transit info** 」 (輸送情報の取得) という名前を付けます。
+1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「**Get Transit info**」 (輸送情報の取得) という名前を付けます。
 
-2. [ビルダー] タブで、 **GET** HTTP メソッドを選択します。 API エンドポイントの次の要求 URL を入力し、 **[送信]** をクリックします。
+2. [ビルダー] タブで、**GET** HTTP メソッドを選択します。 API エンドポイントの次の要求 URL を入力し、 **[送信]** をクリックします。
 
     `detailType` パラメーターを **geometry** に設定することで、公共輸送機関の停留所情報と、ルートの徒歩および自転車区間の道案内ナビゲーションが応答に含まれるようにします。
 
@@ -796,12 +801,12 @@ Azure Maps の [Get Transit Itinerary](/rest/api/maps/mobility/gettransititinera
 
 ## <a name="next-steps"></a>次のステップ
 
-Mobility Service を使用してリアルタイム データを要求する方法について説明します。
+Mobility Service (プレビュー) を使用してリアルタイム データを要求する方法について説明します。
 
 > [!div class="nextstepaction"]
 > [リアルタイム データを要求する方法](how-to-request-real-time-data.md)
 
-Azure Maps Mobility Service API のドキュメントを確認する
+Azure Maps Mobility Service (プレビュー) API のドキュメントを確認する
 
 > [!div class="nextstepaction"]
-> [Mobility Service に関するドキュメント](/rest/api/maps/mobility)
+> [Mobility Service のドキュメント](/rest/api/maps/mobility)

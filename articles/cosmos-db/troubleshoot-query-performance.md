@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 012e155737b9251827c668b3a9cacbbe8d59ae77
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 42f01b140a44d7aa6d75dece9a4398fd7b41bf5a
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411356"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905113"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB を使用する場合のクエリの問題のトラブルシューティング
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -196,9 +196,7 @@ WHERE c.description = "Malabar spinach, cooked"
 
 ### <a name="understand-which-system-functions-use-the-index"></a>インデックスを使用するシステム関数について理解する
 
-式を文字列値の範囲に変換できる場合、インデックスを使用できます。 そうでない場合は使用できません。
-
-インデックスを使用できるいくつかの一般的な文字列関数の一覧を次に示します。
+ほとんどのシステム関数では、インデックスが使用されます。 インデックスを使用する一般的な文字列関数の一覧を次に示します。
 
 - STARTSWITH(str_expr1, str_expr2, bool_expr)  
 - CONTAINS(str_expr, str_expr, bool_expr)
@@ -214,7 +212,26 @@ WHERE c.description = "Malabar spinach, cooked"
 
 ------
 
-システム関数では行われていない場合でも、クエリの他の部分でインデックスが使用されている可能性があります。
+システム関数でインデックスが使用されている上で、まだ RU 料金が高い場合は、クエリに `ORDER BY` を追加してみてください。 場合によっては、`ORDER BY` を追加すると、特にクエリが長時間実行されている場合や複数のページにまたがる場合に、システム関数のインデックス使用率が向上します。
+
+たとえば、次のような `CONTAINS` が含まれる SQL クエリについて考えます。 `CONTAINS` ではインデックスを使用する必要がありますが、関連するインデックスを追加した後も、次のクエリを実行すると非常に高い RU 料金が発生したとします。
+
+元のクエリ:
+
+```sql
+SELECT *
+FROM c
+WHERE CONTAINS(c.town, "Sea")
+```
+
+`ORDER BY` を追加して更新されたクエリ:
+
+```sql
+SELECT *
+FROM c
+WHERE CONTAINS(c.town, "Sea")
+ORDER BY c.town
+```
 
 ### <a name="understand-which-aggregate-queries-use-the-index"></a>インデックスを使用する集計クエリについて理解する
 

@@ -4,12 +4,12 @@ description: CloudEvents スキーマを Azure Event Grid 内のイベント用�
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: d794996a699bdd1bb63e7a894346128aa108e95c
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: baac7311a23bb4de032a8ab8b2e99a5ad9cae786
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504375"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858282"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Event Grid に CloudEvents v1.0 スキーマを使用する
 Azure Event Grid は、[既定のイベント スキーマ](event-schema.md)に加え、[CloudEvents v1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) および [HTTP プロトコル バインディング](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)の JSON 実装のイベントをネイティブでサポートします。 [CloudEvents](https://cloudevents.io/) は、イベント データを記述するための[オープンな仕様](https://github.com/cloudevents/spec/blob/v1.0/spec.md)です。
@@ -62,16 +62,20 @@ CloudEvents スキーマと Event Grid スキーマで配信されるイベン�
 
 ## <a name="configure-event-grid-for-cloudevents"></a>Event Grid を CloudEvents 用に構成する
 
-Event Grid は、CloudEvents スキーマ内のイベントの入力と出力の両方に使用できます。 CloudEvents は、システム イベント (Blob Storage イベントや IoT Hub イベントなど) とカスタム イベントに使用できます。 また、これらのイベントをネットワーク上で相互に変換することもできます。
+Event Grid は、CloudEvents スキーマ内のイベントの入力と出力の両方に使用できます。 次の表は、使用できる変換を示しています。
+
+ Event Grid リソース | 入力スキーマ       | 配信スキーマ
+|---------------------|-------------------|---------------------
+| システム トピック       | Event Grid スキーマ | Event Grid スキーマまたは CloudEvent スキーマ
+| ユーザー トピック/ドメイン | Event Grid スキーマ | Event Grid スキーマ
+| ユーザー トピック/ドメイン | CloudEvent スキーマ | CloudEvent スキーマ
+| ユーザー トピック/ドメイン | カスタム スキーマ     | カスタム スキーマまたは Event Grid スキーマまたは CloudEvent スキーマ
+| PartnerTopics       | CloudEvent スキーマ | CloudEvent スキーマ
 
 
-| 入力スキーマ       | 出力スキーマ
-|--------------------|---------------------
-| CloudEvents 形式 | CloudEvents 形式
-| Event Grid 形式  | CloudEvents 形式
-| Event Grid 形式  | Event Grid 形式
+いずれのイベント スキーマについても、Event Grid では、Event Grid トピックへの発行時やイベント サブスクリプションの作成時に検証が必要です。
 
-いずれのイベント スキーマについても、Event Grid では、イベント グリッド トピックへの発行時やイベント サブスクリプションの作成時に検証が必要です。 詳細については、「[Event Grid security and authentication](security-authentication.md)」(Event Grid のセキュリティと認証) を参照してください。
+詳細については、「[Event Grid security and authentication](security-authentication.md)」(Event Grid のセキュリティと認証) を参照してください。
 
 ### <a name="input-schema"></a>入力スキーマ
 

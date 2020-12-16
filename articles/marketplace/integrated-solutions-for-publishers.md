@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: 705b0f02682b6aa41cb5c8e77d8da39faa5edb1f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 70dfccb32389d2f1fb492669c9f84a3e6ae77bbb
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450126"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621350"
 ---
 # <a name="publish-an-integrated-solution"></a>統合ソリューションを公開する
 
@@ -32,18 +32,17 @@ ms.locfileid: "96450126"
 ## <a name="eligibility-criteria"></a>対象となる条件
 
 * 参加するパートナーには MPN ID が必要です。
-* 参加するサービス プロバイダーは、共同販売の準備ができている必要があります。
-* 参加するソフトウェア ベンダーは、IP 共同販売の準備ができている必要があります。
+* 参加するサービス プロバイダーは、[共同販売の準備](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)ができている必要があります。
+* 参加するソフトウェア ベンダーは、[IP 共同販売の準備](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)ができている必要があります。
 * 少なくとも 1 社の参加パートナーが、次のいずれかの分野で Gold コンピテンシーを取得している必要があります。
-
-    * アプリケーション開発
-    * アプリケーションの統合
-    * アプリケーション ライフサイクル管理
-    * クラウド プラットフォーム
-    * データ分析
-    * データセンター
-    * データ プラットフォーム
-    * DevOps
+    - アプリケーション開発
+    - アプリケーションの統合
+    - アプリケーション ライフサイクル管理
+    - クラウド プラットフォーム
+    - データ分析
+    - データセンター
+    - データ プラットフォーム
+    - DevOps
 
 * ソリューションに少なくとも 2 つの取引先組織が含まれ、完全な顧客ソリューションとエクスペリエンスのために IP とサービスが統合されている必要があります。
 * パートナー IP は、Azure、Dynamics 365、または Power Platform に構築する必要があります。

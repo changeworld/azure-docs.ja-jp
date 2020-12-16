@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab3b655d59e2cb8c6773fa1a34a08638e6926475
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e15009dd935d91971ce4212ff44b67a1ca6fa363
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180661"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745384"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する
 
@@ -293,7 +293,7 @@ AD FS での明示的なグループの承認:
 
 AD FS での明示的なユーザーの承認:
 
-![入力方向の要求の種類の [プライマリ SID] が表示されている要求規則 Allow domain admins の [規則の編集] ダイアログ ボックスを示すスクリーンショット。](media/migrate-adfs-apps-to-azure/authorize-a-specific-user-1.png)
+![[入力方向の要求の種類] に [プライマリ SID] が表示されている要求規則 Allow a specific user の [規則の編集] ダイアログ ボックスを示すスクリーンショット。](media/migrate-adfs-apps-to-azure/authorize-a-specific-user-1.png)
 
 規則が Azure AD にマッピングされる方法を次に示します。
 

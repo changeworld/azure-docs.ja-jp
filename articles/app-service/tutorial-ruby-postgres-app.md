@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: 7d6c0d13e440beb9a934adba3908cc9a08f396f1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b3c172584c42e1ed1d7ca94b6cd51bedd4e49dae
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997933"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862294"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Ruby および Postgres のアプリを構築する
 
@@ -34,10 +34,11 @@ ms.locfileid: "95997933"
 
 このチュートリアルを完了するには、以下が必要です。
 
-* [Git をインストールする](https://git-scm.com/)
-* [Ruby 2.6 をインストールする](https://www.ruby-lang.org/en/documentation/installation/)
-* [Ruby on Rails 5.1 をインストールする](https://guides.rubyonrails.org/v5.1/getting_started.html)
-* [PostgreSQL をインストールして実行する](https://www.postgresql.org/download/)
+- [Git をインストールする](https://git-scm.com/)
+- [Ruby 2.6 をインストールする](https://www.ruby-lang.org/en/documentation/installation/)
+- [Ruby on Rails 5.1 をインストールする](https://guides.rubyonrails.org/v5.1/getting_started.html)
+- [PostgreSQL をインストールして実行する](https://www.postgresql.org/download/)
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="prepare-local-postgres"></a>ローカル Postgres を準備する
 
@@ -103,8 +104,6 @@ rails server
 ![Postgres に正常に接続された Ruby on Rails](./media/tutorial-ruby-postgres-app/postgres-connect-success.png)
 
 Rails サーバーを停止するには、ターミナルで「`Ctrl + C`」と入力します。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-postgres-in-azure"></a>Azure で Postgres を作成する
 
@@ -292,7 +291,7 @@ git remote add azure <paste-copied-url-here>
 Azure リモートにプッシュして、Ruby on Rails アプリケーションをデプロイします。 デプロイ ユーザーの作成時に指定したパスワードを入力するように求めるメッセージが表示されます。
 
 ```bash
-git push azure master
+git push azure main
 ```
 
 デプロイ中、Azure App Service は進行状況について Git と通信します。
@@ -303,7 +302,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
@@ -422,7 +421,7 @@ rake db:migrate RAILS_ENV=production
 ```bash
 git add .
 git commit -m "added complete checkbox"
-git push azure master
+git push azure main
 ```
 
 `git push` が完了したら、Azure アプリに移動し、新機能を試します。

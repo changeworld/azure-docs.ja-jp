@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: a5c0d8bb47b337b0415565a0b6dad5c6822d0b94
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fd71f4eb56974b93637c23eddc81e5f33ce788b8
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781738"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512156"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -107,6 +107,14 @@ SAS トークンとワイルドカード文字 (*) を使用して、ファイ�
 ```azcopy
 azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
+
+ファイルとディレクトリを Azure Storage アカウントにアップロードし、クエリ文字列でエンコードされたタグを BLOB に設定します。 
+
+- {key = "bla bla", val = "foo"}、{key = "bla bla 2", val = "bar"} の各タグを設定するには、次の構文を使用します。`azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+    
+- キーと値は URL でエンコードされ、キーと値のペアはアンパサンド ('&') で区切られます
+
+- BLOB にタグを設定するときに、SAS に追加のアクセス許可 (タグ用に 't') があります。これがないと、サービスから認可エラーが返されます。
 
 OAuth 認証を使用して 1 つのファイルをダウンロードします。 AzCopy にまだログインしていない場合は、次のコマンドを実行する前に `azcopy login` コマンドを実行します。
 
@@ -214,9 +222,19 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 - azcopy cp "https://s3.amazonaws.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
+ファイルとディレクトリを Azure Storage アカウントに転送し、指定されたクエリ文字列でエンコードされたタグを BLOB に設定します。 
+
+- {key = "bla bla", val = "foo"}、{key = "bla bla 2", val = "bar"} の各タグを設定するには、次の構文を使用します。`azcopy cp "https://[account].blob.core.windows.net/[source_container]/[path/to/directory]?[SAS]" "https://[account].blob.core.windows.net/[destination_container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+        
+- キーと値は URL でエンコードされ、キーと値のペアはアンパサンド ('&') で区切られます
+    
+- BLOB にタグを設定するときに、SAS に追加のアクセス許可 (タグ用に 't') があります。これがないと、サービスから認可エラーが返されます。
+
 ## <a name="options"></a>Options
 
 **--backup** アップロード向けに Windows の SeBackupPrivilege を、またはダウンロード向けに SeRestorePrivilege を有効にし、AzCopy ですべてのファイルを表示して読み取り、ファイル システムのアクセス許可に関係なく、あらゆるアクセス許可を復元できるようにします。 AzCopy を実行しているアカウントには、既にこれらのアクセス許可がなくてはなりません (たとえば、管理者権限を持っている、または `Backup Operators` グループのメンバーであるなど)。 このフラグは、アカウントに既に含まれている特権をアクティブ化します。
+
+**--blob-tags** string   BLOB に文字列を設定して、ストレージ アカウントのデータを分類します。
 
 **--blob-type** string  宛先の BLOB の種類を定義します。 これは、BLOB をアップロードする場合と、アカウント間でコピーする場合に使用されます (既定では `Detect`)。 有効な値は、`Detect`、`BlockBlob`、`PageBlob`、および `AppendBlob` です。 アカウント間でコピーする場合、値 `Detect` を使用すると、AzCopy はソース BLOB の種類を使用して、コピー先 BLOB の種類を判断します。 ファイルをアップロードするとき、`Detect` は、ファイル拡張子に基づいて、ファイルが VHD ファイルまたは VHDX ファイルであるかを判断します。 ファイルが VHD ファイルまたは VHDX ファイルの場合、AzCopy はそのファイルをページ BLOB として扱います。 (既定値は "Detect")
 

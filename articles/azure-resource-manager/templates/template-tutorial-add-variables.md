@@ -1,21 +1,21 @@
 ---
 title: チュートリアル - テンプレートに変数を追加する
-description: Azure Resource Manager テンプレートに変数を追加して構文を単純化します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) に変数を追加して構文を単純化します。
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 482608172ac9e6e2b9765f236a4b6d655e2455fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d259510d880cbfc60e9ae80b533af6792cc95536
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613154"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930730"
 ---
 # <a name="tutorial-add-variables-to-your-arm-template"></a>チュートリアル:ARM テンプレートに変数を追加する
 
-このチュートリアルでは、Azure Resource Manager (ARM) テンプレートに変数を追加する方法について説明します。 変数は、式を一度だけ記述すればテンプレート全体で再利用できるため、テンプレートが簡素化されます。 このチュートリアルの所要時間は **7 分**です。
+このチュートリアルでは、Azure Resource Manager テンプレート (ARM テンプレート) に変数を追加する方法について説明します。 変数は、式を一度だけ記述すればテンプレート全体で再利用できるため、テンプレートが簡素化されます。 このチュートリアルの所要時間は **7 分** です。
 
 ## <a name="prerequisites"></a>前提条件
 

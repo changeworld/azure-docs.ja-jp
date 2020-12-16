@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 8a51fbcb7b7504b9a16e8d0025856c2b007070a9
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: e879d8370821ea465147e344d0fe95836c843ff4
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928010"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008012"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Web App for Containers での継続的デプロイ
 
@@ -26,7 +26,7 @@ ms.locfileid: "92928010"
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. ページの左側にある **[App Service]** オプションを選択します。
 3. 継続的デプロイを構成するアプリの名前を選択します。
-4. **[コンテナーの設定]** ページで、 **[単一コンテナー]** を選択します
+4. **[コンテナーの設定]** ページで、**[単一コンテナー]** を選択します
 5. **[Azure Container Registry]** を選択します
 6. **[継続的なデプロイ] > [オン]** を選択します
 7. **[保存]** を選択して、継続的デプロイを有効にします。
@@ -44,7 +44,7 @@ Container Registry で、[Webhooks] をクリックすると現在の Webhook �
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. ページの左側にある **[App Service]** オプションを選択します。
 3. 継続的デプロイを構成するアプリの名前を選択します。
-4. **[コンテナーの設定]** ページで、 **[単一コンテナー]** を選択します
+4. **[コンテナーの設定]** ページで、**[単一コンテナー]** を選択します
 5. **[Docker Hub]** を選択します
 6. **[継続的なデプロイ] > [オン]** を選択します
 7. **[保存]** を選択して、継続的デプロイを有効にします。
@@ -55,7 +55,7 @@ Webhook URL をコピーします。 Docker Hub に対する Webhook を追加�
 
 ## <a name="automate-with-cli"></a>CLI で自動化する
 
-Azure CLI を使用して CI/CD を構成するには、[az webapp deployment container config](/cli/azure/webapp/deployment/container?view=azure-cli-latest#az-webapp-deployment-container-config) コマンドを実行して、Webhook URL を生成します。 URL を使用して、DockerHub または Azure Container Registry を構成できます。
+Azure CLI を使用して CI/CD を構成するには、[az webapp deployment container config](/cli/azure/webapp/deployment/container#az-webapp-deployment-container-config) コマンドを実行して、Webhook URL を生成します。 URL を使用して、DockerHub または Azure Container Registry を構成できます。
 
 ```azurecli-interactive
 az webapp deployment container config --name <app-name> --resource-group <group-name> --enable-cd true

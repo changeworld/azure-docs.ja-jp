@@ -3,12 +3,12 @@ title: Azure Monitor for containers で GPU の監視を構成する | Microsoft
 description: この記事では、Azure Monitor for containers を使用して、NVIDIA および AMD の GPU が有効になっているノードが含まれる Kubernetes クラスターの監視を構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 4c6044d407dc4abd0e69bac0190cc19c901022c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e391117ab57211aa5d178d11c27b934b4ccd37f8
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569698"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905589"
 ---
 # <a name="configure-gpu-monitoring-with-azure-monitor-for-containers"></a>Azure Monitor for containers で GPU の監視を構成する
 
@@ -39,7 +39,7 @@ Azure Monitor for containers では、次のメトリックが 60 秒間隔で�
 
 ## <a name="gpu-performance-charts"></a>GPU パフォーマンス グラフ 
 
-Azure Monitor for containers には、すべてのクラスターに対する GPU ブックとして、前の表で示したメトリックの事前構成済みのグラフが含まれています。 左側のペインで **[ブック]** を選択して AKS クラスターから直接、または [分析情報] の **[ブックの表示]** ドロップダウン リストから、GPU のブック **Node GPU** を見つけることができます。
+Azure Monitor for containers には、すべてのクラスターに対する GPU ブックとして、前の表で示したメトリックの事前構成済みのグラフが含まれています。 Azure Monitor for Containers に使用できるブックの詳細については、[Azure Monitor for Containers のブック](container-insights-reports.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

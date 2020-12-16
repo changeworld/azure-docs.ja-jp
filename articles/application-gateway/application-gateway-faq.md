@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 8df24b44d648343c46532eed443717f444bd0058
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d46c1d8efb5234d47c80ca4256c2f56d56ccf805
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95975648"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862175"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -133,7 +133,7 @@ v2 SKU を使用するデプロイのほとんどは、プロビジョニング�
 
 ### <a name="does-application-gateway-v2-support-proxying-requests-with-ntlm-authentication"></a>Application Gateway v2 では、NTLM 認証を使用したプロキシ要求をサポートしていますか?
 
-いいえ。 Application Gateway v2 では、NTLM 認証を使用したプロキシ要求をまだサポートしていません。
+いいえ。 Application Gateway v2 では、NTLM 認証を使用したプロキシ要求をサポートしていません。
 
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Application Gateway アフィニティ Cookie は SameSite 属性をサポートしていますか?
 はい。[Chromium ブラウザー](https://www.chromium.org/Home) [v80 の更新](https://chromiumdash.appspot.com/schedule) で、SameSite 属性のない HTTP Cookie を SameSite=Lax として扱うことが必須になりました。 これは、サードパーティのコンテキストでは、Application Gateway アフィニティ Cookie がブラウザーによって送信されないことを意味します。 
@@ -466,12 +466,9 @@ PowerShell コマンドレット `Get-AzApplicationGatewayBackendHealth` とポ�
 
 不明な状態が返されるのは通常、アプリケーション ゲートウェイ サブネット上でネットワーク セキュリティ グループ (NSG)、カスタム DNS、またはユーザー定義ルーティング (UDR) により、バックエンドに対するアクセスがブロックされているときです。 詳細については、[Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](application-gateway-diagnostics.md)に関するページを参照してください。
 
-### <a name="is-there-any-case-where-nsg-flow-logs-wont-show-allowed-traffic"></a>許可されているトラフィックが NSG フロー ログに表示されない場合がありますか?
+### <a name="are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet"></a>NSG フローログは Application Gateway v2 サブネットに関連付けられている NSG でサポートされていますか?
 
-はい。 構成が次のシナリオに一致する場合は、許可されているトラフィックが NSG フロー ログに表示されません。
-- Application Gateway v2 をデプロイした
-- アプリケーション ゲートウェイ サブネットに NSG がある
-- その NSG 上で NSG フロー ログを有効にした
+現在のプラットフォームの制限により、Application Gateway v2 (Standard_v2、WAF_v2) サブネットに NSG があり、NSG フロー ログが有効になっている場合は、非決定的な動作が発生するため、このシナリオは現在サポートされていません。
 
 ### <a name="does-application-gateway-store-customer-data"></a>Application Gateway によって顧客データが保存されますか?
 

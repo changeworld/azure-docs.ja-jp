@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory を使用して REST ソースからデータをコピーする
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、クラウドまたはオンプレミスの REST ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
+title: Azure Data Factory を使用して REST エンドポイントとの間でデータをコピーする
+description: Azure Data Factory パイプラインで Copy アクティビティを使用して、クラウドまたはオンプレミスの REST ソースからサポートされているシンク データ ストアへ、またはサポートされているデータ ストアから REST シンクへデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,36 +9,36 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 7b6fa2395e81089e8b4523929a4a7a583b0788a2
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: a8cd6386ed6004935b0a1e45a53c01668166c0e4
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360771"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902257"
 ---
-# <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントからデータをコピーする
+# <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントとの間でデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、REST エンドポイントからデータコピーする方法について説明します。 この記事は、コピー アクティビティの概要が説明されている「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を基に作成されています。
+この記事では、Azure Data Factory の Copy アクティビティを使用して、REST エンドポイントとの間でデータコピーする方法について説明します。 この記事は、コピー アクティビティの概要が説明されている「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を基に作成されています。
 
 この REST コネクタ、[REST コネクタ](connector-http.md)、および [Web テーブル コネクタ](connector-web-table.md)の違いは次のとおりです。
 
-- **REST コネクタ**では、特に RESTful API からのデータのコピーがサポートされています。 
-- **HTTP コネクタ**は、ファイルをダウンロードするなど、任意の HTTP エンドポイントからデータを取得するための一般的なものです。 この REST コネクタが使用可能になる前に、HTTP コネクタを使用して RESTful API からデータをコピーする場合があります。これはサポートされますが、REST コネクタと比べると機能は低くなります。
-- **Web テーブル コネクタ**では、HTML Web ページからテーブルの内容を抽出します。
+- **REST コネクタ** では、特に RESTful API からのデータのコピーがサポートされています。 
+- **HTTP コネクタ** は、ファイルをダウンロードするなど、任意の HTTP エンドポイントからデータを取得するための一般的なものです。 この REST コネクタが使用可能になる前に、HTTP コネクタを使用して RESTful API からデータをコピーする場合があります。これはサポートされますが、REST コネクタと比べると機能は低くなります。
+- **Web テーブル コネクタ** では、HTML Web ページからテーブルの内容を抽出します。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-REST ソースから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
+REST ソースから、サポートされている任意のシンク データ ストアにデータをコピーできます。 サポートされている任意のソース データ ストアから REST シンクにデータをコピーすることもできます。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
 
 具体的には、この汎用 REST コネクタは以下をサポートします。
 
-- **GET** または **POST** メソッドを使用して、REST エンドポイントからデータを取得する。
-- 次のいずれかの認証を使用してデータを取得する。**匿名**、**基本**、**AAD サービス プリンシパル**、**Azure リソースのマネージド ID**。
+- **GET** または **POST** メソッドを使用した REST エンド ポイントからのデータのコピー、および **POST**、**PUT** または **PATCH** メソッドを使用した REST エンドポイントへのデータのコピー。
+- 次の認証のいずれかを使用したデータのコピー。**匿名**、**基本**、**AAD サービス プリンシパル**、**Azure リソースのマネージド ID**。
 - REST API 内の **[改ページ位置の自動修正](#pagination-support)** 。
-- REST JSON 応答を[そのまま](#export-json-response-as-is)コピーするか、[スキーマ マッピング](copy-activity-schema-and-type-mapping.md#schema-mapping)を使用して解析する。 **JSON** では応答ペイロードのみがサポートされます。
+- ソースとしての REST の場合、REST JSON 応答を[そのまま](#export-json-response-as-is)コピーするか、[スキーマ マッピング](copy-activity-schema-and-type-mapping.md#schema-mapping)を使用して解析する。 **JSON** では応答ペイロードのみがサポートされます。
 
 > [!TIP]
 > Data Factory で REST コネクタを構成する前に、データ取得のために要求をテストするには、ヘッダーおよび本文の要件に関する API 仕様を確認してください。 Postman や Web ブラウザーのようなツールを使用して検証することができます。
@@ -177,7 +177,7 @@ REST からのデータ コピーについては、次のプロパティがサ�
 | type | データセットの **type** プロパティを **RestResource** に設定する必要があります。 | はい |
 | relativeUrl | データを含むリソースへの相対 URL。 このプロパティが指定されていない場合は、リンクされたサービス定義に指定されている URL のみが使用されます。 HTTP コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[relative URL specified in dataset]` | いいえ |
 
-データセットに `requestMethod`、`additionalHeaders`、`requestBody`、および `paginationRules` を設定していた場合は現状のまま引き続きサポートされますが、今後のアクティビティ ソースでは新しいモデルを使用することをお勧めします。
+データセットに `requestMethod`、`additionalHeaders`、`requestBody`、`paginationRules` を設定していた場合は現状のまま引き続きサポートされますが、今後のアクティビティでは新しいモデルを使用することをお勧めします。
 
 **例:**
 
@@ -200,7 +200,7 @@ REST からのデータ コピーについては、次のプロパティがサ�
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
-このセクションでは、REST ソースでサポートされているプロパティの一覧を示します。
+このセクションでは、REST のソースとシンクでサポートされるプロパティの一覧を示します。
 
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 
 
@@ -211,7 +211,7 @@ REST からのデータ コピーについては、次のプロパティがサ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの **type** プロパティを **RestSource** に設定する必要があります | はい |
-| requestMethod | HTTP メソッド。 使用できる値は、**Get** (既定値) と **Post** です。 | いいえ |
+| requestMethod | HTTP メソッド。 使用できる値は、**GET** (既定値) と **POST** です。 | いいえ |
 | additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ |
 | requestBody | HTTP 要求の本文。 | いいえ |
 | paginationRules | 次のページ要求を作成する改ページ位置の自動修正規則。 詳細については、「[pagination support](#pagination-support)」(改ページ位置の自動調整のサポート) セクションを参照してください。 | いいえ |
@@ -293,6 +293,59 @@ REST からのデータ コピーについては、次のプロパティがサ�
 ]
 ```
 
+### <a name="rest-as-sink"></a>シンクとしての REST
+
+コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | Copy アクティビティのシンクの **type** プロパティには **RestSink** を設定する必要があります。 | はい |
+| requestMethod | HTTP メソッド。 使用できる値は、**POST** (既定値)、**PUT**、および **PATCH** です。 | いいえ |
+| additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ |
+| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 この値は、データの書き込みのタイムアウトではなく、応答の取得のタイムアウトです。 既定値は **00:01:40** です。  | いいえ |
+| requestInterval | 異なる要求間の間隔時間 (ミリ秒単位)。 要求間隔の値は、[10, 60000] の間の数値にする必要があります。 |  いいえ |
+| httpCompressionType | 最適な圧縮レベルでデータを送信するときに使用する HTTP 圧縮の種類。 使用できる値は **none** と **gzip** です。 | いいえ |
+| writeBatchSize | バッチごとに REST シンクに書き込むレコードの数。 既定値は 10000 です。 | いいえ |
+
+>[!NOTE]
+>シンクとしての REST コネクタは、JSON を受け入れる REST エンドポイントと連携します。 データは JSON でのみ送信されます。
+
+**例:**
+
+```json
+"activities":[
+    {
+        "name": "CopyToREST",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<REST output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>"
+            },
+            "sink": {
+                "type": "RestSink",
+                "requestMethod": "POST",
+                "httpRequestTimeout": "00:01:40",
+                "requestInterval": 10,
+                "writeBatchSize": 10000,
+                "httpCompressionType": "none",
+            },
+        }
+    }
+]
+```
+
 ## <a name="pagination-support"></a>改ページ位置の自動調整のサポート
 
 通常、REST API では、1 つの要求の応答ペイロードのサイズが適切な数値を超えないように制限されています。大量のデータが返される場合は、結果が複数のページに分割され、呼び出し元に連続する要求を送信して結果の次のページを取得することが要求されます。 通常、1 つのページに対する要求は動的で、前のページの応答から返される情報で構成されます。
@@ -306,17 +359,17 @@ REST からのデータ コピーについては、次のプロパティがサ�
 * 次の要求のヘッダー = 現在の応答本文のプロパティ値
 * 次の要求のヘッダー = 現在の応答ヘッダーのヘッダー値
 
-**改ページ位置の自動修正規則**はデータセット内のディクショナリとして定義されます。これには、大文字と小文字が区別される、1 つまたは複数のキーと値のペアが含まれます。 構成は 2 番目のページから始まる要求を生成するのに使用されます。 コネクタで HTTP 状態コード 204 (コンテンツなし) が取得されるか、"paginationRules" 内のいずれかの JSONPath 式で null が返されると、繰り返し処理が停止されます。
+**改ページ位置の自動修正規則** はデータセット内のディクショナリとして定義されます。これには、大文字と小文字が区別される、1 つまたは複数のキーと値のペアが含まれます。 構成は 2 番目のページから始まる要求を生成するのに使用されます。 コネクタで HTTP 状態コード 204 (コンテンツなし) が取得されるか、"paginationRules" 内のいずれかの JSONPath 式で null が返されると、繰り返し処理が停止されます。
 
-改ページ位置の自動修正規則で**サポートされるキー**:
+改ページ位置の自動修正規則で **サポートされるキー**:
 
 | Key | 説明 |
 |:--- |:--- |
-| AbsoluteUrl | 次の要求を発行する URL を示します。 これは、**絶対 URL と相対 URL のどちらか**です。 |
+| AbsoluteUrl | 次の要求を発行する URL を示します。 これは、**絶対 URL と相対 URL のどちらか** です。 |
 | QueryParameters.*request_query_parameter* または QueryParameters['request_query_parameter'] | "request_query_parameter" は、次の HTTP 要求 URL 内で 1 つのクエリ パラメーター名を参照するユーザー定義です。 |
 | Headers.*request_header* または Headers['request_header'] | "request_header" は、次の HTTP 要求内で 1 つのヘッダー名を参照するユーザー定義です。 |
 
-改ページ位置の自動修正規則で**サポートされる値**:
+改ページ位置の自動修正規則で **サポートされる値**:
 
 | 値 | 説明 |
 |:--- |:--- |
@@ -325,7 +378,7 @@ REST からのデータ コピーについては、次のプロパティがサ�
 
 **例:**
 
-Facebook Graph API によって、次の構造で応答が返されます。この場合、次のページの URL は ***paging.next*** で表されます。
+Facebook Graph API によって、次の構造で応答が返されます。この場合、次のページの URL は **_paging.next_* _ で表されます。
 
 ```json
 {
@@ -380,7 +433,7 @@ Facebook Graph API によって、次の構造で応答が返されます。こ�
 ### <a name="about-the-solution-template"></a>ソリューション テンプレートについて
 
 このテンプレートには、2 つのアクティビティが含まれています。
-- **Web** アクティビティでは、ベアラー トークンを取得し、それを後のコピー アクティビティに認証として渡します。
+- _ *Web** アクティビティでは、ベアラー トークンを取得し、それを後の Copy アクティビティに認証として渡します。
 - **コピー** アクティビティでは、データを REST から Azure Data Lake Storage にコピーします。
 
 このテンプレートには、次の 2 つのパラメーターが定義されています。

@@ -4,12 +4,12 @@ description: パーティションを使用して Azure Event Hubs で最大限�
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 774332b8f2d5c336f1a22d717516ae35a62b341f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81bacd5507396352bb814310979498234ee35347
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000636"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902903"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Event Hubs における可用性と一貫性
 
@@ -40,7 +40,9 @@ Event Hubs の使用を開始する最も簡単な方法は、既定の動作を
 最大のアップ タイムを必要とするユース ケースでは、このモデルが適しています。
 
 ## <a name="consistency"></a>一貫性
-シナリオによっては、イベントの順序付けが重要になる場合があります。 たとえば、バックエンド システムで、delete コマンドの前に update コマンドを処理したいとします。 この例では、イベントにパーティション キーを設定するか、または `PartitionSender` オブジェクトを使用して (古い Microsoft.Azure.Messaging ライブラリを使用している場合) イベントを特定のパーティションにのみ送信することができます。 これにより、これらのイベントがパーティションから読み取られる際に、読み取られる順番が保証されます。 **Azure.Messaging.EventHubs** ライブラリを使用している場合、詳細については[パーティションへのイベント発行のための PartitionSender から EventHubProducerClient へのコードの移行](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition)に関するページを参照してください。
+シナリオによっては、イベントの順序付けが重要になる場合があります。 たとえば、バックエンド システムで、delete コマンドの前に update コマンドを処理したいとします。 この例では、イベントにパーティション キーを設定するか、または `PartitionSender` オブジェクトを使用して (古い Microsoft.Azure.Messaging ライブラリを使用している場合) イベントを特定のパーティションにのみ送信することができます。 これにより、これらのイベントがパーティションから読み取られる際に、読み取られる順番が保証されます。 
+
+新しい **Azure.Messaging.EventHubs** ライブラリを使用している場合、[パーティションへのイベント発行のための PartitionSender から EventHubProducerClient へのコードの移行](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition)に関するページを参照してください。
 
 #### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs (5.0.0 以降)](#tab/latest)
 

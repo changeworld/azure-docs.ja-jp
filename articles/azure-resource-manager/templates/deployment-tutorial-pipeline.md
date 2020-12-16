@@ -1,19 +1,19 @@
 ---
 title: Azure Pipelines を使用した継続的インテグレーション
-description: Azure Resource Manager テンプレートを継続的にビルド、テスト、およびデプロイする方法について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) を継続的にビルド、テスト、およびデプロイする方法について説明します。
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 433811cb632aae0d7370fc8e401c01fe36621a5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7688a4e4838cb591bcd3ac0045a5ed22180c063
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333239"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906354"
 ---
-# <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>チュートリアル:Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション
+# <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>チュートリアル:Azure Pipelines を使用した ARM テンプレートの継続的インテグレーション
 
-[前のチュートリアル](./deployment-tutorial-linked-template.md)では、リンク済みテンプレートをデプロイしました。  このチュートリアルでは、Azure Pipelines を使用して Azure Resource Manager テンプレート プロジェクトを継続的にビルドおよびデプロイする方法について説明します。
+[前のチュートリアル](./deployment-tutorial-linked-template.md)では、リンク済みテンプレートをデプロイしました。  このチュートリアルでは、Azure Pipelines を使用して Azure Resource Manager テンプレート (ARM テンプレート) プロジェクトを継続的にビルドおよびデプロイする方法について説明します。
 
 Azure DevOps は、チームによる作業の計画、コード開発での共同作業、アプリケーションのビルドおよびデプロイをサポートするために、開発者サービスを提供します。 開発者は、Azure DevOps Services を使用してクラウドで作業できます。 Azure DevOps は、Web ブラウザーまたは IDE クライアントを介してアクセス可能な機能の統合セットを提供します。 Azure パイプラインは、この機能の 1 つです。 Azure Pipelines は、完全な機能を備えた継続的インテグレーション (CI) および継続的デリバリー (CD) サービスです。 任意の Git プロバイダーと連携し、ほとんどの主要クラウド サービスにデプロイできます。 その後、Microsoft Azure、Google Cloud Platform、アマゾン ウェブ サービスのコードのビルド、テスト、およびデプロイを自動化できます。
 
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * テンプレートのリポジトリの作成に使用する **GitHub アカウント**。 持っていない場合は、[無料で作成](https://github.com)できます。 GitHub リポジトリの使用に関する詳細については、[GitHub リポジトリの構築](/azure/devops/pipelines/repos/github)に関するページを参照してください。
 * **Git をインストールします**。 このチュートリアルの手順では、*Git Bash* または *Git Shell* を使用します。 手順については、[Git のインストールに関するページ]( https://www.atlassian.com/git/tutorials/install-git)を参照してください。
 * **Azure DevOps 組織**。 ない場合は、無料で作成できます。 [組織またはプロジェクト コレクションの作成](/azure/devops/organizations/accounts/create-organization?view=azure-devops)に関するページを参照してください。
-* (省略可能) **Visual Studio Code と Resource Manager ツール拡張機能**。 「[クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
+* (省略可能) **Visual Studio Code と Resource Manager ツール拡張機能**。 「[クイック スタート:Visual Studio Code を使用して ARM テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 
 ## <a name="prepare-a-github-repository"></a>GitHub レポジトリを準備する
 
@@ -51,7 +51,7 @@ GitHub を使用して、Resource Manager テンプレートを含むプロジ�
 GitHub アカウントをお持ちでない場合は、[前提条件](#prerequisites)を参照してください。
 
 1. [GitHub](https://github.com) にサインインします。
-1. 右上隅に表示されるご自身のアカウント イメージを選択し、**自分のリポジトリ**を選択します。
+1. 右上隅に表示されるご自身のアカウント イメージを選択し、**自分のリポジトリ** を選択します。
 
     ![Azure Resource Manager Azure DevOps Azure Pipelines GitHub リポジトリの作成](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-github-repository.png)
 
@@ -59,7 +59,7 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
 1. **[Repository name]** にリポジトリ名を入力します。  たとえば、**AzureRmPipeline-repo** とします。 忘れずにそれぞれの **AzureRmPipeline** をプロジェクト名で置き換えてください。 このチュートリアルを **[Public]** または **[Private]** のどちらにするかを選択できます。 続いて、 **[Create repository]** を選択します。
 1. URL を書き留めます。 リポジトリの URL は、 **`https://github.com/[YourAccountName]/[YourRepositoryName]`** 形式です。
 
-このリポジトリは、*リモート リポジトリ*と呼ばれます。 同じプロジェクトの開発者は、自分の*ローカル リポジトリ*を複製して変更をリモート リポジトリにマージできます。
+このリポジトリは、*リモート リポジトリ* と呼ばれます。 同じプロジェクトの開発者は、自分の *ローカル リポジトリ* を複製して変更をリモート リポジトリにマージできます。
 
 ### <a name="clone-the-remote-repository"></a>リモート リポジトリを複製する
 
@@ -172,7 +172,7 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
     * **サブスクリプション**:ターゲット サブスクリプション ID を指定します。
     * **アクション**:**Create Or Update Resource Group** アクションは、2 つのアクションを行います。1. 新しいリソース グループ名が提供されている場合は、リソース グループを作成します。2. 指定されたテンプレートをデプロイします。
     * **[リソース グループ]** :新しいリソース グループの名前を入力します。 たとえば、**AzureRmPipeline-rg** です。
-    * **[場所]** :リソース グループの場所を選択します (**米国中部**など)。
+    * **[場所]** :リソース グループの場所を選択します (**米国中部** など)。
     * **テンプレートの場所**: **[Linked artifact]\(リンクされた成果物\)** を選択します。この場合、タスクは接続されているリポジトリから直接テンプレート ファイルを探します。
     * **テンプレート**:「**CreateWebApp/azuredeploy.json**」と入力します。 フォルダー名とファイル名を変更した場合は、この値を変更する必要があります。
     * **テンプレート パラメーター**: このフィールドは空のままにします。 **[テンプレート パラメーターのオーバーライド]** にパラメーターの値を指定します。

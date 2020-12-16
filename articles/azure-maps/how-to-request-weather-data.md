@@ -1,22 +1,26 @@
 ---
-title: Azure Maps Weather Service を使用して、リアルタイムと予測の気象データを要求する
-description: Microsoft Azure Maps Weather Service を使用して、リアルタイム (現在) と予測 (分ごと、時間ごと、日ごと) の気象データを要求する方法について説明します
+title: Azure Maps Weather Service (プレビュー) を使用して、リアルタイムと予測の気象データを要求する
+description: Microsoft Azure Maps Weather Service (プレビュー) を使用して、リアルタイム (現在) と予測 (分ごと、時間ごと、日ごと) の気象データを要求する方法について説明します
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 10/27/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: c11f20286c514056d14b8faa941315345fea71f2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a5ae262d2882bd76e31666f058fa9a7a703a9e1e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186339"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906014"
 ---
-# <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>Azure Maps Weather Service を使用して、リアルタイムと予測の気象データを要求する
+# <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services-preview"></a>Azure Maps Weather Service (プレビュー) を使用して、リアルタイムと予測の気象データを要求する 
+
+> [!IMPORTANT]
+> Azure Maps Weather Service は現在、パブリック プレビュー段階です。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 Azure Maps [Weather Service](/rest/api/maps/weather) は、開発者が高度に動的な履歴、リアルタイム、予測の気象データと視覚化を自身のソリューションに統合できるようにする RESTful API のセットです。 この記事では、リアルタイムと予測の両方の気象データを要求する方法を説明します。
 
@@ -28,7 +32,7 @@ Azure Maps [Weather Service](/rest/api/maps/weather) は、開発者が高度に
 * [Get Hourly Forecast API](/rest/api/maps/weather/gethourlyforecastpreview) を使用して、時間ごとの予測を要求します。
 * [Get Minute Forecast API](/rest/api/maps/weather/getminuteforecastpreview) を使用して、分ごとの予測を要求します。
 
-このビデオでは、Azure Maps Weather Service の概要と REST 呼び出しの例について説明しています。
+このビデオでは、Azure Maps Weather Service の REST 呼び出しを行う例を示します。
 
 <br/>
 
@@ -751,8 +755,7 @@ Azure Maps [Weather Service](/rest/api/maps/weather) は、開発者が高度に
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure Maps Weather Service の概念](./weather-services-concepts.md)
+> [Azure Maps Weather Service (プレビュー) の概念](./weather-services-concepts.md)
 
 > [!div class="nextstepaction"]
-> [Azure Maps Weather Service の REST API](/rest/api/maps/weather
-)
+> [Azure Maps Weather Service (プレビュー) の REST API](/rest/api/maps/weather)
