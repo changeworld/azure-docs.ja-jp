@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 8c13dc0854fb29467b0fe8a1ce5f2dfc1c19bd78
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c7bb79cbd67ba2fb151641ddeeb31b54e399b906
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352339"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938258"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>ナレッジ ベースを作成して設定を管理する
 
@@ -46,7 +46,7 @@ QnA Maker を使うと、ナレッジ ベースの設定とデータ ソース�
     |--|--|
     |**Enable multi-turn extraction from URLs, .pdf or .docx files (URL、.pdf、または .docx ファイルからの複数ターンの抽出を有効にする)**|オン|
     |**Default answer text (既定の回答テキスト)**| `Quickstart - default answer not found.`|
-    |**+ Add URL (+ URL の追加)**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
+    |**+ Add URL (+ URL の追加)**|`https://azure.microsoft.com/en-us/support/faq/`|
     |**Chit-chat (おしゃべり)**|**[Professional]\(専門家\)** を選択します|
 
 1. **[Step 5]\(手順 5\)** で、 **[Create your KB]\(KB の作成\)** を選択します。

@@ -118,31 +118,31 @@
       items:
         - name: 汎用
           href: ../virtual-machines/sizes-general.md
-          maintainContext: true
           items:
             - name: 負荷の急増に対応できる B シリーズ
               href: ../virtual-machines/sizes-b-series-burstable.md
               maintainContext: true
+          maintainContext: true
         - name: コンピューティング最適化
           href: ../virtual-machines/sizes-compute.md
           maintainContext: true
         - name: メモリ最適化
           href: ../virtual-machines/sizes-memory.md
-          maintainContext: true
           items:
             - name: 制約付き vCPU
               href: ../virtual-machines/constrained-vcpu.md
               maintainContext: true
+          maintainContext: true
         - name: ストレージ最適化
           href: ../virtual-machines/sizes-storage.md
           maintainContext: true
         - name: GPU 最適化
           href: ../virtual-machines/sizes-gpu.md
-          maintainContext: true
           items:
             - name: NVIDIA GPU ドライバーの設定
               href: ../virtual-machines/windows/n-series-driver-setup.md
               maintainContext: true
+          maintainContext: true
         - name: ハイ パフォーマンス コンピューティング
           href: ../virtual-machines/sizes-hpc.md
           maintainContext: true
@@ -165,8 +165,6 @@
     - name: メンテナンスと更新
       href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
       maintainContext: true
-    - name: オーケストレーション モード
-      href: orchestration-modes.md
     - name: Disk Storage
       items:
         - name: Managed Disks
@@ -195,7 +193,7 @@
     - name: インフラストラクチャの自動化
       href: ../virtual-machines/infrastructure-automation.md
       maintainContext: true
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティとポリシー
           href: ../virtual-machines/security-policy.md

@@ -5,6 +5,8 @@
   items:
     - name: Face サービスとは
       href: Overview.md
+    - name: 新機能
+      href: releasenotes.md
 - name: クイックスタート
   items:
     - name: クライアント ライブラリまたは REST API を使用する
@@ -97,5 +99,3 @@
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 暗号化
       href: face-encryption-of-data-at-rest.md
-    - name: リリース ノート
-      href: ReleaseNotes.md

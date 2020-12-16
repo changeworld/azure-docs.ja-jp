@@ -12,18 +12,18 @@ ms.date: 11/17/2020
 ms.author: aahi
 keywords: テキスト マイニング、感情分析、テキスト分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 0f5e6a2327f5d952f92009b0c9e408ab8188d6d7
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 6cef9dc65a72134e0aa70db5f89f4934263c48b4
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558778"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563230"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Text Analytics API とは
 
 Text Analytics API は、テキスト マイニングとテキスト分析のための自然言語処理 (NLP) 機能を提供するクラウドベースのサービスであり、感情分析、オピニオン マイニング、キー フレーズ抽出、言語検出、名前付きエンティティの認識などを備えています。
 
-この API は、機械学習と AI のアルゴリズムを開発プロジェクトで利用できるようクラウドに集めた [Azure Cognitive Services](../index.yml) に含まれます。 これらの機能は [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) または[クライアント ライブラリ](quickstarts/text-analytics-sdk.md)で使用できます。
+この API は、機械学習と AI のアルゴリズムを開発プロジェクトで利用できるようクラウドに集めた [Azure Cognitive Services](../index.yml) に含まれます。 これらの機能は [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) または[クライアント ライブラリ](quickstarts/client-libraries-rest-api.md)で使用できます。
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
 
@@ -64,7 +64,7 @@ Text Analytics API は、テキスト マイニングとテキスト分析のた
 
 ワークフローは単純です。ユーザーが分析のためにデータを送信し、コードで出力を処理します。 アナライザーはそのままの状態で利用されます。構成やカスタマイズの追加はありません。
 
-1. Text Analytics 用の [Azure リソースを作成](../cognitive-services-apis-create-account.md)します。 その後、対象の要求を認証するために生成された[キーを取得](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)します。
+1. Text Analytics 用の [Azure リソースを作成](how-tos/text-analytics-how-to-call-api.md)します。 その後、対象の要求を認証するために生成された[キーを取得](how-tos/text-analytics-how-to-call-api.md)します。
 
 2. 未加工の非構造化テキストとしてデータを含む[要求を JSON で表します](how-tos/text-analytics-how-to-call-api.md#json-schema)。
 
@@ -109,7 +109,7 @@ Text Analytics API では、テキストの表現と文字数の計算に Unicod
 
 + Text Analytics 用の [Azure リソースを作成](../cognitive-services-apis-create-account.md)して、対象のアプリケーションのキーとエンドポイントを取得します。
 
-+ [クイックスタート](quickstarts/text-analytics-sdk.md)を使用して、API 呼び出しの送信を開始します。 テキストの送信方法、分析の選択方法、最小コードで結果を表示する方法について学習してください。
++ [クイックスタート](quickstarts/client-libraries-rest-api.md)を使用して、API 呼び出しの送信を開始します。 テキストの送信方法、分析の選択方法、最小コードで結果を表示する方法について学習してください。
 
 + 新しいリリースおよび機能については、[Text Analytics API の新機能](whats-new.md)に関するページを参照してください。
 

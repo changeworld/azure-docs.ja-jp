@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 5ea5e352084e379632b88194fd13011879041fd3
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e9368b5c6c90fe7ce65fc066e0b19523e07ece51
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899441"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504340"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>クイック スタート:Python で Form Recognizer の REST API を使用してテキストとレイアウト情報を抽出する
 
@@ -27,7 +27,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイック スタートを完了するには、以下が必要です。
 - インストールされている [Python](https://www.python.org/downloads/) (サンプルをローカルで実行する場合)。
-- フォーム ドキュメント。 このクイックスタートでは、 [サンプル データセット](https://go.microsoft.com/fwlink/?linkid=2090451)の画像をダウンロードできます ( *sample_data.zip* をダウンロードして抽出します)。
+- フォーム ドキュメント。 このクイックスタートでは、[サンプル データセット](https://go.microsoft.com/fwlink/?linkid=2090451)の画像をダウンロードできます (*sample_data.zip* をダウンロードして抽出します)。
 
 > [!NOTE]
 > このクイックスタートでは、ローカルに保存されたドキュメントを使用します。 URL でアクセスするリモート ファイルを使用する方法については、[リファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync)を参照してください。
@@ -90,7 +90,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     # Endpoint URL
     endpoint = r"<Endpoint>"
     apim_key = "<Subscription Key>"
-    post_url = endpoint + "/formrecognizer/v2.1-preview.1/Layout/analyze"
+    post_url = endpoint + "/formrecognizer/v2.1-preview.2/Layout/analyze"
     source = r"<path to your form>"
     
     headers = {
@@ -118,7 +118,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
       ---
 
 
-1. .py 拡張子のファイルにコードを保存します。 たとえば、 *form-recognizer-layout.py* とします。
+1. .py 拡張子のファイルにコードを保存します。 たとえば、*form-recognizer-layout.py* とします。
 1. コマンド プロンプト ウィンドウを開きます。
 1. プロンプトで、`python` コマンドを使用してサンプルを実行します。 たとえば、「 `python form-recognizer-layout.py` 」のように入力します。
 
@@ -130,7 +130,7 @@ https://cognitiveservice/formrecognizer/v2.0/layout/operations/54f0b076-4e38-43e
 ``` 
 # <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1)  
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.1/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.2/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```  
 
 ---
@@ -174,7 +174,7 @@ while n_try < n_tries:
 
 ### <a name="examine-the-response"></a>結果の確認
 
-このスクリプトでは、 **Analyze Layout** 操作が完了するまで、コンソールに応答が出力されます。 次に、抽出されたデータが JSON 形式で出力されます。 `"readResults"` ノードには、あらゆるテキスト行が、ページ上の対応する境界ボックスの配置と共に表示されます。 `"selectionMarks"` ノード (v2.1 プレビューの場合) には、すべての選択マーク (チェック ボックス、ラジオ マーク) と、その状態が "選択済み" と "未選択" のどちらであるかが示されます。 `"pageResults"` フィールドには、テーブル内のあらゆるテキストが、それぞれ対応する行と列の座標と共に表示されます。
+このスクリプトでは、**Analyze Layout** 操作が完了するまで、コンソールに応答が出力されます。 次に、抽出されたデータが JSON 形式で出力されます。 `"readResults"` ノードには、あらゆるテキスト行が、ページ上の対応する境界ボックスの配置と共に表示されます。 `"selectionMarks"` ノード (v2.1 プレビューの場合) には、すべての選択マーク (チェック ボックス、ラジオ マーク) と、その状態が "選択済み" と "未選択" のどちらであるかが示されます。 `"pageResults"` フィールドには、テーブル内のあらゆるテキストが、それぞれ対応する行と列の座標と共に表示されます。
 
 次の請求書の画像とそれに対応する JSON 出力をご覧ください。 出力は、簡素化するために一部省略されています。
 

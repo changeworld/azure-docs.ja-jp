@@ -758,6 +758,8 @@
           href: data-factory-troubleshoot-guide.md
         - name: Connectors
           href: connector-troubleshoot-guide.md
+        - name: パイプラインのトリガー
+          href: pipeline-trigger-troubleshoot-guide.md
         - name: データ フロー
           href: data-flow-troubleshoot-guide.md
         - name: 継続的インテグレーションとデプロイ

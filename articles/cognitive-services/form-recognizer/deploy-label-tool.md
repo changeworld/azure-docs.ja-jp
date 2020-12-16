@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: abc8cffa3d5b9dffb55beabc90cdaecb3adc647f
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 985f9e741a1491a812c1d2b20de96381f8af3fa4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852525"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359848"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>サンプル ラベル付けツールのデプロイ
 
@@ -86,7 +86,7 @@ Azure portal を使用して新しいリソースを作成するには、次の�
    * [サーバー URL] - これは `https://mcr.microsoft.com` に設定します
    * [ユーザー名] (省略可能) - ユーザー名を作成します。 
    * [パスワード] (省略可能) - 憶えやすい安全なパスワードを作成します。
-   * [イメージとタグ] - これは `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview` に設定します
+   * [イメージとタグ] - これは `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview` に設定します
    * 継続的なデプロイ - 開発チームがサンプル ラベル付けツールを変更したときに自動更新を受信する場合は、これを **オン** に設定します。
    * [スタートアップ コマンド] - これは `./run.sh eula=accept` に設定します
     

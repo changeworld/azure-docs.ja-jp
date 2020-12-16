@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 4f540c7e853efe370c84b7c4d0a7d74911b8cd6c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a4c551a6e9b8d79fdeb7b5219f311c7c7c969757
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823942"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505360"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Text Analytics API のユーザー シナリオの例
 
@@ -61,4 +61,4 @@ Text Analytics API は、テキストに対する高度な自然言語処理を�
 ## <a name="next-steps"></a>次のステップ
 
 * [Text Analytics API とは](overview.md)
-* [クライアント ライブラリを使用して Text Analytics API に要求を送信する](quickstarts/text-analytics-sdk.md)
+* [クライアント ライブラリを使用して Text Analytics API に要求を送信する](quickstarts/client-libraries-rest-api.md)

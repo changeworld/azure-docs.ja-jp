@@ -114,10 +114,6 @@
           href: developers-guide.md
         - name: Azure Resource Manager を使用して Key Vault をデプロイする
           href: vault-create-template.md
-        - name: Web アプリのシークレットの保存
-          href: /previous-versions/azure/key-vault/vs-secure-secret-appsettings?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
-        - name: .NET を使用したサービス間認証
-          href: service-to-service-authentication.md
         - name: Key Vault に接続したサービスを使用する
           href: vs-key-vault-add-connected-service.md
     - name: 監視とガバナンス

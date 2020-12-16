@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 30360253c0b1aa34c4af1e5efdf3cf9b4d8baaa0
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7713765a36207f0d9da05c4c11629e4a7f1164d9
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356496"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561513"
 ---
 Java 用 Azure Content Moderator クライアント ライブラリの使用を開始します。 以下の手順に従って、Maven パッケージをインストールし、基本タスクのコード例を試してみましょう。 
 
@@ -24,8 +24,8 @@ Content Moderator は、不快感を与える可能性がある内容、リス�
 
 Java 用 Content Moderator クライアント ライブラリは、次の目的で使用できます。
 
-* 画像のモデレート
 * テキストのモデレート
+* 画像のモデレート
 
 [リファレンス ドキュメント](/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable) | [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-contentmoderator) |[成果物 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | [サンプル](/samples/browse/?products=azure&term=content-moderator)
 
@@ -127,14 +127,42 @@ mkdir -p src/main/java
 これらのコード スニペットでは、Java 用 Content Moderator クライアント ライブラリを使用して次のタスクを実行する方法を示します。
 
 * [クライアントを認証する](#authenticate-the-client)
-* [画像のモデレート](#moderate-images)
 * [テキストのモデレート](#moderate-text)
+* [画像のモデレート](#moderate-images)
+
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
 アプリケーションの `main` メソッドで、サブスクリプション エンドポイント値とサブスクリプション キーを使用して、[ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable) オブジェクトを作成します。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
+
+
+
+## <a name="moderate-text"></a>テキストのモデレート
+
+### <a name="set-up-sample-text"></a>サンプル テキストを設定する
+
+**ContentModeratorQuickstart** クラスの一番上に、ローカル テキスト ファイルの参照を定義します。 プロジェクト ディレクトリに .txt ファイルを追加し、分析したいテキストを入力します。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_var)]
+
+### <a name="analyze-text"></a>テキストを分析する
+
+.txt ファイルを読み取る新しいメソッドを作成し、それぞれの行で **screenText** メソッドを呼び出します。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod)]
+
+### <a name="print-text-moderation-results"></a>テキストのモデレート結果を出力する
+
+モデレート結果を出力する次のコードを、プロジェクト ディレクトリの .json ファイルに追加します。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_print)]
+
+`try` と `catch` のステートメントをしあげてメソッドを完成させます。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_catch)]
+
 
 ## <a name="moderate-images"></a>画像のモデレート
 
@@ -180,31 +208,6 @@ mkdir -p src/main/java
 `try` ステートメントを終了し、`catch` ステートメントを追加してメソッドを完了します。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
-
-## <a name="moderate-text"></a>テキストのモデレート
-
-### <a name="set-up-sample-text"></a>サンプル テキストを設定する
-
-**ContentModeratorQuickstart** クラスの一番上に、ローカル テキスト ファイルの参照を定義します。 プロジェクト ディレクトリに .txt ファイルを追加し、分析したいテキストを入力します。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_var)]
-
-### <a name="analyze-text"></a>テキストを分析する
-
-.txt ファイルを読み取る新しいメソッドを作成し、それぞれの行で **screenText** メソッドを呼び出します。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod)]
-
-### <a name="print-text-moderation-results"></a>テキストのモデレート結果を出力する
-
-モデレート結果を出力する次のコードを、プロジェクト ディレクトリの .json ファイルに追加します。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_print)]
-
-`try` と `catch` のステートメントをしあげてメソッドを完成させます。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_catch)]
-
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 

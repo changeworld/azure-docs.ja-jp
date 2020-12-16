@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: include
 ms.date: 12/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 06af722e8c827acdad356acb982ac3761ef68236
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: ebef33072b802ffc35b8c011d974dbcd203fa6e1
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905672"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561479"
 ---
 Azure Content Moderator REST API の使用を開始します。 
 
@@ -23,8 +23,8 @@ Content Moderator は、不快感を与える可能性がある内容、リス�
 
 Content Moderator REST API を使用して、次のことを行います。
 
-* [テキストのモデレート](#moderate-text)
-* [画像のモデレート](#moderate-images)
+* テキストのモデレート
+* 画像のモデレート
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -3,19 +3,19 @@ title: Web エンドポイントからコマンドを更新する
 titleSuffix: Azure Cognitive Services
 description: Web エンドポイントの呼び出しを使用して、コマンドの状態を更新する方法について説明します。
 services: cognitive-services
-author: encorona-ms
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.author: encorona
-ms.openlocfilehash: 737b6e0534111924a31204d4548dfa59805c2fe5
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.author: nitinme
+ms.openlocfilehash: d0b77e6af36f0a71405f6c032bfdd121abeb0071
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352577"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560272"
 ---
 # <a name="update-a-command-from-a-web-endpoint"></a>Web エンドポイントからコマンドを更新する
 

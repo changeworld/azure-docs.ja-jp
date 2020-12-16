@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 04/02/2019
-ms.openlocfilehash: 868443e52b7159e6ee9478f64b7b2f376a10f604
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/08/2020
+ms.openlocfilehash: cd9b353300b88c69efb0c458245a86963c579064
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541008"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007740"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Cognitive Services で Language Understanding (LUIS) 内の顧客データをエクスポートおよび削除する
 
@@ -50,7 +50,7 @@ LUIS ユーザーは、ポータルでデータの表示を完全に制御でき
 
 ## <a name="location-of-active-learning"></a>アクティブ ラーニングの場所
 
-[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md#enable-active-learning)を有効にするために、公開済みの LUIS エンドポイントで受信されたユーザーの記録された発話は、次の Azure の地域に格納されます。
+[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md#log-user-queries-to-enable-active-learning)を有効にするために、公開済みの LUIS エンドポイントで受信されたユーザーの記録された発話は、次の Azure の地域に格納されます。
 
 * [ヨーロッパ](#europe)
 * [オーストラリア](#australia)
