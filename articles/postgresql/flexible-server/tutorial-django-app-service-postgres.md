@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 az login
 ```
 
-複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。 サブスクリプション ID プレースホルダーへのサブスクリプションを、 **az login** 出力の **サブスクリプション ID** プロパティに置き換えます。
+複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。 サブスクリプション ID プレースホルダーへのサブスクリプションを、**az login** 出力の **サブスクリプション ID** プロパティに置き換えます。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -59,7 +59,7 @@ cd djangoapp
 
 [https://github.com/Azure-Samples/djangoapp](https://github.com/Azure-Samples/djangoapp) にアクセスして **[Clone]\(クローン\)** を選択し、 **[Download ZIP]\(ZIP のダウンロード\)** を選択します。
 
-その ZIP ファイルを、 *djangoapp* という名前のフォルダーに展開します。
+その ZIP ファイルを、*djangoapp* という名前のフォルダーに展開します。
 
 次に、その *djangoapp* フォルダー内でターミナル ウィンドウを開きます。
 
@@ -69,7 +69,7 @@ djangoapp サンプルには、データ ドリブンの Django 投票アプリ�
 
 このサンプルは、App Service のような運用環境で実行するために変更もされています。
 
-- 運用環境の設定は、 *azuresite/production.py* ファイルにあります。 開発の詳細は *azuresite/settings.py* にあります。
+- 運用環境の設定は、*azuresite/production.py* ファイルにあります。 開発の詳細は *azuresite/settings.py* にあります。
 - `DJANGO_ENV` 環境変数を "production" に設定した場合に、アプリで運用環境の設定が使用されます。 この環境変数は、PostgreSQL データベース構成に使用する他のものと共に、チュートリアルの後半で作成します。
 
 これらの変更は、任意の運用環境で実行するために Django を構成する場合に固有であり、App Service に固有ではありません。 詳細については、[Django デプロイ チェックリスト](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/)に関するページを参照してください。
@@ -88,8 +88,8 @@ az postgres flexible-server create --resource-group myresourcegroup --location w
 
 - リソース グループがまだ存在していない場合は作成します。
 - サーバー名が指定されていない場合は、それが生成されます。
-- 新しい postgreSQL サーバー用の新しい仮想ネットワークが作成されます。 Web アプリを同じ仮想ネットワークに追加する必要があるため、サーバー用に作成された **仮想ネットワーク名とサブネット名をメモしておいてください** 。
-- サーバーの管理者のユーザー名とパスワードが指定されていない場合は、それらが作成されます。 次の手順で使用するため、 **ユーザー名とパスワードをメモしておいてください** 。
+- 新しい postgreSQL サーバー用の新しい仮想ネットワークが作成されます。 Web アプリを同じ仮想ネットワークに追加する必要があるため、サーバー用に作成された **仮想ネットワーク名とサブネット名をメモしておいてください**。
+- サーバーの管理者のユーザー名とパスワードが指定されていない場合は、それらが作成されます。 次の手順で使用するため、**ユーザー名とパスワードをメモしておいてください**。
 - 開発のために使用できるデータベース ```postgres``` を作成します。 [**psql** を実行してデータベースに接続](quickstart-create-server-portal.md#connect-to-the-postgresql-database-using-psql)し、別のデータベースを作成できます。
 
 > [!NOTE]
@@ -140,7 +140,7 @@ Django データベースの移行によって、Azure データベース上の 
 
 1. ブラウザーで *https://\<app-name>.scm.azurewebsites.net/webssh/host* に移動して SSH セッションを開き、Azure アカウントの資格情報 (データベース サーバーの資格情報ではなく) を使用してサインインします。
 
-1. SSH セッションで次のコマンドを実行します ( **Ctrl**+**Shift**+**V** キーを使用してコマンドを貼り付けることができます)。
+1. SSH セッションで次のコマンドを実行します (**Ctrl**+**Shift**+**V** キーを使用してコマンドを貼り付けることができます)。
 
     ```bash
     cd site/wwwroot
@@ -155,7 +155,7 @@ Django データベースの移行によって、Azure データベース上の 
     python manage.py createsuperuser
     ```
 
-1. `createsuperuser` コマンドを使用すると、スーパーユーザーの資格情報の入力を求められます。 このチュートリアルの目的では、既定のユーザー名である `root` を使用し、 **Enter** キーを押してメール アドレスを空白のままにして、パスワードを「`postgres1`」と入力します。
+1. `createsuperuser` コマンドを使用すると、スーパーユーザーの資格情報の入力を求められます。 このチュートリアルの目的では、既定のユーザー名である `root` を使用し、**Enter** キーを押してメール アドレスを空白のままにして、パスワードを「`postgres1`」と入力します。
 
 ### <a name="create-a-poll-question-in-the-app"></a>アプリで投票の質問を作成する
 
@@ -194,11 +194,11 @@ python manage.py runserver
 ```
 Web アプリが完全に読み込まれると、Django 開発サーバーによって、次のメッセージにローカル アプリの URL が表示されます: "Starting development server at http://127.0.0.1:8000/. Quit the server with CTRL-BREAK" (http://127.0.0.1:8000/ で開発サーバーを起動しています。CTRL-BREAK キーを押してサーバーを終了します)。
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/django-dev-server-output.png" alt-text="Django 開発サーバーの出力例&quot;:::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/django-dev-server-output.png" alt-text="Django 開発サーバーの出力例":::
 
 次の手順に従って、アプリをローカルでテストします。
 
-1. ブラウザーで *http:\//localhost:8000* にアクセスすると、&quot;No polls are available" (投票は利用できません) というメッセージが再び表示されます。
+1. ブラウザーで *http:\//localhost:8000* にアクセスすると、"No polls are available" (投票は利用できません) というメッセージが再び表示されます。
 
 1. *http:\//localhost:8000/admin* に移動し、前の手順で作成した管理者ユーザーを使用してサインインします。 **[Polls]\(投票\)** で、 **[Questions]\(質問\)** の横の **[Add]\(追加\)** をもう一度選択し、いくつかの選択肢がある投票の質問を作成します。
 
@@ -226,7 +226,7 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-`python manage.py runserver` を使用して開発サーバーを再度実行し、 *http:\//localhost:8000/admin* でアプリをテストします。
+`python manage.py runserver` を使用して開発サーバーを再度実行し、*http:\//localhost:8000/admin* でアプリをテストします。
 
 **Ctrl**+**C** キーを使用して Django Web サーバーを再度停止します。
 
@@ -270,19 +270,11 @@ python manage.py migrate
 
 [Azure portal](https://portal.azure.com) でアプリ名を探し、結果内のアプリを選択します。
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="Django 開発サーバーの出力例&quot;:::
-
-次の手順に従って、アプリをローカルでテストします。
-
-1. ブラウザーで *http:\//localhost:8000* にアクセスすると、&quot;No polls are available":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="Azure portal で Python Django アプリに移動する":::
 
 既定では、アプリの **[Overview]\(概要\)** ページがポータルに表示されます。これにより、全般的なパフォーマンス ビューが提供されます。 ここでは、参照、停止、再開、削除といった基本的な管理タスクを実行することもできます。 ページの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="Django 開発サーバーの出力例&quot;:::
-
-次の手順に従って、アプリをローカルでテストします。
-
-1. ブラウザーで *http:\//localhost:8000* にアクセスすると、&quot;No polls are available":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="Azure portal の [概要] ページで Python Django アプリを管理する":::
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

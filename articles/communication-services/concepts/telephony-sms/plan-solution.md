@@ -10,21 +10,22 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 0420360b70485e49dc6cd06dbeb19400c0f73ef5
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 271d7ce38d50fd21975327eb1f21528aeacc485e
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070352"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937238"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>テレフォニーと SMS ソリューションを計画する
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Azure Communication Services では、公衆交換電話網 (PSTN) で、電話番号を使用して音声通話を行ったり携帯ショートメール (SMS) メッセージを送信したりすることができます。 このドキュメントでは、Communication Services を使用したテレフォニーと SMS ソリューションを計画している方のために、電話番号の種類、構成オプション、利用可能なリージョンについて見ていきます。
 
-[!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
+
+
 
 
 ## <a name="phone-number-types-in-azure-communication-services"></a>Azure Communication Services での電話番号の種類
@@ -52,6 +53,8 @@ Communication Services には、**ローカル** と **無料電話番号** の 
 
 
 ## <a name="phone-number-features-in-azure-communication-services"></a>Azure Communication Services での電話番号の機能 
+
+[!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
 ほとんどの電話番号で、"アラカルト" の機能セットを構成できます。 これらの機能は、Azure Communication Services 内で電話番号をリースするときに選択できます。
 

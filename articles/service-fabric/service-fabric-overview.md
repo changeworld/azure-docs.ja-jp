@@ -3,13 +3,13 @@ title: Azure Service Fabric の概要
 description: Service Fabric は、スケーラブルで信頼性が高く管理しやすいマイクロサービスを構築するための分散システム プラットフォームです。
 ms.topic: overview
 ms.date: 09/22/2020
-ms.custom: contentperfq1
-ms.openlocfilehash: 3c282178decc1a07b2c0acc102b279688c42d52e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: b6a14ba3f905fbef3fc3796b616cd594941a3d60
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91300651"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028633"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Azure Service Fabric の概要
 

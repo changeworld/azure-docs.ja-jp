@@ -39,7 +39,7 @@ ms.locfileid: "96351437"
 
 ## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
-1. 普段使用している IDE またはエディターで新しい JavaScript ファイルを作成し、厳格度と HTTPS の要件を設定します。
+1. 好みの IDE またはエディターで新しい JavaScript ファイルを作成し、厳格度と HTTPS の要件を設定します。
 
     ```javaScript
     'use strict';

@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 0206c111be7cd6441d9de32af498e961833d214f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 398441123d5ad309d9c2d506a75b80b58a6d56d0
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980691"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346216"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>チュートリアル:コネクテッド ロジスティクス アプリケーション テンプレートをデプロイして調べる
 
@@ -41,9 +41,9 @@ ms.locfileid: "90980691"
 
     :::image type="content" source="media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png" alt-text="コネクテッド ロジスティクス テンプレート":::
 
-2. **[Connected Logistics Application]\(コネクテッド ロジスティクス アプリケーション\)** の **[アプリの作成]** を選択します。
+1. **[Connected Logistics Application]\(コネクテッド ロジスティクス アプリケーション\)** の **[アプリの作成]** を選択します。
 
-3. **[アプリの作成]** を選択すると、 **[新しいアプリケーション]** フォームが開きます。 次の詳細を入力します。
+1. **[アプリの作成]** を選択すると、 **[新しいアプリケーション]** フォームが開きます。 次の詳細を入力します。
 
 
     * **[アプリケーション名]** : 既定の推奨名を使用するか、わかりやすいアプリケーション名を入力できます。
@@ -51,9 +51,9 @@ ms.locfileid: "90980691"
     * **課金情報**:リソースをプロビジョニングするには、ディレクトリ、Azure サブスクリプション、リージョンの詳細が必要です。
     * **作成**:ページの下部にある [作成] を選択して、アプリケーションをデプロイします。
 
-    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png" alt-text="コネクテッド ロジスティクス テンプレート":::
+    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png" alt-text="コネクテッド ロジスティクス アプリ テンプレート":::
 
-    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png" alt-text="コネクテッド ロジスティクス テンプレート":::
+    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png" alt-text="コネクテッド ロジスティクスの課金情報":::
 
 ## <a name="walk-through-the-application"></a>アプリケーションを調べる
 
@@ -81,13 +81,13 @@ ms.locfileid: "90980691"
 * トラック輸送の物流経路と海上輸送の場所の詳細を表示します。
 * ゲートウェイの状態やその他の関連情報を表示します。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png" alt-text="コネクテッド ロジスティクス テンプレート":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png" alt-text="コネクテッド ロジスティクスのダッシュボード":::
 
 * ゲートウェイ、アクティブなタグ、不明なタグの合計数を追跡できます。
 * ファームウェアの更新、センサーの無効化、センサーの有効化、センサーしきい値の更新、テレメトリ間隔の更新、デバイス サービス コントラクトの更新などのデバイス管理操作を実行できます。
 * デバイスのバッテリ消費量を表示します。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png" alt-text="コネクテッド ロジスティクス テンプレート":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png" alt-text="コネクテッド ロジスティクスのダッシュボードの状態":::
 
 #### <a name="device-template"></a>デバイス テンプレート
 
@@ -95,11 +95,11 @@ ms.locfileid: "90980691"
 
 **[ゲートウェイのテレメトリとプロパティ]** - このインターフェイスでは、センサーに関連するすべてのテレメトリ、場所、デバイス情報が定義されます。 また、センサーのしきい値や更新間隔など、デバイス ツインのプロパティ機能もこのインターフェイスで定義されます。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png" alt-text="コネクテッド ロジスティクス テンプレート":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png" alt-text="テレメトリとプロパティのインターフェイス":::
 
 **[Gateway Commands]\(ゲートウェイ コマンド\)** - このインターフェイスには、すべてのゲートウェイ コマンド機能が整理されています。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png" alt-text="コネクテッド ロジスティクス テンプレート":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png" alt-text="ゲートウェイ コマンド インターフェイス":::
 
 ### <a name="rules"></a>ルール
 
@@ -109,13 +109,13 @@ ms.locfileid: "90980691"
 
 **[Unresponsive Gateway]\(応答しないゲートウェイ\)** : このルールは、長期間にわたってゲートウェイからクラウドへのレポートがない場合にトリガーされます。 バッテリ低下、接続喪失、デバイスの破損といった原因により、ゲートウェイが応答しないことがあります。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png" alt-text="コネクテッド ロジスティクス テンプレート":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png" alt-text="ルールの定義":::
 
 ### <a name="jobs"></a>ジョブ
 
 **[ジョブ]** タブを選択すると、このアプリケーションに含まれるジョブが表示されます。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png" alt-text="コネクテッド ロジスティクス テンプレート":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png" alt-text="実行するジョブ":::
 
 ジョブを使用して、アプリケーション全体の操作を実行できます。 このアプリケーション内のジョブでは、デバイス コマンドとツイン機能を使用して、すべてのゲートウェイでの特定のセンサーの無効化や、出荷モードとルートに応じたセンサーのしきい値の変更などのタスクが実行されます。
 
@@ -127,7 +127,7 @@ ms.locfileid: "90980691"
 
 このアプリケーションをもう使わない場合は、 **[管理]**  >  **[アプリケーションの設定]** に移動し、 **[削除]** を選択することによって、アプリケーション テンプレートを削除します。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png" alt-text="コネクテッド ロジスティクス テンプレート":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png" alt-text="テンプレートのクリーンアップ":::
 
 ## <a name="next-steps"></a>次のステップ
 * 項目ごとに詳しい情報を確認できます。 

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 519e2da902e1121220bcbb28c4cb18a68001293b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: fef192ab273a0e53958cda315932f91b427a5d7d
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840554"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108385"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C の技術と機能の概要
 
@@ -162,7 +162,7 @@ Azure AD B2C では、ユーザーに表示されるページがブランドの�
 
 ![ブランドでカスタマイズされたサインアップおよびサインイン ページのスクリーンショット](media/technical-overview/seamless-ux.png)
 
-UI のカスタマイズについては、「[Azure Active Directory B2C でのユーザー インターフェイスのカスタマイズについて](customize-ui-overview.md)」をご覧ください。
+UI のカスタマイズについては、「[Azure Active Directory B2C でのユーザー インターフェイスのカスタマイズについて](customize-ui-with-html.md)」をご覧ください。
 
 ## <a name="localization"></a>ローカリゼーション
 
@@ -170,7 +170,7 @@ Azure AD B2C の言語のカスタマイズを使用すると、顧客のニー�
 
 ![さまざまな言語の UI テキストが表示されている 3 つのサインアップおよびサインイン ページ](media/technical-overview/localization.png)
 
-ローカライズのしくみについては、「[Azure Active Directory B2C での言語のカスタマイズ](user-flow-language-customization.md)」をご覧ください。
+ローカライズのしくみについては、「[Azure Active Directory B2C での言語のカスタマイズ](language-customization.md)」をご覧ください。
 
 ## <a name="add-your-own-business-logic"></a>独自のビジネス ロジックの追加
 
@@ -221,7 +221,7 @@ Azure AD B2C 管理ロールのサポートなど、Azure AD のロールにつ�
 
 Azure AD B2C の多要素認証 (MFA) を利用すれば、データやアプリケーションへのアクセスを保護し、ユーザーには簡単なサインイン プロセスを提供できます。 第 2 の認証方式を要求することでセキュリティが追加され、簡単に使用できるさまざまな認証方法を提供することによって強力な認証が実現されます。 ユーザーは、管理者が行う構成上の決定に基づいて、MFA で認証が行われる場合と行われない場合があります。
 
-ユーザー フローで MFA を有効にする方法については、「[Azure Active Directory B2C の多要素認証 | Microsoft Docs](custom-policy-multi-factor-authentication.md)」をご覧ください。
+ユーザー フローで MFA を有効にする方法については、「[Azure Active Directory B2C の多要素認証 | Microsoft Docs](multi-factor-authentication.md)」をご覧ください。
 
 ### <a name="smart-account-lockout"></a>スマート アカウント ロックアウト
 
@@ -235,7 +235,7 @@ Azure AD B2C の多要素認証 (MFA) を利用すれば、データやアプリ
 
 サインアップ時またはパスワードのリセット時に、ユーザーは、複雑さのルールを満たすパスワードを指定する必要があります。 既定では、Azure AD B2C によって強力なパスワード ポリシーが適用されます。 また、Azure AD B2C では、顧客が使用するパスワードの複雑さの要件を指定するための構成オプションも提供されます。
 
-パスワードの複雑さの要件は、[ユーザー フロー](user-flow-password-complexity.md)と[カスタム ポリシー](custom-policy-password-complexity.md)の両方で構成できます。
+パスワードの複雑さの要件は、[ユーザー フロー](password-complexity.md)と[カスタム ポリシー](password-complexity.md)の両方で構成できます。
 
 ## <a name="auditing-and-logs"></a>監査とログ
 

@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/24/2020
-ms.custom: contperfq1
-ms.openlocfilehash: c36a88317f71d08094b43d06cc7ba86985a73ca0
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 01f61eac31c388cd0bf8a857beb7a10944187c6b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511850"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027902"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Cognitive Search とは
 

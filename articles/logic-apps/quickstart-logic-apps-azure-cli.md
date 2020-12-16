@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc, devx-track-azurecli, contperfq2
+ms.custom: mvc, devx-track-azurecli, contperf-fy21q2
 ms.date: 11/23/2020
-ms.openlocfilehash: f5b8497772a14e9613977c9cdc22025e8e58b92c
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: bc172fd1702addf8f4e34094452a779b09320a4d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95509474"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033376"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用してロジック アプリを作成し、管理する
 
@@ -88,7 +88,7 @@ az logic workflow create --definition
 
 コマンドには、次の[必須パラメーター](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-required-parameters)を含める必要があります。
 
-| パラメーター | [値] | 説明 |
+| パラメーター | 値 | 説明 |
 | --------- | ----- | ----------- |
 | ワークフロー定義 | `--definition` | ロジック アプリの[ワークフロー定義](#workflow-definition)を含む JSON ファイル。 |
 | 場所 | `--location -l` | ロジック アプリを配置する Azure リージョン。 |
@@ -148,7 +148,7 @@ az logic workflow create --resource-group "testResourceGroup" --location "westus
 
 コマンドには、次の[必須パラメーター](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete-required-parameters)を含める必要があります。
 
-| パラメーター | [値] | 説明 |
+| パラメーター | 値 | 説明 |
 | --------- | ----- | ----------- |
 | 名前 | `--name -n` | ロジック アプリの名前。 |
 | リソース グループ名 | `-resource-group -g` | ロジック アプリを配置するリソース グループ。 |
@@ -198,7 +198,7 @@ az logic workflow show --name
 
 コマンドには、次の[必須パラメーター](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show-required-parameters)を含める必要があります
 
-| パラメーター | [値] | 説明 |
+| パラメーター | 値 | 説明 |
 | --------- | ----- | ----------- |
 | 名前 | `--name -n` | ロジック アプリの名前。 |
 | リソース グループ名 | `--resource-group -g` | ロジック アプリを配置するリソース グループの名前。 |
@@ -219,7 +219,7 @@ az logic workflow show --resource-group "testResourceGroup" --name "testLogicApp
 
 次の[省略可能なパラメーター](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-list-optional-parameters)を使用して、結果をフィルター処理することができます。
 
-| パラメーター | [値] | 説明 |
+| パラメーター | 値 | 説明 |
 | --------- | ----- | ----------- |
 | リソース グループ名 | `--resource-group -g` | 結果をフィルター処理するリソース グループの名前。 |
 | 項目数 | `--top` | 結果に含める項目の数。 |
@@ -265,7 +265,7 @@ Expecting value: line 1 column 1 (char 0)
 
 `az logic` コマンドでは、次の省略可能なグローバル Azure CLI パラメーターを使用できます。
 
-| パラメーター | [値] | 説明 |
+| パラメーター | 値 | 説明 |
 | --------- | ----- | ----------- |
 | 出力形式 | `--output -o` | [出力形式](/cli/azure/format-output-azure-cli)を既定の JSON から変更します。 |
 | エラーのみを表示 | `--only-show-errors` | 警告を表示せず、エラーのみを表示します。 |

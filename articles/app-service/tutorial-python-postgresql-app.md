@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 348721304970a5d1d697ecf546a8c5039e81afc1
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: b106b403022f3407a3838b7f65222baf41cbfff5
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506109"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852967"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>チュートリアル:PostgreSQL を使用した Django Web アプリを Azure App Service にデプロイする
 
@@ -35,7 +35,7 @@ ms.locfileid: "94506109"
 [このチュートリアルの Azure portal バージョン](/azure/developer/python/tutorial-python-postgresql-app-portal)も使用できます。
 
 
-## <a name="set-up-your-initial-environment"></a>初期環境を設定する
+## <a name="1-set-up-your-initial-environment"></a>1.初期環境を設定する
 
 1. アクティブなサブスクリプションが含まれる Azure アカウントを用意します。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 1. <a href="https://www.python.org/downloads/" target="_blank">Python 3.6 以降</a>をインストールします。
@@ -81,7 +81,7 @@ az login
 
 問題がある場合は、 [お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
-## <a name="clone-or-download-the-sample-app"></a>サンプル アプリをクローンまたはダウンロードする
+## <a name="2-clone-or-download-the-sample-app"></a>2.サンプル アプリをクローンまたはダウンロードする
 
 # <a name="git-clone"></a>[git clone](#tab/clone)
 
@@ -118,7 +118,7 @@ djangoapp サンプルには、データ ドリブンの Django 投票アプリ�
 
 問題がある場合は、 [お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
-## <a name="create-postgres-database-in-azure"></a>Azure で Postgres データベースを作成する
+## <a name="3-create-postgres-database-in-azure"></a>3.Azure で Postgres データベースを作成する
 
 <!-- > [!NOTE]
 > Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. -->
@@ -129,7 +129,7 @@ Azure CLI 用 `db-up` 拡張機能をインストールします。
 az extension add --name db-up
 ```
 
-`az` コマンドが認識されない場合は、「[初期環境を設定する](#set-up-your-initial-environment)」の説明に従って Azure CLI がインストールされていることを確認してください。
+`az` コマンドが認識されない場合は、「[初期環境を設定する](#1-set-up-your-initial-environment)」の説明に従って Azure CLI がインストールされていることを確認してください。
 
 次に、[`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) コマンドを使用して Azure に Postgres データベースを作成します。
 
@@ -137,8 +137,9 @@ az extension add --name db-up
 az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgres-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
 ```
 
-- *\<postgres-server-name>* を Azure 全体で一意である名前に置き換えます (サーバー エンドポイントは `https://<postgres-server-name>.postgres.database.azure.com` になります)。 会社名と別の一意の値を組み合わせて使用すると、適切なパターンになります。
-- *\<admin-username>* と *\<admin-password>* には、この Postgres サーバーの管理者ユーザーを作成するための資格情報を指定します。 ユーザー名とパスワードに `$` 文字は使用しないでください。 後で、これらの値を使用して環境変数を作成しますが、Python アプリの実行に使用する Linux コンテナー内では、環境変数内の `$` 文字に特殊な意味があります。
+-  *\<postgres-server-name>* を **Azure 全体で一意** である名前に置き換えます (サーバー エンドポイントは `https://<postgres-server-name>.postgres.database.azure.com` になります)。 会社名と別の一意の値を組み合わせて使用すると、適切なパターンになります。
+- *\<admin-username>* と *\<admin-password>* には、この Postgres サーバーの管理者ユーザーを作成するための資格情報を指定します。 管理者のユーザー名に *azure_superuser*、*azure_pg_admin*、*admin*、*administrator*、*root*、*guest*、または *public* は使用できません。 *pg_* で始めることはできません。 パスワードには、次のうちの 3 つのカテゴリの、**8 から 128 文字** が含まれている必要があります: 英大文字、英小文字、数字 (0 から 9)、英数字以外の文字 (!、#、% など)。 パスワードにユーザー名を含めることはできません。
+- ユーザー名とパスワードに `$` 文字は使用しないでください。 後で、これらの値を使用して環境変数を作成しますが、Python アプリの実行に使用する Linux コンテナー内では、環境変数内の `$` 文字に特殊な意味があります。
 - ここで使用している B_Gen5_1 (Basic、Gen5、1 コア) の[価格レベル](../postgresql/concepts-pricing-tiers.md)は、コストが最も低いものです。 運用データベースの場合は、`--sku-name` 引数を省略して、代わりに GP_Gen5_2 (General Purpose、Gen 5、2 コア) レベルを使用します。
 
 このコマンドによって次の操作が実行されます。これには数分かかる場合があります。
@@ -153,7 +154,7 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 
 すべての手順は、他の `az postgres` および `psql` コマンドを使用して個別に実行することもできますが、`az postgres up` を使用すれば、そのすべての手順をまとめて実行できます。
 
-コマンドが完了すると、サーバーの URL、生成されたユーザー名 ("joyfulKoala@msdocs-djangodb-12345" など)、GUID パスワードと共に、データベースのさまざまな接続文字列を含む JSON オブジェクトが出力されます。 このチュートリアルの後半で必要になるため、短いユーザー名 (@ の前) とパスワードを一時的なテキスト ファイルにコピーします。
+コマンドが完了すると、サーバーの URL、生成されたユーザー名 ("joyfulKoala@msdocs-djangodb-12345" など)、GUID パスワードと共に、データベースのさまざまな接続文字列を含む JSON オブジェクトが出力されます。 このチュートリアルの後半で必要になるため、**ユーザー名とパスワードを一時的なテキスト ファイルにコピー** します。
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
@@ -161,11 +162,11 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 
 問題がある場合は、 [お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
-## <a name="deploy-the-code-to-azure-app-service"></a>Azure App Service にコードをデプロイする
+## <a name="4-deploy-the-code-to-azure-app-service"></a>4.Azure App Service にコードをデプロイする
 
 このセクションでは App Service アプリでアプリ ホストを作成し、このアプリを Postgres データベースに接続して、そのホストにコードをデプロイします。
 
-### <a name="create-the-app-service-app"></a>App Service アプリを作成する
+### <a name="41-create-the-app-service-app"></a>4.1 App Service アプリを作成する
 
 ターミナルで、現在の場所がアプリ コードを含む *djangoapp* リポジトリ フォルダーであることを確認します。
 
@@ -177,7 +178,7 @@ az webapp up --resource-group DjangoPostgres-tutorial-rg --location westus2 --pl
 <!-- without --sku creates PremiumV2 plan -->
 
 - `--location` 引数には、前のセクションでデータベースに使用したのと同じ場所を使用します。
-- *\<app-name>* は、すべての Azure で一意の名前に置き換えます (サーバー エンドポイントは `https://<app-name>.azurewebsites.net`)。 *\<app-name>* に使用できる文字は `A`-`Z`、`0`-`9`、`-` です。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
+-  *\<app-name>* を Azure 全体で一意である名前に置き換えます (サーバー エンドポイントは `https://<app-name>.azurewebsites.net`)。 *\<app-name>* に使用できる文字は `A`-`Z`、`0`-`9`、`-` です。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
 
 このコマンドによって次の操作が実行されます。これには数分かかる場合があります。
 
@@ -196,7 +197,7 @@ az webapp up --resource-group DjangoPostgres-tutorial-rg --location westus2 --pl
 
 問題がある場合は、 まず、[トラブルシューティング ガイド](configure-language-python.md#troubleshooting)を参照し、それでも解決しない場合は[お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
-### <a name="configure-environment-variables-to-connect-the-database"></a>データベースに接続するための環境変数を構成する
+### <a name="42-configure-environment-variables-to-connect-the-database"></a>4.2 データベースに接続するための環境変数を構成する
 
 コードを App Service にデプロイしたので、次の手順として、アプリを Azure の Postgres データベースに接続します。
 
@@ -216,11 +217,11 @@ Python コードでは、`os.environ.get('DBHOST')` のようなステートメ�
 
 問題がある場合は、 まず、[トラブルシューティング ガイド](configure-language-python.md#troubleshooting)を参照し、それでも解決しない場合は[お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
-### <a name="run-django-database-migrations"></a>Django データベースの移行を実行する
+### <a name="43-run-django-database-migrations"></a>4.3 Django データベースの移行を実行する
 
 Django データベースの移行によって、Azure データベース上の PostgreSQL のスキーマが、コードに記述されているスキーマと一致していることが確認されます。
 
-1. ブラウザーで次の URL に移動して SSH セッションを開き、Azure アカウントの資格情報 (データベース サーバーの資格情報ではなく) を使用してサインインします。
+1. **ブラウザーで** 次の URL に移動して SSH セッションを開き、Azure アカウントの資格情報 (データベース サーバーの資格情報ではなく) を使用してサインインします。
 
     ```
     https://<app-name>.scm.azurewebsites.net/webssh/host
@@ -230,7 +231,7 @@ Django データベースの移行によって、Azure データベース上の 
 
     macOS と Linux では、[`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) コマンドを使用して SSH セッションに接続することもできます。
 
-    SSH セッションに接続できない場合は、アプリ自体が起動に失敗しています。 詳細については、[診断ログを確認](#stream-diagnostic-logs)してください。 たとえば、前のセクションで必要なアプリ設定を作成していない場合、ログには `KeyError: 'DBNAME'` と示されます。
+    SSH セッションに接続できない場合は、アプリ自体が起動に失敗しています。 詳細については、[診断ログを確認](#6-stream-diagnostic-logs)してください。 たとえば、前のセクションで必要なアプリ設定を作成していない場合、ログには `KeyError: 'DBNAME'` と示されます。
 
 1. SSH セッションで次のコマンドを実行します (**Ctrl**+**Shift**+**V** キーを使用してコマンドを貼り付けることができます)。
 
@@ -257,11 +258,11 @@ Django データベースの移行によって、Azure データベース上の 
 
 問題がある場合は、 まず、[トラブルシューティング ガイド](configure-language-python.md#troubleshooting)を参照し、それでも解決しない場合は[お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
     
-### <a name="create-a-poll-question-in-the-app"></a>アプリで投票の質問を作成する
+### <a name="44-create-a-poll-question-in-the-app"></a>4.4 アプリで投票の質問を作成する
 
 1. ブラウザーで `http://<app-name>.azurewebsites.net` という URL を開きます。 データベース内に特定の投票がまだないため、アプリには "No polls are available" (投票は利用できません) というメッセージが表示されます。
 
-    "アプリケーション エラー" が表示される場合は、前の手順「[データベースに接続するための環境変数を構成する](#configure-environment-variables-to-connect-the-database)」で必須の設定を作成していないか、またはそれらの値にエラーが含まれていることが考えられます。 コマンド `az webapp config appsettings list` を実行して、設定を確認します。 また、[診断ログ調べて](#stream-diagnostic-logs)、アプリの起動時に発生したエラーを具体的に確認することもできます。 たとえば、該当する設定を作成していない場合、ログには `KeyError: 'DBNAME'` というエラーが示されます。
+    "アプリケーション エラー" が表示される場合は、前の手順「[データベースに接続するための環境変数を構成する](#42-configure-environment-variables-to-connect-the-database)」で必須の設定を作成していないか、またはそれらの値にエラーが含まれていることが考えられます。 コマンド `az webapp config appsettings list` を実行して、設定を確認します。 また、[診断ログ調べて](#6-stream-diagnostic-logs)、アプリの起動時に発生したエラーを具体的に確認することもできます。 たとえば、該当する設定を作成していない場合、ログには `KeyError: 'DBNAME'` というエラーが示されます。
 
     設定を更新してエラーを修正したら、アプリが再起動するまで少し待ってから、ブラウザーを最新の状態に更新します。
 
@@ -276,11 +277,11 @@ Django データベースの移行によって、Azure データベース上の 
 > [!NOTE]
 > App Service では、各サブフォルダー内で *wsgi.py* ファイル (`manage.py startproject` によって既定で作成されます) を探すことにより、Django プロジェクトが検出されます。 App Service でそのファイルが見つかると、Django Web アプリが読み込まれます。 詳細については、[組み込みの Python イメージの構成](configure-language-python.md)に関するページを参照してください。
 
-## <a name="make-code-changes-and-redeploy"></a>コードの変更を加えて再デプロイする
+## <a name="5-make-code-changes-and-redeploy"></a>5.コードの変更を加えて再デプロイする
 
 このセクションでは、アプリに対してローカルでの変更を行い、App Service にコードを再デプロイします。 このプロセスで、進行中の作業をサポートする Python 仮想環境を設定します。
 
-### <a name="run-the-app-locally"></a>アプリをローカルで実行する
+### <a name="51-run-the-app-locally"></a>5.1 アプリをローカルで実行する
 
 ターミナル ウィンドウで次のコマンドを実行します。 スーパーユーザーを作成するときは、必ずプロンプトに従ってください。
 
@@ -355,7 +356,7 @@ Web アプリが完全に読み込まれると、Django 開発サーバーによ
 
 問題がある場合は、 [お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
-### <a name="update-the-app"></a>アプリの更新
+### <a name="52-update-the-app"></a>5.2 アプリを更新する
 
 `polls/models.py` で、`choice_text` で始まる行を見つけ、`max_length` パラメーターを 100 に変更します。
 
@@ -377,7 +378,7 @@ python manage.py migrate
 
 問題がある場合は、 まず、[トラブルシューティング ガイド](configure-language-python.md#troubleshooting)を参照し、それでも解決しない場合は[お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
-### <a name="redeploy-the-code-to-azure"></a>Azure にコードを再デプロイする
+### <a name="53-redeploy-the-code-to-azure"></a>5.3 Azure にコードを再デプロイする
 
 リポジトリのルートで次のコマンドを実行します。
 
@@ -389,7 +390,7 @@ az webapp up
 
 問題がある場合は、 まず、[トラブルシューティング ガイド](configure-language-python.md#troubleshooting)を参照し、それでも解決しない場合は[お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
-### <a name="rerun-migrations-in-azure"></a>Azure で移行を再実行する
+### <a name="54-rerun-migrations-in-azure"></a>5.4 Azure で移行を再実行する
 
 データ モデルに変更を加えたので、App Service へのデータベースの移行を再実行する必要があります。
 
@@ -406,13 +407,13 @@ python manage.py migrate
 
 問題がある場合は、 まず、[トラブルシューティング ガイド](configure-language-python.md#troubleshooting)を参照し、それでも解決しない場合は[お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
-### <a name="review-app-in-production"></a>運用環境でアプリを確認する
+### <a name="55-review-app-in-production"></a>5.5 運用環境でアプリを確認する
 
 `http://<app-name>.azurewebsites.net` に移動し、運用環境でアプリを再度テストします (データベース フィールドの長さを変更しただけなので、質問の作成時に長い回答を入力しようとした場合にのみ、この変更が明らかになります)。
 
 問題がある場合は、 まず、[トラブルシューティング ガイド](configure-language-python.md#troubleshooting)を参照し、それでも解決しない場合は[お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
-## <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする
+## <a name="6-stream-diagnostic-logs"></a>6.診断ログをストリーミングする
 
 Azure 上でアプリをホストするコンテナー内から生成されたコンソール ログに、アクセスすることができます。
 
@@ -437,7 +438,7 @@ az webapp log tail
 > az webapp log config --docker-container-logging filesystem
 > ```
 
-## <a name="manage-your-app-in-the-azure-portal"></a>Azure portal でアプリを管理する
+## <a name="7-manage-your-app-in-the-azure-portal"></a>7.Azure portal でアプリを管理する
 
 [Azure portal](https://portal.azure.com) でアプリ名を探し、結果内のアプリを選択します。
 
@@ -449,7 +450,7 @@ az webapp log tail
 
 問題がある場合は、 まず、[トラブルシューティング ガイド](configure-language-python.md#troubleshooting)を参照し、それでも解決しない場合は[お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
+## <a name="8-clean-up-resources"></a>8.リソースをクリーンアップする
 
 アプリを残しておく場合、またはその他のチュートリアルに進む場合は、「[次のステップ](#next-steps)」に進んでください。 それ以外の場合は、継続して料金が発生しないように、このチュートリアルで作成したリソース グループを削除できます。
 

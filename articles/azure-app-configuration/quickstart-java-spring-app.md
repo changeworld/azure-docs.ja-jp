@@ -3,20 +3,19 @@ title: Azure App Configuration の使用方法を学習するためのクイッ�
 description: このクイックスタートでは、Azure App Configuration でコードとは別にアプリケーション設定のストレージと管理を一元化して、Java Spring アプリを作成します。
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
-ms.author: lcozzens
-ms.openlocfilehash: dd2305e13322540e9e30223f200baed9919d1840
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.author: alkemper
+ms.openlocfilehash: 40c8fae292f465b3ecc8778a21e4903bdf423a3a
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075401"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932032"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して Java Spring アプリを作成する
 
@@ -52,7 +51,7 @@ ms.locfileid: "92075401"
 
    - **Java** で **Maven** プロジェクトを生成します。
    - **Spring Boot** のバージョンとして、2.0 以降を指定します。
-   - アプリケーションの**グループ (Group)** と**成果物 (Artifact)** の名前を指定します。
+   - アプリケーションの **グループ (Group)** と **成果物 (Artifact)** の名前を指定します。
    - **Spring Web** の依存関係を追加します。
 
 1. 前の各オプションを指定してから、 **[プロジェクトの生成]** を選択します。 メッセージが表示されたら、ローカル コンピューター上のパスにプロジェクトをダウンロードします。
