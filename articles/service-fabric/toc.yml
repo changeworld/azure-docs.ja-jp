@@ -663,6 +663,8 @@
                   href: service-fabric-cluster-creation-via-portal.md
                 - name: Availability Zones への Azure Service Fabric クラスターのデプロイ
                   href: service-fabric-cross-availability-zones.md
+                - name: ステートレス ノード タイプを使用した Azure Service Fabric クラスターのデプロイ
+                  href: service-fabric-stateless-node-types.md
                 - name: Azure Active Directory 認証を設定する
                   href: service-fabric-cluster-creation-setup-aad.md
                 - name: カスタム クラスター テンプレートの作成

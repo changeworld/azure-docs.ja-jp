@@ -7,18 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f8bee990074debf09cc9bfd19f96470a029b50c9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 28b68178b98e53b7a7d4192ad20c05a667344969
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793128"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356726"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Azure 上にある SQL Server 仮想マシンへの接続
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,7 +34,7 @@ ms.locfileid: "92793128"
 
 クライアントから仮想マシン上で実行されている SQL Server VM に接続する方法は、クライアントの場所とネットワークの構成によって異なります。
 
-Azure Portal で SQL Server VM をプロビジョニングする場合、 **SQL 接続** の種類を指定するオプションが用意されています。
+Azure Portal で SQL Server VM をプロビジョニングする場合、**SQL 接続** の種類を指定するオプションが用意されています。
 
 ![プロビジョニング中のパブリック SQL 接続オプション](./media/ways-to-connect-to-sql/sql-vm-portal-connectivity.png)
 
@@ -45,7 +46,7 @@ Azure Portal で SQL Server VM をプロビジョニングする場合、 **SQL 
 | **プライベート** | 同一仮想ネットワーク内の SQL Server に接続します。 |
 | **ローカル** | 同一仮想マシン内の SQL Server にローカルに接続します。 | 
 
-次のセクションでは、 **パブリック** および **プライベート** オプションの詳細について説明します。
+次のセクションでは、**パブリック** および **プライベート** オプションの詳細について説明します。
 
 ## <a name="connect-to-sql-server-over-the-internet"></a>インターネット経由で SQL Server に接続する
 
@@ -119,7 +120,7 @@ SQL Server 接続の設定を変更するとき、Azure は SQL Server Developer
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
 
-次に、 **SQL Server 構成マネージャー** を使用して、TCP/IP プロトコルを有効にします。
+次に、**SQL Server 構成マネージャー** を使用して、TCP/IP プロトコルを有効にします。
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 

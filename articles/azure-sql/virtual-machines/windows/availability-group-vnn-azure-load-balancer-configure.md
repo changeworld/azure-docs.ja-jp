@@ -7,6 +7,7 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a07f0416f26f81e8a2b6d22c79047dc8651bb78c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 2d89759438cb625a0e220af10ab6b287096f6390
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168722"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359882"
 ---
 # <a name="configure-load-balancer-for-ag-vnn-listener"></a>AG VNN リスナーのロード バランサーの構成
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,19 +48,19 @@ SQL Server 2019 CU8 以降を使用している顧客向けの代替の接続オ
 
 1. Azure Portal で、仮想マシンが含まれているリソース グループに移動します。
 
-1. **[追加]** を選択します。 Azure Marketplace で「 **ロード バランサー** 」を検索します。 **[ロード バランサー]** を選択します。
+1. **[追加]** を選択します。 Azure Marketplace で「**ロード バランサー**」を検索します。 **[ロード バランサー]** を選択します。
 
 1. **［作成］** を選択します
 
 1. 次の値を使用してロード バランサーを設定します。
 
-   - **サブスクリプション** :Azure サブスクリプション。
+   - **サブスクリプション**:Azure サブスクリプション。
    - **[リソース グループ]** :仮想マシンが含まれているリソース グループ。
-   - **Name** :ロード バランサーを識別する名前。
+   - **Name**:ロード バランサーを識別する名前。
    - **[リージョン]** :仮想マシンが含まれている Azure の場所。
    - **[種類]** :パブリックまたはプライベート。 プライベート ロード バランサーには、同じ仮想ネットワーク内からアクセスできます。 プライベート ロード バランサーは、ほとんどの Azure アプリケーションで使用できます。 アプリケーションがインターネット経由で直接 SQL Server にアクセスする必要がある場合は、パブリック ロード バランサーを使用します。
-   - **SKU** :Standard。
-   - **仮想ネットワーク** :仮想マシンと同じネットワーク。
+   - **SKU**:Standard。
+   - **仮想ネットワーク**:仮想マシンと同じネットワーク。
    - **[IP アドレスの割り当て]** :静的。 
    - **[プライベート IP アドレス]** :クラスター化されたネットワーク リソースに割り当てた IP アドレス。
 
@@ -86,12 +87,12 @@ SQL Server 2019 CU8 以降を使用している顧客向けの代替の接続オ
 
 1. **[追加]** を選択します。
 
-1. **[正常性プローブの追加]** ペインで、 <span id="probe"></span> 次の正常性プローブのパラメーターを設定します。
+1. **[正常性プローブの追加]** ペインで、<span id="probe"></span> 次の正常性プローブのパラメーターを設定します。
 
-   - **Name** :正常性プローブの名前。
-   - **プロトコル** :TCP
-   - **ポート** : [VM を準備したときに](failover-cluster-instance-prepare-vm.md#uninstall-sql-server-1)正常性プローブ用にファイアウォールで作成したポート。 この記事の例では、TCP ポート `59999` を使用します。
-   - **間隔** : 5 秒
+   - **Name**:正常性プローブの名前。
+   - **プロトコル**:TCP
+   - **ポート**:[VM を準備したときに](failover-cluster-instance-prepare-vm.md#uninstall-sql-server-1)正常性プローブ用にファイアウォールで作成したポート。 この記事の例では、TCP ポート `59999` を使用します。
+   - **間隔**: 5 秒
    - **[異常のしきい値]** : 連続エラー数 2。
 
 1. **[OK]** を選択します。
@@ -104,9 +105,9 @@ SQL Server 2019 CU8 以降を使用している顧客向けの代替の接続オ
 
 1. 次のように負荷分散規則のパラメーターを設定します。
 
-   - **Name** :負荷分散規則の名前。
+   - **Name**:負荷分散規則の名前。
    - **[フロントエンド IP アドレス]** : SQL Server FCI または AG リスナーのクラスター化されたネットワーク リソースの IP アドレス。
-   - **ポート** :SQL Server の TCP ポート。 既定のインスタンス ポートは 1433 です。
+   - **ポート**:SQL Server の TCP ポート。 既定のインスタンス ポートは 1433 です。
    - **[バックエンド ポート]** : **[フローティング IP (ダイレクト サーバー リターン)]** を有効にしたときの **[ポート]** の値と同じポート。
    - **[バックエンド プール]** : 先ほど構成したバックエンド プール名。
    - **[正常性プローブ]** : 先ほど構成した正常性プローブ。

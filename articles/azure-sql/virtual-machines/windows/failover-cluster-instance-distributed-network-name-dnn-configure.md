@@ -7,6 +7,7 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: dff6d69a107091a0ce030065da0f70a3d68c5841
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 8549592ace00e712929ebc76045a32531b9db659
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168726"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358318"
 ---
 # <a name="configure-a-dnn-for-failover-cluster-instance"></a>フェールオーバー クラスター インスタンス用に DNN を構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -131,7 +132,7 @@ Start-ClusterResource -Name dnn-demo
 
 1. フェールオーバー クラスター インスタンスに参加していないすべてのノードのチェック ボックスをオフにします。 DNN リソースの実行可能な所有者の一覧は、SQL Server インスタンス リソースの実行可能な所有者の一覧と一致している必要があります。 たとえば、Data3 が FCI に参加していないとすると、次の図は DNN リソースの実行可能な所有者の一覧から Data3 を削除する例を示しています。 
 
-   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="DNN リソースのショートカット メニュー。[プロパティ] コマンドが強調表示されています。":::
+   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="DNN リソースの実行可能な所有者について、FCI に参加していないノードの横のチェック ボックスをオフにする":::
 
 1. **[OK]** を選択して設定を保存します。 
 

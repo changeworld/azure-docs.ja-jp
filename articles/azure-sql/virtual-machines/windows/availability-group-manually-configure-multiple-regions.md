@@ -8,18 +8,19 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 335cc707cb1192d3dbf08f51e78d4e82441dd05a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 60bb5ac652a80b5ae52c91f91fa0c80440e9cc82
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094457"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359083"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>複数の Azure リージョンにまたがる SQL Server Always On 可用性グループを構成する
 
@@ -129,7 +130,7 @@ ms.locfileid: "93094457"
    ![可用性グループ](./media/availability-group-manually-configure-multiple-regions/50-configure-dependency-multiple-ip.png)
 
    >[!IMPORTANT]
-   >クラスター リソース グループには、両方の IP アドレスが含まれます。 両方の IP アドレスが、リスナー クライアント アクセス ポイントの依存関係です。 クラスターの依存関係の構成では、 **OR** 演算子を使います。
+   >クラスター リソース グループには、両方の IP アドレスが含まれます。 両方の IP アドレスが、リスナー クライアント アクセス ポイントの依存関係です。 クラスターの依存関係の構成では、**OR** 演算子を使います。
 
 1. [PowerShell でクラスターのパラメーターを設定する](availability-group-manually-configure-tutorial.md#setparam)。
 

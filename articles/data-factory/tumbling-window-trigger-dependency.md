@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/03/2020
-ms.openlocfilehash: 4a99865e13e029dcea478cf6085d71c465918b14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 221f8bd7908613812a728d420a68b747051e095b
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89421857"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508800"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>タンブリング ウィンドウ トリガーの依存関係の作成
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -167,7 +167,7 @@ ms.locfileid: "89421857"
 
 依存関係の状態、および各依存トリガーのウィンドウが表示されます。 依存関係トリガーのいずれかが失敗した場合は、正常に再実行して、依存するトリガーが稼働できるようにする必要があります。
 
-タンブリング ウィンドウ トリガーは、依存関係を _7 日間_待機してからタイムアウトします。7 日が経過すると、トリガーの実行は失敗します。
+タンブリング ウィンドウ トリガーは、依存関係を _7 日間_ 待機してからタイムアウトします。7 日が経過すると、トリガーの実行は失敗します。
 
 トリガーの依存関係のスケジュールを視覚的に表示するには、[ガント] ビューを選択します。
 

@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
-ms.date: 11/02/2020
+ms.date: 12/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: fa8d40e4817b6adb42da6daa3035bd1c4a67c5d8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f273902aee47a22bcf29bdf507f617efe242f5a4
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325280"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505139"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをデプロイする
 
@@ -249,7 +249,7 @@ inference_config = InferenceConfig(entry_script='path-to-score.py',
 
 # <a name="python"></a>[Python](#tab/python)
 
-モデルをデプロイする前にデプロイ構成を定義する必要があります。 *デプロイ構成は、Web サービスがホストされるコンピューティング ターゲットに固有となります* 。 たとえば、モデルをローカルでデプロイするときに、サービスが要求を受け入れるポートを指定する必要があります。 デプロイ構成は、エントリ スクリプトの一部ではありません。 これは、モデルとエントリ スクリプトをホストするコンピューティング先の特性を定義するために使用されます。
+モデルをデプロイする前にデプロイ構成を定義する必要があります。 *デプロイ構成は、Web サービスがホストされるコンピューティング ターゲットに固有となります*。 たとえば、モデルをローカルでデプロイするときに、サービスが要求を受け入れるポートを指定する必要があります。 デプロイ構成は、エントリ スクリプトの一部ではありません。 これは、モデルとエントリ スクリプトをホストするコンピューティング先の特性を定義するために使用されます。
 
 また、たとえば、ワークスペースに関連付けられている Azure Kubernetes Service (AKS) インスタンスがまだない場合などにも、コンピューティング リソースを作成する必要があります。
 

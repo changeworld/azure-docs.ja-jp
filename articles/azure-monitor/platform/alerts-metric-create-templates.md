@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 10/7/2020
 ms.subservice: alerts
-ms.openlocfilehash: e5f78c8b58cc3100d746957094ddfd9bab2b29fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51ae97567e9c3720c7e36a81bfa7bff44935aac6
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91813221"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511622"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
 
@@ -270,7 +270,7 @@ az login
 
 az deployment group create \
     --name AlertDeployment \
-    --resource-group ResourceGroupofTargetResource \
+    --resource-group ResourceGroupOfTargetResource \
     --template-file simplestaticmetricalert.json \
     --parameters @simplestaticmetricalert.parameters.json
 ```
@@ -377,7 +377,7 @@ Resource Manager テンプレートを使用してアラートを作成するに
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
@@ -518,7 +518,7 @@ Resource Manager テンプレートを使用してアラートを作成するに
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "value": ""
         },
         "timeAggregation": {
@@ -569,8 +569,7 @@ az deployment group create \
 - 各条件内では、ディメンションごとに 1 つの値のみを選択できます。
 - "\*" をディメンション値として使用することはできません。
 - 異なる基準で構成されているメトリックが同じディメンションをサポートしている場合、構成されたディメンションの値は、これらのすべての (関連する基準の) メトリックに対して同じ方法で明示的に設定する必要があります。
-    - 次の例では、**Transactions** と **SuccessE2ELatency** メトリックの両方に **ApiName** ディメンションがあり、*criterion1* で **ApiName** ディメンションの *"GetBlob"* 値が指定されているため*criterion2* は **ApiName** ディメンションに *"GetBlob"* 値も設定する必要があります。
-
+    - 次の例では、**Transactions** と **SuccessE2ELatency** メトリックの両方に **ApiName** ディメンションがあり、*criterion1* で **ApiName** ディメンションの *"GetBlob"* 値が指定されているため *criterion2* は **ApiName** ディメンションに *"GetBlob"* 値も設定する必要があります。
 
 このチュートリアルでは､以下の JSON を advancedstaticmetricalert.json として保存します｡
 
@@ -976,7 +975,7 @@ az deployment group create \
                             "values": ["*"]
                         },
                         {
-                "name":"ApiName",
+                            "name":"ApiName",
                             "operator": "Include",
                             "values": ["GetBlob", "PutBlob"]    
                         }

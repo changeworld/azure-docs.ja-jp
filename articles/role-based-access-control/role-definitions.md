@@ -15,12 +15,12 @@ ms.date: 05/08/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 7c6f9203385c47da9803fb05358889d00d77d3e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc3640fecbe1138e46fd0d36975691740bc669dd
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511638"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369261"
 ---
 # <a name="understand-azure-role-definitions"></a>Azure ロールの定義について
 
@@ -28,7 +28,7 @@ Azure ロールのしくみを理解しようとしている場合、または�
 
 ## <a name="role-definition"></a>ロール定義
 
-*ロール定義*はアクセス許可のコレクションです。 単に*ロール*と呼ばれることもあります。 ロール定義には、実行できる操作 (読み取り、書き込み、削除など) が登録されています。 許可された操作から除外されている操作または基となるデータに関連する操作も一覧表示できます。
+*ロール定義* はアクセス許可のコレクションです。 単に *ロール* と呼ばれることもあります。 ロール定義には、実行できる操作 (読み取り、書き込み、削除など) が登録されています。 許可された操作から除外されている操作または基となるデータに関連する操作も一覧表示できます。
 
 次に示すのは、Azure PowerShell を使用して表示される場合のロール定義のプロパティの例です。
 
@@ -339,4 +339,4 @@ REST API でデータ操作を確認して使用するには、次のバージ�
 
 * [Azure 組み込みロール](built-in-roles.md)
 * [Azure カスタム ロール](custom-roles.md)
-* [Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)
+* [Azure リソース プロバイダーの操作](resource-provider-operations.md)

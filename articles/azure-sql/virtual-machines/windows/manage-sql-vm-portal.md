@@ -6,18 +6,19 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6b563e8ca93487a123f97f0bbb86624dc3be2db0
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 68c7805136a7361a64a6ff6dfbb9e7d910b2ea9b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556290"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357944"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>Azure portal を使用して Azure 内の SQL Server VM を管理する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

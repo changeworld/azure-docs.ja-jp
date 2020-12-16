@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: baf2734c2f3c4de86b75a20239ecf7440c61a632
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 0cad8fcdf58f4827f28b40550ae93e607e0c0858
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96534048"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369006"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のリリース ノート
 
@@ -59,7 +59,7 @@ ms.locfileid: "96534048"
 | サービスの機能強化 | 詳細 |
 | --- | --- |
 |**ワークロード管理 - ポータル エクスペリエンス**|ユーザーは、Azure portal を使用して、ワークロード管理の設定を構成および管理できます。 重要度が設定された[ワークロード グループ](/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-portal)と[ワークロード分類子](/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal)を構成することができます。|
-|**テーブル マッピングのカタログ ビューの改善**|新しいカタログ ビュー [sys.pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=sqlallproducts-allversions) は、永続的なユーザー テーブルの **object_ids** を物理テーブル名にマップします。|
+|**テーブル マッピングのカタログ ビューの改善**|新しいカタログ ビュー [sys.pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql) は、永続的なユーザー テーブルの **object_ids** を物理テーブル名にマップします。|
 
 ## <a name="july-2020"></a>2020 年 7 月
 

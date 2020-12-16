@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/12/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 950c159ed4d2c57796f33b9505e6931dbec983ba
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 441a77823c77305e567e9e1436715bc51ca48c11
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532377"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387056"
 ---
 # <a name="display-controls"></a>表示コントロール
 
@@ -53,9 +53,9 @@ ms.locfileid: "94532377"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| InputClaims | 0:1 | **InputClaims** は、ユーザーから収集されるクレームの値を事前に設定するために使用されます。 詳細については、「[InputClaims](technicalprofiles.md#inputclaims)」要素を参照してください。 |
+| InputClaims | 0:1 | **InputClaims** は、ユーザーから収集されるクレームの値を事前に設定するために使用されます。 詳細については、「[InputClaims](technicalprofiles.md#input-claims)」要素を参照してください。 |
 | DisplayClaims | 0:1 | **DisplayClaims** は、ユーザーから収集されるクレームを表すために使用されます。 詳細については、「[DisplayClaim](technicalprofiles.md#displayclaim)」要素を参照してください。|
-| OutputClaims | 0:1 | **OutputClaims** は、この **DisplayControl** のために一時的に保存されるクレームを表すために使用されます。 詳細については、「[OutputClaims](technicalprofiles.md#outputclaims)」要素を参照してください。|
+| OutputClaims | 0:1 | **OutputClaims** は、この **DisplayControl** のために一時的に保存されるクレームを表すために使用されます。 詳細については、「[OutputClaims](technicalprofiles.md#output-claims)」要素を参照してください。|
 | アクション | 0:1 | **Actions** は、フロントエンドで発生しているユーザー アクションに対して呼び出す検証技術プロファイルを一覧表示するために使用されます。 |
 
 ### <a name="input-claims"></a>入力クレーム

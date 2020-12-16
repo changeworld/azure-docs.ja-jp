@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: d1ab8990d0e5c389e0454c23a31989a71b0cd9a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdc7668b06308bd5532f4885d0e1365fc34ae989
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87843778"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511248"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API Management のサブスクリプション
 
@@ -33,7 +33,7 @@ API にアクセスするためのサブスクリプション キーを取得す
 > API Management では、API へのアクセスをセキュリティで保護するための他のメカニズムもサポートしています。たとえば、以下があります。
 > - [OAuth2.0](api-management-howto-protect-backend-with-aad.md)
 > - [クライアント証明書](api-management-howto-mutual-certificates-for-clients.md)
-> - [IP ホワイトリスト登録](./api-management-access-restriction-policies.md#RestrictCallerIPs)
+> - [呼び出し元 IP を制限する](./api-management-access-restriction-policies.md#RestrictCallerIPs)
 
 ## <a name="scope-of-subscriptions"></a>サブスクリプションの範囲
 
@@ -53,7 +53,7 @@ API にアクセスするためのサブスクリプション キーを取得す
 API Management の[従量課金](https://aka.ms/apimconsumptionblog)レベルの導入時に、キー管理を合理化するためにいくつかの変更が行われました。
 - まず、すべての API と単一の API という 2 つのサブスクリプション範囲が追加されました。 サブスクリプションの範囲は、API 製品に限定されなくなりました。 1 つの API (または API Management インスタンス内のすべての API) へのアクセスを許可するキーを作成できるようになりました。先に製品を作成して API を追加しておく必要はありません。 さらに、各 API Management インスタンスには、不変の全 API サブスクリプションが付属するようになりました。 このサブスクリプションにより、テスト コンソール内での API のテストとデバッグがより簡単に、わかりやすくなりました。
 
-- 次に、API Management で、**スタンドアロン**のサブスクリプションが許可されるようになりました。 サブスクリプションを開発者アカウントに関連付ける必要はなくなりました。 この機能は、1 つのサブスクリプションを複数の開発者またはチームで共有する場合などのシナリオで役立ちます。
+- 次に、API Management で、**スタンドアロン** のサブスクリプションが許可されるようになりました。 サブスクリプションを開発者アカウントに関連付ける必要はなくなりました。 この機能は、1 つのサブスクリプションを複数の開発者またはチームで共有する場合などのシナリオで役立ちます。
 
 - 最後に、API の公開元は、Azure portal で直接[サブスクリプションを作成](api-management-howto-create-subscriptions.md)できるようになりました。
 

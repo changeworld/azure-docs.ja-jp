@@ -11,16 +11,19 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdadc02c8bb1c3f9450ff34ac935547343989cf6
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 6d436414393d77c83acc835110f17e55e491dce1
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742971"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503491"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Multi-Factor Authentication の NPS の拡張機能の詳細構成オプション
 
-ネットワーク ポリシー サーバー (NPS) の拡張機能は、クラウドベースの Azure AD Multi-Factor Authentication 機能をオンプレミスのインフラストラクチャに拡張します。 この記事では、拡張機能をインストール済みであることを前提に、ニーズに合わせて拡張機能をカスタマイズする方法について説明します。 
+ネットワーク ポリシー サーバー (NPS) の拡張機能は、クラウドベースの Azure AD Multi-Factor Authentication 機能をオンプレミスのインフラストラクチャに拡張します。 この記事では、拡張機能をインストール済みであることを前提に、ニーズに合わせて拡張機能をカスタマイズする方法について説明します。
+
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "*ホワイトリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 ## <a name="alternate-login-id"></a>代替ログイン ID
 

@@ -8,18 +8,19 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 601eebb1-fc2c-4f5b-9c05-0e6ffd0e5334
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8573e45270dfd1ff984eae3dc5fbf1dc5f2fc6da
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: f39380e253d3fa9e86bfea3a8c436862738ff8e3
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600865"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359933"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 上の SQL Server の Always On 可用性グループ
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -81,15 +82,15 @@ Azure VM 上の SQL Server に可用性グループをデプロイするため�
 |**SQL Server のバージョン** |2016 以降 |2016 以降|2016 以降|2012 以降|
 |**SQL Server のエディション** |Enterprise |Enterprise |Enterprise |Enterprise、Standard|
 |**Windows Server のバージョン**| 2016 以降 | 2016 以降 | 2016 以降 | All|
-|**クラスターを自動作成**|はい|○ | ○ |いいえ|
+|**クラスターを自動作成**|はい|はい | はい |いいえ|
 |**可用性グループを自動作成** |はい |いいえ|いいえ|いいえ|
 |**リスナーとロード バランサーを別々に作成** |いいえ|いいえ|いいえ|はい|
 |**この方法を使用して DNN リスナーを作成可能**|いいえ|いいえ|いいえ|はい|
 |**WSFC クォーラムの構成**|クラウド監視|クラウド監視|クラウド監視|All|
 |**複数のリージョンを使用した DR** |いいえ|いいえ|いいえ|はい|
-|**マルチサブネットのサポート** |はい|○|○|はい|
-|**既存の AD のサポート**|はい|○|○|はい|
-|**同一リージョン内の複数のゾーンを使用した DR**|はい|○|○|はい|
+|**マルチサブネットのサポート** |はい|はい|はい|はい|
+|**既存の AD のサポート**|はい|はい|はい|はい|
+|**同一リージョン内の複数のゾーンを使用した DR**|はい|はい|はい|はい|
 |**AD なしの分散型 AG**|いいえ|いいえ|いいえ|はい|
 |**クラスターなしの分散型 AG** |いいえ|いいえ|いいえ|はい|
 

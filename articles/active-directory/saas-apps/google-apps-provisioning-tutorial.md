@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 2ce5ac43af57b82f912b10eeacf285a688888e9d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4851dfb4a96ab2ca19ba6ea67139772f9c091a69
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180882"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504578"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>チュートリアル:G Suite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -31,6 +31,9 @@ ms.locfileid: "96180882"
 > * G Suite の追加のユーザーおよびグループ属性に対するサポートが追加されました。
 > * G Suite ターゲットの属性名が、[ここで](https://developers.google.com/admin-sdk/directory)定義されている内容に一致するように更新されました。
 > * 既定の属性マッピングが更新されました。
+
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "*ホワイトリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 ## <a name="capabilities-supported"></a>サポートされる機能
 > [!div class="checklist"]

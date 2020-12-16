@@ -1,18 +1,18 @@
 ---
 title: デプロイのベスト プラクティス
 description: この記事では、Azure Purview をデプロイするためのベスト プラクティスについて説明します。 Azure Purview を使用すると、すべてのユーザーが、データ ソースを登録し、検出し、理解し、利用することができます。
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: cae4904d0b3dacc608c7b41b638dc507b3cda6b5
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1b2841f69ebe91dac748a4b2e24dc0c33756b1da
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550758"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400694"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Azure Purview のデプロイのベスト プラクティス
 
@@ -110,7 +110,7 @@ Purview を使用すると、クラウド環境とオンプレミス環境にま
 
 シナリオは、測定可能な結果を備えた具体的なものであり、実用的かつ実行可能である必要があります。 使用できるシナリオ例を次に示します。
 
-|シナリオ|詳細|ペルソナ|
+|シナリオ|項目|ペルソナ|
 |---------|---------|---------|
 |ビジネス クリティカルな資産をカタログ化する|各データ セットについての情報を取得し、その内容を十分に理解しておく必要があります。 このシナリオには、カタログ内のデータ セットに関するビジネスと技術の両方のメタデータが含まれます。 データ ソースには、Azure Data Lake Storage Gen2、Azure Synapse DW、Power BI が含まれます。 このシナリオには、SQL Server などのオンプレミス リソースも含まれます。|ビジネス アナリスト、データ サイエンティスト、データ エンジニア|
 |ビジネス クリティカルな資産を検出する|カタログ内のすべてのメタデータを検索できる検索エンジンが必要です。 単純な検索またはワイルドカードを使用した複雑な検索で、技術用語とビジネス用語を使用して検索できる必要があります。|ビジネス アナリスト、データ サイエンティスト、データ エンジニア、データ管理者|

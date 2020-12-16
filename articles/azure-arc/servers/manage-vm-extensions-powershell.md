@@ -3,12 +3,12 @@ title: Azure PowerShell を使用して VM 拡張機能を有効にする
 description: この記事では、Azure PowerShell を使用して、ハイブリッド環境で実行されている Azure Arc 対応サーバーに仮想マシン拡張機能をデプロイする方法について説明します。
 ms.date: 11/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 40f3d6ab98411d5b8e42f4f79817c66f56fdaaef
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 6b38c425042c260a29682db11212a1f6324abd38
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029032"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387412"
 ---
 # <a name="enable-azure-vm-extensions-using-azure-powershell"></a>Azure PowerShell を使用して Azure VM 拡張機能を有効にする
 
@@ -35,7 +35,7 @@ Arc 対応サーバーで VM 拡張機能を有効にするには、`-Name`、`-
 ```powershell
 PS C:\> $Setting = @{ "workspaceId" = "workspaceId" }
 PS C:\> $protectedSetting = @{ "workspaceKey" = "workspaceKey" }
-PS C:\> New-AzConnectedMachineExtension -Name OMSLinuxAgent -ResourceGroupName "myResourceGroup" -MachineName "myMachine" -Location "eastus" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -TypeHandlerVersion "1.10" -Settings $Setting -ProtectedSetting $protectedSetting -ExtensionType OmsAgentforLinux"
+PS C:\> New-AzConnectedMachineExtension -Name OMSLinuxAgent -ResourceGroupName "myResourceGroup" -MachineName "myMachine" -Location "eastus" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -TypeHandlerVersion "1.10" -Settings $Setting -ProtectedSetting $protectedSetting -ExtensionType "OmsAgentforLinux"
 ```
 
 次の例では、Arc 対応 Linux サーバーでカスタム スクリプト拡張機能を有効にします。

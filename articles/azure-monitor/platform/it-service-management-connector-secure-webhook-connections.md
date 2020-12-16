@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 3f6342fcb658611c754a16399ec05f5fa76c79b8
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1cd8041f801a418f67d26461c5f4e9ebff7e5c30
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546116"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507304"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>セキュア エクスポートを使用して Azure を ITSM ツールに接続する
 
@@ -120,9 +120,9 @@ ITSM Connector ツールの使用を開始するには、次の手順を実行�
 1. リンク https://(instance name).service-now.com/api/sn_em_connector/em/inbound_event?source=azuremonitor を使用します。これは、セキュリティで保護された定義の URI です。
 
 2. バージョンに応じた手順に従ってください。
-   * [パリ](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
-   * [Orlando](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
-   * [ニューヨーク](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
+   * [パリ](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/task/azure-events-authentication.html)
+   * [Orlando](https://docs.servicenow.com/bundle/orlando-it-operations-management/page/product/event-management/task/azure-events-authentication.html)
+   * [ニューヨーク](https://docs.servicenow.com/bundle/newyork-it-operations-management/page/product/event-management/task/azure-events-authentication.html)
 
 ### <a name="connect-bmc-helix-to-azure-monitor"></a>BMC Helix を Azure Monitor に接続する
 

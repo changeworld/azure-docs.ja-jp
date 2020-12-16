@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7d50185169b22a136ce81bd3aebae235cf49498b
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6dd95fc8fd0ab0099ac7404d4ca4e4b1851f650f
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436625"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359610"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB のデータへのアクセスをセキュリティで保護する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -95,7 +95,7 @@ Cosmos DB リソース トークンにより、付与されたアクセス許可
 
 リソース トークンの生成と管理は、ネイティブ Cosmos DB クライアント ライブラリによって処理されます。ただし、REST を使用する場合は、要求/認証ヘッダーを構築する必要があります。 REST 用の認証ヘッダーの作成については、[Cosmos DB リソースのアクセス制御](/rest/api/cosmos-db/access-control-on-cosmosdb-resources)に関するページや、[.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) または [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts) のソース コードを参照してください。
 
-ブローカー リソース トークンを生成するために使用する中間層サービスの例については、[ResourceTokenBroker アプリ](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)に関するページを参照してください。
+ブローカー リソース トークンを生成するために使用する中間層サービスの例については、[ResourceTokenBroker アプリ](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)に関するページを参照してください。
 
 ## <a name="users"></a>ユーザー<a id="users"></a>
 

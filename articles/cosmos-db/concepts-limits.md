@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: f591a9781cb81ec735d22f4f687f8d413923dc93
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9d351bc945c08c82e96791059b00dc94eb94b918
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349131"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368741"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -70,7 +70,7 @@ Cosmos コンテナー (または共有スループット データベース) �
 * データベースでプロビジョニングされた最高 RU ÷ 100
 * 400 + MAX(コンテナー数 - 25, 0) * 100 RU/秒
 
-例:400 RU/秒、15 GB のストレージ、10 個のコンテナーでプロビジョニングされたデータベースがあるとします。 この時点で、最小 RU/秒は `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 RU/秒になります。 データベースに 30 個のコンテナーがあった場合、最小 RU/秒は `400 + MAX(30 - 5, 0) * 100 RU/s` = 900 RU/秒になります。 
+例:400 RU/秒、15 GB のストレージ、10 個のコンテナーでプロビジョニングされたデータベースがあるとします。 この時点で、最小 RU/秒は `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 RU/秒になります。 データベースに 30 個のコンテナーがあった場合、最小 RU/秒は `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 RU/秒になります。 
 
 **注:** コンテナーまたはデータベースに 1 TB を超えるデータが含まれている場合、アカウントは、["高ストレージ低スループット" プログラム](set-throughput.md#high-storage-low-throughput-program)の対象となる可能性があります。
 

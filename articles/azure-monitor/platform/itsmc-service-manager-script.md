@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: 46c219a82d45129ed0856d22d88be819938e5240
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fefa16a39545c0c4094db8dbd18b46fb94ef5025
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325306"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504034"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>自動スクリプトを使用した Service Manager Web アプリの作成
 
@@ -26,9 +26,12 @@ ms.locfileid: "87325306"
 - Web アプリのサイト名のプレフィックス
 - ServiceBus 名前空間。
 
-スクリプトによって、指定した名前で (一意の名前にするために文字列をいくつか追加して) Web アプリが作成されます。 また、スクリプトによって、**Web アプリの URL**、**クライアント ID**、**クライアント シークレット**が生成されます。
+スクリプトによって、指定した名前で (一意の名前にするために文字列をいくつか追加して) Web アプリが作成されます。 また、スクリプトによって、**Web アプリの URL**、**クライアント ID**、**クライアント シークレット** が生成されます。
 
 これらの値を保存してください。IT Service Management Connector への接続を作成するときに必要になります。
+
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "*ホワイトリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

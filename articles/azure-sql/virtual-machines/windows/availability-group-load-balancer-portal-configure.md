@@ -7,18 +7,19 @@ author: MashaMSFT
 editor: monicar
 ms.assetid: d1f291e9-9af2-41ba-9d29-9541e3adcfcf
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4af7e10b573743602fea609264c73d58a1e6a7d1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9fa23ca2ae655a11d7aaa4be67e08a6b3fa44394
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790000"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359389"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Azure Virtual Machines に SQL Server Always On 可用性グループのロード バランサーを構成する
 
@@ -61,7 +62,7 @@ ms.locfileid: "92790000"
 
 2. リソース グループで、 **[追加]** を選択します。
 
-3. " **ロード バランサー** " を検索します。 検索結果で **ロード バランサー** ( **Microsoft** によって公開) を選択します。
+3. " **ロード バランサー**" を検索します。 検索結果で **ロード バランサー** (**Microsoft** によって公開) を選択します。
 
 4. **[ロード バランサー]** ブレードで **[作成]** を選択します。
 
@@ -69,9 +70,9 @@ ms.locfileid: "92790000"
 
    | 設定 | 値 |
    | --- | --- |
-   | **名前** |ロード バランサーを表すテキスト名 (例: **sqlLB** )。 |
-   | **Type** |**内部** :ほとんどの実装では、内部ロード バランサーを使います。この場合、同じ仮想ネットワーク内のアプリケーションを可用性グループに接続できます。  </br> **外部** :アプリケーションをパブリック インターネット接続経由で可用性グループに接続できます。 |
-   | **SKU** |**Basic** :既定のオプション。 SQL Server インスタンスが同じ可用性セット内にある場合にのみ有効です。 </br> **Standard** :推奨。 SQL Server インスタンスが同じ可用性セット内にある場合に有効です。 SQL Server インスタンスが異なる可用性ゾーンに存在する場合は必須です。 |
+   | **名前** |ロード バランサーを表すテキスト名 (例: **sqlLB**)。 |
+   | **Type** |**内部**:ほとんどの実装では、内部ロード バランサーを使います。この場合、同じ仮想ネットワーク内のアプリケーションを可用性グループに接続できます。  </br> **外部**:アプリケーションをパブリック インターネット接続経由で可用性グループに接続できます。 |
+   | **SKU** |**Basic**:既定のオプション。 SQL Server インスタンスが同じ可用性セット内にある場合にのみ有効です。 </br> **Standard**:推奨。 SQL Server インスタンスが同じ可用性セット内にある場合に有効です。 SQL Server インスタンスが異なる可用性ゾーンに存在する場合は必須です。 |
    | **Virtual Network** |SQL Server インスタンスが存在する仮想ネットワークを選択します。 |
    | **サブネット** |SQL Server インスタンスが存在するサブネットを選択します。 |
    | **IP アドレスの割り当て** |**静的** |
@@ -86,7 +87,7 @@ ms.locfileid: "92790000"
 
 ### <a name="step-2-configure-the-back-end-pool"></a>手順 2:バックエンド プールを構成する
 
-Azure では、バックエンド アドレス プールを " *バックエンド プール* " と呼んでいます。 この例では、可用性グループに含まれる 2 つの SQL Server インスタンスのアドレスがバックエンド プールとなります。 
+Azure では、バックエンド アドレス プールを "*バックエンド プール*" と呼んでいます。 この例では、可用性グループに含まれる 2 つの SQL Server インスタンスのアドレスがバックエンド プールとなります。 
 
 1. リソース グループで、作成したロード バランサーを選択します。 
 
@@ -118,9 +119,9 @@ Azure では、バックエンド アドレス プールを " *バックエン�
 
    | 設定 | 値 |
    | --- | --- |
-   | **名前** |プローブを表すテキスト名 (例: **SQLAlwaysOnEndPointProbe** )。 |
+   | **名前** |プローブを表すテキスト名 (例: **SQLAlwaysOnEndPointProbe**)。 |
    | **プロトコル** |**TCP** |
-   | **[ポート]** |空いている任意のポートを使用できます (例: *59999* )。 |
+   | **[ポート]** |空いている任意のポートを使用できます (例: *59999*)。 |
    | **間隔** |*5* |
    | **異常のしきい値** |*2* |
 
@@ -144,7 +145,7 @@ Azure はこのプローブを作成、使用して、どの SQL Server イン�
 
    | 設定 | 値 |
    | --- | --- |
-   | **名前** |負荷分散規則を表すテキスト名。 (例: **SQLAlwaysOnEndPointListener** )。 |
+   | **名前** |負荷分散規則を表すテキスト名。 (例: **SQLAlwaysOnEndPointListener**)。 |
    | **プロトコル** |**TCP** |
    | **[ポート]** |*1433* |
    | **バックエンド ポート** |*1433* この規則には **[フローティング IP (Direct Server Return)]** が使用されるため、この値は無視されます。 |

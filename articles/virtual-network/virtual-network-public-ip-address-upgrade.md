@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 9ea29c47349fd7ccee469188f8929a864cf7bbef
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 6cabc340c0be347165a3e506703a6277f7eb1cea
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905793"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503935"
 ---
 # <a name="upgrade-public-ip-addresses"></a>パブリック IP アドレスのアップグレード
 
@@ -32,9 +32,6 @@ Azure パブリック IP アドレスは、SKU (Basic または Standard) を使
 * 従来の Azure 予約済み IP を Azure Resource Manager の Basic SKU パブリック IP に移行する方法
 
 ## <a name="upgrade-public-ip-address-from-basic-to-standard-sku"></a>パブリック IP アドレスを Basic SKU から Standard SKU にアップグレードする
-
->[!NOTE]
->パブリック IP を Basic から Standard にアップグレードする機能は、すべてのリージョンで使用できるわけではありません。  詳細については、「[**制限事項**](#limitations)」を参照してください。
 
 パブリック IP をアップグレードする場合、その IP をリソースに関連付けることはできません (パブリック IP の関連付けを解除する方法の詳細については、[このページ](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address)をご覧ください)。
 
@@ -147,15 +144,6 @@ azure network reserved-ip commit-migration $name
 ---
 
 ## <a name="limitations"></a>制限事項
-
-* この機能は、現在、次のリージョンではご利用いただけません。<br>
-US Gov バージニア州<br>
-US DoD East<br>
-US DoD Central<br>
-中国東部<br>
-中国東部 2<br>
-中国北部<br>
-中国北部 2
 
 * Basic パブリック IP をアップグレードする場合、その IP を Azure リソースに関連付けることはできません。  パブリック IP の関連付けを解除する方法の詳細については、[このページ](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address)をご覧ください。  同様に、予約済み IP を移行する場合、その IP をクラウド サービスに関連付けることはできません。  予約済み IP の関連付けを解除する方法の詳細については、[このページ](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm)をご覧ください。  
 * Basic SKU から Standard SKU にアップグレードされたパブリック IP は、引き続き[可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones)を使用できないため、ゾーン冗長またはゾーン ベースの Azure リソースに関連付けることはできません。  これは、可用性ゾーンを提供するリージョンにのみ適用されます。

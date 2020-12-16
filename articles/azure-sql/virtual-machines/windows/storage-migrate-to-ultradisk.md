@@ -8,18 +8,19 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 12ba0900f2499965f7843672183310dfecfbab2b
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 42d7760d25f6ab591c19889eb2159711d6de1b07
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146673"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356754"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>ログ ディスクを Ultra Disk に移行する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad03942a2200c57475cf8a81d0fb08d475ec6964
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 57d74272d77183baa2284265aee298967f641250
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973220"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504884"
 ---
 # <a name="risky-ip-report-public-preview"></a>危険な IP のレポート (パブリック プレビュー)
 AD FS のお客様は、エンド ユーザーが Microsoft 365 などの SaaS アプリケーションにアクセスするための認証サービスを提供する目的で、パスワード認証エンドポイントをインターネットに公開する場合があります。 この場合、悪意のあるアクターが AD FS システムへのログインを試みて、エンド ユーザーのパスワードを推測し、アプリケーションのリソースにアクセスする可能性があります。 Windows Server 2012 R2 の AD FS 以降、これらの種類の攻撃を防止するためのエクストラネット アカウント ロックアウト機能が用意されています。 これよりも古いバージョンを使用している場合は、AD FS システムを Windows Server 2016 にアップグレードすることを強くお勧めします。 <br />
@@ -36,7 +36,10 @@ AD FS のお客様は、エンド ユーザーが Microsoft 365 などの SaaS �
 > [!NOTE]
 > このレポートを使用するには、AD FS 監査が有効になっている必要があります。 詳細については、「 [AD FS の監査の有効化](how-to-connect-health-agent-install.md#enable-auditing-for-ad-fs)」を参照してください。 <br />
 > プレビューにアクセスするには、全体管理者または[セキュリティ閲覧者](../../role-based-access-control/built-in-roles.md#security-reader)のアクセス許可が必要です。  
-> 
+>
+
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "*ホワイトリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 ## <a name="what-is-in-the-report"></a>レポートの内容
 失敗したサインイン アクティビティのクライアント IP アドレスは、Web アプリケーション プロキシ サーバーを介して集計されます。 危険な IP のレポートの各項目は、指定されたしきい値を超える、失敗した AD FS サインイン アクティビティに関する集計情報を示します。 次の情報が表示されます。![列ヘッダーが強調表示されている危険な IP のレポートを示すスクリーンショット。](./media/how-to-connect-health-adfs/report4a.png)

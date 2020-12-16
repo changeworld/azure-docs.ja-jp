@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 9e0c5ae119b734f91e8cfa1e7afb11a96e13035c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 81c959467c4bb3700120917cf150773fb18e866d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549074"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359831"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -41,7 +41,7 @@ Azure Cosmos DB は、Microsoft によってグローバルに配布されるマ
 
 ### <a name="is-azure-cosmos-db-hipaa-compliant"></a>Azure Cosmos DB は HIPAA に準拠していますか?
 
-はい。Azure Cosmos DB は HIPAA に準拠しています。 HIPAA は、個別に識別できる医療情報の使用、開示、および保護するための要件を確立しています。 詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA)を参照してください。
+はい。Azure Cosmos DB は HIPAA に準拠しています。 HIPAA は、個別に識別できる医療情報の使用、開示、および保護するための要件を確立しています。 詳細については、[Microsoft セキュリティ センター](/compliance/regulatory/offering-hipaa-hitech)を参照してください。
 
 ### <a name="what-are-the-storage-limits-of-azure-cosmos-db"></a>Azure Cosmos DB のストレージの制限を教えてください。
 
@@ -180,7 +180,7 @@ SQL API は、SQL 文法の `COUNT`、`MIN`、`MAX`、`AVG`、`SUM` の各集計
 
 SQL API は、HTTP エンティティ タグ (ETag) によるオプティミスティック コンカレンシー (OCC) をサポートしています。 すべての SQL API リソースに ETag があり、ドキュメントが更新されるたびにサーバーで ETag が設定されます。 すべての応答メッセージに ETag ヘッダーと現在の値が含まれます。 ETag を If-Match ヘッダーと共に使用することで、サーバーはリソースを更新する必要があるかどうかを判断できるようになります。 If-Match 値は、チェック対象の ETag 値です。 対象の ETag 値がサーバーの ETag 値と一致する場合に、リソースが更新されます。 ETag が最新ではない場合、サーバーは操作を拒否して "HTTP 412 Precondition failure" 応答コードを返します。 この場合、クライアントは、リソースを再フェッチしてリソースの最新の ETag 値を取得します。 また、ETag を If-None-Match ヘッダーと共に使用すると、リソースの再フェッチが必要かどうかを判断できます。
 
-.NET でオプティミスティック コンカレンシーを使用するには、 [AccessCondition](/dotnet/api/microsoft.azure.documents.client.accesscondition) クラスを使用します。 .NET サンプルについては、GitHub にある DocumentManagement サンプルの [Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) を参照してください。
+.NET でオプティミスティック コンカレンシーを使用するには、 [AccessCondition](/dotnet/api/microsoft.azure.documents.client.accesscondition) クラスを使用します。 .NET サンプルについては、GitHub にある DocumentManagement サンプルの [Program.cs](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/DocumentManagement/Program.cs) を参照してください。
 
 ### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>どのようにして SQL API のトランザクションを実行しますか?
 

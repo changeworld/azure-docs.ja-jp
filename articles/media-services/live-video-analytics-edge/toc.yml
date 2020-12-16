@@ -66,6 +66,7 @@
     - name: メディア グラフ
       href: media-graph-concept.md
     - name: メディア グラフ拡張機能
+      displayName: AI
       href: media-graph-extension-concept.md
     - name: ビデオ記録
       href: video-recording-concept.md
@@ -99,6 +100,10 @@
       href: configure-signal-gate-how-to.md
     - name: トラブルシューティング
       href: troubleshoot-how-to.md
+    - name: アップグレード中
+      href: upgrading-lva-module.md
+    - name: gRPC 推論サーバーの開発とデプロイ
+      href: develop-deploy-grpc-inference-srv-how-to.md
 - name: リファレンス
   items:
     - name: HTTP 拡張プロトコル

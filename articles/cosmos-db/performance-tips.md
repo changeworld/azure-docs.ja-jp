@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
-ms.custom: devx-track-dotnet, contperfq2
-ms.openlocfilehash: f2da2047469f342814ff349cfa059ed61e3adc25
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.custom: devx-track-dotnet, contperf-fy21q2
+ms.openlocfilehash: 47e20e89c8eaef59b9acd6cf7e31244afd4bcf60
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339684"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359049"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB と .NET SDK v2 のパフォーマンスに関するヒント
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -133,7 +133,7 @@ Azure Cosmos DB SDK は、最適なパフォーマンスを提供するために
 
 **パーティション分割コレクションに対する並列クエリを調整する**
 
-SQL .NET SDK 1.9.0 以降では、並列クエリがサポートされています。この機能を使用すると、パーティション分割コレクションにクエリを並列的に実行できます。 詳細については、SDK の操作に関連した[コード サンプル](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs)を参照してください。 並列クエリは、シリアル クエリよりもクエリの待機時間とスループットを向上させるように設計されています。 並列クエリには、要件に合わせてチューニングできる 2 つのパラメーターがあります。 
+SQL .NET SDK 1.9.0 以降では、並列クエリがサポートされています。この機能を使用すると、パーティション分割コレクションにクエリを並列的に実行できます。 詳細については、SDK の操作に関連した[コード サンプル](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/Queries/Program.cs)を参照してください。 並列クエリは、シリアル クエリよりもクエリの待機時間とスループットを向上させるように設計されています。 並列クエリには、要件に合わせてチューニングできる 2 つのパラメーターがあります。 
 - `MaxDegreeOfParallelism` では、同時にクエリを実行できるパーティションの最大数を制御します。 
 - `MaxBufferedItemCount` では、プリフェッチされる結果の数を制御します。
 

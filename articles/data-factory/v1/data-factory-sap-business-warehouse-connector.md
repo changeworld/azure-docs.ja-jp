@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fb91a09ed31658c2d547a7b46cf2f986bfbd0e50
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019584"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508290"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用した SAP Business Warehouse からのデータ移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -277,8 +277,6 @@ external プロパティを true に設定すると、このテーブルが Data
     }
 }
 ```
-
-
 
 ### <a name="type-mapping-for-sap-bw"></a>SAP BW の型マッピング
 [データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。

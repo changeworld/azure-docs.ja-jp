@@ -3,12 +3,12 @@ title: Apache Kafka MirrorMaker を使用する - Azure Event Hubs | Microsoft D
 description: この記事では、Kafka MirrorMaker を使用して Azure Event Hubs で Kafka クラスターをミラーリングする方法について説明します。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: d1ec20a32ef27856483492212608e20e82725f58
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f2e7ac6951c84adfd8fc313995724021640ee0ab
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369524"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503201"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Apache Kafka 用の Event Hubs で Kafka MirrorMaker を使用する
 
@@ -19,6 +19,8 @@ ms.locfileid: "92369524"
 > [!NOTE]
 > このサンプルは [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker) で入手できます。
 
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "*ホワイトリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 6c5ef4f0ee0d68e2eae755f000423db4620b834d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: a9bea0664f99a21ac734de666c802e9875ff00b5
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341384"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359325"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Key Vault を使用して Azure Cosmos キーをセキュリティ保護する 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -59,9 +59,9 @@ Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るた�
 
 ## <a name="create-an-azure-web-application"></a>Azure Web アプリケーションの作成
 
-1. Azure Web アプリケーションを作成します。または、[GitHub リポジトリ](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/Demo/keyvaultdemo)からアプリケーションをダウンロードできます。 これは単純な MVC アプリケーションです。  
+1. Azure Web アプリケーションを作成します。または、[GitHub リポジトリ](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/Demo/keyvaultdemo)からアプリケーションをダウンロードできます。 これは単純な MVC アプリケーションです。  
 
-2. ダウンロードしたアプリケーションを解凍し、 **HomeController.cs** ファイルを開きます。 次の行のシークレット ID を更新します。
+2. ダウンロードしたアプリケーションを解凍し、**HomeController.cs** ファイルを開きます。 次の行のシークレット ID を更新します。
 
    `var secret = await keyVaultClient.GetSecretAsync("<Your Key Vault’s secret identifier>")`
 
@@ -90,7 +90,7 @@ Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るた�
 
 :::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="シークレットと一緒にデプロイされたアプリケーション":::
  
-同様に、Key Vault にアクセスするユーザーを追加できます。 自分自身を Key Vaultに追加する必要があります。これには、 **アクセスポリシー** をクリックしてから、Visual Studio でアプリケーションを実行するために必要なすべてのアクセス許可を付与します。 このアプリケーションをデスクトップから実行するとき、自分の ID が使用されます。
+同様に、Key Vault にアクセスするユーザーを追加できます。 自分自身を Key Vaultに追加する必要があります。これには、**アクセスポリシー** をクリックしてから、Visual Studio でアプリケーションを実行するために必要なすべてのアクセス許可を付与します。 このアプリケーションをデスクトップから実行するとき、自分の ID が使用されます。
 
 ## <a name="next-steps"></a>次のステップ
 

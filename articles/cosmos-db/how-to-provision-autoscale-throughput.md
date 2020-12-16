@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/15/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 615ce7da3ec480b766ceaeb307c50f7cb759fd4a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 52904296df77d9097a6180345388e8e702e2bca0
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100118"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357628"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>Azure Cosmos DB - SQL API のデータベースまたはコンテナーで、自動スケーリングのスループットをプロビジョニングする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "93100118"
 
 1. Azure Cosmos DB アカウントに移動して、 **[データ エクスプローラー]** タブを開きます。
 
-1. **[新しいコンテナー]** を選択します。 データベース、コンテナー、およびパーティション キーの名前を入力します。 **[スループット]** で **[自動スケーリング]** オプションを選択し、データベースまたはコンテナーをスケーリングする、 [最大スループット (RU/秒)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) を設定します。
+1. **[新しいコンテナー]** を選択します。 データベース、コンテナー、およびパーティション キーの名前を入力します。 **[スループット]** で **[自動スケーリング]** オプションを選択し、データベースまたはコンテナーをスケーリングする、[最大スループット (RU/秒)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) を設定します。
 
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="コンテナーの作成と、自動スケーリングによってプロビジョニングされたスループットの構成":::
 
@@ -128,7 +128,7 @@ await container.ReplaceThroughputAsync(ThroughputProperties.CreateAutoscaleThrou
 // Create instance of CosmosClient
 CosmosAsyncClient client = new CosmosClientBuilder()
     .setEndpoint(HOST)
-    .setKey(MASTER)
+    .setKey(PRIMARYKEY)
     .setConnectionPolicy(CONNECTIONPOLICY)
     .buildAsyncClient();
 
@@ -145,7 +145,7 @@ CosmosAsyncDatabase database = client.createDatabase(databaseName, autoscaleThro
 // Create instance of CosmosClient
 CosmosClient client = new CosmosClientBuilder()
     .setEndpoint(HOST)
-    .setKey(MASTER)
+    .setKey(PRIMARYKEY)
     .setConnectionPolicy(CONNECTIONPOLICY)
     .buildClient();
 

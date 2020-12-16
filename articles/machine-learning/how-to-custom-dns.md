@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: c67dcbbe2ca6dea533260f59831556c4338374ba
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 07ff656c5eacbbcdc16c6c7cf098478ca6baf745
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012995"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509293"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>カスタム DNS サーバーでワークスペースを使用する方法
 
@@ -41,6 +41,7 @@ ms.locfileid: "95012995"
 
 次のリストには、ワークスペースとプライベート エンドポイントで使用される完全修飾ドメイン名 (FQDN) が含まれています。
 
+* `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
@@ -90,6 +91,7 @@ $workspaceDns.CustomDnsConfigs | format-table
 > [!IMPORTANT]
 > 一部の FQDN は、プライベート エンドポイントによってリストに表示されませんが、ワークスペースで必要です。 これらの FQDN は、次の表に示すように、DNS サーバーにも追加する必要があります。
 >
+> * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 > * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.aether.ms`

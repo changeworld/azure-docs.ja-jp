@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: 38c006bd1cda1494b284f742459aaf539ed4a2d1
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b4f828c675df9625d6d4889dbc31bbc4b9f887ed
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539709"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97386716"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL の制限事項
 以降のセクションでは、容量、ストレージ エンジンのサポート、権限のサポート、データ操作ステートメントのサポート、およびデータベース サービスの機能に関する制限事項について説明します。 MySQL データベース エンジンに適用できる[一般的な制限事項](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)も確認してください。
@@ -55,6 +55,7 @@ MySQL サービスでは、基になるファイル システムに直接アク�
 - DEFINER: 作成するには SUPER 権限が必要であり、制限されています。 バックアップを使用してデータをインポートする場合、mysqldump の実行時に `CREATE DEFINER` コマンドを手動で、または `--skip-definer` コマンドを使用して削除します。
 - システム データベース:[mysql システム データベース](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)は読み取り専用であり、さまざまな PaaS 機能をサポートするために使用されます。 `mysql` システム データベースを変更することはできません。
 - `SELECT ... INTO OUTFILE`:サービスではサポートされていません。
+- `LOAD_FILE(file_name)`:サービスではサポートされていません。
 
 ### <a name="supported"></a>サポートされています
 - `LOAD DATA INFILE` はサポートされていますが、`[LOCAL]` パラメーターで UNC パス (SMB を介してマウントされた Azure ストレージ) を指定する必要があります。

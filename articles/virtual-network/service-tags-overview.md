@@ -7,18 +7,18 @@ documentationcenter: na
 author: allegradomel
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: d99ed9304612d5c1d3cbdc56a76cee751f2a4d3f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d01136ea4377bd7d35a2e11b4bcf654bcf677fbe
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017935"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401561"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
@@ -43,7 +43,7 @@ ms.locfileid: "96017935"
 既定では、サービス タグにはクラウド全体の範囲が反映されます。 サービス タグによっては、対応する IP 範囲を指定されたリージョンに制限することで、より詳細な制御を実現することもできます。 たとえば、サービス タグ **Storage** はクラウド全体の Azure Storage を表していますが、**Storage.WestUS** を使用すると、WestUS リージョンのストレージ IP アドレスのみに範囲が限定されます。 次の表に、各サービス タグでそのようなリージョン スコープがサポートされるかどうかを示します。  
 
 | タグ | 目的 | 受信または送信で使用できるか | リージョン別か | Azure Firewall と共に使用できるか |
-| --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| --- | -------- |:---:|:---:|:---:|
 | **ActionGroup** | アクション グループ。 | 受信 | いいえ | いいえ |
 | **ApiManagement** | Azure API Management 専用デプロイのための管理トラフィック。 <br/><br/>*注:* このタグは、リージョンごとのコントロール プレーンの Azure API Management サービス エンドポイントを表します。 これにより、顧客は API Management サービス上で構成された API、操作、ポリシー、NamedValues に対する管理操作を実行できるようになります。  | 受信 | はい | はい |
 | **ApplicationInsightsAvailability** | Application Insights の可用性。 | 受信 | いいえ | いいえ |

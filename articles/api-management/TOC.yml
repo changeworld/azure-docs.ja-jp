@@ -42,6 +42,8 @@
       href: api-management-get-started-publish-versions.md
     - name: 9 - 開発者ポータルのカスタマイズ
       href: api-management-howto-developer-portal-customize.md
+    - name: 10 - Visual Studio Code で API を管理する
+      href: visual-studio-code-tutorial.md
 - name: サンプル
   items:
     - name: ポリシー
@@ -216,7 +218,7 @@
           href: api-management-sample-flexible-throttling.md
         - name: 外部サービスの使用
           href: api-management-sample-send-request.md
-        - name: プロパティを使用してシークレットを管理する
+        - name: 名前付きの値を使用してシークレットを管理する
           href: api-management-howto-properties.md
         - name: アクセス制限ポリシー
           href: api-management-access-restriction-policies.md

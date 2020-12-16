@@ -8,12 +8,12 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: 73d6fe0233eccea9ebf1d82beb509c56fb45f4da
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e84b80233d87ac4ae5e2281b506e225c4ab1bd9d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339514"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357604"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>CouchBase から Azure Cosmos DB SQL API に移行する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,7 +39,7 @@ Azure Cosmos DB は、グローバルに分散された、スケーラブルな�
 
 * Azure Cosmos DB では、コレクション名が既に存在しているため、最上位の階層でコレクションを示す必要はありません。 この機能により、JSON 構造が非常に単純になります。 Couchbase と Azure Cosmos DB 間のデータ モデルの違いを示す例を次に示します。
 
-   **Couchbase** :ドキュメント ID =  "99FF4444"
+   **Couchbase**:ドキュメント ID =  "99FF4444"
 
     ```json
     {
@@ -69,7 +69,7 @@ Azure Cosmos DB は、グローバルに分散された、スケーラブルな�
     }
    ```
 
-   **Azure Cosmos DB** :次に示すドキュメント内の "ID" を参照してください
+   **Azure Cosmos DB**:次に示すドキュメント内の "ID" を参照してください
 
     ```json
     {
@@ -164,7 +164,7 @@ CRUD 操作のコード スニペットを次に示します。
 
 ### <a name="insert-and-update-operations"></a>挿入と更新の操作
 
-ここで、 *_repo* はレポジトリのオブジェクトで、 *doc* は POJO クラスのオブジェクトです。 `.save` を使用して挿入または upsert できます (指定された ID を持つドキュメントが見つかった場合)。 次のコード スニペットは、doc オブジェクトを挿入または更新する方法を示しています。
+ここで、 *_repo* はレポジトリのオブジェクトで、*doc* は POJO クラスのオブジェクトです。 `.save` を使用して挿入または upsert できます (指定された ID を持つドキュメントが見つかった場合)。 次のコード スニペットは、doc オブジェクトを挿入または更新する方法を示しています。
 
 ```_repo.save(doc);```
 
@@ -181,7 +181,7 @@ CRUD 操作のコード スニペットを次に示します。
 * ```_repo.findByIdAndName(objDoc.getId(),objDoc.getName());```
 * ```_repo.findAllByStatus(objDoc.getStatus());```
 
-これで、Azure Cosmos DB でアプリケーションを使用できるようになりました。 このドキュメントで説明している例の完全なコード サンプルは、[CouchbaseToCosmosDB-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/SpringCosmos) GitHub リポジトリにあります。
+これで、Azure Cosmos DB でアプリケーションを使用できるようになりました。 このドキュメントで説明している例の完全なコード サンプルは、[CouchbaseToCosmosDB-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/SpringCosmos) GitHub リポジトリにあります。
 
 ## <a name="couchbase-as-a-document-repository--using-n1ql-queries"></a>ドキュメント リポジトリとしての Couchbase、および N1QL クエリの使用
 
@@ -222,9 +222,9 @@ N1QL クエリに次の変更点があることがわかります。
     
    if(client==null)
     client= CosmosClient.builder()
-        .endpoint(Host)//(Host, MasterKey, dbName, collName).Builder()
+        .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
         .connectionPolicy(cp)
-        .key(MasterKey)
+        .key(PrimaryKey)
         .consistencyLevel(ConsistencyLevel.EVENTUAL)
         .build();   
    
@@ -305,7 +305,7 @@ CosmosItem objItem= container.getItem(doc.Id, doc.Tenant);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-次に、Mono をサブスクライブします。挿入操作の Mono サブスクリプション スニペットを参照してください。 完全なコード サンプルは、[CouchbaseToCosmosDB-AsyncInSpring](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncInSpring) GitHub リポジトリにあります。
+次に、Mono をサブスクライブします。挿入操作の Mono サブスクリプション スニペットを参照してください。 完全なコード サンプルは、[CouchbaseToCosmosDB-AsyncInSpring](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/AsyncInSpring) GitHub リポジトリにあります。
 
 ## <a name="couchbase-as-a-keyvalue-pair"></a>キー/値ペアとしての Couchbase
 
@@ -351,9 +351,9 @@ Mono<CosmosItemResponse> objMono = objItem.delete(ro);
    
    if(client==null)
     client= CosmosClient.builder()
-        .endpoint(Host)//(Host, MasterKey, dbName, collName).Builder()
+        .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
         .connectionPolicy(cp)
-        .key(MasterKey)
+        .key(PrimaryKey)
         .consistencyLevel(ConsistencyLevel.EVENTUAL)
         .build();
     
@@ -427,7 +427,7 @@ CosmosItem objItem= container.getItem(id, id);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-次に、Mono をサブスクライブします。挿入操作の Mono サブスクリプション スニペットを参照してください。 完全なコード サンプルは、[CouchbaseToCosmosDB-AsyncKeyValue](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncKeyValue) GitHub リポジトリにあります。
+次に、Mono をサブスクライブします。挿入操作の Mono サブスクリプション スニペットを参照してください。 完全なコード サンプルは、[CouchbaseToCosmosDB-AsyncKeyValue](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/AsyncKeyValue) GitHub リポジトリにあります。
 
 ## <a name="data-migration"></a>データ移行
 

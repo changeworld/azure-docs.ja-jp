@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 481b801d481f32ef84279be2d8bd6089670a01b1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c65ef2eb25f330f645048cdc73371d98d8c2ce91
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496521"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508474"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Azure Machine Learning スタジオ (クラシック) と Azure Data Factory を使用して予測パイプラインを作成する
 
@@ -35,7 +35,6 @@ ms.locfileid: "96496521"
 ## <a name="introduction"></a>はじめに
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[Data Factory での Machine Learning を使用したデータ変換](../transform-data-using-machine-learning.md)に関するページを参照してください。
-
 
 ### <a name="azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック)
 [Azure Machine Learning Studio (classic)](https://azure.microsoft.com/documentation/services/machine-learning/) では、予測分析ソリューションをビルド、テスト、デプロイできます。 大まかに次の 3 つの手順で行われます。
@@ -86,7 +85,7 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
 >
 >
 
-```JSON
+```json
 {
   "name": "PredictivePipeline",
   "properties": {
@@ -127,6 +126,7 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
   }
 }
 ```
+
 > [!NOTE]
 > AzureMLBatchExecution アクティビティの入力および出力だけを、パラメーターとして Web サービスに渡すことができます。 たとえば、上の JSON スニペットでは、DecisionTreeInputBlob は AzureMLBatchExecution アクティビティへの入力であり、webServiceInput パラメーターを使用して Web サービスに入力として渡されます。
 >
@@ -139,115 +139,119 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
 
 1. **Azure Storage** 用の **リンクされたサービス** を作成します。 入力ファイルと出力ファイルが異なるストレージ アカウントにある場合は、リンクされたサービスが 2 つ必要です。 JSON の例を次に示します。
 
-    ```JSON
-    {
-      "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=[acctName];AccountKey=[acctKey]"
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "StorageLinkedService",
+     "properties": {
+       "type": "AzureStorage",
+       "typeProperties": {
+         "connectionString": "DefaultEndpointsProtocol=https;AccountName= [acctName];AccountKey=[acctKey]"
+       }
+     }
+   }
+   ```
+
 2. **入力** 用の Azure Data Factory **データセット** を作成します。 他の Data Factory データセットとは異なり、これらのデータセットは **folderPath** 値と **fileName** 値を含む必要があります。 パーティション分割を使用すると、各バッ チ実行 (各データ スライス) で一意の入力ファイルと出力ファイルを処理または生成できます。 入力を CSV ファイル形式に変換し、これを各スライスのストレージ アカウントに配置するため、いくつかのアップストリーム アクティビティを含める場合があります。 その場合は、次の例に示す **external** および **externalData** の設定を含めないと、DecisionTreeInputBlob は別のアクティビティの出力データセットになります。
 
-    ```JSON
-    {
-      "name": "DecisionTreeInputBlob",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "azuremltesting/input",
-          "fileName": "in.csv",
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ","
-          }
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Day",
-          "interval": 1
-        },
-        "policy": {
-          "externalData": {
-            "retryInterval": "00:01:00",
-            "retryTimeout": "00:10:00",
-            "maximumRetry": 3
-          }
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "DecisionTreeInputBlob",
+     "properties": {
+       "type": "AzureBlob",
+       "linkedServiceName": "StorageLinkedService",
+       "typeProperties": {
+         "folderPath": "azuremltesting/input",
+         "fileName": "in.csv",
+         "format": {
+           "type": "TextFormat",
+           "columnDelimiter": ","
+         }
+       },
+       "external": true,
+       "availability": {
+         "frequency": "Day",
+         "interval": 1
+       },
+       "policy": {
+         "externalData": {
+           "retryInterval": "00:01:00",
+           "retryTimeout": "00:10:00",
+           "maximumRetry": 3
+         }
+       }
+     }
+   }
+   ```
 
-    入力 csv ファイルには列ヘッダー行がある必要があります。 **コピー アクティビティ** を使用している csv を BLOB ストレージに作成または移動する場合、シンクの **blobWriterAddHeader** プロパティを **true** に設定する必要があります。 次に例を示します。
+   入力 csv ファイルには列ヘッダー行がある必要があります。 **コピー アクティビティ** を使用している csv を BLOB ストレージに作成または移動する場合、シンクの **blobWriterAddHeader** プロパティを **true** に設定する必要があります。 次に例を示します。
 
-    ```JSON
-    sink:
-    {
-        "type": "BlobSink",
-        "blobWriterAddHeader": true
-    }
-    ```
+   ```json
+   sink:
+   {
+     "type": "BlobSink",
+     "blobWriterAddHeader": true
+     }
+   ```
 
-    csv ファイルにヘッダー行がない場合、次のエラーが表示される場合があります:**アクティビティ エラー:文字列の読み取りエラー。予期しないトークン:StartObject。パス ''、行 1、位置 1**。
+   csv ファイルにヘッダー行がない場合、次のエラーが表示される場合があります:**アクティビティ エラー:文字列の読み取りエラー。予期しないトークン:StartObject。パス ''、行 1、位置 1**。
+
 3. **出力** 用の Azure Data Factory **データセット** を作成します。 この例では、パーティション分割を使用して各スライスの実行ごとに一意の出力パスを作成します。 パーティションがない場合、アクティビティはファイルを上書きします。
 
-    ```JSON
-    {
-      "name": "DecisionTreeResultBlob",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "azuremltesting/scored/{folderpart}/",
-          "fileName": "{filepart}result.csv",
-          "partitionedBy": [
-            {
-              "name": "folderpart",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "yyyyMMdd"
-              }
-            },
-            {
-              "name": "filepart",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "HHmmss"
-              }
-            }
-          ],
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ","
-          }
-        },
-        "availability": {
-          "frequency": "Day",
-          "interval": 15
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "DecisionTreeResultBlob",
+     "properties": {
+       "type": "AzureBlob",
+       "linkedServiceName": "StorageLinkedService",
+       "typeProperties": {
+         "folderPath": "azuremltesting/scored/{folderpart}/",
+         "fileName": "{filepart}result.csv",
+         "partitionedBy": [
+           {
+             "name": "folderpart",
+             "value": {
+               "type": "DateTime",
+               "date": "SliceStart",
+               "format": "yyyyMMdd"
+             }
+           },
+           {
+             "name": "filepart",
+             "value": {
+               "type": "DateTime",
+               "date": "SliceStart",
+               "format": "HHmmss"
+             }
+           }
+         ],
+         "format": {
+           "type": "TextFormat",
+           "columnDelimiter": ","
+         }
+       },
+       "availability": {
+         "frequency": "Day",
+         "interval": 15
+       }
+     }
+   }
+   ```
+
 4. 次の型の **リンクされたサービス** を作成します:**AzureMLLinkedService**。API キーとモデルのバッチ実行 URL を入力します。
 
-    ```JSON
-    {
-      "name": "MyAzureMLLinkedService",
-      "properties": {
-        "type": "AzureML",
-        "typeProperties": {
-          "mlEndpoint": "https://[batch execution endpoint]/jobs",
-          "apiKey": "[apikey]"
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "MyAzureMLLinkedService",
+     "properties": {
+       "type": "AzureML",
+       "typeProperties": {
+         "mlEndpoint": "https://[batch execution endpoint]/jobs",
+         "apiKey": "[apikey]"
+       }
+     }
+   }
+   ```
+
 5. 最後に、 **AzureMLBatchExecution** アクティビティを含むパイプラインを作成します。 実行時には、パイプラインは次の手順を実行します。
 
    1. 入力データセットから入力ファイルの場所を取得する。
@@ -259,45 +263,45 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
       >
       >
 
-      ```JSON
+      ```json
       {
         "name": "PredictivePipeline",
         "properties": {
-            "description": "use AzureML model",
-            "activities": [
-            {
-                "name": "MLActivity",
-                "type": "AzureMLBatchExecution",
-                "description": "prediction analysis on batch input",
-                "inputs": [
+          "description": "use AzureML model",
+          "activities": [
+              {
+              "name": "MLActivity",
+              "type": "AzureMLBatchExecution",
+              "description": "prediction analysis on batch input",
+              "inputs": [
                 {
-                    "name": "DecisionTreeInputBlob"
+                  "name": "DecisionTreeInputBlob"
                 }
                 ],
-                "outputs": [
+              "outputs": [
                 {
-                    "name": "DecisionTreeResultBlob"
+                  "name": "DecisionTreeResultBlob"
                 }
                 ],
-                "linkedServiceName": "MyAzureMLLinkedService",
-                "typeProperties":
+              "linkedServiceName": "MyAzureMLLinkedService",
+              "typeProperties":
                 {
-                    "webServiceInput": "DecisionTreeInputBlob",
-                    "webServiceOutputs": {
-                        "output1": "DecisionTreeResultBlob"
-                    }
+                "webServiceInput": "DecisionTreeInputBlob",
+                "webServiceOutputs": {
+                  "output1": "DecisionTreeResultBlob"
+                }
                 },
-                "policy": {
-                    "concurrency": 3,
-                    "executionPriorityOrder": "NewestFirst",
-                    "retry": 1,
-                    "timeout": "02:00:00"
-                }
+              "policy": {
+                "concurrency": 3,
+                "executionPriorityOrder": "NewestFirst",
+                "retry": 1,
+                "timeout": "02:00:00"
+              }
             }
-            ],
-            "start": "2016-02-13T00:00:00Z",
-            "end": "2016-02-14T00:00:00Z"
-        }
+          ],
+          "start": "2016-02-13T00:00:00Z",
+          "end": "2016-02-14T00:00:00Z"
+          }
       }
       ```
 
@@ -320,7 +324,7 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
 
 Web サービス パラメーターを使用するシナリオを見てみましょう。 スタジオ (クラシック) でサポートされるいずれかのデータ ソース (例:Azure SQL Database) のデータをリーダー モジュールで読み取る Azure Machine Learning Web サービスをデプロイしました。 バッチ実行が実行された後、ライター モジュールを使用して結果が書き込まれます (Azure SQL Database)。  Web サービスの入力と出力は実験では定義されていません。 この場合は、リーダー/ライター モジュールに関連する Web サービス パラメーターを設定することをお勧めします。 この設定により、AzureMLBatchExecution アクティビティを使用するときにリーダー/ライター モジュールを構成できます。 Web サービスのパラメーターは、次に示すように、アクティビティの JSON の **globalParameters** セクションで指定します。
 
-```JSON
+```json
 "typeProperties": {
     "globalParameters": {
         "Param 1": "Value 1",
@@ -331,7 +335,7 @@ Web サービス パラメーターを使用するシナリオを見てみまし
 
 また、次の例に示すように、 [Data Factory 関数](data-factory-functions-variables.md) を使用して、Web サービス パラメーターの値を渡すこともできます。
 
-```JSON
+```json
 "typeProperties": {
     "globalParameters": {
        "Database query": "$$Text.Format('SELECT * FROM myTable WHERE timeColumn = \\'{0:yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(WindowStart, 0))"

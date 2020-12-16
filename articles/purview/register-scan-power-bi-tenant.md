@@ -7,19 +7,19 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: ce23119e568347fff2ad270cfea7f8b563cae529
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 1f08bfd6b7c0439dd08a3091b5ea927781af9b84
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904994"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387583"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI テナントの登録とスキャン (プレビュー)
 
 この記事では、Azure Purview portal を使用して Power BI テナントの登録とスキャンを行う方法について説明します。
 
 > [!Note]
-> Purview インスタンスと Power BI テナントが同じ Azure テナントにある場合、Power BI テナントのスキャンの設定にはマネージド ID (MSI) 認証のみが使用できます。 Purview インスタンスと Power BI テナントが異なる Azure テナントにある場合は、委任された認証を使用して認証を行い、PowerShell を使用してスキャンを設定する必要があります。 [PowerShell を使用した Power BI の登録とスキャン](powershell-register-scan-power-bi.md)に関する記事を参照してください。
+> Purview インスタンスと Power BI テナントが同じ Azure テナントにある場合、Power BI テナントのスキャンの設定にはマネージド ID (MSI) 認証のみが使用できます。 
 
 ## <a name="create-a-security-group-for-permissions"></a>アクセス許可のためのセキュリティ グループの作成
 

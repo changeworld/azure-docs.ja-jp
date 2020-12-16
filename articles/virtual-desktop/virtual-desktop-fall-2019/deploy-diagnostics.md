@@ -3,25 +3,20 @@ title: Windows Virtual Desktop (クラシック) の診断ツールをデプロ�
 description: Windows Virtual Desktop (クラシック) の診断 UX ツールをデプロイする方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 729e22f8ad94d2119d0f3f3e9fc474cc83a493a8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 9672d18fe99d8baae3c73fa3782531eb84114713
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023073"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97515636"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Windows Virtual Desktop (クラシック) の診断ツールをデプロイする
 
 >[!IMPORTANT]
 >このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトがサポートされていない Windows Virtual Desktop (クラシック) に適用されます。
-
->[!IMPORTANT]
->サービスの需要が増加したため、2020 年 3 月 16 日より、ユーザーエクスペリエンスに影響を与える診断クエリを一時的に無効にしました。 このツールはこれらのクエリに依存して機能するため、動作が停止します。 診断クエリを再度利用できるようになったときに、この記事を更新します。
->
->それまでは、継続的な監視のために [Log Analytics を使用](diagnostics-log-analytics-2019.md)することを強くお勧めします。
 
 Windows Virtual Desktop の診断ツールでは、次のことを行うことができます。
 
@@ -43,8 +38,8 @@ Windows Virtual Desktop の診断ツールでは、次のことを行うこと�
 
 また、開始する前に、次の 2 つの PowerShell モジュールもインストールする必要があります。
 
-- [Azure PowerShell モジュール](/powershell/azure/install-az-ps?view=azps-2.4.0/)
-- [Azure AD モジュール](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/)
+- [Azure PowerShell モジュール](/powershell/azure/install-az-ps?view=azps-2.4.0/&preserve-view=true)
+- [Azure AD モジュール](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/&preserve-view=true)
 
 サインインするときに、サブスクリプション ID が準備できていることを確認します。
 

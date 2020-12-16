@@ -8,17 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 5714a2fd79d01f4cbc445c1ec1a726209ab6d427
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0f194101720481f71434709c467d0e3130a0f1f9
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124936"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359457"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>ワークグループ可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -79,7 +80,7 @@ Active Directory がないため、Windows 接続を認証する方法はあり�
 
 1. お使いの仮想マシンに RDP 接続します。 
 1. **エクスプローラー** を使用して、`c:\windows\system32\drivers\etc` に移動します。 
-1. **hosts** ファイルを右クリックし、 **メモ帳** (またはその他のテキスト エディター) を使用してファイルを開きます。
+1. **hosts** ファイルを右クリックし、**メモ帳** (またはその他のテキスト エディター) を使用してファイルを開きます。
 1. ファイルの末尾に、次のように、各ノード、可用性グループ、およびリスナーのエントリを `IP Address, DNS Suffix #comment` の形式で追加します。 
 
    ```
@@ -115,7 +116,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 
 クラスターが作成されたら、静的なクラスター IP アドレスを割り当てます。 これを行うには、次のステップに従います。
 
-1. いずれかのノードで、 **フェールオーバー クラスター マネージャー** を開いてクラスターを選択し、 **[クラスター コア リソース]** の下にある **[名前: \<ClusterNam>]** を右クリックしてから、 **[プロパティ]** を選択します。 
+1. いずれかのノードで、**フェールオーバー クラスター マネージャー** を開いてクラスターを選択し、 **[クラスター コア リソース]** の下にある **[名前: \<ClusterNam>]** を右クリックしてから、 **[プロパティ]** を選択します。 
 
    ![クラスター名のプロパティの起動](./media/availability-group-clusterless-workgroup-configure/5-launch-cluster-name-properties.png)
 

@@ -7,6 +7,7 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: abfcd6a13bc5e8ad262fe47111eb680ad00a34df
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 07ce01304f27ded4e0a566777fcf7027f7a15e4b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168738"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359440"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>可用性グループの DNN リスナーの構成
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -136,7 +137,7 @@ SELECT * FROM SYS.AVAILABILITY_GROUP_LISTENERS
 
 `is_distributed_network_name` の値 `1` は、リスナーが分散ネットワーク名 (DNN) リスナーであることを示します。 
 
-:::image type="content" source="media/availability-group-distributed-network-name-dnn-listener-configure/dnn-listener-tsql.png" alt-text="SQL Server Management Studio (SSMS) の [可用性グループ リスナー] で DNN リスナーを表示する":::
+:::image type="content" source="media/availability-group-distributed-network-name-dnn-listener-configure/dnn-listener-tsql.png" alt-text="sys.availability_group_listeners を使用して、is_distributed_network_name の値が 1 である DNN リスナーを識別する":::
 
 
 ## <a name="update-connection-string"></a>接続文字列を更新する
@@ -151,7 +152,7 @@ SELECT * FROM SYS.AVAILABILITY_GROUP_LISTENERS
 
 1. [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) を使用して、DNN リスナーまたはいずれかのレプリカに接続します。 
 1. **オブジェクト エクスプローラー** で **[Always On 可用性グループ]** を展開します。 
-1. 可用性グループを右クリックし、 **[フェールオーバー]** を選択して、 **フェールオーバー ウィザード** を開きます。 
+1. 可用性グループを右クリックし、 **[フェールオーバー]** を選択して、**フェールオーバー ウィザード** を開きます。 
 1. プロンプトに従ってフェールオーバー ターゲットを選択し、可用性グループをセカンダリ レプリカにフェールオーバーします。 
 1. 新しいプライマリ レプリカで、データベースが同期状態であることを確認します。 
 1. (省略可能) 元のプライマリ レプリカまたは別のセカンダ リレプリカにフェールバックします。 

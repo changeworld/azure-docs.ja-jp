@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cd4c70354920655507f987f43a542e4b474803e1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e4463b932c95e224981b74093effbb355de24f6b
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170941"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509820"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Azure AD B2C に使用可能な Microsoft Graph 操作
 
@@ -107,7 +107,7 @@ Microsoft Graph API のポリシー キーの最上位レベルのリソース�
 
 - [拡張機能プロパティの一覧表示](/graph/api/application-list-extensionproperty)
 
-Azure AD B2C で提供されているディレクトリには、ユーザーごとに 100 個のカスタム属性を保持できます。 ユーザーフローの場合、これらの拡張機能プロパティは、[Azure portal を使用して管理します](custom-policy-custom-attributes.md)。 カスタム ポリシーの場合、ポリシーが拡張機能プロパティに値を初めて書き込むときに、Azure AD B2C によってプロパティが作成されます。
+Azure AD B2C で提供されているディレクトリには、ユーザーごとに 100 個のカスタム属性を保持できます。 ユーザーフローの場合、これらの拡張機能プロパティは、[Azure portal を使用して管理します](user-flow-custom-attributes.md)。 カスタム ポリシーの場合、ポリシーが拡張機能プロパティに値を初めて書き込むときに、Azure AD B2C によってプロパティが作成されます。
 
 ## <a name="audit-logs"></a>監査ログ
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: f27e4f9f8e9f027233db89838614b523c5d0fe1f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: cb0dd8eb879c5511da3c79a3dee6a715fb1275e4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341775"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358645"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB のパフォーマンスとスケールのテスト
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,7 +27,7 @@ Azure Cosmos DB のワークロードに対するパフォーマンス テスト
 * Azure Cosmos DB のパフォーマンス テストに使用するサンプル .NET クライアント アプリケーションはどこから入手すればよいか。 
 * 開発中のクライアント アプリケーションで Azure Cosmos DB から高水準のスループットを引き出すにはどうすればよいか。
 
-最初に、[Azure Cosmos DB パフォーマンス テスト サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードしてコードを入手してください。 
+最初に、[Azure Cosmos DB パフォーマンス テスト サンプル](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードしてコードを入手してください。 
 
 > [!NOTE]
 > このアプリケーションの目的は、クライアント マシンの数が少ない場合に Azure Cosmos DB で最良のパフォーマンスを得る方法を示すことです。 このサンプルの目的は、Azure Cosmos DBの (制限なしでスケールできる) ピーク時のスループット容量を達成することではありません。
@@ -37,7 +37,7 @@ Azure Cosmos DB のパフォーマンスを向上させるためのクライア�
 ## <a name="run-the-performance-testing-application"></a>パフォーマンス テスト アプリケーションの実行
 まずは以下の手順に従って、.NET サンプルをコンパイルして実行してみましょう。 ソース コードに目を通して、同様の構成を独自のクライアント アプリケーションに実装することもできます。
 
-**手順 1:** [Azure Cosmos DB パフォーマンス テスト サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードするか、GitHub リポジトリをフォークします。
+**手順 1:** [Azure Cosmos DB パフォーマンス テスト サンプル](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードするか、GitHub リポジトリをフォークします。
 
 **手順 2:** App.config の EndpointUrl、AuthorizationKey、CollectionThroughput、DocumentTemplate (任意) の設定を変更します。
 
@@ -97,7 +97,7 @@ Press any key to exit...
 
 この記事では、.NET コンソール アプリを使用して Azure Cosmos DB でパフォーマンスとスケーリングのテストを実行する方法を説明しました。 詳細については、次の記事を参照してください。
 
-* [Azure Cosmos DB パフォーマンス テスト サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
+* [Azure Cosmos DB パフォーマンス テスト サンプル](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark)
 * [Azure Cosmos DB のパフォーマンスを向上させるクライアント構成オプション](performance-tips.md)
 * [Azure Cosmos DB でのサーバー側のパーティション分割](partitioning-overview.md)
 

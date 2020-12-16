@@ -16,18 +16,21 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40d77f4ebb897884f03377e6d9f1243a6d436766
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: eadb20bc570545356508d82c05e1746424a14b71
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500208"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504391"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
 ## <a name="deploy-seamless-single-sign-on"></a>シームレス シングル サインオンのデプロイ
 
 Azure Active Directory (Azure AD) シームレス シングル サインオン (シームレス SSO) により、ユーザーは企業ネットワークにつながっている会社のデスクトップを使用するときに自動でサインインできます。 シームレス SSO により、オンプレミス コンポーネントの追加を必要とすることなく、ユーザーはクラウド ベースのアプリケーションに簡単にアクセスできるようになります。
+
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "*ホワイトリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 シームレス SSO をデプロイするには、以下の手順に従います。
 

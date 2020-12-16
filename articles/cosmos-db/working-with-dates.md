@@ -8,12 +8,12 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b74a403cef8474ae32d98a20899437c2124f3abf
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: ba4d4e63bdd1e795bc1c599d0eae8a595aa0d643
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340381"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359525"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Azure Cosmos DB で日付を扱う
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -94,6 +94,6 @@ Azure Cosmos DB の SQL クエリ言語と LINQ プロバイダーについて�
 
 ## <a name="next-steps"></a>次の手順
 
-* [GitHub のコード サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)のダウンロードと実行
+* [GitHub のコード サンプル](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples)のダウンロードと実行
 * [SQL クエリ](sql-query-getting-started.md)の詳細を確認する
 * [Azure Cosmos DB のインデックス作成ポリシー](index-policy.md)の詳細を確認する

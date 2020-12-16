@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 6840b2188f3d7e7524c4c98d7e1b6d32440e6812
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 0374886482b43eefe6df5e107fd4da371633099d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339361"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359783"
 ---
 # <a name="frequently-asked-questions-about-the-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB の Gremlin API についてよく寄せられる質問
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -109,7 +109,7 @@ Azure Cosmos DB Gremlin API では、サービスのメイン コネクタとし
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Gremlin ドライバーを利用したインジェクション攻撃はどのように防ぎますか。
 
-ネイティブ Apache Tinkerpop Gremlin ドライバーのほとんどでは、クエリ実行にパラメーター ディクショナリを提供できます。 この方法のサンプルは、[Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) と [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js) にあります。
+ネイティブ Apache Tinkerpop Gremlin ドライバーのほとんどでは、クエリ実行にパラメーター ディクショナリを提供できます。 この方法のサンプルは、[Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) と [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/main/app.js) にあります。
 
 ### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>"Gremlin Query Compilation Error: Unable to find any method" (Gremlin クエリ コンパイル エラー:メソッドが見つかりません) エラーが表示されるのはなぜですか。
 

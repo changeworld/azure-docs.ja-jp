@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: 650d55ede8e6099252858c9118c8705f59ab6780
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2026bdd1898df460bfed2ae9d5544f90c532308f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498542"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507440"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure Data Factory のフィルター アクティビティ
 パイプラインでフィルター アクティビティを使用して、入力配列にフィルター式を適用することができます。 

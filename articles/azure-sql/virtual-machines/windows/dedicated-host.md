@@ -6,6 +6,7 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -13,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bb80abc35aedcdf0b46cefa279e477739cf1df6b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 957e458bf21eb4a95b1faba1daf0459271648310
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789796"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358692"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>Azure Dedicated Host で SQL Server VM を実行する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,8 +37,8 @@ ms.locfileid: "92789796"
 
 Azure Dedicated Host に SQL Server VM を配置する場合は、2 つの異なるライセンス オプションから選択できます。 
 
-  - **SQL VM ライセンス** :これは既存のライセンス オプションで、SQL Server VM ライセンスごとに個別に課金されます。 
-  - **専用ホスト ライセンス** :Azure 専用ホストで使用できる新しいライセンス モデルであり、SQL Server ライセンスはホスト レベルでバンドルされ、課金されます。 
+  - **SQL VM ライセンス**:これは既存のライセンス オプションで、SQL Server VM ライセンスごとに個別に課金されます。 
+  - **専用ホスト ライセンス**:Azure 専用ホストで使用できる新しいライセンス モデルであり、SQL Server ライセンスはホスト レベルでバンドルされ、課金されます。 
 
 
 既存の SQL Server ライセンスを使用するためのホスト レベルのオプション: 

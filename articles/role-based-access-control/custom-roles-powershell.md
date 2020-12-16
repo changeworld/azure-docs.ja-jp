@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5cd518828668ed20a4fa7be0cd6c9798a013055a
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 799475db567c88f067192d027589e9185ee1782b
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909575"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369176"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-powershell"></a>Azure PowerShell を使用して Azure カスタム ロールを作成または更新する
 
@@ -163,7 +163,7 @@ Start Virtual Machine                          Microsoft.Compute/virtualMachines
 
 PowerShell を使ってカスタム ロールを作成する場合は、[組み込みのロール](built-in-roles.md)を出発点として使うことも、ゼロから始めることもできます。 このセクションの最初の例では、組み込みのロールから始めて、さらに多くのアクセス許可を持つようにカスタマイズします。 その属性を編集し、必要に応じて `Actions`、`NotActions`、または `AssignableScopes`を追加して、変更内容を新しいロールとして保存します。
 
-以下の例では、 [仮想マシンの共同作業者](built-in-roles.md#virtual-machine-contributor)組み込みロールを土台として、 *仮想マシン オペレーター* というカスタム ロールを作成しています。 この新しいロールは、 *Microsoft.Compute* 、 *Microsoft.Storage* 、 *Microsoft.Network* リソース プロバイダーのすべての読み取り操作を許可し、仮想マシンの起動、再起動、監視を許可します。 カスタム ロールは 2 つのサブスクリプションで使用できます。
+以下の例では、[仮想マシンの共同作業者](built-in-roles.md#virtual-machine-contributor)組み込みロールを土台として、*仮想マシン オペレーター* というカスタム ロールを作成しています。 この新しいロールは、*Microsoft.Compute*、*Microsoft.Storage*、*Microsoft.Network* リソース プロバイダーのすべての読み取り操作を許可し、仮想マシンの起動、再起動、監視を許可します。 カスタム ロールは 2 つのサブスクリプションで使用できます。
 
 ```azurepowershell
 $role = Get-AzRoleDefinition "Virtual Machine Contributor"
@@ -187,7 +187,7 @@ $role.AssignableScopes.Add("/subscriptions/11111111-1111-1111-1111-111111111111"
 New-AzRoleDefinition -Role $role
 ```
 
-次の例では、 *仮想マシン オペレーター* カスタム ロールを作成する別の方法を示しています。 まず、新しい `PSRoleDefinition` オブジェクトを作成します。 このアクション操作は、`perms` 変数で指定され、`Actions` プロパティに設定されます。 `NotActions` プロパティは、[仮想マシンの共同作成者](built-in-roles.md#virtual-machine-contributor)組み込みロールから `NotActions` を読み取ることで設定されます。 [仮想マシンの共同作成者](built-in-roles.md#virtual-machine-contributor)には `NotActions` がないため、この行は必要ありませんが、別のロールから情報を取得する方法を示しています。
+次の例では、*仮想マシン オペレーター* カスタム ロールを作成する別の方法を示しています。 まず、新しい `PSRoleDefinition` オブジェクトを作成します。 このアクション操作は、`perms` 変数で指定され、`Actions` プロパティに設定されます。 `NotActions` プロパティは、[仮想マシンの共同作成者](built-in-roles.md#virtual-machine-contributor)組み込みロールから `NotActions` を読み取ることで設定されます。 [仮想マシンの共同作成者](built-in-roles.md#virtual-machine-contributor)には `NotActions` がないため、この行は必要ありませんが、別のロールから情報を取得する方法を示しています。
 
 ```azurepowershell
 $role = [Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition]::new()
@@ -302,7 +302,7 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
                    /subscriptions/22222222-2222-2222-2222-222222222222}
 ```
 
-次の例では、 *仮想マシン オペレーター* カスタム ロールの `AssignableScopes` に管理グループが追加されます。 `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。
+次の例では、*仮想マシン オペレーター* カスタム ロールの `AssignableScopes` に管理グループが追加されます。 `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。
 
 ```azurepowershell
 Get-AzManagementGroup
@@ -403,4 +403,4 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 
 - [チュートリアル:Azure PowerShell を使用して Azure カスタム ロールを作成する](tutorial-custom-role-powershell.md)
 - [Azure カスタム ロール](custom-roles.md)
-- [Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)
+- [Azure リソース プロバイダーの操作](resource-provider-operations.md)

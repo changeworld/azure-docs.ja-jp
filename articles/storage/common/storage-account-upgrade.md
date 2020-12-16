@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/25/2019
+ms.date: 12/11/2020
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 10d9a74306fcdf3fe32db7019ba3b095727da4c0
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 50a0894898dcdc817ee253ad326b88a9bb61b9d6
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694585"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357366"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>汎用 v2 ストレージ アカウントにアップグレードする
 
@@ -168,4 +168,7 @@ BLOB ストレージ アカウントのデータ アクセス コストを見積
 
 ## <a name="next-steps"></a>次のステップ
 
+* [ストレージ アカウントの概要](storage-account-overview.md)
 * [ストレージ アカウントの作成](storage-account-create.md)
+* [Azure ストレージ アカウントを別のリージョンに移動する](storage-account-move.md)
+* [削除されたストレージ アカウントを復旧します](storage-account-recover.md)

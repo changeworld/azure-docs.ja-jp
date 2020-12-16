@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 3b47c7e8f31b51d51f5fad20cc068debb1dc2927
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b27bab9ea3029264143caaacf094f0a799894356
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339735"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359865"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Power BI コネクタを使用して Azure Cosmos DB データを視覚化する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "93339735"
 
 * [最新バージョンの Power BI Desktop をダウンロードします](https://powerbi.microsoft.com/desktop)。
 
-* GitHub から[サンプル火山データ](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json)をダウンロードします。
+* GitHub から[サンプル火山データ](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/main/SampleData/VolcanoData.json)をダウンロードします。
 
 * [Azure Cosmos データベース アカウントを作成し](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account)、[Azure Cosmos DB データ移行ツール](import-data.md)を使用して火山データをインポートします。 データをインポートするときは、データ移行ツールのソースとインポート先に対して次の設定を考慮してください。
 
@@ -193,7 +193,7 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 ## <a name="create-a-dashboard-in-powerbicom"></a>PowerBI.com でのダッシュボードの作成
 レポートが用意できたので、PowerBI.com で共有しましょう。
 
-レポートを Power BI Desktop から PowerBI.com に発行すると、PowerBI.com テナントに **[レポート]** と **[データセット]** が生成されます。 たとえば、 **PowerBITutorial** という名前のレポートを PowerBI.com に発行すると、PowerBI.com の **[レポート]** セクションと **[データセット]** セクションの両方に PowerBITutorial が表示されます。
+レポートを Power BI Desktop から PowerBI.com に発行すると、PowerBI.com テナントに **[レポート]** と **[データセット]** が生成されます。 たとえば、**PowerBITutorial** という名前のレポートを PowerBI.com に発行すると、PowerBI.com の **[レポート]** セクションと **[データセット]** セクションの両方に PowerBITutorial が表示されます。
 
    :::image type="content" source="./media/powerbi-visualize/powerbi-reports-datasets.png" alt-text="PowerBI.com の新しいレポートとデータセットのスクリーンショット":::
 

@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30f110c3955315f560eef9972b1e3e4a956bdd8a
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 3f8ba563345f5aa4f35bcf07546abdad05c3b6ed
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750528"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509786"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで SAML ID プロバイダー技術プロファイルを定義する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) では、SAML 2.0 ID プロバイダーのサポートを提供しています。 この記事では、この標準化されたプロトコルをサポートするクレーム プロバイダーとやりとりするための、技術プロファイルの詳細について説明します。 SAML 技術プロファイルを使用すると、[ADFS](identity-provider-adfs2016-custom.md) や [Salesforce](identity-provider-salesforce-custom.md) などの SAML ベースの ID プロバイダーとフェデレーションできます。 このフェデレーションにより、ユーザーは、既存のソーシャル ID またはエンタープライズ ID でサインインできます。
+Azure Active Directory B2C (Azure AD B2C) では、SAML 2.0 ID プロバイダーのサポートを提供しています。 この記事では、この標準化されたプロトコルをサポートするクレーム プロバイダーとやりとりするための、技術プロファイルの詳細について説明します。 SAML 技術プロファイルを使用すると、[ADFS](identity-provider-adfs2016-custom.md) や [Salesforce](identity-provider-salesforce.md) などの SAML ベースの ID プロバイダーとフェデレーションできます。 このフェデレーションにより、ユーザーは、既存のソーシャル ID またはエンタープライズ ID でサインインできます。
 
 ## <a name="metadata-exchange"></a>メタデータ交換
 
@@ -168,7 +168,7 @@ SAML アサーションに `SPNameQualifier` または `NameQualifier` の両方
 | IncludeAuthnContextClassReferences | いいえ | 認証コンテキスト クラスを識別する URI 参照を 1 つ以上指定します。 たとえば、ユーザーがユーザー名とパスワードのみでサインインできるようにするには、値を `urn:oasis:names:tc:SAML:2.0:ac:classes:Password` に設定します。 保護されたセッション (SSL/TLS) でユーザー名とパスワードを使用してサインインできるようにするには、`PasswordProtectedTransport` を指定します。 サポートされている **AuthnContextClassRef** URI に関するガイダンスについては、ID プロバイダーのドキュメントを参照してください。 複数の URI をコンマ区切りのリストで指定します。 |
 | IncludeKeyInfo | いいえ | バインディングが `HTTP-POST` に設定されているときに、証明書の公開キーが SAML 認証要求に含まれるかどうかを示します。 指定できる値: `true` または `false`。 |
 | IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
-|SingleLogoutEnabled| いいえ| サインイン中に技術プロファイルがフェデレーション ID プロバイダーからサインアウトを試行しているかどうかを示します。 詳しくは、[Azure AD B2C のセッション サインアウト](session-overview.md#sign-out)に関する記事をご覧ください。指定できる値は `true`(既定値) または`false`です。|
+|SingleLogoutEnabled| いいえ| サインイン中に技術プロファイルがフェデレーション ID プロバイダーからサインアウトを試行しているかどうかを示します。 詳しくは、[Azure AD B2C のセッション サインアウト](session-behavior.md#sign-out)に関する記事をご覧ください。指定できる値は `true`(既定値) または`false`です。|
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 
@@ -216,5 +216,5 @@ SAML アサーションに `SPNameQualifier` または `NameQualifier` の両方
 
 Azure AD B2C での SAML ID プロバイダーの使用例については、次の記事を参照してください。
 
-- [カスタム ポリシーを使って ADFS を SAML ID プロバイダーとして追加する](identity-provider-adfs2016-custom.md)
-- [SAML を利用した、Salesforce アカウントでのサインイン](identity-provider-salesforce-custom.md)
+- [カスタム ポリシーを使って ADFS を SAML ID プロバイダーとして追加する](identity-provider-adfs.md)
+- [SAML を利用した、Salesforce アカウントでのサインイン](identity-provider-salesforce.md)

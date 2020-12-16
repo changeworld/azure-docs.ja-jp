@@ -6,6 +6,7 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -13,12 +14,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 28bacb923578fa0c631aa7b5092e0d11f98b1dcf
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 14760b4244d42e57aaed7f7d96f487a66147a554
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518415"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359508"
 ---
 # <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Azure portal を使用し、Azure VM 上で SQL Server の可用性グループ (プレビュー) を構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

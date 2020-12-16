@@ -67,8 +67,10 @@
               items:
                 - name: SQL 脆弱性評価
                   href: database/sql-vulnerability-assessment.md
-                - name: 脆弱性評価のルール
+                - name: 脆弱性評価ルール
                   href: database/sql-database-vulnerability-assessment-rules.md
+                - name: 脆弱性評価ルールの変更ログ
+                  href: database/sql-database-vulnerability-assessment-rules-changelog.md
                 - name: ストレージに脆弱性スキャンを格納する
                   href: database/sql-database-vulnerability-assessment-storage.md
             - name: ログイン、ユーザー アカウント、ロール、およびアクセス許可

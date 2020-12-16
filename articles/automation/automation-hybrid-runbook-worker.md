@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7bd9560399a2b2b377cb543a4f829883bcbdf7c8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7feac3ccb94cd8b4b0fab509477d4dbf772df2ae
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183772"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505530"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Hybrid Runbook Worker の概要
 
@@ -92,7 +92,7 @@ Azure Government で Azure Automation Hybrid Runbook Worker を使用すると�
 
 * [分離された仮想マシン](../azure-government/documentation-government-impact-level-5.md#isolated-virtual-machines)。 デプロイすると、IL5 ワークロードをサポートするために必要な分離レベルを提供する、そのマシンの物理ホスト全体が消費されます。
 
-* [Azure Dedicated Hosts](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-hosts) は、1 つの Azure サブスクリプションに対して専用の、1 つ以上の仮想マシンをホストできる物理サーバーを提供します。
+* [Azure Dedicated Hosts](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-host) は、1 つの Azure サブスクリプションに対して専用の、1 つ以上の仮想マシンをホストできる物理サーバーを提供します。
 
 >[!NOTE]
 >Hybrid Runbook Worker ロールを使用したコンピューティングの分離は、Azure 商用と米国政府のクラウドで利用できます。 

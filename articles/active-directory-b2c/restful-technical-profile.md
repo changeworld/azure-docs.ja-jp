@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 11/25/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e5aca04a649dfa5228d12737b21ef2ee2b14013b
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 891991fa938ad3dcfacae6d02e40efd6d6e9689e
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750454"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97386852"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する
 
@@ -122,7 +122,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 | ClaimUsedForRequestPayload| いいえ | REST API に送信されるペイロードを含む文字列要求の名前。 |
 | DebugMode | いいえ | 技術プロファイルをデバッグ モードで実行します。 指定できる値: `true` または `false` (既定値)。 デバッグ モードでは、REST API はより多くの情報を返すことができます。 [返却エラー メッセージ](#returning-validation-error-message)のセクションを参照してください。 |
 | IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
-| ResolveJsonPathsInJsonTokens  | いいえ | 技術プロファイルが JSON パスを解決するかどうかを示します。 指定できる値: `true` または `false` (既定値)。 このメタデータを使用して、入れ子になった JSON 要素からデータを読み取ります。 [OutputClaim](technicalprofiles.md#outputclaims) で、`PartnerClaimType` を、出力する JSON パス要素に設定します。 例: `firstName.localized`、または `data.0.to.0.email`。|
+| ResolveJsonPathsInJsonTokens  | いいえ | 技術プロファイルが JSON パスを解決するかどうかを示します。 指定できる値: `true` または `false` (既定値)。 このメタデータを使用して、入れ子になった JSON 要素からデータを読み取ります。 [OutputClaim](technicalprofiles.md#output-claims) で、`PartnerClaimType` を、出力する JSON パス要素に設定します。 例: `firstName.localized`、または `data.0.to.0.email`。|
 | UseClaimAsBearerToken| いいえ| ベアラー トークンを含む要求の名前。|
 
 ## <a name="error-handling"></a>エラー処理
@@ -223,7 +223,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 | 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| HTTP ヘッダーの名前 (`x-functions-key`、`x-api-key` など)。 | ○ | 認証に使用されるキー。 |
+| HTTP ヘッダーの名前 (`x-functions-key`、`x-api-key` など)。 | はい | 認証に使用されるキー。 |
 
 ```xml
 <TechnicalProfile Id="REST-API-SignUp">

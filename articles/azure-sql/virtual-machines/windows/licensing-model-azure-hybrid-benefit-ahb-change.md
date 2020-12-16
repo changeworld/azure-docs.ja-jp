@@ -9,16 +9,17 @@ ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
+ms.subservice: management
 ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 37f6e60aea033dee8adfd66839c82b9fd165c879
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: da136c1f3ce36bf85592c3c73c9e8f92c41c7442
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556272"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357910"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Azure で SQL 仮想マシンのライセンス モデルを変更する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -32,7 +33,7 @@ SQL Server をホストする Azure VM には、従量課金制、Azure ハイ�
 
 - **従量課金制** モデルでは、Azure VM を実行する秒単位のコストに、SQL Server ライセンスのコストが含まれています。
 - [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)では、SQL Server を実行する VM に対して独自の SQL Server ライセンスを使用することができます。 
-- **HA/DR** ライセンスの種類は、Azure での[無料 HA/DR レプリカ](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure)に使用します。 
+- **HA/DR** ライセンスの種類は、Azure での [無料 HA/DR レプリカ](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure)に使用します。 
 
 Azure ハイブリッド特典では、Azure 仮想マシン上で SQL Server ライセンスをソフトウェア アシュアランス ("条件を満たしたライセンス") 付きで使用できます。 Azure ハイブリッド特典の場合、VM 上での SQL Server ライセンスの使用に対してお客様は課金されません。 ただし、基になるクラウド コンピューティング (基本料金)、ストレージ、およびバックアップのコストについては、引き続き料金を支払う必要があります。 また、サービスの使用に関連付けられている I/O についても支払う必要があります (該当する場合)。
 

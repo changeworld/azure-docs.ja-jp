@@ -5,18 +5,21 @@ ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 08/11/2020
-ms.openlocfilehash: a13713f01a6bdb0ffcd787ef9c1d2f9a0336f63c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ae3ef2e1f35be432558769c512845543867ef27a
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369558"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505411"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>変更データ キャプチャ用に Azure Event Hubs の Apache Kafka Connect のサポート (プレビュー) を Debezium と統合する
 
 **変更データ キャプチャ (CDC)** は、作成、更新、削除操作に応答して、データベース テーブル内の行レベルの変更を追跡するために使用される手法です。 [Debezium](https://debezium.io/) は、さまざまなデータベースで使用できる変更データ キャプチャ機能 ([PostgreSQL の論理デコード](https://www.postgresql.org/docs/current/static/logicaldecoding-explanation.html)など) に基づいて構築された分散プラットフォームです。 これにより、データベース テーブル内の行レベルの変更を取得し、それを後で [Apache Kafka](https://kafka.apache.org/) に送信されるイベント ストリームに変換する一連の [Kafka Connect コネクタ](https://debezium.io/documentation/reference/1.2/connectors/index.html)が提供されます。
 
 このチュートリアルでは、[Azure Event Hubs](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu) (Kafka 用)、[Azure DB for PostgreSQL](../postgresql/overview.md)、Debezium を使用して、Azure で変更データ キャプチャ ベースのシステムを設定する方法について説明します。 ここでは、PostgreSQL のデータベース変更を Azure Event Hubs の Kafka トピックにストリーミングするために [Debezium PostgreSQL コネクタ](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html)を使用します。
+
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "*ホワイトリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 このチュートリアルでは、次の手順を実行します。
 
@@ -113,7 +116,7 @@ plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka
 > [!NOTE]
 > Kafka Connect は、Kafka AdminClient API を使用して、圧縮などの推奨される構成を含むトピックを自動的に作成します。 Azure portal で名前空間をざっとチェックすると、Connect ワーカーの内部的なトピックが自動的に作成されていることがわかります。
 >
-> Kafka Connect の内部トピックでは、 **圧縮を使用する必要があります** 。  Connect の内部トピックが正しく構成されていない場合、Event Hubs チームでは不適切な構成を修正する責任を負いません。
+> Kafka Connect の内部トピックでは、**圧縮を使用する必要があります**。  Connect の内部トピックが正しく構成されていない場合、Event Hubs チームでは不適切な構成を修正する責任を負いません。
 
 ### <a name="configure-and-start-the-debezium-postgresql-source-connector"></a>Debezium PostgreSQL ソース コネクタを構成して起動する
 

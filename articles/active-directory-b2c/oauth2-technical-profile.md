@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/01/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 486622b37f02ab8b2a53a273a6eaea4cb5add3a5
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 78ce6466521c7903187798d902056948c659653c
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750450"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509854"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth2 技術プロファイルを定義する
 
@@ -84,7 +84,7 @@ Azure Active Directory B2C (Azure AD B2C) では、OAuth2 プロトコルの ID 
 | authorization_endpoint | はい | RFC 6749 に準拠した承認エンドポイントの URL。 |
 | AccessTokenEndpoint | はい | RFC 6749 に準拠したトークン エンドポイントの URL。 |
 | ClaimsEndpoint | はい | RFC 6749 に準拠したユーザー情報エンドポイントの URL。 |
-| end_session_endpoint | ○ | RFC 6749 に準拠したセッションの終了エンドポイントの URL。 |
+| end_session_endpoint | はい | RFC 6749 に準拠したセッションの終了エンドポイントの URL。 |
 | AccessTokenResponseFormat | いいえ | アクセス トークン エンドポイント呼び出しの形式。 たとえば、Facebook では HTTP GET メソッドが必要ですが、アクセス トークン応答は JSON 形式です。 |
 | AdditionalRequestQueryParameters | いいえ | 追加要求クエリ パラメーター。 たとえば、追加のパラメーターを ID プロバイダーに送信する場合があります。 コンマ区切り記号を使用して、複数のパラメーターを列挙できます。 |
 | ClaimsEndpointAccessTokenName | いいえ | アクセス トークンのクエリ文字列パラメーターの名前。 一部の ID プロバイダーの要求エンドポイントでは、GET HTTP 要求をサポートしています。 この場合は、ベアラー トークンは、authorization ヘッダーの代わりに、クエリ文字列パラメーターを使用して送信されます。 |
@@ -98,9 +98,9 @@ Azure Active Directory B2C (Azure AD B2C) では、OAuth2 プロトコルの ID 
 | ExtraParamsInAccessTokenEndpointResponse | いいえ | **AccessTokenEndpoint** からの応答に、一部の ID プロバイダーにより返される可能性がある余分なパラメーターが存在します。 たとえば、**AccessTokenEndpoint** からの応答には、`openid` のような余分なパラメーターがあります。これは、access_token を除けば、**ClaimsEndpoint** 要求クエリ文字列での必須パラメーターです。 複数のパラメーター名をエスケープし、コンマ ',' 区切り記号で区切るようにしてください。 |
 | ExtraParamsInClaimsEndpointRequest | いいえ | **ClaimsEndpoint** 要求に、一部の ID プロバイダーにより返される可能性がある余分なパラメーターが存在します。 複数のパラメーター名をエスケープし、コンマ ',' 区切り記号で区切るようにしてください。 |
 | IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
-| ResolveJsonPathsInJsonTokens  | いいえ | 技術プロファイルが JSON パスを解決するかどうかを示します。 指定できる値: `true` または `false` (既定値)。 このメタデータを使用して、入れ子になった JSON 要素からデータを読み取ります。 [OutputClaim](technicalprofiles.md#outputclaims) で、`PartnerClaimType` を、出力する JSON パス要素に設定します。 例: `firstName.localized`、または `data.0.to.0.email`。|
+| ResolveJsonPathsInJsonTokens  | いいえ | 技術プロファイルが JSON パスを解決するかどうかを示します。 指定できる値: `true` または `false` (既定値)。 このメタデータを使用して、入れ子になった JSON 要素からデータを読み取ります。 [OutputClaim](technicalprofiles.md#output-claims) で、`PartnerClaimType` を、出力する JSON パス要素に設定します。 例: `firstName.localized`、または `data.0.to.0.email`。|
 |token_endpoint_auth_method| No| Azure AD B2C からトークン エンドポイントに認証ヘッダーを送信する方法を指定します。 指定できる値は、`client_secret_post` (既定値) と `client_secret_basic` (パブリック プレビュー) です。 詳細については、[OpenID Connect クライアント認証](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)に関するセクションをご覧ください。 |
-|SingleLogoutEnabled| いいえ| サインイン中に技術プロファイルがフェデレーション ID プロバイダーからサインアウトを試行しているかどうかを示します。 詳しくは、[Azure AD B2C のセッション サインアウト](session-overview.md#sign-out)に関する記事をご覧ください。指定できる値は `true`(既定値) または`false`です。|
+|SingleLogoutEnabled| いいえ| サインイン中に技術プロファイルがフェデレーション ID プロバイダーからサインアウトを試行しているかどうかを示します。 詳しくは、[Azure AD B2C のセッション サインアウト](session-behavior.md#sign-out)に関する記事をご覧ください。指定できる値は `true`(既定値) または`false`です。|
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 
@@ -116,4 +116,4 @@ ID プロバイダーのリダイレクト URI を構成する場合は、`https
 
 例 :
 
-- [カスタム ポリシーを使用して Google+ を OAuth2 ID プロバイダーとして追加する](identity-provider-google-custom.md)
+- [カスタム ポリシーを使用して Google+ を OAuth2 ID プロバイダーとして追加する](identity-provider-google.md)

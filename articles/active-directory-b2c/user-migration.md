@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 60dff717fbd86fa83821575ac90c9dac36dbc4d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d680da7a5f09a55bec5d791642b80fd76c6088e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85383973"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509616"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>ユーザーを Azure AD B2C に移行する
 
-別の ID プロバイダーから Azure Active Directory B2C (Azure AD B2C) に移行する場合、既存のユーザー アカウントの移行も必要になることがあります。 ここでは*事前移行*と*シームレスな移行*という 2 つの移行方法について説明します。 どちらの方法でも、[Microsoft Graph API](manage-user-accounts-graph-api.md) を使用して Azure AD B2C にユーザー アカウントを作成するアプリケーションまたはスクリプトを記述する必要があります。
+別の ID プロバイダーから Azure Active Directory B2C (Azure AD B2C) に移行する場合、既存のユーザー アカウントの移行も必要になることがあります。 ここでは *事前移行* と *シームレスな移行* という 2 つの移行方法について説明します。 どちらの方法でも、[Microsoft Graph API](manage-user-accounts-graph-api.md) を使用して Azure AD B2C にユーザー アカウントを作成するアプリケーションまたはスクリプトを記述する必要があります。
 
 ## <a name="pre-migration"></a>事前移行
 
@@ -45,7 +45,7 @@ ms.locfileid: "85383973"
 
 シームレスな移行フローではユーザー アカウントの事前移行がやはり必要ですが、その後、[カスタム ポリシー](custom-policy-get-started.md)を使用して [REST API](custom-policy-rest-api-intro.md) (ユーザーが作成したもの) へのクエリを実行し、最初のサインイン時に各ユーザーのパスワードを設定します。
 
-このため、シームレスな移行フローには、*事前移行*と*資格情報の設定*の 2 つのフェーズがあります。
+このため、シームレスな移行フローには、*事前移行* と *資格情報の設定* の 2 つのフェーズがあります。
 
 ### <a name="phase-1-pre-migration"></a>フェーズ 1:事前移行
 
@@ -79,10 +79,10 @@ ms.locfileid: "85383973"
 
 レガシ ID プロバイダーのすべての情報を Azure AD B2C ディレクトリに移行する必要はありません。 移行する前に、Azure AD B2C に格納する適切なユーザー属性のセットを特定します。
 
-- Azure AD B2C に格納**するもの**
+- Azure AD B2C に格納 **するもの**
   - ユーザー名、パスワード、電子メール アドレス、電話番号、メンバーシップ番号/識別子。
   - プライバシー ポリシーと使用許諾契約書の同意マーカー。
-- Azure AD B2C に格納**しないもの**
+- Azure AD B2C に格納 **しないもの**
   - クレジット カード番号、社会保障番号 (SSN)、医療記録、あるいは政府機関または業界のコンプライアンス対応団体によって規制されているその他のデータなどの機密データ。
   - マーケティングまたはコミュニケーション設定、ユーザーの行動、および分析情報。
 
@@ -90,7 +90,7 @@ ms.locfileid: "85383973"
 
 移行プロセスを開始する前に、この機会を利用してディレクトリをクリーンアップしてください。
 
-- Azure AD B2C に格納されるユーザー属性のセットを特定し、必要なものだけを移行します。 必要に応じて、ユーザーに関するより多くのデータを格納するための[カスタム属性](custom-policy-custom-attributes.md)を作成できます。
+- Azure AD B2C に格納されるユーザー属性のセットを特定し、必要なものだけを移行します。 必要に応じて、ユーザーに関するより多くのデータを格納するための[カスタム属性](user-flow-custom-attributes.md)を作成できます。
 - 複数の認証ソースを持つ環境 (たとえば、各アプリケーションが独自のユーザー ディレクトリを持つ) から移行する場合は、Azure AD B2C の 1 つの統合アカウントに移行します。
 - 複数のアプリケーションのユーザー名が異なる場合は、ID コレクションを使用して、これらすべてを Azure AD B2C のユーザー アカウントに格納できます。 パスワードについては、ユーザーにパスワードを選択させてディレクトリに設定させます。 たとえば、シームレスな移行では、選択したパスワードだけを Azure AD B2C アカウントに格納する必要があります。
 - 使用されていないユーザー アカウントを移行前に削除するか、古いアカウントを移行しないでください。

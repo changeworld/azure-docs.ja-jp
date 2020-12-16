@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f915652110524aac06d641d636155bc6a5fcd256
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 52071b964412071d820745b173e8835c6f9e7d0e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927925"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510993"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure VM のエフェメラル OS ディスク
 
@@ -34,7 +34,7 @@ ms.locfileid: "92927925"
 
 |                             | 永続 OS ディスク                          | エフェメラル OS ディスク                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
-| **OS ディスクのサイズ制限**      | 2 TiB                                                                                        | VM サイズのキャッシュ サイズまたは 2TiB のうち小さい方。 **GiB 単位のキャッシュ サイズ** については、 [DS](sizes-general.md)、 [ES](sizes-memory.md)、 [M](sizes-memory.md)、 [FS](sizes-compute.md)、および [GS](sizes-previous-gen.md#gs-series) に関するページを参照してください              |
+| **OS ディスクのサイズ制限**      | 2 TiB                                                                                        | VM サイズのキャッシュ サイズまたは 2TiB のうち小さい方。 **GiB 単位のキャッシュ サイズ** については、[DS](sizes-general.md)、[ES](sizes-memory.md)、[M](sizes-memory.md)、[FS](sizes-compute.md)、および [GS](sizes-previous-gen.md#gs-series) に関するページを参照してください              |
 | **サポート対象の VM サイズ**          | All                                                                                          | Premium ストレージをサポートしている DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、M などの VM サイズ                                               |
 | **サポート対象のディスクの種類**           | マネージド OS ディスクとアンマネージド OS ディスク                                                                | マネージド OS ディスクのみ                                                               |
 | **リージョンのサポート**              | すべてのリージョン                                                                                  | すべてのリージョン                              |
@@ -86,7 +86,7 @@ az vm create \
 
 スケール セットの場合は、[az-vmss-create](/cli/azure/vmss#az-vmss-create) に同じ `--ephemeral-os-disk true` パラメーターを使用し、`--os-disk-caching` パラメーターを `ReadOnly` に設定します。
 
-## <a name="portal"></a>ポータル   
+## <a name="portal"></a>ポータル
 
 Azure portal で、 **[ディスク]**  タブの **[詳細設定]** セクションを開いて VM をデプロイするときに、エフェメラル ディスクの使用を選択できます。 **[エフェメラル OS ディスクの使用]\(Use ephemeral OS disk\)** で **[はい]** を選択します。
 
@@ -120,7 +120,7 @@ Azure portal で、 **[ディスク]**  タブの **[詳細設定]** セクシ�
        "storageProfile": { 
         "osDisk": { 
           "diffDiskSettings": { 
-                "option": "Local" 
+            "option": "Local" 
           }, 
           "caching": "ReadOnly", 
           "createOption": "FromImage" 

@@ -1,18 +1,18 @@
 ---
 title: Azure Storage の BLOB をスキャンする方法
 description: Azure Purview データ カタログで Azure Blob Storage をスキャンする方法について説明します。
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 6d2e2316525465c1ef9f58e7b83b8d0e99d46bd4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1bcd8390a298d7fc46f9c04633f610eb4492d33d
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550945"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400711"
 ---
 # <a name="register-and-scan-azure-blob-storage"></a>Azure Blob Storage の登録とスキャン
 
@@ -24,10 +24,10 @@ Azure Blob Storage では、フル スキャンと増分スキャンがサポー
 
 ## <a name="prerequisites"></a>前提条件
 
-- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[Azure Purview アカウントの作成](create-catalog-portal.md)に関するクイックスタートを参照してください。
+- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[クイック スタート: Azure Purview アカウントの作成](create-catalog-portal.md)に関する記事を参照してください。
 - Azure Purview データ ソース管理者である必要があります
 
-## <a name="setting-up-authentication-for-a-scan"></a>スキャンでの認証の設定
+## <a name="setting-up-authentication-for-a-scan"></a>スキャンの認証の設定
 
 Azure Blob Storage の認証を設定するには、次の 3 つの方法があります。
 
@@ -55,10 +55,10 @@ Azure Blob Storage の認証を設定するには、次の 3 つの方法があ�
 1. **[設定] > [アクセス キー]** を選択します
 1. "*キー*" をコピーし、次の手順のためにどこかに保存します
 1. お使いのキー コンテナーに移動する
-1. **[設定] > [シークレット]** を選択します
+1. **[設定] > [シークレット]** の順に選択します。
 1. **[生成/インポート]** を選択し、 **[名前]** と *[値]* にストレージ アカウントの **キー** を入力します
-1. **[作成]** を選択して完了します
-1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります
+1. **[作成]** を選択して完了します。
+1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
 1. 最後に、キーを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
 
 ### <a name="service-principal"></a>サービス プリンシパル
@@ -81,10 +81,10 @@ Azure Blob Storage の認証を設定するには、次の 3 つの方法があ�
 1. [Azure portal](https://portal.azure.com) でサービス プリンシパルに移動します
 1. **[アプリケーション (クライアント) ID]** の値を **[概要]** から、および **[クライアント シークレット]** の値を **[証明書とシークレット]** からコピーします。
 1. お使いのキー コンテナーに移動する
-1. **[設定] > [シークレット]** を選択します
+1. **[設定] > [シークレット]** の順に選択します。
 1. **[生成/インポート]** を選択し、サービス プリンシパルの **クライアント シークレット** として任意の **名前** と **値** を入力します
-1. **[作成]** を選択して完了します
-1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります
+1. **[作成]** を選択して完了します。
+1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
 1. 最後に、サービス プリンシパルを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
 
 #### <a name="granting-the-service-principal-access-to-your-blob-storage"></a>Blob Storage へのアクセス権をサービス プリンシパルに付与する
@@ -110,11 +110,11 @@ Azure Blob Storage の認証を設定するには、次の 3 つの方法があ�
 
 新しい BLOB アカウントをデータ カタログに登録するには、次の手順を実行します。
 
-1. Purview アカウントに移動します
-1. 左側のナビゲーションで **[ソース]** を選択します
+1. Purview アカウントに移動します。
+1. 左側のナビゲーションで **[ソース]** を選択します。
 1. **[登録]** を選択します
 1. **[ソースの登録]** で、 **[Azure Blob Storage]** を選択します
-1. **[続行]** を選択します
+1. **[続行]** を選択します。
 
 **[ソースの登録 (Azure Blob Storage)]** 画面で、次の手順を実行します。
 
@@ -131,4 +131,4 @@ Azure Blob Storage の認証を設定するには、次の 3 つの方法があ�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Purview データ カタログを参照する](how-to-browse-catalog.md)
-- [Azure Purview Data Catalog を検索する](how-to-search-catalog.md)
+- [Azure Purview データ カタログを検索する](how-to-search-catalog.md)

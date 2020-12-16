@@ -10,6 +10,8 @@
       href: overview-iot-central-developer.md
     - name: 最新の更新
       items:
+        - name: 2020 年 11 月の新機能と更新された機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-november-2020/'
         - name: 2020 年 10 月の新機能と更新された機能
           href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-upadates-october-2020/'
         - name: 2020 年 9 月の新機能と更新された機能

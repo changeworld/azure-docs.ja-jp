@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: b24b95423adb271b8a4016430e7d2b381c386cd2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e055287f069c477318a54aedf3d9a2fe22343367
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443757"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509157"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web API を呼び出す Web アプリ: コード構成
 
@@ -110,7 +110,7 @@ Web アプリでは、ダウンストリーム API のトークンを取得す�
      public void ConfigureServices(IServiceCollection services)
      {
      // ...
-     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+     services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
              .AddMicrosoftIdentityWebApp(Configuration, Configuration.GetSection("AzureAd"))
                .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
                .AddInMemoryTokenCaches();
@@ -140,7 +140,7 @@ Microsoft Graph を呼び出す場合は、*Microsoft.Identity.Web* を使用す
      public void ConfigureServices(IServiceCollection services)
      {
      // ...
-     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+     services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
              .AddMicrosoftIdentityWebApp(Configuration, Configuration.GetSection("AzureAd"))
                .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
                   .AddMicrosoftGraph(Configuration.GetSection("GraphBeta"))
@@ -164,7 +164,7 @@ Microsoft Graph 以外の Web API を呼び出すために、*Microsoft.Identity
      public void ConfigureServices(IServiceCollection services)
      {
      // ...
-     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+     services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
              .AddMicrosoftIdentityWebApp(Configuration, "AzureAd")
                .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
                   .AddDownstreamWebApi("MyApi", Configuration.GetSection("GraphBeta"))

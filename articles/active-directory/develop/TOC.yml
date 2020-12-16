@@ -32,8 +32,10 @@
       items:
         - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: ASP.NET Core
+        - name: ASP.NET Core (ユーザーのサインイン)
           href: quickstart-v2-aspnet-core-webapp.md
+        - name: ASP.NET Core (Microsoft Graph の呼び出し)
+          href: quickstart-v2-aspnet-core-webapp-calls-graph.md
         - name: Node.js - MSAL | プレビュー
           href: quickstart-v2-nodejs-webapp-msal.md
         - name: Node.js - Passport.js

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, mqtt, devx-track-csharp
-ms.openlocfilehash: 133be436853ee8c2b04df2f943368513108b226b
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: c0c3a452c93b88483ac7027405665c26ceab8183
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444309"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368513"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Azure IoT Edge ランタイムとそのアーキテクチャの概要
 
@@ -81,7 +81,7 @@ IoT Edge ハブは、ローカルで実行される完全バージョンの IoT 
 
 IoT Edge ソリューションが使用する帯域幅を減らすために、IoT Edge ハブは、クラウドに対して作成される実際の接続数を最適化します。 IoT Edge ハブは、モジュールやダウンストリーム デバイスからの論理接続を取得し、それらをクラウドへの 1 つの物理接続に統合します。 ソリューションの他の部分は、このプロセスの詳細を認識する必要がありません。 クライアントは、すべて、共通の接続を使って接続しているにもかかわらず、クラウドにそれぞれ独自に接続していると認識します。 IoT Edge ハブは、ダウンストリーム デバイスで使用されているプロトコルと関係なく、AMQP または MQTT プロトコルを使用して、クラウドとアップストリーム通信を行うことができます。 ただし、IoT Edge ハブでは、現在アップストリーム プロトコルとして AMQP を使用し、その多重化機能を使用して、論理接続を 1 つの物理接続に結合することのみがサポートされています。 AMQP は、既定のアップストリーム プロトコルです。
 
-![IoT Edge ハブは物理デバイスと IoT Hub との間のゲートウェイです](./media/iot-edge-runtime/Gateway.png)
+![IoT Edge ハブは物理デバイスと IoT Hub との間のゲートウェイです](./media/iot-edge-runtime/gateway-communication.png)
 
 IoT Edge ハブでは、IoT Hub に接続されているかどうかを判断できます。 接続が切断された場合は、IoT Edge ハブがメッセージを保存するか、ツインがローカルで更新します。 接続が再確立されると、すべてのデータが同期されます。 この一時キャッシュに使用される場所は、IoT Edge ハブのモジュール ツインのプロパティによって規定されます。 キャッシュのサイズには上限がなく、デバイスにストレージ容量がある限り拡張されます。  詳細については、[オフライン機能](offline-capabilities.md)に関するページを参照してください。
 
@@ -112,7 +112,7 @@ ModuleClient クラスとその通信方法に関する詳細については、�
 
 IoT Edge ハブがモジュール間でメッセージを渡す方法を決定するルールを指定するのはソリューション開発者です。 ルーティング規則はクラウドで定義され、そのモジュール ツインの中で IoT Edge ハブにプッシュ ダウンされます。 IoT Hub ルートと同じ構文を使用して、Azure IoT Edge のモジュール間のルートが定義されます。 詳細については、[モジュールのデプロイと IoT Edge へのルートの確立の方法の学習](module-composition.md)に関する記事をご覧ください。
 
-![モジュール間のルートは IoT Edge ハブを経由します](./media/iot-edge-runtime/module-endpoints-with-routes.png)
+![モジュール間のルートは IoT Edge ハブを経由します](./media/iot-edge-runtime/module-endpoints-routing.png)
 ::: moniker-end
 
 <!-- <1.2> -->
@@ -134,7 +134,7 @@ IoT Edge ハブでは、2 つのブローカー メカニズムがサポート�
 
 最初のブローカー メカニズムでは、IoT Hub と同じルーティング機能を利用して、デバイスまたはモジュール間でメッセージを渡す方法を指定します。 最初のデバイスまたはモジュールでは、メッセージを受信する入力と、メッセージを書き出す出力を指定します。 それにより、ソリューション開発者は、ソース (出力など) と宛先 (入力など) の間で、潜在的なフィルターを使用してメッセージをルーティングできます。
 
-![モジュール間のルートは IoT Edge ハブを経由します](./media/iot-edge-runtime/module-endpoints-with-routes.png)
+![モジュール間のルートは IoT Edge ハブを経由します](./media/iot-edge-runtime/module-endpoints-routing.png)
 
 ルーティングは、AMQP または MQTT プロトコル経由で、Azure IoT Device SDK で構築されたデバイスまたはモジュールによって使用できます。 すべてのメッセージング IoT Hub プリミティブ (テレメトリ、ダイレクト メソッド、C2D、ツインなど) がサポートされていますが、ユーザー定義のトピックを介した通信はサポートされていません。
 

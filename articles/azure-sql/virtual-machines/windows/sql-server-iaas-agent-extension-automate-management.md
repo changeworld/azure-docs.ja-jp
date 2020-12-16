@@ -8,6 +8,7 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: effe4e2f-35b5-490a-b5ef-b06746083da4
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -16,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 572363f429cb828d44c9dd12ba2424930c94fefe
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: e8268630b2c108dc95ded059ce41866a14fadd0e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553535"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359253"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>SQL Server IaaS Agent 拡張機能を使用して管理を自動化する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -214,7 +215,7 @@ NoAgent モードでは、SQL Server のバージョンとエディションの�
 
 いいえ。 SQL Server IaaS 拡張機能の管理モードのダウングレードはサポートされていません。 管理モードを完全モードから軽量モードまたは NoAgent モードにダウングレードすることはできません。また、軽量モードから NoAgent モードにダウングレードすることもできません。 
 
-管理モードを完全管理から変更するには、SQL 仮想マシン "_リソース_" を削除して SQL IaaS Agent 拡張機能から SQL Server VM の[登録を解除](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension)し、別の管理モードでその SQL Server VM を SQL IaaS Agent 拡張機能に再登録します。
+管理モードを完全管理から変更するには、SQL 仮想マシン "_リソース_" を削除して SQL IaaS Agent 拡張機能から SQL Server VM の [登録を解除](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension)し、別の管理モードでその SQL Server VM を SQL IaaS Agent 拡張機能に再登録します。
 
 **Azure portal から SQL IaaS Agent 拡張機能に登録できますか?**
 

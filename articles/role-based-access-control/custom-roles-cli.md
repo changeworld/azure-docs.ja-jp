@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8fa77f13b99564246c048e7b7a8129f9fc141c47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31dabcf77f0db76047919fa76d00f1c5ed3c96d6
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84984195"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369142"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Azure CLI を使用して Azure カスタム ロールを作成または更新する
 
@@ -189,7 +189,7 @@ az role definition create --role-definition ~/roles/vmoperator.json
 az role definition update --role-definition {roleDefinition}
 ```
 
-次の例では、*Microsoft.Insights/diagnosticSettings/* 操作が `Actions` に追加され、管理グループが*仮想マシン オペレーター*の `AssignableScopes` に追加されます。 `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。
+次の例では、*Microsoft.Insights/diagnosticSettings/* 操作が `Actions` に追加され、管理グループが *仮想マシン オペレーター* の `AssignableScopes` に追加されます。 `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。
 
 vmoperator.json
 
@@ -244,4 +244,4 @@ az role definition delete --name "Virtual Machine Operator"
 
 - [チュートリアル:Azure CLI を使用して Azure カスタム ロールを作成する](tutorial-custom-role-cli.md)
 - [Azure カスタム ロール](custom-roles.md)
-- [Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)
+- [Azure リソース プロバイダーの操作](resource-provider-operations.md)

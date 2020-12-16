@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 11/18/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 97017e104ecff38ebf4e475fb5f6ae42707ef10e
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: f7e16400f6460f7479cdffd1928126cdd70a8f0c
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919592"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504000"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する
 
@@ -28,7 +28,7 @@ ms.locfileid: "94919592"
 > [!TIP]
 > Azure Machine Learning SDK では、セキュリティで保護された通信に関連するプロパティに "SSL" の用語を使用します。 つまり、Web サービスでは *TLS* を使用しません。 SSL は、より一般的に認識されている用語に過ぎません。
 >
-> 具体的には、Azure Machine Learning によってデプロイされた Web サービスにより、AKS と ACI の新しいデプロイでは TLS バージョン 1.2 がサポートされます。 ACI デプロイでは、以前のバージョンの TLS を使用している場合は、最新の TLS バージョンを取得するために再デプロイすることをお勧めします。
+> 具体的には、Azure Machine Learning によってデプロイされた Web サービスにより、AKS と ACI では TLS バージョン 1.2 がサポートされます。 ACI デプロイでは、以前のバージョンの TLS を使用している場合は、最新の TLS バージョンを取得するために再デプロイすることをお勧めします。
 
 TLS と SSL の両方とも、"*デジタル証明書*" に依存しています。デジタル証明書は、暗号化の実行と ID の検証に役立ちます。 デジタル証明書のしくみの詳細については、ウィキペディアの「[public key infrastructure (公開キー基盤)](https://en.wikipedia.org/wiki/Public_key_infrastructure)」のトピックを参照してください。
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 3b4795a47f0e6dbf945bd4a1f9aaaa0df2137f91
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 41ba08aef7aed761c3c6063f97768f22bffe3a36
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495584"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508494"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
