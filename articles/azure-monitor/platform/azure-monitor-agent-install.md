@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 4c6252b31b4be05ea3c0bcf160a28bf335239b23
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 893a04f5acd48cf1e6f34033c06a758492e70abf
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95324840"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516712"
 ---
 # <a name="install-the-azure-monitor-agent-preview"></a>Azure Monitor エージェントをインストールする (プレビュー)
 この記事では、Azure 仮想マシンと Azure Arc 対応サーバーの両方に [Azure Monitor エージェント](azure-monitor-agent-overview.md) をインストールするために現在使用できるさまざまなオプションについて説明し、エージェントが収集するデータを定義する[データ収集ルールとの関連付け](data-collection-rule-azure-monitor-agent.md)を作成するオプションについても説明します。
@@ -75,11 +75,11 @@ Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publishe
 次の PowerShell コマンドを使用して Azure Monitor エージェントを Azure Arc 対応サーバーにインストールします。
 # <a name="windows"></a>[Windows](#tab/PowerShellWindowsArc)
 ```powershell
-New-AzConnectedMachineExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location>
+New-AzConnectedMachineExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <virtual-machine-name> -Location <location>
 ```
 # <a name="linux"></a>[Linux](#tab/PowerShellLinuxArc)
 ```powershell
-New-AzConnectedMachineExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location>
+New-AzConnectedMachineExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <virtual-machine-name> -Location <location>
 ```
 ---
 ## <a name="azure-cli"></a>Azure CLI

@@ -5,12 +5,12 @@ ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 08/01/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 152a000939f74b1852073742e501ac66246389a5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f6876d0aef0d3d87e038b623c395f8368a14e90c
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015889"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561853"
 ---
 # <a name="create-a-php-web-app-in-azure-app-service"></a>Azure App Service に PHP Web アプリを作成する
 
@@ -78,9 +78,9 @@ Web ブラウザーを開き、`http://localhost:8080` のサンプル アプリ
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
-Cloud Shell で [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) コマンドを使用して、`myAppServicePlan` App Service プランに Web アプリを作成します。 
+Cloud Shell で [`az webapp create`](/cli/azure/webapp#az-webapp-create) コマンドを使用して、`myAppServicePlan` App Service プランに Web アプリを作成します。 
 
-次の例では、`<app-name>` をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `PHP|7.4` に設定されています。 サポートされているすべてのランタイムを確認するには、[`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) を実行します。 
+次の例では、`<app-name>` をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `PHP|7.4` に設定されています。 サポートされているすべてのランタイムを確認するには、[`az webapp list-runtimes`](/cli/azure/webapp#az-webapp-list-runtimes) を実行します。 
 
 ```azurecli-interactive
 # Bash
@@ -134,7 +134,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (2/2), done.
 Writing objects: 100% (2/2), 352 bytes | 0 bytes/s, done.
 Total 2 (delta 1), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id '25f18051e9'.
 remote: Generating deployment script.
@@ -150,7 +150,7 @@ remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
-   cc39b1e..25f1805  master -> master
+   cc39b1e..25f1805  main -> main
 </pre>
 
 ## <a name="browse-to-the-app"></a>アプリの参照
@@ -179,7 +179,7 @@ echo "Hello Azure!";
 
 ```bash
 git commit -am "updated output"
-git push azure master
+git push azure main
 ```
 
 デプロイが完了したら、「**アプリの参照**」の手順で開いたブラウザー ウィンドウに戻り、ページを更新します。

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffb1d5eb756c7bc316a6d8e1de30a95eb1ac5194
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f76f4a3e5fc87420c242c693e3c48a91244641e0
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287051"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560035"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>セルフサービス サインアップのユーザー フローをアプリに追加する (プレビュー)
 > [!NOTE]
@@ -53,7 +53,7 @@ Azure AD は、セルフサービス サインアップ用の既定の ID プロ
 4. **[ユーザー フローによるゲスト セルフサービス サインアップを有効にする (プレビュー)]** を **[はい]** に切り替えます。
 
    ![ゲスト セルフサービス サインアップを有効にする](media/self-service-sign-up-user-flow/enable-self-service-sign-up.png)
-
+5. **[保存]** を選択します。
 ## <a name="create-the-user-flow-for-self-service-sign-up"></a>セルフサービス サインアップのユーザー フローを作成する
 
 次に、セルフサービス サインアップのユーザー フローを作成し、アプリケーションに追加します。

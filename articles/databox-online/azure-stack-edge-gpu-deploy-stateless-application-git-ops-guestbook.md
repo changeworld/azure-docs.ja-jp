@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 8637b33ebc4b697ee6f498acb84ee33718c53f6d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 82b786f3c90a7ef482ccbcd6e66fb9abfc4eea5f
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448848"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561938"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 上の Arc 対応 Kubernetes クラスターで Redis を使用した PHP ゲストブック ステートレス アプリケーションをデプロイする
 
@@ -32,6 +32,9 @@ ms.locfileid: "96448848"
 
 ステートレス アプリケーションをデプロイする前に、お使いのデバイスと、そのデバイスへのアクセスに使用するクライアントで、次の前提条件が満たされていることを確認してください。
 
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "スレーブ" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+
 ### <a name="for-device"></a>デバイスでは
 
 1. 1 ノードの Azure Stack Edge Pro デバイスに対するサインイン資格情報がある。
@@ -44,16 +47,16 @@ ms.locfileid: "96448848"
 
 1. Azure Stack Edge Pro デバイスへのアクセスに使用される Windows クライアント システムがある。
   
-    - クライアントで Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、[Windows PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)に関するページを参照してください。
+    - クライアントでは、Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、「[Windows PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)」を参照してください。
     
-    - [サポートされているオペレーティング システム](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)が搭載されている他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 
+    - [オペレーティング システムがサポートされている](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 
     
 1. [Azure Stack Edge Pro デバイス上の Kubernetes クラスターへのアクセス](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関する記事で説明されている手順を完了している。 完了した内容:
     
     - クライアントに `kubectl` がインストールされている  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
     - `kubectl` クライアントのバージョンと、Azure Stack Edge Pro デバイスで実行されている Kubernetes マスターのバージョンの差が 1 未満であることを確認する。 
-      - クライアントで実行されている kubectl のバージョンを確認するには、`kubectl version` を使用します。 完全なバージョンをメモしておきます。
+      - クライアントで実行されている kubectl のバージョンを確認するには、`kubectl version` を使用します。 完全なバージョン番号をメモしておきます。
       - お使いの Azure Stack Edge Pro デバイスのローカル UI で、 **[概要]** に移動し、Kubernetes ソフトウェアの番号をメモします。 
       - サポートされている Kubernetes バージョンで提供されているマッピングで、これら 2 つのバージョンの互換性を確認します <!--insert link-->.
 

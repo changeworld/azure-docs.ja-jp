@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3e3245053fcc9943814268835fa5ac0f40a6f94c
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: f6907db7f6e53247a8f2fc0042e8c8e6b081dbd3
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750511"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516367"
 ---
 # <a name="secure-your-restful-services"></a>お使いの RESTful サービスを保護する 
 
@@ -230,7 +230,7 @@ Authorization: Bearer <token>
 
 ### <a name="acquiring-an-access-token"></a>アクセス トークンの取得 
 
-アクセス トークンは、[フェデレーション ID プロバイダーから](idp-pass-through-custom.md)取得する方法、アクセス トークンを返す REST API を呼び出す方法、[ROPC フロー](../active-directory/develop/v2-oauth-ropc.md)を使用する方法、または[クライアント資格情報フロー](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)を使用する方法のいずれかで取得できます。  
+アクセス トークンは、[フェデレーション ID プロバイダーから](idp-pass-through-user-flow.md)取得する方法、アクセス トークンを返す REST API を呼び出す方法、[ROPC フロー](../active-directory/develop/v2-oauth-ropc.md)を使用する方法、または[クライアント資格情報フロー](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)を使用する方法のいずれかで取得できます。  
 
 次の例では、REST API の技術プロファイルを使用し、HTTP 基本認証として渡されたクライアント資格情報を使用して Azure AD トークン エンドポイントに要求を行います。 Azure AD でこれを構成するには、「[Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)」をご覧ください。 お使いの ID プロバイダーとのインターフェイスを提供するようにこれを変更する必要があることがあります。 
 

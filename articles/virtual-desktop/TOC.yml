@@ -92,8 +92,18 @@
           href: diagnostics-log-analytics.md
     - name: 組み込みアプリの公開
       href: publish-apps.md
-    - name: MSIX アプリのアタッチを設定する
-      href: app-attach.md
+    - name: MSIX アプリのアタッチを使用する
+      items:
+        - name: Azure portal で MSIX アプリのアタッチを設定する
+          href: app-attach-azure-portal.md
+        - name: PowerShell で MSIX アプリのアタッチを設定する
+          href: app-attach-powershell.md
+        - name: PowerShell スクリプトを使用する
+          href: app-attach.md
+        - name: MSIX イメージを準備する
+          href: app-attach-image-prep.md
+        - name: ファイル共有を設定する
+          href: app-attach-file-share.md
     - name: Microsoft Teams の使用
       href: teams-on-wvd.md
     - name: Azure AD の Multi-Factor Authentication を設定する
@@ -112,6 +122,8 @@
       href: disaster-recovery.md
 - name: 概念
   items:
+    - name: 組み込みのロール
+      href: rbac.md
     - name: 認証
       href: authentication.md
     - name: Windows Virtual Desktop の環境

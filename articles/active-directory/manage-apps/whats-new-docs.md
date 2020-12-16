@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory アプリケーション管理の新機能
 description: Azure Active Directory アプリケーション管理の新規および更新されたドキュメント。
-ms.date: 12/03/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -9,16 +9,30 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 38602482f1a25f212829342fe691d7bb75666d31
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: bad312b777c57a48c3205de588325d477b5773af
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571013"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563400"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory アプリケーション管理: 新機能
 
 Azure Active Directory アプリケーション管理のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 アプリケーション管理サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="updated-articles"></a>更新された記事
+
+- [クイックスタート: Azure Active Directory (Azure AD) テナント内のアプリケーションへの OIDC ベースのシングル サインオン (SSO) を設定する](add-application-portal-setup-oidc-sso.md)
+- [チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)
+- [OIDC ベースのシングル サインオンについて理解する](configure-oidc-single-sign-on.md)
+- [アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する](migrate-adfs-apps-to-azure.md)
+- [既存のオンプレミス プロキシ サーバーと連携する](application-proxy-configure-connectors-with-proxy-servers.md)
+- [Azure Active Directory アプリケーション管理: 新機能](whats-new-docs.md)
+- [AD FS アプリケーション アクティビティ レポート (プレビュー) を使用してアプリケーションを Azure AD に移行する](migrate-adfs-application-activity.md)
+- [Azure AD アプリケーション プロキシを使用したリモート デスクトップの公開](application-proxy-integrate-with-remote-desktop-services.md)
+
 
 ## <a name="november-2020"></a>2020 年 11 月
 

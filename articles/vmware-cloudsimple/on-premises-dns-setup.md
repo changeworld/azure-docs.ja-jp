@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8d982d06bd100313d643033294b6d14e6383d5df
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7a2b2344bbb110cd4b35cc1f6428f61e48552b01
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424700"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563009"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>オンプレミスのワークステーションからのプライベート クラウドの vCenter にアクセスするための名前解決用に DNS を構成する
 
@@ -45,6 +45,9 @@ DNS の構成には、次のどちらかのオプションを使用します。
 
 たとえば、既定の BIND サーバー構成の場合、DNS サーバー上の /etc/named.conf ファイルを編集し、次のゾーン情報を追加します。
 
+> [!NOTE]
+>この記事には、Microsoft が使用しなくなった "スレーブ" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+
 ```
 zone "az.cloudsimple.io"
 {
@@ -62,7 +65,7 @@ zone "az.cloudsimple.io"
 2. **[スタブ ゾーン]** を選択して **[次へ]** をクリックします。
 
     ![[スタブ ゾーン] オプションが強調表示されているスクリーンショット。](media/DNS02.png)
-3. 環境に応じて適切なオプションを選択し、 **[次へ]** をクリックします。
+3. 環境に応じて適切なオプションを選択し、**[次へ]** をクリックします。
 
     ![ゾーン データのレプリケーション オプションを示すスクリーンショット。](media/DNS03.png)
 4. **[前方参照ゾーン]** を選択し、 **[次へ]** をクリックします。
