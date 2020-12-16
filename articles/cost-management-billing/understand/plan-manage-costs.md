@@ -9,13 +9,13 @@ ms.subservice: common
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: 50180984423b7c6d2921234a3502495016c4df5c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: c640478170049bd06e11f7f89b1e213b7b305642
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150113"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032815"
 ---
 # <a name="plan-to-manage-azure-costs"></a>Azure のコストの管理を計画する
 
@@ -166,7 +166,7 @@ Microsoft 顧客契約 (MCA) の課金アカウント経由で Azure にアク�
 
 ### <a name="request-a-service-level-agreement-credit-for-a-service-incident"></a>サービス インシデントに対するサービス レベル アグリーメントの控除を要求する
 
-サービス レベル アグリーメント (SLA) では、稼働時間と接続に関する Microsoft の確約内容について説明しています。 Azure サービスで稼働時間や接続に影響を与える問題 (しばしば " *停止* " と呼ばれる) が発生すると、サービス インシデントが報告されます。 SLA に記載されている各サービスのサービス レベルが達成および維持されていない場合は、月額サービス料金の一部が控除対象になる場合があります。
+サービス レベル アグリーメント (SLA) では、稼働時間と接続に関する Microsoft の確約内容について説明しています。 Azure サービスで稼働時間や接続に影響を与える問題 (しばしば "*停止*" と呼ばれる) が発生すると、サービス インシデントが報告されます。 SLA に記載されている各サービスのサービス レベルが達成および維持されていない場合は、月額サービス料金の一部が控除対象になる場合があります。
 
 控除を要求するには、次の手順を実行します。
 

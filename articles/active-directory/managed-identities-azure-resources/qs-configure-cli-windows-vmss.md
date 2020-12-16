@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/26/2019
+ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1366e60b21eb7a073f7f3e758cd53298d6946b2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0f88eccc524ffac424f8f5048990f693aa67613d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897247"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590938"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Azure CLI を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
@@ -36,7 +36,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure リソースのマネージド ID に慣れていない場合は、「[Azure リソースのマネージド ID とは](overview.md)」を参照してください。 システム割り当てとユーザー割り当ての両方の種類のマネージド ID の詳細については、「[マネージド ID の種類](overview.md#managed-identity-types)」をご覧ください。
+- Azure リソースのマネージド ID について不明な場合は、「[Azure リソースのマネージド ID とは](overview.md)」を参照してください。 システム割り当てとユーザー割り当ての両方の種類のマネージド ID の詳細については、「[マネージド ID の種類](overview.md#managed-identity-types)」をご覧ください。
 
 - この記事の管理操作を実行するアカウントには、次の Azure のロールベースのアクセス制御の割り当てが必要です。
 

@@ -9,13 +9,13 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: banders
-ms.custom: contentperfq2
-ms.openlocfilehash: c9f344ec6eae40db2c76f3712df6f1f9d8cead37
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: bd46e7b2f0713da67842def47dfeadc837027d8f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668867"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027970"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Azure portal でのアカウント管理者のタスク
 
@@ -30,7 +30,7 @@ ms.locfileid: "92668867"
 
 1. Azure Portal にアカウント管理者としてサインインします。
 
-1. " **コスト管理 + 請求** " を検索します。
+1. "**コスト管理 + 請求**" を検索します。
 
     ![[コストの管理と請求] の検索を示すスクリーンショット ](./media/account-admin-tasks/search-bar.png)
 
@@ -119,7 +119,7 @@ Azure の使用制限により、クレジット額を超過する支出が防�
 使用制限は、コミットメント プランや従量課金制価格を使用したサブスクリプションでは利用できません。
 
 1. Azure Portal にアカウント管理者としてサインインします。
-1. " **コスト管理 + 請求** " を検索します。
+1. "**コスト管理 + 請求**" を検索します。
 
     ![[コストの管理と請求] の検索を示すスクリーンショット ](./media/account-admin-tasks/search-bar.png)
 
@@ -147,7 +147,7 @@ Azure の使用制限により、クレジット額を超過する支出が防�
 Azure イン オープン プランのライセンス サブスクリプションがある場合は、プロダクト キーを使用するか、クレジット カードでクレジットを購入することによって、Azure portal でサブスクリプションにクレジットを追加できます。
 
 1. Azure Portal にアカウント管理者としてサインインします。
-1. " **コスト管理 + 請求** " を検索します。
+1. "**コスト管理 + 請求**" を検索します。
 
     ![[コストの管理と請求] の検索を示すスクリーンショット ](./media/account-admin-tasks/search-bar.png)
 

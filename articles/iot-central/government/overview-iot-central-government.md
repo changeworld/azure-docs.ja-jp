@@ -3,22 +3,20 @@ title: Azure IoT Central を使用した政府機関ソリューションの構�
 description: Azure IoT Central アプリケーション テンプレートを使用してスマート シティ ソリューションを構築する方法について説明します。
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 5f92750217dd0bcf5d7a5074a6187d994f19722a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 72b0e3c3cee0ed9131fe6ee1f50cee10ec03a7b7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126568"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590819"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Azure IoT Central を使用した政府機関ソリューションの構築
 
-
-
-Azure IoT Central アプリケーション テンプレートを使用してスマート シティ ソリューションを構築します。 まず、**水質のモニタリング**、**水消費量のモニタリング**、**接続された廃棄物管理**を使用します。
+Azure IoT Central アプリケーション テンプレートを使用してスマート シティ ソリューションを構築します。 まず、**水質のモニタリング**、**水消費量のモニタリング**、**接続された廃棄物管理** を使用します。
 
 ## <a name="what-is-water-quality-monitoring-application-template"></a>水質のモニタリング アプリケーション テンプレートとは   
 
@@ -41,7 +39,6 @@ Azure IoT Central アプリケーション テンプレートを使用してス�
 ## <a name="what-is-water-consumption-monitoring-application-template"></a>水消費量のモニタリング アプリケーション テンプレートとは 
 
 従来の水消費量のモニタリングでは、水道会社が水道メーターを手動で読み取っていました。 従来のメーターを高度なスマート メーターに置き換える都市が増えたことで、消費量をリモート監視し、バルブをリモート制御して水流を制御することができるようになりました。 水消費量のモニタリングと市民へのデジタル フィードバック メッセージを組み合わせることで、水の消費量削減について周知することができます。 
-
 
 水消費のモニタリングアプリは、IoT ソリューションの開発を始め、水道施設がリモートで水流をのモニタリングおよび制御して水消費量を削減する IoT Central アプリ テンプレートです。 
 

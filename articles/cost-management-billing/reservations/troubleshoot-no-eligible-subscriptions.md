@@ -7,13 +7,13 @@ ms.subservice: reservations
 ms.author: banders
 ms.reviewer: yashar
 ms.topic: troubleshooting
-ms.date: 11/16/2020
-ms.openlocfilehash: 1b36577c3c0940687f98394f8ea4faae83f371be
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.date: 12/15/2020
+ms.openlocfilehash: ad85bd278b5dff1532f218acc0b8e88515d96070
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887197"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561207"
 ---
 # <a name="troubleshoot-no-eligible-subscriptions"></a>トラブルシューティング: "有効なサブスクリプションがない"
 
@@ -94,8 +94,8 @@ You can only purchase reservations using subscriptions on which you have owner o
 1. 所有者として追加するユーザーの電子メール アドレスを入力します。
 1. ユーザーを選択し、 **[保存]** を選択します。
 
-詳細については、「[予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)」を参照してください。
+詳細については、「[予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-- 予約所有者からアクセス権を付与してもらう必要がある場合は、「[予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)」を参照してください。
+- 予約所有者からアクセス権を付与してもらう必要がある場合は、「[予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default)」を参照してください。

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/26/2019
+ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d193637122cb388ea2c5012638526719d245f524
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bd7ec1f6cdfc8ecfe32de04f5d06b42f9492b88c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997379"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590904"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>PowerShell を使用して仮想マシン スケール セット上に Azure リソースのマネージド ID を構成する方法
 
@@ -29,6 +29,7 @@ ms.locfileid: "95997379"
 Azure リソースのマネージド ID は、Azure Active Directory で自動的に管理される ID を Azure サービスに提供します。 この ID を使用して、コードに資格情報が含まれていなくても、Azure AD の認証をサポートする任意のサービスに認証することができます。 
 
 この記事では、PowerShell を使用して、仮想マシン スケール セット上で Azure リソースのマネージド ID 操作を実行する方法について説明します。
+
 - 仮想マシン スケール セット上でシステム割り当てマネージド ID を有効および無効にする
 - 仮想マシン スケール セット上でユーザー割り当てマネージド ID の追加および削除を行う
 

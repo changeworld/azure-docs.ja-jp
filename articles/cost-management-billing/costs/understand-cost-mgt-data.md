@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.custom: contentperfq2
-ms.openlocfilehash: 923b03f0c7bbf8d6948a80742530db6cb9b06c25
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 97ae2ba26818bbc306da71af814d9b4f95858b6a
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675909"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032577"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
@@ -49,13 +49,13 @@ Azure Cost Management で現在サポートされている [Microsoft Azure の�
 | **Visual Studio** | Visual Studio Enterprise<sup>4</sup>           | MSDN_2014-09-01 | MS-AZR-0063P | 2018 年 10 月 2 日<sup>2</sup> |
 | **Visual Studio** | Visual Studio Enterprise:BizSpark<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0064P | 2018 年 10 月 2 日<sup>2</sup> |
 
-_<sup>**1**</sup> 2014 年 5 月よりも前のデータについては、 [Azure エンタープライズ ポータル](https://ea.azure.com)にアクセスしてください。_
+_<sup>**1**</sup> 2014 年 5 月よりも前のデータについては、[Azure エンタープライズ ポータル](https://ea.azure.com)にアクセスしてください。_
 
-_<sup>**2**</sup> 2018 年 10 月 2 日よりも前のデータについては、 [Azure アカウント センター](https://account.azure.com/subscriptions)にアクセスしてください。_
+_<sup>**2**</sup> 2018 年 10 月 2 日よりも前のデータについては、[Azure アカウント センター](https://account.azure.com/subscriptions)にアクセスしてください。_
 
 _<sup>**3**</sup> Microsoft 顧客契約は 2019 年 3 月に開始したため、これ以前の履歴データはありません。_
 
-_<sup>**4**</sup>クレジットベースの前払い制サブスクリプションの履歴データは、請求書と一致しない場合があります。以下の「 [履歴データが請求書と一致しない場合がある](#historical-data-might-not-match-invoice)」をご覧ください。_
+_<sup>**4**</sup>クレジットベースの前払い制サブスクリプションの履歴データは、請求書と一致しない場合があります。以下の「[履歴データが請求書と一致しない場合がある](#historical-data-might-not-match-invoice)」をご覧ください。_
 
 次のプランはまだサポートされていません。
 
@@ -83,7 +83,7 @@ _<sup>**4**</sup>クレジットベースの前払い制サブスクリプショ
 
 ### <a name="determine-your-offer-type"></a>オファーの種類を決定する
 
-サブスクリプションのデータが表示されず、ご利用のサブスクリプションがサポート対象のプランに該当するかどうかわからない場合は、ご利用のサブスクリプションがサポート対象かどうかを検証することができます。 Azure サブスクリプションがサポート対象かどうかを確認するには、Azure portal にサインインします。 次に、左側のメニュー ウィンドウにある **[すべてのサービス]** を選択します。 サービスの一覧で **[サブスクリプション]** を選択します。 [サブスクリプション] の一覧で、確認するサブスクリプションを選択します。 選択したサブスクリプションが [概要] タブに表示され、 **プラン** と **プラン ID** を確認できます。 次に例を示します。
+サブスクリプションのデータが表示されず、ご利用のサブスクリプションがサポート対象のプランに該当するかどうかわからない場合は、ご利用のサブスクリプションがサポート対象かどうかを検証することができます。 Azure サブスクリプションがサポート対象かどうかを確認するには、Azure portal にサインインします。 次に、左側のメニュー ウィンドウにある **[すべてのサービス]** を選択します。 サービスの一覧で **[サブスクリプション]** を選択します。 [サブスクリプション] の一覧で、確認するサブスクリプションを選択します。 選択したサブスクリプションが [概要] タブに表示され、**プラン** と **プラン ID** を確認できます。 次に例を示します。
 
 ![プランとプラン ID が表示された、サブスクリプションの [概要] タブの例](./media/understand-cost-mgt-data/offer-and-offer-id.png)
 
@@ -150,7 +150,7 @@ Cost Management に特定のタグが表示されない場合は、次の点を�
 - 現在の請求期間の見積もり料金は、1 日に 6 回更新されます。
 - 現在の請求期間の見積もり料金は、使用量の増加に伴い変更される可能性があります。
 - 各更新は累積的であるため、すべての明細項目と、以前の更新からの情報が含まれます。
-- Azure では、現在の請求期間の終了後 72 時間 (3 カレンダー日) 以内に請求期間が確定 (" _クローズ_ ") します。
+- Azure では、現在の請求期間の終了後 72 時間 (3 カレンダー日) 以内に請求期間が確定 ("_クローズ_") します。
 
 次の例は、請求期間が終了するタイミングを示しています。
 
