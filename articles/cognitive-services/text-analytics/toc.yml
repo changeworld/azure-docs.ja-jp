@@ -31,24 +31,8 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: クライアント ライブラリ
-      items:
-        - name: クライアント ライブラリを使用したテキストの分析
-          href: quickstarts/text-analytics-sdk.md
-    - name: REST API
-      items:
-        - name: Java の使用
-          href: quickstarts/java.md
-        - name: Python の使用
-          href: quickstarts/python.md
-        - name: Node.js の使用
-          href: quickstarts/nodejs.md
-        - name: PHP の使用
-          href: quickstarts/php.md
-        - name: Go の使用
-          href: quickstarts/go.md
-        - name: Ruby の使用
-          href: quickstarts/ruby.md
+    - name: クライアント ライブラリと REST API を使用する
+      href: quickstarts/client-libraries-rest-api.md
 - name: チュートリアル
   items:
     - name: Power BI を統合して顧客からのフィードバックを分析する

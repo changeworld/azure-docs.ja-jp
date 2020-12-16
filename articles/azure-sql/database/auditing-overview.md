@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 11/08/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8cf0652148ad54eeacdec874823ea680f39f670c
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: b09eb03994098f8cb68033f3c42309a77e15f91c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372729"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620993"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database および Azure Synapse Analytics の監査
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -65,6 +65,18 @@ SQL Database 監査を使用して、以下を行うことができます。
     > - 特定のデータベースの監査対象とするイベントの種類またはカテゴリが、このサーバー上の他のデータベースの管理対象と異なる場合。 たとえば、特定のデータベースに対してのみ監査が必要なテーブルの挿入がある場合など。
    >
    > これらに該当しない場合は、サーバー レベルの監査のみを有効にし、すべてのデータベースに対してデータベース レベルの監査を無効にすることをお勧めします。
+
+#### <a name="remarks"></a>解説
+
+- 監査ログは Azure サブスクリプションの Azure Blob Storage 内にある **追加 BLOB** に書き込まれます
+- 監査ログは .xel 形式であり、[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) を使用して開くことができます。
+- サーバー レベルまたはデータベース レベルの監査イベントに対して不変のログ ストアを構成するには、[Azure Storage で提供される手順](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)に従います。 不変 BLOB ストレージを構成するときに、 **[さらに追加を許可する]** を選択していることを確認します。
+- VNet またはファイアウォールの背後にある Azure Storage アカウントに監査ログを書き込むことができます。 具体的な手順については、[VNet とファイアウォールの背後にあるストレージ アカウントに監査を書き込む](audit-write-storage-account-behind-vnet-firewall.md)方法に関する記事を参照してください。
+- ログの形式、ストレージ フォルダーの階層、および命名規則の詳細については、[BLOB 監査ログ形式のリファレンス](./audit-log-format.md)に関するドキュメントを参照してください。
+- [読み取り専用レプリカ](read-scale-out.md)での監査は自動的に有効になります。 ストレージ フォルダーの階層、命名規則、ログ形式の詳細については、「[SQL Database 監査ログの形式](audit-log-format.md)」を参照してください。
+- Azure AD Authentication を使用している場合は、失敗したログインのレコードは SQL 監査ログに表示 "*されません*"。 失敗したログインの監査レコードを表示するには、これらのイベントの詳細をログに記録している [Azure Active Directory ポータル](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)にアクセスする必要があります。
+- ログインはゲートウェイによって、データベースが置かれている特定のインスタンスにルーティングされます。  AAD ログインの場合、そのユーザーを使用し、要求されたデータベースへのログインを試行する前に、資格情報が検証されます。  不合格になった場合、要求されたデータベースがアクセスされることはなく、監査は行われません。  SQL ログインの場合、要求されたデータで資格情報が検証されます。そのため、この場合、監査できます。  ログイン成功 (明らかにデータベースにアクセスできる) は、いずれの場合も監査されます。
+- 監査設定を構成した後に、新しい脅威の検出機能をオンにし、電子メールを構成してセキュリティの警告を受信します。 脅威の検出を使用すると、セキュリティ上の脅威になる可能性がある異常なデータベース アクティビティに対するプロアクティブ アラートを受信できます。 詳細については、[脅威の検出の概要](threat-detection-overview.md)に関するページを参照してください。
 
 ## <a name="set-up-auditing-for-your-server"></a><a id="setup-auditing"></a>サーバーの監査を設定する
 
@@ -120,17 +132,6 @@ AzureDiagnostics
   - リテンション期間を 0 (無制限のリテンション期間) から他の値に変更した場合、リテンション期間は、リテンション期間の値が変更された後に書き込まれたログにのみ適用されることに注意してください (リテンション期間が無制限に設定されている間に書き込まれたログは、リテンション期間が有効になった後も保持されます)。
 
   ![ストレージ アカウント](./media/auditing-overview/auditing_select_storage.png)
-
-#### <a name="remarks"></a>解説
-
-- 監査ログは Azure サブスクリプションの Azure Blob Storage 内にある **追加 BLOB** に書き込まれます
-- 監査ログは .xel 形式であり、[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) を使用して開くことができます。
-- サーバー レベルまたはデータベース レベルの監査イベントに対して不変のログ ストアを構成するには、[Azure Storage で提供される手順](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)に従います。 不変 BLOB ストレージを構成するときに、 **[さらに追加を許可する]** を選択していることを確認します。
-- VNet またはファイアウォールの背後にある Azure Storage アカウントに監査ログを書き込むことができます。 具体的な手順については、[VNet とファイアウォールの背後にあるストレージ アカウントに監査を書き込む](audit-write-storage-account-behind-vnet-firewall.md)方法に関する記事を参照してください。
-- 監査設定を構成した後に、新しい脅威の検出機能をオンにし、電子メールを構成してセキュリティの警告を受信します。 脅威の検出を使用すると、セキュリティ上の脅威になる可能性がある異常なデータベース アクティビティに対するプロアクティブ アラートを受信できます。 詳細については、[脅威の検出の概要](threat-detection-overview.md)に関するページを参照してください。
-- ログの形式、ストレージ フォルダーの階層、および命名規則の詳細については、[BLOB 監査ログ形式のリファレンス](./audit-log-format.md)に関するドキュメントを参照してください。
-- Azure AD Authentication を使用している場合は、失敗したログインのレコードは SQL 監査ログに表示 "*されません*"。 失敗したログインの監査レコードを表示するには、これらのイベントの詳細をログに記録している [Azure Active Directory ポータル](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)にアクセスする必要があります。
-- [読み取り専用レプリカ](read-scale-out.md)での監査は自動的に有効になります。 ストレージ フォルダーの階層、命名規則、ログ形式の詳細については、「[SQL Database 監査ログの形式](audit-log-format.md)」を参照してください。
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Log Analytics 保存先への監査
   

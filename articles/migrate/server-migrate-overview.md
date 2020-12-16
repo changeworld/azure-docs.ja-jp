@@ -1,14 +1,17 @@
 ---
-title: Azure Migrate Server Migration を使用した VMware 移行オプションを選択する | Microsoft Docs
+title: Azure Migrate Server Migration を使用した VMware 移行オプションを選択する
 description: Azure Migrate Server Migration を使用して VMware VM を Azure に移行するためのオプションの概要について説明します。
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: ac08075212d885a1aca755f94906b50754e23b9d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5e4aaea5b565e126f633b04215bbc3a24faf2cde
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534109"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753605"
 ---
 # <a name="select-a-vmware-migration-option"></a>VMware 移行オプションを選択する
 
@@ -45,7 +48,7 @@ Azure Migrate Server Migration ツールを使用して VMware VM を Azure に�
 **VMware の移行を準備する** | VMware サーバーと VM で設定を構成します。 | 必須 | 必須
 **VM 上にモビリティ サービスをインストールする** | Mobility Service は、レプリケートする各 VM 上で実行されます | 必要なし | 必須
 **レプリケーション アプライアンスをデプロイする** | [レプリケーション アプライアンス](migrate-replication-appliance.md)は、エージェントベースの移行に使用されます。 VM 上で実行されている Mobility Service と Server Migration の間を接続します。 | 必要なし | 必須
-**VM をレプリケートする** 。 VM レプリケーションを有効にする。 | レプリケーション設定を構成し、レプリケートする VM を選択します。 | 必須 | 必須
+**VM をレプリケートする**。 VM レプリケーションを有効にする。 | レプリケーション設定を構成し、レプリケートする VM を選択します。 | 必須 | 必須
 **テスト移行を実行する** | すべてが想定どおりに動作していることを確認するためにテスト移行を実行します。 | 必須 | 必須
 **完全な移行を実行する** | VM を移行します。 | 必須 | 必須
 

@@ -94,7 +94,7 @@ Azure Cosmos DB のグラフ サポートが役立つ場合があるいくつか
 
 ### <a name="property-graph-objects"></a>プロパティ グラフのオブジェクト
 
-プロパティ [グラフ](http://mathworld.wolfram.com/Graph.html)とは、[頂点](http://mathworld.wolfram.com/GraphVertex.html)と[辺](http://mathworld.wolfram.com/GraphEdge.html)で構成された構造です。 両方のオブジェクトで、プロパティとして任意の数のキーと値のペアを持つことができます。 
+プロパティ [グラフ](http://mathworld.wolfram.com/Graph.html)とは、[頂点](http://mathworld.wolfram.com/GraphVertex.html)と[エッジ](http://mathworld.wolfram.com/GraphEdge.html)で構成された構造です。 両方のオブジェクトで、プロパティとして任意の数のキーと値のペアを持つことができます。 
 
 * **頂点 (ノード)** - 頂点は、人、場所、イベントなどの個々のエンティティを表します。
 

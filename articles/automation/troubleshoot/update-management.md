@@ -2,15 +2,15 @@
 title: Azure Automation Update Management に関する問題のトラブルシューティング
 description: この記事では、Azure Automation Update Management に関する問題のトラブルシューティングと解決方法について説明します。
 services: automation
-ms.date: 10/14/2020
+ms.date: 12/04/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 8818047dd4fef9c495c46b353e68841f83e9677c
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e8fc2a840ce019282625f286a6d54b132a1806c8
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217220"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751259"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Update Management に関する問題のトラブルシューティング
 
@@ -18,6 +18,40 @@ ms.locfileid: "92217220"
 
 >[!NOTE]
 >Windows マシンに Update Management をデプロイしているときに問題が発生した場合は、Windows イベント ビューアーを開き、ローカル コンピューターの **[アプリケーションとサービス ログ]** の下にある **Operations Manager** イベント ログを確認します。 イベント ID が 4502 でイベントの詳細に `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` が含まれるイベントを探します。
+
+## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a>シナリオ:Linux 更新プログラムが保留中として表示され、インストールされる更新プログラムが異なる
+
+### <a name="issue"></a>問題
+
+Linux マシンの場合、Update Management には、 **[セキュリティ]** と **[その他]** に分類される更新プログラムが表示されます。 ただし、 **[セキュリティ]** として分類される更新プログラムのみをインストールするなど、ある更新スケジュールがマシン上で実行されるとき、インストールされる更新プログラムは、その分類に一致する前に表示された更新プログラムとは異なるものになるか、その一部になります。
+
+### <a name="cause"></a>原因
+
+お使いの Linux マシンに対して保留になっている OS 更新プログラムの評価が終わると、Linux ディストリビューション ベンダーが提供する [Open Vulnerability and Assessment Language](https://oval.mitre.org/) (OVAL) が分類のために Update Management によって使用されます。 セキュリティの問題または脆弱性に対処する更新プログラムについて明記された OVAL ファイルに基づき、Linux 更新プログラムが **[セキュリティ]** か **[その他]** として分類されます。 ただし、更新プログラムが実行されるとき、YUM、APT、ZYPPER などの適切なパッケージ マネージャーを使用し、Linux マシン上で実行され、インストールされます。 Linux ディストリビューションのパッケージ マネージャーには、更新プログラムを分類する別のメカニズムが与えられていることがあります。結果は、Update Management によって OVAL ファイルから取得されるものと異なる場合があります。
+
+### <a name="resolution"></a>解決策
+
+Linux マシン、適用できる更新プログラム、ディストリビューションのパッケージ マネージャー別のその分類を手動で確認できます。 お使いのパッケージ マネージャーによって **[セキュリティ]** として分類された更新プログラムを理解するには、次のコマンドを実行します。
+
+YUM の場合、次のコマンドから、Red Hat によって **[セキュリティ]** として分類される更新プログラムのゼロではない一覧が返されます。 CentOS の場合、常に空の一覧が返されるか、セキュリティ分類が行われません。
+
+```bash
+sudo yum -q --security check-update
+```
+
+ZYPPER の場合、次のコマンドから、SUSE によって **[セキュリティ]** として分類される更新プログラムのゼロではない一覧が返されます。
+
+```bash
+sudo LANG=en_US.UTF8 zypper --non-interactive patch --category security --dry-run
+```
+
+APT の場合、次のコマンドから、Canonical for Ubuntu Linux ディストリビューションによって **[セキュリティ]** として分類される更新プログラムのゼロではない一覧が返されます。
+
+```bash
+sudo grep security /etc/apt/sources.list > /tmp/oms-update-security.list LANG=en_US.UTF8 sudo apt-get -s dist-upgrade -oDir::Etc::Sourcelist=/tmp/oms-update-security.list
+```
+
+この一覧から、コマンド `grep ^Inst` を実行し、保留中のセキュリティ更新プログラムをすべて取得します。
 
 ## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a><a name="failed-to-enable-error"></a>シナリオ:"Failed to enable the Update solution" (Update ソリューションを有効にできませんでした) というエラーが表示される
 
@@ -97,7 +131,7 @@ Error details: Failed to enable the Update solution
 
 * 自分のワークスペースで定義したクォータに達していて、それ以上のデータの格納が妨げられている可能性があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 1. OS に応じて、[Windows](update-agent-issues.md#troubleshoot-offline) 用または [Linux](update-agent-issues-linux.md#troubleshoot-offline) 用のトラブルシューティング ツールを実行します。
 
@@ -142,7 +176,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 Automation リソース プロバイダーがサブスクリプションに登録されていません。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 Automation リソース プロバイダーを登録するには、Azure portal で次の手順に従います。
 
@@ -170,7 +204,7 @@ Automation リソース プロバイダーを登録するには、Azure portal �
 
 * スケジュールが実行されたときに、マシンが使用できなかったか、マシンに適切なタグがありませんでした。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 #### <a name="subscriptions-not-configured-for-registered-automation-resource-provider"></a>登録済みの Automation リソース プロバイダー用に構成されていないサブスクリプション
 
@@ -220,7 +254,7 @@ Automation リソース プロバイダーを登録するには、Azure portal �
 * ARG クエリで、予期されるマシンが取得されません。
 * Hybrid Runbook Worker がマシンにインストールされていません。
 
-### <a name="resolution"></a>解像度 
+### <a name="resolution"></a>解決方法 
 
 #### <a name="incorrect-access-on-selected-scopes"></a>選択したスコープに対する正しくないアクセス権
 
@@ -291,7 +325,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 
 * デプロイしている VM イメージの複製元が、Windows 用の Log Analytics エージェントがインストールされた状態でシステム準備 (sysprep) を使用して準備されなかった複製マシンである可能性があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 VM の問題を正確に特定するには、Automation アカウントにリンクされた Log Analytics ワークスペースで、次のクエリを実行します。
 
@@ -339,7 +373,7 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 このエラーは、更新プログラムの展開に含まれる別のテナントの Azure VM を持つ更新プログラムの展開を作成するときに発生します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 次の回避策を使用して、これらの項目をスケジュールします。 スケジュールを作成するには、`ForUpdateConfiguration` パラメーターを指定して [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule) コマンドレットを使用します。 次に、[New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration) コマンドレットを使用して、他のテナントのマシンを `NonAzureComputer` パラメーターに渡します。 以下の例は、その方法を示しています。
 
@@ -363,7 +397,7 @@ New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationA
 
 Windows Update はいくつかのレジストリ キーによって変更でき、そのいずれかによって再起動の動作が変更されることがあります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 「[レジストリを編集して自動更新を構成する](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)」と、[「再起動の管理に使われるレジストリ キー](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)」に記載されているレジストリ キーを確認して、マシンが正しく構成されていることを確認します。
 
@@ -387,7 +421,7 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 * Log Analytics エージェントに対する更新があり、ソース コンピューター ID が変更されました。
 * Automation アカウントで 200 個の同時ジョブの制限に達した場合、更新の実行が制限されました。 各展開は 1 つのジョブと見なされ、更新プログラムの展開内の各マシンは 1 つのジョブとカウントされます。 Automation アカウントで現在実行されている他のオートメーション ジョブや更新プログラムの展開は、すべて同時ジョブ制限の対象になります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 該当する場合は、更新プログラムの展開に[動的グループ](../update-management/configure-groups.md)を使用します。 さらに、次の手順を実行できます。
 
@@ -404,7 +438,7 @@ Update Management に Windows マシンを登録すると、展開なしで更�
 
 Windows では、更新プログラムは、使用可能になるとすぐに自動的にインストールされます。 この動作が原因で、更新プログラムをマシンに展開するスケジュールを設定しなかった場合、混乱が生じる可能性があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 レジストリ キー `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` の既定値は、4: `auto download and install` に設定されています。
 
@@ -426,7 +460,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 マシンが既に Update Management 用の別のワークスペースにデプロイされています。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 1. 「[Update Management のポータルにマシンが表示されない](#nologs)」の手順に従って、マシンのレポート先が正しいワークスペースであることを確認します。
 2. [Hybrid Runbook グループを削除する](../automation-windows-hrw-install.md#remove-a-hybrid-worker-group)ことにより、マシン上のアーティファクトをクリーンアップしてから、再試行します。
@@ -457,7 +491,7 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 プロキシ、ゲートウェイ、またはファイアウォールがネットワーク通信をブロックしている可能性があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 ネットワークを見直し、適切なポートとアドレスが許可されていることを確認します。 Update Management および Hybrid Runbook Worker で必要なポートとアドレスの一覧については、[ネットワーク要件](../automation-hybrid-runbook-worker.md#network-planning)を参照してください。
 
@@ -475,7 +509,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 Hybrid Runbook Worker が自己署名証明書を生成できませんでした。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 **C:\ProgramData\Microsoft\Crypto\RSA** フォルダーへの読み取りアクセスがシステム アカウントにあることを確認してから、再試行します。
 
@@ -504,7 +538,7 @@ Hybrid Runbook Worker が自己署名証明書を生成できませんでした�
 
 更新エージェント (Windows 上の Windows Update エージェント、Linux ディストリビューション用のパッケージ マネージャー) が正しく構成されていません。 Update Management は、必要な更新プログラム、パッチの状態、展開されたパッチの結果を提供するために、マシンの更新エージェントを利用しています。 この情報がないと、Update Management は必要なパッチやインストール済みのパッチを適切にレポートすることができません。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 マシンで更新プログラムをローカルで実行してみてください。 この操作が失敗する場合は、通常、更新エージェントの構成にエラーがあることを意味します。
 
@@ -554,7 +588,7 @@ HRESULT が表示される場合は、赤で表示された例外をダブルク
 * マシンにアクセスできません。
 * 更新プログラムに、解決されていない依存関係がありました。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 正常に開始した後に更新プログラムの実行中にエラーが発生した場合は、実行で影響を受けたマシンからの[ジョブ出力を確認](../update-management/deploy-updates.md#view-results-of-a-completed-update-deployment)します。 マシンからの特定のエラー メッセージが見つかれば、調査して対処することができます。 Update Management で更新プログラムをデプロイするには、パッケージ マネージャーが正常である必要があります。
 

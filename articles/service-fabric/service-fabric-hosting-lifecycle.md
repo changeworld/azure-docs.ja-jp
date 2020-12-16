@@ -5,15 +5,16 @@ author: tugup
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: tugup
-ms.openlocfilehash: a39aecf16d1c3303c0a590b389ba2aa69d4472f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f049b19703d37412d1ee1961aee6cb327efabe7c
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87405128"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779602"
 ---
 # <a name="azure-service-fabric-hosting-lifecycle"></a>Azure Service Fabric ホスティングのライフサイクル
-この記事では、アプリケーションがノードでアクティブ化されるときに発生するイベントと、動作を制御するために使用されるさまざまなクラスター構成の概要について説明します。
+
+この記事では、Azure Service Fabric において、アプリケーションがノードでアクティブ化されるときに発生するイベントと、動作を制御するために使用されるさまざまなクラスター構成の概要について説明します。
 
 先に進む前に、「[Service Fabric でのアプリケーションのモデル化][a1]」で説明されているさまざまな概念とリレーションシップをよく理解しておいてください。 
 
@@ -38,84 +39,89 @@ ms.locfileid: "87405128"
 8. CodePackage の MainEntryPoint を開始します。
 
 ### <a name="servicetype-blocklisting"></a>ServiceType のブロックリスト
-**ServiceTypeDisableFailureThreshold** により、ServiceType でブロックリストがスケジュールされるまでの失敗 (アクティブ化、ダウンロード、CodePackage のエラー) の数が決まります。 したがって、最初のアクティブ化/ダウンロードの失敗、または CodePackage のクラッシュによって、ServiceType のブロックリストのスケジュールがトリガーされます。 **ServiceTypeDisableGraceInterval** 構成は、ServiceType がそのノード上でブロックリストに入れられているとして最終的にマークされるまでの猶予期間を決定します。 このすべてが起こるためには、アクティブ化/ダウンロード/CodePackage の再起動が内部ではまだ再試行モードであり、ホスティング サブシステムによって追跡されている必要があることに注意してください。 再試行とは、たとえば、CodePackage がクラッシュ後に再び起動するようにスケジュールされる、または Service Fabric がパッケージのダウンロードを再試行することを意味します。
-ブロックリストに入れられると、"'System.Hosting' reported Error for property 'ServiceTypeRegistration:ServiceType'. The ServiceType was disabled on the node." ('システム ホスティング' により、プロパティ 'ServiceTypeRegistration:ServiceType'.のエラーが報告されました。ServiceType がノードで無効化されました。) というエラーが表示されます。
+**ServiceTypeDisableFailureThreshold** により、ServiceType でブロックリストがスケジュールされるまでの失敗 (アクティブ化、ダウンロード、CodePackage のエラー) の数が決まります。 最初のアクティブ化の失敗、ダウンロードの失敗、または CodePackage のクラッシュによって、ServiceType のブロックリストへの登録がスケジュールされます。 **ServiceTypeDisableGraceInterval** 構成により、ServiceType がそのノード上でブロックリストに登録されているものとしてマークされるまでの猶予期間が決まります。 このすべてが発生している間に、アクティブ化、ダウンロード、および CodePackage の再起動が並列して再試行されます。 再試行とは、たとえば、CodePackage がクラッシュ後に再び起動するようにスケジュールされるか、Service Fabric によりパッケージのダウンロードが再試行されることを意味します。
 
-次の場合、ServiceType はノードで再び有効になります。 
-- アクティブ化操作が成功した場合、または失敗して **ActivationMaxFailureCount** の再試行回数に達した場合。
-- ダウンロード操作が成功した場合、または失敗して **DeploymentMaxFailureCount** の再試行回数に達した場合。
-- クラッシュした CodePackage がバックアップを開始し、ServiceType を正常に登録した場合。
+ServiceType がブロックリストに登録されている場合、正常性に関する "'System.Hosting' reported Error for property 'ServiceTypeRegistration:ServiceType'. The ServiceType was disabled on the node." ('システム ホスティング' により、プロパティ 'ServiceTypeRegistration:ServiceType'.のエラーが報告されました。ServiceType がノードで無効化されました。) というエラーが表示されます。
 
-**ActivationMaxFailureCount**/**DeploymentMaxFailureCount** の再試行回数後に ServiceType を再び有効にする理由は、それが、Service Fabric がノード上でアプリケーションをアクティブ化/ダウンロードするために実行する最大試行回数だからです。 成功しない場合、現在の操作は再試行されません。そして、Service Fabric は、サービスに対して (成功して、問題が自動的に解決するかもしれない) アクティブ化の新たなチャンスを与えたいため、アクティブ化/ダウンロード操作のライフサイクルに関連付けられます。 レプリカの配置によってトリガーされた新しいアクティブ化/ダウンロード操作は、ServiceType のブロックリスト作成を再度トリガーするか、成功する可能性があります。
+次のいずれかが発生した場合、ServiceType はノードで再び有効になります。
+- アクティブ化が成功したか、失敗して **ActivationMaxFailureCount** の再試行回数に達した。
+- ダウンロードが成功したか、失敗して **DeploymentMaxFailureCount** の再試行回数に達した。
+- クラッシュした CodePackage が起動し、ServiceType が正常に登録された。
+
+**ActivationMaxFailureCount** と **DeploymentMaxFailureCount** は、ノード上でアプリケーションをアクティブ化またはダウンロードするために Service Fabric によって行われる最大試行回数です。これを過ぎると、Service Fabric で再度アクティブ化するために ServiceType が有効になります。 これは、サービスにアクティブ化するための別の機会を与えるためのものです。その場合、成功する可能性があり、その結果、問題は自動的に修復されます。 レプリカの配置とアクティブ化によってトリガーされた新しいアクティブ化やダウンロード操作により、ServiceType のブロックリストへの登録が再度トリガーされるか、操作が成功する可能性があります。
 
 > [!NOTE]
 > ServiceType を登録していない CodePackage がクラッシュしている場合、ServiceType には影響はありません。 ServiceType に影響を与えるのは、レプリカをホストしている CodePackage のクラッシュだけです。
 >
 
 ### <a name="codepackage-crash"></a>CodePackage のクラッシュ
-CodePackage がクラッシュすると、Service Fabric はバックオフを使用してもう一度開始します。バックオフは、コード パッケージによって型が登録されているかどうかは関係ありません。
+CodePackage がクラッシュした場合は、Service Fabric でバックオフを使用して再起動します。 バックオフは、コード パッケージによって Service Fabric ランタイムに種類が登録されたかどうかには関係ありません。
 
-バックオフ値は常に Min(RetryTime, **ActivationMaxRetryInterval**) であり、この値は、**ActivationRetryBackoffExponentiationBase** 構成に基づいて定数、線形、または指数の場合があります。
+バックオフ値は Min(RetryTime, **ActivationMaxRetryInterval**) であり、このバックオフ値は、**ActivationRetryBackoffExponentiationBase** 構成設定に基づいて定数、線形、または指数量単位で増加します。
 
 - 定数: **ActivationRetryBackoffExponentiationBase** == 0 の場合、RetryTime = **ActivationRetryBackoffInterval**;
 - 線形: **ActivationRetryBackoffExponentiationBase** == 0 の場合、RetryTime = ContinuousFailureCount* **ActivationRetryBackoffInterval**。ここで、ContinousFailureCount は、CodePackage がクラッシュするか、アクティブ化に失敗する回数です。
 - 指数: RetryTime = (**ActivationRetryBackoffInterval** (秒単位)) * (**ActivationRetryBackoffExponentiationBase** ^ ContinuousFailureCount);
     
-クイック再起動などの動作は必要に応じて制御できます。 線形について説明しましょう。 これは、CodePackage がクラッシュした場合、開始間隔は、CodePackage が非アクティブ化されるまで、10、20、30、40 秒後になることを意味します。 
+値を変更することで、動作を制御できます。 たとえば、いくつかのクイック再起動を試行する場合は、**ActivationRetryBackoffExponentiationBase** を 0 に、**ActivationRetryBackoffInterval** を 10 に設定して、線形を使用できます。 これらの設定では、CodePackage がクラッシュした場合、起動間隔は 10 秒後になります。 パッケージがクラッシュし続ける場合、CodePackage のアクティブ化が成功するか、コード パッケージが非アクティブ化されるまで、バックオフは 20、30、40 秒などに変わります。 
     
 失敗の後に Service Fabric がバックオフ (待機) する最大時間は、**ActivationMaxRetryInterval** によって管理されます。
     
-CodePackage がクラッシュして、再び起動した場合、Service Fabric によって正常であると見なされるには、**CodePackageContinuousExitFailureResetInterval** の間稼働状態である必要があります。この時点で、正常性レポートは "問題なし" として上書きされ、ContinousFailureCount がリセットされます。
+CodePackage がクラッシュして、再び起動した場合、Service Fabric によって正常であると見なされるには、**CodePackageContinuousExitFailureResetInterval** の間、稼働状態である必要があります。この時点で、以前のエラー正常性レポートは問題なしとして上書きされ、ContinousFailureCount がリセットされます。
 
 ### <a name="codepackage-not-registering-servicetype"></a>CodePackage で ServiceType が登録されていない
-CodePackage が稼働状態であり、ServiceType を登録することが予期されているにもかかわらず、していない場合は、Service Fabric により、**ServiceTypeRegistrationTimeout** の後に、ServiceType がタイムアウト以内に構成されていないことを示す警告の HealthReport が生成されます。
+CodePackage が稼働状態であり、ServiceType の登録が予期されているにもかかわらず、登録されない場合は、Service Fabric によって、**ServiceTypeRegistrationTimeout** の後に、ServiceType が予期された時間内に登録されていないことを示す警告の HealthReport が生成されます。
 
 ### <a name="activation-failure"></a>アクティブ化エラー
-Service Fabric では、アクティブ化中にエラーを検出すると、常に線形バックオフが使用されます (CodePackage のクラッシュと同じ)。 つまり、アクティブ化操作は、(0+ 10 + 20 + 30 + 40) = 100 秒 (最初の再試行は即時) 後に中止されます。 この後は、アクティブ化は再試行されません。
+Service Fabric では、アクティブ化中にエラーを検出すると、常に線形バックオフが使用されます (CodePackage のクラッシュと同じ)。 つまり、アクティブ化操作は、(0 + 10 + 20 + 30 + 40) = 100 sec (最初の再試行は即時) 後に中止されます。 この後は、アクティブ化は再試行されません。
     
 最大アクティブ化バックオフは **ActivationMaxRetryInterval**、再試行は **ActivationMaxFailureCount** とすることができます。
 
 ### <a name="download-failure"></a>ダウンロードの失敗
-Service Fabric では、ダウンロード中にエラーが発生すると、常に線形バックオフが使用されます。 つまり、アクティブ化操作は、(0+ 10 + 20 + 30 + 40) = 100 秒 (最初の再試行は即時) 後に中止されます。 この後は、ダウンロードは再試行されません。 ダウンロードの線形バックオフは、ContinuousFailureCount***DeploymentRetryBackoffInterval** と等しく、最大バックオフは **DeploymentMaxRetryInterval** とすることができます。 アクティブ化と同様に、ダウンロード操作は、**ActivationMaxFailureCount** 再試行できます。
+Service Fabric では、ダウンロード中にエラーが発生すると、常に線形バックオフが使用されます。 つまり、アクティブ化操作は、(0+ 10 + 20 + 30 + 40) = 100 秒 (最初の再試行は即時) 後に中止されます。 この後、ダウンロードは再試行されません。 ダウンロードの線形バックオフは、ContinuousFailureCount**_DeploymentRetryBackoffInterval_* と等しく、最大バックオフは **DeploymentMaxRetryInterval** とすることができます。 アクティブ化と同様に、ダウンロード操作は、**ActivationMaxFailureCount** 再試行できます。
 
 > [!NOTE]
-> 構成を変更する前に、留意すべきいくつかの例を次に示します。
+> これらの設定を変更する前に、留意すべきいくつかの例を以下に示します。
 
-* CodePackage がクラッシュし続けてバックオフする場合、ServiceType は無効化されます。 しかし、クイック再起動を行うようにアクティブ化構成が設定されている場合、CodePackage は、ServiceType の無効化を確認できるまでに数回起動する可能性があります。 たとえば、CodePackage が起動し、ServiceType を Service Fabric に登録した後にクラッシュしたとします。 この場合、ホスティングが型の登録を受け取ると、**ServiceTypeDisableGraceInterval** 期間は取り消されます。 そして、これは、CodePackage が **ServiceTypeDisableGraceInterval** より大きい値にバックオフするまで繰り返される可能性があり、その後に、ServiceType がノードで無効化されます。 したがって、ノードで ServiceType が無効化されるまでには、しばらく時間がかかる可能性があります。
+* CodePackage がクラッシュし続けてバックオフする場合、ServiceType は無効化されます。 しかし、クイック再起動を行うようにアクティブ化構成が設定されている場合、CodePackage は、ServiceType が実際にブロックリストに登録されるまでに数回起動する可能性があります。 たとえば、CodePackage が起動し、ServiceType を Service Fabric に登録した後にクラッシュしたとします。 この場合、ホスティングが型の登録を受け取ると、**ServiceTypeDisableGraceInterval** 期間は取り消されます。 これは、CodePackage が **ServiceTypeDisableGraceInterval** より大きい値にバックオフするまで繰り返される可能性があり、その後、ServiceType がノードでブロックリストに登録されます。 ServiceType がブロックリストに登録されたことを確認するには、予想よりも時間がかかる場合があります。
 
-* アクティブ化の場合、Service Fabric システムがレプリカをノードに配置する必要がある場合、RA (ReconfigurationAgent) は、ホスティング サブシステムに対し、アプリケーションをアクティブ化し、15 秒 (**RAPMessageRetryInterval**) ごとにアクティブ化要求を再試行するよう要求します。 Service Fabric システムによって ServiceType が無効化されていることが確認されるためには、ホスティングのアクティブ化操作の存続期間が再試行間隔および **ServiceTypeDisableGraceInterval** よりも長いことが必要です。 たとえば、クラスターで構成 **ActivationMaxFailureCount** を 5 に設定し、**ActivationRetryBackoffInterval** を 1 秒に設定します。これは、アクティブ化操作が (0 + 1 + 2 + 3 + 4) = 10 秒 (最初の再試行は即時) 後に中止され、その後にホスティングが再試行を中止することを意味します。 この場合、アクティブ化操作は完了し、15 秒後には再試行されません。 この理由は、Service Fabric が 15 秒以内にすべての再試行回数を使い切ってしまったからです。 したがって、ReconfigurationAgent からの再試行のたびに新しいアクティブ化操作がホスティング サブシステムに作成され、このパターンが繰り返されて、ServiceType は決してノード上で無効化されません。 ServiceType がノードで無効化されないため、Sf システムのコンポーネント FM (FailoverManager) は、レプリカを別のノードに移動しません。
+* アクティブ化の場合、Service Fabric システムでレプリカをノード上に配置する必要があるときに、RA (ReconfigurationAgent) により、ホスティング サブシステムに対して、アプリケーションをアクティブ化し、15 秒ごと (**RAPMessageRetryInterval** 構成設定によって管理) にアクティブ化要求を再試行するよう求められます。 Service Fabric で ServiceType がブロックリストに登録されていることが認識されるようにするには、ホスティングのアクティブ化操作の存続期間を再試行間隔および **ServiceTypeDisableGraceInterval** よりも長くする必要があります。 たとえば、クラスターで **ActivationMaxFailureCount** が 5 に設定されていて、**ActivationRetryBackoffInterval** が 1 秒に設定されているとします。 これは、アクティブ化操作が (0 + 1 + 2 + 3 + 4) = 10 秒 (最初の再試行は即時であることを思い出してください) 後に中止され、その後にホスティングで再試行が中止されることを意味します。 この場合、アクティブ化操作は完了し、15 秒後には再試行されません。 これは、Service Fabric で 15 秒以内に許可されたすべての再試行回数を使い切ってしまったからです。 したがって、ReconfigurationAgent からの再試行のたびに新しいアクティブ化操作がホスティング サブシステムに作成され、このパターンが繰り返されます。 その結果、ServiceType がノード上でブロックリストに登録されなくなります。 ServiceType はノード上でブロックリストに登録されないため、レプリカが別のノードに移動され、試行されることはなくなります。
 > 
 
 ## <a name="deactivation"></a>非アクティブ化
 
-ServicePackage はノードでアクティブ化されると、非アクティブ化のために追跡されます。 Deactivator は、その追跡を行うエンティティです。
-Deactivator は、次の 2 つの方法で動作します。
+ServicePackage はノードでアクティブ化されると、非アクティブ化のために追跡されます。 
 
-1.  定期的: **DeactivationScanInterval** ごとに、レプリカをホストしたことのない ServicePackage がないかチェックし、それらを非アクティブ化の候補としてマークします。
-2.  ReplicaClose: レプリカが閉じられると、Deactivator は DecrementUsageCount を取得します。 カウントが 0 になると、これは ServicePackage がどのレプリカもホストしていないことを意味するため、非アクティブ化の候補になります。
+非アクティブ化は次の 2 つの方法で動作します。
 
- [専有/共有][a2]のアクティブ化モードに基づき、SharedMode の場合は **DeactivationGraceInterval**、ExclusiveMode の場合は **ExclusiveModeDeactivationGraceInterval** 後に、非アクティブ化の候補がスケジュールされます。 この時間中に新しいレプリカの配置が行われると、非アクティブ化は取り消されます。
+- 定期的: **DeactivationScanInterval** ごとに、レプリカをホストしたことのない ServicePackage がないかチェックし、それらを非アクティブ化の候補としてマークします。
+- ReplicaClose: レプリカが閉じられると、Deactivator は DecrementUsageCount を取得します。 カウントが 0 になると、ServicePackage がどのレプリカもホストしていないことを意味するため、非アクティブ化の候補になります。
+
+ [専有/共有][a2]のアクティブ化モードに基づき、SharedMode の場合は **DeactivationGraceInterval** 後、ExclusiveMode の場合は **ExclusiveModeDeactivationGraceInterval** 後に非アクティブ化の候補がスケジュールされます。 この時間中に新しいレプリカの配置が行われると、非アクティブ化は取り消されます。
 
 ### <a name="periodically"></a>定期的:
+定期的な非アクティブ化の例をいくつか説明しましょう。
+
 例 1:Deactivator が Time T(**DeactivationScanInterval**) にスキャンを行うとします。 次のスキャンは 2T になります。 ServicePackage のアクティブ化が T+1 に発生したとします。 この ServicePackage はレプリカをホストしていないため、非アクティブ化する必要があります。 この ServicePackage が非アクティブ化の候補になるためには、少なくとも T 時間、レプリカなしの状態である必要があります。 つまり、2T+1 で非アクティブ化の対象となります。 したがって、2T のスキャンでは、この ServicePackage は非アクティブ化の候補として検出されません。 次の非アクティブ化サイクル 3T では、この ServicePackage は time T の間、レプリカなしの状態だったことになるため、非アクティブ化するようにスケジュールされます。  
 
 例 2:たとえば、ServicePackage が time T-1 にアクティブ化され、Deactivator が T にスキャンを実行するとします。ServicePackage はレプリカをホストしていません。 その後、次のスキャン 2T で、この ServicePackage は非アクティブ化の候補として検出されるため、非アクティブ化するようにスケジュールされます。  
 
-例 3: たとえば、ServicePackage が T-1 にアクティブ化され、Deactivator が T にスキャンを行うとします。ServicePackage は、まだレプリカをホストしていません。 T+1 にレプリカが配置されます。つまり、 ホスティングが IncrementUsageCount を取得します。これは、レプリカが作成されることを意味します。 そして、2T 時点で、この ServicePackage は非アクティブ化するようにスケジュールされていません。 次に、非アクティブ化は、以下で説明する ReplicaClose ロジックに移動します。
+例 3: たとえば、ServicePackage が T-1 にアクティブ化され、Deactivator が T にスキャンを行うとします。ServicePackage は、まだレプリカをホストしていません。 T+1 にレプリカが配置されます。つまり、 ホスティングが IncrementUsageCount を取得します。これは、レプリカが作成されることを意味します。 そして、2T 時点で、この ServicePackage は非アクティブ化するようにスケジュールされていません。 レプリカが含まれているため、非アクティブ化は、以下で説明する ReplicaClose ロジックに移動します。
 
-例 4: ServicePackage が大きい (10 GB など) とします。この場合、ノードにダウンロードするのに若干時間がかかる可能性があります。 アプリケーションがアクティブ化されると、Deactivator はそのライフサイクルを追跡します。 ここで、**DeactivationScanInterval** 構成値が小さいと、すべての時間がダウンロードに使用されてしまうため、ServicePackage ではノードでアクティブ化するための時間を得られないという問題が発生する可能性があります。 この問題を解決するために、[ノードに ServicePackage を事前にダウンロードしておく][p1]ことができます。 
+例 4: ServicePackage が大きい (10 GB など) とします。この場合、ノードにダウンロードするのに若干時間がかかる可能性があります。 アプリケーションがアクティブ化されると、Deactivator はそのライフサイクルを追跡します。 ここで、**DeactivationScanInterval** 構成が小さい値に設定されている場合、すべての時間がダウンロードに使用されてしまうため、ServicePackage ではノードでアクティブ化するための時間を得られないという問題が発生する可能性があります。 この問題を解決するために、[ノードに ServicePackage を事前にダウンロードしておく][p1]か、**DeactivationScanInterval** を増やすことができます。 
 
 > [!NOTE]
-> したがって、ServicePackage は、(**DeactivationScanInterval** から 2***DeactivationScanInterval**) + **DeactivationGraceInterval**/**ExclusiveModeDeactivationGraceInterval** の間のいずれかの時点で非アクティブ化できます。 
+> ServicePackage は、(**DeactivationScanInterval** から 2 **_DeactivationScanInterval_*) + **DeactivationGraceInterval**/** ExclusiveModeDeactivationGraceInterval** の間のいずれかの時点で非アクティブ化できます。 
 >
 
 ### <a name="replica-close"></a>レプリカを閉じる:
-Deactivator は、ServicePackage で保持されているレプリカの数を記録しています。 ServicePackage がレプリカを保持していて、そのレプリカが閉じられる/停止されると、ホスティングは DecrementUsageCount を取得します。 レプリカが開かれると、ホスティングは IncrementUsageCount を取得します。 デクリメントとは、ServicePackage でホスティングしているレプリカが 1 つ減ることを意味します。カウントが 0 になると、ServicePackage は非アクティブ化するようにスケジュールされます。非アクティブ化されるまでの時間は、**DeactivationGraceInterval**/**ExclusiveModeDeactivationGraceInterval** です。 
+非アクティブ化では、ServicePackage で保持されているレプリカの数が記録されます。 ServicePackage がレプリカを保持していて、そのレプリカが閉じられる/停止されると、ホスティングは DecrementUsageCount を取得します。 レプリカが開かれると、ホスティングは IncrementUsageCount を取得します。 デクリメントとは、ServicePackage でホスティングしているレプリカが 1 つ減ることを意味します。カウントが 0 になると、ServicePackage は非アクティブ化するようにスケジュールされます。非アクティブ化されるまでの時間は、**DeactivationGraceInterval**/**ExclusiveModeDeactivationGraceInterval** です。 
 
 たとえば、デクリメントが T に発生し、ServicePackage が 2T+X(**DeactivationGraceInterval**/**ExclusiveModeDeactivationGraceInterval**) に非アクティブ化するようにスケジュールされているとします。 この期間中にホスティングが IncrementUsage を取得すると、レプリカが作成され、非アクティブ化が取り消されます。
 
 > [!NOTE]
->つまり、これらの構成で行われることは、基本的に次のことを意味します: **DeactivationGraceInterval**/**ExclusiveModeDeactivationGraceInterval**。すなわち、任意のレプリカをホストした後で、再び別のレプリカをホストするために ServicePackage に対して与えられる時間です。 
+> これらの構成設定は何を意味しますか?
+**DeactivationGraceInterval**/**ExclusiveModeDeactivationGraceInterval**。すなわち、任意のレプリカをホストした後で、再び別のレプリカをホストするために ServicePackage に対して与えられる時間です。 
 **DeactivationScanInterval**: レプリカをホストしたことがない ( つまり、使用されていない) 場合に、レプリカをホストするために ServicePackage に対して与えられる最小時間。
 >
 
@@ -145,8 +151,8 @@ ServicePackage が **DeactivationGraceInterval**/**ExclusiveModeDeactivationGrac
 
 ### <a name="deactivation"></a>非アクティブ化
 **DeactivationScanInterval**: 既定値は 600 秒。今までにレプリカをホストしたことがない ( つまり使用されていない) 場合に、ServicePackage がレプリカをホストするために与えられる最小時間。
-**DeactivationGraceInterval**:既定値は 60 秒。**共有**プロセス モデルの場合にレプリカをホストした後に、再び別のレプリカをホストするために ServicePackage に与えられる時間。
-**ExclusiveModeDeactivationGraceInterval**:既定値は 1 秒。**専有**プロセス モデルの場合にレプリカをホストした後に、再び別のレプリカをホストするために ServicePackage に与えられる時間。
+**DeactivationGraceInterval**:既定値は 60 秒。**共有** プロセス モデルの場合にレプリカをホストした後に、再び別のレプリカをホストするために ServicePackage に与えられる時間。
+**ExclusiveModeDeactivationGraceInterval**:既定値は 1 秒。**専有** プロセス モデルの場合にレプリカをホストした後に、再び別のレプリカをホストするために ServicePackage に与えられる時間。
 
 ## <a name="next-steps"></a>次のステップ
 [アプリケーションをパッケージ化][a3]して展開できるようにします。

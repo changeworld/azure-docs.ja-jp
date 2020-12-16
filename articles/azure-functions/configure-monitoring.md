@@ -4,12 +4,12 @@ description: 監視のために関数アプリを Application Insights に接続
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperfq2, devx-track-azurecli
-ms.openlocfilehash: 0b8aae707f0fb055677af111f1e88c0a2e19b227
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 02d5ad2e9697c14818a985325267d7caea80f65e
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175748"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607128"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Azure Functions の監視を構成する方法
 
@@ -38,6 +38,9 @@ Azure Functions のロガーでは、すべてのログに *カテゴリ* があ
 | **`Host.Results`** | **requests** | これらのランタイム生成ログから、関数の成功または失敗を確認できます。 これらすべてのログは `Information` レベルで書き込まれます。 `Warning` 以上でフィルターすると、このデータは表示されなくなります。 |
 | **`Microsoft`** | **traces** | ホストによって起動される .NET ランタイム コンポーネントを反映する完全修飾ログ カテゴリ。  |
 | **`Worker`** | **traces** | .NET 以外の言語用の言語ワーカー プロセスによって生成されるログ。 言語ワーカー ログは、`Microsoft.Azure.WebJobs.Script.Workers.Rpc.RpcFunctionInvocationDispatcher` などの `Microsoft.*` カテゴリでログされる場合もあります。 これらのログは `Information` レベルで書き込まれます。|
+
+> [!NOTE]
+> .NET クラス ライブラリ関数の場合、これらのカテゴリでは、`ILogger<T>` ではなく `ILogger` を使用していることが想定されています。 詳細については、[関数 ILogger のドキュメント](functions-dotnet-class-library.md#ilogger)を参照してください。 
 
 # <a name="v1x"></a>[v1.x](#tab/v1)
 

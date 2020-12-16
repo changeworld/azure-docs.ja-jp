@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) を使用するときに発生する
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: aefb33325c1a5bf8e94d47106147d4c7c4f0f1ca
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d157dd6b3347c8fbfd8712fa20d52cedb425f47f
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684170"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751480"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -24,41 +24,36 @@ Microsoft のエンジニアによって公開された、ポッド、ノード�
 
  [さらに多くのコアを要求します](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
 
-## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>AKS におけるノードあたりの最大ポッド数はいくつに設定されていますか。
-
-Azure portal で AKS クラスターをデプロイする場合、ノードあたりの最大ポッド数は既定で 30 に設定されます。
-Azure CLI で AKS クラスターをデプロイする場合、ノードあたりの最大ポッド数は既定で 110 に設定されます。 (最新バージョンの Azure CLI を使用していることを確認してください)。 この設定は、`az aks create` コマンドで `–-max-pods` フラグを使用して変更することができます。
-
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>高度なネットワークで AKS クラスターをデプロイしているときに、insufficientSubnetSize エラーが発生します。 どうすればよいですか。
 
 このエラーは、クラスターに使用中のサブネットに、正常なリソース割り当てのためにその CIDR 内で使用可能な IP がもうないことを示しています。 Kubenet クラスターでは、クラスター内のノードごとに十分な IP 空間が必要です。 Azure CNI クラスターでは、クラスター内の各ノードとポッドに十分な IP 空間が必要です。
 ポッドに IP を割り当てるための Azure CNI の設計の詳細については、[こちら](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)を参照してください。
 
-これらのエラーは、サブネットのサイズが不足しているなどの問題を事前に検出する、[AKS 診断](./concepts-diagnostics.md)でも検出されます。
+これらのエラーは、サブネットのサイズが不足しているなどの問題を事前に検出する [AKS 診断](concepts-diagnostics.md)でも検出されます。
 
 次の 3 つのケースでは、サブネットのサイズ不足エラーが発生します。
 
-1. AKS Scale または AKS Nodepool scale
-   1. Kubenet を使用している場合、これは `number of free IPs in the subnet` が `number of new nodes requested` **より小さい** 場合に発生します。
-   1. Azure CNI を使用している場合、これは `number of free IPs in the subnet` が `number of nodes requested times (*) the node pool's --max-pod value` **より小さい** 場合に発生します。
+1. AKS Scale または AKS Node pool scale
+   1. Kubenet を使用している場合は、`number of free IPs in the subnet` が `number of new nodes requested` **より小さい** とき。
+   1. Azure CNI を使用している場合は、`number of free IPs in the subnet` が `number of nodes requested times (*) the node pool's --max-pod value` **より小さい** とき。
 
-1. AKS Upgrade または AKS Nodepool upgrade
-   1. Kubenet を使用している場合、これは `number of free IPs in the subnet` が `number of buffer nodes needed to upgrade` **より小さい** 場合に発生します。
-   1. Azure CNI を使用している場合、これは `number of free IPs in the subnet` が `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` **より小さい** 場合に発生します。
+1. AKS Upgrade または AKS Node pool upgrade
+   1. Kubenet を使用している場合は、`number of free IPs in the subnet` が `number of buffer nodes needed to upgrade` **より小さい** とき。
+   1. Azure CNI を使用している場合は、`number of free IPs in the subnet` が `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` **より小さい** とき。
    
-   既定では、AKS クラスターによって最大サージ (アップグレード バッファー) 値が 1 に設定されますが、このアップグレード動作は、アップグレードを完了するために必要な使用可能な IP の数を増やす[ノード プールの最大サージ値](upgrade-cluster.md#customize-node-surge-upgrade)を設定することでカスタマイズできます。
+   既定では、AKS クラスターによって最大サージ (アップグレード バッファー) 値が 1 に設定されますが、このアップグレード動作は、アップグレードを完了するために必要な使用可能な IP の数を増やすノード プールの最大サージ値を設定することでカスタマイズできます。
 
-1. AKS create または AKS Nodepool add
-   1. Kubenet を使用している場合、これは `number of free IPs in the subnet` が `number of nodes requested for the node pool` **より小さい** 場合に発生します。
-   1. Azure CNI を使用している場合、これは `number of free IPs in the subnet` が `number of nodes requested times (*) the node pool's --max-pod value` **より小さい** 場合に発生します。
+1. AKS create または AKS Node pool add
+   1. Kubenet を使用している場合は、`number of free IPs in the subnet` が `number of nodes requested for the node pool` **より小さい** とき。
+   1. Azure CNI を使用している場合は、`number of free IPs in the subnet` が `number of nodes requested times (*) the node pool's --max-pod value` **より小さい** とき。
 
 新しいサブネットを作成することによって、次の軽減策を実行できます。 既存のサブネットの CIDR 範囲を更新できないため、リスク軽減には新しいサブネットを作成するためのアクセス許可が必要です。
 
 1. 操作の目標に十分な、より大きな CIDR 範囲を持つ新しいサブネットを再構築します。
    1. 必要な重複しない新しい範囲を使用して、新しいサブネットを作成します。
-   1. 新しいサブネットに新しいノードプールを作成します。
-   1. 置換する古いサブネットにある古いノードプールからポッドをドレインします。
-   1. 古いサブネットと古いノードプールを削除します。
+   1. 新しいサブネットに新しいノード プールを作成します。
+   1. 置換する古いサブネットにある古いノード プールからポッドをドレインします。
+   1. 古いサブネットと古いノード プールを削除します。
 
 ## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>ポッドが CrashLoopBackOff モードでスタックします。 どうすればよいですか。
 
@@ -90,15 +85,11 @@ AKS には、サービス レベル目標 (SLO) とサービス レベル アグ
 
 現時点では、既存のクラスターで Kubernetes ロールベースのアクセス制御 (Kubernetes RBAC) を有効にすることはサポートされていません。新しいクラスターを作成するときに設定する必要があります。 CLI、ポータル、または `2020-03-01` 以降の API バージョンを使用すると、既定で Kubernetes RBAC が有効になります。
 
-## <a name="i-created-a-cluster-with-kubernetes-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Kubernetes RBAC が有効になっているクラスターを作成したところ、Kubernetes ダッシュボードに多くの警告が表示されるようになりました。 以前ダッシュボードは警告なしで動作していました。 どうすればよいですか。
-
-警告が表示されるのは、クラスターで Kubernetes RBAC が有効になっていて、ダッシュボードへのアクセスが既定で制限されるようになったためです。 ダッシュボードを、クラスターのすべてのユーザーに既定で公開すると、セキュリティの脅威につながる可能性があるため、一般的にこのアプローチは適切な方法です。 それでもダッシュボードを有効にする場合は、[こちらのブログ投稿](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)の手順に従ってください。
-
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>kubectl logs を使用してログを取得できません。または、API サーバーに接続できません。 "Error from server: error dialing backend: dial tcp…" (サーバーからのエラー: バックエンドへのダイヤルでのエラー: tcp にダイヤル...) と表示されます。 どうすればよいですか。
 
 API サーバーに接続するために、ポート 22、9000、および 1194 が開いていることを確認します。 `kubectl get pods --namespace kube-system` コマンドを使用して、`tunnelfront` または `aks-link` ポッドが *kube-system* 名前空間で実行されているかどうかを確認します。 そうでない場合は、ポッドを強制的に削除すると、再起動されます。
 
-## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>AKS API に接続するときに、クライアントから `"tls: client offered only unsupported versions"` を取得しています。   どうすればいいですか。
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>AKS API に接続するときに、クライアントから `"tls: client offered only unsupported versions"` を取得しています。 どうすればよいですか。
 
 AKS でサポートされる TLS の最小バージョンは TLS 1.2 です。
 
@@ -182,11 +173,11 @@ AKS クラスターの作成時には、ユーザーに代わってリソース�
 
 ## <a name="im-getting-aadsts7000215-invalid-client-secret-is-provided-when-using-aks-api-what-should-i-do"></a>AKS API を使用するときに、`"AADSTS7000215: Invalid client secret is provided."` を取得しています。   どうすればいいですか。
 
-これは、通常、サービス プリンシパルの資格情報の有効期限が切れているためです。 [AKS クラスターの資格情報を更新してください。](update-credentials.md)
+この問題の原因は、サービス プリンシパルの資格情報の有効期限が切れていることにあります。 [AKS クラスターの資格情報を更新してください。](update-credentials.md)
 
 ## <a name="i-cant-access-my-cluster-api-from-my-automationdev-machinetooling-when-using-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>API サーバーの許可された IP 範囲を使用しているときに、オートメーション/開発用コンピューター/ツールからクラスター API にアクセスできません。 この問題を解決するにはどうすればよいですか。
 
-これには、使用されているオートメーション/開発用コンピューター/ツール システムの IP または IP 範囲を `--api-server-authorized-ip-ranges` に含める必要があります。 「[許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する](api-server-authorized-ip-ranges.md)」の「IP を見つける方法」のセクションを参照してください。
+この問題を解決するには、使用されているオートメーション、開発、ツールの各システムの IP または IP 範囲を `--api-server-authorized-ip-ranges` に確実に含めます。 「[許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する](api-server-authorized-ip-ranges.md)」の「IP を見つける方法」のセクションを参照してください。
 
 ## <a name="im-unable-to-view-resources-in-kubernetes-resource-viewer-in-azure-portal-for-my-cluster-configured-with-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>API サーバーの許可された IP 範囲で構成されているクラスターについてのリソースを、Azure portal の Kubernetes リソース ビューアーで表示できません。 この問題を解決するにはどうすればよいですか。
 
@@ -208,11 +199,11 @@ Service returned an error. Status=429 Code=\"OperationNotAllowed\" Message=\"The
 
 これらの調整エラーの詳細については、[こちら](../azure-resource-manager/management/request-limits-and-throttling.md)と[こちら](../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md)を参照してください。
 
-AKS エンジニアリング チームでは、多くの機能強化が含まれている 1.18 以上のバージョンを実行することをお勧めします。 これらの機能強化の詳細については、[こちら](https://github.com/Azure/AKS/issues/1413)と[こちら](https://github.com/kubernetes-sigs/cloud-provider-azure/issues/247)を参照してください。
+多くの機能強化が含まれている 1.18.x 以上のバージョンを確実に実行することを、AKS エンジニアリング チームは推奨しています。 これらの機能強化の詳細については、[こちら](https://github.com/Azure/AKS/issues/1413)と[こちら](https://github.com/kubernetes-sigs/cloud-provider-azure/issues/247)を参照してください。
 
 これらの調整エラーはサブスクリプション レベルで測定されることを考慮すると、これらは次の場合にも発生する可能性があります。
-- GET 要求を行うサードパーティ製のアプリケーションがある ( アプリケーションの監視など)。これらの呼び出しの頻度を減らすことをお勧めします。
-- VMSS に AKS クラスター/ノード プールが多数ある場合。 通常、ある特定のサブスクリプションで 20 から 30 未満のクラスターを設定することをお勧めします。
+- GET 要求を行うサードパーティ製のアプリケーション (たとえば、監視アプリケーションなど) がある。 これらの呼び出しの頻度を減らすことをお勧めします。
+- 仮想マシン スケール セットを使用した AKS クラスター、ノード プールが多数ある。 ご利用のクラスターの数を、特に、それらが非常にアクティブである (たとえば、アクティブなクラスター オートスケーラー) またはそれらに複数のクライアント (rancher、terraform など) が含まれると予想される場合に別々のサブスクリプションに分割してみてください。
 
 ## <a name="my-clusters-provisioning-status-changed-from-ready-to-failed-with-or-without-me-performing-an-operation-what-should-i-do"></a>操作を実行しているかどうかにかかわらず、クラスターのプロビジョニングの状態が "準備完了" から "失敗" に変更されました。 どうすればよいですか。
 
@@ -220,46 +211,13 @@ AKS エンジニアリング チームでは、多くの機能強化が含まれ
 
 クラスターのプロビジョニングの状態が *失敗* のままである場合、またはクラスター上のアプリケーションが動作しなくなった場合は、[サポート リクエストを送信](https://azure.microsoft.com/support/options/#submit)してください。
 
+## <a name="my-watch-is-stale-or-azure-ad-pod-identity-nmi-is-returning-status-500"></a>ウォッチが古くなっているか、または Azure AD Pod Identity NMI からステータス 500 が返されている
+
+この[例](limit-egress-traffic.md#restrict-egress-traffic-using-azure-firewall)のように Azure Firewall を使用している場合は、この問題が発生する可能性があります。その理由は、アプリケーション ルールを使用したファイアウォール経由の有効期間の長い TCP 接続に、ファイアウォール上で Go `keepalives` を終了させるバグ (Q1CY21 で解決される) が存在することにあります。 この問題が解決されるまでは、(アプリケーション ルールではなく) ネットワーク ルールを AKS API サーバー IP に追加することで軽減できます。
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Azure Storage および ASK のトラブルシューティング
 
-### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-disk"></a>推奨される Kubernetes for Azure Disk の安定したバージョンは何ですか。 
-
-| Kubernetes バージョン | 推奨されるバージョン |
-|--|:--:|
-| 1.12 | 1.12.9 以上 |
-| 1.13 | 1.13.6 以上 |
-| 1.14 | 1.14.2 以上 |
-
-
-### <a name="waitforattach-failed-for-azure-disk-parsing-devdiskazurescsi1lun1-invalid-syntax"></a>Azure Disk の WaitForAttach に失敗しました: "/dev/disk/azure/scsi1/lun1" を解析しています: 構文が無効です
-
-Kubernetes バージョン 1.10 では、Azure Disk の再マウントによって MountVolume.WaitForAttach が失敗する場合があります。
-
-Linux では、正しくない DevicePath フォーマット エラーが表示されることがあります。 次に例を示します。
-
-```console
-MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
-  Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
-```
-
-Windows では、間違った DevicePath (LUN) 番号のエラーが表示されることがあります。 次に例を示します。
-
-```console
-Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
-1102-dynamic-pvc-6c526c51-4a18-11e8-ab5c-000d3af7b38e) lun:(4)
-```
-
-この問題は、次のバージョンの Kubernetes で修正されました。
-
-| Kubernetes バージョン | 修正済みのバージョン |
-|--|:--:|
-| 1.10 | 1.10.2 以上 |
-| 1.11 | 1.11.0 以上 |
-| 1.12 以上 | 該当なし |
-
-
-### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Azure Disk の MountOptions で UID と GID を設定するときにエラーが発生する
+### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Azure Disk の MountOptions で UID と `GID` を設定するときにエラーが発生する
 
 既定では、Azure ディスクは ext4、xfs ファイル システムを使用します。uid=x、gid=x などの mountOptions はマウント時に設定できません。 たとえば、mountOptions uid=999、gid=999 を設定しようとすると、次のようなエラーが表示されます。
 
@@ -290,7 +248,7 @@ spec:
   >[!NOTE]
   > 既定では、GID と UID は root または 0 としてマウントされるためです。 GID または UID が非 root (1000 など) として設定されている場合、Kubernetes は `chown` を使用して、そのディスクにあるすべてのディレクトリとファイルを変更します。 この操作には時間がかかることがあり、ディスクのマウントが非常に遅くなる可能性があります。
 
-* initContainers で `chown` を使用して、GID と UID を設定します。 次に例を示します。
+* initContainers で `chown` を使用して、`GID` と `UID` を設定します。 次に例を示します。
 
 ```yaml
 initContainers:
@@ -387,8 +345,8 @@ parameters:
 
 その他の便利な *mountOptions* 設定を次に示します。
 
-* *mfsymlinks* は、Azure Files mount (cifs) をサポートするシンボリック リンクを作成します
-* *nobrl* は、サーバーにバイト範囲のロック要求が送信されるのを防止します。 この設定は、cifs 形式の必須のバイト範囲のロックにより中断する特定のアプリケーションに必要です。 ほとんどの cifs サーバーでは、アドバイザリ バイト範囲のロック要求はまだサポートされていません。 *nobrl* を使用しない場合、cifs 形式の必須なバイト範囲のロックで中断されたアプリケーションでは、次のようなエラー メッセージが発生する可能性があります。
+* `mfsymlinks` は、Azure Files mount (cifs) をサポートするシンボリック リンクを作成します
+* `nobrl` は、サーバーにバイト範囲のロック要求が送信されるのを防止します。 この設定は、cifs 形式の必須のバイト範囲のロックにより中断する特定のアプリケーションに必要です。 ほとんどの cifs サーバーでは、アドバイザリ バイト範囲のロック要求はまだサポートされていません。 *nobrl* を使用しない場合、cifs 形式の必須なバイト範囲のロックで中断されたアプリケーションでは、次のようなエラー メッセージが発生する可能性があります。
     ```console
     Error: SQLITE_BUSY: database is locked
     ```
@@ -404,7 +362,7 @@ fixing permissions on existing directory /var/lib/postgresql/data
 
 このエラーは、cifs/SMB プロトコルを使用する Azure Files プラグインにより発生します。 cifs/SMB プロトコルを使用している場合、ファイルとディレクトリのアクセス許可をマウント後に変更することはできません。
 
-この問題を解決するには、*subPath* を Azure Disk プラグインと一緒に使用します。 
+この問題を解決するには、`subPath` を Azure Disk プラグインと一緒に使用します。 
 
 > [!NOTE] 
 > ext3/4 ディスクの種類の場合、ディスクのフォーマット後に lost+found ディレクトリがあります。
@@ -474,7 +432,7 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 
 このエラーは、上流クラスターのオートスケーラー競合状態が原因で発生します。 このような場合、クラスター オートスケーラーは実際にクラスター内にあるものとは異なる値で終了します。 この状態を修正するには、[クラスター オートスケーラー][cluster-autoscaler]を無効にしてから再度有効にします。
 
-### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>低速のディスクの接続では、GetAzureDiskLun の実行に 10 分から 15 分かかり、エラーが発生します
+### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>低速のディスクの接続では、`GetAzureDiskLun` の実行に 10 分から 15 分かかり、エラーが発生します
 
 Kubernetes の **1.15.0 より古いバージョン** では、**WaitForAttach でディスクの LUN を見つけることができない** などのエラーが発生する場合があります。  この問題を回避するには、約 15 分間待機してから再試行します。
 
@@ -483,13 +441,13 @@ Kubernetes の **1.15.0 より古いバージョン** では、**WaitForAttach �
 
 Kubernetes [1.16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) では、kubelet でノードに適用できるのは、[kubernetes.io プレフィックスで定義されているラベルのサブセットのみ](https://github.com/kubernetes/enhancements/blob/master/keps/sig-auth/0000-20170814-bounding-self-labeling-kubelets.md#proposal)です。 AKS では、影響を受けるワークロードにダウンタイムが発生する可能性があるため、ユーザーの同意なしにアクティブなラベルを自動的に削除することはできません。
 
-そのため、次のようにしてこれを回避できます。
+そのため、次のようにしてこの問題を回避できます。
 
 1. クラスター コントロール プレーンを 1.16 以降にアップグレードします
 2. サポートされていない kubernetes.io ラベルを使用せずに、1.16 以降に新しい nodepoool を追加します
-3. 古い nodepool を削除します
+3. 古いノード プールを削除する
 
-AKS により、この軽減策を改善するために、nodepool でアクティブなラベルを変化させる機能が調査されています。
+AKS により、この軽減策を改善するために、ノード プールでアクティブなラベルを変化させる機能が調査されています。
 
 
 

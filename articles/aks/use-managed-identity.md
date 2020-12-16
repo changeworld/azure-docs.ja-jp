@@ -3,14 +3,13 @@ title: Azure Kubernetes Service でマネージド ID を使用する
 description: Azure Kubernetes Service (AKS) でマネージド ID を使用する方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 07/17/2020
-ms.author: thomasge
-ms.openlocfilehash: 1f8cb98ea36fdad9a67eca26c6fbea7ede1f811a
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 12/06/2020
+ms.openlocfilehash: e2a80ea869e17665e8a6d4fbd6960c3ccc8c1042
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94627882"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751276"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Service でマネージド ID を使用する
 
@@ -22,11 +21,10 @@ ms.locfileid: "94627882"
 
 次のリソースがインストールされている必要があります。
 
-- Azure CLI バージョン 2.8.0 以降
+- Azure CLI、バージョン 2.15.1 以降
 
 ## <a name="limitations"></a>制限事項
 
-* マネージド ID を指定した AKS クラスターは、クラスターの作成時にのみ有効にすることができます。
 * クラスターの **アップグレード** 操作中は、マネージド ID が一時的に使用できなくなります。
 * マネージド ID が有効になっているクラスターのテナントの移動/移行はサポートされていません。
 * クラスターで `aad-pod-identity` が有効になっている場合、Azure Instance Metadata エンドポイントの呼び出しをインターセプトするよう、Node Managed Identity (NMI) ポッドによりノードの iptables が変更されます。 この構成の場合、Metadata エンドポイントに要求が行われると、ポッドで `aad-pod-identity` が使用されていない場合でも NMI により要求がインターセプトされます。 CRD に定義されているラベルに一致するポッドから Metadata エンドポイントに要求が行われた場合、NMI で何も処理することなく、その要求をプロキシ処理することを `aad-pod-identity` に通知するよう、AzurePodIdentityException CRD を構成できます。 _kube-system_ 名前空間の `kubernetes.azure.com/managedby: aks` ラベルを持つシステム ポッドは、AzurePodIdentityException CRD を構成することで、`aad-pod-identity` で除外してください。 詳細については、「[特定のポッドまたはアプリケーションの aad-pod-identity を無効にする](https://azure.github.io/aad-pod-identity/docs/configure/application_exception)」を参照してください。
@@ -38,12 +36,12 @@ AKS では、組み込みのサービスとアドオンに対して複数のマ�
 
 | ID                       | 名前    | 使用事例 | 既定のアクセス許可 | 独自の ID を使用する
 |----------------------------|-----------|----------|
-| コントロール プレーン | 非表示 | イングレス ロード バランサーや AKS マネージド パブリック IP などのマネージド ネットワーク リソース用に AKS によって使用されます | ノード リソース グループの共同作成者ロール | プレビュー
+| コントロール プレーン | 非表示 | イングレス ロード バランサーと AKS マネージド パブリック IP、Cluster Autoscaler 操作など、クラスター リソースを管理する目的で AKS コントロール プレーン コンポーネントによって使用されます | ノード リソース グループの共同作成者ロール | プレビュー
 | kubelet | AKS クラスター名 - agentpool | Azure Container Registry (ACR) を使用した認証 | NA (kubernetes v1.15+ 用) | 現在、サポートされていません
 | アドオン | AzureNPM | ID は必要ありません | NA | いいえ
 | アドオン | AzureCNI ネットワーク監視 | ID は必要ありません | NA | いいえ
-| アドオン | azurepolicy (ゲートキーパー) | ID は必要ありません | NA | いいえ
-| アドオン | azurepolicy | ID は必要ありません | NA | いいえ
+| アドオン | azure-policy (ゲートキーパー) | ID は必要ありません | NA | いいえ
+| アドオン | azure-policy | ID は必要ありません | NA | いいえ
 | アドオン | Calico | ID は必要ありません | NA | いいえ
 | アドオン | ダッシュボード | ID は必要ありません | NA | いいえ
 | アドオン | HTTPApplicationRouting | 必要なネットワーク リソースを管理します | ノード リソース グループの閲覧者ロール、DNS ゾーンの共同作成者ロール | いいえ
@@ -105,17 +103,29 @@ az aks show -g myResourceGroup -n myManagedCluster --query "identity"
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
-## <a name="update-an-existing-service-principal-based-aks-cluster-to-managed-identities"></a>既存のサービス プリンシパル ベースの AKS クラスターをマネージド ID に更新する
+## <a name="update-an-aks-cluster-to-managed-identities-preview"></a>AKS クラスターをマネージド ID に更新する (プレビュー)
 
-次の CLI コマンドを使用し、マネージド ID で AKS クラスターを更新できるようになりました。
+次の CLI コマンドを使用し、マネージド ID と連動するよう、サービス プリンシパルで現在動作している AKS クラスターを更新できるようになりました。
 
-まず、システム割り当て ID を更新します。
+まず、システムによって割り当てられた ID の機能フラグを登録します。
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n MigrateToMSIClusterPreview
+```
+
+システム割り当て ID を更新します。
 
 ```azurecli-interactive
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity
 ```
 
-次に、ユーザー割り当て ID を更新します。
+ユーザー割り当て ID を更新します。
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n UserAssignedIdentityPreview
+```
+
+ユーザー割り当て ID を更新します。
 
 ```azurecli-interactive
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identity <UserAssignedIdentityResourceID> 
@@ -123,44 +133,14 @@ az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identi
 > [!NOTE]
 > システム割り当てまたはユーザー割り当ての ID がマネージド ID に更新されたら、ノードで `az nodepool upgrade --node-image-only` を実行し、マネージド ID への更新を完了します。
 
-## <a name="bring-your-own-control-plane-mi-preview"></a>独自のコントロール プレーン MI を使用する (プレビュー)
-カスタムのコントロール プレーン ID を使用すると、クラスターの作成前に、既存の ID にアクセス権を付与できます。 これにより、カスタム VNET や outboundType UDR をマネージド ID と一緒に使用するなどのシナリオが可能になります。
+## <a name="bring-your-own-control-plane-mi"></a>独自のコントロール プレーン MI を使用する
+カスタムのコントロール プレーン ID を使用すると、クラスターの作成前に、既存の ID にアクセス権を付与できます。 この機能により、カスタム VNET や outboundType UDR を、事前作成されたマネージド ID と一緒に使用するなどのシナリオが可能になります。
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+Azure CLI バージョン 2.15.1 以降がインストールされている必要があります。
 
-次のリソースがインストールされている必要があります。
-- Azure CLI バージョン 2.9.0 以降
-- aks-preview 0.4.57 拡張機能
-
-独自のコントロール プレーン MI を使用する場合の制限事項 (プレビュー) :
+### <a name="limitations"></a>制限事項
 * Azure Government は現在サポートされていません。
 * Azure China 21Vianet は現在サポートされていません。
-
-```azurecli-interactive
-az extension add --name aks-preview
-az extension list
-```
-
-```azurecli-interactive
-az extension update --name aks-preview
-az extension list
-```
-
-```azurecli-interactive
-az feature register --name UserAssignedIdentityPreview --namespace Microsoft.ContainerService
-```
-
-状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) コマンドを使用して登録状態を確認できます。
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UserAssignedIdentityPreview')].{Name:name,State:properties.state}"
-```
-
-状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
 
 マネージド ID をまだ持っていない場合は、[az identity CLI][az-identity-create] などを使用して作成してください。
 

@@ -7,20 +7,20 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 12/03/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d93ced4b45befec207494909de61d30a98d2a67e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: eddab12e8ecf2e4757998bbd1e6e07c4c4d85f3c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "91333734"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573864"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>検索トラフィック分析用のテレメトリ データを収集する
 
 検索トラフィックの分析とは、ユーザーが開始したクリック イベントやキーボード入力など、Azure Cognitive Search アプリケーションのユーザー操作に関するテレメトリ収集用のパターンのことです。 この情報を使用すると、頻度の高い検索用語、クリックスルー率、および 0 件の結果を生成するクエリ入力など、検索ソリューションの有効性を判定できます。
 
-このパターンでは、[Application Insights](../azure-monitor/app/app-insights-overview.md) ([Azure Monitor](../azure-monitor/index.yml) の 1 つの機能) 上で依存関係を取得して、ユーザー データを収集します。 それには、この記事で説明されているように、クライアント コードにインストルメンテーションを追加する必要があります。 最後に、データを分析するためのレポート メカニズムが必要になります。 Power BI が推奨されますが、アプリケーション ダッシュボードや、Application Insights に接続される任意のツールを使用できます。
+このパターンでは、[Application Insights](../azure-monitor/app/app-insights-overview.md) ([Azure Monitor](../azure-monitor/index.yml) の 1 つの機能) 上で依存関係を取得して、ユーザー データを収集します。 それには、この記事で説明されているように、クライアント コードにインストルメンテーションを追加する必要があります。 最後に、データを分析するためのレポート メカニズムが必要になります。 Power BI をお勧めしていますが、アプリケーション ダッシュボードや、Application Insights に接続される任意のツールを使用することができます。
 
 > [!NOTE]
 > この記事で説明するパターンは、高度なシナリオと、クライアントに追加するコードによって生成されるクリックストリーム データを対象としています。 その一方、サービス ログは設定が簡単で、さまざまなメトリックを提供できます。また、ポータルで実行可能で、コードは必要ありません。 すべてのシナリオでログ記録を有効にすることをお勧めします。 詳細については、[ログ データの収集と分析](search-monitor-logs.md)に関するページを参照してください。
@@ -29,7 +29,7 @@ ms.locfileid: "91333734"
 
 検索トラフィックの分析に役立つメトリックを得るには、検索アプリケーションのユーザーからのいくつかのシグナルをログに記録する必要があります。 これらのシグナルは、ユーザーが興味を持っていたり関連があると考えているコンテンツを示しています。 検索トラフィックの分析の場合、それには以下のものが含まれます。
 
-+ ユーザーによって生成された検索イベント:ユーザーによって開始された検索クエリだけが対象です。 ファセット、追加コンテンツ、または内部情報の設定に使用される検索要求は重要ではありません。これらの要求は結果を歪曲し、偏った結果を招きます。
++ ユーザーによって生成された検索イベント:ユーザーによって開始された検索クエリだけが対象です。 ファセットの設定や内部情報の取得に使用されるような他の検索要求は、重要ではありません。 ユーザーが開始したイベントのみをインストルメント化して、結果にスキューやバイアスが含まれないようにしてください。
 
 + ユーザーによって生成されたクリック イベント:検索結果ページでは、クリック イベントは一般に、ドキュメントが特定の検索クエリの適切な結果であることを意味します。
 
@@ -37,7 +37,7 @@ ms.locfileid: "91333734"
 
 ## <a name="add-search-traffic-analytics"></a>検索トラフィックの分析を追加する
 
-Azure Cognitive Search サービスの[ポータル](https://portal.azure.com) ページ上の [検索トラフィックの分析] ページに、このテレメトリ パターンに従うためのチート シートが含まれています。 このページからは、Application Insights リソースの選択または作成、インストルメンテーション キーの取得、ソリューションに適合させることができるスニペットのコピー、パターンに反映されたスキーマに基づいて構築された Power BI レポートのダウンロードを行うことができます。
+Azure Cognitive Search サービスの[ポータル](https://portal.azure.com) ページで、[検索トラフィックの分析] ページを開いて、このテレメトリ パターンに従うためのチート シートにアクセスします。 このページからは、Application Insights リソースの選択または作成、インストルメンテーション キーの取得、ソリューションに適合させることができるスニペットのコピー、パターンに反映されたスキーマに基づいて構築された Power BI レポートのダウンロードを行うことができます。
 
 ![ポータルの [検索トラフィックの分析] ページ](media/search-traffic-analytics/azuresearch-trafficanalytics.png "ポータルの [検索トラフィックの分析] ページ")
 
@@ -51,7 +51,7 @@ Visual Studio プロジェクトの一部の種類に対して機能するショ
 
 1. Visual Studio と ASP.NET での開発の場合、ソリューションを開き、 **[プロジェクト]**  >  **[Application Insights Telemetry の追加]** と選択します。
 
-1. **[開始]** をクリックします。
+1. **[開始する]** をクリックします。
 
 1. Microsoft アカウント、Azure サブスクリプション、および Application Insights リソース (新しいリソースが既定値です) を指定することでアプリを登録します。 **[登録]** をクリックします。
 
@@ -69,9 +69,9 @@ Application Insights にイベントを送信するオブジェクトを作成�
 
 クライアントでは、クエリ入力の操作、ナビゲーションの追加、コンテキスト (クエリがホーム ページから開始されたか、製品ページから開始されたか、など) の付加を行うコードを追加できます。 お使いのソリューションがこれに該当する場合は、テレメトリに追加の詳細が反映されるように、クライアント側のインストルメンテーションも選択できます。 この追加の詳細情報を収集する方法は、このパターンの範囲を超えていますが、詳細な手順については、「[Web ページ向けの Application Insights](../azure-monitor/app/javascript.md#explore-browserclient-side-data)」で確認できます。 
 
-**C# を使用する**
+**C# の使用**
 
-C# の場合、ASP.NET のプロジェクトであれば、アプリケーション構成 (appsettings.json など) の中に **InstrumentationKey** があります。 キーの場所が不確かな場合は、登録の手順を参照し直してください。
+C# では、プロジェクトが ASP.NET の場合、**InstrumentationKey** をアプリケーション構成 (appsettings.json) で定義する必要があります。 キーの場所が不確かな場合は、登録の手順を参照し直してください。
 
 ```csharp
 private static TelemetryClient _telemetryClient;
@@ -83,7 +83,7 @@ public HomeController(TelemetryClient telemetry)
 }
 ```
 
-**JavaScript を使用する**
+**JavaScript の使用**
 
 ```javascript
 <script type="text/javascript">var appInsights=window.appInsights||function(config){function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(s);try{t.cookie=u.cookie}catch(h){}for(t.queue=[],i=["Event","Exception","Metric","PageView","Trace","Dependency"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t}
@@ -98,9 +98,26 @@ window.appInsights=appInsights;
 
 検索要求をクリックに関連付けるには、これら 2 つの異なるイベントを関連付ける関連付け ID を保持している必要があります。 HTTP ヘッダーを使って検索 ID を要求すると、Azure Cognitive Search から検索 ID が提供されます。
 
-検索 ID があれば、Azure Cognitive Search によって要求自体に対して出力されるメトリックと、Application Insights でログに記録しているカスタム メトリックとの関連付けを行うことができます。  
+検索 ID があれば、Azure Cognitive Search によって要求自体に対して出力されるメトリックと、Application Insights でログに記録しているカスタム メトリックとの関連付けを行うことができます。
 
-**C# を使用する**
+**C# を使用する (新しい v11 SDK)**
+
+```csharp
+// This sample uses the .NET SDK https://www.nuget.org/packages/Azure.Search.Documents
+
+var client = new SearchClient(<SearchServiceName>, <IndexName>, new AzureKeyCredentials(<QueryKey>)
+
+// Use HTTP headers so that you can get the search ID from the response
+var headers = new Dictionary<string, List<string>>() { { "x-ms-azs-return-searchid", new List<string>() { "true" } } };
+var response = await client.searchasync(searchText: searchText, searchOptions: options, customHeaders: headers);
+string searchId = string.Empty;
+if (response.Response.Headers.TryGetValues("x-ms-azs-searchid", out IEnumerable<string> headerValues))
+{
+    searchId = headerValues.FirstOrDefault();
+}
+```
+
+**C# を使用する (古い v10 SDK)**
 
 ```csharp
 // This sample uses the .NET SDK https://www.nuget.org/packages/Microsoft.Azure.Search
@@ -129,18 +146,18 @@ var searchId = request.getResponseHeader('x-ms-azs-searchid');
 
 ユーザーによって検索要求が発行されるたびに、Application Insights のカスタム イベントに関する次のスキーマを使用して、検索要求を検索イベントとしてログに記録する必要があります。 ユーザーが生成する検索クエリだけをログに記録してください。
 
-+ **SearchServiceName** : (文字列) 検索サービス名
-+ **SearchId** : (GUID) 検索クエリの一意識別子 (検索応答で提供されます)
-+ **IndexName** : (文字列) クエリの実行対象となる検索サービス インデックス
-+ **QueryTerms** : (文字列) ユーザーによって入力された検索語句
-+ **ResultCount** : (整数) 返されたドキュメントの数 (検索応答で提供されます)
-+ **ScoringProfile** : (文字列) 使用されるスコアリング プロファイルの名前 (ある場合)
++ **SearchServiceName**: (文字列) 検索サービス名
++ **SearchId**: (GUID) 検索クエリの一意識別子 (検索応答で提供されます)
++ **IndexName**: (文字列) クエリの実行対象となる検索サービス インデックス
++ **QueryTerms**: (文字列) ユーザーによって入力された検索語句
++ **ResultCount**: (整数) 返されたドキュメントの数 (検索応答で提供されます)
++ **ScoringProfile**: (文字列) 使用されるスコアリング プロファイルの名前 (ある場合)
 
 > [!NOTE]
 > 検索クエリに $count=true を追加して、ユーザーによって生成されたクエリの数を要求します。 詳細については、[ドキュメントの検索 (REST)](/rest/api/searchservice/search-documents#counttrue--false) に関するページを参照してください。
 >
 
-**C# を使用する**
+**C# の使用**
 
 ```csharp
 var properties = new Dictionary <string, string> 
@@ -155,7 +172,7 @@ var properties = new Dictionary <string, string>
 _telemetryClient.TrackEvent("Search", properties);
 ```
 
-**JavaScript を使用する**
+**JavaScript の使用**
 
 ```javascript
 appInsights.trackEvent("Search", {
@@ -172,16 +189,16 @@ appInsights.trackEvent("Search", {
 
 ユーザーがドキュメントをクリックするたびに、それをシグナルとして、検索分析用にログに記録する必要があります。 Application Insights のカスタム イベントで次のスキーマを使用して、これらのイベントをログに記録します。
 
-+ **ServiceName** : (文字列) 検索サービス名
-+ **SearchId** : (GUID) 関連する検索クエリの一意識別子
-+ **DocId** : (文字列) ドキュメント識別子
-+ **Position** : (整数) 検索結果ページのドキュメントの順位
++ **ServiceName**: (文字列) 検索サービス名
++ **SearchId**: (GUID) 関連する検索クエリの一意識別子
++ **DocId**: (文字列) ドキュメント識別子
++ **Position**: (整数) 検索結果ページのドキュメントの順位
 
 > [!NOTE]
 > Position は、アプリケーションでの基本的な順序を指します。 比較できるように、この数値は常に同じであれば自由に設定できます。
 >
 
-**C# を使用する**
+**C# の使用**
 
 ```csharp
 var properties = new Dictionary <string, string> 
@@ -194,7 +211,7 @@ var properties = new Dictionary <string, string>
 _telemetryClient.TrackEvent("Click", properties);
 ```
 
-**JavaScript を使用する**
+**JavaScript の使用**
 
 ```javascript
 appInsights.trackEvent("Click", {
@@ -209,13 +226,13 @@ appInsights.trackEvent("Click", {
 
 アプリをインストルメント化し、アプリケーションが Application Insights に正しく接続されていることを確認したら、Power BI Desktop でデータを分析するための定義済みのレポート テンプレートをダウンロードします。 このレポートには、検索トラフィックの分析のためにキャプチャされた追加データの分析に役立つ定義済みのグラフとテーブルが含まれています。
 
-1. Azure Cognitive Search ダッシュボードの左側のナビゲーション ウィンドウで、 **[設定]** 下の **[検索トラフィックの分析]** をクリックします。
+1. Azure Cognitive Search ダッシュボードの左側のナビゲーション ウィンドウで、**[設定]** 下の **[検索トラフィックの分析]** をクリックします。
 
-1. **[検索トラフィックの分析]** ページのステップ 3 で、 **[Get Power BI Desktop]\(Power BI Desktop の取得\)** をクリックして Power BI をインストールします。
+1. **[検索トラフィックの分析]** ページのステップ 3 で、**[Get Power BI Desktop]\(Power BI Desktop の取得\)** をクリックして Power BI をインストールします。
 
    ![Power BI レポートを取得する](./media/search-traffic-analytics/get-use-power-bi.png "Power BI レポートを取得する")
 
-1. 同じページで、 **[Power BI レポートのダウンロード]** をクリックします。
+1. 同じページで、**[Power BI レポートのダウンロード]** をクリックします。
 
 1. このレポートが Power BI Desktop で開かれ、Application Insights に接続して資格情報を指定するよう求められます。 接続情報は、Application Insights リソースの Azure portal ページで見つけることができます。 資格情報には、ポータルのサインインに使用するのと同じユーザー名とパスワードを指定します。
 

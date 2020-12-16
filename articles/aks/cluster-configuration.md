@@ -2,16 +2,16 @@
 title: Azure Kubernetes Service (AKS) でのクラスター構成
 description: Azure Kubernetes Service (AKS) でクラスターを構成する方法について説明します
 services: container-service
-ms.topic: conceptual
+ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 88774450fb196da5de24bcad047ecdb8c424f653
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: dcd9ec52992da8037bb498dc09701879c4c94667
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736535"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572577"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS クラスターの構成
 
@@ -302,7 +302,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup --node-resour
 
 ## <a name="next-steps"></a>次のステップ
 
-- `Kured` を使用して、クラスター内の [Linux ノードにセキュリティとカーネルの更新を適用する](node-updates-kured.md)方法について学習する。
+- クラスター内の[ノード イメージをアップグレード方法](node-image-upgrade.md)を学習する。
 - 「[Azure Kubernetes Service (AKS) クラスターのアップグレード](upgrade-cluster.md)」を参照し、クラスターを最新バージョンの Kubernetes にアップグレードする方法について学習する。
 - [`containerd` と Kubernetes](https://kubernetes.io/blog/2018/05/24/kubernetes-containerd-integration-goes-ga/) の詳細を確認する。
 - [AKS についてよく寄せられる質問](faq.md)に関する記事の一覧を参照し、AKS についての一般的な質問への回答を確認する。

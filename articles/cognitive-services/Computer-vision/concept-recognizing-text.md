@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 73887515eea344e920455e3c24f3eae3d5ad515a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 37a989082b63dc101bb519fea1cc4ef16c76ae49
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95013753"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621537"
 ---
 # <a name="optical-character-recognition-ocr"></a>光学式文字認識 (OCR)
 
@@ -133,7 +133,7 @@ Read API の [Read 呼び出し](https://westcentralus.dev.cognitive.microsoft.c
 ### <a name="read-32-preview-adds-text-line-style-latin-languages-only"></a>Read 3.2 プレビューでのテキスト行スタイルの追加 (ラテン語系の言語のみ)
 [Read 3.2 プレビュー API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) では、各テキスト行のスタイルが印刷または手書きかどうかを分類する **外観** オブジェクトが、信頼スコアとともに出力されます。 この機能は、ラテン語系の言語でのみサポートされています。
 
-[Computer Vision Read OCR SDK クイックスタート](./quickstarts-sdk/client-library.md)と [Read REST API クイックスタート](./QuickStarts/CSharp-hand-text.md)に従って、アプリケーションへの OCR 機能の統合を開始します。
+[Computer Vision REST API またはクライアント ライブラリ クイックスタート](./quickstarts-sdk/client-library.md)を使用して、アプリケーションへの OCR 機能の統合を開始します。
 
 ## <a name="supported-languages-for-print-text"></a>印刷テキストでサポートされている言語
 [Read API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) の印刷テキストの抽出でサポートされている言語は、英語、スペイン語、ドイツ語、フランス語、イタリア語、ポルトガル語、オランダ語です。
@@ -147,7 +147,7 @@ OCR でサポートされている言語の完全な一覧については、[サ
 現在、読み取り操作の手書きテキストの抽出でサポートされているのは、英語だけです。
 
 ## <a name="use-the-rest-api-and-sdk"></a>REST API と SDK を使用する
-[Read 3.x REST API](./QuickStarts/CSharp-hand-text.md) は、統合が簡単で、すぐに生産性を上げることができるため、ほとんどのお客様にとって推奨される選択肢です。 Azure と Computer Vision サービスがスケール、パフォーマンス、データ セキュリティ、コンプライアンスのニーズに対応する一方で、お客様は顧客のニーズを満たすことに集中できます。
+[Read 3.x REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) は、統合が簡単で、すぐに生産性を上げることができるため、ほとんどのお客様にとって推奨される選択肢です。 Azure と Computer Vision サービスがスケール、パフォーマンス、データ セキュリティ、コンプライアンスのニーズに対応する一方で、お客様は顧客のニーズを満たすことに集中できます。
 
 ## <a name="deploy-on-premise-with-docker-containers"></a>Docker コンテナーを使用したオンプレミスのデプロイ
 [Read Docker コンテナー (プレビュー)](./computer-vision-how-to-install-containers.md) を使用すると、独自のローカル環境に新しい OCR 機能をデプロイできます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。
@@ -197,7 +197,6 @@ Cognitive Services 全般に言えることですが、読み取り/OCR サー�
 
 ## <a name="next-steps"></a>次のステップ
 
-- C#、Java、JavaScript、または Python で、[Computer Vision Read SDK クイックスタート](./quickstarts-sdk/client-library.md)を開始します。
-- C#、Java、JavaScript、または Python で、[Read REST API クイックスタート](./QuickStarts/CSharp-hand-text.md)に従って、REST API の使用方法を学習します。
+- [Computer Vision REST API またはクライアント ライブラリ クイックスタート](./quickstarts-sdk/client-library.md)を始めます。
 - [Read REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) について学習します。
 - 簡体字中国語と日本語のサポートが追加された [Read 3.2 パブリック プレビュー REST API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) について学習します。

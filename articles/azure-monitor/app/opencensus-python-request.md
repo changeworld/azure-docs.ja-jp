@@ -6,18 +6,21 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 6cf0998eb4d769f2d1a7891892a5a462cd907e32
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4b88550ad489607bb66eb737067190d45a466a43
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422503"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607077"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>OpenCensus Python を使用した受信要求の追跡
 
 受信要求データは、OpenCensus Python とそのさまざまな統合を使用して収集されます。 一般的な Web フレームワーク `django`、`flask` および `pyramid` 上に構築された Web アプリケーションに送信された受信要求データを追跡します。 その後、データは Azure Monitor の Application Insights に `requests` テレメトリとして送信されます。
 
 まず、最新の [OpenCensus Python SDK](./opencensus-python.md) を使用して Python アプリケーションをインストルメント化します。
+
+> [!NOTE]
+> この記事には、Microsoft では使用されなくなった "*ブラックリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 ## <a name="tracking-django-applications"></a>Django アプリケーションの追跡
 

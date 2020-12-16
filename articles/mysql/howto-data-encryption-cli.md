@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 07d2e9fa98c24695a119c651539d4003ecd8524a
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 6d9abc67035b4581a028d8e59ef080b4f1ffa5b9
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242094"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519044"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL のデータ暗号化
 
@@ -24,7 +24,7 @@ Azure CLI を使用して Azure Database for MySQL のデータ暗号化を設�
 * カスタマー マネージド キーで使用するキー コンテナーとキーを作成します。 また、キー コンテナーの消去防止と論理的な削除も有効にします。
 
   ```azurecli-interactive
-  az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true -enable-purge-protection true
+  az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
   ```
 
 * 作成された Azure Key Vault で、Azure Database for MySQL のデータ暗号化に使用するキーを作成します。
@@ -46,11 +46,23 @@ Azure CLI を使用して Azure Database for MySQL のデータ暗号化を設�
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
     ```
+  * データ保有日数を 90 日に設定
+  ```azurecli-interactive
+    az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --retention-days 90
+    ```
 
 * カスタマー マネージド キーとして使用するには、キーに次の属性が必要です。
   * 有効期限がない
   * 無効化されていない
-  * **get** 、 **wrap** 、 **unwrap** の操作を実行する
+  * **get**、**wrap**、**unwrap** の操作を実行する
+  * **Recoverable** に設定された recoverylevel 属性 (これには保有期間を 90 日に設定して、論理的な削除を有効にする必要があります)
+  * 消去保護の有効化
+
+次のコマンドを使用して、キーの上記の属性を確認できます。
+
+```azurecli-interactive
+az keyvault key show --vault-name <key_vault_name> -n <key_name>
+```
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>キー操作に対する適切なアクセス許可を設定する
 

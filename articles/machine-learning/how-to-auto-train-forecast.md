@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 0bbb18a82de508f79cd2fd5dde58c1cf33520950
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 605e8cd57ab5863c1011082f0f2dbd93d078980b
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887401"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518942"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 
@@ -146,6 +146,7 @@ ForecastTCN (プレビュー)| ForecastTCN は、最も要求の厳しい予測�
 |`forecast_horizon`|予測する今後の期間の数を定義します。 horizon とは、時系列頻度の単位です。 単位は、月ごとや週ごとなどの予測を実行する必要があるトレーニング データの時間間隔に基づきます。|✓|
 |`enable_dnn`|[予測 DNN を有効にします]()。||
 |`time_series_id_column_names`|タイムスタンプが同じ複数の行を含むデータ内の時系列を一意に識別するために使用される列名。 時系列識別子が定義されていない場合、データ セットは 1 つの時系列であると見なされます。 単一の時系列の詳細については、[energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand) に関するページを参照してください。||
+|`freq`| 時系列データセットの頻度。 このパラメーターは、日ごと、週ごと、年ごとなどのイベントが発生することが予想される期間を表します。頻度は、[pandas のオフセットのエイリアス](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)である必要があります。||
 |`target_lags`|データの頻度に基づいて対象の値を遅延させる行の数。 このラグは一覧または単一の整数として表されます。 独立変数と依存変数の間のリレーションシップが既定で一致しない場合、または関連付けられていない場合、ラグを使用する必要があります。 ||
 |`feature_lags`| `target_lags` が設定され、`feature_lags` が `auto` に設定されている場合、遅延する機能が自動 ML によって自動的に決定されます。 機能のタイム ラグを有効にすると、精度の向上に役立つ場合があります。 既定では、機能のタイム ラグは無効になっています。 ||
 |`target_rolling_window_size`|予測値の生成に使用する *n* 履歴期間 (トレーニング セットのサイズ以下)。 省略した場合、*n* はトレーニング セットの全体のサイズになります。 モデルのトレーニング時に特定の量の履歴のみを考慮する場合は、このパラメーターを指定します。 [ターゲットのローリング ウィンドウ集計](#target-rolling-window-aggregation)について、詳細情報をご覧ください。||
@@ -153,7 +154,7 @@ ForecastTCN (プレビュー)| ForecastTCN は、最も要求の厳しい予測�
 
 
 次のコードによって、以下の処理が実行されます。 
-* [`ForecastingParameters`](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) クラスを活用して、実験トレーニング用の予測パラメーターを定義します。
+* [`ForecastingParameters`](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) クラスを活用して、実験トレーニング用の予測パラメーターを定義します。
 * `time_column_name` をデータ セットの `day_datetime` フィールドに設定します。 
 * `time_series_id_column_names` パラメーターを `"store"` に定義します。 これにより、データ用に **2 つの異なる時系列グループ** (ストア A および B 用) が確実に作成されます。
 * テスト セット全体を予測するために、`forecast_horizon` を 50 に設定します。 
@@ -285,19 +286,19 @@ DNN を利用した詳細なコード例については、[飲料生産予測 �
 
 ### <a name="short-series-handling"></a>短い系列の処理
 
-自動 ML では、モデル開発のトレーニングと検証のフェーズを実施するのに十分なデータ ポイントがない場合、時系列は **短い系列** と見なされます。 データ ポイントの数は実験ごとに異なり、max_horizon、クロス検証の分割の数、モデルのルックバックの長さ (時系列の特徴を構成するために必要な最大の履歴) に依存します。 正確な計算については、[short_series_handling_config のリファレンスドキュメント](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration)を参照してください。
+自動 ML では、モデル開発のトレーニングと検証のフェーズを実施するのに十分なデータ ポイントがない場合、時系列は **短い系列** と見なされます。 データ ポイントの数は実験ごとに異なり、max_horizon、クロス検証の分割の数、モデルのルックバックの長さ (時系列の特徴を構成するために必要な最大の履歴) に依存します。 正確な計算については、[short_series_handling_configuration のリファレンス ドキュメント](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration)を参照してください。
 
-自動 ML は、既定では `ForecastingParameters` オブジェクトの `short_series_handling_config` パラメーターを使用して、短い系列の処理を提供します。 
+自動 ML は、既定では `ForecastingParameters` オブジェクトの `short_series_handling_configuration` パラメーターを使用して、短い系列の処理を提供します。 
 
-短い系列の処理を有効にするには、`freq` パラメーターも定義する必要があります。 既定の動作 `short_series_handling_config = auto` を変更するには、`ForecastingParameter` オブジェクトの `short_series_handling_config` パラメーターを更新します。  
+短い系列の処理を有効にするには、`freq` パラメーターも定義する必要があります。 時間単位の頻度を定義するには、`freq='H'` を設定します。 頻度の文字列オプションは、[こちら](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)をご覧ください。 既定の動作 `short_series_handling_configuration = 'auto'` を変更するには、`ForecastingParameter` オブジェクトの `short_series_handling_configuration` パラメーターを更新します。  
 
 ```python
 from azureml.automl.core.forecasting_parameters import ForecastingParameters
 
 forecast_parameters = ForecastingParameters(time_column_name='day_datetime', 
                                             forecast_horizon=50,
-                                            short_series_handling_config='auto',
-                                            freq = 50
+                                            short_series_handling_configuration='auto',
+                                            freq = 'H',
                                             target_lags='auto')
 ```
 次の表は、`short_series_handling_config` のために設定できる項目をまとめたものです。
@@ -305,7 +306,7 @@ forecast_parameters = ForecastingParameters(time_column_name='day_datetime',
 |設定|説明
 |---|---
 |`auto`| 次に、短い系列の処理の既定の動作を示します。 <li> *すべての系列が短い* 場合は、データを埋め込みます。 <br> <li> *すべてが短い系列ではない* 場合は、短い系列をドロップします。 
-|`pad`| `short_series_handling_config = pad` の場合、自動 ML は、検出されたそれぞれの短い系列に対してダミーの値を追加します。 次に、列の型と、それらに埋め込まれる内容を示します。 <li>オブジェクト列には NAN <li> 数値列には 0 <li> ブール/論理列には False <li> ターゲット列には、平均が 0、標準偏差が 1 のランダムな値が埋め込まれます。 
+|`pad`| `short_series_handling_config = pad` の場合、自動 ML によって、検出されたそれぞれの短い系列に対してランダムの値が追加されます。 次に、列の型と、それらに埋め込まれる内容を示します。 <li>オブジェクト列には NAN <li> 数値列には 0 <li> ブール/論理列には False <li> ターゲット列には、平均が 0、標準偏差が 1 のランダムな値が埋め込まれます。 
 |`drop`| `short_series_handling_config = drop` の場合、短い系列は自動 ML によってドロップされ、トレーニングや予測には使用されません。 これらの系列の予測では、NAN が返されます。
 |`None`| 埋め込まれる、またはドロップされる系列はありません。
 

@@ -7,12 +7,12 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: 82373dcd9e1d55e0c4a5867ddaff6875ee57da5a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cf8b0e1fda03a74d30ec77c911d705bf12cf0126
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147514"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763810"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Azure App Service でのアプリのパフォーマンス低下に関する問題のトラブルシューティング
 この記事は、[Azure App Service](./overview.md) でのアプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。
@@ -82,7 +82,7 @@ App Service アプリにはそれぞれ拡張可能な管理エンドポイン�
 - [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx) などのソース コード エディター。 
 - アプリに接続されている MySQL データベースのような、接続されたリソース用の管理ツール。
 
-[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) というパフォーマンス監視を目的としたサイト拡張機能も使用できます。 Application Insights を使用するには、SDK でコードをリビルドします。 追加データへのアクセスを提供する拡張機能をインストールすることもできます。 SDK では、アプリの使用状況とパフォーマンスをさらに詳細に監視するコードを記述できます。 詳細については、「[Web アプリケーションのパフォーマンスを監視する](../azure-monitor/app/web-monitor-performance.md)」を参照してください。
+[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) というパフォーマンス監視を目的としたサイト拡張機能も使用できます。 Application Insights を使用するには、SDK でコードをリビルドします。 追加データへのアクセスを提供する拡張機能をインストールすることもできます。 SDK では、アプリの使用状況とパフォーマンスをさらに詳細に監視するコードを記述できます。 詳細については、「[Web アプリケーションのパフォーマンスを監視する](../azure-monitor/app/app-insights-overview.md)」を参照してください。
 
 <a name="collect"></a>
 
@@ -133,7 +133,7 @@ Kudu には次のような機能があります。
 * アプリケーションの環境設定
 * ログ ストリーム
 * 診断ダンプ
-* デバッグ コンソール (Powershell のコマンドレットや基本的な DOS コマンドを実行可能)
+* デバッグ コンソール (PowerShell のコマンドレットや基本的な DOS コマンドを実行可能)。
 
 Kudu にはもう 1 つ便利な機能があり、アプリケーションからファーストチャンス例外がスローされた場合に、Kudu と SysInternals ツール Procdump を使用してメモリ ダンプを作成することができます。 このメモリ ダンプはプロセスのスナップショットです。アプリに関して、通常より複雑な問題をトラブルシューティングできる場合も少なくありません。
 

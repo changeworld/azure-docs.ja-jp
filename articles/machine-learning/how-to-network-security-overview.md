@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: fdfaef554e4e641656abd3fd2b4a5d3bbc519ccd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6398d23aeb0e26fbc336c0c1066078f327fa2f73
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325437"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576572"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>仮想ネットワークの分離とプライバシーの概要
 
@@ -61,7 +61,7 @@ ms.locfileid: "93325437"
 1. [**ワークスペースと関連するリソース**](#secure-the-workspace-and-associated-resources)をセキュリティで保護します。
 1. [**トレーニング環境**](#secure-the-training-environment)をセキュリティで保護します。
 1. [**推論環境**](#secure-the-inferencing-environment)をセキュリティで保護します。
-1. 必要に応じて、 [**Studio の機能を有効にします**](#optional-enable-studio-functionality)。
+1. 必要に応じて、[**Studio の機能を有効にします**](#optional-enable-studio-functionality)。
 1. [**ファイアウォール設定**](#configure-firewall-settings)を構成します
 
 ## <a name="secure-the-workspace-and-associated-resources"></a>ワークスペースと関連するリソースをセキュリティで保護する
@@ -145,10 +145,11 @@ ms.locfileid: "93325437"
 
 * スタジオでのデータのプレビュー
 * デザイナーでのデータの視覚化
+* デザイナーでのモデルのデプロイ
 * AutoML 実験の送信
 * ラベル付けプロジェクトの開始
 
-VNet 内部ですべての Studio 機能を有効にするには、「[Azure 仮想ネットワークで Azure Machine Learning Studio を使用する](how-to-enable-studio-virtual-network.md#access-data-using-the-studio)」を参照してください。 Studio は、サービス エンドポイントまたはプライベート エンドポイントを使用するストレージ アカウントをサポートしています。
+VNet 内部ですべての Studio 機能を有効にするには、「[Azure 仮想ネットワークで Azure Machine Learning Studio を使用する](how-to-enable-studio-virtual-network.md#configure-data-access-in-the-studio)」を参照してください。 Studio は、サービス エンドポイントまたはプライベート エンドポイントを使用するストレージ アカウントをサポートしています。
 
 ### <a name="limitations"></a>制限事項
 - [ML によるデータのラベル付け](how-to-create-labeling-projects.md#use-ml-assisted-labeling)は、仮想ネットワークの背後でセキュリティ保護された既定のストレージ アカウントをサポートしていません。 ML によるデータのラベル付けには、既定以外のストレージ アカウントを使用する必要があります。 既定以外のストレージ アカウントは、仮想ネットワークの背後でのセキュリティ保護が可能です。 

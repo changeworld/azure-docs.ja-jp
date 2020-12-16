@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 09/23/2020
-ms.openlocfilehash: 72566987068729efef4310ce145c30584c4895b0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/03/2020
+ms.openlocfilehash: 4436289d544de057acef132117346ac53c20b5a7
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011406"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576506"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure Stream Analytics でのデータ保護 
 
@@ -41,7 +41,7 @@ Azure Stream Analytics には、前に説明した顧客データとその他の
 
 Stream Analytics は、データの暗号化とセキュリティ保護のために、最高クラスの暗号化規格をインフラストラクチャ全体で自動的に使用します。 Stream Analytics を信頼するだけで、インフラストラクチャの管理について心配する必要なく、すべてのデータを安全に格納できます。
 
-カスタマー マネージド キー (CMK) を使用してデータを暗号化する場合は、独自のストレージ アカウント (汎用 V1 または V2) を使用して、Stream Analytics ランタイムに必要なプライベート データ資産を格納できます。 ストレージ アカウントは、必要に応じて暗号化できます。 プライベート データ資産が、Stream Analytics インフラストラクチャによって永続的に保存されることはありません。 
+カスタマー マネージド キーを使用してデータを暗号化する場合は、独自のストレージ アカウント (汎用 V1 または V2) を使用して、Stream Analytics ランタイムに必要なプライベート データ資産を格納できます。 ストレージ アカウントは、必要に応じて暗号化できます。 プライベート データ資産が、Stream Analytics インフラストラクチャによって永続的に保存されることはありません。 
 
 この設定は Stream Analytics ジョブの作成時に構成する必要があり、ジョブのライフ サイクル全体を通して変更することはできません。 Stream Analytics によって使用されているストレージの変更または削除は推奨されません。 ストレージ アカウントを削除すると、すべてのプライベート データ資産が完全に削除されるため、ジョブが失敗します。 
 
@@ -50,12 +50,9 @@ Stream Analytics ポータルを使用しても、ストレージ アカウン�
 
 ### <a name="configure-storage-account-for-private-data"></a>プライベート データ用のストレージ アカウントを構成する 
 
-
 ストレージ アカウントを暗号化してすべてのデータを保護し、プライベート データの場所を明示的に選択します。 
 
 規制されている業界や環境におけるコンプライアンス義務を果たすために、[Microsoft のコンプライアンス認証](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)に関するページを参照してください。 
-
-
 
 プライベート データ資産用のストレージ アカウントを構成するには、次の手順に従います。 この構成は、ストレージ アカウントからではなく、Stream Analytics ジョブから作られます。
 
@@ -69,9 +66,15 @@ Stream Analytics ポータルを使用しても、ストレージ アカウン�
 
 1. *[Secure all private data assets needed by this job in my Storage account]\(このジョブに必要なすべてのプライベート データ資産を自分のストレージ アカウントに保管してセキュリティで保護する\)* チェック ボックスをオンにします。
 
-1. サブスクリプションからストレージ アカウントを選択します。 この設定は、ジョブのライフ サイクル全体を通して変更できないことに注意してください。 
+1. サブスクリプションからストレージ アカウントを選択します。 この設定は、ジョブのライフ サイクル全体を通して変更できないことに注意してください。 また、このオプションは、ジョブの作成後に追加することができません。
+
+1. 接続文字列を使用して認証するには、[認証モード] ドロップダウンから **[接続文字列]** を選択します。 ストレージ アカウント キーは、サブスクリプションから自動的に設定されます。
 
    ![プライベート データ ストレージ アカウントの設定](./media/data-protection/storage-account-create.png)
+
+1. マネージド ID (プレビュー) を使用して認証するには、[認証モード] ドロップダウンから **[マネージド ID]** を選択します。 マネージド ID を選択した場合は、Stream Analytics ジョブをストレージ アカウントのアクセス制御リストに追加する必要があります。 ジョブにアクセス権を付与しない場合は、そのジョブではどのような操作も実行できなくなります。 アクセス権を付与する方法に関する詳細については、「[Azure RBAC を使用して他のリソースにマネージド ID アクセスを割り当てる](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md#use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource)」を参照してください。
+
+   :::image type="content" source="media/data-protection/storage-account-create-msi.png" alt-text="マネージド ID の認証を使用したプライベート データ ストレージ アカウントの設定":::
 
 ## <a name="private-data-assets-that-are-stored-by-stream-analytics"></a>Stream Analytics によって格納されるプライベート データ資産
 

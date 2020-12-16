@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: eb290b8c154c40388bfb3e7f9cbac7b645aa9609
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bc1ae4bc2cf64c3e2f996709c086eb23cb8b8385
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452670"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602599"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>仮想マシンの認定に関するトラブルシューティング
 
@@ -203,7 +203,7 @@ OS ディスク サイズの制限については、次のルールを参照し�
 
 |OS|推奨される VHD サイズ|
 |---|---|
-|Linux|30 GB から 1023 GB|
+|Linux|1 GB から 1023 GB|
 |Windows|30 GB から 250 GB|
 
 VM を使用すると基になるオペレーティング システムにアクセスできるため、VHD のサイズが VHD に対して十分な大きさであることを確認します。 ディスクはダウンタイムなしでは展開できません。 30 GB から 50 GB のディスク サイズを使用します。

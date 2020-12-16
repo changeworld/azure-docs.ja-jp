@@ -1,21 +1,24 @@
 ---
-title: Windows Virtual Desktop の安全な URL の一覧 - Azure
+title: Windows Virtual Desktop の必要な URL リスト - Azure
 description: Windows Virtual Desktop のデプロイを意図したとおりに機能させるためにブロックを解除する必要がある URL の一覧。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3d19a60fd6a22eb9245722c6ff69d3b39c05d29e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 70b7042e4006cc59419d0ea6798fe7626a82c086
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023175"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621078"
 ---
-# <a name="safe-url-list"></a>安全な URL リスト
+# <a name="required-url-list"></a>必要な URL リスト
 
-Windows Virtual Desktop のデプロイが正しく機能するように、特定の URL のブロックを解除する必要があります。 この記事では、どの URL が安全であるか確認できるよう、これらの URL の一覧を示します。
+Windows Virtual Desktop をデプロイし、使用するには、仮想マシン (VM) で特定の URL にいつでもアクセスできるよう、URL のブロックを解除する必要があります。 この記事では、Windows Virtual Desktop を正しく機能させるためにブロックを解除する必要がある、必要な URL の一覧を示します。 
+
+>[!IMPORTANT]
+>Windows Virtual Desktop では、この記事に含まれていない URL をブロックするデプロイはサポートされていません。
 
 ## <a name="virtual-machines"></a>仮想マシン
 
@@ -53,7 +56,7 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、Azure G
 |*.servicebus.usgovcloudapi.net|443|エージェント トラフィック|AzureCloud|
 |*xt.table.core.usgovcloudapi.net|443|エージェント トラフィック|AzureCloud|
 |Kms.core.usgovcloudapi.net|1688|Windows のライセンス認証|インターネット|
-|mrsglobalstugviffx.core.usgovcloudapi.net|443|エージェントと SXS スタックの更新|AzureCloud|
+|mrsglobalstugviffx.blob.core.usgovcloudapi.net|443|エージェントと SXS スタックの更新|AzureCloud|
 |wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Azure portal のサポート|AzureCloud|
 | 169.254.169.254 | 80 | [Azure Instance Metadata Service エンドポイント](../virtual-machines/windows/instance-metadata-service.md) | 該当なし |
 | 168.63.129.16 | 80 | [セッション ホストの正常性の監視](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 該当なし |
@@ -69,9 +72,13 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、Azure G
 |login.windows.net|443|Microsoft Online Services、Microsoft 365 へのサインイン|login.microsoftonline.us|
 |*.sfx.ms|443|OneDrive クライアント ソフトウェアの更新|oneclient.sfx.ms|
 |*.digicert.com|443|証明書失効の確認|なし|
+|*.azure-dns.com|443|Azure DNS 解決|なし|
+|*.azure-dns.net|443|Azure DNS 解決|なし|
 
 >[!NOTE]
 >現在、Windows Virtual Desktop には、ネットワーク トラフィックを許可するためにブロックを解除できる IP アドレス範囲の一覧がありません。 現時点では、特定の URL のブロック解除のみがサポートされます。
+>
+>Next Generation Firewall (NGFW) を使用している場合、確実に接続できるよう、Azure IP のために特別に作られた動的リストを使用する必要があります。
 >
 >Office に関連した安全な URL (必須の Azure Active Directory 関連の URL など) の一覧については、「[Office 365 の URL と IP アドレスの範囲](/office365/enterprise/urls-and-ip-address-ranges)」を参照してください。
 >

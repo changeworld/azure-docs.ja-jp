@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/11/2020
-ms.openlocfilehash: 2cfd498f73646b0021d5fbb3e982dc82871ef35c
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 12/04/2020
+ms.openlocfilehash: 87465ff381c62343a11c54130378b48580ca40e2
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026991"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621648"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>マッピング データ フローのデバッグ モード
 
@@ -25,9 +25,9 @@ Azure Data Factory マッピング データ フローのデバッグ モード�
 
 ![デバッグ スライダー](media/data-flow/debugbutton.png "デバッグ スライダー")
 
-スライダーを有効にすると、使用する統合ランタイム構成を選択するように求めるメッセージが表示されます。 AutoResolveIntegrationRuntime を選択した場合は、60 分の Time to Live が設定された一般的なコンピューティングの 8 個のコアを持つクラスターがスピンアップされます。 データ フロー統合ランタイムの詳細については、[データ フローのパフォーマンス](concepts-data-flow-performance.md#ir)に関するページを参照してください。
+スライダーを有効にすると、使用する統合ランタイム構成を選択するように求めるメッセージが表示されます。 AutoResolveIntegrationRuntime を選択した場合は、既定の 60 分の Time to Live が設定された一般的なコンピューティングの 8 個のコアを持つクラスターがスピンアップされます。 セッションのタイムアウトまでのアイドル時間を増やす場合は、より高い TTL 設定を選択できます。 データ フロー統合ランタイムの詳細については、[データ フローのパフォーマンス](concepts-data-flow-performance.md#ir)に関するページを参照してください。
 
-![デバッグ IR の選択](media/data-flow/debugbutton2.png "デバッグ IR の選択")
+![デバッグ IR の選択](media/data-flow/debug-new-1.png "デバッグ IR の選択")
 
 デバッグ モードが有効なときは、アクティブな Spark クラスターを使用して対話的にデータ フローを構築します。 Azure Data Factory でデバッグを無効にすると、セッションは終了します。 デバッグ セッションを有効にしている間に Azure Databricks によって発生する 1 時間あたりの料金を把握しておく必要があります。
 
@@ -36,7 +36,7 @@ Azure Data Factory マッピング データ フローのデバッグ モード�
 ![データ フロー デバッグ セッションの表示](media/iterative-development-debugging/view-dataflow-debug-sessions.png)
 
 > [!NOTE]
-> ユーザーが ADF ブラウザー UI から開始するすべてのデバッグ セッションは、独自の Spark クラスターを使用する新しいセッションです。 上記のデバッグ セッションの監視ビューを使用して、ファクトリごとにデバッグ セッションを表示および管理できます。
+> ユーザーが ADF ブラウザー UI から開始するすべてのデバッグ セッションは、独自の Spark クラスターを使用する新しいセッションです。 上記のデバッグ セッションの監視ビューを使用して、ファクトリごとにデバッグ セッションを表示および管理できます。 TTL 時間を含め、各デバッグ セッションの実行時間に対し、時間単位で課金されます。
 
 ## <a name="cluster-status"></a>クラスターの状態
 
@@ -50,7 +50,7 @@ Azure Data Factory マッピング データ フローのデバッグ モード�
 
 ![デバッグ設定](media/data-flow/debug-settings.png "デバッグの設定")
 
-データフローまたは参照されているデータセットにパラメーターがある場合は、 **[パラメーター]** タブを選択して、デバッグ中に使用する値を指定できます。
+データフローまたは参照されているデータセットにパラメーターがある場合は、**[パラメーター]** タブを選択して、デバッグ中に使用する値を指定できます。
 
 ![デバッグ設定のパラメーター](media/data-flow/debug-settings2.png "デバッグ設定のパラメーター")
 
@@ -83,7 +83,7 @@ Join、Exists、または Lookup の変換を単体テストする場合、ご�
 
 ![スクリーンショットには [確認] ボタンが示されています。](media/data-flow/quick-actions2.png "クイック アクション")
 
-**[型キャスト]** と **[変更]** では派生列変換が生成され、 **[削除]** では選択変換が生成されます。
+**[型キャスト]** と **[変更]** では派生列変換が生成され、**[削除]** では選択変換が生成されます。
 
 ![スクリーンショットには、派生列の設定が示されています。](media/data-flow/quick-actions3.png "クイック アクション")
 

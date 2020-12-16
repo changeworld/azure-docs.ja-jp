@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: b8f6768ebf988ff568739c86303b52ea5b0a9234
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 38020b38ebd879bf19c243c2055e73198e9fcc7c
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018714"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96606924"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 および Esv4 シリーズ
 
@@ -58,7 +58,7 @@ Esv4 シリーズのサイズは、Intel&reg; Xeon&reg; Platinum 8272CL (Cascade
 [Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
-[VM 世代サポート](generation-2.md): 第 1 世代<br>
+[VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数|必要なネットワーク帯域幅 (Mbps) |
@@ -71,8 +71,11 @@ Esv4 シリーズのサイズは、Intel&reg; Xeon&reg; Platinum 8272CL (Cascade
 | Standard_E32s_v4 | 32 | 256 | リモート ストレージのみ | 32 | 51200/768  | 8|16000 |
 | Standard_E48s_v4 | 48 | 384 | リモート ストレージのみ | 32 | 76800/1152 | 8|24000 |
 | Standard_E64s_v4 <sup>1</sup> | 64 | 504| リモート ストレージのみ | 32 | 80000/1200 | 8|30000 |
+| Standard_E80is_v4 <sup>2</sup> | 80 | 504 | リモート ストレージのみ | 32 | 80000/1200 | 8|30000 |
 
 <sup>1</sup> [コア数を制限したサイズも提供しています](./constrained-vcpu.md)。
+
+<sup>2</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

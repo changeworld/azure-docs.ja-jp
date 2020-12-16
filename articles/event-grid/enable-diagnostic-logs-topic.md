@@ -2,21 +2,21 @@
 title: Azure Event Grid - トピックまたはドメインの診断ログを有効にする
 description: この記事では、Azure Event Grid トピックの診断ログを有効にする手順について説明します。
 ms.topic: how-to
-ms.date: 07/07/2020
-ms.openlocfilehash: 2d76d3ededd6d241197b26ac357c3b5406f43f02
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 12/03/2020
+ms.openlocfilehash: ff00c1438c49cbc9f9e67eba0cf0acef7991a5a4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297523"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576453"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid のトピックまたはドメインの診断ログを有効にする
-Event Grid ユーザーは、診断設定を使用して、ストレージ アカウント、イベント ハブ、または Log Analytics ワークスペースのいずれかで**発行および配信エラー** ログをキャプチャして表示することができます。 この記事では、これらの設定を Event Grid トピックで有効にする手順について説明します。
+この記事では、Event Grid のトピックまたはドメインの診断設定を有効にする手順について説明します。  これらの設定を行うと、**発行エラーと配信エラー** のログをキャプチャして表示することができます。 
 
 ## <a name="prerequisites"></a>前提条件
 
 - プロビジョニングされた Event Grid トピック
-- 診断ログのキャプチャに使用するプロビジョニングされた宛先。 Event Grid トピックと同じ場所にある、次のいずれかの送信先を指定できます。
+- 診断ログのキャプチャに使用するプロビジョニングされた宛先。 Event Grid トピックと同じ場所に、次のいずれかの送信先を指定できます。
     - Azure ストレージ アカウント
     - イベント ハブ
     - Log Analytics ワークスペース
@@ -81,13 +81,13 @@ Event Grid ユーザーは、診断設定を使用して、ストレージ ア�
 9. 次に **[診断設定]** ページに戻り、 **[診断設定]** テーブルに新しいエントリが表示されていることを確認します。 
     ![一覧の診断設定](./media/enable-diagnostic-logs-topic/system-topic-diagnostic-settings-targets.png)
 
-     また、システム トピックのすべての**メトリック**の収集を有効にすることもできます。
+     また、システム トピックのすべての **メトリック** の収集を有効にすることもできます。
 
     ![システム トピック - すべてのメトリックを有効にする](./media/enable-diagnostic-logs-topic/system-topics-metrics.png)
 
 ## <a name="view-diagnostic-logs-in-azure-storage"></a>Azure Storage アカウントの診断ログの表示 
 
-1. キャプチャ先としてストレージ アカウントを有効にし、Event Grid 診断ログの出力を開始すると、ストレージ アカウントで **insights-logs-deliveryfailures** と **insights-logs-publishfailures** という名前の新しいコンテナーが表示されます。 
+1. キャプチャ先としてストレージ アカウントを有効にすると、Event Grid が診断ログの出力を開始します。 ストレージ アカウントで、**insights-logs-deliveryfailures** および **insights-logs-publishfailures** という名前の新しいコンテナーが表示されます。 
 
     ![ストレージ - 診断ログ用のコンテナー](./media/enable-diagnostic-logs-topic/storage-containers.png)
 2. いずれかのコンテナー内を移動すると、JSON 形式の BLOB が見つかります。 このファイルには、配信エラーまたは発行エラーのログ エントリが含まれています。 ナビゲーション パスは、Event Grid トピックの **ResourceId** と、ログ エントリが生成されたときのタイムスタンプ (分単位) を表します。 ダウンロード可能な BloB/JSON ファイルは、最終的に次のセクションで説明するスキーマに準拠しています。 
@@ -102,9 +102,8 @@ Event Grid ユーザーは、診断設定を使用して、ストレージ ア�
         "eventSubscriptionName": "SAMPLEDESTINATION",
         "category": "DeliveryFailures",
         "operationName": "Deliver",
-        "message": "Message:outcome=NotFound, latencyInMs=2635, systemId=17284f7c-0044-46fb-84b7-59fda5776017, state=FilteredFailingDelivery, deliveryTime=11/1/2019 12:17:10 AM, deliveryCount=0, probationCount=0, deliverySchema=EventGridEvent, eventSubscriptionDeliverySchema=EventGridEvent, fields=InputEvent, EventSubscriptionId, DeliveryTime, State, Id, DeliverySchema, LastDeliveryAttemptTime, SystemId, fieldCount=, requestExpiration=1/1/0001 12:00:00 AM, delivered=False publishTime=11/1/2019 12:17:10 AM, eventTime=11/1/2019 12:17:09 AM, eventType=Type, deliveryTime=11/1/2019 12:17:10 AM, filteringState=FilteredWithRpc, inputSchema=EventGridEvent, publisher=DIAGNOSTICLOGSTEST-EASTUS.EASTUS-1.EVENTGRID.AZURE.NET, size=363, fields=Id, PublishTime, SerializedBody, EventType, Topic, Subject, FilteringHashCode, SystemId, Publisher, FilteringTopic, TopicCategory, DataVersion, MetadataVersion, InputSchema, EventTime, fieldCount=15, url=sb://diagnosticlogstesting-eastus.servicebus.windows.net/, deliveryResponse=NotFound: The messaging entity 'sb://diagnosticlogstesting-eastus.servicebus.windows.net/eh-diagnosticlogstest' could not be found. TrackingId:c98c5af6-11f0-400b-8f56-c605662fb849_G14, SystemTracker:diagnosticlogstesting-eastus.servicebus.windows.net:eh-diagnosticlogstest, Timestamp:2019-11-01T00:17:13, referenceId: ac141738a9a54451b12b4cc31a10dedc_G14:"
+        "message": "Message:outcome=NotFound, latencyInMs=2635, id=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx, systemId=xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, state=FilteredFailingDelivery, deliveryTime=11/1/2019 12:17:10 AM, deliveryCount=0, probationCount=0, deliverySchema=EventGridEvent, eventSubscriptionDeliverySchema=EventGridEvent, fields=InputEvent, EventSubscriptionId, DeliveryTime, State, Id, DeliverySchema, LastDeliveryAttemptTime, SystemId, fieldCount=, requestExpiration=1/1/0001 12:00:00 AM, delivered=False publishTime=11/1/2019 12:17:10 AM, eventTime=11/1/2019 12:17:09 AM, eventType=Type, deliveryTime=11/1/2019 12:17:10 AM, filteringState=FilteredWithRpc, inputSchema=EventGridEvent, publisher=DIAGNOSTICLOGSTEST-EASTUS.EASTUS-1.EVENTGRID.AZURE.NET, size=363, fields=Id, PublishTime, SerializedBody, EventType, Topic, Subject, FilteringHashCode, SystemId, Publisher, FilteringTopic, TopicCategory, DataVersion, MetadataVersion, InputSchema, EventTime, fieldCount=15, url=sb://diagnosticlogstesting-eastus.servicebus.windows.net/, deliveryResponse=NotFound: The messaging entity 'sb://diagnosticlogstesting-eastus.servicebus.windows.net/eh-diagnosticlogstest' could not be found. TrackingId:c98c5af6-11f0-400b-8f56-c605662fb849_G14, SystemTracker:diagnosticlogstesting-eastus.servicebus.windows.net:eh-diagnosticlogstest, Timestamp:2019-11-01T00:17:13, referenceId: ac141738a9a54451b12b4cc31a10dedc_G14:"
     }
     ```
-
 ## <a name="next-steps"></a>次のステップ
 ログ スキーマと、トピックまたはドメインの診断ログに関するその他の概念情報については、「[診断ログ](diagnostic-logs.md)」を参照してください。

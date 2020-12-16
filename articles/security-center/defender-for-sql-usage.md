@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 11/30/2020
 ms.author: memildin
-ms.openlocfilehash: a80747a88087e1ad3a70f198a260e41a6848e34f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 07a94685fb3655aa5aa21a8658b9d975c764daff
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445660"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512280"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender for SQL servers on machines 
 
@@ -30,7 +30,7 @@ ms.locfileid: "96445660"
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|プレビュー<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|リリース状態:|一般提供 (GA)|
 |価格:|**Azure Defender for SQL servers on machines** は、[価格ページ](security-center-pricing.md)に記載されているように課金されます|
 |保護される SQL のバージョン:|Azure SQL Server (Microsoft サポートの対象となるすべてのバージョン)|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov|
@@ -68,7 +68,7 @@ ms.locfileid: "96445660"
 
         ![既定以外のワークスペースをタイトルで検索する](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
-1. **Azure Defender for SQL servers on machines (プレビュー)** のオプションを **オン** に設定します。 
+1. **Azure Defender for SQL servers on machines** プランのオプションを **オン** に設定します。 
 
     ![オプションのプランを含む Security Center の価格ページ](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)
 
@@ -79,7 +79,7 @@ ms.locfileid: "96445660"
 
 
 1. 必要に応じて、セキュリティ アラートのメール通知を構成します。 
-    Security Center アラートの生成時にメール通知を受け取る受信者の一覧を設定できます。 メールには、Azure Security Center におけるアラートの直接リンクと関連するすべての詳細が含まれます。 詳細については、[セキュリティ アラートの電子メール通知のセットアップ](security-center-provide-security-contact-details.md)に関する記事を参照してください。
+    Security Center アラートの生成時にメール通知を受け取る受信者の一覧を設定できます。 メールには、Azure Security Center におけるアラートへの直接 sk と関連するすべての詳細が含まれます。 詳細については、[セキュリティ アラートの電子メール通知のセットアップ](security-center-provide-security-contact-details.md)に関する記事を参照してください。
 
 
 

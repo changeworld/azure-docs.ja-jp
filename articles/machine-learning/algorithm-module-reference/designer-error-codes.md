@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 11/25/2020
-ms.openlocfilehash: af7ac49fd6c1a31a8363c4ba0bf925787613ecc2
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 846c5519dced06ed16f5a0d12b0bb25443961f93
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030409"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753911"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>デザイナーの例外とエラー コード
 
@@ -279,7 +279,7 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 ## <a name="error-0014"></a>エラー 0014  
  列の一意の値の数が許容されているより多い場合、例外が発生します。  
 
- このエラーは、列に含まれる一意の値の数が多すぎる場合に発生します。  たとえば、列がカテゴリ データとして処理するように指定されていても、列の一意の値が多すぎて処理を完了できない場合、このエラーが発生する可能性があります。 また、2 つの入力の間で一意の値の数が一致していない場合にも、このエラーが発生する可能性があります。   
+ このエラーは、ID 列やテキスト列など、列に含まれる一意の値の数が多すぎる場合に発生します。 列がカテゴリ データとして処理するように指定されていても、列の一意の値が多すぎて処理を完了できない場合、このエラーが発生する可能性があります。 また、2 つの入力の間で一意の値の数が一致していない場合にも、このエラーが発生する可能性があります。   
 
 次の条件の **両方** を満たした場合に、一意の値が許可される数を上回るエラーが発生します。
 
@@ -292,7 +292,9 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 
 グループ化または分類に使用する列の場合は、列の一意の値の数を減らすための手順を実行します。 列のデータ型に応じて、さまざまな方法で減らすことができます。 
 
-通常このシナリオでは、エラーになった列は、モデルをトレーニングする機能として意味がありません。 そのため、[[メタデータの編集]](../algorithm-module-reference/edit-metadata.md) を使用してその列を **[Clear feature]\(特徴のクリア\)** としてマークすれば、モデルのトレーニングで使用されなくなります。 
+モデル トレーニング中の意味のある特徴ではない ID の場合、[[メタデータの編集]](../algorithm-module-reference/edit-metadata.md) を使用してその列を **[Clear feature]\(特徴のクリア\)** としてマークすれば、モデルのトレーニングで使用されなくなります。 
+
+テキスト列の場合、[特徴ハッシュ](../algorithm-module-reference/feature-hashing.md)や[テキストからの N gram 特徴抽出モジュール](../algorithm-module-reference/extract-n-gram-features-from-text.md)を利用し、テキスト列を事前処理できます。
 <!--
 + For text data, you might be able to use [Preprocess Text](preprocess-text.md) to collapse similar entries. 
 + For numeric data, you can create a smaller number of bins using [Group Data into Bins](group-data-into-bins.md), remove or truncate values using [Clip Values](clip-values.md), or use machine learning methods such as [Principal Component Analysis](principal-component-analysis.md) or [Learning with Counts](data-transformation-learning-with-counts.md) to reduce the dimensionality of the data.  

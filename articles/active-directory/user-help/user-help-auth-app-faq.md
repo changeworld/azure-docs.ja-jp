@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/20/2020
+ms.date: 12/01/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 65bd5a89d132a575817480d0609109a3f379e969
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f0cb7d4ebe428da4a370433b3e90a829f30489db
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833964"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512207"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリに関してよく寄せられる質問 (FAQ)
 
@@ -32,6 +32,14 @@ Microsoft Authenticator アプリは、Azure AD Authenticator アプリに置き
 **Q**: デバイスを登録することは、会社またはサービスに自分のデバイスへのアクセスを許可することに同意することになりますか?
 
 **A**: デバイスを登録すると、ご自身のデバイスから組織のサービスにアクセスできるようになります。また、組織からご自身のデバイスへのアクセスは許可されません。
+
+## <a name="too-many-app-permissions"></a>アプリのアクセス許可が多すぎる
+
+**Q**: アプリで多くのアクセス許可が要求されるのはなぜですか。
+
+**A**: 要求される可能性があるアクセス許可の完全な一覧と、アプリでの用途を次に示します。 表示される具体的なアクセス許可は、スマートフォンの種類によって異なります。
+
+- **場所**。 組織は、ユーザーに特定のリソースへのアクセスを許可する前に、ユーザーの所在地を把握する必要がある場合があります。 組織が場所を要求するポリシーを持っている場合にのみ、このアクセス許可がアプリから要求されます。 
 
 ### <a name="legacy-apns-support-deprecated"></a>レガシ APN のサポートは廃止されました。
 

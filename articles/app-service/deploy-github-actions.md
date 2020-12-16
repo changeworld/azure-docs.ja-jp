@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: e2432ca4cecb3c36d2fae19907c1ad17d9ef2505
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 16a21acabfd199ba16068e507919b564f01a76d5
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833505"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763912"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub Actions を使用した App Service へのデプロイ
 
@@ -55,7 +55,7 @@ App Service デプロイ センターを使用して、GitHub Actions の使用�
 
 これにより、ワークフロー ファイルがリポジトリにコミットされます。 アプリをビルドしてデプロイするワークフローがすぐに開始されます。
 
-## <a name="set-up-a-work-manually"></a>作業を手動で設定する
+## <a name="set-up-a-workflow-manually"></a>ワークフローを手動で設定する
 
 デプロイ センターを使用せずにワークフローをデプロイすることもできます。 これを行うには、最初にデプロイ資格情報を生成する必要があります。 
 

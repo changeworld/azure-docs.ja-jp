@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: Azure App Service, Web アプリ, Linux, Windows, Docker, コンテナー
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: b5682275a9e5f3993de715ab5f23a708d5df47ae
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 68fe49ff201ead89d846a0676e81dda9fc9b75b9
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130121"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558608"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>カスタム コンテナーを使用してカスタム ソフトウェアを Azure App Service に移行する
 
@@ -228,31 +228,16 @@ Azure App Service では、組み込みイメージとカスタム イメージ�
 
 ## <a name="set-up-your-initial-environment"></a>初期環境を設定する
 
-* アクティブなサブスクリプションが含まれる Azure アカウントを用意します。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-* [Docker](https://docs.docker.com/get-started/#setup) をインストールします。これを Docker イメージの作成に使用します。 Docker をインストールするには、コンピューターの再起動が必要になる場合があります。
-* <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.0.80 以降をインストールします。それを任意のシェルから使用してコマンドを実行することで、Azure リソースのプロビジョニングと構成を行います。
+- アクティブなサブスクリプションが含まれる Azure アカウントを用意します。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Docker](https://docs.docker.com/get-started/#setup) をインストールします。これを Docker イメージの作成に使用します。 Docker をインストールするには、コンピューターの再起動が必要になる場合があります。
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+- このチュートリアルには、Azure CLI のバージョン 2.0.80 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
-Docker と Azure CLI をインストールした後、ターミナル ウィンドウを開いて、Docker がインストールされていることを確認します。
+Docker をインストールした後、または Azure Cloud Shell を実行した後、ターミナル ウィンドウを開いて、Docker がインストールされていることを確認します。
 
 ```bash
 docker --version
 ```
-
-さらに、Azure CLI バージョンが 2.0.80 以降であることを確認します。
-
-```azurecli
-az --version
-```
-
-次に CLI から Azure にサインインします。
-
-```azurecli
-az login
-```
-
-`az login` コマンドを実行すると、資格情報を収集するためにブラウザーが開きます。 コマンドが完了すると、ご利用のサブスクリプションに関する情報を含んだ JSON 出力が表示されます。
-
-サインイン後は、Azure CLI を使用して Azure コマンドを実行して、サブスクリプション内のリソースを操作することができます。
 
 ## <a name="clone-or-download-the-sample-app"></a>サンプル アプリをクローンまたはダウンロードする
 
@@ -343,8 +328,6 @@ ENTRYPOINT ["init.sh"]
 1. ブラウザーで `http://localhost:8000` にアクセスして、Web アプリとコンテナーが正しく機能していることを確認します。
 
     ![ローカルでの Web アプリのテスト](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-local.png)
-
-[!INCLUDE [Try Cloud Shell](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 

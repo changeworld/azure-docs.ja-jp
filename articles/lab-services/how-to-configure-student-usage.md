@@ -1,40 +1,75 @@
 ---
-title: Azure Lab Services のクラスルーム ラボの使用設定を構成する
+title: Azure Lab Services のラボの使用設定を構成する
 description: ラボの学生数の構成、学生のラボへの登録、学生が VM を使用できる時間数の制御などを行う方法について説明します。
 ms.topic: article
-ms.date: 11/11/2020
-ms.openlocfilehash: d3100f1a7e67e3b0d403375de02cb3daf5fcfb31
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.date: 12/01/2020
+ms.openlocfilehash: 3b05246445aea708312891ec631a35da3bc1eb8e
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555721"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602633"
 ---
 # <a name="add-and-manage-lab-users"></a>ラボ ユーザーを追加および管理する
 
 この記事では、ラボへの学生ユーザーの追加、学生ユーザーのラボへの登録、学生ユーザーが仮想マシン (VM) を使用できる追加時間数の制御などを行う方法について説明します。 
 
-## <a name="add-users-to-a-lab"></a>ラボへのユーザーの追加
+ユーザーを追加する場合、既定では、 **[アクセスを制限する]** オプションがオンになっています。学生は、ユーザーのリストに含まれていない限り、登録リンクがあってもラボに登録することはできません。 リストに含まれるユーザーだけが、送信された登録リンクを使用してラボに登録できます。 **[アクセスを制限する]** をオフにすることもできます。その場合、学生は、登録リンクがあればラボに登録できます。 
 
-このセクションでは、ラボへの学生の追加を、手動で、または CSV ファイルをアップロードして行います。 次の操作を行います。
+この記事では、ラボにユーザーを追加する方法について説明します。
+
+## <a name="add-users-from-an-azure-ad-group"></a>Azure AD グループからユーザーを追加する
+
+### <a name="overview"></a>概要
+
+ユーザーを手動で追加または削除しなくて済むように、ラボ ユーザー リストを既存の Azure Active Directory (Azure AD) グループに同期することができるようになりました。 
+
+組織の Azure Active Directory 内に Azure AD グループを作成して、組織のリソースやクラウドベースのアプリへのアクセスを管理できます。 詳細については、[Azure AD グループ](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)に関する記事をご覧ください。 組織で Microsoft Office 365 または Azure サービスを使用している場合、組織には Azure Active Directory を管理する管理者が既に存在します。 
+
+### <a name="sync-users-with-azure-ad-group"></a>ユーザーを Azure AD グループと同期する
+
+> [!IMPORTANT]
+> ユーザー リストが空であることを確認してください。 手動または CSV ファイルのインポートによって追加したユーザーがラボ内に存在する場合、ラボを既存のグループに同期するオプションは表示されません。 
+
+1. [Azure Lab Services Web サイト](https://labs.azure.com/)にサインインします。
+1. 作業するラボを選択します。
+1. 左側のウィンドウで、 **[ユーザー]** を選択します。 
+1. **[Sync from group]\(グループから同期\)** をクリックします。 
+
+    :::image type="content" source="./media/how-to-configure-student-usage/add-users-sync-group.png" alt-text="Azure AD グループから同期してユーザーを追加する":::
+    
+1. ラボを同期する既存の Azure AD グループを選択するよう求められます。 
+    
+    Azure AD グループがリストに表示されない場合は、次の理由が考えられます。
+
+    -   Azure Active Directory のゲスト ユーザーの場合 (通常は、Azure AD を所有する組織の外部にいる場合)、Azure AD 内のグループを検索することはできません。 この場合、Azure AD グループをラボに追加することはできません。 
+    -   Teams を使用して作成された Azure AD グループは、このリストには表示されません。 Teams 内に Azure Lab Services アプリを追加すると、そこから直接ラボを作成して管理できます。 詳細については、[Teams 内からのラボのユーザー リストの管理](how-to-manage-user-lists-within-teams.md)に関する記事をご覧ください。 
+1. ラボを同期する Azure AD グループを選択したら、 **[追加]** をクリックします。
+1. ラボが同期されると、Azure AD グループ内の全ユーザーがユーザーとしてラボに追加され、ユーザー リストが更新されます。 この Azure AD グループのユーザーだけがラボにアクセスできます。 ユーザー リストは、Azure AD グループの最新のメンバーシップに合わせて 24 時間ごとに更新されます。 [ユーザー] タブの [同期] ボタンをクリックすることで、Azure AD グループの最新の変更に手動で同期することもできます。
+1. **[全員を招待]** ボタンをクリックして、ユーザーをラボに招待します。これにより、ラボへの登録リンクが含まれた電子メールがすべてのユーザーに送信されます。 
+
+### <a name="automatic-management-of-virtual-machines-based-on-changes-to-the-azure-ad-group"></a>Azure AD グループに対する変更に基づく仮想マシンの自動管理 
+
+ラボが Azure AD グループに同期されると、ラボ内の仮想マシンの数がグループ内のユーザーの数と自動的に一致します。 ラボの容量を手動で更新することはできなくなります。 ユーザーが Azure AD グループに追加されると、そのユーザーの仮想マシンがラボによって自動的に追加されます。 ユーザーが Azure AD グループから削除されると、そのユーザーの仮想マシンがラボによって自動的にラボから削除されます。 
+
+## <a name="add-users-manually-from-emails-or-csv-file"></a>電子メールまたは CSV ファイルからユーザーを手動で追加する
+
+このセクションでは、学生を (メール アドレスまたは CSV ファイルのアップロードによって) 手動で追加します。 
+
+### <a name="add-users-by-email-address"></a>メール アドレスでユーザーを追加する
 
 1. 左側のウィンドウで、 **[ユーザー]** を選択します。 
+1. **[Add users manually]\(ユーザーを手動で追加する\)** をクリックします。 
 
-    既定では、 **[アクセスの制限]** オプションはオンになっています。学生は、ユーザーの一覧に含まれていなければ、登録リンクがある場合でもラボに登録できません。 リストに含まれるユーザーだけが、送信された登録リンクを使用してラボに登録できます。 この手順では、ユーザーをリストに追加します。 または、 **[アクセスを制限する]** をオフにすることもできます。その場合学生は、登録リンクさえあればラボに登録することができます。 
+    :::image type="content" source="./media/how-to-configure-student-usage/add-users-manually.png" alt-text="[Add users manually]\(ユーザーを手動で追加する\)":::
+1. **[メール アドレスによる追加]** (既定値) を選択し、学生のメール アドレスを別々の行に入力するか、セミコロンで区切って 1 行に入力します。 
 
-1. **[ユーザー]** ウィンドウの上部で、 **[ユーザーの追加]** を選択し、 **[メール アドレスによる追加]** を選択します。 
-
-    ![[ユーザーの追加] ボタン](./media/how-to-configure-student-usage/add-users-button.png)
-
-1. **[ユーザーの追加]** ウィンドウで、学生のメール アドレスを別個の行に入力します。または、セミコロンで区切って 1 行に入力します。 
-
-    ![ユーザーのメール アドレスを追加する](./media/how-to-configure-student-usage/add-users-email-addresses.png)
-
+    :::image type="content" source="./media/how-to-configure-student-usage/add-users-email-addresses.png" alt-text="ユーザーのメール アドレスを追加する":::
 1. **[保存]** を選択します。 
 
     一覧には、ラボに登録されているかどうかにかかわらず、現在のユーザーのメール アドレスと状態が表示されます。 
 
-    ![ユーザー リスト](./media/how-to-configure-student-usage/list-of-added-users.png)
+    :::image type="content" source="./media/how-to-configure-student-usage/list-of-added-users.png" alt-text="ユーザー リスト":::
 
     > [!NOTE]
     > 学生がラボに登録されると、一覧にその名前が表示されます。 一覧に表示される名前は、Azure Active Directory 内の学生の姓と名を使用して作成されます。 
@@ -47,23 +82,15 @@ CSV テキスト ファイルは、コンマ区切り (CSV) の表形式デー�
 
 1. Microsoft Excel で、学生のメール アドレスを 1 列で列挙する CSV ファイルを作成します。
 
-    ![CSV ファイルのユーザーの一覧](./media/how-to-configure-student-usage/csv-file-with-users.png)
-
+    :::image type="content" source="./media/how-to-configure-student-usage/csv-file-with-users.png" alt-text="CSV ファイルのユーザーの一覧":::
 1. **[ユーザー]** ウィンドウで、 **[ユーザーの追加]** を選択してから、 **[CSV のアップロード]** を選択します。
-
-    ![[CSV のアップロード] ボタン](./media/how-to-configure-student-usage/upload-csv-button.png)
-
 1. 学生のメール アドレスを含む CSV ファイルを選択し、 **[開く]** を選択します。
 
     **[ユーザーの追加]** ウィンドウに、CSV ファイルのメール アドレスの一覧が表示されます。 
-
-    ![CSV ファイルのメール アドレスが表示された [ユーザーの追加] ウィンドウ](./media/how-to-configure-student-usage/add-users-window.png)
-
 1. **[保存]** を選択します。 
-
 1. **[ユーザー]** ウィンドウで、追加された学生の一覧を表示します。 
 
-    ![[ユーザー] ウィンドウの追加されたユーザーの一覧](./media/how-to-configure-student-usage/list-of-added-users.png)
+    :::image type="content" source="./media/how-to-configure-student-usage/list-of-added-users.png" alt-text="[ユーザー] ウィンドウの追加されたユーザーの一覧":::
 
 ## <a name="send-invitations-to-users"></a>招待をユーザーに送信する
 
@@ -211,11 +238,10 @@ GitHub アカウントをまだ Microsoft アカウントにリンクしてい�
 
     ![[CSV のエクスポート] ボタン](./media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
 
-
 ## <a name="next-steps"></a>次のステップ
 
 次の記事をご覧ください。
 
 - 管理者の場合:[ラボ アカウントを作成および管理する](how-to-manage-lab-accounts.md)
 - ラボ所有者の場合:[ラボを作成および管理](how-to-manage-classroom-labs.md)し、[テンプレートを設定および発行する](how-to-create-manage-template.md)
-- ラボ ユーザーの場合:[クラスルーム ラボにアクセスする](how-to-use-classroom-lab.md)
+- ラボ ユーザーの場合:[ラボにアクセスする](how-to-use-classroom-lab.md)

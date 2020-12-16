@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3fdb3b2b23d07b79a8e9979450bee653d646196c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 552cac01cd492229a19bdbc297665eb7d3ccb401
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182803"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751293"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours を構成する
 
@@ -48,7 +48,7 @@ VM の停止のみを行うようにこの機能を構成できます。 カス�
 
 2. VM のコンマ区切りリスト(スペースなし) を **VMList** パラメーター フィールドに追加します。 リストの例は `vm1,vm2,vm3`です。
 
-3. **WHATIF** パラメーター フィールドを True に設定します。
+3. **WHATIF** パラメーター フィールドを True に設定すると、変更をプレビューできます。
 
 4. コンマ区切り値の間にスペースを入れずに、VM のコンマ区切りリスト (VM1,VM2,VM3) で `External_ExcludeVMNames` 変数を構成します。
 
@@ -79,7 +79,7 @@ VM の停止のみを行うようにこの機能を構成できます。 カス�
 
 3. VM のコンマ区切りリスト(スペースなし) を **VMList** パラメーター フィールドに追加します。 リストの例は `vm1,vm2,vm3`です。
 
-4. **WHATIF** を True に設定します。 
+4. 変更内容をプレビューするには、**WHATIF** を True に設定します。 
 
 5. コンマ区切り値の間にスペースを入れずに、VM のコンマ区切りリストで `External_ExcludeVMNames` 変数を構成します。
 

@@ -1,22 +1,26 @@
 ---
-title: Azure Monitor for Networks プレビュー
-description: デプロイされたすべてのネットワーク リソースの正常性とメトリックを構成なしで包括的に把握できる、Azure Monitor for Networks の概要。
+title: ネットワークの分析情報
+description: デプロイされたすべてのネットワーク リソースの正常性とメトリックを構成なしで包括的に把握できる、Network Insights の概要。
 ms.subservice: ''
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
-ms.date: 09/24/2020
-ms.openlocfilehash: e2a43c4d0423b286984631fda75e5ff806ae9a57
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+author: KumudD
+ms.author: kumud
+ms.date: 11/25/2020
+ms.openlocfilehash: d604fe0ad9630bb95d347bcc716697f6d09d1887
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102763"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751769"
 ---
-# <a name="azure-monitor-for-networks-preview"></a>Azure Monitor for Networks プレビュー
-Azure Monitor for Networks を使用すると、デプロイされたすべてのネットワーク リソースの[正常性](../../service-health/resource-health-checks-resource-types.md)と[メトリック](../platform/metrics-supported.md)を構成なしで包括的に把握できます。 また、[接続モニター](../../network-watcher/connection-monitor-preview.md)、[ネットワーク セキュリティ グループ (NSG) のフロー ログ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)、および [Traffic Analytics](../../network-watcher/traffic-analytics.md) などのネットワーク監視機能にアクセスすることもできます。 さらには、他のネットワーク[診断](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics)機能を提供します。
+# <a name="network-insights"></a>ネットワークの分析情報
 
-Azure Monitor for Networks は、監視の主要コンポーネントを中心に構成されています。
+> [!NOTE]
+> *Network Insights* の旧称は *Azure Monitor for Networks* です。 
+
+Network Insights を使用すると、デプロイされたすべてのネットワーク リソースの[正常性](../../service-health/resource-health-checks-resource-types.md)と[メトリック](../platform/metrics-supported.md)を構成なしで包括的に把握できます。 また、[接続モニター](../../network-watcher/connection-monitor-preview.md)、[ネットワーク セキュリティ グループ (NSG) のフロー ログ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)、および [Traffic Analytics](../../network-watcher/traffic-analytics.md) などのネットワーク監視機能にアクセスすることもできます。 さらには、他のネットワーク[診断](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics)機能を提供します。
+
+Network Insights は、監視の主要コンポーネントを中心に構成されています。
 - [ネットワークの正常性とメトリック](#networkhealth)
 - [接続](#connectivity)
 - [トラフィック](#traffic)
@@ -24,26 +28,26 @@ Azure Monitor for Networks は、監視の主要コンポーネントを中心�
 
 ## <a name="network-health-and-metrics"></a><a name="networkhealth"></a>ネットワークの正常性とメトリック
 
-Azure Monitor for Networks の **[概要]** ページでは、ネットワーク リソースのインベントリを、リソースの正常性やアラートと共に簡単に視覚化できます。 これは、検索とフィルター処理、リソースの正常性とメトリック、アラート、および依存関係ビューの 4 つの主要な機能領域に分かれています。
+Network Insights の **[概要]** ページでは、ネットワーク リソースのインベントリを、リソースの正常性やアラートと共に簡単に視覚化できます。 これは、検索とフィルター処理、リソースの正常性とメトリック、アラート、および依存関係ビューの 4 つの主要な機能領域に分かれています。
 
-![[概要] ページを示すスクリーンショット。](media/network-insights-overview/overview.png)
+[![[概要] ページを示すスクリーンショット](media/network-insights-overview/overview.png)](media/network-insights-overview/overview.png#lightbox)
 
 ### <a name="search-and-filtering"></a>検索とフィルター処理
 リソースの正常性とアラートのビューは、 **[サブスクリプション]** 、 **[リソース グループ]** 、および **[種類]** などのフィルターを使用してカスタマイズできます。
 
 検索ボックスを使用して、リソースとそれに関連付けられているリソースを検索できます。 たとえば、パブリック IP がアプリケーション ゲートウェイに関連付けられているとします。 パブリック IP の DNS 名を検索すると、パブリック IP と、関連付けられているアプリケーション ゲートウェイの両方が返されます。
 
-![Azure Monitor for Networks の検索結果を示すスクリーンショット。](media/network-insights-overview/search.png)
+[![Network Insights 検索結果を示すスクリーンショット。](media/network-insights-overview/search.png)](media/network-insights-overview/search.png#lightbox)
 
 
 ### <a name="resource-health-and-metrics"></a>リソースの正常性とメトリック
 次の例の各タイルは、リソースの種類を表しています。 タイルには、選択したすべてのサブスクリプションにデプロイされた、特定のリソースの種類のインスタンスの数が表示されます。 また、リソースの正常性状態も表示されます。 この例では、デプロイされている 105 個の ER および VPN 接続があります。 103 個は正常で、2 個は使用不可です。
 
-![Azure Monitor for Networks のリソースの正常性とメトリックを示すスクリーンショット。](media/network-insights-overview/resource-health.png)
+![Network Insights のリソースの正常性とメトリックを示すスクリーンショット。](media/network-insights-overview/resource-health.png)
 
 利用不可の ER および VPN 接続を選択すると、メトリック ビューが表示されます。 
 
-![Azure Monitor for Networks のメトリック ビューを示すスクリーンショット。](media/network-insights-overview/metric-view.png)
+![Network Insights のメトリック ビューを示すスクリーンショット。](media/network-insights-overview/metric-view.png)
 
 グリッド ビューでは、任意の項目を選択できます。 **[正常性]** 列のアイコンを選択して、その接続のリソースの正常性を取得します。 **[アラート]** 列の値を選択して、接続のアラートとメトリックのページにアクセスします。 
 
@@ -53,19 +57,19 @@ Azure Monitor for Networks の **[概要]** ページでは、ネットワーク
 ### <a name="dependency-view"></a>[依存関係] ビュー
 依存関係ビューは、リソースがどのように構成されているかを視覚化するのに役立ちます。 現在、依存関係ビューは、Azure Application Gateway、Azure Virtual WAN、および Azure Load Balancer で使用できます。 たとえば、Application Gateway の場合、メトリックのグリッド ビューで Application Gateway リソース名を選択すると、依存関係ビューにアクセスできます。 Virtual WAN と Load Balancer についても同様に行うことができます。
 
-![Azure Monitor for Networks の Application Gateway ビューを示すスクリーンショット。](media/network-insights-overview/application-gateway.png)
+![Network Insights の Application Gateway ビューを示すスクリーンショット。](media/network-insights-overview/application-gateway.png)
 
 Application Gateway の依存関係ビューには、フロントエンド IP がリスナー、ルール、バックエンド プールにどのように接続されているかが、簡略化されたビューで示されます。 接続している線は色分けされ、バックエンド プールの正常性に基づいて追加の詳細が表示されます。 このビューには、Application Gateway メトリックと、仮想マシン スケール セットと VM インスタンスなどのすべての関連するバックエンド プールのメトリックの詳しいビューも表示されます。
 
-![Azure Monitor for Networks の依存関係ビューを示すスクリーンショット。](media/network-insights-overview/dependency-view.png)
+[![Network Insights の依存関係ビューを示すスクリーンショット。](media/network-insights-overview/dependency-view.png)](media/network-insights-overview/dependency-view.png#lightbox)
 
 依存関係グラフを使用すると、構成設定に簡単に移動できます。 他の情報にアクセスするには、バックエンド プールを右クリックします。 たとえば、バックエンド プールが VM である場合、VM Insights と Azure Network Watcher 接続のトラブルシューティングに直接アクセスして、接続の問題を特定できます。
 
-![Azure Monitor for Networks の 依存関係ビュー メニューを示すスクリーンショット。](media/network-insights-overview/dependency-view-menu.png)
+![Network Insights の依存関係ビュー メニューを示すスクリーンショット。](media/network-insights-overview/dependency-view-menu.png)
 
 依存関係ビューの検索とフィルター バーを使用すると、グラフ全体を簡単に検索することができます。 たとえば、前の例で **AppGWTestRule** を検索した場合、ビューは AppGWTestRule を介して接続されているすべてのノードにスケールダウンします。
 
-![Azure Monitor for Networks の検索の例を示すスクリーンショット。](media/network-insights-overview/search-example.png)
+![Network Insights の検索の例を示すスクリーンショット。](media/network-insights-overview/search-example.png)
 
 さまざまなフィルターを使用して、特定のパスと状態にスケールダウンすることができます。 たとえば、状態が異常なすべてのエッジを表示するには、 **[正常性状態]** の一覧から **[異常]** のみを選択します。
 
@@ -73,17 +77,17 @@ Application Gateway の依存関係ビューには、フロントエンド IP �
 
 ## <a name="connectivity"></a><a name="connectivity"></a>接続
 
-**[接続]** タブを使用すると、選択したサブスクリプションのセットについて、接続モニターと[接続モニター (プレビュー)](../../network-watcher/connection-monitor-preview.md) を使用して構成されたすべてのテストを簡単に視覚化できます。
+**[接続]** タブを使用すると、選択したサブスクリプションのセットについて、[接続モニター](../../network-watcher/connection-monitor-overview.md)と接続モニター (クラシック) を使用して構成されたすべてのテストを簡単に視覚化できます。
 
-![Azure Monitor for Networks の [接続] タブを示すスクリーンショット。](media/network-insights-overview/azure-monitor-for-networks-connectivity-tab.png)
+![Network Insights の [接続] タブを示すスクリーンショット。](media/network-insights-overview/azure-monitor-for-networks-connectivity-tab.png)
 
 テストは **[ソース]** と **[ターゲット]** のタイルごとにグループ化され、各テストの到達可能性の状態が表示されます。 [到達可能] の設定を使用すると、チェックの失敗率 (%) と RTT (ミリ秒) に基づいた到達可能性条件の構成に簡単にアクセスできます。 値を設定すると、選択条件に基づいて各テストの状態が更新されます。
 
-![Azure Monitor for Networks の接続テストを示すスクリーンショット。](media/network-insights-overview/azure-monitor-for-networks-connectivity-tests.png)
+[![Network Insights の接続テストを示すスクリーンショット。](media/network-insights-overview/azure-monitor-for-networks-connectivity-tests.png)](media/network-insights-overview/azure-monitor-for-networks-connectivity-tests.png#lightbox)
 
 任意のソースまたはターゲットのタイルを選択して、メトリック ビューを開くことができます。
 
-![Azure Monitor for Networks の接続メトリックを示すスクリーンショット。](media/network-insights-overview/azure-monitor-for-networks-connectivity-metrics.png)
+[![Network Insights の接続メトリックを示すスクリーンショット。](media/network-insights-overview/azure-monitor-for-networks-connectivity-metrics.png)](media/network-insights-overview/azure-monitor-for-networks-connectivity-metrics.png#lightbox)
 
 
 グリッド ビューでは、任意の項目を選択できます。 **[Reachability]\(到達可能性\)** 列のアイコンを選択して [接続モニター] ポータル ページに移動すると、特定された問題に影響を与えるホップごとのトポロジと接続が表示されます。 **[アラート]** 列の値を選択して、アラートにアクセスします。 **[チェック失敗の割合]** および **[ラウンド トリップ時間 (ミリ秒)]** 列のグラフを選択して、選択した接続モニターの [メトリック] ページにアクセスします。
@@ -93,11 +97,11 @@ Application Gateway の依存関係ビューには、フロントエンド IP �
 ## <a name="traffic"></a><a name="traffic"></a>トラフィック
 **[トラフィック]** タブでは、選択したサブスクリプションのセットの [NSG フロー ログ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)と [Traffic Analytics](../../network-watcher/traffic-analytics.md) に対して構成され、場所ごとにグループ化されたすべての NSG にアクセスできます。 このタブで利用できる検索機能を使用すると、ユーザーは検索した IP アドレスに対して構成された NSG を特定できます。 環境内の任意の IP アドレスを検索できます。 並べて表示されているリージョン ビューには、すべての NSG と、NSG フロー ログと Traffic Analytics の構成状態が表示されます。
 
-![Azure Monitor for Networks の [トラフィック] タブを示すスクリーンショット。](media/network-insights-overview/azure-monitor-for-networks-traffic-view.png)
+[![Network Insights の [トラフィック] タブを示すスクリーンショット。](media/network-insights-overview/azure-monitor-for-networks-traffic-view.png)](media/network-insights-overview/azure-monitor-for-networks-traffic-view.png#lightbox)
 
 いずれかのリージョン タイルを選択すると、グリッド ビューが表示されます。 このグリッドによって、NSG フロー ログと Traffic Analytics が見やすく構成しやすいビューで表示されます。  
 
-![Azure Monitor for Networks のトラフィックのリージョン ビューを示すスクリーンショット。](media/network-insights-overview/azure-monitor-for-networks-traffic-region-view.png)
+[![Network Insights のトラフィックのリージョン ビューを示すスクリーンショット。](media/network-insights-overview/azure-monitor-for-networks-traffic-region-view.png)](media/network-insights-overview/azure-monitor-for-networks-traffic-region-view.png#lightbox)
 
 グリッド ビューでは、任意の項目を選択できます。 **[Flowlog Configuration Status]\(フローログの構成状態\)** 列にあるアイコンを選択して、NSG フロー ログと Traffic Analytics 構成を編集します。 **[アラート]** 列の値を選択して、選択した NSG 用に構成されているトラフィック アラートにアクセスします。 同様に、 **[Traffic Analytics ワークスペース]** を選択して Traffic Analytics ビューにアクセスできます。  
 
@@ -112,18 +116,18 @@ Application Gateway の依存関係ビューには、フロントエンド IP �
 
 一般的なトラブルシューティングのガイダンスについては、専用のブックベースの分析情報の[トラブルシューティングに関する記事](troubleshoot-workbooks.md)を参照してください。
 
-このセクションでは、Azure Monitor for Networks を使用するときに発生する可能性のある一般的な問題の診断とトラブルシューティングについて説明します。 
+このセクションでは、Network Insights を使用するときに発生する可能性のある一般的な問題の診断とトラブルシューティングについて説明します。 
 
 ### <a name="how-do-i-resolve-performance-problems-or-failures"></a>パフォーマンスの問題や障害を解決するにはどうすればよいですか?
 
-Azure Monitor for Networks でネットワーク関連の問題が見つかったとき、それを解決するには、不具合のあるリソース用のトラブルシューティング ドキュメントを参照してください。 
+Network Insights でネットワーク関連の問題が見つかったとき、それを解決するには、不具合のあるリソース用のトラブルシューティング ドキュメントを参照してください。 
 
 よく使用されるサービスのトラブルシューティングの記事へのリンクを次に示します。 これらのサービスに関するその他のトラブルシューティングの記事については、サービスの目次にある「トラブルシューティング」セクションの他の記事を参照してください。
-* [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-peering-issues)
-* [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/create-gateway-internal-load-balancer-app-service-environment)
-* [Azure VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-troubleshoot)
-* [Azure ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-expressroute-overview) 
-* [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-troubleshoot) 
+* [Azure Virtual Network](../../virtual-network/virtual-network-troubleshoot-peering-issues.md)
+* [Azure Application Gateway](../../application-gateway/create-gateway-internal-load-balancer-app-service-environment.md)
+* [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-troubleshoot.md)
+* [Azure ExpressRoute](../../expressroute/expressroute-troubleshooting-expressroute-overview.md) 
+* [Azure Load Balancer](../../load-balancer/load-balancer-troubleshoot.md) 
 
 ### <a name="why-dont-i-see-the-resources-for-all-the-subscriptions-ive-selected"></a>選択したサブスクリプションの一部のリソースが表示されないのはなぜですか?
 

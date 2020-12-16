@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 6c475971f604c951280d0351d593cd5d96879d31
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: c09f8c5ae4a742e6caa489ee29043f500617bb24
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992405"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746490"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS Protection Standard のよくあるご質問
 
@@ -29,7 +29,7 @@ ms.locfileid: "94992405"
 Azure DDoS Protection Standard は、アプリケーションの設計に関するベスト プラクティスと組み合わせることにより、DDoS 攻撃から保護するための強化された DDoS 軽減機能が提供されます。 この機能は、仮想ネットワーク内にあるお客様固有の Azure リソースを保護するために、自動的に調整されます。 保護は新規または既存の仮想ネットワークで簡単に有効にでき、アプリケーションやリソースの変更は必要ありません。 ログ、アラート、テレメトリなど、基本サービスにはない利点がいくつかあります。 詳細については、「[Azure DDoS Protection Standard の概要](ddos-protection-overview.md)」を参照してください。 
 
 ## <a name="what-about-protection-at-the-service-layer-layer-7"></a>サービス レイヤー (レイヤー 7) での保護とはどのようなものですか?
-お客様は、Azure DDoS Protection サービスと [Application Gateway WAF SKU](../web-application-firewall/ag/ag-overview.md) を組み合わせて使用し、ネットワーク レイヤー (レイヤー 3 と 4、Azure DDoS Protection サービスによって提供されます) とアプリケーション レイヤー (レイヤー 7、Application Gateway WAF SKU によって提供されます) の両方で保護を行うことができます。
+お客様は、Azure DDoS Protection サービスと Web Application Firewall (WAF) を組み合わせて使用し、ネットワーク レイヤー (レイヤー 3 と 4、Azure DDoS Protection Standard によって提供されます) とアプリケーション レイヤー (レイヤー 7、WAF によって提供されます) の両方で保護を行うことができます。 WAF オファリングには、Azure [Application Gateway WAF SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に加えて、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall) で利用できるサードパーティの Web アプリケーション ファイアウォール オファリングが含まれています。
 
 ## <a name="are-services-unsafe-in-azure-without-the-service"></a>このサービスを使用しないと Azure のサービスが安全ではくなりますか?
 Azure で実行されているサービスは、Azure のインフラストラクチャを保護するために導入されている Azure DDoS Protection Basic によって本質的に保護されています。 ただし、インフラストラクチャに対する保護の場合、ほとんどのアプリケーションで処理できる容量よりはるかに高いしきい値を持ち、テレメトリやアラートが提供されないため、トラフィック量がプラットフォームによって無害であると認識されても、それを受信するアプリケーションにとっては壊滅的になる可能性があります。 
@@ -41,6 +41,9 @@ Azure DDoS Protection Standard サービスにオンボードすることで、�
 
 ## <a name="are-classicrdfe-protected-resources-supported"></a>クラシックおよび RDFE の保護されたリソースはサポートされていますか?
 プレビューでは、ARM ベースの保護されたリソースのみがサポートされています。 クラシックおよび RDFE のデプロイの VM はサポートされていません。 現在、クラシックおよび RDFE リソースのサポートは計画されていません。 詳細については、[Azure DDoS Protection Standard の参照アーキテクチャ](ddos-protection-reference-architectures.md)に関する記事を参照してください。
+
+## <a name="can-i-protect-my-paas-resources-using-ddos-protection"></a>DDoS Protection を使用して PaaS のリソースを保護することはできますか?
+マルチテナント、単一 VIP PaaS サービスに接続されているパブリック IP は現在サポートされていません。 サポートされていないリソースの例には、ストレージ VIP、イベントハブ VIP、App または Cloud Services アプリケーションなどがあります。 詳細については、[Azure DDoS Protection Standard の参照アーキテクチャ](ddos-protection-reference-architectures.md)に関する記事を参照してください。
 
 ## <a name="can-i-protect-my-on-premise-resources-using-ddos-protection"></a>DDoS Protection を使用してオンプレミスのリソースを保護することはできますか?
 DDoS Protection を有効にするには、サービスのパブリック エンドポイントが、Azure の VNet に関連付けられている必要があります。 設計の例には次ものが含まれます。

@@ -6,16 +6,16 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/11/2020
-ms.openlocfilehash: f14ded89ad294abbfaf9861e5f4caf17dd82fb98
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: f1aad2464e4979ecbf35deceaad4de70e05b3004
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490714"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573665"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>マネージド ID を使用して、Azure Blob Storage 出力に対して Azure Stream Analytics ジョブを認証する
+# <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>マネージド ID (プレビュー) を使用して、Azure Blob Storage 出力に対して Azure Stream Analytics ジョブを認証する
 
-Azure Blob Storage への出力に対して [マネージド ID 認証](../active-directory/managed-identities-azure-resources/overview.md)を使用すると、Stream Analytics ジョブで、接続文字列を使用せずに、ストレージ アカウントに直接アクセスできます。 この機能により、セキュリティが向上し、さらに Azure 内の仮想ネットワーク (VNET) のストレージ アカウントにデータを書き込むことができます。
+Azure Blob Storage への出力に対して[マネージド ID 認証](../active-directory/managed-identities-azure-resources/overview.md) (プレビュー) を使用すると、Stream Analytics ジョブで、接続文字列を使用せずに、ストレージ アカウントに直接アクセスできます。 この機能により、セキュリティが向上し、さらに Azure 内の仮想ネットワーク (VNET) のストレージ アカウントにデータを書き込むことができます。
 
 この記事では、Azure portal を通じて、および Azure Resource Manager デプロイを通じて、Stream Analytics ジョブの Blob 出力に対してマネージド ID を有効にする方法を示します。
 
@@ -226,7 +226,7 @@ Stream Analytics ジョブには、次の 2 つのレベルのアクセス権の
 
 ## <a name="remove-managed-identity"></a>マネージド ID を削除する
 
-Stream Analytics ジョブに対して作成されたマネージド ID は、そのジョブが削除されたときにのみ削除されます。 そのジョブを削除せずにマネージド ID を削除する方法はありません。 マネージド ID を使用する必要がなくなった場合は、出力の認証方法を変更できます。 マネージド ID はジョブが削除されるまで存在し続け、マネージド ID の認証を再度使用する場合に使用されます。
+Stream Analytics ジョブに対して作成されたマネージド ID は、ジョブが削除されたときにのみ削除されます。 ジョブを削除せずにマネージド ID を削除することはできません。 マネージド ID を使用する必要がなくなった場合は、出力の認証方法を変更できます。 マネージド ID は、ジョブが削除されるまで存在し続け、マネージド ID の認証を再度使用する場合に使用されます。
 
 ## <a name="limitations"></a>制限事項
 この機能の現在の制限は次のとおりです。

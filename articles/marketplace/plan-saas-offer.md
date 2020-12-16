@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 9034757539a3dfd8b5e43e97ec518479da396456
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 5f7278a688147842b7dbfab79a20afea2b4a9288
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917547"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621605"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースの SaaS オファーを計画する方法
 
@@ -113,8 +113,8 @@ SaaS オファーが IT ソリューション (Azure Marketplace) とビジネ�
 
 | 従量制課金 | パブリック プラン | プライベート プラン | 次で利用可能: |
 |---|---|---|---|
-| はい             | はい         | いいえ           | Azure Marketplace と Azure portal |
-| はい             | はい         | Yes          | Azure Marketplace と Azure portal* |
+| はい             | ○         | いいえ           | Azure Marketplace と Azure portal |
+| はい             | ○         | Yes          | Azure Marketplace と Azure portal* |
 | はい             | いいえ          | はい          | Azure portal のみ |
 | いいえ              | いいえ          | はい          | Azure portal のみ |
 |||||
@@ -250,15 +250,15 @@ Microsoft を通じて販売される SaaS アプリ オファーでは、定額
 | Microsoft は、ライセンス コストの 80% をパブリッシャーに支払います<br>`*` 対象の SaaS アプリの場合、Microsoft はライセンス コストの 90% を支払います| 1 か月あたり $80.00<br>``*`` 1 か月あたり $90.00 |
 |||
 
-**`*`マーケットプレース サービス料金の減額** - コマーシャル マーケットプレースで公開される特定の SaaS オファーについて、Microsoft では、マーケットプレース サービス料金を 20% (Microsoft 公開元契約の説明どおり) から 10% 減額します。 お客様のオファーが対象となるには、そのオファーが Microsoft によって Azure IP 共同販売インセンティブとして指定されている必要があります。 ある月に Marketplace サービス料金の減額を受け取るには、各カレンダー月の月末から少なくとも 5 営業日前に資格を満たす必要があります。 Marketplace サービス料金の減額は、Azure IP 共同販売インセンティブの VM やマネージド アプリのほか、コマーシャル マーケットプレースを通じて公開された正規の取引可能 IaaS オファーにも適用されます。
+**`*`マーケットプレース サービス料金の減額** - コマーシャル マーケットプレースで公開される特定の SaaS オファーについて、Microsoft では、マーケットプレース サービス料金を 20% (Microsoft 公開元契約の説明どおり) から 10% 減額します。 お客様のオファーが対象となるには、そのオファーが Microsoft によって Azure IP 共同販売インセンティブとして指定されている必要があります。 ある月に Marketplace サービス料金の減額を受け取るには、各カレンダー月の月末から少なくとも 5 営業日前に資格を満たす必要があります。 IP 共同販売の資格の詳細については、[共同販売の状態の要件](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)に関する記事を参照してください。 Marketplace サービス料金の減額は、Azure IP 共同販売インセンティブの VM やマネージド アプリのほか、コマーシャル マーケットプレースを通じて公開された正規の取引可能 IaaS オファーにも適用されます。
 
 ## <a name="additional-sales-opportunities"></a>その他の営業案件
 
 Microsoft がサポートするマーケティングおよびセールス チャネルのオプトインを選択できます。 パートナー センターでオファーを作成すると、プロセスの終盤で、次の 2 つのタブが表示されます。
 
-- **CSP を通して再販する**: このオプションを使用して、Microsoft クラウド ソリューションプロバイダー (CSP) パートナーがバンドルされたオファーの一部としてソリューションを再販できるようにします。 詳細については、「[クラウド ソリューション プロバイダー プログラム](cloud-solution-providers.md)」を参照してください。
+- **CSP を通して再販する**: このオプションを使用して、Microsoft クラウド ソリューションプロバイダー (CSP) パートナーがバンドルされたオファーの一部としてソリューションを再販できるようにします。 このプログラムの詳細については、「[クラウド ソリューション プロバイダー プログラム](cloud-solution-providers.md)」を参照してください。
 
-- **Microsoft と共同販売する**: このオプションを使用すると、Microsoft セールス チームは、顧客のニーズを評価するときに、IP の共同販売対象ソリューションを検討できます。 評価のためにオファーを準備する方法の詳細については、「[パートナー センターの [共同販売] オプション](./partner-center-portal/commercial-marketplace-co-sell.md)」を参照してください。
+- **Microsoft と共同販売する**: このオプションを使用すると、Microsoft セールス チームは、顧客のニーズを評価するときに、IP の共同販売対象ソリューションを検討できます。 共同販売の資格の詳細については、[共同販売の状態の要件](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)に関する記事を参照してください。 評価のためにオファーを準備する方法の詳細については、「[パートナー センターの [共同販売] オプション](commercial-marketplace-co-sell.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 09/01/2020
 ms.author: azhussai
-ms.openlocfilehash: 1d88379726cfb6c4218c38b9ccc87005609a9aba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89ba6b7a69c95951a083628f23be68d811c7768c
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460747"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601613"
 ---
 # <a name="understanding-pricing-for-azure-application-gateway-and-web-application-firewall"></a>Azure Application Gateway と Web アプリケーション ファイアウォールの価格について
 
@@ -254,9 +254,19 @@ V2 SKU は消費量に基づいて課金され、次の 2 つの部分で構成�
 
 固定価格 = $0.246 * 730 (時間) = $179.58
 
-変動コスト = $0.008 * (3 (インスタンス ユニット) * 10 (容量ユニット) + 5 (追加の容量ユニット)) * 730 (時間) = $204.4
+変動コスト = $0.008 * (3 (インスタンス ユニット) * 10 (容量ユニット) + 10 (追加の容量ユニット)) * 730 (時間) = $233.6
 
-合計コスト = $179.58 + $204.4 = $383.98
+合計コスト = $179.58 + $233.6 = $413.18
+
+ただし、たとえば追加のわずか 7 CU に相当する処理容量が 3 つの予約インスタンスで利用可能な場合。
+このシナリオでは、Application Gateway リソースのスケーリングが不十分であり、待機時間の増加や要求のドロップにつながる可能性があります。
+
+固定価格 = $0.246 * 730 (時間) = $179.58
+
+変動コスト = $0.008 * (3 (インスタンス ユニット) * 10 (容量ユニット) + 7 (追加の容量ユニット)) * 730 (時間) = $216.08
+
+合計コスト = $179.58 + $216.08 = $395.66
+
 
 ![手動スケーリング 2 の図。](./media/pricing/manual-scale-2.png)
 
