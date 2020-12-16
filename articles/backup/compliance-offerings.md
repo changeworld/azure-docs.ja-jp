@@ -3,12 +3,12 @@ title: Azure Backup のコンプライアンス認証
 description: Azure Backup でのコンプライアンス認証の概要
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: e90a713eea07ac01212cfb3399167ed7e1b5449e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b175590bc83ad1cd1f47d0111101b967962f3a8
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332663"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093300"
 ---
 # <a name="azure-backup-compliance-offerings"></a>Azure Backup のコンプライアンス認証
 
@@ -22,7 +22,7 @@ Azure Backup サービスを使用する際にサービスが規制されるよ�
 * [CSA-Star-Certification](/microsoft-365/compliance/offering-csa-star-certification)
 * [CSA-STAR-Self-Assessment](/microsoft-365/compliance/offering-csa-star-self-assessment)
 * [ISO 20000-1:2011](/microsoft-365/compliance/offering-iso-20000-1-2011)
-* [ISO 22301](/microsoft-365/compliance/offering-iso-22301)
+* [ISO 22301](/compliance/regulatory/offering-iso-22301)
 * [ISO 27001](/microsoft-365/compliance/offering-iso-27017)
 * [ISO 27017](/microsoft-365/compliance/offering-iso-27017)
 * [ISO 27018](/microsoft-365/compliance/offering-iso-27018)
@@ -37,7 +37,7 @@ Azure Backup サービスを使用する際にサービスが規制されるよ�
 
 ## <a name="industry"></a>業界
 
-* [HIPAA](/microsoft-365/compliance/offering-hipaa-hitech)
+* [HIPAA](/compliance/regulatory/offering-hipaa-hitech)
 * [HITRUST](/microsoft-365/compliance/offering-hitrust)
 * [PCI DSS](/microsoft-365/compliance/offering-pci-dss)
 

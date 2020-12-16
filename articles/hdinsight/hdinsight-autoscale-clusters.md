@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 09/14/2020
-ms.openlocfilehash: 385e910befb79daafa532fa816b96d50a46b7d8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09e4412128a3b13abfa91bf0c128372b30b3e686
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620088"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033138"
 ---
 # <a name="autoscale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターを自動スケーリングする
 
@@ -265,7 +265,7 @@ Hadoop クラスターの自動スケーリングでは、HDFS の使用状況�
 
 ### <a name="set-the-hive-configuration-maximum-total-concurrent-queries-for-the-peak-usage-scenario"></a>ピーク時の使用状況シナリオに対する Hive 構成の同時実行クエリの最大合計数を設定する
 
-Ambari では、Hive 構成の*同時実行クエリの最大合計数*は、自動スケーリング イベントによって変更されません。 つまり Hive Server 2 Interactive Service は、Interactive Query デーモンの数が負荷やスケジュールに基づいてスケールアップまたはスケールダウンされた場合でも、任意の時点で指定された数の同時実行クエリのみを処理できます。 一般的には、手動による介入を避けられるように、ピーク時の使用状況シナリオに合わせてこの構成を設定することをお勧めします。
+Ambari では、Hive 構成の *同時実行クエリの最大合計数* は、自動スケーリング イベントによって変更されません。 つまり Hive Server 2 Interactive Service は、Interactive Query デーモンの数が負荷やスケジュールに基づいてスケールアップまたはスケールダウンされた場合でも、任意の時点で指定された数の同時実行クエリのみを処理できます。 一般的には、手動による介入を避けられるように、ピーク時の使用状況シナリオに合わせてこの構成を設定することをお勧めします。
 
 ただし、ワーカー ノードが少ししかなく、同時実行クエリの最大合計数の値が非常に高く構成されている場合に、Hive サーバー 2 の再起動エラーが発生することがあります。 少なくとも、指定された数の Tez AM に対応できるワーカー ノードの最小数が必要です (同時実行クエリの最大合計数の構成と同じ)。 
 

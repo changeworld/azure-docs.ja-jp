@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 27a00c69a4423e45b46b9c3d0340bb7cd1a35d65
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 88244ec3ba4bbebe7d6096fa3ac49bd4f1b8f661
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92095901"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108622"
 ---
 # <a name="localization-element"></a>Localization 要素
 
@@ -114,7 +114,7 @@ ms.locfileid: "92095901"
 | Value | はい | このオプションの選択に関連付けられている要求の文字列値。 |
 | SelectByDefault | いいえ | このオプションが既定で UI で選択するかどうかを示します。 指定できる値True または False。 |
 
-次の例は、 **LocalizedCollections** 要素の使用を示しています。 これには、2 つの **LocalizedCollection** 要素が含まれています。1 つは英語用、もう 1 つはスペイン語用です。 両方とも、英語とスペイン語の項目の一覧を使用して、要求 `Gender` の **Restriction** コレクションを設定します。
+次の例は、**LocalizedCollections** 要素の使用を示しています。 これには、2 つの **LocalizedCollection** 要素が含まれています。1 つは英語用、もう 1 つはスペイン語用です。 両方とも、英語とスペイン語の項目の一覧を使用して、要求 `Gender` の **Restriction** コレクションを設定します。
 
 ```xml
 <LocalizedResources Id="api.selfasserted.en">
@@ -354,5 +354,5 @@ DisplayControl 値は、[表示コントロール](display-controls.md) ユー�
 
 ローカライズの例については、次の記事を参照してください。
 
-- [Azure Active Directory B2C でのカスタム ポリシーによる言語のカスタマイズ](custom-policy-localization.md)
-- [Azure Active Directory B2C でのユーザー フローによる言語のカスタマイズ](user-flow-language-customization.md)
+- [Azure Active Directory B2C でのカスタム ポリシーによる言語のカスタマイズ](language-customization.md)
+- [Azure Active Directory B2C でのユーザー フローによる言語のカスタマイズ](language-customization.md)

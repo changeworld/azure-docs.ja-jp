@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 9c5941ec88cd793961ad66245d0dc0b5e0d7772f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04ec652c6e7ce8de003a464c6427439cf1519eab
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86998937"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092671"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>メインフレーム コンピューティングを Azure に移行する
 
@@ -29,7 +29,7 @@ Microsoft Azure でメインフレームのワークロードを実行するに�
 
 ## <a name="mainframe-compute-at-a-glance"></a>メインフレーム コンピューティングの概要
 
-z14 メインフレームでは、プロセッサが最大 4 つの "*ドロワー*" に配置されています。 *ドロワー*は単に、プロセッサとチップセットのクラスターです。 各ドロアーは、6 個のアクティブな中央処理装置 (CP) チップを持つことができ、各 CP は 10 個のシステム コントローラー (SC) チップを備えています。 Intel x86 の用語では、ドロワーあたり 6 個のソケット、ソケットあたり 10 個のコア、そして 4 個のドロワーがあります。 このアーキテクチャでは、z14 の場合、最大でだいたい 24 個のソケットと 240 個のコアが提供されます。
+z14 メインフレームでは、プロセッサが最大 4 つの "*ドロワー*" に配置されています。 *ドロワー* は単に、プロセッサとチップセットのクラスターです。 各ドロアーは、6 個のアクティブな中央処理装置 (CP) チップを持つことができ、各 CP は 10 個のシステム コントローラー (SC) チップを備えています。 Intel x86 の用語では、ドロワーあたり 6 個のソケット、ソケットあたり 10 個のコア、そして 4 個のドロワーがあります。 このアーキテクチャでは、z14 の場合、最大でだいたい 24 個のソケットと 240 個のコアが提供されます。
 
 z14 の高速 CP のクロック速度は 5.2 GHz です。 通常、z14 はすべての CP を備えて提供されます。 それらは必要に応じてアクティブ化されます。 顧客は一般に、実際の使用量に関係なく、1 か月あたり少なくとも 4 時間のコンピューティング時間を課金されます。
 
@@ -135,4 +135,4 @@ Azure アーキテクチャでは処理の各レベルを最適化できます�
 ### <a name="more-migration-resources"></a>その他の移行リソース
 
 - [Azure 仮想データ センターのリフト アンド シフト ガイド](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
-- [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
+- [GlusterFS iSCSI](https://glusterdocs.readthedocs.io/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

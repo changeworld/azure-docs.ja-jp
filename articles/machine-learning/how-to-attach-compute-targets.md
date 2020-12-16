@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 44f6d700ff25f0c2f2cb8bedc5c2d15ad2adcb83
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, contperf-fy21q1
+ms.openlocfilehash: c25f3965775c6518629c92ccc371855d9178e648
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320836"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033716"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>モデルのトレーニングとデプロイのためのコンピューティング ターゲットを設定する
 
@@ -47,7 +47,7 @@ Azure Machine Learning によって管理されるコンピューティング先
 
 ## <a name="limitations"></a>制限事項
 
-* ワークスペースから **同じコンピューティングに対して複数のアタッチメントを同時に作成することは避けてください** 。 たとえば、2 つの異なる名前を使用して 1 つの Azure Kubernetes Service クラスターをワークスペースにアタッチすることが該当します。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
+* ワークスペースから **同じコンピューティングに対して複数のアタッチメントを同時に作成することは避けてください**。 たとえば、2 つの異なる名前を使用して 1 つの Azure Kubernetes Service クラスターをワークスペースにアタッチすることが該当します。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
 
     TLS またはその他のクラスター構成設定を変更するためなど、コンピューティング先を再アタッチする場合は、まず、既存のアタッチメントを削除する必要があります。
 
@@ -70,14 +70,14 @@ Azure Machine Learning では、独自のコンピューティング リソー�
 
 このシナリオ向けに選択する Azure VM としては、Azure Data Science 仮想マシン (DSVM) を使用します。 この VM は、Azure での事前構成済みのデータ サイエンスおよび AI 開発環境です。 その VM では、完全なライフサイクルの機械学習開発用に精選されたツールとフレームワークが提供されます。 Azure Machine Learning での DSVM の使用方法について詳しくは、[開発環境の構成](./how-to-configure-environment.md#dsvm)に関する記事をご覧ください。
 
-1. **作成** :モデルのトレーニングに使用する DSVM を事前に作成します。 このリソースの作成については、「[Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング](./data-science-virtual-machine/dsvm-ubuntu-intro.md)」をご覧ください。
+1. **作成**:モデルのトレーニングに使用する DSVM を事前に作成します。 このリソースの作成については、「[Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング](./data-science-virtual-machine/dsvm-ubuntu-intro.md)」をご覧ください。
 
     > [!WARNING]
-    > Azure Machine Learning では、 **Ubuntu** を実行する仮想マシンのみがサポートされます。 VM を作成するとき、または既存の VM を選択するときは、Ubuntu を使用する VM を選択する必要があります。
+    > Azure Machine Learning では、**Ubuntu** を実行する仮想マシンのみがサポートされます。 VM を作成するとき、または既存の VM を選択するときは、Ubuntu を使用する VM を選択する必要があります。
     > 
     > さらに Azure Machine Learning では、仮想マシンに __パブリック IP アドレス__ が必要です。
 
-1. **アタッチする** :コンピューティング ターゲットとして既存の仮想マシンを接続するには、仮想マシンのリソース ID、ユーザー名、およびパスワードを入力する必要があります。 VM のリソース ID は、次の文字列形式を使用して、サブスクリプション ID、リソース グループ名、VM 名から作成できます: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
+1. **アタッチする**:コンピューティング ターゲットとして既存の仮想マシンを接続するには、仮想マシンのリソース ID、ユーザー名、およびパスワードを入力する必要があります。 VM のリソース ID は、次の文字列形式を使用して、サブスクリプション ID、リソース グループ名、VM 名から作成できます: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
 
  
    ```python
@@ -102,7 +102,7 @@ Azure Machine Learning では、独自のコンピューティング リソー�
     > [!WARNING]
     > ワークスペースから同じ DSVM に対して複数のアタッチメントを同時に作成することは避けてください。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
 
-1. **構成する** :DSVM コンピューティング先用の実行構成を作成します。 Docker と conda は、DSVM でトレーニング環境を作成および構成するために使用されます。
+1. **構成する**:DSVM コンピューティング先用の実行構成を作成します。 Docker と conda は、DSVM でトレーニング環境を作成および構成するために使用されます。
 
    ```python
    from azureml.core import ScriptRunConfig
@@ -128,7 +128,7 @@ Azure Machine Learning では、独自のコンピューティング リソー�
 
 Azure HDInsight は、ビッグ データ分析のための一般的なプラットフォームです。 そのプラットフォームでは、モデルのトレーニングに使用できる Apache Spark が提供されます。
 
-1. **作成** :モデルのトレーニングに使用する HDInsight クラスターを、事前に作成します。 HDInsight クラスターで Spark を作成するには、[HDInsight での Spark クラスターの作成](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)に関する記事をご覧ください。 
+1. **作成**:モデルのトレーニングに使用する HDInsight クラスターを、事前に作成します。 HDInsight クラスターで Spark を作成するには、[HDInsight での Spark クラスターの作成](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)に関する記事をご覧ください。 
 
     > [!WARNING]
     > Azure Machine Learning では、HDInsight クラスターに __パブリック IP アドレス__ が必要です。
@@ -137,7 +137,7 @@ Azure HDInsight は、ビッグ データ分析のための一般的なプラッ
     
     クラスターが作成された後、ホスト名 \<clustername>-ssh.azurehdinsight.net でそれに接続します。\<clustername> はクラスターに指定した名前です。 
 
-1. **アタッチする** :コンピューティング先として HDInsight クラスターをアタッチするには、HDInsight クラスターのリソース ID、ユーザー名、およびパスワードを指定する必要があります。 HDInsight クラスターのリソース ID は、次の文字列形式を使用して、サブスクリプション ID、リソース グループ名、HDInsight クラスター名から作成できます: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
+1. **アタッチする**:コンピューティング先として HDInsight クラスターをアタッチするには、HDInsight クラスターのリソース ID、ユーザー名、およびパスワードを指定する必要があります。 HDInsight クラスターのリソース ID は、次の文字列形式を使用して、サブスクリプション ID、リソース グループ名、HDInsight クラスター名から作成できます: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
 
     ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -165,7 +165,7 @@ Azure HDInsight は、ビッグ データ分析のための一般的なプラッ
     > [!WARNING]
     > ワークスペースから同じ HDInsight に対して複数のアタッチメントを同時に作成することは避けてください。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
 
-1. **構成する** :HDI コンピューティング先用の実行構成を作成します。 
+1. **構成する**:HDI コンピューティング先用の実行構成を作成します。 
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
@@ -178,9 +178,9 @@ Azure Batch は、大規模な並列コンピューティングやハイパフ�
 
 コンピューティング ターゲットとして Azure Batch に接続するには、Azure Machine Learning SDK を使用し、次の情報を提供する必要があります。
 
--    **Azure Batch のコンピューティング名** :ワークスペース内のコンピューティングに使用されるフレンドリ名
--    **Azure Batch アカウント名** :Azure Batch アカウントの名前
--    **リソース グループ** :Azure Batch アカウントを含むリソース グループ。
+-    **Azure Batch のコンピューティング名**:ワークスペース内のコンピューティングに使用されるフレンドリ名
+-    **Azure Batch アカウント名**:Azure Batch アカウントの名前
+-    **リソース グループ**:Azure Batch アカウントを含むリソース グループ。
 
 次のコードは、コンピューティング ターゲットとして Azure Batch に接続する方法を示しています。
 
@@ -223,11 +223,11 @@ Azure Databricks は、Azure クラウド内の Apache Spark ベースの環境�
 
 コンピューティング先として Azure Databricks をアタッチするには、次の情報を指定します。
 
-* __Databricks コンピューティング名__ :このコンピューティング リソースに割り当てる名前。
-* __Databricks ワークスペース名__ :Azure Databricks ワークスペースの名前。
-* __Databricks アクセス トークン__ :Azure Databricks に対する認証に使用するアクセス トークン。 アクセス トークンを生成するには、[認証](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html)に関するドキュメントを参照してください。
+* __Databricks コンピューティング名__:このコンピューティング リソースに割り当てる名前。
+* __Databricks ワークスペース名__:Azure Databricks ワークスペースの名前。
+* __Databricks アクセス トークン__:Azure Databricks に対する認証に使用するアクセス トークン。 アクセス トークンを生成するには、[認証](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html)に関するドキュメントを参照してください。
 
-次のコードでは、Azure Machine Learning SDK を使用してコンピューティング先として Azure Databricks をアタッチする方法を示します ( __Databricks ワークスペースは、AML ワークスペースと同じサブスクリプション内に存在する必要があります__ )。
+次のコードでは、Azure Machine Learning SDK を使用してコンピューティング先として Azure Databricks をアタッチする方法を示します (__Databricks ワークスペースは、AML ワークスペースと同じサブスクリプション内に存在する必要があります__)。
 
 ```python
 import os
@@ -279,9 +279,9 @@ Azure Data Lake Analytics は、Azure クラウド内のビッグ データ分�
 
 コンピューティング ターゲットとして Data Lake Analytics に接続するには、Azure Machine Learning SDK を使用し、次の情報を提供する必要があります。
 
-* __コンピューティング名__ :このコンピューティング リソースに割り当てる名前。
-* __リソース グループ__ :Data Lake Analytics アカウントを含むリソース グループ。
-* __アカウント名__ :Data Lake Analytics アカウント名です。
+* __コンピューティング名__:このコンピューティング リソースに割り当てる名前。
+* __リソース グループ__:Data Lake Analytics アカウントを含むリソース グループ。
+* __アカウント名__:Data Lake Analytics アカウント名です。
 
 次のコードは、コンピューティング ターゲットとして Data Lake Analytics に接続する方法を示しています。
 

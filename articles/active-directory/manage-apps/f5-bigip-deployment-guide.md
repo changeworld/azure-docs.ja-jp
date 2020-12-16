@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7555a0b9d7b3336b1020e8f1d9c3445e09afc6f0
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 6c03009b08dcf33bf4b84bc91232af96e7ba2c71
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317747"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095187"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>セキュリティで保護されたハイブリッド アクセスのために F5 BIG-IP Virtual Edition VM を Azure IaaS にデプロイするチュートリアル
 
@@ -44,7 +44,7 @@ F5 BIG-IP に関する事前の経験や知識は必要ありませんが、[F5 
 
 - SSL (Secure Socket Layer) 経由で Web アプリケーションを公開するためのワイルドカードまたはサブジェクト代替名 (SAN) 証明書。 [Let’s encrypt](https://letsencrypt.org/) で、テスト用の 90 日間無料の証明書が提供されています。
 
-- BIG-IP の管理インターフェイスをセキュリティで保護するための SSL 証明書。 Web アプリを公開するために使用される証明書のサブジェクトが BIG-IP の完全修飾ドメイン名 (FQDN) に対応している場合は、それを使用できます。 たとえば、*.contoso.com というサブジェクトを使用して定義されたワイルドカード証明書は、 https://big-ip-vm.contoso.com:8443 に適しています
+- BIG-IP の管理インターフェイスをセキュリティで保護するための SSL 証明書。 Web アプリを公開するために使用される証明書のサブジェクトが BIG-IP の完全修飾ドメイン名 (FQDN) に対応している場合は、それを使用できます。 たとえば、*.contoso.com というサブジェクトを使用して定義されたワイルドカード証明書は、 `https://big-ip-vm.contoso.com:8443` に適しています
 
 VM のデプロイと基本システムの構成には 30 分程度かかります。この時点で、BIG-IP プラットフォームは[ここ](f5-aad-integration.md)に記載されている SHA のシナリオのいずれかを実装する準備が整います。
 

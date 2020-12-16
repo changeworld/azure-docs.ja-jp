@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: sstein, sashan
 ms.date: 10/28/2020
-ms.openlocfilehash: e5e58f8592fcf8627870c3a574335bbe34394064
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 15067a046d8adc0ba38101bbe24cdc48cd433d56
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452463"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095442"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -122,7 +122,7 @@ Hyperscale の高可用性の詳細については、「[ハイパースケー�
 
 |デプロイの種類|PowerShell|REST API| Azure CLI|
 |:---|:---|:---|:---|
-|データベース|[Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[データベース フェールオーバー](/rest/api/sql/databases(failover)/failover/)|Azure CLI から REST API 呼び出しを呼び出すために [az rest](/cli/azure/reference-index#az-rest) が使用できます|
+|データベース|[Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[データベース フェールオーバー](/rest/api/sql/databases/failover)|Azure CLI から REST API 呼び出しを呼び出すために [az rest](/cli/azure/reference-index#az-rest) が使用できます|
 |エラスティック プール|[Invoke-AzSqlElasticPoolFailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[エラスティック プールのフェールオーバー](/rest/api/sql/elasticpools(failover)/failover/)|Azure CLI から REST API 呼び出しを呼び出すために [az rest](/cli/azure/reference-index#az-rest) が使用できます|
 |マネージド インスタンス|[Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[マネージド インスタンス - フェールオーバー](/rest/api/sql/managed%20instances%20-%20failover/failover)|[az sql mi failover](/cli/azure/sql/mi/#az-sql-mi-failover)|
 

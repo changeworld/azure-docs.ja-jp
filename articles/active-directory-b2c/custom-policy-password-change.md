@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1c942d52bbcdad711115d81a78395979c507784b
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: a471f510f60eeb6428c5c4e8ec7cccd1e0804d10
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131753"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108860"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの変更を構成する
 
@@ -30,7 +30,7 @@ Azure Active Directory B2C (Azure AD B2C) では、ローカル アカウント�
 
 ## <a name="add-the-elements"></a>要素を追加する
 
-1. ご自身の *TrustframeworkExtensions.xml* ファイルを開き、識別子が `oldPassword` の次の **ClaimType** 要素を、 [ClaimsSchema](claimsschema.md) 要素に追加します。
+1. ご自身の *TrustframeworkExtensions.xml* ファイルを開き、識別子が `oldPassword` の次の **ClaimType** 要素を、[ClaimsSchema](claimsschema.md) 要素に追加します。
 
     ```xml
     <BuildingBlocks>
@@ -124,7 +124,7 @@ Azure Active Directory B2C (Azure AD B2C) では、ローカル アカウント�
 
     `IdentityExperienceFrameworkAppId` を、前提条件のチュートリアルで作成した IdentityExperienceFramework アプリケーションのアプリケーション ID に置き換えます。 `ProxyIdentityExperienceFrameworkAppId` を、先ほど作成した ProxyIdentityExperienceFramework アプリケーションのアプリケーション ID に置き換えます。
 
-3. [UserJourney](userjourneys.md) 要素は、ユーザーがアプリケーションとやり取りするときに取るパスを定義します。 `PasswordChange` として識別される **UserJourney** に存在していない場合は、 **UserJourneys** 要素を追加します。
+3. [UserJourney](userjourneys.md) 要素は、ユーザーがアプリケーションとやり取りするときに取るパスを定義します。 `PasswordChange` として識別される **UserJourney** に存在していない場合は、**UserJourneys** 要素を追加します。
 
     ```xml
     <UserJourneys>
@@ -153,9 +153,9 @@ Azure Active Directory B2C (Azure AD B2C) では、ローカル アカウント�
     ```
 
 4. *TrustFrameworkExtensions.xml* ポリシー ファイルを保存します。
-5. スターター パックと一緒にダウンロードした *ProfileEdit.xml* ファイルをコピーして、 *ProfileEditPasswordChange.xml* という名前を付けます。
-6. 新しいファイルを開き、 **PolicyId** 属性を一意の値で更新します。 この値がポリシーの名前になります。 たとえば、 *B2C_1A_profile_edit_password_change* です。
-7. `<DefaultUserJourney>` の **ReferenceId** 属性を変更して、作成した新しいユーザー体験の ID と一致するようにします。 たとえば、 *PasswordChange* です。
+5. スターター パックと一緒にダウンロードした *ProfileEdit.xml* ファイルをコピーして、*ProfileEditPasswordChange.xml* という名前を付けます。
+6. 新しいファイルを開き、**PolicyId** 属性を一意の値で更新します。 この値がポリシーの名前になります。 たとえば、*B2C_1A_profile_edit_password_change* です。
+7. `<DefaultUserJourney>` の **ReferenceId** 属性を変更して、作成した新しいユーザー体験の ID と一致するようにします。 たとえば、*PasswordChange* です。
 8. 変更を保存します。
 
 [こちら](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change)でサンプル ポリシーを見つけることができます。
@@ -171,16 +171,16 @@ Azure AD B2C でアプリケーションをテスト中に、Azure AD B2C トー
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. **[Identity Experience Framework]** を選択します。
 5. [カスタム ポリシー] ページで、 **[ポリシーのアップロード]** をクリックします。
-6. **[ポリシーが存在する場合は上書きする]** を選択し、 *TrustframeworkExtensions.xml* ファイルを検索して選択します。
+6. **[ポリシーが存在する場合は上書きする]** を選択し、*TrustframeworkExtensions.xml* ファイルを検索して選択します。
 7. **[アップロード]** をクリックします。
-8. その証明書利用者ファイル ( *ProfileEditPasswordChange.xml* など) で、手順 5 から 7 を繰り返します。
+8. その証明書利用者ファイル (*ProfileEditPasswordChange.xml* など) で、手順 5 から 7 を繰り返します。
 
 ### <a name="run-the-policy"></a>ポリシーを実行する
 
-1. 変更したポリシーを開きます。 たとえば、 *B2C_1A_profile_edit_password_change* です。
+1. 変更したポリシーを開きます。 たとえば、*B2C_1A_profile_edit_password_change* です。
 2. **[アプリケーション]** には、前に登録したアプリケーションを選択します。 トークンを表示するには、 **[応答 URL]** に `https://jwt.ms` が表示される必要があります。
 3. **[今すぐ実行]** をクリックします。 前に作成したアカウントでサインインします。 これで、パスワードを変更することができます。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの変更を構成する](custom-policy-password-complexity.md)方法について学習します。
+- [Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの変更を構成する](password-complexity.md)方法について学習します。

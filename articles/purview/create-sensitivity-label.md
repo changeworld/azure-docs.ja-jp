@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 195ddfcc3c781c1866a7751f989c9460463edbb9
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: c824e0abea7320a20441e51caa2a05d534ff61b3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558166"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092688"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Azure Purview でデータに自動的にラベルを付ける
 
@@ -38,7 +38,7 @@ Purview では、Microsoft 365 と同じ分類 (機密情報の種類とも呼�
 
 Azure Purview で秘密度ラベルを使用すると、ファイルおよびデータベースの列にラベルを自動的に適用できます。
 
-詳細については、次をご覧ください。
+詳細については、次を参照してください。
 
 - Microsoft 365 のドキュメントの「[秘密度ラベルの詳細](/microsoft-365/compliance/sensitivity-labels)」
 - [自動ラベル付け規則とは](#what-are-autolabeling-rules)
@@ -68,7 +68,7 @@ Azure Purview では、次のデータ型に対して秘密度ラベルがサポ
 
 秘密度ラベルがまだない場合は、それを作成して、Azure Purview で使用できるようにする必要があります。 既存の秘密度ラベルを変更して、Azure Purview で使用できるようにすることもできます。
 
-詳細については、次をご覧ください。
+詳細については、次を参照してください。
 
 - [ライセンスの要件](#licensing-requirements)
 - [Azure Purview への秘密度ラベルの拡張](#extending-sensitivity-labels-to-azure-purview)
@@ -185,12 +185,11 @@ Azure Purview でデータをスキャンすると、定義した自動ラベル
 
 Azure Purview のさまざまな資産でスキャンを設定する方法の詳細については、以下を参照してください。
 
-|source  |リファレンス  |
+|ソース  |リファレンス  |
 |---------|---------|
 |**Azure Blob Storage**     |[Azure Blob Storage の登録とスキャン](register-scan-azure-blob-storage-source.md)         |
 |**Azure Data Lake Storage**     |[Azure Data Lake Storage Gen1 の登録とスキャン](register-scan-adls-gen1.md) </br>[Azure Data Lake Storage Gen2 の登録とスキャン](register-scan-adls-gen2.md)         |
 |**Azure SQL Databases**|[Azure SQL Database の登録とスキャン](register-scan-azure-sql-database.md) </br>[Azure SQL Database Managed Instance の登録とスキャン](register-scan-azure-sql-database-managed-instance.md)|
-|**ファイアウォールの背後にあるストレージ アカウント**     |[Azure Purview でのファイアウォールの背後にあるストレージ アカウントのスキャン](scan-sqlresource-firewall.md)         |
 | | |
 
 ## <a name="view-labels-on-assets"></a>資産のラベルを表示する

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 110a25fca0b0e764650665635dbe545de7a350cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b53c0002af3680567aabf0955f6bb4e0d99c2ab1
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653998"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093436"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での事業継続とディザスター リカバリーに関するベスト プラクティス
 
@@ -89,7 +89,7 @@ geo レプリケーションは、*Premium* SKU コンテナー レジストリ�
 
 **ベスト プラクティス**: 可能な場合、サービスの状態をコンテナー内に格納しないでください。 代わりに、マルチリージョン レプリケーションをサポートする Azure のサービスとしてのプラットフォーム (PaaS) を使用します。
 
-*サービスの状態*とは、サービスが機能するために必要な、メモリ内またはディスク上のデータのことです。 これには、サービスによって読み書きされるデータ構造やメンバー変数が含まれます。 サービスの設計方法に応じて、状態には、ディスクに格納されているファイルやその他のリソースも含まれることがあります。 たとえば、状態には、データとトランザクション ログを格納するためにデータベースで使用されるファイルが含まれる場合があります。
+*サービスの状態* とは、サービスが機能するために必要な、メモリ内またはディスク上のデータのことです。 これには、サービスによって読み書きされるデータ構造やメンバー変数が含まれます。 サービスの設計方法に応じて、状態には、ディスクに格納されているファイルやその他のリソースも含まれることがあります。 たとえば、状態には、データとトランザクション ログを格納するためにデータベースで使用されるファイルが含まれる場合があります。
 
 状態は、外部化することも、状態を操作するコードと同じ場所に配置することもできます。 通常、状態の外部化は、ネットワーク上のさまざまなコンピューターで実行されている、または同一コンピューター上でアウト オブ プロセスを実行しているデータベースやその他のデータ ストアを使用して行います。
 
@@ -113,7 +113,7 @@ geo レプリケーションは、*Premium* SKU コンテナー レジストリ�
 
 アプリケーションには、ポッドが削除された後も、永続的ストレージが必要な場合があります。 Kubernetes では、永続ボリュームを使用してデータ ストレージを保持することができます。 永続ボリュームはノード VM にマウントされてから、ポッドに公開されます。 永続ボリュームは、ポッドが同じクラスター内の別のノードに移動されても、ポッドに従います。
 
-使用するレプリケーションの方法は、お使いのストレージ ソリューションによって決まります。 [Gluster](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/)、[Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/)、[Rook](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html)、[Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) などの一般的なストレージ ソリューションには、ディザスター リカバリーとレプリケーションに関する独自のガイダンスがあります。
+使用するレプリケーションの方法は、お使いのストレージ ソリューションによって決まります。 [Gluster](https://docs.gluster.org/en/latest/Administrator-Guide/Geo-Replication/)、[Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/)、[Rook](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html)、[Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) などの一般的なストレージ ソリューションには、ディザスター リカバリーとレプリケーションに関する独自のガイダンスがあります。
 
 一般的な方法は、アプリケーションがデータを書き込める共通のストレージ ポイントを提供するというものです。 これらのデータは、その後リージョン間でレプリケートされ、ローカルにアクセスされます。
 

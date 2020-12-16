@@ -4,13 +4,13 @@ description: Azure Application Insights を Azure Functions とともに使用�
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.custom: devx-track-csharp, fasttrack-edit, contperfq2, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: b27fb14341e07683d66418485158a94c18e7a997
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
+ms.openlocfilehash: 7dbaa8712e09de9084e2bcb66d43f2181af292a0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748163"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033036"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -33,7 +33,7 @@ Azure Functions との Application Insights の統合は、無料で試すこと
 
 ## <a name="application-insights-integration"></a>Application Insights の統合
 
-一般に、関数アプリを作成するときに Application Insights インスタンスを作成します。 この場合、統合に必要なインストルメンテーション キーは、 *APPINSIGHTS_INSTRUMENTATIONKEY* という名前のアプリケーション設定として既に設定されています。 何らかの理由で関数アプリにインストルメンテーション キーが設定されていない場合は、[Application Insights の統合を有効にする](configure-monitoring.md#enable-application-insights-integration)必要があります。  
+一般に、関数アプリを作成するときに Application Insights インスタンスを作成します。 この場合、統合に必要なインストルメンテーション キーは、*APPINSIGHTS_INSTRUMENTATIONKEY* という名前のアプリケーション設定として既に設定されています。 何らかの理由で関数アプリにインストルメンテーション キーが設定されていない場合は、[Application Insights の統合を有効にする](configure-monitoring.md#enable-application-insights-integration)必要があります。  
 
 ## <a name="collecting-telemetry-data"></a>利用統計情報の収集
 
@@ -67,7 +67,7 @@ Application Insights の統合が有効になっていると、利用統計情�
 
 `SqlClient` を使用する HTTP 要求とデータベース呼び出しもキャプチャされます。 Application Insights によってサポートされる依存関係の完全な一覧については、[自動追跡される依存関係](../azure-monitor/app/asp-net-dependencies.md#automatically-tracked-dependencies)に関するページを参照してください。
 
-Application Insights では、収集された依存関係データの " _アプリケーション マップ_ " が生成されます。 次に、Queue storage の出力バインドがある HTTP トリガー関数のアプリケーション マップの例を示します。  
+Application Insights では、収集された依存関係データの "_アプリケーション マップ_" が生成されます。 次に、Queue storage の出力バインドがある HTTP トリガー関数のアプリケーション マップの例を示します。  
 
 ![依存関係があるアプリケーション マップ](./media/functions-monitoring/app-map.png)
 
@@ -95,9 +95,9 @@ Application Insights では、収集された依存関係データの " _アプ�
 
 関数の実行によって生成中のログ データのストリームを表示する方法は 2 つあります。
 
-* **組み込みのログ ストリーミング** : App Service プラットフォームでは、アプリケーション ログ ファイルのストリームを表示できます。 このストリームは、 [ローカル開発](functions-develop-local.md)中に関数をデバッグするときや、ポータルで **[テスト]** タブを使用するときに表示される出力と同等です。 すべてのログベース情報が表示されます。 詳しくは、[ログのストリーミング](../app-service/troubleshoot-diagnostic-logs.md#stream-logs)に関する記事をご覧ください。 このストリーミング方法でサポートされるインスタンスは 1 つだけです。従量課金プランの Linux 上で実行されているアプリでは、この方法を使用できません。
+* **組み込みのログ ストリーミング**: App Service プラットフォームでは、アプリケーション ログ ファイルのストリームを表示できます。 このストリームは、[ローカル開発](functions-develop-local.md)中に関数をデバッグするときや、ポータルで **[テスト]** タブを使用するときに表示される出力と同等です。 すべてのログベース情報が表示されます。 詳しくは、[ログのストリーミング](../app-service/troubleshoot-diagnostic-logs.md#stream-logs)に関する記事をご覧ください。 このストリーミング方法でサポートされるインスタンスは 1 つだけです。従量課金プランの Linux 上で実行されているアプリでは、この方法を使用できません。
 
-* **Live Metrics Stream** : 関数アプリが [Application Insights に接続されている](configure-monitoring.md#enable-application-insights-integration)ときには、 [Live Metrics Stream](../azure-monitor/app/live-stream.md) を使用して、Azure portal でログ データやその他のメトリックをほぼリアルタイムで表示できます。 この方法は、複数のインスタンス上または従量課金プランの Linux 上で実行されている関数を監視する場合に使用します。 このメソッドでは、[サンプリングされたデータ](configure-monitoring.md#configure-sampling)が使用されます。
+* **Live Metrics Stream**: 関数アプリが [Application Insights に接続されている](configure-monitoring.md#enable-application-insights-integration)ときには、[Live Metrics Stream](../azure-monitor/app/live-stream.md) を使用して、Azure portal でログ データやその他のメトリックをほぼリアルタイムで表示できます。 この方法は、複数のインスタンス上または従量課金プランの Linux 上で実行されている関数を監視する場合に使用します。 このメソッドでは、[サンプリングされたデータ](configure-monitoring.md#configure-sampling)が使用されます。
 
 ログ ストリームは、ポータル内とほとんどのローカル開発環境内の両方で表示できます。 ログ ストリームを有効にする方法については、「[Azure Functions でストリーミング実行ログを有効にする](streaming-logs.md)」を参照してください。
 
@@ -115,13 +115,13 @@ _この機能はプレビュー段階にあります。_
 
 [Azure Functions スケール コントローラー](./functions-scale.md#runtime-scaling)は、アプリが実行されている Azure Functions ホストのインスタンスを監視します。 このコントローラーは、現在のパフォーマンスに基づいて、インスタンスを追加または削除するタイミングを決定します。 スケール コントローラーから Application Insights にログを出力させることで、関数アプリのためにスケール コントローラーで下されている決定をより詳細に理解できます。 生成されたログを、別のサービスによる分析のために BLOB ストレージに格納することもできます。 
 
-この機能を有効にするには、`SCALE_CONTROLLER_LOGGING_ENABLED` という名前のアプリケーション設定を、お使いの関数アプリの設定に追加します。 詳細については、「[スケール コントローラー ログを構成する](configure-monitoring.md#configure-scale-controller-logs)」を参照してください。
+この機能を有効にするには、`SCALE_CONTROLLER_LOGGING_ENABLED` という名前のアプリケーション設定を、ご利用の関数アプリの設定に追加します。 詳細については、「[スケール コントローラー ログを構成する](configure-monitoring.md#configure-scale-controller-logs)」を参照してください。
 
 ## <a name="report-issues"></a>レポートに関する問題
 
 Functions での Application Insights 統合に関する問題をレポートしたり、提案や要求を行ったりするには、[GitHub で問題を作成します](https://github.com/Azure/Azure-Functions/issues/new)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次のリソースを参照してください。
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: af3653d9e4509b1aa31a377dfc22cb6b6b2ff34e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 76232a917e8856a06645fabc0ab4716195c5c0e1
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906065"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094201"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Azure Maps の Elevation Service (プレビュー) を使用して標高データを要求する
 
@@ -56,8 +56,8 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
 
 Elevation Service (プレビュー) API を使用して、GeoJSON 形式で標高データを要求します。 このセクションでは、次の 3 つの API のそれぞれについて説明します。
 
-* [Get Data for Points](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
-* [Post Data for Points](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates)
+* [Get Data for Points](/rest/api/maps/elevation/getdataforpoints)
+* [Post Data for Points](/rest/api/maps/elevation/postdataforpoints)
 * [Get Data for Polyline](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
 * [Post Data for Polyline](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline)
 * [Get Data for Bounding Box](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
@@ -67,7 +67,7 @@ Elevation Service (プレビュー) API を使用して、GeoJSON 形式で標�
 
 ### <a name="request-elevation-data-for-points"></a>ポイントの標高データを要求する
 
-この例では、[Get Data for Points API](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates) を使用して、 エベレスト山とチャムラン山の標高データを要求します。 その後、[Post Data for Points API](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates) 使用して、同じ 2 つの地点を使用して標高データを要求します。 URL の緯度と経度は、10 進法の WGS84 (世界測地系) 数が想定されています。
+この例では、[Get Data for Points API](/rest/api/maps/elevation/getdataforpoints) を使用して、 エベレスト山とチャムラン山の標高データを要求します。 その後、[Post Data for Points API](/rest/api/maps/elevation/postdataforpoints) 使用して、同じ 2 つの地点を使用して標高データを要求します。 URL の緯度と経度は、10 進法の WGS84 (世界測地系) 数が想定されています。
 
  >[!IMPORTANT]
  >URL の文字数の制限が 2048 であるため、URL GET 要求では、100 を超える座標をパイプラインで区切られた文字列として渡すことはできません。 パイプラインで区切られた文字列として 100 以上の座標を渡す場合は、POST Data For Points を使用します。
@@ -103,7 +103,7 @@ Elevation Service (プレビュー) API を使用して、GeoJSON 形式で標�
     }
     ```
 
-4. 次に、[Post Data for Points API](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates) を呼び出して、同じ 2 つの地点の標高データを取得します。 [builder]\(ビルダー\) タブで **POST** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
+4. 次に、[Post Data for Points API](/rest/api/maps/elevation/postdataforpoints) を呼び出して、同じ 2 つの地点の標高データを取得します。 [builder]\(ビルダー\) タブで **POST** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
 
     ```http
     https://atlas.microsoft.com/elevation/point/json?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
@@ -485,7 +485,7 @@ URL の緯度と経度は、10 進法の WGS84 (世界測地系) 数が想定さ
 Azure Maps Elevation (プレビュー) API の詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Elevation (プレビュー) - 緯度と経度の座標データを取得する](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
+> [Elevation (プレビュー) - 緯度と経度の座標データを取得する](/rest/api/maps/elevation/getdataforpoints)
 
 > [!div class="nextstepaction"]
 > [Elevation (プレビュー) - Get Data for Bounding Box](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)

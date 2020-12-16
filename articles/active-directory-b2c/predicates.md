@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b01f1edd4305c09a874b177e4bca373991c9162e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46f04c55b40d4f1bdbbf5fd55eb648d1d3294056
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203811"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108418"
 ---
 # <a name="predicates-and-predicatevalidations"></a>述語および PredicateValidations
 
@@ -30,7 +30,7 @@ ms.locfileid: "85203811"
 
 ## <a name="predicates"></a>述語
 
-**Predicate**要素によって、要求タイプの値をチェックする基本的な検証が定義され、`true` または `false` が返されます。 検証は、指定された **Method** 要素と、そのメソッドに関連する **Parameter** 要素のセットを使用して行われます。 例えば、述語によって、文字列要求値の長さが、指定された最小および最大パラメーターの範囲内にあるかどうか、または文字列要求の値に文字セットが含まれているかどうかをチェックできます。 **UserHelpText** 要素により、チェックが失敗した場合にユーザーに表示されるエラー メッセージが指定されます。 **UserHelpText** 要素の値を、[言語のカスタマイズ](localization.md)を使用してローカライズできます。
+**Predicate** 要素によって、要求タイプの値をチェックする基本的な検証が定義され、`true` または `false` が返されます。 検証は、指定された **Method** 要素と、そのメソッドに関連する **Parameter** 要素のセットを使用して行われます。 例えば、述語によって、文字列要求値の長さが、指定された最小および最大パラメーターの範囲内にあるかどうか、または文字列要求の値に文字セットが含まれているかどうかをチェックできます。 **UserHelpText** 要素により、チェックが失敗した場合にユーザーに表示されるエラー メッセージが指定されます。 **UserHelpText** 要素の値を、[言語のカスタマイズ](localization.md)を使用してローカライズできます。
 
 **Predicates** 要素は、[BuildingBlocks](buildingblocks.md) 要素内の **ClaimsSchema** 要素の直後に記述する必要があります。
 
@@ -384,7 +384,7 @@ Azure AD B2C にエラー メッセージが表示された場合に、要素が
 
 ## <a name="configure-a-date-range"></a>日付範囲の構成
 
-**Predicates** 要素と **PredicateValidations** 要素を使用して、**UserInputType** の最小および最大日付値を、`DateTimeDropdown` を使用して制御できます。 これを行うには、`IsDateRange` メソッドを使用して**述語**を作成し、最小および最大パラメーターを指定します。
+**Predicates** 要素と **PredicateValidations** 要素を使用して、**UserInputType** の最小および最大日付値を、`DateTimeDropdown` を使用して制御できます。 これを行うには、`IsDateRange` メソッドを使用して **述語** を作成し、最小および最大パラメーターを指定します。
 
 ```xml
 <Predicates>
@@ -428,4 +428,4 @@ Azure AD B2C にエラー メッセージが表示された場合に、要素が
 
 ## <a name="next-steps"></a>次のステップ
 
-- 述語の検証を使用して [Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの変更を構成する](custom-policy-password-complexity.md)方法について確認します。
+- 述語の検証を使用して [Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの変更を構成する](password-complexity.md)方法について確認します。

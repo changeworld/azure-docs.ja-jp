@@ -3,12 +3,12 @@ title: Azure Migrate による大規模な移行プロジェクトの管理
 description: 委任された顧客リソースで Azure Migrate を効果的に使用する方法を学習します。
 ms.date: 12/4/2020
 ms.topic: how-to
-ms.openlocfilehash: d1a01149c80b30f279f7d68551946c3ffe404d5e
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 16b92f3aa4dc3bfcb71eb232170c4df30348f8db
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621571"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095391"
 ---
 # <a name="manage-migration-projects-at-scale-with-azure-migrate"></a>Azure Migrate による大規模な移行プロジェクトの管理
 
@@ -39,7 +39,7 @@ Azure Lighthouse を使用する場合の 1 つのオプションは、Azure Mig
 このモデルのワークフローは、次のようになります。
 
 1. 顧客は [Azure Lighthouse にオンボードされます](onboard-customer.md)。 Azure Migrate で使用される ID には、共同作成者の組み込みロールが必要です。 このロールを使用する例については、[delegated-resource-management-azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) サンプル テンプレートを参照してください。
-1. 指定されたユーザーは、Azure portal で管理テナントにサインインし、Azure Migrate に移動します。 このユーザーは[ Azure Migrate プロジェクト](/migrate/create-manage-projects.md)を作成し、適切な委任された顧客サブスクリプションを選択します。
+1. 指定されたユーザーは、Azure portal で管理テナントにサインインし、Azure Migrate に移動します。 このユーザーは[ Azure Migrate プロジェクト](/azure/migrate/create-manage-projects)を作成し、適切な委任された顧客サブスクリプションを選択します。
 1. その後、ユーザーは[検出と評価のための手順を実行します](../../migrate/tutorial-discover-vmware.md)。
 
    VMware VMの場合、アプライアンスを構成する前に、検出を vCenter Server データセンター、クラスター、クラスターのフォルダー、ホスト、ホストのフォルダー、または個々の VＭ に制限することができます。 範囲を設定するには、vCenter Server にアクセスするためにアプライアンスで使用されているアカウントにアクセス許可を割り当てます。 これは、複数の顧客の VM がハイパーバイザーでホストされている場合に便利です。 Hyper-V の検出範囲を制限することはできません。
@@ -61,7 +61,7 @@ Azure Lighthouse を使用する場合の 1 つのオプションは、Azure Mig
 このモデルのワークフローは、次のようになります。
 
 1. 顧客は [Azure Lighthouse にオンボードされます](onboard-customer.md)。 Azure Migrate で使用される ID には、共同作成者の組み込みロールが必要です。 このロールを使用する例については、[delegated-resource-management-azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) サンプル テンプレートを参照してください。
-1. 指定されたユーザーは、Azure portal で管理テナントにサインインし、Azure Migrate に移動します。 このユーザーは、管理テナントに属しているサブスクリプションに [Azure Migrate プロジェクトを作成します](/migrate/create-manage-projects.md)。
+1. 指定されたユーザーは、Azure portal で管理テナントにサインインし、Azure Migrate に移動します。 このユーザーは、管理テナントに属しているサブスクリプションに [Azure Migrate プロジェクトを作成します](/azure/migrate/create-manage-projects)。
 1. その後、ユーザーは[検出と評価のための手順を実行します](../../migrate/tutorial-discover-vmware.md)。 オンプレミスの VM は、管理テナントで作成された移行プロジェクト内で検出および評価され、そこから移行されます。
 
    同じ Hyper-V ホストで複数の顧客を管理している場合は、すべてのワークロードを一度に検出できます。 顧客に固有の VM を同じグループで選択してから評価を作成し、移行先として適切な顧客のサブスクリプションを選択することによって移行を実行できます。 検出範囲を制限する必要はなく、1 つの移行プロジェクトですべての顧客のワークロードを徹底して管理できます。

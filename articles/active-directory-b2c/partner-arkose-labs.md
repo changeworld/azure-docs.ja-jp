@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 333bb42643539cedec04d37680749c749a003536
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cf0437b985865248393e9f68da264fcae5af7f12
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994062"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108554"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Arkose Labs を構成するためのチュートリアル
 
@@ -147,7 +147,7 @@ Git Bash をダウンロードし、次の手順に従います。
 
 1. [こちら](tutorial-create-user-flows.md)の情報に基づいてユーザー フローを作成します。 **[ユーザー フローをテストする]** セクションに達したら、停止します。
 
-2. [ユーザー フロー](user-flow-javascript-overview.md)で JavaScript を有効にします。
+2. [ユーザー フロー](javascript-and-page-layout.md)で JavaScript を有効にします。
 
 3. 同じユーザー フロー ページで、カスタム ページの URL を有効にします。 **[ユーザー フロー]**  >  **[ページ レイアウト]**  >  **[カスタム ページ コンテンツの使用]**  =  **[はい]**  >  **[insert custom page URL] (カスタム ページ URL の挿入)** の順に移動します。
 このカスタム ページ URL は、BLOB ストレージ内の index.html ファイルの場所から取得されます  

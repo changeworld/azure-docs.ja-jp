@@ -3,13 +3,13 @@ title: Application Insights で Azure Functions のテレメトリを分析す�
 description: Azure Application Insights によって収集と格納が行われた Azure Functions テレメトリ データを表示し、照会する方法について説明します。
 ms.topic: how-to
 ms.date: 10/14/2020
-ms.custom: contperfq2
-ms.openlocfilehash: 9091d59cbc3a4cf841e28505531c89c83e705c46
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 1d8d9cc9a7a4111e98b1d9141957769d6f157d45
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217305"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027732"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Application Insights で Azure Functions のテレメトリを分析する 
 
@@ -108,7 +108,7 @@ traces
 
 ## <a name="consumption-plan-specific-metrics"></a>従量課金プランに特有のメトリック
 
-[従量課金プラン](functions-scale.md#consumption-plan)での実行時には、1 回の関数実行の実行 " *コスト* " は、" *GB 秒数* " で測定されます。 実行コストは、そのメモリ使用量と実行時間を組み合わせて計算されます。 詳細については、「[従量課金プランのコストの見積もり](functions-consumption-costs.md)」を参照してください。
+[従量課金プラン](functions-scale.md#consumption-plan)での実行時には、1 回の関数実行の実行 "*コスト*" は、"*GB 秒数*" で測定されます。 実行コストは、そのメモリ使用量と実行時間を組み合わせて計算されます。 詳細については、「[従量課金プランのコストの見積もり](functions-consumption-costs.md)」を参照してください。
 
 次のテレメトリ クエリは、従量課金プランで実行される関数のコストに影響を与えるメトリックに特有のものです。
 

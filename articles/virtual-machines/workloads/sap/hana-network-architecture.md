@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf9fd361dea43b1cfa6ae45710a3a7bbf4e4de03
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b18e1cd20a4b0a886258fd56003cd273d92381fa
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006287"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093980"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (L インスタンス) のネットワーク アーキテクチャ
 
@@ -149,7 +149,7 @@ HANA L インスタンスと Azure の間で大量のデータを転送するた
 それらのシナリオで推移的なルーティングを有効にするには 3 つの方法があります。
 
 - データをルーティングするリバース プロキシ。 たとえば、仮想ファイアウォールおよびトラフィック ルーティング ソリューションとして HANA L インスタンスやオンプレミスに接続する Azure 仮想ネットワークにデプロイされる F5 BIG-IP や NGINX (および Traffic Manager) などです。
-- Linux VM で [IPTables ルール](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ)を使用して、オンプレミスの場所と HANA L インスタンス ユニット間、または別のリージョンにある HANA L インスタンス ユニット間のルーティングを有効にします。 IPTables が実行される VM は、HANA L インスタンスおよびオンプレミスに接続している Azure 仮想ネットワークにデプロイする必要があります。 VM は、VM のネットワーク スループットが予想ネットワーク トラフィックに対して十分であるように、サイズを設定する必要があります。 VM のネットワーク帯域幅の詳細については、「[Azure の Linux 仮想マシンのサイズ](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」という記事を参照してください。
+- Linux VM で IPTables ルールを使用して、オンプレミスの場所と HANA L インスタンス ユニット間、または別のリージョンにある HANA L インスタンス ユニット間のルーティングを有効にします。 IPTables が実行される VM は、HANA L インスタンスおよびオンプレミスに接続している Azure 仮想ネットワークにデプロイする必要があります。 VM は、VM のネットワーク スループットが予想ネットワーク トラフィックに対して十分であるように、サイズを設定する必要があります。 VM のネットワーク帯域幅の詳細については、「[Azure の Linux 仮想マシンのサイズ](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」という記事を参照してください。
 - [Azure Firewall](https://azure.microsoft.com/services/azure-firewall/) は、オンプレミスと HANA L インスタンス ユニットの間の直接のトラフィックを可能にするもう 1 つのソリューションです。 
 
 これらのソリューションのすべてのトラフィックは Azure 仮想ネットワークを通じてルーティングされるため、使用されるソフト アプライアンスまたは Azure ネットワーク セキュリティ グループによってトラフィックがさらに制限される可能性があります。つまり、オンプレミスの特定の IP アドレスまたは IP アドレス範囲が、HANA L インスタンスへのアクセスをブロックされたり、明示的に許可されたりする可能性があります。 

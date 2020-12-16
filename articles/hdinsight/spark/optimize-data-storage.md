@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 092757728e791f60616d9dceca43e109e7f0019e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: ad09cdc2c0054c9d9a58e6bfa00252862f1e8c0f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88757814"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028225"
 ---
 # <a name="data-storage-optimization-for-apache-spark"></a>Apache Spark のデータ ストレージの最適化
 
@@ -23,7 +23,7 @@ ms.locfileid: "88757814"
 
 Spark では、csv、json、xml、parquet、orc、avro など、多くの形式がサポートされています。 Spark は、外部データ ソースを使用して他の多くの形式をサポートするように拡張できます。詳細については、[Apache Spark パッケージ](https://spark-packages.org)を参照してください。
 
-パフォーマンスのために最適な形式は *Snappy で圧縮*した Parquet であり、これが Spark 2.x の既定値です。 Parquet はデータを列形式で格納し、Spark で高度に最適化されています。
+パフォーマンスのために最適な形式は *Snappy で圧縮* した Parquet であり、これが Spark 2.x の既定値です。 Parquet はデータを列形式で格納し、Spark で高度に最適化されています。
 
 ## <a name="choose-data-abstraction"></a>データ抽象化の選択
 
@@ -67,7 +67,7 @@ Spark では、csv、json、xml、parquet、orc、avro など、多くの形式�
 
 ## <a name="use-the-cache"></a>キャッシュの使用
 
-Spark は、`.persist()`、`.cache()`、`CACHE TABLE` などのさまざまな方法で使用できる、独自のネイティブ キャッシュ メカニズムを備えています。 このネイティブ キャッシュは、小さいデータ セットと、中間結果をキャッシュする必要がある ETL パイプラインで有効です。 ただし、Spark ネイティブ キャッシュは、現在のところパーティション分割では適切に機能しません。キャッシュされたテーブルがパーティション分割のデータを保持しないためです。 より汎用的で信頼性の高いキャッシュの手法は、*ストレージ レイヤーのキャッシュ*です。
+Spark は、`.persist()`、`.cache()`、`CACHE TABLE` などのさまざまな方法で使用できる、独自のネイティブ キャッシュ メカニズムを備えています。 このネイティブ キャッシュは、小さいデータ セットと、中間結果をキャッシュする必要がある ETL パイプラインで有効です。 ただし、Spark ネイティブ キャッシュは、現在のところパーティション分割では適切に機能しません。キャッシュされたテーブルがパーティション分割のデータを保持しないためです。 より汎用的で信頼性の高いキャッシュの手法は、*ストレージ レイヤーのキャッシュ* です。
 
 * Spark のネイティブ キャッシュ (非推奨)
     * 小さいデータセットに適している。

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: d889c82142cda60b920f7b29bd91755cbc34f525
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 48ff32655b107958a3e8e42dbd7de0f405a6fffa
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701451"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094864"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Store Gen1 のアクセス制御
 
@@ -33,8 +33,6 @@ Azure Data Lake Store Gen1 は、POSIX アクセス制御モデルから派生�
 
 
 アクセス ACL と既定の ACL は両方とも同じ構造です。
-
-
 
 > [!NOTE]
 > 親の既定の ACL を変更しても、既存の子項目のアクセス ACL または既定の ACL には影響しません。
@@ -74,7 +72,7 @@ Data Lake Store Gen1 アカウントに対する特定の操作の実行に必�
 | 操作 | Object              |    /      | Seattle/   | Portland/   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
 | Read      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| 追加 | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| 追加 | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `-W-`          |
 | 削除    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | 作成    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | List      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |

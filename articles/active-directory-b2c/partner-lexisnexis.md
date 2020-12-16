@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 9bec7ffe28fbcdafd365f9867ebecaee5d2647e5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5f408699cae9580188a3780fc8f8654eaa97c26b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953689"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108435"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して LexisNexis を構成するためのチュートリアル
 
@@ -73,7 +73,7 @@ ThreatMetrix 統合には、次のコンポーネントが含まれています�
 
 ### <a name="part-1---deploy-the-api"></a>パート 1 - API をデプロイする
 
-提供された [API コード](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/Api)を Azure サービスにデプロイします。 このコードは、次の[手順](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)に従って、Visual Studio から発行することができます。
+提供された [API コード](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/Api)を Azure サービスにデプロイします。 このコードは、次の[手順](/visualstudio/deployment/quickstart-deploy-to-azure)に従って、Visual Studio から発行することができます。
 
 >[!NOTE]
 >必要な設定で Azure AD を構成するには、デプロイされたサービスの URL が必要です。
@@ -95,7 +95,7 @@ ThreatMetrix 統合には、次のコンポーネントが含まれています�
 
 このソリューションでは、Azure AD B2C によって読み込まれるカスタム UI テンプレートを使用します。 これらの UI テンプレートによってプロファイルが行われ、それが ThreatMetrix サービスに直接送信されます。
 
-こちらの[手順](./custom-policy-ui-customization.md#custom-page-content-walkthrough)を参照して、含まれている [UI ファイル](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template)を BLOB ストレージ アカウントにデプロイします。 この手順には、BLOB ストレージ アカウントの設定、CORS の構成、パブリック アクセスの有効化が含まれます。
+こちらの[手順](./customize-ui-with-html.md#custom-page-content-walkthrough)を参照して、含まれている [UI ファイル](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template)を BLOB ストレージ アカウントにデプロイします。 この手順には、BLOB ストレージ アカウントの設定、CORS の構成、パブリック アクセスの有効化が含まれます。
 
 UI は、[オーシャン ブルー テンプレート](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template/ocean_blue)に基づいています。 UI 内のすべてのリンクは、デプロイされた場所を参照するように更新する必要があります。 UI フォルダーで、 https://yourblobstorage/blobcontainer を見つけてデプロイした場所に置き換えます。
 

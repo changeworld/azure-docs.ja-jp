@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
-ms.custom: devx-track-dotnet, contperfq2
-ms.openlocfilehash: ab9fc4f08b96fc10a20125c30af2d6b8050c7606
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.custom: devx-track-dotnet, contperf-fy21q2
+ms.openlocfilehash: f503f132794f6d04b587a78b8f838acba26f9ac3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341741"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032016"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB と .NET のパフォーマンスに関するヒント
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,13 +41,13 @@ Linux および ServiceInterop.dll を使用できない他のサポート対象
 
 ここに示す 4 種類のアプリケーションでは、既定で 32 ビットのホスト処理が使用されます。 アプリケーションの種類のホスト処理を 64 ビット処理に変更するには、次の手順に従います。
 
-- **実行可能アプリケーションの場合** : **[プロジェクトのプロパティ]** ウィンドウの **[ビルド]** ペインで、 [[プラットフォーム ターゲット]](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) を **x64** に設定します。
+- **実行可能アプリケーションの場合**: **[プロジェクトのプロパティ]** ウィンドウの **[ビルド]** ペインで、[[プラットフォーム ターゲット]](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) を **x64** に設定します。
 
-- **Vstest ベースのテスト プロジェクトの場合** :Visual Studio の **[テスト]** メニューで、 **[テスト]**  >  **[テストの設定]** の順に選択し、 **[既定のプロセッサ アーキテクチャ]** を **X64** に設定します。
+- **Vstest ベースのテスト プロジェクトの場合**:Visual Studio の **[テスト]** メニューで、 **[テスト]**  >  **[テストの設定]** の順に選択し、 **[既定のプロセッサ アーキテクチャ]** を **X64** に設定します。
 
-- **ローカルにデプロイされた ASP.NET Web アプリケーションの場合** : **[ツール]**  >  **[オプション]**  >  **[プロジェクトとソリューション]**  >  **[Web プロジェクト]** の順に選択し、 **[Web サイトおよびプロジェクト用 IIS Express の 64 ビット バージョンを使用する]** を選択します。
+- **ローカルにデプロイされた ASP.NET Web アプリケーションの場合**: **[ツール]**  >  **[オプション]**  >  **[プロジェクトとソリューション]**  >  **[Web プロジェクト]** の順に選択し、 **[Web サイトおよびプロジェクト用 IIS Express の 64 ビット バージョンを使用する]** を選択します。
 
-- **Azure にデプロイされた ASP.NET Web アプリケーションの場合** :Azure portal の **[アプリケーション設定]** で、 **64 ビット** のプラットフォームを選択します。
+- **Azure にデプロイされた ASP.NET Web アプリケーションの場合**:Azure portal の **[アプリケーション設定]** で、**64 ビット** のプラットフォームを選択します。
 
 > [!NOTE] 
 > 既定では、新しい Visual Studio プロジェクトは、 **[任意の CPU]** に設定されます。 **x86** に切り替わらないように、プロジェクトを **x64** に設定することをお勧めします。 **[任意の CPU]** に設定されたプロジェクトは、x86 のみの依存関係が追加されると、簡単に **x86** に切り替わる可能性があります。<br/>
@@ -144,7 +144,7 @@ itemResponse.Resource
 
 **待ち時間ではなくスループットを最適化するために一括処理を有効にする**
 
-ワークロードが大量のスループットを必要とし、待ち時間はそれほど重要ではないシナリオでは、 *一括処理* を有効にします。 一括処理機能を有効にする方法と、その機能を使用する必要があるシナリオの詳細については、[一括処理の概要](https://devblogs.microsoft.com/cosmosdb/introducing-bulk-support-in-the-net-sdk)に関するページを参照してください。
+ワークロードが大量のスループットを必要とし、待ち時間はそれほど重要ではないシナリオでは、*一括処理* を有効にします。 一括処理機能を有効にする方法と、その機能を使用する必要があるシナリオの詳細については、[一括処理の概要](https://devblogs.microsoft.com/cosmosdb/introducing-bulk-support-in-the-net-sdk)に関するページを参照してください。
 
 **ゲートウェイ モードを使用するときにホストあたりの System.Net MaxConnections を増やす**
 
@@ -156,13 +156,13 @@ SQL .NET SDK では、並列クエリがサポートされています。この�
 
 並列クエリには、要件に合わせてチューニングできる 2 つのパラメーターがあります。 
 
-- **MaxConcurrency** : 同時にクエリを実行できるパーティションの最大数を制御します。
+- **MaxConcurrency**: 同時にクエリを実行できるパーティションの最大数を制御します。
 
    並列クエリは、複数のパーティションに並列にクエリを実行することによって機能します。 ただし、個々のパーティションからのデータは、クエリごとに順番に取得されます。 そのため、[SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3) の `MaxConcurrency` をパーティションの数に設定すると、その他のすべてのシステムの条件が同じであれば、クエリのパフォーマンスを最善にできる可能性が最大になります。 パーティションの数がわからない場合は、並列処理の次数を高い数値に設定できます。 システムにより、並列処理の次数として最小値 (パーティションの数、ユーザー指定の入力) が選択されます。
 
     並列クエリが最も有効に機能するのは、クエリに対するデータがすべてのパーティションに均等に分散している場合であることに注意する必要があります。 パーティション分割されたコレクションが、クエリによって返されるすべてまたは大部分のデータがわずかな数のパーティション (最悪の場合は 1 つのパーティション) に集中するように分割されている場合、それらのパーティションがクエリのパフォーマンスのボトルネックになります。
    
-- **MaxBufferedItemCount** :プリフェッチされる結果の数を制御します。
+- **MaxBufferedItemCount**:プリフェッチされる結果の数を制御します。
 
    並列クエリは、結果の現在のバッチがクライアントによって処理されている間に結果をプリフェッチするように設計されています。 このプリフェッチは、クエリの全体的な遅延の削減に役立ちます。 `MaxBufferedItemCount` パラメーターは、プリフェッチされる結果の数を制限します。 `MaxBufferedItemCount` を、返される結果の予期される数 (またはそれ以上の数) に設定すると、クエリに対するプリフェッチの効果が最大になります。
 

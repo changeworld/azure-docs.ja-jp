@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: 327280c193c3c2fb829e468bccfc352f35edfdb5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: ef1c0003978251dd2637915e56dc396e85f4438f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673512"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107874"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>JavaScript 用 Microsoft Authentication Library を使用して Azure AD B2C と連携する
 
@@ -29,7 +29,7 @@ ID 管理サービスとして Azure AD B2C を使用すると、顧客がアプ
 以降のセクションでは、次の方法について説明します。
 
 - Node.js Web API を保護する
-- シングルページ アプリケーション (SPA) でのサインインをサポートし、 *その* 保護された Web API を呼び出す
+- シングルページ アプリケーション (SPA) でのサインインをサポートし、*その* 保護された Web API を呼び出す
 - パスワード リセットのサポートを有効にする
 
 ## <a name="prerequisites"></a>前提条件
@@ -38,7 +38,7 @@ ID 管理サービスとして Azure AD B2C を使用すると、顧客がアプ
 
 ## <a name="nodejs-web-api"></a>Node.js Web API
 
-次の手順は、 **Web API** が Azure AD B2C を使用して自身を保護し、選択されたスコープをクライアント アプリケーションに公開する方法を示しています。
+次の手順は、**Web API** が Azure AD B2C を使用して自身を保護し、選択されたスコープをクライアント アプリケーションに公開する方法を示しています。
 
 MSAL.js for Node は現在開発中です。 詳細については、GitHub 上の[ ロードマップ](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap) を参照してください。 現時点では、Microsoft によって開発およびサポートされている Node.js 用の認証ライブラリである [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad) を使用することをお勧めします。
 
@@ -77,7 +77,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ## <a name="javascript-spa"></a>JavaScript SPA
 
-次の手順は、 **シングルページ アプリケーション** が Azure AD B2C を使用して、サインアップ、サインイン、保護された Web API の呼び出しを行う方法を示しています。
+次の手順は、**シングルページ アプリケーション** が Azure AD B2C を使用して、サインアップ、サインイン、保護された Web API の呼び出しを行う方法を示しています。
 
 ### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 
@@ -209,7 +209,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
     :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Azure AD B2C によって示されるパスワード リセット フロー画面" border="false":::
 
-    エラーコードと例外の処理の詳細については、[MSAL のエラーと例外コード](msal-handling-exceptions.md)に関するページを参照してください。
+    エラーコードと例外の処理の詳細については、[MSAL のエラーと例外コード](msal-error-handling-js.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -217,4 +217,4 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 - [ユーザー フロー](../../active-directory-b2c/tutorial-create-user-flows.md)
 - [カスタム ポリシー](../../active-directory-b2c/custom-policy-get-started.md)
-- [UX のカスタマイズ](../../active-directory-b2c/custom-policy-configure-user-input.md)
+- [UX のカスタマイズ](../../active-directory-b2c/configure-user-input.md)

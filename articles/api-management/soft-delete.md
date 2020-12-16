@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vladvino
 ms.author: apimpm
 ms.date: 11/27/2020
-ms.openlocfilehash: fca98414a87f3b8a4f3c0969a28ee95c7ed47dc3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 72e91715398b4920c62afae5f36aa09954a577f9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501349"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092144"
 ---
 # <a name="api-management-soft-delete-preview"></a>API Management の論理的な削除 (プレビュー)
 
@@ -48,7 +48,7 @@ APIM インスタンスが 48 時間以内に回復されない場合、その�
 
 ## <a name="list-deleted-apim-instances"></a>削除された APIM インスタンスを一覧表示する
 
-削除されたサービスの [Get By Name](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) または [List By Subscription](/deletedservices/listbysubscription) を使用して、論理的に削除された APIM インスタンスを復元 (削除を取り消し) できることを確認できます。
+削除されたサービスの [Get By Name](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) または [List By Subscription](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) を使用して、論理的に削除された APIM インスタンスを復元 (削除を取り消し) できることを確認できます。
 
 ### <a name="get-a-soft-deleted-instance-by-name"></a>論理的に削除されたインスタンスを名前を指定して取得する
 
@@ -76,7 +76,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Micros
 
 ### <a name="list-all-soft-deleted-instances-for-a-given-subscription"></a>特定のサブスクリプションについて論理的に削除されたすべてのインスタンスを一覧表示する
 
-API Management の [List By Subscription](/deletedservices/listbysubscription) 操作を使用して、`{subscriptionId}` をサブスクリプション ID に置き換えます。
+API Management の [List By Subscription](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) 操作を使用して、`{subscriptionId}` をサブスクリプション ID に置き換えます。
 
 ```rest
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/deletedservices?api-version=2020-06-01-preview

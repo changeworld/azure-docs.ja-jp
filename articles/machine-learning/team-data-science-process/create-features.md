@@ -10,20 +10,20 @@ ms.subservice: team-data-science-process
 ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 44b5baa074b62a072873d8097de184a2813b54ec
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
+ms.openlocfilehash: 7cf97edcb2f2f7a23d5c899194d497deade1f507
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322023"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031863"
 ---
 # <a name="feature-engineering-in-data-science"></a>データ サイエンスにおける特徴エンジニアリング
 
 この記事では、特徴エンジニアリングと、機械学習のデータ強化におけるその役割について説明します。 [Azure Machine Learning Studio (classic)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) の実験から引用された、わかりやす例から学びます。 
 
-* **特徴エンジニアリング** :生データから新しい特徴を作成して、学習アルゴリズムの予測能力を向上させるプロセス。 エンジニアリングされた特徴は、元の特徴セットでは簡単にはわからない追加情報を取得する必要があります。
-* **特徴選択** : トレーニング問題の次元を削減するために、特徴の主要なサブセットを選択するプロセス。
+* **特徴エンジニアリング**:生データから新しい特徴を作成して、学習アルゴリズムの予測能力を向上させるプロセス。 エンジニアリングされた特徴は、元の特徴セットでは簡単にはわからない追加情報を取得する必要があります。
+* **特徴選択**: トレーニング問題の次元を削減するために、特徴の主要なサブセットを選択するプロセス。
 
 通常、最初に **特徴エンジニアリング** が追加の特徴を生成するために適用され、その後、無関係な特徴、重複した特徴、関連性の高い特徴を排除するために **特徴選択** が実行されます。
 

@@ -4,12 +4,12 @@ description: Azure App Service でカスタム コンテナーを構成する方
 ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 2aece0550d7b78ac4312e71b2671de4a64e4b86b
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: a7582bbb866a63820abbd959e06628eda5d57e29
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96557928"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007638"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Azure App Service のカスタム コンテナーを構成する
 
@@ -345,7 +345,7 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
 
 WordPress のような複数コンテナー アプリでは、永続的ストレージが適切に機能する必要があります。 有効にするには、Docker Compose 構成が、コンテナー *外* の保存場所を指す必要があります。 コンテナー内部の保存場所では、アプリの再起動後に変更内容が保持されません。
 
-[Cloud Shell](https://shell.azure.com) で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用して、`WEBSITES_ENABLE_APP_SERVICE_STORAGE` アプリ設定を指定することで、永続的ストレージを有効にします。
+[Cloud Shell](https://shell.azure.com) で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) コマンドを使用して、`WEBSITES_ENABLE_APP_SERVICE_STORAGE` アプリ設定を指定することで、永続的ストレージを有効にします。
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE

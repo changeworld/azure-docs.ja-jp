@@ -3,12 +3,12 @@ title: Azure Resource Health の FAQ
 description: Azure Resource Health の概要
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: c8089e907f555ac970fea06361a2ab1bbc944778
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5ad8867b110039e4dcc34b20c8a61fccfd39eaf
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536496"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032866"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health の FAQ
 Azure Resource Health についてよく寄せられる質問の回答を説明します。
@@ -52,7 +52,6 @@ Resource Health は、アクティビティ ログ ベースのアラートを[�
 Azure Portal にログインした後、複数の方法で Resource Health にアクセスできます。
 - 対象のリソースに移動します。 左側のナビゲーションで、 **[リソース正常性]** を選択します。
 - [Azure Service Health] ブレードに移動します。  左側のナビゲーションで、 **[リソース正常性]** を選択します。
-- ポータルの右上隅の疑問符を選択し、 **[ヘルプ + サポート]** を選択して **[ヘルプ + サポート]** ブレードを表示します。 ブレードが開いたら、 **[リソース正常性]** を選択します。
 
 Resource Health API を使用してリソースの正常性に関する情報を取得することもできます。
 
@@ -69,8 +68,6 @@ Resource Health はすべての Azure geo で利用できます。
 Resource Health の方が、Azure の状態や Service Health ダッシュボードと比べて具体的な細かい情報が得られます。
 
 [Azure の状態](https://status.azure.com)と Service Health ダッシュボードでは広範な顧客 (Azure リージョンなど) に影響するサービスの問題に関する情報を通知しますが、Resource Health では特定のリソースのみに関連するより詳細なイベントを公開します。 たとえば、ホストが予期せず再起動するとき、Resource Health はそのホスト上で仮想マシンが実行されている顧客のみに警告します。
-
-リソースに影響を与えるイベントを完全に可視化することが重要であるため、Resource Health には、Service Health ダッシュボードで発行されたイベントも表示されます。
 
 ## <a name="do-i-need-to-activate-resource-health-for-each-resource"></a>リソースごとに Resource Health をアクティブにする必要がありますか。
 いいえ。正常性情報は、Resource Health からすべてのリソースの種類に対して利用できます。 

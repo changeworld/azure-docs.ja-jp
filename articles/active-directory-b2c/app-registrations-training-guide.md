@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 16b5814835ec5cad6b66087fee37676155196339
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7c9e3344ed819f607feeab88ac43a9dc286a61e0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952082"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109098"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の新しいアプリの登録エクスペリエンス
 
@@ -63,7 +63,7 @@ Azure AD B2C のアプリの登録エクスペリエンスは、すべての Azu
 > [!NOTE]
 > このオプションは、このアプリケーション用にユーザーを認証するための Azure AD B2C ユーザー フローを実行できるようにするために必要です。 [ユーザー フローで使用するアプリケーションを登録する方法](tutorial-register-applications.md)を参照してください。
 
-このオプションを使用して、SAML サービス プロバイダーとして Azure AD B2C を使用することもできます。 [詳細については、こちらを参照してください](identity-provider-adfs2016-custom.md)。
+このオプションを使用して、SAML サービス プロバイダーとして Azure AD B2C を使用することもできます。 [詳細については、こちらを参照してください](identity-provider-adfs.md)。
 
 ## <a name="applications-for-devops-scenarios"></a>DevOps シナリオ用のアプリケーション
 その他のアカウントの種類を使用して、たとえば、Microsoft Graph を使用して Identity Experience Framework ポリシーをアップロードしたり、ユーザーをプロビジョニングしたりといった、DevOps シナリオを管理するアプリを作成できます。 [Microsoft Graph アプリケーションを登録して Azure AD B2C リソースを管理する方法](microsoft-graph-get-started.md)を参照してください。
@@ -97,7 +97,7 @@ Azure AD B2C を使用してユーザーをアプリにサインインできる�
 ## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Azure AD B2C テナントに適用されない機能
 次の Azure AD アプリの登録機能は、Azure AD B2C テナントに適用されないか、テナントで利用できません。
 - **ロールと管理者** - 現在、Azure AD B2C では使用できません。
-- **ブランド** - UI や UX のカスタマイズは、**会社のブランド** エクスペリエンスまたはユーザー フローの一部として構成されます。 [Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする](customize-ui-overview.md)方法を参照してください。
+- **ブランド** - UI や UX のカスタマイズは、**会社のブランド** エクスペリエンスまたはユーザー フローの一部として構成されます。 [Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする](customize-ui-with-html.md)方法を参照してください。
 - **発行元ドメインの検証** - アプリは、検証済みのドメインではない *onmicrosoft.com* に登録されます。 また、発行元ドメインは主にユーザーの同意を与えるために使用され、ユーザー認証のために Azure AD B2C アプリに適用されるものではありません。 [発行元ドメインの詳細についてご確認ください](../active-directory/develop/howto-configure-publisher-domain.md)。
 - **トークン構成** - トークンは、アプリではなくユーザー フローの一部として構成されます。
 - **クイックスタート** エクスペリエンスは現在、Azure AD B2C テナントでは使用できません。
@@ -116,5 +116,5 @@ Azure AD B2C を使用してユーザーをアプリにサインインできる�
 * [Web API を登録する方法](add-web-api-application.md)を参照してください。
 * [ネイティブ クライアント アプリケーションを登録する方法](add-native-application.md)を参照してください。
 * [Microsoft Graph アプリケーションを登録して Azure AD B2C リソースを管理する方法](microsoft-graph-get-started.md)を参照してください。
-* [Azure AD B2C を SAML サービス プロバイダーとして使用する方法](identity-provider-adfs2016-custom.md)を参照してください。
+* [Azure AD B2C を SAML サービス プロバイダーとして使用する方法](identity-provider-adfs.md)を参照してください。
 * [アプリケーションの種類](application-types.md)を参照してください。

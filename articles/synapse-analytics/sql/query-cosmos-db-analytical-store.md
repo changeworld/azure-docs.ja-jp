@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 129534727248ff05b5d38da60dead7903d9a5815
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 22103ad580fa474f44eaf42c696d19bbbd137c8e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744467"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095102"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Azure Synapse Link プレビューでサーバーレス SQL プールを使用して Azure Cosmos DB データのクエリを実行する
 
@@ -222,7 +222,7 @@ FROM OPENROWSET(
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 
-パフォーマンスに影響する可能性があるため、明示的に定義されたスキーマなしで `OPENROWSET` を使用しないでください。 列のサイズは可能な限り小さくしてください (たとえば、既定の VARCHAR(8000) ではなく VARCHAR(100))。 [UTF-8 の変換に関する問題](/troubleshoot/reading-utf8-text)を回避するために、何らかの UTF-8 照合順序を既定のデータベース照合順序として使用するか、明示的な列の照合順序として設定する必要があります。 照合順序 `Latin1_General_100_BIN2_UTF8` は、文字列型の列を使用してデータをフィルター処理する場合に最も高いパフォーマンスを提供します。
+パフォーマンスに影響する可能性があるため、明示的に定義されたスキーマなしで `OPENROWSET` を使用しないでください。 列のサイズは可能な限り小さくしてください (たとえば、既定の VARCHAR(8000) ではなく VARCHAR(100))。 [UTF-8 の変換に関する問題](/azure/synapse-analytics/troubleshoot/reading-utf8-text)を回避するために、何らかの UTF-8 照合順序を既定のデータベース照合順序として使用するか、明示的な列の照合順序として設定する必要があります。 照合順序 `Latin1_General_100_BIN2_UTF8` は、文字列型の列を使用してデータをフィルター処理する場合に最も高いパフォーマンスを提供します。
 
 ## <a name="query-nested-objects-and-arrays"></a>入れ子になったオブジェクトと配列のクエリ
 

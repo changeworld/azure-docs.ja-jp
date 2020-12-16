@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: b65553edf61d8e646e7238a5385656fe75a3156f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, contperf-fy21q1
+ms.openlocfilehash: a1a0b89dee5a6d57e6f317c5f6c8b61ffeda3c33
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311379"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029075"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Azure Machine Learning でモデルのハイパーパラメーターを調整する
 
@@ -172,7 +172,7 @@ primary_metric_goal=PrimaryMetricGoal.MAXIMIZE
 
 ### <a name="log-metrics-for-hyperparameter-tuning"></a><a name="log-metrics-for-hyperparameter-tuning"></a>ハイパーパラメーターの調整のためのログ メトリック
 
-モデルのトレーニング スクリプトでは、モデルのトレーニング中に主要メトリックをログして、ハイパーパラメーターの調整用に HyperDrive からアクセスできるようにする **必要があります** 。
+モデルのトレーニング スクリプトでは、モデルのトレーニング中に主要メトリックをログして、ハイパーパラメーターの調整用に HyperDrive からアクセスできるようにする **必要があります**。
 
 次のサンプル スニペットで、トレーニング スクリプトの主要メトリックをログします。
 
@@ -339,8 +339,8 @@ hyperdrive_run = experiment.submit(hd_config)
 
 
 ウォーム スタートは、サンプリング方法によって異なる方法で処理されます。
-- **ベイジアン サンプリング** :前の実行で行った試行を、新しいサンプルの選択と主要メトリック改善のための事前知識として利用します。
-- **ランダム サンプリング** または **グリッド サンプリング** :早期終了では、前の実行で得た知識を利用して、パフォーマンスの低い実行を判別します。 
+- **ベイジアン サンプリング**:前の実行で行った試行を、新しいサンプルの選択と主要メトリック改善のための事前知識として利用します。
+- **ランダム サンプリング** または **グリッド サンプリング**:早期終了では、前の実行で得た知識を利用して、パフォーマンスの低い実行を判別します。 
 
 ウォーム スタートを開始する親実行の一覧を指定してください。
 

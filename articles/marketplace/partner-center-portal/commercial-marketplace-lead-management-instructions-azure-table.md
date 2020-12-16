@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 08/25/2020
-ms.openlocfilehash: 70ce1807ea6080e3efc0cf3266a9940c9ddb9cd3
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 71b9c96c1855180106f7dfa9a31f0ee8b06ceb67
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489354"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347865"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure Table ストレージを使用して商用マーケットプレースのリードを管理する
 
@@ -55,7 +55,7 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 
     ![Azure テーブル](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-tables.png)
 
-    [Azure Storage Explorer](https://archive.codeplex.com/?p=azurestorageexplorer) またはその他の任意のツールを使用して、ストレージ テーブル内のデータを表示できます。 Azure テーブル内のデータをエクスポートすることもできます。
+    [Azure Storage Explorer](https://www.storageexplorer.com) またはその他の任意のツールを使用して、ストレージ テーブル内のデータを表示できます。 Azure テーブル内のデータをエクスポートすることもできます。
 
 ## <a name="optional-use-power-automate-to-get-lead-notifications"></a>(省略可能) Power Automate を使用してリード通知を取得する
 
@@ -108,7 +108,7 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 
    **[作成]** を選択すると、 **[エンティティの取得]** ウィンドウが表示されます。 ここで、 **[詳細オプションの表示]** を選択し、次のボックスに情報を指定します。
 
-   * **テーブル** :お使いのテーブルの名前を選択します ( [テーブルの作成](#create-a-table-in-your-storage-account)に関するセクションから)。 次の画像は、この例で `marketplaceleads` テーブルが選択されているときに表示されるプロンプトです。
+   * **テーブル**:お使いのテーブルの名前を選択します ([テーブルの作成](#create-a-table-in-your-storage-account)に関するセクションから)。 次の画像は、この例で `marketplaceleads` テーブルが選択されているときに表示されるプロンプトです。
 
      ![[エンティティの取得] ウィンドウ](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
@@ -128,7 +128,7 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 
 1. 条件の設定を完了するには、次の手順を実行します。
     1. ドロップダウン リストから **[が次の値より大きい]** を選択します。
-    2. 値として「 **0** 」を入力します。
+    2. 値として「**0**」を入力します。
 
         ![[条件] ウィンドウ](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-condition.png)
 
@@ -151,8 +151,8 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 1. [Office 365 Outlook] ウィンドウで、以下のボックスの情報を指定します。
 
     1. **[宛先]** :この通知を受信するすべてのユーザーの電子メール アドレスを入力します。
-    1. **Subject** :電子メールの件名を入力します。 たとえば、「 **新しいリード!** 」と入力します。
-    1. **本文** :各電子メールに含めるテキストを追加し (省略可能)、`body('Get_entities')?['value']` を貼り付けます。
+    1. **Subject**:電子メールの件名を入力します。 たとえば、「**新しいリード!** 」と入力します。
+    1. **本文**:各電子メールに含めるテキストを追加し (省略可能)、`body('Get_entities')?['value']` を貼り付けます。
 
     >[!NOTE]
     >この電子メールの本文に追加の静的または動的データ ポイントを挿入できます。
@@ -193,7 +193,7 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 1. 前の手順に従って作成した Azure ストレージ アカウントの接続文字列を **[ストレージ アカウント接続文字列]** ボックスに貼り付けます。
      ![リード管理、接続の詳細のストレージ アカウント](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
 
-1. **連絡先の電子メール** : 新しいリードを受信したときに、メール通知を受け取る必要がある社内のユーザーにメールを送信します。 セミコロンで区切って複数の電子メールを指定できます。
+1. **連絡先の電子メール**: 新しいリードを受信したときに、メール通知を受け取る必要がある社内のユーザーにメールを送信します。 セミコロンで区切って複数の電子メールを指定できます。
 
 1. **[OK]** を選択します。
 

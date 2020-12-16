@@ -8,13 +8,13 @@ ms.service: api-management
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: apimpm
-ms.custom: contperfq1
-ms.openlocfilehash: 9892c311651df39b882c3aa38596a905d22a42ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: face4beab450e92be76b2bb90e45625e025de6ee
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618779"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027919"
 ---
 # <a name="protect-a-web-api-backend-in-azure-api-management-by-using-oauth-20-authorization-with-azure-ad"></a>Azure AD で OAuth 2.0 認証を使用して、Azure API Management で Web API バックエンドを保護する 
 
@@ -141,13 +141,13 @@ API と Developer Console を表す 2 つのアプリケーションを登録し
    >[!IMPORTANT]
    > **v1** エンドポイント、または **v2** エンドポイントを使用します。 ただし、選択するバージョンによって以下の手順は異なります。 v2 エンドポイントの使用をお勧めします。 
 
-1. **v1** エンドポイントを使用する場合は、**resource** という名前の本文パラメーターを追加します。 このパラメーターの値には、バックエンド アプリの**アプリケーション ID** を使用します。 
+1. **v1** エンドポイントを使用する場合は、**resource** という名前の本文パラメーターを追加します。 このパラメーターの値には、バックエンド アプリの **アプリケーション ID** を使用します。 
 
 1. **v2** エンドポイントを使用する場合は、 **[既定のスコープ]** フィールドでバックエンド アプリ用に作成したスコープを使用します。 また、必ず [アプリケーション マニフェスト](../active-directory/develop/reference-app-manifest.md)で [`accessTokenAcceptedVersion`](../active-directory/develop/reference-app-manifest.md#accesstokenacceptedversion-attribute) プロパティの値を `2` に設定します。
 
 1. 次に、クライアントの資格情報を指定します。 これらはクライアントアプリの資格情報です。
 
-1. **[クライアント ID]** には、クライアントアプリの**アプリケーション ID** を使用します。
+1. **[クライアント ID]** には、クライアントアプリの **アプリケーション ID** を使用します。
 
 1. **[クライアント シークレット]** には、先ほどクライアントアプリ用に作成したキーを使用します。 
 
@@ -176,7 +176,7 @@ OAuth 2.0 承認サーバーを設定したので、Developer Console で Azure 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>開発者ポータルから適切に API を呼び出す
 
 > [!NOTE]
-> このセクションは、開発者ポータルをサポートしていない**従量課金**レベルには適用されません。
+> このセクションは、開発者ポータルをサポートしていない **従量課金** レベルには適用されません。
 
 ご使用の API で OAuth 2.0 ユーザー承認が有効になると、Developer Console は API を呼び出す前にユーザーの代理でアクセス トークンを取得するようになります。
 

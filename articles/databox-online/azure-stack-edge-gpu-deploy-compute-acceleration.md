@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 11/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 0aaad18ba5bf98ca2ad53bd86605dfc6cce3e52c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: cf70b24dae70ad2e64f3443e4c4d959d46fb4ea4
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465584"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095034"
 ---
 # <a name="use-compute-acceleration-on-azure-stack-edge-pro-gpu-for-kubernetes-deployment"></a>Kubernetes のデプロイのために Azure Stack Edge Pro GPU でコンピューティング アクセラレーションを使用する
 
@@ -28,8 +28,8 @@ ms.locfileid: "96465584"
 
 この記事では、次のデバイスで GPU または VPU を使用したコンピューティング アクセラレーションのみについて説明します。
 
-- **Azure Stack Edge Pro GPU** - これらのデバイスには、1 つまたは 2 つの Nvidia T4 Tensor Core GPU を搭載できます。 詳細については、「[NVIDIA T4](https://www.nvidia.com/data-center/tesla-t4/)」を参照してください。
-- **Azure Stack Edge Pro R** - これらのデバイスには、1 つの Nvidia T4 Tensor Core GPU が搭載されています。 詳細については、「[NVIDIA T4](https://www.nvidia.com/data-center/tesla-t4/)」を参照してください。
+- **Azure Stack Edge Pro GPU** - これらのデバイスには、1 つまたは 2 つの Nvidia T4 Tensor Core GPU を搭載できます。 詳細については、「[NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/)」を参照してください。
+- **Azure Stack Edge Pro R** - これらのデバイスには、1 つの Nvidia T4 Tensor Core GPU が搭載されています。 詳細については、「[NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/)」を参照してください。
 - **Azure Stack Edge Mini R** - これらのデバイスには、1 つの Intel Movidius Myriad X VPU が搭載されています。 詳細については、「[Intel Movidius Myriad X VPU](https://www.movidius.com/MyriadX)」を参照してください。
 
 

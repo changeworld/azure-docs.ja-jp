@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq1
-ms.openlocfilehash: 6cb455880852295d7176e813208a93919a2c14bb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperf-fy21q1
+ms.openlocfilehash: ab7a74166e85f2ba9fd73e7323cf9cd200cf32e4
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318261"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031030"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning スタジオでモデルのトレーニングとデプロイのためのコンピューティング先を作成する
 
@@ -141,7 +141,7 @@ Azure Machine Learning では、さまざまなリソースまたは環境でご
 
 ### <a name="attached-compute"></a>アタッチ型コンピューティング
 
-Azure Machine Learning ワークスペースの外部に作成されたコンピューティング先を使用するには、それらをアタッチする必要があります。 コンピューティング ターゲットをアタッチすることで、ワークスペースで利用できるようにします。  **トレーニング** のためのコンピューティング先をアタッチするには、 **アタッチ型コンピューティング** を使用します。  **推論** のための AKS クラスターをアタッチするには、 **推論クラスター** を使用します。
+Azure Machine Learning ワークスペースの外部に作成されたコンピューティング先を使用するには、それらをアタッチする必要があります。 コンピューティング ターゲットをアタッチすることで、ワークスペースで利用できるようにします。  **トレーニング** のためのコンピューティング先をアタッチするには、**アタッチ型コンピューティング** を使用します。  **推論** のための AKS クラスターをアタッチするには、**推論クラスター** を使用します。
 
 [上の手順](#portal-create)を使用して、コンピューティングをアタッチします。  その後、次のようにフォームに入力します。
 

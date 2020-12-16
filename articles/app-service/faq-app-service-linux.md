@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c35647a46cd252ce045d10e8dfefcf78236ba74b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2ab39f090124aaf590798795f446bda5b0fe48a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961722"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008556"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 
@@ -56,7 +56,7 @@ App Service on Linux のリリースでは、機能の追加とプラットフ�
 
 **SDK または Azure Resource Manager テンプレートから Linux App Service プランを作成するにはどうすればよいですか。**
 
-アプリ サービスの**予約済み**フィールドを *true* に設定します。
+アプリ サービスの **予約済み** フィールドを *true* に設定します。
 
 ## <a name="continuous-integration-and-deployment"></a>継続的インテグレーションと継続的配置
 
@@ -94,7 +94,7 @@ Linux Web アプリに対して Git デプロイが失敗する場合は、以�
 
 ```nodejs
 const io = require('socket.io')(server,{
-  perMessageDeflate :false
+  perMessageDeflate :false
 });
 ```
 
@@ -110,7 +110,7 @@ const io = require('socket.io')(server,{
 
 **自分が所有するカスタム コンテナーを使用しています。プラットフォームを SMB 共有の `/home/` ディレクトリにマウントさせたいと考えています。**
 
-`WEBSITES_ENABLE_APP_SERVICE_STORAGE` 設定が**指定されていない**場合や *true* に設定されている場合、`/home/` ディレクトリはスケール インスタンス間で**共有され**、書き込まれたファイルは再起動後も**保持されます**。 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` を明示的に *false* に設定すると、マウントが無効になります。
+`WEBSITES_ENABLE_APP_SERVICE_STORAGE` 設定が **指定されていない** 場合や *true* に設定されている場合、`/home/` ディレクトリはスケール インスタンス間で **共有され**、書き込まれたファイルは再起動後も **保持されます**。 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` を明示的に *false* に設定すると、マウントが無効になります。
 
 **カスタム コンテナーの起動に時間がかかり、起動が終了する前にプラットフォームがコンテナーを再起動します。**
 
@@ -122,7 +122,7 @@ const io = require('socket.io')(server,{
 
 **プライベート レジストリ オプションのイメージ名の形式は何ですか。**
 
-プライベート レジストリ の URL を含む完全なイメージ名を追加します (例: myacr.azurecr.io/dotnet:latest)。 カスタム ポートを使用するイメージ名は、[ポータル経由で入力することはできません](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 `docker-custom-image-name` を設定するには、[`az` コマンドライン ツール](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)を使用します。
+プライベート レジストリ の URL を含む完全なイメージ名を追加します (例: myacr.azurecr.io/dotnet:latest)。 カスタム ポートを使用するイメージ名は、[ポータル経由で入力することはできません](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 `docker-custom-image-name` を設定するには、[`az` コマンドライン ツール](/cli/azure/webapp/config/container#az-webapp-config-container-set)を使用します。
 
 **カスタム コンテナー イメージで複数のポートを公開できますか。**
 
@@ -148,7 +148,7 @@ SCM サイトは別のコンテナーで実行されています。 アプリ �
 
 **複数コンテナーで使用するように、Azure Container Registry (ACR) を構成する方法を教えてください。**
 
-複数コンテナーで ACR を使用するには、**すべてのコンテナー イメージ**を同じ ACR レジストリ サーバーでホストする必要があります。 コンテナーを同じレジストリ サーバーに配置したら、アプリケーション設定を作成し、Docker Compose の構成ファイルに ACR のイメージ名を含めて更新する必要があります。
+複数コンテナーで ACR を使用するには、**すべてのコンテナー イメージ** を同じ ACR レジストリ サーバーでホストする必要があります。 コンテナーを同じレジストリ サーバーに配置したら、アプリケーション設定を作成し、Docker Compose の構成ファイルに ACR のイメージ名を含めて更新する必要があります。
 
 次のアプリケーション設定を作成します。
 

@@ -3,13 +3,13 @@ title: Service Fabric サービス エンドポイントの指定
 description: サービス マニフェストにエンドポイント リソースを記述する方法 (HTTPS エンドポイントの設定方法を含みます)
 ms.topic: conceptual
 ms.date: 09/16/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 5e8f39fe25011d02b989614fdc6538cd92c12d4e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 0ed5a4aa8993f52d42b97288cd143e6114ff36ff
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313568"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033308"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>サービス マニフェストにリソースを指定する
 ## <a name="overview"></a>概要
@@ -25,9 +25,9 @@ https エンドポイントを指定するサービスをアクティブ化す�
 サービスが終了すると、Service Fabric によってエンドポイントのアクセス制御エントリがクリーンアップされ、証明書のバインドが削除されます。 ただし、証明書の秘密キーに適用されるアクセス許可はクリーンアップされません。
 
 > [!WARNING] 
-> 設計上、静的ポートは、ClusterManifest で指定されたアプリケーションのポート範囲と重複しないようにします。 静的ポートを指定する場合は、アプリケーションのポート範囲外に割り当てる必要があります。そうしないと、ポートの競合が発生します。 リリース 6.5CU2 では、このような競合が検出された場合に**正常性に関する警告**が発行されますが、デプロイは配布された 6.5 の動作と同期して続行されます。 ただし、次のメジャー リリースからはアプリケーションをデプロイできなくなる可能性があります。
+> 設計上、静的ポートは、ClusterManifest で指定されたアプリケーションのポート範囲と重複しないようにします。 静的ポートを指定する場合は、アプリケーションのポート範囲外に割り当てる必要があります。そうしないと、ポートの競合が発生します。 リリース 6.5CU2 では、このような競合が検出された場合に **正常性に関する警告** が発行されますが、デプロイは配布された 6.5 の動作と同期して続行されます。 ただし、次のメジャー リリースからはアプリケーションをデプロイできなくなる可能性があります。
 >
-> リリース 7.0 では、アプリケーション ポート範囲の使用率が HostingConfig::ApplicationPortExhaustThresholdPercentage(default 80%) を超えたことを検出した場合に、**正常性警告**を発行します。
+> リリース 7.0 では、アプリケーション ポート範囲の使用率が HostingConfig::ApplicationPortExhaustThresholdPercentage(default 80%) を超えたことを検出した場合に、**正常性警告** を発行します。
 >
 
 ```xml
@@ -161,7 +161,7 @@ Linux クラスターの場合、**MY** ストアは既定で **/var/lib/sfcerts
 HTTPS エンドポイントを使用する完全なアプリケーションの例については、「[Kestrel を使用して ASP.NET Core Web API フロントエンド サービスに HTTPS エンドポイントを追加する](./service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest)」をご覧ください。
 
 ## <a name="port-acling-for-http-endpoints"></a>HTTP エンドポイントのポート ACL 処理
-Service Fabric では、既定で選択された HTTP エンドポイントが自動で ACL 処理されます。 エンドポイントに [SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) が関連付けられておらず、Service Fabric が管理者特権を持つアカウントを使用して実行するように構成されている場合は、自動で ACL 処理が実行されることは**ありません**。
+Service Fabric では、既定で選択された HTTP エンドポイントが自動で ACL 処理されます。 エンドポイントに [SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) が関連付けられておらず、Service Fabric が管理者特権を持つアカウントを使用して実行するように構成されている場合は、自動で ACL 処理が実行されることは **ありません**。
 
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>ServiceManifest.xml のエンドポイントのオーバーライド
 

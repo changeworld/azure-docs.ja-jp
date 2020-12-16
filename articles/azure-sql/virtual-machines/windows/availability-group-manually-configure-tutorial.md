@@ -8,18 +8,19 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 81a5b5d8b9cb56b41d051de52f1496e30fb4900f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: feab48f32396bcc89621433930c9a9f4689d8286
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790068"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355445"
 ---
 # <a name="tutorial-manually-configure-an-availability-group-sql-server-on-azure-vms"></a>チュートリアル:可用性グループを手動で構成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +30,7 @@ ms.locfileid: "92790068"
 この記事では可用性グループ環境を手動で構成しますが、[Azure portal](availability-group-azure-portal-configure.md)、[PowerShell や Azure CLI](availability-group-az-commandline-configure.md)、または [Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用して構成することもできます。 
 
 
-**推定所要時間** : [前提条件](availability-group-manually-configure-prerequisites-tutorial.md)が満たされてから完了までに約 30 分かかります。
+**推定所要時間**: [前提条件](availability-group-manually-configure-prerequisites-tutorial.md)が満たされてから完了までに約 30 分かかります。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -46,7 +47,7 @@ ms.locfileid: "92790068"
 |:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Windows Server** | クラスター監視用のファイル共有 |  
 |:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **SQL Server サービス アカウント** | ドメイン アカウント |
 |:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **SQL Server エージェント サービス アカウント** | ドメイン アカウント |  
-|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **ファイアウォール ポートを開く** | - SQL Server: **1433** (既定インスタンス用) <br/> - データベース ミラーリング エンドポイント: **5022** または使用可能な任意のポート <br/> - 可用性グループ ロードバランサーの IP アドレスの正常性プローブ: **59999** または使用可能な任意のポート <br/> - クラスター コア ロードバランサーの IP アドレスの正常性プローブ: **58888** または使用可能な任意のポート |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **ファイアウォール ポートを開く** | - SQL Server:**1433** (既定インスタンス用) <br/> - データベース ミラーリング エンドポイント:**5022** または使用可能な任意のポート <br/> - 可用性グループ ロードバランサーの IP アドレスの正常性プローブ:**59999** または使用可能な任意のポート <br/> - クラスター コア ロードバランサーの IP アドレスの正常性プローブ:**58888** または使用可能な任意のポート |
 |:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **フェールオーバー クラスタリング機能を追加する** | 両方の SQL Server インスタンスにこの機能が必要です |
 |:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **インストール ドメイン アカウント** | - 各 SQL Server 上のローカル管理者 <br/> - SQL Server の各インスタンスの SQL Server sysadmin 固定サーバー ロールのメンバー  |
 
@@ -65,7 +66,7 @@ ms.locfileid: "92790068"
 1. リモート デスクトップ プロトコル (RDP) を使用して、最初の SQL Server に接続します。 SQL Server と監視サーバー両方の管理者であるドメイン アカウントを使用します。
 
    >[!TIP]
-   >[前提条件のドキュメント](availability-group-manually-configure-prerequisites-tutorial.md)に従っている場合、 **CORP\Install** という名前のアカウントを作成しているはずです。 このアカウントを使います。
+   >[前提条件のドキュメント](availability-group-manually-configure-prerequisites-tutorial.md)に従っている場合、**CORP\Install** という名前のアカウントを作成しているはずです。 このアカウントを使います。
 
 2. **[サーバー マネージャー]** ダッシュボードで、 **[ツール]** を選択し、 **[フェールオーバー クラスター マネージャー]** を選択します。
 3. 左側のペインで、 **[フェールオーバー クラスター マネージャー]** を右クリックし、 **[クラスターの作成]** を選択します。
@@ -79,13 +80,13 @@ ms.locfileid: "92790068"
    | はじめに |既定値を使用 |
    | サーバーの選択 |1 番目の SQL Server の名前を **[サーバー名を入力してください]** に入力し、 **[追加]** を選択します。 |
    | 検証の警告 |**[いいえ、このクラスターに Microsoft のサポートは必要ありませんので、検証テストを実行しません。[次へ] を選択して、クラスターの作成を続行します。]** を選択します。 |
-   | クラスター管理用のアクセス ポイント |**[クラスター名]** にクラスター名を入力します (例: **SQLAGCluster1** )。|
+   | クラスター管理用のアクセス ポイント |**[クラスター名]** にクラスター名を入力します (例: **SQLAGCluster1**)。|
    | 確認 |記憶域スペースを使用している場合を除き、既定値を使用します。 この表の次の注を参照してください。 |
 
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>Windows Server フェールオーバー クラスターの IP アドレスを設定する
 
   > [!NOTE]
-  > Windows Server 2019 では、クラスターは **クラスターネットワーク名** ではなく、 **分散サーバー名** を作成します。 Windows Server 2019 を使用している場合は、このチュートリアルでクラスターのコア名を参照するすべての手順をスキップしてください。 クラスター ネットワーク名は、[PowerShell](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-failover-cluster) を使用して作成できます。 詳細については、「[フェールオーバー クラスター:クラスタ ネットワーク オブジェクト](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)」のブログを参照してください。 
+  > Windows Server 2019 では、クラスターは **クラスターネットワーク名** ではなく、**分散サーバー名** を作成します。 Windows Server 2019 を使用している場合は、このチュートリアルでクラスターのコア名を参照するすべての手順をスキップしてください。 クラスター ネットワーク名は、[PowerShell](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-failover-cluster) を使用して作成できます。 詳細については、「[フェールオーバー クラスター:クラスタ ネットワーク オブジェクト](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)」のブログを参照してください。 
 
 1. **フェールオーバー クラスター マネージャー** で、 **[クラスター コア リソース]** まで下にスクロールして、クラスターの詳細を展開します。 **[名前]** と **[IP アドレス]** リソースの両方が **[失敗]** 状態で表示されます。 クラスターにコンピューター自体と同じ IP アドレスが割り当てられていて、アドレスが重複するため、IP アドレス リソースをオンラインにすることができません。
 
@@ -189,7 +190,7 @@ ms.locfileid: "92790068"
 
 ## <a name="enable-availability-groups"></a>可用性グループを有効にする
 
-次に、 **AlwaysOn 可用性グループ** 機能を有効にします。 以下の手順は、両方の SQL Server に対して実行してください。
+次に、**AlwaysOn 可用性グループ** 機能を有効にします。 以下の手順は、両方の SQL Server に対して実行してください。
 
 1. **スタート** 画面から **SQL Server 構成マネージャー** を起動します。
 2. ブラウザー ツリーで、 **[SQL Server のサービス]** を選択し、 **[SQL Server (MSSQLSERVER)]** サービスを右クリックして、 **[プロパティ]** を選択します。
@@ -230,7 +231,7 @@ Repeat these steps on the second SQL Server.
 1. sysadmin 固定サーバー ロールのメンバーであるドメイン アカウントを使って、1 番目の SQL Server に対する RDP ファイルを起動します。
 1. SQL Server Management Studio を開き、1 番目の SQL Server に接続します。
 7. **オブジェクト エクスプローラー** で、 **[データベース]** を右クリックし、 **[新しいデータベース]** を選択します。
-8. **[データベース名]** に「 **MyDB1** 」と入力し、 **[OK]** を選択します。
+8. **[データベース名]** に「**MyDB1**」と入力し、 **[OK]** を選択します。
 
 ### <a name="create-a-backup-share"></a><a name="backupshare"></a>バックアップ共有を作成する
 
@@ -275,7 +276,7 @@ Repeat these steps on the second SQL Server.
 * 1 番目の SQL Server でデータベースを作成する
 * データベースの完全バックアップとトランザクション ログ バックアップの両方を作成します。
 * **NORECOVERY** オプションを使って、完全バックアップとログ バックアップを 2 番目の SQL Server に復元する。
-* 同期コミット、自動フェールオーバー、読み取り可能なセカンダリのレプリカを含む可用性グループ ( **AG1** ) を作成します。
+* 同期コミット、自動フェールオーバー、読み取り可能なセカンダリのレプリカを含む可用性グループ (**AG1**) を作成します。
 
 ### <a name="create-the-availability-group"></a>可用性グループを作成する
 
@@ -283,7 +284,7 @@ Repeat these steps on the second SQL Server.
 
     ![新しい可用性グループ ウィザードを起動する](./media/availability-group-manually-configure-tutorial/56-newagwiz.png)
 
-2. **[説明]** ページで **[次へ]** を選択します。 **[可用性グループ名の指定]** ページで、 **[可用性グループ名]** に可用性グループの名前を入力します。 たとえば、「 **AG1** 」のように入力します。 **[次へ]** を選択します。
+2. **[説明]** ページで **[次へ]** を選択します。 **[可用性グループ名の指定]** ページで、 **[可用性グループ名]** に可用性グループの名前を入力します。 たとえば、「**AG1**」のように入力します。 **[次へ]** を選択します。
 
     ![新しい可用性グループ ウィザード、可用性グループ名の指定](./media/availability-group-manually-configure-tutorial/58-newagname.png)
 
@@ -324,7 +325,7 @@ Repeat these steps on the second SQL Server.
     >[!NOTE]
     >可用性グループ リスナーを構成していないため、リスナー構成に関する警告が表示されます。 Azure Virtual Machines で Azure Load Balancer を作成した後にリスナーを作成するので、この警告は無視してかまいません。
 
-10. **[概要]** ページで、 **[完了]** を選択し、新しい可用性グループが構成されるまで待ちます。 **[進行状況]** ページで **[詳細]** を選択すると、進行状況が詳しく表示されます。 ウィザードが終了した後、 **[結果]** ページを調べ、可用性グループが正常に作成されたことを確認します。
+10. **[概要]** ページで、 **[完了]** を選択し、新しい可用性グループが構成されるまで待ちます。 **[進行状況]** ページで **[詳細]** を選択すると、進行状況が詳しく表示されます。 ウィザードが終了した後、**[結果]** ページを調べ、可用性グループが正常に作成されたことを確認します。
 
      ![新しい可用性グループ ウィザード、結果](./media/availability-group-manually-configure-tutorial/74-results.png)
 
@@ -363,7 +364,7 @@ Azure Virtual Machines では、SQL Server 可用性グループにはロード 
 Azure のロード バランサーは、Standard Load Balancer または Basic Load Balancer のいずれかです。 Standard Load Balancer には、Basic Load Balancer よりも多くの機能があります。 可用性グループで、(可用性セットではなく) 可用性ゾーンを使用する場合は、Standard Load Balancer が必要です。 ロード バランサーの SKU の違いについては、「[Load Balancer の SKU の比較](../../../load-balancer/skus.md)」を参照してください。
 
 1. Azure portal で、対象の SQL Server が存在するリソース グループに移動し、 **[+ 追加]** を選択します。
-1. 「 **ロード バランサー** 」を検索します。 Microsoft が公開しているロード バランサーを選びます。
+1. 「**ロード バランサー**」を検索します。 Microsoft が公開しているロード バランサーを選びます。
 
    ![Microsoft が公開しているロード バランサーを選択する](./media/availability-group-manually-configure-tutorial/82-azureloadbalancer.png)
 
@@ -372,7 +373,7 @@ Azure のロード バランサーは、Standard Load Balancer または Basic L
 
    | 設定 | フィールド |
    | --- | --- |
-   | **名前** |ロード バランサーのテキスト名を使います (例: **sqlLB** )。 |
+   | **名前** |ロード バランサーのテキスト名を使います (例: **sqlLB**)。 |
    | **Type** |内部 |
    | **Virtual Network** |Azure 仮想ネットワークの名前を使います。 |
    | **サブネット** |仮想マシンが存在するサブネットの名前を使います。  |

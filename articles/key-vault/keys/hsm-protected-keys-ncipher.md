@@ -10,18 +10,18 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: f5d58f89aa87a39d12b2d6f6a3a91254a653a088
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8a1f3b5e80152fb0fb9458aef0d3524dd2d6f5eb
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784662"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092331"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>Key Vault の HSM で保護されたキー (nCipher) をインポートする
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Key Vault の使用時にさらに安心感を高める場合、ハードウェア セキュリティ モジュール (HSM) でキーをインポートしたり、生成したりできます。キーは HSM の境界内から出ることはありません。 このシナリオは、多くの場合、 *Bring Your Own Key* または BYOK と呼ばれています。 Azure Key Vault では、HSM の nCipher nShield ファミリ (FIPS 140-2 レベル 2 で検証済み) を使用してキーが保護されます。
+Azure Key Vault の使用時にさらに安心感を高める場合、ハードウェア セキュリティ モジュール (HSM) でキーをインポートしたり、生成したりできます。キーは HSM の境界内から出ることはありません。 このシナリオは、多くの場合、*Bring Your Own Key* または BYOK と呼ばれています。 Azure Key Vault では、HSM の nCipher nShield ファミリ (FIPS 140-2 レベル 2 で検証済み) を使用してキーが保護されます。
 
 > [!NOTE]
 > このドキュメントで説明されている HSM キーのインポート方法は、HSM の nCipher nShield ファミリでのみ機能します。 他の HSM から HSM キーをインポートする場合は、[こちらを参照](hsm-protected-keys-byok.md)してください。
@@ -61,7 +61,7 @@ Azure Key Vault の Bring Your Own Key (BYOK) の前提条件の一覧につい�
 | --- | --- |
 | Azure のサブスクリプション |Azure Key Vault を作成するには、Azure サブスクリプションが必要です: [無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/) |
 | HSM で保護されたキーをサポートする Azure Key Vault Premium サービス レベル |Azure Key Vault のサービス層と機能に関する詳細については、 [Azure Key Vault 価格](https://azure.microsoft.com/pricing/details/key-vault/) Web サイトを参照してください。 |
-| nCipher nShield HSM、スマート カード、サポート ソフトウェア |nCipher ハードウェア セキュリティ モジュールにアクセスできることと nCipher nShield HSM の基本操作知識が必要です。 互換性のあるモデルの一覧については、あるいは所有していない場合に HSM を購入する方法については、[nCipher nShield ハードウェア セキュリティ モジュール](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy)に関するページを参照してください。 |
+| nCipher nShield HSM、スマート カード、サポート ソフトウェア |nCipher ハードウェア セキュリティ モジュールにアクセスできることと nCipher nShield HSM の基本操作知識が必要です。 互換性のあるモデルの一覧については、あるいは所有していない場合に HSM を購入する方法については、[nCipher nShield ハードウェア セキュリティ モジュール](https://go.ncipher.com/rs/104-QOX-775/images/nCipher_nShield_Family_Brochure.pdf?_ga=2.106120835.1607422418.1590478092-577009923.1587131206)に関するページを参照してください。 |
 | 次のハードウェアとソフトウェア:<ol><li>Windows 7 以降のオペレーティング システムと、バージョン 11.50 以降の nCipher nShield ソフトウェアを搭載したオフラインの x64 ワークステーション。<br/><br/>ワークステーションで Windows 7 を実行する場合は、まず [Microsoft .NET Framework 4.5 をインストール](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)する必要があります。</li><li>インターネットに接続している、Windows 7 以降および [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) **1.1.0 以降** の Windows オペレーティング システムがインストールされたワークステーション。</li><li>USB ドライブまたは 16 MB 以上の空き領域を持つその他のポータブル ストレージ デバイス。</li></ol> |セキュリティ上の理由から、最初のワークステーションをネットワークに接続しないことをお勧めします。 ただし、プログラムを使用して強制的に接続が切断されることはありません。<br/><br/>次の手順では、このワークステーションを "未接続ワークステーション" と呼んでいます。</p></blockquote><br/>さらに、テナント キーが実稼動ネットワークにある場合は、別の 2 台目のワークステーションを使用してツールセットをダウンロードし、テナント キーをアップロードすることを勧めします。 ただし、テスト目的で1 台目のワークステーションとして同じワークステーションを使用できます。<br/><br/>次の手順では、この 2 台目のワークステーションを "インターネット接続ワークステーション" と呼んでいます。</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>キーを生成し、Azure Key Vault HSM に転送する
@@ -239,11 +239,11 @@ KeyVault-BYOK-Tools-Switzerland.zip
 
 ツールセットの内容は次のとおりです。
 
-* Key Exchange Key (KEK) パッケージ。この名前は「 **BYOK-KEK-pkg-** 」から始まります。
-* セキュリティ ワールド パッケージ。この名前は「 **BYOK-SecurityWorld-pkg-** 」から始まります。
+* Key Exchange Key (KEK) パッケージ。この名前は「**BYOK-KEK-pkg-** 」から始まります。
+* セキュリティ ワールド パッケージ。この名前は「**BYOK-SecurityWorld-pkg-** 」から始まります。
 * **verifykeypackage.py** という名前の Python スクリプト。
 * 「 **KeyTransferRemote.exe** 」という名前のコマンドライン実行可能ファイルと関連 DLL。
-* 「 **vcredist_x64.exe** 」という名前の Visual C++ 再配布可能パッケージ。
+* 「**vcredist_x64.exe**」という名前の Visual C++ 再配布可能パッケージ。
 
 USB ドライブまたはその他のポータブル ストレージにパッケージをコピーします。
 
@@ -255,7 +255,7 @@ USB ドライブまたはその他のポータブル ストレージにパッケ
 
 Windows コンピューターに nCipher サポート ソフトウェアをインストールし、そのコンピューターに nCipher nShield HSM をアタッチします。
 
-nCipher ツールがパスにあることを確認します ( **%nfast_home%\bin** )。 たとえば、次を入力します。
+nCipher ツールがパスにあることを確認します ( **%nfast_home%\bin**)。 たとえば、次を入力します。
 
   ```cmd
   set PATH=%PATH%;"%nfast_home%\bin"
@@ -416,7 +416,7 @@ nCipher nShield Edge を使用している場合、モードを変更するに�
      >
 2. 次の表示を確認します。これは検証の成功を示します: **Result: SUCCESS**
 
-このスクリプトは nShield ルート キーまで署名者のチェーンを検証します。 このルート キーのハッシュがスクリプトに埋め込まれており、その値は **59178a47 de508c3f 291277ee 184f46c4 f1d9c639** になります。 [nCipher Web サイト](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation)にアクセスすると、この値を個別に確認することもできます。
+このスクリプトは nShield ルート キーまで署名者のチェーンを検証します。 このルート キーのハッシュがスクリプトに埋め込まれており、その値は **59178a47 de508c3f 291277ee 184f46c4 f1d9c639** になります。 [nCipher Web サイト](https://www.ncipher.com)にアクセスすると、この値を個別に確認することもできます。
 
 これで新しいキーを作成する準備が整いました。
 
@@ -434,9 +434,9 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
 
 * *protect* パラメーターの値は、コマンドに示したように **module** に設定する必要があります。 module に設定すると、モジュールで保護されたキーが作成されます。 BYOK ツールセットは、OCS で保護されたキーをサポートしていません。
 * **ident** と **plainname** の *contosokey* の値を文字列値に置換します。 管理費を最小限に抑え、エラーを犯す可能性を減らすために、両方に同じ値を使用することをお勧めします。 **Ident** 値には数字、ダッシュ、小文字のみを使用できます。
-* pubexp はこの例では空白のまま (既定) ですが、特定の値を指定できます。 詳細については、[nCipher のドキュメント](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)を参照してください。
+* pubexp はこの例では空白のまま (既定) ですが、特定の値を指定できます。 詳細については、[nCipher のドキュメント](https://www.entrust.com/-/media/documentation/brochures/entrust-nshield-general-purpose-hsms-br-a4.pdf)を参照してください。
 
-このコマンドにより %NFAST_KMDATA%\local フォルダーにトークン化されたキーのファイルが作成されます。この名前は " **key_simple_** " で始まり、コマンドで指定した **ident** が続きます。 (例: **key_simple_contosokey** )。 このファイルには暗号化されたキーが含まれます。
+このコマンドにより %NFAST_KMDATA%\local フォルダーにトークン化されたキーのファイルが作成されます。この名前は "**key_simple_** " で始まり、コマンドで指定した **ident** が続きます。 (例: **key_simple_contosokey**)。 このファイルには暗号化されたキーが含まれます。
 
 安全な場所でこのトークン化されたキーのファイルをバックアップします。
 
@@ -546,11 +546,11 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SUI-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SUI-1
    ```
 
-このコマンドを実行するとき、 *contosokey* を、「 **手順 3.5: 新しいキーを作成する** 」(「 [キーを生成する](#step-3-generate-your-key)」) でキーの生成に使用した ID で置き換えます。
+このコマンドを実行するとき、*contosokey* を、「**手順 3.5: 新しいキーを作成する**」(「[キーを生成する](#step-3-generate-your-key)」) でキーの生成に使用した ID で置き換えます。
 
 セキュリティ ワールドの管理者カードを差し込むように求められます。
 
-コマンドが完了すると、 **Result: SUCCESS** と表示され、アクセス権が制限されたキーのコピーが "key_xferacId_\<contosokey>" という名前のファイルに表示されます。
+コマンドが完了すると、**Result: SUCCESS** と表示され、アクセス権が制限されたキーのコピーが "key_xferacId_\<contosokey>" という名前のファイルに表示されます。
 
 nCipher nShield ユーティリティを使用すると、次のコマンドで ACL を確認できます。
 
@@ -564,7 +564,7 @@ nCipher nShield ユーティリティを使用すると、次のコマンドで 
    ```cmd
    "%nfast_home%\bin\kmfile-dump.exe" "%NFAST_KMDATA%\local\key_xferacld_contosokey"
    ```
-  これらのコマンドを実行するとき、contosokey を、「 **手順 3.5: 新しいキーを作成する** 」(「 [キーを生成する](#step-3-generate-your-key)」) で指定した値に置き換えます。
+  これらのコマンドを実行するとき、contosokey を、「**手順 3.5: 新しいキーを作成する**」(「[キーを生成する](#step-3-generate-your-key)」) で指定した値に置き換えます。
 
 ### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>手順 4.2: Microsoft の Key Exchange Key を使用してキーを暗号化する
 
@@ -664,11 +664,11 @@ nCipher nShield ユーティリティを使用すると、次のコマンドで 
 
 このコマンドを実行するとき、次の指示に従います。
 
-* *contosokey* を、「 **手順 3.5: 新しいキーを作成する** 」(「 [キーを生成する](#step-3-generate-your-key)」) でキーの生成に使用した ID で置き換えます。
-* *SubscriptionID* を Key Vault が含まれる Azure サブスクリプションの ID で置換します。 この値は先に、「 **手順 1.2: Azure サブスクリプション ID を取得する** 」(「 [インターネット接続ワークステーションを準備する](#step-1-prepare-your-internet-connected-workstation)」の手順) で取得しました。
+* *contosokey* を、「**手順 3.5: 新しいキーを作成する**」(「[キーを生成する](#step-3-generate-your-key)」) でキーの生成に使用した ID で置き換えます。
+* *SubscriptionID* を Key Vault が含まれる Azure サブスクリプションの ID で置換します。 この値は先に、「**手順 1.2: Azure サブスクリプション ID を取得する**」(「[インターネット接続ワークステーションを準備する](#step-1-prepare-your-internet-connected-workstation)」の手順) で取得しました。
 * *ContosoFirstHSMKey* を出力ファイル名に使用するラベルで置換します。
 
-完了すると、 **Result: SUCCESS** と表示され、KeyTransferPackage- *ContosoFirstHSMkey* .byok という名前の新しいファイルが現在のフォルダーに表示されます。
+完了すると、**Result: SUCCESS** と表示され、KeyTransferPackage-*ContosoFirstHSMkey*.byok という名前の新しいファイルが現在のフォルダーに表示されます。
 
 ### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>手順 4.3: キー転送パッケージをインターネット接続ワークステーションにコピーする
 

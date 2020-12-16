@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: dd1836220b5fd5a0af2d4ece3d9bc3932f1ae554
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 51430a37f34600d3191a646df7c1890b6d94f481
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748863"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033019"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes Service (AKS) のアップタイム SLA
 
@@ -27,11 +27,7 @@ ms.locfileid: "92748863"
 
 アップタイム SLA は、[AKS がサポートされている](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)パブリック リージョンおよび Azure Government リージョンで利用できます。
 
-* Azure China 21Vianet は現在サポートされていません。
-
 ## <a name="limitations"></a>制限事項
-
-* プライベート クラスターは現時点ではサポートされていません。
 
 ## <a name="sla-terms-and-conditions"></a>SLA の使用条件
 
@@ -39,7 +35,7 @@ ms.locfileid: "92748863"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) バージョン 2.8.0 以降をインストールします
+* [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.8.0 以降をインストールします
 
 ## <a name="creating-a-new-cluster-with-uptime-sla"></a>アップタイム SLA を使用した新しいクラスターの作成
 
@@ -48,13 +44,13 @@ ms.locfileid: "92748863"
 
 アップタイム SLA を使用して新しいクラスターを作成するには、Azure CLI を使用します。
 
-次の例では、 *myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 # Create a resource group
 az group create --name myResourceGroup --location eastus
 ```
-AKS クラスターを作成するには、[`az aks create`][az-aks-create] コマンドを使用します。 次の例では、 *myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 この操作は、完了するまでに数分かかります。
+AKS クラスターを作成するには、[`az aks create`][az-aks-create] コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 この操作は、完了するまでに数分かかります。
 
 ```azurecli-interactive
 # Create an AKS cluster with uptime SLA
@@ -136,9 +132,9 @@ az group delete --name myResourceGroup --yes --no-wait
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [faq]: ./faq.md
 [availability-zones]: ./availability-zones.md
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[az-aks-create]: /cli/azure/aks?#az-aks-create
 [limit-egress-traffic]: ./limit-egress-traffic.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool?#az-aks-nodepool-update
 [az-group-delete]: /cli/azure/group#az-group-delete

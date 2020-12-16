@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fd2f7d46df09085d19b19709c7f45cd3d6566988
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 018d90db06948f3fd6a34b56c65088641a9ca874
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628662"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108979"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -24,7 +24,7 @@ ms.locfileid: "92628662"
 
 [セルフアサート技術プロファイル](self-asserted-technical-profile.md)の外観をカスタマイズすることができます。 Azure Active Directory B2C (Azure AD B2C) は、ユーザーのブラウザーでコードを実行し、クロス オリジン リソース共有 (CORS) と呼ばれる最新の手法を使用します。
 
-ユーザー インターフェイスをカスタマイズするには、 **ContentDefinition** 要素でカスタマイズされた HTMLコンテンツを含む URL を指定します。 セルフアサート技術プロファイルまたは **OrchestrationStep** で、そのコンテンツ定義識別子をポイントします。 コンテンツ定義には、ロードするローカライズされたリソースの一覧を指定する、 **LocalizedResourcesReference**  要素を含めることができます。 Azure AD B2C により、ユーザー インターフェイス要素が URL から読み込まれた HTML コンテンツとマージされ、ユーザーにページが表示されます。
+ユーザー インターフェイスをカスタマイズするには、**ContentDefinition** 要素でカスタマイズされた HTMLコンテンツを含む URL を指定します。 セルフアサート技術プロファイルまたは **OrchestrationStep** で、そのコンテンツ定義識別子をポイントします。 コンテンツ定義には、ロードするローカライズされたリソースの一覧を指定する、**LocalizedResourcesReference**  要素を含めることができます。 Azure AD B2C により、ユーザー インターフェイス要素が URL から読み込まれた HTML コンテンツとマージされ、ユーザーにページが表示されます。
 
 **ContentDefinitions** 要素には、ユーザー体験で使用できる HTML5 テンプレートへの URL が含まれています。 HTML5 ページの URI は、指定されたユーザー インターフェイス ステップで使用されます。 たとえば、サインインまたはサインアップ、パスワード リセット、またはエラー ページなどです。 HTML5 ファイルの LoadUri をオーバーライドすることで、外観を変更できます。 必要に応じて新しいコンテンツ定義を作成できます。 この要素には、[Localization](localization.md) 要素で指定されたローカライズ識別子への、ローカライズされたリソース参照を含めることができます。
 
@@ -90,7 +90,7 @@ ms.locfileid: "92628662"
 
 ### <a name="select-a-page-layout"></a>ページ レイアウトを選択する
 
-[JavaScript クライアント側コード](javascript-samples.md)を有効にするには、`elements` とページの種類の間に `contract` を挿入します。 たとえば、「 `urn:com:microsoft:aad:b2c:elements:contract:page-name:version` 」のように入力します。
+[JavaScript クライアント側コード](javascript-and-page-layout.md)を有効にするには、`elements` とページの種類の間に `contract` を挿入します。 たとえば、「 `urn:com:microsoft:aad:b2c:elements:contract:page-name:version` 」のように入力します。
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -111,7 +111,7 @@ ms.locfileid: "92628662"
 
 #### <a name="migrating-to-page-layout"></a>ページ レイアウトへの移行
 
-値の形式には、次のように `contract` という語が含まれている必要があります: _urn:com:microsoft:aad:b2c:elements: **contract** :page-name:version_ 。 古い **DataUri** 値を使用するカスタム ポリシーでページ レイアウトを指定するには、次の表を使用して新しい形式に移行してください。
+値の形式には、次のように `contract` という語が含まれている必要があります: _urn:com:microsoft:aad:b2c:elements:**contract**:page-name:version_。 古い **DataUri** 値を使用するカスタム ポリシーでページ レイアウトを指定するには、次の表を使用して新しい形式に移行してください。
 
 | 古い DataUri 値 | 新しい DataUri 値 |
 | ----------------- | ----------------- |
@@ -238,4 +238,4 @@ ms.locfileid: "92628662"
 
 コンテンツ定義を使用してユーザー インターフェイスをカスタマイズする例については、次を参照してください。
 
-[カスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする](custom-policy-ui-customization.md)
+[カスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする](customize-ui-with-html.md)
