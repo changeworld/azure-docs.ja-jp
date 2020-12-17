@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: cb3417cf765cd703d72d4a2db7a649400ab2d4de
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d74057e32b6f16bdb6dae3d96ac46c5cc93571aa
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896771"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609107"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>チュートリアル:Azure Active Directory と Zscaler Internet Access Administrator の統合
 
@@ -44,7 +44,7 @@ Zscaler Internet Access Administrator と Azure AD の統合を構成するに�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Zscaler Internet Access Administrator では、 **IDP** によって開始される SSO がサポートされます。
+* Zscaler Internet Access Administrator では、**IDP** によって開始される SSO がサポートされます。
 
 ## <a name="adding-zscaler-internet-access-administrator-from-the-gallery"></a>ギャラリーからの Zscaler Internet Access Administrator の追加
 
@@ -64,13 +64,13 @@ Azure AD への Zscaler Internet Access Administrator の統合を構成する�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Zscaler Internet Access Administrator** 」と入力し、結果パネルから **[Zscaler Internet Access Administrator]** を選択してから **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Zscaler Internet Access Administrator**」と入力し、結果パネルから **[Zscaler Internet Access Administrator]** を選択してから **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果一覧の Zscaler Internet Access Administrator](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、" **Britta Simon** " というテスト ユーザーに基づいて、Zscaler Internet Access Administrator で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、"**Britta Simon**" というテスト ユーザーに基づいて、Zscaler Internet Access Administrator で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Zscaler Internet Access Administrator の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 Zscaler Internet Access Administrator で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -134,7 +134,7 @@ Zscaler Internet Access Administrator で Azure AD シングル サインオン�
 
     | 名前  | ソース属性  |
     | ---------| ------------ |
-    | Role     | user.assignedroles |
+    | Role | user.assignedroles |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
@@ -203,9 +203,9 @@ Zscaler Internet Access Administrator で Azure AD シングル サインオン�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -220,7 +220,7 @@ Zscaler Internet Access Administrator で Azure AD シングル サインオン�
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、「 **Zscaler Private Access Administrator** 」を入力して選択します。
+2. アプリケーションの一覧で、「**Zscaler Private Access Administrator**」を入力して選択します。
 
     ![アプリケーションの一覧の Zscaler Internet Access Administrator リンク](common/all-applications.png)
 

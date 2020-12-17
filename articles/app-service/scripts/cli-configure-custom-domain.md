@@ -7,12 +7,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.custom: mvc, seodec18
-ms.openlocfilehash: bbae57f453cfd425da3d294ff96e40a229aa1a49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7fa6955de306906de3be75bf465a955e4463ca2
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962725"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006516"
 ---
 # <a name="map-a-custom-domain-to-an-app-service-app-using-cli"></a>CLI を使用してカスタム ドメインを App Service アプリにマップする
 
@@ -36,10 +36,10 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 | command | Notes |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service プランを作成します。 |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | App Service アプリを作成します。 |
-| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | カスタム ドメインを App Service アプリにマップします。 |
+| [`az group create`](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | App Service プランを作成します。 |
+| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | App Service アプリを作成します。 |
+| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname#az-webapp-config-hostname-add) | カスタム ドメインを App Service アプリにマップします。 |
 
 ## <a name="next-steps"></a>次のステップ
 

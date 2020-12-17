@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 09/02/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 9282eaa98675abf1d2006b182739297bfb478bba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2147976ae73f93e6f451dbd871ead865e2331455
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962789"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006335"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-from-github-using-cli"></a>CLI を使用して GitHub からの継続的なデプロイで App Service アプリを作成する
 
@@ -41,10 +41,10 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 | command | Notes |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service プランを作成します。 |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | App Service アプリを作成します。 |
-| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | App Service アプリを Git または Mercurial のリポジトリに関連付けます。 |
+| [`az group create`](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | App Service プランを作成します。 |
+| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | App Service アプリを作成します。 |
+| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config) | App Service アプリを Git または Mercurial のリポジトリに関連付けます。 |
 
 ## <a name="next-steps"></a>次のステップ
 

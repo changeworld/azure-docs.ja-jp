@@ -9,12 +9,12 @@ ms.date: 07/06/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 7246bb3453f6e4863faf15dbcbfdf8534481ddad
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 21f937d95c6cd0dafa27daae50d7a74648af7bdc
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561431"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006108"
 ---
 # <a name="create-an-app-service-app-and-deploy-private-endpoint-using-azure-cli"></a>Azure CLI を使用した App Service アプリの作成とプライベート エンドポイントのデプロイ
 
@@ -37,7 +37,7 @@ az group create --name myResourceGroup --location francecentral
 ## <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
 Web アプリをホストするための App Service プランを作成する必要があります。
-[az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) を使用して App Service プランを作成します。
+[az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) を使用して App Service プランを作成します。
 この例では、*P1V2* SKU で 1 つのワーカーのみを持つ *myAppServicePlan* という名前の App Service プランを *francecentral* の場所に作成します。 
 
 ```azurecli-interactive
@@ -78,7 +78,7 @@ az network vnet create \
 
 ## <a name="configure-the-subnet"></a>サブネットを構成する 
 
-サブネットを更新して、プライベート エンドポイント ネットワーク ポリシーを無効にする必要があります。 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) を使用して  *mySubnet*  という名前のサブネット構成を更新します。
+サブネットを更新して、プライベート エンドポイント ネットワーク ポリシーを無効にする必要があります。 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) を使用して  *mySubnet*  という名前のサブネット構成を更新します。
 
 ```azurecli-interactive
 az network vnet subnet update \

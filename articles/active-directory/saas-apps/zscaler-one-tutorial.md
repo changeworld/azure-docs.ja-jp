@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: d55e02bd981a220fee55a0abd540206a2701850a
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 3a9279189e3767b035256726a1da53b9edc8392f
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896839"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608988"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>チュートリアル: Azure Active Directory と Zscaler One の統合
 
@@ -41,9 +41,9 @@ Zscaler One と Azure AD の統合を構成するには、次の項目が必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Zscaler One では、 **SP** によって開始される SSO がサポートされます
+* Zscaler One では、**SP** によって開始される SSO がサポートされます
 
-* Zscaler One では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Zscaler One では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-zscaler-one-from-the-gallery"></a>ギャラリーからの Zscaler One の追加
 
@@ -63,13 +63,13 @@ Azure AD への Zscaler One の統合を構成するには、管理対象の Saa
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Zscaler One** 」と入力し、結果ウィンドウで **[Zscaler One]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Zscaler One**」と入力し、結果ウィンドウで **[Zscaler One]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Zscaler One](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Zscaler One で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Zscaler One で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Zscaler One 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Zscaler One で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -116,7 +116,7 @@ Zscaler One で Azure AD シングル サインオンを構成するには、次
     
     | Name | ソース属性 |
     | ---------| ------------ |
-    | memberOf     | user.assignedroles |
+    | memberOf | user.assignedroles |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
@@ -205,12 +205,12 @@ Zscaler One で Azure AD シングル サインオンを構成するには、次
 1. **Internet Explorer** を開始します。
 
 2. **[ツール]** メニューの **[インターネット オプション]** を選択し、 **[インターネット オプション]** ダイアログを開きます。   
-    
-     ![[インターネット オプション]](./media/zscaler-one-tutorial/ic769492.png "[インターネット オプション]")
+
+    ![[インターネット オプション]](./media/zscaler-one-tutorial/ic769492.png "[インターネット オプション]")
 
 3. **[接続]** タブをクリックします。   
-  
-     ![接続](./media/zscaler-one-tutorial/ic769493.png "接続")
+
+    ![接続](./media/zscaler-one-tutorial/ic769493.png "接続")
 
 4. **[LAN の設定]** をクリックして **[LAN の設定]** ダイアログを開きます。
 
@@ -220,9 +220,9 @@ Zscaler One で Azure AD シングル サインオンを構成するには、次
 
     a. **[LAN にプロキシ サーバーを使用する]** をオンにします。
 
-    b. [アドレス] ボックスに「 **gateway.Zscaler One.net** 」と入力します。
+    b. [アドレス] ボックスに「**gateway.Zscaler One.net**」と入力します。
 
-    c. [ポート] ボックスに「 **80** 」と入力します。
+    c. [ポート] ボックスに「 **80**」と入力します。
 
     d. **[ローカル アドレスにはプロキシ サーバーを使用しない]** を選択します。
 
@@ -246,7 +246,7 @@ Zscaler One で Azure AD シングル サインオンを構成するには、次
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

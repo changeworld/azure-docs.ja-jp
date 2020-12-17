@@ -10,13 +10,13 @@ ms.subservice: team-data-science-process
 ms.topic: sample
 ms.date: 06/03/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: b7a361319c3fc6c80c6dac80c48fb10155a3ff5b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
+ms.openlocfilehash: 1ef6c678110037a4aed24ef40631b73a04ca6a9d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314844"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028089"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Spark を使用したデータ探索とモデリング
 
@@ -91,7 +91,7 @@ Jupyter Notebook で提供される PySpark カーネルには、コンテキス
 
 PySpark カーネルには、"マジック"、つまり、%% で呼び出すことができる特別なコマンドがいくつか事前定義されています。 そのようなコマンドが、以降のコード サンプルでは 2 つ使用されています。
 
-* **%%local** : 後続行のコードをローカルで実行することを指定します。 コードは有効な Python コードにする必要があります。
+* **%%local**: 後続行のコードをローカルで実行することを指定します。 コードは有効な Python コードにする必要があります。
 * **%%sql -o \<variable name>** sqlContext に対して Hive クエリを実行します。 -o パラメーターが渡される場合、クエリの結果は、Pandas データフレームとして %%local Python コンテキストで永続化されます。
 
 Jupyter Notebook カーネルと、定義済みの "マジック" (例: %%local) の詳細については、[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)に関するページを参照してください。
@@ -1117,6 +1117,6 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 
 Spark MlLib を使用して回帰モデルと分類モデルを作成しました。これで、これらのモデルにスコアを付け、評価する方法を学習する準備ができました。 高度なデータの探索と Notebook のモデリングでは、クロス検証、ハイパー パラメーター スイープやモデルの評価などに深く踏み込みます。 
 
-**モデルの使用:** このトピックで作成した分類モデルと回帰モデルにスコアを付け、評価する方法については、 [Spark で構築した機械学習モデルのスコア付けと評価](spark-model-consumption.md)に関するページを参照してください。
+**モデルの使用:** このトピックで作成した分類モデルと回帰モデルにスコアを付け、評価する方法については、[Spark で構築した機械学習モデルのスコア付けと評価](spark-model-consumption.md)に関するページを参照してください。
 
-**クロス検証とハイパーパラメーター スイープ** :クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「 [Spark を使用した高度なデータ探索とモデリング](spark-advanced-data-exploration-modeling.md)」を参照してください。
+**クロス検証とハイパーパラメーター スイープ**:クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「[Spark を使用した高度なデータ探索とモデリング](spark-advanced-data-exploration-modeling.md)」を参照してください。

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: ce8710cb8f1cf49752f95340d931ddd79d43ec35
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e65039d39bea4063f717709f97b090e465c5e3c4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496383"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508511"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>チュートリアル:Azure Resource Manager テンプレートを使用した初めての Azure Data Factory の作成
 > [!div class="op_single_selector"]
@@ -143,14 +143,14 @@ ms.locfileid: "96496383"
             ],
             "apiVersion": "2015-10-01",
             "properties": {
-                  "type": "HDInsightOnDemand",
-                  "typeProperties": {
+                "type": "HDInsightOnDemand",
+                "typeProperties": {
                     "version": "3.5",
                     "clusterSize": 1,
                     "timeToLive": "00:05:00",
                     "osType": "Linux",
                     "linkedServiceName": "[variables('azureStorageLinkedServiceName')]"
-                  }
+                }
             }
           },
           {
@@ -526,37 +526,37 @@ HDInsight のオンデマンドのリンクされたサービスを定義する�
     "properties": {
         "description": "Pipeline that transforms data using Hive script.",
         "activities": [
-        {
-            "type": "HDInsightHive",
-            "typeProperties": {
-                "scriptPath": "[concat(parameters('blobContainer'), '/', parameters('hiveScriptFolder'), '/', parameters('hiveScriptFile'))]",
-                "scriptLinkedService": "[variables('azureStorageLinkedServiceName')]",
-                "defines": {
-                    "inputtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('inputBlobFolder'))]",
-                    "partitionedtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('outputBlobFolder'))]"
-                }
-            },
-            "inputs": [
             {
-                "name": "[variables('blobInputDatasetName')]"
+                "type": "HDInsightHive",
+                "typeProperties": {
+                    "scriptPath": "[concat(parameters('blobContainer'), '/', parameters('hiveScriptFolder'), '/', parameters('hiveScriptFile'))]",
+                    "scriptLinkedService": "[variables('azureStorageLinkedServiceName')]",
+                    "defines": {
+                        "inputtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('inputBlobFolder'))]",
+                        "partitionedtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('outputBlobFolder'))]"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "[variables('blobInputDatasetName')]"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "[variables('blobOutputDatasetName')]"
+                    }
+                ],
+                "policy": {
+                    "concurrency": 1,
+                    "retry": 3
+                },
+                "scheduler": {
+                    "frequency": "Month",
+                    "interval": 1
+                },
+                "name": "RunSampleHiveActivity",
+                "linkedServiceName": "[variables('hdInsightOnDemandLinkedServiceName')]"
             }
-            ],
-            "outputs": [
-            {
-                "name": "[variables('blobOutputDatasetName')]"
-            }
-            ],
-            "policy": {
-                "concurrency": 1,
-                "retry": 3
-            },
-            "scheduler": {
-                "frequency": "Month",
-                "interval": 1
-            },
-            "name": "RunSampleHiveActivity",
-            "linkedServiceName": "[variables('hdInsightOnDemandLinkedServiceName')]"
-        }
         ],
         "start": "2017-07-01T00:00:00Z",
         "end": "2017-07-02T00:00:00Z",

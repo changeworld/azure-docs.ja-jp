@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: bdf9cbfef7dfdcf80976641b527ddeb61368d50b
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fa424f7e1f5e1f885dd433b8abc8aae1dc1bc206
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921033"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006159"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Azure Data Factory と Azure Data Share を使用したデータ統合
 
@@ -72,7 +72,7 @@ Azure Data Factory では、リンクされたサービスによって外部リ�
     ![ポータルの構成 3](media/lab-data-flow-data-share/configure3.png)
 1. 最初に構成するリンクされたサービスは Azure SQL DB です。 検索バーを使用して、データ ストアの一覧をフィルタリングできます。 **[Azure SQL Database]** タイルをクリックして [続行] をクリックします。
 
-    ![ポータルの構成 4](media/lab-data-flow-data-share/configure4.png)
+    ![ポータルの構成 4](media/lab-data-flow-data-share/configure-4.png)
 1. SQL DB 構成ペインで、リンクされたサービスの名前として「SQLDB」を入力します。 データ ファクトリが自分のデータベースに接続できるように資格情報を入力します。 SQL 認証を使用する場合は、サーバー名、データベース、自分のユーザー名とパスワードを入力します。 **[Test connection]\(接続のテスト\)** をクリックすると、接続情報が正しいことを確認できます。 完了したら **[作成]** をクリックします。
 
     ![ポータルの構成 5](media/lab-data-flow-data-share/configure5.png)
@@ -81,10 +81,10 @@ Azure Data Factory では、リンクされたサービスによって外部リ�
 
 1. 同じ手順を繰り返して、Azure Synapse Analytics のリンクされたサービスを追加します。 [接続] タブで **[新規]** をクリックします。 **[Azure Synapse Analytics]** タイルを選択して [続行] をクリックします。
 
-    ![ポータルの構成 6](media/lab-data-flow-data-share/configure6.png)
+    ![ポータルの構成 6](media/lab-data-flow-data-share/configure-6.png)
 1. リンクされたサービスの構成ペインで、リンクされたサービスの名前として「SQLDW」を入力します。 データ ファクトリが自分のデータベースに接続できるように資格情報を入力します。 SQL 認証を使用する場合は、サーバー名、データベース、自分のユーザー名とパスワードを入力します。 **[Test connection]\(接続のテスト\)** をクリックすると、接続情報が正しいことを確認できます。 完了したら **[作成]** をクリックします。
 
-    ![ポータルの構成 7](media/lab-data-flow-data-share/configure7.png)
+    ![ポータルの構成 7](media/lab-data-flow-data-share/configure-7.png)
 
 ### <a name="create-an-azure-data-lake-storage-gen2-linked-service"></a>Azure Data Lake Storage Gen2 のリンクされたサービスを作成する
 
@@ -128,7 +128,7 @@ Azure Data Factory におけるパイプラインは、1 つのタスクを連�
     ![ポータルのコピー 4](media/lab-data-flow-data-share/copy4.png)
 1. **[Azure SQL Database]** を検索して [続行] をクリックします。
 
-    ![ポータルのコピー 5](media/lab-data-flow-data-share/copy5.png)
+    ![ポータルのコピー 5](media/lab-data-flow-data-share/copy-5.png)
 1. データセットに "TripData" という名前を付けます。 リンクされたサービスとして、[SQLDB] を選択してください。 [テーブル名] ドロップダウンから "dbo.TripData" というテーブル名を選択します。 **[From connection/store]\(接続/ストアから\)** スキーマをインポートします。 完了したら、[OK] をクリックします。
 
     ![ポータルのコピー 6](media/lab-data-flow-data-share/copy6.png)
@@ -211,7 +211,7 @@ Azure Data Lake Storage にデータを正しくコピーできたら、その�
     ![ポータルのデータ フロー 9](media/lab-data-flow-data-share/dataflow9.png)
 1. **[Azure SQL Database]** タイルを選択して [続行] をクリックします。 *注意事項: お気付きかもしれませんが、データ ファクトリにあるコネクタの多くが、マッピング データ フローではサポート対象外となっています。これらのソースのいずれかからデータを変換するには、コピー アクティビティを使用して、サポート対象のソースにデータを取り込んでください*。
 
-    ![ポータルのデータ フロー 10](media/lab-data-flow-data-share/dataflow10.png)
+    ![ポータルのデータ フロー 10](media/lab-data-flow-data-share/dataflow-10.png)
 1. データセットに "TripFares" という名前を付けます。 リンクされたサービスとして、[SQLDB] を選択してください。 [テーブル名] ドロップダウンから "dbo.TripFares" というテーブル名を選択します。 **[From connection/store]\(接続/ストアから\)** スキーマをインポートします。 完了したら、[OK] をクリックします。
 
     ![ポータルのデータ フロー 11](media/lab-data-flow-data-share/dataflow11.png)
@@ -276,7 +276,7 @@ Azure Data Lake Storage にデータを正しくコピーできたら、その�
 
 1. **[Azure Synapse Analytics]** タイルを選択して [続行] をクリックします。
 
-    ![ポータルのシンク 3](media/lab-data-flow-data-share/sink3.png)
+    ![ポータルのシンク 3](media/lab-data-flow-data-share/sink-3.png)
 1. データセットに "AggregatedTaxiData" という名前を付けます。 リンクされたサービスとして、[SQLDW] を選択してください。 **[新しいテーブルの作成]** を選択し、新しいテーブルに dbo.AggregateTaxiData という名前を付けます。 完了したら、[OK] をクリックします。
 
     ![ポータルのシンク 4](media/lab-data-flow-data-share/sink4.png)

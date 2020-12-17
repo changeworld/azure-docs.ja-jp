@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: a6bf6c659ff589cf693f56c6c37e7f28daa376f8
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: a7acbc736fc297a55a97173893cb4873acd02059
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92894221"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609073"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>チュートリアル: Azure Active Directory と Zscaler Two の統合
 
@@ -41,9 +41,9 @@ Zscaler Two と Azure AD の統合を構成するには、次の項目が必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Zscaler Two では、 **SP** Initiated SSO がサポートされます
+* Zscaler Two では、**SP** Initiated SSO がサポートされます
 
-* Zscaler Two では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Zscaler Two では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-zscaler-two-from-the-gallery"></a>ギャラリーからの Zscaler Two の追加
 
@@ -63,13 +63,13 @@ Azure AD への Zscaler Two の統合を構成するには、管理対象の Saa
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Zscaler Two** 」と入力し、結果パネルで **[Zscaler Two]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Zscaler Two**」と入力し、結果パネルで **[Zscaler Two]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの Zscaler Two](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Zscaler Two で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Zscaler Two で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Zscaler Two 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Zscaler Two で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -116,7 +116,7 @@ Zscaler Two で Azure AD シングル サインオンを構成するには、次
     
     | Name | ソース属性 |
     | ---------| ------------ |
-    | memberOf     | user.assignedroles |
+    | memberOf | user.assignedroles |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
@@ -193,7 +193,7 @@ Zscaler Two で Azure AD シングル サインオンを構成するには、次
 
 6. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
 
-    ![[Configure User Authentication]\(ユーザー認証の構成\) ダイアログ ボックスを示すスクリーンショット。[Activate]\(アクティブ化\) が選択されています。](./media/zscaler-two-tutorial/ic800207.png)
+    ![[Activate]\(アクティブ化\) が選択された [Configure User Authentication]\(ユーザー認証の構成\) ダイアログ ボックスを示すスクリーンショット。](./media/zscaler-two-tutorial/ic800207.png)
 
     a. 左下の **[Activation]\(アクティブ化\)** メニューにポインターを置きます。
 
@@ -220,9 +220,9 @@ Zscaler Two で Azure AD シングル サインオンを構成するには、次
 
     a. **[LAN にプロキシ サーバーを使用する]** をオンにします。
 
-    b. [アドレス] テキスト ボックスに「 **gateway.Zscaler Two.net** 」と入力します。
+    b. [アドレス] テキスト ボックスに「**gateway.Zscaler Two.net**」と入力します。
 
-    c. [ポート] ボックスに「 **80** 」と入力します。
+    c. [ポート] ボックスに「 **80**」と入力します。
 
     d. **[ローカル アドレスにはプロキシ サーバーを使用しない]** を選択します。
 
@@ -246,7 +246,7 @@ Zscaler Two で Azure AD シングル サインオンを構成するには、次
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
