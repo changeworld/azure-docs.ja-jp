@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
-ms.openlocfilehash: cf6973242e81cef53625a3b1eda4f2d92e1d5ffd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0d78f2c8da338a92ef88734371647a48ddb190c3
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998636"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591210"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ADP の統合
 
@@ -155,15 +155,15 @@ ADP 担当者から送信される確認の電子メールを受信したら、A
 
     ![リンクされたシングル サインオンのプロパティ](./media/adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
 
-    a.  **[ユーザーのサインインが有効になっていますか?]** フィールドの値を **[はい]** に設定します。
+    1. **[ユーザーのサインインが有効になっていますか?]** フィールドの値を **[はい]** に設定します。
 
-    b.  **[ユーザーの割り当てが必要]** フィールドの値を **[はい]** に設定します。
+    1. **[ユーザーの割り当てが必要]** フィールドの値を **[はい]** に設定します。
 
-    c.  **[ユーザーに表示しますか?]** フィールドの値を **[はい]** に設定します。
+    1. **[ユーザーに表示しますか?]** フィールドの値を **[はい]** に設定します。
 
-1. [Azure portal](https://portal.azure.com/) の **ADP** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **ADP** アプリケーション統合ページで、**[管理]** セクションを探して、**[シングル サインオン]** を選択します。
 
-1. **[シングル サインオン方式の選択]** ダイアログで、 **[モード]** として **[リンク]** を選択します。 アプリケーションを **ADP** にリンクさせます。
+1. **[シングル サインオン方式の選択]** ダイアログで、**[モード]** として **[リンク]** を選択します。 アプリケーションを **ADP** にリンクさせます。
 
     ![リンクされたシングル サインオン](./media/adpfederatedsso-tutorial/tutorial_adp_linked.png)
 
@@ -171,39 +171,39 @@ ADP 担当者から送信される確認の電子メールを受信したら、A
 
     ![シングル サインオンのプロパティ](./media/adpfederatedsso-tutorial/tutorial_adp_linkedsignon.png)
 
-    a. 上記の **[プロパティ]** タブ (メインの ADP アプリケーション) からコピーした、**ユーザーのアクセス URL** を貼り付けます。
-                                                             
-    b. 次の 5 つのアプリは、異なる **リレー状態 URL** をサポートしています。 特定のアプリケーションの適切な **リレー状態 URL** の値を、**ユーザーのアクセス URL** に手動で追加する必要があります。
-    
-    * **ADP Workforce Now**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?WFN`
+    1. 上記の **[プロパティ]** タブ (メインの ADP アプリケーション) からコピーした、**ユーザーのアクセス URL** を貼り付けます。
 
-    * **ADP Workforce Now Enhanced Time**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?EETDC2`
-    
-    * **ADP Vantage HCM**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?ADPVANTAGE`
+    1. 次の 5 つのアプリは、異なる **リレー状態 URL** をサポートしています。 特定のアプリケーションの適切な **リレー状態 URL** の値を、**ユーザーのアクセス URL** に手動で追加する必要があります。
 
-    * **ADP Enterprise HR**
+        * **ADP Workforce Now**
 
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?PORTAL`
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?WFN`
 
-    * **MyADP**
+        * **ADP Workforce Now Enhanced Time**
 
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?REDBOX`
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?EETDC2`
 
-9. **保存** します。
+        * **ADP Vantage HCM**
 
-10. ADP の担当者から確認の電子メールを受信したら、1 人または 2 人のユーザーでテストを開始します。
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?ADPVANTAGE`
 
-    a. 数名のユーザーを ADP サービス アプリに割り当てて、フェデレーション アクセスをテストします。
+        * **ADP Enterprise HR**
 
-    b. ユーザーがギャラリーの ADP サービス アプリにアクセスして ADP サービスにアクセスできると、テストは成功です。
- 
-11. テストの性行を確認したら、個々のユーザーまたはユーザー グループにフェデレーション ADP サービスを割り当てます。これについてはこのチュートリアルで後ほど説明しますので、従業員にロールアウトしてください。
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?PORTAL`
+
+        * **MyADP**
+
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?REDBOX`
+
+1. 変更内容を **保存** します。
+
+1. ADP の担当者から確認の電子メールを受信したら、1 人または 2 人のユーザーでテストを開始します。
+
+    1. 数名のユーザーを ADP サービス アプリに割り当てて、フェデレーション アクセスをテストします。
+
+    1. ユーザーがギャラリーの ADP サービス アプリにアクセスして ADP サービスにアクセスできると、テストは成功です。
+
+1. テストの性行を確認したら、個々のユーザーまたはユーザー グループにフェデレーション ADP サービスを割り当てます。これについてはこのチュートリアルで後ほど説明しますので、従業員にロールアウトしてください。
 
 ### <a name="create-adp-test-user"></a>ADP のテスト ユーザーの作成
 
@@ -219,8 +219,6 @@ ADP 担当者から送信される確認の電子メールを受信したら、A
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
 - [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
-
-- [Azure AD で ADP を試す](https://aad.portal.azure.com)

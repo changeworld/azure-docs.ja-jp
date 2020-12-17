@@ -251,7 +251,7 @@ appInsights.trackEvent("Click", {
 
 ![Azure Cognitive Search の Power BI ダッシュボード](./media/search-traffic-analytics/azuresearch-powerbi-dashboard.png "Azure Cognitive Search の Power BI ダッシュボード")
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 検索アプリケーションをインストルメント化して、検索サービスに関する有益で洞察に富んだデータを取得します。
 

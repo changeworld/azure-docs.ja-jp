@@ -5,23 +5,24 @@ author: jonels-msft
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: include
-ms.date: 09/12/2019
+ms.date: 12/16/2020
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: e7a6f7b4ba4219483cd3eb8f4600bc94213df131
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54cc31cdb0ddc7694568d60b1446f1cf99663e95
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74973418"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616628"
 ---
+## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) の作成
+
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
+### <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 [Azure portal](https://portal.azure.com) にサインインします。
 
-## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) の作成
 
 Azure Database for PostgreSQL サーバーを作成するには、次の手順に従います。
 1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
@@ -53,7 +54,7 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
 10. ページは、デプロイを監視するためにリダイレクトされます。 ライブ状態が **[デプロイが進行中です]** から **[デプロイが完了しました]** に変わったら、ページの左側にある **[出力]** メニュー項目をクリックします。
 11. 出力ページには、コーディネーターのホスト名が含まれており、値をクリップボードにコピーするためのボタンが横に付いています。 後で使用するために、この情報を記録しておきます。
 
-## <a name="connect-to-the-database-using-psql"></a>psql を使用したデータベースへの接続
+### <a name="connect-to-the-database-using-psql"></a>psql を使用したデータベースへの接続
 
 Azure Database for PostgreSQL サーバーを作成したときに、**citus** という名前の既定のデータベースも作成されています。 データベース サーバーに接続するには、接続文字列と管理者パスワードが必要です。
 

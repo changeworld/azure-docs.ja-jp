@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 946388fa60e0f6147db2986192392740fa3949f4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 84b0a761b52baca4ae1ab81b3c67f18f6b14db92
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671842"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608835"
 ---
 # <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>チュートリアル:SAP Analytics Cloud と Azure Active Directory の統合
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* SAP Analytics Cloud では、 **SP** Initiated SSO がサポートされます
+* SAP Analytics Cloud では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-sap-analytics-cloud-from-the-gallery"></a>ギャラリーからの SAP Analytics Cloud の追加
 
@@ -49,7 +49,7 @@ Azure AD への SAP Analytics Cloud の統合を構成するには、ギャラ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **SAP Analytics Cloud** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**SAP Analytics Cloud**」と入力します。
 1. 結果のパネルから **[SAP Analytics Cloud]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -115,7 +115,7 @@ SAP Analytics Cloud に対する Azure AD SSO を構成してテストするに�
 
     ![認証方法として [SAML Single Sign-On (SSO)]\(SAML シングル サインオン (SSO)\) を選択](./media/sapboc-tutorial/config3.png)  
 
-5. サービス プロバイダーのメタデータをダウンロードする (手順 1) には、 **[Download]\(ダウンロード\)** を選択します。 メタデータ ファイルで、 **entityID** を見つけてその値をコピーします。 Azure portal で、 **[基本的な SAML 構成]** ダイアログの **[識別子]** ボックスに値を貼り付けます。
+5. サービス プロバイダーのメタデータをダウンロードする (手順 1) には、 **[Download]\(ダウンロード\)** を選択します。 メタデータ ファイルで、**entityID** を見つけてその値をコピーします。 Azure portal で、 **[基本的な SAML 構成]** ダイアログの **[識別子]** ボックスに値を貼り付けます。
 
     ![EntityID 値をコピーして貼り付ける](./media/sapboc-tutorial/config4.png)  
 
@@ -183,21 +183,21 @@ Azure AD ユーザーが SAP Analytics Cloud にサインインできるよう�
 
     その後、次の手順を完了します。
 
-    a. **[USER ID]\(ユーザー ID\)** ボックスに、ユーザーのユーザー ID を入力します ( **B** など)。
+    1. **[USER ID]\(ユーザー ID\)** ボックスに、ユーザーのユーザー ID を入力します (**B** など)。
 
-    b. **[FIRST NAME]\(名\)** ボックスに、ユーザーの名を入力します ( **B** など)。
+    1. **[FIRST NAME]\(名\)** ボックスに、ユーザーの名を入力します (**B** など)。
 
-    c. **[LAST NAME]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon** )。
+    1. **[LAST NAME]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
-    d. **[DISPLAY NAME]\(表示名\)** ボックスに、ユーザーのフル ネームを入力します ( **B.Simon** など)。
+    1. **[DISPLAY NAME]\(表示名\)** ボックスに、ユーザーのフル ネームを入力します (**B.Simon** など)。
 
-    e. **[E-MAIL]\(メール\)** ボックスに、ユーザーのメール アドレスを入力します (`b.simon@contoso.com` など)。
+    1. **[E-MAIL]\(電子メール\)** ボックスに、ユーザーの電子メール アドレスを入力します (この例では `b.simon@contoso.com`)。
 
-    f. **[Select Roles]\(ロールの選択\)** ページで、ユーザーの適切なロールを選択し、 **[OK]** を選択します。
+    1. **[Select Roles]\(ロールの選択\)** ページで、ユーザーの適切なロールを選択し、**[OK]** を選択します。
 
-      ![Select role](./media/sapboc-tutorial/user3.png)
+        ![ロールの選択](./media/sapboc-tutorial/user3.png)
 
-    g. **[Save]\(保存\)**  アイコンを選択します。
+    1. **[Save]\(保存\)** アイコンを選択します。
 
 ### <a name="test-sso"></a>SSO のテスト 
 

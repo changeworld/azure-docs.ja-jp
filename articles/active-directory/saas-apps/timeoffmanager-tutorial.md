@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 0adb8d62d02325f92c77d2171eaafd6c2de16f0c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 849236b9ac33cec92cc145bb32b4271b73476057
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516346"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608818"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeoffmanager"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と TimeOffManager の統合
 
@@ -40,9 +40,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 
-* TimeOffManager では、 **IDP** Initiated SSO がサポートされます
+* TimeOffManager では、**IDP** Initiated SSO がサポートされます
 
-* TimeOffManager では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* TimeOffManager では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -56,7 +56,7 @@ Azure AD への TimeOffManager の統合を構成するには、ギャラリー�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **TimeOffManager** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**TimeOffManager**」と入力します。
 1. 結果パネルで **TimeOffManager** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -88,7 +88,7 @@ TimeOffManager に対する Azure AD SSO を構成してテストするには、
     **[応答 URL]** ボックスに、`https://www.timeoffmanager.com/cpanel/sso/consume.aspx?company_id=<companyid>` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > これは実際の値ではありません。 実際の応答 URL でこの値を更新します。 チュートリアルの後半で説明する **シングル サインオン設定ページ** からこの値を取得するか、 [TimeOffManager サポート チーム](https://www.purelyhr.com/contact-us)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これは実際の値ではありません。 実際の応答 URL でこの値を更新します。 チュートリアルの後半で説明する **シングル サインオン設定ページ** からこの値を取得するか、[TimeOffManager サポート チーム](https://www.purelyhr.com/contact-us)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. TimeOffManager アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -168,7 +168,7 @@ TimeOffManager に対する Azure AD SSO を構成してテストするには、
 
 4. **[Single Sign on settings]\(シングル サインオンの設定\)** ページで **[Assertion Consumer Service URL]\(アサーション コンシューマー サービス URL\)** の値をコピーして、それを Azure portal の **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに貼り付けます。 
 
-      ![[Assertion Consumer Service U R L]\(アサーション コンシューマー サービス U R L\) リンクを示すスクリーンショット。](./media/timeoffmanager-tutorial/ic795915.png "[シングル サインオンの設定]")
+    ![[Assertion Consumer Service U R L]\(アサーション コンシューマー サービス U R L\) リンクを示すスクリーンショット。](./media/timeoffmanager-tutorial/ic795915.png "[シングル サインオンの設定]")
 
 ### <a name="create-timeoffmanager-test-user"></a>TimeOffManager のテスト ユーザーの作成
 

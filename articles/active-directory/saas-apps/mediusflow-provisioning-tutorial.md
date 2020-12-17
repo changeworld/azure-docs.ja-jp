@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4d3ee6df90424788c6f9b6bb4e2055023a5d56a6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 881309c040f6c1bdff758d17ab7f51e935437192
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182069"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607883"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために MediusFlow を構成する
 
@@ -172,11 +172,11 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 11. **[属性マッピング]** セクションで、Azure AD から MediusFlow に同期されるグループ属性を確認します。 **Matching** プロパティとして選択されている属性は、更新操作で MediusFlow のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-      |属性|Type|
-      |---|---|
-      |displayName|String|
-      |externalID|String|
-      |members|リファレンス|
+    | 属性 | Type |
+    |--|--|
+    | displayName | String |
+    | externalID | String |
+    | members | リファレンス |
 
 12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 

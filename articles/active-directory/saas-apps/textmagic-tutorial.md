@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: c6b646688fb0c42091182cc7f94e019432b354fa
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f1e6cd222c9ee8f40f81d4db3750956e8e698e3e
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504594"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607671"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textmagic"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と TextMagic の統合
 
@@ -39,9 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* TextMagic では、 **IDP** によって開始される SSO がサポートされます
+* TextMagic では、**IDP** によって開始される SSO がサポートされます
 
-* TextMagic では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* TextMagic では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -54,7 +54,7 @@ Azure AD への TextMagic の統合を構成するには、ギャラリーから
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **TextMagic** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**TextMagic**」と入力します。
 1. 結果のパネルから **TextMagic** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-textmagic"></a>TextMagic の Azure AD シングル サインオンの構成とテスト
@@ -84,7 +84,7 @@ TextMagic に対する Azure AD SSO を構成してテストするには、次�
 
     **[識別子]** テキスト ボックスに、`https://my.textmagic.com/saml/metadata` という URL を入力します。
 
-5. TextMagic アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 TextMagic アプリケーションでは、 **nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+5. TextMagic アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 TextMagic アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
@@ -93,9 +93,9 @@ TextMagic に対する Azure AD SSO を構成してテストするには、次�
     | 名前 |   ソース属性| 名前空間  |
     | --------------- | --------------- | --------------- |
     | company | user.companyname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | firstName               | User.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | lastName            | User.surname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | phone               | user.telephonenumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | firstName | User.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | lastName | User.surname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | phone | user.telephonenumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -167,7 +167,7 @@ TextMagic に対する Azure AD SSO を構成してテストするには、次�
 
 ### <a name="create-textmagic-test-user"></a>TextMagic テスト ユーザーの作成
 
-アプリケーションでは、 **Just-In-Time のユーザー プロビジョニング** がサポートされ、認証後にユーザーがアプリケーションに自動的に作成されます。 初めてシステムにログインしてサブアカウントを有効にしたら、情報を入力する必要があります。
+アプリケーションでは、**Just-In-Time のユーザー プロビジョニング** がサポートされ、認証後にユーザーがアプリケーションに自動的に作成されます。 初めてシステムにログインしてサブアカウントを有効にしたら、情報を入力する必要があります。
 このセクションでは、ユーザー側で必要な操作はありません。
 
 ## <a name="test-sso"></a>SSO のテスト 

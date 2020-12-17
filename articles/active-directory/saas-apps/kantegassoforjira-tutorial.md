@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 7d32fdd77fded90dc998db645aa6dcac2b502eb2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 9643d0e63e85a9b500021a415e3cdaf3edc756c5
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459171"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608733"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>チュートリアル: Azure Active Directory と Kantega SSO for JIRA の統合
 
@@ -41,7 +41,7 @@ Kantega SSO for JIRA と Azure AD の統合を構成するには、次のもの�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Kantega SSO for JIRA では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Kantega SSO for JIRA では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-kantega-sso-for-jira-from-the-gallery"></a>ギャラリーからの Kantega SSO for JIRA の追加
 
@@ -61,13 +61,13 @@ Azure AD への Kantega SSO for JIRA の統合を構成するには、ギャラ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Kantega SSO for JIRA** 」と入力し、結果パネルで **[Kantega SSO for JIRA]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Kantega SSO for JIRA**」と入力し、結果パネルで **[Kantega SSO for JIRA]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Kantega SSO for JIRA](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーを基に、Kantega SSO for JIRA で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーを基に、Kantega SSO for JIRA で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Kantega SSO for JIRA 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Kantega SSO for JIRA で Azure AD のシングル サインオンを構成してテストするには、次の一連の作業を完了させる必要があります。
@@ -162,31 +162,31 @@ Kantega SSO for JIRA で Azure AD のシングル サインオンを構成する
 
 1. サブスクリプション レベルは **[Basic]** を選択します。
 
-    ![[Basic] が選択されている [Preparing Azure AD]\(Azure AD の準備\) セクションを示すスクリーンショット。](./media/kantegassoforjira-tutorial/addon5.png)     
+    ![[Basic] が選択されている [Preparing Azure AD]\(Azure AD の準備\) セクションを示すスクリーンショット。](./media/kantegassoforjira-tutorial/addon5.png)
 
 1. **[App properties]\(アプリのプロパティ\)** セクションで、次の手順を実行します。 
 
     ![[アプリケーション ID/URI] というテキストボックスと [コピー] ボタンが強調表示され、[次へ] ボタンが選択された [App properties]\(アプリのプロパティ\) セクションを示すスクリーンショット。](./media/kantegassoforjira-tutorial/addon6.png)
 
-    a。 **[アプリケーション ID/URI]** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションで **識別子、応答 URL、サインオン URL** として使用します。
+    1. **[アプリケーション ID/URI]** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションで **識別子、応答 URL、サインオン URL** として使用します。
 
-    b. **[次へ]** をクリックします。
+    1. **[次へ]** をクリックします。
 
 1. **[Metadata import]\(メタデータのインポート\)** セクションで、次の手順を実行します。 
 
     ![[Metadata file on my computer]\(コンピューターにあるメタデータ ファイル\) が選択されている [Metadata import]\(メタデータのインポート\) セクションを示すスクリーンショット。](./media/kantegassoforjira-tutorial/addon7.png)
 
-    a。 **[Metadata file on my computer]\(コンピューターにあるメタデータ ファイル\)** を選び、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
+    1. **[Metadata file on my computer]\(コンピューターにあるメタデータ ファイル\)** を選び、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
 
-    b. **[次へ]** をクリックします。
+    1. **[次へ]** をクリックします。
 
 1. **[Name and SSO location]\(名前と SSO の場所\)** セクションで、次の手順を実行します。
 
     ![[Identity provider name]\(ID プロバイダー名\) テキストボックスが強調表示され、[次へ] ボタンが選択されている [Name and SSO location]\(名前と SSO の場所\) を示すスクリーンショット。](./media/kantegassoforjira-tutorial/addon8.png)
 
-    a。 **[Identity provider name]\(ID プロバイダー名\)** ボックスに、ID プロバイダーの名前 (例: Azure AD) を追加します。
+    1. **[Identity provider name]\(ID プロバイダー名\)** ボックスに、ID プロバイダーの名前 (例: Azure AD) を追加します。
 
-    b. **[次へ]** をクリックします。
+    1. **[次へ]** をクリックします。
 
 1. 署名証明書を確認し、 **[Next]\(次へ\)** をクリックします。
 
@@ -196,9 +196,9 @@ Kantega SSO for JIRA で Azure AD のシングル サインオンを構成する
 
     ![[Create users in JIRA's internal Directory if needed]\(必要に応じて JIRA の内部ディレクトリにユーザーを作成する\) オプションが強調表示され、[次へ] ボタンが選択されている [JIRA user accounts]\(JIRA ユーザー アカウント\) を示すスクリーンショット。](./media/kantegassoforjira-tutorial/addon10.png)
 
-    a。 **[Create users in JIRA's internal Directory if needed]\(必要に応じて JIRA の内部ディレクトリにユーザーを作成する\)** を選択して、ユーザー グループの適切な名前を入力します (グループはコンマで区切られた複数の番号 になる場合があります)。
+    1. **[Create users in JIRA's internal Directory if needed]\(必要に応じて JIRA の内部ディレクトリにユーザーを作成する\)** を選択して、ユーザー グループの適切な名前を入力します (グループはコンマで区切られた複数の番号 になる場合があります)。
 
-    b. **[次へ]** をクリックします。
+    1. **[次へ]** をクリックします。
 
 1. **[完了]** をクリックします。
 
@@ -208,11 +208,11 @@ Kantega SSO for JIRA で Azure AD のシングル サインオンを構成する
 
     ![Configure single sign-on](./media/kantegassoforjira-tutorial/addon12.png)
 
-    a. ページの左側のパネルにある **[Known domains]\(既知のドメイン\)** を選択します。
+    1. ページの左側のパネルにある **[Known domains]\(既知のドメイン\)** を選択します。
 
-    b. **[Known domains]\(既知のドメイン\)** ボックスにドメイン名を入力します。
+    2. **[Known domains]\(既知のドメイン\)** ボックスにドメイン名を入力します。
 
-    c. **[保存]** をクリックします。
+    3. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -230,23 +230,23 @@ Kantega SSO for JIRA で Azure AD のシングル サインオンを構成する
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
+    1. **[名前]** フィールドに「**BrittaSimon**」と入力します。
 
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
+    1. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
-    d. **Create** をクリックしてください。
+    1. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
+
+    1. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に Kantega SSO for JIRA へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Kantega SSO for JIRA]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Kantega SSO for JIRA]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、 **[Kantega SSO for JIRA]** を選択します。
+2. アプリケーションの一覧で、**[Kantega SSO for JIRA]** を選択します。
 
     ![アプリケーションの一覧の Kantega SSO for JIRA のリンク](common/all-applications.png)
 
@@ -284,15 +284,15 @@ Azure AD ユーザーが JIRA にサインインできるようにするには�
 
     ![従業員の追加](./media/kantegassoforjira-tutorial/user3.png) 
 
-    a. **[Email address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
+    1. **[Email address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
 
-    b. **[Full Name]\(フル ネーム\)** ボックスに、ユーザーの氏名 (Britta Simon など) を入力します。
+    2. **[Full Name]\(フル ネーム\)** ボックスに、ユーザーの氏名 (Britta Simon など) を入力します。
 
-    c. **[Username]\(ユーザー名\)** ボックスに、ユーザーの電子メール (Brittasimon@contoso.com など) を入力します。
+    3. **[Username]\(ユーザー名\)** ボックスに、ユーザーの電子メール (Brittasimon@contoso.com など) を入力します。
 
-    d. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
+    4. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
 
-    e. **[Create user]\(ユーザーの作成\)** をクリックします。
+    5. **[Create user]\(ユーザーの作成\)** をクリックします。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ed71311125229a7575c675dd3338b4908ea1be95
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8b49e3594754e8eed38e3b1ef44648bc065558b8
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518434"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608360"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>チュートリアル: Azure Active Directory と Skillport の統合
 
@@ -41,7 +41,7 @@ Azure AD と Skillport の統合を構成するには、次のものが必要で
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Skillport では、 **SP** によって開始される SSO がサポートされます
+* Skillport では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-skillport-from-the-gallery"></a>ギャラリーからの Skillport の追加
 
@@ -61,13 +61,13 @@ Azure AD への Skillport の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Skillport** 」と入力し、結果パネルで **[Skillport]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Skillport**」と入力し、結果パネルで **[Skillport]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Skillport](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Skillport で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Skillport で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Skillport 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Skillport で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -101,23 +101,23 @@ Skillport で Azure AD シングル サインオンを構成するには、次�
 
     ![[Skillport のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
-    a. **[サインオン URL]** ボックスに、次の URL を入力します:
+    1. **[サインオン URL]** テキスト ボックスに、URL として「」と入力します。
 
-    EU のデータセンター: `https://adfs.skillport.eu`
+        EU のデータセンター: `https://adfs.skillport.eu`
 
-    米国のデータセンター: `https://sso.skillport.com`
+        米国のデータセンター: `https://sso.skillport.com`
 
-    b. **[識別子]** ボックスに、次の URL を入力します:
+    1. **[識別子]** ボックスに、URL として「」と入力します。
 
-    EU のデータセンター: `http://adfs.skillport.eu/adfs/services/trust`
+        EU のデータセンター: `http://adfs.skillport.eu/adfs/services/trust`
 
-    米国のデータセンター: `https://sso.skillport.com`
+        米国のデータセンター: `https://sso.skillport.com`
 
-    c. **[応答 URL]** ボックスに、次の URL を入力します:
+    1. **[応答 URL]** ボックスに、URL として「」と入力します。
 
-    EU のデータセンター: `https://adfs.skillport.eu/adfs/ls/`
+        EU のデータセンター: `https://adfs.skillport.eu/adfs/ls/`
 
-      米国のデータセンター: `https://sso.skillport.com/sp/ACS.saml2`
+        米国のデータセンター: `https://sso.skillport.com/sp/ACS.saml2`
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -153,7 +153,7 @@ Skillport で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -166,7 +166,7 @@ Skillport で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に Skillport へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Skillport]** の順に選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Skillport]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

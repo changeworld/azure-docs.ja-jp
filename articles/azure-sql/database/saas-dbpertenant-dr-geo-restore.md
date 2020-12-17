@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: daccbd9dfb3ed628d8a3e604cbb9af4045f1ebe6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3fe6095595f5270b18536e6ef46afe4a0a5b3268
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780888"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607713"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>geo リストアを使用して、データベースのバックアップからマルチテナント SaaS アプリケーションを復旧する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -163,7 +163,7 @@ geo リストア復旧プロセスでは、アプリケーションを展開し�
 
     * テナントがカタログでオンラインとマークされるとすぐに、アプリケーションはテナント データベースにアクセスできるようになります。
 
-    * テナント データベースでの rowversion 値の合計が、カタログに格納されます。 この合計はフィンガープリントとして機能し、復帰プロセスはこの値を使うことにより、データベースが復旧リージョンで更新されたかどうかを判断できます。       
+    * テナント データベースでの rowversion 値の合計が、カタログに格納されます。 この合計はフィンガープリントとして機能し、復帰プロセスはこの値を使うことにより、データベースが復旧リージョンで更新されたかどうかを判断できます。
 
 ## <a name="run-the-recovery-script"></a>復旧スクリプトを実行する
 

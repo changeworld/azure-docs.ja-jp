@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: acd0206f45d714685cc3e01d968491049d3bb36f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 80c4b1998872c749228d7352484fd5af22b6d23d
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522344"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608342"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opal"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Opal の統合
 
@@ -39,12 +39,10 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-
-* Opal では、 **IDP** によって開始される SSO がサポートされます
+* Opal では、**IDP** によって開始される SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
-
 
 ## <a name="adding-opal-from-the-gallery"></a>ギャラリーからの Opal の追加
 
@@ -54,9 +52,8 @@ Azure AD への Opal の統合を構成するには、ギャラリーから管�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Opal** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Opal**」と入力します。
 1. 結果のパネルから **Opal** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-opal"></a>Opal の Azure AD シングル サインオンの構成とテスト
 
@@ -83,12 +80,14 @@ Opal に対する Azure AD SSO を構成してテストするには、次の構�
 
 1. **[SAML でシングル サインオンをセットアップします]** ページで、次のフィールドの値を入力します。
 
-    a. **[識別子]** テキスト ボックスに、`Opal` という URL を入力します。
+    1. **[識別子]** テキスト ボックスに、`Opal` という URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://<subdomain>.ouropal.com/auth/saml/callback` のパターンを使用して URL を入力します
+    1. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    > [!NOTE]
-    > 応答 URL 値は、実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Opal クライアント サポート チーム](mailto:support@workwithopal.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+        `https://<subdomain>.ouropal.com/auth/saml/callback`
+
+        > [!NOTE]
+        > 応答 URL 値は、実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Opal クライアント サポート チーム](mailto:support@workwithopal.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. Opal アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -98,8 +97,8 @@ Opal に対する Azure AD SSO を構成してテストするには、次の構�
 
     | 名前 | ソース属性|
     | ---------------| --------------- |
-    | firstname           | User.givenname |
-    | lastname        | User.surname |
+    | firstname | User.givenname |
+    | lastname | User.surname |
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -116,7 +115,7 @@ Opal に対する Azure AD SSO を構成してテストするには、次の構�
 1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。
    1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
@@ -157,7 +156,7 @@ Opal に対する Azure AD SSO を構成してテストするには、次の構�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
 - [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 

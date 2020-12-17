@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 71b5b3f24b60796cf839b8920de8eae424ea3809
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa97fd2ac12ca73d1a317fb09e03e49d0056ceb1
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254363"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608631"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>チュートリアル:データを移動する Data Factory パイプラインを Azure PowerShell で作成する
 > [!div class="op_single_selector"]
@@ -49,26 +49,26 @@ ms.locfileid: "85254363"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 - [チュートリアルの前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関する記事に記載されている前提条件を満たしてください。
-- **Azure PowerShell**をインストールします。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)に関するページに記載されている手順に従います。
+- **Azure PowerShell** をインストールします。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)に関するページに記載されている手順に従います。
 
 ## <a name="steps"></a>手順
 このチュートリアルの一部として実行する手順を次に示します。
 
-1. Azure **データ ファクトリ**を作成します。 この手順では、ADFTutorialDataFactoryPSH という名前のデータ ファクトリを作成します。 
-1. **リンクされたサービス**をデータ ファクトリに作成します。 この手順では、2 つのリンクされたサービスを作成します (タイプ: Azure Storage、Azure SQL Database)。 
-    
+1. Azure **データ ファクトリ** を作成します。 この手順では、ADFTutorialDataFactoryPSH という名前のデータ ファクトリを作成します。 
+1. **リンクされたサービス** をデータ ファクトリに作成します。 この手順では、2 つのリンクされたサービスを作成します (タイプ: Azure Storage、Azure SQL Database)。 
+
     AzureStorageLinkedService は、Azure ストレージ アカウントをデータ ファクトリにリンクします。 [前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部として、コンテナーを作成し、データをこのストレージ アカウントにアップロードしました。   
 
     AzureSqlLinkedService は、Azure SQL Database をデータ ファクトリにリンクします。 Blob Storage からコピーされたデータは、このデータベースに格納されます。 [前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部として、このデータベースに SQL テーブルを作成しました。   
-1. 入力および出力**データセット**をデータ ファクトリに作成します。  
-    
+1. 入力および出力 **データセット** をデータ ファクトリに作成します。  
+
     Azure Storage のリンクされたサービスは、Data Factory サービスが実行時に Azure ストレージ アカウントへの接続に使用する接続文字列を指定します。 また、入力 BLOB データセットは、コンテナーと、入力データが含まれているフォルダーを指定します。  
 
     同様に、Azure SQL Database のリンクされたサービスは、Data Factory サービスが実行時にデータベースへの接続に使用する接続文字列を指定します。 出力 SQL テーブル データセットは、BLOB ストレージのデータのコピー先となるデータベース内のテーブルを指定します。
-1. データ ファクトリに**パイプライン**を作成します。 この手順では、コピー アクティビティのあるパイプラインを作成します。   
-    
+1. データ ファクトリに **パイプライン** を作成します。 この手順では、コピー アクティビティのあるパイプラインを作成します。   
+
     コピー アクティビティでは、Azure Blob Storage の BLOB から Azure SQL Database のテーブルにデータをコピーします。 パイプラインでコピー アクティビティを使用して、任意のサポートされているソースから任意のサポートされているターゲットにデータをコピーできます。 サポートされているデータ ストアの一覧については、[データ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関する記事を参照してください。 
-1. パイプラインを監視します。 この手順では、PowerShell を使用して、入力および出力データセットのスライスを**監視**します。
+1. パイプラインを監視します。 この手順では、PowerShell を使用して、入力および出力データセットのスライスを **監視** します。
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 > [!IMPORTANT]
@@ -76,14 +76,14 @@ ms.locfileid: "85254363"
 
 データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインには、1 つまたは複数のアクティビティを含めることができます。 たとえば、コピー元からコピー先のデータ ストアにデータをコピーするコピー アクティビティや、Hive スクリプトを実行し、入力データを変換して出力データを生成する HDInsight Hive アクティビティなどを含めることができます。 それでは、この手順でデータ ファクトリの作成から始めましょう。
 
-1. **PowerShell**を起動します。 Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
+1. **PowerShell** を起動します。 Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
 
     次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
 
     ```powershell
     Connect-AzAccount
     ```   
-   
+
     次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
 
     ```powershell
@@ -100,8 +100,8 @@ ms.locfileid: "85254363"
     ```powershell
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
-    
-    このチュートリアルの一部の手順は、 **ADFTutorialResourceGroup**という名前のリソース グループを使用することを前提としています。 異なるリソース グループを使用する場合は、このチュートリアルで ADFTutorialResourceGroup の代わりにそのリソース グループを使用する必要があります。
+
+    このチュートリアルの一部の手順は、 **ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 異なるリソース グループを使用する場合は、このチュートリアルで ADFTutorialResourceGroup の代わりにそのリソース グループを使用する必要があります。
 1. **New-AzDataFactory** コマンドレットを実行し、**ADFTutorialDataFactoryPSH** という名前のデータ ファクトリを作成します。  
 
     ```powershell
@@ -190,7 +190,7 @@ AzureSqlLinkedService は、Azure SQL Database をデータ ファクトリに�
 
     > [!IMPORTANT]
     > &lt;servername&gt;、&lt;databasename&gt;、&lt;username@servername&gt;、&lt;password&gt; を、サーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
-    
+
     ```json
     {
         "name": "AzureSqlLinkedService",
@@ -207,7 +207,7 @@ AzureSqlLinkedService は、Azure SQL Database をデータ ファクトリに�
     ```powershell
     New-AzDataFactoryLinkedService $df -File .\AzureSqlLinkedService.json
     ```
-    
+
     出力例を次に示します。
 
     ```
@@ -278,11 +278,11 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     |:--- |:--- |
     | type | データは Azure Blob Storage に存在するため、type プロパティを **AzureBlob** に設定しています。 |
     | linkedServiceName | 前に作成した **AzureStorageLinkedService** を参照します。 |
-    | folderPath | BLOB **コンテナー**と、入力 BLOB を格納する**フォルダー**を指定します。 このチュートリアルでは、adftutorial は BLOB コンテナーで、フォルダーはルート フォルダーです。 | 
+    | folderPath | BLOB **コンテナー** と、入力 BLOB を格納する **フォルダー** を指定します。 このチュートリアルでは、adftutorial は BLOB コンテナーで、フォルダーはルート フォルダーです。 | 
     | fileName | このプロパティは省略可能です。 このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。 このチュートリアルでは fileName に **emp.txt** が指定されているため、このファイルのみが処理のために取得されます。 |
     | format -> type |入力ファイルはテキスト形式のため、**TextFormat** を使用します。 |
-    | columnDelimiter | 入力ファイル内の列は**コンマ (`,`)** で区切られています。 |
-    | frequency/interval | frequency を **Hour** に設定し、interval を **1** に設定しています。つまり、**1 時間ごと**に入力スライスが取得されます。 言い換えると、Data Factory サービスは、指定された BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。 パイプラインの開始時刻の前または終了時刻の後ではなく、開始時刻と終了時刻の間のデータが検索されます。  |
+    | columnDelimiter | 入力ファイル内の列は **コンマ (`,`)** で区切られています。 |
+    | frequency/interval | frequency を **Hour** に設定し、interval を **1** に設定しています。つまり、**1 時間ごと** に入力スライスが取得されます。 言い換えると、Data Factory サービスは、指定された BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。 パイプラインの開始時刻の前または終了時刻の後ではなく、開始時刻と終了時刻の間のデータが検索されます。  |
     | external | このパイプラインによってデータが生成されない場合は、このプロパティを **true** に設定します。 このチュートリアルの入力データは emp.txt ファイルに存在し、このパイプラインで生成されるわけではないため、このプロパティを true に設定します。 |
 
     これらの JSON プロパティの詳細については、[Azure BLOB コネクタ](data-factory-azure-blob-connector.md#dataset-properties)に関する記事を参照してください。
@@ -306,7 +306,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     ```
 
 ### <a name="create-an-output-dataset"></a>出力データセットを作成する
-手順のこの部分では、 **OutputDataset**という名前の出力データセットを作成します。 このデータセットは、**AzureSqlLinkedService** で表される Azure SQL Database 内の SQL テーブルをポイントします。 
+手順のこの部分では、 **OutputDataset** という名前の出力データセットを作成します。 このデータセットは、**AzureSqlLinkedService** で表される Azure SQL Database 内の SQL テーブルをポイントします。 
 
 1. 以下の内容を記述した **OutputDataset.json** という名前の JSON ファイルを **C:\ADFGetStartedPSH** フォルダー内に作成します。
 
@@ -343,8 +343,8 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     |:--- |:--- |
     | type | type プロパティを **AzureSqlTable** に設定します。これは、データを Azure SQL Database のテーブルにコピーするためです。 |
     | linkedServiceName | 前に作成した **AzureSqlLinkedService** を参照します。 |
-    | tableName | データのコピー先となる**テーブル**を指定します。 | 
-    | frequency/interval | frequency は **Hour**、interval は **1** に、それぞれ設定されています。これは、出力スライスがパイプラインの開始時刻から終了時刻までの間 **1 時間ごと**に生成されることを表します (出力スライスは、開始時刻の前および終了時刻の後には生成されません)。  |
+    | tableName | データのコピー先となる **テーブル** を指定します。 | 
+    | frequency/interval | frequency は **Hour**、interval は **1** に、それぞれ設定されています。これは、出力スライスがパイプラインの開始時刻から終了時刻までの間 **1 時間ごと** に生成されることを表します (出力スライスは、開始時刻の前および終了時刻の後には生成されません)。  |
 
     データベース内の emp テーブルには、**ID**、**FirstName**、**LastName** の 3 つの列があります。 ID は ID 列であるため、ここで指定する必要があるのは **FirstName** と **LastName** のみです。
 
@@ -370,10 +370,9 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     ```
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する
-この手順では、**InputDataset** を入力、**OutputDataset** を出力として使用する**コピー アクティビティ**を備えたパイプラインを作成します。
+この手順では、**InputDataset** を入力、**OutputDataset** を出力として使用する **コピー アクティビティ** を備えたパイプラインを作成します。
 
 現在、スケジュールは出力データセットによって開始されます。 このチュートリアルでは、1 時間ごとにスライスを生成するように出力データセットを構成します。 パイプラインの開始時刻と終了時刻の差は 1 日 (24 時間) です。 したがって、24 個の出力データセットのスライスがパイプラインによって生成されます。 
-
 
 1. 以下の内容を記述した **ADFTutorialPipeline.json** という名前の JSON ファイルを **C:\ADFGetStartedPSH** フォルダー内に作成します。
 
@@ -420,17 +419,17 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     } 
     ```
     以下の点に注意してください。
-   
+
    - activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。 コピー アクティビティの詳細については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。 Data Factory ソリューションでは、[データ変換アクティビティ](data-factory-data-transformation-activities.md)を使用することもできます。
    - アクティビティの入力を **InputDataset** に設定し、出力を **OutputDataset** に設定します。 
    - **typeProperties** セクションでは、ソースの種類として **BlobSource** が指定され、シンクの種類として **SqlSink** が指定されています。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの完全な一覧については、[サポートされるデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するセクションを参照してください。 サポートされているデータ ストアをソースおよびシンクとして使用する方法については、表内のリンクをクリックしてください。  
-     
+
      **start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。 日付の部分のみを指定し、時刻の部分をスキップすることもできます。 たとえば、"2016-02-03" と "2016-02-03T00:00:00Z" は同じです。
-     
+
      start と end の日時は、いずれも [ISO 形式](https://en.wikipedia.org/wiki/ISO_8601)である必要があります。 次に例を示します。2016-10-14T16:32:41Z。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。 
-     
+
      **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティの値として指定します。
-     
+
      前の例では、各データ スライスが 1 時間ごとに生成されるため、データ スライスは 24 個になります。
 
      パイプライン定義内の JSON プロパティの説明については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 コピー アクティビティ定義内の JSON プロパティの説明については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。 BlobSource でサポートされる JSON プロパティの説明については、[Azure BLOB コネクタ](data-factory-azure-blob-connector.md)に関する記事を参照してください。 SqlSink でサポートされる JSON プロパティの説明については、[Azure SQL Database コネクタ](data-factory-azure-sql-connector.md)に関する記事を参照してください。
@@ -465,12 +464,12 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     ```powershell
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH0516
     ```
-    
+
     次に、$df の内容を表示して次の出力を確認します。 
-    
+
     ```
     PS C:\ADFGetStartedPSH> $df
-    
+
     DataFactoryName   : ADFTutorialDataFactoryPSH0516
     DataFactoryId     : 6f194b34-03b3-49ab-8f03-9f8a7b9d3e30
     ResourceGroupName : ADFTutorialResourceGroup
@@ -510,7 +509,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     State             : InProgress
     SubState          :
     LatencyStatus     :
-    LongRetryCount    : 0   
+    LongRetryCount    : 0
 
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : ADFTutorialDataFactoryPSH0516
@@ -523,7 +522,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     LatencyStatus     :
     LongRetryCount    : 0
     ```
-1. **Get-AzDataFactoryRun** を実行して、**特定の**スライスに関するアクティビティの実行の詳細を取得します。 前のコマンドの出力から日付/時刻値をコピーして、StartDateTime パラメーターの値を指定します。 
+1. **Get-AzDataFactoryRun** を実行して、**特定の** スライスに関するアクティビティの実行の詳細を取得します。 前のコマンドの出力から日付/時刻値をコピーして、StartDateTime パラメーターの値を指定します。 
 
     ```powershell  
     Get-AzDataFactoryRun $df -DatasetName OutputDataset -StartDateTime "5/11/2017 09:00:00 PM"
@@ -556,13 +555,13 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 ## <a name="summary"></a>まとめ
 このチュートリアルでは、Azure Data Factory を作成し、Azure BLOB から Azure SQL Database にデータをコピーしました。 また、PowerShell を使用して、データ ファクトリ、リンクされたサービス、データセット、パイプラインを作成しました。 以下は、このチュートリアルで実行した手順の概要です。  
 
-1. Azure **データ ファクトリ**を作成しました。
-1. 次の **リンクされたサービス**を作成しました。
+1. Azure **データ ファクトリ** を作成しました。
+1. 次の **リンクされたサービス** を作成しました。
 
    a. 入力データを保持する Azure ストレージ アカウントをリンクするための、**Azure Storage** のリンクされたサービス。     
    b. 出力データを保持する Azure SQL データベースをリンクするための、**Azure SQL** のリンクされたサービス。
 1. パイプラインの入力データと出力データを記述する **データセット** を作成しました。
-1. ソースとして **BlobSource**、シンクとして **SqlSink** を持つ**コピー アクティビティ**がある**パイプライン**を作成しました。
+1. ソースとして **BlobSource**、シンクとして **SqlSink** を持つ **コピー アクティビティ** がある **パイプライン** を作成しました。
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure Blob Storage をコピー操作のソース データ ストア、Azure SQL Database をターゲット データ ストアとして使用しました。 次の表は、コピー アクティビティによってソースおよびターゲットとしてサポートされているデータ ストアの一覧です。 

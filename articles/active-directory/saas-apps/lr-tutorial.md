@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 1376dcb76c22bcd70937f533d337ee9679e9dc59
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 832c08123904b9fb889231faa86c1308704a2581
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455833"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606421"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-loginradius"></a>チュートリアル: Azure Active Directory と LoginRadius の統合
 
@@ -151,7 +151,7 @@ LoginRadius で Azure AD シングル サインオンを構成するには、次
        - SP の証明書キーを取得するコマンド: `openssl genrsa -out lr.hub.loginradius.com.key 2048`
 
        - SP の証明書を取得するコマンド: `openssl req -new -x509 -key lr.hub.loginradius.com.key -out lr.hub.loginradius.com.cert -days 3650 -subj /CN=lr.hub.loginradius.com`
-     
+
        > [!NOTE]
        > 証明書と証明書キーの値は、必ずヘッダーとフッターを付けて入力してください。
        > - 証明書の値の形式 (入力例): `-----BEGIN CERTIFICATE-----<certifciate value>-----END CERTIFICATE-----`

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 9a62576b65be04414580b42377398e27c4aa389c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3cca568245dfce01fb96d7a46590cb72349213ac
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353563"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591924"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-web-cargo-air"></a>チュートリアル:Web Cargo Air との Azure Active Directory シングル サインオン (SSO) 統合
 
@@ -88,7 +88,7 @@ Web Cargo Air に対して Azure AD SSO を構成してテストするには、�
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
-    ![The Certificate download link](common/certificatebase64.png)
+    ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
 1. **[Web Cargo Air のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
