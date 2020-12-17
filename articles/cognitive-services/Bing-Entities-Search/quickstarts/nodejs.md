@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 8634cb009d801c7edbb14682bf9d83c25ba111a5
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b9311329ea4115d49f36dd7d39782bbd748a356b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351437"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106106"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>クイック スタート:Node.js を使用して Bing Entity Search REST API に検索要求を送信する
 
@@ -87,15 +87,15 @@ ms.locfileid: "96351437"
     let json = JSON.stringify(JSON.parse(body), null, '  ');
     console.log (json);
     });
-        ```
+    ```
 
-## Send a request
+## <a name="send-a-request"></a>要求を送信する
 
-1. Create a function called `Search()` to send a search request. In it, perform the following steps:
+1. 検索要求を送信するための `Search()` という関数を作成します。 その中で、次の手順を実行します。
 
-2. Within this function, create a JSON object containing your request parameters. Use `Get` for the method, and add your host and path information. Add your subscription key to the `Ocp-Apim-Subscription-Key` header. 
+2. この関数内で、要求パラメーターを含む JSON オブジェクトを作成します。 メソッドに `Get` を使用し、ホストとパスの情報を追加します。 お使いのサブスクリプション キーを `Ocp-Apim-Subscription-Key` ヘッダーに追加します。 
 
-3. Use `https.request()` to send the request with the response handler created previously, and your search parameters.
+3. `https.request()` を使用して、前に作成した応答ハンドラーと検索パラメーターを含む要求を送信します。
     
    ```javascript
    let Search = function () {
