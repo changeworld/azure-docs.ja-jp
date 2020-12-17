@@ -78,9 +78,9 @@ EMS の詳細については、[Enterprise Mobility + Security の Web サイト
 ![謝意が示された確認ボックス](media/active-directory-get-started-premium/MOLSThankYou.png)
 
 ## <a name="activate-your-azure-ad-access"></a>Azure AD アクセスをアクティブ化する
-新しい Azure AD Premium ライセンスを既存のサブスクリプションに追加している場合は、あらかじめ Azure AD アクセスがアクティブ化されている必要があります。 それ以外の場合は、**ウェルカム メール**を受信した後で Azure AD アクセスをアクティブ化する必要があります。  
+新しい Azure AD Premium ライセンスを既存のサブスクリプションに追加している場合は、あらかじめ Azure AD アクセスがアクティブ化されている必要があります。 それ以外の場合は、**ウェルカム メール** を受信した後で Azure AD アクセスをアクティブ化する必要があります。  
 
-購入済みのライセンスがディレクトリでプロビジョニングされた後、**ウェルカム メール**を受信します。 このメールで、Azure AD Premium または Enterprise Mobility + Security のライセンスと機能の管理を開始できることを確認します。 
+購入済みのライセンスがディレクトリでプロビジョニングされた後、**ウェルカム メール** を受信します。 このメールで、Azure AD Premium または Enterprise Mobility + Security のライセンスと機能の管理を開始できることを確認します。 
 
 > [!TIP]
 > ウェルカム メールから Azure AD ディレクトリをアクティブ化するまで、新しいテナントの Azure AD にはアクセスできません。
