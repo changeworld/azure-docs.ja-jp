@@ -1,18 +1,18 @@
 ---
 title: Azure SQL Database Managed Instance の登録とスキャン
 description: このチュートリアルでは、Azure SQL Database Managed Instance をスキャンする方法について説明します
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 09fcaf0fb0c358c1e94d5cd7064c225d7f185ee0
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 6eb17537fd64b192f64c36b38bab57e11d751328
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920312"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400779"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の登録とスキャン
 
@@ -58,7 +58,7 @@ Azure SQL Database Managed Instance のログインが使用可能になって�
 1. **[+ Generate/Import]\(+ 生成/インポート\)** を選択し、**名前** と **値** を Azure SQL Database Managed Instance の "*パスワード*" として入力します
 1. **[作成]** を選択して完了します
 1. 自分のキー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります
-1. 最後に、**ユーザー名** と **パスワード** を使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
+1. 最後に、**ユーザー名** と **パスワード** を使用して [新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
 
 #### <a name="service-principal-and-managed-identity"></a>サービス プリンシパルとマネージド ID
 

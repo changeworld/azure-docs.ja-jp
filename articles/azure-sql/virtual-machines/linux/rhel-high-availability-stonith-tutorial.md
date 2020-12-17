@@ -2,18 +2,17 @@
 title: Azure の RHEL 仮想マシンで SQL Server の可用性グループを構成する - Linux 仮想マシン | Microsoft Docs
 description: RHEL クラスター環境における高可用性の設定について学習し、STONITH を設定します
 ms.service: virtual-machines-linux
-ms.subservice: ''
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: 8e7ccacce732da4a0194af959abe94438451028a
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 533f5c9e38818a8e37482cbbb3a90602366eca6f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559050"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587215"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>チュートリアル:Azure の RHEL 仮想マシンで SQL Server の可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -946,6 +945,9 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
 ## <a name="create-availability-group-resources-in-the-pacemaker-cluster"></a>Pacemaker クラスター内に可用性グループのリソースを作成する
 
 ガイドに従って、[Pacemaker クラスター内に可用性グループのリソースを作成](/sql/linux/sql-server-linux-create-availability-group#create-the-availability-group-resources-in-the-pacemaker-cluster-external-only)します。
+
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "スレーブ" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 ### <a name="create-the-ag-cluster-resource"></a>AG クラスター リソースを作成する
 

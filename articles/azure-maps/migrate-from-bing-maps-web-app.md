@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: be0b2a3a15c77ae0de303f02be078f115b283eb9
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 6037deb484ca966ab3a54cc60b0d53ac8299d500
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897145"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590003"
 ---
 # <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>チュートリアル - Bing 地図から Web アプリを移行する
 
@@ -883,7 +883,7 @@ Bing 地図では、GeoJSON モジュールを使用して GeoJSON データを�
             var clusterSize = cluster.containedPushpins.length;
 
             var radius = 20;    //Default radius to 20 pixels.
-            var fillColor = 'lime';     //Default to lime green.
+            var fillColor = 'lime';   //Default to lime green.
 
             if (clusterSize >= 750) {
                 radius = 40;   //If point_count >= 750, radius is 40 pixels.

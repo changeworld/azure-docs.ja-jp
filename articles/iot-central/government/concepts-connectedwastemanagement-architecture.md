@@ -3,20 +3,18 @@ title: Azure IoT Central を使用して構築された、接続された廃棄�
 description: Azure IoT Central を使用して構築された、接続された廃棄物管理ソリューションの概念について説明します。
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 93a5d17ce5ea5ec60c67604efe5081d2b3425a84
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 94098a1a2a9ac1b4889ad165a65c8b9d50d734dd
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873694"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586807"
 ---
 # <a name="connected-waste-monitoring-reference-architecture"></a>接続された廃棄物監視の参照アーキテクチャ 
-
-
 
 接続された廃棄物管理ソリューションは、**Azure IoT Central アプリ テンプレート** を使用して、IoT アプリケーションのキック スターターとして構築できます。 この記事では、エンドツーエンド ソリューションを構築するための高度な参照アーキテクチャのガイダンスを提供します。 
 
@@ -27,8 +25,8 @@ ms.locfileid: "94873694"
 
 1. デバイスと接続  
 1. IoT Central 
-2. 拡張性と統合
-3. ビジネス アプリケーション
+1. 拡張性と統合
+1. ビジネス アプリケーション
 
 水消費量の監視ソリューションで一般的に役立つ主要なコンポーネントについて見ていきましょう。
 

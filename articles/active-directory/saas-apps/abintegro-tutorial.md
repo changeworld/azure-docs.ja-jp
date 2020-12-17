@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
-ms.openlocfilehash: a23cebed18965781f9ce52ae0efeee07128c01d0
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d8c785295380d3a90fde41f52b002f4686decad6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319046"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587368"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-abintegro"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Abintegro の統合
 
@@ -125,7 +125,7 @@ Abintegro で Azure AD SSO を構成してテストするには、次の構成�
 
 ## <a name="configure-abintegro-sso"></a>Abintegro の SSO の構成
 
-**Abintegro** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Abintegro サポート チーム](mailto:support@abintegro.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Abintegro** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Abintegro サポート チーム](mailto:support@abintegro.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-abintegro-test-user"></a>Abintegro のテスト ユーザーの作成
 

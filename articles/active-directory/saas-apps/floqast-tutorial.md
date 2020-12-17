@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 162c1341c792844dab27f98e67ebf7a48282bfc5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ed35a0b6e6f2ad620b528283a332507845e4f00d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92452733"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588274"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-floqast"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と FloQast の統合
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* FloQast では、 **SP と IDP** によって開始される SSO がサポートされます
+* FloQast では、**SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-floqast-from-the-gallery"></a>ギャラリーからの FloQast の追加
 
@@ -49,9 +49,8 @@ Azure AD への FloQast の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **FloQast** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**FloQast**」と入力します。
 1. [結果] パネルから **[FloQast]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-floqast"></a>FloQast の Azure AD シングル サインオンの構成とテスト
 
@@ -92,9 +91,9 @@ FloQast に対する Azure AD SSO を構成してテストするには、次の�
 
     | 名前 | ソース属性|
     | ------------- | -------------- |
-    | FirstName           | User.givenname |
-    | LastName            | User.surname |
-    | Email               | User.mail    |
+    | FirstName | User.givenname |
+    | LastName | User.surname |
+    | Email | User.mail    |
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -104,11 +103,11 @@ FloQast に対する Azure AD SSO を構成してテストするには、次の�
 
     ![SAML 署名証明書の編集](common/edit-certificate.png)
 
-    a. **[署名オプション]** で **[SAML 応答とアサーションへの署名]** を選択します。
-    
-    b. **[保存]**
+    1. **[署名オプション]** で **[SAML 応答とアサーションへの署名]** を選択します。
 
-    ![Communifire の署名オプション](./media/floqast-tutorial/tutorial-floqast-signing-option.png)
+    1. **[保存]**
+
+        ![Communifire の署名オプション](./media/floqast-tutorial/tutorial-floqast-signing-option.png)
 
 1. **[FloQast のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
@@ -162,7 +161,7 @@ FloQast に対する Azure AD SSO を構成してテストするには、次の�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
 - [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 

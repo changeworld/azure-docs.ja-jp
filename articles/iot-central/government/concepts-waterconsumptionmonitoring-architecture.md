@@ -3,20 +3,18 @@ title: Azure IoT Central を使用して構築された、水消費量の監視�
 description: Azure IoT Central で構築された、水消費量の監視ソリューションの概念について説明します。
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: df402064f2aa26e29ef72c0f73f8f5aa761506e2
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: a291a32c8fd635c9124a7e1f997b6c676c8c0bd4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873561"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586790"
 ---
 # <a name="water-consumption-monitoring-reference-architecture"></a>水消費量監視の参照アーキテクチャ 
-
-
 
 水消費量の監視ソリューションは、**Azure IoT Central アプリ テンプレート** を使用して、IoT アプリケーションのキック スターターとして構築できます。 この記事では、エンドツーエンド ソリューションを構築するための高度な参照アーキテクチャのガイダンスを提供します。 
 
@@ -26,8 +24,8 @@ ms.locfileid: "94873561"
 
 1. デバイスと接続  
 1. IoT Central 
-2. 拡張性と統合
-3. ビジネス アプリケーション
+1. 拡張性と統合
+1. ビジネス アプリケーション
 
 水消費量の監視ソリューションで一般的に役立つ主要なコンポーネントについて見ていきましょう。
 

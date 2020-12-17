@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0abe13c7c6a9f26746278aeede199a0860a54c0d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3f1dacb57931913edfb181f023bdf98717777d50
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779546"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562244"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>チュートリアル:Azure App Service Web アプリへの Azure CDN の追加
 
@@ -49,7 +49,7 @@ ms.locfileid: "92779546"
 
 ## <a name="create-the-web-app"></a>Web アプリの作成
 
-ここで扱う Web アプリは、 [静的 HTML のクイックスタート](../app-service/quickstart-html.md)の「 **アプリの参照** 」の手順に従って作成します。
+ここで扱う Web アプリは、[静的 HTML のクイックスタート](../app-service/quickstart-html.md)の「**アプリの参照**」の手順に従って作成します。
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
@@ -60,7 +60,7 @@ ms.locfileid: "92779546"
 
 ## <a name="create-a-cdn-profile-and-endpoint"></a>CDN プロファイルと CDN エンドポイントを作成する
 
-左側のナビゲーションで **[App Services]** を選択し、 [静的 HTML のクイック スタート](../app-service/quickstart-html.md)で作成したアプリを選択します。
+左側のナビゲーションで **[App Services]** を選択し、[静的 HTML のクイック スタート](../app-service/quickstart-html.md)で作成したアプリを選択します。
 
 ![ポータルで App Service アプリを選択](media/cdn-add-to-web-app/portal-select-app-services.png)
 
@@ -91,7 +91,7 @@ Azure によってプロファイルとエンドポイントが作成されま�
    - **Azure CDN Standard from Akamai** プロファイルの場合、通常、反映は 1 分以内で完了します。 
    - **Azure CDN Standard from Verizon** プロファイルおよび **Azure CDN Premium from Verizon** プロファイルの場合、通常、反映は 90 分以内で完了します。 
 
-サンプル アプリには *index.html* ファイルのほか、静的な資産を格納する *css* 、 *img* 、 *js* の各フォルダーが存在します。 CDN エンドポイントでは、これらすべてのファイルに対して同じコンテンツ パスが使用されます。 たとえば次の 2 つの URL は、どちらも *css* フォルダー内の *bootstrap.css* ファイルにアクセスするものです。
+サンプル アプリには *index.html* ファイルのほか、静的な資産を格納する *css*、*img*、*js* の各フォルダーが存在します。 CDN エンドポイントでは、これらすべてのファイルに対して同じコンテンツ パスが使用されます。 たとえば次の 2 つの URL は、どちらも *css* フォルダー内の *bootstrap.css* ファイルにアクセスするものです。
 
 ```
 http://<appname>.azurewebsites.net/css/bootstrap.css
@@ -125,7 +125,7 @@ CDN はその配信元の Web アプリからのリソースを、Time to Live (
 
 ### <a name="deploy-a-change-to-the-web-app"></a>Web アプリに変更をデプロイする
 
-次の例のように、 *index.html* ファイルを開いて H1 見出しに *- V2* を追加します。 
+次の例のように、*index.html* ファイルを開いて H1 見出しに *- V2* を追加します。 
 
 ```
 <h1>Azure App Service - Sample Static HTML Site - V2</h1>
@@ -135,7 +135,7 @@ CDN はその配信元の Web アプリからのリソースを、Time to Live (
 
 ```bash
 git commit -am "version 2"
-git push azure master
+git push azure main
 ```
 
 デプロイの完了後、ブラウザーで Web アプリの URL にアクセスして変更を表示します。
@@ -226,14 +226,14 @@ Azure CDN から Web アプリの最新のコンテンツが返されます。�
 
 このページを確実に CDN にキャッシュするには、ページを最新の情報に更新します。 
 
-*index.html* を開き、 *V2* を *V3* に変更してから、変更をデプロイします。 
+*index.html* を開き、*V2* を *V3* に変更してから、変更をデプロイします。 
 
 ```bash
 git commit -am "version 3"
-git push azure master
+git push azure main
 ```
 
-CDN エンドポイントの URL に新しいクエリ文字列 (`q=2` など) を追加し、ブラウザーでアクセスします。 Azure CDN によって最新の *index.html* ファイルが取得され、 *V3* と表示されます。 ただし、`q=1` というクエリ文字列で CDN エンドポイントにアクセスした場合は、 *V2* と表示されます。
+CDN エンドポイントの URL に新しいクエリ文字列 (`q=2` など) を追加し、ブラウザーでアクセスします。 Azure CDN によって最新の *index.html* ファイルが取得され、*V3* と表示されます。 ただし、`q=1` というクエリ文字列で CDN エンドポイントにアクセスした場合は、*V2* と表示されます。
 
 ```
 http://<endpointname>.azureedge.net/index.html?q=2

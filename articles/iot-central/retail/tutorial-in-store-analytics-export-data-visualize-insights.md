@@ -11,15 +11,14 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: f00448f19cc0a2118477a9527005548fea25537e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: fca9a72fa237a11a02b6d4fbe30ebba5857384cf
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187274"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346369"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>チュートリアル:Azure IoT Central からデータをエクスポートし、Power BI で分析情報を視覚化する
-
 
 
 前の 2 つのチュートリアルでは、**ストア内の分析 - チェックアウト** アプリケーション テンプレートを使用して、IoT Central アプリケーションを作成し、カスタマイズしました。 このチュートリアルでは、デバイスから収集されたテレメトリをエクスポートするように、IoT Central アプリケーションを構成します。 その後、Power BI を使用して、店のマネージャーがテレメトリから得られた分析情報を視覚化するためのカスタム ダッシュボードを作成します。

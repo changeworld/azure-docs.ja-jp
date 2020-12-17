@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: f7b7b8c7b1106bd3c0a6732867946c42df8438c1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 49cf54bda985f7d97b2db6a3ada7859aee829cff
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097279"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359542"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>チュートリアル:JavaScript SDK を使用して Node.js Web アプリを構築して Azure Cosmos DB の SQL API アカウントを管理する 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -104,9 +104,9 @@ ms.locfileid: "93097279"
 最初の設定と構成が済んだら、Todo アプリケーションが Azure Cosmos DB と通信を行うために必要なコードを作成します。
 
 ### <a name="create-the-model"></a>モデルを作成する
-1. お客様のプロジェクト ディレクトリのルートに、 **models** という名前の新しいディレクトリを作成します。  
+1. お客様のプロジェクト ディレクトリのルートに、**models** という名前の新しいディレクトリを作成します。  
 
-2. **models** ディレクトリ内に、 **taskDao.js** という名前の新しいファイルを作成します。 このファイルには、データベースとコンテナーの作成に必要なコードを含めます。 また、Azure Cosmos DB 内のタスクの読み取り、更新、作成、および検索を行うメソッドも定義します。 
+2. **models** ディレクトリ内に、**taskDao.js** という名前の新しいファイルを作成します。 このファイルには、データベースとコンテナーの作成に必要なコードを含めます。 また、Azure Cosmos DB 内のタスクの読み取り、更新、作成、および検索を行うメソッドも定義します。 
 
 3. 次のコードを **taskDao.js** ファイルにコピーします。
 
@@ -189,9 +189,9 @@ ms.locfileid: "93097279"
 
 ### <a name="create-the-controller"></a>コントローラーの作成
 
-1. プロジェクトの **routes** ディレクトリ内に、 **tasklist.js** という名前の新しいファイルを作成します。  
+1. プロジェクトの **routes** ディレクトリ内に、**tasklist.js** という名前の新しいファイルを作成します。  
 
-2. 次のコードを **tasklist.js** に追加します。 このコードによって、 **tasklist.js** で使用される CosmosClient および async モジュールが読み込まれます。 また、 **TaskList** クラスが定義されます。先ほど定義した **TaskDao** オブジェクトのインスタンスとして、このクラスが渡されます。
+2. 次のコードを **tasklist.js** に追加します。 このコードによって、**tasklist.js** で使用される CosmosClient および async モジュールが読み込まれます。 また、**TaskList** クラスが定義されます。先ほど定義した **TaskDao** オブジェクトのインスタンスとして、このクラスが渡されます。
    
    ```javascript
     const TaskDao = require("../models/TaskDao");
@@ -250,7 +250,7 @@ ms.locfileid: "93097279"
 
 ### <a name="add-configjs"></a>config.js の追加
 
-1. プロジェクト ディレクトリのルートに、 **config.js** という名前の新しいファイルを作成します。 
+1. プロジェクト ディレクトリのルートに、**config.js** という名前の新しいファイルを作成します。 
 
 2. 次のコードを **config.js** ファイルに追加します。 このコードにより、アプリケーションに必要な値と構成設定が定義されます。
    
@@ -273,7 +273,7 @@ ms.locfileid: "93097279"
    module.exports = config;
    ```
 
-3. [Azure portal](https://portal.azure.com) にあるお客様の Azure Cosmos DB アカウントの [キー] ページで見つかる値を使用して、 **config.js** ファイルの HOST および AUTH_KEY の値を更新します。 
+3. [Azure portal](https://portal.azure.com) にあるお客様の Azure Cosmos DB アカウントの [キー] ページで見つかる値を使用して、**config.js** ファイルの HOST および AUTH_KEY の値を更新します。 
 
 4. **config.js** ファイルを保存して閉じます。
 
@@ -356,7 +356,7 @@ ms.locfileid: "93097279"
     module.exports = app
    ```
 
-3. 最後に、 **app.js** ファイルを保存して閉じます。
+3. 最後に、**app.js** ファイルを保存して閉じます。
 
 ## <a name="build-a-user-interface"></a><a name="_Toc395783181"></a>ユーザー インターフェイスを構築する
 
@@ -470,7 +470,7 @@ ms.locfileid: "93097279"
 3. アプリケーションをリモートにプッシュすることによって、アプリケーションをデプロイします。
    
    ```bash
-   git push azure master
+   git push azure main
    ```
 
 4. 数秒後に、Web アプリケーションが公開され、ブラウザーで起動されます。

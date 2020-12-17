@@ -6,16 +6,16 @@ ms.date: 09/09/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 310637ce099aca7b8b9057a674d6b2094b008a87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba1797da5a78eeebd25f5df1b6e37eb92470f584
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613613"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106922"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>チュートリアル:Azure portal からエクスポートしたテンプレートを使用する
 
-このチュートリアル シリーズでは、Azure ストレージ アカウントをデプロイするためのテンプレートを作成しました。 次の 2 つのチュートリアルでは、"*App Service プラン*" と "*Web サイト*" を追加します。 テンプレートを最初から作成する代わりに、Azure portal からテンプレートをエクスポートする方法と、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)」からサンプル テンプレートを使用する方法について説明します。 それらのテンプレートを自分用にカスタマイズします。 このチュートリアルでは、テンプレートのエクスポートと、テンプレートの結果のカスタマイズに焦点を当てます。 所要時間は約 **14 分**です。
+このチュートリアル シリーズでは、Azure ストレージ アカウントをデプロイするためのテンプレートを作成しました。 次の 2 つのチュートリアルでは、"*App Service プラン*" と "*Web サイト*" を追加します。 テンプレートを最初から作成する代わりに、Azure portal からテンプレートをエクスポートする方法と、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)」からサンプル テンプレートを使用する方法について説明します。 それらのテンプレートを自分用にカスタマイズします。 このチュートリアルでは、テンプレートのエクスポートと、テンプレートの結果のカスタマイズに焦点を当てます。 所要時間は約 **14 分** です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -62,12 +62,12 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
    テンプレートのエクスポート機能では、リソースの現在の状態が取得されて、それをデプロイするためのテンプレートが生成されます。 テンプレートのエクスポートは、リソースをデプロイするために必要な JSON をすばやく取得する方法として便利な場合があります。
 
-1. エクスポートされたテンプレートで **Microsoft.Web/serverfarms** 定義とパラメーター定義を確認します。 これらのセクションをコピーする必要はありません。 このエクスポートされたテンプレートは、このリソースをテンプレートに追加する方法の例としてのみ使用できます。
+1. エクスポートされたテンプレートで `Microsoft.Web/serverfarms` 定義とパラメーター定義を確認します。 これらのセクションをコピーする必要はありません。 このエクスポートされたテンプレートは、このリソースをテンプレートに追加する方法の例としてのみ使用できます。
 
     ![Resource Manager テンプレート、テンプレートのエクスポート、エクスポートされたテンプレート](./media/template-tutorial-export-template/resource-manager-template-exported-template.png)
 
 > [!IMPORTANT]
-> 通常、エクスポートされたテンプレートには、テンプレートの作成に必要なものより詳細な情報が含まれます。 たとえば、エクスポートされたテンプレートの SKU オブジェクトには、5 つのプロパティがあります。 このテンプレートでも機能しますが、**name** プロパティだけを使用することもできます。 エクスポートしたテンプレートから始めて、必要に応じて変更できます。
+> 通常、エクスポートされたテンプレートには、テンプレートの作成に必要なものより詳細な情報が含まれます。 たとえば、エクスポートされたテンプレートの SKU オブジェクトには、5 つのプロパティがあります。 このテンプレートでも機能しますが、`name` プロパティだけを使用することもできます。 エクスポートしたテンプレートから始めて、必要に応じて変更できます。
 
 ## <a name="revise-existing-template"></a>既存のテンプレートを修正する
 
@@ -83,7 +83,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 テンプレートをデプロイするには、Azure CLI または Azure PowerShell を使用します。
 
-まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、**templateFile** 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
+まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、`templateFile` 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -111,7 +111,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> デプロイに失敗した場合は、**verbose** スイッチを使用して、作成しているリソースに関する情報を取得します。 デバッグの詳細については、**debug** スイッチを使用してください。
+> デプロイに失敗した場合は、`verbose` スイッチを使用して、作成しているリソースに関する情報を取得します。 デバッグの詳細については、`debug` スイッチを使用してください。
 
 ## <a name="verify-deployment"></a>デプロイの確認
 

@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: e55638e20bceb6df4b8e74375d67836123167162
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 7acfb168462354017168ee333ea0b1ecaea434c1
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931743"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107126"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>チュートリアル:ARM テンプレートに出力を追加する
 
@@ -41,17 +41,17 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 追加した出力値については、注目すべき重要な事柄がいくつかあります。
 
-返される値の型は **object** に設定されています。これは JSON オブジェクトが返されることを意味します。
+返される値の型は `object` に設定されています。これは JSON オブジェクトが返されることを意味します。
 
 ストレージ アカウントの実行時の状態を取得するために、[reference](template-functions-resource.md#reference) 関数が使用されています。 リソースの実行時の状態を取得するには、リソースの名前または ID を渡します。 このケースでは、ストレージ アカウントの名前を作成する際に使用した変数を使用します。
 
-最後に、ストレージ アカウントの **primaryEndpoints** プロパティを返します。
+最後に、ストレージ アカウントの `primaryEndpoints` プロパティを返します。
 
 ## <a name="deploy-template"></a>テンプレートのデプロイ
 
 それではテンプレートをデプロイして、返される値を見てみましょう。
 
-まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、**templateFile** 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
+まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、`templateFile` 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -92,7 +92,7 @@ az deployment group create \
 ```
 
 > [!NOTE]
-> デプロイに失敗した場合は、**verbose** スイッチを使用して、作成しているリソースに関する情報を取得します。 デバッグの詳細については、**debug** スイッチを使用してください。
+> デプロイに失敗した場合は、`verbose` スイッチを使用して、作成しているリソースに関する情報を取得します。 デバッグの詳細については、`debug` スイッチを使用してください。
 
 ## <a name="review-your-work"></a>作業を振り返る
 

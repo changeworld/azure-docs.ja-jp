@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 2f2ad0cb67a41c0a5c59f6428a4912bd91a00e56
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 42da33fe874b6dea43bc16009dd27b70e6c3f535
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318801"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589915"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>チュートリアル:Amazon ビジネスと Azure Active Directory の統合
 
@@ -103,25 +103,25 @@ Amazon ビジネスで Azure AD SSO を構成してテストするには、次�
 
     ![スクリーンショットは [User Attributes & Claims]\(ユーザー属性とクレーム\) を示しています。[Givenname]\(名\) の user.givenname や [Emailaddress]\(メール アドレス\) の user.mail など、既定値が表示されています。](media/amazon-business-tutorial/map-attribute3.png)
 
-1. 属性を編集し、これらの属性の**名前空間**の値をメモ帳にコピーします。
+1. 属性を編集し、これらの属性の **名前空間** の値をメモ帳にコピーします。
 
     ![このスクリーンショットは、[クレーム名] 列と [値] 列が表示された状態の [User Attributes & Claims]\(ユーザー属性と要求\) を示しています。](media/amazon-business-tutorial/map-attribute4.png)
 
 1. その他に、Amazon ビジネス アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[グループ要求]** ダイアログの **[ユーザー属性と要求]** セクションで、次の手順を実行します。
 
-    a. **[Groups returned in claim]\(要求で返されるグループ\)** の横にある**ペン**をクリックします。
+    1. **[Groups returned in claim]\(要求で返されるグループ\)** の横にある **ペン** をクリックします。
 
-    ![このスクリーンショットは、[クレームで返されるグループ] のアイコンが選択された状態の [User Attributes & Claims]\(ユーザー属性と要求\) を示しています。](./media/amazon-business-tutorial/config04.png)
+        ![このスクリーンショットは、[クレームで返されるグループ] のアイコンが選択された状態の [User Attributes & Claims]\(ユーザー属性と要求\) を示しています。](./media/amazon-business-tutorial/config04.png)
 
-    ![このスクリーンショットは、この手順で説明されている値が表示された状態の [グループ クレーム] を示しています。](./media/amazon-business-tutorial/config05.png)
+        ![このスクリーンショットは、この手順で説明されている値が表示された状態の [グループ クレーム] を示しています。](./media/amazon-business-tutorial/config05.png)
 
-    b. ラジオ ボタンのリストから **[すべてのグループ]** を選択します。
+    1. ラジオ ボタンのリストから **[すべてのグループ]** を選択します。
 
-    c. **[ソース属性]** として **[グループ ID]** を選択します。
+    1. **[ソース属性]** として **[グループ ID]** を選択します。
 
-    d. **[グループ要求の名前をカスタマイズする]** チェック ボックスをオンにし、ご自分の組織の要件に従ってグループ名を入力します。
+    1. **[グループ要求の名前をカスタマイズする]** チェック ボックスをオンにし、ご自分の組織の要件に従ってグループ名を入力します。
 
-    e. **[保存]** をクリックします。
+    1. **[保存]** をクリックします。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードしてコンピューターに保存します。
 
@@ -135,7 +135,7 @@ Amazon ビジネスで Azure AD SSO を構成してテストするには、次�
 
 1. 別の Web ブラウザー ウィンドウで、ご使用の Amazon ビジネス企業サイトに管理者としてサインインします。
 
-1. **ユーザー プロファイル**をクリックし、 **[Business Settings]\(ビジネス設定\)** を選択します。
+1. **ユーザー プロファイル** をクリックし、 **[Business Settings]\(ビジネス設定\)** を選択します。
 
     ![ユーザー プロファイル](media/amazon-business-tutorial/user-profile.png)
 
@@ -154,7 +154,7 @@ Amazon ビジネスで Azure AD SSO を構成してテストするには、次�
 
     ![このスクリーンショットは、[Microsoft S S O]、[Requisitioner]\(要求者\)、および [次へ] が選択された状態の [New user account defaults]\(新しいユーザー アカウントの既定値\) を示しています。](media/amazon-business-tutorial/dafault-group2.png)
 
-1. **Upload your metadata file (メタデータ ファイルのアップロード)** ウィザードで、 **[Browse]\(参照\)** をクリックして、Azure portal からダウンロードした**メタデータ XML** ファイルをアップロードします。 **[Upload]\(アップロード\)** をクリックします。
+1. **Upload your metadata file (メタデータ ファイルのアップロード)** ウィザードで、 **[Browse]\(参照\)** をクリックして、Azure portal からダウンロードした **メタデータ XML** ファイルをアップロードします。 **[Upload]\(アップロード\)** をクリックします。
 
     ![このスクリーンショットは、[Upload your metadata file]\(メタデータ ファイルのアップロード\) を示しています。ここで、xml ファイルを参照してアップロードできます。](media/amazon-business-tutorial/connection-data1.png)
 

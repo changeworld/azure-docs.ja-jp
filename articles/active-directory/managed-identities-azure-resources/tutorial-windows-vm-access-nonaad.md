@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa17a18de8e71b099d6ed717974486203c4379f4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 668d3cb044512220ff7afbc165c77da704a9a5d7
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180508"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107517"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスする 
 
@@ -61,6 +61,20 @@ ms.locfileid: "96180508"
 1. **[確認および作成]** を選択します。
 1. **[作成]**
 
+### <a name="create-a-secret"></a>シークレットの作成
+
+次に、Key Vault にシークレットを追加し、VM で実行されているコードを使用して後で取得できるようにします。 このチュートリアルでは、PowerShell を使用していますが、この仮想マシンで実行されるすべてのコードに同じ概念が適用されます。
+
+1. 新しく作成した Key Vault に移動します。
+1. **[シークレット]** を選択し、**[追加]** をクリックします。
+1. **[生成/インポート]** を選択します。
+1. **[シークレットの作成]** 画面の **[アップロード オプション]** で、 **[手動]** を選択したままにします。
+1. シークレットの名前と値を指定します。  値は任意のものを指定できます。 
+1. アクティブ化した日付と有効期限の日付をクリアのままにし、**[有効]** を **[はい]** のままにします。 
+1. **[作成]** をクリックしてシークレットを作成します。
+
+   ![シークレットの作成](./media/msi-tutorial-windows-vm-access-nonaad/create-secret.png)
+
 ## <a name="grant-access"></a>アクセス権の付与
 
 仮想マシンで使用されるマネージド ID には、Key Vault に格納するシークレットを読み取るためのアクセス権を付与する必要があります。
@@ -76,19 +90,6 @@ ms.locfileid: "96180508"
 1. **[追加]** を選択します。
 1. **[保存]** を選択します。
 
-## <a name="create-a-secret"></a>シークレットの作成
-
-次に、Key Vault にシークレットを追加し、VM で実行されているコードを使用して後で取得できるようにします。 このチュートリアルでは、PowerShell を使用していますが、この仮想マシンで実行されるすべてのコードに同じ概念が適用されます。
-
-1. 新しく作成した Key Vault に移動します。
-1. **[シークレット]** を選択し、**[追加]** をクリックします。
-1. **[生成/インポート]** を選択します。
-1. **[シークレットの作成]** 画面の **[アップロード オプション]** で、 **[手動]** を選択したままにします。
-1. シークレットの名前と値を指定します。  値は任意のものを指定できます。 
-1. アクティブ化した日付と有効期限の日付をクリアのままにし、**[有効]** を **[はい]** のままにします。 
-1. **[作成]** をクリックしてシークレットを作成します。
-
-   ![シークレットの作成](./media/msi-tutorial-windows-vm-access-nonaad/create-secret.png)
 
 ## <a name="access-data"></a>データにアクセスする  
 

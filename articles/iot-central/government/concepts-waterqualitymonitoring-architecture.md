@@ -3,23 +3,19 @@ title: Azure IoT Central を使用して構築された水質監視ソリュー�
 description: Azure IoT Central で構築された水質監視ソリューションの概念について説明します。
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1c4cc7f5440aca27be085c238179cd0ab20b226a
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 229074ad97e6d066a358da19bbbd43158fe1d6fc
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874051"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586722"
 ---
 # <a name="water-quality-monitoring-reference-architecture"></a>水質監視の参照アーキテクチャ 
-
-
-
 水質監視ソリューションは、**Azure IoT Central アプリ テンプレート** を使って、IoT アプリケーションのキック スターターとして構築できます。 この記事では、エンドツーエンド ソリューションを構築するための高度な参照アーキテクチャのガイダンスを提供します。 
-
 
 ![水質監視アーキテクチャ](./media/concepts-waterqualitymonitoring-architecture/concepts-waterqualitymonitoring-architecture1.png)
 
@@ -27,8 +23,8 @@ ms.locfileid: "94874051"
 
 1. デバイスと接続  
 1. IoT Central 
-2. 拡張性と統合
-3. ビジネス アプリケーション
+1. 拡張性と統合
+1. ビジネス アプリケーション
 
 水質監視ソリューションで一般的に役立つ主要なコンポーネントについて見ていきましょう。
 

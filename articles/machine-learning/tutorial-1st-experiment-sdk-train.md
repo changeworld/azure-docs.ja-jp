@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 17bf7b3f457ff6046d92012ffd679ed4b9315530
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a2f76df05878151405d56b1bff5e588f426d9d92
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574124"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093555"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>チュートリアル:初めての機械学習モデルをトレーニングする (パート 3/4)
 
@@ -133,7 +133,7 @@ python src/train.py                             # train model
 :::row-end:::
 
 > [!div class="nextstepaction"]
-> [コントロール スクリプトを作成しました](?success=control-script#submit) [問題が発生しました](https://www.research.net/r/7CTJQQ?issue=control-script)
+> [コントロール スクリプトを作成しました](?success=control-script#submit) [問題が発生しました](https://www.research.net/r/7CTJQQN?issue=control-script)
 
 
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> Azure Machine Learning に実行を送信する
@@ -186,7 +186,7 @@ Azure Machine Learning では、キュレーションされた環境のコレク
 つまり、登録済み環境を使用すると時間を節約できます。 詳細については、[環境の使用方法](./how-to-use-environments.md)に関するページを参照してください。
 
 > [!div class="nextstepaction"]
-> [実行を送信しました](?success=test-w-environment#log) [問題が発生しました](https://www.research.net/r/7CTJQQ?issue=test-w-environment)
+> [実行を送信しました](?success=test-w-environment#log) [問題が発生しました](https://www.research.net/r/7CTJQQN?issue=test-w-environment)
 
 ## <a name="log-training-metrics"></a><a name="log"></a> トレーニング メトリックをログする
 
@@ -221,7 +221,7 @@ Azure Machine Learning のメトリックは次のとおりです。
 - スケーリングするように設計されているため、数百回の実験を実行してもこれらのベネフィットを維持できます。
 
 > [!div class="nextstepaction"]
-> [train.py に変更を加えました](?success=modify-train#log) [問題が発生しました](https://www.research.net/r/7CTJQQ?issue=modify-train)
+> [train.py に変更を加えました](?success=modify-train#log) [問題が発生しました](https://www.research.net/r/7CTJQQN?issue=modify-train)
 
 ### <a name="update-the-conda-environment-file"></a>Conda 環境ファイルを更新する
 
@@ -230,7 +230,7 @@ Azure Machine Learning のメトリックは次のとおりです。
 :::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/configuration/pytorch-aml-env.yml":::
 
 > [!div class="nextstepaction"]
-> [環境ファイルを更新しました](?success=update-environment#submit-again) [問題が発生しました](https://www.research.net/r/7CTJQQ?issue=update-environment)
+> [環境ファイルを更新しました](?success=update-environment#submit-again) [問題が発生しました](https://www.research.net/r/7CTJQQN?issue=update-environment)
 
 ### <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit-again"></a> Azure Machine Learning に実行を送信する
 このスクリプトをもう一度送信します。
@@ -244,7 +244,7 @@ python 04-run-pytorch.py
 :::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="[メトリック] タブのトレーニング損失グラフ":::
 
 > [!div class="nextstepaction"]
-> [実行を再送信しました](?success=resubmit-with-logging#next-steps) [問題が発生しました](https://www.research.net/r/7CTJQQ?issue=resubmit-with-logging)
+> [実行を再送信しました](?success=resubmit-with-logging#next-steps) [問題が発生しました](https://www.research.net/r/7CTJQQN?issue=resubmit-with-logging)
 
 ## <a name="next-steps"></a>次の手順
 

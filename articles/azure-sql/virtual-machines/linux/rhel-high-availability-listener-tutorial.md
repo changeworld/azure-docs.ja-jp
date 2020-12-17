@@ -2,24 +2,23 @@
 title: Azure の RHEL 仮想マシンで SQL Server の可用性グループ リスナーを構成する - Linux 仮想マシン | Microsoft Docs
 description: Azure の RHEL 仮想マシンで SQL Server の可用性グループ リスナーを設定する方法について学習します
 ms.service: virtual-machines-linux
-ms.subservice: ''
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: 01501b99d5d7c42af98d0397cf6ff8cbca14b07b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83fde9e957cb2011ce585603e51d331be171bc08
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89485803"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586229"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>チュートリアル:Azure の RHEL 仮想マシンで SQL Server の可用性グループ リスナーを構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
-> 提供されているチュートリアルは**パブリック プレビュー**版です。 
+> 提供されているチュートリアルは **パブリック プレビュー** 版です。 
 >
 > このチュートリアルでは SQL Server 2017 と RHEL 7.6 を使用しますが、RHEL 7 または RHEL 8 で SQL Server 2019 を使用して高可用性を構成することもできます。 可用性グループ リソースを構成するためのコマンドは RHEL 8 で変更されています。適切なコマンドの詳細については、記事「[可用性グループのリソースを作成する](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource)」および RHEL 8 のリソースを参照してください。
 
@@ -49,7 +48,7 @@ ms.locfileid: "89485803"
 
 2. リソース グループで **[追加]** をクリックします。
 
-3. **ロード バランサー**を探し、検索結果から **[ロード バランサー]** (**Microsoft** によって発行されたもの) を選択します。
+3. **ロード バランサー** を探し、検索結果から **[ロード バランサー]** (**Microsoft** によって発行されたもの) を選択します。
 
 4. **[ロード バランサー]** ブレードで **[作成]** をクリックします。
 
@@ -130,13 +129,13 @@ Azure はこのプローブを作成、使用して、どの SQL Server イン�
    | **名前** |負荷分散規則を表すテキスト名。 (例: **SQLAlwaysOnEndPointListener**)。 |
    | **プロトコル** |**TCP** |
    | **[ポート]** |*1433* |
-   | **バックエンド ポート** |*1433*この規則には **[フローティング IP (Direct Server Return)]** が使用されるため、この値は無視されます。 |
+   | **バックエンド ポート** |*1433* この規則には **[フローティング IP (Direct Server Return)]** が使用されるため、この値は無視されます。 |
    | **プローブ** |このロード バランサーに対して作成したプローブの名前を使用します。 |
    | **セッション永続化** |**なし** |
    | **アイドル タイムアウト (分)** |*4* |
    | **フローティング IP (ダイレクト サーバー リターン)** |**有効** |
 
-   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="バックエンド プールを追加する":::
+   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="負荷分散規則の追加":::
 
 4. **[OK]** をクリックします。 
 5. 負荷分散規則が Azure によって構成されます。 以上、可用性グループのリスナーのホストとなっている SQL Server インスタンスにトラフィックをルーティングするようにロード バランサーを構成しました。 
@@ -263,6 +262,10 @@ Azure はこのプローブを作成、使用して、どの SQL Server イン�
     ```
 
 1. コマンド `sudo pcs resource` を使用してクラスター リソースを確認すると、プライマリ インスタンスが `<VM2>` になっていることがわかります。
+
+    > [!NOTE]
+    > この記事には、Microsoft が使用しなくなった "スレーブ" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+
 
     ```output
     [<username>@<VM1> ~]$ sudo pcs resource

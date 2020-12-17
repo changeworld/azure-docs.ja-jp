@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: baae0f89165e292408150dd419c6de8dc41a320c
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: e1c3236c4c1957b4d0daee8d30c71f03fb8674dd
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335538"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587827"
 ---
 # <a name="tutorial-integrate-abstract-with-azure-active-directory"></a>チュートリアル:Abstract を Azure Active Directory と統合する
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Abstract では、 **SP と IDP** によって開始される SSO がサポートされます
+* Abstract では、**SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-abstract-from-the-gallery"></a>ギャラリーからの Abstract の追加
 
@@ -49,7 +49,7 @@ Azure AD への Abstract の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Abstract** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Abstract**」と入力します。
 1. 結果のパネルから **[Abstract]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -130,7 +130,7 @@ Abstract で SSO を構成するために必要になるので、Azure portal �
 1. アプリケーションの一覧で **[Abstract]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 

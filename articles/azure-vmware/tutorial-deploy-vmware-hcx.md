@@ -3,12 +3,12 @@ title: チュートリアル - VMware HCX をデプロイして構成する
 description: Azure VMware Solution プライベート クラウドのために VMware HCX ソリューションをデプロイして構成する方法について説明します。
 ms.topic: tutorial
 ms.date: 11/25/2020
-ms.openlocfilehash: e50454c2299ed0f7e249563eecac1935a29a9c47
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a792f8dbc646f61377cf0a88e1a6e386340f23e8
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352467"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357893"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX をデプロイして構成する
 
@@ -163,7 +163,7 @@ VMware HCX コネクタ OVA をオンプレミスにデプロイし、アプラ�
 
 :::image type="content" source="media/tutorial-vmware-hcx/activation-done.png" alt-text="vCenter の状態が緑色のダッシュボードのスクリーンショット。" lightbox="media/tutorial-vmware-hcx/activation-done.png":::  
 
-この手順全体の概要については、動画「[Azure VMware Solution: HCX をアクティブにする](https://www.youtube.com/embed/jzQZawslF8w)」を参照してください。
+この手順全体の概要については、動画「[Azure VMware Solution: HCX をアクティブにする](https://www.youtube.com/embed/PnVg6SZkQsY?rel=0&amp;vq=hd720)」を参照してください。
 
    > [!IMPORTANT]
    > VMware HCX Advanced と VMware HCX Enterprise のどちらを使用しているかにかかわらず、VMware の[サポート技術情報の記事 81558](https://kb.vmware.com/s/article/81558) からパッチをインストールする必要がある場合があります。 
@@ -192,7 +192,7 @@ Azure VMware Solution で、VMware HCX Cloud Manager をデータセンターの
 
    :::image type="content" source="media/tutorial-vmware-hcx/site-pairing-complete.png" alt-text="Azure VMware Solution の HCX Manager と VMware HCX コネクタのペアリングを示すスクリーンショット。":::
 
-この手順全体の概要については、動画「[Azure VMware Solution: HCX サイトのペアリング](https://www.youtube.com/embed/iTJtjbiwvsw)」を参照してください。
+この手順全体の概要については、動画「[Azure VMware Solution: HCX サイトのペアリング](https://www.youtube.com/embed/jXOmYUnbWZY?rel=0&amp;vq=hd720)」を参照してください。
 
 ### <a name="create-network-profiles"></a>ネットワーク プロファイルを作成する
 

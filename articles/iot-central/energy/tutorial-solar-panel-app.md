@@ -3,21 +3,19 @@ title: チュートリアル:IoT Central でソーラー パネル監視アプ�
 description: チュートリアル:Azure IoT Central アプリケーション テンプレートを使用してソーラーパネル アプリケーションを作成する方法について説明します。
 author: op-ravi
 ms.author: omravi
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 145aefbe5a31d71ae614826c63d285c37ac03571
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: d006bae8290c1f6ea564f9985727f4d6ff70bb04
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123927"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516754"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>チュートリアル:ソーラーパネル監視アプリ テンプレートの作成とチュートリアル 
-
-
 
 このチュートリアルでは、ソーラー パネル監視アプリケーションの作成プロセスについて説明します。これには、シミュレートされたデータを含むサンプル デバイス モデルが含まれます。 このチュートリアルでは、次のことについて説明します。
 
@@ -31,8 +29,8 @@ ms.locfileid: "92123927"
 サブスクリプションをお持ちでない場合は、[無料試用版アカウントを作成](https://azure.microsoft.com/free)します
 
 ## <a name="prerequisites"></a>前提条件
-- なし
-- Azure サブスクリプションをお勧めしますが、試すことは必須ではありません。
+* なし
+* Azure サブスクリプションをお勧めしますが、試すことは必須ではありません。
 
 
 ## <a name="create-a-solar-panel-monitoring-app"></a>ソーラー パネル監視アプリを作成する 
@@ -41,12 +39,12 @@ ms.locfileid: "92123927"
 
 1. [Azure IoT Central のホーム ページ](https://apps.azureiotcentral.com)を開き、 **[ビルド]** をクリックして新しいアプリケーションを作成します。 
 
-2. **[エネルギー]** タブを選択し、 **[Solar panel monitoring]\(ソーラー パネル監視\)** アプリケーション タイルの **[アプリの作成]** をクリックします。 
+1. **[エネルギー]** タブを選択し、 **[Solar panel monitoring]\(ソーラー パネル監視\)** アプリケーション タイルの **[アプリの作成]** をクリックします。 
 
     > [!div class="mx-imgBorder"]
     > ![アプリをビルドする](media/tutorial-iot-central-solar-panel/solar-panel-build.png)
   
-3. **[アプリの作成]** を選択すると、 **[新しいアプリケーション]** フォームが開きます。 次の図に示すように、必要な詳細を入力します。
+1. **[アプリの作成]** を選択すると、 **[新しいアプリケーション]** フォームが開きます。 次の図に示すように、必要な詳細を入力します。
     * **アプリケーション名**:IoT Central アプリケーションの名前を選択します。 
     * **URL**: IoT Central URL を選択すると、プラットフォームによってその一意性が検証されます。
     * **7 日間の無料試用版**:Azure サブスクリプションが既にある場合は、既定の設定をお勧めします。 Azure サブスクリプションをお持ちでない場合は、無料試用版から始めてください。
@@ -100,7 +98,7 @@ Adatum は、ソーラー パネルを監視および管理する架空のエネ
 このアプリケーションの引き続き使用しない場合は、次の手順でアプリケーションを削除します。
 
 1. 左側のペインで、[管理] タブを開きます。
-2. [アプリケーションの設定] を選択し、ページの下部にある [削除] ボタンをクリックします。 
+1. [アプリケーションの設定] を選択し、ページの下部にある [削除] ボタンをクリックします。 
 
     > [!div class="mx-imgBorder"]
     > ![アプリケーションを削除する](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png)

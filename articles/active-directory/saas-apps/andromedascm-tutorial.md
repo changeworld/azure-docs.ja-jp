@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 0d342f672f4e8a5fdf33afe0feb7c5051956e29f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: e8cb939b48f8cfe311ec10c0850cfb234de04fad
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318770"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589765"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>チュートリアル: Azure Active Directory と Andromeda の統合
 
@@ -122,36 +122,36 @@ Andromeda で Azure AD シングル サインオンを構成するには、次�
     > [!Important]
     > これらの設定中に名前空間の定義をクリアします。
 
-7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
+7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
 
     | Name | ソース属性|
     | ------ | -----------|
-    | ロール (role)        | アプリ固有のロール |
-    | type        | アプリの種類 |
-    | company       | CompanyName |
+    | ロール (role) | アプリ固有のロール |
+    | type | アプリの種類 |
+    | company | CompanyName |
 
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値はデモ用なので、実際の組織のロールを使ってください。
 
-    a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
+    1. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
-    ![[新しい要求の追加] と [保存] オプションが備わっている [ユーザー要求] のスクリーンショット。](common/new-save-attribute.png)
+        ![[新しい要求の追加] と [保存] オプションが備わっている [ユーザー要求] のスクリーンショット。](common/new-save-attribute.png)
 
-    ![スクリーンショットは、この手順で説明した値を入力できる [ユーザー要求の管理] を示しています。](common/new-attribute-details.png)
+        ![スクリーンショットは、この手順で説明した値を入力できる [ユーザー要求の管理] を示しています。](common/new-attribute-details.png)
 
-    b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
+    1. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
-    c. **[名前空間]** は空白のままにします。
+    1. **[名前空間]** は空白のままにします。
 
-    d. [ソース] として **[属性]** を選択します。
+    1. [ソース] として **[属性]** を選択します。
 
-    e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
+    1. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
 
-    f. **[OK]** をクリックします。
+    1. **[OK]** をクリックします。
 
-    g. **[保存]** をクリックします。
+    1. **[保存]** をクリックします。
 
-8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -159,11 +159,11 @@ Andromeda で Azure AD シングル サインオンを構成するには、次�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-    a. ログイン URL
+    1. ログイン URL
 
-    b. Azure AD 識別子
+    1. Azure AD 識別子
 
-    c. ログアウト URL
+    1. ログアウト URL
 
 ### <a name="configure-andromeda-single-sign-on"></a>Andromeda シングル サインオンの構成
 
@@ -181,25 +181,25 @@ Andromeda で Azure AD シングル サインオンを構成するには、次�
 
     ![Andromeda の構成](./media/andromedascm-tutorial/tutorial_andromedascm_config.png)
 
-    a. **[Enable SSO with SAML]\(SAML で SSO を有効にする\)** をオンにします。
+    1. **[Enable SSO with SAML]\(SAML で SSO を有効にする\)** をオンにします。
 
-    b. **[Andromeda Information]\(Andromeda 情報\)** セクションで、 **[SP Identity]\(SP ID\)** の値をコピーして、 **[基本的な SAML 構成]** セクションの **[識別子]** ボックスに貼り付けます。
+    1. **[Andromeda Information]\(Andromeda 情報\)** セクションで、 **[SP Identity]\(SP ID\)** の値をコピーして、 **[基本的な SAML 構成]** セクションの **[識別子]** ボックスに貼り付けます。
 
-    c. **[Consumer URL]\(コンシューマー URL\)** の値をコピーし、 **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに貼り付けます。
+    1. **[Consumer URL]\(コンシューマー URL\)** の値をコピーし、 **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに貼り付けます。
 
-    d. **[Logon URL]\(ログオン URL\)** の値をコピーし、 **[基本的な SAML 構成]** セクションの **[サインオン URL]** ボックスに貼り付けます。
+    1. **[Logon URL]\(ログオン URL\)** の値をコピーし、 **[基本的な SAML 構成]** セクションの **[サインオン URL]** ボックスに貼り付けます。
 
-    e. **[SAML Identity Provider]\(SAML ID プロバイダー\)** セクションで、IDP 名を入力します。
+    1. **[SAML Identity Provider]\(SAML ID プロバイダー\)** セクションで、IDP 名を入力します。
 
-    f. **[Single Sign On End Point]\(シングル サインオン エンドポイント\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
+    1. **[Single Sign On End Point]\(シングル サインオン エンドポイント\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
-    g. Azure Portal からダウンロードした **Base64 でエンコードされた証明書**をメモ帳で開き、 **[X.509 証明書]** ボックスに貼り付けます。
-    
-    h. 以下の属性を対応する値にマップし、Azure AD からの SSO ログインを容易にします。 **ユーザー ID** 属性はログインに必要です。 プロビジョニングの場合は、**電子メール**、**会社**、**ユーザーの種類**、**ロール**が必要です。 このセクションでは、Azure Portal 内で定義されている値に関連付ける属性マッピング (名前と値) を定義します。
+    1. Azure Portal からダウンロードした **Base64 でエンコードされた証明書** をメモ帳で開き、 **[X.509 証明書]** ボックスに貼り付けます。
 
-    ![Andromeda 属性マップ](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+    1. 以下の属性を対応する値にマップし、Azure AD からの SSO ログインを容易にします。 **ユーザー ID** 属性はログインに必要です。 プロビジョニングの場合は、**電子メール**、**会社**、**ユーザーの種類**、**ロール** が必要です。 このセクションでは、Azure Portal 内で定義されている値に関連付ける属性マッピング (名前と値) を定義します。
 
-    i. **[保存]** をクリックします。
+        ![Andromeda 属性マップ](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+
+    1. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -218,7 +218,7 @@ Andromeda で Azure AD シングル サインオンを構成するには、次�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

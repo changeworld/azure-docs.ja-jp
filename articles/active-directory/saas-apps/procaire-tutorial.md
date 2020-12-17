@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 031a4993d9858dd4285abb35b20fca89dd2c9f18
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 70c310903461a4639a1eec1db9441d8f53e9e125
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181730"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505394"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-procaire"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Procaire の統合
 
@@ -75,11 +75,6 @@ Procaire に対して Azure AD SSO を構成してテストするには、次の
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 1. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
-
-1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
-
-    **[サインオン URL]** テキスト ボックスに、URL として「`https://praisidio.app/auth/login`」と入力します。
-
 
 1. **[保存]** をクリックします。
 
