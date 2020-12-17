@@ -384,6 +384,8 @@
       href: /azure/templates/microsoft.consumption/budgets
     - name: Cost Management REST API のサンプル
       href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
+    - name: Cost Management - Azure PowerShell
+      href: /powershell/module/Az.CostManagement
     - name: 課金自動化のシナリオ
       href: manage/cost-management-automation-scenarios.md
     - name: Azure Billing API の概要

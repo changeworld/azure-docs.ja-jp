@@ -6,6 +6,8 @@
       href: overview-reports.md
     - name: Azure AD の監視とは
       href: overview-monitoring.md
+    - name: サインイン診断とは
+      href: overview-sign-in-diagnostics.md
 - name: クイックスタート
   expanded: true
   items:

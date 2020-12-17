@@ -190,6 +190,8 @@
               href: platform/metrics-getting-started.md
             - name: メトリックス エクスプローラーの高度な機能
               href: platform/metrics-charts.md
+            - name: メトリックス エクスプローラーでの複数のリソースの表示
+              href: platform/metrics-dynamic-scope.md
             - name: メトリック グラフの例
               href: platform/metric-chart-samples.md
             - name: メトリック グラフのトラブルシューティング
@@ -546,12 +548,12 @@
               href: platform/itsmc-overview.md
             - name: IT Service Management 接続
               href: platform/itsmc-connections.md
-            - name: Secure Export との統合
-              href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: Service Manager Web アプリを作成する
               href: platform/itsmc-service-manager-script.md
             - name: ITSM Connector での問題のトラブルシューティング
               href: platform/itsmc-resync-servicenow.md
+            - name: Secure Export との統合
+              href: platform/it-service-management-connector-secure-webhook-connections.md
         - name: クラシック アラート ルールを移行する
           items:
             - name: クラシック アラートについて
@@ -752,6 +754,8 @@
               href: app/pre-aggregated-metrics-log-metrics.md
             - name: ログベースのメトリックの定義
               href: platform/app-insights-metrics.md
+            - name: 標準メトリック
+              href: app/standard-metrics.md
         - name: 検索
           href: app/diagnostic-search.md
         - name: プロファイラー

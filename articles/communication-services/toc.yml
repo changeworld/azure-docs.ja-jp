@@ -16,6 +16,8 @@
       items:
         - name: チャットをアプリに追加する
           href: quickstarts/chat/get-started.md
+        - name: チャット アプリを Teams の会議に参加させる
+          href: quickstarts/chat/meeting-interop.md
     - name: テレフォニーと SMS
       items:
         - name: 電話番号の取得

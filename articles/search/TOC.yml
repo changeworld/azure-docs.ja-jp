@@ -306,10 +306,12 @@
       items:
         - name: レベルの選択
           href: search-sku-tier.md
-        - name: サービスの制限
-          href: search-limits-quotas-capacity.md
+        - name: 容量とコストの見積もり
+          href: search-sku-manage-costs.md
         - name: 容量の調整
           href: search-capacity-planning.md
+        - name: サービスの制限
+          href: search-limits-quotas-capacity.md
         - name: パフォーマンスのためのスケール
           href: search-performance-optimization.md
         - name: マルチテナント アーキテクチャ
@@ -362,12 +364,6 @@
               href: service-configure-firewall.md
             - name: プライベート エンドポイントの作成
               href: service-create-private-endpoint.md
-        - name: ID ベースのアクセス
-          items:
-            - name: セキュリティ フィルター
-              href: search-security-trimming-for-azure-search.md
-            - name: ユーザー ID でフィルター処理する
-              href: search-security-trimming-for-azure-search-with-aad.md
         - name: アウトバウンド セキュリティ (インデクサー)
           items:
             - name: IP 範囲に対するアクセス
@@ -376,6 +372,12 @@
               href: search-indexer-howto-access-trusted-service-exception.md
             - name: プライベート エンドポイント経由のアクセス
               href: search-indexer-howto-access-private.md
+        - name: ID ベースのアクセス
+          items:
+            - name: セキュリティ フィルター
+              href: search-security-trimming-for-azure-search.md
+            - name: ユーザー ID でフィルター処理する
+              href: search-security-trimming-for-azure-search-with-aad.md
     - name: 管理する
       items:
         - name: ポータル
