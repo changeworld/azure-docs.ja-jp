@@ -82,7 +82,7 @@
           href: deny-assignments-powershell.md
         - name: REST API
           href: deny-assignments-rest.md
-    - name: カスタム ロールの作成または更新
+    - name: カスタム ロールを作成する
       items:
         - name: 概要
           href: custom-roles.md

@@ -25,8 +25,10 @@
       displayName: 'Azure CLI, az datashare consumer invitation, az datashare consumer share-subscription'
 - name: 概念
   items:
-    - name: セキュリティ
+    - name: Security
       items:
+        - name: セキュリティの概要
+          href: security.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
     - name: Azure Data Share の用語
@@ -62,8 +64,6 @@
       href: how-to-revoke-share-subscription.md
     - name: モニター
       href: how-to-monitor.md
-    - name: Security
-      href: security.md
     - name: 障害復旧
       href: disaster-recovery.md
     - name: トラブルシューティング
