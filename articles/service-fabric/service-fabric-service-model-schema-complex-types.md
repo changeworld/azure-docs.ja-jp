@@ -1631,7 +1631,7 @@ true の場合、パスワードの値は暗号化されます。
 ### <a name="content-element-details"></a>Content 要素の詳細
 
 #### <a name="imagename"></a>ImageName
-https://hub.docker.com または Azure Container Registry のリポジトリおよびイメージ。
+ https://hub.docker.com または Azure Container Registry のリポジトリおよびイメージ。
 
 |属性|値|
 |---|---|

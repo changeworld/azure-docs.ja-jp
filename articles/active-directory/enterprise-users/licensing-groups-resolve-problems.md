@@ -147,7 +147,7 @@ Microsoft Workplace Analytics はアドオン製品です。 同じ名前の単�
 
 この製品だけをグループに割り当てようとすると、ポータルから通知メッセージが返されます。 項目の詳細を選択すると、次のエラー メッセージが表示されます。
 
-  "ライセンス操作に失敗しました。 Make sure that the group has necessary services before adding or removing a dependent service. **サービス Microsoft Workplace Analytics では、Exchange Online (プラン 2) も有効にする必要があります。** "
+  "ライセンス操作に失敗しました。 グループに必要なサービスがあることを確認してから、依存サービスを追加または削除してください。 **サービス Microsoft Workplace Analytics では、Exchange Online (プラン 2) も有効にする必要があります。** "
 
 このアドオン ライセンスをグループに割り当てるには、そのグループに前提条件のサービス プランも含まれている必要があります。 そこで、たとえば、完全版 Office 365 E3 製品が既に含まれている既存のグループを更新してから、アドオン製品を追加します。
 
