@@ -6,13 +6,13 @@ ms.author: wesmc
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 03/12/2020
-ms.openlocfilehash: f50c84212e62fae378d9d95e8990e084c82bb99a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/14/2020
+ms.openlocfilehash: 6ff5731e7d346c954253ec4186357595461b7678
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000370"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400258"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>Azure IoT DPS の IP 接続フィルターを使用する
 
@@ -58,7 +58,7 @@ IP フィルター規則を追加するには、 **[+ IP フィルター規則�
 
 ![IP フィルター規則の保存に関する通知](./media/iot-dps-ip-filtering/ip-filter-save-new-rule.png)
 
-IP フィルター規則が最大値の 10 個に達すると、 **[追加]** オプションは無効になります。
+IP フィルター規則が最大値の 100 個に達すると、 **[追加]** オプションは無効になります。
 
 既存の規則を編集するには、変更するデータを選択して変更を加え、 **[保存]** を選択して編集内容を保存します。
 
@@ -135,7 +135,7 @@ DPS IP フィルター規則の更新は、現在 Azure CLI または Azure Powe
 
 | 属性                | 説明 |
 | ------------------------ | ----------- |
-| **FilterName**           | IP フィルター規則の名前を指定します。 これは、一意であり、長さが最大 128 文字の、大文字と小文字を区別しない英数字の文字列である必要があります。 ASCII 7 ビットの英数字と {'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}  のみを使用できます。 |
+| **FilterName**           | IP フィルター規則の名前を指定します。 これは、一意であり、長さが最大 128 文字の、大文字と小文字を区別しない英数字の文字列である必要があります。 ASCII 7 ビット英数字と  `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`  のみを使用できます。 |
 | **操作**               | IP フィルター規則のアクションとして許容される値は、**Accept**  または  **Reject**  です。 |
 | **ipMask**               | 1 つの IPv4 アドレスか、または CIDR 表記法で記述した IP アドレス ブロックを指定します。 たとえば、CIDR 表記 192.168.100.0/22 は、192.168.100.0 ～ 192.168.103.255 までの 1,024 個の IPv4 アドレスを表します。 |
 

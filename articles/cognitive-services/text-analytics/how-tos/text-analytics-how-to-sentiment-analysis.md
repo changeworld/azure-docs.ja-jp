@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/02/2020
+ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: 0437704709e863cdbc62321c8a4b79015564e362
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 4f5c47000355a004f8d76d8b740b705618748380
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558761"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505224"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>方法: 感情分析とオピニオン マイニング
 
@@ -51,7 +51,7 @@ API で使用される AI モデルはサービスによって提供されるた
 
 ## <a name="opinion-mining"></a>オピニオン マイニング
 
-オピニオン マイニングは、バージョン 3.1-preview.1 以降の感情分析の機能です。 この機能は、自然言語処理 (NLP) ではアスペクトベースの感情分析とも呼ばれます。テキストに含まれるアスペクト (製品やサービスの属性など) に関連した意見について、より粒度の細かい情報が得られます。 
+オピニオン マイニングは、バージョン 3.1 のプレビュー以降の感情分析の機能です。 この機能は、自然言語処理 (NLP) ではアスペクトベースの感情分析とも呼ばれます。テキストに含まれるアスペクト (製品やサービスの属性など) に関連した意見について、より粒度の細かい情報が得られます。
 
 たとえば、あるホテルについて "The room was great, but the staff was unfriendly (部屋はすばらしいのですが、スタッフが無愛想でした)" のようなフィードバックを利用者が残した場合、そのテキストに含まれるアスペクトと、それに関連する意見と感情がオピニオン マイニングによって特定されます。 感情分析では、否定的な感情のみが報告される可能性があります。
 
@@ -74,7 +74,7 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 
 POST 要求を作成します。 次のリファレンス リンクにある [Postman](text-analytics-how-to-call-api.md) または **API テスト コンソール** を使用して、簡単に要求を構造化し、送信することができます。 
 
-#### <a name="version-31-preview2"></a>[バージョン 3.1-preview.2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[バージョン 3.1-preview.3](#tab/version-3-1)
 
 [感情分析 v3.1 のリファレンス](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
 
@@ -91,17 +91,17 @@ Azure 上の Text Analytics リソースまたはインスタンス化された 
 > [!NOTE]
 > Azure portal で Text Analytics リソースのキーとエンドポイントを確認できます。 それらは、リソースの **クイック スタート** ページの **リソース管理** の下にあります。 
 
-#### <a name="version-31-preview2"></a>[バージョン 3.1-preview.2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[バージョン 3.1-preview.3](#tab/version-3-1)
 
 **感情分析**
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment`
 
 **オピニオン マイニング**
 
 オピニオン マイニングの結果を得るには、`opinionMining=true` パラメーターを含める必要があります。 次に例を示します。
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment?opinionMining=true`
 
 既定では、このパラメーターが `false` に設定されています。 
 
@@ -144,7 +144,7 @@ Text Analytics API はステートレスです。 データはアカウントに
 
 出力はすぐに返されます。 JSON を受け入れるアプリケーションに結果をストリーミングすることも、出力をローカル システム上のファイルに保存することもできます。 次に、データの並べ替え、検索、および操作に使用できるアプリケーション内に出力をインポートします。 多言語と絵文字のサポートにより、応答にはテキスト オフセットが含まれる場合があります。 詳細については[オフセットの処理方法](../concepts/text-offsets.md)に関するページを参照してください。
 
-#### <a name="version-31-preview2"></a>[バージョン 3.1-preview.2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[バージョン 3.1-preview.3](#tab/version-3-1)
 
 ### <a name="sentiment-analysis-and-opinion-mining-example-response"></a>感情分析とオピニオン マイニングの応答の例
 
@@ -302,5 +302,5 @@ Text Analytics API はステートレスです。 データはアカウントに
 ## <a name="see-also"></a>関連項目
 
 * [Text Analytics の概要](../overview.md)
-* [Text Analytics クライアント ライブラリの使用](../quickstarts/text-analytics-sdk.md)
+* [Text Analytics クライアント ライブラリの使用](../quickstarts/client-libraries-rest-api.md)
 * [新機能](../whats-new.md)

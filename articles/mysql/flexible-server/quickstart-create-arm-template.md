@@ -242,7 +242,7 @@ echo "Press [ENTER] to continue ..."
 Resource Manager テンプレートの作成手順について説明したチュートリアルについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> 初めての ARM テンプレートを作成してデプロイする[
+> [初めての ARM テンプレートを作成してデプロイする](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 MySQL を使用して App Service でアプリをビルドするステップバイステップのチュートリアルについては、次を参照してください:
 

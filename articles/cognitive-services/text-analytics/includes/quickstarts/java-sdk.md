@@ -6,22 +6,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 10/07/2020
+ms.date: 12/11/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: b7e5ebb9ac4c71d71b19b10763ebbdf57d752d49
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 5aa14ae179270813a8c7410425c1614d95b8b497
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980944"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366384"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
 
-[リファレンス ドキュメント](/java/api/overview/azure/ai-textanalytics-readme-pre?view=azure-java-preview) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics) | [パッケージ](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.1) | [サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples)
+[リファレンス ドキュメント](/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics) | [パッケージ](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.3) | [サンプル](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
@@ -40,6 +40,7 @@ ms.locfileid: "94980944"
 * Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。  デプロイされたら、 **[リソースに移動]** をクリックします。
     * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
     * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
+* 分析機能を使用するには、Standard (S) 価格レベルの Text Analytics リソースが必要です。
 
 ## <a name="setting-up"></a>設定
 
@@ -54,7 +55,7 @@ ms.locfileid: "94980944"
      <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-ai-textanalytics</artifactId>
-        <version>5.1.0-beta.1</version>
+        <version>5.1.0-beta.3</version>
     </dependency>
 </dependencies>
 ```
@@ -132,6 +133,7 @@ public static void main(String[] args) {
     recognizeEntitiesExample(client);
     recognizeLinkedEntitiesExample(client);
     extractKeyPhrasesExample(client);
+        AnalyzeOperationExample(client)
 }
 ```
 
@@ -598,3 +600,93 @@ Recognized phrases:
 cat
 veterinarian
 ```
+---
+
+## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>分析操作で API を非同期的に使用する
+
+# <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
+
+> [!CAUTION]
+> 分析操作を使用するには、Standard (S) 価格レベルの Text Analytics リソースを使用する必要があります。  
+
+`beginAnalyzeTasks()` 関数を呼び出す `analyzeOperationExample()` という名前の新しい関数を作成します。 この操作の実行には時間がかかり、結果に対してポーリングされます。
+
+```java
+static void analyzeOperationExample(TextAnalyticsClient client)
+{
+        List<TextDocumentInput> documents = Arrays.asList(
+                        new TextDocumentInput("0", "Microsoft was founded by Bill Gates and Paul Allen.")
+                        );
+
+        SyncPoller<TextAnalyticsOperationResult, PagedIterable<AnalyzeTasksResult>> syncPoller =
+                        client.beginAnalyzeTasks(documents,
+                                        new AnalyzeTasksOptions().setDisplayName("{tasks_display_name}")
+                                                        .setEntitiesRecognitionTasks(Arrays.asList(new EntitiesTask())),
+                                        Context.NONE);
+
+        syncPoller.waitForCompletion();
+        PagedIterable<AnalyzeTasksResult> result = syncPoller.getFinalResult();
+
+        result.forEach(analyzeJobState -> {
+                System.out.printf("Job Display Name: %s, Job ID: %s.%n", analyzeJobState.getDisplayName(),
+                                analyzeJobState.getJobId());
+                System.out.printf("Total tasks: %s, completed: %s, failed: %s, in progress: %s.%n",
+                                analyzeJobState.getTotal(), analyzeJobState.getCompleted(), analyzeJobState.getFailed(),
+                                analyzeJobState.getInProgress());
+
+                List<RecognizeEntitiesResultCollection> entityRecognitionTasks =
+                                analyzeJobState.getEntityRecognitionTasks();
+                if (entityRecognitionTasks != null) {
+                        entityRecognitionTasks.forEach(taskResult -> {
+                                // Recognized entities for each of documents from a batch of documents
+                                AtomicInteger counter = new AtomicInteger();
+                                for (RecognizeEntitiesResult entitiesResult : taskResult) {
+                                        System.out.printf("%n%s%n", documents.get(counter.getAndIncrement()));
+                                        if (entitiesResult.isError()) {
+                                                // Erroneous document
+                                                System.out.printf("Cannot recognize entities. Error: %s%n",
+                                                                entitiesResult.getError().getMessage());
+                                        } else {
+                                                // Valid document
+                                                entitiesResult.getEntities().forEach(entity -> System.out.printf(
+                                                                "Recognized entity: %s, entity category: %s, entity subcategory: %s, "
+                                                                                + "confidence score: %f.%n",
+                                                                entity.getText(), entity.getCategory(), entity.getSubcategory(),
+                                                                entity.getConfidenceScore()));
+                                        }
+                                }
+                        });
+                }
+        });
+    }
+```
+
+この例をアプリケーションに追加した後、`main()` メソッドで呼び出します。
+
+```java
+analyzeOperationExample(client);
+```
+
+### <a name="output"></a>出力
+
+```console
+Job Display Name: {tasks_display_name}, Job ID: 84fd4db4-0734-47ec-b263-ac5451e83f2a_637432416000000000.
+Total tasks: 1, completed: 1, failed: 0, in progress: 0.
+
+Text = Microsoft was founded by Bill Gates and Paul Allen., Id = 0, Language = null
+Recognized entity: Microsoft, entity category: Organization, entity subcategory: null, confidence score: 0.960000.
+Recognized entity: Bill Gates, entity category: Person, entity subcategory: null, confidence score: 1.000000.
+Recognized entity: Paul Allen, entity category: Person, entity subcategory: null, confidence score: 0.990000.
+```
+
+また、分析操作を使用して、PII とキー フレーズ抽出を検出することもできます。 GitHub の[分析のサンプル](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics/lro/AnalyzeTasksAsync.java)を参照してください。
+
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
+
+この機能はバージョン 3.0 では使用できません。
+
+# <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
+
+この機能はバージョン 2.1 では使用できません。
+
+---

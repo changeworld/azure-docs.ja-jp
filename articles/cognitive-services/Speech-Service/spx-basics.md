@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: acc19d9a04909dcf0e79c93e0c8a3fb8225ee1b4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1b92d1b5853d6b794ebdcf0e2052b8f15081d608
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546908"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507576"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Speech CLI の基本を学ぶ
 
@@ -87,7 +87,7 @@ spx translate --microphone --source en-US --target ru-RU --output file C:\some\f
 
 ### <a name="configuration-files-in-the-datastore"></a>データストア内の構成ファイル
 
-Speech CLI の動作は、構成ファイルの設定に依存する場合があります。これは、@ 記号を使用して Speech CLI 呼び出し内で参照できます。
+Speech CLI の動作は、構成ファイルの設定に依存する場合があります。これは、\@ 記号を使用して Speech CLI 呼び出し内で参照できます。
 Speech CLI では、新しい設定は、現在の作業ディレクトリに作成される新しい `./spx/data` サブディレクトリに保存されます。
 構成値をシークする際は、Speech CLI によって現在の作業ディレクトリ、次に `./spx/data` のデータストア、その次に `spx` バイナリの最後の読み取り専用データストアを含むその他のデータストアが検索されます。
 以前は、データストアを使用して `@key` 値と `@region` 値を保存していたため、各コマンド ライン呼び出しでそれらを指定する必要はありませんでした。

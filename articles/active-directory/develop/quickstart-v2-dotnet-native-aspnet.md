@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 6874794dcf33d77d0b03f2a5713bdf42a40d6891
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: fe82b03c4a8c71f84de02245b075ff30da31b45b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560912"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031099"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す
 
@@ -54,26 +54,24 @@ ms.locfileid: "94560912"
 
 ### <a name="register-the-todolistservice-app"></a>TodoListService アプリを登録する
 
-1. 開発者用の Microsoft ID プラットフォームの[アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083908)ポータルに移動します。
-1. **[新規登録]** を選択します。
-1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
-
-    1. **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します。 たとえば、「**AppModelv2-NativeClient-DotNet-TodoListService**」と入力します。
-    1. **[サポートされているアカウントの種類]** で、 **[任意の組織のディレクトリ内のアカウント]** を選択します。
-    1. **[登録]** を選択して、アプリケーションを作成します。
-
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+1. **Azure Active Directory** を検索して選択します。
+1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
+1. アプリケーションの **名前** を入力します (例: `AppModelv2-NativeClient-DotNet-TodoListService`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
+1. **[サポートされているアカウントの種類]** で、 **[任意の組織のディレクトリ内のアカウント]** を選択します。
+1. **[登録]** を選択して、アプリケーションを作成します。
 1. アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を探し、後で使用するために記録します。 これは、このプロジェクトの Visual Studio 構成ファイルを構成するために必要になります (つまり、*TodoListService\Web.config* ファイルの `ClientId`)。
+1. **[管理]** で、 **[API の公開]**  >  **[スコープの追加]** の順に選択します。 **[保存して続行]** を選択して、提案されたアプリケーション ID URI (`api://{clientId}`) を受け入れ、次の情報を入力します。
 
-1. **[API の公開]** セクションで **[スコープの追加]** を選択し、 **[保存して続行]** を選択して提案されたアプリケーション ID URI (`api://{clientId}`) を受け入れ、次の情報を入力します。
-
-    1. **[スコープ名]** に「**access_as_user**」と入力します。
+    1. **[スコープ名]** に「`access_as_user`」と入力します。
     1. **[同意できるユーザー]** で **[管理者とユーザー]** オプションが選択されていることを確認します。
-    1. **[管理者の同意の表示名]** ボックスには、「**Access TodoListService as a user**」と入力します。
-    1. **[管理者の同意の説明]** ボックスには、「**Accesses the TodoListService web API as a user**」と入力します。
-    1. **[ユーザーの同意の表示名]** ボックスには、「**Access TodoListService as a user**」と入力します。
-    1. **[ユーザーの同意の説明]** ボックスには、「**Accesses the TodoListService web API as a user**」と入力します。
+    1. **[管理者の同意の表示名]** ボックスには、「`Access TodoListService as a user`」と入力します。
+    1. **[管理者の同意の説明]** ボックスには、「`Accesses the TodoListService web API as a user`」と入力します。
+    1. **[ユーザーの同意の表示名]** ボックスには、「`Access TodoListService as a user`」と入力します。
+    1. **[ユーザーの同意の説明]** ボックスには、「`Accesses the TodoListService web API as a user`」と入力します。
     1. **[状態]** は **[有効]** のままにします。
-    1. **[スコープの追加]** を選択します。
+1. **[スコープの追加]** を選択します。
 
 ### <a name="configure-the-service-project"></a>サービス プロジェクトを構成する
 

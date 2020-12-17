@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: f0c19130312db4e6ef500a0750f40359931d48d2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 49b7bae1a0cc224b92f292b891fae210f2cffa4e
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099115"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400609"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins とは
 
@@ -30,7 +30,7 @@ Azure Digital Twins で提供される機能の概要を次に示します。
 
 ### <a name="open-modeling-language"></a>オープン モデリング言語
 
-Azure Digital Twins では、 [**モデル**](concepts-models.md)と呼ばれるカスタム ツイン型を使用して、物理環境の人、場所、および物を表すデジタルエン ティティを定義します。 
+Azure Digital Twins では、[**モデル**](concepts-models.md)と呼ばれるカスタム ツイン型を使用して、物理環境の人、場所、および物を表すデジタルエン ティティを定義します。 
 
 これらのモデル定義は、ビジネスを説明するための特殊なボキャブラリと考えることができます。 たとえば、ビル管理ソリューションでは、"建物"、"階数"、"エレベーター" などのモデルを定義できます。 その後、これらのモデルに基づいて **デジタル ツイン** を作成して、特定の環境を表すことができます。
 
@@ -64,7 +64,7 @@ Azure Digital Twins を使用してこの目的のための新しい IoT Hub を
 
 ### <a name="output-to-tsi-storage-and-analytics"></a>TSI、ストレージ、分析への出力
 
-Azure Digital Twins モデルのデータは、追加の分析またはストレージのために下流の Azure サービスにルーティングできます。 これは、 [イベント ハブ](../event-hubs/event-hubs-about.md)、 [Event Grid](../event-grid/overview.md)、 [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) を使用して、目的のデータ フローを駆動する、 **イベント ルート** を通じて提供されます。
+Azure Digital Twins モデルのデータは、追加の分析またはストレージのために下流の Azure サービスにルーティングできます。 これは、[イベント ハブ](../event-hubs/event-hubs-about.md)、[Event Grid](../event-grid/overview.md)、[Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) を使用して、目的のデータ フローを駆動する、**イベント ルート** を通じて提供されます。
 
 イベント ルートでは、次のようなことが可能です。
 * [Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md) に Azure Digital Twins データを格納する
@@ -92,13 +92,10 @@ Azure Digital Twins を使用した完全なソリューションには、次の
 
 ## <a name="service-limits"></a>サービスの制限
 
-Azure Digital Twins の制限の一覧については、 [*リファレンス:サービスの制限*](reference-service-limits.md)に関する記事を参照してください。
+Azure Digital Twins の制限の一覧については、[ *「リファレンス」のサービスの制限*](reference-service-limits.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Digital Twins の最初のプレビュー リリース (2018 年 10 月) を使用している場合は、変更内容を確認してください。
-* " [*概要: 最初のリリースとの違い*](overview-differences.md)"
+Azure Digital Twins の最初のプレビュー リリース (2018 年 10 月) を使用している場合は、変更内容を確認してください。"[*概要: 最初のリリースとの違い*](overview-differences.md)"。
 
-または、最初のチュートリアルに進み、Azure Digital Twins の使用について詳しく確認してください。
-
-[*チュートリアル:クライアント アプリをコーディングする*](tutorial-code.md)
+または、クイックスタートを使用して、Azure Digital Twins の使用について詳しく確認してください。[*クイック スタート:サンプル シナリオを精査する*](quickstart-adt-explorer.md)"。
