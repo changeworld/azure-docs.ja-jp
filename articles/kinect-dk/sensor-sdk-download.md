@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, SDK, 更新プログラムのダウンロード, 最新, 利用可能, インストール
-ms.openlocfilehash: 48a3df3962796cf561057e8ec85b754c974200f4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 2fd14781c42192c713d826729f8fab6c698d6321
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358507"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505479"
 ---
 # <a name="azure-kinect-sensor-sdk-download"></a>Azure Kinect Sensor SDK のダウンロード
 
@@ -26,14 +26,14 @@ ms.locfileid: "94358507"
 - [Azure Kinect レコーダー](azure-kinect-recorder.md)。
 - [Azure Kinect ファームウェア ツール](azure-kinect-firmware-tool.md)。
 
-## <a name="windows-download-link"></a>Windows のダウンロード リンク
+## <a name="windows-installation-instructions"></a>Windows のインストール手順
 
-[Microsoft インストーラ](https://download.microsoft.com/download/3/d/6/3d6d9e99-a251-4cf3-8c6a-8e108e960b4b/Azure%20Kinect%20SDK%201.4.1.exe) | [GitHub ソース コード](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/1093)
+Azure Kinect Sensor SDK とファームウェアの最新バージョンと以前のバージョンのインストールの詳細については、[こちら](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/docs/usage.md)を参照してください。
+
+ソース コードについては、[こちら](https://github.com/microsoft/Azure-Kinect-Sensor-SDK)を参照してください。
 
 > [!NOTE]
 > SDK をインストールするとき、インストール先のパスを覚えておいてください。 たとえば、"C:\Program Files\Azure Kinect SDK 1.2" です。 このパスの記事で参照されているツールが見つかります。
-
-以前のバージョンの Azure Kinect Sensor SDK とファームウェアは [GitHub](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/docs/usage.md) にあります。
 
 ## <a name="linux-installation-instructions"></a>Linux のインストール手順
 

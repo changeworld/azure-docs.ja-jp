@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ac75a5b0b59a06855b7ee88d971c269ca915e429
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 35f4aae246f105d832aaf92c5c5797c8a65b44f1
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763166"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938548"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure Digital Twins の高可用性とディザスター リカバリー
 
@@ -38,6 +38,29 @@ Azure Digital Twins では、サービス内で冗長性を実装することで
 
 >[!NOTE]
 > 一部の Azure サービスには、**顧客が開始するフェールオーバー** と呼ばれる追加のオプションも用意されています。たとえば、DR ドリルを実行するために、顧客が自分のインスタンスのフェールオーバーのみを開始できます。 現時点で Azure Digital Twins では、このメカニズムが **サポートされていません**。 
+
+## <a name="monitor-service-health"></a>サービス正常性の監視
+
+Azure Digital Twins インスタンスがフェールオーバーされ回復されると、[Azure Service Health](https://docs.microsoft.com/azure/service-health/service-health-overview) ツールを使用してプロセスを監視できます。 Service Health は、さまざまなリージョンやサブスクリプションにわたる Azure サービスの正常性を追跡し、サービスに影響する類いの障害やダウンタイムに関するお知らせを共有します。
+
+フェールオーバー イベント中に、Service Health は、いつサービスが停止し、いつバックアップされたかを示すことができます。
+
+Service Health イベントを表示するには...
+1. Azure portal で [Service Health](https://portal.azure.com/?feature.customportal=false#blade/Microsoft_Azure_Health/AzureHealthBrowseBlade/serviceIssues) に移動します (このリンクを使用しても、ポータルの検索バーを使用して検索してもかまいません)。
+1. 左側のメニューを使用して、 *[正常性の履歴]* ページに切り替えます。
+1. **Azure Digital Twins** で始まる *問題の名前* を探し、それを選択します。
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/navigate.png" alt-text="[正常性の履歴] ページを示す Azure portal のスクリーンショット。過去数日間のいくつかの問題の一覧があり、&quot;Azure Digital Twins - 西ヨーロッパ - 軽減済み&quot; という問題が強調表示されています。" lightbox="media/concepts-high-availability-disaster-recovery/navigate.png":::
+
+1. 停止に関する概要情報については、 *[概要]* タブを確認してください。
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/summary.png" alt-text="[正常性の履歴] ページでは [概要] タブが強調表示されています。このタブには、影響を受けたリソース、そのリージョン、そのサブスクリプションなどの一般的な情報が表示されます。" lightbox="media/concepts-high-availability-disaster-recovery/summary.png":::
+1. 時間の経過に伴う問題の詳細と更新については、 *[問題の更新]* タブを確認してください。
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/issue-updates.png" alt-text="[正常性の履歴] ページでは [問題の更新] タブが強調表示されています。このタブには、1 日前からの現在の状態を示すいくつかのエントリが表示されます。" lightbox="media/concepts-high-availability-disaster-recovery/issue-updates.png":::
+
+
+このツールに表示される情報は、1 つの Azure Digital インスタンスに特有のものではありません。 Service Health を使用して、特定のリージョンまたはサブスクリプションでの Azure Digital Twins サービスの状況を把握した後、[リソース正常性ツール](troubleshoot-resource-health.md)を使用して特定のインスタンスにドリルダウンし、それらが影響を受けているかどうかを確認することにより、監視を一歩進めることができます。
 
 ## <a name="best-practices"></a>ベスト プラクティス
 

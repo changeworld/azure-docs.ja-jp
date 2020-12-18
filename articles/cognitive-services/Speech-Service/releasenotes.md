@@ -11,14 +11,57 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: c6cc033e4814553020957310224a8ed4cdacbc8e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2db93ec6806d4b9cc8c8ac17cfb2c15458bf4dc9
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483956"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401153"
 ---
 # <a name="speech-service-release-notes"></a>Speech Service リリース ノート
+
+## <a name="text-to-speech-2020-december-release"></a>テキスト読み上げの 2020 年 12 月のリリース
+
+**GA とプレビュー段階の新しいニューラル音声**
+
+以下の 51 の音声が新しくリリースされ、54 言語/ロケールのニューラル音声の合計が 129 になりました。
+
+- **GA ロケールの 46 の新しい音声**: Shakir `ar-EG` アラビア語 (エジプト)、Hamed `ar-SA` アラビア語 (サウジアラビア)、Borislav `bg-BG` ブルガリア語 (ブルガリア)、Joana `ca-ES` カタロニア語 (スペイン)、Antonin `cs-CZ` チェコ語 (チェコ共和国)、Jeppe `da-DK` デンマーク語 (デンマーク)、Jonas `de-AT` ドイツ語 (オーストリア)、Jan `de-CH` ドイツ語 (スイス)、Nestoras `el-GR` ギリシャ語 (ギリシャ)、Liam `en-CA` 英語 (カナダ)、Connor `en-IE` English (アイルランド)、Madhur `en-IN` ヒンディー語 (インド)、Mohan `en-IN` テルグ語 (インド)、Prabhat `en-IN` 英語 (インド)、Valluvar `en-IN` タミル語 (インド)、Enric `es-ES` カタロニア語 (スペイン)、Kert `et-EE` エストニア語 (エストニア)、 Harri `fi-FI` フィンランド語 (フィンランド)、Selma `fi-FI` フィンランド語 (フィンランド)、Fabrice `fr-CH` フランス語 (スイス)、Colm `ga-IE` アイルランド語 (アイルランド)、Avri `he-IL` ヘブライ語 (イスラエル)、Srecko `hr-HR` クロアチア語 (クロアチア)、Tamas `hu-HU` ハンガリー語 (ハンガリー)、Gadis `id-ID` インドネシア語 (インドネシア)、Leonas `lt-LT` リトアニア語 (リトアニア)、Nils `lv-LV` ラトビア語 (ラトビア)、Osman `ms-MY` マレー語 (マレーシア)、Joseph `mt-MT` マルタ語 (マルタ)、Finn `nb-NO` ノルウェー語 (ブークモール、ノルウェー)、Pernille `nb-NO` ノルウェー語 (ブークモール、ノルウェー)、Fenna `nl-NL` オランダ語 (オランダ)、Maarten `nl-NL` オランダ語 (オランダ)、Agnieszka `pl-PL` ポーランド語 (ポーランド)、Marek `pl-PL` ポーランド語 (ポーランド)、Duarte `pt-BR` ポルトガル語 (ブラジル)、Raquel `pt-PT` ポルトガル語 (ポルトガル)、Emil `ro-RO` ルーマニア語 (ルーマニア)、Dmitry `ru-RU` ロシア語 (ロシア)、Svetlana `ru-RU` ロシア語 (ロシア)、Lukas `sk-SK` スロバキア語 (スロバキア)、Rok `sl-SI` スロベニア語 (スロベニア)、Mattias `sv-SE` スウェーデン語 (スウェーデン)、Sofie `sv-SE` スウェーデン語 (スウェーデン)、Niwat `th-TH` タイ語 (タイ)、Ahmet `tr-TR` トルコ語 (トルコ)、NamMinh `vi-VN` ベトナム語 (ベトナム)、HsiaoChen `zh-TW` 台湾標準中国語 (台湾)、YunJhe `zh-TW` 台湾標準中国語 (台湾)、HiuMaan `zh-HK` 広東語 (香港)、WanLung `zh-HK` 広東語 (香港)
+
+- **プレビュー段階のロケールの 5 つの新しい音声**: Kert `et-EE` エストニア語 (エストニア)、Colm `ga-IE` アイルランド語 (アイルランド)、Nils `lv-LV` ラトビア語 (ラトビア)、Leonas `lt-LT` リトアニア語 (リトアニア)、Joseph `mt-MT` マルタ語 (マルタ)
+
+このリリースでは、54 言語/ロケールの計 129 のニューラル音声がサポートされています。 さらに、49 言語/ロケールの 70 を超える標準音声を使用できます。 完全なリストについては、[言語サポート](language-support.md#text-to-speech)に関するページを参照してください。
+
+**Audio Content Creation の更新**
+- 音声選択の UI が改良され、音声カテゴリと音声の詳細な説明が表示されるようになりました。 
+- さまざまな言語のすべてのニューラル音声でイントネーションのチューニングが有効になりました。
+- ブラウザーの言語に基づいて UI の言語が自動的に設定されます。
+- `zh-CN` のすべてのニューラル音声に対して `StyleDegree` コントロールが有効になりました。
+[Audio Content Creation ツール](https://speech.microsoft.com/audiocontentcreation)のページにアクセスして、新機能をご確認ください。 
+
+**zh-CN の音声の更新**
+- `zh-CN` のすべてのニューラル音声が更新され、英語の読み上げがサポートされました。
+- `zh-CN` のすべてのニューラル音声において、イントネーションの調整が有効になりました。 SSML または Audio Content Creation ツールを使用して、最適なイントネーションに調整できます。
+- `zh-CN` のすべてのマルチスタイル ニューラル音声が更新され、`StyleDegree` コントロールがサポートされました。 感情の強さ (弱または強) を調整できます。
+- `zh-CN-YunyeNeural` が更新され、さまざまな感情を表現する複数のスタイルがサポートされました。
+
+## <a name="text-to-speech-2020-november-release"></a>テキスト読み上げの 2020 年 11 月のリリース
+
+**プレビュー段階の新しいロケールと音声**
+- ニューラル TTS ポートフォリオには、**5 つの新しい音声と言語が導入** されています。 これらは次のとおりです。Grace マルタ語 (マルタ)、Ona リトアニア語 (リトアニア)、Anu エストニア語 (エストニア)、Orla アイルランド語 (アイルランド)、Everita ラトビア語 (ラトビア)
+- **複数のスタイルとロールがサポートされている `zh-CN` の新しい 5 つの音声**: Xiaohan、Xiaomo、Xiaorui、Xiaoxuan、および Yunxi
+
+> これらの音声は、次の 3 つの Azure リージョンにおいてパブリック プレビューで利用できます: EastUS、SouthEastAsia、WestEurope
+
+**ニューラル TTS コンテナー GA**
+- ニューラル TTS コンテナーを使用すると、開発者は、特定のセキュリティとデータ ガバナンスの要件に応じて、独自の環境で最も自然なデジタル音声を使用して音声合成を行うことができます。 [Speech コンテナーのインストール方法](speech-container-howto.md)を確認してください。 
+
+**新機能**
+- **Custom Voice**: ユーザーは、あるリージョンから別のリージョンに音声モデルをコピーできます。エンドポイントの中断と再開がサポートされています。 [こちら](https://speech.microsoft.com/customvoice)から、ポータルに移動します。
+- [SSML の silence タグ](speech-synthesis-markup.md#add-silence)がサポートされています。 
+- 一般的な TTS 音声品質の改良点: nb-NO の単語レベルの発音精度が向上しました。 発音エラーが 53% 削減されました。
+
+> 詳細については、[こちらの技術ブログ](https://techcommunity.microsoft.com/t5/azure-ai/neural-text-to-speech-previews-five-new-languages-with/ba-p/1907604)を参照してください。
 
 ## <a name="text-to-speech-2020-october-release"></a>テキスト読み上げの 2020 年 10 月のリリース
 
@@ -72,7 +115,7 @@ ms.locfileid: "96483956"
 **サンプル**
 - **ObjectiveC**: キーワード認識のサンプルを [こちら](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/speech-samples)に追加しました。
 - **C#、JavaScript**: 会話の文字起こしのクイックスタートを [こちら (C#)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/conversation-transcription) と [こちら (JavaScript)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/conversation-transcription) に追加しました。
-- **C++、C#、Java、Python、Swift、ObjectiveC**: 発音評価のサンプルを[こちら](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples)に追加しました。
+- **C++、C#、Java、Python、Swift、ObjectiveC**: 発音評価のサンプルを [こちら](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples)に追加しました。
 - **Xamarin**:クイックスタートを最新の Visual Studio テンプレートに [こちら](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/xamarin)で更新しました。
 
 **既知の問題**

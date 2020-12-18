@@ -8,16 +8,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/13/2020
-ms.openlocfilehash: fd7499bd5e216f2a625d87ea13996da851a1889e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/07/2020
+ms.openlocfilehash: a58bcff4e39c4a4a907cd8567b47b074ff299bd5
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019213"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008454"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Language Understanding (LUIS) Cognitive Services でのデータの格納と削除
-LUIS では、キーによって指定された領域に対応する Azure のデータ ストアに、データが暗号化されて格納されます。 このデータは 30 日間保存されます。 
+
+LUIS では、キーによって指定された[領域](luis-reference-regions.md)に対応する Azure のデータ ストアに、データが暗号化されて格納されます。 
+
+* エンティティ、意図、発話など、モデルのトレーニングに使用されるデータは、アプリケーションの有効期間中は LUIS に保存されます。 所有者または共同作成者がアプリを削除すると、このデータも削除されます。 90 日間使用されなかった場合、そのアプリケーションは削除されます。 
+
+* アプリケーションの作成者は、発行されたアプリケーションに送信される発話において[ログ記録を有効にする](luis-how-to-review-endpoint-utterances.md#log-user-queries-to-enable-active-learning)ことができます。 有効にすると発話は 30 日間保存され、アプリケーションの作成者はこれを表示することができます。 アプリケーションの発行時にログ記録が有効になっていない場合、このデータは保存されません。
 
 ## <a name="export-and-delete-app"></a>アプリのエクスポートと削除
 ユーザーは、アプリの[エクスポート](luis-how-to-start-new-app.md#export-app)と[削除](luis-how-to-start-new-app.md#delete-app)を完全に制御できます。 

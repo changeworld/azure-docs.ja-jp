@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 631aaf3c6a99e093f6ed59089f7ce99803f3f054
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6eff662ac0140e7a64cc3bab28856178708cb9b2
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446628"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400677"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールのストレージ アカウント アクセスを制御する
 
 サーバーレス SQL プールのクエリは、Azure Storage から直接ファイルを読み取ります。 Azure Storage 上のファイルへのアクセス許可は次の 2 つのレベルで制御されます。
 - **ストレージ レベル** - ユーザーには、基になるストレージ ファイルにアクセスするためのアクセス許可が必要です。 ストレージの管理者は、ファイルの読み取り/書き込み、またはストレージへのアクセスに使用される SAS キーの生成を Azure AD プリンシパルに許可する必要があります。
-- **SQL サービス レベル** - ユーザーには、[外部テーブル](develop-tables-external-tables.md)からデータを読み取るための `SELECT` 権限、または `OPENROWSET` を実行するための `ADMINISTER BULK ADMIN` 権限が必要です。また、ストレージへのアクセスに使用される資格情報を使用する権限も必要です。
+- **SQL サービスレベル** - ユーザーには、[外部テーブル](develop-tables-external-tables.md) を使用してデータを読み取るか、`OPENROWSET` 関数を実行するためのアクセス許可が必要です。 このセクションでの必要なアクセス許可については、[こちら](develop-storage-files-overview.md#permissions)を参照してください。
 
 この記事では、使用できる資格情報の種類と、SQL および Azure AD のユーザーに対して資格情報の参照がどのように実行されるかについて説明します。
 

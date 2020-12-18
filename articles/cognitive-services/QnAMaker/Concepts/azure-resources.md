@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: cd64c19e7e9af05becd7a6978ceb4d0306112170
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e2c71e028225c22ab0355ff4cda77dacadf94095
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351897"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512047"
 ---
 # <a name="azure-resources-for-qna-maker"></a>QnA Maker 用の Azure リソース
 
@@ -104,11 +104,11 @@ QnA Maker では、それぞれ異なる目的で複数の Azure ソースを使
 
 |ターゲット QPS | App Service | Azure Cognitive Search |
 | -------------------- | ----------- | ------------ |
-| 3             | S1、1 インスタンス   | S1、1 インスタンス    |
-| 50         | S3、10 インスタンス       | S1、12 インスタンス         |
-| 80         | S3、10 インスタンス      |  S3、12 インスタンス  |
-| 100         | P3V2、10 インスタンス  | S3、12 インスタンス、3 パーティション   |
-| 200 - 250         | P3V2、20 インスタンス | S3、12 インスタンス、3 パーティション    |
+| 3             | S1、1 個のレプリカ   | S1、1 個のレプリカ    |
+| 50         | S3、10 個のレプリカ       | S1、12 個のレプリカ         |
+| 80         | S3、10 個のレプリカ      |  S3、12 個のレプリカ  |
+| 100         | P3V2、10 個のレプリカ  | S3、12 個のレプリカ、3 つのパーティション   |
+| 200 - 250         | P3V2、20 個のレプリカ | S3、12 個のレプリカ、3 つのパーティション    |
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
 

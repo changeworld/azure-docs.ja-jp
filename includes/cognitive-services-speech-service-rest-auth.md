@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: b5a3ec1d6e33c08b460088c9aeb4fd18f6bf29ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 410b73d3f9011f9384fafa18394d9318e3eafa67
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88864932"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504493"
 ---
 ## <a name="authentication"></a>認証
 
@@ -151,7 +151,7 @@ def get_token(subscription_key):
 
 このサービスには、アクセス トークンを `Authorization: Bearer <TOKEN>` ヘッダーとして送信する必要があります。 各アクセス トークンは 10 分間有効です。 新しいトークンはいつでも取得できますが、ネットワークのトラフィックと待ち時間を最小限に抑えるために、同じトークンを 9 分間使用することをお勧めします。
 
-次に示したのは、Text to Speech REST API に対するサンプル HTTP 要求です。
+次の例では、短いオーディオ用の音声テキスト変換 REST API への HTTP 要求を示します。
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1

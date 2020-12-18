@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 03f2109a32cd8a8c2643f3c2aa74900f4edd1cee
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 3f71cef19d25a7f987af4147ae0a889280e49bd1
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852848"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563162"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Recognizer の新機能
 
@@ -23,6 +23,8 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
 ## <a name="november-2020"></a>2020 年 11 月
 
 ### <a name="new-features"></a>新機能
+
+**Form Recognizer v2.1 パブリック プレビュー 2 が利用可能になりました。** V2.1-preview.2 がリリースされました。次の機能を備えています。 
 
 - **新しく事前作成された請求書モデル** - 新しく事前作成された請求書モデルにより、顧客はさまざまな形式で請求書を取得し、構造化されたデータを返して、請求書の処理を自動化することができます。 強力な光学式文字認識 (OCR) 機能と、請求書を解釈するディープ ラーニング モデルを組み合わせて、英語の請求書から重要な情報を抽出します。 顧客、仕入先、請求書 ID、請求書の期限、合計、請求額、課税額、出荷先、請求先などのテキスト、テーブル、情報が抽出されます。
 

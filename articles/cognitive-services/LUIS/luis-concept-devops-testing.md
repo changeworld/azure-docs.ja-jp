@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: 3017d0dec5acd3494600c42bef410ed346fead1a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f002bfdd5aeb784b5b10b549389e663216fa0361
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025944"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561224"
 ---
 # <a name="testing-for-luis-devops"></a>LUIS DevOps のテスト
 
@@ -18,7 +18,7 @@ Language Understanding (LUIS) アプリを開発するソフトウェア エン�
 
 アジャイル ソフトウェア開発手法では、テストが、高品質のソフトウェアを構築するうえで不可欠な役割を果たします。 LUIS アプリに対する重要な変更には、開発者がアプリに組み込もうとしている新機能を調べるためのテストが必ず伴います。 これらのテストは、LUIS アプリの `.lu` ソースと共にソース コード リポジトリにチェックインされます。 テストの要件をアプリが満たしたときに変更の実装が完了します。
 
-テストは、[CI/CD ワークフロー](luis-concept-devops-automation.md)の重要な要素です。 LUIS アプリに対する変更が pull request (PR) で提案されたときや、変更がマスター分岐にマージされた後は、その更新によって回帰が生じないことを、CI ワークフローでテストして検証する必要があります。
+テストは、[CI/CD ワークフロー](luis-concept-devops-automation.md)の重要な要素です。 LUIS アプリに対する変更が pull request (PR) で提案されたときや、変更がメイン ブランチにマージされた後は、その更新によって回帰が発生していないことを、CI ワークフローでテストして検証する必要があります。
 
 ## <a name="how-to-do-unit-testing-and-batch-testing"></a>単体テストとバッチ テストの実施方法
 
@@ -123,7 +123,7 @@ LUIS ポータルから利用できるテスト機能は、LUIS 作成機能の�
 NLU.DevOps パッケージを使用して、コマンド ラインからバッチ テストを実行することもできます。
 
 * 単体テストと同様、テスト ファイルからエンドポイントにテストを送信し、実際の予測結果をファイルにキャプチャするには、NLU.DevOps の [test コマンド](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Test.md)を使用します。
-* アプリのパフォーマンスを測定するには、NLU.DevOps の [compare コマンド](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md)を[パフォーマンス テスト モード](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode)で使用します。ベースライン パフォーマンス ベンチマーク (マスター リリースまたは現行リリースに対する直近のコミットから得た結果など) と照らしてアプリのパフォーマンスを比較することもできます。 パフォーマンス テスト モードの `compare` コマンドからは、NUnit テスト出力と[バッチ テスト結果](./luis-glossary.md#batch-test)が JSON 形式で生成されます。
+* アプリのパフォーマンスを測定するには、NLU.DevOps の [compare コマンド](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md)を[パフォーマンス テスト モード](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode)で使用します。ベースライン パフォーマンス ベンチマーク (メイン リリースまたは現行リリースに対する直近のコミットから得た結果など) に対してアプリのパフォーマンスを比較することもできます。 パフォーマンス テスト モードの `compare` コマンドからは、NUnit テスト出力と[バッチ テスト結果](./luis-glossary.md#batch-test)が JSON 形式で生成されます。
 
 ## <a name="luis-non-deterministic-training-and-the-effect-on-testing"></a>LUIS の非決定論的トレーニングとテストへの影響
 

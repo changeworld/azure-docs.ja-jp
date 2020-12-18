@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: ec39b3692a90f22409e85b5502d3ea874e3282d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf8923c1090669caa46ef51a26418933b1cda023
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742062"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563434"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator"></a>Translator によるコンテンツの翻訳を防止する方法
 
@@ -49,14 +49,15 @@ Translator では、翻訳されないようコンテンツにタグを付ける
    ```html
    <div translate="no">This will not be translated.</div>
    <div>This will be translated. </div>
+   ```
+   
+3. [動的ディクショナリ](dynamic-dictionary.md)を使用して決まった翻訳を指示する。
 
-3. Use the [dynamic dictionary](dynamic-dictionary.md) to prescribe a specific translation.
+4. 文字列を翻訳対象として Translator に渡さないでください。
 
-4. Don't pass the string to the Translator for translation.
-
-5. Custom Translator: Use a [dictionary in Custom Translator](custom-translator/what-is-dictionary.md) to prescribe the translation of a phrase with 100% probability.
+5. カスタム トランスレーター: 語句に対して 100% の確率で決まる翻訳は、[カスタム トランスレーターのディクショナリ](custom-translator/what-is-dictionary.md)を使用して指示します。
 
 
-## Next steps
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
-> [Use the Translate operation to translate text](reference/v3-0-translate.md)
+> [翻訳操作を使用してテキストを翻訳する](reference/v3-0-translate.md)

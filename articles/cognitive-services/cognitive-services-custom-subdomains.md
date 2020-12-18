@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 12/04/2020
 ms.author: erhopf
-ms.openlocfilehash: 95f3de0fe26678f6b4bcd97a78c06e92b72a7135
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 4746aad2d7cd62cb309a1823f8c50487e6f7e87c
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368816"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032968"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Cognitive Services のカスタム サブドメイン名
 
@@ -30,7 +30,7 @@ Azure Cognitive Services では、[Azure portal](https://portal.azure.com)、[Az
 2. **[概要]** ブレードで、 **[カスタム ドメイン名を生成します]** を見つけて選択します。
 3. パネルが開き、リソースの一意のカスタム サブドメインを作成する手順が示されます。
    > [!WARNING]
-   > カスタム サブドメインの名前は、作成後に変更することは **できません** 。
+   > カスタム サブドメインの名前は、作成後に変更することは **できません**。
 
 ## <a name="do-i-need-to-update-my-existing-resources"></a>既存のリソースを更新する必要はありますか?
 
@@ -39,11 +39,11 @@ Azure Cognitive Services では、[Azure portal](https://portal.azure.com)、[Az
 ## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>SDK でリソースのリージョンが要求された場合はどうすればよいですか?
 
 > [!WARNING]
-> 現時点では、Speech Services でカスタム サブドメインはサポート **されていません** 。 Speech Services と関連する SDK を使用する場合は、リージョン エンドポイントを使用してください。
+> Speech Service では、[プライベート エンドポイント](Speech-Service/speech-services-private-link.md)**のみ** でカスタム サブドメインが使用されます。 それ以外の場合は、Speech Service および関連付けられている SDK で **リージョン エンドポイント** を使用してください。
 
 リージョン エンドポイントとカスタム サブドメイン名は両方サポートされており、どちらを使用しても変わりはありません。 ただし、完全なエンドポイントが必要です。
 
-リージョン情報は、 [Azure portal](https://portal.azure.com) のご利用のリソースの **[概要]** ブレードで確認できます。 リージョン エンドポイントの完全な一覧については、[Is リージョン エンドポイントの一覧はありますか?](#is-there-a-list-of-regional-endpoints) に関するページをご覧ください。
+リージョン情報は、[Azure portal](https://portal.azure.com) のご利用のリソースの **[概要]** ブレードで確認できます。 リージョン エンドポイントの完全な一覧については、[Is リージョン エンドポイントの一覧はありますか?](#is-there-a-list-of-regional-endpoints) に関するページをご覧ください。
 
 ## <a name="are-custom-subdomain-names-regional"></a>カスタム サブドメイン名はリージョン単位ですか?
 

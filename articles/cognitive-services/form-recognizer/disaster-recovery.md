@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 79cf0ef059d96ac66f5918605e999d3936d589d2
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 168dcf994d00ba1cb2070665ada5a55cf86cfa4a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95486519"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359814"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>ご使用の Form Recognizer モデルのバックアップと復旧
 
@@ -69,7 +69,7 @@ POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/cust
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
-実際の要求の本文は、次の形式である必要があります。 ご自分のターゲット リソースのリソース ID とリージョン名を入力する必要があります。 また、前の手順でコピーしたモデル ID、アクセス トークン、有効期限の値も必要です。
+実際の要求の本文は、次の形式である必要があります。 ご自分のターゲット リソースのリソース ID とリージョン名を入力する必要があります。 リソース ID は、Azure portal のリソースの **[プロパティ]** タブにあります。リージョン名は **[キーとエンドポイント]** タブにあります。また、前の手順でコピーしたモデル ID、アクセス トークン、有効期限の値も必要です。
 
 ```json
 {
@@ -91,7 +91,7 @@ Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecog
 
 ### <a name="common-errors"></a>一般的なエラー
 
-|エラー|解決方法|
+|エラー|解決策|
 |:--|:--|
 | 400 / `"code:" "1002"` が指定された無効な要求 | 検証エラーまたはコピー要求の形式が正しくないことを示します。 一般的な問題には次のようなものがあります。a) 無効または変更された `copyAuthorization` ペイロード。 b) `expirationDateTimeTicks` トークンの期限切れの値 (`copyAuhtorization` ペイロードは 24 時間有効です)。 c) 無効またはサポートされていない `targetResourceRegion`。 d) 無効または形式が正しくない `targetResourceId` 文字列。
 |
@@ -115,7 +115,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="common-errors"></a>一般的なエラー
 
-|エラー|解決方法|
+|エラー|解決策|
 |:--|:--|
 |"errors":[{"code":"AuthorizationError",<br>"message":"Authorization failure due to <br>missing or invalid authorization claims."}] (承認要求が見つからないか無効であるため承認が失敗しました)   | `copyAuthorization` ペイロードまたは内容が `copyAuthorization` API によって返されたものから変更されたときに発生します。 ペイロードが、前の `copyAuthorization` の呼び出しから返されたものと確実にまったく同じ内容であるようにします。|
 |"errors":[{"code":"AuthorizationError",<br>"message":"Could not retrieve authorization <br>metadata. If this issue persists use a different <br>target model to copy into."}] (承認メタデータを取得できませんでした。この問題が解決しない場合は、コピー先として異なるターゲット モデルをお使いください。) | `copyAuthorization` ペイロードがコピー要求で再利用されていることを示します。 コピー要求が成功した場合、同じ `copyAuthorization` ペイロードを使用したそれ以上の要求は許可されません。 次に示すような別のエラーが発生した後に、同じ承認ペイロードでコピーを再試行すると、このエラーが発生します。 この解決策は、新しい `copyAuthorization` ペイロードを生成してから、コピー要求を再発行することです。|

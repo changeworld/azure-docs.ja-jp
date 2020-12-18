@@ -27,7 +27,7 @@ Microsoft のエンジニアによって公開された、ポッド、ノード�
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>高度なネットワークで AKS クラスターをデプロイしているときに、insufficientSubnetSize エラーが発生します。 どうすればよいですか。
 
 このエラーは、クラスターに使用中のサブネットに、正常なリソース割り当てのためにその CIDR 内で使用可能な IP がもうないことを示しています。 Kubenet クラスターでは、クラスター内のノードごとに十分な IP 空間が必要です。 Azure CNI クラスターでは、クラスター内の各ノードとポッドに十分な IP 空間が必要です。
-ポッドに IP を割り当てるための Azure CNI の設計の詳細については、[こちら](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)を参照してください。
+[ポッドに IP を割り当てるための Azure CNI の設計](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)の詳細については、こちらを参照してください。
 
 これらのエラーは、サブネットのサイズが不足しているなどの問題を事前に検出する [AKS 診断](concepts-diagnostics.md)でも検出されます。
 

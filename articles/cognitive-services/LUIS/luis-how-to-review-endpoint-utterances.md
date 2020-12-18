@@ -8,25 +8,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/07/2020
-ms.openlocfilehash: 9777e4f9b2205d2f6cdf6158b035e2a18403d69f
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 12/08/2020
+ms.openlocfilehash: ea2b44d05d25756a16b6b84f0734966b1f579848
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541460"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007604"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>エンドポイントの発話を見直し、LUIS アプリを改善する方法
 
 正しく予測するためにエンドポイントの発話を見直すプロセスは[アクティブ ラーニング](luis-concept-review-endpoint-utterances.md)と呼ばれています。 アクティブ ラーニングでは、エンドポイント クエリがキャプチャされ、ユーザーの不確かなエンドポイントの発話が選択されます。 これらの発話をレビューして、意図を選択し、文字にされた発話に対応するエンティティをマークすることになります。 それらの変更を承認して発話の例に追加したら、トレーニングして公開します。 そうすることで、LUIS による発話の識別の精度が向上していきます。
 
-## <a name="enable-active-learning"></a>アクティブ ラーニングを有効にする
+## <a name="log-user-queries-to-enable-active-learning"></a>アクティブ ラーニングを有効にするためにユーザーのクエリをログに記録する
 
 アクティブ ラーニングを有効にするには、ユーザー クエリをログに記録する必要があります。 そのためには、`log=true` という querystring パラメーターと値を指定し、[エンドポイント クエリ](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)を呼び出します。
 
 LUIS ポータルを使用して、正しいエンドポイント クエリを作成します。
 
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の **サブスクリプション** と **作成リソース** を選択して、その作成リソースに割り当てられているアプリを表示します。
 1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
 1. **[Manage]\(管理\)** セクションに移動し、 **[Azure resources]\(Azure リソース\)** を選択します。
 1. 割り当てられた予測リソースについて、 **[Change query parameters]\(クエリ パラメーターの変更\)** を選択します。
