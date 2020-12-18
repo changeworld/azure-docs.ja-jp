@@ -110,6 +110,8 @@
       items:
         - name: 容量メトリック
           href: api-management-capacity.md
+        - name: コストの計画と管理
+          href: plan-manage-costs.md
         - name: アップグレードとスケーリング
           href: upgrade-and-scale.md
         - name: 自動スケールの構成

@@ -157,7 +157,7 @@
         - name: Azure 仮想マシンの監視
           href: insights/monitor-vm-azure.md
           displayname: VM
-    - name: デプロイ
+    - name: 配置
       items:
         - name: Azure Monitor をデプロイする
           href: deploy.md
@@ -546,10 +546,10 @@
           items:
             - name: IT Service Management Connector
               href: platform/itsmc-overview.md
-            - name: IT Service Management Connector の定義
-              href: platform/itsmc-definition.md
             - name: IT Service Management 接続
               href: platform/itsmc-connections.md
+            - name: IT Service Management Connector の定義
+              href: platform/itsmc-definition.md
             - name: Service Manager Web アプリを作成する
               href: platform/itsmc-service-manager-script.md
             - name: ITSM Connector での問題のトラブルシューティング
