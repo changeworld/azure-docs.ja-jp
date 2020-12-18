@@ -553,6 +553,12 @@
               displayName: 'portal, create hyperscale'
     - name: チュートリアル
       items:
+        - name: サーバー グループの作成
+          href: tutorial-hyperscale-server-group.md
+        - name: データのモデル化と読み込み
+          items:
+            - name: ワーカー ノードのシャード データ
+              href: tutorial-hyperscale-shard.md
         - name: マルチテナント データベースを設計する
           href: tutorial-design-database-hyperscale-multi-tenant.md
           displayName: 'hyperscale, tutorial, multi-tenant'

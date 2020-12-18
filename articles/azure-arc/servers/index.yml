@@ -9,12 +9,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/07/2020
   ms.author: magoedte
-  ms.openlocfilehash: 845b1cac20e7dae35741027ebf2b709288c7dccc
-  ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+  ms.openlocfilehash: 25d70341fb96e6458a15770ab49c28f3e8248385
+  ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/14/2020
-  ms.locfileid: "92016622"
+  ms.lasthandoff: 12/17/2020
+  ms.locfileid: "97615632"
 landingContent:
 - title: Azure Arc 対応サーバーを使用してマシンを Azure に接続する
   linkLists:
@@ -24,6 +24,8 @@ landingContent:
       url: overview.md
   - linkListType: get-started
     links:
+    - text: ジャンプスタート
+      url: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_servers/
     - text: Azure portal から Azure Arc へのマシンの接続
       url: onboard-portal.md
     - text: サービス プリンシパルを使用したマシンの大規模な接続

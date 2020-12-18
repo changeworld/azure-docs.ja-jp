@@ -86,8 +86,8 @@
                 - name: SQL スクリプト
                   href: ./sql/author-sql-script.md
                   displayname: author
-                - name: マッピング データ フロー
-                  href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Data Flow
+                  href: concepts-data-flow-overview.md
         - name: メンテナンス スケジュール
           href: ./sql-data-warehouse/maintenance-scheduling.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: ソース管理
@@ -660,8 +660,8 @@
           href: ../data-factory/concepts-integration-runtime.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: データ フロー
           items:
-            - name: マッピング データ フローの概要
-              href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: データ フローの概要
+              href: concepts-data-flow-overview.md
             - name: デバッグ モード
               href: ../data-factory/concepts-data-flow-debug-mode.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: スキーマの誤差
