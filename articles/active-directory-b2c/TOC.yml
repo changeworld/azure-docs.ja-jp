@@ -119,6 +119,22 @@
           href: signin-appauth-ios.md
         - name: AppAuth を使用した Android
           href: signin-appauth-android.md
+    - name: フローを作成する
+      items:
+        - name: サインアップまたはサインイン ポリシー
+          href: add-sign-up-and-sign-in-policy.md
+        - name: パスワードのリセット ポリシー
+          href: add-password-reset-policy.md
+        - name: パスワードの変更ポリシー
+          href: add-password-change-policy.md
+        - name: プロファイルの編集ポリシー
+          href: add-profile-editing-policy.md
+        - name: リソース所有者のパスワード資格情報ポリシー
+          href: add-ropc-policy.md
+        - name: セルフサービス パスワードのリセット ポリシーの設定 (非推奨)
+          href: user-flow-self-service-password-reset.md
+        - name: 電話でのサインアップとサインイン
+          href: phone-authentication-user-flows.md
     - name: ID プロバイダー
       items:
         - name: ID プロバイダーの追加
@@ -192,38 +208,18 @@
           href: conditional-access-user-flow.md
     - name: 年齢制限を構成する
       href: basic-age-gating.md
-    - name: ユーザー フロー
+    - name: API コネクタ (プレビュー)
       items:
-        - name: フローを作成する
-          items:
-            - name: サインアップまたはサインイン
-              href: tutorial-create-user-flows.md
-            - name: リソース所有者のパスワード資格情報
-              href: configure-ropc.md
-            - name: セルフサービス パスワードのリセットの設定
-              href: user-flow-self-service-password-reset.md
-        - name: API コネクタ (プレビュー)
-          items:
-            - name: 概要
-              href: api-connectors-overview.md
-            - name: API コネクタを追加する
-              href: add-api-connector.md
+        - name: 概要
+          href: api-connectors-overview.md
+        - name: API コネクタを追加する
+          href: add-api-connector.md
     - name: カスタム ポリシー
       items:
         - name: カスタム ポリシーの概要
           href: custom-policy-trust-frameworks.md
         - name: カスタム ポリシーの概要
           href: custom-policy-get-started.md
-        - name: ポリシーの作成
-          items:
-            - name: リソース所有者のパスワード資格情報
-              href: ropc-custom.md
-              displayName: ropc
-            - name: パスワードの変更
-              href: custom-policy-password-change.md
-            - name: 電話でのサインアップとサインイン
-              href: phone-authentication.md
-              displayName: 'otp, passwordless, phone number'
         - name: カスタム メール確認
           items:
             - name: Mailjet
