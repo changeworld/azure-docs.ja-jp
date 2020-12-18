@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5b689ef15c247cea1887948ae271802294bbd0fc
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 4b72bb8bac8f9949c83d0bbc85a0995f790c437d
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763250"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347899"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure Digital Twins のトラブルシューティング: メトリック
 
@@ -48,6 +48,17 @@ ms.locfileid: "96763250"
 Azure Digital Twins には、インスタンスとその関連リソースの正常性の概要を提供するいくつかのメトリックが用意されています。 複数のメトリックから得た情報を組み合わせることで、インスタンスの状態をより大局的に把握することもできます。 
 
 次の表は、各 Azure Digital Twins インスタンスによって追跡されるメトリックと、各メトリックがインスタンスの全体的な状態にどのように関連しているかを示しています。
+
+#### <a name="metrics-for-tracking-service-limits"></a>サービスの制限を追跡するためのメトリック
+
+これらのメトリックを構成すると、ソリューションの一部の特性が[公開されているサービスの制限](reference-service-limits.md#functional-limits)に近づいているかどうかを追跡できます。 
+
+これを設定するには Azure Monitor の[アラート](troubleshoot-alerts.md)機能を使用します。 これらのメトリックのしきい値を定義すると、メトリックが公開されている制限の特定の割合に達したときにアラートを受け取ることができます。
+
+| メトリック | メトリックの表示名 | ユニット | 集計の種類| 説明 | Dimensions |
+| --- | --- | --- | --- | --- | --- |
+| TwinCount | ツイン数 (プレビュー) | Count | 合計 | Azure Digital Twins インスタンス内のツインの合計数。 インスタンスごとに許可されるツインの最大数に関する[サービスの制限](reference-service-limits.md#functional-limits)に近づいているかどうかを判断するには、このメトリックを使用します。 |  なし |
+| ModelCount | モデル数 (プレビュー) | Count | 合計 | Azure Digital Twins インスタンス内のモデルの合計数。 インスタンスごとに許可されるモデルの最大数に関する[サービスの制限](reference-service-limits.md#functional-limits)に近づいているかどうかを判断するには、このメトリックを使用します。 | なし |
 
 #### <a name="api-request-metrics"></a>API 要求のメトリック
 

@@ -10,16 +10,34 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 3d3c452dd883316520e0c28f01c241af74d597c8
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.custom: references_regions
+ms.openlocfilehash: bf53ce5ed3f9505572538533263f0d17c5dcbf45
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602786"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562567"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Text Analytics REST API を呼び出す方法
 
 この記事では、Text Analytics REST API と [Postman](https://www.postman.com/downloads/) を使用して主要な概念を示します。 API により、サービスの機能を使用するための同期と非同期の複数のエンドポイントが提供されます。 
+
+## <a name="create-a-text-analytics-resource"></a>Text Analytics リソースを作成する
+
+> [!NOTE]
+> * `/analyze` または `/health` エンドポイントを使用する場合は、Standard (S) [価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)を使用する Text Analytics リソースが必要です。 `/analyze` エンドポイントは、ご使用の[価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)に含まれています。
+
+Text Analytics API を使用する前に、アプリケーションのキーとエンドポイントを使用して Azure リソースを作成する必要があります。 
+
+1.  まだ持っていない場合は、最初に、[Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) にアクセスして新しい Text Analytics リソースを作成します。 [価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)を選択します。
+
+2.  エンドポイントに使用するリージョンを選択します。  `/analyze` と `/health` のエンドポイントは、次のリージョンでのみご利用いただけます。米国西部 2、米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ。
+
+3.  Text Analytics リソースを作成し、ページの左側にある "キーとエンドポイントのブレード" に移動します。 後で API を呼び出すときに使用するキーをコピーします。 後で `Ocp-Apim-Subscription-Key` ヘッダーの値としてこの値を追加します。
+
+## <a name="using-the-api-synchronously"></a>API の同期的な使用
+
+Text Analytics は同期的に呼び出すことができます (低待機時間のシナリオの場合)。 同期 API を使用する場合は、各 API (機能) を個別に呼び出す必要があります。 複数の機能を呼び出す必要がある場合は、Text Analytics を非同期に呼び出す方法に関する次のセクションをご覧ください。 
 
 ## <a name="using-the-api-asynchronously"></a>API の非同期的な使用
 
@@ -48,24 +66,16 @@ v3.1-preview.3 以降の Text Analytics API には、2 つの非同期エンド�
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-## <a name="prerequisites"></a>前提条件
-
-
-> [!NOTE]
-> * `/analyze` または `/health` エンドポイントを使用する場合は、Standard (S) [価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)を使用する Text Analytics リソースが必要です。
-
-1.  まだ持っていない場合は、最初に、[Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) にアクセスして新しい Text Analytics リソースを作成します。 `/analyze` または `/health` のいずれかのエンドポイントを使用する場合は、**Standard (S) 価格レベル** を選択します。 `/analyze` エンドポイントは、ご使用の[価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)に含まれています。
-
-2.  エンドポイントに使用するリージョンを選択します。  `/analyze` と `/health` のエンドポイントは、次のリージョンでのみご利用いただけます。米国西部 2、米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ。
-
-3.  Text Analytics リソースを作成し、ページの左側にある "キーとエンドポイントのブレード" に移動します。 後で API を呼び出すときに使用するキーをコピーします。 後で `Ocp-Apim-Subscription-Key` ヘッダーの値としてこの値を追加します。
-
 
 <a name="json-schema"></a>
 
-## <a name="api-request-format"></a>API 要求の形式
+## <a name="api-request-formats"></a>API 要求の形式
+
+Text Analytics API には、同期呼び出しと非同期呼び出しの両方を送信できます。
 
 #### <a name="synchronous"></a>[Synchronous](#tab/synchronous)
+
+### <a name="synchronous-requests"></a>同期要求
 
 API 要求の形式は、すべての同期操作について同じです。 ドキュメントは生の構造化されていないテキストとして JSON オブジェクトで送信されます。 XML はサポートされていません。 JSON スキーマは、以下で説明する要素で構成されています。
 
@@ -89,7 +99,9 @@ API 要求の形式は、すべての同期操作について同じです。 ド
 }
 ```
 
-#### <a name="analyze"></a>[解析](#tab/analyze)
+#### <a name="asynchronous"></a>[非同期](#tab/asynchronous)
+
+### <a name="asynchronous-requests-to-the-analyze-endpoint"></a>`/analyze` エンドポイントへの非同期要求
 
 > [!NOTE]
 > Text Analytics クライアント ライブラリの最新のプレリリース版を使用すると、クライアント オブジェクトを使用して非同期分析操作を呼び出すことができます。 GitHub で例を見つけることができます。
@@ -154,7 +166,7 @@ API 要求の形式は、すべての同期操作について同じです。 ド
 
 ```
 
-#### <a name="text-analytics-for-health"></a>[Text Analytics for Health](#tab/health)
+### <a name="asynchronous-requests-to-the-health-endpoint"></a>`/health` エンドポイントへの非同期要求
 
 Text Analytics for Health でホストされた API への API 要求の形式は、コンテナーの場合と同じです。 ドキュメントは生の構造化されていないテキストとして JSON オブジェクトで送信されます。 XML はサポートされていません。 JSON スキーマは、以下で説明する要素で構成されています。  Text Analytics for Health のパブリック プレビューへのアクセスを要求するには、[Cognitive Services 要求フォーム](https://aka.ms/csgate)に記入して送信してください。 Text Analytics for Health の使用には課金されません。 
 
@@ -194,6 +206,8 @@ Postman (または別の Web API テスト ツール) で、使用する機能�
 
 #### <a name="synchronous"></a>[Synchronous](#tab/synchronous)
 
+### <a name="endpoints-for-sending-synchronous-requests"></a>同期要求を送信するためのエンドポイント
+
 | 機能 | 要求の種類 | リソースのエンドポイント |
 |--|--|--|
 | 言語検出 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
@@ -204,14 +218,16 @@ Postman (または別の Web API テスト ツール) で、使用する機能�
 | 固有表現認識 - PII | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii` |
 | 固有表現認識 - PHI | POST |  `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii?domain=phi` |
 
-#### <a name="analyze"></a>[解析](#tab/analyze)
+#### <a name="asynchronous"></a>[非同期](#tab/asynchronous)
+
+### <a name="endpoints-for-sending-asynchronous-requests-to-the-analyze-endpoint"></a>`/analyze` エンドポイントに非同期要求を送信するためのエンドポイント
 
 | 機能 | 要求の種類 | リソースのエンドポイント |
 |--|--|--|
 | 分析ジョブを送信する | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze` |
 | 分析の状態と結果を取得する | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>` |
 
-#### <a name="text-analytics-for-health"></a>[Text Analytics for Health](#tab/health)
+### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>`/health` エンドポイントに非同期要求を送信するためのエンドポイント
 
 | 機能 | 要求の種類 | リソースのエンドポイント |
 |--|--|--|
@@ -267,6 +283,8 @@ API 要求を送信します。 同期エンドポイントを呼び出した場
  
 # <a name="synchronous"></a>[Synchronous](#tab/synchronous)
 
+### <a name="example-responses-for-synchronous-operation"></a>同期操作への応答例
+
 同期エンドポイントの応答は、使用するエンドポイントによって異なります。 応答の例については、次の記事を参照してください。
 
 + [言語検出](text-analytics-how-to-language-detection.md#step-3-view-the-results)
@@ -274,70 +292,15 @@ API 要求を送信します。 同期エンドポイントを呼び出した場
 + [感情分析](text-analytics-how-to-sentiment-analysis.md#view-the-results)
 + [エンティティの認識](text-analytics-how-to-entity-linking.md#view-results)
 
-# <a name="analyze"></a>[解析](#tab/analyze)
+# <a name="asynchronous"></a>[非同期](#tab/asynchronous)
+
+### <a name="example-responses-for-asynchronous-operations"></a>非同期操作への応答例
 
 成功した場合、`/analyze` エンドポイントへの GET 要求からは、割り当てられたタスクが含まれるオブジェクトが返されます。 たとえば、「 `keyPhraseExtractionTasks` 」のように指定します。 これらのタスクには、適切な Text Analytics 機能からの応答オブジェクトが含まれています。 詳しくは、以下の記事をご覧ください。
 
 + [キー フレーズ抽出](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [エンティティの認識](text-analytics-how-to-entity-linking.md#view-results)
-
-
-```json
-{
-  "displayName": "My Analyze Job",
-  "jobId": "dbec96a8-ea22-4ad1-8c99-280b211eb59e_637408224000000000",
-  "lastUpdateDateTime": "2020-11-13T04:01:14Z",
-  "createdDateTime": "2020-11-13T04:01:13Z",
-  "expirationDateTime": "2020-11-14T04:01:13Z",
-  "status": "running",
-  "errors": [],
-  "tasks": {
-      "details": {
-          "name": "My Analyze Job",
-          "lastUpdateDateTime": "2020-11-13T04:01:14Z"
-      },
-      "completed": 1,
-      "failed": 0,
-      "inProgress": 2,
-      "total": 3,
-      "keyPhraseExtractionTasks": [
-          {
-              "name": "My Analyze Job",
-              "lastUpdateDateTime": "2020-11-13T04:01:14.3763516Z",
-              "results": {
-                  "inTerminalState": true,
-                  "documents": [
-                      {
-                          "id": "doc1",
-                          "keyPhrases": [
-                              "sunny outside"
-                          ],
-                          "warnings": []
-                      },
-                      {
-                          "id": "doc2",
-                          "keyPhrases": [
-                              "favorite Seattle attraction",
-                              "Pike place market"
-                          ],
-                          "warnings": []
-                      }
-                  ],
-                  "errors": [],
-                  "modelVersion": "2020-07-01"
-              }
-          }
-      ]
-  }
-}
-```
-
-# <a name="text-analytics-for-health"></a>[Text Analytics for Health](#tab/health)
-
-Text Analytics for Health の非同期 API 応答の詳細については、次の記事を参照してください。
-
 + [Text Analytics for Health](text-analytics-for-health.md#hosted-asynchronous-web-api-response)
-
 
 --- 
 
@@ -346,5 +309,5 @@ Text Analytics for Health の非同期 API 応答の詳細については、次�
 * [Text Analytics の概要](../overview.md)
 * [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.md)</br>
 * [Text Analytics 製品ページ](//go.microsoft.com/fwlink/?LinkID=759712)
-* [Text Analytics クライアント ライブラリの使用](../quickstarts/text-analytics-sdk.md)
+* [Text Analytics クライアント ライブラリの使用](../quickstarts/client-libraries-rest-api.md)
 * [新機能](../whats-new.md)

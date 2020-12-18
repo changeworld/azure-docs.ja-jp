@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/19/2020
+ms.date: 12/15/2020
 ms.author: aahi
-ms.openlocfilehash: 804d739efa5ac96c0b2d7228573f031f324e590e
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 9b90f177432de11f8281d03021b38bae647dadf2
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558982"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562533"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Text Analytics で名前付きエンティティの認識を使用する方法
 
@@ -99,6 +99,14 @@ POST 要求を作成します。 次のリンクにある [Postman](text-analyti
 
 [`PII` に関する固有表現認識バージョン 3.1-preview のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionPii)
 
+**非同期操作**
+
+`v3.1-preview.3` 以降、`/analyze` エンドポイントを使用して、NER 要求を非同期的に送信できます。
+
+* 非同期操作 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze`
+
+非同期要求の送信の詳細については、[Text Analytics API の呼び出し方法](text-analytics-how-to-call-api.md)に関するページを参照してください。
+
 #### <a name="version-30"></a>[バージョン 3.0](#tab/version-3)
 
 名前付きエンティティの認識 v3 では、NER とエンティティ リンク設定の要求に別個のエンドポイントを使用します。 要求に応じて、次の URL 形式を使用します。
@@ -117,7 +125,11 @@ POST 要求を作成します。 次のリンクにある [Postman](text-analyti
 
 要求ヘッダーに Text Analytics API キーが含まれるように設定します。 要求本文では、用意した JSON ドキュメントを指定します。
 
-### <a name="example-ner-request"></a>NER 要求の例 
+## <a name="example-requests"></a>要求例
+
+#### <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-preview)
+
+### <a name="example-synchronous-ner-request"></a>同期 NER 要求の例 
 
 次に示す JSON は、API に送信するコンテンツの例です。 要求の形式は、どちらのバージョンの API でも同じです。
 
@@ -131,8 +143,64 @@ POST 要求を作成します。 次のリンクにある [Postman](text-analyti
     }
   ]
 }
-
 ```
+
+### <a name="example-asynchronous-ner-request"></a>非同期 NER 要求の例
+
+[非同期操作](text-analytics-how-to-call-api.md)に `/analyze` エンドポイントを使用すると、API に送信したタスクを含む応答が返されます。
+
+```json
+{
+    "displayName": "My Job",
+    "analysisInput": {
+        "documents": [
+            {
+                "id": "doc1",
+                "text": "It's incredibly sunny outside! I'm so happy"
+            },
+            {
+                "id": "doc2",
+                "text": "Pike place market is my favorite Seattle attraction."
+            }
+        ]
+    },
+    "tasks": {
+        "entityRecognitionTasks": [
+            {
+                "parameters": {
+                    "model-version": "latest",
+                    "stringIndexType": "TextElements_v8"
+                }
+            }
+        ],
+        "entityRecognitionPiiTasks": [{
+            "parameters": {
+                "model-version": "latest"
+            }
+        }]
+    }
+}
+```
+
+#### <a name="version-30"></a>[Version 3.0](#tab/version-3)
+
+### <a name="example-synchronous-ner-request"></a>同期 NER 要求の例 
+
+バージョン 3.0 には、同期操作のみが含まれます。 次に示す JSON は、API に送信するコンテンツの例です。 要求の形式は、どちらのバージョンの API でも同じです。
+
+```json
+{
+  "documents": [
+    {
+        "id": "1",
+        "language": "en",
+        "text": "Our tour guide took us up the Space Needle during our trip to Seattle last week."
+    }
+  ]
+}
+```
+
+---
 
 ## <a name="post-the-request"></a>要求を投稿する
 
@@ -148,11 +216,68 @@ Text Analytics API はステートレスです。 データはアカウントに
 
 ### <a name="example-responses"></a>応答の例
 
-バージョン 3 には、一般的な NER、PII、およびエンティティ リンク設定に対して個別のエンドポイントが用意されています。 両方の操作の応答を次に示します。 
+バージョン 3 には、一般的な NER、PII、およびエンティティ リンク設定に対して個別のエンドポイントが用意されています。 Version 3.1-preview には、非同期分析モードが含まれています。 これらの操作の応答を次に示します。 
 
 #### <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-preview)
 
+### <a name="synchronous-example-results"></a>同期の結果の例
+
+一般的な NER の応答の例:
+
+```json
+{
+  "documents": [
+    {
+      "id": "1",
+      "entities": [
+        {
+          "text": "tour guide",
+          "category": "PersonType",
+          "offset": 4,
+          "length": 10,
+          "confidenceScore": 0.45
+        },
+        {
+          "text": "Space Needle",
+          "category": "Location",
+          "offset": 30,
+          "length": 12,
+          "confidenceScore": 0.38
+        },
+        {
+          "text": "trip",
+          "category": "Event",
+          "offset": 54,
+          "length": 4,
+          "confidenceScore": 0.78
+        },
+        {
+          "text": "Seattle",
+          "category": "Location",
+          "subcategory": "GPE",
+          "offset": 62,
+          "length": 7,
+          "confidenceScore": 0.78
+        },
+        {
+          "text": "last week",
+          "category": "DateTime",
+          "subcategory": "DateRange",
+          "offset": 70,
+          "length": 9,
+          "confidenceScore": 0.8
+        }
+      ],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-04-01"
+}
+```
+
 PII の応答の例:
+
 ```json
 {
   "documents": [
@@ -239,6 +364,58 @@ PII の応答の例:
 }
 ```
 
+### <a name="example-asynchronous-result"></a>非同期の結果の例
+
+```json
+{
+  "displayName": "My Analyze Job",
+  "jobId": "dbec96a8-ea22-4ad1-8c99-280b211eb59e_637408224000000000",
+  "lastUpdateDateTime": "2020-11-13T04:01:14Z",
+  "createdDateTime": "2020-11-13T04:01:13Z",
+  "expirationDateTime": "2020-11-14T04:01:13Z",
+  "status": "running",
+  "errors": [],
+  "tasks": {
+      "details": {
+          "name": "My Analyze Job",
+          "lastUpdateDateTime": "2020-11-13T04:01:14Z"
+      },
+      "completed": 1,
+      "failed": 0,
+      "inProgress": 2,
+      "total": 3,
+      "keyPhraseExtractionTasks": [
+          {
+              "name": "My Analyze Job",
+              "lastUpdateDateTime": "2020-11-13T04:01:14.3763516Z",
+              "results": {
+                  "inTerminalState": true,
+                  "documents": [
+                      {
+                          "id": "doc1",
+                          "keyPhrases": [
+                              "sunny outside"
+                          ],
+                          "warnings": []
+                      },
+                      {
+                          "id": "doc2",
+                          "keyPhrases": [
+                              "favorite Seattle attraction",
+                              "Pike place market"
+                          ],
+                          "warnings": []
+                      }
+                  ],
+                  "errors": [],
+                  "modelVersion": "2020-07-01"
+              }
+          }
+      ]
+  }
+}
+```
+
 
 #### <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
@@ -309,5 +486,5 @@ PII の応答の例:
 ## <a name="next-steps"></a>次のステップ
 
 * [Text Analytics の概要](../overview.md)
-* [Text Analytics クライアント ライブラリの使用](../quickstarts/text-analytics-sdk.md)
+* [Text Analytics クライアント ライブラリの使用](../quickstarts/client-libraries-rest-api.md)
 * [新機能](../whats-new.md)

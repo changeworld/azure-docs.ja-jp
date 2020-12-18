@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: f79cfce514b81c5829ee7791c18e24d3bc6563b5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 3b6c2a5a50cedadd8818eae735df55b661e794ef
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369377"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97034022"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Cognitive Services 仮想ネットワークを構成する
 
@@ -49,19 +49,22 @@ Azure Cognitive Services に対して、REST や WebSocket などのすべての
 > * Custom Vision
 > * Face
 > * Form Recognizer
+> * イマーシブ リーダー
 > * Language Understanding (LUIS)
 > * Personalizer
+> * Speech Services
 > * Text Analytics
 > * QnA Maker
 > * Translator Text
-> * イマーシブ リーダー
+
 
 > [!NOTE]
 > LUIS を使用している場合、**CognitiveServicesManagement** タグを指定しても、SDK または REST API を使用してサービスを使用できるようになるだけです。 仮想ネットワークから LUIS ポータルにアクセスして使用するには、次のタグを使用する必要があります。  
-> * **AzureResourceManager** 
-> * **CognitiveServicesManagement**
 > * **AzureActiveDirectory**
 > * **AzureFrontDoor.Frontend**
+> * **AzureResourceManager** 
+> * **CognitiveServicesManagement**
+
 
 
 ## <a name="change-the-default-network-access-rule"></a>既定のネットワーク アクセス ルールの変更
@@ -491,7 +494,7 @@ Cognitive Services リソースのプライベート エンドポイントを使
 
 プライベート エンドポイントは、[VNet](../virtual-network/virtual-networks-overview.md) 内の Azure リソース用の特別なネットワーク インターフェイスです。 Cognitive Services リソースのプライベート エンドポイントを作成すると、対象の VNet 上のクライアントと対象のリソース間のセキュリティで保護された接続が提供されます。 プライベート エンドポイントには、VNet の IP アドレス範囲から IP アドレスが割り当てられます。 プライベート エンドポイントと Cognitive Services サービス間の接続には、セキュリティで保護されたプライベート リンクが使用されます。
 
-VNet 内のアプリケーションは、プライベート エンドポイント経由でサービスにシームレスに接続できます。その際、使用される接続文字列と承認メカニズムは、それを経由しない場合と同じものになります。 例外は Speech Service で、これには別のエンドポイントが必要です。 「[プライベート エンドポイントと Speech Service](#private-endpoints-with-the-speech-service)」セクションを参照してください。 プライベート エンドポイントは、Cognitive Services リソースでサポートされているすべてのプロトコル (REST を含む) で使用できます。
+VNet 内のアプリケーションは、プライベート エンドポイント経由でサービスにシームレスに接続できます。その際、使用される接続文字列と承認メカニズムは、それを経由しない場合と同じものになります。 例外は Speech Service で、これには別のエンドポイントが必要です。 「[プライベート エンドポイントと Speech Service](#private-endpoints-with-the-speech-services)」セクションを参照してください。 プライベート エンドポイントは、Cognitive Services リソースでサポートされているすべてのプロトコル (REST を含む) で使用できます。
 
 プライベート エンドポイントは、[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を使用するサブネットに作成できます。 サブネット内のクライアントは、プライベート エンドポイントを使用して 1 つの Cognitive Services リソースに接続する一方で、サービス エンドポイントを使用して他のリソースにアクセスできます。
 
@@ -509,13 +512,13 @@ Cognitive Services リソースの所有者は、[Azure portal](https://portal.a
 
 ### <a name="connecting-to-private-endpoints"></a>プライベート エンドポイントへの接続
 
-プライベート エンドポイントを使用する VNet 上のクライアントは、パブリック エンドポイントに接続するクライアントと同じ接続文字列を Cognitive Services リソースに対して使用する必要があります。 例外は Speech Service で、これには別のエンドポイントが必要です。 「[プライベート エンドポイントと Speech Service](#private-endpoints-with-the-speech-service)」セクションを参照してください。 プライベート リンク経由の VNet から Cognitive Services リソースへの接続を自動的にルーティングするために、DNS 解決に依存しています。 Speech Service 
+プライベート エンドポイントを使用する VNet 上のクライアントは、パブリック エンドポイントに接続するクライアントと同じ接続文字列を Cognitive Services リソースに対して使用する必要があります。 例外は Speech Service で、これには別のエンドポイントが必要です。 「[プライベート エンドポイントと Speech Service](#private-endpoints-with-the-speech-services)」セクションを参照してください。 プライベート リンク経由の VNet から Cognitive Services リソースへの接続を自動的にルーティングするために、DNS 解決に依存しています。 
 
 既定では、VNet に接続されている[プライベート DNS ゾーン](../dns/private-dns-overview.md)が作成され、プライベート エンドポイントに必要な更新も行われます。 ただし、独自の DNS サーバーを使用している場合は、DNS 構成に追加の変更が必要になることがあります。 以下の [DNS の変更](#dns-changes-for-private-endpoints)に関するセクションで、プライベート エンドポイントに必要な更新について説明しています。
 
-### <a name="private-endpoints-with-the-speech-service"></a>プライベート エンドポイントと Speech Service
+### <a name="private-endpoints-with-the-speech-services"></a>プライベート エンドポイントと Speech Service
 
-Speech Service でプライベート エンドポイントを使用する場合は、カスタム エンドポイントを使用して Speech Service を呼び出す必要があります。 グローバル エンドポイントは使用できません。 エンドポイントは、`{account}.{stt|tts|voice|dls}.speech.microsoft.com` というパターンに従う必要があります。
+「[Azure Private Link によって提供されるプライベート エンドポイントでの Speech Service の使用](Speech-Service/speech-services-private-link.md)」を参照してください。
 
 ### <a name="dns-changes-for-private-endpoints"></a>プライベート エンドポイントの DNS の変更
 

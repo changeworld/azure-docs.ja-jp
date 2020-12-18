@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a71c1a0df1a72e3831fa54a041539f62b38a0aca
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 19c27dc80f9af013c458663c9c7afb0033683acd
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95999911"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97348069"
 ---
 # <a name="create-luis-resources"></a>LUIS リソースの作成
 
@@ -51,16 +51,13 @@ LUIS リソースのような Azure リソースは、そのリソースが含�
 * サブスクリプションの[所有権](../../cost-management-billing/manage/billing-subscription-transfer.md)を譲渡します。
 * LUIS アプリをファイルとしてエクスポートしてから、別のサブスクリプションにアプリをインポートします。 エクスポートは、LUIS ポータルの **[マイ アプリ]** ページで使用できます。
 
-
 ## <a name="resource-limits"></a>リソース制限
 
 ### <a name="authoring-key-creation-limits"></a>オーサリング キーの作成の制限
 
-サブスクリプションごとに、各リージョンで最大 10 個のオーサリング キーを作成できます。
+サブスクリプションごとに、各リージョンで最大 10 個のオーサリング キーを作成できます。 公開リージョンは、オーサリング リージョンとは異なります。 クライアント アプリケーションを配置する公開リージョンに対応するオーサリング リージョンにアプリを作成してください。 オーサリング リージョンを公開リージョンにマップする方法の詳細については、[オーサリング リージョンと公開リージョン](luis-reference-regions.md)に関するページを参照してください。 
 
-詳細については、[キーの制限](luis-limits.md#key-limits)および [Azure リージョン](luis-reference-regions.md)に関するページを参照してください。
-
-公開リージョンは、オーサリング リージョンとは異なります。 クライアント アプリケーションを配置する公開リージョンに対応するオーサリング リージョンにアプリを作成してください。
+キーの制限の詳細については、[キーの制限](luis-limits.md#key-limits)に関するページを参照してください。
 
 ### <a name="errors-for-key-usage-limits"></a>キーの使用制限に関するエラー
 

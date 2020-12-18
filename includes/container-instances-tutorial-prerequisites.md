@@ -24,7 +24,7 @@ ms.locfileid: "75552421"
 **Docker**:このチュートリアルを完了するには、Docker がローカル環境にインストールされている必要があります。 Docker には、[macOS][docker-mac]、[Windows][docker-windows]、[Linux][docker-linux] 上で Docker 環境の構成を行うパッケージが用意されています。
 
 > [!IMPORTANT]
-> Azure Cloud Shell には Docker デーモンが含まれていないため、このチュートリアルを完了するためには、Azure CLI と Docker エンジンの両方を自分で*ローカル コンピューター*にインストールする*必要があります*。 このチュートリアルで Azure Cloud Shell を使用することはできません。
+> Azure Cloud Shell には Docker デーモンが含まれていないため、このチュートリアルを完了するためには、Azure CLI と Docker エンジンの両方を自分で *ローカル コンピューター* にインストールする *必要があります*。 このチュートリアルで Azure Cloud Shell を使用することはできません。
 
 <!-- LINKS - External -->
 [docker-get-started]: https://docs.docker.com/engine/docker-overview/

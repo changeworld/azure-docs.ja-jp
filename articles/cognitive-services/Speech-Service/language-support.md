@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 9ef585d83c0606bedaf4c0a05c6c87fd52423b9a
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 12c9777449d3f360b8f08d99aca7b916856139d4
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575535"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400184"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -141,73 +141,119 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | Language | Locale | 性別 | 音声名 | スタイルのサポート |
 |---|---|---|---|---|
 | アラビア語 (エジプト) | `ar-EG` | Female | `ar-EG-SalmaNeural` | 全般 |
+| アラビア語 (エジプト) | `ar-EG` | Male | `ar-EG-ShakirNeural` <sup>[新規作成]</sup> | 全般 |
 | アラビア語 (サウジアラビア) | `ar-SA` | Female | `ar-SA-ZariyahNeural` | 全般 |
-| ブルガリア語 (ブルガリア) | `bg-BG` | Female | `bg-BG-KalinaNeural` <sup>[新規作成]</sup> | 全般 |
+| アラビア語 (サウジアラビア) | `ar-SA` | Male | `ar-SA-HamedNeural` <sup>[新規作成]</sup> | 全般 |
+| ブルガリア語 (ブルガリア) | `bg-BG` | Female | `bg-BG-KalinaNeural` | 全般 |
+| ブルガリア語 (ブルガリア) | `bg-BG` | Male | `bg-BG-BorislavNeural` <sup>[新規作成]</sup> | 全般 |
 | カタルニア語 (スペイン) | `ca-ES` | Female | `ca-ES-AlbaNeural` | 全般 |
+| カタルニア語 (スペイン) | `ca-ES` | Female | `ca-ES-JoanaNeural` <sup>[新規作成]</sup> | 全般 |
+| カタルニア語 (スペイン) | `ca-ES` | Male | `ca-ES-EnricNeural` <sup>[新規作成]</sup> | 全般 |
 | 中国語 (繁体字) | `zh-HK` | Female | `zh-HK-HiuGaaiNeural` | 全般 |
-| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoxiaoNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能 |
+| 中国語 (繁体字) | `zh-HK` | Female | `zh-HK-HiuMaanNeural` <sup>[新規作成]</sup> | 全般 |
+| 中国語 (繁体字) | `zh-HK` | Male | `zh-HK-WanLungNeural` <sup>[新規作成]</sup> | 全般 |
+| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoxiaoNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能  |
 | 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoyouNeural` | 子供の音声、ストーリーのナレーション向けに最適化 |
-| 中国語 (標準、簡体字) | `zh-CN` | Male   | `zh-CN-YunyangNeural` | ニュースの読み取り向けに最適化<br /> [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、複数の音声スタイルを使用可能 |
-| 中国語 (標準、簡体字) | `zh-CN` | Male   | `zh-CN-YunyeNeural` | ストーリーのナレーション向けに最適化 |
+| 中国語 (標準、簡体字) | `zh-CN` | Male | `zh-CN-YunyangNeural` | ニュースの読み取り向けに最適化<br /> [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、複数の音声スタイルを使用可能 |
+| 中国語 (標準、簡体字) | `zh-CN` | Male | `zh-CN-YunyeNeural` | ストーリーのナレーション向けに最適化  |
+| 中国語 (台湾標準中国語) | `zh-TW` | Female | `zh-TW-HsiaoChenNeural` <sup>[新規作成]</sup> | 全般 |
 | 中国語 (台湾標準中国語) | `zh-TW` | Female | `zh-TW-HsiaoYuNeural` | 全般 |
-| クロアチア語 (クロアチア) | `hr-HR` | Female | `hr-HR-GabrijelaNeural` <sup>[新規作成]</sup> | 全般 |
-| チェコ語 (チェコ) | `cs-CZ` | Female | `cs-CZ-VlastaNeural` <sup>[新規作成]</sup>    | 全般 |
+| 中国語 (台湾標準中国語) | `zh-TW` | Male | `zh-TW-YunJheNeural` <sup>[新規作成]</sup> | 全般 |
+| クロアチア語 (クロアチア) | `hr-HR` | Female | `hr-HR-GabrijelaNeural` | 全般 |
+| クロアチア語 (クロアチア) | `hr-HR` | Male | `hr-HR-SreckoNeural` <sup>[新規作成]</sup> | 全般 |
+| チェコ語 (チェコ) | `cs-CZ` | Female | `cs-CZ-VlastaNeural` | 全般 |
+| チェコ語 (チェコ) | `cs-CZ` | Male | `cs-CZ-AntoninNeural` <sup>[新規作成]</sup> | 全般 |
 | デンマーク語 (デンマーク) | `da-DK` | Female | `da-DK-ChristelNeural` | 全般 |
+| デンマーク語 (デンマーク) | `da-DK` | Male | `da-DK-JeppeNeural` <sup>[新規作成]</sup> | 全般 |
 | オランダ語 (オランダ) | `nl-NL` | Female | `nl-NL-ColetteNeural` | 全般 |
+| オランダ語 (オランダ) | `nl-NL` | Female | `nl-NL-FennaNeural` <sup>[新規作成]</sup> | 全般 |
+| オランダ語 (オランダ) | `nl-NL` | Male | `nl-NL-MaartenNeural` <sup>[新規作成]</sup> | 全般 |
 | 英語 (オーストラリア) | `en-AU` | Female | `en-AU-NatashaNeural` | 全般 |
-| 英語 (オーストラリア) | `en-AU` | Male   | `en-AU-WilliamNeural` <sup>[新規作成]</sup>  | 全般 |
+| 英語 (オーストラリア) | `en-AU` | Male | `en-AU-WilliamNeural` | 全般 |
 | 英語 (カナダ) | `en-CA` | Female | `en-CA-ClaraNeural` | 全般 |
+| 英語 (カナダ) | `en-CA` | Male | `en-CA-LiamNeural` <sup>[新規作成]</sup> | 全般 |
 | 英語 (インド) | `en-IN` | Female | `en-IN-NeerjaNeural` | 全般 |
-| 英語 (アイルランド) | `en-IE` | Female | `en-IE-EmilyNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (インド) | `en-IN` | Male | `en-IN-PrabhatNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (アイルランド) | `en-IE` | Female | `en-IE-EmilyNeural` | 全般 |
+| 英語 (アイルランド) | `en-IE` | Male | `en-IE-ConnorNeural` <sup>[新規作成]</sup> | 全般 |
 | 英語 (イギリス) | `en-GB` | Female | `en-GB-LibbyNeural` | 全般 |
 | 英語 (イギリス) | `en-GB` | Female | `en-GB-MiaNeural` | 全般 |
-| 英語 (イギリス) | `en-GB` | Male | `en-GB-RyanNeural` <sup>[新規作成]</sup> | 全般 |
-| 英語 (米国) | `en-US` | Female | `en-US-AriaNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能 |
+| 英語 (イギリス) | `en-GB` | Male | `en-GB-RyanNeural` | 全般 |
+| 英語 (米国) | `en-US` | Female | `en-US-AriaNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能  |
+| 英語 (米国) | `en-US` | Female | `en-US-JennyNeural` | 全般 |
 | 英語 (米国) | `en-US` | Male | `en-US-GuyNeural` | 全般 |
-| 英語 (米国) | `en-US` | Female | `en-US-JennyNeural` <sup>[新規作成]</sup> | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能 |
 | フィンランド語 (フィンランド) | `fi-FI` | Female | `fi-FI-NooraNeural` | 全般 |
+| フィンランド語 (フィンランド) | `fi-FI` | Female | `fi-FI-SelmaNeural` <sup>[新規作成]</sup> | 全般 |
+| フィンランド語 (フィンランド) | `fi-FI` | Male | `fi-FI-HarriNeural` <sup>[新規作成]</sup> | 全般 |
 | フランス語 (カナダ) | `fr-CA` | Female | `fr-CA-SylvieNeural` | 全般 |
-| フランス語 (カナダ) | `fr-CA` | Male | `fr-CA-JeanNeural` <sup>[新規作成]</sup> | 全般 |
+| フランス語 (カナダ) | `fr-CA` | Male | `fr-CA-JeanNeural` | 全般 |
 | フランス語 (フランス) | `fr-FR` | Female | `fr-FR-DeniseNeural` | 全般 |
-| フランス語 (フランス) | `fr-FR` | Male | `fr-FR-HenriNeural` <sup>[新規作成]</sup> | 全般 |
-| フランス語 (スイス) | `fr-CH` | Female | `fr-CH-ArianeNeural` <sup>[新規作成]</sup> | 全般 |
-| ドイツ語 (オーストリア) | `de-AT` | Female | `de-AT-IngridNeural` <sup>[新規作成]</sup> | 全般 |
+| フランス語 (フランス) | `fr-FR` | Male | `fr-FR-HenriNeural` | 全般 |
+| フランス語 (スイス) | `fr-CH` | Female | `fr-CH-ArianeNeural` | 全般 |
+| フランス語 (スイス) | `fr-CH` | Male | `fr-CH-FabriceNeural` <sup>[新規作成]</sup> | 全般 |
+| ドイツ語 (オーストリア) | `de-AT` | Female | `de-AT-IngridNeural` | 全般 |
+| ドイツ語 (オーストリア) | `de-AT` | Male | `de-AT-JonasNeural` <sup>[新規作成]</sup> | 全般 |
 | ドイツ語 (ドイツ) | `de-DE` | Female | `de-DE-KatjaNeural` | 全般 |
-| ドイツ語 (ドイツ) | `de-DE` | Male | `de-DE-ConradNeural` <sup>[新規作成]</sup> | 全般 |
-| ドイツ語 (スイス) | `de-CH` | Female | `de-CH-LeniNeural` <sup>[新規作成]</sup> | 全般 |
-| ギリシャ語 (ギリシャ) | `el-GR` | Female | `el-GR-AthinaNeural` <sup>[新規作成]</sup> | 全般 |
-| ヘブライ語 (イスラエル) | `he-IL` | Female | `he-IL-HilaNeural` <sup>[新規作成]</sup> | 全般 |
+| ドイツ語 (ドイツ) | `de-DE` | Male | `de-DE-ConradNeural` | 全般 |
+| ドイツ語 (スイス) | `de-CH` | Female | `de-CH-LeniNeural` | 全般 |
+| ドイツ語 (スイス) | `de-CH` | Male | `de-CH-JanNeural` <sup>[新規作成]</sup> | 全般 |
+| ギリシャ語 (ギリシャ) | `el-GR` | Female | `el-GR-AthinaNeural` | 全般 |
+| ギリシャ語 (ギリシャ) | `el-GR` | Male | `el-GR-NestorasNeural` <sup>[新規作成]</sup> | 全般 |
+| ヘブライ語 (イスラエル) | `he-IL` | Female | `he-IL-HilaNeural` | 全般 |
+| ヘブライ語 (イスラエル) | `he-IL` | Male | `he-IL-AvriNeural` <sup>[新規作成]</sup> | 全般 |
 | ヒンディー語 (インド) | `hi-IN` | Female | `hi-IN-SwaraNeural` | 全般 |
-| ハンガリー語 (ハンガリー) | `hu-HU` | Female | `hu-HU-NoemiNeural` <sup>[新規作成]</sup> | 全般 |
-| インドネシア語 (インドネシア) | `id-ID` | Male | `id-ID-ArdiNeural` <sup>[新規作成]</sup> | 全般 |
+| ヒンディー語 (インド) | `hi-IN` | Male | `hi-IN-MadhurNeural` <sup>[新規作成]</sup> | 全般 |
+| ハンガリー語 (ハンガリー) | `hu-HU` | Female | `hu-HU-NoemiNeural` | 全般 |
+| ハンガリー語 (ハンガリー) | `hu-HU` | Male | `hu-HU-TamasNeural` <sup>[新規作成]</sup> | 全般 |
+| インドネシア語 (インドネシア) | `id-ID` | Female | `id-ID-GadisNeural` <sup>[新規作成]</sup> | 全般 |
+| インドネシア語 (インドネシア) | `id-ID` | Male | `id-ID-ArdiNeural` | 全般 |
 | イタリア語 (イタリア) | `it-IT` | Female | `it-IT-ElsaNeural` | 全般 |
-| イタリア語 (イタリア) | `it-IT` | Female | `it-IT-IsabellaNeural` <sup>[新規作成]</sup> | 全般 |
-| イタリア語 (イタリア) | `it-IT` | Male | `it-IT-DiegoNeural` <sup>[新規作成]</sup> | 全般 |
+| イタリア語 (イタリア) | `it-IT` | Female | `it-IT-IsabellaNeural` | 全般 |
+| イタリア語 (イタリア) | `it-IT` | Male | `it-IT-DiegoNeural` | 全般 |
 | 日本語 (日本) | `ja-JP` | Female | `ja-JP-NanamiNeural` | 全般 |
-| 日本語 (日本) | `ja-JP` | Male | `ja-JP-KeitaNeural` <sup>[新規作成]</sup> | 全般 |
+| 日本語 (日本) | `ja-JP` | Male | `ja-JP-KeitaNeural` | 全般 |
 | 韓国語 (韓国) | `ko-KR` | Female | `ko-KR-SunHiNeural` | 全般 |
-| 韓国語 (韓国) | `ko-KR` | Male | `ko-KR-InJoonNeural` <sup>[新規作成]</sup> | 全般 |
-| マレー語 (マレーシア) | `ms-MY` | Female | `ms-MY-YasminNeural` <sup>[新規作成]</sup> | 全般 |
+| 韓国語 (韓国) | `ko-KR` | Male | `ko-KR-InJoonNeural` | 全般 |
+| マレー語 (マレーシア) | `ms-MY` | Female | `ms-MY-YasminNeural` | 全般 |
+| マレー語 (マレーシア) | `ms-MY` | Male | `ms-MY-OsmanNeural` <sup>[新規作成]</sup> | 全般 |
 | ノルウェー語 (ブークモール、ノルウェー) | `nb-NO` | Female | `nb-NO-IselinNeural` | 全般 |
+| ノルウェー語 (ブークモール、ノルウェー) | `nb-NO` | Female | `nb-NO-PernilleNeural` <sup>[新規作成]</sup> | 全般 |
+| ノルウェー語 (ブークモール、ノルウェー) | `nb-NO` | Male | `nb-NO-FinnNeural` <sup>[新規作成]</sup> | 全般 |
+| ポーランド語 (ポーランド) | `pl-PL` | Female | `pl-PL-AgnieszkaNeural` <sup>[新規作成]</sup> | 全般 |
 | ポーランド語 (ポーランド) | `pl-PL` | Female | `pl-PL-ZofiaNeural` | 全般 |
-| ポルトガル語 (ブラジル) | `pt-BR` | Female | `pt-BR-FranciscaNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能 |
-| ポルトガル語 (ブラジル) | `pt-BR` | Male | `pt-BR-AntonioNeural` <sup>[新規作成]</sup> | 全般 |
+| ポーランド語 (ポーランド) | `pl-PL` | Male | `pl-PL-MarekNeural` <sup>[新規作成]</sup> | 全般 |
+| ポルトガル語 (ブラジル) | `pt-BR` | Female | `pt-BR-FranciscaNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能  |
+| ポルトガル語 (ブラジル) | `pt-BR` | Male | `pt-BR-AntonioNeural` | 全般 |
 | ポルトガル語 (ポルトガル) | `pt-PT` | Female | `pt-PT-FernandaNeural` | 全般 |
-| ルーマニア語 (ルーマニア) | `ro-RO` | Female | `ro-RO-AlinaNeural` <sup>[新規作成]</sup> | 全般 |
+| ポルトガル語 (ポルトガル) | `pt-PT` | Female | `pt-PT-RaquelNeural` <sup>[新規作成]</sup> | 全般 |
+| ポルトガル語 (ポルトガル) | `pt-PT` | Male | `pt-PT-DuarteNeural` <sup>[新規作成]</sup> | 全般 |
+| ルーマニア語 (ルーマニア) | `ro-RO` | Female | `ro-RO-AlinaNeural` | 全般 |
+| ルーマニア語 (ルーマニア) | `ro-RO` | Male | `ro-RO-EmilNeural` <sup>[新規作成]</sup> | 全般 |
 | ロシア語 (ロシア) | `ru-RU` | Female | `ru-RU-DariyaNeural` | 全般 |
-| スロバキア語 (スロバキア) | `sk-SK` | Female | `sk-SK-ViktoriaNeural` <sup>[新規作成]</sup> | 全般 |
-| スロベニア語 (スロベニア) | `sl-SI` | Female | `sl-SI-PetraNeural` <sup>[新規作成]</sup> | 全般 |
+| ロシア語 (ロシア) | `ru-RU` | Female | `ru-RU-SvetlanaNeural` <sup>[新規作成]</sup> | 全般 |
+| ロシア語 (ロシア) | `ru-RU` | Male | `ru-RU-DmitryNeural` <sup>[新規作成]</sup> | 全般 |
+| スロバキア語 (スロバキア) | `sk-SK` | Female | `sk-SK-ViktoriaNeural` | 全般 |
+| スロバキア語 (スロバキア) | `sk-SK` | Male | `sk-SK-LukasNeural` <sup>[新規作成]</sup> | 全般 |
+| スロベニア語 (スロベニア) | `sl-SI` | Female | `sl-SI-PetraNeural` | 全般 |
+| スロベニア語 (スロベニア) | `sl-SI` | Male | `sl-SI-RokNeural` <sup>[新規作成]</sup> | 全般 |
 | スペイン語 (メキシコ) | `es-MX` | Female | `es-MX-DaliaNeural` | 全般 |
-| スペイン語 (メキシコ) | `es-MX` | Male | `es-MX-JorgeNeural` <sup>[新規作成]</sup> | 全般 |
+| スペイン語 (メキシコ) | `es-MX` | Male | `es-MX-JorgeNeural` | 全般 |
 | スペイン語 (スペイン) | `es-ES` | Female | `es-ES-ElviraNeural` | 全般 |
-| スペイン語 (スペイン) | `es-ES` | Male | `es-ES-AlvaroNeural` <sup>[新規作成]</sup> | 全般 |
+| スペイン語 (スペイン) | `es-ES` | Male | `es-ES-AlvaroNeural` | 全般 |
 | スウェーデン語 (スウェーデン) | `sv-SE` | Female | `sv-SE-HilleviNeural` | 全般 |
-| タミール語 (インド) | `ta-IN` | Female | `ta-IN-PallaviNeural` <sup>[新規作成]</sup> | 全般 |
-| テルグ語 (インド) | `te-IN` | Female | `te-IN-ShrutiNeural` <sup>[新規作成]</sup> | 全般 |
+| スウェーデン語 (スウェーデン) | `sv-SE` | Female | `sv-SE-SofieNeural` <sup>[新規作成]</sup> | 全般 |
+| スウェーデン語 (スウェーデン) | `sv-SE` | Male | `sv-SE-MattiasNeural` <sup>[新規作成]</sup> | 全般 |
+| タミール語 (インド) | `ta-IN` | Female | `ta-IN-PallaviNeural` | 全般 |
+| タミール語 (インド) | `ta-IN` | Male | `ta-IN-ValluvarNeural` <sup>[新規作成]</sup> | 全般 |
+| テルグ語 (インド) | `te-IN` | Female | `te-IN-ShrutiNeural` | 全般 |
+| テルグ語 (インド) | `te-IN` | Male | `te-IN-MohanNeural` <sup>[新規作成]</sup> | 全般 |
 | タイ語 (タイ) | `th-TH` | Female | `th-TH-AcharaNeural` | 全般 |
-| タイ語 (タイ) | `th-TH` | Female | `th-TH-PremwadeeNeural` <sup>[新規作成]</sup> | 全般 |
+| タイ語 (タイ) | `th-TH` | Female | `th-TH-PremwadeeNeural` | 全般 |
+| タイ語 (タイ) | `th-TH` | Male | `th-TH-NiwatNeural` <sup>[新規作成]</sup> | 全般 |
 | トルコ語 (トルコ) | `tr-TR` | Female | `tr-TR-EmelNeural` | 全般 |
-| ベトナム語 (ベトナム) | `vi-VN` <sup>[新規作成]</sup> | Female | `vi-VN-HoaiMyNeural` | 全般|
+| トルコ語 (トルコ) | `tr-TR` | Male | `tr-TR-AhmetNeural` <sup>[新規作成]</sup> | 全般 |
+| ベトナム語 (ベトナム) | `vi-VN` | Female | `vi-VN-HoaiMyNeural` | 全般 |
+| ベトナム語 (ベトナム) | `vi-VN` | Male | `vi-VN-NamMinhNeural` <sup>[新規作成]</sup> | 全般 |
 
 #### <a name="neural-voices-in-preview"></a>プレビュー段階のニューラル音声
 
@@ -215,16 +261,21 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 
 | Language                         | Locale  | 性別 | 音声名                             | スタイルのサポート |
 |----------------------------------|---------|--------|----------------------------------------|---------------|
-| 中国語 (標準、簡体字) | `zh-CN` | Male   | `zh-CN-YunxiNeural` <sup>[新規作成]</sup> | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数のスタイルを使用可能 |
-| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaohanNeural` <sup>[新規作成]</sup> | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数のスタイルを使用可能 |
-| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoxuanNeural` <sup>[新規作成]</sup> | 全般、複数のロールプレイと[スタイルが SSML の使用により使用可能](speech-synthesis-markup.md#adjust-speaking-styles) |
-| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaomoNeural` <sup>[新規作成]</sup> | 全般、複数のロールプレイと[スタイルが SSML の使用により使用可能](speech-synthesis-markup.md#adjust-speaking-styles) |
-| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoruiNeural` <sup>[新規作成]</sup> | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、高齢者の音声、複数のスタイルを使用可能 |
-| エストニア語 (エストニア) | `et-EE` | Female | `et-EE-AnuNeural` <sup>[新規作成]</sup> | 全般 |
-| ゲール語 (アイルランド) | `ga-IE` | Female | `ga-IE-OrlaNeural` <sup>[新規作成]</sup> | 全般 |
-| リトアニア語 (リトアニア) | `lt-LT` | Female | `lt-LT-OnaNeural` <sup>[新規作成]</sup> | 全般 |
-| ラトビア語 (ラトビア) | `lv-LV` | Female | `lv-LV-EveritaNeural` <sup>[新規作成]</sup> | 全般 |
-| マルタ語 (マルタ) | `mt-MT` | Female | `mt-MT-GraceNeural` <sup>[新規作成]</sup> | 全般 |
+| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaohanNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数のスタイルを使用可能 |
+| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaomoNeural` | 全般、複数のロールプレイとスタイルが [SSML の使用](speech-synthesis-markup.md#adjust-speaking-styles)により使用可能 |
+| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoruiNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、高齢者の音声、複数のスタイルを使用可能 |
+| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoxuanNeural` | 全般、複数のロールプレイとスタイルが [SSML の使用](speech-synthesis-markup.md#adjust-speaking-styles)により使用可能 |
+| 中国語 (標準、簡体字) | `zh-CN` | Male   | `zh-CN-YunxiNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数のスタイルを使用可能 |
+| エストニア語 (エストニア) | `et-EE` | Female | `et-EE-AnuNeural` | 全般 |
+| エストニア語 (エストニア) | `et-EE` | Male | `et-EE-KertNeural` <sup>[新規作成]</sup> | 全般 |
+| アイルランド語 (アイルランド) | `ga-IE` | Female | `ga-IE-OrlaNeural` | 全般 |
+| アイルランド語 (アイルランド) | `ga-IE` | Male | `ga-IE-ColmNeural` <sup>[新規作成]</sup> | 全般 |
+| ラトビア語 (ラトビア) | `lv-LV` | Female | `lv-LV-EveritaNeural` | 全般 |
+| ラトビア語 (ラトビア) | `lv-LV` | Male | `lv-LV-NilsNeural` <sup>[新規作成]</sup> | 全般 |
+| リトアニア語 (リトアニア) | `lt-LT` | Female | `lt-LT-OnaNeural` | 全般 |
+| リトアニア語 (リトアニア) | `lt-LT` | Male | `lt-LT-LeonasNeural` <sup>[新規作成]</sup> | 全般 |
+| マルタ語 (マルタ) | `mt-MT` | Female | `mt-MT-GraceNeural` | 全般 |
+| マルタ語 (マルタ) | `mt-MT` | Male | `mt-MT-JosephNeural` <sup>[新規作成]</sup> | 全般 |
 
 > [!IMPORTANT]
 > パブリック プレビュー段階の音声は、3 つのサービス リージョン (米国東部、西ヨーロッパ、東南アジア) でのみ使用できます。
