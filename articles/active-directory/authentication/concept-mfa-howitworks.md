@@ -61,7 +61,7 @@ Azure Multi-Factor Authentication では、次のような追加の検証形式�
 
 ## <a name="next-steps"></a>次のステップ
 
-ライセンの詳細については、「[Azure Multi-Factor Authentication の機能とライセンス](concept-mfa-licensing.md)」を参照してください。
+ライセンスの詳細については、「[Azure Multi-Factor Authentication の機能とライセンス](concept-mfa-licensing.md)」を参照してください。
 
 MFA の動作を確認するには、次のチュートリアルで一連のテスト ユーザーに対して Azure Multi-Factor Authentication を有効にします。
 
