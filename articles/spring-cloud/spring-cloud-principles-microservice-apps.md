@@ -52,5 +52,5 @@ Azul Systems では、基本オペレーティング システムに対する変
 > ![既定のデプロイ](media/spring-cloud-principles/spring-cloud-default-deployment.png)
  
 ## <a name="next-steps"></a>次のステップ
-* [クイック スタート: Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する](spring-cloud-quickstart.md)」をご覧ください。
+* [クイック スタート: Azure ortal を使用して既存の Azure Spring Cloud アプリケーションを起動する](spring-cloud-quickstart.md)」をご覧ください。
 * [Azure および Azure Stack の Java 長期サポート](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)
