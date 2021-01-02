@@ -1,5 +1,5 @@
 ---
-title: Azure Spring Cloud マイクロサービス アプリ用の Java と基本 OS
+title: Azure Spring Cloud マイクロサービス アプリ用の Java および基本 OS
 description: Azure Spring Cloud マイクロサービス アプリ用の Java および基本オペレーティング システムを正常に維持するための原則
 author: MikeDodaro
 ms.author: brendm
@@ -14,7 +14,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 09/02/2020
 ms.locfileid: "89297503"
 ---
-# <a name="java-and-base-os-for-spring-microservice-apps"></a>Spring マイクロサービス アプリ用の Java と基本 OS
+# <a name="java-and-base-os-for-spring-microservice-apps"></a>Spring マイクロサービス アプリ用の Java および基本 OS
 以下に示すのは、Azure Spring Cloud マイクロサービス アプリ用の Java および基本オペレーティング システムを正常に維持するための原則です。
 ## <a name="principles-for-healthy-java-and-base-os"></a>正常な Java および基本 OS の原則
 * すべてのサービス レベル (Basic、Standard、Premium) で同じ基本オペレーティング システムを使用する必要があります。
