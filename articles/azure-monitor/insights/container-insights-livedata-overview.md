@@ -2,14 +2,14 @@
 title: コンテナーに対する Azure Monitor を使用してライブ データ (プレビュー) を表示する | Microsoft Docs
 description: この記事では、コンテナー用 Azure Monitor による kubectl を使用せずに、Kubernetes ログ、イベント、およびポッド メトリックをリアルタイム ビューで表示する方法について説明します。
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 12/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9c431cebddb210add496dcca20a0334cc5b12bd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bfc9aa0f0238d99d9336abe592fa721459f4220
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85337957"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346833"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Kubernetes ログ、イベント、ポッド メトリックをリアルタイムで表示する方法
 
@@ -22,25 +22,20 @@ ms.locfileid: "85337957"
 
 ライブ データ (プレビュー) 機能の設定またはトラブルシューティングについては、[セットアップ ガイド](container-insights-livedata-setup.md)を参照してください。 この機能は、Kubernetes API に直接アクセスします。認証モデルの詳細については、[こちら](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)を参照してください。
 
-## <a name="live-data-preview-functionality-overview"></a>ライブ データ (プレビュー) 機能の概要
+## <a name="view-deployment-live-logs-preview"></a>デプロイ ライブ ログを表示する (プレビュー)
+Azure Monitor for containers によって監視されていない AKS クラスターの一部であるデプロイのライブ ログを表示するには、次の手順に従います。 クラスターで Azure Monitor for containers を使用している場合は、次のプロセスを使用して、ノード、コントローラー、コンテナー、およびデプロイのライブ データを表示します。
 
-### <a name="search"></a>検索
+1. Azure portal で、AKS クラスター リソース グループを参照し、AKS リソースを選択します。
 
-![ライブ データ コンソール ウィンドウのフィルターの例](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
+2. メニューの **[Kubernetes リソース]** セクションで **[ワークロード]** を選択します。
 
-ライブ データ (プレビュー) 機能には、検索機能が含まれています。 **[検索]** フィールドでは、単語または語句を入力して結果をフィルター処理できます。一致した結果は、すばやく参照できるように強調表示されます。 イベントが表示されているときに、検索バーの右にある **[フィルター]** ピルを使用して結果をさらに制限できます。 選択したリソースに応じて、このピルにより、選択の対象となるポッド、名前空間、またはクラスターが一覧表示されます。
+3. **[デプロイ]** タブからデプロイを選択します。
 
-### <a name="scroll-lock-and-pause"></a>スクロールのロックと一時停止
+4. デプロイのメニューから **[Live Logs (preview)]\(ライブ ログ (プレビュー)\)** を選択します。
 
-自動スクロールを中断し、ウィンドウの動作を制御して、読み込まれた新しいデータを手動でスクロールできるようにするには、 **[スクロール]** オプションを使用します。 自動スクロールを再度有効にするには、 **[スクロール]** オプションをもう一度選択します。 **[一時停止]** オプションを選択して、ログまたはイベント データの取得を一時停止することもできます。再開する準備ができたら、 **[プレイ]** を選択するだけです。
+5. ライブ データの収集を開始するポッドを選択します。
 
-![ライブ データ コンソール ウィンドウのライブ ビューの一時停止](./media/container-insights-livedata-overview/livedata-pane-scroll-pause-example.png)
-
->[!IMPORTANT]
->問題のトラブルシューティングを行うときは、短時間だけ自動スクロールを中断または一時停止することをお勧めします。 これらの要求は、クラスターの Kubernetes API の可用性とスロットリングに影響を与える可能性があります。
-
->[!IMPORTANT]
->この機能の操作中、データが永続的に保存されることはありません。 セッション中にキャプチャされたすべての情報は、ブラウザーを閉じるかブラウザーから移動すると削除されます。 データは、メトリック機能の 5 分間のウィンドウ内に表示するために残されています。5 分を経過したメトリックはすべて削除されます。 ライブ データ (プレビュー) では、適切なメモリ使用量の制限内でクエリがバッファー処理されます。
+    [![デプロイ ライブ ログ](./media/container-insights-livedata-overview/live-data-deployment.png)](./media/container-insights-livedata-overview/live-data-deployment.png#lightbox)
 
 ## <a name="view-logs"></a>ログを表示する
 
@@ -108,6 +103,32 @@ ms.locfileid: "85337957"
 正常に認証されると、ライブ データ (プレビュー) コンソール ウィンドウがパフォーマンス データ グリッドの下に表示されます。 メトリック データが取得され、2 つのグラフでプレゼンテーションを行うためにコンソールへのストリーミングが開始されます。 ウィンドウ タイトルには、コンテナーがグループ化されているポッドの名前が表示されます。
 
 ![ポッド メトリックの表示の例](./media/container-insights-livedata-overview/pod-properties-live-metrics.png)
+
+## <a name="using-live-data-views"></a>ライブ データ ビューの使用
+以下のセクションでは、さまざまなライブ データ ビューで使用できる機能について説明します。
+
+### <a name="search"></a>検索
+ライブ データ (プレビュー) 機能には、検索機能が含まれています。 **[検索]** フィールドでは、単語または語句を入力して結果をフィルター処理できます。一致した結果は、すばやく参照できるように強調表示されます。 イベントが表示されているときに、検索バーの右にある **[フィルター]** ピルを使用して結果をさらに制限できます。 選択したリソースに応じて、このピルにより、選択の対象となるポッド、名前空間、またはクラスターが一覧表示されます。
+
+![ライブ データ コンソール ウィンドウのフィルターの例](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
+
+![デプロイのライブ データ コンソール ウィンドウのフィルターの例](./media/container-insights-livedata-overview/live-data-deployment-search.png)
+
+### <a name="scroll-lock-and-pause"></a>スクロールのロックと一時停止
+
+自動スクロールを中断し、ウィンドウの動作を制御して、読み込まれた新しいデータを手動でスクロールできるようにするには、 **[スクロール]** オプションを使用します。 自動スクロールを再度有効にするには、 **[スクロール]** オプションをもう一度選択します。 **[一時停止]** オプションを選択して、ログまたはイベント データの取得を一時停止することもできます。再開する準備ができたら、 **[プレイ]** を選択するだけです。
+
+![ライブ データ コンソール ウィンドウのライブ ビューの一時停止](./media/container-insights-livedata-overview/livedata-pane-scroll-pause-example.png)
+
+![デプロイのライブ データ コンソール ウィンドウのライブ ビューの一時停止](./media/container-insights-livedata-overview/live-data-deployment-pause.png)
+
+
+
+>[!IMPORTANT]
+>問題のトラブルシューティングを行うときは、短時間だけ自動スクロールを中断または一時停止することをお勧めします。 これらの要求は、クラスターの Kubernetes API の可用性とスロットリングに影響を与える可能性があります。
+
+>[!IMPORTANT]
+>この機能の操作中、データが永続的に保存されることはありません。 セッション中にキャプチャされたすべての情報は、ブラウザーを閉じるかブラウザーから移動すると削除されます。 データは、メトリック機能の 5 分間のウィンドウ内に表示するために残されています。5 分を経過したメトリックはすべて削除されます。 ライブ データ (プレビュー) では、適切なメモリ使用量の制限内でクエリがバッファー処理されます。
 
 ## <a name="next-steps"></a>次のステップ
 

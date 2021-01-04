@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/21/2020
+ms.date: 12/12/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a02c30423ab3c6de87eac7d34b5f0004e54a8d5d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 28d47b61bce7e154da6c6adb4b74e2b5cf1f3f3d
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957811"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371851"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Azure デプロイでサポートされている SAP ソフトウェア
 この記事では、Azure デプロイでサポートされている SAP ソフトウェアと、必要なオペレーティング システム リリースまたは DBMS リリースを確認する方法について説明します。
@@ -82,6 +82,12 @@ Azure でサポートされているオペレーティング システム、Orac
 - Unicode 非対応の SAP システムは、Windows のゲスト OS で実行されているアプリケーション サーバーのみでサポートされます。 DBMS のゲスト オペレーティング システムには、Oracle Linux または Windows を使用できます。 この制限の理由は、SAP 製品の可用性マトリックス (PAM) を確認すると明らかです。 Oracle Linux の場合、SAP は Unicode 非対応の SAP カーネルをリリースしたことがありません。
 
 対象となる Azure インフラストラクチャでサポートされている DBMS リリースがわかったら、SAP 製品の可用性マトリックスで、実行しようとした SAP 製品リリースで必要な OS リリースと DBMS がサポートされているかどうかを確認する必要があります。 
+
+## <a name="oracle-linux"></a>Oracle Linux
+Oracle Linux に関して最もよく寄せられる質問は、SAP によって Oracle Linux の不可欠な要素である Red Hat カーネルもサポートされているかどうかです。 詳細については、[SAP サポート ノート #1565179](https://launchpad.support.sap.com/#/notes/1565179) を参照してください。
+
+## <a name="other-database-than-sap-hana"></a>SAP HANA 以外のその他のデータベース
+SAP ワークロードに対する HANA 以外のデータベースのサポートについては、[SAP サポート ノート #1928533](https://launchpad.support.sap.com/#/notes/1928533) を参照してください。
 
 
 ## <a name="sap-hana-support"></a>SAP HANA のサポート

@@ -3,15 +3,15 @@ title: Windows Virtual Desktop のセキュリティに関するベスト プラ
 description: Windows Virtual Desktop 環境のセキュリティを確保するためのベスト プラクティス。
 author: heidilohr
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d3033af32229be238831740c11a1112513259a43
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a106455ea9d7b7a64fecd7c4255c294d0bd62db8
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023158"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562618"
 ---
 # <a name="security-best-practices"></a>セキュリティの運用方法
 
@@ -98,6 +98,25 @@ Windows Virtual Desktop のすべてのユーザーと管理者に多要素認�
 ## <a name="session-host-security-best-practices"></a>セッション ホストのセキュリティに関するベスト プラクティス
 
 セッション ホストは、Azure サブスクリプションと仮想ネットワーク内で実行される仮想マシンです。 Windows Virtual Desktop デプロイの全体的なセキュリティは、セッション ホストに配置するセキュリティ コントロールで決まります。 このセクションでは、セッション ホストのセキュリティを維持するためのベスト プラクティスについて説明します。
+
+### <a name="enable-screen-capture-protection-preview"></a>画面キャプチャ保護を有効にする (プレビュー)
+
+画面キャプチャの保護機能を使用することで、機密情報がクライアント エンドポイントでキャプチャされないようにします。 この機能を有効にすると、スクリーンショットおよびスクリーン共有でリモート コンテンツが自動的にブロックまたは非表示になります。 また、画面内の内容を継続的にキャプチャしている可能性がある悪意のあるソフトウェアからも非表示になります。 この機能の使用中は、エンドポイントへリモート コンテンツがコピーされることを防ぐために、クリップボードのリダイレクトを無効にすることをお勧めします。
+
+このポリシーは、レジストリ キーを構成することによって、ホスト レベルで適用されます。 このポリシーを有効にするには、PowerShell を開き、次のコマンドレットを実行して **fEnableScreenCaptureProtection** レジストリ キーを設定します。
+
+```powershell
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnableScreenCaptureProtection /t REG_DWORD /d 1
+```
+
+この新機能をテストするには:
+
+- 検証環境でホスト プールがプロビジョニングされていることを確認します。
+- Windows デスクトップ クライアント バージョン 1.2.1526 以降をダウンロードしてインストールしていることを確認します。
+
+>[!NOTE]
+>プレビュー期間中、この機能は Windows 10 エンドポイントからの完全なデスクトップ接続のみでサポートされます。
+
 
 ### <a name="enable-endpoint-protection"></a>Endpoint Protection を有効にする
 

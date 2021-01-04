@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 11/10/2020
-ms.openlocfilehash: 65ef118fde57a7b72903d502a06644024939923f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: b40f618b65af6fd7a6d283431aaf63c2cc1dcd1a
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506024"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368462"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>機能の比較:Azure SQL Database と Azure SQL Managed Instance
 
@@ -85,7 +85,7 @@ Azure がデータベースを管理し、高可用性を保証します。 高�
 | [OPENQUERY](/sql/t-sql/functions/openquery-transact-sql)|いいえ|はい、SQL Database、SQL Managed Instance、および SQL Server に対してのみとなります。 [T-SQL の相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md)に関するページを参照してください|
 | [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql)|はい、Azure Blob Storage からのインポートのみとなります。 |はい、SQL Database、SQL Managed Instance と SQL Server に対してのみ、および Azure Blob Storage からのインポートに対してのみとなります。 [T-SQL の相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md)に関するページを参照してください|
 | [オペレーター](/sql/t-sql/language-elements/operators-transact-sql) | ほとんどの場合 - 個々の演算子に関する記事を参照してください |はい - [T-SQL の相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md)に関する記事を参照してください |
-| [Polybase](/sql/relational-databases/polybase/polybase-guide) | いいえ。 `OPENROWSET` 関数を使用して、Azure Blob Storage に配置されているファイル内のデータのクエリを実行できます。 | いいえ。 `OPENROWSET` 関数を使用して、Azure Blob Storage に配置されているファイル内のデータのクエリを実行できます。 |
+| [Polybase](/sql/relational-databases/polybase/polybase-guide) | いいえ。 Azure Blob Storage に配置されているファイル内のデータに対してクエリを実行するには、`OPENROWSET` 関数を使用するか、[Synapse Analytics 内のサーバーレス SQL プールを参照する外部テーブル](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/)を使用します。 | いいえ。 Azure Blob Storage に配置されているファイル内のデータに対してクエリを実行するには、`OPENROWSET` 関数、[Synapse Analytics 内のサーバーレス SQL プールを参照するリンク サーバー](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)、または [Synapse Analytics 内のサーバーレス SQL プール](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/)または SQL Server を参照する外部テーブル (パブリック プレビュー段階) を使用します。 |
 | [クエリ通知](/sql/relational-databases/native-client/features/working-with-query-notifications) | いいえ | はい |
 | [Machine Learning Services](/sql/advanced-analytics/what-is-sql-server-machine-learning) (_以前の R サービス_)| はい、[パブリック プレビュー](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)中  | いいえ |
 | [復旧モデル](/sql/relational-databases/backup-restore/recovery-models-sql-server) | 高可用性が保証される完全復旧のみがサポートされています。 単純復旧モデルと一括ログ復旧モデルは利用できません。 | 高可用性が保証される完全復旧のみがサポートされています。 単純復旧モデルと一括ログ復旧モデルは利用できません。 |

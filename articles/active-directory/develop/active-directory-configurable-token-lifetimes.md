@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/29/2020
+ms.date: 12/14/2020
 ms.author: ryanwi
-ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperfq1
+ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 4dab75a4e95a7561bc86176816cb402c10de781e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f73186612fe79af88e84956bb4d0f0b374f4c986
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077423"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507797"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft ID プラットフォームでの構成可能なトークンの有効期間 (プレビュー)
 
 > [!IMPORTANT]
-> 2021 年 1 月 30 日以降、テナントでは更新およびセッション トークンの有効期間を構成できなくなり、Azure Active Directory では、その日以降、ポリシー内の更新およびセッション トークンの構成が考慮されなくなります。
+> 2020 年 5 月以降、テナントで更新およびセッション トークンの有効期間を構成できなくなります。  2021 年 1 月 30 日以降は、Azure Active Directory でポリシー内の既存の更新およびセッション トークンの構成が考慮されなくなります。 非推奨となった後も、アクセス トークンの有効期間を構成することはできます。
 >
-> ユーザーが再度サインインするように求められるまでの時間を定義し続ける必要がある場合は、条件付きアクセスでサインインの頻度を構成します。 条件付きアクセスの詳細については、[Azure AD の価格ページ](https://azure.microsoft.com/en-us/pricing/details/active-directory/)を参照してください。
+> ユーザーが再度サインインするように求められるまでの時間を定義し続ける必要がある場合は、条件付きアクセスでサインインの頻度を構成します。 条件付きアクセスの詳細については、「[条件付きアクセスを使用して認証セッション管理を構成する](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)」を参照してください。
 >
 > 廃止日以降に条件付きアクセスを使用しないテナントの場合、次のセクションで説明する既定の構成が Azure AD に使用されることを想定できます。
 
@@ -57,7 +57,7 @@ ms.locfileid: "93077423"
     Get-AzureADPolicy -All
     ```
 
-1. 特定のポリシーにリンクされているアプリとサービス プリンシパルを確認するには、 **1a37dad8-5da7-4cc8-87c7-efbc0326cf20** を独自のポリシー ID に置き換えて、次の [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) コマンドレットを実行します。 その後、条件付きアクセスのサインイン頻度を構成するか、Azure AD の既定値をそのまま使用するかを決定できます。
+1. 特定のポリシーにリンクされているアプリとサービス プリンシパルを確認するには、**1a37dad8-5da7-4cc8-87c7-efbc0326cf20** を独自のポリシー ID に置き換えて、次の [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) コマンドレットを実行します。 その後、条件付きアクセスのサインイン頻度を構成するか、Azure AD の既定値をそのまま使用するかを決定できます。
 
     ```powershell
     Get-AzureADPolicyAppliedObject -id 1a37dad8-5da7-4cc8-87c7-efbc0326cf20

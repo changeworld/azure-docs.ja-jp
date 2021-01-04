@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 0e2e09bc72991330ccdec7a35400460cbeba26fc
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 0e3ba9aa4eac30c3387bdf6c2890a1172ebef544
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327034"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094728"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions の Azure Event Grid トリガー
 
@@ -128,78 +128,6 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-次の例は、*function.json* ファイルのトリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。
-
-*function.json* ファイルのバインディング データを次に示します。
-
-```json
-{
-  "bindings": [
-    {
-      "type": "eventGridTrigger",
-      "name": "eventGridEvent",
-      "direction": "in"
-    }
-  ],
-  "disabled": false
-}
-```
-
-JavaScript コードを次に示します。
-
-```javascript
-module.exports = function (context, eventGridEvent) {
-    context.log("JavaScript Event Grid function processed a request.");
-    context.log("Subject: " + eventGridEvent.subject);
-    context.log("Time: " + eventGridEvent.eventTime);
-    context.log("Data: " + JSON.stringify(eventGridEvent.data));
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-次の例は、*function.json* ファイルのトリガー バインドと、そのバインドが使用される [Python 関数](functions-reference-python.md)を示しています。
-
-*function.json* ファイルのバインディング データを次に示します。
-
-```json
-{
-  "bindings": [
-    {
-      "type": "eventGridTrigger",
-      "name": "event",
-      "direction": "in"
-    }
-  ],
-  "disabled": false,
-  "scriptFile": "__init__.py"
-}
-```
-
-Python コードを次に示します。
-
-```python
-import json
-import logging
-
-import azure.functions as func
-
-def main(event: func.EventGridEvent):
-
-    result = json.dumps({
-        'id': event.id,
-        'data': event.get_json(),
-        'topic': event.topic,
-        'subject': event.subject,
-        'event_type': event.event_type,
-    })
-
-    logging.info('Python EventGrid trigger processed an event: %s', result)
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 このセクションには、次の例が含まれています。
@@ -265,6 +193,103 @@ public class EventSchema {
 
 [Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が EventGrid に由来するパラメーター上で `EventGridTrigger` 注釈を使用します。 これらの注釈を使用したパラメーターによって、イベントを受信したときに関数が実行されます。  この注釈は、Java のネイティブ型、POJO、または `Optional<T>` を使用した null 許容値で使用できます。
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+次の例は、*function.json* ファイルのトリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。
+
+*function.json* ファイルのバインディング データを次に示します。
+
+```json
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+JavaScript コードを次に示します。
+
+```javascript
+module.exports = function (context, eventGridEvent) {
+    context.log("JavaScript Event Grid function processed a request.");
+    context.log("Subject: " + eventGridEvent.subject);
+    context.log("Time: " + eventGridEvent.eventTime);
+    context.log("Data: " + JSON.stringify(eventGridEvent.data));
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+次の例は、*function.json* ファイルで Event Grid トリガー バインドを構成する方法を示しています。
+
+```powershell
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+Event Grid イベントは、次の PowerShell の例に示すように、`eventGridEvent` という名前のパラメーターを使用して関数で使用できるようになります。
+
+```powershell
+param($eventGridEvent, $TriggerMetadata)
+
+# Make sure to pass hashtables to Out-String so they're logged correctly
+$eventGridEvent | Out-String | Write-Host
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+次の例は、*function.json* ファイルのトリガー バインドと、そのバインドが使用される [Python 関数](functions-reference-python.md)を示しています。
+
+*function.json* ファイルのバインディング データを次に示します。
+
+```json
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "event",
+      "direction": "in"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "__init__.py"
+}
+```
+
+Python コードを次に示します。
+
+```python
+import json
+import logging
+
+import azure.functions as func
+
+def main(event: func.EventGridEvent):
+
+    result = json.dumps({
+        'id': event.id,
+        'data': event.get_json(),
+        'topic': event.topic,
+        'subject': event.subject,
+        'event_type': event.event_type,
+    })
+
+    logging.info('Python EventGrid trigger processed an event: %s', result)
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>属性と注釈
@@ -289,17 +314,21 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 属性は、C# スクリプトではサポートされていません。
 
+# <a name="java"></a>[Java](#tab/java)
+
+[EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) 注釈を使用すると、構成値を指定して、Event Grid のバインディングを宣言によって構成できます。 詳細については、[例](#example)と[構成](#configuration)に関するセクションを参照してください。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 属性は、JavaScript ではサポートされていません。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+属性は、PowerShell ではサポートされていません。
+
 # <a name="python"></a>[Python](#tab/python)
 
 属性は、Python ではサポートされていません。
-
-# <a name="java"></a>[Java](#tab/java)
-
-[EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) 注釈を使用すると、構成値を指定して、Event Grid のバインディングを宣言によって構成できます。 詳細については、[例](#example)と[構成](#configuration)に関するセクションを参照してください。
 
 ---
 
@@ -343,17 +372,21 @@ Azure Functions 2.x では、Event Grid トリガーに次のパラメーター�
 > [!NOTE]
 > Functions 1.x では、`Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` にバインドしようとした場合、コンパイラに「非推奨」メッセージが表示され、代わりに `Microsoft.Azure.EventGrid.Models.EventGridEvent` 使用するよう推奨されます。 新しい種類を使用するには、[Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet パッケージを参照し、`EventGridEvent` の種類名の先頭に `Microsoft.Azure.EventGrid.Models` を付けることによって完全修飾します。 C# スクリプト関数で NuGet パッケージを参照する方法については、「[NuGet パッケージを使用する](functions-reference-csharp.md#using-nuget-packages)」をご覧ください
 
+# <a name="java"></a>[Java](#tab/java)
+
+Event Grid インスタンスは、`EventGridTrigger` 属性に関連付けられたパラメーターを介して、`EventSchema` と型指定して使用できます。 詳細については、[例](#example)を参照してください。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Event Grid インスタンスは、*function.json* ファイルの `name` プロパティで構成されたパラメーターを介して使用できます。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Event Grid インスタンスは、*function.json* ファイルの `name` プロパティで構成されたパラメーターを介して使用できます。
 
 # <a name="python"></a>[Python](#tab/python)
 
 Event Grid インスタンスは、*function.json* ファイルの `name` プロパティで構成されたパラメーターを介して、`func.EventGridEvent` と型指定して使用できます。
-
-# <a name="java"></a>[Java](#tab/java)
-
-Event Grid インスタンスは、`EventGridTrigger` 属性に関連付けられたパラメーターを介して、`EventSchema` と型指定して使用できます。 詳細については、[例](#example)を参照してください。
 
 ---
 

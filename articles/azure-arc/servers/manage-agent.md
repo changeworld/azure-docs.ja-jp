@@ -3,12 +3,12 @@ title: Azure Arc 対応サーバー エージェントの管理
 description: この記事では、Azure Arc 対応サーバー Connected Machine エージェントのライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
 ms.date: 10/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 63db1177b193cad66208964ec377fab0779f23ba
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9e17bf58d1e94b64d1cdc6ff0b57b1b6a81be180
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130971"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107194"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Connected Machine エージェントの管理と保守
 
@@ -64,7 +64,7 @@ Windows 用 Connected Machine エージェントの更新プログラム パッ�
 ソフトウェア更新管理プロセスをサポートするさまざまな方法に従って、エージェントをアップグレードできます。 Microsoft Update から取得する他に、コマンド プロンプト、スクリプトまたはその他のオートメーション ソリューション、または `AzureConnectedMachine.msi` の実行による UI ウィザードから手動でダウンロードして実行できます。
 
 > [!NOTE]
-> * エージェントをアップグレードするには、" *管理者* " アクセス許可が必要です。
+> * エージェントをアップグレードするには、"*管理者*" アクセス許可が必要です。
 > * 手動でアップグレードするには、まず、インストーラー パッケージをダウンロードし、ターゲット サーバー上のフォルダーにコピーするか、共有ネットワーク フォルダーからコピーする必要があります。 
 
 Windows インストーラー パッケージのコマンドライン オプションに詳しくない場合は、[Msiexec の標準コマンドライン オプション](/windows/win32/msi/standard-installer-command-line-options)と [Msiexec のコマンドライン オプション](/windows/win32/msi/command-line-options)に関するページを参照してください。
@@ -94,7 +94,7 @@ Linux マシン上のエージェントを最新バージョンに更新する�
 Microsoft の [パッケージ リポジトリ](https://packages.microsoft.com/)から、最新のエージェント パッケージをダウンロードできます。
 
 > [!NOTE]
-> エージェントをアップグレードするには、 *root* アクセス許可 (つまり、Sudo を使用して権限を昇格したアカウント) が必要です。
+> エージェントをアップグレードするには、*root* アクセス許可 (つまり、Sudo を使用して権限を昇格したアカウント) が必要です。
 
 #### <a name="upgrade-ubuntu"></a>Ubuntu をアップグレードする
 
@@ -160,7 +160,7 @@ Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中�
 
 * **-h または --help** - 使用可能なコマンドライン パラメーターを表示します。
 
-    たとえば、 **Reconnect** パラメーターの詳細なヘルプを表示するには、「`azcmagent reconnect -h`」と入力します。 
+    たとえば、**Connect** パラメーターの詳細なヘルプを表示するには、「`azcmagent connect -h`」と入力します。 
 
 * **-v または --verbose** - 詳細なログ記録を有効にします。
 
@@ -212,7 +212,7 @@ Windows または Linux の Connected Machine エージェントをマシンか�
 
 ### <a name="windows-agent"></a>Windows エージェント
 
-以下に示すどちらの方法でもエージェントは削除されますが、 *C:\Program Files\AzureConnectedMachineAgent* フォルダーはマシンから削除されません。
+以下に示すどちらの方法でもエージェントは削除されますが、*C:\Program Files\AzureConnectedMachineAgent* フォルダーはマシンから削除されません。
 
 #### <a name="uninstall-from-control-panel"></a>コントロール パネルからアンインストールする
 
@@ -253,7 +253,7 @@ Windows または Linux の Connected Machine エージェントをマシンか�
 ### <a name="linux-agent"></a>Linux エージェント
 
 > [!NOTE]
-> エージェントをアンインストールするには、 *root* アクセス許可 (つまり、Sudo を使用して権限を昇格したアカウント) が必要です。
+> エージェントをアンインストールするには、*root* アクセス許可 (つまり、Sudo を使用して権限を昇格したアカウント) が必要です。
 
 Linux エージェントをアンインストールするために使用するコマンドは、Linux オペレーティング システムによって異なります。
 

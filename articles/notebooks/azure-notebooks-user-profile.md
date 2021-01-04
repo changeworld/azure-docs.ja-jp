@@ -3,12 +3,12 @@ title: Azure Notebooks で使用するユーザー プロファイルと ID の�
 description: Azure Notebooks でユーザー プロファイルとユーザー ID (共有ノートブックの URL の一部となる) を作成して管理する方法。
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: 9a1ff7f92faec21f537f068f0a33473700ddfed8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30d70365fcc0c72df01b4dc059b6e0f4cc607bba
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85831354"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109506"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Azure Notebooks のプロファイルとユーザー ID のプレビュー
 
@@ -54,11 +54,11 @@ ms.locfileid: "85831354"
 | プロファイル写真 | 自分のプロファイル ページで示されるイメージ。 |
 | アカウント情報 | 表示名、ユーザー ID、およびパブリック電子メール アドレス。 ここでの電子メール アカウントは、他のユーザーにお客様と連絡する手段を提供します。このアカウントは、Azure Notebooks 自体にサインインするために使用する[アカウント](azure-notebooks-user-account.md)とは異なる場合があります。 |
 | プロファイル情報 | 自分の位置情報、会社、役職、Web サイト、自分自身の簡単な説明。 |
-| ソーシャル プロファイル | 共有する場合は、自分の GitHub、Twitter、Facebook ID。 |
+| ソーシャル プロファイル | 共有する場合は、ご利用の GitHub、Twitter、Facebook の各 ID。 |
 | プライバシー設定 | 2 つのコマンドを提供します。<ul><li>**[Export My Profile]\(マイ プロファイルのエクスポート\)** : 写真、プロファイル情報、セキュリティ ログなど、Azure Notebooks で自分のプロファイルに保存されるすべての情報が含まれる、 *.zip* ファイルを作成してダウンロードします。</li><li>**[Delete My Account]\(マイ アカウントの削除\)** : Azure Notebooks に格納されたすべての個人情報を完全に削除します。</li></ul> |
 | サイトの機能を有効にする | Azure Notebooks の動作のさまざまな部分を制御できます。<ul><li>**[Unified Frontend for Notebooks]\(Notebooks 用の統合フロントエンド\)** : よりすばやくノートブックを起動し、永続性を向上させることができます。</li><li>**[Run in JupyterLab by default]\(既定で JupyterLab で実行する\)** :既定では、Azure Notebooks によってほとんどのユーザーに適したシンプルなユーザー インターフェイスが提供されます。 JupyterLab では、経験豊富なユーザー向けのより豊富ですが、より複雑なインターフェイスが提供されます。</li><li>**[VNext Website]\(VNext Web サイト\)** : このドキュメントに示された現代化された Web レイアウトを有効にします。</li></ul> |
 
 ## <a name="next-steps"></a>次のステップ  
 
 > [!div class="nextstepaction"]
-> [チュートリアル: 線形回帰を行う Jupyter ノートブックを作成して実行する](tutorial-create-run-jupyter-notebook.md)
+> [クイック スタート: Jupyter Notebook プロジェクトをエクスポートする](quickstart-export-jupyter-notebook-project.md)

@@ -4,15 +4,15 @@ description: AzCopy 操作の認証資格情報は、Azure Active Directory (Azu
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/03/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b13b5e1e27e9717066ff8f1aa8e245e8d9f54bbb
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 43002fdfbdce146b52774aa4182445bf34dd7199
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498117"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360290"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>AzCopy と Azure Active Directory (Azure AD) を使用して BLOB へのアクセスを承認する
 
@@ -73,7 +73,7 @@ azcopy login --tenant-id=<tenant-id>
 
 サインイン ウィンドウが表示されます。 そのウィンドウで、Azure アカウント資格情報を使用して、Azure アカウントにサインインします。 正常にサインインしたら、ブラウザー ウィンドウを閉じ、AzCopy の使用を開始できます。
 
-<a id="service-principal"></a>
+<a id="managed-identity"></a>
 
 ## <a name="authorize-a-managed-identity"></a>マネージド ID を使用して承認する
 
@@ -116,6 +116,8 @@ azcopy login --identity --identity-resource-id "<resource-id>"
 ```
 
 `<resource-id>` プレースホルダーは、ユーザー割り当てのマネージド ID のリソース ID に置き換えます。
+
+<a id="service-principal"></a>
 
 ## <a name="authorize-a-service-principal"></a>サービス プリンシパルを承認する
 
@@ -181,8 +183,113 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file> -
 > [!NOTE]
 > この例で示すように、プロンプトを使用することを検討してください。 そうすると、ご自分のパスワードがご使用のコンソールのコマンド履歴に表示されません。 
 
-<a id="managed-identity"></a>
+## <a name="authorize-without-a-keyring-linux"></a>キーリングを使用しないで承認する (Linux)
 
+オペレーティング システムに "*キーリング*" などのシークレット ストアがない場合、`azcopy login` コマンドは機能しません。 代わりに、各操作を実行する前に、メモリ内の環境変数を設定することができます。 操作が完了すると、これらの値はメモリから消えてしまうため、azcopy コマンドを実行するたびに、これらの変数を設定する必要があります。
+
+### <a name="authorize-a-user-identity"></a>ユーザー ID を承認する
+
+ご自分のユーザー ID に必要な認証レベルが与えられていることを確認したら、次のコマンドを入力して、ENTER キーを押します。
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=DEVICE
+```
+
+次に、azcopy コマンド (`azcopy list https://contoso.blob.core.windows.net` など) を実行します。
+
+このコマンドによって、認証コードと Web サイトの URL が返されます。 Web サイトを開き、コードを指定し、 **[次へ]** ボタンを選択します。
+
+![コンテナーを作成する](media/storage-use-azcopy-v10/azcopy-login.png)
+
+サインイン ウィンドウが表示されます。 そのウィンドウで、Azure アカウント資格情報を使用して、Azure アカウントにサインインします。 正常にサインインしたら、操作は完了です。
+
+### <a name="authorize-by-using-a-system-wide-managed-identity"></a>システム全体のマネージド ID を使用して承認する
+
+まず、VM でシステム全体のマネージド ID が有効になっていることを確認します。 「[システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)」をご覧ください。
+
+次のコマンドを入力して、ENTER キーを押します。
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=MSI
+```
+
+次に、azcopy コマンド (`azcopy list https://contoso.blob.core.windows.net` など) を実行します。
+
+### <a name="authorize-by-using-a-user-assigned-managed-identity"></a>ユーザー割り当てのマネージド ID を使用して承認する
+
+まず、VM でユーザー割り当てマネージド ID が有効になっていることを確認します。 「[ユーザー割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity)」をご覧ください。
+
+次のコマンドを入力して、ENTER キーを押します。
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=MSI
+```
+
+その後、次のいずれかのコマンドを入力して、ENTER キーを押します。
+
+```bash
+export AZCOPY_MSI_CLIENT_ID=<client-id>
+```
+
+`<client-id>` プレースホルダーは、ユーザー割り当てのマネージド ID のクライアント ID に置き換えます。
+
+```bash
+export AZCOPY_MSI_OBJECT_ID=<object-id>
+```
+
+`<object-id>` プレースホルダーは、ユーザー割り当てのマネージド ID のオブジェクト ID に置き換えます。
+
+```bash
+export AZCOPY_MSI_RESOURCE_STRING=<resource-id>
+```
+
+`<resource-id>` プレースホルダーは、ユーザー割り当てのマネージド ID のリソース ID に置き換えます。
+
+これらの変数を設定したら、任意の azcopy コマンド (`azcopy list https://contoso.blob.core.windows.net` など) を実行することができます。
+
+### <a name="authorize-a-service-principal"></a>サービス プリンシパルを承認する
+
+そのスクリプトを実行する前に、少なくとも 1 回は対話形式でサインインする必要があります。そうすることで、ご自身のサービス プリンシパルの資格情報を AzCopy に渡すことができます。  それらの資格情報は暗号化された安全なファイルに格納されます。そのため、実際のスクリプトでその機密情報を渡す必要がありません。
+
+クライアント シークレットを使用して、またはご自分のサービス プリンシパルのアプリ登録に関連付けられている証明書のパスワードを使用して、ご自分のアカウントにサインインできます。
+
+#### <a name="authorize-a-service-principal-by-using-a-client-secret"></a>クライアント シークレットを使用して、サービス プリンシパル承認する
+
+次のコマンドを入力して、ENTER キーを押します。
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=SPN
+export AZCOPY_SPA_APPLICATION_ID=<application-id>
+export AZCOPY_SPA_CLIENT_SECRET=<client-secret>
+```
+
+`<application-id>` プレースホルダーを、ご自分のサービス プリンシパルのアプリ登録のアプリケーション ID に置き換えます。 `<client-secret>` プレースホルダーをクライアント シークレットに置き換えます。
+
+> [!NOTE]
+> プロンプトを使用して、ユーザーからパスワードを収集することを検討してください。 そうすることで、お使いのパスワードがコマンドの履歴に表示されなくなります。 
+
+次に、azcopy コマンド (`azcopy list https://contoso.blob.core.windows.net` など) を実行します。
+
+#### <a name="authorize-a-service-principal-by-using-a-certificate"></a>証明書を使用してサービス プリンシパルを承認する
+
+承認にご自分の資格情報を使用する場合は、ご自分のアプリ登録に証明書をアップロードした後、その証明書を使用してログインできます。
+
+ご自分のアプリ登録にご使用の証明書をアップロードするだけでなく、AzCopy が実行されるマシンまたは VM 上に証明書のコピーを保存する必要もあります。 この証明書のコピーは、.PFX または .PEM 形式で、秘密キーが含まれている必要があります。 秘密キーはパスワードで保護する必要があります。 
+
+次のコマンドを入力して、ENTER キーを押します。
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=SPN
+export AZCOPY_SPA_CERT_PATH=<path-to-certificate-file>
+export AZCOPY_SPA_CERT_PASSWORD=<certificate-password>
+```
+
+`<path-to-certificate-file>` プレースホルダーを、証明書ファイルの相対または完全修飾パスに置き換えます。 AzCopy は、この証明書のパスを保存しますが、証明書のコピーは保存しません。そのため、必ず所定の場所にその証明書を保持してください。 `<certificate-password>` プレースホルダーを証明書のパスワードに置き換えます。
+
+> [!NOTE]
+> プロンプトを使用して、ユーザーからパスワードを収集することを検討してください。 そうすることで、お使いのパスワードがコマンドの履歴に表示されなくなります。 
+
+次に、azcopy コマンド (`azcopy list https://contoso.blob.core.windows.net` など) を実行します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d6676187f87cecb7f876150d1582cde9051dd251
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f6c990b3ce5edaab4d2ce6600c0291272058e092
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367484"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369295"
 ---
 # <a name="security-control-v2-privileged-access"></a>セキュリティ コントロール V2:特権アクセス
 
@@ -20,7 +20,7 @@ ms.locfileid: "92367484"
 
 ## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1:高い特権を持つユーザーを保護および制限する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-1 | 4.3、4.8 | AC-2 |
 
@@ -40,9 +40,9 @@ Azure Privileged Identity Management (PIM) を使用して、Azure リソース�
 
 - [Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](../../active-directory/roles/security-planning.md)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [ID およびキー管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -54,7 +54,7 @@ Azure Privileged Identity Management (PIM) を使用して、Azure リソース�
 
 ## <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2:ビジネス クリティカルなシステムへの管理アクセスを制限する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-2 | 13.2、2.10 | AC-2、SC-3、SC-7 |
 
@@ -70,9 +70,9 @@ Azure Privileged Identity Management (PIM) を使用して、Azure リソース�
 
 - [Azure サブスクリプション管理者](../../cost-management-billing/manage/add-change-subscription-administrator.md)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [ID およびキー管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -82,7 +82,7 @@ Azure Privileged Identity Management (PIM) を使用して、Azure リソース�
 
 ## <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3:ユーザー アクセスを定期的に確認して調整する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-3 | 4.1、16.9、16.10 | AC-2 |
 
@@ -95,9 +95,9 @@ Azure Privileged Identity Management (PIM) を使用して、Azure リソース�
 
 - [Azure AD の ID およびアクセス レビューの使用方法](../../active-directory/governance/access-reviews-overview.md)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [ID およびキー管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -107,7 +107,7 @@ Azure Privileged Identity Management (PIM) を使用して、Azure リソース�
 
 ## <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4:Azure AD で緊急アクセスを設定する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-4 | 16 | AC-2、CP-2 |
 
@@ -116,9 +116,9 @@ Azure AD 組織から誤ってロックアウトされるのを防ぐために�
 
 - [Azure AD で緊急アクセス用アカウントを管理する](../../active-directory/roles/security-emergency-access.md)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [ID およびキー管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -130,7 +130,7 @@ Azure AD 組織から誤ってロックアウトされるのを防ぐために�
 
 ## <a name="pa-5-automate-entitlement-management"></a>PA-5:エンタイトルメント管理を自動化する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-5 | 16 | AC-2、AC-5、PM-10 |
 
@@ -139,9 +139,9 @@ Azure AD のエンタイトルメント管理機能を使用して、アクセ�
 
 - [Azure AD エンタイトルメント管理とは](../../active-directory/governance/entitlement-management-overview.md)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [ID およびキー管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -151,7 +151,7 @@ Azure AD のエンタイトルメント管理機能を使用して、アクセ�
 
 ## <a name="pa-6-use-privileged-access-workstations"></a>PA-6:特権アクセス ワークステーションを使用する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-6 | 4.6、11.6、12.12 | AC-2、SC-3、SC-7 |
 
@@ -161,9 +161,9 @@ Azure AD のエンタイトルメント管理機能を使用して、アクセ�
 
 - [特権アクセス ワークステーションを展開する](../../active-directory/devices/howto-azure-managed-workstation.md)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [アプリケーションのセキュリティと DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -173,7 +173,7 @@ Azure AD のエンタイトルメント管理機能を使用して、アクセ�
 
 ## <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7:Just Enough Administration (最小限の特権の原則) に従う
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-7 | 14.6 | AC-2、AC-3、SC-3 |
 
@@ -186,9 +186,9 @@ Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると
 
 - [Azure AD の ID およびアクセス レビューの使用方法](../../active-directory/governance/access-reviews-overview.md)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [アプリケーションのセキュリティと DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -200,7 +200,7 @@ Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると
 
 ## <a name="pa-8-choose-approval-process-for-microsoft-support"></a>PA-8: Microsoft サポートの承認プロセスを選択する 
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-8 | 16 | AC-2、AC-3、AC-4 |
 
@@ -208,9 +208,9 @@ Microsoft が顧客データにアクセスする必要があるサポート シ
 
 - [カスタマー ロックボックスについて](../fundamentals/customer-lockbox-overview.md)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [アプリケーションのセキュリティと DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 

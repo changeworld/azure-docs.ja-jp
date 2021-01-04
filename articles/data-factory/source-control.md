@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: d219ff8469c471a37deb47e0f217292d70e8f0f9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 75073cd2f0dae9cac12175677427671101813a90
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497114"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355224"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "96497114"
 効率的に作成できるよう、Azure Data Factory では、Azure Repos または GitHub のいずれかで Git リポジトリを構成することができます。 Git はバージョン管理システムであり、変更追跡や共同作業を簡単にします。 この記事では、Git リポジトリを構成し、そこで作業する方法を簡単に説明し、ベスト プラクティスとトラブルシューティング ガイドを提示します。
 
 > [!NOTE]
-> Azure Data Factory Git 統合は、Azure Government クラウドでは利用できません。
+> Azure Data Factory Git 統合は、Azure Government クラウドの GitHub Enterprise でのみ使用できます。
 
 Azure Data Factory を Git と統合する方法の詳細については、次の 15 分のチュートリアル ビデオをご覧ください。
 

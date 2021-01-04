@@ -1,20 +1,20 @@
 ---
 title: ARM テンプレート テスト ツールキット
-description: テンプレートで ARM テンプレート テスト ツールキットを実行する方法について説明します。 ツールキットを使用すると、推奨される方法を実装しているかどうかを確認できます。
+description: テンプレートで Azure Resource Manager テンプレート (ARM テンプレート) テスト ツールキットを実行する方法について説明します。 ツールキットを使用すると、推奨される方法を実装しているかどうかを確認できます。
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 73f6db8cbd5e4d7a0670c394f6af338aae8e9e79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29ebe2f0ec4d4c39154272bbbdf4d0c9ede9fd95
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439562"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928190"
 ---
 # <a name="use-arm-template-test-toolkit"></a>ARM テンプレート テスト ツールキットを使用する
 
-[Azure Resource Manager (ARM) テンプレート テスト ツールキット](https://aka.ms/arm-ttk)では、推奨される方法がテンプレートで使用されているかどうかが確認されます。 テンプレートが推奨されるプラクティスに準拠していない場合は、推奨される変更を含む警告の一覧が返されます。 テスト ツールキットを使用すると、テンプレートの開発での一般的な問題を回避する方法がわかります。
+[Azure Resource Manager テンプレート (ARM テンプレート) テスト ツールキット](https://aka.ms/arm-ttk)では、推奨される方法がテンプレートで使用されているかどうかが確認されます。 テンプレートが推奨されるプラクティスに準拠していない場合は、推奨される変更を含む警告の一覧が返されます。 テスト ツールキットを使用すると、テンプレートの開発での一般的な問題を回避する方法がわかります。
 
 テスト ツールキットでは、[既定のテストのセット](test-cases.md)が提供されます。 これらのテストは推奨されるものですが、必須ではありません。 自分の目標に関連するテストを決定し、実行するテストをカスタマイズできます。
 
@@ -122,9 +122,9 @@ ms.locfileid: "89439562"
 
 ## <a name="result-format"></a>結果の形式
 
-合格になったテストは**緑色**で表示され、前に **[+]** が付きます。
+合格になったテストは **緑色** で表示され、前に **[+]** が付きます。
 
-不合格になったテストは**赤色**で表示され、前に **[-]** が付きます。
+不合格になったテストは **赤色** で表示され、前に **[-]** が付きます。
 
 :::image type="content" source="./media/template-test-toolkit/view-results.png" alt-text="テスト結果を表示する":::
 
@@ -282,4 +282,4 @@ param(
 
 ## <a name="next-steps"></a>次のステップ
 
-既定のテストの詳細については、[ツールキットのテスト ケース](test-cases.md)に関する記事を参照してください。
+既定のテストの詳細については、「[ARM テンプレート テスト ツールキットの既定のテスト ケース](test-cases.md)」を参照してください。

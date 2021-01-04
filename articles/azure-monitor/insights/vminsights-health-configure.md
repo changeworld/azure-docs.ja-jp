@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/08/2020
-ms.openlocfilehash: f41a43e76993a03554d32fc7f3ce3149848989a9
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.date: 12/14/2020
+ms.openlocfilehash: 427bdec2b5e5ab14d566375d5ad8f9da9dc3e81b
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686501"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505598"
 ---
 # <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-preview"></a>Azure Monitor for VMs のゲストの正常性 (プレビュー) で監視を構成する
 Azure Monitor for VMs のゲストの正常性を使用すると、一定間隔でサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 この記事では、Azure portal を使用して既定の監視を変更する方法について説明します。 また、[データ収集ルールを使用した監視の構成](vminsights-health-configure-dcr.md)に必要なモニターの基本的な概念についても説明します。
@@ -33,6 +33,12 @@ Azure portal で、モニターを選択してから **[構成]** タブを選�
 モニターが無効になっている場合、次の例に示すように、すべての基準が使用不可として表示されます。
 
 ![無効になっているモニター](media/vminsights-health-configure/disabled-monitor.png)
+
+
+> [!NOTE]
+> 親モニターが無効になっている場合は、すべての子モニターも無効になります。 子モニターを明示的に有効にすると、親も有効になりますが、その構成の状態は変わりません。 この場合は、親モニターで次のメッセージを受け取ります。
+>
+> "*モニターの構成済みの状態が '無効' になっているため不一致が生じていますが、正常性状態にそれが反映されていません。これは、構成された変更が伝達されているか、その子モニターのいずれかが明示的に有効にされているためです。* "
 
 ## <a name="enable-or-disable-virtual-machine"></a>仮想マシンを有効または無効にする
 ある VM の監視を無効にして、すべてのモニターを一時的に停止することができます。 メンテナンスを実行している場合などに、VM の監視を無効にすることがあります。

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 96cd460ddfea863eb27a1087ff59f3b87acf65d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41cfff11e44a3d052614aa3c81a4623f59bbbbf5
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531306"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095289"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric の容量計画とスケーリング
 
@@ -50,21 +50,11 @@ Azure Service Fabric で特定のノードの種類を[垂直方向にスケー�
 > [!NOTE]
 > ステートフルな Service Fabric システム サービスをホストするプライマリ ノードの種類の持続性は、Silver レベル以上である必要があります。 Silver の持続性を有効にすると、アップグレード、ノードの追加や削除などのクラスター操作はより低速になります。これは、システムが、操作の速度よりもデータの安全性に向けて最適化を行うためです。
 
-仮想マシン スケール セットを垂直方向にスケールすることは、破壊的な操作です。 代わりに、必要な SKU を使用して新しいスケール セットを追加することでクラスターを水平方向にスケールします。 その後、サービスを目的の SKU に移行して、安全な垂直方向のスケーリング操作を完了します。 仮想マシン スケール セットのリソース SKU を変更することは、それによってホストが再イメージ化され、ローカルで永続化されていた状態がすべて削除されるため、破壊的な操作です。
+仮想マシン スケール セットをそのリソース SKU を変更するだけで垂直スケーリングすることは、破壊的な操作です。それによってホストが再イメージ化されることで、ローカルで永続化されていた状態がすべて削除されるためです。 代わりに、必要な SKU を使用して新しいスケール セットを追加することでクラスターを水平方向にスケーリングし、その新しいスケール セットにサービスを移行して、安全な垂直方向のスケーリング操作を完了できます。
 
-アプリケーションのサービスをホストする場所を決定するために、クラスターで Service Fabric の[ノード プロパティと配置の制約](./service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)が使用されます。 プライマリ ノードの種類を垂直方向にスケーリングする場合、`"nodeTypeRef"` に対して同一のプロパティ値を宣言します。 仮想マシン スケール セットの Service Fabric 拡張機能でこれらの値を見つけることができます。 
-
-Resource Manager テンプレートの次のスニペットに、宣言するプロパティが示されています。 これは、スケールする対象となる、新たにプロビジョニングされたスケール セットと同じ値を持ち、クラスターの一時的なステートフル サービスとしてのみサポートされます。
-
-```json
-"settings": {
-   "nodeTypeRef": ["[parameters('primaryNodetypeName')]"]
-}
-```
+アプリケーションのサービスをホストする場所を決定するために、クラスターで Service Fabric の[ノード プロパティと配置の制約](./service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)が使用されます。 プライマリ ノード タイプを垂直方向にスケーリングする場合は、2 つ目のプライマリ ノード タイプをデプロイしてから、元のプライマリ ノード タイプで (`"isPrimary": false`) を設定し、そのノードを無効にしてそのスケール セットと関連リソースを削除します。 詳細については、[Service Fabric クラスターのプライマリ ノード タイプのスケールアップ](service-fabric-scale-up-primary-node-type.md)に関するページを参照してください。
 
 > [!NOTE]
-> 同じ `nodeTypeRef` プロパティの値を使用する複数のスケール セットのあるクラスターが、垂直方向のスケーリング操作を正常に完了するために必要な時間より長く実行されたままにならないようにします。
->
 > 運用環境に対する変更を試行する前に、必ずテスト環境で操作を検証してください。 既定では、Service Fabric クラスターのシステム サービスには、ターゲットのプライマリ ノードの種類に対してのみ配置の制約があります。
 
 ノードのプロパティと、宣言されている配置の制約を使用し、一度に VM インスタンス 1 つずつ、以下の手順を実行します。 これにより、他の場所に新しいレプリカを作成するときに、削除する VM インスタンスでシステム サービス (およびステートフル サービス) を正常にシャットダウンできます。

@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/10/2020
-ms.openlocfilehash: 58e7d54750da86b8a700a4f2195bc4cfa012ae4b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 12/11/2020
+ms.openlocfilehash: a740ad62dacc9a29cab1cc144f1789e125ec2e89
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092689"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368581"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB の自動スケーリングでプロビジョニングされたスループットについてよく寄せられる質問
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,7 +43,7 @@ Azure Cosmos DB で自動スケーリング プロビジョニング スルー�
 複数書き込みリージョンのアカウントの場合、100 RU/秒あたりの自動スケーリングのレートは、Standard (手動) プロビジョニングの複数書き込みリージョンのスループットのレートと同じです。 請求書には、既存の複数書き込みリージョンの測定が表示されます。 レートは同じであるため、自動スケーリングを使用した場合は、Standard スループットと同じ数量が示されます。
 
 ### <a name="does-autoscale-work-with-reserved-capacity"></a>自動スケーリングは予約容量で機能しますか?
-はい。 複数書き込みリージョンのアカウントに対して予約容量を購入すると、自動スケーリング リソースの予約割引が測定の使用量に適用されます。比率は、1.5 * [特定リージョンの比率](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)になります。 
+はい。 単一書き込みリージョンのアカウントに対して予約容量を購入すると、自動スケーリング リソースの予約割引が測定の使用量に適用されます。比率は、1.5 * [特定リージョンの比率](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)になります。 
 
 複数書き込みリージョンの予約容量は、自動スケーリングと Standard (手動) プロビジョニング スループットに対して同様に機能します。 [Azure Cosmos DB の予約容量](cosmos-db-reserved-capacity.md)に関するページを参照してください
 
@@ -109,9 +109,9 @@ Azure Cosmos DB では、Shared スループット データベースあたり 2
 #### <a name="lowering-the-max-rus"></a>最大 RU/秒を引き下げる
 最大 RU/秒を引き下げる場合に設定できる最小値は `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100)` です (値は最も近い 1,000 RU/秒に丸められます)。 
 
-例 1:20,000 RU/秒 (2,000 から 20,000 RU/秒の間でのスケーリング) の最大 RU/秒と 50 GB のストレージを備えた自動スケーリング コンテナーがあるとします。 設定できる最大 RU/秒の最小値は次のとおりです: MAX(4,000, 20,000 / 10, **50 * 100** ) = 5,000 RU/秒 (500 から 5,000 RU/秒の間でのスケーリング)。
+例 1:20,000 RU/秒 (2,000 から 20,000 RU/秒の間でのスケーリング) の最大 RU/秒と 50 GB のストレージを備えた自動スケーリング コンテナーがあるとします。 設定できる最大 RU/秒の最小値は次のとおりです: MAX(4,000, 20,000 / 10, **50 * 100**) = 5,000 RU/秒 (500 から 5,000 RU/秒の間でのスケーリング)。
 
-例 2:100,000 RU/秒の最大 RU/秒と 100 GB のストレージを備えた自動スケーリング コンテナーがあるとします。 ここで、最大 RU/秒を最大 150,000 RU/秒 (15,000 から 150,000 RU/秒の間でのスケーリング) までスケーリングするとします。 ここで設定できる最大 RU/秒の最小値は次のとおりです: MAX(4,000, **150,000 / 10** , 100 * 100) = 15,000 RU/秒 (1,500 から 15,000 RU/秒の間でのスケーリング)。 
+例 2:100,000 RU/秒の最大 RU/秒と 100 GB のストレージを備えた自動スケーリング コンテナーがあるとします。 ここで、最大 RU/秒を最大 150,000 RU/秒 (15,000 から 150,000 RU/秒の間でのスケーリング) までスケーリングするとします。 ここで設定できる最大 RU/秒の最小値は次のとおりです: MAX(4,000, **150,000 / 10**, 100 * 100) = 15,000 RU/秒 (1,500 から 15,000 RU/秒の間でのスケーリング)。 
 
 Shared スループット データベースの場合、最大 RU/秒を引き下げる場合に設定できる最小値は `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100,  4000 + (MAX(Container count - 25, 0) * 1000))` です (値は最も近い 1,000 RU/秒に丸められます)。  
 

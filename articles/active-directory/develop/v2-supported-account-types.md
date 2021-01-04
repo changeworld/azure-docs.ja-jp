@@ -12,16 +12,16 @@ ms.date: 07/14/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 50a0859b58e2db0d3f644db01cfcde8c533b6871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0895cfc14b0237db8f2f762602fee949354e6cb
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86518132"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347457"
 ---
 # <a name="supported-account-types"></a>サポートされているアカウントの種類
 
-この記事では、Microsoft ID プラットフォーム アプリケーションでサポートされているアカウントの種類 (*対象ユーザー*と呼ばれることもある) について説明します。
+この記事では、Microsoft ID プラットフォーム アプリケーションでサポートされているアカウントの種類 (*対象ユーザー* と呼ばれることもある) について説明します。
 
 <!-- This section can be in an include for many of the scenarios (SPA, web app signing-in users, protecting a web API, Desktop (depending on the flows), Mobile -->
 
@@ -29,7 +29,7 @@ ms.locfileid: "86518132"
 
 Microsoft Azure パブリック クラウドでは、ほとんどの種類のアプリで、どのようなオーディエンスのユーザーでもサインインさせることができます。
 
-- 基幹業務 (LOB) アプリケーションを記述している場合は、お客様の組織内のユーザーをサインインさせられます。 このようなアプリケーションは、*シングル テナント*と呼ばれることもあります。
+- 基幹業務 (LOB) アプリケーションを記述している場合は、お客様の組織内のユーザーをサインインさせられます。 このようなアプリケーションは、*シングル テナント* と呼ばれることもあります。
 - お客様が ISV である場合は、次の場合にユーザーをサインインさせるアプリケーションを記述できます。
 
   - 任意の組織に。 このようなアプリケーションは、*マルチ テナント* Web アプリケーションと呼ばれます。 職場または学校のアカウンでユーザーをサインインさせると解釈できる場合もあります。

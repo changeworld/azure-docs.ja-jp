@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/25/2020
+ms.date: 12/10/2020
 ms.author: duau
-ms.openlocfilehash: c49a3da5bef6059ff5c59cc271cfa58a80153312
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: e9354dade695367ed058506533603318c3cfc288
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762756"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561700"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -51,7 +51,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **韓国** | 韓国中部、韓国南部 |釜山、ソウル|
 | **アラブ首長国連邦** | アラブ首長国連邦中部、アラブ首長国連邦北部 | ドバイ、ドバイ 2 |
 | **南アフリカ** | 南アフリカ西部、南アフリカ北部 |ケープタウン、ヨハネスブルグ |
-| **南アメリカ** | ブラジル南部 |サンパウロ |
+| **南アメリカ** | ブラジル南部 |ボゴタ、サンパウロ |
 
 ## <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>各国のクラウドの Azure リージョンと地理的境界
 次の表は、国内のクラウドのリージョンと地政学的境界に関する情報をまとめたものです。
@@ -83,6 +83,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **オークランド** | [Vocus Group NZ Albany](https://www.vocus.co.nz/business/cloud-data-centres) | 2 | 該当なし | 10G | Devoli、Kordia、Megaport、Spark NZ、Vocus Group NZ |
 | **バンコク** | [AIS](https://business.ais.co.th/solution/en/azure-expressroute.html) | 2 | 該当なし | 10G | AIS、UIH |
 | **ベルリン** | [NTT GDC](https://www.e-shelter.de/en/location/berlin-1-data-center) | 1 | ドイツ北部 | 10G | Equinix、NTT Global DataCenters EMEA|
+| **ボゴタ** | [Equinix BG1](https://www.equinix.com/locations/americas-colocation/colombia-colocation/bogota-data-centers/bg1/) | 4 | 該当なし | 10G | |
 | **釜山** | [LG CNS](https://www.lgcns.com/En/Service/DataCenter) | 2 | 韓国南部 | 該当なし | LG CNS |
 | **キャンベラ** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | オーストラリア中部 | 10G、100G | CDC |
 | **キャンベラ2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | オーストラリア中部 2| 10G、100G | CDC、Equinix |
@@ -158,13 +159,13 @@ Azure の各国のクラウドは互いに分離され、またグローバル�
 | **場所** | **アドレス** | **ローカル Azure リージョン**| **ER Direct** | **サービス プロバイダー** |
 | --- | --- | --- | --- | --- |
 | **アトランタ** | [Equinix AT1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at1/) | 該当なし | 10G、100G | Equinix |
-| **シカゴ** | [Equinix CH1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/chicago-data-centers/ch1/) | 該当なし | 10G、100G | AT&T NetBond、Equinix、Level 3 Communications、Verizon |
+| **シカゴ** | [Equinix CH1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/chicago-data-centers/ch1/) | 該当なし | 10G、100G | AT&T NetBond、British Telecom、Equinix、Level 3 Communications、Verizon |
 | **ダラス** | [Equinix DA3](https://www.equinix.com/locations/americas-colocation/united-states-colocation/dallas-data-centers/da3/) | 該当なし | 10G、100G | Equinix、Megaport、Verizon |
 | **ニューヨーク** | [Equinix NY5](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny5/) | 該当なし | 10G、100G | Equinix、CenturyLink Cloud Connect、Verizon |
-| **Phoenix** | [CyrusOne Chandler](https://cyrusone.com/locations/arizona/phoenix-arizona-chandler/) | US Gov アリゾナ | 該当なし | AT&T NetBond、CenturyLink Cloud Connect、Megaport |
+| **Phoenix** | [CyrusOne Chandler](https://cyrusone.com/locations/arizona/phoenix-arizona-chandler/) | US Gov アリゾナ | 10G、100G | AT&T NetBond、CenturyLink Cloud Connect、Megaport |
 | **サンアントニオ** | [CyrusOne SA2](https://cyrusone.com/locations/texas/san-antonio-texas-ii/) | US Gov テキサス | 該当なし | CenturyLink Cloud Connect、Megaport |
 | **シリコン バレー** | [Equinix SV4](https://www.equinix.com/locations/americas-colocation/united-states-colocation/silicon-valley-data-centers/sv4/) | 該当なし | 10G、100G | AT&T、Equinix、Level 3 Communications、Verizon |
-| **シアトル** | [Equinix SE2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/seattle-data-centers/se2/) | 該当なし | 該当なし | Equinix、Megaport |
+| **シアトル** | [Equinix SE2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/seattle-data-centers/se2/) | 該当なし | 10G、100G | Equinix、Megaport |
 | **ワシントン DC** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | US DoD 東、US Gov バージニア州 | 10G、100G | AT&T NetBond、CenturyLink Cloud Connect、Equinix、Level 3 Communications、Megaport、Verizon |
 
 ### <a name="china"></a>中国

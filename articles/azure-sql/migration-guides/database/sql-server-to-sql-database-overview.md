@@ -1,5 +1,5 @@
 ---
-title: SQL Server から SQL Database - 移行の概要
+title: SQL Server から SQL Database へ:移行の概要
 description: SQL Server データベースを Azure SQL Database に移行するために使用できるさまざまなツールとオプションについて説明します。
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 46216fe06e3d3425d5b237cdbb7326eed596945a
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2d668775e8d11faa0b2913cebc41e5217b49c278
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326932"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357332"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>移行の概要: SQL Server から SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -219,10 +219,10 @@ Azure SQL Database への SQL Server の移行を開始するには、[SQL Serve
    - [Azure SQL Database の概要](../../database/sql-database-paas-overview.md)
    - [Azure 総保有コスト計算ツール](https://azure.microsoft.com/pricing/tco/calculator/) 
 
-- クラウド移行のためのフレームワークと導入サイクルの詳細については、次を参照してください。
+- クラウド移行のためのフレームワークと導入サイクルの詳細については、以下を参照してください
    -  [Azure 向けのクラウド導入フレームワーク](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Azure に移行するワークロードの料金計算とサイズ設定のベスト プラクティス](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
 
 
 - アプリケーション アクセス層を評価するには、「[Data Access Migration Toolkit (プレビュー)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)」を参照してください。
-- データ アクセス層の A/B テストの実行方法の詳細については、[Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) に関するページを参照してください。
+- データ アクセス レイヤーの A/B テストの実行方法について詳しくは、[Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) についてのページを参照してください。

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 64c461c5d3e1bb34f480e5173621f8753eadbbd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bb1e667758a1430e34d222b9a5c537381c07624
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318319"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505275"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics と Application Insights に格納される個人データに関するガイダンス
 
@@ -60,7 +60,7 @@ Log Analytics は柔軟なストアであり、データのスキーマを指定
     | summarize numNonObfuscatedIPs_24h = count() by $table
     ```
 * *ユーザー ID*:既定では、Application Insights は、ユーザーとセッションの追跡のために、ランダムに生成された ID を使用します。 しかし、これらのフィールドは、アプリケーションにとってより関連性の高い ID を格納するために上書きされるのが一般的です。 たとえば、ユーザー名や AAD GUID などです。これらの ID は多くの場合、個人データの範囲にあると見なされます。そのため、適切に処理する必要があります。 これらの ID については、常に難読化または匿名化を試みることをお勧めします。 これらの値がよく見つかるフィールドには、session_Id、user_Id、user_AuthenticatedId、user_AccountId、customDimensions などがあります。
-* *カスタム データ*:Application Insights では、どのデータ型にもカスタム ディメンションのセットを追加できます。 これらのディメンションは、*どのような*データでもありえます。 過去 24 時間にわたって収集されたすべてのカスタム ディメンションを識別するには、次のクエリを使用します。
+* *カスタム データ*:Application Insights では、どのデータ型にもカスタム ディメンションのセットを追加できます。 これらのディメンションは、*どのような* データでもありえます。 過去 24 時間にわたって収集されたすべてのカスタム ディメンションを識別するには、次のクエリを使用します。
     ```
     search * 
     | where isnotempty(customDimensions)
@@ -68,7 +68,7 @@ Log Analytics は柔軟なストアであり、データのスキーマを指定
     | project $table, timestamp, name, customDimensions 
     ```
 * *メモリ内および転送中のデータ*:Application Insights では、例外、要求、依存関係の呼び出し、およびトレースが追跡されます。 プライベート データは、多くの場合、コードや HTTP 呼び出しのレベルで収集できます。 例外、要求、依存関係、およびトレース テーブルを確認して、このようなデータをすべて識別します。 可能な場所では[テレメトリ初期化子](../app/api-filtering-sampling.md)を使用してこのデータを難読化します。
-* *スナップショット デバッガーのキャプチャ*:Application Insights の[スナップショット デバッガー](../app/snapshot-debugger.md)機能では、アプリケーションの実稼働インスタンスで例外がキャッチされるたびにデバッグのスナップショットを収集できます。 スナップショットでは、例外と、スタックに含まれるすべてのステップのローカル変数の値にたどり着く完全なスタック トレースが公開されます。 残念ながら、この機能では、スナップ ポイントを選択的に削除したり、スナップショット内のデータにプログラムからアクセスしたりすることができません。 そのため、既定のスナップショット保有期間のペースではお客様のコンプライアンス要件が満たされない場合は、この機能を無効にすることをお勧めします。
+* *スナップショット デバッガーのキャプチャ*:Application Insights の [スナップショット デバッガー](../app/snapshot-debugger.md)機能では、アプリケーションの実稼働インスタンスで例外がキャッチされるたびにデバッグのスナップショットを収集できます。 スナップショットでは、例外と、スタックに含まれるすべてのステップのローカル変数の値にたどり着く完全なスタック トレースが公開されます。 残念ながら、この機能では、スナップ ポイントを選択的に削除したり、スナップショット内のデータにプログラムからアクセスしたりすることができません。 そのため、既定のスナップショット保有期間のペースではお客様のコンプライアンス要件が満たされない場合は、この機能を無効にすることをお勧めします。
 
 ## <a name="how-to-export-and-delete-private-data"></a>プライベート データをエクスポートして削除する方法
 
@@ -81,7 +81,7 @@ Log Analytics は柔軟なストアであり、データのスキーマを指定
 データ要求の表示とエクスポートの両方に、[Log Analytics クエリ API](https://dev.loganalytics.io/) または [Application Insights クエリ API](https://dev.applicationinsights.io/quickstart) を使用する必要があります。 必要な場合、ユーザーに提供するためにデータの形式を適切なものに変換するロジックを実装できます。 そのようなロジックをホストするには、[Azure Functions](https://azure.microsoft.com/services/functions/) が適しています。
 
 > [!IMPORTANT]
->  消去操作の大部分は SLA よりもずっと短期間に完了する場合がありますが、使用されるデータ プラットフォームへの影響が大きいため、**消去操作の完了の正式な SLA は 30 日に設定されています**。 これは自動化されたプロセスです。操作処理の高速化を要求する方法はありません。
+>  消去操作の大部分は SLA よりもずっと短期間に完了する場合がありますが、使用されるデータ プラットフォームへの影響が大きいため、**消去操作の完了の正式な SLA は 30 日に設定されています**。 この SLA は、GDPR の要件を満たしています。 これは自動化されたプロセスのため、操作処理の高速化を要求する方法はありません。 
 
 ### <a name="delete"></a>削除
 
@@ -89,6 +89,9 @@ Log Analytics は柔軟なストアであり、データのスキーマを指定
 > Log Analytics の削除は破壊的であり、元に戻せません。 実行には細心の注意を払ってください。
 
 プライバシー処理の一環として、Microsoft は "*消去*" API パスを提供しています。 実行に関するリスク、パフォーマンスへの潜在的な影響、Log Analytics データの総集計や測定などにおけるスキューの発生の可能性があり、このパスは慎重に使用する必要があります。 プライベート データを処理する別のアプローチについては、「[個人データの処理に関する戦略](#strategy-for-personal-data-handling)」セクションを参照してください。
+
+> [!NOTE]
+> 消去操作が実行されると、[消去操作の状態](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/getpurgestatus)が "*保留中*" の間はデータにアクセスできなくなります。 
 
 消去は高度な特権が必要な操作であり、Azure Resource Manager でロールが明示的に付与されない限り、Azure のアプリまたはユーザーは (リソース所有者でさえも) 実行のアクセス許可を得られません。 このロールは "_データ消去者_" であり、データ損失の可能性があるため慎重に委任する必要があります。 
 
@@ -102,7 +105,7 @@ Azure Resource Manager ロールが割り当てられると、2 つの新しい 
 #### <a name="log-data"></a>ログ データ
 
 * [POST purge](/rest/api/loganalytics/workspacepurge/purge) - 削除するデータのパラメーターを指定するオブジェクトを受け取り、参照 GUID を返します 
-* 消去状態の GET - 消去の POST 呼び出しは、"x-ms-status-location" ヘッダーを返します。ここには、消去 API の状態を確認するために呼び出せる URL が含まれます。 次に例を示します。
+* 消去状態の GET - 消去の POST 呼び出しは、"x-ms-status-location" ヘッダーを返します。ここには、消去 API の状態を確認するために呼び出せる URL が含まれます。 例:
 
     ```
     x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperationalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
@@ -114,7 +117,7 @@ Azure Resource Manager ロールが割り当てられると、2 つの新しい 
 #### <a name="application-data"></a>アプリケーション データ
 
 * [POST purge](/rest/api/application-insights/components/purge) - 削除するデータのパラメーターを指定するオブジェクトを受け取り、参照 GUID を返します
-* 消去状態の GET - 消去の POST 呼び出しは、"x-ms-status-location" ヘッダーを返します。ここには、消去 API の状態を確認するために呼び出せる URL が含まれます。 次に例を示します。
+* 消去状態の GET - 消去の POST 呼び出しは、"x-ms-status-location" ヘッダーを返します。ここには、消去 API の状態を確認するために呼び出せる URL が含まれます。 例:
 
    ```
    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/microsoft.insights/components/[ComponentName]/operations/purge-[PurgeOperationId]?api-version=2015-05-01

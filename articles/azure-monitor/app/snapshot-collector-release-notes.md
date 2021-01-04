@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: 73fea1e1928cf4e1bd5342aa0a4c885ccb5cf137
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 4a787c6e2a9b59874f965a2bbcebea9ce02d8082
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548173"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093262"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>Microsoft.ApplicationInsights.SnapshotCollector のリリース ノート
 
@@ -18,9 +18,14 @@ ms.locfileid: "96548173"
 
 .NET アプリケーション向け Application Insights スナップショット デバッガーの詳細については、[こちら](./snapshot-debugger.md)を参照してください。
 
-バグ レポートとフィードバックについては、GitHub (https://github.com/microsoft/ApplicationInsights-dotnet ) でイシューをオープンしてください。
+バグ レポートとフィードバックについては、GitHub (https://github.com/microsoft/ApplicationInsights-SnapshotCollector ) でイシューをオープンしてください。
 
 ## <a name="release-notes"></a>リリース ノート
+
+## <a name="1375"></a>[1.3.7.5](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.5)
+1\.4.0-pre から修正プログラムをバックポートするポイント リリース。
+### <a name="bug-fixes"></a>バグの修正
+- [シャットダウン時の ObjectDisposedException](https://github.com/microsoft/ApplicationInsights-dotnet/issues/2097) を修正。
 
 ## <a name="1374"></a>[1.3.7.4](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.4)
 Azure App Service のコードなしアタッチ シナリオのテストで検出された問題に対処するポイント リリース。

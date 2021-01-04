@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 410281ce67faf345539701389d4b03351d403b99
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a0ef8d9f28f90db77686c3139c8b45eccfb669aa
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186067"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938819"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
 この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](./itsmc-overview.md)に関する記事をご覧ください。
@@ -25,8 +25,7 @@ ms.locfileid: "96186067"
 
 > [!NOTE]
 > 
-> 2020 年 10 月 1 日以降、新規のお客様が Cherwell と Provance ITSM を Azure Alert と統合することはできなくなります。 新しい ITSM 接続はサポートされません。 
-> 既存の ITSM 接続はサポートされます。
+> Cherwell や Provance のお客様には、統合の別の方法として、[Webhook アクション](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook)を使用して Cherwell と Provance のエンドポイントに接続することを提案しています。
 
 ## <a name="connect-system-center-service-manager-to-it-service-management-connector-in-azure"></a>System Center Service Manager を Azure の IT Service Management Connector に接続する
 
@@ -310,8 +309,7 @@ ServiceNow 接続を作成するには、次の手順に従います。
 
 > [!NOTE]
 > 
-> 2020 年 10 月 1 日以降、新規のお客様が Provance ITSM を Azure Alert と統合することはできなくなります。 新しい ITSM 接続はサポートされません。 
-> 既存の ITSM 接続はサポートされます。
+> Provance のお客様には、統合の別の方法として、[Webhook アクション](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook)を使用して Cherwell と Provance のエンドポイントに接続することを提案しています。
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -368,8 +366,7 @@ Provance 接続を作成するには、次の手順に従います。
 
 > [!NOTE]
 > 
-> 2020 年 10 月 1 日以降、新規のお客様が Cherwell ITSM を Azure Alert と統合することはできなくなります。 新しい ITSM 接続はサポートされません。 
-> 既存の ITSM 接続はサポートされます。
+> Cherwell のお客様には、統合の別の方法として、[Webhook アクション](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook)を使用して Cherwell と Provance のエンドポイントに接続することを提案しています。
 
 ### <a name="prerequisites"></a>前提条件
 

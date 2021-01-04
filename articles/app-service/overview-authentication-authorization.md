@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 4f1aceed7e6a41a8ad4f3a062f23a796e31e34ad
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 1b95b1e96dc26fb72338518fc969c69b035d5f68
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601681"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095238"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service および Azure Functions での認証と承認
 
@@ -152,6 +152,7 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 
 ## <a name="more-resources"></a>その他のリソース
 
+* [チュートリアル: Azure Storage と Microsoft Graph にアクセスする Web アプリでユーザーを認証および認可する](scenario-secure-app-authentication-app-service.md)
 * [チュートリアル:Azure App Service (Windows) でユーザーをエンド ツー エンドで認証および認可する](tutorial-auth-aad.md)  
 * [チュートリアル:Linux 用 Azure App Service でユーザーをエンド ツー エンドで認証および認可する](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
 * [App Service での認証と認可のカスタマイズ](app-service-authentication-how-to.md)

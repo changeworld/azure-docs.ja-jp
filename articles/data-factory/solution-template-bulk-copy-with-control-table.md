@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/14/2018
-ms.openlocfilehash: 8d1ff372009c6158f2148847dd77126bcb4d189f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/09/2020
+ms.openlocfilehash: d89fd8b4102333603fa71b2cc28a49b732b91b08
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461226"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920880"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>制御テーブルを使用してデータベースから一括コピーを行う
 
@@ -44,7 +44,7 @@ Oracle サーバー、Netezza、Teradata、または SQL Server 内のデータ 
 - *Data_Destination_Container* は、データが宛先ストアにコピーされる先のルート フォルダーのパスです。 
 - *Data_Destination_Directory* は、データが宛先ストアにコピーされる先のルート以下のディレクトリ パスです。 
 
-宛先ストアのパスを定義する最後の 3 つのパラメーターは、選択した宛先がファイルベースのストレージである場合にのみ表示されます。 宛先ストアとして "Azure Synapse Analytics (旧称 SQL DW)" を選択した場合、これらのパラメーターは不要です。 ただし、Azure Synapse Analytics 内のテーブル名とスキーマは、ソース データベース内のものと同じである必要があります。
+宛先ストアのパスを定義する最後の 3 つのパラメーターは、選択した宛先がファイルベースのストレージである場合にのみ表示されます。 宛先ストアとして "Azure Synapse Analytics" を選択した場合、これらのパラメーターは不要です。 ただし、Azure Synapse Analytics 内のテーブル名とスキーマは、ソース データベース内のものと同じである必要があります。
 
 ## <a name="how-to-use-this-solution-template"></a>このソリューション テンプレートの使用方法
 
@@ -94,7 +94,7 @@ Oracle サーバー、Netezza、Teradata、または SQL Server 内のデータ 
 
     ![結果を確認する](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. (省略可能) データの宛先として "Azure Synapse Analytics (旧称 SQL DW)" を選択した場合、Azure Synapse Analytics Polybase に必要であれば、ステージングのために Azure Blob Storage への接続を入力する必要があります。 テンプレートを使うと、Blob ストレージのコンテナー パスが自動的に生成されます。 パイプラインの実行後は、コンテナーが作成されているかどうかを確認します。
+9. (省略可能) データの宛先として "Azure Synapse Analytics" を選択した場合、Azure Synapse Analytics Polybase に必要であれば、ステージングのために Azure Blob Storage への接続を入力する必要があります。 テンプレートを使うと、Blob ストレージのコンテナー パスが自動的に生成されます。 パイプラインの実行後は、コンテナーが作成されているかどうかを確認します。
     
     ![Polybase 設定](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

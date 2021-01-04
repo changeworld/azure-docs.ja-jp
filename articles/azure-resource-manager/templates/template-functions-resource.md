@@ -1,18 +1,18 @@
 ---
 title: テンプレート関数 - リソース
-description: Azure Resource Manager テンプレートで、リソースに関する値を取得するために使用する関数について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) で、リソースに関する値を取得するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 3b5a2642ebbabac61e46f4d9b0a2dfec9610a673
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 166e9104a9d791ac6d82ed0e8e2d3659efd2ae0d
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902665"
+ms.locfileid: "96919990"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM テンプレート用のリソース関数
 
-Resource Manager では、Azure Resource Manager (ARM) テンプレートでリソースの値を取得するために、次の関数が提供されています。
+Resource Manager では、Azure Resource Manager テンプレート (ARM テンプレート) でリソースの値を取得するために、次の関数が提供されています。
 
 * [extensionResourceId](#extensionresourceid)
 * [list*](#list)
@@ -1632,7 +1632,7 @@ resource myPolicyAssignment 'Microsoft.Authorization/policyAssignments@2019-09-0
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](template-syntax.md)に関するページを参照してください。
-* 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](linked-templates.md)に関するページを参照してください。
-* 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](copy-resources.md)」を参照してください。
-* 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager のテンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)に関するページを参照してください。
+* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* 複数のテンプレートをマージする方法については、「[Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用](linked-templates.md)」を参照してください。
+* ある種類のリソースを作成するときに、指定した回数だけ反復する方法については、「[ARM テンプレートでのリソースの反復処理](copy-resources.md)」を参照してください。
+* 作成したテンプレートをデプロイする方法については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。

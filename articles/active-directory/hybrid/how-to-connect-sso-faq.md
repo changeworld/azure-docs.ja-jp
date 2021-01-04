@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f757d8f59c06d573d71099941530dfc28174ac42
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9a3e2dd1ac58c89060fc3e09e97617cb2a68d8ac
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420489"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094575"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン:よく寄せられる質問
 
@@ -82,6 +82,9 @@ Azure AD にこれらのパラメーターを送信でき、その結果、シ�
 >少なくとも 30 日ごとに Kerberos の復号化キーをロールオーバーすることを強くお勧めします。
 
 Azure AD Connect が実行されているオンプレミス サーバーで次の手順を実行します。
+
+   > [!NOTE]
+   >次の手順を実行するには、ドメイン管理者とグローバル管理者の両方の資格情報が必要です。
 
    **手順 1.シームレス SSO が有効になっている AD フォレストのリストの取得**
 

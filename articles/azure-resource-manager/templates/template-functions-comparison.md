@@ -1,18 +1,18 @@
 ---
 title: テンプレート関数 - 比較
-description: Azure Resource Manager テンプレートで値を比較するために使用する関数について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) で値を比較するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: c5ffcfe7688935da6ea5602cdb2c66a8b86a8d88
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1b7192db361f510e0246a737de47930534a1cb9d
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004604"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920538"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM テンプレートの比較関数
 
-Resource Manager には、Azure Resource Manager (ARM) テンプレートで比較を行うための関数がいくつか用意されています。
+Resource Manager には、Azure Resource Manager テンプレート (ARM テンプレート) で比較を行うための関数がいくつか用意されています。
 
 * [coalesce](#coalesce)
 * [equals](#equals)
@@ -635,4 +635,4 @@ output checkStrings bool = firstString <= secondString
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Resource Manager テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。

@@ -4,16 +4,16 @@ description: Azure VM 用の Ultra ディスクについて説明します。
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 12/10/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: aa1c681d4b34199456f3447bcac5587005a044ce
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 9c3c1acbc2606d882ad45744457137be5014bc4c
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96016635"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093487"
 ---
 # <a name="using-azure-ultra-disks"></a>Azure Ultra ディスクの使用
 
@@ -170,9 +170,6 @@ Ultra ディスクを接続するには、Ultra ディスクを使用できる V
 ```azurecli-interactive
 az disk create --subscription $subscription -n $diskname -g $rgname --size-gb 1024 --location $location --sku UltraSSD_LRS --disk-iops-read-write 8192 --disk-mbps-read-write 400
 az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location --attach-data-disks $diskname
-
-#create an ultra disk with 512 sector size
-az disk create --subscription $subscription -n $diskname -g $rgname --size-gb 1024 --location $location --sku UltraSSD_LRS --disk-iops-read-write 8192 --disk-mbps-read-write 400 --logical-sector-size 512
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -225,8 +222,59 @@ $vm = Get-AzVM -ResourceGroupName $resourceGroup -Name $vmName
 $disk = Get-AzDisk -ResourceGroupName $resourceGroup -Name $diskName
 $vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $disk.Id -Lun $lun
 Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
+```
 
-# Example for creating a disk with 512 sector size
+---
+
+## <a name="deploy-an-ultra-disk---512-byte-sector-size"></a>Ultra ディスクをデプロイする - 512 バイトのセクター サイズ
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+Azure portal では現在、512 バイトのセクター サイズの Ultra ディスクの作成がサポートされていません。 代わりに、Azure PowerShell モジュールまたは Azure CLI を使用して、512 バイトのセクター サイズの Ultra ディスクを作成できます。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+最初に、デプロイする VM のサイズを決定します。 サポートされている VM サイズの一覧については、「[GA のスコープと制限事項](#ga-scope-and-limitations)」セクションを参照してください。
+
+Ultra ディスクを接続するには、Ultra ディスクを使用できる VM を作成する必要があります。
+
+**$vmname**、 **$rgname**、 **$diskname**、 **$location**、 **$password**、 **$user** の各変数を、ご自身の実際の値に置き換えるか、設定します。 **$zone** を、[この記事の最初](#determine-vm-size-and-region-availability)に取得したご自身の可用性ゾーンの値に設定します。 次に、次の CLI コマンドを実行して、512 バイトのセクター サイズである Ultra ディスクを備えた VM を作成します。
+
+```azurecli
+#create an ultra disk with 512 sector size
+az disk create --subscription $subscription -n $diskname -g $rgname --size-gb 1024 --location $location --sku UltraSSD_LRS --disk-iops-read-write 8192 --disk-mbps-read-write 400 --logical-sector-size 512
+az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location --attach-data-disks $diskname
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+最初に、デプロイする VM のサイズを決定します。 サポートされている VM サイズの一覧については、「[GA のスコープと制限事項](#ga-scope-and-limitations)」セクションを参照してください。
+
+Ultra ディスクを使用するには、Ultra ディスクを使用できる VM を作成する必要があります。 **$resourcegroup** 変数と **$vmName** 変数を、ご自身の実際の値に置き換えるか、設定します。 **$zone** を、[この記事の最初](#determine-vm-size-and-region-availability)に取得したご自身の可用性ゾーンの値に設定します。 その後、次の [New-AzVm](/powershell/module/az.compute/new-azvm) コマンドを実行して、Ultra 対応 VM を作成します。
+
+```powershell
+New-AzVm `
+    -ResourceGroupName $resourcegroup `
+    -Name $vmName `
+    -Location "eastus2" `
+    -Image "Win2016Datacenter" `
+    -EnableUltraSSD `
+    -size "Standard_D4s_v3" `
+    -zone $zone
+```
+
+512 バイトのセクター サイズである Ultra ディスクを作成して接続するには、次のスクリプトを使用します。
+
+```powershell
+# Set parameters and select subscription
+$subscription = "<yourSubscriptionID>"
+$resourceGroup = "<yourResourceGroup>"
+$vmName = "<yourVMName>"
+$diskName = "<yourDiskName>"
+$lun = 1
+Connect-AzAccount -SubscriptionId $subscription
+
+# Create the disk
 $diskconfig = New-AzDiskConfig `
 -Location 'EastUS2' `
 -DiskSizeGB 8 `
@@ -237,8 +285,17 @@ $diskconfig = New-AzDiskConfig `
 -CreateOption Empty `
 -zone $zone;
 
-```
+New-AzDisk `
+-ResourceGroupName $resourceGroup `
+-DiskName $diskName `
+-Disk $diskconfig;
 
+# add disk to VM
+$vm = Get-AzVM -ResourceGroupName $resourceGroup -Name $vmName
+$disk = Get-AzDisk -ResourceGroupName $resourceGroup -Name $diskName
+$vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $disk.Id -Lun $lun
+Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
+```
 ---
 ## <a name="attach-an-ultra-disk"></a>Ultra ディスクを接続する
 

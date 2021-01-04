@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 4b29e5375c10fc3c1aaa203df720fdd24090d11e
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 3cab22c2271fd5874b4b094be65c36f5b5f3a22d
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601137"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371885"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor Application Insights を監視する Java のコード不要のアプリケーション
 
@@ -186,17 +186,17 @@ Log4j、Logback、java.util.logging は自動的にインストルメント化�
 既定では、INFO レベル以上でログ記録が実行された場合にのみ、ログが収集されます。
 このレベルを変更する方法については、[構成オプション](./java-standalone-config.md#auto-collected-logging)に関する記事を参照してください。
 
-カスタム ディメンションをログに添付する場合は、[Log4j 1 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html)、[Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)、または [Logback MDC](http://logback.qos.ch/manual/mdc.html) を使用できます。また、Application Insights Java 3.0 を使用すると、トレースおよび例外テレメトリでそれらの MDC プロパティがカスタム ディメンションとして自動的にキャプチャされます。
+カスタム ディメンションをログに添付する場合は、[Log4j 1.2 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html)、[Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)、または [Logback MDC](http://logback.qos.ch/manual/mdc.html) を使用できます。また、Application Insights Java 3.0 を使用すると、トレースおよび例外テレメトリでそれらの MDC プロパティがカスタム ディメンションとして自動的にキャプチャされます。
 
 ### <a name="send-custom-telemetry-using-application-insights-java-2x-sdk"></a>Application Insights Java 2.x SDK を使用するカスタム テレメトリの送信
 
-アプリケーションに `applicationinsights-core-2.6.0.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
+アプリケーションに `applicationinsights-core-2.6.2.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
 
 ```xml
 <dependency>
   <groupId>com.microsoft.azure</groupId>
   <artifactId>applicationinsights-core</artifactId>
-  <version>2.6.0</version>
+  <version>2.6.2</version>
 </dependency>
 ```
 

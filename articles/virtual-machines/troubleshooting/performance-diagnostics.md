@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 04b70e593e8b1bee8beb72ac88bc8441bc38bb9a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: fb0928c75b8fee567e9d0f03489794bd9f65e91e
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963246"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109438"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure 仮想マシンのパフォーマンス診断
 
@@ -48,12 +48,12 @@ Azure portal から直接パフォーマンス診断を実行することもで�
 
     | Distribution               | Version                                         |
     |----------------------------|-------------------------------------------------|
-    | Oracle Linux Server        | 6.10 [`*`]、7.3、7.6、7.5 |
-    | CentOS                     | 6.5 [`*`]、7.6                                    |
-    | RHEL                       | 7.2、7.5、8.0 [`*`]                               |
+    | Oracle Linux Server        | 6.10 [`*`]、7.3、7.5、7.6、7.7、7.8 |
+    | CentOS                     | 6.5 [`*`]、7.6、7.7、7.8                                    |
+    | RHEL                       | 7.2、7.5、8.0 [`*`]、8.1、8.2                               |
     | Ubuntu                     | 14.04、16.04、18.04、20.04                               |
     | Debian                     | 8、9、10 [`*`]                                    |
-    | SLES                       | 12 SP4 [`*`]                                      |
+    | SLES                       | 12 SP4 [`*`]、12 SP5 [`*`]、15 [`*`]、15 SP1 [`*`]、15 SP2 [`*`]                                      |
     |                            |                                                   |
 
 >[!Note]

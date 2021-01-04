@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure
-ms.date: 07/28/2020
+ms.date: 12/07/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: a42b07254deaf19d253f7523631018bfe7166a57
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4e29bb0fee496af6a8c0fd30d5559bf865123c39
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339593"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007893"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 専用ホスト
 
@@ -67,11 +67,6 @@ Azure 専用ホストは、1 つの Azure サブスクリプションに対し�
 
 ## <a name="manual-vs-automatic-placement"></a>手動配置と自動配置 
 
-> [!IMPORTANT]
-> 自動配置は現在、パブリック プレビュー段階にあります。
-> プレビューに参加するには、[https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) でプレビューのオンボードに関するアンケートにお答えください。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
 Azure で VM を作成するときに、使用する専用ホストを選択できます。 また、ホスト グループ内の既存のホストに VM を自動的に配置するオプションを使用することもできます。 
 
 新しいホスト グループを作成する際には、VM の自動配置の設定が選択されていることを確認してください。 VM を作成する際は、ホスト グループを選択すると、Azure によって VM に最適なホストが選択されます。 
@@ -91,11 +86,6 @@ VM の自動配置を使用する場合の既知の問題と制限事項:
 
 仮想マシン スケール セットを使用すると、仮想マシンのグループを 1 つのリソースとして扱い、可用性、管理、スケーリング、およびオーケストレーションのポリシーをグループとして適用できます。 仮想マシン スケール セットには、既存の専用ホストを使用することもできます。 
 
-> [!IMPORTANT]
-> 専用ホストでの Virtual Machine Scale Sets は現在、パブリック プレビュー段階にあります。
-> プレビューに参加するには、[https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) でプレビューのオンボードに関するアンケートにお答えください。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
 仮想マシン スケール セットを作成するときに、既存のホスト グループを指定して、すべての VM インスタンスを専用ホスト上に作成することができます。
 
 専用ホスト グループに仮想マシン スケール セットを作成する場合は、次の要件が適用されます。
@@ -109,7 +99,7 @@ VM の自動配置を使用する場合の既知の問題と制限事項:
 - 専用ホストでサポートされている VM のサイズは、スケール セットで使用されているものと一致している必要があります。
 
 すべてのスケール セットのオーケストレーションと最適化設定が、専用ホストでサポートされているわけではありません。 次の設定をスケール セットに適用します。 
-- オーバープロビジョニングの無効化。
+- オーバープロビジョニングは推奨されません。既定では無効になっています。 オーバープロビジョニングを有効にすることは可能ですが、ホスト グループに、オーバープロビジョニングされたインスタンスを含むすべての VM に対応する容量がない場合は、スケール セットの割り当てが失敗します。 
 - ScaleSetVM オーケストレーション モードの使用 
 - コロケーションに近接配置グループを使用しない
 

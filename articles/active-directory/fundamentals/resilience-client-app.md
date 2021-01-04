@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 9189d4d8cda5f9fcfce7e6ac2097414aa29f0a68
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: fc15176318dcfae99434f50a0b4370f371cec05a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317471"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938241"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>開発するクライアント アプリケーションで認証と認可の回復性を向上させる
 
@@ -30,7 +30,9 @@ MSAL では、トークンがキャッシュされ、サイレント トーク�
 
 ![MSAL を使用して Microsoft ID を呼び出すアプリケーションを含むデバイスの画像](media/resilience-client-app/resilience-with-microsoft-authentication-library.png)
 
-MSAL を使用する場合は、次のパターンを使用して、トークンのキャッシュ、更新、およびサイレント トークン取得を行うことができます。
+MSAL を使用する場合、トークンのキャッシュ、更新、およびサイレント取得が自動的にサポートされます。 単純なパターンを使用して、先進認証に必要なトークンを取得できます。 多くの言語がサポートされます。また、言語とシナリオに応じたサンプルを、[[サンプル]](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code) ページで見つけることができます。
+
+## <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 try
@@ -42,6 +44,28 @@ catch(MsalUiRequiredException ex)
     result = await app.AcquireToken(scopes).WithClaims(ex.Claims).ExecuteAsync()
 }
 ```
+
+## <a name="javascript"></a>[Javascript](#tab/javascript)
+
+```javascript
+return myMSALObj.acquireTokenSilent(request).catch(error => {
+    console.warn("silent token acquisition fails. acquiring token using redirect");
+    if (error instanceof msal.InteractionRequiredAuthError) {
+        // fallback to interaction when silent call fails
+        return myMSALObj.acquireTokenPopup(request).then(tokenResponse => {
+            console.log(tokenResponse);
+
+            return tokenResponse;
+        }).catch(error => {
+            console.error(error);
+        });
+    } else {
+        console.warn(error);
+    }
+});
+```
+
+---
 
 MSAL では、場合によってトークンが事前に更新されることがあります。 Microsoft ID は、有効期間が長いトークンを発行するときに、トークンを更新するための最適なタイミングに関する情報をクライアントに送信できます ("refresh\_in")。 MSAL は、この情報に基づいてトークンを事前に更新します。 古いトークンが有効な間、アプリは引き続き実行されますが、次の正常なトークン取得までの期間が長くなります。
 
@@ -65,7 +89,9 @@ MSAL では、場合によってトークンが事前に更新されることが
 
 [最新の Microsoft.Identity.Web のバージョンとリリース ノートを確認する](https://github.com/AzureAD/microsoft-identity-web/releases)
 
-## <a name="if-not-using-msal-use-these-resilient-patterns-for-token-handling"></a>MSAL を使用していない場合は、これらの回復性があるパターンをトークン処理に使用する
+## <a name="use-resilient-patterns-for-token-handling"></a>回復性があるパターンをトークン処理に使用する
+
+MSAL を使用していない場合は、これらの回復性があるパターンをトークン処理に使用できます。 これらのベスト プラクティスは、MSAL ライブラリによって自動的に実装されます。 
 
 一般に、先進認証が使用されているアプリケーションでは、エンドポイントを呼び出して、ユーザーを認証し、保護された API を呼び出すことをアプリケーションに認可するトークンを取得します。 MSAL は、認証の詳細を処理するように意図されており、このプロセスの回復性を向上させるためにいくつかのパターンを実装します。 MSAL 以外のライブラリを使用することを選択した場合は、このセクションのガイダンスを使用してベスト プラクティスを実装してください。 MSAL を使用する場合は、これらのベスト プラクティスは MSAL によって自動的に実装されるため、すべて無料で利用できます。
 
@@ -152,7 +178,7 @@ CAE は初期段階にありますが、アプリケーションで使用され�
 
 リソース API を開発する場合は、[Shared Signals と Events WG](https://openid.net/wg/sse/) に参加されることをお勧めします。 Microsoft は、Microsoft ID とリソース プロバイダー間のセキュリティ イベントの共有を可能にするために、こちらのグループと連携しています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [継続的アクセス評価が有効になった API をアプリケーションで使用する方法](../develop/app-resilience-continuous-access-evaluation.md)
 - [デーモン アプリケーションで回復性を強化する](resilience-daemon-app.md)

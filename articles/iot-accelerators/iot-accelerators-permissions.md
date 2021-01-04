@@ -8,18 +8,18 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: b05ed6e1239721bcf3c1cf33d3ee63a992fd9843
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 5a088cb07fa74b65e497de54be8c97bd51d31c16
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853231"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387838"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>azureiotsolutions.com サイトを使用してソリューション アクセラレータをデプロイする
 
 Azure IoT ソリューション アクセラレータを [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) から Azure サブスクリプションにデプロイできます。 AzureIoTSolutions.com は、Microsoft オープンソースとパートナーの両方のソリューション アクセラレータをホストします。 これらのソリューション アクセラレータは、[Azure IoT 参照アーキテクチャ](/azure/architecture/reference-architectures/iot)と連携します。 このサイトを使用すると、ソリューション アクセラレータをデモまたは運用環境としてすばやくデプロイできます。
 
-![AzureIoTSolutions.com](media/iot-accelerators-permissions/iotsolutionscom.png)
+:::image type="content" source="media/iot-accelerators-permissions/iotsolutionscom.png" alt-text="IoT ソリューションのホーム ページ":::
 
 > [!TIP]
 > デプロイ プロセスに対するよりきめ細かな制御が必要な場合は、CLI を使用してソリューション アクセラレータをデプロイできます。
@@ -64,4 +64,4 @@ AzureIoTSolutions.com サイトは、[Azure Certified for IoT デバイス カ�
 
 ## <a name="next-steps"></a>次のステップ
 
-IoT ソリューション アクセラレータの 1 つを試してみるには、クイック スタート: [コネクテッド ファクトリ ソリューションを試す](quickstart-connected-factory-deploy.md)に関するページをご覧ください。
+IoT ソリューション アクセラレータの 1 つを試してみるには、クイック スタートを参照してください。[接続済みファクトリ ソリューションを試す](quickstart-connected-factory-deploy.md)

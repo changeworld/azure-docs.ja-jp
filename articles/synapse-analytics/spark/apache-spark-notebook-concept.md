@@ -9,12 +9,12 @@ ms.date: 11/18/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: bad71cfeb8f15f463bb9659be704374325d1f50a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5efdfcea7b6d727038bad124368179b9395bfafd
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461993"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093279"
 ---
 # <a name="azure-synapse-analytics-notebooks"></a>Azure Synapse Analytics ノートブック
 
@@ -51,4 +51,4 @@ Azure Synapse Studio ノートブックでは、次のことができます。
   - [ノートブックを作成する](./spark/../../quickstart-apache-spark-notebook.md)
   - [Synapse Studio ノートブックを使用して視覚化を作成する](./spark/../apache-spark-data-visualization-tutorial.md)
   - [Apache Spark MLlib を使用して機械学習モデルを構築する](./spark/../apache-spark-machine-learning-mllib-notebook.md)
-  - [Azure AutoML を使用して機械学習モデルを構築する](./spark/../apache-spark-azure-machine-learning-tutorial.md)
+  - [Azure 自動 ML を使用して機械学習モデルを構築する](./spark/../apache-spark-azure-machine-learning-tutorial.md)

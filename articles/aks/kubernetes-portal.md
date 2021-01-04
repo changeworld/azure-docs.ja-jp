@@ -1,23 +1,21 @@
 ---
-title: Azure portal から Kubernetes リソースにアクセスする (プレビュー)
+title: Azure portal から Kubernetes リソースにアクセスする
 description: Azure portal から Azure Kubernetes Service (AKS) クラスターを管理するために Kubernetes リソースを操作する方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 09/21/2020
-ms.openlocfilehash: cfd09e469de68a1eee7440773347e9fe58bf8619
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 12/09/2020
+ms.openlocfilehash: 8e31c41573ced403a034999de71a5595a54281df
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571625"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921586"
 ---
-# <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Azure portal から Kubernetes リソースにアクセスする (プレビュー)
+# <a name="access-kubernetes-resources-from-the-azure-portal"></a>Azure portal から Kubernetes リソースにアクセスする
 
-Azure portal には、Azure Kubernetes Service (AKS) クラスター内の Kubernetes リソースに簡単にアクセスするための Kubernetes リソース ビューアー (プレビュー) が含まれています。 Azure portal から Kubernetes リソースを表示すると、Azure portal と `kubectl` コマンド ライン ツールの間のコンテキストの切り替えが削減されるため、Kubernetes リソースを表示および編集するためのエクスペリエンスが効率化されます。 リソース ビューアーには現在、デプロイ、ポッド、レプリカ セットなどの複数のリソースの種類が含まれています。
+Azure portal には、Azure Kubernetes Service (AKS) クラスター内の Kubernetes リソースに簡単にアクセスするための Kubernetes リソース ビューが含まれています。 Azure portal から Kubernetes リソースを表示すると、Azure portal と `kubectl` コマンド ライン ツールの間のコンテキストの切り替えが削減されるため、Kubernetes リソースを表示および編集するためのエクスペリエンスが効率化されます。 リソース ビューアーには現在、デプロイ、ポッド、レプリカ セットなどの複数のリソースの種類が含まれています。
 
 Azure portal の Kubernetes リソース ビューによって、非推奨となった [AKS ダッシュボード アドオン][kubernetes-dashboard]が置き換えられます。
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

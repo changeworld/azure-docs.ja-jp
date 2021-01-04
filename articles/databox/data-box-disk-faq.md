@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 12/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 483ae81f22358e41f252dd8090c01d5b4cad7fb1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: acaa0fdb1fa0e9a338f4e249622cad0115c6b58e
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344166"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516454"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk:よく寄せられる質問
 
@@ -70,7 +70,7 @@ A. Data Box Disk は配送先と同じ国/地域内でのデータ インジェ�
 
 ### <a name="option-2"></a>オプション 2:
 
-1. たとえばカナダ中部でストレージ アカウントを選択することによって、カナダで Data Box Disk を注文します。 SSD ディスクは、カナダ中部の Azure データセンターから、注文の作成時に指定された (カナダの) 出荷先住所に出荷されます。
+1. ストレージ アカウントを選択して (たとえば、カナダ中部など)、カナダで Data Box Disk を注文します。 SSD ディスクは、カナダ中部の Azure データセンターから、注文の作成時に指定された (カナダの) 出荷先住所に出荷されます。
 
 2. オンプレミス サーバーからのデータをディスクにコピーした後、Microsoft から提供されている返却ラベルを使用して、カナダの Azure データセンターに返します。 Data Box Disk に存在するデータは、注文の作成時に選択したカナダの Azure リージョンの移行先のストレージ アカウントにアップロードされます。
 
@@ -78,6 +78,35 @@ A. Data Box Disk は配送先と同じ国/地域内でのデータ インジェ�
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>Q. Data Box Disk に関して何か問題が発生した場合、どこに連絡すればよいですか?
 A. Data Box Disk に関して何か問題が発生した場合は、[Microsoft サポートに問い合わせ](./data-box-disk-contact-microsoft-support.md)てください。
+
+## <a name="order-device"></a>デバイスの注文
+
+### <a name="q-how-do-i-get-data-box-disk"></a>Q. Data Box Disk の入手方法は? 
+A.  Azure Data Box Disk を入手するには、Azure portal にサインインし、Data Box Disk の注文を作成します。 連絡先情報と通知の詳細を指定してください。 発注後、在庫状況に応じて、10 日以内に Data Box Disk が配送されます。 詳細については、[Data Box の注文](data-box-disk-deploy-ordered.md)に関する記事を参照してください。
+
+### <a name="q-i-couldnt-create-a-data-box-disk-order-in-the-azure-portal-why"></a>Q. Azure portal で Data Box Disk の注文を作成できませんでした。 なぜでしょうか。
+A. Data Box Disk の注文を作成できない場合は、サブスクリプションの種類またはアクセスのいずれかに問題があります。
+
+サブスクリプションを確認してください。 Data Box Disk は、エンタープライズ契約 (EA) とクラウド ソリューション プロバイダー (CSP) のサブスクリプション オファーでのみ利用できます。 これらの種類のサブスクリプションのいずれもお持ちでない場合は、Microsoft サポートに連絡してサブスクリプションをアップグレードしてください。
+
+サポートされている種類のサブスクリプション プランをお持ちの場合は、サブスクリプションのアクセス レベルを確認してください。 注文を作成するには、サブスクリプションの共同作成者または所有者である必要があります。
+
+### <a name="q-how-long-will-my-order-take-from-order-creation-to-data-uploaded-to-azure"></a>Q. 注文の作成から Azure にデータがアップロードされるまでにはどのくらいの時間がかかりますか?
+
+A. 注文処理のフェーズごとの推定リード タイムの目安は、以下のとおりです。  
+
+これらのリード タイムは、"*推定*" です。 注文処理の各段階にかかる時間は、データセンターの負荷、同時実行されている注文、およびその他の環境条件の影響を受けます。
+
+**Data Box Disk の注文の推定リード タイム:**
+
+1. Data Box Disk の注文:数分間 (ポータルから)
+2. ディスクの割り当てと準備:1 から 2 営業日
+3. 発送:2 から 3 営業日
+4. お客様のサイトでのデータ コピー:データの性質、サイズ、ファイル数によって異なります
+5. 返却発送:2 から 3 営業日
+6. データセンターでのディスクの処理:1 から 2 営業日
+7. Azure へのデータのアップロード:処理が完了し、ディスクが接続され次第すぐに開始されます。 アップロード時間は、データの性質、サイズ、ファイル数によって異なります。
+
 
 ## <a name="configure-and-connect"></a>構成と接続
  
@@ -139,16 +168,16 @@ A. USB 3.0 で接続したディスクでテストしたところ、ディスク
 A.  Data Box Disk は BitLocker の AES-128 ビット方式を使って暗号化されており、そのパスキーは Azure portal でしか入手できません。 パスキーを入手するには、ご利用のアカウントの資格情報を使って Azure portal にログインします。 Data Box Disk ロック解除ツールを実行するときに、このパスキーを指定してください。
 
 ### <a name="q-how-do-i-copy-the-data-to-the-data-box-disks"></a>Q. Data Box Disk にはどのようにしてデータをコピーするのですか? 
-A.  Robocopy や Diskboss などの SMB コピー ツールを使用して、データをディスクにドラッグ アンド ドロップしてください。Windows ファイル エクスプローラーを使用することもできます。
+A.  `Robocopy` や `Diskboss` などの SMB コピー ツールを使用して、データをディスクにドラッグ アンド ドロップしてください。Windows ファイル エクスプローラーを使用することもできます。
 
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>Q. データのコピーを高速化するうえで何かヒントはありますか?
 A.  コピー処理は、次の方法で高速化できます。
 
-- データ コピーのストリームを複数使用する。 たとえば、Robocopy でマルチスレッド オプションを使用します。 使用される正確なコマンドについては、「[チュートリアル: Azure Data Box Disk へのデータのコピーと検証](data-box-disk-deploy-copy-data.md#copy-data-to-disks)」を参照してください。
+- データ コピーのストリームを複数使用する。 たとえば、`Robocopy` でマルチスレッド オプションを使用します。 使用される正確なコマンドについては、「[チュートリアル: Azure Data Box Disk へのデータのコピーと検証](data-box-disk-deploy-copy-data.md#copy-data-to-disks)」を参照してください。
 - 複数のセッションを使用する。
 - ネットワーク共有経由でコピーすることは避け (ネットワーク速度によって制限される可能性があるため)、ディスクが接続されているコンピューターのローカルにデータを置くようにします。
-- コピー処理全体を通して USB 3.0 以降を使用する。 [USBView ツール](/windows-hardware/drivers/debugger/usbview)をダウンロードします。このツールを使って、コンピューターに接続されている USB コントローラーと USB デバイスを特定してください。
-- データのコピーに使用するコンピューターのパフォーマンスをベンチマークする。 [Bluestop FIO ツール](https://ci.appveyor.com/project/axboe/fio)をダウンロードします。このツールを使って、サーバーのハードウェアのパフォーマンスをベンチマークしてください。 最新の x86 または x64 ビルドを選択し、 **[Artifacts]\(成果物\)** タブを選択して、MSI をダウンロードします。
+- コピー処理全体を通して USB 3.0 以降を使用する。 [`USBView` ツール](/windows-hardware/drivers/debugger/usbview)をダウンロードします。このツールを使って、コンピューターに接続されている USB コントローラーと USB デバイスを特定してください。
+- データのコピーに使用するコンピューターのパフォーマンスをベンチマークする。 [Bluestop `FIO` ツール](https://ci.appveyor.com/project/axboe/fio)をダウンロードします。このツールを使って、サーバーのハードウェアのパフォーマンスをベンチマークしてください。 最新の x86 または x64 ビルドを選択し、 **[Artifacts]\(成果物\)** タブを選択して、MSI をダウンロードします。
 
 ### <a name="q-how-to-speed-up-the-data-if-the-source-data-has-small-files-kbs-or-few-mbs"></a>Q. コピー元のデータに小さいファイル (数キロバイトまたは数メガバイト) が含まれている場合に、データの転送速度を高める方法を教えてください。
 A.  コピー処理は、次の方法で高速化できます。
@@ -163,7 +192,7 @@ A.  いいえ。 現在 Data Box Disk でサポートされているストレー
 ### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>Q. 自分のデータに使用できる Data Box Disk 用ツールセットには何が含まれていますか。
 A. Data Box Disk で使用できるツールセットには、次の 3 つのツールが含まれています。
  - **Data Box Disk ロック解除ツール**:このツールは、Microsoft から出荷された暗号化ディスクのロックを解除するために使用します。 ツールを使用してディスクのロックを解除するときは、Azure portal での Data Box Disk の注文に関して取得できるパスキーを指定する必要があります。 
- - **Data Box Disk 検証ツール**:このツールは、Azure の命名規則に従ってサイズ、形式、および BLOB 名を検証するために使用します。 コピーしたデータのチェックサムも生成されます。チェックサムは、Azure にアップロードされたデータを検証するために使用されます。
+ - **Data Box Disk 検証ツール**:このツールは、Azure の命名規則に従ってサイズ、形式、および BLOB 名を検証するために使用します。 コピーしたデータのチェックサムも生成されます。これは、Azure にアップロードされたデータを検証するために使用されます。
  - **Data Box Disk 分割コピー ツール**:このツールは、複数のディスクを使用していて、大きなデータセットをそれらのすべてのディスクに分割してコピーする必要がある場合に使用します。 このツールは、現在 Windows で使用できます。 このツールはマネージド ディスクではサポートされません。 このツールでは、データのコピー時も検証されるため、このツールを使用するときは検証手順をスキップできます。
 
 このツールセットは、Windows と Linux の両方で使うことができます。 ツールセットは、次の場所からダウンロードできます。
@@ -180,10 +209,10 @@ A. Azure Files は Data Box Disk でサポートされていますが、Azure Fi
 A.  データ コピーの注文の状態が完了として表示されたら、すぐにデータにアクセスすることができます。
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>Q. アップロード後、私のデータは Azure 内のどこに置かれるのですか?
-A.  ディスク上の *BlockBlob* フォルダーと *PageBlob* フォルダーにデータをコピーすると、*BlockBlob* フォルダーと *PageBlob* フォルダーのサブフォルダーごとのコンテナーが Azure Storage アカウントに作成されます。 *BlockBlob* フォルダーと *PageBlob* フォルダーの直下にコピーしたファイルは、Azure Storage アカウントの *$root* という既定のコンテナーに置かれます。 データを *AzureFile* フォルダー以下のフォルダーにコピーすると、ファイル共有が作成されます。
+A.  ディスク上の *BlockBlob* フォルダーと *PageBlob* フォルダーにデータをコピーすると、*BlockBlob* フォルダーと *PageBlob* フォルダーのサブフォルダーごとのコンテナーが Azure Storage アカウントに作成されます。 *BlockBlob* と *PageBlob* フォルダーの直下にファイルをコピーした場合、そのファイルは Azure Storage アカウントの *$root* という既定のコンテナーに置かれます。 データを *AzureFile* フォルダー以下のフォルダーにコピーすると、ファイル共有が作成されます。
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>Q. コンテナーに付けた名前が Azure の要件に従っていないことに気付きました。 Azure へのデータのアップロードは失敗しますか?
-A. コンテナー名に大文字が使われている場合、それらは自動的に小文字へと変換されます。 それ以外の点で名前付け規則に違反している場合 (特殊文字、他の言語など)、アップロードは失敗します。 詳細については、[Azure の名前付け規則](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)を参照してください。
+A. コンテナー名に含まれる大文字は、自動的に小文字に変換されます。 名前が他の方法で準拠していない場合 (たとえば、特殊文字やその他の言語が含まれている場合)、アップロードは失敗します。 詳細については、[Azure の名前付け規則](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)を参照してください。
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-multiple-data-box-disks"></a>Q. 複数の Data Box Disk にコピーしたデータは、どのようにして確認すればよいでしょうか?
 A.  データのコピーが完了した後、*DataBoxDiskImport* フォルダーに用意されている `DataBoxDiskValidation.cmd` を実行することで、検証用のチェックサムを生成できます。 ディスクが複数ある場合は、ディスクごとにコマンド ウィンドウを開いてこのコマンドを実行する必要があります。 データのサイズによっては、この操作にかなり (数時間など) 時間がかかる場合があるので注意してください。
@@ -192,7 +221,7 @@ A.  データのコピーが完了した後、*DataBoxDiskImport* フォルダ�
 A.  Azure へのデータのコピーが完了した後、そのデータは、NIST SP 800-88 Revision 1 のガイドラインに従ってディスクから確実に消去されます。  
 
 ### <a name="q-how-is-my-data-protected-during-transit"></a>Q. 移動中のデータは、どのようにして保護されるのですか? 
-A.  Data Box Disk は、Microsoft BitLocker の AES-128 方式で暗号化されます。 この方式では、すべてのディスクのロックを解除してデータにアクセスするために、単一のパスキーが必要となります。
+A.  Data Box Disk は Microsoft BitLocker 暗号化の AES-128 方式で暗号化され、すべてのディスクのロックを解除してデータにアクセスするには、1 つのパスキーが必要です。
 
 ### <a name="q-do-i-need-to-rerun-checksum-validation-if-i-add-more-data-to-the-data-box-disks"></a>Q. Data Box Disk にデータを追加した場合、チェックサムの検証を再実行する必要はありますか?
 A. はい。 データを検証する場合 (推奨)、ディスクにデータを追加したときは検証を再実行する必要があります。
@@ -200,8 +229,8 @@ A. はい。 データを検証する場合 (推奨)、ディスクにデータ�
 ### <a name="q-i-used-all-my-disks-to-transfer-data-and-need-to-order-more-disks-is-there-a-way-to-quickly-place-the-order"></a>Q. データの転送にすべてのディスクを使い切ってしまったので、ディスクを追加注文する必要があります。 簡単に注文する方法はありますか?
 A. 前回の注文を複製することができます。 複製することで前回と同じ注文が作成されるので、注文の詳細のみを編集すればよく、住所や連絡先、通知の詳細を入力する必要はありません。
 
-### <a name="q-i-copied-data-to-manageddisk-folder-i-dont-see-any-managed-disks-with-the-resource-group-specified-for-managed-disks-was-my-data-uploaded-to-azure-and-how-can-i-locate-it"></a>Q. ManagedDisk フォルダーにデータをコピーしました。 マネージド ディスク用に指定されたリソース グループがあるマネージド ディスクが表示されません。 データは Azure にアップロードされましたか? また、どうすればデータを見つけられますか?
-A. はい。 データは Azure にアップロードされましたが、指定されたリソース グループを持つマネージド ディスクが表示されない場合は、データが無効だった可能性があります。 ページ BLOB、ブロック BLOB、Azure Files、およびマネージド ディスクが無効だった場合は、次のフォルダーに移動されます。
+### <a name="q-i-copied-data-to-the-manageddisk-folder-i-dont-see-any-managed-disks-with-the-resource-group-specified-for-managed-disks-was-my-data-uploaded-to-azure-how-can-i-locate-it"></a>Q. ManagedDisk フォルダーにデータをコピーしました。 マネージド ディスク用に指定されたリソース グループがあるマネージド ディスクが表示されません。 データは Azure にアップロードされましたか? どうすれば見つけられますか?
+A. はい。 データは Azure にアップロードされましたが、指定されたリソース グループを持つマネージド ディスクが表示されない場合は、データが無効だった可能性があります。 ページ BLOB、ブロック BLOB、Azure Files、またはマネージド ディスクが無効だった場合は、次のフォルダーに移動されます。
  - ページ BLOB は *databoxdisk-invalid-pb-* で始まるブロック BLOB コンテナーに移動されます。
  - Azure Files は *databoxdisk-invalid-af-* で始まるブロック BLOB コンテナーに移動されます。
  - マネージド ディスクは *databoxdisk-invalid-md-* で始まるブロック BLOB コンテナーに移動されます。

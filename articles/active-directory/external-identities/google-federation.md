@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff8912794169cf61f394a097248a8476b2e0c0f3
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 53d2369e93052ef28191dd1862034c1aaa488add
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926237"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355598"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する
 
@@ -25,6 +25,9 @@ Google とのフェデレーションを設定することで、招待された�
 
 > [!NOTE]
 > Google フェデレーションは Gmail ユーザー専用に設計されています。 G Suite ドメインとのフェデレーションを行うには、[直接フェデレーション](direct-federation.md)を使用します。
+
+> [!IMPORTANT]
+> **2021 年 1 月 4 日以降**、Google は [WebView サインインのサポートを廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)します。 Gmail で Google フェデレーションまたはセルフサービス サインアップを使用している場合は、[基幹業務ネイティブ アプリケーションの互換性をテストする](google-federation.md#deprecation-of-webview-sign-in-support)必要があります。
 
 ## <a name="what-is-the-experience-for-the-google-user"></a>Google ユーザーのエクスペリエンスの内容
 Google Gmail ユーザーに招待を送信すると、そのゲスト ユーザーは、テナント コンテキストが含まれているリンクを使用して共有アプリまたはリソースにアクセスする必要があります。 Google に既にサインインしているかどうかによって、エクスペリエンスが異なります。
@@ -35,7 +38,35 @@ Google Gmail ユーザーに招待を送信すると、そのゲスト ユーザ
 
 ![Google のサインイン ページを示すスクリーンショット。](media/google-federation/google-sign-in.png)
 
-## <a name="limitations"></a>制限事項
+## <a name="deprecation-of-webview-sign-in-support"></a>WebView サインイン サポートの廃止
+
+2021 年 1 月 4 日以降、Google は [埋め込み WebView サインインのサポートを廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)します。 [Gmail で Google フェデレーションまたはセルフサービス サインアップ](identity-providers.md)を使用している場合は、基幹業務ネイティブ アプリケーションの互換性をテストする必要があります。 認証を必要とする WebView コンテンツがアプリに含まれている場合、Google Gmail ユーザーは認証を受けることができません。 Gmail ユーザーに影響を与える既知のシナリオを次に示します。
+
+- 以前のバージョンの Windows で埋め込み WebView または WebAccountManager (WAM) を使用する Windows アプリ。
+- 認証のために埋め込みブラウザー フレームワークを使用する、自分が開発したその他のネイティブ アプリ。
+
+この変更は以下のものには影響しません。
+
+- 最新バージョンの Windows で埋め込み WebView または WebAccountManager (WAM) を使用する Windows アプリ
+- Microsoft iOS アプリ
+- G Suite ID (たとえば、G Suite との SAML ベースの[直接フェデレーション](direct-federation.md)を使用している場合)
+
+Microsoft はさまざまなプラットフォームおよびシナリオのテストを継続しており、それに応じてこの記事を更新する予定です。
+### <a name="to-test-your-apps-for-compatibility"></a>アプリの互換性をテストするには
+
+1. [Google のガイダンス](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)に従って、ご利用のアプリが影響を受けるかどうかを判断します。
+2. Fiddler または別のテスト ツールを使用して、サインイン時にヘッダーを挿入し、Google 外部 ID を使用してサインインをテストします。
+
+   1. 要求が accounts.google.com に送信されるときに、HTTP 要求ヘッダーに Google-Accounts-Check-OAuth-Login:true を追加します。
+   1. accounts.google.com サインイン ページで Gmail アドレスを入力して、アプリへのサインインを試行します。
+   1. サインインに失敗し、[This browser or app may not be secure]\(このブラウザーまたはアプリはセキュリティで保護されていない可能性があります\) などのエラーが表示された場合、ご利用の Google 外部 ID でのサインインはブロックされます。
+
+3. 次のいずれかを実行して、問題を解決します。
+
+   - 以前のバージョンの Windows で Windows アプリが埋め込み WebView または WebAccountManager (WAM) を使用している場合は、最新バージョンの Windows に更新してください。
+   - サインインにシステム ブラウザーを使用するようにアプリを変更します。 詳細については、MSAL.NET のドキュメントの「[埋め込み Web UI とシステム Web UI の比較](../develop/msal-net-web-browsers.md#embedded-vs-system-web-ui)」を参照してください。  
+
+## <a name="sign-in-endpoints"></a>サインインのエンドポイント
 
 Teams では、すべてのデバイスで Google ゲスト ユーザーを完全にサポートしています。 Google ユーザーは、`https://teams.microsoft.com` などの一般的なエンドポイントから Teams にサインインできます。
 
@@ -47,12 +78,11 @@ Teams では、すべてのデバイスで Google ゲスト ユーザーを完�
    `https://myapps.microsoft.com` や `https://portal.azure.com` のようなリンクを Google ゲスト ユーザーが使おうとすると、エラーになります。
 
 リンクにテナント情報が含まれている限り、アプリケーションまたはリソースへの直接リンクを Google ゲスト ユーザーに提供することもできます。 たとえば、`https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` のようにします。 
-
 ## <a name="step-1-configure-a-google-developer-project"></a>手順 1:Google 開発者プロジェクトを構成する
 最初に、Google Developers Console で新しいプロジェクトを作成して、Azure Active Directory (Azure AD) に後で追加できるクライアント ID とクライアント シークレットを取得します。 
 1. https://console.developers.google.com で Google API に移動し、Google アカウントでサインインします。 共有のチーム Google アカウントを使用することをお勧めします。
 2. サービスの使用条件への同意を求めるメッセージが表示されたらそのようにします。
-3. 新しいプロジェクトを作成します。ダッシュボードで、 **[プロジェクトの作成]** を選択し、プロジェクトに名前 ( **Azure AD B2B** など) を付け、 **[作成]** を選択します。 
+3. 新しいプロジェクトを作成します。ダッシュボードで、 **[プロジェクトの作成]** を選択し、プロジェクトに名前 (**Azure AD B2B** など) を付け、 **[作成]** を選択します。 
    
    ![[新しいプロジェクト] ページを示すスクリーンショット。](media/google-federation/google-new-project.png)
 
@@ -66,7 +96,7 @@ Teams では、すべてのデバイスで Google ゲスト ユーザーを完�
 
    ![Google の [OAuth 同意画面] を示すスクリーンショット。](media/google-federation/google-oauth-consent-screen.png)
 
-8. **[Authorized domains]\(承認済みドメイン\)** セクションまでスクロールし、「 **microsoftonline.com** 」と入力します。
+8. **[Authorized domains]\(承認済みドメイン\)** セクションまでスクロールし、「**microsoftonline.com**」と入力します。
 
    ![[Authorized domains]\(承認済みドメイン\) セクションを示すスクリーンショット。](media/google-federation/google-oauth-authorized-domains.PNG)
 
@@ -76,7 +106,7 @@ Teams では、すべてのデバイスで Google ゲスト ユーザーを完�
 
     ![Google API の資格情報作成メニューを示すスクリーンショット。](media/google-federation/google-api-credentials.png)
 
-11. **[アプリケーションの種類]** で **[Web アプリケーション]** を選択します。 アプリケーションの適切な名前を指定します ( **Azure AD B2B** など)。 **[Authorized redirect URIs]\(承認されたリダイレクト URI\)** に、次の URI を入力します。
+11. **[アプリケーションの種類]** で **[Web アプリケーション]** を選択します。 アプリケーションの適切な名前を指定します (**Azure AD B2B** など)。 **[Authorized redirect URIs]\(承認されたリダイレクト URI\)** に、次の URI を入力します。
     - `https://login.microsoftonline.com`
     - `https://login.microsoftonline.com/te/<tenant ID>/oauth2/authresp` <br>(`<tenant ID>` はご利用のテナントの ID です)
    
@@ -112,7 +142,7 @@ Teams では、すべてのデバイスで Google ゲスト ユーザーを完�
    > クライアント ID とクライアント シークレットは、「手順 1: Google 開発者プロジェクトを構成する」で作成したアプリのものを使用します。 詳細については、「[New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview)」を参照してください。 
  
 ## <a name="how-do-i-remove-google-federation"></a>Google フェデレーションを削除する方法
-Google フェデレーション セットアップは削除できます。 そのようにした場合、既に招待を引き換え済みの Google ゲスト ユーザーは、サインインできなくなります。 ただし、ディレクトリから削除し、再招待することで、リソースへのアクセス権をもう一度付与することができます。 
+Google フェデレーション セットアップは削除できます。 そのようにした場合、既に招待を引き換え済みの Google ゲスト ユーザーは、サインインできなくなります。 しかし、ディレクトリから削除し、再招待することで、リソースへのアクセス権をもう一度付与することができます。 
  
 **Azure AD ポータルで Google フェデレーションを削除するには**
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。 左側のペインで、 **[Azure Active Directory]** を選択します。 

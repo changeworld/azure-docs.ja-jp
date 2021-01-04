@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 11/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4fa0f4d87567bd77faacfd2373dba0d2b8996446
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 81a1263d0eacbffa77e2e35e4594e23235394183
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873371"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108673"
 ---
 # <a name="localization-string-ids"></a>ローカライズ文字列 ID
 
@@ -547,5 +547,5 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 ローカライズの例については、次の記事を参照してください。
 
-- [Azure Active Directory B2C でのカスタム ポリシーによる言語のカスタマイズ](custom-policy-localization.md)
-- [Azure Active Directory B2C でのユーザー フローによる言語のカスタマイズ](user-flow-language-customization.md)
+- [Azure Active Directory B2C でのカスタム ポリシーによる言語のカスタマイズ](language-customization.md)
+- [Azure Active Directory B2C でのユーザー フローによる言語のカスタマイズ](language-customization.md)

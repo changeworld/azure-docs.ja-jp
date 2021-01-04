@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 8021d659c144bfb68c2714f1680b6ad27a51b56a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ac4763a2d79059eb2608595b616c945af274627e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522347"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928513"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure プライベート エンドポイントとは
 

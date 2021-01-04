@@ -2,13 +2,13 @@
 title: Azure Arc 対応サーバー エージェントの新機能
 description: この記事には、Azure Arc 対応サーバー エージェントのリリース ノートが含まれています。 まとめられている問題の多くについては、追加詳細のリンクがあります。
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 5322a92bfc67d9f80c2271a3ef9b5626455e9ad7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.date: 12/14/2020
+ms.openlocfilehash: 3a01113d0d6416fb050f5c66191d5c420b7ac137
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445287"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505649"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの新機能
 
@@ -17,6 +17,16 @@ Azure Arc 対応サーバーの Connected Machine エージェントは、継続
 - 最新のリリース
 - 既知の問題
 - バグの修正
+
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="new-feature"></a>新機能
+
+Windows Server 2008 R2 のサポートを追加
+
+### <a name="fixed"></a>固定
+
+Linux にカスタム スクリプト拡張機能を正常にインストールできない問題を解決しました。
 
 ## <a name="november-2020"></a>2020 年 11 月
 

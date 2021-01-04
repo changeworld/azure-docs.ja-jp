@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 5dbd49312b58dc656e2239e8a0a4acea614023de
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: d38c57a8c8504e1e03406f7cd8a0b61725cb0511
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317138"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008089"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse ワークスペースの継続的インテグレーションとデリバリー
 
@@ -107,7 +107,13 @@ Azure Synapse ワークスペースでは、継続的インテグレーション
 
      ![拡張機能の追加](media/add-extension-task.png)
 
-1.  タスクで、**workspace_publish** の関連する Git リポジトリ情報を指定し、ターゲット ワークスペースのリソース グループ、リージョン、名前、クラウド環境を選択します。 必要に応じて、パラメーターと値を指定します。
+1.  タスクで、 **[…]** を選択します ( **[テンプレート]** ボックスの横にあります)。これにより、テンプレート ファイルを選択します。
+
+1. **[…]** を選択します ( **[Template parameters]\(テンプレート パラメーター\)** ボックスの横にあります)。これにより、パラメーター ファイルを選択します。
+
+1. ターゲット ワークスペースの接続、リソース グループ、および名前を選択します。 
+
+1. **[…]** を選択します ( **[テンプレート パラメーターのオーバーライド]** ボックスの横にあります)。ターゲットのワークスペースに望ましいパラメーター値を入力します。 
 
     ![Synapse ワークスペースのデプロイ](media/create-release-artifacts-deployment.png)
 

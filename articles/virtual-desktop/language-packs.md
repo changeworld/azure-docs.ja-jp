@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ca4b5486b54de28497ea41765337bfa19f12e3d7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 780324d1a6f7d9edfb552377c3e966e6a186c231
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573121"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347933"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Windows 10 マルチセッション イメージへの言語パックの追加
 
@@ -52,6 +52,7 @@ Windows 10 Enterprise マルチセッション イメージをカスタマイズ
           - [Windows 10 バージョン 2004 または 20H2 **9B** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
           - [Windows 10 バージョン 2004 または 20H2 **9C** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY)
           - [Windows 10 バージョン 2004 または 20H2 **10C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2010C.iso)
+          - [Windows 10 バージョン 2004 または 20H2 **11C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2011C.iso)
 
 - Azure ファイル共有または Windows ファイル サーバー仮想マシン上のファイル共有
 

@@ -4,12 +4,12 @@ description: Azure リソース ログでサポートされているサービス
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: 1f8754245e394ecdffbb045d7f4cc96ec8a3ff78
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6a76d642863a0baac8021a3da196ad5a2db48126
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184503"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931165"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure リソース ログの共通およびサービス固有のスキーマ
 
@@ -51,6 +51,7 @@ ms.locfileid: "96184503"
 | Azure Active Directory | [概要](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)、[監査ログ スキーマ](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md)、および[サインイン スキーマ](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | [Azure Analysis Services - 診断ログを設定する](../../analysis-services/analysis-services-logging.md) |
 | API Management | [API Management のリソース ログ](../../api-management/api-management-howto-use-azure-monitor.md#resource-logs) |
+| App Service | [App Service ログ](../../app-service/troubleshoot-diagnostic-logs.md)
 | Application Gateway |[Application Gateway のログ記録](../../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Azure Automation のログ分析](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch のログ記録](../../batch/batch-diagnostics.md) |

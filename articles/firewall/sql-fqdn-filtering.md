@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 06/18/2020
 ms.author: victorh
-ms.openlocfilehash: 7256f94b8e8376cf98a279d085a131a4ce84826f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2b1b68b32ccd5a4dda0b71736da4e2d1e2566b6b
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658624"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97348018"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>SQL FQDN を使用して Azure Firewall アプリケーション規則を構成する
 
@@ -35,19 +35,56 @@ SQL IaaS のトラフィックに既定以外のポートを使用する場合�
    > [!NOTE]
    > SQL *プロキシ* モードを使用すると、*リダイレクト* と比較して待機時間が増加する可能性があります。 リダイレクト モードを使用して構成する場合は (Azure 内から接続するクライアントの既定)、代わりに ファイアウォール [ネットワーク ルール](tutorial-firewall-deploy-portal.md#configure-a-network-rule)で SQL [サービス タグ](service-tags.md)を使ってアクセスをフィルター処理できます。
 
-3. SQL FQDN を使用して SQL サーバーへのアクセスを許可するアプリケーション規則を構成します。
+3. SQL FQDN を使用して SQL サーバーへのアクセスを許可するアプリケーション ルールを含む新しいルール コレクションを作成します。
 
    ```azurecli
-   az extension add -n azure-firewall
+    az extension add -n azure-firewall
+    
+    az network firewall application-rule create \ 
+    -g FWRG \
+    --f azfirewall \ 
+    --c sqlRuleCollection \
+    --priority 1000 \
+    --action Allow \
+    --name sqlRule \
+    --protocols mssql=1433 \
+    --source-addresses 10.0.0.0/24 \
+    --target-fqdns sql-serv1.database.windows.net
+   ```
 
-   az network firewall application-rule create \
-   -g FWRG \
-   -f azfirewall \
-   -c FWAppRules \
-   -n srule \
-   --protocols mssql=1433 \
-   --source-addresses 10.0.0.0/24 \
-   --target-fqdns sql-serv1.database.windows.net
+## <a name="configure-using-azure-powershell"></a>Azure PowerShell を使用して構成する
+
+1. [Azure PowerShell を使用して Azure Firewall](deploy-ps.md) をデプロイします。
+2. Azure SQL Database、Azure Synapse Analytics、または SQL マネージド インスタンスへのトラフィックをフィルター処理する場合は、SQL 接続のモードが **プロキシ** に設定されていることを確認します。 SQL 接続モードを切り替える方法については、「[Azure SQL の接続の設定](../azure-sql/database/connectivity-settings.md#change-the-connection-policy-via-the-azure-cli)」を参照してください。
+
+   > [!NOTE]
+   > SQL *プロキシ* モードを使用すると、*リダイレクト* と比較して待機時間が増加する可能性があります。 リダイレクト モードを使用して構成する場合は (Azure 内から接続するクライアントの既定)、代わりに ファイアウォール [ネットワーク ルール](tutorial-firewall-deploy-portal.md#configure-a-network-rule)で SQL [サービス タグ](service-tags.md)を使ってアクセスをフィルター処理できます。
+
+3. SQL FQDN を使用して SQL サーバーへのアクセスを許可するアプリケーション ルールを含む新しいルール コレクションを作成します。
+
+   ```azurepowershell
+   $AzFw = Get-AzFirewall -Name "azfirewall" -ResourceGroupName "FWRG"
+    
+   $sqlRule = @{
+      Name          = "sqlRule"
+      Protocol      = "mssql:1433" 
+      TargetFqdn    = "sql-serv1.database.windows.net"
+      SourceAddress = "10.0.0.0/24"
+   }
+    
+   $rule = New-AzFirewallApplicationRule @sqlRule
+    
+   $sqlRuleCollection = @{
+      Name       = "sqlRuleCollection" 
+      Priority   = 1000 
+      Rule       = $rule
+      ActionType = "Allow"
+   }
+    
+   $ruleCollection = New-AzFirewallApplicationRuleCollection @sqlRuleCollection
+    
+   $Azfw.ApplicationRuleCollections.Add($ruleCollection)    
+   Set-AzFirewall -AzureFirewall $AzFw    
    ```
 
 ## <a name="configure-using-the-azure-portal"></a>Azure portal を使用して構成する

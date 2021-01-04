@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: a8cd6386ed6004935b0a1e45a53c01668166c0e4
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 1b3ab569666ea413ba36da0dc00f6c37336c4443
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902257"
+ms.locfileid: "96931306"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントとの間でデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -307,8 +307,15 @@ REST からのデータ コピーについては、次のプロパティがサ�
 | httpCompressionType | 最適な圧縮レベルでデータを送信するときに使用する HTTP 圧縮の種類。 使用できる値は **none** と **gzip** です。 | いいえ |
 | writeBatchSize | バッチごとに REST シンクに書き込むレコードの数。 既定値は 10000 です。 | いいえ |
 
->[!NOTE]
->シンクとしての REST コネクタは、JSON を受け入れる REST エンドポイントと連携します。 データは JSON でのみ送信されます。
+シンクとしての REST コネクタは、JSON を受け入れる REST API と連携します。 データは次のパターンで JSON で送信されます。 必要に応じて、コピー アクティビティ [スキーマ マッピング](copy-activity-schema-and-type-mapping.md#schema-mapping)を使用し、REST API によって求められるペイロードに準拠するようにソース データを整形できます。
+
+```json
+[
+    { <data object> },
+    { <data object> },
+    ...
+]
+```
 
 **例:**
 
@@ -348,7 +355,7 @@ REST からのデータ コピーについては、次のプロパティがサ�
 
 ## <a name="pagination-support"></a>改ページ位置の自動調整のサポート
 
-通常、REST API では、1 つの要求の応答ペイロードのサイズが適切な数値を超えないように制限されています。大量のデータが返される場合は、結果が複数のページに分割され、呼び出し元に連続する要求を送信して結果の次のページを取得することが要求されます。 通常、1 つのページに対する要求は動的で、前のページの応答から返される情報で構成されます。
+REST API からデータをコピーするとき、通常、REST API では、1 つの要求の応答ペイロードのサイズが適切な数値を超えないように制限されています。大量のデータが返される場合は、結果が複数のページに分割され、呼び出し元に連続する要求を送信して結果の次のページを取得することが要求されます。 通常、1 つのページに対する要求は動的で、前のページの応答から返される情報で構成されます。
 
 この汎用 REST コネクタでは、次の改ページ位置の自動修正パターンをサポートしています。 
 

@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 087af322240322e44e70a9b5279eb7d251e735be
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 050e6b5007b9fbaedc412d8062430f1c2c1691fd
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96901866"
+ms.locfileid: "96923945"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>AzCopy とファイル ストレージでデータを転送する 
 
-AzCopy は、ストレージ アカウント間の BLOB またはファイル コピーに利用できるコマンドライン ユーティリティです。 この記事には、Azure Files で使用するサンプル コマンドが含まれています。
+AzCopy は、ストレージ アカウント間でのファイル コピーに利用できるコマンドライン ユーティリティです。 この記事には、Azure Files で使用するサンプル コマンドが含まれています。
 
 始める前に、[AzCopy を使ってみる](storage-use-azcopy-v10.md)の記事を参照して、AzCopy をダウンロードし、ツールについて理解してください。
 
@@ -53,8 +53,6 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 > |---|---|
 > |ファイルと共にアクセス制御リスト (ACL) をコピーします。|**--preserve-smb-permissions**=\[true\|false\]|
 > |ファイルと共に SMB プロパティ情報をコピーします。|**--preserve-smb-info**=\[true\|false\]|
-> |追加 BLOB またはページ BLOB としてファイルをアップロードします。|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
-> |特定のアクセス層 (アーカイブ層など) にアップロードします。|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
 > 
 > 完全な一覧については、「[オプション](storage-ref-azcopy-copy.md#options)」を参照してください。
 
@@ -217,8 +215,8 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 |    |     |
 |--------|-----------|
-| **構文** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name><SAS-token>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
-| **例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
+| **構文** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
+| **例** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 
 `--exclude-pattern` オプションを使用してファイルを除外することもできます。 詳細については、「[azcopy copy](storage-ref-azcopy-copy.md)」リファレンス ドキュメントを参照してください。
 
@@ -226,7 +224,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 #### <a name="download-files-that-were-modified-after-a-date-and-time"></a>ある日時の後に変更されたファイルをダウンロードする 
 
-[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-after` オプションと共に使用します。 日時を ISO-8601 形式で指定します (例: `2020-08-19T15:04:00Z`)。 
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-after` オプションと共に使用します。 日付と時刻を ISO-8601 形式で指定します (例: `2020-08-19T15:04:00Z`)。 
 
 |    |     |
 |--------|-----------|
@@ -236,11 +234,24 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 詳細なリファレンスについては、[azcopy copy](storage-ref-azcopy-copy.md) リファレンス ドキュメントを参照してください。
 
+#### <a name="download-from-a-share-snapshot"></a>共有スナップショットからのダウンロード
+
+ファイルまたはディレクトリの特定のバージョンをダウンロードするには、共有スナップショットの **DateTime** 値を参照します。 共有スナップショットの詳細については、「[Azure Files の共有スナップショットの概要](/azure/storage/files/storage-snapshots-files)」を参照してください。 
+
+|    |     |
+|--------|-----------|
+| **構文** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-name>/<file-path-or-directory-name><SAS-token>&sharesnapshot=<DateTime-of-snapshot>' '<local-file-or-directory-path>'` |
+| **例** (ファイルのダウンロード) | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory\myTextFile.txt'` |
+| **例** (ディレクトリのダウンロード) | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory'  --recursive`|
+
+
 ## <a name="copy-files-between-storage-accounts"></a>ストレージ アカウント間でファイルをコピーする
 
 AzCopy を使用し、ファイルを他のストレージ アカウントにコピーできます。 コピー操作は同期しているため、コマンドが返されると、それはすべてのファイルがコピーされていることを示します。
 
 AzCopy では、[サーバー間](/rest/api/storageservices/put-block-from-url) [API](/rest/api/storageservices/put-page-from-url) が使用されます。そのため、データはストレージ サーバー間で直接コピーされます。 これらのコピー操作では、コンピューターのネットワーク帯域幅が使用されません。 `AZCOPY_CONCURRENCY_VALUE` 環境変数の値を設定することによって、これらの操作のスループットを上げることができます。 詳しくは、「[スループットを最適化する](storage-use-azcopy-configure.md#optimize-throughput)」をご覧ください。
+
+また、共有スナップショットの **DateTime** 値を参照して、特定のバージョンのファイルをコピーすることもできます。 共有スナップショットの詳細については、「[Azure Files の共有スナップショットの概要](/azure/storage/files/storage-snapshots-files)」を参照してください。 
 
 このセクションには、次の例が含まれています。
 
@@ -257,8 +268,6 @@ AzCopy では、[サーバー間](/rest/api/storageservices/put-block-from-url) 
 > |---|---|
 > |ファイルと共にアクセス制御リスト (ACL) をコピーします。|**--preserve-smb-permissions**=\[true\|false\]|
 > |ファイルと共に SMB プロパティ情報をコピーします。|**--preserve-smb-info**=\[true\|false\]|
-> |追加 BLOB またはページ BLOB としてファイルをコピーします。|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
-> |特定のアクセス層 (アーカイブ層など) にコピーします。|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
 > 
 > 完全な一覧については、「[オプション](storage-ref-azcopy-copy.md#options)」を参照してください。
 
@@ -268,13 +277,16 @@ AzCopy では、[サーバー間](/rest/api/storageservices/put-block-from-url) 
 |--------|-----------|
 | **構文** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<file-path><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>/<file-path><SAS-token>'` |
 | **例** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D'` |
+| **例** (共有スナップショット) | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z' 'https://mydestinationaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D'` |
 
 ### <a name="copy-a-directory-to-another-storage-account"></a>別のストレージ アカウントにディレクトリをコピーする
 
 |    |     |
 |--------|-----------|
 | **構文** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
-| **例** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **例** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/myFileShare/myFileDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **例** (共有スナップショット) | `azcopy copy 'https://mysourceaccount.file.core.windows.net/myFileShare/myFileDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+
 
 ### <a name="copy-a-file-share-to-another-storage-account"></a>別のストレージ アカウントにファイル共有をコピーする
 
@@ -282,6 +294,8 @@ AzCopy では、[サーバー間](/rest/api/storageservices/put-block-from-url) 
 |--------|-----------|
 | **構文** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
 | **例** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **例** (共有スナップショット) | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+
 
 ### <a name="copy-all-file-shares-directories-and-files-to-another-storage-account"></a>すべてのファイル共有、ディレクトリ、ファイルを別のストレージ アカウントにコピーする
 
@@ -289,6 +303,8 @@ AzCopy では、[サーバー間](/rest/api/storageservices/put-block-from-url) 
 |--------|-----------|
 | **構文** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<SAS-token>' --recursive'` |
 | **例** | `azcopy copy 'https://mysourceaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **例** (共有スナップショット) | `azcopy copy 'https://mysourceaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z' 'https://mydestinationaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+
 
 ## <a name="synchronize-files"></a>ファイルを同期する
 

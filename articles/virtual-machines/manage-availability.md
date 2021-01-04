@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 4dd15df0e745a5c6e3130233e693bbdb22655775
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b2f50ba910e3e47c55a63f58bc9f5e978e80e95a
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500446"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401187"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Linux 仮想マシンの可用性管理
 

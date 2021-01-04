@@ -4,16 +4,16 @@ description: Azure Service Fabric のノードの種類を仮想マシン スケ
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
-ms.openlocfilehash: 7df7ed9fa1f872cd9554dcf4c8880b7c9d5e53c4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 9e30c02de54806006a1881448bcb9f788a57310c
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576402"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095255"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric のノードの種類と仮想マシン スケール セット
 
-[仮想マシン スケール セット](../virtual-machine-scale-sets/index.yml)は、Azure コンピューティング リソースです。 スケール セットを使用すると、仮想マシンのコレクションをセットとしてデプロイおよび管理できます。 Azure Service Fabric クラスターで定義するノードの種類ごとに、正確に 1 つのスケール セットが設定されます。複数のノードの種類は同じスケール セットでサポートできず、1 つのノードの種類は (ほとんどの場合) 複数のスケール セットでサポートすることはできません。 これに対する例外は、レプリカが元のスケール セットからアップグレードされたスケール セットに移行されている間に、同じ `nodeTypeRef` 値を持つ 2 つのスケール セットが一時的に存在する場合に、ノードの種類を[垂直スケーリングする](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)というまれな状況です。
+[仮想マシン スケール セット](../virtual-machine-scale-sets/index.yml)は、Azure コンピューティング リソースです。 スケール セットを使用すると、仮想マシンのコレクションをセットとしてデプロイおよび管理できます。 Azure Service Fabric クラスターで定義するノードの種類ごとに、正確に 1 つのスケール セットが設定されます。複数のノードの種類は同じスケール セットでサポートできず、1 つのノードの種類は複数のスケール セットでサポートできません。
 
 Service Fabric ランタイムは、*Microsoft.Azure.ServiceFabric* 仮想マシン拡張機能によって、スケール セット内の各仮想マシンにインストールされます。 各ノードの種類を個別にスケールアップまたはスケールダウンしたり、各クラスター ノードで実行されている OS SKU を変更したり、異なるポートのセットを開いたり、別の容量メトリックを使用したりできます。
 

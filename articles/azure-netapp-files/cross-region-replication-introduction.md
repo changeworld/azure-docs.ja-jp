@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 12/09/2020
 ms.author: b-juche
-ms.openlocfilehash: db1e8ce2e4fe9ae81bc2299ae70e9ff83941b5b4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 7c78d5fa89d6d4f3c73bdd1fe9b6d2fdae97c011
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95245876"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937476"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp Files ボリュームのリージョン間レプリケーション
 
@@ -38,14 +38,15 @@ Azure NetApp Files ボリューム レプリケーションは、現在、次の
 * 米国中南部および米国東部
 * 米国中南部および米国東部 2 
 * 米国東部 2 および米国中部 
-* 北ヨーロッパおよび西ヨーロッパ
-* 英国南部および英国西部
 * オーストラリア東部およびオーストラリア南東部
 * カナダ中部およびカナダ東部
-* 東日本および西日本
-* 英国南部およびドイツ中西部
-* 東南アジアおよびオーストラリア東部
 * インド中部およびインド南部
+* ドイツ中西部およびドイツ北部
+* 東日本および西日本
+* 北ヨーロッパおよび西ヨーロッパ
+* 東南アジアおよびオーストラリア東部
+* 英国南部およびドイツ中西部
+* 英国南部および英国西部
 
 ## <a name="service-level-objectives"></a>サービスレベルの目標
 

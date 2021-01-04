@@ -1,23 +1,23 @@
 ---
 title: クラウド間でテンプレートを再利用する
-description: 異なるクラウド環境で一貫して動作する Azure Resource Manager テンプレートを開発します。 Azure Stack 用のテンプレートを新規作成するか、既存のテンプレートを更新します。
+description: 異なるクラウド環境で一貫して動作する Azure Resource Manager テンプレート (ARM テンプレート) を開発します。 Azure Stack 用のテンプレートを新規作成するか、既存のテンプレートを更新します。
 author: marcvaneijk
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: ea010a625c3e3cd6228513299d878733bf3775ce
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 806556a8da97ec84fe8141b95198b4a7da95c062
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744764"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928360"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>クラウドの一貫性を実現する ARM テンプレートを開発する
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Azure の主な利点は一貫性です。 ある場所に対する開発投資を、別の場所で再利用できます。 Azure Resource Manager (ARM) テンプレートを使うと、グローバル Azure、Azure ソブリン クラウド、Azure Stack など、環境が異なっても一貫性があり再現可能なデプロイを作成できます。 ただし、異なるクラウドでテンプレートを再利用するには、このガイドで説明するように、クラウド固有の依存関係を考慮する必要があります。
+Azure の主な利点は一貫性です。 ある場所に対する開発投資を、別の場所で再利用できます。 Azure Resource Manager テンプレート (ARM テンプレート) を使用すると、グローバル Azure、Azure ソブリン クラウド、Azure Stack などの環境にわたってデプロイが一貫性を持ち、再現可能となります。 ただし、異なるクラウドでテンプレートを再利用するには、このガイドで説明するように、クラウド固有の依存関係を考慮する必要があります。
 
 Microsoft は、次のように、インテリジェントでエンタープライズ対応のクラウド サービスをさまざまな場所で提供しています。
 
@@ -205,7 +205,7 @@ Resource Manager は入れ子になったテンプレートを実行時に取得
 }
 ```
 
-このアプローチでは、構成スクリプトを含むすべての展開成果物を、テンプレート自体と同じ場所に格納できます。 すべてのリンクの場所を変更する場合は、 _artifactsLocation_ パラメーターに異なるベース URL を指定するだけで済みます。
+このアプローチでは、構成スクリプトを含むすべての展開成果物を、テンプレート自体と同じ場所に格納できます。 すべてのリンクの場所を変更する場合は、_artifactsLocation_ パラメーターに異なるベース URL を指定するだけで済みます。
 
 ## <a name="factor-in-differing-regional-capabilities"></a>異なるリージョン機能での要因
 
@@ -443,8 +443,8 @@ API プロファイルは、テンプレートの必須要素ではありませ�
 
 一般に、テンプレートにエンドポイントをハードコーディングすることは避けます。 ベスト プラクティスは、参照テンプレート関数を使ってエンドポイントを動的に取得することです。 たとえば、最もよくハードコーディングされるエンドポイントは、ストレージ アカウントのエンドポイント名前空間です。 各ストレージ アカウントは、ストレージ アカウントの名前とエンドポイントの名前空間を連結して作成される一意の FQDN を持っています。 mystorageaccount1 という名前の BLOB ストレージ アカウントは、クラウドによって異なる FQDN になります。
 
-* **mystorageaccount1.blob.core.windows.net** : グローバル Azure クラウドで作成されたとき。
-* **mystorageaccount1.blob.core.chinacloudapi.cn** : Azure China 21Vianet クラウドで作成されたとき。
+* `mystorageaccount1.blob.core.windows.net`: グローバル Azure クラウドで作成されたとき。
+* `mystorageaccount1.blob.core.chinacloudapi.cn`: Azure China 21Vianet クラウドで作成されたとき。
 
 次の参照テンプレート関数は、ストレージ リソース プロバイダーからエンドポイントの名前空間を取得します。
 
@@ -611,7 +611,7 @@ VM 拡張機能はファースト パーティ Resource Manager リソースで�
 
 VM 拡張機能リソースの API バージョンは、テンプレートの対象になるすべての場所に存在する必要があります。 場所の依存関係は、前の「すべてのリソースの種類のバージョンを確認する」セクションで説明したリソース プロバイダーの API バージョンの可用性と同じように動作します。
 
-VM 拡張機能リソースで利用可能な API バージョンの一覧を取得するには、次に示すように、 **Microsoft.Compute** リソース プロバイダーで [Get-AzureRmResourceProvider](/powershell/module/az.resources/get-azresourceprovider) コマンドレットを使います。
+VM 拡張機能リソースで利用可能な API バージョンの一覧を取得するには、次に示すように、**Microsoft.Compute** リソース プロバイダーで [Get-AzureRmResourceProvider](/powershell/module/az.resources/get-azresourceprovider) コマンドレットを使います。
 
 ```azurepowershell-interactive
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachines/extensions"}

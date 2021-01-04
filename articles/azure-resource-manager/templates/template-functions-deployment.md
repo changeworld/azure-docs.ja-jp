@@ -1,18 +1,18 @@
 ---
 title: テンプレート関数 - デプロイ
-description: Azure Resource Manager テンプレートで、デプロイ情報を取得するために使用する関数について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) で、デプロイ情報を取得するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 9d6a1783bcd6d84c181edae84063ed7c0964c3d8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e63caef669a2c28d29cd0bbd649b0997cea14ee1
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004570"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920521"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM テンプレートのデプロイ関数
 
-Resource Manager には、Azure Resource Manager (ARM) テンプレートの現在のデプロイに関連する値を取得する次の関数が用意されています。
+Resource Manager には、Azure Resource Manager テンプレート (ARM テンプレート) の現在のデプロイに関連する値を取得する次の関数が用意されています。
 
 * [デプロイ](#deployment)
 * [environment](#environment)
@@ -434,7 +434,7 @@ output crossOutput string = crossParameter
 | arrayOutput | Array | [1, 2, 3] |
 | crossOutput | String | option 1 |
 
-パラメーターの使用方法の詳細については、「[Azure Resource Manager テンプレートのパラメーター](template-parameters.md)」を参照してください。
+パラメーターの使用方法の詳細については、「[ARM テンプレートのパラメーター](template-parameters.md)」を参照してください。
 
 ## <a name="variables"></a>variables
 
@@ -571,8 +571,8 @@ output exampleOutput4 object = var4
 | exampleOutput3 | String | myVariable |
 | exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 
-変数の使用方法の詳細については、「[Azure Resource Manager テンプレートの変数](template-variables.md)」を参照してください。
+変数の使用方法の詳細については、「[ARM テンプレートでの変数](template-variables.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Resource Manager テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。

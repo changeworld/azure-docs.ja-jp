@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 02d9e65f5422b7b12900d051f01c1d6f55e8685b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 61ff5d05eb74804af69b90d839115a8468619275
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844678"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921722"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Azure File Sync ネットワーク エンドポイントの構成
 Azure Files および Azure File Sync では、Azure ファイル共有にアクセスするための次の主な 2 種類のエンドポイントが提供されます。 
@@ -34,7 +34,7 @@ Azure Files と Azure File Sync はどちらも、それぞれに Azure 管理�
 
 追加として:
 - Azure PowerShell を使用する場合は、[最新バージョンをインストールしてください](/powershell/azure/install-az-ps)。
-- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 
 ## <a name="create-the-private-endpoints"></a>プライベート エンドポイントを作成する
 Azure リソースのプライベート エンドポイントを作成すると、次のリソースがデプロイされます。
@@ -588,7 +588,7 @@ done
 Azure File Sync を使用すると、プライベート エンドポイントによるアクセスを特定の仮想ネットワークのみに制限できます。Azure File Sync では、サービス エンドポイントによって、パブリック エンドポイントへのアクセスを特定の仮想ネットワークに制限することはサポートされていません。 つまり、ストレージ同期サービスのパブリックエンドポイントには有効と無効の 2 つの状態があるということです。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
-これは、Azure portal では実行できません。 ストレージ同期サービスのパブリック エンドポイントを無効にする方法については、Azure PowerShell または Azure CLI のタブの手順を選択してください。 
+これは、Azure portal では実行できません。 ストレージ同期サービスのパブリック エンドポイントを無効にする方法については、Azure PowerShell タブの手順を選択してください。 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ストレージ同期サービスのパブリック エンドポイントへのアクセスを無効にするには、ストレージ同期サービスの `incomingTrafficPolicy` プロパティを `AllowVirtualNetworksOnly` に設定します。 ストレージ同期サービスのパブリック エンドポイントへのアクセスを有効にする場合は、代わりに `incomingTrafficPolicy` を `AllowAllTraffic` に設定します。 `<storage-sync-service-resource-group>` と `<storage-sync-service>` を必ず置き換えてください。
@@ -603,23 +603,11 @@ $storageSyncService = Get-AzResource `
         -ResourceType "Microsoft.StorageSync/storageSyncServices"
 
 $storageSyncService.Properties.incomingTrafficPolicy = "AllowVirtualNetworksOnly"
-$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force
+$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force -UsePatchSemantics
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-ストレージ同期サービスのパブリック エンドポイントへのアクセスを無効にするには、ストレージ同期サービスの `incomingTrafficPolicy` プロパティを `AllowVirtualNetworksOnly` に設定します。 ストレージ同期サービスのパブリック エンドポイントへのアクセスを有効にする場合は、代わりに `incomingTrafficPolicy` を `AllowAllTraffic` に設定します。 `<storage-sync-service-resource-group>` と `<storage-sync-service>` を必ず置き換えてください。
-
-```bash
-storageSyncServiceResourceGroupName="<storage-sync-service-resource-group>"
-storageSyncServiceName="<storage-sync-service>"
-
-az resource update \
-        --resource-group $storageSyncServiceResourceGroupName \
-        --name $storageSyncServiceName \
-        --resource-type "Microsoft.StorageSync/storageSyncServices" \
-        --set "properties.incomingTrafficPolicy=AllowVirtualNetworksOnly" \
-        --output none
-```
+<a name="azure-cli-does-not-support-setting-the-incomingtrafficpolicy-property-on-the-storage-sync-service-please-select-the-azure-powershell-tab-to-get-instructions-on-how-to-disable-the-storage-sync-service-public-endpoint"></a>Azure CLI では、Storage Sync Service に `incomingTrafficPolicy` プロパティを設定できません。 ストレージ同期サービスのパブリック エンドポイントを無効にする方法については、Azure PowerShell タブの手順を選択してください。
 ---
 
 ## <a name="see-also"></a>関連項目

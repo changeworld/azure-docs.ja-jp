@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: b770e4488b6edb1c2d3749066315b552c0b5b40a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7336078d1f04b9dcb6c2f229654f1c36d9b3114b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186169"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96919965"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
@@ -268,6 +268,10 @@ Enterprise プランでは、テレメトリを送信した Web サーバー ノ
 
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>自分のプロジェクトがデータを送信する Azure のリソースを変更するにはどうすればいいですか?
 ソリューション エクスプローラーで、 `ApplicationInsights.config` を右クリックし、 **[Application Insights の更新]** を選択します。 Azure の既存または新規のリソースにデータを送信できます。 更新ウィザードでは、サーバー SDK のデータの送信先を決定する、ApplicationInsights.config のインストルメンテーション キーを変更します。 [すべて更新] を選択解除している場合を除き、Web ページ内のキーが表示される場所でもキーが変更されます。
+
+### <a name="do-new-azure-regions-require-the-use-of-connection-strings"></a>新しい Azure リージョンでは、接続文字列を使用する必要がありますか。
+
+新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 [接続文字列](./app/sdk-connection-string.md)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
 
 ### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>Azure Resource Manager のデプロイで `providers('Microsoft.Insights', 'components').apiVersions[0]` を使用できますか?
 

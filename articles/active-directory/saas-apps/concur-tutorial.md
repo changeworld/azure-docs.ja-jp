@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Concur では、 **SP** によって開始される SSO がサポートされます
-* Concur では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Concur では、**SP** によって開始される SSO がサポートされます
+* Concur では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 * Concur を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-concur-from-the-gallery"></a>ギャラリーからの Concur の追加
@@ -51,7 +51,7 @@ Azure AD への Concur の統合を構成するには、ギャラリーから管
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Concur** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Concur**」と入力します。
 1. 結果のパネルから **[Concur]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-concur"></a>Concur の Azure AD SSO の構成とテスト

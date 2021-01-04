@@ -13,12 +13,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: da79a74121318993f807ec3bde101b652a8b49da
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 34cdaa42f3a41ae04c73c570bb4fede01a786af2
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628137"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107840"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) を使用してトークンを取得し、キャッシュする
 
@@ -122,6 +122,8 @@ MSAL は、1 つのトークン キャッシュ (または、機密クライア�
 
 ## <a name="next-steps"></a>次のステップ
 
-MSAL for Java を使用している場合、[MSAL for Java のカスタム トークン キャッシュのシリアル化](msal-java-token-cache-serialization.md)について学習してください。
-
-[エラーと例外の処理](msal-handling-exceptions.md)について学習します。
+MSAL でサポートされるプラットフォームの中には、そのプラットフォームのライブラリのドキュメントに追加のトークン キャッシュ関連情報が含まれているものがあります。 例:
+- [MSAL.NET を使用してトークン キャッシュからトークンを取得する](msal-net-acquire-token-silently.md)
+- [MSAL.js でのシングル サインオン](msal-js-sso.md)
+- [MSAL for Python でのカスタム トークン キャッシュのシリアル化](msal-python-token-cache-serialization.md)
+- [MSAL for Java でのカスタム トークン キャッシュのシリアル化](msal-java-token-cache-serialization.md)

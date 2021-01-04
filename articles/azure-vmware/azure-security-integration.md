@@ -3,12 +3,12 @@ title: Azure Security Center 統合を使用して Azure VMware Solution VM を�
 description: Azure Security Center の 1 つのダッシュボードから Azure のネイティブ セキュリティ ツールを使用して Azure VMware Solution VM を保護する方法について説明します。
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 53669f2988a7ff7ab1150b155a65c7a187c6f1c8
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e461e7e49619f7063c0583975f36a2e3dfe5a724
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369905"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937340"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Azure Security Center 統合を使用して Azure VMware Solution VM を保護する
 
@@ -173,7 +173,7 @@ Azure Sentinel は、Log Analytics ワークスペースの上に構築されて
         |where count_ > 3
         ```
         
-    - マップ エンティティ
+    - エンティティのマップ
     - クエリのスケジューリング
     - アラートのしきい値
     - イベントのグループ化

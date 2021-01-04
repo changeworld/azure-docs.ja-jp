@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: 4d74d2a5f23fce28eed4901d1f5a5a4a6537adf5
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 46fd9285f550b1a730b9040c46bacd7e34650b1e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852542"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511673"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>都市別の Azure CDN のカバレッジ 
 > [!div class="op_single_selector"]
@@ -49,4 +49,4 @@ ms.locfileid: "96852542"
 
 
 ## <a name="next-steps"></a>次のステップ
-* 最新 IP アドレスを取得してホワイトリストに登録するには、[Azure CDN エッジ ノード API](/rest/api/cdn/edgenodes) に関するページをご覧ください。
+* 許可リスト用の最新 IP アドレスを取得するには、[Azure CDN エッジ ノード API](/rest/api/cdn/edgenodes) に関するページをご覧ください。

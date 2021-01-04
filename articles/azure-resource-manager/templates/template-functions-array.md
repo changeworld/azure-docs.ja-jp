@@ -1,18 +1,18 @@
 ---
 title: テンプレート関数 - 配列
-description: Azure Resource Manager テンプレートで配列を操作するために使用する関数について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) で配列を操作するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 85f910f6143fd16f996a200172d0efd852897d8c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 40a6815bb10ce9725405d68498b9a554706f3af8
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004621"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920552"
 ---
 # <a name="array-functions-for-arm-templates"></a>ARM テンプレート用の配列関数
 
-Resource Manager では、Azure Resource Manager (ARM) テンプレートで配列を操作するために、次の関数が提供されています。
+Resource Manager では、Azure Resource Manager テンプレート (ARM テンプレート) で配列を操作するために、次の関数が提供されています。
 
 * [array](#array)
 * [concat](#concat)
@@ -889,7 +889,7 @@ output objectLength int = length(objectToTest)
 
 ---
 
-この関数を配列と共に使用する方法の詳細については、「 [Azure リソース マネージャーでリソースの複数のインスタンスを作成する](copy-resources.md)」をご覧ください。
+配列でこの関数を使用する方法の詳細については、「[ARM テンプレートでのリソースの反復処理](copy-resources.md)」を参照してください。
 
 ## <a name="max"></a>max
 
@@ -1381,4 +1381,4 @@ output arrayOutput array = union(firstArray, secondArray)
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Resource Manager テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。

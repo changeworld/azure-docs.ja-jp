@@ -1,15 +1,14 @@
 ---
 title: FAQ-Azure VM をバックアップする
 description: この記事では、Azure Backup サービスを使用した Azure VM のバックアップに関する一般的な質問への回答を示します。
-ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 0f4f990654cc23fde7cf1ad2e37ba1ada76d94e3
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: ba2779305302e91f68cb2664c90f53fdf9a9ca55
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324790"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008352"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>よく寄せられる質問 - Azure VM のバックアップ
 
@@ -163,11 +162,20 @@ PowerShell でこれを行う方法の詳細については、[こちら](backup
 
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>VM とドメイン コントローラーとの関係が壊れたために復元された VM にアクセスできますか。
 
-はい。VM とドメイン コントローラーとの関係が壊れたために復元された VM にアクセスできます。 詳細については、こちらの[記事](./backup-azure-arm-restore-vms.md#post-restore-steps)を参照してください
+はい。VM とドメイン コントローラーとの関係が壊れたために復元された VM にアクセスできます。 詳細については、[こちらの記事](./backup-azure-arm-restore-vms.md#post-restore-steps)を参照してください。
+
+### <a name="can-i-cancel-an-in-progress-restore-job"></a>進行中の復元ジョブを取り消すことはできますか。
+いいえ。進行中の復元ジョブを取り消すことはできません。
 
 ### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>復元操作の完了に長い時間がかかるのはなぜですか?
 
 合計復元時間は、ストレージ アカウントの 1 秒あたりの入出力操作数 (IOPS) とスループットによって変わります。 合計復元時間は、ターゲットのストレージ アカウントに他のアプリケーションの読み取りや書き込み操作が読み込まれる場合、影響を受けることがあります。 復元操作を改善するには、他のアプリケーション データが読み込まれないストレージ アカウントを選択します。
+
+### <a name="how-do-we-handle-create-new-virtual-machine-restore-type-conflicts-with-governance-policies"></a>[新しい仮想マシンの作成] の復元の種類がガバナンス ポリシーと矛盾する場合にどのように対処すればよいですか。
+
+Azure Backup は、復旧ポイントから "アタッチ" ディスクを使用し、お使いのイメージ参照やギャラリーを参照しません。 そのため、ポリシー内で、"storageProfile.osDisk.createOption を Attach と して" 確認できます。スクリプトの条件は次のようになります。
+
+`if (storageProfile.osDisk.createOption == "Attach") then { exclude <Policy> }`
 
 ## <a name="manage-vm-backups"></a>VM バックアップの管理
 

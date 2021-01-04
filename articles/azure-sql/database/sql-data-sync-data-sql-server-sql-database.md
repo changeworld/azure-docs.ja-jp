@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: b23b5a81fdff8a05742092f517128e08723103fc
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 55fa106f0515405dcad969f05d28e0bc7b975b40
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531141"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922299"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure の SQL データ同期とは
 
@@ -81,6 +81,14 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 | **長所** | - アクティブ/アクティブのサポート<br/>- オンプレミスと Azure SQL Database 間で双方向 | - 待ち時間の短縮<br/>- トランザクションの整合性<br/>- 移行後に既存のトポロジの再利用 <br/>\- Azure SQL Managed Instance のサポート |
 | **短所** | - トランザクションの整合性なし<br/>- パフォーマンスへの影響が大きい | - Azure SQL Database からは発行できない <br/>- 高いメンテナンス コスト |
 
+## <a name="private-link-for-data-sync-preview"></a>データ同期用のプライベート リンク (プレビュー)
+新しいプライベート リンク (プレビュー) 機能を使用すると、サービス マネージド プライベート エンドポイントを選択して、データの同期処理中に同期サービスとメンバー/ハブ データベースの間にセキュリティで保護された接続を確立できます。 サービス マネージド プライベート エンドポイントは、特定の仮想ネットワークおよびサブネット内のプライベート IP アドレスです。 データ同期では、サービス マネージド プライベート エンドポイントが Microsoft によって作成され、特定の同期操作でデータ同期サービスによって排他的に使用されます。 プライベート リンクを設定する前に、この機能の[一般的な要件](sql-data-sync-data-sql-server-sql-database.md#general-requirements)を確認してください。 
+
+![データ同期用のプライベート リンク](./media/sql-data-sync-data-sql-server-sql-database/sync-private-link-overview.png)
+
+> [!NOTE]
+> 同期グループのデプロイ中に Azure portal の **[プライベート エンドポイント接続]** ページで、または PowerShell を使用して、サービス マネージド プライベート エンドポイントを手動で承認する必要があります。
+
 ## <a name="get-started"></a>はじめに 
 
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>Azure portal でのデータ同期の設定
@@ -126,6 +134,8 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 - 同期のメンバーとハブの両方に対してスナップショット分離を有効にする必要があります。 詳しくは、「[SQL Server でのスナップショット分離](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)」をご覧ください。
 
+- データ同期でプライベート リンクを使用するには、メンバーとハブの両方のデータベースが、同じ種類のクラウド (パブリック クラウドまたは政府のクラウド) で、Azure (同じリージョンまたは異なるリージョン) でホストされている必要があります。 また、プライベート リンクを使用するには、ハブ サーバーとメンバー サーバーをホストするサブスクリプションに対して、Microsoft.Network リソース プロバイダーを登録する必要があります。 最後に、同期構成中、Azure portal の [プライベート エンドポイント接続] セクション内で、または PowerShell を使用して、データ同期用にプライベート リンクを手動で承認する必要があります。 プライベート リンクを承認する方法の詳細については、「[SQL データ同期の設定](./sql-data-sync-sql-server-configure.md)」を参照してください。サービス マネージド プライベート エンドポイントを承認すると、同期サービスとメンバー/ハブ データベースとの間のすべての通信が、プライベート リンクを介して行われます。 既存の同期グループを更新して、この機能を有効にすることができます。
+
 ### <a name="general-limitations"></a>一般的な制限事項
 
 - テーブルに、主キー以外の ID 列を設けることはできません。
@@ -169,6 +179,9 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 > 同期グループが 1 つだけの場合は、 1 つの同期グループで最大 30 個のエンドポイントを持つことができます。 同期グループが 2 つ以上ある場合は、すべての同期グループでのエンドポイントの合計数が最大 30 個に制限されます。 データベースが複数の同期グループに属している場合、それは 1 つではなく、複数のエンドポイントとしてカウントされます。
 
 ### <a name="network-requirements"></a>ネットワークの要件
+
+> [!NOTE]
+> プライベート リンクを使用する場合、これらのネットワーク要件は適用されません。 
 
 同期グループが確立されるときに、データ同期サービスはハブ データベースに接続する必要があります。 同期グループを確立する時点で、Azure SQL サーバーの `Firewalls and virtual networks` 設定は次のように構成されている必要があります。
 

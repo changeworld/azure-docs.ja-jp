@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: a807c76a08bf075973cd0f358c67b61b10b40ba0
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 9003366ec0d64057ca7426d5b6b99986bc21fc9d
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550806"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920285"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>オンプレミスの SQL Server の登録とスキャン
 
@@ -31,6 +31,10 @@ ms.locfileid: "96550806"
 - SQL Server 2000 から SQL Server 2019 までのすべてのバージョンの SQL
 
 - 認証方法: SQL 認証
+
+### <a name="known-limitations"></a>既知の制限事項
+
+Azure Purview は、SQL Server での[ビュー](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15)のスキャンはサポートしません。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -89,7 +93,7 @@ SQL ID には、プライマリ データベースへのアクセス権が必要
 1. **[生成/インポート]** を選択し、**名前** と **値** を SQL Server ログインの *パスワード* として入力します。
 1. **[作成]** を選択して完了します。
 1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
-1. 最後に、**ユーザー名** と **パスワード** を使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します。
+1. 最後に、**ユーザー名** と **パスワード** を使用して [新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します。
 
 ## <a name="register-a-sql-server-data-source"></a>SQL Server データ ソースの登録
 

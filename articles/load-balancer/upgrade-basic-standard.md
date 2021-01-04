@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: f97facd8d184be05cbfd79af92dbcaab3a022ebd
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: d54994a7c64718835e70381f92abed83ef693018
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746303"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938513"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Azure Public Load Balancer をアップグレードする
 [Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](./skus.md#skus)を参照してください。
@@ -26,7 +26,7 @@ ms.locfileid: "96746303"
 
 次の処理を行う Azure PowerShell スクリプトが用意されています。
 
-* 指定したリソース グループと場所に Standard SKU ロード バランサーを作成します。
+* Basic Standard Load Balancer の同じリソース グループ内で指定した場所に Standard SKU ロード バランサーを作成します。
 * パブリック IP アドレスを Basic SKU から Standard SKU にインプレース アップグレードします。
 * 新しく作成した Standard SKU ロード バランサーに Basic SKU ロード バランザーの構成をシームレスにコピーします。
 * 送信接続を有効にする既定のアウトバウンド規則を作成します。
@@ -58,7 +58,7 @@ ms.locfileid: "96746303"
 
 ## <a name="download-the-script"></a>スクリプトのダウンロード
 
-[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/2.0)から移行スクリプトをダウンロードします。
+[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/4.0)から移行スクリプトをダウンロードします。
 ## <a name="use-the-script"></a>スクリプトの使用
 
 ローカルの PowerShell 環境のセットアップと設定に応じて、次の 2 つのオプションがあります。
@@ -92,14 +92,13 @@ Azure Az モジュールがインストールされていて、それらをア�
 
    * **oldRgName: [文字列]:必須** – アップグレードする既存の Basic Load Balancer のリソース グループです。 この文字列値を検索するには、Azure portal に移動し、Basic Load Balancer ソースを選択して、ロードバランサーの **[概要]** をクリックします。 そのページにリソース グループがあります。
    * **oldLBName: [文字列]:必須** – アップグレードする既存の Basic Balancer の名前です。 
-   * **newrgName: [文字列]:必須** – Standard Load Balancer が作成されるリソース グループです。 新しいリソース グループまたは既存のものを指定できます。 既存のリソース グループを選択する場合は、Load Balancer の名前がリソース グループ内で一意でなければならないことに注意してください。 
    * **newLBName: [文字列]:必須** – 作成される Standard Load Balancer の名前です。
 1. 適切なパラメーターを使用してスクリプトを実行します。 完了するまで 5 から 7 分かかることがあります。
 
     **例**
 
    ```azurepowershell
-   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newLbName "LBForUpgrade"
    ```
 
 ### <a name="create-an-outbound-rule-for-outbound-connection"></a>送信接続用のアウトバウンド規則を作成する

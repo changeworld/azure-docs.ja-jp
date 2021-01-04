@@ -3,12 +3,12 @@ title: 運用環境の準備状況とベスト プラクティス - Azure
 description: この記事では、運用環境で Live Video Analytics on IoT Edge モジュールを構成してデプロイする方法について説明します。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 215427e3524861a842349b197668d92167960e5c
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 56982d84b7ffac718072683076657d56a2691d6c
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906337"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400558"
 ---
 # <a name="production-readiness-and-best-practices"></a>運用環境の準備状況とベスト プラクティス
 
@@ -109,7 +109,11 @@ sudo chown -R edgeuser /var/local/mediaservices
 
 ### <a name="naming-video-assets-or-files"></a>ビデオ アセットまたはファイルの名前付け
 
-メディア グラフでは、クラウド内のアセットまたはエッジ上に mp4 ファイルを作成できます。 メディア アセットは、[継続的なビデオ記録](continuous-video-recording-tutorial.md)、または[イベントベースのビデオ記録](event-based-video-recording-tutorial.md)によって生成できます。 これらのアセットとファイルには必要に応じて名前を付けることができますが、継続的なビデオ記録に基づくメディア アセットに推奨される名前付け構造は、"&lt;anytext&gt;-${System.GraphTopologyName}-${System.GraphInstanceName}" です。 例として、アセット シンクで assetNamePattern を次のように設定できます。
+メディア グラフでは、クラウド内のアセットまたはエッジ上に mp4 ファイルを作成できます。 メディア アセットは、[継続的なビデオ記録](continuous-video-recording-tutorial.md)、または[イベントベースのビデオ記録](event-based-video-recording-tutorial.md)によって生成できます。 これらのアセットとファイルには必要に応じて名前を付けることができますが、継続的なビデオ記録に基づくメディア アセットに推奨される名前付け構造は、"&lt;anytext&gt;-${System.GraphTopologyName}-${System.GraphInstanceName}" です。   
+
+置換パターンは、 **${variableName}** のように、$ 記号、中かっこの順で指定します。  
+
+例として、アセット シンクで assetNamePattern を次のように設定できます。
 
 ```
 "assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}
@@ -130,15 +134,29 @@ sudo chown -R edgeuser /var/local/mediaservices
 エッジでイベントベースのビデオ記録で生成される mp4 ビデオ クリップの場合、推奨される名前付けパターンには、DateTime を含める必要があります。また、同じグラフの複数のインスタンスがある場合は、システム変数 GraphTopologyName と GraphInstanceName を使用することが推奨されます。 例として、ファイル シンクで filePathPattern を次のように設定できます。 
 
 ```
-"filePathPattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}-${System.DateTime}"
+"fileNamePattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}-${System.DateTime}"
 ```
 
 または 
 
 ```
-"filePathPattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}--${System.GraphTopologyName}-${System.GraphInstanceName} ${System.DateTime}"
+"fileNamePattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}--${System.GraphTopologyName}-${System.GraphInstanceName} ${System.DateTime}"
 ```
+>[!NOTE]
+> 上の例では、変数 **fileSinkOutputName** は、グラフ トポロジで定義したサンプル変数名です。 これは、システム変数では **ありません**。 
 
+#### <a name="system-variables"></a>システム変数
+使用できるシステム定義変数には、次のものがあります。
+
+|システム変数|説明|例|
+|-----------|-----------|-----------|
+|System.DateTime|ISO8601 ファイルに準拠した形式の UTC 日付時刻 (基本表現 YYYYYMMDDThhmmss)。|20200222T173200Z|
+|System.PreciseDateTime|ミリ秒付きの ISO8601 ファイルに準拠した形式の UTC 日付時刻 (基本表現 YYYYMMDDThhmmss.sss)。|20200222T173200.123Z|
+|System.GraphTopologyName|ユーザーが指定した実行中のグラフ トポロジの名前。|IngestAndRecord|
+|System.GraphInstanceName|ユーザーが指定した実行中のグラフ インスタンスの名前。|camera001|
+
+>[!TIP]
+> 名前に "." が含まれるため、アセットに System.PreciseDateTime という名前を付けることは できません。
 ### <a name="keeping-your-vm-clean"></a>VM をクリーンな状態に保つ
 
 エッジ デバイスとして使用している Linux VM は、定期的に管理されていない場合、応答しなくなる可能性があります。 キャッシュをクリーンな状態にし、不要なパッケージを排除し、未使用のコンテナーを VM から削除することが不可欠です。 これを行うため、ここではエッジ VM で使用できる一連の推奨コマンドを紹介します。
@@ -153,7 +171,7 @@ sudo chown -R edgeuser /var/local/mediaservices
 
     autoremove オプションは、他のパッケージで必要になったために自動的にインストールされたものの、そのパッケージが削除されたために不要になったパッケージを削除します
 1. `sudo docker image ls` – エッジ システム上の Docker イメージの一覧を提供します
-1. `sudo docker system prune `
+1. `sudo docker system prune`
 
     Docker は、イメージ、コンテナー、ボリューム、ネットワークなど、使用されていないオブジェクトをクリーンアップするための控えめなアプローチ ("ガベージ コレクション" と呼ばれることもあります) を採用しています。これらのオブジェクトは、通常、Docker に明示的に指示しない限り削除されません。 これにより、Docker は追加のディスク領域を使用する可能性があります。 オブジェクトの種類ごとに、Docker には prune コマンドが用意されています。 さらに、docker system prune を使用して、複数の種類のオブジェクトを一度にクリーンアップできます。 詳細については、[未使用の Docker オブジェクトを排除する方法](https://docs.docker.com/config/pruning/)に関するページを参照してください。
 1. `sudo docker rmi REPOSITORY:TAG`

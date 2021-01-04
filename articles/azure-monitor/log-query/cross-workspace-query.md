@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: 8eb163c95fb1426ebae8956d50f6d8f6aec6fd7f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1a6b328bc076ffa619921a8698549e95e6f15c60
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013651"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400762"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>複数のワークスペースとアプリにまたがるログ クエリを Azure Monitor で実行する
 
@@ -22,7 +22,7 @@ Azure Monitor Logs では、同じリソース グループ、別のリソース
 2. [リソースコンテキスト クエリ](../platform/design-logs-deployment.md#access-mode)を使用して暗黙的に行います。 特定のリソース、リソース グループ、またはサブスクリプションのコンテキストでクエリを実行すると、これらのリソースのデータを含むすべてのワークスペースから関連データがフェッチされます。 アプリに格納されている Application Insights データはフェッチされません。
 
 > [!IMPORTANT]
-> [ワークスペースベースの Application Insights リソースを使用している場合](../app/create-workspace-resource.md)、テレメトリは、その他のすべてのログ データと共に Log Analytics ワークスペースに格納されます。 log () 式を使用して、複数のワークスペースにアプリケーションを含むクエリを記述します。 同じワークスペース内に複数のアプリケーションがある場合、クロス ワークスペース クエリは必要ありません。
+> [ワークスペースベースの Application Insights リソースを使用している場合](../app/create-workspace-resource.md)、テレメトリは、その他のすべてのログ データと共に Log Analytics ワークスペースに格納されます。 workspace() 式を使用して、複数のワークスペースにアプリケーションを含むクエリを記述します。 同じワークスペース内に複数のアプリケーションがある場合、クロス ワークスペース クエリは必要ありません。
 
 
 ## <a name="cross-resource-query-limits"></a>リソース間のクエリの制限 

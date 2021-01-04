@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 7f5db2a2df7314c89f2ebba8e7e54ebe24126386
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 20dc6cde9cce6a9d57047940a38adb5cf004ae6a
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92098152"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347678"
 ---
 # <a name="azure-table-storage-input-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage の入力バインド
 
@@ -134,7 +134,7 @@ public class TableStorage
 
 ### <a name="one-entity"></a>1 つのエンティティ
 
-次の例は、 *function.json* ファイルのテーブル入力バインドと、バインドを使用する [C# スクリプト](functions-reference-csharp.md) コードを示しています。 この関数は、キュー トリガーを使用して単一のテーブル行を読み取ります。 
+次の例は、*function.json* ファイルのテーブル入力バインドと、バインドを使用する [C# スクリプト](functions-reference-csharp.md) コードを示しています。 この関数は、キュー トリガーを使用して単一のテーブル行を読み取ります。 
 
 *function.json* ファイルには `partitionKey` と `rowKey` が指定されています。 `rowKey` 値 "{queueTrigger}" は、行キーがキュー メッセージ文字列から取得されることを示します。
 
@@ -246,7 +246,7 @@ CloudTable オブジェクトの使用方法の詳細については、[Azure Ta
 
 ### <a name="iqueryable"></a>IQueryable
 
-次の例は、 *function.json* ファイルのテーブル入力バインドと、バインドを使用する [C# スクリプト](functions-reference-csharp.md) コードを示しています。 この関数は、キュー メッセージに指定されているパーティション キーのエンティティを読み取ります。
+次の例は、*function.json* ファイルのテーブル入力バインドと、バインドを使用する [C# スクリプト](functions-reference-csharp.md) コードを示しています。 この関数は、キュー メッセージに指定されているパーティション キーのエンティティを読み取ります。
 
 *function.json* ファイルを次に示します。
 
@@ -298,7 +298,7 @@ public class Person : TableEntity
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-次の例は、 *function.json* ファイルのテーブル入力バインドと、バインドを使用する [JavaScript コード](functions-reference-node.md)を示しています。 この関数は、キュー トリガーを使用して単一のテーブル行を読み取ります。 
+次の例は、*function.json* ファイルのテーブル入力バインドと、バインドを使用する [JavaScript コード](functions-reference-node.md)を示しています。 この関数は、キュー トリガーを使用して単一のテーブル行を読み取ります。 
 
 *function.json* ファイルには `partitionKey` と `rowKey` が指定されています。 `rowKey` 値 "{queueTrigger}" は、行キーがキュー メッセージ文字列から取得されることを示します。
 
@@ -538,7 +538,7 @@ public Person[] get(
 
 ## <a name="configuration"></a>構成
 
-次の表は、 *function.json* ファイルと `Table` 属性で設定したバインド構成のプロパティを説明しています。
+次の表は、*function.json* ファイルと `Table` 属性で設定したバインド構成のプロパティを説明しています。
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|

@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 12/03/2020
+ms.date: 12/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 21b1004a347dec3a7f2a6460d8b853350bf36ff0
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5559e491be15f8f848329405736fc977267c70cc
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571047"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938598"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>ハイ パフォーマンス コンピューティング VM のサイズ
 
@@ -29,6 +29,9 @@ HBv2 VM は 200 Gb/秒の Mellanox HDR InfiniBand を、HB および HC シリ�
 [HC シリーズ](hc-series.md) VM は、陰解法有限要素解析、分子力学、計算化学などの、高密度計算に基づいたアプリケーション向けに最適化されています。 HC VM は 44 個の Intel Xeon Platinum 8168 プロセッサ コア、CPU コアあたり 8 GB の RAM を搭載し、ハイパースレッディングはありません。 Intel Xeon Platinum プラットフォームは、Intel Math Kernel Library などの Intel の豊富なソフトウェア ツールのエコシステムをサポートしています。
 
 [H シリーズ](h-series.md) VM は、高い CPU 周波数またはコアあたり大容量メモリの要件に基づいたアプリケーション向けに最適化されています。 H シリーズ VM は 8 または 16 個の Intel Xeon E5 2667 v3 プロセッサ コア、CPU コアあたり 7 または 14 GB の RAM を搭載し、ハイパースレッディングはありません。 H シリーズは、一貫した RDMA パフォーマンスを得るために、非ブロッキングのファット ツリー構成内に 56 Gb/秒の Mellanox FDR InfiniBand を搭載しています。 H シリーズ VM は、Intel MPI 5.x と MS-MPI をサポートしています。
+
+> [!NOTE]
+> HBv2、HB、および HC シリーズの VM はすべて、物理サーバーに排他的にアクセスできます。 物理サーバーごとに 1 つの VM のみが存在します。また、これらの VM サイズについては、他の VM との共有マルチテナントは存在しません。
 
 > [!NOTE]
 > [A8 – A11 VM](./sizes-previous-gen.md#a-series---compute-intensive-instances) は、2021 年 3 月に廃止される予定です。 詳細については、「[HPC マイグレーション ガイド](https://azure.microsoft.com/resources/hpc-migration-guide/)」を参照してください。

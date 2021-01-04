@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Microsoft Azure Recovery S
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b3b648ca27a407640b42932fe2ed7c32f5109114
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25f0c41b535f9403d0a7027687cc5261cd437275
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89145571"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368598"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup サービスを使用して Microsoft Azure Recovery Services (MARS) エージェントのバックアップを管理する
 
@@ -67,7 +67,7 @@ ms.locfileid: "89145571"
 
     ![除外する項目の選択](./media/backup-azure-manage-mars/select-items-exclude.png)
 
-4. 既定では、選択したフォルダー内のすべての**サブフォルダー**が除外されます。 これは、 **[はい]** または **[いいえ]** を選択することで変更できます。 下に示すように、除外するファイルの種類を編集および指定することができます。
+4. 既定では、選択したフォルダー内のすべての **サブフォルダー** が除外されます。 これは、 **[はい]** または **[いいえ]** を選択することで変更できます。 下に示すように、除外するファイルの種類を編集および指定することができます。
 
     ![サブフォルダーの種類の選択](./media/backup-azure-manage-mars/subfolders-type.png)
 
@@ -92,7 +92,7 @@ ms.locfileid: "89145571"
   - このオプションでは、今後、バックアップ ジョブによる保護がすべて停止されます。
   - 既存のすべての復旧ポイントは、引き続き Azure Backup サービスによって保持されます。  
   - 有効期限になっていない復旧ポイントのバックアップ データを復元することができます。
-  - 保護を再開する場合は、*バックアップ スケジュールを再有効化する*オプションを使用できます。 その後は、新しいアイテム保持ポリシーに基づいてデータが保持されます。
+  - 保護を再開する場合は、*バックアップ スケジュールを再有効化する* オプションを使用できます。 その後は、新しいアイテム保持ポリシーに基づいてデータが保持されます。
 - **保護を停止してバックアップ データを削除します**。
   - このオプションでは、今後、バックアップ ジョブによるデータの保護がすべて停止され、すべての復旧ポイントが削除されます。
   - ユーザーは、バックアップ データの削除に関するアラート メールを受信します。このメールには、"*Your data for this Backup item has been deleted. (このバックアップ項目のデータは削除されました。)This data will be temporarily available for 14 days, after which it will be permanently deleted (このデータは 14 日間一時的に使用できるようになり、その後、完全に削除されます)* " というメッセージと、"*Reprotect the Backup item within 14 days to recover your data. (データを復旧するには、14 日以内にバックアップ項目を再保護してください。)* という推奨される操作が記載されています。
@@ -156,7 +156,7 @@ ms.locfileid: "89145571"
 
 パスフレーズは、MARS エージェントを使用して Azure との間でオンプレミスまたはローカル マシンをバックアップまたは復元するときに、データを暗号化および復号化するために使用されます。 パスフレーズを紛失した場合または忘れた場合は、次のステップに従ってパスフレーズを再生成できます (マシンが Recovery Services コンテナーにまだ登録され、バックアップが構成されている場合)。
 
-1. MARS エージェント コンソールで、 **[操作] ペイン** >  **[プロパティの変更]** に移動します。 次に、 **[暗号化] タブ**に移動します。<br>
+1. MARS エージェント コンソールで、 **[操作] ペイン** >  **[プロパティの変更]** に移動します。 次に、 **[暗号化] タブ** に移動します。<br>
 1. **[パスフレーズの変更]** チェックボックスをオンにします。<br>
 1. 新しいパスフレーズを入力するか、 **[パスフレーズの生成]** を選択します。
 1. **[参照]** を選択して新しいパスフレーズを保存します。
@@ -189,6 +189,19 @@ MARS のバックアップ ポリシーの管理は、ポータルではなく�
   1. エージェントをインストールし、同じパスフレーズを使用して同じコンテナーに再登録します
   1. MARS クライアントを起動して、要件に応じて保有期間を延長します
 - 新しく復元されたマシンは、MARS で保護され、引き続きバックアップを実行します。  
+
+## <a name="configuring-antivirus-for-the-mars-agent"></a>MARS エージェントのウイルス対策を構成する
+
+MARS エージェントの動作との競合を避けるために、ウイルス対策ソフトウェアは次のように構成することをお勧めします。
+
+1. **パスの除外の追加**:パフォーマンスの低下を防ぎ、発生する可能性がある競合を回避するには、ウイルス対策ソフトウェアによるリアルタイム監視から次のパスを除外します。
+    1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent` およびそのサブフォルダー
+    1. **スクラッチ フォルダー**:スクラッチ フォルダーが標準の場所にない場合は、これも除外対象に追加します。  スクラッチ フォルダーの場所を特定する手順については、[こちらを参照](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)してください。
+1. **バイナリ除外の追加**:バックアップとコンソールの動作が低下しないようにするには、ウイルス対策ソフトウェアによるリアルタイムの監視から、次のバイナリのプロセスを除外します。
+    1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent\bin\cbengine.exe`
+
+>[!NOTE]
+>ほとんどのウイルス対策ソフトウェアでは、これらのパスを除外するだけで十分ですが、一部では MARS エージェントの操作が引き続き妨げられる場合があります。 予期しないエラーが発生する場合は、一時的にウイルス対策ソフトウェアをアンインストールして、問題が解決しないかどうかを監視します。 これによって問題が解決される場合は、製品の適切な構成について、ウイルス対策ソフトウェア ベンダーにお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,114 +1,51 @@
 ---
-title: Visual Studio Code でオートメーション ワークフロー (プレビュー) を作成する
-description: アプリ、データ、クラウド サービス、オンプレミス システムを統合するために Visual Studio Code で Azure Logic Apps (プレビュー) 拡張機能を使用してステートレスまたはステートフルのオートメーション ワークフローを作成します
+title: Visual Studio Code で Logic Apps プレビュー ワークフローを作成する
+description: Azure Logic Apps (プレビュー) 拡張機能を使用して Visual Studio Code で自動化と統合のシナリオのためのワークフローを構築して実行します。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
+ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 14809cb28870e88cfa584c4f02360d50beabf901
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.date: 12/07/2020
+ms.openlocfilehash: cf8b6670817132c8c0c0a09194b9aca4bbc8073c
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981059"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96923145"
 ---
-# <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (プレビュー) 拡張機能を使用して Visual Studio Code でステートフルまたはステートレスのワークフローを作成する
+# <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (プレビュー) 拡張機能を使用して Visual Studio Code でステートフルおよびステートレスのワークフローを作成する
 
 > [!IMPORTANT]
 > この機能はパブリック プレビュー段階であり、サービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-アプリ、データ、クラウド サービス、およびシステムを統合するロジック アプリ ワークフローを作成するには、Visual Studio Code と Azure Logic Apps (プレビュー) 拡張機能を使用し、["*ステートフル*" および "*ステートレス*" のロジック アプリ ワークフロー](#stateful-stateless)を開発環境で作成してローカルに実行します。
+[Azure Logic Apps (プレビュー)](logic-apps-overview-preview.md) を使用すると、アプリ、データ、クラウド サービス、システムの全体に自動化および統合のソリューションを構築できます。そのためには、Azure Logic Apps (プレビュー) 拡張機能を使用して、Visual Studio Code で ["*ステートフル*" および "*ステートレス*" のワークフロー](logic-apps-overview-preview.md#stateful-stateless)を含むロジック アプリを作成して実行します。 この新しいロジック アプリの種類を使用することにより、再設計された Azure Logic Apps プレビュー ランタイムを利用する複数のワークフローを構築できます。これにより、Azure だけでなく、Docker コンテナーを含むさまざまなホスティング環境でデプロイおよび実行するための移植性、より優れたパフォーマンス、および柔軟性が提供されます。 新しいロジック アプリの種類の詳細については、[Azure Logic Apps プレビューの概要](logic-apps-overview-preview.md)に関するページをご覧ください。
 
-![Visual Studio Code とロジック アプリ ワークフローを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-logic-apps-overview.png)
+![Visual Studio Code、ロジック アプリ プロジェクト、ワークフローを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-logic-apps-overview.png)
 
-パブリック プレビュー拡張機能を使用して作成したロジック アプリにおいては、新しい **ロジック アプリ (プレビュー)** リソースの種類が使用され、ローカル環境の [Azure Functions](../azure-functions/functions-overview.md) ランタイムが利用されます。 この新しいリソースの種類には複数のワークフローを含めることができます。これは、複数の関数を含めることができる **[関数アプリ]** リソースの種類に似ています。
+Visual Studio Code でまず、Azure Logic Apps (プレビュー) 拡張機能を使用して、開発環境で "*ローカルに*" ロジック アプリのワークフローをビルドして実行するプロジェクトを作成できます。 また、最初に [Azure portal で新しい **Logic App (プレビュー)** リソースを作成する](create-stateful-stateless-workflows-azure-portal.md)こともできますが、どちらの方法でも、同じ種類のホスティング環境でロジック アプリをデプロイして実行することができます。
 
-一方、Visual Studio Code と Azure portal で作成して使用するために、元の **[ロジック アプリ]** リソースの種類もまだ存在しています。 ただし、元のリソースの種類のエクスペリエンスは、新しいリソースの種類とは別のものです。 現時点では、 **[ロジック アプリ]** と **[ロジック アプリ (プレビュー)]** の両方のリソースの種類が Visual Studio Code と Azure portal に同時に存在できます。 Azure サブスクリプションでデプロイされているすべてのロジック アプリを表示してアクセスできますが、それぞれのカテゴリとセクションで個別に表示されています。
+また、元のロジック アプリの種類を作成することもできます。 Visual Studio Code の開発エクスペリエンスは、元のロジック アプリの種類と新しいものでは異なりますが、Azure サブスクリプションには両方の種類を含めることができます。 Azure サブスクリプションでデプロイされているすべてのロジック アプリを表示してアクセスできますが、アプリはその独自のカテゴリとセクションにまとめられます。
 
-この記事では、[このパブリック プレビューの概要](#whats-new)を示し、 **[ロジック アプリ (プレビュー)]** リソースの種類に関するさまざまな側面と、Visual Studio Code を使用してこのリソースを作成する方法について説明します。
+この記事では、Azure Logic Apps (プレビュー) 拡張機能を使用し、だいたい次のようなタスクを実行することにより、Visual Studio Code でロジック アプリとワークフローを作成する方法について説明します。
 
-* [ステートフルおよびステートレス](#stateful-stateless)のロジック アプリの違い。
+* ロジック アプリとワークフロー用のプロジェクトを作成します。
 
-* [セットアップ要件](#prerequisites)を満たし、パブリック プレビュー拡張機能用に [Visual Studio Code を設定する](#set-up)方法。
+* トリガーとアクションを追加します。
 
-* [プロジェクトを作成し、ワークフロー テンプレートを選択して](#create-project)、新しい **[ロジック アプリ (プレビュー)]** ワークフローを作成する方法。
+* ローカル環境で実行、テスト、デバッグを行い、実行履歴を確認します。
 
-* Visual Studio Code で新しいロジック アプリをローカルに実行およびデバッグする方法。
+* Azure にデプロイします。必要に応じて、Application Insights を有効にします。
 
-* これらの新しいロジック アプリを Visual Studio Code から [Azure に](#publish-azure)直接発行する方法、または任意の場所で実行できる [Docker コンテナーに](#deploy-docker)発行する方法。 Docker の詳細については、「[Docker とは](/dotnet/architecture/microservices/container-docker-introduction/docker-defined)」を参照してください。
+* Visual Studio Code と Azure portal で、デプロイされたロジック アプリを管理します。
 
-<a name="whats-new"></a>
+* ステートレス ワークフローの実行履歴を有効にします。
 
-## <a name="whats-in-this-public-preview"></a>このパブリック プレビューの内容
+* デプロイの後で、Application Insights を有効にするか開きます。
 
-Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のように Visual Studio Code のローカル開発環境に Logic Apps の現在の機能および追加機能が多数提供されます。
-
-* サービスとしてのソフトウェア (SaaS) およびサービスとしてのプラットフォーム (PaaS) のアプリとサービス用の [390 以上のコネクタ](/connectors/connector-reference/connector-reference-logicapps-connectors)に加えて、オンプレミス システム用のコネクタから、統合とオートメーション ワークフローのためのロジック アプリが構築されます。
-
-  * Azure Service Bus、Azure Event Hubs、SQL Server などの一部のマネージド コネクタは、組み込みのネイティブ トリガーや HTTP アクションなどのアクションと同様に動作します。
-
-  * Azure Logic Apps サービスがクラウド接続のランタイム エンドポイントに要求を送信するために使用できる Shared Access Signature (SAS) 接続文字列を生成するため、どこからでも実行できるロジック アプリを作成してデプロイします。 Logic Apps サービスでは、Azure にデプロイするときにこれらの値を Azure Key Vault に簡単に格納できるように、これらの接続文字列が他のアプリケーション設定と共に保存されます。
-
-    > [!NOTE]
-    > 既定では、**ロジック アプリ (プレビュー)** リソースには、実行時に接続を認証するために自動的に有効にされる [システム割り当てマネージド ID](../logic-apps/create-managed-service-identity.md) があります。 この ID は、接続の作成時に使用する認証資格情報または接続文字列とは異なります。 この ID を無効にした場合、接続は実行時に機能しません。
-
-* メモリ内でのみ実行されるステートレスなロジック アプリを作成します。これにより、実行履歴やアクション間のデータが外部ストレージに保持されないため、処理が速くなり、応答が速く、スループットが向上し、実行にかかるコストも少なくなります。 必要に応じて、デバッグを容易にするために実行履歴を有効にすることができます。 詳細については、「[ステートフルおよびステートレスのロジック アプリ](#stateful-stateless)」を参照してください。
-
-* Visual Studio Code 開発環境でローカルにロジック アプリを実行してデバッグします。
-
-* ロジック アプリを Visual Studio Code から [Azure App Service](../app-service/environment/intro.md) や [Docker コンテナー](/dotnet/core/docker/introduction)などのさまざまなホスティング環境に直接発行し、デプロイします。
+* どこでも実行できる Docker コンテナーにデプロイします。
 
 > [!NOTE]
-> 現在の既知の問題の詳細については、プレビュー拡張機能の[既知の問題に関する GitHub ページ](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)を参照してください。
-
-<a name="stateful-stateless"></a>
-
-## <a name="stateful-versus-stateless-logic-apps"></a>ステートフルおよびステートレスのロジック アプリ
-
-* *ステートレス*
-
-  前のイベントのデータを保持、確認、または参照する必要がある場合は、ステートフルなロジック アプリを作成します。 これらのロジック アプリでは、各アクションの入出力とワークフローの状態が外部ストレージに保持されます。これにより、各実行が完了した後に実行の詳細と履歴を確認できます。 ステートフルなロジック アプリは、サービス停止が発生したときに高い回復性を実現します。 サービスとシステムを復元した後に、中断されたロジック アプリの実行を保存済みの状態から再構築し、ロジック アプリを再実行して完了することができます。 ステートフルなワークフローは、最大 1 年間実行を継続できます。
-
-* *ステートレス*
-
-  後で確認できるように、外部ストレージに前のイベントのデータを保存、確認、または参照する必要がない場合は、ステートレスなロジック アプリを作成します。 これらのロジック アプリは、この情報を外部ストレージに転送するのではなく、各アクションとそのワークフローの状態の入出力をメモリ内でのみ保持します。 その結果、ステートレスなロジック アプリでは実行の詳細と履歴が外部ストレージに保持されないため、通常は 5 分未満に実行時間が短縮され、応答時間が短縮され、スループットが向上し、実行コストが削減されます。 ただし、サービス停止が発生した場合、中断された実行は自動的には復元されないため、呼び出し元は中断された実行を手動で再送信する必要があります。 これらのロジック アプリは同期的にのみ実行でき、デバッグを容易にするために[実行履歴](#run-history)を有効にできますが、パフォーマンスに影響があります。
-
-  ステートレスなワークフローでは、現在、トリガーではなく Azure にデプロイされている [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)に対する *アクション* のみがサポートされています。 ワークフローを開始するには、Logic Apps ランタイムでネイティブに実行できる[組み込みの Request トリガー、Event Hubs トリガー、または Service Bus トリガー](../connectors/apis-list.md#built-ins)を選択します。 サポートされていないトリガー、アクション、コネクタの詳細については、[サポートされていないまたは利用不可の機能](#unsupported)に関するセクションを参照してください。
-
-ステートフルなロジック アプリとステートレスなロジック アプリの間で入れ子になったロジック アプリの動作の違いについては、「[ステートフルおよびステートレスなロジック アプリの入れ子になった動作の違い](#nested-behavior)」を参照してください。
-
-<a name="pricing-model"></a>
-
-## <a name="pricing-model"></a>価格モデル
-
-新しい **[ロジック アプリ (プレビュー)]** リソースの種類をデプロイすると、ホスティング プランを選択するように求められます。具体的には、価格モデルとして使用するために、[App Service プランまたは Premium プラン](../azure-functions/functions-scale.md)を選択する必要があります。 App Service プランを選択した場合は、[[価格レベル]](../app-service/overview-hosting-plans.md) も選択するように求められます。 パブリック プレビュー期間中は、App Service でロジック アプリを実行しても、選択したプランの他に "*追加*" 料金は発生しません。
-
-ステートフルなロジック アプリは[外部ストレージ](../azure-functions/functions-scale.md#storage-account-requirements)を使用するため、Azure Storage の価格モデルは、Azure Logic Apps ランタイムが実行するストレージ トランザクションに適用されます。 たとえば、キューはスケジュール設定に使用され、テーブルと BLOB はワークフローの状態の格納に使用されます。
-
-この新しいリソースの種類に適用される価格モデルの詳細については、次のトピックを参照してください。
-
-* [Azure Functions のスケールとホスティング](../azure-functions/functions-scale.md)
-* [Azure App Service でスケールアップする](../app-service/manage-scale-up.md)
-* [Azure Functions の価格の詳細](https://azure.microsoft.com/pricing/details/functions/)
-* [App Service の価格の詳細](https://azure.microsoft.com/pricing/details/app-service/windows/)
-* [Azure Storage の価格の詳細](https://azure.microsoft.com/pricing/details/storage/)
-
-<a name="unsupported"></a>
-
-## <a name="unavailable-or-unsupported-capabilities"></a>利用不可またはサポートされていない機能
-
-このパブリック プレビューでは、次の機能は使用できないか、サポートされていません。
-
-* 現時点では、新しい **ロジック アプリ (プレビュー)** リソースの作成は macOS では使用できません。
-
-* まだ、すべての Azure リージョンではサポートされていません。 現在利用可能なリージョンについては、[リージョンの一覧](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions)を確認してください。
-
-* ワークフローを開始するには、Logic Apps ランタイムでネイティブに実行できる[組み込みの Request トリガー、HTTP トリガー、Event Hubs トリガー、または Service Bus トリガー](../connectors/apis-list.md)を使用します。 現時点では、[エンタープライズ コネクタ](../connectors/apis-list.md#enterprise-connectors)、[オンプレミス データ ゲートウェイ トリガー](../connectors/apis-list.md#on-premises-connectors)、Webhook ベースのトリガー、スライディング ウィンドウ トリガー、[カスタム コネクタ](../connectors/apis-list.md#custom-apis-and-connectors)、統合アカウント、それらの成果物、[それらのコネクタ](../connectors/apis-list.md#integration-account-connectors)は、このプレビューではサポートされていません。 "Azure 関数呼び出し" 機能は使用できないため、ここでは HTTP "*アクション*" を使用して、Azure 関数に対する要求 URL を呼び出します。
-
-  以前に指定されたトリガーを除き、"*ステートフル* " ワークフローには、Azure にデプロイされている [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)用のトリガーとアクションと、Logic Apps ランタイムでネイティブに実行される組み込みのトリガーとアクションの両方を使用できます。 ただし、*ステートレス* なワークフローでは、現在、トリガーではなくマネージド コネクタに対する *アクション* のみがサポートされています。 ステートレスなワークフローにおいて Azure のコネクタを有効にすることができますが、デザイナーには選択できるマネージド コネクタ トリガーは表示されません。
-
-* 新しい **ロジック アプリ (プレビュー)** リソースの種類をデプロイできるのは、[Azure の Premium または App Service ホスティング プラン](#publish-azure)または [Docker コンテナー](#deploy-docker)に対してだけであり、[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) にはできません。 このリソースの種類のデプロイについては、**従量課金** ホスティング プランはサポートされておらず、使用できません。
+> 現在の既知の問題の詳細については、[GitHub の Logic Apps パブリック プレビューでの既知の問題に関するページ](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -122,16 +59,34 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
 
   Outlook.com や [Gmail](../connectors/connectors-google-data-security-privacy-policy.md) など、[Azure Logic Apps でサポートされている別の電子メール コネクタ](/connectors/)を使用する場合でもこの例に従うことができ、全体的な手順は同じです。ただし、ユーザー インターフェイスとオプションは一部異なる場合があります。 たとえば、Outlook.com コネクタを使用する場合は、代わりに個人用 Microsoft アカウントを使用してサインインします。
 
+<a name="storage-requirements"></a>
+
 ### <a name="storage-requirements"></a>ストレージの要件
+
+#### <a name="windows-and-linux"></a>Windows と Linux
 
 1. [Azure ストレージ エミュレーター 5.10](https://go.microsoft.com/fwlink/p/?linkid=717179) をダウンロードしてインストールします。
 
 1. エミュレーターを実行するには、無料の [SQL Server 2019 Express Edition](https://go.microsoft.com/fwlink/p/?linkid=866658) など、ローカルの SQL DB をインストールする必要があります。 詳細については、「[開発とテストに Azure ストレージ エミュレーターを使用する](../storage/common/storage-use-emulator.md)」を参照してください。
 
    > [!IMPORTANT]
-   > ロジック アプリ デザイナーを開いてロジック アプリのワークフローを作成する前に、必ずエミュレーターを起動してください。 それ以外の場合は、`Workflow design time could not be started` というメッセージが表示されます。
+   > デザイナーを開いてワークフローを作成する前に、エミュレーターを開始しておきます。 それ以外の場合は、`Workflow design time could not be started` というメッセージが表示されます。
    >
    > ![実行中の Azure ストレージ エミュレーターを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/start-storage-emulator.png)
+
+#### <a name="macos"></a>macOS
+
+1. [Azure portal](https://portal.azure.com) にサインインし、[Azure ストレージ アカウントを作成](../storage/common/storage-account-create.md?tabs=azure-portal)します。これは、[Azure Functions の前提条件](../azure-functions/storage-considerations.md)です。
+
+1. [ストレージ アカウントの接続文字列を見つけてコピーします](../storage/common/storage-account-keys-manage.md?tabs=azure-portal#view-account-access-keys)。次はその例です。
+
+   `DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct;AccountKey=<access-key>;EndpointSuffix=core.windows.net`
+
+   ![Azure portal およびコピーされたストレージ アカウント アクセス キーと接続文字列が示されているスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/find-storage-account-connection-string.png)
+
+1. 後で Visual Studio Code でロジック アプリを作成するときに使用するプロジェクトの **local.settings.json** ファイルに文字列を追加できるように、文字列を安全な場所に保存します。
+
+後からロジック アプリでワークフローのデザイナーを開こうとすると、`Workflow design time could not be started` というメッセージが表示されます。 このメッセージが表示された後、プロジェクト内の 2 つの **local.settings.json** ファイルにストレージ アカウントの接続文字列を追加し、デザイナーを再度開く必要があります。
 
 ### <a name="tools"></a>ツール
 
@@ -141,31 +96,19 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
 
   * [Visual Studio Code 用の C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。これにより、F5 機能でロジック アプリを実行できるようになります。
 
-  * [Azure Functions Core Tools](../azure-functions/functions-run-local.md) (バージョン [3.0.2931](https://github.com/Azure/azure-functions-core-tools/releases/tag/3.0.2931) または [2.7.2936](https://github.com/Azure/azure-functions-core-tools/releases/tag/2.7.2936))。Microsoft インストーラー (MSI) で提供されます。 これらのツールには、Visual Studio Code で実行される Azure Functions ランタイムを動かす同じランタイムのバージョンが含まれています。
+  * Microsoft インストーラー (MSI) を使用して、[Azure Functions Core Tools 3.0.2931 以降](https://github.com/Azure/azure-functions-core-tools/releases/tag/3.0.2931)。
+
+    これらのツールには、Azure Functions ランタイムで利用されるものと同じランタイムのバージョンが含まれており、それはプレビュー拡張機能によって Visual Studio Code で使用されます。
 
     > [!IMPORTANT]
     > これらのバージョンより古いバージョンをインストールしている場合は、最初にそのバージョンをアンインストールするか、ダウンロードしてインストールしたバージョンが PATH 環境変数で参照されていることを確認します。
-    >
-    > JavaScript コードを実行するために [**インライン コード** アクション](../logic-apps/logic-apps-add-run-inline-code.md)を使用する場合、このアクションではバージョン 2x がサポートされていないため、Azure Functions ランタイム バージョン 3x を使用する必要があります。 また、現在、このアクションは Linux オペレーティング システムではサポートされていません。
 
-  * [Visual Studio Code 用 Azure Logic Apps (プレビュー) 拡張機能](https://go.microsoft.com/fwlink/p/?linkid=2143167)。 このパブリック プレビュー拡張機能を使用すると、ステートフルおよびステートレスなロジック アプリを作成し、Visual Studio Code でローカルに実行することができます。
+  * [Visual Studio Code 用 Azure Logic Apps (プレビュー) 拡張機能](https://go.microsoft.com/fwlink/p/?linkid=2143167)。 この拡張機能により、ロジック アプリを作成するための機能が提供されます。それを使用して、Visual Studio Code でローカルに実行されるステートフルとステートレスのワークフローを作成し、それらのロジック アプリを Azure または Docker コンテナーに直接デプロイできます。
 
-    現時点では、元の **Azure Logic Apps** 拡張機能と新しい **Azure Logic Apps (プレビュー)** 拡張機能の両方を Visual Studio Code に同時にインストールすることができます。 Visual Studio Code ツールバーの Azure アイコンを選択すると、Azure にデプロイされているすべてのロジック アプリを表示できます。ただし、各リソースの種類は、**Logic Apps** および **Azure Logic Apps (プレビュー)** の拡張機能セクションに個別に表示されます。
+    現時点では、元の Azure Logic Apps 拡張機能とパブリック プレビュー拡張機能の両方を、Visual Studio Code に同時にインストールすることができます。 開発エクスペリエンスは拡張機能によっていくつか異なる点がありますが、Azure サブスクリプションには拡張機能を使用して作成する両方のロジック アプリの種類を含めることができます。 Visual Studio Code には、Azure サブスクリプションでデプロイされたすべてのロジック アプリが表示されますが、拡張機能名、**Logic Apps**、**Azure Logic Apps (プレビュー)** ごとに異なるセクションにまとめられています。
 
     > [!IMPORTANT]
-    > **Azure Logic Apps (プライベート プレビュー)** 拡張機能を使用してロジック アプリを作成した場合、これらのロジック アプリはパブリック プレビュー拡張機能では動作しません。 ただし、プライベート プレビュー拡張機能をアンインストールし、必要なクリーンアップを実行し、パブリック プレビュー拡張機能をインストールすることによって、これらのロジック アプリを移行できます。 その後、Visual Studio Code で新しいプロジェクトを作成し、以前に作成したロジック アプリの **workflow.definition** ファイルを新しいプロジェクトにコピーできます。
-    >
-    > そのため、パブリック プレビュー拡張機能をインストールする前に、以前のバージョンをすべてアンインストールしてから、次のビルド成果物を削除してください。
-    >
-    > * **Microsoft.Azure.Functions.ExtensionBundle.Workflows** フォルダー。このフォルダーには以前の拡張機能バンドルが含まれ、次のいずれかのパスに配置されています。
-    >
-    >   * `C:\Users\{userName}\AppData\Local\Temp\Functions\ExtensionBundles`
-    >
-    >   * `C:\Users\{userName}.azure-functions-core-tools\Functions\ExtensionBundles`
-    >
-    > * **microsoft.azure.workflows.webjobs.extension** フォルダー。このフォルダーはプライベート プレビュー拡張機能の [NuGet](/nuget/what-is-nuget) キャッシュであり、次のパスに配置されています。
-    >
-    >   `C:\Users\{userName}\.nuget\packages`
+    > 以前のプライベート プレビューの拡張機能でロジック アプリを作成した場合、これらのロジック アプリはパブリック プレビューの拡張機能では動作しません。 ただし、プライベート プレビューの拡張機能をアンインストールし、関連付けられているファイルを削除して、パブリック プレビューの拡張機能をインストールした後、これらのロジック アプリを移行することができます。 その後、Visual Studio Code で新しいプロジェクトを作成し、前に作成したロジック アプリの **workflow.definition** ファイルを新しいプロジェクトにコピーできます。 詳細については、「[プライベート プレビューの拡張機能から移行する](#migrate-private-preview)」をご確認ください。
 
     **Azure Logic Apps (プレビュー)** 拡張機能をインストールするには、次の手順に従います。
 
@@ -173,13 +116,41 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
 
     1. 拡張機能の検索ボックスに、「`azure logic apps preview`」と入力します。 結果リストから、 **[Azure Logic Apps (プレビュー)]** **>** **[インストール]** の順に選択します。
 
-       インストールが完了すると、パブリック プレビュー拡張機能が **[拡張機能:インストール済み]** リストに表示されます。
+       インストールが完了すると、プレビューの拡張機能は **[拡張機能:インストール済み]** リストに表示されます。
 
        ![Visual Studio Code にインストールされている拡張機能の一覧で下線が付いた "Azure Logic Apps (プレビュー)" 拡張機能を示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/azure-logic-apps-extension-installed.png)
 
+* [組み込みの HTTP Webhook トリガー](../connectors/connectors-native-webhook.md)など、Webhook ベースのトリガーとアクションを Visual Studio Code でローカルに実行するには、[コールバック URL への転送を設定する](#webhook-setup)必要があります。
+
 * この記事で作成したロジック アプリの例をテストするには、Request トリガーに呼び出しを送信できるツールが必要です。これは、ロジック アプリの例の最初の手順です。 このようなツールがない場合は、[Postman](https://www.postman.com/downloads/) をダウンロードしてインストールし、使用することができます。
 
-* 診断ログとトレース機能を簡単にするために、[Application Insights](../azure-monitor/app/app-insights-overview.md) リソースを追加して使用することができます。 このリソースは、ロジック アプリのデプロイ中に作成するか、ロジック アプリをデプロイした後に Azure portal で作成できます。
+* [Application Insights](../azure-monitor/app/app-insights-overview.md) の使用をサポートする設定で、ロジックアプリを作成してデプロイする場合は、必要に応じて、ロジック アプリの診断ログとトレースを有効にすることができます。 ロジック アプリを Visual Studio Code からデプロイするとき、またはデプロイした後で、それを行うことができます。 Application Insights インスタンスを用意する必要がありますが、このリソースは、[事前に](../azure-monitor/app/create-workspace-resource.md)、ロジック アプリをデプロイするときに、またはデプロイ後に、作成することができます。
+
+<a name="migrate-private-preview"></a>
+
+## <a name="migrate-from-private-preview-extension"></a>プライベート プレビューの拡張機能から移行する
+
+**Azure Logic Apps (プライベート プレビュー)** 拡張機能を使用して作成したロジック アプリは、パブリック プレビューの拡張機能では動作しません。 ただし、以下の手順のようにして、これらのロジック アプリを新しい Visual Studio Code プロジェクトに移行できます。
+
+1. プライベート プレビューの拡張機能をアンインストールします。
+
+1. 次の場所にある関連する拡張バンドルと NuGet パッケージのフォルダーを削除します。
+
+   * **Microsoft.Azure.Functions.ExtensionBundle.Workflows** フォルダー。このフォルダーには以前の拡張機能バンドルが含まれ、次のいずれかのパスに配置されています。
+
+     * `C:\Users\{userName}\AppData\Local\Temp\Functions\ExtensionBundles`
+
+     * `C:\Users\{userName}.azure-functions-core-tools\Functions\ExtensionBundles`
+
+   * **microsoft.azure.workflows.webjobs.extension** フォルダー。これはプライベート プレビューの拡張機能用の [NuGet](/nuget/what-is-nuget) キャッシュであり、次のパスにあります。
+
+     `C:\Users\{userName}\.nuget\packages`
+
+1. **Azure Logic Apps (プレビュー)** 拡張機能をインストールします。
+
+1. Visual Studio Code で新しいプロジェクトを作成します。
+
+1. 前に作成したロジック アプリの **workflow.definition** ファイルを、新しいプロジェクトにコピーします。
 
 <a name="set-up"></a>
 
@@ -187,7 +158,7 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
 
 1. すべての拡張機能が正しくインストールされていることを確認するには、Visual Studio Code を再読み込みまたは再起動します。
 
-1. パブリック プレビュー拡張機能が最新の更新プログラムを取得できるように、Visual Studio Code によって拡張機能の更新プログラムが自動的に検出され、インストールされることを確認します。
+1. パブリック プレビューの拡張機能で最新の更新プログラムを取得できるように、Visual Studio Code によって拡張機能の更新プログラムが自動的に検出されてインストールされるようにするか、そうなっていることを確認します。 このようにしないと、古いバージョンのアンインストールと最新バージョンのインストールを、手動で行う必要があります。
 
    この設定を確認するには、次の手順を実行します。
 
@@ -197,7 +168,7 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
 
    1. **[更新プログラムの自動チェック]** と **[自動更新]** が選択されていることを確認します。
 
-1. 次の **Azure Logic Apps (プレビュー)** 拡張機能の設定が Visual Studio Code で有効にされていることを確認します。
+1. これらの拡張機能の設定を正しく選択するか、そうなっていることを確認します。
 
    * **Azure Logic Apps V2:パネル モード**
    * **Azure Logic Apps V2:プロジェクト ランタイム**
@@ -206,10 +177,14 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
 
    1. **[ユーザー]** タブで、 **>** **[拡張機能]** **>** **[Azure Logic Apps (プレビュー)]** の順に選択します。
 
-   1. **[Azure Logic Apps V2:パネル モード]** で、 **[パネル モードを有効にする]** が選択されていることを確認します。 **[Azure Logic Apps V2:プロジェクト ランタイム]** で、前にインストールした [Azure Functions Core Tools のバージョン](#prerequisites)に基づいて、バージョンを **~3** または **~2** に設定します。
+   1. これらの拡張機能の設定を確認します。
 
-      > [!IMPORTANT]
-      > JavaScript コードを実行するために [**インライン コード** アクション](../logic-apps/logic-apps-add-run-inline-code.md)を使用する場合、このアクションではバージョン 2 がサポートされていないため、プロジェクト ランタイム バージョン 3 を使用する必要があります。 また、現在、このアクションは Linux オペレーティング システムではサポートされていません。
+      * **[Azure Logic Apps V2:パネル モード]** で、 **[パネル モードを有効にする]** が選択されていることを確認します。
+
+      * **[Azure Logic Apps V2:Project Runtime]\(Azure Logic Apps V2: プロジェクト ランタイム\)** で、バージョンが **3 以下** に設定されていることを確認します。
+
+        > [!IMPORTANT]
+        > macOS と Linux では現在使用できない [インライン コード操作アクション](../logic-apps/logic-apps-add-run-inline-code.md)を使用するには、**プロジェクト ランタイム** の設定をバージョン 3 にする必要があります。
 
       !["Azure Logic Apps (プレビュー)" 拡張機能の Visual Studio Code 設定を示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/azure-logic-apps-preview-settings.png)
 
@@ -217,19 +192,19 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
 
 ## <a name="connect-to-your-azure-account"></a>Azure アカウントに接続する
 
-1. Visual Studio Code ツール バーで、Azure アイコンを選択します。
+1. Visual Studio Code のアクティビティ バーで、Azure アイコンを選択します。
 
-   ![Visual Studio Code ツールバーと選択された Azure アイコンを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-azure-icon.png)
+   ![Visual Studio Code のアクティビティ バーと選択された Azure アイコンを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-azure-icon.png)
 
 1. Azure ウィンドウの **[Azure:Logic Apps (プレビュー)]** で、 **[Azure へのサインイン]** を選択します。 Visual Studio Code 認証ページが表示されたら、Azure アカウントでサインインします。
 
    ![Azure ウィンドウと Azure にサインインするために選択されたリンクを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/sign-in-azure-subscription.png)
 
-   サインインすると、Azure ウィンドウに Azure アカウントのサブスクリプションが表示されます。 パブリックにリリースされた Logic Apps 拡張機能がある場合は、プレビュー拡張機能の **[ロジック アプリ (プレビュー)]** セクションではなく、リリースされた拡張機能の **[ロジック アプリ]** セクションにある元の拡張機能を使用して、作成した元の Logic Apps リソースを見つけることができます。
+   サインインすると、Azure ウィンドウに Azure アカウントのサブスクリプションが表示されます。 パブリックにリリースされた拡張機能もある場合は、その拡張機能を使用して作成したロジック アプリを、 **[ロジック アプリ (プレビュー)]** セクションではなく、 **[Logic Apps]** セクションで見つけることができます。
    
    期待されるサブスクリプションが表示されない場合、または特定のサブスクリプションのみが表示されるようにする場合は、次の手順を実行します。
 
-   1. サブスクリプションの一覧で、 **[サブスクリプションの選択]** ボタン (フィルター アイコン) が表示されるまで、最初のサブスクリプションの横にポインターを移動します。 フィルター アイコンを選択します。
+   1. サブスクリプションの一覧で、最初のサブスクリプションの横にあるポインターを、 **[サブスクリプションの選択]** ボタン (フィルター アイコン) が表示されるまで移動します。 フィルター アイコンを選択します。
 
       ![Azure ウィンドウと選択されたフィルター アイコンを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/filter-subscription-list.png)
 
@@ -241,7 +216,7 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
 
 ## <a name="create-a-local-project"></a>ローカル プロジェクトを作成する
 
-ロジック アプリを作成する前に、Visual Studio Code からロジック アプリを管理およびデプロイできるように、ローカル プロジェクトを作成します。 基になるプロジェクトは、Azure Functions プロジェクト (関数アプリ プロジェクトとも呼ばれます) に似ています。 ただし、これらの種類のプロジェクトは相互に分離されているので、ロジック アプリのワークフローと関数が同じプロジェクトに存在することはできません。
+ロジック アプリを作成する前に、Visual Studio Code からロジック アプリを管理およびデプロイできるように、ローカル プロジェクトを作成します。 基になるプロジェクトは、Azure Functions プロジェクト (関数アプリ プロジェクトとも呼ばれます) に似ています。 ただし、これらの種類のプロジェクトは相互に分離されているので、ロジック アプリと関数アプリを同じプロジェクトで使用することはできません。
 
 1. コンピューター上に、Visual Studio Code で後で作成するプロジェクトに使用する "*空の*" ローカル フォルダーを作成します。
 
@@ -261,27 +236,27 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
 
    ![[ステートフル ワークフロー] が選択されているワークフロー テンプレートの一覧を示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/select-stateful-stateless-workflow.png)
 
-1. ロジック アプリ ワークフローの名前を指定し、Enter キーを押します。 この例では、`example-workflow` という名前を使用しています。
+1. ワークフローの名前を指定して、Enter キーを押します。 この例では、`Fabrikam-Stateful-Workflow` という名前を使用しています。
 
-   ![[新しいステートフル ワークフローの作成 (3/4)] ボックスとワークフロー名「example-workflow」を示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/name-your-workflow.png)
+   ![[Create new Stateful Workflow (3/3)]\(新しいステートフル ワークフローの作成 (3/3)\) ボックスとワークフロー名 "Fabrikam-Stateful-Workflow" が示されているスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/name-your-workflow.png)
 
-1. 次に表示される一覧で、 **[現在のウィンドウで開く]** を選択します。
+   Visual Studio Code によるプロジェクトの作成が完了し、ワークフローの **workflow.json** ファイルが開かれます。
 
-   ![[現在のウィンドウで開く] が選択されている一覧を示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/select-project-location.png)
+1. Visual Studio のツール バーで、[エクスプローラー] ウィンドウを開きます (まだ開いていない場合)。
 
-   Visual Studio Code がリロードされ、エクスプローラー ウィンドウが開き、プロジェクトが表示されます。プロジェクトには、自動的に生成されたプロジェクト ファイルが含まれています。 たとえば、プロジェクトには、ロジック アプリ ワークフローの名前を示すフォルダーがあります。 このフォルダーにある **workflow.json** ファイルには、ロジック アプリ ワークフローの基になる JSON 定義が含まれています。
+   [エクスプローラー] ペインにプロジェクトが表示されます。そこには、自動的に生成されたプロジェクト ファイルが含まれています。 たとえば、プロジェクトには、ワークフローの名前を示すフォルダーがあります。 このフォルダーにある **workflow.json** ファイルには、ワークフローの基になる JSON 定義が含まれています。
 
-   ![エクスプローラー ウィンドウにプロジェクト フォルダー、ワークフロー フォルダー、および "workflow. json" ファイルが表示されているスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/local-project-created.png)
+   ![プロジェクト フォルダー、ワークフロー フォルダー、"workflow. json" ファイルが表示されている [エクスプローラー] ペインのスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/local-project-created.png)
 
 <a name="open-workflow-definition-designer"></a>
 
-## <a name="open-the-workflow-definition-file-in-logic-app-designer"></a>ロジック アプリ デザイナーでワークフロー定義ファイルを開く
+## <a name="open-the-workflow-definition-file-in-the-designer"></a>デザイナーでワークフロー定義ファイルを開く
 
-1. 次のコマンドを実行して、コンピューターにインストールされているモジュールのバージョンを確認します。
+1. 次のコマンドを実行して、コンピューターにインストールされているバージョンを確認します。
 
    `..\Users\{yourUserName}\dotnet --list-sdks`
 
-   .NET Core SDK 5.x バージョンの場合は、ロジック アプリの基になるワークフロー定義をデザイナーで開くことができないおそれがあります。 このバージョンをアンインストールするのではなく、プロジェクトのルートの場所に、3.1.201 より後の存在している .NET Core ランタイム 3.x バージョンを参照する **global.json** ファイルを作成します。次に例を示します。
+   .NET Core SDK 5.x バージョンの場合は、ロジック アプリの基になるワークフロー定義をデザイナーで開くことができないおそれがあります。 このバージョンをアンインストールするのではなく、プロジェクトのルート レベルで、存在している 3.1.201 より後の .NET Core ランタイム 3.x バージョンを参照する **global.json** ファイルを作成します。次に例を示します。
 
    ```json
    {
@@ -292,39 +267,49 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
    }
    ```
 
-   Visual Studio Code 内からプロジェクトのルートの場所にその **global.json** ファイルを明示的に追加します。 そうしないと、デザイナーは開きません。
+   Visual Studio Code 内からプロジェクトのルート レベルに **global.json** ファイルを明示的に追加します。 そうしないと、デザイナーは開きません。
 
-1. Visual Studio Code が Windows または Linux で実行されている場合は、Azure ストレージ エミュレーターが実行されていることを確認します。 詳細については、「[前提条件](#prerequisites)」を参照してください。
+1. Windows または Linux で Visual Studio Code を実行している場合は、Azure Storage エミュレーターが実行されていることを確認します。 詳細については、「[前提条件](#prerequisites)」を参照してください。 macOS で Visual Studio Code を実行している場合は、次のステップに進みます。
 
 1. ワークフローのプロジェクト フォルダーを展開します。 **workflow.json** ファイルのショートカット メニューを開き、 **[デザイナーで開く]** を選択します。
 
    ![エクスプローラー ウィンドウが表示され、workflow.json ファイルのショートカット ウィンドウで [デザイナーで開く] が選択されたスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/open-definition-file-in-designer.png)
 
-   `Workflow design time could not be started` というエラー メッセージが表示された場合は、Azure ストレージ エミュレーターが実行されていることを確認します。 それ以外の場合は、次のトラブルシューティングの推奨事項を試してください。
+   `Workflow design time could not be started` というエラー メッセージが表示される場合は、次の条件を確認します。
 
-   Visual Studio Code で、プレビュー拡張機能からの出力を確認します。
+   * **Windows または Linux**: Azure Storage エミュレーターが実行されていることを確認します。 そうでない場合は、「[問題とエラーのトラブルシューティング](#troubleshooting)」を参照してください。
 
-   1. **[表示]** メニューの **[出力]** を選択します。
+   * **macOS**:次の解決策を試し、うまくいかない場合は「[問題とエラーのトラブルシューティング](#troubleshooting)」を参照してください。
 
-   1. **[出力]** タイトル バーの一覧から **[Azure Logic Apps]** を選択して、プレビュー拡張機能の出力を表示できるようにします。たとえば、次のようになります。
+     1. プロジェクトで **local.settings.json** ファイルを開きます。プロジェクトのルート フォルダーおよび **workflow-designtime** フォルダーにあります。
 
-      ![[Azure Logic Apps] が選択されている Visual Studio Code の [出力] ウィンドウを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/check-outout-window-azure-logic-apps.png)
+        ![[エクスプローラー] ペインとプロジェクトの "local.settings.json" ファイルが示されているスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/local-settings-json-files.png)
 
-   1. 出力を確認し、次のエラー メッセージが表示されているかどうかを調べます。
+     1. 各ファイルで、`AzureWebJobsStorage` プロパティを見つけます。次に例を示します。
 
-      ```text
-      A host error has occurred during startup operation '{operationID}'.
-      System.Private.CoreLib: The file 'C:\Users\{userName}\AppData\Local\Temp\Functions\
-      ExtensionBundles\Microsoft.Azure.Functions.ExtensionBundle.Workflows\1.1.1\bin\
-      DurableTask.AzureStorage.dll' already exists.
-      Value cannot be null. (Parameter 'provider')
-      Application is shutting down...
-      Initialization cancellation requested by runtime.
-      Stopping host...
-      Host shutdown completed.
-      ```
+        ```json
+        {
+           "IsEncrypted": false,
+           "Values": {
+              "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+              "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+            }
+        }
+        ```
 
-      このエラーは、以前にデザイナーを開こうとしたときに、プロジェクトを廃止または削除した場合に発生する可能性があります。 このエラーを解決するには、 **...\Users\\{your-username}\AppData\Local\Temp\Functions\ExtensionBundles** の位置にある **ExtensionBundles** フォルダーを削除し、デザイナーで **workflow.json** ファイルをもう一度開いてみてください。
+      1. `AzureWebJobsStorage` プロパティの値を、先にストレージ アカウントから保存した接続文字列に置き換えます。次に例を示します。
+
+         ```json
+         {
+            "IsEncrypted": false,
+            "Values": {
+               "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct;AccountKey=<access-key>;EndpointSuffix=core.windows.net",
+               "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+            }
+         }
+         ```
+
+      1. 変更を保存し、デザイナーで **workflow.json** ファイルを再度開いてみます。
 
 1. **[Azure でコネクタを有効にする]** の一覧で、 **[Azure のコネクタを使用する]** を選択します。これは、Azure サービスのコネクタだけでなく、Azure portal で利用可能かつデプロイされているすべてのマネージド コネクタに適用されます。
 
@@ -333,29 +318,30 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
    > [!NOTE]
    > ステートレスなワークフローでは、現在、トリガーではなく Azure にデプロイされている [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)に対する *アクション* のみがサポートされています。 ステートレスなワークフローにおいて Azure のコネクタを有効にすることもできますが、デザイナーには選択できるマネージド コネクタ トリガーは表示されません。
 
+1. **[サブスクリプションの選択]** の一覧で、ロジック アプリ プロジェクトに使用する Azure サブスクリプションを選択します。
+
+   ![[サブスクリプションの選択] ボックスと選択されたサブスクリプションが表示されている [エクスプローラー] ペインを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/select-azure-subscription.png)
+
 1. リソース グループの一覧で、 **[新しいリソース グループの作成]** を選択します。
 
-   ![リソース グループの一覧が表示され、[新しいリソース グループの作成] が選択されたエクスプローラー ウィンドウを示すスクリーンショット](./media/create-stateful-stateless-workflows-visual-studio-code/create-select-resource-group.png)
+   ![リソース グループの一覧と選択された [新しいリソース グループの作成] が表示されている [エクスプローラー] ペインを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/create-select-resource-group.png)
 
-1. リソース グループの名前を指定し、Enter キーを押します。 この例では、`example-logic-app-preview-rg` を使用します。
+1. リソース グループの名前を指定し、Enter キーを押します。 この例では、`Fabrikam-Workflows-RG` を使用します。
 
    ![エクスプローラー ウィンドウとリソース グループ名のボックスを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/enter-name-for-resource-group.png)
 
-1. 場所の一覧で、リソース グループとリソースの作成に使用する[サポートされている Azure リージョン](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions)を見つけて選択します。 この例では、 **[米国中西部]** を使用します。
-
-   > [!IMPORTANT]
-   > 現在はサポートされていないリージョンがありますが、リージョンを追加する更新作業が行われています。 サポートされていないリージョンを選択すると、接続の作成などで問題が発生するおそれがあります。 現在サポートされているリージョンについては、プレビュー拡張機能の[既知の問題に関する GitHub ページ](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions)をご確認ください。
+1. 場所の一覧で、リソース グループとリソースの作成に使用する Azure リージョンを見つけて選択します。 この例では、 **[米国中西部]** を使用します。
 
    ![エクスプローラー ウィンドウと場所の一覧が表示され、[米国中西部] が選択されているスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/select-azure-region.png)
 
-   この手順を実行すると、Visual Studio Code のロジック アプリ デザイナーが開きます。
+   このステップを実行すると、Visual Studio Code のワークフロー デザイナーが開きます。
 
    > [!NOTE]
    > Visual Studio Code でワークフロー デザイン時 API が開始されると、起動に数秒かかる場合があるというメッセージが表示されます。 このメッセージは無視することも **[OK]** を選択することもできます。
 
-   ロジック アプリ デザイナーが表示されると、 **[操作の選択]** プロンプトがデザイナーに表示され、既定で選択されます。これにより、 **[アクションの追加]** ウィンドウが表示されます。
+   デザイナーが表示された後、 **[操作を選択してください]** というプロンプトがデザイナーに表示されて既定で選択され、 **[アクションの追加]** ペインが表示されます。
 
-   ![ロジック アプリ デザイナーを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/workflow-app-designer.png)
+   ![ワークフロー デザイナーを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/workflow-app-designer.png)
 
 1. 次に、ワークフローに[トリガーとアクションを追加します](#add-trigger-actions)。
 
@@ -363,9 +349,9 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
 
 ## <a name="add-a-trigger-and-actions"></a>トリガーとアクションを追加する
 
-**workflow.json** ファイルのショートカット メニューからロジック アプリ デザイナーを開くと、 **[操作の選択]** プロンプトがデザイナーに表示され、既定で選択されます。 トリガーとアクションを追加して、ワークフローの作成を開始できるようになりました。
+デザイナーを開くと、 **[操作を選択してください]** というプロンプトがデザイナーに表示されて、既定で選択されます。 トリガーとアクションを追加して、ワークフローの作成を開始できるようになりました。
 
-この例のロジック アプリ ワークフローでは、次のトリガーとアクションを使用します。
+この例のワークフローでは、次のトリガーとアクションを使用します。
 
 * 組み込みの [Request トリガー](../connectors/connectors-native-reqres.md) **[HTTP 要求の受信時]** 。受信呼び出しまたは要求を受信し、他のサービスまたはロジック アプリが呼び出すことができるエンドポイントを作成します。
 
@@ -379,43 +365,32 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
 
 1. **[操作の選択]** 検索ボックスに「`when a http request`」と入力し、 **[HTTP 要求の受信時]** という名前の組み込みの Request トリガーを選択します。
 
-   ![ロジック アプリ デザイナーと、[HTTP 要求の受信時] トリガーが選択された [トリガーの追加] ウィンドウを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/add-request-trigger.png)
+   ![ワークフロー デザイナーと、[HTTP 要求の受信時] トリガーが選択された [トリガーの追加] ペインを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/add-request-trigger.png)
 
    トリガーがデザイナーに表示されると、トリガーの詳細ウィンドウが開き、トリガーのプロパティ、設定、およびその他のアクションが表示されます。
 
-   ![[HTTP 要求の受信時] トリガーが選択されたロジック アプリ デザイナーが表示され、トリガー詳細ウィンドウが開いたスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/request-trigger-added-to-designer.png)
+   ![[HTTP 要求の受信時] トリガーが選択されたワークフロー デザイナーが表示され、トリガー詳細ペインが開いたスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/request-trigger-added-to-designer.png)
 
    > [!TIP]
    > 詳細ウィンドウが表示されない場合は、デザイナーでトリガーが選択されていることを確認します。
 
-1. デザイナー上の項目を削除する必要がある場合は、次の手順を実行します。
-
-   1. デザイナーでアイテムを選択すると、アイテムの詳細ペインが右側に表示されます。
-
-   1. Visual Studio Code ウィンドウを広げて、右上隅のトリガーまたはアクション名の横に省略記号 **[...]** ボタンが表示されるようにします。 
-
-   1. 省略記号 **[...]** メニューを開き、 **[削除]** を選択します。 削除を確定するには、 **[OK]** を選択します。
-
-      ![詳細ウィンドウが開いてデザイナーに選択した項目が表示され、省略記号ボタンと [削除] オプションが選択されたスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/delete-item-from-designer.png)
+1. デザイナーから項目を削除する必要がある場合は、[デザイナーからの項目の削除に関するこちらの手順のようにします](#delete-from-designer)。
 
 ### <a name="add-the-office-365-outlook-action"></a>Office 365 Outlook アクションを追加する
 
 1. デザイナーで、追加したトリガーの下の **[新しいステップ]** を選択します。
 
-   デザイナーに **[操作の選択]** プロンプトが表示され、次のアクションを選択できるように **[アクションの追加]** ウィンドウが再び表示されます。
+   デザイナーに **[操作を選択してください]** というプロンプトが表示され、次のアクションを選択できるように **[アクションの追加]** ペインが再び表示されます。
 
 1. Azure にデプロイされているマネージド コネクタのアクションを見つけて選択できるように、 **[アクションの追加]** ウィンドウの **[操作の選択]** 検索ボックスで **[Azure]** を選択します。
 
    この例では、Office 365 Outlook アクション **[メールの送信 (V2)]** を選択して使用します。
 
-   ![ロジック アプリ デザイナーが表示され、[アクションの追加] ウィンドウで Office 365 Outlook の [メールの送信] アクションが選択されたスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/add-send-email-action.png)
+   ![ワークフロー デザイナーが表示され、[アクションの追加] ペインで Office 365 Outlook の [メールの送信] アクションが選択されたスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/add-send-email-action.png)
 
 1. アクションの詳細ウィンドウで **[サインイン]** を選択して、電子メール アカウントへの接続を作成できるようにします。
 
-   ![ロジック アプリ デザイナーと、[サインイン] が選択された [メールの送信 (V2)] ウィンドウを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-sign-in.png)
-
-   > [!NOTE]
-   > `Failed to create connection...` エラーが発生する場合は、ロジック アプリで現在サポートされていないリージョンを選択している可能性があります。 リージョンを追加する更新作業が進行中です。 それまで、現在サポートされているリージョンについては、プレビュー拡張機能の[既知の問題に関する GitHub ページ](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions)をご確認ください。
+   ![ワークフロー デザイナーと、[サインイン] が選択された [メールの送信 (V2)] ペインを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-sign-in.png)
 
 1. Visual Studio Code で電子メール アカウントへのアクセスに同意するかどうかを確認するメッセージが表示されたら、 **[開く]** を選択します。
 
@@ -429,20 +404,20 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
    > [!NOTE]
    > プロンプトを完了するまでの時間が長すぎると、認証プロセスがタイムアウトして失敗します。 この場合は、デザイナーに戻り、サインインし直して接続を作成します。
 
-1. Azure Logic Apps プレビュー拡張機能によって、電子メール アカウントへのアクセスに同意するように求められたら、 **[開く]** を選択します。 後続のプロンプトに従って、アクセスを許可します。
+1. Azure Logic Apps (プレビュー) 拡張機能でメール アカウントへのアクセスの同意を求められたら、 **[開く]** を選択します。 後続のプロンプトに従って、アクセスを許可します。
 
    ![アクセス許可を確認するプレビュー拡張機能のプロンプトを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/allow-preview-extension-open-uri.png)
 
    > [!TIP]
    > 今後プロンプトが表示されないようにするには、 **[この拡張機能を再度表示しません]** を選択します。
 
-   Visual Studio Code によって接続が作成された後、`The connection will be valid for {n} days only.` というメッセージが一部のコネクタで表示されます。この制限時間は、Visual Studio Code でロジックアプリを作成している期間にだけ適用されます。 デプロイ後は、自動的に有効にされる[システム割り当てマネージド ID](../logic-apps/create-managed-service-identity.md) を使用して実行時にロジック アプリを認証できるため、この制限は適用されなくなります。 このマネージド ID は、接続の作成時に使用する認証資格情報または接続文字列とは異なります。 このシステム割り当てマネージド ID を無効にした場合、接続は実行時に機能しません。
+   Visual Studio Code によって接続が作成された後、一部のコネクタで `The connection will be valid for {n} days only` (接続は n 日だけ有効です) というメッセージが表示されます。 この制限時間は、Visual Studio Code でロジック アプリを作成している期間にのみ適用されます。 デプロイ後は、自動的に有効にされる[システム割り当てマネージド ID](../logic-apps/create-managed-service-identity.md) を使用して実行時にロジック アプリを認証できるため、この制限は適用されなくなります。 このマネージド ID は、接続の作成時に使用する認証資格情報または接続文字列とは異なります。 このシステム割り当てマネージド ID を無効にした場合、接続は実行時に機能しません。
 
 1. デザイナーで **[メールの送信]** アクションが選択されていない場合は、そのアクションを選択します。
 
 1. アクションの詳細ウィンドウの **[パラメーター]** タブで、アクションに必要な情報を指定します。次に例を示します。
 
-   ![Office 365 Outlook の [メールの送信] アクションの詳細が表示されたロジック アプリ デザイナーを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-details.png)
+   ![Office 365 Outlook の [メールの送信] アクションの詳細が表示されたワークフロー デザイナーを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-details.png)
 
    | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
@@ -452,21 +427,121 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
    ||||
 
    > [!NOTE]
-   > **[設定]** タブ、 **[実行までの期間]** タブ、または **[静的な結果]** タブの詳細ウィンドウで変更を加える場合は、タブを切り替えたり、デザイナーにフォーカスを変更したりする前に、必ず **[完了]** を選択して変更をコミットしてください。 それ以外の場合、Visual Studio Code では変更が保持されません。 詳細については、プレビュー拡張機能の[既知の問題に関する GitHub ページ](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)を参照してください。
+   > **[設定]** タブ、 **[静的な結果]** タブ、または **[実行までの期間]** タブの詳細ペインで変更を加える場合は、タブを切り替えたり、デザイナーにフォーカスを変更したりする前に、必ず **[完了]** を選択して変更をコミットしてください。 それ以外の場合、Visual Studio Code では変更が保持されません。 詳細については、[GitHub の Logic Apps パブリック プレビューでの既知の問題に関するページ](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)をご確認ください。
 
 1. デザイナーで、 **[保存]** を選択します。
 
-次に、Visual Studio Code でローカルにワークフローを実行してデバッグします。
+> [!IMPORTANT]
+> Webhook ベースのトリガーまたはアクションを使用するワークフローをローカル環境で実行するには ([組み込みの HTTP Webhook トリガーやアクション](../connectors/connectors-native-webhook.md)など)、[Webhook のコールバック URL への転送を設定する](#webhook-setup)ことで、この機能を有効にする必要があります。
 
-<a name="debug-test-locally"></a>
+<a name="webhook-setup"></a>
 
-## <a name="run-and-debug-locally"></a>ローカルでの実行とデバッグ
+## <a name="enable-locally-running-webhooks"></a>ローカル環境で実行されている Webhook を有効にする
 
-ロジック アプリをテストするには、次の手順に従って、デバッグ セッションを開始し、要求トリガーによって作成されたエンドポイントの URL を検索します。 この URL は、後でそのエンドポイントに要求を送信できるようにするために必要です。
+Azure で実行されているロジック アプリで **HTTP Webhook** などの Webhook ベースのトリガーまたはアクションを使用するときは、Logic Apps ランタイムにより、コールバック URL が生成されてサービス エンドポイントに登録されることにより、そのエンドポイントがサブスクライブされます。 その後、トリガーまたはアクションは、サービス エンドポイントで URL が呼び出されるまで待機します。 ただし、Visual Studio Code で作業している場合は、生成されたコールバック URL は `http://localhost:7071/...` で開始します。 この URL は localhost サーバー用であり、サービス エンドポイントでこの URL を呼び出すことができないようにプライベートです。
 
-1. ステートレスなロジック アプリ ワークフローを簡単にデバッグできるように、[そのワークフローの実行履歴を有効にできます](#run-history)。
+Visual Studio Code で Webhook ベースのトリガーとアクションをローカルに実行するには、localhost サーバーを公開し、サービス エンドポイントからの呼び出しを Webhook コールバック URL に安全に転送するパブリック URL を、設定する必要があります。 転送サービスと、localhost ポートへの HTTP トンネルが開かれる [**ngrok**](https://ngrok.com/) などのツールを使用するか、または独自のツールを使用することができます。
 
-1. Visual Studio Code ツールバーで **[実行]** メニューを開き、 **[デバッグを開始する]** (F5) を選択します。
+#### <a name="set-up-call-forwarding-using-ngrok"></a>**ngrok** を使用して呼び出しの転送を設定する
+
+1. 持っていない場合は、[**ngrok** アカウントにサインアップ](https://dashboard.ngrok.com/signup)します。 それ以外の場合は、[自分のアカウントにサインイン](https://dashboard.ngrok.com/login)します。
+
+1. 個人用の認証トークンを取得します。これは、**ngrok** クライアントから、お使いのアカウントに接続してアクセスの認証を行う場合に必要です。
+
+   1. [認証トークン ページ](https://dashboard.ngrok.com/auth/your-authtoken)を表示するには、アカウントのダッシュボード メニューで、 **[Authentication]\(認証\)** を展開し、 **[Your Authtoken]\(自分の認証トークン\)** を選択します。
+
+   1. **[Your Authtoken]\(自分の認証トークン\)** ボックスから安全な場所にトークンをコピーします。
+
+1. [**ngrok** のダウンロード ページ](https://ngrok.com/download)または [自分のアカウントのダッシュボード](https://dashboard.ngrok.com/get-started/setup)から、目的の **ngrok** のバージョンをダウンロードし、.zip ファイルを抽出します。 詳細については、「[手順 1: 解凍してインストールする](https://ngrok.com/download)」を参照してください。
+
+1. 自分のコンピューターで、コマンド プロンプト ツールを開きます。 **ngrok.exe** ファイルがある場所に移動します。
+
+1. 次のコマンドを実行して、**ngrok** クライアントを自分の **ngrok** アカウントに接続します。 詳細については、「[手順 2: アカウントを接続する](https://ngrok.com/download)」を参照してください。
+
+   `ngrok authtoken <your_auth_token>`
+
+1. 次のコマンドを実行して、localhost のポート 7071 への HTTP トンネルを開きます。 詳細については、「[手順 3: 起動する](https://ngrok.com/download)」を参照してください。
+
+   `ngrok http 7071`
+
+1. 出力から、次の行を見つけます。
+
+   `http://<domain>.ngrok.io -> http://localhost:7071`
+
+1. `http://<domain>.ngrok.io` という形式になっている URL をコピーして保存します
+
+#### <a name="set-up-the-forwarding-url-in-your-app-settings"></a>アプリの設定で転送 URL を設定する
+
+1. Visual Studio Code で、プロジェクトのルート レベルにある **local.settings.json** ファイルを開きます。
+
+1. `Values` オブジェクトで `Workflows.WebhookRedirectHostUri` という名前のプロパティを追加し、その値に、前に作成した転送 URL を設定します。次に例を示します。
+
+   ```json
+   {
+      "IsEncrypted": false,
+      "Values": {
+         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+         "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+         "FUNCTIONS_V2_COMPATIBILITY_MODE": "true",
+         "Workflows.WebhookRedirectHostUri": "http://xxxXXXXxxxXXX.ngrok.io",
+         <...>
+      }
+   }
+   ```
+
+初めて、ローカル デバッグセッションを開始するとき、またはデバッグなしでワークフローを実行するときに、Logic Apps ランタイムによってワークフローがサービス エンドポイントに登録され、そのエンドポイントで Webhook 操作の通知がサブスクライブされます。 次にワークフローが実行されるときには、サブスクリプションの登録がローカル ストレージに既に存在するため、ランタイムで登録または再登録は行われません。
+
+ローカルに実行される Webhook ベースのトリガーまたはアクションを使用するワークフロー実行のデバッグ セッションを停止しても、既存のサブスクリプション登録は削除されません。 登録を解除するには、サブスクリプション登録を手動で除去または削除する必要があります。
+
+> [!NOTE]
+> ワークフローの実行が開始された後、ターミナル ウィンドウに次の例のようなエラーが表示されることがあります。
+>
+> `message='Http request failed with unhandled exception of type 'InvalidOperationException' and message: 'System.InvalidOperationException: Synchronous operations are disallowed. Call ReadAsync or set AllowSynchronousIO to true instead.`
+>
+> この場合は、プロジェクトのルート レベルにある **local.settings.json** ファイルを開き、プロパティが `true` に設定されていることを確認します。
+>
+> `"FUNCTIONS_V2_COMPATIBILITY_MODE": "true"`
+
+<a name="manage-breakpoints"></a>
+
+## <a name="manage-breakpoints-for-debugging"></a>デバッグ用のブレークポイントを管理する
+
+デバッグ セッションを開始してロジック アプリのワークフローを実行およびテストする前に、各ワークフローの **workflow.json** ファイル内に[ブレークポイント](https://code.visualstudio.com/docs/editor/debugging#_breakpoints)を設定できます。 他の設定は必要ありません。 
+
+現時点では、ブレークポイントはアクションについてのみサポートされており、トリガーではサポートされていません。 各アクション定義には、次のブレークポイントの場所があります。
+
+* アクションの名前が記述されている行に、開始ブレークポイントを設定します。 デバッグ セッションの間にこのブレークポイントにヒットすると、アクションの入力を評価前に確認できます。
+
+* アクションの終了中かっこ ( **}** ) が記述されている行に、終了ブレークポイントを設定します。 デバッグ セッションの間にこのブレークポイントにヒットすると、アクションの実行が完了する前に、アクションの結果を確認できます。
+
+ブレークポイントを追加するには、次の手順のようにします。
+
+1. デバッグするワークフローの **workflow.json** ファイルを開きます。
+
+1. ブレークポイントを設定する行で、左側の列の内側を選択します。 ブレークポイントを削除するには、そのブレークポイントを選択します。
+
+   デバッグ セッションを開始すると、コード ウィンドウの左側に [実行] ビューが表示され、上部の近くに [デバッグ] ツール バーが表示されます。
+
+   > [!NOTE]
+   > [実行] ビューが自動的に表示されない場合は、Ctrl + Shift + D キーを押します。
+
+1. ブレークポイントにヒットしたときに使用可能な情報を確認するには、[実行] ビューで、 **[変数]** ペインを調べます。
+
+1. ワークフローの実行を続けるには、[デバッグ] ツール バーの **[続行]** (再生ボタン) を選択します。 
+
+ブレークポイントは、ワークフローの実行中いつでも追加および削除できます。 ただし、実行の開始後に **workflow.json** ファイルを更新した場合、ブレークポイントは自動的に更新されません。 ブレークポイントを更新するには、ロジック アプリを再起動します。
+
+一般的な情報については、[Visual Studio Code のブレークポイント](https://code.visualstudio.com/docs/editor/debugging#_breakpoints)に関するページを参照してください。
+
+<a name="run-test-debug-locally"></a>
+
+## <a name="run-test-and-debug-locally"></a>ローカル環境で実行、テスト、デバッグする
+
+ロジック アプリをテストするには、次の手順のようにして、デバッグ セッションを開始し、Request トリガーによって作成されたエンドポイントの URL を検索します。 この URL は、後でそのエンドポイントに要求を送信できるようにするために必要です。
+
+1. ステートレス ワークフローをより簡単にデバッグするには、[そのワークフローの実行履歴を有効にする](#enable-run-history-stateless)ことができます。
+
+1. Visual Studio Code のアクティビティ バーで **[実行]** メニューを開き、 **[デバッグの開始]** (F5) を選択します。
 
    **[ターミナル]** ウィンドウが開き、デバッグ セッションを確認できます。
 
@@ -580,21 +655,21 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
 
 <a name="return-response"></a>
 
-## <a name="return-a-response-to-the-caller"></a>呼び出し元に応答を返す
+## <a name="return-a-response"></a>応答を返す
 
-ロジック アプリに要求を送信した呼び出し元に応答を返すには、Request トリガーを開始したワークフローに対して、組み込みの[応答アクション](../connectors/connectors-native-reqres.md)を使用できます。
+ロジック アプリに要求を送信した呼び出し元に応答を返すには、Request トリガーで開始したワークフローに対して、組み込みの [Response アクション](../connectors/connectors-native-reqres.md)を使用できます。
 
-1. ロジック アプリ デザイナーで、 **[メールの送信]** アクションの下に表示される **[新しいステップ]** を選択します。
+1. ワークフロー デザイナーで、 **[メールの送信]** アクションの下の **[新しいステップ]** を選択します。
 
    デザイナーに **[操作の選択]** プロンプトが表示され、次のアクションを選択できるように **[アクションの追加]** ウィンドウが再び表示されます。
 
 1. **[アクションの追加]** ウィンドウで、 **[アクションの選択]** 検索ボックスの下にある **[組み込み]** が選択されていることを確認します。 検索ボックスに「`response`」と入力し、 **[応答]** アクションを選択します。
 
-   ![[応答] アクションが選択されたロジック アプリ デザイナーを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/add-response-action.png)
+   ![応答アクションが選択されたワークフロー デザイナーを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/add-response-action.png)
 
    **[応答]** アクションがデザイナーに表示されると、アクションの詳細ウィンドウが自動的に開きます。
 
-   ![[応答] アクションの詳細ウィンドウが開き、[本文] プロパティが [メールの送信] アクションの [本文] プロパティ値に設定されているロジック アプリ デザイナーを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/response-action-details.png)
+   ![[応答] アクションの詳細ウィンドウが開き、[本文] プロパティが [メールの送信] アクションの [本文] プロパティ値に設定されているワークフロー デザイナーを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/response-action-details.png)
 
 1. **[パラメーター]** タブで、呼び出す関数に必要な情報を指定します。
 
@@ -618,9 +693,9 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
 
 ## <a name="retest-your-logic-app"></a>ロジック アプリを再テストする
 
-ロジック アプリを更新した後、Visual Studio でデバッガーを再実行し、更新したロジック アプリをトリガーする別の要求を送信することで、別のテストを実行できます。この手順は[ロジック アプリのデバッグとテスト](#debug-test-locally)と同様です。
+ロジック アプリを更新した後、Visual Studio でデバッガーを再実行し、更新したロジック アプリをトリガーする別の要求を送信することで、別のテストを実行できます。手順は「[ローカル環境で実行、テスト、デバッグする](#run-test-debug-locally)」と同じです。
 
-1. Visual Studio Code ツールバーで **[実行]** メニューを開き、 **[デバッグを開始する]** (F5) を選択します。
+1. Visual Studio Code のアクティビティ バーで **[実行]** メニューを開き、 **[デバッグの開始]** (F5) を選択します。
 
 1. Postman またはツールで要求を作成して送信するには、別の要求を送信してワークフローをトリガーします。
 
@@ -632,20 +707,20 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
 
 1. デバッグ セッションを停止するには、 **[実行]** メニューで、 **[デバッグの停止]** (Shift + F5) を選択します。
 
-<a name="publish-azure"></a>
+<a name="deploy-azure"></a>
 
-## <a name="publish-to-azure"></a>Azure に発行する
+## <a name="deploy-to-azure"></a>Azure にデプロイ
 
-Visual Studio Code では、プロジェクトを Azure に直接デプロイすることができます。これにより、新しい **[ロジック アプリ (プレビュー)]** リソースの種類を使用してロジック アプリが発行されます。 Azure Functions の関数アプリ リソースと同様に、この新しいリソースの種類のデプロイでは、デプロイ時に設定できる[ホスティング プランと価格レベル](../app-service/overview-hosting-plans.md)を選択する必要があります。 ホスティング プランと価格の詳細については、次のトピックを参照してください。
+Visual Studio Code からは、プロジェクトを Azure に直接発行することができます。これにより、新しい **ロジック アプリ (プレビュー)** リソースの種類を使用して、ロジック アプリがデプロイされます。 Azure Functions の関数アプリ リソースと同様に、この新しいリソースの種類のデプロイでは、デプロイ時に設定できる[ホスティング プランと価格レベル](../app-service/overview-hosting-plans.md)を選択する必要があります。 ホスティング プランと価格の詳細については、次のトピックを参照してください。
 
 * [Azure App Service でスケールアップする](../app-service/manage-scale-up.md)
 * [Azure Functions のスケールとホスティング](../azure-functions/functions-scale.md)
 
 ロジック アプリは新しいリソースとして発行できます。これにより、[関数アプリの要件と同様に、Azure ストレージ アカウントなど](../azure-functions/storage-considerations.md)、必要な追加のリソースが自動的に作成されます。 または、以前にデプロイされた **ロジック アプリ (プレビュー)** リソースにロジック アプリを発行することもできます。これにより、そのロジック アプリは上書きされます。
 
-### <a name="publish-as-a-new-logic-app-preview-resource"></a>新しい [ロジック アプリ (プレビュー)] リソースとして発行する
+### <a name="publish-to-a-new-logic-app-preview-resource"></a>新しいロジック アプリ (プレビュー) リソースに発行する
 
-1. Visual Studio Code ツール バーで、Azure アイコンを選択します。
+1. Visual Studio Code のアクティビティ バーで、Azure アイコンを選択します。
 
 1. **[Azure:Logic Apps (プレビュー)]** ウィンドウのツールバーで、 **[ロジック アプリにデプロイする]** を選択します。
 
@@ -663,7 +738,7 @@ Visual Studio Code では、プロジェクトを Azure に直接デプロイす
 
 1. 新しい **[ロジック アプリ (プレビュー)]** リソースを作成するには、次の手順を実行します。
 
-   1. 新しいロジック アプリのグローバルに一意の名前を指定します。これは、 **[ロジック アプリ (プレビュー)]** リソースに使用する名前です。 この例では、`example-logic-app-preview` を使用します。
+   1. 新しいロジック アプリのグローバルに一意の名前を指定します。これは、 **[ロジック アプリ (プレビュー)]** リソースに使用する名前です。 この例では、`Fabrikam-Workflows-App` を使用します。
 
       ![[Azure:Logic Apps (プレビュー)] ウィンドウと、作成する新しいロジック アプリの名前を入力するプロンプトを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/enter-logic-app-name.png)
 
@@ -688,42 +763,108 @@ Visual Studio Code では、プロジェクトを Azure に直接デプロイす
 
       ![[Azure:Logic Apps (プレビュー)] ウィンドウと、ストレージ アカウントを作成または選択するように求めるプロンプトを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/create-storage-account.png)
 
-   1. 診断ログとトレース機能を簡単にするために、既存の Application Insights リソースを選択することができます。 それ以外の場合は、 **[Application Insights リソースの新規作成]** を選択するか、アプリをデプロイした後に Azure portal で Application Insights を設定することができます。
+   1. ロジック アプリの作成とデプロイの設定で [Application Insights](../azure-monitor/app/app-insights-overview.md) の使用がサポートされている場合は、必要に応じて、ロジック アプリの診断ログとトレースを有効にすることができます。 ロジック アプリを Visual Studio Code からデプロイするとき、またはデプロイした後で、それを行うことができます。 Application Insights インスタンスを用意する必要がありますが、このリソースは、[事前に](../azure-monitor/app/create-workspace-resource.md)、ロジック アプリをデプロイするときに、またはデプロイ後に、作成することができます。
 
-      デプロイする前に、プロジェクトのルート レベルに存在する **host.json** ファイルで `logging` オブジェクトに `logLevel` オブジェクトを追加し、`Host.Triggers.Workflow` を `Information` に設定します。たとえば、次のようにします。
+      ここでログとトレースを有効にするには、次の手順のようにします。
 
-      ```json
-      "logLevel": {
-         "Host.Triggers.Workflow": "Information"
-      },
-      ```
+      1. 既存の Application Insights リソースを選択するか、**新しい Application Insights リソースを作成** します。
 
-      **host.json** ファイルは次のようになります。
+      1. [Azure portal](htpps://portal.azure.com) で、お使いの Application Insights リソースに移動します。
 
-      ```json
-      {
-         "version": "2.0",
-         "logging": {
-            "applicationInsights": {
-               "samplingExcludedTypes": "Request",
-               "samplingSettings": {
-                  "isEnabled": true
-               }
-            },
-            "logLevel": {
-               "Host.Triggers.Workflow": "Information"
+      1. リソース メニューで **[概要]** を選択します。 **[インストルメンテーション キー]** の値を見つけてコピーします。
+
+      1. Visual Studio Code で、プロジェクトのルート レベルにある **local.settings.json** ファイルを開きます。
+
+      1. `Values` オブジェクトで `APPINSIGHTS_INSTRUMENTATIONKEY` プロパティを追加し、値にインストルメンテーション キーを設定します。次に例を示します。
+
+         ```json
+         {
+            "IsEncrypted": false,
+            "Values": {
+               "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+               "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+               "APPINSIGHTS_INSTRUMENTATIONKEY": <instrumentation-key>
             }
          }
-      }
-      ``` 
+         ```
 
-   完了すると、ロジック アプリを発行するために必要なリソースの作成とデプロイが Visual Studio Code で開始されます。
+         > [!TIP]
+         > トリガーとアクションの名前が Application Insights インスタンスに正しく表示されているかどうかを確認できます。
+         >
+         > 1. Azure portal で、お使いの Application Insights リソースに移動します。
+         >
+         > 2. リソース メニューの **[調査]** で、 **[アプリケーション マップ]** を選択します。
+         >
+         > 3. マップに表示される操作の名前を確認します。
+         >
+         > 組み込みトリガーからの一部の受信要求は、アプリケーション マップに重複して表示される場合があります。 
+         > これらの重複の場合、`WorkflowName.ActionName` 形式ではなく、ワークフロー名が操作名として使用され、Azure Functions ホストから生成されます。
+
+      1. 次に、ロジック アプリによって収集されて Application Insights インスタンスに送信されるトレース データの重大度レベルを、必要に応じて調整できます。
+
+         ワークフローがトリガーされたときや、アクションが実行されたときなど、ワークフロー関連のイベントが発生するたびに、ランタイムによってさまざまなトレースが出力されます。 これらのトレースによってワークフローの有効期間がカバーされ、次のイベントの種類が含まれます (これらだけではありません)。
+
+         * サービスのサービス (開始、停止、エラーなど)。
+         * ジョブとディスパッチャーのアクティビティ。
+         * ワークフローのアクティビティ (トリガー、アクション、実行など)。
+         * ストレージ要求のアクティビティ (成功や失敗など)。
+         * HTTP 要求のアクティビティ (受信、送信、成功、失敗など)。
+         * アドホック開発トレース (デバッグ メッセージなど)。
+
+         各イベントの種類は、重大度レベルに割り当てられています。 たとえば、`Trace` レベルでは最も詳細なメッセージがキャプチャされる一方、`Information` レベルでは、ロジック アプリ、ワークフロー、トリガー、アクションが開始および停止したときなど、ワークフローの一般的なアクティビティがキャプチャされます。 次の表では、重大度レベルとそのトレースの種類について説明します。
+
+         | 重大度レベル | トレースの種類 |
+         |----------------|------------|
+         | Critical | ロジック アプリで回復不能なエラーを示すログ。 |
+         | デバッグ | 開発中の調査に使用できるログ。たとえば、受信と送信の HTTP 呼び出し。 |
+         | エラー | ワークフローの実行の失敗だが、ロジック アプリでの一般的なエラーではないものを示すログ。 |
+         | Information | ロジック アプリまたはワークフローでの一般的なアクティビティを追跡するログ。次のようなもの。 <p><p>- トリガー、アクション、または実行が開始および終了したとき。 <br>- ロジック アプリが開始または終了したとき。 |
+         | Trace | 最も詳細なメッセージが含まれるログ。たとえば、ストレージ要求やディスパッチャーのアクティビティに加えて、ワークフロー実行アクティビティに関連するすべてのメッセージ。 |
+         | 警告 | ロジック アプリでの異常な状態だが、実行を妨げはしないものを強調して示すログ。 |
+         |||
+
+         重大度レベルを設定するには、プロジェクトのルート レベルで **host.json** ファイルを開き、`logging` オブジェクトを見つけます。 このオブジェクトにより、ロジック アプリ内のすべてのワークフローのログ フィルター処理が制御され、[ログの種類のフィルター処理に対する ASP.NET Core のレイアウト](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&preserve-view=true#log-filtering)に従います。
+
+         ```json
+         {
+            "version": "2.0",
+            "logging": {
+               "applicationInsights": {
+                  "samplingExcludedTypes": "Request",
+                  "samplingSettings": {
+                     "isEnabled": true
+                  }
+               }
+            }
+         }
+         ```
+
+         `logging` オブジェクトに、`Host.Triggers.Workflow` プロパティを含む `logLevel` オブジェクトが含まれていない場合は、それらの項目を追加します。 プロパティを、必要なトレースの種類の重大度レベルに設定します。次に例を示します。
+
+         ```json
+         {
+            "version": "2.0",
+            "logging": {
+               "applicationInsights": {
+                  "samplingExcludedTypes": "Request",
+                  "samplingSettings": {
+                     "isEnabled": true
+                  }
+               },
+               "logLevel": {
+                  "Host.Triggers.Workflow": "Information"
+               }
+            }
+         }
+         ```
+
+   デプロイ手順を完了すると、Visual Studio Code によりロジック アプリの発行に必要なリソースの作成とデプロイが開始されます。
 
 1. デプロイ プロセスを確認および監視するには、 **[表示]** メニューで **[出力]** を選択します。 [出力] ウィンドウのツールバーの一覧で、 **[Azure Logic Apps]** を選択します。
 
    ![ツールバーの一覧で [Azure Logic Apps] が選択された [出力] ウィンドウと、デプロイの進行状況と状態を示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/logic-app-deployment-output-window.png)
 
-   Visual Studio Code で Azure へのロジック アプリ ワークフローのデプロイが完了すると、次のメッセージが表示されます。
+   Visual Studio Code による Azure へのロジック アプリのデプロイが完了すると、次のメッセージが表示されます。
 
    ![Azure へのデプロイが正常に完了したというメッセージを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/deployment-to-azure-completed.png)
 
@@ -731,15 +872,33 @@ Visual Studio Code では、プロジェクトを Azure に直接デプロイす
 
 次に、以下のタスクを実行する方法を学習できます。
 
-* [Azure portal](#find-manage-deployed-workflows-portal) または [Visual Studio Code](#find-manage-deployed-workflows-vs-code) で、デプロイされたロジック アプリを検索します。
+* [空のワークフローをプロジェクトに追加する](#add-workflow-existing-project)。
 
-* [ステートレスなロジック アプリ ワークフローで実行履歴を有効にします](#run-history)。
+* [Visual Studio Code](#manage-deployed-apps-vs-code) または [Azure portal](#manage-deployed-apps-portal) を使用して、デプロイされたロジック アプリを管理する。
 
-* [デプロイされた **ロジック アプリ (プレビュー)** リソースの監視を有効にします](#enable-monitoring)。
+* [ステートレス ワークフローで実行履歴を有効にする](#enable-run-history-stateless)。
 
-<a name="find-manage-deployed-workflows-vs-code"></a>
+* [Azure portal でデプロイされたロジック アプリの監視ビューを有効にする](#enable-monitoring)。
 
-## <a name="find-and-manage-deployed-logic-apps-in-visual-studio-code"></a>Visual Studio Code でデプロイされたロジック アプリを検索して管理する
+<a name="add-workflow-existing-project"></a>
+
+## <a name="add-blank-workflow-to-project"></a>空のワークフローをプロジェクトに追加する
+
+ロジック アプリ プロジェクトには、複数のワークフローを含めることができます。 空のワークフローをプロジェクトに追加するには、次の手順のようにします。
+
+1. Visual Studio Code のアクティビティ バーで、Azure アイコンを選択します。
+
+1. Azure ウィンドウで、 **[Azure:ロジック アプリ (プレビュー)]** の横の **[ワークフローの作成]** (Azure Logic Apps のアイコン) を選択します。
+
+1. 追加するワークフローの種類を選択し、 **[ステートフル]** または **[ステートレス]** を選択します。
+
+1. ワークフローの名前を指定します。
+
+終わると、新しいワークフロー フォルダーとワークフロー定義の **workflow.json** ファイルが、プロジェクトに表示されます。
+
+<a name="manage-deployed-apps-vs-code"></a>
+
+## <a name="manage-deployed-logic-apps-in-visual-studio-code"></a>デプロイされたロジック アプリを Visual Studio Code で管理する
 
 Visual Studio Code では、リソースの種類が元の **[ロジック アプリ]** であるか **[ロジック アプリ (プレビュー)]** であるかに関係なく、Azure サブスクリプションでデプロイされたすべてのロジック アプリを表示できます。また、これらのロジック アプリの管理に役立つタスクを選択できます。 ただし、両方のリソースの種類にアクセスするには、Visual Studio Code 用の **Azure Logic Apps** と **Azure Logic Apps (プレビュー)** の両方の拡張機能が必要です。
 
@@ -757,9 +916,9 @@ Visual Studio Code では、リソースの種類が元の **[ロジック ア�
 
    ワークフローを編集するには、次のオプションがあります。
 
-   * Visual Studio Code のロジック アプリ デザイナーでプロジェクトの **workflow.json** ファイルを開き、編集を行い、ロジック アプリを Azure に再デプロイします。
+   * Visual Studio Code のワークフロー デザイナーでプロジェクトの **workflow.json** ファイルを開き、編集を行って、ロジック アプリを Azure に再デプロイします。
 
-   * Azure portal で、[ご利用のロジック アプリを検索して開きます](#find-manage-deployed-workflows-portal)。 ワークフローを検索、編集、保存します。
+   * Azure portal で、[ご利用のロジック アプリを検索して開きます](#manage-deployed-apps-portal)。 ワークフローを検索、編集、保存します。
 
 1. デプロイされたロジック アプリを Azure portal で開くには、ロジック アプリのショートカット メニューを開き、 **[ポータルで開く]** を選択します。
 
@@ -771,9 +930,9 @@ Visual Studio Code では、リソースの種類が元の **[ロジック ア�
 
    ![Azure portal と、デプロイされているロジック アプリの検索結果が表示された検索バーを示すスクリーンショット。選択された状態で表示されます。](./media/create-stateful-stateless-workflows-visual-studio-code/find-deployed-workflow-azure-portal.png)
 
-<a name="find-manage-deployed-workflows-portal"></a>
+<a name="manage-deployed-apps-portal"></a>
 
-## <a name="find-and-manage-deployed-logic-apps-in-the-portal"></a>ポータルでデプロイされたロジック アプリを検索して管理する
+## <a name="manage-deployed-logic-apps-in-the-portal"></a>デプロイされたロジック アプリをポータルで管理する
 
 Azure portal では、リソースの種類が元の **[ロジック アプリ]** であるか **[ロジック アプリ (プレビュー)]** であるかに関係なく、Azure サブスクリプションでデプロイされたすべてのロジック アプリを表示できます。 現時点では、各リソースの種類は Azure で個別のカテゴリとして編成および管理されています。 **[ロジック アプリ (プレビュー)]** リソースの種類を持つロジック アプリを検索するには、次の手順を実行します。
 
@@ -803,13 +962,13 @@ Azure portal では、リソースの種類が元の **[ロジック アプリ]*
 
    ![選択されたワークフローの [概要] ウィンドウを示すスクリーンショット。[ワークフロー] メニューには、選択した [デザイナー] コマンドが表示されています。](./media/create-stateful-stateless-workflows-visual-studio-code/workflow-overview-pane-select-designer.png)
 
-   ロジック アプリ デザイナーが開き、Visual Studio Code で作成したワークフローが表示されます。 これで、Azure portal でこのワークフローに変更を加えることができます。
+   ワークフロー デザイナーが開き、Visual Studio Code で作成したワークフローが表示されます。 これで、Azure portal でこのワークフローに変更を加えることができます。
 
-   ![Visual Studio Code からデプロイされたロジック アプリ デザイナーとワークフローを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/opened-workflow-designer.png)
+   ![Visual Studio Code からデプロイされたワークフロー デザイナーとワークフローを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/opened-workflow-designer.png)
 
-<a name="add-workflows"></a>
+<a name="add-workflow-portal"></a>
 
-## <a name="add-a-workflow-to-deployed-logic-apps"></a>デプロイされたロジック アプリにワークフローを追加する
+## <a name="add-another-workflow-in-the-portal"></a>ポータルで別のワークフローを追加する
 
 Azure portal を使用すると、Visual Studio Code からデプロイした **ロジック アプリ (プレビュー)** リソースに空のワークフローを追加し、それらのワークフローを Azure portal でビルドできます。
 
@@ -821,27 +980,25 @@ Azure portal を使用すると、Visual Studio Code からデプロイした **
 
 1. **[新しいワークフロー]** ウィンドウで、ワークフローの名前を指定します。 **[ステートフル]** または **[ステートレス]** **>** **[作成]** の順に選択します。
 
-   Azure で新しいワークフローがデプロイされた後、 **[ワークフロー]** ウィンドウに表示されます。このワークフローを選択して、ロジック アプリ デザイナーやコード ビューを開くなど、管理やその他のタスクを実行できます。
+   Azure で新しいワークフローがデプロイされた後、それが **[ワークフロー]** ペインに表示されたら、そのワークフローを選択し、デザイナーやコード ビューを開くなどして、他のタスクを管理および実行できます。
 
    ![選択されたワークフローを管理およびレビューのオプションと共に示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/view-new-workflow.png)
 
    たとえば、新しいワークフローのデザイナーを開くと、空のキャンバスが表示されます。 このワークフローを Azure portal でビルドできるようになりました。
 
-   ![ロジック アプリ デザイナーと空のワークフローを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/opened-blank-workflow-designer.png)
+   ![ワークフロー デザイナーと空のワークフローを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/opened-blank-workflow-designer.png)
 
-<a name="run-history"></a>
+<a name="enable-run-history-stateless"></a>
 
-## <a name="run-history-for-stateless-logic-app-workflows"></a>ステートレスなロジック アプリ ワークフローの実行履歴
+## <a name="enable-run-history-for-stateless-workflows"></a>ステートレス ワークフローの実行履歴を有効にする
 
-ステートレスなロジック アプリ ワークフローを簡単にデバッグできるようにするには、Visual Studio Code または Azure portal でそのワークフローの実行履歴を有効にし、完了後に実行履歴を無効にします。
+ステートレス ワークフローをさらに簡単にデバッグするには、そのワークフローの実行履歴を有効にした後、完了したら実行履歴を無効にすることができます。 Visual Studio Code の場合は、以下の手順のようにします。Azure portal で作業している場合は、[Azure portal でのステートフル ワークフローとステートレス ワークフローの作成](create-stateful-stateless-workflows-azure-portal.md#enable-run-history-stateless)に関するページを参照してください。
 
-### <a name="for-a-stateless-logic-app-workflow-in-visual-studio-code"></a>Visual Studio Code でのステートレスなロジック アプリ ワークフローの場合
-
-Visual Studio Code でステートレスなロジック アプリ ワークフローをローカルで実行している場合は、次の手順に従います。
-
-1. プロジェクトで、**workflow-designtime** フォルダーを見つけて展開します。 **local.settings.json** ファイルを見つけて開きます。
+1. Visual Studio Code プロジェクトで、**workflow-designtime** フォルダーを展開し、**local.settings.json** ファイルを開きます。
 
 1. `Workflows.{yourWorkflowName}.operationOptions` プロパティを追加し、値を `WithStatelessRunHistory` に設定します。次に例を示します。
+
+   **Windows または Linux**
 
    ```json
    {
@@ -854,37 +1011,27 @@ Visual Studio Code でステートレスなロジック アプリ ワークフ�
    }
    ```
 
-1. 完了時に実行履歴を無効にするには、`Workflows.{yourWorkflowName}.OperationOptions` プロパティとその値を削除するか、プロパティを `None` に設定します。
+   **macOS**
 
-### <a name="for-a-stateless-logic-app-workflow-in-the-azure-portal"></a>Azure portal でのステートレスなロジック アプリ ワークフローの場合
+   ```json
+   {
+      "IsEncrypted": false,
+      "Values": {
+         "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct; \
+             AccountKey=<access-key>;EndpointSuffix=core.windows.net",
+         "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+         "Workflows.{yourWorkflowName}.OperationOptions": "WithStatelessRunHistory"
+      }
+   }
+   ```
 
-既にプロジェクトを Azure portal にデプロイしている場合は、次の手順を実行します。
-
-1. [Azure portal](https://portal.azure.com) で、ご利用の **[ロジック アプリ (プレビュー)]** リソースを検索して開きます。
-
-1. ロジック アプリのメニューにある **[設定]** で、 **[構成]** を選択します。
-
-1. **[アプリケーションの設定]** タブで、 **[新しいアプリケーション設定]** を選択します。
-
-1. **[アプリケーション設定の追加/編集]** ウィンドウで、 **[名前]** ボックスに次の操作オプションの名前を入力します。 
-
-   `Workflows.{yourWorkflowName}.OperationOptions`
-
-1. **[値]** ボックスに、「`WithStatelessRunHistory`」と入力します。
-
-   次に例を示します。
-
-   ![Azure portal とロジック アプリ (プレビュー) リソースを示すスクリーンショット。[構成] > [新しいアプリケーション設定] > [アプリケーション設定の追加/編集] ウィンドウが開かれ、"Workflows.{yourWorkflowName}.OperationOptions" オプションが "WithStatelessRunHistory" に設定されている。](./media/create-stateful-stateless-workflows-visual-studio-code/stateless-operation-options-run-history.png)
-
-1. 終了したら、 **[OK]** を選択します。 **[構成]** ウィンドウで、 **[保存]** を選択します。
-
-デプロイされたロジック アプリ (プレビュー) リソースで監視を有効にするには、次のセクションに進みます。
+1. 完了時に実行履歴を無効にするには、`Workflows.{yourWorkflowName}.OperationOptions` プロパティを `None` に設定するか、プロパティとその値を削除します。
 
 <a name="enable-monitoring"></a>
 
-## <a name="enable-monitoring-for-deployed-logic-app-preview-resources"></a>デプロイされた [ロジック アプリ (プレビュー)] リソースの監視を有効にする
+## <a name="enable-monitoring-view-in-the-azure-portal"></a>Azure portal で監視ビューを有効にする
 
-デプロイされた **ロジック アプリ (プレビュー)** リソースで監視を有効にするには、次の手順のようにします。
+Visual Studio Code から Azure に **ロジック アプリ (プレビュー)** リソースをデプロイした後は、Azure portal とそのワークフローの **[監視]** を使用して、そのリソース内のワークフローの利用可能な実行履歴と詳細を確認できます。 ただし、最初に、そのロジック アプリ リソースで **監視** ビュー機能を有効にする必要があります。
 
 1. [Azure portal](https://portal.azure.com) で、デプロイされた **[ロジック アプリ (プレビュー)]** リソースを見つけて選択します。
 
@@ -894,57 +1041,104 @@ Visual Studio Code でステートレスなロジック アプリ ワークフ�
 
 1. 操作が完了したら、 **[CORS]** のツールバーで、 **[保存]** を選択します。
 
-   ![Azure portal とデプロイされた [ロジック アプリ (プレビュー)] リソースを示すスクリーンショット。 リソース メニューで [CORS] が選択され、[許可されたオリジン] の新しいエントリがワイルドカード文字 (*) に設定されています。](./media/create-stateful-stateless-workflows-visual-studio-code/enable-run-history-deployed-logic-app.png)
+   ![Azure portal とデプロイされたロジック アプリ (プレビュー) リソースを示すスクリーンショット。 リソース メニューで [CORS] が選択され、[許可されたオリジン] の新しいエントリがワイルドカード文字 (*) に設定されています。](./media/create-stateful-stateless-workflows-visual-studio-code/enable-run-history-deployed-logic-app.png)
+
+<a name="enable-open-application-insights"></a>
+
+## <a name="enable-or-open-application-insights-after-deployment"></a>デプロイの後で Application Insights を有効にするか開く
+
+ワークフローの実行中に、ロジック アプリによって他のイベントと共にテレメトリが出力されます。 このテレメトリを使用して、ワークフローの実行状況や、Logic Apps ランタイムのさまざまな方法での動作を、より明確に把握することができます。 [Application Insights](../azure-monitor/app/app-insights-overview.md) を使用してワークフローを監視でき、ほぼリアルタイムのテレメトリ (ライブ メトリック) が提供されます。 この機能を使用すると、このデータを使用して問題の診断、アラートの設定、グラフの作成を行うときに、エラーやパフォーマンスの問題をより簡単に調査できます。
+
+ロジック アプリの作成とデプロイの設定で [Application Insights](../azure-monitor/app/app-insights-overview.md) の使用がサポートされている場合は、必要に応じて、ロジック アプリの診断ログとトレースを有効にすることができます。 ロジック アプリを Visual Studio Code からデプロイするとき、またはデプロイした後で、それを行うことができます。 Application Insights インスタンスを用意する必要がありますが、このリソースは、[事前に](../azure-monitor/app/create-workspace-resource.md)、ロジック アプリをデプロイするときに、またはデプロイ後に、作成することができます。
+
+デプロイされたロジック アプリで Application Insights を有効にするには、または既に有効になっている場合に Application Insights データを確認するには、次の手順のようにします。
+
+1. Azure portal で、デプロイされたロジック アプリを見つけます。
+
+1. ロジック アプリのメニューの **[設定]** で、 **[Application Insights]** を選択します。
+
+1. Application Insights が有効になっていない場合は、 **[Application Insights]** ペインで、 **[Application Insights を有効にする]** を選択します。 ペインが更新されたら、下部にある **[適用]** を選択します。
+
+   Application Insights が有効になっている場合は、 **[Application Insights]** ペインで、 **[Application Insights データの表示]** を選択します。
+
+Application Insights が開いたら、ロジック アプリのさまざまなメトリックを確認できます。 詳細については、「[あらゆる場所で実行される Azure Logic Apps -Application Insights で監視する - パート 1](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/1877849)」を参照してください。
 
 <a name="deploy-docker"></a>
 
-## <a name="deploy-to-docker-container"></a>Docker コンテナーへの展開
+## <a name="deploy-to-docker"></a>Docker にデプロイする
 
-[.NET Core コマンド ライン インターフェイス (CLI) ツール](/dotnet/core/tools/)を使用すると、プロジェクトをビルドしてから、ビルドを発行できます。 次に、ロジック アプリ ワークフローのデプロイ先として [Docker コンテナー](/visualstudio/docker/tutorials/docker-tutorial#what-is-a-container)を作成して使用できます。 詳細については、次のトピックをご覧ください。
+[.NET CLI](/dotnet/core/tools/) を使用することで、ホスト環境としての [Docker コンテナー](/visualstudio/docker/tutorials/docker-tutorial#what-is-a-container)にロジック アプリをデプロイできます。 これらのコマンドを使用すると、ロジック アプリのプロジェクトをビルドして発行できます。 その後、ロジック アプリのデプロイ先として Docker コンテナーを作成して実行できます。
 
+Docker に慣れていない場合は、次のトピックをご確認ください。
+
+* [Docker とは](/dotnet/architecture/microservices/container-docker-introduction/docker-defined)
 * [コンテナーと Docker の概要](/dotnet/architecture/microservices/container-docker-introduction/)
 * [.NET および Docker の概要](/dotnet/core/docker/introduction)
-* [Docker に関する用語](/dotnet/architecture/microservices/container-docker-introduction/docker-terminology)
-* [チュートリアル: Docker の概要](/visualstudio/docker/tutorials/docker-tutorial)
+* [Docker のコンテナー、イメージ、およびレジストリ](/dotnet/architecture/microservices/container-docker-introduction/docker-containers-images-registries)
+* [チュートリアル: Docker を使ってみる (Visual Studio Code)](/visualstudio/docker/tutorials/docker-tutorial)
 
-1. プロジェクトをビルドするには、コマンド ライン プロンプトを開き、次のコマンドを実行します。
+### <a name="requirements"></a>必要条件
+
+* ロジック アプリでデプロイに使用される Azure ストレージ アカウント
+
+* Docker コンテナーを構築するときに使用する .NET ワークフロー用の Docker ファイル
+
+   たとえば、このサンプル Docker ファイルを使用すると、ステートフル ワークフローのロジック アプリがデプロイされます。 ファイルには、Azure portal へのロジック アプリの発行に使用された Azure ストレージ アカウントの接続文字列とアクセス キーの指定が含まれます。
+
+   ```text
+   FROM mcr.microsoft.com/dotnet/core/sdk3.1 AS installer-env
+
+   COPY . /src/dotnet-function-app
+   RUN cd /src/dotnet-function-app && \
+       mkdir -p /home/site/wwwroot && \
+       dotnet publish *.csproj --output /home/site/wwwroot
+
+   FROM mcr.microsoft.com/azure-functions/dotnet:3.0
+   ENV AzureWebJobsStorage <storage-account-connection-string>
+   ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
+       AzureFunctionsJobHost__Logging__Console__IsEnabled=true \
+       FUNCTIONS_V2_COMPATIBILITY_MODE=true
+
+   COPY --from=installer-env ["/home/site/wwwroot", "/home/site/wwwroot"]
+   ```
+
+   詳細については、「[Docker ファイルの記述に関するベスト プラクティス](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)」を参照してください
+
+### <a name="build-and-publish-your-app"></a>アプリをビルドして発行する
+
+1. ロジック アプリのプロジェクトをローカル環境でビルドするには、コマンド ライン プロンプトを開き、次のコマンドを実行します。
 
    `dotnet build -c release`
 
    詳細については、[dotnet build](/dotnet/core/tools/dotnet-build/) のリファレンス ページを参照してください。
 
-1. 次のコマンドを実行してビルドを発行します。
+1. 次のコマンドを実行して、ホスト環境へのデプロイに使用するフォルダーに、プロジェクトのビルドを発行します。
 
    `dotnet publish -c release`
 
    詳細については、[dotnet publish](/dotnet/core/tools/dotnet-publish/) のリファレンス ページを参照してください。
 
-1. .NET ワークフロー用の Docker ファイルを使用し、次のコマンドを実行して、Docker コンテナーをビルドします。
+### <a name="access-to-your-storage-account"></a>ストレージ アカウントにアクセスする
 
-   `docker build --tag local/workflowcontainer .`
+Docker コンテナーをビルドして実行する前に、ストレージ アカウントへのアクセス キーが含まれる接続文字列を取得する必要があります。
 
-   たとえば、次に示すサンプル Docker ファイルを使用すると、ステートフルなロジック アプリがデプロイされ、ロジック アプリを Azure portal に発行するために使用された Azure ストレージ アカウントの接続文字列が指定されます。 Azure portal でストレージ アカウントの接続文字列を検索してコピーするには、[ストレージ アカウント キーの管理](../storage/common/storage-account-keys-manage.md?tabs=azure-portal#view-account-access-keys)に関する記事をご確認ください。
+1. Azure portal のストレージ アカウント メニューの **[設定]** で、 **[アクセス キー]** を選択します。 
 
    ![Azure portal およびコピーされたストレージ アカウント アクセス キーと接続文字列が示されているスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/find-storage-account-connection-string.png)
 
-   接続文字列は次のサンプルのようになります。
+1. **[接続文字列]** で、ストレージ アカウントの接続文字列をコピーします。 接続文字列は次のサンプルのようになります。
 
-   `DefaultEndpointsProtocol=https;AccountName=fabrikamstorageaccount;AccountKey={access-key};EndpointSuffix=core.windows.net`
+   `DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct;AccountKey={access-key};EndpointSuffix=core.windows.net`
 
-   Docker ファイルの形式は次のとおりです。
+   詳細については、[ストレージ アカウント キーの管理](../storage/common/storage-account-keys-manage.md?tabs=azure-portal#view-account-access-keys)に関するページをご確認ください。
 
+1. 接続文字列を安全な場所に保存します。 ロジック アプリ プロジェクトで、この文字列を両方の **local.settings.json** ファイルに追加する必要があります。 また、Docker ファイルにもこの文字列を追加する必要があります。
 
-   ```text
-   FROM mcr.microsoft.com/azure-functions/dotnet:3.0.14492-appservice
+### <a name="build-and-run-your-docker-container-image"></a>Docker コンテナー イメージをビルドして実行する
 
-   ENV AzureWebJobsStorage <storage-account-connection-string>
-   ENV AZURE_FUNCTIONS_ENVIRONMENT Development
-   ENV AzureWebJobsScriptRoot=/home/site/wwwroot
-   ENV AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-   ENV FUNCTIONS_V2_COMPATIBILITY_MODE=true
+1. Docker ファイルを使用し、次のコマンドを実行して、Docker コンテナー イメージをビルドします。
 
-   COPY ./bin/Release/netcoreapp3.1/publish/ /home/site/wwwroot
-   ```
+   `docker build --tag local/workflowcontainer .`
 
    詳細については、[docker build](https://docs.docker.com/engine/reference/commandline/build/) に関するページを参照してください。
 
@@ -956,75 +1150,107 @@ Visual Studio Code でステートレスなロジック アプリ ワークフ�
 
    詳細については、[docker run](https://docs.docker.com/engine/reference/commandline/run/) に関するページを参照してください。
 
-1. Request トリガーのコールバック URL を取得するには、次の要求を送信します。
+### <a name="get-callback-url-for-request-trigger"></a>Request トリガーのコールバック URL を取得する
 
-   `POST /runtime/webhooks/workflow/api/management/workflows/{workflow-name}/triggers/{trigger-name}/listCallbackUrl?api-version=2019-10-01-edge-preview&code={master-key}`
+Request トリガーのコールバック URL を取得するには、次の要求を送信します。
 
-   <*master-key*> の値は、**azure-webjobs-secrets/{deployment-name}/host.json** ファイルで `AzureWebJobsStorage` に対して設定した Azure ストレージ アカウントで定義されています。この値は次のセクションで確認できます。
+`POST /runtime/webhooks/workflow/api/management/workflows/{workflow-name}/triggers/{trigger-name}/listCallbackUrl?api-version=2020-05-01-preview&code={master-key}`
 
-   ```json
-   {
-     <...>
-     "masterKey": {
-        "name": "master",
-        "value": "<master-key>",
-        "encrypted": false
-     },
-     <...>
+<*master-key*> の値は、**azure-webjobs-secrets/{deployment-name}/host.json** ファイルで `AzureWebJobsStorage` に設定した Azure ストレージ アカウントで定義されています。値は次のセクションで確認できます。
+
+```json
+{
+   <...>
+   "masterKey": {
+      "name": "master",
+      "value": "<master-key>",
+      "encrypted": false
+   },
+   <...>
    }
-   ```
+```
 
-<a name="nested-behavior"></a>
+<a name="delete-from-designer"></a>
 
-## <a name="nested-behavior-differences-between-stateful-and-stateless-logic-apps"></a>ステートフルなロジック アプリとステートレスなロジック アプリの入れ子になった動作の違い
+## <a name="delete-items-from-the-designer"></a>デザイナーから項目を削除する
 
-[Request](../connectors/connectors-native-reqres.md) トリガー、[HTTP Webhook](../connectors/connectors-native-webhook.md) トリガー、または [ApiConnectionWehook 型](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)であり HTTPS 要求を受信できるマネージド コネクタ トリガーを使用することによって、同じ **ロジック アプリ (プレビュー)** リソースに存在する他のロジック アプリ ワークフローから [ロジック アプリ ワークフローを呼び出せるようにする](../logic-apps/logic-apps-http-endpoint.md)ことができます。
+デザイナーからワークフロー内の項目を削除するには、次のいずれかの手順のようにします。
 
-親ワークフローが子ワークフローを呼び出した後、入れ子になったロジック アプリ ワークフローが実行できる動作パターンを次に示します。
+* 項目を選択し、項目のショートカット メニューを開いて (Shift + F10)、 **[削除]** を選択します。 **[OK]** を選択して確認します。
 
-* 非同期ポーリング パターン
+* 項目を選択して、Delete キーを押します。 **[OK]** を選択して確認します。
 
-  親は最初の呼び出しに対する応答を待機せず、子が実行を終了するまで、子の実行履歴を継続的にチェックします。 既定では、ステートフルなワークフローはこのパターンに従います。これは、[要求タイムアウト制限](../logic-apps/logic-apps-limits-and-config.md)を超える可能性がある、長時間実行される子ワークフローに適しています。
+* 項目を選択すると、その項目の詳細ペインが開きます。 ペインの右上隅で、省略記号 **[...]** メニューを開き、 **[削除]** を選択します。 **[OK]** を選択して確認します。
 
-* 同期パターン ("ファイア アンド フォーゲット")
+  ![詳細ペインが開いてデザイナーに選択した項目が表示され、省略記号ボタンと [削除] コマンドが選択されたスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/delete-item-from-designer.png)
 
-  子は `202 ACCEPTED` 応答を直ちに返すことによって呼び出しを確認し、親は子の結果を待たずに次のアクションに進みます。 代わりに、子の実行が終了すると、親は結果を受信します。 応答アクションを含まない子のステートフルなワークフローは、常に同期パターンに従います。 子ワークフローがステートフルである場合は、実行履歴を確認することができます。
-
-  この動作を有効にするには、ワークフローの JSON 定義で、`operationOptions` プロパティを `DisableAsyncPattern` に設定します。 詳細については、[トリガーとアクションの種類 (操作オプション)](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options) に関するページを参照してください。
-
-* トリガーと待機
-
-  子ワークフローがステートレスである場合、親は子からの結果を返す応答を待機します。 このパターンは、組み込みの [HTTP トリガーまたはアクション](../connectors/connectors-native-http.md)を使用して子ワークフローを呼び出す場合と同様に機能します。 応答アクションを含まないステートレスな子ワークフローは直ちに `202 ACCEPTED` 応答を返しますが、親は次のアクションに進む前に子が終了するまで待機します。 これらの動作は、ステートレスな子ワークフローにのみ適用されます。
-
-次の表では、親と子がステートフル、ステートレス、または混合のどのワークフロー型であるかに基づいて、子ワークフローの動作を指定します。
-
-| 親ワークフロー | 子ワークフロー | 子の動作 |
-|-----------------|----------------|----------------|
-| ステートレス | ステートレス | `"operationOptions": "DisableAsyncPattern"` 設定を使用した非同期または同期 |
-| ステートレス | ステートレス | トリガーと待機 |
-| ステートレス | ステートレス | Synchronous |
-| ステートレス | ステートレス | トリガーと待機 |
-||||
-
-## <a name="limits"></a>制限
-
-このリソースの種類では、[Azure Logic Apps に対する既存の制限](../logic-apps/logic-apps-limits-and-config.md)の多くが同じですが、このパブリック プレビュー拡張機能の違いは次のとおりです。
-
-* マネージド コネクタ:接続ごとに、1 分あたり 50 の要求
-
-* [JavaScript アクションのインライン コード アクション](../logic-apps/logic-apps-add-run-inline-code.md)では、次の制限が変更されました。
-
-  * コード文字の制限は、1,024 文字から 10 万文字に増加しています。
-
-  * コードの実行時間の制限は、5 秒から 15 秒に増加しています。
+  > [!TIP]
+  > 省略記号メニューが表示されない場合は、右上隅にある省略記号 **[...]** ボタンが詳細ペインに表示されるように、Visual Studio Code のウィンドウを十分に広く展開します。
 
 <a name="troubleshooting"></a>
 
 ## <a name="troubleshoot-errors-and-problems"></a>エラーと問題のトラブルシューティング
 
+<a name="designer-fails-to-open"></a>
+
+### <a name="opening-designer-fails-with-error-workflow-design-time-could-not-be-started"></a>デザイナーを開くと次のエラーで失敗する: "Workflow design time could not be started" (ワークフローをデザイン時に開始できませんでした)
+
+1. Visual Studio Code で、[出力] ウィンドウを開きます。 **[表示]** メニューの **[出力]** を選択します。
+
+1. [出力] ウィンドウのタイトル バーの一覧から **[Azure Logic Apps (プレビュー)]** を選択して、拡張機能からの出力を確認できるようにします。次に例を示します。
+
+   ![[Azure Logic Apps] が選択されている [出力] ウィンドウを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/check-outout-window-azure-logic-apps.png)
+
+1. 出力を確認し、次のエラー メッセージが表示されているかどうかを調べます。
+
+   ```text
+   A host error has occurred during startup operation '{operationID}'.
+   System.Private.CoreLib: The file 'C:\Users\{userName}\AppData\Local\Temp\Functions\
+   ExtensionBundles\Microsoft.Azure.Functions.ExtensionBundle.Workflows\1.1.1\bin\
+   DurableTask.AzureStorage.dll' already exists.
+   Value cannot be null. (Parameter 'provider')
+   Application is shutting down...
+   Initialization cancellation requested by runtime.
+   Stopping host...
+   Host shutdown completed.
+   ```
+
+   このエラーは、以前にデザイナーを開こうとしたときに、プロジェクトを廃止または削除した場合に発生する可能性があります。 このエラーを解決するには、 **...\Users\\{your-username}\AppData\Local\Temp\Functions\ExtensionBundles** の位置にある **ExtensionBundles** フォルダーを削除し、デザイナーで **workflow.json** ファイルをもう一度開いてみてください。
+
+<a name="missing-triggers-actions"></a>
+
+### <a name="new-triggers-and-actions-are-missing-from-the-designer-picker-for-previously-created-workflows"></a>前に作成したワークフローのデザイナー ピッカーに新しいトリガーとアクションがない
+
+Azure Logic Apps プレビューでは、 **[XML の検証]** や **[XML の変換]** など、Azure 関数の操作、Liquid の操作、XML の操作に対する組み込みアクションがサポートされています。 ただし、以前に作成したロジック アプリでは、Visual Studio Code で古いバージョンの拡張機能バンドル `Microsoft.Azure.Functions.ExtensionBundle.Workflows` が使用されている場合、これらの操作がデザイナー ピッカーに表示されないことがあります。
+
+また、ロジック アプリを作成するときに **[Use connectors from Azure]\(Azure からのコネクタを使用する\)** を有効にするか、選択していない限り、 **[Azure Function Operations]\(Azure 関数操作\)** コネクタとアクションはデザイナー ピッカーに表示されません。 アプリの作成時に Azure によってデプロイされるコネクタを有効にしなかった場合は、Visual Studio Code でプロジェクトからそれらを有効にすることができます。 **workflow.json** のショートカット メニューを開き、 **[Use Connectors from Azure]\(Azure からのコネクタを使用する\)** を選択します。
+
+古くなったバンドルを修正するには、次の手順に従って古いバンドルを削除します。そうすると、Visual Studio Code により拡張機能バンドルが最新バージョンに自動的に更新されます。
+
+> [!NOTE]
+> この解決方法は、Visual Studio Code と Azure Logic Apps (プレビュー) 拡張機能を使用して作成およびデプロイしたロジック アプリにのみ適用され、Azure portal を使用して作成したロジック アプリには適用されません。 [サポートされているトリガーとアクションが Azure portal のデザイナーに表示されない場合](create-stateful-stateless-workflows-azure-portal.md#missing-triggers-actions)に関するページを参照してください。
+
+1. 失いたくない作業をすべて保存し、Visual Studio を閉じます。
+
+1. コンピューターで、次のフォルダーに移動します。このフォルダーには、既存のバンドルのバージョン管理されたフォルダーが含まれています。
+
+   `...\Users\{your-username}\.azure-functions-core-tools\Functions\ExtensionBundles\Microsoft.Azure.Functions.ExtensionBundle.Workflows`
+
+1. 以前のバンドルのバージョン フォルダーを削除します。たとえば、バージョン 1.1.3 のフォルダーがある場合は、そのフォルダーを削除します。
+
+1. 次に、必要な NuGet パッケージのバージョン管理されたフォルダーが含まれる次のフォルダーを参照します。
+
+   `...\Users\{your-username}\.nuget\packages\microsoft.azure.workflows.webjobs.extension`
+
+1. 以前のパッケージのバージョン フォルダーを削除します。たとえば、バージョン 1.0.0.8-preview のフォルダーがある場合は、そのフォルダーを削除します。
+
+1. Visual Studio Code とプロジェクト、およびデザイナーで **workflow.json** ファイルを、再度開きます。
+
+不足していたトリガーとアクションが、デザイナーに表示されるようになります。
+
 <a name="400-bad-request"></a>
 
-### <a name="400-bad-request"></a>"400 無効な要求です"
+### <a name="400-bad-request-appears-on-a-trigger-or-action"></a>"400 要求が正しくありません" がトリガーまたはアクションで表示される
 
 実行が失敗し、モニター ビューで実行を検査すると、このエラーが長い名前のトリガーまたはアクションで表示されることがあります。これが原因で、基になる URI (Uniform Resource Identifier) が既定の文字制限を超えてしまいます。
 
@@ -1061,7 +1287,7 @@ Visual Studio Code でステートレスなロジック アプリ ワークフ�
 
 ## <a name="next-steps"></a>次のステップ
 
-このパブリック プレビュー拡張機能を使用したお客様からのご意見をお待ちしております。
+Azure Logic Apps (プレビュー) 拡張機能でのエクスペリエンスについて、ご意見をお聞かせください。
 
 * バグまたは問題については、[GitHub で問題を作成してください](https://github.com/Azure/logicapps/issues)。
 * 質問、要望、コメント、その他のフィードバックについては、[このフィードバック フォームを使用してください](https://aka.ms/lafeedback)。

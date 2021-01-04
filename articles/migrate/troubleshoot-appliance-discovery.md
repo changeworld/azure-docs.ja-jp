@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 26bb61e0c5a473a56c57391b53009419453956fd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 90abe6bf680f6a186b970631dcd0a42d6d36bf94
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753418"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511588"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure Migrate アプライアンスと検出のトラブルシューティング
 
@@ -41,6 +41,13 @@ ms.locfileid: "96753418"
 - プロキシに承認資格情報が必要な場合は、それを提供します。
 - URL ベースのファイアウォール プロキシを使用して送信接続を制御している場合は、[以下の URL](migrate-appliance.md#url-access) を許可リストに追加します。
 - インターネットへの接続にインターセプト プロキシを使用している場合は、[こちらの手順](./migrate-appliance.md)を使用して、プロキシの証明書をアプライアンス VM にインポートします。
+
+
+## <a name="clicking-on-login-button-opens-a-new-tab-with-no-device-code"></a>[ログイン] ボタンをクリックすると、デバイス コードが含まれていない新しいタブが開く
+
+アプライアンスの構成マネージャーで [ログイン] をクリックした後に、コードが含まれていない新しいタブが開いた場合は、アプライアンスの構成マネージャー タブに戻ってください。次のスクリーンショットに示すように、[ログイン] ボタンの下にデバイス コードが太字で表示されます。 そのコードをコピーし、[ログイン] タブに貼り付けて、Azure での認証を行います。
+
+![デバイス コード](./media/troubleshoot-appliance-discovery/code.png)
 
 ## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>アプライアンス Web アプリから Azure にサインインできない
 

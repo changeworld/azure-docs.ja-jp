@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 68338341d47b8fa15d0bd88ea23e951210105fc4
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: d76ecc55c2e156199b2db789721946fd1f36de27
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340786"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922917"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Security Center でのテナント間の管理
 
@@ -30,10 +30,8 @@ ms.locfileid: "92340786"
 
 ## <a name="set-up-cross-tenant-management"></a>テナント間の管理を設定する
 
-[Azure の委任されたリソース管理](../lighthouse/concepts/azure-delegated-resource-management.md)を使用して、管理対象テナントのリソースへのアクセスを独自のテナントに委任することによって、テナント間の管理を設定します。
+Azure の委任されたリソース管理は、Azure Lighthouse の主要なコンポーネントの 1 つです。 Azure Lighthouse のドキュメントに記載されている手順に従って、管理対象テナントのリソースへのアクセスを自身のテナントに委任することによって、テナント間の管理を設定します: [Azure の委任されたリソース管理](../lighthouse/concepts/azure-delegated-resource-management.md)
 
-> [!NOTE]
-> Azure の委任されたリソース管理は、Azure Lighthouse の主要なコンポーネントの 1 つです。
 
 ## <a name="how-does-cross-tenant-management-work-in-security-center"></a>Security Center でのテナント間の管理のしくみ
 
@@ -46,9 +44,9 @@ ms.locfileid: "92340786"
 ビューとアクションは基本的に同じです。 次に例をいくつか示します。
 
 - **セキュリティ ポリシーの管理**:1 つのビューから、[ポリシー](tutorial-security-policy.md)を使用して多くのリソースのセキュリティ体制を管理し、セキュリティに関する推奨事項を使用してアクションを実行し、セキュリティに関連したデータを収集および管理します。
-- **セキュリティ スコアとコンプライアンス体制の向上**:テナント間の可視性を使用すると、すべてのテナントの全体的なセキュリティ体制を表示でき、また、それぞれの[セキュリティ スコア](secure-score-security-controls.md)と[コンプライアンス体制](security-center-compliance-dashboard.md)を最も改善できる場所と方法を確認できます。
-- **推奨事項の修復**:さまざまなテナントからの多くのリソースの[推奨事項](security-center-recommendations.md)を一度に監視して修復します。 そして、全テナントにわたって最も高いリスクを示す脆弱性にすぐに対処できます。
-- **アラートの管理**:さまざまなテナントにわたって[アラート](security-center-alerts-overview.md)を検出します。 実行可能な[修復の手順](security-center-managing-and-responding-alerts.md)に準拠していないリソースに対してアクションを実行します。
+- **セキュリティ スコアとコンプライアンス体制の向上**:テナント間の可視性を使用すると、すべてのテナントの全体的なセキュリティ体制を表示でき、また、それぞれの [セキュリティ スコア](secure-score-security-controls.md)と [コンプライアンス体制](security-center-compliance-dashboard.md)を最も改善できる場所と方法を確認できます。
+- **推奨事項の修復**:さまざまなテナントからの多くのリソースの [推奨事項](security-center-recommendations.md)を一度に監視して修復します。 そして、全テナントにわたって最も高いリスクを示す脆弱性にすぐに対処できます。
+- **アラートの管理**:さまざまなテナントにわたって [アラート](security-center-alerts-overview.md)を検出します。 実行可能な[修復の手順](security-center-managing-and-responding-alerts.md)に準拠していないリソースに対してアクションを実行します。
 
 - **高度なクラウド防御機能などの管理**:[Just-in-Time (JIT) VM アクセス](security-center-just-in-time.md)、[アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md)、[適応型アプリケーション制御](security-center-adaptive-application.md)などのさまざまな脅威の防止サービスを管理します。
  

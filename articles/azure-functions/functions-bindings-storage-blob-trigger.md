@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 45393f116149f6cf16763d2d7033f8425df235bf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fd33ca4c5d637e31230d8c124fdb9ec7c71d2ba7
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998843"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094847"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Blob Storage トリガー
 
@@ -322,6 +322,9 @@ public void run(
 ## <a name="blob-name-patterns"></a>BLOB 名のパターン
 
 *function.json* の `path` プロパティまたは `BlobTrigger` 属性コンストラクターで BLOB 名のパターンを指定することができます。 名前のパターンは、[フィルターまたはバインド式](./functions-bindings-expressions-patterns.md)にすることができます。 以下のセクションで、例を示します。
+
+> [!TIP]
+> 名前パターンでは、コンテナー名に競合回避モジュールを含めることはできません。
 
 ### <a name="get-file-name-and-extension"></a>ファイル名と拡張子の取得
 

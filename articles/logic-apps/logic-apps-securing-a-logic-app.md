@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 11/05/2020
-ms.openlocfilehash: 331c55a9f7a489aa58f9d3add7303dc18917215d
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.date: 12/08/2020
+ms.openlocfilehash: cdaa054559be9db52eeef6f3aaa0f86ccf84206f
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331942"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922949"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -199,7 +199,7 @@ Azure portal でロジック アプリの Azure AD OAuth を有効にするに�
    | プロパティ | 必須 | 説明 |
    |----------|----------|-------------|
    | **ポリシー名** | はい | 承認ポリシーに使用する名前 |
-   | **請求** | はい | ロジック アプリが受信呼び出しで指定できるクレームの種類と値。 クレームの値は 80 文字に制限されています。 使用可能なクレームの種類は次のとおりです。 <p><p>- **発行者** <br>- **対象ユーザー** <br>- **件名** <br>- **JWT ID** (JSON Web Token ID) <p><p>**クレーム** の一覧には、少なくとも **発行者** のクレームが含まれている必要があります。その値は、Azure AD 発行者 ID として、`https://sts.windows.net/` または `https://login.microsoftonline.com/` で始まっています。 これらのクレームの種類の詳細については、「[Azure AD のセキュリティ トークンの要求](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)」を参照してください。 独自のクレームの種類と値を指定することもできます。 |
+   | **請求** | はい | ロジック アプリが受信呼び出しで指定できるクレームの種類と値。 クレームの値は[最大文字数](logic-apps-limits-and-config.md#authentication-limits)に制限されます。 使用可能なクレームの種類は次のとおりです。 <p><p>- **発行者** <br>- **対象ユーザー** <br>- **件名** <br>- **JWT ID** (JSON Web Token ID) <p><p>**クレーム** の一覧には、少なくとも **発行者** のクレームが含まれている必要があります。その値は、Azure AD 発行者 ID として、`https://sts.windows.net/` または `https://login.microsoftonline.com/` で始まっています。 これらのクレームの種類の詳細については、「[Azure AD のセキュリティ トークンの要求](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)」を参照してください。 独自のクレームの種類と値を指定することもできます。 |
    |||
 
 1. 別のクレームを追加するには、次のオプションから選択します。
@@ -325,7 +325,7 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
    
      このオプションを使用すると、ロジック アプリのリソースに空の配列が書き込まれ、組み込みの **Azure Logic Apps** アクションが使用されている親ロジック アプリからの呼び出しでのみ、入れ子になったロジック アプリをトリガーできるように要求できます。
 
-   * HTTP アクションを使用してロジック アプリを入れ子になったアプリとしてのみ呼び出せるようにするには、 **[Only other Logic Apps]\(他のロジック アプリのみ\)** "*ではなく*"、 **[特定の IP 範囲]** を選択します。 **[トリガーの IP 範囲]** ボックスが表示されたら、親ロジック アプリの[送信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#outbound)を入力します。 有効な IP 範囲には、*x.x.x.x/x* または *x.x.x.x-x.x.x.x* の形式が使用されます。
+   * HTTP アクションを使用してロジック アプリを入れ子になったアプリとしてのみ呼び出せるようにするには、 **[Only other Logic Apps]\(他のロジック アプリのみ\)** "*ではなく*"、 **[特定の IP 範囲]** を選択します。 **[トリガーの IP 範囲]** ボックスが表示されたら、親ロジック アプリの [送信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#outbound)を入力します。 有効な IP 範囲には、*x.x.x.x/x* または *x.x.x.x-x.x.x.x* の形式が使用されます。
    
      > [!NOTE]
      > **[Only other Logic Apps]\(他のロジック アプリのみ\)** オプションと HTTP アクションを使用して入れ子になったロジック アプリを呼び出すと、呼び出しはブロックされ、"401 未承認" エラーが発生します。

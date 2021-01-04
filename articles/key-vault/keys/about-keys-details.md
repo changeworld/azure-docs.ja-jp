@@ -9,12 +9,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: ambapat
-ms.openlocfilehash: 76eedaabf52cf2d56b2feaa6dc2748c25bf7696c
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: b483ffc480f9ad750f8d9901d6bec382db2378c2
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423831"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368921"
 ---
 # <a name="key-types-algorithms-and-operations"></a>キーの種類、アルゴリズム、および操作
 
@@ -67,8 +67,8 @@ Key Vault では、コンテナーとマネージド HSM という 2 つのリ�
 
 ##  <a name="symmetric-key-algorithms"></a>対称キー アルゴリズム
 - **AES-KW** - AES キー ラップ ([RFC3394](https://tools.ietf.org/html/rfc3394))。
-- **AES-GCM** - Galois Counter Mode での AES 暗号化 ([NIST SP800-38d](https://csrc.nist.gov/publications/sp800))
-- **AES-CBC** - Cipher Block Chaining Mode での AES 暗号化 ([NIST SP800-38a](https://csrc.nist.gov/publications/sp800))
+- **AES-GCM** - Galois Counter Mode での AES 暗号化 ([NIST SP 800-38d](https://csrc.nist.gov/publications/sp800))
+- **AES-CBC** - Cipher Block Chaining Mode での AES 暗号化 ([NIST SP 800-38a](https://csrc.nist.gov/publications/sp800))
 
 > [!NOTE] 
 > 現在の AES-GCM 実装と、対応する API は試験段階です。 実装と API は、今後のイテレーションで大幅に変更される可能性があります。 

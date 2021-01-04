@@ -372,7 +372,7 @@
               href: search-indexer-howto-access-trusted-service-exception.md
             - name: プライベート エンドポイント経由のアクセス
               href: search-indexer-howto-access-private.md
-        - name: ID ベースのアクセス
+        - name: ドキュメント レベルのセキュリティ
           items:
             - name: セキュリティ フィルター
               href: search-security-trimming-for-azure-search.md
@@ -550,6 +550,8 @@
           href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
         - name: 開発者向けコース (Pluralsight)
           href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
+    - name: パートナー ソリューション
+      href: resource-partners-knowledge-mining.md
     - name: よく寄せられる質問
       href: search-faq-frequently-asked-questions.md
     - name: 価格

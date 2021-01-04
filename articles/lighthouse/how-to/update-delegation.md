@@ -3,12 +3,12 @@ title: 委任を更新する
 description: Azure Lighthouse に以前オンボードされた顧客の委任を更新する方法について説明します。
 ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 90827281ac9b05105700298494af0b60b0fa511f
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: e204d1f3546e6e978f91c7e808065a388a4af4b3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96610881"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093419"
 ---
 # <a name="update-a-delegation"></a>委任を更新する
 
@@ -17,7 +17,7 @@ ms.locfileid: "96610881"
 > [!TIP]
 > このトピックではサービス プロバイダーと顧客に言及しますが、[複数のテナントを管理している企業](../concepts/enterprise.md)では、同じプロセスを使用して Azure Lighthouse を設定し、自社の管理エクスペリエンスを強化することができます。
 
-[Azure Resource Manager (ARM) テンプレートを使用して顧客をオンボード](onboard-customer.md)した場合、その顧客に対して新しいデプロイを実行する必要があります。 変更内容に応じて、元のオファーを更新するか、元のオファーを削除して新しいものを作成することをお勧めします。
+[Azure Resource Manager テンプレート (ARM テンプレート) を使用して顧客をオンボード](onboard-customer.md)した場合、その顧客に対して新しいデプロイを実行する必要があります。 変更内容に応じて、元のオファーを更新するか、元のオファーを削除して新しいものを作成することをお勧めします。
 
 - **認可のみ変更する場合**:ARM テンプレートの **認可** セクションのみを変更することで、委任を更新できます。
 - **管理テナントを変更する場合**:前のオファーとは異なる **mspOfferName** を使用して、新しい ARM テンプレートを作成する必要があります。

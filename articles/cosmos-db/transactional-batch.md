@@ -7,17 +7,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 1f541b947c04619892291e47002ea9b0dbb6d38d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9f6692db2da3722507136a468d1dcbdc2985e73f
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340567"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347559"
 ---
 # <a name="transactional-batch-operations-in-azure-cosmos-db-using-the-net-sdk"></a>.NET SDK を使用した Azure Cosmos DB でのトランザクション バッチ操作
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-トランザクション バッチでは、コンテナー内の同じパーティション キーと共に成功または失敗のいずれかになる必要があるポイント操作のグループを記述します。 .NET SDK では、この操作のバッチを定義するために `TranscationalBatch` クラスを使用します。 すべての操作がトランザクション バッチ操作内で記述されている順序で成功した場合、トランザクションはコミットされます。 ただし、いずれかの操作が失敗した場合、トランザクション全体がロールバックされます。
+トランザクション バッチでは、コンテナー内の同じパーティション キーと共に成功または失敗のいずれかになる必要があるポイント操作のグループを記述します。 .NET SDK では、この操作のバッチを定義するために `TransactionalBatch` クラスを使用します。 すべての操作がトランザクション バッチ操作内で記述されている順序で成功した場合、トランザクションはコミットされます。 ただし、いずれかの操作が失敗した場合、トランザクション全体がロールバックされます。
 
 ## <a name="whats-a-transaction-in-azure-cosmos-db"></a>Azure Cosmos DB のトランザクションとは
 
@@ -51,7 +51,7 @@ TransactionalBatch batch = container.CreateTransactionalBatch(new PartitionKey(p
   .CreateItem<ChildClass>(child);
 ```
 
-次に、`ExecuteAsync` を呼び出す必要があります。
+次に、バッチで `ExecuteAsync` を呼び出す必要があります。
 
 ```csharp
 TransactionalBatchResponse batchResponse = await batch.ExecuteAsync();
@@ -72,7 +72,7 @@ using (batchResponse)
 }
 ```
 
-エラーが発生した場合は、失敗した操作に対応するエラーの状態コードが表示されます。 一方で、その他すべての操作では 424 状態コード (依存関係の失敗) が表示されます。 次の例では、既に存在する項目の作成を試行しているため、操作が失敗します (409 HttpStatusCode.Conflict)。 状態コードにより、トランザクション エラーの原因を特定するのが簡単になります。
+エラーが発生した場合は、失敗した操作に対応するエラーの状態コードが表示されます。 その他すべての操作では 424 状態コード (依存関係の失敗) が表示されます。 次の例では、既に存在する項目の作成を試行しているため、操作が失敗します (409 HttpStatusCode.Conflict)。 状態コードにより、トランザクション エラーの原因を特定できます。
 
 ```csharp
 // Parent's birthday!
@@ -100,7 +100,7 @@ using (failedBatchResponse)
 
 `ExecuteAsync` メソッドが呼び出されると、`TransactionalBatch` オブジェクト内のすべての操作がグループ化されて 1 つのペイロードにシリアル化され、Azure Cosmos DB サービスに 1 つの要求として送信されます。
 
-サービスによって、要求が受信され、トランザクション スコープ内のすべての操作が実行されて、同じシリアル化プロトコルを使用して応答が返されます。 この応答は成功または失敗のいずれかで、内部に個々の操作のすべての応答が含まれます。
+サービスによって、要求が受信され、トランザクション スコープ内のすべての操作が実行されて、同じシリアル化プロトコルを使用して応答が返されます。 この応答は成功または失敗のいずれかで、操作ごとの個々の操作の応答を提供します。
 
 SDK によって、結果を確認するための応答が公開され、必要に応じて、内部操作の各結果が抽出されます。
 
@@ -108,7 +108,7 @@ SDK によって、結果を確認するための応答が公開され、必要�
 
 現在、2 つの既知の制限があります。
 
-* Azure Cosmos DB の要求サイズ制限によって、`TransactionalBatch` ペイロードのサイズが 2 MB を超えてはならないことが指定され、最大実行時間は 5 秒です。
+* Azure Cosmos DB の要求サイズ制限によって、`TransactionalBatch` ペイロードのサイズが 2 MB を超えないよう制限されます。最大実行時間は 5 秒です。
 * パフォーマンスが期待どおりかつ SLA 内であるように、現在は `TransactionalBatch` ごとに 100 回の操作に制限されています。
 
 ## <a name="next-steps"></a>次のステップ

@@ -1,18 +1,18 @@
 ---
 title: テンプレート関数 - オブジェクト
-description: Azure Resource Manager テンプレートでオブジェクトを操作するために使用する関数について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) でオブジェクトを操作するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 7ed317b3506f00e71bbf97d5564cacec05032744
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5e13177db1a7cf2f19a822363cb3884474566add
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004519"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920460"
 ---
 # <a name="object-functions-for-arm-templates"></a>ARM テンプレート用のオブジェクト関数
 
-Resource Manager には、Azure Resource Manager (ARM) テンプレートでオブジェクトを操作する関数が複数用意されています。
+Resource Manager には、Azure Resource Manager テンプレート (ARM テンプレート) でオブジェクトを操作する関数が複数用意されています。
 
 * [contains](#contains)
 * [createObject](#createobject)
@@ -33,7 +33,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートでオ�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | container |はい |配列、オブジェクト、文字列 |検索対象の値を含む値。 |
 | itemToFind |はい |文字列または整数 |検索対象の値。 |
@@ -792,4 +792,4 @@ output arrayOutput array = union(firstArray, secondArray)
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Resource Manager テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。

@@ -121,7 +121,7 @@ HDInsight クラスターには、使用可能な Sqoop パッケージが既に
     -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
     ```
 
-   各 **part-m-** * ファイルは、ソース テーブル **Table1** 内の行に対応します。
+   各 **part-m-*** ファイルは、ソース テーブル **Table1** 内の行に対応します。
 
 ### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>検証する part-m-* ファイルのコンテンツを表示できます。
 

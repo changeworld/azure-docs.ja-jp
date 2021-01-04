@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 4eb32243df219d721d7baae80984c45d0fc4cf25
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a8ed834c9ab093ae063e386978bca4d73fa46543
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91339706"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400728"
 ---
 # <a name="debug-azure-api-management-policies-in-visual-studio-code"></a>Visual Studio Code で Azure API Management ポリシーをデバッグする
 
@@ -30,9 +30,11 @@ Azure API Management の[ポリシー](api-management-policies.md)では、API �
 
 ## <a name="prerequisites"></a>前提条件
 
-最初にこの[チュートリアル](get-started-create-service-instance.md)に従って、API Management Developer レベルのインスタンスを作成します。
+* 最初にこの[クイックスタート](get-started-create-service-instance.md)に従って、API Management Developer レベルのインスタンスを作成します。
 
-[Visual Studio Code](https://code.visualstudio.com/) と、Visual Studio Code 用の最新バージョンの [Azure API Management 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement)をインストールします。 
+* [Visual Studio Code](https://code.visualstudio.com/) と、Visual Studio Code 用の最新バージョンの [Azure API Management 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement)をインストールします。 
+
+* API を API Management インスタンスにインポートします。 手順の例については、「[チュートリアル: Visual Studio Code 用の API Management 拡張機能を使用して API をインポートおよび管理する](visual-studio-code-tutorial.md)」を参照してください。
 
 ## <a name="restrictions-and-limitations"></a>制限事項と制約事項
 

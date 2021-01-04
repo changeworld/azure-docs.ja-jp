@@ -8,12 +8,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 3b0a413db304b4f9d2c50a3d221c480f1e9dc37a
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 57cb1c405e00acb346421d64190a71e9211d21ff
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550680"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938836"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-purview"></a>Azure Purview を使用する、リソースのクォータの管理と引き上げ
  
@@ -23,7 +23,7 @@ Azure Purview はデータ ユーザーが使用するクラウド サービス�
  
 |**リソース**|  **既定の制限**  |**上限**|
 |---|---|---|
-|テナントあたりの Purview アカウント数 (すべてのサブスクリプションを結合)|3|サポートに問い合わせる|
+|リージョンあたり、テナントあたりの Purview アカウント数 (すべてのサブスクリプションを結合)|3|サポートに問い合わせる|
 |アカウントあたりの、スキャンに使用できる仮想コア数*|160|160|
 |特定時点でのアカウントあたりの同時実行スキャン数。 この制限は、スキャンされるデータ ソースの種類に基づきます。*|5 | 10 |
 |スキャンを実行できる最大時間|7 日|7 日|

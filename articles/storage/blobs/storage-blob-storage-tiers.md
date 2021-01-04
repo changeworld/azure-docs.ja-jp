@@ -3,17 +3,17 @@ title: Azure Blob Storage のアクセス層 - ホット、クール、および
 description: Azure Blob Storage のホット、クール、およびアーカイブ アクセス層について説明します。 階層制御がサポートされるストレージ アカウントを確認します。 ブロック BLOB ストレージ オプションを比較します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/29/2020
+ms.date: 12/08/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 87106cce018a2b2663de2a9abbb43b31ab58c125
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 51998c159018b614ab519766c54fdddf7437e95b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96007326"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96923989"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Azure Blob Storage のアクセス層 - ホット、クール、およびアーカイブ
 
@@ -111,6 +111,11 @@ BLOB をよりホットな層 (アーカイブからクール、アーカイブ�
 ### <a name="cool-and-archive-early-deletion"></a>クールおよびアーカイブの早期削除
 
 クール層 (GPv2 アカウントのみ) に移動された BLOB には、30 日のクール早期削除期間が適用されます。 アーカイブ層に移動された BLOB には、180 日のアーカイブ早期削除期間が適用されます。 この料金は日割り計算されます。 たとえば、BLOB をアーカイブに移動し、45 日後に削除するかホット層に移動した場合、その BLOB のアーカイブへの保存について、135 (180 - 45) 日分に相当する早期削除料金が適用されます。
+
+クールとアーカイブの層の間を移動する場合、いくつかの詳細があります。
+
+1. BLOB がストレージ アカウントの既定のアクセス層に基づいてクールと推定され、BLOB がアーカイブに移動された場合、早期削除料金は発生しません。
+1. BLOB が明示的にクール層に移動された後にアーカイブに移動された場合は、早期削除料金が適用されます。
 
 アクセス層の変更がなかった場合は、BLOB プロパティ **Last-Modified** を使用して、早期削除を計算できます。 それ以外の場合は、BLOB プロパティ **access-tier-change-time** を表示して、アクセス層が最後にクールまたはアーカイブに変更されたときを確認できます。 BLOB プロパティの詳細については、「[Get Blob Properties](/rest/api/storageservices/get-blob-properties)」を参照してください。
 

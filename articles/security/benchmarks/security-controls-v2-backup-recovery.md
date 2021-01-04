@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1ed477c6cf069dbb402e5bda9c1f48f7bc208f18
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 089cf521a7c5428833be340001c88b870c568a8f
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698803"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368887"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>セキュリティ コントロール V2:バックアップと回復
 
@@ -20,7 +20,7 @@ ms.locfileid: "94698803"
 
 ## <a name="br-1-ensure-regular-automated-backups"></a>BR-1:定期的な自動バックアップを保証する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | BR-1 | 10.1 | CP-2、CP4、CP-6、CP-9 |
 
@@ -50,7 +50,7 @@ geo 冗長ストレージ オプションを有効にして、セカンダリ �
 
 ## <a name="br-2-encrypt-backup-data"></a>BR-2:バックアップ データを暗号化する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | BR-2 | 10.2 | CP-9 |
 
@@ -80,7 +80,7 @@ Azure Backup を使用するオンプレミスのバックアップによって�
 
 ## <a name="br-3-validate-all-backups-including-customer-managed-keys"></a>BR-3:カスタマー マネージド キーを含むすべてのバックアップを検証する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | BR-3 | 10.3 | CP-4、CP-9 |
 
@@ -100,7 +100,7 @@ Azure Backup を使用するオンプレミスのバックアップによって�
 
 ## <a name="br-4-mitigate-risk-of-lost-keys"></a>BR-4:キー紛失のリスクを軽減する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | BR-4 | 10.4 | CP-9 |
 

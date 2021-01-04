@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: a0b0dc8c29bcdb51f7b348dd62e3d27796819a7d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: e0a1d8dba9ea284322584de3b4be2ae390d15fdf
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550812"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920263"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Azure Synapse Analytics の登録とスキャン
 
@@ -22,13 +22,17 @@ ms.locfileid: "96550812"
 
 Azure Synapse Analytics (旧称 SQL DW) では、メタデータとスキーマをキャプチャするためにフルおよび増分スキャンがサポートされています。 また、スキャンでは、システムおよびカスタムの分類規則に基づいてデータが自動的に分類されます。
 
+### <a name="known-limitations"></a>既知の制限事項
+
+Azure Purview では、Azure Synapse Analytics の[ビュー](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15)のスキャンはサポートされません。
+
 ## <a name="prerequisites"></a>前提条件
 
-- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[Azure Purview アカウントの作成](create-catalog-portal.md)に関するクイックスタートを参照してください。
+- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[クイック スタート: Azure Purview アカウントの作成](create-catalog-portal.md)に関する記事を参照してください。
 - Azure Purview データ ソース管理者である必要があります
 - Purview アカウントと Azure Synapse Analytics 間のネットワーク アクセス。
  
-## <a name="setting-up-authentication-for-a-scan"></a>スキャンでの認証の設定
+## <a name="setting-up-authentication-for-a-scan"></a>スキャンの認証の設定
 
 Azure Blob Storage の認証を設定するには、次の 3 つの方法があります。
 
@@ -75,10 +79,10 @@ GO
 1. [Azure portal](https://portal.azure.com) でサービス プリンシパルに移動します
 1. **[アプリケーション (クライアント) ID]** の値を **[概要]** から、および **[クライアント シークレット]** の値を **[証明書とシークレット]** からコピーします。
 1. お使いのキー コンテナーに移動する
-1. **[設定] > [シークレット]** を選択します
+1. **[設定] > [シークレット]** の順に選択します。
 1. **[生成/インポート]** を選択し、サービス プリンシパルの **クライアント シークレット** として任意の **名前** と **値** を入力します
-1. **[作成]** を選択して完了します
-1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります
+1. **[作成]** を選択して完了します。
+1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
 1. 最後に、サービス プリンシパルを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します 
 
 #### <a name="granting-the-service-principal-access-to-your-azure-synapse-analytics-formerly-sql-dw"></a>サービス プリンシパルに Azure Synapse Analytics (旧称 SQL DW) へのアクセス権を付与する
@@ -104,21 +108,21 @@ GO
 
 1. SQL ログインのパスワードを取得します
 1. お使いのキー コンテナーに移動する
-1. **[設定] > [シークレット]** を選択します
+1. **[設定] > [シークレット]** の順に選択します。
 1. **[+ 生成/インポート]** を選択し、SQL ログイン の "*パスワード*" として **名前** と **値** を入力します
-1. **[作成]** を選択して完了します
-1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります
+1. **[作成]** を選択して完了します。
+1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
 1. 最後に、キーを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
 
 ## <a name="register-an-azure-synapse-analytics-instance-formerly-sql-dw"></a>Azure Synapse Analytics (旧称 SQL DW) インスタンスの登録
 
 新しい Azure Synapse Analytics サーバーをデータ カタログに登録するには、次の操作を行います。
 
-1. Purview アカウントに移動します
-1. 左側のナビゲーションで **[ソース]** を選択します
+1. Purview アカウントに移動します。
+1. 左側のナビゲーションで **[ソース]** を選択します。
 1. **[登録]** を選択します
 1. **[ソースの登録]** で、 **[Azure Synapse Analytics (旧称 SQL DW)]** を選択します
-1. **[続行]** を選択します
+1. **[続行]** を選択します。
 
 **[ソースの登録 (Azure Synapse Analytics)]** 画面で、次の操作を行います。
 
@@ -134,6 +138,6 @@ GO
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Purview Data Catalog の参照](how-to-browse-catalog.md)
-- [Azure Purview Data Catalog を検索する](how-to-search-catalog.md)
+- [Azure Purview データ カタログを参照する](how-to-browse-catalog.md)
+- [Azure Purview データ カタログを検索する](how-to-search-catalog.md)
 

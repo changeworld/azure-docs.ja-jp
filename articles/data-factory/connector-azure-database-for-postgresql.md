@@ -1,6 +1,6 @@
 ---
-title: Azure Database for PostgreSQL との間でデータをコピーする
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure Database for PostgreSQL との間で双方向にデータをコピーする方法について説明します。
+title: Azure Database for PostgreSQL のデータのコピーと変換
+description: Azure Data Factory を使用して、Azure Database for PostgreSQL のデータをコピーして変換する方法について説明します。
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/26/2020
-ms.openlocfilehash: 11e0d3336f085ccae9a7fb83ed050d69a15ce42b
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.date: 12/08/2020
+ms.openlocfilehash: 2537167783f3e68c52c665dafa9378193852acb4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296507"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930400"
 ---
-# <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Database for PostgreSQL との間でデータをコピーする
+# <a name="copy-and-transform-data-in-azure-database-for-postgresql-by-using-azure-data-factory"></a>Azure Data Factory を使用して、Azure Database for PostgreSQL のデータをコピーして変換する
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティ機能を使用して、Azure Database for PostgreSQL からデータをコピーする方法について説明します。 コピー アクティビティの概要が説明されている「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」という記事を基に作成されています。
+この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Database for PostgreSQL との間でデータをコピーする方法、および Data Flow を使用して Azure Database for PostgreSQL のデータを変換する方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
 
 このコネクタは、[Azure Database for PostgreSQL サービス](../postgresql/overview.md)用に特化しています。 オンプレミスまたはクラウドにある汎用 PostgreSQL データベースからデータをコピーするには、[PostgreSQL コネクタ](connector-postgresql.md)を使用します。
 
@@ -31,11 +31,8 @@ ms.locfileid: "96296507"
 この Azure Database for PostgreSQL コネクタは、以下のアクティビティでサポートされています。
 
 - [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
+- [マッピング データ フロー](concepts-data-flow-overview.md)
 - [Lookup アクティビティ](control-flow-lookup-activity.md)
-
-Azure Database for PostgreSQL のデータを、サポートされているシンク データ ストアにコピーできます。 または、サポートされているソース データ ストアのデータを Azure Database for PostgreSQL にコピーすることができます。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表を参照してください。
-
-Azure Data Factory では、接続を可能にする組み込みのドライバーが提供されます。 そのため、このコネクタを使用するためにドライバーを手動でインストールする必要はありません。
 
 ## <a name="getting-started"></a>作業の開始
 
@@ -212,6 +209,63 @@ Azure Database for PostgreSQL からデータをコピーするには、コピ�
         }
     }
 ]
+```
+
+## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
+
+マッピング データ フローでデータを変換する場合、Azure Database for PostgreSQL からテーブルの読み取りと書き込みを実行できます。 詳細については、マッピング データ フローの[ソース変換](data-flow-source.md)と[シンク変換](data-flow-sink.md)に関する記事をご覧ください。 ソースとシンクの種類として、Azure Database for PostgreSQL データセットまたは[インライン データセット](data-flow-source.md#inline-datasets)を使用することができます。
+
+### <a name="source-transformation"></a>ソース変換
+
+次の表に、Azure Database for PostgreSQL ソースでサポートされるプロパティの一覧を示します。 これらのプロパティは、 **[ソース オプション]** タブで編集できます。
+
+| 名前 | 説明 | 必須 | 使用できる値 | データ フロー スクリプトのプロパティ |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| テーブル | [テーブル] を入力として選択した場合、データセットで指定されたテーブルからすべてのデータがデータ フローによってフェッチされます。 | いいえ | - |*(インライン データセットのみ)*<br>tableName |
+| クエリ | [クエリ] を入力として選択した場合は、ソースからデータをフェッチする SQL クエリを指定します。これにより、データセットで指定したテーブルがオーバーライドされます。 テストまたはルックアップ対象の行を減らすうえで、クエリの使用は有効な手段です。<br><br>**Order By** 句はサポートされていませんが、完全な SELECT FROM ステートメントを設定することができます。 ユーザー定義のテーブル関数を使用することもできます。 **select * from udfGetData()** は、データ フローで使用できるテーブルを返す SQL の UDF です。<br>クエリ例: `select * from mytable where customerId > 1000 and customerId < 2000` または `select * from "MyTable"`。 PostgreSQL では、エンティティ名が引用符で囲まれていない場合、大文字と小文字が区別されません。| いいえ | String | query |
+| バッチ サイズ | 大量データをバッチにまとめるバッチ サイズを指定します。 | いいえ | Integer | batchSize |
+| Isolation Level | 次のいずれかの分離レベルを選択します。<br>- コミットされたものを読み取り<br>- コミットされていないものを読み取り (既定値)<br>- 反復可能読み取り<br>- シリアル化可能<br>- なし (分離レベルを無視) | いいえ | <small>READ_COMMITTED<br/>READ_UNCOMMITTED<br/>REPEATABLE_READ<br/>SERIALIZABLE<br/>NONE</small> |isolationLevel |
+
+#### <a name="azure-database-for-postgresql-source-script-example"></a>Azure Database for PostgreSQL ソース スクリプトの例
+
+ソースの種類として Azure Database for PostgreSQL を使用する場合、関連付けられているデータ フロー スクリプトは次のようになります。
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    isolationLevel: 'READ_UNCOMMITTED',
+    query: 'select * from mytable',
+    format: 'query') ~> AzurePostgreSQLSource
+```
+
+### <a name="sink-transformation"></a>シンク変換
+
+次の表に、Azure Database for PostgreSQL シンクでサポートされるプロパティの一覧を示します。 これらのプロパティは、 **[シンク オプション]** タブで編集できます。
+
+| 名前 | 説明 | 必須 | 使用できる値 | データ フロー スクリプトのプロパティ |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| 更新方法 | 対象となるデータベースに対して許可される操作を指定します。 既定では、挿入のみが許可されます。<br>行を更新、アップサート、または削除するには、それらのアクションに対して行をタグ付けするために[行の変更変換](data-flow-alter-row.md)が必要になります。 | はい | `true` または `false` | deletable <br/>insertable <br/>updateable <br/>upsertable |
+| [キー列] | 更新、upsert、削除の場合、キー列 (複数可) を設定して、変更する行を決定する必要があります。<br>キーとして選択する列の名前は、後続の更新、upsert、削除の一部として使用されます。 そのため、シンク マッピングに存在する列を選択する必要があります。 | いいえ | Array | キー |
+| Skip writing key columns\(キー列の書き込みをスキップする) | キー列に値を書き込まない場合は、[Skip writing key columns]\(キー列の書き込みをスキップする\) を選択します。 | いいえ | `true` または `false` | skipKeyWrites |
+| テーブル アクション |書き込み前に変換先テーブルのすべての行を再作成するか削除するかを指定します。<br>- **なし**: テーブルに対してアクションは実行されません。<br>- **Recreate**:テーブルが削除され、再作成されます。 新しいテーブルを動的に作成する場合に必要です。<br>- **Truncate**:ターゲット テーブルのすべての行が削除されます。 | いいえ | `true` または `false` | recreate<br/>truncate |
+| バッチ サイズ | 各バッチで書き込まれる行の数を指定します。 バッチ サイズを大きくすると、圧縮とメモリの最適化が向上しますが、データをキャッシュする際にメモリ不足の例外が発生するリスクがあります。 | いいえ | Integer | batchSize |
+| 事前および事後の SQL スクリプト | データがシンク データベースに書き込まれる前 (前処理) と書き込まれた後 (後処理) に実行される複数行の SQL スクリプトを指定します。 | いいえ | String | preSQLs<br>postSQLs |
+
+#### <a name="azure-database-for-postgresql-sink-script-example"></a>Azure Database for PostgreSQL シンク スクリプトの例
+
+シンクの種類として Azure Database for PostgreSQL を使用する場合、関連付けられているデータ フロー スクリプトは次のようになります。
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    deletable:false,
+    insertable:true,
+    updateable:true,
+    upsertable:true,
+    keys:['keyColumn'],
+    format: 'table',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> AzurePostgreSQLSink
 ```
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ

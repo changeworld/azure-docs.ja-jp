@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 70cb1297c4b47f22f9eb5cc6992e6fcd6c58b364
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a41cd2ce14ceb452d783b472955de347199d0870
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545040"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109472"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL - フレキシブル サーバーの仮想ネットワークの作成と管理
 
@@ -25,7 +25,7 @@ Azure Database for MySQL フレキシブル サーバーでは、フレキシブ
 
 この記事では、Azure CLI を使用した **プライベート アクセス (VNet 統合)** での MySQL サーバーの作成について重点的に説明します。 *プライベート アクセス (VNet 統合)* を使用すると、フレキシブル サーバーを独自の [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md) にデプロイできます。 Azure Virtual Network では、非公開で、セキュリティで保護されたネットワーク通信が提供されます。 プライベート アクセスでは、MySQL サーバーへの接続は仮想ネットワーク内のみに制限されます。 詳細については、「[プライベート アクセス (VNet 統合)](./concepts-networking.md#private-access-vnet-integration)」を参照してください。
 
-Azure Database for MySQL フレキシブル サーバーでは、サーバーの作成時にのみ、サーバーを仮想ネットワークとサブネットにデプロイできます。 フレキシブル サーバーを仮想ネットワークとサブネットにデプロイした後は、別の仮想ネットワーク、サブネット、または " *パブリック アクセス (許可された IP アドレス)* " に移動することはできません。
+Azure Database for MySQL フレキシブル サーバーでは、サーバーの作成時にのみ、サーバーを仮想ネットワークとサブネットにデプロイできます。 フレキシブル サーバーを仮想ネットワークとサブネットにデプロイした後は、別の仮想ネットワーク、サブネット、または "*パブリック アクセス (許可された IP アドレス)* " に移動することはできません。
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
@@ -50,7 +50,7 @@ az account set --subscription <subscription id>
 ```
 
 ## <a name="create-azure-database-for-mysql-flexible-server-using-cli"></a>CLI を使用して Azure Database for MySQL フレキシブル サーバーを作成する
-`az mysql flexible-server` コマンドを使用して、 *プライベート アクセス (VNet 統合)* を使用するフレキシブル サーバーを作成できます。 このコマンドでは、既定の接続方法としてプライベート アクセス (VNet 統合) を使用します。 何も指定しない場合は、仮想ネットワークとサブネットが自動的に作成されます。 サブネット ID を使用して、既に存在する仮想ネットワークとサブネットを指定することもできます。 <!-- You can provide the **vnet**,**subnet**,**vnet-address-prefix** or**subnet-address-prefix** to customize the virtual network and subnet.--> 次の例に示すように、CLI を使用してフレキシブル サーバーを作成するためのさまざまなオプションがあります。
+`az mysql flexible-server` コマンドを使用して、*プライベート アクセス (VNet 統合)* を使用するフレキシブル サーバーを作成できます。 このコマンドでは、既定の接続方法としてプライベート アクセス (VNet 統合) を使用します。 何も指定しない場合は、仮想ネットワークとサブネットが自動的に作成されます。 サブネット ID を使用して、既に存在する仮想ネットワークとサブネットを指定することもできます。 <!-- You can provide the **vnet**,**subnet**,**vnet-address-prefix** or**subnet-address-prefix** to customize the virtual network and subnet.--> 次の例に示すように、CLI を使用してフレキシブル サーバーを作成するためのさまざまなオプションがあります。
 
 >[!Important]
 > このコマンドを使用すると、サブネットが **Microsoft.DBforMySQL/flexibleServers** に委任されます。 この委任は、Azure Database for MySQL フレキシブル サーバーのみがそのサブネットを使用できることを意味します。 委任されたサブネットに他の Azure リソースの種類を含めることはできません。
@@ -62,21 +62,22 @@ Azure CLI の[リファレンス ドキュメント](/cli/azure/mysql/flexible-s
     ```azurecli-interactive
     az mysql flexible-server create
     ```
-<!--- Create a flexible server using already existing virtual network and subnet
+- 既存の仮想ネットワークおよびサブネットを使用して、フレキシブル サーバーを作成します。 指定された仮想ネットワークとサブネットが存在しない場合、既定のアドレス プレフィックスを持つ仮想ネットワークとサブネットが作成されます。
     ```azurecli-interactive
     az mysql flexible-server create --vnet myVnet --subnet mySubnet
-    ```-->
+    ```
+
 - 既存の仮想ネットワーク、サブネット、およびサブネット ID を使用して、フレキシブル サーバーを作成します。 指定されたサブネットには他のリソースがデプロイされていない必要があります。このサブネットは、まだ委任されていない場合は **Microsoft.DBforMySQL/flexibleServers** に委任されます。
     ```azurecli-interactive
     az mysql flexible-server create --subnet /subscriptions/{SubID}/resourceGroups/{ResourceGroup}/providers/Microsoft.Network/virtualNetworks/{VNetName}/subnets/{SubnetName}
     ```
     > [!Note]
     > 想ネットワークとサブネットは、フレキシブル サーバーと同じリージョンおよびサブスクリプション内に存在する必要があります。
-<!--
-- Create a flexible server using new virtual network, subnet with non-default address prefix
+<
+- 新しい仮想ネットワーク、既定以外のアドレス プレフィックスを持つサブネットを使用して、フレキシブル サーバーを作成します。
     ```azurecli-interactive
-    az mysql flexible-server create --vnet myVnet --vnet-address-prefix 10.0.0.0/24 --subnet mySubnet --subnet-address-prefix 10.0.0.0/24
-    ```-->
+    az mysql flexible-server create --vnet myVnet --address-prefixes 10.0.0.0/24 --subnet mySubnet --subnet-prefixes 10.0.0.0/24
+    ```
 Azure CLI の[リファレンス ドキュメント](/cli/azure/mysql/flexible-server)で、構成可能な CLI パラメーターの完全な一覧を参照してください。
 
 

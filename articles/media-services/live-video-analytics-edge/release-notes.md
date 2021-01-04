@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge リリース ノート - Azure
 description: このトピックでは、Live Video Analytics on IoT Edge のリリース、機能強化、バグ修正、および既知の問題に関するリリース ノートを提供します。
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 18da50fe763ef7c5fc3c06ac00052679c488cae7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 2800d41340e45867ea4126733cdb5968cf8b91c5
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015636"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400847"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Live Video Analytics on IoT Edge リリース ノート
 
@@ -23,9 +23,23 @@ ms.locfileid: "92015636"
 
 <hr width=100%>
 
+## <a name="december-14-2020"></a>2020 年 12 月 14 日
+このリリースは、Live Video Analytics on IoT Edge のパブリック プレビューの更新リリースです。 リリース タグは、次のとおりです。
+
+```
+     mcr.microsoft.com/media/live-video-analytics:2.0.0
+```
+### <a name="module-updates"></a>モジュールの更新
+* 複数の HTTP 拡張プロセッサおよび gRPC 拡張機能プロセッサをグラフトポロジごとに使用するためのサポートが追加されました。
+* シンク ノードのディスク領域管理のサポートが追加されました。
+* `MediaGraphGrpcExtension` ノードで、1 つの gRPC サーバー内で複数の AI モデルを使用するための [extensionConfiguration](grpc-extension-protocol.md) プロパティがサポートされるようになりました。
+* [Prometheus 形式](https://prometheus.io/docs/practices/naming/)での Live Video Analytics モジュール メトリックの収集がサポートされるようになりました 
+* フレーム レート フィルター プロセッサは、**非推奨** となります。  
+    * グラフ拡張機能のプロセッサ ノード自体でフレーム レート管理を使用できるようになりました。
+
 ## <a name="september-22-2020"></a>2020 年 9 月 22 日
 
-モジュールの 2020 年 9 月の更新に関するこのリリース タグは次のとおりです。
+このリリース タグは、モジュールの 2020 年 9 月の更新用です:
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.4
@@ -48,7 +62,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.4
 
 ## <a name="august-19-2020"></a>2020 年 8 月 19 日
 
-モジュールの 2020 年 8 月の更新に関するこのリリース タグは次のとおりです。
+このリリース タグは、モジュールの 2020 年 8 月の更新用です:
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.3
@@ -73,7 +87,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 
 ## <a name="july-13-2020"></a>2020 年 7 月 13 日
 
-モジュールの 2020 年 7 月の更新に関するこのリリース タグは次のとおりです。
+このリリース タグは、モジュールの 2020 年 7 月の更新用です:
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.2

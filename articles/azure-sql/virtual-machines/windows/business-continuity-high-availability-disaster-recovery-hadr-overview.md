@@ -8,17 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 194c6a5cead400e1bac78ba42cb7238b64bd3b7b
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 1a0d1018991be9d78623b0826aeab3d13958e996
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327476"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504136"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server のビジネス継続性と HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -84,9 +85,13 @@ SQL Server の高可用性ソリューションは、Always On 可用性グル�
 
 [ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)を所有している場合は、パッシブ ディザスター リカバリー インスタンスの追加のライセンス コストを発生させることなく、SQL Server でハイブリッド ディザスター リカバリー (DR) プランを実装できます。
 
-次の図では、12 個のコアを使用するオンプレミスの SQL Server デプロイ用のディザスター リカバリー レプリカとして、12 個のコアを使用する Azure 仮想マシンで実行されている SQL Server が、セットアップで使用されています。 これまでは、オンプレミス デプロイと Azure Virtual Machines デプロイのために、SQL Server の 12 個のコアをライセンスする必要がありました。 新しい特典では、Azure 仮想マシン上で実行するためのパッシブ レプリカの特典が提供されます。 現在は、Azure Virtual Machines 上のパッシブ レプリカのディザスター リカバリーの条件が満たされている限り、オンプレミスで実行されている SQL Server の 12 個のコアのみをライセンスする必要があります。
+たとえば、3 つのレプリカすべてが Azure 内でホストされている場合は、2 つの無料パッシブ セカンダリを使用できます。 
 
-![Azure の無料のディザスター リカバリー レプリカ](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/free-dr-replica-azure.png)
+![すべてが Azure 内の場合、2 つの無料パッシブ](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-primary-in-azure.png)
+
+または、1 つのライセンスされたプライマリ (オンプレミス)、1 つの HA 用無料パッシブと 1 つの DR 用無料パッシブ (オンプレミス)、および 1 つの DR 用無料パッシブ (Azure 内) を使用して、ハイブリッド フェールオーバー環境を構成することもできます。
+
+![環境が、1 つのオンプレミスのプライマリ レプリカを使用したハイブリッドのときの 3 つの無料パッシブ](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-with-primary-on-prem.png)
 
 詳細については、[製品ライセンス条項](https://www.microsoft.com/licensing/product-licensing/products)に関するページを参照してください。 
 

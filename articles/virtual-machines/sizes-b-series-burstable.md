@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 819654ef88584cb91d6032e46256258aaed524fd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ea812df825288eae3822cce01b24ebc82534c541
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500310"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928819"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>負荷の急増に対応できる B シリーズ仮想マシンのサイズ
 
@@ -132,7 +132,7 @@ Azure でメトリック データにアクセスする方法の詳細につい�
 
 ### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>Q: 再デプロイまたは停止/起動後、クレジットの残りが 0 に設定されるのはなぜですか?
 
-**A**: VM が "再デプロイ" されて VM が別のノードに移動すると、累計されたクレジットは失われます。 VM を起動/停止したが、同じノードにとどまっていれば、VM は 累積されたクレジットを保持します。 ノードで VM を新たに起動するたびに初期クレジットが取得されます (Standard_B8ms では 240)。
+**A**: VM が再デプロイされて VM が別のノードに移動すると、累計されたクレジットは失われます。 VM を起動/停止したが、同じノードにとどまっていれば、VM は 累積されたクレジットを保持します。 ノードで VM を新たに起動するたびに初期クレジットが取得されます (Standard_B8ms では 240)。
 
 ### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>Q:サポートされていない OS イメージを B1ls にデプロイするとどうなりますか?
 

@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory External Identities の新機能
 description: Azure Active Directory External Identities の新規および更新されたドキュメント。
-ms.date: 12/03/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,32 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 35fa6909160ca707035ee9fc599e4035c2ae7981
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e614507fbcfce5fc006983e0be7963223bb0b7ed
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573903"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562380"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory External Identities:新機能
 
 Azure Active Directory External Identities のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 External Identities サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="updated-articles"></a>更新された記事
+
+- [Azure Active Directory B2B コラボレーションの FAQ](faq.md)
+- [Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する](google-federation.md)
+- [外部 ID に対する ID プロバイダー](identity-providers.md)
+- [Azure Active Directory B2B コラボレーションの招待の利用](redemption-experience.md)
+- [API コネクタをユーザー フローに追加する](self-service-sign-up-add-api-connector.md)
+- [カスタム承認ワークフローをセルフサービス サインアップに追加する](self-service-sign-up-add-approvals.md)
+- [Azure Active Directory B2B コラボレーションのトラブルシューティング](troubleshoot.md)
+- [Azure Active Directory B2B のゲスト ユーザー アクセスとは](what-is-b2b.md)
+- [Azure Active Directory B2B のベスト プラクティス](b2b-fundamentals.md)
+- [B2B 外部コラボレーションを有効にしてゲストを招待できるユーザーを管理する](delegate-invitations.md)
+- [電子メール ワンタイム パスコード認証](one-time-passcode.md)
 
 ## <a name="november-2020"></a>2020 年 11 月
 

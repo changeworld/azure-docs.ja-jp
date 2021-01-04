@@ -4,15 +4,15 @@ description: Azure Cosmos アカウントでファイアウォールをサポー
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/13/2020
+ms.date: 12/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ec4ec5b3ea522200562d05d1891f46e69c9e5ca8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b4e01375388f12b828d9adcb1e2ed8851061a0bf
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092162"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560731"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB で IP ファイアウォールを構成する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -21,7 +21,7 @@ ms.locfileid: "93092162"
 
 ## <a name="ip-access-control"></a><a id="ip-access-control-overview"></a>IP アクセス制御
 
-既定では、有効な承認トークンと共に要求が送信されれば、Azure Cosmos アカウントにインターネットからアクセスすることができます。 IP ポリシー ベースのアクセス制御を構成するためには、特定の Azure Cosmos アカウントにアクセスするクライアント IP の許可リストとして追加する一連の IP アドレスまたは IP アドレス範囲を CIDR (Classless Inter-Domain Routing) 形式でユーザーが指定する必要があります。 この構成を適用すると、この許可リストにないマシンを発信元とするすべての要求で、403 (禁止) 応答が受信されます。 IP ファイアウォールを使用している場合は、Azure portal からアカウントへのアクセスを許可することをお勧めします。 データ エクスプローラーの使用を許可するため、また、Azure portal に表示されるアカウントのメトリックを取得するために、アクセスが必要になります。 データ エクスプローラーを使用する場合は、Azure portal にアカウントへのアクセスを許可するだけでなく、ファイアウォール規則に現在の IP アドレスを追加するようファイアウォール設定を更新する必要もあります。 ファイアウォールの変更が反映されるまでに最大 15 分かかる場合があります。
+既定では、有効な承認トークンと共に要求が送信されれば、Azure Cosmos アカウントにインターネットからアクセスすることができます。 IP ポリシー ベースのアクセス制御を構成するためには、特定の Azure Cosmos アカウントにアクセスするクライアント IP の許可リストとして追加する一連の IP アドレスまたは IP アドレス範囲を CIDR (Classless Inter-Domain Routing) 形式でユーザーが指定する必要があります。 この構成を適用すると、この許可リストにないマシンを発信元とするすべての要求で、403 (禁止) 応答が受信されます。 IP ファイアウォールを使用している場合は、Azure portal からアカウントへのアクセスを許可することをお勧めします。 データ エクスプローラーの使用を許可するため、また、Azure portal に表示されるアカウントのメトリックを取得するために、アクセスが必要になります。 データ エクスプローラーを使用する場合は、Azure portal にアカウントへのアクセスを許可するだけでなく、ファイアウォール規則に現在の IP アドレスを追加するようファイアウォール設定を更新する必要もあります。 ファイアウォールの変更が反映されるまでに最大 15 分かかる場合があり、この期間中はファイアウォールの動作が不安定になる場合があります。
 
 IP ベースのファイアウォールと、サブネットおよび VNET のアクセス制御を組み合わせることができます。 これらを組み合わせることで、パブリック IP を保持する任意のソースへのアクセスや、VNET 内の特定のサブネットからのアクセスを制限できます。 サブネットおよび VNET ベースのアクセス制御に関する詳細については、[仮想ネットワークから Azure Cosmos DB リソースへのアクセス](./how-to-configure-vnet-service-endpoint.md)に関するページを参照してください。
 
@@ -31,7 +31,7 @@ IP ベースのファイアウォールと、サブネットおよび VNET の�
 
 * Azure portal から
 * Azure Resource Manager テンプレートを使用した宣言による
-* Azure CLI または Azure PowerShell を介してプログラムで、 **ipRangeFilter** プロパティを更新する。
+* Azure CLI または Azure PowerShell を介してプログラムで、**ipRangeFilter** プロパティを更新する。
 
 ## <a name="configure-an-ip-firewall-by-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Azure portal を使用して IP ファイアウォールを構成する
 
@@ -218,7 +218,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a name="sdks"></a>SDK
 
-許可リストに入っていないマシンから SDK を使用して Azure Cosmos DB リソースにアクセスすると、 **許可されていません 403** という一般的な応答が返され、詳しい情報は示されません。 ご利用の Azure Cosmos DB アカウントに対する IP 許可リストを確認し、そのアカウントに正しいポリシー構成が確実に適用されるようにします。
+許可リストに入っていないマシンから SDK を使用して Azure Cosmos DB リソースにアクセスすると、**許可されていません 403** という一般的な応答が返され、詳しい情報は示されません。 ご利用の Azure Cosmos DB アカウントに対する IP 許可リストを確認し、そのアカウントに正しいポリシー構成が確実に適用されるようにします。
 
 ### <a name="source-ips-in-blocked-requests"></a>ブロックされた要求内のソース IP
 
@@ -226,7 +226,7 @@ Azure Cosmos DB アカウントで診断ログを有効にします。 これら
 
 ### <a name="requests-from-a-subnet-with-a-service-endpoint-for-azure-cosmos-db-enabled"></a>Azure Cosmos DB 用のサービス エンドポイントが有効にされているサブネットからの要求
 
-Azure Cosmos DB 用のサービス エンドポイントが有効にされている仮想ネットワーク内のサブネットからの要求では、仮想ネットワークおよびサブネットの ID が Azure Cosmos DB アカウントに送信されます。 これらの要求にはソースのパブリック IP がないため、IP フィルターでは拒否されます。 仮想ネットワーク内の特定のサブネットからのアクセスを許可するには、[ご利用の Azure Cosmos DB アカウントへの仮想ネットワークおよびサブネット ベースのアクセスを構成する方法](how-to-configure-vnet-service-endpoint.md)に関するページに概説されているアクセス制御リストを追加します。 ファイアウォール規則が適用されるまで、最大で 15 分かかる場合があります。
+Azure Cosmos DB 用のサービス エンドポイントが有効にされている仮想ネットワーク内のサブネットからの要求では、仮想ネットワークおよびサブネットの ID が Azure Cosmos DB アカウントに送信されます。 これらの要求にはソースのパブリック IP がないため、IP フィルターでは拒否されます。 仮想ネットワーク内の特定のサブネットからのアクセスを許可するには、[ご利用の Azure Cosmos DB アカウントへの仮想ネットワークおよびサブネット ベースのアクセスを構成する方法](how-to-configure-vnet-service-endpoint.md)に関するページに概説されているアクセス制御リストを追加します。 ファイアウォール規則が適用されるまでに最大 15 分かかる場合があり、この期間中はファイアウォールの動作が不安定になる場合があります。
 
 ### <a name="private-ip-addresses-in-list-of-allowed-addresses"></a>許可されたアドレスのリスト内のプライベート IP アドレス
 

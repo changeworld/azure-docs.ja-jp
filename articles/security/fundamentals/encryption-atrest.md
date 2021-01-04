@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 092320db9b7fe2b1f3fe142f84ad201d40dc6e2e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1318aaf50d4f05b8a999e5661318dc83997a2f02
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492286"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920783"
 ---
 # <a name="azure-data-encryption-at-rest"></a>保存時の Azure データの暗号化
 
@@ -33,7 +33,7 @@ Microsoft Azure には、会社のセキュリティとコンプライアンス�
 
 ## <a name="what-is-encryption-at-rest"></a>保存データの暗号化とは
 
-保存データの暗号化とは、データが永続化されるときに、データをエンコード (暗号化) することです。 Azure の保存時の暗号化では、対称暗号化を使用して暗号化し、単純な概念モデルに基づいて大量のデータをすばやく復号化します。
+暗号化は、データの機密保護に使用されるデータを安全に符号化することです。 Azure の保存時の暗号化では、対称暗号化を使用して暗号化し、単純な概念モデルに基づいて大量のデータをすばやく復号化します。
 
 - データがストレージに書き込まれるときに、対称暗号化キーを使用してデータが暗号化されます。
 - メモリで使用する準備を行ときに、同じ暗号化キーを使用してデータが複合化されます。

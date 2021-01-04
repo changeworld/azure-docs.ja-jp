@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 3ac90b79053e59047dbe64598688e77b9df059d1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: b51be165d3d05ae753c7e0e5536a157fbbacf1ab
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358713"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938632"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB の課金内容を理解する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -130,7 +130,7 @@ ms.locfileid: "93358713"
 |**Item** |**使用量 (月あたり)**|**料金** |**毎月のコスト** |
 |---------|---------|---------|-------|
 |米国西部のコンテナーのスループット料金 (すべてのリージョンが書き込み可能)       | 10K RU/秒 * 24 * 30    |1 時間あたり 100 RU/秒で $0.016    |$1,152 |
-|追加された 3 つのリージョン (米国東部、北ヨーロッパ、東アジア) のスループット料金 (すべてのリージョンが書き込み可能)        | (3 + 1) * 10K RU/秒 * 24 * 30    |1 時間あたり 100 RU/秒で $0.016   |$4,608 |
+|追加された 3 つのリージョン (米国東部、北ヨーロッパ、東アジア) のスループット料金 (すべてのリージョンが書き込み可能)        | 3 * 10K RU/秒 * 24 * 30    |1 時間あたり 100 RU/秒で $0.016   |$3,456 |
 |米国西部のコンテナーのストレージ料金      | 250 GB    |$0.25/GB  |$62.50|
 |追加された 3 つのリージョン (米国東部、北ヨーロッパ、東アジア) のストレージ料金      | 3 * 250 GB    |$0.25/GB  |$187.50|
 |**合計**     |     |  |**$6,010**|

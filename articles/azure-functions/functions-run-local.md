@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 3cf495ca0687e6fa37f619615fb1529659a462dc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: efb91c7b26c67a3672abb3f9cc8992fd45971a25
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020362"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932457"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -155,7 +155,7 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
 
 ## <a name="create-a-local-functions-project"></a>ローカル関数プロジェクトを作成する
 
-関数プロジェクト ディレクトリには、[host.json](functions-host-json.md) ファイル、[local.settings.json](#local-settings-file) ファイル、および個々の関数のコードを含むサブフォルダーが含まれています。 このディレクトリは、Azure の関数アプリに相当します。 Functions のフォルダー構造の詳細については、[Azure Functions の開発者向けガイド](functions-reference.md#folder-structure)を参照してください。
+Functions プロジェクト ディレクトリには、[host.json](functions-host-json.md) および [local.settings.json](#local-settings-file) ファイル、および個々の関数のコードを含むサブフォルダーが含まれています。 このディレクトリは、Azure の関数アプリに相当します。 Functions のフォルダー構造の詳細については、[Azure Functions の開発者向けガイド](functions-reference.md#folder-structure)を参照してください。
 
 バージョン 3.x/2.x では、プロジェクトの初期化時に既定の言語を選択する必要があります。 バージョン 3.x/2.x では、追加されたすべての関数に既定の言語テンプレートが使用されます。 バージョン 1.x では、関数を作成するたびに言語を指定します。
 

@@ -5,12 +5,12 @@ description: テイントと容認、ノード セレクターとアフィニテ
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: c0c1f587b4e52607e9466300f976a52874c9e5ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1a8138b4b2fdab2cdef8d2cb4c27de8d12ef38cd
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993705"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107348"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス
 
@@ -131,7 +131,7 @@ spec:
 
 ### <a name="node-affinity"></a>ノード アフィニティ
 
-ノード セレクターは、特定のノードにポッドを割り当てる基本的な方法です。 "*ノード アフィニティ*" を使用すると柔軟性が増します。 ノード アフィニティでは、ポッドがノードと一致しない場合の動作を定義します。 ポッドがラベル付けされたホストと一致することを、"*必須*" として指定できます。 または、一致することが "*望ましい*" けれども、一致するものがない場合は別のホストでのポッドのスケジュールを許可することもできます。
+ノード セレクターは、特定のノードにポッドを割り当てる基本的な方法です。 "*ノード アフィニティ*" を使用すると柔軟性が増します。 ノード アフィニティでは、ポッドがノードと一致しない場合の動作を定義します。 ポッドがラベル付けされたホストと一致することを、"*必須*" として指定できます。 または、一致することが "*望ましい*" が、一致するものがない場合は別のホストでのポッドのスケジュールを許可することもできます。
 
 次の例では、ノード アフィニティを *requiredDuringSchedulingIgnoredDuringExecution* に設定しています。 このアフィニティでは、一致するラベルを持つノードを使用することが要求されます。 使用できるノードがない場合、ポッドはスケジュールの継続を待機する必要があります。 別のノードでポッドをスケジュールできるようにするには、代わりに値を *preferredDuringSchedulingIgnoreDuringExecution* に設定します。
 

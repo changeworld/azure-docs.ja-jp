@@ -7,15 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 10/16/2020
+ms.date: 12/09/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: a5b019068368f1c0c076f5a1ed157c288bb7169c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 06a9a955e8a963f94b1885abf5a920cb96c01940
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479920"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007442"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure portal を使用して Azure でのロールの割り当てを一覧表示する
 
@@ -26,7 +25,7 @@ ms.locfileid: "92479920"
 
 ## <a name="list-role-assignments-for-a-user-or-group"></a>ユーザーまたはグループのロールの割り当てを一覧表示する
 
-サブスクリプションのユーザーまたはグループに割り当てられているロールを最も簡単に確認する方法は、 **[Azure でのロールの割り当て]** ペインを使用することです。
+サブスクリプションのユーザーまたはグループに割り当てられているロールを簡単に確認する方法は、 **[Azure ロールの割り当て]** ペインを使用することです。
 
 1. Azure portal で、Azure portal メニューから **[すべてのサービス]** を選択します。
 
@@ -56,7 +55,7 @@ ms.locfileid: "92479920"
 
 1. **[所有者]** セクションまでスクロールして、このサブスクリプションの所有者ロールが割り当てられているすべてのユーザーを表示します。
 
-   ![サブスクリプションへのアクセスの制御 - [ロールの割り当て] タブ](./media/role-assignments-list-portal/access-control-role-assignments-subscription.png)
+   ![サブスクリプションへのアクセスの制御 - [ロールの割り当て] タブ](./media/role-assignments-list-portal/sub-access-control-role-assignments-owners.png)
 
 ## <a name="list-role-assignments-at-a-scope"></a>あるスコープのロールの割り当てを一覧表示する
 
@@ -68,7 +67,7 @@ ms.locfileid: "92479920"
 
 1. **[ロールの割り当て]** タブをクリックして、このスコープのすべてのロールの割り当てを表示します。
 
-   ![アクセス制御 - [ロールの割り当て] タブ](./media/role-assignments-list-portal/access-control-role-assignments.png)
+   ![アクセス制御 - [ロールの割り当て] タブ](./media/role-assignments-list-portal/rg-access-control-role-assignments.png)
 
    [ロールの割り当て] タブでは、このスコープにアクセス権があるユーザーを確認できます。 スコープが **[このリソース]** のロールもあれば、別のスコープからスコープを **[(継承)]** しているロールもあることに注目してください。 アクセス権は、このリソースに明確に割り当てられるか、または親スコープへの割り当てから継承されます。
 
@@ -84,19 +83,23 @@ ms.locfileid: "92479920"
 
 1. **[アクセスの確認]** タブをクリックします。
 
-    ![アクセス制御 - [アクセスの確認] タブ](./media/role-assignments-list-portal/access-control-check-access.png)
+    ![リソース グループのアクセス制御 - [アクセスの確認] タブ](./media/role-assignments-list-portal/rg-access-control-check-access.png)
 
-1. **[検索]** 一覧で、アクセス権を確認するセキュリティ プリンシパルの種類を選択します。
+1. **[検索]** ボックスの一覧で、アクセスを確認するユーザー、グループ、サービス プリンシパル、またはマネージド ID を選択します。
 
 1. 検索ボックスに、表示名、メール アドレス、またはオブジェクト識別子のディレクトリを検索するための文字列を入力します。
 
-    ![[アクセスの確認] の選択リスト](./media/role-assignments-list-portal/check-access-select.png)
+    ![[アクセスの確認] の選択リスト](./media/shared/rg-check-access-select.png)
 
 1. セキュリティ プリンシパルをクリックして **[割り当て]** ウィンドウを開きます。
 
-    ![[割り当て] ウィンドウ](./media/role-assignments-list-portal/check-access-assignments.png)
+    このウィンドウでは、このスコープで選択し、このスコープに継承された、セキュリティ プリンシパルのアクセス権を確認できます。 子スコープでの割り当ては表示されません。 次の割り当てが表示されます。
 
-    このウィンドウでは、選択したセキュリティ プリンシパルに割り当てられているロールとスコープを確認できます。 このスコープに拒否割り当てがある場合、またはこのスコープに継承されている場合は、それが表示されます。
+    - Azure RBAC で追加されたロール割り当て。
+    - Azure Blueprints または Azure マネージド アプリを使用して追加された拒否割り当て。
+    - 従来のデプロイ向けの、従来のサービス管理者または共同管理者の割り当て。 
+
+    ![[割り当て] ウィンドウ](./media/shared/rg-check-access-assignments-user.png)
 
 ## <a name="list-role-assignments-for-a-managed-identity"></a>マネージド ID のロールの割り当ての一覧表示
 

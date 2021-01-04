@@ -9,12 +9,12 @@ ms.date: 12/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 07ad0714d0294ad90150acb9df14f17bfc1f5f0d
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: c2074402225c8134329e00003e4fbdfd95b5dba6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905368"
+ms.locfileid: "96938411"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -64,7 +64,7 @@ Azure portal、PowerShell、または CLIv2 を使用して、ストレージ �
 
 1. セキュリティで保護するストレージ アカウントに移動します。
 
-1. **[Firewalls and virtual networks] \(ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
+1. **ネットワーク** という名前の設定メニューをクリックします。
 
 1. 既定でアクセスを拒否するには、 **[選択されたネットワーク]** からのアクセスを許可するように選択します。 すべてのネットワークからのトラフィックを許可するには、 **[すべてのネットワーク]** からのアクセスを許可するように選択します。
 
@@ -148,7 +148,7 @@ VNet 内の Azure Storage に対する[サービス エンドポイント](../..
 
 1. セキュリティで保護するストレージ アカウントに移動します。
 
-1. **[Firewalls and virtual networks] \(ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
+1. **ネットワーク** という名前の設定メニューをクリックします。
 
 1. **[選択されたネットワーク]** からのアクセスを許可するように選択していることを確認します。
 
@@ -272,7 +272,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 
 1. セキュリティで保護するストレージ アカウントに移動します。
 
-1. **[Firewalls and virtual networks] \(ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
+1. **ネットワーク** という名前の設定メニューをクリックします。
 
 1. **[選択されたネットワーク]** からのアクセスを許可するように選択していることを確認します。
 
@@ -415,7 +415,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 
 1. セキュリティで保護するストレージ アカウントに移動します。
 
-1. **[Firewalls and virtual networks] \(ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
+1. **ネットワーク** という名前の設定メニューをクリックします。
 
 1. **[選択されたネットワーク]** からのアクセスを許可するように選択していることを確認します。
 

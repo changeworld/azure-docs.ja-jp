@@ -1,18 +1,18 @@
 ---
 title: テンプレート関数 - 日付
-description: Azure Resource Manager テンプレートで、日付の操作に使用する関数について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) で日付の操作に使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 83e601adb649098f7a4e19cb71170b96a3287d9b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 58d865f109ecca2629b89eeb55e554743824c195
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004587"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920504"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM テンプレート用の日付関数
 
-Resource Manager では、Azure Resource Manager (ARM) テンプレートで日付を操作するために、次の関数が提供されています。
+Resource Manager では、Azure Resource Manager テンプレート (ARM テンプレート) で日付を操作するために、次の関数が提供されています。
 
 * [dateTimeAdd](#datetimeadd)
 * [utcNow](#utcnow)
@@ -182,7 +182,7 @@ resource scheduler 'Microsoft.Automation/automationAccounts/schedules@2015-10-31
 
 `utcNow(format)`
 
-指定された形式で現在 (UTC) の datetime 値を返します。 形式が指定されていない場合は、ISO 8601 (yyyyMMddTHHmmssZ) 形式を使用します。 **この関数は、パラメーターの既定値でのみ使用できます。**
+指定された形式で現在 (UTC) の datetime 値を返します。 形式を指定しないと、ISO 8601 (`yyyyMMddTHHmmssZ`) 形式が使われます。 **この関数は、パラメーターの既定値でのみ使用できます。**
 
 ### <a name="parameters"></a>パラメーター
 
@@ -326,4 +326,4 @@ output utcShortOutput string = utcShort
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Resource Manager テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。

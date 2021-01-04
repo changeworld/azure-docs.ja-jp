@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f5421efc96b957f5ae96515bbcf17c8a773397c9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 9dad8ffc9971894a2777e8bda9bcf6d78eee00a9
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368249"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369278"
 ---
 # <a name="list-azure-role-definitions"></a>Azure ロールの定義を一覧表示する
 
@@ -235,7 +235,7 @@ az role definition list --custom-role-only false --output json --query '[].{role
 az role definition list --name {roleName}
 ```
 
-次の例では、" *共同作成者* " ロール定義を一覧表示します。
+次の例では、"*共同作成者*" ロール定義を一覧表示します。
 
 ```azurecli
 az role definition list --name "Contributor"
@@ -275,7 +275,7 @@ az role definition list --name "Contributor"
 
 ### <a name="list-permissions-of-a-role-definition"></a>ロールの定義のアクセス許可の一覧表示
 
-次の例では、" *共同作成者* " ロールの *actions* および *notActions* を一覧表示します。
+次の例では、"*共同作成者*" ロールの *actions* および *notActions* を一覧表示します。
 
 ```azurecli
 az role definition list --name "Contributor" --output json --query '[].{actions:permissions[0].actions, notActions:permissions[0].notActions}'
@@ -298,7 +298,7 @@ az role definition list --name "Contributor" --output json --query '[].{actions:
 ]
 ```
 
-次の例では、" *仮想マシンの共同作成者* " ロールの動作を一覧表示します。
+次の例では、"*仮想マシンの共同作成者*" ロールの動作を一覧表示します。
 
 ```azurecli
 az role definition list --name "Virtual Machine Contributor" --output json --query '[].permissions[0].actions'
@@ -351,7 +351,7 @@ az role definition list --name "Virtual Machine Contributor" --output json --que
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | リソース |
 
-    前の例で、microsoft.web は App Service インスタンスを参照するリソース プロバイダーです。 同様に、他の任意のリソース プロバイダーを使用してスコープを指定できます。 詳細については、「[Azure リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)」およびサポートされている「[Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)」を参照してください。  
+    前の例で、microsoft.web は App Service インスタンスを参照するリソース プロバイダーです。 同様に、他の任意のリソース プロバイダーを使用してスコープを指定できます。 詳細については、「[Azure リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)」およびサポートされている「[Azure リソース プロバイダーの操作](resource-provider-operations.md)」を参照してください。  
      
 1. *{filter}* を、ロールの定義リストをフィルターするために適用する条件に置換します。
 

@@ -1,18 +1,18 @@
 ---
 title: テンプレート関数 - 数値
-description: Azure Resource Manager テンプレートで、数値を操作するために使用する関数について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) で数値の操作に使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 26f4b846c67ee7b926ea984ceefd84bf9ea56952
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f3687581d94f80cc923614a0655da1813bd5c97b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004536"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359712"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>ARM テンプレート用の数値関数
 
-Resource Manager では、Azure Resource Manager (ARM) テンプレートで整数を操作するために、次の関数が提供されています。
+Resource Manager では、Azure Resource Manager テンプレート (ARM テンプレート) で整数を操作するために、次の関数が提供されています。
 
 * [add](#add)
 * [copyIndex](#copyindex)
@@ -700,5 +700,5 @@ output subResult int = first - second
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Resource Manager テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
-* 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](copy-resources.md)」を参照してください。
+* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* ある種類のリソースを作成するときに、指定した回数だけ反復するには、「[ARM テンプレートでのリソースの反復](copy-resources.md)」を参照してください。

@@ -2,18 +2,18 @@
 title: マネージド ID を使用して App Configuration にアクセスする
 titleSuffix: Azure App Configuration
 description: マネージド ID を使用して Azure App Configuration に対して認証する
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: f2d8c6e94638c01fb21e070a756c0c97c330fb26
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8ef3ff20c67eefa2091ffb1732ced813b169e596
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671611"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929754"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>マネージド ID を使用して App Configuration にアクセスする
 
@@ -22,6 +22,9 @@ Azure Active Directory [マネージド ID](../active-directory/managed-identiti
 Azure App Configuration とその .NET Core、.NET Framework、および Java Spring のクライアント ライブラリには、マネージド ID サポートが組み込まれています。 これの使用は必須ではありませんが、マネージド ID によって、シークレットが含まれるアクセス トークンが不要になります。 コードはサービス エンドポイントのみを使用して App Configuration ストアにアクセスできます。 シークレットの流出させることなく、この URL をコードに直接埋め込むことができます。
 
 この記事では、マネージド ID を活用して App Configuration にアクセスする方法について説明します。 これは、クイック スタートで紹介されている Web アプリに基づいています。 先に進む前に、[App Configuration を使用して ASP.NET Core アプリを作成します](./quickstart-aspnet-core-app.md)。
+
+> [!NOTE]
+> この記事では例として Azure App Service を使用しますが、同じ概念は、マネージド ID をサポートする他の Azure サービス ([Azure Kubernetes Service](../aks/use-azure-ad-pod-identity.md)、[Azure 仮想マシン](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)、[Azure Container Instances](../container-instances/container-instances-managed-identity.md) など) にも当てはまります。 ワークロードがこれらのサービスのいずれかでホストされている場合は、そのサービスのマネージド ID サポートも利用できます。
 
 この記事では、App Configuration の Key Vault 参照と共にマネージド ID を使用する方法についても説明します。 1つのマネージド ID を使用して、Key Vault のシークレットと App Configuration の構成値の両方にシームレスにアクセスできます。 この機能を確認する場合は、[ASP.NET Core の Key Vault 参照の使用](./use-key-vault-references-dotnet-core.md)に関するページの手順を最初に完了します。
 
@@ -65,7 +68,7 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
 
 1. **[アクセスの確認]** タブで、 **[ロールの割り当てを追加する]** カード UI の **[追加]** を選択します。
 
-1. **[ロール]** の中から、 **App Configuration データ リーダー** を選択します。 **[アクセスの割り当て先]** で、 **[システム割り当てマネージド ID]** の **[App Service]** を選択します。
+1. **[ロール]** の中から、**App Configuration データ リーダー** を選択します。 **[アクセスの割り当て先]** で、 **[システム割り当てマネージド ID]** の **[App Service]** を選択します。
 
 1. **[サブスクリプション]** で自分の Azure サブスクリプションを選択します。 アプリの App Service リソースを選択します。
 
@@ -136,7 +139,7 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
     ```
     ---
 
-1. App Configuration と Key Vault 参照の両方を使用するには、以下に示すように、 *Program.cs* を更新します。 このコードにより、`AzureServiceTokenProvider` を使用して新しい `KeyVaultClient` が作成され、この参照が `UseAzureKeyVault` メソッドの呼び出しに渡されます。
+1. App Configuration と Key Vault 参照の両方を使用するには、以下に示すように、*Program.cs* を更新します。 このコードは `ConfigureKeyVault` の一部として `SetCredential` を呼び出し、Key Vault に対する認証時に使用する資格情報を構成プロバイダーに伝えます。
 
     ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
@@ -151,10 +154,10 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
                    config.AddAzureAppConfiguration(options =>
                    {
                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                           .ConfigureKeyVault(kv =>
-                           {
-                              kv.SetCredential(credentials);
-                           });
+                              .ConfigureKeyVault(kv =>
+                              {
+                                 kv.SetCredential(credentials);
+                              });
                    });
                })
                .UseStartup<Startup>();
@@ -175,10 +178,10 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
                     config.AddAzureAppConfiguration(options =>
                     {
                         options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                            .ConfigureKeyVault(kv =>
-                            {
-                                kv.SetCredential(credentials);
-                            });
+                               .ConfigureKeyVault(kv =>
+                               {
+                                   kv.SetCredential(credentials);
+                               });
                     });
                 });
             })
@@ -186,10 +189,10 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
     ```
     ---
 
-    他の App Configuration キーと同様に Key Vault 参照にアクセスできるようになりました。 構成プロバイダーは、Key Vault に対して認証して値を取得するように構成した `KeyVaultClient` を使用します。
+    他の App Configuration キーと同様に Key Vault 参照にアクセスできるようになりました。 構成プロバイダーは、`ManagedIdentityCredential` を使用して Key Vault に対して認証し、値を取得します。
 
-> [!NOTE]
-> `ManagedIdentityCredential` では、マネージド ID 認証のみがサポートされます。 ローカル環境では機能しません。 コードをローカルで実行する場合、サービス プリンシパル認証もサポートしている `DefaultAzureCredential` の使用を検討してください。 詳細については、[こちらのリンク](/dotnet/api/azure.identity.defaultazurecredential)を参照してください。
+    > [!NOTE]
+    > `ManagedIdentityCredential` が機能するのは、マネージド ID 認証をサポートするサービスの Azure 環境内のみです。 ローカル環境では機能しません。 コードをローカルと Azure の両方の環境で動作させるには、[`DefaultAzureCredential`](/dotnet/api/azure.identity.defaultazurecredential) を使用します。これは、マネージド ID を含むいくつかの認証オプションにフォールバックするからです。
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
@@ -226,7 +229,7 @@ az webapp deployment source config-local-git --name <app_name> --resource-group 
 
 ### <a name="deploy-your-project"></a>プロジェクトのデプロイ
 
-_ローカル ターミナル ウィンドウ_ で、ローカル Git リポジトリに Azure リモートを追加します。 _\<url>_ を、「 [Kudu でローカル Git を有効にする](#enable-local-git-with-kudu)」で取得した Git リモートの URL に置換します。
+_ローカル ターミナル ウィンドウ_ で、ローカル Git リポジトリに Azure リモートを追加します。 _\<url>_ を、「[Kudu でローカル Git を有効にする](#enable-local-git-with-kudu)」で取得した Git リモートの URL に置換します。
 
 ```bash
 git remote add azure <url>
@@ -235,7 +238,7 @@ git remote add azure <url>
 アプリをデプロイするために、次のコマンドで Azure リモートにプッシュします。 パスワードの入力を求められたら、「[デプロイ ユーザーを構成する](#configure-a-deployment-user)」で作成したパスワードを入力します。 Azure portal へのサインインに使用しているパスワードは使用しないでください。
 
 ```bash
-git push azure master
+git push azure main
 ```
 
 出力には、MSBuild (ASP.NET 向け)、`npm install` (Node.js 向け)、`pip install` (Python 向け) など、ランタイム固有のオートメーションが表示される場合があります。
@@ -252,7 +255,7 @@ http://<app_name>.azurewebsites.net
 
 .NET Framework 用および Java Spring 用の App Configuration プロバイダーにも、マネージド ID に対する組み込みサポートがあります。 これらのプロバイダーのいずれかを構成するとき、完全な接続文字列の代わりに、ご自分のストアの URL エンドポイントを使用できます。
 
-たとえば、クイックスタートで作成された .NET Framework コンソールアプリを更新して、 *App.config* ファイルで次の設定を指定できます。
+たとえば、クイックスタートで作成された .NET Framework コンソールアプリを更新して、*App.config* ファイルで次の設定を指定できます。
 
 ```xml
     <configSections>

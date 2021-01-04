@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: 55651b3201676ee5cddb5412e950791afaa4e87a
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 01af7b251c9ce3bfebb87016c85ea3efd9c0e8ac
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852134"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928768"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Azure Data Factory と Azure Purview を接続する方法
 
@@ -38,9 +38,16 @@ ms.locfileid: "96852134"
  >- Contributor
  >- 所有者
  >- Reader
- >- ユーザー アクセス管理者
+ >- User Access Administrator
 
 ## <a name="create-new-data-factory-connection"></a>新しい Data Factory 接続を作成する
+
+>[!Note]
+>Data Factory 接続を追加または削除するには、次の Purview ロールのいずれかが割り当てられている必要があります。
+>- 所有者
+>- User Access Administrator
+>
+> さらに、ユーザーはデータ ファクトリの "所有者" または "共同作成者" である必要があります。 
 
 既存の Data Factory アカウントを Purview Data Catalog に接続するには、次の手順に従います。
 
@@ -71,11 +78,6 @@ Data Factory 接続を削除するには、次の操作を行います。
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="接続を削除する Data Factory を選択する方法を示すスクリーンショット。" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 
->[!Note]
->Data Factory 接続を追加または削除するには、次の Purview ロールのいずれかが割り当てられている必要があります。
->- 所有者
->- ユーザー アクセス管理者 さらに、ユーザーは Data Factory の "所有者"、"共同作成者"、または "Data Factory 共同作成者" である必要があります。 
-
 ## <a name="configure-a-self-hosted-ir-to-collect-lineage-from-on-prem-sql"></a>オンプレミスの SQL から系列を収集するようにセルフホステッド IR を構成する
 
 Data Factory のコピー アクティビティの系列は、オンプレミスの SQL データベースで使用できます。 Azure Data Factory でのデータ移動のためにセルフホステッド統合ランタイムを実行しており、Azure Purview で系列をキャプチャしたい場合は、バージョンが 4.8.7418.1 以降であることを確認してください。 セルフホステッド統合ランタイムの詳細については、「[セルフホステッド統合ランタイムを作成して構成する](../data-factory/create-self-hosted-integration-runtime.md)」を参照してください。
@@ -97,27 +99,27 @@ Azure Purview は、次の Azure Data Factory アクティビティからラン�
 
 | データ ストレージ システム | ソースとしてサポート | シンクとしてサポート |
 | ------------------- | ------------------- | ----------------- |
-| ADLS Gen1 (JSON のサポートはなし) | ○ | ○ (非バイナリ コピーのみ) |
-| ADLS Gen2 (JSON のサポートはなし) | ○ | ○ |
-| Azure BLOB (JSON のサポートはなし) | ○ | ○ |
-| Azure Cosmos DB (SQL API) | ○ | ○ |
-| Azure Cosmos DB (Mongo API) | ○ | ○ |
+| ADLS Gen1 (JSON のサポートはなし) | はい | ○ (非バイナリ コピーのみ) |
+| ADLS Gen2 (JSON のサポートはなし) | はい | はい |
+| Azure BLOB (JSON のサポートはなし) | はい | はい |
+| Azure Cosmos DB (SQL API) | はい | はい |
+| Azure Cosmos DB (Mongo API) | はい | はい |
 | Azure Cognitive Search | はい | はい |
-| Azure Data Explorer | はい | ○ |
-| Azure Database for Maria DB \* | ○ | ○ |
-| Azure Database for MYSQL \* | ○ | ○ |
-| Azure Database for PostgreSQL \* | ○ | はい |
-| Azure File Storage | ○ | はい |
-| Azure Table Storage | はい | ○ |
-| Azure SQL Database \* | ○ | ○ |
-| Azure SQL MI \* | ○ | ○ |
-| Azure Synapse Analytics (以前の SQL DW) \* | ○ | ○ |
-| オンプレミスの SQL Server (SHIR が必要) \* | ○ | ○ |
-| Amazon S3 | ○ | はい |
-| Teradata | はい | ○ |
-| SAP s4 Hana | ○ | ○ |
-| SAP ECC | ○ | ○ |
-| Hive | ○ | ○ |
+| Azure Data Explorer | はい | はい |
+| Azure Database for Maria DB \* | はい | はい |
+| Azure Database for MYSQL \* | はい | はい |
+| Azure Database for PostgreSQL \* | はい | はい |
+| Azure File Storage | はい | はい |
+| Azure Table Storage | はい | はい |
+| Azure SQL Database \* | はい | はい |
+| Azure SQL MI \* | はい | はい |
+| Azure Synapse Analytics (以前の SQL DW) \* | はい | はい |
+| オンプレミスの SQL Server (SHIR が必要) \* | はい | はい |
+| Amazon S3 | はい | はい |
+| Teradata | はい | はい |
+| SAP s4 Hana | はい | はい |
+| SAP ECC | はい | はい |
+| Hive | はい | はい |
 
 > [!Note]
 > Data Factory のコピー アクティビティでは、系列の機能で特定のパフォーマンスのオーバーヘッドが発生します。 Purview で Data Factory 接続を設定している場合は、特定のコピー ジョブが完了するまでの時間が長くなることがあります。 この影響は多くの場合、とても無視できません。 コピー ジョブが完了するまでの時間が通常より大幅に長くなっている場合は、その時間の比較をサポートに連絡してください。
@@ -126,24 +128,24 @@ Azure Purview は、次の Azure Data Factory アクティビティからラン�
 
 | データ ストレージ システム | サポートされています |
 | ------------------- | ------------------- | ----------------- |
-| ADLS Gen1 | ○ |
-| ADLS Gen2 | ○ |
-| Azure BLOB | ○ |
-| Azure SQL Database \* | ○ |
-| Azure Synapse Analytics (以前の SQL DW) \* | ○ |
+| ADLS Gen1 | はい |
+| ADLS Gen2 | はい |
+| Azure BLOB | はい |
+| Azure SQL Database \* | はい |
+| Azure Synapse Analytics (以前の SQL DW) \* | はい |
 
 ### <a name="data-factory-execute-ssis-package-support"></a>Data Factory の SSIS パッケージの実行のサポート
 
 | データ ストレージ システム | サポートされています |
 | ------------------- | ------------------- | ----------------- |
-| Azure BLOB | ○ |
-| ADLS Gen1 | ○ |
-| ADLS Gen2 | ○ |
-| Azure SQL Database \* | ○ |
-| Azure SQL MI \*| ○ |
-| Azure Synapse Analytics (以前の SQL DW) \* | ○ |
+| Azure BLOB | はい |
+| ADLS Gen1 | はい |
+| ADLS Gen2 | はい |
+| Azure SQL Database \* | はい |
+| Azure SQL MI \*| はい |
+| Azure Synapse Analytics (以前の SQL DW) \* | はい |
 | オンプレミスの SQL Server \* | はい |
-| Azure File Storage | ○ |
+| Azure File Storage | はい |
 
 *\* SQL (Azure およびオンプレミス) のシナリオの場合、Azure Purview は、系列またはスキャンのためのストアド プロシージャやスクリプトをサポートしていません。系列は、テーブルとビューのソースだけに制限されています。*
 

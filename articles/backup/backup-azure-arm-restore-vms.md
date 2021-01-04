@@ -4,12 +4,12 @@ description: Azure Portal を使用して復旧ポイントから Azure 仮想�
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 1c28de679bd957a472e543489a2dd15b3883aed5
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: baae35c87f306f5773fa8061f27e9793754ccc9c
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327187"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008505"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -213,6 +213,8 @@ VM の復元が必要になることがある、一般的なシナリオはい�
 **単一ドメイン内の複数のドメイン コントローラー VM を復元する** | 同じドメイン内の他のドメイン コントローラーにネットワーク経由で到達できる場合は、VM と同様にそのドメイン コントローラーを復元できます。 これがドメイン内の最後のドメイン コントローラーである場合や、分離されたネットワークでの復旧を実行している場合は、[フォレストの復旧](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)を使用します。
 **複数のドメイン構成で単一のドメイン コントローラー VM を復元する** |  [PowerShell を使用して](backup-azure-vms-automation.md#restore-the-disks)、ディスクを復元して VM を作成します  
 **1 つのフォレスト内の複数のドメインを復元する** | [フォレストの復旧](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)をお勧めします。
+
+詳細については、「[Active Directory ドメイン コントローラーのバックアップおよび復元](active-directory-backup-restore.md)」を参照してください。
 
 ## <a name="track-the-restore-operation"></a>復元操作を追跡する
 

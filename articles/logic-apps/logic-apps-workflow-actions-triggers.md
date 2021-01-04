@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 3dbfcacb6ea5922a01d52dfe39189f09f48d4b4a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7423f8d8f2a566801048457ad5f5c44f3c1097ec
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006083"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920054"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps でのトリガーとアクションの種類のスキーマ リファレンス ガイド
 
@@ -1506,7 +1506,7 @@ HTTP 要求に対する応答のペイロードを作成するアクションで
 
 * **Response** アクションはワークフロー内のどの位置でも使用できます。*例外* は、**Foreach** ループ、**Until** ループ、順次ループ、並列分岐です。 
 
-* 元の HTTP 要求でワークフローの応答が取得されるのは、**Response** アクションに必要なすべてのアクションが、[HTTP 要求のタイムアウト期限](../logic-apps/logic-apps-limits-and-config.md#request-limits)内に終了した場合だけです。
+* 元の要求でワークフローの応答が取得されるのは、**Response** アクションに必要なすべてのアクションが、[HTTP のタイムアウト期限](../logic-apps/logic-apps-limits-and-config.md#http-limits)内に終了した場合だけです。
 
   ただし、ワークフローが、入れ子になったワークフローとして別のロジック アプリを呼び出す場合、親ワークフローは、入れ子になったワークフローが終了するまで時間がどれだけ経過しても関係なく、入れ子になったワークフローが終了するまで待機します。
 

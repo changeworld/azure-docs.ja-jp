@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 8ee23adf569a6afafc57dac786cd907a3481abde
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fbe37152f4ff1ce24754bc2d7b968c8e1c76ca10
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485809"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387719"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory の Web アクティビティ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -26,6 +26,9 @@ Web アクティビティを使用すると、Data Factory パイプラインか
 
 > [!NOTE]
 > Web アクティビティは、自己ホスト型統合ランタイムを利用することで、プライベート仮想ネットワークでホストされる URL の呼び出しでもサポートされています。 統合ランタイムでは、URL エンドポイントへの通信経路が必要です。 
+
+> [!NOTE]
+> サポートされている出力応答ペイロードの最大サイズは 4 MB です。  
 
 ## <a name="syntax"></a>構文
 
@@ -90,7 +93,7 @@ connectVia | データ ストアに接続するために使用される[統合�
 
 | 値の型 | 要求本文 | 応答本文 |
 |---|---|---|
-|JSON オブジェクト | サポート | サポート |
+|JSON オブジェクト | サポート | サポートされています |
 |JSON 配列 | サポートされています <br/>(バグがあるため、現在、JSON 配列は動作していません。 修正が進行中です)。 | サポートされていない |
 | JSON 値 | サポートされています | サポートされていない |
 | 非 JSON 型 | サポートされていない | サポートされていない |

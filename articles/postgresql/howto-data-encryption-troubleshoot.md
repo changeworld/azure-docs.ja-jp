@@ -44,12 +44,12 @@ Azure Key Vault キーを使用するデータ暗号化に関するほとんど�
 #### <a name="disabled-key-vault"></a>無効な Key Vault
 
 - `AzureKeyVaultKeyDisabledMessage`
-- _*説明**:Azure Key Vault キーが無効になっているため、サーバーで操作を完了できませんでした。
+- **説明**:Azure Key Vault キーが無効になっているため、サーバーで操作を完了できませんでした。
 
 #### <a name="missing-key-vault-permissions"></a>Key Vault アクセス許可がない
 
 - `AzureKeyVaultMissingPermissionsMessage`
-- **説明** :サーバーに、Azure Key Vault に対して必要な取得、ラップ、およびラップ解除のアクセス許可がありません。 ID でサービス プリンシパルに欠落しているアクセス許可を付与します。
+- **説明**:サーバーに、Azure Key Vault に対して必要な取得、ラップ、およびラップ解除のアクセス許可がありません。 ID でサービス プリンシパルに欠落しているアクセス許可を付与します。
 
 ### <a name="mitigation"></a>対応策
 

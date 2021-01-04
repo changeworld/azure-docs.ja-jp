@@ -1,18 +1,18 @@
 ---
 title: テンプレート関数 - 論理
-description: Azure Resource Manager テンプレートで論理値を判定するために使用する関数について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) で論理値を判定するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: b54c104c8af5bb742b2c82d8a075515b8696501b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 27d94f10374daf0b9a351469579a5eb659cf5445
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004553"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920474"
 ---
 # <a name="logical-functions-for-arm-templates"></a>ARM テンプレート用の論理関数
 
-Resource Manager には、Azure Resource Manager (ARM) テンプレートで比較を行うための関数がいくつか用意されています。
+Resource Manager には、Azure Resource Manager テンプレート (ARM テンプレート) で比較を行うための関数がいくつか用意されています。
 
 * [and](#and)
 * [bool](#bool)
@@ -227,7 +227,7 @@ output falseOutput bool = false
 
 ### <a name="remarks"></a>解説
 
-条件が **True** の場合、true の値のみが評価されます。 条件が **False** の場合、false の値のみが評価されます。 **if** 関数の場合、条件付きで有効な式のみを含めることができます。 たとえば、1 つの条件の下で存在し、他の条件下では存在しないリソースを参照できます。 条件付きでの式の評価の例については、次のセクションを参照してください。
+条件が **True** の場合、true の値のみが評価されます。 条件が **False** の場合、false の値のみが評価されます。 `if` 関数の場合、条件付きで有効な式のみを含めることができます。 たとえば、1 つの条件の下で存在し、他の条件下では存在しないリソースを参照できます。 条件付きでの式の評価の例については、次のセクションを参照してください。
 
 ### <a name="examples"></a>例
 
@@ -542,4 +542,4 @@ output trueOutput bool = true
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Resource Manager テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。

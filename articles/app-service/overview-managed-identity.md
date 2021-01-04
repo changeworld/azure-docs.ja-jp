@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: c734c0ceb9c4d5418edc51a2c3ad3c052637ad31
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 4c7ba5806707e818f0ef13717d5f00b542c37614
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696984"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092739"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service と Azure Functions でマネージド ID を使用する方法
 
@@ -109,7 +109,7 @@ Azure CLI を使用してマネージド ID を設定するには、既存のア
 
 1. 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/)の手順に従って Azure PowerShell をインストールし、`Login-AzAccount` を実行して、Azure との接続を作成します。
 
-2. Azure PowerShell を使用して関数アプリを作成します。 Azure Functions で Azure PowerShell を使用する方法の他の例については、[Az.Functions リファレンス](/powershell/module/az.functions/?view=azps-4.1.0#functions)を参照してください。
+2. Azure PowerShell を使用して関数アプリを作成します。 Azure Functions で Azure PowerShell を使用する方法の他の例については、[Az.Functions リファレンス](/powershell/module/az.functions/#functions)を参照してください。
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -219,7 +219,7 @@ tenantId プロパティは、その ID が属する Azure AD テナントを示
 
 1. 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/)の手順に従って Azure PowerShell をインストールし、`Login-AzAccount` を実行して、Azure との接続を作成します。
 
-2. Azure PowerShell を使用して関数アプリを作成します。 Azure Functions で Azure PowerShell を使用する方法の他の例については、[Az.Functions リファレンス](/powershell/module/az.functions/?view=azps-4.1.0#functions)を参照してください。 次のスクリプトでは、「[Azure PowerShell を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除する](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)」に従って個別にインストールする必要がある `New-AzUserAssignedIdentity` を活用しています。
+2. Azure PowerShell を使用して関数アプリを作成します。 Azure Functions で Azure PowerShell を使用する方法の他の例については、[Az.Functions リファレンス](/powershell/module/az.functions/#functions)を参照してください。 次のスクリプトでは、「[Azure PowerShell を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除する](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)」に従って個別にインストールする必要がある `New-AzUserAssignedIdentity` を活用しています。
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -308,7 +308,7 @@ principalId は、Azure AD の管理に使用される ID の一意識別子で�
 アプリケーションからのアクセスを許可するように、対象のリソースを構成することが必要な場合があります。 たとえば、Key Vault にアクセスするためのトークンを要求する場合、アプリケーションの ID を含むアクセス ポリシーを追加する必要があります。 追加しないと、トークンを含めた場合でも、Key Vault の呼び出しは拒否されます。 Azure Active Directory トークンをサポートしているリソースの詳細については、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。
 
 > [!IMPORTANT]
-> マネージド ID のバックエンド サービスは、リソース URI ごとのキャッシュを約 8 時間保持します。 特定のターゲット リソースのアクセス ポリシーを更新し、そのリソースのトークンをすぐに取得した場合、そのトークンの有効期限が切れるまで、期限切れのアクセス許可を持つキャッシュされたトークンを取得し続ける可能性があります。 現在、トークンの更新を強制する方法はありません。
+> マネージド ID のバックエンド サービスは、リソース URI ごとのキャッシュを約 24 時間保持します。 特定のターゲット リソースのアクセス ポリシーを更新し、そのリソースのトークンをすぐに取得した場合、そのトークンの有効期限が切れるまで、期限切れのアクセス許可を持つキャッシュされたトークンを取得し続ける可能性があります。 現在、トークンの更新を強制する方法はありません。
 
 App Service と Azure Functions には、トークンを取得するための簡単な REST プロトコルがあります。 これは、すべてのアプリケーションと言語で使用できます。 .NET と Java では、Azure SDK によってこのプロトコルが抽象化され、ローカル開発エクスペリエンスを支援します。
 
@@ -522,7 +522,8 @@ Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupNam
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [マネージド ID を使用して SQL データベースに安全にアクセスする](app-service-web-tutorial-connect-msi.md)
+- [マネージド ID を使用して SQL データベースに安全にアクセスする](app-service-web-tutorial-connect-msi.md)
+- [マネージド ID を使用して Azure Storage に安全にアクセスする](scenario-secure-app-access-storage.md)
+- [マネージド ID を使用して Microsoft Graph を安全に呼び出す](scenario-secure-app-access-microsoft-graph-as-app.md)
 
 [Microsoft.Azure.Services.AppAuthentication のリファレンス]: ../key-vault/general/service-to-service-authentication.md

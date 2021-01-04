@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1984e2f0bb55115c7d700b91f564d9f01c145151
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c274424641ee0173d68f0de9061415815b0df588
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015332"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107432"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Azure Active Directory レポートに関するよく寄せられる質問
 
@@ -31,13 +31,13 @@ ms.locfileid: "90015332"
 
 **Q:現在 `https://graph.windows.net/<tenant-name>/reports/` エンドポイント API を使用しており、プログラムによってレポート システムに Azure AD の監査レポートと統合されたアプリケーションの使用状況レポートを取り込んでいます。何に切り替える必要がありますか。**
 
-**A:** [API リファレンス](https://developer.microsoft.com/graph/)を参照して、[API を使用してアクティビティ レポートにアクセスできる](concept-reporting-api.md)方法をご確認ください。 このエンドポイントには 2 つのレポート (**監査と**と**サインイン**) があり、旧 API エンドポイントで取得したすべてのデータが提供されます。 この新しいエンドポイントには、アプリの使用状況、デバイスの使用状況、およびユーザー サインイン情報の取得に使用できる Azure AD Premium ライセンスによるサインイン レポートもあります。
+**A:** [API リファレンス](https://developer.microsoft.com/graph/)を参照して、[API を使用してアクティビティ レポートにアクセスできる](concept-reporting-api.md)方法をご確認ください。 このエンドポイントには 2 つのレポート (**監査と** と **サインイン**) があり、旧 API エンドポイントで取得したすべてのデータが提供されます。 この新しいエンドポイントには、アプリの使用状況、デバイスの使用状況、およびユーザー サインイン情報の取得に使用できる Azure AD Premium ライセンスによるサインイン レポートもあります。
 
 ---
 
 **Q:現在 `https://graph.windows.net/<tenant-name>/reports/` エンドポイント API を使用しており、プログラムによって、レポート システムに Azure AD セキュリティ レポート (漏洩した資格情報や匿名 IP アドレスからのサインインなどの、特定の種類の検出) を取り込んでいます。何に切り替える必要がありますか。**
 
-**A:**  [Identity Protection リスク検出 API](../identity-protection/howto-identity-protection-graph-api.md)  を使用して、Microsoft Graph 経由でセキュリティの検出にアクセスできます。 この新しい形式では、高度なフィルター処理、フィールドの選択など、データをクエリできる方法の柔軟性が高まりました。また、リスク検出が 1 つのタイプに標準化されるため、SIEM などのデータ コレクション ツールに簡単に統合できます。 データの形式が異なるため、古いクエリの代わりに新しいクエリを使うことはできません。 ただし、新しい API は Microsoft 365 や Azure AD のような API 向けの Microsoft 標準である [Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta) を使用します。 そのため、作業が必要になれば、現在の Microsoft Graph への投資を拡大するか、または、この新しい標準プラットフォームへの移行開始を促すことができます。
+**A:** [Identity Protection リスク検出 API](../identity-protection/howto-identity-protection-graph-api.md) を使用すると、Microsoft Graph を通じてセキュリティの検出にアクセスできます。 この新しい形式では、高度なフィルター処理、フィールドの選択など、データをクエリできる方法の柔軟性が高まりました。また、リスク検出が 1 つのタイプに標準化されるため、SIEM などのデータ コレクション ツールに簡単に統合できます。 データの形式が異なるため、古いクエリの代わりに新しいクエリを使うことはできません。 ただし、新しい API は Microsoft 365 や Azure AD のような API 向けの Microsoft 標準である [Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta) を使用します。 そのため、作業が必要になれば、現在の Microsoft Graph への投資を拡大するか、または、この新しい標準プラットフォームへの移行開始を促すことができます。
 
 ---
 
@@ -49,7 +49,7 @@ ms.locfileid: "90015332"
 
 **Q:Premium ライセンスを取得した後、どのぐらいの期間でアクティビティ データが表示されるようになりますか。**
 
-**A:** 無料ライセンスでのアクティビティ データが既にある場合、そのデータがすぐに表示されます。 データが何もなかった場合は、レポートにデータが表示されるまで 1 日から 2 日かかります。
+**A:** 無料ライセンスでのアクティビティ データが既にある場合、そのデータがすぐに表示されます。 データが何もなかった場合は、レポートにデータが表示されるまでに最大 3 日かかります。
 
 ---
 
@@ -61,7 +61,7 @@ ms.locfileid: "90015332"
 
 **Q:Azure portal へのアクティビティ サインインを確認したり、API を通じてデータを取得したりするには、グローバル管理者である必要がありますか。**
 
-**A:** いいえ、テナントの**セキュリティ閲覧者**または**セキュリティ管理者**であっても、ポータルまたは API を通じてレポート データにアクセスできます。 もちろん、**グローバル管理者**でも、このデータにアクセスすることが可能です。
+**A:** いいえ、テナントの **セキュリティ閲覧者** または **セキュリティ管理者** であっても、ポータルまたは API を通じてレポート データにアクセスできます。 もちろん、**グローバル管理者** でも、このデータにアクセスすることが可能です。
 
 ---
 
@@ -95,7 +95,7 @@ ms.locfileid: "90015332"
 
 **Q:Azure portal からレコードをいくつまでダウンロードすることができますか。**
 
-**A:** レコードは Azure portal から 5000 個までダウンロードできます。 レコードは*最新の順*に並べ替えられており、既定では最新の 5000 個のレコードを取得します。
+**A:** レコードは Azure portal から 5000 個までダウンロードできます。 レコードは *最新の順* に並べ替えられており、既定では最新の 5000 個のレコードを取得します。
 
 ---
 

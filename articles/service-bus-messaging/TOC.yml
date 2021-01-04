@@ -96,6 +96,22 @@
       href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
     - name: パフォーマンスを最適化する
       href: service-bus-performance-improvements.md
+    - name: フェデレーション
+      items:
+        - name: メッセージ レプリケーションとリージョン間フェデレーション
+          href: service-bus-federation-overview.md
+        - name: メッセージ レプリケーションのタスクとアプリケーション
+          href: service-bus-federation-replicator-functions.md
+        - name: メッセージ レプリケーション タスクのパターン
+          href: service-bus-federation-patterns.md
+        - name: 構成されたレプリケーション タスク
+          href: service-bus-federation-configuration.md
+        - name: Service Bus エンティティ間でイベントをレプリケートする
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopy'
+        - name: メッセージを Event Hubs にレプリケートする
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
+        - name: Event Hubs からのメッセージの取得
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
     - name: geo ディザスター リカバリーと geo レプリケーション
       href: service-bus-geo-dr.md
     - name: 非同期メッセージングと高可用性
@@ -104,7 +120,7 @@
       href: service-bus-outages-disasters.md
     - name: Throttling
       href: service-bus-throttling.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md

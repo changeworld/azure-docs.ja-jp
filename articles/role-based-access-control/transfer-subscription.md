@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 10/06/2020
+ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: ad0ba3c63f6f0ef6e7e02051031cf215c2e72cce
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 92b27690ab1f2ca8d98eb2231c5a27bc508613f8
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648244"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095425"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure サブスクリプションを別の Azure AD ディレクトリに移転する
 
@@ -53,7 +53,12 @@ ms.locfileid: "94648244"
 - ビジネスの一部が別の会社に分割され、一部のリソースを別の Azure AD ディレクトリに移動する必要があります。
 - セキュリティを分離するため、リソースの一部を別の Azure AD ディレクトリで管理する必要があります。
 
-サブスクリプションを移転するには、プロセスを完了するためにダウンタイムが必要です。 シナリオによっては、リソースを再作成し、ターゲット ディレクトリとサブスクリプションにデータをコピーする方がよい場合があります。
+### <a name="alternate-approaches"></a>別のアプローチ
+
+サブスクリプションを移転するには、プロセスを完了するためにダウンタイムが必要です。 シナリオによっては、次の代替方法を検討できます。
+
+- リソースを再作成し、ターゲット ディレクトリおよびサブスクリプションにデータをコピーする。
+- マルチディレクトリ アーキテクチャを採用し、サブスクリプションをソース ディレクトリに残す。 ターゲット ディレクトリのユーザーがソース ディレクトリ内のサブスクリプションにアクセスできるように、Azure Lighthouse を使用してリソースを委任します。 詳しくは、「[エンタープライズ シナリオにおける Azure Lighthouse](../lighthouse/concepts/enterprise.md)」をご覧ください。
 
 ### <a name="understand-the-impact-of-transferring-a-subscription"></a>サブスクリプションの移転による影響を把握する
 
@@ -383,3 +388,4 @@ ms.locfileid: "94648244"
 - [Azure サブスクリプションの課金所有権を別のアカウントに譲渡する](../cost-management-billing/manage/billing-subscription-transfer.md)
 - [サブスクライバーと CSP の間で Azure サブスクリプションを譲渡する](../cost-management-billing/manage/transfer-subscriptions-subscribers-csp.md)
 - [Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+- [エンタープライズ シナリオにおける Azure Lighthouse](../lighthouse/concepts/enterprise.md)

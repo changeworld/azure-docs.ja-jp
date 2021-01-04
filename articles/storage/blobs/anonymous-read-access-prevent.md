@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 12/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: f12a899d3b6daa3b233e6a799871afca1e24d046
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 179e60a41a9cd6a2277959b3cd31159c796d845d
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533751"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937289"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>コンテナーと BLOB への匿名パブリック読み取りアクセスを防ぐ
 
@@ -287,6 +287,23 @@ Deny 効果を持つポリシーを作成し、これをスコープに割り当
 次の図は、Deny 効果を持つポリシーで、パブリック アクセスが許可されないことが要求されているとき、パブリック アクセスを許可するストレージ アカウント (新しいアカウントの既定) を作成しようとした場合に発生するエラーを示しています。
 
 :::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="ポリシーに違反するストレージ アカウントを作成したときに発生したエラーを示すスクリーンショット":::
+
+## <a name="permissions-for-allowing-or-disallowing-public-access"></a>パブリック アクセスを許可または禁止するためのアクセス許可
+
+ストレージ アカウントの **AllowBlobPublicAccess** プロパティを設定するには、ストレージ アカウントを作成および管理するためのアクセス許可が必要です。 これらのアクセス許可を提供する Azure ロールベースのアクセス制御 (Azure RBAC) ロールには、**Microsoft.Storage/storageAccounts/write** または **Microsoft.Storage/storageAccounts/\** _ アクションが含まれます。 このアクションの組み込みロールには、次のようなロールがあります。
+
+- Azure Resource Manager の[所有者](../../role-based-access-control/built-in-roles.md#owner)ロール
+- Azure Resource Manager の[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロール
+- [Storage Account の共同作成者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)ロール
+
+これらのロールでは、Azure Active Directory (Azure AD) を使用してストレージ アカウントのデータにアクセスすることはできません。 ただし、アカウント アクセス キーへのアクセスを許可する _*Microsoft.Storage/storageAccounts/listkeys/action** が含まれています。 このアクセス許可では、ユーザーがアカウント アクセス キーを使用して、ストレージ アカウント内のすべてのデータにアクセスできます。
+
+ユーザーがストレージ アカウントに対するパブリック アクセスを許可または禁止できるようにするには、ロール割り当てのスコープをストレージ アカウント以上のレベルにする必要があります。 ロール スコープの詳細については、「[Azure RBAC のスコープについて](../../role-based-access-control/scope-overview.md)」を参照してください。
+
+これらのロールを割り当てる際には、ストレージ アカウントを作成したり、そのプロパティを更新したりする機能を必要とするユーザーにのみ割り当てるように、注意してください。 最小限の特権の原則を使用して、ユーザーに、それぞれのタスクを実行するのに必要な最小限のアクセス許可を割り当てるようにします。 Azure RBAC でアクセスを管理する方法の詳細については、「[Azure RBAC のベスト プラクティス](../../role-based-access-control/best-practices.md)」を参照してください。
+
+> [!NOTE]
+> 従来のサブスクリプション管理者ロールであるサービス管理者と共同管理者には、Azure Resource Manager の[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールと同等のものが含まれています。 **所有者** ロールにはすべてのアクションが含まれているため、これらの管理者ロールのいずれかを持つユーザーも、ストレージ アカウントを作成および管理できます。 詳細については、[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

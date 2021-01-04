@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 12/11/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40751b7864cc62d17836ab6d57cd106f6904f64a
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 788512db242bf1a1c6f18ffc0ee773bd3372aa42
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744110"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355871"
 ---
 # <a name="data-residency-and-customer-data-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication のデータの保存場所と顧客データ
 
@@ -57,7 +57,7 @@ Azure のパブリック クラウドでは、Azure B2C 認証、NPS 拡張機�
 | Microsoft Authenticator 通知 | Multi-Factor Authentication のログ内<br />Multi-Factor Authentication アクティビティ レポート データ ストア<br />不正アクセスが報告された場合にブロックされたユーザー<br />Microsoft Authenticator デバイス トークン変更時の変更要求 |
 
 > [!NOTE]
-> Multi-Factor Authentication アクティビティ レポート データ ストアは、認証要求を処理するリージョンに関係なく、すべてのクラウドについて米国内に保存されます。 Microsoft Azure Germany、21Vianet が運営する Microsoft Azure、Microsoft Government Cloud には、パブリック クラウド リージョンのデータ ストアとは別の独立したデータ ストアがありますが、このデータは常に米国内に保存されます。
+> Multi-Factor Authentication アクティビティ レポート データ ストアは、認証要求を処理するリージョンに関係なく、すべてのクラウドについて米国内に保存されます。 Microsoft Azure Germany、21Vianet が運営する Microsoft Azure、Microsoft Government Cloud には、パブリック クラウド リージョンのデータ ストアとは別の独立したデータ ストアがありますが、このデータは常に米国内に保存されます。 これらのデータ ストアには、ユーザー プリンシパル名 (UPN) や完全な電話番号など、個人を特定できる情報 (PII) が含まれています。 
 
 Microsoft Azure Government、Microsoft Azure Germany、21Vianet が運営する Microsoft Azure、Azure B2C 認証、NPS 拡張機能、Windows Server 2016 または 2019 AD FS アダプターの場合、次の個人データが保存されます。
 

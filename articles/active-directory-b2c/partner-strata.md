@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: bddc4c64feb31f78bed482bbd729ab1c4b8e676e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c7f7f162355b919c395dd0ee6d03b2bc5526e3da
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96171417"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936694"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>オンプレミスのアプリケーションを保護するために、Strata を使用して Azure AD B2C を拡張するためのチュートリアル
 
@@ -83,7 +83,7 @@ Strata の Maverics との統合には、次のコンポーネントが含まれ
 
    c. アプリケーションのリダイレクト URI を追加します。 この URI は、Orchestrator の Azure AD B2C コネクタ構成の `oauthRedirectURL` パラメーターと一致します (`https://example.com/oidc-endpoint` など)。
 
-2. **ユーザー フローの作成**:[サインアップとサインインのユーザー フロー](./tutorial-create-user-flows.md)を作成します。
+2. **ユーザー フローの作成**:[サインアップとサインイン ユーザー フロー](./tutorial-create-user-flows.md)を作成します。
 
 3. **IdP の追加**:ローカル アカウント、あるいはソーシャルまたはエンタープライズ [IdP](./tutorial-add-identity-providers.md) のいずれかから、ユーザーのサインインを選択します。
 

@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e3503a9eef5c11db35684ca61fb1ee39525a465d
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 9f2b0dccde0532646457a0841fc2798e103d8cc7
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427600"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347950"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>ブロック BLOB のオブジェクト レプリケーションを構成する
 
@@ -314,7 +314,7 @@ $destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 $destPolicy | ConvertTo-Json -Depth 5 > c:\temp\json.txt
 ```
 
-JSON ファイルを使用して、PowerShell でソース アカウントにレプリケーション ポリシーを構成するには、ローカル ファイルを取得し、JSON からオブジェクトに変換します。 次に、次の例に示すように、[Set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) コマンドを呼び出して、ソース アカウントにポリシーを構成します。 山かっこ内の値とファイル パスは、実際の値に置き換えてください。
+JSON ファイルを使用して、PowerShell でソース アカウントにレプリケーション ポリシーを定義するには、ローカル ファイルを取得し、JSON からオブジェクトに変換します。 次に、次の例に示すように、[Set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) コマンドを呼び出して、ソース アカウントにポリシーを構成します。 山かっこ内の値とファイル パスは、実際の値に置き換えてください。
 
 ```powershell
 $object = Get-Content -Path C:\temp\json.txt | ConvertFrom-Json

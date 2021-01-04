@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 00b5d220cdbc511a309d55cfca2049508049fa30
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 0895e84363d40bdbf30408f2b2a0d95f951eb303
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549006"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032560"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight リリース ノート
 
@@ -64,3 +64,18 @@ HDInsight は引き続き、クラスターの信頼性とパフォーマンス�
 
 ## <a name="component-version-change"></a>コンポーネントのバージョンの変更
 このリリースでは、コンポーネントのバージョン変更はありません。 HDInsight 4.0 と HDInsight 3.6 の現在のコンポーネント バージョンについては、[こちらのドキュメント](./hdinsight-component-versioning.md)を参照してください。
+
+## <a name="known-issues"></a>既知の問題
+### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>HDInsight クラスター VM が定期的に再起動しないようにする
+
+2020 年 11月中旬から、HDInsight クラスター VM が定期的に再起動されることがあります。 これには次の原因が考えられます。
+
+1.  クラスターで Clamav が有効になっています。 新しい azsec-clamav パッケージが大量のメモリを消費し、それによってノードの再起動がトリガーされます。 
+2.  CRON ジョブは、Azure サービスで使用される証明機関 (CA) の一覧の変更を監視するように、日単位でスケジュールされます。 新しい CA 証明書が利用可能になると、スクリプトによってその証明書が JDK 信頼ストアに追加され、再起動がスケジュールされます。
+
+HDInsight は、両方の問題に対して、実行中のすべてのクラスターに修正プログラムをデプロイし、パッチを適用しています。 修正プログラムをすぐに適用し、予期しない VM の再起動を回避するには、すべてのクラスター ノードで次のスクリプト アクションを永続的なスクリプト アクションとして実行します。 修正プログラムとパッチの適用が完了すると、HDInsight から別の通知が送信されます。
+```
+https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/replace_cacert_script.sh
+https://healingscriptssa.blob.core.windows.net/healingscripts/ChangeOOMPolicyAndApplyLatestConfigForClamav.sh
+```
+

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 11/19/2020
-ms.openlocfilehash: dc09edee08e97e354ef006416e2d5c0a333a3980
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.date: 12/07/2020
+ms.openlocfilehash: ee314708f0d564bf1af639a3d864ea19472425cf
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917819"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937629"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -19,7 +19,7 @@ ms.locfileid: "94917819"
 
 <a name="definition-limits"></a>
 
-## <a name="definition-limits"></a>定義の制限
+## <a name="logic-app-definition-limits"></a>ロジック アプリ定義の制限
 
 1 つのロジック アプリ定義の制限を次に示します。
 
@@ -37,7 +37,9 @@ ms.locfileid: "94917819"
 | `parameters` の最大数 | 50 | |
 | `outputs` の最大数 | 10 | |
 | `trackedProperties` の最大サイズ | 16,000 文字 |
-| インライン コード アクション - コードの最大文字数 | 1,024 文字 <p>100,000 文字の制限の場合、Visual Studio Code と [プレビュー **Azure Logic Apps** 拡張機能](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)を使用してロジック アプリを作成します。 |
+| インライン コード アクション - コードの最大文字数 | 1,024 文字 | この制限を 100,000 文字に拡張するには、リソースの種類 **[ロジック アプリ (プレビュー)]** を使用してロジック アプリを作成します。その際には、[Azure portal を使用](create-stateful-stateless-workflows-azure-portal.md)するか、[Visual Studio Code と **Azure Logic Apps (プレビュー)** 拡張機能](create-stateful-stateless-workflows-visual-studio-code.md)を使用します。 |
+| インライン コード アクション - コードを実行するための最長期間 | 5 秒 | この制限を 15 秒に拡張するには、リソースの種類 **[ロジック アプリ (プレビュー)]** を使用してロジック アプリを作成します。その際には、[Azure portal を使用](create-stateful-stateless-workflows-azure-portal.md)するか、[Visual Studio Code と **Azure Logic Apps (プレビュー)** 拡張機能](create-stateful-stateless-workflows-visual-studio-code.md)を使用します。 |
+||||
 
 <a name="run-duration-retention-limits"></a>
 
@@ -211,21 +213,23 @@ ms.locfileid: "94917819"
 
 Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの書き込み操作がサポートされています。 ただし、これらの操作には、[ペイロードのサイズに制限](/data-integration/gateway/service-gateway-onprem#considerations)があります。
 
-<a name="request-limits"></a>
+<a name="http-limits"></a>
 
 ## <a name="http-limits"></a>HTTP 制限
 
-1 回の送信または受信 HTTP 呼び出しの制限を次に示します。
+1 回の受信または送信呼び出しの制限を次に示します。
 
-#### <a name="timeout"></a>タイムアウト
+<a name="http-timeout-limits"></a>
+
+#### <a name="timeout-duration"></a>タイムアウト期間
 
 コネクタ操作の中には、非同期呼び出しを行うものや webhook 要求をリッスンするものがあるため、これらの操作のタイムアウトはこれらの制限より長くなる場合があります。 詳細については、特定のコネクタの技術詳細をご覧ください。「[Workflow triggers and actions](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)」もご覧ください。
 
-| 名前 | マルチ テナントの制限 | 統合サービス環境の制限 | Notes |
-|------|--------------------|---------------------------------------|-------|
-| 送信要求 | 120 秒 <br>(2 分) | 240 秒 <br>(4 分) | 送信要求の例には、HTTP トリガーによる呼び出しが含まれます。 <p><p>**ヒント**:これよりも実行時間が長い要求には、[非同期ポーリング パターン](../logic-apps/logic-apps-create-api-app.md#async-pattern) または [until ループ](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)を使用します。 [呼び出し可能なエンドポイント](logic-apps-http-endpoint.md)を持つ別のロジック アプリを呼び出したときにタイムアウト制限を回避するには、組み込みの Azure Logic Apps アクションを代わりに使用できます。これは、 **[Built-in]\(組み込み\)** の下のコネクタ ピッカーにあります。 |
-| 受信要求 | 120 秒 <br>(2 分) | 240 秒 <br>(4 分) | 受信要求の例には、要求トリガーと Webhook トリガーによって受信された呼び出しが含まれます。 <p><p>**注**:元の呼び出し元で応答を受け取るには、別のロジック アプリを入れ子のワークフローとして呼び出す場合を除き、応答のすべての手順が制限内に完了する必要があります。 詳細については、「[ロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 |
-|||||
+| 名前 | ロジック アプリ (マルチテナント) | ロジック アプリ (プレビュー) | 統合サービス環境 | Notes |
+|------|---------------------------|----------------------|---------------------------------|-------|
+| 送信要求 | 120 秒 <br>(2 分) | 230 秒 <br>(3.9 分) | 240 秒 <br>(4 分) | 送信要求の例には、HTTP トリガーまたはアクションによる呼び出しが含まれます。 プレビュー バージョンの詳細については、「[Azure Logic Apps プレビュー](logic-apps-overview-preview.md)」を参照してください。 <p><p>**ヒント**:これよりも実行時間が長い要求には、[非同期ポーリング パターン](../logic-apps/logic-apps-create-api-app.md#async-pattern) または [until ループ](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)を使用します。 [呼び出し可能なエンドポイント](logic-apps-http-endpoint.md)を持つ別のロジック アプリを呼び出したときにタイムアウト制限を回避するには、組み込みの Azure Logic Apps アクションを代わりに使用できます。これは、 **[Built-in]\(組み込み\)** の下のコネクタ ピッカーにあります。 |
+| 受信要求 | 120 秒 <br>(2 分) | 230 秒 <br>(3.9 分) | 240 秒 <br>(4 分) | 受信要求の例には、要求トリガー、HTTP Webhook トリガー、および HTTP Webhook アクションによって受信された呼び出しが含まれます。 プレビュー バージョンの詳細については、「[Azure Logic Apps プレビュー](logic-apps-overview-preview.md)」を参照してください。 <p><p>**注**:元の呼び出し元で応答を受け取るには、別のロジック アプリを入れ子のワークフローとして呼び出す場合を除き、応答のすべての手順が制限内に完了する必要があります。 詳細については、「[ロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 |
+||||||
 
 <a name="message-size-limits"></a>
 
@@ -266,6 +270,7 @@ Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの
 | ---- | ----- | ----- |
 | Azure AD 承認ポリシー | 5 | |
 | 承認ポリシーごとの要求数 | 10 | |
+| クレームの値 - 最大文字数 | 150 |
 ||||
 
 <a name="custom-connector-limits"></a>
@@ -300,15 +305,15 @@ Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの
 
 * [Developer SKU と Premium SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) の両方にわたる任意の[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 内の統合アカウントを含む、合計 1,000 個の統合アカウント。
 
-* [Developer か Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) かに関係なく、各 ISE は、合計 20 個の統合アカウントに制限されています。
+* [Developer であるか Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) であるかにかかわらず、各 ISE は統合アカウントの合計数に制限されますが、[コストを追加してこの制限を引き上げることができます](logic-apps-pricing.md#fixed-pricing)。
 
   | ISE SKU | 統合アカウントの制限 |
   |---------|----------------------------|
-  | **Premium** | 合計 20 個。[Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) アカウントのみ (無料の Standard アカウント 1 つを含む)。 Free または Basic アカウントは使用できません。 |
-  | **開発者** | 合計 20 個。[Free](../logic-apps/logic-apps-pricing.md#integration-accounts) (1 アカウントに制限) と [Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) の組み合わせ、またはすべて Standard アカウント。 Basic アカウントは使用できません。 [Developer SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) は、運用やパフォーマンス テストにではなく、実験、開発、テストに使用してください。 |
+  | **Premium** | 合計 20 個。[Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) アカウントのみ (無料の Standard アカウント 1 つを含む)。 [コストを追加して統合アカウントを増やす](logic-apps-pricing.md#fixed-pricing)ことができます。 Free または Basic アカウントは使用できません。 |
+  | **開発者** | 合計 20 個。[Free](../logic-apps/logic-apps-pricing.md#integration-accounts) (1 アカウントに制限) と [Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) の組み合わせ、またはすべて Standard アカウント。 [コストを追加して統合アカウントを増やす](logic-apps-pricing.md#fixed-pricing)ことができます。 Basic アカウントは使用できません。 [Developer SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) は、運用やパフォーマンス テストにではなく、実験、開発、テストに使用してください。 |
   |||
 
-ISE に含まれている統合アカウント以外に追加する統合アカウントには、追加コストが適用されます。 ISE の価格と課金のしくみについては、「[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)」を参照してください。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。
+ISE の価格と課金のしくみについては、「[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)」を参照してください。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。
 
 <a name="artifact-number-limits"></a>
 
@@ -338,7 +343,7 @@ ISE に含まれている統合アカウント以外に追加する統合アカ�
 | アーティファクト | 制限 | Notes |
 | -------- | ----- | ----- |
 | アセンブリ | 8 MB | 2 MB を超えるファイルをアップロードするには、[Azure ストレージ アカウントと BLOB コンテナー](../logic-apps/logic-apps-enterprise-integration-schemas.md)を使用します。 |
-| マップ (XSLT ファイル) | 8 MB | 2 MB を超えるファイルをアップロードするには、[Azure Logic Apps REST API - Maps](/rest/api/logic/maps/createorupdate) を使用します。 <p><p>**注**:マップで正常に処理できるデータまたはレコードの量は、Azure Logic Apps のメッセージ サイズとアクション タイムアウトの制限に基づいています。 たとえば、HTTP アクションを使用する場合、[HTTP メッセージ サイズとタイムアウトの制限](#request-limits)に基づき、マップでは、HTTP タイムアウトの制限内で操作が完了するのであれば、HTTP メッセージ サイズの制限までデータを処理できます。 |
+| マップ (XSLT ファイル) | 8 MB | 2 MB を超えるファイルをアップロードするには、[Azure Logic Apps REST API - Maps](/rest/api/logic/maps/createorupdate) を使用します。 <p><p>**注**:マップで正常に処理できるデータまたはレコードの量は、Azure Logic Apps のメッセージ サイズとアクション タイムアウトの制限に基づいています。 たとえば、HTTP アクションを使用する場合、[HTTP メッセージ サイズとタイムアウトの制限](#http-limits)に基づき、マップでは、HTTP タイムアウトの制限内で操作が完了するのであれば、HTTP メッセージ サイズの制限までデータを処理できます。 |
 | スキーマ | 8 MB | 2 MB を超えるファイルをアップロードするには、[Azure ストレージ アカウントと BLOB コンテナー](../logic-apps/logic-apps-enterprise-integration-schemas.md)を使用します。 |
 ||||
 
@@ -379,7 +384,7 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 
 ## <a name="firewall-configuration-ip-addresses-and-service-tags"></a>ファイアウォールの構成:IP アドレスとサービス タグ
 
-着信および発信で Azure Logic Apps が使用する IP アドレスは、ご利用のロジック アプリが置かれているリージョンによって異なります。 同じリージョン内の *すべての* ロジック アプリは、同じ IP アドレス範囲を使用します。 **HTTP** 要求や **HTTP + OpenAPI** 要求など、一部の [Power Automate](/power-automate/getting-started) 呼び出しは、Azure Logic Apps サービスを通じて直接実行され、ここに記載されている IP アドレスから取得されます。 Power Automate によって使用される IP アドレスについて詳しくは、[Power Automate での制限事項と構成](/flow/limits-and-config#ip-address-configuration)に関するページを参照してください。
+受信および送信呼び出しで Azure Logic Apps が使用する IP アドレスは、ご利用のロジック アプリが置かれているリージョンによって異なります。 同じリージョン内の *すべての* ロジック アプリは、同じ IP アドレス範囲を使用します。 **HTTP** 要求や **HTTP + OpenAPI** 要求など、一部の [Power Automate](/power-automate/getting-started) 呼び出しは、Azure Logic Apps サービスを通じて直接実行され、ここに記載されている IP アドレスから取得されます。 Power Automate によって使用される IP アドレスについて詳しくは、[Power Automate での制限事項と構成](/flow/limits-and-config#ip-address-configuration)に関するページを参照してください。
 
 > [!TIP]
 > セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、このセクションの後半で説明する各リージョンの Logic Apps IP アドレスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md)を使用することもできます。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 46bcdac41497eea91b5af0c512a7118e33d5d7c3
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: 3a37cde79cef59eaf9c3ef130bfbae9cff958bd7
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638905"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96919450"
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 
@@ -78,7 +78,7 @@ ms.locfileid: "94638905"
 ```xml
 <policies>
     <inbound>
-        <set-variable name="isMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
+        <set-variable name="isMobile" value="@(context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPad") || context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPhone"))" />
         <base />
         <choose>
             <when condition="@(context.Variables.GetValueOrDefault<bool>("isMobile"))">
@@ -854,7 +854,7 @@ status code and media type. If no example or schema found, the content is empty.
 次の例は、inbound セクションの変数の設定ポリシーを示しています。 この変数設定ポリシーは、`isMobile` の要求ヘッダーに `User-Agent` または `iPad` のテキストが含まれている場合に true に設定される `iPhone` ブール [コンテキスト](api-management-policy-expressions.md#ContextVariables)変数を作成します。
 
 ```xml
-<set-variable name="IsMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
+<set-variable name="IsMobile" value="@(context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPad") || context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPhone"))" />
 ```
 
 ### <a name="elements"></a>要素

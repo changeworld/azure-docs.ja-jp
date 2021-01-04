@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/06/2020
 ms.author: b-juche
-ms.openlocfilehash: c6194469837997108964feda82d406c9108641b9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a07898692c8af70fab0d2634ed1513f0f3666a4d
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369241"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505462"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>容量プールに関する問題のトラブルシューティング
 
@@ -33,7 +33,7 @@ ms.locfileid: "94369241"
 | 容量プールの削除に関する問題  |  容量プールを削除しようとしているサブスクリプション内で、Azure NetApp Files のすべてのボリュームとスナップショットを削除するようにしてください。 <br> 既にすべてのボリュームとスナップショットを削除しても容量プールを削除できない場合は、ポータルに表示されることなく、リソースへの参照がまだ存在している可能性があります。 この場合は、サポート チケットを提出し、上記の推奨される手順を実行したことを指定してください。 |
 | ボリュームの作成または変更が `Requested throughput not available` エラーで失敗する | 1 つのボリュームで使用可能なスループットは、容量プールのサイズとサービス レベルによって決まります。 十分なスループットがない場合は、プール サイズを増やすか、既存のボリュームのスループットを調整する必要があります。 | 
 
-## <a name="issues-moving-a-capacity-pool"></a>容量プールの移動に関する問題 
+## <a name="issues-when-changing-the-capacity-pool-of-a-volume"></a>ボリュームの容量プールを変更するときの問題 
 
 > [!IMPORTANT] 
 > 「[ボリュームのサービス レベルを動的に変更する](dynamic-change-volume-service-level.md)」のパブリック プレビュー登録は、通知があるまで保留中です。

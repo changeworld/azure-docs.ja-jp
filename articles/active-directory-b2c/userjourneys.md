@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/13/2020
+ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5b89126b837f9c197a8babf81abb17bfd98002e4
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ce41edd2c0048a20368dd02c2dd6101248e26c14
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344999"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400015"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -43,7 +43,38 @@ ms.locfileid: "96344999"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
+| AuthorizationTechnicalProfiles | 0:1 | 承認技術プロファイルの一覧。 | 
 | OrchestrationSteps | 1:n | トランザクションを成功させるために従う必要のあるオーケストレーション シーケンス。 すべてのユーザー体験は、シーケンスで実行されるオーケストレーション手順の順序付きリストで構成されます。 いずれかの手順に失敗した場合、トランザクションは失敗します。 |
+
+## <a name="authorizationtechnicalprofiles"></a>AuthorizationTechnicalProfiles
+
+ユーザーが UserJourney を完了し、アクセス トークンまたは ID トークンを取得したとします。 [UserInfo エンドポイント](userinfo-endpoint.md)などの追加リソースを管理するためには、ユーザーを識別する必要があります。 このプロセスを開始するには、有効な Azure AD B2C ポリシーによって元々認証されていたことを証明するものとして、以前に発行されたアクセス トークンを提示する必要があります。 ユーザーがこの要求を行うことができるようにするため、このプロセスの間、ユーザーの有効なトークンは常に存在していなければなりません。 承認技術プロファイルにより、受信トークンが検証され、トークンから要求が抽出されます。
+
+**AuthorizationTechnicalProfiles** 要素には、次の要素が含まれています。
+
+| 要素 | 発生回数 | 説明 |
+| ------- | ----------- | ----------- |
+| AuthorizationTechnicalProfile | 0:1 | 承認技術プロファイルの一覧。 | 
+
+**AuthorizationTechnicalProfile** 要素には、次の属性が含まれています。
+
+| 属性 | Required | 説明 |
+| --------- | -------- | ----------- |
+| TechnicalProfileReferenceId | Yes | 実行される技術プロファイルの識別子。 |
+
+次の例は、承認技術プロファイルを持つユーザー体験要素を示しています。
+
+```xml
+<UserJourney Id="UserInfoJourney" DefaultCpimIssuerTechnicalProfileReferenceId="UserInfoIssuer">
+  <Authorization>
+    <AuthorizationTechnicalProfiles>
+      <AuthorizationTechnicalProfile ReferenceId="UserInfoAuthorization" />
+    </AuthorizationTechnicalProfiles>
+  </Authorization>
+  <OrchestrationSteps>
+    <OrchestrationStep Order="1" Type="ClaimsExchange">
+     ...
+```
 
 ## <a name="orchestrationsteps"></a>OrchestrationSteps
 
@@ -61,7 +92,7 @@ ms.locfileid: "96344999"
 
 **OrchestrationStep** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | `Order` | はい | オーケストレーション手順の順序。 |
 | `Type` | はい | オーケストレーション手順の種類。 指定できる値 <ul><li>**ClaimsProviderSelection** -オーケストレーション手順が、様々な要求プロバイダーをユーザーに選択肢として表示することを示します。</li><li>**CombinedSignInAndSignUp** - オーケストレーション手順がサインインとローカル アカウントのサインアップ ページを結合ソーシャル プロバイダーに提示することを示します。</li><li>**ClaimsExchange** - オーケストレーション手順が要求プロバイダーと要求を交換することを示します。</li><li>**GetClaims** - オーケストレーション手順で、`InputClaims` 構成を使用して、証明書利用者から Azure AD B2C に送信される要求データを処理するように指定します。</li><li>**InvokeSubJourney** - オーケストレーション手順によって要求が [サブ体験](subjourneys.md)と交換されることを示します (パブリック プレビュー段階)。</li><li>**SendClaims** - オーケストレーション手順が証明書利用者に対して、要求発行者によって発行されたトークンを使用して要求を送信することを示します。</li></ul> |
@@ -143,7 +174,7 @@ Preconditions では複数の前提条件を確認できます。 次の例で�
 ```xml
 <OrchestrationStep Order="4" Type="ClaimsExchange">
   <Preconditions>
-  <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
+    <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
       <Value>objectId</Value>
       <Action>SkipThisOrchestrationStep</Action>
     </Precondition>
@@ -187,17 +218,17 @@ Preconditions では複数の前提条件を確認できます。 次の例で�
 
 ```xml
 <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
-    <ClaimsProviderSelections>
+  <ClaimsProviderSelections>
     <ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange" />
     <ClaimsProviderSelection TargetClaimsExchangeId="LinkedInExchange" />
     <ClaimsProviderSelection TargetClaimsExchangeId="TwitterExchange" />
     <ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
     <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
-    </ClaimsProviderSelections>
-    <ClaimsExchanges>
-    <ClaimsExchange Id="LocalAccountSigninEmailExchange"
-                    TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
-    </ClaimsExchanges>
+  </ClaimsProviderSelections>
+  <ClaimsExchanges>
+  <ClaimsExchange Id="LocalAccountSigninEmailExchange"
+        TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
+  </ClaimsExchanges>
 </OrchestrationStep>
 
 
@@ -211,7 +242,7 @@ Preconditions では複数の前提条件を確認できます。 次の例で�
   <ClaimsExchanges>
     <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
     <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
-    <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
+  <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
     <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
     <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
   </ClaimsExchanges>

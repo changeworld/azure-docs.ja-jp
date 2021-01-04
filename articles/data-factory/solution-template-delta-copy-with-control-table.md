@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/24/2018
-ms.openlocfilehash: e7b7acb7e67d809229825b3d393fe49af12b3642
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/09/2020
+ms.openlocfilehash: 3f15ffd6f7ed784cce398d419e013a69c60289d8
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461222"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921810"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>データベースから制御テーブルを使用して差分コピーを行う
 
@@ -45,7 +45,7 @@ ms.locfileid: "96461222"
 - *Data_Source_WaterMarkColumn* は、新規行や更新行を識別するために使用されるソース テーブル内の列の名前です。 通常、この列の型は *datetime* や *INT* などです。
 - *Data_Destination_Container* は、コピー先ストア内でデータがコピーされる場所のルート パスです。
 - *Data_Destination_Directory* は、コピー先ストア内でデータがコピーされる場所のルートの下のディレクトリ パスです。
-- *Data_Destination_Table_Name* は、コピー先ストア内でデータがコピーされる場所です (データのコピー先として "Azure Synapse Analytics (旧称 SQL DW)" が選択されている場合に適用されます)。
+- *Data_Destination_Table_Name* は、コピー先ストア内でデータがコピーされる場所です (データのコピー先として "Azure Synapse Analytics" が選択されている場合に適用されます)。
 - *Data_Destination_Folder_Path* は、コピー先ストア内でデータがコピーされる場所です (データのコピー先として "ファイル システム" または "Azure Data Lake Storage Gen1" が選択されている場合に適用されます)。
 - *Control_Table_Table_Name* は、高基準値を格納する外部制御テーブルです。
 - *Control_Table_Column_Name* は、高基準値を格納する外部制御テーブル内の列です。

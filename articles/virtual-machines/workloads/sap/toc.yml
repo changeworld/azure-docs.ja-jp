@@ -72,6 +72,8 @@
       items:
         - name: Azure portal を介した Azure HANA L インスタンスの制御
           href: hana-li-portal.md
+        - name: Azure portal を使用して BareMetal インスタンスを管理する
+          href: baremetal-infrastructure-portal.md
         - name: STONITH を使用した HA セットアップ
           href: ha-setup-with-stonith.md
         - name: Type II SKU 向けの OS バックアップ

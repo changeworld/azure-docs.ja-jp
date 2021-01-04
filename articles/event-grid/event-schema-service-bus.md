@@ -3,16 +3,16 @@ title: Event Grid ソースとしての Azure Service Bus
 description: Azure Event Grid で Service Bus イベント用に提供されているプロパティについて説明します
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 81293321b3a8fb989023a231c905996b4059bd81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34c6990c4e6e87304c457a5b2ca6459c404c8d9a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86121136"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008114"
 ---
 # <a name="azure-service-bus-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Service Bus
 
-この記事では、Service Bus イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
+この記事では、Service Bus イベントのプロパティとスキーマについて説明します。  イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
 
 ## <a name="event-grid-event-schema"></a>Event Grid イベント スキーマ
 
@@ -24,8 +24,12 @@ Service Bus から出力されるイベントの種類は次のとおりです�
 | ---------- | ----------- |
 | Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | キューまたはサブスクリプションにアクティブなメッセージがあり、リッスンしているレシーバーがない場合に生成されます。 |
 | Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener | 配信不能キューにアクティブなメッセージがあり、アクティブなレシーバーがない場合に生成されます。 |
+| Microsoft.ServiceBus.ActiveMessagesAvailablePeriodicNotifications | キューまたはサブスクリプションにアクティブなメッセージがある場合に、その特定のキューまたはサブスクリプションにアクティブなリスナーが存在する場合でも、定期的に生成されます。 |
+| Microsoft.ServiceBus.DeadletterMessagesAvailablePeriodicNotifications | キューまたはサブスクリプションの Deadletter エンティティにメッセージがある場合に、その特定のキューまたはサブスクリプションの Deadletter エンティティにアクティブなリスナーが存在する場合でも、定期的に生成されます。 | 
 
 ### <a name="example-event"></a>イベントの例
+
+#### <a name="active-messages-available-with-no-listeners"></a>アクティブなメッセージが利用可能 (リスナーなしの場合)
 
 次の例では、リスナー イベントがないアクティブなメッセージのスキーマを示します。
 
@@ -49,6 +53,8 @@ Service Bus から出力されるイベントの種類は次のとおりです�
 }]
 ```
 
+#### <a name="deadletter-messages-available-with-no-listener"></a>配信不能なメッセージが利用可能 (リスナーなしの場合)
+
 配信不能キュー イベントのスキーマも同様です。
 
 ```json
@@ -61,6 +67,50 @@ Service Bus から出力されるイベントの種類は次のとおりです�
   "data": {
     "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
     "requestUri": "https://{your-service-bus-namespace}.servicebus.windows.net/{your-topic}/subscriptions/{your-service-bus-subscription}/$deadletterqueue/messages/head",
+    "entityType": "subscriber",
+    "queueName": "QUEUE NAME IF QUEUE",
+    "topicName": "TOPIC NAME IF TOPIC",
+    "subscriptionName": "SUBSCRIPTION NAME"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
+#### <a name="active-messages-available-periodic-notifications"></a>アクティブなメッセージが利用可能な定期的な通知
+
+```json
+[{
+  "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
+  "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
+  "eventType": "Microsoft.ServiceBus.ActiveMessagesAvailablePeriodicNotifications",
+  "eventTime": "2018-02-14T05:12:53.4133526Z",
+  "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
+  "data": {
+    "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
+    "entityType": "subscriber",
+    "queueName": "QUEUE NAME IF QUEUE",
+    "topicName": "TOPIC NAME IF TOPIC",
+    "subscriptionName": "SUBSCRIPTION NAME"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
+#### <a name="deadletter-messages-available-periodic-notifications"></a>配信不能なメッセージが利用可能な定期的な通知
+
+```json
+[{
+  "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
+  "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
+  "eventType": "Microsoft.ServiceBus.DeadletterMessagesAvailablePeriodicNotifications",
+  "eventTime": "2018-02-14T05:12:53.4133526Z",
+  "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
+  "data": {
+    "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
     "entityType": "subscriber",
     "queueName": "QUEUE NAME IF QUEUE",
     "topicName": "TOPIC NAME IF TOPIC",

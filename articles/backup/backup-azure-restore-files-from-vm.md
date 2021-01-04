@@ -2,14 +2,14 @@
 title: Azure VM バックアップからファイルとフォルダーを回復する
 description: この記事では、Azure 仮想マシンの復旧ポイントからファイルとフォルダーを回復する方法について説明します。
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: b9d5c90634dac3229e756ad93c10db91b268080c
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4d34fc48e5d16275d0225a1cef4b5fa63f0b66d6
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841164"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511656"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -156,7 +156,7 @@ Linux の場合、スクリプトによって復旧ポイントに接続する�
 
    ![接続された回復ボリューム](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
-**大容量ディスクを含むバックアップ対象 VM (Windows)**
+#### <a name="for-backed-up-vms-with-large-disks-windows"></a>大容量ディスクを含むバックアップ対象 VM (Windows)
 
 ファイル復元スクリプトを実行した後、ファイルの回復プロセスがハングする場合 (たとえば、ディスクがマウントされない、またはマウントされてもボリュームが表示されない場合)、次の手順を実行します。
   
@@ -182,7 +182,7 @@ Linux では、復旧ポイントのボリュームはスクリプトが実行�
   ![Linux の [ファイルの回復] メニュー](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
 
 
-**大容量ディスクを含むバックアップ対象 VM (Linux)**
+#### <a name="for-backed-up-vms-with-large-disks-linux"></a>大容量ディスクを含むバックアップ対象 VM (Linux)**
 
 ファイル復元スクリプトを実行した後、ファイルの回復プロセスがハングする場合 (たとえば、ディスクがマウントされない、またはマウントされてもボリュームが表示されない場合)、次の手順を実行します。
 

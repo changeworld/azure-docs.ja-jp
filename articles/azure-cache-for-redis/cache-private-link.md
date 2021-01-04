@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 31ae4605b6cc9e26c89beea692fe61fcbda49c4c
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 22bdf93e7236ae5220a6bb7c6ead898628bb51a1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621503"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007587"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure Private Link を使用した Azure Cache for Redis (パブリック プレビュー)
 この記事では、Azure portal を使用して、仮想ネットワークと、プライベート エンドポイントを利用する Azure Cache for Redis インスタンスを作成する方法について学習します。 また、既存の Azure Cache for Redis インスタンスにプライベート エンドポイントを追加する方法について学習します。
@@ -224,7 +224,12 @@ PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/
 ```
 
 ### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>ネットワーク セキュリティ グループ (NSG) はプライベート エンドポイントでは有効になっていますか。
-いいえ、プライベート エンドポイントでは無効になっています。 ただし、サブネットに他のリソースがある場合は、NSG の強制がこれらのリソースに適用されます。
+いいえ、プライベート エンドポイントでは無効になっています。 プライベート エンドポイントを含むサブネットに NSG を関連付けることはできますが、プライベート エンドポイントによって処理されるトラフィックに対して規則は有効ではありません。 サブネットにプライベート エンドポイントをデプロイするには、[ネットワーク ポリシーの適用を無効にする](../private-link/disable-private-endpoint-network-policy.md)必要があります。 NSG は、同じサブネット上にホストされている他のワークロードにも適用されます。 クライアント サブネット上のルートは /32 プレフィックスを使用するため、既定のルーティング動作を変更するには同様の UDR が必要です。 
+
+ソース クライアントにおけるアウトバウンド トラフィックに対して NSG 規則を使用して、トラフィックを制御します。 /32 プレフィックスを持つ個々のルートをデプロイして、プライベート エンドポイント ルートをオーバーライドします。 送信接続の NSG フロー ログと監視情報は引き続きサポートされており、使用することができます
+
+### <a name="can-i-use-firewall-rules-with-private-endpoints"></a>プライベート エンドポイントでファイアウォール ルールを使用できますか。
+できません。これは、プライベート エンドポイントに関する現在の制限です。 キャッシュに対してファイアウォール ルールが構成されている場合、プライベート エンドポイントは正常に機能しません。
 
 ### <a name="how-can-i-connect-to-a-clustered-cache"></a>クラスター化されたキャッシュに接続するにはどうすればよいですか。
 `publicNetworkAccess` を `Disabled` に設定する必要があり、プライベート エンドポイント接続は 1 つしか保持できません。

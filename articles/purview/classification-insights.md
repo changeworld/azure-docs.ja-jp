@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 553c33b3d5ea2e3f1ee81503cb69fe15db387af6
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bb3c7cc3f51eae90c5b712d224407e639b232fbc
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745028"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938887"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Azure Purview からのデータに関する分類の分析情報
 
@@ -44,7 +44,7 @@ Azure Purview の分類はサブジェクト タグに似ており、スキャ�
 Purview には、Microsoft 365 と同じ機密情報の種類が使用されているため、データ資産全体に既存のセキュリティ ポリシーと保護を拡張できます。
 
 > [!NOTE]
-> ソースの種類をスキャンした後、**分類のラベル付け** の分析情報に新しい資産が反映されるまで数時間待ちます。
+> ソースの種類をスキャンした後、**分類** の分析情報に新しい資産が反映されるまで数時間待ちます。
 
 **分類の分析情報を表示するには:**
 

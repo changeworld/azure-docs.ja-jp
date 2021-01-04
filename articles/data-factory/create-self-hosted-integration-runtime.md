@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 11/25/2020
-ms.openlocfilehash: 22155083a71a9cbf615293a4f86a179aaefce2a9
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 04efb7bcae11ef6cf377d821b49f9b07d41d347f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96023357"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932593"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 
@@ -102,29 +102,28 @@ Dmgcmd.exe は、セルフホステッド インストーラーに含まれて�
 次のようにアプリケーションを使用します。
 
 ```powershell
-dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<thumbprint>"] -EnableRemoteAccessInContainer "<port>" ["<thumbprint>"] -DisableRemoteAccess -Key "<AuthenticationKey>" -GenerateBackupFile "<filePath>" "<password>" -ImportBackupFile "<filePath>" "<password>" -Restart -Start -Stop -StartUpgradeService -StopUpgradeService -TurnOnAutoUpdate -TurnOffAutoUpdate -SwitchServiceAccount "<domain\user>" ["<password>"] -Loglevel <logLevel> ]
+dmgcmd ACTION args...
 ```
 
-ここでは、アプリケーションのパラメーターとプロパティについて詳しく説明します。 
+アプリケーションのアクションと引数の詳細を次に示します。 
 
-| プロパティ                                                    | 説明                                                  | 必須 |
-| ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
-| **RegisterNewNode** "`<AuthenticationKey>`"                     | 指定された認証キーを使用して、セルフホステッド統合ランタイム ノードを登録します | いいえ       |
-| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | 指定された認証キーおよびノード名を使用して、セルフホステッド統合ランタイム ノードを登録します。 | いいえ       |
-| **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | 現在のノードでリモート アクセスを有効にして、高可用性クラスターをセットアップします。 または、Azure Data Factory を介さずにセルフホステッド IR に対する資格情報の直接設定を有効にします。 後者を実行するには、同じネットワーク内のリモート コンピューターから **New-AzDataFactoryV2LinkedServiceEncryptedCredential** コマンドレットを使用します。 | いいえ       |
-| **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | ノードがコンテナーで実行されているときに、現在のノードへのリモート アクセスを有効にします。 | いいえ       |
-| **DisableRemoteAccess**                                         | 現在のノードへのリモート アクセスを無効にします。 マルチノード設定にはリモート アクセスが必要です。 **New-AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell コマンドレットは、リモート アクセスが無効な場合でも機能します。 この動作は、コマンドレットがセルフホステッド IR ノードと同じコンピューター上で実行されている場合に当てはまります。 | いいえ       |
-| **Key** "`<AuthenticationKey>`"                                 | 以前の認証キーを上書きまたは更新します。 この操作には注意してください。 キーが新しい統合ランタイムのものである場合、これにより以前のセルフホステッド IR ノードがオフラインになる可能性があります。 | いいえ       |
-| **GenerateBackupFile** "`<filePath>`" "`<password>`"            | 現在のノードのバックアップ ファイルを生成します。 バックアップ ファイルには、ノード キーとデータ ストアの資格情報が含まれています。 | いいえ       |
-| **ImportBackupFile** "`<filePath>`" "`<password>`"              | バックアップ ファイルからノードを復元します。                          | いいえ       |
-| **Restart**                                                     | セルフホステッド統合ランタイムのホスト サービスを再開します。   | いいえ       |
-| **Start**                                                       | セルフホステッド統合ランタイムのホスト サービスを開始します。     | いいえ       |
-| **Stop**                                                        | セルフホステッド統合ランタイムのホスト サービスを停止します。        | いいえ       |
-| **StartUpgradeService**                                         | セルフホステッド統合ランタイムのアップグレード サービスを開始します。       | いいえ       |
-| **StopUpgradeService**                                          | セルフホステッド統合ランタイムのアップグレード サービスを停止します。        | いいえ       |
-| **TurnOnAutoUpdate**                                            | セルフホステッド統合ランタイムの自動更新を有効にします。        | いいえ       |
-| **TurnOffAutoUpdate**                                           | セルフホステッド統合ランタイムの自動更新を無効にします。       | いいえ       |
-| **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | DIAHostService を新しいアカウントとして実行するように設定します。 システム アカウントおよび仮想アカウントの場合は空のパスワード "" を使用します | いいえ       |
+|ACTION|args|説明|
+|------|----|-----------|
+|-rn、<br/>-RegisterNewNode|"`<AuthenticationKey>`" ["`<NodeName>`"]|指定された認証キーおよびノード名を使用して、セルフホステッド統合ランタイム ノードを登録します。|
+|-era、<br/>-EnableRemoteAccess|"`<port>`" ["`<thumbprint>`"]|現在のノードでリモート アクセスを有効にして、高可用性クラスターをセットアップします。 または、Azure Data Factory を介さずにセルフホステッド IR に対する資格情報の直接設定を有効にします。 後者を実行するには、同じネットワーク内のリモート コンピューターから **New-AzDataFactoryV2LinkedServiceEncryptedCredential** コマンドレットを使用します。|
+|-erac、<br/>-EnableRemoteAccessInContainer|"`<port>`" ["`<thumbprint>`"]|ノードがコンテナーで実行されているときに、現在のノードへのリモート アクセスを有効にします。|
+|-dra、<br/>-DisableRemoteAccess||現在のノードへのリモート アクセスを無効にします。 マルチノード設定にはリモート アクセスが必要です。 **New-AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell コマンドレットは、リモート アクセスが無効な場合でも機能します。 この動作は、コマンドレットがセルフホステッド IR ノードと同じコンピューター上で実行されている場合に当てはまります。|
+|-k、<br/>-Key|"`<AuthenticationKey>`"|以前の認証キーを上書きまたは更新します。 この操作には注意してください。 キーが新しい統合ランタイムのものである場合、これにより以前のセルフホステッド IR ノードがオフラインになる可能性があります。|
+|-gbf、<br/>-GenerateBackupFile|"`<filePath>`" "`<password>`"|現在のノードのバックアップ ファイルを生成します。 バックアップ ファイルには、ノード キーとデータ ストアの資格情報が含まれています。|
+|-ibf、<br/>-ImportBackupFile|"`<filePath>`" "`<password>`"|バックアップ ファイルからノードを復元します。|
+|-r、<br/>-Restart||セルフホステッド統合ランタイムのホスト サービスを再開します。|
+|-s、<br/>-Start||セルフホステッド統合ランタイムのホスト サービスを開始します。|
+|-t、<br/>-Stop||セルフホステッド統合ランタイムのホスト サービスを停止します。|
+|-sus、<br/>-StartUpgradeService||セルフホステッド統合ランタイムのアップグレード サービスを開始します。|
+|-tus、<br/>-StopUpgradeService||セルフホステッド統合ランタイムのアップグレード サービスを停止します。|
+|-tonau、<br/>-TurnOnAutoUpdate||セルフホステッド統合ランタイムの自動更新を有効にします。|
+|-toffau、<br/>-TurnOffAutoUpdate||セルフホステッド統合ランタイムの自動更新を無効にします。|
+|-ssa、<br/>-SwitchServiceAccount|"`<domain\user>`" ["`<password>`"]|DIAHostService を新しいアカウントとして実行するように設定します。 システム アカウントおよび仮想アカウントの場合は空のパスワード "" を使用します|
 
 
 ## <a name="command-flow-and-data-flow"></a>コマンド フローとデータ フロー
@@ -150,7 +149,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 - セルフホステッド統合ランタイムを使用して、Azure Virtual Network 内のデータ統合をサポートします。
 - Azure ExpressRoute を使用する場合でも、ファイアウォールの背後にあるオンプレミス データ ソースとしてデータ ソースを扱います。 セルフホステッド統合ランタイムを使用して、サービスをデータ ソースに接続します。
 - データ ストアがクラウド内の Azure IaaS (サービスとしてのインフラストラクチャ) 仮想マシン上にある場合でも、セルフホステッド統合ランタイムを使用します。
-- FIPS 準拠の暗号化が有効になっている Windows Server 上にインストールされているセルフホステッド統合ランタイムでは、タスクが失敗する可能性があります。 この問題を回避するには、資格情報/シークレット値を Azure Key Vault に保存するか、またはサーバーで FIPS 準拠の暗号化を無効にする 2 つのオプションがあります。 FIPS 準拠の暗号化を無効にするには、レジストリ サブキー `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` の値を 1 (有効) から 0 (無効) に変更します。 [セルフホステッド統合ランタイムを SSIS 統合ランタイムのプロキシとして](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)使用する場合、FIPS 準拠の暗号化を有効にすることができ、オンプレミスからステージング領域として Azure Blob Storage にデータを移動するときに使用されます。
+- FIPS 準拠の暗号化が有効になっている Windows Server 上にインストールされているセルフホステッド統合ランタイムでは、タスクが失敗する可能性があります。 この問題を回避するには、資格情報/シークレット値を Azure Key Vault に保存するか、またはサーバーで FIPS 準拠の暗号化を無効にする 2 つのオプションがあります。 FIPS 準拠の暗号化を無効にするには、レジストリ サブキー `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` の値を 1 (有効) から 0 (無効) に変更します。 [セルフホステッド統合ランタイムを SSIS 統合ランタイムのプロキシとして](./self-hosted-integration-runtime-proxy-ssis.md)使用する場合、FIPS 準拠の暗号化を有効にすることができ、オンプレミスからステージング領域として Azure Blob Storage にデータを移動するときに使用されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -331,7 +330,7 @@ Windows ファイアウォール レベル (コンピューター レベル) で
 
 ファイアウォール ルールを、企業ファイアウォール、セルフホステッド統合ランタイム コンピューター上の Windows ファイアウォール、およびデータ ストア自体に対して確実に正しく有効にします。 このルールを有効にすると、セルフホステッド統合ランタイムは、ソースとシンクの両方に正常に接続されます。 コピー操作に関連するデータ ストアごとにルールを有効にしてください。
 
-たとえば、SQL Database シンクまたは Azure Synapse Analytics (旧称 SQL Data Warehouse) シンクにオンプレミスのデータ ストアからコピーするには、次の手順を行います。
+たとえば、 オンプレミスのデータ ストアから SQL Database シンクまたは Azure Synapse Analytics シンクにコピーするには、以下の手順を実行します。
 
 1. 送信 TCP 通信を、Windows ファイアウォールと企業ファイアウォールの両方に対して、ポート 1433 上で許可します。
 1. SQL Database のファイアウォール設定を、セルフホステッド統合ランタイム コンピューターの IP アドレスを許可された IP アドレスのリストに追加するように構成します。

@@ -4,12 +4,12 @@ description: この記事では、バックアップと復旧ポイントを格�
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: ef3d464c051f15d656a4a60937bb05ac496ee52d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 3ba9f47da4a4c9719c313ba196ca121f8cde54ad
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548428"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387736"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services コンテナーを作成して構成する
 
@@ -77,8 +77,9 @@ GRS 冗長性を使用して作成されたコンテナーには、リージョ�
 
  ![バックアップ構成のバナー](./media/backup-azure-arm-restore-vms/banner.png)
 
-1. ポータルから [Recovery Services コンテナー] > [設定] > [プロパティ] にアクセスします。
-2. **[Enable Cross Region Restore in this vault]\(このコンテナーでリージョンをまたがる復元を有効にする\)** を選択して、機能を有効にします。
+1. ポータルから、Recovery Services コンテナー > **[プロパティ]** ( **[設定]** の下) にアクセスします。
+1. **[バックアップ構成]** で **[更新]** を選択します。
+1. **[Enable Cross Region Restore in this vault]\(このコンテナーでリージョンをまたがる復元を有効にする\)** を選択して、機能を有効にします。
 
    ![リージョンをまたがる復元を有効にする](./media/backup-azure-arm-restore-vms/backup-configuration.png)
 

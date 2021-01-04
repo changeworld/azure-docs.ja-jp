@@ -4,16 +4,16 @@ description: Azure Kubernetes Service (AKS) での持続可能なソフトウェ
 services: container-service
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 2457de7bdaa94a6e2269515fafe6689d44960625
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 700723041855fdae4f994480d180292fdfd12e15
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984984"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346896"
 ---
 # <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での持続可能なソフトウェア エンジニアリングの原則
 
-持続可能なソフトウェア エンジニアリングの原則は、持続可能なアプリケーションの定義、構築、実行に役立つ一連の能力です。 全体的な目標は、アプリケーションのすべての側面の炭素排出量を削減することです。 [Principles.Green プロジェクト][principles-green]には、持続可能なソフトウェア エンジニアリングの原則の概要があります。
+持続可能なソフトウェア エンジニアリングの原則は、持続可能なアプリケーションの定義、構築、実行に役立つ一連の能力です。 全体的な目標は、アプリケーションのすべての側面の炭素排出量を削減することです。 「[持続可能なソフトウェア エンジニアリングの原則][principles-sse]」に、持続可能なソフトウェア エンジニアリングの原則の概要があります。
 
 持続可能なソフトウェア エンジニアリングについて理解するための重要なアイデアは、それが優先順位と焦点の変化であることです。 多くの場合、ソフトウェアは、高速なパフォーマンスと短い待機時間に焦点を当てる方法で設計および実行されます。 持続可能なソフトウェア エンジニアリングでは、炭素排出量をできるだけ多く削減することに焦点を当てます。 場合によっては、ネットワークの移動全体を減らすなど、持続可能なソフトウェア エンジニアリングの原則を適用することで、パフォーマンスの高速化や待機時間の短縮を実現できます。 一方で、優先度の低いワークロードを遅らせるなどして炭素排出量を削減すると、パフォーマンスの低速化や待機時間の増加を招く場合もあります。 持続可能なソフトウェア エンジニアリングの原則をアプリケーションに適用することを検討する前に、アプリケーションの優先順位、ニーズ、トレードオフを確認してください。
 
@@ -32,7 +32,7 @@ AKS クラスターの炭素排出量を削減するには、クラスターの�
 
 使用率を上げることで余分なノードを減らすこともでき、これによって、[各ノードのリソース予約][resource-reservations]によって消費されるエネルギーを削減できます。
 
-また、アプリケーションの Kubernetes マニフェストで、CPU とメモリの*要求*と*制限*の見直しを行います。 メモリと CPU に関してこれらの値を下げると、より多くのメモリと CPU を、他のワークロードを実行するためにクラスターで使用できるようになります。 より少ない CPU とメモリでより多くのワークロードを実行すれば、クラスターの割り当て密度が高まり、使用率が向上します。 アプリケーション用の CPU とメモリを減らすときに、これらの値を低く設定しすぎると、アプリケーションの動作が劣化したり不安定になる可能性があります。 CPU とメモリの*要求*と*制限*を変更する前に、いくつかのベンチマーク テストを実行して、これらの値が適切に設定されているかどうかを確認することを検討してください。 また決して、アプリケーションが不安定になる水準にまでこれらの値を下げないでください。
+また、アプリケーションの Kubernetes マニフェストで、CPU とメモリの *要求* と *制限* の見直しを行います。 メモリと CPU に関してこれらの値を下げると、より多くのメモリと CPU を、他のワークロードを実行するためにクラスターで使用できるようになります。 より少ない CPU とメモリでより多くのワークロードを実行すれば、クラスターの割り当て密度が高まり、使用率が向上します。 アプリケーション用の CPU とメモリを減らすときに、これらの値を低く設定しすぎると、アプリケーションの動作が劣化したり不安定になる可能性があります。 CPU とメモリの *要求* と *制限* を変更する前に、いくつかのベンチマーク テストを実行して、これらの値が適切に設定されているかどうかを確認することを検討してください。 また決して、アプリケーションが不安定になる水準にまでこれらの値を下げないでください。
 
 ## <a name="reduce-network-travel"></a>ネットワーク移動の削減
 
@@ -74,4 +74,4 @@ AKS クラスターの炭素排出量を削減するには、クラスターの�
 [node-sizing]: use-multiple-node-pools.md#specify-a-vm-size-for-a-node-pool
 [sustainability-calculator]: https://azure.microsoft.com/blog/microsoft-sustainability-calculator-helps-enterprises-analyze-the-carbon-emissions-of-their-it-infrastructure/
 [system-pools]: use-system-pools.md
-[principles-green]: https://principles.green/
+[principles-sse]: https://docs.microsoft.com/learn/modules/sustainable-software-engineering-overview/

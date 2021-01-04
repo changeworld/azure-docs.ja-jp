@@ -3,13 +3,13 @@ title: Azure Monitor リソース ログでサポートされているサービ�
 description: Azure Monitor のリファレンス - Azure リソース ログでサポートされているサービスとイベント スキーマについて説明します。
 ms.subservice: logs
 ms.topic: reference
-ms.date: 06/03/2020
-ms.openlocfilehash: 1fd6f07151c93b64c150f01e5c0b5c7f4cffed85
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 12/09/2020
+ms.openlocfilehash: c7b2d48b40843930bba78f54d2294769d952daf6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593010"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931231"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure リソース ログでサポートされているカテゴリ
 
@@ -20,6 +20,11 @@ ms.locfileid: "94593010"
 
 (`resourceId` プロパティで使用可能な) リソースの種類と `category` を組み合わせて、スキーマを一意に識別します。 サービス固有のフィールドを含むすべてのリソース ログに共通のスキーマがあり、それぞれのログ カテゴリに対して追加されています。 詳細については、[Azure リソース ログの共通のスキーマとサービス固有のスキーマ]()に関するページを参照してください
 
+
+## <a name="costs"></a>コスト
+
+Log Analytics、Azure Storage、またはイベント ハブにデータを送信し、格納することでコストが発生します。 これらの場所にデータを送り、そこに保管するために、場合によってはコストを支払う必要があります。  リソース ログは、これらの場所に送信できるデータの一種です。 これらの場所に[一部のカテゴリのリソース ログをエクスポートするとコスト](https://azure.microsoft.com/pricing/details/monitor/)が追加で発生します。それに該当しないカテゴリの場合、エクスポート費用は無料です。 エクスポート コストの詳細を下の表に示します。
+
 ## <a name="supported-log-categories-per-resource-type"></a>リソースの種類ごとのサポートされているログ カテゴリ
 
 各リソースの種類で使用可能なログの種類の一覧を次に示します。 
@@ -27,17 +32,11 @@ ms.locfileid: "94593010"
 一部のカテゴリは、特定の種類のリソースに対してのみサポートされています。 リソースが不足していると思われる場合は、リソース固有のドキュメントを参照してください。 たとえば、Microsoft.Sql/servers/databases カテゴリは、すべての種類のデータベースで使用できるわけではありません。 詳細については、[SQL Database の診断ログに関する情報](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)を参照してください。 
 
 まだ何かが不足している場合は、この記事の下部にある GitHub コメントを開くことができます。
-
-## <a name="microsoftaadiamtenants"></a>microsoft.aadiam/tenants
-
-|カテゴリ|カテゴリの表示名|
-|---|---|
-|サインイン|サインイン|
-
-
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |エンジン|エンジン|
 |サービス|サービス|
@@ -45,14 +44,18 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |GatewayLogs|ApiManagement Gateway に関連するログ|
 
 
 ## <a name="microsoftappplatformspring"></a>Microsoft.AppPlatform/Spring
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |ApplicationConsole|アプリケーション コンソール|
 |SystemLogs|システム ログ|
@@ -60,23 +63,29 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
+|DscNodeStatus|DSC ノードの状態|
 |JobLogs|ジョブ ログ|
 |JobStreams|ジョブ ストリーム|
-|DscNodeStatus|DSC ノードの状態|
 
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |ServiceLog|サービス ログ|
 
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/workspaces
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |BaiClusterEvent|BaiClusterEvent|
 |BaiClusterNodeEvent|BaiClusterNodeEvent|
@@ -85,58 +94,77 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft.Blockchain/blockchainMembers
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |BlockchainApplication|ブロックチェーン アプリケーション|
+|FabricOrderer|Fabric Orderer|
+|FabricPeer|Fabric Peer|
 |プロキシ|プロキシ|
 
 
 ## <a name="microsoftblockchaincordamembers"></a>Microsoft.Blockchain/cordaMembers
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |BlockchainApplication|ブロックチェーン アプリケーション|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft.Cdn/cdnwebapplicationfirewallpolicies
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |WebApplicationFirewallLogs|Web アプリケーション ファイアウォールのログ|
 
 
 ## <a name="microsoftcdnprofiles"></a>Microsoft.Cdn/profiles
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |AzureCdnAccessLog|Azure Cdn アクセス ログ|
 
 
 ## <a name="microsoftcdnprofilesendpoints"></a>Microsoft.Cdn/profiles/endpoints
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |CoreAnalytics|エンドポイントのメトリック (帯域幅、エグレスなど) を取得します。|
 
 
 ## <a name="microsoftclassicnetworknetworksecuritygroups"></a>Microsoft.ClassicNetwork/networksecuritygroups
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |ネットワーク セキュリティ グループの規則フロー イベント|ネットワーク セキュリティ グループの規則フロー イベント|
 
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |Audit|[監査ログ]|
 |RequestResponse|要求と応答のログ|
+|Trace|トレース ログ|
 
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft.ContainerRegistry/registries
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |ContainerRegistryLoginEvents|ログイン イベント|
 |ContainerRegistryRepositoryEvents|RepositoryEvent ログ|
@@ -144,7 +172,9 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |cluster-autoscaler|Kubernetes クラスター オートスケーラー|
 |kube-apiserver|Kubernetes API サーバー|
@@ -155,14 +185,18 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft.CustomProviders/resourceproviders
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |AuditLogs|MiniRP 呼び出しの監査ログ|
 
 
 ## <a name="microsoftdatabricksworkspaces"></a>Microsoft.Databricks/workspaces
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |accounts|Databricks アカウント|
 |clusters|Databricks クラスター|
@@ -176,16 +210,11 @@ ms.locfileid: "94593010"
 |ワークスペース|Databricks ワークスペース|
 
 
-## <a name="microsoftdatacatalogdatacatalogs"></a>Microsoft.DataCatalog/datacatalogs
-
-|カテゴリ|カテゴリの表示名|
-|---|---|
-|ScanStatusLogEvent|ScanStatus|
-
-
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.DataFactory/factories
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |ActivityRuns|パイプライン アクティビティ実行ログ|
 |PipelineRuns|パイプライン実行ログ|
@@ -194,31 +223,70 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/accounts
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |Audit|[監査ログ]|
 |Requests|要求ログ|
 
 
+## <a name="microsoftdatashareaccounts"></a>Microsoft.DataShare/accounts
+
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
+|---|---|
+|ReceivedShareSnapshots|受信された共有スナップショット|
+|SentShareSnapshots|送信された共有スナップショット|
+|共有|共有|
+|ShareSubscriptions|共有サブスクリプション|
+
+
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |MySqlAuditLogs|MariaDB 監査ログ|
 |MySqlSlowLogs|MariaDB サーバー ログ|
 
 
+## <a name="microsoftdbformysqlflexibleservers"></a>Microsoft.DBforMySQL/flexibleServers
+
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
+|---|---|
+|MySqlAuditLogs|MySQL 監査ログ|
+|MySqlSlowLogs|MySQL Slow ログ|
+
+
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |MySqlAuditLogs|MySQL 監査ログ|
 |MySqlSlowLogs|MySQL サーバーのログ|
 
 
+## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft.DBforPostgreSQL/flexibleServers
+
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
+|---|---|
+|PostgreSQLLogs|PostgreSQL サーバー ログ|
+
+
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |PostgreSQLLogs|PostgreSQL サーバー ログ|
 |QueryStoreRuntimeStatistics|PostgreSQL クエリ ストアのランタイム統計|
@@ -227,21 +295,18 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft.DBforPostgreSQL/serversv2
 
-|カテゴリ|カテゴリの表示名|
-|---|---|
-|PostgreSQLLogs|PostgreSQL サーバー ログ|
+コスト:Free 
 
-
-## <a name="microsoftdbforpostgresqlsingleservers"></a>Microsoft.DBforPostgreSQL/singleservers
-
-|カテゴリ|カテゴリの表示名|
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |PostgreSQLLogs|PostgreSQL サーバー ログ|
 
 
 ## <a name="microsoftdesktopvirtualizationapplicationgroups"></a>Microsoft.DesktopVirtualization/applicationgroups
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |Checkpoint|Checkpoint|
 |エラー|エラー|
@@ -250,7 +315,9 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftdesktopvirtualizationhostpools"></a>Microsoft.DesktopVirtualization/hostpools
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |Checkpoint|Checkpoint|
 |Connection|Connection|
@@ -261,7 +328,9 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftdesktopvirtualizationworkspaces"></a>Microsoft.DesktopVirtualization/workspaces
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |Checkpoint|Checkpoint|
 |エラー|エラー|
@@ -271,7 +340,9 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |C2DCommands|C2D コマンド|
 |C2DTwinOperations|C2D ツイン操作|
@@ -291,7 +362,9 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft.Devices/provisioningServices
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |DeviceOperations|デバイス操作|
 |ServiceOperations|サービス操作|
@@ -299,28 +372,25 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |CassandraRequests|CassandraRequests|
 |ControlPlaneRequests|ControlPlaneRequests|
 |DataPlaneRequests|DataPlaneRequests|
+|GremlinRequests|GremlinRequests|
 |MongoRequests|MongoRequests|
 |PartitionKeyRUConsumption|PartitionKeyRUConsumption|
 |PartitionKeyStatistics|PartitionKeyStatistics|
 |QueryRuntimeStatistics|QueryRuntimeStatistics|
 
 
-## <a name="microsoftenterpriseknowledgegraphservices"></a>Microsoft.EnterpriseKnowledgeGraph/services
-
-|カテゴリ|カテゴリの表示名|
-|---|---|
-|AuditEvent|AuditEvent ログ|
-|DataIssue|DataIssue log|
-|Requests|構成ログ|
-
 ## <a name="microsofteventgriddomains"></a>Microsoft.EventGrid/domains
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |DeliveryFailures|配信エラーのログ|
 |PublishFailures|発行エラーのログ|
@@ -328,14 +398,18 @@ ms.locfileid: "94593010"
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft.EventGrid/systemTopics
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |DeliveryFailures|配信エラーのログ|
 
 
 ## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/topics
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |DeliveryFailures|配信エラーのログ|
 |PublishFailures|発行エラーのログ|
@@ -343,11 +417,13 @@ ms.locfileid: "94593010"
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |ArchiveLogs|アーカイブ ログ|
 |AutoScaleLogs|自動スケール ログ|
-|CustomerManagedKeyUserLogs|カスタマー マネージド キーのログ|
+|CustomerManagedKeyUserLogs|顧客管理キーのログ|
 |EventHubVNetConnectionEvent|VNet/IP フィルタリング接続ログ|
 |KafkaCoordinatorLogs|Kafka コーディネーター ログ|
 |KafkaUserErrorLogs|Kafka ユーザー エラー ログ|
@@ -356,14 +432,18 @@ ms.locfileid: "94593010"
 
 ## <a name="microsofthealthcareapisservices"></a>Microsoft.HealthcareApis/services
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |AuditLogs|監査ログ|
 
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft.Insights/AutoscaleSettings
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |AutoscaleEvaluations|自動スケーリング検証|
 |AutoscaleScaleActions|自動スケーリングのスケーリング操作|
@@ -371,7 +451,9 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |AppAvailabilityResults|可用性の結果|
 |AppBrowserTimings|ブラウザーのタイミング|
@@ -386,50 +468,53 @@ ms.locfileid: "94593010"
 |AppTraces|トレース|
 
 
-## <a name="microsoftiotspacesgraph"></a>Microsoft.IoTSpaces/Graph
-
-|カテゴリ|カテゴリの表示名|
-|---|---|
-|Audit|Audit|
-|エグレス|エグレス|
-|イングレス|イングレス|
-|運用時|運用時|
-|Trace|Trace|
-|UserDefinedFunction|UserDefinedFunction|
-
-
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |AuditEvent|[監査ログ]|
 
 
 ## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
+|コマンド|コマンド|
 |FailedIngestion|失敗した取り込み操作|
+|IngestionBatching|インジェスト バッチ処理|
+|クエリ|クエリ|
 |SucceededIngestion|成功した取り込み操作|
+|TableDetails|テーブル詳細|
+|TableUsageStatistics|テーブルの使用状況に関する統計情報|
 
 
 ## <a name="microsoftlogicintegrationaccounts"></a>Microsoft.Logic/integrationAccounts
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |IntegrationAccountTrackingEvents|統合アカウント追跡イベント|
 
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |WorkflowRuntime|ワークフロー ランタイムの診断イベント|
 
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft.MachineLearningServices/workspaces
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |AmlComputeClusterEvent|AmlComputeClusterEvent|
 |AmlComputeClusterNodeEvent|AmlComputeClusterNodeEvent|
@@ -440,14 +525,18 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |KeyDeliveryRequests|キー配信要求|
 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |ApplicationGatewayAccessLog|アプリケーション ゲートウェイのアクセス ログ|
 |ApplicationGatewayFirewallLog|アプリケーション ゲートウェイのファイアウォール ログ|
@@ -456,7 +545,9 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft.Network/azurefirewalls
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |AzureFirewallApplicationRule|Azure Firewall アプリケーション ルール|
 |AzureFirewallNetworkRule|Azure Firewall ネットワーク ルール|
@@ -464,21 +555,27 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftnetworkbastionhosts"></a>Microsoft.Network/bastionHosts
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |BastionAuditLogs|Bastion 監査ログ|
 
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |PeeringRouteLog|ピアリングのルート テーブルのログ|
 
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft.Network/frontdoors
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |FrontdoorAccessLog|Frontdoor アクセス ログ|
 |FrontdoorWebApplicationFirewallLog|Frontdoor Web アプリケーション ファイアウォール ログ|
@@ -486,7 +583,9 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |LoadBalancerAlertEvent|ロード バランサーのアラート イベント|
 |LoadBalancerProbeHealthStatus|ロード バランサーのプローブ正常性状態|
@@ -494,15 +593,20 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft.Network/networksecuritygroups
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |NetworkSecurityGroupEvent|ネットワーク セキュリティ グループ イベント|
+|NetworkSecurityGroupFlowEvent|ネットワーク セキュリティ グループの規則フロー イベント|
 |NetworkSecurityGroupRuleCounter|ネットワーク セキュリティ グループの規則数|
 
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |DDoSMitigationFlowLogs|DDoS 軽減策に関する意思決定のフロー ログ|
 |DDoSMitigationReports|DDoS 軽減策のレポート|
@@ -511,14 +615,18 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft.Network/trafficManagerProfiles
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |ProbeHealthStatusEvents|Traffic Manager プローブの正常性結果イベント|
 
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |GatewayDiagnosticLog|ゲートウェイ診断ログ|
 |IKEDiagnosticLog|IKE 診断ログ|
@@ -529,21 +637,27 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft.Network/virtualNetworks
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |VMProtectionAlerts|VM 保護アラート|
 
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |エンジン|エンジン|
 
 
 ## <a name="microsoftrecoveryservicesvaults"></a>Microsoft.RecoveryServices/Vaults
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |AddonAzureBackupAlerts|アドオン Azure Backup アラート データ|
 |AddonAzureBackupJobs|アドオン Azure Backup ジョブ データ|
@@ -563,35 +677,45 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |HybridConnectionsEvent|HybridConnections イベント|
 
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |OperationLogs|[操作ログ]|
 
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |OperationalLogs|操作ログ|
 
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft.SignalRService/SignalR
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |AllLogs|Azure SignalR Service ログ。|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |DevOpsOperationsAudit|Devops 操作の監査ログ|
 |ResourceUsageStats|リソース使用統計|
@@ -600,7 +724,9 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft.Sql/managedInstances/databases
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |エラー|エラー|
 |QueryStoreRuntimeStatistics|クエリ ストアのランタイム統計|
@@ -610,7 +736,9 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |AutomaticTuning|自動チューニング|
 |Blocks|Blocks|
@@ -632,7 +760,9 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft.Storage/storageAccounts/blobServices
 
-|カテゴリ|カテゴリの表示名|
+コスト:有料。詳細は [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)ページの「プラットフォーム ログ」セクションにあります。 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |StorageDelete|StorageDelete|
 |StorageRead|StorageRead|
@@ -641,7 +771,9 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft.Storage/storageAccounts/fileServices
 
-|カテゴリ|カテゴリの表示名|
+コスト:有料。詳細は [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)ページの「プラットフォーム ログ」セクションにあります。 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |StorageDelete|StorageDelete|
 |StorageRead|StorageRead|
@@ -650,7 +782,9 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft.Storage/storageAccounts/queueServices
 
-|カテゴリ|カテゴリの表示名|
+コスト:有料。詳細は [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)ページの「プラットフォーム ログ」セクションにあります。 
+ 
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |StorageDelete|StorageDelete|
 |StorageRead|StorageRead|
@@ -659,7 +793,9 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft.Storage/storageAccounts/tableServices
 
-|カテゴリ|カテゴリの表示名|
+コスト:有料。詳細は [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)ページの「プラットフォーム ログ」セクションにあります。 
+ 
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |StorageDelete|StorageDelete|
 |StorageRead|StorageRead|
@@ -668,22 +804,64 @@ ms.locfileid: "94593010"
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |Authoring|Authoring|
 |実行|実行|
 
 
+## <a name="microsoftsynapseworkspaces"></a>Microsoft.Synapse ワークスペース
+
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
+|---|---|
+|BuiltinSqlReqsEnded|組み込みの SQL プール要求終了|
+|GatewayApiRequests|Synapse Gateway API 要求|
+|SQLSecurityAuditEvents|SQL セキュリティ監査イベント|
+|SynapseRbacOperations|Synapse RBAC 操作|
+
+
+## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft.Synapse/workspaces/bigDataPools
+
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
+|---|---|
+|BigDataPoolAppsEnded|ビッグ データ プール アプリケーション終了|
+
+
+## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft.Synapse/workspaces/sqlPools
+
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
+|---|---|
+|DmsWorkers|DMS worker|
+|ExecRequests|実行要求|
+|RequestSteps|要求ステップ|
+|SqlRequests|SQL 要求|
+|SQLSecurityAuditEvents|SQL セキュリティ監査イベント|
+|待機|待機|
+
+
 ## <a name="microsoftwebhostingenvironments"></a>microsoft.web/hostingenvironments
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |AppServiceEnvironmentPlatformLogs|Azure App Service Environment のプラットフォーム ログ|
 
 
 ## <a name="microsoftwebsites"></a>microsoft.web/sites
 
-|カテゴリ|カテゴリの表示名|
+コスト:Free 
+
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |AppServiceAppLogs|App Service アプリケーション ログ|
 |AppServiceAuditLogs|監査ログへのアクセス|
@@ -691,13 +869,14 @@ ms.locfileid: "94593010"
 |AppServiceFileAuditLogs|サイト コンテンツの変更に関する監査ログ|
 |AppServiceHTTPLogs|HTTP ログ|
 |FunctionAppLogs|関数アプリケーション ログ|
-|ScanLogs|ウイルス対策スキャンのログ|
 
 
 ## <a name="microsoftwebsitesslots"></a>microsoft.web/sites/slots
 
+コスト:Free 
 
-|カテゴリ|カテゴリの表示名|
+
+|カテゴリ |カテゴリの表示名|
 |---|---|
 |AppServiceAppLogs|App Service アプリケーション ログ|
 |AppServiceAuditLogs|監査ログへのアクセス|
@@ -705,7 +884,6 @@ ms.locfileid: "94593010"
 |AppServiceFileAuditLogs|サイト コンテンツの変更に関する監査ログ|
 |AppServiceHTTPLogs|HTTP ログ|
 |FunctionAppLogs|関数アプリケーション ログ|
-|ScanLogs|ウイルス対策スキャンのログ|
 
 
 ## <a name="next-steps"></a>次の手順

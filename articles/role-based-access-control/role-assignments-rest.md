@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d66b4c8e9f41f661cfc399f72a9ad97405a860fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: feb647cc42c878778b4326c9ee76a32809751314
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84790848"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369312"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>REST API を使用して Azure のロールの割り当てを追加または削除する
 
@@ -65,7 +65,7 @@ Azure RBAC でアクセス権を付与するには、ロールの割り当てを
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | リソース |
 
-    前の例で、microsoft.web は App Service インスタンスを参照するリソース プロバイダーです。 同様に、他の任意のリソース プロバイダーを使用してスコープを指定できます。 詳細については、「[Azure リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)」およびサポートされている「[Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)」を参照してください。  
+    前の例で、microsoft.web は App Service インスタンスを参照するリソース プロバイダーです。 同様に、他の任意のリソース プロバイダーを使用してスコープを指定できます。 詳細については、「[Azure リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)」およびサポートされている「[Azure リソース プロバイダーの操作](resource-provider-operations.md)」を参照してください。  
 
 1. *{roleAssignmentId}* を、ロールの割り当ての GUID 識別子に置き換えます。
 

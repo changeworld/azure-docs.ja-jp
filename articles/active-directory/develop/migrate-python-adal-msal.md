@@ -14,12 +14,12 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: marsma, rayluo, nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 731c608b8ac280a3a3c4e77c3a94533d258cb85d
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 213184409c9f5ee21ac9f61be1ad138fbbaa3590
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618044"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107857"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Python 用の ADAL から MSAL への移行に関するガイド
 
@@ -50,7 +50,7 @@ ADAL Python ではリソースのトークンが取得されますが、MSAL Pyt
 
 ### <a name="error-handling"></a>エラー処理
 
-Python 用 Azure Active Directory 認証ライブラリ (ADAL) では、例外 `AdalError` を使用して問題が発生したことを示します。 Python 用 MSAL では通常、代わりにエラー コードを使用します。 詳細については、[Python 用 MSAL のエラー処理](./msal-handling-exceptions.md?tabs=python)に関するページを参照してください。
+Python 用 Azure Active Directory 認証ライブラリ (ADAL) では、例外 `AdalError` を使用して問題が発生したことを示します。 Python 用 MSAL では通常、代わりにエラー コードを使用します。 詳細については、[Python 用 MSAL のエラー処理](msal-error-handling-python.md)に関するページを参照してください。
 
 ### <a name="api-changes"></a>API の変更
 

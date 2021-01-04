@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 1a050daa3a4b3ae9be5ef40961c40adaa90dc72b
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 90246459663980de25e301817f651e7719e8f380
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96121811"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033182"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central に接続する
 
@@ -178,11 +178,21 @@ IoT Central アプリケーションに大量のデバイスを登録するに�
 
 ## <a name="associate-a-device-with-a-device-template"></a>デバイス テンプレートへのデバイスの関連付け
 
-デバイスが接続されると、IoT Central によってデバイスがデバイス テンプレートに自動的に関連付けられます。 デバイスは、接続時にモデル ID を送信します。 IoT Central は、モデル ID を使用して、その特定のデバイス モデルのデバイス テンプレートを識別します。 検出プロセスは次のように実行されます。
+デバイスが接続されると、IoT Central によってデバイスがデバイス テンプレートに自動的に関連付けられます。 デバイスは、接続時に[モデル ID](../../iot-pnp/iot-plug-and-play-glossary.md#model-id) を送信します。 IoT Central は、モデル ID を使用して、その特定のデバイス モデルのデバイス テンプレートを識別します。 検出プロセスは次のように実行されます。
 
 1. IoT Central アプリケーションでデバイス テンプレートが既に発行されている場合、デバイスはデバイス テンプレートに関連付けられます。
-1. デバイス テンプレートが IoT Central アプリケーションでまだ発行されていない場合、パブリック モデル リポジトリでデバイス モデルが検索されます。 モデルが見つかると、それを使用して基本のデバイス テンプレートが生成されます。
+1. デバイス テンプレートが IoT Central アプリケーション内でまだ公開されていない場合は、IoT Centralにおいて[パブリック モデル リポジトリ](https://github.com/Azure/iot-plugandplay-models)でデバイス モデルが検索されます。 モデルが見つかると、それを使用して基本のデバイス テンプレートが生成されます。
 1. パブリック モデル リポジトリでモデルが見つからない場合、デバイスは **関連付けなし** としてマークされます。 オペレーターは、デバイスのデバイス テンプレートを作成し、関連付けられていないデバイスを新しいデバイス テンプレートに移行できます。
+
+次のスクリーンショットは、IoT Central でデバイス テンプレートのモデル ID を表示する方法を示しています。 デバイス テンプレートでコンポーネントを選択し、 **[ID の表示]** を選択します。
+
+:::image type="content" source="media/concepts-get-connected/model-id.png" alt-text="サーモスタット デバイス テンプレート内のモデル ID を表示するスクリーンショット。":::
+
+パブリック モデル リポジトリ内の[サーモスタット モデル](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/thermostat-1.json)は表示できます。 モデル ID の定義は次のようになります。
+
+```json
+"@id": "dtmi:com:example:Thermostat;1"
+```
 
 ## <a name="device-status-values"></a>デバイスの状態の値
 
@@ -233,7 +243,7 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 | テレメトリ | デバイスからクラウドへのメッセージ |
 | プロパティ | デバイス ツインの報告されるプロパティ |
 | プロパティ (書き込み可能) | デバイス ツインの目的および報告されるプロパティ |
-| コマンド | ダイレクト メソッド |
+| command | ダイレクト メソッド |
 
 ### <a name="protocols"></a>プロトコル
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 38ab16fbadee245810a4486170dd54922c0c38f9
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 4c87dd905ae842647e7ec2e365abf450caf352b0
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558914"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369329"
 ---
 # <a name="security-control-v2-network-security"></a>セキュリティ コントロール V2:ネットワークのセキュリティ
 
@@ -20,7 +20,7 @@ ms.locfileid: "96558914"
 
 ## <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1: 内部トラフィック用のセキュリティを実装する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | NS-1 | 9.2、9.4、14.1、14.2、14.3 | AC-4、CA-3、SC-7 |
 
@@ -52,7 +52,7 @@ Azure Sentinel を使用して、不安がある従来のプロトコルであ�
 
 ## <a name="ns-2-connect-private-networks-together"></a>NS-2: プライベート ネットワークをまとめて接続する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | NS-2 | N/A | CA-3、AC-17、MA-4 |
 
@@ -80,7 +80,7 @@ Azure で 2 つ以上の仮想ネットワークを接続するには、仮想�
 
 ## <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3: Azure サービスへのプライベート ネットワーク アクセスを確立する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | NS-3 | 14.1 | AC-4、CA-3、SC-7 |
 
@@ -104,7 +104,7 @@ Azure Private Link を使用して、インターネットを経由せずに、�
 
 ## <a name="ns-4-protect-applications-and-services-from-external-network-attacks"></a>NS-4: 外部ネットワーク攻撃からアプリケーションやサービスを保護する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | NS-4 | 9.5、12.3、12.9 | SC-5、SC-7 |
 
@@ -134,7 +134,7 @@ Azure Private Link を使用して、インターネットを経由せずに、�
 
 ## <a name="ns-5-deploy-intrusion-detectionintrusion-prevention-systems-idsips"></a>NS-5: 侵入検出および侵入防止システム (IDS/IPS) をデプロイする
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | NS-5 | 12.6、12.7 | SI-4 |
 
@@ -160,7 +160,7 @@ Azure Firewall の脅威インテリジェンス ベースのフィルター処�
 
 ## <a name="ns-6-simplify-network-security-rules"></a>NS-6: ネットワーク セキュリティ規則を簡略化する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | NS-6 | 1.5 | IA-4 |
 
@@ -186,7 +186,7 @@ Azure Firewall の脅威インテリジェンス ベースのフィルター処�
 
 ## <a name="ns-7-secure-domain-name-service-dns"></a>NS-7: セキュリティで保護されたドメイン ネーム サービス (DNS)
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | NS-7 | N/A | SC-20、SC-21 |
 

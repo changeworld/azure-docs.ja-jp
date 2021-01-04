@@ -11,16 +11,16 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: ca0cfd7c38dde5e7307c31989791aa3906b9cbe5
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 2d759a8ed58d5b323f9894a5127c222ce1f75c52
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357285"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97345978"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>自動機械学習 (AutoML) とは
 
-自動機械学習 (自動 ML または AutoML とも呼ばれます) は、時間のかかる反復的な機械学習モデルの開発タスクを自動化するプロセスです。 これにより、データ サイエンティスト、アナリスト、開発は、モデルの品質を維持しながら、高いスケール、効率性、生産性で ML モデルを構築することができます。 自動化された ML は、[Microsoft Research 部門](https://www.microsoft.com/research/project/automl/)の最先端技術に基づいています。
+自動機械学習 (自動 ML または AutoML とも呼ばれます) は、時間のかかる反復的な機械学習モデルの開発タスクを自動化するプロセスです。 これにより、データ サイエンティスト、アナリスト、開発は、モデルの品質を維持しながら、高いスケール、効率性、生産性で ML モデルを構築することができます。 Azure Machine Learning の 自動 ML は、[Microsoft Research 部門](https://www.microsoft.com/research/project/automl/)の最先端技術に基づいています。
 
 機械学習モデルの従来の開発はリソース集約型であり、ドメインに関する広範な知識と多数のモデルを生成して比較するための大量の時間を必要とします。 自動化された機械学習を使用することで、すぐに実稼働環境で使用できる ML モデルを取得するための時間を、容易にかつ効率的に短縮することができます。
 
@@ -67,7 +67,7 @@ ms.locfileid: "93357285"
 
 予測のための回帰と自動機械学習の例については、次の Python ノートブックを参照してください: [売上予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)、[需要予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)、[飲料生産の予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)。
 
-## <a name="how-automl-works"></a>AutoML のしくみ
+## <a name="how-automated-ml-works"></a>自動 ML の動作
 
 トレーニング中、Azure Machine Learning は、さまざまなアルゴリズムとパラメーターを試行する多数のパイプラインを並列に作成します。 サービスは、機能選択と組み合わせた ML アルゴリズムを介して反復し、それぞれの反復で、トレーニング スコアを含むモデルを生成します。 このスコアが高いほど、モデルがデータに「適合している」と見なされます。  実験に定義されている終了基準に到達すると停止します。 
 

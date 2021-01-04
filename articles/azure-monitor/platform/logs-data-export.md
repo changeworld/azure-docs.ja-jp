@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: d2e93ccfaf3ff2c5b74ceef1f6a274f71ee52c4e
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 8fa823620d6d1306260d719cbabaa3d815cc0d09
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309836"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505445"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
 Azure Monitor で Log Analytics ワークスペースのデータ エクスポートを使用すると、Log Analytics ワークスペースで選択したテーブルのデータを収集する際に Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。 この記事では、この機能の詳細と、ワークスペースでデータ エクスポートを構成する手順について説明します。
@@ -28,7 +28,7 @@ Log Analytics ワークスペースのデータ エクスポートを構成す�
 ## <a name="other-export-options"></a>その他のエクスポート オプション
 Log Analytics ワークスペースのデータ エクスポートでは、Log Analytics ワークスペースからデータが連続してエクスポートされます。 特定のシナリオでデータをエクスポートするその他のオプションには、次のようなものがあります。
 
-- ロジック アプリを使用したログ クエリからのスケジュールされたエクスポート。 これはデータ エクスポート機能に似ていますが、フィルター処理または集計されたデータを Azure Storage に送信できます。 ただし、この方法には[ログ クエリの制限](../service-limits.md#log-analytics-workspaces)が適用されます。「[ロジック アプリを使用して Log Analytics ワークスペースから Azure ストレージへデータをアーカイブする](logs-export-logic-app.md)」を参照してください。
+- ロジック アプリを使用したログ クエリからのスケジュールされたエクスポート。 これはデータ エクスポート機能に似ていますが、フィルター処理または集計されたデータを Azure ストレージに送信できます。 ただし、この方法には[ログ クエリの制限](../service-limits.md#log-analytics-workspaces)が適用されます。「[ロジック アプリを使用して Log Analytics ワークスペースから Azure ストレージへデータをアーカイブする](logs-export-logic-app.md)」を参照してください。
 - ロジック アプリを使用したワンタイム エクスポート。 「[Logic Apps および Power Automate の Azure Monitor Logs コネクタ](logicapp-flow-connector.md)」を参照してください。
 - PowerShell スクリプトを使用したローカル コンピューターへのワンタイム エクスポート。 「[Invoke-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport)」を参照してください。
 
@@ -122,24 +122,37 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 
 N/A
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+該当なし
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ワークスペース内のテーブルを表示するには、次の CLI コマンドを使用します。 必要なテーブルをコピーして、データ エクスポート ルールに含めることができます。
 
 ```azurecli
-az monitor log-analytics workspace table list -resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
+az monitor log-analytics workspace table list --resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
 ```
 
 CLI を使用してストレージ アカウントに対するデータ エクスポート ルールを作成するには、次のコマンドを使用します。
 
 ```azurecli
-az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $storageAccountId
+$storageAccountResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.Storage/storageAccounts/storage-account-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $storageAccountResourceId
 ```
 
-CLI を使用してイベント ハブに対するデータ エクスポート ルールを作成するには、次のコマンドを使用します。
+CLI を使用してイベント ハブに対するデータ エクスポート ルールを作成するには、次のコマンドを使用します。 テーブルごとに個別のイベント ハブが作成されます。
 
 ```azurecli
-az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesId
+$eventHubsNamespacesResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.EventHub/namespaces/namespaces-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesResourceId
+```
+
+CLI を使用して特定のイベント ハブに対するデータ エクスポート ルールを作成するには、次のコマンドを使用します。 すべてのテーブルは、指定されたイベント ハブ名にエクスポートされます。 
+
+```azurecli
+$eventHubResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.EventHub/namespaces/namespaces-name/eventHubName/eventhub-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubResourceId
 ```
 
 # <a name="rest"></a>[REST](#tab/rest)
@@ -205,11 +218,15 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ```
 ---
 
-## <a name="view-data-export-configuration"></a>データ エクスポートの構成を表示する
+## <a name="view-data-export-rule-configuration"></a>データ エクスポート ルールの構成の表示
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 N/A
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+該当なし
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -233,6 +250,10 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 N/A
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+該当なし
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -272,6 +293,10 @@ Content-type: application/json
 
 N/A
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+該当なし
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 CLI を使用してデータ エクスポート ルールを削除するには、次のコマンドを使用します。
@@ -295,6 +320,10 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 N/A
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+該当なし
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 CLI を使用してワークスペース内のすべてのデータ エクスポート ルールを表示するには、次のコマンドを使用します。
@@ -315,7 +344,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="unsupported-tables"></a>サポート対象外のテーブル
 サポート対象外のテーブルがデータ エクスポート ルールに含まれている場合、構成は成功しますが、そのテーブルのデータはエクスポートされません。 そのテーブルが後でサポートされるようになると、その時点でテーブルのデータがエクスポートされます。
 
-存在しないテーブルがデータ エクスポート ルールに含まれている場合、```Table <tableName> does not exist in the workspace.``` エラーで失敗します。
+存在しないテーブルがデータ エクスポート ルールに含まれている場合、"Table <tableName> does not exist in the workspace (テーブル <tableName> がワークスペースに存在しません)" エラーで失敗します。
 
 
 ## <a name="supported-tables"></a>サポート対象のテーブル

@@ -3,12 +3,12 @@ title: 仮想マシンのコンテンツの監査を学習する
 description: Azure Policy がゲスト構成エージェントを使用して仮想マシン内の設定を監査するしくみについて説明します。
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: a956d5e8dcfa82f85020928e1427a08ac8fe7a69
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7d7aa14038c834747240d17441c61d000ac6bb74
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906252"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347882"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
 
@@ -84,7 +84,7 @@ Azure Arc マシンは、オンプレミスのネットワーク インフラス
 
 ### <a name="communicate-over-private-link-in-azure"></a>Azure で Private Link を介して通信する
 
-仮想マシンは、ゲスト構成サービスとの通信に [Private Link](../../../private-link/private-link-overview.md) を使用できます。 この機能を有効にするには、名前 `EnablePrivateNeworkGC` と値 `TRUE` を使用してタグを適用します。 タグは、ゲスト構成ポリシー定義をマシンに適用する前または後に適用できます。
+仮想マシンは、ゲスト構成サービスとの通信に [Private Link](../../../private-link/private-link-overview.md) を使用できます。 この機能を有効にするには、名前 `EnablePrivateNeworkGC` (Network の "t" はありません) と値 `TRUE` を使用してタグを適用します。 タグは、ゲスト構成ポリシー定義をマシンに適用する前または後に適用できます。
 
 Azure [仮想パブリック IP アドレス](../../../virtual-network/what-is-ip-address-168-63-129-16.md)を使用してトラフィックがルーティングされて、Azure プラットフォーム リソースとの、セキュリティで保護された認証済みチャネルが確立されます。
 

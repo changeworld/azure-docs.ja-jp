@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: f270ac736bb5dbc429dc8659cc88e63d0b51a523
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: cc17a66aceb6ab3eba9a18f8f07902822f4c81bb
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366640"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937663"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーの制限
 
@@ -116,6 +116,7 @@ PostgreSQL 接続はアイドル状態であっても、約 10 MB のメモリ�
 
 * Azure AD 認証は、まだサポートされていません。 Azure AD 認証が必要な場合は、 [単一サーバー](../overview-single-server.md) オプションを使用することをお勧めします。
 * 読み取りレプリカは、まだサポートされていません。 読み取りレプリカが必要な場合は、 [単一サーバー](../overview-single-server.md) オプションを使用することをお勧めします。
+* 別のサブスクリプションへのリソースの移動はサポートされていません。 
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -6,14 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.custom: contperfq1
-ms.date: 10/2/2020
-ms.openlocfilehash: 022e2e25c96473f49468f2bd48e5ee997933baea
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.custom: contperf-fy21q1
+ms.date: 12/9/2020
+ms.openlocfilehash: c11e0702a7825b719417288c5ebbf93defde186c
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348714"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029246"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力
 
@@ -25,12 +25,12 @@ Stream Analytics ジョブの出力を作成、編集、テストするには、
 
 | 出力の種類 | パーティション分割 | セキュリティ | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|はい|Azure Active Directory ユーザー </br> MSI|
-|[Azure SQL Database](sql-database-output.md)|はい、省略可能です。|SQL ユーザー認証 </br> MSI (プレビュー)|
-|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|はい|SQL ユーザー認証|
-|[Blob Storage と Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|はい|MSI </br> アクセス キー|
-|[Azure Event Hubs](event-hubs-output.md)|はい。出力構成でパーティション キー列を設定する必要があります。|アクセス キー|
-|[Power BI](power-bi-output.md)|いいえ|Azure Active Directory ユーザー </br> MSI|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|はい|Azure Active Directory ユーザー </br> 、マネージド ID|
+|[Azure SQL Database](sql-database-output.md)|はい、省略可能です。|SQL ユーザー認証、 </br> マネージド ID (プレビュー)|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|はい|SQL ユーザー認証、 </br> マネージド ID (プレビュー)|
+|[Blob Storage と Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|はい|アクセス キー、 </br> マネージド ID (プレビュー)|
+|[Azure Event Hubs](event-hubs-output.md)|はい。出力構成でパーティション キー列を設定する必要があります。|アクセス キー、 </br> マネージド ID (プレビュー)|
+|[Power BI](power-bi-output.md)|いいえ|Azure Active Directory ユーザー、 </br> マネージド ID|
 |[Azure Table Storage](table-storage-output.md)|はい|アカウント キー|
 |[Azure Service Bus キュー](service-bus-queues-output.md)|はい|アクセス キー|
 |[Azure Service Bus トピック](service-bus-topics-output.md)|はい|アクセス キー|

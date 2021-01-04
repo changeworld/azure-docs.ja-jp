@@ -1,18 +1,18 @@
 ---
 title: テンプレート関数 - 文字列
-description: Azure Resource Manager テンプレートで、文字列を操作するために使用する関数について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) で文字列の操作に使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: e94037b40f4937a40e00215aa7a3f99fd3280b49
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a70aaff91f701c0ba8d26db2488b82e052dd905d
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96005998"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920008"
 ---
 # <a name="string-functions-for-arm-templates"></a>ARM テンプレート用の文字列関数
 
-Resource Manager では、Azure Resource Manager (ARM) テンプレートで文字列を操作するために、次の関数が提供されています。
+Resource Manager では、Azure Resource Manager テンプレート (ARM テンプレート) で文字列を操作するために、次の関数が提供されています。
 
 * [base64](#base64)
 * [base64ToJson](#base64tojson)
@@ -58,7 +58,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで文�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | inputString |はい |string |Base 64 形式として返す値。 |
 
@@ -1919,7 +1919,7 @@ output endsFalse bool = endsWith('abcdef', 'e')
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -2761,7 +2761,7 @@ output toStringOutput string = uriComponentToString(uriEncoded)
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](template-syntax.md)に関するページを参照してください。
-* 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](linked-templates.md)に関するページを参照してください。
-* 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](copy-resources.md)」を参照してください。
-* 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager のテンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)に関するページを参照してください。
+* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* 複数のテンプレートをマージする方法については、「[Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用](linked-templates.md)」を参照してください。
+* ある種類のリソースを作成するときに、指定した回数だけ反復する方法については、「[ARM テンプレートでのリソースの反復処理](copy-resources.md)」を参照してください。
+* 作成したテンプレートをデプロイする方法については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。

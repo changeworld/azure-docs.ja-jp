@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 72d774b4ced6471ff7b355b2cb43c3c9127b5975
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f0c9a01e43f12e8fbe597c85c22b79c0994305e3
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658521"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938870"
 ---
 # <a name="supported-postgresql-major-versions"></a>サポートされる PostgreSQL のメジャー バージョン
 
@@ -38,10 +38,10 @@ Azure Database for PostgreSQL では現在、次のメジャー バージョン�
 ## <a name="managing-upgrades"></a>アップグレードの管理
 PostgreSQL プロジェクトでは、報告されたバグを修正するためにマイナー リリースを定期的に発行しています。 Azure Database for PostgreSQL は、サービスの月次デプロイ中に、マイナー リリースのサーバーに自動的に修正を適用します。 
 
-メジャー バージョンの自動インプレース アップグレードはサポートされていません。 次のメジャー バージョンにアップグレードするには、以下の手順を実行します。 
-   * [ダンプと復元を使用したメジャー バージョンのアップグレード](./how-to-upgrade-using-dump-and-restore.md)を実行するためのさまざまな方法を参照してください。
+メジャー バージョンの自動インプレース アップグレードはサポートされていません。 より高いレベルのメジャー バージョンにアップグレードするには、以下の手順を実行します。 
+   * [ダンプと復元を使用したメジャー バージョンのアップグレード](./how-to-upgrade-using-dump-and-restore.md)に関するページに記載されている方法のいずれかを使用します。
    * [pg_dump と pg_restore](./howto-migrate-using-dump-and-restore.md) を使用して、新しいエンジン バージョンで作成されたサーバーにデータベースを移動します。
-   * または、[Azure Database Migration Service](..\dms\tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) を使用して、PostgreSQL 10 から 11 にアップグレードすることもできます。
+   * [Azure Database Migration Service](..\dms\tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) を使用して、オンライン アップグレードを実行します。
 
 ### <a name="version-syntax"></a>バージョンの構文
 PostgreSQL バージョン 10 より前は、[PostgreSQL のバージョン管理ポリシー](https://www.postgresql.org/support/versioning/)では、1 番目 _または_ 2 番目の番号が増えることが _メジャー バージョン_ のアップグレードと見なされていました。 たとえば、9.5 から 9.6 への変更は、_メジャー_ バージョンのアップグレードと見なされていました。 バージョン 10 以降は、1 番目の番号の変更のみがメジャー バージョンのアップグレードと見なされます。 たとえば、10.0 から 10.1 への変更は、_マイナー_ リリースのアップグレードになります。 バージョン 10 から 11 への変更が、_メジャー_ バージョンのアップグレードになります。

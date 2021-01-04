@@ -10,15 +10,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/22/2020
+ms.date: 12/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 7af15552a489f36d87204bfefe47e579cc19f6dc
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e36f7c6085908630d5e7aa2593fe4d57202d6ee7
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778822"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107653"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関する記事を参照してください。
@@ -116,8 +116,9 @@ API Management サービスを Virtual Network にデプロイするときに発
 | * / [80]、443                  | 受信            | TCP                | INTERNET / VIRTUAL_NETWORK            | API Management へのクライアント通信                      | 外部             |
 | * / 3443                     | 受信            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Azure Portal と PowerShell 用の管理エンドポイント         | 外部 / 内部  |
 | * / 443                  | 送信           | TCP                | VIRTUAL_NETWORK / Storage             | **Azure Storage への依存関係**                             | 外部 / 内部  |
-| * / 443                  | 送信           | TCP                | VIRTUAL_NETWORK / AzureActiveDirectory | [Azure Active Directory](api-management-howto-aad.md) (該当する場合)                   | 外部 / 内部  |
+| * / 443                  | 送信           | TCP                | VIRTUAL_NETWORK / AzureActiveDirectory | [Azure Active Directory](api-management-howto-aad.md) と Azure KeyVault の依存関係                  | 外部 / 内部  |
 | * / 1433                     | 送信           | TCP                | VIRTUAL_NETWORK / SQL                 | **Azure SQL エンドポイントへのアクセス**                           | 外部 / 内部  |
+| * / 433                     | 送信           | TCP                | VIRTUAL_NETWORK / AzureKeyVault                 | **Azure KeyVault へのアクセス**                           | 外部 / 内部  |
 | * / 5671, 5672, 443          | 送信           | TCP                | VIRTUAL_NETWORK / EventHub            | [Event Hub へのログ ポリシー](api-management-howto-log-event-hubs.md)および監視エージェントの依存関係 | 外部 / 内部  |
 | * / 445                      | 送信           | TCP                | VIRTUAL_NETWORK / Storage             | [Git](api-management-configuration-repository-git.md) のための Azure ファイル共有への依存関係                      | 外部 / 内部  |
 | * / 443、12000                     | 送信           | TCP                | VIRTUAL_NETWORK / AzureCloud            | 正常性と監視の拡張機能         | 外部 / 内部  |

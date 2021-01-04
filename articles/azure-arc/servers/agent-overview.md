@@ -1,14 +1,14 @@
 ---
 title: Connected Machine Windows エージェントの概要
 description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、使用可能な Azure Arc 対応サーバー エージェントの詳細な概要を提供します。
-ms.date: 12/01/2020
+ms.date: 12/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1bc9546e6db35153424ba670f8157adb86d19b71
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 531041b7d7439dd2a48fa9e06eb82796f470e9ed
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452951"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563026"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの概要
 
@@ -56,6 +56,9 @@ Azure Connected Machine エージェントでは、次のバージョンの Wind
 - Red Hat Enterprise Linux (RHEL) 7 (x64)
 - Amazon Linux 2 (x64)
 
+> [!WARNING]
+> Linux ホスト名または Windows コンピューター名では、予約語や商標を名前に使用できません。使用した場合、接続されているマシンを Azure に登録しようとすると失敗します。 予約語の一覧については、「[予約されたリソース名のエラーを解決する](../../azure-resource-manager/templates/error-reserved-resource-name.md)」を参照してください。
+
 ### <a name="required-permissions"></a>必要なアクセス許可
 
 * マシンをオンボードするには、**Azure Connected Machine のオンボード** ロールのメンバーである必要があります。
@@ -77,9 +80,9 @@ Azure に転送中のデータのセキュリティを確保するには、ト�
 
 ### <a name="networking-configuration"></a>ネットワーク構成
 
-Linux と Windows 用の Connected Machine エージェントは、TCP ポート 443 を介して安全に Azure Arc へのアウトバウンド通信を行います。 インターネット経由で通信するためにマシンがファイアウォールやプロキシ サーバーを介して接続する場合、以下の要件を確認してネットワーク構成の要件を把握してください。
+Linux と Windows 用の Connected Machine エージェントは、TCP ポート 443 を介して安全に Azure Arc へのアウトバウンド通信を行います。 インターネット経由で通信するためにマシンがファイアウォールやプロキシ サーバーを介して接続されている場合は、次を確認してネットワーク構成の要件を把握してください。
 
-アウトバウンド接続がファイアウォールやプロキシ サーバーによって制限されている場合は、以下に示す URL がブロックされていないことを確認してください。 エージェントに必要な IP 範囲またはドメイン名のみにサービスとの通信を許可する場合は、次のサービス タグおよび URL へのアクセスも許可する必要があります。
+アウトバウンド接続がファイアウォールやプロキシ サーバーによって制限されている場合は、以下に示す URL がブロックされていないことを確認してください。 エージェントがサービスと通信するために必要な IP 範囲またはドメイン名のみを許可する場合は、次のサービス タグおよび URL へのアクセスを許可する必要があります。
 
 サービス タグ:
 
@@ -178,8 +181,9 @@ Windows 用 Connected Machine エージェントをインストールした後�
 
     |[サービス名] |Display name |[処理名] |説明 |
     |-------------|-------------|-------------|------------|
-    |himds |Azure Hybrid Instance Metadata Service |himds.exe |このサービスは、Azure への接続と接続されたマシンの Azure ID を管理するために Azure Instance Metadata Service (IMDS) を実装します。|
-    |DscService |ゲスト構成サービス |dsc_service.exe |ゲスト内ポリシーを実装するために Azure 内部で使用される Desired State Configuration (DSC v2) コードベースです。|
+    |himds |Azure Hybrid Instance Metadata Service |himds |このサービスは、Azure への接続と接続されたマシンの Azure ID を管理するために Azure Instance Metadata Service (IMDS) を実装します。|
+    |GCArcService |ゲスト構成 Arc サービス |gc_service |マシンの必要な状態構成を監視します。|
+    |ExtensionService |ゲスト構成拡張機能サービス | gc_service |マシンをターゲットとする必要な拡張機能をインストールします。|
 
 * 次の環境変数は、エージェントのインストール中に作成されます。
 
@@ -197,7 +201,7 @@ Windows 用 Connected Machine エージェントをインストールした後�
     |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent.log |DSC サービス アクティビティの詳細を記録します<br> (特に、HIMDS サービスと Azure Policy の間の接続)。|
     |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent_telemetry.txt |DSC サービス テレメトリと詳細ログの詳細を記録します。|
     |%ProgramData%\GuestConfig\ext_mgr_logs|拡張エージェント コンポーネントに関する詳細を記録します。|
-    |%ProgramData%\GuestConfig\extension_logs<ph id="ph1">\&lt;Extension&gt;</ph>|インストールされた拡張機能の詳細を記録します。|
+    |%ProgramData%\GuestConfig\extension_logs\<Extension>|インストールされた拡張機能の詳細を記録します。|
 
 * ローカル セキュリティ グループの **ハイブリッド エージェント拡張アプリケーション** が作成されます。
 
@@ -229,8 +233,9 @@ Linux 用 Connected Machine エージェントをインストールした後、�
 
     |[サービス名] |Display name |[処理名] |説明 |
     |-------------|-------------|-------------|------------|
-    |himdsd.service |Azure Hybrid Instance Metadata Service |/opt/azcmagent/bin/himds |このサービスは、Azure への接続と接続されたマシンの Azure ID を管理するために Azure Instance Metadata Service (IMDS) を実装します。|
-    |dscd.service |ゲスト構成サービス |/opt/DSC/dsc_linux_service |これは、ゲスト内ポリシーを実装するために Azure 内部で使用される Desired State Configuration (DSC v2) コードベースです。|
+    |himdsd.service |Azure Connected Machine Agent サービス。 |himds |このサービスは、Azure への接続と接続されたマシンの Azure ID を管理するために Azure Instance Metadata Service (IMDS) を実装します。|
+    |gcad.servce |GC Arc サービス |gc_linux_service |マシンの必要な状態構成を監視します。 |
+    |extd.service |拡張機能サービス |gc_linux_service | マシンをターゲットとする必要な拡張機能をインストールします。|
 
 * トラブルシューティングに使用できるログ ファイルがいくつかあります。 これらについては、次の表で説明します。
 

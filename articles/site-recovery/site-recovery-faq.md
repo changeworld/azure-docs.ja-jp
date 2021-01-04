@@ -4,12 +4,12 @@ description: この記事では、Azure Site Recovery に関してよく寄せ�
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 3da86eead5b927a2a71d7b1a28bc5966bf5f8840
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: add5874dc828f05c7c51f0f378988c94cbd42486
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369439"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109557"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery に関する一般的な質問
 
@@ -132,10 +132,10 @@ Azure Site Recovery のマイクロサービス間のすべての通信は、TLS
 ## <a name="disaster-recovery"></a>障害復旧
 
 ### <a name="what-can-site-recovery-protect"></a>Site Recovery が保護できるものは何ですか。
-* **Azure VM** : Site Recovery は、サポート対象の Azure VM で実行されているすべてのワークロードをレプリケートできます
-* **Hyper-V 仮想マシン** :Site Recovery は、Hyper-V VM で実行されているすべてのワークロードを保護できます。
-* **物理サーバー** :Site Recovery は、Windows または Linux が実行されている物理サーバーを保護できます。
-* **VMware 仮想マシン** :Site Recovery は、VMware VM で実行されているすべてのワークロードを保護できます。
+* **Azure VM**: Site Recovery は、サポート対象の Azure VM で実行されているすべてのワークロードをレプリケートできます
+* **Hyper-V 仮想マシン**:Site Recovery は、Hyper-V VM で実行されているすべてのワークロードを保護できます。
+* **物理サーバー**:Site Recovery は、Windows または Linux が実行されている物理サーバーを保護できます。
+* **VMware 仮想マシン**:Site Recovery は、VMware VM で実行されているすべてのワークロードを保護できます。
 
 ### <a name="what-workloads-can-i-protect-with-site-recovery"></a>Site Recovery で保護できるワークロードは何ですか。
 Site Recovery を使用すると、サポートされている VM または物理サーバーで実行されているほとんどのワークロードを保護できます。 また、アプリケーションに対応したレプリケーションもサポートしているため、アプリをインテリジェントな状態に復元できます。 Site Recovery は、SharePoint、Exchange、Dynamics、SQL Server、Active Directory などの Microsoft アプリケーションと統合し、Oracle、SAP、IBM、Red Hat などの主要なベンダーと緊密に連携します。 [詳細情報](site-recovery-workload.md) を参照してください。
@@ -272,6 +272,9 @@ Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイント�
 アプリケーション整合性復旧ポイントは、アプリケーション整合性スナップショットから作成されます。 アプリケーション整合性復旧ポイントでは、クラッシュ整合性スナップショットと同じデータがキャプチャされますが、さらに、メモリに入っていたデータと処理中のすべてのトランザクションもキャプチャされます。
 
 これらの追加コンテンツのため、アプリケーション整合性スナップショットは最も複雑となり、時間がかかります。 アプリケーション整合性の復旧ポイントは、SQL Server などのデータベース オペレーティング システムで推奨されます。
+
+>[!Note]
+>Windows マシンに 64 個を超えるボリュームがある場合、アプリケーション整合性復旧ポイントの作成に失敗します。
 
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>アプリケーション整合性復旧ポイントがアプリケーション パフォーマンスにもたらす影響について教えてください。
 
